@@ -1,0 +1,10 @@
+{
+  "package": "codes.biscuit.skyblockaddons.mixins",
+  "refmap": "mixins.skyblockaddons.refmap.json",
+  "compatibilityLevel": "JAVA_8",
+  "verbose": true,
+  "mixins": [
+    "MixinMinecraft",
+    "MixinSoundManager"
+  ]
+}
