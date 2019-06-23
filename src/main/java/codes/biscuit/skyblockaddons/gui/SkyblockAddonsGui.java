@@ -35,8 +35,8 @@ public class SkyblockAddonsGui extends GuiScreen {
         boxWidth = 20;
         buttonList.add(new ButtonRegular(0, halfWidth-boxWidth-125, height*0.73, "+", main, Feature.ADD, boxWidth, boxHeight));
         buttonList.add(new ButtonRegular(0, halfWidth-boxWidth+5, height*0.73, "-", main, Feature.SUBTRACT, boxWidth, boxHeight));
-        mc.gameSettings.hideGUI = true;
     }
+
 
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
@@ -104,7 +104,6 @@ public class SkyblockAddonsGui extends GuiScreen {
 
     @Override
     public void onGuiClosed() {
-        mc.gameSettings.hideGUI = false;
         main.getConfigValues().saveConfig();
     }
 }
