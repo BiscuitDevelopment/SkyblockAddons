@@ -14,6 +14,7 @@ public class ConfigValues {
     private Set<Feature> disabledFeatures = EnumSet.noneOf(Feature.class);
     private ConfigColor warningColor = ConfigColor.RED;
     private ConfigColor confirmationColor = ConfigColor.GRAY;
+    private Feature.ManaBarType manaBarType = Feature.ManaBarType.BAR_TEXT;
     private int warningSeconds = 4;
 
     public ConfigValues(File configFile) {
@@ -39,6 +40,9 @@ public class ConfigValues {
                 warningColor = ConfigColor.values()[loadedConfig.get("warningColor").getAsInt()];
                 confirmationColor = ConfigColor.values()[loadedConfig.get("confirmationColor").getAsInt()];
                 warningSeconds = loadedConfig.get("warningSeconds").getAsInt();
+                if (loadedConfig.has("manaBarType")) {
+                    manaBarType = Feature.ManaBarType.values()[loadedConfig.get("manaBarType").getAsInt()];
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -62,6 +66,7 @@ public class ConfigValues {
             loadedConfig.add("disabledFeatures", jsonArray);
             loadedConfig.addProperty("warningColor", warningColor.ordinal());
             loadedConfig.addProperty("confirmationColor", confirmationColor.ordinal());
+            loadedConfig.addProperty("manaBarType", manaBarType.ordinal());
             loadedConfig.addProperty("warningSeconds", warningSeconds);
 
             bufferedWriter.write(loadedConfig.toString());
@@ -71,6 +76,10 @@ public class ConfigValues {
             ex.printStackTrace();
             System.out.println("An error occurred while attempting to save the config!");
         }
+    }
+
+    public Feature.ManaBarType getManaBarType() {
+        return manaBarType;
     }
 
     public Set<Feature> getDisabledFeatures() {
@@ -83,6 +92,10 @@ public class ConfigValues {
 
     public ConfigColor getWarningColor() {
         return warningColor;
+    }
+
+    public void setManaBarType(Feature.ManaBarType manaBarType) {
+        this.manaBarType = manaBarType;
     }
 
     public void setConfirmationColor(ConfigColor confirmationColor) {

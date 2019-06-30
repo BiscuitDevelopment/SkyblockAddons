@@ -5,6 +5,7 @@ public enum Feature {
     MAGMA_WARNING(0, ButtonType.REGULAR),
     DROP_CONFIRMATION(1, ButtonType.REGULAR),
     DISABLE_EMBER_ROD(2, ButtonType.REGULAR),
+    MANA_BAR(3, ButtonType.REGULAR),
 
     WARNING_COLOR(-1, ButtonType.COLOR),
     CONFIRMATION_COLOR(-1, ButtonType.COLOR),
@@ -40,6 +41,31 @@ public enum Feature {
         COLOR,
         NEUTRAL,
         MODIFY
+    }
+
+    public enum ManaBarType {
+        BAR_TEXT("Bar & Text"),
+        TEXT("Text"),
+        BAR("Bar"),
+        OFF("Off");
+
+        private String displayText;
+
+        ManaBarType(String displayText) {
+            this.displayText = displayText;
+        }
+
+        public String getDisplayText() {
+            return displayText;
+        }
+
+        public ManaBarType getNextType() {
+            int nextType = ordinal()+1;
+            if (nextType > values().length-1) {
+                nextType = 0;
+            }
+            return values()[nextType];
+        }
     }
 
     public ButtonType getButtonType() {

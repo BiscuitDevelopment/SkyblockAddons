@@ -24,14 +24,15 @@ public class SkyblockAddonsGui extends GuiScreen {
         int halfWidth = width/2;
         int boxWidth = 120;
         int boxHeight = 20;
-        buttonList.add(new ButtonRegular(0, halfWidth-boxWidth-30, height*0.35, "Magma Boss Warning", main, Feature.MAGMA_WARNING, boxWidth, boxHeight));
-        buttonList.add(new ButtonRegular(0, halfWidth+30, height*0.35, "Item Drop Confirmation", main, Feature.DROP_CONFIRMATION, boxWidth, boxHeight));
+        buttonList.add(new ButtonRegular(0, halfWidth-boxWidth-30, height*0.25, "Magma Boss Warning", main, Feature.MAGMA_WARNING, boxWidth, boxHeight));
+        buttonList.add(new ButtonRegular(0, halfWidth+30, height*0.25, "Item Drop Confirmation", main, Feature.DROP_CONFIRMATION, boxWidth, boxHeight));
+        buttonList.add(new ButtonRegular(0, halfWidth-boxWidth-30, height*0.35, null, main, Feature.MANA_BAR, boxWidth, boxHeight));
         boxWidth = 200;
         buttonList.add(new ButtonRegular(0, halfWidth-100, height*0.45, "Disable Ember Rod Ability on Island", main, Feature.DISABLE_EMBER_ROD, boxWidth, boxHeight));
         boxWidth = 100;
         buttonList.add(new ButtonRegular(0, halfWidth-boxWidth-20, height*0.65, "Warning Color", main, Feature.WARNING_COLOR, boxWidth, boxHeight));
         buttonList.add(new ButtonRegular(0, halfWidth+20, height*0.65, "Confirmation Color", main, Feature.CONFIRMATION_COLOR, boxWidth, boxHeight));
-        buttonList.add(new ButtonRegular(0, halfWidth-boxWidth-20, height*0.73, "Warning Time - 3s", main, Feature.WARNING_TIME, boxWidth, boxHeight));
+        buttonList.add(new ButtonRegular(0, halfWidth-boxWidth-20, height*0.73, null, main, Feature.WARNING_TIME, boxWidth, boxHeight));
         boxWidth = 20;
         buttonList.add(new ButtonRegular(0, halfWidth-boxWidth-125, height*0.73, "+", main, Feature.ADD, boxWidth, boxHeight));
         buttonList.add(new ButtonRegular(0, halfWidth-boxWidth+5, height*0.73, "-", main, Feature.SUBTRACT, boxWidth, boxHeight));
@@ -59,7 +60,7 @@ public class SkyblockAddonsGui extends GuiScreen {
         GlStateManager.scale(scale, scale, scale);
         if (alpha < 4) alpha = 4; // Text under 4 alpha appear 100% transparent for some reason o.O
         drawCenteredString(fontRendererObj, EnumChatFormatting.WHITE+"SkyblockAddons",
-                (int)(width/2*scaleMultiplier), (int)(height*0.2*scaleMultiplier), new Color(255,255,255, alpha*2).getRGB());
+                (int)(width/2*scaleMultiplier), (int)(height*0.12*scaleMultiplier), new Color(255,255,255, alpha*2).getRGB());
         GlStateManager.popMatrix();
 
         GlStateManager.pushMatrix();
@@ -78,10 +79,14 @@ public class SkyblockAddonsGui extends GuiScreen {
     protected void actionPerformed(GuiButton abstractButton) {
         Feature feature = ((ButtonRegular)abstractButton).getFeature();
         if (feature.getButtonType() == Feature.ButtonType.REGULAR) {
-            if (main.getConfigValues().getDisabledFeatures().contains(feature)) {
-                main.getConfigValues().getDisabledFeatures().remove(feature);
+            if (feature == Feature.MANA_BAR) {
+                main.getConfigValues().setManaBarType(main.getConfigValues().getManaBarType().getNextType());
             } else {
-                main.getConfigValues().getDisabledFeatures().add(feature);
+                if (main.getConfigValues().getDisabledFeatures().contains(feature)) {
+                    main.getConfigValues().getDisabledFeatures().remove(feature);
+                } else {
+                    main.getConfigValues().getDisabledFeatures().add(feature);
+                }
             }
         } else if (feature.getButtonType() == Feature.ButtonType.COLOR) {
             if (feature == Feature.WARNING_COLOR) {

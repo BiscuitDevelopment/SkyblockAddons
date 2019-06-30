@@ -43,7 +43,8 @@ public class ButtonRegular extends GuiButton {
                 boxAlpha = 170;
             }
             if (feature.getButtonType() == Feature.ButtonType.REGULAR) {
-                if (main.getConfigValues().getDisabledFeatures().contains(feature)) {
+                if ((feature == Feature.MANA_BAR && main.getConfigValues().getManaBarType() == Feature.ManaBarType.OFF) ||
+                        (feature != Feature.MANA_BAR && main.getConfigValues().getDisabledFeatures().contains(feature))) {
                     boxColor = ConfigColor.RED.getColor(boxAlpha * alphaMultiplier);
                 } else {
                     boxColor = ConfigColor.GREEN.getColor(boxAlpha * alphaMultiplier);
@@ -75,7 +76,9 @@ public class ButtonRegular extends GuiButton {
                 fontColor = new Color(255, 255, 160, alpha).getRGB();
             }
             if (feature == Feature.WARNING_TIME) {
-                displayString = "Warning Time - "+main.getConfigValues().getWarningSeconds()+"s";
+                displayString = "Warning Time: "+main.getConfigValues().getWarningSeconds()+"s";
+            } else if (feature == Feature.MANA_BAR) {
+                displayString = "Mana Bar: "+main.getConfigValues().getManaBarType().getDisplayText();
             }
             this.drawCenteredString(mc.fontRendererObj, displayString, xPosition+width/2, yPosition+(this.height-8)/2, fontColor);
             GlStateManager.disableBlend();
