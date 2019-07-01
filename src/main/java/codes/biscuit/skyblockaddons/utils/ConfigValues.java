@@ -16,6 +16,8 @@ public class ConfigValues {
     private ConfigColor confirmationColor = ConfigColor.GRAY;
     private Feature.ManaBarType manaBarType = Feature.ManaBarType.BAR_TEXT;
     private int warningSeconds = 4;
+    private float manaBarX;
+    private float manaBarY;
 
     public ConfigValues(File configFile) {
         this.configFile = configFile;
@@ -43,6 +45,12 @@ public class ConfigValues {
                 if (loadedConfig.has("manaBarType")) {
                     manaBarType = Feature.ManaBarType.values()[loadedConfig.get("manaBarType").getAsInt()];
                 }
+                if (loadedConfig.has("manaBarX")) {
+                    manaBarX = loadedConfig.get("manaBarX").getAsFloat();
+                }
+                if (loadedConfig.has("manaBarY")) {
+                    manaBarY = loadedConfig.get("manaBarY").getAsFloat();
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -68,6 +76,8 @@ public class ConfigValues {
             loadedConfig.addProperty("confirmationColor", confirmationColor.ordinal());
             loadedConfig.addProperty("manaBarType", manaBarType.ordinal());
             loadedConfig.addProperty("warningSeconds", warningSeconds);
+            loadedConfig.addProperty("manaBarX", manaBarX);
+            loadedConfig.addProperty("manaBarY", manaBarY);
 
             bufferedWriter.write(loadedConfig.toString());
             bufferedWriter.close();
@@ -112,5 +122,21 @@ public class ConfigValues {
 
     public void setWarningSeconds(int warningSeconds) {
         this.warningSeconds = warningSeconds;
+    }
+
+    public float getManaBarX() {
+        return manaBarX;
+    }
+
+    public void setManaBarX(int x, int maxX) {
+        this.manaBarX = (float)x/maxX;
+    }
+
+    public float getManaBarY() {
+        return manaBarY;
+    }
+
+    public void setManaBarY(int y, int maxY) {
+        this.manaBarY = (float)y/maxY;
     }
 }

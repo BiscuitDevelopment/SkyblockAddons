@@ -2,6 +2,7 @@ package codes.biscuit.skyblockaddons.gui;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.utils.Feature;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.GlStateManager;
@@ -33,6 +34,7 @@ public class SkyblockAddonsGui extends GuiScreen {
         buttonList.add(new ButtonRegular(0, halfWidth-boxWidth-20, height*0.65, "Warning Color", main, Feature.WARNING_COLOR, boxWidth, boxHeight));
         buttonList.add(new ButtonRegular(0, halfWidth+20, height*0.65, "Confirmation Color", main, Feature.CONFIRMATION_COLOR, boxWidth, boxHeight));
         buttonList.add(new ButtonRegular(0, halfWidth-boxWidth-20, height*0.73, null, main, Feature.WARNING_TIME, boxWidth, boxHeight));
+        buttonList.add(new ButtonRegular(0, halfWidth+20, height*0.73, "Edit Mana Location", main, Feature.MANA_LOCATION, boxWidth, boxHeight));
         boxWidth = 20;
         buttonList.add(new ButtonRegular(0, halfWidth-boxWidth-125, height*0.73, "+", main, Feature.ADD, boxWidth, boxHeight));
         buttonList.add(new ButtonRegular(0, halfWidth-boxWidth+5, height*0.73, "-", main, Feature.SUBTRACT, boxWidth, boxHeight));
@@ -104,6 +106,9 @@ public class SkyblockAddonsGui extends GuiScreen {
                     main.getConfigValues().setWarningSeconds(main.getConfigValues().getWarningSeconds() - 1);
                 }
             }
+        } else if (feature == Feature.MANA_LOCATION) {
+            Minecraft.getMinecraft().displayGuiScreen(null);
+            Minecraft.getMinecraft().displayGuiScreen(new LocationEditGui(main));
         }
     }
 

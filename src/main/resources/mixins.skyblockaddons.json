@@ -5,6 +5,7 @@
   "verbose": true,
   "mixins": [
     "MixinEntityPlayerSP",
-    "MixinSoundManager"
+    "MixinSoundManager",
+    "MixinEntityRenderer"
   ]
 }

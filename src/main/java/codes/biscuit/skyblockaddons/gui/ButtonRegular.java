@@ -65,6 +65,12 @@ public class ButtonRegular extends GuiButton {
                         boxColor = ConfigColor.RED.getColor(boxAlpha * alphaMultiplier);
                     }
                 }
+            } else if (feature.getButtonType() == Feature.ButtonType.SOLID) {
+                if (feature == Feature.MANA_LOCATION) {
+                    boxColor = ConfigColor.GREEN.getColor(boxAlpha * alphaMultiplier);
+                } else {
+                    boxColor = ConfigColor.RED.getColor(boxAlpha * alphaMultiplier);
+                }
             } else {
                 boxColor = ConfigColor.GRAY.getColor(boxAlpha * alphaMultiplier);
             }

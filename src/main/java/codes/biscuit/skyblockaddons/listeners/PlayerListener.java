@@ -1,20 +1,16 @@
 package codes.biscuit.skyblockaddons.listeners;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.gui.LocationEditGui;
 import codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui;
 import codes.biscuit.skyblockaddons.utils.Feature;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
+import codes.biscuit.skyblockaddons.utils.Utils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.monster.EntityMagmaCube;
 import net.minecraft.entity.monster.EntitySlime;
-import net.minecraft.scoreboard.Score;
-import net.minecraft.scoreboard.ScoreObjective;
-import net.minecraft.scoreboard.ScorePlayerTeam;
-import net.minecraft.scoreboard.Scoreboard;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
@@ -25,12 +21,9 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 import java.awt.*;
-import java.util.Collection;
-import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
 import static net.minecraft.client.gui.Gui.icons;
 
@@ -84,105 +77,73 @@ public class PlayerListener {
 
     @SubscribeEvent()
     public void onChatReceive(ClientChatReceivedEvent e) {
-        if (e.type == 2 && main.getConfigValues().getManaBarType() != Feature.ManaBarType.OFF) { // Render a title-like warning.
+        if (main.getConfigValues().getManaBarType() != Feature.ManaBarType.OFF) {
             String message = e.message.getUnformattedText();
-            if (message.contains("\u270E Mana")) {
-                String[] manaSplit = message.split(Pattern.quote("\u270E Mana"));
-                if (manaSplit.length > 1) {
-                    if (manaSplit[0].contains(EnumChatFormatting.AQUA.toString())) {
-                        message = manaSplit[0].split(Pattern.quote(EnumChatFormatting.AQUA.toString()))[1];
-                        manaSplit = message.split(Pattern.quote("/"));
-                        mana = Integer.parseInt(manaSplit[0]);
-                        maxMana = Integer.parseInt(manaSplit[1]);
-                        e.message = new ChatComponentText(e.message.getUnformattedText().split(EnumChatFormatting.AQUA.toString())[0].trim());
-                        predictMana = false;
-                        return;
+            if (e.type == 2) {
+                if (message.contains("\u270E Mana")) {
+                    String[] manaSplit = message.split(Pattern.quote("\u270E Mana"));
+                    if (manaSplit.length > 1) {
+                        if (manaSplit[0].contains(EnumChatFormatting.AQUA.toString())) {
+                            message = manaSplit[0].split(Pattern.quote(EnumChatFormatting.AQUA.toString()))[1];
+                            manaSplit = message.split(Pattern.quote("/"));
+                            mana = Integer.parseInt(manaSplit[0]);
+                            maxMana = Integer.parseInt(manaSplit[1]);
+                            e.message = new ChatComponentText(e.message.getUnformattedText().split(EnumChatFormatting.AQUA.toString())[0].trim());
+                            predictMana = false;
+                            return;
+                        }
                     }
                 }
+                predictMana = true;
+            } else {
+                if (predictMana && message.startsWith("Used ") && message.endsWith("Mana)")) {
+                    int mana = Integer.parseInt(message.split(Pattern.quote("! ("))[1].split(Pattern.quote(" Mana)"))[0]);
+                    this.mana -= mana;
+                }
             }
-            predictMana = true;
         }
     }
 
     @SubscribeEvent()
     public void onRenderManaBar(RenderGameOverlayEvent.Post e) {
-        if (e.type == RenderGameOverlayEvent.ElementType.EXPERIENCE && main.getConfigValues().getManaBarType() != Feature.ManaBarType.OFF) {
-            Minecraft mc = Minecraft.getMinecraft();
-            ScaledResolution res = new ScaledResolution(mc);
-            int width = res.getScaledWidth();
-            int height = res.getScaledHeight();
+        Minecraft mc = Minecraft.getMinecraft();
+        if (e.type == RenderGameOverlayEvent.ElementType.EXPERIENCE && Utils.isOnSkyblock() && main.getConfigValues().getManaBarType() != Feature.ManaBarType.OFF
+        && !(mc.currentScreen instanceof LocationEditGui)) {
             mc.getTextureManager().bindTexture(icons);
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
             GlStateManager.disableBlend();
 
             short barWidth = 92;
-            int left = width / 2 - 91 + barWidth;
+            ScaledResolution sr = new ScaledResolution(mc);
+            int left = (int)(main.getConfigValues().getManaBarX()*sr.getScaledWidth())+14;
 
             if (main.getConfigValues().getManaBarType() == Feature.ManaBarType.BAR
                     || main.getConfigValues().getManaBarType() == Feature.ManaBarType.BAR_TEXT) {
                 float manaFill = (float) mana / maxMana;
                 if (manaFill > 1) manaFill = 1;
                 int filled = (int) (manaFill * barWidth);
-                int top = height - 59;
+                int top = (int)(main.getConfigValues().getManaBarY()*sr.getScaledHeight())+10;
                 mc.ingameGUI.drawTexturedModalRect(left, top, 10, 84, barWidth, 5);
                 if (filled > 0) {
                     mc.ingameGUI.drawTexturedModalRect(left, top, 10, 89, filled, 5);
                 }
-
-                if (main.getConfigValues().getManaBarType() == Feature.ManaBarType.TEXT
-                        || main.getConfigValues().getManaBarType() == Feature.ManaBarType.BAR_TEXT) {
-                    int color = new Color(47, 71, 249).getRGB();
-                    String text = mana + "/" + maxMana;
-                    int x = ((width - mc.ingameGUI.getFontRenderer().getStringWidth(text)) / 2) + (barWidth / 2);
-                    int y = height - 65;
-                    mc.ingameGUI.getFontRenderer().drawString(text, x + 1, y, 0);
-                    mc.ingameGUI.getFontRenderer().drawString(text, x - 1, y, 0);
-                    mc.ingameGUI.getFontRenderer().drawString(text, x, y + 1, 0);
-                    mc.ingameGUI.getFontRenderer().drawString(text, x, y - 1, 0);
-                    mc.ingameGUI.getFontRenderer().drawString(text, x, y, color);
-                    GlStateManager.enableBlend();
-                    GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-                }
+            }
+            if (main.getConfigValues().getManaBarType() == Feature.ManaBarType.TEXT
+                    || main.getConfigValues().getManaBarType() == Feature.ManaBarType.BAR_TEXT) {
+                int color = new Color(47, 71, 249).getRGB();
+                String text = mana + "/" + maxMana;
+                int x = (int)(main.getConfigValues().getManaBarX()*sr.getScaledWidth())+ 60-mc.ingameGUI.getFontRenderer().getStringWidth(text)/2;
+                int y = (int)(main.getConfigValues().getManaBarY()*sr.getScaledHeight()) + 4;
+                mc.ingameGUI.getFontRenderer().drawString(text, x + 1, y, 0);
+                mc.ingameGUI.getFontRenderer().drawString(text, x - 1, y, 0);
+                mc.ingameGUI.getFontRenderer().drawString(text, x, y + 1, 0);
+                mc.ingameGUI.getFontRenderer().drawString(text, x, y - 1, 0);
+                mc.ingameGUI.getFontRenderer().drawString(text, x, y, color);
+                GlStateManager.enableBlend();
+                GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
             }
         }
     }
-
-//        Minecraft mc = Minecraft.getMinecraft();
-//        ScaledResolution p_175176_1_ = new ScaledResolution(mc);
-//        int p_175176_2_ = p_175176_1_.getScaledWidth() / 2 - 91;
-//        mc.getTextureManager().bindTexture(icons);
-//        int i = mc.thePlayer.xpBarCap();
-//
-//        if (i > 0)
-//        {
-//            int j = 182; //182
-//            int k = (int)(mc.thePlayer.experience * (float)(j + 1));
-//            int l = p_175176_1_.getScaledHeight() - 20 + 3; // p_175176_1_.getScaledHeight() - 32 + 3
-//            mc.ingameGUI.drawTexturedModalRect(p_175176_2_, l, 0, 64, j, 5);
-//
-//            if (k > 0)
-//            {
-//                mc.ingameGUI.drawTexturedModalRect(p_175176_2_, l, 0, 69, k, 5);
-//            }
-//        }
-//
-//        mc.mcProfiler.endSection();
-//
-//        if (mc.thePlayer.experienceLevel > 0)
-//        {
-//            mc.mcProfiler.startSection("expLevel");
-//            int k1 = 8453920;
-//            String s = "" + mc.thePlayer.experienceLevel;
-//            int l1 = (p_175176_1_.getScaledWidth() - mc.ingameGUI.getFontRenderer().getStringWidth(s)) / 2;
-//            int i1 = p_175176_1_.getScaledHeight() - 31 - 4;
-//            int j1 = 0;
-//            mc.ingameGUI.getFontRenderer().drawString(s, l1 + 1, i1, 0);
-//            mc.ingameGUI.getFontRenderer().drawString(s, l1 - 1, i1, 0);
-//            mc.ingameGUI.getFontRenderer().drawString(s, l1, i1 + 1, 0);
-//            mc.ingameGUI.getFontRenderer().drawString(s, l1, i1 - 1, 0);
-//            mc.ingameGUI.getFontRenderer().drawString(s, l1, i1, k1);
-//            mc.mcProfiler.endSection();
-//        }
 
     @SubscribeEvent()
     public void onInteract(PlayerInteractEvent e) {
@@ -190,7 +151,7 @@ public class PlayerListener {
             Minecraft mc = Minecraft.getMinecraft();
             if (e.entityPlayer == mc.thePlayer && e.entityPlayer.getHeldItem() != null) {
                 if (mc.thePlayer.getHeldItem().getItem().getRegistryName().equals("minecraft:blaze_rod") && mc.thePlayer.getHeldItem().isItemEnchanted()) {
-                    if (isOnIsland()) {
+                    if (Utils.isOnIsland()) {
                         e.setCanceled(true);
                     }
                 }
@@ -208,11 +169,11 @@ public class PlayerListener {
                     if (mana>maxMana) mana = maxMana;
                 }
             } else if (manaTick > 20) {
+                Utils.checkIfOnSkyblockAndIsland();
                 manaTick = 1;
             }
         }
     }
-
 
     @SubscribeEvent()
     public void onTickSound(TickEvent.ClientTickEvent e) {
@@ -245,7 +206,6 @@ public class PlayerListener {
             }
             soundTick++;
             if (soundTick > 20) {
-                isOnIsland();
                 soundTick = 1;
             }
         }
@@ -259,44 +219,11 @@ public class PlayerListener {
         }
     }
 
-    private boolean isOnIsland() { // Most of this is replicated from the scoreboard rendering code so not many comments here xD
-        Minecraft mc = Minecraft.getMinecraft();
-        if (mc != null && mc.theWorld != null) {
-            Scoreboard scoreboard = mc.theWorld.getScoreboard();
-            ScoreObjective scoreobjective = null;
-            ScorePlayerTeam scoreplayerteam = scoreboard.getPlayersTeam(mc.thePlayer.getName());
-            if (scoreplayerteam != null) {
-                int randomNumber = scoreplayerteam.getChatFormat().getColorIndex();
-                if (randomNumber >= 0) {
-                    scoreobjective = scoreboard.getObjectiveInDisplaySlot(3 + randomNumber);
-                }
-            }
-            ScoreObjective scoreobjective1 = scoreobjective != null ? scoreobjective : scoreboard.getObjectiveInDisplaySlot(1);
-            if (scoreobjective1 != null) {
-                Collection<Score> collection = scoreboard.getSortedScores(scoreobjective1);
-                List<Score> list = Lists.newArrayList(collection.stream().filter(score -> score.getPlayerName() != null && !score.getPlayerName().startsWith("#")).collect(Collectors.toList()));
-                if (list.size() > 15) {
-                    collection = Lists.newArrayList(Iterables.skip(list, collection.size() - 15));
-                } else {
-                    collection = list;
-                }
-                for (Score score1 : collection) {
-                    ScorePlayerTeam scoreplayerteam1 = scoreboard.getPlayersTeam(score1.getPlayerName());
-                    String s1 = ScorePlayerTeam.formatPlayerName(scoreplayerteam1, score1.getPlayerName());
-                    if (s1.equals(" \u00A77\u23E3 \u00A7aYour Isla\uD83C\uDFC0\u00A7and")) {
-                        return true;
-                    }
-                }
-            }
-        }
-        return false;
-    }
-
     public boolean isBossWarning() {
         return bossWarning;
     }
 
-    //    private void logServer(Minecraft mc) {
+    //    private void logServer(Minecraft mc) { // for magma boss logs
 //        if (mc.ingameGUI.getTabList().header != null) {
 //            List<IChatComponent> siblings = mc.ingameGUI.getTabList().header.getSiblings(); // Bring back AT if doing this
 //            if (siblings.size() > 2) {

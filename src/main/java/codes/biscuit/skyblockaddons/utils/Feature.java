@@ -13,7 +13,10 @@ public enum Feature {
     WARNING_TIME(-1, ButtonType.NEUTRAL),
 
     ADD(-1, ButtonType.MODIFY),
-    SUBTRACT(-1, ButtonType.MODIFY);
+    SUBTRACT(-1, ButtonType.MODIFY),
+
+    MANA_LOCATION(-1, ButtonType.SOLID),
+    RESET_LOCATION(-1, ButtonType.SOLID);
 
     private int id;
     private ButtonType buttonType;
@@ -40,7 +43,8 @@ public enum Feature {
         REGULAR,
         COLOR,
         NEUTRAL,
-        MODIFY
+        MODIFY,
+        SOLID
     }
 
     public enum ManaBarType {
