@@ -6,6 +6,8 @@ public enum Feature {
     DROP_CONFIRMATION(1, ButtonType.REGULAR),
     DISABLE_EMBER_ROD(2, ButtonType.REGULAR),
     MANA_BAR(3, ButtonType.REGULAR),
+    BONES(4, ButtonType.REGULAR),
+    SKELETON_BAR(5, ButtonType.REGULAR),
 
     WARNING_COLOR(-1, ButtonType.COLOR),
     CONFIRMATION_COLOR(-1, ButtonType.COLOR),
@@ -15,7 +17,7 @@ public enum Feature {
     ADD(-1, ButtonType.MODIFY),
     SUBTRACT(-1, ButtonType.MODIFY),
 
-    MANA_LOCATION(-1, ButtonType.SOLID),
+    EDIT_LOCATIONS(-1, ButtonType.SOLID),
     RESET_LOCATION(-1, ButtonType.SOLID);
 
     private int id;

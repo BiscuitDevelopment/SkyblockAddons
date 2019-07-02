@@ -23,18 +23,20 @@ public class SkyblockAddonsGui extends GuiScreen {
     @Override
     public void initGui() {
         int halfWidth = width/2;
-        int boxWidth = 120;
+        int boxWidth = 130;
         int boxHeight = 20;
         buttonList.add(new ButtonRegular(0, halfWidth-boxWidth-30, height*0.25, "Magma Boss Warning", main, Feature.MAGMA_WARNING, boxWidth, boxHeight));
         buttonList.add(new ButtonRegular(0, halfWidth+30, height*0.25, "Item Drop Confirmation", main, Feature.DROP_CONFIRMATION, boxWidth, boxHeight));
-        buttonList.add(new ButtonRegular(0, halfWidth-boxWidth-30, height*0.35, null, main, Feature.MANA_BAR, boxWidth, boxHeight));
+        buttonList.add(new ButtonRegular(0, halfWidth-boxWidth-30, height*0.33, null, main, Feature.MANA_BAR, boxWidth, boxHeight));
+        buttonList.add(new ButtonRegular(0, halfWidth+30, height*0.33, "Hide Skeleton Hat Bones", main, Feature.BONES, boxWidth, boxHeight));
+        buttonList.add(new ButtonRegular(0, halfWidth-boxWidth-30, height*0.41, "Skeleton Hat Bones Bar", main, Feature.SKELETON_BAR, boxWidth, boxHeight));
         boxWidth = 200;
-        buttonList.add(new ButtonRegular(0, halfWidth-100, height*0.45, "Disable Ember Rod Ability on Island", main, Feature.DISABLE_EMBER_ROD, boxWidth, boxHeight));
+        buttonList.add(new ButtonRegular(0, halfWidth-100, height*0.49, "Disable Ember Rod Ability on Island", main, Feature.DISABLE_EMBER_ROD, boxWidth, boxHeight));
         boxWidth = 100;
         buttonList.add(new ButtonRegular(0, halfWidth-boxWidth-20, height*0.65, "Warning Color", main, Feature.WARNING_COLOR, boxWidth, boxHeight));
         buttonList.add(new ButtonRegular(0, halfWidth+20, height*0.65, "Confirmation Color", main, Feature.CONFIRMATION_COLOR, boxWidth, boxHeight));
         buttonList.add(new ButtonRegular(0, halfWidth-boxWidth-20, height*0.73, null, main, Feature.WARNING_TIME, boxWidth, boxHeight));
-        buttonList.add(new ButtonRegular(0, halfWidth+20, height*0.73, "Edit Mana Location", main, Feature.MANA_LOCATION, boxWidth, boxHeight));
+        buttonList.add(new ButtonRegular(0, halfWidth+20, height*0.73, "Edit Locations", main, Feature.EDIT_LOCATIONS, boxWidth, boxHeight));
         boxWidth = 20;
         buttonList.add(new ButtonRegular(0, halfWidth-boxWidth-125, height*0.73, "+", main, Feature.ADD, boxWidth, boxHeight));
         buttonList.add(new ButtonRegular(0, halfWidth-boxWidth+5, height*0.73, "-", main, Feature.SUBTRACT, boxWidth, boxHeight));
@@ -106,7 +108,7 @@ public class SkyblockAddonsGui extends GuiScreen {
                     main.getConfigValues().setWarningSeconds(main.getConfigValues().getWarningSeconds() - 1);
                 }
             }
-        } else if (feature == Feature.MANA_LOCATION) {
+        } else if (feature == Feature.EDIT_LOCATIONS) {
             Minecraft.getMinecraft().displayGuiScreen(null);
             Minecraft.getMinecraft().displayGuiScreen(new LocationEditGui(main));
         }

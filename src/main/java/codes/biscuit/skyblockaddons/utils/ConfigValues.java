@@ -18,6 +18,8 @@ public class ConfigValues {
     private int warningSeconds = 4;
     private float manaBarX;
     private float manaBarY;
+    private float skeletonBarX;
+    private float skeletonBarY;
 
     public ConfigValues(File configFile) {
         this.configFile = configFile;
@@ -51,6 +53,12 @@ public class ConfigValues {
                 if (loadedConfig.has("manaBarY")) {
                     manaBarY = loadedConfig.get("manaBarY").getAsFloat();
                 }
+                if (loadedConfig.has("skeletonBarX")) {
+                    skeletonBarX = loadedConfig.get("skeletonBarX").getAsFloat();
+                }
+                if (loadedConfig.has("skeletonBarY")) {
+                    skeletonBarY = loadedConfig.get("skeletonBarY").getAsFloat();
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -78,6 +86,8 @@ public class ConfigValues {
             loadedConfig.addProperty("warningSeconds", warningSeconds);
             loadedConfig.addProperty("manaBarX", manaBarX);
             loadedConfig.addProperty("manaBarY", manaBarY);
+            loadedConfig.addProperty("skeletonBarX", skeletonBarX);
+            loadedConfig.addProperty("skeletonBarY", skeletonBarY);
 
             bufferedWriter.write(loadedConfig.toString());
             bufferedWriter.close();
@@ -129,7 +139,7 @@ public class ConfigValues {
     }
 
     public void setManaBarX(int x, int maxX) {
-        this.manaBarX = (float)x/maxX;
+        this.manaBarX = (float) x / maxX;
     }
 
     public float getManaBarY() {
@@ -137,6 +147,22 @@ public class ConfigValues {
     }
 
     public void setManaBarY(int y, int maxY) {
-        this.manaBarY = (float)y/maxY;
+        this.manaBarY = (float) y / maxY;
+    }
+
+    public float getSkeletonBarX() {
+        return skeletonBarX;
+    }
+
+    public void setSkeletonBarX(int x, int maxX) {
+        this.skeletonBarX = (float) x / maxX;
+    }
+
+    public float getSkeletonBarY() {
+        return skeletonBarY;
+    }
+
+    public void setSkeletonBarY(int y, int maxY) {
+        this.skeletonBarY = (float) y / maxY;
     }
 }

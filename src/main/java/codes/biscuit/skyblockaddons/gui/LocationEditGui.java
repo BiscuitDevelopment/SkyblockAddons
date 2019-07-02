@@ -12,7 +12,8 @@ import java.awt.*;
 public class LocationEditGui extends GuiScreen {
 
     private SkyblockAddons main;
-    private boolean dragging = false;
+    private boolean draggingMana = false;
+    private boolean draggingSkeleton = false;
 
     LocationEditGui(SkyblockAddons main) {
         this.main = main;
@@ -20,13 +21,15 @@ public class LocationEditGui extends GuiScreen {
 
     @Override
     public void initGui() {
-        int halfWidth = width/2;
         int boxWidth = 120;
         int boxHeight = 20;
-        buttonList.add(new ButtonLocation(0, halfWidth-boxWidth-30, height*0.25, "Move This", main, boxWidth, boxHeight));
+        buttonList.add(new ButtonLocation(0, main, boxWidth, boxHeight, Feature.MANA_BAR));
+        boxWidth = 50;
+        buttonList.add(new ButtonLocation(1, main, boxWidth, boxHeight, Feature.SKELETON_BAR));
+        boxWidth = 100;
         ScaledResolution scaledResolution = new ScaledResolution(Minecraft.getMinecraft());
         buttonList.add(new ButtonRegular(0, scaledResolution.getScaledWidth()/2-boxWidth/2, scaledResolution.getScaledHeight()/2-boxHeight/2,
-                "Reset Location", main, Feature.RESET_LOCATION, boxWidth, boxHeight));
+                "Reset Locations", main, Feature.RESET_LOCATION, boxWidth, boxHeight));
     }
 
 
@@ -46,28 +49,39 @@ public class LocationEditGui extends GuiScreen {
     @Override
     protected void actionPerformed(GuiButton abstractButton) {
         if (abstractButton instanceof ButtonLocation) {
-            dragging = true;
+            ButtonLocation buttonLocation = (ButtonLocation)abstractButton;
+            if (buttonLocation.getFeature() == Feature.MANA_BAR) {
+                draggingMana = true;
+            } else {
+                draggingSkeleton = true;
+            }
         } else {
             ScaledResolution sr = new ScaledResolution(mc);
             main.getConfigValues().setManaBarX(width/2-60, sr.getScaledWidth());
-            main.getConfigValues().setManaBarY(height/2-40, sr.getScaledWidth());
+            main.getConfigValues().setManaBarY(height/2-70, sr.getScaledHeight());
+            main.getConfigValues().setSkeletonBarX(width/2-25, sr.getScaledWidth());
+            main.getConfigValues().setSkeletonBarY(height/2-40, sr.getScaledHeight());
         }
     }
 
     @Override
     protected void mouseClickMove(int mouseX, int mouseY, int clickedMouseButton, long timeSinceLastClick) {
         super.mouseClickMove(mouseX, mouseY, clickedMouseButton, timeSinceLastClick);
-        if (dragging) {
-            ScaledResolution sr = new ScaledResolution(mc);
+        ScaledResolution sr = new ScaledResolution(mc);
+        if (draggingMana) {
             main.getConfigValues().setManaBarX(mouseX-60, sr.getScaledWidth());
             main.getConfigValues().setManaBarY(mouseY-10, sr.getScaledHeight());
+        } else if (draggingSkeleton) {
+            main.getConfigValues().setSkeletonBarX(mouseX-25, sr.getScaledWidth());
+            main.getConfigValues().setSkeletonBarY(mouseY-10, sr.getScaledHeight());
         }
     }
 
     @Override
     protected void mouseReleased(int mouseX, int mouseY, int state) {
         super.mouseReleased(mouseX, mouseY, state);
-        dragging = false;
+        draggingMana = false;
+        draggingSkeleton = false;
     }
 
     @Override
