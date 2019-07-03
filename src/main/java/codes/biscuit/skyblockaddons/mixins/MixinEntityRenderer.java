@@ -19,7 +19,7 @@ public class MixinEntityRenderer {
 
     @Inject(method = "getMouseOver", at = @At(value = "INVOKE", target = "Ljava/util/List;size()I", ordinal = 0), locals = LocalCapture.CAPTURE_FAILSOFT)
     private void intersectsWith(float partialTicks, CallbackInfo ci, Entity entity, double d0, double d1, Vec3 vec3, boolean flag, boolean b, Vec3 vec31, Vec3 vec32, Vec3 vec33, float f, List<Entity> list, double d2, int i) {
-        if (Utils.isOnSkyblock()) {
+        if (Utils.isOnSkyblock()) { // conditions for the invisible zombie that Skeleton hat bones are riding
             list.removeIf(listEntity -> listEntity instanceof EntityZombie && listEntity.isInvisible() && listEntity.riddenByEntity instanceof EntityItem);
         }
     }

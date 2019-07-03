@@ -157,13 +157,13 @@ public class PlayerListener {
                 int bones = 0;
                 for (Entity listEntity : mc.theWorld.loadedEntityList) {
                     if (listEntity instanceof EntityItem &&
-                            listEntity.ridingEntity instanceof EntityZombie && listEntity.ridingEntity.isInvisible()) {
+                            listEntity.ridingEntity instanceof EntityZombie && listEntity.ridingEntity.isInvisible() && listEntity.getDistanceToEntity(mc.thePlayer) <= 6) {
                         bones++;
                     }
                 }
                 if (bones > 3) bones = 3;
                 for (int boneCounter = 0; boneCounter < bones; boneCounter++) {
-                    mc.getRenderItem().renderItemIntoGUI(BONE, width+(boneCounter*15), height);
+                    mc.getRenderItem().renderItemIntoGUI(BONE, width+(boneCounter*15)+2, height+2);
                 }
             }
         }

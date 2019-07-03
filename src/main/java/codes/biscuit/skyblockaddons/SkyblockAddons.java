@@ -14,7 +14,7 @@ public class SkyblockAddons {
 
     static final String MOD_ID = "skyblockaddons";
     static final String MOD_NAME = "SkyblockAddons";
-    static final String VERSION = "1.0";
+    static final String VERSION = "1.0-b3";
 
     public static SkyblockAddons INSTANCE; // for Mixins cause they don't have a constructor
     private ConfigValues configValues;

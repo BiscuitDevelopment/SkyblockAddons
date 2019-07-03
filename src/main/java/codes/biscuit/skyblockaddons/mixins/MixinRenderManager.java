@@ -17,9 +17,12 @@ public abstract class MixinRenderManager {
 
     @Inject(method = "shouldRender", at = @At(value = "HEAD"), cancellable = true)
     private void shouldRenderRedirect(Entity entityIn, ICamera camera, double camX, double camY, double camZ, CallbackInfoReturnable<Boolean> cir) {
-        if (!SkyblockAddons.INSTANCE.getConfigValues().getDisabledFeatures().contains(Feature.BONES) && entityIn instanceof EntityItem &&
-                    entityIn.ridingEntity instanceof EntityZombie && entityIn.ridingEntity.isInvisible()) {
-            cir.setReturnValue(false);
+        if (entityIn instanceof EntityItem &&
+                    entityIn.ridingEntity instanceof EntityZombie && entityIn.ridingEntity.isInvisible()) { // Conditions for Skeleton Hat flying bones
+            entityIn.ridingEntity.preventEntitySpawning = false; // To allow you to place blocks
+            if (!SkyblockAddons.INSTANCE.getConfigValues().getDisabledFeatures().contains(Feature.BONES)) {
+                cir.setReturnValue(false);
+            }
         }
     }
 }
