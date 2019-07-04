@@ -7,6 +7,7 @@ import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.EnumChatFormatting;
+import net.minecraftforge.client.GuiIngameForge;
 
 import java.awt.*;
 
@@ -30,6 +31,7 @@ public class SkyblockAddonsGui extends GuiScreen {
         buttonList.add(new ButtonRegular(0, halfWidth-boxWidth-30, height*0.33, null, main, Feature.MANA_BAR, boxWidth, boxHeight));
         buttonList.add(new ButtonRegular(0, halfWidth+30, height*0.33, "Hide Skeleton Hat Bones", main, Feature.BONES, boxWidth, boxHeight));
         buttonList.add(new ButtonRegular(0, halfWidth-boxWidth-30, height*0.41, "Skeleton Hat Bones Bar", main, Feature.SKELETON_BAR, boxWidth, boxHeight));
+        buttonList.add(new ButtonRegular(0, halfWidth+30, height*0.41, "Hide Food & Armor Bar", main, Feature.HIDE_FOOD_ARMOR_BAR, boxWidth, boxHeight));
         boxWidth = 200;
         buttonList.add(new ButtonRegular(0, halfWidth-100, height*0.49, "Disable Ember Rod Ability on Island", main, Feature.DISABLE_EMBER_ROD, boxWidth, boxHeight));
         boxWidth = 100;
@@ -90,13 +92,16 @@ public class SkyblockAddonsGui extends GuiScreen {
                     main.getConfigValues().getDisabledFeatures().remove(feature);
                 } else {
                     main.getConfigValues().getDisabledFeatures().add(feature);
+                    if (feature == Feature.HIDE_FOOD_ARMOR_BAR) {
+                        GuiIngameForge.renderArmor = true;
+                    }
                 }
             }
         } else if (feature.getButtonType() == Feature.ButtonType.COLOR) {
             if (feature == Feature.WARNING_COLOR) {
-                main.getConfigValues().setWarningColor(main.getConfigValues().getWarningColor().getNextColor());
+                main.getConfigValues().setColor(Feature.WARNING_COLOR, main.getConfigValues().getColor(Feature.WARNING_COLOR).getNextColor());
             } else {
-                main.getConfigValues().setConfirmationColor(main.getConfigValues().getConfirmationColor().getNextColor());
+                main.getConfigValues().setColor(Feature.CONFIRMATION_COLOR, main.getConfigValues().getColor(Feature.CONFIRMATION_COLOR).getNextColor());
             }
         } else if (feature.getButtonType() == Feature.ButtonType.MODIFY) {
             if (feature == Feature.ADD) {

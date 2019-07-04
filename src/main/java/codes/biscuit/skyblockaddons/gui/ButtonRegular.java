@@ -51,9 +51,9 @@ public class ButtonRegular extends GuiButton {
                 }
             } else if (feature.getButtonType() == Feature.ButtonType.COLOR) {
                 if (feature == Feature.WARNING_COLOR) {
-                    boxColor = main.getConfigValues().getWarningColor().getColor(boxAlpha*alphaMultiplier);
+                    boxColor = main.getConfigValues().getColor(Feature.WARNING_COLOR).getColor(boxAlpha*alphaMultiplier);
                 } else {
-                    boxColor = main.getConfigValues().getConfirmationColor().getColor(boxAlpha*alphaMultiplier);
+                    boxColor = main.getConfigValues().getColor(Feature.CONFIRMATION_COLOR).getColor(boxAlpha*alphaMultiplier);
                 }
             } else if (feature.getButtonType() == Feature.ButtonType.MODIFY) {
                 if (hitMaximum()) {

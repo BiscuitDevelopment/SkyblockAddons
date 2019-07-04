@@ -26,7 +26,7 @@ plugins {
     id "net.minecraftforge.gradle.forge" version "2.0.2"
 }
 */
-version = "1.0-b3"
+version = "1.0-b4"
 group= "codes.biscuit.skyblockaddons" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "SkyblockAddons"
 
@@ -60,7 +60,7 @@ repositories {
 //}
 
 dependencies {
-    provided('org.spongepowered:mixin:0.6.4-SNAPSHOT') {
+    provided('org.spongepowered:mixin:0.7.11-SNAPSHOT') {
         exclude module: 'launchwrapper'
         exclude module: 'guava'
         exclude module: 'gson'

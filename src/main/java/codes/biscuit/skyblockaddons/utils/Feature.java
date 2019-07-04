@@ -8,9 +8,12 @@ public enum Feature {
     MANA_BAR(3, ButtonType.REGULAR),
     BONES(4, ButtonType.REGULAR),
     SKELETON_BAR(5, ButtonType.REGULAR),
+    HIDE_FOOD_ARMOR_BAR(6, ButtonType.REGULAR),
 
     WARNING_COLOR(-1, ButtonType.COLOR),
     CONFIRMATION_COLOR(-1, ButtonType.COLOR),
+    MANA_TEXT_COLOR(-1, ButtonType.COLOR),
+    MANA_BAR_COLOR(-1, ButtonType.COLOR),
 
     WARNING_TIME(-1, ButtonType.NEUTRAL),
 

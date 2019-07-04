@@ -3,7 +3,9 @@ package codes.biscuit.skyblockaddons.utils;
 import com.google.gson.*;
 
 import java.io.*;
+import java.util.EnumMap;
 import java.util.EnumSet;
+import java.util.Map;
 import java.util.Set;
 
 public class ConfigValues {
@@ -12,14 +14,13 @@ public class ConfigValues {
     private JsonObject loadedConfig = new JsonObject();
 
     private Set<Feature> disabledFeatures = EnumSet.noneOf(Feature.class);
-    private ConfigColor warningColor = ConfigColor.RED;
-    private ConfigColor confirmationColor = ConfigColor.GRAY;
+    private Map<Feature, ConfigColor> featureColors = new EnumMap<>(Feature.class);
     private Feature.ManaBarType manaBarType = Feature.ManaBarType.BAR_TEXT;
     private int warningSeconds = 4;
-    private float manaBarX;
-    private float manaBarY;
-    private float skeletonBarX;
-    private float skeletonBarY;
+    private float manaBarX = 0.45F;
+    private float manaBarY = 0.83F;
+    private float skeletonBarX = 0.68F;
+    private float skeletonBarY = 0.93F;
 
     public ConfigValues(File configFile) {
         this.configFile = configFile;
@@ -36,13 +37,16 @@ public class ConfigValues {
                     builder.append(nextLine);
                 }
                 String complete = builder.toString();
-                loadedConfig = new JsonParser().parse(complete).getAsJsonObject();
+                JsonElement fileElement = new JsonParser().parse(complete);
+                if (fileElement == null || fileElement.isJsonNull()) {
+                    addDefaultsAndSave();
+                    return;
+                }
+                loadedConfig = fileElement.getAsJsonObject();
 
                 for (JsonElement element : loadedConfig.getAsJsonArray("disabledFeatures")) {
                     disabledFeatures.add(Feature.fromId(element.getAsInt()));
                 }
-                warningColor = ConfigColor.values()[loadedConfig.get("warningColor").getAsInt()];
-                confirmationColor = ConfigColor.values()[loadedConfig.get("confirmationColor").getAsInt()];
                 warningSeconds = loadedConfig.get("warningSeconds").getAsInt();
                 if (loadedConfig.has("manaBarType")) {
                     manaBarType = Feature.ManaBarType.values()[loadedConfig.get("manaBarType").getAsInt()];
@@ -59,12 +63,32 @@ public class ConfigValues {
                 if (loadedConfig.has("skeletonBarY")) {
                     skeletonBarY = loadedConfig.get("skeletonBarY").getAsFloat();
                 }
+                if (loadedConfig.has("warningColor")) { // migrate from old config
+                    featureColors.put(Feature.WARNING_COLOR, ConfigColor.values()[loadedConfig.get("warningColor").getAsInt()]);
+                }
+                if (loadedConfig.has("confirmationColor")) { // migrate from old config
+                    featureColors.put(Feature.CONFIRMATION_COLOR, ConfigColor.values()[loadedConfig.get("confirmationColor").getAsInt()]);
+                }
+                if (loadedConfig.has("manaBarColor")) { // migrate from old config
+                    featureColors.put(Feature.MANA_BAR_COLOR, ConfigColor.values()[loadedConfig.get("manaBarColor").getAsInt()]);
+                }
+                if (loadedConfig.has("manaBarTextColor")) { // migrate from old config
+                    featureColors.put(Feature.MANA_TEXT_COLOR, ConfigColor.values()[loadedConfig.get("manaBarTextColor").getAsInt()]);
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
         } else {
-            saveConfig();
+            addDefaultsAndSave();
         }
+    }
+
+    private void addDefaultsAndSave() {
+        featureColors.put(Feature.CONFIRMATION_COLOR, ConfigColor.RED);
+        featureColors.put(Feature.WARNING_COLOR, ConfigColor.RED);
+        featureColors.put(Feature.MANA_TEXT_COLOR, ConfigColor.BLUE);
+        featureColors.put(Feature.MANA_BAR_COLOR, ConfigColor.BLUE);
+        saveConfig();
     }
 
     @SuppressWarnings("ResultOfMethodCallIgnored")
@@ -80,8 +104,10 @@ public class ConfigValues {
                 jsonArray.add(new GsonBuilder().create().toJsonTree(element.getId()));
             }
             loadedConfig.add("disabledFeatures", jsonArray);
-            loadedConfig.addProperty("warningColor", warningColor.ordinal());
-            loadedConfig.addProperty("confirmationColor", confirmationColor.ordinal());
+            loadedConfig.addProperty("warningColor", featureColors.get(Feature.WARNING_COLOR).ordinal());
+            loadedConfig.addProperty("confirmationColor", featureColors.get(Feature.CONFIRMATION_COLOR).ordinal());
+            loadedConfig.addProperty("manaBarColor", featureColors.get(Feature.MANA_BAR_COLOR).ordinal());
+            loadedConfig.addProperty("manaBarTextColor", featureColors.get(Feature.MANA_TEXT_COLOR).ordinal());
             loadedConfig.addProperty("manaBarType", manaBarType.ordinal());
             loadedConfig.addProperty("warningSeconds", warningSeconds);
             loadedConfig.addProperty("manaBarX", manaBarX);
@@ -106,24 +132,16 @@ public class ConfigValues {
         return disabledFeatures;
     }
 
-    public ConfigColor getConfirmationColor() {
-        return confirmationColor;
-    }
-
-    public ConfigColor getWarningColor() {
-        return warningColor;
-    }
-
     public void setManaBarType(Feature.ManaBarType manaBarType) {
         this.manaBarType = manaBarType;
     }
 
-    public void setConfirmationColor(ConfigColor confirmationColor) {
-        this.confirmationColor = confirmationColor;
+    public void setColor(Feature feature, ConfigColor color) {
+        featureColors.put(feature, color);
     }
 
-    public void setWarningColor(ConfigColor warningColor) {
-        this.warningColor = warningColor;
+    public ConfigColor getColor(Feature feature) {
+        return featureColors.get(feature);
     }
 
     public int getWarningSeconds() {

@@ -28,7 +28,7 @@ public abstract class MixinEntityPlayerSP {
                 if (lastItem != null && lastItem == heldItem && System.currentTimeMillis() - lastDrop < 3000) {
                     lastDrop = System.currentTimeMillis();
                 } else {
-                    Utils.sendMessage(SkyblockAddons.INSTANCE.getConfigValues().getConfirmationColor().getChatFormatting() + "Drop this item again to confirm!");
+                    Utils.sendMessage(SkyblockAddons.INSTANCE.getConfigValues().getColor(Feature.CONFIRMATION_COLOR).getChatFormatting() + "Drop this item again to confirm!");
                     lastItem = heldItem;
                     lastDrop = System.currentTimeMillis();
                     cir.setReturnValue(null);

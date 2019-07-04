@@ -17,6 +17,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
+import net.minecraftforge.client.GuiIngameForge;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
@@ -35,6 +36,7 @@ public class PlayerListener {
 
     public final static ItemStack BONE = new ItemStack(Item.getItemById(352));
 
+    private boolean sentUpdate = false;
     private boolean predictMana = false;
     private int mana = 0;
     private int maxMana = 100;
@@ -56,6 +58,8 @@ public class PlayerListener {
         if (e.entity == Minecraft.getMinecraft().thePlayer) {
             bossWarning = false;
             lastBoss = -1;
+            soundTick = 1;
+            manaTick = 1;
         }
     }
 
@@ -73,7 +77,7 @@ public class PlayerListener {
             GlStateManager.pushMatrix();
             GlStateManager.scale(4.0F, 4.0F, 4.0F);
             String text;
-            text = main.getConfigValues().getWarningColor().getChatFormatting() + "MagmaCube Boss!";
+            text = main.getConfigValues().getColor(Feature.WARNING_COLOR).getChatFormatting() + "MagmaCube Boss!";
             mc.ingameGUI.getFontRenderer().drawString(text, (float) (-mc.ingameGUI.getFontRenderer().getStringWidth(text) / 2), -20.0F, 16777215, true);
             GlStateManager.popMatrix();
 //            GlStateManager.disableBlend();
@@ -170,6 +174,16 @@ public class PlayerListener {
     }
 
     @SubscribeEvent()
+    public void onRenderRemoveBars(RenderGameOverlayEvent.Pre e) {
+        if (e.type == RenderGameOverlayEvent.ElementType.ALL) {
+            if (Utils.isOnSkyblock() && !main.getConfigValues().getDisabledFeatures().contains(Feature.HIDE_FOOD_ARMOR_BAR)) {
+                GuiIngameForge.renderFood = false;
+                GuiIngameForge.renderArmor = false;
+            }
+        }
+    }
+
+    @SubscribeEvent()
     public void onInteract(PlayerInteractEvent e) {
         if (!main.getConfigValues().getDisabledFeatures().contains(Feature.DISABLE_EMBER_ROD)) {
             Minecraft mc = Minecraft.getMinecraft();
@@ -194,6 +208,11 @@ public class PlayerListener {
                 }
             } else if (manaTick > 20) {
                 Utils.checkIfOnSkyblockAndIsland();
+                Minecraft mc = Minecraft.getMinecraft();
+                if (!sentUpdate && mc != null && mc.thePlayer != null && mc.theWorld != null) {
+                    Utils.checkUpdates();
+                    sentUpdate = true;
+                }
                 manaTick = 1;
             }
         }
