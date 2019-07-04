@@ -37,11 +37,13 @@ public class SkyblockAddonsGui extends GuiScreen {
         boxWidth = 100;
         buttonList.add(new ButtonRegular(0, halfWidth-boxWidth-20, height*0.65, "Warning Color", main, Feature.WARNING_COLOR, boxWidth, boxHeight));
         buttonList.add(new ButtonRegular(0, halfWidth+20, height*0.65, "Confirmation Color", main, Feature.CONFIRMATION_COLOR, boxWidth, boxHeight));
-        buttonList.add(new ButtonRegular(0, halfWidth-boxWidth-20, height*0.73, null, main, Feature.WARNING_TIME, boxWidth, boxHeight));
-        buttonList.add(new ButtonRegular(0, halfWidth+20, height*0.73, "Edit Locations", main, Feature.EDIT_LOCATIONS, boxWidth, boxHeight));
+        buttonList.add(new ButtonRegular(0, halfWidth-boxWidth-20, height*0.73, "Mana Text Color", main, Feature.MANA_TEXT_COLOR, boxWidth, boxHeight));
+        buttonList.add(new ButtonRegular(0, halfWidth+20, height*0.73, "Mana Bar Color", main, Feature.MANA_BAR_COLOR, boxWidth, boxHeight));
+        buttonList.add(new ButtonRegular(0, halfWidth-boxWidth-20, height*0.81, null, main, Feature.WARNING_TIME, boxWidth, boxHeight));
+        buttonList.add(new ButtonRegular(0, halfWidth+20, height*0.81, "Edit Locations", main, Feature.EDIT_LOCATIONS, boxWidth, boxHeight));
         boxWidth = 20;
-        buttonList.add(new ButtonRegular(0, halfWidth-boxWidth-125, height*0.73, "+", main, Feature.ADD, boxWidth, boxHeight));
-        buttonList.add(new ButtonRegular(0, halfWidth-boxWidth+5, height*0.73, "-", main, Feature.SUBTRACT, boxWidth, boxHeight));
+        buttonList.add(new ButtonRegular(0, halfWidth-boxWidth-125, height*0.81, "+", main, Feature.ADD, boxWidth, boxHeight));
+        buttonList.add(new ButtonRegular(0, halfWidth-boxWidth+5, height*0.81, "-", main, Feature.SUBTRACT, boxWidth, boxHeight));
     }
 
 
@@ -98,11 +100,7 @@ public class SkyblockAddonsGui extends GuiScreen {
                 }
             }
         } else if (feature.getButtonType() == Feature.ButtonType.COLOR) {
-            if (feature == Feature.WARNING_COLOR) {
-                main.getConfigValues().setColor(Feature.WARNING_COLOR, main.getConfigValues().getColor(Feature.WARNING_COLOR).getNextColor());
-            } else {
-                main.getConfigValues().setColor(Feature.CONFIRMATION_COLOR, main.getConfigValues().getColor(Feature.CONFIRMATION_COLOR).getNextColor());
-            }
+            main.getConfigValues().setColor(feature, main.getConfigValues().getColor(feature).getNextColor());
         } else if (feature.getButtonType() == Feature.ButtonType.MODIFY) {
             if (feature == Feature.ADD) {
                 if (main.getConfigValues().getWarningSeconds() < 99) {

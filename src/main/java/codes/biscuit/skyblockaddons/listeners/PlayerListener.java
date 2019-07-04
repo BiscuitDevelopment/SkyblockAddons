@@ -17,6 +17,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.GuiIngameForge;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
@@ -25,16 +26,14 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
-import java.awt.*;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.regex.Pattern;
 
-import static net.minecraft.client.gui.Gui.icons;
-
 public class PlayerListener {
 
     public final static ItemStack BONE = new ItemStack(Item.getItemById(352));
+    private final static ResourceLocation manaBars = new ResourceLocation("skyblockaddons", "manabars.png");
 
     private boolean sentUpdate = false;
     private boolean predictMana = false;
@@ -119,7 +118,7 @@ public class PlayerListener {
         Minecraft mc = Minecraft.getMinecraft();
         if (e.type == RenderGameOverlayEvent.ElementType.EXPERIENCE && Utils.isOnSkyblock()) {
             if (main.getConfigValues().getManaBarType() != Feature.ManaBarType.OFF && !(mc.currentScreen instanceof LocationEditGui)) {
-                mc.getTextureManager().bindTexture(icons);
+                mc.getTextureManager().bindTexture(manaBars);
                 GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
                 GlStateManager.disableBlend();
 
@@ -133,14 +132,17 @@ public class PlayerListener {
                     if (manaFill > 1) manaFill = 1;
                     int filled = (int) (manaFill * barWidth);
                     int top = (int) (main.getConfigValues().getManaBarY() * sr.getScaledHeight()) + 10;
-                    mc.ingameGUI.drawTexturedModalRect(left, top, 10, 84, barWidth, 5);
+                    // mc.ingameGUI.drawTexturedModalRect(left, top, 10, 84, barWidth, 5);
+                    int textureY = main.getConfigValues().getColor(Feature.MANA_BAR_COLOR).ordinal()*10;
+                    mc.ingameGUI.drawTexturedModalRect(left, top, 0, textureY, barWidth, 5);
                     if (filled > 0) {
-                        mc.ingameGUI.drawTexturedModalRect(left, top, 10, 89, filled, 5);
+//                        mc.ingameGUI.drawTexturedModalRect(left, top, 10, 89, filled, 5);
+                        mc.ingameGUI.drawTexturedModalRect(left, top, 0, textureY+5, filled, 5);
                     }
                 }
                 if (main.getConfigValues().getManaBarType() == Feature.ManaBarType.TEXT
                         || main.getConfigValues().getManaBarType() == Feature.ManaBarType.BAR_TEXT) {
-                    int color = new Color(47, 71, 249).getRGB();
+                    int color = main.getConfigValues().getColor(Feature.MANA_TEXT_COLOR).getColor(255);
                     String text = mana + "/" + maxMana;
                     int x = (int) (main.getConfigValues().getManaBarX() * sr.getScaledWidth()) + 60 - mc.ingameGUI.getFontRenderer().getStringWidth(text) / 2;
                     int y = (int) (main.getConfigValues().getManaBarY() * sr.getScaledHeight()) + 4;
