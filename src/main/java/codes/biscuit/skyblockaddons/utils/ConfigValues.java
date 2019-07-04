@@ -65,15 +65,23 @@ public class ConfigValues {
                 }
                 if (loadedConfig.has("warningColor")) { // migrate from old config
                     featureColors.put(Feature.WARNING_COLOR, ConfigColor.values()[loadedConfig.get("warningColor").getAsInt()]);
+                } else {
+                    featureColors.put(Feature.WARNING_COLOR, ConfigColor.RED);
                 }
                 if (loadedConfig.has("confirmationColor")) { // migrate from old config
                     featureColors.put(Feature.CONFIRMATION_COLOR, ConfigColor.values()[loadedConfig.get("confirmationColor").getAsInt()]);
+                } else {
+                    featureColors.put(Feature.CONFIRMATION_COLOR, ConfigColor.RED);
                 }
                 if (loadedConfig.has("manaBarColor")) { // migrate from old config
                     featureColors.put(Feature.MANA_BAR_COLOR, ConfigColor.values()[loadedConfig.get("manaBarColor").getAsInt()]);
+                } else {
+                    featureColors.put(Feature.MANA_BAR_COLOR, ConfigColor.BLUE);
                 }
                 if (loadedConfig.has("manaBarTextColor")) { // migrate from old config
                     featureColors.put(Feature.MANA_TEXT_COLOR, ConfigColor.values()[loadedConfig.get("manaBarTextColor").getAsInt()]);
+                } else {
+                    featureColors.put(Feature.MANA_TEXT_COLOR, ConfigColor.BLUE);
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -104,10 +112,10 @@ public class ConfigValues {
                 jsonArray.add(new GsonBuilder().create().toJsonTree(element.getId()));
             }
             loadedConfig.add("disabledFeatures", jsonArray);
-            loadedConfig.addProperty("warningColor", featureColors.get(Feature.WARNING_COLOR).ordinal());
-            loadedConfig.addProperty("confirmationColor", featureColors.get(Feature.CONFIRMATION_COLOR).ordinal());
-            loadedConfig.addProperty("manaBarColor", featureColors.get(Feature.MANA_BAR_COLOR).ordinal());
-            loadedConfig.addProperty("manaBarTextColor", featureColors.get(Feature.MANA_TEXT_COLOR).ordinal());
+            loadedConfig.addProperty("warningColor", getColor(Feature.WARNING_COLOR).ordinal());
+            loadedConfig.addProperty("confirmationColor", getColor(Feature.CONFIRMATION_COLOR).ordinal());
+            loadedConfig.addProperty("manaBarColor", getColor(Feature.MANA_BAR_COLOR).ordinal());
+            loadedConfig.addProperty("manaBarTextColor", getColor(Feature.MANA_TEXT_COLOR).ordinal());
             loadedConfig.addProperty("manaBarType", manaBarType.ordinal());
             loadedConfig.addProperty("warningSeconds", warningSeconds);
             loadedConfig.addProperty("manaBarX", manaBarX);
@@ -141,7 +149,7 @@ public class ConfigValues {
     }
 
     public ConfigColor getColor(Feature feature) {
-        return featureColors.get(feature);
+        return featureColors.getOrDefault(feature, ConfigColor.RED);
     }
 
     public int getWarningSeconds() {
