@@ -4,7 +4,9 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.event.ClickEvent;
+import net.minecraft.item.ItemStack;
 import net.minecraft.scoreboard.Score;
 import net.minecraft.scoreboard.ScoreObjective;
 import net.minecraft.scoreboard.ScorePlayerTeam;
@@ -26,9 +28,16 @@ public class Utils {
 
     private static boolean onIsland = false;
     private static boolean onSkyblock = false;
+    private static boolean inventoryIsFull = false;
+
+    private SkyblockAddons main;
+
+    public Utils(SkyblockAddons main) {
+        this.main = main;
+    }
 
     // Static cause I can't be bothered to pass the instance ok stop bullying me
-    public static void sendMessage(String text) {
+    public void sendMessage(String text) {
         ClientChatReceivedEvent event = new ClientChatReceivedEvent((byte)1, new ChatComponentText(text));
         MinecraftForge.EVENT_BUS.post(event); // Let other mods pick up the new message
         if (!event.isCanceled()) {
@@ -36,7 +45,7 @@ public class Utils {
         }
     }
 
-    private static void sendMessage(ChatComponentText text) {
+    private void sendMessage(ChatComponentText text) {
         ClientChatReceivedEvent event = new ClientChatReceivedEvent((byte)1, text);
         MinecraftForge.EVENT_BUS.post(event); // Let other mods pick up the new message
         if (!event.isCanceled()) {
@@ -44,24 +53,54 @@ public class Utils {
         }
     }
 
-    public static void checkIfOnSkyblockAndIsland() { // Most of this is replicated from the scoreboard rendering code so not many comments here xD
+    public void checkIfInventoryIsFull() {
+        if (!main.getConfigValues().getDisabledFeatures().contains(Feature.FULL_INVENTORY_WARNING)) {
+            Minecraft mc = Minecraft.getMinecraft();
+            if (mc != null) {
+                EntityPlayerSP player = mc.thePlayer;
+                if (player != null) {
+                    for (ItemStack item : player.inventory.mainInventory) {
+                        if (item == null) {
+                            inventoryIsFull = false;
+                            return;
+                        }
+                    }
+                    if (!inventoryIsFull) {
+                        inventoryIsFull = true;
+                        if (mc.currentScreen == null && System.currentTimeMillis() - main.getPlayerListener().getLastWorldJoin() > 3000) {
+                            mc.thePlayer.playSound("random.orb", 1, 0.5F);
+                            main.getPlayerListener().setFullInventoryWarning(true);
+                            new Timer().schedule(new TimerTask() {
+                                @Override
+                                public void run() {
+                                    main.getPlayerListener().setFullInventoryWarning(false);
+                                }
+                            }, main.getConfigValues().getWarningSeconds() * 1000);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    public void checkIfOnSkyblockAndIsland() { // Most of this is replicated from the scoreboard rendering code so not many comments here xD
         Minecraft mc = Minecraft.getMinecraft();
         if (mc != null && mc.theWorld != null) {
             Scoreboard scoreboard = mc.theWorld.getScoreboard();
-            ScoreObjective scoreobjective = null;
+            ScoreObjective objective = null;
             ScorePlayerTeam scoreplayerteam = scoreboard.getPlayersTeam(mc.thePlayer.getName());
-            if (scoreplayerteam != null) {
-                int randomNumber = scoreplayerteam.getChatFormat().getColorIndex();
-                if (randomNumber >= 0) {
-                    scoreobjective = scoreboard.getObjectiveInDisplaySlot(3 + randomNumber);
-                }
+            if (scoreplayerteam != null)
+            {
+                int slot = scoreplayerteam.getChatFormat().getColorIndex();
+                if (slot >= 0) objective = scoreboard.getObjectiveInDisplaySlot(3 + slot);
             }
-            ScoreObjective scoreobjective1 = scoreobjective != null ? scoreobjective : scoreboard.getObjectiveInDisplaySlot(1);
+            ScoreObjective scoreobjective1 = objective != null ? objective : scoreboard.getObjectiveInDisplaySlot(1);
             if (scoreobjective1 != null) {
-                String scoreboardTitle = scoreobjective1.getDisplayName();
-                onSkyblock = stripColor(scoreboardTitle).startsWith("SKYBLOCK");
-                Collection<Score> collection = scoreboard.getSortedScores(scoreobjective1);
-                List<Score> list = Lists.newArrayList(collection.stream().filter(score -> score.getPlayerName() != null && !score.getPlayerName().startsWith("#")).collect(Collectors.toList()));
+                objective = scoreobjective1;
+                onSkyblock = stripColor(objective.getDisplayName()).startsWith("SKYBLOCK");
+                scoreboard = objective.getScoreboard();
+                Collection<Score> collection = scoreboard.getSortedScores(objective);
+                List<Score> list = Lists.newArrayList(collection.stream().filter(p_apply_1_ -> p_apply_1_.getPlayerName() != null && !p_apply_1_.getPlayerName().startsWith("#")).collect(Collectors.toList()));
                 if (list.size() > 15) {
                     collection = Lists.newArrayList(Iterables.skip(list, collection.size() - 15));
                 } else {
@@ -69,8 +108,7 @@ public class Utils {
                 }
                 for (Score score1 : collection) {
                     ScorePlayerTeam scoreplayerteam1 = scoreboard.getPlayersTeam(score1.getPlayerName());
-                    String s1 = ScorePlayerTeam.formatPlayerName(scoreplayerteam1, score1.getPlayerName());
-                    if (s1.equals(" \u00A77\u23E3 \u00A7aYour Isla\uD83C\uDFC0\u00A7and")) {
+                    if (getStringOnly(stripColor(ScorePlayerTeam.formatPlayerName(scoreplayerteam1, score1.getPlayerName()))).endsWith("Your Island")) {//s1.equals(" \u00A77\u23E3 \u00A7aYour Isla\uD83C\uDFC0\u00A7and")) {
                         onIsland = true;
                         return;
                     }
@@ -80,7 +118,11 @@ public class Utils {
         onIsland = false;
     }
 
-    public static void checkUpdates() {
+    private String getStringOnly(String text) {
+        return Pattern.compile("[^a-z A-Z]").matcher(text).replaceAll("");
+    }
+
+    public void checkUpdates() {
         new Thread(() -> {
             try {
                 URL url = new URL("https://raw.githubusercontent.com/biscuut/SkyblockAddons/master/build.gradle");
@@ -133,16 +175,16 @@ public class Utils {
                         thisVersionNumbers.add(i, 0);
                     }
                     if (newestVersionNumbers.get(i) > thisVersionNumbers.get(i)) {
-                        Utils.sendMessage(EnumChatFormatting.GRAY.toString() + EnumChatFormatting.STRIKETHROUGH + "--------------" + EnumChatFormatting.GRAY + "[" + EnumChatFormatting.BLUE + EnumChatFormatting.BOLD + " SkyblockAddons " + EnumChatFormatting.GRAY + "]" + EnumChatFormatting.GRAY + EnumChatFormatting.STRIKETHROUGH + "--------------");
+                        sendMessage(EnumChatFormatting.GRAY.toString() + EnumChatFormatting.STRIKETHROUGH + "--------------" + EnumChatFormatting.GRAY + "[" + EnumChatFormatting.BLUE + EnumChatFormatting.BOLD + " SkyblockAddons " + EnumChatFormatting.GRAY + "]" + EnumChatFormatting.GRAY + EnumChatFormatting.STRIKETHROUGH + "--------------");
                         ChatComponentText newVersion = new ChatComponentText(EnumChatFormatting.YELLOW+"A new version, " + newestVersion + " is available. Download it by clicking here.");
                         newVersion.setChatStyle(newVersion.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://hypixel.net/threads/forge-1-8-9-skyblockaddons-useful-features-for-skyblock.2109217/")));
-                        Utils.sendMessage(newVersion);
-                        Utils.sendMessage(EnumChatFormatting.GRAY.toString() + EnumChatFormatting.STRIKETHROUGH + "---------------------------------------");
+                        sendMessage(newVersion);
+                        sendMessage(EnumChatFormatting.GRAY.toString() + EnumChatFormatting.STRIKETHROUGH + "---------------------------------------");
                         break;
                     } else if (thisVersionNumbers.get(i) > newestVersionNumbers.get(i)) {
-                        Utils.sendMessage(EnumChatFormatting.GRAY.toString() + EnumChatFormatting.STRIKETHROUGH + "--------------" + EnumChatFormatting.GRAY + "[" + EnumChatFormatting.BLUE + EnumChatFormatting.BOLD + " SkyblockAddons " + EnumChatFormatting.GRAY + "]" + EnumChatFormatting.GRAY + EnumChatFormatting.STRIKETHROUGH + "--------------");
-                        Utils.sendMessage(EnumChatFormatting.YELLOW + "You are running a development version: " + SkyblockAddons.VERSION + ". The latest online version is " + newestVersion + ".");
-                        Utils.sendMessage(EnumChatFormatting.GRAY.toString() + EnumChatFormatting.STRIKETHROUGH + "---------------------------------------");
+                        sendMessage(EnumChatFormatting.GRAY.toString() + EnumChatFormatting.STRIKETHROUGH + "--------------" + EnumChatFormatting.GRAY + "[" + EnumChatFormatting.BLUE + EnumChatFormatting.BOLD + " SkyblockAddons " + EnumChatFormatting.GRAY + "]" + EnumChatFormatting.GRAY + EnumChatFormatting.STRIKETHROUGH + "--------------");
+                        sendMessage(EnumChatFormatting.YELLOW + "You are running a development version: " + SkyblockAddons.VERSION + ". The latest online version is " + newestVersion + ".");
+                        sendMessage(EnumChatFormatting.GRAY.toString() + EnumChatFormatting.STRIKETHROUGH + "---------------------------------------");
                         break;
                     }
                 }
@@ -152,16 +194,16 @@ public class Utils {
         }).start();
     }
 
-    private static final Pattern STRIP_COLOR_PATTERN = Pattern.compile( "(?i)" + '\u00A7' + "[0-9A-FK-OR]" );
-    private static String stripColor(final String input) {
+    private final Pattern STRIP_COLOR_PATTERN = Pattern.compile( "(?i)" + '\u00A7' + "[0-9A-FK-OR]" );
+    private String stripColor(final String input) {
         return STRIP_COLOR_PATTERN.matcher(input).replaceAll("");
     }
 
-    public static boolean isOnIsland() {
+    public boolean isOnIsland() {
         return onIsland;
     }
 
-    public static boolean isOnSkyblock() {
+    public boolean isOnSkyblock() {
         return onSkyblock;
     }
 }

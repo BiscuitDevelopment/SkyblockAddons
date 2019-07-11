@@ -8,6 +8,7 @@
     "MixinSoundManager",
     "MixinEntityRenderer",
     "MixinRenderManager",
-    "MixinGuiContainer"
+    "MixinGuiContainer",
+    "MixinItem"
   ]
 }

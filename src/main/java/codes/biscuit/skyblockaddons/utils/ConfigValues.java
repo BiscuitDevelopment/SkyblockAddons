@@ -17,6 +17,7 @@ public class ConfigValues {
     private Map<Feature, ConfigColor> featureColors = new EnumMap<>(Feature.class);
     private Feature.ManaBarType manaBarType = Feature.ManaBarType.BAR_TEXT;
     private int warningSeconds = 4;
+//    private int inventoryWarningSeconds = 3;
     private float manaBarX = 0.45F;
     private float manaBarY = 0.83F;
     private float skeletonBarX = 0.68F;
@@ -43,49 +44,54 @@ public class ConfigValues {
                     return;
                 }
                 loadedConfig = fileElement.getAsJsonObject();
-
-                for (JsonElement element : loadedConfig.getAsJsonArray("disabledFeatures")) {
-                    disabledFeatures.add(Feature.fromId(element.getAsInt()));
-                }
-                warningSeconds = loadedConfig.get("warningSeconds").getAsInt();
-                if (loadedConfig.has("manaBarType")) {
-                    manaBarType = Feature.ManaBarType.values()[loadedConfig.get("manaBarType").getAsInt()];
-                }
-                if (loadedConfig.has("manaBarX")) {
-                    manaBarX = loadedConfig.get("manaBarX").getAsFloat();
-                }
-                if (loadedConfig.has("manaBarY")) {
-                    manaBarY = loadedConfig.get("manaBarY").getAsFloat();
-                }
-                if (loadedConfig.has("skeletonBarX")) {
-                    skeletonBarX = loadedConfig.get("skeletonBarX").getAsFloat();
-                }
-                if (loadedConfig.has("skeletonBarY")) {
-                    skeletonBarY = loadedConfig.get("skeletonBarY").getAsFloat();
-                }
-                if (loadedConfig.has("warningColor")) { // migrate from old config
-                    featureColors.put(Feature.WARNING_COLOR, ConfigColor.values()[loadedConfig.get("warningColor").getAsInt()]);
-                } else {
-                    featureColors.put(Feature.WARNING_COLOR, ConfigColor.RED);
-                }
-                if (loadedConfig.has("confirmationColor")) { // migrate from old config
-                    featureColors.put(Feature.CONFIRMATION_COLOR, ConfigColor.values()[loadedConfig.get("confirmationColor").getAsInt()]);
-                } else {
-                    featureColors.put(Feature.CONFIRMATION_COLOR, ConfigColor.RED);
-                }
-                if (loadedConfig.has("manaBarColor")) { // migrate from old config
-                    featureColors.put(Feature.MANA_BAR_COLOR, ConfigColor.values()[loadedConfig.get("manaBarColor").getAsInt()]);
-                } else {
-                    featureColors.put(Feature.MANA_BAR_COLOR, ConfigColor.BLUE);
-                }
-                if (loadedConfig.has("manaBarTextColor")) { // migrate from old config
-                    featureColors.put(Feature.MANA_TEXT_COLOR, ConfigColor.values()[loadedConfig.get("manaBarTextColor").getAsInt()]);
-                } else {
-                    featureColors.put(Feature.MANA_TEXT_COLOR, ConfigColor.BLUE);
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
+            } catch (JsonParseException | IllegalStateException | IOException ex) {
+                ex.printStackTrace();
+                System.out.println("SkyblockAddons: There was an error loading the config. Resetting to defaults.");
+                addDefaultsAndSave();
+                return;
             }
+            for (JsonElement element : loadedConfig.getAsJsonArray("disabledFeatures")) {
+                disabledFeatures.add(Feature.fromId(element.getAsInt()));
+            }
+            warningSeconds = loadedConfig.get("warningSeconds").getAsInt();
+            if (loadedConfig.has("manaBarType")) {
+                manaBarType = Feature.ManaBarType.values()[loadedConfig.get("manaBarType").getAsInt()];
+            }
+            if (loadedConfig.has("manaBarX")) {
+                manaBarX = loadedConfig.get("manaBarX").getAsFloat();
+            }
+            if (loadedConfig.has("manaBarY")) {
+                manaBarY = loadedConfig.get("manaBarY").getAsFloat();
+            }
+            if (loadedConfig.has("skeletonBarX")) {
+                skeletonBarX = loadedConfig.get("skeletonBarX").getAsFloat();
+            }
+            if (loadedConfig.has("skeletonBarY")) {
+                skeletonBarY = loadedConfig.get("skeletonBarY").getAsFloat();
+            }
+            if (loadedConfig.has("warningColor")) { // migrate from old config
+                featureColors.put(Feature.WARNING_COLOR, ConfigColor.values()[loadedConfig.get("warningColor").getAsInt()]);
+            } else {
+                featureColors.put(Feature.WARNING_COLOR, ConfigColor.RED);
+            }
+            if (loadedConfig.has("confirmationColor")) { // migrate from old config
+                featureColors.put(Feature.CONFIRMATION_COLOR, ConfigColor.values()[loadedConfig.get("confirmationColor").getAsInt()]);
+            } else {
+                featureColors.put(Feature.CONFIRMATION_COLOR, ConfigColor.RED);
+            }
+            if (loadedConfig.has("manaBarColor")) { // migrate from old config
+                featureColors.put(Feature.MANA_BAR_COLOR, ConfigColor.values()[loadedConfig.get("manaBarColor").getAsInt()]);
+            } else {
+                featureColors.put(Feature.MANA_BAR_COLOR, ConfigColor.BLUE);
+            }
+            if (loadedConfig.has("manaBarTextColor")) { // migrate from old config
+                featureColors.put(Feature.MANA_TEXT_COLOR, ConfigColor.values()[loadedConfig.get("manaBarTextColor").getAsInt()]);
+            } else {
+                featureColors.put(Feature.MANA_TEXT_COLOR, ConfigColor.BLUE);
+            }
+//            if (loadedConfig.has("inventoryWarningSeconds")) {
+//                inventoryWarningSeconds = loadedConfig.get("inventoryWarningSeconds").getAsInt();
+//            }
         } else {
             addDefaultsAndSave();
         }
@@ -118,6 +124,7 @@ public class ConfigValues {
             loadedConfig.addProperty("manaBarTextColor", getColor(Feature.MANA_TEXT_COLOR).ordinal());
             loadedConfig.addProperty("manaBarType", manaBarType.ordinal());
             loadedConfig.addProperty("warningSeconds", warningSeconds);
+//            loadedConfig.addProperty("inventoryWarningSeconds", inventoryWarningSeconds);
             loadedConfig.addProperty("manaBarX", manaBarX);
             loadedConfig.addProperty("manaBarY", manaBarY);
             loadedConfig.addProperty("skeletonBarX", skeletonBarX);

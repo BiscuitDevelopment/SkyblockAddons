@@ -9,6 +9,8 @@ public enum Feature {
     BONES(4, ButtonType.REGULAR),
     SKELETON_BAR(5, ButtonType.REGULAR),
     HIDE_FOOD_ARMOR_BAR(6, ButtonType.REGULAR),
+    FULL_INVENTORY_WARNING(7, ButtonType.REGULAR),
+    MAGMA_BOSS_BAR(8, ButtonType.REGULAR),
 
     WARNING_COLOR(-1, ButtonType.COLOR),
     CONFIRMATION_COLOR(-1, ButtonType.COLOR),

@@ -2,7 +2,6 @@ package codes.biscuit.skyblockaddons.mixins;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.utils.Feature;
-import codes.biscuit.skyblockaddons.utils.Utils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.item.EntityItem;
@@ -28,7 +27,7 @@ public abstract class MixinEntityPlayerSP {
                 if (lastItem != null && lastItem == heldItem && System.currentTimeMillis() - lastDrop < 3000) {
                     lastDrop = System.currentTimeMillis();
                 } else {
-                    Utils.sendMessage(SkyblockAddons.INSTANCE.getConfigValues().getColor(Feature.CONFIRMATION_COLOR).getChatFormatting() + "Drop this item again to confirm!");
+                    SkyblockAddons.INSTANCE.getUtils().sendMessage(SkyblockAddons.INSTANCE.getConfigValues().getColor(Feature.CONFIRMATION_COLOR).getChatFormatting() + "Drop this item again to confirm!");
                     lastItem = heldItem;
                     lastDrop = System.currentTimeMillis();
                     cir.setReturnValue(null);

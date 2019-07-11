@@ -4,6 +4,5 @@
   "description": "A mod with a few features to improve your skyblock experience.",
   "version": "${version}",
   "mcversion": "${mcversion}",
-  "authorList": ["Biscut"],
-  "dependencies": ["ChatTriggers"]
+  "authorList": ["Biscut"]
 }]

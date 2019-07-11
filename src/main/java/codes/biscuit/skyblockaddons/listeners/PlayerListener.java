@@ -4,15 +4,16 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.gui.LocationEditGui;
 import codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui;
 import codes.biscuit.skyblockaddons.utils.Feature;
-import codes.biscuit.skyblockaddons.utils.Utils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.item.EntityArmorStand;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityMagmaCube;
 import net.minecraft.entity.monster.EntitySlime;
 import net.minecraft.entity.monster.EntityZombie;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChatComponentText;
@@ -25,10 +26,13 @@ import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
+import org.lwjgl.opengl.GL11;
 
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.regex.Pattern;
+
+import static net.minecraft.client.gui.Gui.icons;
 
 public class PlayerListener {
 
@@ -37,9 +41,11 @@ public class PlayerListener {
 
     private boolean sentUpdate = false;
     private boolean predictMana = false;
+    private long lastWorldJoin = -1;
     private int mana = 0;
     private int maxMana = 100;
     private boolean openGUI = false;
+    private boolean fullInventoryWarning = false;
     private boolean bossWarning = false;
     private long lastBoss = -1;
     private int soundTick = 1;
@@ -55,6 +61,7 @@ public class PlayerListener {
     @SubscribeEvent()
     public void onWorldJoin(EntityJoinWorldEvent e) {
         if (e.entity == Minecraft.getMinecraft().thePlayer) {
+            lastWorldJoin = System.currentTimeMillis();
             bossWarning = false;
             lastBoss = -1;
             soundTick = 1;
@@ -64,23 +71,65 @@ public class PlayerListener {
 
     @SubscribeEvent()
     public void onRenderBossWarning(RenderGameOverlayEvent.Post e) {
-        if (bossWarning && e.type == RenderGameOverlayEvent.ElementType.TEXT) { // Render a title-like warning.
+        if (e.type == RenderGameOverlayEvent.ElementType.TEXT) { // Render a title-like warning.
             Minecraft mc = Minecraft.getMinecraft();
             ScaledResolution scaledresolution = e.resolution;
             int i = scaledresolution.getScaledWidth();
-            int j = scaledresolution.getScaledHeight();
-            GlStateManager.pushMatrix();
-            GlStateManager.translate((float) (i / 2), (float) (j / 2), 0.0F);
+            if (bossWarning) {
+                int j = scaledresolution.getScaledHeight();
+                GlStateManager.pushMatrix();
+                GlStateManager.translate((float) (i / 2), (float) (j / 2), 0.0F);
 //            GlStateManager.enableBlend();
 //            GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
-            GlStateManager.pushMatrix();
-            GlStateManager.scale(4.0F, 4.0F, 4.0F);
-            String text;
-            text = main.getConfigValues().getColor(Feature.WARNING_COLOR).getChatFormatting() + "MagmaCube Boss!";
-            mc.ingameGUI.getFontRenderer().drawString(text, (float) (-mc.ingameGUI.getFontRenderer().getStringWidth(text) / 2), -20.0F, 16777215, true);
-            GlStateManager.popMatrix();
+                GlStateManager.pushMatrix();
+                GlStateManager.scale(4.0F, 4.0F, 4.0F);
+                String text;
+                text = main.getConfigValues().getColor(Feature.WARNING_COLOR).getChatFormatting() + "MagmaCube Boss!";
+                mc.ingameGUI.getFontRenderer().drawString(text, (float) (-mc.ingameGUI.getFontRenderer().getStringWidth(text) / 2), -20.0F, 16777215, true);
+                GlStateManager.popMatrix();
 //            GlStateManager.disableBlend();
-            GlStateManager.popMatrix();
+                GlStateManager.popMatrix();
+            }
+            if (fullInventoryWarning && !main.getConfigValues().getDisabledFeatures().contains(Feature.FULL_INVENTORY_WARNING)) {
+                int j = scaledresolution.getScaledHeight();
+                GlStateManager.pushMatrix();
+                GlStateManager.translate((float) (i / 2), (float) (j / 2), 0.0F);
+                GlStateManager.pushMatrix();
+                GlStateManager.scale(4.0F, 4.0F, 4.0F);
+                String text;
+                text = main.getConfigValues().getColor(Feature.WARNING_COLOR).getChatFormatting() + "Full Inventory!";
+                mc.ingameGUI.getFontRenderer().drawString(text, (float) (-mc.ingameGUI.getFontRenderer().getStringWidth(text) / 2), -20.0F, 16777215, true);
+                GlStateManager.popMatrix();
+                GlStateManager.popMatrix();
+            }
+            if (!main.getConfigValues().getDisabledFeatures().contains(Feature.MAGMA_BOSS_BAR)) {
+                for (Entity entity : mc.theWorld.loadedEntityList) {
+                    if (entity instanceof EntityArmorStand) {
+                        String name = entity.getDisplayName().getFormattedText();
+                        if (name.contains("Magma Cube Boss ")) {
+                            name = name.split(Pattern.quote("Magma Cube Boss "))[1];
+                            mc.getTextureManager().bindTexture(icons);
+                            GlStateManager.tryBlendFuncSeparate(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA, 1, 0);
+                            GlStateManager.enableBlend();
+                            int j = 182;
+                            int k = i / 2 - j / 2;
+                            int health = 1;
+                            int l = (int) (health * (float) (j + 1));
+                            int i1 = 12;
+                            mc.ingameGUI.drawTexturedModalRect(k, i1, 0, 74, j, 5);
+                            mc.ingameGUI.drawTexturedModalRect(k, i1, 0, 74, j, 5);
+
+                            if (l > 0) {
+                                mc.ingameGUI.drawTexturedModalRect(k, i1, 0, 79, l, 5);
+                            }
+                            mc.ingameGUI.getFontRenderer().drawStringWithShadow(name, (float) (i / 2 - mc.ingameGUI.getFontRenderer().getStringWidth(name) / 2), (float) (i1 - 10), 16777215);
+                            GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+                            mc.getTextureManager().bindTexture(icons);
+                            GlStateManager.disableBlend();
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -116,7 +165,7 @@ public class PlayerListener {
     @SubscribeEvent()
     public void onRenderManaBar(RenderGameOverlayEvent.Post e) {
         Minecraft mc = Minecraft.getMinecraft();
-        if (e.type == RenderGameOverlayEvent.ElementType.EXPERIENCE && Utils.isOnSkyblock()) {
+        if (e.type == RenderGameOverlayEvent.ElementType.EXPERIENCE && main.getUtils().isOnSkyblock()) {
             if (main.getConfigValues().getManaBarType() != Feature.ManaBarType.OFF && !(mc.currentScreen instanceof LocationEditGui)) {
                 mc.getTextureManager().bindTexture(manaBars);
                 GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
@@ -178,7 +227,7 @@ public class PlayerListener {
     @SubscribeEvent()
     public void onRenderRemoveBars(RenderGameOverlayEvent.Pre e) {
         if (e.type == RenderGameOverlayEvent.ElementType.ALL) {
-            if (Utils.isOnSkyblock() && !main.getConfigValues().getDisabledFeatures().contains(Feature.HIDE_FOOD_ARMOR_BAR)) {
+            if (main.getUtils().isOnSkyblock() && !main.getConfigValues().getDisabledFeatures().contains(Feature.HIDE_FOOD_ARMOR_BAR)) {
                 GuiIngameForge.renderFood = false;
                 GuiIngameForge.renderArmor = false;
             }
@@ -189,11 +238,10 @@ public class PlayerListener {
     public void onInteract(PlayerInteractEvent e) {
         if (!main.getConfigValues().getDisabledFeatures().contains(Feature.DISABLE_EMBER_ROD)) {
             Minecraft mc = Minecraft.getMinecraft();
-            if (e.entityPlayer == mc.thePlayer && e.entityPlayer.getHeldItem() != null) {
-                if (mc.thePlayer.getHeldItem().getItem().getRegistryName().equals("minecraft:blaze_rod") && mc.thePlayer.getHeldItem().isItemEnchanted()) {
-                    if (Utils.isOnIsland()) {
-                        e.setCanceled(true);
-                    }
+            ItemStack heldItem = e.entityPlayer.getHeldItem();
+            if (e.entityPlayer == mc.thePlayer && heldItem != null) {
+                if (heldItem.getItem().equals(Items.blaze_rod) && heldItem.isItemEnchanted() && main.getUtils().isOnIsland()) {
+                    e.setCanceled(true);
                 }
             }
         }
@@ -208,11 +256,13 @@ public class PlayerListener {
                     mana += (maxMana/50);
                     if (mana>maxMana) mana = maxMana;
                 }
+            } else if (manaTick % 5 == 0) {
+                main.getUtils().checkIfInventoryIsFull();
             } else if (manaTick > 20) {
-                Utils.checkIfOnSkyblockAndIsland();
+                main.getUtils().checkIfOnSkyblockAndIsland();
                 Minecraft mc = Minecraft.getMinecraft();
                 if (!sentUpdate && mc != null && mc.thePlayer != null && mc.theWorld != null) {
-                    Utils.checkUpdates();
+                    main.getUtils().checkUpdates();
                     sentUpdate = true;
                 }
                 manaTick = 1;
@@ -221,7 +271,7 @@ public class PlayerListener {
     }
 
     @SubscribeEvent()
-    public void onTickSound(TickEvent.ClientTickEvent e) {
+    public void onTickMagmaBossChecker(TickEvent.ClientTickEvent e) {
         if (e.phase == TickEvent.Phase.START && !main.getConfigValues().getDisabledFeatures().contains(Feature.MAGMA_WARNING)) {
             Minecraft mc = Minecraft.getMinecraft();
             if (mc != null && mc.thePlayer != null) {
@@ -284,5 +334,17 @@ public class PlayerListener {
 
     private boolean isOpenGUI() {
         return openGUI;
+    }
+
+    public void setFullInventoryWarning(boolean fullInventoryWarning) {
+        this.fullInventoryWarning = fullInventoryWarning;
+    }
+
+    public boolean isFullInventoryWarning() {
+        return fullInventoryWarning;
+    }
+
+    public long getLastWorldJoin() {
+        return lastWorldJoin;
     }
 }
