@@ -6,8 +6,10 @@ import codes.biscuit.skyblockaddons.utils.ConfigValues;
 import codes.biscuit.skyblockaddons.utils.Utils;
 import net.minecraftforge.client.ClientCommandHandler;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 @Mod(modid = SkyblockAddons.MOD_ID, version = SkyblockAddons.VERSION, name = SkyblockAddons.MOD_NAME, clientSideOnly = true, acceptedMinecraftVersions = "[1.8.9]")
@@ -21,6 +23,7 @@ public class SkyblockAddons {
     private ConfigValues configValues;
     private PlayerListener playerListener = new PlayerListener(this);
     private Utils utils = new Utils(this);
+    private boolean usingLabymod = false;
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent e) {
@@ -35,6 +38,11 @@ public class SkyblockAddons {
         configValues.loadConfig();
     }
 
+    @Mod.EventHandler
+    public void postInit(FMLPostInitializationEvent e) {
+        usingLabymod = Loader.isModLoaded("labymod");
+    }
+
     public ConfigValues getConfigValues() {
         return configValues;
     }
@@ -46,5 +54,9 @@ public class SkyblockAddons {
 
     public Utils getUtils() {
         return utils;
+    }
+
+    public boolean isUsingLabymod() {
+        return usingLabymod;
     }
 }

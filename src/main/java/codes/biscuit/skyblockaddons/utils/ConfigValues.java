@@ -22,6 +22,9 @@ public class ConfigValues {
     private float manaBarY = 0.83F;
     private float skeletonBarX = 0.68F;
     private float skeletonBarY = 0.93F;
+    private float guiScale = 0;
+    private float manaTextX = 0.45F;
+    private float manaTextY = 0.83F;
 
     public ConfigValues(File configFile) {
         this.configFile = configFile;
@@ -89,6 +92,15 @@ public class ConfigValues {
             } else {
                 featureColors.put(Feature.MANA_TEXT_COLOR, ConfigColor.BLUE);
             }
+            if (loadedConfig.has("guiScale")) {
+                guiScale = loadedConfig.get("guiScale").getAsFloat();
+            }
+            if (loadedConfig.has("manaTextX")) {
+                manaTextX = loadedConfig.get("manaTextX").getAsFloat();
+            }
+            if (loadedConfig.has("manaTextY")) {
+                manaTextY = loadedConfig.get("manaTextY").getAsFloat();
+            }
 //            if (loadedConfig.has("inventoryWarningSeconds")) {
 //                inventoryWarningSeconds = loadedConfig.get("inventoryWarningSeconds").getAsInt();
 //            }
@@ -127,8 +139,11 @@ public class ConfigValues {
 //            loadedConfig.addProperty("inventoryWarningSeconds", inventoryWarningSeconds);
             loadedConfig.addProperty("manaBarX", manaBarX);
             loadedConfig.addProperty("manaBarY", manaBarY);
+            loadedConfig.addProperty("manaTextX", manaTextX);
+            loadedConfig.addProperty("manaTextY", manaTextY);
             loadedConfig.addProperty("skeletonBarX", skeletonBarX);
             loadedConfig.addProperty("skeletonBarY", skeletonBarY);
+            loadedConfig.addProperty("guiScale", guiScale);
 
             bufferedWriter.write(loadedConfig.toString());
             bufferedWriter.close();
@@ -183,6 +198,22 @@ public class ConfigValues {
         this.manaBarY = (float) y / maxY;
     }
 
+    public float getManaTextX() {
+        return manaTextX;
+    }
+
+    public void setManaTextX(int x, int maxX) {
+        this.manaTextX = (float) x / maxX;
+    }
+
+    public float getManaTextY() {
+        return manaTextY;
+    }
+
+    public void setManaTextY(int y, int maxY) {
+        this.manaTextY = (float) y / maxY;
+    }
+
     public float getSkeletonBarX() {
         return skeletonBarX;
     }
@@ -197,5 +228,13 @@ public class ConfigValues {
 
     public void setSkeletonBarY(int y, int maxY) {
         this.skeletonBarY = (float) y / maxY;
+    }
+
+    public float getGuiScale() {
+        return guiScale;
+    }
+
+    public void setGuiScale(float guiScale) {
+        this.guiScale = guiScale;
     }
 }

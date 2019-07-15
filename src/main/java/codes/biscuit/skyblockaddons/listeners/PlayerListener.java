@@ -1,6 +1,7 @@
 package codes.biscuit.skyblockaddons.listeners;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.gui.ButtonSlider;
 import codes.biscuit.skyblockaddons.gui.LocationEditGui;
 import codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui;
 import codes.biscuit.skyblockaddons.utils.Feature;
@@ -37,7 +38,7 @@ import static net.minecraft.client.gui.Gui.icons;
 public class PlayerListener {
 
     public final static ItemStack BONE = new ItemStack(Item.getItemById(352));
-    private final static ResourceLocation manaBars = new ResourceLocation("skyblockaddons", "manabars.png");
+    public final static ResourceLocation MANA_BARS = new ResourceLocation("skyblockaddons", "manabars.png");
 
     private boolean sentUpdate = false;
     private boolean predictMana = false;
@@ -163,65 +164,89 @@ public class PlayerListener {
     }
 
     @SubscribeEvent()
-    public void onRenderManaBar(RenderGameOverlayEvent.Post e) {
+    public void onRenderRegular(RenderGameOverlayEvent.Post e) {
+        if (!main.isUsingLabymod() && e.type == RenderGameOverlayEvent.ElementType.EXPERIENCE && main.getUtils().isOnSkyblock()) {
+            renderOverlays(e.resolution);
+        }
+    }
+
+    @SubscribeEvent()
+    public void onRenderLabyMod(RenderGameOverlayEvent e) {
+        if (main.isUsingLabymod() && main.getUtils().isOnSkyblock()) {
+            renderOverlays(e.resolution);
+        }
+    }
+
+    private void renderOverlays(ScaledResolution sr) {
         Minecraft mc = Minecraft.getMinecraft();
-        if (e.type == RenderGameOverlayEvent.ElementType.EXPERIENCE && main.getUtils().isOnSkyblock()) {
-            if (main.getConfigValues().getManaBarType() != Feature.ManaBarType.OFF && !(mc.currentScreen instanceof LocationEditGui)) {
-                mc.getTextureManager().bindTexture(manaBars);
-                GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-                GlStateManager.disableBlend();
+        float scale = main.getUtils().denormalizeValue(main.getConfigValues().getGuiScale(), ButtonSlider.VALUE_MIN, ButtonSlider.VALUE_MAX, ButtonSlider.VALUE_STEP);
+        float scaleMultiplier = 1F/scale;
+        GlStateManager.pushMatrix();
+        GlStateManager.scale(scale, scale, 1);
+        if (main.getConfigValues().getManaBarType() != Feature.ManaBarType.OFF && !(mc.currentScreen instanceof LocationEditGui)) {
+            mc.getTextureManager().bindTexture(MANA_BARS);
+            GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+            GlStateManager.disableBlend();
 
-                short barWidth = 92;
-                ScaledResolution sr = new ScaledResolution(mc);
+            short barWidth = 92;
+            if (main.getConfigValues().getManaBarType() == Feature.ManaBarType.BAR
+                    || main.getConfigValues().getManaBarType() == Feature.ManaBarType.BAR_TEXT) {
+                float manaFill = (float) mana / maxMana;
+                if (manaFill > 1) manaFill = 1;
                 int left = (int) (main.getConfigValues().getManaBarX() * sr.getScaledWidth()) + 14;
-
-                if (main.getConfigValues().getManaBarType() == Feature.ManaBarType.BAR
-                        || main.getConfigValues().getManaBarType() == Feature.ManaBarType.BAR_TEXT) {
-                    float manaFill = (float) mana / maxMana;
-                    if (manaFill > 1) manaFill = 1;
-                    int filled = (int) (manaFill * barWidth);
-                    int top = (int) (main.getConfigValues().getManaBarY() * sr.getScaledHeight()) + 10;
-                    // mc.ingameGUI.drawTexturedModalRect(left, top, 10, 84, barWidth, 5);
-                    int textureY = main.getConfigValues().getColor(Feature.MANA_BAR_COLOR).ordinal()*10;
-                    mc.ingameGUI.drawTexturedModalRect(left, top, 0, textureY, barWidth, 5);
-                    if (filled > 0) {
+                int filled = (int) (manaFill * barWidth);
+                int top = (int) (main.getConfigValues().getManaBarY() * sr.getScaledHeight()) + 10;
+                // mc.ingameGUI.drawTexturedModalRect(left, top, 10, 84, barWidth, 5);
+                int textureY = main.getConfigValues().getColor(Feature.MANA_BAR_COLOR).ordinal()*10;
+                mc.ingameGUI.drawTexturedModalRect(left*scaleMultiplier-60, top*scaleMultiplier-10, 0, textureY, barWidth, 5);
+                if (filled > 0) {
 //                        mc.ingameGUI.drawTexturedModalRect(left, top, 10, 89, filled, 5);
-                        mc.ingameGUI.drawTexturedModalRect(left, top, 0, textureY+5, filled, 5);
-                    }
-                }
-                if (main.getConfigValues().getManaBarType() == Feature.ManaBarType.TEXT
-                        || main.getConfigValues().getManaBarType() == Feature.ManaBarType.BAR_TEXT) {
-                    int color = main.getConfigValues().getColor(Feature.MANA_TEXT_COLOR).getColor(255);
-                    String text = mana + "/" + maxMana;
-                    int x = (int) (main.getConfigValues().getManaBarX() * sr.getScaledWidth()) + 60 - mc.ingameGUI.getFontRenderer().getStringWidth(text) / 2;
-                    int y = (int) (main.getConfigValues().getManaBarY() * sr.getScaledHeight()) + 4;
-                    mc.ingameGUI.getFontRenderer().drawString(text, x + 1, y, 0);
-                    mc.ingameGUI.getFontRenderer().drawString(text, x - 1, y, 0);
-                    mc.ingameGUI.getFontRenderer().drawString(text, x, y + 1, 0);
-                    mc.ingameGUI.getFontRenderer().drawString(text, x, y - 1, 0);
-                    mc.ingameGUI.getFontRenderer().drawString(text, x, y, color);
-                    GlStateManager.enableBlend();
-                    GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+                    mc.ingameGUI.drawTexturedModalRect(left*scaleMultiplier-60, top*scaleMultiplier-10, 0, textureY+5, filled, 5);
                 }
             }
-            if ((!main.getConfigValues().getDisabledFeatures().contains(Feature.SKELETON_BAR))
-                    && !(mc.currentScreen instanceof LocationEditGui)) {
-                ScaledResolution sr = new ScaledResolution(mc);
-                int width = (int)(main.getConfigValues().getSkeletonBarX()*sr.getScaledWidth());
-                int height = (int)(main.getConfigValues().getSkeletonBarY()*sr.getScaledHeight());
-                int bones = 0;
-                for (Entity listEntity : mc.theWorld.loadedEntityList) {
-                    if (listEntity instanceof EntityItem &&
-                            listEntity.ridingEntity instanceof EntityZombie && listEntity.ridingEntity.isInvisible() && listEntity.getDistanceToEntity(mc.thePlayer) <= 6) {
-                        bones++;
-                    }
-                }
-                if (bones > 3) bones = 3;
-                for (int boneCounter = 0; boneCounter < bones; boneCounter++) {
-                    mc.getRenderItem().renderItemIntoGUI(BONE, width+(boneCounter*15)+2, height+2);
-                }
+            if (main.getConfigValues().getManaBarType() == Feature.ManaBarType.TEXT
+                    || main.getConfigValues().getManaBarType() == Feature.ManaBarType.BAR_TEXT) {
+                int color = main.getConfigValues().getColor(Feature.MANA_TEXT_COLOR).getColor(255);
+                String text = mana + "/" + maxMana;
+                int x = (int) (main.getConfigValues().getManaTextX() * sr.getScaledWidth()) + 60 - mc.ingameGUI.getFontRenderer().getStringWidth(text) / 2;
+                int y = (int) (main.getConfigValues().getManaTextY() * sr.getScaledHeight()) + 4;
+                x+=25;
+                y+=10;
+                mc.ingameGUI.getFontRenderer().drawString(text, (int)(x*scaleMultiplier)-60+1, (int)(y*scaleMultiplier)-10, 0);
+                mc.ingameGUI.getFontRenderer().drawString(text, (int)(x*scaleMultiplier)-60-1, (int)(y*scaleMultiplier)-10, 0);
+                mc.ingameGUI.getFontRenderer().drawString(text, (int)(x*scaleMultiplier)-60, (int)(y*scaleMultiplier)+1-10, 0);
+                mc.ingameGUI.getFontRenderer().drawString(text, (int)(x*scaleMultiplier)-60, (int)(y*scaleMultiplier)-1-10, 0);
+                mc.ingameGUI.getFontRenderer().drawString(text, (int)(x*scaleMultiplier)-60, (int)(y*scaleMultiplier)-10, color);
+//                int x = (int) (main.getConfigValues().getManaBarX() * sr.getScaledWidth()) + 60 - mc.ingameGUI.getFontRenderer().getStringWidth(text) / 2;
+//                int y = (int) (main.getConfigValues().getManaBarY() * sr.getScaledHeight()) + 4;
+////                x+=60;
+////                y+=10;
+//                mc.ingameGUI.getFontRenderer().drawString(text, (int)(x-60*scaleMultiplier) + 1, (int)(y*scaleMultiplier)-10, 0);
+//                mc.ingameGUI.getFontRenderer().drawString(text, (int)(x*scaleMultiplier)-60 - 1, (int)(y*scaleMultiplier)-10, 0);
+//                mc.ingameGUI.getFontRenderer().drawString(text, (int)(x*scaleMultiplier)-60, (int)(y*scaleMultiplier)+ 1-10, 0);
+//                mc.ingameGUI.getFontRenderer().drawString(text, (int)(x*scaleMultiplier)-60, (int)(y*scaleMultiplier) - 1-10, 0);
+//                mc.ingameGUI.getFontRenderer().drawString(text, (int)(x*scaleMultiplier)-60, (int)(y*scaleMultiplier)-10, color);
+                GlStateManager.enableBlend();
+                GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
             }
         }
+        if ((!main.getConfigValues().getDisabledFeatures().contains(Feature.SKELETON_BAR))
+                && !(mc.currentScreen instanceof LocationEditGui)) {
+            int width = (int)(main.getConfigValues().getSkeletonBarX()*sr.getScaledWidth());
+            int height = (int)(main.getConfigValues().getSkeletonBarY()*sr.getScaledHeight());
+            int bones = 0;
+            for (Entity listEntity : mc.theWorld.loadedEntityList) {
+                if (listEntity instanceof EntityItem &&
+                        listEntity.ridingEntity instanceof EntityZombie && listEntity.ridingEntity.isInvisible() && listEntity.getDistanceToEntity(mc.thePlayer) <= 6) {
+                    bones++;
+                }
+            }
+            if (bones > 3) bones = 3;
+            for (int boneCounter = 0; boneCounter < bones; boneCounter++) {
+                mc.getRenderItem().renderItemIntoGUI(BONE, (int)((width+boneCounter*15*scale)*scaleMultiplier), (int)((height+2)*scaleMultiplier));
+            }
+        }
+        GlStateManager.popMatrix();
     }
 
     @SubscribeEvent()

@@ -35,7 +35,7 @@ public class SkyblockAddonsGui extends GuiScreen {
         buttonList.add(new ButtonRegular(0, oneThird-boxWidth-30, height*0.41, "Skeleton Hat Bones Bar", main, Feature.SKELETON_BAR, boxWidth, boxHeight));
         buttonList.add(new ButtonRegular(0, halfWidth-(boxWidth/2), height*0.41, "Hide Food & Armor Bar", main, Feature.HIDE_FOOD_ARMOR_BAR, boxWidth, boxHeight));
         buttonList.add(new ButtonRegular(0, oneThird-boxWidth-30, height*0.49, "Full Inventory Warning", main, Feature.FULL_INVENTORY_WARNING, boxWidth, boxHeight));
-        buttonList.add(new ButtonRegular(0, twoThirds+30, height*0.25, "Magma Boss Bar", main, Feature.MAGMA_BOSS_BAR, boxWidth, boxHeight));
+        buttonList.add(new ButtonRegular(0, twoThirds+30, height*0.25, "Magma Boss Health Bar", main, Feature.MAGMA_BOSS_BAR, boxWidth, boxHeight));
 //        buttonList.add(new ButtonRegular(0, oneThird-boxWidth-30, height*0.25, "Magma Boss Warning", main, Feature.MAGMA_WARNING, boxWidth, boxHeight));
 //        buttonList.add(new ButtonRegular(0, twoThirds+30, height*0.25, "Item Drop Confirmation", main, Feature.DROP_CONFIRMATION, boxWidth, boxHeight));
 //        buttonList.add(new ButtonRegular(0, oneThird-boxWidth-30, height*0.33, null, main, Feature.MANA_BAR, boxWidth, boxHeight));
@@ -46,16 +46,17 @@ public class SkyblockAddonsGui extends GuiScreen {
         boxWidth = 200;
         buttonList.add(new ButtonRegular(0, halfWidth-(boxWidth/2), height*0.49, "Disable Ember Rod Ability on Island", main, Feature.DISABLE_EMBER_ROD, boxWidth, boxHeight));
         boxWidth = 100;
-        buttonList.add(new ButtonRegular(0, halfWidth-boxWidth-20, height*0.65, "Warning Color", main, Feature.WARNING_COLOR, boxWidth, boxHeight));
-        buttonList.add(new ButtonRegular(0, halfWidth+20, height*0.65, "Confirmation Color", main, Feature.CONFIRMATION_COLOR, boxWidth, boxHeight));
-        buttonList.add(new ButtonRegular(0, halfWidth-boxWidth-20, height*0.73, "Mana Text Color", main, Feature.MANA_TEXT_COLOR, boxWidth, boxHeight));
-        buttonList.add(new ButtonRegular(0, halfWidth+20, height*0.73, "Mana Bar Color", main, Feature.MANA_BAR_COLOR, boxWidth, boxHeight));
-        buttonList.add(new ButtonRegular(0, halfWidth-boxWidth-20, height*0.81, null, main, Feature.WARNING_TIME, boxWidth, boxHeight));
-        buttonList.add(new ButtonRegular(0, halfWidth-boxWidth-20, height*0.81, null, main, Feature.WARNING_TIME, boxWidth, boxHeight));
-        buttonList.add(new ButtonRegular(0, halfWidth+20, height*0.81, "Edit Locations", main, Feature.EDIT_LOCATIONS, boxWidth, boxHeight));
+        buttonList.add(new ButtonRegular(0, oneThird-boxWidth-30, height*0.65, "Warning Color", main, Feature.WARNING_COLOR, boxWidth, boxHeight));
+        buttonList.add(new ButtonRegular(0, halfWidth-(boxWidth/2), height*0.65, "Confirmation Color", main, Feature.CONFIRMATION_COLOR, boxWidth, boxHeight));
+        buttonList.add(new ButtonRegular(0, oneThird-boxWidth-30, height*0.73, "Mana Text Color", main, Feature.MANA_TEXT_COLOR, boxWidth, boxHeight));
+        buttonList.add(new ButtonRegular(0, halfWidth-(boxWidth/2), height*0.73, "Mana Bar Color", main, Feature.MANA_BAR_COLOR, boxWidth, boxHeight));
+        buttonList.add(new ButtonRegular(0, oneThird-boxWidth-30, height*0.81, null, main, Feature.WARNING_TIME, boxWidth, boxHeight));
+//        buttonList.add(new ButtonRegular(0, halfWidth-boxWidth-20, height*0.81, null, main, Feature.WARNING_TIME, boxWidth, boxHeight));
+        buttonList.add(new ButtonRegular(0, halfWidth-(boxWidth/2), height*0.81, "Edit Locations", main, Feature.EDIT_LOCATIONS, boxWidth, boxHeight));
+        buttonList.add(new ButtonSlider(0, twoThirds+30, height*0.65, boxWidth, boxHeight, main));//twoThirds+30, height*33));
         boxWidth = 20;
-        buttonList.add(new ButtonRegular(0, halfWidth-boxWidth-125, height*0.81, "+", main, Feature.ADD, boxWidth, boxHeight));
-        buttonList.add(new ButtonRegular(0, halfWidth-boxWidth+5, height*0.81, "-", main, Feature.SUBTRACT, boxWidth, boxHeight));
+        buttonList.add(new ButtonRegular(0, oneThird-boxWidth-135, height*0.81, "+", main, Feature.ADD, boxWidth, boxHeight));
+        buttonList.add(new ButtonRegular(0, oneThird-boxWidth-5, height*0.81, "-", main, Feature.SUBTRACT, boxWidth, boxHeight));
     }
 
 
@@ -97,35 +98,37 @@ public class SkyblockAddonsGui extends GuiScreen {
 
     @Override
     protected void actionPerformed(GuiButton abstractButton) {
-        Feature feature = ((ButtonRegular)abstractButton).getFeature();
-        if (feature.getButtonType() == Feature.ButtonType.REGULAR) {
-            if (feature == Feature.MANA_BAR) {
-                main.getConfigValues().setManaBarType(main.getConfigValues().getManaBarType().getNextType());
-            } else {
-                if (main.getConfigValues().getDisabledFeatures().contains(feature)) {
-                    main.getConfigValues().getDisabledFeatures().remove(feature);
+        if (abstractButton instanceof ButtonRegular) {
+            Feature feature = ((ButtonRegular) abstractButton).getFeature();
+            if (feature.getButtonType() == Feature.ButtonType.REGULAR) {
+                if (feature == Feature.MANA_BAR) {
+                    main.getConfigValues().setManaBarType(main.getConfigValues().getManaBarType().getNextType());
                 } else {
-                    main.getConfigValues().getDisabledFeatures().add(feature);
-                    if (feature == Feature.HIDE_FOOD_ARMOR_BAR) {
-                        GuiIngameForge.renderArmor = true;
+                    if (main.getConfigValues().getDisabledFeatures().contains(feature)) {
+                        main.getConfigValues().getDisabledFeatures().remove(feature);
+                    } else {
+                        main.getConfigValues().getDisabledFeatures().add(feature);
+                        if (feature == Feature.HIDE_FOOD_ARMOR_BAR) {
+                            GuiIngameForge.renderArmor = true;
+                        }
                     }
                 }
-            }
-        } else if (feature.getButtonType() == Feature.ButtonType.COLOR) {
-            main.getConfigValues().setColor(feature, main.getConfigValues().getColor(feature).getNextColor());
-        } else if (feature.getButtonType() == Feature.ButtonType.MODIFY) {
-            if (feature == Feature.ADD) {
-                if (main.getConfigValues().getWarningSeconds() < 99) {
-                    main.getConfigValues().setWarningSeconds(main.getConfigValues().getWarningSeconds() + 1);
+            } else if (feature.getButtonType() == Feature.ButtonType.COLOR) {
+                main.getConfigValues().setColor(feature, main.getConfigValues().getColor(feature).getNextColor());
+            } else if (feature.getButtonType() == Feature.ButtonType.MODIFY) {
+                if (feature == Feature.ADD) {
+                    if (main.getConfigValues().getWarningSeconds() < 99) {
+                        main.getConfigValues().setWarningSeconds(main.getConfigValues().getWarningSeconds() + 1);
+                    }
+                } else {
+                    if (main.getConfigValues().getWarningSeconds() > 1) {
+                        main.getConfigValues().setWarningSeconds(main.getConfigValues().getWarningSeconds() - 1);
+                    }
                 }
-            } else {
-                if (main.getConfigValues().getWarningSeconds() > 1) {
-                    main.getConfigValues().setWarningSeconds(main.getConfigValues().getWarningSeconds() - 1);
-                }
+            } else if (feature == Feature.EDIT_LOCATIONS) {
+                Minecraft.getMinecraft().displayGuiScreen(null);
+                Minecraft.getMinecraft().displayGuiScreen(new LocationEditGui(main));
             }
-        } else if (feature == Feature.EDIT_LOCATIONS) {
-            Minecraft.getMinecraft().displayGuiScreen(null);
-            Minecraft.getMinecraft().displayGuiScreen(new LocationEditGui(main));
         }
     }
 

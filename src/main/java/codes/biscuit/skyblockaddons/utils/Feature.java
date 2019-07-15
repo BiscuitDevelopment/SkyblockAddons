@@ -11,6 +11,7 @@ public enum Feature {
     HIDE_FOOD_ARMOR_BAR(6, ButtonType.REGULAR),
     FULL_INVENTORY_WARNING(7, ButtonType.REGULAR),
     MAGMA_BOSS_BAR(8, ButtonType.REGULAR),
+    HIDE_DURABILITY(9, ButtonType.REGULAR), //TODO add toggle for this & for the enchantment feature
 
     WARNING_COLOR(-1, ButtonType.COLOR),
     CONFIRMATION_COLOR(-1, ButtonType.COLOR),
@@ -18,6 +19,7 @@ public enum Feature {
     MANA_BAR_COLOR(-1, ButtonType.COLOR),
 
     WARNING_TIME(-1, ButtonType.NEUTRAL),
+    MANA_TEXT(-1, ButtonType.REGULAR),
 
     ADD(-1, ButtonType.MODIFY),
     SUBTRACT(-1, ButtonType.MODIFY),

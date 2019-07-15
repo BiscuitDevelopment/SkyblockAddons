@@ -13,6 +13,7 @@ import net.minecraft.scoreboard.ScorePlayerTeam;
 import net.minecraft.scoreboard.Scoreboard;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.MathHelper;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.common.MinecraftForge;
 
@@ -116,6 +117,27 @@ public class Utils {
             }
         }
         onIsland = false;
+    }
+
+    public float normalizeValue(float value, float valueMin, float valueMax, float valueStep) {
+        return MathHelper.clamp_float((this.snapToStepClamp(value, valueMin, valueMax, valueStep) - valueMin) / (valueMax - valueMin), 0.0F, 1.0F);
+    }
+
+    public float denormalizeValue(float value, float valueMin, float valueMax, float valueStep) {
+        return this.snapToStepClamp(valueMin + (valueMax - valueMin) * MathHelper.clamp_float(value, 0.0F, 1.0F), valueMin, valueMax, valueStep);
+    }
+
+    private float snapToStepClamp(float value, float valueMin, float valueMax, float valueStep) {
+        value = this.snapToStep(value, valueStep);
+        return MathHelper.clamp_float(value, valueMin, valueMax);
+    }
+
+    private float snapToStep(float value, float valueStep) {
+        if (valueStep > 0.0F) {
+            value = valueStep * (float) Math.round(value / valueStep);
+        }
+
+        return value;
     }
 
     private String getStringOnly(String text) {
