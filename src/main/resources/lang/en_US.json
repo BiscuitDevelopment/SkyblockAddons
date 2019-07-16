@@ -14,14 +14,15 @@
     "skeletonHatBonesBar": "Skeleton Hat Bones Bar",
     "hideFoodAndArmor": "Hide Food & Armor Bar",
     "fullInventoryWarning": "Full Inventory Warning",
-    "magmaBossHealthBar": "Magma Boss Health Barr",
+    "magmaBossHealthBar": "Magma Boss Health Bar",
     "disableEmberRodAbility": "Disable Ember Rod Ability on Island",
     "warningColor": "Warning Color",
     "confirmationColor": "Confirmation Color",
     "manaTextColor": "Mana Text Color",
     "manaBarColor": "Mana Bar Color",
     "editLocations": "Edit Locations",
-    "guiScale": "Gui Scale: %scale%"
+    "guiScale": "Gui Scale: %scale%",
+    "resetLocations": "Reset Locations"
   },
   "messages": {
     "dropConfirmation": "Drop this item again to confirm!",
