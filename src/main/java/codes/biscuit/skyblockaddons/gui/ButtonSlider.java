@@ -2,6 +2,7 @@ package codes.biscuit.skyblockaddons.gui;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.utils.ConfigColor;
+import codes.biscuit.skyblockaddons.utils.ConfigValues;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
@@ -11,8 +12,6 @@ import net.minecraft.util.MathHelper;
 import java.math.BigDecimal;
 
 public class ButtonSlider extends GuiButton {
-
-    private static final String BUTTON_TEXT = "Gui Scale ";
 
     private float sliderValue;
     private boolean dragging;
@@ -25,7 +24,7 @@ public class ButtonSlider extends GuiButton {
     ButtonSlider(int buttonID, double x, double y, int width, int height, SkyblockAddons main) {
         super(buttonID, (int)x, (int)y, width, height, "");
         this.sliderValue = main.getConfigValues().getGuiScale();
-        this.displayString = BUTTON_TEXT+getRoundedValue(main.getUtils().denormalizeValue(sliderValue, VALUE_MIN, VALUE_MAX, VALUE_STEP));
+        this.displayString = main.getConfigValues().getMessage(ConfigValues.Message.SETTING_GUI_SCALE, String.valueOf(getRoundedValue(main.getUtils().denormalizeValue(sliderValue, VALUE_MIN, VALUE_MAX, VALUE_STEP))));
         this.main = main;
     }
 
@@ -85,7 +84,7 @@ public class ButtonSlider extends GuiButton {
                 float scaleValue = main.getUtils().denormalizeValue(this.sliderValue, VALUE_MIN, VALUE_MAX, VALUE_STEP);
                 this.sliderValue = main.getUtils().normalizeValue(scaleValue, VALUE_MIN, VALUE_MAX, VALUE_STEP);
                 main.getConfigValues().setGuiScale(sliderValue);
-                this.displayString = BUTTON_TEXT+getRoundedValue(main.getUtils().denormalizeValue(sliderValue, VALUE_MIN, VALUE_MAX, VALUE_STEP));
+                this.displayString = main.getConfigValues().getMessage(ConfigValues.Message.SETTING_GUI_SCALE, String.valueOf(getRoundedValue(main.getUtils().denormalizeValue(sliderValue, VALUE_MIN, VALUE_MAX, VALUE_STEP))));
             }
 
             mc.getTextureManager().bindTexture(buttonTextures);
@@ -107,7 +106,7 @@ public class ButtonSlider extends GuiButton {
             this.sliderValue = MathHelper.clamp_float(this.sliderValue, 0.0F, 1.0F);
             main.getConfigValues().setGuiScale(sliderValue);
 //            mc.gameSettings.setOptionFloatValue(this.options, this.options.denormalizeValue(this.sliderValue));
-            this.displayString = BUTTON_TEXT+getRoundedValue(main.getUtils().denormalizeValue(sliderValue, VALUE_MIN, VALUE_MAX, VALUE_STEP));
+            this.displayString = main.getConfigValues().getMessage(ConfigValues.Message.SETTING_GUI_SCALE, String.valueOf(getRoundedValue(main.getUtils().denormalizeValue(sliderValue, VALUE_MIN, VALUE_MAX, VALUE_STEP))));
             this.dragging = true;
             return true;
         } else {

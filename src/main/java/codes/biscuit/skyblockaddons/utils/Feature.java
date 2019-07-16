@@ -1,12 +1,14 @@
 package codes.biscuit.skyblockaddons.utils;
 
+import codes.biscuit.skyblockaddons.SkyblockAddons;
+
 public enum Feature {
 
     MAGMA_WARNING(0, ButtonType.REGULAR),
     DROP_CONFIRMATION(1, ButtonType.REGULAR),
     DISABLE_EMBER_ROD(2, ButtonType.REGULAR),
     MANA_BAR(3, ButtonType.REGULAR),
-    BONES(4, ButtonType.REGULAR),
+    HIDE_BONES(4, ButtonType.REGULAR),
     SKELETON_BAR(5, ButtonType.REGULAR),
     HIDE_FOOD_ARMOR_BAR(6, ButtonType.REGULAR),
     FULL_INVENTORY_WARNING(7, ButtonType.REGULAR),
@@ -57,19 +59,22 @@ public enum Feature {
     }
 
     public enum ManaBarType {
-        BAR_TEXT("Bar & Text"),
-        TEXT("Text"),
-        BAR("Bar"),
-        OFF("Off");
-
-        private String displayText;
-
-        ManaBarType(String displayText) {
-            this.displayText = displayText;
-        }
+        BAR_TEXT,
+        TEXT,
+        BAR,
+        OFF;
 
         public String getDisplayText() {
-            return displayText;
+            switch (this) {
+                case BAR_TEXT:
+                    return SkyblockAddons.INSTANCE.getConfigValues().getMessage(ConfigValues.Message.MANA_BAR_TYPE_BAR_TEXT);
+                case TEXT:
+                    return SkyblockAddons.INSTANCE.getConfigValues().getMessage(ConfigValues.Message.MANA_BAR_TYPE_TEXT);
+                case BAR:
+                    return SkyblockAddons.INSTANCE.getConfigValues().getMessage(ConfigValues.Message.MANA_BAR_TYPE_BAR);
+                default:
+                    return SkyblockAddons.INSTANCE.getConfigValues().getMessage(ConfigValues.Message.MANA_BAR_TYPE_OFF);
+            }
         }
 
         public ManaBarType getNextType() {

@@ -3,6 +3,7 @@ package codes.biscuit.skyblockaddons.utils;
 import com.google.gson.*;
 
 import java.io.*;
+import java.net.URISyntaxException;
 import java.util.EnumMap;
 import java.util.EnumSet;
 import java.util.Map;
@@ -10,8 +11,10 @@ import java.util.Set;
 
 public class ConfigValues {
 
-    private File configFile;
-    private JsonObject loadedConfig = new JsonObject();
+    private File settingsConfigFile;
+    private JsonObject settingsConfig = new JsonObject();
+
+    private JsonObject languageConfig = new JsonObject();
 
     private Set<Feature> disabledFeatures = EnumSet.noneOf(Feature.class);
     private Map<Feature, ConfigColor> featureColors = new EnumMap<>(Feature.class);
@@ -25,15 +28,16 @@ public class ConfigValues {
     private float guiScale = 0;
     private float manaTextX = 0.45F;
     private float manaTextY = 0.83F;
+    private String language = "en_US";
 
-    public ConfigValues(File configFile) {
-        this.configFile = configFile;
+    public ConfigValues(File settingsConfigFile) {
+        this.settingsConfigFile = settingsConfigFile;
     }
 
     public void loadConfig() {
-        if (configFile.exists()) {
+        if (settingsConfigFile.exists()) {
             try {
-                FileReader reader = new FileReader(configFile);
+                FileReader reader = new FileReader(settingsConfigFile);
                 BufferedReader bufferedReader = new BufferedReader(reader);
                 StringBuilder builder = new StringBuilder();
                 String nextLine;
@@ -46,67 +50,71 @@ public class ConfigValues {
                     addDefaultsAndSave();
                     return;
                 }
-                loadedConfig = fileElement.getAsJsonObject();
+                settingsConfig = fileElement.getAsJsonObject();
             } catch (JsonParseException | IllegalStateException | IOException ex) {
                 ex.printStackTrace();
                 System.out.println("SkyblockAddons: There was an error loading the config. Resetting to defaults.");
                 addDefaultsAndSave();
                 return;
             }
-            for (JsonElement element : loadedConfig.getAsJsonArray("disabledFeatures")) {
+            for (JsonElement element : settingsConfig.getAsJsonArray("disabledFeatures")) {
                 disabledFeatures.add(Feature.fromId(element.getAsInt()));
             }
-            warningSeconds = loadedConfig.get("warningSeconds").getAsInt();
-            if (loadedConfig.has("manaBarType")) {
-                manaBarType = Feature.ManaBarType.values()[loadedConfig.get("manaBarType").getAsInt()];
+            warningSeconds = settingsConfig.get("warningSeconds").getAsInt();
+            if (settingsConfig.has("manaBarType")) {
+                manaBarType = Feature.ManaBarType.values()[settingsConfig.get("manaBarType").getAsInt()];
             }
-            if (loadedConfig.has("manaBarX")) {
-                manaBarX = loadedConfig.get("manaBarX").getAsFloat();
+            if (settingsConfig.has("manaBarX")) {
+                manaBarX = settingsConfig.get("manaBarX").getAsFloat();
             }
-            if (loadedConfig.has("manaBarY")) {
-                manaBarY = loadedConfig.get("manaBarY").getAsFloat();
+            if (settingsConfig.has("manaBarY")) {
+                manaBarY = settingsConfig.get("manaBarY").getAsFloat();
             }
-            if (loadedConfig.has("skeletonBarX")) {
-                skeletonBarX = loadedConfig.get("skeletonBarX").getAsFloat();
+            if (settingsConfig.has("skeletonBarX")) {
+                skeletonBarX = settingsConfig.get("skeletonBarX").getAsFloat();
             }
-            if (loadedConfig.has("skeletonBarY")) {
-                skeletonBarY = loadedConfig.get("skeletonBarY").getAsFloat();
+            if (settingsConfig.has("skeletonBarY")) {
+                skeletonBarY = settingsConfig.get("skeletonBarY").getAsFloat();
             }
-            if (loadedConfig.has("warningColor")) { // migrate from old config
-                featureColors.put(Feature.WARNING_COLOR, ConfigColor.values()[loadedConfig.get("warningColor").getAsInt()]);
+            if (settingsConfig.has("warningColor")) { // migrate from old config
+                featureColors.put(Feature.WARNING_COLOR, ConfigColor.values()[settingsConfig.get("warningColor").getAsInt()]);
             } else {
                 featureColors.put(Feature.WARNING_COLOR, ConfigColor.RED);
             }
-            if (loadedConfig.has("confirmationColor")) { // migrate from old config
-                featureColors.put(Feature.CONFIRMATION_COLOR, ConfigColor.values()[loadedConfig.get("confirmationColor").getAsInt()]);
+            if (settingsConfig.has("confirmationColor")) { // migrate from old config
+                featureColors.put(Feature.CONFIRMATION_COLOR, ConfigColor.values()[settingsConfig.get("confirmationColor").getAsInt()]);
             } else {
                 featureColors.put(Feature.CONFIRMATION_COLOR, ConfigColor.RED);
             }
-            if (loadedConfig.has("manaBarColor")) { // migrate from old config
-                featureColors.put(Feature.MANA_BAR_COLOR, ConfigColor.values()[loadedConfig.get("manaBarColor").getAsInt()]);
+            if (settingsConfig.has("manaBarColor")) { // migrate from old config
+                featureColors.put(Feature.MANA_BAR_COLOR, ConfigColor.values()[settingsConfig.get("manaBarColor").getAsInt()]);
             } else {
                 featureColors.put(Feature.MANA_BAR_COLOR, ConfigColor.BLUE);
             }
-            if (loadedConfig.has("manaBarTextColor")) { // migrate from old config
-                featureColors.put(Feature.MANA_TEXT_COLOR, ConfigColor.values()[loadedConfig.get("manaBarTextColor").getAsInt()]);
+            if (settingsConfig.has("manaBarTextColor")) { // migrate from old config
+                featureColors.put(Feature.MANA_TEXT_COLOR, ConfigColor.values()[settingsConfig.get("manaBarTextColor").getAsInt()]);
             } else {
                 featureColors.put(Feature.MANA_TEXT_COLOR, ConfigColor.BLUE);
             }
-            if (loadedConfig.has("guiScale")) {
-                guiScale = loadedConfig.get("guiScale").getAsFloat();
+            if (settingsConfig.has("guiScale")) {
+                guiScale = settingsConfig.get("guiScale").getAsFloat();
             }
-            if (loadedConfig.has("manaTextX")) {
-                manaTextX = loadedConfig.get("manaTextX").getAsFloat();
+            if (settingsConfig.has("manaTextX")) {
+                manaTextX = settingsConfig.get("manaTextX").getAsFloat();
             }
-            if (loadedConfig.has("manaTextY")) {
-                manaTextY = loadedConfig.get("manaTextY").getAsFloat();
+            if (settingsConfig.has("manaTextY")) {
+                manaTextY = settingsConfig.get("manaTextY").getAsFloat();
             }
-//            if (loadedConfig.has("inventoryWarningSeconds")) {
-//                inventoryWarningSeconds = loadedConfig.get("inventoryWarningSeconds").getAsInt();
+            if (settingsConfig.has("language")) {
+                language = settingsConfig.get("language").getAsString();
+            }
+//            if (settingsConfig.has("inventoryWarningSeconds")) {
+//                inventoryWarningSeconds = settingsConfig.get("inventoryWarningSeconds").getAsInt();
 //            }
         } else {
             addDefaultsAndSave();
         }
+        loadLanguageFile();
     }
 
     private void addDefaultsAndSave() {
@@ -117,41 +125,135 @@ public class ConfigValues {
         saveConfig();
     }
 
+    public void loadLanguageFile() {//new File("src/main/resources/lang/" + language + ".json");
+        try {
+            File languageFile = new File(getClass().getClassLoader().getResource("lang/" + language + ".json").toURI());
+            FileReader reader = new FileReader(languageFile);
+            BufferedReader bufferedReader = new BufferedReader(reader);
+            StringBuilder builder = new StringBuilder();
+            String nextLine;
+            while ((nextLine = bufferedReader.readLine()) != null) {
+                builder.append(nextLine);
+            }
+            languageConfig = new JsonParser().parse(builder.toString()).getAsJsonObject();
+        } catch (JsonParseException | IllegalStateException | IOException | URISyntaxException ex) {
+            ex.printStackTrace();
+            System.out.println("SkyblockAddons: There was an error loading the language file.");
+        }
+    }
+
     @SuppressWarnings("ResultOfMethodCallIgnored")
     public void saveConfig() {
-        loadedConfig = new JsonObject();
+        settingsConfig = new JsonObject();
         try {
-            configFile.createNewFile();
-            FileWriter writer = new FileWriter(configFile);
+            settingsConfigFile.createNewFile();
+            FileWriter writer = new FileWriter(settingsConfigFile);
             BufferedWriter bufferedWriter = new BufferedWriter(writer);
 
             JsonArray jsonArray = new JsonArray();
             for (Feature element : disabledFeatures) {
                 jsonArray.add(new GsonBuilder().create().toJsonTree(element.getId()));
             }
-            loadedConfig.add("disabledFeatures", jsonArray);
-            loadedConfig.addProperty("warningColor", getColor(Feature.WARNING_COLOR).ordinal());
-            loadedConfig.addProperty("confirmationColor", getColor(Feature.CONFIRMATION_COLOR).ordinal());
-            loadedConfig.addProperty("manaBarColor", getColor(Feature.MANA_BAR_COLOR).ordinal());
-            loadedConfig.addProperty("manaBarTextColor", getColor(Feature.MANA_TEXT_COLOR).ordinal());
-            loadedConfig.addProperty("manaBarType", manaBarType.ordinal());
-            loadedConfig.addProperty("warningSeconds", warningSeconds);
-//            loadedConfig.addProperty("inventoryWarningSeconds", inventoryWarningSeconds);
-            loadedConfig.addProperty("manaBarX", manaBarX);
-            loadedConfig.addProperty("manaBarY", manaBarY);
-            loadedConfig.addProperty("manaTextX", manaTextX);
-            loadedConfig.addProperty("manaTextY", manaTextY);
-            loadedConfig.addProperty("skeletonBarX", skeletonBarX);
-            loadedConfig.addProperty("skeletonBarY", skeletonBarY);
-            loadedConfig.addProperty("guiScale", guiScale);
+            settingsConfig.add("disabledFeatures", jsonArray);
+            settingsConfig.addProperty("warningColor", getColor(Feature.WARNING_COLOR).ordinal());
+            settingsConfig.addProperty("confirmationColor", getColor(Feature.CONFIRMATION_COLOR).ordinal());
+            settingsConfig.addProperty("manaBarColor", getColor(Feature.MANA_BAR_COLOR).ordinal());
+            settingsConfig.addProperty("manaBarTextColor", getColor(Feature.MANA_TEXT_COLOR).ordinal());
+            settingsConfig.addProperty("manaBarType", manaBarType.ordinal());
+            settingsConfig.addProperty("warningSeconds", warningSeconds);
+//            settingsConfig.addProperty("inventoryWarningSeconds", inventoryWarningSeconds);
+            settingsConfig.addProperty("manaBarX", manaBarX);
+            settingsConfig.addProperty("manaBarY", manaBarY);
+            settingsConfig.addProperty("manaTextX", manaTextX);
+            settingsConfig.addProperty("manaTextY", manaTextY);
+            settingsConfig.addProperty("skeletonBarX", skeletonBarX);
+            settingsConfig.addProperty("skeletonBarY", skeletonBarY);
+            settingsConfig.addProperty("guiScale", guiScale);
+            settingsConfig.addProperty("language", language);
 
-            bufferedWriter.write(loadedConfig.toString());
+            bufferedWriter.write(settingsConfig.toString());
             bufferedWriter.close();
             writer.close();
         } catch (Exception ex) {
             ex.printStackTrace();
             System.out.println("An error occurred while attempting to save the config!");
         }
+    }
+
+    public String getMessage(Message message, String... variables) {
+        String text;
+        if (message.getMessageObject() == MessageObject.SETTING) {
+            text = languageConfig.getAsJsonObject("settings").get(message.getMemberName()).getAsString();
+            if (message == Message.SETTING_WARNING_TIME) {
+                text = text.replace("%time%", String.valueOf(warningSeconds));
+            } else if (message == Message.SETTING_MANA_BAR) {
+                text = text.replace("%type%", manaBarType.getDisplayText());
+            } else if (message == Message.SETTING_GUI_SCALE) {
+                text = text.replace("%scale%", variables[0]);
+            } else if (message == Message.MESSAGE_NEW_VERSION) {
+                text = text.replace("%newestVersion%", variables[0]);
+            } else if (message == Message.MESSAGE_DEVELOPMENT_VERSION) {
+                text = text.replace("%version%", variables[0]).replace("%newVersion%", variables[1]);
+            }
+        } else if (message.getMessageObject() == MessageObject.MANA_BAR_TYPE) {
+            text = languageConfig.getAsJsonObject("settings").getAsJsonObject("manaBarTypes").get(message.getMemberName()).getAsString();
+        } else {
+            text = languageConfig.getAsJsonObject("messages").get(message.getMemberName()).getAsString();
+        }
+        return text;
+    }
+
+    public enum Message {
+        SETTING_MAGMA_BOSS_WARNING(MessageObject.SETTING, "magmaBossWarning"),
+        SETTING_ITEM_DROP_CONFIRMATION(MessageObject.SETTING, "itemDropConfirmation"),
+        SETTING_WARNING_TIME(MessageObject.SETTING, "warningTime"),
+        SETTING_MANA_BAR(MessageObject.SETTING, "manaBar"),
+        SETTING_HIDE_SKELETON_HAT_BONES(MessageObject.SETTING, "hideSkeletonHatBones"),
+        SETTING_SKELETON_HAT_BONES_BAR(MessageObject.SETTING, "skeletonHatBonesBar"),
+        SETTING_HIDE_FOOD_AND_ARMOR(MessageObject.SETTING, "hideFoodAndArmor"),
+        SETTING_FULL_INVENTORY_WARNING(MessageObject.SETTING, "fullInventoryWarning"),
+        SETTING_MAGMA_BOSS_HEALTH_BAR(MessageObject.SETTING, "magmaBossHealthBar"),
+        SETTING_DISABLE_EMBER_ROD_ABILITY(MessageObject.SETTING, "disableEmberRodAbility"),
+        SETTING_WARNING_COLOR(MessageObject.SETTING, "warningColor"),
+        SETTING_CONFIRMATION_COLOR(MessageObject.SETTING, "confirmationColor"),
+        SETTING_MANA_TEXT_COLOR(MessageObject.SETTING, "manaTextColor"),
+        SETTING_MANA_BAR_COLOR(MessageObject.SETTING, "manaBarColor"),
+        SETTING_EDIT_LOCATIONS(MessageObject.SETTING, "editLocations"),
+        SETTING_GUI_SCALE(MessageObject.SETTING, "guiScale"),
+
+        MANA_BAR_TYPE_BAR_TEXT(MessageObject.MANA_BAR_TYPE, "barAndText"),
+        MANA_BAR_TYPE_BAR(MessageObject.MANA_BAR_TYPE, "bar"),
+        MANA_BAR_TYPE_TEXT(MessageObject.MANA_BAR_TYPE, "text"),
+        MANA_BAR_TYPE_OFF(MessageObject.MANA_BAR_TYPE, "off"),
+
+        MESSAGE_DROP_CONFIRMATION(MessageObject.MESSAGES, "dropConfirmation"),
+        MESSAGE_MAGMA_BOSS_WARNING(MessageObject.MESSAGES, "magmaBossWarning"),
+        MESSAGE_FULL_INVENTORY(MessageObject.MESSAGES, "fullInventory"),
+        MESSAGE_NEW_VERSION(MessageObject.MESSAGES, "newVersion"),
+        MESSAGE_DEVELOPMENT_VERSION(MessageObject.MESSAGES, "developmentVersion");
+
+
+        private MessageObject messageObject;
+        private String memberName;
+
+        Message(MessageObject messageObject, String memberName) {
+            this.messageObject = messageObject;
+            this.memberName = memberName;
+        }
+
+        public MessageObject getMessageObject() {
+            return messageObject;
+        }
+
+        public String getMemberName() {
+            return memberName;
+        }
+    }
+
+    private enum MessageObject {
+        SETTING,
+        MANA_BAR_TYPE,
+        MESSAGES
     }
 
     public Feature.ManaBarType getManaBarType() {

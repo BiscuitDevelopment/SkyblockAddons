@@ -2,6 +2,7 @@ package codes.biscuit.skyblockaddons.gui;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.utils.ConfigColor;
+import codes.biscuit.skyblockaddons.utils.ConfigValues;
 import codes.biscuit.skyblockaddons.utils.Feature;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.SoundHandler;
@@ -78,9 +79,9 @@ public class ButtonRegular extends GuiButton {
                 fontColor = new Color(255, 255, 160, alpha).getRGB();
             }
             if (feature == Feature.WARNING_TIME) {
-                displayString = "Warning Time: "+main.getConfigValues().getWarningSeconds()+"s";
+                displayString = main.getConfigValues().getMessage(ConfigValues.Message.SETTING_WARNING_TIME);
             } else if (feature == Feature.MANA_BAR) {
-                displayString = "Mana Bar: "+main.getConfigValues().getManaBarType().getDisplayText();
+                displayString = main.getConfigValues().getMessage(ConfigValues.Message.SETTING_MANA_BAR);
             }
             this.drawCenteredString(mc.fontRendererObj, displayString, xPosition+width/2, yPosition+(this.height-8)/2, fontColor);
             GlStateManager.disableBlend();

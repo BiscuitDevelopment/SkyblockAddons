@@ -198,14 +198,14 @@ public class Utils {
                     }
                     if (newestVersionNumbers.get(i) > thisVersionNumbers.get(i)) {
                         sendMessage(EnumChatFormatting.GRAY.toString() + EnumChatFormatting.STRIKETHROUGH + "--------------" + EnumChatFormatting.GRAY + "[" + EnumChatFormatting.BLUE + EnumChatFormatting.BOLD + " SkyblockAddons " + EnumChatFormatting.GRAY + "]" + EnumChatFormatting.GRAY + EnumChatFormatting.STRIKETHROUGH + "--------------");
-                        ChatComponentText newVersion = new ChatComponentText(EnumChatFormatting.YELLOW+"A new version, " + newestVersion + " is available. Download it by clicking here.");
+                        ChatComponentText newVersion = new ChatComponentText(EnumChatFormatting.YELLOW+main.getConfigValues().getMessage(ConfigValues.Message.MESSAGE_NEW_VERSION, newestVersion));
                         newVersion.setChatStyle(newVersion.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://hypixel.net/threads/forge-1-8-9-skyblockaddons-useful-features-for-skyblock.2109217/")));
                         sendMessage(newVersion);
                         sendMessage(EnumChatFormatting.GRAY.toString() + EnumChatFormatting.STRIKETHROUGH + "---------------------------------------");
                         break;
                     } else if (thisVersionNumbers.get(i) > newestVersionNumbers.get(i)) {
                         sendMessage(EnumChatFormatting.GRAY.toString() + EnumChatFormatting.STRIKETHROUGH + "--------------" + EnumChatFormatting.GRAY + "[" + EnumChatFormatting.BLUE + EnumChatFormatting.BOLD + " SkyblockAddons " + EnumChatFormatting.GRAY + "]" + EnumChatFormatting.GRAY + EnumChatFormatting.STRIKETHROUGH + "--------------");
-                        sendMessage(EnumChatFormatting.YELLOW + "You are running a development version: " + SkyblockAddons.VERSION + ". The latest online version is " + newestVersion + ".");
+                        sendMessage(EnumChatFormatting.YELLOW + main.getConfigValues().getMessage(ConfigValues.Message.MESSAGE_NEW_VERSION, SkyblockAddons.VERSION, newestVersion));
                         sendMessage(EnumChatFormatting.GRAY.toString() + EnumChatFormatting.STRIKETHROUGH + "---------------------------------------");
                         break;
                     }

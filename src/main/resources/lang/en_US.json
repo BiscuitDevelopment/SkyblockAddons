@@ -1,0 +1,33 @@
+{
+  "settings": {
+    "magmaBossWarning": "Magma Boss Warning",
+    "itemDropConfirmation": "Item Drop Confirmation",
+    "warningTime": "Warning Time: %time%s",
+    "manaBar": "Mana Bar: %type%",
+    "manaBarTypes": {
+      "barAndText": "Bar & Text",
+      "bar": "Bar",
+      "text": "Text",
+      "off": "Off"
+    },
+    "hideSkeletonHatBones": "Hide Skeleton Hat Bones",
+    "skeletonHatBonesBar": "Skeleton Hat Bones Bar",
+    "hideFoodAndArmor": "Hide Food & Armor Bar",
+    "fullInventoryWarning": "Full Inventory Warning",
+    "magmaBossHealthBar": "Magma Boss Health Barr",
+    "disableEmberRodAbility": "Disable Ember Rod Ability on Island",
+    "warningColor": "Warning Color",
+    "confirmationColor": "Confirmation Color",
+    "manaTextColor": "Mana Text Color",
+    "manaBarColor": "Mana Bar Color",
+    "editLocations": "Edit Locations",
+    "guiScale": "Gui Scale: %scale%"
+  },
+  "messages": {
+    "dropConfirmation": "Drop this item again to confirm!",
+    "magmaBossWarning": "MagmaCube Boss!",
+    "fullInventory": "Full Inventory!",
+    "newVersion": "A new version, %newestVersion% is available. Download it by clicking here.",
+    "developmentVersion": "You are running a development version: %version%. The latest online version is %newestVersion%"
+  }
+}

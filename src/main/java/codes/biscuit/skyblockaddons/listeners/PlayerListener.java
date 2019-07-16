@@ -4,6 +4,7 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.gui.ButtonSlider;
 import codes.biscuit.skyblockaddons.gui.LocationEditGui;
 import codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui;
+import codes.biscuit.skyblockaddons.utils.ConfigValues;
 import codes.biscuit.skyblockaddons.utils.Feature;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
@@ -85,7 +86,7 @@ public class PlayerListener {
                 GlStateManager.pushMatrix();
                 GlStateManager.scale(4.0F, 4.0F, 4.0F);
                 String text;
-                text = main.getConfigValues().getColor(Feature.WARNING_COLOR).getChatFormatting() + "MagmaCube Boss!";
+                text = main.getConfigValues().getColor(Feature.WARNING_COLOR).getChatFormatting() + main.getConfigValues().getMessage(ConfigValues.Message.MESSAGE_MAGMA_BOSS_WARNING);
                 mc.ingameGUI.getFontRenderer().drawString(text, (float) (-mc.ingameGUI.getFontRenderer().getStringWidth(text) / 2), -20.0F, 16777215, true);
                 GlStateManager.popMatrix();
 //            GlStateManager.disableBlend();
@@ -98,7 +99,7 @@ public class PlayerListener {
                 GlStateManager.pushMatrix();
                 GlStateManager.scale(4.0F, 4.0F, 4.0F);
                 String text;
-                text = main.getConfigValues().getColor(Feature.WARNING_COLOR).getChatFormatting() + "Full Inventory!";
+                text = main.getConfigValues().getColor(Feature.WARNING_COLOR).getChatFormatting() + main.getConfigValues().getMessage(ConfigValues.Message.MESSAGE_FULL_INVENTORY);
                 mc.ingameGUI.getFontRenderer().drawString(text, (float) (-mc.ingameGUI.getFontRenderer().getStringWidth(text) / 2), -20.0F, 16777215, true);
                 GlStateManager.popMatrix();
                 GlStateManager.popMatrix();

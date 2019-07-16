@@ -20,7 +20,7 @@ public abstract class MixinRenderManager {
         if (entityIn instanceof EntityItem &&
                     entityIn.ridingEntity instanceof EntityZombie && entityIn.ridingEntity.isInvisible()) { // Conditions for Skeleton Hat flying bones
             entityIn.ridingEntity.preventEntitySpawning = false; // To allow you to place blocks
-            if (!SkyblockAddons.INSTANCE.getConfigValues().getDisabledFeatures().contains(Feature.BONES)) {
+            if (!SkyblockAddons.INSTANCE.getConfigValues().getDisabledFeatures().contains(Feature.HIDE_BONES)) {
                 cir.setReturnValue(false);
             }
         }
