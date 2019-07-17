@@ -1,6 +1,7 @@
 package codes.biscuit.skyblockaddons.gui;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.utils.ConfigValues;
 import codes.biscuit.skyblockaddons.utils.Feature;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
@@ -31,9 +32,8 @@ public class LocationEditGui extends GuiScreen {
         boxWidth = 100;
         ScaledResolution scaledResolution = new ScaledResolution(Minecraft.getMinecraft());
         buttonList.add(new ButtonRegular(0, scaledResolution.getScaledWidth()/2-boxWidth/2, scaledResolution.getScaledHeight()/2-boxHeight/2,
-                "Reset Locations", main, Feature.RESET_LOCATION, boxWidth, boxHeight));
+                main.getConfigValues().getMessage(ConfigValues.Message.SETTING_RESET_LOCATIONS), main, Feature.RESET_LOCATION, boxWidth, boxHeight));
     }
-
 
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
@@ -61,12 +61,12 @@ public class LocationEditGui extends GuiScreen {
             }
         } else {
             ScaledResolution sr = new ScaledResolution(mc);
-            main.getConfigValues().setManaBarX(width/2-60, sr.getScaledWidth());
-            main.getConfigValues().setManaBarY(height/2-70, sr.getScaledHeight());
+            main.getConfigValues().setManaBarX(width/2, sr.getScaledWidth());
+            main.getConfigValues().setManaBarY(height/2-40, sr.getScaledHeight());
             main.getConfigValues().setSkeletonBarX(width/2-25, sr.getScaledWidth());
             main.getConfigValues().setSkeletonBarY(height/2-40, sr.getScaledHeight());
-            main.getConfigValues().setSkeletonBarX(width/2-25, sr.getScaledWidth());
-            main.getConfigValues().setSkeletonBarY(height/2-40, sr.getScaledHeight());
+            main.getConfigValues().setManaTextX(width/2-25, sr.getScaledWidth());
+            main.getConfigValues().setManaTextY(height/2-40, sr.getScaledHeight());
         }
     }
 
@@ -78,8 +78,6 @@ public class LocationEditGui extends GuiScreen {
             main.getConfigValues().setManaTextX(mouseX-25, sr.getScaledWidth());
             main.getConfigValues().setManaTextY(mouseY-10, sr.getScaledHeight());
         } else if (draggingManaBar) {
-//            main.getConfigValues().setManaBarX(mouseX-60, sr.getScaledWidth());
-//            main.getConfigValues().setManaBarY(mouseY-10, sr.getScaledHeight());
             main.getConfigValues().setManaBarX(mouseX, sr.getScaledWidth());
             main.getConfigValues().setManaBarY(mouseY, sr.getScaledHeight());
         } else if (draggingSkeleton) {

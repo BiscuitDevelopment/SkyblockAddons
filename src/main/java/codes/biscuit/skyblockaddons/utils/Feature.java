@@ -14,6 +14,7 @@ public enum Feature {
     FULL_INVENTORY_WARNING(7, ButtonType.REGULAR),
     MAGMA_BOSS_BAR(8, ButtonType.REGULAR),
     HIDE_DURABILITY(9, ButtonType.REGULAR), //TODO add toggle for this & for the enchantment feature
+    SHOW_ENCHANTMENTS(10, ButtonType.REGULAR),
 
     WARNING_COLOR(-1, ButtonType.COLOR),
     CONFIRMATION_COLOR(-1, ButtonType.COLOR),

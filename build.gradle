@@ -57,10 +57,10 @@ repositories {
 //    flatDir {
 //        dirs 'libs'
 //    }
-//}
+//}s
 
 dependencies {
-    provided('org.spongepowered:mixin:0.6.4-SNAPSHOT') { //0.5.3-SNAPSHOT 0.7.11-SNAPSHOT 0.6.4-SNAPSHOT
+    provided('org.spongepowered:mixin:0.6.4-SNAPSHOT') { //0.5.3-SNAPSHOT 0.5.6-SNAPSHOT 0.6.4-SNAPSHOT 0.7.11-SNAPSHOT
         exclude module: 'launchwrapper'
         exclude module: 'guava'
         exclude module: 'gson'

@@ -3,7 +3,6 @@ package codes.biscuit.skyblockaddons.utils;
 import com.google.gson.*;
 
 import java.io.*;
-import java.net.URISyntaxException;
 import java.util.EnumMap;
 import java.util.EnumSet;
 import java.util.Map;
@@ -125,18 +124,29 @@ public class ConfigValues {
         saveConfig();
     }
 
-    public void loadLanguageFile() {//new File("src/main/resources/lang/" + language + ".json");
+    public void loadLanguageFile() {
         try {
-            File languageFile = new File(getClass().getClassLoader().getResource("lang/" + language + ".json").toURI());
-            FileReader reader = new FileReader(languageFile);
-            BufferedReader bufferedReader = new BufferedReader(reader);
-            StringBuilder builder = new StringBuilder();
-            String nextLine;
-            while ((nextLine = bufferedReader.readLine()) != null) {
-                builder.append(nextLine);
+            InputStream fileStream = getClass().getClassLoader().getResourceAsStream("lang/" + language + ".json");
+            if (fileStream != null) {
+                ByteArrayOutputStream result = new ByteArrayOutputStream();
+                byte[] buffer = new byte[1024];
+                int length;
+                while ((length = fileStream.read(buffer)) != -1) {
+                    result.write(buffer, 0, length);
+                }
+                String dataString = result.toString("UTF-8");
+//            File languageFile = new File(getClass().getClassLoader().getResourceAsStream("lang/" + language + ".json").toURI());
+//            FileReader reader = new FileReader(languageFile);
+//            BufferedReader bufferedReader = new BufferedReader(reader);
+//            StringBuilder builder = new StringBuilder();
+//            String nextLine;
+//            while ((nextLine = bufferedReader.readLine()) != null) {
+//                builder.append(nextLine);
+//            } builder.toString()
+                languageConfig = new JsonParser().parse(dataString).getAsJsonObject();
+                fileStream.close();
             }
-            languageConfig = new JsonParser().parse(builder.toString()).getAsJsonObject();
-        } catch (JsonParseException | IllegalStateException | IOException | URISyntaxException ex) {
+        } catch (JsonParseException | IllegalStateException | IOException ex) {
             ex.printStackTrace();
             System.out.println("SkyblockAddons: There was an error loading the language file.");
         }
@@ -220,6 +230,7 @@ public class ConfigValues {
         SETTING_MANA_BAR_COLOR(MessageObject.SETTING, "manaBarColor"),
         SETTING_EDIT_LOCATIONS(MessageObject.SETTING, "editLocations"),
         SETTING_GUI_SCALE(MessageObject.SETTING, "guiScale"),
+        SETTING_RESET_LOCATIONS(MessageObject.SETTING, "resetLocations"),
 
         MANA_BAR_TYPE_BAR_TEXT(MessageObject.MANA_BAR_TYPE, "barAndText"),
         MANA_BAR_TYPE_BAR(MessageObject.MANA_BAR_TYPE, "bar"),

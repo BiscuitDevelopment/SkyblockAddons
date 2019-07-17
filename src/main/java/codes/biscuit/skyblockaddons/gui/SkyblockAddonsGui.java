@@ -7,7 +7,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.util.EnumChatFormatting;
 import net.minecraftforge.client.GuiIngameForge;
 
 import java.awt.*;
@@ -79,18 +78,27 @@ public class SkyblockAddonsGui extends GuiScreen {
         GlStateManager.pushMatrix();
         float scale = 2.5F;
         float scaleMultiplier = 1F/scale; // Keeps the proportions of the text intact.
-        GlStateManager.scale(scale, scale, scale);
+        GlStateManager.scale(scale, scale, 1);
         if (alpha < 4) alpha = 4; // Text under 4 alpha appear 100% transparent for some reason o.O
-        drawCenteredString(fontRendererObj, EnumChatFormatting.WHITE+"SkyblockAddons",
-                (int)(width/2*scaleMultiplier), (int)(height*0.12*scaleMultiplier), new Color(255,255,255, alpha*2).getRGB());
+        int blue = new Color(189,236,252, alpha*2).getRGB();
+        drawCenteredString(fontRendererObj, "SkyblockAddons",
+                (int)(width/2*scaleMultiplier), (int)(height*0.12*scaleMultiplier), blue);
+        GlStateManager.popMatrix();
+
+        GlStateManager.pushMatrix();
+        scale = 1.3F;
+        scaleMultiplier = 1F/scale; // Keeps the proportions of the text intact.
+        GlStateManager.scale(scale, scale, 1);
+        drawCenteredString(fontRendererObj, "by Biscut",
+                (int)(width/2*scaleMultiplier)+50, (int)(height*0.12*scaleMultiplier)+17, blue);
         GlStateManager.popMatrix();
 
         GlStateManager.pushMatrix();
         scale = 1.5F;
         scaleMultiplier = 1F/scale;
         GlStateManager.scale(scale, scale, scale);
-        drawCenteredString(fontRendererObj, EnumChatFormatting.WHITE+"Settings",
-                (int)(width/2*scaleMultiplier), (int)(height*0.58*scaleMultiplier), new Color(255,255,255, alpha*2).getRGB());
+        drawCenteredString(fontRendererObj, "Settings",
+                (int)(width/2*scaleMultiplier), (int)(height*0.58*scaleMultiplier), blue);
         GlStateManager.popMatrix();
 
         super.drawScreen(mouseX, mouseY, partialTicks); // Draw buttons.
