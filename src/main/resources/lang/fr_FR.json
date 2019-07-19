@@ -1,7 +1,6 @@
 {
   "language": "Français",
   "settings": {
-    "language": "Langue: ",
     "settings": "Paramètres",
     "openSettings": "Ouvrir les paramètres",
     "magmaBossWarning": "Attention Boss de Magma",
@@ -38,6 +37,7 @@
     "newVersion": "Une nouvelle version, %newestVersion% est disponible. Télécharger le en cliquant ici.",
     "discord": "Vous voulez voir les changements? Cliquez ici pour rejoindre mon discord",
     "developmentVersion": "Vous utiliez une version de développement : %version%. La dernière version en ligne est %newestVersion%",
-    "labymod": "Utilisateurs de Labymod: Il y a une incompatibilité avec l'option: Masquer la barre de nourriture et d'armure est incompatible"
+    "labymod": "Utilisateurs de Labymod: Il y a une incompatibilité avec l'option: Masquer la barre de nourriture et d'armure est incompatible",
+    "minionCannotReach": "A %type% minion cannot reach and has stopped spawning!"
   }
 }
