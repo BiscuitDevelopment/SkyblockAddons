@@ -1,7 +1,6 @@
 {
   "language": "English",
   "settings": {
-    "language": "Language: ",
     "settings": "Settings",
     "openSettings": "Open Settings",
     "magmaBossWarning": "Magma Boss Warning",
@@ -39,5 +38,6 @@
     "discord": "Want to view the changes? Click here to join my discord.",
     "developmentVersion": "You are running a development version: %version%. The latest online version is %newestVersion%",
     "labymod": "Labymod Users: Hide Food & Armor Bar is incompatible."
+    "minionCannotReach": "A %type% minion cannot reach and has stopped spawning!"
   }
 }
