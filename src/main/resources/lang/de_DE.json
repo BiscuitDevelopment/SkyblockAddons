@@ -1,7 +1,6 @@
 {
   "language": "Deutsch",
   "settings": {
-    "language": "Sprache: ",
     "settings": "Einstellungen",
     "openSettings": "Einstellungen öffnen",
     "magmaBossWarning": "Magma Boss Spawn Warnung",
@@ -38,6 +37,7 @@
     "newVersion": "Eine neue Version, %newestVersion%, ist verfügbar. Lade sie herunter, indem du hier klickst.",
     "discord": "Du willst die Neuerungen sehen? Klicke hier, um meinem Discord (Englisch) beizutreten.",
     "developmentVersion": "Du benutzt eine Entwicklungsversion, %version%. Die neueste stabile Version ist %newestVersion%",
-    "labymod": "LabyMod-Nutzer: Die Option 'Essens- und Rüstungsleiste verbergen' ist inkompatibel"
+    "labymod": "LabyMod-Nutzer: Die Option 'Essens- und Rüstungsleiste verbergen' ist inkompatibel",
+    "minionCannotReach": "A %type% minion cannot reach and has stopped spawning!"
   }
 }
