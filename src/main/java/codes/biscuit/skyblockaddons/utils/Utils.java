@@ -17,19 +17,24 @@ import net.minecraft.util.MathHelper;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.common.MinecraftForge;
 
+import java.awt.*;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.List;
 import java.util.*;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class Utils {
 
+    private boolean wearingSkeletonHelmet = false;
     private static boolean onIsland = false;
     private static boolean onSkyblock = false;
     private static boolean inventoryIsFull = false;
+
+    private boolean fadingIn;
 
     private SkyblockAddons main;
 
@@ -54,34 +59,37 @@ public class Utils {
         }
     }
 
-    public void checkIfInventoryIsFull() {
+    public void checkIfInventoryIsFull(Minecraft mc, EntityPlayerSP p) {
         if (!main.getConfigValues().getDisabledFeatures().contains(Feature.FULL_INVENTORY_WARNING)) {
-            Minecraft mc = Minecraft.getMinecraft();
-            if (mc != null) {
-                EntityPlayerSP player = mc.thePlayer;
-                if (player != null) {
-                    for (ItemStack item : player.inventory.mainInventory) {
-                        if (item == null) {
-                            inventoryIsFull = false;
-                            return;
+            for (ItemStack item : p.inventory.mainInventory) {
+                if (item == null) {
+                    inventoryIsFull = false;
+                    return;
+                }
+            }
+            if (!inventoryIsFull) {
+                inventoryIsFull = true;
+                if (mc.currentScreen == null && System.currentTimeMillis() - main.getPlayerListener().getLastWorldJoin() > 3000) {
+                    p.playSound("random.orb", 1, 0.5F);
+                    main.getPlayerListener().setFullInventoryWarning(true);
+                    new Timer().schedule(new TimerTask() {
+                        @Override
+                        public void run() {
+                            main.getPlayerListener().setFullInventoryWarning(false);
                         }
-                    }
-                    if (!inventoryIsFull) {
-                        inventoryIsFull = true;
-                        if (mc.currentScreen == null && System.currentTimeMillis() - main.getPlayerListener().getLastWorldJoin() > 3000) {
-                            mc.thePlayer.playSound("random.orb", 1, 0.5F);
-                            main.getPlayerListener().setFullInventoryWarning(true);
-                            new Timer().schedule(new TimerTask() {
-                                @Override
-                                public void run() {
-                                    main.getPlayerListener().setFullInventoryWarning(false);
-                                }
-                            }, main.getConfigValues().getWarningSeconds() * 1000);
-                        }
-                    }
+                    }, main.getConfigValues().getWarningSeconds() * 1000);
                 }
             }
         }
+    }
+
+    public void checkIfWearingSkeletonHelmet(EntityPlayerSP p) {
+        ItemStack item = p.getEquipmentInSlot(4);
+        if (item != null && item.hasDisplayName() && item.getDisplayName().contains("Skeleton's Helmet")) {
+            wearingSkeletonHelmet = true;
+            return;
+        }
+        wearingSkeletonHelmet = false;
     }
 
     public void checkIfOnSkyblockAndIsland() { // Most of this is replicated from the scoreboard rendering code so not many comments here xD
@@ -142,6 +150,10 @@ public class Utils {
 
     private String getStringOnly(String text) {
         return Pattern.compile("[^a-z A-Z]").matcher(text).replaceAll("");
+    }
+
+    public String getNumbersOnly(String text) {
+        return Pattern.compile("[^0-9 /]").matcher(text).replaceAll("");
     }
 
     public void checkUpdates() {
@@ -216,8 +228,13 @@ public class Utils {
         }).start();
     }
 
+    public int getDefaultColor(float alphaFloat) {
+        int alpha = (int)alphaFloat;
+        return new Color(150,236,255, alpha).getRGB();
+    }
+
     private final Pattern STRIP_COLOR_PATTERN = Pattern.compile( "(?i)" + '\u00A7' + "[0-9A-FK-OR]" );
-    private String stripColor(final String input) {
+    public String stripColor(final String input) {
         return STRIP_COLOR_PATTERN.matcher(input).replaceAll("");
     }
 
@@ -227,5 +244,17 @@ public class Utils {
 
     public boolean isOnSkyblock() {
         return onSkyblock;
+    }
+
+    public boolean isFadingIn() {
+        return fadingIn;
+    }
+
+    public void setFadingIn(boolean fadingIn) {
+        this.fadingIn = fadingIn;
+    }
+
+    public boolean isWearingSkeletonHelmet() {
+        return wearingSkeletonHelmet;
     }
 }

@@ -29,14 +29,18 @@ public class ButtonRegular extends GuiButton {
     @Override
     public void drawButton(Minecraft mc, int mouseX, int mouseY) {
         if (visible) {
-            long timeSinceOpen = System.currentTimeMillis() - timeOpened;
+            int alpha;
             float alphaMultiplier = 1F;
-            int fadeMilis = 500;
-            if (timeSinceOpen <= fadeMilis) {
-                alphaMultiplier = (float)timeSinceOpen/fadeMilis;
+            if (main.getUtils().isFadingIn()) {
+                long timeSinceOpen = System.currentTimeMillis() - timeOpened;
+                int fadeMilis = 500;
+                if (timeSinceOpen <= fadeMilis) {
+                    alphaMultiplier = (float) timeSinceOpen / fadeMilis;
+                }
+                alpha = (int) (255 * alphaMultiplier);
+            } else {
+                alpha = 255;
             }
-            int alpha = (int)(255*alphaMultiplier);
-
             hovered = mouseX >= this.xPosition && mouseY >= this.yPosition && mouseX < this.xPosition + this.width && mouseY < this.yPosition + this.height;
             int boxColor;
             int boxAlpha = 100;
@@ -63,13 +67,9 @@ public class ButtonRegular extends GuiButton {
                     }
                 }
             } else if (feature.getButtonType() == Feature.ButtonType.SOLID) {
-                if (feature == Feature.EDIT_LOCATIONS) {
-                    boxColor = ConfigColor.GREEN.getColor(boxAlpha * alphaMultiplier);
-                } else {
-                    boxColor = ConfigColor.RED.getColor(boxAlpha * alphaMultiplier);
-                }
+                boxColor = main.getUtils().getDefaultColor(boxAlpha * alphaMultiplier);
             } else {
-                boxColor = ConfigColor.GRAY.getColor(boxAlpha * alphaMultiplier);
+                boxColor = main.getUtils().getDefaultColor(boxAlpha * alphaMultiplier);
             }
             drawRect(this.xPosition, this.yPosition, this.xPosition+this.width, this.yPosition+this.height, boxColor);
             GlStateManager.enableBlend();

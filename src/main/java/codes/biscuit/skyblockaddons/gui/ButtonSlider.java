@@ -43,39 +43,24 @@ public class ButtonSlider extends GuiButton {
             if (hovered) {
                 boxAlpha = 170;
             }
-            drawRect(this.xPosition, this.yPosition, this.xPosition+this.width, this.yPosition+this.height, ConfigColor.DARK_GRAY.getColor(boxAlpha));
+            drawRect(this.xPosition, this.yPosition, this.xPosition+this.width, this.yPosition+this.height, main.getUtils().getDefaultColor(boxAlpha));
             this.mouseDragged(mc, mouseX, mouseY);
             int j = 14737632;
-
-            if (packedFGColour != 0)
-            {
+            if (packedFGColour != 0) {
                 j = packedFGColour;
-            }
-            else
-            if (!this.enabled)
-            {
+            } else if (!this.enabled) {
                 j = 10526880;
-            }
-            else if (this.hovered)
-            {
+            } else if (this.hovered) {
                 j = 16777120;
             }
-
             this.drawCenteredString(fontrenderer, this.displayString, this.xPosition + this.width / 2, this.yPosition + (this.height - 8) / 2, j);
         }
     }
 
-    /**
-     * Returns 0 if the button is disabled, 1 if the mouse is NOT hovering over this button and 2 if it IS hovering over
-     * this button.
-     */
     protected int getHoverState(boolean mouseOver) {
         return 0;
     }
 
-    /**
-     * Fired when the mouse button is dragged. Equivalent of MouseListener.mouseDragged(MouseEvent e).
-     */
     protected void mouseDragged(Minecraft mc, int mouseX, int mouseY) {
         if (this.visible) {
             if (this.dragging) {
@@ -89,23 +74,15 @@ public class ButtonSlider extends GuiButton {
 
             mc.getTextureManager().bindTexture(buttonTextures);
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-            drawRect(this.xPosition + (int) (this.sliderValue * (float) (this.width - 8))+1, this.yPosition, this.xPosition + (int) (this.sliderValue * (float) (this.width - 8))+7, this.yPosition + 20, ConfigColor.GRAY.getColor(255));
-//            drawRect(this.xPosition + (int) (this.sliderValue * (float) (this.width - 8)) + 4, this.yPosition, this.xPosition + (int) (this.sliderValue * (float) (this.width - 8)) + 4 + 4, this.yPosition + 20, ConfigColor.GRAY.getColor(255));
-//            this.drawTexturedModalRect(this.xPosition + (int) (this.sliderValue * (float) (this.width - 8)), this.yPosition, 0, 66, 4, 20);
-//            this.drawTexturedModalRect(this.xPosition + (int) (this.sliderValue * (float) (this.width - 8)) + 4, this.yPosition, 196, 66, 4, 20);
+            drawRect(this.xPosition + (int) (this.sliderValue * (float) (this.width - 8))+1, this.yPosition, this.xPosition + (int) (this.sliderValue * (float) (this.width - 8))+7, this.yPosition + 20, ConfigColor.WHITE.getColor(255));
         }
     }
 
-    /**
-     * Returns true if the mouse has been pressed on this control. Equivalent of MouseListener.mousePressed(MouseEvent
-     * e).
-     */
     public boolean mousePressed(Minecraft mc, int mouseX, int mouseY) {
         if (super.mousePressed(mc, mouseX, mouseY)) {
             this.sliderValue = (float) (mouseX - (this.xPosition + 4)) / (float) (this.width - 8);
             this.sliderValue = MathHelper.clamp_float(this.sliderValue, 0.0F, 1.0F);
             main.getConfigValues().setGuiScale(sliderValue);
-//            mc.gameSettings.setOptionFloatValue(this.options, this.options.denormalizeValue(this.sliderValue));
             this.displayString = main.getConfigValues().getMessage(ConfigValues.Message.SETTING_GUI_SCALE, String.valueOf(getRoundedValue(main.getUtils().denormalizeValue(sliderValue, VALUE_MIN, VALUE_MAX, VALUE_STEP))));
             this.dragging = true;
             return true;
@@ -114,9 +91,6 @@ public class ButtonSlider extends GuiButton {
         }
     }
 
-    /**
-     * Fired when the mouse button is released. Equivalent of MouseListener.mouseReleased(MouseEvent e).
-     */
     public void mouseReleased(int mouseX, int mouseY) {
         this.dragging = false;
     }

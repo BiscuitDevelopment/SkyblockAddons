@@ -1,6 +1,8 @@
 package codes.biscuit.skyblockaddons.mixins;
 
+import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.utils.EnchantPair;
+import codes.biscuit.skyblockaddons.utils.Feature;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.inventory.GuiContainer;
@@ -24,49 +26,66 @@ import java.util.regex.Pattern;
 @Mixin(GuiContainer.class)
 public class MixinGuiContainer {
 
+    private EnchantPair reforgeToRender = null;
     private Set<EnchantPair> enchantsToRender = new HashSet<>();
 
-        @Inject(method = "drawSlot", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/entity/RenderItem;renderItemOverlayIntoGUI(Lnet/minecraft/client/gui/FontRenderer;Lnet/minecraft/item/ItemStack;IILjava/lang/String;)V",
+    @Inject(method = "drawSlot", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/entity/RenderItem;renderItemOverlayIntoGUI(Lnet/minecraft/client/gui/FontRenderer;Lnet/minecraft/item/ItemStack;IILjava/lang/String;)V",
             ordinal = 0), locals = LocalCapture.CAPTURE_FAILSOFT)
-    private void shouldRenderSaveSlots(Slot slotIn, CallbackInfo ci, int i, int j, ItemStack item, boolean flag, boolean flag1,
+    private void shouldRenderSaveSlots(Slot slotIn, CallbackInfo ci, int x, int y, ItemStack item, boolean flag, boolean flag1,
                                       ItemStack itemstack1, String s) {
-        Minecraft mc = Minecraft.getMinecraft();
-        FontRenderer fr = mc.fontRendererObj;
-        if (item != null && item.hasDisplayName() && item.getDisplayName().startsWith(EnumChatFormatting.GREEN+"Enchant Item")) {
-            List<String> toolip = item.getTooltip(mc.thePlayer, false);
-            if (toolip.size() > 2) {
-                String enchantLine = toolip.get(2);
-                String enchant = EnumChatFormatting.YELLOW + enchantLine.split(Pattern.quote("* "))[1];
-                float y;
-                if (slotIn.slotNumber == 29 || slotIn.slotNumber == 33) {
-                    y = 26;
-                } else {
-                    y = 36;
+        if (!SkyblockAddons.INSTANCE.getConfigValues().getDisabledFeatures().contains(Feature.SHOW_ENCHANTMENTS_REFORGES)) {
+            Minecraft mc = Minecraft.getMinecraft();
+            FontRenderer fr = mc.fontRendererObj;
+            if (item != null && item.hasDisplayName()) {
+                if (item.getDisplayName().startsWith(EnumChatFormatting.GREEN + "Enchant Item")) {
+                    List<String> toolip = item.getTooltip(mc.thePlayer, false);
+                    if (toolip.size() > 2) {
+                        String enchantLine = toolip.get(2);
+                        String enchant = EnumChatFormatting.YELLOW + enchantLine.split(Pattern.quote("* "))[1];
+                        float yOff;
+                        if (slotIn.slotNumber == 29 || slotIn.slotNumber == 33) {
+                            yOff = 26;
+                        } else {
+                            yOff = 36;
+                        }
+                        float scaleMultiplier = 1 / 0.75F;
+                        float halfStringWidth = fr.getStringWidth(enchant) / 2;
+                        x += 8; // to center it
+                        enchantsToRender.add(new EnchantPair(x * scaleMultiplier - halfStringWidth, y * scaleMultiplier + yOff, enchant));
+                    }
+                } else if (slotIn.inventory.getDisplayName().getUnformattedText().equals("Reforge Item") && slotIn.slotNumber == 13) {
+                    String[] nameParts = item.getDisplayName().split(" ");
+                    if (nameParts.length > 2) {
+                        String enchant = EnumChatFormatting.YELLOW+SkyblockAddons.INSTANCE.getUtils().stripColor(nameParts[0]);
+                        x -= 28;
+                        y += 22;
+                        float halfStringWidth = fr.getStringWidth(enchant) / 2;
+                        reforgeToRender = new EnchantPair(x-halfStringWidth, y, enchant);
+                    }
                 }
-                float scaleMultiplier = 1 / 0.75F;
-                float halfStringWidth = fr.getStringWidth(enchant) / 2;
-                i += 8; // to center it
-                enchantsToRender.add(new EnchantPair(i * scaleMultiplier - halfStringWidth, j * scaleMultiplier + y, enchant));
             }
-        }
-        if (slotIn.slotNumber == 53) {
-            Iterator<EnchantPair> enchantPairIterator = enchantsToRender.iterator();
-            while (enchantPairIterator.hasNext()) {
-                EnchantPair enchant = enchantPairIterator.next();
+            if (slotIn.slotNumber == 53) {
                 GlStateManager.pushMatrix();
-                GlStateManager.scale(0.75, 0.75, 1);
 
                 GlStateManager.disableLighting();
                 GlStateManager.disableDepth();
                 GlStateManager.disableBlend();
-                fr.drawStringWithShadow(enchant.getEnchant(), enchant.getX(), enchant.getY(), new Color(255,255,255,255).getRGB());
+                if (reforgeToRender != null) {
+                    fr.drawStringWithShadow(reforgeToRender.getEnchant(), reforgeToRender.getX(), reforgeToRender.getY(), new Color(255, 255, 255, 255).getRGB());
+                    reforgeToRender = null;
+                }
+                GlStateManager.scale(0.75, 0.75, 1);
+                Iterator<EnchantPair> enchantPairIterator = enchantsToRender.iterator();
+                while (enchantPairIterator.hasNext()) {
+                    EnchantPair enchant = enchantPairIterator.next();
+                    fr.drawStringWithShadow(enchant.getEnchant(), enchant.getX(), enchant.getY(), new Color(255, 255, 255, 255).getRGB());
+                    enchantPairIterator.remove();
+                }
                 GlStateManager.enableLighting();
                 GlStateManager.enableDepth();
 
                 GlStateManager.popMatrix();
-                enchantPairIterator.remove();
             }
         }
     }
-
 }

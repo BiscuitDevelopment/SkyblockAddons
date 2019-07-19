@@ -39,6 +39,7 @@ public class SkyblockAddonsCommand extends CommandBase {
 
     @Override
     public void processCommand(ICommandSender sender, String[] args) {
-        main.getPlayerListener().setOpenGUI(true);
+        main.getUtils().setFadingIn(true);
+        main.getPlayerListener().setOpenMainGUI(true);
     }
 }

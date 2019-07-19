@@ -97,5 +97,7 @@ public class LocationEditGui extends GuiScreen {
     @Override
     public void onGuiClosed() {
         main.getConfigValues().saveConfig();
+        main.getUtils().setFadingIn(false);
+        main.getPlayerListener().setOpenSettingsGUI(true);
     }
 }

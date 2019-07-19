@@ -1,6 +1,9 @@
 {
   "language": "English",
   "settings": {
+    "language": "Language: ",
+    "settings": "Settings",
+    "openSettings": "Open Settings",
     "magmaBossWarning": "Magma Boss Warning",
     "itemDropConfirmation": "Item Drop Confirmation",
     "warningTime": "Warning Time: %time%s",
@@ -16,20 +19,24 @@
     "hideFoodAndArmor": "Hide Food & Armor Bar",
     "fullInventoryWarning": "Full Inventory Warning",
     "magmaBossHealthBar": "Magma Boss Health Bar",
-    "disableEmberRodAbility": "Disable Ember Rod Ability on Island",
+    "disableEmberRodAbility": "Disable Island Ember Rod",
     "warningColor": "Warning Color",
     "confirmationColor": "Confirmation Color",
     "manaTextColor": "Mana Text Color",
     "manaBarColor": "Mana Bar Color",
     "editLocations": "Edit Locations",
     "guiScale": "Gui Scale: %scale%",
-    "resetLocations": "Reset Locations"
+    "resetLocations": "Reset Locations",
+    "hideDurability": "Hide Tool Durability",
+    "showEnchantmentsReforges": "Enchants & Reforges",
+    "minionStopWarning": "Minion Stop Warning"
   },
   "messages": {
     "dropConfirmation": "Drop this item again to confirm!",
     "magmaBossWarning": "MagmaCube Boss!",
     "fullInventory": "Full Inventory!",
     "newVersion": "A new version, %newestVersion% is available. Download it by clicking here.",
-    "developmentVersion": "You are running a development version: %version%. The latest online version is %newestVersion%"
+    "developmentVersion": "You are running a development version: %version%. The latest online version is %newestVersion%",
+    "labymod": "Labymod Users: Hide Food & Armor Bar is incompatible."
   }
 }

@@ -27,7 +27,7 @@ public class ConfigValues {
     private float guiScale = 0;
     private float manaTextX = 0.45F;
     private float manaTextY = 0.83F;
-    private String language = "en_US";
+    private Feature.Language language = Feature.Language.ENGLISH;
 
     public ConfigValues(File settingsConfigFile) {
         this.settingsConfigFile = settingsConfigFile;
@@ -105,7 +105,7 @@ public class ConfigValues {
                 manaTextY = settingsConfig.get("manaTextY").getAsFloat();
             }
             if (settingsConfig.has("language")) {
-                language = settingsConfig.get("language").getAsString();
+                language = Feature.Language.getFromPath(settingsConfig.get("language").getAsString());
             }
 //            if (settingsConfig.has("inventoryWarningSeconds")) {
 //                inventoryWarningSeconds = settingsConfig.get("inventoryWarningSeconds").getAsInt();
@@ -121,12 +121,14 @@ public class ConfigValues {
         featureColors.put(Feature.WARNING_COLOR, ConfigColor.RED);
         featureColors.put(Feature.MANA_TEXT_COLOR, ConfigColor.BLUE);
         featureColors.put(Feature.MANA_BAR_COLOR, ConfigColor.BLUE);
+        disabledFeatures.add(Feature.DROP_CONFIRMATION);
+        disabledFeatures.add(Feature.MINION_STOP_WARNING);
         saveConfig();
     }
 
     public void loadLanguageFile() {
         try {
-            InputStream fileStream = getClass().getClassLoader().getResourceAsStream("lang/" + language + ".json");
+            InputStream fileStream = getClass().getClassLoader().getResourceAsStream("lang/" + language.getPath() + ".json");
             if (fileStream != null) {
                 ByteArrayOutputStream result = new ByteArrayOutputStream();
                 byte[] buffer = new byte[1024];
@@ -135,14 +137,6 @@ public class ConfigValues {
                     result.write(buffer, 0, length);
                 }
                 String dataString = result.toString("UTF-8");
-//            File languageFile = new File(getClass().getClassLoader().getResourceAsStream("lang/" + language + ".json").toURI());
-//            FileReader reader = new FileReader(languageFile);
-//            BufferedReader bufferedReader = new BufferedReader(reader);
-//            StringBuilder builder = new StringBuilder();
-//            String nextLine;
-//            while ((nextLine = bufferedReader.readLine()) != null) {
-//                builder.append(nextLine);
-//            } builder.toString()
                 languageConfig = new JsonParser().parse(dataString).getAsJsonObject();
                 fileStream.close();
             }
@@ -179,7 +173,7 @@ public class ConfigValues {
             settingsConfig.addProperty("skeletonBarX", skeletonBarX);
             settingsConfig.addProperty("skeletonBarY", skeletonBarY);
             settingsConfig.addProperty("guiScale", guiScale);
-            settingsConfig.addProperty("language", language);
+            settingsConfig.addProperty("language", language.getPath());
 
             bufferedWriter.write(settingsConfig.toString());
             bufferedWriter.close();
@@ -191,7 +185,7 @@ public class ConfigValues {
     }
 
     public String getMessage(Message message, String... variables) {
-        String text;
+        String text = null;
         if (message.getMessageObject() == MessageObject.SETTING) {
             text = languageConfig.getAsJsonObject("settings").get(message.getMemberName()).getAsString();
             if (message == Message.SETTING_WARNING_TIME) {
@@ -207,13 +201,17 @@ public class ConfigValues {
             }
         } else if (message.getMessageObject() == MessageObject.MANA_BAR_TYPE) {
             text = languageConfig.getAsJsonObject("settings").getAsJsonObject("manaBarTypes").get(message.getMemberName()).getAsString();
-        } else {
+        } else if (message.getMessageObject() == MessageObject.MESSAGES) {
             text = languageConfig.getAsJsonObject("messages").get(message.getMemberName()).getAsString();
+        } else if (message.getMessageObject() == MessageObject.ROOT) {
+            text = languageConfig.get(message.getMemberName()).getAsString();
         }
         return text;
     }
 
     public enum Message {
+        LANGUAGE(MessageObject.ROOT, "language"),
+
         SETTING_MAGMA_BOSS_WARNING(MessageObject.SETTING, "magmaBossWarning"),
         SETTING_ITEM_DROP_CONFIRMATION(MessageObject.SETTING, "itemDropConfirmation"),
         SETTING_WARNING_TIME(MessageObject.SETTING, "warningTime"),
@@ -231,6 +229,12 @@ public class ConfigValues {
         SETTING_EDIT_LOCATIONS(MessageObject.SETTING, "editLocations"),
         SETTING_GUI_SCALE(MessageObject.SETTING, "guiScale"),
         SETTING_RESET_LOCATIONS(MessageObject.SETTING, "resetLocations"),
+        SETTING_SETTINGS(MessageObject.SETTING, "settings"),
+        SETTING_EDIT_SETTINGS(MessageObject.SETTING, "openSettings"),
+        SETTING_HIDE_DURABILITY(MessageObject.SETTING, "hideDurability"),
+        SETTING_ENCHANTS_AND_REFORGES(MessageObject.SETTING, "showEnchantmentsReforges"),
+        SETTING_MINION_STOP_WARNING(MessageObject.SETTING, "minionStopWarning"),
+        SETTING_LANGUAGE(MessageObject.SETTING, "language"),
 
         MANA_BAR_TYPE_BAR_TEXT(MessageObject.MANA_BAR_TYPE, "barAndText"),
         MANA_BAR_TYPE_BAR(MessageObject.MANA_BAR_TYPE, "bar"),
@@ -241,6 +245,7 @@ public class ConfigValues {
         MESSAGE_MAGMA_BOSS_WARNING(MessageObject.MESSAGES, "magmaBossWarning"),
         MESSAGE_FULL_INVENTORY(MessageObject.MESSAGES, "fullInventory"),
         MESSAGE_NEW_VERSION(MessageObject.MESSAGES, "newVersion"),
+        MESSAGE_LABYMOD(MessageObject.MESSAGES, "labymod"),
         MESSAGE_DEVELOPMENT_VERSION(MessageObject.MESSAGES, "developmentVersion");
 
 
@@ -262,6 +267,7 @@ public class ConfigValues {
     }
 
     private enum MessageObject {
+        ROOT,
         SETTING,
         MANA_BAR_TYPE,
         MESSAGES
@@ -277,6 +283,14 @@ public class ConfigValues {
 
     public void setManaBarType(Feature.ManaBarType manaBarType) {
         this.manaBarType = manaBarType;
+    }
+
+    public void setLanguage(Feature.Language language) {
+        this.language = language;
+    }
+
+    public Feature.Language getLanguage() {
+        return language;
     }
 
     public void setColor(Feature feature, ConfigColor color) {

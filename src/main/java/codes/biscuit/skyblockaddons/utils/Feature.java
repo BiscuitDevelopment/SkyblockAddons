@@ -13,8 +13,9 @@ public enum Feature {
     HIDE_FOOD_ARMOR_BAR(6, ButtonType.REGULAR),
     FULL_INVENTORY_WARNING(7, ButtonType.REGULAR),
     MAGMA_BOSS_BAR(8, ButtonType.REGULAR),
-    HIDE_DURABILITY(9, ButtonType.REGULAR), //TODO add toggle for this & for the enchantment feature
-    SHOW_ENCHANTMENTS(10, ButtonType.REGULAR),
+    HIDE_DURABILITY(9, ButtonType.REGULAR),
+    SHOW_ENCHANTMENTS_REFORGES(10, ButtonType.REGULAR),
+    MINION_STOP_WARNING(11, ButtonType.REGULAR),
 
     WARNING_COLOR(-1, ButtonType.COLOR),
     CONFIRMATION_COLOR(-1, ButtonType.COLOR),
@@ -27,7 +28,9 @@ public enum Feature {
     ADD(-1, ButtonType.MODIFY),
     SUBTRACT(-1, ButtonType.MODIFY),
 
+    LANGUAGE(-1, ButtonType.SOLID),
     EDIT_LOCATIONS(-1, ButtonType.SOLID),
+    SETTINGS(-1, ButtonType.SOLID),
     RESET_LOCATION(-1, ButtonType.SOLID);
 
     private int id;
@@ -84,6 +87,35 @@ public enum Feature {
                 nextType = 0;
             }
             return values()[nextType];
+        }
+    }
+
+    public enum Language {
+        ENGLISH;
+
+        public String getPath() {
+            if (this == Language.ENGLISH) {
+                return "en_US";
+            }
+            return null;
+        }
+
+        public Language getNextLanguage() {
+            int nextType = ordinal()+1;
+            if (nextType > values().length-1) {
+                nextType = 0;
+            }
+            return values()[nextType];
+        }
+
+        public static Language getFromPath(String text) {
+            for (Language language : values()) {
+                String path = language.getPath();
+                if (path != null && path.equals(text)) {
+                    return language;
+                }
+            }
+            return null;
         }
     }
 

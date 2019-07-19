@@ -3,10 +3,12 @@ package codes.biscuit.skyblockaddons.listeners;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.gui.ButtonSlider;
 import codes.biscuit.skyblockaddons.gui.LocationEditGui;
+import codes.biscuit.skyblockaddons.gui.SettingsGui;
 import codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui;
 import codes.biscuit.skyblockaddons.utils.ConfigValues;
 import codes.biscuit.skyblockaddons.utils.Feature;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
@@ -25,6 +27,7 @@ import net.minecraftforge.client.GuiIngameForge;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
+import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
@@ -44,14 +47,21 @@ public class PlayerListener {
     private boolean sentUpdate = false;
     private boolean predictMana = false;
     private long lastWorldJoin = -1;
-    private int mana = 0;
-    private int maxMana = 100;
-    private boolean openGUI = false;
     private boolean fullInventoryWarning = false;
     private boolean bossWarning = false;
     private long lastBoss = -1;
     private int soundTick = 1;
     private int manaTick = 1;
+    private long lastSound = -1;
+
+    private int defense = 0;
+    private int health = 100;
+    private int maxHealth = 100;
+    private int mana = 0;
+    private int maxMana = 100;
+
+    private boolean openMainGUI = false;
+    private boolean openSettingsGUI = false;
 //    private Map<Long, String> spawnLog = new HashMap<>();
 
     private SkyblockAddons main;
@@ -140,19 +150,35 @@ public class PlayerListener {
         if (main.getConfigValues().getManaBarType() != Feature.ManaBarType.OFF) {
             String message = e.message.getUnformattedText();
             if (e.type == 2) {
-                if (message.contains("\u270E Mana")) {
-                    String[] manaSplit = message.split(Pattern.quote("\u270E Mana"));
-                    if (manaSplit.length > 1) {
-                        if (manaSplit[0].contains(EnumChatFormatting.AQUA.toString())) {
-                            message = manaSplit[0].split(Pattern.quote(EnumChatFormatting.AQUA.toString()))[1];
-                            manaSplit = message.split(Pattern.quote("/"));
-                            mana = Integer.parseInt(manaSplit[0]);
-                            maxMana = Integer.parseInt(manaSplit[1]);
-                            e.message = new ChatComponentText(e.message.getUnformattedText().split(EnumChatFormatting.AQUA.toString())[0].trim());
-                            predictMana = false;
-                            return;
+                if (message.endsWith("\u270E Mana\u00A7r")) {
+                    try {
+                        String[] splitMessage = message.split(Pattern.quote("     "));
+                        String healthPart = splitMessage[0];
+                        String defencePart = null;
+                        String manaPart;
+                        if (splitMessage.length > 2) {
+                            defencePart = splitMessage[1];
+                            manaPart = splitMessage[2];
+                        } else {
+                            manaPart = splitMessage[1];
                         }
-                    }
+                        String[] healthSplit = main.getUtils().getNumbersOnly(healthPart).split(Pattern.quote("/"));
+                        health = Integer.parseInt(healthSplit[0]);
+                        maxHealth = Integer.parseInt(healthSplit[1]);
+                        if (defencePart != null) {
+                            defense = Integer.valueOf(main.getUtils().getNumbersOnly(defencePart).trim());
+                        }
+                        String[] manaSplit = main.getUtils().getNumbersOnly(manaPart).split(Pattern.quote("/"));
+                        mana = Integer.parseInt(manaSplit[0]);
+                        maxMana = Integer.parseInt(manaSplit[1].trim());
+                        predictMana = false;
+                        StringBuilder newMessage = new StringBuilder(healthPart).append("     ");
+                        if (defencePart != null) {
+                            newMessage.append(defencePart).append("     ");
+                        }
+                        e.message = new ChatComponentText(newMessage.toString());
+                        return;
+                    } catch (Exception ignored) {}
                 }
                 predictMana = true;
             } else {
@@ -218,27 +244,18 @@ public class PlayerListener {
                 mc.ingameGUI.getFontRenderer().drawString(text, (int)(x*scaleMultiplier)-60, (int)(y*scaleMultiplier)+1-10, 0);
                 mc.ingameGUI.getFontRenderer().drawString(text, (int)(x*scaleMultiplier)-60, (int)(y*scaleMultiplier)-1-10, 0);
                 mc.ingameGUI.getFontRenderer().drawString(text, (int)(x*scaleMultiplier)-60, (int)(y*scaleMultiplier)-10, color);
-//                int x = (int) (main.getConfigValues().getManaBarX() * sr.getScaledWidth()) + 60 - mc.ingameGUI.getFontRenderer().getStringWidth(text) / 2;
-//                int y = (int) (main.getConfigValues().getManaBarY() * sr.getScaledHeight()) + 4;
-////                x+=60;
-////                y+=10;
-//                mc.ingameGUI.getFontRenderer().drawString(text, (int)(x-60*scaleMultiplier) + 1, (int)(y*scaleMultiplier)-10, 0);
-//                mc.ingameGUI.getFontRenderer().drawString(text, (int)(x*scaleMultiplier)-60 - 1, (int)(y*scaleMultiplier)-10, 0);
-//                mc.ingameGUI.getFontRenderer().drawString(text, (int)(x*scaleMultiplier)-60, (int)(y*scaleMultiplier)+ 1-10, 0);
-//                mc.ingameGUI.getFontRenderer().drawString(text, (int)(x*scaleMultiplier)-60, (int)(y*scaleMultiplier) - 1-10, 0);
-//                mc.ingameGUI.getFontRenderer().drawString(text, (int)(x*scaleMultiplier)-60, (int)(y*scaleMultiplier)-10, color);
                 GlStateManager.enableBlend();
                 GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
             }
         }
         if ((!main.getConfigValues().getDisabledFeatures().contains(Feature.SKELETON_BAR))
-                && !(mc.currentScreen instanceof LocationEditGui)) {
+                && !(mc.currentScreen instanceof LocationEditGui) && main.getUtils().isWearingSkeletonHelmet()) {
             int width = (int)(main.getConfigValues().getSkeletonBarX()*sr.getScaledWidth());
             int height = (int)(main.getConfigValues().getSkeletonBarY()*sr.getScaledHeight());
             int bones = 0;
             for (Entity listEntity : mc.theWorld.loadedEntityList) {
                 if (listEntity instanceof EntityItem &&
-                        listEntity.ridingEntity instanceof EntityZombie && listEntity.ridingEntity.isInvisible() && listEntity.getDistanceToEntity(mc.thePlayer) <= 6) {
+                        listEntity.ridingEntity instanceof EntityZombie && listEntity.ridingEntity.isInvisible() && listEntity.getDistanceToEntity(mc.thePlayer) <= 8) {
                     bones++;
                 }
             }
@@ -283,7 +300,14 @@ public class PlayerListener {
                     if (mana>maxMana) mana = maxMana;
                 }
             } else if (manaTick % 5 == 0) {
-                main.getUtils().checkIfInventoryIsFull();
+                Minecraft mc = Minecraft.getMinecraft();
+                if (mc != null) {
+                    EntityPlayerSP p = mc.thePlayer;
+                    if (p != null) {
+                        main.getUtils().checkIfInventoryIsFull(mc, p);
+                        main.getUtils().checkIfWearingSkeletonHelmet(p);
+                    }
+                }
             } else if (manaTick > 20) {
                 main.getUtils().checkIfOnSkyblockAndIsland();
                 Minecraft mc = Minecraft.getMinecraft();
@@ -292,6 +316,29 @@ public class PlayerListener {
                     sentUpdate = true;
                 }
                 manaTick = 1;
+            }
+        }
+    }
+
+    // Addition by Michael#3549
+    @SubscribeEvent
+    public void onEntityEvent(LivingEvent.LivingUpdateEvent e) {
+        if (!main.getConfigValues().getDisabledFeatures().contains(Feature.MINION_STOP_WARNING)) {
+            Entity entity = e.entity;
+            if (entity instanceof EntityArmorStand && entity.hasCustomName()) {
+                if (entity.getCustomNameTag().startsWith("\u00A7cI can\'t reach any ")) {
+                    long now = System.currentTimeMillis();
+                    if (now - lastSound > 5000) {
+                        lastSound = now;
+                        EntityPlayerSP p = Minecraft.getMinecraft().thePlayer;
+                        p.playSound("random.orb", 1, 1);
+                        String mobName = entity.getCustomNameTag().split(Pattern.quote("\u00A7cI can\'t reach any "))[1].toLowerCase();
+                        if (mobName.lastIndexOf("s") == mobName.length() - 1) {
+                            mobName = mobName.substring(0, mobName.length() - 1);
+                        }
+                        p.addChatMessage(new ChatComponentText(EnumChatFormatting.RED + "A " + mobName + " minion cannot reach and has stopped spawning!"));
+                    }
+                }
             }
         }
     }
@@ -334,9 +381,12 @@ public class PlayerListener {
 
     @SubscribeEvent()
     public void onRender(TickEvent.RenderTickEvent e) {
-        if (isOpenGUI()) {
+        if (openMainGUI) {
             Minecraft.getMinecraft().displayGuiScreen(new SkyblockAddonsGui(main));
-            setOpenGUI(false);
+            openMainGUI = false;
+        } else if (openSettingsGUI) {
+            Minecraft.getMinecraft().displayGuiScreen(new SettingsGui(main));
+            openSettingsGUI = false;
         }
     }
 
@@ -354,12 +404,12 @@ public class PlayerListener {
 //        }
 //    }
 
-    public void setOpenGUI(boolean openGUI) {
-        this.openGUI = openGUI;
+    public void setOpenMainGUI(boolean openMainGUI) {
+        this.openMainGUI = openMainGUI;
     }
 
-    private boolean isOpenGUI() {
-        return openGUI;
+    public void setOpenSettingsGUI(boolean openSettingsGUI) {
+        this.openSettingsGUI = openSettingsGUI;
     }
 
     public void setFullInventoryWarning(boolean fullInventoryWarning) {

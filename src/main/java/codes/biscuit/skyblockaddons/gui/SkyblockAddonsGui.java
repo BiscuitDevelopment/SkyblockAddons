@@ -36,37 +36,24 @@ public class SkyblockAddonsGui extends GuiScreen {
         buttonList.add(new ButtonRegular(0, halfWidth-(boxWidth/2), height*0.41, main.getConfigValues().getMessage(ConfigValues.Message.SETTING_HIDE_FOOD_AND_ARMOR), main, Feature.HIDE_FOOD_ARMOR_BAR, boxWidth, boxHeight));
         buttonList.add(new ButtonRegular(0, oneThird-boxWidth-30, height*0.49, main.getConfigValues().getMessage(ConfigValues.Message.SETTING_FULL_INVENTORY_WARNING), main, Feature.FULL_INVENTORY_WARNING, boxWidth, boxHeight));
         buttonList.add(new ButtonRegular(0, twoThirds+30, height*0.25, main.getConfigValues().getMessage(ConfigValues.Message.SETTING_MAGMA_BOSS_HEALTH_BAR), main, Feature.MAGMA_BOSS_BAR, boxWidth, boxHeight));
-//        buttonList.add(new ButtonRegular(0, oneThird-boxWidth-30, height*0.25, "Magma Boss Warning", main, Feature.MAGMA_WARNING, boxWidth, boxHeight));
-//        buttonList.add(new ButtonRegular(0, twoThirds+30, height*0.25, "Item Drop Confirmation", main, Feature.DROP_CONFIRMATION, boxWidth, boxHeight));
-//        buttonList.add(new ButtonRegular(0, oneThird-boxWidth-30, height*0.33, null, main, Feature.MANA_BAR, boxWidth, boxHeight));
-//        buttonList.add(new ButtonRegular(0, twoThirds+30, height*0.33, "Hide Skeleton Hat Bones", main, Feature.HIDE_BONES, boxWidth, boxHeight));
-//        buttonList.add(new ButtonRegular(0, oneThird-boxWidth-30, height*0.41, "Skeleton Hat Bones Bar", main, Feature.SKELETON_BAR, boxWidth, boxHeight));
-//        buttonList.add(new ButtonRegular(0, twoThirds+30, height*0.41, "Hide Food & Armor Bar", main, Feature.HIDE_FOOD_ARMOR_BAR, boxWidth, boxHeight));
-//        buttonList.add(new ButtonRegular(0, twoThirds+30, height*0.49, "Full Inventory Warning", main, Feature.FULL_INVENTORY_WARNING, boxWidth, boxHeight));
-        boxWidth = 200;
         buttonList.add(new ButtonRegular(0, halfWidth-(boxWidth/2), height*0.49, main.getConfigValues().getMessage(ConfigValues.Message.SETTING_DISABLE_EMBER_ROD_ABILITY), main, Feature.DISABLE_EMBER_ROD, boxWidth, boxHeight));
-        boxWidth = 100;
-        buttonList.add(new ButtonRegular(0, oneThird-boxWidth-30, height*0.65, main.getConfigValues().getMessage(ConfigValues.Message.SETTING_WARNING_COLOR), main, Feature.WARNING_COLOR, boxWidth, boxHeight));
-        buttonList.add(new ButtonRegular(0, halfWidth-(boxWidth/2), height*0.65, main.getConfigValues().getMessage(ConfigValues.Message.SETTING_CONFIRMATION_COLOR), main, Feature.CONFIRMATION_COLOR, boxWidth, boxHeight));
-        buttonList.add(new ButtonRegular(0, oneThird-boxWidth-30, height*0.73, main.getConfigValues().getMessage(ConfigValues.Message.SETTING_MANA_TEXT_COLOR), main, Feature.MANA_TEXT_COLOR, boxWidth, boxHeight));
-        buttonList.add(new ButtonRegular(0, halfWidth-(boxWidth/2), height*0.73, main.getConfigValues().getMessage(ConfigValues.Message.SETTING_MANA_BAR_COLOR), main, Feature.MANA_BAR_COLOR, boxWidth, boxHeight));
-        buttonList.add(new ButtonRegular(0, oneThird-boxWidth-30, height*0.81, null, main, Feature.WARNING_TIME, boxWidth, boxHeight));
-//        buttonList.add(new ButtonRegular(0, halfWidth-boxWidth-20, height*0.81, null, main, Feature.WARNING_TIME, boxWidth, boxHeight));
-        buttonList.add(new ButtonRegular(0, halfWidth-(boxWidth/2), height*0.81, main.getConfigValues().getMessage(ConfigValues.Message.SETTING_EDIT_LOCATIONS), main, Feature.EDIT_LOCATIONS, boxWidth, boxHeight));
-        buttonList.add(new ButtonSlider(0, twoThirds+30, height*0.65, boxWidth, boxHeight, main));//twoThirds+30, height*33));
-        boxWidth = 20;
-        buttonList.add(new ButtonRegular(0, oneThird-boxWidth-135, height*0.81, "+", main, Feature.ADD, boxWidth, boxHeight));
-        buttonList.add(new ButtonRegular(0, oneThird-boxWidth-5, height*0.81, "-", main, Feature.SUBTRACT, boxWidth, boxHeight));
+        buttonList.add(new ButtonRegular(0, halfWidth-(boxWidth/2), height*0.86, main.getConfigValues().getMessage(ConfigValues.Message.SETTING_EDIT_SETTINGS), main, Feature.SETTINGS, boxWidth, boxHeight));
+        buttonList.add(new ButtonRegular(0, twoThirds+30, height*0.33, main.getConfigValues().getMessage(ConfigValues.Message.SETTING_HIDE_DURABILITY), main, Feature.HIDE_DURABILITY, boxWidth, boxHeight));
+        buttonList.add(new ButtonRegular(0, twoThirds+30, height*0.41, main.getConfigValues().getMessage(ConfigValues.Message.SETTING_ENCHANTS_AND_REFORGES), main, Feature.SHOW_ENCHANTMENTS_REFORGES, boxWidth, boxHeight));
+        buttonList.add(new ButtonRegular(0, twoThirds+30, height*0.49, main.getConfigValues().getMessage(ConfigValues.Message.SETTING_MINION_STOP_WARNING), main, Feature.MINION_STOP_WARNING, boxWidth, boxHeight));
     }
 
 
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
         long timeSinceOpen = System.currentTimeMillis() - timeOpened;
-        float alphaMultiplier = 0.5F;
-        int fadeMilis = 500;
-        if (timeSinceOpen <= fadeMilis) {
-            alphaMultiplier = (float)timeSinceOpen/(fadeMilis*2);
+        float alphaMultiplier;
+        alphaMultiplier = 0.5F;
+        if (main.getUtils().isFadingIn()) {
+            int fadeMilis = 500;
+            if (timeSinceOpen <= fadeMilis) {
+                alphaMultiplier = (float) timeSinceOpen / (fadeMilis * 2);
+            }
         }
         int alpha = (int)(255*alphaMultiplier); // Alpha of the text will increase from 0 to 127 over 500ms.
 
@@ -75,32 +62,15 @@ public class SkyblockAddonsGui extends GuiScreen {
         drawGradientRect(0, 0, width, height, startColor, endColor);
         GlStateManager.enableBlend();
 
-        GlStateManager.pushMatrix();
-        float scale = 2.5F;
-        float scaleMultiplier = 1F/scale; // Keeps the proportions of the text intact.
-        GlStateManager.scale(scale, scale, 1);
         if (alpha < 4) alpha = 4; // Text under 4 alpha appear 100% transparent for some reason o.O
-        int blue = new Color(189,236,252, alpha*2).getRGB();
-        drawCenteredString(fontRendererObj, "SkyblockAddons",
-                (int)(width/2*scaleMultiplier), (int)(height*0.12*scaleMultiplier), blue);
-        GlStateManager.popMatrix();
+        int defaultBlue = new Color(189,236,252, alpha*2).getRGB();
 
-        GlStateManager.pushMatrix();
-        scale = 1.3F;
-        scaleMultiplier = 1F/scale; // Keeps the proportions of the text intact.
-        GlStateManager.scale(scale, scale, 1);
-        drawCenteredString(fontRendererObj, "by Biscut",
-                (int)(width/2*scaleMultiplier)+50, (int)(height*0.12*scaleMultiplier)+17, blue);
-        GlStateManager.popMatrix();
-
-        GlStateManager.pushMatrix();
-        scale = 1.5F;
-        scaleMultiplier = 1F/scale;
-        GlStateManager.scale(scale, scale, scale);
-        drawCenteredString(fontRendererObj, "Settings",
-                (int)(width/2*scaleMultiplier), (int)(height*0.58*scaleMultiplier), blue);
-        GlStateManager.popMatrix();
-
+        drawScaledString("SkyblockAddons", 0.12, defaultBlue, 2.5F);
+        drawScaledString("by Biscut", 0.12, defaultBlue, 1.3, 50, 17);
+        drawScaledString(main.getConfigValues().getMessage(ConfigValues.Message.SETTING_SETTINGS), 0.8, defaultBlue, 1.5);
+        if (main.isUsingLabymod()) {
+            drawScaledString(main.getConfigValues().getMessage(ConfigValues.Message.MESSAGE_LABYMOD), 0.6, defaultBlue, 1);
+        }
         super.drawScreen(mouseX, mouseY, partialTicks); // Draw buttons.
     }
 
@@ -122,24 +92,28 @@ public class SkyblockAddonsGui extends GuiScreen {
                         }
                     }
                 }
-            } else if (feature.getButtonType() == Feature.ButtonType.COLOR) {
-                main.getConfigValues().setColor(feature, main.getConfigValues().getColor(feature).getNextColor());
-            } else if (feature.getButtonType() == Feature.ButtonType.MODIFY) {
-                if (feature == Feature.ADD) {
-                    if (main.getConfigValues().getWarningSeconds() < 99) {
-                        main.getConfigValues().setWarningSeconds(main.getConfigValues().getWarningSeconds() + 1);
-                    }
-                } else {
-                    if (main.getConfigValues().getWarningSeconds() > 1) {
-                        main.getConfigValues().setWarningSeconds(main.getConfigValues().getWarningSeconds() - 1);
-                    }
-                }
-            } else if (feature == Feature.EDIT_LOCATIONS) {
-                Minecraft.getMinecraft().displayGuiScreen(null);
-                Minecraft.getMinecraft().displayGuiScreen(new LocationEditGui(main));
+            } else if (feature == Feature.SETTINGS) {
+                main.getUtils().setFadingIn(false);
+                Minecraft.getMinecraft().displayGuiScreen(new SettingsGui(main));
             }
         }
     }
+
+    private void drawScaledString(String text, double yMultiplier, int color, double scale) {
+        drawScaledString(text, yMultiplier, color, scale, 0, 0);
+    }
+
+    private void drawScaledString(String text, double yMultiplier, int color, double scale, int xOff, int yOff) {
+        double x = width/2;
+        double y = height*yMultiplier;
+        GlStateManager.pushMatrix();
+        double scaleMultiplier = 1F/scale;
+        GlStateManager.scale(scale, scale, 1);
+        drawCenteredString(fontRendererObj, text,
+                (int)(x*scaleMultiplier)+xOff, (int)(y*scaleMultiplier)+yOff, color);
+        GlStateManager.popMatrix();
+    }
+
 
     @Override
     public void onGuiClosed() {
