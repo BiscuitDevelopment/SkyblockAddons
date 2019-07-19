@@ -1,0 +1,43 @@
+{
+  "language": "Deutsch",
+  "settings": {
+    "language": "Sprache: ",
+    "settings": "Einstellungen",
+    "openSettings": "Einstellungen öffnen",
+    "magmaBossWarning": "Magma Boss Spawn Warnung",
+    "itemDropConfirmation": "Item Drop Bestätigung",
+    "warningTime": "Warnung anzeigen für: %time%s",
+    "manaBar": "Mana Leiste: %type%",
+    "manaBarTypes": {
+      "barAndText": "Leiste & Text",
+      "bar": "Nur Leiste",
+      "text": "Nur Text",
+      "off": "Aus"
+    },
+    "hideSkeletonHatBones": "Skellett-Helm Knochen verstecken",
+    "skeletonHatBonesBar": "Skellett-Helm Knochen Leiste",
+    "hideFoodAndArmor": "Essens- und Rüstungsleiste verbergen",
+    "fullInventoryWarning": "Volles Inventar-Warnung",
+    "magmaBossHealthBar": "Magma-Boss Lebensleiste",
+    "disableEmberRodAbility": "Die Ember-Rod auf der Insel deaktivieren",
+    "warningColor": "Warnungsfarbe",
+    "confirmationColor": "Bestätigungsfarbe",
+    "manaTextColor": "Mana Text Farbe",
+    "manaBarColor": "Mana Leiste Farbe",
+    "editLocations": "Ort ändern",
+    "guiScale": "Gui-Größe: %scale%",
+    "resetLocations": "Ort(e) zurücksetzen",
+    "hideDurability": "Werkzeugshaltbarkeit verbergen",
+    "showEnchantmentsReforges": "Zeige Verzauberungen und Verbesserungen",
+    "minionStopWarning": "Minion-Konflikt Warnung"
+  },
+  "messages": {
+    "dropConfirmation": "Droppe dieses Item nochmal um zu bestätigen, dass du es wirklich droppen willst!",
+    "magmaBossWarning": "Der MagmaCube-Boss ist da!",
+    "fullInventory": "Dein Inventar ist voll!",
+    "newVersion": "Eine neue Version, %newestVersion%, ist verfügbar. Lade sie herunter, indem du hier klickst.",
+    "discord": "Du willst die Neuerungen sehen? Klicke hier, um meinem Discord (Englisch) beizutreten.",
+    "developmentVersion": "Du benutzt eine Entwicklungsversion, %version%. Die neueste stabile Version ist %newestVersion%",
+    "labymod": "LabyMod-Nutzer: Die Option 'Essens- und Rüstungsleiste verbergen' ist inkompatibel"
+  }
+}
