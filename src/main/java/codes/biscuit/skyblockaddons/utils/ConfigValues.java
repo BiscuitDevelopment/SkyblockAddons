@@ -246,6 +246,7 @@ public class ConfigValues {
         MESSAGE_FULL_INVENTORY(MessageObject.MESSAGES, "fullInventory"),
         MESSAGE_NEW_VERSION(MessageObject.MESSAGES, "newVersion"),
         MESSAGE_LABYMOD(MessageObject.MESSAGES, "labymod"),
+        MESSAGE_DISCORD(MessageObject.MESSAGES, "discord"),
         MESSAGE_DEVELOPMENT_VERSION(MessageObject.MESSAGES, "developmentVersion");
 
 

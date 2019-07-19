@@ -213,6 +213,9 @@ public class Utils {
                         ChatComponentText newVersion = new ChatComponentText(EnumChatFormatting.YELLOW+main.getConfigValues().getMessage(ConfigValues.Message.MESSAGE_NEW_VERSION, newestVersion));
                         newVersion.setChatStyle(newVersion.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://hypixel.net/threads/forge-1-8-9-skyblockaddons-useful-features-for-skyblock.2109217/")));
                         sendMessage(newVersion);
+                        ChatComponentText discord = new ChatComponentText(EnumChatFormatting.YELLOW+main.getConfigValues().getMessage(ConfigValues.Message.MESSAGE_DISCORD));
+                        newVersion.setChatStyle(newVersion.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://discord.gg/PqTAEek")));
+                        sendMessage(discord);
                         sendMessage(EnumChatFormatting.GRAY.toString() + EnumChatFormatting.STRIKETHROUGH + "---------------------------------------");
                         break;
                     } else if (thisVersionNumbers.get(i) > newestVersionNumbers.get(i)) {

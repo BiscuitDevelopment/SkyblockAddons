@@ -36,6 +36,7 @@
     "magmaBossWarning": "MagmaCube Boss!",
     "fullInventory": "Full Inventory!",
     "newVersion": "A new version, %newestVersion% is available. Download it by clicking here.",
+    "discord": "Want to view the changes? Click here to join my discord.",
     "developmentVersion": "You are running a development version: %version%. The latest online version is %newestVersion%",
     "labymod": "Labymod Users: Hide Food & Armor Bar is incompatible."
   }
