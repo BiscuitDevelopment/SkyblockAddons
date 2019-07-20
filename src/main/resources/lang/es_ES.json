@@ -1,0 +1,43 @@
+{
+  "language": "Español",
+  "settings": {
+    "settings": "Opciones",
+    "openSettings": "Abrir opciones",
+    "magmaBossWarning": "Alerta de Magma Boss",
+    "itemDropConfirmation": "Confirmar para soltar objeto",
+    "warningTime": "Tiempo de alarma: %time%s",
+    "manaBar": "Barra de maná: %type%",
+    "manaBarTypes": {
+      "barAndText": "Barra y Texto",
+      "bar": "Barra",
+      "text": "Texto",
+      "off": "Deshabilitado"
+    },
+    "hideSkeletonHatBones": "Ocultar los huesos del Skeleton Hat",
+    "skeletonHatBonesBar": "Barra de huesos del Skeleton Hat",
+    "hideFoodAndArmor": "Ocultar Barra de Hambre y Armadura",
+    "fullInventoryWarning": "Aviso de Inventario Lleno",
+    "magmaBossHealthBar": "Barra de Vida del Magma Boss",
+    "disableEmberRodAbility": "Deshabilitar en la Isla el Ember Rod",
+    "warningColor": "Color de Aviso",
+    "confirmationColor": "Color de Confirmación",
+    "manaTextColor": "Color del Texto de Maná",
+    "manaBarColor": "Color de la Barra de Maná",
+    "editLocations": "Editar posiciciones",
+    "guiScale": "Escala del GUI: %scale%",
+    "resetLocations": "Restablecer Posiciones",
+    "hideDurability": "Ocultar Durabilidad de Herramientas",
+    "showEnchantmentsReforges": "Ver Encantamientos y Reforges",
+    "minionStopWarning": "Aviso de Detención de Minion"
+  },
+  "messages": {
+    "dropConfirmation": "¡Dropea el Objeto otra vez para soltar!",
+    "magmaBossWarning": "¡Magma Boss!",
+    "fullInventory": "¡Inventario Lleno!",
+    "newVersion": "Una nueva versión, %newestVersion% se encuentra disponible. Descárgalo haciendo Click Aquí.",
+    "discord": "¿Quieres ver los cambios? Haz click aquí para ingresar en mi Discord.",
+    "developmentVersion": "Estás ejecutando la versión: %version%. La última versión online es %newestVersion%",
+    "labymod": "Usuarios de Labymod: Ocultar la Barra de Comida y Armadura Es incompatible.",
+    "minionCannotReach": "¡Un minion de tipo %type% No puede alcanzar a ningún mob y ha parado de generar más!"
+  }
+}
