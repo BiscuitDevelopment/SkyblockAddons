@@ -1,5 +1,5 @@
 {
-  "language": "Polish",
+  "language": "Polski",
   "settings": {
     "settings": "Ustawienia",
     "openSettings": "Otwórz Ustawienia",
@@ -17,8 +17,8 @@
     "skeletonHatBonesBar": "Pasek Kości z Hełmu Skeletona",
     "hideFoodAndArmor": "Ukryj Pasek Jedzenia i Zbroi",
     "fullInventoryWarning": "Ostrzeżenie o Pełnym Ekwipunku",
-    "magmaBossHealthBar": "Pasek Życia u Magma Boss'a",
-    "disableEmberRodAbility": "Wyłącz Ember Rod na Wyspie",
+    "magmaBossHealthBar": "Pasek Życia Magma Boss'a",
+    "disableEmberRodAbility": "Wyłącz Umiejętność Ember Rod na Wyspie",
     "warningColor": "Kolor Ostrzeżenia",
     "confirmationColor": "Kolor Potwierdzenia",
     "manaTextColor": "Kolor Tekstu Many",
@@ -31,11 +31,11 @@
     "minionStopWarning": "Ostrzeżenie o Przerwaniu Pracy Miniona"
   },
   "messages": {
-    "dropConfirmation": "Wyrzuć ten przedmiot ponownie!",
-    "magmaBossWarning": "Boss Magma Cube!!",
+    "dropConfirmation": "Wyrzuć ten przedmiot ponownie, aby potwierdzić!",
+    "magmaBossWarning": "Boss Magma Cube!",
     "fullInventory": "Pełny Ekwipunek!",
     "newVersion": "Nowa wersja, %newestVersion% jest dostępna. Pobierz ją klikając na tą wiadomość.",
-    "discord": "Chcesz sprawdzić zmiany? Kliknij tą wiadomość, aby dołączyć na mój discord."
+    "discord": "Chcesz sprawdzić zmiany? Kliknij tą wiadomość, aby dołączyć na mojego discord'a.",
     "developmentVersion": "Używasz wersji deweloperskiej: %version%. Najnowsza wersja online to: %newestVersion%",
     "labymod": "Użytkownicy LabyMod: Ukrycie Pasek Jedzenia i Zbroi jest niekompatybilne.",
     "minionCannotReach": "Minion %type% nie może dosięgnąć moba i przestał działać!"
