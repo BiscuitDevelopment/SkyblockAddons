@@ -1,0 +1,43 @@
+{
+  "language": "Español (México)",
+  "settings": {
+    "settings": "Opciones",
+    "openSettings": "Abrir Opciones",
+    "magmaBossWarning": "Alerta de Magma Boss",
+    "itemDropConfirmation": "Confirmación de Arrojar Objetos",
+    "warningTime": "Tiempo de Alerta: %time%s",
+    "manaBar": "Barra de Mana: %type%",
+    "manaBarTypes": {
+      "barAndText": "Barra y Texto",
+      "bar": "Barra",
+      "text": "Texto",
+      "off": "Desactivado"
+    },
+    "hideSkeletonHatBones": "Ocultar Huesos de Skeleton Hat",
+    "skeletonHatBonesBar": "Barra de huesos de Skeleton Hat",
+    "hideFoodAndArmor": "Esconder Barra de Comida y Armadura",
+    "fullInventoryWarning": "Alerta de Inventario Lleno",
+    "magmaBossHealthBar": "Vida de Magma Boss",
+    "disableEmberRodAbility": "Desactivar Ember Rod en Isla",
+    "warningColor": "Color de Alerta",
+    "confirmationColor": "Color de Confirmación",
+    "manaTextColor": "Color de Texto de Barra de Mana",
+    "manaBarColor": "Color de Barra de Mana",
+    "editLocations": "Modificar Posiciones",
+    "guiScale": "Escala de Menú: %scale%",
+    "resetLocations": "Reiniciar Posiciones",
+    "hideDurability": "Ocultar Durabilidad de Herramientas",
+    "showEnchantmentsReforges": "Encantamientos & Reforjados",
+    "minionStopWarning": "Alerta de Minion Detenido"
+  },
+  "messages": {
+    "dropConfirmation": "Arroja este objeto otra vez para confirmar!",
+    "magmaBossWarning": "Boss de MagmaCube!",
+    "fullInventory": "Inventario Lleno!",
+    "newVersion": "La nueva versión %newestVersion% se encuentra disponible. Para descargarla haz click aquí.",
+    "discord": "Quieres ver los cambios? Haz click aquí para unirte a mi servidor de discord.",
+    "developmentVersion": "Estás usando una versión en desarrollo: %version%. La última versión pública es %newestVersion%",
+    "labymod": "Usuarios de Labymod: Ocultar Barra de Comida y Armadura no es compatible.",
+    "minionCannotReach": "Un minion de %type% no puede alcanzar sus mobs y se ha detenido!"
+  }
+}
