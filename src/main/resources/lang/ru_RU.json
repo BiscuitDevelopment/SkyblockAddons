@@ -1,0 +1,43 @@
+{
+  "language": "Русский",
+  "settings": {
+    "settings": "Настройки",
+    "openSettings": "Открыть настройки",
+    "magmaBossWarning": "Предупреждение о Магма Боссе",
+    "itemDropConfirmation": "Подтверждение дропа предмета",
+    "warningTime": "Длительность предупреждения: %time%s",
+    "manaBar": "Бар маны: %type%",
+    "manaBarTypes": {
+      "barAndText": "Бар и Текст",
+      "bar": "Бар",
+      "text": "Текст",
+      "off": "Выключен"
+    },
+    "hideSkeletonHatBones": "Скрыть кости Шлема Скелета",
+    "skeletonHatBonesBar": "Бар костей Головы Скелета",
+    "hideFoodAndArmor": "Скрыть бар Еды и Брони",
+    "fullInventoryWarning": "Предупреждения о полном инвентаре",
+    "magmaBossHealthBar": "Бар здоровья Магма Босса",
+    "disableEmberRodAbility": "Отключить Ember Rod на острове",
+    "warningColor": "Цвет предупреждений",
+    "confirmationColor": "Цвет подтверждений",
+    "manaTextColor": "Цвет текста маны",
+    "manaBarColor": "Цвет бара маны",
+    "editLocations": "Изменить расположение",
+    "guiScale": "Масштаб GUI: %scale%",
+    "resetLocations": "Сбросить расположение",
+    "hideDurability": "Скрыть прочность инструментов",
+    "showEnchantmentsReforges": "Зачарование и Перековка",
+    "minionStopWarning": "Предупреждение остановки миньона"
+  },
+  "messages": {
+    "dropConfirmation": "Выбросите предмет ещё раз для подтверждения!",
+    "magmaBossWarning": "МагмаКуб Босс!",
+    "fullInventory": "Полный инвентарь!",
+    "newVersion": "Новая версия, %newestVersion% доступна. Скачайте её нажав сюда.",
+    "discord": "Хотите увидеть изменения? Нажмите сюда чтобы присоединиться к моему дискорду.",
+    "developmentVersion": "Вы запустили версию находящуюся в разработке: %version%. Последняя онлайн версия: %newestVersion%",
+    "labymod": "Пользователи Labymod: Скрытие бара Еды и Брони несовместимо.",
+    "minionCannotReach": "%type% миньон не может достать и перестал спавнить!"
+  }
+}
