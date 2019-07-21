@@ -338,6 +338,14 @@ public class PlayerListener {
                         }
                         p.addChatMessage(new ChatComponentText(EnumChatFormatting.RED + "A " + mobName + " minion cannot reach and has stopped spawning!"));
                     }
+                } else if (entity.getCustomNameTag().startsWith("\u00A7cMy storage is full! :(")) {
+                    long now = System.currentTimeMillis();
+                    if (now - lastSound > 5000) { //this just spams message...
+                        lastSound = now;
+                        EntityPlayerSP p = Minecraft.getMinecraft().thePlayer;
+                        p.playSound("random.pop", 1, 1);
+                        p.addChatMessage(new ChatComponentText(EnumChatFormatting.GREEN + "There is a minion with full storage!"));
+                    }
                 }
             }
         }
