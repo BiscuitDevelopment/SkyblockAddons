@@ -11,6 +11,8 @@ import net.minecraft.client.renderer.GlStateManager;
 
 import java.awt.*;
 
+import static codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui.WIDTH_LIMIT;
+
 public class ButtonRegular extends GuiButton {
 
     private SkyblockAddons main;
@@ -71,7 +73,6 @@ public class ButtonRegular extends GuiButton {
             } else {
                 boxColor = main.getUtils().getDefaultColor(boxAlpha * alphaMultiplier);
             }
-            drawRect(this.xPosition, this.yPosition, this.xPosition+this.width, this.yPosition+this.height, boxColor);
             GlStateManager.enableBlend();
             if (alpha < 4) alpha = 4;
             int fontColor = new Color(224, 224, 224, alpha).getRGB();
@@ -83,8 +84,22 @@ public class ButtonRegular extends GuiButton {
             } else if (feature == Feature.MANA_BAR) {
                 displayString = main.getConfigValues().getMessage(ConfigValues.Message.SETTING_MANA_BAR);
             }
-            this.drawCenteredString(mc.fontRendererObj, displayString, xPosition+width/2, yPosition+(this.height-8)/2, fontColor);
+            float scale = 1;
+            int stringWidth = mc.fontRendererObj.getStringWidth(displayString);
+            float widthLimit = WIDTH_LIMIT-10;
+            if (feature == Feature.WARNING_TIME) {
+                widthLimit = 90;
+            }
+            if (stringWidth > widthLimit) {
+                scale = 1/(stringWidth/widthLimit);
+            }
+            drawRect(xPosition, yPosition, xPosition+this.width, yPosition+this.height, boxColor);
+            float scaleMultiplier = 1/scale;
+            GlStateManager.pushMatrix();
+            GlStateManager.scale(scale, scale, 1);
+            this.drawCenteredString(mc.fontRendererObj, displayString, (int)((xPosition+width/2)*scaleMultiplier), (int)((yPosition+(this.height-(8/scaleMultiplier))/2)*scaleMultiplier), fontColor);
             GlStateManager.disableBlend();
+            GlStateManager.popMatrix();
         }
     }
 

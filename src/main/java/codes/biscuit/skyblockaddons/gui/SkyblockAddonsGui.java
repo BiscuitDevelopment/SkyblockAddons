@@ -13,6 +13,8 @@ import java.awt.*;
 
 public class SkyblockAddonsGui extends GuiScreen {
 
+    static int WIDTH_LIMIT = 140;
+
     private SkyblockAddons main;
 
     private long timeOpened = System.currentTimeMillis();
@@ -23,24 +25,20 @@ public class SkyblockAddonsGui extends GuiScreen {
 
     @Override
     public void initGui() {
-        int halfWidth = width/2;
-        int oneThird = width/3;
-        int twoThirds = oneThird*2;
-        int boxWidth = 130;
-        int boxHeight = 20;
-        buttonList.add(new ButtonRegular(0, oneThird-boxWidth-30, height*0.25, main.getConfigValues().getMessage(ConfigValues.Message.SETTING_MAGMA_BOSS_WARNING), main, Feature.MAGMA_WARNING, boxWidth, boxHeight));
-        buttonList.add(new ButtonRegular(0, halfWidth-(boxWidth/2), height*0.25, main.getConfigValues().getMessage(ConfigValues.Message.SETTING_ITEM_DROP_CONFIRMATION), main, Feature.DROP_CONFIRMATION, boxWidth, boxHeight));
-        buttonList.add(new ButtonRegular(0, oneThird-boxWidth-30, height*0.33, null, main, Feature.MANA_BAR, boxWidth, boxHeight));
-        buttonList.add(new ButtonRegular(0, halfWidth-(boxWidth/2), height*0.33, main.getConfigValues().getMessage(ConfigValues.Message.SETTING_HIDE_SKELETON_HAT_BONES), main, Feature.HIDE_BONES, boxWidth, boxHeight));
-        buttonList.add(new ButtonRegular(0, oneThird-boxWidth-30, height*0.41, main.getConfigValues().getMessage(ConfigValues.Message.SETTING_SKELETON_HAT_BONES_BAR), main, Feature.SKELETON_BAR, boxWidth, boxHeight));
-        buttonList.add(new ButtonRegular(0, halfWidth-(boxWidth/2), height*0.41, main.getConfigValues().getMessage(ConfigValues.Message.SETTING_HIDE_FOOD_AND_ARMOR), main, Feature.HIDE_FOOD_ARMOR_BAR, boxWidth, boxHeight));
-        buttonList.add(new ButtonRegular(0, oneThird-boxWidth-30, height*0.49, main.getConfigValues().getMessage(ConfigValues.Message.SETTING_FULL_INVENTORY_WARNING), main, Feature.FULL_INVENTORY_WARNING, boxWidth, boxHeight));
-        buttonList.add(new ButtonRegular(0, twoThirds+30, height*0.25, main.getConfigValues().getMessage(ConfigValues.Message.SETTING_MAGMA_BOSS_HEALTH_BAR), main, Feature.MAGMA_BOSS_BAR, boxWidth, boxHeight));
-        buttonList.add(new ButtonRegular(0, halfWidth-(boxWidth/2), height*0.49, main.getConfigValues().getMessage(ConfigValues.Message.SETTING_DISABLE_EMBER_ROD_ABILITY), main, Feature.DISABLE_EMBER_ROD, boxWidth, boxHeight));
-        buttonList.add(new ButtonRegular(0, halfWidth-(boxWidth/2), height*0.86, main.getConfigValues().getMessage(ConfigValues.Message.SETTING_EDIT_SETTINGS), main, Feature.SETTINGS, boxWidth, boxHeight));
-        buttonList.add(new ButtonRegular(0, twoThirds+30, height*0.33, main.getConfigValues().getMessage(ConfigValues.Message.SETTING_HIDE_DURABILITY), main, Feature.HIDE_DURABILITY, boxWidth, boxHeight));
-        buttonList.add(new ButtonRegular(0, twoThirds+30, height*0.41, main.getConfigValues().getMessage(ConfigValues.Message.SETTING_ENCHANTS_AND_REFORGES), main, Feature.SHOW_ENCHANTMENTS_REFORGES, boxWidth, boxHeight));
-        buttonList.add(new ButtonRegular(0, twoThirds+30, height*0.49, main.getConfigValues().getMessage(ConfigValues.Message.SETTING_MINION_STOP_WARNING), main, Feature.MINION_STOP_WARNING, boxWidth, boxHeight));
+        addButton(height*0.25, ConfigValues.Message.SETTING_MAGMA_BOSS_WARNING, Feature.MAGMA_WARNING, 1);
+        addButton(height*0.25, ConfigValues.Message.SETTING_ITEM_DROP_CONFIRMATION, Feature.DROP_CONFIRMATION, 2);
+        addButton(height*0.33, ConfigValues.Message.SETTING_MANA_BAR, Feature.MANA_BAR, 1);
+        addButton(height*0.33, ConfigValues.Message.SETTING_HIDE_SKELETON_HAT_BONES, Feature.HIDE_BONES, 2);
+        addButton(height*0.41, ConfigValues.Message.SETTING_SKELETON_HAT_BONES_BAR, Feature.SKELETON_BAR, 1);
+        addButton(height*0.41, ConfigValues.Message.SETTING_HIDE_FOOD_AND_ARMOR, Feature.HIDE_FOOD_ARMOR_BAR, 2);
+        addButton(height*0.49, ConfigValues.Message.SETTING_FULL_INVENTORY_WARNING, Feature.FULL_INVENTORY_WARNING, 1);
+        addButton(height*0.25, ConfigValues.Message.SETTING_MAGMA_BOSS_HEALTH_BAR, Feature.MAGMA_BOSS_BAR, 3);
+        addButton(height*0.49, ConfigValues.Message.SETTING_DISABLE_EMBER_ROD_ABILITY, Feature.DISABLE_EMBER_ROD,2);
+        addButton(height*0.33, ConfigValues.Message.SETTING_HIDE_DURABILITY, Feature.HIDE_DURABILITY,3);
+        addButton(height*0.41, ConfigValues.Message.SETTING_ENCHANTS_AND_REFORGES, Feature.SHOW_ENCHANTMENTS_REFORGES,3);
+        addButton(height*0.49, ConfigValues.Message.SETTING_MINION_STOP_WARNING, Feature.MINION_STOP_WARNING, 3);
+        addButton(height*0.86, ConfigValues.Message.SETTING_EDIT_SETTINGS, Feature.SETTINGS, 4);
+        addButton(height*0.86, ConfigValues.Message.LANGUAGE, Feature.LANGUAGE, 5);
     }
 
 
@@ -95,6 +93,11 @@ public class SkyblockAddonsGui extends GuiScreen {
             } else if (feature == Feature.SETTINGS) {
                 main.getUtils().setFadingIn(false);
                 Minecraft.getMinecraft().displayGuiScreen(new SettingsGui(main));
+            } else if (feature == Feature.LANGUAGE) {
+                main.getConfigValues().setLanguage(main.getConfigValues().getLanguage().getNextLanguage());
+                main.getConfigValues().loadLanguageFile();
+                main.getUtils().setFadingIn(false);
+                Minecraft.getMinecraft().displayGuiScreen(new SkyblockAddonsGui(main));
             }
         }
     }
@@ -112,6 +115,33 @@ public class SkyblockAddonsGui extends GuiScreen {
         drawCenteredString(fontRendererObj, text,
                 (int)(x*scaleMultiplier)+xOff, (int)(y*scaleMultiplier)+yOff, color);
         GlStateManager.popMatrix();
+    }
+
+    private void addButton(double y, ConfigValues.Message message, Feature feature, int collumn) {
+        String text = null;
+        if (message != null) {
+            text = main.getConfigValues().getMessage(message);
+        }
+        int halfWidth = width/2;
+        int oneThird = width/3;
+        int twoThirds = oneThird*2;
+        int boxWidth = fontRendererObj.getStringWidth(text)+10;
+        if (boxWidth > WIDTH_LIMIT) boxWidth = WIDTH_LIMIT;
+        int boxHeight = 20;
+        int x = 0;
+        if (collumn == 1) {
+            x = oneThird-boxWidth-30;
+        } else if (collumn == 2) {
+            x = halfWidth-(boxWidth/2);
+        } else if (collumn == 3) {
+            x = twoThirds+30;
+        } else if (collumn == 4) {
+            x = oneThird-(boxWidth/2);
+        } else if (collumn == 5) {
+            x = twoThirds-(boxWidth/2);
+        }
+        buttonList.add(new ButtonRegular(0, x, y, text, main, feature,
+                boxWidth, boxHeight));
     }
 
 

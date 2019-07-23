@@ -7,6 +7,7 @@ import org.spongepowered.asm.launch.MixinBootstrap;
 import org.spongepowered.asm.mixin.MixinEnvironment;
 
 import java.io.File;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -20,11 +21,17 @@ public class FMLLoadingPlugin implements ITweaker {
     @Override
     public void acceptOptions(List<String> args, File gameDir, File assetsDir, String profile) {}
 
-    @SuppressWarnings({"JavaReflectionMemberAccess", "unchecked"})
+    @SuppressWarnings({"JavaReflectionMemberAccess", "unchecked", "deprecation"})
     @Override
     public void injectIntoClassLoader(LaunchClassLoader classLoader) {
         MixinBootstrap.init();
-//        Mixins.addConfiguration("mixins.skyblockaddons.json");
+        try {
+            Class mixinsClass = Class.forName("org.spongepowered.asm.mixin.Mixins");
+            Method addConfigurationMethod = mixinsClass.getMethod("addConfiguration", String.class);
+            addConfigurationMethod.invoke(null, "mixins.skyblockaddons.json");
+        } catch (ClassNotFoundException | NoSuchMethodException | IllegalAccessException | InvocationTargetException ex) {
+            System.out.println("[SkyblockAddons] Did not find Mixins class/method, might be using an earlier version of mixins.");
+        }
         MixinEnvironment.setCompatibilityLevel(MixinEnvironment.CompatibilityLevel.JAVA_8);
         MixinEnvironment.getDefaultEnvironment().setObfuscationContext("searge");
         MixinEnvironment.getDefaultEnvironment().setSide(MixinEnvironment.Side.CLIENT);

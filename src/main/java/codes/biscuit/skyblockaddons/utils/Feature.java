@@ -91,13 +91,23 @@ public enum Feature {
     }
 
     public enum Language {
-        ENGLISH;
+        ENGLISH("en_US"),
+        SPANISH_MEXICO("es_MX"),
+        SPANISH_SPAIN("es_ES"),
+        GERMAN_GERMANY("de_DE"),
+        FRENCH("fr_FR"),
+        DUTCH_NETHERLANDS("nl_NL"),
+        RUSSIAN("ru_RU"),
+        POLISH("nl_NL");
+
+        private String path;
+
+        Language(String path) {
+            this.path = path;
+        }
 
         public String getPath() {
-            if (this == Language.ENGLISH) {
-                return "en_US";
-            }
-            return null;
+            return path;
         }
 
         public Language getNextLanguage() {

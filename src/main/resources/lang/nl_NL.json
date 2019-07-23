@@ -1,43 +1,43 @@
 {
- "language": "Deutsch (Nederlands)",
- "settings": {
-   "settings": "Instellingen",
- "openSettings": "Open Instellingen",
-"magmaBossWarning": "Magma Baas Waarschuwing",
-"itemDropConfirmation": "Object laten vallen Bevestiging",
- "warningTime": "Waarschuwingstijd: %time%s",
- "manaBar": "Mana Bar: %type%",
-"manaBarTypes": {
-     "barAndText": "Bar & Tekst",
-     "bar": "Bar",
-     "text": "Tekst",
-     "off": "Uit"
-   },
-   "hideSkeletonHatBones": "Verstop Skelet Hoed Botten",
-   "skeletonHatBonesBar": "Skelet Hoed Botten Bar",
-   "hideFoodAndArmor": "Verstop Voedsel & Harnas Bar",
-   "fullInventoryWarning": "Volle Inventaris Waarschuwing",
-   "magmaBossHealthBar": "Magma Baas Levens Bar",
-   "disableEmberRodAbility": "Uitschakelen Eiland Sintel Staf",
-   "warningColor": "Waarschuwingskleur",
-   "confirmationColor": "Kleur Bevestigen",
-   "manaTextColor": "Mana Tekst Kleur",
-   "manaBarColor": "Mana Bar Kleur",
-   "editLocations": "Locaties Bewerken",
-   "guiScale": "Gui Schaal: %scale%",
-   "resetLocations": "Locaties Resetten",
-   "hideDurability": "Verberg Gereedschap Duurzaamheid",
-   "showEnchantmentsReforges": "Betoveringen & Omsmedingen",
-   "minionStopWarning": "Handlanger is gestopt Waarschuwing"
- },
- "messages": {
-   "dropConfirmation": "Laat dit object opnieuw vallen om te Bevestigen!",
-   "magmaBossWarning": "MagmaKubus Baas!",
-   "fullInventory": "Volle Inventaris!",
-   "newVersion": "Een nieuwe versie, %newestVersion% is beschikbaar. Download het door hier te klikken.",
-   "discord": "Wilt u de wijzigingen bekijken? Klik hier voor bij mijn discord te aansluiten.",
-   "developmentVersion": "U gebruikt een ontwikkelings versie: %version%. De laatste online versie is %newestVersion%",
-   "labymod": "Labymod Gebruikers: Verstop Voedsel & Harnas Bar is onverenigbaar.",
-   "minionCannotReach": "Een %type% handlanger kan het niet bereiken en is gestopt!"
- } 
+  "language": "Deutsch (Nederlands)",
+  "settings": {
+    "settings": "Instellingen",
+    "openSettings": "Open Instellingen",
+    "magmaBossWarning": "Magma Baas Waarschuwing",
+    "itemDropConfirmation": "Object laten vallen Bevestiging",
+    "warningTime": "Waarschuwingstijd: %time%s",
+    "manaBar": "Mana Bar: %type%",
+    "manaBarTypes": {
+      "barAndText": "Bar & Tekst",
+      "bar": "Bar",
+      "text": "Tekst",
+      "off": "Uit"
+    },
+    "hideSkeletonHatBones": "Verstop Skelet Hoed Botten",
+    "skeletonHatBonesBar": "Skelet Hoed Botten Bar",
+    "hideFoodAndArmor": "Verstop Voedsel & Harnas Bar",
+    "fullInventoryWarning": "Volle Inventaris Waarschuwing",
+    "magmaBossHealthBar": "Magma Baas Levens Bar",
+    "disableEmberRodAbility": "Uitschakelen Eiland Sintel Staf",
+    "warningColor": "Waarschuwingskleur",
+    "confirmationColor": "Kleur Bevestigen",
+    "manaTextColor": "Mana Tekst Kleur",
+    "manaBarColor": "Mana Bar Kleur",
+    "editLocations": "Locaties Bewerken",
+    "guiScale": "Gui Schaal: %scale%",
+    "resetLocations": "Locaties Resetten",
+    "hideDurability": "Verberg Gereedschap Duurzaamheid",
+    "showEnchantmentsReforges": "Betoveringen & Omsmedingen",
+    "minionStopWarning": "Handlanger is gestopt Waarschuwing"
+  },
+  "messages": {
+    "dropConfirmation": "Laat dit object opnieuw vallen om te Bevestigen!",
+    "magmaBossWarning": "MagmaKubus Baas!",
+    "fullInventory": "Volle Inventaris!",
+    "newVersion": "Een nieuwe versie, %newestVersion% is beschikbaar. Download het door hier te klikken.",
+    "discord": "Wilt u de wijzigingen bekijken? Klik hier voor bij mijn discord te aansluiten.",
+    "developmentVersion": "U gebruikt een ontwikkelings versie: %version%. De laatste online versie is %newestVersion%",
+    "labymod": "Labymod Gebruikers: Verstop Voedsel & Harnas Bar is onverenigbaar.",
+    "minionCannotReach": "Een %type% handlanger kan het niet bereiken en is gestopt!"
+  }
 }

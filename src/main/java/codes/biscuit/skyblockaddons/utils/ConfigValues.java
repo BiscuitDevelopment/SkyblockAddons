@@ -19,7 +19,6 @@ public class ConfigValues {
     private Map<Feature, ConfigColor> featureColors = new EnumMap<>(Feature.class);
     private Feature.ManaBarType manaBarType = Feature.ManaBarType.BAR_TEXT;
     private int warningSeconds = 4;
-//    private int inventoryWarningSeconds = 3;
     private float manaBarX = 0.45F;
     private float manaBarY = 0.83F;
     private float skeletonBarX = 0.68F;
@@ -107,9 +106,6 @@ public class ConfigValues {
             if (settingsConfig.has("language")) {
                 language = Feature.Language.getFromPath(settingsConfig.get("language").getAsString());
             }
-//            if (settingsConfig.has("inventoryWarningSeconds")) {
-//                inventoryWarningSeconds = settingsConfig.get("inventoryWarningSeconds").getAsInt();
-//            }
         } else {
             addDefaultsAndSave();
         }
@@ -188,6 +184,14 @@ public class ConfigValues {
         String text = null;
         if (message.getMessageObject() == MessageObject.SETTING) {
             text = languageConfig.getAsJsonObject("settings").get(message.getMemberName()).getAsString();
+        } else if (message.getMessageObject() == MessageObject.MANA_BAR_TYPE) {
+            text = languageConfig.getAsJsonObject("settings").getAsJsonObject("manaBarTypes").get(message.getMemberName()).getAsString();
+        } else if (message.getMessageObject() == MessageObject.MESSAGES) {
+            text = languageConfig.getAsJsonObject("messages").get(message.getMemberName()).getAsString();
+        } else if (message.getMessageObject() == MessageObject.ROOT) {
+            text = languageConfig.get(message.getMemberName()).getAsString();
+        }
+        if (text != null) {
             if (message == Message.SETTING_WARNING_TIME) {
                 text = text.replace("%time%", String.valueOf(warningSeconds));
             } else if (message == Message.SETTING_MANA_BAR) {
@@ -197,14 +201,10 @@ public class ConfigValues {
             } else if (message == Message.MESSAGE_NEW_VERSION) {
                 text = text.replace("%newestVersion%", variables[0]);
             } else if (message == Message.MESSAGE_DEVELOPMENT_VERSION) {
-                text = text.replace("%version%", variables[0]).replace("%newVersion%", variables[1]);
+                text = text.replace("%version%", variables[0]).replace("%newestVersion%", variables[1]);
+            } else if (message == Message.LANGUAGE) {
+                text = "Language: "+text;
             }
-        } else if (message.getMessageObject() == MessageObject.MANA_BAR_TYPE) {
-            text = languageConfig.getAsJsonObject("settings").getAsJsonObject("manaBarTypes").get(message.getMemberName()).getAsString();
-        } else if (message.getMessageObject() == MessageObject.MESSAGES) {
-            text = languageConfig.getAsJsonObject("messages").get(message.getMemberName()).getAsString();
-        } else if (message.getMessageObject() == MessageObject.ROOT) {
-            text = languageConfig.get(message.getMemberName()).getAsString();
         }
         return text;
     }
@@ -234,7 +234,6 @@ public class ConfigValues {
         SETTING_HIDE_DURABILITY(MessageObject.SETTING, "hideDurability"),
         SETTING_ENCHANTS_AND_REFORGES(MessageObject.SETTING, "showEnchantmentsReforges"),
         SETTING_MINION_STOP_WARNING(MessageObject.SETTING, "minionStopWarning"),
-        SETTING_LANGUAGE(MessageObject.SETTING, "language"),
 
         MANA_BAR_TYPE_BAR_TEXT(MessageObject.MANA_BAR_TYPE, "barAndText"),
         MANA_BAR_TYPE_BAR(MessageObject.MANA_BAR_TYPE, "bar"),

@@ -9,6 +9,9 @@ import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.GlStateManager;
 
 import java.awt.*;
+import java.math.BigDecimal;
+
+import static codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui.WIDTH_LIMIT;
 
 public class SettingsGui extends GuiScreen {
 
@@ -21,23 +24,61 @@ public class SettingsGui extends GuiScreen {
 
     @Override
     public void initGui() {
+        addButton(height*0.25, ConfigValues.Message.SETTING_WARNING_COLOR, Feature.WARNING_COLOR, 1);
+        addButton(height*0.41, ConfigValues.Message.SETTING_CONFIRMATION_COLOR, Feature.CONFIRMATION_COLOR, 1);
+        addButton(height*0.33, ConfigValues.Message.SETTING_MANA_TEXT_COLOR, Feature.MANA_TEXT_COLOR, 1);
+        addButton(height*0.49, ConfigValues.Message.SETTING_MANA_BAR_COLOR, Feature.MANA_BAR_COLOR, 1);
+        addButton(height*0.25, ConfigValues.Message.SETTING_WARNING_TIME, Feature.WARNING_TIME, 3);
+        addButton(height*0.25, ConfigValues.Message.SETTING_EDIT_LOCATIONS, Feature.EDIT_LOCATIONS, 2);
+        addButton(height*0.25, ConfigValues.Message.SETTING_WARNING_COLOR, Feature.WARNING_COLOR, 1);
+        addButton(height*0.41, ConfigValues.Message.SETTING_CONFIRMATION_COLOR, Feature.CONFIRMATION_COLOR, 1);
+        addButton(height*0.25, ConfigValues.Message.SETTING_WARNING_COLOR, Feature.WARNING_COLOR, 1);
+        addSlider();
+        int twoThirds = width/3*2;
+        buttonList.add(new ButtonRegular(0, twoThirds, height*0.25, "+", main, Feature.ADD, 20, 20));
+        buttonList.add(new ButtonRegular(0, twoThirds+100+20+5+5, height*0.25, "-", main, Feature.SUBTRACT, 20, 20));
+    }
+
+    private void addSlider() {
+        String text = main.getConfigValues().getMessage(ConfigValues.Message.SETTING_GUI_SCALE, String.valueOf(getRoundedValue(
+                main.getUtils().denormalizeValue(main.getConfigValues().getGuiScale(), ButtonSlider.VALUE_MIN, ButtonSlider.VALUE_MAX, ButtonSlider.VALUE_STEP))));
+        int halfWidth = width/2;
+        int boxWidth = fontRendererObj.getStringWidth(text)+10;
+        if (boxWidth > WIDTH_LIMIT) boxWidth = WIDTH_LIMIT;
+        int boxHeight = 20;
+        int x = halfWidth-(boxWidth/2);
+        int y = (int)(height*0.33);
+        buttonList.add(new ButtonSlider(0, x, y, boxWidth, boxHeight, main));
+    }
+
+    private float getRoundedValue(float value) {
+        return new BigDecimal(String.valueOf(value)).setScale(2, BigDecimal.ROUND_HALF_UP).floatValue();
+    }
+
+    private void addButton(double y, ConfigValues.Message message, Feature feature, int collumn) {
+        String text = null;
+        if (message != null) {
+            text = main.getConfigValues().getMessage(message);
+        }
         int halfWidth = width/2;
         int oneThird = width/3;
         int twoThirds = oneThird*2;
+        int widthLimit = WIDTH_LIMIT;
+        if (feature == Feature.WARNING_TIME) {
+            widthLimit = 100;
+        }
+        int boxWidth = fontRendererObj.getStringWidth(text)+10;
+        if (boxWidth > widthLimit) boxWidth = widthLimit;
         int boxHeight = 20;
-        int boxWidth = 100;
-        buttonList.add(new ButtonRegular(0, oneThird-boxWidth-30, height*0.25, main.getConfigValues().getMessage(ConfigValues.Message.SETTING_WARNING_COLOR), main, Feature.WARNING_COLOR, boxWidth, boxHeight));
-        buttonList.add(new ButtonRegular(0, oneThird-boxWidth-30, height*0.41, main.getConfigValues().getMessage(ConfigValues.Message.SETTING_CONFIRMATION_COLOR), main, Feature.CONFIRMATION_COLOR, boxWidth, boxHeight));
-        buttonList.add(new ButtonRegular(0, oneThird-boxWidth-30, height*0.33, main.getConfigValues().getMessage(ConfigValues.Message.SETTING_MANA_TEXT_COLOR), main, Feature.MANA_TEXT_COLOR, boxWidth, boxHeight));
-        buttonList.add(new ButtonRegular(0, oneThird-boxWidth-30, height*0.49, main.getConfigValues().getMessage(ConfigValues.Message.SETTING_MANA_BAR_COLOR), main, Feature.MANA_BAR_COLOR, boxWidth, boxHeight));
-        buttonList.add(new ButtonRegular(0, twoThirds+25, height*0.25, null, main, Feature.WARNING_TIME, boxWidth, boxHeight));
-        buttonList.add(new ButtonRegular(0, halfWidth-(boxWidth/2), height*0.25, main.getConfigValues().getMessage(ConfigValues.Message.SETTING_EDIT_LOCATIONS), main, Feature.EDIT_LOCATIONS, boxWidth, boxHeight));
-        buttonList.add(new ButtonRegular(0, halfWidth-(boxWidth/2), height*0.41, main.getConfigValues().getMessage(ConfigValues.Message.SETTING_LANGUAGE)+
-                main.getConfigValues().getMessage(ConfigValues.Message.LANGUAGE), main, Feature.LANGUAGE, boxWidth, boxHeight));
-        buttonList.add(new ButtonSlider(0, halfWidth-(boxWidth/2), height*0.33, boxWidth, boxHeight, main));
-        boxWidth = 20;
-        buttonList.add(new ButtonRegular(0, twoThirds, height*0.25, "+", main, Feature.ADD, boxWidth, boxHeight));
-        buttonList.add(new ButtonRegular(0, twoThirds+100+20+5+5, height*0.25, "-", main, Feature.SUBTRACT, boxWidth, boxHeight));
+        int x = 0;
+        if (collumn == 1) {
+            x = oneThird-boxWidth-30;
+        } else if (collumn == 2) {
+            x = halfWidth-(boxWidth/2);
+        } else if (collumn == 3) {
+            x = twoThirds+25;
+        }
+        buttonList.add(new ButtonRegular(0, x, y, text, main, feature, boxWidth, boxHeight));
     }
 
 
@@ -82,9 +123,6 @@ public class SettingsGui extends GuiScreen {
             } else if (feature == Feature.EDIT_LOCATIONS) {
                 openingLocations = true;
                 Minecraft.getMinecraft().displayGuiScreen(new LocationEditGui(main));
-            } else if (feature == Feature.LANGUAGE) {
-                main.getConfigValues().setLanguage(main.getConfigValues().getLanguage().getNextLanguage());
-                main.getConfigValues().loadLanguageFile();
             }
         }
     }
