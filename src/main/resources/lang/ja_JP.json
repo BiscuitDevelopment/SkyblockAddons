@@ -1,0 +1,43 @@
+{
+  "language": "日本語",
+  "settings": {
+    "settings": "設定",
+    "openSettings": "設定を開く",
+    "magmaBossWarning": "マグマボスアラート",
+    "itemDropConfirmation": "捨てるアイテムの確認",
+    "warningTime": "アラートする時間: %time%s",
+    "manaBar": "マナゲージ: %type%",
+    "manaBarTypes": {
+      "barAndText": "ゲージ & 文字",
+      "bar": "ゲージ",
+      "text": "文字",
+      "off": "オフ"
+    },
+    "hideSkeletonHatBones": "スケルトンヘルメットの骨を非表示",
+    "skeletonHatBonesBar": "スケルトンヘルメットの骨のゲージ",
+    "hideFoodAndArmor": "食料とアーマーのゲージを非表示",
+    "fullInventoryWarning": "イベントリ満タンアラート",
+    "magmaBossHealthBar": "マグマボスの体力ゲージ",
+    "disableEmberRodAbility": "個人の島でエンバーロッドのアビリティを無効化",
+    "warningColor": "アラートの色",
+    "confirmationColor": "確認するときの色",
+    "manaTextColor": "マナの文字の色",
+    "manaBarColor": "マナゲージの色",
+    "editLocations": "位置を変更",
+    "guiScale": "Guiの大きさ: %scale%",
+    "resetLocations": "位置を初期化",
+    "hideDurability": "耐久値を非表示",
+    "showEnchantmentsReforges": "エンチャントとリフォージュの内容を表示",
+    "minionStopWarning": "ミニオン停止アラート"
+  },
+  "messages": {
+    "dropConfirmation": "落としてもいいのであれば、このアイテムをもう一度ドロップしてください。",
+    "magmaBossWarning": "マグマキューブボス出現！",
+    "fullInventory": "インベントリが満タンです！",
+    "newVersion": "新しいバージョンの %newestVersion% が利用可能です。ダウンロードするにはここをクリックしてください。",
+    "discord": "何が変わったか知りたいですか？ここをクリックすると私のDiscordに参加できます。",
+    "developmentVersion": "現在開発バージョンの %version% を使用しています。リリースされている最新バージョンは %newestVersion% です。",
+    "labymod": "Labymodを使用している場合、\"食料とアーマーのゲージを非表示\"の機能は互換性がありません。",
+    "minionCannotReach": "%type% ミニオンは上限に達したか、範囲外で敵を倒せないためモブのスポーンを停止しました！!"
+  }
+}
