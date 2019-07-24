@@ -91,14 +91,15 @@ public enum Feature {
     }
 
     public enum Language {
-        ENGLISH("en_US"),
-        SPANISH_MEXICO("es_MX"),
-        SPANISH_SPAIN("es_ES"),
-        GERMAN_GERMANY("de_DE"),
-        FRENCH("fr_FR"),
         DUTCH_NETHERLANDS("nl_NL"),
+        ENGLISH("en_US"),
+        FRENCH("fr_FR"),
+        GERMAN_GERMANY("de_DE"),
+        JAPANESE("ja_JP"),
+        POLISH("nl_NL"),
         RUSSIAN("ru_RU"),
-        POLISH("nl_NL");
+        SPANISH_MEXICO("es_MX"),
+        SPANISH_SPAIN("es_ES");
 
         private String path;
 

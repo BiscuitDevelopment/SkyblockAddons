@@ -36,7 +36,6 @@ public class SettingsGui extends GuiScreen {
         addSlider();
         int twoThirds = width/3*2;
         buttonList.add(new ButtonRegular(0, twoThirds, height*0.25, "+", main, Feature.ADD, 20, 20));
-        buttonList.add(new ButtonRegular(0, twoThirds+100+20+5+5, height*0.25, "-", main, Feature.SUBTRACT, 20, 20));
     }
 
     private void addSlider() {
@@ -78,6 +77,7 @@ public class SettingsGui extends GuiScreen {
         } else if (collumn == 3) {
             x = twoThirds+25;
         }
+        if (feature == Feature.WARNING_TIME) buttonList.add(new ButtonRegular(0, x+boxWidth+5, height*0.25, "-", main, Feature.SUBTRACT, 20, 20));
         buttonList.add(new ButtonRegular(0, x, y, text, main, feature, boxWidth, boxHeight));
     }
 
