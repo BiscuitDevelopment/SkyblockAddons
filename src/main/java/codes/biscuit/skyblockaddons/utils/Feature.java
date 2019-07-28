@@ -2,12 +2,14 @@ package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 
+import static codes.biscuit.skyblockaddons.utils.ConfigValues.Message.*;
+
 public enum Feature {
 
     MAGMA_WARNING(0, ButtonType.REGULAR),
     DROP_CONFIRMATION(1, ButtonType.REGULAR),
     DISABLE_EMBER_ROD(2, ButtonType.REGULAR),
-    MANA_BAR(3, ButtonType.REGULAR),
+    SHOW_BACKPACK_PREVIEW(3, ButtonType.REGULAR),
     HIDE_BONES(4, ButtonType.REGULAR),
     SKELETON_BAR(5, ButtonType.REGULAR),
     HIDE_FOOD_ARMOR_BAR(6, ButtonType.REGULAR),
@@ -16,6 +18,15 @@ public enum Feature {
     HIDE_DURABILITY(9, ButtonType.REGULAR),
     SHOW_ENCHANTMENTS_REFORGES(10, ButtonType.REGULAR),
     MINION_STOP_WARNING(11, ButtonType.REGULAR),
+    HIDE_AUCTION_HOUSE_PLAYERS(12, ButtonType.REGULAR),
+
+    MANA_BAR(-1, ButtonType.REGULAR),
+    MANA_TEXT(-1, ButtonType.REGULAR),
+    HEALTH_BAR(-1, ButtonType.REGULAR),
+    HEALTH_TEXT(-1, ButtonType.REGULAR),
+    DEFENCE_ICON(-1, ButtonType.REGULAR),
+    DEFENCE_TEXT(-1, ButtonType.REGULAR),
+    DEFENCE_PERCENTAGE(-1, ButtonType.REGULAR),
 
     WARNING_COLOR(-1, ButtonType.COLOR),
     CONFIRMATION_COLOR(-1, ButtonType.COLOR),
@@ -23,7 +34,6 @@ public enum Feature {
     MANA_BAR_COLOR(-1, ButtonType.COLOR),
 
     WARNING_TIME(-1, ButtonType.NEUTRAL),
-    MANA_TEXT(-1, ButtonType.REGULAR),
 
     ADD(-1, ButtonType.MODIFY),
     SUBTRACT(-1, ButtonType.MODIFY),
@@ -31,7 +41,8 @@ public enum Feature {
     LANGUAGE(-1, ButtonType.SOLID),
     EDIT_LOCATIONS(-1, ButtonType.SOLID),
     SETTINGS(-1, ButtonType.SOLID),
-    RESET_LOCATION(-1, ButtonType.SOLID);
+    RESET_LOCATION(-1, ButtonType.SOLID),
+    BACKPACK_STYLE(-1, ButtonType.SOLID);
 
     private int id;
     private ButtonType buttonType;
@@ -54,6 +65,10 @@ public enum Feature {
         return null;
     }
 
+    public ButtonType getButtonType() {
+        return buttonType;
+    }
+
     public enum ButtonType {
         REGULAR,
         COLOR,
@@ -62,26 +77,23 @@ public enum Feature {
         SOLID
     }
 
-    public enum ManaBarType {
-        BAR_TEXT,
-        TEXT,
-        BAR,
-        OFF;
+    public enum BarType {
+        BAR_TEXT(BAR_TYPE_BAR_TEXT),
+        TEXT(BAR_TYPE_TEXT),
+        BAR(BAR_TYPE_BAR),
+        OFF(BAR_TYPE_OFF);
+
+        private ConfigValues.Message message;
+
+        BarType(ConfigValues.Message message) {
+            this.message = message;
+        }
 
         public String getDisplayText() {
-            switch (this) {
-                case BAR_TEXT:
-                    return SkyblockAddons.INSTANCE.getConfigValues().getMessage(ConfigValues.Message.MANA_BAR_TYPE_BAR_TEXT);
-                case TEXT:
-                    return SkyblockAddons.INSTANCE.getConfigValues().getMessage(ConfigValues.Message.MANA_BAR_TYPE_TEXT);
-                case BAR:
-                    return SkyblockAddons.INSTANCE.getConfigValues().getMessage(ConfigValues.Message.MANA_BAR_TYPE_BAR);
-                default:
-                    return SkyblockAddons.INSTANCE.getConfigValues().getMessage(ConfigValues.Message.MANA_BAR_TYPE_OFF);
-            }
+            return SkyblockAddons.INSTANCE.getConfigValues().getMessage(message);
         }
 
-        public ManaBarType getNextType() {
+        public BarType getNextType() {
             int nextType = ordinal()+1;
             if (nextType > values().length-1) {
                 nextType = 0;
@@ -90,47 +102,103 @@ public enum Feature {
         }
     }
 
-    public enum Language {
-        DUTCH_NETHERLANDS("nl_NL"),
-        ENGLISH("en_US"),
-        FRENCH("fr_FR"),
-        GERMAN_GERMANY("de_DE"),
-        JAPANESE("ja_JP"),
-        POLISH("nl_NL"),
-        RUSSIAN("ru_RU"),
-        SPANISH_MEXICO("es_MX"),
-        SPANISH_SPAIN("es_ES");
+    public enum IconType {
+        ICON_DEFENCE_PERCENTAGE(ICON_TYPE_ICON_DEFENCE_PERCENTAGE),
 
-        private String path;
+        ICON_DEFENCE(ICON_TYPE_ICON_DEFENCE),
+        ICON_PERCENTAGE(ICON_TYPE_ICON_PERCENTAGE),
+        DEFENCE_PERCENTAGE(ICON_TYPE_DEFENCE_PERCENTAGE),
 
-        Language(String path) {
-            this.path = path;
+        ICON(ICON_TYPE_ICON),
+        DEFENCE(ICON_TYPE_DEFENCE),
+        PERCENTAGE(ICON_TYPE_PERCENTAGE),
+        OFF(ICON_TYPE_OFF);
+
+        private ConfigValues.Message message;
+
+        IconType(ConfigValues.Message message) {
+            this.message = message;
         }
 
-        public String getPath() {
-            return path;
+        public String getDisplayText() {
+            return SkyblockAddons.INSTANCE.getConfigValues().getMessage(message);
         }
 
-        public Language getNextLanguage() {
+        public IconType getNextType() {
             int nextType = ordinal()+1;
             if (nextType > values().length-1) {
                 nextType = 0;
             }
             return values()[nextType];
         }
+    }
 
-        public static Language getFromPath(String text) {
-            for (Language language : values()) {
-                String path = language.getPath();
-                if (path != null && path.equals(text)) {
-                    return language;
-                }
-            }
-            return null;
+    public enum Accuracy {
+        RIVERS,
+        BLAZE,
+        MAGMA_CUBES,
+        MUSIC_DISC,
+        SPAWNED,
+    }
+
+    public enum InventoryType {
+        ENCHANTMENT_TABLE,
+        REFORGE_ANVIL
+    }
+
+    public enum Backpack {
+        SMALL("Small Backpack"),
+        MEDIUM("Medium Backpack"),
+        LARGE("Large Backpack");
+
+        private String itemName;
+
+        Backpack(String itemName) {
+            this.itemName = itemName;
+        }
+
+        public String getItemName() {
+            return itemName;
         }
     }
 
-    public ButtonType getButtonType() {
-        return buttonType;
+    public enum BackpackStyle {
+        GUI(STYLE_GUI),
+        BOX(STYLE_COMPACT);
+
+        private ConfigValues.Message message;
+
+        BackpackStyle(ConfigValues.Message message) {
+            this.message = message;
+        }
+
+        public String getDisplayText() {
+            return SkyblockAddons.INSTANCE.getConfigValues().getMessage(message);
+        }
+
+        public BackpackStyle getNextType() {
+            int nextType = ordinal()+1;
+            if (nextType > values().length-1) {
+                nextType = 0;
+            }
+            return values()[nextType];
+        }
+    }
+
+    public enum Location {
+        ISLAND("Your Island"),
+        BLAZING_FORTRESS("Blazing Fortress"),
+        VILLAGE("Village"),
+        AUCTION_HOUSE("Auction House");
+
+        private String scoreboardName;
+
+        Location(String scoreboardName) {
+            this.scoreboardName = scoreboardName;
+        }
+
+        public String getScoreboardName() {
+            return scoreboardName;
+        }
     }
 }

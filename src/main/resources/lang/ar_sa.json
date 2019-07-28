@@ -1,0 +1,62 @@
+{
+  "language": "العربية",
+  "settings": {
+    "settings": "الإعدادات",
+    "openSettings": "أفتح الإعدادات",
+    "magmaBossWarning": "تحذير زعيم الصهارة",
+    "itemDropConfirmation": "تأكيد رمي العنصر",
+    "warningTime": "%time%s :وقت التحذير",
+    "manaBar": "%type% :شريط المانا",
+    "barTypes": {
+      "barAndText": "شريط والنص",
+      "bar": "نص",
+      "text": "شريط",
+      "off": "إيقاف"
+    },
+    "hideSkeletonHatBones": "إخفاء عظام خوذة الهيكل العظمي",
+    "skeletonHatBonesBar": "شريط خوذة الهيكل العظمي",
+    "hideFoodAndArmor": "إخفاء شريط الطعام و شريط الدرع",
+    "fullInventoryWarning": "تحذير جرد كامل",
+    "magmaBossHealthBar": "شريط صحة زعيم الصهارة",
+    "disableEmberRodAbility": "تعطيل عود الجمرة في الجزيرة",
+    "warningColor": "لون التحذير",
+    "confirmationColor": "لون تأكيد",
+    "manaTextColor": "لون نص المانا",
+    "manaBarColor": "لون شريط المانا",
+    "editLocations": "تغيير المواقع",
+    "guiScale": "%scale% :مقياس واجهة المستخدم الرسومية",
+    "resetLocations": "إعادة تعيين المواقع",
+    "hideDurability": "إخفاء متانة الأداة",
+    "showEnchantmentsReforges": "تطوير و إعادة تشكيل",
+    "minionStopWarning": "تحذير إيقاف التابع",
+    "hideActionHousePlayers": "Hide Players Near Auction House",
+    "healthBar": "Health Bar: %type%",
+    "defenceIcon": "Defence Icon: %type%",
+    "backpackStyle": "Backpack Style: %style%",
+    "styles": {
+      "inventory": "Inventory",
+      "compact": "Compact"
+    },
+    "iconTypes": {
+      "iconDefenceAndPercentage": "Icon, Defence, & Percentage",
+      "iconAndDefence": "Icon & Defence",
+      "iconAndPercentage": "Icon & Percentage",
+      "defenceAndPercentage": "Defence & Percentage",
+      "icon": "Icon",
+      "defence": "Defence",
+      "percentage": "Percentage",
+      "off": "Off"
+    },
+    "showBackpackPreview": "Show Backpack Preview"
+  },
+  "messages": {
+    "dropConfirmation": "!إرمي هذا العنصر مرة أخرى للتأكيد",
+    "magmaBossWarning": "!زعيم مكعب الصهارة",
+    "fullInventory": "!جرد كامل",
+    "newVersion": ".متاح. قم بتنزيله بالنقر هنا %newestVersion% ,نسخة جديدة",
+    "discord": ".تريد رؤية التغييرات؟ انقر هنا للانضمام إلى الدسكورد الخاص بي",
+    "developmentVersion": "%newestVersion% أحدث نسخة على الإنترنت هي .%version% :أنت تقوم بتشغيل إصدار تطوير",
+    "labymod": ".إن إخفاء عظام خوذة الهيكل العظمي غير متوافق :Labymodمستعملي ال",
+    "minionCannotReach": "!لا يمكنه الوصول وانه سيتوقف عن الإنشاء %type%إن تابع ال"
+  }
+}

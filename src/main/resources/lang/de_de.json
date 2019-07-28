@@ -7,7 +7,7 @@
     "itemDropConfirmation": "Item Drop Bestätigung",
     "warningTime": "Warnung anzeigen für: %time%s",
     "manaBar": "Mana Leiste: %type%",
-    "manaBarTypes": {
+    "barTypes": {
       "barAndText": "Leiste & Text",
       "bar": "Nur Leiste",
       "text": "Nur Text",
@@ -28,7 +28,26 @@
     "resetLocations": "Ort(e) zurücksetzen",
     "hideDurability": "Werkzeugshaltbarkeit verbergen",
     "showEnchantmentsReforges": "Zeige Verzauberungen und Verbesserungen",
-    "minionStopWarning": "Minion-Konflikt Warnung"
+    "minionStopWarning": "Minion-Konflikt Warnung",
+    "hideActionHousePlayers": "Hide Players Near Auction House",
+    "healthBar": "Health Bar: %type%",
+    "defenceIcon": "Defence Icon: %type%",
+    "backpackStyle": "Backpack Style: %style%",
+    "styles": {
+      "inventory": "Inventory",
+      "compact": "Compact"
+    },
+    "iconTypes": {
+      "iconDefenceAndPercentage": "Icon, Defence, & Percentage",
+      "iconAndDefence": "Icon & Defence",
+      "iconAndPercentage": "Icon & Percentage",
+      "defenceAndPercentage": "Defence & Percentage",
+      "icon": "Icon",
+      "defence": "Defence",
+      "percentage": "Percentage",
+      "off": "Off"
+    },
+    "showBackpackPreview": "Show Backpack Preview"
   },
   "messages": {
     "dropConfirmation": "Droppe dieses Item nochmal um zu bestätigen, dass du es wirklich droppen willst!",

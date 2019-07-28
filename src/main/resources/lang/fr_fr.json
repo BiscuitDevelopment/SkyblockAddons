@@ -7,7 +7,7 @@
     "itemDropConfirmation": "Confirmation du jet",
     "warningTime": "Attention temps: %time%s",
     "manaBar": "Barre de mana: %type%",
-    "manaBarTypes": {
+    "barTypes": {
       "barAndText": "Barre & Texte",
       "bar": "Barre",
       "text": "Texte",
@@ -28,7 +28,26 @@
     "resetLocations": "Réinitialiser les emplacements",
     "hideDurability": "Masquer la durabilité des outils",
     "showEnchantmentsReforges": "Enchantement & Reforges",
-    "minionStopWarning": "Alerte Minion à l'arrêt"
+    "minionStopWarning": "Alerte Minion à l'arrêt",
+    "hideActionHousePlayers": "Hide Players Near Auction House",
+    "healthBar": "Health Bar: %type%",
+    "defenceIcon": "Defence Icon: %type%",
+    "backpackStyle": "Backpack Style: %style%",
+    "styles": {
+      "inventory": "Inventory",
+      "compact": "Compact"
+    },
+    "iconTypes": {
+      "iconDefenceAndPercentage": "Icon, Defence, & Percentage",
+      "iconAndDefence": "Icon & Defence",
+      "iconAndPercentage": "Icon & Percentage",
+      "defenceAndPercentage": "Defence & Percentage",
+      "icon": "Icon",
+      "defence": "Defence",
+      "percentage": "Percentage",
+      "off": "Off"
+    },
+    "showBackpackPreview": "Show Backpack Preview"
   },
   "messages": {
     "dropConfirmation": "Jetez cet objet une nouvelle fois pour confirmer!",

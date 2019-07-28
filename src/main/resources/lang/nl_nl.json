@@ -7,7 +7,7 @@
     "itemDropConfirmation": "Object laten vallen Bevestiging",
     "warningTime": "Waarschuwingstijd: %time%s",
     "manaBar": "Mana Bar: %type%",
-    "manaBarTypes": {
+    "barTypes": {
       "barAndText": "Bar & Tekst",
       "bar": "Bar",
       "text": "Tekst",
@@ -28,7 +28,26 @@
     "resetLocations": "Locaties Resetten",
     "hideDurability": "Verberg Gereedschap Duurzaamheid",
     "showEnchantmentsReforges": "Betoveringen & Omsmedingen",
-    "minionStopWarning": "Handlanger is gestopt Waarschuwing"
+    "minionStopWarning": "Handlanger is gestopt Waarschuwing",
+    "hideActionHousePlayers": "Hide Players Near Auction House",
+    "healthBar": "Health Bar: %type%",
+    "defenceIcon": "Defence Icon: %type%",
+    "backpackStyle": "Backpack Style: %style%",
+    "styles": {
+      "inventory": "Inventory",
+      "compact": "Compact"
+    },
+    "iconTypes": {
+      "iconDefenceAndPercentage": "Icon, Defence, & Percentage",
+      "iconAndDefence": "Icon & Defence",
+      "iconAndPercentage": "Icon & Percentage",
+      "defenceAndPercentage": "Defence & Percentage",
+      "icon": "Icon",
+      "defence": "Defence",
+      "percentage": "Percentage",
+      "off": "Off"
+    },
+    "showBackpackPreview": "Show Backpack Preview"
   },
   "messages": {
     "dropConfirmation": "Laat dit object opnieuw vallen om te Bevestigen!",

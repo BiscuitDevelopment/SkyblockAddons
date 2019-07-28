@@ -1,0 +1,62 @@
+{
+  "language": "עברית",
+  "settings": {
+    "settings": "הגדרות",
+    "openSettings": "פתיחת הגדרות",
+    "magmaBossWarning": "בוס מגמה מזדמן",
+    "itemDropConfirmation": "אישור זריקת פריט",
+    "warningTime": "זמן התראה: %time%s",
+    "manaBar": "מנה: %type%",
+    "barTypes": {
+      "barAndText": "עמודה וטקסט",
+      "bar": "עמודה",
+      "text": "טקסט",
+      "off": "כבוי"
+    },
+    "hideSkeletonHatBones": "הסתרת עצמות קסדת שלד",
+    "skeletonHatBonesBar": "עמודת עצמות קסדת עצמות",
+    "hideFoodAndArmor": "הסתר אוכל ועמודת שריון",
+    "fullInventoryWarning": "הזהרת מלאי מלא",
+    "magmaBossHealthBar": "עמודת חיים של בוס המגמה",
+    "disableEmberRodAbility": "כיבוי מוט אמבר באי",
+    "warningColor": "צבע אזהרה",
+    "confirmationColor": "צבע אישור",
+    "manaTextColor": "צבע טקסט מנה",
+    "manaBarColor": "צבע עמודת מנה",
+    "editLocations": "עריכת מקומות",
+    "guiScale": "משקל GUI: %scale%",
+    "resetLocations": "איפוס מקומות",
+    "hideDurability": "הסתר רמת שימוש של כלי",
+    "showEnchantmentsReforges": "כישופים ושיפורים",
+    "minionStopWarning": "\"המיניון לא יכול להגיע\" Warning",
+    "hideActionHousePlayers": "הסתר שחקנים ליד המכירה הפומבית",
+    "healthBar": "עמודת חיים: %type%",
+    "defenceIcon": "אייקון הגנה: %type%",
+    "backpackStyle": "סטייל תרמיל גב: %style%",
+    "styles": {
+      "inventory": "מלאי",
+      "compact": "קומפקטי"
+    },
+    "iconTypes": {
+      "iconDefenceAndPercentage": "אייקון, הגנה ואחוזים",
+      "iconAndDefence": "אייקון והגנה",
+      "iconAndPercentage": "אייקון ואחוזים",
+      "defenceAndPercentage": "הגנה ואחוזים",
+      "icon": "אייקון",
+      "defence": "הגנה",
+      "percentage": "אחוזים",
+      "off": "כבוי"
+    },
+    "showBackpackPreview": "תראה תרמיל גב"
+  },
+  "messages": {
+    "dropConfirmation": "זרוק פריט זה להסכמה",
+    "magmaBossWarning": "בוס מגמה!",
+    "fullInventory": "מלאי מלא!",
+    "newVersion": "גירסה חדשה!, %newestVersion% זמינה כעת. הקליקו פה בכדי להוריד אותה.",
+    "discord": "רוצים לראות את השינויים? הקליקו כאן כדי להצטרף לדיסקורד שלי!",
+    "developmentVersion": "אתה מריץ גירסת תכנות: %version%. הגירסה האחרונה היא %newestVersion%",
+    "labymod": "משתמשי לאבימוד: הסתרת עמודות אוכל ושריון לא מתאימה",
+    "minionCannotReach": " %type% מיניון לא יכול להגיע והפסיק לזמן!"
+  }
+}

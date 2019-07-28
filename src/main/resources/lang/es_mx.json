@@ -7,7 +7,7 @@
     "itemDropConfirmation": "Confirmación de Arrojar Objetos",
     "warningTime": "Tiempo de Alerta: %time%s",
     "manaBar": "Barra de Mana: %type%",
-    "manaBarTypes": {
+    "barTypes": {
       "barAndText": "Barra y Texto",
       "bar": "Barra",
       "text": "Texto",
@@ -28,7 +28,26 @@
     "resetLocations": "Reiniciar Posiciones",
     "hideDurability": "Ocultar Durabilidad de Herramientas",
     "showEnchantmentsReforges": "Encantamientos & Reforjados",
-    "minionStopWarning": "Alerta de Minion Detenido"
+    "minionStopWarning": "Alerta de Minion Detenido",
+    "hideActionHousePlayers": "Hide Players Near Auction House",
+    "healthBar": "Health Bar: %type%",
+    "defenceIcon": "Defence Icon: %type%",
+    "backpackStyle": "Backpack Style: %style%",
+    "styles": {
+      "inventory": "Inventory",
+      "compact": "Compact"
+    },
+    "iconTypes": {
+      "iconDefenceAndPercentage": "Icon, Defence, & Percentage",
+      "iconAndDefence": "Icon & Defence",
+      "iconAndPercentage": "Icon & Percentage",
+      "defenceAndPercentage": "Defence & Percentage",
+      "icon": "Icon",
+      "defence": "Defence",
+      "percentage": "Percentage",
+      "off": "Off"
+    },
+    "showBackpackPreview": "Show Backpack Preview"
   },
   "messages": {
     "dropConfirmation": "Arroja este objeto otra vez para confirmar!",

@@ -50,7 +50,9 @@ public class ButtonRegular extends GuiButton {
                 boxAlpha = 170;
             }
             if (feature.getButtonType() == Feature.ButtonType.REGULAR) {
-                if ((feature == Feature.MANA_BAR && main.getConfigValues().getManaBarType() == Feature.ManaBarType.OFF) ||
+                if ((feature == Feature.MANA_BAR && main.getConfigValues().getManaBarType() == Feature.BarType.OFF) ||
+                        (feature == Feature.HEALTH_BAR && main.getConfigValues().getHealthBarType() == Feature.BarType.OFF) ||
+                        (feature == Feature.DEFENCE_ICON && main.getConfigValues().getDefenceIconType() == Feature.IconType.OFF) ||
                         (feature != Feature.MANA_BAR && main.getConfigValues().getDisabledFeatures().contains(feature))) {
                     boxColor = ConfigColor.RED.getColor(boxAlpha * alphaMultiplier);
                 } else {
@@ -79,10 +81,15 @@ public class ButtonRegular extends GuiButton {
             if (hovered && feature.getButtonType() != Feature.ButtonType.NEUTRAL && !hitMaximum()) {
                 fontColor = new Color(255, 255, 160, alpha).getRGB();
             }
+            String originalString = displayString;
             if (feature == Feature.WARNING_TIME) {
                 displayString = main.getConfigValues().getMessage(ConfigValues.Message.SETTING_WARNING_TIME);
             } else if (feature == Feature.MANA_BAR) {
                 displayString = main.getConfigValues().getMessage(ConfigValues.Message.SETTING_MANA_BAR);
+            } else if (feature == Feature.HEALTH_BAR) {
+                displayString = main.getConfigValues().getMessage(ConfigValues.Message.SETTING_HEALTH_BAR);
+            } else if (feature == Feature.DEFENCE_ICON) {
+                displayString = main.getConfigValues().getMessage(ConfigValues.Message.SETTING_DEFENCE_ICON);
             }
             float scale = 1;
             int stringWidth = mc.fontRendererObj.getStringWidth(displayString);
@@ -100,6 +107,10 @@ public class ButtonRegular extends GuiButton {
             this.drawCenteredString(mc.fontRendererObj, displayString, (int)((xPosition+width/2)*scaleMultiplier), (int)((yPosition+(this.height-(8/scaleMultiplier))/2)*scaleMultiplier), fontColor);
             GlStateManager.disableBlend();
             GlStateManager.popMatrix();
+            if (!originalString.equals(displayString)) {
+                main.getUtils().setFadingIn(false);
+                main.getPlayerListener().setOpenMainGUI(true);
+            }
         }
     }
 

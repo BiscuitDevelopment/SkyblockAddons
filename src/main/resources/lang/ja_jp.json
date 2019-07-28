@@ -7,7 +7,7 @@
     "itemDropConfirmation": "捨てるアイテムの確認",
     "warningTime": "アラートする時間: %time%s",
     "manaBar": "マナゲージ: %type%",
-    "manaBarTypes": {
+    "barTypes": {
       "barAndText": "ゲージ & 文字",
       "bar": "ゲージ",
       "text": "文字",
@@ -28,7 +28,26 @@
     "resetLocations": "位置を初期化",
     "hideDurability": "耐久値を非表示",
     "showEnchantmentsReforges": "エンチャントとリフォージュの内容を表示",
-    "minionStopWarning": "ミニオン停止アラート"
+    "minionStopWarning": "ミニオン停止アラート",
+    "hideActionHousePlayers": "Hide Players Near Auction House",
+    "healthBar": "Health Bar: %type%",
+    "defenceIcon": "Defence Icon: %type%",
+    "backpackStyle": "Backpack Style: %style%",
+    "styles": {
+      "inventory": "Inventory",
+      "compact": "Compact"
+    },
+    "iconTypes": {
+      "iconDefenceAndPercentage": "Icon, Defence, & Percentage",
+      "iconAndDefence": "Icon & Defence",
+      "iconAndPercentage": "Icon & Percentage",
+      "defenceAndPercentage": "Defence & Percentage",
+      "icon": "Icon",
+      "defence": "Defence",
+      "percentage": "Percentage",
+      "off": "Off"
+    },
+    "showBackpackPreview": "Show Backpack Preview"
   },
   "messages": {
     "dropConfirmation": "落としてもいいのであれば、このアイテムをもう一度ドロップしてください。",

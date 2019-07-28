@@ -28,18 +28,18 @@ public class SkyblockAddons {
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent e) {
         INSTANCE = this;
-        this.configValues = new ConfigValues(e.getSuggestedConfigurationFile());
+        configValues = new ConfigValues(e.getSuggestedConfigurationFile());
     }
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent e) {
         MinecraftForge.EVENT_BUS.register(playerListener);
         ClientCommandHandler.instance.registerCommand(new SkyblockAddonsCommand(this));
-        configValues.loadConfig();
     }
 
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent e) {
+        configValues.loadConfig();
         usingLabymod = Loader.isModLoaded("labymod");
     }
 

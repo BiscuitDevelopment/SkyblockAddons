@@ -7,6 +7,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.launchwrapper.Launch;
 import net.minecraftforge.client.GuiIngameForge;
 
 import java.awt.*;
@@ -38,7 +39,11 @@ public class SkyblockAddonsGui extends GuiScreen {
         addButton(height*0.41, ConfigValues.Message.SETTING_ENCHANTS_AND_REFORGES, Feature.SHOW_ENCHANTMENTS_REFORGES,3);
         addButton(height*0.49, ConfigValues.Message.SETTING_MINION_STOP_WARNING, Feature.MINION_STOP_WARNING, 3);
         addButton(height*0.86, ConfigValues.Message.SETTING_EDIT_SETTINGS, Feature.SETTINGS, 4);
+        addButton(height*0.57, ConfigValues.Message.SETTING_AUCTION_HOUSE_PLAYERS, Feature.HIDE_AUCTION_HOUSE_PLAYERS, 1);
         addButton(height*0.86, ConfigValues.Message.LANGUAGE, Feature.LANGUAGE, 5);
+        addButton(height*0.57, ConfigValues.Message.SETTING_HEALTH_BAR, Feature.HEALTH_BAR, 2);
+        addButton(height*0.57, ConfigValues.Message.SETTING_DEFENCE_ICON, Feature.DEFENCE_ICON, 3);
+        addButton(height*0.65, ConfigValues.Message.SETTING_SHOW_BACKPACK_PREVIEW, Feature.SHOW_BACKPACK_PREVIEW, 1);
     }
 
 
@@ -66,8 +71,8 @@ public class SkyblockAddonsGui extends GuiScreen {
         drawScaledString("SkyblockAddons", 0.12, defaultBlue, 2.5F);
         drawScaledString("by Biscut", 0.12, defaultBlue, 1.3, 50, 17);
         drawScaledString(main.getConfigValues().getMessage(ConfigValues.Message.SETTING_SETTINGS), 0.8, defaultBlue, 1.5);
-        if (main.isUsingLabymod()) {
-            drawScaledString(main.getConfigValues().getMessage(ConfigValues.Message.MESSAGE_LABYMOD), 0.6, defaultBlue, 1);
+        if (main.isUsingLabymod() || (boolean)Launch.blackboard.get("fml.deobfuscatedEnvironment")) {
+            drawScaledString(main.getConfigValues().getMessage(ConfigValues.Message.MESSAGE_LABYMOD), 0.75, defaultBlue, 1);
         }
         super.drawScreen(mouseX, mouseY, partialTicks); // Draw buttons.
     }
@@ -80,6 +85,10 @@ public class SkyblockAddonsGui extends GuiScreen {
             if (feature.getButtonType() == Feature.ButtonType.REGULAR) {
                 if (feature == Feature.MANA_BAR) {
                     main.getConfigValues().setManaBarType(main.getConfigValues().getManaBarType().getNextType());
+                } if (feature == Feature.HEALTH_BAR) {
+                    main.getConfigValues().setHealthBarType(main.getConfigValues().getHealthBarType().getNextType());
+                } if (feature == Feature.DEFENCE_ICON) {
+                    main.getConfigValues().setDefenceIconType(main.getConfigValues().getDefenceIconType().getNextType());
                 } else {
                     if (main.getConfigValues().getDisabledFeatures().contains(feature)) {
                         main.getConfigValues().getDisabledFeatures().remove(feature);

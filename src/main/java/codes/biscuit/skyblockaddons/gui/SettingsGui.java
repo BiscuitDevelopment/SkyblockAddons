@@ -32,7 +32,7 @@ public class SettingsGui extends GuiScreen {
         addButton(height*0.25, ConfigValues.Message.SETTING_EDIT_LOCATIONS, Feature.EDIT_LOCATIONS, 2);
         addButton(height*0.25, ConfigValues.Message.SETTING_WARNING_COLOR, Feature.WARNING_COLOR, 1);
         addButton(height*0.41, ConfigValues.Message.SETTING_CONFIRMATION_COLOR, Feature.CONFIRMATION_COLOR, 1);
-        addButton(height*0.25, ConfigValues.Message.SETTING_WARNING_COLOR, Feature.WARNING_COLOR, 1);
+        addButton(height*0.33, ConfigValues.Message.SETTING_BACKPACK_STYLE, Feature.BACKPACK_STYLE, 3);
         addSlider();
         int twoThirds = width/3*2;
         buttonList.add(new ButtonRegular(0, twoThirds, height*0.25, "+", main, Feature.ADD, 20, 20));
@@ -110,6 +110,8 @@ public class SettingsGui extends GuiScreen {
             Feature feature = ((ButtonRegular) abstractButton).getFeature();
             if (feature.getButtonType() == Feature.ButtonType.COLOR) {
                 main.getConfigValues().setColor(feature, main.getConfigValues().getColor(feature).getNextColor());
+            } else if (feature == Feature.BACKPACK_STYLE) {
+                main.getConfigValues().setBackpackStyle(main.getConfigValues().getBackpackStyle().getNextType());
             } else if (feature.getButtonType() == Feature.ButtonType.MODIFY) {
                 if (feature == Feature.ADD) {
                     if (main.getConfigValues().getWarningSeconds() < 99) {

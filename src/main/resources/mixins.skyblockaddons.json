@@ -9,6 +9,8 @@
     "MixinEntityRenderer",
     "MixinRenderManager",
     "MixinGuiContainer",
-    "MixinItem"
+    "MixinItem",
+    "MixinGuiScreen",
+    "MixinGuiChest"
   ]
 }

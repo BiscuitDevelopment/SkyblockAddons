@@ -5,9 +5,9 @@
     "openSettings": "Open Settings",
     "magmaBossWarning": "Magma Boss Warning",
     "itemDropConfirmation": "Item Drop Confirmation",
-    "warningTime": "Warning Time: %time%s",
+    "warningTime": "Warning Duration: %time%s",
     "manaBar": "Mana Bar: %type%",
-    "manaBarTypes": {
+    "barTypes": {
       "barAndText": "Bar & Text",
       "bar": "Bar",
       "text": "Text",
@@ -28,7 +28,26 @@
     "resetLocations": "Reset Locations",
     "hideDurability": "Hide Tool Durability",
     "showEnchantmentsReforges": "Enchants & Reforges",
-    "minionStopWarning": "Minion Stop Warning"
+    "minionStopWarning": "\"Minion Cannot Reach\" Warning",
+    "hideActionHousePlayers": "Hide Players Near Auction House",
+    "healthBar": "Health Bar: %type%",
+    "defenceIcon": "Defence Icon: %type%",
+    "backpackStyle": "Backpack Style: %style%",
+    "styles": {
+      "inventory": "Inventory",
+      "compact": "Compact"
+    },
+    "iconTypes": {
+      "iconDefenceAndPercentage": "Icon, Defence, & Percentage",
+      "iconAndDefence": "Icon & Defence",
+      "iconAndPercentage": "Icon & Percentage",
+      "defenceAndPercentage": "Defence & Percentage",
+      "icon": "Icon",
+      "defence": "Defence",
+      "percentage": "Percentage",
+      "off": "Off"
+    },
+    "showBackpackPreview": "Show Backpack Preview"
   },
   "messages": {
     "dropConfirmation": "Drop this item again to confirm!",

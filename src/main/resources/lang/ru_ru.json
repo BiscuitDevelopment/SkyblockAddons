@@ -7,7 +7,7 @@
     "itemDropConfirmation": "Подтверждение дропа предмета",
     "warningTime": "Длительность предупреждения: %time%s",
     "manaBar": "Бар маны: %type%",
-    "manaBarTypes": {
+    "barTypes": {
       "barAndText": "Бар и Текст",
       "bar": "Бар",
       "text": "Текст",
@@ -28,7 +28,26 @@
     "resetLocations": "Сбросить расположение",
     "hideDurability": "Скрыть прочность инструментов",
     "showEnchantmentsReforges": "Зачарование и Перековка",
-    "minionStopWarning": "Предупреждение остановки миньона"
+    "minionStopWarning": "Предупреждение остановки миньона",
+    "hideActionHousePlayers": "Hide Players Near Auction House",
+    "healthBar": "Health Bar: %type%",
+    "defenceIcon": "Defence Icon: %type%",
+    "backpackStyle": "Backpack Style: %style%",
+    "styles": {
+      "inventory": "Inventory",
+      "compact": "Compact"
+    },
+    "iconTypes": {
+      "iconDefenceAndPercentage": "Icon, Defence, & Percentage",
+      "iconAndDefence": "Icon & Defence",
+      "iconAndPercentage": "Icon & Percentage",
+      "defenceAndPercentage": "Defence & Percentage",
+      "icon": "Icon",
+      "defence": "Defence",
+      "percentage": "Percentage",
+      "off": "Off"
+    },
+    "showBackpackPreview": "Show Backpack Preview"
   },
   "messages": {
     "dropConfirmation": "Выбросите предмет ещё раз для подтверждения!",

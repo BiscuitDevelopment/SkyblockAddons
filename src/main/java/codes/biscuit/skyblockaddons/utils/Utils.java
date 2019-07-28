@@ -29,9 +29,11 @@ import java.util.stream.Collectors;
 
 public class Utils {
 
+    private String lockedEnchantment = "";
+    private BackpackInfo backpackToRender = null;
     private boolean wearingSkeletonHelmet = false;
-    private static boolean onIsland = false;
     private static boolean onSkyblock = false;
+    private Feature.Location location = null;
     private static boolean inventoryIsFull = false;
 
     private boolean fadingIn;
@@ -92,7 +94,7 @@ public class Utils {
         wearingSkeletonHelmet = false;
     }
 
-    public void checkIfOnSkyblockAndIsland() { // Most of this is replicated from the scoreboard rendering code so not many comments here xD
+    public void checkGameAndLocation() { // Most of this is replicated from the scoreboard rendering code so not many comments here xD
         Minecraft mc = Minecraft.getMinecraft();
         if (mc != null && mc.theWorld != null) {
             Scoreboard scoreboard = mc.theWorld.getScoreboard();
@@ -117,14 +119,17 @@ public class Utils {
                 }
                 for (Score score1 : collection) {
                     ScorePlayerTeam scoreplayerteam1 = scoreboard.getPlayersTeam(score1.getPlayerName());
-                    if (getStringOnly(stripColor(ScorePlayerTeam.formatPlayerName(scoreplayerteam1, score1.getPlayerName()))).endsWith("Your Island")) {//s1.equals(" \u00A77\u23E3 \u00A7aYour Isla\uD83C\uDFC0\u00A7and")) {
-                        onIsland = true;
-                        return;
+                    String locationString = getStringOnly(stripColor(ScorePlayerTeam.formatPlayerName(scoreplayerteam1, score1.getPlayerName())));
+                    for (Feature.Location loopLocation : Feature.Location.values()) {
+                        if (locationString.endsWith(loopLocation.getScoreboardName())) {//s1.equals(" \u00A77\u23E3 \u00A7aYour Isla\uD83C\uDFC0\u00A7and")) {
+                            location = loopLocation;
+                            return;
+                        }
                     }
                 }
             }
         }
-        onIsland = false;
+        location = null;
     }
 
     public float normalizeValue(float value, float valueMin, float valueMax, float valueStep) {
@@ -155,6 +160,16 @@ public class Utils {
     public String getNumbersOnly(String text) {
         return Pattern.compile("[^0-9 /]").matcher(text).replaceAll("");
     }
+
+//    public void drawBackpackGui(Object object, int x, int y, int rows) {
+//        GuiContainer guiContainer = (GuiContainer)object;
+//        GlStateManager.pushMatrix();
+//        GlStateManager.translate(0,0,300);
+//        guiContainer.drawTexturedModalRect(x, y, 0, 0, 176, rows * 18 + 17);
+//        guiContainer.drawTexturedModalRect(x, y + rows * 18 + 17, 0, 215, 176, 7);
+//        GlStateManager.popMatrix();
+//        Minecraft.getMinecraft().fontRendererObj.drawString("Medium Backpack", x+8, y + 2, 4210752);
+//    }
 
     public void checkUpdates() {
         new Thread(() -> {
@@ -241,8 +256,8 @@ public class Utils {
         return STRIP_COLOR_PATTERN.matcher(input).replaceAll("");
     }
 
-    public boolean isOnIsland() {
-        return onIsland;
+    public Feature.Location getLocation() {
+        return location;
     }
 
     public boolean isOnSkyblock() {
@@ -259,5 +274,21 @@ public class Utils {
 
     public boolean isWearingSkeletonHelmet() {
         return wearingSkeletonHelmet;
+    }
+
+    public BackpackInfo getBackpackToRender() {
+        return backpackToRender;
+    }
+
+    public void setBackpackToRender(BackpackInfo backpackToRender) {
+        this.backpackToRender = backpackToRender;
+    }
+
+    public String getLockedEnchantment() {
+        return lockedEnchantment;
+    }
+
+    public void setLockedEnchantment(String lockedEnchantment) {
+        this.lockedEnchantment = lockedEnchantment;
     }
 }
