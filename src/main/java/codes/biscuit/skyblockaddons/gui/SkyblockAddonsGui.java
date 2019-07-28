@@ -1,21 +1,27 @@
 package codes.biscuit.skyblockaddons.gui;
 
+import java.awt.Color;
+import java.io.IOException;
+
+import org.lwjgl.input.Keyboard;
+
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.utils.ConfigValues;
 import codes.biscuit.skyblockaddons.utils.Feature;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraftforge.client.GuiIngameForge;
-
-import java.awt.*;
 
 public class SkyblockAddonsGui extends GuiScreen {
 
     static int WIDTH_LIMIT = 140;
 
     private SkyblockAddons main;
+    
+    private GuiTextField textField;
 
     private long timeOpened = System.currentTimeMillis();
 
@@ -25,6 +31,7 @@ public class SkyblockAddonsGui extends GuiScreen {
 
     @Override
     public void initGui() {
+    	addInput();
         addButton(height*0.25, ConfigValues.Message.SETTING_MAGMA_BOSS_WARNING, Feature.MAGMA_WARNING, 1);
         addButton(height*0.25, ConfigValues.Message.SETTING_ITEM_DROP_CONFIRMATION, Feature.DROP_CONFIRMATION, 2);
         addButton(height*0.33, ConfigValues.Message.SETTING_MANA_BAR, Feature.MANA_BAR, 1);
@@ -40,8 +47,30 @@ public class SkyblockAddonsGui extends GuiScreen {
         addButton(height*0.86, ConfigValues.Message.SETTING_EDIT_SETTINGS, Feature.SETTINGS, 4);
         addButton(height*0.86, ConfigValues.Message.LANGUAGE, Feature.LANGUAGE, 5);
     }
-
-
+    
+    private void addInput() {
+    	int xPos = width / 2 - 120;
+    	int yPos = height / 2 - 87;
+    	this.textField = new GuiTextField(2, this.fontRendererObj, xPos + 50, yPos + 120, 120, 20);
+        this.textField.setMaxStringLength(50);
+        this.textField.setFocused(true);
+        if (main.getConfigValues().getEnchantment() != null ) {
+        	this.textField.setText(main.getConfigValues().getEnchantment());
+        }
+    }
+    
+    @Override
+    protected void keyTyped(char typedChar, int keyCode) throws IOException {
+    	if(keyCode == Keyboard.KEY_ESCAPE)
+    	{
+    		this.mc.displayGuiScreen(null);
+    		if(this.mc.currentScreen == null)
+    			this.mc.setIngameFocus();
+    	}
+    	this.textField.textboxKeyTyped(typedChar, keyCode);
+    	main.getConfigValues().setEnchantment(this.textField.getText());    	
+    }
+    
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
         long timeSinceOpen = System.currentTimeMillis() - timeOpened;
@@ -69,6 +98,7 @@ public class SkyblockAddonsGui extends GuiScreen {
         if (main.isUsingLabymod()) {
             drawScaledString(main.getConfigValues().getMessage(ConfigValues.Message.MESSAGE_LABYMOD), 0.6, defaultBlue, 1);
         }
+        this.textField.drawTextBox();
         super.drawScreen(mouseX, mouseY, partialTicks); // Draw buttons.
     }
 
@@ -77,6 +107,7 @@ public class SkyblockAddonsGui extends GuiScreen {
     protected void actionPerformed(GuiButton abstractButton) {
         if (abstractButton instanceof ButtonRegular) {
             Feature feature = ((ButtonRegular) abstractButton).getFeature();
+            System.out.println(feature.getId());
             if (feature.getButtonType() == Feature.ButtonType.REGULAR) {
                 if (feature == Feature.MANA_BAR) {
                     main.getConfigValues().setManaBarType(main.getConfigValues().getManaBarType().getNextType());

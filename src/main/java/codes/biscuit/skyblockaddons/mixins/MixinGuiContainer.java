@@ -1,5 +1,18 @@
 package codes.biscuit.skyblockaddons.mixins;
 
+import java.awt.Color;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+import java.util.regex.Pattern;
+
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
+
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.utils.EnchantPair;
 import codes.biscuit.skyblockaddons.utils.Feature;
@@ -10,24 +23,13 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
-import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
-
-import java.awt.*;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-import java.util.regex.Pattern;
 
 @Mixin(GuiContainer.class)
 public class MixinGuiContainer {
 
     private EnchantPair reforgeToRender = null;
     private Set<EnchantPair> enchantsToRender = new HashSet<>();
+    private Boolean playedSound = false;
 
     @Inject(method = "drawSlot", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/entity/RenderItem;renderItemOverlayIntoGUI(Lnet/minecraft/client/gui/FontRenderer;Lnet/minecraft/item/ItemStack;IILjava/lang/String;)V",
             ordinal = 0), locals = LocalCapture.CAPTURE_FAILSOFT)
@@ -41,7 +43,16 @@ public class MixinGuiContainer {
                     List<String> toolip = item.getTooltip(mc.thePlayer, false);
                     if (toolip.size() > 2) {
                         String enchantLine = toolip.get(2);
-                        String enchant = EnumChatFormatting.YELLOW + enchantLine.split(Pattern.quote("* "))[1];
+                        String enchant = null;
+                        if (enchantLine.split(Pattern.quote("* "))[1].toLowerCase().contains(SkyblockAddons.INSTANCE.getConfigValues().getEnchantment().toLowerCase())) {
+                        	enchant = EnumChatFormatting.DARK_GREEN + enchantLine.split(Pattern.quote("* "))[1];
+                        	if(!playedSound) {
+                        		mc.thePlayer.playSound("random.orb", 10, 0.5F);
+                        		playedSound = true;
+                        	}
+                        } else {
+                        	enchant = EnumChatFormatting.YELLOW + enchantLine.split(Pattern.quote("* "))[1];                        	
+                        }
                         float yOff;
                         if (slotIn.slotNumber == 29 || slotIn.slotNumber == 33) {
                             yOff = 26;
