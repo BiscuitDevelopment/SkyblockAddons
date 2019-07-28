@@ -26,7 +26,7 @@ public class ConfigValues {
     private float guiScale = 0;
     private float manaTextX = 0.45F;
     private float manaTextY = 0.83F;
-    private String enchantment = "Enchantment";
+    private String enchantment = null;
     private Feature.Language language = Feature.Language.ENGLISH;
 
     public ConfigValues(File settingsConfigFile) {
@@ -239,7 +239,6 @@ public class ConfigValues {
         SETTING_HIDE_DURABILITY(MessageObject.SETTING, "hideDurability"),
         SETTING_ENCHANTS_AND_REFORGES(MessageObject.SETTING, "showEnchantmentsReforges"),
         SETTING_MINION_STOP_WARNING(MessageObject.SETTING, "minionStopWarning"),
-        SETTING_ENCHANTMENT(MessageObject.SETTING, "enchantment"),
 
         MANA_BAR_TYPE_BAR_TEXT(MessageObject.MANA_BAR_TYPE, "barAndText"),
         MANA_BAR_TYPE_BAR(MessageObject.MANA_BAR_TYPE, "bar"),

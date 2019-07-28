@@ -54,7 +54,7 @@ public class SkyblockAddonsGui extends GuiScreen {
     	this.textField = new GuiTextField(2, this.fontRendererObj, xPos + 50, yPos + 120, 120, 20);
         this.textField.setMaxStringLength(50);
         this.textField.setFocused(true);
-        if (main.getConfigValues().getEnchantment() != null ) {
+        if (main.getConfigValues().getEnchantment() != null) {
         	this.textField.setText(main.getConfigValues().getEnchantment());
         }
     }

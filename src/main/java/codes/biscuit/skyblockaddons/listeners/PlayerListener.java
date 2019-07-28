@@ -90,16 +90,18 @@ public class PlayerListener {
                 		enchantSlots.add(gui.inventorySlots.getSlot(31).getStack()); // medium tier
                 		enchantSlots.add(gui.inventorySlots.getSlot(33).getStack()); // high tier
                 		for (ItemStack slotItem : enchantSlots) {
-                			if (slotItem.hasDisplayName() && slotItem.getDisplayName().startsWith(EnumChatFormatting.GREEN + "Enchant Item")) {
-                    			Minecraft mc = Minecraft.getMinecraft();
-                    			List<String> toolip = slotItem.getTooltip(mc.thePlayer, false);
-                    			if (toolip.size() > 2) {
-                    				String enchantLine = toolip.get(2);
-                    				if (enchantLine.split(Pattern.quote("* "))[1].toLowerCase().contains(SkyblockAddons.INSTANCE.getConfigValues().getEnchantment().toLowerCase())) {
-                    					e.setCanceled(true);
-                    				}
-                    			}
-                    		}
+                			if (slotItem != null) {
+                				if (slotItem.hasDisplayName() && slotItem.getDisplayName().startsWith(EnumChatFormatting.GREEN + "Enchant Item")) {
+                					Minecraft mc = Minecraft.getMinecraft();
+                					List<String> toolip = slotItem.getTooltip(mc.thePlayer, false);
+                					if (toolip.size() > 2) {
+                						String enchantLine = toolip.get(2);
+                						if (enchantLine.split(Pattern.quote("* "))[1].toLowerCase().contains(SkyblockAddons.INSTANCE.getConfigValues().getEnchantment().toLowerCase())) {
+                							e.setCanceled(true);
+                						}
+                					}
+                				}                				
+                			}
 						}            		
                 	}
                 }
