@@ -131,9 +131,6 @@ processResources
         exclude 'mcmod.info'
     }
 }
-task wrapper(type: Wrapper) {
-    gradleVersion = '5.5.1'
-}
 mixin {
     defaultObfuscationEnv searge
     add sourceSets.main, "mixins.skyblockaddons.refmap.json"
