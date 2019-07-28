@@ -131,6 +131,7 @@ processResources
         exclude 'mcmod.info'
     }
 }
+
 mixin {
     defaultObfuscationEnv searge
     add sourceSets.main, "mixins.skyblockaddons.refmap.json"
