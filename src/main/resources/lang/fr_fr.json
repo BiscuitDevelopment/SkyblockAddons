@@ -1,11 +1,11 @@
 {
-  "language": "Français",
+  "language": "Français (France)",
   "settings": {
     "settings": "Paramètres",
     "openSettings": "Ouvrir les paramètres",
-    "magmaBossWarning": "Attention Boss de Magma",
+    "magmaBossWarning": "Alerte Magma Boss",
     "itemDropConfirmation": "Confirmation du jet",
-    "warningTime": "Attention temps: %time%s",
+    "warningTime": "Alerte temps: %time%s",
     "manaBar": "Barre de mana: %type%",
     "barTypes": {
       "barAndText": "Barre & Texte",
@@ -13,11 +13,11 @@
       "text": "Texte",
       "off": "Désativé"
     },
-    "hideSkeletonHatBones": "Masquer les os du casque squelette",
-    "skeletonHatBonesBar": "Barre du casque squelette",
+    "hideSkeletonHatBones": "Masquer les os du Skeleton's Helmet",
+    "skeletonHatBonesBar": "Barre du Skeleton's Helmet",
     "hideFoodAndArmor": "Masquer la barre de nourriture et d'armure",
-    "fullInventoryWarning": "Attention inventaire plein",
-    "magmaBossHealthBar": "Barre de vie du Boss de Magma",
+    "fullInventoryWarning": "Alerte inventaire plein",
+    "magmaBossHealthBar": "Barre de vie du Magma Boss",
     "disableEmberRodAbility": "Désativer l'Ember Rod sur votre île",
     "warningColor": "Couleur pour les alertes",
     "confirmationColor": "Couleur pour les confirmations",
@@ -28,35 +28,35 @@
     "resetLocations": "Réinitialiser les emplacements",
     "hideDurability": "Masquer la durabilité des outils",
     "showEnchantmentsReforges": "Enchantement & Reforges",
-    "minionStopWarning": "Alerte Minion à l'arrêt",
-    "hideActionHousePlayers": "Hide Players Near Auction House",
-    "healthBar": "Health Bar: %type%",
-    "defenceIcon": "Defence Icon: %type%",
-    "backpackStyle": "Backpack Style: %style%",
+    "minionStopWarning": "Alerte minion à l'arrêt",
+    "hideActionHousePlayers": "Masquer les joueurs près de la maison de vente aux enchères",
+    "healthBar": "Barre de vie: %type%",
+    "defenceIcon": "Icône de défense: %type%",
+    "backpackStyle": "Style du sac à dos: %style%",
     "styles": {
-      "inventory": "Inventory",
+      "inventory": "Inventaire",
       "compact": "Compact"
     },
     "iconTypes": {
-      "iconDefenceAndPercentage": "Icon, Defence, & Percentage",
-      "iconAndDefence": "Icon & Defence",
-      "iconAndPercentage": "Icon & Percentage",
-      "defenceAndPercentage": "Defence & Percentage",
-      "icon": "Icon",
-      "defence": "Defence",
-      "percentage": "Percentage",
-      "off": "Off"
+      "iconDefenceAndPercentage": "Icône, Défense, & Pourcentage",
+      "iconAndDefence": "Icône & Défense",
+      "iconAndPercentage": "Icône & Pourcentage",
+      "defenceAndPercentage": "Défense & Pourcentage",
+      "icon": "Icône",
+      "defence": "Défense",
+      "percentage": "Pourcentage",
+      "off": "Désativé"
     },
-    "showBackpackPreview": "Show Backpack Preview"
+    "showBackpackPreview": "Afficher l'aperçu du sac à dos"
   },
   "messages": {
     "dropConfirmation": "Jetez cet objet une nouvelle fois pour confirmer!",
-    "magmaBossWarning": "Boss de Magma!",
+    "magmaBossWarning": "Magma Boss!",
     "fullInventory": "Inventaire rempli!",
     "newVersion": "Une nouvelle version, %newestVersion% est disponible. Télécharger le en cliquant ici.",
     "discord": "Vous voulez voir les changements? Cliquez ici pour rejoindre mon discord.",
     "developmentVersion": "Vous utiliez une version de développement : %version%. La dernière version en ligne est %newestVersion%",
-    "labymod": "Utilisateurs de Labymod: Il y a une incompatibilité avec l'option 'Masquer la barre de nourriture et d'armure est incompatible'",
+    "labymod": "Utilisateurs de Labymod: Il y a une incompatibilité avec l'option 'Masquer la barre de nourriture et d'armure'",
     "minionCannotReach": "Le minon %type% n'arrive pas à atteindre les entités et à arreté le spawn!"
   }
 }
