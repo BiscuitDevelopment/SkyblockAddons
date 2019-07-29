@@ -2,7 +2,7 @@
   "language": "English",
   "settings": {
     "settings": "Settings",
-    "openSettings": "Open Settings",
+    "openSettings": "Open More Settings",
     "magmaBossWarning": "Magma Boss Warning",
     "itemDropConfirmation": "Item Drop Confirmation",
     "warningTime": "Warning Duration: %time%s",
@@ -47,7 +47,14 @@
       "percentage": "Percentage",
       "off": "Off"
     },
-    "showBackpackPreview": "Show Backpack Preview"
+    "showBackpackPreview": "Show Backpack Preview",
+    "hideHealthBar": "Hide Health Bar",
+    "healthTextColor": "Health Text Color",
+    "healthBarColor": "Health Bar Color",
+    "defenceTextColor": "Defence Text Color",
+    "defencePercentageColor": "Defence Percentage Color",
+    "disableDoubleDropAutomatically": "Disable Double Drop Automatically",
+    "fullMinionWarning": "Full Minion Warning"
   },
   "messages": {
     "dropConfirmation": "Drop this item again to confirm!",
@@ -56,7 +63,8 @@
     "newVersion": "A new version, %newestVersion% is available. Download it by clicking here.",
     "discord": "Want to view the changes? Click here to join my discord.",
     "developmentVersion": "You are running a development version: %version%. The latest online version is %newestVersion%",
-    "labymod": "Labymod Users: Hide Food & Armor Bar is incompatible.",
-    "minionCannotReach": "A %type% minion cannot reach and has stopped spawning!"
+    "labymod": "Labymod Users: Hide Food, Armor, and Health Bar, is incompatible.",
+    "minionCannotReach": "A %type% minion cannot reach and has stopped spawning!",
+    "minionIsFull": "A minion on your island is full!"
   }
 }

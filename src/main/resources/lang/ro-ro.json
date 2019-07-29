@@ -1,0 +1,69 @@
+{
+  "language": "Română",
+  "settings": {
+    "settings": "Setări",
+    "openSettings": "Deschide Setările",
+    "magmaBossWarning": "Avertisment pentru Magma Boss",
+    "itemDropConfirmation": "Confirmare aruncare obiecte",
+    "warningTime": "Durata Avertismentului: %time%s",
+    "manaBar": "Bara cu mană: %type%",
+    "barTypes": {
+      "barAndText": "Bară & Text",
+      "bar": "Bară",
+      "text": "Text",
+      "off": "Off"
+    },
+    "hideSkeletonHatBones": "Ascunde oasele Skeleton Helmet-ului",
+    "skeletonHatBonesBar": "Bară pentru oasele Skeleton Hat-ului",
+    "hideFoodAndArmor": "Ascunde bara de Mancare și Armură",
+    "fullInventoryWarning": "Avertisment pentru inventar plin",
+    "magmaBossHealthBar": "Bară de Viață pentru Magma Boss",
+    "disableEmberRodAbility": "Oprește abilitatea Ember Rod-ului",
+    "warningColor": "Culoarea Avertismentului",
+    "confirmationColor": "Culoarea Confirmației",
+    "manaTextColor": "Culoarea Textului cu Mană",
+    "manaBarColor": "Culoarea Barei de Mană",
+    "editLocations": "Editează Locațiile",
+    "guiScale": "Marime gui: %scale%",
+    "resetLocations": "Resetează Locațiile",
+    "hideDurability": "Ascunde Durabilitatea Uneltelor",
+    "showEnchantmentsReforges": "Refauriri și enchanturi",
+    "minionStopWarning": "\"Minionul nu ajunge\" Avertisment",
+    "hideActionHousePlayers": "Ascunde jucătorii din casa de licitații",
+    "healthBar": "Bara de Viață: %type%",
+    "defenceIcon": "Iconiță cu Protecție: %type%",
+    "backpackStyle": "Stilul Backpackului: %style%",
+    "styles": {
+      "inventory": "Inventar",
+      "compact": "Compact"
+    },
+    "iconTypes": {
+      "iconDefenceAndPercentage": "Iconiță, Protecție, & Procent",
+      "iconAndDefence": "Iconiță & Protecție",
+      "iconAndPercentage": "Iconiță & Procent",
+      "defenceAndPercentage": "Protecție & Procent",
+      "icon": "Iconiță",
+      "defence": "Protecție",
+      "percentage": "Procent",
+      "off": "Off"
+    },
+    "showBackpackPreview": "Arată Preview la Backpack",
+    "hideHealthBar": "Hide Health Bar",
+    "healthTextColor": "Health Text Color",
+    "healthBarColor": "Health Bar Color",
+    "defenceTextColor": "Defence Text Color",
+    "defencePercentageColor": "Defence Percentage Color",
+    "disableDoubleDropAutomatically": "Disable Double Drop Automatically",
+    "fullMinionWarning": "Full Minion Warning"
+  },
+  "messages": {
+    "dropConfirmation": "Arunca acest obiect iar ca să confirmi!",
+    "magmaBossWarning": "MagmaCube Boss!",
+    "fullInventory": "Inventar Plin!",
+    "newVersion": "O versiune nouă, %newestVersion% este disponibilă. Apasă aici ca să o descarci.",
+    "discord": "Vrei sa vezi schimbările? Apasă aici ca să intri în discord-ul meu.",
+    "developmentVersion": "Folosești o versiune care e în development: %version%. Ultima versiune online este %newestVersion%",
+    "labymod": "Utilizatori de Labymod: Ascunderea bării de Mancare și Armură este incompatibilă.",
+    "minionCannotReach": "Un minion de %type% nu poate ajunge și astfel s-a oprit"
+  }
+}

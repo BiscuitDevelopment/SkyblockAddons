@@ -1,5 +1,5 @@
 {
-  "language": "Français (France)",
+  "language": "Français",
   "settings": {
     "settings": "Paramètres",
     "openSettings": "Ouvrir les paramètres",
@@ -47,7 +47,14 @@
       "percentage": "Pourcentage",
       "off": "Désativé"
     },
-    "showBackpackPreview": "Afficher l'aperçu du sac à dos"
+    "showBackpackPreview": "Afficher l'aperçu du sac à dos",
+    "hideHealthBar": "Hide Health Bar",
+    "healthTextColor": "Health Text Color",
+    "healthBarColor": "Health Bar Color",
+    "defenceTextColor": "Defence Text Color",
+    "defencePercentageColor": "Defence Percentage Color",
+    "disableDoubleDropAutomatically": "Disable Double Drop Automatically",
+    "fullMinionWarning": "Full Minion Warning"
   },
   "messages": {
     "dropConfirmation": "Jetez cet objet une nouvelle fois pour confirmer!",

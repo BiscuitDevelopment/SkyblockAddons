@@ -47,7 +47,14 @@
       "percentage": "אחוזים",
       "off": "כבוי"
     },
-    "showBackpackPreview": "תראה תרמיל גב"
+    "showBackpackPreview": "תראה תרמיל גב",
+    "hideHealthBar": "Hide Health Bar",
+    "healthTextColor": "Health Text Color",
+    "healthBarColor": "Health Bar Color",
+    "defenceTextColor": "Defence Text Color",
+    "defencePercentageColor": "Defence Percentage Color",
+    "disableDoubleDropAutomatically": "Disable Double Drop Automatically",
+    "fullMinionWarning": "Full Minion Warning"
   },
   "messages": {
     "dropConfirmation": "זרוק פריט זה להסכמה",

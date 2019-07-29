@@ -47,7 +47,14 @@
       "percentage": "Percentage",
       "off": "Off"
     },
-    "showBackpackPreview": "Show Backpack Preview"
+    "showBackpackPreview": "Show Backpack Preview",
+    "hideHealthBar": "Hide Health Bar",
+    "healthTextColor": "Health Text Color",
+    "healthBarColor": "Health Bar Color",
+    "defenceTextColor": "Defence Text Color",
+    "defencePercentageColor": "Defence Percentage Color",
+    "disableDoubleDropAutomatically": "Disable Double Drop Automatically",
+    "fullMinionWarning": "Full Minion Warning"
   },
   "messages": {
     "dropConfirmation": "Wyrzuć ten przedmiot ponownie, aby potwierdzić!",
