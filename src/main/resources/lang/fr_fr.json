@@ -48,13 +48,13 @@
       "off": "Désativé"
     },
     "showBackpackPreview": "Afficher l'aperçu du sac à dos",
-    "hideHealthBar": "Hide Health Bar",
-    "healthTextColor": "Health Text Color",
-    "healthBarColor": "Health Bar Color",
-    "defenceTextColor": "Defence Text Color",
-    "defencePercentageColor": "Defence Percentage Color",
-    "disableDoubleDropAutomatically": "Disable Double Drop Automatically",
-    "fullMinionWarning": "Full Minion Warning"
+    "hideHealthBar": "Masquer la barre de vie",
+    "healthTextColor": "Couleur du texte de la vie",
+    "healthBarColor": "Couleur de la barre de vie",
+    "defenceTextColor": "Couleur du texte de la défense",
+    "defencePercentageColor": "Couleur du pourcentage de défense",
+    "disableDoubleDropAutomatically": "Désativer la confirmation du jet",
+    "fullMinionWarning": "Alerte minion plein"
   },
   "messages": {
     "dropConfirmation": "Jetez cet objet une nouvelle fois pour confirmer!",
