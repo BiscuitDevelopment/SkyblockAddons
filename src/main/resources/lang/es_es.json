@@ -64,6 +64,7 @@
     "discord": "¿Quieres ver los cambios? Haz click aquí para ingresar en mi Discord.",
     "developmentVersion": "Estás ejecutando la versión: %version%. La última versión online es %newestVersion%",
     "labymod": "Usuarios de Labymod: Ocultar la Barra de Comida y Armadura Es incompatible.",
-    "minionCannotReach": "¡Un minion de tipo %type% No puede alcanzar a ningún mob y ha parado de generar más!"
+    "minionCannotReach": "¡Un minion de tipo %type% No puede alcanzar a ningún mob y ha parado de generar más!",
+    "minionIsFull": "A minion on your island is full!"
   }
 }

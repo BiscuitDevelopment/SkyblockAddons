@@ -64,6 +64,7 @@
     "discord": "Vous voulez voir les changements? Cliquez ici pour rejoindre mon discord.",
     "developmentVersion": "Vous utiliez une version de développement : %version%. La dernière version en ligne est %newestVersion%",
     "labymod": "Utilisateurs de Labymod: Il y a une incompatibilité avec l'option 'Masquer la barre de nourriture et d'armure'",
-    "minionCannotReach": "Le minon %type% n'arrive pas à atteindre les entités et à arreté le spawn!"
+    "minionCannotReach": "Le minon %type% n'arrive pas à atteindre les entités et à arreté le spawn!",
+    "minionIsFull": "A minion on your island is full!"
   }
 }

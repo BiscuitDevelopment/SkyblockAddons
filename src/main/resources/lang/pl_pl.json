@@ -64,6 +64,7 @@
     "discord": "Chcesz sprawdzić zmiany? Kliknij tą wiadomość, aby dołączyć na mojego discord'a.",
     "developmentVersion": "Używasz wersji deweloperskiej: %version%. Najnowsza wersja online to: %newestVersion%",
     "labymod": "Użytkownicy LabyMod: Ukrycie Pasek Jedzenia i Zbroi jest niekompatybilne.",
-    "minionCannotReach": "Minion %type% nie może dosięgnąć moba i przestał działać!"
+    "minionCannotReach": "Minion %type% nie może dosięgnąć moba i przestał działać!",
+    "minionIsFull": "A minion on your island is full!"
   }
 }

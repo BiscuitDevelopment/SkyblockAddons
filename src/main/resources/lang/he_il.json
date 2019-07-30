@@ -64,6 +64,7 @@
     "discord": "רוצים לראות את השינויים? הקליקו כאן כדי להצטרף לדיסקורד שלי!",
     "developmentVersion": "אתה מריץ גירסת תכנות: %version%. הגירסה האחרונה היא %newestVersion%",
     "labymod": "משתמשי לאבימוד: הסתרת עמודות אוכל ושריון לא מתאימה",
-    "minionCannotReach": " %type% מיניון לא יכול להגיע והפסיק לזמן!"
+    "minionCannotReach": " %type% מיניון לא יכול להגיע והפסיק לזמן!",
+    "minionIsFull": "A minion on your island is full!"
   }
 }

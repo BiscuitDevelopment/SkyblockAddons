@@ -64,6 +64,7 @@
     "discord": "Vrei sa vezi schimbările? Apasă aici ca să intri în discord-ul meu.",
     "developmentVersion": "Folosești o versiune care e în development: %version%. Ultima versiune online este %newestVersion%",
     "labymod": "Utilizatori de Labymod: Ascunderea bării de Mancare și Armură este incompatibilă.",
-    "minionCannotReach": "Un minion de %type% nu poate ajunge și astfel s-a oprit"
+    "minionCannotReach": "Un minion de %type% nu poate ajunge și astfel s-a oprit",
+    "minionIsFull": "A minion on your island is full!"
   }
 }

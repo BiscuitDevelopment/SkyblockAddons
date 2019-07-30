@@ -64,6 +64,7 @@
     "discord": "何が変わったか知りたいですか？ここをクリックすると私のDiscordに参加できます。",
     "developmentVersion": "現在開発バージョンの %version% を使用しています。リリースされている最新バージョンは %newestVersion% です。",
     "labymod": "Labymodを使用している場合、\"食料とアーマーのゲージを非表示\"の機能は互換性がありません。",
-    "minionCannotReach": "%type% ミニオンは上限に達したか、範囲外で敵を倒せないためモブのスポーンを停止しました！!"
+    "minionCannotReach": "%type% ミニオンは上限に達したか、範囲外で敵を倒せないためモブのスポーンを停止しました！!",
+    "minionIsFull": "A minion on your island is full!"
   }
 }

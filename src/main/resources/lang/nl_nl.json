@@ -64,6 +64,7 @@
     "discord": "Wilt u de wijzigingen bekijken? Klik hier voor bij mijn discord te aansluiten.",
     "developmentVersion": "U gebruikt een ontwikkelings versie: %version%. De laatste online versie is %newestVersion%",
     "labymod": "Labymod Gebruikers: Verstop Voedsel & Harnas Bar is onverenigbaar.",
-    "minionCannotReach": "Een %type% handlanger kan het niet bereiken en is gestopt!"
+    "minionCannotReach": "Een %type% handlanger kan het niet bereiken en is gestopt!",
+    "minionIsFull": "A minion on your island is full!"
   }
 }

@@ -2,15 +2,15 @@
   "language": "العربية",
   "settings": {
     "settings": "الإعدادات",
-    "openSettings": "أفتح الإعدادات",
+    "openSettings": "فتح الإعدادات",
     "magmaBossWarning": "تحذير زعيم الصهارة",
-    "itemDropConfirmation": "تأكيد رمي العنصر",
+    "itemDropConfirmation": "تأكيد من رمي العنصر",
     "warningTime": "%time%s :وقت التحذير",
     "manaBar": "%type% :شريط المانا",
     "barTypes": {
-      "barAndText": "شريط والنص",
-      "bar": "نص",
-      "text": "شريط",
+      "barAndText": "شريط و نص",
+      "bar": "شريط",
+      "text": "نص",
       "off": "إيقاف"
     },
     "hideSkeletonHatBones": "إخفاء عظام خوذة الهيكل العظمي",
@@ -29,41 +29,42 @@
     "hideDurability": "إخفاء متانة الأداة",
     "showEnchantmentsReforges": "تطوير و إعادة تشكيل",
     "minionStopWarning": "تحذير إيقاف التابع",
-    "hideActionHousePlayers": "Hide Players Near Auction House",
-    "healthBar": "Health Bar: %type%",
-    "defenceIcon": "Defence Icon: %type%",
-    "backpackStyle": "Backpack Style: %style%",
+    "hideActionHousePlayers": "إخفاء اللاعبين بالقرب من دار المزاد",
+    "healthBar": "%type% :شريط الصحة",
+    "defenceIcon": "%type% :رمز الدفاع",
+    "backpackStyle": "%style% :نمط حقيبة الظهر",
     "styles": {
-      "inventory": "Inventory",
-      "compact": "Compact"
+      "inventory": "جرد",
+      "compact": "متراص"
     },
     "iconTypes": {
-      "iconDefenceAndPercentage": "Icon, Defence, & Percentage",
-      "iconAndDefence": "Icon & Defence",
-      "iconAndPercentage": "Icon & Percentage",
-      "defenceAndPercentage": "Defence & Percentage",
-      "icon": "Icon",
-      "defence": "Defence",
-      "percentage": "Percentage",
-      "off": "Off"
+      "iconDefenceAndPercentage": "رمز ، دفاع ، والنسبة المئوية",
+      "iconAndDefence": "رمز و دفاع",
+      "iconAndPercentage": "رمز و نسبة المئوية",
+      "defenceAndPercentage": "الدفاع النسبة المئوية",
+      "icon": "رمز",
+      "defence": "دفاع",
+      "percentage": "نسبة مئوية",
+      "off": "إيقاف"
     },
-    "showBackpackPreview": "Show Backpack Preview",
-    "hideHealthBar": "Hide Health Bar",
-    "healthTextColor": "Health Text Color",
-    "healthBarColor": "Health Bar Color",
-    "defenceTextColor": "Defence Text Color",
-    "defencePercentageColor": "Defence Percentage Color",
-    "disableDoubleDropAutomatically": "Disable Double Drop Automatically",
-    "fullMinionWarning": "Full Minion Warning"
+    "showBackpackPreview": "عرض محتوى حقيبة الظهر",
+    "hideHealthBar": "إخفاء شريط الصحة",
+    "healthTextColor": "لون النص الصحة",
+    "healthBarColor": "لون شريط الصحة",
+    "defenceTextColor": "لون نص الدفاع",
+    "defencePercentageColor": "لون النسبة المئوية للدفاع",
+    "disableDoubleDropAutomatically": "تعطيل الرمي مزدوج تلقائيا",
+    "fullMinionWarning": "تحذير التابع الممتلئ"
   },
   "messages": {
     "dropConfirmation": "!إرمي هذا العنصر مرة أخرى للتأكيد",
     "magmaBossWarning": "!زعيم مكعب الصهارة",
     "fullInventory": "!جرد كامل",
-    "newVersion": ".متاح. قم بتنزيله بالنقر هنا %newestVersion% ,نسخة جديدة",
+    "newVersion": ".متاح الاّن. قم بتنزيله بالنقر هنا %newestVersion% ,نسخة جديدة",
     "discord": ".تريد رؤية التغييرات؟ انقر هنا للانضمام إلى الدسكورد الخاص بي",
     "developmentVersion": "%newestVersion% أحدث نسخة على الإنترنت هي .%version% :أنت تقوم بتشغيل إصدار تطوير",
-    "labymod": ".إن إخفاء عظام خوذة الهيكل العظمي غير متوافق :Labymodمستعملي ال",
-    "minionCannotReach": "!لا يمكنه الوصول وانه سيتوقف عن الإنشاء %type%إن تابع ال"
+    "labymod": ".مستعملي اللابي مود: إن إخفاء عظام خوذة الهيكل العظمي غير متوافق",
+    "minionCannotReach": "!لا يمكنه الوصول وانه سيتوقف عن الإنشاء %type%إن تابع ال",
+    "minionIsFull": "A minion on your island is full!"
   }
 }
