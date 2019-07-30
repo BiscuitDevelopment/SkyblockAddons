@@ -15,8 +15,8 @@
     },
     "hideSkeletonHatBones": "Skellett-Helm Knochen verstecken",
     "skeletonHatBonesBar": "Skellett-Helm Knochen Leiste",
-    "hideFoodAndArmor": "Essens- und Rüstungsleiste verbergen",
-    "fullInventoryWarning": "Volles Inventar-Warnung",
+    "hideFoodAndArmor": "Hunger- und Rüstungsleiste verbergen",
+    "fullInventoryWarning": "Warnung bei vollem Inventar",
     "magmaBossHealthBar": "Magma-Boss Lebensleiste",
     "disableEmberRodAbility": "Die Ember-Rod auf der Insel deaktivieren",
     "warningColor": "Warnungsfarbe",
@@ -25,36 +25,36 @@
     "manaBarColor": "Mana Leiste Farbe",
     "editLocations": "Ort ändern",
     "guiScale": "Gui-Größe: %scale%",
-    "resetLocations": "Ort(e) zurücksetzen",
+    "resetLocations": "Orte zurücksetzen",
     "hideDurability": "Werkzeugshaltbarkeit verbergen",
     "showEnchantmentsReforges": "Zeige Verzauberungen und Verbesserungen",
-    "minionStopWarning": "Minion-Konflikt Warnung",
-    "hideActionHousePlayers": "Hide Players Near Auction House",
-    "healthBar": "Health Bar: %type%",
-    "defenceIcon": "Defence Icon: %type%",
-    "backpackStyle": "Backpack Style: %style%",
+    "minionStopWarning": "\"Minion Cannot Reach\" Warnung",
+    "hideActionHousePlayers": "Spieler in der Nähe des Auktionshauses verstecken",
+    "healthBar": "Lebensleiste: %type%",
+    "defenceIcon": "Verteidigungssymbol: %type%",
+    "backpackStyle": "Rucksack-Aussehen: %style%",
     "styles": {
-      "inventory": "Inventory",
-      "compact": "Compact"
+      "inventory": "Inventar",
+      "compact": "Kompakt"
     },
     "iconTypes": {
-      "iconDefenceAndPercentage": "Icon, Defence, & Percentage",
-      "iconAndDefence": "Icon & Defence",
-      "iconAndPercentage": "Icon & Percentage",
-      "defenceAndPercentage": "Defence & Percentage",
-      "icon": "Icon",
-      "defence": "Defence",
-      "percentage": "Percentage",
-      "off": "Off"
+      "iconDefenceAndPercentage": "Symbol, Verteidigung, & Prozent",
+      "iconAndDefence": "Symbol & Verteidigung",
+      "iconAndPercentage": "Symbol & Prozent",
+      "defenceAndPercentage": "Verteidigung & Prozent",
+      "icon": "Nur Symbol",
+      "defence": "Nur Verteidigung",
+      "percentage": "Nur Prozent",
+      "off": "Aus"
     },
-    "showBackpackPreview": "Show Backpack Preview",
-    "hideHealthBar": "Hide Health Bar",
-    "healthTextColor": "Health Text Color",
-    "healthBarColor": "Health Bar Color",
-    "defenceTextColor": "Defence Text Color",
-    "defencePercentageColor": "Defence Percentage Color",
-    "disableDoubleDropAutomatically": "Disable Double Drop Automatically",
-    "fullMinionWarning": "Full Minion Warning"
+    "showBackpackPreview": "Rucksack-Vorschau zeigen",
+    "hideHealthBar": "Lebensleiste verstecken",
+    "healthTextColor": "Lebens Text Farbe",
+    "healthBarColor": "Farbe der Lebensleiste",
+    "defenceTextColor": "Verteidigungs Text Farbe",
+    "defencePercentageColor": "Verteidigungs Prozent Farbe",
+    "disableDoubleDropAutomatically": "Item-Drop automatisch deaktivieren",
+    "fullMinionWarning": "Voller Minion Warnung"
   },
   "messages": {
     "dropConfirmation": "Droppe dieses Item nochmal um zu bestätigen, dass du es wirklich droppen willst!",
@@ -63,7 +63,7 @@
     "newVersion": "Eine neue Version, %newestVersion%, ist verfügbar. Lade sie herunter, indem du hier klickst.",
     "discord": "Du willst die Neuerungen sehen? Klicke hier, um meinem Discord (Englisch) beizutreten.",
     "developmentVersion": "Du benutzt eine Entwicklungsversion, %version%. Die neueste stabile Version ist %newestVersion%",
-    "labymod": "LabyMod-Nutzer: Die Option 'Essens- und Rüstungsleiste verbergen' ist inkompatibel",
-    "minionCannotReach": "A %type% minion cannot reach and has stopped spawning!"
+    "labymod": "Die Optionen 'Verstecke Hunger-, Rüstungs-, und Lebensleiste' sind nicht kompatibel mit Labymod!",
+    "minionCannotReach": "Dein %type% Minion kann keine seiner Mobs erreichen und spawnt keine mehr!"
   }
 }
