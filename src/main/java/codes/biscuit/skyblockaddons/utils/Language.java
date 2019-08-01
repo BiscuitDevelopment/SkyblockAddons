@@ -3,6 +3,7 @@ package codes.biscuit.skyblockaddons.utils;
 public enum Language {
 
     ARABIC("ar_sa"),
+    CHINESE("zh_tw"),
     DUTCH_NETHERLANDS("nl_nl"),
     ENGLISH("en_us"),
     FINNISH("fi_fi"),
@@ -11,6 +12,7 @@ public enum Language {
     HEBREW("he_il"),
     JAPANESE("ja_jp"),
     POLISH("nl_nl"),
+    PORTUGUESE("pt_br"),
     ROMANIAN("ro_ro"),
     RUSSIAN("ru_ru"),
     SPANISH_MEXICO("es_mx"),

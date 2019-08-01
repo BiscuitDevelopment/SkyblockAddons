@@ -4,10 +4,7 @@ import com.google.gson.*;
 import net.minecraft.client.Minecraft;
 
 import java.io.*;
-import java.util.EnumMap;
-import java.util.EnumSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class ConfigValues {
 
@@ -104,6 +101,9 @@ public class ConfigValues {
             if (settingsConfig.has("defencePercentageX")) {
                 coordinates.put(Feature.DEFENCE_PERCENTAGE, new CoordsPair(settingsConfig.get("defencePercentageX").getAsFloat(), settingsConfig.get("defencePercentageY").getAsFloat()));
             }
+            if (settingsConfig.has("defenceIconX")) {
+                coordinates.put(Feature.DEFENCE_PERCENTAGE, new CoordsPair(settingsConfig.get("defenceIconX").getAsFloat(), settingsConfig.get("defenceIconY").getAsFloat()));
+            }
             loadColor("warningColor", Feature.WARNING_COLOR, ConfigColor.RED);
             loadColor("confirmationColor", Feature.CONFIRMATION_COLOR, ConfigColor.RED);
             loadColor("manaBarColor", Feature.MANA_BAR_COLOR, ConfigColor.BLUE);
@@ -127,11 +127,6 @@ public class ConfigValues {
             int configVersion;
             if (settingsConfig.has("configVersion")) {
                 configVersion = settingsConfig.get("configVersion").getAsInt();
-                Feature[] newFeatures = {Feature.HEALTH_BAR, Feature.HEALTH_TEXT, Feature.DEFENCE_TEXT, Feature.DEFENCE_PERCENTAGE,
-                Feature.DEFENCE_ICON};
-                for (Feature feature : newFeatures) {
-                    putDefaultCoordinates(feature);
-                }
             } else {
                 configVersion = 0;
             }
@@ -139,6 +134,11 @@ public class ConfigValues {
                 disabledFeatures.add(Feature.HIDE_HEALTH_BAR);
                 disabledFeatures.add(Feature.MINION_STOP_WARNING);
                 disabledFeatures.add(Feature.MINION_FULL_WARNING);
+                Feature[] newFeatures = {Feature.HEALTH_BAR, Feature.HEALTH_TEXT, Feature.DEFENCE_TEXT, Feature.DEFENCE_PERCENTAGE,
+                        Feature.DEFENCE_ICON};
+                for (Feature feature : newFeatures) {
+                    putDefaultCoordinates(feature);
+                }
                 if (guiScale == 0) {
                     guiScale = 0.11F;
                 }
@@ -174,6 +174,11 @@ public class ConfigValues {
                     break;
                 }
             }
+        }
+        Feature[] newFeatures = {Feature.HEALTH_BAR, Feature.HEALTH_TEXT, Feature.DEFENCE_TEXT, Feature.DEFENCE_PERCENTAGE,
+                Feature.DEFENCE_ICON};
+        for (Feature feature : newFeatures) {
+            putDefaultCoordinates(feature);
         }
         featureColors.put(Feature.CONFIRMATION_COLOR, ConfigColor.RED);
         featureColors.put(Feature.WARNING_COLOR, ConfigColor.RED);
@@ -353,7 +358,34 @@ public class ConfigValues {
                 text = text.replace("%type%", variables[0]);
             }
         }
+        if (text != null && language == Language.HEBREW) {
+            text = reverseText(text);
+        }
         return text;
+    }
+
+    // This reverses the text while leaving the english parts intact and in order.
+    // (Maybe its more complicated than it has to be, but it gets the job done.
+    private String reverseText(String originalText) {
+        StringBuilder newString = new StringBuilder();
+        String[] parts = originalText.split(" ");
+        for (int i = parts.length; i > 0; i--) {
+            String textPart = parts[i-1];
+            boolean foundCharacter = false;
+            for (char letter : textPart.toCharArray()) {
+                if (letter > 191) { // Found special character
+                    foundCharacter = true;
+                    newString.append(new StringBuilder(textPart).reverse().toString());
+                    break;
+                }
+            }
+            newString.append(" ");
+            if (!foundCharacter) {
+                newString.insert(0, textPart);
+            }
+            newString.insert(0, " ");
+        }
+        return newString.toString().trim().replaceAll("\\s+", " ");
     }
 
     public enum Message {

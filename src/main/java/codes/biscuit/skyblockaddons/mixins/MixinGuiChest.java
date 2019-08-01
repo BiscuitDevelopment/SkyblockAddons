@@ -95,13 +95,18 @@ public abstract class MixinGuiChest extends GuiContainer {
                         }
                     }
                 } else if (slotIn.getSlotIndex() == 22 && inventoryType == Feature.InventoryType.REFORGE_ANVIL) {
-                    ItemStack item = slots.getSlot(13).getStack();
-                    String[] nameParts = item.getDisplayName().split(" ");
-                    if (nameParts.length > 2) {
-                        String reforge = SkyblockAddons.INSTANCE.getUtils().stripColor(nameParts[0]);
-                        if (reforge.toLowerCase().contains(SkyblockAddons.INSTANCE.getUtils().getLockedEnchantment().toLowerCase())) {
-                            mc.thePlayer.playSound("random.orb", 1, 0.1F);
-                            return;
+                    Slot itemSlot = slots.getSlot(13);
+                    if (itemSlot != null && itemSlot.getHasStack()) {
+                        ItemStack item = itemSlot.getStack();
+                        if (item.hasDisplayName()) {
+                            String[] nameParts = item.getDisplayName().split(" ");
+                            if (nameParts.length > 2) {
+                                String reforge = SkyblockAddons.INSTANCE.getUtils().stripColor(nameParts[0]);
+                                if (reforge.toLowerCase().contains(SkyblockAddons.INSTANCE.getUtils().getLockedEnchantment().toLowerCase())) {
+                                    mc.thePlayer.playSound("random.orb", 1, 0.1F);
+                                    return;
+                                }
+                            }
                         }
                     }
                 }

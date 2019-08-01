@@ -105,7 +105,7 @@ public class PlayerListener {
                     } else {
                         manaPart = splitMessage[1];
                     }
-                    String[] healthSplit = main.getUtils().getNumbersOnly(healthPart).split(Pattern.quote("/"));
+                    String[] healthSplit = main.getUtils().getNumbersOnly(main.getUtils().stripColor(healthPart)).split(Pattern.quote("/"));
                     health = Integer.parseInt(healthSplit[0]);
                     maxHealth = Integer.parseInt(healthSplit[1]);
                     if (defencePart != null) {
@@ -436,6 +436,13 @@ public class PlayerListener {
                 }
                 if (!main.getConfigValues().getDisabledFeatures().contains(Feature.HIDE_HEALTH_BAR)) {
                     GuiIngameForge.renderHealth = false;
+                }
+            } else {
+                if (!main.getConfigValues().getDisabledFeatures().contains(Feature.HIDE_HEALTH_BAR)) {
+                    GuiIngameForge.renderHealth = true;
+                }
+                if (!main.getConfigValues().getDisabledFeatures().contains(Feature.HIDE_FOOD_ARMOR_BAR)) {
+                    GuiIngameForge.renderArmor = true;
                 }
             }
         }

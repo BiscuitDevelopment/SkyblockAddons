@@ -53,7 +53,7 @@
     "healthBarColor": "Cor da Barra de Vida",
     "defenceTextColor": "Cor do Texto de Defesa",
     "defencePercentageColor": "Cor da Porcentagem de Defesa",
-    "disableDoubleDropAutomatically": "Disable Double Drop Automatically",
+    "disableDoubleDropAutomatically": "Desativar Largada Dupla Automaticamente",
     "fullMinionWarning": "Aviso de Criado Cheio"
   },
   "messages": {
