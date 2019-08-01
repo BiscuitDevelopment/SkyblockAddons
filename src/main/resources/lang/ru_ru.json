@@ -29,7 +29,7 @@
     "hideDurability": "Скрыть прочность инструментов",
     "showEnchantmentsReforges": "Зачарование и Перековка",
     "minionStopWarning": "Предупреждение остановки миньона",
-    "hideActionHousePlayers": "Прятать игроков у Дома Аукциона",
+    "hideAuctionHousePlayers": "Прятать игроков у Дома Аукциона",
     "healthBar": "Полоса здоровья: %type%",
     "defenceIcon": "Значок брони: %type%",
     "backpackStyle": "Стиль рюкзака: %style%",

@@ -61,12 +61,16 @@ public abstract class MixinGuiChest extends GuiContainer {
 
     @Override
     protected void keyTyped(char typedChar, int keyCode) throws IOException {
-        if (keyCode != this.mc.gameSettings.keyBindInventory.getKeyCode()) {
+        if (inventoryType != null) {
+            if (keyCode != this.mc.gameSettings.keyBindInventory.getKeyCode()) {
+                super.keyTyped(typedChar, keyCode);
+            }
+            if (textField != null) {
+                textField.textboxKeyTyped(typedChar, keyCode);
+                SkyblockAddons.INSTANCE.getUtils().setLockedEnchantment(textField.getText());
+            }
+        } else {
             super.keyTyped(typedChar, keyCode);
-        }
-        if (textField != null) {
-            textField.textboxKeyTyped(typedChar, keyCode);
-            SkyblockAddons.INSTANCE.getUtils().setLockedEnchantment(textField.getText());
         }
     }
 
