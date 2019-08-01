@@ -1,11 +1,11 @@
 {
-  "language": "Français",
+  "language": "Français (France)",
   "settings": {
     "settings": "Paramètres",
     "openSettings": "Ouvrir les paramètres",
     "magmaBossWarning": "Alerte Magma Boss",
     "itemDropConfirmation": "Confirmation du jet",
-    "warningTime": "Alerte temps: %time%s",
+    "warningTime": "Durée de l'alerte: %time%s",
     "manaBar": "Barre de mana: %type%",
     "barTypes": {
       "barAndText": "Barre & Texte",
@@ -21,29 +21,29 @@
     "disableEmberRodAbility": "Désativer l'Ember Rod sur votre île",
     "warningColor": "Couleur pour les alertes",
     "confirmationColor": "Couleur pour les confirmations",
-    "manaTextColor": "Couleur pour le texte de la mana",
-    "manaBarColor": "Couleur pour la barre de mana",
+    "manaTextColor": "Couleur du texte de la mana",
+    "manaBarColor": "Couleur de la barre de mana",
     "editLocations": "Modifier les emplacements",
     "guiScale": "Taille de l'interface: %scale%",
     "resetLocations": "Réinitialiser les emplacements",
     "hideDurability": "Masquer la durabilité des outils",
     "showEnchantmentsReforges": "Enchantement & Reforges",
     "minionStopWarning": "Alerte minion à l'arrêt",
-    "hideAuctionHousePlayers": "Masquer les joueurs près de la maison de vente aux enchères",
+    "hideAuctionHousePlayers": "Masquer les joueurs près de l'HDV",
     "healthBar": "Barre de vie: %type%",
-    "defenceIcon": "Icône de défense: %type%",
-    "backpackStyle": "Style du sac à dos: %style%",
+    "defenceIcon": "Défense: %type%",
+    "backpackStyle": "Affichage du sac à dos: %style%",
     "styles": {
       "inventory": "Inventaire",
       "compact": "Compact"
     },
     "iconTypes": {
-      "iconDefenceAndPercentage": "Icône, Défense, & Pourcentage",
-      "iconAndDefence": "Icône & Défense",
+      "iconDefenceAndPercentage": "Icône, Texte, & Pourcentage",
+      "iconAndDefence": "Icône & Texte",
       "iconAndPercentage": "Icône & Pourcentage",
-      "defenceAndPercentage": "Défense & Pourcentage",
+      "defenceAndPercentage": "Texte & Pourcentage",
       "icon": "Icône",
-      "defence": "Défense",
+      "defence": "Texte",
       "percentage": "Pourcentage",
       "off": "Désativé"
     },
@@ -63,8 +63,8 @@
     "newVersion": "Une nouvelle version, %newestVersion% est disponible. Télécharger le en cliquant ici.",
     "discord": "Vous voulez voir les changements? Cliquez ici pour rejoindre mon discord.",
     "developmentVersion": "Vous utiliez une version de développement : %version%. La dernière version en ligne est %newestVersion%",
-    "labymod": "Utilisateurs de Labymod: Il y a une incompatibilité avec l'option 'Masquer la barre de nourriture et d'armure'",
+    "labymod": "Utilisateurs de Labymod: Il y a une incompatibilité avec l'option Masquer la barre de nourriture et d'armure",
     "minionCannotReach": "Le minon %type% n'arrive pas à atteindre les entités et à arreté le spawn!",
-    "minionIsFull": "A minion on your island is full!"
+    "minionIsFull": "Un minion sur votre île est plein"
   }
 }
