@@ -14,21 +14,24 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(EntityPlayerSP.class)
-public abstract class MixinEntityPlayerSP {
+public class MixinEntityPlayerSP {
 
     private Item lastItem = null;
     private long lastDrop = System.currentTimeMillis();
 
     @Inject(method = "dropOneItem", at = @At(value = "HEAD"), cancellable = true)
     private void dropOneItemConfirmation(boolean dropAll, CallbackInfoReturnable<EntityItem> cir) {
-        if (!SkyblockAddons.INSTANCE.getConfigValues().getDisabledFeatures().contains(Feature.DROP_CONFIRMATION)) {
+        SkyblockAddons main = SkyblockAddons.INSTANCE;
+        if (!main.getConfigValues().getDisabledFeatures().contains(Feature.DROP_CONFIRMATION) && (main.getUtils().isOnSkyblock() ||
+                main.getConfigValues().getDisabledFeatures().contains(Feature.DISABLE_DOUBLE_DROP_AUTOMATICALLY))) {
             ItemStack heldItemStack = Minecraft.getMinecraft().thePlayer.getHeldItem();
             if (heldItemStack != null) {
                 Item heldItem = heldItemStack.getItem();
                 if (lastItem != null && lastItem == heldItem && System.currentTimeMillis() - lastDrop < 3000) {
                     lastDrop = System.currentTimeMillis();
                 } else {
-                    SkyblockAddons.INSTANCE.getUtils().sendMessage(SkyblockAddons.INSTANCE.getConfigValues().getColor(Feature.CONFIRMATION_COLOR).getChatFormatting() + SkyblockAddons.INSTANCE.getConfigValues().getMessage(ConfigValues.Message.MESSAGE_DROP_CONFIRMATION));
+                    SkyblockAddons.INSTANCE.getUtils().sendMessage(main.getConfigValues().getColor(Feature.CONFIRMATION_COLOR).getChatFormatting() +
+                            main.getConfigValues().getMessage(ConfigValues.Message.MESSAGE_DROP_CONFIRMATION));
                     lastItem = heldItem;
                     lastDrop = System.currentTimeMillis();
                     cir.setReturnValue(null);

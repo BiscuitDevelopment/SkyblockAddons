@@ -53,7 +53,8 @@ public class ButtonRegular extends GuiButton {
                 if ((feature == Feature.MANA_BAR && main.getConfigValues().getManaBarType() == Feature.BarType.OFF) ||
                         (feature == Feature.HEALTH_BAR && main.getConfigValues().getHealthBarType() == Feature.BarType.OFF) ||
                         (feature == Feature.DEFENCE_ICON && main.getConfigValues().getDefenceIconType() == Feature.IconType.OFF) ||
-                        (feature != Feature.MANA_BAR && main.getConfigValues().getDisabledFeatures().contains(feature))) {
+                        (feature != Feature.MANA_BAR && feature != Feature.HEALTH_BAR
+                                && feature != Feature.DEFENCE_ICON && main.getConfigValues().getDisabledFeatures().contains(feature))) {
                     boxColor = ConfigColor.RED.getColor(boxAlpha * alphaMultiplier);
                 } else {
                     boxColor = ConfigColor.GREEN.getColor(boxAlpha * alphaMultiplier);
@@ -107,7 +108,7 @@ public class ButtonRegular extends GuiButton {
             this.drawCenteredString(mc.fontRendererObj, displayString, (int)((xPosition+width/2)*scaleMultiplier), (int)((yPosition+(this.height-(8/scaleMultiplier))/2)*scaleMultiplier), fontColor);
             GlStateManager.disableBlend();
             GlStateManager.popMatrix();
-            if (!originalString.equals(displayString)) {
+            if (!originalString.equals(displayString) && mc.currentScreen instanceof SkyblockAddonsGui) {
                 main.getUtils().setFadingIn(false);
                 main.getPlayerListener().setOpenMainGUI(true);
             }

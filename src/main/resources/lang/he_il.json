@@ -29,7 +29,7 @@
     "hideDurability": "הסתר רמת שימוש של כלי",
     "showEnchantmentsReforges": "כישופים ושיפורים",
     "minionStopWarning": "\"המיניון לא יכול להגיע\" Warning",
-    "hideActionHousePlayers": "הסתר שחקנים ליד המכירה הפומבית",
+    "hideAuctionHousePlayers": "הסתר שחקנים ליד המכירה הפומבית",
     "healthBar": "עמודת חיים: %type%",
     "defenceIcon": "אייקון הגנה: %type%",
     "backpackStyle": "סטייל תרמיל גב: %style%",

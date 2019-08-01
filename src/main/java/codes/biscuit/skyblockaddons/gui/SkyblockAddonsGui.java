@@ -38,12 +38,15 @@ public class SkyblockAddonsGui extends GuiScreen {
         addButton(height*0.33, ConfigValues.Message.SETTING_HIDE_DURABILITY, Feature.HIDE_DURABILITY,3);
         addButton(height*0.41, ConfigValues.Message.SETTING_ENCHANTS_AND_REFORGES, Feature.SHOW_ENCHANTMENTS_REFORGES,3);
         addButton(height*0.49, ConfigValues.Message.SETTING_MINION_STOP_WARNING, Feature.MINION_STOP_WARNING, 3);
-        addButton(height*0.86, ConfigValues.Message.SETTING_EDIT_SETTINGS, Feature.SETTINGS, 4);
+        addButton(height*0.86, ConfigValues.Message.SETTING_EDIT_SETTINGS, Feature.SETTINGS, 2);
         addButton(height*0.57, ConfigValues.Message.SETTING_AUCTION_HOUSE_PLAYERS, Feature.HIDE_AUCTION_HOUSE_PLAYERS, 1);
-        addButton(height*0.86, ConfigValues.Message.LANGUAGE, Feature.LANGUAGE, 5);
+        addButton(height*0.86, ConfigValues.Message.LANGUAGE, Feature.LANGUAGE, 3);
         addButton(height*0.57, ConfigValues.Message.SETTING_HEALTH_BAR, Feature.HEALTH_BAR, 2);
         addButton(height*0.57, ConfigValues.Message.SETTING_DEFENCE_ICON, Feature.DEFENCE_ICON, 3);
         addButton(height*0.65, ConfigValues.Message.SETTING_SHOW_BACKPACK_PREVIEW, Feature.SHOW_BACKPACK_PREVIEW, 1);
+        addButton(height*0.65, ConfigValues.Message.SETTING_HIDE_HEALTH_VAR, Feature.HIDE_HEALTH_BAR, 2);
+        addButton(height*0.86, ConfigValues.Message.SETTING_EDIT_LOCATIONS, Feature.EDIT_LOCATIONS, 1);
+        addButton(height*0.65, ConfigValues.Message.SETTING_FULL_MINION, Feature.MINION_FULL_WARNING, 3);
     }
 
 
@@ -69,7 +72,7 @@ public class SkyblockAddonsGui extends GuiScreen {
         int defaultBlue = new Color(189,236,252, alpha*2).getRGB();
 
         drawScaledString("SkyblockAddons", 0.12, defaultBlue, 2.5F);
-        drawScaledString("by Biscut", 0.12, defaultBlue, 1.3, 50, 17);
+        drawScaledString("v"+SkyblockAddons.VERSION+" by Biscut", 0.12, defaultBlue, 1.3, 50, 17);
         drawScaledString(main.getConfigValues().getMessage(ConfigValues.Message.SETTING_SETTINGS), 0.8, defaultBlue, 1.5);
         if (main.isUsingLabymod() || (boolean)Launch.blackboard.get("fml.deobfuscatedEnvironment")) {
             drawScaledString(main.getConfigValues().getMessage(ConfigValues.Message.MESSAGE_LABYMOD), 0.75, defaultBlue, 1);
@@ -96,6 +99,8 @@ public class SkyblockAddonsGui extends GuiScreen {
                         main.getConfigValues().getDisabledFeatures().add(feature);
                         if (feature == Feature.HIDE_FOOD_ARMOR_BAR) {
                             GuiIngameForge.renderArmor = true;
+                        } else if (feature == Feature.HIDE_HEALTH_BAR) {
+                            GuiIngameForge.renderHealth = true;
                         }
                     }
                 }
@@ -107,6 +112,9 @@ public class SkyblockAddonsGui extends GuiScreen {
                 main.getConfigValues().loadLanguageFile();
                 main.getUtils().setFadingIn(false);
                 Minecraft.getMinecraft().displayGuiScreen(new SkyblockAddonsGui(main));
+            }  else if (feature == Feature.EDIT_LOCATIONS) {
+                main.getUtils().setFadingIn(false);
+                Minecraft.getMinecraft().displayGuiScreen(new LocationEditGui(main));
             }
         }
     }

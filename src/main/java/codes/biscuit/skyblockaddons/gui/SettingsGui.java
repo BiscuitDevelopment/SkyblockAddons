@@ -16,9 +16,9 @@ import static codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui.WIDTH_LIMIT;
 public class SettingsGui extends GuiScreen {
 
     private SkyblockAddons main;
-    private boolean openingLocations = false;
+    private boolean cancelScreenReturn = false;
 
-    public SettingsGui(SkyblockAddons main) {
+    SettingsGui(SkyblockAddons main) {
         this.main = main;
     }
 
@@ -29,10 +29,15 @@ public class SettingsGui extends GuiScreen {
         addButton(height*0.33, ConfigValues.Message.SETTING_MANA_TEXT_COLOR, Feature.MANA_TEXT_COLOR, 1);
         addButton(height*0.49, ConfigValues.Message.SETTING_MANA_BAR_COLOR, Feature.MANA_BAR_COLOR, 1);
         addButton(height*0.25, ConfigValues.Message.SETTING_WARNING_TIME, Feature.WARNING_TIME, 3);
-        addButton(height*0.25, ConfigValues.Message.SETTING_EDIT_LOCATIONS, Feature.EDIT_LOCATIONS, 2);
         addButton(height*0.25, ConfigValues.Message.SETTING_WARNING_COLOR, Feature.WARNING_COLOR, 1);
         addButton(height*0.41, ConfigValues.Message.SETTING_CONFIRMATION_COLOR, Feature.CONFIRMATION_COLOR, 1);
         addButton(height*0.33, ConfigValues.Message.SETTING_BACKPACK_STYLE, Feature.BACKPACK_STYLE, 3);
+
+        addButton(height*0.25, ConfigValues.Message.SETTING_HEALTH_BAR_COLOR, Feature.HEALTH_BAR_COLOR, 2);
+        addButton(height*0.33, ConfigValues.Message.SETTING_HEALTH_TEXT_COLOR, Feature.HEALTH_TEXT_COLOR, 2);
+        addButton(height*0.41, ConfigValues.Message.SETTING_DEFENCE_TEXT_COLOR, Feature.DEFENCE_TEXT_COLOR, 2);
+        addButton(height*0.49, ConfigValues.Message.SETTING_DEFENCE_PERCENTAGE_COLOR, Feature.DEFENCE_PERCENTAGE_COLOR, 2);
+        addButton(height*0.49, ConfigValues.Message.SETTING_DISABLE_DOUBLE_DROP, Feature.DISABLE_DOUBLE_DROP_AUTOMATICALLY, 3);
         addSlider();
         int twoThirds = width/3*2;
         buttonList.add(new ButtonRegular(0, twoThirds, height*0.25, "+", main, Feature.ADD, 20, 20));
@@ -41,12 +46,13 @@ public class SettingsGui extends GuiScreen {
     private void addSlider() {
         String text = main.getConfigValues().getMessage(ConfigValues.Message.SETTING_GUI_SCALE, String.valueOf(getRoundedValue(
                 main.getUtils().denormalizeValue(main.getConfigValues().getGuiScale(), ButtonSlider.VALUE_MIN, ButtonSlider.VALUE_MAX, ButtonSlider.VALUE_STEP))));
-        int halfWidth = width/2;
+        int oneThird = width/3;
+        int twoThirds = oneThird*2;
         int boxWidth = fontRendererObj.getStringWidth(text)+10;
         if (boxWidth > WIDTH_LIMIT) boxWidth = WIDTH_LIMIT;
         int boxHeight = 20;
-        int x = halfWidth-(boxWidth/2);
-        int y = (int)(height*0.33);
+        int x = twoThirds+25;
+        int y = (int)(height*0.41);
         buttonList.add(new ButtonSlider(0, x, y, boxWidth, boxHeight, main));
     }
 
@@ -112,6 +118,9 @@ public class SettingsGui extends GuiScreen {
                 main.getConfigValues().setColor(feature, main.getConfigValues().getColor(feature).getNextColor());
             } else if (feature == Feature.BACKPACK_STYLE) {
                 main.getConfigValues().setBackpackStyle(main.getConfigValues().getBackpackStyle().getNextType());
+                cancelScreenReturn = true;
+                Minecraft.getMinecraft().displayGuiScreen(new SettingsGui(main));
+                cancelScreenReturn = false;
             } else if (feature.getButtonType() == Feature.ButtonType.MODIFY) {
                 if (feature == Feature.ADD) {
                     if (main.getConfigValues().getWarningSeconds() < 99) {
@@ -122,9 +131,12 @@ public class SettingsGui extends GuiScreen {
                         main.getConfigValues().setWarningSeconds(main.getConfigValues().getWarningSeconds() - 1);
                     }
                 }
-            } else if (feature == Feature.EDIT_LOCATIONS) {
-                openingLocations = true;
-                Minecraft.getMinecraft().displayGuiScreen(new LocationEditGui(main));
+            } else if (feature.getButtonType() == Feature.ButtonType.REGULAR) {
+                if (main.getConfigValues().getDisabledFeatures().contains(feature)) {
+                    main.getConfigValues().getDisabledFeatures().remove(feature);
+                } else {
+                    main.getConfigValues().getDisabledFeatures().add(feature);
+                }
             }
         }
     }
@@ -132,8 +144,7 @@ public class SettingsGui extends GuiScreen {
     @Override
     public void onGuiClosed() {
         main.getConfigValues().saveConfig();
-        if (!openingLocations) {
-            main.getUtils().setFadingIn(false);
+        if (!cancelScreenReturn) {
             main.getPlayerListener().setOpenMainGUI(true);
         }
     }

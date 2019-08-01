@@ -15,7 +15,7 @@ public class ButtonSlider extends GuiButton {
 
     private float sliderValue;
     private boolean dragging;
-    public static float VALUE_MIN = 1;
+    public static float VALUE_MIN = 0.5F;
     public static float VALUE_MAX = 5;
     public static float VALUE_STEP = 0.1F;
 

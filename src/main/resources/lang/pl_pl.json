@@ -29,7 +29,7 @@
     "hideDurability": "Ukryj Pasek Wytrzymałości Narzędzi",
     "showEnchantmentsReforges": "Enchanty i Reforge",
     "minionStopWarning": "Ostrzeżenie o Przerwaniu Pracy Miniona",
-    "hideActionHousePlayers": "Hide Players Near Auction House",
+    "hideAuctionHousePlayers": "Hide Players Near Auction House",
     "healthBar": "Health Bar: %type%",
     "defenceIcon": "Defence Icon: %type%",
     "backpackStyle": "Backpack Style: %style%",

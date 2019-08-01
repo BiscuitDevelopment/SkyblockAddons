@@ -29,7 +29,7 @@
     "hideDurability": "Ocultar Durabilidad de Herramientas",
     "showEnchantmentsReforges": "Encantamientos & Reforjados",
     "minionStopWarning": "Alerta de Minion Detenido",
-    "hideActionHousePlayers": "Ocultar Jugadores Cerca de Auction House",
+    "hideAuctionHousePlayers": "Ocultar Jugadores Cerca de Auction House",
     "healthBar": "Barra de Vida: %type%",
     "defenceIcon": "Icono de Defensa: %type%",
     "backpackStyle": "Estilo de Backpack: %style%",

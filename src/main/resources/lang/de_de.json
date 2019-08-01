@@ -29,7 +29,7 @@
     "hideDurability": "Werkzeugshaltbarkeit verbergen",
     "showEnchantmentsReforges": "Zeige Verzauberungen und Verbesserungen",
     "minionStopWarning": "\"Minion Cannot Reach\" Warnung",
-    "hideActionHousePlayers": "Spieler in der Nähe des Auktionshauses verstecken",
+    "hideAuctionHousePlayers": "Spieler in der Nähe des Auktionshauses verstecken",
     "healthBar": "Lebensleiste: %type%",
     "defenceIcon": "Verteidigungssymbol: %type%",
     "backpackStyle": "Rucksack-Aussehen: %style%",

@@ -1,15 +1,16 @@
 package codes.biscuit.skyblockaddons.listeners;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.gui.ButtonLocation;
 import codes.biscuit.skyblockaddons.gui.ButtonSlider;
 import codes.biscuit.skyblockaddons.gui.LocationEditGui;
-import codes.biscuit.skyblockaddons.gui.SettingsGui;
 import codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui;
 import codes.biscuit.skyblockaddons.utils.ConfigValues;
 import codes.biscuit.skyblockaddons.utils.CoordsPair;
 import codes.biscuit.skyblockaddons.utils.Feature;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
+import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
@@ -22,7 +23,6 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChatComponentText;
-import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.GuiIngameForge;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
@@ -30,6 +30,7 @@ import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.fml.client.GuiNotification;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import org.lwjgl.opengl.GL11;
@@ -43,18 +44,22 @@ import static net.minecraft.client.gui.Gui.icons;
 
 public class PlayerListener {
 
-    public final static ItemStack BONE = new ItemStack(Item.getItemById(352));
-    public final static ResourceLocation MANA_BARS = new ResourceLocation("skyblockaddons", "manabars.png");
+    public final static ItemStack BONE_ITEM = new ItemStack(Item.getItemById(352));
+    public final static ResourceLocation BARS = new ResourceLocation("skyblockaddons", "bars.png");
 
     private boolean sentUpdate = false;
     private boolean predictMana = false;
     private long lastWorldJoin = -1;
-    private boolean fullInventoryWarning = false;
-    private boolean bossWarning = false;
     private long lastBoss = -1;
     private int soundTick = 1;
     private int manaTick = 1;
     private long lastMinionSound = -1;
+    private String cannotReachMobName;
+
+    private boolean subtitleWarning = false;
+    private boolean titleWarning = false;
+    private Feature subtitleFeature = null;
+    private Feature titleFeature = null;
 
     private int defense = 0;
     private int health = 100;
@@ -62,11 +67,10 @@ public class PlayerListener {
     private int mana = 0;
     private int maxMana = 100;
 
-    private Feature.Accuracy magmaTimerAccuracy = null;
-    private long magmaTime = 7200;
+//    private Feature.Accuracy magmaTimerAccuracy = null;
+//    private long magmaTime = 7200;
 
     private boolean openMainGUI = false;
-    private boolean openSettingsGUI = false;
 
     private SkyblockAddons main;
 
@@ -78,7 +82,7 @@ public class PlayerListener {
     public void onWorldJoin(EntityJoinWorldEvent e) {
         if (e.entity == Minecraft.getMinecraft().thePlayer) {
             lastWorldJoin = System.currentTimeMillis();
-            bossWarning = false;
+            titleWarning = false;
             lastBoss = -1;
             soundTick = 1;
             manaTick = 1;
@@ -141,10 +145,14 @@ public class PlayerListener {
 
     @SubscribeEvent()
     public void onRenderRegular(RenderGameOverlayEvent.Post e) {
-        if (!main.isUsingLabymod() && main.getUtils().isOnSkyblock()) {
+        if (Minecraft.getMinecraft().ingameGUI instanceof GuiIngameForge && main.getUtils().isOnSkyblock()) {
+//            if (e.type == RenderGameOverlayEvent.ElementType.CROSSHAIRS) {
+//                renderOverlays(e.resolution);
+//                renderWarnings(e.resolution);
+//            }
             if (e.type == RenderGameOverlayEvent.ElementType.EXPERIENCE) {
                 renderOverlays(e.resolution);
-            } else if (e.type == RenderGameOverlayEvent.ElementType.TEXT) {
+            } else if (e.type == RenderGameOverlayEvent.ElementType.CHAT) {
                 renderWarnings(e.resolution);
             }
         }
@@ -152,7 +160,7 @@ public class PlayerListener {
 
     @SubscribeEvent()
     public void onRenderLabyMod(RenderGameOverlayEvent e) {
-        if (main.isUsingLabymod() && main.getUtils().isOnSkyblock()) {
+        if (e.type == null && main.isUsingLabymod() && main.getUtils().isOnSkyblock()) {
             renderOverlays(e.resolution);
             renderWarnings(e.resolution);
         }
@@ -161,7 +169,7 @@ public class PlayerListener {
     private void renderWarnings(ScaledResolution scaledResolution) {
         Minecraft mc = Minecraft.getMinecraft();
         int i = scaledResolution.getScaledWidth();
-        if (bossWarning) {
+        if (titleWarning) {
             int j = scaledResolution.getScaledHeight();
             GlStateManager.pushMatrix();
             GlStateManager.translate((float) (i / 2), (float) (j / 2), 0.0F);
@@ -169,22 +177,49 @@ public class PlayerListener {
 //            GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
             GlStateManager.pushMatrix();
             GlStateManager.scale(4.0F, 4.0F, 4.0F);
-            String text;
-            text = main.getConfigValues().getColor(Feature.WARNING_COLOR).getChatFormatting() + main.getConfigValues().getMessage(ConfigValues.Message.MESSAGE_MAGMA_BOSS_WARNING);
-            mc.ingameGUI.getFontRenderer().drawString(text, (float) (-mc.ingameGUI.getFontRenderer().getStringWidth(text) / 2), -20.0F, 16777215, true);
+            ConfigValues.Message message = null;
+            switch (titleFeature) {
+                case MAGMA_WARNING:
+                    message = ConfigValues.Message.MESSAGE_MAGMA_BOSS_WARNING;
+                    break;
+                case FULL_INVENTORY_WARNING:
+                    message = ConfigValues.Message.MESSAGE_FULL_INVENTORY;
+                    break;
+            }
+            if (message != null) {
+                String text;
+                text = main.getConfigValues().getMessage(message);
+                mc.ingameGUI.getFontRenderer().drawString(text, (float) (-mc.ingameGUI.getFontRenderer().getStringWidth(text) / 2), -20.0F,
+                        main.getConfigValues().getColor(titleFeature).getColor(255), true);
+            }
             GlStateManager.popMatrix();
-//            GlStateManager.disableBlend();
             GlStateManager.popMatrix();
         }
-        if (fullInventoryWarning && !main.getConfigValues().getDisabledFeatures().contains(Feature.FULL_INVENTORY_WARNING)) {
+        if (subtitleWarning) {
             int j = scaledResolution.getScaledHeight();
             GlStateManager.pushMatrix();
             GlStateManager.translate((float) (i / 2), (float) (j / 2), 0.0F);
             GlStateManager.pushMatrix();
-            GlStateManager.scale(4.0F, 4.0F, 4.0F);
-            String text;
-            text = main.getConfigValues().getColor(Feature.WARNING_COLOR).getChatFormatting() + main.getConfigValues().getMessage(ConfigValues.Message.MESSAGE_FULL_INVENTORY);
-            mc.ingameGUI.getFontRenderer().drawString(text, (float) (-mc.ingameGUI.getFontRenderer().getStringWidth(text) / 2), -20.0F, 16777215, true);
+            GlStateManager.scale(2.0F, 2.0F, 2.0F);
+            ConfigValues.Message message = null;
+            switch (subtitleFeature) {
+                case MINION_STOP_WARNING:
+                    message = ConfigValues.Message.MESSAGE_MINION_CANNOT_REACH;
+                    break;
+                case MINION_FULL_WARNING:
+                    message = ConfigValues.Message.MESSAGE_MINION_IS_FULL;
+                    break;
+            }
+            if (message != null) {
+                String text;
+                if (message == ConfigValues.Message.MESSAGE_MINION_CANNOT_REACH) {
+                    text = main.getConfigValues().getMessage(message, cannotReachMobName);
+                } else {
+                    text = main.getConfigValues().getMessage(message);
+                }
+                mc.ingameGUI.getFontRenderer().drawString(text, (float) (-mc.ingameGUI.getFontRenderer().getStringWidth(text) / 2), -23.0F,
+                        main.getConfigValues().getColor(subtitleFeature).getColor(255), true);
+            }
             GlStateManager.popMatrix();
             GlStateManager.popMatrix();
         }
@@ -216,67 +251,78 @@ public class PlayerListener {
                 }
             }
         }
+
     }
 
     private void renderOverlays(ScaledResolution sr) {
         Minecraft mc = Minecraft.getMinecraft();
         float scale = main.getUtils().denormalizeValue(main.getConfigValues().getGuiScale(), ButtonSlider.VALUE_MIN, ButtonSlider.VALUE_MAX, ButtonSlider.VALUE_STEP);
         float scaleMultiplier = 1F/scale;
+        GlStateManager.disableBlend();
         GlStateManager.pushMatrix();
         GlStateManager.scale(scale, scale, 1);
-        if (main.getConfigValues().getManaBarType() != Feature.BarType.OFF && !(mc.currentScreen instanceof LocationEditGui)) {
-            mc.getTextureManager().bindTexture(MANA_BARS);
-            GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-            GlStateManager.disableBlend();
-
-            if (main.getConfigValues().getManaBarType() == Feature.BarType.BAR
-                    || main.getConfigValues().getManaBarType() == Feature.BarType.BAR_TEXT) {
-                drawBar(Feature.MANA_BAR, scaleMultiplier, mc, sr, Feature.MANA_BAR_COLOR);
-            }
-            if (main.getConfigValues().getHealthBarType() == Feature.BarType.BAR
-                    || main.getConfigValues().getHealthBarType() == Feature.BarType.BAR_TEXT) {
-                drawBar(Feature.HEALTH_BAR, scaleMultiplier, mc, sr, Feature.HEALTH_BAR);
-            }
-            if (main.getConfigValues().getManaBarType() == Feature.BarType.TEXT
-                    || main.getConfigValues().getManaBarType() == Feature.BarType.BAR_TEXT) {
-                drawText(Feature.MANA_TEXT, scaleMultiplier, mc, sr, Feature.MANA_TEXT_COLOR);
-//                int color = main.getConfigValues().getColor(Feature.MANA_TEXT_COLOR).getColor(255);
-//                String text = mana + "/" + maxMana;
-//                CoordsPair coordsPair = main.getConfigValues().getCoords(Feature.MANA_TEXT);
-//                int x = (int) (coordsPair.getX() * sr.getScaledWidth()) + 60 - mc.ingameGUI.getFontRenderer().getStringWidth(text) / 2;
-//                int y = (int) (coordsPair.getY() * sr.getScaledHeight()) + 4;
-//                x+=25;
-//                y+=10;
-//                mc.ingameGUI.getFontRenderer().drawString(text, (int)(x*scaleMultiplier)-60+1, (int)(y*scaleMultiplier)-10, 0);
-//                mc.ingameGUI.getFontRenderer().drawString(text, (int)(x*scaleMultiplier)-60-1, (int)(y*scaleMultiplier)-10, 0);
-//                mc.ingameGUI.getFontRenderer().drawString(text, (int)(x*scaleMultiplier)-60, (int)(y*scaleMultiplier)+1-10, 0);
-//                mc.ingameGUI.getFontRenderer().drawString(text, (int)(x*scaleMultiplier)-60, (int)(y*scaleMultiplier)-1-10, 0);
-//                mc.ingameGUI.getFontRenderer().drawString(text, (int)(x*scaleMultiplier)-60, (int)(y*scaleMultiplier)-10, color);
-//                GlStateManager.enableBlend();
-//                GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-            }
-        }
-        if ((!main.getConfigValues().getDisabledFeatures().contains(Feature.SKELETON_BAR))
-                && !(mc.currentScreen instanceof LocationEditGui) && main.getUtils().isWearingSkeletonHelmet()) {
-            CoordsPair coordsPair = main.getConfigValues().getCoords(Feature.SKELETON_BAR);
-            int width = (int)(coordsPair.getX()*sr.getScaledWidth());
-            int height = (int)(coordsPair.getY()*sr.getScaledHeight());
-            int bones = 0;
-            for (Entity listEntity : mc.theWorld.loadedEntityList) {
-                if (listEntity instanceof EntityItem &&
-                        listEntity.ridingEntity instanceof EntityZombie && listEntity.ridingEntity.isInvisible() && listEntity.getDistanceToEntity(mc.thePlayer) <= 8) {
-                    bones++;
+        if (!(mc.currentScreen instanceof LocationEditGui) && !(mc.currentScreen instanceof GuiNotification)) {
+            Feature.IconType iconType = main.getConfigValues().getDefenceIconType();
+            Feature.BarType manaBarType = main.getConfigValues().getManaBarType();
+            Feature.BarType healthBarType = main.getConfigValues().getHealthBarType();
+            if ((!main.getConfigValues().getDisabledFeatures().contains(Feature.SKELETON_BAR)) && main.getUtils().isWearingSkeletonHelmet()) {
+                CoordsPair coordsPair = main.getConfigValues().getCoords(Feature.SKELETON_BAR);
+                int width = (int)(coordsPair.getX()*sr.getScaledWidth());
+                int height = (int)(coordsPair.getY()*sr.getScaledHeight());
+                int bones = 0;
+                for (Entity listEntity : mc.theWorld.loadedEntityList) {
+                    if (listEntity instanceof EntityItem &&
+                            listEntity.ridingEntity instanceof EntityZombie && listEntity.ridingEntity.isInvisible() && listEntity.getDistanceToEntity(mc.thePlayer) <= 8) {
+                        bones++;
+                    }
+                }
+                if (bones > 3) bones = 3;
+                for (int boneCounter = 0; boneCounter < bones; boneCounter++) {
+                    mc.getRenderItem().renderItemIntoGUI(BONE_ITEM, (int)((width+boneCounter*15*scale)*scaleMultiplier), (int)((height+2)*scaleMultiplier));
                 }
             }
-            if (bones > 3) bones = 3;
-            for (int boneCounter = 0; boneCounter < bones; boneCounter++) {
-                mc.getRenderItem().renderItemIntoGUI(BONE, (int)((width+boneCounter*15*scale)*scaleMultiplier), (int)((height+2)*scaleMultiplier));
+            mc.getTextureManager().bindTexture(PlayerListener.BARS);
+            if (manaBarType == Feature.BarType.BAR
+                    || manaBarType == Feature.BarType.BAR_TEXT) {
+                drawBar(Feature.MANA_BAR, scaleMultiplier, mc, sr, Feature.MANA_BAR_COLOR);
+            }
+            if (healthBarType == Feature.BarType.BAR
+                    || healthBarType == Feature.BarType.BAR_TEXT) {
+                drawBar(Feature.HEALTH_BAR, scaleMultiplier, mc, sr, Feature.HEALTH_BAR_COLOR);
+            }
+            mc.getTextureManager().bindTexture(icons);
+            if (iconType == Feature.IconType.ICON || iconType == Feature.IconType.ICON_DEFENCE || iconType == Feature.IconType.ICON_PERCENTAGE
+                    || iconType == Feature.IconType.ICON_DEFENCE_PERCENTAGE) {
+                drawIcon(scale, mc, sr, null);
+            }
+            if (iconType == Feature.IconType.DEFENCE || iconType == Feature.IconType.ICON_DEFENCE || iconType == Feature.IconType.DEFENCE_PERCENTAGE
+                    || iconType == Feature.IconType.ICON_DEFENCE_PERCENTAGE) {
+                drawText(Feature.DEFENCE_TEXT, scaleMultiplier, mc, sr, Feature.DEFENCE_TEXT_COLOR);
+            }
+            if (iconType == Feature.IconType.PERCENTAGE || iconType == Feature.IconType.ICON_PERCENTAGE || iconType == Feature.IconType.DEFENCE_PERCENTAGE
+                    || iconType == Feature.IconType.ICON_DEFENCE_PERCENTAGE) {
+                drawText(Feature.DEFENCE_PERCENTAGE, scaleMultiplier, mc, sr, Feature.DEFENCE_PERCENTAGE_COLOR);
+            }
+            if (manaBarType == Feature.BarType.TEXT
+                    || manaBarType == Feature.BarType.BAR_TEXT) {
+                drawText(Feature.MANA_TEXT, scaleMultiplier, mc, sr, Feature.MANA_TEXT_COLOR);
+            }
+            if (healthBarType == Feature.BarType.TEXT
+                    || healthBarType == Feature.BarType.BAR_TEXT) {
+                drawText(Feature.HEALTH_TEXT, scaleMultiplier, mc, sr, Feature.HEALTH_TEXT_COLOR);
             }
         }
         GlStateManager.popMatrix();
+        GlStateManager.enableBlend();
+        mc.getTextureManager().bindTexture(Gui.optionsBackground);
     }
 
     private void drawBar(Feature feature, float scaleMultiplier, Minecraft mc, ScaledResolution sr, Feature colorFeature) {
+        drawBar(feature, scaleMultiplier, mc, sr, colorFeature, null);
+    }
+
+    public void drawBar(Feature feature, float scaleMultiplier, Minecraft mc, ScaledResolution sr, Feature colorFeature, ButtonLocation buttonLocation) {
+        GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         short barWidth = 92;
         float fill;
         if (feature == Feature.MANA_BAR) {
@@ -300,13 +346,46 @@ public class PlayerListener {
         int filled = (int) (fill * barWidth);
         int top = (int) (y * sr.getScaledHeight()) + 10;
         int textureY = main.getConfigValues().getColor(colorFeature).ordinal()*10;
-        mc.ingameGUI.drawTexturedModalRect(left*scaleMultiplier-60, top*scaleMultiplier-10, 0, textureY, barWidth, 5);
-        if (filled > 0) {
-            mc.ingameGUI.drawTexturedModalRect(left*scaleMultiplier-60, top*scaleMultiplier-10, 0, textureY+5, filled, 5);
+        if (buttonLocation == null) {
+            mc.ingameGUI.drawTexturedModalRect(left * scaleMultiplier - 60, top * scaleMultiplier - 10, 0, textureY, barWidth, 5);
+            if (filled > 0) {
+                mc.ingameGUI.drawTexturedModalRect(left * scaleMultiplier - 60, top * scaleMultiplier - 10, 0, textureY + 5, filled, 5);
+            }
+        } else {
+            buttonLocation.drawTexturedModalRect(left * scaleMultiplier - 60, top * scaleMultiplier - 10, 0, textureY, barWidth, 5);
+            if (filled > 0) {
+                buttonLocation.drawTexturedModalRect(left * scaleMultiplier - 60, top * scaleMultiplier - 10, 0, textureY+5, filled, 5);
+            }
         }
     }
 
-    private void drawText(Feature feature, float scaleMultiplier, Minecraft mc, ScaledResolution sr, Feature colorFeature) {
+    public void drawIcon(float scale, Minecraft mc, ScaledResolution sr, ButtonLocation buttonLocation) {
+        GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+        float x;
+        float y;
+        CoordsPair coordsPair = main.getConfigValues().getCoords(Feature.DEFENCE_ICON);
+        x = coordsPair.getX();
+        y = coordsPair.getY();
+        int left = (int) (x * sr.getScaledWidth());
+        int top = (int) (y * sr.getScaledHeight());
+        float scaleMultiplier;
+        if (buttonLocation == null) {
+            float newScale = scale*1.5F;
+            scaleMultiplier = 1F/newScale;
+            GlStateManager.pushMatrix();
+            GlStateManager.scale(newScale, newScale, 1);
+            scaleMultiplier/=scale;
+            mc.ingameGUI.drawTexturedModalRect(left*scaleMultiplier, top* scaleMultiplier, 34, 9, 9, 9);
+            GlStateManager.popMatrix();
+        } else {
+            scale *= (scale/1.5);
+            scaleMultiplier = 1F/scale;
+            buttonLocation.drawTexturedModalRect(left*scaleMultiplier, top*scaleMultiplier, 34, 9, 9, 9);
+        }
+    }
+
+    public void drawText(Feature feature, float scaleMultiplier, Minecraft mc, ScaledResolution sr, Feature colorFeature) {
+        GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         int color = main.getConfigValues().getColor(colorFeature).getColor(255);
         String text;
         float textX;
@@ -335,23 +414,29 @@ public class PlayerListener {
             BigDecimal bigDecimal = new BigDecimal(percentage).setScale(1, BigDecimal.ROUND_HALF_UP);
             text = bigDecimal.toString()+"%";
         }
-        int x = (int) (textX * sr.getScaledWidth()) + 60 - mc.ingameGUI.getFontRenderer().getStringWidth(text) / 2;
+        int x = (int) (textX * sr.getScaledWidth()) + 60 - mc.fontRendererObj.getStringWidth(text) / 2;
         int y = (int) (textY * sr.getScaledHeight()) + 4;
         x+=25;
         y+=10;
-        mc.ingameGUI.getFontRenderer().drawString(text, (int)(x*scaleMultiplier)-60+1, (int)(y*scaleMultiplier)-10, 0);
-        mc.ingameGUI.getFontRenderer().drawString(text, (int)(x*scaleMultiplier)-60-1, (int)(y*scaleMultiplier)-10, 0);
-        mc.ingameGUI.getFontRenderer().drawString(text, (int)(x*scaleMultiplier)-60, (int)(y*scaleMultiplier)+1-10, 0);
-        mc.ingameGUI.getFontRenderer().drawString(text, (int)(x*scaleMultiplier)-60, (int)(y*scaleMultiplier)-1-10, 0);
-        mc.ingameGUI.getFontRenderer().drawString(text, (int)(x*scaleMultiplier)-60, (int)(y*scaleMultiplier)-10, color);
+//        mc.fontRendererObj.drawString(text, (int)(x*scaleMultiplier)-60+1, (int)(y*scaleMultiplier)-10, 0);
+//        mc.fontRendererObj.drawString(text, (int)(x*scaleMultiplier)-60-1, (int)(y*scaleMultiplier)-10, 0);
+//        mc.fontRendererObj.drawString(text, (int)(x*scaleMultiplier)-60, (int)(y*scaleMultiplier)+1-10, 0);
+//        mc.fontRendererObj.drawString(text, (int)(x*scaleMultiplier)-60, (int)(y*scaleMultiplier)-1-10, 0);
+//        mc.fontRendererObj.drawString(text, (int)(x*scaleMultiplier)-60, (int)(y*scaleMultiplier)-10, color);
+        mc.ingameGUI.drawString(mc.fontRendererObj, text, (int)(x*scaleMultiplier)-60, (int)(y*scaleMultiplier)-10, color);
     }
 
     @SubscribeEvent()
     public void onRenderRemoveBars(RenderGameOverlayEvent.Pre e) {
         if (e.type == RenderGameOverlayEvent.ElementType.ALL) {
-            if (main.getUtils().isOnSkyblock() && !main.getConfigValues().getDisabledFeatures().contains(Feature.HIDE_FOOD_ARMOR_BAR)) {
-                GuiIngameForge.renderFood = false;
-                GuiIngameForge.renderArmor = false;
+            if (main.getUtils().isOnSkyblock()) {
+                if (!main.getConfigValues().getDisabledFeatures().contains(Feature.HIDE_FOOD_ARMOR_BAR)) {
+                    GuiIngameForge.renderFood = false;
+                    GuiIngameForge.renderArmor = false;
+                }
+                if (!main.getConfigValues().getDisabledFeatures().contains(Feature.HIDE_HEALTH_BAR)) {
+                    GuiIngameForge.renderHealth = false;
+                }
             }
         }
     }
@@ -394,30 +479,6 @@ public class PlayerListener {
                     main.getUtils().checkUpdates();
                     sentUpdate = true;
                 }
-//                if (mc != null && mc.theWorld != null && mc.thePlayer != null) {
-//                    for (Entity entity : mc.theWorld.loadedEntityList) {
-//                        if (entity instanceof EntityOtherPlayerMP && entity.getDistanceToEntity(mc.thePlayer) < 5) {
-//                            EntityOtherPlayerMP p = (EntityOtherPlayerMP)entity;
-//                            System.out.println(p.posX);
-//                            System.out.println(p.posY);
-//                            System.out.println(p.posZ);
-//                            boolean foundEntity = false;
-//                            for (NetworkPlayerInfo networkPlayerInfo : mc.thePlayer.sendQueue.getPlayerInfoMap()) {
-//                                if (networkPlayerInfo.getPlayerTeam() != null) { //networkPlayerInfo.getDisplayName().getUnformattedText().equals(entity.getName())
-////                                    System.out.println(networkPlayerInfo.getPlayerTeam());
-//                                    foundEntity = true;
-//                                } else {
-//                                    System.out.println("true");
-//                                }
-//                            }
-//                            System.out.println(foundEntity);
-//                        EntityOtherPlayerMP entityOtherPlayerMP = (EntityOtherPlayerMP)entity;
-//                        GuiPlayerTabOverlay
-//                        mc.theWorld.tab
-//                        System.out.println(entityOtherPlayerMP.getna);
-//                        }
-//                    }
-//                }
                 manaTick = 1;
             }
         }
@@ -426,12 +487,30 @@ public class PlayerListener {
     // Addition by Michael#3549
     @SubscribeEvent
     public void onEntityEvent(LivingEvent.LivingUpdateEvent e) {
-        if (main.getUtils().getLocation() == Feature.Location.ISLAND && !main.getConfigValues().getDisabledFeatures().contains(Feature.MINION_STOP_WARNING)) {
+        if (main.getUtils().getLocation() == Feature.Location.ISLAND) {
             Entity entity = e.entity;
             if (entity instanceof EntityArmorStand && entity.hasCustomName()) {
-                if (entity.getCustomNameTag().startsWith("\u00A7cI can\'t reach any ")) {
+                int cooldown = main.getConfigValues().getWarningSeconds()*1000+5000;
+                if (!main.getConfigValues().getDisabledFeatures().contains(Feature.MINION_FULL_WARNING) &&
+                        entity.getCustomNameTag().equals("\u00A7cMy storage is full! :(")) {
                     long now = System.currentTimeMillis();
-                    if (now - lastMinionSound > 5000) {
+                    if (now - lastMinionSound > cooldown) { //this just spams message...
+                        lastMinionSound = now;
+                        EntityPlayerSP p = Minecraft.getMinecraft().thePlayer;
+                        p.playSound("random.pop", 1, 1);
+                        main.getPlayerListener().setSubtitleFeature(Feature.MINION_FULL_WARNING);
+                        main.getPlayerListener().setSubtitleWarning(true);
+                        new Timer().schedule(new TimerTask() {
+                            @Override
+                            public void run() {
+                                main.getPlayerListener().setSubtitleWarning(false);
+                            }
+                        }, main.getConfigValues().getWarningSeconds() * 1000);
+                    }
+                } else if (!main.getConfigValues().getDisabledFeatures().contains(Feature.MINION_STOP_WARNING) &&
+                        entity.getCustomNameTag().startsWith("\u00A7cI can\'t reach any ")) {
+                    long now = System.currentTimeMillis();
+                    if (now - lastMinionSound > cooldown) {
                         lastMinionSound = now;
                         EntityPlayerSP p = Minecraft.getMinecraft().thePlayer;
                         p.playSound("random.orb", 1, 1);
@@ -439,7 +518,15 @@ public class PlayerListener {
                         if (mobName.lastIndexOf("s") == mobName.length() - 1) {
                             mobName = mobName.substring(0, mobName.length() - 1);
                         }
-                        p.addChatMessage(new ChatComponentText(EnumChatFormatting.RED + "A " + mobName + " minion cannot reach and has stopped spawning!"));
+                        cannotReachMobName = mobName;
+                        main.getPlayerListener().setSubtitleFeature(Feature.MINION_STOP_WARNING);
+                        main.getPlayerListener().setSubtitleWarning(true);
+                        new Timer().schedule(new TimerTask() {
+                            @Override
+                            public void run() {
+                                main.getPlayerListener().setSubtitleWarning(false);
+                            }
+                        }, main.getConfigValues().getWarningSeconds() * 1000);
                     }
                 }
             }
@@ -448,7 +535,7 @@ public class PlayerListener {
 
     @SubscribeEvent()
     public void onTickMagmaBossChecker(TickEvent.ClientTickEvent e) {
-        if (e.phase == TickEvent.Phase.START && !main.getConfigValues().getDisabledFeatures().contains(Feature.MAGMA_WARNING)) {
+        if (e.phase == TickEvent.Phase.START && !main.getConfigValues().getDisabledFeatures().contains(Feature.MAGMA_WARNING) && main.getUtils().isOnSkyblock()) {
             Minecraft mc = Minecraft.getMinecraft();
             if (mc != null && mc.thePlayer != null) {
                 if ((lastBoss == -1 || System.currentTimeMillis() - lastBoss > 1800000) && soundTick % 5 == 0) {
@@ -458,12 +545,13 @@ public class PlayerListener {
                             int size = magma.getSlimeSize();
                             if (size > 10) { // Find a big magma boss
                                 lastBoss = System.currentTimeMillis();
-                                bossWarning = true; // Enable warning and disable again in four seconds.
+                                titleFeature = Feature.MAGMA_WARNING;
+                                titleWarning = true; // Enable warning and disable again in four seconds.
                                 soundTick = 16; // so the sound plays instantly
                                 new Timer().schedule(new TimerTask() {
                                     @Override
                                     public void run() {
-                                        bossWarning = false;
+                                        titleWarning = false;
                                     }
                                 }, main.getConfigValues().getWarningSeconds()*1000); // 4 second warning.
 //                                logServer(mc);
@@ -471,7 +559,7 @@ public class PlayerListener {
                         }
                     }
                 }
-                if (bossWarning && soundTick % 4 == 0) { // Play sound every 4 ticks or 1/5 second.
+                if (titleWarning && titleFeature == Feature.MAGMA_WARNING && soundTick % 4 == 0) { // Play sound every 4 ticks or 1/5 second.
                     mc.thePlayer.playSound("random.orb", 1, 0.5F);
                 }
             }
@@ -487,17 +575,26 @@ public class PlayerListener {
         if (openMainGUI) {
             Minecraft.getMinecraft().displayGuiScreen(new SkyblockAddonsGui(main));
             openMainGUI = false;
-        } else if (openSettingsGUI) {
-            Minecraft.getMinecraft().displayGuiScreen(new SettingsGui(main));
-            openSettingsGUI = false;
         }
     }
 
-    public boolean isBossWarning() {
-        return bossWarning;
+    public void setTitleWarning(boolean titleWarning) {
+        this.titleWarning = titleWarning;
     }
 
-//    @SubscribeEvent()
+    public void setTitleFeature(Feature titleFeature) {
+        this.titleFeature = titleFeature;
+    }
+
+    public boolean isTitleWarning() {
+        return titleWarning;
+    }
+
+    private void setSubtitleFeature(Feature subtitleFeature) {
+        this.subtitleFeature = subtitleFeature;
+    }
+
+    //    @SubscribeEvent() // apparently the music disc is random so cant use it
 //    public void onPlaySound(PlaySoundEvent e) {
 //        if (main.getUtils().getLocation() == Feature.Location.BLAZING_FORTRESS && e.sound.getSoundLocation().getResourcePath().equals("records.13")) {
 ////            magmaTime
@@ -508,16 +605,8 @@ public class PlayerListener {
         this.openMainGUI = openMainGUI;
     }
 
-    public void setOpenSettingsGUI(boolean openSettingsGUI) {
-        this.openSettingsGUI = openSettingsGUI;
-    }
-
-    public void setFullInventoryWarning(boolean fullInventoryWarning) {
-        this.fullInventoryWarning = fullInventoryWarning;
-    }
-
-    public boolean isFullInventoryWarning() {
-        return fullInventoryWarning;
+    private void setSubtitleWarning(boolean subtitleWarning) {
+        this.subtitleWarning = subtitleWarning;
     }
 
     public long getLastWorldJoin() {

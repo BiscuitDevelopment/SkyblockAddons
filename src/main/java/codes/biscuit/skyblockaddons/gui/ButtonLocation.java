@@ -6,7 +6,6 @@ import codes.biscuit.skyblockaddons.utils.ConfigColor;
 import codes.biscuit.skyblockaddons.utils.CoordsPair;
 import codes.biscuit.skyblockaddons.utils.Feature;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
@@ -21,8 +20,8 @@ public class ButtonLocation extends GuiButton {
     private int boxYTwo;
     private float scaleMultiplier;
 
-    ButtonLocation(int buttonId, SkyblockAddons main, int width, int height, Feature feature) {
-        super(buttonId, 0, 0, null);
+    ButtonLocation(SkyblockAddons main, int width, int height, Feature feature) {
+        super(-1, 0, 0, null);
         this.main = main;
         this.feature = feature;
         this.width = width;
@@ -37,19 +36,16 @@ public class ButtonLocation extends GuiButton {
             scaleMultiplier = 1F/scale;
             GlStateManager.pushMatrix();
             GlStateManager.scale(scale, scale, 1);
-            if (feature == Feature.MANA_BAR) {
-                CoordsPair coordsPair = main.getConfigValues().getCoords(Feature.MANA_BAR);
+            if (feature == Feature.MANA_BAR || feature == Feature.HEALTH_BAR) {
+                mc.getTextureManager().bindTexture(PlayerListener.BARS);
+                CoordsPair coordsPair = main.getConfigValues().getCoords(feature);
                 float x = coordsPair.getX();
                 float y = coordsPair.getY();
                 xPosition = (int) (x * sr.getScaledWidth());
                 yPosition = (int) (y * sr.getScaledHeight());
                 short barWidth = 92;
-
-                float manaFill = (float) 123 / 321;
                 int left = (int) (x * sr.getScaledWidth()) + 14;
-                int filled = (int) (manaFill * barWidth);
                 int top = (int) (y * sr.getScaledHeight()) + 10;
-
                 float barX = left*scaleMultiplier-60;
                 float barY = top*scaleMultiplier-10;
 
@@ -65,15 +61,10 @@ public class ButtonLocation extends GuiButton {
                 int boxColor = ConfigColor.GRAY.getColor(boxAlpha);
                 drawRect(boxXOne, boxYOne,
                         boxXTwo, boxYTwo, boxColor);
-
-                mc.getTextureManager().bindTexture(PlayerListener.MANA_BARS);
-                GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-                GlStateManager.disableBlend();
-                int textureY = main.getConfigValues().getColor(Feature.MANA_BAR_COLOR).ordinal()*10;
-                drawTexturedModalRect(barX, barY, 0, textureY, barWidth, 5);
-                if (filled > 0) {
-                    drawTexturedModalRect(barX, barY, 0, textureY+5, filled, 5);
-                }
+                Feature colorFeature = null;
+                if (feature == Feature.MANA_BAR) colorFeature = Feature.MANA_BAR_COLOR;
+                else if (feature == Feature.HEALTH_BAR) colorFeature = Feature.HEALTH_BAR_COLOR;
+                main.getPlayerListener().drawBar(feature, scaleMultiplier, mc, sr, colorFeature, this);
             } else if (feature == Feature.SKELETON_BAR) {
                 CoordsPair coordsPair = main.getConfigValues().getCoords(Feature.SKELETON_BAR);
                 xPosition = (int) (coordsPair.getX() * sr.getScaledWidth());
@@ -81,7 +72,7 @@ public class ButtonLocation extends GuiButton {
 
                 int barX = (int)(xPosition*scaleMultiplier);
                 int barY = (int)((yPosition+2)*scaleMultiplier);
-//
+
                 boxXOne = barX-3;
                 boxXTwo = barX+48;
                 boxYOne = barY-3;
@@ -95,10 +86,11 @@ public class ButtonLocation extends GuiButton {
                 int boxColor = ConfigColor.GRAY.getColor(boxAlpha);
                 drawRect(boxXOne, boxYOne, boxXTwo, boxYTwo, boxColor);
                 for (int boneCounter = 0; boneCounter < 3; boneCounter++) {
-                    mc.getRenderItem().renderItemIntoGUI(PlayerListener.BONE, (int)((xPosition+boneCounter*15*scale)*scaleMultiplier), barY);
+                    mc.getRenderItem().renderItemIntoGUI(PlayerListener.BONE_ITEM, (int)((xPosition+boneCounter*15*scale)*scaleMultiplier), barY);
                 }
-            } else if (feature == Feature.MANA_TEXT) {
-                CoordsPair coordsPair = main.getConfigValues().getCoords(Feature.MANA_TEXT);
+            } else if (feature == Feature.MANA_TEXT || feature == Feature.HEALTH_TEXT ||
+                    feature == Feature.DEFENCE_TEXT || feature == Feature.DEFENCE_PERCENTAGE) {
+                CoordsPair coordsPair = main.getConfigValues().getCoords(feature);
                 float coordX = coordsPair.getX();
                 float coordsY = coordsPair.getY();
                 xPosition = (int) (coordX * sr.getScaledWidth());
@@ -124,17 +116,43 @@ public class ButtonLocation extends GuiButton {
                 int boxColor = ConfigColor.GRAY.getColor(boxAlpha);
                 drawRect(boxXOne, boxYOne,
                         boxXTwo, boxYTwo, boxColor);
-                GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-                GlStateManager.disableBlend();
-                int color = main.getConfigValues().getColor(Feature.MANA_TEXT_COLOR).getColor(255);
-                FontRenderer fr = mc.fontRendererObj;
-                fr.drawString(text, barX+1, barY-10, 0);
-                fr.drawString(text, barX-1, barY-10, 0);
-                fr.drawString(text, barX, barY+1-10, 0);
-                fr.drawString(text, barX, barY-1-10, 0);
-                fr.drawString(text, barX, barY-10, color);
-                GlStateManager.enableBlend();
-                GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+                Feature colorFeature = null;
+                if (feature == Feature.MANA_TEXT) colorFeature = Feature.MANA_TEXT_COLOR;
+                else if (feature == Feature.HEALTH_TEXT) colorFeature = Feature.HEALTH_TEXT_COLOR;
+                else if (feature == Feature.DEFENCE_TEXT) colorFeature = Feature.DEFENCE_TEXT_COLOR;
+                else if (feature == Feature.DEFENCE_PERCENTAGE) colorFeature = Feature.DEFENCE_PERCENTAGE_COLOR;
+                main.getPlayerListener().drawText(feature, scaleMultiplier, mc, sr, colorFeature);
+            } else if (feature == Feature.DEFENCE_ICON) {
+                mc.getTextureManager().bindTexture(icons);
+                CoordsPair coordsPair = main.getConfigValues().getCoords(feature);
+                float x = coordsPair.getX();
+                float y = coordsPair.getY();
+                xPosition = (int) (x * sr.getScaledWidth());
+                yPosition = (int) (y * sr.getScaledHeight());
+                short barWidth = 9;
+                float barX = xPosition * scaleMultiplier;
+                float barY = yPosition * scaleMultiplier;
+
+                boxXOne = (int) barX - 3;
+                boxXTwo = (int) barX + (int)((barWidth + 7)*(scale));
+                boxYOne = (int) barY - 3;
+                boxYTwo = (int) barY + (int)(16*(scale));
+
+                hovered = mouseX >= boxXOne / scaleMultiplier && mouseY >= boxYOne / scaleMultiplier && mouseX < boxXTwo / scaleMultiplier && mouseY < boxYTwo / scaleMultiplier;
+                int boxAlpha = 100;
+                if (hovered) {
+                    boxAlpha = 170;
+                }
+                int boxColor = ConfigColor.GRAY.getColor(boxAlpha);
+                drawRect(boxXOne, boxYOne,
+                        boxXTwo, boxYTwo, boxColor);
+                scale *= 1.5;
+                GlStateManager.scale(scale,scale,1);
+                scaleMultiplier = 1F/scale;
+                main.getPlayerListener().drawIcon(scale, mc, sr, this);
+                scale /= 1.5;
+                GlStateManager.scale(scale,scale,1);
+                scaleMultiplier = 1F/scale;
             }
             GlStateManager.popMatrix();
         }

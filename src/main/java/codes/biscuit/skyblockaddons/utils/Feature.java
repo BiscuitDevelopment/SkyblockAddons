@@ -19,6 +19,9 @@ public enum Feature {
     SHOW_ENCHANTMENTS_REFORGES(10, ButtonType.REGULAR),
     MINION_STOP_WARNING(11, ButtonType.REGULAR),
     HIDE_AUCTION_HOUSE_PLAYERS(12, ButtonType.REGULAR),
+    HIDE_HEALTH_BAR(13, ButtonType.REGULAR),
+    DISABLE_DOUBLE_DROP_AUTOMATICALLY(14, ButtonType.REGULAR),
+    MINION_FULL_WARNING(15, ButtonType.REGULAR),
 
     MANA_BAR(-1, ButtonType.REGULAR),
     MANA_TEXT(-1, ButtonType.REGULAR),
@@ -32,6 +35,10 @@ public enum Feature {
     CONFIRMATION_COLOR(-1, ButtonType.COLOR),
     MANA_TEXT_COLOR(-1, ButtonType.COLOR),
     MANA_BAR_COLOR(-1, ButtonType.COLOR),
+    HEALTH_BAR_COLOR(-1, ButtonType.COLOR),
+    HEALTH_TEXT_COLOR(-1, ButtonType.COLOR),
+    DEFENCE_TEXT_COLOR(-1, ButtonType.COLOR),
+    DEFENCE_PERCENTAGE_COLOR(-1, ButtonType.COLOR),
 
     WARNING_TIME(-1, ButtonType.NEUTRAL),
 
@@ -133,13 +140,13 @@ public enum Feature {
         }
     }
 
-    public enum Accuracy {
-        RIVERS,
-        BLAZE,
-        MAGMA_CUBES,
-        MUSIC_DISC,
-        SPAWNED,
-    }
+//    public enum Accuracy {
+//        RIVERS,
+//        BLAZE,
+//        MAGMA_CUBES,
+//        MUSIC_DISC,
+//        SPAWNED,
+//    }
 
     public enum InventoryType {
         ENCHANTMENT_TABLE,

@@ -19,7 +19,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.ResourceLocation;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -33,13 +32,9 @@ import java.util.Set;
 import java.util.regex.Pattern;
 
 @Mixin(GuiContainer.class)
-public abstract class MixinGuiContainer extends GuiScreen {
+public class MixinGuiContainer extends GuiScreen {
 
     private ResourceLocation CHEST_GUI_TEXTURE =  new ResourceLocation("textures/gui/container/generic_54.png");
-
-    @Shadow protected abstract void drawItemStack(ItemStack stack, int x, int y, String altText);
-//    @Shadow protected int guiTop;
-
     private EnchantPair reforgeToRender = null;
     private Set<EnchantPair> enchantsToRender = new HashSet<>();
 
@@ -135,8 +130,6 @@ public abstract class MixinGuiContainer extends GuiScreen {
             if (SkyblockAddons.INSTANCE.getConfigValues().getBackpackStyle() == Feature.BackpackStyle.GUI) {
                 this.mc.getTextureManager().bindTexture(CHEST_GUI_TEXTURE);
                 int rows = length/9;
-//                SkyblockAddons.INSTANCE.getUtils().drawBackpackGui(this, x, y, rows);
-//                GuiContainer guiContainer = (GuiContainer)object;
                 GlStateManager.pushMatrix();
                 GlStateManager.translate(0,0,300);
                 drawTexturedModalRect(x, y, 0, 0, 176, rows * 18 + 17);
@@ -180,29 +173,4 @@ public abstract class MixinGuiContainer extends GuiScreen {
             SkyblockAddons.INSTANCE.getUtils().setBackpackToRender(null);
         }
     }
-//    @Inject(method = "drawScreen", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/RenderHelper;disableStandardItemLighting()V",
-//            ordinal = 1, shift = At.Shift.AFTER))
-//    private void drawBackpacks(int mouseX, int mouseY, float partialTicks, CallbackInfo ci) {
-//        BackpackInfo backpackInfo = SkyblockAddons.INSTANCE.getUtils().getBackpackToRender();
-//        if (backpackInfo != null) {
-//            GlStateManager.pushMatrix();
-//            GlStateManager.translate(-guiLeft, -guiTop, 0);
-//            int x = backpackInfo.getX();
-//            int y = backpackInfo.getY();
-//            ItemStack[] items = backpackInfo.getItems();
-//            int length = items.length;
-//            Gui.drawRect(x, y, x + (16 * 9) + 3, y + (16 * (length / 9)) + 3, ConfigColor.DARK_GRAY.getColor(250));
-//            for (int i = 0; i < length; i++) {
-//                ItemStack item = items[i];
-//                if (item != null) {
-//                    int itemX = x + ((i % 9) * 16);
-//                    int itemY = y + ((i / 9) * 16);
-//                    Minecraft.getMinecraft().getRenderItem().renderItemIntoGUI(item, itemX, itemY);
-//                    Minecraft.getMinecraft().getRenderItem().renderItemOverlays(Minecraft.getMinecraft().fontRendererObj, item, itemX, itemY);
-//                }
-//            }
-//            SkyblockAddons.INSTANCE.getUtils().setBackpackToRender(null);
-//            GlStateManager.popMatrix();
-//        }
-//    }
 }

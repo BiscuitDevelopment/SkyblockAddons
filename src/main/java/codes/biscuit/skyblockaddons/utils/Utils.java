@@ -62,7 +62,7 @@ public class Utils {
     }
 
     public void checkIfInventoryIsFull(Minecraft mc, EntityPlayerSP p) {
-        if (!main.getConfigValues().getDisabledFeatures().contains(Feature.FULL_INVENTORY_WARNING)) {
+        if (main.getUtils().isOnSkyblock() && !main.getConfigValues().getDisabledFeatures().contains(Feature.FULL_INVENTORY_WARNING)) {
             for (ItemStack item : p.inventory.mainInventory) {
                 if (item == null) {
                     inventoryIsFull = false;
@@ -73,11 +73,12 @@ public class Utils {
                 inventoryIsFull = true;
                 if (mc.currentScreen == null && System.currentTimeMillis() - main.getPlayerListener().getLastWorldJoin() > 3000) {
                     p.playSound("random.orb", 1, 0.5F);
-                    main.getPlayerListener().setFullInventoryWarning(true);
+                    main.getPlayerListener().setTitleFeature(Feature.FULL_INVENTORY_WARNING);
+                    main.getPlayerListener().setTitleWarning(true);
                     new Timer().schedule(new TimerTask() {
                         @Override
                         public void run() {
-                            main.getPlayerListener().setFullInventoryWarning(false);
+                            main.getPlayerListener().setTitleWarning(false);
                         }
                     }, main.getConfigValues().getWarningSeconds() * 1000);
                 }
@@ -127,7 +128,11 @@ public class Utils {
                         }
                     }
                 }
+            } else {
+                onSkyblock = false;
             }
+        } else {
+            onSkyblock = false;
         }
         location = null;
     }
@@ -161,16 +166,6 @@ public class Utils {
         return Pattern.compile("[^0-9 /]").matcher(text).replaceAll("");
     }
 
-//    public void drawBackpackGui(Object object, int x, int y, int rows) {
-//        GuiContainer guiContainer = (GuiContainer)object;
-//        GlStateManager.pushMatrix();
-//        GlStateManager.translate(0,0,300);
-//        guiContainer.drawTexturedModalRect(x, y, 0, 0, 176, rows * 18 + 17);
-//        guiContainer.drawTexturedModalRect(x, y + rows * 18 + 17, 0, 215, 176, 7);
-//        GlStateManager.popMatrix();
-//        Minecraft.getMinecraft().fontRendererObj.drawString("Medium Backpack", x+8, y + 2, 4210752);
-//    }
-
     public void checkUpdates() {
         new Thread(() -> {
             try {
@@ -179,7 +174,7 @@ public class Utils {
                 connection.setReadTimeout(5000);
                 connection.addRequestProperty("User-Agent", "SkyblockAddons update checker");
                 connection.setDoOutput(true);
-                final BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
                 String currentLine;
                 String newestVersion = "";
                 while ((currentLine = reader.readLine()) != null) {
@@ -224,14 +219,30 @@ public class Utils {
                         thisVersionNumbers.add(i, 0);
                     }
                     if (newestVersionNumbers.get(i) > thisVersionNumbers.get(i)) {
-                        sendMessage(EnumChatFormatting.GRAY.toString() + EnumChatFormatting.STRIKETHROUGH + "--------------" + EnumChatFormatting.GRAY + "[" + EnumChatFormatting.BLUE + EnumChatFormatting.BOLD + " SkyblockAddons " + EnumChatFormatting.GRAY + "]" + EnumChatFormatting.GRAY + EnumChatFormatting.STRIKETHROUGH + "--------------");
-                        ChatComponentText newVersion = new ChatComponentText(EnumChatFormatting.YELLOW+main.getConfigValues().getMessage(ConfigValues.Message.MESSAGE_NEW_VERSION, newestVersion));
-                        newVersion.setChatStyle(newVersion.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://hypixel.net/threads/forge-1-8-9-skyblockaddons-useful-features-for-skyblock.2109217/")));
-                        sendMessage(newVersion);
-                        ChatComponentText discord = new ChatComponentText(EnumChatFormatting.YELLOW+main.getConfigValues().getMessage(ConfigValues.Message.MESSAGE_DISCORD));
-                        discord.setChatStyle(discord.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://discord.gg/PqTAEek")));
-                        sendMessage(discord);
-                        sendMessage(EnumChatFormatting.GRAY.toString() + EnumChatFormatting.STRIKETHROUGH + "---------------------------------------");
+                        String link = "https://hypixel.net/threads/forge-1-8-9-skyblockaddons-useful-features-for-skyblock.2109217/";
+                        try {
+                            url = new URL("https://raw.githubusercontent.com/biscuut/SkyblockAddons/master/updatelink.txt");
+                            connection = url.openConnection();
+                            connection.setReadTimeout(5000);
+                            connection.addRequestProperty("User-Agent", "SkyblockAddons update checker");
+                            connection.setDoOutput(true);
+                            reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                            while ((currentLine = reader.readLine()) != null) {
+                                link = currentLine;
+                            }
+                            reader.close();
+                        } catch (Exception ex) {
+                            ex.printStackTrace();
+                        } finally {
+                            sendMessage(EnumChatFormatting.GRAY.toString() + EnumChatFormatting.STRIKETHROUGH + "--------------" + EnumChatFormatting.GRAY + "[" + EnumChatFormatting.BLUE + EnumChatFormatting.BOLD + " SkyblockAddons " + EnumChatFormatting.GRAY + "]" + EnumChatFormatting.GRAY + EnumChatFormatting.STRIKETHROUGH + "--------------");
+                            ChatComponentText newVersion = new ChatComponentText(EnumChatFormatting.YELLOW+main.getConfigValues().getMessage(ConfigValues.Message.MESSAGE_NEW_VERSION, newestVersion)+"\n");
+                            newVersion.setChatStyle(newVersion.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, link)));
+                            sendMessage(newVersion);
+                            ChatComponentText discord = new ChatComponentText(EnumChatFormatting.YELLOW+main.getConfigValues().getMessage(ConfigValues.Message.MESSAGE_DISCORD));
+                            discord.setChatStyle(discord.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://discord.gg/PqTAEek")));
+                            sendMessage(discord);
+                            sendMessage(EnumChatFormatting.GRAY.toString() + EnumChatFormatting.STRIKETHROUGH + "---------------------------------------");
+                        }
                         break;
                     } else if (thisVersionNumbers.get(i) > newestVersionNumbers.get(i)) {
                         sendMessage(EnumChatFormatting.GRAY.toString() + EnumChatFormatting.STRIKETHROUGH + "--------------" + EnumChatFormatting.GRAY + "[" + EnumChatFormatting.BLUE + EnumChatFormatting.BOLD + " SkyblockAddons " + EnumChatFormatting.GRAY + "]" + EnumChatFormatting.GRAY + EnumChatFormatting.STRIKETHROUGH + "--------------");

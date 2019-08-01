@@ -29,7 +29,7 @@
     "hideDurability": "耐久値を非表示",
     "showEnchantmentsReforges": "エンチャントとリフォージュの内容を表示",
     "minionStopWarning": "ミニオン停止アラート",
-    "hideActionHousePlayers": "Hide Players Near Auction House",
+    "hideAuctionHousePlayers": "Hide Players Near Auction House",
     "healthBar": "Health Bar: %type%",
     "defenceIcon": "Defence Icon: %type%",
     "backpackStyle": "Backpack Style: %style%",

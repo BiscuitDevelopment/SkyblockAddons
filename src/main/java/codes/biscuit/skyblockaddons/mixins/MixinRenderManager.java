@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(RenderManager.class)
-public abstract class MixinRenderManager {
+public class MixinRenderManager {
 
     @Inject(method = "shouldRender", at = @At(value = "HEAD"), cancellable = true)
     private void shouldRenderRedirect(Entity entityIn, ICamera camera, double camX, double camY, double camZ, CallbackInfoReturnable<Boolean> cir) {

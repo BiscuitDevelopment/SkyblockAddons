@@ -29,7 +29,7 @@
     "hideDurability": "Hide Tool Durability",
     "showEnchantmentsReforges": "Enchants & Reforges",
     "minionStopWarning": "\"Minion Cannot Reach\" Warning",
-    "hideActionHousePlayers": "Hide Players Near Auction House",
+    "hideAuctionHousePlayers": "Hide Players Near Auction House",
     "healthBar": "Health Bar: %type%",
     "defenceIcon": "Defence Icon: %type%",
     "backpackStyle": "Backpack Style: %style%",

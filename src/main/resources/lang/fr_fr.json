@@ -29,7 +29,7 @@
     "hideDurability": "Masquer la durabilité des outils",
     "showEnchantmentsReforges": "Enchantement & Reforges",
     "minionStopWarning": "Alerte minion à l'arrêt",
-    "hideActionHousePlayers": "Masquer les joueurs près de la maison de vente aux enchères",
+    "hideAuctionHousePlayers": "Masquer les joueurs près de la maison de vente aux enchères",
     "healthBar": "Barre de vie: %type%",
     "defenceIcon": "Icône de défense: %type%",
     "backpackStyle": "Style du sac à dos: %style%",

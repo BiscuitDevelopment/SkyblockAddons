@@ -29,7 +29,7 @@
     "hideDurability": "Verberg Gereedschap Duurzaamheid",
     "showEnchantmentsReforges": "Betoveringen & Omsmedingen",
     "minionStopWarning": "Handlanger is gestopt Waarschuwing",
-    "hideActionHousePlayers": "Hide Players Near Auction House",
+    "hideAuctionHousePlayers": "Hide Players Near Auction House",
     "healthBar": "Health Bar: %type%",
     "defenceIcon": "Defence Icon: %type%",
     "backpackStyle": "Backpack Style: %style%",

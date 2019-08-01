@@ -5,11 +5,13 @@ public enum Language {
     ARABIC("ar_sa"),
     DUTCH_NETHERLANDS("nl_nl"),
     ENGLISH("en_us"),
+    FINNISH("fi_fi"),
     FRENCH("fr_fr"),
     GERMAN_GERMANY("de_de"),
     HEBREW("he_il"),
     JAPANESE("ja_jp"),
     POLISH("nl_nl"),
+    ROMANIAN("ro_ro"),
     RUSSIAN("ru_ru"),
     SPANISH_MEXICO("es_mx"),
     SPANISH_SPAIN("es_es");
