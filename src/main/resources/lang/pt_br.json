@@ -1,0 +1,70 @@
+{
+  "language": "Português",
+  "settings": {
+    "settings": "Opções",
+    "openSettings": "Abrir Mais Opções",
+    "magmaBossWarning": "Aviso Chefão Magma",
+    "itemDropConfirmation": "Confirmação Para Largar Item",
+    "warningTime": "Duração do Aviso: %time%s",
+    "manaBar": "Barra de Mana: %type%",
+    "barTypes": {
+      "barAndText": "Barra e Texto",
+      "bar": "Barra",
+      "text": "Texto",
+      "off": "Desativado"
+    },
+    "hideSkeletonHatBones": "Esconder Ossos do Capacete Esqueleto",
+    "skeletonHatBonesBar": "Barra de Ossos para Capacete Esqueleto",
+    "hideFoodAndArmor": "Esconder Barra de Fome e Armadura",
+    "fullInventoryWarning": "Aviso de Inventário Cheio",
+    "magmaBossHealthBar": "Barra de Vida do Chefão Magma",
+    "disableEmberRodAbility": "Desativar Bastão de Brasa em Sua Ilha",
+    "warningColor": "Cor do Aviso",
+    "confirmationColor": "Cor da Confirmação",
+    "manaTextColor": "Cor do Texto de Mana",
+    "manaBarColor": "Cor da Barra de Mana",
+    "editLocations": "Editar Posições",
+    "guiScale": "Interface: %scale%",
+    "resetLocations": "Restaurar Posições",
+    "hideDurability": "Esconder Durabilidade de Ferramentas",
+    "showEnchantmentsReforges": "Encantamentos e Reforjadas",
+    "minionStopWarning": "Aviso de \"Criado Não Alcança\"",
+    "hideAuctionHousePlayers": "Esconder Jogadores Perdo de Leilões",
+    "healthBar": "Barra de Vida: %type%",
+    "defenceIcon": "Ícone de Defesa: %type%",
+    "backpackStyle": "Estilo de Mochila: %style%",
+    "styles": {
+      "inventory": "Inventário",
+      "compact": "Compacto"
+    },
+    "iconTypes": {
+      "iconDefenceAndPercentage": "Ícone, Defesa e Porcentagem",
+      "iconAndDefence": "Ícone e Defesa",
+      "iconAndPercentage": "Ícone e Porcentagem",
+      "defenceAndPercentage": "Defesa e Porcentagem",
+      "icon": "Ícone",
+      "defence": "Defesa",
+      "percentage": "Porcentagem",
+      "off": "Desativado"
+    },
+    "showBackpackPreview": "Mostrar Conteúdo de Mochilas",
+    "hideHealthBar": "Esconder Barra de Vida",
+    "healthTextColor": "Cor do Texto de Vida",
+    "healthBarColor": "Cor da Barra de Vida",
+    "defenceTextColor": "Cor do Texto de Defesa",
+    "defencePercentageColor": "Cor da Porcentagem de Defesa",
+    "disableDoubleDropAutomatically": "Disable Double Drop Automatically",
+    "fullMinionWarning": "Aviso de Criado Cheio"
+  },
+  "messages": {
+    "dropConfirmation": "Large este item de novo para confirmar!",
+    "magmaBossWarning": "Cubo de Magma Chefão!",
+    "fullInventory": "Inventário Cheio!",
+    "newVersion": "Uma nova versão, %newestVersion% está disponível. Para baixá-la clique aqui.",
+    "discord": "Quer ver o que mudou? Clique aqui para entrar em meu Discord.",
+    "developmentVersion": "Você está usando uma versão de desenvolvimento: %version%. A versão online mais recente é %newestVersion%",
+    "labymod": "Usuários de Labymod: Esconder Barras de Fome, Armadura e Vida não é compatível.",
+    "minionCannotReach": "Um criado de %type% não alcança e parou de trabalhar!",
+    "minionIsFull": "Um criado em sua ilha está cheio!"
+  }
+}
