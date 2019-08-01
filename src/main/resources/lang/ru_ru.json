@@ -14,7 +14,7 @@
       "off": "Выключено"
     },
     "hideSkeletonHatBones": "Скрыть кости Шлема Скелета",
-    "skeletonHatBonesBar": "Шкала костей Головы Скелета",
+    "skeletonHatBonesBar": "Шкала костей Шлема Скелета",
     "hideFoodAndArmor": "Скрыть полосы Еды и Брони",
     "fullInventoryWarning": "Предупреждения о полном инвентаре",
     "magmaBossHealthBar": "Полоса здоровья Магма Босса",
@@ -30,20 +30,20 @@
     "showEnchantmentsReforges": "Зачарование и Перековка",
     "minionStopWarning": "Предупреждение остановки миньона",
     "hideAuctionHousePlayers": "Прятать игроков у Дома Аукциона",
-    "healthBar": "Полоса здоровья: %type%",
-    "defenceIcon": "Значок брони: %type%",
+    "healthBar": "Полоса Жизни: %type%",
+    "defenceIcon": "Значок Защиты: %type%",
     "backpackStyle": "Стиль рюкзака: %style%",
     "styles": {
       "inventory": "Инвентарь",
       "compact": "Компакт"
     },
     "iconTypes": {
-      "iconDefenceAndPercentage": "Иконка, Броня и Проценты",
-      "iconAndDefence": "Иконка и Броня",
+      "iconDefenceAndPercentage": "Иконка, Защита и Проценты",
+      "iconAndDefence": "Иконка и Защита",
       "iconAndPercentage": "Иконка и Проценты",
-      "defenceAndPercentage": "Броня и Проценты",
+      "defenceAndPercentage": "Защита и Проценты",
       "icon": "Иконка",
-      "defence": "Броня",
+      "defence": "Защита",
       "percentage": "Проценты",
       "off": "Выключено"
     },
@@ -51,8 +51,8 @@
     "hideHealthBar": "Прятать полосу Жизни",
     "healthTextColor": "Цвет текста Жизни",
     "healthBarColor": "Цвет полосы Жизни",
-    "defenceTextColor": "Цвет текста Брони",
-    "defencePercentageColor": "Цвет процентов Брони",
+    "defenceTextColor": "Цвет текста Защиты",
+    "defencePercentageColor": "Цвет процентов Защиты",
     "disableDoubleDropAutomatically": "Отключать двойное выбрасывание автоматически",
     "fullMinionWarning": "Полное предупреждение миньонов"
   },
@@ -63,7 +63,7 @@
     "newVersion": "Новая версия, %newestVersion% доступна. Скачайте её нажав сюда.",
     "discord": "Хотите видеть изменения? Нажмите сюда чтобы присоединиться к моему дискорду.",
     "developmentVersion": "Вы запустили версию находящуюся в разработке: %version%. Последняя онлайн версия: %newestVersion%",
-    "labymod": "Пользователи Labymod: Скрытие полос Еды, Брони и Жизни несовместимо.",
+    "labymod": "Пользователи Labymod: Скрытие полос Еды, Защиты и Жизни несовместимо.",
     "minionCannotReach": "%type% миньон не может достать и перестал спавнить!",
     "minionIsFull": "Миньон на вашем острове заполнен!"
   }
