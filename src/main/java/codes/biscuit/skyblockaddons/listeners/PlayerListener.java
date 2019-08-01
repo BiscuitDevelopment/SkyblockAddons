@@ -145,7 +145,7 @@ public class PlayerListener {
 
     @SubscribeEvent()
     public void onRenderRegular(RenderGameOverlayEvent.Post e) {
-        if (Minecraft.getMinecraft().ingameGUI instanceof GuiIngameForge && main.getUtils().isOnSkyblock()) {
+        if ((!main.isUsingLabymod() || Minecraft.getMinecraft().ingameGUI instanceof GuiIngameForge) && main.getUtils().isOnSkyblock()) {
 //            if (e.type == RenderGameOverlayEvent.ElementType.CROSSHAIRS) {
 //                renderOverlays(e.resolution);
 //                renderWarnings(e.resolution);
