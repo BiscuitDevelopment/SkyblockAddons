@@ -34,8 +34,8 @@
     "defenceIcon": "防禦力樣式: %type%",
     "backpackStyle": "背包樣式: %style%",
     "styles": {
-      "inventory": "玩家背包",
-      "compact": "嚴謹"
+      "inventory": "格狀",
+      "compact": "簡易"
     },
     "iconTypes": {
       "iconDefenceAndPercentage": "圖標, 防禦力, & 百分比",
