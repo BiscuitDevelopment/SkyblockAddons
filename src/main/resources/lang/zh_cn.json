@@ -29,7 +29,7 @@
     "hideDurability": "隐藏物品耐久度",
     "showEnchantmentsReforges": "附魔 & 重铸",
     "minionStopWarning": "\"机器人无法触及生物\"警告",
-    "hideAuctionHousePlayers": "隐藏物品耐久度",
+    "hideAuctionHousePlayers": "隐藏竞标房内玩家",
     "healthBar": "血条样式: %type%",
     "defenceIcon": "防御力样式: %type%",
     "backpackStyle": "背包样式: %style%",
