@@ -97,7 +97,7 @@ public enum Feature {
         }
 
         public String getDisplayText() {
-            return SkyblockAddons.INSTANCE.getConfigValues().getMessage(message);
+            return SkyblockAddons.instance.getConfigValues().getMessage(message);
         }
 
         public BarType getNextType() {
@@ -128,7 +128,7 @@ public enum Feature {
         }
 
         public String getDisplayText() {
-            return SkyblockAddons.INSTANCE.getConfigValues().getMessage(message);
+            return SkyblockAddons.instance.getConfigValues().getMessage(message);
         }
 
         public IconType getNextType() {
@@ -180,7 +180,7 @@ public enum Feature {
         }
 
         public String getDisplayText() {
-            return SkyblockAddons.INSTANCE.getConfigValues().getMessage(message);
+            return SkyblockAddons.instance.getConfigValues().getMessage(message);
         }
 
         public BackpackStyle getNextType() {

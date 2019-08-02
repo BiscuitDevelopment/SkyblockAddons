@@ -42,7 +42,7 @@ public class MixinGuiContainer extends GuiScreen {
             ordinal = 0), locals = LocalCapture.CAPTURE_FAILSOFT)
     private void shouldRenderSaveSlots(Slot slotIn, CallbackInfo ci, int x, int y, ItemStack item, boolean flag, boolean flag1,
                                       ItemStack itemstack1, String s) {
-        SkyblockAddons main = SkyblockAddons.INSTANCE;
+        SkyblockAddons main = SkyblockAddons.instance;
         if (!main.getConfigValues().getDisabledFeatures().contains(Feature.SHOW_ENCHANTMENTS_REFORGES)) {
             Minecraft mc = Minecraft.getMinecraft();
             FontRenderer fr = mc.fontRendererObj;
@@ -115,7 +115,7 @@ public class MixinGuiContainer extends GuiScreen {
 
     @Inject(method = "drawScreen", at = @At(value = "RETURN"))
     private void drawBackpacks(int mouseX, int mouseY, float partialTicks, CallbackInfo ci) {
-        BackpackInfo backpackInfo = SkyblockAddons.INSTANCE.getUtils().getBackpackToRender();
+        BackpackInfo backpackInfo = SkyblockAddons.instance.getUtils().getBackpackToRender();
         if (backpackInfo != null) {
             int x = backpackInfo.getX();
             int y = backpackInfo.getY();
@@ -127,7 +127,7 @@ public class MixinGuiContainer extends GuiScreen {
             GlStateManager.enableRescaleNormal();
             OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, (float)240 / 1.0F, (float)240 / 1.0F);
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-            if (SkyblockAddons.INSTANCE.getConfigValues().getBackpackStyle() == Feature.BackpackStyle.GUI) {
+            if (SkyblockAddons.instance.getConfigValues().getBackpackStyle() == Feature.BackpackStyle.GUI) {
                 this.mc.getTextureManager().bindTexture(CHEST_GUI_TEXTURE);
                 int rows = length/9;
                 GlStateManager.pushMatrix();
@@ -170,7 +170,7 @@ public class MixinGuiContainer extends GuiScreen {
                     }
                 }
             }
-            SkyblockAddons.INSTANCE.getUtils().setBackpackToRender(null);
+            SkyblockAddons.instance.getUtils().setBackpackToRender(null);
         }
     }
 }

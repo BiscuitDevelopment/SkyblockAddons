@@ -20,9 +20,9 @@ public class MixinEntityRenderer {
 
     @Inject(method = "getMouseOver", at = @At(value = "INVOKE", target = "Ljava/util/List;size()I", ordinal = 0), locals = LocalCapture.CAPTURE_FAILSOFT)
     private void intersectsWith(float partialTicks, CallbackInfo ci, Entity entity, double d0, double d1, Vec3 vec3, boolean flag, boolean b, Vec3 vec31, Vec3 vec32, Vec3 vec33, float f, List<Entity> list, double d2, int i) {
-        if (SkyblockAddons.INSTANCE.getUtils().isOnSkyblock()) { // conditions for the invisible zombie that Skeleton hat bones are riding
+        if (SkyblockAddons.instance.getUtils().isOnSkyblock()) { // conditions for the invisible zombie that Skeleton hat bones are riding
             list.removeIf(listEntity -> listEntity instanceof EntityZombie && listEntity.isInvisible() && listEntity.riddenByEntity instanceof EntityItem);
-            if (!SkyblockAddons.INSTANCE.getConfigValues().getDisabledFeatures().contains(Feature.HIDE_AUCTION_HOUSE_PLAYERS)) {
+            if (!SkyblockAddons.instance.getConfigValues().getDisabledFeatures().contains(Feature.HIDE_AUCTION_HOUSE_PLAYERS)) {
                 double auctionX = 17.5;
                 double auctionY = 71;
                 double auctionZ = -78.5;
