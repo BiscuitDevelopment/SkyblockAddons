@@ -2,7 +2,7 @@
   "language": "繁體中文",
   "settings": {
     "settings": "設定",
-    "openSettings": "開啟設定",
+    "openSettings": "更多設定",
     "magmaBossWarning": "熔岩史萊姆王警報",
     "itemDropConfirmation": "確認丟棄物品",
     "warningTime": "警報時間: %time%s",
