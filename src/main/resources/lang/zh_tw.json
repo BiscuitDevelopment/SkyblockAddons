@@ -29,7 +29,7 @@
     "hideDurability": "隱藏物品耐久度",
     "showEnchantmentsReforges": "附魔 & 重鑄",
     "minionStopWarning": "\"機器人無法觸及生物\"警告",
-    "hideAuctionHousePlayers": "隱藏物品耐久度",
+    "hideAuctionHousePlayers": "隱藏競標房內玩家",
     "healthBar": "血條樣式: %type%",
     "defenceIcon": "防禦力樣式: %type%",
     "backpackStyle": "背包樣式: %style%",
@@ -38,12 +38,12 @@
       "compact": "簡易"
     },
     "iconTypes": {
-      "iconDefenceAndPercentage": "圖標, 防禦力, & 百分比",
-      "iconAndDefence": "圖標 & 防禦力",
+      "iconDefenceAndPercentage": "圖標, 文字, & 百分比",
+      "iconAndDefence": "圖標 & 文字",
       "iconAndPercentage": "圖標 & 百分比",
-      "defenceAndPercentage": "防禦力 & 百分比",
+      "defenceAndPercentage": "文字 & 百分比",
       "icon": "圖標",
-      "defence": "防禦力",
+      "defence": "文字",
       "percentage": "百分比",
       "off": "關閉"
     },
@@ -63,7 +63,7 @@
     "newVersion": "新的版本, %newestVersion% 現已上線. 點擊此處以下載。",
     "discord": "想看到有那些改變? 點擊此處以加入我的Discord.",
     "developmentVersion": "你在正使用一個開發版本: %version%. 上一個正式版本為 %newestVersion%",
-    "labymod": "Labymod使用者: 隱藏食物, 裝甲值, 以及血條, 還未完成.",
+    "labymod": "Labymod使用者請注意: 隱藏食物, 裝甲值, 以及血條, 還未完成.",
     "minionCannotReach": "有一個 %type% 機器人無法觸及到生物而停止運作了!",
     "minionIsFull": "有一個機器人因為背包已滿而停止運作了!"
   }
