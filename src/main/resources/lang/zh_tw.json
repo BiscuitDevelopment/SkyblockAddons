@@ -63,7 +63,7 @@
     "newVersion": "新的版本, %newestVersion% 現已上線. 點擊此處以下載.",
     "discord": "想看到有那些改變? 點擊此處以加入我的Discord.",
     "developmentVersion": "你在正使用一個開發版本: %version%. 上一個線上版本為 %newestVersion%",
-    "labymod": "Labymod 使用者: 隱藏食物, 裝甲值, 以及血條, 還未完成.",
+    "labymod": "Labymod使用者: 隱藏食物, 裝甲值, 以及血條, 還未完成.",
     "minionCannotReach": "有一個 %type% 機器人無法觸及到生物而停止運作了!",
     "minionIsFull": "有一個機器人因為背包已滿而停止運作了!"
   }
