@@ -27,11 +27,11 @@ public abstract class MixinGuiScreen {
 
     @Inject(method = "renderToolTip", at = @At(value = "HEAD"), cancellable = true)
     private void shouldRenderRedirect(ItemStack stack, int x, int y, CallbackInfo ci) {
-        if (stack.getItem().equals(Items.skull) && !SkyblockAddons.INSTANCE.getConfigValues().getDisabledFeatures().contains(Feature.SHOW_BACKPACK_PREVIEW)) {
+        if (stack.getItem().equals(Items.skull) && !SkyblockAddons.getInstance().getConfigValues().getDisabledFeatures().contains(Feature.SHOW_BACKPACK_PREVIEW)) {
             Container playerContainer = Minecraft.getMinecraft().thePlayer.openContainer;
-            if (playerContainer instanceof ContainerChest) { // Avoid showing backpack preview in auction house.
+            if (playerContainer instanceof ContainerChest) { // Avoid showing backpack preview in auction stuff.
                 IInventory chest = ((ContainerChest)playerContainer).getLowerChestInventory();
-                if (chest.hasCustomName() && chest.getDisplayName().getUnformattedText().equals("Auctions Browser")) {
+                if (chest.hasCustomName() && chest.getDisplayName().getUnformattedText().contains("Auction")) {
                     return;
                 }
             }
@@ -68,7 +68,7 @@ public abstract class MixinGuiScreen {
                                 ItemStack itemStack = ItemStack.loadItemStackFromNBT(list.getCompoundTagAt(i));
                                 items[i] = itemStack;
                             }
-                            SkyblockAddons.INSTANCE.getUtils().setBackpackToRender(new BackpackInfo(x, y, items, backpack));
+                            SkyblockAddons.getInstance().getUtils().setBackpackToRender(new BackpackInfo(x, y, items, backpack));
                             ci.cancel();
                         } catch (IOException e) {
                             e.printStackTrace();

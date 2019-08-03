@@ -22,6 +22,7 @@ public enum Feature {
     HIDE_HEALTH_BAR(13, ButtonType.REGULAR),
     DISABLE_DOUBLE_DROP_AUTOMATICALLY(14, ButtonType.REGULAR),
     MINION_FULL_WARNING(15, ButtonType.REGULAR),
+    IGNORE_ITEM_FRAME_CLICKS(16, ButtonType.REGULAR),
 
     MANA_BAR(-1, ButtonType.REGULAR),
     MANA_TEXT(-1, ButtonType.REGULAR),
@@ -49,7 +50,9 @@ public enum Feature {
     EDIT_LOCATIONS(-1, ButtonType.SOLID),
     SETTINGS(-1, ButtonType.SOLID),
     RESET_LOCATION(-1, ButtonType.SOLID),
-    BACKPACK_STYLE(-1, ButtonType.SOLID);
+    BACKPACK_STYLE(-1, ButtonType.SOLID),
+    NEXT_PAGE(-1, ButtonType.SOLID),
+    PREVIOUS_PAGE(-1, ButtonType.SOLID);
 
     private int id;
     private ButtonType buttonType;
@@ -97,7 +100,7 @@ public enum Feature {
         }
 
         public String getDisplayText() {
-            return SkyblockAddons.INSTANCE.getConfigValues().getMessage(message);
+            return SkyblockAddons.getInstance().getConfigValues().getMessage(message);
         }
 
         public BarType getNextType() {
@@ -128,7 +131,7 @@ public enum Feature {
         }
 
         public String getDisplayText() {
-            return SkyblockAddons.INSTANCE.getConfigValues().getMessage(message);
+            return SkyblockAddons.getInstance().getConfigValues().getMessage(message);
         }
 
         public IconType getNextType() {
@@ -180,7 +183,7 @@ public enum Feature {
         }
 
         public String getDisplayText() {
-            return SkyblockAddons.INSTANCE.getConfigValues().getMessage(message);
+            return SkyblockAddons.getInstance().getConfigValues().getMessage(message);
         }
 
         public BackpackStyle getNextType() {

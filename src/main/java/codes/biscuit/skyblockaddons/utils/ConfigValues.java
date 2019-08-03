@@ -102,7 +102,7 @@ public class ConfigValues {
                 coordinates.put(Feature.DEFENCE_PERCENTAGE, new CoordsPair(settingsConfig.get("defencePercentageX").getAsFloat(), settingsConfig.get("defencePercentageY").getAsFloat()));
             }
             if (settingsConfig.has("defenceIconX")) {
-                coordinates.put(Feature.DEFENCE_PERCENTAGE, new CoordsPair(settingsConfig.get("defenceIconX").getAsFloat(), settingsConfig.get("defenceIconY").getAsFloat()));
+                coordinates.put(Feature.DEFENCE_ICON, new CoordsPair(settingsConfig.get("defenceIconX").getAsFloat(), settingsConfig.get("defenceIconY").getAsFloat()));
             }
             loadColor("warningColor", Feature.WARNING_COLOR, ConfigColor.RED);
             loadColor("confirmationColor", Feature.CONFIRMATION_COLOR, ConfigColor.RED);
@@ -425,6 +425,9 @@ public class ConfigValues {
         SETTING_DEFENCE_PERCENTAGE_COLOR(MessageObject.SETTING, "defencePercentageColor"),
         SETTING_DISABLE_DOUBLE_DROP(MessageObject.SETTING, "disableDoubleDropAutomatically"),
         SETTING_FULL_MINION(MessageObject.SETTING, "fullMinionWarning"),
+        SETTING_NEXT_PAGE(MessageObject.SETTING, "nextPage"),
+        SETTING_PREVIOUS_PAGE(MessageObject.SETTING, "previousPage"),
+        SETTING_IGNORE_ITEM_FRAME_CLICKS(MessageObject.SETTING, "ignoreItemFrameClicks"),
 
         STYLE_GUI(MessageObject.STYLE, "inventory"),
         STYLE_COMPACT(MessageObject.STYLE, "compact"),

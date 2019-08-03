@@ -1,0 +1,70 @@
+{
+  "language": "Magyar",
+  "settings": {
+    "settings": "Beállítások",
+    "openSettings": "További beállítások megnyitása",
+    "magmaBossWarning": "Magma Boss figyelmeztetés",
+    "itemDropConfirmation": "Tárgy kidobás megerősítése",
+    "warningTime": "Figyelmeztetés időtartama: %time%s",
+    "manaBar": "Mana sáv: %type%",
+    "barTypes": {
+      "barAndText": "Sáv és szöveg",
+      "bar": "Sáv",
+      "text": "Szöveg",
+      "off": "Ki"
+    },
+    "hideSkeletonHatBones": "Skeleton Helmet csontok elrejtése",
+    "skeletonHatBonesBar": "Skeleton Hat csont sáv",
+    "hideFoodAndArmor": "Étel és páncél sáv elrejtése",
+    "fullInventoryWarning": "Teli felszerelés figyelmeztetés",
+    "magmaBossHealthBar": "Magma Boss életerő sáv",
+    "disableEmberRodAbility": "Ember Rod tiltása a szigeten",
+    "warningColor": "Figyelmeztetés színe",
+    "confirmationColor": "Megerősítés színe",
+    "manaTextColor": "Mana szöveg színe",
+    "manaBarColor": "Mana sáv színe",
+    "editLocations": "Helyük szerkesztése",
+    "guiScale": "Gui mérete: %scale%",
+    "resetLocations": "Alapértelmezett helyükre",
+    "hideDurability": "Eszköz viseltéségének elrejtése",
+    "showEnchantmentsReforges": "Enchantok & Reforgok",
+    "minionStopWarning": "\"A minion nem ér el valamit\" figyelmeztetés",
+    "hideActionHousePlayers": "Játékosok elrejtése az aukciósház körül",
+    "healthBar": "Életerő sáv: %type%",
+    "defenceIcon": "Védelem ikon: %type%",
+    "backpackStyle": "Hátizsák stílus: %style%",
+    "styles": {
+      "inventory": "Felszerelés",
+      "compact": "Tömörített"
+    },
+    "iconTypes": {
+      "iconDefenceAndPercentage": "Ikon, védelem és százalék",
+      "iconAndDefence": "Ikon és védelem",
+      "iconAndPercentage": "Ikon és százalék",
+      "defenceAndPercentage": "Védelem és százalék",
+      "icon": "Ikon",
+      "defence": "Védelem",
+      "percentage": "Százalék",
+      "off": "Ki"
+    },
+    "showBackpackPreview": "Hátizsák előnézet mutatása",
+    "hideHealthBar": "Életerő elrejtése",
+    "healthTextColor": "Életerő szöveg színe",
+    "healthBarColor": "Életerő sáv színe",
+    "defenceTextColor": "Védelem szöveg színe",
+    "defencePercentageColor": "Védelem százalék színe",
+    "disableDoubleDropAutomatically": "A dubla kidobás letiltása",
+    "fullMinionWarning": "Teljes minion figyelmeztetés"
+  },
+  "messages": {
+    "dropConfirmation": "Dobd el ezt a tárgyat újra, hogy megerősítsd!",
+    "magmaBossWarning": "Magmakocka Boss!",
+    "fullInventory": "Teli felszerelés!",
+    "newVersion": "Egy új verzió, %newestVersion% elérhető. A letöltéshez kattints ide.",
+    "discord": "Kíváncsi vagy a változtatásokra? Kattints ide, hogy csatlakozz a discordomra.",
+    "developmentVersion": "Jelenleg ez a fejlesztői verzió fut: %version%. A legutóbbi elérhető frissítés %newestVersion%",
+    "labymod": "Labymod felhasznlók: A étel, páncél és életerő sáv elrejtése nem elérhető.",
+    "minionCannotReach": "Az egyik %type% minion nem ér el semmit, ezért nem dolgozik.",
+    "minionIsFull": "A szigeten lévő egyik minion tele van!"
+  }
+}

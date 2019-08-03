@@ -48,13 +48,16 @@
       "off": "Off"
     },
     "showBackpackPreview": "Show Backpack Preview",
-    "hideHealthBar": "Hide Health Bar",
+    "hideHealthBar": "Hide Vanilla Health Bar",
     "healthTextColor": "Health Text Color",
     "healthBarColor": "Health Bar Color",
     "defenceTextColor": "Defence Text Color",
     "defencePercentageColor": "Defence Percentage Color",
     "disableDoubleDropAutomatically": "Disable Double Drop Automatically",
-    "fullMinionWarning": "Full Minion Warning"
+    "fullMinionWarning": "Full Minion Warning",
+    "nextPage": "Next Page",
+    "previousPage": "Previous Page",
+    "ignoreItemFrameClicks": "Ignore Clicks On Item Frames"
   },
   "messages": {
     "dropConfirmation": "Drop this item again to confirm!",

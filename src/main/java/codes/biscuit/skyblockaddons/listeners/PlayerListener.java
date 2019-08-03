@@ -130,7 +130,11 @@ public class PlayerListener {
                         if (showHealth || showDefence) newMessage.append("     ");
                         newMessage.append(manaPart);
                     }
-                    e.message = new ChatComponentText(newMessage.toString());
+                    String returnMessage = newMessage.toString();
+                    if (returnMessage.length() == 0) {
+                        returnMessage = " "; // This is to solve an issue with oof mod, which doesn't check if a string is empty before dealing with it (and it spams chat).
+                    }
+                    e.message = new ChatComponentText(returnMessage);
                     return;
                 } catch (Exception ignored) {}
             }
@@ -152,9 +156,10 @@ public class PlayerListener {
 //            }
             if (e.type == RenderGameOverlayEvent.ElementType.EXPERIENCE) {
                 renderOverlays(e.resolution);
-            } else if (e.type == RenderGameOverlayEvent.ElementType.CHAT) {
                 renderWarnings(e.resolution);
-            }
+            }// else if (e.type == RenderGameOverlayEvent.ElementType.CHAT) {
+            //    renderWarnings(e.resolution);
+            //}
         }
     }
 
@@ -540,6 +545,41 @@ public class PlayerListener {
         }
     }
 
+//    @SubscribeEvent //TODO remove this after
+//    public void RenderWorldLastEvent(RenderWorldLastEvent event)
+//    {
+//        float partialTickTime = event.partialTicks;
+//        EntityPlayerSP player = Minecraft.getMinecraft().thePlayer;
+//        double x = player.lastTickPosX + (player.posX - player.lastTickPosX) * partialTickTime;
+//        double y = player.lastTickPosY + (player.posY - player.lastTickPosY) * partialTickTime;
+//        double z = player.lastTickPosZ + (player.posZ - player.lastTickPosZ) * partialTickTime;
+//
+//        GL11.glPushMatrix();
+//        GL11.glTranslated(-x, -y, -z); //go from cartesian x,y,z coordinates to in-world x,y,z coordinates
+//        GL11.glEnable(GL11.GL_DEPTH_TEST);
+//
+//        double minX = 0 + 0.02;
+//        double maxX = 1 - 0.02;
+//        double maxY = 10 + 0.02;
+//        double minZ = 0 + 0.02;
+//        double maxZ = 1 - 0.02;
+//
+//        //render an "X" using 2 lines at (0, 10, 0) in game
+//        GL11.glBegin(GL11.GL_QUADS); //begin drawing lines defined by 2 vertices
+//
+//        GL11.glColor4f(1f, 0, 0, 1f); //alpha must be > 0.1
+//        GL11.glVertex3d(maxX, maxY, maxZ);
+//        GL11.glVertex3d(minX, maxY, minZ);
+//        GL11.glVertex3d(maxX, maxY, minZ);
+//        GL11.glVertex3d(minX, maxY, maxZ);
+//
+//        GL11.glEnd();
+//
+//        //cleanup
+//        GL11.glEnable(GL11.GL_TEXTURE_2D);
+//        GL11.glPopMatrix();
+//    }
+
     @SubscribeEvent()
     public void onTickMagmaBossChecker(TickEvent.ClientTickEvent e) {
         if (e.phase == TickEvent.Phase.START && !main.getConfigValues().getDisabledFeatures().contains(Feature.MAGMA_WARNING) && main.getUtils().isOnSkyblock()) {
@@ -580,7 +620,7 @@ public class PlayerListener {
     @SubscribeEvent()
     public void onRender(TickEvent.RenderTickEvent e) {
         if (openMainGUI) {
-            Minecraft.getMinecraft().displayGuiScreen(new SkyblockAddonsGui(main));
+            Minecraft.getMinecraft().displayGuiScreen(new SkyblockAddonsGui(main, 1));
             openMainGUI = false;
         }
     }
