@@ -16,7 +16,7 @@
     "hideSkeletonHatBones": "スケルトンヘルメットの骨を非表示",
     "skeletonHatBonesBar": "スケルトンヘルメットの骨のゲージ",
     "hideFoodAndArmor": "食料とアーマーのゲージを非表示",
-    "fullInventoryWarning": "イベントリ満タンアラート",
+    "fullInventoryWarning": "インベントリ満タン時のアラート",
     "magmaBossHealthBar": "マグマボスの体力ゲージ",
     "disableEmberRodAbility": "個人の島でエンバーロッドのアビリティを無効化",
     "warningColor": "アラートの色",
@@ -24,37 +24,37 @@
     "manaTextColor": "マナの文字の色",
     "manaBarColor": "マナゲージの色",
     "editLocations": "位置を変更",
-    "guiScale": "Guiの大きさ: %scale%",
+    "guiScale": "GUIの大きさ: %scale%",
     "resetLocations": "位置を初期化",
     "hideDurability": "耐久値を非表示",
     "showEnchantmentsReforges": "エンチャントとリフォージュの内容を表示",
     "minionStopWarning": "ミニオン停止アラート",
-    "hideAuctionHousePlayers": "Hide Players Near Auction House",
-    "healthBar": "Health Bar: %type%",
-    "defenceIcon": "Defence Icon: %type%",
-    "backpackStyle": "Backpack Style: %style%",
+    "hideAuctionHousePlayers": "オークションハウス付近のプレイヤーを非表示,
+    "healthBar": "体力ゲージ: %type%",
+    "defenceIcon": "防具アイコン: %type%",
+    "backpackStyle": "バックパックの表示: %style%",
     "styles": {
-      "inventory": "Inventory",
-      "compact": "Compact"
+      "inventory": "インベントリ型",
+      "compact": "コンパクト"
     },
     "iconTypes": {
-      "iconDefenceAndPercentage": "Icon, Defence, & Percentage",
-      "iconAndDefence": "Icon & Defence",
-      "iconAndPercentage": "Icon & Percentage",
-      "defenceAndPercentage": "Defence & Percentage",
-      "icon": "Icon",
-      "defence": "Defence",
-      "percentage": "Percentage",
-      "off": "Off"
+      "iconDefenceAndPercentage": "アイコン、防御力、パーセンテージ",
+      "iconAndDefence": "アイコン、防御力",
+      "iconAndPercentage": "アイコン、パーセンテージ",
+      "defenceAndPercentage": "防御力、パーセンテージ",
+      "icon": "アイコン",
+      "defence": "防御力",
+      "percentage": "パーセンテージ",
+      "off": オフ"
     },
-    "showBackpackPreview": "Show Backpack Preview",
-    "hideHealthBar": "Hide Health Bar",
-    "healthTextColor": "Health Text Color",
-    "healthBarColor": "Health Bar Color",
-    "defenceTextColor": "Defence Text Color",
-    "defencePercentageColor": "Defence Percentage Color",
-    "disableDoubleDropAutomatically": "Disable Double Drop Automatically",
-    "fullMinionWarning": "Full Minion Warning"
+    "showBackpackPreview": "バックパックのプレビューを表示",
+    "hideHealthBar": "体力バーを隠す",
+    "healthTextColor": "体力の文字色",
+    "healthBarColor": "体力バーの色",
+    "defenceTextColor": "防御力の文字色",
+    "defencePercentageColor": "防具のパーセンテージの色",
+    "disableDoubleDropAutomatically": "自動的にダブルドロップを無効化",
+    "fullMinionWarning": "ミニオンの上限警告"
   },
   "messages": {
     "dropConfirmation": "落としてもいいのであれば、このアイテムをもう一度ドロップしてください。",
@@ -65,6 +65,6 @@
     "developmentVersion": "現在開発バージョンの %version% を使用しています。リリースされている最新バージョンは %newestVersion% です。",
     "labymod": "Labymodを使用している場合、\"食料とアーマーのゲージを非表示\"の機能は互換性がありません。",
     "minionCannotReach": "%type% ミニオンは上限に達したか、範囲外で敵を倒せないためモブのスポーンを停止しました！!",
-    "minionIsFull": "A minion on your island is full!"
+    "minionIsFull": "いずれかのミニオンのインベントリが埋まっています！"
   }
 }
