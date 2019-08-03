@@ -29,32 +29,32 @@
     "hideDurability": "Ocultar Durabilidad de Herramientas",
     "showEnchantmentsReforges": "Ver Encantamientos y Reforges",
     "minionStopWarning": "Aviso de Detención de Minion",
-    "hideAuctionHousePlayers": "Hide Players Near Auction House",
-    "healthBar": "Health Bar: %type%",
-    "defenceIcon": "Defence Icon: %type%",
-    "backpackStyle": "Backpack Style: %style%",
+    "hideAuctionHousePlayers": "Ocultar Jugadores cerca de la Auction House",
+    "healthBar": "Barra de Vida: %type%",
+    "defenceIcon": "Icono de Defensa: %type%",
+    "backpackStyle": "Estilo de Mochila: %style%",
     "styles": {
-      "inventory": "Inventory",
-      "compact": "Compact"
+      "inventory": "Inventario",
+      "compact": "Compacto"
     },
     "iconTypes": {
-      "iconDefenceAndPercentage": "Icon, Defence, & Percentage",
-      "iconAndDefence": "Icon & Defence",
-      "iconAndPercentage": "Icon & Percentage",
-      "defenceAndPercentage": "Defence & Percentage",
-      "icon": "Icon",
-      "defence": "Defence",
-      "percentage": "Percentage",
-      "off": "Off"
+      "iconDefenceAndPercentage": "Icono, Defensa y Porcentaje",
+      "iconAndDefence": "Icono y Defensa",
+      "iconAndPercentage": "Icono y Porcentaje",
+      "defenceAndPercentage": "Defensa y Porcentaje",
+      "icon": "Icono",
+      "defence": "Defensa",
+      "percentage": "Porcentaje",
+      "off": "Deshabilitado"
     },
-    "showBackpackPreview": "Show Backpack Preview",
-    "hideHealthBar": "Hide Health Bar",
-    "healthTextColor": "Health Text Color",
-    "healthBarColor": "Health Bar Color",
-    "defenceTextColor": "Defence Text Color",
-    "defencePercentageColor": "Defence Percentage Color",
-    "disableDoubleDropAutomatically": "Disable Double Drop Automatically",
-    "fullMinionWarning": "Full Minion Warning"
+    "showBackpackPreview": "Mostrar Preview de la Mochila",
+    "hideHealthBar": "Ocultar Barra de Vida",
+    "healthTextColor": "Color de Texto de Vida",
+    "healthBarColor": "Color de la Barra de Vida",
+    "defenceTextColor": "Color del Texto de Defensa",
+    "defencePercentageColor": "Color del Porcentaje de Defensa",
+    "disableDoubleDropAutomatically": "Deshabilitar Doble Drop Automáticamente",
+    "fullMinionWarning": "Aviso de Minion Lleno"
   },
   "messages": {
     "dropConfirmation": "¡Dropea el Objeto otra vez para soltar!",
@@ -65,6 +65,6 @@
     "developmentVersion": "Estás ejecutando la versión: %version%. La última versión online es %newestVersion%",
     "labymod": "Usuarios de Labymod: Ocultar la Barra de Comida y Armadura Es incompatible.",
     "minionCannotReach": "¡Un minion de tipo %type% No puede alcanzar a ningún mob y ha parado de generar más!",
-    "minionIsFull": "A minion on your island is full!"
+    "minionIsFull": "¡Un Minion en la Isla tiene el Inventario Lleno!"
   }
 }
