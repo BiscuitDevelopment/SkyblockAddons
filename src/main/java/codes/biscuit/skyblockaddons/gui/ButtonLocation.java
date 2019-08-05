@@ -37,7 +37,6 @@ public class ButtonLocation extends GuiButton {
             GlStateManager.pushMatrix();
             GlStateManager.scale(scale, scale, 1);
             if (feature == Feature.MANA_BAR || feature == Feature.HEALTH_BAR) {
-                mc.getTextureManager().bindTexture(PlayerListener.BARS);
                 CoordsPair coordsPair = main.getConfigValues().getCoords(feature);
                 float x = coordsPair.getX();
                 float y = coordsPair.getY();
@@ -123,7 +122,6 @@ public class ButtonLocation extends GuiButton {
                 else if (feature == Feature.DEFENCE_PERCENTAGE) colorFeature = Feature.DEFENCE_PERCENTAGE_COLOR;
                 main.getPlayerListener().drawText(feature, scaleMultiplier, mc, sr, colorFeature);
             } else if (feature == Feature.DEFENCE_ICON) {
-                mc.getTextureManager().bindTexture(icons);
                 CoordsPair coordsPair = main.getConfigValues().getCoords(feature);
                 float x = coordsPair.getX();
                 float y = coordsPair.getY();

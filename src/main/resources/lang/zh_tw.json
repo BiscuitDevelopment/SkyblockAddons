@@ -54,7 +54,12 @@
     "defenceTextColor": "防禦力文字顏色",
     "defencePercentageColor": "防禦力計量條顏色",
     "disableDoubleDropAutomatically": "關閉自動雙重丟棄",
-    "fullMinionWarning": "\"機器人背包空間已滿\"警告"
+    "fullMinionWarning": "\"機器人背包空間已滿\"警告",
+    "nextPage": "Next Page",
+    "previousPage": "Previous Page",
+    "ignoreItemFrameClicks": "Ignore Clicks On Item Frames",
+    "useVanillaTextureDefence": "Use Vanilla Texture For Defence Icon",
+    "showBackpackHoldingShift": "Only Show Backpack When Holding Shift"
   },
   "messages": {
     "dropConfirmation": "再次丟棄此物品以確認!",

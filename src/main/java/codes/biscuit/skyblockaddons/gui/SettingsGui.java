@@ -1,8 +1,8 @@
 package codes.biscuit.skyblockaddons.gui;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.utils.ConfigValues;
 import codes.biscuit.skyblockaddons.utils.Feature;
+import codes.biscuit.skyblockaddons.utils.Message;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
@@ -24,27 +24,29 @@ public class SettingsGui extends GuiScreen {
 
     @Override
     public void initGui() {
-        addButton(height*0.25, ConfigValues.Message.SETTING_WARNING_COLOR, Feature.WARNING_COLOR, 1);
-        addButton(height*0.41, ConfigValues.Message.SETTING_CONFIRMATION_COLOR, Feature.CONFIRMATION_COLOR, 1);
-        addButton(height*0.33, ConfigValues.Message.SETTING_MANA_TEXT_COLOR, Feature.MANA_TEXT_COLOR, 1);
-        addButton(height*0.49, ConfigValues.Message.SETTING_MANA_BAR_COLOR, Feature.MANA_BAR_COLOR, 1);
-        addButton(height*0.25, ConfigValues.Message.SETTING_WARNING_TIME, Feature.WARNING_TIME, 3);
-        addButton(height*0.25, ConfigValues.Message.SETTING_WARNING_COLOR, Feature.WARNING_COLOR, 1);
-        addButton(height*0.41, ConfigValues.Message.SETTING_CONFIRMATION_COLOR, Feature.CONFIRMATION_COLOR, 1);
-        addButton(height*0.33, ConfigValues.Message.SETTING_BACKPACK_STYLE, Feature.BACKPACK_STYLE, 3);
+        addButton(height*0.25, Message.SETTING_WARNING_COLOR, Feature.WARNING_COLOR, 1);
+        addButton(height*0.41, Message.SETTING_CONFIRMATION_COLOR, Feature.CONFIRMATION_COLOR, 1);
+        addButton(height*0.33, Message.SETTING_MANA_TEXT_COLOR, Feature.MANA_TEXT_COLOR, 1);
+        addButton(height*0.49, Message.SETTING_MANA_BAR_COLOR, Feature.MANA_BAR_COLOR, 1);
+        addButton(height*0.25, Message.SETTING_WARNING_TIME, Feature.WARNING_TIME, 3);
+        addButton(height*0.25, Message.SETTING_WARNING_COLOR, Feature.WARNING_COLOR, 1);
+        addButton(height*0.41, Message.SETTING_CONFIRMATION_COLOR, Feature.CONFIRMATION_COLOR, 1);
+        addButton(height*0.33, Message.SETTING_BACKPACK_STYLE, Feature.BACKPACK_STYLE, 3);
 
-        addButton(height*0.25, ConfigValues.Message.SETTING_HEALTH_BAR_COLOR, Feature.HEALTH_BAR_COLOR, 2);
-        addButton(height*0.33, ConfigValues.Message.SETTING_HEALTH_TEXT_COLOR, Feature.HEALTH_TEXT_COLOR, 2);
-        addButton(height*0.41, ConfigValues.Message.SETTING_DEFENCE_TEXT_COLOR, Feature.DEFENCE_TEXT_COLOR, 2);
-        addButton(height*0.49, ConfigValues.Message.SETTING_DEFENCE_PERCENTAGE_COLOR, Feature.DEFENCE_PERCENTAGE_COLOR, 2);
-        addButton(height*0.49, ConfigValues.Message.SETTING_DISABLE_DOUBLE_DROP, Feature.DISABLE_DOUBLE_DROP_AUTOMATICALLY, 3);
+        addButton(height*0.25, Message.SETTING_HEALTH_BAR_COLOR, Feature.HEALTH_BAR_COLOR, 2);
+        addButton(height*0.33, Message.SETTING_HEALTH_TEXT_COLOR, Feature.HEALTH_TEXT_COLOR, 2);
+        addButton(height*0.41, Message.SETTING_DEFENCE_TEXT_COLOR, Feature.DEFENCE_TEXT_COLOR, 2);
+        addButton(height*0.49, Message.SETTING_DEFENCE_PERCENTAGE_COLOR, Feature.DEFENCE_PERCENTAGE_COLOR, 2);
+        addButton(height*0.49, Message.SETTING_DISABLE_DOUBLE_DROP, Feature.DISABLE_DOUBLE_DROP_AUTOMATICALLY, 3);
+        addButton(height*0.57, Message.SETTING_USE_VANILLA_TEXTURE_DEFENCE, Feature.USE_VANILLA_TEXTURE_DEFENCE, 3);
+        addButton(height*0.65, Message.SETTING_SHOW_BACKPACK_HOLDING_SHIFT, Feature.SHOW_BACKPACK_HOLDING_SHIFT, 3);
         addSlider();
         int twoThirds = width/3*2;
         buttonList.add(new ButtonRegular(0, twoThirds, height*0.25, "+", main, Feature.ADD, 20, 20));
     }
 
     private void addSlider() {
-        String text = main.getConfigValues().getMessage(ConfigValues.Message.SETTING_GUI_SCALE, String.valueOf(getRoundedValue(
+        String text = main.getConfigValues().getMessage(Message.SETTING_GUI_SCALE, String.valueOf(getRoundedValue(
                 main.getUtils().denormalizeValue(main.getConfigValues().getGuiScale(), ButtonSlider.VALUE_MIN, ButtonSlider.VALUE_MAX, ButtonSlider.VALUE_STEP))));
         int oneThird = width/3;
         int twoThirds = oneThird*2;
@@ -60,7 +62,7 @@ public class SettingsGui extends GuiScreen {
         return new BigDecimal(String.valueOf(value)).setScale(2, BigDecimal.ROUND_HALF_UP).floatValue();
     }
 
-    private void addButton(double y, ConfigValues.Message message, Feature feature, int collumn) {
+    private void addButton(double y, Message message, Feature feature, int collumn) {
         String text = null;
         if (message != null) {
             text = main.getConfigValues().getMessage(message);
@@ -102,7 +104,7 @@ public class SettingsGui extends GuiScreen {
         float scaleMultiplier = 1F/scale; // Keeps the proportions of the text intact.
         GlStateManager.scale(scale, scale, 1);
         int blue = new Color(189,236,252, alpha*2).getRGB();
-        drawCenteredString(fontRendererObj, main.getConfigValues().getMessage(ConfigValues.Message.SETTING_SETTINGS),
+        drawCenteredString(fontRendererObj, main.getConfigValues().getMessage(Message.SETTING_SETTINGS),
                 (int)(width/2*scaleMultiplier), (int)(height*0.12*scaleMultiplier), blue);
         GlStateManager.popMatrix();
 

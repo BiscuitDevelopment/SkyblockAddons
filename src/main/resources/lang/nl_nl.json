@@ -54,7 +54,12 @@
     "defenceTextColor": "Defence Text Color",
     "defencePercentageColor": "Defence Percentage Color",
     "disableDoubleDropAutomatically": "Disable Double Drop Automatically",
-    "fullMinionWarning": "Full Minion Warning"
+    "fullMinionWarning": "Full Minion Warning",
+    "nextPage": "Next Page",
+    "previousPage": "Previous Page",
+    "ignoreItemFrameClicks": "Ignore Clicks On Item Frames",
+    "useVanillaTextureDefence": "Use Vanilla Texture For Defence Icon",
+    "showBackpackHoldingShift": "Only Show Backpack When Holding Shift"
   },
   "messages": {
     "dropConfirmation": "Laat dit object opnieuw vallen om te Bevestigen!",

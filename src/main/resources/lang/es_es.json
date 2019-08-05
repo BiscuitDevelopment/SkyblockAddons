@@ -54,7 +54,12 @@
     "defenceTextColor": "Color del Texto de Defensa",
     "defencePercentageColor": "Color del Porcentaje de Defensa",
     "disableDoubleDropAutomatically": "Deshabilitar Doble Drop Automáticamente",
-    "fullMinionWarning": "Aviso de Minion Lleno"
+    "fullMinionWarning": "Aviso de Minion Lleno",
+    "nextPage": "Next Page",
+    "previousPage": "Previous Page",
+    "ignoreItemFrameClicks": "Ignore Clicks On Item Frames",
+    "useVanillaTextureDefence": "Use Vanilla Texture For Defence Icon",
+    "showBackpackHoldingShift": "Only Show Backpack When Holding Shift"
   },
   "messages": {
     "dropConfirmation": "¡Dropea el Objeto otra vez para soltar!",

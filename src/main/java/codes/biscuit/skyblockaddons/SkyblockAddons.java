@@ -28,7 +28,7 @@ public class SkyblockAddons {
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent e) {
         instance = this;
-        configValues = new ConfigValues(e.getSuggestedConfigurationFile());
+        configValues = new ConfigValues(this, e.getSuggestedConfigurationFile());
     }
 
     @Mod.EventHandler

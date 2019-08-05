@@ -1,8 +1,8 @@
 package codes.biscuit.skyblockaddons.mixins;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.utils.ConfigValues;
 import codes.biscuit.skyblockaddons.utils.Feature;
+import codes.biscuit.skyblockaddons.utils.Message;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.item.EntityItem;
@@ -31,7 +31,7 @@ public class MixinEntityPlayerSP {
                     lastDrop = System.currentTimeMillis();
                 } else {
                     SkyblockAddons.getInstance().getUtils().sendMessage(main.getConfigValues().getColor(Feature.CONFIRMATION_COLOR).getChatFormatting() +
-                            main.getConfigValues().getMessage(ConfigValues.Message.MESSAGE_DROP_CONFIRMATION));
+                            main.getConfigValues().getMessage(Message.MESSAGE_DROP_CONFIRMATION));
                     lastItem = heldItem;
                     lastDrop = System.currentTimeMillis();
                     cir.setReturnValue(null);

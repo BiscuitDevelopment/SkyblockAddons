@@ -54,7 +54,12 @@
     "defenceTextColor": "Suojaustekstin väri",
     "defencePercentageColor": "Suojausprosentin Väri",
     "disableDoubleDropAutomatically": "Poista käytöstä Kaksoispudotus Automaattisesti",
-    "fullMinionWarning": "Täysi Kätyri Varoitus"
+    "fullMinionWarning": "Täysi Kätyri Varoitus",
+    "nextPage": "Next Page",
+    "previousPage": "Previous Page",
+    "ignoreItemFrameClicks": "Ignore Clicks On Item Frames",
+    "useVanillaTextureDefence": "Use Vanilla Texture For Defence Icon",
+    "showBackpackHoldingShift": "Only Show Backpack When Holding Shift"
   },
   "messages": {
     "dropConfirmation": "Pudota tämä esine uudelleen vahvistaaksesi!",

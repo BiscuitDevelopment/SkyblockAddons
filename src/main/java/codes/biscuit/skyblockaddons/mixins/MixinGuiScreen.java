@@ -27,7 +27,11 @@ public abstract class MixinGuiScreen {
 
     @Inject(method = "renderToolTip", at = @At(value = "HEAD"), cancellable = true)
     private void shouldRenderRedirect(ItemStack stack, int x, int y, CallbackInfo ci) {
-        if (stack.getItem().equals(Items.skull) && !SkyblockAddons.getInstance().getConfigValues().getDisabledFeatures().contains(Feature.SHOW_BACKPACK_PREVIEW)) {
+        SkyblockAddons main = SkyblockAddons.getInstance();
+        if (stack.getItem().equals(Items.skull) && !main.getConfigValues().getDisabledFeatures().contains(Feature.SHOW_BACKPACK_PREVIEW)) {
+            if (!main.getConfigValues().getDisabledFeatures().contains(Feature.SHOW_BACKPACK_HOLDING_SHIFT) && !GuiScreen.isShiftKeyDown()) {
+                return;
+            }
             Container playerContainer = Minecraft.getMinecraft().thePlayer.openContainer;
             if (playerContainer instanceof ContainerChest) { // Avoid showing backpack preview in auction stuff.
                 IInventory chest = ((ContainerChest)playerContainer).getLowerChestInventory();
@@ -65,10 +69,23 @@ public abstract class MixinGuiScreen {
                             int length = list.tagCount();
                             ItemStack[] items = new ItemStack[length];
                             for (int i = 0; i < length; i++) {
-                                ItemStack itemStack = ItemStack.loadItemStackFromNBT(list.getCompoundTagAt(i));
+                                NBTTagCompound item = list.getCompoundTagAt(i);
+                                // This fixes an issue in Hypixel where enchanted potatoes have the wrong id (potato block instead of item).
+                                short itemID = item.getShort("id");
+                                if (itemID == 142 && item.hasKey("tag")) {
+                                    extraAttributes = item.getCompoundTag("tag");
+                                    if (extraAttributes.hasKey("ExtraAttributes")) {
+                                        extraAttributes = extraAttributes.getCompoundTag("ExtraAttributes");
+                                        id = extraAttributes.getString("id");
+                                        if (id.equals("ENCHANTED_POTATO")) {
+                                            item.setShort("id", (short)392);
+                                        }
+                                    }
+                                }
+                                ItemStack itemStack = ItemStack.loadItemStackFromNBT(item);
                                 items[i] = itemStack;
                             }
-                            SkyblockAddons.getInstance().getUtils().setBackpackToRender(new BackpackInfo(x, y, items, backpack));
+                            main.getUtils().setBackpackToRender(new BackpackInfo(x, y, items, backpack));
                             ci.cancel();
                         } catch (IOException e) {
                             e.printStackTrace();

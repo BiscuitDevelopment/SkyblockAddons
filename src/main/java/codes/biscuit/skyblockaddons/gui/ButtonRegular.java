@@ -2,11 +2,11 @@ package codes.biscuit.skyblockaddons.gui;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.utils.ConfigColor;
-import codes.biscuit.skyblockaddons.utils.ConfigValues;
 import codes.biscuit.skyblockaddons.utils.Feature;
+import codes.biscuit.skyblockaddons.utils.Message;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.SoundHandler;
-import net.minecraft.client.gui.*;
+import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.GlStateManager;
 
 import java.awt.*;
@@ -84,13 +84,13 @@ public class ButtonRegular extends GuiButton {
             }
             String originalString = displayString;
             if (feature == Feature.WARNING_TIME) {
-                displayString = main.getConfigValues().getMessage(ConfigValues.Message.SETTING_WARNING_TIME);
+                displayString = main.getConfigValues().getMessage(Message.SETTING_WARNING_TIME);
             } else if (feature == Feature.MANA_BAR) {
-                displayString = main.getConfigValues().getMessage(ConfigValues.Message.SETTING_MANA_BAR);
+                displayString = main.getConfigValues().getMessage(Message.SETTING_MANA_BAR);
             } else if (feature == Feature.HEALTH_BAR) {
-                displayString = main.getConfigValues().getMessage(ConfigValues.Message.SETTING_HEALTH_BAR);
+                displayString = main.getConfigValues().getMessage(Message.SETTING_HEALTH_BAR);
             } else if (feature == Feature.DEFENCE_ICON) {
-                displayString = main.getConfigValues().getMessage(ConfigValues.Message.SETTING_DEFENCE_ICON);
+                displayString = main.getConfigValues().getMessage(Message.SETTING_DEFENCE_ICON);
             }
             float scale = 1;
             int stringWidth = mc.fontRendererObj.getStringWidth(displayString);

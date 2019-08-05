@@ -51,10 +51,11 @@ public class MixinGuiContainer extends GuiScreen {
                     List<String> toolip = item.getTooltip(mc.thePlayer, false);
                     if (toolip.size() > 2) {
                         String enchantLine = toolip.get(2);
+                        String toMatch = enchantLine.split(Pattern.quote("* "))[1];
 //                        String enchant = EnumChatFormatting.YELLOW + enchantLine.split(Pattern.quote("* "))[1];
                         String enchant;
-                        if (main.getUtils().getLockedEnchantment().length() > 0 &&
-                                enchantLine.split(Pattern.quote("* "))[1].toLowerCase().contains(main.getUtils().getLockedEnchantment().toLowerCase())) {
+                        if (main.getUtils().getEnchantmentMatch().size() > 0 &&
+                                main.getUtils().enchantReforgeMatches(toMatch)) {
                             enchant = EnumChatFormatting.RED + enchantLine.split(Pattern.quote("* "))[1];
                         } else {
                             enchant = EnumChatFormatting.YELLOW + enchantLine.split(Pattern.quote("* "))[1];
@@ -75,8 +76,8 @@ public class MixinGuiContainer extends GuiScreen {
                     if (nameParts.length > 2) {
                         String reforge = main.getUtils().stripColor(nameParts[0]);
                         String enchant;
-                        if (main.getUtils().getLockedEnchantment().length() > 0 &&
-                                reforge.toLowerCase().contains(main.getUtils().getLockedEnchantment().toLowerCase())) {
+                        if (main.getUtils().getEnchantmentMatch().size() > 0 &&
+                                main.getUtils().enchantReforgeMatches(reforge)) {
                             enchant = EnumChatFormatting.RED+reforge;
                         } else {
                             enchant = EnumChatFormatting.YELLOW+reforge;

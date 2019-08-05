@@ -54,7 +54,12 @@
     "defenceTextColor": "Cor do Texto de Defesa",
     "defencePercentageColor": "Cor da Porcentagem de Defesa",
     "disableDoubleDropAutomatically": "Desativar Largada Dupla Automaticamente",
-    "fullMinionWarning": "Aviso de Criado Cheio"
+    "fullMinionWarning": "Aviso de Criado Cheio",
+    "nextPage": "Next Page",
+    "previousPage": "Previous Page",
+    "ignoreItemFrameClicks": "Ignore Clicks On Item Frames",
+    "useVanillaTextureDefence": "Use Vanilla Texture For Defence Icon",
+    "showBackpackHoldingShift": "Only Show Backpack When Holding Shift"
   },
   "messages": {
     "dropConfirmation": "Large este item de novo para confirmar!",

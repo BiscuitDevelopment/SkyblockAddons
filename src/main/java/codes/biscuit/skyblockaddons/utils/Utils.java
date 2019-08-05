@@ -29,12 +29,14 @@ import java.util.stream.Collectors;
 
 public class Utils {
 
-    private String lockedEnchantment = "";
+    private Set<String> enchantmentMatch = new HashSet<>();
+    private Set<String> enchantmentExclusion = new HashSet<>();
     private BackpackInfo backpackToRender = null;
     private boolean wearingSkeletonHelmet = false;
     private static boolean onSkyblock = false;
     private Feature.Location location = null;
     private static boolean inventoryIsFull = false;
+    private boolean playingSound = false;
 
     private boolean fadingIn;
 
@@ -72,7 +74,7 @@ public class Utils {
             if (!inventoryIsFull) {
                 inventoryIsFull = true;
                 if (mc.currentScreen == null && System.currentTimeMillis() - main.getPlayerListener().getLastWorldJoin() > 3000) {
-                    p.playSound("random.orb", 1, 0.5F);
+                    main.getUtils().playSound("random.orb", 0.5);
                     main.getPlayerListener().setTitleFeature(Feature.FULL_INVENTORY_WARNING);
                     main.getPlayerListener().setTitleWarning(true);
                     new Timer().schedule(new TimerTask() {
@@ -166,6 +168,10 @@ public class Utils {
         return Pattern.compile("[^0-9 /]").matcher(text).replaceAll("");
     }
 
+    String removeDuplicateSpaces(String text) {
+        return text.replaceAll("\\s+", " ");
+    }
+
     public void checkUpdates() {
         new Thread(() -> {
             try {
@@ -235,10 +241,10 @@ public class Utils {
                             ex.printStackTrace();
                         } finally {
                             sendMessage(EnumChatFormatting.GRAY.toString() + EnumChatFormatting.STRIKETHROUGH + "--------------" + EnumChatFormatting.GRAY + "[" + EnumChatFormatting.BLUE + EnumChatFormatting.BOLD + " SkyblockAddons " + EnumChatFormatting.GRAY + "]" + EnumChatFormatting.GRAY + EnumChatFormatting.STRIKETHROUGH + "--------------");
-                            ChatComponentText newVersion = new ChatComponentText(EnumChatFormatting.YELLOW+main.getConfigValues().getMessage(ConfigValues.Message.MESSAGE_NEW_VERSION, newestVersion)+"\n");
+                            ChatComponentText newVersion = new ChatComponentText(EnumChatFormatting.YELLOW+main.getConfigValues().getMessage(Message.MESSAGE_NEW_VERSION, newestVersion)+"\n");
                             newVersion.setChatStyle(newVersion.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, link)));
                             sendMessage(newVersion);
-                            ChatComponentText discord = new ChatComponentText(EnumChatFormatting.YELLOW+main.getConfigValues().getMessage(ConfigValues.Message.MESSAGE_DISCORD));
+                            ChatComponentText discord = new ChatComponentText(EnumChatFormatting.YELLOW+main.getConfigValues().getMessage(Message.MESSAGE_DISCORD));
                             discord.setChatStyle(discord.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://discord.gg/PqTAEek")));
                             sendMessage(discord);
                             sendMessage(EnumChatFormatting.GRAY.toString() + EnumChatFormatting.STRIKETHROUGH + "---------------------------------------");
@@ -246,7 +252,7 @@ public class Utils {
                         break;
                     } else if (thisVersionNumbers.get(i) > newestVersionNumbers.get(i)) {
                         sendMessage(EnumChatFormatting.GRAY.toString() + EnumChatFormatting.STRIKETHROUGH + "--------------" + EnumChatFormatting.GRAY + "[" + EnumChatFormatting.BLUE + EnumChatFormatting.BOLD + " SkyblockAddons " + EnumChatFormatting.GRAY + "]" + EnumChatFormatting.GRAY + EnumChatFormatting.STRIKETHROUGH + "--------------");
-                        sendMessage(EnumChatFormatting.YELLOW + main.getConfigValues().getMessage(ConfigValues.Message.MESSAGE_DEVELOPMENT_VERSION, SkyblockAddons.VERSION, newestVersion));
+                        sendMessage(EnumChatFormatting.YELLOW + main.getConfigValues().getMessage(Message.MESSAGE_DEVELOPMENT_VERSION, SkyblockAddons.VERSION, newestVersion));
                         sendMessage(EnumChatFormatting.GRAY.toString() + EnumChatFormatting.STRIKETHROUGH + "---------------------------------------");
                         break;
                     }
@@ -260,6 +266,33 @@ public class Utils {
     public int getDefaultColor(float alphaFloat) {
         int alpha = (int)alphaFloat;
         return new Color(150,236,255, alpha).getRGB();
+    }
+
+    public void playSound(String sound, double pitch) {
+        playingSound = true;
+        Minecraft.getMinecraft().thePlayer.playSound(sound, 1, (float)pitch);
+        playingSound = false;
+    }
+
+    public boolean enchantReforgeMatches(String text) {
+        text = text.toLowerCase();
+        for (String enchant : enchantmentMatch) {
+            enchant = enchant.trim().toLowerCase();
+            if (!enchant.equals("") && text.contains(enchant)) {
+                boolean foundExclusion = false;
+                for (String exclusion : enchantmentExclusion) {
+                    exclusion = exclusion.trim().toLowerCase();
+                    if (!exclusion.equals("") && text.contains(exclusion)) {
+                        foundExclusion = true;
+                        break;
+                    }
+                }
+                if (!foundExclusion) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     private final Pattern STRIP_COLOR_PATTERN = Pattern.compile( "(?i)" + '\u00A7' + "[0-9A-FK-OR]" );
@@ -295,11 +328,23 @@ public class Utils {
         this.backpackToRender = backpackToRender;
     }
 
-    public String getLockedEnchantment() {
-        return lockedEnchantment;
+    public Set<String> getEnchantmentExclusion() {
+        return enchantmentExclusion;
     }
 
-    public void setLockedEnchantment(String lockedEnchantment) {
-        this.lockedEnchantment = lockedEnchantment;
+    public Set<String> getEnchantmentMatch() {
+        return enchantmentMatch;
+    }
+
+    public void setEnchantmentExclusion(Set<String> enchantmentExclusion) {
+        this.enchantmentExclusion = enchantmentExclusion;
+    }
+
+    public void setEnchantmentMatch(Set<String> enchantmentMatch) {
+        this.enchantmentMatch = enchantmentMatch;
+    }
+
+    public boolean isPlayingSound() {
+        return playingSound;
     }
 }

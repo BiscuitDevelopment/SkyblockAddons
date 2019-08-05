@@ -54,7 +54,12 @@
     "defenceTextColor": "Couleur du texte de la défense",
     "defencePercentageColor": "Couleur du pourcentage de défense",
     "disableDoubleDropAutomatically": "Désativer la confirmation du jet",
-    "fullMinionWarning": "Alerte minion plein"
+    "fullMinionWarning": "Alerte minion plein",
+    "nextPage": "Next Page",
+    "previousPage": "Previous Page",
+    "ignoreItemFrameClicks": "Ignore Clicks On Item Frames",
+    "useVanillaTextureDefence": "Use Vanilla Texture For Defence Icon",
+    "showBackpackHoldingShift": "Only Show Backpack When Holding Shift"
   },
   "messages": {
     "dropConfirmation": "Jetez cet objet une nouvelle fois pour confirmer!",

@@ -1,8 +1,8 @@
 package codes.biscuit.skyblockaddons.gui;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.utils.ConfigValues;
 import codes.biscuit.skyblockaddons.utils.Feature;
+import codes.biscuit.skyblockaddons.utils.Message;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
@@ -29,32 +29,32 @@ public class SkyblockAddonsGui extends GuiScreen {
     @Override
     public void initGui() {
         if (page == 1) {
-            addButton(getRowHeight(1), ConfigValues.Message.SETTING_MAGMA_BOSS_WARNING, Feature.MAGMA_WARNING, 1);
-            addButton(getRowHeight(1), ConfigValues.Message.SETTING_MAGMA_BOSS_HEALTH_BAR, Feature.MAGMA_BOSS_BAR, 2);
-            addButton(getRowHeight(1), ConfigValues.Message.SETTING_SHOW_BACKPACK_PREVIEW, Feature.SHOW_BACKPACK_PREVIEW, 3);
-            addButton(getRowHeight(2), ConfigValues.Message.SETTING_MANA_BAR, Feature.MANA_BAR, 1);
-            addButton(getRowHeight(2), ConfigValues.Message.SETTING_HEALTH_BAR, Feature.HEALTH_BAR, 2);
-            addButton(getRowHeight(2), ConfigValues.Message.SETTING_DEFENCE_ICON, Feature.DEFENCE_ICON, 3);
-            addButton(getRowHeight(3), ConfigValues.Message.SETTING_SKELETON_HAT_BONES_BAR, Feature.SKELETON_BAR, 1);
-            addButton(getRowHeight(3), ConfigValues.Message.SETTING_HIDE_HEALTH_VAR, Feature.HIDE_HEALTH_BAR, 2);
-            addButton(getRowHeight(3), ConfigValues.Message.SETTING_HIDE_FOOD_AND_ARMOR, Feature.HIDE_FOOD_ARMOR_BAR, 3);
-            addButton(getRowHeight(4), ConfigValues.Message.SETTING_HIDE_SKELETON_HAT_BONES, Feature.HIDE_BONES, 1);
-            addButton(getRowHeight(4), ConfigValues.Message.SETTING_FULL_INVENTORY_WARNING, Feature.FULL_INVENTORY_WARNING, 2);
-            addButton(getRowHeight(4), ConfigValues.Message.SETTING_FULL_MINION, Feature.MINION_FULL_WARNING, 3);
-            addButton(getRowHeight(5), ConfigValues.Message.SETTING_AUCTION_HOUSE_PLAYERS, Feature.HIDE_AUCTION_HOUSE_PLAYERS, 1);
-            addButton(getRowHeight(5), ConfigValues.Message.SETTING_ENCHANTS_AND_REFORGES, Feature.SHOW_ENCHANTMENTS_REFORGES, 2);
-            addButton(getRowHeight(5), ConfigValues.Message.SETTING_HIDE_DURABILITY, Feature.HIDE_DURABILITY, 3);
-            addButton(height * 0.86, ConfigValues.Message.SETTING_EDIT_LOCATIONS, Feature.EDIT_LOCATIONS, 1);
-            addButton(height * 0.86, ConfigValues.Message.SETTING_EDIT_SETTINGS, Feature.SETTINGS, 2);
-            addButton(height * 0.86, ConfigValues.Message.LANGUAGE, Feature.LANGUAGE, 3);
+            addButton(getRowHeight(1), Message.SETTING_MAGMA_BOSS_WARNING, Feature.MAGMA_WARNING, 1);
+            addButton(getRowHeight(1), Message.SETTING_MAGMA_BOSS_HEALTH_BAR, Feature.MAGMA_BOSS_BAR, 2);
+            addButton(getRowHeight(1), Message.SETTING_SHOW_BACKPACK_PREVIEW, Feature.SHOW_BACKPACK_PREVIEW, 3);
+            addButton(getRowHeight(2), Message.SETTING_MANA_BAR, Feature.MANA_BAR, 1);
+            addButton(getRowHeight(2), Message.SETTING_HEALTH_BAR, Feature.HEALTH_BAR, 2);
+            addButton(getRowHeight(2), Message.SETTING_DEFENCE_ICON, Feature.DEFENCE_ICON, 3);
+            addButton(getRowHeight(3), Message.SETTING_SKELETON_HAT_BONES_BAR, Feature.SKELETON_BAR, 1);
+            addButton(getRowHeight(3), Message.SETTING_HIDE_HEALTH_VAR, Feature.HIDE_HEALTH_BAR, 2);
+            addButton(getRowHeight(3), Message.SETTING_HIDE_FOOD_AND_ARMOR, Feature.HIDE_FOOD_ARMOR_BAR, 3);
+            addButton(getRowHeight(4), Message.SETTING_IGNORE_ITEM_FRAME_CLICKS, Feature.IGNORE_ITEM_FRAME_CLICKS, 1);
+            addButton(getRowHeight(4), Message.SETTING_FULL_INVENTORY_WARNING, Feature.FULL_INVENTORY_WARNING, 2);
+            addButton(getRowHeight(4), Message.SETTING_FULL_MINION, Feature.MINION_FULL_WARNING, 3);
+            addButton(getRowHeight(5), Message.SETTING_AUCTION_HOUSE_PLAYERS, Feature.HIDE_AUCTION_HOUSE_PLAYERS, 1);
+            addButton(getRowHeight(5), Message.SETTING_ENCHANTS_AND_REFORGES, Feature.SHOW_ENCHANTMENTS_REFORGES, 2);
+            addButton(getRowHeight(5), Message.SETTING_HIDE_DURABILITY, Feature.HIDE_DURABILITY, 3);
+            addButton(height * 0.86, Message.SETTING_EDIT_LOCATIONS, Feature.EDIT_LOCATIONS, 1);
+            addButton(height * 0.86, Message.SETTING_EDIT_SETTINGS, Feature.SETTINGS, 2);
+            addButton(height * 0.86, Message.LANGUAGE, Feature.LANGUAGE, 3);
 
-            addButton(getRowHeight(6), ConfigValues.Message.SETTING_NEXT_PAGE, Feature.NEXT_PAGE, 2);
+            addButton(getRowHeight(6), Message.SETTING_NEXT_PAGE, Feature.NEXT_PAGE, 2);
         } else if (page == 2) {
-            addButton(getRowHeight(6), ConfigValues.Message.SETTING_PREVIOUS_PAGE, Feature.PREVIOUS_PAGE, 2);
-            addButton(getRowHeight(1), ConfigValues.Message.SETTING_ITEM_DROP_CONFIRMATION, Feature.DROP_CONFIRMATION, 1);
-            addButton(getRowHeight(1), ConfigValues.Message.SETTING_MINION_STOP_WARNING, Feature.MINION_STOP_WARNING, 2);
-            addButton(getRowHeight(1), ConfigValues.Message.SETTING_DISABLE_EMBER_ROD_ABILITY, Feature.DISABLE_EMBER_ROD, 3);
-            addButton(getRowHeight(2), ConfigValues.Message.SETTING_IGNORE_ITEM_FRAME_CLICKS, Feature.IGNORE_ITEM_FRAME_CLICKS, 1);
+            addButton(getRowHeight(6), Message.SETTING_PREVIOUS_PAGE, Feature.PREVIOUS_PAGE, 2);
+            addButton(getRowHeight(1), Message.SETTING_HIDE_SKELETON_HAT_BONES, Feature.HIDE_BONES, 1);
+            addButton(getRowHeight(1), Message.SETTING_MINION_STOP_WARNING, Feature.MINION_STOP_WARNING, 2);
+            addButton(getRowHeight(1), Message.SETTING_DISABLE_EMBER_ROD_ABILITY, Feature.DISABLE_EMBER_ROD, 3);
+            addButton(getRowHeight(2), Message.SETTING_ITEM_DROP_CONFIRMATION, Feature.DROP_CONFIRMATION, 1);
         }
     }
 
@@ -82,19 +82,22 @@ public class SkyblockAddonsGui extends GuiScreen {
         GlStateManager.enableBlend();
 
         if (alpha < 4) alpha = 4; // Text under 4 alpha appear 100% transparent for some reason o.O
-        int defaultBlue = new Color(189,236,252, alpha*2).getRGB();
+        int defaultBlue = getDefaultBlue(alpha*2);
 
         drawScaledString("SkyblockAddons", 0.12, defaultBlue, 2.5F);
         drawScaledString("v" + SkyblockAddons.VERSION + " by Biscut", 0.12, defaultBlue, 1.3, 50, 17);
         if (page == 1) {
-            drawScaledString(main.getConfigValues().getMessage(ConfigValues.Message.SETTING_SETTINGS), 0.8, defaultBlue, 1.5);
+            drawScaledString(main.getConfigValues().getMessage(Message.SETTING_SETTINGS), 0.8, defaultBlue, 1.5);
             if (main.isUsingLabymod() || (boolean) Launch.blackboard.get("fml.deobfuscatedEnvironment")) {
-                drawScaledString(main.getConfigValues().getMessage(ConfigValues.Message.MESSAGE_LABYMOD), 0.75, defaultBlue, 1);
+                drawScaledString(main.getConfigValues().getMessage(Message.MESSAGE_LABYMOD), 0.75, defaultBlue, 1);
             }
         }
         super.drawScreen(mouseX, mouseY, partialTicks); // Draw buttons.
     }
 
+    public static int getDefaultBlue(int alpha) {
+        return new Color(189,236,252, alpha).getRGB();
+    }
 
     @Override
     protected void actionPerformed(GuiButton abstractButton) {
@@ -155,7 +158,7 @@ public class SkyblockAddonsGui extends GuiScreen {
         GlStateManager.popMatrix();
     }
 
-    private void addButton(double y, ConfigValues.Message message, Feature feature, int collumn) {
+    private void addButton(double y, Message message, Feature feature, int collumn) {
         String text = null;
         if (message != null) {
             text = main.getConfigValues().getMessage(message);

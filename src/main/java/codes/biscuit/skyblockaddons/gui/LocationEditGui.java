@@ -1,8 +1,8 @@
 package codes.biscuit.skyblockaddons.gui;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.utils.ConfigValues;
 import codes.biscuit.skyblockaddons.utils.Feature;
+import codes.biscuit.skyblockaddons.utils.Message;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
@@ -36,7 +36,7 @@ public class LocationEditGui extends GuiScreen {
         buttonList.add(new ButtonLocation(main, boxWidth, boxHeight, Feature.DEFENCE_PERCENTAGE));
 
         ScaledResolution scaledResolution = new ScaledResolution(Minecraft.getMinecraft());
-        String text = main.getConfigValues().getMessage(ConfigValues.Message.SETTING_RESET_LOCATIONS);
+        String text = main.getConfigValues().getMessage(Message.SETTING_RESET_LOCATIONS);
         boxWidth = fontRendererObj.getStringWidth(text)+10;
         if (boxWidth > WIDTH_LIMIT) boxWidth = WIDTH_LIMIT;
         int x = scaledResolution.getScaledWidth()/2-boxWidth/2;

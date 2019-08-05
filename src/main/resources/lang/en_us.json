@@ -14,7 +14,7 @@
       "off": "Off"
     },
     "hideSkeletonHatBones": "Hide Skeleton Helmet Bones",
-    "skeletonHatBonesBar": "Skeleton Hat Bones Bar",
+    "skeletonHatBonesBar": "Skeleton Helmet Bones Bar",
     "hideFoodAndArmor": "Hide Food & Armor Bar",
     "fullInventoryWarning": "Full Inventory Warning",
     "magmaBossHealthBar": "Magma Boss Health Bar",
@@ -57,7 +57,9 @@
     "fullMinionWarning": "Full Minion Warning",
     "nextPage": "Next Page",
     "previousPage": "Previous Page",
-    "ignoreItemFrameClicks": "Ignore Clicks On Item Frames"
+    "ignoreItemFrameClicks": "Ignore Clicks On Item Frames",
+    "useVanillaTextureDefence": "Use Vanilla Texture For Defence Icon",
+    "showBackpackHoldingShift": "Only Show Backpack When Holding Shift"
   },
   "messages": {
     "dropConfirmation": "Drop this item again to confirm!",

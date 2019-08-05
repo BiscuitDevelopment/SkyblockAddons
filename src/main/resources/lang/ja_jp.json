@@ -54,7 +54,12 @@
     "defenceTextColor": "防御力の文字色",
     "defencePercentageColor": "防具のパーセンテージの色",
     "disableDoubleDropAutomatically": "自動的にダブルドロップを無効化",
-    "fullMinionWarning": "ミニオンの上限警告"
+    "fullMinionWarning": "ミニオンの上限警告",
+    "nextPage": "Next Page",
+    "previousPage": "Previous Page",
+    "ignoreItemFrameClicks": "Ignore Clicks On Item Frames",
+    "useVanillaTextureDefence": "Use Vanilla Texture For Defence Icon",
+    "showBackpackHoldingShift": "Only Show Backpack When Holding Shift"
   },
   "messages": {
     "dropConfirmation": "落としてもいいのであれば、このアイテムをもう一度ドロップしてください。",

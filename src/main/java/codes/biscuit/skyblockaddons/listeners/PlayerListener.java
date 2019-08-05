@@ -5,12 +5,11 @@ import codes.biscuit.skyblockaddons.gui.ButtonLocation;
 import codes.biscuit.skyblockaddons.gui.ButtonSlider;
 import codes.biscuit.skyblockaddons.gui.LocationEditGui;
 import codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui;
-import codes.biscuit.skyblockaddons.utils.ConfigValues;
 import codes.biscuit.skyblockaddons.utils.CoordsPair;
 import codes.biscuit.skyblockaddons.utils.Feature;
+import codes.biscuit.skyblockaddons.utils.Message;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
-import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
@@ -45,10 +44,10 @@ import static net.minecraft.client.gui.Gui.icons;
 public class PlayerListener {
 
     public final static ItemStack BONE_ITEM = new ItemStack(Item.getItemById(352));
-    public final static ResourceLocation BARS = new ResourceLocation("skyblockaddons", "bars.png");
+    private final static ResourceLocation BARS = new ResourceLocation("skyblockaddons", "bars.png");
+    private final static ResourceLocation DEFENCE_VANILLA = new ResourceLocation("skyblockaddons", "defence.png");
 
     private boolean sentUpdate = false;
-    private boolean predictMana = false;
     private long lastWorldJoin = -1;
     private long lastBoss = -1;
     private int soundTick = 1;
@@ -61,6 +60,8 @@ public class PlayerListener {
     private Feature subtitleFeature = null;
     private Feature titleFeature = null;
 
+    private boolean predictHealth = false;
+    private boolean predictMana = false;
     private int defense = 0;
     private int health = 100;
     private int maxHealth = 100;
@@ -95,42 +96,56 @@ public class PlayerListener {
         if (e.type == 2) {
             if (message.endsWith("\u270E Mana\u00A7r")) {
                 try {
-                    String[] splitMessage = message.split(Pattern.quote("     "));
-                    String healthPart = splitMessage[0];
-                    String defencePart = null;
-                    String manaPart;
-                    if (splitMessage.length > 2) {
-                        defencePart = splitMessage[1];
-                        manaPart = splitMessage[2];
+                    String returnMessage;
+                    if (message.startsWith("\u00A7d\u00A7lTHE END RACE")) { // Might be doing the end race!
+                        // Example Action Bar: '§d§lTHE END RACE §e00:52.370            §b147/147✎ Mana§r'
+                        String[] messageSplit = message.split(" {12}");
+                        String[] manaSplit = main.getUtils().getNumbersOnly(messageSplit[1]).split(Pattern.quote("/"));
+                        mana = Integer.parseInt(manaSplit[0]);
+                        maxMana = Integer.parseInt(manaSplit[1].trim());
+                        predictMana = false;
+                        predictHealth = true;
+                        returnMessage = messageSplit[0];
                     } else {
-                        manaPart = splitMessage[1];
+                        // Example Action Bar: '§c586/586❤     §a247§a❈ Defense     §b173/173✎ Mana§r'
+                        String[] splitMessage = message.split(" {5}");
+                        String healthPart = splitMessage[0];
+                        String defencePart = null;
+                        String manaPart;
+                        if (splitMessage.length > 2) {
+                            defencePart = splitMessage[1];
+                            manaPart = splitMessage[2];
+                        } else {
+                            manaPart = splitMessage[1];
+                        }
+                        String[] healthSplit = main.getUtils().getNumbersOnly(main.getUtils().stripColor(healthPart)).split(Pattern.quote("/"));
+                        health = Integer.parseInt(healthSplit[0]);
+                        maxHealth = Integer.parseInt(healthSplit[1]);
+                        if (defencePart != null) {
+                            defense = Integer.valueOf(main.getUtils().getNumbersOnly(defencePart).trim());
+                        }
+                        String[] manaSplit = main.getUtils().getNumbersOnly(manaPart).split(Pattern.quote("/"));
+                        mana = Integer.parseInt(manaSplit[0]);
+                        maxMana = Integer.parseInt(manaSplit[1].trim());
+                        predictHealth = false;
+                        predictMana = false;
+                        StringBuilder newMessage = new StringBuilder();
+                        boolean showHealth = main.getConfigValues().getHealthBarType() == Feature.BarType.OFF;
+                        boolean showDefence = defencePart != null && main.getConfigValues().getDefenceIconType() == Feature.IconType.OFF;
+                        boolean showMana = main.getConfigValues().getManaBarType() == Feature.BarType.OFF;
+                        if (showHealth) {
+                            newMessage.append(healthPart);
+                        }
+                        if (showDefence) {
+                            if (showHealth) newMessage.append("     ");
+                            newMessage.append(defencePart);
+                        }
+                        if (showMana) {
+                            if (showHealth || showDefence) newMessage.append("     ");
+                            newMessage.append(manaPart);
+                        }
+                        returnMessage = newMessage.toString();
                     }
-                    String[] healthSplit = main.getUtils().getNumbersOnly(main.getUtils().stripColor(healthPart)).split(Pattern.quote("/"));
-                    health = Integer.parseInt(healthSplit[0]);
-                    maxHealth = Integer.parseInt(healthSplit[1]);
-                    if (defencePart != null) {
-                        defense = Integer.valueOf(main.getUtils().getNumbersOnly(defencePart).trim());
-                    }
-                    String[] manaSplit = main.getUtils().getNumbersOnly(manaPart).split(Pattern.quote("/"));
-                    mana = Integer.parseInt(manaSplit[0]);
-                    maxMana = Integer.parseInt(manaSplit[1].trim());
-                    predictMana = false;
-                    StringBuilder newMessage = new StringBuilder();
-                    boolean showHealth = main.getConfigValues().getHealthBarType() == Feature.BarType.OFF;
-                    boolean showDefence = defencePart != null && main.getConfigValues().getDefenceIconType() == Feature.IconType.OFF;
-                    boolean showMana = main.getConfigValues().getManaBarType() == Feature.BarType.OFF;
-                    if (showHealth) {
-                        newMessage.append(healthPart);
-                    }
-                    if (showDefence) {
-                        if (showHealth) newMessage.append("     ");
-                        newMessage.append(defencePart);
-                    }
-                    if (showMana) {
-                        if (showHealth || showDefence) newMessage.append("     ");
-                        newMessage.append(manaPart);
-                    }
-                    String returnMessage = newMessage.toString();
                     if (returnMessage.length() == 0) {
                         returnMessage = " "; // This is to solve an issue with oof mod, which doesn't check if a string is empty before dealing with it (and it spams chat).
                     }
@@ -139,6 +154,7 @@ public class PlayerListener {
                 } catch (Exception ignored) {}
             }
             predictMana = true;
+            predictHealth = true;
         } else {
             if (predictMana && message.startsWith("Used ") && message.endsWith("Mana)")) {
                 int mana = Integer.parseInt(message.split(Pattern.quote("! ("))[1].split(Pattern.quote(" Mana)"))[0]);
@@ -182,13 +198,13 @@ public class PlayerListener {
 //            GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
             GlStateManager.pushMatrix();
             GlStateManager.scale(4.0F, 4.0F, 4.0F);
-            ConfigValues.Message message = null;
+            Message message = null;
             switch (titleFeature) {
                 case MAGMA_WARNING:
-                    message = ConfigValues.Message.MESSAGE_MAGMA_BOSS_WARNING;
+                    message = Message.MESSAGE_MAGMA_BOSS_WARNING;
                     break;
                 case FULL_INVENTORY_WARNING:
-                    message = ConfigValues.Message.MESSAGE_FULL_INVENTORY;
+                    message = Message.MESSAGE_FULL_INVENTORY;
                     break;
             }
             if (message != null) {
@@ -206,18 +222,18 @@ public class PlayerListener {
             GlStateManager.translate((float) (i / 2), (float) (j / 2), 0.0F);
             GlStateManager.pushMatrix();
             GlStateManager.scale(2.0F, 2.0F, 2.0F);
-            ConfigValues.Message message = null;
+            Message message = null;
             switch (subtitleFeature) {
                 case MINION_STOP_WARNING:
-                    message = ConfigValues.Message.MESSAGE_MINION_CANNOT_REACH;
+                    message = Message.MESSAGE_MINION_CANNOT_REACH;
                     break;
                 case MINION_FULL_WARNING:
-                    message = ConfigValues.Message.MESSAGE_MINION_IS_FULL;
+                    message = Message.MESSAGE_MINION_IS_FULL;
                     break;
             }
             if (message != null) {
                 String text;
-                if (message == ConfigValues.Message.MESSAGE_MINION_CANNOT_REACH) {
+                if (message == Message.MESSAGE_MINION_CANNOT_REACH) {
                     text = main.getConfigValues().getMessage(message, cannotReachMobName);
                 } else {
                     text = main.getConfigValues().getMessage(message);
@@ -250,7 +266,6 @@ public class PlayerListener {
                         }
                         mc.ingameGUI.getFontRenderer().drawStringWithShadow(name, (float) (i / 2 - mc.ingameGUI.getFontRenderer().getStringWidth(name) / 2), (float) (i1 - 10), 16777215);
                         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-                        mc.getTextureManager().bindTexture(icons);
                         GlStateManager.disableBlend();
                     }
                 }
@@ -286,7 +301,6 @@ public class PlayerListener {
                     mc.getRenderItem().renderItemIntoGUI(BONE_ITEM, (int)((width+boneCounter*15*scale)*scaleMultiplier), (int)((height+2)*scaleMultiplier));
                 }
             }
-            mc.getTextureManager().bindTexture(PlayerListener.BARS);
             if (manaBarType == Feature.BarType.BAR
                     || manaBarType == Feature.BarType.BAR_TEXT) {
                 drawBar(Feature.MANA_BAR, scaleMultiplier, mc, sr, Feature.MANA_BAR_COLOR);
@@ -295,7 +309,6 @@ public class PlayerListener {
                     || healthBarType == Feature.BarType.BAR_TEXT) {
                 drawBar(Feature.HEALTH_BAR, scaleMultiplier, mc, sr, Feature.HEALTH_BAR_COLOR);
             }
-            mc.getTextureManager().bindTexture(icons);
             if (iconType == Feature.IconType.ICON || iconType == Feature.IconType.ICON_DEFENCE || iconType == Feature.IconType.ICON_PERCENTAGE
                     || iconType == Feature.IconType.ICON_DEFENCE_PERCENTAGE) {
                 drawIcon(scale, mc, sr, null);
@@ -318,8 +331,6 @@ public class PlayerListener {
             }
         }
         GlStateManager.popMatrix();
-        GlStateManager.enableBlend();
-        mc.getTextureManager().bindTexture(Gui.optionsBackground);
     }
 
     private void drawBar(Feature feature, float scaleMultiplier, Minecraft mc, ScaledResolution sr, Feature colorFeature) {
@@ -327,6 +338,7 @@ public class PlayerListener {
     }
 
     public void drawBar(Feature feature, float scaleMultiplier, Minecraft mc, ScaledResolution sr, Feature colorFeature, ButtonLocation buttonLocation) {
+        mc.getTextureManager().bindTexture(PlayerListener.BARS);
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         short barWidth = 92;
         float fill;
@@ -365,6 +377,11 @@ public class PlayerListener {
     }
 
     public void drawIcon(float scale, Minecraft mc, ScaledResolution sr, ButtonLocation buttonLocation) {
+        if (main.getConfigValues().getDisabledFeatures().contains(Feature.USE_VANILLA_TEXTURE_DEFENCE)) {
+            mc.getTextureManager().bindTexture(icons);
+        } else {
+            mc.getTextureManager().bindTexture(PlayerListener.DEFENCE_VANILLA);
+        }
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         float x;
         float y;
@@ -423,12 +440,12 @@ public class PlayerListener {
         int y = (int) (textY * sr.getScaledHeight()) + 4;
         x+=25;
         y+=10;
-//        mc.fontRendererObj.drawString(text, (int)(x*scaleMultiplier)-60+1, (int)(y*scaleMultiplier)-10, 0);
-//        mc.fontRendererObj.drawString(text, (int)(x*scaleMultiplier)-60-1, (int)(y*scaleMultiplier)-10, 0);
-//        mc.fontRendererObj.drawString(text, (int)(x*scaleMultiplier)-60, (int)(y*scaleMultiplier)+1-10, 0);
-//        mc.fontRendererObj.drawString(text, (int)(x*scaleMultiplier)-60, (int)(y*scaleMultiplier)-1-10, 0);
-//        mc.fontRendererObj.drawString(text, (int)(x*scaleMultiplier)-60, (int)(y*scaleMultiplier)-10, color);
-        mc.ingameGUI.drawString(mc.fontRendererObj, text, (int)(x*scaleMultiplier)-60, (int)(y*scaleMultiplier)-10, color);
+        mc.fontRendererObj.drawString(text, (int)(x*scaleMultiplier)-60+1, (int)(y*scaleMultiplier)-10, 0);
+        mc.fontRendererObj.drawString(text, (int)(x*scaleMultiplier)-60-1, (int)(y*scaleMultiplier)-10, 0);
+        mc.fontRendererObj.drawString(text, (int)(x*scaleMultiplier)-60, (int)(y*scaleMultiplier)+1-10, 0);
+        mc.fontRendererObj.drawString(text, (int)(x*scaleMultiplier)-60, (int)(y*scaleMultiplier)-1-10, 0);
+        mc.fontRendererObj.drawString(text, (int)(x*scaleMultiplier)-60, (int)(y*scaleMultiplier)-10, color);
+//        mc.ingameGUI.drawString(mc.fontRendererObj, text, (int)(x*scaleMultiplier)-60, (int)(y*scaleMultiplier)-10, color);
     }
 
     @SubscribeEvent()
@@ -474,6 +491,14 @@ public class PlayerListener {
                 if (predictMana) {
                     mana += (maxMana/50);
                     if (mana>maxMana) mana = maxMana;
+                } if (predictHealth) {
+                    Minecraft mc = Minecraft.getMinecraft();
+                    if (mc != null) {
+                        EntityPlayerSP p = mc.thePlayer;
+                        if (p != null) { //Reverse calculate the player's health by using the player's vanilla hearts.
+                            health = (int)(maxHealth*(p.getHealth()/p.getMaxHealth()));
+                        }
+                    }
                 }
             } else if (manaTick % 5 == 0) {
                 Minecraft mc = Minecraft.getMinecraft();
@@ -499,7 +524,7 @@ public class PlayerListener {
     // Addition by Michael#3549
     @SubscribeEvent
     public void onEntityEvent(LivingEvent.LivingUpdateEvent e) {
-        if (main.getUtils().getLocation() == Feature.Location.ISLAND) {
+        if (main.getUtils().isOnSkyblock() && main.getUtils().getLocation() == Feature.Location.ISLAND) {
             Entity entity = e.entity;
             if (entity instanceof EntityArmorStand && entity.hasCustomName()) {
                 int cooldown = main.getConfigValues().getWarningSeconds()*1000+5000;
@@ -508,8 +533,7 @@ public class PlayerListener {
                     long now = System.currentTimeMillis();
                     if (now - lastMinionSound > cooldown) { //this just spams message...
                         lastMinionSound = now;
-                        EntityPlayerSP p = Minecraft.getMinecraft().thePlayer;
-                        p.playSound("random.pop", 1, 1);
+                        main.getUtils().playSound("random.pop", 1);
                         main.getPlayerListener().setSubtitleFeature(Feature.MINION_FULL_WARNING);
                         main.getPlayerListener().setSubtitleWarning(true);
                         new Timer().schedule(new TimerTask() {
@@ -524,8 +548,7 @@ public class PlayerListener {
                     long now = System.currentTimeMillis();
                     if (now - lastMinionSound > cooldown) {
                         lastMinionSound = now;
-                        EntityPlayerSP p = Minecraft.getMinecraft().thePlayer;
-                        p.playSound("random.orb", 1, 1);
+                        main.getUtils().playSound("random.orb", 1);
                         String mobName = entity.getCustomNameTag().split(Pattern.quote("\u00A7cI can\'t reach any "))[1].toLowerCase();
                         if (mobName.lastIndexOf("s") == mobName.length() - 1) {
                             mobName = mobName.substring(0, mobName.length() - 1);
@@ -545,9 +568,25 @@ public class PlayerListener {
         }
     }
 
+//    public static Set<BlockPos> particleBlocks = new HashSet<>();
+
 //    @SubscribeEvent //TODO remove this after
 //    public void RenderWorldLastEvent(RenderWorldLastEvent event)
 //    {
+////        List<EntityFX>[][] fxLayers = Minecraft.getMinecraft().effectRenderer.fxLayers;
+//////        List<EntityFX> particles = new ArrayList<>();
+////        Set<BlockPos> particleBlocks = new HashSet<>();
+////        for (int i = 0; i < fxLayers.length; i++) {
+////            for (int j = 0; j < fxLayers[i].length; j++) {
+//////                if (entity instanceof EntityFX) {
+////                List<EntityFX> list = fxLayers[i][j];
+////                for (EntityFX entityFX : list) {
+////                    particleBlocks.add(new BlockPos(entityFX.getPosition()));
+////                }
+//////                particles.add((EntityFX)entity);
+//////                }
+////            }
+////        }
 //        float partialTickTime = event.partialTicks;
 //        EntityPlayerSP player = Minecraft.getMinecraft().thePlayer;
 //        double x = player.lastTickPosX + (player.posX - player.lastTickPosX) * partialTickTime;
@@ -558,22 +597,50 @@ public class PlayerListener {
 //        GL11.glTranslated(-x, -y, -z); //go from cartesian x,y,z coordinates to in-world x,y,z coordinates
 //        GL11.glEnable(GL11.GL_DEPTH_TEST);
 //
-//        double minX = 0 + 0.02;
-//        double maxX = 1 - 0.02;
-//        double maxY = 10 + 0.02;
-//        double minZ = 0 + 0.02;
-//        double maxZ = 1 - 0.02;
-//
-//        //render an "X" using 2 lines at (0, 10, 0) in game
 //        GL11.glBegin(GL11.GL_QUADS); //begin drawing lines defined by 2 vertices
 //
-//        GL11.glColor4f(1f, 0, 0, 1f); //alpha must be > 0.1
-//        GL11.glVertex3d(maxX, maxY, maxZ);
-//        GL11.glVertex3d(minX, maxY, minZ);
-//        GL11.glVertex3d(maxX, maxY, minZ);
-//        GL11.glVertex3d(minX, maxY, maxZ);
+//        GL11.glColor4f(1f, 0, 0, 0.5f); //alpha must be > 0.1
+//        int bx = 5;
+//        int by = 101;
+//        int bz = 14;
+//        GL11.glVertex3d(bx, by+1, bz+1); //top
+//        GL11.glVertex3d(bx, by+1, bz);
+//        GL11.glVertex3d(bx+1, by+1, bz);
+//        GL11.glVertex3d(bx+1, by+1, bz+1);
+//
+//        GL11.glVertex3d(bx+1, by+1, bz);
+//        GL11.glVertex3d(bx+1, by+1, bz+1);
+//        GL11.glVertex3d(bx+1, by, bz+1);
+//        GL11.glVertex3d(bx+1, by, bz);
 //
 //        GL11.glEnd();
+////        for (BlockPos blockPos : particleBlocks) {
+////            Block block = Minecraft.getMinecraft().theWorld.getBlockState(blockPos).getBlock();
+////            if (block.equals(Blocks.obsidian) || block.equals(Blocks.end_stone)) {
+//////                double minX = blockPos.getX() - 1;
+//////                double maxX = blockPos.getX() + 1;
+//////                double maxY = blockPos.getY() + 0.02;
+//////                double minZ = blockPos.getZ() - 1;
+//////                double maxZ = blockPos.getZ() + 1;
+////                double minX = blockPos.getX() + 0.02;
+////                double maxX = blockPos.getX()+1 - 0.02;
+////                double maxY = blockPos.getY()  + 0.02 + 2;
+////                double minZ = blockPos.getZ() + 0.02;
+////                double maxZ = blockPos.getZ()+1 - 0.02;
+////
+////                //render an "X" using 2 lines at (0, 10, 0) in game
+////                GL11.glBegin(GL11.GL_QUADS); //begin drawing lines defined by 2 vertices
+////
+////                GL11.glColor4f(1f, 0, 0, 1f); //alpha must be > 0.1
+////                GL11.glVertex3d(maxX, maxY, maxZ);
+////                GL11.glVertex3d(minX, maxY, minZ);
+////                GL11.glVertex3d(maxX, maxY, minZ);
+////                GL11.glVertex3d(minX, maxY, maxZ);
+////
+////                GL11.glEnd();
+////            }
+////        }
+////        particleBlocks.clear();
 //
 //        //cleanup
 //        GL11.glEnable(GL11.GL_TEXTURE_2D);
@@ -607,7 +674,7 @@ public class PlayerListener {
                     }
                 }
                 if (titleWarning && titleFeature == Feature.MAGMA_WARNING && soundTick % 4 == 0) { // Play sound every 4 ticks or 1/5 second.
-                    mc.thePlayer.playSound("random.orb", 1, 0.5F);
+                    main.getUtils().playSound("random.orb", 0.5);
                 }
             }
             soundTick++;
@@ -631,10 +698,6 @@ public class PlayerListener {
 
     public void setTitleFeature(Feature titleFeature) {
         this.titleFeature = titleFeature;
-    }
-
-    public boolean isTitleWarning() {
-        return titleWarning;
     }
 
     private void setSubtitleFeature(Feature subtitleFeature) {

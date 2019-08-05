@@ -54,7 +54,12 @@
     "defenceTextColor": "Цвет текста Защиты",
     "defencePercentageColor": "Цвет процентов Защиты",
     "disableDoubleDropAutomatically": "Отключать двойное выбрасывание автоматически",
-    "fullMinionWarning": "Полное предупреждение миньонов"
+    "fullMinionWarning": "Полное предупреждение миньонов",
+    "nextPage": "Next Page",
+    "previousPage": "Previous Page",
+    "ignoreItemFrameClicks": "Ignore Clicks On Item Frames",
+    "useVanillaTextureDefence": "Use Vanilla Texture For Defence Icon",
+    "showBackpackHoldingShift": "Only Show Backpack When Holding Shift"
   },
   "messages": {
     "dropConfirmation": "Выбросите предмет ещё раз для подтверждения!",

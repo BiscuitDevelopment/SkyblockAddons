@@ -8,16 +8,16 @@
     "warningTime": "Czas Ostrzeżenia: %time%s",
     "manaBar": "Pasek Many: %type%",
     "barTypes": {
-      "barAndText": "Pasek & Tekst",
+      "barAndText": "Pasek i Tekst",
       "bar": "Pasek",
       "text": "Tekst",
       "off": "Wyłączone"
     },
     "hideSkeletonHatBones": "Ukryj Kości z Hełmu Skeletona",
     "skeletonHatBonesBar": "Pasek Kości z Hełmu Skeletona",
-    "hideFoodAndArmor": "Ukryj Pasek Jedzenia i Zbroi",
+    "hideFoodAndArmor": "Ukryj Pasek Jedzenia i Ochrony",
     "fullInventoryWarning": "Ostrzeżenie o Pełnym Ekwipunku",
-    "magmaBossHealthBar": "Pasek Życia Magma Boss'a",
+    "magmaBossHealthBar": "Pasek Zdrowia Magma Boss'a",
     "disableEmberRodAbility": "Wyłącz Umiejętność Ember Rod na Wyspie",
     "warningColor": "Kolor Ostrzeżenia",
     "confirmationColor": "Kolor Potwierdzenia",
@@ -29,32 +29,37 @@
     "hideDurability": "Ukryj Pasek Wytrzymałości Narzędzi",
     "showEnchantmentsReforges": "Enchanty i Reforge",
     "minionStopWarning": "Ostrzeżenie o Przerwaniu Pracy Miniona",
-    "hideAuctionHousePlayers": "Hide Players Near Auction House",
-    "healthBar": "Health Bar: %type%",
-    "defenceIcon": "Defence Icon: %type%",
-    "backpackStyle": "Backpack Style: %style%",
+    "hideAuctionHousePlayers": "Ukryj Graczy Blisko Domu Aukcji",
+    "healthBar": "Pasek Zdrowia: %type%",
+    "defenceIcon": "Ikona Ochrony: %type%",
+    "backpackStyle": "Styl Plecaka: %style%",
     "styles": {
-      "inventory": "Inventory",
-      "compact": "Compact"
+      "inventory": "Ekwipunkowy",
+      "compact": "Kompaktowy"
     },
     "iconTypes": {
-      "iconDefenceAndPercentage": "Icon, Defence, & Percentage",
-      "iconAndDefence": "Icon & Defence",
-      "iconAndPercentage": "Icon & Percentage",
-      "defenceAndPercentage": "Defence & Percentage",
-      "icon": "Icon",
-      "defence": "Defence",
-      "percentage": "Percentage",
-      "off": "Off"
+      "iconDefenceAndPercentage": "Ikona, Ochrona, i Procent",
+      "iconAndDefence": "Ikona i Ochrona",
+      "iconAndPercentage": "Ikona i Procent",
+      "defenceAndPercentage": "Ochrona i Procent",
+      "icon": "Ikona",
+      "defence": "Ochrona",
+      "percentage": "Procent",
+      "off": "Wyłączone"
     },
-    "showBackpackPreview": "Show Backpack Preview",
-    "hideHealthBar": "Hide Health Bar",
-    "healthTextColor": "Health Text Color",
-    "healthBarColor": "Health Bar Color",
-    "defenceTextColor": "Defence Text Color",
-    "defencePercentageColor": "Defence Percentage Color",
-    "disableDoubleDropAutomatically": "Disable Double Drop Automatically",
-    "fullMinionWarning": "Full Minion Warning"
+    "showBackpackPreview": "Pokaż Podgląd Plecaka",
+    "hideHealthBar": "Ukryj Pasek Zdrowia",
+    "healthTextColor": "Kolor Tekstu Zdrowia",
+    "healthBarColor": "Kolor Paska Zdrowia",
+    "defenceTextColor": "Kolor Tekstu Ochrony",
+    "defencePercentageColor": "Kolor Procentu Ochrony",
+    "disableDoubleDropAutomatically": "Wyłącz podwójne wyrzucanie automatycznie.",
+    "fullMinionWarning": "Ostrzeżenie o Zapełnionym Minionie",
+    "nextPage": "Next Page",
+    "previousPage": "Previous Page",
+    "ignoreItemFrameClicks": "Ignore Clicks On Item Frames",
+    "useVanillaTextureDefence": "Use Vanilla Texture For Defence Icon",
+    "showBackpackHoldingShift": "Only Show Backpack When Holding Shift"
   },
   "messages": {
     "dropConfirmation": "Wyrzuć ten przedmiot ponownie, aby potwierdzić!",
@@ -63,8 +68,8 @@
     "newVersion": "Nowa wersja, %newestVersion% jest dostępna. Pobierz ją klikając na tą wiadomość.",
     "discord": "Chcesz sprawdzić zmiany? Kliknij tą wiadomość, aby dołączyć na mojego discord'a.",
     "developmentVersion": "Używasz wersji deweloperskiej: %version%. Najnowsza wersja online to: %newestVersion%",
-    "labymod": "Użytkownicy LabyMod: Ukrycie Pasek Jedzenia i Zbroi jest niekompatybilne.",
+    "labymod": "Użytkownicy LabyMod: Ukrycie Paska Zdrowia, Jedzenia i Ochrony jest niekompatybilne.",
     "minionCannotReach": "Minion %type% nie może dosięgnąć moba i przestał działać!",
-    "minionIsFull": "A minion on your island is full!"
+    "minionIsFull": "Jakiś Minion na twojej wyspie jest pełny!"
   }
 }

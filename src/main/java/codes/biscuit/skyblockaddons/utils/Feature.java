@@ -2,7 +2,7 @@ package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 
-import static codes.biscuit.skyblockaddons.utils.ConfigValues.Message.*;
+import static codes.biscuit.skyblockaddons.utils.Message.*;
 
 public enum Feature {
 
@@ -20,9 +20,12 @@ public enum Feature {
     MINION_STOP_WARNING(11, ButtonType.REGULAR),
     HIDE_AUCTION_HOUSE_PLAYERS(12, ButtonType.REGULAR),
     HIDE_HEALTH_BAR(13, ButtonType.REGULAR),
-    DISABLE_DOUBLE_DROP_AUTOMATICALLY(14, ButtonType.REGULAR),
     MINION_FULL_WARNING(15, ButtonType.REGULAR),
     IGNORE_ITEM_FRAME_CLICKS(16, ButtonType.REGULAR),
+
+    DISABLE_DOUBLE_DROP_AUTOMATICALLY(14, ButtonType.REGULAR),
+    USE_VANILLA_TEXTURE_DEFENCE(17, ButtonType.REGULAR),
+    SHOW_BACKPACK_HOLDING_SHIFT(18, ButtonType.REGULAR),
 
     MANA_BAR(-1, ButtonType.REGULAR),
     MANA_TEXT(-1, ButtonType.REGULAR),
@@ -31,6 +34,7 @@ public enum Feature {
     DEFENCE_ICON(-1, ButtonType.REGULAR),
     DEFENCE_TEXT(-1, ButtonType.REGULAR),
     DEFENCE_PERCENTAGE(-1, ButtonType.REGULAR),
+    ENCHANT_REFORGE_TYPE(-1, ButtonType.REGULAR),
 
     WARNING_COLOR(-1, ButtonType.COLOR),
     CONFIRMATION_COLOR(-1, ButtonType.COLOR),
@@ -93,9 +97,9 @@ public enum Feature {
         BAR(BAR_TYPE_BAR),
         OFF(BAR_TYPE_OFF);
 
-        private ConfigValues.Message message;
+        private Message message;
 
-        BarType(ConfigValues.Message message) {
+        BarType(Message message) {
             this.message = message;
         }
 
@@ -124,9 +128,9 @@ public enum Feature {
         PERCENTAGE(ICON_TYPE_PERCENTAGE),
         OFF(ICON_TYPE_OFF);
 
-        private ConfigValues.Message message;
+        private Message message;
 
-        IconType(ConfigValues.Message message) {
+        IconType(Message message) {
             this.message = message;
         }
 
@@ -176,9 +180,9 @@ public enum Feature {
         GUI(STYLE_GUI),
         BOX(STYLE_COMPACT);
 
-        private ConfigValues.Message message;
+        private Message message;
 
-        BackpackStyle(ConfigValues.Message message) {
+        BackpackStyle(Message message) {
             this.message = message;
         }
 

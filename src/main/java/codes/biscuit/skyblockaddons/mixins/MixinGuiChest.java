@@ -1,11 +1,13 @@
 package codes.biscuit.skyblockaddons.mixins;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui;
 import codes.biscuit.skyblockaddons.utils.Feature;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.client.gui.inventory.GuiChest;
 import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
@@ -15,7 +17,10 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.regex.Pattern;
 
 
@@ -24,7 +29,8 @@ import java.util.regex.Pattern;
 public abstract class MixinGuiChest extends GuiContainer {
 
     private Feature.InventoryType inventoryType = null;
-    private GuiTextField textField = null;
+    private GuiTextField textFieldMatch = null;
+    private GuiTextField textFieldExclusions = null;
 
     @Shadow private IInventory lowerChestInventory;
 
@@ -35,8 +41,15 @@ public abstract class MixinGuiChest extends GuiContainer {
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
         super.drawScreen(mouseX, mouseY, partialTicks);
-        if (textField != null) {
-            textField.drawTextBox();
+        if (textFieldMatch != null) {
+            mc.ingameGUI.drawString(mc.fontRendererObj, "Type Enchantments Here!", guiLeft - 160, guiTop + 40, SkyblockAddonsGui.getDefaultBlue(255));
+            mc.ingameGUI.drawString(mc.fontRendererObj, "Separate Multiple With Commas.", guiLeft - 160, guiTop + 50, SkyblockAddonsGui.getDefaultBlue(255));
+            mc.ingameGUI.drawString(mc.fontRendererObj, "Enchants To Match", guiLeft - 140, guiTop + 70, SkyblockAddonsGui.getDefaultBlue(255));
+            mc.ingameGUI.drawString(mc.fontRendererObj, "Words To Exclude", guiLeft - 140, guiTop + 110, SkyblockAddonsGui.getDefaultBlue(255));
+            textFieldMatch.drawTextBox();
+            GlStateManager.color(1.0F, 0, 0);
+            textFieldExclusions.drawTextBox();
+            GlStateManager.color(1F, 1F, 1F);
         }
     }
 
@@ -49,12 +62,38 @@ public abstract class MixinGuiChest extends GuiContainer {
         if (inventoryType != null) {
             int xPos = guiLeft - 140;
             int yPos = guiTop + 80;
-            textField = new GuiTextField(2, this.fontRendererObj, xPos, yPos, 120, 20);
-            textField.setMaxStringLength(50);
-            textField.setFocused(true);
-            String lockedEnchantment = SkyblockAddons.getInstance().getUtils().getLockedEnchantment();
-            if (lockedEnchantment != null) {
-                textField.setText(lockedEnchantment);
+            textFieldMatch = new GuiTextField(2, this.fontRendererObj, xPos, yPos, 120, 20);
+            textFieldMatch.setMaxStringLength(100);
+            Set<String> lockedEnchantments = SkyblockAddons.getInstance().getUtils().getEnchantmentMatch();
+            StringBuilder enchantmentBuilder = new StringBuilder();
+            int i = 1;
+            for (String enchantment : lockedEnchantments) {
+                enchantmentBuilder.append(enchantment);
+                if (i < lockedEnchantments.size()) {
+                    enchantmentBuilder.append(",");
+                }
+                i++;
+            }
+            String text = enchantmentBuilder.toString();
+            if (text.length() > 0) {
+                textFieldMatch.setText(text);
+            }
+            yPos += 40;
+            textFieldExclusions = new GuiTextField(2, this.fontRendererObj, xPos, yPos, 120, 20);
+            textFieldExclusions.setMaxStringLength(100);
+            lockedEnchantments = SkyblockAddons.getInstance().getUtils().getEnchantmentExclusion();
+            enchantmentBuilder = new StringBuilder();
+            i = 1;
+            for (String enchantment : lockedEnchantments) {
+                enchantmentBuilder.append(enchantment);
+                if (i < lockedEnchantments.size()) {
+                    enchantmentBuilder.append(",");
+                }
+                i++;
+            }
+            text = enchantmentBuilder.toString();
+            if (text.length() > 0) {
+                textFieldExclusions.setText(text);
             }
         }
     }
@@ -62,12 +101,16 @@ public abstract class MixinGuiChest extends GuiContainer {
     @Override
     protected void keyTyped(char typedChar, int keyCode) throws IOException {
         if (inventoryType != null) {
-            if (keyCode != this.mc.gameSettings.keyBindInventory.getKeyCode()) {
+            if (keyCode != this.mc.gameSettings.keyBindInventory.getKeyCode() || (!textFieldMatch.isFocused() && !textFieldExclusions.isFocused())) {
                 super.keyTyped(typedChar, keyCode);
             }
-            if (textField != null) {
-                textField.textboxKeyTyped(typedChar, keyCode);
-                SkyblockAddons.getInstance().getUtils().setLockedEnchantment(textField.getText());
+            if (textFieldMatch != null) {
+                textFieldMatch.textboxKeyTyped(typedChar, keyCode);
+                textFieldExclusions.textboxKeyTyped(typedChar, keyCode);
+                Set<String> enchantments = new HashSet<>(Arrays.asList(textFieldMatch.getText().split(",")));
+                SkyblockAddons.getInstance().getUtils().setEnchantmentMatch(enchantments);
+                enchantments = new HashSet<>(Arrays.asList(textFieldExclusions.getText().split(",")));
+                SkyblockAddons.getInstance().getUtils().setEnchantmentExclusion(enchantments);
             }
         } else {
             super.keyTyped(typedChar, keyCode);
@@ -76,7 +119,8 @@ public abstract class MixinGuiChest extends GuiContainer {
 
     @Override
     protected void handleMouseClick(Slot slotIn, int slotId, int clickedButton, int clickType) {
-        if (SkyblockAddons.getInstance().getUtils().getLockedEnchantment().length() > 0) {
+        SkyblockAddons main = SkyblockAddons.getInstance();
+        if (main.getUtils().getEnchantmentMatch().size() > 0) {
             if (slotIn != null && slotIn.getHasStack()) {
                 Container slots = inventorySlots;
                 if (slotIn.getSlotIndex() == 13 && inventoryType == Feature.InventoryType.ENCHANTMENT_TABLE) {
@@ -86,9 +130,9 @@ public abstract class MixinGuiChest extends GuiContainer {
                             Minecraft mc = Minecraft.getMinecraft();
                             List<String> toolip = bottle.getTooltip(mc.thePlayer, false);
                             if (toolip.size() > 2) {
-                                String enchantLine = toolip.get(2);
-                                if (enchantLine.split(Pattern.quote("* "))[1].toLowerCase().contains(SkyblockAddons.getInstance().getUtils().getLockedEnchantment().toLowerCase())) {
-                                    mc.thePlayer.playSound("random.orb", 1, 0.1F);
+                                String enchantLine = toolip.get(2).split(Pattern.quote("* "))[1];
+                                if (main.getUtils().enchantReforgeMatches(enchantLine)) {
+                                    main.getUtils().playSound("random.orb", 0.1);
                                     return;
                                 }
                             }
@@ -101,9 +145,9 @@ public abstract class MixinGuiChest extends GuiContainer {
                         if (item.hasDisplayName()) {
                             String[] nameParts = item.getDisplayName().split(" ");
                             if (nameParts.length > 2) {
-                                String reforge = SkyblockAddons.getInstance().getUtils().stripColor(nameParts[0]);
-                                if (reforge.toLowerCase().contains(SkyblockAddons.getInstance().getUtils().getLockedEnchantment().toLowerCase())) {
-                                    mc.thePlayer.playSound("random.orb", 1, 0.1F);
+                                String reforge = main.getUtils().stripColor(nameParts[0]);
+                                if (main.getUtils().enchantReforgeMatches(reforge)) {
+                                    main.getUtils().playSound("random.orb", 0.1);
                                     return;
                                 }
                             }
@@ -113,5 +157,14 @@ public abstract class MixinGuiChest extends GuiContainer {
             }
         }
         super.handleMouseClick(slotIn, slotId, clickedButton, clickType);
+    }
+
+    @Override
+    protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {
+        super.mouseClicked(mouseX, mouseY, mouseButton);
+        if (textFieldMatch != null) {
+            textFieldMatch.mouseClicked(mouseX, mouseY, mouseButton);
+            textFieldExclusions.mouseClicked(mouseX, mouseY, mouseButton);
+        }
     }
 }

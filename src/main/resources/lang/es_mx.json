@@ -54,7 +54,12 @@
     "defenceTextColor": "Color de Texto de Defensa",
     "defencePercentageColor": "Color de Porcentaje de Defensa",
     "disableDoubleDropAutomatically": "Desactivar el Arrojo Doble de Objetos Automáticamente",
-    "fullMinionWarning": "Alerta de Minion Lleno"
+    "fullMinionWarning": "Alerta de Minion Lleno",
+    "nextPage": "Next Page",
+    "previousPage": "Previous Page",
+    "ignoreItemFrameClicks": "Ignore Clicks On Item Frames",
+    "useVanillaTextureDefence": "Use Vanilla Texture For Defence Icon",
+    "showBackpackHoldingShift": "Only Show Backpack When Holding Shift"
   },
   "messages": {
     "dropConfirmation": "Arroja este objeto otra vez para confirmar!",

@@ -54,7 +54,12 @@
     "defenceTextColor": "Védelem szöveg színe",
     "defencePercentageColor": "Védelem százalék színe",
     "disableDoubleDropAutomatically": "A dubla kidobás letiltása",
-    "fullMinionWarning": "Teljes minion figyelmeztetés"
+    "fullMinionWarning": "Teljes minion figyelmeztetés",
+    "nextPage": "Next Page",
+    "previousPage": "Previous Page",
+    "ignoreItemFrameClicks": "Ignore Clicks On Item Frames",
+    "useVanillaTextureDefence": "Use Vanilla Texture For Defence Icon",
+    "showBackpackHoldingShift": "Only Show Backpack When Holding Shift"
   },
   "messages": {
     "dropConfirmation": "Dobd el ezt a tárgyat újra, hogy megerősítsd!",
