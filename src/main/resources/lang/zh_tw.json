@@ -18,9 +18,9 @@
     "hideFoodAndArmor": "隱藏飽食度 & 裝甲值",
     "fullInventoryWarning": "背包空間不足警報",
     "magmaBossHealthBar": "熔岩史萊姆王血量條",
-    "disableEmberRodAbility": "在你的島嶼上關閉灰燼之杖技能",
-    "warningColor": "警報顏色",
-    "confirmationColor": "確認丟棄顏色",
+    "disableEmberRodAbility": "在你的島上關閉烈焰之杖的技能",
+    "warningColor": "警報文字顏色",
+    "confirmationColor": "確認丟棄文字顏色",
     "manaTextColor": "魔力文字顏色",
     "manaBarColor": "魔力計量條顏色",
     "editLocations": "編輯Gui位置",
@@ -34,7 +34,7 @@
     "defenceIcon": "防禦力樣式: %type%",
     "backpackStyle": "背包樣式: %style%",
     "styles": {
-      "inventory": "格狀",
+      "inventory": "普通",
       "compact": "簡易"
     },
     "iconTypes": {
