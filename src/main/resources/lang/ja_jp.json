@@ -45,7 +45,7 @@
       "icon": "アイコン",
       "defence": "防御力",
       "percentage": "パーセンテージ",
-      "off": オフ"
+      "off": "オフ"
     },
     "showBackpackPreview": "バックパックのプレビューを表示",
     "hideHealthBar": "体力バーを隠す",
