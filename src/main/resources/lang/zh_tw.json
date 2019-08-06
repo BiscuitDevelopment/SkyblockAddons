@@ -18,7 +18,7 @@
     "hideFoodAndArmor": "隱藏飽食度 & 裝甲值",
     "fullInventoryWarning": "背包空間不足警報",
     "magmaBossHealthBar": "熔岩史萊姆王血量條",
-    "disableEmberRodAbility": "在你的島上關閉烈焰之杖的技能",
+    "disableEmberRodAbility": "在你的島上關閉灰燼之杖的技能",
     "warningColor": "警報文字顏色",
     "confirmationColor": "確認丟棄文字顏色",
     "manaTextColor": "魔力文字顏色",
@@ -55,11 +55,11 @@
     "defencePercentageColor": "防禦力計量條顏色",
     "disableDoubleDropAutomatically": "關閉自動雙重丟棄",
     "fullMinionWarning": "\"機器人背包空間已滿\"警告",
-    "nextPage": "Next Page",
-    "previousPage": "Previous Page",
-    "ignoreItemFrameClicks": "Ignore Clicks On Item Frames",
-    "useVanillaTextureDefence": "Use Vanilla Texture For Defence Icon",
-    "showBackpackHoldingShift": "Only Show Backpack When Holding Shift"
+    "nextPage": "下一頁",
+    "previousPage": "上一頁",
+    "ignoreItemFrameClicks": "無視對展示框的點擊",
+    "useVanillaTextureDefence": "使用原版防禦圖標",
+    "showBackpackHoldingShift": "只在按住Shift時顯示背包預覽"
   },
   "messages": {
     "dropConfirmation": "再次丟棄此物品以確認!",
@@ -68,16 +68,16 @@
     "newVersion": "新的版本, %newestVersion% 現已上線. 點擊此處以下載。",
     "discord": "想看到有那些改變? 點擊此處以加入我的Discord.",
     "developmentVersion": "你在正使用一個開發版本: %version%. 上一個正式版本為 %newestVersion%",
-    "labymod": "Labymod使用者請注意: 隱藏食物, 裝甲值, 以及血條, 還未完成.",
+    "labymod": "Labymod使用者請注意: 隱藏食物, 裝甲值以及血條, 還未完成。",
     "minionCannotReach": "有一個 %type% 機器人無法觸及到生物而停止運作了!",
     "minionIsFull": "有一個機器人因為背包已滿而停止運作了!",
-    "typeEnchantmentsHere": "Type %type% Here!",
-    "separateMultiple": "Separate Multiple With Commas.",
-    "enchantsToMatch": "%type% To Match:",
-    "enchantsToExclude": "%type% To Exclude:",
+    "typeEnchantmentsHere": "在這裡輸入%type%!",
+    "separateMultiple": "使用逗號作為分離。",
+    "enchantsToMatch": "區配%type%:",
+    "enchantsToExclude": "排斥%type%:",
     "inventoryTypes": {
-      "enchants": "Enchants",
-      "reforges": "Reforges"
+      "enchants": "附魔",
+      "reforges": "重鑄"
     }
   }
 }
