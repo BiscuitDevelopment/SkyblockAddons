@@ -55,11 +55,11 @@
     "defencePercentageColor": "防御力计量条颜色",
     "disableDoubleDropAutomatically": "自动关闭双重丢弃",
     "fullMinionWarning": "\"机器人背包空间已满\"警告",
-    "nextPage": "Next Page",
-    "previousPage": "Previous Page",
-    "ignoreItemFrameClicks": "Ignore Clicks On Item Frames",
-    "useVanillaTextureDefence": "Use Vanilla Texture For Defence Icon",
-    "showBackpackHoldingShift": "Only Show Backpack When Holding Shift"
+    "nextPage": "下一页",
+    "previousPage": "上一页",
+    "ignoreItemFrameClicks": "无视对展示框的攻击",
+    "useVanillaTextureDefence": "使用原版防御图标",
+    "showBackpackHoldingShift": "只在按住Shift时显示背包预览"
   },
   "messages": {
     "dropConfirmation": "再次丢弃此物品以确认!",
@@ -71,13 +71,13 @@
     "labymod": "Labymod使用者: 隐藏食物, 装甲值, 以及血条, 还未完成。",
     "minionCannotReach": "有一个 %type% 机器人无法触及到生物而停止运作了!",
     "minionIsFull": "有一个机器人因为背包已满而停止运作了!",
-    "typeEnchantmentsHere": "Type %type% Here!",
-    "separateMultiple": "Separate Multiple With Commas.",
-    "enchantsToMatch": "%type% To Match:",
-    "enchantsToExclude": "%type% To Exclude:",
+    "typeEnchantmentsHere": "在这里输入%type%!",
+    "separateMultiple": "使用逗号作为分离。",
+    "enchantsToMatch": "区配%type%:",
+    "enchantsToExclude": "排斥%type%:",
     "inventoryTypes": {
-      "enchants": "Enchants",
-      "reforges": "Reforges"
+      "enchants": "附魔",
+      "reforges": "重铸"
     }
   }
 }
