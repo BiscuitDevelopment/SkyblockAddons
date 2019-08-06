@@ -70,6 +70,14 @@
     "developmentVersion": "你在正使用一个开发版本: %version%ﾟ. 上一个正式版本为 %newestVersion%",
     "labymod": "Labymod使用者: 隐藏食物, 装甲值, 以及血条, 还未完成。",
     "minionCannotReach": "有一个 %type% 机器人无法触及到生物而停止运作了!",
-    "minionIsFull": "有一个机器人因为背包已满而停止运作了!"
+    "minionIsFull": "有一个机器人因为背包已满而停止运作了!",
+    "typeEnchantmentsHere": "Type %type% Here!",
+    "separateMultiple": "Separate Multiple With Commas.",
+    "enchantsToMatch": "%type% To Match:",
+    "enchantsToExclude": "%type% To Exclude:",
+    "inventoryTypes": {
+      "enchants": "Enchants",
+      "reforges": "Reforges"
+    }
   }
 }

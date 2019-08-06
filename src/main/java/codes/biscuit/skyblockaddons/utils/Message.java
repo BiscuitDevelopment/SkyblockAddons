@@ -1,5 +1,10 @@
 package codes.biscuit.skyblockaddons.utils;
 
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.regex.Pattern;
+
 public enum Message {
     LANGUAGE(MessageObject.ROOT, "language"),
 
@@ -68,8 +73,14 @@ public enum Message {
     MESSAGE_DISCORD(MessageObject.MESSAGES, "discord"),
     MESSAGE_MINION_CANNOT_REACH(MessageObject.MESSAGES, "minionCannotReach"),
     MESSAGE_MINION_IS_FULL(MessageObject.MESSAGES, "minionIsFull"),
-    MESSAGE_DEVELOPMENT_VERSION(MessageObject.MESSAGES, "developmentVersion");
+    MESSAGE_DEVELOPMENT_VERSION(MessageObject.MESSAGES, "developmentVersion"),
+    MESSAGE_TYPE_ENCHANTMENTS(MessageObject.MESSAGES, "typeEnchantmentsHere"),
+    MESSAGE_SEPARATE_ENCHANTMENTS(MessageObject.MESSAGES, "separateMultiple"),
+    MESSAGE_ENCHANTS_TO_MATCH(MessageObject.MESSAGES, "enchantsToMatch"),
+    MESSAGE_ENCHANTS_TO_EXCLUDE(MessageObject.MESSAGES, "enchantsToExclude"),
 
+    INVENTORY_TYPE_ENCHANTS(MessageObject.INVENTORY_TYPE, "enchants"),
+    INVENTORY_TYPE_REFORGES(MessageObject.INVENTORY_TYPE, "reforges");
 
     private MessageObject messageObject;
     private String memberName;
@@ -88,12 +99,23 @@ public enum Message {
     }
 
     enum MessageObject {
-        ROOT,
-        SETTING,
-        BAR_TYPE,
-        MESSAGES,
-        STYLE,
-        ICON_TYPE
+        ROOT(""),
+        SETTING("settings"),
+        BAR_TYPE("settings.barTypes"),
+        MESSAGES("messages"),
+        STYLE("settings.styles"),
+        INVENTORY_TYPE("messages.inventoryTypes"),
+        ICON_TYPE("settings.iconTypes");
+
+        private List<String> path;
+
+        MessageObject(String path) {
+            this.path = new LinkedList<>(Arrays.asList(path.split(Pattern.quote("."))));
+        }
+
+        public List<String> getPath() {
+            return path;
+        }
     }
 
 }

@@ -70,6 +70,14 @@
     "developmentVersion": "Вы запустили версию находящуюся в разработке: %version%. Последняя онлайн версия: %newestVersion%",
     "labymod": "Пользователи Labymod: Скрытие полос Еды, Защиты и Жизни несовместимо.",
     "minionCannotReach": "%type% миньон не может достать и перестал спавнить!",
-    "minionIsFull": "Миньон на вашем острове заполнен!"
+    "minionIsFull": "Миньон на вашем острове заполнен!",
+    "typeEnchantmentsHere": "Type %type% Here!",
+    "separateMultiple": "Separate Multiple With Commas.",
+    "enchantsToMatch": "%type% To Match:",
+    "enchantsToExclude": "%type% To Exclude:",
+    "inventoryTypes": {
+      "enchants": "Enchants",
+      "reforges": "Reforges"
+    }
   }
 }

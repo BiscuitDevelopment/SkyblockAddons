@@ -70,6 +70,14 @@
     "developmentVersion": "Vous utiliez une version de développement : %version%. La dernière version en ligne est %newestVersion%",
     "labymod": "Utilisateurs de Labymod: Il y a une incompatibilité avec l'option Masquer la barre de nourriture et d'armure",
     "minionCannotReach": "Le minon %type% n'arrive pas à atteindre les entités et à arreté le spawn!",
-    "minionIsFull": "Un minion sur votre île est plein"
+    "minionIsFull": "Un minion sur votre île est plein",
+    "typeEnchantmentsHere": "Type %type% Here!",
+    "separateMultiple": "Separate Multiple With Commas.",
+    "enchantsToMatch": "%type% To Match:",
+    "enchantsToExclude": "%type% To Exclude:",
+    "inventoryTypes": {
+      "enchants": "Enchants",
+      "reforges": "Reforges"
+    }
   }
 }

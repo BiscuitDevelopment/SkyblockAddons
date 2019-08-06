@@ -70,6 +70,14 @@
     "developmentVersion": "你在正使用一個開發版本: %version%. 上一個正式版本為 %newestVersion%",
     "labymod": "Labymod使用者請注意: 隱藏食物, 裝甲值, 以及血條, 還未完成.",
     "minionCannotReach": "有一個 %type% 機器人無法觸及到生物而停止運作了!",
-    "minionIsFull": "有一個機器人因為背包已滿而停止運作了!"
+    "minionIsFull": "有一個機器人因為背包已滿而停止運作了!",
+    "typeEnchantmentsHere": "Type %type% Here!",
+    "separateMultiple": "Separate Multiple With Commas.",
+    "enchantsToMatch": "%type% To Match:",
+    "enchantsToExclude": "%type% To Exclude:",
+    "inventoryTypes": {
+      "enchants": "Enchants",
+      "reforges": "Reforges"
+    }
   }
 }

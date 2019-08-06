@@ -70,6 +70,14 @@
     "developmentVersion": "Jelenleg ez a fejlesztői verzió fut: %version%. A legutóbbi elérhető frissítés %newestVersion%",
     "labymod": "Labymod felhasznlók: A étel, páncél és életerő sáv elrejtése nem elérhető.",
     "minionCannotReach": "Az egyik %type% minion nem ér el semmit, ezért nem dolgozik.",
-    "minionIsFull": "A szigeten lévő egyik minion tele van!"
+    "minionIsFull": "A szigeten lévő egyik minion tele van!",
+    "typeEnchantmentsHere": "Type %type% Here!",
+    "separateMultiple": "Separate Multiple With Commas.",
+    "enchantsToMatch": "%type% To Match:",
+    "enchantsToExclude": "%type% To Exclude:",
+    "inventoryTypes": {
+      "enchants": "Enchants",
+      "reforges": "Reforges"
+    }
   }
 }

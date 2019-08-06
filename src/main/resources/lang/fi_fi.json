@@ -70,6 +70,14 @@
     "developmentVersion": "Käytät kehitysversiota: %version%. Viimeisin onlineversio on %newestVersion%",
     "labymod": "Labymod Users: Piilota Ruoka-, Suojaus-, ja Elämäpalkki on yhteensopimaton.",
     "minionCannotReach": "%type% kätyri ei yllä ja on lopettanut spawnaamisen!",
-    "minionIsFull": "Kätyri saarellasi on täynnä!"
+    "minionIsFull": "Kätyri saarellasi on täynnä!",
+    "typeEnchantmentsHere": "Type %type% Here!",
+    "separateMultiple": "Separate Multiple With Commas.",
+    "enchantsToMatch": "%type% To Match:",
+    "enchantsToExclude": "%type% To Exclude:",
+    "inventoryTypes": {
+      "enchants": "Enchants",
+      "reforges": "Reforges"
+    }
   }
 }

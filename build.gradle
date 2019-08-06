@@ -26,7 +26,7 @@ plugins {
     id "net.minecraftforge.gradle.forge" version "2.0.2"
 }
 */
-version = "1.1.1" //remember don't update this until its released
+version = "1.1.2" //remember don't update this until its released
 group= "codes.biscuit.skyblockaddons" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "SkyblockAddons"
 
@@ -121,6 +121,7 @@ processResources
     // replace stuff in mcmod.info, nothing else
     from(sourceSets.main.resources.srcDirs) {
         include 'mcmod.info'
+        include 'litemod.json'
                 
         // replace version and mcversion
         expand 'version':project.version, 'mcversion':project.minecraft.version
@@ -129,6 +130,7 @@ processResources
     // copy everything else, thats not the mcmod.info
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'
+        exclude 'litemod.json'
     }
 }
 

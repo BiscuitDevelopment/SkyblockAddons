@@ -70,6 +70,14 @@
     "developmentVersion": "現在開発バージョンの %version% を使用しています。リリースされている最新バージョンは %newestVersion% です。",
     "labymod": "Labymodを使用している場合、「食料とアーマーのゲージを非表示」の機能は互換性がありません。",
     "minionCannotReach": "%type% ミニオンは上限に達したか、範囲外で敵を倒せないためモブのスポーンを停止しました！!",
-    "minionIsFull": "いずれかのミニオンのインベントリが埋まっています！"
+    "minionIsFull": "いずれかのミニオンのインベントリが埋まっています！",
+    "typeEnchantmentsHere": "Type %type% Here!",
+    "separateMultiple": "Separate Multiple With Commas.",
+    "enchantsToMatch": "%type% To Match:",
+    "enchantsToExclude": "%type% To Exclude:",
+    "inventoryTypes": {
+      "enchants": "Enchants",
+      "reforges": "Reforges"
+    }
   }
 }

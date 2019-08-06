@@ -70,6 +70,14 @@
     "developmentVersion": "Du benutzt eine Entwicklungsversion, %version%. Die neueste stabile Version ist %newestVersion%",
     "labymod": "Die Optionen 'Verstecke Hunger-, Rüstungs-, und Lebensleiste' sind nicht kompatibel mit Labymod!",
     "minionCannotReach": "Dein %type% Minion kann keine seiner Mobs erreichen und spawnt keine mehr!",
-    "minionIsFull": "Ein Minion auf deiner Insel ist voll!"
+    "minionIsFull": "Ein Minion auf deiner Insel ist voll!",
+    "typeEnchantmentsHere": "Type %type% Here!",
+    "separateMultiple": "Separate Multiple With Commas.",
+    "enchantsToMatch": "%type% To Match:",
+    "enchantsToExclude": "%type% To Exclude:",
+    "inventoryTypes": {
+      "enchants": "Enchants",
+      "reforges": "Reforges"
+    }
   }
 }

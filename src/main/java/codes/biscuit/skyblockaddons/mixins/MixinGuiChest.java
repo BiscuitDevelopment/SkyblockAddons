@@ -2,7 +2,9 @@ package codes.biscuit.skyblockaddons.mixins;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui;
+import codes.biscuit.skyblockaddons.utils.ConfigColor;
 import codes.biscuit.skyblockaddons.utils.Feature;
+import codes.biscuit.skyblockaddons.utils.Message;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.client.gui.inventory.GuiChest;
@@ -17,10 +19,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.regex.Pattern;
 
 
@@ -42,13 +41,21 @@ public abstract class MixinGuiChest extends GuiContainer {
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
         super.drawScreen(mouseX, mouseY, partialTicks);
         if (textFieldMatch != null) {
-            mc.ingameGUI.drawString(mc.fontRendererObj, "Type Enchantments Here!", guiLeft - 160, guiTop + 40, SkyblockAddonsGui.getDefaultBlue(255));
-            mc.ingameGUI.drawString(mc.fontRendererObj, "Separate Multiple With Commas.", guiLeft - 160, guiTop + 50, SkyblockAddonsGui.getDefaultBlue(255));
-            mc.ingameGUI.drawString(mc.fontRendererObj, "Enchants To Match", guiLeft - 140, guiTop + 70, SkyblockAddonsGui.getDefaultBlue(255));
-            mc.ingameGUI.drawString(mc.fontRendererObj, "Words To Exclude", guiLeft - 140, guiTop + 110, SkyblockAddonsGui.getDefaultBlue(255));
+            SkyblockAddons main = SkyblockAddons.getInstance();
+            String  inventoryMessage = main.getConfigValues().getMessage(inventoryType.getMessage());
+            mc.ingameGUI.drawString(mc.fontRendererObj, main.getConfigValues().getMessage(Message.MESSAGE_TYPE_ENCHANTMENTS, inventoryMessage), guiLeft - 160, guiTop + 40, SkyblockAddonsGui.getDefaultBlue(255));
+            mc.ingameGUI.drawString(mc.fontRendererObj, main.getConfigValues().getMessage(Message.MESSAGE_SEPARATE_ENCHANTMENTS), guiLeft - 160, guiTop + 50, SkyblockAddonsGui.getDefaultBlue(255));
+            mc.ingameGUI.drawString(mc.fontRendererObj, main.getConfigValues().getMessage(Message.MESSAGE_ENCHANTS_TO_MATCH, inventoryMessage), guiLeft - 140, guiTop + 70, SkyblockAddonsGui.getDefaultBlue(255));
+            mc.ingameGUI.drawString(mc.fontRendererObj, main.getConfigValues().getMessage(Message.MESSAGE_ENCHANTS_TO_EXCLUDE, inventoryMessage), guiLeft - 140, guiTop + 110, SkyblockAddonsGui.getDefaultBlue(255));
             textFieldMatch.drawTextBox();
+            if (textFieldMatch.getText().equals("")) {
+                mc.ingameGUI.drawString(mc.fontRendererObj, "ex. \"prot, feather\"", guiLeft - 136, guiTop + 86, ConfigColor.DARK_GRAY.getColor(255));
+            }
             GlStateManager.color(1.0F, 0, 0);
             textFieldExclusions.drawTextBox();
+            if (textFieldExclusions.getText().equals("")) {
+                mc.ingameGUI.drawString(mc.fontRendererObj, "ex. \"proj, blast\"", guiLeft - 136, guiTop + 126, ConfigColor.DARK_GRAY.getColor(255));
+            }
             GlStateManager.color(1F, 1F, 1F);
         }
     }
@@ -64,7 +71,7 @@ public abstract class MixinGuiChest extends GuiContainer {
             int yPos = guiTop + 80;
             textFieldMatch = new GuiTextField(2, this.fontRendererObj, xPos, yPos, 120, 20);
             textFieldMatch.setMaxStringLength(100);
-            Set<String> lockedEnchantments = SkyblockAddons.getInstance().getUtils().getEnchantmentMatch();
+            List<String> lockedEnchantments = SkyblockAddons.getInstance().getUtils().getEnchantmentMatch();
             StringBuilder enchantmentBuilder = new StringBuilder();
             int i = 1;
             for (String enchantment : lockedEnchantments) {
@@ -107,9 +114,9 @@ public abstract class MixinGuiChest extends GuiContainer {
             if (textFieldMatch != null) {
                 textFieldMatch.textboxKeyTyped(typedChar, keyCode);
                 textFieldExclusions.textboxKeyTyped(typedChar, keyCode);
-                Set<String> enchantments = new HashSet<>(Arrays.asList(textFieldMatch.getText().split(",")));
+                List<String> enchantments = new LinkedList<>(Arrays.asList(textFieldMatch.getText().split(",")));
                 SkyblockAddons.getInstance().getUtils().setEnchantmentMatch(enchantments);
-                enchantments = new HashSet<>(Arrays.asList(textFieldExclusions.getText().split(",")));
+                enchantments = new LinkedList<>(Arrays.asList(textFieldExclusions.getText().split(",")));
                 SkyblockAddons.getInstance().getUtils().setEnchantmentExclusion(enchantments);
             }
         } else {

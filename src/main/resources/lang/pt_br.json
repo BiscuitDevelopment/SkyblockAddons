@@ -70,6 +70,14 @@
     "developmentVersion": "Você está usando uma versão de desenvolvimento: %version%. A versão online mais recente é %newestVersion%",
     "labymod": "Usuários de Labymod: Esconder Barras de Fome, Armadura e Vida não é compatível.",
     "minionCannotReach": "Um criado de %type% não alcança e parou de trabalhar!",
-    "minionIsFull": "Um criado em sua ilha está cheio!"
+    "minionIsFull": "Um criado em sua ilha está cheio!",
+    "typeEnchantmentsHere": "Type %type% Here!",
+    "separateMultiple": "Separate Multiple With Commas.",
+    "enchantsToMatch": "%type% To Match:",
+    "enchantsToExclude": "%type% To Exclude:",
+    "inventoryTypes": {
+      "enchants": "Enchants",
+      "reforges": "Reforges"
+    }
   }
 }

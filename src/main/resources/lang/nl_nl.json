@@ -70,6 +70,14 @@
     "developmentVersion": "U gebruikt een ontwikkelings versie: %version%. De laatste online versie is %newestVersion%",
     "labymod": "Labymod Gebruikers: Verstop Voedsel & Harnas Bar is onverenigbaar.",
     "minionCannotReach": "Een %type% handlanger kan het niet bereiken en is gestopt!",
-    "minionIsFull": "A minion on your island is full!"
+    "minionIsFull": "A minion on your island is full!",
+    "typeEnchantmentsHere": "Type %type% Here!",
+    "separateMultiple": "Separate Multiple With Commas.",
+    "enchantsToMatch": "%type% To Match:",
+    "enchantsToExclude": "%type% To Exclude:",
+    "inventoryTypes": {
+      "enchants": "Enchants",
+      "reforges": "Reforges"
+    }
   }
 }

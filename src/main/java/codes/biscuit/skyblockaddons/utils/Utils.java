@@ -29,8 +29,8 @@ import java.util.stream.Collectors;
 
 public class Utils {
 
-    private Set<String> enchantmentMatch = new HashSet<>();
-    private Set<String> enchantmentExclusion = new HashSet<>();
+    private List<String> enchantmentMatch = new LinkedList<>();
+    private List<String> enchantmentExclusion = new LinkedList<>();
     private BackpackInfo backpackToRender = null;
     private boolean wearingSkeletonHelmet = false;
     private static boolean onSkyblock = false;
@@ -328,19 +328,19 @@ public class Utils {
         this.backpackToRender = backpackToRender;
     }
 
-    public Set<String> getEnchantmentExclusion() {
+    public List<String> getEnchantmentExclusion() {
         return enchantmentExclusion;
     }
 
-    public Set<String> getEnchantmentMatch() {
+    public List<String> getEnchantmentMatch() {
         return enchantmentMatch;
     }
 
-    public void setEnchantmentExclusion(Set<String> enchantmentExclusion) {
+    public void setEnchantmentExclusion(List<String> enchantmentExclusion) {
         this.enchantmentExclusion = enchantmentExclusion;
     }
 
-    public void setEnchantmentMatch(Set<String> enchantmentMatch) {
+    public void setEnchantmentMatch(List<String> enchantmentMatch) {
         this.enchantmentMatch = enchantmentMatch;
     }
 

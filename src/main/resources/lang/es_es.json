@@ -70,6 +70,14 @@
     "developmentVersion": "Estás ejecutando la versión: %version%. La última versión online es %newestVersion%",
     "labymod": "Usuarios de Labymod: Ocultar la Barra de Comida y Armadura Es incompatible.",
     "minionCannotReach": "¡Un minion de tipo %type% No puede alcanzar a ningún mob y ha parado de generar más!",
-    "minionIsFull": "¡Un Minion en la Isla tiene el Inventario Lleno!"
+    "minionIsFull": "¡Un Minion en la Isla tiene el Inventario Lleno!",
+    "typeEnchantmentsHere": "Type %type% Here!",
+    "separateMultiple": "Separate Multiple With Commas.",
+    "enchantsToMatch": "%type% To Match:",
+    "enchantsToExclude": "%type% To Exclude:",
+    "inventoryTypes": {
+      "enchants": "Enchants",
+      "reforges": "Reforges"
+    }
   }
 }

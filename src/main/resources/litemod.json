@@ -1,0 +1,12 @@
+{
+  "name": "SkyblockAddons",
+  "author": "Biscut",
+  "description": "A mod with many features to improve your Hypixel Skyblock experience. Use /sba to toggle things/change settings.",
+  "url": "https://hypixel.net/threads/forge-1-8-9-skyblockaddons-useful-features-for-skyblock.2109217/",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "mixinConfigs": [
+    "mixins.skyblockaddons.json"
+  ],
+  "tweakClass": "codes.biscuit.skyblockaddons.tweaker.FMLLoadingPlugin"
+}

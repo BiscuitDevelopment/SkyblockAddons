@@ -13,6 +13,7 @@ import net.minecraft.client.renderer.GlStateManager;
 public class ButtonLocation extends GuiButton {
 
     private SkyblockAddons main;
+    static Feature hoveredFeature;
     private Feature feature;
     private int boxXOne;
     private int boxXTwo;
@@ -151,6 +152,9 @@ public class ButtonLocation extends GuiButton {
                 scale /= 1.5;
                 GlStateManager.scale(scale,scale,1);
                 scaleMultiplier = 1F/scale;
+            }
+            if (hovered) {
+                hoveredFeature = feature;
             }
             GlStateManager.popMatrix();
         }

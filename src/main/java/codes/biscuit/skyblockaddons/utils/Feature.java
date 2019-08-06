@@ -156,8 +156,18 @@ public enum Feature {
 //    }
 
     public enum InventoryType {
-        ENCHANTMENT_TABLE,
-        REFORGE_ANVIL
+        ENCHANTMENT_TABLE(INVENTORY_TYPE_ENCHANTS),
+        REFORGE_ANVIL(INVENTORY_TYPE_REFORGES);
+
+        private Message message;
+
+        InventoryType(Message message) {
+            this.message = message;
+        }
+
+        public Message getMessage() {
+            return message;
+        }
     }
 
     public enum Backpack {

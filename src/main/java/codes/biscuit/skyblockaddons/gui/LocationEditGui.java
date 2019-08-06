@@ -7,8 +7,10 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.ScaledResolution;
+import org.lwjgl.input.Keyboard;
 
 import java.awt.*;
+import java.io.IOException;
 
 import static codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui.WIDTH_LIMIT;
 
@@ -78,6 +80,30 @@ public class LocationEditGui extends GuiScreen {
                 main.getConfigValues().setCoords(dragging, mouseX, sr.getScaledWidth()+5, mouseY, sr.getScaledHeight()+5);
             } else {
                 main.getConfigValues().setCoords(dragging, mouseX-25, sr.getScaledWidth(),mouseY-10, sr.getScaledHeight());
+            }
+        }
+    }
+
+    @Override
+    protected void keyTyped(char typedChar, int keyCode) throws IOException {
+        super.keyTyped(typedChar, keyCode);
+        Feature hoveredFeature = ButtonLocation.hoveredFeature;
+        if (hoveredFeature != null) {
+            ScaledResolution sr = new ScaledResolution(mc);
+            float xPixel = 1F/sr.getScaledWidth();
+            float yPixel = 1F/sr.getScaledHeight();
+            if (keyCode == Keyboard.KEY_LEFT) {
+                main.getConfigValues().setCoords(hoveredFeature, main.getConfigValues().getCoords(hoveredFeature).getX()-xPixel,
+                        main.getConfigValues().getCoords(hoveredFeature).getY());
+            } else if (keyCode == Keyboard.KEY_UP) {
+                main.getConfigValues().setCoords(hoveredFeature, main.getConfigValues().getCoords(hoveredFeature).getX(),
+                        main.getConfigValues().getCoords(hoveredFeature).getY()-yPixel);
+            } else if (keyCode == Keyboard.KEY_RIGHT) {
+                main.getConfigValues().setCoords(hoveredFeature, main.getConfigValues().getCoords(hoveredFeature).getX()+xPixel,
+                        main.getConfigValues().getCoords(hoveredFeature).getY());
+            } else if (keyCode == Keyboard.KEY_DOWN) {
+                main.getConfigValues().setCoords(hoveredFeature, main.getConfigValues().getCoords(hoveredFeature).getX(),
+                        main.getConfigValues().getCoords(hoveredFeature).getY()+yPixel);
             }
         }
     }

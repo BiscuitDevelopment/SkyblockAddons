@@ -331,45 +331,46 @@ public class ConfigValues {
     }
 
     public String getMessage(Message message, String... variables) {
-        String text = null;
-        if (message.getMessageObject() == Message.MessageObject.SETTING) {
-            text = languageConfig.getAsJsonObject("settings").get(message.getMemberName()).getAsString();
-        } else if (message.getMessageObject() == Message.MessageObject.BAR_TYPE) {
-            text = languageConfig.getAsJsonObject("settings").getAsJsonObject("barTypes").get(message.getMemberName()).getAsString();
-        } else if (message.getMessageObject() == Message.MessageObject.ICON_TYPE) {
-            text = languageConfig.getAsJsonObject("settings").getAsJsonObject("iconTypes").get(message.getMemberName()).getAsString();
-        } else if (message.getMessageObject() == Message.MessageObject.STYLE) {
-            text = languageConfig.getAsJsonObject("settings").getAsJsonObject("styles").get(message.getMemberName()).getAsString();
-        } else if (message.getMessageObject() == Message.MessageObject.MESSAGES) {
-            text = languageConfig.getAsJsonObject("messages").get(message.getMemberName()).getAsString();
-        } else if (message.getMessageObject() == Message.MessageObject.ROOT) {
-            text = languageConfig.get(message.getMemberName()).getAsString();
-        }
-        if (text != null) {
-            if (message == Message.SETTING_WARNING_TIME) {
-                text = text.replace("%time%", String.valueOf(warningSeconds));
-            } else if (message == Message.SETTING_MANA_BAR) {
-                text = text.replace("%type%", manaBarType.getDisplayText());
-            } else if (message == Message.SETTING_HEALTH_BAR) {
-                text = text.replace("%type%", healthBarType.getDisplayText());
-            } else if (message == Message.SETTING_DEFENCE_ICON) {
-                text = text.replace("%type%", defenceIconType.getDisplayText());
-            } else if (message == Message.SETTING_GUI_SCALE) {
-                text = text.replace("%scale%", variables[0]);
-            } else if (message == Message.MESSAGE_NEW_VERSION) {
-                text = text.replace("%newestVersion%", variables[0]);
-            } else if (message == Message.SETTING_BACKPACK_STYLE) {
-                text = text.replace("%style%", backpackStyle.getDisplayText());
-            } else if (message == Message.MESSAGE_DEVELOPMENT_VERSION) {
-                text = text.replace("%version%", variables[0]).replace("%newestVersion%", variables[1]);
-            } else if (message == Message.LANGUAGE) {
-                text = "Language: "+text;
-            } else if (message == Message.MESSAGE_MINION_CANNOT_REACH) {
-                text = text.replace("%type%", variables[0]);
+        String text;
+        try {
+            List<String> path = message.getMessageObject().getPath();
+            JsonObject jsonObject = languageConfig;
+            for (String part : path) {
+                if (!part.equals("")) {
+                    jsonObject = jsonObject.getAsJsonObject(part);
+                }
             }
-        }
-        if (text != null && language == Language.HEBREW) {
-            text = reverseText(text);
+            text = jsonObject.get(message.getMemberName()).getAsString();
+            if (text != null) {
+                if (message == Message.SETTING_WARNING_TIME) {
+                    text = text.replace("%time%", String.valueOf(warningSeconds));
+                } else if (message == Message.SETTING_MANA_BAR) {
+                    text = text.replace("%type%", manaBarType.getDisplayText());
+                } else if (message == Message.SETTING_HEALTH_BAR) {
+                    text = text.replace("%type%", healthBarType.getDisplayText());
+                } else if (message == Message.SETTING_DEFENCE_ICON) {
+                    text = text.replace("%type%", defenceIconType.getDisplayText());
+                } else if (message == Message.SETTING_GUI_SCALE) {
+                    text = text.replace("%scale%", variables[0]);
+                } else if (message == Message.MESSAGE_NEW_VERSION) {
+                    text = text.replace("%newestVersion%", variables[0]);
+                } else if (message == Message.SETTING_BACKPACK_STYLE) {
+                    text = text.replace("%style%", backpackStyle.getDisplayText());
+                } else if (message == Message.MESSAGE_DEVELOPMENT_VERSION) {
+                    text = text.replace("%version%", variables[0]).replace("%newestVersion%", variables[1]);
+                } else if (message == Message.LANGUAGE) {
+                    text = "Language: " + text;
+                } else if (message == Message.MESSAGE_MINION_CANNOT_REACH || message == Message.MESSAGE_TYPE_ENCHANTMENTS
+                        || message == Message.MESSAGE_ENCHANTS_TO_MATCH || message == Message.MESSAGE_ENCHANTS_TO_EXCLUDE) {
+                    text = text.replace("%type%", variables[0]);
+                }
+            }
+            if (text != null && language == Language.HEBREW) {
+                text = reverseText(text);
+            }
+        } catch (NullPointerException ex) { // In case I messed up some translation or something.
+            ex.printStackTrace();
+            text = "";
         }
         return text;
     }
@@ -460,6 +461,15 @@ public class ConfigValues {
             } else {
                 return new CoordsPair(0,0);
             }
+        }
+    }
+
+    public void setCoords(Feature feature, float x, float y) {
+        if (coordinates.containsKey(feature)) {
+            coordinates.get(feature).setX(x);
+            coordinates.get(feature).setY(y);
+        } else {
+            coordinates.put(feature, new CoordsPair(x, y));
         }
     }
 
