@@ -1,6 +1,7 @@
 package codes.biscuit.skyblockaddons.gui;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.listeners.PlayerListener;
 import codes.biscuit.skyblockaddons.utils.ConfigColor;
 import codes.biscuit.skyblockaddons.utils.Feature;
 import codes.biscuit.skyblockaddons.utils.Message;
@@ -110,7 +111,7 @@ public class ButtonRegular extends GuiButton {
             GlStateManager.popMatrix();
             if (!originalString.equals(displayString) && mc.currentScreen instanceof SkyblockAddonsGui) {
                 main.getUtils().setFadingIn(false);
-                main.getPlayerListener().setOpenMainGUI(true);
+                main.getPlayerListener().setOpenGUI(PlayerListener.GUIType.MAIN);
             }
         }
     }

@@ -1,6 +1,7 @@
 package codes.biscuit.skyblockaddons.gui;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.listeners.PlayerListener;
 import codes.biscuit.skyblockaddons.utils.Feature;
 import codes.biscuit.skyblockaddons.utils.Message;
 import net.minecraft.client.Minecraft;
@@ -19,7 +20,7 @@ public class LocationEditGui extends GuiScreen {
     private SkyblockAddons main;
     private Feature dragging = null;
 
-    LocationEditGui(SkyblockAddons main) {
+    public LocationEditGui(SkyblockAddons main) {
         this.main = main;
     }
 
@@ -117,6 +118,6 @@ public class LocationEditGui extends GuiScreen {
     @Override
     public void onGuiClosed() {
         main.getConfigValues().saveConfig();
-        main.getPlayerListener().setOpenMainGUI(true);
+        main.getPlayerListener().setOpenGUI(PlayerListener.GUIType.MAIN);
     }
 }

@@ -71,7 +71,7 @@ public class PlayerListener {
 //    private Feature.Accuracy magmaTimerAccuracy = null;
 //    private long magmaTime = 7200;
 
-    private boolean openMainGUI = false;
+    private GUIType openGUI = null;
 
     private SkyblockAddons main;
 
@@ -151,7 +151,10 @@ public class PlayerListener {
                     }
                     e.message = new ChatComponentText(returnMessage);
                     return;
-                } catch (Exception ignored) {}
+                } catch (Exception ex) {
+                    predictMana = true;
+                    predictHealth = true;
+                }
             }
             predictMana = true;
             predictHealth = true;
@@ -287,8 +290,8 @@ public class PlayerListener {
             Feature.BarType healthBarType = main.getConfigValues().getHealthBarType();
             if ((!main.getConfigValues().getDisabledFeatures().contains(Feature.SKELETON_BAR)) && main.getUtils().isWearingSkeletonHelmet()) {
                 CoordsPair coordsPair = main.getConfigValues().getCoords(Feature.SKELETON_BAR);
-                int width = (int)(coordsPair.getX()*sr.getScaledWidth());
-                int height = (int)(coordsPair.getY()*sr.getScaledHeight());
+                float width = coordsPair.getX()*sr.getScaledWidth();
+                float height = coordsPair.getY()*sr.getScaledHeight();
                 int bones = 0;
                 for (Entity listEntity : mc.theWorld.loadedEntityList) {
                     if (listEntity instanceof EntityItem &&
@@ -298,7 +301,7 @@ public class PlayerListener {
                 }
                 if (bones > 3) bones = 3;
                 for (int boneCounter = 0; boneCounter < bones; boneCounter++) {
-                    mc.getRenderItem().renderItemIntoGUI(BONE_ITEM, (int)((width+boneCounter*15*scale)*scaleMultiplier), (int)((height+2)*scaleMultiplier));
+                    mc.getRenderItem().renderItemIntoGUI(BONE_ITEM, Math.round((width+boneCounter*15*scale)*scaleMultiplier), Math.round((height+2)*scaleMultiplier));
                 }
             }
             if (manaBarType == Feature.BarType.BAR
@@ -359,9 +362,9 @@ public class PlayerListener {
             x = coordsPair.getX();
             y = coordsPair.getY();
         }
-        int left = (int) (x * sr.getScaledWidth()) + 14;
+        float left = x * sr.getScaledWidth() + 14;
         int filled = (int) (fill * barWidth);
-        int top = (int) (y * sr.getScaledHeight()) + 10;
+        float top = y * sr.getScaledHeight() + 10;
         int textureY = main.getConfigValues().getColor(colorFeature).ordinal()*10;
         if (buttonLocation == null) {
             mc.ingameGUI.drawTexturedModalRect(left * scaleMultiplier - 60, top * scaleMultiplier - 10, 0, textureY, barWidth, 5);
@@ -383,13 +386,11 @@ public class PlayerListener {
             mc.getTextureManager().bindTexture(PlayerListener.DEFENCE_VANILLA);
         }
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-        float x;
-        float y;
         CoordsPair coordsPair = main.getConfigValues().getCoords(Feature.DEFENCE_ICON);
-        x = coordsPair.getX();
-        y = coordsPair.getY();
-        int left = (int) (x * sr.getScaledWidth());
-        int top = (int) (y * sr.getScaledHeight());
+        float x = coordsPair.getX();
+        float y = coordsPair.getY();
+        float left = x * sr.getScaledWidth();
+        float top = y * sr.getScaledHeight();
         float scaleMultiplier;
         if (buttonLocation == null) {
             float newScale = scale*1.5F;
@@ -436,15 +437,15 @@ public class PlayerListener {
             BigDecimal bigDecimal = new BigDecimal(percentage).setScale(1, BigDecimal.ROUND_HALF_UP);
             text = bigDecimal.toString()+"%";
         }
-        int x = (int) (textX * sr.getScaledWidth()) + 60 - mc.fontRendererObj.getStringWidth(text) / 2;
-        int y = (int) (textY * sr.getScaledHeight()) + 4;
+        float x = Math.round(textX * sr.getScaledWidth() + 60 - (float)mc.fontRendererObj.getStringWidth(text) / 2);
+        float y = Math.round(textY * sr.getScaledHeight() +4);
         x+=25;
         y+=10;
-        mc.fontRendererObj.drawString(text, (int)(x*scaleMultiplier)-60+1, (int)(y*scaleMultiplier)-10, 0);
-        mc.fontRendererObj.drawString(text, (int)(x*scaleMultiplier)-60-1, (int)(y*scaleMultiplier)-10, 0);
-        mc.fontRendererObj.drawString(text, (int)(x*scaleMultiplier)-60, (int)(y*scaleMultiplier)+1-10, 0);
-        mc.fontRendererObj.drawString(text, (int)(x*scaleMultiplier)-60, (int)(y*scaleMultiplier)-1-10, 0);
-        mc.fontRendererObj.drawString(text, (int)(x*scaleMultiplier)-60, (int)(y*scaleMultiplier)-10, color);
+        mc.fontRendererObj.drawString(text, Math.round(x*scaleMultiplier)-60+1, Math.round(y*scaleMultiplier)-10, 0);
+        mc.fontRendererObj.drawString(text, Math.round(x*scaleMultiplier)-60-1, Math.round(y*scaleMultiplier)-10, 0);
+        mc.fontRendererObj.drawString(text, Math.round(x*scaleMultiplier)-60, Math.round(y*scaleMultiplier)+1-10, 0);
+        mc.fontRendererObj.drawString(text, Math.round(x*scaleMultiplier)-60, Math.round(y*scaleMultiplier)-1-10, 0);
+        mc.fontRendererObj.drawString(text, Math.round(x*scaleMultiplier)-60, Math.round(y*scaleMultiplier)-10, color);
 //        mc.ingameGUI.drawString(mc.fontRendererObj, text, (int)(x*scaleMultiplier)-60, (int)(y*scaleMultiplier)-10, color);
     }
 
@@ -686,10 +687,12 @@ public class PlayerListener {
 
     @SubscribeEvent()
     public void onRender(TickEvent.RenderTickEvent e) {
-        if (openMainGUI) {
+        if (openGUI == GUIType.MAIN) {
             Minecraft.getMinecraft().displayGuiScreen(new SkyblockAddonsGui(main, 1));
-            openMainGUI = false;
+        } else if (openGUI == GUIType.EDIT_LOCATIONS) {
+            Minecraft.getMinecraft().displayGuiScreen(new LocationEditGui(main));
         }
+        openGUI = null;
     }
 
     public void setTitleWarning(boolean titleWarning) {
@@ -711,8 +714,8 @@ public class PlayerListener {
 //        }
 //    }
 
-    public void setOpenMainGUI(boolean openMainGUI) {
-        this.openMainGUI = openMainGUI;
+    public void setOpenGUI(GUIType openGUI) {
+        this.openGUI = openGUI;
     }
 
     private void setSubtitleWarning(boolean subtitleWarning) {
@@ -721,5 +724,10 @@ public class PlayerListener {
 
     public long getLastWorldJoin() {
         return lastWorldJoin;
+    }
+
+    public enum GUIType {
+        MAIN,
+        EDIT_LOCATIONS
     }
 }

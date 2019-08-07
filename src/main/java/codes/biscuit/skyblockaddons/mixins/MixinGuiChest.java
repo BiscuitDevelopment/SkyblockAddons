@@ -45,8 +45,8 @@ public abstract class MixinGuiChest extends GuiContainer {
             String  inventoryMessage = main.getConfigValues().getMessage(inventoryType.getMessage());
             mc.ingameGUI.drawString(mc.fontRendererObj, main.getConfigValues().getMessage(Message.MESSAGE_TYPE_ENCHANTMENTS, inventoryMessage), guiLeft - 160, guiTop + 40, SkyblockAddonsGui.getDefaultBlue(255));
             mc.ingameGUI.drawString(mc.fontRendererObj, main.getConfigValues().getMessage(Message.MESSAGE_SEPARATE_ENCHANTMENTS), guiLeft - 160, guiTop + 50, SkyblockAddonsGui.getDefaultBlue(255));
-            mc.ingameGUI.drawString(mc.fontRendererObj, main.getConfigValues().getMessage(Message.MESSAGE_ENCHANTS_TO_MATCH, inventoryMessage), guiLeft - 140, guiTop + 70, SkyblockAddonsGui.getDefaultBlue(255));
-            mc.ingameGUI.drawString(mc.fontRendererObj, main.getConfigValues().getMessage(Message.MESSAGE_ENCHANTS_TO_EXCLUDE, inventoryMessage), guiLeft - 140, guiTop + 110, SkyblockAddonsGui.getDefaultBlue(255));
+            mc.ingameGUI.drawString(mc.fontRendererObj, main.getConfigValues().getMessage(Message.MESSAGE_ENCHANTS_TO_MATCH, inventoryMessage), guiLeft - 160, guiTop + 70, SkyblockAddonsGui.getDefaultBlue(255));
+            mc.ingameGUI.drawString(mc.fontRendererObj, main.getConfigValues().getMessage(Message.MESSAGE_ENCHANTS_TO_EXCLUDE, inventoryMessage), guiLeft - 160, guiTop + 110, SkyblockAddonsGui.getDefaultBlue(255));
             textFieldMatch.drawTextBox();
             if (textFieldMatch.getText().equals("")) {
                 mc.ingameGUI.drawString(mc.fontRendererObj, "ex. \"prot, feather\"", guiLeft - 136, guiTop + 86, ConfigColor.DARK_GRAY.getColor(255));
@@ -67,7 +67,7 @@ public abstract class MixinGuiChest extends GuiContainer {
         if (guiName.equals("Enchant Item")) inventoryType = Feature.InventoryType.ENCHANTMENT_TABLE;
         if (guiName.equals("Reforge Item")) inventoryType = Feature.InventoryType.REFORGE_ANVIL;
         if (inventoryType != null) {
-            int xPos = guiLeft - 140;
+            int xPos = guiLeft - 160;
             int yPos = guiTop + 80;
             textFieldMatch = new GuiTextField(2, this.fontRendererObj, xPos, yPos, 120, 20);
             textFieldMatch.setMaxStringLength(100);

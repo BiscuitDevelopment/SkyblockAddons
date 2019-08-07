@@ -41,18 +41,18 @@ public class ButtonLocation extends GuiButton {
                 CoordsPair coordsPair = main.getConfigValues().getCoords(feature);
                 float x = coordsPair.getX();
                 float y = coordsPair.getY();
-                xPosition = (int) (x * sr.getScaledWidth());
-                yPosition = (int) (y * sr.getScaledHeight());
+                xPosition = Math.round(x * sr.getScaledWidth());
+                yPosition = Math.round(y * sr.getScaledHeight());
                 short barWidth = 92;
-                int left = (int) (x * sr.getScaledWidth()) + 14;
-                int top = (int) (y * sr.getScaledHeight()) + 10;
+                float left = x * sr.getScaledWidth() + 14;
+                float top = y * sr.getScaledHeight() + 10;
                 float barX = left*scaleMultiplier-60;
                 float barY = top*scaleMultiplier-10;
 
-                boxXOne = (int)barX-3;
-                boxXTwo = (int)barX+barWidth+3;
-                boxYOne = (int)barY-3;
-                boxYTwo = (int)barY+9;
+                boxXOne = Math.round(barX-3);
+                boxXTwo = Math.round(barX+barWidth+3);
+                boxYOne = Math.round(barY-3);
+                boxYTwo = Math.round(barY+9);
                 hovered = mouseX >= boxXOne/scaleMultiplier && mouseY >= boxYOne/scaleMultiplier && mouseX < boxXTwo/scaleMultiplier && mouseY < boxYTwo/scaleMultiplier;
                 int boxAlpha = 100;
                 if (hovered) {
@@ -67,16 +67,16 @@ public class ButtonLocation extends GuiButton {
                 main.getPlayerListener().drawBar(feature, scaleMultiplier, mc, sr, colorFeature, this);
             } else if (feature == Feature.SKELETON_BAR) {
                 CoordsPair coordsPair = main.getConfigValues().getCoords(Feature.SKELETON_BAR);
-                xPosition = (int) (coordsPair.getX() * sr.getScaledWidth());
-                yPosition = (int) (coordsPair.getY() * sr.getScaledHeight());
+                xPosition = Math.round(coordsPair.getX() * sr.getScaledWidth());
+                yPosition = Math.round(coordsPair.getY() * sr.getScaledHeight());
 
-                int barX = (int)(xPosition*scaleMultiplier);
-                int barY = (int)((yPosition+2)*scaleMultiplier);
+                float barX = xPosition*scaleMultiplier;
+                float barY = ((yPosition+2)*scaleMultiplier);
 
-                boxXOne = barX-3;
-                boxXTwo = barX+48;
-                boxYOne = barY-3;
-                boxYTwo = barY+18;
+                boxXOne = Math.round(barX-3);
+                boxXTwo = Math.round(barX+48);
+                boxYOne = Math.round(barY-3);
+                boxYTwo = Math.round(barY+18);
                 hovered = mouseX >= boxXOne/scaleMultiplier && mouseY >= boxYOne/scaleMultiplier && mouseX < boxXTwo/scaleMultiplier && mouseY < boxYTwo/scaleMultiplier;
 //                hovered = mouseX >= this.xPosition && mouseY >= this.yPosition && mouseX < this.xPosition + this.width && mouseY < this.yPosition + this.height;
                 int boxAlpha = 100;
@@ -86,28 +86,28 @@ public class ButtonLocation extends GuiButton {
                 int boxColor = ConfigColor.GRAY.getColor(boxAlpha);
                 drawRect(boxXOne, boxYOne, boxXTwo, boxYTwo, boxColor);
                 for (int boneCounter = 0; boneCounter < 3; boneCounter++) {
-                    mc.getRenderItem().renderItemIntoGUI(PlayerListener.BONE_ITEM, (int)((xPosition+boneCounter*15*scale)*scaleMultiplier), barY);
+                    mc.getRenderItem().renderItemIntoGUI(PlayerListener.BONE_ITEM, Math.round(((xPosition+boneCounter*15*scale)*scaleMultiplier)), Math.round(barY));
                 }
             } else if (feature == Feature.MANA_TEXT || feature == Feature.HEALTH_TEXT ||
                     feature == Feature.DEFENCE_TEXT || feature == Feature.DEFENCE_PERCENTAGE) {
                 CoordsPair coordsPair = main.getConfigValues().getCoords(feature);
                 float coordX = coordsPair.getX();
                 float coordsY = coordsPair.getY();
-                xPosition = (int) (coordX * sr.getScaledWidth());
-                yPosition = (int) (coordsY * sr.getScaledHeight());
+                xPosition = Math.round(coordX * sr.getScaledWidth());
+                yPosition = Math.round(coordsY * sr.getScaledHeight());
                 String text = "123/321";
-                int stringWidth = mc.ingameGUI.getFontRenderer().getStringWidth(text);
-                int x = (int) (coordX * sr.getScaledWidth()) + 60 - stringWidth / 2;
-                int y = (int) (coordsY * sr.getScaledHeight()) + 4;
+                float stringWidth = mc.ingameGUI.getFontRenderer().getStringWidth(text);
+                float x = coordX * sr.getScaledWidth() + 60 - stringWidth / 2;
+                float y = coordsY * sr.getScaledHeight() + 4;
                 x+=width/2;
                 y+=height/2;
-                int barX = (int)(x*scaleMultiplier)-60;
-                int barY = (int)(y*scaleMultiplier);
+                float barX = x*scaleMultiplier-60;
+                float barY = y*scaleMultiplier;
 
-                boxXOne = barX-3;
-                boxXTwo = barX+stringWidth+3;
-                boxYOne = barY-13;
-                boxYTwo = barY+1;
+                boxXOne = Math.round(barX-3);
+                boxXTwo = Math.round(barX+stringWidth+3);
+                boxYOne = Math.round(barY-13);
+                boxYTwo = Math.round(barY+1);
                 hovered = mouseX >= boxXOne/scaleMultiplier && mouseY >= boxYOne/scaleMultiplier && mouseX < boxXTwo/scaleMultiplier && mouseY < boxYTwo/scaleMultiplier;
                 int boxAlpha = 100;
                 if (hovered) {
@@ -126,16 +126,16 @@ public class ButtonLocation extends GuiButton {
                 CoordsPair coordsPair = main.getConfigValues().getCoords(feature);
                 float x = coordsPair.getX();
                 float y = coordsPair.getY();
-                xPosition = (int) (x * sr.getScaledWidth());
-                yPosition = (int) (y * sr.getScaledHeight());
+                xPosition = Math.round(x * sr.getScaledWidth());
+                yPosition = Math.round(y * sr.getScaledHeight());
                 short barWidth = 9;
                 float barX = xPosition * scaleMultiplier;
                 float barY = yPosition * scaleMultiplier;
 
-                boxXOne = (int) barX - 3;
-                boxXTwo = (int) barX + (int)((barWidth + 7)*(scale));
-                boxYOne = (int) barY - 3;
-                boxYTwo = (int) barY + (int)(16*(scale));
+                boxXOne = Math.round(barX - 3);
+                boxXTwo = Math.round(barX + (barWidth + 7)*(scale));
+                boxYOne = Math.round(barY - 3);
+                boxYTwo = Math.round(barY + 16*(scale));
 
                 hovered = mouseX >= boxXOne / scaleMultiplier && mouseY >= boxYOne / scaleMultiplier && mouseX < boxXTwo / scaleMultiplier && mouseY < boxYTwo / scaleMultiplier;
                 int boxAlpha = 100;

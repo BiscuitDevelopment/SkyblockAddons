@@ -1,6 +1,7 @@
 package codes.biscuit.skyblockaddons.commands;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.listeners.PlayerListener;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
 
@@ -39,7 +40,14 @@ public class SkyblockAddonsCommand extends CommandBase {
 
     @Override
     public void processCommand(ICommandSender sender, String[] args) {
+        if (args.length > 0) {
+            if (args[0].equalsIgnoreCase("edit")) {
+                main.getUtils().setFadingIn(false);
+                main.getPlayerListener().setOpenGUI(PlayerListener.GUIType.EDIT_LOCATIONS);
+                return;
+            }
+        }
         main.getUtils().setFadingIn(true);
-        main.getPlayerListener().setOpenMainGUI(true);
+        main.getPlayerListener().setOpenGUI(PlayerListener.GUIType.MAIN);
     }
 }

@@ -1,6 +1,7 @@
 package codes.biscuit.skyblockaddons.gui;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.listeners.PlayerListener;
 import codes.biscuit.skyblockaddons.utils.Feature;
 import codes.biscuit.skyblockaddons.utils.Message;
 import net.minecraft.client.Minecraft;
@@ -147,7 +148,7 @@ public class SettingsGui extends GuiScreen {
     public void onGuiClosed() {
         main.getConfigValues().saveConfig();
         if (!cancelScreenReturn) {
-            main.getPlayerListener().setOpenMainGUI(true);
+            main.getPlayerListener().setOpenGUI(PlayerListener.GUIType.MAIN);
         }
     }
 }
