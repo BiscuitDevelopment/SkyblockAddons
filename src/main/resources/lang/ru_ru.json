@@ -55,11 +55,11 @@
     "defencePercentageColor": "Цвет процентов Защиты",
     "disableDoubleDropAutomatically": "Отключать двойное выбрасывание автоматически",
     "fullMinionWarning": "Полное предупреждение миньонов",
-    "nextPage": "Next Page",
-    "previousPage": "Previous Page",
-    "ignoreItemFrameClicks": "Ignore Clicks On Item Frames",
-    "useVanillaTextureDefence": "Use Vanilla Texture For Defence Icon",
-    "showBackpackHoldingShift": "Only Show Backpack When Holding Shift"
+    "nextPage": "Следующая страница",
+    "previousPage": "Предыдущая страница",
+    "ignoreItemFrameClicks": "Игнорировать клики по Рамкам",
+    "useVanillaTextureDefence": "Использовать оригинальную иконку брони",
+    "showBackpackHoldingShift": "Показывать рюкзак при зажатии Шифта"
   },
   "messages": {
     "dropConfirmation": "Выбросите предмет ещё раз для подтверждения!",
@@ -71,13 +71,13 @@
     "labymod": "Пользователи Labymod: Скрытие полос Еды, Защиты и Жизни несовместимо.",
     "minionCannotReach": "%type% миньон не может достать и перестал спавнить!",
     "minionIsFull": "Миньон на вашем острове заполнен!",
-    "typeEnchantmentsHere": "Type %type% Here!",
-    "separateMultiple": "Separate Multiple With Commas.",
-    "enchantsToMatch": "%type% To Match:",
-    "enchantsToExclude": "%type% To Exclude:",
+    "typeEnchantmentsHere": "Пишите %type% здесь!",
+    "separateMultiple": "Разделяйте несколько запятыми.",
+    "enchantsToMatch": "Искать %type%:",
+    "enchantsToExclude": "Не искать %type%:",
     "inventoryTypes": {
-      "enchants": "Enchants",
-      "reforges": "Reforges"
+      "enchants": "Зачарования",
+      "reforges": "Перековки"
     }
   }
 }
