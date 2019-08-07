@@ -38,14 +38,14 @@
       "compact": "kompaktní"
     },
     "iconTypes": {
-      "iconDefenceAndPercentage": "Icon, Defence, & Percentage",
-      "iconAndDefence": "Icon & Defence",
-      "iconAndPercentage": "Icon & Percentage",
-      "defenceAndPercentage": "Defence & Percentage",
-      "icon": "Icon",
-      "defence": "Defence",
-      "percentage": "Percentage",
-      "off": "Off"
+      "iconDefenceAndPercentage": "Ikona, Obrana, a Procenta",
+      "iconAndDefence": "Ikona a obrana",
+      "iconAndPercentage": "Icona a procento",
+      "defenceAndPercentage": "Obran a procento",
+      "icon": "Ikona",
+      "defence": "Obrana",
+      "percentage": "Procenta",
+      "off": "Vypnuto"
     },
     "showBackpackPreview": "Ukázat náhled batohu",
     "hideHealthBar": "Skrýt vanilla ukazatel zdraví",
