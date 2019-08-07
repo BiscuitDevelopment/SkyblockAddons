@@ -1,5 +1,5 @@
 {
-  "language": "Português",
+  "language": "Português (Brasil)",
   "settings": {
     "settings": "Opções",
     "openSettings": "Abrir Mais Opções",
@@ -55,11 +55,11 @@
     "defencePercentageColor": "Cor da Porcentagem de Defesa",
     "disableDoubleDropAutomatically": "Desativar Largada Dupla Automaticamente",
     "fullMinionWarning": "Aviso de Criado Cheio",
-    "nextPage": "Next Page",
-    "previousPage": "Previous Page",
-    "ignoreItemFrameClicks": "Ignore Clicks On Item Frames",
-    "useVanillaTextureDefence": "Use Vanilla Texture For Defence Icon",
-    "showBackpackHoldingShift": "Only Show Backpack When Holding Shift"
+    "nextPage": "Próxima Página",
+    "previousPage": "Página Anterior",
+    "ignoreItemFrameClicks": "Ignorar Cliques em Molduras",
+    "useVanillaTextureDefence": "Usar Textura Vanilla Para Ícone de Defesa",
+    "showBackpackHoldingShift": "Só Mostar Conteúdos de Mochilas Quando Shift é Pressionado"
   },
   "messages": {
     "dropConfirmation": "Large este item de novo para confirmar!",
@@ -71,13 +71,13 @@
     "labymod": "Usuários de Labymod: Esconder Barras de Fome, Armadura e Vida não é compatível.",
     "minionCannotReach": "Um criado de %type% não alcança e parou de trabalhar!",
     "minionIsFull": "Um criado em sua ilha está cheio!",
-    "typeEnchantmentsHere": "Type %type% Here!",
-    "separateMultiple": "Separate Multiple With Commas.",
-    "enchantsToMatch": "%type% To Match:",
-    "enchantsToExclude": "%type% To Exclude:",
+    "typeEnchantmentsHere": "Escreva %type% Aqui!",
+    "separateMultiple": "Separe Múltiplos Com Vírgulas.",
+    "enchantsToMatch": "%type% Para Procurar:",
+    "enchantsToExclude": "%type% Para Excluir:",
     "inventoryTypes": {
-      "enchants": "Enchants",
-      "reforges": "Reforges"
+      "enchants": "Encantamentos",
+      "reforges": "Reforjadas"
     }
   }
 }

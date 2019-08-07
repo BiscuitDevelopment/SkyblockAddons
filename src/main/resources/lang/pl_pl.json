@@ -71,13 +71,13 @@
     "labymod": "Użytkownicy LabyMod: Ukrycie Paska Zdrowia, Jedzenia i Ochrony jest niekompatybilne.",
     "minionCannotReach": "Minion %type% nie może dosięgnąć moba i przestał działać!",
     "minionIsFull": "Jakiś Minion na twojej wyspie jest pełny!",
-    "typeEnchantmentsHere": "Type %type% Here!",
-    "separateMultiple": "Separate Multiple With Commas.",
-    "enchantsToMatch": "%type% To Match:",
-    "enchantsToExclude": "%type% To Exclude:",
+    "typeEnchantmentsHere": "Napisz %type% Tutaj!",
+    "separateMultiple": "Oddziel Wieloma Przecinkami.",
+    "enchantsToMatch": "%type% Do Dopasowania:",
+    "enchantsToExclude": "%type% Do Uniknięcia:",
     "inventoryTypes": {
-      "enchants": "Enchants",
-      "reforges": "Reforges"
+      "enchants": "Enchanty",
+      "reforges": "Reforge"
     }
   }
 }
