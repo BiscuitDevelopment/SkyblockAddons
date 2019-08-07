@@ -1,0 +1,83 @@
+{
+  "language": "Czech",
+  "settings": {
+    "settings": "Nastavení",
+    "openSettings": "Otevřít další nastavení",
+    "magmaBossWarning": "Magma Boss upozornění",
+    "itemDropConfirmation": "Potvrzení vyhození itemu",
+    "warningTime": "Délka upozornění: %čas%s",
+    "manaBar": "ukazetel many: %typ%",
+    "barTypes": {
+      "barAndText": "ukazetel a Text",
+      "bar": "ukazetel",
+      "text": "Text",
+      "off": "vypnuto"
+    },
+    "hideSkeletonHatBones": "Skrýt Skeleton Helmet kosti",
+    "skeletonHatBonesBar": "Skeleton Helmet - ukazetel kostí",
+    "hideFoodAndArmor": "Skrýt ukazatel jídla a armoru",
+    "fullInventoryWarning": "upozornění na plný inventář",
+    "magmaBossHealthBar": "Ukazatel Magma Boss zdraví",
+    "disableEmberRodAbility": "Zakázat Ember rod abilitu na ostrově",
+    "warningColor": "Barva upozornění",
+    "confirmationColor": "Barva potvrzení",
+    "manaTextColor": "Barva many a textu",
+    "manaBarColor": "Barva ukazetele many",
+    "editLocations": "Upravit lokace",
+    "guiScale": "Velikost ukazetelů: %velikost%",
+    "resetLocations": "Resetovat lokace",
+    "hideDurability": "Skrýt výdrž nástrojů",
+    "showEnchantmentsReforges": "Očarování a překování",
+    "minionStopWarning": "\"minion nemůže dosáhnout\" Varování",
+    "hideAuctionHousePlayers": "Skrýt hráče u Auction house",
+    "healthBar": "Ukazatel zdraví: %typ%",
+    "defenceIcon": "Ikona obrany: %typ%",
+    "backpackStyle": "Styl batůžků: %styl%",
+    "styles": {
+      "inventory": "inventář",
+      "compact": "kompaktní"
+    },
+    "iconTypes": {
+      "iconDefenceAndPercentage": "Icon, Defence, & Percentage",
+      "iconAndDefence": "Icon & Defence",
+      "iconAndPercentage": "Icon & Percentage",
+      "defenceAndPercentage": "Defence & Percentage",
+      "icon": "Icon",
+      "defence": "Defence",
+      "percentage": "Percentage",
+      "off": "Off"
+    },
+    "showBackpackPreview": "Ukázat náhled batohu",
+    "hideHealthBar": "Skrýt vanilla ukazatel zdraví",
+    "healthTextColor": "Barva textu zdraví",
+    "healthBarColor": "Barva ukazatele zdraví",
+    "defenceTextColor": "Barva textu obrany",
+    "defencePercentageColor": "Barva procent obrany",
+    "disableDoubleDropAutomatically": "Automaticky zakázat Double Drop",
+    "fullMinionWarning": "Upozornění plného miniona",
+    "nextPage": "Další stránka",
+    "previousPage": "Předchozí stránka",
+    "ignoreItemFrameClicks": "ignoruj kliknutí na Item Framy",
+    "useVanillaTextureDefence": "Použij vanilla texturu pro ikonu obrany",
+    "showBackpackHoldingShift": "Ukaž batoh jen když držíš shift"
+  },
+  "messages": {
+    "dropConfirmation": "Vyhoď tento item pro vyhození!",
+    "magmaBossWarning": "MagmaCube Boss!",
+    "fullInventory": "Plný inventář!",
+    "newVersion": "Nová verze, %nejnovější verze% je dostupná. Stáhni ji kliknutím zde.",
+    "discord": "Kceš být informován o změnách? Klikni zde aby jsi se připojil do mého discordu.",
+    "developmentVersion": "Používáš vývojovou verzi: %verze%. Nejnovější verze je %Nejnovější verze%",
+    "labymod": "uživatelé laby módu: Skrýt armor, armor, a ukazatel zdraví, je nekompatabilní.",
+    "minionCannotReach": " %typ% minion Nemůže dosáhnout a přestal pracovat!",
+    "minionIsFull": "Minion na tvém ostrově je plný!",
+    "typeEnchantmentsHere": "Typ %typ% je tady!",
+    "separateMultiple": "Oddělte více čárkami.",
+    "enchantsToMatch": "%typ% Schodovat se:",
+    "enchantsToExclude": "%typ% Vyloučit:",
+    "inventoryTypes": {
+      "enchants": "Očarování",
+      "reforges": "Překování"
+    }
+  }
+}
