@@ -6,13 +6,6 @@
     "magmaBossWarning": "Aviso Chefão Magma",
     "itemDropConfirmation": "Confirmação Para Largar Item",
     "warningTime": "Duração do Aviso: %time%s",
-    "manaBar": "Barra de Mana: %type%",
-    "barTypes": {
-      "barAndText": "Barra e Texto",
-      "bar": "Barra",
-      "text": "Texto",
-      "off": "Desativado"
-    },
     "hideSkeletonHatBones": "Esconder Ossos do Capacete Esqueleto",
     "skeletonHatBonesBar": "Barra de Ossos para Capacete Esqueleto",
     "hideFoodAndArmor": "Esconder Barra de Fome e Armadura",
@@ -30,22 +23,10 @@
     "showEnchantmentsReforges": "Encantamentos e Reforjadas",
     "minionStopWarning": "Aviso de \"Criado Não Alcança\"",
     "hideAuctionHousePlayers": "Esconder Jogadores Perdo de Leilões",
-    "healthBar": "Barra de Vida: %type%",
-    "defenceIcon": "Ícone de Defesa: %type%",
     "backpackStyle": "Estilo de Mochila: %style%",
     "styles": {
       "inventory": "Inventário",
       "compact": "Compacto"
-    },
-    "iconTypes": {
-      "iconDefenceAndPercentage": "Ícone, Defesa e Porcentagem",
-      "iconAndDefence": "Ícone e Defesa",
-      "iconAndPercentage": "Ícone e Porcentagem",
-      "defenceAndPercentage": "Defesa e Porcentagem",
-      "icon": "Ícone",
-      "defence": "Defesa",
-      "percentage": "Porcentagem",
-      "off": "Desativado"
     },
     "showBackpackPreview": "Mostrar Conteúdo de Mochilas",
     "hideHealthBar": "Esconder Barra de Vida",
@@ -59,7 +40,14 @@
     "previousPage": "Página Anterior",
     "ignoreItemFrameClicks": "Ignorar Cliques em Molduras",
     "useVanillaTextureDefence": "Usar Textura Vanilla Para Ícone de Defesa",
-    "showBackpackHoldingShift": "Só Mostar Conteúdos de Mochilas Quando Shift é Pressionado"
+    "showBackpackHoldingShift": "Só Mostar Conteúdos de Mochilas Quando Shift é Pressionado",
+    "manaBar": "Mana Bar",
+    "manaText": "Mana Number",
+    "healthBar": "Health Bar",
+    "healthText": "Health Number",
+    "defenceIcon": "Defence Symbol",
+    "defenceText": "Defence Number",
+    "defencePercentage": "Defence Percentage"
   },
   "messages": {
     "dropConfirmation": "Large este item de novo para confirmar!",

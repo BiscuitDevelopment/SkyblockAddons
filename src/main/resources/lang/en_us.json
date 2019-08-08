@@ -6,13 +6,6 @@
     "magmaBossWarning": "Magma Boss Warning",
     "itemDropConfirmation": "Item Drop Confirmation",
     "warningTime": "Warning Duration: %time%s",
-    "manaBar": "Mana Bar: %type%",
-    "barTypes": {
-      "barAndText": "Bar & Text",
-      "bar": "Bar",
-      "text": "Text",
-      "off": "Off"
-    },
     "hideSkeletonHatBones": "Hide Skeleton Helmet Bones",
     "skeletonHatBonesBar": "Skeleton Helmet Bones Bar",
     "hideFoodAndArmor": "Hide Food & Armor Bar",
@@ -23,29 +16,17 @@
     "confirmationColor": "Confirmation Color",
     "manaTextColor": "Mana Text Color",
     "manaBarColor": "Mana Bar Color",
-    "editLocations": "Edit Locations",
+    "editLocations": "Edit GUI Locations",
     "guiScale": "Gui Scale: %scale%",
     "resetLocations": "Reset Locations",
     "hideDurability": "Hide Tool Durability",
     "showEnchantmentsReforges": "Enchants & Reforges",
     "minionStopWarning": "\"Minion Cannot Reach\" Warning",
     "hideAuctionHousePlayers": "Hide Players Near Auction House",
-    "healthBar": "Health Bar: %type%",
-    "defenceIcon": "Defence Icon: %type%",
     "backpackStyle": "Backpack Style: %style%",
     "styles": {
       "inventory": "Inventory",
       "compact": "Compact"
-    },
-    "iconTypes": {
-      "iconDefenceAndPercentage": "Icon, Defence, & Percentage",
-      "iconAndDefence": "Icon & Defence",
-      "iconAndPercentage": "Icon & Percentage",
-      "defenceAndPercentage": "Defence & Percentage",
-      "icon": "Icon",
-      "defence": "Defence",
-      "percentage": "Percentage",
-      "off": "Off"
     },
     "showBackpackPreview": "Show Backpack Preview",
     "hideHealthBar": "Hide Vanilla Health Bar",
@@ -59,7 +40,14 @@
     "previousPage": "Previous Page",
     "ignoreItemFrameClicks": "Ignore Clicks On Item Frames",
     "useVanillaTextureDefence": "Use Vanilla Texture For Defence Icon",
-    "showBackpackHoldingShift": "Only Show Backpack When Holding Shift"
+    "showBackpackHoldingShift": "Only Show Backpack When Holding Shift",
+    "manaBar": "Mana Bar",
+    "manaText": "Mana Number",
+    "healthBar": "Health Bar",
+    "healthText": "Health Number",
+    "defenceIcon": "Defence Symbol",
+    "defenceText": "Defence Number",
+    "defencePercentage": "Defence Percentage"
   },
   "messages": {
     "dropConfirmation": "Drop this item again to confirm!",

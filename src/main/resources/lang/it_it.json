@@ -6,13 +6,6 @@
    "magmaBossWarning": "Avviso per il Magma Boss",
    "itemDropConfirmation": "Conferma per gettare un oggetto",
    "warningTime": "Durata dell’avvertimento: %time%s",
-   "manaBar": "Barra della Mana: %type%",
-   "barTypes": {
-     "barAndText": "Barra & Testo",
-     "bar": "Barra",
-     "text": "Testo",
-     "off": "Off"
-   },
    "hideSkeletonHatBones": "Nascondi le ossa dello Skeleton Hat",
    "skeletonHatBonesBar": "Barra delle ossa dello Skeleton Hat",
    "hideFoodAndArmor": "Nascondi la Barra della Fame e dell’Armatura",
@@ -30,22 +23,10 @@
    "showEnchantmentsReforges": "Incantesimi & Forge",
    "minionStopWarning": "Avviso che \"i Minion non possono raggiungere le risorse\" ",
    "hideAuctionHousePlayers": "Nascondi i Giocatori vicino alla Auction House",
-   "healthBar": "Barra di Vita: %type%",
-   "defenceIcon": "Icona della difesa: %type%",
    "backpackStyle": "Stile Zaino: %style%",
    "styles": {
      "inventory": "Inventario",
      "compact": "Compatto"
-   },
-   "iconTypes": {
-     "iconDefenceAndPercentage": "Icona, Difesa, & Percentuale",
-     "iconAndDefence": "Icona & Difesa",
-     "iconAndPercentage": "Icona & Percentuale",
-     "defenceAndPercentage": "Difesa & Percentuale",
-     "icon": "Icona",
-     "defence": "Difesa",
-     "percentage": "Percentuale",
-     "off": "Off"
    },
    "showBackpackPreview": "Mostra Anteprima dello Zaino",
    "hideHealthBar": "Nascondi la Barra di Vita",
@@ -59,7 +40,14 @@
    "previousPage": "Pagina precedente",
    "ignoreItemFrameClicks": "Ignora Click sulle Cornici per Oggetti",
    "useVanillaTextureDefence": "Usa il Modello Vanilla Per l’Icona di Difesa",
-   "showBackpackHoldingShift": "Mostra lo Zaino solo quando Cammini Furtivamente"
+   "showBackpackHoldingShift": "Mostra lo Zaino solo quando Cammini Furtivamente",
+   "manaBar": "Mana Bar",
+   "manaText": "Mana Number",
+   "healthBar": "Health Bar",
+   "healthText": "Health Number",
+   "defenceIcon": "Defence Symbol",
+   "defenceText": "Defence Number",
+   "defencePercentage": "Defence Percentage"
  },
  "messages": {
    "dropConfirmation": "Getta questo oggetto nuovamente per confermare!",

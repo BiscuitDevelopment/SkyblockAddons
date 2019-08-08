@@ -6,13 +6,6 @@
     "magmaBossWarning": "Alerta de Boss de Magma",
     "itemDropConfirmation": "Confirmación de Arrojar Objetos",
     "warningTime": "Tiempo de Alerta: %time%s",
-    "manaBar": "Barra de Mana: %type%",
-    "barTypes": {
-      "barAndText": "Barra y Texto",
-      "bar": "Barra",
-      "text": "Texto",
-      "off": "Desactivado"
-    },
     "hideSkeletonHatBones": "Ocultar Huesos de Skeleton Hat",
     "skeletonHatBonesBar": "Barra de huesos de Skeleton Hat",
     "hideFoodAndArmor": "Esconder Barra de Comida y Armadura",
@@ -30,22 +23,10 @@
     "showEnchantmentsReforges": "Encantamientos & Reforjados",
     "minionStopWarning": "Alerta de Minion Detenido",
     "hideAuctionHousePlayers": "Ocultar Jugadores Cerca de Auction House",
-    "healthBar": "Barra de Vida: %type%",
-    "defenceIcon": "Icono de Defensa: %type%",
     "backpackStyle": "Estilo de Backpack: %style%",
     "styles": {
       "inventory": "Inventario",
       "compact": "Compacto"
-    },
-    "iconTypes": {
-      "iconDefenceAndPercentage": "Icono, Defensa y Porcentaje",
-      "iconAndDefence": "Icono y Defensa",
-      "iconAndPercentage": "Icono y Porcentaje",
-      "defenceAndPercentage": "Defensa y Porcentaje",
-      "icon": "Icono",
-      "defence": "Defensa",
-      "percentage": "Porcentaje",
-      "off": "Desactivado"
     },
     "showBackpackPreview": "Previsualizar Backpacks",
     "hideHealthBar": "Ocultar Barra de Vida",
@@ -56,10 +37,17 @@
     "disableDoubleDropAutomatically": "Desactivar el Arrojo Doble de Objetos Automáticamente",
     "fullMinionWarning": "Alerta de Minion Lleno",
     "nextPage": "Siguiente Página",
-    "previousPage": "Página Anterior,
+    "previousPage": "Página Anterior",
     "ignoreItemFrameClicks": "Ignorar Clics en Item Frames",
     "useVanillaTextureDefence": "Usar Textura Vanilla para Icono de Defensa",
-    "showBackpackHoldingShift": "Previsualizar Backpacks Sólo al Presionar Shift"
+    "showBackpackHoldingShift": "Previsualizar Backpacks Sólo al Presionar Shift",
+    "manaBar": "Mana Bar",
+    "manaText": "Mana Number",
+    "healthBar": "Health Bar",
+    "healthText": "Health Number",
+    "defenceIcon": "Defence Symbol",
+    "defenceText": "Defence Number",
+    "defencePercentage": "Defence Percentage"
   },
   "messages": {
     "dropConfirmation": "Arroja este objeto otra vez para confirmar!",

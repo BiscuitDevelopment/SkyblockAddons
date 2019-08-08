@@ -6,13 +6,6 @@
     "magmaBossWarning": "Magma Boss Spawn Warnung",
     "itemDropConfirmation": "Item Drop Bestätigung",
     "warningTime": "Warnung anzeigen für: %time%s",
-    "manaBar": "Mana Leiste: %type%",
-    "barTypes": {
-      "barAndText": "Leiste & Text",
-      "bar": "Nur Leiste",
-      "text": "Nur Text",
-      "off": "Aus"
-    },
     "hideSkeletonHatBones": "Skellett-Helm Knochen verstecken",
     "skeletonHatBonesBar": "Skellett-Helm Knochen Leiste",
     "hideFoodAndArmor": "Hunger- und Rüstungsleiste verbergen",
@@ -30,22 +23,10 @@
     "showEnchantmentsReforges": "Zeige Verzauberungen und Verbesserungen",
     "minionStopWarning": "\"Minion Cannot Reach\" Warnung",
     "hideAuctionHousePlayers": "Spieler in der Nähe des Auktionshauses verstecken",
-    "healthBar": "Lebensleiste: %type%",
-    "defenceIcon": "Verteidigungssymbol: %type%",
     "backpackStyle": "Rucksack-Aussehen: %style%",
     "styles": {
       "inventory": "Inventar",
       "compact": "Kompakt"
-    },
-    "iconTypes": {
-      "iconDefenceAndPercentage": "Symbol, Verteidigung, & Prozent",
-      "iconAndDefence": "Symbol & Verteidigung",
-      "iconAndPercentage": "Symbol & Prozent",
-      "defenceAndPercentage": "Verteidigung & Prozent",
-      "icon": "Nur Symbol",
-      "defence": "Nur Verteidigung",
-      "percentage": "Nur Prozent",
-      "off": "Aus"
     },
     "showBackpackPreview": "Rucksack-Vorschau zeigen",
     "hideHealthBar": "Lebensleiste verstecken",
@@ -59,7 +40,14 @@
     "previousPage": "Previous Page",
     "ignoreItemFrameClicks": "Ignore Clicks On Item Frames",
     "useVanillaTextureDefence": "Use Vanilla Texture For Defence Icon",
-    "showBackpackHoldingShift": "Only Show Backpack When Holding Shift"
+    "showBackpackHoldingShift": "Only Show Backpack When Holding Shift",
+    "manaBar": "Mana Bar",
+    "manaText": "Mana Number",
+    "healthBar": "Health Bar",
+    "healthText": "Health Number",
+    "defenceIcon": "Defence Symbol",
+    "defenceText": "Defence Number",
+    "defencePercentage": "Defence Percentage"
   },
   "messages": {
     "dropConfirmation": "Droppe dieses Item nochmal um zu bestätigen, dass du es wirklich droppen willst!",

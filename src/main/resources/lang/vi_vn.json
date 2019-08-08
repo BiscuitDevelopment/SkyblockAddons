@@ -6,13 +6,6 @@
     "magmaBossWarning": "Cảnh báo Magma Boss",
     "itemDropConfirmation": "Xác Nhận Vứt Đồ",
     "warningTime": "Thời lượng cảnh báo: %time%s",
-    "manaBar": "Thanh Mana: %type%",
-    "barTypes": {
-      "barAndText": "Thanh & Chữ",
-      "bar": "Thanh",
-      "text": "Chữ",
-      "off": "Tắt"
-    },
     "hideSkeletonHatBones": "Ẩn Mũ Xương",
     "skeletonHatBonesBar": "Thanh Mũ Xương",
     "hideFoodAndArmor": "Ẩn Thanh Thức Ăn Và Giáp",
@@ -30,22 +23,10 @@
     "showEnchantmentsReforges": "Enchants & Reforges",
     "minionStopWarning": "Cảnh Báo \"Minion Không Thể Đánh Tới\"",
     "hideAuctionHousePlayers": "Ẩn Người Chơi Ở Auction House",
-    "healthBar": "Thanh Máu: %type%",
-    "defenceIcon": "Icon Giáp: %type%",
     "backpackStyle": "Kiểu Backpack: %style%",
     "styles": {
       "inventory": "Túi Đồ",
       "compact": "Gọn"
-    },
-    "iconTypes": {
-      "iconDefenceAndPercentage": "Icon, Giáp, & Phần Trăm",
-      "iconAndDefence": "Icon & Giáp",
-      "iconAndPercentage": "Icon & Phần Trăm",
-      "defenceAndPercentage": "Giáp & Phần Trăm",
-      "icon": "Icon",
-      "defence": "Giáp",
-      "percentage": "Phần Trăm",
-      "off": "Tắt"
     },
     "showBackpackPreview": "Hiện Xem Trước Backpack",
     "hideHealthBar": "Ẩn Thanh Máu Vanilla",
@@ -59,7 +40,14 @@
     "previousPage": "Trang Trước",
     "ignoreItemFrameClicks": "Ignore Clicks On Item Frames",
     "useVanillaTextureDefence": "Sử Dụng Skin Vanilla cho Icon Phòng Vệ",
-    "showBackpackHoldingShift": "Chỉ hiện Backpack Khi Đè Shift"
+    "showBackpackHoldingShift": "Chỉ hiện Backpack Khi Đè Shift",
+    "manaBar": "Mana Bar",
+    "manaText": "Mana Number",
+    "healthBar": "Health Bar",
+    "healthText": "Health Number",
+    "defenceIcon": "Defence Symbol",
+    "defenceText": "Defence Number",
+    "defencePercentage": "Defence Percentage"
   },
   "messages": {
     "dropConfirmation": "Thả Đồ Thêm Một Lần Nữa Để Xác Nhận!",

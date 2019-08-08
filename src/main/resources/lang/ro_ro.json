@@ -6,13 +6,6 @@
     "magmaBossWarning": "Avertisment pentru Magma Boss",
     "itemDropConfirmation": "Confirmare aruncare obiecte",
     "warningTime": "Durata Avertismentului: %time%s",
-    "manaBar": "Bara cu mană: %type%",
-    "barTypes": {
-      "barAndText": "Bară & Text",
-      "bar": "Bară",
-      "text": "Text",
-      "off": "Off"
-    },
     "hideSkeletonHatBones": "Ascunde oasele Skeleton Helmet-ului",
     "skeletonHatBonesBar": "Bară pentru oasele Skeleton Hat-ului",
     "hideFoodAndArmor": "Ascunde bara de Mancare și Armură",
@@ -30,22 +23,10 @@
     "showEnchantmentsReforges": "Refauriri și enchanturi",
     "minionStopWarning": "\"Minionul nu ajunge\" Avertisment",
     "hideAuctionHousePlayers": "Ascunde jucătorii din casa de licitații",
-    "healthBar": "Bara de Viață: %type%",
-    "defenceIcon": "Iconiță cu Protecție: %type%",
     "backpackStyle": "Stilul Backpackului: %style%",
     "styles": {
       "inventory": "Inventar",
       "compact": "Compact"
-    },
-    "iconTypes": {
-      "iconDefenceAndPercentage": "Iconiță, Protecție, & Procent",
-      "iconAndDefence": "Iconiță & Protecție",
-      "iconAndPercentage": "Iconiță & Procent",
-      "defenceAndPercentage": "Protecție & Procent",
-      "icon": "Iconiță",
-      "defence": "Protecție",
-      "percentage": "Procent",
-      "off": "Off"
     },
     "showBackpackPreview": "Arată Preview la Backpack",
     "hideHealthBar": "Hide Health Bar",
@@ -59,7 +40,14 @@
     "previousPage": "Previous Page",
     "ignoreItemFrameClicks": "Ignore Clicks On Item Frames",
     "useVanillaTextureDefence": "Use Vanilla Texture For Defence Icon",
-    "showBackpackHoldingShift": "Only Show Backpack When Holding Shift"
+    "showBackpackHoldingShift": "Only Show Backpack When Holding Shift",
+    "manaBar": "Mana Bar",
+    "manaText": "Mana Number",
+    "healthBar": "Health Bar",
+    "healthText": "Health Number",
+    "defenceIcon": "Defence Symbol",
+    "defenceText": "Defence Number",
+    "defencePercentage": "Defence Percentage"
   },
   "messages": {
     "dropConfirmation": "Arunca acest obiect iar ca să confirmi!",

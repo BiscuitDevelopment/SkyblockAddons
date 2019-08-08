@@ -6,13 +6,6 @@
     "magmaBossWarning": "Ostrzeżenia o Magma Boss'ie",
     "itemDropConfirmation": "Potwierdzenie Wyrzucenia Przedmiotu",
     "warningTime": "Czas Ostrzeżenia: %time%s",
-    "manaBar": "Pasek Many: %type%",
-    "barTypes": {
-      "barAndText": "Pasek i Tekst",
-      "bar": "Pasek",
-      "text": "Tekst",
-      "off": "Wyłączone"
-    },
     "hideSkeletonHatBones": "Ukryj Kości z Hełmu Skeletona",
     "skeletonHatBonesBar": "Pasek Kości z Hełmu Skeletona",
     "hideFoodAndArmor": "Ukryj Pasek Jedzenia i Ochrony",
@@ -30,22 +23,10 @@
     "showEnchantmentsReforges": "Enchanty i Reforge",
     "minionStopWarning": "Ostrzeżenie o Przerwaniu Pracy Miniona",
     "hideAuctionHousePlayers": "Ukryj Graczy Blisko Domu Aukcji",
-    "healthBar": "Pasek Zdrowia: %type%",
-    "defenceIcon": "Ikona Ochrony: %type%",
     "backpackStyle": "Styl Plecaka: %style%",
     "styles": {
       "inventory": "Ekwipunkowy",
       "compact": "Kompaktowy"
-    },
-    "iconTypes": {
-      "iconDefenceAndPercentage": "Ikona, Ochrona, i Procent",
-      "iconAndDefence": "Ikona i Ochrona",
-      "iconAndPercentage": "Ikona i Procent",
-      "defenceAndPercentage": "Ochrona i Procent",
-      "icon": "Ikona",
-      "defence": "Ochrona",
-      "percentage": "Procent",
-      "off": "Wyłączone"
     },
     "showBackpackPreview": "Pokaż Podgląd Plecaka",
     "hideHealthBar": "Ukryj Pasek Zdrowia",
@@ -59,7 +40,14 @@
     "previousPage": "Poprzednia Strona",
     "ignoreItemFrameClicks": "Ignoruj Kliknięcia Na Ramki Na Przedmiot",
     "useVanillaTextureDefence": "Użyj Domyślnej Tekstury Dla Ikony Ochrony",
-    "showBackpackHoldingShift": "Tylko Pokazuj Plecak, Gdy Trzymasz Shift"
+    "showBackpackHoldingShift": "Tylko Pokazuj Plecak, Gdy Trzymasz Shift",
+    "manaBar": "Mana Bar",
+    "manaText": "Mana Number",
+    "healthBar": "Health Bar",
+    "healthText": "Health Number",
+    "defenceIcon": "Defence Symbol",
+    "defenceText": "Defence Number",
+    "defencePercentage": "Defence Percentage"
   },
   "messages": {
     "dropConfirmation": "Wyrzuć ten przedmiot ponownie, aby potwierdzić!",

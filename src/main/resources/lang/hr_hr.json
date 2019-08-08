@@ -6,13 +6,6 @@
     "magmaBossWarning": "Magma Boss Upozorenje",
     "itemDropConfirmation": "Konfirmacija Bacanja Stvari",
     "warningTime": "Trajanje Upozorenja: %time%s",
-    "manaBar": "Mana Bar: %type%",
-    "barTypes": {
-      "barAndText": "Bar i Tekst",
-      "bar": "Bar",
-      "text": "Tekst",
-      "off": "Iskljuèeno"
-    },
     "hideSkeletonHatBones": "Sakrij Kosti Skeleton Kacige",
     "skeletonHatBonesBar": "Skeleton Kaciga Bar Kosti",
     "hideFoodAndArmor": "Sakrij Hranu i Armor Bar",
@@ -30,22 +23,10 @@
     "showEnchantmentsReforges": "Èarolije i Reforge-ovi",
     "minionStopWarning": "\"Minion Ne Može Dohvatiti\" Upozorenje",
     "hideAuctionHousePlayers": "Sakrij Igraèe Blizu Dražbavaonice",
-    "healthBar": "Bar Zdravlja: %type%",
-    "defenceIcon": "Ikona Obrane: %type%",
     "backpackStyle": "Stil Ruksaka: %style%",
     "styles": {
       "inventory": "Inventor",
       "compact": "Kompakt"
-    },
-    "iconTypes": {
-      "iconDefenceAndPercentage": "Ikona, Obrana, i Postotak",
-      "iconAndDefence": "Ikona i Obrana",
-      "iconAndPercentage": "Ikona i Postotak",
-      "defenceAndPercentage": "Obrana i Postotak",
-      "icon": "Ikona",
-      "defence": "Obrana",
-      "percentage": "Postotak",
-      "off": "Iskljuèeno"
     },
     "showBackpackPreview": "Pokaži Pregled Ruksaka",
     "hideHealthBar": "Sakrij Vanilla Bar Zdravlja",
@@ -59,7 +40,14 @@
     "previousPage": "Prethodna Stranica",
     "ignoreItemFrameClicks": "Ignoriraj Klikove na Item Okrivirima",
     "useVanillaTextureDefence": "Koristi Vanilla Teksturu za Ikonu Obrane",
-    "showBackpackHoldingShift": "Samo Pokaži Ruksak Kada Držiš Shift"
+    "showBackpackHoldingShift": "Samo Pokaži Ruksak Kada Držiš Shift",
+    "manaBar": "Mana Bar",
+    "manaText": "Mana Number",
+    "healthBar": "Health Bar",
+    "healthText": "Health Number",
+    "defenceIcon": "Defence Symbol",
+    "defenceText": "Defence Number",
+    "defencePercentage": "Defence Percentage"
   },
   "messages": {
     "dropConfirmation": "Opet baci ovu stvar za konfirmaciju!",

@@ -6,13 +6,6 @@
     "magmaBossWarning": "تحذير زعيم الصهارة",
     "itemDropConfirmation": "تأكيد من رمي العنصر",
     "warningTime": "%time%s :وقت التحذير",
-    "manaBar": "%type% :شريط المانا",
-    "barTypes": {
-      "barAndText": "شريط و نص",
-      "bar": "شريط",
-      "text": "نص",
-      "off": "إيقاف"
-    },
     "hideSkeletonHatBones": "إخفاء عظام خوذة الهيكل العظمي",
     "skeletonHatBonesBar": "شريط خوذة الهيكل العظمي",
     "hideFoodAndArmor": "إخفاء شريط الطعام و شريط الدرع",
@@ -30,22 +23,10 @@
     "showEnchantmentsReforges": "تطوير و إعادة تشكيل",
     "minionStopWarning": "تحذير إيقاف التابع",
     "hideAuctionHousePlayers": "إخفاء اللاعبين بالقرب من دار المزاد",
-    "healthBar": "%type% :شريط الصحة",
-    "defenceIcon": "%type% :رمز الدفاع",
     "backpackStyle": "%style% :نمط حقيبة الظهر",
     "styles": {
       "inventory": "جرد",
       "compact": "متراص"
-    },
-    "iconTypes": {
-      "iconDefenceAndPercentage": "رمز ، دفاع ، والنسبة المئوية",
-      "iconAndDefence": "رمز و دفاع",
-      "iconAndPercentage": "رمز و نسبة المئوية",
-      "defenceAndPercentage": "الدفاع النسبة المئوية",
-      "icon": "رمز",
-      "defence": "دفاع",
-      "percentage": "نسبة مئوية",
-      "off": "إيقاف"
     },
     "showBackpackPreview": "عرض محتوى حقيبة الظهر",
     "hideHealthBar": "إخفاء شريط الصحة",
@@ -59,7 +40,14 @@
     "previousPage": "Previous Page",
     "ignoreItemFrameClicks": "Ignore Clicks On Item Frames",
     "useVanillaTextureDefence": "Use Vanilla Texture For Defence Icon",
-    "showBackpackHoldingShift": "Only Show Backpack When Holding Shift"
+    "showBackpackHoldingShift": "Only Show Backpack When Holding Shift",
+    "manaBar": "Mana Bar",
+    "manaText": "Mana Number",
+    "healthBar": "Health Bar",
+    "healthText": "Health Number",
+    "defenceIcon": "Defence Symbol",
+    "defenceText": "Defence Number",
+    "defencePercentage": "Defence Percentage"
   },
   "messages": {
     "dropConfirmation": "!إرمي هذا العنصر مرة أخرى للتأكيد",

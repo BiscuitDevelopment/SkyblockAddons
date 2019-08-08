@@ -6,13 +6,6 @@
     "magmaBossWarning": "Magma Boss figyelmeztetés",
     "itemDropConfirmation": "Tárgy kidobás megerősítése",
     "warningTime": "Figyelmeztetés időtartama: %time%s",
-    "manaBar": "Mana sáv: %type%",
-    "barTypes": {
-      "barAndText": "Sáv és szöveg",
-      "bar": "Sáv",
-      "text": "Szöveg",
-      "off": "Ki"
-    },
     "hideSkeletonHatBones": "Skeleton Helmet csontok elrejtése",
     "skeletonHatBonesBar": "Skeleton Hat csont sáv",
     "hideFoodAndArmor": "Étel és páncél sáv elrejtése",
@@ -30,22 +23,10 @@
     "showEnchantmentsReforges": "Enchantok & Reforgok",
     "minionStopWarning": "\"A minion nem ér el valamit\" figyelmeztetés",
     "hideActionHousePlayers": "Játékosok elrejtése az aukciósház körül",
-    "healthBar": "Életerő sáv: %type%",
-    "defenceIcon": "Védelem ikon: %type%",
     "backpackStyle": "Hátizsák stílus: %style%",
     "styles": {
       "inventory": "Felszerelés",
       "compact": "Tömörített"
-    },
-    "iconTypes": {
-      "iconDefenceAndPercentage": "Ikon, védelem és százalék",
-      "iconAndDefence": "Ikon és védelem",
-      "iconAndPercentage": "Ikon és százalék",
-      "defenceAndPercentage": "Védelem és százalék",
-      "icon": "Ikon",
-      "defence": "Védelem",
-      "percentage": "Százalék",
-      "off": "Ki"
     },
     "showBackpackPreview": "Hátizsák előnézet mutatása",
     "hideHealthBar": "Életerő elrejtése",
@@ -59,7 +40,14 @@
     "previousPage": "Előző",
     "ignoreItemFrameClicks": "Eszköz keretre kattintás letiltása",
     "useVanillaTextureDefence": "Vanilla textúra a védelem ikonhoz",
-    "showBackpackHoldingShift": "Hátizsák mutatása csak a Shift lenyomásával"
+    "showBackpackHoldingShift": "Hátizsák mutatása csak a Shift lenyomásával",
+    "manaBar": "Mana Bar",
+    "manaText": "Mana Number",
+    "healthBar": "Health Bar",
+    "healthText": "Health Number",
+    "defenceIcon": "Defence Symbol",
+    "defenceText": "Defence Number",
+    "defencePercentage": "Defence Percentage"
   },
   "messages": {
     "dropConfirmation": "Dobd el ezt a tárgyat újra, hogy megerősítsd!",

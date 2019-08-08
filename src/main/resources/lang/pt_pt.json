@@ -6,13 +6,6 @@
     "magmaBossWarning": "Alerta do Magma Boss",
     "itemDropConfirmation": "Confirmação para dropar itens",
     "warningTime": "Duração do aviso: %time%s",
-    "manaBar": "Barra de Mana: %type%",
-    "barTypes": {
-      "barAndText": "Barra e Texto",
-      "bar": "Barra",
-      "text": "Texto",
-      "off": "Desligado"
-    },
     "hideSkeletonHatBones": "Esconder os ossos do Skeleton Helmet",
     "skeletonHatBonesBar": "Barra de ossos do Skeleton Helmet",
     "hideFoodAndArmor": "Esconder a barra de comida e armadura",
@@ -30,22 +23,10 @@
     "showEnchantmentsReforges": "Encantamentos e Reforges",
     "minionStopWarning": "Aviso \"Minion Cannot Reach\"",
     "hideAuctionHousePlayers": "Esconder os jogadores perto da Auction House",
-    "healthBar": "Barra de Vida: %type%",
-    "defenceIcon": "Ícone da Defesa: %type%",
     "backpackStyle": "Estilo da Backpack: %style%",
     "styles": {
       "inventory": "Inventário",
       "compact": "Compacto"
-    },
-    "iconTypes": {
-      "iconDefenceAndPercentage": "Ícone, Defesa, e Percentagem",
-      "iconAndDefence": "Ícone e Defesa",
-      "iconAndPercentage": "Ícone e Percentagem",
-      "defenceAndPercentage": "Defesa e Percentagem",
-      "icon": "Ícone",
-      "defence": "Defesa",
-      "percentage": "Percentagem",
-      "off": "Desligado"
     },
     "showBackpackPreview": "Mostrar uma previsualização da Backpack",
     "hideHealthBar": "Esconder a Barra de Vida do Vanilla",
@@ -59,7 +40,14 @@
     "previousPage": "Página anterior",
     "ignoreItemFrameClicks": "Ignorar Clicks em Molduras",
     "useVanillaTextureDefence": "Usar a textura do Vanilla para o ícone da defesa",
-    "showBackpackHoldingShift": "Só mostrar a Backpack quando estiver a segurar o Shift"
+    "showBackpackHoldingShift": "Só mostrar a Backpack quando estiver a segurar o Shift",
+    "manaBar": "Mana Bar",
+    "manaText": "Mana Number",
+    "healthBar": "Health Bar",
+    "healthText": "Health Number",
+    "defenceIcon": "Defence Symbol",
+    "defenceText": "Defence Number",
+    "defencePercentage": "Defence Percentage"
   },
   "messages": {
     "dropConfirmation": "Dropa este item outra vez para confirmar!",

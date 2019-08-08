@@ -6,13 +6,6 @@
     "magmaBossWarning": "マグマボスアラート",
     "itemDropConfirmation": "捨てるアイテムの確認",
     "warningTime": "アラートする時間: %time%s",
-    "manaBar": "マナゲージ: %type%",
-    "barTypes": {
-      "barAndText": "ゲージ & 文字",
-      "bar": "ゲージ",
-      "text": "文字",
-      "off": "オフ"
-    },
     "hideSkeletonHatBones": "スケルトンヘルメットの骨を非表示",
     "skeletonHatBonesBar": "スケルトンヘルメットの骨のゲージ",
     "hideFoodAndArmor": "食料とアーマーのゲージを非表示",
@@ -30,22 +23,10 @@
     "showEnchantmentsReforges": "エンチャントとリフォージュの内容を表示",
     "minionStopWarning": "ミニオン停止アラート",
     "hideAuctionHousePlayers": "オークションハウス付近のプレイヤーを非表示",
-    "healthBar": "体力ゲージ: %type%",
-    "defenceIcon": "防具アイコン: %type%",
     "backpackStyle": "バックパックの表示: %style%",
     "styles": {
       "inventory": "インベントリ型",
       "compact": "コンパクト"
-    },
-    "iconTypes": {
-      "iconDefenceAndPercentage": "アイコン、防御力、パーセンテージ",
-      "iconAndDefence": "アイコン、防御力",
-      "iconAndPercentage": "アイコン、パーセンテージ",
-      "defenceAndPercentage": "防御力、パーセンテージ",
-      "icon": "アイコン",
-      "defence": "防御力",
-      "percentage": "パーセンテージ",
-      "off": "オフ"
     },
     "showBackpackPreview": "バックパックのプレビューを表示",
     "hideHealthBar": "体力バーを隠す",
@@ -59,7 +40,14 @@
     "previousPage": "Previous Page",
     "ignoreItemFrameClicks": "Ignore Clicks On Item Frames",
     "useVanillaTextureDefence": "Use Vanilla Texture For Defence Icon",
-    "showBackpackHoldingShift": "Only Show Backpack When Holding Shift"
+    "showBackpackHoldingShift": "Only Show Backpack When Holding Shift",
+    "manaBar": "Mana Bar",
+    "manaText": "Mana Number",
+    "healthBar": "Health Bar",
+    "healthText": "Health Number",
+    "defenceIcon": "Defence Symbol",
+    "defenceText": "Defence Number",
+    "defencePercentage": "Defence Percentage"
   },
   "messages": {
     "dropConfirmation": "落としてもいいのであれば、このアイテムをもう一度ドロップしてください。",
