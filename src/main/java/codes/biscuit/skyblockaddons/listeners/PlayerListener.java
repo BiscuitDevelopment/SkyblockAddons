@@ -5,9 +5,7 @@ import codes.biscuit.skyblockaddons.gui.ButtonLocation;
 import codes.biscuit.skyblockaddons.gui.ButtonSlider;
 import codes.biscuit.skyblockaddons.gui.LocationEditGui;
 import codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui;
-import codes.biscuit.skyblockaddons.utils.CoordsPair;
-import codes.biscuit.skyblockaddons.utils.Feature;
-import codes.biscuit.skyblockaddons.utils.Message;
+import codes.biscuit.skyblockaddons.utils.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.gui.ScaledResolution;
@@ -67,6 +65,7 @@ public class PlayerListener {
     private int maxHealth = 100;
     private int mana = 0;
     private int maxMana = 100;
+    private HealthUpdate healthUpdate = null;
 
 //    private Feature.Accuracy magmaTimerAccuracy = null;
 //    private long magmaTime = 7200;
@@ -119,7 +118,12 @@ public class PlayerListener {
                             manaPart = splitMessage[1];
                         }
                         String[] healthSplit = main.getUtils().getNumbersOnly(main.getUtils().stripColor(healthPart)).split(Pattern.quote("/"));
-                        health = Integer.parseInt(healthSplit[0]);
+                        int newHealth = Integer.parseInt(healthSplit[0]);
+                        if(newHealth != health) {
+                            int healthDiff = newHealth - health;
+                            this.healthUpdate = new HealthUpdate(healthDiff, System.currentTimeMillis());
+                        }
+                        health = newHealth;
                         maxHealth = Integer.parseInt(healthSplit[1]);
                         if (defencePart != null) {
                             defense = Integer.valueOf(main.getUtils().getNumbersOnly(defencePart).trim());
@@ -329,6 +333,9 @@ public class PlayerListener {
                     || healthBarType == Feature.BarType.BAR_TEXT) {
                 drawText(Feature.HEALTH_TEXT, scaleMultiplier, mc, sr, Feature.HEALTH_TEXT_COLOR);
             }
+            if(!main.getConfigValues().getDisabledFeatures().contains(Feature.HEALTH_UPDATES) && healthUpdate != null) {
+                drawText(Feature.HEALTH_UPDATES, scaleMultiplier, mc, sr, Feature.HEALTH_TEXT_COLOR);
+            }
         }
         GlStateManager.popMatrix();
     }
@@ -427,6 +434,17 @@ public class PlayerListener {
             textX = coordsPair.getX();
             textY = coordsPair.getY();
             text = String.valueOf(defense);
+        } else if (feature == Feature.HEALTH_UPDATES) {
+            CoordsPair coordsPair = main.getConfigValues().getCoords(Feature.HEALTH_UPDATES);
+            textX = coordsPair.getX();
+            textY = coordsPair.getY();
+            if(healthUpdate == null) {
+                color = ConfigColor.GREEN.getColor(255);
+                text = "+0";
+            } else {
+                color = healthUpdate.getHealthChange() > 0 ? ConfigColor.GREEN.getColor(255) : ConfigColor.RED.getColor(255);
+                text = (healthUpdate.getHealthChange() > 0 ? "+":"-") + Math.abs(healthUpdate.getHealthChange());
+            }
         } else {
             CoordsPair coordsPair = main.getConfigValues().getCoords(Feature.DEFENCE_PERCENTAGE);
             textX = coordsPair.getX();
@@ -491,12 +509,18 @@ public class PlayerListener {
                 if (predictMana) {
                     mana += (maxMana/50);
                     if (mana>maxMana) mana = maxMana;
-                } if (predictHealth) {
+                }
+                if (predictHealth) {
                     Minecraft mc = Minecraft.getMinecraft();
                     if (mc != null) {
                         EntityPlayerSP p = mc.thePlayer;
                         if (p != null) { //Reverse calculate the player's health by using the player's vanilla hearts.
-                            health = (int)(maxHealth*(p.getHealth()/p.getMaxHealth()));
+                            int newHealth = (int)(maxHealth*(p.getHealth()/p.getMaxHealth()));
+                            if(newHealth != health) {
+                                int healthDiff = newHealth - health;
+                                this.healthUpdate = new HealthUpdate(healthDiff, System.currentTimeMillis());
+                            }
+                            health = newHealth;
                         }
                     }
                 }
@@ -508,6 +532,10 @@ public class PlayerListener {
                         main.getUtils().checkIfInventoryIsFull(mc, p);
                         main.getUtils().checkIfWearingSkeletonHelmet(p);
                     }
+                }
+
+                if(this.healthUpdate != null && this.healthUpdate.getLifetime() > HealthUpdate.LIFESPAN) {
+                    this.healthUpdate = null;
                 }
             } else if (manaTick > 20) {
                 main.getUtils().checkGameAndLocation();

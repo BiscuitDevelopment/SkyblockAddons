@@ -36,6 +36,7 @@ public class LocationEditGui extends GuiScreen {
         buttonList.add(new ButtonLocation(main, boxWidth, boxHeight, Feature.DEFENCE_ICON));
         buttonList.add(new ButtonLocation(main, boxWidth, boxHeight, Feature.DEFENCE_TEXT));
         buttonList.add(new ButtonLocation(main, boxWidth, boxHeight, Feature.DEFENCE_PERCENTAGE));
+        buttonList.add(new ButtonLocation(main, boxWidth, boxHeight, Feature.HEALTH_UPDATES));
 
         ScaledResolution scaledResolution = new ScaledResolution(Minecraft.getMinecraft());
         String text = main.getConfigValues().getMessage(Message.SETTING_RESET_LOCATIONS);

@@ -31,6 +31,7 @@ public enum Feature {
     MANA_TEXT(-1, ButtonType.REGULAR),
     HEALTH_BAR(-1, ButtonType.REGULAR),
     HEALTH_TEXT(-1, ButtonType.REGULAR),
+    HEALTH_UPDATES(-1, ButtonType.REGULAR),
     DEFENCE_ICON(-1, ButtonType.REGULAR),
     DEFENCE_TEXT(-1, ButtonType.REGULAR),
     DEFENCE_PERCENTAGE(-1, ButtonType.REGULAR),

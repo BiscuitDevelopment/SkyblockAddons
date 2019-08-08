@@ -98,6 +98,9 @@ public class ConfigValues {
             if (settingsConfig.has("healthTextX")) {
                 coordinates.put(Feature.HEALTH_TEXT, new CoordsPair(settingsConfig.get("healthTextX").getAsFloat(), settingsConfig.get("healthTextY").getAsFloat()));
             }
+            if (settingsConfig.has("healthUpdatesX")) {
+                coordinates.put(Feature.HEALTH_UPDATES, new CoordsPair(settingsConfig.get("healthUpdatesX").getAsFloat(), settingsConfig.get("healthUpdatesY").getAsFloat()));
+            }
             if (settingsConfig.has("defenceTextX")) {
                 coordinates.put(Feature.DEFENCE_TEXT, new CoordsPair(settingsConfig.get("defenceTextX").getAsFloat(), settingsConfig.get("defenceTextY").getAsFloat()));
             }
@@ -183,7 +186,7 @@ public class ConfigValues {
             }
         }
         Feature[] newFeatures = {Feature.HEALTH_BAR, Feature.HEALTH_TEXT, Feature.DEFENCE_TEXT, Feature.DEFENCE_PERCENTAGE,
-                Feature.DEFENCE_ICON};
+                Feature.DEFENCE_ICON, Feature.HEALTH_UPDATES};
         for (Feature feature : newFeatures) {
             putDefaultCoordinates(feature);
         }
@@ -208,7 +211,8 @@ public class ConfigValues {
 
     public void setAllCoordinatesToDefault() {
         Feature[] features = {Feature.SKELETON_BAR, Feature.DEFENCE_ICON, Feature.DEFENCE_TEXT,
-                Feature.DEFENCE_PERCENTAGE, Feature.HEALTH_BAR, Feature.HEALTH_TEXT, Feature.MANA_BAR, Feature.MANA_TEXT};
+                Feature.DEFENCE_PERCENTAGE, Feature.HEALTH_BAR, Feature.HEALTH_TEXT, Feature.MANA_BAR, Feature.MANA_TEXT,
+                Feature.HEALTH_UPDATES};
         for (Feature feature : features) {
             putDefaultCoordinates(feature);
         }
@@ -241,6 +245,10 @@ public class ConfigValues {
             case HEALTH_TEXT:
                 x = 0.378;
                 y = 0.836;
+                break;
+            case HEALTH_UPDATES:
+                x = 0.398;
+                y = 0.82;
                 break;
             case MANA_BAR:
                 x = 0.607;
@@ -303,6 +311,8 @@ public class ConfigValues {
             settingsConfig.addProperty("healthBarY", getCoords(Feature.HEALTH_BAR).getY());
             settingsConfig.addProperty("healthTextX", getCoords(Feature.HEALTH_TEXT).getX());
             settingsConfig.addProperty("healthTextY", getCoords(Feature.HEALTH_TEXT).getY());
+            settingsConfig.addProperty("healthUpdatesX", getCoords(Feature.HEALTH_UPDATES).getX());
+            settingsConfig.addProperty("healthUpdatesY", getCoords(Feature.HEALTH_UPDATES).getY());
             settingsConfig.addProperty("configVersion", CONFIG_VERSION);
             settingsConfig.addProperty("defenceTextX", getCoords(Feature.DEFENCE_TEXT).getX());
             settingsConfig.addProperty("defenceTextY", getCoords(Feature.DEFENCE_TEXT).getY());

@@ -32,6 +32,7 @@ public enum Message {
     SETTING_MINION_STOP_WARNING(MessageObject.SETTING, "minionStopWarning"),
     SETTING_AUCTION_HOUSE_PLAYERS(MessageObject.SETTING, "hideAuctionHousePlayers"),
     SETTING_HEALTH_BAR(MessageObject.SETTING, "healthBar"),
+    SETTING_HEALTH_UPDATES(MessageObject.SETTING, "healthUpdates"),
     SETTING_DEFENCE_ICON(MessageObject.SETTING, "defenceIcon"),
     SETTING_BACKPACK_STYLE(MessageObject.SETTING, "backpackStyle"),
     SETTING_SHOW_BACKPACK_PREVIEW(MessageObject.SETTING, "showBackpackPreview"),

@@ -31,6 +31,7 @@
     "minionStopWarning": "\"Minion Cannot Reach\" Warning",
     "hideAuctionHousePlayers": "Hide Players Near Auction House",
     "healthBar": "Health Bar: %type%",
+    "healthUpdates": "Health Updates",
     "defenceIcon": "Defence Icon: %type%",
     "backpackStyle": "Backpack Style: %style%",
     "styles": {

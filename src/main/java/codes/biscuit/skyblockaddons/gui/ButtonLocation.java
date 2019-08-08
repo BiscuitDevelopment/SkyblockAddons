@@ -89,7 +89,8 @@ public class ButtonLocation extends GuiButton {
                     mc.getRenderItem().renderItemIntoGUI(PlayerListener.BONE_ITEM, (int)((xPosition+boneCounter*15*scale)*scaleMultiplier), barY);
                 }
             } else if (feature == Feature.MANA_TEXT || feature == Feature.HEALTH_TEXT ||
-                    feature == Feature.DEFENCE_TEXT || feature == Feature.DEFENCE_PERCENTAGE) {
+                    feature == Feature.DEFENCE_TEXT || feature == Feature.DEFENCE_PERCENTAGE
+                    || feature == Feature.HEALTH_UPDATES) {
                 CoordsPair coordsPair = main.getConfigValues().getCoords(feature);
                 float coordX = coordsPair.getX();
                 float coordsY = coordsPair.getY();
