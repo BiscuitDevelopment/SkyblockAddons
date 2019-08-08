@@ -23,9 +23,9 @@
     "confirmationColor": "Megerősítés színe",
     "manaTextColor": "Mana szöveg színe",
     "manaBarColor": "Mana sáv színe",
-    "editLocations": "Helyük szerkesztése",
+    "editLocations": "Elhelyezés szerkesztése",
     "guiScale": "Gui mérete: %scale%",
-    "resetLocations": "Alapértelmezett helyükre",
+    "resetLocations": "Alapértelmezett elhelyezés",
     "hideDurability": "Eszköz viseltéségének elrejtése",
     "showEnchantmentsReforges": "Enchantok & Reforgok",
     "minionStopWarning": "\"A minion nem ér el valamit\" figyelmeztetés",
@@ -55,29 +55,29 @@
     "defencePercentageColor": "Védelem százalék színe",
     "disableDoubleDropAutomatically": "A dubla kidobás letiltása",
     "fullMinionWarning": "Teljes minion figyelmeztetés",
-    "nextPage": "Next Page",
-    "previousPage": "Previous Page",
-    "ignoreItemFrameClicks": "Ignore Clicks On Item Frames",
-    "useVanillaTextureDefence": "Use Vanilla Texture For Defence Icon",
-    "showBackpackHoldingShift": "Only Show Backpack When Holding Shift"
+    "nextPage": "Következő oldal",
+    "previousPage": "Előző",
+    "ignoreItemFrameClicks": "Eszköz keretre kattintás letiltása",
+    "useVanillaTextureDefence": "Vanilla textúra a védelem ikonhoz",
+    "showBackpackHoldingShift": "Hátizsák mutatása csak a Shift lenyomásával"
   },
   "messages": {
     "dropConfirmation": "Dobd el ezt a tárgyat újra, hogy megerősítsd!",
     "magmaBossWarning": "Magmakocka Boss!",
-    "fullInventory": "Teli felszerelés!",
+    "fullInventory": "Megtelt a felszerelésed!",
     "newVersion": "Egy új verzió, %newestVersion% elérhető. A letöltéshez kattints ide.",
     "discord": "Kíváncsi vagy a változtatásokra? Kattints ide, hogy csatlakozz a discordomra.",
     "developmentVersion": "Jelenleg ez a fejlesztői verzió fut: %version%. A legutóbbi elérhető frissítés %newestVersion%",
     "labymod": "Labymod felhasznlók: A étel, páncél és életerő sáv elrejtése nem elérhető.",
     "minionCannotReach": "Az egyik %type% minion nem ér el semmit, ezért nem dolgozik.",
     "minionIsFull": "A szigeten lévő egyik minion tele van!",
-    "typeEnchantmentsHere": "Type %type% Here!",
-    "separateMultiple": "Separate Multiple With Commas.",
-    "enchantsToMatch": "%type% To Match:",
-    "enchantsToExclude": "%type% To Exclude:",
+    "typeEnchantmentsHere": "Ide írd a(z) %type%at!",
+    "separateMultiple": "Több lehetőséget vesszővel válaszd el",
+    "enchantsToMatch": "%type% egyezése:",
+    "enchantsToExclude": "%type% kihagyása:",
     "inventoryTypes": {
-      "enchants": "Enchants",
-      "reforges": "Reforges"
+      "enchants": "Enchantok",
+      "reforges": "Reforgeok"
     }
   }
 }
