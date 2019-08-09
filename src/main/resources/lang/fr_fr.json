@@ -41,13 +41,13 @@
     "ignoreItemFrameClicks": "Ignorer les clics sur les cadres",
     "useVanillaTextureDefence": "Texture vanilla pour l'icone de défense",
     "showBackpackHoldingShift": "Affichage du sac à dos avec la touche MAJ",
-    "manaBar": "Mana Bar",
-    "manaText": "Mana Number",
-    "healthBar": "Health Bar",
-    "healthText": "Health Number",
-    "defenceIcon": "Defence Symbol",
-    "defenceText": "Defence Number",
-    "defencePercentage": "Defence Percentage"
+    "manaBar": "Barre de mana",
+    "manaText": "Nombre de mana",
+    "healthBar": "Barre de vie",
+    "healthText": "Nombre de vie",
+    "defenceIcon": "Icône de défense",
+    "defenceText": "Nombre de défense",
+    "defencePercentage": "Pourcentage de défense"
   },
   "messages": {
     "dropConfirmation": "Jetez cet objet une nouvelle fois pour confirmer!",
