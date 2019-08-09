@@ -91,6 +91,8 @@ public class ButtonRegular extends GuiButton {
                 displayString = main.getConfigValues().getMessage(Message.SETTING_HEALTH_BAR);
             } else if (feature == Feature.DEFENCE_ICON) {
                 displayString = main.getConfigValues().getMessage(Message.SETTING_DEFENCE_ICON);
+            } else if(feature == Feature.ITEM_PICKUP_LOG) {
+                displayString = main.getConfigValues().getMessage(Message.SETTING_ITEM_PICKUP_LOG);
             }
             float scale = 1;
             int stringWidth = mc.fontRendererObj.getStringWidth(displayString);

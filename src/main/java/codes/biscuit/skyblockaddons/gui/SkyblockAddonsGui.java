@@ -55,6 +55,7 @@ public class SkyblockAddonsGui extends GuiScreen {
             addButton(getRowHeight(1), Message.SETTING_MINION_STOP_WARNING, Feature.MINION_STOP_WARNING, 2);
             addButton(getRowHeight(1), Message.SETTING_DISABLE_EMBER_ROD_ABILITY, Feature.DISABLE_EMBER_ROD, 3);
             addButton(getRowHeight(2), Message.SETTING_ITEM_DROP_CONFIRMATION, Feature.DROP_CONFIRMATION, 1);
+            addButton(getRowHeight(4), Message.SETTING_ITEM_PICKUP_LOG, Feature.ITEM_PICKUP_LOG, 2);
         }
     }
 

@@ -36,6 +36,8 @@ public enum Feature {
     DEFENCE_PERCENTAGE(-1, ButtonType.REGULAR),
     ENCHANT_REFORGE_TYPE(-1, ButtonType.REGULAR),
 
+    ITEM_PICKUP_LOG(-1, ButtonType.REGULAR),
+
     WARNING_COLOR(-1, ButtonType.COLOR),
     CONFIRMATION_COLOR(-1, ButtonType.COLOR),
     MANA_TEXT_COLOR(-1, ButtonType.COLOR),

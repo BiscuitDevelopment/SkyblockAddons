@@ -22,8 +22,8 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.List;
 import java.util.*;
+import java.util.List;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
@@ -37,6 +37,7 @@ public class Utils {
     private Feature.Location location = null;
     private static boolean inventoryIsFull = false;
     private boolean playingSound = false;
+    private ItemStack[] previousInventory;
 
     private boolean fadingIn;
 
@@ -61,6 +62,39 @@ public class Utils {
         if (!event.isCanceled()) {
             Minecraft.getMinecraft().thePlayer.addChatMessage(event.message); // Just for logs
         }
+    }
+
+    /**
+     * Figure out the difference between the players inventory between the last call of the method and now and
+     * return the items that have changed
+     *
+     * @param player The player
+     * @return Changes as a list of {@link ItemDiff} objects
+     */
+    public List<ItemDiff> getInventoryDifference(EntityPlayerSP player) {
+        Map<String, Integer> diffMap = new HashMap<>();
+        if(previousInventory != null) {
+          for(int i = 0; i < previousInventory.length; i++) {
+              ItemStack previousItem = previousInventory[i];
+              ItemStack newItem = player.inventory.mainInventory[i];
+
+              if(previousItem == null && newItem != null) {
+                  diffMap.put(newItem.getDisplayName(), diffMap.getOrDefault(newItem.getDisplayName(), 0)+newItem.stackSize);
+              } else if(previousItem != null && newItem == null) {
+                  diffMap.put(previousItem.getDisplayName(), diffMap.getOrDefault(previousItem.getDisplayName(), 0)-previousItem.stackSize);
+              } else if(previousItem != null) {
+                  if(previousItem.getItem().equals(newItem.getItem()) && previousItem.stackSize != newItem.stackSize) {
+                      diffMap.put(newItem.getDisplayName(), diffMap.getOrDefault(newItem.getDisplayName(), 0)+(newItem.stackSize - previousItem.stackSize));
+                  }
+              }
+          }
+        }
+
+        List<ItemDiff> inventoryDifference = new LinkedList<>();
+        diffMap.forEach((item, amount) -> inventoryDifference.add(new ItemDiff(item, amount)));
+
+        previousInventory = Arrays.copyOf(player.inventory.mainInventory, player.inventory.mainInventory.length);
+        return inventoryDifference;
     }
 
     public void checkIfInventoryIsFull(Minecraft mc, EntityPlayerSP p) {

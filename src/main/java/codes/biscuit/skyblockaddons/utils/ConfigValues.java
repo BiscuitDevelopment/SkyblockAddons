@@ -107,6 +107,9 @@ public class ConfigValues {
             if (settingsConfig.has("defenceIconX")) {
                 coordinates.put(Feature.DEFENCE_ICON, new CoordsPair(settingsConfig.get("defenceIconX").getAsFloat(), settingsConfig.get("defenceIconY").getAsFloat()));
             }
+            if (settingsConfig.has("itemPickupLogX")) {
+                coordinates.put(Feature.ITEM_PICKUP_LOG, new CoordsPair(settingsConfig.get("itemPickupLogX").getAsFloat(), settingsConfig.get("itemPickupLogY").getAsFloat()));
+            }
             loadColor("warningColor", Feature.WARNING_COLOR, ConfigColor.RED);
             loadColor("confirmationColor", Feature.CONFIRMATION_COLOR, ConfigColor.RED);
             loadColor("manaBarColor", Feature.MANA_BAR_COLOR, ConfigColor.BLUE);
@@ -183,7 +186,7 @@ public class ConfigValues {
             }
         }
         Feature[] newFeatures = {Feature.HEALTH_BAR, Feature.HEALTH_TEXT, Feature.DEFENCE_TEXT, Feature.DEFENCE_PERCENTAGE,
-                Feature.DEFENCE_ICON};
+                Feature.DEFENCE_ICON, Feature.ITEM_PICKUP_LOG};
         for (Feature feature : newFeatures) {
             putDefaultCoordinates(feature);
         }
@@ -202,13 +205,15 @@ public class ConfigValues {
         disabledFeatures.add(Feature.USE_VANILLA_TEXTURE_DEFENCE);
         disabledFeatures.add(Feature.IGNORE_ITEM_FRAME_CLICKS);
         disabledFeatures.add(Feature.SHOW_BACKPACK_HOLDING_SHIFT);
+        disabledFeatures.add(Feature.ITEM_PICKUP_LOG);
         setAllCoordinatesToDefault();
         saveConfig();
     }
 
     public void setAllCoordinatesToDefault() {
         Feature[] features = {Feature.SKELETON_BAR, Feature.DEFENCE_ICON, Feature.DEFENCE_TEXT,
-                Feature.DEFENCE_PERCENTAGE, Feature.HEALTH_BAR, Feature.HEALTH_TEXT, Feature.MANA_BAR, Feature.MANA_TEXT};
+                Feature.DEFENCE_PERCENTAGE, Feature.HEALTH_BAR, Feature.HEALTH_TEXT, Feature.MANA_BAR, Feature.MANA_TEXT,
+                Feature.ITEM_PICKUP_LOG};
         for (Feature feature : features) {
             putDefaultCoordinates(feature);
         }
@@ -249,6 +254,10 @@ public class ConfigValues {
             case MANA_TEXT:
                 x = 0.571;
                 y = 0.847;
+                break;
+            case ITEM_PICKUP_LOG:
+                x = 0.1;
+                y = 0.5;
                 break;
         }
         coordinates.put(feature, new CoordsPair((float)x, (float)y));
@@ -310,6 +319,8 @@ public class ConfigValues {
             settingsConfig.addProperty("defencePercentageY", getCoords(Feature.DEFENCE_PERCENTAGE).getY());
             settingsConfig.addProperty("defenceIconX", getCoords(Feature.DEFENCE_ICON).getX());
             settingsConfig.addProperty("defenceIconY", getCoords(Feature.DEFENCE_ICON).getY());
+            settingsConfig.addProperty("itemPickupLogX", getCoords(Feature.ITEM_PICKUP_LOG).getX());
+            settingsConfig.addProperty("itemPickupLogY", getCoords(Feature.ITEM_PICKUP_LOG).getY());
             settingsConfig.addProperty("defencePercentageColor", getColor(Feature.DEFENCE_PERCENTAGE_COLOR).ordinal());
             settingsConfig.addProperty("defenceTextColor", getColor(Feature.DEFENCE_TEXT_COLOR).ordinal());
             settingsConfig.addProperty("healthBarColor", getColor(Feature.HEALTH_BAR_COLOR).ordinal());

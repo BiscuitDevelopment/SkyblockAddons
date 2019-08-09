@@ -5,9 +5,7 @@ import codes.biscuit.skyblockaddons.gui.ButtonLocation;
 import codes.biscuit.skyblockaddons.gui.ButtonSlider;
 import codes.biscuit.skyblockaddons.gui.LocationEditGui;
 import codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui;
-import codes.biscuit.skyblockaddons.utils.CoordsPair;
-import codes.biscuit.skyblockaddons.utils.Feature;
-import codes.biscuit.skyblockaddons.utils.Message;
+import codes.biscuit.skyblockaddons.utils.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.gui.ScaledResolution;
@@ -35,8 +33,7 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 import org.lwjgl.opengl.GL11;
 
 import java.math.BigDecimal;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.*;
 import java.util.regex.Pattern;
 
 import static net.minecraft.client.gui.Gui.icons;
@@ -46,6 +43,12 @@ public class PlayerListener {
     public final static ItemStack BONE_ITEM = new ItemStack(Item.getItemById(352));
     private final static ResourceLocation BARS = new ResourceLocation("skyblockaddons", "bars.png");
     private final static ResourceLocation DEFENCE_VANILLA = new ResourceLocation("skyblockaddons", "defence.png");
+
+    /**
+     * Delay for item pickup logging to happen after changing a world in ms
+     * to prevent the whole inventory being shown as just picked up
+     */
+    private final static int ITEM_PICKUP_LOG_DELAY = 1000;
 
     private boolean sentUpdate = false;
     private long lastWorldJoin = -1;
@@ -67,6 +70,8 @@ public class PlayerListener {
     private int maxHealth = 100;
     private int mana = 0;
     private int maxMana = 100;
+
+    private Map<String, ItemDiff> itemPickupLog = new HashMap<>();
 
 //    private Feature.Accuracy magmaTimerAccuracy = null;
 //    private long magmaTime = 7200;
@@ -329,6 +334,9 @@ public class PlayerListener {
                     || healthBarType == Feature.BarType.BAR_TEXT) {
                 drawText(Feature.HEALTH_TEXT, scaleMultiplier, mc, sr, Feature.HEALTH_TEXT_COLOR);
             }
+            if(!main.getConfigValues().getDisabledFeatures().contains(Feature.ITEM_PICKUP_LOG)) {
+                drawPickupLog(scaleMultiplier, mc, sr);
+            }
         }
         GlStateManager.popMatrix();
     }
@@ -427,6 +435,12 @@ public class PlayerListener {
             textX = coordsPair.getX();
             textY = coordsPair.getY();
             text = String.valueOf(defense);
+        } else if(feature == Feature.ITEM_PICKUP_LOG) {
+            CoordsPair coordsPair = main.getConfigValues().getCoords(Feature.ITEM_PICKUP_LOG);
+            textX = coordsPair.getX();
+            textY = coordsPair.getY();
+            color = ConfigColor.WHITE.getColor(255);
+            text = "Pickup Log";
         } else {
             CoordsPair coordsPair = main.getConfigValues().getCoords(Feature.DEFENCE_PERCENTAGE);
             textX = coordsPair.getX();
@@ -446,6 +460,29 @@ public class PlayerListener {
         mc.fontRendererObj.drawString(text, (int)(x*scaleMultiplier)-60, (int)(y*scaleMultiplier)-1-10, 0);
         mc.fontRendererObj.drawString(text, (int)(x*scaleMultiplier)-60, (int)(y*scaleMultiplier)-10, color);
 //        mc.ingameGUI.drawString(mc.fontRendererObj, text, (int)(x*scaleMultiplier)-60, (int)(y*scaleMultiplier)-10, color);
+    }
+
+    /**
+     * Draw the list of picked up items
+     */
+    private void drawPickupLog(float scaleMultiplier, Minecraft mc, ScaledResolution sr) {
+        CoordsPair coordsPair = main.getConfigValues().getCoords(Feature.ITEM_PICKUP_LOG);
+        float textX = coordsPair.getX();
+        float textY = coordsPair.getY();
+        int x = (int) (textX * sr.getScaledWidth()) + 60;
+        int y = (int) (textY * sr.getScaledHeight()) + 4;
+        int i = 0;
+        for (ItemDiff itemDiff : itemPickupLog.values()) {
+            String text = String.format("%s %sx \u00A7r%s", itemDiff.getAmount() > 0 ? "\u00A7a+":"\u00A7c-",
+                    Math.abs(itemDiff.getAmount()), itemDiff.getDisplayName());
+            if(itemDiff.getAmount() != 0) { // don't draw if the difference is 0
+                mc.fontRendererObj.drawString(text,
+                        (int) (x * scaleMultiplier) - 60,
+                        (int) (y * scaleMultiplier) - 10 + (i * mc.fontRendererObj.FONT_HEIGHT),
+                        ConfigColor.WHITE.getColor(255));
+                i++;
+            }
+        }
     }
 
     @SubscribeEvent()
@@ -507,8 +544,32 @@ public class PlayerListener {
                     if (p != null) {
                         main.getUtils().checkIfInventoryIsFull(mc, p);
                         main.getUtils().checkIfWearingSkeletonHelmet(p);
+                        if(mc.currentScreen == null) {
+                            List<ItemDiff> diffs = main.getUtils().getInventoryDifference(p);
+
+                            // Don't add the difference to the displayed log right after a world join so
+                            // it won't happen to detect the whole inventory as just picked up.
+                            if(getLastWorldJoin()+ITEM_PICKUP_LOG_DELAY <= System.currentTimeMillis()) {
+                                for (ItemDiff diff : diffs) {
+                                    if (itemPickupLog.containsKey(diff.getDisplayName())) {
+                                        itemPickupLog.get(diff.getDisplayName()).add(diff.getAmount());
+                                    } else {
+                                        itemPickupLog.put(diff.getDisplayName(), diff);
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
+
+                List<String> logItemsToRemove = new LinkedList<>();
+                itemPickupLog.forEach((displayName, itemDiff) -> {
+                    if(itemDiff.getLifetime() > ItemDiff.LIFESPAN) {
+                        logItemsToRemove.add(displayName);
+                    }
+                });
+                logItemsToRemove.forEach(name -> itemPickupLog.remove(name));
+
             } else if (manaTick > 20) {
                 main.getUtils().checkGameAndLocation();
                 Minecraft mc = Minecraft.getMinecraft();

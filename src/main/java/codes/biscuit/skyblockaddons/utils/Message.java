@@ -47,6 +47,7 @@ public enum Message {
     SETTING_IGNORE_ITEM_FRAME_CLICKS(MessageObject.SETTING, "ignoreItemFrameClicks"),
     SETTING_USE_VANILLA_TEXTURE_DEFENCE(MessageObject.SETTING, "useVanillaTextureDefence"),
     SETTING_SHOW_BACKPACK_HOLDING_SHIFT(MessageObject.SETTING, "showBackpackHoldingShift"),
+    SETTING_ITEM_PICKUP_LOG(MessageObject.SETTING, "itemPickupLog"),
 
     STYLE_GUI(MessageObject.STYLE, "inventory"),
     STYLE_COMPACT(MessageObject.STYLE, "compact"),
