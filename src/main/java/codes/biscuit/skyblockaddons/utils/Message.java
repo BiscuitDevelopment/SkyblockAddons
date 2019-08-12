@@ -11,7 +11,6 @@ public enum Message {
     SETTING_MAGMA_BOSS_WARNING(MessageObject.SETTING, "magmaBossWarning"),
     SETTING_ITEM_DROP_CONFIRMATION(MessageObject.SETTING, "itemDropConfirmation"),
     SETTING_WARNING_TIME(MessageObject.SETTING, "warningTime"),
-    SETTING_MANA_BAR(MessageObject.SETTING, "manaBar"),
     SETTING_HIDE_SKELETON_HAT_BONES(MessageObject.SETTING, "hideSkeletonHatBones"),
     SETTING_SKELETON_HAT_BONES_BAR(MessageObject.SETTING, "skeletonHatBonesBar"),
     SETTING_HIDE_FOOD_AND_ARMOR(MessageObject.SETTING, "hideFoodAndArmor"),
@@ -31,11 +30,9 @@ public enum Message {
     SETTING_ENCHANTS_AND_REFORGES(MessageObject.SETTING, "showEnchantmentsReforges"),
     SETTING_MINION_STOP_WARNING(MessageObject.SETTING, "minionStopWarning"),
     SETTING_AUCTION_HOUSE_PLAYERS(MessageObject.SETTING, "hideAuctionHousePlayers"),
-    SETTING_HEALTH_BAR(MessageObject.SETTING, "healthBar"),
-    SETTING_DEFENCE_ICON(MessageObject.SETTING, "defenceIcon"),
     SETTING_BACKPACK_STYLE(MessageObject.SETTING, "backpackStyle"),
     SETTING_SHOW_BACKPACK_PREVIEW(MessageObject.SETTING, "showBackpackPreview"),
-    SETTING_HIDE_HEALTH_VAR(MessageObject.SETTING, "hideHealthBar"),
+    SETTING_HIDE_HEALTH_BAR(MessageObject.SETTING, "hideHealthBar"),
     SETTING_HEALTH_TEXT_COLOR(MessageObject.SETTING, "healthTextColor"),
     SETTING_HEALTH_BAR_COLOR(MessageObject.SETTING, "healthBarColor"),
     SETTING_DEFENCE_TEXT_COLOR(MessageObject.SETTING, "defenceTextColor"),
@@ -47,23 +44,17 @@ public enum Message {
     SETTING_IGNORE_ITEM_FRAME_CLICKS(MessageObject.SETTING, "ignoreItemFrameClicks"),
     SETTING_USE_VANILLA_TEXTURE_DEFENCE(MessageObject.SETTING, "useVanillaTextureDefence"),
     SETTING_SHOW_BACKPACK_HOLDING_SHIFT(MessageObject.SETTING, "showBackpackHoldingShift"),
+    SETTING_MANA_BAR(MessageObject.SETTING, "manaBar"),
+    SETTING_HEALTH_BAR(MessageObject.SETTING, "healthBar"),
+    SETTING_DEFENCE_ICON(MessageObject.SETTING, "defenceIcon"),
+    SETTING_MANA_TEXT(MessageObject.SETTING, "manaText"),
+    SETTING_HEALTH_TEXT(MessageObject.SETTING, "healthText"),
+    SETTING_DEFENCE_TEXT(MessageObject.SETTING, "defenceText"),
+    SETTING_DEFENCE_PERCENTAGE(MessageObject.SETTING, "defencePercentage"),
+    SETTING_HEALTH_UPDATES(MessageObject.SETTING, "healthUpdates"),
 
     STYLE_GUI(MessageObject.STYLE, "inventory"),
     STYLE_COMPACT(MessageObject.STYLE, "compact"),
-
-    BAR_TYPE_BAR_TEXT(MessageObject.BAR_TYPE, "barAndText"),
-    BAR_TYPE_BAR(MessageObject.BAR_TYPE, "bar"),
-    BAR_TYPE_TEXT(MessageObject.BAR_TYPE, "text"),
-    BAR_TYPE_OFF(MessageObject.BAR_TYPE, "off"),
-
-    ICON_TYPE_ICON_DEFENCE_PERCENTAGE(MessageObject.ICON_TYPE, "iconDefenceAndPercentage"),
-    ICON_TYPE_ICON_DEFENCE(MessageObject.ICON_TYPE, "iconAndDefence"),
-    ICON_TYPE_ICON_PERCENTAGE(MessageObject.ICON_TYPE, "iconAndPercentage"),
-    ICON_TYPE_DEFENCE_PERCENTAGE(MessageObject.ICON_TYPE, "defenceAndPercentage"),
-    ICON_TYPE_DEFENCE(MessageObject.ICON_TYPE, "defence"),
-    ICON_TYPE_PERCENTAGE(MessageObject.ICON_TYPE, "percentage"),
-    ICON_TYPE_ICON(MessageObject.ICON_TYPE, "icon"),
-    ICON_TYPE_OFF(MessageObject.ICON_TYPE, "off"),
 
     MESSAGE_DROP_CONFIRMATION(MessageObject.MESSAGES, "dropConfirmation"),
     MESSAGE_MAGMA_BOSS_WARNING(MessageObject.MESSAGES, "magmaBossWarning"),
@@ -101,11 +92,9 @@ public enum Message {
     enum MessageObject {
         ROOT(""),
         SETTING("settings"),
-        BAR_TYPE("settings.barTypes"),
         MESSAGES("messages"),
         STYLE("settings.styles"),
-        INVENTORY_TYPE("messages.inventoryTypes"),
-        ICON_TYPE("settings.iconTypes");
+        INVENTORY_TYPE("messages.inventoryTypes");
 
         private List<String> path;
 

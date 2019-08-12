@@ -47,7 +47,8 @@
     "healthText": "Health Number",
     "defenceIcon": "Defence Symbol",
     "defenceText": "Defence Number",
-    "defencePercentage": "Defence Percentage"
+    "defencePercentage": "Defence Percentage",
+    "healthUpdates": "Health Change Number"
   },
   "messages": {
     "dropConfirmation": "Arroja este objeto otra vez para confirmar!",

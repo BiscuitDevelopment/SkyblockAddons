@@ -3,13 +3,14 @@ package codes.biscuit.skyblockaddons.utils;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import com.google.gson.*;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.ScaledResolution;
 
 import java.io.*;
 import java.util.*;
 
 public class ConfigValues {
 
-    private static final int CONFIG_VERSION = 2;
+    private static final int CONFIG_VERSION = 3;
 
     private SkyblockAddons main;
     private File settingsConfigFile;
@@ -19,14 +20,12 @@ public class ConfigValues {
 
     private Set<Feature> disabledFeatures = EnumSet.noneOf(Feature.class);
     private Map<Feature, ConfigColor> featureColors = new EnumMap<>(Feature.class);
-    private Feature.BarType manaBarType = Feature.BarType.BAR_TEXT;
-    private Feature.BarType healthBarType = Feature.BarType.TEXT;
-    private Feature.IconType defenceIconType = Feature.IconType.ICON_DEFENCE;
     private int warningSeconds = 4;
     private Map<Feature, CoordsPair> coordinates = new EnumMap<>(Feature.class);
+    private Map<Feature, EnumUtils.AnchorPoint> anchorPoints = new EnumMap<>(Feature.class);
     private float guiScale = 0.11F;
     private Language language = Language.ENGLISH;
-    private Feature.BackpackStyle backpackStyle = Feature.BackpackStyle.GUI;
+    private EnumUtils.BackpackStyle backpackStyle = EnumUtils.BackpackStyle.GUI;
 
     public ConfigValues(SkyblockAddons main, File settingsConfigFile) {
         this.main = main;
@@ -62,23 +61,17 @@ public class ConfigValues {
                 }
             }
             warningSeconds = settingsConfig.get("warningSeconds").getAsInt();
-            if (settingsConfig.has("manaBarType")) {
-                int ordinal = settingsConfig.get("manaBarType").getAsInt();
-                if (Feature.BarType.values().length > ordinal) {
-                    manaBarType = Feature.BarType.values()[ordinal];
-                }
-            }
             if (settingsConfig.has("manaBarX")) {
-                coordinates.put(Feature.MANA_BAR, new CoordsPair(settingsConfig.get("manaBarX").getAsFloat(), settingsConfig.get("manaBarY").getAsFloat()));
+                coordinates.put(Feature.MANA_BAR, new CoordsPair(settingsConfig.get("manaBarX").getAsInt(), settingsConfig.get("manaBarY").getAsInt()));
             }
             if (settingsConfig.has("skeletonBarX")) {
-                coordinates.put(Feature.SKELETON_BAR, new CoordsPair(settingsConfig.get("skeletonBarX").getAsFloat(), settingsConfig.get("skeletonBarY").getAsFloat()));
+                coordinates.put(Feature.SKELETON_BAR, new CoordsPair(settingsConfig.get("skeletonBarX").getAsInt(), settingsConfig.get("skeletonBarY").getAsInt()));
             }
             if (settingsConfig.has("guiScale")) {
                 guiScale = settingsConfig.get("guiScale").getAsFloat();
             }
             if (settingsConfig.has("manaTextX")) {
-                coordinates.put(Feature.MANA_TEXT, new CoordsPair(settingsConfig.get("manaTextX").getAsFloat(), settingsConfig.get("manaTextY").getAsFloat()));
+                coordinates.put(Feature.MANA_TEXT, new CoordsPair(settingsConfig.get("manaTextX").getAsInt(), settingsConfig.get("manaTextY").getAsInt()));
             }
             if (settingsConfig.has("language")) {
                 Language configLanguage = Language.getFromPath(settingsConfig.get("language").getAsString().toLowerCase());
@@ -88,45 +81,36 @@ public class ConfigValues {
             }
             if (settingsConfig.has("backpackStyle")) {
                 int ordinal = settingsConfig.get("backpackStyle").getAsInt();
-                if (Feature.BackpackStyle.values().length > ordinal) {
-                    backpackStyle = Feature.BackpackStyle.values()[ordinal];
+                if (EnumUtils.BackpackStyle.values().length > ordinal) {
+                    backpackStyle = EnumUtils.BackpackStyle.values()[ordinal];
                 }
             }
             if (settingsConfig.has("healthBarX")) {
-                coordinates.put(Feature.HEALTH_BAR, new CoordsPair(settingsConfig.get("healthBarX").getAsFloat(), settingsConfig.get("healthBarY").getAsFloat()));
+                coordinates.put(Feature.HEALTH_BAR, new CoordsPair(settingsConfig.get("healthBarX").getAsInt(), settingsConfig.get("healthBarY").getAsInt()));
             }
             if (settingsConfig.has("healthTextX")) {
-                coordinates.put(Feature.HEALTH_TEXT, new CoordsPair(settingsConfig.get("healthTextX").getAsFloat(), settingsConfig.get("healthTextY").getAsFloat()));
+                coordinates.put(Feature.HEALTH_TEXT, new CoordsPair(settingsConfig.get("healthTextX").getAsInt(), settingsConfig.get("healthTextY").getAsInt()));
             }
             if (settingsConfig.has("defenceTextX")) {
-                coordinates.put(Feature.DEFENCE_TEXT, new CoordsPair(settingsConfig.get("defenceTextX").getAsFloat(), settingsConfig.get("defenceTextY").getAsFloat()));
+                coordinates.put(Feature.DEFENCE_TEXT, new CoordsPair(settingsConfig.get("defenceTextX").getAsInt(), settingsConfig.get("defenceTextY").getAsInt()));
             }
             if (settingsConfig.has("defencePercentageX")) {
-                coordinates.put(Feature.DEFENCE_PERCENTAGE, new CoordsPair(settingsConfig.get("defencePercentageX").getAsFloat(), settingsConfig.get("defencePercentageY").getAsFloat()));
+                coordinates.put(Feature.DEFENCE_PERCENTAGE, new CoordsPair(settingsConfig.get("defencePercentageX").getAsInt(), settingsConfig.get("defencePercentageY").getAsInt()));
             }
             if (settingsConfig.has("defenceIconX")) {
-                coordinates.put(Feature.DEFENCE_ICON, new CoordsPair(settingsConfig.get("defenceIconX").getAsFloat(), settingsConfig.get("defenceIconY").getAsFloat()));
+                coordinates.put(Feature.DEFENCE_ICON, new CoordsPair(settingsConfig.get("defenceIconX").getAsInt(), settingsConfig.get("defenceIconY").getAsInt()));
             }
-            loadColor("warningColor", Feature.WARNING_COLOR, ConfigColor.RED);
-            loadColor("confirmationColor", Feature.CONFIRMATION_COLOR, ConfigColor.RED);
-            loadColor("manaBarColor", Feature.MANA_BAR_COLOR, ConfigColor.BLUE);
-            loadColor("manaBarTextColor", Feature.MANA_TEXT_COLOR, ConfigColor.BLUE);
-            loadColor("defencePercentageColor", Feature.DEFENCE_PERCENTAGE_COLOR, ConfigColor.GREEN);
-            loadColor("defenceTextColor", Feature.DEFENCE_TEXT_COLOR, ConfigColor.GREEN);
-            loadColor("healthBarColor", Feature.HEALTH_BAR_COLOR, ConfigColor.RED);
-            loadColor("healthTextColor", Feature.HEALTH_TEXT_COLOR, ConfigColor.RED);
-            if (settingsConfig.has("healthBarType")) {
-                int ordinal = settingsConfig.get("healthBarType").getAsInt();
-                if (Feature.BarType.values().length > ordinal) {
-                    healthBarType = Feature.BarType.values()[ordinal];
-                }
+            if (settingsConfig.has("healthUpdatesX")) {
+                coordinates.put(Feature.HEALTH_UPDATES, new CoordsPair(settingsConfig.get("healthUpdatesX").getAsInt(), settingsConfig.get("healthUpdatesY").getAsInt()));
             }
-            if (settingsConfig.has("defenceIconType")) {
-                int ordinal = settingsConfig.get("defenceIconType").getAsInt();
-                if (Feature.IconType.values().length > ordinal) {
-                    defenceIconType = Feature.IconType.values()[ordinal];
-                }
-            }
+            loadColor("warningColor", Feature.MAGMA_WARNING, ConfigColor.RED);
+            loadColor("confirmationColor", Feature.DROP_CONFIRMATION, ConfigColor.RED);
+            loadColor("manaBarColor", Feature.MANA_BAR, ConfigColor.BLUE);
+            loadColor("manaBarTextColor", Feature.MANA_TEXT, ConfigColor.BLUE);
+            loadColor("defencePercentageColor", Feature.DEFENCE_PERCENTAGE, ConfigColor.GREEN);
+            loadColor("defenceTextColor", Feature.DEFENCE_TEXT, ConfigColor.GREEN);
+            loadColor("healthBarColor", Feature.HEALTH_BAR, ConfigColor.RED);
+            loadColor("healthTextColor", Feature.HEALTH_TEXT, ConfigColor.RED);
             int configVersion;
             if (settingsConfig.has("configVersion")) {
                 configVersion = settingsConfig.get("configVersion").getAsInt();
@@ -149,6 +133,10 @@ public class ConfigValues {
                 disabledFeatures.add(Feature.USE_VANILLA_TEXTURE_DEFENCE);
                 disabledFeatures.add(Feature.IGNORE_ITEM_FRAME_CLICKS);
                 disabledFeatures.add(Feature.SHOW_BACKPACK_HOLDING_SHIFT);
+            } else if (configVersion == 2) {
+                disabledFeatures.add(Feature.HEALTH_BAR);
+                disabledFeatures.add(Feature.DEFENCE_PERCENTAGE);
+                setAnchorPointsToDefault();
             }
         } else {
             addDefaultsAndSave();
@@ -187,14 +175,14 @@ public class ConfigValues {
         for (Feature feature : newFeatures) {
             putDefaultCoordinates(feature);
         }
-        featureColors.put(Feature.CONFIRMATION_COLOR, ConfigColor.RED);
-        featureColors.put(Feature.WARNING_COLOR, ConfigColor.RED);
-        featureColors.put(Feature.MANA_TEXT_COLOR, ConfigColor.BLUE);
-        featureColors.put(Feature.MANA_BAR_COLOR, ConfigColor.BLUE);
-        featureColors.put(Feature.HEALTH_BAR_COLOR, ConfigColor.RED);
-        featureColors.put(Feature.HEALTH_TEXT_COLOR, ConfigColor.RED);
-        featureColors.put(Feature.DEFENCE_TEXT_COLOR, ConfigColor.GREEN);
-        featureColors.put(Feature.DEFENCE_PERCENTAGE_COLOR, ConfigColor.GREEN);
+        featureColors.put(Feature.DROP_CONFIRMATION, ConfigColor.RED);
+        featureColors.put(Feature.MAGMA_WARNING, ConfigColor.RED);
+        featureColors.put(Feature.MANA_TEXT, ConfigColor.BLUE);
+        featureColors.put(Feature.MANA_BAR, ConfigColor.BLUE);
+        featureColors.put(Feature.HEALTH_BAR, ConfigColor.RED);
+        featureColors.put(Feature.HEALTH_TEXT, ConfigColor.RED);
+        featureColors.put(Feature.DEFENCE_TEXT, ConfigColor.GREEN);
+        featureColors.put(Feature.DEFENCE_PERCENTAGE, ConfigColor.GREEN);
         disabledFeatures.add(Feature.DROP_CONFIRMATION);
         disabledFeatures.add(Feature.MINION_STOP_WARNING);
         disabledFeatures.add(Feature.HIDE_HEALTH_BAR);
@@ -202,56 +190,72 @@ public class ConfigValues {
         disabledFeatures.add(Feature.USE_VANILLA_TEXTURE_DEFENCE);
         disabledFeatures.add(Feature.IGNORE_ITEM_FRAME_CLICKS);
         disabledFeatures.add(Feature.SHOW_BACKPACK_HOLDING_SHIFT);
+        disabledFeatures.add(Feature.HEALTH_BAR);
+        disabledFeatures.add(Feature.DEFENCE_PERCENTAGE);
         setAllCoordinatesToDefault();
         saveConfig();
     }
 
     public void setAllCoordinatesToDefault() {
+        setAnchorPointsToDefault();
         Feature[] features = {Feature.SKELETON_BAR, Feature.DEFENCE_ICON, Feature.DEFENCE_TEXT,
-                Feature.DEFENCE_PERCENTAGE, Feature.HEALTH_BAR, Feature.HEALTH_TEXT, Feature.MANA_BAR, Feature.MANA_TEXT};
+                Feature.DEFENCE_PERCENTAGE, Feature.HEALTH_BAR, Feature.HEALTH_TEXT, Feature.MANA_BAR, Feature.MANA_TEXT, Feature.HEALTH_UPDATES};
         for (Feature feature : features) {
             putDefaultCoordinates(feature);
         }
     }
 
+    private void setAnchorPointsToDefault() {
+        Feature[] features = {Feature.SKELETON_BAR, Feature.DEFENCE_ICON, Feature.DEFENCE_TEXT,
+                Feature.DEFENCE_PERCENTAGE, Feature.HEALTH_BAR, Feature.HEALTH_TEXT, Feature.MANA_BAR,
+                Feature.MANA_TEXT, Feature.HEALTH_UPDATES};
+        for (Feature feature : features) {
+            anchorPoints.put(feature, EnumUtils.AnchorPoint.HEALTH_BAR);
+        }
+    }
+
     private void putDefaultCoordinates(Feature feature) {
-        double x = -1;
-        double y = -1;
+        int x = 0; //TODO add default coordinates
+        int y = 0;
         switch (feature) {
             case SKELETON_BAR:
-                x = 0.657;
-                y = 0.93;
+                x = 211;
+                y = 28;
                 break;
             case DEFENCE_ICON:
-                x = 0.488;
-                y = 0.832;
+                x = 90;
+                y = -24;
                 break;
             case DEFENCE_TEXT:
-                x = 0.46;
-                y = 0.844;
+                x = 90;
+                y = -22;
                 break;
             case DEFENCE_PERCENTAGE:
-                x = 0.46;
-                y = 0.872;
+                x = 92;
+                y = -14;
                 break;
             case HEALTH_BAR:
-                x = 0.398;
-                y = 0.886;
+                x = 41;
+                y = -4;
                 break;
             case HEALTH_TEXT:
-                x = 0.378;
-                y = 0.836;
+                x = 40;
+                y = -4;
                 break;
             case MANA_BAR:
-                x = 0.607;
-                y = 0.88;
+                x = 141;
+                y = -4;
                 break;
             case MANA_TEXT:
-                x = 0.571;
-                y = 0.847;
+                x = 143;
+                y = -4;
+                break;
+            case HEALTH_UPDATES:
+                x = 41;
+                y = -13;
                 break;
         }
-        coordinates.put(feature, new CoordsPair((float)x, (float)y));
+        coordinates.put(feature, new CoordsPair(x, y));
     }
 
     public void loadLanguageFile() {
@@ -287,35 +291,34 @@ public class ConfigValues {
                 jsonArray.add(new GsonBuilder().create().toJsonTree(element.getId()));
             }
             settingsConfig.add("disabledFeatures", jsonArray);
-            settingsConfig.addProperty("warningColor", getColor(Feature.WARNING_COLOR).ordinal());
-            settingsConfig.addProperty("confirmationColor", getColor(Feature.CONFIRMATION_COLOR).ordinal());
-            settingsConfig.addProperty("manaBarColor", getColor(Feature.MANA_BAR_COLOR).ordinal());
-            settingsConfig.addProperty("manaBarTextColor", getColor(Feature.MANA_TEXT_COLOR).ordinal());
-            settingsConfig.addProperty("manaBarType", manaBarType.ordinal());
+            settingsConfig.addProperty("warningColor", getColor(Feature.MAGMA_WARNING).ordinal());
+            settingsConfig.addProperty("confirmationColor", getColor(Feature.DROP_CONFIRMATION).ordinal());
+            settingsConfig.addProperty("manaBarColor", getColor(Feature.MANA_BAR).ordinal());
+            settingsConfig.addProperty("manaBarTextColor", getColor(Feature.MANA_TEXT).ordinal());
             settingsConfig.addProperty("warningSeconds", warningSeconds);
-            settingsConfig.addProperty("manaBarX", getCoords(Feature.MANA_BAR).getX());
-            settingsConfig.addProperty("manaBarY", getCoords(Feature.MANA_BAR).getY());
-            settingsConfig.addProperty("manaTextX", getCoords(Feature.MANA_TEXT).getX());
-            settingsConfig.addProperty("manaTextY", getCoords(Feature.MANA_TEXT).getY());
-            settingsConfig.addProperty("skeletonBarX", getCoords(Feature.SKELETON_BAR).getX());
-            settingsConfig.addProperty("skeletonBarY", getCoords(Feature.SKELETON_BAR).getY());
-            settingsConfig.addProperty("healthBarX", getCoords(Feature.HEALTH_BAR).getX());
-            settingsConfig.addProperty("healthBarY", getCoords(Feature.HEALTH_BAR).getY());
-            settingsConfig.addProperty("healthTextX", getCoords(Feature.HEALTH_TEXT).getX());
-            settingsConfig.addProperty("healthTextY", getCoords(Feature.HEALTH_TEXT).getY());
+            settingsConfig.addProperty("manaBarX", getRelativeCoords(Feature.MANA_BAR).getX());
+            settingsConfig.addProperty("manaBarY", getRelativeCoords(Feature.MANA_BAR).getY());
+            settingsConfig.addProperty("manaTextX", getRelativeCoords(Feature.MANA_TEXT).getX());
+            settingsConfig.addProperty("manaTextY", getRelativeCoords(Feature.MANA_TEXT).getY());
+            settingsConfig.addProperty("skeletonBarX", getRelativeCoords(Feature.SKELETON_BAR).getX());
+            settingsConfig.addProperty("skeletonBarY", getRelativeCoords(Feature.SKELETON_BAR).getY());
+            settingsConfig.addProperty("healthBarX", getRelativeCoords(Feature.HEALTH_BAR).getX());
+            settingsConfig.addProperty("healthBarY", getRelativeCoords(Feature.HEALTH_BAR).getY());
+            settingsConfig.addProperty("healthTextX", getRelativeCoords(Feature.HEALTH_TEXT).getX());
+            settingsConfig.addProperty("healthTextY", getRelativeCoords(Feature.HEALTH_TEXT).getY());
             settingsConfig.addProperty("configVersion", CONFIG_VERSION);
-            settingsConfig.addProperty("defenceTextX", getCoords(Feature.DEFENCE_TEXT).getX());
-            settingsConfig.addProperty("defenceTextY", getCoords(Feature.DEFENCE_TEXT).getY());
-            settingsConfig.addProperty("defencePercentageX", getCoords(Feature.DEFENCE_PERCENTAGE).getX());
-            settingsConfig.addProperty("defencePercentageY", getCoords(Feature.DEFENCE_PERCENTAGE).getY());
-            settingsConfig.addProperty("defenceIconX", getCoords(Feature.DEFENCE_ICON).getX());
-            settingsConfig.addProperty("defenceIconY", getCoords(Feature.DEFENCE_ICON).getY());
-            settingsConfig.addProperty("defencePercentageColor", getColor(Feature.DEFENCE_PERCENTAGE_COLOR).ordinal());
-            settingsConfig.addProperty("defenceTextColor", getColor(Feature.DEFENCE_TEXT_COLOR).ordinal());
-            settingsConfig.addProperty("healthBarColor", getColor(Feature.HEALTH_BAR_COLOR).ordinal());
-            settingsConfig.addProperty("healthTextColor", getColor(Feature.HEALTH_TEXT_COLOR).ordinal());
-            settingsConfig.addProperty("healthBarType", healthBarType.ordinal());
-            settingsConfig.addProperty("defenceIconType", defenceIconType.ordinal());
+            settingsConfig.addProperty("defenceTextX", getRelativeCoords(Feature.DEFENCE_TEXT).getX());
+            settingsConfig.addProperty("defenceTextY", getRelativeCoords(Feature.DEFENCE_TEXT).getY());
+            settingsConfig.addProperty("defencePercentageX", getRelativeCoords(Feature.DEFENCE_PERCENTAGE).getX());
+            settingsConfig.addProperty("defencePercentageY", getRelativeCoords(Feature.DEFENCE_PERCENTAGE).getY());
+            settingsConfig.addProperty("defenceIconX", getRelativeCoords(Feature.DEFENCE_ICON).getX());
+            settingsConfig.addProperty("defenceIconY", getRelativeCoords(Feature.DEFENCE_ICON).getY());
+            settingsConfig.addProperty("defencePercentageColor", getColor(Feature.DEFENCE_PERCENTAGE).ordinal());
+            settingsConfig.addProperty("defenceTextColor", getColor(Feature.DEFENCE_TEXT).ordinal());
+            settingsConfig.addProperty("healthBarColor", getColor(Feature.HEALTH_BAR).ordinal());
+            settingsConfig.addProperty("healthTextColor", getColor(Feature.HEALTH_TEXT).ordinal());
+            settingsConfig.addProperty("healthUpdatesX", getRelativeCoords(Feature.HEALTH_UPDATES).getX());
+            settingsConfig.addProperty("healthUpdatesY", getRelativeCoords(Feature.HEALTH_UPDATES).getY());
 
             settingsConfig.addProperty("guiScale", guiScale);
             settingsConfig.addProperty("language", language.getPath());
@@ -344,12 +347,6 @@ public class ConfigValues {
             if (text != null) {
                 if (message == Message.SETTING_WARNING_TIME) {
                     text = text.replace("%time%", String.valueOf(warningSeconds));
-                } else if (message == Message.SETTING_MANA_BAR) {
-                    text = text.replace("%type%", manaBarType.getDisplayText());
-                } else if (message == Message.SETTING_HEALTH_BAR) {
-                    text = text.replace("%type%", healthBarType.getDisplayText());
-                } else if (message == Message.SETTING_DEFENCE_ICON) {
-                    text = text.replace("%type%", defenceIconType.getDisplayText());
                 } else if (message == Message.SETTING_GUI_SCALE) {
                     text = text.replace("%scale%", variables[0]);
                 } else if (message == Message.MESSAGE_NEW_VERSION) {
@@ -399,32 +396,8 @@ public class ConfigValues {
         return main.getUtils().removeDuplicateSpaces(newString.toString().trim());
     }
 
-    public Feature.BarType getManaBarType() {
-        return manaBarType;
-    }
-
-    public Feature.BarType getHealthBarType() {
-        return healthBarType;
-    }
-
     public Set<Feature> getDisabledFeatures() {
         return disabledFeatures;
-    }
-
-    public void setManaBarType(Feature.BarType barType) {
-        this.manaBarType = barType;
-    }
-
-    public void setHealthBarType(Feature.BarType healthBarType) {
-        this.healthBarType = healthBarType;
-    }
-
-    public Feature.IconType getDefenceIconType() {
-        return defenceIconType;
-    }
-
-    public void setDefenceIconType(Feature.IconType defenceIconType) {
-        this.defenceIconType = defenceIconType;
     }
 
     public void setLanguage(Language language) {
@@ -451,7 +424,17 @@ public class ConfigValues {
         this.warningSeconds = warningSeconds;
     }
 
-    public CoordsPair getCoords(Feature feature) {
+    public int getActualX(Feature feature) {
+        int maxX = new ScaledResolution(Minecraft.getMinecraft()).getScaledWidth();
+        return getAnchorPoint(feature).getX(maxX)+ getRelativeCoords(feature).getX();
+    }
+
+    public int getActualY(Feature feature) {
+        int maxY = new ScaledResolution(Minecraft.getMinecraft()).getScaledHeight();
+        return getAnchorPoint(feature).getY(maxY)+ getRelativeCoords(feature).getY();
+    }
+
+    public CoordsPair getRelativeCoords(Feature feature) {
         if (coordinates.containsKey(feature)) {
             return coordinates.get(feature);
         } else {
@@ -464,7 +447,7 @@ public class ConfigValues {
         }
     }
 
-    public void setCoords(Feature feature, float x, float y) {
+    public void setCoords(Feature feature, int x, int y) {
         if (coordinates.containsKey(feature)) {
             coordinates.get(feature).setX(x);
             coordinates.get(feature).setY(y);
@@ -473,13 +456,15 @@ public class ConfigValues {
         }
     }
 
-    public void setCoords(Feature feature, int x, int maxX, int y, int maxY) {
-        if (coordinates.containsKey(feature)) {
-            coordinates.get(feature).setX((float)x/maxX);
-            coordinates.get(feature).setY((float)y/maxY);
-        } else {
-            coordinates.put(feature, new CoordsPair((float)x/maxX, (float)y/maxY));
-        }
+    public void setNextAnchorPoint(Feature feature) {
+        EnumUtils.AnchorPoint nextPoint = getAnchorPoint(feature).getNextType();
+        int targetX = getActualX(feature);
+        int targetY = getActualY(feature);
+        ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
+        int x = targetX-nextPoint.getX(sr.getScaledWidth());
+        int y = targetY-nextPoint.getY(sr.getScaledHeight());
+        anchorPoints.put(feature, nextPoint);
+        setCoords(feature, x, y);
     }
 
     public float getGuiScale() {
@@ -490,11 +475,15 @@ public class ConfigValues {
         this.guiScale = guiScale;
     }
 
-    public Feature.BackpackStyle getBackpackStyle() {
+    public EnumUtils.BackpackStyle getBackpackStyle() {
         return backpackStyle;
     }
 
-    public void setBackpackStyle(Feature.BackpackStyle backpackStyle) {
+    public void setBackpackStyle(EnumUtils.BackpackStyle backpackStyle) {
         this.backpackStyle = backpackStyle;
+    }
+
+    public EnumUtils.AnchorPoint getAnchorPoint(Feature feature) {
+        return anchorPoints.getOrDefault(feature, EnumUtils.AnchorPoint.HEALTH_BAR);
     }
 }

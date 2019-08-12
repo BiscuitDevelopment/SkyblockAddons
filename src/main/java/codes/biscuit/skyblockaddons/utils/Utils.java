@@ -16,6 +16,7 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.MathHelper;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.common.MinecraftForge;
+import org.apache.commons.lang3.mutable.MutableInt;
 
 import java.awt.*;
 import java.io.BufferedReader;
@@ -29,14 +30,16 @@ import java.util.stream.Collectors;
 
 public class Utils {
 
+    private Map<Attribute, MutableInt> attributes = new EnumMap<>(Attribute.class);
     private List<String> enchantmentMatch = new LinkedList<>();
     private List<String> enchantmentExclusion = new LinkedList<>();
     private BackpackInfo backpackToRender = null;
     private boolean wearingSkeletonHelmet = false;
     private static boolean onSkyblock = false;
-    private Feature.Location location = null;
+    private EnumUtils.Location location = null;
     private static boolean inventoryIsFull = false;
     private boolean playingSound = false;
+    private boolean copyNBT = false;
 
     private boolean fadingIn;
 
@@ -44,6 +47,13 @@ public class Utils {
 
     public Utils(SkyblockAddons main) {
         this.main = main;
+        addDefaultStats();
+    }
+
+    private void addDefaultStats() {
+        for (Attribute attribute: Attribute.values()) {
+            attributes.put(attribute, new MutableInt(attribute.getDefaultValue()));
+        }
     }
 
     // Static cause I can't be bothered to pass the instance ok stop bullying me
@@ -75,12 +85,11 @@ public class Utils {
                 inventoryIsFull = true;
                 if (mc.currentScreen == null && System.currentTimeMillis() - main.getPlayerListener().getLastWorldJoin() > 3000) {
                     main.getUtils().playSound("random.orb", 0.5);
-                    main.getPlayerListener().setTitleFeature(Feature.FULL_INVENTORY_WARNING);
-                    main.getPlayerListener().setTitleWarning(true);
+                    main.getRenderListener().setTitleFeature(Feature.FULL_INVENTORY_WARNING);
                     new Timer().schedule(new TimerTask() {
                         @Override
                         public void run() {
-                            main.getPlayerListener().setTitleWarning(false);
+                            main.getRenderListener().setTitleFeature(null);
                         }
                     }, main.getConfigValues().getWarningSeconds() * 1000);
                 }
@@ -99,21 +108,12 @@ public class Utils {
 
     public void checkGameAndLocation() { // Most of this is replicated from the scoreboard rendering code so not many comments here xD
         Minecraft mc = Minecraft.getMinecraft();
-        if (mc != null && mc.theWorld != null) {
+        if (mc != null && mc.theWorld != null) { //TODO make sure this works
             Scoreboard scoreboard = mc.theWorld.getScoreboard();
-            ScoreObjective objective = null;
-            ScorePlayerTeam scoreplayerteam = scoreboard.getPlayersTeam(mc.thePlayer.getName());
-            if (scoreplayerteam != null)
-            {
-                int slot = scoreplayerteam.getChatFormat().getColorIndex();
-                if (slot >= 0) objective = scoreboard.getObjectiveInDisplaySlot(3 + slot);
-            }
-            ScoreObjective scoreobjective1 = objective != null ? objective : scoreboard.getObjectiveInDisplaySlot(1);
-            if (scoreobjective1 != null) {
-                objective = scoreobjective1;
-                onSkyblock = stripColor(objective.getDisplayName()).startsWith("SKYBLOCK");
-                scoreboard = objective.getScoreboard();
-                Collection<Score> collection = scoreboard.getSortedScores(objective);
+            ScoreObjective sidebarObjective = mc.theWorld.getScoreboard().getObjectiveInDisplaySlot(1);
+            if (sidebarObjective != null) {
+                onSkyblock = stripColor(sidebarObjective.getDisplayName()).startsWith("SKYBLOCK");
+                Collection<Score> collection = scoreboard.getSortedScores(sidebarObjective);
                 List<Score> list = Lists.newArrayList(collection.stream().filter(p_apply_1_ -> p_apply_1_.getPlayerName() != null && !p_apply_1_.getPlayerName().startsWith("#")).collect(Collectors.toList()));
                 if (list.size() > 15) {
                     collection = Lists.newArrayList(Iterables.skip(list, collection.size() - 15));
@@ -121,10 +121,10 @@ public class Utils {
                     collection = list;
                 }
                 for (Score score1 : collection) {
-                    ScorePlayerTeam scoreplayerteam1 = scoreboard.getPlayersTeam(score1.getPlayerName());
-                    String locationString = getStringOnly(stripColor(ScorePlayerTeam.formatPlayerName(scoreplayerteam1, score1.getPlayerName())));
-                    for (Feature.Location loopLocation : Feature.Location.values()) {
-                        if (locationString.endsWith(loopLocation.getScoreboardName())) {//s1.equals(" \u00A77\u23E3 \u00A7aYour Isla\uD83C\uDFC0\u00A7and")) {
+                    ScorePlayerTeam scorePlayerTeam = scoreboard.getPlayersTeam(score1.getPlayerName());
+                    String locationString = keepLettersOnly(stripColor(ScorePlayerTeam.formatPlayerName(scorePlayerTeam, score1.getPlayerName())));
+                    for (EnumUtils.Location loopLocation : EnumUtils.Location.values()) {
+                        if (locationString.endsWith(loopLocation.getScoreboardName())) {
                             location = loopLocation;
                             return;
                         }
@@ -160,7 +160,7 @@ public class Utils {
         return value;
     }
 
-    private String getStringOnly(String text) {
+    private String keepLettersOnly(String text) {
         return Pattern.compile("[^a-z A-Z]").matcher(text).replaceAll("");
     }
 
@@ -295,12 +295,16 @@ public class Utils {
         return false;
     }
 
+    public int getDefaultBlue(int alpha) {
+        return new Color(189,236,252, alpha).getRGB();
+    }
+
     private final Pattern STRIP_COLOR_PATTERN = Pattern.compile( "(?i)" + '\u00A7' + "[0-9A-FK-OR]" );
     public String stripColor(final String input) {
         return STRIP_COLOR_PATTERN.matcher(input).replaceAll("");
     }
 
-    public Feature.Location getLocation() {
+    public EnumUtils.Location getLocation() {
         return location;
     }
 
@@ -346,5 +350,17 @@ public class Utils {
 
     public boolean isPlayingSound() {
         return playingSound;
+    }
+
+    public Map<Attribute, MutableInt> getAttributes() {
+        return attributes;
+    }
+
+    public boolean isCopyNBT() {
+        return copyNBT;
+    }
+
+    public void setCopyNBT(boolean copyNBT) {
+        this.copyNBT = copyNBT;
     }
 }

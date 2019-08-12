@@ -1,9 +1,8 @@
 package codes.biscuit.skyblockaddons.mixins;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui;
 import codes.biscuit.skyblockaddons.utils.ConfigColor;
-import codes.biscuit.skyblockaddons.utils.Feature;
+import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.Message;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiTextField;
@@ -19,7 +18,9 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.regex.Pattern;
 
 
@@ -27,7 +28,7 @@ import java.util.regex.Pattern;
 @Mixin(GuiChest.class)
 public abstract class MixinGuiChest extends GuiContainer {
 
-    private Feature.InventoryType inventoryType = null;
+    private EnumUtils.InventoryType inventoryType = null;
     private GuiTextField textFieldMatch = null;
     private GuiTextField textFieldExclusions = null;
 
@@ -43,10 +44,11 @@ public abstract class MixinGuiChest extends GuiContainer {
         if (textFieldMatch != null) {
             SkyblockAddons main = SkyblockAddons.getInstance();
             String  inventoryMessage = main.getConfigValues().getMessage(inventoryType.getMessage());
-            mc.ingameGUI.drawString(mc.fontRendererObj, main.getConfigValues().getMessage(Message.MESSAGE_TYPE_ENCHANTMENTS, inventoryMessage), guiLeft - 160, guiTop + 40, SkyblockAddonsGui.getDefaultBlue(255));
-            mc.ingameGUI.drawString(mc.fontRendererObj, main.getConfigValues().getMessage(Message.MESSAGE_SEPARATE_ENCHANTMENTS), guiLeft - 160, guiTop + 50, SkyblockAddonsGui.getDefaultBlue(255));
-            mc.ingameGUI.drawString(mc.fontRendererObj, main.getConfigValues().getMessage(Message.MESSAGE_ENCHANTS_TO_MATCH, inventoryMessage), guiLeft - 160, guiTop + 70, SkyblockAddonsGui.getDefaultBlue(255));
-            mc.ingameGUI.drawString(mc.fontRendererObj, main.getConfigValues().getMessage(Message.MESSAGE_ENCHANTS_TO_EXCLUDE, inventoryMessage), guiLeft - 160, guiTop + 110, SkyblockAddonsGui.getDefaultBlue(255));
+            int defaultBlue = main.getUtils().getDefaultBlue(255);
+            mc.ingameGUI.drawString(mc.fontRendererObj, main.getConfigValues().getMessage(Message.MESSAGE_TYPE_ENCHANTMENTS, inventoryMessage), guiLeft - 160, guiTop + 40, defaultBlue);
+            mc.ingameGUI.drawString(mc.fontRendererObj, main.getConfigValues().getMessage(Message.MESSAGE_SEPARATE_ENCHANTMENTS), guiLeft - 160, guiTop + 50, defaultBlue);
+            mc.ingameGUI.drawString(mc.fontRendererObj, main.getConfigValues().getMessage(Message.MESSAGE_ENCHANTS_TO_MATCH, inventoryMessage), guiLeft - 160, guiTop + 70, defaultBlue);
+            mc.ingameGUI.drawString(mc.fontRendererObj, main.getConfigValues().getMessage(Message.MESSAGE_ENCHANTS_TO_EXCLUDE, inventoryMessage), guiLeft - 160, guiTop + 110, defaultBlue);
             textFieldMatch.drawTextBox();
             if (textFieldMatch.getText().equals("")) {
                 mc.ingameGUI.drawString(mc.fontRendererObj, "ex. \"prot, feather\"", guiLeft - 136, guiTop + 86, ConfigColor.DARK_GRAY.getColor(255));
@@ -64,8 +66,8 @@ public abstract class MixinGuiChest extends GuiContainer {
     public void initGui() {
         super.initGui();
         String guiName = lowerChestInventory.getDisplayName().getUnformattedText();
-        if (guiName.equals("Enchant Item")) inventoryType = Feature.InventoryType.ENCHANTMENT_TABLE;
-        if (guiName.equals("Reforge Item")) inventoryType = Feature.InventoryType.REFORGE_ANVIL;
+        if (guiName.equals("Enchant Item")) inventoryType = EnumUtils.InventoryType.ENCHANTMENT_TABLE;
+        if (guiName.equals("Reforge Item")) inventoryType = EnumUtils.InventoryType.REFORGE_ANVIL;
         if (inventoryType != null) {
             int xPos = guiLeft - 160;
             int yPos = guiTop + 80;
@@ -130,7 +132,7 @@ public abstract class MixinGuiChest extends GuiContainer {
         if (main.getUtils().getEnchantmentMatch().size() > 0) {
             if (slotIn != null && slotIn.getHasStack()) {
                 Container slots = inventorySlots;
-                if (slotIn.getSlotIndex() == 13 && inventoryType == Feature.InventoryType.ENCHANTMENT_TABLE) {
+                if (slotIn.getSlotIndex() == 13 && inventoryType == EnumUtils.InventoryType.ENCHANTMENT_TABLE) {
                     ItemStack[] enchantBottles = {slots.getSlot(29).getStack(), slots.getSlot(31).getStack(), slots.getSlot(33).getStack()};
                     for (ItemStack bottle : enchantBottles) {
                         if (bottle != null && bottle.hasDisplayName() && bottle.getDisplayName().startsWith(EnumChatFormatting.GREEN + "Enchant Item")) {
@@ -145,7 +147,7 @@ public abstract class MixinGuiChest extends GuiContainer {
                             }
                         }
                     }
-                } else if (slotIn.getSlotIndex() == 22 && inventoryType == Feature.InventoryType.REFORGE_ANVIL) {
+                } else if (slotIn.getSlotIndex() == 22 && inventoryType == EnumUtils.InventoryType.REFORGE_ANVIL) {
                     Slot itemSlot = slots.getSlot(13);
                     if (itemSlot != null && itemSlot.getHasStack()) {
                         ItemStack item = itemSlot.getStack();

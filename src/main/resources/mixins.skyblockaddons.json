@@ -11,6 +11,7 @@
     "MixinGuiContainer",
     "MixinItem",
     "MixinGuiScreen",
-    "MixinGuiChest"
+    "MixinGuiChest",
+    "MixinRenderEnderman"
   ]
 }
