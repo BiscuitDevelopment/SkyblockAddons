@@ -6,13 +6,6 @@
     "magmaBossWarning": "熔岩史萊姆王警報",
     "itemDropConfirmation": "確認丟棄物品",
     "warningTime": "警報時間: %time%s",
-    "manaBar": "魔力計量顯示: %type%",
-    "barTypes": {
-      "barAndText": "計量條 & 文字",
-      "bar": "計量條",
-      "text": "文字",
-      "off": "關閉"
-    },
     "hideSkeletonHatBones": "隱藏骷髏頭盔抵禦骨頭",
     "skeletonHatBonesBar": "骷髏頭盔可抵擋攻擊次數",
     "hideFoodAndArmor": "隱藏飽食度 & 裝甲值",
@@ -30,22 +23,10 @@
     "showEnchantmentsReforges": "附魔 & 重鑄",
     "minionStopWarning": "\"機器人無法觸及生物\"警告",
     "hideAuctionHousePlayers": "隱藏競標房內玩家",
-    "healthBar": "血條樣式: %type%",
-    "defenceIcon": "防禦力樣式: %type%",
     "backpackStyle": "背包樣式: %style%",
     "styles": {
       "inventory": "普通",
       "compact": "簡易"
-    },
-    "iconTypes": {
-      "iconDefenceAndPercentage": "圖標, 文字, & 百分比",
-      "iconAndDefence": "圖標 & 文字",
-      "iconAndPercentage": "圖標 & 百分比",
-      "defenceAndPercentage": "文字 & 百分比",
-      "icon": "圖標",
-      "defence": "文字",
-      "percentage": "百分比",
-      "off": "關閉"
     },
     "showBackpackPreview": "顯示背包預覽",
     "hideHealthBar": "隱藏血條",
@@ -59,7 +40,15 @@
     "previousPage": "上一頁",
     "ignoreItemFrameClicks": "無視對展示框的點擊",
     "useVanillaTextureDefence": "使用原版防禦圖標",
-    "showBackpackHoldingShift": "只在按住Shift時顯示背包預覽"
+    "showBackpackHoldingShift": "只在按住Shift時顯示背包預覽",
+    "manaBar": "Mana Bar",
+    "manaText": "Mana Number",
+    "healthBar": "Health Bar",
+    "healthText": "Health Number",
+    "defenceIcon": "Defence Symbol",
+    "defenceText": "Defence Number",
+    "defencePercentage": "Defence Percentage",
+    "healthUpdates": "Health Change Number"
   },
   "messages": {
     "dropConfirmation": "再次丟棄此物品以確認!",

@@ -6,13 +6,6 @@
     "magmaBossWarning": "Alerte Magma Boss",
     "itemDropConfirmation": "Confirmation du jet",
     "warningTime": "Durée de l'alerte: %time%s",
-    "manaBar": "Barre de mana: %type%",
-    "barTypes": {
-      "barAndText": "Barre & Texte",
-      "bar": "Barre",
-      "text": "Texte",
-      "off": "Désativé"
-    },
     "hideSkeletonHatBones": "Masquer les os du Skeleton's Helmet",
     "skeletonHatBonesBar": "Barre du Skeleton's Helmet",
     "hideFoodAndArmor": "Masquer la barre de nourriture et d'armure",
@@ -30,22 +23,10 @@
     "showEnchantmentsReforges": "Enchantements & Reforges",
     "minionStopWarning": "Alerte minion à l'arrêt",
     "hideAuctionHousePlayers": "Masquer les joueurs près de l'HDV",
-    "healthBar": "Barre de vie: %type%",
-    "defenceIcon": "Icone de défense: %type%",
     "backpackStyle": "Affichage du sac à dos: %style%",
     "styles": {
       "inventory": "Inventaire",
       "compact": "Compact"
-    },
-    "iconTypes": {
-      "iconDefenceAndPercentage": "Icône, Texte, & Pourcentage",
-      "iconAndDefence": "Icône & Texte",
-      "iconAndPercentage": "Icône & Pourcentage",
-      "defenceAndPercentage": "Texte & Pourcentage",
-      "icon": "Icône",
-      "defence": "Texte",
-      "percentage": "Pourcentage",
-      "off": "Désativé"
     },
     "showBackpackPreview": "Afficher l'aperçu du sac à dos",
     "hideHealthBar": "Masquer la barre de vie",
@@ -59,7 +40,15 @@
     "previousPage": "Page précédente",
     "ignoreItemFrameClicks": "Ignorer les clics sur les cadres",
     "useVanillaTextureDefence": "Texture vanilla pour l'icone de défense",
-    "showBackpackHoldingShift": "Affichage du sac à dos avec la touche MAJ"
+    "showBackpackHoldingShift": "Affichage du sac à dos avec la touche MAJ",
+    "manaBar": "Mana Bar",
+    "manaText": "Mana Number",
+    "healthBar": "Health Bar",
+    "healthText": "Health Number",
+    "defenceIcon": "Defence Symbol",
+    "defenceText": "Defence Number",
+    "defencePercentage": "Defence Percentage",
+    "healthUpdates": "Health Change Number"
   },
   "messages": {
     "dropConfirmation": "Jetez cet objet une nouvelle fois pour confirmer!",

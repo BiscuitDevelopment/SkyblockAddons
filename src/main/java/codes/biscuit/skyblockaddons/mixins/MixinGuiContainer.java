@@ -1,10 +1,7 @@
 package codes.biscuit.skyblockaddons.mixins;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.utils.BackpackInfo;
-import codes.biscuit.skyblockaddons.utils.ConfigColor;
-import codes.biscuit.skyblockaddons.utils.EnchantPair;
-import codes.biscuit.skyblockaddons.utils.Feature;
+import codes.biscuit.skyblockaddons.utils.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.Gui;
@@ -121,14 +118,14 @@ public class MixinGuiContainer extends GuiScreen {
             int x = backpackInfo.getX();
             int y = backpackInfo.getY();
             ItemStack[] items = backpackInfo.getItems();
-            Feature.Backpack backpack = backpackInfo.getBackpack();
+            EnumUtils.Backpack backpack = backpackInfo.getBackpack();
             int length = items.length;
             RenderHelper.enableGUIStandardItemLighting();
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
             GlStateManager.enableRescaleNormal();
             OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, (float)240 / 1.0F, (float)240 / 1.0F);
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-            if (SkyblockAddons.getInstance().getConfigValues().getBackpackStyle() == Feature.BackpackStyle.GUI) {
+            if (SkyblockAddons.getInstance().getConfigValues().getBackpackStyle() == EnumUtils.BackpackStyle.GUI) {
                 this.mc.getTextureManager().bindTexture(CHEST_GUI_TEXTURE);
                 int rows = length/9;
                 GlStateManager.pushMatrix();

@@ -2,6 +2,7 @@ package codes.biscuit.skyblockaddons;
 
 import codes.biscuit.skyblockaddons.commands.SkyblockAddonsCommand;
 import codes.biscuit.skyblockaddons.listeners.PlayerListener;
+import codes.biscuit.skyblockaddons.listeners.RenderListener;
 import codes.biscuit.skyblockaddons.utils.ConfigValues;
 import codes.biscuit.skyblockaddons.utils.Utils;
 import net.minecraftforge.client.ClientCommandHandler;
@@ -22,6 +23,7 @@ public class SkyblockAddons {
     private static SkyblockAddons instance; // for Mixins cause they don't have a constructor
     private ConfigValues configValues;
     private PlayerListener playerListener = new PlayerListener(this);
+    private RenderListener renderListener = new RenderListener(this);
     private Utils utils = new Utils(this);
     private boolean usingLabymod = false;
 
@@ -34,6 +36,7 @@ public class SkyblockAddons {
     @Mod.EventHandler
     public void init(FMLInitializationEvent e) {
         MinecraftForge.EVENT_BUS.register(playerListener);
+        MinecraftForge.EVENT_BUS.register(renderListener);
         ClientCommandHandler.instance.registerCommand(new SkyblockAddonsCommand(this));
     }
 
@@ -47,9 +50,12 @@ public class SkyblockAddons {
         return configValues;
     }
 
-
     public PlayerListener getPlayerListener() {
         return playerListener;
+    }
+
+    public RenderListener getRenderListener() {
+        return renderListener;
     }
 
     public Utils getUtils() {

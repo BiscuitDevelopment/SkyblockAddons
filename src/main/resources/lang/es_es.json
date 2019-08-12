@@ -6,13 +6,6 @@
     "magmaBossWarning": "Alerta de Magma Boss",
     "itemDropConfirmation": "Confirmar para soltar objeto",
     "warningTime": "Tiempo de alarma: %time%s",
-    "manaBar": "Barra de maná: %type%",
-    "barTypes": {
-      "barAndText": "Barra y Texto",
-      "bar": "Barra",
-      "text": "Texto",
-      "off": "Deshabilitado"
-    },
     "hideSkeletonHatBones": "Ocultar los huesos del Skeleton Hat",
     "skeletonHatBonesBar": "Barra de huesos del Skeleton Hat",
     "hideFoodAndArmor": "Ocultar Barra de Hambre y Armadura",
@@ -30,22 +23,10 @@
     "showEnchantmentsReforges": "Ver Encantamientos y Reforges",
     "minionStopWarning": "Aviso de Detención de Minion",
     "hideAuctionHousePlayers": "Ocultar Jugadores cerca de la Auction House",
-    "healthBar": "Barra de Vida: %type%",
-    "defenceIcon": "Icono de Defensa: %type%",
     "backpackStyle": "Estilo de Mochila: %style%",
     "styles": {
       "inventory": "Inventario",
       "compact": "Compacto"
-    },
-    "iconTypes": {
-      "iconDefenceAndPercentage": "Icono, Defensa y Porcentaje",
-      "iconAndDefence": "Icono y Defensa",
-      "iconAndPercentage": "Icono y Porcentaje",
-      "defenceAndPercentage": "Defensa y Porcentaje",
-      "icon": "Icono",
-      "defence": "Defensa",
-      "percentage": "Porcentaje",
-      "off": "Deshabilitado"
     },
     "showBackpackPreview": "Mostrar Preview de la Mochila",
     "hideHealthBar": "Ocultar Barra de Vida",
@@ -59,7 +40,15 @@
     "previousPage": "Previous Page",
     "ignoreItemFrameClicks": "Ignore Clicks On Item Frames",
     "useVanillaTextureDefence": "Use Vanilla Texture For Defence Icon",
-    "showBackpackHoldingShift": "Only Show Backpack When Holding Shift"
+    "showBackpackHoldingShift": "Only Show Backpack When Holding Shift",
+    "manaBar": "Mana Bar",
+    "manaText": "Mana Number",
+    "healthBar": "Health Bar",
+    "healthText": "Health Number",
+    "defenceIcon": "Defence Symbol",
+    "defenceText": "Defence Number",
+    "defencePercentage": "Defence Percentage",
+    "healthUpdates": "Health Change Number"
   },
   "messages": {
     "dropConfirmation": "¡Dropea el Objeto otra vez para soltar!",

@@ -1,6 +1,7 @@
 package codes.biscuit.skyblockaddons.mixins;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.Feature;
 import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.client.renderer.culling.ICamera;
@@ -30,8 +31,8 @@ public class MixinRenderManager {
             }
         } else if (entityIn instanceof EntityOtherPlayerMP
         && !main.getConfigValues().getDisabledFeatures().contains(Feature.HIDE_AUCTION_HOUSE_PLAYERS)) {
-            Feature.Location location = main.getUtils().getLocation();
-            if ((location == Feature.Location.VILLAGE || location == Feature.Location.AUCTION_HOUSE)
+            EnumUtils.Location location = main.getUtils().getLocation();
+            if ((location == EnumUtils.Location.VILLAGE || location == EnumUtils.Location.AUCTION_HOUSE)
                 && entityIn.getDistance(auctionX, auctionY, auctionZ) <= 3 && (entityIn.posX != auctionX || entityIn.posY != auctionY || entityIn.posZ != auctionZ)) { // Coords of the auction master.
                 cir.setReturnValue(false);
             }

@@ -6,13 +6,6 @@
     "magmaBossWarning": "Magma Baas Waarschuwing",
     "itemDropConfirmation": "Object laten vallen Bevestiging",
     "warningTime": "Waarschuwingstijd: %time%s",
-    "manaBar": "Mana Bar: %type%",
-    "barTypes": {
-      "barAndText": "Bar & Tekst",
-      "bar": "Bar",
-      "text": "Tekst",
-      "off": "Uit"
-    },
     "hideSkeletonHatBones": "Verstop Skelet Hoed Botten",
     "skeletonHatBonesBar": "Skelet Hoed Botten Bar",
     "hideFoodAndArmor": "Verstop Voedsel & Harnas Bar",
@@ -30,22 +23,10 @@
     "showEnchantmentsReforges": "Betoveringen & Omsmedingen",
     "minionStopWarning": "Handlanger is gestopt Waarschuwing",
     "hideAuctionHousePlayers": "Hide Players Near Auction House",
-    "healthBar": "Health Bar: %type%",
-    "defenceIcon": "Defence Icon: %type%",
     "backpackStyle": "Backpack Style: %style%",
     "styles": {
       "inventory": "Inventory",
       "compact": "Compact"
-    },
-    "iconTypes": {
-      "iconDefenceAndPercentage": "Icon, Defence, & Percentage",
-      "iconAndDefence": "Icon & Defence",
-      "iconAndPercentage": "Icon & Percentage",
-      "defenceAndPercentage": "Defence & Percentage",
-      "icon": "Icon",
-      "defence": "Defence",
-      "percentage": "Percentage",
-      "off": "Off"
     },
     "showBackpackPreview": "Show Backpack Preview",
     "hideHealthBar": "Hide Health Bar",
@@ -59,7 +40,15 @@
     "previousPage": "Previous Page",
     "ignoreItemFrameClicks": "Ignore Clicks On Item Frames",
     "useVanillaTextureDefence": "Use Vanilla Texture For Defence Icon",
-    "showBackpackHoldingShift": "Only Show Backpack When Holding Shift"
+    "showBackpackHoldingShift": "Only Show Backpack When Holding Shift",
+    "manaBar": "Mana Bar",
+    "manaText": "Mana Number",
+    "healthBar": "Health Bar",
+    "healthText": "Health Number",
+    "defenceIcon": "Defence Symbol",
+    "defenceText": "Defence Number",
+    "defencePercentage": "Defence Percentage",
+    "healthUpdates": "Health Change Number"
   },
   "messages": {
     "dropConfirmation": "Laat dit object opnieuw vallen om te Bevestigen!",

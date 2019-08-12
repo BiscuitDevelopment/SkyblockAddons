@@ -22,6 +22,7 @@ public enum Language {
     RUSSIAN("ru_ru"),
     SPANISH_MEXICO("es_mx"),
     SPANISH_SPAIN("es_es"),
+    SWEDISH("sv_se"),
     VIETNAMESE("vi_vn");
 
     private String path;

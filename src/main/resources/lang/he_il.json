@@ -6,13 +6,6 @@
     "magmaBossWarning": "בוס מגמה מזדמן",
     "itemDropConfirmation": "אישור זריקת פריט",
     "warningTime": "זמן התראה: %time%s",
-    "manaBar": "מנה: %type%",
-    "barTypes": {
-      "barAndText": "עמודה וטקסט",
-      "bar": "עמודה",
-      "text": "טקסט",
-      "off": "כבוי"
-    },
     "hideSkeletonHatBones": "הסתרת עצמות קסדת שלד",
     "skeletonHatBonesBar": "עמודת עצמות קסדת עצמות",
     "hideFoodAndArmor": "הסתר אוכל ועמודת שריון",
@@ -30,22 +23,10 @@
     "showEnchantmentsReforges": "כישופים ושיפורים",
     "minionStopWarning": "\"המיניון לא יכול להגיע\" Warning",
     "hideAuctionHousePlayers": "הסתר שחקנים ליד המכירה הפומבית",
-    "healthBar": "עמודת חיים: %type%",
-    "defenceIcon": "אייקון הגנה: %type%",
     "backpackStyle": "סטייל תרמיל גב: %style%",
     "styles": {
       "inventory": "מלאי",
       "compact": "קומפקטי"
-    },
-    "iconTypes": {
-      "iconDefenceAndPercentage": "אייקון, הגנה ואחוזים",
-      "iconAndDefence": "אייקון והגנה",
-      "iconAndPercentage": "אייקון ואחוזים",
-      "defenceAndPercentage": "הגנה ואחוזים",
-      "icon": "אייקון",
-      "defence": "הגנה",
-      "percentage": "אחוזים",
-      "off": "כבוי"
     },
     "showBackpackPreview": "תראה תרמיל גב",
     "hideHealthBar": "Hide Health Bar",
@@ -59,7 +40,15 @@
     "previousPage": "Previous Page",
     "ignoreItemFrameClicks": "Ignore Clicks On Item Frames",
     "useVanillaTextureDefence": "Use Vanilla Texture For Defence Icon",
-    "showBackpackHoldingShift": "Only Show Backpack When Holding Shift"
+    "showBackpackHoldingShift": "Only Show Backpack When Holding Shift",
+    "manaBar": "Mana Bar",
+    "manaText": "Mana Number",
+    "healthBar": "Health Bar",
+    "healthText": "Health Number",
+    "defenceIcon": "Defence Symbol",
+    "defenceText": "Defence Number",
+    "defencePercentage": "Defence Percentage",
+    "healthUpdates": "Health Change Number"
   },
   "messages": {
     "dropConfirmation": "זרוק פריט זה להסכמה",

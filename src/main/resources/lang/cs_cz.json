@@ -6,13 +6,6 @@
     "magmaBossWarning": "Magma Boss upozornění",
     "itemDropConfirmation": "Potvrzení vyhození itemu",
     "warningTime": "Délka upozornění: %čas%s",
-    "manaBar": "ukazetel many: %typ%",
-    "barTypes": {
-      "barAndText": "ukazetel a Text",
-      "bar": "ukazetel",
-      "text": "Text",
-      "off": "vypnuto"
-    },
     "hideSkeletonHatBones": "Skrýt Skeleton Helmet kosti",
     "skeletonHatBonesBar": "Skeleton Helmet - ukazetel kostí",
     "hideFoodAndArmor": "Skrýt ukazatel jídla a armoru",
@@ -30,22 +23,10 @@
     "showEnchantmentsReforges": "Očarování a překování",
     "minionStopWarning": "\"minion nemůže dosáhnout\" Varování",
     "hideAuctionHousePlayers": "Skrýt hráče u Auction house",
-    "healthBar": "Ukazatel zdraví: %typ%",
-    "defenceIcon": "Ikona obrany: %typ%",
     "backpackStyle": "Styl batůžků: %styl%",
     "styles": {
       "inventory": "inventář",
       "compact": "kompaktní"
-    },
-    "iconTypes": {
-      "iconDefenceAndPercentage": "Ikona, Obrana, a Procenta",
-      "iconAndDefence": "Ikona a obrana",
-      "iconAndPercentage": "Icona a procento",
-      "defenceAndPercentage": "Obran a procento",
-      "icon": "Ikona",
-      "defence": "Obrana",
-      "percentage": "Procenta",
-      "off": "Vypnuto"
     },
     "showBackpackPreview": "Ukázat náhled batohu",
     "hideHealthBar": "Skrýt vanilla ukazatel zdraví",
@@ -59,7 +40,15 @@
     "previousPage": "Předchozí stránka",
     "ignoreItemFrameClicks": "ignoruj kliknutí na Item Framy",
     "useVanillaTextureDefence": "Použij vanilla texturu pro ikonu obrany",
-    "showBackpackHoldingShift": "Ukaž batoh jen když držíš shift"
+    "showBackpackHoldingShift": "Ukaž batoh jen když držíš shift",
+    "manaBar": "Mana Bar",
+    "manaText": "Mana Number",
+    "healthBar": "Health Bar",
+    "healthText": "Health Number",
+    "defenceIcon": "Defence Symbol",
+    "defenceText": "Defence Number",
+    "defencePercentage": "Defence Percentage",
+    "healthUpdates": "Health Change Number"
   },
   "messages": {
     "dropConfirmation": "Vyhoď tento item pro vyhození!",

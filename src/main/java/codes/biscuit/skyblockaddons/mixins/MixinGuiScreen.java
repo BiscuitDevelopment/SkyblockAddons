@@ -2,6 +2,7 @@ package codes.biscuit.skyblockaddons.mixins;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.utils.BackpackInfo;
+import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.Feature;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
@@ -46,19 +47,19 @@ public abstract class MixinGuiScreen {
                     String id = extraAttributes.getString("id");
                     if (!id.equals("")) {
                         byte[] bytes = null;
-                        Feature.Backpack backpack = null;
+                        EnumUtils.Backpack backpack = null;
                         switch (id) {
                             case "SMALL_BACKPACK":
                                 bytes = extraAttributes.getByteArray("small_backpack_data");
-                                backpack = Feature.Backpack.SMALL;
+                                backpack = EnumUtils.Backpack.SMALL;
                                 break;
                             case "MEDIUM_BACKPACK":
                                 bytes = extraAttributes.getByteArray("medium_backpack_data");
-                                backpack = Feature.Backpack.MEDIUM;
+                                backpack = EnumUtils.Backpack.MEDIUM;
                                 break;
                             case "LARGE_BACKPACK":
                                 bytes = extraAttributes.getByteArray("large_backpack_data");
-                                backpack = Feature.Backpack.LARGE;
+                                backpack = EnumUtils.Backpack.LARGE;
                                 break;
                         }
                         if (bytes == null) return;

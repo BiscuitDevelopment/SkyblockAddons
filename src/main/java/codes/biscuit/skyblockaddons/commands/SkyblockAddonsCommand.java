@@ -1,8 +1,10 @@
 package codes.biscuit.skyblockaddons.commands;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.listeners.PlayerListener;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
+import net.minecraft.util.EnumChatFormatting;
 
 import java.util.Collections;
 import java.util.List;
@@ -37,9 +39,26 @@ public class SkyblockAddonsCommand extends CommandBase {
         return true;
     }
 
+
+    /**
+     * Opens the main gui, or locations gui if they type /sba edit
+     */
     @Override
     public void processCommand(ICommandSender sender, String[] args) {
+        if (args.length > 0) {
+            if (args[0].equalsIgnoreCase("edit")) {
+                main.getUtils().setFadingIn(false);
+                main.getRenderListener().setGuiToOpen(PlayerListener.GUIType.EDIT_LOCATIONS);
+                return;
+            } else if (args[0].equalsIgnoreCase("nbt")) {
+                boolean copyingNBT = !main.getUtils().isCopyNBT();
+                main.getUtils().setCopyNBT(copyingNBT);
+                if (copyingNBT) main.getUtils().sendMessage(EnumChatFormatting.GREEN+"You are now able to copy the nbt of items. Hover over any item and press CTRL to copy.");
+                else main.getUtils().sendMessage(EnumChatFormatting.RED+"You have disabled the ability to copy nbt.");
+                return;
+            }
+        }
         main.getUtils().setFadingIn(true);
-        main.getPlayerListener().setOpenMainGUI(true);
+        main.getRenderListener().setGuiToOpen(PlayerListener.GUIType.MAIN);
     }
 }

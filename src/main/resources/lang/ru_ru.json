@@ -6,13 +6,6 @@
     "magmaBossWarning": "Предупреждение о Магма Боссе",
     "itemDropConfirmation": "Подтверждение выбрасывания предмета",
     "warningTime": "Длительность предупреждения: %time%s",
-    "manaBar": "Полоса маны: %type%",
-    "barTypes": {
-      "barAndText": "Полоса и Текст",
-      "bar": "Полоса",
-      "text": "Текст",
-      "off": "Выключено"
-    },
     "hideSkeletonHatBones": "Скрыть кости Шлема Скелета",
     "skeletonHatBonesBar": "Шкала костей Шлема Скелета",
     "hideFoodAndArmor": "Скрыть полосы Еды и Брони",
@@ -30,22 +23,10 @@
     "showEnchantmentsReforges": "Зачарование и Перековка",
     "minionStopWarning": "Предупреждение остановки миньона",
     "hideAuctionHousePlayers": "Прятать игроков у Дома Аукциона",
-    "healthBar": "Полоса Жизни: %type%",
-    "defenceIcon": "Значок Защиты: %type%",
     "backpackStyle": "Стиль рюкзака: %style%",
     "styles": {
       "inventory": "Инвентарь",
       "compact": "Компакт"
-    },
-    "iconTypes": {
-      "iconDefenceAndPercentage": "Иконка, Защита и Проценты",
-      "iconAndDefence": "Иконка и Защита",
-      "iconAndPercentage": "Иконка и Проценты",
-      "defenceAndPercentage": "Защита и Проценты",
-      "icon": "Иконка",
-      "defence": "Защита",
-      "percentage": "Проценты",
-      "off": "Выключено"
     },
     "showBackpackPreview": "Показывать превью рюкзака",
     "hideHealthBar": "Прятать полосу Жизни",
@@ -59,7 +40,15 @@
     "previousPage": "Предыдущая страница",
     "ignoreItemFrameClicks": "Игнорировать клики по Рамкам",
     "useVanillaTextureDefence": "Использовать оригинальную иконку брони",
-    "showBackpackHoldingShift": "Показывать рюкзак при зажатии Шифта"
+    "showBackpackHoldingShift": "Показывать рюкзак при зажатии Шифта",
+    "manaBar": "Mana Bar",
+    "manaText": "Mana Number",
+    "healthBar": "Health Bar",
+    "healthText": "Health Number",
+    "defenceIcon": "Defence Symbol",
+    "defenceText": "Defence Number",
+    "defencePercentage": "Defence Percentage",
+    "healthUpdates": "Health Change Number"
   },
   "messages": {
     "dropConfirmation": "Выбросите предмет ещё раз для подтверждения!",
