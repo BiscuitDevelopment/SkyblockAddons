@@ -134,7 +134,7 @@ public class PlayerListener {
                         returnMessage = newMessage.toString();
                     }
                     if (returnMessage.length() == 0) {
-                        returnMessage = "\u00a0"; // This is to solve an issue with oof mod, which doesn't check if a string is empty before dealing with it (and it spams chat).
+                        returnMessage = "\u00a0\u00a0"; // This is to solve an issue with oof mod, which doesn't check if a string is empty before dealing with it (and it spams chat).
                     }
                     e.message = new ChatComponentText(returnMessage);
                     return;
