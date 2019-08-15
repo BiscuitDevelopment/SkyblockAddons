@@ -399,7 +399,7 @@ public class RenderListener {
             text = "00:00";
         } else if (feature == Feature.ITEM_PICKUP_LOG) {
             color = ConfigColor.WHITE.getColor(255);
-            text = SkyblockAddons.getInstance().getConfigValues().getMessage(Message.SETTING_ITEM_PICKUP_LOG);
+            text = Message.SETTING_ITEM_PICKUP_LOG.getMessage();
         } else {
             return;
         }
@@ -447,7 +447,7 @@ public class RenderListener {
         float y = main.getConfigValues().getActualY(Feature.ITEM_PICKUP_LOG);
 
         int height = 7;
-        int width = mc.fontRendererObj.getStringWidth(main.getConfigValues().getMessage(Message.SETTING_ITEM_PICKUP_LOG));
+        int width = mc.fontRendererObj.getStringWidth(Message.SETTING_ITEM_PICKUP_LOG.getMessage());
         x-=Math.round(width*scale/2);
         y-=Math.round(height*scale/2);
         x/=scale;
@@ -459,8 +459,21 @@ public class RenderListener {
         for (ItemDiff itemDiff : main.getInventoryUtils().getItemPickupLog()) {
             String text = String.format("%s %sx \u00A7r%s", itemDiff.getAmount() > 0 ? "\u00A7a+":"\u00A7c-",
                     Math.abs(itemDiff.getAmount()), itemDiff.getDisplayName());
-            mc.fontRendererObj.drawString(text, intX, intY+(i*mc.fontRendererObj.FONT_HEIGHT), ConfigColor.WHITE.getColor(255), true);
+            drawString(mc, text, intX, intY+(i*mc.fontRendererObj.FONT_HEIGHT), ConfigColor.WHITE.getColor(255));
             i++;
+        }
+    }
+
+    private void drawString(Minecraft mc, String text, int x, int y, int color) {
+        if (main.getConfigValues().getTextStyle() == EnumUtils.TextStyle.BLACK_SHADOW) {
+            String strippedText = main.getUtils().stripColor(text);
+            mc.fontRendererObj.drawString(strippedText, x + 1, y, 0);
+            mc.fontRendererObj.drawString(strippedText, x - 1, y, 0);
+            mc.fontRendererObj.drawString(strippedText, x, y + 1, 0);
+            mc.fontRendererObj.drawString(strippedText, x, y - 1, 0);
+            mc.fontRendererObj.drawString(text, x, y, color);
+        } else {
+            mc.ingameGUI.drawString(mc.fontRendererObj, text, x, y, color);
         }
     }
 

@@ -4,9 +4,7 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.event.ClickEvent;
-import net.minecraft.item.ItemStack;
 import net.minecraft.scoreboard.Score;
 import net.minecraft.scoreboard.ScoreObjective;
 import net.minecraft.scoreboard.ScorePlayerTeam;
@@ -23,12 +21,14 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.List;
 import java.util.*;
+import java.util.List;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class Utils {
+
+    private final Pattern STRIP_COLOR_PATTERN = Pattern.compile("(?i)" + '\u00A7' + "[0-9A-FK-OR]");
 
     private Map<Attribute, MutableInt> attributes = new EnumMap<>(Attribute.class);
     private List<String> enchantmentMatch = new LinkedList<>();
@@ -286,8 +286,6 @@ public class Utils {
     public int getDefaultBlue(int alpha) {
         return new Color(189, 236, 252, alpha).getRGB();
     }
-
-    private final Pattern STRIP_COLOR_PATTERN = Pattern.compile("(?i)" + '\u00A7' + "[0-9A-FK-OR]");
 
     public String stripColor(final String input) {
         return STRIP_COLOR_PATTERN.matcher(input).replaceAll("");
