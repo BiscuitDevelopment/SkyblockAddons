@@ -10,7 +10,6 @@
     "skeletonHatBonesBar": "Thanh Mũ Xương",
     "hideFoodAndArmor": "Ẩn Thanh Thức Ăn Và Giáp",
     "fullInventoryWarning": "Cảnh Báo Túi Đồ Đầy",
-    "magmaBossHealthBar": "Thanh Máu Magma Boss",
     "disableEmberRodAbility": "Vô Hiệu Hoá Ember Rod ở Island",
     "warningColor": "Màu Cảnh Báo",
     "confirmationColor": "Màu Xác Nhận",
@@ -24,7 +23,7 @@
     "minionStopWarning": "Cảnh Báo \"Minion Không Thể Đánh Tới\"",
     "hideAuctionHousePlayers": "Ẩn Người Chơi Ở Auction House",
     "backpackStyle": "Kiểu Backpack: %style%",
-    "styles": {
+    "backpackStyles": {
       "inventory": "Túi Đồ",
       "compact": "Gọn"
     },
@@ -48,7 +47,23 @@
     "defenceIcon": "Defence Symbol",
     "defenceText": "Defence Number",
     "defencePercentage": "Defence Percentage",
-    "healthUpdates": "Health Change Number"
+    "healthUpdates": "Health Change Number",
+    "anchorPoint": "Anchor Point: %setting%: %anchor%",
+    "anchorPoints": {
+      "topLeft": "Top Left",
+      "topRight": "Top Right",
+      "bottomLeft": "Bottom Left",
+      "bottomRight": "Bottom Right",
+      "healthBar": "Health Bar"
+    },
+    "hidePlayersInLobby": "Hide Nearby Entities In Lobby",
+    "textStyle": "Text Style: %style%",
+    "textStyles": {
+      "regular": "Regular",
+      "blackShadow": "Black Shadow"
+    },
+    "darkAuctionTimer": "Dark Auction Timer",
+    "magmaBossTimer": "Magma Boss Timer"
   },
   "messages": {
     "dropConfirmation": "Thả Đồ Thêm Một Lần Nữa Để Xác Nhận!",

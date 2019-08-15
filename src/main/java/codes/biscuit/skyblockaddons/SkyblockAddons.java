@@ -10,6 +10,7 @@ import net.minecraftforge.client.ClientCommandHandler;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.ModContainer;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -28,11 +29,12 @@ public class SkyblockAddons {
     private Utils utils = new Utils(this);
     private InventoryUtils inventoryUtils = new InventoryUtils(this);
     private boolean usingLabymod = false;
+    private boolean usingOofModv1 = false;
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent e) {
         instance = this;
-        configValues = new ConfigValues(this, e.getSuggestedConfigurationFile());
+        configValues = new ConfigValues(e.getSuggestedConfigurationFile());
     }
 
     @Mod.EventHandler
@@ -46,6 +48,13 @@ public class SkyblockAddons {
     public void postInit(FMLPostInitializationEvent e) {
         configValues.loadConfig();
         usingLabymod = Loader.isModLoaded("labymod");
+        if (Loader.isModLoaded("refractionoof")) {
+            for (ModContainer modContainer : Loader.instance().getModList()) {
+                if (modContainer.getModId().equals("refractionoof") && modContainer.getVersion().equals("1.0")) {
+                    usingOofModv1 = true;
+                }
+            }
+        }
     }
 
     public ConfigValues getConfigValues() {
@@ -74,5 +83,9 @@ public class SkyblockAddons {
 
     public static SkyblockAddons getInstance() {
         return instance;
+    }
+
+    public boolean isUsingOofModv1() {
+        return usingOofModv1;
     }
 }

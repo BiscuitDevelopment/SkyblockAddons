@@ -10,7 +10,6 @@
     "skeletonHatBonesBar": "Luurankohatun Luupalkki",
     "hideFoodAndArmor": "Piilota Ruoka & Panssaripalkki",
     "fullInventoryWarning": "Täysi Inventaario Varoitus",
-    "magmaBossHealthBar": "Magma Boss Elämäpalkki",
     "disableEmberRodAbility": "Poista käytöstä Ember Rod Saarella",
     "warningColor": "Varoituksen väri",
     "confirmationColor": "Vahvistuksen Väri",
@@ -24,7 +23,7 @@
     "minionStopWarning": "\"Kätyri Ei Yllä\" Varoitus",
     "hideAuctionHousePlayers": "Piilota Pelaajat Huutokauppatalon Lähellä",
     "backpackStyle": "Repun Tyyli: %style%",
-    "styles": {
+    "backpackStyles": {
       "inventory": "Inventaario",
       "compact": "Kompakti"
     },
@@ -48,7 +47,23 @@
     "defenceIcon": "Defence Symbol",
     "defenceText": "Defence Number",
     "defencePercentage": "Defence Percentage",
-    "healthUpdates": "Health Change Number"
+    "healthUpdates": "Health Change Number",
+    "anchorPoint": "Anchor Point: %setting%: %anchor%",
+    "anchorPoints": {
+      "topLeft": "Top Left",
+      "topRight": "Top Right",
+      "bottomLeft": "Bottom Left",
+      "bottomRight": "Bottom Right",
+      "healthBar": "Health Bar"
+    },
+    "hidePlayersInLobby": "Hide Nearby Entities In Lobby",
+    "textStyle": "Text Style: %style%",
+    "textStyles": {
+      "regular": "Regular",
+      "blackShadow": "Black Shadow"
+    },
+    "darkAuctionTimer": "Dark Auction Timer",
+    "magmaBossTimer": "Magma Boss Timer"
   },
   "messages": {
     "dropConfirmation": "Pudota tämä esine uudelleen vahvistaaksesi!",

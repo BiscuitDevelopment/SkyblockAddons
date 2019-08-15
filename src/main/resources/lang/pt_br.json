@@ -10,7 +10,6 @@
     "skeletonHatBonesBar": "Barra de Ossos para Capacete Esqueleto",
     "hideFoodAndArmor": "Esconder Barra de Fome e Armadura",
     "fullInventoryWarning": "Aviso de Inventário Cheio",
-    "magmaBossHealthBar": "Barra de Vida do Chefão Magma",
     "disableEmberRodAbility": "Desativar Bastão de Brasa em Sua Ilha",
     "warningColor": "Cor do Aviso",
     "confirmationColor": "Cor da Confirmação",
@@ -24,7 +23,7 @@
     "minionStopWarning": "Aviso de \"Criado Não Alcança\"",
     "hideAuctionHousePlayers": "Esconder Jogadores Perdo de Leilões",
     "backpackStyle": "Estilo de Mochila: %style%",
-    "styles": {
+    "backpackStyles": {
       "inventory": "Inventário",
       "compact": "Compacto"
     },
@@ -48,7 +47,23 @@
     "defenceIcon": "Defence Symbol",
     "defenceText": "Defence Number",
     "defencePercentage": "Defence Percentage",
-    "healthUpdates": "Health Change Number"
+    "healthUpdates": "Health Change Number",
+    "anchorPoint": "Anchor Point: %setting%: %anchor%",
+    "anchorPoints": {
+      "topLeft": "Top Left",
+      "topRight": "Top Right",
+      "bottomLeft": "Bottom Left",
+      "bottomRight": "Bottom Right",
+      "healthBar": "Health Bar"
+    },
+    "hidePlayersInLobby": "Hide Nearby Entities In Lobby",
+    "textStyle": "Text Style: %style%",
+    "textStyles": {
+      "regular": "Regular",
+      "blackShadow": "Black Shadow"
+    },
+    "darkAuctionTimer": "Dark Auction Timer",
+    "magmaBossTimer": "Magma Boss Timer"
   },
   "messages": {
     "dropConfirmation": "Large este item de novo para confirmar!",

@@ -29,7 +29,7 @@ public class ButtonSlider extends GuiButton {
     public ButtonSlider(int buttonID, double x, double y, int width, int height, SkyblockAddons main) {
         super(buttonID, (int)x, (int)y, width, height, "");
         this.sliderValue = main.getConfigValues().getGuiScale();
-        this.displayString = main.getConfigValues().getMessage(Message.SETTING_GUI_SCALE, String.valueOf(getRoundedValue(main.getUtils().denormalizeValue(sliderValue, GUI_SCALE_MINIMUM, GUI_SCALE_MAXIMUM, GUI_SCALE_STEP))));
+        this.displayString = Message.SETTING_GUI_SCALE.getMessage(String.valueOf(getRoundedValue(main.getUtils().denormalizeValue(sliderValue, GUI_SCALE_MINIMUM, GUI_SCALE_MAXIMUM, GUI_SCALE_STEP))));
         this.main = main;
     }
 
@@ -71,7 +71,7 @@ public class ButtonSlider extends GuiButton {
                 float scaleValue = main.getUtils().denormalizeValue(this.sliderValue, GUI_SCALE_MINIMUM, GUI_SCALE_MAXIMUM, GUI_SCALE_STEP);
                 this.sliderValue = main.getUtils().normalizeValue(scaleValue, GUI_SCALE_MINIMUM, GUI_SCALE_MAXIMUM, GUI_SCALE_STEP);
                 main.getConfigValues().setGuiScale(sliderValue);
-                this.displayString = main.getConfigValues().getMessage(Message.SETTING_GUI_SCALE, String.valueOf(getRoundedValue(main.getUtils().denormalizeValue(sliderValue, GUI_SCALE_MINIMUM, GUI_SCALE_MAXIMUM, GUI_SCALE_STEP))));
+                this.displayString = Message.SETTING_GUI_SCALE.getMessage(String.valueOf(getRoundedValue(main.getUtils().denormalizeValue(sliderValue, GUI_SCALE_MINIMUM, GUI_SCALE_MAXIMUM, GUI_SCALE_STEP))));
             }
 
             mc.getTextureManager().bindTexture(buttonTextures);
@@ -85,7 +85,7 @@ public class ButtonSlider extends GuiButton {
             this.sliderValue = (float) (mouseX - (this.xPosition + 4)) / (float) (this.width - 8);
             this.sliderValue = MathHelper.clamp_float(this.sliderValue, 0.0F, 1.0F);
             main.getConfigValues().setGuiScale(sliderValue);
-            this.displayString = main.getConfigValues().getMessage(Message.SETTING_GUI_SCALE, String.valueOf(getRoundedValue(main.getUtils().denormalizeValue(sliderValue, GUI_SCALE_MINIMUM, GUI_SCALE_MAXIMUM, GUI_SCALE_STEP))));
+            this.displayString =Message.SETTING_GUI_SCALE.getMessage(String.valueOf(getRoundedValue(main.getUtils().denormalizeValue(sliderValue, GUI_SCALE_MINIMUM, GUI_SCALE_MAXIMUM, GUI_SCALE_STEP))));
             this.dragging = true;
             return true;
         } else {

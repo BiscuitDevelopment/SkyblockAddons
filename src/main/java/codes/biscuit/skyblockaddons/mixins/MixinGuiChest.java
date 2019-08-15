@@ -43,20 +43,20 @@ public abstract class MixinGuiChest extends GuiContainer {
         super.drawScreen(mouseX, mouseY, partialTicks);
         if (textFieldMatch != null) {
             SkyblockAddons main = SkyblockAddons.getInstance();
-            String  inventoryMessage = main.getConfigValues().getMessage(inventoryType.getMessage());
+            String inventoryMessage = inventoryType.getMessage();
             int defaultBlue = main.getUtils().getDefaultBlue(255);
-            mc.ingameGUI.drawString(mc.fontRendererObj, main.getConfigValues().getMessage(Message.MESSAGE_TYPE_ENCHANTMENTS, inventoryMessage), guiLeft - 160, guiTop + 40, defaultBlue);
-            mc.ingameGUI.drawString(mc.fontRendererObj, main.getConfigValues().getMessage(Message.MESSAGE_SEPARATE_ENCHANTMENTS), guiLeft - 160, guiTop + 50, defaultBlue);
-            mc.ingameGUI.drawString(mc.fontRendererObj, main.getConfigValues().getMessage(Message.MESSAGE_ENCHANTS_TO_MATCH, inventoryMessage), guiLeft - 160, guiTop + 70, defaultBlue);
-            mc.ingameGUI.drawString(mc.fontRendererObj, main.getConfigValues().getMessage(Message.MESSAGE_ENCHANTS_TO_EXCLUDE, inventoryMessage), guiLeft - 160, guiTop + 110, defaultBlue);
+            mc.ingameGUI.drawString(mc.fontRendererObj, Message.MESSAGE_TYPE_ENCHANTMENTS.getMessage(inventoryMessage), guiLeft - 160, guiTop + 40, defaultBlue);
+            mc.ingameGUI.drawString(mc.fontRendererObj, Message.MESSAGE_SEPARATE_ENCHANTMENTS.getMessage(), guiLeft - 160, guiTop + 50, defaultBlue);
+            mc.ingameGUI.drawString(mc.fontRendererObj, Message.MESSAGE_ENCHANTS_TO_MATCH.getMessage(inventoryMessage), guiLeft - 160, guiTop + 70, defaultBlue);
+            mc.ingameGUI.drawString(mc.fontRendererObj,Message.MESSAGE_ENCHANTS_TO_EXCLUDE.getMessage(inventoryMessage), guiLeft - 160, guiTop + 110, defaultBlue);
             textFieldMatch.drawTextBox();
             if (textFieldMatch.getText().equals("")) {
-                mc.ingameGUI.drawString(mc.fontRendererObj, "ex. \"prot, feather\"", guiLeft - 136, guiTop + 86, ConfigColor.DARK_GRAY.getColor(255));
+                mc.ingameGUI.drawString(mc.fontRendererObj, "ex. \"prot, feather\"", guiLeft - 156, guiTop + 86, ConfigColor.DARK_GRAY.getColor(255));
             }
             GlStateManager.color(1.0F, 0, 0);
             textFieldExclusions.drawTextBox();
             if (textFieldExclusions.getText().equals("")) {
-                mc.ingameGUI.drawString(mc.fontRendererObj, "ex. \"proj, blast\"", guiLeft - 136, guiTop + 126, ConfigColor.DARK_GRAY.getColor(255));
+                mc.ingameGUI.drawString(mc.fontRendererObj, "ex. \"proj, blast\"", guiLeft - 156, guiTop + 126, ConfigColor.DARK_GRAY.getColor(255));
             }
             GlStateManager.color(1F, 1F, 1F);
         }
@@ -135,15 +135,20 @@ public abstract class MixinGuiChest extends GuiContainer {
                 if (slotIn.getSlotIndex() == 13 && inventoryType == EnumUtils.InventoryType.ENCHANTMENT_TABLE) {
                     ItemStack[] enchantBottles = {slots.getSlot(29).getStack(), slots.getSlot(31).getStack(), slots.getSlot(33).getStack()};
                     for (ItemStack bottle : enchantBottles) {
-                        if (bottle != null && bottle.hasDisplayName() && bottle.getDisplayName().startsWith(EnumChatFormatting.GREEN + "Enchant Item")) {
-                            Minecraft mc = Minecraft.getMinecraft();
-                            List<String> toolip = bottle.getTooltip(mc.thePlayer, false);
-                            if (toolip.size() > 2) {
-                                String enchantLine = toolip.get(2).split(Pattern.quote("* "))[1];
-                                if (main.getUtils().enchantReforgeMatches(enchantLine)) {
-                                    main.getUtils().playSound("random.orb", 0.1);
-                                    return;
+                        if (bottle != null && bottle.hasDisplayName()) {
+                            if (bottle.getDisplayName().startsWith(EnumChatFormatting.GREEN + "Enchant Item")) {
+                                Minecraft mc = Minecraft.getMinecraft();
+                                List<String> toolip = bottle.getTooltip(mc.thePlayer, false);
+                                if (toolip.size() > 2) {
+                                    String enchantLine = toolip.get(2).split(Pattern.quote("* "))[1];
+                                    if (main.getUtils().enchantReforgeMatches(enchantLine)) {
+                                        main.getUtils().playSound("random.orb", 0.1);
+                                        return;
+                                    }
                                 }
+                            } else if (bottle.getDisplayName().startsWith(EnumChatFormatting.RED + "Enchant Item")) {
+                                // Stop player from removing item before the enchants have even loaded.
+                                return;
                             }
                         }
                     }

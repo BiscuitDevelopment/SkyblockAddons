@@ -11,7 +11,6 @@ import net.minecraft.entity.monster.EntityMagmaCube;
 import net.minecraft.entity.monster.EntitySlime;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
@@ -19,6 +18,9 @@ import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.event.world.ChunkEvent;
+import net.minecraftforge.event.world.WorldEvent;
+import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
@@ -28,6 +30,8 @@ import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.StringSelection;
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -45,6 +49,11 @@ public class PlayerListener {
     private long lastMinionSound = -1;
     private Integer healthUpdate = null;
     private long lastHealthUpdate;
+
+    private Set<CoordsPair> recentlyLoadedChunks = new HashSet<>();
+    private EnumUtils.MagmaTimerAccuracy magmaAccuracy;
+    private int magmaTime;
+    private int lastCheckMagmaCubes = -1;
 
 //    private Feature.Accuracy magmaTimerAccuracy = null;
 //    private long magmaTime = 7200;
@@ -69,11 +78,30 @@ public class PlayerListener {
         }
     }
 
+    @SubscribeEvent()
+    public void onWorldUnload(WorldEvent.Unload e) {
+        recentlyLoadedChunks.clear();
+    }
+
+    /**
+     * Keep track of recently loaded chunks for the magma boss timer.
+     */
+    @SubscribeEvent()
+    public void onChunkLoad(ChunkEvent.Load e) {
+        CoordsPair coords = new CoordsPair(e.getChunk().xPosition, e.getChunk().zPosition);
+        recentlyLoadedChunks.add(coords);
+        new Timer().schedule(new TimerTask() {
+            @Override
+            public void run() {
+                recentlyLoadedChunks.remove(coords);
+            }
+        }, 1000);
+    }
     /**
      * Interprets the action bar to extract mana, health, and defence. Enables/disables mana/health prediction,
      * and looks for mana usage messages in chat while predicting.
      */
-    @SubscribeEvent()
+    @SubscribeEvent(priority = EventPriority.HIGH)
     public void onChatReceive(ClientChatReceivedEvent e) {
         String message = e.message.getUnformattedText();
         if (e.type == 2) {
@@ -136,8 +164,8 @@ public class PlayerListener {
                         }
                         returnMessage = newMessage.toString();
                     }
-                    if (returnMessage.length() == 0) {
-                        returnMessage = "\u00a0"; // This is to solve an issue with oof mod, which doesn't check if a string is empty before dealing with it (and it spams chat).
+                    if (main.isUsingOofModv1() && returnMessage.trim().length() == 0) {
+                        e.setCanceled(true);
                     }
                     e.message = new ChatComponentText(returnMessage);
                     return;
@@ -295,12 +323,12 @@ public class PlayerListener {
         if (e.phase == TickEvent.Phase.START && !main.getConfigValues().getDisabledFeatures().contains(Feature.MAGMA_WARNING) && main.getUtils().isOnSkyblock()) {
             Minecraft mc = Minecraft.getMinecraft();
             if (mc != null && mc.theWorld != null) {
-                if ((lastBoss == -1 || System.currentTimeMillis() - lastBoss > 1800000) && magmaTick % 5 == 0) {
+                if (magmaTick % 5 == 0) {
                     for (Entity entity : mc.theWorld.loadedEntityList) { // Loop through all the entities.
                         if (entity instanceof EntityMagmaCube) {
                             EntitySlime magma = (EntitySlime) entity;
                             int size = magma.getSlimeSize();
-                            if (size > 10) { // Find a big magma boss
+                            if ((lastBoss == -1 || System.currentTimeMillis() - lastBoss > 1800000) && size > 10) { // Find a big magma boss
                                 lastBoss = System.currentTimeMillis();
                                 main.getRenderListener().setTitleFeature(Feature.MAGMA_WARNING); // Enable warning and disable again in four seconds.
                                 magmaTick = 16; // so the sound plays instantly
@@ -309,7 +337,7 @@ public class PlayerListener {
                                     public void run() {
                                         main.getRenderListener().setTitleFeature(null);
                                     }
-                                }, main.getConfigValues().getWarningSeconds()*1000); // 4 second warning.
+                                }, main.getConfigValues().getWarningSeconds() * 1000); // 4 second warning.
 //                                logServer(mc);
                             }
                         }

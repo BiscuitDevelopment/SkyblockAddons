@@ -1,6 +1,5 @@
 package codes.biscuit.skyblockaddons.utils;
 
-import codes.biscuit.skyblockaddons.SkyblockAddons;
 import com.google.gson.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
@@ -12,7 +11,6 @@ public class ConfigValues {
 
     private static final int CONFIG_VERSION = 3;
 
-    private SkyblockAddons main;
     private File settingsConfigFile;
     private JsonObject settingsConfig = new JsonObject();
 
@@ -26,9 +24,9 @@ public class ConfigValues {
     private float guiScale = 0.11F;
     private Language language = Language.ENGLISH;
     private EnumUtils.BackpackStyle backpackStyle = EnumUtils.BackpackStyle.GUI;
+    private EnumUtils.TextStyle textStyle = EnumUtils.TextStyle.REGULAR;
 
-    public ConfigValues(SkyblockAddons main, File settingsConfigFile) {
-        this.main = main;
+    public ConfigValues(File settingsConfigFile) {
         this.settingsConfigFile = settingsConfigFile;
     }
 
@@ -139,7 +137,8 @@ public class ConfigValues {
             } else if (configVersion == 2) {
                 disabledFeatures.add(Feature.HEALTH_BAR);
                 disabledFeatures.add(Feature.DEFENCE_PERCENTAGE);
-                setAnchorPointsToDefault();
+                disabledFeatures.add(Feature.HIDE_PLAYERS_IN_LOBBY);
+                setAllCoordinatesToDefault();
             }
         } else {
             addDefaultsAndSave();
@@ -186,15 +185,11 @@ public class ConfigValues {
         featureColors.put(Feature.HEALTH_TEXT, ConfigColor.RED);
         featureColors.put(Feature.DEFENCE_TEXT, ConfigColor.GREEN);
         featureColors.put(Feature.DEFENCE_PERCENTAGE, ConfigColor.GREEN);
-        disabledFeatures.add(Feature.DROP_CONFIRMATION);
-        disabledFeatures.add(Feature.MINION_STOP_WARNING);
-        disabledFeatures.add(Feature.HIDE_HEALTH_BAR);
-        disabledFeatures.add(Feature.MINION_FULL_WARNING);
-        disabledFeatures.add(Feature.USE_VANILLA_TEXTURE_DEFENCE);
-        disabledFeatures.add(Feature.IGNORE_ITEM_FRAME_CLICKS);
-        disabledFeatures.add(Feature.SHOW_BACKPACK_HOLDING_SHIFT);
-        disabledFeatures.add(Feature.HEALTH_BAR);
-        disabledFeatures.add(Feature.DEFENCE_PERCENTAGE);
+
+        Feature[] toDisable = {Feature.DROP_CONFIRMATION, Feature.MINION_STOP_WARNING, Feature.HIDE_HEALTH_BAR,
+            Feature.USE_VANILLA_TEXTURE_DEFENCE, Feature.IGNORE_ITEM_FRAME_CLICKS, Feature.SHOW_BACKPACK_HOLDING_SHIFT,
+            Feature.HEALTH_BAR, Feature.DEFENCE_PERCENTAGE, Feature.HIDE_PLAYERS_IN_LOBBY};
+        disabledFeatures.addAll(Arrays.asList(toDisable));
         disabledFeatures.add(Feature.ITEM_PICKUP_LOG);
         setAllCoordinatesToDefault();
         saveConfig();
@@ -213,14 +208,14 @@ public class ConfigValues {
     private void setAnchorPointsToDefault() {
         Feature[] features = {Feature.SKELETON_BAR, Feature.DEFENCE_ICON, Feature.DEFENCE_TEXT,
                 Feature.DEFENCE_PERCENTAGE, Feature.HEALTH_BAR, Feature.HEALTH_TEXT, Feature.MANA_BAR,
-                Feature.MANA_TEXT, Feature.HEALTH_UPDATES};
+                Feature.MANA_TEXT, Feature.HEALTH_UPDATES, Feature.ITEM_PICKUP_LOG};
         for (Feature feature : features) {
             anchorPoints.put(feature, EnumUtils.AnchorPoint.HEALTH_BAR);
         }
     }
 
     private void putDefaultCoordinates(Feature feature) {
-        int x = 0; //TODO add default coordinates
+        int x = 0;
         int y = 0;
         switch (feature) {
             case SKELETON_BAR:
@@ -344,69 +339,6 @@ public class ConfigValues {
         }
     }
 
-    public String getMessage(Message message, String... variables) {
-        String text;
-        try {
-            List<String> path = message.getMessageObject().getPath();
-            JsonObject jsonObject = languageConfig;
-            for (String part : path) {
-                if (!part.equals("")) {
-                    jsonObject = jsonObject.getAsJsonObject(part);
-                }
-            }
-            text = jsonObject.get(message.getMemberName()).getAsString();
-            if (text != null) {
-                if (message == Message.SETTING_WARNING_TIME) {
-                    text = text.replace("%time%", String.valueOf(warningSeconds));
-                } else if (message == Message.SETTING_GUI_SCALE) {
-                    text = text.replace("%scale%", variables[0]);
-                } else if (message == Message.MESSAGE_NEW_VERSION) {
-                    text = text.replace("%newestVersion%", variables[0]);
-                } else if (message == Message.SETTING_BACKPACK_STYLE) {
-                    text = text.replace("%style%", backpackStyle.getDisplayText());
-                } else if (message == Message.MESSAGE_DEVELOPMENT_VERSION) {
-                    text = text.replace("%version%", variables[0]).replace("%newestVersion%", variables[1]);
-                } else if (message == Message.LANGUAGE) {
-                    text = "Language: " + text;
-                } else if (message == Message.MESSAGE_MINION_CANNOT_REACH || message == Message.MESSAGE_TYPE_ENCHANTMENTS
-                        || message == Message.MESSAGE_ENCHANTS_TO_MATCH || message == Message.MESSAGE_ENCHANTS_TO_EXCLUDE) {
-                    text = text.replace("%type%", variables[0]);
-                }
-            }
-            if (text != null && language == Language.HEBREW) {
-                text = reverseText(text);
-            }
-        } catch (NullPointerException ex) { // In case I messed up some translation or something.
-            ex.printStackTrace();
-            text = "";
-        }
-        return text;
-    }
-
-    // This reverses the text while leaving the english parts intact and in order.
-    // (Maybe its more complicated than it has to be, but it gets the job done.
-    private String reverseText(String originalText) {
-        StringBuilder newString = new StringBuilder();
-        String[] parts = originalText.split(" ");
-        for (int i = parts.length; i > 0; i--) {
-            String textPart = parts[i-1];
-            boolean foundCharacter = false;
-            for (char letter : textPart.toCharArray()) {
-                if (letter > 191) { // Found special character
-                    foundCharacter = true;
-                    newString.append(new StringBuilder(textPart).reverse().toString());
-                    break;
-                }
-            }
-            newString.append(" ");
-            if (!foundCharacter) {
-                newString.insert(0, textPart);
-            }
-            newString.insert(0, " ");
-        }
-        return main.getUtils().removeDuplicateSpaces(newString.toString().trim());
-    }
-
     public Set<Feature> getDisabledFeatures() {
         return disabledFeatures;
     }
@@ -496,5 +428,17 @@ public class ConfigValues {
 
     public EnumUtils.AnchorPoint getAnchorPoint(Feature feature) {
         return anchorPoints.getOrDefault(feature, EnumUtils.AnchorPoint.HEALTH_BAR);
+    }
+
+    JsonObject getLanguageConfig() {
+        return languageConfig;
+    }
+
+    public EnumUtils.TextStyle getTextStyle() {
+        return textStyle;
+    }
+
+    public void setTextStyle(EnumUtils.TextStyle textStyle) {
+        this.textStyle = textStyle;
     }
 }

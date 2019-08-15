@@ -37,41 +37,42 @@ public class SkyblockAddonsGui extends GuiScreen {
     public void initGui() {
         // Add the buttons for each page.
         if (page == 1) {
-            addButton(1, Message.SETTING_ENCHANTS_AND_REFORGES, Feature.SHOW_ENCHANTMENTS_REFORGES, 1, EnumUtils.ButtonType.TOGGLE);
-            addButton(1, Message.SETTING_SHOW_BACKPACK_PREVIEW, Feature.SHOW_BACKPACK_PREVIEW, 2, EnumUtils.ButtonType.TOGGLE);
-            addButton(1, Message.SETTING_FULL_MINION, Feature.MINION_FULL_WARNING, 3, EnumUtils.ButtonType.TOGGLE);
-            addButton(2, Message.SETTING_HIDE_SKELETON_HAT_BONES, Feature.HIDE_BONES, 1, EnumUtils.ButtonType.TOGGLE);
-            addButton(2, Message.SETTING_FULL_INVENTORY_WARNING, Feature.FULL_INVENTORY_WARNING, 2, EnumUtils.ButtonType.TOGGLE);
-            addButton(2, Message.SETTING_DISABLE_EMBER_ROD_ABILITY, Feature.DISABLE_EMBER_ROD, 3, EnumUtils.ButtonType.TOGGLE);
-            addButton(3, Message.SETTING_AUCTION_HOUSE_PLAYERS, Feature.HIDE_AUCTION_HOUSE_PLAYERS, 1, EnumUtils.ButtonType.TOGGLE);
-            addButton(3, Message.SETTING_IGNORE_ITEM_FRAME_CLICKS, Feature.IGNORE_ITEM_FRAME_CLICKS, 2, EnumUtils.ButtonType.TOGGLE);
-            addButton(3, Message.SETTING_HIDE_FOOD_AND_ARMOR, Feature.HIDE_FOOD_ARMOR_BAR, 3, EnumUtils.ButtonType.TOGGLE);
-            addButton(4, Message.SETTING_HIDE_HEALTH_BAR, Feature.HIDE_HEALTH_BAR, 1, EnumUtils.ButtonType.TOGGLE);
-            addButton(4, Message.SETTING_MINION_STOP_WARNING, Feature.MINION_STOP_WARNING, 2, EnumUtils.ButtonType.TOGGLE);
-            addButton(4, Message.SETTING_MAGMA_BOSS_HEALTH_BAR, Feature.MAGMA_BOSS_BAR, 3, EnumUtils.ButtonType.TOGGLE);
-            addButton(5, Message.SETTING_ITEM_DROP_CONFIRMATION, Feature.DROP_CONFIRMATION, 1, EnumUtils.ButtonType.TOGGLE);
-            addButton(5, Message.SETTING_MAGMA_BOSS_WARNING, Feature.MAGMA_WARNING, 2, EnumUtils.ButtonType.TOGGLE);
-            addButton(5, Message.SETTING_HIDE_DURABILITY, Feature.HIDE_DURABILITY, 3, EnumUtils.ButtonType.TOGGLE);
+            addButton(1, Feature.SHOW_ENCHANTMENTS_REFORGES, 1, EnumUtils.ButtonType.TOGGLE);
+            addButton(1, Feature.SHOW_BACKPACK_PREVIEW, 2, EnumUtils.ButtonType.TOGGLE);
+            addButton(1, Feature.MINION_FULL_WARNING, 3, EnumUtils.ButtonType.TOGGLE);
+            addButton(2, Feature.HIDE_BONES, 1, EnumUtils.ButtonType.TOGGLE);
+            addButton(2, Feature.FULL_INVENTORY_WARNING, 2, EnumUtils.ButtonType.TOGGLE);
+            addButton(2, Feature.DISABLE_EMBER_ROD, 3, EnumUtils.ButtonType.TOGGLE);
+            addButton(3, Feature.HIDE_AUCTION_HOUSE_PLAYERS, 1, EnumUtils.ButtonType.TOGGLE);
+            addButton(3, Feature.IGNORE_ITEM_FRAME_CLICKS, 2, EnumUtils.ButtonType.TOGGLE);
+            addButton(3, Feature.HIDE_FOOD_ARMOR_BAR, 3, EnumUtils.ButtonType.TOGGLE);
+            addButton(4, Feature.HIDE_HEALTH_BAR, 1, EnumUtils.ButtonType.TOGGLE);
+            addButton(4, Feature.MINION_STOP_WARNING, 2, EnumUtils.ButtonType.TOGGLE);
+            addButton(4, Feature.MAGMA_BOSS_TIMER, 3, EnumUtils.ButtonType.TOGGLE);
+            addButton(5, Feature.DROP_CONFIRMATION, 1, EnumUtils.ButtonType.TOGGLE);
+            addButton(5, Feature.MAGMA_WARNING, 2, EnumUtils.ButtonType.TOGGLE);
+            addButton(5, Feature.HIDE_DURABILITY, 3, EnumUtils.ButtonType.TOGGLE);
 
-            addButton(6, Message.SETTING_NEXT_PAGE, Feature.NEXT_PAGE, 2, EnumUtils.ButtonType.SOLID);
+            addButton(6, Feature.NEXT_PAGE, 2, EnumUtils.ButtonType.SOLID);
         } else if (page == 2) {
 
-            addButton(2, Message.SETTING_DEFENCE_TEXT, Feature.DEFENCE_TEXT, 1, EnumUtils.ButtonType.TOGGLE);
-            addButton(2, Message.SETTING_MANA_BAR, Feature.MANA_BAR, 2, EnumUtils.ButtonType.TOGGLE);
-            addButton(2, Message.SETTING_HEALTH_BAR, Feature.HEALTH_BAR, 3, EnumUtils.ButtonType.TOGGLE);
-            addButton(3, Message.SETTING_DEFENCE_ICON, Feature.DEFENCE_ICON, 1, EnumUtils.ButtonType.TOGGLE);
-            addButton(3, Message.SETTING_MANA_TEXT, Feature.MANA_TEXT, 2, EnumUtils.ButtonType.TOGGLE);
-            addButton(3, Message.SETTING_HEALTH_TEXT, Feature.HEALTH_TEXT, 3, EnumUtils.ButtonType.TOGGLE);
-            addButton(4, Message.SETTING_DEFENCE_PERCENTAGE, Feature.DEFENCE_PERCENTAGE, 1, EnumUtils.ButtonType.TOGGLE);
-            addButton(4, Message.SETTING_SKELETON_HAT_BONES_BAR, Feature.SKELETON_BAR, 2, EnumUtils.ButtonType.TOGGLE);
-            addButton(4, Message.SETTING_HEALTH_UPDATES, Feature.HEALTH_UPDATES, 3, EnumUtils.ButtonType.TOGGLE);
-            addButton(5, Message.SETTING_ITEM_PICKUP_LOG, Feature.ITEM_PICKUP_LOG, 1, EnumUtils.ButtonType.TOGGLE);
+            addButton(1, Feature.HIDE_PLAYERS_IN_LOBBY, 1, EnumUtils.ButtonType.TOGGLE);
+            addButton(2, Feature.DEFENCE_TEXT, 1, EnumUtils.ButtonType.TOGGLE);
+            addButton(2, Feature.MANA_BAR, 2, EnumUtils.ButtonType.TOGGLE);
+            addButton(2, Feature.HEALTH_BAR, 3, EnumUtils.ButtonType.TOGGLE);
+            addButton(3, Feature.DEFENCE_ICON, 1, EnumUtils.ButtonType.TOGGLE);
+            addButton(3, Feature.MANA_TEXT, 2, EnumUtils.ButtonType.TOGGLE);
+            addButton(3, Feature.HEALTH_TEXT, 3, EnumUtils.ButtonType.TOGGLE);
+            addButton(4, Feature.DEFENCE_PERCENTAGE, 1, EnumUtils.ButtonType.TOGGLE);
+            addButton(4, Feature.SKELETON_BAR, 2, EnumUtils.ButtonType.TOGGLE);
+            addButton(4, Feature.HEALTH_UPDATES, 3, EnumUtils.ButtonType.TOGGLE);
+            addButton(5, Feature.ITEM_PICKUP_LOG, 1, EnumUtils.ButtonType.TOGGLE);
 
-            addButton(6, Message.SETTING_PREVIOUS_PAGE, Feature.PREVIOUS_PAGE, 2, EnumUtils.ButtonType.SOLID);
+            addButton(6, Feature.PREVIOUS_PAGE, 2, EnumUtils.ButtonType.SOLID);
         }
-        addButton(8.5, Message.SETTING_EDIT_LOCATIONS, Feature.EDIT_LOCATIONS, 1, EnumUtils.ButtonType.SOLID);
-        addButton(8.5, Message.SETTING_EDIT_SETTINGS, Feature.SETTINGS, 2, EnumUtils.ButtonType.SOLID);
-        addButton(8.5, Message.LANGUAGE, Feature.LANGUAGE, 3, EnumUtils.ButtonType.SOLID);
+        addButton(8.5, Feature.EDIT_LOCATIONS, 1, EnumUtils.ButtonType.SOLID);
+        addButton(8.5, Feature.SETTINGS, 2, EnumUtils.ButtonType.SOLID);
+        addButton(8.5, Feature.LANGUAGE, 3, EnumUtils.ButtonType.SOLID);
     }
 
     @Override
@@ -98,13 +99,16 @@ public class SkyblockAddonsGui extends GuiScreen {
         // The text at the top of the GUI
         drawScaledString("SkyblockAddons", 0.12, defaultBlue, 2.5F);
         drawScaledString("v" + SkyblockAddons.VERSION + " by Biscut", 0.12, defaultBlue, 1.3, 50, 17);
-        drawScaledString(main.getConfigValues().getMessage(Message.SETTING_SETTINGS), 0.8, defaultBlue, 1.5);
+        drawScaledString(Message.SETTING_SETTINGS.getMessage(), 0.8, defaultBlue, 1.5);
         if (page == 1) {
             if (main.isUsingLabymod() || (boolean) Launch.blackboard.get("fml.deobfuscatedEnvironment")) { // Show the labymod message also when i'm testing it to make sure it looks fine.
-                drawScaledString(main.getConfigValues().getMessage(Message.MESSAGE_LABYMOD), 0.75, defaultBlue, 1);
+                drawScaledString(Message.MESSAGE_LABYMOD.getMessage(), 0.75, defaultBlue, 1);
             }
         } else if (page == 2) {
-            drawScaledString("GUI Items", 0.26, defaultBlue, 1.8F);
+            if (main.isUsingOofModv1() || (boolean) Launch.blackboard.get("fml.deobfuscatedEnvironment")) { // Show the labymod message also when i'm testing it to make sure it looks fine.
+                drawScaledString("", 0.75, defaultBlue, 1);
+            }
+//            drawScaledString("GUI Items", 0.26, defaultBlue, 1.8F);
         }
         super.drawScreen(mouseX, mouseY, partialTicks); // Draw buttons.
     }
@@ -168,11 +172,8 @@ public class SkyblockAddonsGui extends GuiScreen {
     /**
      * Adds a button, limiting its width and setting the correct position.
      */
-    private void addButton(double row, Message message, Feature feature, int collumn, EnumUtils.ButtonType buttonType) {
-        String text = null;
-        if (message != null) {
-            text = main.getConfigValues().getMessage(message);
-        }
+    private void addButton(double row, Feature feature, int collumn, EnumUtils.ButtonType buttonType) {
+        String text = feature.getMessage();
         int halfWidth = width/2;
         int oneThird = width/3;
         int twoThirds = oneThird*2;

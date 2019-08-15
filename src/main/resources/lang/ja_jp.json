@@ -10,7 +10,6 @@
     "skeletonHatBonesBar": "スケルトンヘルメットの骨のゲージ",
     "hideFoodAndArmor": "食料とアーマーのゲージを非表示",
     "fullInventoryWarning": "インベントリ満タン時のアラート",
-    "magmaBossHealthBar": "マグマボスの体力ゲージ",
     "disableEmberRodAbility": "個人の島でエンバーロッドのアビリティを無効化",
     "warningColor": "アラートの色",
     "confirmationColor": "確認するときの色",
@@ -24,7 +23,7 @@
     "minionStopWarning": "ミニオン停止アラート",
     "hideAuctionHousePlayers": "オークションハウス付近のプレイヤーを非表示",
     "backpackStyle": "バックパックの表示: %style%",
-    "styles": {
+    "backpackStyles": {
       "inventory": "インベントリ型",
       "compact": "コンパクト"
     },
@@ -48,7 +47,23 @@
     "defenceIcon": "Defence Symbol",
     "defenceText": "Defence Number",
     "defencePercentage": "Defence Percentage",
-    "healthUpdates": "Health Change Number"
+    "healthUpdates": "Health Change Number",
+    "anchorPoint": "Anchor Point: %setting%: %anchor%",
+    "anchorPoints": {
+      "topLeft": "Top Left",
+      "topRight": "Top Right",
+      "bottomLeft": "Bottom Left",
+      "bottomRight": "Bottom Right",
+      "healthBar": "Health Bar"
+    },
+    "hidePlayersInLobby": "Hide Nearby Entities In Lobby",
+    "textStyle": "Text Style: %style%",
+    "textStyles": {
+      "regular": "Regular",
+      "blackShadow": "Black Shadow"
+    },
+    "darkAuctionTimer": "Dark Auction Timer",
+    "magmaBossTimer": "Magma Boss Timer"
   },
   "messages": {
     "dropConfirmation": "落としてもいいのであれば、このアイテムをもう一度ドロップしてください。",

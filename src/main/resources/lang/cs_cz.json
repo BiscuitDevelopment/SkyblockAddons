@@ -10,7 +10,6 @@
     "skeletonHatBonesBar": "Skeleton Helmet - ukazetel kostí",
     "hideFoodAndArmor": "Skrýt ukazatel jídla a armoru",
     "fullInventoryWarning": "upozornění na plný inventář",
-    "magmaBossHealthBar": "Ukazatel Magma Boss zdraví",
     "disableEmberRodAbility": "Zakázat Ember rod abilitu na ostrově",
     "warningColor": "Barva upozornění",
     "confirmationColor": "Barva potvrzení",
@@ -24,7 +23,7 @@
     "minionStopWarning": "\"minion nemůže dosáhnout\" Varování",
     "hideAuctionHousePlayers": "Skrýt hráče u Auction house",
     "backpackStyle": "Styl batůžků: %styl%",
-    "styles": {
+    "backpackStyles": {
       "inventory": "inventář",
       "compact": "kompaktní"
     },
@@ -48,7 +47,23 @@
     "defenceIcon": "Defence Symbol",
     "defenceText": "Defence Number",
     "defencePercentage": "Defence Percentage",
-    "healthUpdates": "Health Change Number"
+    "healthUpdates": "Health Change Number",
+    "anchorPoint": "Anchor Point: %setting%: %anchor%",
+    "anchorPoints": {
+      "topLeft": "Top Left",
+      "topRight": "Top Right",
+      "bottomLeft": "Bottom Left",
+      "bottomRight": "Bottom Right",
+      "healthBar": "Health Bar"
+    },
+    "hidePlayersInLobby": "Hide Nearby Entities In Lobby",
+    "textStyle": "Text Style: %style%",
+    "textStyles": {
+      "regular": "Regular",
+      "blackShadow": "Black Shadow"
+    },
+    "darkAuctionTimer": "Dark Auction Timer",
+    "magmaBossTimer": "Magma Boss Timer"
   },
   "messages": {
     "dropConfirmation": "Vyhoď tento item pro vyhození!",
