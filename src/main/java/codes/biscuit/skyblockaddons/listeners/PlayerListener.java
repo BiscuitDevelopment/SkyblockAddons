@@ -74,6 +74,7 @@ public class PlayerListener {
             lastBoss = -1;
             magmaTick = 1;
             timerTick = 1;
+            main.getInventoryUtils().resetPreviousInventory();
         }
     }
 
@@ -220,6 +221,7 @@ public class PlayerListener {
             timerTick++;
             Minecraft mc = Minecraft.getMinecraft();
             if (mc != null) { // Predict health every tick if needed.
+
                 if(healthUpdate != null && System.currentTimeMillis()-lastHealthUpdate > 3000) {
                     healthUpdate = null;
                 }
@@ -244,13 +246,20 @@ public class PlayerListener {
                     EntityPlayerSP p = mc.thePlayer;
                     if (p != null) {
                         main.getUtils().checkGameAndLocation();
-                        main.getUtils().checkIfInventoryIsFull(mc, p);
-                        main.getUtils().checkIfWearingSkeletonHelmet(p);
+                        main.getInventoryUtils().checkIfInventoryIsFull(mc, p);
+                        main.getInventoryUtils().checkIfWearingSkeletonHelmet(p);
                         if (!sentUpdate) {
                             main.getUtils().checkUpdates();
                             sentUpdate = true;
                         }
+
+                        if(mc.currentScreen == null) {
+                            main.getInventoryUtils().getInventoryDifference(p.inventory.mainInventory);
+                        }
                     }
+
+                    main.getInventoryUtils().updateItemPickupLog();
+
                 } else if (timerTick > 20) { // To keep the timer going from 1 to 21 only.
                     timerTick = 1;
                 }

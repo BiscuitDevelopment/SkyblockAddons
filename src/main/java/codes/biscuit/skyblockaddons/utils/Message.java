@@ -60,6 +60,7 @@ public enum Message {
     SETTING_HIDE_PLAYERS_IN_LOBBY(MessageObject.SETTING, "hidePlayersInLobby"),
     SETTING_TEXT_STYLE(MessageObject.SETTING, "textStyle"),
     SETTING_DARK_AUCTION_TIMER(MessageObject.SETTING, "darkAuctionTimer"),
+    SETTING_ITEM_PICKUP_LOG(MessageObject.SETTING, "itemPickupLog"),
 
     BACKPACK_STYLE_GUI(MessageObject.STYLE, "inventory"),
     BACKPACK_STYLE_COMPACT(MessageObject.STYLE, "compact"),

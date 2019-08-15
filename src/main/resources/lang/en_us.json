@@ -63,7 +63,8 @@
       "blackShadow": "Black Shadow"
     },
     "darkAuctionTimer": "Dark Auction Timer",
-    "magmaBossTimer": "Magma Boss Timer"
+    "magmaBossTimer": "Magma Boss Timer",
+    "itemPickupLog": "Item Pickup Log"
   },
   "messages": {
     "dropConfirmation": "Drop this item again to confirm!",

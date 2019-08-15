@@ -101,6 +101,9 @@ public class ConfigValues {
             if (settingsConfig.has("healthUpdatesX")) {
                 coordinates.put(Feature.HEALTH_UPDATES, new CoordsPair(settingsConfig.get("healthUpdatesX").getAsInt(), settingsConfig.get("healthUpdatesY").getAsInt()));
             }
+            if (settingsConfig.has("itemPickupLogX")) {
+                coordinates.put(Feature.ITEM_PICKUP_LOG, new CoordsPair(settingsConfig.get("itemPickupLogX").getAsInt(), settingsConfig.get("itemPickupLogY").getAsInt()));
+            }
             loadColor("warningColor", Feature.MAGMA_WARNING, ConfigColor.RED);
             loadColor("confirmationColor", Feature.DROP_CONFIRMATION, ConfigColor.RED);
             loadColor("manaBarColor", Feature.MANA_BAR, ConfigColor.BLUE);
@@ -170,7 +173,7 @@ public class ConfigValues {
             }
         }
         Feature[] newFeatures = {Feature.HEALTH_BAR, Feature.HEALTH_TEXT, Feature.DEFENCE_TEXT, Feature.DEFENCE_PERCENTAGE,
-                Feature.DEFENCE_ICON};
+                Feature.DEFENCE_ICON, Feature.ITEM_PICKUP_LOG};
         for (Feature feature : newFeatures) {
             putDefaultCoordinates(feature);
         }
@@ -187,6 +190,7 @@ public class ConfigValues {
             Feature.USE_VANILLA_TEXTURE_DEFENCE, Feature.IGNORE_ITEM_FRAME_CLICKS, Feature.SHOW_BACKPACK_HOLDING_SHIFT,
             Feature.HEALTH_BAR, Feature.DEFENCE_PERCENTAGE, Feature.HIDE_PLAYERS_IN_LOBBY};
         disabledFeatures.addAll(Arrays.asList(toDisable));
+        disabledFeatures.add(Feature.ITEM_PICKUP_LOG);
         setAllCoordinatesToDefault();
         saveConfig();
     }
@@ -194,7 +198,8 @@ public class ConfigValues {
     public void setAllCoordinatesToDefault() {
         setAnchorPointsToDefault();
         Feature[] features = {Feature.SKELETON_BAR, Feature.DEFENCE_ICON, Feature.DEFENCE_TEXT,
-                Feature.DEFENCE_PERCENTAGE, Feature.HEALTH_BAR, Feature.HEALTH_TEXT, Feature.MANA_BAR, Feature.MANA_TEXT, Feature.HEALTH_UPDATES};
+                Feature.DEFENCE_PERCENTAGE, Feature.HEALTH_BAR, Feature.HEALTH_TEXT, Feature.MANA_BAR, Feature.MANA_TEXT, Feature.HEALTH_UPDATES,
+                Feature.ITEM_PICKUP_LOG};
         for (Feature feature : features) {
             putDefaultCoordinates(feature);
         }
@@ -203,7 +208,7 @@ public class ConfigValues {
     private void setAnchorPointsToDefault() {
         Feature[] features = {Feature.SKELETON_BAR, Feature.DEFENCE_ICON, Feature.DEFENCE_TEXT,
                 Feature.DEFENCE_PERCENTAGE, Feature.HEALTH_BAR, Feature.HEALTH_TEXT, Feature.MANA_BAR,
-                Feature.MANA_TEXT, Feature.HEALTH_UPDATES};
+                Feature.MANA_TEXT, Feature.HEALTH_UPDATES, Feature.ITEM_PICKUP_LOG};
         for (Feature feature : features) {
             anchorPoints.put(feature, EnumUtils.AnchorPoint.HEALTH_BAR);
         }
@@ -248,6 +253,10 @@ public class ConfigValues {
             case HEALTH_UPDATES:
                 x = 41;
                 y = -13;
+                break;
+            case ITEM_PICKUP_LOG:
+                x = -50;
+                y = -80;
                 break;
         }
         coordinates.put(feature, new CoordsPair(x, y));
@@ -314,6 +323,8 @@ public class ConfigValues {
             settingsConfig.addProperty("healthTextColor", getColor(Feature.HEALTH_TEXT).ordinal());
             settingsConfig.addProperty("healthUpdatesX", getRelativeCoords(Feature.HEALTH_UPDATES).getX());
             settingsConfig.addProperty("healthUpdatesY", getRelativeCoords(Feature.HEALTH_UPDATES).getY());
+            settingsConfig.addProperty("itemPickupLogX", getRelativeCoords(Feature.ITEM_PICKUP_LOG).getX());
+            settingsConfig.addProperty("itemPickupLogY", getRelativeCoords(Feature.ITEM_PICKUP_LOG).getY());
 
             settingsConfig.addProperty("guiScale", guiScale);
             settingsConfig.addProperty("language", language.getPath());

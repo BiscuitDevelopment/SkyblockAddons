@@ -66,6 +66,7 @@ public class SkyblockAddonsGui extends GuiScreen {
             addButton(4, Feature.DEFENCE_PERCENTAGE, 1, EnumUtils.ButtonType.TOGGLE);
             addButton(4, Feature.SKELETON_BAR, 2, EnumUtils.ButtonType.TOGGLE);
             addButton(4, Feature.HEALTH_UPDATES, 3, EnumUtils.ButtonType.TOGGLE);
+            addButton(5, Feature.ITEM_PICKUP_LOG, 1, EnumUtils.ButtonType.TOGGLE);
 
             addButton(6, Feature.PREVIOUS_PAGE, 2, EnumUtils.ButtonType.SOLID);
         }

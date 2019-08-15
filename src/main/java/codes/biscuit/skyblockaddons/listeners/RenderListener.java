@@ -177,7 +177,7 @@ public class RenderListener {
         GlStateManager.pushMatrix();
         GlStateManager.scale(scale, scale, 1);
         if (!(mc.currentScreen instanceof LocationEditGui) && !(mc.currentScreen instanceof GuiNotification)) {
-            if ((!main.getConfigValues().getDisabledFeatures().contains(Feature.SKELETON_BAR)) && main.getUtils().isWearingSkeletonHelmet()) {
+            if ((!main.getConfigValues().getDisabledFeatures().contains(Feature.SKELETON_BAR)) && main.getInventoryUtils().isWearingSkeletonHelmet()) {
                 drawSkeletonBar(scale, mc, null);
             }
             Feature[] bars = {Feature.MANA_BAR, Feature.HEALTH_BAR};
@@ -199,6 +199,10 @@ public class RenderListener {
                         drawText(feature, scale, mc, null);
                     }
                 }
+            }
+
+            if(!main.getConfigValues().getDisabledFeatures().contains(Feature.ITEM_PICKUP_LOG)) {
+                drawItemPickupLog(mc, scale);
             }
         }
         GlStateManager.popMatrix();
@@ -393,6 +397,9 @@ public class RenderListener {
             text = timestamp.toString();
         } else if (feature == Feature.MAGMA_BOSS_TIMER) {
             text = "00:00";
+        } else if (feature == Feature.ITEM_PICKUP_LOG) {
+            color = ConfigColor.WHITE.getColor(255);
+            text = Message.SETTING_ITEM_PICKUP_LOG.getMessage();
         } else {
             return;
         }
@@ -432,6 +439,41 @@ public class RenderListener {
         } else if (feature == Feature.MAGMA_BOSS_TIMER) {
                 Gui.drawModalRectWithCustomSizedTexture(intX-18, intY-5, 0, 0, 16,16,32,32);
 //            Gui.drawModalRectWithCustomSizedTexture(intX-16, intY-(16-10), 16, 0, 16,16,32,32);
+        }
+    }
+
+    private void drawItemPickupLog(Minecraft mc, float scale) {
+        float x = main.getConfigValues().getActualX(Feature.ITEM_PICKUP_LOG);
+        float y = main.getConfigValues().getActualY(Feature.ITEM_PICKUP_LOG);
+
+        int height = 7;
+        int width = mc.fontRendererObj.getStringWidth(Message.SETTING_ITEM_PICKUP_LOG.getMessage());
+        x-=Math.round(width*scale/2);
+        y-=Math.round(height*scale/2);
+        x/=scale;
+        y/=scale;
+        int intX = Math.round(x);
+        int intY = Math.round(y);
+
+        int i = 0;
+        for (ItemDiff itemDiff : main.getInventoryUtils().getItemPickupLog()) {
+            String text = String.format("%s %sx \u00A7r%s", itemDiff.getAmount() > 0 ? "\u00A7a+":"\u00A7c-",
+                    Math.abs(itemDiff.getAmount()), itemDiff.getDisplayName());
+            drawString(mc, text, intX, intY+(i*mc.fontRendererObj.FONT_HEIGHT), ConfigColor.WHITE.getColor(255));
+            i++;
+        }
+    }
+
+    private void drawString(Minecraft mc, String text, int x, int y, int color) {
+        if (main.getConfigValues().getTextStyle() == EnumUtils.TextStyle.BLACK_SHADOW) {
+            String strippedText = main.getUtils().stripColor(text);
+            mc.fontRendererObj.drawString(strippedText, x + 1, y, 0);
+            mc.fontRendererObj.drawString(strippedText, x - 1, y, 0);
+            mc.fontRendererObj.drawString(strippedText, x, y + 1, 0);
+            mc.fontRendererObj.drawString(strippedText, x, y - 1, 0);
+            mc.fontRendererObj.drawString(text, x, y, color);
+        } else {
+            mc.ingameGUI.drawString(mc.fontRendererObj, text, x, y, color);
         }
     }
 

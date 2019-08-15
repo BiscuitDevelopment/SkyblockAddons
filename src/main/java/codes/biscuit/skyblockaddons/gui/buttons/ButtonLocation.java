@@ -38,7 +38,7 @@ public class ButtonLocation extends ButtonFeature {
         } else if (feature == Feature.MANA_TEXT || feature == Feature.HEALTH_TEXT ||
                 feature == Feature.DEFENCE_TEXT || feature == Feature.DEFENCE_PERCENTAGE ||
                 feature == Feature.HEALTH_UPDATES || feature == Feature.DARK_AUCTION_TIMER ||
-                feature == Feature.MAGMA_BOSS_TIMER) {
+                feature == Feature.MAGMA_BOSS_TIMER || feature == Feature.ITEM_PICKUP_LOG) {
             main.getRenderListener().drawText(feature, scale, mc, this);
         } else if (feature == Feature.DEFENCE_ICON) {
             scale *= 1.5;

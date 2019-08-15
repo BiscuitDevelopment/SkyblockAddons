@@ -4,9 +4,7 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.event.ClickEvent;
-import net.minecraft.item.ItemStack;
 import net.minecraft.scoreboard.Score;
 import net.minecraft.scoreboard.ScoreObjective;
 import net.minecraft.scoreboard.ScorePlayerTeam;
@@ -23,21 +21,21 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.List;
 import java.util.*;
+import java.util.List;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class Utils {
 
+    private final Pattern STRIP_COLOR_PATTERN = Pattern.compile("(?i)" + '\u00A7' + "[0-9A-FK-OR]");
+
     private Map<Attribute, MutableInt> attributes = new EnumMap<>(Attribute.class);
     private List<String> enchantmentMatch = new LinkedList<>();
     private List<String> enchantmentExclusion = new LinkedList<>();
     private BackpackInfo backpackToRender = null;
-    private boolean wearingSkeletonHelmet = false;
     private static boolean onSkyblock = false;
     private EnumUtils.Location location = null;
-    private static boolean inventoryIsFull = false;
     private boolean playingSound = false;
     private boolean copyNBT = false;
 
@@ -51,14 +49,13 @@ public class Utils {
     }
 
     private void addDefaultStats() {
-        for (Attribute attribute: Attribute.values()) {
+        for (Attribute attribute : Attribute.values()) {
             attributes.put(attribute, new MutableInt(attribute.getDefaultValue()));
         }
     }
 
-    // Static cause I can't be bothered to pass the instance ok stop bullying me
     public void sendMessage(String text) {
-        ClientChatReceivedEvent event = new ClientChatReceivedEvent((byte)1, new ChatComponentText(text));
+        ClientChatReceivedEvent event = new ClientChatReceivedEvent((byte) 1, new ChatComponentText(text));
         MinecraftForge.EVENT_BUS.post(event); // Let other mods pick up the new message
         if (!event.isCanceled()) {
             Minecraft.getMinecraft().thePlayer.addChatMessage(event.message); // Just for logs
@@ -66,44 +63,11 @@ public class Utils {
     }
 
     private void sendMessage(ChatComponentText text) {
-        ClientChatReceivedEvent event = new ClientChatReceivedEvent((byte)1, text);
+        ClientChatReceivedEvent event = new ClientChatReceivedEvent((byte) 1, text);
         MinecraftForge.EVENT_BUS.post(event); // Let other mods pick up the new message
         if (!event.isCanceled()) {
             Minecraft.getMinecraft().thePlayer.addChatMessage(event.message); // Just for logs
         }
-    }
-
-    public void checkIfInventoryIsFull(Minecraft mc, EntityPlayerSP p) {
-        if (main.getUtils().isOnSkyblock() && !main.getConfigValues().getDisabledFeatures().contains(Feature.FULL_INVENTORY_WARNING)) {
-            for (ItemStack item : p.inventory.mainInventory) {
-                if (item == null) {
-                    inventoryIsFull = false;
-                    return;
-                }
-            }
-            if (!inventoryIsFull) {
-                inventoryIsFull = true;
-                if (mc.currentScreen == null && System.currentTimeMillis() - main.getPlayerListener().getLastWorldJoin() > 3000) {
-                    main.getUtils().playSound("random.orb", 0.5);
-                    main.getRenderListener().setTitleFeature(Feature.FULL_INVENTORY_WARNING);
-                    new Timer().schedule(new TimerTask() {
-                        @Override
-                        public void run() {
-                            main.getRenderListener().setTitleFeature(null);
-                        }
-                    }, main.getConfigValues().getWarningSeconds() * 1000);
-                }
-            }
-        }
-    }
-
-    public void checkIfWearingSkeletonHelmet(EntityPlayerSP p) {
-        ItemStack item = p.getEquipmentInSlot(4);
-        if (item != null && item.hasDisplayName() && item.getDisplayName().contains("Skeleton's Helmet")) {
-            wearingSkeletonHelmet = true;
-            return;
-        }
-        wearingSkeletonHelmet = false;
     }
 
     public void checkGameAndLocation() { // Most of this is replicated from the scoreboard rendering code so not many comments here xD
@@ -218,7 +182,7 @@ public class Utils {
                     return;
                 }
                 for (int i = 0; i < 4; i++) {
-                    if (i >= newestVersionNumbers.size() ) {
+                    if (i >= newestVersionNumbers.size()) {
                         newestVersionNumbers.add(i, 0);
                     }
                     if (i >= thisVersionNumbers.size()) {
@@ -264,13 +228,13 @@ public class Utils {
     }
 
     public int getDefaultColor(float alphaFloat) {
-        int alpha = (int)alphaFloat;
-        return new Color(150,236,255, alpha).getRGB();
+        int alpha = (int) alphaFloat;
+        return new Color(150, 236, 255, alpha).getRGB();
     }
 
     public void playSound(String sound, double pitch) {
         playingSound = true;
-        Minecraft.getMinecraft().thePlayer.playSound(sound, 1, (float)pitch);
+        Minecraft.getMinecraft().thePlayer.playSound(sound, 1, (float) pitch);
         playingSound = false;
     }
 
@@ -320,10 +284,9 @@ public class Utils {
     }
 
     public int getDefaultBlue(int alpha) {
-        return new Color(189,236,252, alpha).getRGB();
+        return new Color(189, 236, 252, alpha).getRGB();
     }
 
-    private final Pattern STRIP_COLOR_PATTERN = Pattern.compile( "(?i)" + '\u00A7' + "[0-9A-FK-OR]" );
     public String stripColor(final String input) {
         return STRIP_COLOR_PATTERN.matcher(input).replaceAll("");
     }
@@ -342,10 +305,6 @@ public class Utils {
 
     public void setFadingIn(boolean fadingIn) {
         this.fadingIn = fadingIn;
-    }
-
-    public boolean isWearingSkeletonHelmet() {
-        return wearingSkeletonHelmet;
     }
 
     public BackpackInfo getBackpackToRender() {
@@ -387,4 +346,5 @@ public class Utils {
     public void setCopyNBT(boolean copyNBT) {
         this.copyNBT = copyNBT;
     }
+
 }
