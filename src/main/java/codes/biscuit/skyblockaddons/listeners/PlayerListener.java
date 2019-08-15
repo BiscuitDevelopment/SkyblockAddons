@@ -1,9 +1,7 @@
 package codes.biscuit.skyblockaddons.listeners;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.utils.Attribute;
-import codes.biscuit.skyblockaddons.utils.EnumUtils;
-import codes.biscuit.skyblockaddons.utils.Feature;
+import codes.biscuit.skyblockaddons.utils.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.gui.GuiScreen;
@@ -13,6 +11,7 @@ import net.minecraft.entity.monster.EntityMagmaCube;
 import net.minecraft.entity.monster.EntitySlime;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
@@ -29,6 +28,7 @@ import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.StringSelection;
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.io.IOException;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.math.BigDecimal;
@@ -45,8 +45,6 @@ public class PlayerListener {
     private long lastMinionSound = -1;
     private Integer healthUpdate = null;
     private long lastHealthUpdate;
-
-    private Map<String, ItemDiff> itemPickupLog = new HashMap<>();
 
 //    private Feature.Accuracy magmaTimerAccuracy = null;
 //    private long magmaTime = 7200;
@@ -67,6 +65,7 @@ public class PlayerListener {
             lastBoss = -1;
             magmaTick = 1;
             timerTick = 1;
+            main.getInventoryUtils().resetPreviousInventory();
         }
     }
 
@@ -194,6 +193,7 @@ public class PlayerListener {
             timerTick++;
             Minecraft mc = Minecraft.getMinecraft();
             if (mc != null) { // Predict health every tick if needed.
+
                 if(healthUpdate != null && System.currentTimeMillis()-lastHealthUpdate > 3000) {
                     healthUpdate = null;
                 }
@@ -218,37 +218,19 @@ public class PlayerListener {
                     EntityPlayerSP p = mc.thePlayer;
                     if (p != null) {
                         main.getUtils().checkGameAndLocation();
-                        main.getUtils().checkIfInventoryIsFull(mc, p);
-                        main.getUtils().checkIfWearingSkeletonHelmet(p);
+                        main.getInventoryUtils().checkIfInventoryIsFull(mc, p);
+                        main.getInventoryUtils().checkIfWearingSkeletonHelmet(p);
                         if (!sentUpdate) {
                             main.getUtils().checkUpdates();
                             sentUpdate = true;
                         }
 
                         if(mc.currentScreen == null) {
-                            List<ItemDiff> diffs = main.getUtils().getInventoryDifference(p);
-
-                            // Don't add the difference to the displayed log right after a world join so
-                            // it won't happen to detect the whole inventory as just picked up.
-                            if(getLastWorldJoin()+ITEM_PICKUP_LOG_DELAY <= System.currentTimeMillis()) {
-                                for (ItemDiff diff : diffs) {
-                                    if (itemPickupLog.containsKey(diff.getDisplayName())) {
-                                        itemPickupLog.get(diff.getDisplayName()).add(diff.getAmount());
-                                    } else {
-                                        itemPickupLog.put(diff.getDisplayName(), diff);
-                                    }
-                                }
-                            }
+                            main.getInventoryUtils().getInventoryDifference(p.inventory.mainInventory);
                         }
                     }
 
-                    List<String> logItemsToRemove = new LinkedList<>();
-                    itemPickupLog.forEach((displayName, itemDiff) -> {
-                        if(itemDiff.getLifetime() > ItemDiff.LIFESPAN) {
-                            logItemsToRemove.add(displayName);
-                        }
-                    });
-                    logItemsToRemove.forEach(name -> itemPickupLog.remove(name));
+                    main.getInventoryUtils().updateItemPickupLog();
 
                 } else if (timerTick > 20) { // To keep the timer going from 1 to 21 only.
                     timerTick = 1;

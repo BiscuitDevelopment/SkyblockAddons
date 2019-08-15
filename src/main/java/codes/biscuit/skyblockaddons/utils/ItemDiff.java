@@ -5,7 +5,7 @@ public class ItemDiff {
     /**
      * How long items in the log should be displayed before they are removed in ms
      */
-    public static final long LIFESPAN = 800;
+    public static final long LIFESPAN = 5000;
 
     private final String displayName;
     private int amount;
@@ -28,7 +28,11 @@ public class ItemDiff {
      */
     public void add(int amount) {
         this.amount += amount;
-        this.timestamp = System.currentTimeMillis();
+        if (this.amount == 0) {
+            this.timestamp -= LIFESPAN;
+        } else {
+            this.timestamp = System.currentTimeMillis();
+        }
     }
 
     /**

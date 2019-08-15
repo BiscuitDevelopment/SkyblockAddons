@@ -5,10 +5,7 @@ import codes.biscuit.skyblockaddons.gui.LocationEditGui;
 import codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui;
 import codes.biscuit.skyblockaddons.gui.buttons.ButtonLocation;
 import codes.biscuit.skyblockaddons.gui.buttons.ButtonSlider;
-import codes.biscuit.skyblockaddons.utils.Attribute;
-import codes.biscuit.skyblockaddons.utils.ConfigColor;
-import codes.biscuit.skyblockaddons.utils.Feature;
-import codes.biscuit.skyblockaddons.utils.Message;
+import codes.biscuit.skyblockaddons.utils.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
@@ -24,6 +21,7 @@ import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.fml.client.GuiNotification;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
+import org.apache.logging.log4j.LogManager;
 import org.lwjgl.opengl.GL11;
 
 import java.math.BigDecimal;
@@ -178,7 +176,7 @@ public class RenderListener {
         GlStateManager.pushMatrix();
         GlStateManager.scale(scale, scale, 1);
         if (!(mc.currentScreen instanceof LocationEditGui) && !(mc.currentScreen instanceof GuiNotification)) {
-            if ((!main.getConfigValues().getDisabledFeatures().contains(Feature.SKELETON_BAR)) && main.getUtils().isWearingSkeletonHelmet()) {
+            if ((!main.getConfigValues().getDisabledFeatures().contains(Feature.SKELETON_BAR)) && main.getInventoryUtils().isWearingSkeletonHelmet()) {
                 drawSkeletonBar(scale, mc, null);
             }
             Feature[] bars = {Feature.MANA_BAR, Feature.HEALTH_BAR};
@@ -199,6 +197,10 @@ public class RenderListener {
                         drawText(feature, scale, mc, null);
                     }
                 }
+            }
+
+            if(!main.getConfigValues().getDisabledFeatures().contains(Feature.ITEM_PICKUP_LOG)) {
+                drawItemPickupLog(mc, scale);
             }
         }
         GlStateManager.popMatrix();
@@ -370,6 +372,9 @@ public class RenderListener {
                 text = "+123";
                 color = ConfigColor.GREEN.getColor(255);
             }
+        } else if (feature == Feature.ITEM_PICKUP_LOG) {
+            color = ConfigColor.WHITE.getColor(255);
+            text = SkyblockAddons.getInstance().getConfigValues().getMessage(Message.SETTING_ITEM_PICKUP_LOG);
         } else {
             return;
         }
@@ -398,6 +403,28 @@ public class RenderListener {
         mc.fontRendererObj.drawString(text, intX, intY-1, 0);
         mc.fontRendererObj.drawString(text, intX, intY, color);
 //        mc.ingameGUI.drawString(mc.fontRendererObj, text, (int)(x*scaleMultiplier)-60, (int)(y*scaleMultiplier)-10, color);
+    }
+
+    private void drawItemPickupLog(Minecraft mc, float scale) {
+        float x = main.getConfigValues().getActualX(Feature.ITEM_PICKUP_LOG);
+        float y = main.getConfigValues().getActualY(Feature.ITEM_PICKUP_LOG);
+
+        int height = 7;
+        int width = mc.fontRendererObj.getStringWidth(main.getConfigValues().getMessage(Message.SETTING_ITEM_PICKUP_LOG));
+        x-=Math.round(width*scale/2);
+        y-=Math.round(height*scale/2);
+        x/=scale;
+        y/=scale;
+        int intX = Math.round(x);
+        int intY = Math.round(y);
+
+        int i = 0;
+        for (ItemDiff itemDiff : main.getInventoryUtils().getItemPickupLog()) {
+            String text = String.format("%s %sx \u00A7r%s", itemDiff.getAmount() > 0 ? "\u00A7a+":"\u00A7c-",
+                    Math.abs(itemDiff.getAmount()), itemDiff.getDisplayName());
+            mc.fontRendererObj.drawString(text, intX, intY+(i*mc.fontRendererObj.FONT_HEIGHT), ConfigColor.WHITE.getColor(255), true);
+            i++;
+        }
     }
 
     /**

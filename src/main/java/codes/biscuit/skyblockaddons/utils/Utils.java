@@ -17,6 +17,7 @@ import net.minecraft.util.MathHelper;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.common.MinecraftForge;
 import org.apache.commons.lang3.mutable.MutableInt;
+import org.apache.logging.log4j.LogManager;
 
 import java.awt.*;
 import java.io.BufferedReader;
@@ -34,13 +35,10 @@ public class Utils {
     private List<String> enchantmentMatch = new LinkedList<>();
     private List<String> enchantmentExclusion = new LinkedList<>();
     private BackpackInfo backpackToRender = null;
-    private boolean wearingSkeletonHelmet = false;
     private static boolean onSkyblock = false;
     private EnumUtils.Location location = null;
-    private static boolean inventoryIsFull = false;
     private boolean playingSound = false;
     private boolean copyNBT = false;
-    private ItemStack[] previousInventory;
 
     private boolean fadingIn;
 
@@ -52,14 +50,13 @@ public class Utils {
     }
 
     private void addDefaultStats() {
-        for (Attribute attribute: Attribute.values()) {
+        for (Attribute attribute : Attribute.values()) {
             attributes.put(attribute, new MutableInt(attribute.getDefaultValue()));
         }
     }
 
-    // Static cause I can't be bothered to pass the instance ok stop bullying me
     public void sendMessage(String text) {
-        ClientChatReceivedEvent event = new ClientChatReceivedEvent((byte)1, new ChatComponentText(text));
+        ClientChatReceivedEvent event = new ClientChatReceivedEvent((byte) 1, new ChatComponentText(text));
         MinecraftForge.EVENT_BUS.post(event); // Let other mods pick up the new message
         if (!event.isCanceled()) {
             Minecraft.getMinecraft().thePlayer.addChatMessage(event.message); // Just for logs
@@ -67,77 +64,11 @@ public class Utils {
     }
 
     private void sendMessage(ChatComponentText text) {
-        ClientChatReceivedEvent event = new ClientChatReceivedEvent((byte)1, text);
+        ClientChatReceivedEvent event = new ClientChatReceivedEvent((byte) 1, text);
         MinecraftForge.EVENT_BUS.post(event); // Let other mods pick up the new message
         if (!event.isCanceled()) {
             Minecraft.getMinecraft().thePlayer.addChatMessage(event.message); // Just for logs
         }
-    }
-
-    /**
-     * Figure out the difference between the players inventory between the last call of the method and now and
-     * return the items that have changed
-     *
-     * @param player The player
-     * @return Changes as a list of {@link ItemDiff} objects
-     */
-    public List<ItemDiff> getInventoryDifference(EntityPlayerSP player) {
-        Map<String, Integer> diffMap = new HashMap<>();
-        if(previousInventory != null) {
-          for(int i = 0; i < previousInventory.length; i++) {
-              ItemStack previousItem = previousInventory[i];
-              ItemStack newItem = player.inventory.mainInventory[i];
-
-              if(previousItem == null && newItem != null) {
-                  diffMap.put(newItem.getDisplayName(), diffMap.getOrDefault(newItem.getDisplayName(), 0)+newItem.stackSize);
-              } else if(previousItem != null && newItem == null) {
-                  diffMap.put(previousItem.getDisplayName(), diffMap.getOrDefault(previousItem.getDisplayName(), 0)-previousItem.stackSize);
-              } else if(previousItem != null) {
-                  if(previousItem.getItem().equals(newItem.getItem()) && previousItem.stackSize != newItem.stackSize) {
-                      diffMap.put(newItem.getDisplayName(), diffMap.getOrDefault(newItem.getDisplayName(), 0)+(newItem.stackSize - previousItem.stackSize));
-                  }
-              }
-          }
-        }
-
-        List<ItemDiff> inventoryDifference = new LinkedList<>();
-        diffMap.forEach((item, amount) -> inventoryDifference.add(new ItemDiff(item, amount)));
-
-        previousInventory = Arrays.copyOf(player.inventory.mainInventory, player.inventory.mainInventory.length);
-        return inventoryDifference;
-    }
-
-    public void checkIfInventoryIsFull(Minecraft mc, EntityPlayerSP p) {
-        if (main.getUtils().isOnSkyblock() && !main.getConfigValues().getDisabledFeatures().contains(Feature.FULL_INVENTORY_WARNING)) {
-            for (ItemStack item : p.inventory.mainInventory) {
-                if (item == null) {
-                    inventoryIsFull = false;
-                    return;
-                }
-            }
-            if (!inventoryIsFull) {
-                inventoryIsFull = true;
-                if (mc.currentScreen == null && System.currentTimeMillis() - main.getPlayerListener().getLastWorldJoin() > 3000) {
-                    main.getUtils().playSound("random.orb", 0.5);
-                    main.getRenderListener().setTitleFeature(Feature.FULL_INVENTORY_WARNING);
-                    new Timer().schedule(new TimerTask() {
-                        @Override
-                        public void run() {
-                            main.getRenderListener().setTitleFeature(null);
-                        }
-                    }, main.getConfigValues().getWarningSeconds() * 1000);
-                }
-            }
-        }
-    }
-
-    public void checkIfWearingSkeletonHelmet(EntityPlayerSP p) {
-        ItemStack item = p.getEquipmentInSlot(4);
-        if (item != null && item.hasDisplayName() && item.getDisplayName().contains("Skeleton's Helmet")) {
-            wearingSkeletonHelmet = true;
-            return;
-        }
-        wearingSkeletonHelmet = false;
     }
 
     public void checkGameAndLocation() { // Most of this is replicated from the scoreboard rendering code so not many comments here xD
@@ -252,7 +183,7 @@ public class Utils {
                     return;
                 }
                 for (int i = 0; i < 4; i++) {
-                    if (i >= newestVersionNumbers.size() ) {
+                    if (i >= newestVersionNumbers.size()) {
                         newestVersionNumbers.add(i, 0);
                     }
                     if (i >= thisVersionNumbers.size()) {
@@ -275,10 +206,10 @@ public class Utils {
                             ex.printStackTrace();
                         } finally {
                             sendMessage(EnumChatFormatting.GRAY.toString() + EnumChatFormatting.STRIKETHROUGH + "--------------" + EnumChatFormatting.GRAY + "[" + EnumChatFormatting.BLUE + EnumChatFormatting.BOLD + " SkyblockAddons " + EnumChatFormatting.GRAY + "]" + EnumChatFormatting.GRAY + EnumChatFormatting.STRIKETHROUGH + "--------------");
-                            ChatComponentText newVersion = new ChatComponentText(EnumChatFormatting.YELLOW+main.getConfigValues().getMessage(Message.MESSAGE_NEW_VERSION, newestVersion)+"\n");
+                            ChatComponentText newVersion = new ChatComponentText(EnumChatFormatting.YELLOW + main.getConfigValues().getMessage(Message.MESSAGE_NEW_VERSION, newestVersion) + "\n");
                             newVersion.setChatStyle(newVersion.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, link)));
                             sendMessage(newVersion);
-                            ChatComponentText discord = new ChatComponentText(EnumChatFormatting.YELLOW+main.getConfigValues().getMessage(Message.MESSAGE_DISCORD));
+                            ChatComponentText discord = new ChatComponentText(EnumChatFormatting.YELLOW + main.getConfigValues().getMessage(Message.MESSAGE_DISCORD));
                             discord.setChatStyle(discord.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://discord.gg/PqTAEek")));
                             sendMessage(discord);
                             sendMessage(EnumChatFormatting.GRAY.toString() + EnumChatFormatting.STRIKETHROUGH + "---------------------------------------");
@@ -298,13 +229,13 @@ public class Utils {
     }
 
     public int getDefaultColor(float alphaFloat) {
-        int alpha = (int)alphaFloat;
-        return new Color(150,236,255, alpha).getRGB();
+        int alpha = (int) alphaFloat;
+        return new Color(150, 236, 255, alpha).getRGB();
     }
 
     public void playSound(String sound, double pitch) {
         playingSound = true;
-        Minecraft.getMinecraft().thePlayer.playSound(sound, 1, (float)pitch);
+        Minecraft.getMinecraft().thePlayer.playSound(sound, 1, (float) pitch);
         playingSound = false;
     }
 
@@ -330,10 +261,11 @@ public class Utils {
     }
 
     public int getDefaultBlue(int alpha) {
-        return new Color(189,236,252, alpha).getRGB();
+        return new Color(189, 236, 252, alpha).getRGB();
     }
 
-    private final Pattern STRIP_COLOR_PATTERN = Pattern.compile( "(?i)" + '\u00A7' + "[0-9A-FK-OR]" );
+    private final Pattern STRIP_COLOR_PATTERN = Pattern.compile("(?i)" + '\u00A7' + "[0-9A-FK-OR]");
+
     public String stripColor(final String input) {
         return STRIP_COLOR_PATTERN.matcher(input).replaceAll("");
     }
@@ -343,7 +275,7 @@ public class Utils {
     }
 
     public boolean isOnSkyblock() {
-        return onSkyblock;
+        return onSkyblock || true;
     }
 
     public boolean isFadingIn() {
@@ -352,10 +284,6 @@ public class Utils {
 
     public void setFadingIn(boolean fadingIn) {
         this.fadingIn = fadingIn;
-    }
-
-    public boolean isWearingSkeletonHelmet() {
-        return wearingSkeletonHelmet;
     }
 
     public BackpackInfo getBackpackToRender() {
@@ -397,4 +325,5 @@ public class Utils {
     public void setCopyNBT(boolean copyNBT) {
         this.copyNBT = copyNBT;
     }
+
 }

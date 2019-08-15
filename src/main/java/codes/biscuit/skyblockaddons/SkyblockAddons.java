@@ -4,6 +4,7 @@ import codes.biscuit.skyblockaddons.commands.SkyblockAddonsCommand;
 import codes.biscuit.skyblockaddons.listeners.PlayerListener;
 import codes.biscuit.skyblockaddons.listeners.RenderListener;
 import codes.biscuit.skyblockaddons.utils.ConfigValues;
+import codes.biscuit.skyblockaddons.utils.InventoryUtils;
 import codes.biscuit.skyblockaddons.utils.Utils;
 import net.minecraftforge.client.ClientCommandHandler;
 import net.minecraftforge.common.MinecraftForge;
@@ -25,6 +26,7 @@ public class SkyblockAddons {
     private PlayerListener playerListener = new PlayerListener(this);
     private RenderListener renderListener = new RenderListener(this);
     private Utils utils = new Utils(this);
+    private InventoryUtils inventoryUtils = new InventoryUtils(this);
     private boolean usingLabymod = false;
 
     @Mod.EventHandler
@@ -60,6 +62,10 @@ public class SkyblockAddons {
 
     public Utils getUtils() {
         return utils;
+    }
+
+    public InventoryUtils getInventoryUtils() {
+        return inventoryUtils;
     }
 
     public boolean isUsingLabymod() {

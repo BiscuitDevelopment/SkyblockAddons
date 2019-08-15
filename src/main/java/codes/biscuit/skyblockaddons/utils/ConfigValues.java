@@ -104,7 +104,7 @@ public class ConfigValues {
                 coordinates.put(Feature.HEALTH_UPDATES, new CoordsPair(settingsConfig.get("healthUpdatesX").getAsInt(), settingsConfig.get("healthUpdatesY").getAsInt()));
             }
             if (settingsConfig.has("itemPickupLogX")) {
-                coordinates.put(Feature.ITEM_PICKUP_LOG, new CoordsPair(settingsConfig.get("itemPickupLogX").getAsFloat(), settingsConfig.get("itemPickupLogY").getAsFloat()));
+                coordinates.put(Feature.ITEM_PICKUP_LOG, new CoordsPair(settingsConfig.get("itemPickupLogX").getAsInt(), settingsConfig.get("itemPickupLogY").getAsInt()));
             }
             loadColor("warningColor", Feature.MAGMA_WARNING, ConfigColor.RED);
             loadColor("confirmationColor", Feature.DROP_CONFIRMATION, ConfigColor.RED);
@@ -260,8 +260,8 @@ public class ConfigValues {
                 y = -13;
                 break;
             case ITEM_PICKUP_LOG:
-                x = 0.1;
-                y = 0.5;
+                x = -50;
+                y = -80;
                 break;
         }
         coordinates.put(feature, new CoordsPair(x, y));

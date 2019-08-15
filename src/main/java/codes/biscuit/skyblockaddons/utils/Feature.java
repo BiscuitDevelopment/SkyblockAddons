@@ -26,7 +26,7 @@ public enum Feature {
     DEFENCE_TEXT(24),
     DEFENCE_PERCENTAGE(25),
     HEALTH_UPDATES(26), // Health updates all credit to DidiSkywalker#9975
-    ITEM_PICKUP_LOG(-1),
+    ITEM_PICKUP_LOG(27),
 
     DISABLE_DOUBLE_DROP_AUTOMATICALLY(14),
     USE_VANILLA_TEXTURE_DEFENCE(17),
