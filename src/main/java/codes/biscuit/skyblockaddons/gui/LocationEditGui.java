@@ -27,6 +27,7 @@ public class LocationEditGui extends GuiScreen {
     private Feature dragging = null;
     private int xOffset = 0;
     private int yOffset = 0;
+    private boolean cancelScreenReturn = false;
 
     public LocationEditGui(SkyblockAddons main) {
         this.main = main;
@@ -36,20 +37,28 @@ public class LocationEditGui extends GuiScreen {
     public void initGui() {
         // Add all gui elements that can be edited to the gui.
         Feature[] features = {Feature.MANA_BAR, Feature.HEALTH_BAR, Feature.SKELETON_BAR, Feature.MANA_TEXT,
-                Feature.HEALTH_TEXT, Feature.DEFENCE_ICON, Feature.DEFENCE_TEXT, Feature.DEFENCE_PERCENTAGE, Feature.HEALTH_UPDATES};
+                Feature.HEALTH_TEXT, Feature.DEFENCE_ICON, Feature.DEFENCE_TEXT, Feature.DEFENCE_PERCENTAGE,
+                Feature.HEALTH_UPDATES, Feature.DARK_AUCTION_TIMER, Feature.MAGMA_BOSS_TIMER};
         for (Feature feature : features) {
             buttonList.add(new ButtonLocation(main, feature));
         }
 
         ScaledResolution scaledResolution = new ScaledResolution(Minecraft.getMinecraft());
-        String text = main.getConfigValues().getMessage(Message.SETTING_RESET_LOCATIONS);
+        String text = Message.SETTING_RESET_LOCATIONS.getMessage();
         int boxWidth = fontRendererObj.getStringWidth(text)+10;
         int boxHeight = 20;
         if (boxWidth > BUTTON_MAX_WIDTH) boxWidth = BUTTON_MAX_WIDTH;
         int x = scaledResolution.getScaledWidth()/2-boxWidth/2;
         int y = scaledResolution.getScaledHeight()/2-boxHeight/2;
         buttonList.add(new ButtonSolid(x, y, boxWidth, boxHeight, text, main, Feature.RESET_LOCATION));
-        buttonList.add(new ButtonSolid(x, y-25, boxWidth, boxHeight, text, main, Feature.RESET_LOCATION));
+        text = Message.SETTING_ANCHOR_POINT.getMessage();
+        boxWidth = fontRendererObj.getStringWidth(text)+10;
+        boxHeight = 20;
+        x = scaledResolution.getScaledWidth()/2-boxWidth/2;
+        y = scaledResolution.getScaledHeight()/2-boxHeight/2;
+//        if (boxWidth > BUTTON_MAX_WIDTH) boxWidth = BUTTON_MAX_WIDTH;
+        y-=25;
+        buttonList.add(new ButtonSolid(x, y, boxWidth, boxHeight, text, main, Feature.ANCHOR_POINT));
     }
 
     @Override
@@ -84,7 +93,15 @@ public class LocationEditGui extends GuiScreen {
             xOffset = buttonLocation.getLastMouseX()-main.getConfigValues().getActualX(buttonLocation.getFeature());
             yOffset = buttonLocation.getLastMouseY()-main.getConfigValues().getActualY(buttonLocation.getFeature());
         } else {
-            main.getConfigValues().setAllCoordinatesToDefault();
+            ButtonSolid buttonSolid = (ButtonSolid)abstractButton;
+            if (buttonSolid.getFeature() == Feature.RESET_LOCATION) {
+                main.getConfigValues().setAllCoordinatesToDefault();
+            } else if (buttonSolid.getFeature() == Feature.ANCHOR_POINT) {
+                main.getConfigValues().setNextAnchorPoint(ButtonLocation.getLastHoveredFeature());
+                cancelScreenReturn = true;
+                Minecraft.getMinecraft().displayGuiScreen(new LocationEditGui(main));
+                cancelScreenReturn = false;
+            }
         }
     }
 
@@ -151,6 +168,8 @@ public class LocationEditGui extends GuiScreen {
     @Override
     public void onGuiClosed() {
         main.getConfigValues().saveConfig();
-        main.getRenderListener().setGuiToOpen(PlayerListener.GUIType.MAIN);
+        if (!cancelScreenReturn) {
+            main.getRenderListener().setGuiToOpen(PlayerListener.GUIType.MAIN);
+        }
     }
 }

@@ -31,7 +31,7 @@ public class MixinEntityPlayerSP {
                     lastDrop = System.currentTimeMillis();
                 } else {
                     SkyblockAddons.getInstance().getUtils().sendMessage(main.getConfigValues().getColor(Feature.DROP_CONFIRMATION).getChatFormatting() +
-                            main.getConfigValues().getMessage(Message.MESSAGE_DROP_CONFIRMATION));
+                            Message.MESSAGE_DROP_CONFIRMATION.getMessage());
                     lastItem = heldItem;
                     lastDrop = System.currentTimeMillis();
                     cir.setReturnValue(null);

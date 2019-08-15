@@ -10,7 +10,6 @@
     "skeletonHatBonesBar": "Skeleton Helmet Bones Bar",
     "hideFoodAndArmor": "Hide Food & Armor Bar",
     "fullInventoryWarning": "Full Inventory Warning",
-    "magmaBossHealthBar": "Magma Boss Health Bar",
     "disableEmberRodAbility": "Disable Island Ember Rod",
     "warningColor": "Warning Color",
     "confirmationColor": "Confirmation Color",
@@ -24,7 +23,7 @@
     "minionStopWarning": "\"Minion Cannot Reach\" Warning",
     "hideAuctionHousePlayers": "Hide Players Near Auction House",
     "backpackStyle": "Backpack Style: %style%",
-    "styles": {
+    "backpackStyles": {
       "inventory": "Inventory",
       "compact": "Compact"
     },
@@ -48,7 +47,23 @@
     "defenceIcon": "Defence Symbol",
     "defenceText": "Defence Number",
     "defencePercentage": "Defence Percentage",
-    "healthUpdates": "Health Change Number"
+    "healthUpdates": "Health Change Number",
+    "anchorPoint": "Anchor Point: %setting%: %anchor%",
+    "anchorPoints": {
+      "topLeft": "Top Left",
+      "topRight": "Top Right",
+      "bottomLeft": "Bottom Left",
+      "bottomRight": "Bottom Right",
+      "healthBar": "Health Bar"
+    },
+    "hidePlayersInLobby": "Hide Nearby Entities In Lobby",
+    "textStyle": "Text Style: %style%",
+    "textStyles": {
+      "regular": "Regular",
+      "blackShadow": "Black Shadow"
+    },
+    "darkAuctionTimer": "Dark Auction Timer",
+    "magmaBossTimer": "Magma Boss Timer"
   },
   "messages": {
     "dropConfirmation": "Drop this item again to confirm!",

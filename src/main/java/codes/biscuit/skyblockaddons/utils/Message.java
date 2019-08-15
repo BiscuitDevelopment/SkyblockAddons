@@ -1,5 +1,9 @@
 package codes.biscuit.skyblockaddons.utils;
 
+import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.gui.buttons.ButtonLocation;
+import com.google.gson.JsonObject;
+
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -15,7 +19,7 @@ public enum Message {
     SETTING_SKELETON_HAT_BONES_BAR(MessageObject.SETTING, "skeletonHatBonesBar"),
     SETTING_HIDE_FOOD_AND_ARMOR(MessageObject.SETTING, "hideFoodAndArmor"),
     SETTING_FULL_INVENTORY_WARNING(MessageObject.SETTING, "fullInventoryWarning"),
-    SETTING_MAGMA_BOSS_HEALTH_BAR(MessageObject.SETTING, "magmaBossHealthBar"),
+    SETTING_MAGMA_BOSS_TIMER(MessageObject.SETTING, "magmaBossTimer"),
     SETTING_DISABLE_EMBER_ROD_ABILITY(MessageObject.SETTING, "disableEmberRodAbility"),
     SETTING_WARNING_COLOR(MessageObject.SETTING, "warningColor"),
     SETTING_CONFIRMATION_COLOR(MessageObject.SETTING, "confirmationColor"),
@@ -52,9 +56,13 @@ public enum Message {
     SETTING_DEFENCE_TEXT(MessageObject.SETTING, "defenceText"),
     SETTING_DEFENCE_PERCENTAGE(MessageObject.SETTING, "defencePercentage"),
     SETTING_HEALTH_UPDATES(MessageObject.SETTING, "healthUpdates"),
+    SETTING_ANCHOR_POINT(MessageObject.SETTING, "anchorPoint"),
+    SETTING_HIDE_PLAYERS_IN_LOBBY(MessageObject.SETTING, "hidePlayersInLobby"),
+    SETTING_TEXT_STYLE(MessageObject.SETTING, "textStyle"),
+    SETTING_DARK_AUCTION_TIMER(MessageObject.SETTING, "darkAuctionTimer"),
 
-    STYLE_GUI(MessageObject.STYLE, "inventory"),
-    STYLE_COMPACT(MessageObject.STYLE, "compact"),
+    BACKPACK_STYLE_GUI(MessageObject.STYLE, "inventory"),
+    BACKPACK_STYLE_COMPACT(MessageObject.STYLE, "compact"),
 
     MESSAGE_DROP_CONFIRMATION(MessageObject.MESSAGES, "dropConfirmation"),
     MESSAGE_MAGMA_BOSS_WARNING(MessageObject.MESSAGES, "magmaBossWarning"),
@@ -69,6 +77,15 @@ public enum Message {
     MESSAGE_SEPARATE_ENCHANTMENTS(MessageObject.MESSAGES, "separateMultiple"),
     MESSAGE_ENCHANTS_TO_MATCH(MessageObject.MESSAGES, "enchantsToMatch"),
     MESSAGE_ENCHANTS_TO_EXCLUDE(MessageObject.MESSAGES, "enchantsToExclude"),
+
+    ANCHOR_POINT_TOP_LEFT(MessageObject.ANCHOR_POINT, "topLeft"),
+    ANCHOR_POINT_TOP_RIGHT(MessageObject.ANCHOR_POINT, "topRight"),
+    ANCHOR_POINT_BOTTOM_LEFT(MessageObject.ANCHOR_POINT, "bottomLeft"),
+    ANCHOR_POINT_BOTTOM_RIGHT(MessageObject.ANCHOR_POINT, "bottomRight"),
+    ANCHOR_POINT_HEALTH_BAR(MessageObject.ANCHOR_POINT, "healthBar"),
+
+    TEXT_STYLE_REGULAR(MessageObject.TEXT_STYLE, "regular"),
+    TEXT_STYLE_BLACK_SHADOW(MessageObject.TEXT_STYLE, "blackShadow"),
 
     INVENTORY_TYPE_ENCHANTS(MessageObject.INVENTORY_TYPE, "enchants"),
     INVENTORY_TYPE_REFORGES(MessageObject.INVENTORY_TYPE, "reforges");
@@ -89,12 +106,60 @@ public enum Message {
         return memberName;
     }
 
+    public String getMessage(String... variables) {
+        String text;
+        try {
+            SkyblockAddons main = SkyblockAddons.getInstance();
+            List<String> path = getMessageObject().getPath();
+            JsonObject jsonObject = main.getConfigValues().getLanguageConfig();
+            for (String part : path) {
+                if (!part.equals("")) {
+                    jsonObject = jsonObject.getAsJsonObject(part);
+                }
+            }
+            text = jsonObject.get(getMemberName()).getAsString();
+            if (text != null) {
+                if (this == Message.SETTING_WARNING_TIME) {
+                    text = text.replace("%time%", String.valueOf(main.getConfigValues().getWarningSeconds()));
+                } else if (this == Message.SETTING_GUI_SCALE) {
+                    text = text.replace("%scale%", variables[0]);
+                } else if (this == Message.MESSAGE_NEW_VERSION) {
+                    text = text.replace("%newestVersion%", variables[0]);
+                } else if (this == Message.SETTING_BACKPACK_STYLE) {
+                    text = text.replace("%style%", main.getConfigValues().getBackpackStyle().getMessage());
+                } else if (this == Message.SETTING_TEXT_STYLE) {
+                    text = text.replace("%style%", main.getConfigValues().getTextStyle().getMessage());
+                } else if (this == Message.MESSAGE_DEVELOPMENT_VERSION) {
+                    text = text.replace("%version%", variables[0]).replace("%newestVersion%", variables[1]);
+                } else if (this == Message.LANGUAGE) {
+                    text = "Language: " + text;
+                } else if (this == Message.MESSAGE_MINION_CANNOT_REACH || this == Message.MESSAGE_TYPE_ENCHANTMENTS
+                        || this == Message.MESSAGE_ENCHANTS_TO_MATCH || this == Message.MESSAGE_ENCHANTS_TO_EXCLUDE) {
+                    text = text.replace("%type%", variables[0]);
+                } else if (this == Message.SETTING_ANCHOR_POINT) {
+                    Feature lastHovered = ButtonLocation.getLastHoveredFeature();
+                    text = text.replace("%setting%", lastHovered.getMessage());
+                    text = text.replace("%anchor%", main.getConfigValues().getAnchorPoint(lastHovered).getMessage());
+                }
+            }
+            if (text != null && main.getConfigValues().getLanguage() == Language.HEBREW) {
+                text = main.getUtils().reverseText(text);
+            }
+        } catch (NullPointerException ex) { // In case I messed up some translation or something.
+            ex.printStackTrace();
+            text = "";
+        }
+        return text;
+    }
+
     enum MessageObject {
         ROOT(""),
         SETTING("settings"),
         MESSAGES("messages"),
-        STYLE("settings.styles"),
-        INVENTORY_TYPE("messages.inventoryTypes");
+        STYLE("settings.backpackStyles"),
+        INVENTORY_TYPE("messages.inventoryTypes"),
+        TEXT_STYLE("settings.textStyles"),
+        ANCHOR_POINT("settings.anchorPoints");
 
         private List<String> path;
 

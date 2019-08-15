@@ -10,7 +10,6 @@
     "skeletonHatBonesBar": "شريط خوذة الهيكل العظمي",
     "hideFoodAndArmor": "إخفاء شريط الطعام و شريط الدرع",
     "fullInventoryWarning": "تحذير جرد كامل",
-    "magmaBossHealthBar": "شريط صحة زعيم الصهارة",
     "disableEmberRodAbility": "تعطيل عود الجمرة في الجزيرة",
     "warningColor": "لون التحذير",
     "confirmationColor": "لون تأكيد",
@@ -24,7 +23,7 @@
     "minionStopWarning": "تحذير إيقاف التابع",
     "hideAuctionHousePlayers": "إخفاء اللاعبين بالقرب من دار المزاد",
     "backpackStyle": "%style% :نمط حقيبة الظهر",
-    "styles": {
+    "backpackStyles": {
       "inventory": "جرد",
       "compact": "متراص"
     },
@@ -48,7 +47,23 @@
     "defenceIcon": "Defence Symbol",
     "defenceText": "Defence Number",
     "defencePercentage": "Defence Percentage",
-    "healthUpdates": "Health Change Number"
+    "healthUpdates": "Health Change Number",
+    "anchorPoint": "Anchor Point: %setting%: %anchor%",
+    "anchorPoints": {
+      "topLeft": "Top Left",
+      "topRight": "Top Right",
+      "bottomLeft": "Bottom Left",
+      "bottomRight": "Bottom Right",
+      "healthBar": "Health Bar"
+    },
+    "hidePlayersInLobby": "Hide Nearby Entities In Lobby",
+    "textStyle": "Text Style: %style%",
+    "textStyles": {
+      "regular": "Regular",
+      "blackShadow": "Black Shadow"
+    },
+    "darkAuctionTimer": "Dark Auction Timer",
+    "magmaBossTimer": "Magma Boss Timer"
   },
   "messages": {
     "dropConfirmation": "!إرمي هذا العنصر مرة أخرى للتأكيد",

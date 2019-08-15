@@ -168,7 +168,7 @@ public class Utils {
         return Pattern.compile("[^0-9 /]").matcher(text).replaceAll("");
     }
 
-    String removeDuplicateSpaces(String text) {
+    private String removeDuplicateSpaces(String text) {
         return text.replaceAll("\\s+", " ");
     }
 
@@ -241,10 +241,10 @@ public class Utils {
                             ex.printStackTrace();
                         } finally {
                             sendMessage(EnumChatFormatting.GRAY.toString() + EnumChatFormatting.STRIKETHROUGH + "--------------" + EnumChatFormatting.GRAY + "[" + EnumChatFormatting.BLUE + EnumChatFormatting.BOLD + " SkyblockAddons " + EnumChatFormatting.GRAY + "]" + EnumChatFormatting.GRAY + EnumChatFormatting.STRIKETHROUGH + "--------------");
-                            ChatComponentText newVersion = new ChatComponentText(EnumChatFormatting.YELLOW+main.getConfigValues().getMessage(Message.MESSAGE_NEW_VERSION, newestVersion)+"\n");
+                            ChatComponentText newVersion = new ChatComponentText(EnumChatFormatting.YELLOW+Message.MESSAGE_NEW_VERSION.getMessage(newestVersion)+"\n");
                             newVersion.setChatStyle(newVersion.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, link)));
                             sendMessage(newVersion);
-                            ChatComponentText discord = new ChatComponentText(EnumChatFormatting.YELLOW+main.getConfigValues().getMessage(Message.MESSAGE_DISCORD));
+                            ChatComponentText discord = new ChatComponentText(EnumChatFormatting.YELLOW+Message.MESSAGE_DISCORD.getMessage());
                             discord.setChatStyle(discord.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://discord.gg/PqTAEek")));
                             sendMessage(discord);
                             sendMessage(EnumChatFormatting.GRAY.toString() + EnumChatFormatting.STRIKETHROUGH + "---------------------------------------");
@@ -252,7 +252,7 @@ public class Utils {
                         break;
                     } else if (thisVersionNumbers.get(i) > newestVersionNumbers.get(i)) {
                         sendMessage(EnumChatFormatting.GRAY.toString() + EnumChatFormatting.STRIKETHROUGH + "--------------" + EnumChatFormatting.GRAY + "[" + EnumChatFormatting.BLUE + EnumChatFormatting.BOLD + " SkyblockAddons " + EnumChatFormatting.GRAY + "]" + EnumChatFormatting.GRAY + EnumChatFormatting.STRIKETHROUGH + "--------------");
-                        sendMessage(EnumChatFormatting.YELLOW + main.getConfigValues().getMessage(Message.MESSAGE_DEVELOPMENT_VERSION, SkyblockAddons.VERSION, newestVersion));
+                        sendMessage(EnumChatFormatting.YELLOW + Message.MESSAGE_DEVELOPMENT_VERSION.getMessage(SkyblockAddons.VERSION, newestVersion));
                         sendMessage(EnumChatFormatting.GRAY.toString() + EnumChatFormatting.STRIKETHROUGH + "---------------------------------------");
                         break;
                     }
@@ -293,6 +293,30 @@ public class Utils {
             }
         }
         return false;
+    }
+
+    // This reverses the text while leaving the english parts intact and in order.
+    // (Maybe its more complicated than it has to be, but it gets the job done.
+    String reverseText(String originalText) {
+        StringBuilder newString = new StringBuilder();
+        String[] parts = originalText.split(" ");
+        for (int i = parts.length; i > 0; i--) {
+            String textPart = parts[i-1];
+            boolean foundCharacter = false;
+            for (char letter : textPart.toCharArray()) {
+                if (letter > 191) { // Found special character
+                    foundCharacter = true;
+                    newString.append(new StringBuilder(textPart).reverse().toString());
+                    break;
+                }
+            }
+            newString.append(" ");
+            if (!foundCharacter) {
+                newString.insert(0, textPart);
+            }
+            newString.insert(0, " ");
+        }
+        return main.getUtils().removeDuplicateSpaces(newString.toString().trim());
     }
 
     public int getDefaultBlue(int alpha) {

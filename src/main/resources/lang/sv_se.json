@@ -10,7 +10,6 @@
     "skeletonHatBonesBar": "Skelett Hjälm Ben Bar",
     "hideFoodAndArmor": "Göm Mat & Rustning Bar",
     "fullInventoryWarning": "Full Lager Varning",
-    "magmaBossHealthBar": "Magma Boss Hälsobar",
     "disableEmberRodAbility": "Inaktivera Ö Ember Rod",
     "warningColor": "Varning Färg",
     "confirmationColor": "Bekräftelse Färg",
@@ -24,7 +23,7 @@
     "minionStopWarning": "\"Tjänare Kan Inte Nå\" Varning",
     "hideAuctionHousePlayers": "Göm Spelare Nära Auktionshus",
     "backpackStyle": "Ryggsäck Stil: %style%",
-    "styles": {
+    "backpackStyles": {
       "inventory": "Lager",
       "compact": "Kompakt"
     },
@@ -48,7 +47,23 @@
     "defenceIcon": "Skydd Symbol",
     "defenceText": "Skydd Nummer",
     "defencePercentage": "Skydd Percentsats",
-    "healthUpdates": "Health Change Number"
+    "healthUpdates": "Health Change Number",
+    "anchorPoint": "Anchor Point: %setting%: %anchor%",
+    "anchorPoints": {
+      "topLeft": "Top Left",
+      "topRight": "Top Right",
+      "bottomLeft": "Bottom Left",
+      "bottomRight": "Bottom Right",
+      "healthBar": "Health Bar"
+    },
+    "hidePlayersInLobby": "Hide Nearby Entities In Lobby",
+    "textStyle": "Text Style: %style%",
+    "textStyles": {
+      "regular": "Regular",
+      "blackShadow": "Black Shadow"
+    },
+    "darkAuctionTimer": "Dark Auction Timer",
+    "magmaBossTimer": "Magma Boss Timer"
   },
   "messages": {
     "dropConfirmation": "Släpp Det Här Igen För Att Bekräfta!",

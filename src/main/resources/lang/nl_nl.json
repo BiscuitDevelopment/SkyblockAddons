@@ -10,7 +10,6 @@
     "skeletonHatBonesBar": "Skelet Hoed Botten Bar",
     "hideFoodAndArmor": "Verstop Voedsel & Harnas Bar",
     "fullInventoryWarning": "Volle Inventaris Waarschuwing",
-    "magmaBossHealthBar": "Magma Baas Levens Bar",
     "disableEmberRodAbility": "Uitschakelen Eiland Sintel Staf",
     "warningColor": "Waarschuwingskleur",
     "confirmationColor": "Kleur Bevestigen",
@@ -24,7 +23,7 @@
     "minionStopWarning": "Minion is gestopt Waarschuwing",
     "hideAuctionHousePlayers": "Verberg spelers bij het Veilingshuis",
     "backpackStyle": "Rugzak stijl: %style%",
-    "styles": {
+    "backpackStyles": {
       "inventory": "Inventaris",
       "compact": "Compact"
     },
@@ -48,7 +47,23 @@
     "defenceIcon": "Verdedigings Symbool",
     "defenceText": "Verdediging Hoeveelheid",
     "defencePercentage": "Verdediging Percentage",
-    "healthUpdates": "Gezondheid Hoeveelheid Aanpassen"
+    "healthUpdates": "Gezondheid Hoeveelheid Aanpassen",
+    "anchorPoint": "Anchor Point: %setting%: %anchor%",
+    "anchorPoints": {
+      "topLeft": "Top Left",
+      "topRight": "Top Right",
+      "bottomLeft": "Bottom Left",
+      "bottomRight": "Bottom Right",
+      "healthBar": "Health Bar"
+    },
+    "hidePlayersInLobby": "Hide Nearby Entities In Lobby",
+    "textStyle": "Text Style: %style%",
+    "textStyles": {
+      "regular": "Regular",
+      "blackShadow": "Black Shadow"
+    },
+    "darkAuctionTimer": "Dark Auction Timer",
+    "magmaBossTimer": "Magma Boss Timer"
   },
   "messages": {
     "dropConfirmation": "Laat dit object opnieuw vallen om te Bevestigen!",

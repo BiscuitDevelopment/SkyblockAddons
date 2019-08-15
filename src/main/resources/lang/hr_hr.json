@@ -10,7 +10,6 @@
     "skeletonHatBonesBar": "Skeleton Kaciga Bar Kosti",
     "hideFoodAndArmor": "Sakrij Hranu i Armor Bar",
     "fullInventoryWarning": "Upozorenje Za Full Inventar",
-    "magmaBossHealthBar": "Magma Boss Bar Zdravlja",
     "disableEmberRodAbility": "Onemoguæi Ember Rod Moæ na Tvom Otoku",
     "warningColor": "Boja Upozorenja",
     "confirmationColor": "Boja Konfirmacije",
@@ -24,7 +23,7 @@
     "minionStopWarning": "\"Minion Ne Može Dohvatiti\" Upozorenje",
     "hideAuctionHousePlayers": "Sakrij Igraèe Blizu Dražbavaonice",
     "backpackStyle": "Stil Ruksaka: %style%",
-    "styles": {
+    "backpackStyles": {
       "inventory": "Inventor",
       "compact": "Kompakt"
     },
@@ -48,7 +47,23 @@
     "defenceIcon": "Defence Symbol",
     "defenceText": "Defence Number",
     "defencePercentage": "Defence Percentage",
-    "healthUpdates": "Health Change Number"
+    "healthUpdates": "Health Change Number",
+    "anchorPoint": "Anchor Point: %setting%: %anchor%",
+    "anchorPoints": {
+      "topLeft": "Top Left",
+      "topRight": "Top Right",
+      "bottomLeft": "Bottom Left",
+      "bottomRight": "Bottom Right",
+      "healthBar": "Health Bar"
+    },
+    "hidePlayersInLobby": "Hide Nearby Entities In Lobby",
+    "textStyle": "Text Style: %style%",
+    "textStyles": {
+      "regular": "Regular",
+      "blackShadow": "Black Shadow"
+    },
+    "darkAuctionTimer": "Dark Auction Timer",
+    "magmaBossTimer": "Magma Boss Timer"
   },
   "messages": {
     "dropConfirmation": "Opet baci ovu stvar za konfirmaciju!",

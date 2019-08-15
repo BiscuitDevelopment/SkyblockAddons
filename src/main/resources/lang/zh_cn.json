@@ -10,7 +10,6 @@
     "skeletonHatBonesBar": "骷髅头盔可抵挡攻击次数",
     "hideFoodAndArmor": "隐藏饱食度 & 装甲值",
     "fullInventoryWarning": "背包空间不足警报",
-    "magmaBossHealthBar": "熔岩史莱姆王血量条",
     "disableEmberRodAbility": "在你的岛屿上关闭灰烬之杖技能",
     "warningColor": "警报颜色",
     "confirmationColor": "确认丢弃颜色",
@@ -24,7 +23,7 @@
     "minionStopWarning": "\"机器人无法触及生物\"警告",
     "hideAuctionHousePlayers": "隐藏竞标房内玩家",
     "backpackStyle": "背包样式: %style%",
-    "styles": {
+    "backpackStyles": {
       "inventory": "格状",
       "compact": "简易"
     },
@@ -48,7 +47,23 @@
     "defenceIcon": "Defence Symbol",
     "defenceText": "Defence Number",
     "defencePercentage": "Defence Percentage",
-    "healthUpdates": "Health Change Number"
+    "healthUpdates": "Health Change Number",
+    "anchorPoint": "Anchor Point: %setting%: %anchor%",
+    "anchorPoints": {
+      "topLeft": "Top Left",
+      "topRight": "Top Right",
+      "bottomLeft": "Bottom Left",
+      "bottomRight": "Bottom Right",
+      "healthBar": "Health Bar"
+    },
+    "hidePlayersInLobby": "Hide Nearby Entities In Lobby",
+    "textStyle": "Text Style: %style%",
+    "textStyles": {
+      "regular": "Regular",
+      "blackShadow": "Black Shadow"
+    },
+    "darkAuctionTimer": "Dark Auction Timer",
+    "magmaBossTimer": "Magma Boss Timer"
   },
   "messages": {
     "dropConfirmation": "再次丢弃此物品以确认!",

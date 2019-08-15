@@ -10,7 +10,6 @@
     "skeletonHatBonesBar": "Barre du Skeleton's Helmet",
     "hideFoodAndArmor": "Masquer la barre de nourriture et d'armure",
     "fullInventoryWarning": "Alerte inventaire plein",
-    "magmaBossHealthBar": "Barre de vie du Magma Boss",
     "disableEmberRodAbility": "Désativer l'Ember Rod sur votre île",
     "warningColor": "Couleur pour les alertes",
     "confirmationColor": "Couleur pour les confirmations",
@@ -24,7 +23,7 @@
     "minionStopWarning": "Alerte minion à l'arrêt",
     "hideAuctionHousePlayers": "Masquer les joueurs près de l'HDV",
     "backpackStyle": "Affichage du sac à dos: %style%",
-    "styles": {
+    "backpackStyles": {
       "inventory": "Inventaire",
       "compact": "Compact"
     },
@@ -41,14 +40,30 @@
     "ignoreItemFrameClicks": "Ignorer les clics sur les cadres",
     "useVanillaTextureDefence": "Texture vanilla pour l'icone de défense",
     "showBackpackHoldingShift": "Affichage du sac à dos avec la touche MAJ",
-    "manaBar": "Mana Bar",
-    "manaText": "Mana Number",
-    "healthBar": "Health Bar",
-    "healthText": "Health Number",
-    "defenceIcon": "Defence Symbol",
-    "defenceText": "Defence Number",
-    "defencePercentage": "Defence Percentage",
-    "healthUpdates": "Health Change Number"
+    "manaBar": "Barre de mana",
+    "manaText": "Nombre de mana",
+    "healthBar": "Barre de vie",
+    "healthText": "Nombre de vie",
+    "defenceIcon": "Icône de défense",
+    "defenceText": "Nombre de défense",
+    "defencePercentage": "Pourcentage de défense",
+    "healthUpdates": "Health Change Number",
+    "anchorPoint": "Anchor Point: %setting%: %anchor%",
+    "anchorPoints": {
+      "topLeft": "Top Left",
+      "topRight": "Top Right",
+      "bottomLeft": "Bottom Left",
+      "bottomRight": "Bottom Right",
+      "healthBar": "Health Bar"
+    },
+    "hidePlayersInLobby": "Hide Nearby Entities In Lobby",
+    "textStyle": "Text Style: %style%",
+    "textStyles": {
+      "regular": "Regular",
+      "blackShadow": "Black Shadow"
+    },
+    "darkAuctionTimer": "Dark Auction Timer",
+    "magmaBossTimer": "Magma Boss Timer"
   },
   "messages": {
     "dropConfirmation": "Jetez cet objet une nouvelle fois pour confirmer!",

@@ -10,7 +10,6 @@
     "skeletonHatBonesBar": "Skeleton Hat csont sáv",
     "hideFoodAndArmor": "Étel és páncél sáv elrejtése",
     "fullInventoryWarning": "Teli felszerelés figyelmeztetés",
-    "magmaBossHealthBar": "Magma Boss életerő sáv",
     "disableEmberRodAbility": "Ember Rod tiltása a szigeten",
     "warningColor": "Figyelmeztetés színe",
     "confirmationColor": "Megerősítés színe",
@@ -24,7 +23,7 @@
     "minionStopWarning": "\"A minion nem ér el valamit\" figyelmeztetés",
     "hideActionHousePlayers": "Játékosok elrejtése az aukciósház körül",
     "backpackStyle": "Hátizsák stílus: %style%",
-    "styles": {
+    "backpackStyles": {
       "inventory": "Felszerelés",
       "compact": "Tömörített"
     },
@@ -48,7 +47,23 @@
     "defenceIcon": "Defence Symbol",
     "defenceText": "Defence Number",
     "defencePercentage": "Defence Percentage",
-    "healthUpdates": "Health Change Number"
+    "healthUpdates": "Health Change Number",
+    "anchorPoint": "Anchor Point: %setting%: %anchor%",
+    "anchorPoints": {
+      "topLeft": "Top Left",
+      "topRight": "Top Right",
+      "bottomLeft": "Bottom Left",
+      "bottomRight": "Bottom Right",
+      "healthBar": "Health Bar"
+    },
+    "hidePlayersInLobby": "Hide Nearby Entities In Lobby",
+    "textStyle": "Text Style: %style%",
+    "textStyles": {
+      "regular": "Regular",
+      "blackShadow": "Black Shadow"
+    },
+    "darkAuctionTimer": "Dark Auction Timer",
+    "magmaBossTimer": "Magma Boss Timer"
   },
   "messages": {
     "dropConfirmation": "Dobd el ezt a tárgyat újra, hogy megerősítsd!",

@@ -43,12 +43,12 @@ public abstract class MixinGuiChest extends GuiContainer {
         super.drawScreen(mouseX, mouseY, partialTicks);
         if (textFieldMatch != null) {
             SkyblockAddons main = SkyblockAddons.getInstance();
-            String  inventoryMessage = main.getConfigValues().getMessage(inventoryType.getMessage());
+            String inventoryMessage = inventoryType.getMessage();
             int defaultBlue = main.getUtils().getDefaultBlue(255);
-            mc.ingameGUI.drawString(mc.fontRendererObj, main.getConfigValues().getMessage(Message.MESSAGE_TYPE_ENCHANTMENTS, inventoryMessage), guiLeft - 160, guiTop + 40, defaultBlue);
-            mc.ingameGUI.drawString(mc.fontRendererObj, main.getConfigValues().getMessage(Message.MESSAGE_SEPARATE_ENCHANTMENTS), guiLeft - 160, guiTop + 50, defaultBlue);
-            mc.ingameGUI.drawString(mc.fontRendererObj, main.getConfigValues().getMessage(Message.MESSAGE_ENCHANTS_TO_MATCH, inventoryMessage), guiLeft - 160, guiTop + 70, defaultBlue);
-            mc.ingameGUI.drawString(mc.fontRendererObj, main.getConfigValues().getMessage(Message.MESSAGE_ENCHANTS_TO_EXCLUDE, inventoryMessage), guiLeft - 160, guiTop + 110, defaultBlue);
+            mc.ingameGUI.drawString(mc.fontRendererObj, Message.MESSAGE_TYPE_ENCHANTMENTS.getMessage(inventoryMessage), guiLeft - 160, guiTop + 40, defaultBlue);
+            mc.ingameGUI.drawString(mc.fontRendererObj, Message.MESSAGE_SEPARATE_ENCHANTMENTS.getMessage(), guiLeft - 160, guiTop + 50, defaultBlue);
+            mc.ingameGUI.drawString(mc.fontRendererObj, Message.MESSAGE_ENCHANTS_TO_MATCH.getMessage(inventoryMessage), guiLeft - 160, guiTop + 70, defaultBlue);
+            mc.ingameGUI.drawString(mc.fontRendererObj,Message.MESSAGE_ENCHANTS_TO_EXCLUDE.getMessage(inventoryMessage), guiLeft - 160, guiTop + 110, defaultBlue);
             textFieldMatch.drawTextBox();
             if (textFieldMatch.getText().equals("")) {
                 mc.ingameGUI.drawString(mc.fontRendererObj, "ex. \"prot, feather\"", guiLeft - 156, guiTop + 86, ConfigColor.DARK_GRAY.getColor(255));

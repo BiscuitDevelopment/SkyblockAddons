@@ -29,20 +29,22 @@ public class SettingsGui extends GuiScreen {
     public void initGui() {
         // Add all the buttons in the settings
         addButton(0.25, Message.SETTING_WARNING_COLOR, Feature.MAGMA_WARNING, 1, EnumUtils.ButtonType.COLOR);
-        addButton(0.41, Message.SETTING_CONFIRMATION_COLOR, Feature.DROP_CONFIRMATION, 1, EnumUtils.ButtonType.COLOR);
-        addButton(0.33, Message.SETTING_MANA_TEXT_COLOR, Feature.MANA_TEXT, 1, EnumUtils.ButtonType.COLOR);
-        addButton(0.49, Message.SETTING_MANA_BAR_COLOR, Feature.MANA_BAR, 1, EnumUtils.ButtonType.COLOR);
+        addButton(0.33, Message.SETTING_CONFIRMATION_COLOR, Feature.DROP_CONFIRMATION, 1, EnumUtils.ButtonType.COLOR);
+        addButton(0.41, Message.SETTING_MANA_BAR_COLOR, Feature.MANA_BAR, 1, EnumUtils.ButtonType.COLOR);
+        addButton(0.49, Message.SETTING_MANA_TEXT_COLOR, Feature.MANA_TEXT, 1, EnumUtils.ButtonType.COLOR);
+        addButton(0.57, Message.SETTING_HEALTH_BAR_COLOR, Feature.HEALTH_BAR, 1, EnumUtils.ButtonType.COLOR);
+        addButton(0.65, Message.SETTING_HEALTH_TEXT_COLOR, Feature.HEALTH_TEXT, 1, EnumUtils.ButtonType.COLOR);
+        addButton(0.73, Message.SETTING_DEFENCE_TEXT_COLOR, Feature.DEFENCE_TEXT, 1, EnumUtils.ButtonType.COLOR);
+        addButton(0.81, Message.SETTING_DEFENCE_PERCENTAGE_COLOR, Feature.DEFENCE_PERCENTAGE, 1, EnumUtils.ButtonType.COLOR);
+
+        addButton(0.25, Message.SETTING_DISABLE_DOUBLE_DROP, Feature.DISABLE_DOUBLE_DROP_AUTOMATICALLY, 2, EnumUtils.ButtonType.TOGGLE);
+        addButton(0.33, Message.SETTING_USE_VANILLA_TEXTURE_DEFENCE, Feature.USE_VANILLA_TEXTURE_DEFENCE, 2, EnumUtils.ButtonType.TOGGLE);
+        addButton(0.41, Message.SETTING_SHOW_BACKPACK_HOLDING_SHIFT, Feature.SHOW_BACKPACK_HOLDING_SHIFT, 2, EnumUtils.ButtonType.TOGGLE);
+
         addButton(0.25, Message.SETTING_WARNING_TIME, Feature.WARNING_TIME, 3, EnumUtils.ButtonType.SOLID);
         addButton(0.33, Message.SETTING_BACKPACK_STYLE, Feature.BACKPACK_STYLE, 3, EnumUtils.ButtonType.SOLID);
-
-        addButton(0.25, Message.SETTING_HEALTH_BAR_COLOR, Feature.HEALTH_BAR, 2, EnumUtils.ButtonType.COLOR);
-        addButton(0.33, Message.SETTING_HEALTH_TEXT_COLOR, Feature.HEALTH_TEXT, 2, EnumUtils.ButtonType.COLOR);
-        addButton(0.41, Message.SETTING_DEFENCE_TEXT_COLOR, Feature.DEFENCE_TEXT, 2, EnumUtils.ButtonType.COLOR);
-        addButton(0.49, Message.SETTING_DEFENCE_PERCENTAGE_COLOR, Feature.DEFENCE_PERCENTAGE, 2, EnumUtils.ButtonType.COLOR);
-        addButton(0.49, Message.SETTING_DISABLE_DOUBLE_DROP, Feature.DISABLE_DOUBLE_DROP_AUTOMATICALLY, 3, EnumUtils.ButtonType.TOGGLE);
-        addButton(0.57, Message.SETTING_USE_VANILLA_TEXTURE_DEFENCE, Feature.USE_VANILLA_TEXTURE_DEFENCE, 3, EnumUtils.ButtonType.TOGGLE);
-        addButton(0.65, Message.SETTING_SHOW_BACKPACK_HOLDING_SHIFT, Feature.SHOW_BACKPACK_HOLDING_SHIFT, 3, EnumUtils.ButtonType.TOGGLE);
         addSlider();
+        addButton(0.49, Message.SETTING_TEXT_STYLE, Feature.TEXT_STYLE, 3, EnumUtils.ButtonType.SOLID);
         int twoThirds = width/3*2;
         buttonList.add(new ButtonModify(twoThirds, height*0.25, 20, 20, "+", main, Feature.ADD));
     }
@@ -51,7 +53,7 @@ public class SettingsGui extends GuiScreen {
      * Just adds the slider using the same rescale process as the regular buttons in {@link #addButton}
      */
     private void addSlider() {
-        String text = main.getConfigValues().getMessage(Message.SETTING_GUI_SCALE, String.valueOf(getRoundedValue(
+        String text = Message.SETTING_GUI_SCALE.getMessage(String.valueOf(getRoundedValue(
                 main.getUtils().denormalizeValue(main.getConfigValues().getGuiScale(), ButtonSlider.GUI_SCALE_MINIMUM, ButtonSlider.GUI_SCALE_MAXIMUM, ButtonSlider.GUI_SCALE_STEP))));
         int oneThird = width/3;
         int twoThirds = oneThird*2;
@@ -71,7 +73,7 @@ public class SettingsGui extends GuiScreen {
         y *= height; // The float from 0 to 1 is multiplied by the total height.
         String text = null;
         if (message != null) {
-            text = main.getConfigValues().getMessage(message);
+            text = message.getMessage();
         }
         int halfWidth = width/2;
         int oneThird = width/3;
@@ -114,7 +116,7 @@ public class SettingsGui extends GuiScreen {
         float scale = 2.5F; // Draw the settings label in big boy font size
         GlStateManager.scale(scale, scale, 1);
         int blue = new Color(189,236,252, 255).getRGB();
-        drawCenteredString(fontRendererObj, main.getConfigValues().getMessage(Message.SETTING_SETTINGS),
+        drawCenteredString(fontRendererObj, Message.SETTING_SETTINGS.getMessage(),
                 (int)(width/2/scale), (int)(height*0.12/scale), blue);
         GlStateManager.popMatrix();
 
@@ -146,8 +148,12 @@ public class SettingsGui extends GuiScreen {
                 } else {
                     main.getConfigValues().getDisabledFeatures().add(feature);
                 }
-            } else if (feature == Feature.BACKPACK_STYLE) {
-                main.getConfigValues().setBackpackStyle(main.getConfigValues().getBackpackStyle().getNextType());
+            } else if (feature == Feature.BACKPACK_STYLE || feature == Feature.TEXT_STYLE) {
+                if (feature == Feature.BACKPACK_STYLE) {
+                    main.getConfigValues().setBackpackStyle(main.getConfigValues().getBackpackStyle().getNextType());
+                } else {
+                    main.getConfigValues().setTextStyle(main.getConfigValues().getTextStyle().getNextType());
+                }
                 cancelScreenReturn = true;
                 Minecraft.getMinecraft().displayGuiScreen(new SettingsGui(main));
                 cancelScreenReturn = false;

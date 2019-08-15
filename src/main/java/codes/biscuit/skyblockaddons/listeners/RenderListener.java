@@ -5,11 +5,9 @@ import codes.biscuit.skyblockaddons.gui.LocationEditGui;
 import codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui;
 import codes.biscuit.skyblockaddons.gui.buttons.ButtonLocation;
 import codes.biscuit.skyblockaddons.gui.buttons.ButtonSlider;
-import codes.biscuit.skyblockaddons.utils.Attribute;
-import codes.biscuit.skyblockaddons.utils.ConfigColor;
-import codes.biscuit.skyblockaddons.utils.Feature;
-import codes.biscuit.skyblockaddons.utils.Message;
+import codes.biscuit.skyblockaddons.utils.*;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
@@ -27,6 +25,7 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 import org.lwjgl.opengl.GL11;
 
 import java.math.BigDecimal;
+import java.util.Calendar;
 import java.util.regex.Pattern;
 
 import static net.minecraft.client.gui.Gui.icons;
@@ -38,6 +37,7 @@ public class RenderListener {
 
     private final ResourceLocation BARS = new ResourceLocation("skyblockaddons", "bars.png");
     private final ResourceLocation DEFENCE_VANILLA = new ResourceLocation("skyblockaddons", "defence.png");
+    private final ResourceLocation TEXT_ICONS = new ResourceLocation("skyblockaddons", "icons.png");
 
     private boolean predictHealth = false;
     private boolean predictMana = false;
@@ -102,8 +102,7 @@ public class RenderListener {
                     break;
             }
             if (message != null) {
-                String text;
-                text = main.getConfigValues().getMessage(message);
+                String text = message.getMessage();
                 mc.ingameGUI.getFontRenderer().drawString(text, (float) (-mc.ingameGUI.getFontRenderer().getStringWidth(text) / 2), -20.0F,
                         main.getConfigValues().getColor(titleFeature).getColor(255), true);
             }
@@ -128,9 +127,9 @@ public class RenderListener {
             if (message != null) {
                 String text;
                 if (message == Message.MESSAGE_MINION_CANNOT_REACH) {
-                    text = main.getConfigValues().getMessage(message, cannotReachMobName);
+                    text = message.getMessage(cannotReachMobName);
                 } else {
-                    text = main.getConfigValues().getMessage(message);
+                    text = message.getMessage();
                 }
                 mc.ingameGUI.getFontRenderer().drawString(text, (float) (-mc.ingameGUI.getFontRenderer().getStringWidth(text) / 2), -23.0F,
                         main.getConfigValues().getColor(subtitleFeature).getColor(255), true);
@@ -138,7 +137,7 @@ public class RenderListener {
             GlStateManager.popMatrix();
             GlStateManager.popMatrix();
         }
-        if (!main.getConfigValues().getDisabledFeatures().contains(Feature.MAGMA_BOSS_BAR)) {
+        if (!main.getConfigValues().getDisabledFeatures().contains(Feature.MAGMA_BOSS_TIMER)) {
             for (Entity entity : mc.theWorld.loadedEntityList) {
                 if (entity instanceof EntityArmorStand) {
                     String name = entity.getDisplayName().getFormattedText();
@@ -192,7 +191,8 @@ public class RenderListener {
                 drawIcon(scale, mc, null);
             }
 
-            Feature[] texts = {Feature.DEFENCE_TEXT, Feature.DEFENCE_PERCENTAGE, Feature.MANA_TEXT, Feature.HEALTH_TEXT, Feature.HEALTH_UPDATES};
+            Feature[] texts = {Feature.DEFENCE_TEXT, Feature.DEFENCE_PERCENTAGE, Feature.MANA_TEXT, Feature.HEALTH_TEXT, Feature.HEALTH_UPDATES
+            , Feature.DARK_AUCTION_TIMER, Feature.MAGMA_BOSS_TIMER};
             for (Feature feature : texts) {
                 if (!main.getConfigValues().getDisabledFeatures().contains(feature)) {
                     if (feature != Feature.HEALTH_UPDATES || main.getPlayerListener().getHealthUpdate() != null) {
@@ -370,6 +370,29 @@ public class RenderListener {
                 text = "+123";
                 color = ConfigColor.GREEN.getColor(255);
             }
+        } else if (feature == Feature.DARK_AUCTION_TIMER) {
+            Calendar nextDarkAuction = Calendar.getInstance();
+            nextDarkAuction.setTimeInMillis(System.currentTimeMillis());
+            if (nextDarkAuction.get(Calendar.MINUTE) >= 55) {
+                nextDarkAuction.add(Calendar.HOUR_OF_DAY, 1);
+            }
+            nextDarkAuction.set(Calendar.MINUTE, 55);
+            nextDarkAuction.set(Calendar.SECOND, 0);
+            int difference = (int)(nextDarkAuction.getTimeInMillis()-System.currentTimeMillis());
+            int minutes = difference/60000;
+            int seconds = (difference%60000)/1000;
+            StringBuilder timestamp = new StringBuilder();
+            if (minutes < 10) {
+                timestamp.append("0");
+            }
+            timestamp.append(minutes).append(":");
+            if (seconds < 10) {
+                timestamp.append("0");
+            }
+            timestamp.append(seconds);
+            text = timestamp.toString();
+        } else if (feature == Feature.MAGMA_BOSS_TIMER) {
+            text = "00:00";
         } else {
             return;
         }
@@ -385,19 +408,31 @@ public class RenderListener {
         int intX = Math.round(x);
         int intY = Math.round(y);
         if (buttonLocation != null) {
-            int boxXOne = intX-4;
+            int boxXOne = intX-4-18;
             int boxXTwo = intX+width+4;
-            int boxYOne = intY-4;
+            int boxYOne = intY-4-2;
             int boxYTwo = intY+height+4;
             buttonLocation.checkHoveredAndDrawBox(boxXOne, boxXTwo, boxYOne, boxYTwo, scale);
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         }
-        mc.fontRendererObj.drawString(text, intX+1, intY, 0);
-        mc.fontRendererObj.drawString(text, intX-1, intY, 0);
-        mc.fontRendererObj.drawString(text, intX, intY+1, 0);
-        mc.fontRendererObj.drawString(text, intX, intY-1, 0);
-        mc.fontRendererObj.drawString(text, intX, intY, color);
-//        mc.ingameGUI.drawString(mc.fontRendererObj, text, (int)(x*scaleMultiplier)-60, (int)(y*scaleMultiplier)-10, color);
+        if (main.getConfigValues().getTextStyle() == EnumUtils.TextStyle.BLACK_SHADOW) {
+            mc.fontRendererObj.drawString(text, intX + 1, intY, 0);
+            mc.fontRendererObj.drawString(text, intX - 1, intY, 0);
+            mc.fontRendererObj.drawString(text, intX, intY + 1, 0);
+            mc.fontRendererObj.drawString(text, intX, intY - 1, 0);
+            mc.fontRendererObj.drawString(text, intX, intY, color);
+        } else {
+            mc.ingameGUI.drawString(mc.fontRendererObj, text, intX, intY, color);
+        }
+        mc.getTextureManager().bindTexture(TEXT_ICONS);
+        GlStateManager.color(1,1,1,1);
+        if (feature == Feature.DARK_AUCTION_TIMER) {
+//                Gui.drawModalRectWithCustomSizedTexture(intX, intY, 0, 0, 16,16,32,32);
+            Gui.drawModalRectWithCustomSizedTexture(intX-18, intY-5, 16, 0, 16,16,32,32);
+        } else if (feature == Feature.MAGMA_BOSS_TIMER) {
+                Gui.drawModalRectWithCustomSizedTexture(intX-18, intY-5, 0, 0, 16,16,32,32);
+//            Gui.drawModalRectWithCustomSizedTexture(intX-16, intY-(16-10), 16, 0, 16,16,32,32);
+        }
     }
 
     /**

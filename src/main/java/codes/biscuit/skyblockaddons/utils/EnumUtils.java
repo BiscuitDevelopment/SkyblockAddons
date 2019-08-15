@@ -1,17 +1,15 @@
 package codes.biscuit.skyblockaddons.utils;
 
-import codes.biscuit.skyblockaddons.SkyblockAddons;
-
 import static codes.biscuit.skyblockaddons.utils.Message.*;
 
 public class EnumUtils {
 
     public enum AnchorPoint {
-        TOP_LEFT(SETTING_NEXT_PAGE),
-        TOP_RIGHT(SETTING_NEXT_PAGE),
-        BOTTOM_LEFT(SETTING_NEXT_PAGE),
-        BOTTOM_RIGHT(SETTING_NEXT_PAGE),
-        HEALTH_BAR(SETTING_NEXT_PAGE);
+        TOP_LEFT(ANCHOR_POINT_TOP_LEFT),
+        TOP_RIGHT(ANCHOR_POINT_TOP_RIGHT),
+        BOTTOM_LEFT(ANCHOR_POINT_BOTTOM_LEFT),
+        BOTTOM_RIGHT(ANCHOR_POINT_BOTTOM_RIGHT),
+        HEALTH_BAR(ANCHOR_POINT_HEALTH_BAR);
 
         private Message message;
 
@@ -19,9 +17,8 @@ public class EnumUtils {
             this.message = message;
         }
 
-        //TODO actually add translation entries for this and stuff
-        public String getDisplayText() {
-            return SkyblockAddons.getInstance().getConfigValues().getMessage(message);
+        public String getMessage() {
+            return message.getMessage();
         }
 
         public int getX(int maxX) {
@@ -81,8 +78,8 @@ public class EnumUtils {
             this.message = message;
         }
 
-        public Message getMessage() {
-            return message;
+        public String getMessage() {
+            return message.getMessage();
         }
     }
 
@@ -103,8 +100,8 @@ public class EnumUtils {
     }
 
     public enum BackpackStyle {
-        GUI(STYLE_GUI),
-        BOX(STYLE_COMPACT);
+        GUI(BACKPACK_STYLE_GUI),
+        BOX(BACKPACK_STYLE_COMPACT);
 
         private Message message;
 
@@ -112,11 +109,34 @@ public class EnumUtils {
             this.message = message;
         }
 
-        public String getDisplayText() {
-            return SkyblockAddons.getInstance().getConfigValues().getMessage(message);
+        public String getMessage() {
+            return message.getMessage();
         }
 
         public BackpackStyle getNextType() {
+            int nextType = ordinal()+1;
+            if (nextType > values().length-1) {
+                nextType = 0;
+            }
+            return values()[nextType];
+        }
+    }
+
+    public enum TextStyle {
+        REGULAR(TEXT_STYLE_REGULAR),
+        BLACK_SHADOW(TEXT_STYLE_BLACK_SHADOW);
+
+        private Message message;
+
+        TextStyle(Message message) {
+            this.message = message;
+        }
+
+        public String getMessage() {
+            return message.getMessage();
+        }
+
+        public TextStyle getNextType() {
             int nextType = ordinal()+1;
             if (nextType > values().length-1) {
                 nextType = 0;
@@ -139,6 +159,20 @@ public class EnumUtils {
 
         public String getScoreboardName() {
             return scoreboardName;
+        }
+    }
+
+    // Different indicators of the magma boss are more accurate than others, display how accurate the time is.
+    public enum MagmaTimerAccuracy {
+        NO_DATA("N/A"),
+        EXACTLY(""),
+        ABOUT("~"),
+        LESS_THAN("<");
+
+        private String symbol;
+
+        MagmaTimerAccuracy(String symbol) {
+            this.symbol = symbol;
         }
     }
 }

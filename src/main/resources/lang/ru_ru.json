@@ -10,7 +10,6 @@
     "skeletonHatBonesBar": "Шкала костей Шлема Скелета",
     "hideFoodAndArmor": "Скрыть полосы Еды и Брони",
     "fullInventoryWarning": "Предупреждения о полном инвентаре",
-    "magmaBossHealthBar": "Полоса здоровья Магма Босса",
     "disableEmberRodAbility": "Отключить Ember Rod на острове",
     "warningColor": "Цвет предупреждений",
     "confirmationColor": "Цвет подтверждений",
@@ -24,7 +23,7 @@
     "minionStopWarning": "Предупреждение остановки миньона",
     "hideAuctionHousePlayers": "Прятать игроков у Дома Аукциона",
     "backpackStyle": "Стиль рюкзака: %style%",
-    "styles": {
+    "backpackStyles": {
       "inventory": "Инвентарь",
       "compact": "Компакт"
     },
@@ -48,7 +47,23 @@
     "defenceIcon": "Defence Symbol",
     "defenceText": "Defence Number",
     "defencePercentage": "Defence Percentage",
-    "healthUpdates": "Health Change Number"
+    "healthUpdates": "Health Change Number",
+    "anchorPoint": "Anchor Point: %setting%: %anchor%",
+    "anchorPoints": {
+      "topLeft": "Top Left",
+      "topRight": "Top Right",
+      "bottomLeft": "Bottom Left",
+      "bottomRight": "Bottom Right",
+      "healthBar": "Health Bar"
+    },
+    "hidePlayersInLobby": "Hide Nearby Entities In Lobby",
+    "textStyle": "Text Style: %style%",
+    "textStyles": {
+      "regular": "Regular",
+      "blackShadow": "Black Shadow"
+    },
+    "darkAuctionTimer": "Dark Auction Timer",
+    "magmaBossTimer": "Magma Boss Timer"
   },
   "messages": {
     "dropConfirmation": "Выбросите предмет ещё раз для подтверждения!",

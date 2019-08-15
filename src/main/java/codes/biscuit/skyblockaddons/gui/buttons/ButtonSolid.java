@@ -4,8 +4,10 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui;
 import codes.biscuit.skyblockaddons.listeners.PlayerListener;
 import codes.biscuit.skyblockaddons.utils.Feature;
+import codes.biscuit.skyblockaddons.utils.Message;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.SoundHandler;
+import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
 
 import java.awt.*;
@@ -33,6 +35,15 @@ public class ButtonSolid extends ButtonText {
 
     @Override
     public void drawButton(Minecraft mc, int mouseX, int mouseY) {
+        if (feature == Feature.ANCHOR_POINT) {
+            if (ButtonLocation.getLastHoveredFeature() == null) {
+                return;
+            }
+            displayString = Message.SETTING_ANCHOR_POINT.getMessage();
+            width = mc.fontRendererObj.getStringWidth(displayString)+10;
+            ScaledResolution sr = new ScaledResolution(mc);
+            xPosition = sr.getScaledWidth()/2-width/2;
+        }
         int alpha;
         float alphaMultiplier = 1F;
         if (main.getUtils().isFadingIn()) {
@@ -67,6 +78,7 @@ public class ButtonSolid extends ButtonText {
         if (stringWidth > widthLimit) {
             scale = 1/(stringWidth/widthLimit);
         }
+        if (feature == Feature.ANCHOR_POINT) scale = 1;
         drawButtonBoxAndText(mc, boxColor, scale, fontColor);
         if (!originalString.equals(displayString) && mc.currentScreen instanceof SkyblockAddonsGui) {
             main.getUtils().setFadingIn(false);
