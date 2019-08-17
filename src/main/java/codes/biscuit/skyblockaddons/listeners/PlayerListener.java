@@ -256,7 +256,7 @@ public class PlayerListener {
                         }
 
                         if(mc.currentScreen == null) {
-                            main.getInventoryUtils().getInventoryDifference((ItemStack[]) p.inventory.mainInventory.toArray());
+                            main.getInventoryUtils().getInventoryDifference(p.inventory.mainInventory.toArray(new ItemStack[0]));
                         }
                     }
 
