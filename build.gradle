@@ -97,14 +97,11 @@ jar {
     }
 
     manifest.attributes(
-            'FMLAT': 'skyblockaddons_at.cfg',
+//            'FMLAT': 'skyblockaddons_at.cfg',
             'MixinConfigs': 'mixins.skyblockaddons.json',
-            'TweakOrder': '0', //codes.biscuit.skyblockaddons.tweaker.FMLLoadingPlugin
-            'TweakClass': 'codes.biscuit.skyblockaddons.tweaker.FMLLoadingPlugin'
+            'TweakOrder': '0',
+            'TweakClass': 'codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsTweaker'
     )
-//    manifest {
-//        attributes 'FMLAT': 'lobbyglow_at.cfg'
-//    }
 }
 
 configurations {
