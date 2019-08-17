@@ -70,7 +70,7 @@ public class InventoryUtils {
                 ItemStack newItem = newInventory.get(i);
 
                 if(previousItem != null) {
-                    int amount = previousInventoryMap.getOrDefault(previousItem.getDisplayName(), 0) + previousItem.getMaxStackSize();
+                    int amount = previousInventoryMap.getOrDefault(previousItem.getDisplayName(), 0) + previousItem.getCount();
                     previousInventoryMap.put(previousItem.getDisplayName(), amount);
                 }
 
@@ -84,7 +84,7 @@ public class InventoryUtils {
                             continue;
                         }
                     }
-                    int amount = newInventoryMap.getOrDefault(newItem.getDisplayName(), 0) + newItem.getMaxStackSize();
+                    int amount = newInventoryMap.getOrDefault(newItem.getDisplayName(), 0) + newItem.getCount();
                     newInventoryMap.put(newItem.getDisplayName(), amount);
                 }
             }

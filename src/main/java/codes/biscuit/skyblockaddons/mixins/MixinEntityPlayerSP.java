@@ -25,7 +25,7 @@ public class MixinEntityPlayerSP {
         if (!main.getConfigValues().getDisabledFeatures().contains(Feature.DROP_CONFIRMATION) && (main.getUtils().isOnSkyblock() ||
                 main.getConfigValues().getDisabledFeatures().contains(Feature.DISABLE_DOUBLE_DROP_AUTOMATICALLY))) {
             ItemStack heldItemStack = Minecraft.getMinecraft().player.getHeldItemMainhand();
-            if (heldItemStack != null) {
+            if (heldItemStack != ItemStack.EMPTY) {
                 Item heldItem = heldItemStack.getItem();
                 if (lastItem != null && lastItem == heldItem && System.currentTimeMillis() - lastDrop < 3000) {
                     lastDrop = System.currentTimeMillis();

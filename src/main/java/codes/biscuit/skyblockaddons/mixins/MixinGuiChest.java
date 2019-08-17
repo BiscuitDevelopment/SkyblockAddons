@@ -44,7 +44,9 @@ public abstract class MixinGuiChest extends GuiContainer {
 
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
+        this.drawDefaultBackground();
         super.drawScreen(mouseX, mouseY, partialTicks);
+        this.renderHoveredToolTip(mouseX, mouseY);
         if (textFieldMatch != null) {
             SkyblockAddons main = SkyblockAddons.getInstance();
             String inventoryMessage = inventoryType.getMessage();
@@ -63,6 +65,7 @@ public abstract class MixinGuiChest extends GuiContainer {
                 mc.ingameGUI.drawString(mc.fontRenderer, "ex. \"proj, blast\"", guiLeft - 156, guiTop + 126, ConfigColor.DARK_GRAY.getColor(255));
             }
             GlStateManager.color(1F, 1F, 1F);
+
         }
     }
 
