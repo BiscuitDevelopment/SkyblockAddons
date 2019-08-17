@@ -5,7 +5,6 @@ import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.Feature;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityOtherPlayerMP;
-import net.minecraft.client.particle.Particle;
 import net.minecraft.client.renderer.culling.ICamera;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.Entity;
@@ -41,7 +40,7 @@ public class MixinRenderManager {
                 }
             }
             if (!main.getConfigValues().getDisabledFeatures().contains(Feature.HIDE_PLAYERS_IN_LOBBY) &&
-                    (entityIn instanceof EntityOtherPlayerMP || entityIn instanceof Particle || entityIn instanceof EntityItemFrame) &&
+                    (entityIn instanceof EntityOtherPlayerMP /*TODO Particles are no longer entities|| entityIn instanceof Particle*/ || entityIn instanceof EntityItemFrame) &&
                     entityIn.getDistance(Minecraft.getMinecraft().player) > 7) {
                 cir.setReturnValue(false);
             }
