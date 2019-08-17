@@ -27,8 +27,8 @@ public class MixinRenderManager {
         double auctionZ = -78.5;
         SkyblockAddons main = SkyblockAddons.getInstance();
         if (entityIn instanceof EntityItem &&
-                    entityIn.ridingEntity instanceof EntityZombie && entityIn.ridingEntity.isInvisible()) { // Conditions for Skeleton Hat flying bones
-            entityIn.ridingEntity.preventEntitySpawning = false; // To allow you to place blocks
+                entityIn.getRidingEntity() instanceof EntityZombie && entityIn.getRidingEntity().isInvisible()) { // Conditions for Skeleton Hat flying bones
+            entityIn.getRidingEntity().preventEntitySpawning = false; // To allow you to place blocks
             if (!main.getConfigValues().getDisabledFeatures().contains(Feature.HIDE_BONES)) {
                 cir.setReturnValue(false);
             }
@@ -42,7 +42,7 @@ public class MixinRenderManager {
             }
             if (!main.getConfigValues().getDisabledFeatures().contains(Feature.HIDE_PLAYERS_IN_LOBBY) &&
                     (entityIn instanceof EntityOtherPlayerMP || entityIn instanceof EntityFX || entityIn instanceof EntityItemFrame) &&
-                    entityIn.getDistanceToEntity(Minecraft.getMinecraft().thePlayer) > 7) {
+                    entityIn.getDistance(Minecraft.getMinecraft().player) > 7) {
                 cir.setReturnValue(false);
             }
         }

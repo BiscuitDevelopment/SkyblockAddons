@@ -3,6 +3,7 @@ package codes.biscuit.skyblockaddons.utils;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 
 import java.util.*;
@@ -43,7 +44,7 @@ public class InventoryUtils {
         List<ItemStack> copy = new ArrayList<>(inventory.length);
         for (ItemStack item : inventory) {
             if (item != null) {
-                copy.add(ItemStack.copyItemStack(item));
+                copy.add(item.copy());
             } else {
                 copy.add(null);
             }
@@ -69,7 +70,7 @@ public class InventoryUtils {
                 ItemStack newItem = newInventory.get(i);
 
                 if(previousItem != null) {
-                    int amount = previousInventoryMap.getOrDefault(previousItem.getDisplayName(), 0) + previousItem.stackSize;
+                    int amount = previousInventoryMap.getOrDefault(previousItem.getDisplayName(), 0) + previousItem.getMaxStackSize();
                     previousInventoryMap.put(previousItem.getDisplayName(), amount);
                 }
 
@@ -83,7 +84,7 @@ public class InventoryUtils {
                             continue;
                         }
                     }
-                    int amount = newInventoryMap.getOrDefault(newItem.getDisplayName(), 0) + newItem.stackSize;
+                    int amount = newInventoryMap.getOrDefault(newItem.getDisplayName(), 0) + newItem.getMaxStackSize();
                     newInventoryMap.put(newItem.getDisplayName(), amount);
                 }
             }
@@ -171,7 +172,7 @@ public class InventoryUtils {
      * @param p Player to check
      */
     public void checkIfWearingSkeletonHelmet(EntityPlayerSP p) {
-        ItemStack item = p.getEquipmentInSlot(4);
+        ItemStack item = p.getItemStackFromSlot(EntityEquipmentSlot.HEAD);
         if (item != null && item.hasDisplayName() && item.getDisplayName().contains(SKELETON_HELMET_DISPLAY_NAME)) {
             wearingSkeletonHelmet = true;
             return;

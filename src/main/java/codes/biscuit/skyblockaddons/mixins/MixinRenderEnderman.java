@@ -12,10 +12,13 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(RenderEnderman.class)
-public class MixinRenderEnderman {
+public abstract class MixinRenderEnderman {
 
 
-    @Shadow private ModelEnderman endermanModel;
+    private ModelEnderman endermanModel = (ModelEnderman) getMainModel();
+
+    @Shadow
+    public abstract ModelEnderman getMainModel();
     private static final ResourceLocation pinkEndermanTexture = new ResourceLocation("skyblockaddons", "pinkenderman.png");
 
     //TODO add a toggle for this

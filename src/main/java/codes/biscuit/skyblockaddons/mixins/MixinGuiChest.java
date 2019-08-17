@@ -4,16 +4,19 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.utils.ConfigColor;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.Message;
+import com.mojang.realmsclient.gui.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.client.gui.inventory.GuiChest;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.inventory.ClickType;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumChatFormatting;
+import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 
@@ -32,6 +35,7 @@ public abstract class MixinGuiChest extends GuiContainer {
     private GuiTextField textFieldMatch = null;
     private GuiTextField textFieldExclusions = null;
 
+    @Final
     @Shadow private IInventory lowerChestInventory;
 
     public MixinGuiChest(Container inventorySlotsIn) {
@@ -45,18 +49,18 @@ public abstract class MixinGuiChest extends GuiContainer {
             SkyblockAddons main = SkyblockAddons.getInstance();
             String inventoryMessage = inventoryType.getMessage();
             int defaultBlue = main.getUtils().getDefaultBlue(255);
-            mc.ingameGUI.drawString(mc.fontRendererObj, Message.MESSAGE_TYPE_ENCHANTMENTS.getMessage(inventoryMessage), guiLeft - 160, guiTop + 40, defaultBlue);
-            mc.ingameGUI.drawString(mc.fontRendererObj, Message.MESSAGE_SEPARATE_ENCHANTMENTS.getMessage(), guiLeft - 160, guiTop + 50, defaultBlue);
-            mc.ingameGUI.drawString(mc.fontRendererObj, Message.MESSAGE_ENCHANTS_TO_MATCH.getMessage(inventoryMessage), guiLeft - 160, guiTop + 70, defaultBlue);
-            mc.ingameGUI.drawString(mc.fontRendererObj,Message.MESSAGE_ENCHANTS_TO_EXCLUDE.getMessage(inventoryMessage), guiLeft - 160, guiTop + 110, defaultBlue);
+            mc.ingameGUI.drawString(mc.fontRenderer, Message.MESSAGE_TYPE_ENCHANTMENTS.getMessage(inventoryMessage), guiLeft - 160, guiTop + 40, defaultBlue);
+            mc.ingameGUI.drawString(mc.fontRenderer, Message.MESSAGE_SEPARATE_ENCHANTMENTS.getMessage(), guiLeft - 160, guiTop + 50, defaultBlue);
+            mc.ingameGUI.drawString(mc.fontRenderer, Message.MESSAGE_ENCHANTS_TO_MATCH.getMessage(inventoryMessage), guiLeft - 160, guiTop + 70, defaultBlue);
+            mc.ingameGUI.drawString(mc.fontRenderer, Message.MESSAGE_ENCHANTS_TO_EXCLUDE.getMessage(inventoryMessage), guiLeft - 160, guiTop + 110, defaultBlue);
             textFieldMatch.drawTextBox();
             if (textFieldMatch.getText().equals("")) {
-                mc.ingameGUI.drawString(mc.fontRendererObj, "ex. \"prot, feather\"", guiLeft - 156, guiTop + 86, ConfigColor.DARK_GRAY.getColor(255));
+                mc.ingameGUI.drawString(mc.fontRenderer, "ex. \"prot, feather\"", guiLeft - 156, guiTop + 86, ConfigColor.DARK_GRAY.getColor(255));
             }
             GlStateManager.color(1.0F, 0, 0);
             textFieldExclusions.drawTextBox();
             if (textFieldExclusions.getText().equals("")) {
-                mc.ingameGUI.drawString(mc.fontRendererObj, "ex. \"proj, blast\"", guiLeft - 156, guiTop + 126, ConfigColor.DARK_GRAY.getColor(255));
+                mc.ingameGUI.drawString(mc.fontRenderer, "ex. \"proj, blast\"", guiLeft - 156, guiTop + 126, ConfigColor.DARK_GRAY.getColor(255));
             }
             GlStateManager.color(1F, 1F, 1F);
         }
@@ -71,7 +75,7 @@ public abstract class MixinGuiChest extends GuiContainer {
         if (inventoryType != null) {
             int xPos = guiLeft - 160;
             int yPos = guiTop + 80;
-            textFieldMatch = new GuiTextField(2, this.fontRendererObj, xPos, yPos, 120, 20);
+            textFieldMatch = new GuiTextField(2, this.fontRenderer, xPos, yPos, 120, 20);
             textFieldMatch.setMaxStringLength(100);
             List<String> lockedEnchantments = SkyblockAddons.getInstance().getUtils().getEnchantmentMatch();
             StringBuilder enchantmentBuilder = new StringBuilder();
@@ -88,7 +92,7 @@ public abstract class MixinGuiChest extends GuiContainer {
                 textFieldMatch.setText(text);
             }
             yPos += 40;
-            textFieldExclusions = new GuiTextField(2, this.fontRendererObj, xPos, yPos, 120, 20);
+            textFieldExclusions = new GuiTextField(2, this.fontRenderer, xPos, yPos, 120, 20);
             textFieldExclusions.setMaxStringLength(100);
             lockedEnchantments = SkyblockAddons.getInstance().getUtils().getEnchantmentExclusion();
             enchantmentBuilder = new StringBuilder();
@@ -127,7 +131,7 @@ public abstract class MixinGuiChest extends GuiContainer {
     }
 
     @Override
-    protected void handleMouseClick(Slot slotIn, int slotId, int clickedButton, int clickType) {
+    protected void handleMouseClick(Slot slotIn, int slotId, int mouseButton, ClickType type) {
         SkyblockAddons main = SkyblockAddons.getInstance();
         if (main.getUtils().getEnchantmentMatch().size() > 0) {
             if (slotIn != null && slotIn.getHasStack()) {
@@ -136,9 +140,9 @@ public abstract class MixinGuiChest extends GuiContainer {
                     ItemStack[] enchantBottles = {slots.getSlot(29).getStack(), slots.getSlot(31).getStack(), slots.getSlot(33).getStack()};
                     for (ItemStack bottle : enchantBottles) {
                         if (bottle != null && bottle.hasDisplayName()) {
-                            if (bottle.getDisplayName().startsWith(EnumChatFormatting.GREEN + "Enchant Item")) {
+                            if (bottle.getDisplayName().startsWith(ChatFormatting.GREEN + "Enchant Item")) {
                                 Minecraft mc = Minecraft.getMinecraft();
-                                List<String> toolip = bottle.getTooltip(mc.thePlayer, false);
+                                List<String> toolip = bottle.getTooltip(mc.player, ITooltipFlag.TooltipFlags.NORMAL);
                                 if (toolip.size() > 2) {
                                     String enchantLine = toolip.get(2).split(Pattern.quote("* "))[1];
                                     if (main.getUtils().enchantReforgeMatches(enchantLine)) {
@@ -146,7 +150,7 @@ public abstract class MixinGuiChest extends GuiContainer {
                                         return;
                                     }
                                 }
-                            } else if (bottle.getDisplayName().startsWith(EnumChatFormatting.RED + "Enchant Item")) {
+                            } else if (bottle.getDisplayName().startsWith(ChatFormatting.RED + "Enchant Item")) {
                                 // Stop player from removing item before the enchants have even loaded.
                                 return;
                             }
@@ -170,7 +174,7 @@ public abstract class MixinGuiChest extends GuiContainer {
                 }
             }
         }
-        super.handleMouseClick(slotIn, slotId, clickedButton, clickType);
+        super.handleMouseClick(slotIn, slotId, mouseButton, type);
     }
 
     @Override

@@ -2,8 +2,8 @@ package codes.biscuit.skyblockaddons.gui;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.gui.buttons.ButtonFeature;
-import codes.biscuit.skyblockaddons.gui.buttons.ButtonToggle;
 import codes.biscuit.skyblockaddons.gui.buttons.ButtonSolid;
+import codes.biscuit.skyblockaddons.gui.buttons.ButtonToggle;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.Feature;
 import codes.biscuit.skyblockaddons.utils.Message;
@@ -164,7 +164,7 @@ public class SkyblockAddonsGui extends GuiScreen {
         double y = height*yMultiplier;
         GlStateManager.pushMatrix();
         GlStateManager.scale(scale, scale, 1);
-        drawCenteredString(fontRendererObj, text,
+        drawCenteredString(fontRenderer, text,
                 (int)(x/scale)+xOff, (int)(y/scale)+yOff, color);
         GlStateManager.popMatrix();
     }
@@ -177,7 +177,7 @@ public class SkyblockAddonsGui extends GuiScreen {
         int halfWidth = width/2;
         int oneThird = width/3;
         int twoThirds = oneThird*2;
-        int boxWidth = fontRendererObj.getStringWidth(text)+10;
+        int boxWidth = fontRenderer.getStringWidth(text) + 10;
         if (boxWidth > BUTTON_MAX_WIDTH) boxWidth = BUTTON_MAX_WIDTH;
         int boxHeight = 20;
         int x = 0;

@@ -5,6 +5,7 @@ import codes.biscuit.skyblockaddons.utils.Attribute;
 import codes.biscuit.skyblockaddons.utils.CoordsPair;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.Feature;
+import com.mojang.realmsclient.gui.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.gui.GuiScreen;
@@ -14,8 +15,8 @@ import net.minecraft.entity.monster.EntityMagmaCube;
 import net.minecraft.entity.monster.EntitySlime;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ChatComponentText;
-import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.text.ChatType;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
@@ -69,7 +70,7 @@ public class PlayerListener {
      */
     @SubscribeEvent()
     public void onWorldJoin(EntityJoinWorldEvent e) {
-        if (e.entity == Minecraft.getMinecraft().thePlayer) {
+        if (e.getEntity() == Minecraft.getMinecraft().player) {
             lastWorldJoin = System.currentTimeMillis();
             lastBoss = -1;
             magmaTick = 1;
@@ -88,7 +89,7 @@ public class PlayerListener {
      */
     @SubscribeEvent()
     public void onChunkLoad(ChunkEvent.Load e) {
-        CoordsPair coords = new CoordsPair(e.getChunk().xPosition, e.getChunk().zPosition);
+        CoordsPair coords = new CoordsPair(e.getChunk().x, e.getChunk().z);
         recentlyLoadedChunks.add(coords);
         new Timer().schedule(new TimerTask() {
             @Override
@@ -103,8 +104,8 @@ public class PlayerListener {
      */
     @SubscribeEvent(priority = EventPriority.HIGH)
     public void onChatReceive(ClientChatReceivedEvent e) {
-        String message = e.message.getUnformattedText();
-        if (e.type == 2) {
+        String message = e.getMessage().getUnformattedText();
+        if (e.getType() == ChatType.GAME_INFO) {
             if (message.endsWith("\u270E Mana\u00A7r")) {
                 try {
                     String returnMessage;
@@ -167,7 +168,8 @@ public class PlayerListener {
                     if (main.isUsingOofModv1() && returnMessage.trim().length() == 0) {
                         e.setCanceled(true);
                     }
-                    e.message = new ChatComponentText(returnMessage);
+                    String str;
+                    e.setMessage(new TextComponentString(returnMessage));
                     return;
                 } catch (Exception ex) {
                     main.getRenderListener().setPredictMana(true);
@@ -203,9 +205,9 @@ public class PlayerListener {
     public void onInteract(PlayerInteractEvent e) {
         if (!main.getConfigValues().getDisabledFeatures().contains(Feature.DISABLE_EMBER_ROD)) {
             Minecraft mc = Minecraft.getMinecraft();
-            ItemStack heldItem = e.entityPlayer.getHeldItem();
-            if (e.entityPlayer == mc.thePlayer && heldItem != null) {
-                if (heldItem.getItem().equals(Items.blaze_rod) && heldItem.isItemEnchanted() && main.getUtils().getLocation() == EnumUtils.Location.ISLAND) {
+            ItemStack heldItem = e.getEntityPlayer().getHeldItemMainhand();
+            if (e.getEntityPlayer() == mc.player && heldItem != null) {
+                if (heldItem.getItem().equals(Items.BLAZE_ROD) && heldItem.isItemEnchanted() && main.getUtils().getLocation() == EnumUtils.Location.ISLAND) {
                     e.setCanceled(true);
                 }
             }
@@ -226,7 +228,7 @@ public class PlayerListener {
                     healthUpdate = null;
                 }
                 if (main.getRenderListener().isPredictHealth()) {
-                    EntityPlayerSP p = mc.thePlayer;
+                    EntityPlayerSP p = mc.player;
                     if (p != null) { //Reverse calculate the player's health by using the player's vanilla hearts. Also calculate the health change for the gui item.
                         int newHealth = Math.round(getAttribute(Attribute.MAX_HEALTH) * (p.getHealth() / p.getMaxHealth()));
                         if(newHealth != getAttribute(Attribute.HEALTH)) {
@@ -243,7 +245,7 @@ public class PlayerListener {
                             setAttribute(Attribute.MANA, getAttribute(Attribute.MAX_MANA));
                     }
                 } else if (timerTick % 5 == 0) { // Check inventory, location, updates, and skeleton helmet every 1/4 second.
-                    EntityPlayerSP p = mc.thePlayer;
+                    EntityPlayerSP p = mc.player;
                     if (p != null) {
                         main.getUtils().checkGameAndLocation();
                         main.getInventoryUtils().checkIfInventoryIsFull(mc, p);
@@ -254,7 +256,7 @@ public class PlayerListener {
                         }
 
                         if(mc.currentScreen == null) {
-                            main.getInventoryUtils().getInventoryDifference(p.inventory.mainInventory);
+                            main.getInventoryUtils().getInventoryDifference((ItemStack[]) p.inventory.mainInventory.toArray());
                         }
                     }
 
@@ -274,7 +276,7 @@ public class PlayerListener {
     @SubscribeEvent
     public void onEntityEvent(LivingEvent.LivingUpdateEvent e) {
         if (main.getUtils().isOnSkyblock() && main.getUtils().getLocation() == EnumUtils.Location.ISLAND) {
-            Entity entity = e.entity;
+            Entity entity = e.getEntity();
             if (entity instanceof EntityArmorStand && entity.hasCustomName()) {
                 int cooldown = main.getConfigValues().getWarningSeconds()*1000+5000;
                 if (!main.getConfigValues().getDisabledFeatures().contains(Feature.MINION_FULL_WARNING) &&
@@ -322,9 +324,9 @@ public class PlayerListener {
     public void onTickMagmaBossChecker(TickEvent.ClientTickEvent e) {
         if (e.phase == TickEvent.Phase.START && !main.getConfigValues().getDisabledFeatures().contains(Feature.MAGMA_WARNING) && main.getUtils().isOnSkyblock()) {
             Minecraft mc = Minecraft.getMinecraft();
-            if (mc != null && mc.theWorld != null) {
+            if (mc != null && mc.world != null) {
                 if (magmaTick % 5 == 0) {
-                    for (Entity entity : mc.theWorld.loadedEntityList) { // Loop through all the entities.
+                    for (Entity entity : mc.world.loadedEntityList) { // Loop through all the entities.
                         if (entity instanceof EntityMagmaCube) {
                             EntitySlime magma = (EntitySlime) entity;
                             int size = magma.getSlimeSize();
@@ -359,14 +361,14 @@ public class PlayerListener {
      */
     @SubscribeEvent()
     public void onItemTooltip(ItemTooltipEvent e) {
-        ItemStack hoveredItem = e.itemStack;
+        ItemStack hoveredItem = e.getItemStack();
         if (hoveredItem.hasTagCompound() && GuiScreen.isCtrlKeyDown() && main.getUtils().isCopyNBT()) {
             Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
             String nbt = hoveredItem.getTagCompound().toString();
             try {
                 if (!clipboard.getData(DataFlavor.stringFlavor).equals(nbt)) {
                     clipboard.setContents(new StringSelection(nbt), null);
-                    main.getUtils().sendMessage(EnumChatFormatting.GREEN + "Copied this item's NBT to clipboard!");
+                    main.getUtils().sendMessage(ChatFormatting.GREEN + "Copied this item's NBT to clipboard!");
                 }
             } catch (UnsupportedFlavorException | IOException ex) {
                 ex.printStackTrace();

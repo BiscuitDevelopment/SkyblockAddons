@@ -29,7 +29,7 @@ public class ButtonToggle extends ButtonFeature {
     }
 
     @Override
-    public void drawButton(Minecraft mc, int mouseX, int mouseY) {
+    public void drawButton(Minecraft mc, int mouseX, int mouseY, float partialTicks) {
         if (visible) {
             int alpha;
             float alphaMultiplier = 1F;
@@ -43,7 +43,7 @@ public class ButtonToggle extends ButtonFeature {
             } else {
                 alpha = 255;
             }
-            hovered = mouseX >= this.xPosition && mouseY >= this.yPosition && mouseX < this.xPosition + this.width && mouseY < this.yPosition + this.height;
+            hovered = mouseX >= this.x && mouseY >= this.y && mouseX < this.x + this.width && mouseY < this.y + this.height;
             if (alpha < 4) alpha = 4;
             int boxColor;
             int fontColor = new Color(224, 224, 224, alpha).getRGB();
@@ -62,7 +62,7 @@ public class ButtonToggle extends ButtonFeature {
             }
             GlStateManager.enableBlend();
             float scale = 1;
-            int stringWidth = mc.fontRendererObj.getStringWidth(displayString);
+            int stringWidth = mc.fontRenderer.getStringWidth(displayString);
             float widthLimit = BUTTON_MAX_WIDTH -10;
             if (feature == Feature.WARNING_TIME) {
                 widthLimit = 90;
@@ -70,11 +70,11 @@ public class ButtonToggle extends ButtonFeature {
             if (stringWidth > widthLimit) {
                 scale = 1/(stringWidth/widthLimit);
             }
-            drawRect(xPosition, yPosition, xPosition+this.width, yPosition+this.height, boxColor);
+            drawRect(x, y, x + this.width, y + this.height, boxColor);
             float scaleMultiplier = 1/scale;
             GlStateManager.pushMatrix();
             GlStateManager.scale(scale, scale, 1);
-            this.drawCenteredString(mc.fontRendererObj, displayString, (int)((xPosition+width/2)*scaleMultiplier), (int)((yPosition+(this.height-(8/scaleMultiplier))/2)*scaleMultiplier), fontColor);
+            this.drawCenteredString(mc.fontRenderer, displayString, (int) ((x + width / 2) * scaleMultiplier), (int) ((y + (this.height - (8 / scaleMultiplier)) / 2) * scaleMultiplier), fontColor);
             GlStateManager.disableBlend();
             GlStateManager.popMatrix();
         }
