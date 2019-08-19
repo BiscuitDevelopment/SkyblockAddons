@@ -63,11 +63,18 @@
       "blackShadow": "Black Shadow"
     },
     "darkAuctionTimer": "Dark Auction Timer",
-    "magmaBossTimer": "Magma Boss Timer"
+    "magmaBossTimer": "Magma Boss Timer",
+    "itemPickupLog": "Item Pickup Log",
+    "avoidPlacingEnchantedItems": "Avoid Placing Enchanted Items",
+    "makeEndermenHoldingItemPink": "Make Endermen Holding Items Pink",
+    "avoidBreakingStems": "Avoid Breaking Stems",
+    "magmaBossTimerColor": "Magma Boss Timer Color",
+    "darkAuctionTimerColor": "Dark Auction Timer Color",
+    "stopBowChargeFromResetting": "Stop Bow Charge From Resetting"
   },
   "messages": {
     "dropConfirmation": "Thả Đồ Thêm Một Lần Nữa Để Xác Nhận!",
-    "magmaBossWarning": "MagmaCube Boss!",
+    "magmaBossWarning": "Magma Cube Boss!",
     "fullInventory": "Túi Đồ Đã Đầy!",
     "newVersion": "Phiên bản mới, %newestVersion% đã có sẵn. Tải về bằng cách nhấn tại đây.",
     "discord": "Xem có thay đổi gì? Nhấn vào đây để tham gia Discord.",
@@ -82,6 +89,7 @@
     "inventoryTypes": {
       "enchants": "Enchants",
       "reforges": "Reforges"
-    }
+    },
+    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this stem. Use your bare hand if you'd like to break it."
   }
 }

@@ -63,7 +63,14 @@
       "blackShadow": "Black Shadow"
     },
     "darkAuctionTimer": "Dark Auction Timer",
-    "magmaBossTimer": "Magma Boss Timer"
+    "magmaBossTimer": "Magma Boss Timer",
+    "itemPickupLog": "Item Pickup Log",
+    "avoidPlacingEnchantedItems": "Avoid Placing Enchanted Items",
+    "makeEndermenHoldingItemPink": "Make Endermen Holding Items Pink",
+    "avoidBreakingStems": "Avoid Breaking Stems",
+    "magmaBossTimerColor": "Magma Boss Timer Color",
+    "darkAuctionTimerColor": "Dark Auction Timer Color",
+    "stopBowChargeFromResetting": "Stop Bow Charge From Resetting"
   },
   "messages": {
     "dropConfirmation": "Laat dit object opnieuw vallen om te Bevestigen!",
@@ -82,6 +89,7 @@
     "inventoryTypes": {
       "enchants": "Betoveringen",
       "reforges": "Omsmedingen"
-    }
+    },
+    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this stem. Use your bare hand if you'd like to break it."
   }
 }

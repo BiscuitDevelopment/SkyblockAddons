@@ -64,11 +64,17 @@
     },
     "darkAuctionTimer": "Dark Auction Timer",
     "magmaBossTimer": "Magma Boss Timer",
-    "itemPickupLog": "Item Pickup Log"
+    "itemPickupLog": "Item Pickup Log",
+    "avoidPlacingEnchantedItems": "Avoid Placing Enchanted Items",
+    "makeEndermenHoldingItemPink": "Make Endermen Holding Items Pink",
+    "avoidBreakingStems": "Avoid Breaking Stems",
+    "magmaBossTimerColor": "Magma Boss Timer Color",
+    "darkAuctionTimerColor": "Dark Auction Timer Color",
+    "stopBowChargeFromResetting": "Stop Bow Charge From Resetting"
   },
   "messages": {
     "dropConfirmation": "Drop this item again to confirm!",
-    "magmaBossWarning": "MagmaCube Boss!",
+    "magmaBossWarning": "Magma Cube Boss!",
     "fullInventory": "Full Inventory!",
     "newVersion": "A new version, %newestVersion% is available. Download it by clicking here.",
     "discord": "Want to view the changes? Click here to join my discord.",
@@ -83,6 +89,7 @@
     "inventoryTypes": {
       "enchants": "Enchants",
       "reforges": "Reforges"
-    }
+    },
+    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this stem. Use your bare hand if you'd like to break it."
   }
 }

@@ -63,11 +63,18 @@
       "blackShadow": "Black Shadow"
     },
     "darkAuctionTimer": "Dark Auction Timer",
-    "magmaBossTimer": "Magma Boss Timer"
+    "magmaBossTimer": "Magma Boss Timer",
+    "itemPickupLog": "Item Pickup Log",
+    "avoidPlacingEnchantedItems": "Avoid Placing Enchanted Items",
+    "makeEndermenHoldingItemPink": "Make Endermen Holding Items Pink",
+    "avoidBreakingStems": "Avoid Breaking Stems",
+    "magmaBossTimerColor": "Magma Boss Timer Color",
+    "darkAuctionTimerColor": "Dark Auction Timer Color",
+    "stopBowChargeFromResetting": "Stop Bow Charge From Resetting"
   },
   "messages": {
     "dropConfirmation": "Arunca acest obiect iar ca să confirmi!",
-    "magmaBossWarning": "MagmaCube Boss!",
+    "magmaBossWarning": "Magma Cube Boss!",
     "fullInventory": "Inventar Plin!",
     "newVersion": "O versiune nouă, %newestVersion% este disponibilă. Apasă aici ca să o descarci.",
     "discord": "Vrei sa vezi schimbările? Apasă aici ca să intri în discord-ul meu.",
@@ -82,6 +89,7 @@
     "inventoryTypes": {
       "enchants": "Enchants",
       "reforges": "Reforges"
-    }
+    },
+    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this stem. Use your bare hand if you'd like to break it."
   }
 }

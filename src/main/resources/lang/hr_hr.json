@@ -63,11 +63,18 @@
       "blackShadow": "Black Shadow"
     },
     "darkAuctionTimer": "Dark Auction Timer",
-    "magmaBossTimer": "Magma Boss Timer"
+    "magmaBossTimer": "Magma Boss Timer",
+    "itemPickupLog": "Item Pickup Log",
+    "avoidPlacingEnchantedItems": "Avoid Placing Enchanted Items",
+    "makeEndermenHoldingItemPink": "Make Endermen Holding Items Pink",
+    "avoidBreakingStems": "Avoid Breaking Stems",
+    "magmaBossTimerColor": "Magma Boss Timer Color",
+    "darkAuctionTimerColor": "Dark Auction Timer Color",
+    "stopBowChargeFromResetting": "Stop Bow Charge From Resetting"
   },
   "messages": {
     "dropConfirmation": "Opet baci ovu stvar za konfirmaciju!",
-    "magmaBossWarning": "MagmaCube Boss!",
+    "magmaBossWarning": "Magma Cube Boss!",
     "fullInventory": "Pun Inventar!",
     "newVersion": "Nova Verzija, %newestVersion% je dostupna. Preuzmi je tako što klikneš ovdje.",
     "discord": "Želiš li vidjeti promjene? Klikni ovdje da uðeš u moj discord server.",
@@ -82,6 +89,7 @@
     "inventoryTypes": {
       "enchants": "Èarolije",
       "reforges": "Reforge-ovi"
-    }
+    },
+    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this stem. Use your bare hand if you'd like to break it."
   }
 }
