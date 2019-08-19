@@ -70,9 +70,9 @@ public class Utils {
         }
     }
 
-    public void checkGameAndLocation() { // Most of this is replicated from the scoreboard rendering code so not many comments here xD
+    public void checkGameAndLocation() {
         Minecraft mc = Minecraft.getMinecraft();
-        if (mc != null && mc.theWorld != null) { //TODO make sure this works
+        if (mc != null && mc.theWorld != null) {
             Scoreboard scoreboard = mc.theWorld.getScoreboard();
             ScoreObjective sidebarObjective = mc.theWorld.getScoreboard().getObjectiveInDisplaySlot(1);
             if (sidebarObjective != null) {

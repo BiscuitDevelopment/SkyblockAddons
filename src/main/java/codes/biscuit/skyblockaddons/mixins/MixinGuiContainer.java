@@ -40,7 +40,7 @@ public class MixinGuiContainer extends GuiScreen {
     private void shouldRenderSaveSlots(Slot slotIn, CallbackInfo ci, int x, int y, ItemStack item, boolean flag, boolean flag1,
                                       ItemStack itemstack1, String s) {
         SkyblockAddons main = SkyblockAddons.getInstance();
-        if (!main.getConfigValues().getDisabledFeatures().contains(Feature.SHOW_ENCHANTMENTS_REFORGES)) {
+        if (main.getConfigValues().isEnabled(Feature.SHOW_ENCHANTMENTS_REFORGES)) {
             Minecraft mc = Minecraft.getMinecraft();
             FontRenderer fr = mc.fontRendererObj;
             if (item != null && item.hasDisplayName()) {
@@ -121,7 +121,6 @@ public class MixinGuiContainer extends GuiScreen {
             EnumUtils.Backpack backpack = backpackInfo.getBackpack();
             int length = items.length;
             RenderHelper.enableGUIStandardItemLighting();
-            GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
             GlStateManager.enableRescaleNormal();
             OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, (float)240 / 1.0F, (float)240 / 1.0F);
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
@@ -169,6 +168,7 @@ public class MixinGuiContainer extends GuiScreen {
                 }
             }
             SkyblockAddons.getInstance().getUtils().setBackpackToRender(null);
+            RenderHelper.disableStandardItemLighting();
         }
     }
 }

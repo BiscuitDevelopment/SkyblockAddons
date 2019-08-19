@@ -142,7 +142,7 @@ public class InventoryUtils {
      * @param p Player to check
      */
     public void checkIfInventoryIsFull(Minecraft mc, EntityPlayerSP p) {
-        if (main.getUtils().isOnSkyblock() && !main.getConfigValues().getDisabledFeatures().contains(Feature.FULL_INVENTORY_WARNING)) {
+        if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.FULL_INVENTORY_WARNING)) {
             for (ItemStack item : p.inventory.mainInventory) {
                 if (item == null) {
                     inventoryIsFull = false;

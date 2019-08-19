@@ -5,20 +5,35 @@ import static codes.biscuit.skyblockaddons.utils.Message.*;
 public class EnumUtils {
 
     public enum AnchorPoint {
-        TOP_LEFT(ANCHOR_POINT_TOP_LEFT),
-        TOP_RIGHT(ANCHOR_POINT_TOP_RIGHT),
-        BOTTOM_LEFT(ANCHOR_POINT_BOTTOM_LEFT),
-        BOTTOM_RIGHT(ANCHOR_POINT_BOTTOM_RIGHT),
-        HEALTH_BAR(ANCHOR_POINT_HEALTH_BAR);
+        TOP_LEFT(0, ANCHOR_POINT_TOP_LEFT),
+        TOP_RIGHT(1, ANCHOR_POINT_TOP_RIGHT),
+        BOTTOM_LEFT(2, ANCHOR_POINT_BOTTOM_LEFT),
+        BOTTOM_RIGHT(3, ANCHOR_POINT_BOTTOM_RIGHT),
+        HEALTH_BAR(4, ANCHOR_POINT_HEALTH_BAR);
 
         private Message message;
+        private int id;
 
-        AnchorPoint(Message message) {
+        AnchorPoint(int id, Message message) {
             this.message = message;
+            this.id = id;
         }
 
         public String getMessage() {
             return message.getMessage();
+        }
+
+        public int getId() {
+            return id;
+        }
+
+        public static AnchorPoint fromId(int id) {
+            for (AnchorPoint feature : values()) {
+                if (feature.getId() == id) {
+                    return feature;
+                }
+            }
+            return null;
         }
 
         public int getX(int maxX) {
@@ -165,14 +180,19 @@ public class EnumUtils {
     // Different indicators of the magma boss are more accurate than others, display how accurate the time is.
     public enum MagmaTimerAccuracy {
         NO_DATA("N/A"),
+        SPAWNED(""),
+        SPAWNED_PREDICTION(""),
         EXACTLY(""),
-        ABOUT("~"),
-        LESS_THAN("<");
+        ABOUT("~");
 
         private String symbol;
 
         MagmaTimerAccuracy(String symbol) {
             this.symbol = symbol;
+        }
+
+        public String getSymbol() {
+            return symbol;
         }
     }
 }

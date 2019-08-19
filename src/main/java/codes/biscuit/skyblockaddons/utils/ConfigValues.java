@@ -4,12 +4,16 @@ import com.google.gson.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 
+import java.awt.geom.Point2D;
 import java.io.*;
 import java.util.*;
 
 public class ConfigValues {
 
     private static final int CONFIG_VERSION = 3;
+    private static final Feature[] GUI_FEATURES = {Feature.SKELETON_BAR, Feature.DEFENCE_ICON, Feature.DEFENCE_TEXT,
+            Feature.DEFENCE_PERCENTAGE, Feature.HEALTH_BAR, Feature.HEALTH_TEXT, Feature.MANA_BAR, Feature.MANA_TEXT, Feature.HEALTH_UPDATES,
+            Feature.ITEM_PICKUP_LOG, Feature.MAGMA_BOSS_TIMER, Feature.DARK_AUCTION_TIMER};
 
     private File settingsConfigFile;
     private JsonObject settingsConfig = new JsonObject();
@@ -104,6 +108,18 @@ public class ConfigValues {
             if (settingsConfig.has("itemPickupLogX")) {
                 coordinates.put(Feature.ITEM_PICKUP_LOG, new CoordsPair(settingsConfig.get("itemPickupLogX").getAsInt(), settingsConfig.get("itemPickupLogY").getAsInt()));
             }
+            if (settingsConfig.has("magmaBossTimerX")) {
+                coordinates.put(Feature.MAGMA_BOSS_TIMER, new CoordsPair(settingsConfig.get("magmaBossTimerX").getAsInt(), settingsConfig.get("magmaBossTimerY").getAsInt()));
+            }
+            if (settingsConfig.has("darkAuctionTimerX")) {
+                coordinates.put(Feature.DARK_AUCTION_TIMER, new CoordsPair(settingsConfig.get("darkAuctionTimerX").getAsInt(), settingsConfig.get("darkAuctionTimerY").getAsInt()));
+            }
+
+            for (Map.Entry<String, JsonElement> element : settingsConfig.getAsJsonObject("anchorPoints").entrySet()) {
+                Feature feature = Feature.fromId(Integer.valueOf(element.getKey()));
+                anchorPoints.put(feature, EnumUtils.AnchorPoint.fromId(element.getValue().getAsInt()));
+            }
+
             loadColor("warningColor", Feature.MAGMA_WARNING, ConfigColor.RED);
             loadColor("confirmationColor", Feature.DROP_CONFIRMATION, ConfigColor.RED);
             loadColor("manaBarColor", Feature.MANA_BAR, ConfigColor.BLUE);
@@ -112,6 +128,8 @@ public class ConfigValues {
             loadColor("defenceTextColor", Feature.DEFENCE_TEXT, ConfigColor.GREEN);
             loadColor("healthBarColor", Feature.HEALTH_BAR, ConfigColor.RED);
             loadColor("healthTextColor", Feature.HEALTH_TEXT, ConfigColor.RED);
+            loadColor("magmaBossTimerColor", Feature.MAGMA_BOSS_TIMER, ConfigColor.GOLD);
+            loadColor("darkAuctionTimerColor", Feature.DARK_AUCTION_TIMER, ConfigColor.GOLD);
             int configVersion;
             if (settingsConfig.has("configVersion")) {
                 configVersion = settingsConfig.get("configVersion").getAsInt();
@@ -172,11 +190,6 @@ public class ConfigValues {
                 }
             }
         }
-        Feature[] newFeatures = {Feature.HEALTH_BAR, Feature.HEALTH_TEXT, Feature.DEFENCE_TEXT, Feature.DEFENCE_PERCENTAGE,
-                Feature.DEFENCE_ICON, Feature.ITEM_PICKUP_LOG};
-        for (Feature feature : newFeatures) {
-            putDefaultCoordinates(feature);
-        }
         featureColors.put(Feature.DROP_CONFIRMATION, ConfigColor.RED);
         featureColors.put(Feature.MAGMA_WARNING, ConfigColor.RED);
         featureColors.put(Feature.MANA_TEXT, ConfigColor.BLUE);
@@ -197,10 +210,7 @@ public class ConfigValues {
 
     public void setAllCoordinatesToDefault() {
         setAnchorPointsToDefault();
-        Feature[] features = {Feature.SKELETON_BAR, Feature.DEFENCE_ICON, Feature.DEFENCE_TEXT,
-                Feature.DEFENCE_PERCENTAGE, Feature.HEALTH_BAR, Feature.HEALTH_TEXT, Feature.MANA_BAR, Feature.MANA_TEXT, Feature.HEALTH_UPDATES,
-                Feature.ITEM_PICKUP_LOG};
-        for (Feature feature : features) {
+        for (Feature feature : GUI_FEATURES) {
             putDefaultCoordinates(feature);
         }
     }
@@ -208,9 +218,14 @@ public class ConfigValues {
     private void setAnchorPointsToDefault() {
         Feature[] features = {Feature.SKELETON_BAR, Feature.DEFENCE_ICON, Feature.DEFENCE_TEXT,
                 Feature.DEFENCE_PERCENTAGE, Feature.HEALTH_BAR, Feature.HEALTH_TEXT, Feature.MANA_BAR,
-                Feature.MANA_TEXT, Feature.HEALTH_UPDATES, Feature.ITEM_PICKUP_LOG};
+                Feature.MANA_TEXT, Feature.HEALTH_UPDATES};
         for (Feature feature : features) {
             anchorPoints.put(feature, EnumUtils.AnchorPoint.HEALTH_BAR);
+        }
+        anchorPoints.put(Feature.HEALTH_UPDATES, EnumUtils.AnchorPoint.TOP_LEFT);
+        features = new Feature[]{Feature.MAGMA_BOSS_TIMER, Feature.DARK_AUCTION_TIMER};
+        for (Feature feature : features) {
+            anchorPoints.put(feature, EnumUtils.AnchorPoint.TOP_RIGHT);
         }
     }
 
@@ -255,8 +270,16 @@ public class ConfigValues {
                 y = -13;
                 break;
             case ITEM_PICKUP_LOG:
-                x = -50;
-                y = -80;
+                x = 86;
+                y = 17;
+                break;
+            case MAGMA_BOSS_TIMER:
+                x = -18;
+                y = 13;
+                break;
+            case DARK_AUCTION_TIMER:
+                x = -18;
+                y = 29;
                 break;
         }
         coordinates.put(feature, new CoordsPair(x, y));
@@ -295,6 +318,16 @@ public class ConfigValues {
                 jsonArray.add(new GsonBuilder().create().toJsonTree(element.getId()));
             }
             settingsConfig.add("disabledFeatures", jsonArray);
+
+//            jsonArray = new JsonArray();
+            JsonObject anchorObject = new JsonObject();
+            for (Feature feature : GUI_FEATURES) {
+//                JsonObject anchorObject = new JsonObject();
+                anchorObject.addProperty(String.valueOf(feature.getId()), getAnchorPoint(feature).getId());
+//                jsonArray.add(anchorObject);
+            }
+            settingsConfig.add("anchorPoints", anchorObject);
+
             settingsConfig.addProperty("warningColor", getColor(Feature.MAGMA_WARNING).ordinal());
             settingsConfig.addProperty("confirmationColor", getColor(Feature.DROP_CONFIRMATION).ordinal());
             settingsConfig.addProperty("manaBarColor", getColor(Feature.MANA_BAR).ordinal());
@@ -325,6 +358,12 @@ public class ConfigValues {
             settingsConfig.addProperty("healthUpdatesY", getRelativeCoords(Feature.HEALTH_UPDATES).getY());
             settingsConfig.addProperty("itemPickupLogX", getRelativeCoords(Feature.ITEM_PICKUP_LOG).getX());
             settingsConfig.addProperty("itemPickupLogY", getRelativeCoords(Feature.ITEM_PICKUP_LOG).getY());
+            settingsConfig.addProperty("magmaBossTimerX", getRelativeCoords(Feature.MAGMA_BOSS_TIMER).getX());
+            settingsConfig.addProperty("magmaBossTimerY", getRelativeCoords(Feature.MAGMA_BOSS_TIMER).getY());
+            settingsConfig.addProperty("darkAuctionTimerX", getRelativeCoords(Feature.DARK_AUCTION_TIMER).getX());
+            settingsConfig.addProperty("darkAuctionTimerY", getRelativeCoords(Feature.DARK_AUCTION_TIMER).getY());
+            settingsConfig.addProperty("magmaBossTimerColor", getColor(Feature.MAGMA_BOSS_TIMER).ordinal());
+            settingsConfig.addProperty("darkAuctionTimerColor", getColor(Feature.DARK_AUCTION_TIMER).ordinal());
 
             settingsConfig.addProperty("guiScale", guiScale);
             settingsConfig.addProperty("language", language.getPath());
@@ -337,6 +376,22 @@ public class ConfigValues {
             ex.printStackTrace();
             System.out.println("An error occurred while attempting to save the config!");
         }
+    }
+
+    /**
+     * @param feature The feature to check.
+     * @return Whether the feature is disabled.
+     */
+    public boolean isDisabled(Feature feature) {
+        return disabledFeatures.contains(feature);
+    }
+
+    /**
+     * @param feature The feature to check.
+     * @return Whether the feature is enabled.
+     */
+    public boolean isEnabled(Feature feature) {
+        return !isDisabled(feature);
     }
 
     public Set<Feature> getDisabledFeatures() {
@@ -399,16 +454,39 @@ public class ConfigValues {
         }
     }
 
-    public void setNextAnchorPoint(Feature feature) {
-        EnumUtils.AnchorPoint nextPoint = getAnchorPoint(feature).getNextType();
+    public void setClosestAnchorPoint(Feature feature) {
+        int x1 = getActualX(feature);
+        int y1 = getActualY(feature);
+        ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
+        int maxX = sr.getScaledWidth();
+        int maxY = sr.getScaledHeight();
+        double shortestDistance = -1;
+        EnumUtils.AnchorPoint closestAnchorPoint = EnumUtils.AnchorPoint.HEALTH_BAR; // default
+        for (EnumUtils.AnchorPoint point : EnumUtils.AnchorPoint.values()) {
+            double distance = Point2D.distance(x1, y1, point.getX(maxX), point.getY(maxY));
+            if (shortestDistance == -1 || distance < shortestDistance) {
+                closestAnchorPoint = point;
+                shortestDistance = distance;
+            }
+        }
         int targetX = getActualX(feature);
         int targetY = getActualY(feature);
-        ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
-        int x = targetX-nextPoint.getX(sr.getScaledWidth());
-        int y = targetY-nextPoint.getY(sr.getScaledHeight());
-        anchorPoints.put(feature, nextPoint);
+        int x = targetX-closestAnchorPoint.getX(sr.getScaledWidth());
+        int y = targetY-closestAnchorPoint.getY(sr.getScaledHeight());
+        anchorPoints.put(feature, closestAnchorPoint);
         setCoords(feature, x, y);
     }
+
+//    public void setNextAnchorPoint(Feature feature) {
+//        EnumUtils.AnchorPoint nextPoint = getAnchorPoint(feature).getNextType();
+//        int targetX = getActualX(feature);
+//        int targetY = getActualY(feature);
+//        ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
+//        int x = targetX-nextPoint.getX(sr.getScaledWidth());
+//        int y = targetY-nextPoint.getY(sr.getScaledHeight());
+//        anchorPoints.put(feature, nextPoint);
+//        setCoords(feature, x, y);
+//    }
 
     public float getGuiScale() {
         return guiScale;

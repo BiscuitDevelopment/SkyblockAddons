@@ -51,14 +51,14 @@ public class LocationEditGui extends GuiScreen {
         int x = scaledResolution.getScaledWidth()/2-boxWidth/2;
         int y = scaledResolution.getScaledHeight()/2-boxHeight/2;
         buttonList.add(new ButtonSolid(x, y, boxWidth, boxHeight, text, main, Feature.RESET_LOCATION));
-        text = Message.SETTING_ANCHOR_POINT.getMessage();
-        boxWidth = fontRendererObj.getStringWidth(text)+10;
-        boxHeight = 20;
-        x = scaledResolution.getScaledWidth()/2-boxWidth/2;
-        y = scaledResolution.getScaledHeight()/2-boxHeight/2;
-//        if (boxWidth > BUTTON_MAX_WIDTH) boxWidth = BUTTON_MAX_WIDTH;
-        y-=25;
-        buttonList.add(new ButtonSolid(x, y, boxWidth, boxHeight, text, main, Feature.ANCHOR_POINT));
+//        text = Message.SETTING_ANCHOR_POINT.getMessage();
+//        boxWidth = fontRendererObj.getStringWidth(text)+10;
+//        boxHeight = 20;
+//        x = scaledResolution.getScaledWidth()/2-boxWidth/2;
+//        y = scaledResolution.getScaledHeight()/2-boxHeight/2;
+////        if (boxWidth > BUTTON_MAX_WIDTH) boxWidth = BUTTON_MAX_WIDTH;
+//        y-=25;
+//        buttonList.add(new ButtonSolid(x, y, boxWidth, boxHeight, text, main, Feature.ANCHOR_POINT));
     }
 
     @Override
@@ -66,7 +66,6 @@ public class LocationEditGui extends GuiScreen {
         int startColor = new Color(0,0, 0, 127).getRGB();
         int endColor = new Color(0,0, 0, 180).getRGB();
         drawGradientRect(0, 0, width, height, startColor, endColor);
-
         for (EnumUtils.AnchorPoint anchorPoint : EnumUtils.AnchorPoint.values()) {
             ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
             int x = anchorPoint.getX(sr.getScaledWidth());
@@ -96,12 +95,12 @@ public class LocationEditGui extends GuiScreen {
             ButtonSolid buttonSolid = (ButtonSolid)abstractButton;
             if (buttonSolid.getFeature() == Feature.RESET_LOCATION) {
                 main.getConfigValues().setAllCoordinatesToDefault();
-            } else if (buttonSolid.getFeature() == Feature.ANCHOR_POINT) {
-                main.getConfigValues().setNextAnchorPoint(ButtonLocation.getLastHoveredFeature());
-                cancelScreenReturn = true;
-                Minecraft.getMinecraft().displayGuiScreen(new LocationEditGui(main));
-                cancelScreenReturn = false;
-            }
+            }// else if (buttonSolid.getFeature() == Feature.ANCHOR_POINT) {
+//                main.getConfigValues().setNextAnchorPoint(ButtonLocation.getLastHoveredFeature());
+//                cancelScreenReturn = true;
+//                Minecraft.getMinecraft().displayGuiScreen(new LocationEditGui(main));
+//                cancelScreenReturn = false;
+//            }
         }
     }
 
@@ -115,8 +114,8 @@ public class LocationEditGui extends GuiScreen {
         if (dragging != null) {
             int x = mouseX-main.getConfigValues().getAnchorPoint(dragging).getX(sr.getScaledWidth());
             int y = mouseY-main.getConfigValues().getAnchorPoint(dragging).getY(sr.getScaledHeight());
-//            System.out.println(xOffset);
             main.getConfigValues().setCoords(dragging, x-xOffset, y-yOffset);
+            main.getConfigValues().setClosestAnchorPoint(dragging);
         }
     }
 

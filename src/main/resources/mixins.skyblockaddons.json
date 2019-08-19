@@ -12,6 +12,8 @@
     "MixinItem",
     "MixinGuiScreen",
     "MixinGuiChest",
-    "MixinRenderEnderman"
+    "MixinRenderEnderman",
+    "MixinPlayerControllerMP",
+    "MixinNetHandlerPlayClient"
   ]
 }

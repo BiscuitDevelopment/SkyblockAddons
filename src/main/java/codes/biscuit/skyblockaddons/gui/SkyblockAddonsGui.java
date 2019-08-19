@@ -22,15 +22,17 @@ public class SkyblockAddonsGui extends GuiScreen {
 
     private SkyblockAddons main;
     private int page;
+    private int previousPage;
 
     private long timeOpened = System.currentTimeMillis();
 
     /**
      * The main gui, opened with /sba.
      */
-    public SkyblockAddonsGui(SkyblockAddons main, int page) {
+    public SkyblockAddonsGui(SkyblockAddons main, int page, int previousPage) {
         this.main = main;
         this.page = page;
+        this.previousPage = previousPage;
     }
 
     @Override
@@ -55,8 +57,9 @@ public class SkyblockAddonsGui extends GuiScreen {
 
             addButton(6, Feature.NEXT_PAGE, 2, EnumUtils.ButtonType.SOLID);
         } else if (page == 2) {
-
             addButton(1, Feature.HIDE_PLAYERS_IN_LOBBY, 1, EnumUtils.ButtonType.TOGGLE);
+            addButton(1, Feature.MAKE_ENDERMEN_HOLDING_ITEMS_PINK, 2, EnumUtils.ButtonType.TOGGLE);
+            addButton(1, Feature.AVOID_PLACING_ENCHANTED_ITEMS, 3, EnumUtils.ButtonType.TOGGLE);
             addButton(2, Feature.DEFENCE_TEXT, 1, EnumUtils.ButtonType.TOGGLE);
             addButton(2, Feature.MANA_BAR, 2, EnumUtils.ButtonType.TOGGLE);
             addButton(2, Feature.HEALTH_BAR, 3, EnumUtils.ButtonType.TOGGLE);
@@ -67,6 +70,19 @@ public class SkyblockAddonsGui extends GuiScreen {
             addButton(4, Feature.SKELETON_BAR, 2, EnumUtils.ButtonType.TOGGLE);
             addButton(4, Feature.HEALTH_UPDATES, 3, EnumUtils.ButtonType.TOGGLE);
             addButton(5, Feature.ITEM_PICKUP_LOG, 1, EnumUtils.ButtonType.TOGGLE);
+            addButton(5, Feature.MAGMA_BOSS_TIMER, 2, EnumUtils.ButtonType.TOGGLE);
+            addButton(5, Feature.DARK_AUCTION_TIMER, 3, EnumUtils.ButtonType.TOGGLE);
+
+            if (previousPage == 3) {
+                addButton(6, Feature.NEXT_PAGE, 5, EnumUtils.ButtonType.SOLID);
+                addButton(6, Feature.PREVIOUS_PAGE, 2, EnumUtils.ButtonType.SOLID);
+            } else {
+                addButton(6, Feature.NEXT_PAGE, 2, EnumUtils.ButtonType.SOLID);
+                addButton(6, Feature.PREVIOUS_PAGE, 5, EnumUtils.ButtonType.SOLID);
+            }
+        } else if (page == 3) {
+            addButton(1, Feature.AVOID_BREAKING_STEMS, 1, EnumUtils.ButtonType.TOGGLE);
+            addButton(1, Feature.STOP_BOW_CHARGE_FROM_RESETTING, 2, EnumUtils.ButtonType.TOGGLE);
 
             addButton(6, Feature.PREVIOUS_PAGE, 2, EnumUtils.ButtonType.SOLID);
         }
@@ -127,18 +143,18 @@ public class SkyblockAddonsGui extends GuiScreen {
                 main.getConfigValues().setLanguage(main.getConfigValues().getLanguage().getNextLanguage());
                 main.getConfigValues().loadLanguageFile();
                 main.getUtils().setFadingIn(false);
-                Minecraft.getMinecraft().displayGuiScreen(new SkyblockAddonsGui(main, page));
+                Minecraft.getMinecraft().displayGuiScreen(new SkyblockAddonsGui(main, page, page));
             }  else if (feature == Feature.EDIT_LOCATIONS) {
                 main.getUtils().setFadingIn(false);
                 Minecraft.getMinecraft().displayGuiScreen(new LocationEditGui(main));
             } else if (feature == Feature.NEXT_PAGE) {
                 main.getUtils().setFadingIn(false);
-                Minecraft.getMinecraft().displayGuiScreen(new SkyblockAddonsGui(main, 2));
+                Minecraft.getMinecraft().displayGuiScreen(new SkyblockAddonsGui(main, page+1, page));
             } else if (feature == Feature.PREVIOUS_PAGE) {
                 main.getUtils().setFadingIn(false);
-                Minecraft.getMinecraft().displayGuiScreen(new SkyblockAddonsGui(main, 1));
+                Minecraft.getMinecraft().displayGuiScreen(new SkyblockAddonsGui(main, page-1, page));
             } else {
-                if (main.getConfigValues().getDisabledFeatures().contains(feature)) {
+                if (main.getConfigValues().isDisabled(feature)) {
                     main.getConfigValues().getDisabledFeatures().remove(feature);
                 } else {
                     main.getConfigValues().getDisabledFeatures().add(feature);

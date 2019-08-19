@@ -5,6 +5,7 @@ import codes.biscuit.skyblockaddons.listeners.PlayerListener;
 import codes.biscuit.skyblockaddons.listeners.RenderListener;
 import codes.biscuit.skyblockaddons.utils.ConfigValues;
 import codes.biscuit.skyblockaddons.utils.InventoryUtils;
+import codes.biscuit.skyblockaddons.utils.Scheduler;
 import codes.biscuit.skyblockaddons.utils.Utils;
 import net.minecraftforge.client.ClientCommandHandler;
 import net.minecraftforge.common.MinecraftForge;
@@ -28,6 +29,7 @@ public class SkyblockAddons {
     private RenderListener renderListener = new RenderListener(this);
     private Utils utils = new Utils(this);
     private InventoryUtils inventoryUtils = new InventoryUtils(this);
+    private Scheduler scheduler = new Scheduler();
     private boolean usingLabymod = false;
     private boolean usingOofModv1 = false;
 
@@ -41,6 +43,7 @@ public class SkyblockAddons {
     public void init(FMLInitializationEvent e) {
         MinecraftForge.EVENT_BUS.register(playerListener);
         MinecraftForge.EVENT_BUS.register(renderListener);
+        MinecraftForge.EVENT_BUS.register(scheduler);
         ClientCommandHandler.instance.registerCommand(new SkyblockAddonsCommand(this));
     }
 
@@ -87,5 +90,9 @@ public class SkyblockAddons {
 
     public boolean isUsingOofModv1() {
         return usingOofModv1;
+    }
+
+    public Scheduler getScheduler() {
+        return scheduler;
     }
 }

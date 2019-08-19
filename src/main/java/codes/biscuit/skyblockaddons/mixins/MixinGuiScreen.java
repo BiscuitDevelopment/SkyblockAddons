@@ -29,8 +29,8 @@ public abstract class MixinGuiScreen {
     @Inject(method = "renderToolTip", at = @At(value = "HEAD"), cancellable = true)
     private void shouldRenderRedirect(ItemStack stack, int x, int y, CallbackInfo ci) {
         SkyblockAddons main = SkyblockAddons.getInstance();
-        if (stack.getItem().equals(Items.skull) && !main.getConfigValues().getDisabledFeatures().contains(Feature.SHOW_BACKPACK_PREVIEW)) {
-            if (!main.getConfigValues().getDisabledFeatures().contains(Feature.SHOW_BACKPACK_HOLDING_SHIFT) && !GuiScreen.isShiftKeyDown()) {
+        if (stack.getItem().equals(Items.skull) && main.getConfigValues().isEnabled(Feature.SHOW_BACKPACK_PREVIEW)) {
+            if (main.getConfigValues().isEnabled(Feature.SHOW_BACKPACK_HOLDING_SHIFT) && !GuiScreen.isShiftKeyDown()) {
                 return;
             }
             Container playerContainer = Minecraft.getMinecraft().thePlayer.openContainer;

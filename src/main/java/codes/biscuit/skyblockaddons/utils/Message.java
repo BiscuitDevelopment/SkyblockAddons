@@ -1,7 +1,6 @@
 package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.gui.buttons.ButtonLocation;
 import com.google.gson.JsonObject;
 
 import java.util.Arrays;
@@ -61,6 +60,12 @@ public enum Message {
     SETTING_TEXT_STYLE(MessageObject.SETTING, "textStyle"),
     SETTING_DARK_AUCTION_TIMER(MessageObject.SETTING, "darkAuctionTimer"),
     SETTING_ITEM_PICKUP_LOG(MessageObject.SETTING, "itemPickupLog"),
+    SETTING_AVOID_PLACING_ENCHANTED_ITEMS(MessageObject.SETTING, "avoidPlacingEnchantedItems"),
+    SETTING_MAKE_ENDERMEN_HOLDING_ITEMS_PINK(MessageObject.SETTING, "makeEndermenHoldingItemPink"),
+    SETTING_AVOID_BREAKING_STEMS(MessageObject.SETTING, "avoidBreakingStems"),
+    SETTING_MAGMA_BOSS_TIMER_COLOR(MessageObject.SETTING, "magmaBossTimerColor"),
+    SETTING_DARK_AUCTION_TIMER_COLOR(MessageObject.SETTING, "darkAuctionTimerColor"),
+    SETTING_STOP_BOW_CHARGE_FROM_RESETTING(MessageObject.SETTING, "stopBowChargeFromResetting"),
 
     BACKPACK_STYLE_GUI(MessageObject.STYLE, "inventory"),
     BACKPACK_STYLE_COMPACT(MessageObject.STYLE, "compact"),
@@ -78,6 +83,7 @@ public enum Message {
     MESSAGE_SEPARATE_ENCHANTMENTS(MessageObject.MESSAGES, "separateMultiple"),
     MESSAGE_ENCHANTS_TO_MATCH(MessageObject.MESSAGES, "enchantsToMatch"),
     MESSAGE_ENCHANTS_TO_EXCLUDE(MessageObject.MESSAGES, "enchantsToExclude"),
+    MESSAGE_CANCELLED_STEM_BREAK(MessageObject.MESSAGES, "cancelledStemBreak"),
 
     ANCHOR_POINT_TOP_LEFT(MessageObject.ANCHOR_POINT, "topLeft"),
     ANCHOR_POINT_TOP_RIGHT(MessageObject.ANCHOR_POINT, "topRight"),
@@ -137,11 +143,14 @@ public enum Message {
                 } else if (this == Message.MESSAGE_MINION_CANNOT_REACH || this == Message.MESSAGE_TYPE_ENCHANTMENTS
                         || this == Message.MESSAGE_ENCHANTS_TO_MATCH || this == Message.MESSAGE_ENCHANTS_TO_EXCLUDE) {
                     text = text.replace("%type%", variables[0]);
-                } else if (this == Message.SETTING_ANCHOR_POINT) {
-                    Feature lastHovered = ButtonLocation.getLastHoveredFeature();
-                    text = text.replace("%setting%", lastHovered.getMessage());
-                    text = text.replace("%anchor%", main.getConfigValues().getAnchorPoint(lastHovered).getMessage());
-                }
+                }// else if (this == Message.SETTING_ANCHOR_POINT) { //unused at the moment.
+//                    Feature lastHovered = ButtonLocation.getLastHoveredFeature();
+//                    if (lastHovered == null) {
+//                        lastHovered = Feature.MANA_BAR;
+//                    }
+//                    text = text.replace("%setting%", lastHovered.getMessage());
+//                    text = text.replace("%anchor%", main.getConfigValues().getAnchorPoint(lastHovered).getMessage());
+//                }
             }
             if (text != null && main.getConfigValues().getLanguage() == Language.HEBREW) {
                 text = main.getUtils().reverseText(text);

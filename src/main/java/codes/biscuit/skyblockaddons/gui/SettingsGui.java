@@ -41,6 +41,9 @@ public class SettingsGui extends GuiScreen {
         addButton(0.33, Message.SETTING_USE_VANILLA_TEXTURE_DEFENCE, Feature.USE_VANILLA_TEXTURE_DEFENCE, 2, EnumUtils.ButtonType.TOGGLE);
         addButton(0.41, Message.SETTING_SHOW_BACKPACK_HOLDING_SHIFT, Feature.SHOW_BACKPACK_HOLDING_SHIFT, 2, EnumUtils.ButtonType.TOGGLE);
 
+        addButton(0.73, Message.SETTING_MAGMA_BOSS_TIMER_COLOR, Feature.MAGMA_BOSS_TIMER, 2, EnumUtils.ButtonType.COLOR);
+        addButton(0.81, Message.SETTING_DARK_AUCTION_TIMER_COLOR, Feature.DARK_AUCTION_TIMER, 2, EnumUtils.ButtonType.COLOR);
+
         addButton(0.25, Message.SETTING_WARNING_TIME, Feature.WARNING_TIME, 3, EnumUtils.ButtonType.SOLID);
         addButton(0.33, Message.SETTING_BACKPACK_STYLE, Feature.BACKPACK_STYLE, 3, EnumUtils.ButtonType.SOLID);
         addSlider();
@@ -143,7 +146,7 @@ public class SettingsGui extends GuiScreen {
                     }
                 }
             } else if (abstractButton instanceof ButtonToggle) {
-                if (main.getConfigValues().getDisabledFeatures().contains(feature)) {
+                if (main.getConfigValues().isDisabled(feature)) {
                     main.getConfigValues().getDisabledFeatures().remove(feature);
                 } else {
                     main.getConfigValues().getDisabledFeatures().add(feature);
