@@ -53,7 +53,6 @@ public class PlayerListener {
     private int magmaTime = 0;
     private int recentMagmaCubes = 0;
     private int recentBlazes = 0;
-    private int magmaBossHealth = 150000;
 
 //    private Feature.Accuracy magmaTimerAccuracy = null;
 //    private long magmaTime = 7200;
@@ -180,9 +179,6 @@ public class PlayerListener {
             if (main.getRenderListener().isPredictMana() && message.startsWith("Used ") && message.endsWith("Mana)")) {
                 int manaLost = Integer.parseInt(message.split(Pattern.quote("! ("))[1].split(Pattern.quote(" Mana)"))[0]);
                 changeMana(-manaLost);
-            } else if (magmaAccuracy == EnumUtils.MagmaTimerAccuracy.SPAWNED && message.contains("MAGMA CUBE BOSS DOWN!")) {
-                magmaAccuracy = EnumUtils.MagmaTimerAccuracy.ABOUT;
-                magmaTime = 7200;
             }
         }
     }
@@ -287,6 +283,7 @@ public class PlayerListener {
     public void onEntityEvent(LivingEvent.LivingUpdateEvent e) {
         Entity entity = e.entity;
         if (main.getUtils().isOnSkyblock() && entity instanceof EntityArmorStand && entity.hasCustomName()) {
+//            System.out.println("Name|" + entity.getCustomNameTag());
             if (main.getUtils().getLocation() == EnumUtils.Location.ISLAND) {
                 int cooldown = main.getConfigValues().getWarningSeconds() * 1000 + 5000;
                 if (main.getConfigValues().isEnabled(Feature.MINION_FULL_WARNING) &&
@@ -322,56 +319,70 @@ public class PlayerListener {
                             }
                         }, main.getConfigValues().getWarningSeconds() * 1000);
                     }
-                }
-            } else if (magmaAccuracy == EnumUtils.MagmaTimerAccuracy.SPAWNED &&
-                    main.getConfigValues().isEnabled(Feature.MAGMA_BOSS_TIMER)) {
-                String name = main.getUtils().stripColor(entity.getCustomNameTag());
-                if (name.contains("Magma Cube Boss")) {
-                    magmaBossHealth = Integer.valueOf(name.split(Pattern.quote("Magma Cube Boss "))[1].split(Pattern.quote("/"))[0]);
-                }
-            }
+                } // Apparently it no longer has a health bar
+            }// else if (magmaAccuracy == EnumUtils.MagmaTimerAccuracy.SPAWNED &&
+//                    main.getConfigValues().isEnabled(Feature.MAGMA_BOSS_TIMER)) {
+//                String name = main.getUtils().stripColor(entity.getCustomNameTag());
+//                if (name.contains("Magma Cube Boss")) {
+//                    magmaBossHealth = Integer.valueOf(name.split(Pattern.quote("Magma Cube Boss "))[1].split(Pattern.quote("/"))[0]);
+//                }
+//            }
         }
     }
+
+    // Doesn't work at the moment, using line 378 instead.
+//    @SubscribeEvent
+//    public void onDeath(LivingDeathEvent e) {
+//        if (e.entity instanceof EntityMagmaCube) {
+//            EntitySlime magma = (EntitySlime)e.entity;
+//            if (magma.getSlimeSize() > 10 && (magmaAccuracy == EnumUtils.MagmaTimerAccuracy.SPAWNED ||
+//                    magmaAccuracy == EnumUtils.MagmaTimerAccuracy.SPAWNED_PREDICTION)) {
+//                magmaAccuracy = EnumUtils.MagmaTimerAccuracy.ABOUT;
+//                magmaTime = 7200;
+//            }
+//        }
+//    }
 
     /**
      * The main timer for the magma boss checker.
      */
     @SubscribeEvent()
-    public void onTickMagmaBossChecker(TickEvent.ClientTickEvent e) {
-        if (e.phase == TickEvent.Phase.START && main.getConfigValues().isEnabled(Feature.MAGMA_WARNING) && main.getUtils().isOnSkyblock()) {
+    public void onClientTickMagma(TickEvent.ClientTickEvent e) {
+        if (e.phase == TickEvent.Phase.START) {
             Minecraft mc = Minecraft.getMinecraft();
-            if (mc != null && mc.theWorld != null) {
-                if (magmaTick % 5 == 0) {
-                    boolean foundBoss = false;
-                    for (Entity entity : mc.theWorld.loadedEntityList) { // Loop through all the entities.
-                        if (entity instanceof EntityMagmaCube) {
-                            EntitySlime magma = (EntitySlime) entity;
-                            int size = magma.getSlimeSize();
-                            if (size > 10) { // Find a big magma boss
-                                foundBoss = true;
-                                if ((lastBoss == -1 || System.currentTimeMillis() - lastBoss > 1800000)) {
-                                    lastBoss = System.currentTimeMillis();
-                                    main.getRenderListener().setTitleFeature(Feature.MAGMA_WARNING); // Enable warning and disable again in four seconds.
-                                    magmaTick = 16; // so the sound plays instantly
-                                    new Timer().schedule(new TimerTask() {
-                                        @Override
-                                        public void run() {
-                                            main.getRenderListener().setTitleFeature(null);
-                                        }
-                                    }, main.getConfigValues().getWarningSeconds() * 1000); // 4 second warning.
+            if (main.getConfigValues().isEnabled(Feature.MAGMA_WARNING) && main.getUtils().isOnSkyblock()) {
+                if (mc != null && mc.theWorld != null) {
+                    if (magmaTick % 5 == 0) {
+                        boolean foundBoss = false;
+                        for (Entity entity : mc.theWorld.loadedEntityList) { // Loop through all the entities.
+                            if (entity instanceof EntityMagmaCube) {
+                                EntitySlime magma = (EntitySlime) entity;
+                                if (magma.getSlimeSize() > 10) { // Find a big magma boss
+                                    foundBoss = true;
+                                    if ((lastBoss == -1 || System.currentTimeMillis() - lastBoss > 1800000)) {
+                                        lastBoss = System.currentTimeMillis();
+                                        main.getRenderListener().setTitleFeature(Feature.MAGMA_WARNING); // Enable warning and disable again in four seconds.
+                                        magmaTick = 16; // so the sound plays instantly
+                                        new Timer().schedule(new TimerTask() {
+                                            @Override
+                                            public void run() {
+                                                main.getRenderListener().setTitleFeature(null);
+                                            }
+                                        }, main.getConfigValues().getWarningSeconds() * 1000); // 4 second warning.
 //                                logServer(mc);
+                                    }
+                                    magmaAccuracy = EnumUtils.MagmaTimerAccuracy.SPAWNED;
                                 }
-                                magmaAccuracy = EnumUtils.MagmaTimerAccuracy.SPAWNED;
                             }
                         }
+                        if (!foundBoss && magmaAccuracy == EnumUtils.MagmaTimerAccuracy.SPAWNED) {
+                            magmaAccuracy = EnumUtils.MagmaTimerAccuracy.ABOUT;
+                            setMagmaTime(7200);
+                        }
                     }
-                    if (!foundBoss && magmaAccuracy == EnumUtils.MagmaTimerAccuracy.SPAWNED) {
-                        magmaAccuracy = EnumUtils.MagmaTimerAccuracy.SPAWNED_PREDICTION;
-                        main.getScheduler().schedule(Scheduler.CommandType.RESET_MAGMA_PREDICTION, 400);
+                    if (main.getRenderListener().getTitleFeature() == Feature.MAGMA_WARNING && magmaTick % 4 == 0) { // Play sound every 4 ticks or 1/5 second.
+                        main.getUtils().playSound("random.orb", 0.5);
                     }
-                }
-                if (main.getRenderListener().getTitleFeature() == Feature.MAGMA_WARNING && magmaTick % 4 == 0) { // Play sound every 4 ticks or 1/5 second.
-                    main.getUtils().playSound("random.orb", 0.5);
                 }
             }
             magmaTick++;
@@ -379,7 +390,7 @@ public class PlayerListener {
                 if ((magmaAccuracy == EnumUtils.MagmaTimerAccuracy.EXACTLY || magmaAccuracy == EnumUtils.MagmaTimerAccuracy.ABOUT)
                         && magmaTime == 0) {
                     magmaAccuracy = EnumUtils.MagmaTimerAccuracy.SPAWNED_PREDICTION;
-                    main.getScheduler().schedule(Scheduler.CommandType.RESET_MAGMA_PREDICTION, 600);
+                    main.getScheduler().schedule(Scheduler.CommandType.RESET_MAGMA_PREDICTION, 400);
                 }
                 magmaTime--;
                 magmaTick = 1;
@@ -403,7 +414,7 @@ public class PlayerListener {
                         recentMagmaCubes++;
                         main.getScheduler().schedule(Scheduler.CommandType.SUBTRACT_MAGMA_COUNT, 80);
                         if (recentMagmaCubes > 15) {
-                            magmaTime = 600;
+                            setMagmaTime(600);
                             magmaAccuracy = EnumUtils.MagmaTimerAccuracy.EXACTLY;
                         }
                     }
@@ -412,7 +423,7 @@ public class PlayerListener {
                         recentBlazes++;
                         main.getScheduler().schedule(Scheduler.CommandType.SUBTRACT_BLAZE_COUNT, 80);
                         if (recentBlazes > 8) {
-                            magmaTime = 1200;
+                            setMagmaTime(1200);
                             magmaAccuracy = EnumUtils.MagmaTimerAccuracy.EXACTLY;
                         }
                     }
@@ -458,7 +469,7 @@ public class PlayerListener {
         return magmaAccuracy;
     }
 
-    int getMagmaTime() {
+    public int getMagmaTime() {
         return magmaTime;
     }
 
@@ -484,9 +495,7 @@ public class PlayerListener {
 
     public void setMagmaTime(int magmaTime) {
         this.magmaTime = magmaTime;
-    }
-
-    int getMagmaBossHealth() {
-        return magmaBossHealth;
+        main.getConfigValues().setNextMagmaTimestamp(System.currentTimeMillis()+(magmaTime*1000));
+        main.getConfigValues().saveConfig();
     }
 }

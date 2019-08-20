@@ -1,5 +1,6 @@
 package codes.biscuit.skyblockaddons.utils;
 
+import codes.biscuit.skyblockaddons.SkyblockAddons;
 import com.google.gson.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
@@ -15,6 +16,7 @@ public class ConfigValues {
             Feature.DEFENCE_PERCENTAGE, Feature.HEALTH_BAR, Feature.HEALTH_TEXT, Feature.MANA_BAR, Feature.MANA_TEXT, Feature.HEALTH_UPDATES,
             Feature.ITEM_PICKUP_LOG, Feature.MAGMA_BOSS_TIMER, Feature.DARK_AUCTION_TIMER};
 
+    private SkyblockAddons main;
     private File settingsConfigFile;
     private JsonObject settingsConfig = new JsonObject();
 
@@ -29,8 +31,10 @@ public class ConfigValues {
     private Language language = Language.ENGLISH;
     private EnumUtils.BackpackStyle backpackStyle = EnumUtils.BackpackStyle.GUI;
     private EnumUtils.TextStyle textStyle = EnumUtils.TextStyle.REGULAR;
+    private long nextMagmaTimestamp = -1;
 
-    public ConfigValues(File settingsConfigFile) {
+    public ConfigValues(SkyblockAddons main, File settingsConfigFile) {
+        this.main = main;
         this.settingsConfigFile = settingsConfigFile;
     }
 
@@ -115,9 +119,32 @@ public class ConfigValues {
                 coordinates.put(Feature.DARK_AUCTION_TIMER, new CoordsPair(settingsConfig.get("darkAuctionTimerX").getAsInt(), settingsConfig.get("darkAuctionTimerY").getAsInt()));
             }
 
-            for (Map.Entry<String, JsonElement> element : settingsConfig.getAsJsonObject("anchorPoints").entrySet()) {
-                Feature feature = Feature.fromId(Integer.valueOf(element.getKey()));
-                anchorPoints.put(feature, EnumUtils.AnchorPoint.fromId(element.getValue().getAsInt()));
+            if (settingsConfig.has("anchorPoints")) {
+                for (Map.Entry<String, JsonElement> element : settingsConfig.getAsJsonObject("anchorPoints").entrySet()) {
+                    Feature feature = Feature.fromId(Integer.valueOf(element.getKey()));
+                    anchorPoints.put(feature, EnumUtils.AnchorPoint.fromId(element.getValue().getAsInt()));
+                }
+            }
+            if (settingsConfig.has("nextMagmaTimestamp")) {
+                boolean isRecent = true;
+                long savedTimestamp = settingsConfig.get("nextMagmaTimestamp").getAsLong();
+                long currentTime = System.currentTimeMillis();
+                if (savedTimestamp < currentTime) {
+                    long difference = currentTime-savedTimestamp;
+                    if (difference < 50400000) { //only make a prediction if the time is within the past 14 hours.
+                        while (savedTimestamp < currentTime) {
+                            savedTimestamp+=7220000; //add 2 hours + 20seconds (average boss death) until the time in the future and not the past
+                        }
+                    } else {
+                        isRecent = false;
+                    }
+                }
+                if (isRecent) {
+                    int seconds = Math.round((savedTimestamp - currentTime) / 1000);
+                    main.getPlayerListener().setMagmaTime(seconds);
+                    main.getPlayerListener().setMagmaAccuracy(EnumUtils.MagmaTimerAccuracy.ABOUT);
+                    nextMagmaTimestamp = savedTimestamp;
+                }
             }
 
             loadColor("warningColor", Feature.MAGMA_WARNING, ConfigColor.RED);
@@ -156,6 +183,7 @@ public class ConfigValues {
                 disabledFeatures.add(Feature.HEALTH_BAR);
                 disabledFeatures.add(Feature.DEFENCE_PERCENTAGE);
                 disabledFeatures.add(Feature.HIDE_PLAYERS_IN_LOBBY);
+                disabledFeatures.add(Feature.SHOW_MAGMA_TIMER_IN_OTHER_GAMES);
                 setAllCoordinatesToDefault();
             }
         } else {
@@ -201,9 +229,8 @@ public class ConfigValues {
 
         Feature[] toDisable = {Feature.DROP_CONFIRMATION, Feature.MINION_STOP_WARNING, Feature.HIDE_HEALTH_BAR,
             Feature.USE_VANILLA_TEXTURE_DEFENCE, Feature.IGNORE_ITEM_FRAME_CLICKS, Feature.SHOW_BACKPACK_HOLDING_SHIFT,
-            Feature.HEALTH_BAR, Feature.DEFENCE_PERCENTAGE, Feature.HIDE_PLAYERS_IN_LOBBY};
+            Feature.HEALTH_BAR, Feature.DEFENCE_PERCENTAGE, Feature.HIDE_PLAYERS_IN_LOBBY, Feature.SHOW_MAGMA_TIMER_IN_OTHER_GAMES};
         disabledFeatures.addAll(Arrays.asList(toDisable));
-        disabledFeatures.add(Feature.ITEM_PICKUP_LOG);
         setAllCoordinatesToDefault();
         saveConfig();
     }
@@ -222,7 +249,7 @@ public class ConfigValues {
         for (Feature feature : features) {
             anchorPoints.put(feature, EnumUtils.AnchorPoint.HEALTH_BAR);
         }
-        anchorPoints.put(Feature.HEALTH_UPDATES, EnumUtils.AnchorPoint.TOP_LEFT);
+        anchorPoints.put(Feature.ITEM_PICKUP_LOG, EnumUtils.AnchorPoint.TOP_LEFT);
         features = new Feature[]{Feature.MAGMA_BOSS_TIMER, Feature.DARK_AUCTION_TIMER};
         for (Feature feature : features) {
             anchorPoints.put(feature, EnumUtils.AnchorPoint.TOP_RIGHT);
@@ -364,6 +391,7 @@ public class ConfigValues {
             settingsConfig.addProperty("darkAuctionTimerY", getRelativeCoords(Feature.DARK_AUCTION_TIMER).getY());
             settingsConfig.addProperty("magmaBossTimerColor", getColor(Feature.MAGMA_BOSS_TIMER).ordinal());
             settingsConfig.addProperty("darkAuctionTimerColor", getColor(Feature.DARK_AUCTION_TIMER).ordinal());
+            settingsConfig.addProperty("nextMagmaTimestamp", nextMagmaTimestamp);
 
             settingsConfig.addProperty("guiScale", guiScale);
             settingsConfig.addProperty("language", language.getPath());
@@ -518,5 +546,9 @@ public class ConfigValues {
 
     public void setTextStyle(EnumUtils.TextStyle textStyle) {
         this.textStyle = textStyle;
+    }
+
+    public void setNextMagmaTimestamp(long nextMagmaTimestamp) {
+        this.nextMagmaTimestamp = nextMagmaTimestamp;
     }
 }

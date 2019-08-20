@@ -28,7 +28,7 @@ plugins {
 */
 version = "1.1.2" //remember don't update this until its released
 group= "codes.biscuit.skyblockaddons" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "SkyblockAddons"
+archivesBaseName = "[1.8.9] SkyblockAddons"
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8

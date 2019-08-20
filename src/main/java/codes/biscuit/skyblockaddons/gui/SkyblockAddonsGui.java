@@ -2,19 +2,23 @@ package codes.biscuit.skyblockaddons.gui;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.gui.buttons.ButtonFeature;
-import codes.biscuit.skyblockaddons.gui.buttons.ButtonToggle;
 import codes.biscuit.skyblockaddons.gui.buttons.ButtonSolid;
+import codes.biscuit.skyblockaddons.gui.buttons.ButtonToggle;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.Feature;
 import codes.biscuit.skyblockaddons.utils.Message;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.gui.GuiTextField;
+import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.launchwrapper.Launch;
 import net.minecraftforge.client.GuiIngameForge;
 
 import java.awt.*;
+import java.io.IOException;
+import java.util.regex.Pattern;
 
 public class SkyblockAddonsGui extends GuiScreen {
 
@@ -23,6 +27,7 @@ public class SkyblockAddonsGui extends GuiScreen {
     private SkyblockAddons main;
     private int page;
     private int previousPage;
+    private GuiTextField magmaTextField = null;
 
     private long timeOpened = System.currentTimeMillis();
 
@@ -49,11 +54,17 @@ public class SkyblockAddonsGui extends GuiScreen {
             addButton(3, Feature.IGNORE_ITEM_FRAME_CLICKS, 2, EnumUtils.ButtonType.TOGGLE);
             addButton(3, Feature.HIDE_FOOD_ARMOR_BAR, 3, EnumUtils.ButtonType.TOGGLE);
             addButton(4, Feature.HIDE_HEALTH_BAR, 1, EnumUtils.ButtonType.TOGGLE);
-            addButton(4, Feature.MINION_STOP_WARNING, 2, EnumUtils.ButtonType.TOGGLE);
-            addButton(4, Feature.MAGMA_BOSS_TIMER, 3, EnumUtils.ButtonType.TOGGLE);
-            addButton(5, Feature.DROP_CONFIRMATION, 1, EnumUtils.ButtonType.TOGGLE);
+            addButton(4, Feature.STOP_BOW_CHARGE_FROM_RESETTING, 2, EnumUtils.ButtonType.TOGGLE);
+            addButton(4, Feature.AVOID_BREAKING_STEMS, 3, EnumUtils.ButtonType.TOGGLE);
+            addButton(5, Feature.HIDE_DURABILITY, 1, EnumUtils.ButtonType.TOGGLE);
             addButton(5, Feature.MAGMA_WARNING, 2, EnumUtils.ButtonType.TOGGLE);
-            addButton(5, Feature.HIDE_DURABILITY, 3, EnumUtils.ButtonType.TOGGLE);
+            addButton(5, Feature.DROP_CONFIRMATION, 3, EnumUtils.ButtonType.TOGGLE);
+            ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
+            magmaTextField = new GuiTextField(0, fontRendererObj, sr.getScaledWidth()-150, 40, 120,20);
+            magmaTextField.setMaxStringLength(100);
+            if (main.getPlayerListener().getMagmaAccuracy() != EnumUtils.MagmaTimerAccuracy.NO_DATA) {
+                magmaTextField.setText(getMagmaText());
+            }
 
             addButton(6, Feature.NEXT_PAGE, 2, EnumUtils.ButtonType.SOLID);
         } else if (page == 2) {
@@ -81,14 +92,31 @@ public class SkyblockAddonsGui extends GuiScreen {
                 addButton(6, Feature.PREVIOUS_PAGE, 5, EnumUtils.ButtonType.SOLID);
             }
         } else if (page == 3) {
-            addButton(1, Feature.AVOID_BREAKING_STEMS, 1, EnumUtils.ButtonType.TOGGLE);
-            addButton(1, Feature.STOP_BOW_CHARGE_FROM_RESETTING, 2, EnumUtils.ButtonType.TOGGLE);
+            addButton(1, Feature.MINION_STOP_WARNING, 1, EnumUtils.ButtonType.TOGGLE);
 
             addButton(6, Feature.PREVIOUS_PAGE, 2, EnumUtils.ButtonType.SOLID);
         }
         addButton(8.5, Feature.EDIT_LOCATIONS, 1, EnumUtils.ButtonType.SOLID);
         addButton(8.5, Feature.SETTINGS, 2, EnumUtils.ButtonType.SOLID);
         addButton(8.5, Feature.LANGUAGE, 3, EnumUtils.ButtonType.SOLID);
+    }
+
+    private String getMagmaText() {
+        StringBuilder magmaBuilder = new StringBuilder();
+        int totalSeconds = main.getPlayerListener().getMagmaTime();
+        int hours = totalSeconds / 3600;
+        int minutes = totalSeconds / 60 % 60;
+        int seconds = totalSeconds % 60;
+        magmaBuilder.append("0").append(hours).append(":");
+        if (minutes < 10) {
+            magmaBuilder.append("0");
+        }
+        magmaBuilder.append(minutes).append(":");
+        if (seconds < 10) {
+            magmaBuilder.append("0");
+        }
+        magmaBuilder.append(seconds);
+        return magmaBuilder.toString();
     }
 
     @Override
@@ -125,6 +153,21 @@ public class SkyblockAddonsGui extends GuiScreen {
                 drawScaledString("", 0.75, defaultBlue, 1);
             }
 //            drawScaledString("GUI Items", 0.26, defaultBlue, 1.8F);
+        }
+        if (magmaTextField != null) {
+//            drawScaledString("Magma Boss Timer - HH:MM:SS", 0.12, defaultBlue, 1);
+            ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
+            drawCenteredString(fontRendererObj, "Magma Boss Timer - HH:MM:SS",
+                    sr.getScaledWidth()-91, 25, defaultBlue);
+            if ((main.getPlayerListener().getMagmaAccuracy() == EnumUtils.MagmaTimerAccuracy.EXACTLY ||
+                    main.getPlayerListener().getMagmaAccuracy() == EnumUtils.MagmaTimerAccuracy.ABOUT)
+                    && !magmaTextField.isFocused()) {
+                magmaTextField.setText(getMagmaText());
+            }
+            magmaTextField.drawTextBox();
+//            if (magmaTextField.getText().trim().equals("")) {
+//                mc.ingameGUI.drawString(mc.fontRendererObj, "HH:MM:SS - Magma Boss", 4, 6, ConfigColor.DARK_GRAY.getColor(255));
+//            }
         }
         super.drawScreen(mouseX, mouseY, partialTicks); // Draw buttons.
     }
@@ -212,6 +255,38 @@ public class SkyblockAddonsGui extends GuiScreen {
             buttonList.add(new ButtonToggle(x, getRowHeight(row), boxWidth, boxHeight, text, main, feature));
         } else if (buttonType == EnumUtils.ButtonType.SOLID) {
             buttonList.add(new ButtonSolid(x, getRowHeight(row), boxWidth, boxHeight, text, main, feature));
+        }
+    }
+
+    @Override
+    protected void keyTyped(char typedChar, int keyCode) throws IOException {
+        super.keyTyped(typedChar, keyCode);
+        if (magmaTextField != null) {
+            if (magmaTextField.isFocused()) {
+                magmaTextField.textboxKeyTyped(typedChar, keyCode);
+                try {
+                    String[] stringSplit = magmaTextField.getText().split(Pattern.quote(":"), 3);
+                    int[] magmaTimes = new int[3];
+                    for (int timePart = 0; timePart < stringSplit.length; timePart++) {
+                        magmaTimes[timePart] = Integer.valueOf(stringSplit[timePart]);
+                    }
+                    int magmaTime = 0;
+                    magmaTime += magmaTimes[0] * 3600;
+                    magmaTime += magmaTimes[1] * 60;
+                    magmaTime += magmaTimes[2];
+                    main.getPlayerListener().setMagmaAccuracy(EnumUtils.MagmaTimerAccuracy.EXACTLY);
+                    main.getPlayerListener().setMagmaTime(magmaTime);
+                } catch (NumberFormatException | IndexOutOfBoundsException ignored) {
+                }
+            }
+        }
+    }
+
+    @Override
+    protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {
+        super.mouseClicked(mouseX, mouseY, mouseButton);
+        if (magmaTextField != null) {
+            magmaTextField.mouseClicked(mouseX, mouseY, mouseButton);
         }
     }
 

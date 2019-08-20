@@ -56,10 +56,14 @@ public class RenderListener {
      */
     @SubscribeEvent()
     public void onRenderRegular(RenderGameOverlayEvent.Post e) {
-        if ((!main.isUsingLabymod() || Minecraft.getMinecraft().ingameGUI instanceof GuiIngameForge) && main.getUtils().isOnSkyblock()) {
+        if ((!main.isUsingLabymod() || Minecraft.getMinecraft().ingameGUI instanceof GuiIngameForge)) {
             if (e.type == RenderGameOverlayEvent.ElementType.EXPERIENCE) {
-                renderOverlays();
-                renderWarnings(e.resolution);
+                if (main.getUtils().isOnSkyblock()) {
+                    renderOverlays();
+                    renderWarnings(e.resolution);
+                } else {
+                    renderMagmaTimerOnly();
+                }
             }
         }
     }
@@ -71,9 +75,25 @@ public class RenderListener {
      */
     @SubscribeEvent()
     public void onRenderLabyMod(RenderGameOverlayEvent e) {
-        if (e.type == null && main.isUsingLabymod() && main.getUtils().isOnSkyblock()) {
-            renderOverlays();
-            renderWarnings(e.resolution);
+        if (e.type == null && main.isUsingLabymod()) {
+            if (main.getUtils().isOnSkyblock()) {
+                renderOverlays();
+                renderWarnings(e.resolution);
+            } else {
+                renderMagmaTimerOnly();
+            }
+        }
+    }
+
+    /**
+     * I have an option so you can see the magma timer in other games so that's why.
+     */
+    private void renderMagmaTimerOnly() {
+        if (main.getConfigValues().isEnabled(Feature.MAGMA_BOSS_TIMER) && main.getConfigValues().isEnabled(Feature.SHOW_MAGMA_TIMER_IN_OTHER_GAMES) &&
+                main.getPlayerListener().getMagmaAccuracy() != EnumUtils.MagmaTimerAccuracy.NO_DATA) {
+            Minecraft mc = Minecraft.getMinecraft();
+            float scale = main.getUtils().denormalizeValue(main.getConfigValues().getGuiScale(), ButtonSlider.GUI_SCALE_MINIMUM, ButtonSlider.GUI_SCALE_MAXIMUM, ButtonSlider.GUI_SCALE_STEP);
+            drawText(Feature.MAGMA_BOSS_TIMER, scale, mc, null);
         }
     }
 
@@ -374,27 +394,26 @@ public class RenderListener {
                 if (ma == EnumUtils.MagmaTimerAccuracy.ABOUT || ma == EnumUtils.MagmaTimerAccuracy.EXACTLY) {
                     int totalSeconds = main.getPlayerListener().getMagmaTime();
                     int hours = totalSeconds / 3600;
-                    int minutes = totalSeconds / 60;
+                    int minutes = totalSeconds / 60 % 60;
                     int seconds = totalSeconds % 60;
-                    if (hours > 0) {
+                    if (hours >= 1) {
+//                        minutes-=hours*60;
                         magmaBuilder.append("0").append(hours).append(":");
                     }
                     if (minutes < 10) {
                         magmaBuilder.append("0");
                     }
                     magmaBuilder.append(minutes);
-                    if (hours > 0) {
+                    if (hours <= 0) {
                         magmaBuilder.append(":");
                         if (seconds < 10) {
                             magmaBuilder.append("0");
                         }
                         magmaBuilder.append(seconds);
                     }
-                } else if (ma == EnumUtils.MagmaTimerAccuracy.SPAWNED) {
-                    magmaBuilder.append(main.getPlayerListener().getMagmaBossHealth()).append("\u2764");
-                } else if (ma == EnumUtils.MagmaTimerAccuracy.SPAWNED_PREDICTION) {
-                    magmaBuilder.append("Spawned");
-                }
+                }// else if (ma == EnumUtils.MagmaTimerAccuracy.SPAWNED) {
+//                    magmaBuilder.append(main.getPlayerListener().getMagmaBossHealth()).append("\u2764");
+                //}
                 text = magmaBuilder.toString();
             } else {
                 text = "~12:34";

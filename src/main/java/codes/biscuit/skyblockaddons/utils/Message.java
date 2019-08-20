@@ -66,6 +66,7 @@ public enum Message {
     SETTING_MAGMA_BOSS_TIMER_COLOR(MessageObject.SETTING, "magmaBossTimerColor"),
     SETTING_DARK_AUCTION_TIMER_COLOR(MessageObject.SETTING, "darkAuctionTimerColor"),
     SETTING_STOP_BOW_CHARGE_FROM_RESETTING(MessageObject.SETTING, "stopBowChargeFromResetting"),
+    SETTING_SHOW_MAGMA_TIMER_IN_OTHER_GAMES(MessageObject.SETTING, "showMagmaTimerInOtherGames"),
 
     BACKPACK_STYLE_GUI(MessageObject.STYLE, "inventory"),
     BACKPACK_STYLE_COMPACT(MessageObject.STYLE, "compact"),

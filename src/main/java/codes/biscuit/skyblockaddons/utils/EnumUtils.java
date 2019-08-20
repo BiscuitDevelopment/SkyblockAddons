@@ -180,8 +180,8 @@ public class EnumUtils {
     // Different indicators of the magma boss are more accurate than others, display how accurate the time is.
     public enum MagmaTimerAccuracy {
         NO_DATA("N/A"),
-        SPAWNED(""),
-        SPAWNED_PREDICTION(""),
+        SPAWNED("NOW"),
+        SPAWNED_PREDICTION("NOW"),
         EXACTLY(""),
         ABOUT("~");
 

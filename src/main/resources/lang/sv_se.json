@@ -70,7 +70,8 @@
     "avoidBreakingStems": "Avoid Breaking Stems",
     "magmaBossTimerColor": "Magma Boss Timer Color",
     "darkAuctionTimerColor": "Dark Auction Timer Color",
-    "stopBowChargeFromResetting": "Stop Bow Charge From Resetting"
+    "stopBowChargeFromResetting": "Stop Bow Charge From Resetting",
+    "showMagmaTimerInOtherGames": "Show Magma Timer In Other Games"
   },
   "messages": {
     "dropConfirmation": "Släpp Det Här Igen För Att Bekräfta!",
