@@ -40,38 +40,38 @@
     "ignoreItemFrameClicks": "Ignorar Clics en Item Frames",
     "useVanillaTextureDefence": "Usar Textura Vanilla para Icono de Defensa",
     "showBackpackHoldingShift": "Previsualizar Backpacks Sólo al Presionar Shift",
-    "manaBar": "Mana Bar",
-    "manaText": "Mana Number",
-    "healthBar": "Health Bar",
-    "healthText": "Health Number",
-    "defenceIcon": "Defence Symbol",
-    "defenceText": "Defence Number",
-    "defencePercentage": "Defence Percentage",
-    "healthUpdates": "Health Change Number",
-    "anchorPoint": "Anchor Point: %setting%: %anchor%",
+    "manaBar": "Barra de Mana",
+    "manaText": "Número de Mana",
+    "healthBar": "Barra de Vida",
+    "healthText": "Número de Vida",
+    "defenceIcon": "Icono de Defensa",
+    "defenceText": "Número de Defensa",
+    "defencePercentage": "Porcentaje de Defensa",
+    "healthUpdates": "Número de Cambio de Vida",
+    "anchorPoint": "Punto de Anclaje: %setting%: %anchor%",
     "anchorPoints": {
-      "topLeft": "Top Left",
-      "topRight": "Top Right",
-      "bottomLeft": "Bottom Left",
-      "bottomRight": "Bottom Right",
-      "healthBar": "Health Bar"
+      "topLeft": "Arriba a la Izquierda",
+      "topRight": "Arriba a la Derecha",
+      "bottomLeft": "Abajo a la Izquierda",
+      "bottomRight": "Abajo a la Derecha",
+      "healthBar": "Barra de Vida"
     },
-    "hidePlayersInLobby": "Hide Nearby Entities In Lobby",
-    "textStyle": "Text Style: %style%",
+    "hidePlayersInLobby": "Ocultar Jugadores Cercanos en el Lobby",
+    "textStyle": "Estilo del Texto: %style%",
     "textStyles": {
       "regular": "Regular",
       "blackShadow": "Black Shadow"
     },
-    "darkAuctionTimer": "Dark Auction Timer",
-    "magmaBossTimer": "Magma Boss Timer",
-    "itemPickupLog": "Item Pickup Log",
-    "avoidPlacingEnchantedItems": "Avoid Placing Enchanted Items",
-    "makeEndermenHoldingItemPink": "Make Endermen Holding Items Pink",
-    "avoidBreakingStems": "Avoid Breaking Stems",
-    "magmaBossTimerColor": "Magma Boss Timer Color",
-    "darkAuctionTimerColor": "Dark Auction Timer Color",
-    "stopBowChargeFromResetting": "Stop Bow Charge From Resetting",
-    "showMagmaTimerInOtherGames": "Show Magma Timer In Other Games"
+    "darkAuctionTimer": "Tiempo para Dark Auction",
+    "magmaBossTimer": "Tiempo para Magma Boss",
+    "itemPickupLog": "Registro de Items Recogidos",
+    "avoidPlacingEnchantedItems": "Evitar Construcción con Objetos Encantados",
+    "makeEndermenHoldingItemPink": "Colorear de Rosa a Enderman que Sostengan Objetos",
+    "avoidBreakingStems": "Evitar Ruptura de Tallo de Cultivos",
+    "magmaBossTimerColor": "Color de Tiempo para Magma Boss",
+    "darkAuctionTimerColor": "Color de Tiempo para Dark Auction",
+    "stopBowChargeFromResetting": "Evitar Reinicio de Arco Cargado",
+    "showMagmaTimerInOtherGames": "Mostrar el Tiempo para Magma Boss en Otros Juegos"
   },
   "messages": {
     "dropConfirmation": "Arroja este objeto otra vez para confirmar!",
@@ -84,13 +84,13 @@
     "minionCannotReach": "Un minion de %type% no puede alcanzar sus mobs y se ha detenido!",
     "minionIsFull": "Un minion en tu isla está lleno!",
     "typeEnchantmentsHere": "Escribe los %type% aquí!",
-    "separateMultiple": "Usa coma para incluir varios.",
+    "separateMultiple": "Usa una coma para incluir varios.",
     "enchantsToMatch": "Encontrar %type%:",
     "enchantsToExclude": "Excluir %type%:",
     "inventoryTypes": {
       "enchants": "Encantamientos",
       "reforges": "Reforjados"
     },
-    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this stem. Use your bare hand if you'd like to break it."
+    "cancelledStemBreak": "SkyblockAddons ha detenido la ruptura de este tallo. Usa sólo tu mano si en realidad deseas romperlo."
   }
 }
