@@ -261,12 +261,13 @@ public class PlayerListener {
                             sentUpdate = true;
                         }
 
-                        if (main.getConfigValues().isEnabled(Feature.ITEM_PICKUP_LOG) && mc.currentScreen == null) {
+                        if (main.getConfigValues().isEnabled(Feature.ITEM_PICKUP_LOG) && mc.currentScreen == null
+                        && main.getPlayerListener().didntRecentlyJoinWorld()) {
                             main.getInventoryUtils().getInventoryDifference(p.inventory.mainInventory);
                         }
                     }
 
-                    main.getInventoryUtils().updateItemPickupLog();
+                    main.getInventoryUtils().cleanUpPickupLog();
 
                 } else if (timerTick > 20) { // To keep the timer going from 1 to 21 only.
                     timerTick = 1;
@@ -377,7 +378,7 @@ public class PlayerListener {
                         }
                         if (!foundBoss && magmaAccuracy == EnumUtils.MagmaTimerAccuracy.SPAWNED) {
                             magmaAccuracy = EnumUtils.MagmaTimerAccuracy.ABOUT;
-                            setMagmaTime(7200);
+                            setMagmaTime(7200, true);
                         }
                     }
                     if (main.getRenderListener().getTitleFeature() == Feature.MAGMA_WARNING && magmaTick % 4 == 0) { // Play sound every 4 ticks or 1/5 second.
@@ -414,7 +415,7 @@ public class PlayerListener {
                         recentMagmaCubes++;
                         main.getScheduler().schedule(Scheduler.CommandType.SUBTRACT_MAGMA_COUNT, 80);
                         if (recentMagmaCubes > 15) {
-                            setMagmaTime(600);
+                            setMagmaTime(600, true);
                             magmaAccuracy = EnumUtils.MagmaTimerAccuracy.EXACTLY;
                         }
                     }
@@ -423,7 +424,7 @@ public class PlayerListener {
                         recentBlazes++;
                         main.getScheduler().schedule(Scheduler.CommandType.SUBTRACT_BLAZE_COUNT, 80);
                         if (recentBlazes > 8) {
-                            setMagmaTime(1200);
+                            setMagmaTime(1200, true);
                             magmaAccuracy = EnumUtils.MagmaTimerAccuracy.EXACTLY;
                         }
                     }
@@ -452,8 +453,8 @@ public class PlayerListener {
         }
     }
 
-    public long getLastWorldJoin() {
-        return lastWorldJoin;
+    public boolean didntRecentlyJoinWorld() {
+        return System.currentTimeMillis() - lastWorldJoin > 3000;
     }
 
     public enum GUIType {
@@ -493,9 +494,11 @@ public class PlayerListener {
         this.magmaAccuracy = magmaAccuracy;
     }
 
-    public void setMagmaTime(int magmaTime) {
+    public void setMagmaTime(int magmaTime, boolean save) {
         this.magmaTime = magmaTime;
         main.getConfigValues().setNextMagmaTimestamp(System.currentTimeMillis()+(magmaTime*1000));
-        main.getConfigValues().saveConfig();
+        if (save) {
+            main.getConfigValues().saveConfig();
+        }
     }
 }

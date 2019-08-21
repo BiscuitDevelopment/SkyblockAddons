@@ -92,8 +92,10 @@ public class RenderListener {
         if (main.getConfigValues().isEnabled(Feature.MAGMA_BOSS_TIMER) && main.getConfigValues().isEnabled(Feature.SHOW_MAGMA_TIMER_IN_OTHER_GAMES) &&
                 main.getPlayerListener().getMagmaAccuracy() != EnumUtils.MagmaTimerAccuracy.NO_DATA) {
             Minecraft mc = Minecraft.getMinecraft();
-            float scale = main.getUtils().denormalizeValue(main.getConfigValues().getGuiScale(), ButtonSlider.GUI_SCALE_MINIMUM, ButtonSlider.GUI_SCALE_MAXIMUM, ButtonSlider.GUI_SCALE_STEP);
-            drawText(Feature.MAGMA_BOSS_TIMER, scale, mc, null);
+            if (!(mc.currentScreen instanceof LocationEditGui) && !(mc.currentScreen instanceof GuiNotification)) {
+                float scale = main.getUtils().denormalizeValue(main.getConfigValues().getGuiScale(), ButtonSlider.GUI_SCALE_MINIMUM, ButtonSlider.GUI_SCALE_MAXIMUM, ButtonSlider.GUI_SCALE_STEP);
+                drawText(Feature.MAGMA_BOSS_TIMER, scale, mc, null);
+            }
         }
     }
 
@@ -397,8 +399,10 @@ public class RenderListener {
                     int minutes = totalSeconds / 60 % 60;
                     int seconds = totalSeconds % 60;
                     if (hours >= 1) {
-//                        minutes-=hours*60;
-                        magmaBuilder.append("0").append(hours).append(":");
+                        if (hours < 10) {
+                            magmaBuilder.append("0");
+                        }
+                        magmaBuilder.append(hours).append(":");
                     }
                     if (minutes < 10) {
                         magmaBuilder.append("0");

@@ -72,7 +72,7 @@ public abstract class MixinGuiChest extends GuiContainer {
             int xPos = guiLeft - 160;
             int yPos = guiTop + 80;
             textFieldMatch = new GuiTextField(2, this.fontRendererObj, xPos, yPos, 120, 20);
-            textFieldMatch.setMaxStringLength(100);
+            textFieldMatch.setMaxStringLength(500);
             List<String> lockedEnchantments = SkyblockAddons.getInstance().getUtils().getEnchantmentMatch();
             StringBuilder enchantmentBuilder = new StringBuilder();
             int i = 1;
@@ -89,7 +89,7 @@ public abstract class MixinGuiChest extends GuiContainer {
             }
             yPos += 40;
             textFieldExclusions = new GuiTextField(2, this.fontRendererObj, xPos, yPos, 120, 20);
-            textFieldExclusions.setMaxStringLength(100);
+            textFieldExclusions.setMaxStringLength(500);
             lockedEnchantments = SkyblockAddons.getInstance().getUtils().getEnchantmentExclusion();
             enchantmentBuilder = new StringBuilder();
             i = 1;

@@ -13,7 +13,6 @@ import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.launchwrapper.Launch;
 import net.minecraftforge.client.GuiIngameForge;
 
 import java.awt.*;
@@ -61,7 +60,7 @@ public class SkyblockAddonsGui extends GuiScreen {
             addButton(5, Feature.DROP_CONFIRMATION, 3, EnumUtils.ButtonType.TOGGLE);
             ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
             magmaTextField = new GuiTextField(0, fontRendererObj, sr.getScaledWidth()-150, 40, 120,20);
-            magmaTextField.setMaxStringLength(100);
+            magmaTextField.setMaxStringLength(8);
             if (main.getPlayerListener().getMagmaAccuracy() != EnumUtils.MagmaTimerAccuracy.NO_DATA) {
                 magmaTextField.setText(getMagmaText());
             }
@@ -145,17 +144,13 @@ public class SkyblockAddonsGui extends GuiScreen {
         drawScaledString("v" + SkyblockAddons.VERSION + " by Biscut", 0.12, defaultBlue, 1.3, 50, 17);
         drawScaledString(Message.SETTING_SETTINGS.getMessage(), 0.8, defaultBlue, 1.5);
         if (page == 1) {
-            if (main.isUsingLabymod() || (boolean) Launch.blackboard.get("fml.deobfuscatedEnvironment")) { // Show the labymod message also when i'm testing it to make sure it looks fine.
+            if (main.isUsingLabymod() || main.getUtils().isDevEnviroment()) { // Show the labymod message also when i'm testing it to make sure it looks fine.
                 drawScaledString(Message.MESSAGE_LABYMOD.getMessage(), 0.75, defaultBlue, 1);
             }
-        } else if (page == 2) {
-            if (main.isUsingOofModv1() || (boolean) Launch.blackboard.get("fml.deobfuscatedEnvironment")) { // Show the labymod message also when i'm testing it to make sure it looks fine.
-                drawScaledString("", 0.75, defaultBlue, 1);
-            }
+        }// else if (page == 2) {
 //            drawScaledString("GUI Items", 0.26, defaultBlue, 1.8F);
-        }
+//        }
         if (magmaTextField != null) {
-//            drawScaledString("Magma Boss Timer - HH:MM:SS", 0.12, defaultBlue, 1);
             ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
             drawCenteredString(fontRendererObj, "Magma Boss Timer - HH:MM:SS",
                     sr.getScaledWidth()-91, 25, defaultBlue);
@@ -275,7 +270,7 @@ public class SkyblockAddonsGui extends GuiScreen {
                     magmaTime += magmaTimes[1] * 60;
                     magmaTime += magmaTimes[2];
                     main.getPlayerListener().setMagmaAccuracy(EnumUtils.MagmaTimerAccuracy.EXACTLY);
-                    main.getPlayerListener().setMagmaTime(magmaTime);
+                    main.getPlayerListener().setMagmaTime(magmaTime, true);
                 } catch (NumberFormatException | IndexOutOfBoundsException ignored) {
                 }
             }

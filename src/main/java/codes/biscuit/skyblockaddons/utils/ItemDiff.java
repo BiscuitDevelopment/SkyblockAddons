@@ -5,7 +5,7 @@ public class ItemDiff {
     /**
      * How long items in the log should be displayed before they are removed in ms
      */
-    public static final long LIFESPAN = 5000;
+    static final long LIFESPAN = 5000;
 
     private final String displayName;
     private int amount;
@@ -52,7 +52,7 @@ public class ItemDiff {
     /**
      * @return Amount of ms since the ItemDiff was created
      */
-    public long getLifetime() {
+    long getLifetime() {
         return System.currentTimeMillis() - timestamp;
     }
 }

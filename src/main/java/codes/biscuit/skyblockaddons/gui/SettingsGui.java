@@ -135,7 +135,7 @@ public class SettingsGui extends GuiScreen {
         if (abstractButton instanceof ButtonFeature) {
             Feature feature = ((ButtonFeature)abstractButton).getFeature();
             if (abstractButton instanceof ButtonColor) {
-                main.getConfigValues().setColor(feature, main.getConfigValues().getColor(feature).getNextColor());
+                main.getConfigValues().setNextColor(feature);
             } else if (abstractButton instanceof ButtonModify) {
                 if (feature == Feature.ADD) {
                     if (main.getConfigValues().getWarningSeconds() < 99) {

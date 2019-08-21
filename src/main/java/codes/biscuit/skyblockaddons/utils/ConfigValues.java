@@ -140,8 +140,8 @@ public class ConfigValues {
                     }
                 }
                 if (isRecent) {
-                    int seconds = Math.round((savedTimestamp - currentTime) / 1000);
-                    main.getPlayerListener().setMagmaTime(seconds);
+                    int seconds = Math.round((savedTimestamp-currentTime)/1000);
+                    main.getPlayerListener().setMagmaTime(seconds, false);
                     main.getPlayerListener().setMagmaAccuracy(EnumUtils.MagmaTimerAccuracy.ABOUT);
                     nextMagmaTimestamp = savedTimestamp;
                 }
@@ -226,6 +226,8 @@ public class ConfigValues {
         featureColors.put(Feature.HEALTH_TEXT, ConfigColor.RED);
         featureColors.put(Feature.DEFENCE_TEXT, ConfigColor.GREEN);
         featureColors.put(Feature.DEFENCE_PERCENTAGE, ConfigColor.GREEN);
+        featureColors.put(Feature.MAGMA_BOSS_TIMER, ConfigColor.GOLD);
+        featureColors.put(Feature.DARK_AUCTION_TIMER, ConfigColor.GOLD);
 
         Feature[] toDisable = {Feature.DROP_CONFIRMATION, Feature.MINION_STOP_WARNING, Feature.HIDE_HEALTH_BAR,
             Feature.USE_VANILLA_TEXTURE_DEFENCE, Feature.IGNORE_ITEM_FRAME_CLICKS, Feature.SHOW_BACKPACK_HOLDING_SHIFT,
@@ -434,8 +436,8 @@ public class ConfigValues {
         return language;
     }
 
-    public void setColor(Feature feature, ConfigColor color) {
-        featureColors.put(feature, color);
+    public void setNextColor(Feature feature) {
+        featureColors.put(feature, main.getConfigValues().getColor(feature).getNextColor());
     }
 
     public ConfigColor getColor(Feature feature) {

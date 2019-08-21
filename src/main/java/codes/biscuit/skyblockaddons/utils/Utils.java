@@ -5,6 +5,7 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import net.minecraft.client.Minecraft;
 import net.minecraft.event.ClickEvent;
+import net.minecraft.launchwrapper.Launch;
 import net.minecraft.scoreboard.Score;
 import net.minecraft.scoreboard.ScoreObjective;
 import net.minecraft.scoreboard.ScorePlayerTeam;
@@ -281,6 +282,10 @@ public class Utils {
             newString.insert(0, " ");
         }
         return main.getUtils().removeDuplicateSpaces(newString.toString().trim());
+    }
+
+    public boolean isDevEnviroment() {
+        return (boolean) Launch.blackboard.get("fml.deobfuscatedEnvironment");
     }
 
     public int getDefaultBlue(int alpha) {

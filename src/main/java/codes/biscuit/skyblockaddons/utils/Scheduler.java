@@ -96,7 +96,7 @@ public class Scheduler {
             } else if (this == RESET_MAGMA_PREDICTION) {
                 if (playerListener.getMagmaAccuracy() == EnumUtils.MagmaTimerAccuracy.SPAWNED_PREDICTION) {
                     playerListener.setMagmaAccuracy(EnumUtils.MagmaTimerAccuracy.ABOUT);
-                    playerListener.setMagmaTime(7200);
+                    playerListener.setMagmaTime(7200, true);
                 }
             }
         }

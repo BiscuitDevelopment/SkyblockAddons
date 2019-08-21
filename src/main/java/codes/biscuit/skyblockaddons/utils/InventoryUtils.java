@@ -125,7 +125,7 @@ public class InventoryUtils {
     /**
      * Removes items in the pickup log that have been there for longer than {@link ItemDiff#LIFESPAN}
      */
-    public void updateItemPickupLog() {
+    public void cleanUpPickupLog() {
         List<String> logItemsToRemove = new LinkedList<>();
         itemPickupLog.forEach((displayName, itemDiff) -> {
             if (itemDiff.getLifetime() > ItemDiff.LIFESPAN) {
@@ -151,7 +151,7 @@ public class InventoryUtils {
             }
             if (!inventoryIsFull) {
                 inventoryIsFull = true;
-                if (mc.currentScreen == null && System.currentTimeMillis() - main.getPlayerListener().getLastWorldJoin() > 3000) {
+                if (mc.currentScreen == null && main.getPlayerListener().didntRecentlyJoinWorld()) {
                     main.getUtils().playSound("random.orb", 0.5);
                     main.getRenderListener().setTitleFeature(Feature.FULL_INVENTORY_WARNING);
                     new Timer().schedule(new TimerTask() {
