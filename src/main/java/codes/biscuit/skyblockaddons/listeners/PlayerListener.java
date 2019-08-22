@@ -12,6 +12,7 @@ import net.minecraft.entity.monster.EntityMagmaCube;
 import net.minecraft.entity.monster.EntitySlime;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
@@ -462,25 +463,26 @@ public class PlayerListener {
      */
     @SubscribeEvent()
     public void onItemTooltip(ItemTooltipEvent e) {
-		if (e.itemStack == null) {
-    		return;
-    	}   
-		
-        ItemStack hoveredItem = e.itemStack;		    
+        ItemStack hoveredItem = e.itemStack;
         
-        //For anvil use~ done by Dahn
+        // Anvil Uses ~ original done by Dahn#6036
         if (hoveredItem.hasTagCompound()) {
-        	NBTTagCompound nbtcomp = hoveredItem.getTagCompound();
-            int anvil_use = 0;
-            
-            if (nbtcomp.getCompoundTag("ExtraAttributes") != null) {
-            	anvil_use = nbtcomp.getCompoundTag("ExtraAttributes").getInteger("anvil_uses");
+        	NBTTagCompound nbt = hoveredItem.getTagCompound();
+            if (nbt.hasKey("ExtraAttributes")) {
+                if (nbt.getCompoundTag("ExtraAttributes").hasKey("anvil_uses")) {
+                    int insertAt = e.toolTip.size();
+                    if (Minecraft.getMinecraft().gameSettings.advancedItemTooltips) {
+                        insertAt-= 3; // 1 line for the item name, 1 line for the nbt, and 1 line for the rarity
+                        if (e.itemStack.isItemDamaged()) {
+                            insertAt--; // 1 line for damage
+                        }
+                    }
+                    e.toolTip.add(insertAt,
+                            "Anvil Uses: " + EnumChatFormatting.RED+ nbt.getCompoundTag("ExtraAttributes").getInteger("anvil_uses"));
+                }
             }
-             
-    		e.toolTip.add("Anvil Usage: " + anvil_use);
         }
-        
-		//
+
         if (hoveredItem.hasTagCompound() && GuiScreen.isCtrlKeyDown() && main.getUtils().isCopyNBT()) {
             Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
             String nbt = hoveredItem.getTagCompound().toString();
