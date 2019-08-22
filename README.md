@@ -6,6 +6,10 @@ Join The Discord!
 ------
 If you need support or have suggestions or whatnot, make sure to join [our discord!](https://discordapp.com/invite/PqTAEek)
 
+Credits
+-----
+InventiveTalent for  allowing us to use her magma boss API in our project, please check out her magma boss timer website at https://hypixel.inventivetalent.org/skyblock-magma-timer/ .
+
 Thanks to YourKit
 ------
 ![YourKit](https://www.yourkit.com/images/yklogo.png)

@@ -3,6 +3,8 @@ package codes.biscuit.skyblockaddons.utils;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import net.minecraft.client.Minecraft;
 import net.minecraft.event.ClickEvent;
 import net.minecraft.launchwrapper.Launch;
@@ -45,6 +47,7 @@ public class Utils {
     private boolean playingSound = false;
     private boolean copyNBT = false;
     private String serverID = "";
+    private SkyblockDate currentDate = new SkyblockDate(SkyblockDate.SkyblockMonth.EARLY_WINTER, 1, 1, 1);
 
     private boolean fadingIn;
 
@@ -79,7 +82,8 @@ public class Utils {
 
     private static final Pattern SERVER_REGEX = Pattern.compile("([0-9]{2}/[0-9]{2}/[0-9]{2}) (mini[0-9]{1,3}[A-Za-z])");
 
-    public void checkGameAndLocation() {
+    public void checkGameLocationDate() {
+        boolean foundLocation = false;
         Minecraft mc = Minecraft.getMinecraft();
         if (mc != null && mc.theWorld != null) {
             Scoreboard scoreboard = mc.theWorld.getScoreboard();
@@ -93,9 +97,33 @@ public class Utils {
                 } else {
                     collection = list;
                 }
+                String timeString = null;
                 for (Score score1 : collection) {
                     ScorePlayerTeam scorePlayerTeam = scoreboard.getPlayersTeam(score1.getPlayerName());
-                    String locationString = keepLettersAndNumbersOnly(stripColor(ScorePlayerTeam.formatPlayerName(scorePlayerTeam, score1.getPlayerName())));
+                    String locationString = keepLettersAndNumbersOnly(
+                            stripColor(ScorePlayerTeam.formatPlayerName(scorePlayerTeam, score1.getPlayerName())));
+                    if (locationString.endsWith("am") || locationString.endsWith("pm")) {
+                        timeString = locationString.trim();
+                        timeString = timeString.substring(0, timeString.length()-2);
+                    }
+                    for (SkyblockDate.SkyblockMonth month : SkyblockDate.SkyblockMonth.values()) {
+                        if (locationString.contains(month.getScoreboardString())) {
+                            try {
+                                currentDate.setMonth(month);
+                                String numberPart = locationString.substring(locationString.lastIndexOf(" ") + 1);
+                                int day = Integer.valueOf(getNumbersOnly(numberPart));
+                                currentDate.setDay(day);
+                                if (timeString != null) {
+                                    String[] timeSplit = timeString.split(Pattern.quote(":"));
+                                    int hour = Integer.valueOf(timeSplit[0]);
+                                    currentDate.setHour(hour);
+                                    int minute = Integer.valueOf(timeSplit[1]);
+                                    currentDate.setMinute(minute);
+                                }
+                            } catch (IndexOutOfBoundsException | NumberFormatException ignored) {}
+                            break;
+                        }
+                    }
                     if (locationString.contains("mini")) {
                         Matcher matcher = SERVER_REGEX.matcher(locationString);
                         if (matcher.matches()) {
@@ -110,7 +138,8 @@ public class Utils {
                                 sendPostRequest(EnumUtils.MagmaEvent.PING); // going into blazing fortress
                             }
                             location = loopLocation;
-                            return;
+                            foundLocation = true;
+                            break;
                         }
                     }
                 }
@@ -120,7 +149,9 @@ public class Utils {
         } else {
             onSkyblock = false;
         }
-        location = null;
+        if (!foundLocation) {
+            location = null;
+        }
     }
 
     public float normalizeValue(float value, float valueMin, float valueMax, float valueStep) {
@@ -290,40 +321,42 @@ public class Utils {
     private final static String USER_AGENT = "SkyblockAddons/" + SkyblockAddons.VERSION;
 
     public void fetchEstimateFromServer() {
-        // Not enabling fetch yet because untested
+        new Thread(() -> {
+            FMLLog.info("[SkyblockAddons] Getting magma boss spawn estimate from server...");
+            try {
+                URL url = new URL("https://hypixel-api.inventivetalent.org/api/skyblock/bosstimer/magma/estimatedSpawn");
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                connection.setRequestMethod("GET");
+                connection.setRequestProperty("User-Agent", USER_AGENT);
 
-//        new Thread(() -> {
-//            FMLLog.info("Getting magma boss spawn estimate from server...");
-//            try {
-//                URL url = new URL("https://hypixel-api.inventivetalent.org/api/skyblock/bosstimer/magma/estimatedSpawn");
-//                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-//                connection.setRequestMethod("GET");
-//                connection.setRequestProperty("User-Agent", USER_AGENT);
-//
-//                FMLLog.info("Got response code " + connection.getResponseCode());
-//
-//                StringBuilder response = new StringBuilder();
-//                try (BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
-//                    String line;
-//                    while ((line = in.readLine()) != null) {
-//                        response.append(line);
-//                    }
-//                }
-//                JsonObject responseJson = new Gson().fromJson(response.toString(), JsonObject.class);
-//                int magmaSpawnTime = (int)(responseJson.get("estimate").getAsLong()-System.currentTimeMillis());
-//                System.out.println(System.currentTimeMillis());
-//
-//                main.getPlayerListener().setMagmaTime(magmaSpawnTime, true);
-//                main.getPlayerListener().setMagmaAccuracy(EnumUtils.MagmaTimerAccuracy.ABOUT);
-//            } catch (IOException e) {
-//                FMLLog.warning("Failed to get magma boss spawn estimate from server", e);
-//            }
-//        }).start();
+                FMLLog.info("[SkyblockAddons] Got response code " + connection.getResponseCode());
+
+                StringBuilder response = new StringBuilder();
+                try (BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
+                    String line;
+                    while ((line = in.readLine()) != null) {
+                        response.append(line);
+                    }
+                }
+                JsonObject responseJson = new Gson().fromJson(response.toString(), JsonObject.class);
+                long estimate = responseJson.get("estimate").getAsLong();
+                long currentTime = System.currentTimeMillis();
+                int magmaSpawnTime = (int)((estimate-currentTime)/1000);
+                FMLLog.info("[SkyblockAddons] System time is " + currentTime +", server time estimate is" +
+                        estimate+". Updating magma boss spawn to be in "+magmaSpawnTime+" seconds.");
+
+                main.getPlayerListener().setMagmaTime(magmaSpawnTime, true);
+                main.getPlayerListener().setMagmaAccuracy(EnumUtils.MagmaTimerAccuracy.ABOUT);
+            } catch (IOException ex) {
+                FMLLog.warning("[SkyblockAddons] Failed to get magma boss spawn estimate from server");
+                ex.printStackTrace();
+            }
+        }).start();
     }
 
     public void sendPostRequest(EnumUtils.MagmaEvent event) {
         new Thread(() -> {
-            FMLLog.info("Posting event " + event.getInventiveTalentEvent() + " to InventiveTalent API");
+            FMLLog.info("[SkyblockAddons] Posting event " + event.getInventiveTalentEvent() + " to InventiveTalent API");
 
             try {
                 String urlString = "https://hypixel-api.inventivetalent.org/api/skyblock/bosstimer/magma/addEvent";
@@ -348,11 +381,11 @@ public class Utils {
                         out.writeBytes(postString);
                         out.flush();
                     }
-                    FMLLog.info("Got response code " + connection.getResponseCode());
+                    FMLLog.info("[SkyblockAddons] Got response code " + connection.getResponseCode());
                     connection.disconnect();
                 }
             } catch (IOException ex) {
-                FMLLog.warning("Failed to post event to server");
+                FMLLog.warning("[SkyblockAddons] Failed to post event to server");
                 ex.printStackTrace();
             }
         }).start();
@@ -450,4 +483,7 @@ public class Utils {
         this.copyNBT = copyNBT;
     }
 
+    public SkyblockDate getCurrentDate() {
+        return currentDate;
+    }
 }

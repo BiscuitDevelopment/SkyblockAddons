@@ -254,7 +254,7 @@ public class PlayerListener {
                 } else if (timerTick % 5 == 0) { // Check inventory, location, updates, and skeleton helmet every 1/4 second.
                     EntityPlayerSP p = mc.thePlayer;
                     if (p != null) {
-                        main.getUtils().checkGameAndLocation();
+                        main.getUtils().checkGameLocationDate();
                         main.getInventoryUtils().checkIfInventoryIsFull(mc, p);
                         main.getInventoryUtils().checkIfWearingSkeletonHelmet(p);
                         if (!sentUpdate) {
@@ -541,8 +541,8 @@ public class PlayerListener {
     public void setMagmaTime(int magmaTime, boolean save) {
         this.magmaTime = magmaTime;
         main.getConfigValues().setNextMagmaTimestamp(System.currentTimeMillis()+(magmaTime*1000));
-        if (save) {
-            main.getConfigValues().saveConfig();
-        }
+//        if (save) {
+//            main.getConfigValues().saveConfig();
+//        }
     }
 }

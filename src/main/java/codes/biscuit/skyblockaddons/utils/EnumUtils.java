@@ -202,7 +202,8 @@ public class EnumUtils {
         BOSS_SPAWN("spawn"),
         BOSS_DEATH("death"),
 
-        PING(null);
+        // Not actually an event
+        PING("ping");
 
         // The event name used by InventiveTalent's API
         private String inventiveTalentEvent;

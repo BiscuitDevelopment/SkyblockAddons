@@ -63,7 +63,7 @@ public class Scheduler {
                 }
                 queue.remove(totalTicks);
             }
-            if (totalTicks % 12000 == 0) { // check magma boss every 12 minutes
+            if (totalTicks % 18000 == 0) { // check magma boss every 15 minutes
                 if (main.getPlayerListener().getMagmaAccuracy() == EnumUtils.MagmaTimerAccuracy.ABOUT) {
                     main.getUtils().fetchEstimateFromServer();
                 }
