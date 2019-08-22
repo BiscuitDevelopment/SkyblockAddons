@@ -4,3 +4,7 @@
 /classes
 /run
 *.iml
+/bin/
+.classpath
+.project
+*.prefs

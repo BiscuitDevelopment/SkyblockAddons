@@ -450,10 +450,17 @@ public class PlayerListener {
             int anvil_use = 0;
             
             if (nbtcomp.getCompoundTag("ExtraAttributes") != null) {
-            	anvil_use = nbtcomp.getCompoundTag("ExtraAttributes").getInteger("anvil_uses");
+            	if (nbtcomp.getCompoundTag("ExtraAttributes").hasKey("anvil_uses")) {
+            		anvil_use = nbtcomp.getCompoundTag("ExtraAttributes").getInteger("anvil_uses");
+            		if (nbtcomp.getCompoundTag("ExtraAttributes").hasKey("hot_potato_count")) {
+            			anvil_use -= anvil_use = nbtcomp.getCompoundTag("ExtraAttributes").getInteger("hot_potato_count");
+            		}
+            		e.toolTip.add("Anvil Usage: " + anvil_use);
+            	}
+            	
             }
              
-    		e.toolTip.add("Anvil Usage: " + anvil_use);
+    		
         }
         
 		//
