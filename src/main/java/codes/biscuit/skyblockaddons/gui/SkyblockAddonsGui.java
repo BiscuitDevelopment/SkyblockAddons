@@ -270,7 +270,7 @@ public class SkyblockAddonsGui extends GuiScreen {
                     magmaTime += magmaTimes[1] * 60;
                     magmaTime += magmaTimes[2];
                     main.getPlayerListener().setMagmaAccuracy(EnumUtils.MagmaTimerAccuracy.EXACTLY);
-                    main.getPlayerListener().setMagmaTime(magmaTime, true);
+                    main.getPlayerListener().setMagmaTime(magmaTime, false); // will save on exit instead
                 } catch (NumberFormatException | IndexOutOfBoundsException ignored) {
                 }
             }

@@ -344,6 +344,9 @@ public class PlayerListener {
 //        }
 //    }
 
+    private long lastBossSpawnPost = -1;
+    private long lastBossDeathPost = -1;
+
     /**
      * The main timer for the magma boss checker.
      */
@@ -355,6 +358,7 @@ public class PlayerListener {
                 if (mc != null && mc.theWorld != null) {
                     if (magmaTick % 5 == 0) {
                         boolean foundBoss = false;
+                        long currentTime = System.currentTimeMillis();
                         for (Entity entity : mc.theWorld.loadedEntityList) { // Loop through all the entities.
                             if (entity instanceof EntityMagmaCube) {
                                 EntitySlime magma = (EntitySlime) entity;
@@ -373,12 +377,20 @@ public class PlayerListener {
 //                                logServer(mc);
                                     }
                                     magmaAccuracy = EnumUtils.MagmaTimerAccuracy.SPAWNED;
+                                    if (currentTime- lastBossSpawnPost > 300000) {
+                                        lastBossSpawnPost = currentTime;
+                                        main.getUtils().sendPostRequest(EnumUtils.MagmaEvent.BOSS_SPAWN);
+                                    }
                                 }
                             }
                         }
                         if (!foundBoss && magmaAccuracy == EnumUtils.MagmaTimerAccuracy.SPAWNED) {
                             magmaAccuracy = EnumUtils.MagmaTimerAccuracy.ABOUT;
                             setMagmaTime(7200, true);
+                            if (currentTime- lastBossDeathPost > 300000) {
+                                lastBossDeathPost = currentTime;
+                                main.getUtils().sendPostRequest(EnumUtils.MagmaEvent.BOSS_DEATH);
+                            }
                         }
                     }
                     if (main.getRenderListener().getTitleFeature() == Feature.MAGMA_WARNING && magmaTick % 4 == 0) { // Play sound every 4 ticks or 1/5 second.
@@ -399,6 +411,9 @@ public class PlayerListener {
         }
     }
 
+    private long lastMagmaWavePost = -1;
+    private long lastBlazeWavePost = -1;
+
     @SubscribeEvent()
     public void onTickMagmaBossChecker(EntityJoinWorldEvent e) {
 
@@ -410,6 +425,7 @@ public class PlayerListener {
             Entity entity =  e.entity;
             if (entity.posX < xPoints[0] && entity.posX > xPoints[1] &&
                     entity.posZ < yPoints[0] && entity.posZ > yPoints[1]) { // timers will trigger if 15 magmas/8 blazes spawn in the box within a 4 second time period
+                long currentTime = System.currentTimeMillis();
                 if (e.entity instanceof EntityMagmaCube) {
                     if (!recentlyLoadedChunks.contains(new CoordsPair(entity.chunkCoordX, entity.chunkCoordZ)) && entity.ticksExisted == 0) {
                         recentMagmaCubes++;
@@ -417,6 +433,10 @@ public class PlayerListener {
                         if (recentMagmaCubes > 15) {
                             setMagmaTime(600, true);
                             magmaAccuracy = EnumUtils.MagmaTimerAccuracy.EXACTLY;
+                            if (currentTime- lastMagmaWavePost > 300000) {
+                                lastMagmaWavePost = currentTime;
+                                main.getUtils().sendPostRequest(EnumUtils.MagmaEvent.MAGMA_WAVE);
+                            }
                         }
                     }
                 } else if (e.entity instanceof EntityBlaze) {
@@ -426,6 +446,10 @@ public class PlayerListener {
                         if (recentBlazes > 8) {
                             setMagmaTime(1200, true);
                             magmaAccuracy = EnumUtils.MagmaTimerAccuracy.EXACTLY;
+                            if (currentTime- lastBlazeWavePost > 300000) {
+                                lastBlazeWavePost = currentTime;
+                                main.getUtils().sendPostRequest(EnumUtils.MagmaEvent.BLAZE_WAVE);
+                            }
                         }
                     }
                 }

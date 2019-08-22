@@ -15,15 +15,20 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.MathHelper;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.FMLLog;
 import org.apache.commons.lang3.mutable.MutableInt;
 
 import java.awt.*;
 import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.*;
 import java.util.List;
+import java.util.*;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
@@ -39,6 +44,7 @@ public class Utils {
     private EnumUtils.Location location = null;
     private boolean playingSound = false;
     private boolean copyNBT = false;
+    private String serverID = "";
 
     private boolean fadingIn;
 
@@ -71,6 +77,8 @@ public class Utils {
         }
     }
 
+    private static final Pattern SERVER_REGEX = Pattern.compile("([0-9]{2}/[0-9]{2}/[0-9]{2}) (mini[0-9]{1,3}[A-Za-z])");
+
     public void checkGameAndLocation() {
         Minecraft mc = Minecraft.getMinecraft();
         if (mc != null && mc.theWorld != null) {
@@ -87,9 +95,20 @@ public class Utils {
                 }
                 for (Score score1 : collection) {
                     ScorePlayerTeam scorePlayerTeam = scoreboard.getPlayersTeam(score1.getPlayerName());
-                    String locationString = keepLettersOnly(stripColor(ScorePlayerTeam.formatPlayerName(scorePlayerTeam, score1.getPlayerName())));
+                    String locationString = keepLettersAndNumbersOnly(stripColor(ScorePlayerTeam.formatPlayerName(scorePlayerTeam, score1.getPlayerName())));
+                    if (locationString.contains("mini")) {
+                        Matcher matcher = SERVER_REGEX.matcher(locationString);
+                        if (matcher.matches()) {
+                            serverID = matcher.group(2);
+                            continue; // skip to next line
+                        }
+                    }
                     for (EnumUtils.Location loopLocation : EnumUtils.Location.values()) {
                         if (locationString.endsWith(loopLocation.getScoreboardName())) {
+                            if (loopLocation == EnumUtils.Location.BLAZING_FORTRESS &&
+                                    location != EnumUtils.Location.BLAZING_FORTRESS) {
+                                sendPostRequest(EnumUtils.MagmaEvent.PING); // going into blazing fortress
+                            }
                             location = loopLocation;
                             return;
                         }
@@ -125,12 +144,20 @@ public class Utils {
         return value;
     }
 
-    private String keepLettersOnly(String text) {
-        return Pattern.compile("[^a-z A-Z]").matcher(text).replaceAll("");
+//    private final Pattern LETTERS = Pattern.compile("[^a-z A-Z]");
+    private static final Pattern NUMBERS_SLASHES = Pattern.compile("[^0-9 /]");
+    private static final Pattern LETTERS_NUMBERS = Pattern.compile("[^a-z A-Z:0-9/]");
+
+    private String keepLettersAndNumbersOnly(String text) {
+        return LETTERS_NUMBERS.matcher(text).replaceAll("");
     }
 
+//    private String keepLettersOnly(String text) {
+//        return LETTERS.matcher(text).replaceAll("");
+//    }
+
     public String getNumbersOnly(String text) {
-        return Pattern.compile("[^0-9 /]").matcher(text).replaceAll("");
+        return NUMBERS_SLASHES.matcher(text).replaceAll("");
     }
 
     private String removeDuplicateSpaces(String text) {
@@ -258,6 +285,77 @@ public class Utils {
             }
         }
         return false;
+    }
+
+    private final static String USER_AGENT = "SkyblockAddons/" + SkyblockAddons.VERSION;
+
+    public void fetchEstimateFromServer() {
+        // Not enabling fetch yet because untested
+
+//        new Thread(() -> {
+//            FMLLog.info("Getting magma boss spawn estimate from server...");
+//            try {
+//                URL url = new URL("https://hypixel-api.inventivetalent.org/api/skyblock/bosstimer/magma/estimatedSpawn");
+//                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+//                connection.setRequestMethod("GET");
+//                connection.setRequestProperty("User-Agent", USER_AGENT);
+//
+//                FMLLog.info("Got response code " + connection.getResponseCode());
+//
+//                StringBuilder response = new StringBuilder();
+//                try (BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
+//                    String line;
+//                    while ((line = in.readLine()) != null) {
+//                        response.append(line);
+//                    }
+//                }
+//                JsonObject responseJson = new Gson().fromJson(response.toString(), JsonObject.class);
+//                int magmaSpawnTime = (int)(responseJson.get("estimate").getAsLong()-System.currentTimeMillis());
+//                System.out.println(System.currentTimeMillis());
+//
+//                main.getPlayerListener().setMagmaTime(magmaSpawnTime, true);
+//                main.getPlayerListener().setMagmaAccuracy(EnumUtils.MagmaTimerAccuracy.ABOUT);
+//            } catch (IOException e) {
+//                FMLLog.warning("Failed to get magma boss spawn estimate from server", e);
+//            }
+//        }).start();
+    }
+
+    public void sendPostRequest(EnumUtils.MagmaEvent event) {
+        new Thread(() -> {
+            FMLLog.info("Posting event " + event.getInventiveTalentEvent() + " to InventiveTalent API");
+
+            try {
+                String urlString = "https://hypixel-api.inventivetalent.org/api/skyblock/bosstimer/magma/addEvent";
+                if (event == EnumUtils.MagmaEvent.PING) {
+                    urlString = "https://hypixel-api.inventivetalent.org/api/skyblock/bosstimer/magma/ping";
+                }
+                URL url = new URL(urlString);
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                connection.setRequestMethod("POST");
+                connection.setRequestProperty("User-Agent", USER_AGENT);
+
+                Minecraft mc = Minecraft.getMinecraft();
+                if (mc != null && mc.thePlayer != null) {
+                    String postString;
+                    if (event == EnumUtils.MagmaEvent.PING) {
+                        postString = "minecraftUser=" + mc.thePlayer.getName() + "&lastFocused=" + System.currentTimeMillis() / 1000 + "&serverId=" + serverID;
+                    } else {
+                        postString = "type=" + event.getInventiveTalentEvent() + "&isModRequest=true&minecraftUser=" + mc.thePlayer.getName() + "&serverId=" + serverID;
+                    }
+                    connection.setDoOutput(true);
+                    try (DataOutputStream out = new DataOutputStream(connection.getOutputStream())) {
+                        out.writeBytes(postString);
+                        out.flush();
+                    }
+                    FMLLog.info("Got response code " + connection.getResponseCode());
+                    connection.disconnect();
+                }
+            } catch (IOException ex) {
+                FMLLog.warning("Failed to post event to server");
+                ex.printStackTrace();
+            }
+        }).start();
     }
 
     // This reverses the text while leaving the english parts intact and in order.

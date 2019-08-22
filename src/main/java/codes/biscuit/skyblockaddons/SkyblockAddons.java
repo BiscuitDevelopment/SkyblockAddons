@@ -7,6 +7,7 @@ import codes.biscuit.skyblockaddons.utils.ConfigValues;
 import codes.biscuit.skyblockaddons.utils.InventoryUtils;
 import codes.biscuit.skyblockaddons.utils.Scheduler;
 import codes.biscuit.skyblockaddons.utils.Utils;
+import net.minecraft.client.Minecraft;
 import net.minecraftforge.client.ClientCommandHandler;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Loader;
@@ -15,6 +16,9 @@ import net.minecraftforge.fml.common.ModContainer;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 @Mod(modid = SkyblockAddons.MOD_ID, version = SkyblockAddons.VERSION, name = SkyblockAddons.MOD_NAME, clientSideOnly = true, acceptedMinecraftVersions = "[1.8.9]")
 public class SkyblockAddons {
@@ -29,7 +33,7 @@ public class SkyblockAddons {
     private RenderListener renderListener = new RenderListener(this);
     private Utils utils = new Utils(this);
     private InventoryUtils inventoryUtils = new InventoryUtils(this);
-    private Scheduler scheduler = new Scheduler();
+    private Scheduler scheduler = new Scheduler(this);
     private boolean usingLabymod = false;
     private boolean usingOofModv1 = false;
 
@@ -58,6 +62,20 @@ public class SkyblockAddons {
                 }
             }
         }
+        scheduleMagmaCheck();
+    }
+
+    private void scheduleMagmaCheck() {
+        new Timer().schedule(new TimerTask() {
+            @Override
+            public void run() {
+                if (Minecraft.getMinecraft() != null) {
+                    utils.fetchEstimateFromServer();
+                } else {
+                    scheduleMagmaCheck();
+                }
+            }
+        }, 5000);
     }
 
     public ConfigValues getConfigValues() {
