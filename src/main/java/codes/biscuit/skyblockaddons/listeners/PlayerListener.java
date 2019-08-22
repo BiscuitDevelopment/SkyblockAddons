@@ -438,7 +438,25 @@ public class PlayerListener {
      */
     @SubscribeEvent()
     public void onItemTooltip(ItemTooltipEvent e) {
-        ItemStack hoveredItem = e.itemStack;
+		if (e.itemStack == null) {
+    		return;
+    	}   
+		
+        ItemStack hoveredItem = e.itemStack;		    
+        
+        //For anvil use~ done by Dahn
+        if (hoveredItem.hasTagCompound()) {
+        	NBTTagCompound nbtcomp = hoveredItem.getTagCompound();
+            int anvil_use = 0;
+            
+            if (nbtcomp.getCompoundTag("ExtraAttributes") != null) {
+            	anvil_use = nbtcomp.getCompoundTag("ExtraAttributes").getInteger("anvil_uses");
+            }
+             
+    		e.toolTip.add("Anvil Usage: " + anvil_use);
+        }
+        
+		//
         if (hoveredItem.hasTagCompound() && GuiScreen.isCtrlKeyDown() && main.getUtils().isCopyNBT()) {
             Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
             String nbt = hoveredItem.getTagCompound().toString();
