@@ -10,7 +10,6 @@
     "skeletonHatBonesBar": "Bară pentru oasele Skeleton Hat-ului",
     "hideFoodAndArmor": "Ascunde bara de Mancare și Armură",
     "fullInventoryWarning": "Avertisment pentru inventar plin",
-    "magmaBossHealthBar": "Bară de Viață pentru Magma Boss",
     "disableEmberRodAbility": "Oprește abilitatea Ember Rod-ului",
     "warningColor": "Culoarea Avertismentului",
     "confirmationColor": "Culoarea Confirmației",
@@ -24,7 +23,7 @@
     "minionStopWarning": "\"Minionul nu ajunge\" Avertisment",
     "hideAuctionHousePlayers": "Ascunde jucătorii din casa de licitații",
     "backpackStyle": "Stilul Backpackului: %style%",
-    "styles": {
+    "backpackStyles": {
       "inventory": "Inventar",
       "compact": "Compact"
     },
@@ -47,11 +46,36 @@
     "healthText": "Health Number",
     "defenceIcon": "Defence Symbol",
     "defenceText": "Defence Number",
-    "defencePercentage": "Defence Percentage"
+    "defencePercentage": "Defence Percentage",
+    "healthUpdates": "Health Change Number",
+    "anchorPoint": "Anchor Point: %setting%: %anchor%",
+    "anchorPoints": {
+      "topLeft": "Top Left",
+      "topRight": "Top Right",
+      "bottomLeft": "Bottom Left",
+      "bottomRight": "Bottom Right",
+      "healthBar": "Health Bar"
+    },
+    "hidePlayersInLobby": "Hide Nearby Entities In Lobby",
+    "textStyle": "Text Style: %style%",
+    "textStyles": {
+      "regular": "Regular",
+      "blackShadow": "Black Shadow"
+    },
+    "darkAuctionTimer": "Dark Auction Timer",
+    "magmaBossTimer": "Magma Boss Timer",
+    "itemPickupLog": "Item Pickup Log",
+    "avoidPlacingEnchantedItems": "Avoid Placing Enchanted Items",
+    "makeEndermenHoldingItemPink": "Make Endermen Holding Items Pink",
+    "avoidBreakingStems": "Avoid Breaking Stems",
+    "magmaBossTimerColor": "Magma Boss Timer Color",
+    "darkAuctionTimerColor": "Dark Auction Timer Color",
+    "stopBowChargeFromResetting": "Stop Bow Charge From Resetting",
+    "showMagmaTimerInOtherGames": "Show Magma Timer In Other Games"
   },
   "messages": {
     "dropConfirmation": "Arunca acest obiect iar ca să confirmi!",
-    "magmaBossWarning": "MagmaCube Boss!",
+    "magmaBossWarning": "Magma Cube Boss!",
     "fullInventory": "Inventar Plin!",
     "newVersion": "O versiune nouă, %newestVersion% este disponibilă. Apasă aici ca să o descarci.",
     "discord": "Vrei sa vezi schimbările? Apasă aici ca să intri în discord-ul meu.",
@@ -66,6 +90,7 @@
     "inventoryTypes": {
       "enchants": "Enchants",
       "reforges": "Reforges"
-    }
+    },
+    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this stem. Use your bare hand if you'd like to break it."
   }
 }

@@ -10,7 +10,6 @@
    "skeletonHatBonesBar": "Barra delle ossa dello Skeleton Hat",
    "hideFoodAndArmor": "Nascondi la Barra della Fame e dell’Armatura",
    "fullInventoryWarning": "Avviso di inventario pieno",
-   "magmaBossHealthBar": "Barra di Vita del Magma Boss",
    "disableEmberRodAbility": "Disabilita l’Ember Rod sull’isola",
    "warningColor": "Colore degli Avvisi",
    "confirmationColor": "Colore di Conferma",
@@ -24,7 +23,7 @@
    "minionStopWarning": "Avviso che \"i Minion non possono raggiungere le risorse\" ",
    "hideAuctionHousePlayers": "Nascondi i Giocatori vicino alla Auction House",
    "backpackStyle": "Stile Zaino: %style%",
-   "styles": {
+   "backpackStyles": {
      "inventory": "Inventario",
      "compact": "Compatto"
    },
@@ -47,7 +46,32 @@
    "healthText": "Health Number",
    "defenceIcon": "Defence Symbol",
    "defenceText": "Defence Number",
-   "defencePercentage": "Defence Percentage"
+   "defencePercentage": "Defence Percentage",
+   "healthUpdates": "Health Change Number",
+   "anchorPoint": "Anchor Point: %setting%: %anchor%",
+   "anchorPoints": {
+     "topLeft": "Top Left",
+     "topRight": "Top Right",
+     "bottomLeft": "Bottom Left",
+     "bottomRight": "Bottom Right",
+     "healthBar": "Health Bar"
+   },
+   "hidePlayersInLobby": "Hide Nearby Entities In Lobby",
+   "textStyle": "Text Style: %style%",
+   "textStyles": {
+     "regular": "Regular",
+     "blackShadow": "Black Shadow"
+   },
+   "darkAuctionTimer": "Dark Auction Timer",
+   "magmaBossTimer": "Magma Boss Timer",
+   "itemPickupLog": "Item Pickup Log",
+   "avoidPlacingEnchantedItems": "Avoid Placing Enchanted Items",
+   "makeEndermenHoldingItemPink": "Make Endermen Holding Items Pink",
+   "avoidBreakingStems": "Avoid Breaking Stems",
+   "magmaBossTimerColor": "Magma Boss Timer Color",
+   "darkAuctionTimerColor": "Dark Auction Timer Color",
+   "stopBowChargeFromResetting": "Stop Bow Charge From Resetting",
+   "showMagmaTimerInOtherGames": "Show Magma Timer In Other Games"
  },
  "messages": {
    "dropConfirmation": "Getta questo oggetto nuovamente per confermare!",
@@ -66,6 +90,7 @@
    "inventoryTypes": {
      "enchants": "Incantesimi",
      "reforges": "Forge"
-   }
+   },
+   "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this stem. Use your bare hand if you'd like to break it."
  }
 }

@@ -8,5 +8,5 @@
   "mixinConfigs": [
     "mixins.skyblockaddons.json"
   ],
-  "tweakClass": "codes.biscuit.skyblockaddons.tweaker.FMLLoadingPlugin"
+  "tweakClass": "codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsTweaker"
 }

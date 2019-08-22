@@ -2,6 +2,7 @@ package codes.biscuit.skyblockaddons.mixins;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.utils.BackpackInfo;
+import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.Feature;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
@@ -28,8 +29,8 @@ public abstract class MixinGuiScreen {
     @Inject(method = "renderToolTip", at = @At(value = "HEAD"), cancellable = true)
     private void shouldRenderRedirect(ItemStack stack, int x, int y, CallbackInfo ci) {
         SkyblockAddons main = SkyblockAddons.getInstance();
-        if (stack.getItem().equals(Items.skull) && !main.getConfigValues().getDisabledFeatures().contains(Feature.SHOW_BACKPACK_PREVIEW)) {
-            if (!main.getConfigValues().getDisabledFeatures().contains(Feature.SHOW_BACKPACK_HOLDING_SHIFT) && !GuiScreen.isShiftKeyDown()) {
+        if (stack.getItem().equals(Items.skull) && main.getConfigValues().isEnabled(Feature.SHOW_BACKPACK_PREVIEW)) {
+            if (main.getConfigValues().isEnabled(Feature.SHOW_BACKPACK_HOLDING_SHIFT) && !GuiScreen.isShiftKeyDown()) {
                 return;
             }
             Container playerContainer = Minecraft.getMinecraft().thePlayer.openContainer;
@@ -46,19 +47,19 @@ public abstract class MixinGuiScreen {
                     String id = extraAttributes.getString("id");
                     if (!id.equals("")) {
                         byte[] bytes = null;
-                        Feature.Backpack backpack = null;
+                        EnumUtils.Backpack backpack = null;
                         switch (id) {
                             case "SMALL_BACKPACK":
                                 bytes = extraAttributes.getByteArray("small_backpack_data");
-                                backpack = Feature.Backpack.SMALL;
+                                backpack = EnumUtils.Backpack.SMALL;
                                 break;
                             case "MEDIUM_BACKPACK":
                                 bytes = extraAttributes.getByteArray("medium_backpack_data");
-                                backpack = Feature.Backpack.MEDIUM;
+                                backpack = EnumUtils.Backpack.MEDIUM;
                                 break;
                             case "LARGE_BACKPACK":
                                 bytes = extraAttributes.getByteArray("large_backpack_data");
-                                backpack = Feature.Backpack.LARGE;
+                                backpack = EnumUtils.Backpack.LARGE;
                                 break;
                         }
                         if (bytes == null) return;

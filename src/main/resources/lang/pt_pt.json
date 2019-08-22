@@ -10,7 +10,6 @@
     "skeletonHatBonesBar": "Barra de ossos do Skeleton Helmet",
     "hideFoodAndArmor": "Esconder a barra de comida e armadura",
     "fullInventoryWarning": "Aviso de inventário cheio",
-    "magmaBossHealthBar": "Barra de vida do Magma Boss",
     "disableEmberRodAbility": "Desligar a Ember Rod na ilha",
     "warningColor": "Cor do Aviso",
     "confirmationColor": "Cor da confirmação",
@@ -24,7 +23,7 @@
     "minionStopWarning": "Aviso \"Minion Cannot Reach\"",
     "hideAuctionHousePlayers": "Esconder os jogadores perto da Auction House",
     "backpackStyle": "Estilo da Backpack: %style%",
-    "styles": {
+    "backpackStyles": {
       "inventory": "Inventário",
       "compact": "Compacto"
     },
@@ -47,11 +46,36 @@
     "healthText": "Health Number",
     "defenceIcon": "Defence Symbol",
     "defenceText": "Defence Number",
-    "defencePercentage": "Defence Percentage"
+    "defencePercentage": "Defence Percentage",
+    "healthUpdates": "Health Change Number",
+    "anchorPoint": "Anchor Point: %setting%: %anchor%",
+    "anchorPoints": {
+      "topLeft": "Top Left",
+      "topRight": "Top Right",
+      "bottomLeft": "Bottom Left",
+      "bottomRight": "Bottom Right",
+      "healthBar": "Health Bar"
+    },
+    "hidePlayersInLobby": "Hide Nearby Entities In Lobby",
+    "textStyle": "Text Style: %style%",
+    "textStyles": {
+      "regular": "Regular",
+      "blackShadow": "Black Shadow"
+    },
+    "darkAuctionTimer": "Dark Auction Timer",
+    "magmaBossTimer": "Magma Boss Timer",
+    "itemPickupLog": "Item Pickup Log",
+    "avoidPlacingEnchantedItems": "Avoid Placing Enchanted Items",
+    "makeEndermenHoldingItemPink": "Make Endermen Holding Items Pink",
+    "avoidBreakingStems": "Avoid Breaking Stems",
+    "magmaBossTimerColor": "Magma Boss Timer Color",
+    "darkAuctionTimerColor": "Dark Auction Timer Color",
+    "stopBowChargeFromResetting": "Stop Bow Charge From Resetting",
+    "showMagmaTimerInOtherGames": "Show Magma Timer In Other Games"
   },
   "messages": {
     "dropConfirmation": "Dropa este item outra vez para confirmar!",
-    "magmaBossWarning": "MagmaCube Boss!",
+    "magmaBossWarning": "Magma Cube Boss!",
     "fullInventory": "Inventário Cheio!",
     "newVersion": "Uma nova versão, %newestVersion% está disponível. Faz download dela ao carregar aqui.",
     "discord": "Queres saber o que mudou? Carrega aqui para entrares no meu Discord.",
@@ -66,6 +90,7 @@
     "inventoryTypes": {
       "enchants": "Encantamentos",
       "reforges": "Reforges"
-    }
+    },
+    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this stem. Use your bare hand if you'd like to break it."
   }
 }

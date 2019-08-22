@@ -1,73 +1,74 @@
 package codes.biscuit.skyblockaddons.utils;
 
-import codes.biscuit.skyblockaddons.SkyblockAddons;
-
-import static codes.biscuit.skyblockaddons.utils.Message.*;
-
 public enum Feature {
 
-    MAGMA_WARNING(0, ButtonType.REGULAR),
-    DROP_CONFIRMATION(1, ButtonType.REGULAR),
-    DISABLE_EMBER_ROD(2, ButtonType.REGULAR),
-    SHOW_BACKPACK_PREVIEW(3, ButtonType.REGULAR),
-    HIDE_BONES(4, ButtonType.REGULAR),
-    SKELETON_BAR(5, ButtonType.REGULAR),
-    HIDE_FOOD_ARMOR_BAR(6, ButtonType.REGULAR),
-    FULL_INVENTORY_WARNING(7, ButtonType.REGULAR),
-    MAGMA_BOSS_BAR(8, ButtonType.REGULAR),
-    HIDE_DURABILITY(9, ButtonType.REGULAR),
-    SHOW_ENCHANTMENTS_REFORGES(10, ButtonType.REGULAR),
-    MINION_STOP_WARNING(11, ButtonType.REGULAR),
-    HIDE_AUCTION_HOUSE_PLAYERS(12, ButtonType.REGULAR),
-    HIDE_HEALTH_BAR(13, ButtonType.REGULAR),
-    MINION_FULL_WARNING(15, ButtonType.REGULAR),
-    IGNORE_ITEM_FRAME_CLICKS(16, ButtonType.REGULAR),
+    MAGMA_WARNING(0, Message.SETTING_MAGMA_BOSS_WARNING),
+    DROP_CONFIRMATION(1, Message.SETTING_ITEM_DROP_CONFIRMATION),
+    DISABLE_EMBER_ROD(2, Message.SETTING_DISABLE_EMBER_ROD_ABILITY),
+    SHOW_BACKPACK_PREVIEW(3, Message.SETTING_SHOW_BACKPACK_PREVIEW),
+    HIDE_BONES(4, Message.SETTING_HIDE_SKELETON_HAT_BONES),
+    SKELETON_BAR(5, Message.SETTING_SKELETON_HAT_BONES_BAR),
+    HIDE_FOOD_ARMOR_BAR(6, Message.SETTING_HIDE_FOOD_AND_ARMOR),
+    FULL_INVENTORY_WARNING(7, Message.SETTING_FULL_INVENTORY_WARNING),
+    MAGMA_BOSS_TIMER(8, Message.SETTING_MAGMA_BOSS_TIMER),
+    HIDE_DURABILITY(9, Message.SETTING_HIDE_DURABILITY),
+    SHOW_ENCHANTMENTS_REFORGES(10, Message.SETTING_ENCHANTS_AND_REFORGES),
+    MINION_STOP_WARNING(11, Message.SETTING_MINION_STOP_WARNING),
+    HIDE_AUCTION_HOUSE_PLAYERS(12, Message.SETTING_AUCTION_HOUSE_PLAYERS),
+    HIDE_HEALTH_BAR(13, Message.SETTING_HIDE_HEALTH_BAR),
+    MINION_FULL_WARNING(15, Message.SETTING_FULL_MINION),
+    IGNORE_ITEM_FRAME_CLICKS(16, Message.SETTING_IGNORE_ITEM_FRAME_CLICKS),
+    MANA_BAR(19, Message.SETTING_MANA_BAR),
+    MANA_TEXT(20, Message.SETTING_MANA_TEXT),
+    HEALTH_BAR(21, Message.SETTING_HEALTH_BAR),
+    HEALTH_TEXT(22, Message.SETTING_HEALTH_TEXT),
+    DEFENCE_ICON(23, Message.SETTING_DEFENCE_ICON),
+    DEFENCE_TEXT(24, Message.SETTING_DEFENCE_TEXT),
+    DEFENCE_PERCENTAGE(25, Message.SETTING_DEFENCE_PERCENTAGE),
+    HEALTH_UPDATES(26, Message.SETTING_HEALTH_UPDATES), // Health updates all credit to DidiSkywalker#9975
+    HIDE_PLAYERS_IN_LOBBY(27, Message.SETTING_HIDE_PLAYERS_IN_LOBBY),
+    DARK_AUCTION_TIMER(28, Message.SETTING_DARK_AUCTION_TIMER),
+    ITEM_PICKUP_LOG(29, Message.SETTING_ITEM_PICKUP_LOG),
+    AVOID_PLACING_ENCHANTED_ITEMS(30, Message.SETTING_AVOID_PLACING_ENCHANTED_ITEMS),
+    MAKE_ENDERMEN_HOLDING_ITEMS_PINK(31, Message.SETTING_MAKE_ENDERMEN_HOLDING_ITEMS_PINK),
+    AVOID_BREAKING_STEMS(32, Message.SETTING_AVOID_BREAKING_STEMS),
+    STOP_BOW_CHARGE_FROM_RESETTING(31, Message.SETTING_STOP_BOW_CHARGE_FROM_RESETTING),
+    SHOW_MAGMA_TIMER_IN_OTHER_GAMES(32, Message.SETTING_SHOW_MAGMA_TIMER_IN_OTHER_GAMES),
 
-    DISABLE_DOUBLE_DROP_AUTOMATICALLY(14, ButtonType.REGULAR),
-    USE_VANILLA_TEXTURE_DEFENCE(17, ButtonType.REGULAR),
-    SHOW_BACKPACK_HOLDING_SHIFT(18, ButtonType.REGULAR),
+    DISABLE_DOUBLE_DROP_AUTOMATICALLY(14, Message.SETTING_DISABLE_DOUBLE_DROP),
+    USE_VANILLA_TEXTURE_DEFENCE(17, Message.SETTING_USE_VANILLA_TEXTURE_DEFENCE),
+    SHOW_BACKPACK_HOLDING_SHIFT(18, Message.SETTING_SHOW_BACKPACK_HOLDING_SHIFT),
 
-    MANA_BAR(-1, ButtonType.REGULAR),
-    MANA_TEXT(-1, ButtonType.REGULAR),
-    HEALTH_BAR(-1, ButtonType.REGULAR),
-    HEALTH_TEXT(-1, ButtonType.REGULAR),
-    DEFENCE_ICON(-1, ButtonType.REGULAR),
-    DEFENCE_TEXT(-1, ButtonType.REGULAR),
-    DEFENCE_PERCENTAGE(-1, ButtonType.REGULAR),
-    ENCHANT_REFORGE_TYPE(-1, ButtonType.REGULAR),
+    WARNING_TIME(-1, Message.SETTING_WARNING_TIME),
 
-    WARNING_COLOR(-1, ButtonType.COLOR),
-    CONFIRMATION_COLOR(-1, ButtonType.COLOR),
-    MANA_TEXT_COLOR(-1, ButtonType.COLOR),
-    MANA_BAR_COLOR(-1, ButtonType.COLOR),
-    HEALTH_BAR_COLOR(-1, ButtonType.COLOR),
-    HEALTH_TEXT_COLOR(-1, ButtonType.COLOR),
-    DEFENCE_TEXT_COLOR(-1, ButtonType.COLOR),
-    DEFENCE_PERCENTAGE_COLOR(-1, ButtonType.COLOR),
+    ADD(-1, null),
+    SUBTRACT(-1, null),
 
-    WARNING_TIME(-1, ButtonType.NEUTRAL),
+    ANCHOR_POINT(-1, Message.SETTING_ANCHOR_POINT),
 
-    ADD(-1, ButtonType.MODIFY),
-    SUBTRACT(-1, ButtonType.MODIFY),
-
-    LANGUAGE(-1, ButtonType.SOLID),
-    EDIT_LOCATIONS(-1, ButtonType.SOLID),
-    SETTINGS(-1, ButtonType.SOLID),
-    RESET_LOCATION(-1, ButtonType.SOLID),
-    BACKPACK_STYLE(-1, ButtonType.SOLID),
-    NEXT_PAGE(-1, ButtonType.SOLID),
-    PREVIOUS_PAGE(-1, ButtonType.SOLID);
+    LANGUAGE(-1, Message.LANGUAGE),
+    EDIT_LOCATIONS(-1, Message.SETTING_EDIT_LOCATIONS),
+    SETTINGS(-1, Message.SETTING_EDIT_SETTINGS),
+    RESET_LOCATION(-1, Message.SETTING_RESET_LOCATIONS),
+    BACKPACK_STYLE(-1, Message.SETTING_BACKPACK_STYLE),
+    TEXT_STYLE(-1, Message.SETTING_TEXT_STYLE),
+    NEXT_PAGE(-1, Message.SETTING_NEXT_PAGE),
+    PREVIOUS_PAGE(-1, Message.SETTING_PREVIOUS_PAGE);
 
     private int id;
-    private ButtonType buttonType;
+    private Message message;
 
-    Feature(int id, ButtonType buttonType) {
+    Feature(int id, Message message) {
         this.id = id;
-        this.buttonType = buttonType;
+        this.message = message;
     }
 
     public int getId() {
         return id;
+    }
+
+    public String getMessage(String... variables) {
+        return message.getMessage(variables);
     }
 
     public static Feature fromId(int id) {
@@ -77,152 +78,5 @@ public enum Feature {
             }
         }
         return null;
-    }
-
-    public ButtonType getButtonType() {
-        return buttonType;
-    }
-
-    public enum ButtonType {
-        REGULAR,
-        COLOR,
-        NEUTRAL,
-        MODIFY,
-        SOLID
-    }
-
-    public enum BarType {
-        BAR_TEXT(BAR_TYPE_BAR_TEXT),
-        TEXT(BAR_TYPE_TEXT),
-        BAR(BAR_TYPE_BAR),
-        OFF(BAR_TYPE_OFF);
-
-        private Message message;
-
-        BarType(Message message) {
-            this.message = message;
-        }
-
-        public String getDisplayText() {
-            return SkyblockAddons.getInstance().getConfigValues().getMessage(message);
-        }
-
-        public BarType getNextType() {
-            int nextType = ordinal()+1;
-            if (nextType > values().length-1) {
-                nextType = 0;
-            }
-            return values()[nextType];
-        }
-    }
-
-    public enum IconType {
-        ICON_DEFENCE_PERCENTAGE(ICON_TYPE_ICON_DEFENCE_PERCENTAGE),
-
-        ICON_DEFENCE(ICON_TYPE_ICON_DEFENCE),
-        ICON_PERCENTAGE(ICON_TYPE_ICON_PERCENTAGE),
-        DEFENCE_PERCENTAGE(ICON_TYPE_DEFENCE_PERCENTAGE),
-
-        ICON(ICON_TYPE_ICON),
-        DEFENCE(ICON_TYPE_DEFENCE),
-        PERCENTAGE(ICON_TYPE_PERCENTAGE),
-        OFF(ICON_TYPE_OFF);
-
-        private Message message;
-
-        IconType(Message message) {
-            this.message = message;
-        }
-
-        public String getDisplayText() {
-            return SkyblockAddons.getInstance().getConfigValues().getMessage(message);
-        }
-
-        public IconType getNextType() {
-            int nextType = ordinal()+1;
-            if (nextType > values().length-1) {
-                nextType = 0;
-            }
-            return values()[nextType];
-        }
-    }
-
-//    public enum Accuracy {
-//        RIVERS,
-//        BLAZE,
-//        MAGMA_CUBES,
-//        MUSIC_DISC,
-//        SPAWNED,
-//    }
-
-    public enum InventoryType {
-        ENCHANTMENT_TABLE(INVENTORY_TYPE_ENCHANTS),
-        REFORGE_ANVIL(INVENTORY_TYPE_REFORGES);
-
-        private Message message;
-
-        InventoryType(Message message) {
-            this.message = message;
-        }
-
-        public Message getMessage() {
-            return message;
-        }
-    }
-
-    public enum Backpack {
-        SMALL("Small Backpack"),
-        MEDIUM("Medium Backpack"),
-        LARGE("Large Backpack");
-
-        private String itemName;
-
-        Backpack(String itemName) {
-            this.itemName = itemName;
-        }
-
-        public String getItemName() {
-            return itemName;
-        }
-    }
-
-    public enum BackpackStyle {
-        GUI(STYLE_GUI),
-        BOX(STYLE_COMPACT);
-
-        private Message message;
-
-        BackpackStyle(Message message) {
-            this.message = message;
-        }
-
-        public String getDisplayText() {
-            return SkyblockAddons.getInstance().getConfigValues().getMessage(message);
-        }
-
-        public BackpackStyle getNextType() {
-            int nextType = ordinal()+1;
-            if (nextType > values().length-1) {
-                nextType = 0;
-            }
-            return values()[nextType];
-        }
-    }
-
-    public enum Location {
-        ISLAND("Your Island"),
-        BLAZING_FORTRESS("Blazing Fortress"),
-        VILLAGE("Village"),
-        AUCTION_HOUSE("Auction House");
-
-        private String scoreboardName;
-
-        Location(String scoreboardName) {
-            this.scoreboardName = scoreboardName;
-        }
-
-        public String getScoreboardName() {
-            return scoreboardName;
-        }
     }
 }

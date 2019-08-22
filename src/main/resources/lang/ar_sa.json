@@ -10,7 +10,6 @@
     "skeletonHatBonesBar": "شريط خوذة الهيكل العظمي",
     "hideFoodAndArmor": "إخفاء شريط الطعام و شريط الدرع",
     "fullInventoryWarning": "تحذير جرد كامل",
-    "magmaBossHealthBar": "شريط صحة زعيم الصهارة",
     "disableEmberRodAbility": "تعطيل عود الجمرة في الجزيرة",
     "warningColor": "لون التحذير",
     "confirmationColor": "لون تأكيد",
@@ -24,7 +23,7 @@
     "minionStopWarning": "تحذير إيقاف التابع",
     "hideAuctionHousePlayers": "إخفاء اللاعبين بالقرب من دار المزاد",
     "backpackStyle": "%style% :نمط حقيبة الظهر",
-    "styles": {
+    "backpackStyles": {
       "inventory": "جرد",
       "compact": "متراص"
     },
@@ -47,7 +46,32 @@
     "healthText": "Health Number",
     "defenceIcon": "Defence Symbol",
     "defenceText": "Defence Number",
-    "defencePercentage": "Defence Percentage"
+    "defencePercentage": "Defence Percentage",
+    "healthUpdates": "Health Change Number",
+    "anchorPoint": "Anchor Point: %setting%: %anchor%",
+    "anchorPoints": {
+      "topLeft": "Top Left",
+      "topRight": "Top Right",
+      "bottomLeft": "Bottom Left",
+      "bottomRight": "Bottom Right",
+      "healthBar": "Health Bar"
+    },
+    "hidePlayersInLobby": "Hide Nearby Entities In Lobby",
+    "textStyle": "Text Style: %style%",
+    "textStyles": {
+      "regular": "Regular",
+      "blackShadow": "Black Shadow"
+    },
+    "darkAuctionTimer": "Dark Auction Timer",
+    "magmaBossTimer": "Magma Boss Timer",
+    "itemPickupLog": "Item Pickup Log",
+    "avoidPlacingEnchantedItems": "Avoid Placing Enchanted Items",
+    "makeEndermenHoldingItemPink": "Make Endermen Holding Items Pink",
+    "avoidBreakingStems": "Avoid Breaking Stems",
+    "magmaBossTimerColor": "Magma Boss Timer Color",
+    "darkAuctionTimerColor": "Dark Auction Timer Color",
+    "stopBowChargeFromResetting": "Stop Bow Charge From Resetting",
+    "showMagmaTimerInOtherGames": "Show Magma Timer In Other Games"
   },
   "messages": {
     "dropConfirmation": "!إرمي هذا العنصر مرة أخرى للتأكيد",
@@ -66,6 +90,7 @@
     "inventoryTypes": {
       "enchants": "Enchants",
       "reforges": "Reforges"
-    }
+    },
+    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this stem. Use your bare hand if you'd like to break it."
   }
 }

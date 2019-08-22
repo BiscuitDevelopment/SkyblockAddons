@@ -10,7 +10,6 @@
     "skeletonHatBonesBar": "Luurankohatun Luupalkki",
     "hideFoodAndArmor": "Piilota Ruoka & Panssaripalkki",
     "fullInventoryWarning": "Täysi Inventaario Varoitus",
-    "magmaBossHealthBar": "Magma Boss Elämäpalkki",
     "disableEmberRodAbility": "Poista käytöstä Ember Rod Saarella",
     "warningColor": "Varoituksen väri",
     "confirmationColor": "Vahvistuksen Väri",
@@ -24,7 +23,7 @@
     "minionStopWarning": "\"Kätyri Ei Yllä\" Varoitus",
     "hideAuctionHousePlayers": "Piilota Pelaajat Huutokauppatalon Lähellä",
     "backpackStyle": "Repun Tyyli: %style%",
-    "styles": {
+    "backpackStyles": {
       "inventory": "Inventaario",
       "compact": "Kompakti"
     },
@@ -47,11 +46,36 @@
     "healthText": "Health Number",
     "defenceIcon": "Defence Symbol",
     "defenceText": "Defence Number",
-    "defencePercentage": "Defence Percentage"
+    "defencePercentage": "Defence Percentage",
+    "healthUpdates": "Health Change Number",
+    "anchorPoint": "Anchor Point: %setting%: %anchor%",
+    "anchorPoints": {
+      "topLeft": "Top Left",
+      "topRight": "Top Right",
+      "bottomLeft": "Bottom Left",
+      "bottomRight": "Bottom Right",
+      "healthBar": "Health Bar"
+    },
+    "hidePlayersInLobby": "Hide Nearby Entities In Lobby",
+    "textStyle": "Text Style: %style%",
+    "textStyles": {
+      "regular": "Regular",
+      "blackShadow": "Black Shadow"
+    },
+    "darkAuctionTimer": "Dark Auction Timer",
+    "magmaBossTimer": "Magma Boss Timer",
+    "itemPickupLog": "Item Pickup Log",
+    "avoidPlacingEnchantedItems": "Avoid Placing Enchanted Items",
+    "makeEndermenHoldingItemPink": "Make Endermen Holding Items Pink",
+    "avoidBreakingStems": "Avoid Breaking Stems",
+    "magmaBossTimerColor": "Magma Boss Timer Color",
+    "darkAuctionTimerColor": "Dark Auction Timer Color",
+    "stopBowChargeFromResetting": "Stop Bow Charge From Resetting",
+    "showMagmaTimerInOtherGames": "Show Magma Timer In Other Games"
   },
   "messages": {
     "dropConfirmation": "Pudota tämä esine uudelleen vahvistaaksesi!",
-    "magmaBossWarning": "MagmaCube Boss!",
+    "magmaBossWarning": "Magma Cube Boss!",
     "fullInventory": "Täysi Inventaario!",
     "newVersion": "Uusi versio, %newestVersion% on saatavilla. Lataa se klikkaamalla tästä.",
     "discord": "Haluatko nähdä muutokset? Klikkaa tästä liittyäksesi discordiini.",
@@ -66,6 +90,7 @@
     "inventoryTypes": {
       "enchants": "Enchants",
       "reforges": "Reforges"
-    }
+    },
+    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this stem. Use your bare hand if you'd like to break it."
   }
 }

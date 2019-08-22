@@ -7,9 +7,9 @@ public class BackpackInfo {
     private int x;
     private int y;
     private ItemStack[] items;
-    private Feature.Backpack backpack;
+    private EnumUtils.Backpack backpack;
 
-    public BackpackInfo(int x, int y, ItemStack[] items, Feature.Backpack backpack) {
+    public BackpackInfo(int x, int y, ItemStack[] items, EnumUtils.Backpack backpack) {
         this.x = x;
         this.y = y;
         this.items = items;
@@ -28,7 +28,7 @@ public class BackpackInfo {
         return items;
     }
 
-    public Feature.Backpack getBackpack() {
+    public EnumUtils.Backpack getBackpack() {
         return backpack;
     }
 }

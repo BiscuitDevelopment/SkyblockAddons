@@ -10,7 +10,6 @@
     "skeletonHatBonesBar": "Barra de huesos de Skeleton Hat",
     "hideFoodAndArmor": "Esconder Barra de Comida y Armadura",
     "fullInventoryWarning": "Alerta de Inventario Lleno",
-    "magmaBossHealthBar": "Vida de Magma Boss",
     "disableEmberRodAbility": "Desactivar Ember Rod en Isla",
     "warningColor": "Color de Alerta",
     "confirmationColor": "Color de Confirmación",
@@ -24,7 +23,7 @@
     "minionStopWarning": "Alerta de Minion Detenido",
     "hideAuctionHousePlayers": "Ocultar Jugadores Cerca de Auction House",
     "backpackStyle": "Estilo de Backpack: %style%",
-    "styles": {
+    "backpackStyles": {
       "inventory": "Inventario",
       "compact": "Compacto"
     },
@@ -41,13 +40,38 @@
     "ignoreItemFrameClicks": "Ignorar Clics en Item Frames",
     "useVanillaTextureDefence": "Usar Textura Vanilla para Icono de Defensa",
     "showBackpackHoldingShift": "Previsualizar Backpacks Sólo al Presionar Shift",
-    "manaBar": "Mana Bar",
-    "manaText": "Mana Number",
-    "healthBar": "Health Bar",
-    "healthText": "Health Number",
-    "defenceIcon": "Defence Symbol",
-    "defenceText": "Defence Number",
-    "defencePercentage": "Defence Percentage"
+    "manaBar": "Barra de Mana",
+    "manaText": "Número de Mana",
+    "healthBar": "Barra de Vida",
+    "healthText": "Número de Vida",
+    "defenceIcon": "Icono de Defensa",
+    "defenceText": "Número de Defensa",
+    "defencePercentage": "Porcentaje de Defensa",
+    "healthUpdates": "Número de Cambio de Vida",
+    "anchorPoint": "Punto de Anclaje: %setting%: %anchor%",
+    "anchorPoints": {
+      "topLeft": "Arriba a la Izquierda",
+      "topRight": "Arriba a la Derecha",
+      "bottomLeft": "Abajo a la Izquierda",
+      "bottomRight": "Abajo a la Derecha",
+      "healthBar": "Barra de Vida"
+    },
+    "hidePlayersInLobby": "Ocultar Jugadores Cercanos en el Lobby",
+    "textStyle": "Estilo del Texto: %style%",
+    "textStyles": {
+      "regular": "Regular",
+      "blackShadow": "Black Shadow"
+    },
+    "darkAuctionTimer": "Tiempo para Dark Auction",
+    "magmaBossTimer": "Tiempo para Magma Boss",
+    "itemPickupLog": "Registro de Items Recogidos",
+    "avoidPlacingEnchantedItems": "Evitar Construcción con Objetos Encantados",
+    "makeEndermenHoldingItemPink": "Colorear de Rosa a Enderman que Sostengan Objetos",
+    "avoidBreakingStems": "Evitar Ruptura de Tallo de Cultivos",
+    "magmaBossTimerColor": "Color de Tiempo para Magma Boss",
+    "darkAuctionTimerColor": "Color de Tiempo para Dark Auction",
+    "stopBowChargeFromResetting": "Evitar Reinicio de Arco Cargado",
+    "showMagmaTimerInOtherGames": "Mostrar el Tiempo para Magma Boss en Otros Juegos"
   },
   "messages": {
     "dropConfirmation": "Arroja este objeto otra vez para confirmar!",
@@ -60,12 +84,13 @@
     "minionCannotReach": "Un minion de %type% no puede alcanzar sus mobs y se ha detenido!",
     "minionIsFull": "Un minion en tu isla está lleno!",
     "typeEnchantmentsHere": "Escribe los %type% aquí!",
-    "separateMultiple": "Usa coma para incluir varios.",
+    "separateMultiple": "Usa una coma para incluir varios.",
     "enchantsToMatch": "Encontrar %type%:",
     "enchantsToExclude": "Excluir %type%:",
     "inventoryTypes": {
       "enchants": "Encantamientos",
       "reforges": "Reforjados"
-    }
+    },
+    "cancelledStemBreak": "SkyblockAddons ha detenido la ruptura de este tallo. Usa sólo tu mano si en realidad deseas romperlo."
   }
 }
