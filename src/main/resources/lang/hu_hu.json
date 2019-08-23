@@ -40,38 +40,38 @@
     "ignoreItemFrameClicks": "Eszköz keretre kattintás letiltása",
     "useVanillaTextureDefence": "Vanilla textúra a védelem ikonhoz",
     "showBackpackHoldingShift": "Hátizsák mutatása csak a Shift lenyomásával",
-    "manaBar": "Mana Bar",
-    "manaText": "Mana Number",
-    "healthBar": "Health Bar",
-    "healthText": "Health Number",
-    "defenceIcon": "Defence Symbol",
-    "defenceText": "Defence Number",
-    "defencePercentage": "Defence Percentage",
-    "healthUpdates": "Health Change Number",
-    "anchorPoint": "Anchor Point: %setting%: %anchor%",
+    "manaBar": "Mana sáv",
+    "manaText": "Mana szám",
+    "healthBar": "Életerő sáv",
+    "healthText": "Életerő szám",
+    "defenceIcon": "Védelem szimbólum",
+    "defenceText": "Védelem szám",
+    "defencePercentage": "Védelem százalék",
+    "healthUpdates": "Életerő változások",
+    "anchorPoint": "Rögzítési pont: %setting%: %anchor%",
     "anchorPoints": {
-      "topLeft": "Top Left",
-      "topRight": "Top Right",
-      "bottomLeft": "Bottom Left",
-      "bottomRight": "Bottom Right",
-      "healthBar": "Health Bar"
+      "topLeft": "Bal felső",
+      "topRight": "Jobb felső",
+      "bottomLeft": "Bal alsó",
+      "bottomRight": "Jobb alsó",
+      "healthBar": "Életerő sáv"
     },
-    "hidePlayersInLobby": "Hide Nearby Entities In Lobby",
-    "textStyle": "Text Style: %style%",
+    "hidePlayersInLobby": "Közeli entitások elrejtése a lobbyban",
+    "textStyle": "Szöveg típusa: %style%",
     "textStyles": {
-      "regular": "Regular",
-      "blackShadow": "Black Shadow"
+      "regular": "Normál",
+      "blackShadow": "Fekete árnyék"
     },
-    "darkAuctionTimer": "Dark Auction Timer",
-    "magmaBossTimer": "Magma Boss Timer",
-    "itemPickupLog": "Item Pickup Log",
-    "avoidPlacingEnchantedItems": "Avoid Placing Enchanted Items",
-    "makeEndermenHoldingItemPink": "Make Endermen Holding Items Pink",
-    "avoidBreakingStems": "Avoid Breaking Stems",
-    "magmaBossTimerColor": "Magma Boss Timer Color",
-    "darkAuctionTimerColor": "Dark Auction Timer Color",
-    "stopBowChargeFromResetting": "Stop Bow Charge From Resetting",
-    "showMagmaTimerInOtherGames": "Show Magma Timer In Other Games"
+    "darkAuctionTimer": "Dark Auction időzítő",
+    "magmaBossTimer": "Magma Boss időzítő",
+    "itemPickupLog": "Tárgyfelvételi napló",
+    "avoidPlacingEnchantedItems": "Enchantolt tárgyak lehelyezésének elkerülése",
+    "makeEndermenHoldingItemPink": "Rózsaszín tárgyak az Enderman kezében",
+    "avoidBreakingStems": "Növény szárak kiütésének elkerülése",
+    "magmaBossTimerColor": "Magma Boss időzítő színe",
+    "darkAuctionTimerColor": "Dark Auction időzítő színe",
+    "stopBowChargeFromResetting": "Íj felhúzásának megállítása újratöltéskor",
+    "showMagmaTimerInOtherGames": "Magma időzítő mutatása más játékokban"
   },
   "messages": {
     "dropConfirmation": "Dobd el ezt a tárgyat újra, hogy megerősítsd!",
@@ -91,6 +91,6 @@
       "enchants": "Enchantok",
       "reforges": "Reforgeok"
     },
-    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this stem. Use your bare hand if you'd like to break it."
+    "cancelledStemBreak": "A SkyblockAddons megállította, hogy kiüsd a növény szárát. Használd az öklöd, ha ki szeretnéd ütni."
   }
 }
