@@ -1,17 +1,19 @@
 package codes.biscuit.skyblockaddons.utils;
 
+import org.apache.commons.lang3.mutable.MutableInt;
+
 public class SkyblockDate {
 
     private SkyblockMonth month;
-    private int day;
-    private int hour;
-    private int minute;
+    private MutableInt day = new MutableInt();
+    private MutableInt hour = new MutableInt();
+    private MutableInt minute = new MutableInt();
 
-    public SkyblockDate(SkyblockMonth month, int day, int hour, int minute) {
+    SkyblockDate(SkyblockMonth month, int day, int hour, int minute) {
         this.month = month;
-        this.day = day;
-        this.hour = hour;
-        this.minute = minute;
+        this.day.setValue(day);
+        this.hour.setValue(hour);
+        this.minute.setValue(minute);
     }
 
     public SkyblockMonth getMonth() {
@@ -19,19 +21,35 @@ public class SkyblockDate {
     }
 
     public int getDay() {
-        return day;
+        return day.getValue();
     }
 
     public int getHour() {
-        return hour;
+        return hour.getValue();
     }
 
     public int getMinute() {
-        return minute;
+        return minute.getValue();
+    }
+
+    void setDay(int day) {
+        this.day.setValue(day);
+    }
+
+    void setHour(int hour) {
+        this.hour.setValue(hour);
+    }
+
+    void setMinute(int minute) {
+        this.minute.setValue(minute);
+    }
+
+    void setMonth(SkyblockMonth month) {
+        this.month = month;
     }
 
     @SuppressWarnings("unused")
-    enum SkyblockMonth {
+    public enum SkyblockMonth {
         EARLY_WINTER("Early Winter"),
         WINTER("Winter"),
         LATE_WINTER("Late Winter"),

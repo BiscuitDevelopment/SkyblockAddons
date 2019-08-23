@@ -40,38 +40,38 @@
     "ignoreItemFrameClicks": "Игнорировать клики по Рамкам",
     "useVanillaTextureDefence": "Использовать оригинальную иконку брони",
     "showBackpackHoldingShift": "Показывать рюкзак при зажатии Шифта",
-    "manaBar": "Mana Bar",
-    "manaText": "Mana Number",
-    "healthBar": "Health Bar",
-    "healthText": "Health Number",
-    "defenceIcon": "Defence Symbol",
-    "defenceText": "Defence Number",
-    "defencePercentage": "Defence Percentage",
-    "healthUpdates": "Health Change Number",
-    "anchorPoint": "Anchor Point: %setting%: %anchor%",
+    "manaBar": "Полоса Маны",
+    "manaText": "Число Маны",
+    "healthBar": "Полоса Жизни",
+    "healthText": "Число Жизни",
+    "defenceIcon": "Иконка Защиты",
+    "defenceText": "Число Защиты",
+    "defencePercentage": "Проценты Защиты",
+    "healthUpdates": "Изменение Числа Жизни",
+    "anchorPoint": "Точка Якоря: %setting%: %anchor%",
     "anchorPoints": {
-      "topLeft": "Top Left",
-      "topRight": "Top Right",
-      "bottomLeft": "Bottom Left",
-      "bottomRight": "Bottom Right",
-      "healthBar": "Health Bar"
+      "topLeft": "Вверху слева",
+      "topRight": "Вверху справа",
+      "bottomLeft": "Снизу слева",
+      "bottomRight": "Снизу справа",
+      "healthBar": "Полоса Жизни"
     },
-    "hidePlayersInLobby": "Hide Nearby Entities In Lobby",
-    "textStyle": "Text Style: %style%",
+    "hidePlayersInLobby": "Прятать существ рядом в лобби",
+    "textStyle": "Стиль Текста: %style%",
     "textStyles": {
-      "regular": "Regular",
-      "blackShadow": "Black Shadow"
+      "regular": "Обычный",
+      "blackShadow": "Чёрная тень"
     },
-    "darkAuctionTimer": "Dark Auction Timer",
-    "magmaBossTimer": "Magma Boss Timer",
-    "itemPickupLog": "Item Pickup Log",
-    "avoidPlacingEnchantedItems": "Avoid Placing Enchanted Items",
-    "makeEndermenHoldingItemPink": "Make Endermen Holding Items Pink",
-    "avoidBreakingStems": "Avoid Breaking Stems",
-    "magmaBossTimerColor": "Magma Boss Timer Color",
-    "darkAuctionTimerColor": "Dark Auction Timer Color",
-    "stopBowChargeFromResetting": "Stop Bow Charge From Resetting",
-    "showMagmaTimerInOtherGames": "Show Magma Timer In Other Games"
+    "darkAuctionTimer": "Таймер тёмного аукциона",
+    "magmaBossTimer": "Таймер Магма босса",
+    "itemPickupLog": "Список подбирания предметов",
+    "avoidPlacingEnchantedItems": "Избегать постановки зачарованных предметов",
+    "makeEndermenHoldingItemPink": "Делать эндерменов с предметами розовыми",
+    "avoidBreakingStems": "Избегать ломания ростков",
+    "magmaBossTimerColor": "Цвет таймера Магма Босса",
+    "darkAuctionTimerColor": "Цвет таймера тёмного аукциона",
+    "stopBowChargeFromResetting": "Останавливать заряд лука от перезагрузки",
+    "showMagmaTimerInOtherGames": "Показывать таймер Магма босса в других играх"
   },
   "messages": {
     "dropConfirmation": "Выбросите предмет ещё раз для подтверждения!",
@@ -91,6 +91,6 @@
       "enchants": "Зачарования",
       "reforges": "Перековки"
     },
-    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this stem. Use your bare hand if you'd like to break it."
+    "cancelledStemBreak": "SkyblockAddons остановил вас от ломания этого ростка. Используйте пустую руку, если вы хотите это сделать."
   }
 }

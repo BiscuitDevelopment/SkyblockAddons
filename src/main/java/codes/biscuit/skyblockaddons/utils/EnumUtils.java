@@ -195,4 +195,25 @@ public class EnumUtils {
             return symbol;
         }
     }
+
+    public enum MagmaEvent {
+        MAGMA_WAVE("magma"),
+        BLAZE_WAVE("blaze"),
+        BOSS_SPAWN("spawn"),
+        BOSS_DEATH("death"),
+
+        // Not actually an event
+        PING("ping");
+
+        // The event name used by InventiveTalent's API
+        private String inventiveTalentEvent;
+
+        MagmaEvent(String inventiveTalentEvent) {
+            this.inventiveTalentEvent = inventiveTalentEvent;
+        }
+
+        public String getInventiveTalentEvent() {
+            return inventiveTalentEvent;
+        }
+    }
 }

@@ -59,7 +59,7 @@ public class SkyblockAddonsGui extends GuiScreen {
             addButton(5, Feature.MAGMA_WARNING, 2, EnumUtils.ButtonType.TOGGLE);
             addButton(5, Feature.DROP_CONFIRMATION, 3, EnumUtils.ButtonType.TOGGLE);
             ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
-            magmaTextField = new GuiTextField(0, fontRendererObj, sr.getScaledWidth()-150, 40, 120,20);
+            magmaTextField = new GuiTextField(0, fontRendererObj, sr.getScaledWidth()-150, 50, 120,20);
             magmaTextField.setMaxStringLength(8);
             if (main.getPlayerListener().getMagmaAccuracy() != EnumUtils.MagmaTimerAccuracy.NO_DATA) {
                 magmaTextField.setText(getMagmaText());
@@ -152,8 +152,12 @@ public class SkyblockAddonsGui extends GuiScreen {
 //        }
         if (magmaTextField != null) {
             ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
-            drawCenteredString(fontRendererObj, "Magma Boss Timer - HH:MM:SS",
-                    sr.getScaledWidth()-91, 25, defaultBlue);
+            drawCenteredString(fontRendererObj, "Set Magma Boss Timer - HH:MM:SS",
+                    sr.getScaledWidth()-91, 20, defaultBlue);
+            drawCenteredString(fontRendererObj, "Credits to InventiveTalent",
+                    sr.getScaledWidth()-91, 30, defaultBlue);
+            drawCenteredString(fontRendererObj, "for the Magma Boss API",
+                    sr.getScaledWidth()-91, 40, defaultBlue);
             if ((main.getPlayerListener().getMagmaAccuracy() == EnumUtils.MagmaTimerAccuracy.EXACTLY ||
                     main.getPlayerListener().getMagmaAccuracy() == EnumUtils.MagmaTimerAccuracy.ABOUT)
                     && !magmaTextField.isFocused()) {
@@ -270,7 +274,7 @@ public class SkyblockAddonsGui extends GuiScreen {
                     magmaTime += magmaTimes[1] * 60;
                     magmaTime += magmaTimes[2];
                     main.getPlayerListener().setMagmaAccuracy(EnumUtils.MagmaTimerAccuracy.EXACTLY);
-                    main.getPlayerListener().setMagmaTime(magmaTime, true);
+                    main.getPlayerListener().setMagmaTime(magmaTime, false); // will save on exit instead
                 } catch (NumberFormatException | IndexOutOfBoundsException ignored) {
                 }
             }

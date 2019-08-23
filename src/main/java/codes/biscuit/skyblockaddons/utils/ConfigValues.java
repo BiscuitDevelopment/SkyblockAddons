@@ -125,27 +125,27 @@ public class ConfigValues {
                     anchorPoints.put(feature, EnumUtils.AnchorPoint.fromId(element.getValue().getAsInt()));
                 }
             }
-            if (settingsConfig.has("nextMagmaTimestamp")) {
-                boolean isRecent = true;
-                long savedTimestamp = settingsConfig.get("nextMagmaTimestamp").getAsLong();
-                long currentTime = System.currentTimeMillis();
-                if (savedTimestamp < currentTime) {
-                    long difference = currentTime-savedTimestamp;
-                    if (difference < 50400000) { //only make a prediction if the time is within the past 14 hours.
-                        while (savedTimestamp < currentTime) {
-                            savedTimestamp+=7220000; //add 2 hours + 20seconds (average boss death) until the time in the future and not the past
-                        }
-                    } else {
-                        isRecent = false;
-                    }
-                }
-                if (isRecent) {
-                    int seconds = Math.round((savedTimestamp-currentTime)/1000);
-                    main.getPlayerListener().setMagmaTime(seconds, false);
-                    main.getPlayerListener().setMagmaAccuracy(EnumUtils.MagmaTimerAccuracy.ABOUT);
-                    nextMagmaTimestamp = savedTimestamp;
-                }
-            }
+//            if (settingsConfig.has("nextMagmaTimestamp")) {
+//                boolean isRecent = true;
+//                long savedTimestamp = settingsConfig.get("nextMagmaTimestamp").getAsLong();
+//                long currentTime = System.currentTimeMillis();
+//                if (savedTimestamp < currentTime) {
+//                    long difference = currentTime-savedTimestamp;
+//                    if (difference < 50400000) { //only make a prediction if the time is within the past 14 hours.
+//                        while (savedTimestamp < currentTime) {
+//                            savedTimestamp+=7220000; //add 2 hours + 20seconds (average boss death) until the time in the future and not the past
+//                        }
+//                    } else {
+//                        isRecent = false;
+//                    }
+//                }
+//                if (isRecent) {
+//                    int seconds = Math.round((savedTimestamp-currentTime)/1000);
+//                    main.getPlayerListener().setMagmaTime(seconds, false);
+//                    main.getPlayerListener().setMagmaAccuracy(EnumUtils.MagmaTimerAccuracy.ABOUT);
+//                    nextMagmaTimestamp = savedTimestamp;
+//                }
+//            }
 
             loadColor("warningColor", Feature.MAGMA_WARNING, ConfigColor.RED);
             loadColor("confirmationColor", Feature.DROP_CONFIRMATION, ConfigColor.RED);

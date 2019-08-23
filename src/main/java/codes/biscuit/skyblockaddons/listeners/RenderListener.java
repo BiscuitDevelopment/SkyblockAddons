@@ -94,7 +94,11 @@ public class RenderListener {
             Minecraft mc = Minecraft.getMinecraft();
             if (!(mc.currentScreen instanceof LocationEditGui) && !(mc.currentScreen instanceof GuiNotification)) {
                 float scale = main.getUtils().denormalizeValue(main.getConfigValues().getGuiScale(), ButtonSlider.GUI_SCALE_MINIMUM, ButtonSlider.GUI_SCALE_MAXIMUM, ButtonSlider.GUI_SCALE_STEP);
+                GlStateManager.disableBlend();
+                GlStateManager.pushMatrix();
+                GlStateManager.scale(scale, scale, 1);
                 drawText(Feature.MAGMA_BOSS_TIMER, scale, mc, null);
+                GlStateManager.popMatrix();
             }
         }
     }

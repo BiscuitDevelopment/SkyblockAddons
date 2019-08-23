@@ -13,18 +13,23 @@ import java.util.TreeMap;
 
 public class Scheduler {
 
+    private SkyblockAddons main;
     private long totalTicks = 0;
     private Map<Long, Set<Command>> queue = new TreeMap<>();
+
+    public Scheduler(SkyblockAddons main) {
+        this.main = main;
+    }
 
     /**
      * This class is a little something I came up with in order to schedule things
      * by client ticks reliably.
      *
      * @param commandType What you want to schedule
-     * @param delayTicks The delay in ticks (20 ticks = 1second)
+     * @param delaySeconds The delay in ticks (20 ticks = 1second)
      */
-    public void schedule(CommandType commandType, int delayTicks) {
-        long ticks = totalTicks+delayTicks;
+    public void schedule(CommandType commandType, int delaySeconds) {
+        long ticks = totalTicks+(delaySeconds*20);
         Set<Command> commands = queue.get(ticks);
         if (commands != null) {
             for (Command command : commands) {
@@ -46,7 +51,7 @@ public class Scheduler {
     }
 
     @SubscribeEvent()
-    public void onTickMagmaBossChecker(TickEvent.ClientTickEvent e) {
+    public void ticker(TickEvent.ClientTickEvent e) {
         if (e.phase == TickEvent.Phase.START) {
             totalTicks++;
             Set<Command> commands = queue.get(totalTicks);
@@ -57,6 +62,11 @@ public class Scheduler {
                     }
                 }
                 queue.remove(totalTicks);
+            }
+            if (totalTicks % 12000 == 0) { // check magma boss every 15 minutes
+                if (main.getPlayerListener().getMagmaAccuracy() != EnumUtils.MagmaTimerAccuracy.EXACTLY) {
+                    main.getUtils().fetchEstimateFromServer();
+                }
             }
         }
     }

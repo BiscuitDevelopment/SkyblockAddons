@@ -38,11 +38,16 @@ public class CoordsPair {
             return false;
         }
         CoordsPair chunkCoords = (CoordsPair)obj;
-        return new EqualsBuilder().append(x, chunkCoords.x).append(y, chunkCoords.y).isEquals();
+        return new EqualsBuilder().append(getX(), chunkCoords.getX()).append(getY(), chunkCoords.getY()).isEquals();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(83, 11).append(x).append(y).toHashCode();
+        return new HashCodeBuilder(83, 11).append(getX()).append(getY()).toHashCode();
+    }
+
+    @Override
+    public String toString() {
+        return getX()+"|"+getY();
     }
 }
