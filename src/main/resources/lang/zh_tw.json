@@ -19,7 +19,7 @@
     "guiScale": "Gui 大小: %scale%",
     "resetLocations": "重置Gui位置",
     "hideDurability": "隱藏物品耐久度",
-    "showEnchantmentsReforges": "附魔 & 重鑄",
+    "showEnchantmentsReforges": "於畫面上顯示附魔 & 重鑄",
     "minionStopWarning": "\"機器人無法觸及生物\"警告",
     "hideAuctionHousePlayers": "隱藏競標房內玩家",
     "backpackStyle": "背包樣式: %style%",
@@ -40,38 +40,38 @@
     "ignoreItemFrameClicks": "無視對展示框的點擊",
     "useVanillaTextureDefence": "使用原版防禦圖標",
     "showBackpackHoldingShift": "只在按住Shift時顯示背包預覽",
-    "manaBar": "Mana Bar",
-    "manaText": "Mana Number",
-    "healthBar": "Health Bar",
-    "healthText": "Health Number",
-    "defenceIcon": "Defence Symbol",
-    "defenceText": "Defence Number",
-    "defencePercentage": "Defence Percentage",
-    "healthUpdates": "Health Change Number",
-    "anchorPoint": "Anchor Point: %setting%: %anchor%",
+    "manaBar": "魔力計量條",
+    "manaText": "魔力文字",
+    "healthBar": "血量計量條",
+    "healthText": "血量文字",
+    "defenceIcon": "防禦力圖標",
+    "defenceText": "防禦力文字",
+    "defencePercentage": "防禦力百分比",
+    "healthUpdates": "血量起伏",
+    "anchorPoint": "定位點: %setting%: %anchor%",
     "anchorPoints": {
-      "topLeft": "Top Left",
-      "topRight": "Top Right",
-      "bottomLeft": "Bottom Left",
-      "bottomRight": "Bottom Right",
-      "healthBar": "Health Bar"
+      "topLeft": "左上方",
+      "topRight": "右上方",
+      "bottomLeft": "底部左方",
+      "bottomRight": "底部右方",
+      "healthBar": "血量計量條"
     },
-    "hidePlayersInLobby": "Hide Nearby Entities In Lobby",
-    "textStyle": "Text Style: %style%",
+    "hidePlayersInLobby": "在大廳隱藏較近的實體",
+    "textStyle": "文字樣式: %style%",
     "textStyles": {
-      "regular": "Regular",
-      "blackShadow": "Black Shadow"
+      "regular": "一般",
+      "blackShadow": "黑框"
     },
-    "darkAuctionTimer": "Dark Auction Timer",
-    "magmaBossTimer": "Magma Boss Timer",
-    "itemPickupLog": "Item Pickup Log",
-    "avoidPlacingEnchantedItems": "Avoid Placing Enchanted Items",
-    "makeEndermenHoldingItemPink": "Make Endermen Holding Items Pink",
-    "avoidBreakingStems": "Avoid Breaking Stems",
-    "magmaBossTimerColor": "Magma Boss Timer Color",
-    "darkAuctionTimerColor": "Dark Auction Timer Color",
-    "stopBowChargeFromResetting": "Stop Bow Charge From Resetting",
-    "showMagmaTimerInOtherGames": "Show Magma Timer In Other Games"
+    "darkAuctionTimer": "黑暗拍賣會計時器",
+    "magmaBossTimer": "熔岩史萊姆王計時器",
+    "itemPickupLog": "物品進出背包通知",
+    "avoidPlacingEnchantedItems": "防止放置附魔物品",
+    "makeEndermenHoldingItemPink": "手持物品的終界使者將顯示為粉紅色",
+    "avoidBreakingStems": "防止破壞農作物",
+    "magmaBossTimerColor": "熔岩史萊姆王計時器顏色",
+    "darkAuctionTimerColor": "黑暗拍賣會計時器顏色",
+    "stopBowChargeFromResetting": "弓箭在命中生物後不需要重新裝填",
+    "showMagmaTimerInOtherGames": "在其他遊戲顯示熔岩史萊姆王出生時間"
   },
   "messages": {
     "dropConfirmation": "再次丟棄此物品以確認!",
@@ -91,6 +91,6 @@
       "enchants": "附魔",
       "reforges": "重鑄"
     },
-    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this stem. Use your bare hand if you'd like to break it."
+    "cancelledStemBreak": "SkyblockAddons阻止了你破壞這個作物, 如想破壞, 請使用空手"
   }
 }
