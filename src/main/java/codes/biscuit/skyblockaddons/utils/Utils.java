@@ -136,6 +136,7 @@ public class Utils {
                             if (loopLocation == EnumUtils.Location.BLAZING_FORTRESS &&
                                     location != EnumUtils.Location.BLAZING_FORTRESS) {
                                 sendPostRequest(EnumUtils.MagmaEvent.PING); // going into blazing fortress
+                                main.getUtils().fetchEstimateFromServer();
                             }
                             location = loopLocation;
                             foundLocation = true;
@@ -342,7 +343,7 @@ public class Utils {
                 long estimate = responseJson.get("estimate").getAsLong();
                 long currentTime = System.currentTimeMillis();
                 int magmaSpawnTime = (int)((estimate-currentTime)/1000);
-                FMLLog.info("[SkyblockAddons] System time is " + currentTime +", server time estimate is" +
+                FMLLog.info("[SkyblockAddons] System time is " + currentTime +", server time estimate is " +
                         estimate+". Updating magma boss spawn to be in "+magmaSpawnTime+" seconds.");
 
                 main.getPlayerListener().setMagmaTime(magmaSpawnTime, true);

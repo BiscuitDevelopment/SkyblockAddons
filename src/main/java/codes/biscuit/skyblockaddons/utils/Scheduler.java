@@ -26,10 +26,10 @@ public class Scheduler {
      * by client ticks reliably.
      *
      * @param commandType What you want to schedule
-     * @param delayTicks The delay in ticks (20 ticks = 1second)
+     * @param delaySeconds The delay in ticks (20 ticks = 1second)
      */
-    public void schedule(CommandType commandType, int delayTicks) {
-        long ticks = totalTicks+delayTicks;
+    public void schedule(CommandType commandType, int delaySeconds) {
+        long ticks = totalTicks+(delaySeconds*20);
         Set<Command> commands = queue.get(ticks);
         if (commands != null) {
             for (Command command : commands) {
@@ -63,8 +63,8 @@ public class Scheduler {
                 }
                 queue.remove(totalTicks);
             }
-            if (totalTicks % 18000 == 0) { // check magma boss every 15 minutes
-                if (main.getPlayerListener().getMagmaAccuracy() == EnumUtils.MagmaTimerAccuracy.ABOUT) {
+            if (totalTicks % 12000 == 0) { // check magma boss every 15 minutes
+                if (main.getPlayerListener().getMagmaAccuracy() != EnumUtils.MagmaTimerAccuracy.EXACTLY) {
                     main.getUtils().fetchEstimateFromServer();
                 }
             }

@@ -13,15 +13,17 @@ import net.minecraft.entity.monster.EntitySlime;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.Vec3;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
+import net.minecraftforge.event.entity.EntityEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.ChunkEvent;
-import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
@@ -78,24 +80,21 @@ public class PlayerListener {
         }
     }
 
-    @SubscribeEvent()
-    public void onWorldUnload(WorldEvent.Unload e) {
-        recentlyLoadedChunks.clear();
-    }
-
     /**
      * Keep track of recently loaded chunks for the magma boss timer.
      */
     @SubscribeEvent()
     public void onChunkLoad(ChunkEvent.Load e) {
-        CoordsPair coords = new CoordsPair(e.getChunk().xPosition, e.getChunk().zPosition);
-        recentlyLoadedChunks.add(coords);
-        new Timer().schedule(new TimerTask() {
-            @Override
-            public void run() {
-                recentlyLoadedChunks.remove(coords);
-            }
-        }, 1000);
+        if (main.getUtils().isOnSkyblock()) {
+            CoordsPair coords = new CoordsPair(e.getChunk().xPosition, e.getChunk().zPosition);
+            recentlyLoadedChunks.add(coords);
+            new Timer().schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    recentlyLoadedChunks.remove(coords);
+                }
+            }, 30000);
+        }
     }
     /**
      * Interprets the action bar to extract mana, health, and defence. Enables/disables mana/health prediction,
@@ -213,8 +212,7 @@ public class PlayerListener {
             }
             if (main.getConfigValues().isEnabled(Feature.AVOID_PLACING_ENCHANTED_ITEMS)) {
                 if ((e.action == PlayerInteractEvent.Action.RIGHT_CLICK_BLOCK || e.action == PlayerInteractEvent.Action.RIGHT_CLICK_AIR) &&
-//                        ((heldItem.getItem() instanceof ItemBlock && !heldItem.getItem().equals(Item.getItemFromBlock(Blocks.bookshelf))) // Bookshelves should be an exception
-                        (heldItem.getItem().equals(Items.lava_bucket) || heldItem.getItem().equals(Items.water_bucket))) {
+                        (heldItem.getItem().equals(Items.lava_bucket) || heldItem.getItem().equals(Items.string))) {
                     e.setCanceled(true);
                 }
             }
@@ -404,7 +402,7 @@ public class PlayerListener {
                 if ((magmaAccuracy == EnumUtils.MagmaTimerAccuracy.EXACTLY || magmaAccuracy == EnumUtils.MagmaTimerAccuracy.ABOUT)
                         && magmaTime == 0) {
                     magmaAccuracy = EnumUtils.MagmaTimerAccuracy.SPAWNED_PREDICTION;
-                    main.getScheduler().schedule(Scheduler.CommandType.RESET_MAGMA_PREDICTION, 400);
+                    main.getScheduler().schedule(Scheduler.CommandType.RESET_MAGMA_PREDICTION, 20);
                 }
                 magmaTime--;
                 magmaTick = 1;
@@ -416,22 +414,20 @@ public class PlayerListener {
     private long lastBlazeWavePost = -1;
 
     @SubscribeEvent()
-    public void onTickMagmaBossChecker(EntityJoinWorldEvent e) {
+    public void onTickMagmaBossChecker(EntityEvent.EnteringChunk e) { // EntityJoinWorldEvent
 
         // Between these two coordinates is the whole "arena" area where all the magmas and stuff are.
-        int[] xPoints = {-244, -379};
-        int[] yPoints = {-566, -635};
+        AxisAlignedBB spawnArea = new AxisAlignedBB(-244, 0, -566, -379, 255, -635);
 
         if (main.getUtils().getLocation() == EnumUtils.Location.BLAZING_FORTRESS) {
             Entity entity =  e.entity;
-            if (entity.posX < xPoints[0] && entity.posX > xPoints[1] &&
-                    entity.posZ < yPoints[0] && entity.posZ > yPoints[1]) { // timers will trigger if 15 magmas/8 blazes spawn in the box within a 4 second time period
+            if (spawnArea.isVecInside(new Vec3(entity.posX, entity.posY, entity.posZ))) { // timers will trigger if 15 magmas/8 blazes spawn in the box within a 4 second time period
                 long currentTime = System.currentTimeMillis();
                 if (e.entity instanceof EntityMagmaCube) {
-                    if (!recentlyLoadedChunks.contains(new CoordsPair(entity.chunkCoordX, entity.chunkCoordZ)) && entity.ticksExisted == 0) {
+                    if (!recentlyLoadedChunks.contains(new CoordsPair(e.newChunkX, e.newChunkZ)) && entity.ticksExisted == 0) {
                         recentMagmaCubes++;
-                        main.getScheduler().schedule(Scheduler.CommandType.SUBTRACT_MAGMA_COUNT, 80);
-                        if (recentMagmaCubes > 15) {
+                        main.getScheduler().schedule(Scheduler.CommandType.SUBTRACT_MAGMA_COUNT, 4);
+                        if (recentMagmaCubes >= 17) {
                             setMagmaTime(600, true);
                             magmaAccuracy = EnumUtils.MagmaTimerAccuracy.EXACTLY;
                             if (currentTime- lastMagmaWavePost > 300000) {
@@ -441,10 +437,10 @@ public class PlayerListener {
                         }
                     }
                 } else if (e.entity instanceof EntityBlaze) {
-                    if (!recentlyLoadedChunks.contains(new CoordsPair(entity.chunkCoordX, entity.chunkCoordZ)) && entity.ticksExisted == 0) {
+                    if (!recentlyLoadedChunks.contains(new CoordsPair(e.newChunkX, e.newChunkZ)) && entity.ticksExisted == 0) {
                         recentBlazes++;
-                        main.getScheduler().schedule(Scheduler.CommandType.SUBTRACT_BLAZE_COUNT, 80);
-                        if (recentBlazes > 8) {
+                        main.getScheduler().schedule(Scheduler.CommandType.SUBTRACT_BLAZE_COUNT, 4);
+                        if (recentBlazes >= 10) {
                             setMagmaTime(1200, true);
                             magmaAccuracy = EnumUtils.MagmaTimerAccuracy.EXACTLY;
                             if (currentTime- lastBlazeWavePost > 300000) {
@@ -477,8 +473,14 @@ public class PlayerListener {
                             insertAt--; // 1 line for damage
                         }
                     }
-                    e.toolTip.add(insertAt,
-                            "Anvil Uses: " + EnumChatFormatting.RED+ nbt.getCompoundTag("ExtraAttributes").getInteger("anvil_uses"));
+                    int anvilUses = nbt.getCompoundTag("ExtraAttributes").getInteger("anvil_uses");
+                    if (nbt.getCompoundTag("ExtraAttributes").hasKey("hot_potato_count")) {
+                        int hotPotatoCount = nbt.getCompoundTag("ExtraAttributes").getInteger("hot_potato_count");
+                        anvilUses -= hotPotatoCount;
+                    }
+                    if (anvilUses > 0) {
+                        e.toolTip.add(insertAt, "Anvil Uses: " + EnumChatFormatting.RED.toString() + anvilUses);
+                    }
                 }
             }
         }
@@ -492,7 +494,13 @@ public class PlayerListener {
                     main.getUtils().sendMessage(EnumChatFormatting.GREEN + "Copied this item's NBT to clipboard!");
                 }
             } catch (UnsupportedFlavorException | IOException ex) {
-                ex.printStackTrace();
+                try {
+                    clipboard.setContents(new StringSelection(nbt), null);
+                    main.getUtils().sendMessage(EnumChatFormatting.GREEN + "Copied this item's NBT to clipboard!");
+                } catch (IllegalStateException ex1) {
+                    main.getUtils().sendMessage(EnumChatFormatting.RED + "Error copying item NBT to clipboard!");
+                    ex.printStackTrace();
+                }
             }
         }
     }

@@ -123,12 +123,14 @@ public class MixinGuiContainer extends GuiScreen {
             if (SkyblockAddons.getInstance().getConfigValues().getBackpackStyle() == EnumUtils.BackpackStyle.GUI) {
                 this.mc.getTextureManager().bindTexture(CHEST_GUI_TEXTURE);
                 int rows = length/9;
+                GlStateManager.disableLighting();
                 GlStateManager.pushMatrix();
                 GlStateManager.translate(0,0,300);
                 drawTexturedModalRect(x, y, 0, 0, 176, rows * 18 + 17);
                 drawTexturedModalRect(x, y + rows * 18 + 17, 0, 215, 176, 7);
                 fontRendererObj.drawString(backpack.getItemName(), x+8, y+6, 4210752);
                 GlStateManager.popMatrix();
+                GlStateManager.enableLighting();
 
                 RenderHelper.enableGUIStandardItemLighting();
                 GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
@@ -148,10 +150,12 @@ public class MixinGuiContainer extends GuiScreen {
                     }
                 }
             } else {
+                GlStateManager.disableLighting();
                 GlStateManager.pushMatrix();
                 GlStateManager.translate(0,0, 300);
                 Gui.drawRect(x, y, x + (16 * 9) + 3, y + (16 * (length / 9)) + 3, ConfigColor.DARK_GRAY.getColor(250));
                 GlStateManager.popMatrix();
+                GlStateManager.enableLighting();
 
                 RenderHelper.enableGUIStandardItemLighting();
                 GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
