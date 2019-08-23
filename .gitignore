@@ -8,3 +8,9 @@
 .classpath
 .project
 *.prefs
+*.cfg
+*.gz
+*.properties
+*.txt
+*.log
+*.dat
