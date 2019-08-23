@@ -1,13 +1,13 @@
 package codes.biscuit.skyblockaddons.commands;
 
+import java.util.Collections;
+import java.util.List;
+
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.listeners.PlayerListener;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.util.EnumChatFormatting;
-
-import java.util.Collections;
-import java.util.List;
 
 public class SkyblockAddonsCommand extends CommandBase {
 
