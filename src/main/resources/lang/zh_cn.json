@@ -48,15 +48,7 @@
     "defenceText": "防御数",
     "defencePercentage": "防御比率",
     "healthUpdates": "Health Change Number",
-    "anchorPoint": "Anchor Point: %setting%: %anchor%",
-    "anchorPoints": {
-      "topLeft": "左上",
-      "topRight": "右上",
-      "bottomLeft": "左下",
-      "bottomRight": "右下",
-      "healthBar": "Health Bar"
-    },
-    "hidePlayersInLobby": "Hide Nearby Entities In Lobby",
+    "hidePlayersInLobby": "Hide Far Entities In Lobby",
     "textStyle": "Text Style: %style%",
     "textStyles": {
       "regular": "Regular",

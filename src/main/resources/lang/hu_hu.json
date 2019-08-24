@@ -48,14 +48,6 @@
     "defenceText": "Védelem szám",
     "defencePercentage": "Védelem százalék",
     "healthUpdates": "Életerő változások",
-    "anchorPoint": "Rögzítési pont: %setting%: %anchor%",
-    "anchorPoints": {
-      "topLeft": "Bal felső",
-      "topRight": "Jobb felső",
-      "bottomLeft": "Bal alsó",
-      "bottomRight": "Jobb alsó",
-      "healthBar": "Életerő sáv"
-    },
     "hidePlayersInLobby": "Közeli entitások elrejtése a lobbyban",
     "textStyle": "Szöveg típusa: %style%",
     "textStyles": {

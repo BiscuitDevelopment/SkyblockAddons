@@ -48,15 +48,7 @@
     "defenceText": "Verdediging Hoeveelheid",
     "defencePercentage": "Verdediging Percentage",
     "healthUpdates": "Gezondheid Hoeveelheid Aanpassen",
-    "anchorPoint": "Anchor Point: %setting%: %anchor%",
-    "anchorPoints": {
-      "topLeft": "Top Left",
-      "topRight": "Top Right",
-      "bottomLeft": "Bottom Left",
-      "bottomRight": "Bottom Right",
-      "healthBar": "Health Bar"
-    },
-    "hidePlayersInLobby": "Hide Nearby Entities In Lobby",
+    "hidePlayersInLobby": "Hide Far Entities In Lobby",
     "textStyle": "Text Style: %style%",
     "textStyles": {
       "regular": "Regular",

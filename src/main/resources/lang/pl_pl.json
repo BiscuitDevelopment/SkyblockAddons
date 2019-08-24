@@ -48,14 +48,6 @@
     "defenceText": "Liczba Pancerza",
     "defencePercentage": "Procent Zakotwiczenia",
     "healthUpdates": "Liczba Różnicy Zdrowia",
-    "anchorPoint": "Punkt Zaczepienia: %setting%: %anchor%",
-    "anchorPoints": {
-      "topLeft": "Lewy Górny Róg",
-      "topRight": "Prawy Górny Róg",
-      "bottomLeft": "Lewy Dolny Róg",
-      "bottomRight": "Prawy Dolny Róg",
-      "healthBar": "Pasek Zdrowia"
-    },
     "hidePlayersInLobby": "Ukryj Pobliskie Jednostki w Lobby",
     "textStyle": "Styl Tekstu: %style%",
     "textStyles": {
