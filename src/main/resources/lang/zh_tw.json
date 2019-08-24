@@ -67,7 +67,7 @@
     "itemPickupLog": "物品進出背包通知",
     "avoidPlacingEnchantedItems": "防止放置附魔物品",
     "makeEndermenHoldingItemPink": "手持物品的終界使者將顯示為粉紅色",
-    "avoidBreakingStems": "防止破壞農作物",
+    "avoidBreakingStems": "防止破壞西瓜, 南瓜梗",
     "magmaBossTimerColor": "熔岩史萊姆王計時器顏色",
     "darkAuctionTimerColor": "黑暗拍賣會計時器顏色",
     "stopBowChargeFromResetting": "弓箭在命中生物後不需要重新裝填",
@@ -91,6 +91,6 @@
       "enchants": "附魔",
       "reforges": "重鑄"
     },
-    "cancelledStemBreak": "SkyblockAddons阻止了你破壞這個作物, 如想破壞, 請使用空手"
+    "cancelledStemBreak": "SkyblockAddons阻止了你破壞這個梗, 如想破壞, 請使用空手"
   }
 }
