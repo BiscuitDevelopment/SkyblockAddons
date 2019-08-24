@@ -5,6 +5,7 @@ import codes.biscuit.skyblockaddons.utils.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityArmorStand;
 import net.minecraft.entity.monster.EntityBlaze;
@@ -179,6 +180,13 @@ public class PlayerListener {
             if (main.getRenderListener().isPredictMana() && message.startsWith("Used ") && message.endsWith("Mana)")) {
                 int manaLost = Integer.parseInt(message.split(Pattern.quote("! ("))[1].split(Pattern.quote(" Mana)"))[0]);
                 changeMana(-manaLost);
+            }
+
+            /*  Resets all user input on dead as to not walk backwards or stafe into the portal
+                Might get trigger upon encountering a non named "You" though this chance is so
+                minimal it can be discarded as a bug. */
+            if (main.getConfigValues().isEnabled(Feature.PREVENT_MOVEMENT_ON_DEATH) && e.message.getFormattedText().startsWith("§r§c ☠ §r§7You ")) {
+                KeyBinding.unPressAllKeys();
             }
         }
     }

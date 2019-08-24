@@ -71,9 +71,10 @@
    "magmaBossTimerColor": "Magma Boss Timer Color",
    "darkAuctionTimerColor": "Dark Auction Timer Color",
    "stopBowChargeFromResetting": "Stop Bow Charge From Resetting",
-   "showMagmaTimerInOtherGames": "Show Magma Timer In Other Games"
- },
- "messages": {
+   "showMagmaTimerInOtherGames": "Show Magma Timer In Other Games",
+    "preventMovementOnDeath": "Prevent Walking After Death"
+  },
+  "messages": {
    "dropConfirmation": "Getta questo oggetto nuovamente per confermare!",
    "magmaBossWarning": "Magma Boss!",
    "fullInventory": "Inventario pieno!",

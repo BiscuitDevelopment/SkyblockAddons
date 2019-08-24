@@ -71,7 +71,8 @@
     "magmaBossTimerColor": "Magma Boss Timer Farbe",
     "darkAuctionTimerColor": "Schwarzauktionstimerfarbe",
     "stopBowChargeFromResetting": "Verhindere das zurücksetzen des Bogenladestandes",
-    "showMagmaTimerInOtherGames": "Zeige den Magma Boss-Timer in anderen Spielen"
+    "showMagmaTimerInOtherGames": "Zeige den Magma Boss-Timer in anderen Spielen",
+    "preventMovementOnDeath": "Prevent Walking After Death"
   },
   "messages": {
     "dropConfirmation": "Droppe diesen Gegenstand nochmal, um zu bestätigen!",

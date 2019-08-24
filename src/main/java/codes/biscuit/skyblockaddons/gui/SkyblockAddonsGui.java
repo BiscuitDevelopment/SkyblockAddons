@@ -92,6 +92,7 @@ public class SkyblockAddonsGui extends GuiScreen {
             }
         } else if (page == 3) {
             addButton(1, Feature.MINION_STOP_WARNING, 1, EnumUtils.ButtonType.TOGGLE);
+            addButton(1, Feature.PREVENT_MOVEMENT_ON_DEATH, 2, EnumUtils.ButtonType.TOGGLE);
 
             addButton(6, Feature.PREVIOUS_PAGE, 2, EnumUtils.ButtonType.SOLID);
         }
