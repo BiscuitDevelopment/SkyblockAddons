@@ -64,7 +64,9 @@
     "darkAuctionTimerColor": "Цвет таймера тёмного аукциона",
     "stopBowChargeFromResetting": "Останавливать заряд лука от перезагрузки",
     "showMagmaTimerInOtherGames": "Показывать таймер Магма босса в других играх",
-    "preventMovementOnDeath": "Prevent Walking After Death"
+    "preventMovementOnDeath": "Prevent Walking After Death",
+    "showDarkAuctionTimerInOtherGames": "Show Dark Auc Timer In Other Games",
+    "showItemAnvilUses": "Show Item Anvil Uses"
   },
   "messages": {
     "dropConfirmation": "Выбросите предмет ещё раз для подтверждения!",

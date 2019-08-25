@@ -64,7 +64,9 @@
     "darkAuctionTimerColor": "Dark Auction Timer Color",
     "stopBowChargeFromResetting": "Stop Bow Charge From Resetting",
     "showMagmaTimerInOtherGames": "Show Magma Timer In Other Games",
-    "preventMovementOnDeath": "Stop het Bewegen Na het Doodgaan"
+    "preventMovementOnDeath": "Stop het Bewegen Na het Doodgaan",
+    "showDarkAuctionTimerInOtherGames": "Show Dark Auc Timer In Other Games",
+    "showItemAnvilUses": "Show Item Anvil Uses"
   },
   "messages": {
     "dropConfirmation": "Laat dit object opnieuw vallen om te Bevestigen!",

@@ -64,7 +64,9 @@
     "darkAuctionTimerColor": "Couleur du minuteur du Dark Auction",
     "stopBowChargeFromResetting": "Désativer la recharge du bandage de l'arc",
     "showMagmaTimerInOtherGames": "Afficher le minuteur du Boss Magma dans les autres jeux",
-    "preventMovementOnDeath": "Prevent Walking After Death"
+    "preventMovementOnDeath": "Prevent Walking After Death",
+    "showDarkAuctionTimerInOtherGames": "Show Dark Auc Timer In Other Games",
+    "showItemAnvilUses": "Show Item Anvil Uses"
   },
   "messages": {
     "dropConfirmation": "Jetez cet objet une nouvelle fois pour confirmer!",
