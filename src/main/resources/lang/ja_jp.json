@@ -47,7 +47,7 @@
     "defenceIcon": "ディフェンスマーク",
     "defenceText": "ディフェンス数",
     "defencePercentage": "ディフェンスのパーセンテージ",
-    "healthUpdates": "Health Change Number",
+    "healthUpdates": "体力の変動を表示",
     "hidePlayersInLobby": "ロビーで近くにいるエンティティを非表示",
     "textStyle": "文字スタイル: %style%",
     "textStyles": {
@@ -56,17 +56,17 @@
     },
     "darkAuctionTimer": "ダークオークションタイマー",
     "magmaBossTimer": "マグマボスタイマー",
-    "itemPickupLog": "Item Pickup Log",
-    "avoidPlacingEnchantedItems": "Avoid Placing Enchanted Items",
-    "makeEndermenHoldingItemPink": "Make Endermen Holding Items Pink",
-    "avoidBreakingStems": "Avoid Breaking Stems",
-    "magmaBossTimerColor": "Magma Boss Timer Color",
-    "darkAuctionTimerColor": "Dark Auction Timer Color",
-    "stopBowChargeFromResetting": "Stop Bow Charge From Resetting",
-    "showMagmaTimerInOtherGames": "Show Magma Timer In Other Games",
-    "preventMovementOnDeath": "Prevent Walking After Death",
-    "showDarkAuctionTimerInOtherGames": "Show Dark Auc Timer In Other Games",
-    "showItemAnvilUses": "Show Item Anvil Uses"
+    "itemPickupLog": "拾ったアイテムを表示",
+    "avoidPlacingEnchantedItems": "エンチャントされたアイテムの設置を防止",
+    "makeEndermenHoldingItemPink": "アイテムを持っているエンダーマンをピンク色に表示",
+    "avoidBreakingStems": "茎を破壊するのを防止",
+    "magmaBossTimerColor": "マグマボスタイマーの色",
+    "darkAuctionTimerColor": "ダークオークションタイマーの色",
+    "stopBowChargeFromResetting": "弓のチャージがリセットされるのを防止",
+    "showMagmaTimerInOtherGames": "マグマタイマーを別のミニゲームでも表示",
+    "preventMovementOnDeath": "死んだ直後に歩くのを防止",
+    "showDarkAuctionTimerInOtherGames": "ダークオークションタイマーを別のミニゲームでも表示",
+    "showItemAnvilUses": "金床を使用した回数を表示"
   },
   "messages": {
     "dropConfirmation": "落としてもいいのであれば、このアイテムをもう一度ドロップしてください。",
@@ -86,6 +86,6 @@
       "enchants": "エンチャント",
       "reforges": "リフォージュ"
     },
-    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this stem. Use your bare hand if you'd like to break it."
+    "cancelledStemBreak": "SkyblockAddons modがこの茎を破壊するのを防止しました。破損したい場合は素手で破壊してください。"
   }
 }
