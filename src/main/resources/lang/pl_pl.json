@@ -63,7 +63,8 @@
     "magmaBossTimerColor": "Kolor Timera Magma Bossa",
     "darkAuctionTimerColor": "Kolor Timera Dark Auction",
     "stopBowChargeFromResetting": "Anuluj Resetowanie Się Naładowania Łuku",
-    "showMagmaTimerInOtherGames": "Pokaż Timer Magma Bossa w Innych Grach"
+    "showMagmaTimerInOtherGames": "Pokaż Timer Magma Bossa w Innych Grach",
+    "preventMovementOnDeath": "Prevent Walking After Death"
   },
   "messages": {
     "dropConfirmation": "Wyrzuć ten przedmiot ponownie, aby potwierdzić!",

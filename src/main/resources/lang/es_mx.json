@@ -63,7 +63,8 @@
     "magmaBossTimerColor": "Color de Tiempo para Magma Boss",
     "darkAuctionTimerColor": "Color de Tiempo para Dark Auction",
     "stopBowChargeFromResetting": "Evitar Reinicio de Arco Cargado",
-    "showMagmaTimerInOtherGames": "Mostrar el Tiempo para Magma Boss en Otros Juegos"
+    "showMagmaTimerInOtherGames": "Mostrar el Tiempo para Magma Boss en Otros Juegos",
+    "preventMovementOnDeath": "Prevent Walking After Death"
   },
   "messages": {
     "dropConfirmation": "Arroja este objeto otra vez para confirmar!",

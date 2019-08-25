@@ -65,6 +65,7 @@
     "stopBowChargeFromResetting": "Stop Bow Charge From Resetting",
     "showMagmaTimerInOtherGames": "Show Magma Timer In Other Games",
     "showDarkAuctionTimerInOtherGames": "Show Dark Auc Timer In Other Games",
+    "preventMovementOnDeath": "Prevent Walking After Death",
     "showItemAnvilUses": "Show Item Anvil Uses"
   },
   "messages": {

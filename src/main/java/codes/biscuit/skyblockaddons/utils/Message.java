@@ -69,6 +69,7 @@ public enum Message {
     SETTING_SHOW_MAGMA_TIMER_IN_OTHER_GAMES(MessageObject.SETTING, "showMagmaTimerInOtherGames"),
     SETTING_SHOW_DARK_AUCTION_TIMER_IN_OTHER_GAMES(MessageObject.SETTING, "showDarkAuctionTimerInOtherGames"),
     SETTING_SHOW_ITEM_ANVIL_USES(MessageObject.SETTING, "showItemAnvilUses"),
+    SETTING_PREVENT_MOVEMENT_ON_DEATH(MessageObject.SETTING, "preventMovementOnDeath"),
 
     BACKPACK_STYLE_GUI(MessageObject.STYLE, "inventory"),
     BACKPACK_STYLE_COMPACT(MessageObject.STYLE, "compact"),

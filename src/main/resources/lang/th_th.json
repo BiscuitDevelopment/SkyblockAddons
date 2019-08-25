@@ -63,9 +63,7 @@
     "magmaBossTimerColor": "Magma Boss Timer Color",
     "darkAuctionTimerColor": "Dark Auction Timer Color",
     "stopBowChargeFromResetting": "Stop Bow Charge From Resetting",
-    "showMagmaTimerInOtherGames": "Show Magma Timer In Other Games"
-  },
-  "messages": {
+    "showMagmaTimerInOtherGames": "Show Magma Timer In Other Games""preventMovementOnDeath": "Prevent Walking After Death"
     "dropConfirmation": "กดทิ้งของอีกที่เพื่อยืนยันทิ้งของสิ่นนี้!",
     "magmaBossWarning": "บอส Magma เกิดแล้วโว้ยยย!",
     "fullInventory": "ของเต็มแล้วจ้า!",

@@ -63,7 +63,8 @@
     "magmaBossTimerColor": "Цвет таймера Магма Босса",
     "darkAuctionTimerColor": "Цвет таймера тёмного аукциона",
     "stopBowChargeFromResetting": "Останавливать заряд лука от перезагрузки",
-    "showMagmaTimerInOtherGames": "Показывать таймер Магма босса в других играх"
+    "showMagmaTimerInOtherGames": "Показывать таймер Магма босса в других играх",
+    "preventMovementOnDeath": "Prevent Walking After Death"
   },
   "messages": {
     "dropConfirmation": "Выбросите предмет ещё раз для подтверждения!",
