@@ -21,7 +21,7 @@
     "hideDurability": "Esconder Durabilidade de Ferramentas",
     "showEnchantmentsReforges": "Encantamentos e Reforjadas",
     "minionStopWarning": "Aviso de \"Criado Não Alcança\"",
-    "hideAuctionHousePlayers": "Esconder Jogadores Perdo de Leilões",
+    "hideAuctionHousePlayers": "Esconder Jogadores Perto de Leilões",
     "backpackStyle": "Estilo de Mochila: %style%",
     "backpackStyles": {
       "inventory": "Inventário",
@@ -40,33 +40,33 @@
     "ignoreItemFrameClicks": "Ignorar Cliques em Molduras",
     "useVanillaTextureDefence": "Usar Textura Vanilla Para Ícone de Defesa",
     "showBackpackHoldingShift": "Só Mostar Conteúdos de Mochilas Quando Shift é Pressionado",
-    "manaBar": "Mana Bar",
-    "manaText": "Mana Number",
-    "healthBar": "Health Bar",
-    "healthText": "Health Number",
-    "defenceIcon": "Defence Symbol",
-    "defenceText": "Defence Number",
-    "defencePercentage": "Defence Percentage",
-    "healthUpdates": "Health Change Number",
-    "hidePlayersInLobby": "Hide Far Entities In Lobby",
-    "textStyle": "Text Style: %style%",
+    "manaBar": "Barra de Mana",
+    "manaText": "Número de Mana",
+    "healthBar": "Barra de Vida",
+    "healthText": "Número de Vida",
+    "defenceIcon": "Ícone de Defesa",
+    "defenceText": "Número de Defesa",
+    "defencePercentage": "Porcentagem de Defesa",
+    "healthUpdates": "Número de Mudanças de Vida",
+    "hidePlayersInLobby": "Esconder Objetos Longes Quando no Lobby",
+    "textStyle": "Estilo de Texto: %style%",
     "textStyles": {
-      "regular": "Regular",
-      "blackShadow": "Black Shadow"
+      "regular": "Normal",
+      "blackShadow": "Sombra Preta"
     },
-    "darkAuctionTimer": "Dark Auction Timer",
-    "magmaBossTimer": "Magma Boss Timer",
-    "itemPickupLog": "Item Pickup Log",
-    "avoidPlacingEnchantedItems": "Avoid Placing Enchanted Items",
-    "makeEndermenHoldingItemPink": "Make Endermen Holding Items Pink",
-    "avoidBreakingStems": "Avoid Breaking Stems",
-    "magmaBossTimerColor": "Magma Boss Timer Color",
-    "darkAuctionTimerColor": "Dark Auction Timer Color",
-    "stopBowChargeFromResetting": "Stop Bow Charge From Resetting",
-    "showMagmaTimerInOtherGames": "Show Magma Timer In Other Games",
-    "preventMovementOnDeath": "Prevent Walking After Death",
-    "showDarkAuctionTimerInOtherGames": "Show Dark Auc Timer In Other Games",
-    "showItemAnvilUses": "Show Item Anvil Uses"
+    "darkAuctionTimer": "Timer do Leilão Sombrio",
+    "magmaBossTimer": "Timer do Chefão Magma",
+    "itemPickupLog": "Registro de Items Pegados",
+    "avoidPlacingEnchantedItems": "Evitar de Colocar Itens Encantados",
+    "makeEndermenHoldingItemPink": "Colorir Endermen Segurando Itens Rosa",
+    "avoidBreakingStems": "Evitar de Quebar Raizes",
+    "magmaBossTimerColor": "Cor do Timer do Chefão Magma",
+    "darkAuctionTimerColor": "Cor do Timer do Leilão Sombrio",
+    "stopBowChargeFromResetting": "Impedir Arco e Flecha de Resetar",
+    "showMagmaTimerInOtherGames": "Mostar Timer do Chefão Magma Em Outros Jogos",
+    "preventMovementOnDeath": "Impedir Movimento Após Morte",
+    "showDarkAuctionTimerInOtherGames": "Mostrar Timer do Leilão Sombrio Em Outros Jogos",
+    "showItemAnvilUses": "Mostrar Usos na Bigorna de Itens"
   },
   "messages": {
     "dropConfirmation": "Large este item de novo para confirmar!",
@@ -86,6 +86,6 @@
       "enchants": "Encantamentos",
       "reforges": "Reforjadas"
     },
-    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this stem. Use your bare hand if you'd like to break it."
+    "cancelledStemBreak": "SkyblockAddons impediu você de quebrar esta raiz. Use sua mão se deseja a quebrar."
   }
 }
