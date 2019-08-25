@@ -547,7 +547,7 @@ public class PlayerListener {
 
     public void setMagmaTime(int magmaTime, boolean save) {
         this.magmaTime = magmaTime;
-        main.getConfigValues().setNextMagmaTimestamp(System.currentTimeMillis()+(magmaTime*1000));
+//        main.getConfigValues().setNextMagmaTimestamp(System.currentTimeMillis()+(magmaTime*1000));
 //        if (save) {
 //            main.getConfigValues().saveConfig();
 //        }

@@ -76,6 +76,9 @@ public class SettingsGui extends GuiScreen {
     }
 
     private void addButton(double y, Message message, Feature feature, int collumn, EnumUtils.ButtonType buttonType) {
+        if (main.getConfigValues().isRemoteDisabled(feature)) { // Don't display features that I have disabled
+            return;
+        }
         y *= height; // The float from 0 to 1 is multiplied by the total height.
         String text = null;
         if (message != null) {

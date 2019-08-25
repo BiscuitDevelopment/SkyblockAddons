@@ -31,7 +31,8 @@ public class ConfigValues {
     private Language language = Language.ENGLISH;
     private EnumUtils.BackpackStyle backpackStyle = EnumUtils.BackpackStyle.GUI;
     private EnumUtils.TextStyle textStyle = EnumUtils.TextStyle.REGULAR;
-    private long nextMagmaTimestamp = -1;
+//    private long nextMagmaTimestamp = -1;
+    private Set<Feature> remoteDisabledFeatures = EnumSet.noneOf(Feature.class);
 
     public ConfigValues(SkyblockAddons main, File settingsConfigFile) {
         this.main = main;
@@ -422,10 +423,18 @@ public class ConfigValues {
 
     /**
      * @param feature The feature to check.
+     * @return Whether the feature is remotely disabled.
+     */
+    public boolean isRemoteDisabled(Feature feature) {
+        return remoteDisabledFeatures.contains(feature);
+    }
+
+    /**
+     * @param feature The feature to check.
      * @return Whether the feature is disabled.
      */
     public boolean isDisabled(Feature feature) {
-        return disabledFeatures.contains(feature);
+        return disabledFeatures.contains(feature) || isRemoteDisabled(feature);
     }
 
     /**
@@ -562,7 +571,7 @@ public class ConfigValues {
         this.textStyle = textStyle;
     }
 
-    public void setNextMagmaTimestamp(long nextMagmaTimestamp) {
-        this.nextMagmaTimestamp = nextMagmaTimestamp;
+    Set<Feature> getRemoteDisabledFeatures() {
+        return remoteDisabledFeatures;
     }
 }

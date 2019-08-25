@@ -19,6 +19,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(NetHandlerPlayClient.class)
 public class MixinNetHandlerPlayClient {
 
+    /**
+     *  These two injections make sure
+     */
     @Inject(method = "handleSetSlot", at = @At(value = "HEAD"), cancellable = true)
     private void handleSetSlot(S2FPacketSetSlot packetIn, CallbackInfo ci) {
         if (packetIn != null) {
@@ -26,14 +29,15 @@ public class MixinNetHandlerPlayClient {
             int windowID = packetIn.func_149175_c();
             int slot = packetIn.func_149173_d();
             SkyblockAddons main = SkyblockAddons.getInstance();
-            if (item != null && main != null && main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.STOP_BOW_CHARGE_FROM_RESETTING) && windowID == 0) {
+            if (item != null && main != null && main.getUtils().isOnSkyblock() &&
+                    main.getConfigValues().isEnabled(Feature.STOP_BOW_CHARGE_FROM_RESETTING) && windowID == 0) {
                 Minecraft mc = Minecraft.getMinecraft();
                 if (mc != null) {
                     EntityPlayer p = mc.thePlayer;
                     if (p != null) {
                         InventoryPlayer inventory = p.inventory;
                         if (inventory != null) {
-                            if (slot-36 == inventory.currentItem && isShootingBow(item, mc)) {
+                            if (slot-36 == inventory.currentItem && isShootingBow(item, mc, inventory.getCurrentItem())) {
                                 ci.cancel();
                             }
                         }
@@ -48,17 +52,20 @@ public class MixinNetHandlerPlayClient {
         if (packetIn != null) {
             ItemStack[] itemStacks = packetIn.getItemStacks();
             SkyblockAddons main = SkyblockAddons.getInstance();
-            if (itemStacks != null && itemStacks.length == 45 &&
-                    main != null && main.getConfigValues().isEnabled(Feature.STOP_BOW_CHARGE_FROM_RESETTING)
-            && main.getUtils().isOnSkyblock()) {
+            if (itemStacks != null && itemStacks.length == 45 && main != null &&
+                    main.getConfigValues().isEnabled(Feature.STOP_BOW_CHARGE_FROM_RESETTING) && main.getUtils().isOnSkyblock()) {
                 Minecraft mc = Minecraft.getMinecraft();
                 if (mc != null) {
                     EntityPlayer p = mc.thePlayer;
-                    if (p != null && p.inventory != null) {
-                        int slot = 36+p.inventory.currentItem;
-                        ItemStack item = itemStacks[slot];
-                        if (isShootingBow(item, mc)) {
-                            itemStacks[slot] = p.inventory.getCurrentItem();
+                    if (p != null) {
+                        InventoryPlayer inventory = p.inventory;
+                        if (inventory != null) {
+                            int slot = 36 + inventory.currentItem;
+                            ItemStack item = itemStacks[slot];
+                            ItemStack currentItem = inventory.getCurrentItem();
+                            if (isShootingBow(item, mc, currentItem)) {
+                                itemStacks[slot] = currentItem;
+                            }
                         }
                     }
                 }
@@ -66,8 +73,13 @@ public class MixinNetHandlerPlayClient {
         }
     }
 
-    private boolean isShootingBow(ItemStack itemStack, Minecraft mc) {
-        Item item = itemStack.getItem();
-        return item != null && item.equals(Items.bow) && mc.gameSettings.keyBindUseItem.isKeyDown();
+    private boolean isShootingBow(ItemStack itemStack, Minecraft mc, ItemStack currentItemStack) {
+        if (itemStack != null && currentItemStack != null) {
+            Item item = itemStack.getItem();
+            Item currentItem = currentItemStack.getItem();
+            return item != null && currentItem != null && item.equals(Items.bow) && currentItem.equals(Items.bow) &&
+                    mc.gameSettings.keyBindUseItem.isKeyDown();
+        }
+        return false;
     }
 }

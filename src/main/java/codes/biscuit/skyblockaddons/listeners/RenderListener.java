@@ -404,23 +404,16 @@ public class RenderListener {
                     int hours = totalSeconds / 3600;
                     int minutes = totalSeconds / 60 % 60;
                     int seconds = totalSeconds % 60;
-                    if (hours >= 1) {
-                        if (hours < 10) {
-                            magmaBuilder.append("0");
-                        }
-                        magmaBuilder.append(hours).append(":");
-                    }
+                    if (Math.abs(hours) >= 10) hours = 10;
+                    magmaBuilder.append(hours).append(":");
                     if (minutes < 10) {
                         magmaBuilder.append("0");
                     }
-                    magmaBuilder.append(minutes);
-                    if (hours <= 0) {
-                        magmaBuilder.append(":");
-                        if (seconds < 10) {
-                            magmaBuilder.append("0");
-                        }
-                        magmaBuilder.append(seconds);
+                    magmaBuilder.append(minutes).append(":");
+                    if (seconds < 10) {
+                        magmaBuilder.append("0");
                     }
+                    magmaBuilder.append(seconds);
                 }// else if (ma == EnumUtils.MagmaTimerAccuracy.SPAWNED) {
 //                    magmaBuilder.append(main.getPlayerListener().getMagmaBossHealth()).append("\u2764");
                 //}

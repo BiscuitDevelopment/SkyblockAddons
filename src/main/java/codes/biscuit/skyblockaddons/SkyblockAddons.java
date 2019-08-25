@@ -62,6 +62,7 @@ public class SkyblockAddons {
                 }
             }
         }
+        utils.checkDisabledFeatures();
         scheduleMagmaCheck();
     }
 
