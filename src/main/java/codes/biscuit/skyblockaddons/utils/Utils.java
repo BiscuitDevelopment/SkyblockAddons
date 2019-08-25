@@ -254,7 +254,7 @@ public class Utils {
                             url = new URL("https://raw.githubusercontent.com/biscuut/SkyblockAddons/master/updatelink.txt");
                             connection = url.openConnection();
                             connection.setReadTimeout(5000);
-                            connection.addRequestProperty("User-Agent", "SkyblockAddons update checker");
+                            connection.addRequestProperty("User-Agent", "SkyblockAddons");
                             connection.setDoOutput(true);
                             reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
                             while ((currentLine = reader.readLine()) != null) {
@@ -281,6 +281,42 @@ public class Utils {
                         break;
                     }
                 }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }).start();
+    }
+
+    public void checkDisabledFeatures() {
+        new Thread(() -> {
+            try {
+                URL url = new URL("https://raw.githubusercontent.com/biscuut/SkyblockAddons/master/disabledFeatures.txt");
+                URLConnection connection = url.openConnection();
+                connection.setReadTimeout(5000);
+                connection.addRequestProperty("User-Agent", "SkyblockAddons");
+                connection.setDoOutput(true);
+                BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                String currentLine;
+                Set<Feature> disabledFeatures = main.getConfigValues().getRemoteDisabledFeatures();
+                while ((currentLine = reader.readLine()) != null) {
+                    String[] splitLine = currentLine.split(Pattern.quote("|"));
+                    if (!currentLine.startsWith("all|")) {
+                        if (!SkyblockAddons.VERSION.equals(splitLine[0])) {
+                            continue;
+                        }
+                    }
+                    if (splitLine.length > 1) {
+                        for (int i = 1; i < splitLine.length; i++) {
+                            String part = splitLine[i];
+                            Feature feature = Feature.fromId(Integer.valueOf(part));
+                            if (feature != null) {
+                                disabledFeatures.add(feature);
+                            }
+                        }
+                    }
+                    break;
+                }
+                reader.close();
             } catch (Exception ex) {
                 ex.printStackTrace();
             }

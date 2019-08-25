@@ -4,6 +4,7 @@ import static codes.biscuit.skyblockaddons.utils.Message.*;
 
 public class EnumUtils {
 
+    @SuppressWarnings("deprecation")
     public enum AnchorPoint {
         TOP_LEFT(0, ANCHOR_POINT_TOP_LEFT),
         TOP_RIGHT(1, ANCHOR_POINT_TOP_RIGHT),
@@ -183,7 +184,7 @@ public class EnumUtils {
         SPAWNED("NOW"),
         SPAWNED_PREDICTION("NOW"),
         EXACTLY(""),
-        ABOUT("~");
+        ABOUT("");
 
         private String symbol;
 

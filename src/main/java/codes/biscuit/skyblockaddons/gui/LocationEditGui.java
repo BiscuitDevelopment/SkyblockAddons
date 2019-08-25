@@ -40,7 +40,9 @@ public class LocationEditGui extends GuiScreen {
                 Feature.HEALTH_TEXT, Feature.DEFENCE_ICON, Feature.DEFENCE_TEXT, Feature.DEFENCE_PERCENTAGE,
                 Feature.HEALTH_UPDATES, Feature.DARK_AUCTION_TIMER, Feature.MAGMA_BOSS_TIMER, Feature.ITEM_PICKUP_LOG};
         for (Feature feature : features) {
-            buttonList.add(new ButtonLocation(main, feature));
+            if (!main.getConfigValues().isRemoteDisabled(feature)) { // Don't display features that I have disabled
+                buttonList.add(new ButtonLocation(main, feature));
+            }
         }
 
         ScaledResolution scaledResolution = new ScaledResolution(Minecraft.getMinecraft());

@@ -48,14 +48,6 @@
     "defenceText": "Число Защиты",
     "defencePercentage": "Проценты Защиты",
     "healthUpdates": "Изменение Числа Жизни",
-    "anchorPoint": "Точка Якоря: %setting%: %anchor%",
-    "anchorPoints": {
-      "topLeft": "Вверху слева",
-      "topRight": "Вверху справа",
-      "bottomLeft": "Снизу слева",
-      "bottomRight": "Снизу справа",
-      "healthBar": "Полоса Жизни"
-    },
     "hidePlayersInLobby": "Прятать существ рядом в лобби",
     "textStyle": "Стиль Текста: %style%",
     "textStyles": {

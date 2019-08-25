@@ -48,14 +48,6 @@
     "defenceText": "Nombre de défense",
     "defencePercentage": "Pourcentage de défense",
     "healthUpdates": "Historique des points de vie",
-    "anchorPoint": "Point d'ancrage: %setting%: %anchor%",
-    "anchorPoints": {
-      "topLeft": "En haut à gauche",
-      "topRight": "En haut à droite",
-      "bottomLeft": "En bas à gauche",
-      "bottomRight": "En bas à droite",
-      "healthBar": "Barre de vie"
-    },
     "hidePlayersInLobby": "Masquer les joueurs dans le lobby",
     "textStyle": "Style du texte: %style%",
     "textStyles": {
