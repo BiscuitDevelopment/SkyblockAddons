@@ -63,7 +63,7 @@
     "magmaBossTimerColor": "Color del Contador del Magma Boss",
     "darkAuctionTimerColor": "Color del Contador del Dark Auction",
     "stopBowChargeFromResetting": "Prevenir el Reset del Arco",
-      "showMagmaTimerInOtherGames": "Mostrar el Contador del Magma Boss en Otros Juegos",
+    "showMagmaTimerInOtherGames": "Mostrar el Contador del Magma Boss en Otros Juegos",
     "preventMovementOnDeath": "Prevenir moverse cuando mueres",
     "showDarkAuctionTimerInOtherGames": "Mostrar el Contador del Dark Auction en Otros Juegos",
     "showItemAnvilUses": "Mostrar usos del Item en el Yunque"
@@ -83,7 +83,7 @@
     "enchantsToMatch": "%type% para que coincida:",
     "enchantsToExclude": "%type% para excluir:",
     "inventoryTypes": {
-      "enchants": "Encantamientos,
+      "enchants": "Encantamientos",
       "reforges": "Reforges"
     },
     "cancelledStemBreak": "SkyblockAddons Te ha parado de romper este tallo. Usa tu mano si quieres romperlo."

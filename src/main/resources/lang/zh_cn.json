@@ -63,7 +63,7 @@
     "magmaBossTimerColor": "岩浆怪Boss倒计时颜色",
     "darkAuctionTimerColor": "暗黑拍卖会倒计时颜色",
     "stopBowChargeFromResetting": "阻止拉弓进度重置",
-    "showMagmaTimerInOtherGames": "在其他游戏显示岩浆怪Boss倒计时"
+    "showMagmaTimerInOtherGames": "在其他游戏显示岩浆怪Boss倒计时",
     "preventMovementOnDeath": "暂时阻止死亡后移动",
     "showDarkAuctionTimerInOtherGames": "在其他游戏显示暗黑拍卖会倒计时",
     "showItemAnvilUses": "显示物品铁砧合成次数"

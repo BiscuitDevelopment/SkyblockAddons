@@ -196,6 +196,7 @@ public class ConfigValues {
                 setAllCoordinatesToDefault();
             } else if (configVersion <= 3) {
                 disabledFeatures.add(Feature.SHOW_DARK_AUCTION_TIMER_IN_OTHER_GAMES);
+                disabledFeatures.add(Feature.PREVENT_MOVEMENT_ON_DEATH);
             }
         } else {
             addDefaultsAndSave();
@@ -243,7 +244,7 @@ public class ConfigValues {
         Feature[] toDisable = {Feature.DROP_CONFIRMATION, Feature.MINION_STOP_WARNING, Feature.HIDE_HEALTH_BAR,
             Feature.USE_VANILLA_TEXTURE_DEFENCE, Feature.IGNORE_ITEM_FRAME_CLICKS, Feature.SHOW_BACKPACK_HOLDING_SHIFT,
             Feature.HEALTH_BAR, Feature.DEFENCE_PERCENTAGE, Feature.HIDE_PLAYERS_IN_LOBBY, Feature.SHOW_MAGMA_TIMER_IN_OTHER_GAMES,
-            Feature.SHOW_DARK_AUCTION_TIMER_IN_OTHER_GAMES};
+            Feature.SHOW_DARK_AUCTION_TIMER_IN_OTHER_GAMES, Feature.PREVENT_MOVEMENT_ON_DEATH};
         disabledFeatures.addAll(Arrays.asList(toDisable));
         setAllCoordinatesToDefault();
         saveConfig();

@@ -314,7 +314,6 @@ public class Utils {
                             }
                         }
                     }
-                    break;
                 }
                 reader.close();
             } catch (Exception ex) {

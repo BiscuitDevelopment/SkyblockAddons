@@ -42,6 +42,7 @@ public abstract class MixinGuiChest extends GuiContainer {
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
         super.drawScreen(mouseX, mouseY, partialTicks);
         if (textFieldMatch != null) {
+            GlStateManager.color(1F, 1F, 1F);
             SkyblockAddons main = SkyblockAddons.getInstance();
             String inventoryMessage = inventoryType.getMessage();
             int defaultBlue = main.getUtils().getDefaultBlue(255);
@@ -53,12 +54,10 @@ public abstract class MixinGuiChest extends GuiContainer {
             if (textFieldMatch.getText().equals("")) {
                 mc.ingameGUI.drawString(mc.fontRendererObj, "ex. \"prot, feather\"", guiLeft - 156, guiTop + 86, ConfigColor.DARK_GRAY.getColor(255));
             }
-            GlStateManager.color(1.0F, 0, 0);
             textFieldExclusions.drawTextBox();
             if (textFieldExclusions.getText().equals("")) {
                 mc.ingameGUI.drawString(mc.fontRendererObj, "ex. \"proj, blast\"", guiLeft - 156, guiTop + 126, ConfigColor.DARK_GRAY.getColor(255));
             }
-            GlStateManager.color(1F, 1F, 1F);
         }
     }
 
