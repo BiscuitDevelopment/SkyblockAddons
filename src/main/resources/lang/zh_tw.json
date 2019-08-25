@@ -63,7 +63,10 @@
     "magmaBossTimerColor": "熔岩史萊姆王計時器顏色",
     "darkAuctionTimerColor": "黑暗拍賣會計時器顏色",
     "stopBowChargeFromResetting": "弓箭在命中生物後不需要重新裝填",
-    "showMagmaTimerInOtherGames": "在其他遊戲顯示熔岩史萊姆王出生時間"
+    "showMagmaTimerInOtherGames": "在其他遊戲顯示熔岩史萊姆王出生時間",
+    "preventMovementOnDeath": "Prevent Walking After Death",
+    "showDarkAuctionTimerInOtherGames": "Show Dark Auc Timer In Other Games",
+    "showItemAnvilUses": "Show Item Anvil Uses"
   },
   "messages": {
     "dropConfirmation": "再次丟棄此物品以確認!",

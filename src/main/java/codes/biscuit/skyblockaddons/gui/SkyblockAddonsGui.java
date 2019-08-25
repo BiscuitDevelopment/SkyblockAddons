@@ -58,17 +58,18 @@ public class SkyblockAddonsGui extends GuiScreen {
             addButton(5, Feature.HIDE_DURABILITY, 1, EnumUtils.ButtonType.TOGGLE);
             addButton(5, Feature.MAGMA_WARNING, 2, EnumUtils.ButtonType.TOGGLE);
             addButton(5, Feature.DROP_CONFIRMATION, 3, EnumUtils.ButtonType.TOGGLE);
-            ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
-            magmaTextField = new GuiTextField(0, fontRendererObj, sr.getScaledWidth()-150, 50, 120,20);
-            magmaTextField.setMaxStringLength(8);
-            if (main.getPlayerListener().getMagmaAccuracy() != EnumUtils.MagmaTimerAccuracy.NO_DATA) {
-                magmaTextField.setText(getMagmaText());
-            }
+//            ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
+//            magmaTextField = new GuiTextField(0, fontRendererObj, sr.getScaledWidth()-150, 50, 120,20);
+//            magmaTextField.setMaxStringLength(8);
+//            if (main.getPlayerListener().getMagmaAccuracy() != EnumUtils.MagmaTimerAccuracy.NO_DATA) {
+//                magmaTextField.setText(getMagmaText());
+//            }
 
             addButton(6, Feature.NEXT_PAGE, 2, EnumUtils.ButtonType.SOLID);
         } else if (page == 2) {
             addButton(1, Feature.HIDE_PLAYERS_IN_LOBBY, 1, EnumUtils.ButtonType.TOGGLE);
-            addButton(1, Feature.MAKE_ENDERMEN_HOLDING_ITEMS_PINK, 2, EnumUtils.ButtonType.TOGGLE);
+            addButton(1, Feature.MINION_STOP_WARNING, 2, EnumUtils.ButtonType.TOGGLE);
+//            addButton(1, Feature.MAKE_ENDERMEN_HOLDING_ITEMS_PINK, 2, EnumUtils.ButtonType.TOGGLE);
             addButton(1, Feature.AVOID_PLACING_ENCHANTED_ITEMS, 3, EnumUtils.ButtonType.TOGGLE);
             addButton(2, Feature.DEFENCE_TEXT, 1, EnumUtils.ButtonType.TOGGLE);
             addButton(2, Feature.MANA_BAR, 2, EnumUtils.ButtonType.TOGGLE);
@@ -91,7 +92,8 @@ public class SkyblockAddonsGui extends GuiScreen {
                 addButton(6, Feature.PREVIOUS_PAGE, 5, EnumUtils.ButtonType.SOLID);
             }
         } else if (page == 3) {
-            addButton(1, Feature.MINION_STOP_WARNING, 1, EnumUtils.ButtonType.TOGGLE);
+            addButton(1, Feature.SHOW_ITEM_ANVIL_USES, 1, EnumUtils.ButtonType.TOGGLE);
+            addButton(1, Feature.PREVENT_MOVEMENT_ON_DEATH, 2, EnumUtils.ButtonType.TOGGLE);
 
             addButton(6, Feature.PREVIOUS_PAGE, 2, EnumUtils.ButtonType.SOLID);
         }
@@ -150,14 +152,14 @@ public class SkyblockAddonsGui extends GuiScreen {
         }// else if (page == 2) {
 //            drawScaledString("GUI Items", 0.26, defaultBlue, 1.8F);
 //        }
+        ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
+//        drawCenteredString(fontRendererObj, "Set Magma Boss Timer - HH:MM:SS",
+//                sr.getScaledWidth()-91, 25, defaultBlue);
+        drawCenteredString(fontRendererObj, "Credits to InventiveTalent",
+                sr.getScaledWidth()-91, 35, defaultBlue);
+        drawCenteredString(fontRendererObj, "for the Magma Boss API",
+                sr.getScaledWidth()-91, 45, defaultBlue);
         if (magmaTextField != null) {
-            ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
-            drawCenteredString(fontRendererObj, "Set Magma Boss Timer - HH:MM:SS",
-                    sr.getScaledWidth()-91, 20, defaultBlue);
-            drawCenteredString(fontRendererObj, "Credits to InventiveTalent",
-                    sr.getScaledWidth()-91, 30, defaultBlue);
-            drawCenteredString(fontRendererObj, "for the Magma Boss API",
-                    sr.getScaledWidth()-91, 40, defaultBlue);
             if ((main.getPlayerListener().getMagmaAccuracy() == EnumUtils.MagmaTimerAccuracy.EXACTLY ||
                     main.getPlayerListener().getMagmaAccuracy() == EnumUtils.MagmaTimerAccuracy.ABOUT)
                     && !magmaTextField.isFocused()) {
@@ -231,6 +233,9 @@ public class SkyblockAddonsGui extends GuiScreen {
      * Adds a button, limiting its width and setting the correct position.
      */
     private void addButton(double row, Feature feature, int collumn, EnumUtils.ButtonType buttonType) {
+        if (main.getConfigValues().isRemoteDisabled(feature)) { // Don't display features that I have disabled
+            return;
+        }
         String text = feature.getMessage();
         int halfWidth = width/2;
         int oneThird = width/3;

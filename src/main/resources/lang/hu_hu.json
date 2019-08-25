@@ -63,7 +63,10 @@
     "magmaBossTimerColor": "Magma Boss időzítő színe",
     "darkAuctionTimerColor": "Dark Auction időzítő színe",
     "stopBowChargeFromResetting": "Íj felhúzásának megállítása újratöltéskor",
-    "showMagmaTimerInOtherGames": "Magma időzítő mutatása más játékokban"
+    "showMagmaTimerInOtherGames": "Magma időzítő mutatása más játékokban",
+    "preventMovementOnDeath": "Prevent Walking After Death",
+    "showDarkAuctionTimerInOtherGames": "Show Dark Auc Timer In Other Games",
+    "showItemAnvilUses": "Show Item Anvil Uses"
   },
   "messages": {
     "dropConfirmation": "Dobd el ezt a tárgyat újra, hogy megerősítsd!",

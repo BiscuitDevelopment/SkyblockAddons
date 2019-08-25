@@ -63,7 +63,10 @@
     "magmaBossTimerColor": "Magma Boss Timer Color",
     "darkAuctionTimerColor": "Dark Auction Timer Color",
     "stopBowChargeFromResetting": "Stop Bow Charge From Resetting",
-    "showMagmaTimerInOtherGames": "Show Magma Timer In Other Games"
+    "showMagmaTimerInOtherGames": "Show Magma Timer In Other Games",
+    "preventMovementOnDeath": "Prevent Walking After Death",
+    "showDarkAuctionTimerInOtherGames": "Show Dark Auc Timer In Other Games",
+    "showItemAnvilUses": "Show Item Anvil Uses"
   },
   "messages": {
     "dropConfirmation": "Släpp Det Här Igen För Att Bekräfta!",

@@ -48,7 +48,7 @@
     "defenceText": "Defence Number",
     "defencePercentage": "Defence Percentage",
     "healthUpdates": "Health Change Number",
-    "hidePlayersInLobby": "Hide Far Entities In Lobby",
+    "hidePlayersInLobby": "Hide Nearby Entities In Lobby",
     "textStyle": "Text Style: %style%",
     "textStyles": {
       "regular": "Regular",
@@ -63,7 +63,10 @@
     "magmaBossTimerColor": "Magma Boss Timer Color",
     "darkAuctionTimerColor": "Dark Auction Timer Color",
     "stopBowChargeFromResetting": "Stop Bow Charge From Resetting",
-    "showMagmaTimerInOtherGames": "Show Magma Timer In Other Games"
+    "showMagmaTimerInOtherGames": "Show Magma Timer In Other Games",
+    "preventMovementOnDeath": "Prevent Walking After Death",
+    "showDarkAuctionTimerInOtherGames": "Show Dark Auc Timer In Other Games",
+    "showItemAnvilUses": "Show Item Anvil Uses"
   },
   "messages": {
     "dropConfirmation": "กดทิ้งของอีกที่เพื่อยืนยันทิ้งของสิ่นนี้!",
