@@ -77,6 +77,7 @@ public class PlayerListener {
             magmaTick = 1;
             timerTick = 1;
             main.getInventoryUtils().resetPreviousInventory();
+            recentlyLoadedChunks.clear();
         }
     }
 
@@ -86,14 +87,11 @@ public class PlayerListener {
     @SubscribeEvent()
     public void onChunkLoad(ChunkEvent.Load e) {
         if (main.getUtils().isOnSkyblock()) {
-            CoordsPair coords = new CoordsPair(e.getChunk().xPosition, e.getChunk().zPosition);
+            int x = e.getChunk().xPosition;
+            int z = e.getChunk().zPosition;
+            CoordsPair coords = new CoordsPair(x, z);
             recentlyLoadedChunks.add(coords);
-            new Timer().schedule(new TimerTask() {
-                @Override
-                public void run() {
-                    recentlyLoadedChunks.remove(coords);
-                }
-            }, 30000);
+            main.getScheduler().schedule(Scheduler.CommandType.DELETE_RECENT_CHUNK, 20, x, z);
         }
     }
     /**
@@ -283,7 +281,6 @@ public class PlayerListener {
     public void onEntityEvent(LivingEvent.LivingUpdateEvent e) {
         Entity entity = e.entity;
         if (main.getUtils().isOnSkyblock() && entity instanceof EntityArmorStand && entity.hasCustomName()) {
-//            System.out.println("Name|" + entity.getCustomNameTag());
             if (main.getUtils().getLocation() == EnumUtils.Location.ISLAND) {
                 int cooldown = main.getConfigValues().getWarningSeconds() * 1000 + 5000;
                 if (main.getConfigValues().isEnabled(Feature.MINION_FULL_WARNING) &&
@@ -460,26 +457,28 @@ public class PlayerListener {
     @SubscribeEvent()
     public void onItemTooltip(ItemTooltipEvent e) {
         ItemStack hoveredItem = e.itemStack;
-        
-        // Anvil Uses ~ original done by Dahn#6036
-        if (hoveredItem.hasTagCompound()) {
-        	NBTTagCompound nbt = hoveredItem.getTagCompound();
-            if (nbt.hasKey("ExtraAttributes")) {
-                if (nbt.getCompoundTag("ExtraAttributes").hasKey("anvil_uses")) {
-                    int insertAt = e.toolTip.size();
-                    if (Minecraft.getMinecraft().gameSettings.advancedItemTooltips) {
-                        insertAt-= 3; // 1 line for the item name, 1 line for the nbt, and 1 line for the rarity
-                        if (e.itemStack.isItemDamaged()) {
-                            insertAt--; // 1 line for damage
+
+        if (main.getConfigValues().isEnabled(Feature.SHOW_ITEM_ANVIL_USES)) {
+            // Anvil Uses ~ original done by Dahn#6036
+            if (hoveredItem.hasTagCompound()) {
+                NBTTagCompound nbt = hoveredItem.getTagCompound();
+                if (nbt.hasKey("ExtraAttributes")) {
+                    if (nbt.getCompoundTag("ExtraAttributes").hasKey("anvil_uses")) {
+                        int insertAt = e.toolTip.size();
+                        if (Minecraft.getMinecraft().gameSettings.advancedItemTooltips) {
+                            insertAt -= 3; // 1 line for the item name, 1 line for the nbt, and 1 line for the rarity
+                            if (e.itemStack.isItemDamaged()) {
+                                insertAt--; // 1 line for damage
+                            }
                         }
-                    }
-                    int anvilUses = nbt.getCompoundTag("ExtraAttributes").getInteger("anvil_uses");
-                    if (nbt.getCompoundTag("ExtraAttributes").hasKey("hot_potato_count")) {
-                        int hotPotatoCount = nbt.getCompoundTag("ExtraAttributes").getInteger("hot_potato_count");
-                        anvilUses -= hotPotatoCount;
-                    }
-                    if (anvilUses > 0) {
-                        e.toolTip.add(insertAt, "Anvil Uses: " + EnumChatFormatting.RED.toString() + anvilUses);
+                        int anvilUses = nbt.getCompoundTag("ExtraAttributes").getInteger("anvil_uses");
+                        if (nbt.getCompoundTag("ExtraAttributes").hasKey("hot_potato_count")) {
+                            int hotPotatoCount = nbt.getCompoundTag("ExtraAttributes").getInteger("hot_potato_count");
+                            anvilUses -= hotPotatoCount;
+                        }
+                        if (anvilUses > 0) {
+                            e.toolTip.add(insertAt, "Anvil Uses: " + EnumChatFormatting.RED.toString() + anvilUses);
+                        }
                     }
                 }
             }
@@ -552,5 +551,9 @@ public class PlayerListener {
 //        if (save) {
 //            main.getConfigValues().saveConfig();
 //        }
+    }
+
+    public Set<CoordsPair> getRecentlyLoadedChunks() {
+        return recentlyLoadedChunks;
     }
 }

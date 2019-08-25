@@ -68,7 +68,8 @@ public class SkyblockAddonsGui extends GuiScreen {
             addButton(6, Feature.NEXT_PAGE, 2, EnumUtils.ButtonType.SOLID);
         } else if (page == 2) {
             addButton(1, Feature.HIDE_PLAYERS_IN_LOBBY, 1, EnumUtils.ButtonType.TOGGLE);
-            addButton(1, Feature.MAKE_ENDERMEN_HOLDING_ITEMS_PINK, 2, EnumUtils.ButtonType.TOGGLE);
+            addButton(1, Feature.MINION_STOP_WARNING, 2, EnumUtils.ButtonType.TOGGLE);
+//            addButton(1, Feature.MAKE_ENDERMEN_HOLDING_ITEMS_PINK, 2, EnumUtils.ButtonType.TOGGLE);
             addButton(1, Feature.AVOID_PLACING_ENCHANTED_ITEMS, 3, EnumUtils.ButtonType.TOGGLE);
             addButton(2, Feature.DEFENCE_TEXT, 1, EnumUtils.ButtonType.TOGGLE);
             addButton(2, Feature.MANA_BAR, 2, EnumUtils.ButtonType.TOGGLE);
@@ -91,7 +92,7 @@ public class SkyblockAddonsGui extends GuiScreen {
                 addButton(6, Feature.PREVIOUS_PAGE, 5, EnumUtils.ButtonType.SOLID);
             }
         } else if (page == 3) {
-            addButton(1, Feature.MINION_STOP_WARNING, 1, EnumUtils.ButtonType.TOGGLE);
+            addButton(1, Feature.SHOW_ITEM_ANVIL_USES, 1, EnumUtils.ButtonType.TOGGLE);
 
             addButton(6, Feature.PREVIOUS_PAGE, 2, EnumUtils.ButtonType.SOLID);
         }

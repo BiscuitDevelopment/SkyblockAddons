@@ -33,7 +33,6 @@ public class RenderListener {
 
     private SkyblockAddons main;
     private final static ItemStack BONE_ITEM = new ItemStack(Item.getItemById(352));
-
     private final ResourceLocation BARS = new ResourceLocation("skyblockaddons", "bars.png");
     private final ResourceLocation DEFENCE_VANILLA = new ResourceLocation("skyblockaddons", "defence.png");
     private final ResourceLocation TEXT_ICONS = new ResourceLocation("skyblockaddons", "icons.png");
@@ -62,7 +61,7 @@ public class RenderListener {
                     renderOverlays();
                     renderWarnings(e.resolution);
                 } else {
-                    renderMagmaTimerOnly();
+                    renderTimersOnly();
                 }
             }
         }
@@ -80,7 +79,7 @@ public class RenderListener {
                 renderOverlays();
                 renderWarnings(e.resolution);
             } else {
-                renderMagmaTimerOnly();
+                renderTimersOnly();
             }
         }
     }
@@ -88,18 +87,21 @@ public class RenderListener {
     /**
      * I have an option so you can see the magma timer in other games so that's why.
      */
-    private void renderMagmaTimerOnly() {
-        if (main.getConfigValues().isEnabled(Feature.MAGMA_BOSS_TIMER) && main.getConfigValues().isEnabled(Feature.SHOW_MAGMA_TIMER_IN_OTHER_GAMES) &&
-                main.getPlayerListener().getMagmaAccuracy() != EnumUtils.MagmaTimerAccuracy.NO_DATA) {
-            Minecraft mc = Minecraft.getMinecraft();
-            if (!(mc.currentScreen instanceof LocationEditGui) && !(mc.currentScreen instanceof GuiNotification)) {
-                float scale = main.getUtils().denormalizeValue(main.getConfigValues().getGuiScale(), ButtonSlider.GUI_SCALE_MINIMUM, ButtonSlider.GUI_SCALE_MAXIMUM, ButtonSlider.GUI_SCALE_STEP);
-                GlStateManager.disableBlend();
-                GlStateManager.pushMatrix();
-                GlStateManager.scale(scale, scale, 1);
+    private void renderTimersOnly() {
+        Minecraft mc = Minecraft.getMinecraft();
+        if (!(mc.currentScreen instanceof LocationEditGui) && !(mc.currentScreen instanceof GuiNotification)) {
+            float scale = main.getUtils().denormalizeValue(main.getConfigValues().getGuiScale(), ButtonSlider.GUI_SCALE_MINIMUM, ButtonSlider.GUI_SCALE_MAXIMUM, ButtonSlider.GUI_SCALE_STEP);
+            GlStateManager.disableBlend();
+            GlStateManager.pushMatrix();
+            GlStateManager.scale(scale, scale, 1);
+            if (main.getConfigValues().isEnabled(Feature.MAGMA_BOSS_TIMER) && main.getConfigValues().isEnabled(Feature.SHOW_MAGMA_TIMER_IN_OTHER_GAMES) &&
+                    main.getPlayerListener().getMagmaAccuracy() != EnumUtils.MagmaTimerAccuracy.NO_DATA) {
                 drawText(Feature.MAGMA_BOSS_TIMER, scale, mc, null);
-                GlStateManager.popMatrix();
             }
+            if (main.getConfigValues().isEnabled(Feature.DARK_AUCTION_TIMER) && main.getConfigValues().isEnabled(Feature.SHOW_DARK_AUCTION_TIMER_IN_OTHER_GAMES)) {
+                drawText(Feature.DARK_AUCTION_TIMER, scale, mc, null);
+            }
+            GlStateManager.popMatrix();
         }
     }
 

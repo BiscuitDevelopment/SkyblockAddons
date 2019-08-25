@@ -11,7 +11,7 @@ import java.util.*;
 
 public class ConfigValues {
 
-    private static final int CONFIG_VERSION = 3;
+    private static final int CONFIG_VERSION = 4;
     private static final Feature[] GUI_FEATURES = {Feature.SKELETON_BAR, Feature.DEFENCE_ICON, Feature.DEFENCE_TEXT,
             Feature.DEFENCE_PERCENTAGE, Feature.HEALTH_BAR, Feature.HEALTH_TEXT, Feature.MANA_BAR, Feature.MANA_TEXT, Feature.HEALTH_UPDATES,
             Feature.ITEM_PICKUP_LOG, Feature.MAGMA_BOSS_TIMER, Feature.DARK_AUCTION_TIMER};
@@ -157,6 +157,14 @@ public class ConfigValues {
             loadColor("healthTextColor", Feature.HEALTH_TEXT, ConfigColor.RED);
             loadColor("magmaBossTimerColor", Feature.MAGMA_BOSS_TIMER, ConfigColor.GOLD);
             loadColor("darkAuctionTimerColor", Feature.DARK_AUCTION_TIMER, ConfigColor.GOLD);
+
+            if (settingsConfig.has("textStyle")) {
+                int ordinal = settingsConfig.get("textStyle").getAsInt();
+                if (EnumUtils.TextStyle.values().length > ordinal) {
+                    textStyle = EnumUtils.TextStyle.values()[ordinal];
+                }
+            }
+
             int configVersion;
             if (settingsConfig.has("configVersion")) {
                 configVersion = settingsConfig.get("configVersion").getAsInt();
@@ -175,16 +183,18 @@ public class ConfigValues {
                 if (guiScale == 0) {
                     guiScale = 0.11F;
                 }
-            } else if (configVersion == 1) {
+            } else if (configVersion <= 1) {
                 disabledFeatures.add(Feature.USE_VANILLA_TEXTURE_DEFENCE);
                 disabledFeatures.add(Feature.IGNORE_ITEM_FRAME_CLICKS);
                 disabledFeatures.add(Feature.SHOW_BACKPACK_HOLDING_SHIFT);
-            } else if (configVersion == 2) {
+            } else if (configVersion <= 2) {
                 disabledFeatures.add(Feature.HEALTH_BAR);
                 disabledFeatures.add(Feature.DEFENCE_PERCENTAGE);
                 disabledFeatures.add(Feature.HIDE_PLAYERS_IN_LOBBY);
                 disabledFeatures.add(Feature.SHOW_MAGMA_TIMER_IN_OTHER_GAMES);
                 setAllCoordinatesToDefault();
+            } else if (configVersion <= 3) {
+                disabledFeatures.add(Feature.SHOW_DARK_AUCTION_TIMER_IN_OTHER_GAMES);
             }
         } else {
             addDefaultsAndSave();
@@ -231,7 +241,8 @@ public class ConfigValues {
 
         Feature[] toDisable = {Feature.DROP_CONFIRMATION, Feature.MINION_STOP_WARNING, Feature.HIDE_HEALTH_BAR,
             Feature.USE_VANILLA_TEXTURE_DEFENCE, Feature.IGNORE_ITEM_FRAME_CLICKS, Feature.SHOW_BACKPACK_HOLDING_SHIFT,
-            Feature.HEALTH_BAR, Feature.DEFENCE_PERCENTAGE, Feature.HIDE_PLAYERS_IN_LOBBY, Feature.SHOW_MAGMA_TIMER_IN_OTHER_GAMES};
+            Feature.HEALTH_BAR, Feature.DEFENCE_PERCENTAGE, Feature.HIDE_PLAYERS_IN_LOBBY, Feature.SHOW_MAGMA_TIMER_IN_OTHER_GAMES,
+            Feature.SHOW_DARK_AUCTION_TIMER_IN_OTHER_GAMES};
         disabledFeatures.addAll(Arrays.asList(toDisable));
         setAllCoordinatesToDefault();
         saveConfig();
@@ -393,7 +404,8 @@ public class ConfigValues {
             settingsConfig.addProperty("darkAuctionTimerY", getRelativeCoords(Feature.DARK_AUCTION_TIMER).getY());
             settingsConfig.addProperty("magmaBossTimerColor", getColor(Feature.MAGMA_BOSS_TIMER).ordinal());
             settingsConfig.addProperty("darkAuctionTimerColor", getColor(Feature.DARK_AUCTION_TIMER).ordinal());
-            settingsConfig.addProperty("nextMagmaTimestamp", nextMagmaTimestamp);
+            settingsConfig.addProperty("textStyle", textStyle.ordinal());
+//            settingsConfig.addProperty("nextMagmaTimestamp", nextMagmaTimestamp);
 
             settingsConfig.addProperty("guiScale", guiScale);
             settingsConfig.addProperty("language", language.getPath());

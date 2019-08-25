@@ -36,7 +36,7 @@ public class MixinPlayerControllerMP {
             Block block = mc.theWorld.getBlockState(loc).getBlock();
             if (heldItem != null && (block.equals(Blocks.melon_stem) || block.equals(Blocks.pumpkin_stem))) {
                 cir.setReturnValue(false);
-                if (System.currentTimeMillis()-lastMessage > 2000) {
+                if (System.currentTimeMillis()-lastMessage > 15000) {
                     lastMessage = System.currentTimeMillis();
                     main.getUtils().sendMessage(EnumChatFormatting.RED+Message.MESSAGE_CANCELLED_STEM_BREAK.getMessage());
                 }

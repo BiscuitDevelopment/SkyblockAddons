@@ -12,7 +12,6 @@
     "MixinItem",
     "MixinGuiScreen",
     "MixinGuiChest",
-    "MixinRenderEnderman",
     "MixinPlayerControllerMP",
     "MixinNetHandlerPlayClient"
   ]
