@@ -40,33 +40,33 @@
    "ignoreItemFrameClicks": "Ignora Click sulle Cornici per Oggetti",
    "useVanillaTextureDefence": "Usa il Modello Vanilla Per l’Icona di Difesa",
    "showBackpackHoldingShift": "Mostra lo Zaino solo quando Cammini Furtivamente",
-   "manaBar": "Mana Bar",
-   "manaText": "Mana Number",
-   "healthBar": "Health Bar",
-   "healthText": "Health Number",
-   "defenceIcon": "Defence Symbol",
-   "defenceText": "Defence Number",
-   "defencePercentage": "Defence Percentage",
-   "healthUpdates": "Health Change Number",
-   "hidePlayersInLobby": "Hide Far Entities In Lobby",
-   "textStyle": "Text Style: %style%",
+   "manaBar": "Barra della Mana",
+   "manaText": "Numero della Mana",
+   "healthBar": "Barra di Vita",
+   "healthText": "Numero di Vita",
+   "defenceIcon": "Simbolo di Difesa",
+   "defenceText": "Numero di Difesa",
+   "defencePercentage": "Percentuale di Difesa",
+   "healthUpdates": "Numero di Cambiamento di Vita",
+   "hidePlayersInLobby": "Nascondi entità lontane nella Lobby",
+   "textStyle": "Stile di Testo: %style%",
    "textStyles": {
-     "regular": "Regular",
-     "blackShadow": "Black Shadow"
+     "regular": "Regolare",
+     "blackShadow": "Ombreggiato"
    },
-   "darkAuctionTimer": "Dark Auction Timer",
-   "magmaBossTimer": "Magma Boss Timer",
-   "itemPickupLog": "Item Pickup Log",
-   "avoidPlacingEnchantedItems": "Avoid Placing Enchanted Items",
-   "makeEndermenHoldingItemPink": "Make Endermen Holding Items Pink",
-   "avoidBreakingStems": "Avoid Breaking Stems",
-   "magmaBossTimerColor": "Magma Boss Timer Color",
-   "darkAuctionTimerColor": "Dark Auction Timer Color",
-   "stopBowChargeFromResetting": "Stop Bow Charge From Resetting",
-   "showMagmaTimerInOtherGames": "Show Magma Timer In Other Games",
-   "preventMovementOnDeath": "Prevent Walking After Death",
-   "showDarkAuctionTimerInOtherGames": "Show Dark Auc Timer In Other Games",
-   "showItemAnvilUses": "Show Item Anvil Uses"
+   "darkAuctionTimer": "Timer per la Dark Auction",
+   "magmaBossTimer": "Timer per il Magma Boss",
+   "itemPickupLog": "Registro di Elementi Raccolti",
+   "avoidPlacingEnchantedItems": "Evita di Piazzare Elementi Incantati",
+   "makeEndermenHoldingItemPink": "Colora di Rosa gli Endermen che hanno oggetti in mano",
+   "avoidBreakingStems": "Evita di Rompere gli Steli",
+   "magmaBossTimerColor": "Colore del Timer per il Magma Boss",
+   "darkAuctionTimerColor": "Colore del Timer per la Dark Auction",
+   "stopBowChargeFromResetting": "Ferma il Reset dell’Arco",
+   "showMagmaTimerInOtherGames": "Mostra il Timer per il Magma Boss In Altri Giochi",
+   "preventMovementOnDeath": "Impedisci di Camminare Dopo Essere Morto",
+   "showDarkAuctionTimerInOtherGames": "Mostra il Timer per la Dark Auction In Altri Giochi",
+   "showItemAnvilUses": "Mostra Numero di Usi dell’Incudine"
   },
   "messages": {
    "dropConfirmation": "Getta questo oggetto nuovamente per confermare!",
@@ -86,6 +86,6 @@
      "enchants": "Incantesimi",
      "reforges": "Forge"
    },
-   "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this stem. Use your bare hand if you'd like to break it."
+   "cancelledStemBreak": "SkyblockAddons ti ha impedito di rompere questo stelo. Usa la tua mano se lo vuoi rompere."
  }
 }
