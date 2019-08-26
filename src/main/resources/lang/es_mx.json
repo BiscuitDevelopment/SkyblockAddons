@@ -47,8 +47,8 @@
     "defenceIcon": "Icono de Defensa",
     "defenceText": "Número de Defensa",
     "defencePercentage": "Porcentaje de Defensa",
-    "healthUpdates": "Número de Cambio de Vida",
-    "hidePlayersInLobby": "Ocultar Jugadores Cercanos en el Lobby",
+    "healthUpdates": "Número de Actualización de Vida",
+    "hidePlayersInLobby": "Ocultar Jugadores Lejanos en el Lobby",
     "textStyle": "Estilo del Texto: %style%",
     "textStyles": {
       "regular": "Regular",
@@ -58,15 +58,15 @@
     "magmaBossTimer": "Tiempo para Magma Boss",
     "itemPickupLog": "Registro de Items Recogidos",
     "avoidPlacingEnchantedItems": "Evitar Construcción con Objetos Encantados",
-    "makeEndermenHoldingItemPink": "Colorear de Rosa a Enderman que Sostengan Objetos",
+    "makeEndermenHoldingItemPink": "Colorear de Rosa a Endermans que Sostengan Objetos",
     "avoidBreakingStems": "Evitar Ruptura de Tallo de Cultivos",
     "magmaBossTimerColor": "Color de Tiempo para Magma Boss",
     "darkAuctionTimerColor": "Color de Tiempo para Dark Auction",
     "stopBowChargeFromResetting": "Evitar Reinicio de Arco Cargado",
     "showMagmaTimerInOtherGames": "Mostrar el Tiempo para Magma Boss en Otros Juegos",
-    "preventMovementOnDeath": "Prevent Walking After Death",
-    "showDarkAuctionTimerInOtherGames": "Show Dark Auc Timer In Other Games",
-    "showItemAnvilUses": "Show Item Anvil Uses"
+    "preventMovementOnDeath": "Evitar Caminar Después de Morir",
+    "showDarkAuctionTimerInOtherGames": "Mostrar el Contador de Dark Auc en Otros Juegos",
+    "showItemAnvilUses": "Mostrar los Usos de Anvil/Yunque"
   },
   "messages": {
     "dropConfirmation": "Arroja este objeto otra vez para confirmar!",
