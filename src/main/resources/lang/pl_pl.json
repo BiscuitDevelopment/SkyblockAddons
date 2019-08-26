@@ -37,7 +37,7 @@
     "fullMinionWarning": "Ostrzeżenie o Zapełnionym Minionie",
     "nextPage": "Następna Strona",
     "previousPage": "Poprzednia Strona",
-    "ignoreItemFrameClicks": "Ignoruj Kliknięcia w Ramki na Przedmiot",
+    "ignoreItemFrameClicks": "Ignoruj Kliknięcia w Ramki na Przedmioty",
     "useVanillaTextureDefence": "Użyj Domyślnej Tekstury Jako Ikonę Pancerza",
     "showBackpackHoldingShift": "Pokazuj Podgląd Plecaka Tylko Trzymając Shift",
     "manaBar": "Pasek Many",
@@ -54,8 +54,8 @@
       "regular": "Domyślny",
       "blackShadow": "Czarna Ramka"
     },
-    "darkAuctionTimer": "Dark Auction Timer",
-    "magmaBossTimer": "Magma Boss Timer",
+    "darkAuctionTimer": "Timer Dark Auction",
+    "magmaBossTimer": "Timer Magma Bossa",
     "itemPickupLog": "Rejestruj Podnoszone Przedmioty",
     "avoidPlacingEnchantedItems": "Zablokuj Stawianie Zaklętych Przedmiotów",
     "makeEndermenHoldingItemPink": "Zmień Kolor Endermanów Trzymającyh Item na Różowy",
@@ -64,9 +64,9 @@
     "darkAuctionTimerColor": "Kolor Timera Dark Auction",
     "stopBowChargeFromResetting": "Anuluj Resetowanie Się Naładowania Łuku",
     "showMagmaTimerInOtherGames": "Pokaż Timer Magma Bossa w Innych Grach",
-    "preventMovementOnDeath": "Prevent Walking After Death",
-    "showDarkAuctionTimerInOtherGames": "Show Dark Auc Timer In Other Games",
-    "showItemAnvilUses": "Show Item Anvil Uses"
+    "preventMovementOnDeath": "Zatrzymaj Poruszanie Się Po Śmierci",
+    "showDarkAuctionTimerInOtherGames": "Pokaż Timer Dark Auction w Innych Grach",
+    "showItemAnvilUses": "Pokaż Liczbę Użyć Kowadła na Przedmiocie"
   },
   "messages": {
     "dropConfirmation": "Wyrzuć ten przedmiot ponownie, aby potwierdzić!",
@@ -76,7 +76,7 @@
     "discord": "Chcesz zobaczyć listę zmian? Kliknij tą wiadomość, aby dołączyć do mojego discord'a.",
     "developmentVersion": "Używasz wersji deweloperskiej: %version%. Najnowsza wersja stabilna to: %newestVersion%",
     "labymod": "Do Użytkowników LabyMod: Ukrycie Paska Zdrowia, Jedzenia i Pancerza jest niekompatybilne.",
-    "minionCannotReach": "Minion %type% nie może dosięgnąć moba i przestał działać!",
+    "minionCannotReach": "Minion %type% nie może dosięgnąć moba!",
     "minionIsFull": "Minion na twojej wyspie jest pełny!",
     "typeEnchantmentsHere": "Wpisz %type% Tutaj!",
     "separateMultiple": "Oddziel je Przecinkami.",
