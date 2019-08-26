@@ -23,7 +23,7 @@
     "minionStopWarning": "\"Minion kann die Mobs nicht erreichen\"-Warnung",
     "hideAuctionHousePlayers": "Spieler im Auktionshaus verstecken",
     "backpackStyle": "Rucksack-Stil: %style%",
-    "styles": {
+    "backpackStyles": {
       "inventory": "Inventar",
       "compact": "Kompakt"
     },

@@ -21,7 +21,7 @@
     "hideDurability": "Eszköz viseltéségének elrejtése",
     "showEnchantmentsReforges": "Enchantok & Reforgok",
     "minionStopWarning": "\"A minion nem ér el valamit\" figyelmeztetés",
-    "hideActionHousePlayers": "Játékosok elrejtése az aukciósház körül",
+    "hideAuctionHousePlayers": "Játékosok elrejtése az aukciósház körül",
     "backpackStyle": "Hátizsák stílus: %style%",
     "backpackStyles": {
       "inventory": "Felszerelés",
