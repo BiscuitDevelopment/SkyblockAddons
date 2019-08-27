@@ -40,31 +40,31 @@
     "ignoreItemFrameClicks": "تجاهل الكبس على إطارات الأدوات",
     "useVanillaTextureDefence": "استخدم الصورة الطبيعية لأيقونة الدفاع",
     "showBackpackHoldingShift": "ظهور حقيبة الظهر عند الانحناء فقط",
-    "manaBar": "شريط المانا",
-    "manaText": "رقم المانا",
+    "manaBar": "شريط الطاقة",
+    "manaText": "رقم الطاقة",
     "healthBar": "شريط الدم",
     "healthText": "رقم الدم",
     "defenceIcon": "رمز الدفاع",
     "defenceText": "رقم الدفاع",
     "defencePercentage": "نسبة الدفاع",
     "healthUpdates": "رقم تعديل الصحة",
-    "hidePlayersInLobby": "إخفاء الكائنات البعيدة في االباحة",
-    "textStyle": "نمط النص: ٪style٪",
+    "hidePlayersInLobby": "إخفاء الكائنات البعيدة في الباحة",
+    "textStyle": "نمط النص: %style%",
     "textStyles": {
       "regular": "طبيعي",
       "blackShadow": "ظل اسود"
     },
     "darkAuctionTimer": "موقت المزاد الأسود",
-    "magmaBossTimer": "موقت زعيم الصهارة",
+    "magmaBossTimer": "مؤقت زعيم الصهارة",
     "itemPickupLog": "سجل التقاط الأداة",
     "avoidPlacingEnchantedItems": "تجنب وضع الأدوات المطورة",
     "avoidBreakingStems": "تجنب كسر القصب",
     "magmaBossTimerColor": "لون مؤقت زعيم الصهارة",
     "darkAuctionTimerColor": "لون موقت المزاد الأسود",
-    "stopBowChargeFromResetting": "أيقاف القوس من أزالة الطلقة المملوئة",
-    "showMagmaTimerInOtherGames": "أظهار مؤقت زعيم الصهارة في الألعاب الآخرى",
+    "stopBowChargeFromResetting": "أيقاف القوس من إزالة الطلقة المملوءة",
+    "showMagmaTimerInOtherGames": "أظهار مؤقت زعيم الصهارة في الألعاب الأخرى",
     "preventMovementOnDeath": "منع المشي بعد الموت",
-    "showDarkAuctionTimerInOtherGames": "أظهار مؤقت المزاد الأسود في الألعاب الآخرى",
+    "showDarkAuctionTimerInOtherGames": "أظهار مؤقت المزاد الأسود في الألعاب الأخرى",
     "showItemAnvilUses": "أظهار عدد مرات أستخدام السندان"
   },
   "messages": {
@@ -76,8 +76,8 @@
     "developmentVersion": "%newestVersion% أحدث نسخة على الإنترنت هي .%version% :أنت تقوم بتشغيل إصدار تطوير",
     "labymod": ".مستعملي اللابي مود: إن إخفاء عظام خوذة الهيكل العظمي غير متوافق",
     "minionCannotReach": "!لا يمكنه الوصول وانه سيتوقف عن الإنشاء %type%إن تابع ال",
-    "minionIsFull": "أمتلأت حقيبة احدى عبادك في جزيرتك!",
-    "typeEnchantmentsHere": "اكتب %التطوريات% في هذه الخانة!",
+    "minionIsFull": "امتلأت حقيبة أحدى عبادك في جزيرتك!",
+    "typeEnchantmentsHere": "اكتب %type% في هذه الخانة!",
     "separateMultiple": "أفرز المتعددين بالفواصل.",
     "enchantsToMatch": "%type% للمطابقة:",
     "enchantsToExclude": "%type% للاستبعاد:",
@@ -85,6 +85,6 @@
       "enchants": "التطويرات",
       "reforges": "التزويرات"
     },
-    "cancelledStemBreak": "منعك تطبيق أضافات الجزيرة الطائرة من كسر القصب. ان اردت كسره فأستخدم يدك."
+    "cancelledStemBreak": "منعك تطبيق إضافات الجزيرة الطائرة من كسر القصب. أن أردت كسره فأستخدم يدك."
   }
 }
