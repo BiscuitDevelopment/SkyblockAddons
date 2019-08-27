@@ -12,7 +12,7 @@
     "fullInventoryWarning": "Full Barrel Warnin'",
     "disableEmberRodAbility": "Swab Ember Rod on Yer Island",
     "warningColor": "Warnin' Color",
-    "confirmationColor": "Confirmation Color",
+    "confirmationColor": "Confirmat'n Color",
     "manaTextColor": "Ye' Energy Text Color",
     "manaBarColor": "Ye' Energy Bar Color",
     "editLocations": "Move Yer' GUI Around",
@@ -25,7 +25,7 @@
     "backpackStyle": "Style o' Yer Booty: %style%",
     "backpackStyles": {
       "inventory": "Treas're Stash",
-      "compact": "Compact"
+      "compact": "Treasured"
     },
     "showBackpackPreview": "Preview yer' booty",
     "hideHealthBar": "'ide normal 'ealth barr",
@@ -52,7 +52,7 @@
     "textStyle": "Text Style: %style%",
     "textStyles": {
       "regular": "Regularrr",
-      "blackShadow": "Ye' Blank Shadow"
+      "blackShadow": "Yer Darker Option"
     },
     "darkAuctionTimer": "Darr'k Booties Tim'r",
     "magmaBossTimer": "Fire Boss Tim'r",
