@@ -55,14 +55,13 @@
       "blackShadow": "ظل اسود"
     },
     "darkAuctionTimer": "موقت المزاد الأسود",
-    "magmaBossTimer": "موقت Magma Boss",
+    "magmaBossTimer": "موقت زعيم الصهارة",
     "itemPickupLog": "سجل التقاط الأداة",
-    "avoidPlacingEnchantedItems": "تجنب وضع الأدوات المسحورا",
-    "makeEndermenHoldingItemPink": "Make Endermen Holding Items Pink",
+    "avoidPlacingEnchantedItems": "تجنب وضع الأدوات المطورة",
     "avoidBreakingStems": "تجنب كسر القصب",
     "magmaBossTimerColor": "لون مؤقت زعيم الصهارة",
     "darkAuctionTimerColor": "لون موقت المزاد الأسود",
-    "stopBowChargeFromResetting": "Stop Bow Charge From Resetting",
+    "stopBowChargeFromResetting": "أيقاف القوس من أزالة الطلقة المملوئة",
     "showMagmaTimerInOtherGames": "أظهار مؤقت زعيم الصهارة في الألعاب الآخرى",
     "preventMovementOnDeath": "منع المشي بعد الموت",
     "showDarkAuctionTimerInOtherGames": "أظهار مؤقت المزاد الأسود في الألعاب الآخرى",
@@ -80,12 +79,12 @@
     "minionIsFull": "أمتلأت حقيبة احدى عبادك في جزيرتك!",
     "typeEnchantmentsHere": "اكتب %التطوريات% في هذه الخانة!",
     "separateMultiple": "أفرز المتعددين بالفواصل.",
-    "enchantsToMatch": "%type% To Match:",
-    "enchantsToExclude": "%type% To Exclude:",
+    "enchantsToMatch": "%type% للمطابقة:",
+    "enchantsToExclude": "%type% للاستبعاد:",
     "inventoryTypes": {
       "enchants": "التطويرات",
-      "reforges": "Reforges"
+      "reforges": "التزويرات"
     },
-    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this stem. Use your bare hand if you'd like to break it."
+    "cancelledStemBreak": "منعك تطبيق أضافات الجزيرة الطائرة من كسر القصب. ان اردت كسره فأستخدم يدك."
   }
 }
