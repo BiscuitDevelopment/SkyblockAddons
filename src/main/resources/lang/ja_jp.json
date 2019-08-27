@@ -37,7 +37,7 @@
     "fullMinionWarning": "ミニオンの上限警告",
     "nextPage": "次のページ",
     "previousPage": "前のページ",
-    "ignoreItemFrameClicks": "アイテムフレームでクリックを無効化",
+    "ignoreItemFrameClicks": "アイテムフレームの破壊を防止",
     "useVanillaTextureDefence": "ディフェンスアイコンでバニラのテクスチャを使用",
     "showBackpackHoldingShift": "バックパックの中身をシフトを押しているときのみ表示",
     "manaBar": "マナゲージ",
@@ -48,7 +48,7 @@
     "defenceText": "ディフェンス数",
     "defencePercentage": "ディフェンスのパーセンテージ",
     "healthUpdates": "体力の変動を表示",
-    "hidePlayersInLobby": "ロビーで近くにいるエンティティを非表示",
+    "hidePlayersInLobby": "ロビーで自分の近くにいる人を非表示",
     "textStyle": "文字スタイル: %style%",
     "textStyles": {
       "regular": "通常",
@@ -86,6 +86,6 @@
       "enchants": "エンチャント",
       "reforges": "リフォージュ"
     },
-    "cancelledStemBreak": "SkyblockAddons modがこの茎を破壊するのを防止しました。破損したい場合は素手で破壊してください。"
+    "cancelledStemBreak": "SkyblockAddonsがこの茎を破壊するのを防止しました。破壊したい場合は素手で破壊してください。"
   }
 }
