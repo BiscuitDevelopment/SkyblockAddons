@@ -47,7 +47,7 @@
     "defenceIcon": "Skydd Symbol",
     "defenceText": "Skydd Nummer",
     "defencePercentage": "Skydd Percentsats",
-    "healthUpdates": "Health Change Number",
+    "healthUpdates": "Inställningar -> hälsoUppdateringar",
     "hidePlayersInLobby": "Hide Far Entities In Lobby",
     "textStyle": "Text Style: %style%",
     "textStyles": {
