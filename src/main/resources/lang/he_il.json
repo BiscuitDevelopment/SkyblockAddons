@@ -3,7 +3,7 @@
   "settings": {
     "settings": "הגדרות",
     "openSettings": "פתיחת הגדרות",
-    "magmaBossWarning": "בוס מגמה אזהרה
+    "magmaBossWarning": "בוס מגמה אזהרה",
     "itemDropConfirmation": "אישור זריקת פריט",
     "warningTime": "זמן התראה: %time%s",
     "hideSkeletonHatBones": "הסתרת עצמות קסדת שלד",
@@ -47,8 +47,8 @@
     "defenceIcon": "Defence Symbol",
     "defenceText": "Defence Number",
     "defencePercentage": "Defence Percentage",
- "healthUpdates": "שינוי כמות החיים
-  "hidePlayersInLobby": "Hide Far Entities In Lobby",
+    "healthUpdates": "שינוי כמות החיים",
+    "hidePlayersInLobby": "Hide Far Entities In Lobby",
     "textStyle": "סטייל הטקסט: %style%",
     "textStyles": {
       "regular": "רגיל",
