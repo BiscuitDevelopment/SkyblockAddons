@@ -51,8 +51,8 @@
     "hidePlayersInLobby": "Ocultar Jugadores Lejanos en el Lobby",
     "textStyle": "Estilo del Texto: %style%",
     "textStyles": {
-      "regular": "Regular",
-      "blackShadow": "Black Shadow"
+      "regular": "Normal",
+      "blackShadow": "Sombreado"
     },
     "darkAuctionTimer": "Tiempo para Dark Auction",
     "magmaBossTimer": "Tiempo para Magma Boss",
