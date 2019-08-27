@@ -51,7 +51,7 @@
     "hidePlayersInLobby": "Ocultar Entidades leganas en Lobby",
     "textStyle": "Estilo de Texto: %style%",
     "textStyles": {
-      "regular": "Regular",
+      "regular": "Normal",
       "blackShadow": "Sombra Negra"
     },
     "darkAuctionTimer": "Contador del Black Auction",
@@ -84,7 +84,7 @@
     "enchantsToExclude": "%type% para excluir:",
     "inventoryTypes": {
       "enchants": "Encantamientos",
-      "reforges": "Reforges"
+      "reforges": "Reforzar"
     },
     "cancelledStemBreak": "SkyblockAddons Te ha parado de romper este tallo. Usa tu mano si quieres romperlo."
   }
