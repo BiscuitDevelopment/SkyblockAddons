@@ -183,7 +183,7 @@ public class PlayerListener {
             /*  Resets all user input on dead as to not walk backwards or stafe into the portal
                 Might get trigger upon encountering a non named "You" though this chance is so
                 minimal it can be discarded as a bug. */
-            if (main.getConfigValues().isEnabled(Feature.PREVENT_MOVEMENT_ON_DEATH) && e.message.getFormattedText().startsWith("§r§c ☠ §r§7You ")) {
+            if (main.getConfigValues().isEnabled(Feature.PREVENT_MOVEMENT_ON_DEATH) && e.message.getFormattedText().startsWith("\u00A7r\u00A7c \u2620 \u00A7r\u00A77You ")) {
                 KeyBinding.unPressAllKeys();
             }
         }
