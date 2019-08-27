@@ -48,25 +48,25 @@
     "defenceText": "Verdediging Hoeveelheid",
     "defencePercentage": "Verdediging Percentage",
     "healthUpdates": "Gezondheid Hoeveelheid Aanpassen",
-    "hidePlayersInLobby": "Hide Far Entities In Lobby",
-    "textStyle": "Text Style: %style%",
+    "hidePlayersInLobby": "Verberg Verre Entiteiten in Lobby",
+    "textStyle": "Tekststijl: %style%",
     "textStyles": {
-      "regular": "Regular",
-      "blackShadow": "Black Shadow"
+      "regular": "Normaal",
+      "blackShadow": "Zwarte schaduw"
     },
-    "darkAuctionTimer": "Dark Auction Timer",
-    "magmaBossTimer": "Magma Boss Timer",
-    "itemPickupLog": "Item Pickup Log",
-    "avoidPlacingEnchantedItems": "Avoid Placing Enchanted Items",
-    "makeEndermenHoldingItemPink": "Make Endermen Holding Items Pink",
-    "avoidBreakingStems": "Avoid Breaking Stems",
-    "magmaBossTimerColor": "Magma Boss Timer Color",
-    "darkAuctionTimerColor": "Dark Auction Timer Color",
-    "stopBowChargeFromResetting": "Stop Bow Charge From Resetting",
-    "showMagmaTimerInOtherGames": "Show Magma Timer In Other Games",
+    "darkAuctionTimer": "Donkere Veiling Timer",
+    "magmaBossTimer": "Magma Baas Timer",
+    "itemPickupLog": "Item Oppak Lijst",
+    "avoidPlacingEnchantedItems": "Vermijd Het Plaatsen Van Betoverde Items",
+    "makeEndermenHoldingItemPink": "Maak Endermen Die Wat Vasthouden Roze",
+    "avoidBreakingStems": "Vermijd Het Breken Van Stengels",
+    "magmaBossTimerColor": "Magma Baas Timer Kleur",
+    "darkAuctionTimerColor": "Donkere Veiling Timer Kleur",
+    "stopBowChargeFromResetting": "Stop Het Resetten Van Het Aanspannen Van De Boog",
+    "showMagmaTimerInOtherGames": "Magma Timer in andere spellen weergeven",
     "preventMovementOnDeath": "Stop het Bewegen Na het Doodgaan",
-    "showDarkAuctionTimerInOtherGames": "Show Dark Auc Timer In Other Games",
-    "showItemAnvilUses": "Show Item Anvil Uses"
+    "showDarkAuctionTimerInOtherGames": "Toon Donkere Veiling Timer in andere spellen",
+    "showItemAnvilUses": "Toon Aantal Item In Aambeeld Gebruikt"
   },
   "messages": {
     "dropConfirmation": "Laat dit object opnieuw vallen om te Bevestigen!",
@@ -86,6 +86,6 @@
       "enchants": "Betoveringen",
       "reforges": "Omsmedingen"
     },
-    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this stem. Use your bare hand if you'd like to break it."
+    "cancelledStemBreak": "SkyblockAddons heeft je ervan weerhouden om deze stengel te breken. Gebruik je lege hand als je het wilt breken."
   }
 }

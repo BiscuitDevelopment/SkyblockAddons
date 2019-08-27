@@ -47,26 +47,26 @@
     "defenceIcon": "Skydd Symbol",
     "defenceText": "Skydd Nummer",
     "defencePercentage": "Skydd Percentsats",
-    "healthUpdates": "Health Change Number",
-    "hidePlayersInLobby": "Hide Far Entities In Lobby",
-    "textStyle": "Text Style: %style%",
+    "healthUpdates": "Ändra Hälso Nummer",
+    "hidePlayersInLobby": "Göm Entiteter Lång Borta I Lobbyn",
+    "textStyle": "Text Stil: %style%",
     "textStyles": {
-      "regular": "Regular",
-      "blackShadow": "Black Shadow"
+      "regular": "Vanlig",
+      "blackShadow": "Svart Skugga"
     },
-    "darkAuctionTimer": "Dark Auction Timer",
+    "darkAuctionTimer": "Mörk Auktion Timer",
     "magmaBossTimer": "Magma Boss Timer",
-    "itemPickupLog": "Item Pickup Log",
-    "avoidPlacingEnchantedItems": "Avoid Placing Enchanted Items",
-    "makeEndermenHoldingItemPink": "Make Endermen Holding Items Pink",
-    "avoidBreakingStems": "Avoid Breaking Stems",
-    "magmaBossTimerColor": "Magma Boss Timer Color",
-    "darkAuctionTimerColor": "Dark Auction Timer Color",
-    "stopBowChargeFromResetting": "Stop Bow Charge From Resetting",
-    "showMagmaTimerInOtherGames": "Show Magma Timer In Other Games",
-    "preventMovementOnDeath": "Prevent Walking After Death",
-    "showDarkAuctionTimerInOtherGames": "Show Dark Auc Timer In Other Games",
-    "showItemAnvilUses": "Show Item Anvil Uses"
+    "itemPickupLog": "Plocka Upp Artikel Log",
+    "avoidPlacingEnchantedItems": "Förhindra Att Placera Förtrollade Block",
+    "makeEndermenHoldingItemPink": "Gör Endermen Som Håller Artikel Rosa",
+    "avoidBreakingStems": "Undvik Att Förstöra Stjälk",
+    "magmaBossTimerColor": "Magma Boss Timer Färg",
+    "darkAuctionTimerColor": "Mörk Auction Timer Färg",
+    "stopBowChargeFromResetting": "Stoppa Pilbågar Från Att Återställas",
+    "showMagmaTimerInOtherGames": "Visa Magma Boss Timer I Andra Spel",
+    "preventMovementOnDeath": "Förhindra Gående Efter Död",
+    "showDarkAuctionTimerInOtherGames": "Visa Mörk Auction Timer I Andra Spel",
+    "showItemAnvilUses": "Visa Atikel Städ Användningar"
   },
   "messages": {
     "dropConfirmation": "Släpp Det Här Igen För Att Bekräfta!",
@@ -86,6 +86,6 @@
       "enchants": "Förtrollningar",
       "reforges": "Reforges"
     },
-    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this stem. Use your bare hand if you'd like to break it."
+    "cancelledStemBreak": "SkyblockAddons har förhindrat dig från att förstöra den här stjälken. Använd dina händer om du vill förstöra den."
   }
 }
