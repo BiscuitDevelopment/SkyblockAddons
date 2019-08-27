@@ -70,21 +70,21 @@
   "messages": {
     "dropConfirmation": "'ay lad, drop this here item again to confirm!",
     "magmaBossWarning": "Yer Fire Boss Spawned!",
-    "fullInventory": "Full Inventory!",
-    "newVersion": "A new version, %newestVersion% is available. Download it by clicking here.",
-    "discord": "Want to view the changes? Click here to join my discord.",
-    "developmentVersion": "You are running a development version: %version%. The latest online version is %newestVersion%",
-    "labymod": "Labymod Users: Hide Food, Armor, and Health Bar, is incompatible.",
-    "minionCannotReach": "A %type% minion cannot reach and has stopped spawning!",
-    "minionIsFull": "A minion on your island is full!",
-    "typeEnchantmentsHere": "Type %type% Here!",
-    "separateMultiple": "Separate Multiple With Commas.",
-    "enchantsToMatch": "%type% To Match:",
-    "enchantsToExclude": "%type% To Exclude:",
+    "fullInventory": "Ahoy mate, yer pouch there be full!",
+    "newVersion": "Avast, before you wander the seven seas, you best update to %newestVersion%! Click this here text to 'ave it.",
+    "discord": "Ye a curious lad, 'uh? click 'ere to join me ol' Discord.",
+    "developmentVersion": "Har, you're running a development version: %version%. Yer latest stable build be %newestVersion%",
+    "labymod": "'ay ye LabyMod Lads: 'ide grub, booty, an' 'ealth bar, be incompatible.",
+    "minionCannotReach": "Arr, mate, one o' yer %type% crew couldn't reach an' stopped spawnin'!",
+    "minionIsFull": "Lad, A minion on yer island be full!",
+    "typeEnchantmentsHere": "Type yer %type% 'ere!",
+    "separateMultiple": "Separate Multiple with Commas.",
+    "enchantsToMatch": "%type% to match:",
+    "enchantsToExclude": "%type% to exclude:",
     "inventoryTypes": {
-      "enchants": "Enchants",
-      "reforges": "Reforges"
+      "enchants": "Yer magic",
+      "reforges": "Reforgery"
     },
-    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this stem. Use your bare hand if you'd like to break it."
+    "cancelledStemBreak": "'ay there, skyblockaddons 'as stopped ye from breakin' this here stem. Use yer bare hand if ye'd like to break it."
   }
 }
