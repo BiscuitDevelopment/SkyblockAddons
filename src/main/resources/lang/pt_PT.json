@@ -41,31 +41,31 @@
     "useVanillaTextureDefence": "Usar a textura do Vanilla para o ícone da defesa",
     "showBackpackHoldingShift": "Só mostrar a Backpack quando estiver a segurar o Shift",
     "manaBar": "Barra de Mana",
-    "manaText": "Número da Mana",
+    "manaText": "Número de Mana",
     "healthBar": "Barra de Vida",
-    "healthText": "Número da Vida",
+    "healthText": "Número de Vida",
     "defenceIcon": "Símbolo da Defesa",
-    "defenceText": "Número da Defesa",
-    "defencePercentage": "Percentagem da Defesa",
-    "healthUpdates": "Número da Mudança da Vida",
+    "defenceText": "Número de Defesa",
+    "defencePercentage": "Percentagem de Defesa",
+    "healthUpdates": "Número da Diferença de Vida",
     "hidePlayersInLobby": "Esconder jogadores longe no Lobby",
     "textStyle": "Estilo do texto: %style%",
     "textStyles": {
       "regular": "Normal",
       "blackShadow": "Sombra Preta"
     },
-    "darkAuctionTimer": "Temporizador da Dark Auction",
-    "magmaBossTimer": "Temporizador do Magma Boss",
+    "darkAuctionTimer": "Tempo da Dark Auction",
+    "magmaBossTimer": "Tempo do Magma Boss",
     "itemPickupLog": "Registo de recolha de itens",
     "avoidPlacingEnchantedItems": "Evitar colocar itens encantados",
     "avoidBreakingStems": "Evitar partir as sementes",
-    "magmaBossTimerColor": "Cor do Temporizador do Magma Boss",
-    "darkAuctionTimerColor": "Cor do Temporizador da Dark Auction",
-    "stopBowChargeFromResetting": "Stop Bow Charge From Resetting",
-    "showMagmaTimerInOtherGames": "Mostrar o Temporizador do Magma Boss em outros jogos",
+    "magmaBossTimerColor": "Cor do Tempo do Magma Boss",
+    "darkAuctionTimerColor": "Cor do Tempo da Dark Auction",
+    "stopBowChargeFromResetting": "Prevenir a carga do arco de voltar ao 0",
+    "showMagmaTimerInOtherGames": "Mostrar o Tempo do Magma Boss noutros jogos",
     "preventMovementOnDeath": "Não andar depois da morte",
-    "showDarkAuctionTimerInOtherGames": "Show Dark Auc Timer In Other Games",
-    "showItemAnvilUses": "Show Item Anvil Uses"
+    "showDarkAuctionTimerInOtherGames": "Mostrar o Tempo da Dark Auc noutros jogos",
+    "showItemAnvilUses": "Mostrar os usos na bigorna"
   },
   "messages": {
     "dropConfirmation": "Dropa este item outra vez para confirmar!",
@@ -85,6 +85,6 @@
       "enchants": "Encantamentos",
       "reforges": "Reforges"
     },
-    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this stem. Use your bare hand if you'd like to break it."
+    "cancelledStemBreak": "O SkyblockAddons impediu-te de partires esta semente. Usa a tua mão se a quiseres partir."
   }
 }
