@@ -467,6 +467,10 @@ public class Utils {
         return location;
     }
 
+    public boolean isLocationTheEndOrDragonsNest(){
+        return location == EnumUtils.Location.THE_END || location == EnumUtils.Location.DRAGONS_DEN;
+    }
+
     public boolean isOnSkyblock() {
         return onSkyblock;
     }

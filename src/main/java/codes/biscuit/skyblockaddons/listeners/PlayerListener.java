@@ -45,6 +45,7 @@ public class PlayerListener {
 
     private boolean sentUpdate = false;
     private long lastWorldJoin = -1;
+    private long lastScreenOpen = -1;
     private long lastBoss = -1;
     private int magmaTick = 1;
     private int timerTick = 1;
@@ -266,9 +267,14 @@ public class PlayerListener {
                             sentUpdate = true;
                         }
 
-                        if (main.getConfigValues().isEnabled(Feature.ITEM_PICKUP_LOG) && mc.currentScreen == null
-                        && main.getPlayerListener().didntRecentlyJoinWorld()) {
-                            main.getInventoryUtils().getInventoryDifference(p.inventory.mainInventory);
+                        if (mc.currentScreen != null) {
+                            lastScreenOpen = System.currentTimeMillis();
+                        }
+                        else {
+                            if (main.getConfigValues().isEnabled(Feature.ITEM_PICKUP_LOG)
+                                    && main.getPlayerListener().didntRecentlyJoinWorld()) {
+                                main.getInventoryUtils().getInventoryDifference(p.inventory.mainInventory);
+                            }
                         }
                     }
 
@@ -514,6 +520,10 @@ public class PlayerListener {
 
     public boolean didntRecentlyJoinWorld() {
         return System.currentTimeMillis() - lastWorldJoin > 3000;
+    }
+
+    public boolean didntRecentlyCloseScreen() {
+        return System.currentTimeMillis() - lastScreenOpen > 550;
     }
 
     public enum GUIType {

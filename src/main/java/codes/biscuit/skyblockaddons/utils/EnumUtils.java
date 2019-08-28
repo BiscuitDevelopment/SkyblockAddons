@@ -164,6 +164,8 @@ public class EnumUtils {
     public enum Location {
         ISLAND("Your Island"),
         BLAZING_FORTRESS("Blazing Fortress"),
+        THE_END("The End"),
+        DRAGONS_DEN("Dragon's Den"),
         VILLAGE("Village"),
         AUCTION_HOUSE("Auction House");
 

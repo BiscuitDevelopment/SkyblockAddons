@@ -58,7 +58,9 @@ public enum Feature {
     BACKPACK_STYLE(-1, Message.SETTING_BACKPACK_STYLE),
     TEXT_STYLE(-1, Message.SETTING_TEXT_STYLE),
     NEXT_PAGE(-1, Message.SETTING_NEXT_PAGE),
-    PREVIOUS_PAGE(-1, Message.SETTING_PREVIOUS_PAGE);
+    PREVIOUS_PAGE(-1, Message.SETTING_PREVIOUS_PAGE)
+    //TODO: Add Summoning Eye Alert Feature
+    ;
 
     private int id;
     private Message message;
