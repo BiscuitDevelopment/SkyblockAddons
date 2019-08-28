@@ -121,12 +121,12 @@ public class InventoryUtils {
                 }
 
                 // Summoning Eye alert
-                if (main.getConfigValues().isEnabled(Feature.ITEM_PICKUP_LOG) //TODO: Change to new Summoning Eye Alert Feature
+                if (main.getConfigValues().isEnabled(Feature.ITEM_PICKUP_LOG) //TODO: Possibly change to new Summoning Eye Alert Setting
                         && diff.getAmount() == 1 && diff.getDisplayName().equals(SUMMONING_EYE_DISPLAY_NAME)
                         && main.getUtils().isLocationTheEndOrDragonsNest()
                         && main.getPlayerListener().didntRecentlyCloseScreen()){
                     main.getUtils().playSound("random.orb", 0.5);
-                    main.getRenderListener().setTitleFeature(Feature.FULL_INVENTORY_WARNING);
+                    main.getRenderListener().setTitleFeature(Feature.FULL_INVENTORY_WARNING); //TODO: Change to new Summoning Eye Alert Feature
                     new Timer().schedule(new TimerTask() {
                         @Override
                         public void run() {
