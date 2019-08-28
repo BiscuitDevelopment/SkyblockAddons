@@ -57,7 +57,7 @@
     "darkAuctionTimer": "Tajmer Crne Dražbe",
     "magmaBossTimer": "Tajmer Magma Bossa",
     "itemPickupLog": "Zapis Bacanja Stvari",
-    "avoidPlacingEnchantedItems": "Avoid Placing Enchanted Items",
+    "avoidPlacingEnchantedItems": "Poništi Postavljanje Začaranih Stvari",
     "avoidBreakingStems": "Zaustavi Prijelom Biljaka",
     "magmaBossTimerColor": "Boja Magma Boss Tajmera",
     "darkAuctionTimerColor": "Boja Tajmera Crne Dražbe",
@@ -69,7 +69,7 @@
   },
   "messages": {
     "dropConfirmation": "Opet baci ovu stvar za konfirmaciju!",
-    "magmaBossWarning": "Magma Cube Boss!",
+    "magmaBossWarning": "MagmaCube Boss!",
     "fullInventory": "Pun Inventar!",
     "newVersion": "Nova Verzija, %newestVersion% je dostupna. Preuzmi je tako što klikneš ovdje.",
     "discord": "Želiš li vidjeti promjene? Klikni ovdje da uðeš u moj discord server.",
