@@ -48,15 +48,15 @@
     "defenceText": "Verdediging Hoeveelheid",
     "defencePercentage": "Verdediging Percentage",
     "healthUpdates": "Gezondheid Hoeveelheid Aanpassen",
-    "hidePlayersInLobby": "Verberg Verre Entiteiten in Lobby",
+    "hidePlayersInLobby": "Verberg Verre Entities in de Lobby",
     "textStyle": "Tekststijl: %style%",
     "textStyles": {
       "regular": "Normaal",
       "blackShadow": "Zwarte schaduw"
     },
-    "darkAuctionTimer": "Donkere Veiling Timer",
+    "darkAuctionTimer": "Timer Donkere Veiling",
     "magmaBossTimer": "Magma Baas Timer",
-    "itemPickupLog": "Item Oppak Lijst",
+    "itemPickupLog": "Lijst Opgepakte Items",
     "avoidPlacingEnchantedItems": "Vermijd Het Plaatsen Van Betoverde Items",
     "avoidBreakingStems": "Vermijd Het Breken Van Stengels",
     "magmaBossTimerColor": "Magma Baas Timer Kleur",
