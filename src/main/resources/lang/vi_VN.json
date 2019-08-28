@@ -58,18 +58,18 @@
     "magmaBossTimer": "Magma Boss Timer",
     "itemPickupLog": "Item Pickup Log",
     "avoidPlacingEnchantedItems": "Avoid Placing Enchanted Items",
-    "avoidBreakingStems": "Avoid Breaking Stems",
+    "avoidBreakingStems": "Tránh phá hạt giống",
     "magmaBossTimerColor": "Magma Boss Timer Color",
     "darkAuctionTimerColor": "Dark Auction Timer Color",
     "stopBowChargeFromResetting": "Stop Bow Charge From Resetting",
     "showMagmaTimerInOtherGames": "Show Magma Timer In Other Games",
-    "preventMovementOnDeath": "Prevent Walking After Death",
-    "showDarkAuctionTimerInOtherGames": "Show Dark Auc Timer In Other Games",
-    "showItemAnvilUses": "Show Item Anvil Uses"
+    "preventMovementOnDeath": "Tránh di chuyển sau khi chết",
+    "showDarkAuctionTimerInOtherGames": "Hiện hẹn giờ \"Đấu giá đen\" trong minigame khác",
+    "showItemAnvilUses": "Hiện số lần dùng đe"
   },
   "messages": {
     "dropConfirmation": "Thả Đồ Thêm Một Lần Nữa Để Xác Nhận!",
-    "magmaBossWarning": "Magma Cube Boss!",
+    "magmaBossWarning": "Trùm Dung Nham!",
     "fullInventory": "Túi Đồ Đã Đầy!",
     "newVersion": "Phiên bản mới, %newestVersion% đã có sẵn. Tải về bằng cách nhấn tại đây.",
     "discord": "Xem có thay đổi gì? Nhấn vào đây để tham gia Discord.",
@@ -82,9 +82,9 @@
     "enchantsToMatch": "%type% Bao gồm:",
     "enchantsToExclude": "%type% Loại Trừ:",
     "inventoryTypes": {
-      "enchants": "Enchants",
-      "reforges": "Reforges"
+      "enchants": "Phù phép",
+      "reforges": "Rèn luyện"
     },
-    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this stem. Use your bare hand if you'd like to break it."
+    "cancelledStemBreak": "\"SkyblockAddons\" đã ngăn bạn khỏi việc phá hạt giống này. Hãy sử dụng tay không nếu bạn muốn đập nó."
   }
 }
