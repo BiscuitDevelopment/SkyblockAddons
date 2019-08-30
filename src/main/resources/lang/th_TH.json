@@ -40,32 +40,32 @@
     "ignoreItemFrameClicks": "ละเว้นการคลิกที่กรอบโชว์สิ่งของ",
     "useVanillaTextureDefence": "ใช้รูปเท็กซ์เจอร์ดั้งเดิมให้กับไอคอนเกราะ",
     "showBackpackHoldingShift": "แสดงกระเป็าเมื่อกดปุ่ม Shift",
-    "manaBar": "Mana Bar",
-    "manaText": "Mana Number",
-    "healthBar": "Health Bar",
-    "healthText": "Health Number",
-    "defenceIcon": "Defence Symbol",
-    "defenceText": "Defence Number",
-    "defencePercentage": "Defence Percentage",
-    "healthUpdates": "Health Change Number",
+    "manaBar": "หลอดมานา",
+    "manaText": "จำนวนมานา",
+    "healthBar": "หลอดเลือด",
+    "healthText": "จำนวนเลือด",
+    "defenceIcon": "สัญลักษณ์พลังป้องกัน",
+    "defenceText": "จำนวนพลังป้องกัน",
+    "defencePercentage": "เปอเซ็นต์พลังป้องกัน",
+    "healthUpdates": "จำนวนการเพิ่มลดของเลือด",
     "hidePlayersInLobby": "Hide Nearby Entities In Lobby",
-    "textStyle": "Text Style: %style%",
+    "textStyle": "รูปแบบตัวอักษร: %style%",
     "textStyles": {
-      "regular": "Regular",
-      "blackShadow": "Black Shadow"
+      "regular": "ปกติ",
+      "blackShadow": "ขอบดำ"
     },
-    "darkAuctionTimer": "Dark Auction Timer",
-    "magmaBossTimer": "Magma Boss Timer",
-    "itemPickupLog": "Item Pickup Log",
-    "avoidPlacingEnchantedItems": "Avoid Placing Enchanted Items",
-    "avoidBreakingStems": "Avoid Breaking Stems",
-    "magmaBossTimerColor": "Magma Boss Timer Color",
-    "darkAuctionTimerColor": "Dark Auction Timer Color",
-    "stopBowChargeFromResetting": "Stop Bow Charge From Resetting",
-    "showMagmaTimerInOtherGames": "Show Magma Timer In Other Games",
-    "preventMovementOnDeath": "Prevent Walking After Death",
-    "showDarkAuctionTimerInOtherGames": "Show Dark Auc Timer In Other Games",
-    "showItemAnvilUses": "Show Item Anvil Uses"
+    "darkAuctionTimer": "ระยะเวลา Dark Auction",
+    "magmaBossTimer": "ระยะเวลาบอส Magma",
+    "itemPickupLog": "แสดงรายชื่อไอเทมที่เก็บ",
+    "avoidPlacingEnchantedItems": "ป้องกันการวางไอเทมแบบ Enchanted",
+    "avoidBreakingStems": "ป้องการการตีรากพืช",
+    "magmaBossTimerColor": "สีระยะเวลาบอส Magma",
+    "darkAuctionTimerColor": "สีระยะเวลา Dark Auction",
+    "stopBowChargeFromResetting": "ป้องการรีเซ็ตของธนูกำลังที่กำลังยิง",
+    "showMagmaTimerInOtherGames": "แสดงระยะเวลาบอส Magma ในเกมอื่น",
+    "preventMovementOnDeath": "ป้องการการเดินหลังตาย",
+    "showDarkAuctionTimerInOtherGames": "แสดงระยะเวลา Dark Auction ในเกมอื่น",
+    "showItemAnvilUses": "แสดงจำนวนการใช้ Anvil ของไอเทม"
   },
   "messages": {
     "dropConfirmation": "กดทิ้งของอีกที่เพื่อยืนยันทิ้งของสิ่นนี้!",
@@ -85,6 +85,6 @@
       "enchants": "ร่ายมนต์",
       "reforges": "ตีบวกของ"
     },
-    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this stem. Use your bare hand if you'd like to break it."
+    "cancelledStemBreak": "มอด SkyblockAddons กันไม่ให้คุณทำลายรากพืชนี้ โปรดใช้มือเปล่าถ้าต้องการทำลาย"
   }
 }
