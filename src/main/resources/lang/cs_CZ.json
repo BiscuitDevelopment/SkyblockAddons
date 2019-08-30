@@ -40,24 +40,24 @@
     "ignoreItemFrameClicks": "ignoruj kliknutí na Item Framy",
     "useVanillaTextureDefence": "Použij vanilla texturu pro ikonu obrany",
     "showBackpackHoldingShift": "Ukaž batoh jen když držíš shift",
-    "manaBar": "Mana Bar",
-    "manaText": "Mana Number",
-    "healthBar": "Health Bar",
-    "healthText": "Health Number",
-    "defenceIcon": "Defence Symbol",
-    "defenceText": "Defence Number",
-    "defencePercentage": "Defence Percentage",
-    "healthUpdates": "Health Change Number",
-    "hidePlayersInLobby": "Hide Far Entities In Lobby",
-    "textStyle": "Text Style: %style%",
+    "manaBar": "Vizuální ukazatel many",
+    "manaText": "Číselný ukazatel many",
+    "healthBar": "Vizuální ukazatel zdraví",
+    "healthText": "Číselný ukazatel zdraví",
+    "defenceIcon": "Symbol obrany",
+    "defenceText": "Číselný ukazatel obrany",
+    "defencePercentage": "Procentuální ukazatel many",
+    "healthUpdates": "Číselný ukazatel změny počtu zdraví",
+    "hidePlayersInLobby": "Skrýt daleké hráče v Lobby",
+    "textStyle": "Styl textu: %style%",
     "textStyles": {
-      "regular": "Regular",
-      "blackShadow": "Black Shadow"
+      "regular": "Klasický",
+      "blackShadow": "Černý stín"
     },
-    "darkAuctionTimer": "Dark Auction Timer",
-    "magmaBossTimer": "Magma Boss Timer",
-    "itemPickupLog": "Item Pickup Log",
-    "avoidPlacingEnchantedItems": "Avoid Placing Enchanted Items",
+    "darkAuctionTimer": "Časovač do Temné aukce",
+    "magmaBossTimer": "Časovač do spawnutí Magma Bosse",
+    "itemPickupLog": "Ukazatel sebraných věcí",
+    "avoidPlacingEnchantedItems": "Zakázat stavění enchantovaných bloků",
     "avoidBreakingStems": "Avoid Breaking Stems",
     "magmaBossTimerColor": "Magma Boss Timer Color",
     "darkAuctionTimerColor": "Dark Auction Timer Color",
@@ -85,6 +85,6 @@
       "enchants": "Očarování",
       "reforges": "Překování"
     },
-    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this stem. Use your bare hand if you'd like to break it."
+    "cancelledStemBreak": "SkyblockAddons vám zabránil zničit tento kořen. Použijte svoji ruku, pokud ho chcete zničit."
   }
 }
