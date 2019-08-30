@@ -48,7 +48,7 @@
     "defenceText": "Verdediging Hoeveelheid",
     "defencePercentage": "Verdediging Percentage",
     "healthUpdates": "Gezondheid Hoeveelheid Aanpassen",
-    "hidePlayersInLobby": "Verberg Verre Entities in de Lobby",
+    "hidePlayersInLobby": "Verberg Verre Entiteiten in Lobby",
     "textStyle": "Tekststijl: %style%",
     "textStyles": {
       "regular": "Normaal",
@@ -61,11 +61,11 @@
     "avoidBreakingStems": "Vermijd Het Breken Van Stengels",
     "magmaBossTimerColor": "Magma Baas Timer Kleur",
     "darkAuctionTimerColor": "Donkere Veiling Timer Kleur",
-    "stopBowChargeFromResetting": "Stop Het Resetten Van Het Aanspannen Van De Boog",
+    "stopBowChargeFromResetting": "Stop Het Resetten Van De Boog Aanval",
     "showMagmaTimerInOtherGames": "Magma Timer in andere spellen weergeven",
     "preventMovementOnDeath": "Stop het Bewegen Na het Doodgaan",
     "showDarkAuctionTimerInOtherGames": "Toon Donkere Veiling Timer in andere spellen",
-    "showItemAnvilUses": "Toon Aantal Item In Aambeeld Gebruikt"
+    "showItemAnvilUses": "Toon Aantal keren Item In Aambeeld Gebruikt"
   },
   "messages": {
     "dropConfirmation": "Laat dit object opnieuw vallen om te Bevestigen!",
