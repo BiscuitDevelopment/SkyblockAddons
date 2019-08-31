@@ -62,10 +62,10 @@
     "magmaBossTimerColor": "צבע הטיימר של בוס המגמה",
     "darkAuctionTimerColor": "צבע הטיימר של השוק השחור",
     "stopBowChargeFromResetting": "מניעת אתחול הקשת לאחר הריגת מפלצות",
-    "showMagmaTimerInOtherGames": "הצגת טיימר בוס המגמה במשחקים אחרים",
-    "preventMovementOnDeath": "מניעת הליכה לאחר המוות",
-    "showDarkAuctionTimerInOtherGames": "הצגת מכירה פומבית חשוכה במשחקים אחרים",
-    "showItemAnvilUses": "להראות שימושי סדן של הפריט"
+    "showMagmaTimerInOtherGames": "הצגת הטיימר של בוס המגמה במשחקים אחרים",
+    "preventMovementOnDeath": "עצירת תזוזה לאחר המוות",
+    "showDarkAuctionTimerInOtherGames": "הצגת הטיימר של השוק השחור במשחקים שונים",
+    "showItemAnvilUses": "הצגת שימושי סדן של הפריט"
   },
   "messages": {
     "dropConfirmation": "זרוק פריט זה להסכמה",
@@ -76,15 +76,15 @@
     "developmentVersion": "אתה מריץ גירסת תכנות: %version%. הגירסה האחרונה היא %newestVersion%",
     "labymod": "משתמשי לאבימוד: הסתרת עמודות אוכל ושריון לא מתאימה",
     "minionCannotReach": " %type% מיניון לא יכול להגיע והפסיק לזמן!",
-    "minionIsFull": "מיניון על האי שלך מלא!",
+    "minionIsFull": "אחד מהמיניונים על האי שלך מלא!",
     "typeEnchantmentsHere": "תרשום %type% כאן!",
-    "separateMultiple": "תפריד רבים עם פסיקים.",
+    "separateMultiple": "הפרד באמצעות פסיק.",
     "enchantsToMatch": "%type% לכלול:",
     "enchantsToExclude": "%type% לא לכלול:",
     "inventoryTypes": {
       "enchants": "כישופים",
       "reforges": "שדרוגים"
     },
-    "cancelledStemBreak": "סקיבלוק-אדדונס מנע אותך מלשבור את הגבעול הזה. תשתמש בידך כדי לשבור אותו."
+    "cancelledStemBreak": "סקיבלוקאדדונס מנע אותך מלשבור את הגידול הזה. השתמש ביד שלך בכדי לשבור אותו."
   }
 }
