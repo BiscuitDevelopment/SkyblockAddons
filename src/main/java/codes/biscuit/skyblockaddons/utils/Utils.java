@@ -89,7 +89,8 @@ public class Utils {
             Scoreboard scoreboard = mc.theWorld.getScoreboard();
             ScoreObjective sidebarObjective = mc.theWorld.getScoreboard().getObjectiveInDisplaySlot(1);
             if (sidebarObjective != null) {
-                onSkyblock = stripColor(sidebarObjective.getDisplayName()).startsWith("SKYBLOCK");
+                String title = stripColor(sidebarObjective.getDisplayName());
+                onSkyblock = title.startsWith("SKYBLOCK") || title.startsWith("\u7a7a\u5c9b\u751f\u5b58");
                 Collection<Score> collection = scoreboard.getSortedScores(sidebarObjective);
                 List<Score> list = Lists.newArrayList(collection.stream().filter(p_apply_1_ -> p_apply_1_.getPlayerName() != null && !p_apply_1_.getPlayerName().startsWith("#")).collect(Collectors.toList()));
                 if (list.size() > 15) {
