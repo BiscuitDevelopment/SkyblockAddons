@@ -33,13 +33,13 @@
     "healthBarColor": "צבע בר החיים",
     "defenceTextColor": "צבע טקסט ההגנה",
     "defencePercentageColor": "צבע טקסט אחוזי ההגנה",
-    "disableDoubleDropAutomatically": "Disable Double Drop Automatically",
+    "disableDoubleDropAutomatically": "לכבות זריקה מוכפלת אוטומטית",
     "fullMinionWarning": "אזהרת מיניון מלא",
     "nextPage": "דף הבא",
     "previousPage": "הדף הקודם",
     "ignoreItemFrameClicks": "תתעלם מלחיצות על מסגרות פריט",
-    "useVanillaTextureDefence": "Use Vanilla Texture For Defence Icon",
-    "showBackpackHoldingShift": "Only Show Backpack When Holding Shift",
+    "useVanillaTextureDefence": "להשתמש בטקסטורה הרגילה בשביל סימן ההגנה",
+    "showBackpackHoldingShift": "להראות את התיק רק כשמחזיקים שיפט",
     "manaBar": "פס מאנה",
     "manaText": "מספר מאנה",
     "healthBar": "פס חיים",
@@ -65,7 +65,7 @@
     "showMagmaTimerInOtherGames": "הצגת טיימר בוס המגמה במשחקים אחרים",
     "preventMovementOnDeath": "מניעת הליכה לאחר המוות",
     "showDarkAuctionTimerInOtherGames": "הצגת מכירה פומבית חשוכה במשחקים אחרים",
-    "showItemAnvilUses": "Show Item Anvil Uses"
+    "showItemAnvilUses": "להראות שימושי סדן של הפריט"
   },
   "messages": {
     "dropConfirmation": "זרוק פריט זה להסכמה",
@@ -77,14 +77,14 @@
     "labymod": "משתמשי לאבימוד: הסתרת עמודות אוכל ושריון לא מתאימה",
     "minionCannotReach": " %type% מיניון לא יכול להגיע והפסיק לזמן!",
     "minionIsFull": "מיניון על האי שלך מלא!",
-    "typeEnchantmentsHere": "Type %type% Here!",
-    "separateMultiple": "Separate Multiple With Commas.",
-    "enchantsToMatch": "%type% To Match:",
-    "enchantsToExclude": "%type% To Exclude:",
+    "typeEnchantmentsHere": "תרשום %type% כאן!",
+    "separateMultiple": "תפריד רבים עם פסיקים.",
+    "enchantsToMatch": "%type% לכלול:",
+    "enchantsToExclude": "%type% לא לכלול:",
     "inventoryTypes": {
       "enchants": "כישופים",
       "reforges": "שדרוגים"
     },
-    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this stem. Use your bare hand if you'd like to break it."
+    "cancelledStemBreak": "סקיבלוק-אדדונס מנע אותך מלשבור את הגבעול הזה. תשתמש בידך כדי לשבור אותו."
   }
 }
