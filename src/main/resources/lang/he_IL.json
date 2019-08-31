@@ -56,15 +56,15 @@
     },
     "darkAuctionTimer": "זמני השוק השחור",
     "magmaBossTimer": "זמני בוס המגמה",
-    "itemPickupLog": "Item Pickup Log",
+    "itemPickupLog": "הצגת הרמת פריטים",
     "avoidPlacingEnchantedItems": "מניעת שימוש בבלוקים מכושפים בבניות",
-    "avoidBreakingStems": "Avoid Breaking Stems",
+    "avoidBreakingStems": "להימנע משבירת גבעולים",
     "magmaBossTimerColor": "צבע הטיימר של בוס המגמה",
     "darkAuctionTimerColor": "צבע הטיימר של השוק השחור",
     "stopBowChargeFromResetting": "מניעת אתחול הקשת בעת הריגת מפלצות",
     "showMagmaTimerInOtherGames": "הצגת טיימר בוס המגמה במשחקים אחרים",
     "preventMovementOnDeath": "מניעת הליכה לאחר המוות",
-    "showDarkAuctionTimerInOtherGames": "Show Dark Auc Timer In Other Games",
+    "showDarkAuctionTimerInOtherGames": "הצגת מכירה פומבית חשוכה במשחקים אחרים",
     "showItemAnvilUses": "Show Item Anvil Uses"
   },
   "messages": {
@@ -83,7 +83,7 @@
     "enchantsToExclude": "%type% To Exclude:",
     "inventoryTypes": {
       "enchants": "כישופים",
-      "reforges": "Reforges"
+      "reforges": "שדרוגים"
     },
     "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this stem. Use your bare hand if you'd like to break it."
   }
