@@ -48,7 +48,7 @@
     "defenceText": "防禦力文字",
     "defencePercentage": "防禦力百分比",
     "healthUpdates": "血量起伏",
-    "hidePlayersInLobby": "在大廳隱藏較近的實體",
+    "hidePlayersInLobby": "在大廳隱藏較遠的實體",
     "textStyle": "文字樣式: %style%",
     "textStyles": {
       "regular": "一般",
