@@ -1,7 +1,7 @@
 {
   "language": "Filipino",
   "settings": {
-    "settings": "Setting",
+    "settings": "Ang mga settings",
     "openSettings": "Buksan Ang Marami Pang Settings",
     "magmaBossWarning": "Babala ng Magma Boss",
     "itemDropConfirmation": "Pagkumpirmado sa Paghulog ng Item",
@@ -16,16 +16,16 @@
     "manaTextColor": "Kulay ng Teksto ng Mana",
     "manaBarColor": "Kulay ng Mana Bar",
     "editLocations": "Baguhin ang lokasyon ng GUI",
-    "guiScale": "Gui Scale: %scale%",
+    "guiScale": "Kalakihan ng GUI",
     "resetLocations": "I-reset ang mga lokasyon",
     "hideDurability": "Pagtago ng tibay ng Tool",
-    "showEnchantmentsReforges": "Enchants & Reforges",
+    "showEnchantmentsReforges": "Pandayan at Enchants",
     "minionStopWarning": "\"Di Maabot ng Minion\" Babala",
     "hideAuctionHousePlayers": "Huwag I-pakita ang mga tao malapit sa Bahay ng Sandata",
     "backpackStyle": "Istilo ng Backpack: %style%",
     "backpackStyles": {
       "inventory": "Imbentaryo",
-      "compact": "Compact"
+      "compact": "Kompak"
     },
     "showBackpackPreview": "I-pakita ang Backpack Preview",
     "hideHealthBar": "Huwag I-pakita ang Vanilla Health Bar",
@@ -40,9 +40,9 @@
     "ignoreItemFrameClicks": "Huwag pansinin ang pag-click sa Item Frames",
     "useVanillaTextureDefence": "Gamitin lamang ang Vanilla Texture para sa Defence Icon",
     "showBackpackHoldingShift": "I-pakita lamang ang Backpack pag hawak ang Shift Key",
-    "manaBar": "Mana Bar",
-    "manaText": "Mana Number",
-    "healthBar": "Health Bar",
+    "manaBar": "Kapangyarihan",
+    "manaText": "Numero ng Kapangyarihan",
+    "healthBar": "Kalusugan",
     "healthText": "Health Number",
     "defenceIcon": "Defence Symbol",
     "defenceText": "Defence Number",
@@ -83,7 +83,7 @@
     "enchantsToExclude": "%type% Tanggalin ang:",
     "inventoryTypes": {
       "enchants": "Enchants",
-      "reforges": "Reforges"
+      "reforges": "Pandayan"
     },
     "cancelledStemBreak": "Itinigil ng SkyblockAddons sa pag-sira ang tangkay na ito. Gamitin mo ang iyong kamay kung gusto mo sirain."
   }
