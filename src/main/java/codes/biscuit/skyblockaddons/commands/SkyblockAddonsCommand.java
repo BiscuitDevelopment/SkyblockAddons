@@ -2,9 +2,11 @@ package codes.biscuit.skyblockaddons.commands;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.listeners.PlayerListener;
+import com.mojang.realmsclient.gui.ChatFormatting;
 import net.minecraft.command.CommandBase;
+import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
-import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.server.MinecraftServer;
 
 import java.util.Collections;
 import java.util.List;
@@ -18,24 +20,23 @@ public class SkyblockAddonsCommand extends CommandBase {
     }
 
     @Override
-    public String getCommandName() {
+    public String getName() {
         return "skyblockaddons";
     }
 
     @Override
-    public List<String> getCommandAliases()
+    public List<String> getAliases()
     {
         return Collections.singletonList("sba");
     }
 
     @Override
-    public String getCommandUsage(ICommandSender sender) {
+    public String getUsage(ICommandSender sender) {
         return null;
     }
 
     @Override
-    public boolean canCommandSenderUseCommand(ICommandSender sender)
-    {
+    public boolean checkPermission(MinecraftServer server, ICommandSender sender) {
         return true;
     }
 
@@ -44,7 +45,7 @@ public class SkyblockAddonsCommand extends CommandBase {
      * Opens the main gui, or locations gui if they type /sba edit
      */
     @Override
-    public void processCommand(ICommandSender sender, String[] args) {
+    public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException {
         if (args.length > 0) {
             if (args[0].equalsIgnoreCase("edit")) {
                 main.getUtils().setFadingIn(false);
@@ -53,8 +54,9 @@ public class SkyblockAddonsCommand extends CommandBase {
             } else if (args[0].equalsIgnoreCase("nbt")) {
                 boolean copyingNBT = !main.getUtils().isCopyNBT();
                 main.getUtils().setCopyNBT(copyingNBT);
-                if (copyingNBT) main.getUtils().sendMessage(EnumChatFormatting.GREEN+"You are now able to copy the nbt of items. Hover over any item and press CTRL to copy.");
-                else main.getUtils().sendMessage(EnumChatFormatting.RED+"You have disabled the ability to copy nbt.");
+                if (copyingNBT)
+                    main.getUtils().sendMessage(ChatFormatting.GREEN + "You are now able to copy the nbt of items. Hover over any item and press CTRL to copy.");
+                else main.getUtils().sendMessage(ChatFormatting.RED + "You have disabled the ability to copy nbt.");
                 return;
             }
         }

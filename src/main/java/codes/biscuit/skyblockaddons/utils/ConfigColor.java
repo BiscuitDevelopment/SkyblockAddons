@@ -1,41 +1,41 @@
 package codes.biscuit.skyblockaddons.utils;
 
-import net.minecraft.util.EnumChatFormatting;
+import com.mojang.realmsclient.gui.ChatFormatting;
 
 import java.awt.*;
 
 public enum ConfigColor {
 
-    BLACK(EnumChatFormatting.BLACK, 0,0,0),
-    DARK_BLUE(EnumChatFormatting.DARK_BLUE, 0,0,170),
-    DARK_GREEN(EnumChatFormatting.DARK_GREEN, 0,170,0),
-    DARK_AQUA(EnumChatFormatting.DARK_AQUA, 0,170,170),
-    DARK_RED(EnumChatFormatting.DARK_RED, 170,0,0),
-    DARK_PURPLE(EnumChatFormatting.DARK_PURPLE, 170,0,170),
-    GOLD(EnumChatFormatting.GOLD, 255,170,0),
-    GRAY(EnumChatFormatting.GRAY, 170,170,170),
-    DARK_GRAY(EnumChatFormatting.DARK_GRAY, 85,85,85),
-    BLUE(EnumChatFormatting.BLUE, 85,85,255),
-    GREEN(EnumChatFormatting.GREEN, 85,255,85),
-    AQUA(EnumChatFormatting.AQUA, 85,255,255),
-    RED(EnumChatFormatting.RED, 255,85,85),
-    LIGHT_PURPLE(EnumChatFormatting.LIGHT_PURPLE, 255,85,255),
-    YELLOW(EnumChatFormatting.YELLOW, 255,255,85),
-    WHITE(EnumChatFormatting.WHITE, 255,255,255);
+    BLACK(ChatFormatting.BLACK, 0, 0, 0),
+    DARK_BLUE(ChatFormatting.DARK_BLUE, 0, 0, 170),
+    DARK_GREEN(ChatFormatting.DARK_GREEN, 0, 170, 0),
+    DARK_AQUA(ChatFormatting.DARK_AQUA, 0, 170, 170),
+    DARK_RED(ChatFormatting.DARK_RED, 170, 0, 0),
+    DARK_PURPLE(ChatFormatting.DARK_PURPLE, 170, 0, 170),
+    GOLD(ChatFormatting.GOLD, 255, 170, 0),
+    GRAY(ChatFormatting.GRAY, 170, 170, 170),
+    DARK_GRAY(ChatFormatting.DARK_GRAY, 85, 85, 85),
+    BLUE(ChatFormatting.BLUE, 85, 85, 255),
+    GREEN(ChatFormatting.GREEN, 85, 255, 85),
+    AQUA(ChatFormatting.AQUA, 85, 255, 255),
+    RED(ChatFormatting.RED, 255, 85, 85),
+    LIGHT_PURPLE(ChatFormatting.LIGHT_PURPLE, 255, 85, 255),
+    YELLOW(ChatFormatting.YELLOW, 255, 255, 85),
+    WHITE(ChatFormatting.WHITE, 255, 255, 255);
 
-    private EnumChatFormatting chatFormatting;
+    private ChatFormatting chatFormatting;
     private int r;
     private int g;
     private int b;
 
-    ConfigColor(EnumChatFormatting chatFormatting, int r, int g, int b) {
+    ConfigColor(ChatFormatting chatFormatting, int r, int g, int b) {
         this.chatFormatting = chatFormatting;
         this.r = r;
         this.g = g;
         this.b = b;
     }
 
-    public EnumChatFormatting getChatFormatting() {
+    public ChatFormatting getChatFormatting() {
         return chatFormatting;
     }
 

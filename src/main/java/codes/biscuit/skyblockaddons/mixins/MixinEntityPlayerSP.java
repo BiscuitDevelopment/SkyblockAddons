@@ -19,13 +19,13 @@ public class MixinEntityPlayerSP {
     private Item lastItem = null;
     private long lastDrop = System.currentTimeMillis();
 
-    @Inject(method = "dropOneItem", at = @At(value = "HEAD"), cancellable = true)
+    @Inject(method = "dropItem", at = @At(value = "HEAD"), cancellable = true)
     private void dropOneItemConfirmation(boolean dropAll, CallbackInfoReturnable<EntityItem> cir) {
         SkyblockAddons main = SkyblockAddons.getInstance();
         if (main.getConfigValues().isEnabled(Feature.DROP_CONFIRMATION) && (main.getUtils().isOnSkyblock() ||
                 main.getConfigValues().isDisabled(Feature.DISABLE_DOUBLE_DROP_AUTOMATICALLY))) {
-            ItemStack heldItemStack = Minecraft.getMinecraft().thePlayer.getHeldItem();
-            if (heldItemStack != null) {
+            ItemStack heldItemStack = Minecraft.getMinecraft().player.getHeldItemMainhand();
+            if (heldItemStack != ItemStack.EMPTY) {
                 Item heldItem = heldItemStack.getItem();
                 if (lastItem != null && lastItem == heldItem && System.currentTimeMillis() - lastDrop < 3000) {
                     lastDrop = System.currentTimeMillis();

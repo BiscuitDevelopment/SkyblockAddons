@@ -24,8 +24,8 @@ public class ButtonColor extends ButtonText {
     }
 
     @Override
-    public void drawButton(Minecraft mc, int mouseX, int mouseY) {
-        hovered = mouseX >= this.xPosition && mouseY >= this.yPosition && mouseX < this.xPosition + this.width && mouseY < this.yPosition + this.height;
+    public void drawButton(Minecraft mc, int mouseX, int mouseY, float partialTicks) {
+        hovered = mouseX >= this.x && mouseY >= this.y && mouseX < this.x + this.width && mouseY < this.y + this.height;
         int boxColor;
         int fontColor = new Color(224, 224, 224, 255).getRGB();
         int boxAlpha = 100;
@@ -37,7 +37,7 @@ public class ButtonColor extends ButtonText {
         // Regular features are red if disabled, green if enabled or part of the gui feature is enabled.
         GlStateManager.enableBlend();
         float scale = 1;
-        int stringWidth = mc.fontRendererObj.getStringWidth(displayString);
+        int stringWidth = mc.fontRenderer.getStringWidth(displayString);
         float widthLimit = BUTTON_MAX_WIDTH -10;
         if (stringWidth > widthLimit) {
             scale = 1/(stringWidth/widthLimit);

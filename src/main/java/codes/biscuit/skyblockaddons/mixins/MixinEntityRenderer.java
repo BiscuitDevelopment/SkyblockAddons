@@ -8,7 +8,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.item.EntityItemFrame;
 import net.minecraft.entity.monster.EntityZombie;
-import net.minecraft.util.Vec3;
+import net.minecraft.util.math.Vec3d;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -33,7 +33,7 @@ public class MixinEntityRenderer {
 
     private void removeEntities(List<Entity> list) {
         if (SkyblockAddons.getInstance().getUtils().isOnSkyblock()) { // conditions for the invisible zombie that Skeleton hat bones are riding
-            list.removeIf(listEntity -> listEntity instanceof EntityZombie && listEntity.isInvisible() && listEntity.riddenByEntity instanceof EntityItem);
+            list.removeIf(listEntity -> listEntity instanceof EntityZombie && listEntity.isInvisible() && listEntity.getRidingEntity() instanceof EntityItem);
             if (!GuiScreen.isCtrlKeyDown() && !SkyblockAddons.getInstance().getConfigValues().isDisabled(Feature.IGNORE_ITEM_FRAME_CLICKS)) {
                 list.removeIf(listEntity -> listEntity instanceof EntityItemFrame);
             }

@@ -2,6 +2,7 @@ package codes.biscuit.skyblockaddons.mixins;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.utils.*;
+import com.mojang.realmsclient.gui.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.Gui;
@@ -9,10 +10,10 @@ import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
-import net.minecraft.client.renderer.entity.RenderItem;
+import net.minecraft.client.renderer.RenderItem;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.ResourceLocation;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -34,17 +35,17 @@ public class MixinGuiContainer extends GuiScreen {
     private EnchantPair reforgeToRender = null;
     private Set<EnchantPair> enchantsToRender = new HashSet<>();
 
-    @Inject(method = "drawSlot", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/entity/RenderItem;renderItemOverlayIntoGUI(Lnet/minecraft/client/gui/FontRenderer;Lnet/minecraft/item/ItemStack;IILjava/lang/String;)V",
+    @Inject(method = "drawSlot", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/RenderItem;renderItemOverlayIntoGUI(Lnet/minecraft/client/gui/FontRenderer;Lnet/minecraft/item/ItemStack;IILjava/lang/String;)V",
             ordinal = 0), locals = LocalCapture.CAPTURE_FAILSOFT)
     private void shouldRenderSaveSlots(Slot slotIn, CallbackInfo ci, int x, int y, ItemStack item, boolean flag, boolean flag1,
                                       ItemStack itemstack1, String s) {
         SkyblockAddons main = SkyblockAddons.getInstance();
         if (main.getConfigValues().isEnabled(Feature.SHOW_ENCHANTMENTS_REFORGES)) {
             Minecraft mc = Minecraft.getMinecraft();
-            FontRenderer fr = mc.fontRendererObj;
+            FontRenderer fr = mc.fontRenderer;
             if (item != null && item.hasDisplayName()) {
-                if (item.getDisplayName().startsWith(EnumChatFormatting.GREEN + "Enchant Item")) {
-                    List<String> toolip = item.getTooltip(mc.thePlayer, false);
+                if (item.getDisplayName().startsWith(ChatFormatting.GREEN + "Enchant Item")) {
+                    List<String> toolip = item.getTooltip(mc.player, ITooltipFlag.TooltipFlags.NORMAL);
                     if (toolip.size() > 2) {
                         String enchantLine = toolip.get(2);
                         String toMatch = enchantLine.split(Pattern.quote("* "))[1];
@@ -52,9 +53,9 @@ public class MixinGuiContainer extends GuiScreen {
                         String enchant;
                         if (main.getUtils().getEnchantmentMatch().size() > 0 &&
                                 main.getUtils().enchantReforgeMatches(toMatch)) {
-                            enchant = EnumChatFormatting.RED + enchantLine.split(Pattern.quote("* "))[1];
+                            enchant = ChatFormatting.RED + enchantLine.split(Pattern.quote("* "))[1];
                         } else {
-                            enchant = EnumChatFormatting.YELLOW + enchantLine.split(Pattern.quote("* "))[1];
+                            enchant = ChatFormatting.YELLOW + enchantLine.split(Pattern.quote("* "))[1];
                         }
                         float yOff;
                         if (slotIn.slotNumber == 29 || slotIn.slotNumber == 33) {
@@ -74,9 +75,9 @@ public class MixinGuiContainer extends GuiScreen {
                         String enchant;
                         if (main.getUtils().getEnchantmentMatch().size() > 0 &&
                                 main.getUtils().enchantReforgeMatches(reforge)) {
-                            enchant = EnumChatFormatting.RED+reforge;
+                            enchant = ChatFormatting.RED + reforge;
                         } else {
-                            enchant = EnumChatFormatting.YELLOW+reforge;
+                            enchant = ChatFormatting.YELLOW + reforge;
                         }
                         x -= 28;
                         y += 22;
@@ -128,7 +129,7 @@ public class MixinGuiContainer extends GuiScreen {
                 GlStateManager.translate(0,0,300);
                 drawTexturedModalRect(x, y, 0, 0, 176, rows * 18 + 17);
                 drawTexturedModalRect(x, y + rows * 18 + 17, 0, 215, 176, 7);
-                fontRendererObj.drawString(backpack.getItemName(), x+8, y+6, 4210752);
+                fontRenderer.drawString(backpack.getItemName(), x + 8, y + 6, 4210752);
                 GlStateManager.popMatrix();
                 GlStateManager.enableLighting();
 
@@ -144,7 +145,7 @@ public class MixinGuiContainer extends GuiScreen {
                         zLevel = 200;
                         renderItem.zLevel = 200;
                         renderItem.renderItemAndEffectIntoGUI(item, itemX, itemY);
-                        renderItem.renderItemOverlayIntoGUI(Minecraft.getMinecraft().fontRendererObj, item, itemX, itemY, null);
+                        renderItem.renderItemOverlayIntoGUI(Minecraft.getMinecraft().fontRenderer, item, itemX, itemY, null);
                         zLevel = 0;
                         renderItem.zLevel = 0;
                     }
@@ -169,7 +170,7 @@ public class MixinGuiContainer extends GuiScreen {
                         zLevel = 200;
                         renderItem.zLevel = 200;
                         renderItem.renderItemAndEffectIntoGUI(item, itemX, itemY);
-                        renderItem.renderItemOverlayIntoGUI(Minecraft.getMinecraft().fontRendererObj, item, itemX, itemY, null);
+                        renderItem.renderItemOverlayIntoGUI(Minecraft.getMinecraft().fontRenderer, item, itemX, itemY, null);
                         zLevel = 0;
                         renderItem.zLevel = 0;
                     }

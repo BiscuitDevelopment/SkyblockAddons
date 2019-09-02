@@ -27,8 +27,8 @@ public class ButtonModify extends ButtonText {
     }
 
     @Override
-    public void drawButton(Minecraft mc, int mouseX, int mouseY) {
-        hovered = mouseX >= this.xPosition && mouseY >= this.yPosition && mouseX < this.xPosition + this.width && mouseY < this.yPosition + this.height;
+    public void drawButton(Minecraft mc, int mouseX, int mouseY, float partialTicks) {
+        hovered = mouseX >= this.x && mouseY >= this.y && mouseX < this.x + this.width && mouseY < this.y + this.height;
         int boxColor;
         int boxAlpha = 100;
         if (hovered && !hitMaximum()) {

@@ -27,7 +27,7 @@ import java.util.Calendar;
 import java.util.Collection;
 import java.util.TimeZone;
 
-import static net.minecraft.client.gui.Gui.icons;
+import static net.minecraft.client.gui.Gui.ICONS;
 
 public class RenderListener {
 
@@ -56,10 +56,10 @@ public class RenderListener {
     @SubscribeEvent()
     public void onRenderRegular(RenderGameOverlayEvent.Post e) {
         if ((!main.isUsingLabymod() || Minecraft.getMinecraft().ingameGUI instanceof GuiIngameForge)) {
-            if (e.type == RenderGameOverlayEvent.ElementType.EXPERIENCE) {
+            if (e.getType() == RenderGameOverlayEvent.ElementType.EXPERIENCE) {
                 if (main.getUtils().isOnSkyblock()) {
                     renderOverlays();
-                    renderWarnings(e.resolution);
+                    renderWarnings(e.getResolution());
                 } else {
                     renderTimersOnly();
                 }
@@ -74,10 +74,10 @@ public class RenderListener {
      */
     @SubscribeEvent()
     public void onRenderLabyMod(RenderGameOverlayEvent e) {
-        if (e.type == null && main.isUsingLabymod()) {
+        if (e.getType() == null && main.isUsingLabymod()) {
             if (main.getUtils().isOnSkyblock()) {
                 renderOverlays();
-                renderWarnings(e.resolution);
+                renderWarnings(e.getResolution());
             } else {
                 renderTimersOnly();
             }
@@ -269,9 +269,9 @@ public class RenderListener {
         float y = main.getConfigValues().getActualY(Feature.SKELETON_BAR);
         int bones = 0;
         if (!(mc.currentScreen instanceof LocationEditGui)) {
-            for (Entity listEntity : mc.theWorld.loadedEntityList) {
+            for (Entity listEntity : mc.world.loadedEntityList) {
                 if (listEntity instanceof EntityItem &&
-                        listEntity.ridingEntity instanceof EntityZombie && listEntity.ridingEntity.isInvisible() && listEntity.getDistanceToEntity(mc.thePlayer) <= 8) {
+                        listEntity.getRidingEntity() instanceof EntityZombie && listEntity.getRidingEntity().isInvisible() && listEntity.getDistance(mc.player) <= 8) {
                     bones++;
                 }
             }
@@ -305,7 +305,7 @@ public class RenderListener {
      */
     public void drawIcon(float scale, Minecraft mc, ButtonLocation buttonLocation) {
         if (main.getConfigValues().isDisabled(Feature.USE_VANILLA_TEXTURE_DEFENCE)) {
-            mc.getTextureManager().bindTexture(icons);
+            mc.getTextureManager().bindTexture(ICONS);
         } else {
             mc.getTextureManager().bindTexture(DEFENCE_VANILLA);
         }
@@ -428,7 +428,7 @@ public class RenderListener {
         float y = main.getConfigValues().getActualY(feature);
 
         int height = 7;
-        int width = mc.fontRendererObj.getStringWidth(text);
+        int width = mc.fontRenderer.getStringWidth(text);
         x-=Math.round(width*scale/2);
         y-=Math.round(height*scale/2);
         x/=scale;
@@ -448,13 +448,13 @@ public class RenderListener {
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         }
         if (main.getConfigValues().getTextStyle() == EnumUtils.TextStyle.BLACK_SHADOW) {
-            mc.fontRendererObj.drawString(text, intX + 1, intY, 0);
-            mc.fontRendererObj.drawString(text, intX - 1, intY, 0);
-            mc.fontRendererObj.drawString(text, intX, intY + 1, 0);
-            mc.fontRendererObj.drawString(text, intX, intY - 1, 0);
-            mc.fontRendererObj.drawString(text, intX, intY, color);
+            mc.fontRenderer.drawString(text, intX + 1, intY, 0);
+            mc.fontRenderer.drawString(text, intX - 1, intY, 0);
+            mc.fontRenderer.drawString(text, intX, intY + 1, 0);
+            mc.fontRenderer.drawString(text, intX, intY - 1, 0);
+            mc.fontRenderer.drawString(text, intX, intY, color);
         } else {
-            mc.ingameGUI.drawString(mc.fontRendererObj, text, intX, intY, color);
+            mc.ingameGUI.drawString(mc.fontRenderer, text, intX, intY, color);
         }
         mc.getTextureManager().bindTexture(TEXT_ICONS);
         GlStateManager.color(1,1,1,1);
@@ -472,7 +472,7 @@ public class RenderListener {
         float y = main.getConfigValues().getActualY(Feature.ITEM_PICKUP_LOG);
 
         int height = 8*3;
-        int width = mc.fontRendererObj.getStringWidth("+ 1x Forceful Ember Chestplate");
+        int width = mc.fontRenderer.getStringWidth("+ 1x Forceful Ember Chestplate");
         x-=Math.round(width*scale/2);
         y-=Math.round(height*scale/2);
         x/=scale;
@@ -495,7 +495,7 @@ public class RenderListener {
         for (ItemDiff itemDiff : log) {
             String text = String.format("%s %sx \u00A7r%s", itemDiff.getAmount() > 0 ? "\u00A7a+":"\u00A7c-",
                     Math.abs(itemDiff.getAmount()), itemDiff.getDisplayName());
-            drawString(mc, text, intX, intY+(i*mc.fontRendererObj.FONT_HEIGHT), ConfigColor.WHITE.getColor(255));
+            drawString(mc, text, intX, intY + (i * mc.fontRenderer.FONT_HEIGHT), ConfigColor.WHITE.getColor(255));
             i++;
         }
     }
@@ -503,13 +503,13 @@ public class RenderListener {
     private void drawString(Minecraft mc, String text, int x, int y, int color) {
         if (main.getConfigValues().getTextStyle() == EnumUtils.TextStyle.BLACK_SHADOW) {
             String strippedText = main.getUtils().stripColor(text);
-            mc.fontRendererObj.drawString(strippedText, x + 1, y, 0);
-            mc.fontRendererObj.drawString(strippedText, x - 1, y, 0);
-            mc.fontRendererObj.drawString(strippedText, x, y + 1, 0);
-            mc.fontRendererObj.drawString(strippedText, x, y - 1, 0);
-            mc.fontRendererObj.drawString(text, x, y, color);
+            mc.fontRenderer.drawString(strippedText, x + 1, y, 0);
+            mc.fontRenderer.drawString(strippedText, x - 1, y, 0);
+            mc.fontRenderer.drawString(strippedText, x, y + 1, 0);
+            mc.fontRenderer.drawString(strippedText, x, y - 1, 0);
+            mc.fontRenderer.drawString(text, x, y, color);
         } else {
-            mc.ingameGUI.drawString(mc.fontRendererObj, text, x, y, color);
+            mc.ingameGUI.drawString(mc.fontRenderer, text, x, y, color);
         }
     }
 
@@ -522,7 +522,7 @@ public class RenderListener {
 
     @SubscribeEvent()
     public void onRenderRemoveBars(RenderGameOverlayEvent.Pre e) {
-        if (e.type == RenderGameOverlayEvent.ElementType.ALL) {
+        if (e.getType() == RenderGameOverlayEvent.ElementType.ALL) {
             if (main.getUtils().isOnSkyblock()) {
                 if (main.getConfigValues().isEnabled(Feature.HIDE_FOOD_ARMOR_BAR)) {
                     GuiIngameForge.renderFood = false;

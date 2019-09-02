@@ -63,7 +63,7 @@ public class SettingsGui extends GuiScreen {
                 main.getUtils().denormalizeValue(main.getConfigValues().getGuiScale(), ButtonSlider.GUI_SCALE_MINIMUM, ButtonSlider.GUI_SCALE_MAXIMUM, ButtonSlider.GUI_SCALE_STEP))));
         int oneThird = width/3;
         int twoThirds = oneThird*2;
-        int boxWidth = fontRendererObj.getStringWidth(text)+10;
+        int boxWidth = fontRenderer.getStringWidth(text) + 10;
         if (boxWidth > BUTTON_MAX_WIDTH) boxWidth = BUTTON_MAX_WIDTH;
         int boxHeight = 20;
         int x = twoThirds+25;
@@ -91,7 +91,7 @@ public class SettingsGui extends GuiScreen {
         if (feature == Feature.WARNING_TIME) {
             widthLimit = 100;
         }
-        int boxWidth = fontRendererObj.getStringWidth(text)+10;
+        int boxWidth = fontRenderer.getStringWidth(text) + 10;
         if (boxWidth > widthLimit) boxWidth = widthLimit;
         int boxHeight = 20;
         int x = 0;
@@ -125,7 +125,7 @@ public class SettingsGui extends GuiScreen {
         float scale = 2.5F; // Draw the settings label in big boy font size
         GlStateManager.scale(scale, scale, 1);
         int blue = new Color(189,236,252, 255).getRGB();
-        drawCenteredString(fontRendererObj, Message.SETTING_SETTINGS.getMessage(),
+        drawCenteredString(fontRenderer, Message.SETTING_SETTINGS.getMessage(),
                 (int)(width/2/scale), (int)(height*0.12/scale), blue);
         GlStateManager.popMatrix();
 

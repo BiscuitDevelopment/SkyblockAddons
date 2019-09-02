@@ -5,6 +5,7 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import com.mojang.realmsclient.gui.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.event.ClickEvent;
 import net.minecraft.launchwrapper.Launch;
@@ -12,9 +13,12 @@ import net.minecraft.scoreboard.Score;
 import net.minecraft.scoreboard.ScoreObjective;
 import net.minecraft.scoreboard.ScorePlayerTeam;
 import net.minecraft.scoreboard.Scoreboard;
-import net.minecraft.util.ChatComponentText;
-import net.minecraft.util.EnumChatFormatting;
-import net.minecraft.util.MathHelper;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundEvent;
+import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.text.ChatType;
+import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.event.ClickEvent;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.FMLLog;
@@ -31,6 +35,7 @@ import java.net.URLConnection;
 import java.util.List;
 import java.util.*;
 import java.util.regex.Matcher;
+import java.util.*;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
@@ -65,18 +70,18 @@ public class Utils {
     }
 
     public void sendMessage(String text) {
-        ClientChatReceivedEvent event = new ClientChatReceivedEvent((byte) 1, new ChatComponentText(text));
+        ClientChatReceivedEvent event = new ClientChatReceivedEvent(ChatType.SYSTEM, new TextComponentString(text));
         MinecraftForge.EVENT_BUS.post(event); // Let other mods pick up the new message
         if (!event.isCanceled()) {
-            Minecraft.getMinecraft().thePlayer.addChatMessage(event.message); // Just for logs
+            Minecraft.getMinecraft().player.sendMessage(event.getMessage()); // Just for logs
         }
     }
 
-    private void sendMessage(ChatComponentText text) {
-        ClientChatReceivedEvent event = new ClientChatReceivedEvent((byte) 1, text);
+    private void sendMessage(TextComponentString text) {
+        ClientChatReceivedEvent event = new ClientChatReceivedEvent(ChatType.SYSTEM, text);
         MinecraftForge.EVENT_BUS.post(event); // Let other mods pick up the new message
         if (!event.isCanceled()) {
-            Minecraft.getMinecraft().thePlayer.addChatMessage(event.message); // Just for logs
+            Minecraft.getMinecraft().player.sendMessage(event.getMessage()); // Just for logs
         }
     }
 
@@ -85,9 +90,9 @@ public class Utils {
     public void checkGameLocationDate() {
         boolean foundLocation = false;
         Minecraft mc = Minecraft.getMinecraft();
-        if (mc != null && mc.theWorld != null) {
-            Scoreboard scoreboard = mc.theWorld.getScoreboard();
-            ScoreObjective sidebarObjective = mc.theWorld.getScoreboard().getObjectiveInDisplaySlot(1);
+        if (mc != null && mc.world != null) { //TODO make sure this works
+            Scoreboard scoreboard = mc.world.getScoreboard();
+            ScoreObjective sidebarObjective = mc.world.getScoreboard().getObjectiveInDisplaySlot(1);
             if (sidebarObjective != null) {
                 onSkyblock = stripColor(sidebarObjective.getDisplayName()).startsWith("SKYBLOCK");
                 Collection<Score> collection = scoreboard.getSortedScores(sidebarObjective);
@@ -156,16 +161,16 @@ public class Utils {
     }
 
     public float normalizeValue(float value, float valueMin, float valueMax, float valueStep) {
-        return MathHelper.clamp_float((this.snapToStepClamp(value, valueMin, valueMax, valueStep) - valueMin) / (valueMax - valueMin), 0.0F, 1.0F);
+        return MathHelper.clamp((this.snapToStepClamp(value, valueMin, valueMax, valueStep) - valueMin) / (valueMax - valueMin), 0.0F, 1.0F);
     }
 
     public float denormalizeValue(float value, float valueMin, float valueMax, float valueStep) {
-        return this.snapToStepClamp(valueMin + (valueMax - valueMin) * MathHelper.clamp_float(value, 0.0F, 1.0F), valueMin, valueMax, valueStep);
+        return this.snapToStepClamp(valueMin + (valueMax - valueMin) * MathHelper.clamp(value, 0.0F, 1.0F), valueMin, valueMax, valueStep);
     }
 
     private float snapToStepClamp(float value, float valueMin, float valueMax, float valueStep) {
         value = this.snapToStep(value, valueStep);
-        return MathHelper.clamp_float(value, valueMin, valueMax);
+        return MathHelper.clamp(value, valueMin, valueMax);
     }
 
     private float snapToStep(float value, float valueStep) {
@@ -264,20 +269,20 @@ public class Utils {
                         } catch (Exception ex) {
                             ex.printStackTrace();
                         } finally {
-                            sendMessage(EnumChatFormatting.GRAY.toString() + EnumChatFormatting.STRIKETHROUGH + "--------------" + EnumChatFormatting.GRAY + "[" + EnumChatFormatting.BLUE + EnumChatFormatting.BOLD + " SkyblockAddons " + EnumChatFormatting.GRAY + "]" + EnumChatFormatting.GRAY + EnumChatFormatting.STRIKETHROUGH + "--------------");
-                            ChatComponentText newVersion = new ChatComponentText(EnumChatFormatting.YELLOW+Message.MESSAGE_NEW_VERSION.getMessage(newestVersion)+"\n");
-                            newVersion.setChatStyle(newVersion.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, link)));
+                            sendMessage(ChatFormatting.GRAY.toString() + ChatFormatting.STRIKETHROUGH + "--------------" + ChatFormatting.GRAY + "[" + ChatFormatting.BLUE + ChatFormatting.BOLD + " SkyblockAddons " + ChatFormatting.GRAY + "]" + ChatFormatting.GRAY + ChatFormatting.STRIKETHROUGH + "--------------");
+                            TextComponentString newVersion = new TextComponentString(ChatFormatting.YELLOW + Message.MESSAGE_NEW_VERSION.getMessage(newestVersion) + "\n");
+                            newVersion.setStyle(newVersion.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, link)));
                             sendMessage(newVersion);
-                            ChatComponentText discord = new ChatComponentText(EnumChatFormatting.YELLOW+Message.MESSAGE_DISCORD.getMessage());
-                            discord.setChatStyle(discord.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://discord.gg/PqTAEek")));
+                            TextComponentString discord = new TextComponentString(ChatFormatting.YELLOW + Message.MESSAGE_DISCORD.getMessage());
+                            discord.setStyle(discord.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://discord.gg/PqTAEek")));
                             sendMessage(discord);
-                            sendMessage(EnumChatFormatting.GRAY.toString() + EnumChatFormatting.STRIKETHROUGH + "---------------------------------------");
+                            sendMessage(ChatFormatting.GRAY.toString() + ChatFormatting.STRIKETHROUGH + "---------------------------------------");
                         }
                         break;
                     } else if (thisVersionNumbers.get(i) > newestVersionNumbers.get(i)) {
-                        sendMessage(EnumChatFormatting.GRAY.toString() + EnumChatFormatting.STRIKETHROUGH + "--------------" + EnumChatFormatting.GRAY + "[" + EnumChatFormatting.BLUE + EnumChatFormatting.BOLD + " SkyblockAddons " + EnumChatFormatting.GRAY + "]" + EnumChatFormatting.GRAY + EnumChatFormatting.STRIKETHROUGH + "--------------");
-                        sendMessage(EnumChatFormatting.YELLOW + Message.MESSAGE_DEVELOPMENT_VERSION.getMessage(SkyblockAddons.VERSION, newestVersion));
-                        sendMessage(EnumChatFormatting.GRAY.toString() + EnumChatFormatting.STRIKETHROUGH + "---------------------------------------");
+                        sendMessage(ChatFormatting.GRAY.toString() + ChatFormatting.STRIKETHROUGH + "--------------" + ChatFormatting.GRAY + "[" + ChatFormatting.BLUE + ChatFormatting.BOLD + " SkyblockAddons " + ChatFormatting.GRAY + "]" + ChatFormatting.GRAY + ChatFormatting.STRIKETHROUGH + "--------------");
+                        sendMessage(ChatFormatting.YELLOW + Message.MESSAGE_DEVELOPMENT_VERSION.getMessage(SkyblockAddons.VERSION, newestVersion));
+                        sendMessage(ChatFormatting.GRAY.toString() + ChatFormatting.STRIKETHROUGH + "---------------------------------------");
                         break;
                     }
                 }
@@ -329,7 +334,7 @@ public class Utils {
 
     public void playSound(String sound, double pitch) {
         playingSound = true;
-        Minecraft.getMinecraft().thePlayer.playSound(sound, 1, (float) pitch);
+        Minecraft.getMinecraft().player.playSound(SoundEvent.REGISTRY.getObject(new ResourceLocation("minecraft", sound)), 1, (float) pitch);
         playingSound = false;
     }
 

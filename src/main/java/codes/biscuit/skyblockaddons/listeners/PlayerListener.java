@@ -2,6 +2,7 @@ package codes.biscuit.skyblockaddons.listeners;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.utils.*;
+import com.mojang.realmsclient.gui.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.gui.GuiScreen;
@@ -15,8 +16,8 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.ChatComponentText;
-import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.text.ChatType;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.Vec3;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.event.entity.EntityEvent;
@@ -72,7 +73,7 @@ public class PlayerListener {
      */
     @SubscribeEvent()
     public void onWorldJoin(EntityJoinWorldEvent e) {
-        if (e.entity == Minecraft.getMinecraft().thePlayer) {
+        if (e.getEntity() == Minecraft.getMinecraft().player) {
             lastWorldJoin = System.currentTimeMillis();
             lastBoss = -1;
             magmaTick = 1;
@@ -101,8 +102,8 @@ public class PlayerListener {
      */
     @SubscribeEvent(priority = EventPriority.HIGH)
     public void onChatReceive(ClientChatReceivedEvent e) {
-        String message = e.message.getUnformattedText();
-        if (e.type == 2) {
+        String message = e.getMessage().getUnformattedText();
+        if (e.getType() == ChatType.GAME_INFO) {
             if (message.endsWith("\u270E Mana\u00A7r")) {
                 try {
                     String returnMessage;
@@ -165,7 +166,8 @@ public class PlayerListener {
                     if (main.isUsingOofModv1() && returnMessage.trim().length() == 0) {
                         e.setCanceled(true);
                     }
-                    e.message = new ChatComponentText(returnMessage);
+                    String str;
+                    e.setMessage(new TextComponentString(returnMessage));
                     return;
                 } catch (Exception ex) {
                     main.getRenderListener().setPredictMana(true);
@@ -208,10 +210,10 @@ public class PlayerListener {
     @SubscribeEvent()
     public void onInteract(PlayerInteractEvent e) {
         Minecraft mc = Minecraft.getMinecraft();
-        ItemStack heldItem = e.entityPlayer.getHeldItem();
-        if (e.entityPlayer == mc.thePlayer && heldItem != null && heldItem.isItemEnchanted()) {
+        ItemStack heldItem = e.getEntityPlayer().getHeldItemMainhand();
+        if (e.getEntityPlayer() == mc.player && heldItem != null && heldItem.isItemEnchanted()) {
             if (main.getConfigValues().isEnabled(Feature.DISABLE_EMBER_ROD)) {
-                if (heldItem.getItem().equals(Items.blaze_rod) && main.getUtils().getLocation() == EnumUtils.Location.ISLAND) {
+                if (heldItem.getItem().equals(Items.BLAZE_ROD) && main.getUtils().getLocation() == EnumUtils.Location.ISLAND) {
                     e.setCanceled(true);
                     return;
                 }
@@ -239,7 +241,7 @@ public class PlayerListener {
                     healthUpdate = null;
                 }
                 if (main.getRenderListener().isPredictHealth()) {
-                    EntityPlayerSP p = mc.thePlayer;
+                    EntityPlayerSP p = mc.player;
                     if (p != null) { //Reverse calculate the player's health by using the player's vanilla hearts. Also calculate the health change for the gui item.
                         int newHealth = Math.round(getAttribute(Attribute.MAX_HEALTH) * (p.getHealth() / p.getMaxHealth()));
                         if(newHealth != getAttribute(Attribute.HEALTH)) {
@@ -256,7 +258,7 @@ public class PlayerListener {
                             setAttribute(Attribute.MANA, getAttribute(Attribute.MAX_MANA));
                     }
                 } else if (timerTick % 5 == 0) { // Check inventory, location, updates, and skeleton helmet every 1/4 second.
-                    EntityPlayerSP p = mc.thePlayer;
+                    EntityPlayerSP p = mc.player;
                     if (p != null) {
                         main.getUtils().checkGameLocationDate();
                         main.getInventoryUtils().checkIfInventoryIsFull(mc, p);
@@ -287,7 +289,7 @@ public class PlayerListener {
      */
     @SubscribeEvent
     public void onEntityEvent(LivingEvent.LivingUpdateEvent e) {
-        Entity entity = e.entity;
+        Entity entity = e.getEntity();
         if (main.getUtils().isOnSkyblock() && entity instanceof EntityArmorStand && entity.hasCustomName()) {
             if (main.getUtils().getLocation() == EnumUtils.Location.ISLAND) {
                 int cooldown = main.getConfigValues().getWarningSeconds() * 1000 + 5000;
@@ -359,11 +361,11 @@ public class PlayerListener {
         if (e.phase == TickEvent.Phase.START) {
             Minecraft mc = Minecraft.getMinecraft();
             if (main.getConfigValues().isEnabled(Feature.MAGMA_WARNING) && main.getUtils().isOnSkyblock()) {
-                if (mc != null && mc.theWorld != null) {
+                if (mc != null && mc.world != null) {
                     if (magmaTick % 5 == 0) {
                         boolean foundBoss = false;
                         long currentTime = System.currentTimeMillis();
-                        for (Entity entity : mc.theWorld.loadedEntityList) { // Loop through all the entities.
+                        for (Entity entity : mc.world.loadedEntityList) { // Loop through all the entities.
                             if (entity instanceof EntityMagmaCube) {
                                 EntitySlime magma = (EntitySlime) entity;
                                 if (magma.getSlimeSize() > 10) { // Find a big magma boss
@@ -464,7 +466,7 @@ public class PlayerListener {
      */
     @SubscribeEvent()
     public void onItemTooltip(ItemTooltipEvent e) {
-        ItemStack hoveredItem = e.itemStack;
+        ItemStack hoveredItem = e.getItemStack();
 
         if (main.getConfigValues().isEnabled(Feature.SHOW_ITEM_ANVIL_USES)) {
             // Anvil Uses ~ original done by Dahn#6036
@@ -491,14 +493,13 @@ public class PlayerListener {
                 }
             }
         }
-
         if (hoveredItem.hasTagCompound() && GuiScreen.isCtrlKeyDown() && main.getUtils().isCopyNBT()) {
             Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
             String nbt = hoveredItem.getTagCompound().toString();
             try {
                 if (!clipboard.getData(DataFlavor.stringFlavor).equals(nbt)) {
                     clipboard.setContents(new StringSelection(nbt), null);
-                    main.getUtils().sendMessage(EnumChatFormatting.GREEN + "Copied this item's NBT to clipboard!");
+                    main.getUtils().sendMessage(ChatFormatting.GREEN + "Copied this item's NBT to clipboard!");
                 }
             } catch (UnsupportedFlavorException | IOException ex) {
                 try {
