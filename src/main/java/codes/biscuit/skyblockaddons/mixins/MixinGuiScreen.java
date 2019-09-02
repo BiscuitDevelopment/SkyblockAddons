@@ -89,10 +89,7 @@ public abstract class MixinGuiScreen {
                                 // Convert item id and potions from 1.8 to 1.12 format
                                 item.removeTag("id");
                                 item.setString("id", Item.getItemById(itemID).getRegistryName().toString());
-                                System.out.println(item);
                                 ItemStack itemStack = new ItemStack(item);
-                                System.out.println(itemStack.getItem().getClass());
-                                System.out.println(itemStack.getMetadata());
                                 items[i] = itemStack;
                             }
                             main.getUtils().setBackpackToRender(new BackpackInfo(x, y, items, backpack));
