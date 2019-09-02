@@ -9,7 +9,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.item.EntityItemFrame;
 import net.minecraft.entity.monster.EntityZombie;
-import net.minecraft.entity.monster.EntityEnderman;
+import net.minecraft.entity.boss.EntityDragon;
 import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.util.Vec3;
 import org.spongepowered.asm.mixin.Mixin;
@@ -49,7 +49,7 @@ public class MixinEntityRenderer {
             if (!SkyblockAddons.getInstance().getConfigValues().isDisabled(Feature.DISABLE_PROFILE_VIEW_IF_DRAGON_ALIVE)) {
                 Minecraft mc = Minecraft.getMinecraft();
                 for (Entity elist : mc.theWorld.loadedEntityList) {
-                    if (elist instanceof EntityEnderman) {
+                    if (elist instanceof EntityDragon) {
                         double coreX = -670;
                         double coreY = 9;
                         double coreZ = -275;
