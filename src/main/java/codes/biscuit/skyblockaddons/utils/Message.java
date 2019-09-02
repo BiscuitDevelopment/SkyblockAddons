@@ -70,6 +70,7 @@ public enum Message {
     SETTING_SHOW_DARK_AUCTION_TIMER_IN_OTHER_GAMES(MessageObject.SETTING, "showDarkAuctionTimerInOtherGames"),
     SETTING_SHOW_ITEM_ANVIL_USES(MessageObject.SETTING, "showItemAnvilUses"),
     SETTING_PREVENT_MOVEMENT_ON_DEATH(MessageObject.SETTING, "preventMovementOnDeath"),
+    SETTING_DISABLE_PROFILE_VIEW_IF_DRAGON_ALIVE(MessageObject.SETTING, "disableProfileViewIfDragonAlive"),
 
     BACKPACK_STYLE_GUI(MessageObject.STYLE, "inventory"),
     BACKPACK_STYLE_COMPACT(MessageObject.STYLE, "compact"),

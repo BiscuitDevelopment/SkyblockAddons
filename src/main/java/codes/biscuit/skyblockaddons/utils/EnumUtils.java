@@ -1,6 +1,8 @@
 package codes.biscuit.skyblockaddons.utils;
 
 import static codes.biscuit.skyblockaddons.utils.Message.*;
+import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.utils.Message;
 
 public class EnumUtils {
 

@@ -1,5 +1,6 @@
 package codes.biscuit.skyblockaddons.mixins;
 
+import net.minecraft.client.Minecraft;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.utils.Feature;
 import net.minecraft.client.gui.GuiScreen;
@@ -8,6 +9,8 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.item.EntityItemFrame;
 import net.minecraft.entity.monster.EntityZombie;
+import net.minecraft.entity.monster.EntityEnderman;
+import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.util.Vec3;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -42,6 +45,18 @@ public class MixinEntityRenderer {
                 double auctionY = 71;
                 double auctionZ = -78.5;
                 list.removeIf(listEntity -> listEntity.getDistance(auctionX, auctionY, auctionZ) <= 3 && (listEntity.posX != auctionX || listEntity.posY != auctionY || listEntity.posZ != auctionZ));
+            }
+            if (!SkyblockAddons.getInstance().getConfigValues().isDisabled(Feature.DISABLE_PROFILE_VIEW_IF_DRAGON_ALIVE)) {
+                Minecraft mc = Minecraft.getMinecraft();
+                for (Entity elist : mc.theWorld.loadedEntityList) {
+                    if (elist instanceof EntityEnderman) {
+                        double coreX = -670;
+                        double coreY = 9;
+                        double coreZ = -275;
+
+                        list.removeIf(listEntity -> listEntity.getDistance(coreX, coreY, coreZ) <= 70 && listEntity instanceof EntityOtherPlayerMP);
+                    }
+                }
             }
         }
     }

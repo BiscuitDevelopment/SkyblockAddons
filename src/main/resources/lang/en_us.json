@@ -64,6 +64,7 @@
     "stopBowChargeFromResetting": "Stop Bow Charge From Resetting",
     "showMagmaTimerInOtherGames": "Show Magma Timer In Other Games",
     "preventMovementOnDeath": "Prevent Walking After Death",
+    "disableProfileViewIfDragonAlive": "Disable Profile View if Dragon alive",
     "showDarkAuctionTimerInOtherGames": "Show Dark Auc Timer In Other Games",
     "showItemAnvilUses": "Show Item Anvil Uses"
   },
