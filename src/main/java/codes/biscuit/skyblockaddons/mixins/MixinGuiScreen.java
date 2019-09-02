@@ -11,6 +11,7 @@ import net.minecraft.init.Items;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ContainerChest;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompressedStreamTools;
 import net.minecraft.nbt.NBTTagCompound;
@@ -85,8 +86,13 @@ public abstract class MixinGuiScreen {
                                         }
                                     }
                                 }
-
+                                // Convert item id and potions from 1.8 to 1.12 format
+                                item.removeTag("id");
+                                item.setString("id", Item.getItemById(itemID).getRegistryName().toString());
+                                System.out.println(item);
                                 ItemStack itemStack = new ItemStack(item);
+                                System.out.println(itemStack.getItem().getClass());
+                                System.out.println(itemStack.getMetadata());
                                 items[i] = itemStack;
                             }
                             main.getUtils().setBackpackToRender(new BackpackInfo(x, y, items, backpack));
