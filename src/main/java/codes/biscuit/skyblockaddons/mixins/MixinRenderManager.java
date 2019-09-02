@@ -26,7 +26,7 @@ public class MixinRenderManager {
         double auctionZ = -78.5;
         SkyblockAddons main = SkyblockAddons.getInstance();
         if (entityIn instanceof EntityItem &&
-                    entityIn.ridingEntity instanceof EntityZombie && entityIn.ridingEntity.isInvisible()) { // Conditions for Skeleton Hat flying bones
+                entityIn.getRidingEntity() instanceof EntityZombie && entityIn.getRidingEntity().isInvisible()) { // Conditions for Skeleton Hat flying bones
             if (main.getConfigValues().isEnabled(Feature.HIDE_BONES)) {
                 cir.setReturnValue(false);
             }

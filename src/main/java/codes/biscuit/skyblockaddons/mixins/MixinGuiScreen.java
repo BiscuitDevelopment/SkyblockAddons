@@ -6,6 +6,7 @@ import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.Feature;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ContainerChest;
@@ -90,7 +91,7 @@ public abstract class MixinGuiScreen {
                             }
                             main.getUtils().setBackpackToRender(new BackpackInfo(x, y, items, backpack));
                             main.getPlayerListener().onItemTooltip(new ItemTooltipEvent(stack,
-                                    null, null, false));
+                                    null, null, ITooltipFlag.TooltipFlags.NORMAL));
                             ci.cancel();
                         } catch (IOException e) {
                             e.printStackTrace();

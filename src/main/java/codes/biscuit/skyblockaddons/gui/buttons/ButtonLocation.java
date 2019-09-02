@@ -6,7 +6,7 @@ import codes.biscuit.skyblockaddons.utils.Feature;
 import codes.biscuit.skyblockaddons.utils.ItemDiff;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.text.TextFormatting;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,9 +47,9 @@ public class ButtonLocation extends ButtonFeature {
             main.getRenderListener().drawText(feature, scale, mc, this);
         } else if (feature == Feature.ITEM_PICKUP_LOG) {
             List<ItemDiff> collectionLog = new ArrayList<>();
-            collectionLog.add(new ItemDiff(EnumChatFormatting.DARK_PURPLE+"Forceful Ember Chestplate", 1));
+            collectionLog.add(new ItemDiff(TextFormatting.DARK_PURPLE + "Forceful Ember Chestplate", 1));
             collectionLog.add(new ItemDiff("Boat", -1));
-            collectionLog.add(new ItemDiff(EnumChatFormatting.BLUE+"Aspect of the End", 1));
+            collectionLog.add(new ItemDiff(TextFormatting.BLUE + "Aspect of the End", 1));
             main.getRenderListener().drawItemPickupLog(mc, scale, collectionLog, this);
         } else if (feature == Feature.DEFENCE_ICON) {
             scale *= 1.5;

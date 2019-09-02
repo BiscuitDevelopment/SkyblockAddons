@@ -204,10 +204,47 @@ public class PlayerListener {
         main.getUtils().getAttributes().get(attribute).setValue(value);
     }
 
+    @SubscribeEvent
+    public void onInteract1(PlayerInteractEvent.RightClickItem e) {
+        Minecraft mc = Minecraft.getMinecraft();
+        ItemStack heldItem = e.getEntityPlayer().getHeldItemMainhand();
+        if (e.getEntityPlayer() == mc.player && heldItem != ItemStack.EMPTY && heldItem.isItemEnchanted()) {
+            if (main.getConfigValues().isEnabled(Feature.DISABLE_EMBER_ROD)) {
+                if (heldItem.getItem().equals(Items.BLAZE_ROD) && main.getUtils().getLocation() == EnumUtils.Location.ISLAND) {
+                    e.setCanceled(true);
+                    return;
+                }
+            }
+            if (main.getConfigValues().isEnabled(Feature.AVOID_PLACING_ENCHANTED_ITEMS)) {
+                if ((heldItem.getItem().equals(Items.LAVA_BUCKET) || heldItem.getItem().equals(Items.STRING))) {
+                    e.setCanceled(true);
+                }
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public void onInteract2(PlayerInteractEvent.RightClickBlock e) {
+        Minecraft mc = Minecraft.getMinecraft();
+        ItemStack heldItem = e.getEntityPlayer().getHeldItemMainhand();
+        if (e.getEntityPlayer() == mc.player && heldItem != ItemStack.EMPTY && heldItem.isItemEnchanted()) {
+            if (main.getConfigValues().isEnabled(Feature.DISABLE_EMBER_ROD)) {
+                if (heldItem.getItem().equals(Items.BLAZE_ROD) && main.getUtils().getLocation() == EnumUtils.Location.ISLAND) {
+                    e.setCanceled(true);
+                    return;
+                }
+            }
+            if (main.getConfigValues().isEnabled(Feature.AVOID_PLACING_ENCHANTED_ITEMS)) {
+                if ((heldItem.getItem().equals(Items.LAVA_BUCKET) || heldItem.getItem().equals(Items.STRING))) {
+                    e.setCanceled(true);
+                }
+            }
+        }
+    }
     /**
      * This blocks interaction with Ember Rods on your island, to avoid blowing up chests, and placing enchanted items
      * such as enchanted lava buckets.
-     */
+
     @SubscribeEvent()
     public void onInteract(PlayerInteractEvent e) {
         Minecraft mc = Minecraft.getMinecraft();
@@ -226,7 +263,7 @@ public class PlayerListener {
                 }
             }
         }
-    }
+    }*/
 
     /**
      * The main timer for a bunch of stuff.

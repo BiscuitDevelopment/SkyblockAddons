@@ -30,9 +30,8 @@ public class ButtonSolid extends ButtonText {
         this.width = width;
         this.height = height;
     }
-
     @Override
-    public void drawButton(Minecraft mc, int mouseX, int mouseY) {
+    public void drawButton(Minecraft mc, int mouseX, int mouseY, float unused) {
 //        if (feature == Feature.ANCHOR_POINT) {
 //            if (ButtonLocation.getLastHoveredFeature() == null) {
 //                return;

@@ -155,9 +155,9 @@ public class SkyblockAddonsGui extends GuiScreen {
         ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
 //        drawCenteredString(fontRendererObj, "Set Magma Boss Timer - HH:MM:SS",
 //                sr.getScaledWidth()-91, 25, defaultBlue);
-        drawCenteredString(fontRendererObj, "Credits to InventiveTalent",
+        drawCenteredString(fontRenderer, "Credits to InventiveTalent",
                 sr.getScaledWidth()-91, 35, defaultBlue);
-        drawCenteredString(fontRendererObj, "for the Magma Boss API",
+        drawCenteredString(fontRenderer, "for the Magma Boss API",
                 sr.getScaledWidth()-91, 45, defaultBlue);
         if (magmaTextField != null) {
             if ((main.getPlayerListener().getMagmaAccuracy() == EnumUtils.MagmaTimerAccuracy.EXACTLY ||

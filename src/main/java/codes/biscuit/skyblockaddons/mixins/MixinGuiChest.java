@@ -135,7 +135,7 @@ public abstract class MixinGuiChest extends GuiContainer {
     protected void handleMouseClick(Slot slotIn, int slotId, int mouseButton, ClickType type) {
         SkyblockAddons main = SkyblockAddons.getInstance();
         if (main.getUtils().getEnchantmentMatch().size() > 0) {
-            if (slotIn != null && !slotIn.inventory.equals(mc.thePlayer.inventory) && slotIn.getHasStack()) {
+            if (slotIn != null && !slotIn.inventory.equals(mc.player.inventory) && slotIn.getHasStack()) {
                 Container slots = inventorySlots;
                 if (slotIn.getSlotIndex() == 13 && inventoryType == EnumUtils.InventoryType.ENCHANTMENT_TABLE) {
                     ItemStack[] enchantBottles = {slots.getSlot(29).getStack(), slots.getSlot(31).getStack(), slots.getSlot(33).getStack()};
