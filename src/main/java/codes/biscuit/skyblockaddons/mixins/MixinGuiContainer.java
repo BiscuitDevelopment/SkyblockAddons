@@ -8,7 +8,6 @@ import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.inventory.Slot;
@@ -40,7 +39,7 @@ public class MixinGuiContainer extends GuiScreen {
     private void shouldRenderSaveSlots(Slot slotIn, CallbackInfo ci, int x, int y, ItemStack item, boolean flag, boolean flag1,
                                       ItemStack itemstack1, String s) {
         SkyblockAddons main = SkyblockAddons.getInstance();
-        if (!main.getConfigValues().getDisabledFeatures().contains(Feature.SHOW_ENCHANTMENTS_REFORGES)) {
+        if (main.getConfigValues().isEnabled(Feature.SHOW_ENCHANTMENTS_REFORGES)) {
             Minecraft mc = Minecraft.getMinecraft();
             FontRenderer fr = mc.fontRendererObj;
             if (item != null && item.hasDisplayName()) {
@@ -120,20 +119,22 @@ public class MixinGuiContainer extends GuiScreen {
             ItemStack[] items = backpackInfo.getItems();
             EnumUtils.Backpack backpack = backpackInfo.getBackpack();
             int length = items.length;
-            RenderHelper.enableGUIStandardItemLighting();
-            GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-            GlStateManager.enableRescaleNormal();
-            OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, (float)240 / 1.0F, (float)240 / 1.0F);
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
             if (SkyblockAddons.getInstance().getConfigValues().getBackpackStyle() == EnumUtils.BackpackStyle.GUI) {
                 this.mc.getTextureManager().bindTexture(CHEST_GUI_TEXTURE);
                 int rows = length/9;
+                GlStateManager.disableLighting();
                 GlStateManager.pushMatrix();
                 GlStateManager.translate(0,0,300);
                 drawTexturedModalRect(x, y, 0, 0, 176, rows * 18 + 17);
                 drawTexturedModalRect(x, y + rows * 18 + 17, 0, 215, 176, 7);
                 fontRendererObj.drawString(backpack.getItemName(), x+8, y+6, 4210752);
                 GlStateManager.popMatrix();
+                GlStateManager.enableLighting();
+
+                RenderHelper.enableGUIStandardItemLighting();
+                GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+                GlStateManager.enableRescaleNormal();
                 for (int i = 0; i < length; i++) {
                     ItemStack item = items[i];
                     if (item != null) {
@@ -149,10 +150,16 @@ public class MixinGuiContainer extends GuiScreen {
                     }
                 }
             } else {
+                GlStateManager.disableLighting();
                 GlStateManager.pushMatrix();
                 GlStateManager.translate(0,0, 300);
                 Gui.drawRect(x, y, x + (16 * 9) + 3, y + (16 * (length / 9)) + 3, ConfigColor.DARK_GRAY.getColor(250));
                 GlStateManager.popMatrix();
+                GlStateManager.enableLighting();
+
+                RenderHelper.enableGUIStandardItemLighting();
+                GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+                GlStateManager.enableRescaleNormal();
                 for (int i = 0; i < length; i++) {
                     ItemStack item = items[i];
                     if (item != null) {
@@ -169,6 +176,9 @@ public class MixinGuiContainer extends GuiScreen {
                 }
             }
             SkyblockAddons.getInstance().getUtils().setBackpackToRender(null);
+            GlStateManager.enableLighting();
+            GlStateManager.enableDepth();
+            RenderHelper.enableStandardItemLighting();
         }
     }
 }

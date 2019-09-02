@@ -40,34 +40,36 @@
     "ignoreItemFrameClicks": "Ignorar Clicks em Molduras",
     "useVanillaTextureDefence": "Usar a textura do Vanilla para o ícone da defesa",
     "showBackpackHoldingShift": "Só mostrar a Backpack quando estiver a segurar o Shift",
-    "manaBar": "Mana Bar",
-    "manaText": "Mana Number",
-    "healthBar": "Health Bar",
-    "healthText": "Health Number",
-    "defenceIcon": "Defence Symbol",
-    "defenceText": "Defence Number",
-    "defencePercentage": "Defence Percentage",
-    "healthUpdates": "Health Change Number",
-    "anchorPoint": "Anchor Point: %setting%: %anchor%",
-    "anchorPoints": {
-      "topLeft": "Top Left",
-      "topRight": "Top Right",
-      "bottomLeft": "Bottom Left",
-      "bottomRight": "Bottom Right",
-      "healthBar": "Health Bar"
-    },
-    "hidePlayersInLobby": "Hide Nearby Entities In Lobby",
-    "textStyle": "Text Style: %style%",
+    "manaBar": "Barra de Mana",
+    "manaText": "Número da Mana",
+    "healthBar": "Barra de Vida",
+    "healthText": "Número da Vida",
+    "defenceIcon": "Símbolo da Defesa",
+    "defenceText": "Número da Defesa",
+    "defencePercentage": "Percentagem da Defesa",
+    "healthUpdates": "Número da Mudança da Vida",
+    "hidePlayersInLobby": "Esconder jogadores longe no Lobby",
+    "textStyle": "Estilo do texto: %style%",
     "textStyles": {
-      "regular": "Regular",
-      "blackShadow": "Black Shadow"
+      "regular": "Normal",
+      "blackShadow": "Sombra Preta"
     },
-    "darkAuctionTimer": "Dark Auction Timer",
-    "magmaBossTimer": "Magma Boss Timer"
+    "darkAuctionTimer": "Temporizador da Dark Auction",
+    "magmaBossTimer": "Temporizador do Magma Boss",
+    "itemPickupLog": "Registo de recolha de itens",
+    "avoidPlacingEnchantedItems": "Evitar colocar itens encantados",
+    "avoidBreakingStems": "Evitar partir as sementes",
+    "magmaBossTimerColor": "Cor do Temporizador do Magma Boss",
+    "darkAuctionTimerColor": "Cor do Temporizador da Dark Auction",
+    "stopBowChargeFromResetting": "Stop Bow Charge From Resetting",
+    "showMagmaTimerInOtherGames": "Mostrar o Temporizador do Magma Boss em outros jogos",
+    "preventMovementOnDeath": "Não andar depois da morte",
+    "showDarkAuctionTimerInOtherGames": "Show Dark Auc Timer In Other Games",
+    "showItemAnvilUses": "Show Item Anvil Uses"
   },
   "messages": {
     "dropConfirmation": "Dropa este item outra vez para confirmar!",
-    "magmaBossWarning": "MagmaCube Boss!",
+    "magmaBossWarning": "Magma Cube Boss!",
     "fullInventory": "Inventário Cheio!",
     "newVersion": "Uma nova versão, %newestVersion% está disponível. Faz download dela ao carregar aqui.",
     "discord": "Queres saber o que mudou? Carrega aqui para entrares no meu Discord.",
@@ -82,6 +84,7 @@
     "inventoryTypes": {
       "enchants": "Encantamentos",
       "reforges": "Reforges"
-    }
+    },
+    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this stem. Use your bare hand if you'd like to break it."
   }
 }

@@ -55,7 +55,7 @@ public class ButtonToggle extends ButtonFeature {
             // Alpha multiplier is from 0 to 1, multiplying it creates the fade effect.
             boxAlpha *= alphaMultiplier;
             // Regular features are red if disabled, green if enabled or part of the gui feature is enabled.
-            if (main.getConfigValues().getDisabledFeatures().contains(feature)) {
+            if (main.getConfigValues().isDisabled(feature)) {
                 boxColor = ConfigColor.RED.getColor(boxAlpha);
             } else {
                 boxColor = ConfigColor.GREEN.getColor(boxAlpha);

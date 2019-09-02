@@ -4,6 +4,7 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumChatFormatting;
 
 import java.util.*;
 
@@ -83,6 +84,10 @@ public class InventoryUtils {
                             continue;
                         }
                     }
+                    if (newItem.getDisplayName().contains(" "+ EnumChatFormatting.DARK_GRAY+"x")) {
+                        String newName = newItem.getDisplayName().substring(0, newItem.getDisplayName().lastIndexOf(" "));
+                        newItem.setStackDisplayName(newName); // This is a workaround for merchants, it adds x64 or whatever to the end of the name.
+                    }
                     int amount = newInventoryMap.getOrDefault(newItem.getDisplayName(), 0) + newItem.stackSize;
                     newInventoryMap.put(newItem.getDisplayName(), amount);
                 }
@@ -125,7 +130,7 @@ public class InventoryUtils {
     /**
      * Removes items in the pickup log that have been there for longer than {@link ItemDiff#LIFESPAN}
      */
-    public void updateItemPickupLog() {
+    public void cleanUpPickupLog() {
         List<String> logItemsToRemove = new LinkedList<>();
         itemPickupLog.forEach((displayName, itemDiff) -> {
             if (itemDiff.getLifetime() > ItemDiff.LIFESPAN) {
@@ -142,7 +147,7 @@ public class InventoryUtils {
      * @param p Player to check
      */
     public void checkIfInventoryIsFull(Minecraft mc, EntityPlayerSP p) {
-        if (main.getUtils().isOnSkyblock() && !main.getConfigValues().getDisabledFeatures().contains(Feature.FULL_INVENTORY_WARNING)) {
+        if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.FULL_INVENTORY_WARNING)) {
             for (ItemStack item : p.inventory.mainInventory) {
                 if (item == null) {
                     inventoryIsFull = false;
@@ -151,7 +156,7 @@ public class InventoryUtils {
             }
             if (!inventoryIsFull) {
                 inventoryIsFull = true;
-                if (mc.currentScreen == null && System.currentTimeMillis() - main.getPlayerListener().getLastWorldJoin() > 3000) {
+                if (mc.currentScreen == null && main.getPlayerListener().didntRecentlyJoinWorld()) {
                     main.getUtils().playSound("random.orb", 0.5);
                     main.getRenderListener().setTitleFeature(Feature.FULL_INVENTORY_WARNING);
                     new Timer().schedule(new TimerTask() {

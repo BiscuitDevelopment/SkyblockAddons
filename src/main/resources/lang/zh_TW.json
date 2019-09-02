@@ -19,7 +19,7 @@
     "guiScale": "Gui 大小: %scale%",
     "resetLocations": "重置Gui位置",
     "hideDurability": "隱藏物品耐久度",
-    "showEnchantmentsReforges": "附魔 & 重鑄",
+    "showEnchantmentsReforges": "於畫面上顯示附魔 & 重鑄",
     "minionStopWarning": "\"機器人無法觸及生物\"警告",
     "hideAuctionHousePlayers": "隱藏競標房內玩家",
     "backpackStyle": "背包樣式: %style%",
@@ -40,30 +40,32 @@
     "ignoreItemFrameClicks": "無視對展示框的點擊",
     "useVanillaTextureDefence": "使用原版防禦圖標",
     "showBackpackHoldingShift": "只在按住Shift時顯示背包預覽",
-    "manaBar": "Mana Bar",
-    "manaText": "Mana Number",
-    "healthBar": "Health Bar",
-    "healthText": "Health Number",
-    "defenceIcon": "Defence Symbol",
-    "defenceText": "Defence Number",
-    "defencePercentage": "Defence Percentage",
-    "healthUpdates": "Health Change Number",
-    "anchorPoint": "Anchor Point: %setting%: %anchor%",
-    "anchorPoints": {
-      "topLeft": "Top Left",
-      "topRight": "Top Right",
-      "bottomLeft": "Bottom Left",
-      "bottomRight": "Bottom Right",
-      "healthBar": "Health Bar"
-    },
-    "hidePlayersInLobby": "Hide Nearby Entities In Lobby",
-    "textStyle": "Text Style: %style%",
+    "manaBar": "魔力計量條",
+    "manaText": "魔力文字",
+    "healthBar": "血量計量條",
+    "healthText": "血量文字",
+    "defenceIcon": "防禦力圖標",
+    "defenceText": "防禦力文字",
+    "defencePercentage": "防禦力百分比",
+    "healthUpdates": "血量起伏",
+    "hidePlayersInLobby": "在大廳隱藏較近的實體",
+    "textStyle": "文字樣式: %style%",
     "textStyles": {
-      "regular": "Regular",
-      "blackShadow": "Black Shadow"
+      "regular": "一般",
+      "blackShadow": "黑框"
     },
-    "darkAuctionTimer": "Dark Auction Timer",
-    "magmaBossTimer": "Magma Boss Timer"
+    "darkAuctionTimer": "黑暗拍賣會計時器",
+    "magmaBossTimer": "熔岩史萊姆王計時器",
+    "itemPickupLog": "物品進出背包通知",
+    "avoidPlacingEnchantedItems": "防止放置附魔物品",
+    "avoidBreakingStems": "防止破壞西瓜, 南瓜梗",
+    "magmaBossTimerColor": "熔岩史萊姆王計時器顏色",
+    "darkAuctionTimerColor": "黑暗拍賣會計時器顏色",
+    "stopBowChargeFromResetting": "弓箭在命中生物後不需要重新裝填",
+    "showMagmaTimerInOtherGames": "在其他遊戲顯示熔岩史萊姆王計時器",
+    "preventMovementOnDeath": "防止死亡後進行移動",
+    "showDarkAuctionTimerInOtherGames": "於其他遊戲中顯示黑暗拍賣會時間",
+    "showItemAnvilUses": "顯示物品已使用幾次鐵砧"
   },
   "messages": {
     "dropConfirmation": "再次丟棄此物品以確認!",
@@ -82,6 +84,7 @@
     "inventoryTypes": {
       "enchants": "附魔",
       "reforges": "重鑄"
-    }
+    },
+    "cancelledStemBreak": "SkyblockAddons阻止了你破壞這個梗, 如想破壞, 請使用空手"
   }
 }

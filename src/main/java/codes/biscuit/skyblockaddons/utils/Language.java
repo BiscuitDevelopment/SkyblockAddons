@@ -8,6 +8,7 @@ public enum Language {
     CZECH("cs_cz"),
     DUTCH_NETHERLANDS("nl_nl"),
     ENGLISH("en_us"),
+    FILIPINO("fil_ph"),
     FINNISH("fi_fi"),
     FRENCH("fr_fr"),
     GERMAN_GERMANY("de_de"),
@@ -23,6 +24,7 @@ public enum Language {
     SPANISH_MEXICO("es_mx"),
     SPANISH_SPAIN("es_es"),
     SWEDISH("sv_se"),
+    THAI("th_th"),
     VIETNAMESE("vi_vn");
 
     private String path;

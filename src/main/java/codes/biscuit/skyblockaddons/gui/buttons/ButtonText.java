@@ -15,10 +15,9 @@ class ButtonText extends ButtonFeature {
 
     void drawButtonBoxAndText(Minecraft mc, int boxColor, float scale, int fontColor) {
         drawRect(xPosition, yPosition, xPosition+this.width, yPosition+this.height, boxColor);
-        float scaleMultiplier = 1/scale;
         GlStateManager.pushMatrix();
         GlStateManager.scale(scale, scale, 1);
-        this.drawCenteredString(mc.fontRendererObj, displayString, (int)((xPosition+width/2)*scaleMultiplier), (int)((yPosition+(this.height-(8/scaleMultiplier))/2)*scaleMultiplier), fontColor);
+        this.drawCenteredString(mc.fontRendererObj, displayString, (int)((xPosition+width/2)/scale), (int)((yPosition+(this.height-(8*scale))/2)/scale), fontColor);
         GlStateManager.disableBlend();
         GlStateManager.popMatrix();
     }

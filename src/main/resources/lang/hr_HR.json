@@ -24,7 +24,7 @@
     "hideAuctionHousePlayers": "Sakrij Igraèe Blizu Dražbavaonice",
     "backpackStyle": "Stil Ruksaka: %style%",
     "backpackStyles": {
-      "inventory": "Inventor",
+      "inventory": "Inventar",
       "compact": "Kompakt"
     },
     "showBackpackPreview": "Pokaži Pregled Ruksaka",
@@ -40,34 +40,36 @@
     "ignoreItemFrameClicks": "Ignoriraj Klikove na Item Okrivirima",
     "useVanillaTextureDefence": "Koristi Vanilla Teksturu za Ikonu Obrane",
     "showBackpackHoldingShift": "Samo Pokaži Ruksak Kada Držiš Shift",
-    "manaBar": "Mana Bar",
-    "manaText": "Mana Number",
-    "healthBar": "Health Bar",
-    "healthText": "Health Number",
-    "defenceIcon": "Defence Symbol",
-    "defenceText": "Defence Number",
-    "defencePercentage": "Defence Percentage",
-    "healthUpdates": "Health Change Number",
-    "anchorPoint": "Anchor Point: %setting%: %anchor%",
-    "anchorPoints": {
-      "topLeft": "Top Left",
-      "topRight": "Top Right",
-      "bottomLeft": "Bottom Left",
-      "bottomRight": "Bottom Right",
-      "healthBar": "Health Bar"
-    },
-    "hidePlayersInLobby": "Hide Nearby Entities In Lobby",
-    "textStyle": "Text Style: %style%",
+    "manaBar": "Bar Mane",
+    "manaText": "Broj Mane",
+    "healthBar": "Bar Zdravlja",
+    "healthText": "Broj Zdravlja",
+    "defenceIcon": "Simbol Obrane",
+    "defenceText": "Broj Obrane",
+    "defencePercentage": "Postotak Obrane",
+    "healthUpdates": "Broj Promjene Zdravlja",
+    "hidePlayersInLobby": "Sakrij Daleke Entitete",
+    "textStyle": "Stil Teksta: %style%",
     "textStyles": {
-      "regular": "Regular",
-      "blackShadow": "Black Shadow"
+      "regular": "Regularno",
+      "blackShadow": "Crna Sijena"
     },
-    "darkAuctionTimer": "Dark Auction Timer",
-    "magmaBossTimer": "Magma Boss Timer"
+    "darkAuctionTimer": "Tajmer Crne Dražbe",
+    "magmaBossTimer": "Tajmer Magma Bossa",
+    "itemPickupLog": "Zapis Bacanja Stvari",
+    "avoidPlacingEnchantedItems": "Avoid Placing Enchanted Items",
+    "avoidBreakingStems": "Zaustavi Prijelom Biljaka",
+    "magmaBossTimerColor": "Boja Magma Boss Tajmera",
+    "darkAuctionTimerColor": "Boja Tajmera Crne Dražbe",
+    "stopBowChargeFromResetting": "Zaustavi Punjenje Luka od Resetiranja",
+    "showMagmaTimerInOtherGames": "Pokaži tajmer Magma Boss-a u ostalim igricama",
+    "preventMovementOnDeath": "Sprije?i Hodanje Nakon Smrti",
+    "showDarkAuctionTimerInOtherGames": "Pokaži tajmer Crne Dražbe u ostalim igricama",
+    "showItemAnvilUses": "Pokaži Broj Koristi Stvari u Anvil-u"
   },
   "messages": {
     "dropConfirmation": "Opet baci ovu stvar za konfirmaciju!",
-    "magmaBossWarning": "MagmaCube Boss!",
+    "magmaBossWarning": "Magma Cube Boss!",
     "fullInventory": "Pun Inventar!",
     "newVersion": "Nova Verzija, %newestVersion% je dostupna. Preuzmi je tako što klikneš ovdje.",
     "discord": "Želiš li vidjeti promjene? Klikni ovdje da uðeš u moj discord server.",
@@ -82,6 +84,7 @@
     "inventoryTypes": {
       "enchants": "Èarolije",
       "reforges": "Reforge-ovi"
-    }
+    },
+    "cancelledStemBreak": "SkyblockAddons te zaustavio od rušenja ove stabljike. Koristi svoju ruku ako je želiš slomiti!"
   }
 }

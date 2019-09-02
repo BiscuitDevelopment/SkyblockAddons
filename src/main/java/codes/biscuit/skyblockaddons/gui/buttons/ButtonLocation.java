@@ -3,8 +3,13 @@ package codes.biscuit.skyblockaddons.gui.buttons;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.utils.ConfigColor;
 import codes.biscuit.skyblockaddons.utils.Feature;
+import codes.biscuit.skyblockaddons.utils.ItemDiff;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.util.EnumChatFormatting;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ButtonLocation extends ButtonFeature {
 
@@ -38,8 +43,14 @@ public class ButtonLocation extends ButtonFeature {
         } else if (feature == Feature.MANA_TEXT || feature == Feature.HEALTH_TEXT ||
                 feature == Feature.DEFENCE_TEXT || feature == Feature.DEFENCE_PERCENTAGE ||
                 feature == Feature.HEALTH_UPDATES || feature == Feature.DARK_AUCTION_TIMER ||
-                feature == Feature.MAGMA_BOSS_TIMER || feature == Feature.ITEM_PICKUP_LOG) {
+                feature == Feature.MAGMA_BOSS_TIMER) {
             main.getRenderListener().drawText(feature, scale, mc, this);
+        } else if (feature == Feature.ITEM_PICKUP_LOG) {
+            List<ItemDiff> collectionLog = new ArrayList<>();
+            collectionLog.add(new ItemDiff(EnumChatFormatting.DARK_PURPLE+"Forceful Ember Chestplate", 1));
+            collectionLog.add(new ItemDiff("Boat", -1));
+            collectionLog.add(new ItemDiff(EnumChatFormatting.BLUE+"Aspect of the End", 1));
+            main.getRenderListener().drawItemPickupLog(mc, scale, collectionLog, this);
         } else if (feature == Feature.DEFENCE_ICON) {
             scale *= 1.5;
             GlStateManager.scale(scale,scale,1);

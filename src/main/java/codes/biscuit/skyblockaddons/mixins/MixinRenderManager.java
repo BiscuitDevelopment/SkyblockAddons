@@ -28,19 +28,18 @@ public class MixinRenderManager {
         SkyblockAddons main = SkyblockAddons.getInstance();
         if (entityIn instanceof EntityItem &&
                     entityIn.ridingEntity instanceof EntityZombie && entityIn.ridingEntity.isInvisible()) { // Conditions for Skeleton Hat flying bones
-            entityIn.ridingEntity.preventEntitySpawning = false; // To allow you to place blocks
-            if (!main.getConfigValues().getDisabledFeatures().contains(Feature.HIDE_BONES)) {
+            if (main.getConfigValues().isEnabled(Feature.HIDE_BONES)) {
                 cir.setReturnValue(false);
             }
         }
         EnumUtils.Location location = main.getUtils().getLocation();
         if ((location == EnumUtils.Location.VILLAGE || location == EnumUtils.Location.AUCTION_HOUSE)) {
-            if (!main.getConfigValues().getDisabledFeatures().contains(Feature.HIDE_AUCTION_HOUSE_PLAYERS) && entityIn instanceof EntityOtherPlayerMP) {
+            if (main.getConfigValues().isEnabled(Feature.HIDE_AUCTION_HOUSE_PLAYERS) && entityIn instanceof EntityOtherPlayerMP) {
                 if (entityIn.getDistance(auctionX, auctionY, auctionZ) <= 3 && (entityIn.posX != auctionX || entityIn.posY != auctionY || entityIn.posZ != auctionZ)) { // Coords of the auction master.
                     cir.setReturnValue(false);
                 }
             }
-            if (!main.getConfigValues().getDisabledFeatures().contains(Feature.HIDE_PLAYERS_IN_LOBBY) &&
+            if (main.getConfigValues().isEnabled(Feature.HIDE_PLAYERS_IN_LOBBY) &&
                     (entityIn instanceof EntityOtherPlayerMP || entityIn instanceof EntityFX || entityIn instanceof EntityItemFrame) &&
                     entityIn.getDistanceToEntity(Minecraft.getMinecraft().thePlayer) > 7) {
                 cir.setReturnValue(false);

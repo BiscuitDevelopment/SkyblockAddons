@@ -3,7 +3,7 @@
   "settings": {
     "settings": "הגדרות",
     "openSettings": "פתיחת הגדרות",
-    "magmaBossWarning": "בוס מגמה מזדמן",
+    "magmaBossWarning": "בוס מגמה אזהרה",
     "itemDropConfirmation": "אישור זריקת פריט",
     "warningTime": "זמן התראה: %time%s",
     "hideSkeletonHatBones": "הסתרת עצמות קסדת שלד",
@@ -16,7 +16,7 @@
     "manaTextColor": "צבע טקסט מנה",
     "manaBarColor": "צבע עמודת מנה",
     "editLocations": "עריכת מקומות",
-    "guiScale": "משקל GUI: %scale%",
+    "guiScale": "גודל ממשק משתמש גרפי: %scale%",
     "resetLocations": "איפוס מקומות",
     "hideDurability": "הסתר רמת שימוש של כלי",
     "showEnchantmentsReforges": "כישופים ושיפורים",
@@ -28,16 +28,16 @@
       "compact": "קומפקטי"
     },
     "showBackpackPreview": "תראה תרמיל גב",
-    "hideHealthBar": "Hide Health Bar",
-    "healthTextColor": "Health Text Color",
-    "healthBarColor": "Health Bar Color",
+    "hideHealthBar": "הסתר בר חיים",
+    "healthTextColor": "צבע טקסט החיים ",
+    "healthBarColor": "צבע בר החיים",
     "defenceTextColor": "Defence Text Color",
     "defencePercentageColor": "Defence Percentage Color",
     "disableDoubleDropAutomatically": "Disable Double Drop Automatically",
     "fullMinionWarning": "Full Minion Warning",
-    "nextPage": "Next Page",
-    "previousPage": "Previous Page",
-    "ignoreItemFrameClicks": "Ignore Clicks On Item Frames",
+    "nextPage": "דף הבא",
+    "previousPage": "הדף הקודם",
+    "ignoreItemFrameClicks": "תתעלם מלחיצות על מסגרות פריט",
     "useVanillaTextureDefence": "Use Vanilla Texture For Defence Icon",
     "showBackpackHoldingShift": "Only Show Backpack When Holding Shift",
     "manaBar": "Mana Bar",
@@ -47,23 +47,25 @@
     "defenceIcon": "Defence Symbol",
     "defenceText": "Defence Number",
     "defencePercentage": "Defence Percentage",
-    "healthUpdates": "Health Change Number",
-    "anchorPoint": "Anchor Point: %setting%: %anchor%",
-    "anchorPoints": {
-      "topLeft": "Top Left",
-      "topRight": "Top Right",
-      "bottomLeft": "Bottom Left",
-      "bottomRight": "Bottom Right",
-      "healthBar": "Health Bar"
-    },
-    "hidePlayersInLobby": "Hide Nearby Entities In Lobby",
-    "textStyle": "Text Style: %style%",
+    "healthUpdates": "שינוי כמות החיים",
+    "hidePlayersInLobby": "Hide Far Entities In Lobby",
+    "textStyle": "סטייל הטקסט: %style%",
     "textStyles": {
-      "regular": "Regular",
-      "blackShadow": "Black Shadow"
+      "regular": "רגיל",
+      "blackShadow": "צל שחור"
     },
     "darkAuctionTimer": "Dark Auction Timer",
-    "magmaBossTimer": "Magma Boss Timer"
+    "magmaBossTimer": "Magma Boss Timer",
+    "itemPickupLog": "Item Pickup Log",
+    "avoidPlacingEnchantedItems": "Avoid Placing Enchanted Items",
+    "avoidBreakingStems": "Avoid Breaking Stems",
+    "magmaBossTimerColor": "Magma Boss Timer Color",
+    "darkAuctionTimerColor": "Dark Auction Timer Color",
+    "stopBowChargeFromResetting": "Stop Bow Charge From Resetting",
+    "showMagmaTimerInOtherGames": "Show Magma Timer In Other Games",
+    "preventMovementOnDeath": "Prevent Walking After Death",
+    "showDarkAuctionTimerInOtherGames": "Show Dark Auc Timer In Other Games",
+    "showItemAnvilUses": "Show Item Anvil Uses"
   },
   "messages": {
     "dropConfirmation": "זרוק פריט זה להסכמה",
@@ -82,6 +84,7 @@
     "inventoryTypes": {
       "enchants": "Enchants",
       "reforges": "Reforges"
-    }
+    },
+    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this stem. Use your bare hand if you'd like to break it."
   }
 }

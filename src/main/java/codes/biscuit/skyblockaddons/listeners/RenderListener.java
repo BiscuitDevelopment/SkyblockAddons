@@ -11,7 +11,6 @@ import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.item.EntityArmorStand;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.item.Item;
@@ -22,11 +21,11 @@ import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.fml.client.GuiNotification;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
-import org.lwjgl.opengl.GL11;
 
 import java.math.BigDecimal;
 import java.util.Calendar;
-import java.util.regex.Pattern;
+import java.util.Collection;
+import java.util.TimeZone;
 
 import static net.minecraft.client.gui.Gui.icons;
 
@@ -34,7 +33,6 @@ public class RenderListener {
 
     private SkyblockAddons main;
     private final static ItemStack BONE_ITEM = new ItemStack(Item.getItemById(352));
-
     private final ResourceLocation BARS = new ResourceLocation("skyblockaddons", "bars.png");
     private final ResourceLocation DEFENCE_VANILLA = new ResourceLocation("skyblockaddons", "defence.png");
     private final ResourceLocation TEXT_ICONS = new ResourceLocation("skyblockaddons", "icons.png");
@@ -57,10 +55,14 @@ public class RenderListener {
      */
     @SubscribeEvent()
     public void onRenderRegular(RenderGameOverlayEvent.Post e) {
-        if ((!main.isUsingLabymod() || Minecraft.getMinecraft().ingameGUI instanceof GuiIngameForge) && main.getUtils().isOnSkyblock()) {
+        if ((!main.isUsingLabymod() || Minecraft.getMinecraft().ingameGUI instanceof GuiIngameForge)) {
             if (e.type == RenderGameOverlayEvent.ElementType.EXPERIENCE) {
-                renderOverlays();
-                renderWarnings(e.resolution);
+                if (main.getUtils().isOnSkyblock()) {
+                    renderOverlays();
+                    renderWarnings(e.resolution);
+                } else {
+                    renderTimersOnly();
+                }
             }
         }
     }
@@ -72,9 +74,34 @@ public class RenderListener {
      */
     @SubscribeEvent()
     public void onRenderLabyMod(RenderGameOverlayEvent e) {
-        if (e.type == null && main.isUsingLabymod() && main.getUtils().isOnSkyblock()) {
-            renderOverlays();
-            renderWarnings(e.resolution);
+        if (e.type == null && main.isUsingLabymod()) {
+            if (main.getUtils().isOnSkyblock()) {
+                renderOverlays();
+                renderWarnings(e.resolution);
+            } else {
+                renderTimersOnly();
+            }
+        }
+    }
+
+    /**
+     * I have an option so you can see the magma timer in other games so that's why.
+     */
+    private void renderTimersOnly() {
+        Minecraft mc = Minecraft.getMinecraft();
+        if (!(mc.currentScreen instanceof LocationEditGui) && !(mc.currentScreen instanceof GuiNotification)) {
+            float scale = main.getUtils().denormalizeValue(main.getConfigValues().getGuiScale(), ButtonSlider.GUI_SCALE_MINIMUM, ButtonSlider.GUI_SCALE_MAXIMUM, ButtonSlider.GUI_SCALE_STEP);
+            GlStateManager.disableBlend();
+            GlStateManager.pushMatrix();
+            GlStateManager.scale(scale, scale, 1);
+            if (main.getConfigValues().isEnabled(Feature.MAGMA_BOSS_TIMER) && main.getConfigValues().isEnabled(Feature.SHOW_MAGMA_TIMER_IN_OTHER_GAMES) &&
+                    main.getPlayerListener().getMagmaAccuracy() != EnumUtils.MagmaTimerAccuracy.NO_DATA) {
+                drawText(Feature.MAGMA_BOSS_TIMER, scale, mc, null);
+            }
+            if (main.getConfigValues().isEnabled(Feature.DARK_AUCTION_TIMER) && main.getConfigValues().isEnabled(Feature.SHOW_DARK_AUCTION_TIMER_IN_OTHER_GAMES)) {
+                drawText(Feature.DARK_AUCTION_TIMER, scale, mc, null);
+            }
+            GlStateManager.popMatrix();
         }
     }
 
@@ -137,34 +164,6 @@ public class RenderListener {
             GlStateManager.popMatrix();
             GlStateManager.popMatrix();
         }
-        if (!main.getConfigValues().getDisabledFeatures().contains(Feature.MAGMA_BOSS_TIMER)) {
-            for (Entity entity : mc.theWorld.loadedEntityList) {
-                if (entity instanceof EntityArmorStand) {
-                    String name = entity.getDisplayName().getFormattedText();
-                    if (name.contains("Magma Cube Boss ")) {
-                        name = name.split(Pattern.quote("Magma Cube Boss "))[1];
-                        mc.getTextureManager().bindTexture(icons);
-                        GlStateManager.tryBlendFuncSeparate(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA, 1, 0);
-                        GlStateManager.enableBlend();
-                        int j = 182;
-                        int k = i / 2 - j / 2;
-                        int health = 1;
-                        int l = (int) (health * (float) (j + 1));
-                        int i1 = 12;
-                        mc.ingameGUI.drawTexturedModalRect(k, i1, 0, 74, j, 5);
-                        mc.ingameGUI.drawTexturedModalRect(k, i1, 0, 74, j, 5);
-
-                        if (l > 0) {
-                            mc.ingameGUI.drawTexturedModalRect(k, i1, 0, 79, l, 5);
-                        }
-                        mc.ingameGUI.getFontRenderer().drawStringWithShadow(name, (float) (i / 2 - mc.ingameGUI.getFontRenderer().getStringWidth(name) / 2), (float) (i1 - 10), 16777215);
-                        GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-                        GlStateManager.disableBlend();
-                    }
-                }
-            }
-        }
-
     }
 
     /**
@@ -172,40 +171,40 @@ public class RenderListener {
      */
     private void renderOverlays() {
         Minecraft mc = Minecraft.getMinecraft();
-        float scale = main.getUtils().denormalizeValue(main.getConfigValues().getGuiScale(), ButtonSlider.GUI_SCALE_MINIMUM, ButtonSlider.GUI_SCALE_MAXIMUM, ButtonSlider.GUI_SCALE_STEP);
-        GlStateManager.disableBlend();
-        GlStateManager.pushMatrix();
-        GlStateManager.scale(scale, scale, 1);
         if (!(mc.currentScreen instanceof LocationEditGui) && !(mc.currentScreen instanceof GuiNotification)) {
-            if ((!main.getConfigValues().getDisabledFeatures().contains(Feature.SKELETON_BAR)) && main.getInventoryUtils().isWearingSkeletonHelmet()) {
+            float scale = main.getUtils().denormalizeValue(main.getConfigValues().getGuiScale(), ButtonSlider.GUI_SCALE_MINIMUM, ButtonSlider.GUI_SCALE_MAXIMUM, ButtonSlider.GUI_SCALE_STEP);
+            GlStateManager.disableBlend();
+            GlStateManager.pushMatrix();
+            GlStateManager.scale(scale, scale, 1);
+            if ((main.getConfigValues().isEnabled(Feature.SKELETON_BAR)) && main.getInventoryUtils().isWearingSkeletonHelmet()) {
                 drawSkeletonBar(scale, mc, null);
             }
             Feature[] bars = {Feature.MANA_BAR, Feature.HEALTH_BAR};
             for (Feature feature : bars) {
-                if (!main.getConfigValues().getDisabledFeatures().contains(feature)) {
+                if (main.getConfigValues().isEnabled(feature)) {
                     drawBar(feature, scale, mc);
                 }
             }
 
-            if (!main.getConfigValues().getDisabledFeatures().contains(Feature.DEFENCE_ICON)) {
+            if (main.getConfigValues().isEnabled(Feature.DEFENCE_ICON)) {
                 drawIcon(scale, mc, null);
             }
 
             Feature[] texts = {Feature.DEFENCE_TEXT, Feature.DEFENCE_PERCENTAGE, Feature.MANA_TEXT, Feature.HEALTH_TEXT, Feature.HEALTH_UPDATES
             , Feature.DARK_AUCTION_TIMER, Feature.MAGMA_BOSS_TIMER};
             for (Feature feature : texts) {
-                if (!main.getConfigValues().getDisabledFeatures().contains(feature)) {
+                if (main.getConfigValues().isEnabled(feature)) {
                     if (feature != Feature.HEALTH_UPDATES || main.getPlayerListener().getHealthUpdate() != null) {
                         drawText(feature, scale, mc, null);
                     }
                 }
             }
 
-            if(!main.getConfigValues().getDisabledFeatures().contains(Feature.ITEM_PICKUP_LOG)) {
-                drawItemPickupLog(mc, scale);
+            if(main.getConfigValues().isEnabled(Feature.ITEM_PICKUP_LOG)) {
+                drawItemPickupLog(mc, scale, null, null);
             }
+            GlStateManager.popMatrix();
         }
-        GlStateManager.popMatrix();
     }
 
     private void drawBar(Feature feature, float scaleMultiplier, Minecraft mc) {
@@ -305,7 +304,7 @@ public class RenderListener {
      * This renders the defence icon.
      */
     public void drawIcon(float scale, Minecraft mc, ButtonLocation buttonLocation) {
-        if (main.getConfigValues().getDisabledFeatures().contains(Feature.USE_VANILLA_TEXTURE_DEFENCE)) {
+        if (main.getConfigValues().isDisabled(Feature.USE_VANILLA_TEXTURE_DEFENCE)) {
             mc.getTextureManager().bindTexture(icons);
         } else {
             mc.getTextureManager().bindTexture(DEFENCE_VANILLA);
@@ -374,9 +373,9 @@ public class RenderListener {
                 text = "+123";
                 color = ConfigColor.GREEN.getColor(255);
             }
-        } else if (feature == Feature.DARK_AUCTION_TIMER) {
-            Calendar nextDarkAuction = Calendar.getInstance();
-            nextDarkAuction.setTimeInMillis(System.currentTimeMillis());
+        } else if (feature == Feature.DARK_AUCTION_TIMER) { // The timezone of the server, to avoid problems with like timezones that are 30 minutes ahead or whatnot.
+            Calendar nextDarkAuction = Calendar.getInstance(TimeZone.getTimeZone("America/New_York"));
+//            nextDarkAuction.setTimeInMillis(System.currentTimeMillis());
             if (nextDarkAuction.get(Calendar.MINUTE) >= 55) {
                 nextDarkAuction.add(Calendar.HOUR_OF_DAY, 1);
             }
@@ -384,7 +383,7 @@ public class RenderListener {
             nextDarkAuction.set(Calendar.SECOND, 0);
             int difference = (int)(nextDarkAuction.getTimeInMillis()-System.currentTimeMillis());
             int minutes = difference/60000;
-            int seconds = (difference%60000)/1000;
+            int seconds = (int)Math.round((double)(difference%60000)/1000);
             StringBuilder timestamp = new StringBuilder();
             if (minutes < 10) {
                 timestamp.append("0");
@@ -396,10 +395,32 @@ public class RenderListener {
             timestamp.append(seconds);
             text = timestamp.toString();
         } else if (feature == Feature.MAGMA_BOSS_TIMER) {
-            text = "00:00";
-        } else if (feature == Feature.ITEM_PICKUP_LOG) {
-            color = ConfigColor.WHITE.getColor(255);
-            text = Message.SETTING_ITEM_PICKUP_LOG.getMessage();
+            if (buttonLocation == null) {
+                StringBuilder magmaBuilder = new StringBuilder();
+                magmaBuilder.append(main.getPlayerListener().getMagmaAccuracy().getSymbol());
+                EnumUtils.MagmaTimerAccuracy ma = main.getPlayerListener().getMagmaAccuracy();
+                if (ma == EnumUtils.MagmaTimerAccuracy.ABOUT || ma == EnumUtils.MagmaTimerAccuracy.EXACTLY) {
+                    int totalSeconds = main.getPlayerListener().getMagmaTime();
+                    int hours = totalSeconds / 3600;
+                    int minutes = totalSeconds / 60 % 60;
+                    int seconds = totalSeconds % 60;
+                    if (Math.abs(hours) >= 10) hours = 10;
+                    magmaBuilder.append(hours).append(":");
+                    if (minutes < 10) {
+                        magmaBuilder.append("0");
+                    }
+                    magmaBuilder.append(minutes).append(":");
+                    if (seconds < 10) {
+                        magmaBuilder.append("0");
+                    }
+                    magmaBuilder.append(seconds);
+                }// else if (ma == EnumUtils.MagmaTimerAccuracy.SPAWNED) {
+//                    magmaBuilder.append(main.getPlayerListener().getMagmaBossHealth()).append("\u2764");
+                //}
+                text = magmaBuilder.toString();
+            } else {
+                text = "~12:34";
+            }
         } else {
             return;
         }
@@ -415,10 +436,14 @@ public class RenderListener {
         int intX = Math.round(x);
         int intY = Math.round(y);
         if (buttonLocation != null) {
-            int boxXOne = intX-4-18;
+            int boxXOne = intX-4;
             int boxXTwo = intX+width+4;
-            int boxYOne = intY-4-2;
+            int boxYOne = intY-4;
             int boxYTwo = intY+height+4;
+            if (feature == Feature.MAGMA_BOSS_TIMER || feature == Feature.DARK_AUCTION_TIMER) {
+                boxXOne-=18;
+                boxYOne-=2;
+            }
             buttonLocation.checkHoveredAndDrawBox(boxXOne, boxXTwo, boxYOne, boxYTwo, scale);
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         }
@@ -442,21 +467,32 @@ public class RenderListener {
         }
     }
 
-    private void drawItemPickupLog(Minecraft mc, float scale) {
+    public void drawItemPickupLog(Minecraft mc, float scale, Collection<ItemDiff> dummyLog, ButtonLocation buttonLocation) {
         float x = main.getConfigValues().getActualX(Feature.ITEM_PICKUP_LOG);
         float y = main.getConfigValues().getActualY(Feature.ITEM_PICKUP_LOG);
 
-        int height = 7;
-        int width = mc.fontRendererObj.getStringWidth(Message.SETTING_ITEM_PICKUP_LOG.getMessage());
+        int height = 8*3;
+        int width = mc.fontRendererObj.getStringWidth("+ 1x Forceful Ember Chestplate");
         x-=Math.round(width*scale/2);
         y-=Math.round(height*scale/2);
         x/=scale;
         y/=scale;
         int intX = Math.round(x);
         int intY = Math.round(y);
-
+        if (dummyLog != null) {
+            int boxXOne = intX-4;
+            int boxXTwo = intX+width+4;
+            int boxYOne = intY-4;
+            int boxYTwo = intY+height+4;
+            buttonLocation.checkHoveredAndDrawBox(boxXOne, boxXTwo, boxYOne, boxYTwo, scale);
+            GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+        }
         int i = 0;
-        for (ItemDiff itemDiff : main.getInventoryUtils().getItemPickupLog()) {
+        Collection<ItemDiff> log = main.getInventoryUtils().getItemPickupLog();
+        if (dummyLog != null) {
+            log = dummyLog;
+        }
+        for (ItemDiff itemDiff : log) {
             String text = String.format("%s %sx \u00A7r%s", itemDiff.getAmount() > 0 ? "\u00A7a+":"\u00A7c-",
                     Math.abs(itemDiff.getAmount()), itemDiff.getDisplayName());
             drawString(mc, text, intX, intY+(i*mc.fontRendererObj.FONT_HEIGHT), ConfigColor.WHITE.getColor(255));
@@ -488,18 +524,18 @@ public class RenderListener {
     public void onRenderRemoveBars(RenderGameOverlayEvent.Pre e) {
         if (e.type == RenderGameOverlayEvent.ElementType.ALL) {
             if (main.getUtils().isOnSkyblock()) {
-                if (!main.getConfigValues().getDisabledFeatures().contains(Feature.HIDE_FOOD_ARMOR_BAR)) {
+                if (main.getConfigValues().isEnabled(Feature.HIDE_FOOD_ARMOR_BAR)) {
                     GuiIngameForge.renderFood = false;
                     GuiIngameForge.renderArmor = false;
                 }
-                if (!main.getConfigValues().getDisabledFeatures().contains(Feature.HIDE_HEALTH_BAR)) {
+                if (main.getConfigValues().isEnabled(Feature.HIDE_HEALTH_BAR)) {
                     GuiIngameForge.renderHealth = false;
                 }
             } else {
-                if (!main.getConfigValues().getDisabledFeatures().contains(Feature.HIDE_HEALTH_BAR)) {
+                if (main.getConfigValues().isEnabled(Feature.HIDE_HEALTH_BAR)) {
                     GuiIngameForge.renderHealth = true;
                 }
-                if (!main.getConfigValues().getDisabledFeatures().contains(Feature.HIDE_FOOD_ARMOR_BAR)) {
+                if (main.getConfigValues().isEnabled(Feature.HIDE_FOOD_ARMOR_BAR)) {
                     GuiIngameForge.renderArmor = true;
                 }
             }
@@ -508,7 +544,7 @@ public class RenderListener {
     @SubscribeEvent()
     public void onRender(TickEvent.RenderTickEvent e) {
         if (guiToOpen == PlayerListener.GUIType.MAIN) {
-            Minecraft.getMinecraft().displayGuiScreen(new SkyblockAddonsGui(main, 1));
+            Minecraft.getMinecraft().displayGuiScreen(new SkyblockAddonsGui(main, 1, 1));
         } else if (guiToOpen == PlayerListener.GUIType.EDIT_LOCATIONS) {
             Minecraft.getMinecraft().displayGuiScreen(new LocationEditGui(main));
         }

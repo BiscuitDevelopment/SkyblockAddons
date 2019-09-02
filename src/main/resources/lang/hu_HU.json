@@ -21,7 +21,7 @@
     "hideDurability": "Eszköz viseltéségének elrejtése",
     "showEnchantmentsReforges": "Enchantok & Reforgok",
     "minionStopWarning": "\"A minion nem ér el valamit\" figyelmeztetés",
-    "hideActionHousePlayers": "Játékosok elrejtése az aukciósház körül",
+    "hideAuctionHousePlayers": "Játékosok elrejtése az aukciósház körül",
     "backpackStyle": "Hátizsák stílus: %style%",
     "backpackStyles": {
       "inventory": "Felszerelés",
@@ -40,30 +40,32 @@
     "ignoreItemFrameClicks": "Eszköz keretre kattintás letiltása",
     "useVanillaTextureDefence": "Vanilla textúra a védelem ikonhoz",
     "showBackpackHoldingShift": "Hátizsák mutatása csak a Shift lenyomásával",
-    "manaBar": "Mana Bar",
-    "manaText": "Mana Number",
-    "healthBar": "Health Bar",
-    "healthText": "Health Number",
-    "defenceIcon": "Defence Symbol",
-    "defenceText": "Defence Number",
-    "defencePercentage": "Defence Percentage",
-    "healthUpdates": "Health Change Number",
-    "anchorPoint": "Anchor Point: %setting%: %anchor%",
-    "anchorPoints": {
-      "topLeft": "Top Left",
-      "topRight": "Top Right",
-      "bottomLeft": "Bottom Left",
-      "bottomRight": "Bottom Right",
-      "healthBar": "Health Bar"
-    },
-    "hidePlayersInLobby": "Hide Nearby Entities In Lobby",
-    "textStyle": "Text Style: %style%",
+    "manaBar": "Mana sáv",
+    "manaText": "Mana szám",
+    "healthBar": "Életerő sáv",
+    "healthText": "Életerő szám",
+    "defenceIcon": "Védelem szimbólum",
+    "defenceText": "Védelem szám",
+    "defencePercentage": "Védelem százalék",
+    "healthUpdates": "Életerő változások",
+    "hidePlayersInLobby": "Közeli entitások elrejtése a lobbyban",
+    "textStyle": "Szöveg típusa: %style%",
     "textStyles": {
-      "regular": "Regular",
-      "blackShadow": "Black Shadow"
+      "regular": "Normál",
+      "blackShadow": "Fekete árnyék"
     },
-    "darkAuctionTimer": "Dark Auction Timer",
-    "magmaBossTimer": "Magma Boss Timer"
+    "darkAuctionTimer": "Dark Auction időzítő",
+    "magmaBossTimer": "Magma Boss időzítő",
+    "itemPickupLog": "Tárgyfelvételi napló",
+    "avoidPlacingEnchantedItems": "Enchantolt tárgyak lehelyezésének elkerülése",
+    "avoidBreakingStems": "Növény szárak kiütésének elkerülése",
+    "magmaBossTimerColor": "Magma Boss időzítő színe",
+    "darkAuctionTimerColor": "Dark Auction időzítő színe",
+    "stopBowChargeFromResetting": "Íj felhúzásának megállítása újratöltéskor",
+    "showMagmaTimerInOtherGames": "Magma időzítő más játékokban",
+    "preventMovementOnDeath": "Sétálás megakadályozása halál után",
+    "showDarkAuctionTimerInOtherGames": "Dark Auc időzítő más játékokban",
+    "showItemAnvilUses": "Tárgy üllő használatának mutatása"
   },
   "messages": {
     "dropConfirmation": "Dobd el ezt a tárgyat újra, hogy megerősítsd!",
@@ -82,6 +84,7 @@
     "inventoryTypes": {
       "enchants": "Enchantok",
       "reforges": "Reforgeok"
-    }
+    },
+    "cancelledStemBreak": "A SkyblockAddons megállította, hogy kiüsd a növény szárát. Használd az öklöd, ha ki szeretnéd ütni."
   }
 }

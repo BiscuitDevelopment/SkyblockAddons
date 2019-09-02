@@ -35,35 +35,37 @@
     "defencePercentageColor": "لون النسبة المئوية للدفاع",
     "disableDoubleDropAutomatically": "تعطيل الرمي مزدوج تلقائيا",
     "fullMinionWarning": "تحذير التابع الممتلئ",
-    "nextPage": "Next Page",
-    "previousPage": "Previous Page",
-    "ignoreItemFrameClicks": "Ignore Clicks On Item Frames",
-    "useVanillaTextureDefence": "Use Vanilla Texture For Defence Icon",
-    "showBackpackHoldingShift": "Only Show Backpack When Holding Shift",
-    "manaBar": "Mana Bar",
-    "manaText": "Mana Number",
-    "healthBar": "Health Bar",
-    "healthText": "Health Number",
-    "defenceIcon": "Defence Symbol",
-    "defenceText": "Defence Number",
-    "defencePercentage": "Defence Percentage",
-    "healthUpdates": "Health Change Number",
-    "anchorPoint": "Anchor Point: %setting%: %anchor%",
-    "anchorPoints": {
-      "topLeft": "Top Left",
-      "topRight": "Top Right",
-      "bottomLeft": "Bottom Left",
-      "bottomRight": "Bottom Right",
-      "healthBar": "Health Bar"
-    },
-    "hidePlayersInLobby": "Hide Nearby Entities In Lobby",
-    "textStyle": "Text Style: %style%",
+    "nextPage": "الصفحة التالية",
+    "previousPage": "الصفحة السابقة",
+    "ignoreItemFrameClicks": "تجاهل الكبس على إطارات الأدوات",
+    "useVanillaTextureDefence": "استخدم الصورة الطبيعية لأيقونة الدفاع",
+    "showBackpackHoldingShift": "ظهور حقيبة الظهر عند الانحناء فقط",
+    "manaBar": "شريط المانا",
+    "manaText": "رقم المانا",
+    "healthBar": "شريط الدم",
+    "healthText": "رقم الدم",
+    "defenceIcon": "رمز الدفاع",
+    "defenceText": "رقم الدفاع",
+    "defencePercentage": "نسبة الدفاع",
+    "healthUpdates": "رقم تعديل الصحة",
+    "hidePlayersInLobby": "إخفاء الكائنات البعيدة في االباحة",
+    "textStyle": "نمط النص: ٪style٪",
     "textStyles": {
-      "regular": "Regular",
-      "blackShadow": "Black Shadow"
+      "regular": "طبيعي",
+      "blackShadow": "ظل اسود"
     },
-    "darkAuctionTimer": "Dark Auction Timer",
-    "magmaBossTimer": "Magma Boss Timer"
+    "darkAuctionTimer": "موقت المزاد الأسود",
+    "magmaBossTimer": "موقت زعيم الصهارة",
+    "itemPickupLog": "سجل التقاط الأداة",
+    "avoidPlacingEnchantedItems": "تجنب وضع الأدوات المطورة",
+    "avoidBreakingStems": "تجنب كسر القصب",
+    "magmaBossTimerColor": "لون مؤقت زعيم الصهارة",
+    "darkAuctionTimerColor": "لون موقت المزاد الأسود",
+    "stopBowChargeFromResetting": "أيقاف القوس من أزالة الطلقة المملوئة",
+    "showMagmaTimerInOtherGames": "أظهار مؤقت زعيم الصهارة في الألعاب الآخرى",
+    "preventMovementOnDeath": "منع المشي بعد الموت",
+    "showDarkAuctionTimerInOtherGames": "أظهار مؤقت المزاد الأسود في الألعاب الآخرى",
+    "showItemAnvilUses": "أظهار عدد مرات أستخدام السندان"
   },
   "messages": {
     "dropConfirmation": "!إرمي هذا العنصر مرة أخرى للتأكيد",
@@ -74,14 +76,15 @@
     "developmentVersion": "%newestVersion% أحدث نسخة على الإنترنت هي .%version% :أنت تقوم بتشغيل إصدار تطوير",
     "labymod": ".مستعملي اللابي مود: إن إخفاء عظام خوذة الهيكل العظمي غير متوافق",
     "minionCannotReach": "!لا يمكنه الوصول وانه سيتوقف عن الإنشاء %type%إن تابع ال",
-    "minionIsFull": "A minion on your island is full!",
-    "typeEnchantmentsHere": "Type %type% Here!",
-    "separateMultiple": "Separate Multiple With Commas.",
-    "enchantsToMatch": "%type% To Match:",
-    "enchantsToExclude": "%type% To Exclude:",
+    "minionIsFull": "أمتلأت حقيبة احدى عبادك في جزيرتك!",
+    "typeEnchantmentsHere": "اكتب %التطوريات% في هذه الخانة!",
+    "separateMultiple": "أفرز المتعددين بالفواصل.",
+    "enchantsToMatch": "%type% للمطابقة:",
+    "enchantsToExclude": "%type% للاستبعاد:",
     "inventoryTypes": {
-      "enchants": "Enchants",
-      "reforges": "Reforges"
-    }
+      "enchants": "التطويرات",
+      "reforges": "التزويرات"
+    },
+    "cancelledStemBreak": "منعك تطبيق أضافات الجزيرة الطائرة من كسر القصب. ان اردت كسره فأستخدم يدك."
   }
 }

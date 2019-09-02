@@ -35,35 +35,37 @@
     "defencePercentageColor": "Color del Porcentaje de Defensa",
     "disableDoubleDropAutomatically": "Deshabilitar Doble Drop Automáticamente",
     "fullMinionWarning": "Aviso de Minion Lleno",
-    "nextPage": "Next Page",
-    "previousPage": "Previous Page",
-    "ignoreItemFrameClicks": "Ignore Clicks On Item Frames",
-    "useVanillaTextureDefence": "Use Vanilla Texture For Defence Icon",
-    "showBackpackHoldingShift": "Only Show Backpack When Holding Shift",
-    "manaBar": "Mana Bar",
-    "manaText": "Mana Number",
-    "healthBar": "Health Bar",
-    "healthText": "Health Number",
-    "defenceIcon": "Defence Symbol",
-    "defenceText": "Defence Number",
-    "defencePercentage": "Defence Percentage",
-    "healthUpdates": "Health Change Number",
-    "anchorPoint": "Anchor Point: %setting%: %anchor%",
-    "anchorPoints": {
-      "topLeft": "Top Left",
-      "topRight": "Top Right",
-      "bottomLeft": "Bottom Left",
-      "bottomRight": "Bottom Right",
-      "healthBar": "Health Bar"
-    },
-    "hidePlayersInLobby": "Hide Nearby Entities In Lobby",
-    "textStyle": "Text Style: %style%",
+    "nextPage": "Siguiente",
+    "previousPage": "Atrás",
+    "ignoreItemFrameClicks": "Ignorar Clicks en Item Frames",
+    "useVanillaTextureDefence": "Usar Textura de Vanilla para el Icono de Defensa",
+    "showBackpackHoldingShift": "Solo mostrar Backpack cuando se presiona Shift",
+    "manaBar": "Barra de Maná",
+    "manaText": "Número de Maná",
+    "healthBar": "Barra de Vida",
+    "healthText": "Número de Vida",
+    "defenceIcon": "Símbolo de Defensa",
+    "defenceText": "Número de Defensa",
+    "defencePercentage": "Porcentaje de Defensa",
+    "healthUpdates": "Número de Cambio de Vida",
+    "hidePlayersInLobby": "Ocultar Entidades leganas en Lobby",
+    "textStyle": "Estilo de Texto: %style%",
     "textStyles": {
-      "regular": "Regular",
-      "blackShadow": "Black Shadow"
+      "regular": "Normal",
+      "blackShadow": "Sombra Negra"
     },
-    "darkAuctionTimer": "Dark Auction Timer",
-    "magmaBossTimer": "Magma Boss Timer"
+    "darkAuctionTimer": "Contador del Black Auction",
+    "magmaBossTimer": "Contador del Magma Boss",
+    "itemPickupLog": "Registro de Items Recolectados",
+    "avoidPlacingEnchantedItems": "Evitar poner Items Encantados en el suelo",
+    "avoidBreakingStems": "Evitar romper los Tallos",
+    "magmaBossTimerColor": "Color del Contador del Magma Boss",
+    "darkAuctionTimerColor": "Color del Contador del Dark Auction",
+    "stopBowChargeFromResetting": "Prevenir el Reset del Arco",
+    "showMagmaTimerInOtherGames": "Mostrar el Contador del Magma Boss en Otros Juegos",
+    "preventMovementOnDeath": "Prevenir moverse cuando mueres",
+    "showDarkAuctionTimerInOtherGames": "Mostrar el Contador del Dark Auction en Otros Juegos",
+    "showItemAnvilUses": "Mostrar usos del Item en el Yunque"
   },
   "messages": {
     "dropConfirmation": "¡Dropea el Objeto otra vez para soltar!",
@@ -75,13 +77,14 @@
     "labymod": "Usuarios de Labymod: Ocultar la Barra de Comida y Armadura Es incompatible.",
     "minionCannotReach": "¡Un minion de tipo %type% No puede alcanzar a ningún mob y ha parado de generar más!",
     "minionIsFull": "¡Un Minion en la Isla tiene el Inventario Lleno!",
-    "typeEnchantmentsHere": "Type %type% Here!",
-    "separateMultiple": "Separate Multiple With Commas.",
-    "enchantsToMatch": "%type% To Match:",
-    "enchantsToExclude": "%type% To Exclude:",
+    "typeEnchantmentsHere": "¡Escribe %type% aqui!",
+    "separateMultiple": "Separa múltiples en comas.",
+    "enchantsToMatch": "%type% para que coincida:",
+    "enchantsToExclude": "%type% para excluir:",
     "inventoryTypes": {
-      "enchants": "Enchants",
-      "reforges": "Reforges"
-    }
+      "enchants": "Encantamientos",
+      "reforges": "Reforzar"
+    },
+    "cancelledStemBreak": "SkyblockAddons Te ha parado de romper este tallo. Usa tu mano si quieres romperlo."
   }
 }

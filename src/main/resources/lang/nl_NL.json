@@ -48,22 +48,24 @@
     "defenceText": "Verdediging Hoeveelheid",
     "defencePercentage": "Verdediging Percentage",
     "healthUpdates": "Gezondheid Hoeveelheid Aanpassen",
-    "anchorPoint": "Anchor Point: %setting%: %anchor%",
-    "anchorPoints": {
-      "topLeft": "Top Left",
-      "topRight": "Top Right",
-      "bottomLeft": "Bottom Left",
-      "bottomRight": "Bottom Right",
-      "healthBar": "Health Bar"
-    },
-    "hidePlayersInLobby": "Hide Nearby Entities In Lobby",
-    "textStyle": "Text Style: %style%",
+    "hidePlayersInLobby": "Verberg Verre Entiteiten in Lobby",
+    "textStyle": "Tekststijl: %style%",
     "textStyles": {
-      "regular": "Regular",
-      "blackShadow": "Black Shadow"
+      "regular": "Normaal",
+      "blackShadow": "Zwarte schaduw"
     },
-    "darkAuctionTimer": "Dark Auction Timer",
-    "magmaBossTimer": "Magma Boss Timer"
+    "darkAuctionTimer": "Donkere Veiling Timer",
+    "magmaBossTimer": "Magma Baas Timer",
+    "itemPickupLog": "Item Oppak Lijst",
+    "avoidPlacingEnchantedItems": "Vermijd Het Plaatsen Van Betoverde Items",
+    "avoidBreakingStems": "Vermijd Het Breken Van Stengels",
+    "magmaBossTimerColor": "Magma Baas Timer Kleur",
+    "darkAuctionTimerColor": "Donkere Veiling Timer Kleur",
+    "stopBowChargeFromResetting": "Stop Het Resetten Van Het Aanspannen Van De Boog",
+    "showMagmaTimerInOtherGames": "Magma Timer in andere spellen weergeven",
+    "preventMovementOnDeath": "Stop het Bewegen Na het Doodgaan",
+    "showDarkAuctionTimerInOtherGames": "Toon Donkere Veiling Timer in andere spellen",
+    "showItemAnvilUses": "Toon Aantal Item In Aambeeld Gebruikt"
   },
   "messages": {
     "dropConfirmation": "Laat dit object opnieuw vallen om te Bevestigen!",
@@ -82,6 +84,7 @@
     "inventoryTypes": {
       "enchants": "Betoveringen",
       "reforges": "Omsmedingen"
-    }
+    },
+    "cancelledStemBreak": "SkyblockAddons heeft je ervan weerhouden om deze stengel te breken. Gebruik je lege hand als je het wilt breken."
   }
 }

@@ -48,26 +48,28 @@
     "defenceText": "Defence Number",
     "defencePercentage": "Defence Percentage",
     "healthUpdates": "Health Change Number",
-    "anchorPoint": "Anchor Point: %setting%: %anchor%",
-    "anchorPoints": {
-      "topLeft": "Top Left",
-      "topRight": "Top Right",
-      "bottomLeft": "Bottom Left",
-      "bottomRight": "Bottom Right",
-      "healthBar": "Health Bar"
-    },
-    "hidePlayersInLobby": "Hide Nearby Entities In Lobby",
+    "hidePlayersInLobby": "Hide Far Entities In Lobby",
     "textStyle": "Text Style: %style%",
     "textStyles": {
       "regular": "Regular",
       "blackShadow": "Black Shadow"
     },
     "darkAuctionTimer": "Dark Auction Timer",
-    "magmaBossTimer": "Magma Boss Timer"
+    "magmaBossTimer": "Magma Boss Timer",
+    "itemPickupLog": "Item Pickup Log",
+    "avoidPlacingEnchantedItems": "Avoid Placing Enchanted Items",
+    "avoidBreakingStems": "Avoid Breaking Stems",
+    "magmaBossTimerColor": "Magma Boss Timer Color",
+    "darkAuctionTimerColor": "Dark Auction Timer Color",
+    "stopBowChargeFromResetting": "Stop Bow Charge From Resetting",
+    "showMagmaTimerInOtherGames": "Show Magma Timer In Other Games",
+    "preventMovementOnDeath": "Prevent Walking After Death",
+    "showDarkAuctionTimerInOtherGames": "Show Dark Auc Timer In Other Games",
+    "showItemAnvilUses": "Show Item Anvil Uses"
   },
   "messages": {
     "dropConfirmation": "Arunca acest obiect iar ca să confirmi!",
-    "magmaBossWarning": "MagmaCube Boss!",
+    "magmaBossWarning": "Magma Cube Boss!",
     "fullInventory": "Inventar Plin!",
     "newVersion": "O versiune nouă, %newestVersion% este disponibilă. Apasă aici ca să o descarci.",
     "discord": "Vrei sa vezi schimbările? Apasă aici ca să intri în discord-ul meu.",
@@ -82,6 +84,7 @@
     "inventoryTypes": {
       "enchants": "Enchants",
       "reforges": "Reforges"
-    }
+    },
+    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this stem. Use your bare hand if you'd like to break it."
   }
 }
