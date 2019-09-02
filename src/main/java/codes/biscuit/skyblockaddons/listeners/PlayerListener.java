@@ -15,10 +15,11 @@ import net.minecraft.entity.monster.EntitySlime;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.ChatType;
 import net.minecraft.util.text.TextComponentString;
-import net.minecraft.util.Vec3;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.event.entity.EntityEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
@@ -89,8 +90,8 @@ public class PlayerListener {
     @SubscribeEvent()
     public void onChunkLoad(ChunkEvent.Load e) {
         if (main.getUtils().isOnSkyblock()) {
-            int x = e.getChunk().xPosition;
-            int z = e.getChunk().zPosition;
+            int x = e.getChunk().x;
+            int z = e.getChunk().z;
             CoordsPair coords = new CoordsPair(x, z);
             recentlyLoadedChunks.add(coords);
             main.getScheduler().schedule(Scheduler.CommandType.DELETE_RECENT_CHUNK, 20, x, z);
@@ -185,7 +186,7 @@ public class PlayerListener {
             /*  Resets all user input on dead as to not walk backwards or stafe into the portal
                 Might get trigger upon encountering a non named "You" though this chance is so
                 minimal it can be discarded as a bug. */
-            if (main.getConfigValues().isEnabled(Feature.PREVENT_MOVEMENT_ON_DEATH) && e.message.getFormattedText().startsWith("\u00A7r\u00A7c \u2620 \u00A7r\u00A77You ")) {
+            if (main.getConfigValues().isEnabled(Feature.PREVENT_MOVEMENT_ON_DEATH) && e.getMessage().getFormattedText().startsWith("\u00A7r\u00A7c \u2620 \u00A7r\u00A77You ")) {
                 KeyBinding.unPressAllKeys();
             }
         }
@@ -219,8 +220,8 @@ public class PlayerListener {
                 }
             }
             if (main.getConfigValues().isEnabled(Feature.AVOID_PLACING_ENCHANTED_ITEMS)) {
-                if ((e.action == PlayerInteractEvent.Action.RIGHT_CLICK_BLOCK || e.action == PlayerInteractEvent.Action.RIGHT_CLICK_AIR) &&
-                        (heldItem.getItem().equals(Items.lava_bucket) || heldItem.getItem().equals(Items.string))) {
+                if ((e instanceof PlayerInteractEvent.RightClickBlock || e instanceof PlayerInteractEvent.RightClickEmpty) &&
+                        (heldItem.getItem().equals(Items.LAVA_BUCKET) || heldItem.getItem().equals(Items.STRING))) {
                     e.setCanceled(true);
                 }
             }
@@ -270,7 +271,7 @@ public class PlayerListener {
 
                         if (main.getConfigValues().isEnabled(Feature.ITEM_PICKUP_LOG) && mc.currentScreen == null
                         && main.getPlayerListener().didntRecentlyJoinWorld()) {
-                            main.getInventoryUtils().getInventoryDifference(p.inventory.mainInventory);
+                            main.getInventoryUtils().getInventoryDifference(p.inventory.mainInventory.toArray(new ItemStack[0]));
                         }
                     }
 
@@ -427,11 +428,11 @@ public class PlayerListener {
         AxisAlignedBB spawnArea = new AxisAlignedBB(-244, 0, -566, -379, 255, -635);
 
         if (main.getUtils().getLocation() == EnumUtils.Location.BLAZING_FORTRESS) {
-            Entity entity =  e.entity;
-            if (spawnArea.isVecInside(new Vec3(entity.posX, entity.posY, entity.posZ))) { // timers will trigger if 15 magmas/8 blazes spawn in the box within a 4 second time period
+            Entity entity = e.getEntity();
+            if (spawnArea.contains(new Vec3d(entity.posX, entity.posY, entity.posZ))) { // timers will trigger if 15 magmas/8 blazes spawn in the box within a 4 second time period
                 long currentTime = System.currentTimeMillis();
-                if (e.entity instanceof EntityMagmaCube) {
-                    if (!recentlyLoadedChunks.contains(new CoordsPair(e.newChunkX, e.newChunkZ)) && entity.ticksExisted == 0) {
+                if (e.getEntity() instanceof EntityMagmaCube) {
+                    if (!recentlyLoadedChunks.contains(new CoordsPair(e.getNewChunkX(), e.getNewChunkZ())) && entity.ticksExisted == 0) {
                         recentMagmaCubes++;
                         main.getScheduler().schedule(Scheduler.CommandType.SUBTRACT_MAGMA_COUNT, 4);
                         if (recentMagmaCubes >= 17) {
@@ -443,8 +444,8 @@ public class PlayerListener {
                             }
                         }
                     }
-                } else if (e.entity instanceof EntityBlaze) {
-                    if (!recentlyLoadedChunks.contains(new CoordsPair(e.newChunkX, e.newChunkZ)) && entity.ticksExisted == 0) {
+                } else if (e.getEntity() instanceof EntityBlaze) {
+                    if (!recentlyLoadedChunks.contains(new CoordsPair(e.getNewChunkX(), e.getNewChunkZ())) && entity.ticksExisted == 0) {
                         recentBlazes++;
                         main.getScheduler().schedule(Scheduler.CommandType.SUBTRACT_BLAZE_COUNT, 4);
                         if (recentBlazes >= 10) {
@@ -474,10 +475,10 @@ public class PlayerListener {
                 NBTTagCompound nbt = hoveredItem.getTagCompound();
                 if (nbt.hasKey("ExtraAttributes")) {
                     if (nbt.getCompoundTag("ExtraAttributes").hasKey("anvil_uses")) {
-                        int insertAt = e.toolTip.size();
+                        int insertAt = e.getToolTip().size();
                         if (Minecraft.getMinecraft().gameSettings.advancedItemTooltips) {
                             insertAt -= 3; // 1 line for the item name, 1 line for the nbt, and 1 line for the rarity
-                            if (e.itemStack.isItemDamaged()) {
+                            if (e.getItemStack().isItemDamaged()) {
                                 insertAt--; // 1 line for damage
                             }
                         }
@@ -487,7 +488,7 @@ public class PlayerListener {
                             anvilUses -= hotPotatoCount;
                         }
                         if (anvilUses > 0) {
-                            e.toolTip.add(insertAt, "Anvil Uses: " + EnumChatFormatting.RED.toString() + anvilUses);
+                            e.getToolTip().add(insertAt, "Anvil Uses: " + TextFormatting.RED.toString() + anvilUses);
                         }
                     }
                 }
@@ -504,9 +505,9 @@ public class PlayerListener {
             } catch (UnsupportedFlavorException | IOException ex) {
                 try {
                     clipboard.setContents(new StringSelection(nbt), null);
-                    main.getUtils().sendMessage(EnumChatFormatting.GREEN + "Copied this item's NBT to clipboard!");
+                    main.getUtils().sendMessage(TextFormatting.GREEN + "Copied this item's NBT to clipboard!");
                 } catch (IllegalStateException ex1) {
-                    main.getUtils().sendMessage(EnumChatFormatting.RED + "Error copying item NBT to clipboard!");
+                    main.getUtils().sendMessage(TextFormatting.RED + "Error copying item NBT to clipboard!");
                     ex.printStackTrace();
                 }
             }

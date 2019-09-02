@@ -9,9 +9,10 @@ import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.multiplayer.PlayerControllerMP;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.BlockPos;
-import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextFormatting;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -31,14 +32,14 @@ public class MixinPlayerControllerMP {
         SkyblockAddons main = SkyblockAddons.getInstance();
         if (main.getConfigValues().isEnabled(Feature.AVOID_BREAKING_STEMS)) {
             Minecraft mc = Minecraft.getMinecraft();
-            EntityPlayerSP p = mc.thePlayer;
-            ItemStack heldItem = p.getHeldItem();
-            Block block = mc.theWorld.getBlockState(loc).getBlock();
-            if (heldItem != null && (block.equals(Blocks.melon_stem) || block.equals(Blocks.pumpkin_stem))) {
+            EntityPlayerSP p = mc.player;
+            ItemStack heldItem = p.getHeldItem(EnumHand.MAIN_HAND);
+            Block block = mc.world.getBlockState(loc).getBlock();
+            if (heldItem != ItemStack.EMPTY && (block.equals(Blocks.MELON_STEM) || block.equals(Blocks.PUMPKIN_STEM))) {
                 cir.setReturnValue(false);
                 if (System.currentTimeMillis()-lastMessage > 15000) {
                     lastMessage = System.currentTimeMillis();
-                    main.getUtils().sendMessage(EnumChatFormatting.RED+Message.MESSAGE_CANCELLED_STEM_BREAK.getMessage());
+                    main.getUtils().sendMessage(TextFormatting.RED + Message.MESSAGE_CANCELLED_STEM_BREAK.getMessage());
                 }
             }
         }

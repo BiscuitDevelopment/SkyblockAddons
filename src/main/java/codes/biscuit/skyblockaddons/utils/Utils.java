@@ -7,7 +7,6 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.mojang.realmsclient.gui.ChatFormatting;
 import net.minecraft.client.Minecraft;
-import net.minecraft.event.ClickEvent;
 import net.minecraft.launchwrapper.Launch;
 import net.minecraft.scoreboard.Score;
 import net.minecraft.scoreboard.ScoreObjective;
@@ -35,7 +34,6 @@ import java.net.URLConnection;
 import java.util.List;
 import java.util.*;
 import java.util.regex.Matcher;
-import java.util.*;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
@@ -410,12 +408,12 @@ public class Utils {
                 connection.setRequestProperty("User-Agent", USER_AGENT);
 
                 Minecraft mc = Minecraft.getMinecraft();
-                if (mc != null && mc.thePlayer != null) {
+                if (mc != null && mc.player != null) {
                     String postString;
                     if (event == EnumUtils.MagmaEvent.PING) {
-                        postString = "minecraftUser=" + mc.thePlayer.getName() + "&lastFocused=" + System.currentTimeMillis() / 1000 + "&serverId=" + serverID;
+                        postString = "minecraftUser=" + mc.player.getName() + "&lastFocused=" + System.currentTimeMillis() / 1000 + "&serverId=" + serverID;
                     } else {
-                        postString = "type=" + event.getInventiveTalentEvent() + "&isModRequest=true&minecraftUser=" + mc.thePlayer.getName() + "&serverId=" + serverID;
+                        postString = "type=" + event.getInventiveTalentEvent() + "&isModRequest=true&minecraftUser=" + mc.player.getName() + "&serverId=" + serverID;
                     }
                     connection.setDoOutput(true);
                     try (DataOutputStream out = new DataOutputStream(connection.getOutputStream())) {

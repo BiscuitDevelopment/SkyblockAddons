@@ -9,8 +9,8 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.network.play.server.S2FPacketSetSlot;
-import net.minecraft.network.play.server.S30PacketWindowItems;
+import net.minecraft.network.play.server.SPacketSetSlot;
+import net.minecraft.network.play.server.SPacketWindowItems;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -23,17 +23,17 @@ public class MixinNetHandlerPlayClient {
      *  These two injections make sure
      */
     @Inject(method = "handleSetSlot", at = @At(value = "HEAD"), cancellable = true)
-    private void handleSetSlot(S2FPacketSetSlot packetIn, CallbackInfo ci) {
+    private void handleSetSlot(SPacketSetSlot packetIn, CallbackInfo ci) {
         if (packetIn != null) {
-            ItemStack item = packetIn.func_149174_e();
-            int windowID = packetIn.func_149175_c();
-            int slot = packetIn.func_149173_d();
+            ItemStack item = packetIn.getStack();
+            int windowID = packetIn.getWindowId();
+            int slot = packetIn.getSlot();
             SkyblockAddons main = SkyblockAddons.getInstance();
             if (item != null && main != null && main.getUtils().isOnSkyblock() &&
                     main.getConfigValues().isEnabled(Feature.STOP_BOW_CHARGE_FROM_RESETTING) && windowID == 0) {
                 Minecraft mc = Minecraft.getMinecraft();
                 if (mc != null) {
-                    EntityPlayer p = mc.thePlayer;
+                    EntityPlayer p = mc.player;
                     if (p != null) {
                         InventoryPlayer inventory = p.inventory;
                         if (inventory != null) {
@@ -48,15 +48,15 @@ public class MixinNetHandlerPlayClient {
     }
 
     @Inject(method = "handleWindowItems", at = @At(value = "HEAD"))
-    private void handleSetSlot(S30PacketWindowItems packetIn, CallbackInfo ci) {
+    private void handleSetSlot(SPacketWindowItems packetIn, CallbackInfo ci) {
         if (packetIn != null) {
-            ItemStack[] itemStacks = packetIn.getItemStacks();
+            ItemStack[] itemStacks = packetIn.getItemStacks().toArray(new ItemStack[0]);
             SkyblockAddons main = SkyblockAddons.getInstance();
             if (itemStacks != null && itemStacks.length == 45 && main != null &&
                     main.getConfigValues().isEnabled(Feature.STOP_BOW_CHARGE_FROM_RESETTING) && main.getUtils().isOnSkyblock()) {
                 Minecraft mc = Minecraft.getMinecraft();
                 if (mc != null) {
-                    EntityPlayer p = mc.thePlayer;
+                    EntityPlayer p = mc.player;
                     if (p != null) {
                         InventoryPlayer inventory = p.inventory;
                         if (inventory != null) {
@@ -77,7 +77,7 @@ public class MixinNetHandlerPlayClient {
         if (itemStack != null && currentItemStack != null) {
             Item item = itemStack.getItem();
             Item currentItem = currentItemStack.getItem();
-            return item != null && currentItem != null && item.equals(Items.bow) && currentItem.equals(Items.bow) &&
+            return item != null && currentItem != null && item.equals(Items.BOW) && currentItem.equals(Items.BOW) &&
                     mc.gameSettings.keyBindUseItem.isKeyDown();
         }
         return false;

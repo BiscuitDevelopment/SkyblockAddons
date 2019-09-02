@@ -21,13 +21,13 @@ import java.util.List;
 public class MixinEntityRenderer {
 
     @Inject(method = "getMouseOver", at = @At(value = "INVOKE", target = "Ljava/util/List;size()I", ordinal = 0), locals = LocalCapture.CAPTURE_FAILSOFT)
-    private void getMouseOver(float partialTicks, CallbackInfo ci, Entity entity, double d0, double d1, Vec3 vec3, boolean flag, boolean b, Vec3 vec31, Vec3 vec32, Vec3 vec33, float f, List<Entity> list, double d2, int j) {
+    private void getMouseOver(float partialTicks, CallbackInfo ci, Entity entity, double d0, double d1, Vec3d Vec3d, boolean flag, boolean b, Vec3d Vec3d1, Vec3d Vec3d2, Vec3d Vec3d3, float f, List<Entity> list, double d2, int j) {
         removeEntities(list);
     }
 
     // This method exists in a debug enviroment instead
     @Inject(method = "getMouseOver", at = @At(value = "INVOKE", target = "Ljava/util/List;size()I", ordinal = 0), locals = LocalCapture.CAPTURE_FAILSOFT)
-    private void getMouseOver(float partialTicks, CallbackInfo ci, Entity entity, double d0, double d1, Vec3 vec3, boolean flag, int i, Vec3 vec31, Vec3 vec32, Vec3 vec33, float f, List<Entity> list, double d2, int j) {
+    private void getMouseOver(float partialTicks, CallbackInfo ci, Entity entity, double d0, double d1, Vec3d Vec3d, boolean flag, int i, Vec3d Vec3d1, Vec3d Vec3d2, Vec3d Vec3d3, float f, List<Entity> list, double d2, int j) {
         removeEntities(list);
     }
 
