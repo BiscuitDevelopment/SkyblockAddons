@@ -1,6 +1,9 @@
 /.gradle
+/.vscode
+/.settings
 /.idea
 /build
 /classes
 /run
 *.iml
+.project

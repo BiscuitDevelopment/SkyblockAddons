@@ -25,11 +25,6 @@ public class MixinRenderManager {
         double auctionX = 17.5;
         double auctionY = 71;
         double auctionZ = -78.5;
-        
-        double coreX = -670;
-        double coreY = 9;
-        double coreZ = -275;
-
         SkyblockAddons main = SkyblockAddons.getInstance();
         if (entityIn instanceof EntityItem &&
                     entityIn.ridingEntity instanceof EntityZombie && entityIn.ridingEntity.isInvisible()) { // Conditions for Skeleton Hat flying bones
