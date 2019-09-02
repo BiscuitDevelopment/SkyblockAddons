@@ -46,7 +46,7 @@
     "healthText": "จำนวนเลือด",
     "defenceIcon": "สัญลักษณ์พลังป้องกัน",
     "defenceText": "จำนวนพลังป้องกัน",
-    "defencePercentage": "เปอเซ็นต์พลังป้องกัน",
+    "defencePercentage": "เปอร์เซ็นต์พลังป้องกัน",
     "healthUpdates": "จำนวนการเพิ่มลดของเลือด",
     "hidePlayersInLobby": "Hide Nearby Entities In Lobby",
     "textStyle": "รูปแบบตัวอักษร: %style%",
@@ -63,7 +63,7 @@
     "darkAuctionTimerColor": "สีระยะเวลา Dark Auction",
     "stopBowChargeFromResetting": "ป้องการรีเซ็ตของธนูกำลังที่กำลังยิง",
     "showMagmaTimerInOtherGames": "แสดงระยะเวลาบอส Magma ในเกมอื่น",
-    "preventMovementOnDeath": "ป้องการการเดินหลังตาย",
+    "preventMovementOnDeath": "ป้องกันการเดินหลังตาย",
     "showDarkAuctionTimerInOtherGames": "แสดงระยะเวลา Dark Auction ในเกมอื่น",
     "showItemAnvilUses": "แสดงจำนวนการใช้ Anvil ของไอเทม"
   },
