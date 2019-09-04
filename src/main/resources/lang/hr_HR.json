@@ -66,8 +66,8 @@
     "preventMovementOnDeath": "Sprije?i Hodanje Nakon Smrti",
     "showDarkAuctionTimerInOtherGames": "Pokaži tajmer Crne Dražbe u ostalim igricama",
     "showItemAnvilUses": "Pokaži Broj Koristi Stvari u Anvil-u",
-    "lockSlots": "Lock Slots",
-    "dontResetCursorInventory": "Don't Reset Inventory Cursor"
+    "lockSlots": "Allow Locking Slots",
+    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories"
   },
   "messages": {
     "dropConfirmation": "Opet baci ovu stvar za konfirmaciju!",
