@@ -65,7 +65,9 @@
     "showMagmaTimerInOtherGames": "Visa Magma Boss Timer I Andra Spel",
     "preventMovementOnDeath": "Förhindra Gående Efter Död",
     "showDarkAuctionTimerInOtherGames": "Visa Mörk Auction Timer I Andra Spel",
-    "showItemAnvilUses": "Visa Atikel Städ Användningar"
+    "showItemAnvilUses": "Visa Atikel Städ Användningar",
+    "lockSlots": "Lock Slots",
+    "dontResetCursorInventory": "Don't Reset Inventory Cursor"
   },
   "messages": {
     "dropConfirmation": "Släpp Det Här Igen För Att Bekräfta!",
@@ -85,6 +87,7 @@
       "enchants": "Förtrollningar",
       "reforges": "Reforges"
     },
-    "cancelledStemBreak": "SkyblockAddons har förhindrat dig från att förstöra den här stjälken. Använd dina händer om du vill förstöra den."
+    "cancelledStemBreak": "SkyblockAddons har förhindrat dig från att förstöra den här stjälken. Använd dina händer om du vill förstöra den.",
+    "slotLocked": "This slot is locked!"
   }
 }
