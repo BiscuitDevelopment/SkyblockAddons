@@ -65,7 +65,9 @@
     "showMagmaTimerInOtherGames": "Zeige den Magma Boss-Timer in anderen Spielen",
     "preventMovementOnDeath": "Verhindere das Laufen nach dem Tot",
     "showDarkAuctionTimerInOtherGames": "Zeige den Dunkle Auktionstimer in andere Spielen",
-    "showItemAnvilUses": "Zeige Ambossnutzungen eines Items"
+    "showItemAnvilUses": "Zeige Ambossnutzungen eines Items",
+    "lockSlots": "Lock Slots",
+    "dontResetCursorInventory": "Don't Reset Inventory Cursor"
   },
   "messages": {
     "dropConfirmation": "Werfe diesen Gegenstand nochmal, um zu bestätigen!",
@@ -85,6 +87,7 @@
       "enchants": "Verzauberungen",
       "reforges": "Verbesserungen"
     },
-    "cancelledStemBreak": "SkyblockAddons hat dich davon abgehalten, diesen Stamm zu zerstören. Nutze deine leere Hand um ihn trotzdem zu zerstören."
+    "cancelledStemBreak": "SkyblockAddons hat dich davon abgehalten, diesen Stamm zu zerstören. Nutze deine leere Hand um ihn trotzdem zu zerstören.",
+    "slotLocked": "This slot is locked!"
   }
 }
