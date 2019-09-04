@@ -66,8 +66,8 @@
     "preventMovementOnDeath": "Stop het Bewegen Na het Doodgaan",
     "showDarkAuctionTimerInOtherGames": "Toon Donkere Veiling Timer in andere spellen",
     "showItemAnvilUses": "Toon Aantal keren Item In Aambeeld Gebruikt",
-    "lockSlots": "Lock Slots",
-    "dontResetCursorInventory": "Don't Reset Inventory Cursor"
+    "lockSlots": "Allow Locking Slots",
+    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories"
   },
   "messages": {
     "dropConfirmation": "Laat dit object opnieuw vallen om te Bevestigen!",
