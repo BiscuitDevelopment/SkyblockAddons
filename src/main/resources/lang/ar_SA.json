@@ -65,7 +65,9 @@
     "showMagmaTimerInOtherGames": "أظهار مؤقت زعيم الصهارة في الألعاب الأخرى",
     "preventMovementOnDeath": "منع المشي بعد الموت",
     "showDarkAuctionTimerInOtherGames": "أظهار مؤقت المزاد الأسود في الألعاب الأخرى",
-    "showItemAnvilUses": "أظهار عدد مرات أستخدام السندان"
+    "showItemAnvilUses": "أظهار عدد مرات أستخدام السندان",
+    "lockSlots": "Lock Slots",
+    "dontResetCursorInventory": "Don't Reset Inventory Cursor"
   },
   "messages": {
     "dropConfirmation": "!إرمي هذا العنصر مرة أخرى للتأكيد",
@@ -85,6 +87,7 @@
       "enchants": "التطويرات",
       "reforges": "التزويرات"
     },
-    "cancelledStemBreak": "منعك تطبيق إضافات الجزيرة الطائرة من كسر القصب. أن أردت كسره فأستخدم يدك."
+    "cancelledStemBreak": "منعك تطبيق إضافات الجزيرة الطائرة من كسر القصب. أن أردت كسره فأستخدم يدك.",
+    "slotLocked": "This slot is locked!"
   }
 }
