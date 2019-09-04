@@ -66,8 +66,8 @@
     "preventMovementOnDeath": "Evitar Caminar Después de Morir",
     "showDarkAuctionTimerInOtherGames": "Mostrar el Contador de Dark Auc en Otros Juegos",
     "showItemAnvilUses": "Mostrar los Usos de Anvil/Yunque",
-    "lockSlots": "Lock Slots",
-    "dontResetCursorInventory": "Don't Reset Inventory Cursor"
+    "lockSlots": "Allow Locking Slots",
+    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories"
   },
   "messages": {
     "dropConfirmation": "Arroja este objeto otra vez para confirmar!",
