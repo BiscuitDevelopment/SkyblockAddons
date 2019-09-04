@@ -66,8 +66,8 @@
     "preventMovementOnDeath": "Prevent Running Out of Biscuits in the Afterlife",
     "showDarkAuctionTimerInOtherGames": "Show Oven Timer In Other Bakeries",
     "showItemAnvilUses": "Show How Much Your Biscuits Gonna Cost lol",
-    "lockSlots": "Lock Slots",
-    "dontResetCursorInventory": "Don't Reset Inventory Cursor"
+    "lockSlots": "Allow Locking Slots",
+    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories"
   },
   "messages": {
     "dropConfirmation": "Throw out this biscuit again to confirm!",
