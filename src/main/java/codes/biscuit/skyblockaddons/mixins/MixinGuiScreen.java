@@ -37,8 +37,11 @@ public abstract class MixinGuiScreen {
             Container playerContainer = Minecraft.getMinecraft().thePlayer.openContainer;
             if (playerContainer instanceof ContainerChest) { // Avoid showing backpack preview in auction stuff.
                 IInventory chest = ((ContainerChest)playerContainer).getLowerChestInventory();
-                if (chest.hasCustomName() && chest.getDisplayName().getUnformattedText().contains("Auction")) {
-                    return;
+                if (chest.hasCustomName()) {
+                    String chestName = chest.getDisplayName().getUnformattedText();
+                    if (chestName.contains("Auction")||chestName.equals("Your Bids")) {
+                        return;
+                    }
                 }
             }
             if (stack.hasTagCompound()) {

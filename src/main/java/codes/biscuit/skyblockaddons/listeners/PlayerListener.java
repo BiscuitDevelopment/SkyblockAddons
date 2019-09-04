@@ -5,13 +5,16 @@ import codes.biscuit.skyblockaddons.utils.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityArmorStand;
 import net.minecraft.entity.monster.EntityBlaze;
 import net.minecraft.entity.monster.EntityMagmaCube;
 import net.minecraft.entity.monster.EntitySlime;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
@@ -19,6 +22,7 @@ import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.Vec3;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
+import net.minecraftforge.client.event.GuiOpenEvent;
 import net.minecraftforge.event.entity.EntityEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
@@ -209,7 +213,7 @@ public class PlayerListener {
     public void onInteract(PlayerInteractEvent e) {
         Minecraft mc = Minecraft.getMinecraft();
         ItemStack heldItem = e.entityPlayer.getHeldItem();
-        if (e.entityPlayer == mc.thePlayer && heldItem != null && heldItem.isItemEnchanted()) {
+        if (main.getUtils().isOnSkyblock() && e.entityPlayer == mc.thePlayer && heldItem != null && heldItem.isItemEnchanted()) {
             if (main.getConfigValues().isEnabled(Feature.DISABLE_EMBER_ROD)) {
                 if (heldItem.getItem().equals(Items.blaze_rod) && main.getUtils().getLocation() == EnumUtils.Location.ISLAND) {
                     e.setCanceled(true);
@@ -218,7 +222,8 @@ public class PlayerListener {
             }
             if (main.getConfigValues().isEnabled(Feature.AVOID_PLACING_ENCHANTED_ITEMS)) {
                 if ((e.action == PlayerInteractEvent.Action.RIGHT_CLICK_BLOCK || e.action == PlayerInteractEvent.Action.RIGHT_CLICK_AIR) &&
-                        (heldItem.getItem().equals(Items.lava_bucket) || heldItem.getItem().equals(Items.string))) {
+                        (heldItem.getItem().equals(Items.lava_bucket) || heldItem.getItem().equals(Items.string) ||
+                                heldItem.getItem().equals(Item.getItemFromBlock(Blocks.diamond_block)))) {
                     e.setCanceled(true);
                 }
             }
@@ -465,16 +470,16 @@ public class PlayerListener {
     @SubscribeEvent()
     public void onItemTooltip(ItemTooltipEvent e) {
         ItemStack hoveredItem = e.itemStack;
-
-        if (main.getConfigValues().isEnabled(Feature.SHOW_ITEM_ANVIL_USES)) {
+        if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.SHOW_ITEM_ANVIL_USES)) {
             // Anvil Uses ~ original done by Dahn#6036
             if (hoveredItem.hasTagCompound()) {
                 NBTTagCompound nbt = hoveredItem.getTagCompound();
                 if (nbt.hasKey("ExtraAttributes")) {
                     if (nbt.getCompoundTag("ExtraAttributes").hasKey("anvil_uses")) {
                         int insertAt = e.toolTip.size();
+                        insertAt--; // 1 line for the rarity
                         if (Minecraft.getMinecraft().gameSettings.advancedItemTooltips) {
-                            insertAt -= 3; // 1 line for the item name, 1 line for the nbt, and 1 line for the rarity
+                            insertAt -= 2; // 1 line for the item name, and 1 line for the nbt
                             if (e.itemStack.isItemDamaged()) {
                                 insertAt--; // 1 line for damage
                             }
@@ -510,6 +515,31 @@ public class PlayerListener {
                 }
             }
         }
+    }
+
+    private Object lastOpenedInventory = null;
+    private long lastClosedInv = -1;
+
+    @SubscribeEvent
+    public void onGuiOpen(GuiOpenEvent e) {
+        if (e.gui == null && lastOpenedInventory instanceof GuiContainer) {
+            lastClosedInv = System.currentTimeMillis();
+            lastOpenedInventory = null;
+        }
+        if (e.gui != null) {
+            lastOpenedInventory = e.gui; //todo test this
+        }
+    }
+
+//    @SubscribeEvent(receiveCanceled = true)
+//    public void onKeyInput(InputEvent.KeyInputEvent e) {
+//        if (main.getLockSlot().isPressed()) {
+//            main.getConfigValues().getLockedSlots().add(main.getUtils().getLastHoveredSlot());
+//        }
+//    }
+
+    public boolean shouldResetMouse() {
+        return System.currentTimeMillis() - lastClosedInv > 100;
     }
 
     public boolean didntRecentlyJoinWorld() {

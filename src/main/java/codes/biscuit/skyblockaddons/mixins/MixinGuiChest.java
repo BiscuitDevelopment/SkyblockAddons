@@ -3,6 +3,7 @@ package codes.biscuit.skyblockaddons.mixins;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.utils.ConfigColor;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
+import codes.biscuit.skyblockaddons.utils.Feature;
 import codes.biscuit.skyblockaddons.utils.Message;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiTextField;
@@ -10,6 +11,7 @@ import net.minecraft.client.gui.inventory.GuiChest;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.inventory.Container;
+import net.minecraft.inventory.ContainerChest;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
@@ -156,9 +158,8 @@ public abstract class MixinGuiChest extends GuiContainer {
                     if (itemSlot != null && itemSlot.getHasStack()) {
                         ItemStack item = itemSlot.getStack();
                         if (item.hasDisplayName()) {
-                            String[] nameParts = item.getDisplayName().split(" ");
-                            if (nameParts.length > 2) {
-                                String reforge = main.getUtils().stripColor(nameParts[0]);
+                            String reforge = main.getUtils().getReforgeFromItem(item);
+                            if (reforge != null) {
                                 if (main.getUtils().enchantReforgeMatches(reforge)) {
                                     main.getUtils().playSound("random.orb", 0.1);
                                     return;
@@ -167,6 +168,17 @@ public abstract class MixinGuiChest extends GuiContainer {
                         }
                     }
                 }
+            }
+        }
+        if (slotIn != null && main.getConfigValues().isEnabled(Feature.LOCK_SLOTS) &&
+                main.getUtils().isOnSkyblock()) {
+            int slotNum = slotIn.slotNumber;
+            if (mc.thePlayer.openContainer instanceof ContainerChest) {
+                slotNum -= ((ContainerChest)mc.thePlayer.openContainer).getLowerChestInventory().getSizeInventory()-9;
+            }
+            if (main.getConfigValues().getLockedSlots().contains(slotNum)) {
+                main.getUtils().playSound("note.bass", 0.5);
+                return;
             }
         }
         super.handleMouseClick(slotIn, slotId, clickedButton, clickType);

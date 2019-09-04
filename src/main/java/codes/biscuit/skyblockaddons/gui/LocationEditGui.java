@@ -40,7 +40,7 @@ public class LocationEditGui extends GuiScreen {
                 Feature.HEALTH_TEXT, Feature.DEFENCE_ICON, Feature.DEFENCE_TEXT, Feature.DEFENCE_PERCENTAGE,
                 Feature.HEALTH_UPDATES, Feature.DARK_AUCTION_TIMER, Feature.MAGMA_BOSS_TIMER, Feature.ITEM_PICKUP_LOG};
         for (Feature feature : features) {
-            if (!main.getConfigValues().isRemoteDisabled(feature)) { // Don't display features that I have disabled
+            if (!main.getConfigValues().isDisabled(feature)) { // Don't display features that have been disabled
                 buttonList.add(new ButtonLocation(main, feature));
             }
         }

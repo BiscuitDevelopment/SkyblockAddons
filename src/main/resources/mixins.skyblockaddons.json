@@ -13,6 +13,10 @@
     "MixinGuiScreen",
     "MixinGuiChest",
     "MixinPlayerControllerMP",
-    "MixinNetHandlerPlayClient"
+    "MixinNetHandlerPlayClient",
+    "MixinMouseHelper",
+    "MixinGuiInventory",
+    "MixinTileEntityEnderChestRenderer",
+    "MixinRendererLivingEntity"
   ]
 }

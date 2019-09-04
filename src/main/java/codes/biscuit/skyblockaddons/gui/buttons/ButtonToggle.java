@@ -1,6 +1,7 @@
 package codes.biscuit.skyblockaddons.gui.buttons;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui;
 import codes.biscuit.skyblockaddons.utils.ConfigColor;
 import codes.biscuit.skyblockaddons.utils.Feature;
 import net.minecraft.client.Minecraft;
@@ -77,6 +78,9 @@ public class ButtonToggle extends ButtonFeature {
             this.drawCenteredString(mc.fontRendererObj, displayString, (int)((xPosition+width/2)*scaleMultiplier), (int)((yPosition+(this.height-(8/scaleMultiplier))/2)*scaleMultiplier), fontColor);
             GlStateManager.disableBlend();
             GlStateManager.popMatrix();
+            if (hovered) {
+                SkyblockAddonsGui.setTooltipFeature(feature);
+            }
         }
     }
 }

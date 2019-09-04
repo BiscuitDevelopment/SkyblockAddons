@@ -36,6 +36,7 @@ public class RenderListener {
     private final ResourceLocation BARS = new ResourceLocation("skyblockaddons", "bars.png");
     private final ResourceLocation DEFENCE_VANILLA = new ResourceLocation("skyblockaddons", "defence.png");
     private final ResourceLocation TEXT_ICONS = new ResourceLocation("skyblockaddons", "icons.png");
+    public static final ResourceLocation LOCK = new ResourceLocation("skyblockaddons", "lockgold.png");
 
     private boolean predictHealth = false;
     private boolean predictMana = false;
@@ -49,7 +50,6 @@ public class RenderListener {
     public RenderListener(SkyblockAddons main) {
         this.main = main;
     }
-
     /**
      * Render overlays and warnings for clients without labymod.
      */
@@ -395,32 +395,28 @@ public class RenderListener {
             timestamp.append(seconds);
             text = timestamp.toString();
         } else if (feature == Feature.MAGMA_BOSS_TIMER) {
-            if (buttonLocation == null) {
-                StringBuilder magmaBuilder = new StringBuilder();
-                magmaBuilder.append(main.getPlayerListener().getMagmaAccuracy().getSymbol());
-                EnumUtils.MagmaTimerAccuracy ma = main.getPlayerListener().getMagmaAccuracy();
-                if (ma == EnumUtils.MagmaTimerAccuracy.ABOUT || ma == EnumUtils.MagmaTimerAccuracy.EXACTLY) {
-                    int totalSeconds = main.getPlayerListener().getMagmaTime();
-                    int hours = totalSeconds / 3600;
-                    int minutes = totalSeconds / 60 % 60;
-                    int seconds = totalSeconds % 60;
-                    if (Math.abs(hours) >= 10) hours = 10;
-                    magmaBuilder.append(hours).append(":");
-                    if (minutes < 10) {
-                        magmaBuilder.append("0");
-                    }
-                    magmaBuilder.append(minutes).append(":");
-                    if (seconds < 10) {
-                        magmaBuilder.append("0");
-                    }
-                    magmaBuilder.append(seconds);
-                }// else if (ma == EnumUtils.MagmaTimerAccuracy.SPAWNED) {
-//                    magmaBuilder.append(main.getPlayerListener().getMagmaBossHealth()).append("\u2764");
-                //}
-                text = magmaBuilder.toString();
+            StringBuilder magmaBuilder = new StringBuilder();
+            magmaBuilder.append(main.getPlayerListener().getMagmaAccuracy().getSymbol());
+            EnumUtils.MagmaTimerAccuracy ma = main.getPlayerListener().getMagmaAccuracy();
+            if (ma == EnumUtils.MagmaTimerAccuracy.ABOUT || ma == EnumUtils.MagmaTimerAccuracy.EXACTLY) {
+                int totalSeconds = main.getPlayerListener().getMagmaTime();
+                int hours = totalSeconds / 3600;
+                int minutes = totalSeconds / 60 % 60;
+                int seconds = totalSeconds % 60;
+                if (Math.abs(hours) >= 10) hours = 10;
+                magmaBuilder.append(hours).append(":");
+                if (minutes < 10) {
+                    magmaBuilder.append("0");
+                }
+                magmaBuilder.append(minutes).append(":");
+                if (seconds < 10) {
+                    magmaBuilder.append("0");
+                }
+                magmaBuilder.append(seconds);
             } else {
-                text = "~12:34";
+                magmaBuilder.append("1:23:45");
             }
+            text = magmaBuilder.toString();
         } else {
             return;
         }
@@ -459,11 +455,9 @@ public class RenderListener {
         mc.getTextureManager().bindTexture(TEXT_ICONS);
         GlStateManager.color(1,1,1,1);
         if (feature == Feature.DARK_AUCTION_TIMER) {
-//                Gui.drawModalRectWithCustomSizedTexture(intX, intY, 0, 0, 16,16,32,32);
             Gui.drawModalRectWithCustomSizedTexture(intX-18, intY-5, 16, 0, 16,16,32,32);
         } else if (feature == Feature.MAGMA_BOSS_TIMER) {
-                Gui.drawModalRectWithCustomSizedTexture(intX-18, intY-5, 0, 0, 16,16,32,32);
-//            Gui.drawModalRectWithCustomSizedTexture(intX-16, intY-(16-10), 16, 0, 16,16,32,32);
+            Gui.drawModalRectWithCustomSizedTexture(intX-18, intY-5, 0, 0, 16,16,32,32);
         }
     }
 
@@ -544,7 +538,7 @@ public class RenderListener {
     @SubscribeEvent()
     public void onRender(TickEvent.RenderTickEvent e) {
         if (guiToOpen == PlayerListener.GUIType.MAIN) {
-            Minecraft.getMinecraft().displayGuiScreen(new SkyblockAddonsGui(main, 1, 1));
+            Minecraft.getMinecraft().displayGuiScreen(new SkyblockAddonsGui(main, 1, EnumUtils.SkyblockAddonsGuiTab.FEATURES));
         } else if (guiToOpen == PlayerListener.GUIType.EDIT_LOCATIONS) {
             Minecraft.getMinecraft().displayGuiScreen(new LocationEditGui(main));
         }

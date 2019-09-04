@@ -151,6 +151,9 @@ public class SettingsGui extends GuiScreen {
                         main.getConfigValues().setWarningSeconds(main.getConfigValues().getWarningSeconds() - 1);
                     }
                 }
+                cancelScreenReturn = true;
+                Minecraft.getMinecraft().displayGuiScreen(new SettingsGui(main));
+                cancelScreenReturn = false;
             } else if (abstractButton instanceof ButtonToggle) {
                 if (main.getConfigValues().isDisabled(feature)) {
                     main.getConfigValues().getDisabledFeatures().remove(feature);

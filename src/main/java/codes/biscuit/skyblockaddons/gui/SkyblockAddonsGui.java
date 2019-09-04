@@ -1,12 +1,10 @@
 package codes.biscuit.skyblockaddons.gui;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.gui.buttons.ButtonFeature;
-import codes.biscuit.skyblockaddons.gui.buttons.ButtonSolid;
-import codes.biscuit.skyblockaddons.gui.buttons.ButtonToggle;
+import codes.biscuit.skyblockaddons.gui.buttons.*;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.Feature;
-import codes.biscuit.skyblockaddons.utils.Message;
+import com.google.common.collect.Sets;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
@@ -17,111 +15,106 @@ import net.minecraftforge.client.GuiIngameForge;
 
 import java.awt.*;
 import java.io.IOException;
+import java.util.Set;
 import java.util.regex.Pattern;
 
 public class SkyblockAddonsGui extends GuiScreen {
 
     public static final int BUTTON_MAX_WIDTH = 140;
+    private static Feature tooltipFeature;
 
+    private EnumUtils.SkyblockAddonsGuiTab tab;
     private SkyblockAddons main;
     private int page;
-    private int previousPage;
     private GuiTextField magmaTextField = null;
+    private int row = 1;
+    private int collumn = 1;
+    private int displayCount;
 
     private long timeOpened = System.currentTimeMillis();
+    private static Set<Feature> settingFeatures = Sets.newHashSet(Feature.MAGMA_WARNING, Feature.DROP_CONFIRMATION,
+            Feature.MANA_BAR, Feature.MANA_TEXT, Feature.HEALTH_BAR, Feature.HEALTH_TEXT, Feature.DEFENCE_TEXT, Feature.DEFENCE_PERCENTAGE,
+            Feature.HIDE_HUD_BARS, Feature.SHOW_BACKPACK_PREVIEW);
 
     /**
      * The main gui, opened with /sba.
      */
-    public SkyblockAddonsGui(SkyblockAddons main, int page, int previousPage) {
+    public SkyblockAddonsGui(SkyblockAddons main, int page, EnumUtils.SkyblockAddonsGuiTab tab) {
+        this.tab = tab;
         this.main = main;
         this.page = page;
-        this.previousPage = previousPage;
     }
 
     @Override
     public void initGui() {
+        row = 1;
+        collumn = 1;
+        int scale = mc.gameSettings.guiScale;
+        if (scale == 0) {
+            displayCount = 6;
+        } else if (scale == 1) {
+            displayCount = 24;
+        } else if (scale == 2) {
+            displayCount = 15;
+        } else if (scale == 3) {
+            displayCount = 9;
+        }
+        addLanguageButton();
         // Add the buttons for each page.
-        if (page == 1) {
-            addButton(1, Feature.SHOW_ENCHANTMENTS_REFORGES, 1, EnumUtils.ButtonType.TOGGLE);
-            addButton(1, Feature.SHOW_BACKPACK_PREVIEW, 2, EnumUtils.ButtonType.TOGGLE);
-            addButton(1, Feature.MINION_FULL_WARNING, 3, EnumUtils.ButtonType.TOGGLE);
-            addButton(2, Feature.HIDE_BONES, 1, EnumUtils.ButtonType.TOGGLE);
-            addButton(2, Feature.FULL_INVENTORY_WARNING, 2, EnumUtils.ButtonType.TOGGLE);
-            addButton(2, Feature.DISABLE_EMBER_ROD, 3, EnumUtils.ButtonType.TOGGLE);
-            addButton(3, Feature.HIDE_AUCTION_HOUSE_PLAYERS, 1, EnumUtils.ButtonType.TOGGLE);
-            addButton(3, Feature.IGNORE_ITEM_FRAME_CLICKS, 2, EnumUtils.ButtonType.TOGGLE);
-            addButton(3, Feature.HIDE_FOOD_ARMOR_BAR, 3, EnumUtils.ButtonType.TOGGLE);
-            addButton(4, Feature.HIDE_HEALTH_BAR, 1, EnumUtils.ButtonType.TOGGLE);
-            addButton(4, Feature.STOP_BOW_CHARGE_FROM_RESETTING, 2, EnumUtils.ButtonType.TOGGLE);
-            addButton(4, Feature.AVOID_BREAKING_STEMS, 3, EnumUtils.ButtonType.TOGGLE);
-            addButton(5, Feature.HIDE_DURABILITY, 1, EnumUtils.ButtonType.TOGGLE);
-            addButton(5, Feature.MAGMA_WARNING, 2, EnumUtils.ButtonType.TOGGLE);
-            addButton(5, Feature.DROP_CONFIRMATION, 3, EnumUtils.ButtonType.TOGGLE);
-//            ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
-//            magmaTextField = new GuiTextField(0, fontRendererObj, sr.getScaledWidth()-150, 50, 120,20);
-//            magmaTextField.setMaxStringLength(8);
-//            if (main.getPlayerListener().getMagmaAccuracy() != EnumUtils.MagmaTimerAccuracy.NO_DATA) {
-//                magmaTextField.setText(getMagmaText());
-//            }
+        Feature[] array;
+        if (tab == EnumUtils.SkyblockAddonsGuiTab.FEATURES) {
+            array = new Feature[]{Feature.SHOW_ENCHANTMENTS_REFORGES, Feature.SHOW_BACKPACK_PREVIEW,
+                    Feature.MINION_FULL_WARNING, Feature.FULL_INVENTORY_WARNING,
+                    Feature.IGNORE_ITEM_FRAME_CLICKS, Feature.HIDE_FOOD_ARMOR_BAR, Feature.HIDE_HEALTH_BAR,
+                    Feature.AVOID_BREAKING_STEMS, Feature.MAGMA_WARNING,
+                    Feature.DROP_CONFIRMATION, Feature.HIDE_PLAYERS_IN_LOBBY, Feature.MINION_STOP_WARNING,
+                    Feature.SHOW_ITEM_ANVIL_USES, Feature.LOCK_SLOTS, Feature.DONT_RESET_CURSOR_INVENTORY};
+        } else if (tab == EnumUtils.SkyblockAddonsGuiTab.FIXES) {
+            array = new Feature[]{Feature.HIDE_BONES, Feature.DISABLE_EMBER_ROD, Feature.HIDE_AUCTION_HOUSE_PLAYERS,
+                    Feature.STOP_BOW_CHARGE_FROM_RESETTING, Feature.AVOID_PLACING_ENCHANTED_ITEMS, Feature.PREVENT_MOVEMENT_ON_DEATH
+                    , Feature.HIDE_DURABILITY};
+        } else if (tab == EnumUtils.SkyblockAddonsGuiTab.GUI_FEATURES) {
+            array = new Feature[]{Feature.MAGMA_BOSS_TIMER, Feature.MANA_BAR, Feature.MANA_TEXT, Feature.DEFENCE_TEXT, Feature.DEFENCE_PERCENTAGE,
+                    Feature.HEALTH_BAR, Feature.HEALTH_TEXT, Feature.DEFENCE_ICON, Feature.SKELETON_BAR, Feature.HEALTH_UPDATES,
+                    Feature.ITEM_PICKUP_LOG, Feature.DARK_AUCTION_TIMER};
+        } else {
+            array = new Feature[]{};
+        }
+        int skip = (page-1)*displayCount;
 
-            addButton(6, Feature.NEXT_PAGE, 2, EnumUtils.ButtonType.SOLID);
-        } else if (page == 2) {
-            addButton(1, Feature.HIDE_PLAYERS_IN_LOBBY, 1, EnumUtils.ButtonType.TOGGLE);
-            addButton(1, Feature.MINION_STOP_WARNING, 2, EnumUtils.ButtonType.TOGGLE);
-//            addButton(1, Feature.MAKE_ENDERMEN_HOLDING_ITEMS_PINK, 2, EnumUtils.ButtonType.TOGGLE);
-            addButton(1, Feature.AVOID_PLACING_ENCHANTED_ITEMS, 3, EnumUtils.ButtonType.TOGGLE);
-            addButton(2, Feature.DEFENCE_TEXT, 1, EnumUtils.ButtonType.TOGGLE);
-            addButton(2, Feature.MANA_BAR, 2, EnumUtils.ButtonType.TOGGLE);
-            addButton(2, Feature.HEALTH_BAR, 3, EnumUtils.ButtonType.TOGGLE);
-            addButton(3, Feature.DEFENCE_ICON, 1, EnumUtils.ButtonType.TOGGLE);
-            addButton(3, Feature.MANA_TEXT, 2, EnumUtils.ButtonType.TOGGLE);
-            addButton(3, Feature.HEALTH_TEXT, 3, EnumUtils.ButtonType.TOGGLE);
-            addButton(4, Feature.DEFENCE_PERCENTAGE, 1, EnumUtils.ButtonType.TOGGLE);
-            addButton(4, Feature.SKELETON_BAR, 2, EnumUtils.ButtonType.TOGGLE);
-            addButton(4, Feature.HEALTH_UPDATES, 3, EnumUtils.ButtonType.TOGGLE);
-            addButton(5, Feature.ITEM_PICKUP_LOG, 1, EnumUtils.ButtonType.TOGGLE);
-            addButton(5, Feature.MAGMA_BOSS_TIMER, 2, EnumUtils.ButtonType.TOGGLE);
-            addButton(5, Feature.DARK_AUCTION_TIMER, 3, EnumUtils.ButtonType.TOGGLE);
+        boolean max = page == 1;
+        buttonList.add(new ButtonArrow(width/2-15-50, height-70, main, ButtonArrow.ArrowType.LEFT, max));
+        max = array.length-skip-displayCount <= 0;
+        buttonList.add(new ButtonArrow(width/2-15+50, height-70, main, ButtonArrow.ArrowType.RIGHT, max));
 
-            if (previousPage == 3) {
-                addButton(6, Feature.NEXT_PAGE, 5, EnumUtils.ButtonType.SOLID);
-                addButton(6, Feature.PREVIOUS_PAGE, 2, EnumUtils.ButtonType.SOLID);
+        for (Feature feature : array) {
+            if (skip == 0) {
+                addButton(feature, EnumUtils.ButtonType.TOGGLE);
             } else {
-                addButton(6, Feature.NEXT_PAGE, 2, EnumUtils.ButtonType.SOLID);
-                addButton(6, Feature.PREVIOUS_PAGE, 5, EnumUtils.ButtonType.SOLID);
+                skip--;
             }
-        } else if (page == 3) {
-            addButton(1, Feature.SHOW_ITEM_ANVIL_USES, 1, EnumUtils.ButtonType.TOGGLE);
-            addButton(1, Feature.PREVENT_MOVEMENT_ON_DEATH, 2, EnumUtils.ButtonType.TOGGLE);
-
-            addButton(6, Feature.PREVIOUS_PAGE, 2, EnumUtils.ButtonType.SOLID);
         }
-        addButton(8.5, Feature.EDIT_LOCATIONS, 1, EnumUtils.ButtonType.SOLID);
-        addButton(8.5, Feature.SETTINGS, 2, EnumUtils.ButtonType.SOLID);
-        addButton(8.5, Feature.LANGUAGE, 3, EnumUtils.ButtonType.SOLID);
-    }
-
-    private String getMagmaText() {
-        StringBuilder magmaBuilder = new StringBuilder();
-        int totalSeconds = main.getPlayerListener().getMagmaTime();
-        int hours = totalSeconds / 3600;
-        int minutes = totalSeconds / 60 % 60;
-        int seconds = totalSeconds % 60;
-        magmaBuilder.append("0").append(hours).append(":");
-        if (minutes < 10) {
-            magmaBuilder.append("0");
-        }
-        magmaBuilder.append(minutes).append(":");
-        if (seconds < 10) {
-            magmaBuilder.append("0");
-        }
-        magmaBuilder.append(seconds);
-        return magmaBuilder.toString();
+        ScaledResolution sr = new ScaledResolution(mc);
+        float textScale = 1.4F;
+        int x = sr.getScaledWidth()/2;
+        int y = (int)(sr.getScaledHeight() * 0.21);
+        String text = "Features";
+        buttonList.add(new ButtonSwitchTab(x-180, y, (int)(fontRendererObj.getStringWidth(text)*textScale),
+                14, text, main, EnumUtils.SkyblockAddonsGuiTab.FEATURES, tab));
+        text = "Fixes";
+        buttonList.add(new ButtonSwitchTab(x-80, y, (int)(fontRendererObj.getStringWidth(text)*textScale),
+                14, text, main, EnumUtils.SkyblockAddonsGuiTab.FIXES, tab));
+        text = "GUI Features";
+        buttonList.add(new ButtonSwitchTab(x-20, y, (int)(fontRendererObj.getStringWidth(text)*textScale),
+                14, text, main, EnumUtils.SkyblockAddonsGuiTab.GUI_FEATURES, tab));
+        text = "General Settings";
+        buttonList.add(new ButtonSwitchTab(x+90, y, (int)(fontRendererObj.getStringWidth(text)*textScale),
+                14, text, main, EnumUtils.SkyblockAddonsGuiTab.GENERAL_SETTINGS, tab));
     }
 
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
+        tooltipFeature = null;
         long timeSinceOpen = System.currentTimeMillis() - timeOpened;
         float alphaMultiplier; // This all calculates the alpha for the fade-in effect.
         alphaMultiplier = 0.5F;
@@ -142,34 +135,13 @@ public class SkyblockAddonsGui extends GuiScreen {
         int defaultBlue = main.getUtils().getDefaultBlue(alpha*2);
 
         // The text at the top of the GUI
-        drawScaledString("SkyblockAddons", 0.12, defaultBlue, 2.5F);
-        drawScaledString("v" + SkyblockAddons.VERSION + " by Biscut", 0.12, defaultBlue, 1.3, 50, 17);
-        drawScaledString(Message.SETTING_SETTINGS.getMessage(), 0.8, defaultBlue, 1.5);
-        if (page == 1) {
-            if (main.isUsingLabymod() || main.getUtils().isDevEnviroment()) { // Show the labymod message also when i'm testing it to make sure it looks fine.
-                drawScaledString(Message.MESSAGE_LABYMOD.getMessage(), 0.75, defaultBlue, 1);
-            }
-        }// else if (page == 2) {
-//            drawScaledString("GUI Items", 0.26, defaultBlue, 1.8F);
-//        }
-        ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
-//        drawCenteredString(fontRendererObj, "Set Magma Boss Timer - HH:MM:SS",
-//                sr.getScaledWidth()-91, 25, defaultBlue);
-        drawCenteredString(fontRendererObj, "Credits to InventiveTalent",
-                sr.getScaledWidth()-91, 35, defaultBlue);
-        drawCenteredString(fontRendererObj, "for the Magma Boss API",
-                sr.getScaledWidth()-91, 45, defaultBlue);
-        if (magmaTextField != null) {
-            if ((main.getPlayerListener().getMagmaAccuracy() == EnumUtils.MagmaTimerAccuracy.EXACTLY ||
-                    main.getPlayerListener().getMagmaAccuracy() == EnumUtils.MagmaTimerAccuracy.ABOUT)
-                    && !magmaTextField.isFocused()) {
-                magmaTextField.setText(getMagmaText());
-            }
-            magmaTextField.drawTextBox();
-//            if (magmaTextField.getText().trim().equals("")) {
-//                mc.ingameGUI.drawString(mc.fontRendererObj, "HH:MM:SS - Magma Boss", 4, 6, ConfigColor.DARK_GRAY.getColor(255));
-//            }
-        }
+        drawScaledString("SkyblockAddons", 0.08, defaultBlue, 2.5F);
+        drawScaledString("v" + SkyblockAddons.VERSION + " by Biscut", 0.08, defaultBlue, 1.3, 50, 15);
+//        drawScaledString("Features", 0.21, defaultBlue, 1.5, -100, 0);
+        defaultBlue = main.getUtils().getDefaultBlue(alpha);
+//        drawScaledString("Fixes", 0.21, defaultBlue, 1.5, -50, 0);
+//        drawScaledString("GUI Features ", 0.21, defaultBlue, 1.5,10,0);
+//        drawScaledString("General Settings", 0.21, defaultBlue, 1.5, 100, 0);
         super.drawScreen(mouseX, mouseY, partialTicks); // Draw buttons.
     }
 
@@ -184,20 +156,20 @@ public class SkyblockAddonsGui extends GuiScreen {
                 main.getUtils().setFadingIn(false);
                 Minecraft.getMinecraft().displayGuiScreen(new SettingsGui(main));
             } else if (feature == Feature.LANGUAGE) {
-                main.getConfigValues().setLanguage(main.getConfigValues().getLanguage().getNextLanguage());
-                main.getConfigValues().loadLanguageFile();
+//                main.getConfigValues().setLanguage(main.getConfigValues().getLanguage().getNextLanguage());
+//                main.getConfigValues().loadLanguageFile();
                 main.getUtils().setFadingIn(false);
-                Minecraft.getMinecraft().displayGuiScreen(new SkyblockAddonsGui(main, page, page));
+                Minecraft.getMinecraft().displayGuiScreen(new SettingsGuiTwo(main, Feature.LANGUAGE, 1, page,tab));
             }  else if (feature == Feature.EDIT_LOCATIONS) {
                 main.getUtils().setFadingIn(false);
                 Minecraft.getMinecraft().displayGuiScreen(new LocationEditGui(main));
             } else if (feature == Feature.NEXT_PAGE) {
                 main.getUtils().setFadingIn(false);
-                Minecraft.getMinecraft().displayGuiScreen(new SkyblockAddonsGui(main, page+1, page));
+                Minecraft.getMinecraft().displayGuiScreen(new SkyblockAddonsGui(main, page+1, tab));
             } else if (feature == Feature.PREVIOUS_PAGE) {
                 main.getUtils().setFadingIn(false);
-                Minecraft.getMinecraft().displayGuiScreen(new SkyblockAddonsGui(main, page-1, page));
-            } else {
+                Minecraft.getMinecraft().displayGuiScreen(new SkyblockAddonsGui(main, page-1, tab));
+            } else if (abstractButton instanceof ButtonToggleTwo) {
                 if (main.getConfigValues().isDisabled(feature)) {
                     main.getConfigValues().getDisabledFeatures().remove(feature);
                 } else {
@@ -209,6 +181,20 @@ public class SkyblockAddonsGui extends GuiScreen {
                     }
                 }
             }
+        } else if (abstractButton instanceof ButtonArrow) {
+            ButtonArrow arrow = (ButtonArrow)abstractButton;
+            if (!arrow.isMax()) {
+                main.getUtils().setFadingIn(false);
+                if (arrow.getArrowType() == ButtonArrow.ArrowType.RIGHT) {
+                    mc.displayGuiScreen(new SkyblockAddonsGui(main, ++page, tab));
+                } else {
+                    mc.displayGuiScreen(new SkyblockAddonsGui(main, --page, tab));
+                }
+            }
+        } else if (abstractButton instanceof ButtonSwitchTab) {
+            ButtonSwitchTab tab = (ButtonSwitchTab)abstractButton;
+            main.getUtils().setFadingIn(false);
+            mc.displayGuiScreen(new SkyblockAddonsGui(main, 1, tab.getTab()));
         }
     }
 
@@ -232,34 +218,46 @@ public class SkyblockAddonsGui extends GuiScreen {
     /**
      * Adds a button, limiting its width and setting the correct position.
      */
-    private void addButton(double row, Feature feature, int collumn, EnumUtils.ButtonType buttonType) {
+    private void addButton(Feature feature, EnumUtils.ButtonType buttonType) {
+        if (displayCount == 0) return;
         if (main.getConfigValues().isRemoteDisabled(feature)) { // Don't display features that I have disabled
             return;
         }
         String text = feature.getMessage();
         int halfWidth = width/2;
-        int oneThird = width/3;
-        int twoThirds = oneThird*2;
-        int boxWidth = fontRendererObj.getStringWidth(text)+10;
-        if (boxWidth > BUTTON_MAX_WIDTH) boxWidth = BUTTON_MAX_WIDTH;
-        int boxHeight = 20;
+        int boxWidth = 140;
+        int boxHeight = 50;
         int x = 0;
         if (collumn == 1) {
-            x = oneThird-boxWidth-30;
+            x = halfWidth-90-boxWidth;
         } else if (collumn == 2) {
             x = halfWidth-(boxWidth/2);
         } else if (collumn == 3) {
-            x = twoThirds+30;
-        } else if (collumn == 4) {
-            x = oneThird-(boxWidth/2);
-        } else if (collumn == 5) {
-            x = twoThirds-(boxWidth/2);
+            x = halfWidth+90;
         }
+        double y = getRowHeight(row);
         if (buttonType == EnumUtils.ButtonType.TOGGLE) {
-            buttonList.add(new ButtonToggle(x, getRowHeight(row), boxWidth, boxHeight, text, main, feature));
-        } else if (buttonType == EnumUtils.ButtonType.SOLID) {
-            buttonList.add(new ButtonSolid(x, getRowHeight(row), boxWidth, boxHeight, text, main, feature));
+            buttonList.add(new ButtonNormal(x, y, text, main, feature));
+            if (settingFeatures.contains(feature)) {
+                buttonList.add(new ButtonSettings(x + boxWidth - 33, y + boxHeight - 23, text, main, feature));
+            }
+            buttonList.add(new ButtonToggleTwo(x+40, y+boxHeight-23, text, main, feature));
         }
+        collumn++;
+        if (collumn > 3) {
+            collumn = 1;
+            row++;
+        }
+        displayCount--;
+    }
+
+    private void addLanguageButton() {
+        int halfWidth = width/2;
+        int boxWidth = 140;
+        int boxHeight = 50;
+        int x = halfWidth+90;
+        double y = getRowHeight(displayCount/3+1);
+        buttonList.add(new ButtonNormal(x, y, boxWidth, boxHeight, "Language: "+Feature.LANGUAGE.getMessage(), main, Feature.LANGUAGE));
     }
 
     @Override
@@ -296,7 +294,8 @@ public class SkyblockAddonsGui extends GuiScreen {
 
     // Each row is spaced 0.08 apart, starting at 0.17.
     private double getRowHeight(double row) {
-        return height * (0.17+(row*0.08));
+        row--;
+        return height*0.28+(row*60); //height*(0.18+(row*0.08));
     }
 
     /**
@@ -305,5 +304,13 @@ public class SkyblockAddonsGui extends GuiScreen {
     @Override
     public void onGuiClosed() {
         main.getConfigValues().saveConfig();
+    }
+
+    public static void setTooltipFeature(Feature tooltipFeature) {
+        SkyblockAddonsGui.tooltipFeature = tooltipFeature;
+    }
+
+    public EnumUtils.SkyblockAddonsGuiTab getTab() {
+        return tab;
     }
 }

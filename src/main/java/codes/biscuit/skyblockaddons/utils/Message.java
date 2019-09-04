@@ -70,6 +70,8 @@ public enum Message {
     SETTING_SHOW_DARK_AUCTION_TIMER_IN_OTHER_GAMES(MessageObject.SETTING, "showDarkAuctionTimerInOtherGames"),
     SETTING_SHOW_ITEM_ANVIL_USES(MessageObject.SETTING, "showItemAnvilUses"),
     SETTING_PREVENT_MOVEMENT_ON_DEATH(MessageObject.SETTING, "preventMovementOnDeath"),
+    SETTING_LOCK_SLOTS(MessageObject.SETTING, "lockSlots"),
+    SETTING_DONT_RESET_CURSOR_INVENTORY(MessageObject.SETTING, "dontResetCursorInventory"),
 
     BACKPACK_STYLE_GUI(MessageObject.STYLE, "inventory"),
     BACKPACK_STYLE_COMPACT(MessageObject.STYLE, "compact"),
@@ -88,6 +90,7 @@ public enum Message {
     MESSAGE_ENCHANTS_TO_MATCH(MessageObject.MESSAGES, "enchantsToMatch"),
     MESSAGE_ENCHANTS_TO_EXCLUDE(MessageObject.MESSAGES, "enchantsToExclude"),
     MESSAGE_CANCELLED_STEM_BREAK(MessageObject.MESSAGES, "cancelledStemBreak"),
+    MESSAGE_SLOT_LOCKED(MessageObject.MESSAGES, "slotLocked"),
 
     @Deprecated ANCHOR_POINT_TOP_LEFT(MessageObject.ANCHOR_POINT, "topLeft"),
     @Deprecated ANCHOR_POINT_TOP_RIGHT(MessageObject.ANCHOR_POINT, "topRight"),
@@ -144,8 +147,8 @@ public enum Message {
                     text = text.replace("%style%", main.getConfigValues().getTextStyle().getMessage());
                 } else if (this == Message.MESSAGE_DEVELOPMENT_VERSION) {
                     text = text.replace("%version%", variables[0]).replace("%newestVersion%", variables[1]);
-                } else if (this == Message.LANGUAGE) {
-                    text = "Language: " + text;
+                //} else if (this == Message.LANGUAGE) {
+                //    text = "Language: " + text;
                 } else if (this == Message.MESSAGE_MINION_CANNOT_REACH || this == Message.MESSAGE_TYPE_ENCHANTMENTS
                         || this == Message.MESSAGE_ENCHANTS_TO_MATCH || this == Message.MESSAGE_ENCHANTS_TO_EXCLUDE) {
                     text = text.replace("%type%", variables[0]);

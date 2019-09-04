@@ -33,6 +33,7 @@ public class ConfigValues {
     private EnumUtils.TextStyle textStyle = EnumUtils.TextStyle.REGULAR;
 //    private long nextMagmaTimestamp = -1;
     private Set<Feature> remoteDisabledFeatures = EnumSet.noneOf(Feature.class);
+    private Set<Integer> lockedSlots = new HashSet<>();
 
     public ConfigValues(SkyblockAddons main, File settingsConfigFile) {
         this.main = main;
@@ -67,6 +68,12 @@ public class ConfigValues {
                     disabledFeatures.add(feature);
                 }
             }
+            if (settingsConfig.has("lockedSlots")) {
+                for (JsonElement element : settingsConfig.getAsJsonArray("lockedSlots")) {
+                    lockedSlots.add(element.getAsInt());
+                }
+            }
+
             warningSeconds = settingsConfig.get("warningSeconds").getAsInt();
             if (settingsConfig.has("manaBarX")) {
                 coordinates.put(Feature.MANA_BAR, new CoordsPair(settingsConfig.get("manaBarX").getAsInt(), settingsConfig.get("manaBarY").getAsInt()));
@@ -216,17 +223,22 @@ public class ConfigValues {
     }
 
     private void addDefaultsAndSave() {
-        String minecraftLanguage = Minecraft.getMinecraft().getLanguageManager().getCurrentLanguage().getLanguageCode().toLowerCase();
-        Language configLanguage = Language.getFromPath(minecraftLanguage);
-        if (configLanguage != null) { // Check if we have the exact locale they are using for Minecraft
-            language = configLanguage;
-        } else { // Check if we at least have the same language (different locale)
-            String languageCode = minecraftLanguage.split("_")[0];
-            for (Language loopLanguage : Language.values()) {
-                String loopLanguageCode = loopLanguage.getPath().split("_")[0];
-                if (loopLanguageCode.equals(languageCode)) {
-                    language = loopLanguage;
-                    break;
+        Minecraft mc = Minecraft.getMinecraft();
+        if (mc != null) {
+            if (mc.getLanguageManager() != null && mc.getLanguageManager().getCurrentLanguage().getLanguageCode() != null) {
+                String minecraftLanguage = Minecraft.getMinecraft().getLanguageManager().getCurrentLanguage().getLanguageCode().toLowerCase();
+                Language configLanguage = Language.getFromPath(minecraftLanguage);
+                if (configLanguage != null) { // Check if we have the exact locale they are using for Minecraft
+                    language = configLanguage;
+                } else { // Check if we at least have the same language (different locale)
+                    String languageCode = minecraftLanguage.split("_")[0];
+                    for (Language loopLanguage : Language.values()) {
+                        String loopLanguageCode = loopLanguage.getPath().split("_")[0];
+                        if (loopLanguageCode.equals(languageCode)) {
+                            language = loopLanguage;
+                            break;
+                        }
+                    }
                 }
             }
         }
@@ -328,6 +340,10 @@ public class ConfigValues {
     }
 
     public void loadLanguageFile() {
+        loadLanguageFile(language);
+    }
+
+    public void loadLanguageFile(Language language) {
         try {
             InputStream fileStream = getClass().getClassLoader().getResourceAsStream("lang/" + language.getPath() + ".json");
             if (fileStream != null) {
@@ -360,6 +376,12 @@ public class ConfigValues {
                 jsonArray.add(new GsonBuilder().create().toJsonTree(element.getId()));
             }
             settingsConfig.add("disabledFeatures", jsonArray);
+
+            jsonArray = new JsonArray();
+            for (int slot : lockedSlots) {
+                jsonArray.add(new GsonBuilder().create().toJsonTree(slot));
+            }
+            settingsConfig.add("lockedSlots", jsonArray);
 
 //            jsonArray = new JsonArray();
             JsonObject anchorObject = new JsonObject();
@@ -574,5 +596,9 @@ public class ConfigValues {
 
     Set<Feature> getRemoteDisabledFeatures() {
         return remoteDisabledFeatures;
+    }
+
+    public Set<Integer> getLockedSlots() {
+        return lockedSlots;
     }
 }
