@@ -65,7 +65,9 @@
     "showMagmaTimerInOtherGames": "Arată timpul Până la Magma Boss in alte jocuri",
     "preventMovementOnDeath": "Evită Mersul După Moarte",
     "showDarkAuctionTimerInOtherGames": "Arată timpul Până la Dark Auction in alte jocuri",
-    "showItemAnvilUses": "Arată Utilizările Nicovalei pe Obiect"
+    "showItemAnvilUses": "Arată Utilizările Nicovalei pe Obiect",
+    "lockSlots": "Lock Slots",
+    "dontResetCursorInventory": "Don't Reset Inventory Cursor"
   },
   "messages": {
     "dropConfirmation": "Arunca acest obiect iar ca să confirmi!",
@@ -85,6 +87,7 @@
       "enchants": "Enchanturi",
       "reforges": "Refăuriri"
     },
-    "cancelledStemBreak": "SkyblockAddons te-a oprit din spargerea plantei. Te rog folosește mâna liberă dacă vrei să o spargi."
+    "cancelledStemBreak": "SkyblockAddons te-a oprit din spargerea plantei. Te rog folosește mâna liberă dacă vrei să o spargi.",
+    "slotLocked": "This slot is locked!"
   }
 }
