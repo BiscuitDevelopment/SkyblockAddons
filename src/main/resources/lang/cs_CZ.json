@@ -66,8 +66,8 @@
     "preventMovementOnDeath": "Zabránit chození po smrti",
     "showDarkAuctionTimerInOtherGames": "Zobrazit časovač do Temné aukce v ostatních hrách",
     "showItemAnvilUses": "Ukázat použití kovadliny na předmětech",
-    "lockSlots": "Lock Slots",
-    "dontResetCursorInventory": "Don't Reset Inventory Cursor"
+    "lockSlots": "Allow Locking Slots",
+    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories"
   },
   "messages": {
     "dropConfirmation": "Vyhoď tento item pro vyhození!",
