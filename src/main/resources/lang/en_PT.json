@@ -65,7 +65,9 @@
     "showMagmaTimerInOtherGames": "Show boss tim'r n' other games",
     "preventMovementOnDeath": "Quit walkin' after a plunderin'",
     "showDarkAuctionTimerInOtherGames": "Show Dark Auc Tim'r n' other games",
-    "showItemAnvilUses": "Show Yer Anvil Uses"
+    "showItemAnvilUses": "Show Yer Anvil Uses",
+    "lockSlots": "Lock Slots",
+    "dontResetCursorInventory": "Don't Reset Inventory Cursor"
   },
   "messages": {
     "dropConfirmation": "'ay lad, drop this here item again to confirm!",
@@ -85,6 +87,7 @@
       "enchants": "Yer magic",
       "reforges": "Reforgery"
     },
-    "cancelledStemBreak": "'ay there, SkyblockAddons 'as stopped ye from breakin' this here stem. Use yer bare hand if ye'd like to break it."
+    "cancelledStemBreak": "'ay there, SkyblockAddons 'as stopped ye from breakin' this here stem. Use yer bare hand if ye'd like to break it.",
+    "slotLocked": "This slot is locked!"
   }
 }
