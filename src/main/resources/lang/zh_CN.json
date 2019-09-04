@@ -65,7 +65,9 @@
     "showMagmaTimerInOtherGames": "在其他游戏显示岩浆怪Boss倒计时",
     "preventMovementOnDeath": "暂时阻止死亡后移动",
     "showDarkAuctionTimerInOtherGames": "在其他游戏显示暗黑拍卖会倒计时",
-    "showItemAnvilUses": "显示物品铁砧合成次数"
+    "showItemAnvilUses": "显示物品铁砧合成次数",
+    "lockSlots": "Lock Slots",
+    "dontResetCursorInventory": "Don't Reset Inventory Cursor"
   },
   "messages": {
     "dropConfirmation": "再次丢弃此物品以确认!",
@@ -85,6 +87,7 @@
       "enchants": "附魔",
       "reforges": "重铸"
     },
-    "cancelledStemBreak": "SkyblockAddons已经阻止你破坏此作物，请使用空手来进行破坏。"
+    "cancelledStemBreak": "SkyblockAddons已经阻止你破坏此作物，请使用空手来进行破坏。",
+    "slotLocked": "This slot is locked!"
   }
 }
