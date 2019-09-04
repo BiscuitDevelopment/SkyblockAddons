@@ -65,7 +65,9 @@
     "showMagmaTimerInOtherGames": "Hiện hẹn giờ \"Trùm Dung Nham\" trong minigame khác",
     "preventMovementOnDeath": "Tránh di chuyển sau khi chết",
     "showDarkAuctionTimerInOtherGames": "Hiện hẹn giờ \"Đấu giá đen\" trong minigame khác",
-    "showItemAnvilUses": "Hiện số lần dùng đe"
+    "showItemAnvilUses": "Hiện số lần dùng đe",
+    "lockSlots": "Lock Slots",
+    "dontResetCursorInventory": "Don't Reset Inventory Cursor"
   },
   "messages": {
     "dropConfirmation": "Nhấn \"Q\" Thêm Một Lần Nữa Để Xác Nhận!",
@@ -85,6 +87,7 @@
       "enchants": "Phù phép",
       "reforges": "Rèn luyện"
     },
-    "cancelledStemBreak": "\"SkyblockAddons\" đã ngăn bạn khỏi việc phá hạt giống này. Hãy sử dụng tay không nếu bạn muốn đập nó."
+    "cancelledStemBreak": "\"SkyblockAddons\" đã ngăn bạn khỏi việc phá hạt giống này. Hãy sử dụng tay không nếu bạn muốn đập nó.",
+    "slotLocked": "This slot is locked!"
   }
 }
