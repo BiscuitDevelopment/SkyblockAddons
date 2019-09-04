@@ -66,8 +66,8 @@
     "preventMovementOnDeath": "Tránh di chuyển sau khi chết",
     "showDarkAuctionTimerInOtherGames": "Hiện hẹn giờ \"Đấu giá đen\" trong minigame khác",
     "showItemAnvilUses": "Hiện số lần dùng đe",
-    "lockSlots": "Lock Slots",
-    "dontResetCursorInventory": "Don't Reset Inventory Cursor"
+    "lockSlots": "Allow Locking Slots",
+    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories"
   },
   "messages": {
     "dropConfirmation": "Nhấn \"Q\" Thêm Một Lần Nữa Để Xác Nhận!",
