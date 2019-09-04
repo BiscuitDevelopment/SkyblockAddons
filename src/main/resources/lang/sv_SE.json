@@ -66,8 +66,8 @@
     "preventMovementOnDeath": "Förhindra Gående Efter Död",
     "showDarkAuctionTimerInOtherGames": "Visa Mörk Auction Timer I Andra Spel",
     "showItemAnvilUses": "Visa Atikel Städ Användningar",
-    "lockSlots": "Lock Slots",
-    "dontResetCursorInventory": "Don't Reset Inventory Cursor"
+    "lockSlots": "Allow Locking Slots",
+    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories"
   },
   "messages": {
     "dropConfirmation": "Släpp Det Här Igen För Att Bekräfta!",
