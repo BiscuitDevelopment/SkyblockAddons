@@ -65,7 +65,9 @@
     "showMagmaTimerInOtherGames": "Ipakita rin ang Magma Timer sa ibang laro",
     "preventMovementOnDeath": "Pigilan ang paglakad pagkatapos ng Kamatayan",
     "showDarkAuctionTimerInOtherGames": "Ipakita rin ang Dark Auc Timer sa ibang laro",
-    "showItemAnvilUses": "Ipakita ang mga gamit ng Item sa Anvil"
+    "showItemAnvilUses": "Ipakita ang mga gamit ng Item sa Anvil",
+    "lockSlots": "Lock Slots",
+    "dontResetCursorInventory": "Don't Reset Inventory Cursor"
   },
   "messages": {
     "dropConfirmation": "Ihulog ang item muli para kumpirmado!",
@@ -85,6 +87,7 @@
       "enchants": "Enchants",
       "reforges": "Pandayan"
     },
-    "cancelledStemBreak": "Itinigil ng SkyblockAddons sa pag-sira ang tangkay na ito. Gamitin mo ang iyong kamay kung gusto mo sirain."
+    "cancelledStemBreak": "Itinigil ng SkyblockAddons sa pag-sira ang tangkay na ito. Gamitin mo ang iyong kamay kung gusto mo sirain.",
+    "slotLocked": "This slot is locked!"
   }
 }
