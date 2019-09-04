@@ -65,7 +65,9 @@
     "showMagmaTimerInOtherGames": "Zobrazit časovač do Magma Bosse v ostatních hrách",
     "preventMovementOnDeath": "Zabránit chození po smrti",
     "showDarkAuctionTimerInOtherGames": "Zobrazit časovač do Temné aukce v ostatních hrách",
-    "showItemAnvilUses": "Ukázat použití kovadliny na předmětech"
+    "showItemAnvilUses": "Ukázat použití kovadliny na předmětech",
+    "lockSlots": "Lock Slots",
+    "dontResetCursorInventory": "Don't Reset Inventory Cursor"
   },
   "messages": {
     "dropConfirmation": "Vyhoď tento item pro vyhození!",
@@ -85,6 +87,7 @@
       "enchants": "Očarování",
       "reforges": "Překování"
     },
-    "cancelledStemBreak": "SkyblockAddons vám zabránil zničit tento kořen. Použijte svoji ruku, pokud ho chcete zničit."
+    "cancelledStemBreak": "SkyblockAddons vám zabránil zničit tento kořen. Použijte svoji ruku, pokud ho chcete zničit.",
+    "slotLocked": "This slot is locked!"
   }
 }
