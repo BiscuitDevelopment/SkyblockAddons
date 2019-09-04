@@ -66,8 +66,8 @@
     "preventMovementOnDeath": "暂时阻止死亡后移动",
     "showDarkAuctionTimerInOtherGames": "在其他游戏显示暗黑拍卖会倒计时",
     "showItemAnvilUses": "显示物品铁砧合成次数",
-    "lockSlots": "Lock Slots",
-    "dontResetCursorInventory": "Don't Reset Inventory Cursor"
+    "lockSlots": "Allow Locking Slots",
+    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories"
   },
   "messages": {
     "dropConfirmation": "再次丢弃此物品以确认!",
