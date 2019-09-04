@@ -1,22 +1,22 @@
 {
-  "language": "Nederlands (Nederland)",
+  "language": "Nederlands",
   "settings": {
     "settings": "Instellingen",
     "openSettings": "Open Instellingen",
     "magmaBossWarning": "Magma Baas Waarschuwing",
     "itemDropConfirmation": "Object laten vallen Bevestiging",
-    "warningTime": "Waarschuwingstijd: %time%s",
+    "warningTime": "Waarschuwingsduur: %time%s",
     "hideSkeletonHatBones": "Verstop Skelet Hoed Botten",
-    "skeletonHatBonesBar": "Skelet Hoed Botten Bar",
-    "hideFoodAndArmor": "Verstop Voedsel & Harnas Bar",
+    "skeletonHatBonesBar": "Skelet Hoed Botten Balk",
+    "hideFoodAndArmor": "Verstop Voedsel & Harnas Balk",
     "fullInventoryWarning": "Volle Inventaris Waarschuwing",
-    "disableEmberRodAbility": "Uitschakelen Eiland Sintel Staf",
+    "disableEmberRodAbility": "Uitschakelen Eiland Ember Stang",
     "warningColor": "Waarschuwingskleur",
-    "confirmationColor": "Kleur Bevestigen",
+    "confirmationColor": "Bevestigingskleur",
     "manaTextColor": "Mana Tekst Kleur",
-    "manaBarColor": "Mana Bar Kleur",
-    "editLocations": "Locaties Bewerken",
-    "guiScale": "Gui Schaal: %scale%",
+    "manaBarColor": "Mana Balk Kleur",
+    "editLocations": "GUI Locaties Bewerken",
+    "guiScale": "GUI Grootte: %scale%",
     "resetLocations": "Locaties Resetten",
     "hideDurability": "Verberg Gereedschap Duurzaamheid",
     "showEnchantmentsReforges": "Betoveringen & Omsmedingen",
@@ -27,7 +27,7 @@
       "inventory": "Inventaris",
       "compact": "Compact"
     },
-    "showBackpackPreview": "Toon Rugzak Voorvertoning",
+    "showBackpackPreview": "Toon Rugzak Voorbeeld",
     "hideHealthBar": "Verberg Gezondheids Balk",
     "healthTextColor": "Gezondheids Tekst Kleur",
     "healthBarColor": "Gezondheids Balk Kleur",
@@ -54,18 +54,20 @@
       "regular": "Normaal",
       "blackShadow": "Zwarte schaduw"
     },
-    "darkAuctionTimer": "Donkere Veiling Timer",
+    "darkAuctionTimer": "Timer Donkere Veiling",
     "magmaBossTimer": "Magma Baas Timer",
-    "itemPickupLog": "Item Oppak Lijst",
+    "itemPickupLog": "Lijst Opgepakte Items",
     "avoidPlacingEnchantedItems": "Vermijd Het Plaatsen Van Betoverde Items",
     "avoidBreakingStems": "Vermijd Het Breken Van Stengels",
     "magmaBossTimerColor": "Magma Baas Timer Kleur",
     "darkAuctionTimerColor": "Donkere Veiling Timer Kleur",
-    "stopBowChargeFromResetting": "Stop Het Resetten Van Het Aanspannen Van De Boog",
+    "stopBowChargeFromResetting": "Stop Het Resetten Van De Boog Aanval",
     "showMagmaTimerInOtherGames": "Magma Timer in andere spellen weergeven",
     "preventMovementOnDeath": "Stop het Bewegen Na het Doodgaan",
     "showDarkAuctionTimerInOtherGames": "Toon Donkere Veiling Timer in andere spellen",
-    "showItemAnvilUses": "Toon Aantal Item In Aambeeld Gebruikt"
+    "showItemAnvilUses": "Toon Aantal keren Item In Aambeeld Gebruikt",
+    "lockSlots": "Lock Slots",
+    "dontResetCursorInventory": "Don't Reset Inventory Cursor"
   },
   "messages": {
     "dropConfirmation": "Laat dit object opnieuw vallen om te Bevestigen!",
@@ -85,6 +87,7 @@
       "enchants": "Betoveringen",
       "reforges": "Omsmedingen"
     },
-    "cancelledStemBreak": "SkyblockAddons heeft je ervan weerhouden om deze stengel te breken. Gebruik je lege hand als je het wilt breken."
+    "cancelledStemBreak": "SkyblockAddons heeft je ervan weerhouden om deze stengel te breken. Gebruik je lege hand als je het wilt breken.",
+    "slotLocked": "This slot is locked!"
   }
 }

@@ -65,7 +65,9 @@
     "showMagmaTimerInOtherGames": "Show Magma Timer In Other Games",
     "preventMovementOnDeath": "Prevent Walking After Death",
     "showDarkAuctionTimerInOtherGames": "Show Dark Auc Timer In Other Games",
-    "showItemAnvilUses": "Show Item Anvil Uses"
+    "showItemAnvilUses": "Show Item Anvil Uses",
+    "lockSlots": "Lock Slots",
+    "dontResetCursorInventory": "Don't Reset Inventory Cursor"
   },
   "messages": {
     "dropConfirmation": "Pudota tämä esine uudelleen vahvistaaksesi!",
@@ -85,6 +87,7 @@
       "enchants": "Enchants",
       "reforges": "Reforges"
     },
-    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this stem. Use your bare hand if you'd like to break it."
+    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this stem. Use your bare hand if you'd like to break it.",
+    "slotLocked": "This slot is locked!"
   }
 }

@@ -65,7 +65,9 @@
     "showMagmaTimerInOtherGames": "Pokaż Timer Magma Bossa w Innych Grach",
     "preventMovementOnDeath": "Zatrzymaj Poruszanie Się Po Śmierci",
     "showDarkAuctionTimerInOtherGames": "Pokaż Timer Dark Auction w Innych Grach",
-    "showItemAnvilUses": "Pokaż Liczbę Użyć Kowadła na Przedmiocie"
+    "showItemAnvilUses": "Pokaż Liczbę Użyć Kowadła na Przedmiocie",
+    "lockSlots": "Lock Slots",
+    "dontResetCursorInventory": "Don't Reset Inventory Cursor"
   },
   "messages": {
     "dropConfirmation": "Wyrzuć ten przedmiot ponownie, aby potwierdzić!",
@@ -85,6 +87,7 @@
       "enchants": "Zaklęcia",
       "reforges": "Reforge"
     },
-    "cancelledStemBreak": "SkyblockAddons anulował zniszczenie tej łodygi. Użyj pustej ręki, jeśli chcesz ją zniszczyć."
+    "cancelledStemBreak": "SkyblockAddons anulował zniszczenie tej łodygi. Użyj pustej ręki, jeśli chcesz ją zniszczyć.",
+    "slotLocked": "This slot is locked!"
   }
 }

@@ -3,13 +3,13 @@
   "settings": {
     "settings": "設定",
     "openSettings": "設定を開く",
-    "magmaBossWarning": "マグマボスアラート",
-    "itemDropConfirmation": "捨てるアイテムの確認",
+    "magmaBossWarning": "Magma Bossのアラート",
+    "itemDropConfirmation": "アイテムを捨てる確認",
     "warningTime": "アラートする時間: %time%s",
     "hideSkeletonHatBones": "スケルトンヘルメットの骨を非表示",
     "skeletonHatBonesBar": "スケルトンヘルメットの骨のゲージ",
     "hideFoodAndArmor": "食料とアーマーのゲージを非表示",
-    "fullInventoryWarning": "インベントリ満タン時のアラート",
+    "fullInventoryWarning": "インベントリが満タンの時のアラート",
     "disableEmberRodAbility": "個人の島でエンバーロッドのアビリティを無効化",
     "warningColor": "アラートの色",
     "confirmationColor": "確認するときの色",
@@ -19,8 +19,8 @@
     "guiScale": "GUIの大きさ: %scale%",
     "resetLocations": "位置を初期化",
     "hideDurability": "耐久値を非表示",
-    "showEnchantmentsReforges": "エンチャントとリフォージュの内容を表示",
-    "minionStopWarning": "ミニオン停止アラート",
+    "showEnchantmentsReforges": "エンチャントとリフォージの内容を表示",
+    "minionStopWarning": "ミニオンが停止している時のアラート",
     "hideAuctionHousePlayers": "オークションハウス付近のプレイヤーを非表示",
     "backpackStyle": "バックパックの表示: %style%",
     "backpackStyles": {
@@ -34,10 +34,10 @@
     "defenceTextColor": "防御力数の文字色",
     "defencePercentageColor": "防具のパーセンテージの色",
     "disableDoubleDropAutomatically": "自動的にダブルドロップを無効化",
-    "fullMinionWarning": "ミニオンの上限警告",
+    "fullMinionWarning": "ミニオンの上限のアラート",
     "nextPage": "次のページ",
     "previousPage": "前のページ",
-    "ignoreItemFrameClicks": "アイテムフレームの破壊を防止",
+    "ignoreItemFrameClicks": "アイテムフレームへのクリックを無効化",
     "useVanillaTextureDefence": "ディフェンスアイコンでバニラのテクスチャを使用",
     "showBackpackHoldingShift": "バックパックの中身をシフトを押しているときのみ表示",
     "manaBar": "マナゲージ",
@@ -48,7 +48,7 @@
     "defenceText": "ディフェンス数",
     "defencePercentage": "ディフェンスのパーセンテージ",
     "healthUpdates": "体力の変動を表示",
-    "hidePlayersInLobby": "ロビーで自分の近くにいる人を非表示",
+    "hidePlayersInLobby": "ロビーで自分の遠くにいる人を非表示",
     "textStyle": "文字スタイル: %style%",
     "textStyles": {
       "regular": "通常",
@@ -65,7 +65,9 @@
     "showMagmaTimerInOtherGames": "マグマタイマーを別のミニゲームでも表示",
     "preventMovementOnDeath": "死んだ直後に歩くのを防止",
     "showDarkAuctionTimerInOtherGames": "ダークオークションタイマーを別のミニゲームでも表示",
-    "showItemAnvilUses": "金床を使用した回数を表示"
+    "showItemAnvilUses": "金床を使用した回数を表示",
+    "lockSlots": "Lock Slots",
+    "dontResetCursorInventory": "Don't Reset Inventory Cursor"
   },
   "messages": {
     "dropConfirmation": "落としてもいいのであれば、このアイテムをもう一度ドロップしてください。",
@@ -83,8 +85,9 @@
     "enchantsToExclude": "%type% で除外するもの:",
     "inventoryTypes": {
       "enchants": "エンチャント",
-      "reforges": "リフォージュ"
+      "reforges": "リフォージ"
     },
-    "cancelledStemBreak": "SkyblockAddonsがこの茎を破壊するのを防止しました。破壊したい場合は素手で破壊してください。"
+    "cancelledStemBreak": "SkyblockAddonsがこの茎を破壊するのを防止しました。破壊したい場合は素手で破壊してください。",
+    "slotLocked": "This slot is locked!"
   }
 }

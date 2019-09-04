@@ -65,7 +65,9 @@
     "showMagmaTimerInOtherGames": "Magma időzítő más játékokban",
     "preventMovementOnDeath": "Sétálás megakadályozása halál után",
     "showDarkAuctionTimerInOtherGames": "Dark Auc időzítő más játékokban",
-    "showItemAnvilUses": "Tárgy üllő használatának mutatása"
+    "showItemAnvilUses": "Tárgy üllő használatának mutatása",
+    "lockSlots": "Lock Slots",
+    "dontResetCursorInventory": "Don't Reset Inventory Cursor"
   },
   "messages": {
     "dropConfirmation": "Dobd el ezt a tárgyat újra, hogy megerősítsd!",
@@ -85,6 +87,7 @@
       "enchants": "Enchantok",
       "reforges": "Reforgeok"
     },
-    "cancelledStemBreak": "A SkyblockAddons megállította, hogy kiüsd a növény szárát. Használd az öklöd, ha ki szeretnéd ütni."
+    "cancelledStemBreak": "A SkyblockAddons megállította, hogy kiüsd a növény szárát. Használd az öklöd, ha ki szeretnéd ütni.",
+    "slotLocked": "This slot is locked!"
   }
 }

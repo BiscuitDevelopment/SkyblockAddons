@@ -65,7 +65,9 @@
     "showMagmaTimerInOtherGames": "Показване на Магма Шеф в Други Игри",
     "preventMovementOnDeath": "Предотвратяване на Ходене След Смърт",
     "showDarkAuctionTimerInOtherGames": "Показване на Dark Auction Таймер в Други Игри",
-    "showItemAnvilUses": "Показване Употребата на Наковални Употреби  "
+    "showItemAnvilUses": "Показване Употребата на Наковални Употреби  ",
+    "lockSlots": "Lock Slots",
+    "dontResetCursorInventory": "Don't Reset Inventory Cursor"
   },
   "messages": {
     "dropConfirmation": "Хвърлете Този Предмет за да Потвърдите",
@@ -85,6 +87,7 @@
       "enchants": "Омягюосвания",
       "reforges": "Преобразуване"
     },
-    "cancelledStemBreak": "SkyblockAddons ви е Спрял от Унищожаване на Това Стъбло . Използвайте Ръце за да го Премахнете ."
+    "cancelledStemBreak": "SkyblockAddons ви е Спрял от Унищожаване на Това Стъбло . Използвайте Ръце за да го Премахнете .",
+    "slotLocked": "This slot is locked!"
   }
 }
