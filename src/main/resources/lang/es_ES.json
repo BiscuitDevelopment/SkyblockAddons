@@ -66,8 +66,8 @@
     "preventMovementOnDeath": "Prevenir moverse cuando mueres",
     "showDarkAuctionTimerInOtherGames": "Mostrar el Contador del Dark Auction en Otros Juegos",
     "showItemAnvilUses": "Mostrar usos del Item en el Yunque",
-    "lockSlots": "Lock Slots",
-    "dontResetCursorInventory": "Don't Reset Inventory Cursor"
+    "lockSlots": "Allow Locking Slots",
+    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories"
   },
   "messages": {
     "dropConfirmation": "¡Dropea el Objeto otra vez para soltar!",
