@@ -66,8 +66,8 @@
     "preventMovementOnDeath": "Предотвращать ходьбу после смерти",
     "showDarkAuctionTimerInOtherGames": "Показывать таймер Тёмного Аукц. в других играх",
     "showItemAnvilUses": "Показывать Использования предмета на наковальне",
-    "lockSlots": "Lock Slots",
-    "dontResetCursorInventory": "Don't Reset Inventory Cursor"
+    "lockSlots": "Allow Locking Slots",
+    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories"
   },
   "messages": {
     "dropConfirmation": "Выбросите предмет ещё раз для подтверждения!",
