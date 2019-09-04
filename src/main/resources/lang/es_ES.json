@@ -65,7 +65,9 @@
     "showMagmaTimerInOtherGames": "Mostrar el Contador del Magma Boss en Otros Juegos",
     "preventMovementOnDeath": "Prevenir moverse cuando mueres",
     "showDarkAuctionTimerInOtherGames": "Mostrar el Contador del Dark Auction en Otros Juegos",
-    "showItemAnvilUses": "Mostrar usos del Item en el Yunque"
+    "showItemAnvilUses": "Mostrar usos del Item en el Yunque",
+    "lockSlots": "Lock Slots",
+    "dontResetCursorInventory": "Don't Reset Inventory Cursor"
   },
   "messages": {
     "dropConfirmation": "¡Dropea el Objeto otra vez para soltar!",
@@ -85,6 +87,7 @@
       "enchants": "Encantamientos",
       "reforges": "Reforjas"
     },
-    "cancelledStemBreak": "SkyblockAddons Te ha parado de romper este tallo. Usa tu mano si quieres romperlo."
+    "cancelledStemBreak": "SkyblockAddons Te ha parado de romper este tallo. Usa tu mano si quieres romperlo.",
+    "slotLocked": "This slot is locked!"
   }
 }
