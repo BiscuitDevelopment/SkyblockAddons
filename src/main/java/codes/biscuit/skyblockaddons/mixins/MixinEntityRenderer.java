@@ -54,7 +54,7 @@ public class MixinEntityRenderer {
                         double coreY = 9;
                         double coreZ = -275;
 
-                        list.removeIf(listEntity -> listEntity.getDistance(coreX, coreY, coreZ) <= 70 && listEntity instanceof EntityOtherPlayerMP);
+                        list.removeIf(listEntity -> listEntity instanceof EntityOtherPlayerMP && listEntity.getDistance(coreX, coreY, coreZ) <= 70);
                     }
                 }
             }
