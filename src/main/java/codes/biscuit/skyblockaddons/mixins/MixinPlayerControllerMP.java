@@ -34,7 +34,20 @@ public class MixinPlayerControllerMP {
             EntityPlayerSP p = mc.thePlayer;
             ItemStack heldItem = p.getHeldItem();
             Block block = mc.theWorld.getBlockState(loc).getBlock();
-            if (heldItem != null && block.equals(Blocks.reeds)) {
+if (heldItem != null) {
+  
+  if (block.equals(Blocks.melon_stem) || block.equals(Blocks.pumpkin_stem)
+  || (block.equals(Blocks.reeds) && mc.theWorld.getBlockState(loc.down()).getBlock() != Blocks.reeds) {
+    
+    cir.setReturnValue(false);
+    if (System.currentTimeMillis() - lastMessage > 15000) {
+      
+      lastMessage = System.currentTimeMillis();
+      main.getUtils().sendMessage(EnumChatFormatting.RED
+        + Message.MESSAGE_CANCELLED_STEM_BREAK.getMessage());
+    }
+  }
+}
                 if(mc.theWorld.getBlockState(loc.down()).getBlock() != Blocks.reeds){
                     cir.setReturnValue(false);
                     if (System.currentTimeMillis()-lastMessage > 15000) {
