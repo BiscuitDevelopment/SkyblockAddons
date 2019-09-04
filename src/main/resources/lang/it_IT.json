@@ -65,7 +65,9 @@
     "showMagmaTimerInOtherGames": "Mostra il Timer per il Magma Boss In Altri Giochi",
     "preventMovementOnDeath": "Impedisci di Camminare Dopo Essere Morto",
     "showDarkAuctionTimerInOtherGames": "Mostra il Timer per la Dark Auction In Altri Giochi",
-    "showItemAnvilUses": "Mostra Numero di Usi dell’Incudine"
+    "showItemAnvilUses": "Mostra Numero di Usi dell’Incudine",
+    "lockSlots": "Lock Slots",
+    "dontResetCursorInventory": "Don't Reset Inventory Cursor"
   },
   "messages": {
     "dropConfirmation": "Getta questo oggetto nuovamente per confermare!",
@@ -85,6 +87,7 @@
       "enchants": "Incantesimi",
       "reforges": "Forge"
     },
-    "cancelledStemBreak": "SkyblockAddons ti ha impedito di rompere questo stelo. Usa la tua mano se lo vuoi rompere."
+    "cancelledStemBreak": "SkyblockAddons ti ha impedito di rompere questo stelo. Usa la tua mano se lo vuoi rompere.",
+    "slotLocked": "This slot is locked!"
   }
 }
