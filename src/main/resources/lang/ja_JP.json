@@ -65,7 +65,9 @@
     "showMagmaTimerInOtherGames": "マグマタイマーを別のミニゲームでも表示",
     "preventMovementOnDeath": "死んだ直後に歩くのを防止",
     "showDarkAuctionTimerInOtherGames": "ダークオークションタイマーを別のミニゲームでも表示",
-    "showItemAnvilUses": "金床を使用した回数を表示"
+    "showItemAnvilUses": "金床を使用した回数を表示",
+    "lockSlots": "Lock Slots",
+    "dontResetCursorInventory": "Don't Reset Inventory Cursor"
   },
   "messages": {
     "dropConfirmation": "落としてもいいのであれば、このアイテムをもう一度ドロップしてください。",
@@ -85,6 +87,7 @@
       "enchants": "エンチャント",
       "reforges": "リフォージ"
     },
-    "cancelledStemBreak": "SkyblockAddonsがこの茎を破壊するのを防止しました。破壊したい場合は素手で破壊してください。"
+    "cancelledStemBreak": "SkyblockAddonsがこの茎を破壊するのを防止しました。破壊したい場合は素手で破壊してください。",
+    "slotLocked": "This slot is locked!"
   }
 }
