@@ -65,7 +65,9 @@
     "showMagmaTimerInOtherGames": "แสดงระยะเวลาบอส Magma ในเกมอื่น",
     "preventMovementOnDeath": "ป้องกันการเดินหลังตาย",
     "showDarkAuctionTimerInOtherGames": "แสดงระยะเวลา Dark Auction ในเกมอื่น",
-    "showItemAnvilUses": "แสดงจำนวนการใช้ Anvil ของไอเทม"
+    "showItemAnvilUses": "แสดงจำนวนการใช้ Anvil ของไอเทม",
+    "lockSlots": "Lock Slots",
+    "dontResetCursorInventory": "Don't Reset Inventory Cursor"
   },
   "messages": {
     "dropConfirmation": "กดทิ้งของอีกที่เพื่อยืนยันทิ้งของสิ่นนี้!",
@@ -85,6 +87,7 @@
       "enchants": "ร่ายมนต์",
       "reforges": "ตีบวกของ"
     },
-    "cancelledStemBreak": "มอด SkyblockAddons กันไม่ให้คุณทำลายรากพืชนี้ โปรดใช้มือเปล่าถ้าต้องการทำลาย"
+    "cancelledStemBreak": "มอด SkyblockAddons กันไม่ให้คุณทำลายรากพืชนี้ โปรดใช้มือเปล่าถ้าต้องการทำลาย",
+    "slotLocked": "This slot is locked!"
   }
 }
