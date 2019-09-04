@@ -66,8 +66,8 @@
     "preventMovementOnDeath": "Предотвратяване на Ходене След Смърт",
     "showDarkAuctionTimerInOtherGames": "Показване на Dark Auction Таймер в Други Игри",
     "showItemAnvilUses": "Показване Употребата на Наковални Употреби  ",
-    "lockSlots": "Lock Slots",
-    "dontResetCursorInventory": "Don't Reset Inventory Cursor"
+    "lockSlots": "Allow Locking Slots",
+    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories"
   },
   "messages": {
     "dropConfirmation": "Хвърлете Този Предмет за да Потвърдите",
