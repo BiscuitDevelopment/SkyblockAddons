@@ -66,8 +66,8 @@
     "preventMovementOnDeath": "Zatrzymaj Poruszanie Się Po Śmierci",
     "showDarkAuctionTimerInOtherGames": "Pokaż Timer Dark Auction w Innych Grach",
     "showItemAnvilUses": "Pokaż Liczbę Użyć Kowadła na Przedmiocie",
-    "lockSlots": "Lock Slots",
-    "dontResetCursorInventory": "Don't Reset Inventory Cursor"
+    "lockSlots": "Allow Locking Slots",
+    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories"
   },
   "messages": {
     "dropConfirmation": "Wyrzuć ten przedmiot ponownie, aby potwierdzić!",
