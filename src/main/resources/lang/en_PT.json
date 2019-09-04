@@ -66,8 +66,8 @@
     "preventMovementOnDeath": "Quit walkin' after a plunderin'",
     "showDarkAuctionTimerInOtherGames": "Show Dark Auc Tim'r n' other games",
     "showItemAnvilUses": "Show Yer Anvil Uses",
-    "lockSlots": "Lock Slots",
-    "dontResetCursorInventory": "Don't Reset Inventory Cursor"
+    "lockSlots": "Allow Locking Slots",
+    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories"
   },
   "messages": {
     "dropConfirmation": "'ay lad, drop this here item again to confirm!",
