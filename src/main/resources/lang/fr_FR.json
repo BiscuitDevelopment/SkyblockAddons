@@ -65,7 +65,9 @@
     "showMagmaTimerInOtherGames": "Afficher le minuteur du Boss Magma hors du SB",
     "preventMovementOnDeath": "Empêcher de marcher après la mort",
     "showDarkAuctionTimerInOtherGames": "Afficher le minuteur du marché noir hors du SB",
-    "showItemAnvilUses": "Afficher le nombre d'utilisation de l'enclume"
+    "showItemAnvilUses": "Afficher le nombre d'utilisation de l'enclume",
+    "lockSlots": "Lock Slots",
+    "dontResetCursorInventory": "Don't Reset Inventory Cursor"
   },
   "messages": {
     "dropConfirmation": "Jetez cet objet une nouvelle fois pour confirmer!",
@@ -85,6 +87,7 @@
       "enchants": "Enchantements",
       "reforges": "Reforges"
     },
-    "cancelledStemBreak": "SkyblockAddons vous a empêcher de casser cette graine. Utilisez votre main nue si vous souhaitez la casser."
+    "cancelledStemBreak": "SkyblockAddons vous a empêcher de casser cette graine. Utilisez votre main nue si vous souhaitez la casser.",
+    "slotLocked": "This slot is locked!"
   }
 }
