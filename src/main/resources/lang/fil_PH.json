@@ -66,8 +66,8 @@
     "preventMovementOnDeath": "Pigilan ang paglakad pagkatapos ng Kamatayan",
     "showDarkAuctionTimerInOtherGames": "Ipakita rin ang Dark Auc Timer sa ibang laro",
     "showItemAnvilUses": "Ipakita ang mga gamit ng Item sa Anvil",
-    "lockSlots": "Lock Slots",
-    "dontResetCursorInventory": "Don't Reset Inventory Cursor"
+    "lockSlots": "Allow Locking Slots",
+    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories"
   },
   "messages": {
     "dropConfirmation": "Ihulog ang item muli para kumpirmado!",
