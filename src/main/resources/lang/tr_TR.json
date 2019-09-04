@@ -66,8 +66,8 @@
     "preventMovementOnDeath": "Öldükten Sonra Yürümeyi Engelle",
     "showDarkAuctionTimerInOtherGames": "Dark Auc Sayacını Diğer Oyunlarda da Göster",
     "showItemAnvilUses": "Örste İşlenme Sayısını Göster",
-    "lockSlots": "Lock Slots",
-    "dontResetCursorInventory": "Don't Reset Inventory Cursor"
+    "lockSlots": "Allow Locking Slots",
+    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories"
   },
   "messages": {
     "dropConfirmation": "Eşyayı düşürmeyi onaylamak için düşürme tuşuna bir daha bas!",
