@@ -65,7 +65,9 @@
     "showMagmaTimerInOtherGames": "在其他遊戲顯示熔岩史萊姆王計時器",
     "preventMovementOnDeath": "防止死亡後進行移動",
     "showDarkAuctionTimerInOtherGames": "於其他遊戲中顯示黑暗拍賣會時間",
-    "showItemAnvilUses": "顯示物品已使用幾次鐵砧"
+    "showItemAnvilUses": "顯示物品已使用幾次鐵砧",
+    "lockSlots": "Lock Slots",
+    "dontResetCursorInventory": "Don't Reset Inventory Cursor"
   },
   "messages": {
     "dropConfirmation": "再次丟棄此物品以確認!",
@@ -85,6 +87,7 @@
       "enchants": "附魔",
       "reforges": "重鑄"
     },
-    "cancelledStemBreak": "SkyblockAddons阻止了你破壞這個梗, 如想破壞, 請使用空手"
+    "cancelledStemBreak": "SkyblockAddons阻止了你破壞這個梗, 如想破壞, 請使用空手",
+    "slotLocked": "This slot is locked!"
   }
 }
