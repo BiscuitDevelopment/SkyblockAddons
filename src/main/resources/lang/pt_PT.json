@@ -66,8 +66,8 @@
     "preventMovementOnDeath": "Não andar depois da morte",
     "showDarkAuctionTimerInOtherGames": "Mostrar o Tempo da Dark Auc noutros jogos",
     "showItemAnvilUses": "Mostrar os usos na bigorna",
-    "lockSlots": "Lock Slots",
-    "dontResetCursorInventory": "Don't Reset Inventory Cursor"
+    "lockSlots": "Allow Locking Slots",
+    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories"
   },
   "messages": {
     "dropConfirmation": "Dropa este item outra vez para confirmar!",
