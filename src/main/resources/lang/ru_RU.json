@@ -65,7 +65,9 @@
     "showMagmaTimerInOtherGames": "Показывать таймер Магма-Босса в других играх",
     "preventMovementOnDeath": "Предотвращать ходьбу после смерти",
     "showDarkAuctionTimerInOtherGames": "Показывать таймер Тёмного Аукц. в других играх",
-    "showItemAnvilUses": "Показывать Использования предмета на наковальне"
+    "showItemAnvilUses": "Показывать Использования предмета на наковальне",
+    "lockSlots": "Lock Slots",
+    "dontResetCursorInventory": "Don't Reset Inventory Cursor"
   },
   "messages": {
     "dropConfirmation": "Выбросите предмет ещё раз для подтверждения!",
@@ -85,6 +87,7 @@
       "enchants": "Зачарования",
       "reforges": "Перековки"
     },
-    "cancelledStemBreak": "SkyblockAddons остановил вас от ломания этого стебля. Используйте пустую руку, если вы хотите это сделать."
+    "cancelledStemBreak": "SkyblockAddons остановил вас от ломания этого стебля. Используйте пустую руку, если вы хотите это сделать.",
+    "slotLocked": "This slot is locked!"
   }
 }
