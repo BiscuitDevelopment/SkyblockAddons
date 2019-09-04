@@ -65,7 +65,9 @@
     "showMagmaTimerInOtherGames": "Show The Big Biscuit Timer in Other Games",
     "preventMovementOnDeath": "Prevent Running Out of Biscuits in the Afterlife",
     "showDarkAuctionTimerInOtherGames": "Show Oven Timer In Other Bakeries",
-    "showItemAnvilUses": "Show How Much Your Biscuits Gonna Cost lol"
+    "showItemAnvilUses": "Show How Much Your Biscuits Gonna Cost lol",
+    "lockSlots": "Lock Slots",
+    "dontResetCursorInventory": "Don't Reset Inventory Cursor"
   },
   "messages": {
     "dropConfirmation": "Throw out this biscuit again to confirm!",
@@ -85,6 +87,7 @@
       "enchants": "Bischants",
       "reforges": "Bisforges"
     },
-    "cancelledStemBreak": "The biscuit gods have stopped you from eating this biscuit. Use your hands if you'd like to eat it."
+    "cancelledStemBreak": "The biscuit gods have stopped you from eating this biscuit. Use your hands if you'd like to eat it.",
+    "slotLocked": "This slot is locked!"
   }
 }
