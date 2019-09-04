@@ -65,7 +65,9 @@
     "showMagmaTimerInOtherGames": "Mostrar o Tempo do Magma Boss noutros jogos",
     "preventMovementOnDeath": "Não andar depois da morte",
     "showDarkAuctionTimerInOtherGames": "Mostrar o Tempo da Dark Auc noutros jogos",
-    "showItemAnvilUses": "Mostrar os usos na bigorna"
+    "showItemAnvilUses": "Mostrar os usos na bigorna",
+    "lockSlots": "Lock Slots",
+    "dontResetCursorInventory": "Don't Reset Inventory Cursor"
   },
   "messages": {
     "dropConfirmation": "Dropa este item outra vez para confirmar!",
@@ -85,6 +87,7 @@
       "enchants": "Encantamentos",
       "reforges": "Reforges"
     },
-    "cancelledStemBreak": "O SkyblockAddons impediu-te de partires esta semente. Usa a tua mão se a quiseres partir."
+    "cancelledStemBreak": "O SkyblockAddons impediu-te de partires esta semente. Usa a tua mão se a quiseres partir.",
+    "slotLocked": "This slot is locked!"
   }
 }
