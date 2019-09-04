@@ -66,8 +66,8 @@
     "preventMovementOnDeath": "ป้องกันการเดินหลังตาย",
     "showDarkAuctionTimerInOtherGames": "แสดงระยะเวลา Dark Auction ในเกมอื่น",
     "showItemAnvilUses": "แสดงจำนวนการใช้ Anvil ของไอเทม",
-    "lockSlots": "Lock Slots",
-    "dontResetCursorInventory": "Don't Reset Inventory Cursor"
+    "lockSlots": "Allow Locking Slots",
+    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories"
   },
   "messages": {
     "dropConfirmation": "กดทิ้งของอีกที่เพื่อยืนยันทิ้งของสิ่นนี้!",
