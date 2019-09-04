@@ -65,7 +65,9 @@
     "showMagmaTimerInOtherGames": "Mostar Timer do Chefão Magma Em Outros Jogos",
     "preventMovementOnDeath": "Impedir Movimento Após Morte",
     "showDarkAuctionTimerInOtherGames": "Mostrar Timer do Leilão Sombrio Em Outros Jogos",
-    "showItemAnvilUses": "Mostrar Usos na Bigorna de Itens"
+    "showItemAnvilUses": "Mostrar Usos na Bigorna de Itens",
+    "lockSlots": "Lock Slots",
+    "dontResetCursorInventory": "Don't Reset Inventory Cursor"
   },
   "messages": {
     "dropConfirmation": "Large este item de novo para confirmar!",
@@ -85,6 +87,7 @@
       "enchants": "Encantamentos",
       "reforges": "Reforjadas"
     },
-    "cancelledStemBreak": "SkyblockAddons impediu você de quebrar esta raiz. Use sua mão se deseja a quebrar."
+    "cancelledStemBreak": "SkyblockAddons impediu você de quebrar esta raiz. Use sua mão se deseja a quebrar.",
+    "slotLocked": "This slot is locked!"
   }
 }
