@@ -65,7 +65,9 @@
     "showMagmaTimerInOtherGames": "Magma Sayacını Diğer Oyunlarda da Göster",
     "preventMovementOnDeath": "Öldükten Sonra Yürümeyi Engelle",
     "showDarkAuctionTimerInOtherGames": "Dark Auc Sayacını Diğer Oyunlarda da Göster",
-    "showItemAnvilUses": "Örste İşlenme Sayısını Göster"
+    "showItemAnvilUses": "Örste İşlenme Sayısını Göster",
+    "lockSlots": "Lock Slots",
+    "dontResetCursorInventory": "Don't Reset Inventory Cursor"
   },
   "messages": {
     "dropConfirmation": "Eşyayı düşürmeyi onaylamak için düşürme tuşuna bir daha bas!",
@@ -85,6 +87,7 @@
       "enchants": "Büyüler",
       "reforges": "Reforge'lar"
     },
-    "cancelledStemBreak": "SkyblockAddons bu ekini kırmanı engelledi. Ekinleri kırmak istiyorsan çıplak elini kullanman gerek."
+    "cancelledStemBreak": "SkyblockAddons bu ekini kırmanı engelledi. Ekinleri kırmak istiyorsan çıplak elini kullanman gerek.",
+    "slotLocked": "This slot is locked!"
   }
 }
