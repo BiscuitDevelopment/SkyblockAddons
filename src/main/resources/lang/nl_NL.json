@@ -65,7 +65,9 @@
     "showMagmaTimerInOtherGames": "Magma Timer in andere spellen weergeven",
     "preventMovementOnDeath": "Stop het Bewegen Na het Doodgaan",
     "showDarkAuctionTimerInOtherGames": "Toon Donkere Veiling Timer in andere spellen",
-    "showItemAnvilUses": "Toon Aantal keren Item In Aambeeld Gebruikt"
+    "showItemAnvilUses": "Toon Aantal keren Item In Aambeeld Gebruikt",
+    "lockSlots": "Lock Slots",
+    "dontResetCursorInventory": "Don't Reset Inventory Cursor"
   },
   "messages": {
     "dropConfirmation": "Laat dit object opnieuw vallen om te Bevestigen!",
@@ -85,6 +87,7 @@
       "enchants": "Betoveringen",
       "reforges": "Omsmedingen"
     },
-    "cancelledStemBreak": "SkyblockAddons heeft je ervan weerhouden om deze stengel te breken. Gebruik je lege hand als je het wilt breken."
+    "cancelledStemBreak": "SkyblockAddons heeft je ervan weerhouden om deze stengel te breken. Gebruik je lege hand als je het wilt breken.",
+    "slotLocked": "This slot is locked!"
   }
 }
