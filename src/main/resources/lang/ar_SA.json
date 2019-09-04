@@ -66,8 +66,8 @@
     "preventMovementOnDeath": "منع المشي بعد الموت",
     "showDarkAuctionTimerInOtherGames": "أظهار مؤقت المزاد الأسود في الألعاب الأخرى",
     "showItemAnvilUses": "أظهار عدد مرات أستخدام السندان",
-    "lockSlots": "Lock Slots",
-    "dontResetCursorInventory": "Don't Reset Inventory Cursor"
+    "lockSlots": "Allow Locking Slots",
+    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories"
   },
   "messages": {
     "dropConfirmation": "!إرمي هذا العنصر مرة أخرى للتأكيد",
