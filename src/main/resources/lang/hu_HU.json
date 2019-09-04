@@ -66,8 +66,8 @@
     "preventMovementOnDeath": "Sétálás megakadályozása halál után",
     "showDarkAuctionTimerInOtherGames": "Dark Auc időzítő más játékokban",
     "showItemAnvilUses": "Tárgy üllő használatának mutatása",
-    "lockSlots": "Lock Slots",
-    "dontResetCursorInventory": "Don't Reset Inventory Cursor"
+    "lockSlots": "Allow Locking Slots",
+    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories"
   },
   "messages": {
     "dropConfirmation": "Dobd el ezt a tárgyat újra, hogy megerősítsd!",
