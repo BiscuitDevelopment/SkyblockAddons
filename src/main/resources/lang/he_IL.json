@@ -65,7 +65,9 @@
     "showMagmaTimerInOtherGames": "הצגת הטיימר של בוס המגמה במשחקים אחרים",
     "preventMovementOnDeath": "עצירת תזוזה לאחר המוות",
     "showDarkAuctionTimerInOtherGames": "הצגת הטיימר של השוק השחור במשחקים שונים",
-    "showItemAnvilUses": "הצגת שימושי סדן של הפריט"
+    "showItemAnvilUses": "הצגת שימושי סדן של הפריט",
+    "lockSlots": "Lock Slots",
+    "dontResetCursorInventory": "Don't Reset Inventory Cursor"
   },
   "messages": {
     "dropConfirmation": "זרוק פריט זה שוב לאישור!",
@@ -85,6 +87,7 @@
       "enchants": "כישופים",
       "reforges": "שדרוגים"
     },
-    "cancelledStemBreak": "סקיבלוקאדדונס מנע אותך מלשבור את הגידול הזה. השתמש ביד שלך בכדי לשבור אותו."
+    "cancelledStemBreak": "סקיבלוקאדדונס מנע אותך מלשבור את הגידול הזה. השתמש ביד שלך בכדי לשבור אותו.",
+    "slotLocked": "This slot is locked!"
   }
 }
