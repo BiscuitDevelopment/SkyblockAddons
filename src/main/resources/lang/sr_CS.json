@@ -65,7 +65,9 @@
     "showMagmaTimerInOtherGames": "Pokaži Tajmer Magma Boss-a u Drugim Igrama",
     "preventMovementOnDeath": "Izbegni Hod Posle Smrti",
     "showDarkAuctionTimerInOtherGames": "Pokaži Tajmer Crne Dražbe u Ostalim Igricama",
-    "showItemAnvilUses": "Pokaži Broj Korištenja Stvari u Anvil-u"
+    "showItemAnvilUses": "Pokaži Broj Korištenja Stvari u Anvil-u",
+    "lockSlots": "Lock Slots",
+    "dontResetCursorInventory": "Don't Reset Inventory Cursor"
   },
   "messages": {
     "dropConfirmation": "Opet baci ovu stvar za potvrdu!",
@@ -85,6 +87,7 @@
       "enchants": "Čarolije",
       "reforges": "Reforge-ovi"
     },
-    "cancelledStemBreak": "SkyblockAddons te zaustavio od rušenja ove stabljike. Koristi svoju ruku ako je želiš slomiti."
+    "cancelledStemBreak": "SkyblockAddons te zaustavio od rušenja ove stabljike. Koristi svoju ruku ako je želiš slomiti.",
+    "slotLocked": "This slot is locked!"
   }
 }
