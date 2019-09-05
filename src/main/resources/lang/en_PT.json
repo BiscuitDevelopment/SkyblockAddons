@@ -67,7 +67,9 @@
     "showDarkAuctionTimerInOtherGames": "Show Dark Auc Tim'r n' other games",
     "showItemAnvilUses": "Show Yer Anvil Uses",
     "lockSlots": "Allow Locking Slots",
-    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories"
+    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories",
+    "summoningEyeAlert": "Summoning Eye Alert",
+    "makeEnderchestsInEndGreen": "Make Enderchests In The End Green"
   },
   "messages": {
     "dropConfirmation": "'ay lad, drop this here item again to confirm!",
@@ -88,6 +90,7 @@
       "reforges": "Reforgery"
     },
     "cancelledStemBreak": "'ay there, SkyblockAddons 'as stopped ye from breakin' this here stem. Use yer bare hand if ye'd like to break it.",
-    "slotLocked": "This slot is locked!"
+    "slotLocked": "This slot is locked!",
+    "summoningEyeFound": "Summoning Eye!"
   }
 }
