@@ -67,7 +67,9 @@
     "showDarkAuctionTimerInOtherGames": "أظهار مؤقت المزاد الأسود في الألعاب الأخرى",
     "showItemAnvilUses": "أظهار عدد مرات أستخدام السندان",
     "lockSlots": "Allow Locking Slots",
-    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories"
+    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories",
+    "summoningEyeAlert": "Summoning Eye Alert",
+    "makeEnderchestsInEndGreen": "Make Enderchests In The End Green"
   },
   "messages": {
     "dropConfirmation": "!إرمي هذا العنصر مرة أخرى للتأكيد",
@@ -88,6 +90,7 @@
       "reforges": "التزويرات"
     },
     "cancelledStemBreak": "منعك تطبيق إضافات الجزيرة الطائرة من كسر القصب. أن أردت كسره فأستخدم يدك.",
-    "slotLocked": "This slot is locked!"
+    "slotLocked": "This slot is locked!",
+    "summoningEyeFound": "Summoning Eye!"
   }
 }
