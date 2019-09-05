@@ -67,7 +67,9 @@
     "showDarkAuctionTimerInOtherGames": "Показване на Dark Auction Таймер в Други Игри",
     "showItemAnvilUses": "Показване Употребата на Наковални Употреби  ",
     "lockSlots": "Allow Locking Slots",
-    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories"
+    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories",
+    "summoningEyeAlert": "Summoning Eye Alert",
+    "makeEnderchestsInEndGreen": "Make Enderchests In The End Green"
   },
   "messages": {
     "dropConfirmation": "Хвърлете Този Предмет за да Потвърдите",
@@ -88,6 +90,7 @@
       "reforges": "Преобразуване"
     },
     "cancelledStemBreak": "SkyblockAddons ви е Спрял от Унищожаване на Това Стъбло . Използвайте Ръце за да го Премахнете .",
-    "slotLocked": "This slot is locked!"
+    "slotLocked": "This slot is locked!",
+    "summoningEyeFound": "Summoning Eye!"
   }
 }
