@@ -67,7 +67,9 @@
     "showDarkAuctionTimerInOtherGames": "แสดงระยะเวลา Dark Auction ในเกมอื่น",
     "showItemAnvilUses": "แสดงจำนวนการใช้ Anvil ของไอเทม",
     "lockSlots": "Allow Locking Slots",
-    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories"
+    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories",
+    "summoningEyeAlert": "Summoning Eye Alert",
+    "makeEnderchestsInEndGreen": "Make Enderchests In The End Green"
   },
   "messages": {
     "dropConfirmation": "กดทิ้งของอีกที่เพื่อยืนยันทิ้งของสิ่นนี้!",
@@ -88,6 +90,7 @@
       "reforges": "ตีบวกของ"
     },
     "cancelledStemBreak": "มอด SkyblockAddons กันไม่ให้คุณทำลายรากพืชนี้ โปรดใช้มือเปล่าถ้าต้องการทำลาย",
-    "slotLocked": "This slot is locked!"
+    "slotLocked": "This slot is locked!",
+    "summoningEyeFound": "Summoning Eye!"
   }
 }
