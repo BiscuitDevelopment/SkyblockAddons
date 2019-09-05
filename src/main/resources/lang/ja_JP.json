@@ -3,7 +3,7 @@
   "settings": {
     "settings": "設定",
     "openSettings": "設定を開く",
-    "magmaBossWarning": "Magma Bossのアラート",
+    "magmaBossWarning": "マグマボスのアラート",
     "itemDropConfirmation": "アイテムを捨てる確認",
     "warningTime": "アラートする時間: %time%s",
     "hideSkeletonHatBones": "スケルトンヘルメットの骨を非表示",
@@ -22,9 +22,9 @@
     "showEnchantmentsReforges": "エンチャントとリフォージの内容を表示",
     "minionStopWarning": "ミニオンが停止している時のアラート",
     "hideAuctionHousePlayers": "オークションハウス付近のプレイヤーを非表示",
-    "backpackStyle": "バックパックの表示: %style%",
+    "backpackStyle": "バックパックのスタイル: %style%",
     "backpackStyles": {
-      "inventory": "インベントリ型",
+      "inventory": "インベントリ",
       "compact": "コンパクト"
     },
     "showBackpackPreview": "バックパックのプレビューを表示",
@@ -62,24 +62,24 @@
     "magmaBossTimerColor": "マグマボスタイマーの色",
     "darkAuctionTimerColor": "ダークオークションタイマーの色",
     "stopBowChargeFromResetting": "弓のチャージがリセットされるのを防止",
-    "showMagmaTimerInOtherGames": "マグマタイマーを別のミニゲームでも表示",
+    "showMagmaTimerInOtherGames": "マグマタイマーを別のミニゲーム中でも表示",
     "preventMovementOnDeath": "死んだ直後に歩くのを防止",
     "showDarkAuctionTimerInOtherGames": "ダークオークションタイマーを別のミニゲームでも表示",
     "showItemAnvilUses": "金床を使用した回数を表示",
-    "lockSlots": "Allow Locking Slots",
-    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories",
-    "summoningEyeAlert": "Summoning Eye Alert",
-    "makeEnderchestsInEndGreen": "Make Enderchests In The End Green"
+    "lockSlots": "スロットのロックを許可",
+    "dontResetCursorInventory": "インベントリ間でのカーソル位置のリセットを防止",
+    "summoningEyeAlert": "サモニングアイ取得時のアラート",
+    "makeEnderchestsInEndGreen": "エンドのエンダーチェストを緑色に表示"
   },
   "messages": {
-    "dropConfirmation": "落としてもいいのであれば、このアイテムをもう一度ドロップしてください。",
+    "dropConfirmation": "ドロップしてもいいのであれば、このアイテムをもう一度ドロップしてください。",
     "magmaBossWarning": "マグマキューブボス出現！",
     "fullInventory": "インベントリが満タンです！",
     "newVersion": "新しいバージョンの %newestVersion% が利用可能です。ダウンロードするにはここをクリックしてください。",
     "discord": "何が変わったか知りたいですか？ここをクリックすると私のDiscordに参加できます。",
     "developmentVersion": "現在開発バージョンの %version% を使用しています。リリースされている最新バージョンは %newestVersion% です。",
     "labymod": "Labymodを使用している場合、「食料とアーマーのゲージを非表示」の機能は互換性がありません。",
-    "minionCannotReach": "%type% ミニオンは上限に達したか、範囲外で敵を倒せないためモブのスポーンを停止しました！!",
+    "minionCannotReach": "%type% ミニオンは上限に達したか、範囲外で敵を倒せないためモブのスポーンを停止しました！",
     "minionIsFull": "いずれかのミニオンのインベントリが埋まっています！",
     "typeEnchantmentsHere": "ここに %type% を入力してください！",
     "separateMultiple": "複数ある場合はコンマ(,)で分けてください。",
@@ -90,7 +90,7 @@
       "reforges": "リフォージ"
     },
     "cancelledStemBreak": "SkyblockAddonsがこの茎を破壊するのを防止しました。破壊したい場合は素手で破壊してください。",
-    "slotLocked": "This slot is locked!",
-    "summoningEyeFound": "Summoning Eye!"
+    "slotLocked": "このスロットはロックされています！",
+    "summoningEyeFound": "サモニングアイがドロップしました！"
   }
 }
