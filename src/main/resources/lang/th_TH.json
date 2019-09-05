@@ -66,10 +66,10 @@
     "preventMovementOnDeath": "ป้องกันการเดินหลังตาย",
     "showDarkAuctionTimerInOtherGames": "แสดงระยะเวลา Dark Auction ในเกมอื่น",
     "showItemAnvilUses": "แสดงจำนวนการใช้ Anvil ของไอเทม",
-    "lockSlots": "Allow Locking Slots",
-    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories",
-    "summoningEyeAlert": "Summoning Eye Alert",
-    "makeEnderchestsInEndGreen": "Make Enderchests In The End Green"
+    "lockSlots": "สามารถล็อคช่องได้",
+    "dontResetCursorInventory": "เคอร์เซอร์ไม่จัดตำแหน่งใหม่เมื่อเปลี่ยนช่องเก็บของ",
+    "summoningEyeAlert": "แจ้งเตือนดวงตาอัญเชิญ",
+    "makeEnderchestsInEndGreen": "ทำให้หีบ Ender เป็นสีเขียวเมื่ออยู่ใน The End"
   },
   "messages": {
     "dropConfirmation": "กดทิ้งของอีกที่เพื่อยืนยันทิ้งของสิ่นนี้!",
@@ -90,7 +90,7 @@
       "reforges": "ตีบวกของ"
     },
     "cancelledStemBreak": "มอด SkyblockAddons กันไม่ให้คุณทำลายรากพืชนี้ โปรดใช้มือเปล่าถ้าต้องการทำลาย",
-    "slotLocked": "This slot is locked!",
-    "summoningEyeFound": "Summoning Eye!"
+    "slotLocked": "ช่องนี้ถูกล็อคไว้!",
+    "summoningEyeFound": "ดวงตาอัญเชิญ!"
   }
 }
