@@ -67,7 +67,9 @@
     "showDarkAuctionTimerInOtherGames": "Pokaži Tajmer Crne Dražbe u Ostalim Igricama",
     "showItemAnvilUses": "Pokaži Broj Korištenja Stvari u Anvil-u",
     "lockSlots": "Allow Locking Slots",
-    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories"
+    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories",
+    "summoningEyeAlert": "Summoning Eye Alert",
+    "makeEnderchestsInEndGreen": "Make Enderchests In The End Green"
   },
   "messages": {
     "dropConfirmation": "Opet baci ovu stvar za potvrdu!",
@@ -88,6 +90,7 @@
       "reforges": "Reforge-ovi"
     },
     "cancelledStemBreak": "SkyblockAddons te zaustavio od rušenja ove stabljike. Koristi svoju ruku ako je želiš slomiti.",
-    "slotLocked": "This slot is locked!"
+    "slotLocked": "This slot is locked!",
+    "summoningEyeFound": "Summoning Eye!"
   }
 }
