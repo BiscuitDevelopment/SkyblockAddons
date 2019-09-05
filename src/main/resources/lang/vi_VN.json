@@ -67,7 +67,9 @@
     "showDarkAuctionTimerInOtherGames": "Hiện hẹn giờ \"Đấu giá đen\" trong minigame khác",
     "showItemAnvilUses": "Hiện số lần dùng đe",
     "lockSlots": "Allow Locking Slots",
-    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories"
+    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories",
+    "summoningEyeAlert": "Summoning Eye Alert",
+    "makeEnderchestsInEndGreen": "Make Enderchests In The End Green"
   },
   "messages": {
     "dropConfirmation": "Nhấn \"Q\" Thêm Một Lần Nữa Để Xác Nhận!",
@@ -88,6 +90,7 @@
       "reforges": "Rèn luyện"
     },
     "cancelledStemBreak": "\"SkyblockAddons\" đã ngăn bạn khỏi việc phá hạt giống này. Hãy sử dụng tay không nếu bạn muốn đập nó.",
-    "slotLocked": "This slot is locked!"
+    "slotLocked": "This slot is locked!",
+    "summoningEyeFound": "Summoning Eye!"
   }
 }
