@@ -67,7 +67,9 @@
     "showDarkAuctionTimerInOtherGames": "Afficher le minuteur du marché noir hors du SB",
     "showItemAnvilUses": "Afficher le nombre d'utilisation de l'enclume",
     "lockSlots": "Allow Locking Slots",
-    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories"
+    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories",
+    "summoningEyeAlert": "Summoning Eye Alert",
+    "makeEnderchestsInEndGreen": "Make Enderchests In The End Green"
   },
   "messages": {
     "dropConfirmation": "Jetez cet objet une nouvelle fois pour confirmer!",
@@ -88,6 +90,7 @@
       "reforges": "Reforges"
     },
     "cancelledStemBreak": "SkyblockAddons vous a empêcher de casser cette graine. Utilisez votre main nue si vous souhaitez la casser.",
-    "slotLocked": "This slot is locked!"
+    "slotLocked": "This slot is locked!",
+    "summoningEyeFound": "Summoning Eye!"
   }
 }
