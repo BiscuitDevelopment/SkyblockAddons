@@ -5,7 +5,7 @@
     "openSettings": "Otevřít další nastavení",
     "magmaBossWarning": "Magma Boss upozornění",
     "itemDropConfirmation": "Potvrzení vyhození itemu",
-    "warningTime": "Délka upozornění: %čas%s",
+    "warningTime": "Délka upozornění: %time%s",
     "hideSkeletonHatBones": "Skrýt Skeleton Helmet kosti",
     "skeletonHatBonesBar": "Skeleton Helmet - ukazetel kostí",
     "hideFoodAndArmor": "Skrýt ukazatel jídla a armoru",
@@ -16,13 +16,13 @@
     "manaTextColor": "Barva many a textu",
     "manaBarColor": "Barva ukazetele many",
     "editLocations": "Upravit lokace",
-    "guiScale": "Velikost ukazetelů: %velikost%",
+    "guiScale": "Velikost ukazetelů: %scale%",
     "resetLocations": "Resetovat lokace",
     "hideDurability": "Skrýt výdrž nástrojů",
     "showEnchantmentsReforges": "Očarování a překování",
     "minionStopWarning": "\"minion nemůže dosáhnout\" Varování",
     "hideAuctionHousePlayers": "Skrýt hráče u Auction house",
-    "backpackStyle": "Styl batůžků: %styl%",
+    "backpackStyle": "Styl batůžků: %style%",
     "backpackStyles": {
       "inventory": "inventář",
       "compact": "kompaktní"
@@ -84,7 +84,7 @@
     "typeEnchantmentsHere": "Typ %typ% je tady!",
     "separateMultiple": "Oddělte více čárkami.",
     "enchantsToMatch": "%typ% Schodovat se:",
-    "enchantsToExclude": "%typ% Vyloučit:",
+    "enchantsToExclude": "%type% Vyloučit:",
     "inventoryTypes": {
       "enchants": "Očarování",
       "reforges": "Překování"
