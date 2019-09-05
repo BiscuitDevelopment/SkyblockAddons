@@ -31,7 +31,7 @@ public enum Feature {
     DARK_AUCTION_TIMER(28, Message.SETTING_DARK_AUCTION_TIMER),
     ITEM_PICKUP_LOG(29, Message.SETTING_ITEM_PICKUP_LOG),
     AVOID_PLACING_ENCHANTED_ITEMS(30, Message.SETTING_AVOID_PLACING_ENCHANTED_ITEMS),
-    MAKE_ENDERCHESTS_GREEN_IN_END(31, Message.SETTING_MAKE_ENDERMEN_HOLDING_ITEMS_PINK), //TODO change this message
+    MAKE_ENDERCHESTS_GREEN_IN_END(31, Message.SETTING_MAKE_ENDERCHESTS_IN_END_GREEN), //TODO change this message
     AVOID_BREAKING_STEMS(32, Message.SETTING_AVOID_BREAKING_STEMS),
     STOP_BOW_CHARGE_FROM_RESETTING(31, Message.SETTING_STOP_BOW_CHARGE_FROM_RESETTING),
     SHOW_MAGMA_TIMER_IN_OTHER_GAMES(32, Message.SETTING_SHOW_MAGMA_TIMER_IN_OTHER_GAMES),
@@ -41,6 +41,7 @@ public enum Feature {
     LOCK_SLOTS(36, Message.SETTING_LOCK_SLOTS),
     DONT_RESET_CURSOR_INVENTORY(37, Message.SETTING_DONT_RESET_CURSOR_INVENTORY),
     HIDE_HUD_BARS(38, null), //TODO migrate this
+    SUMMONING_EYE_ALERT(39, Message.SETTING_SUMMONING_EYE_ALERT),
 
 
     DISABLE_DOUBLE_DROP_AUTOMATICALLY(14, Message.SETTING_DISABLE_DOUBLE_DROP),
@@ -66,9 +67,9 @@ public enum Feature {
     private int id;
     private Message message;
 
-    Feature(int id, Message message) {
+    Feature(int id, Message settingMessage) {
         this.id = id;
-        this.message = message;
+        this.message = settingMessage;
     }
 
     public int getId() {

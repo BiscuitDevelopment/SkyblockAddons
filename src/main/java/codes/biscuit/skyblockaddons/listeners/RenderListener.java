@@ -127,6 +127,9 @@ public class RenderListener {
                 case FULL_INVENTORY_WARNING:
                     message = Message.MESSAGE_FULL_INVENTORY;
                     break;
+                case SUMMONING_EYE_ALERT:
+                    message = Message.MESSAGE_SUMMONING_EYE_FOUND;
+                    break;
             }
             if (message != null) {
                 String text = message.getMessage();

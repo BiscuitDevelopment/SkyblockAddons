@@ -13,6 +13,8 @@ import java.util.*;
  */
 public class InventoryUtils {
 
+    private static final String SUMMONING_EYE_DISPLAY_NAME = "\u00A75Summoning Eye";
+
     /**
      * Display name of the Quiver Arrow item
      */
@@ -63,7 +65,7 @@ public class InventoryUtils {
         Map<String, Integer> previousInventoryMap = new HashMap<>();
         Map<String, Integer> newInventoryMap = new HashMap<>();
 
-        if(previousInventory != null) {
+        if (previousInventory != null) {
 
             for(int i = 0; i < newInventory.size(); i++) {
                 ItemStack previousItem = previousInventory.get(i);
@@ -114,7 +116,21 @@ public class InventoryUtils {
                 } else {
                     itemPickupLog.put(diff.getDisplayName(), diff);
                 }
+                if (main.getConfigValues().isEnabled(Feature.SUMMONING_EYE_ALERT)
+                        && diff.getAmount() == 1 && diff.getDisplayName().equals(SUMMONING_EYE_DISPLAY_NAME)
+                        && (main.getUtils().getLocation() == EnumUtils.Location.THE_END || main.getUtils().getLocation() == EnumUtils.Location.DRAGONS_NEST)
+                        && main.getPlayerListener().didntRecentlyCloseScreen()){
+                    main.getUtils().playSound("random.orb", 0.5);
+                    main.getRenderListener().setTitleFeature(Feature.SUMMONING_EYE_ALERT);
+                    new Timer().schedule(new TimerTask() {
+                        @Override
+                        public void run() {
+                            main.getRenderListener().setTitleFeature(null);
+                        }
+                    }, main.getConfigValues().getWarningSeconds() * 1000);
+                }
             }
+
         }
 
         previousInventory = newInventory;

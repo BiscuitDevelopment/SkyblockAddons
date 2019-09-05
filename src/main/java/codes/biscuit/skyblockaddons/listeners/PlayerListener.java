@@ -52,6 +52,7 @@ public class PlayerListener {
     private long lastBoss = -1;
     private int magmaTick = 1;
     private int timerTick = 1;
+    private long lastScreenOpen = -1;
     private long lastMinionSound = -1;
     private Integer healthUpdate = null;
     private long lastHealthUpdate;
@@ -271,8 +272,10 @@ public class PlayerListener {
                             sentUpdate = true;
                         }
 
-                        if (main.getConfigValues().isEnabled(Feature.ITEM_PICKUP_LOG) && mc.currentScreen == null
-                        && main.getPlayerListener().didntRecentlyJoinWorld()) {
+                        if (mc.currentScreen != null) {
+                            lastScreenOpen = System.currentTimeMillis();
+                        } else if (main.getConfigValues().isEnabled(Feature.ITEM_PICKUP_LOG)
+                                    && main.getPlayerListener().didntRecentlyJoinWorld()) {
                             main.getInventoryUtils().getInventoryDifference(p.inventory.mainInventory);
                         }
                     }
@@ -540,6 +543,10 @@ public class PlayerListener {
 
     public boolean shouldResetMouse() {
         return System.currentTimeMillis() - lastClosedInv > 100;
+    }
+
+    public boolean didntRecentlyCloseScreen() {
+        return System.currentTimeMillis() - lastScreenOpen > 500;
     }
 
     public boolean didntRecentlyJoinWorld() {
