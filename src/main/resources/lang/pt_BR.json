@@ -67,7 +67,9 @@
     "showDarkAuctionTimerInOtherGames": "Mostrar Timer do Leilão Sombrio Em Outros Jogos",
     "showItemAnvilUses": "Mostrar Usos na Bigorna de Itens",
     "lockSlots": "Allow Locking Slots",
-    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories"
+    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories",
+    "summoningEyeAlert": "Summoning Eye Alert",
+    "makeEnderchestsInEndGreen": "Make Enderchests In The End Green"
   },
   "messages": {
     "dropConfirmation": "Large este item de novo para confirmar!",
@@ -88,6 +90,7 @@
       "reforges": "Reforjadas"
     },
     "cancelledStemBreak": "SkyblockAddons impediu você de quebrar esta raiz. Use sua mão se deseja a quebrar.",
-    "slotLocked": "This slot is locked!"
+    "slotLocked": "This slot is locked!",
+    "summoningEyeFound": "Summoning Eye!"
   }
 }
