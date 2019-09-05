@@ -66,10 +66,10 @@
     "preventMovementOnDeath": "Não andar depois da morte",
     "showDarkAuctionTimerInOtherGames": "Mostrar o Tempo da Dark Auc noutros jogos",
     "showItemAnvilUses": "Mostrar os usos na bigorna",
-    "lockSlots": "Allow Locking Slots",
-    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories",
-    "summoningEyeAlert": "Summoning Eye Alert",
-    "makeEnderchestsInEndGreen": "Make Enderchests In The End Green"
+    "lockSlots": "Permitir o bloqueio de slots",
+    "dontResetCursorInventory": "Não resetar o cursor entre inventários",
+    "summoningEyeAlert": "Alerta de Summoning Eyes",
+    "makeEnderchestsInEndGreen": "Tornar os baús do fim no Fim verdes"
   },
   "messages": {
     "dropConfirmation": "Dropa este item outra vez para confirmar!",
@@ -90,7 +90,7 @@
       "reforges": "Reforges"
     },
     "cancelledStemBreak": "O SkyblockAddons impediu-te de partires esta semente. Usa a tua mão se a quiseres partir.",
-    "slotLocked": "This slot is locked!",
+    "slotLocked": "Este slot está bloqueado!",
     "summoningEyeFound": "Summoning Eye!"
   }
 }
