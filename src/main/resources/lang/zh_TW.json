@@ -66,8 +66,10 @@
     "preventMovementOnDeath": "防止死亡後進行移動",
     "showDarkAuctionTimerInOtherGames": "於其他遊戲中顯示黑暗拍賣會時間",
     "showItemAnvilUses": "顯示物品已使用幾次鐵砧",
-    "lockSlots": "Lock Slots",
-    "dontResetCursorInventory": "Don't Reset Inventory Cursor"
+    "lockSlots": "Allow Locking Slots",
+    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories",
+    "summoningEyeAlert": "Summoning Eye Alert",
+    "makeEnderchestsInEndGreen": "Make Enderchests In The End Green"
   },
   "messages": {
     "dropConfirmation": "再次丟棄此物品以確認!",
@@ -88,6 +90,7 @@
       "reforges": "重鑄"
     },
     "cancelledStemBreak": "SkyblockAddons阻止了你破壞這個梗, 如想破壞, 請使用空手",
-    "slotLocked": "This slot is locked!"
+    "slotLocked": "This slot is locked!",
+    "summoningEyeFound": "Summoning Eye!"
   }
 }

@@ -66,8 +66,10 @@
     "preventMovementOnDeath": "Impedisci di Camminare Dopo Essere Morto",
     "showDarkAuctionTimerInOtherGames": "Mostra il Timer per la Dark Auction In Altri Giochi",
     "showItemAnvilUses": "Mostra Numero di Usi dell’Incudine",
-    "lockSlots": "Lock Slots",
-    "dontResetCursorInventory": "Don't Reset Inventory Cursor"
+    "lockSlots": "Allow Locking Slots",
+    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories",
+    "summoningEyeAlert": "Summoning Eye Alert",
+    "makeEnderchestsInEndGreen": "Make Enderchests In The End Green"
   },
   "messages": {
     "dropConfirmation": "Getta questo oggetto nuovamente per confermare!",
@@ -88,6 +90,7 @@
       "reforges": "Forge"
     },
     "cancelledStemBreak": "SkyblockAddons ti ha impedito di rompere questo stelo. Usa la tua mano se lo vuoi rompere.",
-    "slotLocked": "This slot is locked!"
+    "slotLocked": "This slot is locked!",
+    "summoningEyeFound": "Summoning Eye!"
   }
 }

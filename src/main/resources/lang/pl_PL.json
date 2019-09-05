@@ -66,8 +66,10 @@
     "preventMovementOnDeath": "Zatrzymaj Poruszanie Się Po Śmierci",
     "showDarkAuctionTimerInOtherGames": "Pokaż Timer Dark Auction w Innych Grach",
     "showItemAnvilUses": "Pokaż Liczbę Użyć Kowadła na Przedmiocie",
-    "lockSlots": "Lock Slots",
-    "dontResetCursorInventory": "Don't Reset Inventory Cursor"
+    "lockSlots": "Allow Locking Slots",
+    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories",
+    "summoningEyeAlert": "Summoning Eye Alert",
+    "makeEnderchestsInEndGreen": "Make Enderchests In The End Green"
   },
   "messages": {
     "dropConfirmation": "Wyrzuć ten przedmiot ponownie, aby potwierdzić!",
@@ -88,6 +90,7 @@
       "reforges": "Reforge"
     },
     "cancelledStemBreak": "SkyblockAddons anulował zniszczenie tej łodygi. Użyj pustej ręki, jeśli chcesz ją zniszczyć.",
-    "slotLocked": "This slot is locked!"
+    "slotLocked": "This slot is locked!",
+    "summoningEyeFound": "Summoning Eye!"
   }
 }

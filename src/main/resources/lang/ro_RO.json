@@ -66,8 +66,10 @@
     "preventMovementOnDeath": "Evită Mersul După Moarte",
     "showDarkAuctionTimerInOtherGames": "Arată timpul Până la Dark Auction in alte jocuri",
     "showItemAnvilUses": "Arată Utilizările Nicovalei pe Obiect",
-    "lockSlots": "Lock Slots",
-    "dontResetCursorInventory": "Don't Reset Inventory Cursor"
+    "lockSlots": "Allow Locking Slots",
+    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories",
+    "summoningEyeAlert": "Summoning Eye Alert",
+    "makeEnderchestsInEndGreen": "Make Enderchests In The End Green"
   },
   "messages": {
     "dropConfirmation": "Arunca acest obiect iar ca să confirmi!",
@@ -88,6 +90,7 @@
       "reforges": "Refăuriri"
     },
     "cancelledStemBreak": "SkyblockAddons te-a oprit din spargerea plantei. Te rog folosește mâna liberă dacă vrei să o spargi.",
-    "slotLocked": "This slot is locked!"
+    "slotLocked": "This slot is locked!",
+    "summoningEyeFound": "Summoning Eye!"
   }
 }

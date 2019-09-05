@@ -66,8 +66,10 @@
     "preventMovementOnDeath": "Предотвращать ходьбу после смерти",
     "showDarkAuctionTimerInOtherGames": "Показывать таймер Тёмного Аукц. в других играх",
     "showItemAnvilUses": "Показывать Использования предмета на наковальне",
-    "lockSlots": "Lock Slots",
-    "dontResetCursorInventory": "Don't Reset Inventory Cursor"
+    "lockSlots": "Allow Locking Slots",
+    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories",
+    "summoningEyeAlert": "Summoning Eye Alert",
+    "makeEnderchestsInEndGreen": "Make Enderchests In The End Green"
   },
   "messages": {
     "dropConfirmation": "Выбросите предмет ещё раз для подтверждения!",
@@ -88,6 +90,7 @@
       "reforges": "Перековки"
     },
     "cancelledStemBreak": "SkyblockAddons остановил вас от ломания этого стебля. Используйте пустую руку, если вы хотите это сделать.",
-    "slotLocked": "This slot is locked!"
+    "slotLocked": "This slot is locked!",
+    "summoningEyeFound": "Summoning Eye!"
   }
 }

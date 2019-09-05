@@ -66,8 +66,10 @@
     "preventMovementOnDeath": "Förhindra Gående Efter Död",
     "showDarkAuctionTimerInOtherGames": "Visa Mörk Auction Timer I Andra Spel",
     "showItemAnvilUses": "Visa Atikel Städ Användningar",
-    "lockSlots": "Lock Slots",
-    "dontResetCursorInventory": "Don't Reset Inventory Cursor"
+    "lockSlots": "Allow Locking Slots",
+    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories",
+    "summoningEyeAlert": "Summoning Eye Alert",
+    "makeEnderchestsInEndGreen": "Make Enderchests In The End Green"
   },
   "messages": {
     "dropConfirmation": "Släpp Det Här Igen För Att Bekräfta!",
@@ -88,6 +90,7 @@
       "reforges": "Reforges"
     },
     "cancelledStemBreak": "SkyblockAddons har förhindrat dig från att förstöra den här stjälken. Använd dina händer om du vill förstöra den.",
-    "slotLocked": "This slot is locked!"
+    "slotLocked": "This slot is locked!",
+    "summoningEyeFound": "Summoning Eye!"
   }
 }
