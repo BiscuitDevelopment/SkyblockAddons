@@ -15,7 +15,7 @@
     "confirmationColor": "Couleur pour les confirmations",
     "manaTextColor": "Couleur du texte de la mana",
     "manaBarColor": "Couleur de la barre de mana",
-    "editLocations": "Modifier l'interface",
+    "editLocations": "Modifier les emplacements",
     "guiScale": "Taille de l'interface: %scale%",
     "resetLocations": "Réinitialiser l'interface",
     "hideDurability": "Masquer la durabilité des outils",
