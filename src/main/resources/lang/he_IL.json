@@ -67,7 +67,9 @@
     "showDarkAuctionTimerInOtherGames": "הצגת הטיימר של השוק השחור במשחקים שונים",
     "showItemAnvilUses": "הצגת שימושי סדן של הפריט",
     "lockSlots": "Allow Locking Slots",
-    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories"
+    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories",
+    "summoningEyeAlert": "Summoning Eye Alert",
+    "makeEnderchestsInEndGreen": "Make Enderchests In The End Green"
   },
   "messages": {
     "dropConfirmation": "זרוק פריט זה שוב לאישור!",
@@ -88,6 +90,7 @@
       "reforges": "שדרוגים"
     },
     "cancelledStemBreak": "סקיבלוקאדדונס מנע אותך מלשבור את הגידול הזה. השתמש ביד שלך בכדי לשבור אותו.",
-    "slotLocked": "This slot is locked!"
+    "slotLocked": "This slot is locked!",
+    "summoningEyeFound": "Summoning Eye!"
   }
 }
