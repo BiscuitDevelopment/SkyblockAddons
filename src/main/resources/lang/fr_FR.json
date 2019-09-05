@@ -15,7 +15,7 @@
     "confirmationColor": "Couleur pour les confirmations",
     "manaTextColor": "Couleur du texte de la mana",
     "manaBarColor": "Couleur de la barre de mana",
-    "editLocations": "Modifier les emplacements",
+    "editLocations": "Modifier l'interface",
     "guiScale": "Taille de l'interface: %scale%",
     "resetLocations": "Réinitialiser l'interface",
     "hideDurability": "Masquer la durabilité des outils",
@@ -66,10 +66,10 @@
     "preventMovementOnDeath": "Empêcher de marcher après la mort",
     "showDarkAuctionTimerInOtherGames": "Afficher le minuteur du marché noir hors du SB",
     "showItemAnvilUses": "Afficher le nombre d'utilisation de l'enclume",
-    "lockSlots": "Allow Locking Slots",
-    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories",
-    "summoningEyeAlert": "Summoning Eye Alert",
-    "makeEnderchestsInEndGreen": "Make Enderchests In The End Green"
+    "lockSlots": "Autoriser le verrouillage d'emplacement",
+    "dontResetCursorInventory": "Ne pas réinitialiser le curseur entre les inventaires",
+    "summoningEyeAlert": "Alerte Œil d'invocation",
+    "makeEnderchestsInEndGreen": "Rendre les Enderchests dans l'End vert"
   },
   "messages": {
     "dropConfirmation": "Jetez cet objet une nouvelle fois pour confirmer!",
@@ -89,8 +89,8 @@
       "enchants": "Enchantements",
       "reforges": "Reforges"
     },
-    "cancelledStemBreak": "SkyblockAddons vous a empêcher de casser cette graine. Utilisez votre main nue si vous souhaitez la casser.",
-    "slotLocked": "This slot is locked!",
-    "summoningEyeFound": "Summoning Eye!"
+    "cancelledStemBreak": "SkyblockAddons vous a empêché de casser cette graine. Utilisez votre main nue si vous souhaitez la casser.",
+    "slotLocked": "Cet emplacement est bloqué!",
+    "summoningEyeFound": "Œil d'invocation!"
   }
 }
