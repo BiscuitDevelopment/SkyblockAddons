@@ -67,7 +67,9 @@
     "showDarkAuctionTimerInOtherGames": "Show Oven Timer In Other Bakeries",
     "showItemAnvilUses": "Show How Much Your Biscuits Gonna Cost lol",
     "lockSlots": "Allow Locking Slots",
-    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories"
+    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories",
+    "summoningEyeAlert": "Summoning Eye Alert",
+    "makeEnderchestsInEndGreen": "Make Enderchests In The End Green"
   },
   "messages": {
     "dropConfirmation": "Throw out this biscuit again to confirm!",
@@ -88,6 +90,7 @@
       "reforges": "Bisforges"
     },
     "cancelledStemBreak": "The biscuit gods have stopped you from eating this biscuit. Use your hands if you'd like to eat it.",
-    "slotLocked": "This slot is locked!"
+    "slotLocked": "This slot is locked!",
+    "summoningEyeFound": "Summoning Eye!"
   }
 }
