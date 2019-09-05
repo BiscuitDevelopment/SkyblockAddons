@@ -3,6 +3,7 @@ package codes.biscuit.skyblockaddons.utils;
 public enum Language {
 
     ARABIC("ar_SA"),
+    BISCUITISH("bc_BC"),
     BULGARIAN("bg_BG"),
     CHINESE_TRADITIONAL("zh_TW"),
     CHINESE_SIMPLIFIED("zh_CN"),
@@ -24,11 +25,12 @@ public enum Language {
     PORTUGUESE_PORTUGAL("pt_PT"),
     ROMANIAN("ro_RO"),
     RUSSIAN("ru_RU"),
+    SERBIAN_LATIN("sr_CS"),
     SPANISH_MEXICO("es_MX"),
     SPANISH_SPAIN("es_ES"),
     SWEDISH("sv_SE"),
-    TURKISH("tr_TR"),
     THAI("th_TH"),
+    TURKISH("tr_TR"),
     VIETNAMESE("vi_VN");
 
     private String path;

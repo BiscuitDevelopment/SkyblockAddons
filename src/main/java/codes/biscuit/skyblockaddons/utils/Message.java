@@ -72,6 +72,7 @@ public enum Message {
     SETTING_PREVENT_MOVEMENT_ON_DEATH(MessageObject.SETTING, "preventMovementOnDeath"),
     SETTING_LOCK_SLOTS(MessageObject.SETTING, "lockSlots"),
     SETTING_DONT_RESET_CURSOR_INVENTORY(MessageObject.SETTING, "dontResetCursorInventory"),
+    SETTING_SUMMONING_EYE_ALERT(MessageObject.SETTING, "summoningEyeAlert"),
 
     BACKPACK_STYLE_GUI(MessageObject.STYLE, "inventory"),
     BACKPACK_STYLE_COMPACT(MessageObject.STYLE, "compact"),
@@ -91,6 +92,7 @@ public enum Message {
     MESSAGE_ENCHANTS_TO_EXCLUDE(MessageObject.MESSAGES, "enchantsToExclude"),
     MESSAGE_CANCELLED_STEM_BREAK(MessageObject.MESSAGES, "cancelledStemBreak"),
     MESSAGE_SLOT_LOCKED(MessageObject.MESSAGES, "slotLocked"),
+    MESSAGE_SUMMONING_EYE_FOUND(MessageObject.SETTING, "summoningEyeFound"),
 
     @Deprecated ANCHOR_POINT_TOP_LEFT(MessageObject.ANCHOR_POINT, "topLeft"),
     @Deprecated ANCHOR_POINT_TOP_RIGHT(MessageObject.ANCHOR_POINT, "topRight"),
@@ -101,7 +103,7 @@ public enum Message {
     TEXT_STYLE_REGULAR(MessageObject.TEXT_STYLE, "regular"),
     TEXT_STYLE_BLACK_SHADOW(MessageObject.TEXT_STYLE, "blackShadow"),
 
-    @Deprecated SETTING_MAKE_ENDERMEN_HOLDING_ITEMS_PINK(MessageObject.SETTING, "makeEndermenHoldingItemPink"), //removed
+    @Deprecated SETTING_MAKE_ENDERCHESTS_IN_END_GREEN(MessageObject.SETTING, "makeEnderchestsInEndGreen"),
 
     INVENTORY_TYPE_ENCHANTS(MessageObject.INVENTORY_TYPE, "enchants"),
     INVENTORY_TYPE_REFORGES(MessageObject.INVENTORY_TYPE, "reforges");
