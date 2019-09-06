@@ -67,9 +67,9 @@
     "showDarkAuctionTimerInOtherGames": "Ipakita rin ang Dark Auc Timer sa ibang laro",
     "showItemAnvilUses": "Ipakita ang mga gamit ng Item sa Anvil",
     "lockSlots": "Allow Locking Slots",
-    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories",
-    "summoningEyeAlert": "Summoning Eye Alert",
-    "makeEnderchestsInEndGreen": "Make Enderchests In The End Green"
+    "dontResetCursorInventory": "Huwag I-reset ang Kursor sa pagitan ng iyong Imbentaryo",
+    "summoningEyeAlert": "Alerto ng Pangsummon na Mata",
+    "makeEnderchestsInEndGreen": "Gawin ang mga Enderchests sa Katapusan ng Mundo ay Kulay Berde"
   },
   "messages": {
     "dropConfirmation": "Ihulog ang item muli para kumpirmado!",
@@ -90,7 +90,7 @@
       "reforges": "Pandayan"
     },
     "cancelledStemBreak": "Itinigil ng SkyblockAddons sa pag-sira ang tangkay na ito. Gamitin mo ang iyong kamay kung gusto mo sirain.",
-    "slotLocked": "This slot is locked!",
-    "summoningEyeFound": "Summoning Eye!"
+    "slotLocked": "Ang slot na ito ay nakakandado pa!",
+    "summoningEyeFound": "Pangsummon na Mata!"
   }
 }
