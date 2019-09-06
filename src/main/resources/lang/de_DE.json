@@ -66,10 +66,10 @@
     "preventMovementOnDeath": "Verhindere das Laufen nach dem Tot",
     "showDarkAuctionTimerInOtherGames": "Zeige den Dunkle Auktionstimer in andere Spielen",
     "showItemAnvilUses": "Zeige Ambossnutzungen eines Items",
-    "lockSlots": "Allow Locking Slots",
-    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories",
-    "summoningEyeAlert": "Summoning Eye Alert",
-    "makeEnderchestsInEndGreen": "Make Enderchests In The End Green"
+    "lockSlots": "Slots sperren erlauben",
+    "dontResetCursorInventory": "Mauszeiger zwischen Inventaren nicht zurücksetzen",
+    "summoningEyeAlert": "Summoning Eye Alarm",
+    "makeEnderchestsInEndGreen": "Enderchests im End grün machen"
   },
   "messages": {
     "dropConfirmation": "Werfe diesen Gegenstand nochmal, um zu bestätigen!",
@@ -90,7 +90,7 @@
       "reforges": "Verbesserungen"
     },
     "cancelledStemBreak": "SkyblockAddons hat dich davon abgehalten, diesen Stamm zu zerstören. Nutze deine leere Hand um ihn trotzdem zu zerstören.",
-    "slotLocked": "This slot is locked!",
+    "slotLocked": "Dieser Slot ist gesperrt!",
     "summoningEyeFound": "Summoning Eye!"
   }
 }
