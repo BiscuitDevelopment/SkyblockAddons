@@ -69,7 +69,7 @@
     "lockSlots": "Allow Locking Slots",
     "dontResetCursorInventory": "Don't Reset Cursor Between Inventories",
     "summoningEyeAlert": "Summoning Eye Alert",
-    "makeEnderchestsInEndGreen": "Make Enderchests In The End Green"
+    "makeEnderchestsInEndGreen": "Make them Enderchests in this 'ere End Green"
   },
   "messages": {
     "dropConfirmation": "'ay lad, drop this here item again to confirm!",
