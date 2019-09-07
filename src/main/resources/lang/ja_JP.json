@@ -37,7 +37,7 @@
     "fullMinionWarning": "ミニオンの上限のアラート",
     "nextPage": "次のページ",
     "previousPage": "前のページ",
-    "ignoreItemFrameClicks": "アイテムフレームへのクリックを無効化",
+    "ignoreItemFrameClicks": "額縁へのクリックを無効化",
     "useVanillaTextureDefence": "ディフェンスアイコンでバニラのテクスチャを使用",
     "showBackpackHoldingShift": "バックパックの中身をシフトを押しているときのみ表示",
     "manaBar": "マナゲージ",
@@ -67,7 +67,7 @@
     "showDarkAuctionTimerInOtherGames": "ダークオークションタイマーを別のミニゲームでも表示",
     "showItemAnvilUses": "金床を使用した回数を表示",
     "lockSlots": "スロットのロックを許可",
-    "dontResetCursorInventory": "インベントリ間でのカーソルの位置をリセットを防止",
+    "dontResetCursorInventory": "インベントリ間でのカーソルの位置のリセットを防止",
     "summoningEyeAlert": "サモニングアイの警告",
     "makeEnderchestsInEndGreen": "エンドにいるときにエンダーチェストを緑色に表示"
   },
