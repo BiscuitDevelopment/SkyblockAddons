@@ -67,9 +67,9 @@
     "showDarkAuctionTimerInOtherGames": "הצגת הטיימר של השוק השחור במשחקים שונים",
     "showItemAnvilUses": "הצגת שימושי סדן של הפריט",
     "lockSlots": "אפשר נעילת משבצת",
-    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories",
-    "summoningEyeAlert": "Summoning Eye Alert",
-    "makeEnderchestsInEndGreen": "Make Enderchests In The End Green"
+    "dontResetCursorInventory": "אל תאפס את העכבר בין תיקים",
+    "summoningEyeAlert": "התראת עין לזימון דרקון",
+    "makeEnderchestsInEndGreen": "הפוך תיבות אנדר לירוקות באנד"
   },
   "messages": {
     "dropConfirmation": "זרוק פריט זה שוב לאישור!",
@@ -83,14 +83,14 @@
     "minionIsFull": "אחד מהמיניונים על האי שלך מלא!",
     "typeEnchantmentsHere": "תרשום %type% כאן!",
     "separateMultiple": "הפרד באמצעות פסיק.",
-    "enchantsToMatch": "%type% לכלול:",
+    "enchantsToMatch": "לכלול %type%:",
     "enchantsToExclude": "%type% לא לכלול:",
     "inventoryTypes": {
       "enchants": "כישופים",
       "reforges": "שדרוגים"
     },
     "cancelledStemBreak": "סקיבלוקאדדונס מנע אותך מלשבור את הגידול הזה. השתמש ביד שלך בכדי לשבור אותו.",
-    "slotLocked": "This slot is locked!",
-    "summoningEyeFound": "Summoning Eye!"
+    "slotLocked": "משבצת זו נעולה!",
+    "summoningEyeFound": "עין לזימון דרקון!"
   }
 }
