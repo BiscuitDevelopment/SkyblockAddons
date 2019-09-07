@@ -24,7 +24,7 @@
     "hideAuctionHousePlayers": "オークションハウス付近のプレイヤーを非表示",
     "backpackStyle": "バックパックのスタイル: %style%",
     "backpackStyles": {
-      "inventory": "インベントリ型",
+      "inventory": "インベントリ",
       "compact": "コンパクト"
     },
     "showBackpackPreview": "バックパックのプレビューを表示",
