@@ -19,14 +19,14 @@
     "hideAuctionHousePlayers": "Verberg spelers bij het Veilingshuis",
     "backpackStyle": "Rugzak stijl: %style%",
     "backpackStyles": {
-      "regular": "Regular",
+      "regular": "Normaal",
       "compact": "Compact"
     },
     "showBackpackPreview": "Toon Rugzak Voorbeeld",
     "hideHealthBar": "Verberg Gezondheids Balk",
     "fullMinionWarning": "Volle Minion Waarschuwing",
     "ignoreItemFrameClicks": "Negeer Klikken Op Item Frames",
-    "showOnlyWhenHoldingShift": "Show Only When Holding Shift",
+    "showOnlyWhenHoldingShift": "Alleen weergeven wanneer Shift is ingedrukt",
     "manaBar": "Mana Balk",
     "manaText": "Mana Getal",
     "healthBar": "Gezondheids Balk",
