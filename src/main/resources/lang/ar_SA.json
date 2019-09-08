@@ -41,14 +41,14 @@
     "useVanillaTextureDefence": "استخدم الصورة الطبيعية لأيقونة الدفاع",
     "showBackpackHoldingShift": "ظهور حقيبة الظهر عند الانحناء فقط",
     "manaBar": "شريط الطاقة",
-    "manaText": "رقم الطاقة",
+    "manaText": "كمية الطاقة",
     "healthBar": "شريط الدم",
     "healthText": "رقم الدم",
     "defenceIcon": "رمز الدفاع",
     "defenceText": "رقم الدفاع",
     "defencePercentage": "نسبة الدفاع",
     "healthUpdates": "رقم تعديل الصحة",
-    "hidePlayersInLobby": "إخفاء الكائنات البعيدة في الباحة",
+    "hidePlayersInLobby": "إخفاء الكائنات البعيدة في اللوبي",
     "textStyle": "نمط النص: %style%",
     "textStyles": {
       "regular": "طبيعي",
@@ -61,15 +61,15 @@
     "avoidBreakingStems": "تجنب كسر القصب",
     "magmaBossTimerColor": "لون مؤقت زعيم الصهارة",
     "darkAuctionTimerColor": "لون موقت المزاد الأسود",
-    "stopBowChargeFromResetting": "أيقاف القوس من إزالة الطلقة المملوءة",
+    "stopBowChargeFromResetting": "أيقاف الملئ القوس من الاعادة",
     "showMagmaTimerInOtherGames": "أظهار مؤقت زعيم الصهارة في الألعاب الأخرى",
     "preventMovementOnDeath": "منع المشي بعد الموت",
     "showDarkAuctionTimerInOtherGames": "أظهار مؤقت المزاد الأسود في الألعاب الأخرى",
     "showItemAnvilUses": "أظهار عدد مرات أستخدام السندان",
-    "lockSlots": "Allow Locking Slots",
-    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories",
-    "summoningEyeAlert": "Summoning Eye Alert",
-    "makeEnderchestsInEndGreen": "Make Enderchests In The End Green"
+    "lockSlots": "السماح باغلاق السلوت",
+    "dontResetCursorInventory": "لا تقوم باعادة الكورسر ما بين الانفينتوري",
+    "summoningEyeAlert": "تنبيه عين الاستدعاء",
+    "makeEnderchestsInEndGreen": "ضع اندر شيست في نهاية الاخضر"
   },
   "messages": {
     "dropConfirmation": "!إرمي هذا العنصر مرة أخرى للتأكيد",
@@ -80,17 +80,17 @@
     "developmentVersion": "%newestVersion% أحدث نسخة على الإنترنت هي .%version% :أنت تقوم بتشغيل إصدار تطوير",
     "labymod": ".مستعملي اللابي مود: إن إخفاء عظام خوذة الهيكل العظمي غير متوافق",
     "minionCannotReach": "!لا يمكنه الوصول وانه سيتوقف عن الإنشاء %type%إن تابع ال",
-    "minionIsFull": "امتلأت حقيبة أحدى عبادك في جزيرتك!",
+    "minionIsFull": "امتلأت حقيبة أحدى خدامك في جزيرتك!",
     "typeEnchantmentsHere": "اكتب %type% في هذه الخانة!",
     "separateMultiple": "أفرز المتعددين بالفواصل.",
     "enchantsToMatch": "%type% للمطابقة:",
     "enchantsToExclude": "%type% للاستبعاد:",
     "inventoryTypes": {
       "enchants": "التطويرات",
-      "reforges": "التزويرات"
+      "reforges": "اعادة تشكيل\n"
     },
     "cancelledStemBreak": "منعك تطبيق إضافات الجزيرة الطائرة من كسر القصب. أن أردت كسره فأستخدم يدك.",
-    "slotLocked": "This slot is locked!",
-    "summoningEyeFound": "Summoning Eye!"
+    "slotLocked": "هذه السلوت مغلقة!",
+    "summoningEyeFound": "عين الاستدعاء!"
   }
 }
