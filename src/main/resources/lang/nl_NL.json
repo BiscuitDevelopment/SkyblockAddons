@@ -35,7 +35,7 @@
     "defenceText": "Verdediging Hoeveelheid",
     "defencePercentage": "Verdediging Percentage",
     "healthUpdates": "Gezondheid Hoeveelheid Aanpassen",
-    "hidePlayersInLobby": "Hide Far Entities in Lobby",
+    "hidePlayersInLobby": "Verberg Verre Entiteiten in Lobby",
     "darkAuctionTimer": "Timer Donkere Veiling",
     "magmaBossTimer": "Magma Baas Timer",
     "itemPickupLog": "Lijst Opgepakte Items",
@@ -47,16 +47,16 @@
     "lockSlots": "Slots Vergrendelen toestaan",
     "dontResetCursorInventory": "Cursor niet resetten tussen Inventarissen",
     "summoningEyeAlert": "Oproepend oog Alarm",
-    "makeEnderchestsInEndGreen": "Make Enderchests in the End Green",
-    "changeColor": "Change Color",
-    "showInOtherGames": "Show in Other Games",
-    "useVanillaTexture": "Use the Vanilla Texture",
-    "textStyle": "Text Style",
+    "makeEnderchestsInEndGreen": "Maak Enderchests in de End Groen",
+    "changeColor": "Kleur wijzigen",
+    "showInOtherGames": "Toon in andere spellen",
+    "useVanillaTexture": "Gebruik Vanilla Achtergrond",
+    "textStyle": "Tekststijl",
     "textStyles": {
-      "one": "Style One",
-      "two": "Style Two"
+      "one": "Stijl één",
+      "two": "Stijl twee"
     },
-    "warningDuration": "Warning Duration"
+    "warningDuration": "Waarschuwingsduur"
   },
   "messages": {
     "dropConfirmation": "Laat dit object opnieuw vallen om te Bevestigen!",
