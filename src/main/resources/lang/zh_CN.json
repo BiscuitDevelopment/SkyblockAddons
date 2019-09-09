@@ -1,8 +1,13 @@
 {
   "language": "简体中文",
   "settings": {
+    "tab": {
+      "features": "Features",
+      "fixes": "Fixes",
+      "guiFeatures": "GUI Features",
+      "generalSettings": "General Settings"
+    },
     "settings": "设定",
-    "openSettings": "更多设定",
     "magmaBossWarning": "岩浆怪Boss出生警报",
     "itemDropConfirmation": "确认丢弃物品",
     "hideSkeletonHatBones": "隐藏骷髅头盔骨头屏障",
@@ -76,8 +81,8 @@
       "enchants": "附魔",
       "reforges": "重铸"
     },
-    "cancelledStemBreak": "SkyblockAddons已经阻止你破坏此作物，请使用空手来进行破坏。",
     "slotLocked": "该栏已锁！",
-    "summoningEyeFound": "召唤之眼！"
+    "summoningEyeFound": "召唤之眼！",
+    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this. Use your bare hand if you'd like to actually break it."
   }
 }
