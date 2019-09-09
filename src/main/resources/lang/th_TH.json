@@ -1,8 +1,13 @@
 {
   "language": "ภาษาไทย",
   "settings": {
+    "tab": {
+      "features": "Features",
+      "fixes": "Fixes",
+      "guiFeatures": "GUI Features",
+      "generalSettings": "General Settings"
+    },
     "settings": "ตั้งค่า",
-    "openSettings": "ตั้งค่าอื่นๆเพิ่มเติม",
     "magmaBossWarning": "แจ้งเตือนว่าบอส Magma ได้เกิดแล้ว",
     "itemDropConfirmation": "ยืนยันการทิ้งไอเทม",
     "hideSkeletonHatBones": "ซ่อนกระดูกของหมวกโครงกระดูก",
@@ -76,8 +81,8 @@
       "enchants": "ร่ายมนต์",
       "reforges": "ตีบวกของ"
     },
-    "cancelledStemBreak": "มอด SkyblockAddons กันไม่ให้คุณทำลายรากพืชนี้ โปรดใช้มือเปล่าถ้าต้องการทำลาย",
     "slotLocked": "ช่องนี้ถูกล็อคไว้!",
-    "summoningEyeFound": "ดวงตาอัญเชิญ!"
+    "summoningEyeFound": "ดวงตาอัญเชิญ!",
+    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this. Use your bare hand if you'd like to actually break it."
   }
 }
