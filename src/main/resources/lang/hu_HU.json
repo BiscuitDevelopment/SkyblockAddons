@@ -1,8 +1,13 @@
 {
   "language": "Magyar",
   "settings": {
+    "tab": {
+      "features": "Features",
+      "fixes": "Fixes",
+      "guiFeatures": "GUI Features",
+      "generalSettings": "General Settings"
+    },
     "settings": "Beállítások",
-    "openSettings": "További beállítások megnyitása",
     "magmaBossWarning": "Magma Boss figyelmeztetés",
     "itemDropConfirmation": "Tárgy kidobás megerősítése",
     "hideSkeletonHatBones": "Skeleton Helmet csontok elrejtése",
@@ -76,8 +81,8 @@
       "enchants": "Enchantok",
       "reforges": "Reforgeok"
     },
-    "cancelledStemBreak": "A SkyblockAddons megállította, hogy kiüsd a növény szárát. Használd az öklöd, ha ki szeretnéd ütni.",
     "slotLocked": "This slot is locked!",
-    "summoningEyeFound": "Summoning Eye!"
+    "summoningEyeFound": "Summoning Eye!",
+    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this. Use your bare hand if you'd like to actually break it."
   }
 }
