@@ -1,8 +1,13 @@
 {
   "language": "English",
   "settings": {
+    "tab": {
+      "features": "Features",
+      "fixes": "Fixes",
+      "guiFeatures": "GUI Features",
+      "generalSettings": "General Settings"
+    },
     "settings": "Settings",
-    "openSettings": "Open More Settings",
     "magmaBossWarning": "Magma Boss Warning",
     "itemDropConfirmation": "Item Drop Confirmation",
     "hideSkeletonHatBones": "Hide Skeleton Helmet Bones",
@@ -76,8 +81,8 @@
       "enchants": "Enchants",
       "reforges": "Reforges"
     },
-    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this stem. Use your bare hand if you'd like to break it.",
     "slotLocked": "This slot is locked!",
-    "summoningEyeFound": "Summoning Eye!"
+    "summoningEyeFound": "Summoning Eye!",
+    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this. Use your bare hand if you'd like to actually break it."
   }
 }
