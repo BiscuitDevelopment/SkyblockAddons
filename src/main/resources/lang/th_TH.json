@@ -3,9 +3,9 @@
   "settings": {
     "tab": {
       "features": "Features",
-      "fixes": "Fixes",
+      "fixes": "การแก้ไข",
       "guiFeatures": "GUI Features",
-      "generalSettings": "General Settings"
+      "generalSettings": "ตั้งค่าทั่วไป"
     },
     "settings": "ตั้งค่า",
     "magmaBossWarning": "แจ้งเตือนว่าบอส Magma ได้เกิดแล้ว",
@@ -15,23 +15,23 @@
     "hideFoodAndArmor": "ซ่อนหลอดอาหารและเกราะ",
     "fullInventoryWarning": "เตือนของในตัวกำลังเต็ม",
     "disableEmberRodAbility": "ปิดการใช้สกิลของ Ember Rod ในเกาะตนเอง",
-    "editLocations": "เคลื่อนย้ายหน้าต่าง",
-    "guiScale": "ขยายหน้าต่าง: %scale%",
+    "editLocations": "การเคลื่อนย้าย GUI",
+    "guiScale": "ขยาย GUI %scale%",
     "resetLocations": "กลับค่าเริ่มต้นของหน้าต่าง",
     "hideDurability": "ซ่อนหลอดความทนทานของอุปกรณ์",
     "showEnchantmentsReforges": "ร่ายมนต์และตีบวกของ",
-    "minionStopWarning": "แจ้งเตือนมินเนียนไม่สามารถเข้าถึงได้",
+    "minionStopWarning": "แจ้งเตือนมินเนียนไม่สามารถเอื้อมถึง Mob ได้",
     "hideAuctionHousePlayers": "ซ่อนผู้เล่นเมื่ออยู่ใกล้ๆ ณ Auction House",
     "backpackStyle": "ลักษณะของกระเป๋า: %style%",
     "backpackStyles": {
-      "regular": "Regular",
+      "regular": "ปกติ",
       "compact": "ไม่มีกรอบ"
     },
     "showBackpackPreview": "แสดงของข้างในกระเป๋า",
     "hideHealthBar": "ซ่อนหลอดเลือดตัวเกม",
     "fullMinionWarning": "แจ้งเตือนมินเนียนของเต็มตัวแล้ว",
-    "ignoreItemFrameClicks": "ละเว้นการคลิกที่กรอบโชว์สิ่งของ",
-    "showOnlyWhenHoldingShift": "Show Only When Holding Shift",
+    "ignoreItemFrameClicks": "ละเว้นการคลิกที่ Item Frame",
+    "showOnlyWhenHoldingShift": "แสดงเมื่อกดปุ่ม Shift ค้างเท่านั้น",
     "manaBar": "หลอดมานา",
     "manaText": "จำนวนมานา",
     "healthBar": "หลอดเลือด",
@@ -40,7 +40,7 @@
     "defenceText": "จำนวนพลังป้องกัน",
     "defencePercentage": "เปอร์เซ็นต์พลังป้องกัน",
     "healthUpdates": "จำนวนการเพิ่มลดของเลือด",
-    "hidePlayersInLobby": "Hide Far Entities in Lobby",
+    "hidePlayersInLobby": "ซ่อน Entity ที่อยู่ไกลในล็อบบี้",
     "darkAuctionTimer": "ระยะเวลา Dark Auction",
     "magmaBossTimer": "ระยะเวลาบอส Magma",
     "itemPickupLog": "แสดงรายชื่อไอเทมที่เก็บ",
@@ -52,16 +52,16 @@
     "lockSlots": "สามารถล็อคช่องได้",
     "dontResetCursorInventory": "เคอร์เซอร์ไม่จัดตำแหน่งใหม่เมื่อเปลี่ยนช่องเก็บของ",
     "summoningEyeAlert": "แจ้งเตือนดวงตาอัญเชิญ",
-    "makeEnderchestsInEndGreen": "Make Enderchests in the End Green",
-    "changeColor": "Change Color",
-    "showInOtherGames": "Show in Other Games",
-    "useVanillaTexture": "Use the Vanilla Texture",
-    "textStyle": "Text Style",
+    "makeEnderchestsInEndGreen": "ทำให้หีบ Ender เป็นสีเขียวเมื่ออยู่ใน The End",
+    "changeColor": "เปลี่ยนสี",
+    "showInOtherGames": "แสดงเมื่ออยู่ในเกมอื่นๆ",
+    "useVanillaTexture": "ใช้ Texture ปกติ",
+    "textStyle": "รูปแบบตัวอักษร",
     "textStyles": {
-      "one": "Style One",
-      "two": "Style Two"
+      "one": "รูปแบบ 1",
+      "two": "รูปแบบ 2"
     },
-    "warningDuration": "Warning Duration"
+    "warningDuration": "ระยะเวลาในการแจ้งเตือน"
   },
   "messages": {
     "dropConfirmation": "กดทิ้งของอีกที่เพื่อยืนยันทิ้งของสิ่นนี้!",
@@ -83,6 +83,6 @@
     },
     "slotLocked": "ช่องนี้ถูกล็อคไว้!",
     "summoningEyeFound": "ดวงตาอัญเชิญ!",
-    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this. Use your bare hand if you'd like to actually break it."
+    "cancelledStemBreak": "ม็อด SkyblockAddons ได้หยุดคุณจากการทำลายรากพืชนี้ โปรดใช้มือเปล่าถ้าต้องการทำลาย"
   }
 }
