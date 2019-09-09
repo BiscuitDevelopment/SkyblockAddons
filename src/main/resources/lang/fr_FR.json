@@ -1,8 +1,13 @@
 {
   "language": "Français",
   "settings": {
+    "tab": {
+      "features": "Features",
+      "fixes": "Fixes",
+      "guiFeatures": "GUI Features",
+      "generalSettings": "General Settings"
+    },
     "settings": "Paramètres",
-    "openSettings": "Ouvrir les paramètres",
     "magmaBossWarning": "Alerte Magma Boss",
     "itemDropConfirmation": "Confirmation du jet",
     "hideSkeletonHatBones": "Masquer les os du Skeleton's Helmet",
@@ -76,8 +81,8 @@
       "enchants": "Enchantements",
       "reforges": "Reforges"
     },
-    "cancelledStemBreak": "SkyblockAddons vous a empêché de casser cette graine. Utilisez votre main nue si vous souhaitez la casser.",
     "slotLocked": "Cet emplacement est bloqué!",
-    "summoningEyeFound": "Œil d'invocation!"
+    "summoningEyeFound": "Œil d'invocation!",
+    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this. Use your bare hand if you'd like to actually break it."
   }
 }
