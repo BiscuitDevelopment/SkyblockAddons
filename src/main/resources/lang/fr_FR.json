@@ -2,10 +2,10 @@
   "language": "Français",
   "settings": {
     "tab": {
-      "features": "Features",
-      "fixes": "Fixes",
-      "guiFeatures": "GUI Features",
-      "generalSettings": "General Settings"
+      "features": "Caractéristiques",
+      "fixes": "Corrections",
+      "guiFeatures": "Fonctions d'interfaces",
+      "generalSettings": "Paramètres généraux"
     },
     "settings": "Paramètres",
     "magmaBossWarning": "Alerte Magma Boss",
@@ -24,14 +24,14 @@
     "hideAuctionHousePlayers": "Masquer les joueurs près de l'HDV",
     "backpackStyle": "Affichage du sac à dos: %style%",
     "backpackStyles": {
-      "regular": "Regular",
+      "regular": "Normal",
       "compact": "Compact"
     },
     "showBackpackPreview": "Afficher l'aperçu du sac à dos",
     "hideHealthBar": "Masquer la barre de vie",
     "fullMinionWarning": "Alerte minion plein",
     "ignoreItemFrameClicks": "Ignorer les clics sur les cadres",
-    "showOnlyWhenHoldingShift": "Show Only When Holding Shift",
+    "showOnlyWhenHoldingShift": "Afficher uniquement en maintenant MAJ",
     "manaBar": "Barre de mana",
     "manaText": "Nombre de mana",
     "healthBar": "Barre de vie",
@@ -40,7 +40,7 @@
     "defenceText": "Nombre de défense",
     "defencePercentage": "Pourcentage de défense",
     "healthUpdates": "Historique des points de vie",
-    "hidePlayersInLobby": "Hide Far Entities in Lobby",
+    "hidePlayersInLobby": "Masquer les joueurs éloignés du hall",
     "darkAuctionTimer": "Minuteur marché noir",
     "magmaBossTimer": "Minuteur Magma Boss",
     "itemPickupLog": "Historique des objets ramassé",
@@ -52,16 +52,16 @@
     "lockSlots": "Autoriser le verrouillage d'emplacement",
     "dontResetCursorInventory": "Ne pas réinitialiser le curseur entre les inventaires",
     "summoningEyeAlert": "Alerte Œil d'invocation",
-    "makeEnderchestsInEndGreen": "Make Enderchests in the End Green",
-    "changeColor": "Change Color",
-    "showInOtherGames": "Show in Other Games",
-    "useVanillaTexture": "Use the Vanilla Texture",
-    "textStyle": "Text Style",
+    "makeEnderchestsInEndGreen": "Rendre les Enderchests dans l'End vert",
+    "changeColor": "Personnaliser les couleurs",
+    "showInOtherGames": "Afficher dans les autres jeux",
+    "useVanillaTexture": "Utiliser la texture vanilla",
+    "textStyle": "Style du texte",
     "textStyles": {
-      "one": "Style One",
-      "two": "Style Two"
+      "one": "Premier modèle",
+      "two": "Second modèle"
     },
-    "warningDuration": "Warning Duration"
+    "warningDuration": "Durée de l'alerte"
   },
   "messages": {
     "dropConfirmation": "Jetez cet objet une nouvelle fois pour confirmer!",
@@ -83,6 +83,6 @@
     },
     "slotLocked": "Cet emplacement est bloqué!",
     "summoningEyeFound": "Œil d'invocation!",
-    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this. Use your bare hand if you'd like to actually break it."
+    "cancelledStemBreak": "SkyblockAddons vous a empêché de casser ceci. Utilisez votre main nue si vous souhaitez la casser."
   }
 }
