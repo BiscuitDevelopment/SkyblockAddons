@@ -2,9 +2,9 @@
   "language": "ภาษาไทย",
   "settings": {
     "tab": {
-      "features": "Features",
+      "features": "ฟีเจอร์",
       "fixes": "การแก้ไข",
-      "guiFeatures": "GUI Features",
+      "guiFeatures": "ตั้งค่าต่างๆของ GUI",
       "generalSettings": "ตั้งค่าทั่วไป"
     },
     "settings": "ตั้งค่า",
@@ -19,7 +19,7 @@
     "guiScale": "ขยาย GUI %scale%",
     "resetLocations": "กลับค่าเริ่มต้นของหน้าต่าง",
     "hideDurability": "ซ่อนหลอดความทนทานของอุปกรณ์",
-    "showEnchantmentsReforges": "ร่ายมนต์และตีบวกของ",
+    "showEnchantmentsReforges": "เอนชานท์และตีบวกของ",
     "minionStopWarning": "แจ้งเตือนมินเนียนไม่สามารถเอื้อมถึง Mob ได้",
     "hideAuctionHousePlayers": "ซ่อนผู้เล่นเมื่ออยู่ใกล้ๆ ณ Auction House",
     "backpackStyle": "ลักษณะของกระเป๋า: %style%",
