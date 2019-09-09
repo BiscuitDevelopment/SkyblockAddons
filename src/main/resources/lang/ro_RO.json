@@ -1,8 +1,13 @@
 {
   "language": "Română",
   "settings": {
+    "tab": {
+      "features": "Features",
+      "fixes": "Fixes",
+      "guiFeatures": "GUI Features",
+      "generalSettings": "General Settings"
+    },
     "settings": "Setări",
-    "openSettings": "Deschide Setările",
     "magmaBossWarning": "Avertisment pentru Magma Boss",
     "itemDropConfirmation": "Confirmare aruncare obiecte",
     "hideSkeletonHatBones": "Ascunde oasele Skeleton Helmet-ului",
@@ -76,8 +81,8 @@
       "enchants": "Enchanturi",
       "reforges": "Refăuriri"
     },
-    "cancelledStemBreak": "SkyblockAddons te-a oprit din spargerea plantei. Te rog folosește mâna liberă dacă vrei să o spargi.",
     "slotLocked": "This slot is locked!",
-    "summoningEyeFound": "Summoning Eye!"
+    "summoningEyeFound": "Summoning Eye!",
+    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this. Use your bare hand if you'd like to actually break it."
   }
 }
