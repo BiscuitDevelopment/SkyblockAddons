@@ -1,8 +1,13 @@
 {
   "language": "Hrvatski",
   "settings": {
+    "tab": {
+      "features": "Features",
+      "fixes": "Fixes",
+      "guiFeatures": "GUI Features",
+      "generalSettings": "General Settings"
+    },
     "settings": "Postavke",
-    "openSettings": "Otvori Još Postavka",
     "magmaBossWarning": "Magma Boss Upozorenje",
     "itemDropConfirmation": "Konfirmacija Bacanja Stvari",
     "hideSkeletonHatBones": "Sakrij Kosti Skeleton Kacige",
@@ -76,8 +81,8 @@
       "enchants": "Čarolije",
       "reforges": "Reforge-ovi"
     },
-    "cancelledStemBreak": "SkyblockAddons te zaustavio od rušenja ove stabljike. Koristi svoju ruku ako je želiš slomiti!",
     "slotLocked": "This slot is locked!",
-    "summoningEyeFound": "Summoning Eye!"
+    "summoningEyeFound": "Summoning Eye!",
+    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this. Use your bare hand if you'd like to actually break it."
   }
 }
