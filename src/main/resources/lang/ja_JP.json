@@ -1,8 +1,13 @@
 {
   "language": "日本語",
   "settings": {
+    "tab": {
+      "features": "Features",
+      "fixes": "Fixes",
+      "guiFeatures": "GUI Features",
+      "generalSettings": "General Settings"
+    },
     "settings": "設定",
-    "openSettings": "設定を開く",
     "magmaBossWarning": "マグマボスの警告",
     "itemDropConfirmation": "アイテムを捨てる確認",
     "hideSkeletonHatBones": "スケルトンヘルメットの骨を非表示",
@@ -76,8 +81,8 @@
       "enchants": "エンチャント",
       "reforges": "リフォージ"
     },
-    "cancelledStemBreak": "SkyblockAddonsがこの苗木を破壊するのを防止しました。破壊したい場合は素手で破壊してください。",
     "slotLocked": "このスロットはロックされています。",
-    "summoningEyeFound": "サモニングアイがドロップしました！"
+    "summoningEyeFound": "サモニングアイがドロップしました！",
+    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this. Use your bare hand if you'd like to actually break it."
   }
 }
