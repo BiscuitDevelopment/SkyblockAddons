@@ -49,10 +49,10 @@
     "stopBowChargeFromResetting": "Ferma il Reset dell’Arco",
     "preventMovementOnDeath": "Impedisci di Camminare Dopo Essere Morto",
     "showItemAnvilUses": "Mostra Numero di Usi dell’Incudine",
-    "lockSlots": "Allow Locking Slots",
-    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories",
-    "summoningEyeAlert": "Summoning Eye Alert",
-    "makeEnderchestsInEndGreen": "Make Enderchests in the End Green",
+    "lockSlots": "Permetti di bloccare gli slot",
+    "dontResetCursorInventory": "Non resettare il cursore tra gli inventari",
+    "summoningEyeAlert": "Avviso di acquisizione di un Occhio dell' evocazione",
+    "makeEnderchestsInEndGreen": "Rendi le casse nell' End verdi",
     "changeColor": "Cambia colore",
     "showInOtherGames": "Mostra in Altri Giochi",
     "useVanillaTexture": "Usa la Texture Vanilla",
@@ -81,8 +81,8 @@
       "enchants": "Incantesimi",
       "reforges": "Forge"
     },
-    "slotLocked": "This slot is locked!",
-    "summoningEyeFound": "Summoning Eye!",
-    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this. Use your bare hand if you'd like to actually break it."
+    "slotLocked": "Questo slot è bloccato!",
+    "summoningEyeFound": "Occhio dell' evocazione!",
+    "cancelledStemBreak": "SkyblockAddons ti ha impedito di rompere questo stelo. Usa le tue mani se vorresti romperlo."
   }
 }
