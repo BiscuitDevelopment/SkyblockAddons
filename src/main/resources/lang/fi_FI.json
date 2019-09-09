@@ -1,8 +1,13 @@
 {
   "language": "Suomi",
   "settings": {
+    "tab": {
+      "features": "Features",
+      "fixes": "Fixes",
+      "guiFeatures": "GUI Features",
+      "generalSettings": "General Settings"
+    },
     "settings": "Asetukset",
-    "openSettings": "Avaa Lisää Asetuksia",
     "magmaBossWarning": "Magma Boss Varoitus",
     "itemDropConfirmation": "Esineen Pudotusvahvistus",
     "hideSkeletonHatBones": "Piilota Luurankohatun Luut",
@@ -76,8 +81,8 @@
       "enchants": "Enchants",
       "reforges": "Reforges"
     },
-    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this stem. Use your bare hand if you'd like to break it.",
     "slotLocked": "This slot is locked!",
-    "summoningEyeFound": "Summoning Eye!"
+    "summoningEyeFound": "Summoning Eye!",
+    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this. Use your bare hand if you'd like to actually break it."
   }
 }
