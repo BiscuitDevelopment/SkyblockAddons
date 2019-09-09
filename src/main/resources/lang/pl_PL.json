@@ -1,8 +1,13 @@
 {
   "language": "Polski",
   "settings": {
+    "tab": {
+      "features": "Features",
+      "fixes": "Fixes",
+      "guiFeatures": "GUI Features",
+      "generalSettings": "General Settings"
+    },
     "settings": "Ustawienia",
-    "openSettings": "Otwórz Ustawienia",
     "magmaBossWarning": "Ostrzeżenie o Bossie Magmy",
     "itemDropConfirmation": "Potwierdzenie Wyrzucenia Przedmiotu",
     "hideSkeletonHatBones": "Ukryj Kości z Hełmu Szkieleta",
@@ -76,8 +81,8 @@
       "enchants": "Zaklęcia",
       "reforges": "Reforge"
     },
-    "cancelledStemBreak": "SkyblockAddons anulował zniszczenie tej łodygi. Użyj pustej ręki, jeśli chcesz ją zniszczyć.",
     "slotLocked": "This slot is locked!",
-    "summoningEyeFound": "Summoning Eye!"
+    "summoningEyeFound": "Summoning Eye!",
+    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this. Use your bare hand if you'd like to actually break it."
   }
 }
