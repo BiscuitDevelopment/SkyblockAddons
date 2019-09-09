@@ -1,8 +1,13 @@
 {
   "language": "Bulgarian",
   "settings": {
+    "tab": {
+      "features": "Features",
+      "fixes": "Fixes",
+      "guiFeatures": "GUI Features",
+      "generalSettings": "General Settings"
+    },
     "settings": "Настрйки",
-    "openSettings": "Още Настройки",
     "magmaBossWarning": "Магма шеф",
     "itemDropConfirmation": "Потвърждение за Изхвърляне на Предмет",
     "hideSkeletonHatBones": "Скрий Костите на Скелетната Каска",
@@ -76,8 +81,8 @@
       "enchants": "Омягюосвания",
       "reforges": "Преобразуване"
     },
-    "cancelledStemBreak": "SkyblockAddons ви е Спрял от Унищожаване на Това Стъбло . Използвайте Ръце за да го Премахнете .",
     "slotLocked": "This slot is locked!",
-    "summoningEyeFound": "Summoning Eye!"
+    "summoningEyeFound": "Summoning Eye!",
+    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this. Use your bare hand if you'd like to actually break it."
   }
 }
