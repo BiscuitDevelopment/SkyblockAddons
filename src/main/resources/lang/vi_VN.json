@@ -1,8 +1,13 @@
 {
   "language": "Tiếng Việt",
   "settings": {
+    "tab": {
+      "features": "Features",
+      "fixes": "Fixes",
+      "guiFeatures": "GUI Features",
+      "generalSettings": "General Settings"
+    },
     "settings": "Cài Đặt",
-    "openSettings": "Hiển Thị Thêm Cài Đặt",
     "magmaBossWarning": "Nhắc nhở Magma Boss",
     "itemDropConfirmation": "Xác Nhận Vứt Đồ",
     "hideSkeletonHatBones": "Ẩn Mũ Xương",
@@ -76,8 +81,8 @@
       "enchants": "Phù phép",
       "reforges": "Rèn luyện"
     },
-    "cancelledStemBreak": "\"SkyblockAddons\" đã ngăn bạn khỏi việc phá hạt giống này. Hãy sử dụng tay không nếu bạn muốn đập nó.",
     "slotLocked": "This slot is locked!",
-    "summoningEyeFound": "Summoning Eye!"
+    "summoningEyeFound": "Summoning Eye!",
+    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this. Use your bare hand if you'd like to actually break it."
   }
 }
