@@ -1,8 +1,13 @@
 {
   "language": "Nederlands",
   "settings": {
+    "tab": {
+      "features": "Features",
+      "fixes": "Fixes",
+      "guiFeatures": "GUI Features",
+      "generalSettings": "General Settings"
+    },
     "settings": "Instellingen",
-    "openSettings": "Open Instellingen",
     "magmaBossWarning": "Magma Baas Waarschuwing",
     "itemDropConfirmation": "Object laten vallen Bevestiging",
     "hideSkeletonHatBones": "Verstop Skelet Hoed Botten",
@@ -76,8 +81,8 @@
       "enchants": "Betoveringen",
       "reforges": "Omsmedingen"
     },
-    "cancelledStemBreak": "SkyblockAddons heeft je ervan weerhouden om deze stengel te breken. Gebruik je lege hand als je het wilt breken.",
     "slotLocked": "Deze Slot is vergrendeld!",
-    "summoningEyeFound": "Oproepend oog!"
+    "summoningEyeFound": "Oproepend oog!",
+    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this. Use your bare hand if you'd like to actually break it."
   }
 }
