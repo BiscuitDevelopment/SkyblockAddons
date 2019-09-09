@@ -1,8 +1,13 @@
 {
   "language": "Filipino",
   "settings": {
+    "tab": {
+      "features": "Features",
+      "fixes": "Fixes",
+      "guiFeatures": "GUI Features",
+      "generalSettings": "General Settings"
+    },
     "settings": "Ang mga settings",
-    "openSettings": "Buksan Ang Marami Pang Settings",
     "magmaBossWarning": "Babala ng Magma Boss",
     "itemDropConfirmation": "Pagkumpirmado sa Paghulog ng Item",
     "hideSkeletonHatBones": "Huwag I-pakita ang mga Buto ng Skeleton Helmet",
@@ -76,8 +81,8 @@
       "enchants": "Enchants",
       "reforges": "Pandayan"
     },
-    "cancelledStemBreak": "Itinigil ng SkyblockAddons sa pag-sira ang tangkay na ito. Gamitin mo ang iyong kamay kung gusto mo sirain.",
     "slotLocked": "Ang slot na ito ay nakakandado pa!",
-    "summoningEyeFound": "Pangsummon na Mata!"
+    "summoningEyeFound": "Pangsummon na Mata!",
+    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this. Use your bare hand if you'd like to actually break it."
   }
 }
