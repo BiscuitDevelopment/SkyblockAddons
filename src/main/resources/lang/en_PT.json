@@ -1,8 +1,13 @@
 {
   "language": "Ye Old Englishe",
   "settings": {
+    "tab": {
+      "features": "Features",
+      "fixes": "Fixes",
+      "guiFeatures": "GUI Features",
+      "generalSettings": "General Settings"
+    },
     "settings": "Yer Choice o' Settin's",
-    "openSettings": "Ye extra settin's",
     "magmaBossWarning": "Fire Boss Warnin'",
     "itemDropConfirmation": "Drop Ye Items Twice",
     "hideSkeletonHatBones": "Swab Yer Cap o' Bones",
@@ -76,8 +81,8 @@
       "enchants": "Yer magic",
       "reforges": "Reforgery"
     },
-    "cancelledStemBreak": "'ay there, SkyblockAddons 'as stopped ye from breakin' this here stem. Use yer bare hand if ye'd like to break it.",
     "slotLocked": "Ahoy, matey! This here slot be locked!",
-    "summoningEyeFound": "Summinin' Aye!"
+    "summoningEyeFound": "Summinin' Aye!",
+    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this. Use your bare hand if you'd like to actually break it."
   }
 }
