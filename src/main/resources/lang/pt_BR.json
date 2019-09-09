@@ -1,8 +1,13 @@
 {
   "language": "Português (Brasil)",
   "settings": {
+    "tab": {
+      "features": "Features",
+      "fixes": "Fixes",
+      "guiFeatures": "GUI Features",
+      "generalSettings": "General Settings"
+    },
     "settings": "Opções",
-    "openSettings": "Abrir Mais Opções",
     "magmaBossWarning": "Aviso Chefão Magma",
     "itemDropConfirmation": "Confirmação Para Largar Item",
     "hideSkeletonHatBones": "Esconder Ossos do Capacete Esqueleto",
@@ -76,8 +81,8 @@
       "enchants": "Encantamentos",
       "reforges": "Reforjadas"
     },
-    "cancelledStemBreak": "SkyblockAddons impediu você de quebrar esta raiz. Use sua mão se deseja a quebrar.",
     "slotLocked": "This slot is locked!",
-    "summoningEyeFound": "Summoning Eye!"
+    "summoningEyeFound": "Summoning Eye!",
+    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this. Use your bare hand if you'd like to actually break it."
   }
 }
