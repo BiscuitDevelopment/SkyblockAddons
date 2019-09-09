@@ -51,7 +51,7 @@
     "showItemAnvilUses": "Mostra Numero di Usi dell’Incudine",
     "lockSlots": "Permetti di bloccare gli slot",
     "dontResetCursorInventory": "Non resettare il cursore tra gli inventari",
-    "summoningEyeAlert": "Avviso di acquisizione di un Occhio dell' evocazione",
+    "summoningEyeAlert": "Avviso di acquisizione di un Occhio dell'evocazione",
     "makeEnderchestsInEndGreen": "Rendi le casse nell' End verdi",
     "changeColor": "Cambia colore",
     "showInOtherGames": "Mostra in Altri Giochi",
@@ -82,7 +82,7 @@
       "reforges": "Forge"
     },
     "slotLocked": "Questo slot è bloccato!",
-    "summoningEyeFound": "Occhio dell' evocazione!",
+    "summoningEyeFound": "Occhio dell'evocazione!",
     "cancelledStemBreak": "SkyblockAddons ti ha impedito di rompere questo stelo. Usa le tue mani se vorresti romperlo."
   }
 }
