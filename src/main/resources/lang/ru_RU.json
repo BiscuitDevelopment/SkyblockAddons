@@ -1,8 +1,13 @@
 {
   "language": "Русский",
   "settings": {
+    "tab": {
+      "features": "Features",
+      "fixes": "Fixes",
+      "guiFeatures": "GUI Features",
+      "generalSettings": "General Settings"
+    },
     "settings": "Настройки",
-    "openSettings": "Открыть больше настроек",
     "magmaBossWarning": "Предупреждение о Магма-Боссе",
     "itemDropConfirmation": "Подтверждение о выбрасывание предмета",
     "hideSkeletonHatBones": "Скрыть кости от Skeleton Helmet'a",
@@ -76,8 +81,8 @@
       "enchants": "Зачарования",
       "reforges": "Перековки"
     },
-    "cancelledStemBreak": "SkyblockAddons остановил вас от ломания этого стебля. Используйте пустую руку, если вы хотите это сделать.",
     "slotLocked": "This slot is locked!",
-    "summoningEyeFound": "Summoning Eye!"
+    "summoningEyeFound": "Summoning Eye!",
+    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this. Use your bare hand if you'd like to actually break it."
   }
 }
