@@ -1,8 +1,13 @@
 {
   "language": "Español (España)",
   "settings": {
+    "tab": {
+      "features": "Features",
+      "fixes": "Fixes",
+      "guiFeatures": "GUI Features",
+      "generalSettings": "General Settings"
+    },
     "settings": "Opciones",
-    "openSettings": "Abrir opciones",
     "magmaBossWarning": "Alerta de Magma Boss",
     "itemDropConfirmation": "Confirmar para soltar objeto",
     "hideSkeletonHatBones": "Ocultar los huesos del Skeleton Hat",
@@ -76,8 +81,8 @@
       "enchants": "Encantamientos",
       "reforges": "Reforjas"
     },
-    "cancelledStemBreak": "SkyblockAddons Te ha parado de romper este tallo. Usa tu mano si quieres romperlo.",
     "slotLocked": "This slot is locked!",
-    "summoningEyeFound": "Summoning Eye!"
+    "summoningEyeFound": "Summoning Eye!",
+    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this. Use your bare hand if you'd like to actually break it."
   }
 }
