@@ -1,8 +1,13 @@
 {
   "language": "Türkçe",
   "settings": {
+    "tab": {
+      "features": "Features",
+      "fixes": "Fixes",
+      "guiFeatures": "GUI Features",
+      "generalSettings": "General Settings"
+    },
     "settings": "Ayarlar",
-    "openSettings": "Diğer Ayarlar",
     "magmaBossWarning": "Magma Boss için Uyarı",
     "itemDropConfirmation": "Eşya Atarken Onay",
     "hideSkeletonHatBones": "İskelet Kaskının Kemiklerini Sakla",
@@ -76,8 +81,8 @@
       "enchants": "Büyüler",
       "reforges": "Reforge'lar"
     },
-    "cancelledStemBreak": "SkyblockAddons bu ekini kırmanı engelledi. Ekinleri kırmak istiyorsan çıplak elini kullanman gerek.",
     "slotLocked": "This slot is locked!",
-    "summoningEyeFound": "Summoning Eye!"
+    "summoningEyeFound": "Summoning Eye!",
+    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this. Use your bare hand if you'd like to actually break it."
   }
 }
