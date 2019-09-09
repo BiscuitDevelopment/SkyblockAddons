@@ -2,10 +2,10 @@
   "language": "Tiếng Việt",
   "settings": {
     "tab": {
-      "features": "Features",
-      "fixes": "Fixes",
+      "features": "Tính năng",
+      "fixes": "Sửa lỗi",
       "guiFeatures": "GUI Features",
-      "generalSettings": "General Settings"
+      "generalSettings": "Cài đặt chung"
     },
     "settings": "Cài Đặt",
     "magmaBossWarning": "Nhắc nhở Magma Boss",
@@ -24,14 +24,14 @@
     "hideAuctionHousePlayers": "Ẩn Người Chơi gần Auction House",
     "backpackStyle": "Kiểu Backpack: %style%",
     "backpackStyles": {
-      "regular": "Regular",
+      "regular": "Thường",
       "compact": "Gọn"
     },
     "showBackpackPreview": "Hiện Xem Trước Backpack",
     "hideHealthBar": "Ẩn Thanh Máu Vanilla",
     "fullMinionWarning": "Cảnh Báo Minion Đầy",
     "ignoreItemFrameClicks": "Tránh chạm vào khung vật phẩm",
-    "showOnlyWhenHoldingShift": "Show Only When Holding Shift",
+    "showOnlyWhenHoldingShift": "Chỉ hiện khi giữ \"Shift\"",
     "manaBar": "Thanh Mana",
     "manaText": "Số Mana",
     "healthBar": "Thanh Máu",
@@ -39,8 +39,8 @@
     "defenceIcon": "Biểu tượng giáp",
     "defenceText": "Số Phòng Thủ",
     "defencePercentage": "Tỉ lệ Phòng Thủ",
-    "healthUpdates": "Cập nhật Máu",
-    "hidePlayersInLobby": "Hide Far Entities in Lobby",
+    "healthUpdates": "Số Máu thay đổi",
+    "hidePlayersInLobby": "Ẩn Vật Xa ở Sảnh",
     "darkAuctionTimer": "Hẹn giờ \"Đấu giá đen\"",
     "magmaBossTimer": "Hẹn giờ \"Magma Boss\"",
     "itemPickupLog": "Nhật kí nhặt đồ",
@@ -53,8 +53,8 @@
     "dontResetCursorInventory": "Don't Reset Cursor Between Inventories",
     "summoningEyeAlert": "Summoning Eye Alert",
     "makeEnderchestsInEndGreen": "Make Enderchests in the End Green",
-    "changeColor": "Change Color",
-    "showInOtherGames": "Show in Other Games",
+    "changeColor": "Thay đổi màu sắc",
+    "showInOtherGames": "Hiện trong các trò khác",
     "useVanillaTexture": "Use the Vanilla Texture",
     "textStyle": "Text Style",
     "textStyles": {
