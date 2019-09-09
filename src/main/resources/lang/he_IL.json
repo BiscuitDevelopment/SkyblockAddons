@@ -1,8 +1,13 @@
 {
   "language": "עברית",
   "settings": {
+    "tab": {
+      "features": "Features",
+      "fixes": "Fixes",
+      "guiFeatures": "GUI Features",
+      "generalSettings": "General Settings"
+    },
     "settings": "הגדרות",
-    "openSettings": "פתח הגדרות נוספות",
     "magmaBossWarning": "אזהרת בוס מגמה",
     "itemDropConfirmation": "אישור זריקת פריט",
     "hideSkeletonHatBones": "הסתרת עצמות מקסדת שלד",
@@ -76,8 +81,8 @@
       "enchants": "כישופים",
       "reforges": "שדרוגים"
     },
-    "cancelledStemBreak": "סקיבלוקאדדונס מנע אותך מלשבור את הגידול הזה. השתמש ביד שלך בכדי לשבור אותו.",
     "slotLocked": "משבצת זו נעולה!",
-    "summoningEyeFound": "עין לזימון דרקון!"
+    "summoningEyeFound": "עין לזימון דרקון!",
+    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this. Use your bare hand if you'd like to actually break it."
   }
 }
