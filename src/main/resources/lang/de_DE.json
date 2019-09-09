@@ -2,10 +2,10 @@
   "language": "Deutsch",
   "settings": {
     "tab": {
-      "features": "Features",
-      "fixes": "Fixes",
-      "guiFeatures": "GUI Features",
-      "generalSettings": "General Settings"
+      "features": "Funktionen",
+      "fixes": "Fehlerbehebungen",
+      "guiFeatures": "GUI-Funktionen",
+      "generalSettings": "Allgemeine Einstellungen"
     },
     "settings": "Einstellungen",
     "magmaBossWarning": "Magma Boss Spawn Warnung",
@@ -24,14 +24,14 @@
     "hideAuctionHousePlayers": "Spieler im Auktionshaus verstecken",
     "backpackStyle": "Rucksack-Stil: %style%",
     "backpackStyles": {
-      "regular": "Regular",
+      "regular": "Standard",
       "compact": "Kompakt"
     },
     "showBackpackPreview": "Rucksack-Vorschau zeigen",
     "hideHealthBar": "Lebensleiste verstecken",
     "fullMinionWarning": "Warnung bei vollem Minion",
     "ignoreItemFrameClicks": "Klicks auf Gegenstandsrahmen ignorieren",
-    "showOnlyWhenHoldingShift": "Show Only When Holding Shift",
+    "showOnlyWhenHoldingShift": "Nur beim Halten von Shift anzeigen",
     "manaBar": "Mana-Leiste",
     "manaText": "Mana-Anzahl",
     "healthBar": "Lebensleiste",
@@ -40,7 +40,7 @@
     "defenceText": "Verteidigungs-Zahl",
     "defencePercentage": "Verteidigungs-Prozentsatz",
     "healthUpdates": "Lebens-Veränderungs-Zahl",
-    "hidePlayersInLobby": "Hide Far Entities in Lobby",
+    "hidePlayersInLobby": "Verstecke weit entfernte Entities in der Lobby",
     "darkAuctionTimer": "Dunkelauktionstimer",
     "magmaBossTimer": "Magma Boss Timer",
     "itemPickupLog": "Aufgehobene Items-Liste",
@@ -52,14 +52,14 @@
     "lockSlots": "Slots sperren erlauben",
     "dontResetCursorInventory": "Mauszeiger zwischen Inventaren nicht zurücksetzen",
     "summoningEyeAlert": "Summoning Eye Alarm",
-    "makeEnderchestsInEndGreen": "Make Enderchests in the End Green",
-    "changeColor": "Change Color",
-    "showInOtherGames": "Show in Other Games",
-    "useVanillaTexture": "Use the Vanilla Texture",
-    "textStyle": "Text Style",
+    "makeEnderchestsInEndGreen": "Färbe Endertruhen im End grün",
+    "changeColor": "Farbe ändern",
+    "showInOtherGames": "Zeige in anderen Spielen",
+    "useVanillaTexture": "Benutze Vanilla Textur",
+    "textStyle": "Text Stil",
     "textStyles": {
-      "one": "Style One",
-      "two": "Style Two"
+      "one": "Stil Eins",
+      "two": "Stil Zwei"
     },
     "warningDuration": "Warning Duration"
   },
@@ -83,6 +83,6 @@
     },
     "slotLocked": "Dieser Slot ist gesperrt!",
     "summoningEyeFound": "Beschwörungsauge!",
-    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this. Use your bare hand if you'd like to actually break it."
+    "cancelledStemBreak": "SkyblockAddons hat dich davon abgehalten, diesen Stamm zu zerstören. Nutze deine leere Hand um ihn trotzdem zu zerstören."
   }
 }
