@@ -1,8 +1,13 @@
 {
   "language": "Deutsch",
   "settings": {
+    "tab": {
+      "features": "Features",
+      "fixes": "Fixes",
+      "guiFeatures": "GUI Features",
+      "generalSettings": "General Settings"
+    },
     "settings": "Einstellungen",
-    "openSettings": "Zusätzliche Einstellungen",
     "magmaBossWarning": "Magma Boss Spawn Warnung",
     "itemDropConfirmation": "Item Auswurf Bestätigung",
     "hideSkeletonHatBones": "Skelett-Helm Knochen verstecken",
@@ -76,8 +81,8 @@
       "enchants": "Verzauberungen",
       "reforges": "Verbesserungen"
     },
-    "cancelledStemBreak": "SkyblockAddons hat dich davon abgehalten, diesen Stamm zu zerstören. Nutze deine leere Hand um ihn trotzdem zu zerstören.",
     "slotLocked": "Dieser Slot ist gesperrt!",
-    "summoningEyeFound": "Beschwörungsauge!"
+    "summoningEyeFound": "Beschwörungsauge!",
+    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this. Use your bare hand if you'd like to actually break it."
   }
 }
