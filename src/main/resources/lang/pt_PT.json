@@ -1,8 +1,13 @@
 {
   "language": "Português (Portugal)",
   "settings": {
+    "tab": {
+      "features": "Features",
+      "fixes": "Fixes",
+      "guiFeatures": "GUI Features",
+      "generalSettings": "General Settings"
+    },
     "settings": "Definições",
-    "openSettings": "Abrir mais definições",
     "magmaBossWarning": "Alerta do Magma Boss",
     "itemDropConfirmation": "Confirmação para dropar itens",
     "hideSkeletonHatBones": "Esconder os ossos do Skeleton Helmet",
@@ -76,8 +81,8 @@
       "enchants": "Encantamentos",
       "reforges": "Reforges"
     },
-    "cancelledStemBreak": "O SkyblockAddons impediu-te de partires esta semente. Usa a tua mão se a quiseres partir.",
     "slotLocked": "Este slot está bloqueado!",
-    "summoningEyeFound": "Summoning Eye!"
+    "summoningEyeFound": "Summoning Eye!",
+    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this. Use your bare hand if you'd like to actually break it."
   }
 }
