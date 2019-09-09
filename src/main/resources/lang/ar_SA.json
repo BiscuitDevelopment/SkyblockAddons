@@ -1,8 +1,13 @@
 {
   "language": "العربية",
   "settings": {
+    "tab": {
+      "features": "Features",
+      "fixes": "Fixes",
+      "guiFeatures": "GUI Features",
+      "generalSettings": "General Settings"
+    },
     "settings": "الإعدادات",
-    "openSettings": "فتح المزيد من الاعدادات",
     "magmaBossWarning": "تحذير زعيم الصهارة",
     "itemDropConfirmation": "تأكيد من رمي العنصر",
     "hideSkeletonHatBones": "إخفاء عظام خوذة الهيكل العظمي",
@@ -76,8 +81,8 @@
       "enchants": "التطويرات",
       "reforges": "اعادة تشكيل\n"
     },
-    "cancelledStemBreak": "منعك تطبيق إضافات الجزيرة الطائرة من كسر القصب. أن أردت كسره فأستخدم يدك.",
     "slotLocked": "هذه السلوت مغلقة!",
-    "summoningEyeFound": "عين الاستدعاء!"
+    "summoningEyeFound": "عين الاستدعاء!",
+    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this. Use your bare hand if you'd like to actually break it."
   }
 }
