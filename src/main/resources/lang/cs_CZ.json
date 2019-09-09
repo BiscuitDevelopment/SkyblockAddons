@@ -1,8 +1,13 @@
 {
   "language": "Čeština",
   "settings": {
+    "tab": {
+      "features": "Features",
+      "fixes": "Fixes",
+      "guiFeatures": "GUI Features",
+      "generalSettings": "General Settings"
+    },
     "settings": "Nastavení",
-    "openSettings": "Otevřít další nastavení",
     "magmaBossWarning": "Magma Boss upozornění",
     "itemDropConfirmation": "Potvrzení vyhození itemu",
     "hideSkeletonHatBones": "Skrýt Skeleton Helmet kosti",
@@ -76,8 +81,8 @@
       "enchants": "Očarování",
       "reforges": "Překování"
     },
-    "cancelledStemBreak": "SkyblockAddons vám zabránil zničit tento kořen. Použijte svoji ruku, pokud ho chcete zničit.",
     "slotLocked": "This slot is locked!",
-    "summoningEyeFound": "Summoning Eye!"
+    "summoningEyeFound": "Summoning Eye!",
+    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this. Use your bare hand if you'd like to actually break it."
   }
 }
