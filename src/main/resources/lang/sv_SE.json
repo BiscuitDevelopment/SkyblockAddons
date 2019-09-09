@@ -1,8 +1,13 @@
 {
   "language": "Svenska",
   "settings": {
+    "tab": {
+      "features": "Features",
+      "fixes": "Fixes",
+      "guiFeatures": "GUI Features",
+      "generalSettings": "General Settings"
+    },
     "settings": "Inställningar",
-    "openSettings": "Öppna Fler Inställningar",
     "magmaBossWarning": "Magma Boss Varning",
     "itemDropConfirmation": "Släpp Artikelbekräftelse",
     "hideSkeletonHatBones": "Göm Skelett Hjälm Ben",
@@ -76,8 +81,8 @@
       "enchants": "Förtrollningar",
       "reforges": "Reforges"
     },
-    "cancelledStemBreak": "SkyblockAddons har förhindrat dig från att förstöra den här stjälken. Använd dina händer om du vill förstöra den.",
     "slotLocked": "This slot is locked!",
-    "summoningEyeFound": "Summoning Eye!"
+    "summoningEyeFound": "Summoning Eye!",
+    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this. Use your bare hand if you'd like to actually break it."
   }
 }
