@@ -1,8 +1,13 @@
 {
   "language": "Biscuish",
   "settings": {
+    "tab": {
+      "features": "Features",
+      "fixes": "Fixes",
+      "guiFeatures": "GUI Features",
+      "generalSettings": "General Settings"
+    },
     "settings": "Bake Biscuits",
-    "openSettings": "Bake More Biscuits",
     "magmaBossWarning": "Big Biscuit Warning",
     "itemDropConfirmation": "Don't Drop Dem Biscuits",
     "hideSkeletonHatBones": "Hide Your Biscuity Bones",
@@ -76,8 +81,8 @@
       "enchants": "Bischants",
       "reforges": "Bisforges"
     },
-    "cancelledStemBreak": "The biscuit gods have stopped you from eating this biscuit. Use your hands if you'd like to eat it.",
     "slotLocked": "This slot is locked!",
-    "summoningEyeFound": "Summoning Eye!"
+    "summoningEyeFound": "Summoning Eye!",
+    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this. Use your bare hand if you'd like to actually break it."
   }
 }
