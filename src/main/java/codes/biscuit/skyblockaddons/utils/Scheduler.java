@@ -104,10 +104,13 @@ public class Scheduler {
         RESET_MAGMA_PREDICTION,
         SUBTRACT_MAGMA_COUNT,
         SUBTRACT_BLAZE_COUNT,
+        RESET_TITLE_FEATURE,
+        RESET_SUBTITLE_FEATURE,
         DELETE_RECENT_CHUNK;
 
         public void execute(Command command, int count) {
-            PlayerListener playerListener = SkyblockAddons.getInstance().getPlayerListener();
+            SkyblockAddons main = SkyblockAddons.getInstance();
+            PlayerListener playerListener = main.getPlayerListener();
             if (this == SUBTRACT_MAGMA_COUNT) {
                 playerListener.setRecentMagmaCubes(playerListener.getRecentMagmaCubes()-1);
             } else if (this == SUBTRACT_BLAZE_COUNT) {
@@ -123,6 +126,10 @@ public class Scheduler {
                 int z = (int)commandData[1];
                 CoordsPair coordsPair = new CoordsPair(x,z);
                 playerListener.getRecentlyLoadedChunks().remove(coordsPair);
+            } else if (this == RESET_TITLE_FEATURE) {
+                main.getRenderListener().setTitleFeature(null);
+            } else if (this == RESET_SUBTITLE_FEATURE) {
+                main.getRenderListener().setSubtitleFeature(null);
             }
         }
     }

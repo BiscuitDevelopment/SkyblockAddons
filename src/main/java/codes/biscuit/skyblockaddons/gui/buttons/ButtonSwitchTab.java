@@ -4,6 +4,7 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.Feature;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.audio.SoundHandler;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.GlStateManager;
 
@@ -43,10 +44,11 @@ public class ButtonSwitchTab extends GuiButton {
                 }
             }
             hovered = mouseX >= this.xPosition && mouseY >= this.yPosition && mouseX < this.xPosition + this.width && mouseY < this.yPosition + this.height;
+            if (currentTab == tab) hovered = false;
             if (alphaMultiplier < 0.1) alphaMultiplier = 0.1F;
             int boxColor = main.getUtils().getDefaultBlue((int)(alphaMultiplier*50));
             int fontColor;
-            if (currentTab == tab) {
+            if (currentTab != tab) {
                 fontColor = main.getUtils().getDefaultBlue((int)(alphaMultiplier*255));
             } else {
                 fontColor = main.getUtils().getDefaultBlue((int)(alphaMultiplier*127));
@@ -54,17 +56,21 @@ public class ButtonSwitchTab extends GuiButton {
             if (hovered) {
                 fontColor = new Color(255, 255, 160, (int)(alphaMultiplier*255)).getRGB();
             }
-            GlStateManager.enableBlend();
             drawRect(xPosition, yPosition, xPosition+width, yPosition+height, boxColor);
             float scale = 1.4F;
             float scaleMultiplier = 1/scale;
             GlStateManager.pushMatrix();
             GlStateManager.scale(scale, scale, 1);
+            GlStateManager.enableBlend();
             drawCenteredString(mc.fontRendererObj, displayString, (int)((xPosition+width/2)*scaleMultiplier), (int)((yPosition+(this.height-(8/scaleMultiplier))/2)*scaleMultiplier),
                     fontColor);
-            GlStateManager.disableBlend();
             GlStateManager.popMatrix();
         }
+    }
+
+    @Override
+    public void playPressSound(SoundHandler soundHandlerIn) {
+        if (currentTab != tab) super.playPressSound(soundHandlerIn);
     }
 
     public EnumUtils.SkyblockAddonsGuiTab getTab() {

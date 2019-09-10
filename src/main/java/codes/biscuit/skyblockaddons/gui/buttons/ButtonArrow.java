@@ -71,8 +71,8 @@ public class ButtonArrow extends GuiButton {
         }
     }
 
-    public boolean isMax() {
-        return max;
+    public boolean isNotMax() {
+        return !max;
     }
 
     public ArrowType getArrowType() {

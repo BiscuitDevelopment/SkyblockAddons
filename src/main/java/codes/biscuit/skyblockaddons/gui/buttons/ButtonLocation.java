@@ -33,35 +33,52 @@ public class ButtonLocation extends ButtonFeature {
         lastMouseX = mouseX;
         lastMouseY = mouseY;
         // The scale of the GUI
-        float scale = main.getUtils().denormalizeValue(main.getConfigValues().getGuiScale(), ButtonSlider.GUI_SCALE_MINIMUM, ButtonSlider.GUI_SCALE_MAXIMUM, ButtonSlider.GUI_SCALE_STEP);
-        GlStateManager.pushMatrix();
-        GlStateManager.scale(scale, scale, 1);
+
         if (feature == Feature.MANA_BAR || feature == Feature.HEALTH_BAR) {
+            float scale = main.getConfigValues().getGuiScale(feature);
+            GlStateManager.pushMatrix();
+            GlStateManager.scale(scale, scale, 1);
             main.getRenderListener().drawBar(feature, scale, mc, this);
+            GlStateManager.popMatrix();
         } else if (feature == Feature.SKELETON_BAR) {
+            float scale = main.getConfigValues().getGuiScale(feature);
+            GlStateManager.pushMatrix();
+            GlStateManager.scale(scale, scale, 1);
             main.getRenderListener().drawSkeletonBar(scale, mc, this);
+            GlStateManager.popMatrix();
         } else if (feature == Feature.MANA_TEXT || feature == Feature.HEALTH_TEXT ||
                 feature == Feature.DEFENCE_TEXT || feature == Feature.DEFENCE_PERCENTAGE ||
                 feature == Feature.HEALTH_UPDATES || feature == Feature.DARK_AUCTION_TIMER ||
                 feature == Feature.MAGMA_BOSS_TIMER) {
+            float scale = main.getConfigValues().getGuiScale(feature);
+            GlStateManager.pushMatrix();
+            GlStateManager.scale(scale, scale, 1);
             main.getRenderListener().drawText(feature, scale, mc, this);
+            GlStateManager.popMatrix();
         } else if (feature == Feature.ITEM_PICKUP_LOG) {
             List<ItemDiff> collectionLog = new ArrayList<>();
             collectionLog.add(new ItemDiff(EnumChatFormatting.DARK_PURPLE+"Forceful Ember Chestplate", 1));
             collectionLog.add(new ItemDiff("Boat", -1));
             collectionLog.add(new ItemDiff(EnumChatFormatting.BLUE+"Aspect of the End", 1));
+            float scale = main.getConfigValues().getGuiScale(feature);
+            GlStateManager.pushMatrix();
+            GlStateManager.scale(scale, scale, 1);
             main.getRenderListener().drawItemPickupLog(mc, scale, collectionLog, this);
+            GlStateManager.popMatrix();
         } else if (feature == Feature.DEFENCE_ICON) {
+            float scale = main.getConfigValues().getGuiScale(feature);
+            GlStateManager.pushMatrix();
+            GlStateManager.scale(scale, scale, 1);
             scale *= 1.5;
             GlStateManager.scale(scale,scale,1);
             main.getRenderListener().drawIcon(scale, mc, this);
             scale /= 1.5;
             GlStateManager.scale(scale,scale,1);
+            GlStateManager.popMatrix();
         }
         if (hovered) {
             lastHoveredFeature = feature;
         }
-        GlStateManager.popMatrix();
     }
 
     /**

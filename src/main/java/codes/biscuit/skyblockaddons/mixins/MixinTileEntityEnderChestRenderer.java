@@ -3,7 +3,6 @@ package codes.biscuit.skyblockaddons.mixins;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.Feature;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.tileentity.TileEntityEnderChestRenderer;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntityEnderChest;
@@ -21,6 +20,19 @@ public abstract class MixinTileEntityEnderChestRenderer extends TileEntitySpecia
 
     private final ResourceLocation GREEN_ENDERCHEST = new ResourceLocation("skyblockaddons", "greenenderchest.png");
 
+//    @Inject(method = "renderTileEntityAt",
+//            at = @At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/GlStateManager;pushMatrix()V",
+//                    ordinal = 1, shift = At.Shift.BEFORE))
+//    private void renderTileEntityAt(TileEntityEnderChest te, double x, double y, double z, float partialTicks, int destroyStage, CallbackInfo ci) {
+//        SkyblockAddons main = SkyblockAddons.getInstance();
+//        if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.MAKE_ENDERCHESTS_GREEN_IN_END) &&
+//                (main.getUtils().getLocation() == EnumUtils.Location.THE_END || main.getUtils().getLocation() == EnumUtils.Location.DRAGONS_NEST)) {
+//            bindTexture(GREEN_ENDERCHEST);
+//        } else {
+//            bindTexture(ENDER_CHEST_TEXTURE);
+//        }
+//    }
+
     @Redirect(method = "renderTileEntityAt",
             at = @At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/tileentity/TileEntityEnderChestRenderer;bindTexture(Lnet/minecraft/util/ResourceLocation;)V",
     ordinal = 1))
@@ -28,9 +40,9 @@ public abstract class MixinTileEntityEnderChestRenderer extends TileEntitySpecia
         SkyblockAddons main = SkyblockAddons.getInstance();
         if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.MAKE_ENDERCHESTS_GREEN_IN_END) &&
                 (main.getUtils().getLocation() == EnumUtils.Location.THE_END || main.getUtils().getLocation() == EnumUtils.Location.DRAGONS_NEST)) {
-            Minecraft.getMinecraft().getTextureManager().bindTexture(GREEN_ENDERCHEST);
+            bindTexture(GREEN_ENDERCHEST);
         } else {
-            Minecraft.getMinecraft().getTextureManager().bindTexture(ENDER_CHEST_TEXTURE);
+            bindTexture(ENDER_CHEST_TEXTURE);
         }
     }
 }

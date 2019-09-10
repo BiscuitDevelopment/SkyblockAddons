@@ -27,10 +27,14 @@ public class LocationEditGui extends GuiScreen {
     private Feature dragging = null;
     private int xOffset = 0;
     private int yOffset = 0;
-    private boolean cancelScreenReturn = false;
 
-    public LocationEditGui(SkyblockAddons main) {
+    private int lastPage;
+    private EnumUtils.SkyblockAddonsGuiTab lastTab;
+
+    public LocationEditGui(SkyblockAddons main, int lastPage, EnumUtils.SkyblockAddonsGuiTab lastTab) {
         this.main = main;
+        this.lastPage = lastPage;
+        this.lastTab = lastTab;
     }
 
     @Override
@@ -169,8 +173,6 @@ public class LocationEditGui extends GuiScreen {
     @Override
     public void onGuiClosed() {
         main.getConfigValues().saveConfig();
-        if (!cancelScreenReturn) {
-            main.getRenderListener().setGuiToOpen(PlayerListener.GUIType.MAIN);
-        }
+        main.getRenderListener().setGuiToOpen(PlayerListener.GUIType.MAIN, lastPage, lastTab);
     }
 }

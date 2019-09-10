@@ -43,13 +43,13 @@ public enum Language {
         return path;
     }
 
-    public Language getNextLanguage() {
-        int nextType = ordinal()+1;
-        if (nextType > values().length-1) {
-            nextType = 0;
-        }
-        return values()[nextType];
-    }
+//    public Language getNextLanguage() {
+//        int nextType = ordinal()+1;
+//        if (nextType > values().length-1) {
+//            nextType = 0;
+//        }
+//        return values()[nextType];
+//    }
 
     public static Language getFromPath(String text) {
         for (Language language : values()) {

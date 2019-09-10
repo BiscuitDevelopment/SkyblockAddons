@@ -1,8 +1,6 @@
 package codes.biscuit.skyblockaddons.gui.buttons;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui;
-import codes.biscuit.skyblockaddons.listeners.PlayerListener;
 import codes.biscuit.skyblockaddons.utils.Feature;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.SoundHandler;
@@ -33,15 +31,11 @@ public class ButtonSolid extends ButtonText {
 
     @Override
     public void drawButton(Minecraft mc, int mouseX, int mouseY) {
-//        if (feature == Feature.ANCHOR_POINT) {
-//            if (ButtonLocation.getLastHoveredFeature() == null) {
-//                return;
-//            }
-//            displayString = Message.SETTING_ANCHOR_POINT.getMessage();
-//            width = mc.fontRendererObj.getStringWidth(displayString)+10;
-//            ScaledResolution sr = new ScaledResolution(mc);
-//            xPosition = sr.getScaledWidth()/2-width/2;
-//        }
+        if (feature == Feature.TEXT_STYLE) {
+            displayString = main.getConfigValues().getTextStyle().getMessage();
+        } if (feature == Feature.WARNING_TIME) {
+            displayString = main.getConfigValues().getWarningSeconds()+"s";
+        }
         int alpha;
         float alphaMultiplier = 1F;
         if (main.getUtils().isFadingIn()) {
@@ -66,7 +60,6 @@ public class ButtonSolid extends ButtonText {
         if (hovered && feature != Feature.WARNING_TIME) {
             fontColor = new Color(255, 255, 160, alpha).getRGB();
         }
-        String originalString = displayString;
         float scale = 1;
         int stringWidth = mc.fontRendererObj.getStringWidth(displayString);
         float widthLimit = BUTTON_MAX_WIDTH -10;
@@ -76,12 +69,7 @@ public class ButtonSolid extends ButtonText {
         if (stringWidth > widthLimit) {
             scale = 1/(stringWidth/widthLimit);
         }
-//        if (feature == Feature.ANCHOR_POINT) scale = 1;
         drawButtonBoxAndText(mc, boxColor, scale, fontColor);
-        if (!originalString.equals(displayString) && mc.currentScreen instanceof SkyblockAddonsGui) {
-            main.getUtils().setFadingIn(false);
-            main.getRenderListener().setGuiToOpen(PlayerListener.GUIType.MAIN);
-        }
     }
 
     @Override

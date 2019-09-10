@@ -41,8 +41,6 @@ import java.awt.datatransfer.UnsupportedFlavorException;
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.Timer;
-import java.util.TimerTask;
 import java.util.regex.Pattern;
 
 public class PlayerListener {
@@ -306,12 +304,7 @@ public class PlayerListener {
                         lastMinionSound = now;
                         main.getUtils().playSound("random.pop", 1);
                         main.getRenderListener().setSubtitleFeature(Feature.MINION_FULL_WARNING);
-                        new Timer().schedule(new TimerTask() {
-                            @Override
-                            public void run() {
-                                main.getRenderListener().setSubtitleFeature(null);
-                            }
-                        }, main.getConfigValues().getWarningSeconds() * 1000);
+                        main.getScheduler().schedule(Scheduler.CommandType.RESET_SUBTITLE_FEATURE, main.getConfigValues().getWarningSeconds());
                     }
                 } else if (main.getConfigValues().isEnabled(Feature.MINION_STOP_WARNING) &&
                         entity.getCustomNameTag().startsWith("\u00A7cI can\'t reach any ")) {
@@ -325,12 +318,7 @@ public class PlayerListener {
                         }
                         main.getRenderListener().setCannotReachMobName(mobName);
                         main.getRenderListener().setSubtitleFeature(Feature.MINION_STOP_WARNING);
-                        new Timer().schedule(new TimerTask() {
-                            @Override
-                            public void run() {
-                                main.getRenderListener().setSubtitleFeature(null);
-                            }
-                        }, main.getConfigValues().getWarningSeconds() * 1000);
+                        main.getScheduler().schedule(Scheduler.CommandType.RESET_SUBTITLE_FEATURE, main.getConfigValues().getWarningSeconds());
                     }
                 } // Apparently it no longer has a health bar
             }// else if (magmaAccuracy == EnumUtils.MagmaTimerAccuracy.SPAWNED &&
@@ -380,12 +368,7 @@ public class PlayerListener {
                                         lastBoss = System.currentTimeMillis();
                                         main.getRenderListener().setTitleFeature(Feature.MAGMA_WARNING); // Enable warning and disable again in four seconds.
                                         magmaTick = 16; // so the sound plays instantly
-                                        new Timer().schedule(new TimerTask() {
-                                            @Override
-                                            public void run() {
-                                                main.getRenderListener().setTitleFeature(null);
-                                            }
-                                        }, main.getConfigValues().getWarningSeconds() * 1000); // 4 second warning.
+                                        main.getScheduler().schedule(Scheduler.CommandType.RESET_TITLE_FEATURE, main.getConfigValues().getWarningSeconds());
 //                                logServer(mc);
                                     }
                                     magmaAccuracy = EnumUtils.MagmaTimerAccuracy.SPAWNED;
@@ -566,7 +549,7 @@ public class PlayerListener {
         return magmaAccuracy;
     }
 
-    public int getMagmaTime() {
+    int getMagmaTime() {
         return magmaTime;
     }
 
@@ -590,6 +573,7 @@ public class PlayerListener {
         this.magmaAccuracy = magmaAccuracy;
     }
 
+    @SuppressWarnings("unused")
     public void setMagmaTime(int magmaTime, boolean save) {
         this.magmaTime = magmaTime;
 //        main.getConfigValues().setNextMagmaTimestamp(System.currentTimeMillis()+(magmaTime*1000));

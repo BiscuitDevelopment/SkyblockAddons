@@ -11,7 +11,7 @@ import static codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui.BUTTON_MAX_WIDT
 
 public class ButtonNormal extends ButtonFeature {
 
-    private static ResourceLocation FEATURE_BACKGROUND = new ResourceLocation("skyblockaddons", "feature-background.png");
+    private static ResourceLocation FEATURE_BACKGROUND = new ResourceLocation("skyblockaddons", "featurebackground.png");
 
     private SkyblockAddons main;
 
@@ -51,11 +51,6 @@ public class ButtonNormal extends ButtonFeature {
             hovered = mouseX >= this.xPosition && mouseY >= this.yPosition && mouseX < this.xPosition + this.width && mouseY < this.yPosition + this.height;
             if (alpha < 4) alpha = 4;
             int fontColor = main.getUtils().getDefaultBlue(alpha);
-//            if (hovered) {
-//                fontColor = new Color(255, 255, 160, alpha).getRGB();
-//            }
-            // Alpha multiplier is from 0 to 1, multiplying it creates the fade effect.
-            // Regular features are red if disabled, green if enabled or part of the gui feature is enabled.
             GlStateManager.enableBlend();
             float scale = 1;
             int stringWidth = mc.fontRendererObj.getStringWidth(displayString);
@@ -80,6 +75,14 @@ public class ButtonNormal extends ButtonFeature {
                 try {
                     mc.getTextureManager().bindTexture(new ResourceLocation("skyblockaddons", "flags/"+main.getConfigValues().getLanguage().getPath()+".png"));
                     drawModalRectWithCustomSizedTexture(xPosition + width / 2 - 20, yPosition + 20, 0, 0, 38, 30, 38, 30);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            } else if (feature == Feature.EDIT_LOCATIONS) {
+                GlStateManager.color(1,1,1,1F);
+                try {
+                    mc.getTextureManager().bindTexture(new ResourceLocation("skyblockaddons", "move.png"));
+                    drawModalRectWithCustomSizedTexture(xPosition + width / 2 - 12, yPosition + 22, 0, 0, 25, 25, 25, 25);
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }

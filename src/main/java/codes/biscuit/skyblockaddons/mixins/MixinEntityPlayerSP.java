@@ -23,7 +23,7 @@ public class MixinEntityPlayerSP {
     private void dropOneItemConfirmation(boolean dropAll, CallbackInfoReturnable<EntityItem> cir) {
         SkyblockAddons main = SkyblockAddons.getInstance();
         if (main.getConfigValues().isEnabled(Feature.DROP_CONFIRMATION) && (main.getUtils().isOnSkyblock() ||
-                main.getConfigValues().isDisabled(Feature.DISABLE_DOUBLE_DROP_AUTOMATICALLY))) {
+                main.getConfigValues().isEnabled(Feature.DOUBLE_DROP_IN_OTHER_GAMES))) {
             ItemStack heldItemStack = Minecraft.getMinecraft().thePlayer.getHeldItem();
             if (heldItemStack != null) {
                 Item heldItem = heldItemStack.getItem();

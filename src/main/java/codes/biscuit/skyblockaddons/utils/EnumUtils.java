@@ -78,18 +78,18 @@ public class EnumUtils {
             return y;
         }
 
-        public AnchorPoint getNextType() {
-            int nextType = ordinal()+1;
-            if (nextType > values().length-1) {
-                nextType = 0;
-            }
-            return values()[nextType];
-        }
+//        public AnchorPoint getNextType() {
+//            int nextType = ordinal()+1;
+//            if (nextType > values().length-1) {
+//                nextType = 0;
+//            }
+//            return values()[nextType];
+//        }
     }
 
     public enum ButtonType {
         TOGGLE,
-        COLOR,
+//        COLOR,
         SOLID
     }
 
@@ -125,7 +125,7 @@ public class EnumUtils {
     }
 
     public enum BackpackStyle {
-        GUI(BACKPACK_STYLE_GUI),
+        GUI(BACKPACK_STYLE_REGULAR),
         BOX(BACKPACK_STYLE_COMPACT);
 
         private Message message;
@@ -148,8 +148,8 @@ public class EnumUtils {
     }
 
     public enum TextStyle {
-        REGULAR(TEXT_STYLE_REGULAR),
-        BLACK_SHADOW(TEXT_STYLE_BLACK_SHADOW);
+        REGULAR(TEXT_STYLE_ONE),
+        BLACK_SHADOW(TEXT_STYLE_TWO);
 
         private Message message;
 
@@ -276,5 +276,15 @@ public class EnumUtils {
 
     public enum SkyblockAddonsGuiTab {
         FEATURES, FIXES, GUI_FEATURES, GENERAL_SETTINGS
+    }
+
+    public enum FeatureSetting {
+        COLOR,
+        GUI_SCALE,
+        ENABLED_IN_OTHER_GAMES,
+        USE_VANILLA_TEXTURE,
+//        WARNING_TIME,
+        BACKPACK_STYLE,
+        SHOW_ONLY_WHEN_HOLDING_SHIFT
     }
 }

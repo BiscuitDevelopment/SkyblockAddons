@@ -4,6 +4,7 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.gui.buttons.*;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.Feature;
+import codes.biscuit.skyblockaddons.utils.Message;
 import com.google.common.collect.Sets;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
@@ -15,13 +16,14 @@ import net.minecraftforge.client.GuiIngameForge;
 
 import java.awt.*;
 import java.io.IOException;
+import java.util.EnumSet;
 import java.util.Set;
 import java.util.regex.Pattern;
 
 public class SkyblockAddonsGui extends GuiScreen {
 
     public static final int BUTTON_MAX_WIDTH = 140;
-    private static Feature tooltipFeature;
+//    private static Feature tooltipFeature;
 
     private EnumUtils.SkyblockAddonsGuiTab tab;
     private SkyblockAddons main;
@@ -32,9 +34,16 @@ public class SkyblockAddonsGui extends GuiScreen {
     private int displayCount;
 
     private long timeOpened = System.currentTimeMillis();
-    private static Set<Feature> settingFeatures = Sets.newHashSet(Feature.MAGMA_WARNING, Feature.DROP_CONFIRMATION,
-            Feature.MANA_BAR, Feature.MANA_TEXT, Feature.HEALTH_BAR, Feature.HEALTH_TEXT, Feature.DEFENCE_TEXT, Feature.DEFENCE_PERCENTAGE,
-            Feature.HIDE_HUD_BARS, Feature.SHOW_BACKPACK_PREVIEW);
+
+    private static Set<Feature> colorSettingFeatures = Sets.newHashSet(Feature.MAGMA_WARNING, Feature.DROP_CONFIRMATION,
+            Feature.MANA_BAR, Feature.MANA_TEXT, Feature.HEALTH_BAR, Feature.HEALTH_TEXT, Feature.DEFENCE_TEXT,
+            Feature.DEFENCE_PERCENTAGE, Feature.MAGMA_BOSS_TIMER, Feature.DARK_AUCTION_TIMER,
+            Feature.FULL_INVENTORY_WARNING, Feature.MINION_FULL_WARNING, Feature.MINION_STOP_WARNING, Feature.SUMMONING_EYE_ALERT);
+
+    private static Set<Feature> guiScaleFeatures = Sets.newHashSet(Feature.ITEM_PICKUP_LOG, Feature.HEALTH_UPDATES,
+            Feature.MANA_BAR, Feature.MANA_TEXT, Feature.HEALTH_BAR, Feature.HEALTH_TEXT, Feature.DEFENCE_TEXT,
+            Feature.DEFENCE_PERCENTAGE, Feature.MAGMA_BOSS_TIMER, Feature.SKELETON_BAR, Feature.DARK_AUCTION_TIMER,
+            Feature.DEFENCE_ICON);
 
     /**
      * The main gui, opened with /sba.
@@ -45,21 +54,14 @@ public class SkyblockAddonsGui extends GuiScreen {
         this.page = page;
     }
 
+    @SuppressWarnings("IntegerDivisionInFloatingPointContext")
     @Override
     public void initGui() {
         row = 1;
         collumn = 1;
-        int scale = mc.gameSettings.guiScale;
-        if (scale == 0) {
-            displayCount = 6;
-        } else if (scale == 1) {
-            displayCount = 24;
-        } else if (scale == 2) {
-            displayCount = 15;
-        } else if (scale == 3) {
-            displayCount = 9;
-        }
+        displayCount = findDisplayCount();
         addLanguageButton();
+        addEditLocationsButton();
         // Add the buttons for each page.
         Feature[] array;
         if (tab == EnumUtils.SkyblockAddonsGuiTab.FEATURES) {
@@ -79,7 +81,7 @@ public class SkyblockAddonsGui extends GuiScreen {
                     Feature.HEALTH_BAR, Feature.HEALTH_TEXT, Feature.DEFENCE_ICON, Feature.SKELETON_BAR, Feature.HEALTH_UPDATES,
                     Feature.ITEM_PICKUP_LOG, Feature.DARK_AUCTION_TIMER};
         } else {
-            array = new Feature[]{};
+            array = new Feature[]{Feature.TEXT_STYLE, Feature.WARNING_TIME};
         }
         int skip = (page-1)*displayCount;
 
@@ -90,7 +92,11 @@ public class SkyblockAddonsGui extends GuiScreen {
 
         for (Feature feature : array) {
             if (skip == 0) {
-                addButton(feature, EnumUtils.ButtonType.TOGGLE);
+                if (feature == Feature.TEXT_STYLE || feature == Feature.WARNING_TIME) {
+                    addButton(feature, EnumUtils.ButtonType.SOLID);
+                } else {
+                    addButton(feature, EnumUtils.ButtonType.TOGGLE);
+                }
             } else {
                 skip--;
             }
@@ -98,24 +104,37 @@ public class SkyblockAddonsGui extends GuiScreen {
         ScaledResolution sr = new ScaledResolution(mc);
         float textScale = 1.4F;
         int x = sr.getScaledWidth()/2;
-        int y = (int)(sr.getScaledHeight() * 0.21);
-        String text = "Features";
+        int y = 70;
+        String text = Message.TAB_FEATURES.getMessage();
         buttonList.add(new ButtonSwitchTab(x-180, y, (int)(fontRendererObj.getStringWidth(text)*textScale),
                 14, text, main, EnumUtils.SkyblockAddonsGuiTab.FEATURES, tab));
-        text = "Fixes";
+        text = Message.TAB_FIXES.getMessage();
         buttonList.add(new ButtonSwitchTab(x-80, y, (int)(fontRendererObj.getStringWidth(text)*textScale),
                 14, text, main, EnumUtils.SkyblockAddonsGuiTab.FIXES, tab));
-        text = "GUI Features";
+        text = Message.TAB_GUI_FEATURES.getMessage();
         buttonList.add(new ButtonSwitchTab(x-20, y, (int)(fontRendererObj.getStringWidth(text)*textScale),
                 14, text, main, EnumUtils.SkyblockAddonsGuiTab.GUI_FEATURES, tab));
-        text = "General Settings";
+        text = Message.TAB_GENERAL_SETTINGS.getMessage();
         buttonList.add(new ButtonSwitchTab(x+90, y, (int)(fontRendererObj.getStringWidth(text)*textScale),
                 14, text, main, EnumUtils.SkyblockAddonsGuiTab.GENERAL_SETTINGS, tab));
     }
 
+    private int findDisplayCount() {
+        int maxX = new ScaledResolution(mc).getScaledHeight()-70-50;
+        int displayCount = 0;
+        for (int row = 1; row < 99; row++) {
+            if (getRowHeight(row) < maxX) {
+                displayCount+=3;
+            } else {
+                return displayCount;
+            }
+        }
+        return displayCount;
+    }
+
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
-        tooltipFeature = null;
+//        tooltipFeature = null;
         long timeSinceOpen = System.currentTimeMillis() - timeOpened;
         float alphaMultiplier; // This all calculates the alpha for the fade-in effect.
         alphaMultiplier = 0.5F;
@@ -136,13 +155,8 @@ public class SkyblockAddonsGui extends GuiScreen {
         int defaultBlue = main.getUtils().getDefaultBlue(alpha*2);
 
         // The text at the top of the GUI
-        drawScaledString("SkyblockAddons", 0.08, defaultBlue, 2.5F);
-        drawScaledString("v" + SkyblockAddons.VERSION + " by Biscut", 0.08, defaultBlue, 1.3, 50, 15);
-//        drawScaledString("Features", 0.21, defaultBlue, 1.5, -100, 0);
-        defaultBlue = main.getUtils().getDefaultBlue(alpha);
-//        drawScaledString("Fixes", 0.21, defaultBlue, 1.5, -50, 0);
-//        drawScaledString("GUI Features ", 0.21, defaultBlue, 1.5,10,0);
-//        drawScaledString("General Settings", 0.21, defaultBlue, 1.5, 100, 0);
+        drawScaledString("SkyblockAddons", 28, defaultBlue, 2.5F, 0);
+        drawScaledString("v" + SkyblockAddons.VERSION + " by Biscut", 49, defaultBlue, 1.3, 50);
         super.drawScreen(mouseX, mouseY, partialTicks); // Draw buttons.
     }
 
@@ -153,24 +167,18 @@ public class SkyblockAddonsGui extends GuiScreen {
     protected void actionPerformed(GuiButton abstractButton) {
         if (abstractButton instanceof ButtonFeature) {
             Feature feature = ((ButtonFeature)abstractButton).getFeature();
-            if (feature == Feature.SETTINGS) {
+            if (abstractButton instanceof ButtonSettings) {
                 main.getUtils().setFadingIn(false);
-                Minecraft.getMinecraft().displayGuiScreen(new SettingsGui(main));
-            } else if (feature == Feature.LANGUAGE) {
-//                main.getConfigValues().setLanguage(main.getConfigValues().getLanguage().getNextLanguage());
-//                main.getConfigValues().loadLanguageFile();
+                Minecraft.getMinecraft().displayGuiScreen(new SettingsGui(main, feature, 1, page, tab, getSettings(feature)));
+                return;
+            }
+            if (feature == Feature.LANGUAGE) {
                 main.getUtils().setFadingIn(false);
-                Minecraft.getMinecraft().displayGuiScreen(new SettingsGuiTwo(main, Feature.LANGUAGE, 1, page,tab));
+                Minecraft.getMinecraft().displayGuiScreen(new SettingsGui(main, Feature.LANGUAGE, 1, page,tab, null));
             }  else if (feature == Feature.EDIT_LOCATIONS) {
                 main.getUtils().setFadingIn(false);
-                Minecraft.getMinecraft().displayGuiScreen(new LocationEditGui(main));
-            } else if (feature == Feature.NEXT_PAGE) {
-                main.getUtils().setFadingIn(false);
-                Minecraft.getMinecraft().displayGuiScreen(new SkyblockAddonsGui(main, page+1, tab));
-            } else if (feature == Feature.PREVIOUS_PAGE) {
-                main.getUtils().setFadingIn(false);
-                Minecraft.getMinecraft().displayGuiScreen(new SkyblockAddonsGui(main, page-1, tab));
-            } else if (abstractButton instanceof ButtonToggleTwo) {
+                Minecraft.getMinecraft().displayGuiScreen(new LocationEditGui(main, page, tab));
+            } else if (abstractButton instanceof ButtonToggle) {
                 if (main.getConfigValues().isDisabled(feature)) {
                     main.getConfigValues().getDisabledFeatures().remove(feature);
                 } else {
@@ -181,10 +189,23 @@ public class SkyblockAddonsGui extends GuiScreen {
                         GuiIngameForge.renderHealth = true;
                     }
                 }
+            } else if (abstractButton instanceof ButtonSolid && feature == Feature.TEXT_STYLE) {
+                main.getConfigValues().setTextStyle(main.getConfigValues().getTextStyle().getNextType());
+                Minecraft.getMinecraft().displayGuiScreen(new SkyblockAddonsGui(main, page, tab));
+            } else if (abstractButton instanceof ButtonModify) {
+                if (feature == Feature.ADD) {
+                    if (main.getConfigValues().getWarningSeconds() < 99) {
+                        main.getConfigValues().setWarningSeconds(main.getConfigValues().getWarningSeconds() + 1);
+                    }
+                } else {
+                    if (main.getConfigValues().getWarningSeconds() > 1) {
+                        main.getConfigValues().setWarningSeconds(main.getConfigValues().getWarningSeconds() - 1);
+                    }
+                }
             }
         } else if (abstractButton instanceof ButtonArrow) {
             ButtonArrow arrow = (ButtonArrow)abstractButton;
-            if (!arrow.isMax()) {
+            if (arrow.isNotMax()) {
                 main.getUtils().setFadingIn(false);
                 if (arrow.getArrowType() == ButtonArrow.ArrowType.RIGHT) {
                     mc.displayGuiScreen(new SkyblockAddonsGui(main, ++page, tab));
@@ -194,25 +215,22 @@ public class SkyblockAddonsGui extends GuiScreen {
             }
         } else if (abstractButton instanceof ButtonSwitchTab) {
             ButtonSwitchTab tab = (ButtonSwitchTab)abstractButton;
-            main.getUtils().setFadingIn(false);
-            mc.displayGuiScreen(new SkyblockAddonsGui(main, 1, tab.getTab()));
+            if (tab.getTab() != this.tab) {
+                main.getUtils().setFadingIn(false);
+                mc.displayGuiScreen(new SkyblockAddonsGui(main, 1, tab.getTab()));
+            }
         }
-    }
-
-    private void drawScaledString(String text, double yMultiplier, int color, double scale) {
-        drawScaledString(text, yMultiplier, color, scale, 0, 0);
     }
 
     /**
      * To avoid repeating the code for scaled text, use this instead.
      */
-    private void drawScaledString(String text, double yMultiplier, int color, double scale, int xOff, int yOff) {
+    private void drawScaledString(String text, int y, int color, double scale, int xOff) {
         double x = width/2;
-        double y = height*yMultiplier;
         GlStateManager.pushMatrix();
         GlStateManager.scale(scale, scale, 1);
         drawCenteredString(fontRendererObj, text,
-                (int)(x/scale)+xOff, (int)(y/scale)+yOff, color);
+                (int)(x/scale)+xOff, (int)(y/scale), color);
         GlStateManager.popMatrix();
     }
 
@@ -239,10 +257,23 @@ public class SkyblockAddonsGui extends GuiScreen {
         double y = getRowHeight(row);
         if (buttonType == EnumUtils.ButtonType.TOGGLE) {
             buttonList.add(new ButtonNormal(x, y, text, main, feature));
-            if (settingFeatures.contains(feature)) {
+
+            if (getSettings(feature).size() > 0) {
                 buttonList.add(new ButtonSettings(x + boxWidth - 33, y + boxHeight - 23, text, main, feature));
             }
-            buttonList.add(new ButtonToggleTwo(x+40, y+boxHeight-23, text, main, feature));
+            buttonList.add(new ButtonToggle(x+40, y+boxHeight-23, main, feature));
+        } else if (buttonType == EnumUtils.ButtonType.SOLID) {
+            buttonList.add(new ButtonNormal(x, y, text, main, feature));
+
+            if (feature == Feature.TEXT_STYLE) {
+                buttonList.add(new ButtonSolid(x + 35, y + boxHeight - 23, 70, 15, "", main, feature));
+            } else if (feature == Feature.WARNING_TIME) {
+                int solidButtonX = x+(boxWidth/2)-17;
+                buttonList.add(new ButtonModify(solidButtonX-20, y + boxHeight - 23, 15, 15, "+", main, Feature.ADD));
+                buttonList.add(new ButtonSolid(solidButtonX, y + boxHeight - 23, 35, 15, "", main, feature));
+                buttonList.add(new ButtonModify(solidButtonX+35+5, y + boxHeight - 23, 15, 15,"-", main, Feature.SUBTRACT));
+
+            }
         }
         collumn++;
         if (collumn > 3) {
@@ -252,6 +283,23 @@ public class SkyblockAddonsGui extends GuiScreen {
         displayCount--;
     }
 
+    private Set<EnumUtils.FeatureSetting> getSettings(Feature feature) {
+        Set<EnumUtils.FeatureSetting> settings = EnumSet.noneOf(EnumUtils.FeatureSetting.class);
+        if (colorSettingFeatures.contains(feature)) settings.add(EnumUtils.FeatureSetting.COLOR);
+        if (guiScaleFeatures.contains(feature)) settings.add(EnumUtils.FeatureSetting.GUI_SCALE);
+        if (feature == Feature.MAGMA_BOSS_TIMER || feature == Feature.DARK_AUCTION_TIMER
+                || feature == Feature.DROP_CONFIRMATION) settings.add(EnumUtils.FeatureSetting.ENABLED_IN_OTHER_GAMES);
+        if (feature == Feature.DEFENCE_ICON) settings.add(EnumUtils.FeatureSetting.USE_VANILLA_TEXTURE);
+//        if (feature == Feature.SUMMONING_EYE_ALERT || feature == Feature.MAGMA_WARNING
+//                || feature == Feature.MINION_FULL_WARNING || feature == Feature.MINION_STOP_WARNING
+//                || feature == Feature.FULL_INVENTORY_WARNING) settings.add(EnumUtils.FeatureSetting.WARNING_TIME);
+        if (feature == Feature.SHOW_BACKPACK_PREVIEW) {
+            settings.add(EnumUtils.FeatureSetting.BACKPACK_STYLE);
+            settings.add(EnumUtils.FeatureSetting.SHOW_ONLY_WHEN_HOLDING_SHIFT);
+        }
+        return settings;
+    }
+
     private void addLanguageButton() {
         int halfWidth = width/2;
         int boxWidth = 140;
@@ -259,6 +307,15 @@ public class SkyblockAddonsGui extends GuiScreen {
         int x = halfWidth+90;
         double y = getRowHeight(displayCount/3+1);
         buttonList.add(new ButtonNormal(x, y, boxWidth, boxHeight, "Language: "+Feature.LANGUAGE.getMessage(), main, Feature.LANGUAGE));
+    }
+
+    private void addEditLocationsButton() {
+        int halfWidth = width/2;
+        int boxWidth = 140;
+        int boxHeight = 50;
+        int x = halfWidth-90-boxWidth;
+        double y = getRowHeight(displayCount/3+1);
+        buttonList.add(new ButtonNormal(x, y, boxWidth, boxHeight, Feature.EDIT_LOCATIONS.getMessage(), main, Feature.EDIT_LOCATIONS));
     }
 
     @Override
@@ -296,7 +353,7 @@ public class SkyblockAddonsGui extends GuiScreen {
     // Each row is spaced 0.08 apart, starting at 0.17.
     private double getRowHeight(double row) {
         row--;
-        return height*0.28+(row*60); //height*(0.18+(row*0.08));
+        return 95+(row*60); //height*(0.18+(row*0.08));
     }
 
     /**
@@ -307,11 +364,7 @@ public class SkyblockAddonsGui extends GuiScreen {
         main.getConfigValues().saveConfig();
     }
 
-    public static void setTooltipFeature(Feature tooltipFeature) {
-        SkyblockAddonsGui.tooltipFeature = tooltipFeature;
-    }
-
-    public EnumUtils.SkyblockAddonsGuiTab getTab() {
-        return tab;
-    }
+//    public static void setTooltipFeature(Feature tooltipFeature) {
+//        SkyblockAddonsGui.tooltipFeature = tooltipFeature;
+//    }
 }

@@ -194,11 +194,12 @@ public class MixinGuiContainer extends GuiScreen {
     }
 
     @Redirect(method="drawScreen", at=@At(value = "INVOKE", target = "Lnet/minecraft/client/gui/inventory/GuiContainer;drawGradientRect(IIIIII)V", ordinal = 0))
-    private void drawScreen(GuiContainer guiContainer, int left, int top, int right, int bottom, int startColor, int endColor) {
+    private void drawGradientRect(GuiContainer guiContainer, int left, int top, int right, int bottom, int startColor, int endColor) {
         SkyblockAddons main = SkyblockAddons.getInstance();
         int slotNum = theSlot.slotNumber;
         if (mc.thePlayer.openContainer instanceof ContainerChest) {
             slotNum -= ((ContainerChest)mc.thePlayer.openContainer).getLowerChestInventory().getSizeInventory()-9;
+            if (slotNum < 9) return;
         }
         main.getUtils().setLastHoveredSlot(slotNum);
         if (theSlot != null && main.getConfigValues().isEnabled(Feature.LOCK_SLOTS) &&
@@ -212,13 +213,14 @@ public class MixinGuiContainer extends GuiScreen {
 
     @Inject(method = "drawScreen", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/inventory/GuiContainer;drawSlot(Lnet/minecraft/inventory/Slot;)V",
             ordinal = 0, shift = At.Shift.AFTER), locals = LocalCapture.CAPTURE_FAILSOFT)
-    private void drawBackpacksDrawSlot(int mouseX, int mouseY, float partialTicks, CallbackInfo ci, int i, int j, int k, int l, int i1, Slot slot) {
+    private void drawSlot(int mouseX, int mouseY, float partialTicks, CallbackInfo ci, int i, int j, int k, int l, int i1, Slot slot) {
         SkyblockAddons main = SkyblockAddons.getInstance();
         if (slot != null && main.getConfigValues().isEnabled(Feature.LOCK_SLOTS) &&
                 main.getUtils().isOnSkyblock()) {
             int slotNum = slot.slotNumber;
             if (mc.thePlayer.openContainer instanceof ContainerChest) {
                 slotNum -= ((ContainerChest)mc.thePlayer.openContainer).getLowerChestInventory().getSizeInventory()-9;
+                if (slotNum < 9) return;
             }
             if (main.getConfigValues().getLockedSlots().contains(slotNum)) {
                 GlStateManager.disableLighting();

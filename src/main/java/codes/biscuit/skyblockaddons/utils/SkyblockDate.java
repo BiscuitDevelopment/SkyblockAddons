@@ -2,6 +2,7 @@ package codes.biscuit.skyblockaddons.utils;
 
 import org.apache.commons.lang3.mutable.MutableInt;
 
+@SuppressWarnings("unused")
 public class SkyblockDate {
 
     private SkyblockMonth month;

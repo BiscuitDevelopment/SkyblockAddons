@@ -170,11 +170,13 @@ public abstract class MixinGuiChest extends GuiContainer {
                 }
             }
         }
+        out:
         if (slotIn != null && main.getConfigValues().isEnabled(Feature.LOCK_SLOTS) &&
                 main.getUtils().isOnSkyblock()) {
             int slotNum = slotIn.slotNumber;
             if (mc.thePlayer.openContainer instanceof ContainerChest) {
                 slotNum -= ((ContainerChest)mc.thePlayer.openContainer).getLowerChestInventory().getSizeInventory()-9;
+                if (slotNum < 9) break out;
             }
             if (main.getConfigValues().getLockedSlots().contains(slotNum)) {
                 main.getUtils().playSound("note.bass", 0.5);
