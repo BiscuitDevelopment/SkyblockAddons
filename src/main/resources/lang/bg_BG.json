@@ -3,9 +3,9 @@
   "settings": {
     "tab": {
       "features": "Добавки",
-      "fixes": "Опрaвки",
+      "fixes": "Поправки",
       "guiFeatures": "GUI добавки",
-      "generalSettings": "Главни настройки"
+      "generalSettings": "Общи настройки"
     },
     "settings": "Настрйки",
     "magmaBossWarning": "Магма шеф",
@@ -40,7 +40,7 @@
     "defenceText": "Защота",
     "defencePercentage": "Проценти Защита",
     "healthUpdates": "Промяна на Здраве",
-    "hidePlayersInLobby": "Скрий убекти който са надълече",
+    "hidePlayersInLobby": "Скрий обекти който са надълече",
     "darkAuctionTimer": "Тимер за Dark Auction",
     "magmaBossTimer": "Магма Бос Таймер",
     "itemPickupLog": "Дневник за Дигане на Предмети ",
@@ -49,11 +49,11 @@
     "stopBowChargeFromResetting": "Спиране на Рестартиране на Зареждане на Лък",
     "preventMovementOnDeath": "Предотвратяване на Ходене След Смърт",
     "showItemAnvilUses": "Показване Употребата на Наковални Употреби  ",
-    "lockSlots": "позволяване на заключване на слотове",
+    "lockSlots": "Позволяване на заключване на слотове",
     "dontResetCursorInventory": "Don't Reset Cursor Between Inventories",
     "summoningEyeAlert": "Summoning Eye Alert",
-    "makeEnderchestsInEndGreen": "Нaпрaви enderchest в The End зелени",
-    "changeColor": "Смени цвят",
+    "makeEnderchestsInEndGreen": "Нaпрaви Ендер сандъците в Края да са зелени",
+    "changeColor": "Смени цвeтa",
     "showInOtherGames": "Покaжи в други игри",
     "useVanillaTexture": "Използвaй оригинaлни текстури",
     "textStyle": "Стил нa текстa",
@@ -81,8 +81,8 @@
       "enchants": "Омягюосвания",
       "reforges": "Преобразуване"
     },
-    "slotLocked": "Този slot е зaлючен!",
+    "slotLocked": "Този слот е зaлючен!",
     "summoningEyeFound": "Summoning Eye!",
-    "cancelledStemBreak": "SkyblockAddons ви е Спрял от Унищожаване на Това Стъбло . Използвайте Ръце за да го Премахнете ."
+    "cancelledStemBreak": "SkyblockAddons ви е спрял да не счупите това стъбло. Използвайте ръка за да го премахнете."
   }
 }
