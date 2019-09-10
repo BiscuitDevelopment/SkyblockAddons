@@ -2,10 +2,10 @@
   "language": "Español (España)",
   "settings": {
     "tab": {
-      "features": "Features",
-      "fixes": "Fixes",
-      "guiFeatures": "GUI Features",
-      "generalSettings": "General Settings"
+      "features": "Características",
+      "fixes": "Correciones",
+      "guiFeatures": "Características de la interfaz",
+      "generalSettings": "Opciones Generales"
     },
     "settings": "Opciones",
     "magmaBossWarning": "Alerta de Magma Boss",
@@ -24,14 +24,14 @@
     "hideAuctionHousePlayers": "Ocultar Jugadores cerca de la Auction House",
     "backpackStyle": "Estilo de Mochila: %style%",
     "backpackStyles": {
-      "regular": "Regular",
+      "regular": "Normal",
       "compact": "Compacto"
     },
     "showBackpackPreview": "Mostrar Preview de la Mochila",
     "hideHealthBar": "Ocultar Barra de Vida",
     "fullMinionWarning": "Aviso de Minion Lleno",
     "ignoreItemFrameClicks": "Ignorar Clicks en Item Frames",
-    "showOnlyWhenHoldingShift": "Show Only When Holding Shift",
+    "showOnlyWhenHoldingShift": "Mostrar solamente cuando se mantenga presionado Shift",
     "manaBar": "Barra de Maná",
     "manaText": "Número de Maná",
     "healthBar": "Barra de Vida",
@@ -40,7 +40,7 @@
     "defenceText": "Número de Defensa",
     "defencePercentage": "Porcentaje de Defensa",
     "healthUpdates": "Número de Cambio de Vida",
-    "hidePlayersInLobby": "Hide Far Entities in Lobby",
+    "hidePlayersInLobby": "Ocultar entidades lejanas en el lobby",
     "darkAuctionTimer": "Contador del Black Auction",
     "magmaBossTimer": "Contador del Magma Boss",
     "itemPickupLog": "Registro de Items Recolectados",
@@ -49,19 +49,19 @@
     "stopBowChargeFromResetting": "Prevenir el Reset del Arco",
     "preventMovementOnDeath": "Prevenir moverse cuando mueres",
     "showItemAnvilUses": "Mostrar usos del Item en el Yunque",
-    "lockSlots": "Allow Locking Slots",
-    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories",
-    "summoningEyeAlert": "Summoning Eye Alert",
-    "makeEnderchestsInEndGreen": "Make Enderchests in the End Green",
-    "changeColor": "Change Color",
-    "showInOtherGames": "Show in Other Games",
-    "useVanillaTexture": "Use the Vanilla Texture",
-    "textStyle": "Text Style",
+    "lockSlots": "Permitir las ranuras bloquedas",
+    "dontResetCursorInventory": "No reiniciar el cursor entre los inventarios",
+    "summoningEyeAlert": "Alerta de uso de un ojo de invocación",
+    "makeEnderchestsInEndGreen": "Hacer los Enderchests de color verde en el End",
+    "changeColor": "Cambiar el color",
+    "showInOtherGames": "Mostrar en otros juegos",
+    "useVanillaTexture": "Usar la textura por default",
+    "textStyle": "Estilo de texto",
     "textStyles": {
-      "one": "Style One",
-      "two": "Style Two"
+      "one": "Estilo Uno",
+      "two": "Estilo Dos"
     },
-    "warningDuration": "Warning Duration"
+    "warningDuration": "Duración de la advertencia"
   },
   "messages": {
     "dropConfirmation": "¡Dropea el Objeto otra vez para soltar!",
@@ -81,8 +81,8 @@
       "enchants": "Encantamientos",
       "reforges": "Reforzar"
     },
-    "slotLocked": "This slot is locked!",
+    "slotLocked": "¡Esta ranura está bloqueada!",
     "summoningEyeFound": "Ojo de Invocación!",
-    "cancelledStemBreak": "SkyblockAddons Te ha parado de romper este objeto. Usa tu mano si quieres romperlo."
+    "cancelledStemBreak": "SkyblockAddons te ha impedido romper este objeto. Usa tu mano si quieres romperlo."
   }
 }
