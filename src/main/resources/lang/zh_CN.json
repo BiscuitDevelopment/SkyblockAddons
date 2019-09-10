@@ -2,10 +2,10 @@
   "language": "简体中文",
   "settings": {
     "tab": {
-      "features": "Features",
-      "fixes": "Fixes",
-      "guiFeatures": "GUI Features",
-      "generalSettings": "General Settings"
+      "features": "特性",
+      "fixes": "修复",
+      "guiFeatures": "GUI 特性",
+      "generalSettings": "常规设置"
     },
     "settings": "设定",
     "magmaBossWarning": "岩浆怪Boss出生警报",
@@ -24,7 +24,7 @@
     "hideAuctionHousePlayers": "隐藏拍卖所内玩家",
     "backpackStyle": "背包样式: %style%",
     "backpackStyles": {
-      "regular": "Regular",
+      "regular": "常规",
       "compact": "简易"
     },
     "showBackpackPreview": "显示背包预览",
@@ -40,7 +40,7 @@
     "defenceText": "防御数",
     "defencePercentage": "防御百分比",
     "healthUpdates": "生命值改变计数",
-    "hidePlayersInLobby": "Hide Far Entities in Lobby",
+    "hidePlayersInLobby": "在大厅隐藏远处玩家",
     "darkAuctionTimer": "暗黑拍卖会倒计时",
     "magmaBossTimer": "岩浆怪Boss倒计时",
     "itemPickupLog": "物品拾取记录",
