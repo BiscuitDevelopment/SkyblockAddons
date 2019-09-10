@@ -2,7 +2,7 @@
   "language": "Ye Old Englishe",
   "settings": {
     "tab": {
-      "features": "Features",
+      "features": "Feat'rs",
       "fixes": "Fixes",
       "guiFeatures": "GUI Features",
       "generalSettings": "General Settings"
@@ -40,7 +40,7 @@
     "defenceText": "Yer' Defense Num'r",
     "defencePercentage": "Amount O' Defense Percentage",
     "healthUpdates": "Yer Health Change Num'r",
-    "hidePlayersInLobby": "Hide Far Entities in Lobby",
+    "hidePlayersInLobby": "'ide farrr things in yer Lobby",
     "darkAuctionTimer": "Darr'k Booties Tim'r",
     "magmaBossTimer": "Fire Boss Tim'r",
     "itemPickupLog": "Item Pickup Log",
