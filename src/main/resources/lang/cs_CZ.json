@@ -2,10 +2,10 @@
   "language": "Čeština",
   "settings": {
     "tab": {
-      "features": "Features",
-      "fixes": "Fixes",
-      "guiFeatures": "GUI Features",
-      "generalSettings": "General Settings"
+      "features": "Vlastnosti",
+      "fixes": "Opravy",
+      "guiFeatures": "Vlastnosti GUI",
+      "generalSettings": "Obecná nastavení"
     },
     "settings": "Nastavení",
     "magmaBossWarning": "Magma Boss upozornění",
@@ -24,14 +24,14 @@
     "hideAuctionHousePlayers": "Skrýt hráče u Auction house",
     "backpackStyle": "Styl batůžků: %style%",
     "backpackStyles": {
-      "regular": "Regular",
+      "regular": "Klasický",
       "compact": "kompaktní"
     },
     "showBackpackPreview": "Ukázat náhled batohu",
     "hideHealthBar": "Skrýt vanilla ukazatel zdraví",
     "fullMinionWarning": "Upozornění plného miniona",
     "ignoreItemFrameClicks": "ignoruj kliknutí na Item Framy",
-    "showOnlyWhenHoldingShift": "Show Only When Holding Shift",
+    "showOnlyWhenHoldingShift": "Ukázat pouze při držení Shift",
     "manaBar": "Vizuální ukazatel many",
     "manaText": "Číselný ukazatel many",
     "healthBar": "Vizuální ukazatel zdraví",
@@ -40,7 +40,7 @@
     "defenceText": "Číselný ukazatel obrany",
     "defencePercentage": "Procentuální ukazatel many",
     "healthUpdates": "Číselný ukazatel změny počtu zdraví",
-    "hidePlayersInLobby": "Hide Far Entities in Lobby",
+    "hidePlayersInLobby": "Skrýt daleké hráče v Lobby",
     "darkAuctionTimer": "Časovač do Temné aukce",
     "magmaBossTimer": "Časovač do spawnutí Magma Bosse",
     "itemPickupLog": "Ukazatel sebraných věcí",
@@ -49,9 +49,9 @@
     "stopBowChargeFromResetting": "Zastavit natahování luku před resetováním",
     "preventMovementOnDeath": "Zabránit chození po smrti",
     "showItemAnvilUses": "Ukázat použití kovadliny na předmětech",
-    "lockSlots": "Allow Locking Slots",
-    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories",
-    "summoningEyeAlert": "Summoning Eye Alert",
+    "lockSlots": "Povolit zamykaní slotů",
+    "dontResetCursorInventory": "Neresetuj kurzor mezi inventářema",
+    "summoningEyeAlert": "Upozornění na Vyvolávací oko",
     "makeEnderchestsInEndGreen": "Make Enderchests in the End Green",
     "changeColor": "Change Color",
     "showInOtherGames": "Show in Other Games",
@@ -82,7 +82,7 @@
       "reforges": "Překování"
     },
     "slotLocked": "This slot is locked!",
-    "summoningEyeFound": "Summoning Eye!",
-    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this. Use your bare hand if you'd like to actually break it."
+    "summoningEyeFound": "Vyvolávací oko!",
+    "cancelledStemBreak": "SkyblockAddons vám zabránil tohle zničit. Použijte svoji ruku, pokud tohle chcete zničit."
   }
 }
