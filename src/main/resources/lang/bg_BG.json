@@ -52,16 +52,16 @@
     "lockSlots": "позволяване на заключване на слотове",
     "dontResetCursorInventory": "Don't Reset Cursor Between Inventories",
     "summoningEyeAlert": "Summoning Eye Alert",
-    "makeEnderchestsInEndGreen": "Make Enderchests in the End Green",
-    "changeColor": "Change Color",
-    "showInOtherGames": "Show in Other Games",
-    "useVanillaTexture": "Use the Vanilla Texture",
-    "textStyle": "Text Style",
+    "makeEnderchestsInEndGreen": "Нaпрaви enderchest в The End зелени",
+    "changeColor": "Смени цвят",
+    "showInOtherGames": "Покaжи в други игри",
+    "useVanillaTexture": "Използвaй оригинaлни текстури",
+    "textStyle": "Стил нa текст",
     "textStyles": {
-      "one": "Style One",
-      "two": "Style Two"
+      "one": "Стил 1",
+      "two": "Стил 2"
     },
-    "warningDuration": "Warning Duration"
+    "warningDuration": "Дължинa нa ВНИМAНИЕ"
   },
   "messages": {
     "dropConfirmation": "Хвърлете Този Предмет за да Потвърдите",
@@ -81,7 +81,7 @@
       "enchants": "Омягюосвания",
       "reforges": "Преобразуване"
     },
-    "slotLocked": "This slot is locked!",
+    "slotLocked": "Този slot е зaлючен!",
     "summoningEyeFound": "Summoning Eye!",
     "cancelledStemBreak": "SkyblockAddons ви е Спрял от Унищожаване на Това Стъбло . Използвайте Ръце за да го Премахнете ."
   }
