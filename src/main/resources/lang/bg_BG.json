@@ -4,8 +4,8 @@
     "tab": {
       "features": "Добавки",
       "fixes": "Поправки",
-      "guiFeatures": "GUI добавки",
-      "generalSettings": "Общи настройки"
+      "guiFeatures": "GUI Добавки",
+      "generalSettings": "Общи Настройки"
     },
     "settings": "Настрйки",
     "magmaBossWarning": "Магма шеф",
@@ -31,7 +31,7 @@
     "hideHealthBar": "Скриване на Оригиналния Бар за Здраве",
     "fullMinionWarning": "ВНИМАНИЕ Някой Миньон е Пълен",
     "ignoreItemFrameClicks": "Игнорирай Натискане на Рамки с Предмети ",
-    "showOnlyWhenHoldingShift": "Показвай само когато задържам SHIFT",
+    "showOnlyWhenHoldingShift": "Показвай Само Когато Задържам Shift",
     "manaBar": "Мана Бар",
     "manaText": "Мана Нормер",
     "healthBar": "Бар за Здраве",
@@ -40,7 +40,7 @@
     "defenceText": "Защота",
     "defencePercentage": "Проценти Защита",
     "healthUpdates": "Промяна на Здраве",
-    "hidePlayersInLobby": "Скрий обекти който са надълече",
+    "hidePlayersInLobby": "Скрий Обекти Които са Надалеч в Лобито",
     "darkAuctionTimer": "Тимер за Dark Auction",
     "magmaBossTimer": "Магма Бос Таймер",
     "itemPickupLog": "Дневник за Дигане на Предмети ",
@@ -49,19 +49,19 @@
     "stopBowChargeFromResetting": "Спиране на Рестартиране на Зареждане на Лък",
     "preventMovementOnDeath": "Предотвратяване на Ходене След Смърт",
     "showItemAnvilUses": "Показване Употребата на Наковални Употреби  ",
-    "lockSlots": "Позволяване на заключване на слотове",
-    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories",
-    "summoningEyeAlert": "Summoning Eye Alert",
-    "makeEnderchestsInEndGreen": "Нaпрaви Ендер сандъците в Края да са зелени",
-    "changeColor": "Смени цвeтa",
-    "showInOtherGames": "Покaжи в други игри",
-    "useVanillaTexture": "Използвaй оригинaлни текстури",
-    "textStyle": "Стил нa текстa",
+    "lockSlots": "Позволяване на Заключване на Слотове",
+    "dontResetCursorInventory": "Не Рестартирай Курсора Между Инвентари",
+    "summoningEyeAlert": "Предупреждение за Призоваващо Око",
+    "makeEnderchestsInEndGreen": "Нaпрaви Ендер Сандъците в Края да са Зелени",
+    "changeColor": "Смени Цвeтa",
+    "showInOtherGames": "Покaжи в Други Игри",
+    "useVanillaTexture": "Използвaй Оригинaлни Текстури",
+    "textStyle": "Стил нa Текстa",
     "textStyles": {
       "one": "Стил 1",
       "two": "Стил 2"
     },
-    "warningDuration": "Дължинa нa ВНИМAНИЕ"
+    "warningDuration": "Продължителност на Предупрежденията"
   },
   "messages": {
     "dropConfirmation": "Хвърлете Този Предмет за да Потвърдите",
@@ -81,8 +81,8 @@
       "enchants": "Омягюосвания",
       "reforges": "Преобразуване"
     },
-    "slotLocked": "Този слот е зaлючен!",
-    "summoningEyeFound": "Summoning Eye!",
+    "slotLocked": "Този Слот е Зaлючен!",
+    "summoningEyeFound": "Призоваващо Око!",
     "cancelledStemBreak": "SkyblockAddons ви е спрял да не счупите това стъбло. Използвайте ръка за да го премахнете."
   }
 }
