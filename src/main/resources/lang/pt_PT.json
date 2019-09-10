@@ -4,8 +4,8 @@
     "tab": {
       "features": "Funcionalidades",
       "fixes": "Correções",
-      "guiFeatures": "Funcionalidades em Menu",
-      "generalSettings": "Configurações gerais"
+      "guiFeatures": "Funcionalidades do Menu",
+      "generalSettings": "Definições gerais"
     },
     "settings": "Definições",
     "magmaBossWarning": "Alerta do Magma Boss",
@@ -53,13 +53,13 @@
     "dontResetCursorInventory": "Não resetar o cursor entre inventários",
     "summoningEyeAlert": "Alerta de Summoning Eyes",
     "makeEnderchestsInEndGreen": "Tornar os baús do fim no Fim verdes",
-    "changeColor": "Mudar cor",
+    "changeColor": "Mudar a cor",
     "showInOtherGames": "Mostrar em outros jogos",
-    "useVanillaTexture": "Usar a textura predefinida",
+    "useVanillaTexture": "Usar a textura do vanilla",
     "textStyle": "Estilo do texto",
     "textStyles": {
       "one": "Estilo Um",
-      "two": "Estilo 2"
+      "two": "Estilo Dois"
     },
     "warningDuration": "Duração do aviso"
   },
@@ -83,6 +83,6 @@
     },
     "slotLocked": "Este slot está bloqueado!",
     "summoningEyeFound": "Summoning Eye!",
-    "cancelledStemBreak": "O SkyblockAddons impediu-te de partires esta semente. Usa a tua mão se a quiseres partir."
+    "cancelledStemBreak": "O SkyblockAddons impediu-te de partires esta semente. Usa a tua mão se a quiseres mesmo partir."
   }
 }
