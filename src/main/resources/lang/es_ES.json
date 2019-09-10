@@ -79,10 +79,10 @@
     "enchantsToExclude": "%type% para excluir:",
     "inventoryTypes": {
       "enchants": "Encantamientos",
-      "reforges": "Reforjas"
+      "reforges": "Reforzar"
     },
     "slotLocked": "This slot is locked!",
-    "summoningEyeFound": "Summoning Eye!",
-    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this. Use your bare hand if you'd like to actually break it."
+    "summoningEyeFound": "Ojo de Invocación!",
+    "cancelledStemBreak": "SkyblockAddons Te ha parado de romper este objeto. Usa tu mano si quieres romperlo."
   }
 }
