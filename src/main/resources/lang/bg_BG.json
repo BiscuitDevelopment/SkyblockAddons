@@ -49,7 +49,7 @@
     "stopBowChargeFromResetting": "Спиране на Рестартиране на Зареждане на Лък",
     "preventMovementOnDeath": "Предотвратяване на Ходене След Смърт",
     "showItemAnvilUses": "Показване Употребата на Наковални Употреби  ",
-    "lockSlots": "Allow Locking Slots",
+    "lockSlots": "позволяване на заключване на слотове",
     "dontResetCursorInventory": "Don't Reset Cursor Between Inventories",
     "summoningEyeAlert": "Summoning Eye Alert",
     "makeEnderchestsInEndGreen": "Make Enderchests in the End Green",
@@ -83,6 +83,6 @@
     },
     "slotLocked": "This slot is locked!",
     "summoningEyeFound": "Summoning Eye!",
-    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this. Use your bare hand if you'd like to actually break it."
+    "cancelledStemBreak": "SkyblockAddons ви е Спрял от Унищожаване на Това Стъбло . Използвайте Ръце за да го Премахнете ."
   }
 }
