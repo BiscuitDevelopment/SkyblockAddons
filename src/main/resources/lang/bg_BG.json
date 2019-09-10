@@ -3,9 +3,9 @@
   "settings": {
     "tab": {
       "features": "Добавки",
-      "fixes": "Fixes",
-      "guiFeatures": "GUI Features",
-      "generalSettings": "General Settings"
+      "fixes": "Оправки",
+      "guiFeatures": "GUI добавки",
+      "generalSettings": "Главни настройки"
     },
     "settings": "Настрйки",
     "magmaBossWarning": "Магма шеф",
@@ -24,14 +24,14 @@
     "hideAuctionHousePlayers": "Скрий Играчи Близо до Търговската Къща",
     "backpackStyle": "Стил на Чантата: %style%",
     "backpackStyles": {
-      "regular": "Regular",
+      "regular": "Редовен",
       "compact": "Компактен"
     },
     "showBackpackPreview": "Предварително Показване на Чана",
     "hideHealthBar": "Скриване на Оригиналния Бар за Здраве",
     "fullMinionWarning": "ВНИМАНИЕ Някой Миньон е Пълен",
     "ignoreItemFrameClicks": "Игнорирай Натискане на Рамки с Предмети ",
-    "showOnlyWhenHoldingShift": "Show Only When Holding Shift",
+    "showOnlyWhenHoldingShift": "Показвай само когато задържам SHIFT",
     "manaBar": "Мана Бар",
     "manaText": "Мана Нормер",
     "healthBar": "Бар за Здраве",
@@ -40,7 +40,7 @@
     "defenceText": "Защота",
     "defencePercentage": "Проценти Защита",
     "healthUpdates": "Промяна на Здраве",
-    "hidePlayersInLobby": "Hide Far Entities in Lobby",
+    "hidePlayersInLobby": "Скрий убекти който са надълече",
     "darkAuctionTimer": "Тимер за Dark Auction",
     "magmaBossTimer": "Магма Бос Таймер",
     "itemPickupLog": "Дневник за Дигане на Предмети ",
