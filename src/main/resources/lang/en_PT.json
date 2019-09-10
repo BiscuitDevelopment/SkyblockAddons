@@ -4,8 +4,8 @@
     "tab": {
       "features": "Feat'rs",
       "fixes": "Fixes",
-      "guiFeatures": "GUI Features",
-      "generalSettings": "General Settings"
+      "guiFeatures": "GUI Feat'rs",
+      "generalSettings": "Yer General Settin's"
     },
     "settings": "Yer Choice o' Settin's",
     "magmaBossWarning": "Fire Boss Warnin'",
@@ -24,14 +24,14 @@
     "hideAuctionHousePlayers": "'ide Mateys nearrr Auction 'ouse",
     "backpackStyle": "Style o' Yer Booty: %style%",
     "backpackStyles": {
-      "regular": "Regular",
+      "regular": "Regularrr",
       "compact": "Treasured"
     },
     "showBackpackPreview": "Preview yer' booty",
     "hideHealthBar": "'ide normal 'ealth barr",
     "fullMinionWarning": "Yer Minion Stuffed Warnin'",
     "ignoreItemFrameClicks": "Swab yer' Item Frame Clicks",
-    "showOnlyWhenHoldingShift": "Show Only When Holding Shift",
+    "showOnlyWhenHoldingShift": "Show Only When 'oldin' shift",
     "manaBar": "Ye' Energy Bar",
     "manaText": "Ye' Energy Num'r",
     "healthBar": "Yer Health Bar",
@@ -52,16 +52,16 @@
     "lockSlots": "Allow Lockin' yer Slots",
     "dontResetCursorInventory": "Don't reset yer cursor between inventories",
     "summoningEyeAlert": "Ye Ol' Summonin' Aye Alert",
-    "makeEnderchestsInEndGreen": "Make Enderchests in the End Green",
-    "changeColor": "Change Color",
+    "makeEnderchestsInEndGreen": "Make them Enderchests in this 'ere End Green",
+    "changeColor": "Change yer Col'r",
     "showInOtherGames": "Show in Other Games",
-    "useVanillaTexture": "Use the Vanilla Texture",
-    "textStyle": "Text Style",
+    "useVanillaTexture": "Use yer Normal Text're",
+    "textStyle": "yer Style o' Text",
     "textStyles": {
-      "one": "Style One",
-      "two": "Style Two"
+      "one": "yer' Fr'st Style",
+      "two": "yer Sec'nd option"
     },
-    "warningDuration": "Warning Duration"
+    "warningDuration": "Warnin' Derratin'"
   },
   "messages": {
     "dropConfirmation": "'ay lad, drop this here item again to confirm!",
@@ -83,6 +83,6 @@
     },
     "slotLocked": "Ahoy, matey! This here slot be locked!",
     "summoningEyeFound": "Summinin' Aye!",
-    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this. Use your bare hand if you'd like to actually break it."
+    "cancelledStemBreak": "'ay there, SkyblockAddons 'as stopped ye from breakin' this here stem. Use yer bare hand if ye'd like to break it."
   }
 }
