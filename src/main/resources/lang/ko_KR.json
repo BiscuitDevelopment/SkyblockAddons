@@ -8,7 +8,7 @@
       "generalSettings": "일반 설정"
     },
     "settings": "설정",
-    "magmaBossWarning": "마그마 보스 경고 표시",
+    "magmaBossWarning": "마그마 보스 알림",
     "itemDropConfirmation": "아이템 버림 재확인",
     "hideSkeletonHatBones": "스켈레톤 헬멧 뼈 숨기기",
     "skeletonHatBonesBar": "스켈레톤 헬멧 뼈 바",
@@ -28,9 +28,9 @@
       "compact": "간단"
     },
     "showBackpackPreview": "백팩 아이템 보이기",
-    "hideHealthBar": "원래 체력 바 숨기기",
+    "hideHealthBar": "기본 체력 바 숨기기",
     "fullMinionWarning": "미니언 아이템 꽉 참 경고",
-    "ignoreItemFrameClicks": "아이템 프레임 클릭 무시",
+    "ignoreItemFrameClicks": "아이템 액자 클릭 무시",
     "showOnlyWhenHoldingShift": "쉬프트키를 눌렀을 때만 보이기",
     "manaBar": "마나 바",
     "manaText": "마나 숫자",
