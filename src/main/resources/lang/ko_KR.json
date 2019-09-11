@@ -1,8 +1,8 @@
 {
-  "language": "English",
+  "language": "한국어",
   "settings": {
     "tab": {
-      "features": "주요 기능들",
+      "features": "기능",
       "fixes": "수정 목록",
       "guiFeatures": "GUI 기능들",
       "generalSettings": "일반 설정"
@@ -54,7 +54,7 @@
     "summoningEyeAlert": "드래곤 소환 눈 경고",
     "makeEnderchestsInEndGreen": "엔드 섬에서 엔더상자를 초록색으로 표시",
     "changeColor": "색상 변경",
-    "showInOtherGames": "다른 게임에서도 보이기",
+    "showInOtherGames": "다른 미니게임에서도 보이기",
     "useVanillaTexture": "원래 텍스쳐 유지하기",
     "textStyle": "텍스트 스타일",
     "textStyles": {
@@ -74,15 +74,15 @@
     "minionCannotReach": "%type% 미니언은 몹에 닿을 수 없어 생산을 중지했습니다!",
     "minionIsFull": "당신의 미니언의 수납 공간이 꽉 찼습니다!",
     "typeEnchantmentsHere": "여기에 %type% 등을 입력해 주세요!",
-    "separateMultiple": "Separate Multiple With Commas.",
-    "enchantsToMatch": "%type% To Match:",
-    "enchantsToExclude": "%type% To Exclude:",
+    "separateMultiple": "인챈트나 리포지들을 쉼표로 구분하세요.",
+    "enchantsToMatch": "포함할 %type%:",
+    "enchantsToExclude": "제외할 %type%:",
     "inventoryTypes": {
-      "enchants": "Enchants",
-      "reforges": "Reforges"
+      "enchants": "인챈트",
+      "reforges": "리포지"
     },
-    "slotLocked": "This slot is locked!",
-    "summoningEyeFound": "Summoning Eye!",
-    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this. Use your bare hand if you'd like to actually break it."
+    "slotLocked": "이 슬롯은 잠겨있습니다!",
+    "summoningEyeFound": "소환의 눈!",
+    "cancelledStemBreak": "SkyblockAddons이 이 블럭을 부수는 것을 방지했습니다. 만약 정말 부수려면, 빈 손으로 부수세요."
   }
 }
