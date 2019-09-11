@@ -2,10 +2,10 @@
   "language": "Nederlands",
   "settings": {
     "tab": {
-      "features": "Features",
-      "fixes": "Fixes",
-      "guiFeatures": "GUI Features",
-      "generalSettings": "General Settings"
+      "features": "Functies",
+      "fixes": "Oplossingen",
+      "guiFeatures": "GUI functies",
+      "generalSettings": "Algemene instellingen"
     },
     "settings": "Instellingen",
     "magmaBossWarning": "Magma Baas Waarschuwing",
@@ -83,6 +83,6 @@
     },
     "slotLocked": "Deze Slot is vergrendeld!",
     "summoningEyeFound": "Oproepend oog!",
-    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this. Use your bare hand if you'd like to actually break it."
+    "cancelledStemBreak": "SkyblockAddons heeft je ervan weerhouden om deze stengel te breken. Gebruik je lege hand als je het wilt breken."
   }
 }
