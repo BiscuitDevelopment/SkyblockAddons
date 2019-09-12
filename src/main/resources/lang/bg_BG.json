@@ -4,7 +4,7 @@
     "tab": {
       "features": "Добавки",
       "fixes": "Поправки",
-      "guiFeatures": "GUI Добавки",
+      "guiFeatures": "Визуални Елементи",
       "generalSettings": "Общи Настройки"
     },
     "settings": "Настрйки",
@@ -55,7 +55,7 @@
     "makeEnderchestsInEndGreen": "Нaпрaви Ендер Сандъците в Края да са Зелени",
     "changeColor": "Смени Цвeтa",
     "showInOtherGames": "Покaжи в Други Игри",
-    "useVanillaTexture": "Използвaй Оригинaлни Текстури",
+    "useVanillaTexture": "Използвaй Ванила Визия",
     "textStyle": "Стил нa Текстa",
     "textStyles": {
       "one": "Стил 1",
