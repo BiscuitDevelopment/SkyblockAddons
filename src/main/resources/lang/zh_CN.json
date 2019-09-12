@@ -2,9 +2,9 @@
   "language": "简体中文",
   "settings": {
     "tab": {
-      "features": "特性",
+      "features": "功能",
       "fixes": "修复",
-      "guiFeatures": "GUI 特性",
+      "guiFeatures": "GUI 功能",
       "generalSettings": "常规设置"
     },
     "settings": "设定",
@@ -31,7 +31,7 @@
     "hideHealthBar": "隐藏血条",
     "fullMinionWarning": "\"仆从背包空间已满\"警告",
     "ignoreItemFrameClicks": "忽略对展示框的点击",
-    "showOnlyWhenHoldingShift": "Show Only When Holding Shift",
+    "showOnlyWhenHoldingShift": "只在按住Shift时显示",
     "manaBar": "法力条",
     "manaText": "法力数",
     "healthBar": "生命计量条",
@@ -52,16 +52,16 @@
     "lockSlots": "允许锁定快捷栏",
     "dontResetCursorInventory": "阻止切换物品栏菜单时光标重置",
     "summoningEyeAlert": "召唤之眼获取提醒",
-    "makeEnderchestsInEndGreen": "Make Enderchests in the End Green",
-    "changeColor": "Change Color",
-    "showInOtherGames": "Show in Other Games",
-    "useVanillaTexture": "Use the Vanilla Texture",
-    "textStyle": "Text Style",
+    "makeEnderchestsInEndGreen": "将末地中末影箱渲染为绿色",
+    "changeColor": "更改颜色",
+    "showInOtherGames": "在其他游戏显示",
+    "useVanillaTexture": "使用原版材质",
+    "textStyle": "文字样式",
     "textStyles": {
-      "one": "Style One",
-      "two": "Style Two"
+      "one": "风格一",
+      "two": "风格二"
     },
-    "warningDuration": "Warning Duration"
+    "warningDuration": "警报持续时间"
   },
   "messages": {
     "dropConfirmation": "再次丢弃此物品以确认!",
@@ -83,6 +83,6 @@
     },
     "slotLocked": "该栏已锁！",
     "summoningEyeFound": "召唤之眼！",
-    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this. Use your bare hand if you'd like to actually break it."
+    "cancelledStemBreak": "SkyblockAddons已经阻止你破坏此方块，请使用空手来进行破坏。"
   }
 }
