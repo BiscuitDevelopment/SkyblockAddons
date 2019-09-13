@@ -4,7 +4,7 @@
     "tab": {
       "features": "Возможности",
       "fixes": "Исправления",
-      "guiFeatures": "Возможности GUI",
+      "guiFeatures": "Возможности интерфейса",
       "generalSettings": "Основные настройки"
     },
     "settings": "Настройки",
@@ -40,7 +40,7 @@
     "defenceText": "Число защиты",
     "defencePercentage": "Проценты защиты",
     "healthUpdates": "Изменение числа здоровья",
-    "hidePlayersInLobby": "Hide Far Entities in Lobby",
+    "hidePlayersInLobby": "Скрывать далекие объекты в лобби",
     "darkAuctionTimer": "Таймер тёмного аукциона",
     "magmaBossTimer": "Таймер Магма-босса",
     "itemPickupLog": "Список всех предметов что вы подняли",
@@ -52,7 +52,7 @@
     "lockSlots": "Разрешить блокировку слотов",
     "dontResetCursorInventory": "Не сбрасывать курсор между инвентарями",
     "summoningEyeAlert": "Оповещение о Summoning Eye",
-    "makeEnderchestsInEndGreen": "Make Enderchests in the End Green",
+    "makeEnderchestsInEndGreen": "Сделать сундуки края в краю зелёными",
     "changeColor": "Изменить цвет",
     "showInOtherGames": "Показывать в остальных играх",
     "useVanillaTexture": "Использовать обычные текстуры",
@@ -61,7 +61,7 @@
       "one": "Стиль 1",
       "two": "Стиль 2"
     },
-    "warningDuration": "Warning Duration"
+    "warningDuration": "Длительность предупреждения"
   },
   "messages": {
     "dropConfirmation": "Выбросите предмет ещё раз для подтверждения!",
@@ -81,8 +81,8 @@
       "enchants": "Зачарования",
       "reforges": "Перековки"
     },
-    "slotLocked": "This slot is locked!",
+    "slotLocked": "Этот слот заблокирован!",
     "summoningEyeFound": "Summoning Eye!",
-    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this. Use your bare hand if you'd like to actually break it."
+    "cancelledStemBreak": "SkyBlockAddons запретил вам ломать эти. Используйте руку, если вы хотите действительно сломать."
   }
 }
