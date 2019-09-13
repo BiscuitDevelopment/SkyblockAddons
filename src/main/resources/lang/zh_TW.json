@@ -2,8 +2,8 @@
   "language": "繁體中文",
   "settings": {
     "tab": {
-      "features": "Features",
-      "fixes": "Fixes",
+      "features": "特點",
+      "fixes": "修復",
       "guiFeatures": "GUI Features",
       "generalSettings": "General Settings"
     },
@@ -81,7 +81,7 @@
       "enchants": "附魔",
       "reforges": "重鑄"
     },
-    "slotLocked": "This slot is locked!",
+    "slotLocked": "這個欄位已被鎖定!",
     "summoningEyeFound": "Summoning Eye!",
     "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this. Use your bare hand if you'd like to actually break it."
   }
