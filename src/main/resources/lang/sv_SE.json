@@ -39,9 +39,9 @@
     "defenceIcon": "Skydd Symbol",
     "defenceText": "Skydd Nummer",
     "defencePercentage": "Skydd Percentsats",
-    "healthUpdates": "Ändra Hälso Nummer",
+    "healthUpdates": "Hälsoförändrings Nummer",
     "hidePlayersInLobby": "Hide Far Entities in Lobby",
-    "darkAuctionTimer": "Mörk Auktion Timer",
+    "darkAuctionTimer": "Mörk Auktions Timer",
     "magmaBossTimer": "Magma Boss Timer",
     "itemPickupLog": "Plocka Upp Artikel Log",
     "avoidPlacingEnchantedItems": "Förhindra Att Placera Förtrollade Block",
@@ -82,7 +82,7 @@
       "reforges": "Reforges"
     },
     "slotLocked": "This slot is locked!",
-    "summoningEyeFound": "Summoning Eye!",
-    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this. Use your bare hand if you'd like to actually break it."
+    "summoningEyeFound": "Tillkallande Öga!",
+    "cancelledStemBreak": "SkyblockAddons har förhindrat dig från att förstöra detta. Använd din hand om du ändå vill förstöra det."
   }
 }
