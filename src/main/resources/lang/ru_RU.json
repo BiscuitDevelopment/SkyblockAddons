@@ -2,10 +2,10 @@
   "language": "Русский",
   "settings": {
     "tab": {
-      "features": "Features",
-      "fixes": "Fixes",
-      "guiFeatures": "GUI Features",
-      "generalSettings": "General Settings"
+      "features": "Возможности",
+      "fixes": "Исправления",
+      "guiFeatures": "Возможности GUI",
+      "generalSettings": "Основные настройки"
     },
     "settings": "Настройки",
     "magmaBossWarning": "Предупреждение о Магма-Боссе",
@@ -24,14 +24,14 @@
     "hideAuctionHousePlayers": "Прятать игроков у аукциона",
     "backpackStyle": "Стиль рюкзака: %style%",
     "backpackStyles": {
-      "regular": "Regular",
+      "regular": "Обычный",
       "compact": "Компакт"
     },
     "showBackpackPreview": "Показывать превью рюкзака",
     "hideHealthBar": "Прятать полосу здоровья",
     "fullMinionWarning": "Предупреждение о том, что миньон заполнился",
     "ignoreItemFrameClicks": "Игнорировать нажатия по рамкам",
-    "showOnlyWhenHoldingShift": "Show Only When Holding Shift",
+    "showOnlyWhenHoldingShift": "Показывать только при зажатом шифте",
     "manaBar": "Полоса маны",
     "manaText": "Количество маны",
     "healthBar": "Полоса здоровья",
@@ -49,17 +49,17 @@
     "stopBowChargeFromResetting": "Останавливать заряд лука от перезагрузки",
     "preventMovementOnDeath": "Предотвращать ходьбу после смерти",
     "showItemAnvilUses": "Показывать Использования предмета на наковальне",
-    "lockSlots": "Allow Locking Slots",
-    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories",
-    "summoningEyeAlert": "Summoning Eye Alert",
+    "lockSlots": "Разрешить блокировку слотов",
+    "dontResetCursorInventory": "Не сбрасывать курсор между инвентарями",
+    "summoningEyeAlert": "Оповещение о Summoning Eye",
     "makeEnderchestsInEndGreen": "Make Enderchests in the End Green",
-    "changeColor": "Change Color",
-    "showInOtherGames": "Show in Other Games",
-    "useVanillaTexture": "Use the Vanilla Texture",
-    "textStyle": "Text Style",
+    "changeColor": "Изменить цвет",
+    "showInOtherGames": "Показывать в остальных играх",
+    "useVanillaTexture": "Использовать обычные текстуры",
+    "textStyle": "Стиль текста",
     "textStyles": {
-      "one": "Style One",
-      "two": "Style Two"
+      "one": "Стиль 1",
+      "two": "Стиль 2"
     },
     "warningDuration": "Warning Duration"
   },
