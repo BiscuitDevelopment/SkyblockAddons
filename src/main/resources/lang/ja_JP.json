@@ -87,7 +87,7 @@
     "slotLocked": "このスロットはロックされています。",
     "summoningEyeFound": "サモニングアイがドロップしました！",
     "cancelledStemBreak": "SkyblockAddonsがこのブロックの破壊を阻止しました。 壊したい場合は素手で破壊してください。",
-    "cancelledProfileOpening": "SkyblockAddons has stopped you from opening this player's profile. Please use a another weapon.",
+    "cancelledProfileOpening": "SkyblockAddons has stopped you from opening this player's profile while holding a bow.",
     "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare item or tool from your hotbar.",
     "clickMoreTimes": "Click/drop this item %times% more times if you really want to do this."
   }
