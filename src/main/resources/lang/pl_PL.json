@@ -2,9 +2,9 @@
   "language": "Polski",
   "settings": {
     "tab": {
-      "features": "Features",
-      "fixes": "Fixes",
-      "guiFeatures": "GUI Features",
+      "features": "Funkcje",
+      "fixes": "Naprawy błędów",
+      "guiFeatures": "Opcje interfejsu",
       "generalSettings": "General Settings"
     },
     "settings": "Ustawienia",
