@@ -40,7 +40,7 @@
     "defenceText": "Liczba Pancerza",
     "defencePercentage": "Procent Zakotwiczenia",
     "healthUpdates": "Liczba Różnicy Zdrowia",
-    "hidePlayersInLobby": "Ukryj widoczność osób z daleka",
+    "hidePlayersInLobby": "Ukryj widoczność graczy z daleka",
     "darkAuctionTimer": "Timer Dark Auction",
     "magmaBossTimer": "Timer Magma Bossa",
     "itemPickupLog": "Rejestruj Podnoszone Przedmioty",
@@ -84,7 +84,7 @@
       "enchants": "Zaklęcia",
       "reforges": "Reforge"
     },
-    "slotLocked": "This slot is locked!",
+    "slotLocked": "Ten slot jest zablokowany!",
     "summoningEyeFound": "Oko przywołujące!",
     "cancelledStemBreak": "SkyblockAddons zatrzymał cię przed niszczeniem tej łodygi. Użyj pustej ręki, jeśli chcesz ją zniszczyć.",
     "cancelledProfileOpening": "SkyblockAddons zatrzymał cię przed otwieraniem profilu tej osoby trzymając łuk.",
