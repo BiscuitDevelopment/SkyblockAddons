@@ -62,8 +62,8 @@
       "two": "Стиль 2"
     },
     "warningDuration": "Длительность предупреждения",
-    "dontOpenProfileWithBow": "Don't Open Profile With Bow",
-    "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Items",
+    "dontOpenProfileWithBow": "Не открывать профиль луком",
+    "stopDroppingSellingRareItems": "Перестать выбрасывать/продавать редкие предметы",
     "makeBackpackInventoriesColored": "Color Inventories"
   },
   "messages": {
@@ -86,9 +86,9 @@
     },
     "slotLocked": "Этот слот заблокирован!",
     "summoningEyeFound": "Summoning Eye!",
-    "cancelledStemBreak": "SkyBlockAddons запретил вам ломать эти. Используйте руку, если вы хотите действительно сломать.",
-    "cancelledProfileOpening": "SkyblockAddons has stopped you from opening this player's profile. Please use a another weapon.",
-    "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare item or tool from your hotbar.",
-    "clickMoreTimes": "Click/drop this item %times% more times if you really want to do this."
+    "cancelledStemBreak": "SkyBlockAddons оставил вас от ломания. Используйте руку, если вы хотите действительно сломать.",
+    "cancelledProfileOpening": "SkyBlockAddons остановил вас от открытия профиля этого игрок. Пожалуйста, используйте другое оружие.",
+    "cancelledDropping": "SkyBlockAddons оставил вас от выбрасывания этого редкого предмета или инструмента из панели быстрого доступа.",
+    "clickMoreTimes": "Нажмите/выберите этот предмет еще %times% раз, если вы действительно хотите сделать это."
   }
 }
