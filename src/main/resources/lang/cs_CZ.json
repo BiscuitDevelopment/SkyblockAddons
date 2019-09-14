@@ -62,9 +62,9 @@
       "two": "Druhý styl"
     },
     "warningDuration": "Délka varování",
-    "dontOpenProfileWithBow": "Don't Open Profile With Bow",
-    "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Items",
-    "makeBackpackInventoriesColored": "Color Inventories"
+    "dontOpenProfileWithBow": "Neotevírat profily s lukem",
+    "stopDroppingSellingRareItems": "Zakázat vyhazování/prodávání vzácných předmětů",
+    "makeBackpackInventoriesColored": "Vybarvit inventáře"
   },
   "messages": {
     "dropConfirmation": "Vyhoď tento item pro vyhození!",
@@ -87,8 +87,8 @@
     "slotLocked": "Tento slot je uzamčen!",
     "summoningEyeFound": "Vyvolávací oko!",
     "cancelledStemBreak": "SkyblockAddons vám zabránil tohle zničit. Použijte svoji ruku, pokud tohle chcete zničit.",
-    "cancelledProfileOpening": "SkyblockAddons has stopped you from opening this player's profile while holding a bow.",
-    "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare item or tool from your hotbar.",
-    "clickMoreTimes": "Click/drop this item %times% more times if you really want to do this."
+    "cancelledProfileOpening": "SkyblockAddons vám zabránil otevřít profil hráče při držení luku.",
+    "cancelledDropping": "SkyblockAddons vám zabránil vyhodit tento vzácný předmět nebo nástroj z vašeho hotbaru.",
+    "clickMoreTimes": "Klikněte/vyhoďte tento předmět %times%-krát, pokud to chcete opravdu udělat."
   }
 }
