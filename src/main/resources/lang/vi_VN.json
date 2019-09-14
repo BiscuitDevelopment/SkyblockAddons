@@ -52,19 +52,19 @@
     "lockSlots": "Allow Locking Slots",
     "dontResetCursorInventory": "Don't Reset Cursor Between Inventories",
     "summoningEyeAlert": "Summoning Eye Alert",
-    "makeEnderchestsInEndGreen": "Make Enderchests in the End Green",
+    "makeEnderchestsInEndGreen": "Làm Cho Hòm Ender Màu Xanh Ở The End",
     "changeColor": "Thay đổi màu sắc",
     "showInOtherGames": "Hiện trong các trò khác",
-    "useVanillaTexture": "Use the Vanilla Texture",
+    "useVanillaTexture": "Sử dụng đồ họa nguyên bản",
     "textStyle": "Text Style",
     "textStyles": {
       "one": "Style One",
       "two": "Style Two"
     },
     "warningDuration": "Warning Duration",
-    "dontOpenProfileWithBow": "Don't Open Profile With Bow",
+    "dontOpenProfileWithBow": "Chặn việc xem thông tin về người chơi khác khi cầm cung",
     "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Items",
-    "makeBackpackInventoriesColored": "Color Inventories"
+    "makeBackpackInventoriesColored": "Đổi Màu Giao Diện Túi Đồ Của Ba Lô"
   },
   "messages": {
     "dropConfirmation": "Nhấn \"Q\" Thêm Một Lần Nữa Để Xác Nhận!",
@@ -85,10 +85,10 @@
       "reforges": "Rèn luyện"
     },
     "slotLocked": "This slot is locked!",
-    "summoningEyeFound": "Summoning Eye!",
+    "summoningEyeFound": "Mắt Triệu Hồi!",
     "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this. Use your bare hand if you'd like to actually break it.",
     "cancelledProfileOpening": "SkyblockAddons has stopped you from opening this player's profile while holding a bow.",
     "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare item or tool from your hotbar.",
-    "clickMoreTimes": "Click/drop this item %times% more times if you really want to do this."
+    "clickMoreTimes": "Bấm Vào/Thả Đồ Vật Này Thêm %times% Lần Nửa Nếu Bạn Muốn Thực Hiện Điều Này."
   }
 }
