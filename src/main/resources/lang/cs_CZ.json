@@ -87,7 +87,7 @@
     "slotLocked": "Tento slot je uzamčen!",
     "summoningEyeFound": "Vyvolávací oko!",
     "cancelledStemBreak": "SkyblockAddons vám zabránil tohle zničit. Použijte svoji ruku, pokud tohle chcete zničit.",
-    "cancelledProfileOpening": "SkyblockAddons has stopped you from opening this player's profile. Please use a another weapon.",
+    "cancelledProfileOpening": "SkyblockAddons has stopped you from opening this player's profile while holding a bow.",
     "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare item or tool from your hotbar.",
     "clickMoreTimes": "Click/drop this item %times% more times if you really want to do this."
   }
