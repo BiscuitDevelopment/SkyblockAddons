@@ -44,8 +44,8 @@
     "darkAuctionTimer": "Minuteur marché noir",
     "magmaBossTimer": "Minuteur Magma Boss",
     "itemPickupLog": "Historique des objets ramassé",
-    "avoidPlacingEnchantedItems": "Désativer le placement des objets enchantés",
-    "avoidBreakingStems": "Empêcher la destruction des graines de melon et de pastèque",
+    "avoidPlacingEnchantedItems": "Désativer l'utilisation des objets enchantés",
+    "avoidBreakingStems": "Destruction des graines de melon/pastèque",
     "stopBowChargeFromResetting": "Désativer la recharge du bandage de l'arc",
     "preventMovementOnDeath": "Empêcher de marcher après la mort",
     "showItemAnvilUses": "Afficher le nombre d'utilisation de l'enclume",
@@ -62,9 +62,9 @@
       "two": "Second modèle"
     },
     "warningDuration": "Durée de l'alerte",
-    "dontOpenProfileWithBow": "Don't Open Profile With Bow",
-    "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Items",
-    "makeBackpackInventoriesColored": "Color Inventories"
+    "dontOpenProfileWithBow": "Ne pas ouvrir le profil avec un arc",
+    "stopDroppingSellingRareItems": "Arrêter le jet/vente d'objets rare",
+    "makeBackpackInventoriesColored": "Inventaire coloré"
   },
   "messages": {
     "dropConfirmation": "Jetez cet objet une nouvelle fois pour confirmer!",
@@ -87,8 +87,8 @@
     "slotLocked": "Cet emplacement est bloqué!",
     "summoningEyeFound": "Œil d'invocation!",
     "cancelledStemBreak": "SkyblockAddons vous a empêché de casser ceci. Utilisez votre main nue si vous souhaitez la casser.",
-    "cancelledProfileOpening": "SkyblockAddons has stopped you from opening this player's profile while holding a bow.",
-    "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare item or tool from your hotbar.",
-    "clickMoreTimes": "Click/drop this item %times% more times if you really want to do this."
+    "cancelledProfileOpening": "SkyblockAddons vous a empêché d'ouvrir le profil de ce joueur en utilisant un arc.",
+    "cancelledDropping": "SkyblockAddons vous a empêché de jeter cet objet ou outil rare de votre barre d'action.",
+    "clickMoreTimes": "Cliquez/jetez cet objet %times% fois si vous le souhaitez vraiment."
   }
 }
