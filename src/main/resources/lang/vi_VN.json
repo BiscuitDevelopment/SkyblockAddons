@@ -86,8 +86,8 @@
     },
     "slotLocked": "This slot is locked!",
     "summoningEyeFound": "Mắt Triệu Hồi!",
-    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this. Use your bare hand if you'd like to actually break it.",
-    "cancelledProfileOpening": "SkyblockAddons has stopped you from opening this player's profile while holding a bow.",
+    "cancelledStemBreak": "SkyblockAddons Đã Ngăn Bạn Phá Hạt Giống Này. Hãy Dùng Tay Không Nếu Bạn Muốn Phá Nó.",
+    "cancelledProfileOpening": "SkyblockAddons Đã Ngăn Bạn Xem Thông Về Người Chơi Này Khi Bạn Đang Cầm Cung.",
     "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare item or tool from your hotbar.",
     "clickMoreTimes": "Bấm Vào/Thả Đồ Vật Này Thêm %times% Lần Nửa Nếu Bạn Muốn Thực Hiện Điều Này."
   }
