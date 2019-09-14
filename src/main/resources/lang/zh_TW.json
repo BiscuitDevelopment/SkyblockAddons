@@ -1,8 +1,13 @@
 {
   "language": "繁體中文",
   "settings": {
+    "tab": {
+      "features": "功能",
+      "fixes": "修復",
+      "guiFeatures": "GUI 功能",
+      "generalSettings": "一般設定"
+    },
     "settings": "設定",
-    "openSettings": "更多設定",
     "magmaBossWarning": "熔岩史萊姆王警報",
     "itemDropConfirmation": "確認丟棄物品",
     "hideSkeletonHatBones": "隱藏骷髏頭盔抵禦骨頭",
@@ -19,14 +24,14 @@
     "hideAuctionHousePlayers": "隱藏競標房內玩家",
     "backpackStyle": "背包樣式: %style%",
     "backpackStyles": {
-      "regular": "Regular",
+      "regular": "一般",
       "compact": "簡易"
     },
     "showBackpackPreview": "顯示背包預覽",
     "hideHealthBar": "隱藏血條",
     "fullMinionWarning": "\"機器人背包空間已滿\"警告",
     "ignoreItemFrameClicks": "無視對展示框的點擊",
-    "showOnlyWhenHoldingShift": "Show Only When Holding Shift",
+    "showOnlyWhenHoldingShift": "只在按住Shift時顯示",
     "manaBar": "魔力計量條",
     "manaText": "魔力文字",
     "healthBar": "血量計量條",
@@ -35,7 +40,7 @@
     "defenceText": "防禦力文字",
     "defencePercentage": "防禦力百分比",
     "healthUpdates": "血量起伏",
-    "hidePlayersInLobby": "Hide Far Entities in Lobby",
+    "hidePlayersInLobby": "在大廳隱藏較遠的實體",
     "darkAuctionTimer": "黑暗拍賣會計時器",
     "magmaBossTimer": "熔岩史萊姆王計時器",
     "itemPickupLog": "物品進出背包通知",
@@ -44,19 +49,22 @@
     "stopBowChargeFromResetting": "弓箭在命中生物後不需要重新裝填",
     "preventMovementOnDeath": "防止死亡後進行移動",
     "showItemAnvilUses": "顯示物品已使用幾次鐵砧",
-    "lockSlots": "Allow Locking Slots",
-    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories",
-    "summoningEyeAlert": "Summoning Eye Alert",
-    "makeEnderchestsInEndGreen": "Make Enderchests in the End Green",
-    "changeColor": "Change Color",
-    "showInOtherGames": "Show in Other Games",
-    "useVanillaTexture": "Use the Vanilla Texture",
-    "textStyle": "Text Style",
+    "lockSlots": "允許鎖定欄位",
+    "dontResetCursorInventory": "打開物品欄不會重製鼠標位置",
+    "summoningEyeAlert": "召喚之眼警報",
+    "makeEnderchestsInEndGreen": "使在終界的終界箱顯示為綠色",
+    "changeColor": "變更顏色",
+    "showInOtherGames": "顯示於其他遊戲",
+    "useVanillaTexture": "使用原版材質",
+    "textStyle": "文字樣式",
     "textStyles": {
-      "one": "Style One",
-      "two": "Style Two"
+      "one": "樣式一",
+      "two": "樣式二"
     },
-    "warningDuration": "Warning Duration"
+    "warningDuration": "警報持續時間",
+    "dontOpenProfileWithBow": "Don't Open Profile With Bow",
+    "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Items",
+    "makeBackpackInventoriesColored": "Color Inventories"
   },
   "messages": {
     "dropConfirmation": "再次丟棄此物品以確認!",
@@ -76,8 +84,11 @@
       "enchants": "附魔",
       "reforges": "重鑄"
     },
-    "cancelledStemBreak": "SkyblockAddons阻止了你破壞這個梗, 如想破壞, 請使用空手",
-    "slotLocked": "This slot is locked!",
-    "summoningEyeFound": "Summoning Eye!"
+    "slotLocked": "這個欄位已被鎖定!",
+    "summoningEyeFound": "召喚之眼!",
+    "cancelledStemBreak": "SkyblockAddons阻止了你破壞此物, 如依舊想破壞, 請使用空手",
+    "cancelledProfileOpening": "SkyblockAddons has stopped you from opening this player's profile. Please use a another weapon.",
+    "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare item or tool from your hotbar.",
+    "clickMoreTimes": "Click/drop this item %times% more times if you really want to do this."
   }
 }

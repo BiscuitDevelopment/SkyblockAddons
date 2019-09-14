@@ -1,8 +1,13 @@
 {
   "language": "Português (Portugal)",
   "settings": {
+    "tab": {
+      "features": "Funcionalidades",
+      "fixes": "Correções",
+      "guiFeatures": "Funcionalidades do Menu",
+      "generalSettings": "Definições gerais"
+    },
     "settings": "Definições",
-    "openSettings": "Abrir mais definições",
     "magmaBossWarning": "Alerta do Magma Boss",
     "itemDropConfirmation": "Confirmação para dropar itens",
     "hideSkeletonHatBones": "Esconder os ossos do Skeleton Helmet",
@@ -19,14 +24,14 @@
     "hideAuctionHousePlayers": "Esconder os jogadores perto da Auction House",
     "backpackStyle": "Estilo da Backpack: %style%",
     "backpackStyles": {
-      "regular": "Regular",
+      "regular": "Normal",
       "compact": "Compacto"
     },
     "showBackpackPreview": "Mostrar uma previsualização da Backpack",
     "hideHealthBar": "Esconder a Barra de Vida do Vanilla",
     "fullMinionWarning": "Aviso do Minion Cheio",
     "ignoreItemFrameClicks": "Ignorar Clicks em Molduras",
-    "showOnlyWhenHoldingShift": "Show Only When Holding Shift",
+    "showOnlyWhenHoldingShift": "Mostrar apenas com Shift apertado",
     "manaBar": "Barra de Mana",
     "manaText": "Número de Mana",
     "healthBar": "Barra de Vida",
@@ -35,7 +40,7 @@
     "defenceText": "Número de Defesa",
     "defencePercentage": "Percentagem de Defesa",
     "healthUpdates": "Número da Diferença de Vida",
-    "hidePlayersInLobby": "Hide Far Entities in Lobby",
+    "hidePlayersInLobby": "Esconder jogadores longe no Lobby",
     "darkAuctionTimer": "Tempo da Dark Auction",
     "magmaBossTimer": "Tempo do Magma Boss",
     "itemPickupLog": "Registo de recolha de itens",
@@ -47,16 +52,19 @@
     "lockSlots": "Permitir o bloqueio de slots",
     "dontResetCursorInventory": "Não resetar o cursor entre inventários",
     "summoningEyeAlert": "Alerta de Summoning Eyes",
-    "makeEnderchestsInEndGreen": "Make Enderchests in the End Green",
-    "changeColor": "Change Color",
-    "showInOtherGames": "Show in Other Games",
-    "useVanillaTexture": "Use the Vanilla Texture",
-    "textStyle": "Text Style",
+    "makeEnderchestsInEndGreen": "Tornar os baús do fim no Fim verdes",
+    "changeColor": "Mudar a cor",
+    "showInOtherGames": "Mostrar em outros jogos",
+    "useVanillaTexture": "Usar a textura do vanilla",
+    "textStyle": "Estilo do texto",
     "textStyles": {
-      "one": "Style One",
-      "two": "Style Two"
+      "one": "Estilo Um",
+      "two": "Estilo Dois"
     },
-    "warningDuration": "Warning Duration"
+    "warningDuration": "Duração do aviso",
+    "dontOpenProfileWithBow": "Don't Open Profile With Bow",
+    "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Items",
+    "makeBackpackInventoriesColored": "Color Inventories"
   },
   "messages": {
     "dropConfirmation": "Dropa este item outra vez para confirmar!",
@@ -76,8 +84,11 @@
       "enchants": "Encantamentos",
       "reforges": "Reforges"
     },
-    "cancelledStemBreak": "O SkyblockAddons impediu-te de partires esta semente. Usa a tua mão se a quiseres partir.",
     "slotLocked": "Este slot está bloqueado!",
-    "summoningEyeFound": "Summoning Eye!"
+    "summoningEyeFound": "Summoning Eye!",
+    "cancelledStemBreak": "O SkyblockAddons impediu-te de partires esta semente. Usa a tua mão se a quiseres mesmo partir.",
+    "cancelledProfileOpening": "SkyblockAddons has stopped you from opening this player's profile. Please use a another weapon.",
+    "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare item or tool from your hotbar.",
+    "clickMoreTimes": "Click/drop this item %times% more times if you really want to do this."
   }
 }

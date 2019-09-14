@@ -1,8 +1,13 @@
 {
   "language": "Svenska",
   "settings": {
+    "tab": {
+      "features": "Funktioner",
+      "fixes": "Fixer",
+      "guiFeatures": "GUI Funktioner",
+      "generalSettings": "Allmänna Inställningar"
+    },
     "settings": "Inställningar",
-    "openSettings": "Öppna Fler Inställningar",
     "magmaBossWarning": "Magma Boss Varning",
     "itemDropConfirmation": "Släpp Artikelbekräftelse",
     "hideSkeletonHatBones": "Göm Skelett Hjälm Ben",
@@ -19,14 +24,14 @@
     "hideAuctionHousePlayers": "Göm Spelare Nära Auktionshus",
     "backpackStyle": "Ryggsäck Stil: %style%",
     "backpackStyles": {
-      "regular": "Regular",
+      "regular": "Vanliga",
       "compact": "Kompakt"
     },
     "showBackpackPreview": "Visa Förhandsgranskning av Ryggsäck",
     "hideHealthBar": "Göm Vanilla Hälso Bar",
     "fullMinionWarning": "Full Tjänare Varning",
     "ignoreItemFrameClicks": "Ignorera Klick På Artikelramar",
-    "showOnlyWhenHoldingShift": "Show Only When Holding Shift",
+    "showOnlyWhenHoldingShift": "Visa Bara När Du Håller Shift",
     "manaBar": "Mana Bar",
     "manaText": "Mana Nummer",
     "healthBar": "Hälso Bar",
@@ -34,9 +39,9 @@
     "defenceIcon": "Skydd Symbol",
     "defenceText": "Skydd Nummer",
     "defencePercentage": "Skydd Percentsats",
-    "healthUpdates": "Ändra Hälso Nummer",
-    "hidePlayersInLobby": "Hide Far Entities in Lobby",
-    "darkAuctionTimer": "Mörk Auktion Timer",
+    "healthUpdates": "Hälsoförändrings Nummer",
+    "hidePlayersInLobby": "Göm Enheter Lång Borta i Lobbyn",
+    "darkAuctionTimer": "Mörk Auktions Timer",
     "magmaBossTimer": "Magma Boss Timer",
     "itemPickupLog": "Plocka Upp Artikel Log",
     "avoidPlacingEnchantedItems": "Förhindra Att Placera Förtrollade Block",
@@ -44,19 +49,22 @@
     "stopBowChargeFromResetting": "Stoppa Pilbågar Från Att Återställas",
     "preventMovementOnDeath": "Förhindra Gående Efter Död",
     "showItemAnvilUses": "Visa Atikel Städ Användningar",
-    "lockSlots": "Allow Locking Slots",
-    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories",
-    "summoningEyeAlert": "Summoning Eye Alert",
-    "makeEnderchestsInEndGreen": "Make Enderchests in the End Green",
-    "changeColor": "Change Color",
-    "showInOtherGames": "Show in Other Games",
-    "useVanillaTexture": "Use the Vanilla Texture",
-    "textStyle": "Text Style",
+    "lockSlots": "Tillåt Att Låsa Luckor",
+    "dontResetCursorInventory": "Återställ Inte Markör Mellan Lager",
+    "summoningEyeAlert": "Tillkallande Ögas Larm",
+    "makeEnderchestsInEndGreen": "Gör Enderkistor i End Gröna",
+    "changeColor": "Ändra Färg",
+    "showInOtherGames": "Visa i Andra Spel",
+    "useVanillaTexture": "Använd Ursprungliga Texturen",
+    "textStyle": "Textstil",
     "textStyles": {
-      "one": "Style One",
-      "two": "Style Two"
+      "one": "Stil Ett",
+      "two": "Stil Två"
     },
-    "warningDuration": "Warning Duration"
+    "warningDuration": "Varningstid",
+    "dontOpenProfileWithBow": "Don't Open Profile With Bow",
+    "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Items",
+    "makeBackpackInventoriesColored": "Color Inventories"
   },
   "messages": {
     "dropConfirmation": "Släpp Det Här Igen För Att Bekräfta!",
@@ -76,8 +84,11 @@
       "enchants": "Förtrollningar",
       "reforges": "Reforges"
     },
-    "cancelledStemBreak": "SkyblockAddons har förhindrat dig från att förstöra den här stjälken. Använd dina händer om du vill förstöra den.",
-    "slotLocked": "This slot is locked!",
-    "summoningEyeFound": "Summoning Eye!"
+    "slotLocked": "Denna luckan är låst!",
+    "summoningEyeFound": "Tillkallande Öga!",
+    "cancelledStemBreak": "SkyblockAddons har förhindrat dig från att förstöra dessa grödor. Använd din hand om du ändå vill förstöra dem.",
+    "cancelledProfileOpening": "SkyblockAddons has stopped you from opening this player's profile. Please use a another weapon.",
+    "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare item or tool from your hotbar.",
+    "clickMoreTimes": "Click/drop this item %times% more times if you really want to do this."
   }
 }

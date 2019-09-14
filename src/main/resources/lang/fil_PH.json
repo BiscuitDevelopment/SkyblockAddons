@@ -1,8 +1,13 @@
 {
   "language": "Filipino",
   "settings": {
+    "tab": {
+      "features": "Mga Features",
+      "fixes": "Mga Fixes",
+      "guiFeatures": "GUI Features",
+      "generalSettings": "Mga pangkalahatan na settings"
+    },
     "settings": "Ang mga settings",
-    "openSettings": "Buksan Ang Marami Pang Settings",
     "magmaBossWarning": "Babala ng Magma Boss",
     "itemDropConfirmation": "Pagkumpirmado sa Paghulog ng Item",
     "hideSkeletonHatBones": "Huwag I-pakita ang mga Buto ng Skeleton Helmet",
@@ -26,7 +31,7 @@
     "hideHealthBar": "Huwag I-pakita ang Vanilla Health Bar",
     "fullMinionWarning": "Babala ng Punong Minion",
     "ignoreItemFrameClicks": "Huwag pansinin ang pag-click sa Item Frames",
-    "showOnlyWhenHoldingShift": "Show Only When Holding Shift",
+    "showOnlyWhenHoldingShift": "Ipakita lamang kapag naka Hold ang Shift",
     "manaBar": "Kapangyarihan",
     "manaText": "Numero ng Kapangyarihan",
     "healthBar": "Kalusugan",
@@ -35,7 +40,7 @@
     "defenceText": "Numero ng Sandata",
     "defencePercentage": "Porsyento ng Sandata",
     "healthUpdates": "Pagbago ng Numero sa Kalusugan",
-    "hidePlayersInLobby": "Hide Far Entities in Lobby",
+    "hidePlayersInLobby": "Huwag Ipakita ang malayong Entities sa Lobby",
     "darkAuctionTimer": "Kulay ng Dark Auction Timer",
     "magmaBossTimer": "Kulay ng Magma Boss Timer",
     "itemPickupLog": "Pagpulot ng mga Bagay Log",
@@ -47,16 +52,19 @@
     "lockSlots": "Payagan ang mga Nakakandadong Slots",
     "dontResetCursorInventory": "Huwag I-reset ang Kursor sa pagitan ng iyong Imbentaryo",
     "summoningEyeAlert": "Alerto ng Pangsummon na Mata",
-    "makeEnderchestsInEndGreen": "Make Enderchests in the End Green",
-    "changeColor": "Change Color",
-    "showInOtherGames": "Show in Other Games",
-    "useVanillaTexture": "Use the Vanilla Texture",
-    "textStyle": "Text Style",
+    "makeEnderchestsInEndGreen": "Gawing Kulay Berde Ang Mga Enderchest Sa The End",
+    "changeColor": "Palitan ang Kulay",
+    "showInOtherGames": "Ipakita sa ibang Laro",
+    "useVanillaTexture": "Gamitin ang Vanilla Tekstura",
+    "textStyle": "Istilo ng Teksto",
     "textStyles": {
-      "one": "Style One",
-      "two": "Style Two"
+      "one": "Unang Istilo",
+      "two": "Pangalawang Istilo"
     },
-    "warningDuration": "Warning Duration"
+    "warningDuration": "Katagalan ng Babala",
+    "dontOpenProfileWithBow": "Don't Open Profile With Bow",
+    "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Items",
+    "makeBackpackInventoriesColored": "Color Inventories"
   },
   "messages": {
     "dropConfirmation": "Ihulog ang item muli para kumpirmado!",
@@ -76,8 +84,11 @@
       "enchants": "Enchants",
       "reforges": "Pandayan"
     },
-    "cancelledStemBreak": "Itinigil ng SkyblockAddons sa pag-sira ang tangkay na ito. Gamitin mo ang iyong kamay kung gusto mo sirain.",
     "slotLocked": "Ang slot na ito ay nakakandado pa!",
-    "summoningEyeFound": "Pangsummon na Mata!"
+    "summoningEyeFound": "Pangsummon na Mata!",
+    "cancelledStemBreak": "Itinigil ng SkyblockAddons sa pag-sira ang tangkay na ito. Gamitin mo ang iyong kamay kung gusto talaga sirain.",
+    "cancelledProfileOpening": "SkyblockAddons has stopped you from opening this player's profile. Please use a another weapon.",
+    "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare item or tool from your hotbar.",
+    "clickMoreTimes": "Click/drop this item %times% more times if you really want to do this."
   }
 }

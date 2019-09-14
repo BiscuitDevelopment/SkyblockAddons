@@ -1,8 +1,13 @@
 {
   "language": "Latinski Srpski",
   "settings": {
+    "tab": {
+      "features": "Features",
+      "fixes": "Fixes",
+      "guiFeatures": "GUI Features",
+      "generalSettings": "General Settings"
+    },
     "settings": "Podešavanja",
-    "openSettings": "Otvori podešavanja",
     "magmaBossWarning": "Magma Boss Upozorenje",
     "itemDropConfirmation": "Konfirmacija Bacanja Predmeta",
     "hideSkeletonHatBones": "Sakrij Kosti Skeleton Kacige",
@@ -56,7 +61,10 @@
       "one": "Style One",
       "two": "Style Two"
     },
-    "warningDuration": "Warning Duration"
+    "warningDuration": "Warning Duration",
+    "dontOpenProfileWithBow": "Don't Open Profile With Bow",
+    "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Items",
+    "makeBackpackInventoriesColored": "Color Inventories"
   },
   "messages": {
     "dropConfirmation": "Opet baci ovu stvar za potvrdu!",
@@ -76,8 +84,11 @@
       "enchants": "Čarolije",
       "reforges": "Reforge-ovi"
     },
-    "cancelledStemBreak": "SkyblockAddons te zaustavio od rušenja ove stabljike. Koristi svoju ruku ako je želiš slomiti.",
     "slotLocked": "This slot is locked!",
-    "summoningEyeFound": "Summoning Eye!"
+    "summoningEyeFound": "Summoning Eye!",
+    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this. Use your bare hand if you'd like to actually break it.",
+    "cancelledProfileOpening": "SkyblockAddons has stopped you from opening this player's profile. Please use a another weapon.",
+    "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare item or tool from your hotbar.",
+    "clickMoreTimes": "Click/drop this item %times% more times if you really want to do this."
   }
 }

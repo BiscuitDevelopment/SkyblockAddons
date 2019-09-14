@@ -1,8 +1,13 @@
 {
   "language": "简体中文",
   "settings": {
+    "tab": {
+      "features": "功能",
+      "fixes": "修复",
+      "guiFeatures": "GUI 功能",
+      "generalSettings": "常规设置"
+    },
     "settings": "设定",
-    "openSettings": "更多设定",
     "magmaBossWarning": "岩浆怪Boss出生警报",
     "itemDropConfirmation": "确认丢弃物品",
     "hideSkeletonHatBones": "隐藏骷髅头盔骨头屏障",
@@ -19,14 +24,14 @@
     "hideAuctionHousePlayers": "隐藏拍卖所内玩家",
     "backpackStyle": "背包样式: %style%",
     "backpackStyles": {
-      "regular": "Regular",
+      "regular": "常规",
       "compact": "简易"
     },
     "showBackpackPreview": "显示背包预览",
     "hideHealthBar": "隐藏血条",
     "fullMinionWarning": "\"仆从背包空间已满\"警告",
     "ignoreItemFrameClicks": "忽略对展示框的点击",
-    "showOnlyWhenHoldingShift": "Show Only When Holding Shift",
+    "showOnlyWhenHoldingShift": "只在按住Shift时显示",
     "manaBar": "法力条",
     "manaText": "法力数",
     "healthBar": "生命计量条",
@@ -35,7 +40,7 @@
     "defenceText": "防御数",
     "defencePercentage": "防御百分比",
     "healthUpdates": "生命值改变计数",
-    "hidePlayersInLobby": "Hide Far Entities in Lobby",
+    "hidePlayersInLobby": "在大厅隐藏远处玩家",
     "darkAuctionTimer": "暗黑拍卖会倒计时",
     "magmaBossTimer": "岩浆怪Boss倒计时",
     "itemPickupLog": "物品拾取记录",
@@ -47,16 +52,19 @@
     "lockSlots": "允许锁定快捷栏",
     "dontResetCursorInventory": "阻止切换物品栏菜单时光标重置",
     "summoningEyeAlert": "召唤之眼获取提醒",
-    "makeEnderchestsInEndGreen": "Make Enderchests in the End Green",
-    "changeColor": "Change Color",
-    "showInOtherGames": "Show in Other Games",
-    "useVanillaTexture": "Use the Vanilla Texture",
-    "textStyle": "Text Style",
+    "makeEnderchestsInEndGreen": "将末地中末影箱渲染为绿色",
+    "changeColor": "更改颜色",
+    "showInOtherGames": "在其他游戏显示",
+    "useVanillaTexture": "使用原版材质",
+    "textStyle": "文字样式",
     "textStyles": {
-      "one": "Style One",
-      "two": "Style Two"
+      "one": "风格一",
+      "two": "风格二"
     },
-    "warningDuration": "Warning Duration"
+    "warningDuration": "警报持续时间",
+    "dontOpenProfileWithBow": "Don't Open Profile With Bow",
+    "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Items",
+    "makeBackpackInventoriesColored": "Color Inventories"
   },
   "messages": {
     "dropConfirmation": "再次丢弃此物品以确认!",
@@ -76,8 +84,11 @@
       "enchants": "附魔",
       "reforges": "重铸"
     },
-    "cancelledStemBreak": "SkyblockAddons已经阻止你破坏此作物，请使用空手来进行破坏。",
     "slotLocked": "该栏已锁！",
-    "summoningEyeFound": "召唤之眼！"
+    "summoningEyeFound": "召唤之眼！",
+    "cancelledStemBreak": "SkyblockAddons已经阻止你破坏此方块，请使用空手来进行破坏。",
+    "cancelledProfileOpening": "SkyblockAddons has stopped you from opening this player's profile. Please use a another weapon.",
+    "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare item or tool from your hotbar.",
+    "clickMoreTimes": "Click/drop this item %times% more times if you really want to do this."
   }
 }

@@ -1,8 +1,13 @@
 {
   "language": "日本語",
   "settings": {
+    "tab": {
+      "features": "機能",
+      "fixes": "修正",
+      "guiFeatures": "GUIの機能",
+      "generalSettings": "一般設定"
+    },
     "settings": "設定",
-    "openSettings": "設定を開く",
     "magmaBossWarning": "マグマボスの警告",
     "itemDropConfirmation": "アイテムを捨てる確認",
     "hideSkeletonHatBones": "スケルトンヘルメットの骨を非表示",
@@ -19,14 +24,14 @@
     "hideAuctionHousePlayers": "オークションハウス付近のプレイヤーを非表示",
     "backpackStyle": "バックパックのスタイル: %style%",
     "backpackStyles": {
-      "regular": "Regular",
+      "regular": "標準",
       "compact": "コンパクト"
     },
     "showBackpackPreview": "バックパックのプレビューを表示",
     "hideHealthBar": "体力バーを隠す",
     "fullMinionWarning": "ミニオンの上限のアラート",
     "ignoreItemFrameClicks": "額縁へのクリックを無効化",
-    "showOnlyWhenHoldingShift": "Show Only When Holding Shift",
+    "showOnlyWhenHoldingShift": "シフトを押している時のみ表示",
     "manaBar": "マナゲージ",
     "manaText": "マナ数",
     "healthBar": "体力ゲージ",
@@ -35,7 +40,7 @@
     "defenceText": "ディフェンス数",
     "defencePercentage": "ディフェンスのパーセンテージ",
     "healthUpdates": "体力の変動を表示",
-    "hidePlayersInLobby": "Hide Far Entities in Lobby",
+    "hidePlayersInLobby": "ロビーで遠くにいる人を非表示",
     "darkAuctionTimer": "ダークオークションタイマー",
     "magmaBossTimer": "マグマボスタイマー",
     "itemPickupLog": "拾ったアイテムを表示",
@@ -47,16 +52,19 @@
     "lockSlots": "スロットのロックを許可",
     "dontResetCursorInventory": "インベントリ間でのカーソルの位置のリセットを防止",
     "summoningEyeAlert": "サモニングアイの警告",
-    "makeEnderchestsInEndGreen": "Make Enderchests in the End Green",
-    "changeColor": "Change Color",
-    "showInOtherGames": "Show in Other Games",
-    "useVanillaTexture": "Use the Vanilla Texture",
-    "textStyle": "Text Style",
+    "makeEnderchestsInEndGreen": "エンドにいる時エンダーチェストを緑色に",
+    "changeColor": "色の変更",
+    "showInOtherGames": "他のゲームに居る時でも表示",
+    "useVanillaTexture": "バニラのテクスチャを使う",
+    "textStyle": "テキストのスタイル",
     "textStyles": {
-      "one": "Style One",
-      "two": "Style Two"
+      "one": "スタイル1",
+      "two": "スタイル2"
     },
-    "warningDuration": "Warning Duration"
+    "warningDuration": "アラートの長さ",
+    "dontOpenProfileWithBow": "Don't Open Profile With Bow",
+    "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Items",
+    "makeBackpackInventoriesColored": "Color Inventories"
   },
   "messages": {
     "dropConfirmation": "落としてもいいのであれば、このアイテムをもう一度ドロップしてください。",
@@ -76,8 +84,11 @@
       "enchants": "エンチャント",
       "reforges": "リフォージ"
     },
-    "cancelledStemBreak": "SkyblockAddonsがこの苗木を破壊するのを防止しました。破壊したい場合は素手で破壊してください。",
     "slotLocked": "このスロットはロックされています。",
-    "summoningEyeFound": "サモニングアイがドロップしました！"
+    "summoningEyeFound": "サモニングアイがドロップしました！",
+    "cancelledStemBreak": "SkyblockAddonsがこのブロックの破壊を阻止しました。 壊したい場合は素手で破壊してください。",
+    "cancelledProfileOpening": "SkyblockAddons has stopped you from opening this player's profile. Please use a another weapon.",
+    "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare item or tool from your hotbar.",
+    "clickMoreTimes": "Click/drop this item %times% more times if you really want to do this."
   }
 }

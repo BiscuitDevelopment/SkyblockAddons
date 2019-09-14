@@ -1,8 +1,13 @@
 {
   "language": "Español (México)",
   "settings": {
+    "tab": {
+      "features": "Características",
+      "fixes": "Arreglos",
+      "guiFeatures": "Características de Menú",
+      "generalSettings": "Configuraciones Generales"
+    },
     "settings": "Opciones",
-    "openSettings": "Abrir Opciones",
     "magmaBossWarning": "Alerta de Boss de Magma",
     "itemDropConfirmation": "Confirmación de Arrojar Objetos",
     "hideSkeletonHatBones": "Ocultar Huesos de Skeleton Hat",
@@ -19,14 +24,14 @@
     "hideAuctionHousePlayers": "Ocultar Jugadores Cerca de Auction House",
     "backpackStyle": "Estilo de Backpack: %style%",
     "backpackStyles": {
-      "regular": "Regular",
+      "regular": "Normal",
       "compact": "Compacto"
     },
     "showBackpackPreview": "Previsualizar Backpacks",
     "hideHealthBar": "Ocultar Barra de Vida",
     "fullMinionWarning": "Alerta de Minion Lleno",
     "ignoreItemFrameClicks": "Ignorar Clics en Item Frames",
-    "showOnlyWhenHoldingShift": "Show Only When Holding Shift",
+    "showOnlyWhenHoldingShift": "Mostrar Sólo al Presionar Shift",
     "manaBar": "Barra de Mana",
     "manaText": "Número de Mana",
     "healthBar": "Barra de Vida",
@@ -35,7 +40,7 @@
     "defenceText": "Número de Defensa",
     "defencePercentage": "Porcentaje de Defensa",
     "healthUpdates": "Número de Actualización de Vida",
-    "hidePlayersInLobby": "Hide Far Entities in Lobby",
+    "hidePlayersInLobby": "Ocultar Entidades Lejanas en Lobby",
     "darkAuctionTimer": "Tiempo para Dark Auction",
     "magmaBossTimer": "Tiempo para Magma Boss",
     "itemPickupLog": "Registro de Items Recogidos",
@@ -47,16 +52,19 @@
     "lockSlots": "Permitir Bloqueo de Ranuras",
     "dontResetCursorInventory": "Evitar Reinicio del Cursor entre Inventarios",
     "summoningEyeAlert": "Alerta de Summoning Eye",
-    "makeEnderchestsInEndGreen": "Make Enderchests in the End Green",
-    "changeColor": "Change Color",
-    "showInOtherGames": "Show in Other Games",
-    "useVanillaTexture": "Use the Vanilla Texture",
-    "textStyle": "Text Style",
+    "makeEnderchestsInEndGreen": "Colorear Enderchest de Verde en The End",
+    "changeColor": "Cambiar Color",
+    "showInOtherGames": "Mostrar en Otros Juegos",
+    "useVanillaTexture": "Usar la Textura Vanilla",
+    "textStyle": "Estilo de Texto",
     "textStyles": {
-      "one": "Style One",
-      "two": "Style Two"
+      "one": "Estilo Uno",
+      "two": "Estilo Dos"
     },
-    "warningDuration": "Warning Duration"
+    "warningDuration": "Duración de la Alerta",
+    "dontOpenProfileWithBow": "Don't Open Profile With Bow",
+    "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Items",
+    "makeBackpackInventoriesColored": "Color Inventories"
   },
   "messages": {
     "dropConfirmation": "Arroja este objeto otra vez para confirmar!",
@@ -76,8 +84,11 @@
       "enchants": "Encantamientos",
       "reforges": "Reforjas"
     },
-    "cancelledStemBreak": "SkyblockAddons ha detenido la ruptura de este tallo. Usa sólo tu mano si en realidad deseas romperlo.",
     "slotLocked": "Esta ranura está bloqueada!",
-    "summoningEyeFound": "Summoning Eye!"
+    "summoningEyeFound": "Summoning Eye!",
+    "cancelledStemBreak": "SkyblockAddons ha detenido la ruptura de este tallo. Usa sólo tu mano si en realidad deseas romperlo.",
+    "cancelledProfileOpening": "SkyblockAddons has stopped you from opening this player's profile. Please use a another weapon.",
+    "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare item or tool from your hotbar.",
+    "clickMoreTimes": "Click/drop this item %times% more times if you really want to do this."
   }
 }

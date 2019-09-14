@@ -1,8 +1,13 @@
 {
   "language": "Deutsch",
   "settings": {
+    "tab": {
+      "features": "Funktionen",
+      "fixes": "Fehlerbehebungen",
+      "guiFeatures": "GUI-Funktionen",
+      "generalSettings": "Allgemeine Einstellungen"
+    },
     "settings": "Einstellungen",
-    "openSettings": "Zusätzliche Einstellungen",
     "magmaBossWarning": "Magma Boss Spawn Warnung",
     "itemDropConfirmation": "Item Auswurf Bestätigung",
     "hideSkeletonHatBones": "Skelett-Helm Knochen verstecken",
@@ -19,14 +24,14 @@
     "hideAuctionHousePlayers": "Spieler im Auktionshaus verstecken",
     "backpackStyle": "Rucksack-Stil: %style%",
     "backpackStyles": {
-      "regular": "Regular",
+      "regular": "Standard",
       "compact": "Kompakt"
     },
     "showBackpackPreview": "Rucksack-Vorschau zeigen",
     "hideHealthBar": "Lebensleiste verstecken",
     "fullMinionWarning": "Warnung bei vollem Minion",
     "ignoreItemFrameClicks": "Klicks auf Gegenstandsrahmen ignorieren",
-    "showOnlyWhenHoldingShift": "Show Only When Holding Shift",
+    "showOnlyWhenHoldingShift": "Nur beim Halten von Shift anzeigen",
     "manaBar": "Mana-Leiste",
     "manaText": "Mana-Anzahl",
     "healthBar": "Lebensleiste",
@@ -35,7 +40,7 @@
     "defenceText": "Verteidigungs-Zahl",
     "defencePercentage": "Verteidigungs-Prozentsatz",
     "healthUpdates": "Lebens-Veränderungs-Zahl",
-    "hidePlayersInLobby": "Hide Far Entities in Lobby",
+    "hidePlayersInLobby": "Verstecke weit entfernte Entities in der Lobby",
     "darkAuctionTimer": "Dunkelauktionstimer",
     "magmaBossTimer": "Magma Boss Timer",
     "itemPickupLog": "Aufgehobene Items-Liste",
@@ -47,16 +52,19 @@
     "lockSlots": "Slots sperren erlauben",
     "dontResetCursorInventory": "Mauszeiger zwischen Inventaren nicht zurücksetzen",
     "summoningEyeAlert": "Summoning Eye Alarm",
-    "makeEnderchestsInEndGreen": "Make Enderchests in the End Green",
-    "changeColor": "Change Color",
-    "showInOtherGames": "Show in Other Games",
-    "useVanillaTexture": "Use the Vanilla Texture",
-    "textStyle": "Text Style",
+    "makeEnderchestsInEndGreen": "Färbe Endertruhen im End grün",
+    "changeColor": "Farbe ändern",
+    "showInOtherGames": "Zeige in anderen Spielen",
+    "useVanillaTexture": "Benutze Vanilla Textur",
+    "textStyle": "Text Stil",
     "textStyles": {
-      "one": "Style One",
-      "two": "Style Two"
+      "one": "Stil Eins",
+      "two": "Stil Zwei"
     },
-    "warningDuration": "Warning Duration"
+    "warningDuration": "Warnungsdauer",
+    "dontOpenProfileWithBow": "Don't Open Profile With Bow",
+    "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Items",
+    "makeBackpackInventoriesColored": "Color Inventories"
   },
   "messages": {
     "dropConfirmation": "Werfe diesen Gegenstand nochmal, um zu bestätigen!",
@@ -76,8 +84,11 @@
       "enchants": "Verzauberungen",
       "reforges": "Verbesserungen"
     },
-    "cancelledStemBreak": "SkyblockAddons hat dich davon abgehalten, diesen Stamm zu zerstören. Nutze deine leere Hand um ihn trotzdem zu zerstören.",
     "slotLocked": "Dieser Slot ist gesperrt!",
-    "summoningEyeFound": "Beschwörungsauge!"
+    "summoningEyeFound": "Beschwörungsauge!",
+    "cancelledStemBreak": "SkyblockAddons hat dich davon abgehalten, diesen Stamm zu zerstören. Nutze deine leere Hand um ihn trotzdem zu zerstören.",
+    "cancelledProfileOpening": "SkyblockAddons has stopped you from opening this player's profile. Please use a another weapon.",
+    "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare item or tool from your hotbar.",
+    "clickMoreTimes": "Click/drop this item %times% more times if you really want to do this."
   }
 }

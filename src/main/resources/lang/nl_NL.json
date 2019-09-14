@@ -1,8 +1,13 @@
 {
   "language": "Nederlands",
   "settings": {
+    "tab": {
+      "features": "Functies",
+      "fixes": "Oplossingen",
+      "guiFeatures": "GUI functies",
+      "generalSettings": "Algemene instellingen"
+    },
     "settings": "Instellingen",
-    "openSettings": "Open Instellingen",
     "magmaBossWarning": "Magma Baas Waarschuwing",
     "itemDropConfirmation": "Object laten vallen Bevestiging",
     "hideSkeletonHatBones": "Verstop Skelet Hoed Botten",
@@ -19,14 +24,14 @@
     "hideAuctionHousePlayers": "Verberg spelers bij het Veilingshuis",
     "backpackStyle": "Rugzak stijl: %style%",
     "backpackStyles": {
-      "regular": "Regular",
+      "regular": "Normaal",
       "compact": "Compact"
     },
     "showBackpackPreview": "Toon Rugzak Voorbeeld",
     "hideHealthBar": "Verberg Gezondheids Balk",
     "fullMinionWarning": "Volle Minion Waarschuwing",
     "ignoreItemFrameClicks": "Negeer Klikken Op Item Frames",
-    "showOnlyWhenHoldingShift": "Show Only When Holding Shift",
+    "showOnlyWhenHoldingShift": "Alleen weergeven wanneer Shift is ingedrukt",
     "manaBar": "Mana Balk",
     "manaText": "Mana Getal",
     "healthBar": "Gezondheids Balk",
@@ -35,7 +40,7 @@
     "defenceText": "Verdediging Hoeveelheid",
     "defencePercentage": "Verdediging Percentage",
     "healthUpdates": "Gezondheid Hoeveelheid Aanpassen",
-    "hidePlayersInLobby": "Hide Far Entities in Lobby",
+    "hidePlayersInLobby": "Verberg Verre Entiteiten in Lobby",
     "darkAuctionTimer": "Timer Donkere Veiling",
     "magmaBossTimer": "Magma Baas Timer",
     "itemPickupLog": "Lijst Opgepakte Items",
@@ -47,16 +52,19 @@
     "lockSlots": "Slots Vergrendelen toestaan",
     "dontResetCursorInventory": "Cursor niet resetten tussen Inventarissen",
     "summoningEyeAlert": "Oproepend oog Alarm",
-    "makeEnderchestsInEndGreen": "Make Enderchests in the End Green",
-    "changeColor": "Change Color",
-    "showInOtherGames": "Show in Other Games",
-    "useVanillaTexture": "Use the Vanilla Texture",
-    "textStyle": "Text Style",
+    "makeEnderchestsInEndGreen": "Maak Enderchests in de End Groen",
+    "changeColor": "Kleur wijzigen",
+    "showInOtherGames": "Toon in andere spellen",
+    "useVanillaTexture": "Gebruik Vanilla Achtergrond",
+    "textStyle": "Tekststijl",
     "textStyles": {
-      "one": "Style One",
-      "two": "Style Two"
+      "one": "Stijl één",
+      "two": "Stijl twee"
     },
-    "warningDuration": "Warning Duration"
+    "warningDuration": "Waarschuwingsduur",
+    "dontOpenProfileWithBow": "Don't Open Profile With Bow",
+    "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Items",
+    "makeBackpackInventoriesColored": "Color Inventories"
   },
   "messages": {
     "dropConfirmation": "Laat dit object opnieuw vallen om te Bevestigen!",
@@ -76,8 +84,11 @@
       "enchants": "Betoveringen",
       "reforges": "Omsmedingen"
     },
-    "cancelledStemBreak": "SkyblockAddons heeft je ervan weerhouden om deze stengel te breken. Gebruik je lege hand als je het wilt breken.",
     "slotLocked": "Deze Slot is vergrendeld!",
-    "summoningEyeFound": "Oproepend oog!"
+    "summoningEyeFound": "Oproepend oog!",
+    "cancelledStemBreak": "SkyblockAddons heeft je ervan weerhouden om deze stengel te breken. Gebruik je lege hand als je het wilt breken.",
+    "cancelledProfileOpening": "SkyblockAddons has stopped you from opening this player's profile. Please use a another weapon.",
+    "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare item or tool from your hotbar.",
+    "clickMoreTimes": "Click/drop this item %times% more times if you really want to do this."
   }
 }

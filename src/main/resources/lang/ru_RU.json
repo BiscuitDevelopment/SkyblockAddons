@@ -1,8 +1,13 @@
 {
   "language": "Русский",
   "settings": {
+    "tab": {
+      "features": "Возможности",
+      "fixes": "Исправления",
+      "guiFeatures": "Возможности интерфейса",
+      "generalSettings": "Основные настройки"
+    },
     "settings": "Настройки",
-    "openSettings": "Открыть больше настроек",
     "magmaBossWarning": "Предупреждение о Магма-Боссе",
     "itemDropConfirmation": "Подтверждение о выбрасывание предмета",
     "hideSkeletonHatBones": "Скрыть кости от Skeleton Helmet'a",
@@ -19,14 +24,14 @@
     "hideAuctionHousePlayers": "Прятать игроков у аукциона",
     "backpackStyle": "Стиль рюкзака: %style%",
     "backpackStyles": {
-      "regular": "Regular",
+      "regular": "Обычный",
       "compact": "Компакт"
     },
     "showBackpackPreview": "Показывать превью рюкзака",
     "hideHealthBar": "Прятать полосу здоровья",
     "fullMinionWarning": "Предупреждение о том, что миньон заполнился",
     "ignoreItemFrameClicks": "Игнорировать нажатия по рамкам",
-    "showOnlyWhenHoldingShift": "Show Only When Holding Shift",
+    "showOnlyWhenHoldingShift": "Показывать только при зажатом шифте",
     "manaBar": "Полоса маны",
     "manaText": "Количество маны",
     "healthBar": "Полоса здоровья",
@@ -35,7 +40,7 @@
     "defenceText": "Число защиты",
     "defencePercentage": "Проценты защиты",
     "healthUpdates": "Изменение числа здоровья",
-    "hidePlayersInLobby": "Hide Far Entities in Lobby",
+    "hidePlayersInLobby": "Скрывать далекие объекты в лобби",
     "darkAuctionTimer": "Таймер тёмного аукциона",
     "magmaBossTimer": "Таймер Магма-босса",
     "itemPickupLog": "Список всех предметов что вы подняли",
@@ -44,19 +49,22 @@
     "stopBowChargeFromResetting": "Останавливать заряд лука от перезагрузки",
     "preventMovementOnDeath": "Предотвращать ходьбу после смерти",
     "showItemAnvilUses": "Показывать Использования предмета на наковальне",
-    "lockSlots": "Allow Locking Slots",
-    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories",
-    "summoningEyeAlert": "Summoning Eye Alert",
-    "makeEnderchestsInEndGreen": "Make Enderchests in the End Green",
-    "changeColor": "Change Color",
-    "showInOtherGames": "Show in Other Games",
-    "useVanillaTexture": "Use the Vanilla Texture",
-    "textStyle": "Text Style",
+    "lockSlots": "Разрешить блокировку слотов",
+    "dontResetCursorInventory": "Не сбрасывать курсор между инвентарями",
+    "summoningEyeAlert": "Оповещение о Summoning Eye",
+    "makeEnderchestsInEndGreen": "Сделать сундуки края в краю зелёными",
+    "changeColor": "Изменить цвет",
+    "showInOtherGames": "Показывать в остальных играх",
+    "useVanillaTexture": "Использовать обычные текстуры",
+    "textStyle": "Стиль текста",
     "textStyles": {
-      "one": "Style One",
-      "two": "Style Two"
+      "one": "Стиль 1",
+      "two": "Стиль 2"
     },
-    "warningDuration": "Warning Duration"
+    "warningDuration": "Длительность предупреждения",
+    "dontOpenProfileWithBow": "Don't Open Profile With Bow",
+    "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Items",
+    "makeBackpackInventoriesColored": "Color Inventories"
   },
   "messages": {
     "dropConfirmation": "Выбросите предмет ещё раз для подтверждения!",
@@ -76,8 +84,11 @@
       "enchants": "Зачарования",
       "reforges": "Перековки"
     },
-    "cancelledStemBreak": "SkyblockAddons остановил вас от ломания этого стебля. Используйте пустую руку, если вы хотите это сделать.",
-    "slotLocked": "This slot is locked!",
-    "summoningEyeFound": "Summoning Eye!"
+    "slotLocked": "Этот слот заблокирован!",
+    "summoningEyeFound": "Summoning Eye!",
+    "cancelledStemBreak": "SkyBlockAddons запретил вам ломать эти. Используйте руку, если вы хотите действительно сломать.",
+    "cancelledProfileOpening": "SkyblockAddons has stopped you from opening this player's profile. Please use a another weapon.",
+    "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare item or tool from your hotbar.",
+    "clickMoreTimes": "Click/drop this item %times% more times if you really want to do this."
   }
 }
