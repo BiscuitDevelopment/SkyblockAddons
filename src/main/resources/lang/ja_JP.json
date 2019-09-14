@@ -2,9 +2,9 @@
   "language": "日本語",
   "settings": {
     "tab": {
-      "features": "Features",
-      "fixes": "Fixes",
-      "guiFeatures": "GUI Features",
+      "features": "機能",
+      "fixes": "修正",
+      "guiFeatures": "GUIの機能",
       "generalSettings": "General Settings"
     },
     "settings": "設定",
