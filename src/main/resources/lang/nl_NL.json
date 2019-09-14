@@ -62,8 +62,8 @@
       "two": "Stijl twee"
     },
     "warningDuration": "Waarschuwingsduur",
-    "dontOpenProfileWithBow": "Don't Open Profile With Bow",
-    "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Items",
+    "dontOpenProfileWithBow": "Profiel niet openen met boog",
+    "stopDroppingSellingRareItems": "Stop laten Vallen/Verkopen Van Zeldzame Items",
     "makeBackpackInventoriesColored": "Color Inventories"
   },
   "messages": {
@@ -87,8 +87,8 @@
     "slotLocked": "Deze Slot is vergrendeld!",
     "summoningEyeFound": "Oproepend oog!",
     "cancelledStemBreak": "SkyblockAddons heeft je ervan weerhouden om deze stengel te breken. Gebruik je lege hand als je het wilt breken.",
-    "cancelledProfileOpening": "SkyblockAddons has stopped you from opening this player's profile while holding a bow.",
-    "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare item or tool from your hotbar.",
+    "cancelledProfileOpening": "SkyblockAddons heeft je tegengehouden om het profiel van deze speler te openen terwijl je een boog vast hebt.",
+    "cancelledDropping": "SkyblockAddons heeft je tegengehouden dit zeldzame item of gereedschap uit je hotbar te laten vallen.",
     "clickMoreTimes": "Click/drop this item %times% more times if you really want to do this."
   }
 }
