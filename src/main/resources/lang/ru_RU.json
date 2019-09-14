@@ -64,7 +64,7 @@
     "warningDuration": "Длительность предупреждения",
     "dontOpenProfileWithBow": "Не открывать профиль луком",
     "stopDroppingSellingRareItems": "Перестать выбрасывать/продавать редкие предметы",
-    "makeBackpackInventoriesColored": "Color Inventories"
+    "makeBackpackInventoriesColored": "Цветные ячейки рюкзаков"
   },
   "messages": {
     "dropConfirmation": "Выбросите предмет ещё раз для подтверждения!",
@@ -87,7 +87,7 @@
     "slotLocked": "Этот слот заблокирован!",
     "summoningEyeFound": "Summoning Eye!",
     "cancelledStemBreak": "SkyBlockAddons оставил вас от ломания. Используйте руку, если вы хотите действительно сломать.",
-    "cancelledProfileOpening": "SkyblockAddons has stopped you from opening this player's profile while holding a bow.",
+    "cancelledProfileOpening": "SkyBlockAddons остановил вас от открытия профиля игрока с луком в руках.",
     "cancelledDropping": "SkyBlockAddons оставил вас от выбрасывания этого редкого предмета или инструмента из панели быстрого доступа.",
     "clickMoreTimes": "Нажмите/выберите этот предмет еще %times% раз, если вы действительно хотите сделать это."
   }
