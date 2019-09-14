@@ -2,10 +2,10 @@
   "language": "Svenska",
   "settings": {
     "tab": {
-      "features": "Features",
-      "fixes": "Fixes",
-      "guiFeatures": "GUI Features",
-      "generalSettings": "General Settings"
+      "features": "Funktioner",
+      "fixes": "Fixer",
+      "guiFeatures": "GUI Funktioner",
+      "generalSettings": "Allmänna Inställningar"
     },
     "settings": "Inställningar",
     "magmaBossWarning": "Magma Boss Varning",
@@ -24,7 +24,7 @@
     "hideAuctionHousePlayers": "Göm Spelare Nära Auktionshus",
     "backpackStyle": "Ryggsäck Stil: %style%",
     "backpackStyles": {
-      "regular": "Regular",
+      "regular": "Vanliga",
       "compact": "Kompakt"
     },
     "showBackpackPreview": "Visa Förhandsgranskning av Ryggsäck",
@@ -51,17 +51,17 @@
     "showItemAnvilUses": "Visa Atikel Städ Användningar",
     "lockSlots": "Allow Locking Slots",
     "dontResetCursorInventory": "Don't Reset Cursor Between Inventories",
-    "summoningEyeAlert": "Summoning Eye Alert",
-    "makeEnderchestsInEndGreen": "Make Enderchests in the End Green",
-    "changeColor": "Change Color",
-    "showInOtherGames": "Show in Other Games",
-    "useVanillaTexture": "Use the Vanilla Texture",
-    "textStyle": "Text Style",
+    "summoningEyeAlert": "Tillkallande Ögas Larm",
+    "makeEnderchestsInEndGreen": "Gör Enderkistor i End Gröna",
+    "changeColor": "Ändra Färg",
+    "showInOtherGames": "Visa i Andra Spel",
+    "useVanillaTexture": "Använd Ursprungliga Texturen",
+    "textStyle": "Textstil",
     "textStyles": {
-      "one": "Style One",
-      "two": "Style Two"
+      "one": "Stil Ett",
+      "two": "Stil Två"
     },
-    "warningDuration": "Warning Duration"
+    "warningDuration": "Varningstid"
   },
   "messages": {
     "dropConfirmation": "Släpp Det Här Igen För Att Bekräfta!",
@@ -81,8 +81,8 @@
       "enchants": "Förtrollningar",
       "reforges": "Reforges"
     },
-    "slotLocked": "This slot is locked!",
+    "slotLocked": "Denna luckan är låst!",
     "summoningEyeFound": "Tillkallande Öga!",
-    "cancelledStemBreak": "SkyblockAddons har förhindrat dig från att förstöra detta. Använd din hand om du ändå vill förstöra det."
+    "cancelledStemBreak": "SkyblockAddons har förhindrat dig från att förstöra dessa grödor. Använd din hand om du ändå vill förstöra dem."
   }
 }
