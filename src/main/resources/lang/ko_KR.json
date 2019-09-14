@@ -62,8 +62,8 @@
       "two": "스타일 2"
     },
     "warningDuration": "경고 길이",
-    "dontOpenProfileWithBow": "Don't Open Profile With Bow",
-    "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Items",
+    "dontOpenProfileWithBow": "활을 든 채 프로필 열기 방지",
+    "stopDroppingSellingRareItems": "레어 아이템들을 떨어뜨리거나 파는 것을 막기",
     "makeBackpackInventoriesColored": "Color Inventories"
   },
   "messages": {
@@ -88,7 +88,7 @@
     "summoningEyeFound": "소환의 눈!",
     "cancelledStemBreak": "SkyblockAddons이 이 블럭을 부수는 것을 방지했습니다. 만약 정말 부수려면, 빈 손으로 부수세요.",
     "cancelledProfileOpening": "SkyblockAddons이 활을 든 채 이 플레이어의 프로필을 여는 것을 방지했습니다,",
-    "cancelledDropping": "SkyblockAddons이 이 레어 아이템/도구를 핫바에서 떨어뜨리는 것을 방지했습니다",
+    "cancelledDropping": "SkyblockAddons이 이 레어 아이템 또는 도구를 핫바에서 떨어뜨리는 것을 방지했습니다",
     "clickMoreTimes": "만약 이 아이템을 정말 떨어뜨리려면 %times%번 더 떨어뜨리세요."
   }
 }
