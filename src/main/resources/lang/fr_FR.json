@@ -48,7 +48,7 @@
     "avoidBreakingStems": "Destruction des graines de melon/pastèque",
     "stopBowChargeFromResetting": "Désativer la recharge du bandage de l'arc",
     "preventMovementOnDeath": "Empêcher de marcher après la mort",
-    "showItemAnvilUses": "Afficher le nombre d'utilisation de l'enclume",
+    "showItemAnvilUses": "Afficher le nombre d'usage de l'enclume",
     "lockSlots": "Autoriser le verrouillage d'emplacement",
     "dontResetCursorInventory": "Ne pas réinitialiser le curseur entre les inventaires",
     "summoningEyeAlert": "Alerte Œil d'invocation",
