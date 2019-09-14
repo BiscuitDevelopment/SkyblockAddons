@@ -61,7 +61,10 @@
       "one": "Estilo Uno",
       "two": "Estilo Dos"
     },
-    "warningDuration": "Duración de la Alerta"
+    "warningDuration": "Duración de la Alerta",
+    "dontOpenProfileWithBow": "Don't Open Profile With Bow",
+    "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Items",
+    "makeBackpackInventoriesColored": "Color Inventories"
   },
   "messages": {
     "dropConfirmation": "Arroja este objeto otra vez para confirmar!",
@@ -83,6 +86,9 @@
     },
     "slotLocked": "Esta ranura está bloqueada!",
     "summoningEyeFound": "Summoning Eye!",
-    "cancelledStemBreak": "SkyblockAddons ha detenido la ruptura de este tallo. Usa sólo tu mano si en realidad deseas romperlo."
+    "cancelledStemBreak": "SkyblockAddons ha detenido la ruptura de este tallo. Usa sólo tu mano si en realidad deseas romperlo.",
+    "cancelledProfileOpening": "SkyblockAddons has stopped you from opening this player's profile. Please use a another weapon.",
+    "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare item or tool from your hotbar.",
+    "clickMoreTimes": "Click/drop this item %times% more times if you really want to do this."
   }
 }
