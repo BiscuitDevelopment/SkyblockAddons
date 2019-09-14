@@ -5,7 +5,7 @@
       "features": "Funkcje",
       "fixes": "Naprawy błędów",
       "guiFeatures": "Opcje interfejsu",
-      "generalSettings": "General Settings"
+      "generalSettings": "Ustawienia ogólne"
     },
     "settings": "Ustawienia",
     "magmaBossWarning": "Ostrzeżenie o Bossie Magmy",
@@ -51,19 +51,19 @@
     "showItemAnvilUses": "Pokaż Liczbę Użyć Kowadła na Przedmiocie",
     "lockSlots": "Zezwól na blokowanie slotów",
     "dontResetCursorInventory": "Don't Reset Cursor Between Inventories",
-    "summoningEyeAlert": "Summoning Eye Alert",
-    "makeEnderchestsInEndGreen": "Make Enderchests in the End Green",
-    "changeColor": "Change Color",
-    "showInOtherGames": "Show in Other Games",
+    "summoningEyeAlert": "Alarm o oku przywołującym",
+    "makeEnderchestsInEndGreen": "Uczyń Skrzynie Endu w Endzie zielone",
+    "changeColor": "Zmień kolor",
+    "showInOtherGames": "Pokaż w innych grach",
     "useVanillaTexture": "Użyj zwyczajnych tekstur",
     "textStyle": "Styl tekstu",
     "textStyles": {
-      "one": "Style One",
-      "two": "Style Two"
+      "one": "Styl nr 1",
+      "two": "Styl nr 2"
     },
     "warningDuration": "Warning Duration",
     "dontOpenProfileWithBow": "Nie otwieraj profilu za pomocą łuku",
-    "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Items",
+    "stopDroppingSellingRareItems": "Nie upuszczaj/sprzedawaj rzadkich przedmiotów",
     "makeBackpackInventoriesColored": "Color Inventories"
   },
   "messages": {
@@ -85,10 +85,10 @@
       "reforges": "Reforge"
     },
     "slotLocked": "This slot is locked!",
-    "summoningEyeFound": "Summoning Eye!",
-    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this. Use your bare hand if you'd like to actually break it.",
-    "cancelledProfileOpening": "SkyblockAddons has stopped you from opening this player's profile while holding a bow.",
-    "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare item or tool from your hotbar.",
-    "clickMoreTimes": "Click/drop this item %times% more times if you really want to do this."
+    "summoningEyeFound": "Oko przywołujące!",
+    "cancelledStemBreak": "SkyblockAddons zatrzymał cię przed niszczeniem tej łodygi. Użyj pustej ręki, jeśli chcesz ją zniszczyć.",
+    "cancelledProfileOpening": "SkyblockAddons zatrzymał cię przed otwieraniem profilu tej osoby trzymając łuk.",
+    "cancelledDropping": "SkyblockAddons zatrzymał cię przed upuszczeniem tego rzadkiego przedmiotu lub narzędzia z twojego paska narzędzi.",
+    "clickMoreTimes": "Naciśnij/upuść ten przedmiot %times% razy więcej jeśli naprawdę chcesz to zrobić."
   }
 }
