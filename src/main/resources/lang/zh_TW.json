@@ -61,7 +61,10 @@
       "one": "樣式一",
       "two": "樣式二"
     },
-    "warningDuration": "警報持續時間"
+    "warningDuration": "警報持續時間",
+    "dontOpenProfileWithBow": "Don't Open Profile With Bow",
+    "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Items",
+    "makeBackpackInventoriesColored": "Color Inventories"
   },
   "messages": {
     "dropConfirmation": "再次丟棄此物品以確認!",
@@ -83,6 +86,9 @@
     },
     "slotLocked": "這個欄位已被鎖定!",
     "summoningEyeFound": "召喚之眼!",
-    "cancelledStemBreak": "SkyblockAddons阻止了你破壞此物, 如依舊想破壞, 請使用空手"
+    "cancelledStemBreak": "SkyblockAddons阻止了你破壞此物, 如依舊想破壞, 請使用空手",
+    "cancelledProfileOpening": "SkyblockAddons has stopped you from opening this player's profile. Please use a another weapon.",
+    "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare item or tool from your hotbar.",
+    "clickMoreTimes": "Click/drop this item %times% more times if you really want to do this."
   }
 }
