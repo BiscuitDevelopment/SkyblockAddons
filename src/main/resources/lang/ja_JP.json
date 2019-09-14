@@ -5,7 +5,7 @@
       "features": "機能",
       "fixes": "修正",
       "guiFeatures": "GUIの機能",
-      "generalSettings": "General Settings"
+      "generalSettings": "一般設定"
     },
     "settings": "設定",
     "magmaBossWarning": "マグマボスの警告",
@@ -24,14 +24,14 @@
     "hideAuctionHousePlayers": "オークションハウス付近のプレイヤーを非表示",
     "backpackStyle": "バックパックのスタイル: %style%",
     "backpackStyles": {
-      "regular": "Regular",
+      "regular": "標準",
       "compact": "コンパクト"
     },
     "showBackpackPreview": "バックパックのプレビューを表示",
     "hideHealthBar": "体力バーを隠す",
     "fullMinionWarning": "ミニオンの上限のアラート",
     "ignoreItemFrameClicks": "額縁へのクリックを無効化",
-    "showOnlyWhenHoldingShift": "Show Only When Holding Shift",
+    "showOnlyWhenHoldingShift": "シフトを押している時のみ表示",
     "manaBar": "マナゲージ",
     "manaText": "マナ数",
     "healthBar": "体力ゲージ",
@@ -40,7 +40,7 @@
     "defenceText": "ディフェンス数",
     "defencePercentage": "ディフェンスのパーセンテージ",
     "healthUpdates": "体力の変動を表示",
-    "hidePlayersInLobby": "Hide Far Entities in Lobby",
+    "hidePlayersInLobby": "ロビーで遠くにいる人を非表示",
     "darkAuctionTimer": "ダークオークションタイマー",
     "magmaBossTimer": "マグマボスタイマー",
     "itemPickupLog": "拾ったアイテムを表示",
@@ -52,16 +52,16 @@
     "lockSlots": "スロットのロックを許可",
     "dontResetCursorInventory": "インベントリ間でのカーソルの位置のリセットを防止",
     "summoningEyeAlert": "サモニングアイの警告",
-    "makeEnderchestsInEndGreen": "Make Enderchests in the End Green",
-    "changeColor": "Change Color",
-    "showInOtherGames": "Show in Other Games",
-    "useVanillaTexture": "Use the Vanilla Texture",
-    "textStyle": "Text Style",
+    "makeEnderchestsInEndGreen": "エンドにいる時エンダーチェストを緑色に",
+    "changeColor": "色の変更",
+    "showInOtherGames": "他のゲームに居る時でも表示",
+    "useVanillaTexture": "バニラのテクスチャを使う",
+    "textStyle": "テキストのスタイル",
     "textStyles": {
-      "one": "Style One",
-      "two": "Style Two"
+      "one": "スタイル1",
+      "two": "スタイル2"
     },
-    "warningDuration": "Warning Duration"
+    "warningDuration": "アラートの長さ"
   },
   "messages": {
     "dropConfirmation": "落としてもいいのであれば、このアイテムをもう一度ドロップしてください。",
@@ -83,6 +83,6 @@
     },
     "slotLocked": "このスロットはロックされています。",
     "summoningEyeFound": "サモニングアイがドロップしました！",
-    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this. Use your bare hand if you'd like to actually break it."
+    "cancelledStemBreak": "SkyblockAddonsがこのブロックの破壊を阻止しました。 壊したい場合は素手で破壊してください。"
   }
 }
