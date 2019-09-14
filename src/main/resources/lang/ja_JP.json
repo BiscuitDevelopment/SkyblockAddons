@@ -61,7 +61,10 @@
       "one": "スタイル1",
       "two": "スタイル2"
     },
-    "warningDuration": "アラートの長さ"
+    "warningDuration": "アラートの長さ",
+    "dontOpenProfileWithBow": "Don't Open Profile With Bow",
+    "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Items",
+    "makeBackpackInventoriesColored": "Color Inventories"
   },
   "messages": {
     "dropConfirmation": "落としてもいいのであれば、このアイテムをもう一度ドロップしてください。",
@@ -83,6 +86,9 @@
     },
     "slotLocked": "このスロットはロックされています。",
     "summoningEyeFound": "サモニングアイがドロップしました！",
-    "cancelledStemBreak": "SkyblockAddonsがこのブロックの破壊を阻止しました。 壊したい場合は素手で破壊してください。"
+    "cancelledStemBreak": "SkyblockAddonsがこのブロックの破壊を阻止しました。 壊したい場合は素手で破壊してください。",
+    "cancelledProfileOpening": "SkyblockAddons has stopped you from opening this player's profile. Please use a another weapon.",
+    "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare item or tool from your hotbar.",
+    "clickMoreTimes": "Click/drop this item %times% more times if you really want to do this."
   }
 }
