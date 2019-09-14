@@ -87,7 +87,7 @@
     "slotLocked": "Этот слот заблокирован!",
     "summoningEyeFound": "Summoning Eye!",
     "cancelledStemBreak": "SkyBlockAddons оставил вас от ломания. Используйте руку, если вы хотите действительно сломать.",
-    "cancelledProfileOpening": "SkyBlockAddons остановил вас от открытия профиля этого игрок. Пожалуйста, используйте другое оружие.",
+    "cancelledProfileOpening": "SkyblockAddons has stopped you from opening this player's profile while holding a bow.",
     "cancelledDropping": "SkyBlockAddons оставил вас от выбрасывания этого редкого предмета или инструмента из панели быстрого доступа.",
     "clickMoreTimes": "Нажмите/выберите этот предмет еще %times% раз, если вы действительно хотите сделать это."
   }
