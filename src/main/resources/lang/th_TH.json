@@ -61,7 +61,10 @@
       "one": "รูปแบบ 1",
       "two": "รูปแบบ 2"
     },
-    "warningDuration": "ระยะเวลาในการแจ้งเตือน"
+    "warningDuration": "ระยะเวลาในการแจ้งเตือน",
+    "dontOpenProfileWithBow": "Don't Open Profile With Bow",
+    "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Items",
+    "makeBackpackInventoriesColored": "Color Inventories"
   },
   "messages": {
     "dropConfirmation": "กดทิ้งของอีกที่เพื่อยืนยันทิ้งของสิ่นนี้!",
@@ -83,6 +86,9 @@
     },
     "slotLocked": "ช่องนี้ถูกล็อคไว้!",
     "summoningEyeFound": "ดวงตาอัญเชิญ!",
-    "cancelledStemBreak": "ม็อด SkyblockAddons ได้หยุดคุณจากการทำลายรากพืชนี้ โปรดใช้มือเปล่าถ้าต้องการทำลาย"
+    "cancelledStemBreak": "ม็อด SkyblockAddons ได้หยุดคุณจากการทำลายรากพืชนี้ โปรดใช้มือเปล่าถ้าต้องการทำลาย",
+    "cancelledProfileOpening": "SkyblockAddons has stopped you from opening this player's profile. Please use a another weapon.",
+    "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare item or tool from your hotbar.",
+    "clickMoreTimes": "Click/drop this item %times% more times if you really want to do this."
   }
 }
