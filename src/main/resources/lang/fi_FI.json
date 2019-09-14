@@ -2,8 +2,8 @@
   "language": "Suomi",
   "settings": {
     "tab": {
-      "features": "Features",
-      "fixes": "Fixes",
+      "features": "Ominaisuudet: Features",
+      "fixes": "Korjattu",
       "guiFeatures": "GUI Features",
       "generalSettings": "General Settings"
     },
