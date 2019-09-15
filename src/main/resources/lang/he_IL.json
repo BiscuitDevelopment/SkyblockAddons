@@ -55,17 +55,17 @@
     "makeEnderchestsInEndGreen": "הפוך אנדרצ'אסטים לירוקות באנד",
     "changeColor": "שנה צבע",
     "showInOtherGames": "הראה במשחקים אחרים",
-    "useVanillaTexture": "Use the Vanilla Texture",
-    "textStyle": "Text Style",
+    "useVanillaTexture": "השתמש בטקסטורה רגילה",
+    "textStyle": "סטייל טקסט",
     "textStyles": {
-      "one": "Style One",
-      "two": "Style Two"
+      "one": "סטייל אחד",
+      "two": "סטייל שתיים"
     },
-    "warningDuration": "Warning Duration",
-    "dontOpenProfileWithBow": "Don't Open Profile With Bow",
-    "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Items",
-    "makeBackpackInventoriesColored": "Color Inventories",
-    "avoidBreakingBottomSugarCane": "Avoid Breaking Bottom Sugar Cane",
+    "warningDuration": "משך ההזהרה",
+    "dontOpenProfileWithBow": "אל תפתח פרופיל עם קשת",
+    "stopDroppingSellingRareItems": "עצור זריקה/מכירת חפצים נדירים",
+    "makeBackpackInventoriesColored": "צבע טיקים",
+    "avoidBreakingBottomSugarCane": "מנע הריסת שוגר קיין תחתון",
     "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Items"
   },
   "messages": {
