@@ -65,8 +65,8 @@
     "dontOpenProfileWithBow": "Nemoj Otvoriti Profil sa Lukom",
     "stopDroppingSellingRareItems": "Zaustavi Bacanje/Slanje Rijetkih Stvari",
     "makeBackpackInventoriesColored": "Obojani Inventari",
-    "avoidBreakingBottomSugarCane": "Avoid Breaking Bottom Sugar Cane",
-    "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Items"
+    "avoidBreakingBottomSugarCane": "Zaustavi Prijelom Dna Šećerne Trske",
+    "replaceRomanNumeralsWithNumbers": "Zamijeni Rimske Brojeve na Stvarima"
   },
   "messages": {
     "dropConfirmation": "Opet baci ovu stvar za konfirmaciju!",
@@ -88,9 +88,9 @@
     },
     "slotLocked": "Ovaj Slot je Zaključan!",
     "summoningEyeFound": "Evokacijsko Oko!",
-    "cancelledStemBreak": "SkyBlockAddons te zaustavio od rušenja ovoga. Koristi svoju ruku ako to želiš zapravo uništiti.",
+    "cancelledStemBreak": "SkyBlockAddons te zaustavio od rušenja ovoga. Koristi svoju ruku ako to želiš slomiti.",
     "cancelledProfileOpening": "SkyblockAddons te zaustavio od otvaranja profila ovog igrača dok držiš luk.",
     "cancelledDropping": "SkyblockAddons te zaustavio od bacanje ove rijetke stvari ili alata od tvojeg hotbara.",
-    "clickMoreTimes": "Klikni/Dropaj Ovu Stvar %times% Više Puta Ako Zapravo Želiš Ovo Napraviti."
+    "clickMoreTimes": "Klikni/dropaj ovu stvar %times% više puta ako zapravo želiš ovo napraviti."
   }
 }
