@@ -300,17 +300,17 @@ public class EnumUtils {
     }
 
     public enum Rarity {
-        COMMON("§f"),
-        UNCOMMON("§a"),
-        RARE("§9"),
-        EPIC("§5"),
-        LEGENDARY("§6"),
-        SPECIAL("§d");
+        COMMON("f"),
+        UNCOMMON("a"),
+        RARE("9"),
+        EPIC("5"),
+        LEGENDARY("6"),
+        SPECIAL("d");
 
         private String tag;
 
         Rarity(String s) {
-            this.tag = s;
+            this.tag = "\u00A7"+s;
         }
 
         public static Rarity getRarity(ItemStack item) {
