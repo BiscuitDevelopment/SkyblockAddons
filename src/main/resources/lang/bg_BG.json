@@ -64,7 +64,9 @@
     "warningDuration": "Продължителност на Предупрежденията",
     "dontOpenProfileWithBow": "Не отваряй профил с лък",
     "stopDroppingSellingRareItems": "Спри изхвърляне/продаване на редки предмети",
-    "makeBackpackInventoriesColored": "Оцветени инвентари"
+    "makeBackpackInventoriesColored": "Оцветени инвентари",
+    "avoidBreakingBottomSugarCane": "Avoid Breaking Bottom Sugar Cane",
+    "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Items"
   },
   "messages": {
     "dropConfirmation": "Хвърлете Този Предмет Отново за да Потвърдите!",
