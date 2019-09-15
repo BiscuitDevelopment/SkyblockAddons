@@ -83,14 +83,14 @@
     "enchantsToMatch": "%type% să se Potrivească:",
     "enchantsToExclude": "%type% să se Excludă:",
     "inventoryTypes": {
-      "enchants": "Enchanturi",
+      "enchants": "Enchant-uri",
       "reforges": "Refăuriri"
     },
     "slotLocked": "Acest slot este blocat!",
     "summoningEyeFound": "Summoning Eye!",
     "cancelledStemBreak": "Modul SkyblockAddons te-a oprit din a sparge block-ul. Folosește mana libera dacă ești sigur că vrei sa spargi.",
-    "cancelledProfileOpening": "Modul SkyblockAddons te-a oprit sa deschizi profilul jucătorului in timp ce tii un arc.",
+    "cancelledProfileOpening": "Modul SkyblockAddons te-a oprit sa deschizi profilul jucătorului in timp ce utilizezi un arc.",
     "cancelledDropping": "Modul SkyblockAddons te-a oprit să arunci acest item sau unealtă rară din inventar.",
-    "clickMoreTimes": "Aruncă acest item de încă %times% daca vrei să faci asta."
+    "clickMoreTimes": "Aruncă acest item de încă %times% dacă vrei să faci asta."
   }
 }
