@@ -65,7 +65,7 @@
     "dontOpenProfileWithBow": "Profiel niet openen met boog",
     "stopDroppingSellingRareItems": "Voorkom het Weggooien/Verkopen van Zeldzame Items",
     "makeBackpackInventoriesColored": "Gekleurde Inventarissen",
-    "avoidBreakingBottomSugarCane": "Vermijd het breken van de onderste suikerriet",
+    "avoidBreakingBottomSugarCane": "Vermijd het breken van onderste suikerriet",
     "replaceRomanNumeralsWithNumbers": "Vervang Romeinse Nummers op Items"
   },
   "messages": {
@@ -91,6 +91,6 @@
     "cancelledStemBreak": "SkyblockAddons heeft je ervan weerhouden om deze stengel te breken. Gebruik je lege hand als je het wilt breken.",
     "cancelledProfileOpening": "SkyblockAddons heeft je ervan weerhouden het profiel van deze speler te openen terwijl je een boog vast hebt.",
     "cancelledDropping": "SkyblockAddons heeft je ervan weerhouden dit zeldzame item of gereedschap uit je hotbar te gooien.",
-    "clickMoreTimes": "Klik/gooi dit item %times% meer keren als je dit echt wilt doen."
+    "clickMoreTimes": "Klik/gooi dit item %times% keer als je dit echt wilt doen."
   }
 }
