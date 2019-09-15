@@ -66,7 +66,7 @@
     "stopDroppingSellingRareItems": "Перестать выбрасывать/продавать редкие предметы",
     "makeBackpackInventoriesColored": "Цветные ячейки рюкзаков",
     "avoidBreakingBottomSugarCane": "Избегать ломание нижнего тростника",
-    "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Items"
+    "replaceRomanNumeralsWithNumbers": "Заменить римские номера на предметах"
   },
   "messages": {
     "dropConfirmation": "Выбросите предмет ещё раз для подтверждения!",
