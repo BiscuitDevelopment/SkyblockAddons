@@ -51,7 +51,7 @@
     "showItemAnvilUses": "Zeige Ambossnutzungen eines Items",
     "lockSlots": "Slots sperren erlauben",
     "dontResetCursorInventory": "Mauszeiger zwischen Inventaren nicht zurücksetzen",
-    "summoningEyeAlert": "Summoning Eye Nachricht",
+    "summoningEyeAlert": "Summoning Eye Alarm",
     "makeEnderchestsInEndGreen": "Färbe Endertruhen im End grün",
     "changeColor": "Farbe ändern",
     "showInOtherGames": "In anderen Spielen anzeigen",
@@ -64,7 +64,9 @@
     "warningDuration": "Warnungsdauer",
     "dontOpenProfileWithBow": "Profile nicht mit dem Bogen öffnen",
     "stopDroppingSellingRareItems": "Rare Items nicht droppen/verkaufen",
-    "makeBackpackInventoriesColored": "Backpacks färben"
+    "makeBackpackInventoriesColored": "Backpacks färben",
+    "avoidBreakingBottomSugarCane": "Avoid Breaking Bottom Sugar Cane",
+    "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Items"
   },
   "messages": {
     "dropConfirmation": "Werfe diesen Gegenstand nochmal, um zu bestätigen!",
