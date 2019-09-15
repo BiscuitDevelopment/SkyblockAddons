@@ -2,10 +2,10 @@
   "language": "Magyar",
   "settings": {
     "tab": {
-      "features": "Features",
-      "fixes": "Fixes",
-      "guiFeatures": "GUI Features",
-      "generalSettings": "General Settings"
+      "features": "Funkciók",
+      "fixes": "Hibajavítások",
+      "guiFeatures": "GUI funkciók",
+      "generalSettings": "Általános beállítások"
     },
     "settings": "Beállítások",
     "magmaBossWarning": "Magma Boss figyelmeztetés",
@@ -24,14 +24,14 @@
     "hideAuctionHousePlayers": "Játékosok elrejtése az aukciósház körül",
     "backpackStyle": "Hátizsák stílus: %style%",
     "backpackStyles": {
-      "regular": "Regular",
+      "regular": "Normál",
       "compact": "Tömörített"
     },
     "showBackpackPreview": "Hátizsák előnézet mutatása",
     "hideHealthBar": "Életerő elrejtése",
     "fullMinionWarning": "Teljes minion figyelmeztetés",
     "ignoreItemFrameClicks": "Eszköz keretre kattintás letiltása",
-    "showOnlyWhenHoldingShift": "Show Only When Holding Shift",
+    "showOnlyWhenHoldingShift": "Csak a Shift lenyomásával mutassa",
     "manaBar": "Mana sáv",
     "manaText": "Mana szám",
     "healthBar": "Életerő sáv",
@@ -40,7 +40,7 @@
     "defenceText": "Védelem szám",
     "defencePercentage": "Védelem százalék",
     "healthUpdates": "Életerő változások",
-    "hidePlayersInLobby": "Hide Far Entities in Lobby",
+    "hidePlayersInLobby": "Messzi entitások elrejtése a Lobbyban",
     "darkAuctionTimer": "Dark Auction időzítő",
     "magmaBossTimer": "Magma Boss időzítő",
     "itemPickupLog": "Tárgyfelvételi napló",
@@ -49,24 +49,24 @@
     "stopBowChargeFromResetting": "Íj felhúzásának megállítása újratöltéskor",
     "preventMovementOnDeath": "Sétálás megakadályozása halál után",
     "showItemAnvilUses": "Tárgy üllő használatának mutatása",
-    "lockSlots": "Allow Locking Slots",
-    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories",
-    "summoningEyeAlert": "Summoning Eye Alert",
-    "makeEnderchestsInEndGreen": "Make Enderchests in the End Green",
-    "changeColor": "Change Color",
-    "showInOtherGames": "Show in Other Games",
-    "useVanillaTexture": "Use the Vanilla Texture",
-    "textStyle": "Text Style",
+    "lockSlots": "Slot lezárás engedélyezése",
+    "dontResetCursorInventory": "Ne állítsa vissza a kurzort az eszköztárak között",
+    "summoningEyeAlert": "Summoning Eye figyelmeztetés",
+    "makeEnderchestsInEndGreen": "Végzetláda legyen zöld az Endben",
+    "changeColor": "Színváltoztatás",
+    "showInOtherGames": "Mutatás más játékokban",
+    "useVanillaTexture": "Használja a Vanilla textúrát",
+    "textStyle": "Szöveg stílusa",
     "textStyles": {
-      "one": "Style One",
-      "two": "Style Two"
+      "one": "Első stílus",
+      "two": "Második stílus"
     },
-    "warningDuration": "Warning Duration",
-    "dontOpenProfileWithBow": "Don't Open Profile With Bow",
-    "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Items",
-    "makeBackpackInventoriesColored": "Color Inventories",
-    "avoidBreakingBottomSugarCane": "Avoid Breaking Bottom Sugar Cane",
-    "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Items"
+    "warningDuration": "Figyelmeztetés időtartama",
+    "dontOpenProfileWithBow": "Ne nyissa meg a profilt íjjal",
+    "stopDroppingSellingRareItems": "Rare tárgyak eldobásának/eladásának tiltása",
+    "makeBackpackInventoriesColored": "Színes eszköztárak",
+    "avoidBreakingBottomSugarCane": "Alsó cukornád kiütésének elkerülése",
+    "replaceRomanNumeralsWithNumbers": "Római számok kicserélése a tárgyakon"
   },
   "messages": {
     "dropConfirmation": "Dobd el ezt a tárgyat újra, hogy megerősítsd!",
@@ -86,10 +86,10 @@
       "enchants": "Enchantok",
       "reforges": "Reforgeok"
     },
-    "slotLocked": "This slot is locked!",
+    "slotLocked": "A slot le van zárva!",
     "summoningEyeFound": "Summoning Eye!",
-    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this. Use your bare hand if you'd like to actually break it.",
-    "cancelledProfileOpening": "SkyblockAddons has stopped you from opening this player's profile while holding a bow.",
+    "cancelledStemBreak": "A SkyblockAddons megállította, hogy kiüsd ezt. Használd az öklöd, ha ki szeretnéd ütni.",
+    "cancelledProfileOpening": "A SkyblockAddons megállította, hogy megnyisd ennek a játékosnak a profilját, amíg íj van a kezedben.",
     "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare item or tool from your hotbar.",
     "clickMoreTimes": "Click/drop this item %times% more times if you really want to do this."
   }
