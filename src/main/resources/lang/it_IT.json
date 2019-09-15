@@ -62,9 +62,9 @@
       "two": "Stile Due"
     },
     "warningDuration": "Durata dell’avvertimento",
-    "dontOpenProfileWithBow": "Don't Open Profile With Bow",
-    "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Items",
-    "makeBackpackInventoriesColored": "Color Inventories"
+    "dontOpenProfileWithBow": "Non aprire il profilo con l'arco",
+    "stopDroppingSellingRareItems": "Smetti di gettare/vendere oggetti rari",
+    "makeBackpackInventoriesColored": "Colora gli inventari"
   },
   "messages": {
     "dropConfirmation": "Getta questo oggetto nuovamente per confermare!",
@@ -87,8 +87,8 @@
     "slotLocked": "Questo slot è bloccato!",
     "summoningEyeFound": "Occhio dell'evocazione!",
     "cancelledStemBreak": "SkyblockAddons ti ha impedito di rompere questo stelo. Usa la tua mano se lo vuoi rompere.",
-    "cancelledProfileOpening": "SkyblockAddons has stopped you from opening this player's profile. Please use a another weapon.",
-    "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare item or tool from your hotbar.",
-    "clickMoreTimes": "Click/drop this item %times% more times if you really want to do this."
+    "cancelledProfileOpening": "SkyblockAddons ti ha impedito di aprire il profilo di questo giocatore mentre avevi l’arco in mano.",
+    "cancelledDropping": "SkyblockAddons ti ha impedito di gettare questo oggetto o strumento raro dalla tua hotbar.",
+    "clickMoreTimes": "Clicca/getta questo oggetto altre %times% volte se vuoi davvero farlo."
   }
 }

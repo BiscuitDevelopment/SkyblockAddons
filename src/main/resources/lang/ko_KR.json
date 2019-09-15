@@ -20,16 +20,16 @@
     "resetLocations": "위치 설정 초기화",
     "hideDurability": "도구 내구도 숨기기",
     "showEnchantmentsReforges": "인챈트 및 리포지",
-    "minionStopWarning": "\"미니언 몹에 안 닿음\" 경고",
+    "minionStopWarning": "\"미니언 사거리 \" 경고",
     "hideAuctionHousePlayers": "경매장 주위 플레이어 숨기기",
     "backpackStyle": "백팩 스타일: %style%",
     "backpackStyles": {
       "regular": "일반",
       "compact": "간단"
     },
-    "showBackpackPreview": "백팩 아이템 보이기",
+    "showBackpackPreview": "백팩 아이템 미리 보기",
     "hideHealthBar": "기본 체력 바 숨기기",
-    "fullMinionWarning": "미니언 아이템 꽉 참 경고",
+    "fullMinionWarning": "미니언 인벤토리 꽉 참 경고",
     "ignoreItemFrameClicks": "아이템 액자 클릭 무시",
     "showOnlyWhenHoldingShift": "쉬프트키를 눌렀을 때만 보이기",
     "manaBar": "마나 바",
@@ -44,11 +44,11 @@
     "darkAuctionTimer": "다크 옥션 타이머",
     "magmaBossTimer": "마그마 보스 타이머",
     "itemPickupLog": "주운 아이템 표시",
-    "avoidPlacingEnchantedItems": "인챈트된 아이템 설치 무시",
-    "avoidBreakingStems": "줄기 부수기 무시",
+    "avoidPlacingEnchantedItems": "인챈트된 아이템 설치 방지",
+    "avoidBreakingStems": "줄기 부수기 방지",
     "stopBowChargeFromResetting": "활 당김 리셋 방지",
     "preventMovementOnDeath": "죽은 후 걸어지는 버그 방지",
-    "showItemAnvilUses": "아이템 모루 사용 횟수 보이기",
+    "showItemAnvilUses": "아이템 모루질 횟수 표시",
     "lockSlots": "슬롯 잠금 활성화",
     "dontResetCursorInventory": "인벤토리 내의 마우스 위치 리셋 방지",
     "summoningEyeAlert": "드래곤 소환 눈 알림",
@@ -62,9 +62,9 @@
       "two": "스타일 2"
     },
     "warningDuration": "경고 길이",
-    "dontOpenProfileWithBow": "Don't Open Profile With Bow",
-    "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Items",
-    "makeBackpackInventoriesColored": "Color Inventories"
+    "dontOpenProfileWithBow": "활을 든 채 프로필 열기 방지",
+    "stopDroppingSellingRareItems": "레어 아이템들을 떨어뜨리거나 파는 것을 막기",
+    "makeBackpackInventoriesColored": "색깔 있는 인벤토리"
   },
   "messages": {
     "dropConfirmation": "아이템을 정말로 버리려면 다시 버리세요!",
@@ -74,7 +74,7 @@
     "discord": "뭐가 바뀌었는지 알고싶나요? 여기를 눌러 디스코드를 참가하세요[영어권 주의].",
     "developmentVersion": "당신은 개발중인 %version% 버전을 사용하고 있습니다. 업로드 되어 있는 최신 버전은 %newestVersion% 버전입니다.",
     "labymod": "LabyMod 유저들에게: 배고픔, 갑옷, 체력 바 숨기기는 LabyMod와 호환되지 않습니다.",
-    "minionCannotReach": "%type% 미니언은 몹에 닿을 수 없어 생산을 중지했습니다!",
+    "minionCannotReach": "%type% 미니언과 몹의 거리가 멀어 생산을 중지했습니다!",
     "minionIsFull": "당신의 미니언의 수납 공간이 꽉 찼습니다!",
     "typeEnchantmentsHere": "여기에 %type%들을 입력해 주세요!",
     "separateMultiple": "인챈트나 리포지들을 쉼표로 구분하세요.",
@@ -86,9 +86,9 @@
     },
     "slotLocked": "이 슬롯은 잠겨있습니다!",
     "summoningEyeFound": "소환의 눈!",
-    "cancelledStemBreak": "SkyblockAddons(이)가 이 블럭을 부수는 것을 방지했습니다. 만약 정말 부수려면, 빈 손으로 부수세요.",
-    "cancelledProfileOpening": "SkyblockAddons has stopped you from opening this player's profile. Please use a another weapon.",
-    "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare item or tool from your hotbar.",
-    "clickMoreTimes": "Click/drop this item %times% more times if you really want to do this."
+    "cancelledStemBreak": "SkyblockAddons이 이 블럭을 부수는 것을 방지했습니다. 만약 정말 부수려면, 빈 손으로 부수세요.",
+    "cancelledProfileOpening": "SkyblockAddons이 활을 든 채 이 플레이어의 프로필을 여는 것을 방지했습니다,",
+    "cancelledDropping": "SkyblockAddons이 이 레어 아이템 또는 도구를 핫바에서 떨어뜨리는 것을 방지했습니다",
+    "clickMoreTimes": "만약 이 아이템을 정말 떨어뜨리려면 %times%번 더 떨어뜨리세요."
   }
 }

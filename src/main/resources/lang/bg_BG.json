@@ -1,5 +1,5 @@
 {
-  "language": "Bulgarian",
+  "language": "Български",
   "settings": {
     "tab": {
       "features": "Добавки",
@@ -7,7 +7,7 @@
       "guiFeatures": "Визуални Елементи",
       "generalSettings": "Общи Настройки"
     },
-    "settings": "Настройки",
+    "settings": "Настрйки",
     "magmaBossWarning": "Магма бос",
     "itemDropConfirmation": "Потвърждение за Изхвърляне на Предмет",
     "hideSkeletonHatBones": "Скрий Костите на Скелетната Каска",
@@ -62,9 +62,9 @@
       "two": "Стил 2"
     },
     "warningDuration": "Продължителност на Предупрежденията",
-    "dontOpenProfileWithBow": "Don't Open Profile With Bow",
-    "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Items",
-    "makeBackpackInventoriesColored": "Color Inventories"
+    "dontOpenProfileWithBow": "Не отваряй профил с лък",
+    "stopDroppingSellingRareItems": "Спри изхвърляне/продаване на редки предмети",
+    "makeBackpackInventoriesColored": "Оцветени инвентари"
   },
   "messages": {
     "dropConfirmation": "Хвърлете Този Предмет Отново за да Потвърдите!",
@@ -87,8 +87,8 @@
     "slotLocked": "Този Слот е Зaлючен!",
     "summoningEyeFound": "Призоваващо Око!",
     "cancelledStemBreak": "SkyblockAddons ви е спрял да не счупите това стъбло. Използвайте ръка за да го премахнете.",
-    "cancelledProfileOpening": "SkyblockAddons has stopped you from opening this player's profile. Please use a another weapon.",
-    "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare item or tool from your hotbar.",
-    "clickMoreTimes": "Click/drop this item %times% more times if you really want to do this."
+    "cancelledProfileOpening": "SkyblockAddons спря от отваряне на този профил на играч който държи лък",
+    "cancelledDropping": "SkyblockAddons ви спря като се опитахте да хвърлите този рядък предмет или инструмент от вашия hotbar.",
+    "clickMoreTimes": "Натиснете Копчето Ви За Хвърляне На Предмети Още %times% Път/Пъти Ако Найстина Искате Да Го Изхвърлитен"
   }
 }

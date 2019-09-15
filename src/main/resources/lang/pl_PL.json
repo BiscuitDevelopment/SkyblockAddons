@@ -2,10 +2,10 @@
   "language": "Polski",
   "settings": {
     "tab": {
-      "features": "Features",
-      "fixes": "Fixes",
-      "guiFeatures": "GUI Features",
-      "generalSettings": "General Settings"
+      "features": "Funkcje",
+      "fixes": "Naprawy błędów",
+      "guiFeatures": "Opcje interfejsu",
+      "generalSettings": "Ustawienia ogólne"
     },
     "settings": "Ustawienia",
     "magmaBossWarning": "Ostrzeżenie o Bossie Magmy",
@@ -24,14 +24,14 @@
     "hideAuctionHousePlayers": "Ukryj Graczy w Pobliżu Domu Aukcyjnego",
     "backpackStyle": "Styl Plecaka: %style%",
     "backpackStyles": {
-      "regular": "Regular",
+      "regular": "Zwykłe",
       "compact": "Kompaktowy"
     },
     "showBackpackPreview": "Pokaż Podgląd Plecaka",
     "hideHealthBar": "Ukryj Pasek Zdrowia",
     "fullMinionWarning": "Ostrzeżenie o Zapełnionym Minionie",
     "ignoreItemFrameClicks": "Ignoruj Kliknięcia w Ramki na Przedmioty",
-    "showOnlyWhenHoldingShift": "Show Only When Holding Shift",
+    "showOnlyWhenHoldingShift": "Pokaż jedynie trzymając Shift",
     "manaBar": "Pasek Many",
     "manaText": "Tekst Many",
     "healthBar": "Pasek Zdrowia",
@@ -40,7 +40,7 @@
     "defenceText": "Liczba Pancerza",
     "defencePercentage": "Procent Zakotwiczenia",
     "healthUpdates": "Liczba Różnicy Zdrowia",
-    "hidePlayersInLobby": "Hide Far Entities in Lobby",
+    "hidePlayersInLobby": "Ukryj widoczność graczy z daleka",
     "darkAuctionTimer": "Timer Dark Auction",
     "magmaBossTimer": "Timer Magma Bossa",
     "itemPickupLog": "Rejestruj Podnoszone Przedmioty",
@@ -49,21 +49,21 @@
     "stopBowChargeFromResetting": "Anuluj Resetowanie Się Naładowania Łuku",
     "preventMovementOnDeath": "Zatrzymaj Poruszanie Się Po Śmierci",
     "showItemAnvilUses": "Pokaż Liczbę Użyć Kowadła na Przedmiocie",
-    "lockSlots": "Allow Locking Slots",
+    "lockSlots": "Zezwól na blokowanie slotów",
     "dontResetCursorInventory": "Don't Reset Cursor Between Inventories",
-    "summoningEyeAlert": "Summoning Eye Alert",
-    "makeEnderchestsInEndGreen": "Make Enderchests in the End Green",
-    "changeColor": "Change Color",
-    "showInOtherGames": "Show in Other Games",
-    "useVanillaTexture": "Use the Vanilla Texture",
-    "textStyle": "Text Style",
+    "summoningEyeAlert": "Alarm o oku przywołującym",
+    "makeEnderchestsInEndGreen": "Uczyń Skrzynie Endu w Endzie zielone",
+    "changeColor": "Zmień kolor",
+    "showInOtherGames": "Pokaż w innych grach",
+    "useVanillaTexture": "Użyj zwyczajnych tekstur",
+    "textStyle": "Styl tekstu",
     "textStyles": {
-      "one": "Style One",
-      "two": "Style Two"
+      "one": "Styl nr 1",
+      "two": "Styl nr 2"
     },
     "warningDuration": "Warning Duration",
-    "dontOpenProfileWithBow": "Don't Open Profile With Bow",
-    "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Items",
+    "dontOpenProfileWithBow": "Nie otwieraj profilu za pomocą łuku",
+    "stopDroppingSellingRareItems": "Nie upuszczaj/sprzedawaj rzadkich przedmiotów",
     "makeBackpackInventoriesColored": "Color Inventories"
   },
   "messages": {
@@ -84,11 +84,11 @@
       "enchants": "Zaklęcia",
       "reforges": "Reforge"
     },
-    "slotLocked": "This slot is locked!",
-    "summoningEyeFound": "Summoning Eye!",
-    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this. Use your bare hand if you'd like to actually break it.",
-    "cancelledProfileOpening": "SkyblockAddons has stopped you from opening this player's profile. Please use a another weapon.",
-    "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare item or tool from your hotbar.",
-    "clickMoreTimes": "Click/drop this item %times% more times if you really want to do this."
+    "slotLocked": "Ten slot jest zablokowany!",
+    "summoningEyeFound": "Oko przywołujące!",
+    "cancelledStemBreak": "SkyblockAddons zatrzymał cię przed niszczeniem tej łodygi. Użyj pustej ręki, jeśli chcesz ją zniszczyć.",
+    "cancelledProfileOpening": "SkyblockAddons zatrzymał cię przed otwieraniem profilu tej osoby trzymając łuk.",
+    "cancelledDropping": "SkyblockAddons zatrzymał cię przed upuszczeniem tego rzadkiego przedmiotu lub narzędzia z twojego paska narzędzi.",
+    "clickMoreTimes": "Naciśnij/upuść ten przedmiot %times% razy więcej jeśli naprawdę chcesz to zrobić."
   }
 }
