@@ -64,7 +64,9 @@
     "warningDuration": "Durata dell’avvertimento",
     "dontOpenProfileWithBow": "Non aprire il profilo con l'arco",
     "stopDroppingSellingRareItems": "Smetti di gettare/vendere oggetti rari",
-    "makeBackpackInventoriesColored": "Colora gli inventari"
+    "makeBackpackInventoriesColored": "Colora gli inventari",
+    "avoidBreakingBottomSugarCane": "Avoid Breaking Bottom Sugar Cane",
+    "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Items"
   },
   "messages": {
     "dropConfirmation": "Getta questo oggetto nuovamente per confermare!",
