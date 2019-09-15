@@ -64,7 +64,9 @@
     "warningDuration": "Délka varování",
     "dontOpenProfileWithBow": "Neotevírat profily s lukem",
     "stopDroppingSellingRareItems": "Zakázat vyhazování/prodávání vzácných předmětů",
-    "makeBackpackInventoriesColored": "Vybarvit inventáře"
+    "makeBackpackInventoriesColored": "Vybarvit inventáře",
+    "avoidBreakingBottomSugarCane": "Avoid Breaking Bottom Sugar Cane",
+    "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Items"
   },
   "messages": {
     "dropConfirmation": "Vyhoď tento item pro vyhození!",
