@@ -62,11 +62,11 @@
       "two": "Estilo Dos"
     },
     "warningDuration": "Duración de la advertencia",
-    "dontOpenProfileWithBow": "Don't Open Profile With Bow",
-    "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Items",
-    "makeBackpackInventoriesColored": "Color Inventories",
-    "avoidBreakingBottomSugarCane": "Avoid Breaking Bottom Sugar Cane",
-    "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Items"
+    "dontOpenProfileWithBow": "No Abrir Perfil Con Un Arco",
+    "stopDroppingSellingRareItems": "Parar de Soltar/Vender Objetos Raros",
+    "makeBackpackInventoriesColored": "Inventarios de Color",
+    "avoidBreakingBottomSugarCane": "Evitar Romper Debajo de la Caña de Azúcar",
+    "replaceRomanNumeralsWithNumbers": "Reemplazar Números Romanos en Objetos"
   },
   "messages": {
     "dropConfirmation": "¡Dropea el Objeto otra vez para soltar!",
@@ -89,8 +89,8 @@
     "slotLocked": "¡Esta ranura está bloqueada!",
     "summoningEyeFound": "Ojo de Invocación!",
     "cancelledStemBreak": "SkyblockAddons te ha impedido romper este objeto. Usa tu mano si quieres romperlo.",
-    "cancelledProfileOpening": "SkyblockAddons has stopped you from opening this player's profile while holding a bow.",
-    "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare item or tool from your hotbar.",
-    "clickMoreTimes": "Click/drop this item %times% more times if you really want to do this."
+    "cancelledProfileOpening": "SkyblockAddons te ha impedido abrir el perfil de este jugador mientras mantienes un arco.",
+    "cancelledDropping": "SkyblockAddons te ha impedido que soltaras este objeto o herramienta rara de tu hotbar.",
+    "clickMoreTimes": "Haga clic/soltar este objeto %times% veces más si realmente quieres hacer esto."
   }
 }
