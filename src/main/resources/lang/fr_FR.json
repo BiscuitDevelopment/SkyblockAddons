@@ -64,7 +64,9 @@
     "warningDuration": "Durée de l'alerte",
     "dontOpenProfileWithBow": "Ne pas ouvrir le profil avec un arc",
     "stopDroppingSellingRareItems": "Arrêter le jet/vente d'objets rare",
-    "makeBackpackInventoriesColored": "Inventaire coloré"
+    "makeBackpackInventoriesColored": "Inventaire coloré",
+    "avoidBreakingBottomSugarCane": "Avoid Breaking Bottom Sugar Cane",
+    "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Items"
   },
   "messages": {
     "dropConfirmation": "Jetez cet objet une nouvelle fois pour confirmer!",

@@ -64,7 +64,9 @@
     "warningDuration": "Длительность предупреждения",
     "dontOpenProfileWithBow": "Не открывать профиль луком",
     "stopDroppingSellingRareItems": "Перестать выбрасывать/продавать редкие предметы",
-    "makeBackpackInventoriesColored": "Цветные ячейки рюкзаков"
+    "makeBackpackInventoriesColored": "Цветные ячейки рюкзаков",
+    "avoidBreakingBottomSugarCane": "Avoid Breaking Bottom Sugar Cane",
+    "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Items"
   },
   "messages": {
     "dropConfirmation": "Выбросите предмет ещё раз для подтверждения!",
