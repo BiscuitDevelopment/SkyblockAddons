@@ -63,10 +63,10 @@
     },
     "warningDuration": "警报持续时间",
     "dontOpenProfileWithBow": "不用弓打开配置文件",
-    "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Items",
-    "makeBackpackInventoriesColored": "Color Inventories",
+    "stopDroppingSellingRareItems": "防止把贵重的物品买了",
+    "makeBackpackInventoriesColored": "在背包里加颜色",
     "avoidBreakingBottomSugarCane": "阻止断绝底部甘蔗",
-    "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Items"
+    "replaceRomanNumeralsWithNumbers": "替换物品上的罗马编号"
   },
   "messages": {
     "dropConfirmation": "再次丢弃此物品以确认!",
@@ -89,8 +89,8 @@
     "slotLocked": "该栏已锁！",
     "summoningEyeFound": "召唤之眼！",
     "cancelledStemBreak": "SkyblockAddons阻止你破坏此方块，请使用空手来进行破坏。",
-    "cancelledProfileOpening": "SkyblockAddons has stopped you from opening this player's profile while holding a bow.",
-    "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare item or tool from your hotbar.",
+    "cancelledProfileOpening": "SkyblockAddons 防止了你拿着弓他开这个人的 (IDK what profile's translation is)",
+    "cancelledDropping": "SkyblockAddons 防止了你把这个工具或物品扔掉",
     "clickMoreTimes": "如果你想要把这个东西掉了，在如果你想要把这个东西掉了，在点击%times% 次"
   }
 }
