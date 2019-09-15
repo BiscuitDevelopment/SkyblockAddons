@@ -64,7 +64,9 @@
     "warningDuration": "Dužina Upozorenja",
     "dontOpenProfileWithBow": "Nemoj Otvoriti Profil sa Lukom",
     "stopDroppingSellingRareItems": "Zaustavi Bacanje/Slanje Rijetkih Stvari",
-    "makeBackpackInventoriesColored": "Obojani Inventari"
+    "makeBackpackInventoriesColored": "Obojani Inventari",
+    "avoidBreakingBottomSugarCane": "Avoid Breaking Bottom Sugar Cane",
+    "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Items"
   },
   "messages": {
     "dropConfirmation": "Opet baci ovu stvar za konfirmaciju!",
