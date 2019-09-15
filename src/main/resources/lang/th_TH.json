@@ -45,7 +45,7 @@
     "magmaBossTimer": "ระยะเวลาบอส Magma",
     "itemPickupLog": "แสดงรายชื่อไอเทมที่เก็บ",
     "avoidPlacingEnchantedItems": "ป้องกันการวางไอเทมแบบ Enchanted",
-    "avoidBreakingStems": "ป้องการการตีรากพืช",
+    "avoidBreakingStems": "ป้องกันการตีรากพืช",
     "stopBowChargeFromResetting": "ป้องการรีเซ็ตของธนูกำลังที่กำลังยิง",
     "preventMovementOnDeath": "ป้องกันการเดินหลังตาย",
     "showItemAnvilUses": "แสดงจำนวนการใช้ Anvil ของไอเทม",
