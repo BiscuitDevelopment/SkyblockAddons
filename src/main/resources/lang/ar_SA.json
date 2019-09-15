@@ -2,8 +2,8 @@
   "language": "العربية",
   "settings": {
     "tab": {
-      "features": "Features",
-      "fixes": "Fixes",
+      "features": "الميزات",
+      "fixes": "التصليحات",
       "guiFeatures": "GUI Features",
       "generalSettings": "General Settings"
     },
@@ -65,8 +65,8 @@
     "dontOpenProfileWithBow": "Don't Open Profile With Bow",
     "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Items",
     "makeBackpackInventoriesColored": "Color Inventories",
-    "avoidBreakingBottomSugarCane": "Avoid Breaking Bottom Sugar Cane",
-    "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Items"
+    "avoidBreakingBottomSugarCane": "أيقاف كسر قصم السكر السفلي",
+    "replaceRomanNumeralsWithNumbers": "تحويل الترقيم الرمزي او الحرفي الى الرقمي"
   },
   "messages": {
     "dropConfirmation": "!إرمي هذا العنصر مرة أخرى للتأكيد",
