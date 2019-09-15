@@ -2,10 +2,10 @@
   "language": "Română",
   "settings": {
     "tab": {
-      "features": "Features",
-      "fixes": "Fixes",
-      "guiFeatures": "GUI Features",
-      "generalSettings": "General Settings"
+      "features": "Caracteristici",
+      "fixes": "Rezolvari",
+      "guiFeatures": "Funcțiile interfeței",
+      "generalSettings": "Setările Generale"
     },
     "settings": "Setări",
     "magmaBossWarning": "Avertisment pentru Magma Boss",
@@ -24,14 +24,14 @@
     "hideAuctionHousePlayers": "Ascunde jucătorii din casa de licitații",
     "backpackStyle": "Stilul Backpackului: %style%",
     "backpackStyles": {
-      "regular": "Regular",
+      "regular": "Obișnuit",
       "compact": "Compact"
     },
     "showBackpackPreview": "Arată Preview la Backpack",
     "hideHealthBar": "Hide Health Bar",
     "fullMinionWarning": "Avertisment Minioni Plini",
     "ignoreItemFrameClicks": "Ignoră Click-uri pe Item Frame-uri",
-    "showOnlyWhenHoldingShift": "Show Only When Holding Shift",
+    "showOnlyWhenHoldingShift": "Afișează numai când apeși pe shift",
     "manaBar": "Bara cu Mană",
     "manaText": "Numărul cu Mană",
     "healthBar": "Bara cu Viață",
@@ -40,7 +40,7 @@
     "defenceText": "Numărul cu Defensivă",
     "defencePercentage": "Procentul cu Defensivă",
     "healthUpdates": "Numărul cu Schimbarea Vieții",
-    "hidePlayersInLobby": "Hide Far Entities in Lobby",
+    "hidePlayersInLobby": "Ascunde entitățile depărtate in lobby",
     "darkAuctionTimer": "Timp Până la Dark Auction",
     "magmaBossTimer": "Timp până la Magma Boss",
     "itemPickupLog": "Listă Obiecte Ridicate",
@@ -51,17 +51,17 @@
     "showItemAnvilUses": "Arată Utilizările Nicovalei pe Obiect",
     "lockSlots": "Allow Locking Slots",
     "dontResetCursorInventory": "Don't Reset Cursor Between Inventories",
-    "summoningEyeAlert": "Summoning Eye Alert",
-    "makeEnderchestsInEndGreen": "Make Enderchests in the End Green",
-    "changeColor": "Change Color",
-    "showInOtherGames": "Show in Other Games",
-    "useVanillaTexture": "Use the Vanilla Texture",
-    "textStyle": "Text Style",
+    "summoningEyeAlert": "Alertă Summoning Eye",
+    "makeEnderchestsInEndGreen": "Fă culorile cuferelor din end verzi",
+    "changeColor": "Schimbă Culoarea",
+    "showInOtherGames": "Afișează în alte jocuri",
+    "useVanillaTexture": "Utilizează textura vanilla",
+    "textStyle": "Stil text",
     "textStyles": {
-      "one": "Style One",
-      "two": "Style Two"
+      "one": "Stilul unu",
+      "two": "Stilul doi"
     },
-    "warningDuration": "Warning Duration",
+    "warningDuration": "Durata avertismentului",
     "dontOpenProfileWithBow": "Don't Open Profile With Bow",
     "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Items",
     "makeBackpackInventoriesColored": "Color Inventories",
@@ -86,7 +86,7 @@
       "enchants": "Enchanturi",
       "reforges": "Refăuriri"
     },
-    "slotLocked": "This slot is locked!",
+    "slotLocked": "Acest slot este blocat!",
     "summoningEyeFound": "Summoning Eye!",
     "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this. Use your bare hand if you'd like to actually break it.",
     "cancelledProfileOpening": "SkyblockAddons has stopped you from opening this player's profile while holding a bow.",
