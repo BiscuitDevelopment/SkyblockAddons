@@ -62,7 +62,7 @@
       "two": "รูปแบบ 2"
     },
     "warningDuration": "ระยะเวลาในการแจ้งเตือน",
-    "dontOpenProfileWithBow": "Don't Open Profile With Bow",
+    "dontOpenProfileWithBow": "อย่าเปิดโปรไฟล์ผู้เล่นคนอื่นเมื่อถือธนูไว้",
     "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Items",
     "makeBackpackInventoriesColored": "Color Inventories",
     "avoidBreakingBottomSugarCane": "Avoid Breaking Bottom Sugar Cane",
@@ -90,7 +90,7 @@
     "summoningEyeFound": "ดวงตาอัญเชิญ!",
     "cancelledStemBreak": "ม็อด SkyblockAddons ได้หยุดคุณจากการทำลายรากพืชนี้ โปรดใช้มือเปล่าถ้าต้องการทำลาย",
     "cancelledProfileOpening": "ม็อด SkyblockAddons ได้หยุดคุณเปิดดูโปรไฟล์ผู้เล่นคนอื่นๆเมื่อคุณถือธนูไว้",
-    "cancelledDropping": "ม็อด SkyblockAddons ได้หยุดคุณจากการดรอปของ Rare หรือเครื่องมือจากช่อง Hotbar",
+    "cancelledDropping": "ม็อด SkyblockAddons ได้หยุดคุณจากการดรอปของไอเทม Rare หรือเครื่องมือจากช่อง Hotbar ของคุณ",
     "clickMoreTimes": "คลิก/ดรอป %times% อีกครั้งหนึ่งเพื่อยืนยัน"
   }
 }
