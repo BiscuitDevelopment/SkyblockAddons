@@ -3,11 +3,11 @@
   "settings": {
     "tab": {
       "features": "Features",
-      "fixes": "Fixes",
+      "fixes": "Popravki",
       "guiFeatures": "GUI Features",
-      "generalSettings": "General Settings"
+      "generalSettings": "Splošne nastavitve"
     },
-    "settings": "Settings",
+    "settings": "Nastavitve",
     "magmaBossWarning": "Magma Boss Warning",
     "itemDropConfirmation": "Item Drop Confirmation",
     "hideSkeletonHatBones": "Hide Skeleton Helmet Bones",
@@ -24,8 +24,8 @@
     "hideAuctionHousePlayers": "Hide Players Near Auction House",
     "backpackStyle": "Backpack Style: %style%",
     "backpackStyles": {
-      "regular": "Regular",
-      "compact": "Compact"
+      "regular": "Navaden",
+      "compact": "Zgoščeno"
     },
     "showBackpackPreview": "Show Backpack Preview",
     "hideHealthBar": "Hide Vanilla Health Bar",
@@ -33,7 +33,7 @@
     "ignoreItemFrameClicks": "Ignore Clicks On Item Frames",
     "showOnlyWhenHoldingShift": "Show Only When Holding Shift",
     "manaBar": "Mana Bar",
-    "manaText": "Mana Number",
+    "manaText": "Številka Mana",
     "healthBar": "Health Bar",
     "healthText": "Health Number",
     "defenceIcon": "Defence Symbol",
@@ -53,10 +53,10 @@
     "dontResetCursorInventory": "Don't Reset Cursor Between Inventories",
     "summoningEyeAlert": "Summoning Eye Alert",
     "makeEnderchestsInEndGreen": "Make Enderchests in the End Green",
-    "changeColor": "Change Color",
+    "changeColor": "Spremeni barvo",
     "showInOtherGames": "Show in Other Games",
     "useVanillaTexture": "Use the Vanilla Texture",
-    "textStyle": "Text Style",
+    "textStyle": "Slog besedila",
     "textStyles": {
       "one": "Style One",
       "two": "Style Two"
