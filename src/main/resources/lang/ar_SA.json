@@ -64,7 +64,9 @@
     "warningDuration": "Warning Duration",
     "dontOpenProfileWithBow": "Don't Open Profile With Bow",
     "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Items",
-    "makeBackpackInventoriesColored": "Color Inventories"
+    "makeBackpackInventoriesColored": "Color Inventories",
+    "avoidBreakingBottomSugarCane": "Avoid Breaking Bottom Sugar Cane",
+    "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Items"
   },
   "messages": {
     "dropConfirmation": "!إرمي هذا العنصر مرة أخرى للتأكيد",
