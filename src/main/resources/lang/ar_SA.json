@@ -2,10 +2,10 @@
   "language": "العربية",
   "settings": {
     "tab": {
-      "features": "Features",
-      "fixes": "Fixes",
-      "guiFeatures": "GUI Features",
-      "generalSettings": "General Settings"
+      "features": "الميزات",
+      "fixes": "التصليحات",
+      "guiFeatures": "ميزات الواجهة",
+      "generalSettings": "الاعدادات العامة"
     },
     "settings": "الإعدادات",
     "magmaBossWarning": "تحذير زعيم الصهارة",
@@ -24,14 +24,14 @@
     "hideAuctionHousePlayers": "إخفاء اللاعبين بالقرب من دار المزاد",
     "backpackStyle": "%style% :نمط حقيبة الظهر",
     "backpackStyles": {
-      "regular": "Regular",
+      "regular": "المظهر العادي",
       "compact": "متراص"
     },
     "showBackpackPreview": "عرض محتوى حقيبة الظهر",
     "hideHealthBar": "إخفاء شريط الصحة",
     "fullMinionWarning": "تحذير التابع الممتلئ",
     "ignoreItemFrameClicks": "تجاهل الكبس على إطارات الأدوات",
-    "showOnlyWhenHoldingShift": "Show Only When Holding Shift",
+    "showOnlyWhenHoldingShift": "إظهار فقط عند الرخي",
     "manaBar": "شريط الطاقة",
     "manaText": "كمية الطاقة",
     "healthBar": "شريط الدم",
@@ -40,7 +40,7 @@
     "defenceText": "رقم الدفاع",
     "defencePercentage": "نسبة الدفاع",
     "healthUpdates": "رقم تعديل الصحة",
-    "hidePlayersInLobby": "Hide Far Entities in Lobby",
+    "hidePlayersInLobby": "إخفاء الكائنات البعيدة في الردهة",
     "darkAuctionTimer": "موقت المزاد الأسود",
     "magmaBossTimer": "مؤقت زعيم الصهارة",
     "itemPickupLog": "سجل التقاط الأداة",
@@ -52,21 +52,21 @@
     "lockSlots": "السماح باغلاق السلوت",
     "dontResetCursorInventory": "لا تقوم باعادة الكورسر ما بين الانفينتوري",
     "summoningEyeAlert": "تنبيه عين الاستدعاء",
-    "makeEnderchestsInEndGreen": "Make Enderchests in the End Green",
-    "changeColor": "Change Color",
-    "showInOtherGames": "Show in Other Games",
-    "useVanillaTexture": "Use the Vanilla Texture",
-    "textStyle": "Text Style",
+    "makeEnderchestsInEndGreen": "جعل الصندوق المتنقل الذي يحمله الاندرمان أخضر",
+    "changeColor": "تغيير اللون",
+    "showInOtherGames": "إظهار في العاب آخرى",
+    "useVanillaTexture": "استخدام الشكل الأصلي",
+    "textStyle": "نمط النص",
     "textStyles": {
-      "one": "Style One",
-      "two": "Style Two"
+      "one": "النمط رقم 1",
+      "two": "النمط رقم 2"
     },
-    "warningDuration": "Warning Duration",
-    "dontOpenProfileWithBow": "Don't Open Profile With Bow",
-    "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Items",
-    "makeBackpackInventoriesColored": "Color Inventories",
-    "avoidBreakingBottomSugarCane": "Avoid Breaking Bottom Sugar Cane",
-    "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Items"
+    "warningDuration": "مدة التحذير",
+    "dontOpenProfileWithBow": "عدم فتح خانة الشخصية عند حمل القوس",
+    "stopDroppingSellingRareItems": "إيقاف اسقاط او بيع الأشياء النادرة",
+    "makeBackpackInventoriesColored": "لون القائمة",
+    "avoidBreakingBottomSugarCane": "أيقاف كسر قصم السكر السفلي",
+    "replaceRomanNumeralsWithNumbers": "تحويل الترقيم الرمزي او الحرفي الى الرقمي"
   },
   "messages": {
     "dropConfirmation": "!إرمي هذا العنصر مرة أخرى للتأكيد",
@@ -88,9 +88,9 @@
     },
     "slotLocked": "هذه السلوت مغلقة!",
     "summoningEyeFound": "عين الاستدعاء!",
-    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this. Use your bare hand if you'd like to actually break it.",
-    "cancelledProfileOpening": "SkyblockAddons has stopped you from opening this player's profile while holding a bow.",
-    "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare item or tool from your hotbar.",
-    "clickMoreTimes": "Click/drop this item %times% more times if you really want to do this."
+    "cancelledStemBreak": "منعك تطبيق من كسر هذا. أن أردت كسره فأستخدم يدك.",
+    "cancelledProfileOpening": "منعك التطبيق من فتح شخصية هذا اللاعب وانت تحمل القوس.",
+    "cancelledDropping": "منعك التطبيق من اسقاط هذه الأداة او الشيء النادران من قائمة أدواتك.",
+    "clickMoreTimes": "أضغط أو اسقط هذا الشيء %times% مرات زيادة ان كنت حقيقتاً تريد فعل هذا."
   }
 }

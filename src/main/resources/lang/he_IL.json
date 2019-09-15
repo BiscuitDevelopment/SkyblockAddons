@@ -2,10 +2,10 @@
   "language": "עברית",
   "settings": {
     "tab": {
-      "features": "Features",
-      "fixes": "Fixes",
-      "guiFeatures": "GUI Features",
-      "generalSettings": "General Settings"
+      "features": "מאפיינים",
+      "fixes": "תיקונים",
+      "guiFeatures": "מאפייני מסך",
+      "generalSettings": "הגדרות כלליות"
     },
     "settings": "הגדרות",
     "magmaBossWarning": "אזהרת בוס מגמה",
@@ -24,14 +24,14 @@
     "hideAuctionHousePlayers": "הסתר שחקנים ליד בית המכירה הפומבית",
     "backpackStyle": "סטייל תרמיל גב: %style%",
     "backpackStyles": {
-      "regular": "Regular",
+      "regular": "רגיל",
       "compact": "מרוכז"
     },
     "showBackpackPreview": "הצגת תכולת תרמיל גב",
     "hideHealthBar": "הסתר מד חיים",
     "fullMinionWarning": "אזהרת מיניון מלא",
     "ignoreItemFrameClicks": "התעלם מלחיצות על מסגרות פריט",
-    "showOnlyWhenHoldingShift": "Show Only When Holding Shift",
+    "showOnlyWhenHoldingShift": "תראה רק כאשר לוחצים שיפט",
     "manaBar": "מד מאנה",
     "manaText": "מספר מאנה",
     "healthBar": "מד חיים",
@@ -40,7 +40,7 @@
     "defenceText": "מספר הגנה",
     "defencePercentage": "אחוזי הגנה",
     "healthUpdates": "שינוי כמות החיים",
-    "hidePlayersInLobby": "Hide Far Entities in Lobby",
+    "hidePlayersInLobby": "הסתר יצורים רחוקים בלובי",
     "darkAuctionTimer": "טיימר לשוק השחור",
     "magmaBossTimer": "טיימר לבוס המגמה",
     "itemPickupLog": "הצגת שינוי כמות החפצים",
@@ -52,21 +52,21 @@
     "lockSlots": "אפשר נעילת משבצת",
     "dontResetCursorInventory": "אל תאפס את העכבר בין תיקים",
     "summoningEyeAlert": "התראת עין לזימון דרקון",
-    "makeEnderchestsInEndGreen": "Make Enderchests in the End Green",
-    "changeColor": "Change Color",
-    "showInOtherGames": "Show in Other Games",
-    "useVanillaTexture": "Use the Vanilla Texture",
-    "textStyle": "Text Style",
+    "makeEnderchestsInEndGreen": "הפוך אנדרצ'אסטים לירוקות באנד",
+    "changeColor": "שנה צבע",
+    "showInOtherGames": "הראה במשחקים אחרים",
+    "useVanillaTexture": "השתמש בטקסטורה רגילה",
+    "textStyle": "סטייל טקסט",
     "textStyles": {
-      "one": "Style One",
-      "two": "Style Two"
+      "one": "סטייל אחד",
+      "two": "סטייל שתיים"
     },
-    "warningDuration": "Warning Duration",
-    "dontOpenProfileWithBow": "Don't Open Profile With Bow",
-    "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Items",
-    "makeBackpackInventoriesColored": "Color Inventories",
-    "avoidBreakingBottomSugarCane": "Avoid Breaking Bottom Sugar Cane",
-    "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Items"
+    "warningDuration": "משך ההזהרה",
+    "dontOpenProfileWithBow": "אל תפתח פרופיל עם קשת",
+    "stopDroppingSellingRareItems": "עצור זריקה/מכירת חפצים נדירים",
+    "makeBackpackInventoriesColored": "צבע טיקים",
+    "avoidBreakingBottomSugarCane": "מנע הריסת שוגר קיין תחתון",
+    "replaceRomanNumeralsWithNumbers": "החלף מספרים רומאים בחפצים"
   },
   "messages": {
     "dropConfirmation": "זרוק פריט זה שוב לאישור!",
@@ -88,9 +88,9 @@
     },
     "slotLocked": "משבצת זו נעולה!",
     "summoningEyeFound": "עין לזימון דרקון!",
-    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this. Use your bare hand if you'd like to actually break it.",
-    "cancelledProfileOpening": "SkyblockAddons has stopped you from opening this player's profile while holding a bow.",
-    "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare item or tool from your hotbar.",
-    "clickMoreTimes": "Click/drop this item %times% more times if you really want to do this."
+    "cancelledStemBreak": "SkyBlockAddons עצר אותך מלשבור את זה. השתמש ביד שלך אם אתה רוצה לשבור את זה.",
+    "cancelledProfileOpening": "SkyBlockAddons עצר אותך מלפתוח את הפרופיל של האדם בזמן שהחזקתה קשת.",
+    "cancelledDropping": "SkyBlockAddons עצר אותך מלהפיל את החפץ או הכלי הנדיר הזה.",
+    "clickMoreTimes": "תלחץ/תזרוק את החפץ %times% פעמים נוספות אם אתה בטוח רוצה לעשות את זה."
   }
 }

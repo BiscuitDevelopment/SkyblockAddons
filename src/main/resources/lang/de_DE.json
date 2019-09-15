@@ -40,7 +40,7 @@
     "defenceText": "Verteidigungs-Zahl",
     "defencePercentage": "Verteidigungs-Prozentsatz",
     "healthUpdates": "Lebens-Veränderungs-Zahl",
-    "hidePlayersInLobby": "Verstecke weit entfernte Entities in der Lobby",
+    "hidePlayersInLobby": "Verstecke weit entfernte Spieler in der Lobby",
     "darkAuctionTimer": "Dunkelauktionstimer",
     "magmaBossTimer": "Magma Boss Timer",
     "itemPickupLog": "Aufgehobene Items-Liste",
@@ -49,7 +49,7 @@
     "stopBowChargeFromResetting": "Verhindere das Zurücksetzen des Bogenladens",
     "preventMovementOnDeath": "Verhindere das Laufen nach dem Tot",
     "showItemAnvilUses": "Zeige Ambossnutzungen eines Items",
-    "lockSlots": "Slots sperren erlauben",
+    "lockSlots": "Sperren von Slots erlauben",
     "dontResetCursorInventory": "Mauszeiger zwischen Inventaren nicht zurücksetzen",
     "summoningEyeAlert": "Summoning Eye Alarm",
     "makeEnderchestsInEndGreen": "Färbe Endertruhen im End grün",
@@ -63,10 +63,10 @@
     },
     "warningDuration": "Warnungsdauer",
     "dontOpenProfileWithBow": "Profile nicht mit dem Bogen öffnen",
-    "stopDroppingSellingRareItems": "Rare Items nicht droppen/verkaufen",
-    "makeBackpackInventoriesColored": "Backpacks färben",
-    "avoidBreakingBottomSugarCane": "Avoid Breaking Bottom Sugar Cane",
-    "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Items"
+    "stopDroppingSellingRareItems": "Stoppe entfernen/verkaufen von seltenen Items",
+    "makeBackpackInventoriesColored": "Farbige Inventare",
+    "avoidBreakingBottomSugarCane": "Zerstören des Zuckerrohrs blockieren",
+    "replaceRomanNumeralsWithNumbers": "Ersetze Römische Nummern auf Gegenständen"
   },
   "messages": {
     "dropConfirmation": "Werfe diesen Gegenstand nochmal, um zu bestätigen!",
@@ -90,7 +90,7 @@
     "summoningEyeFound": "Beschwörungsauge!",
     "cancelledStemBreak": "SkyblockAddons hat dich davon abgehalten, diesen Stamm zu zerstören. Nutze deine Hand um ihn trotzdem zu zerstören.",
     "cancelledProfileOpening": "SkyblockAddons hat dich davon abgehalten, das Profil dieses Spielers zu öffnen, während du einen Bogen hältst.",
-    "cancelledDropping": "SkyblockAddons hat dich davon abgehalten, dieses rare Item aus deiner Hotbar zu droppen.",
+    "cancelledDropping": "SkyblockAddons hat dich davon abgehalten, dieses seltene Item oder Werkzeug aus deiner Hotbar zu entfernen.",
     "clickMoreTimes": "Klicke/entferne dieses Item %times% mal mehr, wenn du das wirklich tun möchtest."
   }
 }

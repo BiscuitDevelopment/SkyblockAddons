@@ -63,10 +63,10 @@
     },
     "warningDuration": "Waarschuwingsduur",
     "dontOpenProfileWithBow": "Profiel niet openen met boog",
-    "stopDroppingSellingRareItems": "Stop laten Vallen/Verkopen Van Zeldzame Items",
-    "makeBackpackInventoriesColored": "Color Inventories",
-    "avoidBreakingBottomSugarCane": "Avoid Breaking Bottom Sugar Cane",
-    "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Items"
+    "stopDroppingSellingRareItems": "Voorkom het Weggooien/Verkopen van Zeldzame Items",
+    "makeBackpackInventoriesColored": "Gekleurde Inventarissen",
+    "avoidBreakingBottomSugarCane": "Vermijd het breken van de onderste suikerriet",
+    "replaceRomanNumeralsWithNumbers": "Vervang Romeinse Nummers op Items"
   },
   "messages": {
     "dropConfirmation": "Laat dit object opnieuw vallen om te Bevestigen!",
@@ -89,8 +89,8 @@
     "slotLocked": "Deze Slot is vergrendeld!",
     "summoningEyeFound": "Oproepend oog!",
     "cancelledStemBreak": "SkyblockAddons heeft je ervan weerhouden om deze stengel te breken. Gebruik je lege hand als je het wilt breken.",
-    "cancelledProfileOpening": "SkyblockAddons heeft je tegengehouden om het profiel van deze speler te openen terwijl je een boog vast hebt.",
-    "cancelledDropping": "SkyblockAddons heeft je tegengehouden dit zeldzame item of gereedschap uit je hotbar te laten vallen.",
-    "clickMoreTimes": "Click/drop this item %times% more times if you really want to do this."
+    "cancelledProfileOpening": "SkyblockAddons heeft je ervan weerhouden het profiel van deze speler te openen terwijl je een boog vast hebt.",
+    "cancelledDropping": "SkyblockAddons heeft je ervan weerhouden dit zeldzame item of gereedschap uit je hotbar te gooien.",
+    "clickMoreTimes": "Klik/gooi dit item %times% meer keren als je dit echt wilt doen."
   }
 }
