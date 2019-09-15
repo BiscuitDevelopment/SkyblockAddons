@@ -63,7 +63,7 @@
     },
     "warningDuration": "Waarschuwingsduur",
     "dontOpenProfileWithBow": "Profiel niet openen met boog",
-    "stopDroppingSellingRareItems": "Stop laten Vallen/Verkopen Van Zeldzame Items",
+    "stopDroppingSellingRareItems": "Voorkom het Weggooien/Verkopen van Zeldzame Items",
     "makeBackpackInventoriesColored": "Color Inventories",
     "avoidBreakingBottomSugarCane": "Avoid Breaking Bottom Sugar Cane",
     "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Items"
@@ -89,7 +89,7 @@
     "slotLocked": "Deze Slot is vergrendeld!",
     "summoningEyeFound": "Oproepend oog!",
     "cancelledStemBreak": "SkyblockAddons heeft je ervan weerhouden om deze stengel te breken. Gebruik je lege hand als je het wilt breken.",
-    "cancelledProfileOpening": "SkyblockAddons heeft je tegengehouden om het profiel van deze speler te openen terwijl je een boog vast hebt.",
+    "cancelledProfileOpening": "SkyblockAddons heeft je ervan weerhouden het profiel van deze speler te openen terwijl je een boog vast hebt.",
     "cancelledDropping": "SkyblockAddons heeft je tegengehouden dit zeldzame item of gereedschap uit je hotbar te laten vallen.",
     "clickMoreTimes": "Click/drop this item %times% more times if you really want to do this."
   }
