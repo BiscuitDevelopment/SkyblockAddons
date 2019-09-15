@@ -64,7 +64,9 @@
     "warningDuration": "アラートの長さ",
     "dontOpenProfileWithBow": "弓を持っている時にプロフィールメニューを開けない",
     "stopDroppingSellingRareItems": "レアアイテムを捨てたり売ったりすることを阻止",
-    "makeBackpackInventoriesColored": "インベントリの色"
+    "makeBackpackInventoriesColored": "インベントリの色",
+    "avoidBreakingBottomSugarCane": "Avoid Breaking Bottom Sugar Cane",
+    "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Items"
   },
   "messages": {
     "dropConfirmation": "落としてもいいのであれば、このアイテムをもう一度ドロップしてください。",
