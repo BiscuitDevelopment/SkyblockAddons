@@ -62,10 +62,10 @@
       "two": "风格二"
     },
     "warningDuration": "警报持续时间",
-    "dontOpenProfileWithBow": "Don't Open Profile With Bow",
+    "dontOpenProfileWithBow": "不用弓打开配置文件",
     "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Items",
     "makeBackpackInventoriesColored": "Color Inventories",
-    "avoidBreakingBottomSugarCane": "Avoid Breaking Bottom Sugar Cane",
+    "avoidBreakingBottomSugarCane": "阻止断绝底部甘蔗",
     "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Items"
   },
   "messages": {
@@ -88,9 +88,9 @@
     },
     "slotLocked": "该栏已锁！",
     "summoningEyeFound": "召唤之眼！",
-    "cancelledStemBreak": "SkyblockAddons已经阻止你破坏此方块，请使用空手来进行破坏。",
+    "cancelledStemBreak": "SkyblockAddons阻止你破坏此方块，请使用空手来进行破坏。",
     "cancelledProfileOpening": "SkyblockAddons has stopped you from opening this player's profile while holding a bow.",
     "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare item or tool from your hotbar.",
-    "clickMoreTimes": "Click/drop this item %times% more times if you really want to do this."
+    "clickMoreTimes": "如果你想要把这个东西掉了，在如果你想要把这个东西掉了，在点击%times% 次"
   }
 }
