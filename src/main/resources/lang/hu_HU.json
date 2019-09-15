@@ -90,7 +90,7 @@
     "summoningEyeFound": "Summoning Eye!",
     "cancelledStemBreak": "A SkyblockAddons megállította, hogy kiüsd ezt. Használd az öklöd, ha ki szeretnéd ütni.",
     "cancelledProfileOpening": "A SkyblockAddons megállította, hogy megnyisd ennek a játékosnak a profilját, amíg íj van a kezedben.",
-    "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare item or tool from your hotbar.",
-    "clickMoreTimes": "Click/drop this item %times% more times if you really want to do this."
+    "cancelledDropping": "A SkyblockAddons megállította, hogy eldobd ezt a rare tárgyat vagy eszközt.",
+    "clickMoreTimes": "Kattints/dobd el ezt a tárgyat még %times% alkalommal, ha tényleg ezt szeretnéd."
   }
 }
