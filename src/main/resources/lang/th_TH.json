@@ -89,8 +89,8 @@
     "slotLocked": "ช่องนี้ถูกล็อคไว้!",
     "summoningEyeFound": "ดวงตาอัญเชิญ!",
     "cancelledStemBreak": "ม็อด SkyblockAddons ได้หยุดคุณจากการทำลายรากพืชนี้ โปรดใช้มือเปล่าถ้าต้องการทำลาย",
-    "cancelledProfileOpening": "SkyblockAddons has stopped you from opening this player's profile while holding a bow.",
-    "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare item or tool from your hotbar.",
-    "clickMoreTimes": "Click/drop this item %times% more times if you really want to do this."
+    "cancelledProfileOpening": "ม็อด SkyblockAddons ได้หยุดคุณเปิดดูโปรไฟล์ผู้เล่นคนอื่นๆเมื่อคุณถือธนูไว้",
+    "cancelledDropping": "ม็อด SkyblockAddons ได้หยุดคุณจากการดรอปของ Rare หรือเครื่องมือจากช่อง Hotbar",
+    "clickMoreTimes": "คลิก/ดรอป %times% อีกครั้งหนึ่งเพื่อยืนยัน"
   }
 }
