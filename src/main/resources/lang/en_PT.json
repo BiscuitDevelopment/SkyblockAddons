@@ -62,10 +62,10 @@
       "two": "yer Sec'nd option"
     },
     "warningDuration": "Warnin' Derratin'",
-    "dontOpenProfileWithBow": "Don't Open Profile With Bow",
-    "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Items",
+    "dontOpenProfileWithBow": "Don't Open Profile Wit' Bow",
+    "stopDroppingSellingRareItems": "Stop Droppin'/Sellin' Rare Items",
     "makeBackpackInventoriesColored": "Color Inventories",
-    "avoidBreakingBottomSugarCane": "Avoid Breaking Bottom Sugar Cane",
+    "avoidBreakingBottomSugarCane": "Avoid Breakin' Bottom Sugar Cane",
     "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Items"
   },
   "messages": {
@@ -89,8 +89,8 @@
     "slotLocked": "Ahoy, matey! This here slot be locked!",
     "summoningEyeFound": "Summinin' Aye!",
     "cancelledStemBreak": "'ay there, SkyblockAddons 'as stopped ye from breakin' this here stem. Use yer bare hand if ye'd like to break it.",
-    "cancelledProfileOpening": "SkyblockAddons has stopped you from opening this player's profile while holding a bow.",
-    "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare item or tool from your hotbar.",
-    "clickMoreTimes": "Click/drop this item %times% more times if you really want to do this."
+    "cancelledProfileOpening": "SkyblockAddons has stopped ye from openin' this player's profile while holdin' a bow.",
+    "cancelledDropping": "SkyblockAddons has stopped ye from droppin' this rare item or tool from yer hotbar.",
+    "clickMoreTimes": "Click/drop this item %times% more times if ye really wants t' do this."
   }
 }
