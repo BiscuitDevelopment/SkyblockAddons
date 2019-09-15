@@ -62,11 +62,11 @@
       "two": "スタイル2"
     },
     "warningDuration": "アラートの長さ",
-    "dontOpenProfileWithBow": "弓を持っている時にプロフィールメニューを開けない",
+    "dontOpenProfileWithBow": "弓を持っている時にプロフィールメニューを開けないように",
     "stopDroppingSellingRareItems": "レアアイテムを捨てたり売ったりすることを阻止",
     "makeBackpackInventoriesColored": "インベントリの色",
-    "avoidBreakingBottomSugarCane": "Avoid Breaking Bottom Sugar Cane",
-    "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Items"
+    "avoidBreakingBottomSugarCane": "サトウキビの根本の破壊を防止",
+    "replaceRomanNumeralsWithNumbers": "アイテムのローマ数字を置き換え"
   },
   "messages": {
     "dropConfirmation": "落としてもいいのであれば、このアイテムをもう一度ドロップしてください。",
@@ -89,8 +89,8 @@
     "slotLocked": "このスロットはロックされています。",
     "summoningEyeFound": "サモニングアイがドロップしました！",
     "cancelledStemBreak": "SkyblockAddonsがこのブロックの破壊を阻止しました。 壊したい場合は素手で破壊してください。",
-    "cancelledProfileOpening": "SkyblockAddonsがこのプレイヤーのプロフィールを開くことを阻止しました。",
+    "cancelledProfileOpening": "SkyblockAddonsにより、弓を持っているときにこのプレイヤーのプロフィールを開くことが阻止されました。",
     "cancelledDropping": "SkyblockAddonsがこのアイテムを捨てることを阻止しました。",
-    "clickMoreTimes": "落としたい場合は%times%回クリックしてください。"
+    "clickMoreTimes": "本当に落としたい場合はもう%times%回クリック/ドロップしてください。"
   }
 }
