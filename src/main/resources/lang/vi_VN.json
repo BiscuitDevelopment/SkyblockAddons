@@ -64,7 +64,9 @@
     "warningDuration": "Warning Duration",
     "dontOpenProfileWithBow": "Chặn việc xem thông tin về người chơi khác khi cầm cung",
     "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Items",
-    "makeBackpackInventoriesColored": "Đổi Màu Giao Diện Túi Đồ Của Ba Lô"
+    "makeBackpackInventoriesColored": "Đổi Màu Giao Diện Túi Đồ Của Ba Lô",
+    "avoidBreakingBottomSugarCane": "Avoid Breaking Bottom Sugar Cane",
+    "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Items"
   },
   "messages": {
     "dropConfirmation": "Nhấn \"Q\" Thêm Một Lần Nữa Để Xác Nhận!",
