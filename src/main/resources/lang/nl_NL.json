@@ -64,7 +64,9 @@
     "warningDuration": "Waarschuwingsduur",
     "dontOpenProfileWithBow": "Profiel niet openen met boog",
     "stopDroppingSellingRareItems": "Stop laten Vallen/Verkopen Van Zeldzame Items",
-    "makeBackpackInventoriesColored": "Color Inventories"
+    "makeBackpackInventoriesColored": "Color Inventories",
+    "avoidBreakingBottomSugarCane": "Avoid Breaking Bottom Sugar Cane",
+    "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Items"
   },
   "messages": {
     "dropConfirmation": "Laat dit object opnieuw vallen om te Bevestigen!",
