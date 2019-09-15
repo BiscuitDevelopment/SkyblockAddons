@@ -61,12 +61,12 @@
       "one": "Styl nr 1",
       "two": "Styl nr 2"
     },
-    "warningDuration": "Warning Duration",
+    "warningDuration": "Długość Ostrzeżenia",
     "dontOpenProfileWithBow": "Nie otwieraj profilu za pomocą łuku",
     "stopDroppingSellingRareItems": "Nie upuszczaj/sprzedawaj rzadkich przedmiotów",
     "makeBackpackInventoriesColored": "Kolorowe plecaki",
-    "avoidBreakingBottomSugarCane": "Avoid Breaking Bottom Sugar Cane",
-    "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Items"
+    "avoidBreakingBottomSugarCane": "Blokada niszczenia dolnej trzciny cukrowej",
+    "replaceRomanNumeralsWithNumbers": "Zamień cyfry rzymskie na normalne"
   },
   "messages": {
     "dropConfirmation": "Wyrzuć ten przedmiot ponownie, aby potwierdzić!",
