@@ -44,7 +44,7 @@ public class Utils {
     private Map<Attribute, MutableInt> attributes = new EnumMap<>(Attribute.class);
     private List<String> enchantmentMatch = new LinkedList<>();
     private List<String> enchantmentExclusion = new LinkedList<>();
-    private BackpackInfo backpackToRender = null;
+    private Backpack backpackToRender = null;
     private static boolean onSkyblock = false;
     private EnumUtils.Location location = null;
     private boolean playingSound = false;
@@ -455,6 +455,28 @@ public class Utils {
         return main.getUtils().removeDuplicateSpaces(newString.toString().trim());
     }
 
+    public boolean cantDropItem(ItemStack item, EnumUtils.Rarity rarity, boolean hotbar) {
+        if (hotbar) {
+            return item.getItem().isDamageable() || (rarity != EnumUtils.Rarity.COMMON && rarity != EnumUtils.Rarity.UNCOMMON)
+                    || (item.hasDisplayName() && item.getDisplayName().contains("Backpack"));
+        } else {
+            return item.getItem().isDamageable() || (rarity != EnumUtils.Rarity.COMMON && rarity != EnumUtils.Rarity.UNCOMMON
+                    && rarity != EnumUtils.Rarity.RARE) || (item.hasDisplayName() && item.getDisplayName().contains("Backpack"));
+        }
+    }
+
+    public String replaceRomanNumerals(String text) {
+        if (text != null && text.startsWith("\u00A75\u00A7o\u00A79")) {
+            text = text.replace(" VI", " 6");
+            text = text.replace(" V", " 5");
+            text = text.replace(" IV", " 4");
+            text = text.replace(" III", " 3");
+            text = text.replace(" II", " 2");
+            text = text.replace(" I", " 1");
+        }
+        return text;
+    }
+
     public boolean isDevEnviroment() {
         return (boolean) Launch.blackboard.get("fml.deobfuscatedEnvironment");
     }
@@ -483,11 +505,11 @@ public class Utils {
         this.fadingIn = fadingIn;
     }
 
-    public BackpackInfo getBackpackToRender() {
+    public Backpack getBackpackToRender() {
         return backpackToRender;
     }
 
-    public void setBackpackToRender(BackpackInfo backpackToRender) {
+    public void setBackpackToRender(Backpack backpackToRender) {
         this.backpackToRender = backpackToRender;
     }
 
@@ -534,4 +556,5 @@ public class Utils {
     public int getLastHoveredSlot() {
         return lastHoveredSlot;
     }
+
 }

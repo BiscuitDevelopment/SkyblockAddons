@@ -59,6 +59,12 @@ public enum Message {
     SETTING_SUMMONING_EYE_ALERT(MessageObject.SETTING, "summoningEyeAlert"),
     SETTING_CHANGE_COLOR(MessageObject.SETTING, "changeColor"),
     SETTING_SHOW_IN_OTHER_GAMES(MessageObject.SETTING, "showInOtherGames"),
+    SETTING_DONT_OPEN_PROFILES_WITH_BOW(MessageObject.SETTING, "dontOpenProfileWithBow"),
+    SETTING_MAKE_ENDERCHESTS_IN_END_GREEN(MessageObject.SETTING, "makeEnderchestsInEndGreen"),
+    SETTING_STOP_DROPPING_SELLING_RARE_ITEMS(MessageObject.SETTING, "stopDroppingSellingRareItems"),
+    SETTING_MAKE_BACKPACK_INVENTORIES_COLORED(MessageObject.SETTING, "makeBackpackInventoriesColored"),
+    SETTING_AVOID_BREAKING_BOTTOM_SUGAR_CANE(MessageObject.SETTING, "avoidBreakingBottomSugarCane"),
+    SETTING_REPLACE_ROMAN_NUMERALS_WITH_NUMBERS(MessageObject.SETTING, "replaceRomanNumeralsWithNumbers"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.STYLE, "compact"),
@@ -79,7 +85,9 @@ public enum Message {
     MESSAGE_CANCELLED_STEM_BREAK(MessageObject.MESSAGES, "cancelledStemBreak"),
     MESSAGE_SLOT_LOCKED(MessageObject.MESSAGES, "slotLocked"),
     MESSAGE_SUMMONING_EYE_FOUND(MessageObject.MESSAGES, "summoningEyeFound"),
-    SETTING_MAKE_ENDERCHESTS_IN_END_GREEN(MessageObject.SETTING, "makeEnderchestsInEndGreen"),
+    MESSAGE_STOPPED_OPENING_PROFILE(MessageObject.MESSAGES, "cancelledProfileOpening"),
+    MESSAGE_CANCELLED_DROPPING(MessageObject.MESSAGES, "cancelledDropping"),
+    MESSAGE_CLICK_MORE_TIMES(MessageObject.MESSAGES, "clickMoreTimes"),
 
     @Deprecated ANCHOR_POINT_TOP_LEFT(MessageObject.ANCHOR_POINT, "topLeft"),
     @Deprecated ANCHOR_POINT_TOP_RIGHT(MessageObject.ANCHOR_POINT, "topRight"),
@@ -144,7 +152,10 @@ public enum Message {
                 } else if (this == Message.MESSAGE_MINION_CANNOT_REACH || this == Message.MESSAGE_TYPE_ENCHANTMENTS
                         || this == Message.MESSAGE_ENCHANTS_TO_MATCH || this == Message.MESSAGE_ENCHANTS_TO_EXCLUDE) {
                     text = text.replace("%type%", variables[0]);
-                }// else if (this == Message.SETTING_ANCHOR_POINT) { //unused at the moment.
+                } else if (this == Message.MESSAGE_CLICK_MORE_TIMES) {
+                    text = text.replace("%times%", variables[0]);
+                }
+                // else if (this == Message.SETTING_ANCHOR_POINT) { //unused at the moment.
 //                    Feature lastHovered = ButtonLocation.getLastHoveredFeature();
 //                    if (lastHovered == null) {
 //                        lastHovered = Feature.MANA_BAR;

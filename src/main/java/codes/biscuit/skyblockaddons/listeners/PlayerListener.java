@@ -5,7 +5,7 @@ import codes.biscuit.skyblockaddons.utils.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.client.gui.inventory.GuiChest;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityArmorStand;
@@ -124,9 +124,14 @@ public class PlayerListener {
                         String[] splitMessage = message.split(" {5}");
                         String healthPart = splitMessage[0];
                         String defencePart = null;
+                        String collectionPart = null;
                         String manaPart;
                         if (splitMessage.length > 2) {
-                            defencePart = splitMessage[1];
+                            if (!splitMessage[1].contains("(")) { // Example Collection Bar: '§c986/986❤     §3+1 Mining (10,714.7/15,000)     §b297/323✎ Mana§r'
+                                defencePart = splitMessage[1];
+                            } else {
+                                collectionPart = splitMessage[1];
+                            }
                             manaPart = splitMessage[2];
                         } else {
                             manaPart = splitMessage[1];
@@ -154,6 +159,10 @@ public class PlayerListener {
                         boolean showMana = main.getConfigValues().isDisabled(Feature.MANA_BAR) && main.getConfigValues().isDisabled(Feature.MANA_TEXT);
                         if (showHealth) {
                             newMessage.append(healthPart);
+                        }
+                        if (collectionPart != null) {
+                            if (showHealth) newMessage.append("     ");
+                            newMessage.append(collectionPart);
                         }
                         if (showDefence) {
                             if (showHealth) newMessage.append("     ");
@@ -501,19 +510,25 @@ public class PlayerListener {
                 }
             }
         }
+        if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.REPLACE_ROMAN_NUMERALS_WITH_NUMBERS) &&
+                e.toolTip != null && (hoveredItem.isItemEnchanted()||hoveredItem.getItem().equals(Items.potionitem))) {
+            for (int i = 0; i < e.toolTip.size(); i++) {
+                e.toolTip.set(i, main.getUtils().replaceRomanNumerals(e.toolTip.get(i)));
+            }
+        }
     }
 
-    private Object lastOpenedInventory = null;
+    private Class lastOpenedInventory = null;
     private long lastClosedInv = -1;
 
     @SubscribeEvent
     public void onGuiOpen(GuiOpenEvent e) {
-        if (e.gui == null && lastOpenedInventory instanceof GuiContainer) {
+        if (e.gui == null && GuiChest.class.equals(lastOpenedInventory)) {
             lastClosedInv = System.currentTimeMillis();
             lastOpenedInventory = null;
         }
         if (e.gui != null) {
-            lastOpenedInventory = e.gui; //todo test this
+            lastOpenedInventory = e.gui.getClass();
         }
     }
 

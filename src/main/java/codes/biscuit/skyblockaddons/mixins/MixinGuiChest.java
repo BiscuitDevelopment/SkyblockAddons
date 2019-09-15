@@ -1,23 +1,20 @@
 package codes.biscuit.skyblockaddons.mixins;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.utils.ConfigColor;
-import codes.biscuit.skyblockaddons.utils.EnumUtils;
-import codes.biscuit.skyblockaddons.utils.Feature;
-import codes.biscuit.skyblockaddons.utils.Message;
+import codes.biscuit.skyblockaddons.utils.*;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.client.gui.inventory.GuiChest;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.inventory.Container;
-import net.minecraft.inventory.ContainerChest;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.Slot;
+import net.minecraft.inventory.*;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Redirect;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -40,6 +37,7 @@ public abstract class MixinGuiChest extends GuiContainer {
         super(inventorySlotsIn);
     }
 
+
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
         super.drawScreen(mouseX, mouseY, partialTicks);
@@ -48,17 +46,25 @@ public abstract class MixinGuiChest extends GuiContainer {
             SkyblockAddons main = SkyblockAddons.getInstance();
             String inventoryMessage = inventoryType.getMessage();
             int defaultBlue = main.getUtils().getDefaultBlue(255);
-            mc.ingameGUI.drawString(mc.fontRendererObj, Message.MESSAGE_TYPE_ENCHANTMENTS.getMessage(inventoryMessage), guiLeft - 160, guiTop + 40, defaultBlue);
-            mc.ingameGUI.drawString(mc.fontRendererObj, Message.MESSAGE_SEPARATE_ENCHANTMENTS.getMessage(), guiLeft - 160, guiTop + 50, defaultBlue);
-            mc.ingameGUI.drawString(mc.fontRendererObj, Message.MESSAGE_ENCHANTS_TO_MATCH.getMessage(inventoryMessage), guiLeft - 160, guiTop + 70, defaultBlue);
-            mc.ingameGUI.drawString(mc.fontRendererObj,Message.MESSAGE_ENCHANTS_TO_EXCLUDE.getMessage(inventoryMessage), guiLeft - 160, guiTop + 110, defaultBlue);
+            GlStateManager.pushMatrix();
+            float scale = 0.75F;
+            GlStateManager.scale(scale, scale, 1);
+            int x = guiLeft - 160;
+            if (x<0) {
+                x = 20;
+            }
+            mc.ingameGUI.drawString(mc.fontRendererObj, Message.MESSAGE_TYPE_ENCHANTMENTS.getMessage(inventoryMessage), Math.round(x/scale), Math.round((guiTop+40)/scale), defaultBlue);
+            mc.ingameGUI.drawString(mc.fontRendererObj, Message.MESSAGE_SEPARATE_ENCHANTMENTS.getMessage(), Math.round(x/scale), Math.round((guiTop + 50)/scale), defaultBlue);
+            mc.ingameGUI.drawString(mc.fontRendererObj, Message.MESSAGE_ENCHANTS_TO_MATCH.getMessage(inventoryMessage), Math.round(x/scale), Math.round((guiTop + 70)/scale), defaultBlue);
+            mc.ingameGUI.drawString(mc.fontRendererObj,Message.MESSAGE_ENCHANTS_TO_EXCLUDE.getMessage(inventoryMessage), Math.round(x/scale), Math.round((guiTop + 110)/scale), defaultBlue);
+            GlStateManager.popMatrix();
             textFieldMatch.drawTextBox();
             if (textFieldMatch.getText().equals("")) {
-                mc.ingameGUI.drawString(mc.fontRendererObj, "ex. \"prot, feather\"", guiLeft - 156, guiTop + 86, ConfigColor.DARK_GRAY.getColor(255));
+                mc.ingameGUI.drawString(mc.fontRendererObj, "ex. \"prot, feather\"", x+4, guiTop + 86, ConfigColor.DARK_GRAY.getColor(255));
             }
             textFieldExclusions.drawTextBox();
             if (textFieldExclusions.getText().equals("")) {
-                mc.ingameGUI.drawString(mc.fontRendererObj, "ex. \"proj, blast\"", guiLeft - 156, guiTop + 126, ConfigColor.DARK_GRAY.getColor(255));
+                mc.ingameGUI.drawString(mc.fontRendererObj, "ex. \"proj, blast\"", x+4, guiTop + 126, ConfigColor.DARK_GRAY.getColor(255));
             }
         }
     }
@@ -71,6 +77,9 @@ public abstract class MixinGuiChest extends GuiContainer {
         if (guiName.equals("Reforge Item")) inventoryType = EnumUtils.InventoryType.REFORGE_ANVIL;
         if (inventoryType != null) {
             int xPos = guiLeft - 160;
+            if (xPos<0) {
+                xPos = 20;
+            }
             int yPos = guiTop + 80;
             textFieldMatch = new GuiTextField(2, this.fontRendererObj, xPos, yPos, 120, 20);
             textFieldMatch.setMaxStringLength(500);
@@ -174,14 +183,24 @@ public abstract class MixinGuiChest extends GuiContainer {
         if (slotIn != null && main.getConfigValues().isEnabled(Feature.LOCK_SLOTS) &&
                 main.getUtils().isOnSkyblock()) {
             int slotNum = slotIn.slotNumber;
-            if (mc.thePlayer.openContainer instanceof ContainerChest) {
-                slotNum -= ((ContainerChest)mc.thePlayer.openContainer).getLowerChestInventory().getSizeInventory()-9;
+            Container container = mc.thePlayer.openContainer;
+            if (container instanceof ContainerChest) {
+                slotNum -= ((ContainerChest)container).getLowerChestInventory().getSizeInventory()-9;
+                if (slotNum < 9) break out;
+            } else if (container instanceof ContainerHopper) {
+                slotNum -= 4;
+                if (slotNum < 5) break out;
+            } else if (container instanceof ContainerDispenser) {
                 if (slotNum < 9) break out;
             }
             if (main.getConfigValues().getLockedSlots().contains(slotNum)) {
                 main.getUtils().playSound("note.bass", 0.5);
                 return;
             }
+        }
+        if (main.getConfigValues().isEnabled(Feature.STOP_DROPPING_SELLING_RARE_ITEMS) &&
+                lowerChestInventory.hasCustomName() && EnumUtils.Merchant.isMerchant(lowerChestInventory.getDisplayName().getUnformattedText())) {
+            if (main.getInventoryUtils().shouldCancelDrop(slotIn)) return;
         }
         super.handleMouseClick(slotIn, slotId, clickedButton, clickType);
     }
@@ -193,5 +212,41 @@ public abstract class MixinGuiChest extends GuiContainer {
             textFieldMatch.mouseClicked(mouseX, mouseY, mouseButton);
             textFieldExclusions.mouseClicked(mouseX, mouseY, mouseButton);
         }
+    }
+
+    private Backpack backpack = null;
+
+    @Redirect(method = "drawGuiContainerBackgroundLayer", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/GlStateManager;color(FFFF)V", ordinal = 0))
+    private void color(float colorRed, float colorGreen, float colorBlue, float colorAlpha) { //Item item, ItemStack stack
+        SkyblockAddons main = SkyblockAddons.getInstance();
+        if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.SHOW_BACKPACK_PREVIEW) &&
+                main.getConfigValues().isEnabled(Feature.MAKE_BACKPACK_INVENTORIES_COLORED)
+        && lowerChestInventory.hasCustomName() && lowerChestInventory.getDisplayName().getUnformattedText().contains("Backpack")) {
+            backpack = Backpack.getFromItem(mc.thePlayer.getHeldItem());
+            if (backpack != null) {
+                BackpackColor color = backpack.getBackpackColor();
+                GlStateManager.color(color.getR(), color.getG(), color.getB(), 1);
+                return;
+            }
+        }
+        backpack = null;
+        GlStateManager.color(colorRed,colorGreen,colorBlue,colorAlpha);
+    }
+
+    @Redirect(method = "drawGuiContainerForegroundLayer", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/FontRenderer;drawString(Ljava/lang/String;III)I", ordinal = 0))
+    private int drawStringTop(FontRenderer fontRenderer, String text, int x, int y, int color) { //Item item, ItemStack stack
+        return drawBackpackTest(fontRenderer, text,x,y,color);
+    }
+
+    @Redirect(method = "drawGuiContainerForegroundLayer", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/FontRenderer;drawString(Ljava/lang/String;III)I", ordinal = 1))
+    private int drawStringBottom(FontRenderer fontRenderer, String text, int x, int y, int color) { //Item item, ItemStack stack
+        return drawBackpackTest(fontRenderer, text,x,y,color);
+    }
+
+    private int drawBackpackTest(FontRenderer fontRenderer, String text, int x, int y, int color) {
+        if (backpack != null) {
+            return fontRenderer.drawString(text, x,y, backpack.getBackpackColor().getTextColor());
+        }
+        return fontRenderer.drawString(text,x,y,color);
     }
 }

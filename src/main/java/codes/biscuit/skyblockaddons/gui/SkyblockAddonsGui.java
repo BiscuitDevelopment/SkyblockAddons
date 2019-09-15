@@ -68,10 +68,10 @@ public class SkyblockAddonsGui extends GuiScreen {
             array = new Feature[]{Feature.SHOW_ENCHANTMENTS_REFORGES, Feature.SHOW_BACKPACK_PREVIEW,
                     Feature.MINION_FULL_WARNING, Feature.FULL_INVENTORY_WARNING,
                     Feature.IGNORE_ITEM_FRAME_CLICKS, Feature.HIDE_FOOD_ARMOR_BAR, Feature.HIDE_HEALTH_BAR,
-                    Feature.AVOID_BREAKING_STEMS, Feature.MAGMA_WARNING,
-                    Feature.DROP_CONFIRMATION, Feature.HIDE_PLAYERS_IN_LOBBY, Feature.MINION_STOP_WARNING,
-                    Feature.SHOW_ITEM_ANVIL_USES, Feature.LOCK_SLOTS, Feature.DONT_RESET_CURSOR_INVENTORY,
-                    Feature.MAKE_ENDERCHESTS_GREEN_IN_END, Feature.SUMMONING_EYE_ALERT};
+                    Feature.AVOID_BREAKING_STEMS, Feature.AVOID_BREAKING_BOTTOM_SUGAR_CANE, Feature.MAGMA_WARNING, Feature.HIDE_PLAYERS_IN_LOBBY, Feature.MINION_STOP_WARNING,
+                    Feature.SHOW_ITEM_ANVIL_USES, Feature.LOCK_SLOTS, Feature.DONT_OPEN_PROFILES_WITH_BOW, Feature.STOP_DROPPING_SELLING_RARE_ITEMS,
+                    Feature.MAKE_ENDERCHESTS_GREEN_IN_END, Feature.SUMMONING_EYE_ALERT, Feature.DONT_RESET_CURSOR_INVENTORY,
+                    Feature.REPLACE_ROMAN_NUMERALS_WITH_NUMBERS, Feature.DROP_CONFIRMATION};
         } else if (tab == EnumUtils.SkyblockAddonsGuiTab.FIXES) {
             array = new Feature[]{Feature.HIDE_BONES, Feature.DISABLE_EMBER_ROD, Feature.HIDE_AUCTION_HOUSE_PLAYERS,
                     Feature.STOP_BOW_CHARGE_FROM_RESETTING, Feature.AVOID_PLACING_ENCHANTED_ITEMS, Feature.PREVENT_MOVEMENT_ON_DEATH
@@ -296,6 +296,7 @@ public class SkyblockAddonsGui extends GuiScreen {
         if (feature == Feature.SHOW_BACKPACK_PREVIEW) {
             settings.add(EnumUtils.FeatureSetting.BACKPACK_STYLE);
             settings.add(EnumUtils.FeatureSetting.SHOW_ONLY_WHEN_HOLDING_SHIFT);
+            settings.add(EnumUtils.FeatureSetting.MAKE_INVENTORY_COLORED);
         }
         return settings;
     }

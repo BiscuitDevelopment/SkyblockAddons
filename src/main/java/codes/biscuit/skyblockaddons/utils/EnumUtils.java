@@ -2,6 +2,7 @@ package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import net.minecraft.entity.Entity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.Vec3;
 
@@ -105,22 +106,6 @@ public class EnumUtils {
 
         public String getMessage() {
             return message.getMessage();
-        }
-    }
-
-    public enum Backpack {
-        SMALL("Small Backpack"),
-        MEDIUM("Medium Backpack"),
-        LARGE("Large Backpack");
-
-        private String itemName;
-
-        Backpack(String itemName) {
-            this.itemName = itemName;
-        }
-
-        public String getItemName() {
-            return itemName;
         }
     }
 
@@ -285,6 +270,56 @@ public class EnumUtils {
         USE_VANILLA_TEXTURE,
 //        WARNING_TIME,
         BACKPACK_STYLE,
-        SHOW_ONLY_WHEN_HOLDING_SHIFT
+        SHOW_ONLY_WHEN_HOLDING_SHIFT,
+        MAKE_INVENTORY_COLORED
+    }
+
+    public enum Merchant {
+
+        ADVENTURER("Adventurer"),
+        BUILDER("Builder"),
+        WEAPONSMITH("Weaponsmith"),
+        ARMORSMITH("Armorsmith"),
+        GOLD_FORGER("Gold Forger"),
+        IRON_FORGER("Iron Forger");
+
+        private String name;
+
+        Merchant(String name) {
+            this.name = name;
+        }
+
+        public static boolean isMerchant(String name) {
+            for (Merchant merchant : values()) {
+                if (name.equals(merchant.name)) {
+                    return true;
+                }
+            }
+            return name.contains("Merchant");
+        }
+    }
+
+    public enum Rarity {
+        COMMON("§f"),
+        UNCOMMON("§a"),
+        RARE("§9"),
+        EPIC("§5"),
+        LEGENDARY("§6"),
+        SPECIAL("§d");
+
+        private String tag;
+
+        Rarity(String s) {
+            this.tag = s;
+        }
+
+        public static Rarity getRarity(ItemStack item) {
+            if (item == null) return null;
+            String itemName = item.getDisplayName();
+            for(Rarity rarity: Rarity.values()) {
+                if(itemName.startsWith(rarity.tag)) return rarity;
+            }
+            return null;
+        }
     }
 }

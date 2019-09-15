@@ -424,6 +424,7 @@ public class RenderListener {
             EnumUtils.MagmaTimerAccuracy ma = main.getPlayerListener().getMagmaAccuracy();
             if (ma == EnumUtils.MagmaTimerAccuracy.ABOUT || ma == EnumUtils.MagmaTimerAccuracy.EXACTLY) {
                 int totalSeconds = main.getPlayerListener().getMagmaTime();
+                if (totalSeconds < 0) totalSeconds = 0;
                 int hours = totalSeconds / 3600;
                 int minutes = totalSeconds / 60 % 60;
                 int seconds = totalSeconds % 60;

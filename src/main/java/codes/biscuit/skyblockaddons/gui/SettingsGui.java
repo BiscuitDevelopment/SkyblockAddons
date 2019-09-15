@@ -270,7 +270,12 @@ public class SettingsGui extends GuiScreen {
             boxWidth = 31;
             x = halfWidth - (boxWidth / 2);
             y = getRowHeightSetting(row);
-            buttonList.add(new ButtonToggleTitle(x, y, Message.SETTING_USE_VANILLA_TEXTURE.getMessage(), main, Feature.SHOW_BACKPACK_HOLDING_SHIFT));
+            buttonList.add(new ButtonToggleTitle(x, y, Message.SETTING_SHOW_ONLY_WHEN_HOLDING_SHIFT.getMessage(), main, Feature.SHOW_BACKPACK_HOLDING_SHIFT));
+        } else if (setting == EnumUtils.FeatureSetting.MAKE_INVENTORY_COLORED) {
+            boxWidth = 31;
+            x = halfWidth - (boxWidth / 2);
+            y = getRowHeightSetting(row);
+            buttonList.add(new ButtonToggleTitle(x, y, Message.SETTING_MAKE_BACKPACK_INVENTORIES_COLORED.getMessage(), main, Feature.MAKE_BACKPACK_INVENTORIES_COLORED));
         } else if (setting == EnumUtils.FeatureSetting.BACKPACK_STYLE) {
             boxWidth = 140;
             x = halfWidth-(boxWidth/2);

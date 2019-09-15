@@ -5,6 +5,8 @@ import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
+import net.minecraft.inventory.Slot;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 
@@ -207,5 +209,44 @@ public class InventoryUtils {
      */
     public Collection<ItemDiff> getItemPickupLog() {
         return itemPickupLog.values();
+    }
+
+    private Item lastItem = null;
+    private long lastDrop = System.currentTimeMillis();
+    private int dropCount = 1;
+
+    public boolean shouldCancelDrop(Slot slot) {
+        if (slot != null && slot.getHasStack()) {
+            ItemStack stack = slot.getStack();
+            return shouldCancelDrop(stack);
+        }
+        return false;
+    }
+
+    public boolean shouldCancelDrop(ItemStack stack) {
+        if (main.getUtils().cantDropItem(stack, EnumUtils.Rarity.getRarity(stack), false)) {
+            Item item = stack.getItem();
+            if (lastItem != null && lastItem == item && System.currentTimeMillis() - lastDrop < 3000 && dropCount >= 2) {
+                lastDrop = System.currentTimeMillis();
+            } else {
+                if (lastItem == item) {
+                    if (System.currentTimeMillis() - lastDrop > 3000) {
+                        dropCount = 1;
+                    } else {
+                        dropCount++;
+                    }
+                } else {
+                    dropCount = 1;
+                }
+                SkyblockAddons.getInstance().getUtils().sendMessage(main.getConfigValues().getColor(
+                        Feature.STOP_DROPPING_SELLING_RARE_ITEMS).getChatFormatting() +
+                        Message.MESSAGE_CLICK_MORE_TIMES.getMessage(String.valueOf(3-dropCount)));
+                lastItem = item;
+                lastDrop = System.currentTimeMillis();
+                main.getUtils().playSound("note.bass", 0.5);
+                return true;
+            }
+        }
+        return false;
     }
 }

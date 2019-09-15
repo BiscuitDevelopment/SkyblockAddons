@@ -47,6 +47,18 @@ public enum ConfigColor {
         return new Color(r,g,b,(int)alpha).getRGB();
     }
 
+    public int getR() {
+        return r;
+    }
+
+    public int getG() {
+        return g;
+    }
+
+    public int getB() {
+        return b;
+    }
+
     public ConfigColor getNextColor() {
         int nextColor = ordinal()+1;
         if (nextColor > values().length-1) {

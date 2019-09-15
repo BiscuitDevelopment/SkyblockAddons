@@ -6,9 +6,7 @@ import codes.biscuit.skyblockaddons.utils.Feature;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.EntityRenderer;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.item.EntityItemFrame;
-import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.util.Vec3;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -33,12 +31,11 @@ public class MixinEntityRenderer {
     }
 
     private void removeEntities(List<Entity> list) {
-        if (SkyblockAddons.getInstance().getUtils().isOnSkyblock()) { // conditions for the invisible zombie that Skeleton hat bones are riding
-            list.removeIf(listEntity -> listEntity instanceof EntityZombie && listEntity.isInvisible() && listEntity.riddenByEntity instanceof EntityItem);
-            if (!GuiScreen.isCtrlKeyDown() && !SkyblockAddons.getInstance().getConfigValues().isDisabled(Feature.IGNORE_ITEM_FRAME_CLICKS)) {
+        if (SkyblockAddons.getInstance().getUtils().isOnSkyblock()) {
+            if (!GuiScreen.isCtrlKeyDown() && SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.IGNORE_ITEM_FRAME_CLICKS)) {
                 list.removeIf(listEntity -> listEntity instanceof EntityItemFrame);
             }
-            if (!SkyblockAddons.getInstance().getConfigValues().isDisabled(Feature.HIDE_AUCTION_HOUSE_PLAYERS)) {
+            if (SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.HIDE_AUCTION_HOUSE_PLAYERS)) {
                 list.removeIf(EnumUtils.SkyblockNPC::isNearNPC);
             }
         }

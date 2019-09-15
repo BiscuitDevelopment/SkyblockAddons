@@ -47,6 +47,8 @@ public class Scheduler {
         queue.put(ticks, commandSet);
     }
 
+    private boolean delayingMagmaCall = false; // this addition should decrease the amount of calls by a lot
+
     @SubscribeEvent()
     public void ticker(TickEvent.ClientTickEvent e) {
         if (e.phase == TickEvent.Phase.START) {
@@ -60,9 +62,14 @@ public class Scheduler {
                 }
                 queue.remove(totalTicks);
             }
-            if (totalTicks % 12000 == 0) { // check magma boss every 15 minutes
+            if (totalTicks % 12000 == 0 || delayingMagmaCall) { // check magma boss every 15 minutes
                 if (main.getPlayerListener().getMagmaAccuracy() != EnumUtils.MagmaTimerAccuracy.EXACTLY) {
-                    main.getUtils().fetchEstimateFromServer();
+                    if (main.getUtils().isOnSkyblock()) {
+                        delayingMagmaCall = false;
+                        main.getUtils().fetchEstimateFromServer();
+                    } else if (!delayingMagmaCall) {
+                        delayingMagmaCall = true;
+                    }
                 }
             }
         }

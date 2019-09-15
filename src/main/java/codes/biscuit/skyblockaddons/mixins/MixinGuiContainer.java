@@ -12,7 +12,10 @@ import net.minecraft.client.gui.inventory.GuiInventory;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.entity.RenderItem;
+import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ContainerChest;
+import net.minecraft.inventory.ContainerDispenser;
+import net.minecraft.inventory.ContainerHopper;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
@@ -26,10 +29,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
 import java.awt.*;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.regex.Pattern;
 
 @Mixin(GuiContainer.class)
@@ -116,23 +117,29 @@ public class MixinGuiContainer extends GuiScreen {
 
     @Inject(method = "drawScreen", at = @At(value = "RETURN"))
     private void drawBackpacks(int mouseX, int mouseY, float partialTicks, CallbackInfo ci) {
-        BackpackInfo backpackInfo = SkyblockAddons.getInstance().getUtils().getBackpackToRender();
-        if (backpackInfo != null) {
-            int x = backpackInfo.getX();
-            int y = backpackInfo.getY();
-            ItemStack[] items = backpackInfo.getItems();
-            EnumUtils.Backpack backpack = backpackInfo.getBackpack();
+        SkyblockAddons main = SkyblockAddons.getInstance();
+        Backpack backpack = main.getUtils().getBackpackToRender();
+        if (backpack != null) {
+            int x = backpack.getX();
+            int y = backpack.getY();
+            ItemStack[] items = backpack.getItems();
             int length = items.length;
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-            if (SkyblockAddons.getInstance().getConfigValues().getBackpackStyle() == EnumUtils.BackpackStyle.GUI) {
+            if (main.getConfigValues().getBackpackStyle() == EnumUtils.BackpackStyle.GUI) {
                 this.mc.getTextureManager().bindTexture(CHEST_GUI_TEXTURE);
                 int rows = length/9;
                 GlStateManager.disableLighting();
                 GlStateManager.pushMatrix();
                 GlStateManager.translate(0,0,300);
+                int textColor = 4210752;
+                if (main.getConfigValues().isEnabled(Feature.MAKE_BACKPACK_INVENTORIES_COLORED)) {
+                    BackpackColor color = backpack.getBackpackColor();
+                    GlStateManager.color(color.getR(), color.getG(), color.getB(), 1);
+                    textColor = color.getTextColor();
+                }
                 drawTexturedModalRect(x, y, 0, 0, 176, rows * 18 + 17);
                 drawTexturedModalRect(x, y + rows * 18 + 17, 0, 215, 176, 7);
-                fontRendererObj.drawString(backpack.getItemName(), x+8, y+6, 4210752);
+                fontRendererObj.drawString(backpack.getBackpackName(), x+8, y+6, textColor);
                 GlStateManager.popMatrix();
                 GlStateManager.enableLighting();
 
@@ -144,11 +151,11 @@ public class MixinGuiContainer extends GuiScreen {
                     if (item != null) {
                         int itemX = x+8 + ((i % 9) * 18);
                         int itemY = y+18 + ((i / 9) * 18);
-                        RenderItem renderItem = Minecraft.getMinecraft().getRenderItem();
+                        RenderItem renderItem = mc.getRenderItem();
                         zLevel = 200;
                         renderItem.zLevel = 200;
                         renderItem.renderItemAndEffectIntoGUI(item, itemX, itemY);
-                        renderItem.renderItemOverlayIntoGUI(Minecraft.getMinecraft().fontRendererObj, item, itemX, itemY, null);
+                        renderItem.renderItemOverlayIntoGUI(mc.fontRendererObj, item, itemX, itemY, null);
                         zLevel = 0;
                         renderItem.zLevel = 0;
                     }
@@ -169,17 +176,17 @@ public class MixinGuiContainer extends GuiScreen {
                     if (item != null) {
                         int itemX = x + ((i % 9) * 16);
                         int itemY = y + ((i / 9) * 16);
-                        RenderItem renderItem = Minecraft.getMinecraft().getRenderItem();
+                        RenderItem renderItem = mc.getRenderItem();
                         zLevel = 200;
                         renderItem.zLevel = 200;
                         renderItem.renderItemAndEffectIntoGUI(item, itemX, itemY);
-                        renderItem.renderItemOverlayIntoGUI(Minecraft.getMinecraft().fontRendererObj, item, itemX, itemY, null);
+                        renderItem.renderItemOverlayIntoGUI(mc.fontRendererObj, item, itemX, itemY, null);
                         zLevel = 0;
                         renderItem.zLevel = 0;
                     }
                 }
             }
-            SkyblockAddons.getInstance().getUtils().setBackpackToRender(null);
+            main.getUtils().setBackpackToRender(null);
             GlStateManager.enableLighting();
             GlStateManager.enableDepth();
             RenderHelper.enableStandardItemLighting();
@@ -197,8 +204,14 @@ public class MixinGuiContainer extends GuiScreen {
     private void drawGradientRect(GuiContainer guiContainer, int left, int top, int right, int bottom, int startColor, int endColor) {
         SkyblockAddons main = SkyblockAddons.getInstance();
         int slotNum = theSlot.slotNumber;
-        if (mc.thePlayer.openContainer instanceof ContainerChest) {
-            slotNum -= ((ContainerChest)mc.thePlayer.openContainer).getLowerChestInventory().getSizeInventory()-9;
+        Container container = mc.thePlayer.openContainer;
+        if (container instanceof ContainerChest) {
+            slotNum -= ((ContainerChest)container).getLowerChestInventory().getSizeInventory()-9;
+            if (slotNum < 9) return;
+        } else if (container instanceof ContainerHopper) {
+            slotNum -= 4;
+            if (slotNum < 5) return;
+        } else if (container instanceof ContainerDispenser) {
             if (slotNum < 9) return;
         }
         main.getUtils().setLastHoveredSlot(slotNum);
@@ -218,8 +231,14 @@ public class MixinGuiContainer extends GuiScreen {
         if (slot != null && main.getConfigValues().isEnabled(Feature.LOCK_SLOTS) &&
                 main.getUtils().isOnSkyblock()) {
             int slotNum = slot.slotNumber;
-            if (mc.thePlayer.openContainer instanceof ContainerChest) {
-                slotNum -= ((ContainerChest)mc.thePlayer.openContainer).getLowerChestInventory().getSizeInventory()-9;
+            Container container = mc.thePlayer.openContainer;
+            if (container instanceof ContainerChest) {
+                slotNum -= ((ContainerChest)container).getLowerChestInventory().getSizeInventory()-9;
+                if (slotNum < 9) return;
+            } else if (container instanceof ContainerHopper) {
+                slotNum -= 4;
+                if (slotNum < 5) return;
+            } else if (container instanceof ContainerDispenser) {
                 if (slotNum < 9) return;
             }
             if (main.getConfigValues().getLockedSlots().contains(slotNum)) {
@@ -239,30 +258,38 @@ public class MixinGuiContainer extends GuiScreen {
             ordinal = 0, shift = At.Shift.BEFORE), locals = LocalCapture.CAPTURE_FAILSOFT, cancellable = true)
     private void keyTyped(char typedChar, int keyCode, CallbackInfo ci) {
         SkyblockAddons main = SkyblockAddons.getInstance();
-        int slot = main.getUtils().getLastHoveredSlot();
-        if (mc.thePlayer.inventory.getItemStack() == null && theSlot != null) {
-            for (int i = 0; i < 9; ++i) {
-                if (keyCode == this.mc.gameSettings.keyBindsHotbar[i].getKeyCode()) {
-                    slot = i+36; // They are hotkeying, the actual slot is the targeted one, +36 because
+        if (main.getUtils().isOnSkyblock()) {
+            if (main.getConfigValues().isEnabled(Feature.LOCK_SLOTS) && (keyCode != 1 && keyCode != this.mc.gameSettings.keyBindInventory.getKeyCode())) {
+                int slot = main.getUtils().getLastHoveredSlot();
+                if (mc.thePlayer.inventory.getItemStack() == null && theSlot != null) {
+                    for (int i = 0; i < 9; ++i) {
+                        if (keyCode == this.mc.gameSettings.keyBindsHotbar[i].getKeyCode()) {
+                            slot = i + 36; // They are hotkeying, the actual slot is the targeted one, +36 because
+                        }
+                    }
+                }
+                if (slot >= 9 || (slot >= 5 && mc.currentScreen instanceof GuiInventory)) {
+                    if (main.getConfigValues().getLockedSlots().contains(slot)) {
+                        if (main.getLockSlot().getKeyCode() == keyCode) {
+                            main.getUtils().playSound("random.orb", 1);
+                            main.getConfigValues().getLockedSlots().remove(slot);
+                            main.getConfigValues().saveConfig();
+                        } else {
+                            main.getUtils().playSound("note.bass", 0.5);
+                            ci.cancel(); // slot is locked
+                            return;
+                        }
+                    } else {
+                        if (main.getLockSlot().getKeyCode() == keyCode) {
+                            main.getUtils().playSound("random.orb", 0.1);
+                            main.getConfigValues().getLockedSlots().add(slot);
+                            main.getConfigValues().saveConfig();
+                        }
+                    }
                 }
             }
-        }
-        if (slot >= 9 || (slot >= 5 && mc.currentScreen instanceof GuiInventory)) {
-            if (main.getConfigValues().getLockedSlots().contains(slot)) {
-                if (main.getLockSlot().getKeyCode() == keyCode) {
-                    main.getUtils().playSound("random.orb", 1);
-                    main.getConfigValues().getLockedSlots().remove(slot);
-                    main.getConfigValues().saveConfig();
-                } else {
-                    main.getUtils().playSound("note.bass", 0.5);
-                    ci.cancel(); // slot is locked
-                }
-            } else {
-                if (main.getLockSlot().getKeyCode() == keyCode) {
-                    main.getUtils().playSound("random.orb", 0.1);
-                    main.getConfigValues().getLockedSlots().add(slot);
-                    main.getConfigValues().saveConfig();
-                }
+            if (mc.gameSettings.keyBindDrop.getKeyCode() == keyCode && main.getConfigValues().isEnabled(Feature.STOP_DROPPING_SELLING_RARE_ITEMS)) {
+                if (main.getInventoryUtils().shouldCancelDrop(theSlot)) ci.cancel();
             }
         }
     }
