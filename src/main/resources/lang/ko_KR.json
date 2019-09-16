@@ -65,8 +65,8 @@
     "dontOpenProfileWithBow": "활을 든 채 프로필 열기 방지",
     "stopDroppingSellingRareItems": "레어 아이템들을 떨어뜨리거나 파는 것을 막기",
     "makeBackpackInventoriesColored": "색깔 있는 인벤토리",
-    "avoidBreakingBottomSugarCane": "Avoid Breaking Bottom Sugar Cane",
-    "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Items"
+    "avoidBreakingBottomSugarCane": "하단 사탕수수 방지",
+    "replaceRomanNumeralsWithNumbers": "로마숫자 숫자 표시"
   },
   "messages": {
     "dropConfirmation": "아이템을 정말로 버리려면 다시 버리세요!",
