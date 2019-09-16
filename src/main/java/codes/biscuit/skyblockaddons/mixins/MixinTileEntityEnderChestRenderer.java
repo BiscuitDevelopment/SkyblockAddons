@@ -3,6 +3,7 @@ package codes.biscuit.skyblockaddons.mixins;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.Feature;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.tileentity.TileEntityEnderChestRenderer;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntityEnderChest;
@@ -39,7 +40,7 @@ public abstract class MixinTileEntityEnderChestRenderer extends TileEntitySpecia
     private void bindTexture(TileEntityEnderChestRenderer tileEntityEnderChestRenderer, ResourceLocation location) {
         SkyblockAddons main = SkyblockAddons.getInstance();
         Minecraft mc = Minecraft.getMinecraft();
-        if (main.getUtils().isOnSkyblock() && mc.currentScreen != null && main.getConfigValues().isEnabled(Feature.MAKE_ENDERCHESTS_GREEN_IN_END) &&
+        if (main.getUtils().isOnSkyblock() && mc.currentScreen == null && main.getConfigValues().isEnabled(Feature.MAKE_ENDERCHESTS_GREEN_IN_END) &&
                 (main.getUtils().getLocation() == EnumUtils.Location.THE_END || main.getUtils().getLocation() == EnumUtils.Location.DRAGONS_NEST)) {
             bindTexture(GREEN_ENDERCHEST);
         } else {
