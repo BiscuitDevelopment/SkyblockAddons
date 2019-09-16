@@ -38,7 +38,8 @@ public abstract class MixinTileEntityEnderChestRenderer extends TileEntitySpecia
     ordinal = 1))
     private void bindTexture(TileEntityEnderChestRenderer tileEntityEnderChestRenderer, ResourceLocation location) {
         SkyblockAddons main = SkyblockAddons.getInstance();
-        if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.MAKE_ENDERCHESTS_GREEN_IN_END) &&
+        Minecraft mc = Minecraft.getMinecraft();
+        if (main.getUtils().isOnSkyblock() && mc.currentScreen != null && main.getConfigValues().isEnabled(Feature.MAKE_ENDERCHESTS_GREEN_IN_END) &&
                 (main.getUtils().getLocation() == EnumUtils.Location.THE_END || main.getUtils().getLocation() == EnumUtils.Location.DRAGONS_NEST)) {
             bindTexture(GREEN_ENDERCHEST);
         } else {
