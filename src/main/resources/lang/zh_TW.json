@@ -4,7 +4,7 @@
     "tab": {
       "features": "功能",
       "fixes": "修復",
-      "guiFeatures": "GUI 功能",
+      "guiFeatures": "介面設定",
       "generalSettings": "一般設定"
     },
     "settings": "設定",
@@ -62,11 +62,11 @@
       "two": "樣式二"
     },
     "warningDuration": "警報持續時間",
-    "dontOpenProfileWithBow": "Don't Open Profile With Bow",
-    "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Items",
-    "makeBackpackInventoriesColored": "Color Inventories",
-    "avoidBreakingBottomSugarCane": "Avoid Breaking Bottom Sugar Cane",
-    "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Items"
+    "dontOpenProfileWithBow": "拿弓時不開啟玩家資料",
+    "stopDroppingSellingRareItems": "避免賣出或丟出稀有以上的物品",
+    "makeBackpackInventoriesColored": "染色背包影響物品欄顏色",
+    "avoidBreakingBottomSugarCane": "避免破壞最下面的甘蔗",
+    "replaceRomanNumeralsWithNumbers": "將羅馬數字替換為阿拉伯數字"
   },
   "messages": {
     "dropConfirmation": "再次丟棄此物品以確認!",
@@ -89,8 +89,8 @@
     "slotLocked": "這個欄位已被鎖定!",
     "summoningEyeFound": "召喚之眼!",
     "cancelledStemBreak": "SkyblockAddons阻止了你破壞此物, 如依舊想破壞, 請使用空手",
-    "cancelledProfileOpening": "SkyblockAddons has stopped you from opening this player's profile while holding a bow.",
-    "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare item or tool from your hotbar.",
-    "clickMoreTimes": "Click/drop this item %times% more times if you really want to do this."
+    "cancelledProfileOpening": "SkyblockAddons 避免了你拿著弓時打開其他玩家的資料。",
+    "cancelledDropping": "SkyblockAddons 避免了你丟出快捷鍵中稀有以上的物品。",
+    "clickMoreTimes": "如果你真的想這麼做，再點擊或按丟出 %times% 次。"
   }
 }
