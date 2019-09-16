@@ -4,7 +4,7 @@
     "tab": {
       "features": "Funcionalidades",
       "fixes": "Correções",
-      "guiFeatures": "Funcionalidades do Menu",
+      "guiFeatures": "Funcionalidades da interface",
       "generalSettings": "Definições gerais"
     },
     "settings": "Definições",
@@ -16,7 +16,7 @@
     "fullInventoryWarning": "Aviso de inventário cheio",
     "disableEmberRodAbility": "Desativar a Ember Rod na ilha",
     "editLocations": "Editar localizações",
-    "guiScale": "Escala da GUI: %scale%",
+    "guiScale": "Escala da interface: %scale%",
     "resetLocations": "Redefinir as localizações",
     "hideDurability": "Esconder a durabilidade das ferramentas",
     "showEnchantmentsReforges": "Encantamentos e Reforges",
