@@ -65,8 +65,8 @@
     "dontOpenProfileWithBow": "Neotevírat profily s lukem",
     "stopDroppingSellingRareItems": "Zakázat vyhazování/prodávání vzácných předmětů",
     "makeBackpackInventoriesColored": "Vybarvit inventáře",
-    "avoidBreakingBottomSugarCane": "Avoid Breaking Bottom Sugar Cane",
-    "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Items"
+    "avoidBreakingBottomSugarCane": "Zabránění rozbití spodní vrstvy cukrové třtiny",
+    "replaceRomanNumeralsWithNumbers": "Nahrazení římských číslic na předmětech"
   },
   "messages": {
     "dropConfirmation": "Vyhoď tento item pro vyhození!",
