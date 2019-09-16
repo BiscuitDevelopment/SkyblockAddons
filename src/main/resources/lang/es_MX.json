@@ -62,9 +62,9 @@
       "two": "Estilo Dos"
     },
     "warningDuration": "Duración de la Alerta",
-    "dontOpenProfileWithBow": "Don't Open Profile With Bow",
-    "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Items",
-    "makeBackpackInventoriesColored": "Color Inventories",
+    "dontOpenProfileWithBow": "No Abrir Perfiles con un Arco",
+    "stopDroppingSellingRareItems": "Detener Arrojo/Venta de Objetos Raros",
+    "makeBackpackInventoriesColored": "Color de Inventarios",
     "avoidBreakingBottomSugarCane": "Avoid Breaking Bottom Sugar Cane",
     "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Items"
   },
