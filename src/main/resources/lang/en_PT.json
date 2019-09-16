@@ -50,16 +50,16 @@
     "preventMovementOnDeath": "Quit walkin' after a plunderin'",
     "showItemAnvilUses": "Show Yer Anvil Uses",
     "lockSlots": "Allow Lockin' yer Slots",
-    "dontResetCursorInventory": "Don't reset yer cursor between inventories",
+    "dontResetCursorInventory": "Don't reset cursor between yer inventories",
     "summoningEyeAlert": "Ye Ol' Summonin' Aye Alert",
-    "makeEnderchestsInEndGreen": "Make them Enderchests in this 'ere End Green",
+    "makeEnderchestsInEndGreen": "Make Enderchests in this 'ere End Green",
     "changeColor": "Change yer Col'r",
     "showInOtherGames": "Show in Other Games",
     "useVanillaTexture": "Use yer Normal Text're",
     "textStyle": "yer Style o' Text",
     "textStyles": {
-      "one": "yer' Fr'st Style",
-      "two": "yer Sec'nd option"
+      "one": "Fr'st Style",
+      "two": "Sec'nd option"
     },
     "warningDuration": "Warnin' Derratin'",
     "dontOpenProfileWithBow": "Don't Open yer mates' profiles wit' Bow",
