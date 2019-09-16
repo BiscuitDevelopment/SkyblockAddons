@@ -49,7 +49,7 @@
     "stopBowChargeFromResetting": "阻止拉弓进度重置",
     "preventMovementOnDeath": "暂时阻止死亡后移动",
     "showItemAnvilUses": "显示物品铁砧合成次数",
-    "lockSlots": "允许锁定快捷栏",
+    "lockSlots": "锁定快捷栏功能",
     "dontResetCursorInventory": "阻止切换物品栏菜单时光标重置",
     "summoningEyeAlert": "召唤之眼获取提醒",
     "makeEnderchestsInEndGreen": "将末地中末影箱渲染为绿色",
