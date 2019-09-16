@@ -81,16 +81,16 @@ public class SettingsGui extends GuiScreen {
         float textScale = 1.4F;
         int x = sr.getScaledWidth()/2;
         int y = 70;
-        String text = "Features";
+        String text = Message.TAB_FEATURES.getMessage();
         buttonList.add(new ButtonSwitchTab(x-180, y, (int)(fontRendererObj.getStringWidth(text)*textScale),
                 14, text, main, EnumUtils.SkyblockAddonsGuiTab.FEATURES, null));
-        text = "Fixes";
+        text = Message.TAB_FIXES.getMessage();
         buttonList.add(new ButtonSwitchTab(x-80, y, (int)(fontRendererObj.getStringWidth(text)*textScale),
                 14, text, main, EnumUtils.SkyblockAddonsGuiTab.FIXES, null));
-        text = "GUI Features";
+        text = Message.TAB_GUI_FEATURES.getMessage();
         buttonList.add(new ButtonSwitchTab(x-20, y, (int)(fontRendererObj.getStringWidth(text)*textScale),
                 14, text, main, EnumUtils.SkyblockAddonsGuiTab.GUI_FEATURES, null));
-        text = "General Settings";
+        text = Message.TAB_GENERAL_SETTINGS.getMessage();
         buttonList.add(new ButtonSwitchTab(x+90, y, (int)(fontRendererObj.getStringWidth(text)*textScale),
                 14, text, main, EnumUtils.SkyblockAddonsGuiTab.GENERAL_SETTINGS, null));
     }
