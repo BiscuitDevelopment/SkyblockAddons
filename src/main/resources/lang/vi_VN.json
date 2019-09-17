@@ -4,7 +4,7 @@
     "tab": {
       "features": "Tính năng",
       "fixes": "Sửa lỗi",
-      "guiFeatures": "GUI Features",
+      "guiFeatures": "Thanh công cụ",
       "generalSettings": "Cài đặt chung"
     },
     "settings": "Cài Đặt",
@@ -50,8 +50,8 @@
     "preventMovementOnDeath": "Tránh di chuyển sau khi chết",
     "showItemAnvilUses": "Hiện số lần dùng đe",
     "lockSlots": "Cho phép khóa ô",
-    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories",
-    "summoningEyeAlert": "Summoning Eye Alert",
+    "dontResetCursorInventory": "Không cho con trỏ chuột xuống",
+    "summoningEyeAlert": "Cảnh báo: Triệu hồi rồng",
     "makeEnderchestsInEndGreen": "Làm Cho Hòm Ender Màu Xanh Ở The End",
     "changeColor": "Thay đổi màu sắc",
     "showInOtherGames": "Hiện trong các trò khác",
@@ -61,12 +61,12 @@
       "one": "Loại 1",
       "two": "Loại 2"
     },
-    "warningDuration": "Warning Duration",
+    "warningDuration": "Cảnh báo: Sắp hết thời gian",
     "dontOpenProfileWithBow": "Chặn Mở Ô Thông Tin Về Người Chơi Khác Khi Cầm Cung",
-    "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Items",
+    "stopDroppingSellingRareItems": "Không làm rơi / Bán đồ hiếm",
     "makeBackpackInventoriesColored": "Đổi Màu Giao Diện Túi Đồ Của Ba Lô",
-    "avoidBreakingBottomSugarCane": "Avoid Breaking Bottom Sugar Cane",
-    "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Items"
+    "avoidBreakingBottomSugarCane": "Tránh phá mía ở giữa",
+    "replaceRomanNumeralsWithNumbers": "Thay thế chữ số La Mã trên công cụ"
   },
   "messages": {
     "dropConfirmation": "Nhấn \"Q\" Thêm Một Lần Nữa Để Xác Nhận!",
