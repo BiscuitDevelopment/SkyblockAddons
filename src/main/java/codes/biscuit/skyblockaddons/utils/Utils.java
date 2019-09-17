@@ -467,6 +467,16 @@ public class Utils {
 
     public String replaceRomanNumerals(String text) {
         if (text != null) {
+     text = checkAndReplaceNumeral(text, " XXV", " 25");
+     text = checkAndReplaceNumeral(text, " XXIV", " 24");
+     text = checkAndReplaceNumeral(text, " XXIII", " 23");
+     text = checkAndReplaceNumeral(text, " XXII", " 22");
+     text = checkAndReplaceNumeral(text, " XXI", " 21");
+     text = checkAndReplaceNumeral(text, " XX", " 20");
+     text = checkAndReplaceNumeral(text, " XIX", " 19");
+     text = checkAndReplaceNumeral(text, " XVIII", " 18");
+     text = checkAndReplaceNumeral(text, " XVII", " 17");
+     text = checkAndReplaceNumeral(text, " XVI", " 16");
             text = checkAndReplaceNumeral(text, " XV", " 15");
             text = checkAndReplaceNumeral(text, " XIV", " 14");
             text = checkAndReplaceNumeral(text, " XIII", " 13");
