@@ -88,7 +88,8 @@
     },
     "slotLocked": "Ovaj Slot je Zaključan!",
     "summoningEyeFound": "Evokacijsko Oko!",
-    "cancelledStemBreak": "SkyBlockAddons te zaustavio od rušenja ovoga. Koristi svoju ruku ako to želiš slomiti.",
+    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this stem. Use your bare hand if you'd like to actually break it.",
+    "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use your another tool if you'd actually like to break it.",
     "cancelledProfileOpening": "SkyblockAddons te zaustavio od otvaranja profila ovog igrača dok držiš luk.",
     "cancelledDropping": "SkyblockAddons te zaustavio od bacanje ove rijetke stvari ili alata od tvojeg hotbara.",
     "clickMoreTimes": "Klikni/dropaj ovu stvar %times% više puta ako zapravo želiš ovo napraviti."
