@@ -63,10 +63,10 @@
     },
     "warningDuration": "경고 길이",
     "dontOpenProfileWithBow": "활을 든 채 프로필 열기 방지",
-    "stopDroppingSellingRareItems": "레어 아이템들을 떨어뜨리거나 파는 것을 막기",
-    "makeBackpackInventoriesColored": "색깔 있는 인벤토리",
-    "avoidBreakingBottomSugarCane": "하단 사탕수수 방지",
-    "replaceRomanNumeralsWithNumbers": "로마숫자 숫자 표시"
+    "stopDroppingSellingRareItems": "희귀한 아이템들을 떨어뜨리거나 파는 것을 막기",
+    "makeBackpackInventoriesColored": "색깔 있는 백팩 인벤토리",
+    "avoidBreakingBottomSugarCane": "사탕수수 밑동 부수기 방지",
+    "replaceRomanNumeralsWithNumbers": "로마숫자를 숫자로 표시"
   },
   "messages": {
     "dropConfirmation": "아이템을 정말로 버리려면 다시 버리세요!",
@@ -88,10 +88,10 @@
     },
     "slotLocked": "이 슬롯은 잠겨있습니다!",
     "summoningEyeFound": "소환의 눈!",
-    "cancelledStemBreak": "SkyblockAddons이 이 블럭을 부수는 것을 방지했습니다. 만약 정말 부수려면, 빈 손으로 부수세요.",
-    "cancelledCaneBreak": "사탕수수의 밑둥을 부수는 것을 sba가 제한했습니다. 부수고싶다면 다른 도구를 사용하십시오.",
-    "cancelledProfileOpening": "SkyblockAddons이 활을 든 채 이 플레이어의 프로필을 여는 것을 방지했습니다,",
-    "cancelledDropping": "SkyblockAddons이 이 레어 아이템 또는 도구를 핫바에서 떨어뜨리는 것을 방지했습니다",
+    "cancelledStemBreak": "SkyblockAddons이 이 줄기를 부수는 것을 방지했습니다. 만약 정말 부수려면, 빈 손으로 부수세요.",
+    "cancelledCaneBreak": "사탕수수의 밑동을 부수는 것을 SkyblockAddons이 제한했습니다. 부수고 싶다면 다른 도구를 사용하십시오.",
+    "cancelledProfileOpening": "SkyblockAddons이 활을 든 채 이 플레이어의 프로필을 여는 것을 방지했습니다.",
+    "cancelledDropping": "SkyblockAddons이 이 희귀한 아이템 또는 도구를 핫바에서 떨어뜨리는 것을 방지했습니다.",
     "clickMoreTimes": "만약 이 아이템을 정말 떨어뜨리려면 %times%번 더 떨어뜨리세요."
   }
 }
