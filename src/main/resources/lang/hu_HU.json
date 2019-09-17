@@ -88,7 +88,8 @@
     },
     "slotLocked": "A slot le van zárva!",
     "summoningEyeFound": "Summoning Eye!",
-    "cancelledStemBreak": "A SkyblockAddons megállította, hogy kiüsd ezt. Használd az öklöd, ha ki szeretnéd ütni.",
+    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this stem. Use your bare hand if you'd like to actually break it.",
+    "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use your another tool if you'd actually like to break it.",
     "cancelledProfileOpening": "A SkyblockAddons megállította, hogy megnyisd ennek a játékosnak a profilját, amíg íj van a kezedben.",
     "cancelledDropping": "A SkyblockAddons megállította, hogy eldobd ezt a rare tárgyat vagy eszközt.",
     "clickMoreTimes": "Kattints/dobd el ezt a tárgyat még %times% alkalommal, ha tényleg ezt szeretnéd."
