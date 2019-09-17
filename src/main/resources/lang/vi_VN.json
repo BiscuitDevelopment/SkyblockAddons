@@ -58,14 +58,14 @@
     "useVanillaTexture": "Sử dụng đồ họa nguyên bản",
     "textStyle": "Kiểu chữ",
     "textStyles": {
-      "one": "Loại 1",
-      "two": "Loại 2"
+      "one": "Kiểu 1",
+      "two": "Kiểu 2"
     },
     "warningDuration": "Cảnh báo: Sắp hết thời gian",
     "dontOpenProfileWithBow": "Chặn Mở Ô Thông Tin Về Người Chơi Khác Khi Cầm Cung",
     "stopDroppingSellingRareItems": "Không làm rơi / Bán đồ hiếm",
     "makeBackpackInventoriesColored": "Đổi Màu Giao Diện Túi Đồ Của Ba Lô",
-    "avoidBreakingBottomSugarCane": "Tránh phá mía ở giữa",
+    "avoidBreakingBottomSugarCane": "Tránh phá Mía Ở Dưới",
     "replaceRomanNumeralsWithNumbers": "Thay thế chữ số La Mã trên công cụ"
   },
   "messages": {
