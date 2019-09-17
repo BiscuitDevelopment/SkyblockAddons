@@ -88,8 +88,8 @@
     },
     "slotLocked": "Cet emplacement est bloqué!",
     "summoningEyeFound": "Œil d'invocation!",
-    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this stem. Use your bare hand if you'd like to actually break it.",
-    "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use your another tool if you'd actually like to break it.",
+    "cancelledStemBreak": "SkyblockAddons vous a empêché de casser cette graine, Utilisez votre main si vous souhaitez la casser.",
+    "cancelledCaneBreak": "SkyblockAddons vous a empêché de casser ce bloc de canne à sucre. Utiliser un autre outil si vous souhaitez le casser.",
     "cancelledProfileOpening": "SkyblockAddons vous a empêché d'ouvrir le profil de ce joueur en utilisant un arc.",
     "cancelledDropping": "SkyblockAddons vous a empêché de jeter cet objet ou outil rare de votre barre d'action.",
     "clickMoreTimes": "Cliquez/jetez cet objet %times% fois si vous le souhaitez vraiment."
