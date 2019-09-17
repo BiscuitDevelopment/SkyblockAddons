@@ -88,7 +88,8 @@
     },
     "slotLocked": "ช่องนี้ถูกล็อคไว้!",
     "summoningEyeFound": "ดวงตาอัญเชิญ!",
-    "cancelledStemBreak": "ม็อด SkyblockAddons ได้หยุดคุณจากการทำลายรากพืชนี้ โปรดใช้มือเปล่าถ้าต้องการทำลาย",
+    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this stem. Use your bare hand if you'd like to actually break it.",
+    "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use your another tool if you'd actually like to break it.",
     "cancelledProfileOpening": "ม็อด SkyblockAddons ได้หยุดคุณจากการเปิดดูโปรไฟล์ผู้เล่นเมื่อคุณถือธนูไว้",
     "cancelledDropping": "ม็อด SkyblockAddons ได้หยุดคุณจากการทิ้งไอเทม Rare หรืออุปกรณ์จากช่อง Hotbar ของคุณ",
     "clickMoreTimes": "คลิกหรือทิ้งไอเทมนี้อีก %times% ครั้งเพื่อยืนยัน"
