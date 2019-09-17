@@ -129,14 +129,6 @@ public class InventoryUtils {
                     }
                     if (!added) itemPickupLog.put(diff.getDisplayName(), diff);
                 }
-                if (main.getConfigValues().isEnabled(Feature.SUMMONING_EYE_ALERT)
-                        && diff.getAmount() == 1 && diff.getDisplayName().equals(SUMMONING_EYE_DISPLAY_NAME)
-                        && (main.getUtils().getLocation() == EnumUtils.Location.THE_END || main.getUtils().getLocation() == EnumUtils.Location.DRAGONS_NEST)
-                        && main.getPlayerListener().didntRecentlyCloseScreen()){
-                    main.getUtils().playSound("random.orb", 0.5);
-                    main.getRenderListener().setTitleFeature(Feature.SUMMONING_EYE_ALERT);
-                    main.getScheduler().schedule(Scheduler.CommandType.RESET_TITLE_FEATURE, main.getConfigValues().getWarningSeconds());
-                }
             }
 
         }
