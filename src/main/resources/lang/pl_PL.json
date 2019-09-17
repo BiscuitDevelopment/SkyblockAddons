@@ -50,7 +50,7 @@
     "preventMovementOnDeath": "Zatrzymaj Poruszanie Się Po Śmierci",
     "showItemAnvilUses": "Pokaż Liczbę Użyć Kowadła na Przedmiocie",
     "lockSlots": "Zezwól na blokowanie slotów",
-    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories",
+    "dontResetCursorInventory": "Nie resetuj kursora pomiędzy ekwipunkami",
     "summoningEyeAlert": "Alarm o oku przywołującym",
     "makeEnderchestsInEndGreen": "Uczyń Skrzynie Endu w Endzie zielone",
     "changeColor": "Zmień kolor",
@@ -64,8 +64,8 @@
     "warningDuration": "Długość Ostrzeżenia",
     "dontOpenProfileWithBow": "Nie otwieraj profilu za pomocą łuku",
     "stopDroppingSellingRareItems": "Nie upuszczaj/sprzedawaj rzadkich przedmiotów",
-    "makeBackpackInventoriesColored": "Kolorowe plecaki",
-    "avoidBreakingBottomSugarCane": "Blokada niszczenia dolnej trzciny cukrowej",
+    "makeBackpackInventoriesColored": "Zmień kolor plecaka",
+    "avoidBreakingBottomSugarCane": "Unikaj niszczenia dolnej części trzciny cukrowej",
     "replaceRomanNumeralsWithNumbers": "Zamień cyfry rzymskie na normalne"
   },
   "messages": {

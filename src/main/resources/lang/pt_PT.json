@@ -4,7 +4,7 @@
     "tab": {
       "features": "Funcionalidades",
       "fixes": "Correções",
-      "guiFeatures": "Funcionalidades do Menu",
+      "guiFeatures": "Funcionalidades da interface",
       "generalSettings": "Definições gerais"
     },
     "settings": "Definições",
@@ -14,9 +14,9 @@
     "skeletonHatBonesBar": "Barra de ossos do Skeleton Helmet",
     "hideFoodAndArmor": "Esconder a barra de comida e armadura",
     "fullInventoryWarning": "Aviso de inventário cheio",
-    "disableEmberRodAbility": "Desligar a Ember Rod na ilha",
+    "disableEmberRodAbility": "Desativar a Ember Rod na ilha",
     "editLocations": "Editar localizações",
-    "guiScale": "Escala da GUI: %scale%",
+    "guiScale": "Escala da interface: %scale%",
     "resetLocations": "Redefinir as localizações",
     "hideDurability": "Esconder a durabilidade das ferramentas",
     "showEnchantmentsReforges": "Encantamentos e Reforges",
@@ -42,7 +42,7 @@
     "healthUpdates": "Número da Diferença de Vida",
     "hidePlayersInLobby": "Esconder jogadores longe no Lobby",
     "darkAuctionTimer": "Tempo da Dark Auction",
-    "magmaBossTimer": "Tempo do Magma Boss",
+    "magmaBossTimer": "Tempo até ao Magma Boss",
     "itemPickupLog": "Registo de recolha de itens",
     "avoidPlacingEnchantedItems": "Evitar colocar itens encantados",
     "avoidBreakingStems": "Evitar partir as sementes",
@@ -58,8 +58,8 @@
     "useVanillaTexture": "Usar a textura do vanilla",
     "textStyle": "Estilo do texto",
     "textStyles": {
-      "one": "Estilo Um",
-      "two": "Estilo Dois"
+      "one": "Estilo 1",
+      "two": "Estilo 2"
     },
     "warningDuration": "Duração do aviso",
     "dontOpenProfileWithBow": "Não abrir perfis com o arco",
