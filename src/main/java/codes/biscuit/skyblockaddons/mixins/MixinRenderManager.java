@@ -37,7 +37,7 @@ public class MixinRenderManager {
             }
             if (main.getConfigValues().isEnabled(Feature.HIDE_PLAYERS_IN_LOBBY) &&
                     (entityIn instanceof EntityOtherPlayerMP || entityIn instanceof EntityFX || entityIn instanceof EntityItemFrame) &&
-                    entityIn.getDistanceToEntity(Minecraft.getMinecraft().thePlayer) > 7) {
+                    entityIn.getDistanceToEntity(Minecraft.getMinecraft().thePlayer) > 7 && main.getUtils().getLocation().equals(EnumUtils.Location.VILLAGE)) {
                 cir.setReturnValue(false);
             }
         }

@@ -511,7 +511,7 @@ public class PlayerListener {
             }
         }
         if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.REPLACE_ROMAN_NUMERALS_WITH_NUMBERS) &&
-                e.toolTip != null && (hoveredItem.isItemEnchanted()||hoveredItem.getItem().equals(Items.potionitem))) {
+                e.toolTip != null) {
             for (int i = 0; i < e.toolTip.size(); i++) {
                 e.toolTip.set(i, main.getUtils().replaceRomanNumerals(e.toolTip.get(i)));
             }

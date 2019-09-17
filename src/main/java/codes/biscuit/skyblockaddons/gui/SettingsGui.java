@@ -77,23 +77,42 @@ public class SettingsGui extends GuiScreen {
                 addButton(setting);
             }
         }
-        ScaledResolution sr = new ScaledResolution(mc);
-        float textScale = 1.4F;
-        int x = sr.getScaledWidth()/2;
-        int y = 70;
-        String text = "Features";
-        buttonList.add(new ButtonSwitchTab(x-180, y, (int)(fontRendererObj.getStringWidth(text)*textScale),
-                14, text, main, EnumUtils.SkyblockAddonsGuiTab.FEATURES, null));
-        text = "Fixes";
-        buttonList.add(new ButtonSwitchTab(x-80, y, (int)(fontRendererObj.getStringWidth(text)*textScale),
-                14, text, main, EnumUtils.SkyblockAddonsGuiTab.FIXES, null));
-        text = "GUI Features";
-        buttonList.add(new ButtonSwitchTab(x-20, y, (int)(fontRendererObj.getStringWidth(text)*textScale),
-                14, text, main, EnumUtils.SkyblockAddonsGuiTab.GUI_FEATURES, null));
-        text = "General Settings";
-        buttonList.add(new ButtonSwitchTab(x+90, y, (int)(fontRendererObj.getStringWidth(text)*textScale),
-                14, text, main, EnumUtils.SkyblockAddonsGuiTab.GENERAL_SETTINGS, null));
+
+        addTabs();
     }
+
+    private void addTabs() {
+        int collumn = 1;
+        for (EnumUtils.SkyblockAddonsGuiTab loopTab : EnumUtils.SkyblockAddonsGuiTab.values()) {
+            if (lastTab != loopTab) {
+                int tabX = 0;
+                if (collumn == 1) tabX = 120;
+                else if (collumn == 2) tabX = 230;
+                else if (collumn == 3) tabX = 340;
+
+                String text = "";
+                switch (loopTab) {
+                    case FEATURES:
+                        text = Message.TAB_FEATURES.getMessage();
+                        break;
+                    case FIXES:
+                        text = Message.TAB_FIXES.getMessage();
+                        break;
+                    case GUI_FEATURES:
+                        text = Message.TAB_GUI_FEATURES.getMessage();
+                        break;
+                    case GENERAL_SETTINGS:
+                        text = Message.TAB_GENERAL_SETTINGS.getMessage();
+                        break;
+                }
+                int stringWidth = fontRendererObj.getStringWidth(text);
+                buttonList.add(new ButtonSwitchTab((tabX-stringWidth/2)*1.4, 70, (int)(stringWidth*1.4),
+                        14, text, main, loopTab, lastTab));
+                collumn++;
+            }
+        }
+    }
+
 
     private int findDisplayCount() {
         int maxX = new ScaledResolution(mc).getScaledHeight()-70-25;

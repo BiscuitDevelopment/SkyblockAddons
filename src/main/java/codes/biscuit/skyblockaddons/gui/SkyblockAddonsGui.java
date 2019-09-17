@@ -74,8 +74,7 @@ public class SkyblockAddonsGui extends GuiScreen {
                     Feature.REPLACE_ROMAN_NUMERALS_WITH_NUMBERS, Feature.DROP_CONFIRMATION};
         } else if (tab == EnumUtils.SkyblockAddonsGuiTab.FIXES) {
             array = new Feature[]{Feature.HIDE_BONES, Feature.DISABLE_EMBER_ROD, Feature.HIDE_AUCTION_HOUSE_PLAYERS,
-                    Feature.STOP_BOW_CHARGE_FROM_RESETTING, Feature.AVOID_PLACING_ENCHANTED_ITEMS, Feature.PREVENT_MOVEMENT_ON_DEATH
-                    , Feature.HIDE_DURABILITY};
+                    Feature.STOP_BOW_CHARGE_FROM_RESETTING, Feature.AVOID_PLACING_ENCHANTED_ITEMS, Feature.PREVENT_MOVEMENT_ON_DEATH};
         } else if (tab == EnumUtils.SkyblockAddonsGuiTab.GUI_FEATURES) {
             array = new Feature[]{Feature.MAGMA_BOSS_TIMER, Feature.MANA_BAR, Feature.MANA_TEXT, Feature.DEFENCE_TEXT, Feature.DEFENCE_PERCENTAGE,
                     Feature.HEALTH_BAR, Feature.HEALTH_TEXT, Feature.DEFENCE_ICON, Feature.SKELETON_BAR, Feature.HEALTH_UPDATES,
@@ -101,22 +100,40 @@ public class SkyblockAddonsGui extends GuiScreen {
                 skip--;
             }
         }
-        ScaledResolution sr = new ScaledResolution(mc);
-        float textScale = 1.4F;
-        int x = sr.getScaledWidth()/2;
-        int y = 70;
-        String text = Message.TAB_FEATURES.getMessage();
-        buttonList.add(new ButtonSwitchTab(x-180, y, (int)(fontRendererObj.getStringWidth(text)*textScale),
-                14, text, main, EnumUtils.SkyblockAddonsGuiTab.FEATURES, tab));
-        text = Message.TAB_FIXES.getMessage();
-        buttonList.add(new ButtonSwitchTab(x-80, y, (int)(fontRendererObj.getStringWidth(text)*textScale),
-                14, text, main, EnumUtils.SkyblockAddonsGuiTab.FIXES, tab));
-        text = Message.TAB_GUI_FEATURES.getMessage();
-        buttonList.add(new ButtonSwitchTab(x-20, y, (int)(fontRendererObj.getStringWidth(text)*textScale),
-                14, text, main, EnumUtils.SkyblockAddonsGuiTab.GUI_FEATURES, tab));
-        text = Message.TAB_GENERAL_SETTINGS.getMessage();
-        buttonList.add(new ButtonSwitchTab(x+90, y, (int)(fontRendererObj.getStringWidth(text)*textScale),
-                14, text, main, EnumUtils.SkyblockAddonsGuiTab.GENERAL_SETTINGS, tab));
+
+        addTabs();
+    }
+
+    private void addTabs() {
+        int collumn = 1;
+        for (EnumUtils.SkyblockAddonsGuiTab loopTab : EnumUtils.SkyblockAddonsGuiTab.values()) {
+            if (tab != loopTab) {
+                int tabX = 0;
+                if (collumn == 1) tabX = 120;
+                else if (collumn == 2) tabX = 230;
+                else if (collumn == 3) tabX = 340;
+
+                String text = "";
+                switch (loopTab) {
+                    case FEATURES:
+                        text = Message.TAB_FEATURES.getMessage();
+                        break;
+                    case FIXES:
+                        text = Message.TAB_FIXES.getMessage();
+                        break;
+                    case GUI_FEATURES:
+                        text = Message.TAB_GUI_FEATURES.getMessage();
+                        break;
+                    case GENERAL_SETTINGS:
+                        text = Message.TAB_GENERAL_SETTINGS.getMessage();
+                        break;
+                }
+                int stringWidth = fontRendererObj.getStringWidth(text);
+                buttonList.add(new ButtonSwitchTab((tabX-stringWidth/2)*1.4, 70, (int)(stringWidth*1.4),
+                        14, text, main, loopTab, tab));
+                collumn++;
+            }
+        }
     }
 
     private int findDisplayCount() {

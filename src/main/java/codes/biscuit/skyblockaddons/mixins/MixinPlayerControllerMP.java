@@ -1,6 +1,7 @@
 package codes.biscuit.skyblockaddons.mixins;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.Feature;
 import codes.biscuit.skyblockaddons.utils.Message;
 import net.minecraft.block.Block;
@@ -49,12 +50,12 @@ public class MixinPlayerControllerMP {
                 return;
             }
         }
-        if (heldItem == null || heldItem.getItem().equals(Items.reeds) || heldItem.getItem().equals(Items.diamond_hoe) || heldItem.getItem().equals(Items.iron_hoe) || heldItem.getItem().equals(Items.golden_hoe)
-                || heldItem.getItem().equals(Items.wooden_hoe) || heldItem.getItem().equals(Items.wooden_hoe)) {
-            if (main.getConfigValues().isEnabled(Feature.AVOID_BREAKING_BOTTOM_SUGAR_CANE) && (block.equals(Blocks.reeds) && mc.theWorld.getBlockState(loc.down()).getBlock() != Blocks.reeds)) {
-                if (System.currentTimeMillis()- lastStemMessage > 20000) {
+        if (main.getUtils().getLocation().equals(EnumUtils.Location.ISLAND) && main.getConfigValues().isEnabled(Feature.AVOID_BREAKING_BOTTOM_SUGAR_CANE) && (block.equals(Blocks.reeds) && mc.theWorld.getBlockState(loc.down()).getBlock() != Blocks.reeds)) {
+            if (heldItem == null || heldItem.getItem().equals(Items.reeds) || heldItem.getItem().equals(Items.diamond_hoe) || heldItem.getItem().equals(Items.iron_hoe) || heldItem.getItem().equals(Items.golden_hoe) || heldItem.getItem().equals(Items.stone_hoe)
+                    || heldItem.getItem().equals(Items.wooden_hoe) || heldItem.getItem().equals(Items.wooden_hoe)) {
+                if (System.currentTimeMillis() - lastStemMessage > 20000) {
                     lastStemMessage = System.currentTimeMillis();
-                    main.getUtils().sendMessage(EnumChatFormatting.RED+Message.MESSAGE_CANCELLED_STEM_BREAK.getMessage());
+                    main.getUtils().sendMessage(EnumChatFormatting.RED + Message.MESSAGE_CANCELLED_CANE_BREAK.getMessage());
                 }
                 cir.setReturnValue(false);
             }

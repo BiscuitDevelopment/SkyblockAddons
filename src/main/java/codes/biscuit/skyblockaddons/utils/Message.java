@@ -25,7 +25,7 @@ public enum Message {
     SETTING_GUI_SCALE(MessageObject.SETTING, "guiScale"),
     SETTING_RESET_LOCATIONS(MessageObject.SETTING, "resetLocations"),
     SETTING_SETTINGS(MessageObject.SETTING, "settings"),
-    SETTING_HIDE_DURABILITY(MessageObject.SETTING, "hideDurability"),
+//    SETTING_HIDE_DURABILITY(MessageObject.SETTING, "hideDurability"), // removed
     SETTING_ENCHANTS_AND_REFORGES(MessageObject.SETTING, "showEnchantmentsReforges"),
     SETTING_MINION_STOP_WARNING(MessageObject.SETTING, "minionStopWarning"),
     SETTING_AUCTION_HOUSE_PLAYERS(MessageObject.SETTING, "hideAuctionHousePlayers"),
@@ -88,6 +88,7 @@ public enum Message {
     MESSAGE_STOPPED_OPENING_PROFILE(MessageObject.MESSAGES, "cancelledProfileOpening"),
     MESSAGE_CANCELLED_DROPPING(MessageObject.MESSAGES, "cancelledDropping"),
     MESSAGE_CLICK_MORE_TIMES(MessageObject.MESSAGES, "clickMoreTimes"),
+    MESSAGE_CANCELLED_CANE_BREAK(MessageObject.MESSAGES, "cancelledCaneBreak"),
 
     @Deprecated ANCHOR_POINT_TOP_LEFT(MessageObject.ANCHOR_POINT, "topLeft"),
     @Deprecated ANCHOR_POINT_TOP_RIGHT(MessageObject.ANCHOR_POINT, "topRight"),
