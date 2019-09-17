@@ -49,17 +49,17 @@
     "stopBowChargeFromResetting": "Dừng việc nạp cung bị gián đoạn",
     "preventMovementOnDeath": "Tránh di chuyển sau khi chết",
     "showItemAnvilUses": "Hiện số lần dùng đe",
-    "lockSlots": "Allow Locking Slots",
+    "lockSlots": "Cho phép khóa ô",
     "dontResetCursorInventory": "Don't Reset Cursor Between Inventories",
     "summoningEyeAlert": "Summoning Eye Alert",
     "makeEnderchestsInEndGreen": "Làm Cho Hòm Ender Màu Xanh Ở The End",
     "changeColor": "Thay đổi màu sắc",
     "showInOtherGames": "Hiện trong các trò khác",
     "useVanillaTexture": "Sử dụng đồ họa nguyên bản",
-    "textStyle": "Text Style",
+    "textStyle": "Kiểu chữ",
     "textStyles": {
-      "one": "Style One",
-      "two": "Style Two"
+      "one": "Loại 1",
+      "two": "Loại 2"
     },
     "warningDuration": "Warning Duration",
     "dontOpenProfileWithBow": "Chặn Mở Ô Thông Tin Về Người Chơi Khác Khi Cầm Cung",
@@ -86,12 +86,12 @@
       "enchants": "Phù phép",
       "reforges": "Rèn luyện"
     },
-    "slotLocked": "This slot is locked!",
+    "slotLocked": "Ô này đã được khoá!",
     "summoningEyeFound": "Mắt Triệu Hồi!",
-    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this stem. Use your bare hand if you'd like to actually break it.",
-    "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use your another tool if you'd actually like to break it.",
+    "cancelledStemBreak": "SkyblockAddons Đã Ngăn Bạn Phá Hạt Giống Này. Hãy Dùng Tay Không Nếu Bạn Muốn Phá Nó.",
+    "cancelledCaneBreak": "\"SkyblockAddons\" đã ngăn bạn khỏi việc phá cây mía. Hãy sử dụng tay không nếu bạn muốn đập nó.",
     "cancelledProfileOpening": "SkyblockAddons Đã Ngăn Bạn Xem Thông Về Người Chơi Này Khi Bạn Đang Cầm Cung.",
-    "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare item or tool from your hotbar.",
+    "cancelledDropping": "\"SkyblockAddons\" đã ngăn bạn làm rơi đồ hiếm từ thanh công cụ.",
     "clickMoreTimes": "Bấm/Thả Đồ Vật Này Thêm %times% Lần Nữa Nếu Bạn Muốn Thực Hiện Điều Này."
   }
 }
