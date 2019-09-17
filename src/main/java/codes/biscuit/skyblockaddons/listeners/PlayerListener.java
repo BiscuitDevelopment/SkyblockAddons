@@ -146,7 +146,7 @@ public class PlayerListener {
                         setAttribute(Attribute.HEALTH, newHealth);
                         setAttribute(Attribute.MAX_HEALTH, Integer.parseInt(healthSplit[1]));
                         if (defencePart != null) {
-                            setAttribute(Attribute.DEFENCE, Integer.valueOf(main.getUtils().getNumbersOnly(defencePart).trim()));
+                            setAttribute(Attribute.DEFENCE, Integer.parseInt(main.getUtils().getNumbersOnly(defencePart).trim()));
                         }
                         String[] manaSplit = main.getUtils().getNumbersOnly(manaPart).split(Pattern.quote("/"));
                         setAttribute(Attribute.MANA, Integer.parseInt(manaSplit[0]));
@@ -197,6 +197,11 @@ public class PlayerListener {
                 minimal it can be discarded as a bug. */
             if (main.getConfigValues().isEnabled(Feature.PREVENT_MOVEMENT_ON_DEATH) && e.message.getFormattedText().startsWith("\u00A7r\u00A7c \u2620 \u00A7r\u00A77You ")) {
                 KeyBinding.unPressAllKeys();
+            }
+            if (main.getConfigValues().isEnabled(Feature.SUMMONING_EYE_ALERT) && e.message.getFormattedText().equals("\u00A7r\u00A76\u00A7lRARE DROP! \u00A7r\u00A75Summoning Eye\u00A7r")){
+                main.getUtils().playSound("random.orb", 0.5);
+                main.getRenderListener().setTitleFeature(Feature.SUMMONING_EYE_ALERT);
+                main.getScheduler().schedule(Scheduler.CommandType.RESET_TITLE_FEATURE, main.getConfigValues().getWarningSeconds());
             }
         }
     }
@@ -513,7 +518,7 @@ public class PlayerListener {
         if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.REPLACE_ROMAN_NUMERALS_WITH_NUMBERS) &&
                 e.toolTip != null) {
             for (int i = 0; i < e.toolTip.size(); i++) {
-                e.toolTip.set(i, main.getUtils().replaceRomanNumerals(e.toolTip.get(i)));
+                e.toolTip.set(i, RomanNumeralParser.replaceNumeralsWithIntegers(e.toolTip.get(i)));
             }
         }
     }
