@@ -2,7 +2,7 @@
   "language": "Dansk",
   "settings": {
     "tab": {
-      "features": "Features",
+      "features": "Egenskaber",
       "fixes": "Fixes",
       "guiFeatures": "GUI Features",
       "generalSettings": "General Settings"
@@ -22,7 +22,7 @@
     "showEnchantmentsReforges": "Enchants & Reforges",
     "minionStopWarning": "\"Minion Cannot Reach\" Warning",
     "hideAuctionHousePlayers": "Skjul spillere i nærheden af ​​Auction House",
-    "backpackStyle": "Backpack Style: %style%",
+    "backpackStyle": "Taske design: %style%",
     "backpackStyles": {
       "regular": "Regular",
       "compact": "Compact"
