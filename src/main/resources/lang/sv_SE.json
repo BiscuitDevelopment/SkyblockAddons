@@ -88,7 +88,8 @@
     },
     "slotLocked": "Denna luckan är låst!",
     "summoningEyeFound": "Tillkallande Öga!",
-    "cancelledStemBreak": "SkyblockAddons har förhindrat dig från att förstöra dessa grödor. Använd din hand om du ändå vill förstöra dem.",
+    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this stem. Use your bare hand if you'd like to actually break it.",
+    "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use your another tool if you'd actually like to break it.",
     "cancelledProfileOpening": "SkyblockAddons har stoppat dig från att öppna denna spelares profil medan du håller en pilbåge.",
     "cancelledDropping": "SkyblockAddons har stoppat dig från att slänga denna sällsynta sak eller verktyg från ditt lager.",
     "clickMoreTimes": "Släng denna sak %times% fler gånger om du verkligen vill göra detta."
