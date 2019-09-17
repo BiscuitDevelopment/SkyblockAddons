@@ -167,7 +167,6 @@ public class Utils {
         }
     }
 
-//    private final Pattern LETTERS = Pattern.compile("[^a-z A-Z]");
     private static final Pattern NUMBERS_SLASHES = Pattern.compile("[^0-9 /]");
     private static final Pattern LETTERS_NUMBERS = Pattern.compile("[^a-z A-Z:0-9/']");
 
@@ -463,41 +462,6 @@ public class Utils {
             return item.getItem().isDamageable() || (rarity != EnumUtils.Rarity.COMMON && rarity != EnumUtils.Rarity.UNCOMMON
                     && rarity != EnumUtils.Rarity.RARE) || (item.hasDisplayName() && item.getDisplayName().contains("Backpack"));
         }
-    }
-
-    public String replaceRomanNumerals(String text) {
-        if (text != null) {
-            text = checkAndReplaceNumeral(text, " XV", " 15");
-            text = checkAndReplaceNumeral(text, " XIV", " 14");
-            text = checkAndReplaceNumeral(text, " XIII", " 13");
-            text = checkAndReplaceNumeral(text, " XII", " 12");
-            text = checkAndReplaceNumeral(text, " XI", " 11");
-            text = checkAndReplaceNumeral(text, " X", " 10");
-            text = checkAndReplaceNumeral(text, " IX", " 9");
-            text = checkAndReplaceNumeral(text, " VIII", " 8");
-            text = checkAndReplaceNumeral(text, " VII", " 7");
-            text = checkAndReplaceNumeral(text, " VI", " 6");
-            text = checkAndReplaceNumeral(text, " V", " 5");
-            text = checkAndReplaceNumeral(text, " IV", " 4");
-            text = checkAndReplaceNumeral(text, " III", " 3");
-            text = checkAndReplaceNumeral(text, " II", " 2");
-            text = checkAndReplaceNumeral(text, " I", " 1");
-        }
-        return text;
-    }
-
-    private String checkAndReplaceNumeral(String text, String numeral, String replacement) {
-        if (numeral.equals(" I") || numeral.equals(" V") || numeral.equals(" X")) {
-            int index = text.indexOf(numeral);
-            if (index != -1 && text.length() > index+2) {
-                char charAfter = text.charAt(index+2);
-                if (charAfter != ' ' && charAfter != 'I' && charAfter != 'V' && charAfter != 'X') return text;
-            }
-        }
-//        if (text.startsWith("\u00A75\u00A7o\u00A79")) {
-//            return text.replace(numeral, replacement);
-//        }
-        return text.replace(numeral, replacement);
     }
 
     public boolean isDevEnviroment() {

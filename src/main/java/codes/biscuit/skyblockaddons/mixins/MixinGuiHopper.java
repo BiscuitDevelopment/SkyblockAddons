@@ -17,13 +17,11 @@ public abstract class MixinGuiHopper extends GuiContainer {
     @Override
     protected void handleMouseClick(Slot slotIn, int slotId, int clickedButton, int clickType) {
         SkyblockAddons main = SkyblockAddons.getInstance();
-        out:
         if (slotIn != null && main.getConfigValues().isEnabled(Feature.LOCK_SLOTS) &&
                 main.getUtils().isOnSkyblock()) {
             int slotNum = slotIn.slotNumber;
             slotNum += 4; // for hoppers
-            if (slotNum < 9) break out;
-            if (main.getConfigValues().getLockedSlots().contains(slotNum)) {
+            if (slotNum > 8 && main.getConfigValues().getLockedSlots().contains(slotNum)) {
                 main.getUtils().playSound("note.bass", 0.5);
                 return;
             }

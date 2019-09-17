@@ -18,6 +18,7 @@
     "MixinTileEntityEnderChestRenderer",
     "MixinRendererLivingEntity",
     "MixinGuiHopper",
-    "MixinGuiDispenser"
+    "MixinGuiDispenser",
+    "MixinGuiFurnace"
   ]
 }

@@ -37,7 +37,9 @@ public class MixinRenderManager {
             }
             if (main.getConfigValues().isEnabled(Feature.HIDE_PLAYERS_IN_LOBBY) &&
                     (entityIn instanceof EntityOtherPlayerMP || entityIn instanceof EntityFX || entityIn instanceof EntityItemFrame) &&
-                    entityIn.getDistanceToEntity(Minecraft.getMinecraft().thePlayer) > 7 && main.getUtils().getLocation() == EnumUtils.Location.VILLAGE) {
+                    entityIn.getDistanceToEntity(Minecraft.getMinecraft().thePlayer) > 7 &&
+                    (main.getUtils().getLocation() == EnumUtils.Location.VILLAGE) || main.getUtils().getLocation() == EnumUtils.Location.AUCTION_HOUSE ||
+                    main.getUtils().getLocation() == EnumUtils.Location.BANK) {
                 cir.setReturnValue(false);
             }
         }

@@ -3,14 +3,15 @@ package codes.biscuit.skyblockaddons.mixins;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.utils.Feature;
 import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraft.client.gui.inventory.GuiDispenser;
-import net.minecraft.inventory.*;
+import net.minecraft.client.gui.inventory.GuiFurnace;
+import net.minecraft.inventory.Container;
+import net.minecraft.inventory.Slot;
 import org.spongepowered.asm.mixin.Mixin;
 
-@Mixin(GuiDispenser.class)
-public abstract class MixinGuiDispenser extends GuiContainer {
+@Mixin(GuiFurnace.class)
+public abstract class MixinGuiFurnace extends GuiContainer {
 
-    public MixinGuiDispenser(Container inventorySlotsIn) {
+    public MixinGuiFurnace(Container inventorySlotsIn) {
         super(inventorySlotsIn);
     }
 
@@ -20,6 +21,7 @@ public abstract class MixinGuiDispenser extends GuiContainer {
         if (slotIn != null && main.getConfigValues().isEnabled(Feature.LOCK_SLOTS) &&
                 main.getUtils().isOnSkyblock()) {
             int slotNum = slotIn.slotNumber;
+            slotNum+=6;
             if (slotNum > 8 && main.getConfigValues().getLockedSlots().contains(slotNum)) {
                 main.getUtils().playSound("note.bass", 0.5);
                 return;
