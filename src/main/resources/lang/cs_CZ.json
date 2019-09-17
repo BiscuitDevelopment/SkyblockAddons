@@ -88,8 +88,8 @@
     },
     "slotLocked": "Tento slot je uzamčen!",
     "summoningEyeFound": "Vyvolávací oko!",
-    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this stem. Use your bare hand if you'd like to actually break it.",
-    "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use your another tool if you'd actually like to break it.",
+    "cancelledStemBreak": "Mód SkyblockAddons tě zastavil před zničením tohoto blocku. Použil svoji prázdnou ruku aby jsi to zničil.",
+    "cancelledCaneBreak": "Mód SkyblockAddons tě zastavil před zničením tohoto blocku Sugar canu. Požij jiný nástroj pokud ho chceš zničit.",
     "cancelledProfileOpening": "SkyblockAddons vám zabránil otevřít profil hráče při držení luku.",
     "cancelledDropping": "SkyblockAddons vám zabránil vyhodit tento vzácný předmět nebo nástroj z vašeho hotbaru.",
     "clickMoreTimes": "Klikněte/vyhoďte tento předmět %times%-krát, pokud to chcete opravdu udělat."
