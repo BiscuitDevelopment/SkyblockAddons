@@ -27,10 +27,14 @@ public class LocationEditGui extends GuiScreen {
     private Feature dragging = null;
     private int xOffset = 0;
     private int yOffset = 0;
-    private boolean cancelScreenReturn = false;
 
-    public LocationEditGui(SkyblockAddons main) {
+    private int lastPage;
+    private EnumUtils.SkyblockAddonsGuiTab lastTab;
+
+    public LocationEditGui(SkyblockAddons main, int lastPage, EnumUtils.SkyblockAddonsGuiTab lastTab) {
         this.main = main;
+        this.lastPage = lastPage;
+        this.lastTab = lastTab;
     }
 
     @Override
@@ -40,7 +44,7 @@ public class LocationEditGui extends GuiScreen {
                 Feature.HEALTH_TEXT, Feature.DEFENCE_ICON, Feature.DEFENCE_TEXT, Feature.DEFENCE_PERCENTAGE,
                 Feature.HEALTH_UPDATES, Feature.DARK_AUCTION_TIMER, Feature.MAGMA_BOSS_TIMER, Feature.ITEM_PICKUP_LOG};
         for (Feature feature : features) {
-            if (!main.getConfigValues().isRemoteDisabled(feature)) { // Don't display features that I have disabled
+            if (!main.getConfigValues().isDisabled(feature)) { // Don't display features that have been disabled
                 buttonList.add(new ButtonLocation(main, feature));
             }
         }
@@ -169,8 +173,6 @@ public class LocationEditGui extends GuiScreen {
     @Override
     public void onGuiClosed() {
         main.getConfigValues().saveConfig();
-        if (!cancelScreenReturn) {
-            main.getRenderListener().setGuiToOpen(PlayerListener.GUIType.MAIN);
-        }
+        main.getRenderListener().setGuiToOpen(PlayerListener.GUIType.MAIN, lastPage, lastTab);
     }
 }

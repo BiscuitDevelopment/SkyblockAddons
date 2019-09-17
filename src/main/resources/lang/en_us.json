@@ -1,20 +1,20 @@
 {
   "language": "English",
   "settings": {
+    "tab": {
+      "features": "Features",
+      "fixes": "Fixes",
+      "guiFeatures": "GUI Features",
+      "generalSettings": "General Settings"
+    },
     "settings": "Settings",
-    "openSettings": "Open More Settings",
     "magmaBossWarning": "Magma Boss Warning",
     "itemDropConfirmation": "Item Drop Confirmation",
-    "warningTime": "Warning Duration: %time%s",
     "hideSkeletonHatBones": "Hide Skeleton Helmet Bones",
     "skeletonHatBonesBar": "Skeleton Helmet Bones Bar",
     "hideFoodAndArmor": "Hide Food & Armor Bar",
     "fullInventoryWarning": "Full Inventory Warning",
     "disableEmberRodAbility": "Disable Island Ember Rod",
-    "warningColor": "Warning Color",
-    "confirmationColor": "Confirmation Color",
-    "manaTextColor": "Mana Text Color",
-    "manaBarColor": "Mana Bar Color",
     "editLocations": "Edit GUI Locations",
     "guiScale": "Gui Scale: %scale%",
     "resetLocations": "Reset Locations",
@@ -24,22 +24,14 @@
     "hideAuctionHousePlayers": "Hide Players Near Auction House",
     "backpackStyle": "Backpack Style: %style%",
     "backpackStyles": {
-      "inventory": "Inventory",
+      "regular": "Regular",
       "compact": "Compact"
     },
     "showBackpackPreview": "Show Backpack Preview",
     "hideHealthBar": "Hide Vanilla Health Bar",
-    "healthTextColor": "Health Text Color",
-    "healthBarColor": "Health Bar Color",
-    "defenceTextColor": "Defence Text Color",
-    "defencePercentageColor": "Defence Percentage Color",
-    "disableDoubleDropAutomatically": "Disable Double Drop Automatically",
     "fullMinionWarning": "Full Minion Warning",
-    "nextPage": "Next Page",
-    "previousPage": "Previous Page",
     "ignoreItemFrameClicks": "Ignore Clicks On Item Frames",
-    "useVanillaTextureDefence": "Use Vanilla Texture For Defence Icon",
-    "showBackpackHoldingShift": "Only Show Backpack When Holding Shift",
+    "showOnlyWhenHoldingShift": "Show Only When Holding Shift",
     "manaBar": "Mana Bar",
     "manaText": "Mana Number",
     "healthBar": "Health Bar",
@@ -48,24 +40,33 @@
     "defenceText": "Defence Number",
     "defencePercentage": "Defence Percentage",
     "healthUpdates": "Health Change Number",
-    "hidePlayersInLobby": "Hide Far Entities In Lobby",
-    "textStyle": "Text Style: %style%",
-    "textStyles": {
-      "regular": "Regular",
-      "blackShadow": "Black Shadow"
-    },
+    "hidePlayersInLobby": "Hide Far Entities in Lobby",
     "darkAuctionTimer": "Dark Auction Timer",
     "magmaBossTimer": "Magma Boss Timer",
     "itemPickupLog": "Item Pickup Log",
     "avoidPlacingEnchantedItems": "Avoid Placing Enchanted Items",
     "avoidBreakingStems": "Avoid Breaking Stems",
-    "magmaBossTimerColor": "Magma Boss Timer Color",
-    "darkAuctionTimerColor": "Dark Auction Timer Color",
     "stopBowChargeFromResetting": "Stop Bow Charge From Resetting",
-    "showMagmaTimerInOtherGames": "Show Magma Timer In Other Games",
     "preventMovementOnDeath": "Prevent Walking After Death",
-    "showDarkAuctionTimerInOtherGames": "Show Dark Auc Timer In Other Games",
-    "showItemAnvilUses": "Show Item Anvil Uses"
+    "showItemAnvilUses": "Show Item Anvil Uses",
+    "lockSlots": "Allow Locking Slots",
+    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories",
+    "summoningEyeAlert": "Summoning Eye Alert",
+    "makeEnderchestsInEndGreen": "Make Enderchests in the End Green",
+    "changeColor": "Change Color",
+    "showInOtherGames": "Show in Other Games",
+    "useVanillaTexture": "Use the Vanilla Texture",
+    "textStyle": "Text Style",
+    "textStyles": {
+      "one": "Style One",
+      "two": "Style Two"
+    },
+    "warningDuration": "Warning Duration",
+    "dontOpenProfileWithBow": "Don't Open Profile With Bow",
+    "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Items",
+    "makeBackpackInventoriesColored": "Color Inventories",
+    "avoidBreakingBottomSugarCane": "Avoid Breaking Bottom Sugar Cane",
+    "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Items"
   },
   "messages": {
     "dropConfirmation": "Drop this item again to confirm!",
@@ -85,6 +86,12 @@
       "enchants": "Enchants",
       "reforges": "Reforges"
     },
-    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this stem. Use your bare hand if you'd like to break it."
+    "slotLocked": "This slot is locked!",
+    "summoningEyeFound": "Summoning Eye!",
+    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this stem. Use your bare hand if you'd like to actually break it.",
+    "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use your another tool if you'd actually like to break it.",
+    "cancelledProfileOpening": "SkyblockAddons has stopped you from opening this player's profile while holding a bow.",
+    "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare item or tool from your hotbar.",
+    "clickMoreTimes": "Click/drop this item %times% more times if you really want to do this."
   }
 }

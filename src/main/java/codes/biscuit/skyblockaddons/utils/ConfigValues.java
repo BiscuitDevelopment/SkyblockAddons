@@ -4,6 +4,8 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import com.google.gson.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
+import net.minecraft.util.math.MathHelper;
+import org.apache.commons.lang3.mutable.MutableFloat;
 
 import java.awt.geom.Point2D;
 import java.io.*;
@@ -11,10 +13,14 @@ import java.util.*;
 
 public class ConfigValues {
 
-    private static final int CONFIG_VERSION = 4;
+    private static final int CONFIG_VERSION = 6;
     private static final Feature[] GUI_FEATURES = {Feature.SKELETON_BAR, Feature.DEFENCE_ICON, Feature.DEFENCE_TEXT,
             Feature.DEFENCE_PERCENTAGE, Feature.HEALTH_BAR, Feature.HEALTH_TEXT, Feature.MANA_BAR, Feature.MANA_TEXT, Feature.HEALTH_UPDATES,
             Feature.ITEM_PICKUP_LOG, Feature.MAGMA_BOSS_TIMER, Feature.DARK_AUCTION_TIMER};
+
+    private final static float GUI_SCALE_MINIMUM = 0.5F;
+    private final static float GUI_SCALE_MAXIMUM = 5;
+    private final static float GUI_SCALE_STEP = 0.1F;
 
     private SkyblockAddons main;
     private File settingsConfigFile;
@@ -24,15 +30,15 @@ public class ConfigValues {
 
     private Set<Feature> disabledFeatures = EnumSet.noneOf(Feature.class);
     private Map<Feature, ConfigColor> featureColors = new EnumMap<>(Feature.class);
+    private Map<Feature, MutableFloat> guiScales = new EnumMap<>(Feature.class);
     private int warningSeconds = 4;
     private Map<Feature, CoordsPair> coordinates = new EnumMap<>(Feature.class);
     private Map<Feature, EnumUtils.AnchorPoint> anchorPoints = new EnumMap<>(Feature.class);
-    private float guiScale = 0.11F;
     private Language language = Language.ENGLISH;
     private EnumUtils.BackpackStyle backpackStyle = EnumUtils.BackpackStyle.GUI;
     private EnumUtils.TextStyle textStyle = EnumUtils.TextStyle.REGULAR;
-//    private long nextMagmaTimestamp = -1;
     private Set<Feature> remoteDisabledFeatures = EnumSet.noneOf(Feature.class);
+    private Set<Integer> lockedSlots = new HashSet<>();
 
     public ConfigValues(SkyblockAddons main, File settingsConfigFile) {
         this.main = main;
@@ -67,15 +73,18 @@ public class ConfigValues {
                     disabledFeatures.add(feature);
                 }
             }
+            if (settingsConfig.has("lockedSlots")) {
+                for (JsonElement element : settingsConfig.getAsJsonArray("lockedSlots")) {
+                    lockedSlots.add(element.getAsInt());
+                }
+            }
+
             warningSeconds = settingsConfig.get("warningSeconds").getAsInt();
             if (settingsConfig.has("manaBarX")) {
                 coordinates.put(Feature.MANA_BAR, new CoordsPair(settingsConfig.get("manaBarX").getAsInt(), settingsConfig.get("manaBarY").getAsInt()));
             }
             if (settingsConfig.has("skeletonBarX")) {
                 coordinates.put(Feature.SKELETON_BAR, new CoordsPair(settingsConfig.get("skeletonBarX").getAsInt(), settingsConfig.get("skeletonBarY").getAsInt()));
-            }
-            if (settingsConfig.has("guiScale")) {
-                guiScale = settingsConfig.get("guiScale").getAsFloat();
             }
             if (settingsConfig.has("manaTextX")) {
                 coordinates.put(Feature.MANA_TEXT, new CoordsPair(settingsConfig.get("manaTextX").getAsInt(), settingsConfig.get("manaTextY").getAsInt()));
@@ -126,27 +135,13 @@ public class ConfigValues {
                     anchorPoints.put(feature, EnumUtils.AnchorPoint.fromId(element.getValue().getAsInt()));
                 }
             }
-//            if (settingsConfig.has("nextMagmaTimestamp")) {
-//                boolean isRecent = true;
-//                long savedTimestamp = settingsConfig.get("nextMagmaTimestamp").getAsLong();
-//                long currentTime = System.currentTimeMillis();
-//                if (savedTimestamp < currentTime) {
-//                    long difference = currentTime-savedTimestamp;
-//                    if (difference < 50400000) { //only make a prediction if the time is within the past 14 hours.
-//                        while (savedTimestamp < currentTime) {
-//                            savedTimestamp+=7220000; //add 2 hours + 20seconds (average boss death) until the time in the future and not the past
-//                        }
-//                    } else {
-//                        isRecent = false;
-//                    }
-//                }
-//                if (isRecent) {
-//                    int seconds = Math.round((savedTimestamp-currentTime)/1000);
-//                    main.getPlayerListener().setMagmaTime(seconds, false);
-//                    main.getPlayerListener().setMagmaAccuracy(EnumUtils.MagmaTimerAccuracy.ABOUT);
-//                    nextMagmaTimestamp = savedTimestamp;
-//                }
-//            }
+
+            if (settingsConfig.has("guiScales")) {
+                for (Map.Entry<String, JsonElement> element : settingsConfig.getAsJsonObject("guiScales").entrySet()) {
+                    Feature feature = Feature.fromId(Integer.valueOf(element.getKey()));
+                    guiScales.put(feature, new MutableFloat(element.getValue().getAsFloat()));
+                }
+            }
 
             loadColor("warningColor", Feature.MAGMA_WARNING, ConfigColor.RED);
             loadColor("confirmationColor", Feature.DROP_CONFIRMATION, ConfigColor.RED);
@@ -181,9 +176,6 @@ public class ConfigValues {
                 for (Feature feature : newFeatures) {
                     putDefaultCoordinates(feature);
                 }
-                if (guiScale == 0) {
-                    guiScale = 0.11F;
-                }
             } else if (configVersion <= 1) {
                 disabledFeatures.add(Feature.USE_VANILLA_TEXTURE_DEFENCE);
                 disabledFeatures.add(Feature.IGNORE_ITEM_FRAME_CLICKS);
@@ -197,6 +189,14 @@ public class ConfigValues {
             } else if (configVersion <= 3) {
                 disabledFeatures.add(Feature.SHOW_DARK_AUCTION_TIMER_IN_OTHER_GAMES);
                 disabledFeatures.add(Feature.PREVENT_MOVEMENT_ON_DEATH);
+            } else if (configVersion <= 4) {
+                if (disabledFeatures.contains(Feature.DOUBLE_DROP_IN_OTHER_GAMES)) { // I inverted this feature thats why
+                    disabledFeatures.remove(Feature.DOUBLE_DROP_IN_OTHER_GAMES);
+                } else {
+                    disabledFeatures.add(Feature.DOUBLE_DROP_IN_OTHER_GAMES);
+                }
+            } else if (configVersion <= 5) {
+                disabledFeatures.add(Feature.REPLACE_ROMAN_NUMERALS_WITH_NUMBERS);
             }
         } else {
             addDefaultsAndSave();
@@ -216,17 +216,22 @@ public class ConfigValues {
     }
 
     private void addDefaultsAndSave() {
-        String minecraftLanguage = Minecraft.getMinecraft().getLanguageManager().getCurrentLanguage().getLanguageCode().toLowerCase();
-        Language configLanguage = Language.getFromPath(minecraftLanguage);
-        if (configLanguage != null) { // Check if we have the exact locale they are using for Minecraft
-            language = configLanguage;
-        } else { // Check if we at least have the same language (different locale)
-            String languageCode = minecraftLanguage.split("_")[0];
-            for (Language loopLanguage : Language.values()) {
-                String loopLanguageCode = loopLanguage.getPath().split("_")[0];
-                if (loopLanguageCode.equals(languageCode)) {
-                    language = loopLanguage;
-                    break;
+        Minecraft mc = Minecraft.getMinecraft();
+        if (mc != null) {
+            if (mc.getLanguageManager() != null && mc.getLanguageManager().getCurrentLanguage().getLanguageCode() != null) {
+                String minecraftLanguage = Minecraft.getMinecraft().getLanguageManager().getCurrentLanguage().getLanguageCode().toLowerCase();
+                Language configLanguage = Language.getFromPath(minecraftLanguage);
+                if (configLanguage != null) { // Check if we have the exact locale they are using for Minecraft
+                    language = configLanguage;
+                } else { // Check if we at least have the same language (different locale)
+                    String languageCode = minecraftLanguage.split("_")[0];
+                    for (Language loopLanguage : Language.values()) {
+                        String loopLanguageCode = loopLanguage.getPath().split("_")[0];
+                        if (loopLanguageCode.equals(languageCode)) {
+                            language = loopLanguage;
+                            break;
+                        }
+                    }
                 }
             }
         }
@@ -244,7 +249,7 @@ public class ConfigValues {
         Feature[] toDisable = {Feature.DROP_CONFIRMATION, Feature.MINION_STOP_WARNING, Feature.HIDE_HEALTH_BAR,
             Feature.USE_VANILLA_TEXTURE_DEFENCE, Feature.IGNORE_ITEM_FRAME_CLICKS, Feature.SHOW_BACKPACK_HOLDING_SHIFT,
             Feature.HEALTH_BAR, Feature.DEFENCE_PERCENTAGE, Feature.HIDE_PLAYERS_IN_LOBBY, Feature.SHOW_MAGMA_TIMER_IN_OTHER_GAMES,
-            Feature.SHOW_DARK_AUCTION_TIMER_IN_OTHER_GAMES, Feature.PREVENT_MOVEMENT_ON_DEATH};
+                Feature.SHOW_DARK_AUCTION_TIMER_IN_OTHER_GAMES, Feature.PREVENT_MOVEMENT_ON_DEATH, Feature.REPLACE_ROMAN_NUMERALS_WITH_NUMBERS};
         disabledFeatures.addAll(Arrays.asList(toDisable));
         setAllCoordinatesToDefault();
         saveConfig();
@@ -328,6 +333,10 @@ public class ConfigValues {
     }
 
     public void loadLanguageFile() {
+        loadLanguageFile(language);
+    }
+
+    public void loadLanguageFile(Language language) {
         try {
             InputStream fileStream = getClass().getClassLoader().getResourceAsStream("lang/" + language.getPath() + ".json");
             if (fileStream != null) {
@@ -361,14 +370,23 @@ public class ConfigValues {
             }
             settingsConfig.add("disabledFeatures", jsonArray);
 
-//            jsonArray = new JsonArray();
+            jsonArray = new JsonArray();
+            for (int slot : lockedSlots) {
+                jsonArray.add(new GsonBuilder().create().toJsonTree(slot));
+            }
+            settingsConfig.add("lockedSlots", jsonArray);
+
             JsonObject anchorObject = new JsonObject();
             for (Feature feature : GUI_FEATURES) {
-//                JsonObject anchorObject = new JsonObject();
                 anchorObject.addProperty(String.valueOf(feature.getId()), getAnchorPoint(feature).getId());
-//                jsonArray.add(anchorObject);
             }
             settingsConfig.add("anchorPoints", anchorObject);
+
+            JsonObject scalesObject = new JsonObject();
+            for (Feature feature : guiScales.keySet()) {
+                scalesObject.addProperty(String.valueOf(feature.getId()), guiScales.get(feature).getValue());
+            }
+            settingsConfig.add("guiScales", scalesObject);
 
             settingsConfig.addProperty("warningColor", getColor(Feature.MAGMA_WARNING).ordinal());
             settingsConfig.addProperty("confirmationColor", getColor(Feature.DROP_CONFIRMATION).ordinal());
@@ -409,7 +427,6 @@ public class ConfigValues {
             settingsConfig.addProperty("textStyle", textStyle.ordinal());
 //            settingsConfig.addProperty("nextMagmaTimestamp", nextMagmaTimestamp);
 
-            settingsConfig.addProperty("guiScale", guiScale);
             settingsConfig.addProperty("language", language.getPath());
             settingsConfig.addProperty("backpackStyle", backpackStyle.ordinal());
 
@@ -540,14 +557,6 @@ public class ConfigValues {
 //        setCoords(feature, x, y);
 //    }
 
-    public float getGuiScale() {
-        return guiScale;
-    }
-
-    public void setGuiScale(float guiScale) {
-        this.guiScale = guiScale;
-    }
-
     public EnumUtils.BackpackStyle getBackpackStyle() {
         return backpackStyle;
     }
@@ -575,4 +584,45 @@ public class ConfigValues {
     Set<Feature> getRemoteDisabledFeatures() {
         return remoteDisabledFeatures;
     }
+
+    public Set<Integer> getLockedSlots() {
+        return lockedSlots;
+    }
+
+    public void setGuiScale(Feature feature, float scale) {
+        if (guiScales.containsKey(feature)) {
+            guiScales.get(feature).setValue(scale);
+        } else {
+            guiScales.put(feature, new MutableFloat(scale));
+        }
+    }
+
+    public float getGuiScale(Feature feature) {
+        return getGuiScale(feature, true);
+    }
+
+    public float getGuiScale(Feature feature, boolean denormalized) {
+        float value = 0.11F; //default scale (1.0)
+        if (guiScales.containsKey(feature)) {
+            value = guiScales.get(feature).getValue();
+        }
+        if (denormalized) value = denormalizeScale(value);
+        return value;
+    }
+
+    // these are taken from GuiOptionSlider
+    private float denormalizeScale(float value) {
+        return snapToStepClamp(ConfigValues.GUI_SCALE_MINIMUM + (ConfigValues.GUI_SCALE_MAXIMUM - ConfigValues.GUI_SCALE_MINIMUM) *
+                MathHelper.clamp(value, 0.0F, 1.0F));
+    }
+
+    private float snapToStepClamp(float value) {
+        value = ConfigValues.GUI_SCALE_STEP * (float) Math.round(value / ConfigValues.GUI_SCALE_STEP);
+        return MathHelper.clamp(value, ConfigValues.GUI_SCALE_MINIMUM, ConfigValues.GUI_SCALE_MAXIMUM);
+    }
+
+
+//    private float getRoundedValue(float value) {
+//        return new BigDecimal(String.valueOf(value)).setScale(2, BigDecimal.ROUND_HALF_UP).floatValue();
+//    }
 }

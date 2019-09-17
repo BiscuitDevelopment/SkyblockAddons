@@ -1,20 +1,20 @@
 {
   "language": "Italiano",
   "settings": {
+    "tab": {
+      "features": "Caratteristiche",
+      "fixes": "Correzioni",
+      "guiFeatures": "Funzioni GUI",
+      "generalSettings": "Impostazioni Generali"
+    },
     "settings": "Impostazioni",
-    "openSettings": "Apri menù impostazioni",
     "magmaBossWarning": "Avviso per il Magma Boss",
     "itemDropConfirmation": "Conferma per gettare un oggetto",
-    "warningTime": "Durata dell’avvertimento: %time%s",
     "hideSkeletonHatBones": "Nascondi le ossa dello Skeleton Hat",
     "skeletonHatBonesBar": "Barra delle ossa dello Skeleton Hat",
     "hideFoodAndArmor": "Nascondi la Barra della Fame e dell’Armatura",
     "fullInventoryWarning": "Avviso di inventario pieno",
     "disableEmberRodAbility": "Disabilita l’Ember Rod sull’isola",
-    "warningColor": "Colore degli Avvisi",
-    "confirmationColor": "Colore di Conferma",
-    "manaTextColor": "Colore del Testo della Mana",
-    "manaBarColor": "Colore della Barra della Mana",
     "editLocations": "Modifica Posizioni",
     "guiScale": "Dimensione GUI: %scale%",
     "resetLocations": "Resetta le Posizioni",
@@ -24,22 +24,14 @@
     "hideAuctionHousePlayers": "Nascondi i Giocatori vicino alla Auction House",
     "backpackStyle": "Stile Zaino: %style%",
     "backpackStyles": {
-      "inventory": "Inventario",
+      "regular": "Regolare",
       "compact": "Compatto"
     },
     "showBackpackPreview": "Mostra Anteprima dello Zaino",
     "hideHealthBar": "Nascondi la Barra di Vita",
-    "healthTextColor": "Colore del Testo della Vita",
-    "healthBarColor": "Colore della Barra di Vita",
-    "defenceTextColor": "Colore del Testo di Difesa",
-    "defencePercentageColor": "Colore della Percentuale di Difesa",
-    "disableDoubleDropAutomatically": "Disabilita Double Drop in Automatico",
     "fullMinionWarning": "Avviso di Minion pieni",
-    "nextPage": "Pagina successiva",
-    "previousPage": "Pagina precedente",
     "ignoreItemFrameClicks": "Ignora Click sulle Cornici per Oggetti",
-    "useVanillaTextureDefence": "Usa il Modello Vanilla Per l’Icona di Difesa",
-    "showBackpackHoldingShift": "Mostra lo Zaino solo quando Cammini Furtivamente",
+    "showOnlyWhenHoldingShift": "Mostra solo quando Cammini Furtivamente",
     "manaBar": "Barra della Mana",
     "manaText": "Numero della Mana",
     "healthBar": "Barra di Vita",
@@ -49,23 +41,32 @@
     "defencePercentage": "Percentuale di Difesa",
     "healthUpdates": "Numero di Cambiamento di Vita",
     "hidePlayersInLobby": "Nascondi entità lontane nella Lobby",
-    "textStyle": "Stile di Testo: %style%",
-    "textStyles": {
-      "regular": "Regolare",
-      "blackShadow": "Ombreggiato"
-    },
     "darkAuctionTimer": "Timer per la Dark Auction",
     "magmaBossTimer": "Timer per il Magma Boss",
     "itemPickupLog": "Registro di Elementi Raccolti",
     "avoidPlacingEnchantedItems": "Evita di Piazzare Elementi Incantati",
     "avoidBreakingStems": "Evita di Rompere gli Steli",
-    "magmaBossTimerColor": "Colore del Timer per il Magma Boss",
-    "darkAuctionTimerColor": "Colore del Timer per la Dark Auction",
     "stopBowChargeFromResetting": "Ferma il Reset dell’Arco",
-    "showMagmaTimerInOtherGames": "Mostra il Timer per il Magma Boss In Altri Giochi",
     "preventMovementOnDeath": "Impedisci di Camminare Dopo Essere Morto",
-    "showDarkAuctionTimerInOtherGames": "Mostra il Timer per la Dark Auction In Altri Giochi",
-    "showItemAnvilUses": "Mostra Numero di Usi dell’Incudine"
+    "showItemAnvilUses": "Mostra Numero di Usi dell’Incudine",
+    "lockSlots": "Permetti di bloccare gli slot",
+    "dontResetCursorInventory": "Non resettare il cursore tra gli inventari",
+    "summoningEyeAlert": "Avviso di acquisizione di un Occhio dell'evocazione",
+    "makeEnderchestsInEndGreen": "Rendi le casse nell'End verdi",
+    "changeColor": "Cambia colore",
+    "showInOtherGames": "Mostra in Altri Giochi",
+    "useVanillaTexture": "Usa la Texture Vanilla",
+    "textStyle": "Stile di Testo",
+    "textStyles": {
+      "one": "Stile Uno",
+      "two": "Stile Due"
+    },
+    "warningDuration": "Durata dell’avvertimento",
+    "dontOpenProfileWithBow": "Non aprire il profilo con l'arco",
+    "stopDroppingSellingRareItems": "Smetti di gettare/vendere oggetti rari",
+    "makeBackpackInventoriesColored": "Colora gli inventari",
+    "avoidBreakingBottomSugarCane": "Evita di Rompere la Base della Canna da Zucchero",
+    "replaceRomanNumeralsWithNumbers": "Rimpiazza Numeri Romani sugli Oggetti"
   },
   "messages": {
     "dropConfirmation": "Getta questo oggetto nuovamente per confermare!",
@@ -85,6 +86,11 @@
       "enchants": "Incantesimi",
       "reforges": "Forge"
     },
-    "cancelledStemBreak": "SkyblockAddons ti ha impedito di rompere questo stelo. Usa la tua mano se lo vuoi rompere."
+    "slotLocked": "Questo slot è bloccato!",
+    "summoningEyeFound": "Occhio dell'evocazione!",
+    "cancelledStemBreak": "SkyblockAddons ti ha impedito di rompere questo stelo. Usa la tua mano se lo vuoi rompere.",
+    "cancelledProfileOpening": "SkyblockAddons ti ha impedito di aprire il profilo di questo giocatore mentre avevi l’arco in mano.",
+    "cancelledDropping": "SkyblockAddons ti ha impedito di gettare questo oggetto o strumento raro dalla tua hotbar.",
+    "clickMoreTimes": "Clicca/getta questo oggetto altre %times% volte se vuoi davvero farlo."
   }
 }

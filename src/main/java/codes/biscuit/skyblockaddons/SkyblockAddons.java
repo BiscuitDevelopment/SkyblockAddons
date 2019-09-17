@@ -8,14 +8,17 @@ import codes.biscuit.skyblockaddons.utils.InventoryUtils;
 import codes.biscuit.skyblockaddons.utils.Scheduler;
 import codes.biscuit.skyblockaddons.utils.Utils;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.settings.KeyBinding;
 import net.minecraftforge.client.ClientCommandHandler;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.ModContainer;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import org.lwjgl.input.Keyboard;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -25,7 +28,7 @@ public class SkyblockAddons {
 
     static final String MOD_ID = "skyblockaddons";
     static final String MOD_NAME = "SkyblockAddons";
-    public static final String VERSION = "1.2.2";
+    public static final String VERSION = "1.3.3";
 
     private static SkyblockAddons instance; // for Mixins cause they don't have a constructor
     private ConfigValues configValues;
@@ -36,18 +39,19 @@ public class SkyblockAddons {
     private Scheduler scheduler = new Scheduler(this);
     private boolean usingLabymod = false;
     private boolean usingOofModv1 = false;
+    private KeyBinding lockSlot = new KeyBinding("Lock Slot", Keyboard.KEY_L, "SkyblockAddons");
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent e) {
         instance = this;
         configValues = new ConfigValues(this, e.getSuggestedConfigurationFile());
     }
-
     @Mod.EventHandler
     public void init(FMLInitializationEvent e) {
         MinecraftForge.EVENT_BUS.register(playerListener);
         MinecraftForge.EVENT_BUS.register(renderListener);
         MinecraftForge.EVENT_BUS.register(scheduler);
+        ClientRegistry.registerKeyBinding(lockSlot);
         ClientCommandHandler.instance.registerCommand(new SkyblockAddonsCommand(this));
     }
 
@@ -113,5 +117,9 @@ public class SkyblockAddons {
 
     public Scheduler getScheduler() {
         return scheduler;
+    }
+
+    public KeyBinding getLockSlot() {
+        return lockSlot;
     }
 }

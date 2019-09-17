@@ -2,35 +2,29 @@ package codes.biscuit.skyblockaddons.gui.buttons;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.utils.ConfigColor;
+import codes.biscuit.skyblockaddons.utils.Feature;
 import codes.biscuit.skyblockaddons.utils.Message;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
-import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.math.MathHelper;
 
 import java.math.BigDecimal;
 
-public class ButtonSlider extends GuiButton {
-
-    public final static float GUI_SCALE_MINIMUM = 0.5F;
-    public final static float GUI_SCALE_MAXIMUM = 5;
-    public final static float GUI_SCALE_STEP = 0.1F;
+public class ButtonGuiScale extends ButtonFeature {
 
     private float sliderValue;
     private boolean dragging;
 
     private SkyblockAddons main;
 
-    /**
-     * Right now this slider button is made specifically for changing the GUI scale.
-     * Edited version of {@link net.minecraft.client.gui.GuiOptionSlider}
-     */
-    public ButtonSlider(int buttonID, double x, double y, int width, int height, SkyblockAddons main) {
-        super(buttonID, (int)x, (int)y, width, height, "");
-        this.sliderValue = main.getConfigValues().getGuiScale();
-        this.displayString = Message.SETTING_GUI_SCALE.getMessage(String.valueOf(getRoundedValue(main.getUtils().denormalizeValue(sliderValue, GUI_SCALE_MINIMUM, GUI_SCALE_MAXIMUM, GUI_SCALE_STEP))));
+    public ButtonGuiScale(double x, double y, int width, int height, SkyblockAddons main, Feature feature) {
+        super(0, (int) x, (int) y, "", feature);
+        this.sliderValue = main.getConfigValues().getGuiScale(feature, false);
+        this.displayString = Message.SETTING_GUI_SCALE.getMessage(String.valueOf(getRoundedValue(main.getConfigValues().getGuiScale(feature))));
         this.main = main;
+        this.width = width;
+        this.height = height;
     }
 
     @Override
@@ -67,11 +61,9 @@ public class ButtonSlider extends GuiButton {
         if (this.visible) {
             if (this.dragging) {
                 this.sliderValue = (float) (mouseX - (this.x + 4)) / (float) (this.width - 8);
-                this.sliderValue = MathHelper.clamp(this.sliderValue, 0.0F, 1.0F);
-                float scaleValue = main.getUtils().denormalizeValue(this.sliderValue, GUI_SCALE_MINIMUM, GUI_SCALE_MAXIMUM, GUI_SCALE_STEP);
-                this.sliderValue = main.getUtils().normalizeValue(scaleValue, GUI_SCALE_MINIMUM, GUI_SCALE_MAXIMUM, GUI_SCALE_STEP);
-                main.getConfigValues().setGuiScale(sliderValue);
-                this.displayString = Message.SETTING_GUI_SCALE.getMessage(String.valueOf(getRoundedValue(main.getUtils().denormalizeValue(sliderValue, GUI_SCALE_MINIMUM, GUI_SCALE_MAXIMUM, GUI_SCALE_STEP))));
+                this.sliderValue = MathHelper.clamp(sliderValue, 0.0F, 1.0F);
+                main.getConfigValues().setGuiScale(feature, sliderValue);
+                this.displayString = Message.SETTING_GUI_SCALE.getMessage(String.valueOf(getRoundedValue(main.getConfigValues().getGuiScale(feature))));
             }
 
             mc.getTextureManager().bindTexture(BUTTON_TEXTURES);
@@ -84,8 +76,8 @@ public class ButtonSlider extends GuiButton {
         if (super.mousePressed(mc, mouseX, mouseY)) {
             this.sliderValue = (float) (mouseX - (this.x + 4)) / (float) (this.width - 8);
             this.sliderValue = MathHelper.clamp(this.sliderValue, 0.0F, 1.0F);
-            main.getConfigValues().setGuiScale(sliderValue);
-            this.displayString =Message.SETTING_GUI_SCALE.getMessage(String.valueOf(getRoundedValue(main.getUtils().denormalizeValue(sliderValue, GUI_SCALE_MINIMUM, GUI_SCALE_MAXIMUM, GUI_SCALE_STEP))));
+            main.getConfigValues().setGuiScale(feature, sliderValue);
+            this.displayString = Message.SETTING_GUI_SCALE.getMessage(String.valueOf(getRoundedValue(main.getConfigValues().getGuiScale(feature))));
             this.dragging = true;
             return true;
         } else {

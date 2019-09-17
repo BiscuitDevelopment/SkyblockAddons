@@ -1,20 +1,20 @@
 {
   "language": "Türkçe",
   "settings": {
+    "tab": {
+      "features": "Features",
+      "fixes": "Fixes",
+      "guiFeatures": "GUI Features",
+      "generalSettings": "General Settings"
+    },
     "settings": "Ayarlar",
-    "openSettings": "Diğer Ayarlar",
     "magmaBossWarning": "Magma Boss için Uyarı",
     "itemDropConfirmation": "Eşya Atarken Onay",
-    "warningTime": "Uyarı Süresi: %time%s",
     "hideSkeletonHatBones": "İskelet Kaskının Kemiklerini Sakla",
     "skeletonHatBonesBar": "İskelet Kaskı Kemikleri Göstergesi",
     "hideFoodAndArmor": "Açlık ve Defans Göstergelerini Sakla",
     "fullInventoryWarning": "Envanter Dolunca Uyarı",
     "disableEmberRodAbility": "Adada Ember Rod Özelliğini Kapat",
-    "warningColor": "Uyarı Rengi",
-    "confirmationColor": "Onaylama Rengi",
-    "manaTextColor": "Mana Metninin Rengi",
-    "manaBarColor": "Mana Çubuğunun Rengi",
     "editLocations": "Arayüzü Düzenle",
     "guiScale": "Arayüz Ölçeği: %scale%",
     "resetLocations": "Konumları Sıfırla",
@@ -24,22 +24,14 @@
     "hideAuctionHousePlayers": "Açık Arttırma Evindeki Oyuncuları Gizle",
     "backpackStyle": "Sırt Çantası Tipi: %style%",
     "backpackStyles": {
-      "inventory": "Envanter",
+      "regular": "Regular",
       "compact": "Sade"
     },
     "showBackpackPreview": "Sırt Çantası Önizlemesi",
     "hideHealthBar": "Vanilla Can Göstergesi Gizle",
-    "healthTextColor": "Can Metninin Rengi",
-    "healthBarColor": "Can Çubuğunun Rengi",
-    "defenceTextColor": "Zırh Metninin Rengi",
-    "defencePercentageColor": "Koruma Yüzdesi Rengi",
-    "disableDoubleDropAutomatically": "Çift Düşürmeyi Otomatik Olarak Kapat",
     "fullMinionWarning": "Minyon Alan Dolu Uyarısı",
-    "nextPage": "Sonraki Sayfa",
-    "previousPage": "Önceki Sayfa",
     "ignoreItemFrameClicks": "Eşya Çerçevelerine Tıklamayı Görmezden Gel",
-    "useVanillaTextureDefence": "Zırh İmgesi için Vanilla Doku Kullan",
-    "showBackpackHoldingShift": "Sırt Çantasını Sadece shift Basarken Göster",
+    "showOnlyWhenHoldingShift": "Show Only When Holding Shift",
     "manaBar": "Mana Çubuğu",
     "manaText": "Mana'yı Göster (sayı ile)",
     "healthBar": "Can Çubuğu",
@@ -48,24 +40,33 @@
     "defenceText": "Zırh'ı Göster (sayı ile)",
     "defencePercentage": "Koruma Yüzdesi",
     "healthUpdates": "Candaki Değişiklikleri Göster",
-    "hidePlayersInLobby": "Lobideyken Uzaktaki Varlıkları Gizle",
-    "textStyle": "Metin Stili: %style%",
-    "textStyles": {
-      "regular": "Sıradan",
-      "blackShadow": "Siyah Gölge"
-    },
+    "hidePlayersInLobby": "Hide Far Entities in Lobby",
     "darkAuctionTimer": "Dark Auction Sayacı",
     "magmaBossTimer": "Magma Boss Sayacı",
     "itemPickupLog": "Toplanan Eşya'yı Yaz",
     "avoidPlacingEnchantedItems": "Büyülü Eşyaları Koymayı Kapat",
     "avoidBreakingStems": "Ekinleri Kırmayı Önleme",
-    "magmaBossTimerColor": "Magma Boss Sayaç Rengi",
-    "darkAuctionTimerColor": "Dark Auction Sayaç Rengi",
     "stopBowChargeFromResetting": "Yay Doldururken Sıfırlanmayı Engelle",
-    "showMagmaTimerInOtherGames": "Magma Sayacını Diğer Oyunlarda da Göster",
     "preventMovementOnDeath": "Öldükten Sonra Yürümeyi Engelle",
-    "showDarkAuctionTimerInOtherGames": "Dark Auc Sayacını Diğer Oyunlarda da Göster",
-    "showItemAnvilUses": "Örste İşlenme Sayısını Göster"
+    "showItemAnvilUses": "Örste İşlenme Sayısını Göster",
+    "lockSlots": "Allow Locking Slots",
+    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories",
+    "summoningEyeAlert": "Summoning Eye Alert",
+    "makeEnderchestsInEndGreen": "Make Enderchests in the End Green",
+    "changeColor": "Change Color",
+    "showInOtherGames": "Show in Other Games",
+    "useVanillaTexture": "Use the Vanilla Texture",
+    "textStyle": "Text Style",
+    "textStyles": {
+      "one": "Style One",
+      "two": "Style Two"
+    },
+    "warningDuration": "Warning Duration",
+    "dontOpenProfileWithBow": "Don't Open Profile With Bow",
+    "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Items",
+    "makeBackpackInventoriesColored": "Color Inventories",
+    "avoidBreakingBottomSugarCane": "Avoid Breaking Bottom Sugar Cane",
+    "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Items"
   },
   "messages": {
     "dropConfirmation": "Eşyayı düşürmeyi onaylamak için düşürme tuşuna bir daha bas!",
@@ -85,6 +86,11 @@
       "enchants": "Büyüler",
       "reforges": "Reforge'lar"
     },
-    "cancelledStemBreak": "SkyblockAddons bu ekini kırmanı engelledi. Ekinleri kırmak istiyorsan çıplak elini kullanman gerek."
+    "slotLocked": "This slot is locked!",
+    "summoningEyeFound": "Summoning Eye!",
+    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this. Use your bare hand if you'd like to actually break it.",
+    "cancelledProfileOpening": "SkyblockAddons has stopped you from opening this player's profile while holding a bow.",
+    "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare item or tool from your hotbar.",
+    "clickMoreTimes": "Click/drop this item %times% more times if you really want to do this."
   }
 }

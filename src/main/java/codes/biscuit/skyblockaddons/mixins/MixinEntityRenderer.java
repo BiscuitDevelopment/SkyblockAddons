@@ -1,13 +1,12 @@
 package codes.biscuit.skyblockaddons.mixins;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.Feature;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.EntityRenderer;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.item.EntityItemFrame;
-import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.util.math.Vec3d;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -32,16 +31,12 @@ public class MixinEntityRenderer {
     }
 
     private void removeEntities(List<Entity> list) {
-        if (SkyblockAddons.getInstance().getUtils().isOnSkyblock()) { // conditions for the invisible zombie that Skeleton hat bones are riding
-            list.removeIf(listEntity -> listEntity instanceof EntityZombie && listEntity.isInvisible() && listEntity.getRidingEntity() instanceof EntityItem);
-            if (!GuiScreen.isCtrlKeyDown() && !SkyblockAddons.getInstance().getConfigValues().isDisabled(Feature.IGNORE_ITEM_FRAME_CLICKS)) {
+        if (SkyblockAddons.getInstance().getUtils().isOnSkyblock()) {
+            if (!GuiScreen.isCtrlKeyDown() && SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.IGNORE_ITEM_FRAME_CLICKS)) {
                 list.removeIf(listEntity -> listEntity instanceof EntityItemFrame);
             }
-            if (!SkyblockAddons.getInstance().getConfigValues().isDisabled(Feature.HIDE_AUCTION_HOUSE_PLAYERS)) {
-                double auctionX = 17.5;
-                double auctionY = 71;
-                double auctionZ = -78.5;
-                list.removeIf(listEntity -> listEntity.getDistance(auctionX, auctionY, auctionZ) <= 3 && (listEntity.posX != auctionX || listEntity.posY != auctionY || listEntity.posZ != auctionZ));
+            if (SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.HIDE_AUCTION_HOUSE_PLAYERS)) {
+                list.removeIf(EnumUtils.SkyblockNPC::isNearNPC);
             }
         }
     }

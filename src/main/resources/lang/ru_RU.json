@@ -1,20 +1,20 @@
 {
   "language": "Русский",
   "settings": {
+    "tab": {
+      "features": "Возможности",
+      "fixes": "Исправления",
+      "guiFeatures": "Возможности интерфейса",
+      "generalSettings": "Основные настройки"
+    },
     "settings": "Настройки",
-    "openSettings": "Открыть больше настроек",
     "magmaBossWarning": "Предупреждение о Магма-Боссе",
     "itemDropConfirmation": "Подтверждение о выбрасывание предмета",
-    "warningTime": "Длительность предупреждения: %time%s",
     "hideSkeletonHatBones": "Скрыть кости от Skeleton Helmet'a",
     "skeletonHatBonesBar": "Шкала костей Skeleton Helmet",
     "hideFoodAndArmor": "Скрыть полосы еды и брони",
     "fullInventoryWarning": "Предупреждения о полном инвентаре",
     "disableEmberRodAbility": "Отключить Ember Rod на острове",
-    "warningColor": "Цвет предупреждений",
-    "confirmationColor": "Цвет подтверждений",
-    "manaTextColor": "Цвет текста маны",
-    "manaBarColor": "Цвет полосы маны",
     "editLocations": "Изменить расположения интерфейса",
     "guiScale": "Масштаб интерфейса: %scale%",
     "resetLocations": "Сбросить расположения",
@@ -24,22 +24,14 @@
     "hideAuctionHousePlayers": "Прятать игроков у аукциона",
     "backpackStyle": "Стиль рюкзака: %style%",
     "backpackStyles": {
-      "inventory": "Инвентарь",
+      "regular": "Обычный",
       "compact": "Компакт"
     },
     "showBackpackPreview": "Показывать превью рюкзака",
     "hideHealthBar": "Прятать полосу здоровья",
-    "healthTextColor": "Цвет текста здоровья",
-    "healthBarColor": "Цвет полосы здоровья",
-    "defenceTextColor": "Цвет текста защиты",
-    "defencePercentageColor": "Цвет процентов защиты",
-    "disableDoubleDropAutomatically": "Отключать двойное выбрасывание автоматически",
     "fullMinionWarning": "Предупреждение о том, что миньон заполнился",
-    "nextPage": "Следующая страница",
-    "previousPage": "Предыдущая страница",
     "ignoreItemFrameClicks": "Игнорировать нажатия по рамкам",
-    "useVanillaTextureDefence": "Использовать оригинальную иконку брони",
-    "showBackpackHoldingShift": "Показывать рюкзак при зажатии шифта",
+    "showOnlyWhenHoldingShift": "Показывать только при зажатом шифте",
     "manaBar": "Полоса маны",
     "manaText": "Количество маны",
     "healthBar": "Полоса здоровья",
@@ -48,24 +40,33 @@
     "defenceText": "Число защиты",
     "defencePercentage": "Проценты защиты",
     "healthUpdates": "Изменение числа здоровья",
-    "hidePlayersInLobby": "Скрывать всех игроков в лобби",
-    "textStyle": "Стиль Текста: %style%",
-    "textStyles": {
-      "regular": "Обычный",
-      "blackShadow": "Чёрная тень"
-    },
+    "hidePlayersInLobby": "Скрывать далекие объекты в лобби",
     "darkAuctionTimer": "Таймер тёмного аукциона",
     "magmaBossTimer": "Таймер Магма-босса",
     "itemPickupLog": "Список всех предметов что вы подняли",
     "avoidPlacingEnchantedItems": "Избегать установки зачарованных предметов на блоки",
     "avoidBreakingStems": "Избегать ломания стебля",
-    "magmaBossTimerColor": "Цвет таймера Магма-Босса",
-    "darkAuctionTimerColor": "Цвет таймера тёмного аукциона",
     "stopBowChargeFromResetting": "Останавливать заряд лука от перезагрузки",
-    "showMagmaTimerInOtherGames": "Показывать таймер Магма-Босса в других играх",
     "preventMovementOnDeath": "Предотвращать ходьбу после смерти",
-    "showDarkAuctionTimerInOtherGames": "Показывать таймер Тёмного Аукц. в других играх",
-    "showItemAnvilUses": "Показывать Использования предмета на наковальне"
+    "showItemAnvilUses": "Показывать Использования предмета на наковальне",
+    "lockSlots": "Разрешить блокировку слотов",
+    "dontResetCursorInventory": "Не сбрасывать курсор между инвентарями",
+    "summoningEyeAlert": "Оповещение о Summoning Eye",
+    "makeEnderchestsInEndGreen": "Сделать сундуки края в краю зелёными",
+    "changeColor": "Изменить цвет",
+    "showInOtherGames": "Показывать в остальных играх",
+    "useVanillaTexture": "Использовать обычные текстуры",
+    "textStyle": "Стиль текста",
+    "textStyles": {
+      "one": "Стиль 1",
+      "two": "Стиль 2"
+    },
+    "warningDuration": "Длительность предупреждения",
+    "dontOpenProfileWithBow": "Не открывать профиль луком",
+    "stopDroppingSellingRareItems": "Перестать выбрасывать/продавать редкие предметы",
+    "makeBackpackInventoriesColored": "Цветные ячейки рюкзаков",
+    "avoidBreakingBottomSugarCane": "Избегать ломание нижнего тростника",
+    "replaceRomanNumeralsWithNumbers": "Заменить римские номера на предметах"
   },
   "messages": {
     "dropConfirmation": "Выбросите предмет ещё раз для подтверждения!",
@@ -85,6 +86,11 @@
       "enchants": "Зачарования",
       "reforges": "Перековки"
     },
-    "cancelledStemBreak": "SkyblockAddons остановил вас от ломания этого стебля. Используйте пустую руку, если вы хотите это сделать."
+    "slotLocked": "Этот слот заблокирован!",
+    "summoningEyeFound": "Summoning Eye!",
+    "cancelledStemBreak": "SkyBlockAddons оставил вас от ломания. Используйте руку, если вы хотите действительно сломать.",
+    "cancelledProfileOpening": "SkyBlockAddons остановил вас от открытия профиля игрока с луком в руках.",
+    "cancelledDropping": "SkyBlockAddons оставил вас от выбрасывания этого редкого предмета или инструмента из панели быстрого доступа.",
+    "clickMoreTimes": "Нажмите/выберите этот предмет еще %times% раз, если вы действительно хотите сделать это."
   }
 }

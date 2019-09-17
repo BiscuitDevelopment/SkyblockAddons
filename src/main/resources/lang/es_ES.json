@@ -1,45 +1,37 @@
 {
   "language": "Español (España)",
   "settings": {
+    "tab": {
+      "features": "Características",
+      "fixes": "Correciones",
+      "guiFeatures": "Características de la interfaz",
+      "generalSettings": "Opciones Generales"
+    },
     "settings": "Opciones",
-    "openSettings": "Abrir opciones",
     "magmaBossWarning": "Alerta de Magma Boss",
     "itemDropConfirmation": "Confirmar para soltar objeto",
-    "warningTime": "Tiempo de alarma: %time%s",
     "hideSkeletonHatBones": "Ocultar los huesos del Skeleton Hat",
     "skeletonHatBonesBar": "Barra de huesos del Skeleton Hat",
     "hideFoodAndArmor": "Ocultar Barra de Hambre y Armadura",
     "fullInventoryWarning": "Aviso de Inventario Lleno",
     "disableEmberRodAbility": "Deshabilitar en la Isla el Ember Rod",
-    "warningColor": "Color de Aviso",
-    "confirmationColor": "Color de Confirmación",
-    "manaTextColor": "Color del Texto de Maná",
-    "manaBarColor": "Color de la Barra de Maná",
     "editLocations": "Editar posiciciones",
     "guiScale": "Escala del GUI: %scale%",
     "resetLocations": "Restablecer Posiciones",
     "hideDurability": "Ocultar Durabilidad de Herramientas",
-    "showEnchantmentsReforges": "Ver Encantamientos y Reforges",
+    "showEnchantmentsReforges": "Ver Encantamientos y Reforjes",
     "minionStopWarning": "Aviso de Detención de Minion",
     "hideAuctionHousePlayers": "Ocultar Jugadores cerca de la Auction House",
     "backpackStyle": "Estilo de Mochila: %style%",
     "backpackStyles": {
-      "inventory": "Inventario",
+      "regular": "Normal",
       "compact": "Compacto"
     },
     "showBackpackPreview": "Mostrar Preview de la Mochila",
     "hideHealthBar": "Ocultar Barra de Vida",
-    "healthTextColor": "Color de Texto de Vida",
-    "healthBarColor": "Color de la Barra de Vida",
-    "defenceTextColor": "Color del Texto de Defensa",
-    "defencePercentageColor": "Color del Porcentaje de Defensa",
-    "disableDoubleDropAutomatically": "Deshabilitar Doble Drop Automáticamente",
     "fullMinionWarning": "Aviso de Minion Lleno",
-    "nextPage": "Siguiente",
-    "previousPage": "Atrás",
     "ignoreItemFrameClicks": "Ignorar Clicks en Item Frames",
-    "useVanillaTextureDefence": "Usar Textura de Vanilla para el Icono de Defensa",
-    "showBackpackHoldingShift": "Solo mostrar Backpack cuando se presiona Shift",
+    "showOnlyWhenHoldingShift": "Mostrar solamente cuando se mantenga presionado Shift",
     "manaBar": "Barra de Maná",
     "manaText": "Número de Maná",
     "healthBar": "Barra de Vida",
@@ -48,24 +40,33 @@
     "defenceText": "Número de Defensa",
     "defencePercentage": "Porcentaje de Defensa",
     "healthUpdates": "Número de Cambio de Vida",
-    "hidePlayersInLobby": "Ocultar Entidades leganas en Lobby",
-    "textStyle": "Estilo de Texto: %style%",
-    "textStyles": {
-      "regular": "Normal",
-      "blackShadow": "Sombra Negra"
-    },
+    "hidePlayersInLobby": "Ocultar entidades lejanas en el lobby",
     "darkAuctionTimer": "Contador del Black Auction",
     "magmaBossTimer": "Contador del Magma Boss",
     "itemPickupLog": "Registro de Items Recolectados",
     "avoidPlacingEnchantedItems": "Evitar poner Items Encantados en el suelo",
     "avoidBreakingStems": "Evitar romper los Tallos",
-    "magmaBossTimerColor": "Color del Contador del Magma Boss",
-    "darkAuctionTimerColor": "Color del Contador del Dark Auction",
     "stopBowChargeFromResetting": "Prevenir el Reset del Arco",
-    "showMagmaTimerInOtherGames": "Mostrar el Contador del Magma Boss en Otros Juegos",
     "preventMovementOnDeath": "Prevenir moverse cuando mueres",
-    "showDarkAuctionTimerInOtherGames": "Mostrar el Contador del Dark Auction en Otros Juegos",
-    "showItemAnvilUses": "Mostrar usos del Item en el Yunque"
+    "showItemAnvilUses": "Mostrar usos del Item en el Yunque",
+    "lockSlots": "Permitir las ranuras bloquedas",
+    "dontResetCursorInventory": "No reiniciar el cursor entre los inventarios",
+    "summoningEyeAlert": "Alerta de uso de un ojo de invocación",
+    "makeEnderchestsInEndGreen": "Hacer los Enderchests de color verde en el End",
+    "changeColor": "Cambiar el color",
+    "showInOtherGames": "Mostrar en otros juegos",
+    "useVanillaTexture": "Usar la textura por default",
+    "textStyle": "Estilo de texto",
+    "textStyles": {
+      "one": "Estilo Uno",
+      "two": "Estilo Dos"
+    },
+    "warningDuration": "Duración de la advertencia",
+    "dontOpenProfileWithBow": "No Abrir Perfil Con Un Arco",
+    "stopDroppingSellingRareItems": "Parar de Soltar/Vender Objetos Raros",
+    "makeBackpackInventoriesColored": "Inventarios de Color",
+    "avoidBreakingBottomSugarCane": "Evitar Romper Debajo de la Caña de Azúcar",
+    "replaceRomanNumeralsWithNumbers": "Reemplazar Números Romanos en Objetos"
   },
   "messages": {
     "dropConfirmation": "¡Dropea el Objeto otra vez para soltar!",
@@ -83,8 +84,13 @@
     "enchantsToExclude": "%type% para excluir:",
     "inventoryTypes": {
       "enchants": "Encantamientos",
-      "reforges": "Reforzar"
+      "reforges": "Reforjar"
     },
-    "cancelledStemBreak": "SkyblockAddons Te ha parado de romper este tallo. Usa tu mano si quieres romperlo."
+    "slotLocked": "¡Esta ranura está bloqueada!",
+    "summoningEyeFound": "Ojo de Invocación!",
+    "cancelledStemBreak": "SkyblockAddons te ha impedido romper este objeto. Usa tu mano si quieres romperlo.",
+    "cancelledProfileOpening": "SkyblockAddons te ha impedido abrir el perfil de este jugador mientras mantienes un arco.",
+    "cancelledDropping": "SkyblockAddons te ha impedido que soltaras este objeto o herramienta rara de tu hotbar.",
+    "clickMoreTimes": "Haga clic/soltar este objeto %times% veces más si realmente quieres hacer esto."
   }
 }

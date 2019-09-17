@@ -1,20 +1,20 @@
 {
   "language": "Magyar",
   "settings": {
+    "tab": {
+      "features": "Funkciók",
+      "fixes": "Hibajavítások",
+      "guiFeatures": "GUI funkciók",
+      "generalSettings": "Általános beállítások"
+    },
     "settings": "Beállítások",
-    "openSettings": "További beállítások megnyitása",
     "magmaBossWarning": "Magma Boss figyelmeztetés",
     "itemDropConfirmation": "Tárgy kidobás megerősítése",
-    "warningTime": "Figyelmeztetés időtartama: %time%s",
     "hideSkeletonHatBones": "Skeleton Helmet csontok elrejtése",
     "skeletonHatBonesBar": "Skeleton Hat csont sáv",
     "hideFoodAndArmor": "Étel és páncél sáv elrejtése",
     "fullInventoryWarning": "Teli felszerelés figyelmeztetés",
     "disableEmberRodAbility": "Ember Rod tiltása a szigeten",
-    "warningColor": "Figyelmeztetés színe",
-    "confirmationColor": "Megerősítés színe",
-    "manaTextColor": "Mana szöveg színe",
-    "manaBarColor": "Mana sáv színe",
     "editLocations": "Elhelyezés szerkesztése",
     "guiScale": "Gui mérete: %scale%",
     "resetLocations": "Alapértelmezett elhelyezés",
@@ -24,22 +24,14 @@
     "hideAuctionHousePlayers": "Játékosok elrejtése az aukciósház körül",
     "backpackStyle": "Hátizsák stílus: %style%",
     "backpackStyles": {
-      "inventory": "Felszerelés",
+      "regular": "Normál",
       "compact": "Tömörített"
     },
     "showBackpackPreview": "Hátizsák előnézet mutatása",
     "hideHealthBar": "Életerő elrejtése",
-    "healthTextColor": "Életerő szöveg színe",
-    "healthBarColor": "Életerő sáv színe",
-    "defenceTextColor": "Védelem szöveg színe",
-    "defencePercentageColor": "Védelem százalék színe",
-    "disableDoubleDropAutomatically": "A dubla kidobás letiltása",
     "fullMinionWarning": "Teljes minion figyelmeztetés",
-    "nextPage": "Következő oldal",
-    "previousPage": "Előző",
     "ignoreItemFrameClicks": "Eszköz keretre kattintás letiltása",
-    "useVanillaTextureDefence": "Vanilla textúra a védelem ikonhoz",
-    "showBackpackHoldingShift": "Hátizsák mutatása csak a Shift lenyomásával",
+    "showOnlyWhenHoldingShift": "Csak a Shift lenyomásával mutassa",
     "manaBar": "Mana sáv",
     "manaText": "Mana szám",
     "healthBar": "Életerő sáv",
@@ -48,24 +40,33 @@
     "defenceText": "Védelem szám",
     "defencePercentage": "Védelem százalék",
     "healthUpdates": "Életerő változások",
-    "hidePlayersInLobby": "Közeli entitások elrejtése a lobbyban",
-    "textStyle": "Szöveg típusa: %style%",
-    "textStyles": {
-      "regular": "Normál",
-      "blackShadow": "Fekete árnyék"
-    },
+    "hidePlayersInLobby": "Messzi entitások elrejtése a Lobbyban",
     "darkAuctionTimer": "Dark Auction időzítő",
     "magmaBossTimer": "Magma Boss időzítő",
     "itemPickupLog": "Tárgyfelvételi napló",
     "avoidPlacingEnchantedItems": "Enchantolt tárgyak lehelyezésének elkerülése",
     "avoidBreakingStems": "Növény szárak kiütésének elkerülése",
-    "magmaBossTimerColor": "Magma Boss időzítő színe",
-    "darkAuctionTimerColor": "Dark Auction időzítő színe",
     "stopBowChargeFromResetting": "Íj felhúzásának megállítása újratöltéskor",
-    "showMagmaTimerInOtherGames": "Magma időzítő más játékokban",
     "preventMovementOnDeath": "Sétálás megakadályozása halál után",
-    "showDarkAuctionTimerInOtherGames": "Dark Auc időzítő más játékokban",
-    "showItemAnvilUses": "Tárgy üllő használatának mutatása"
+    "showItemAnvilUses": "Tárgy üllő használatának mutatása",
+    "lockSlots": "Slot lezárás engedélyezése",
+    "dontResetCursorInventory": "Ne állítsa vissza a kurzort az eszköztárak között",
+    "summoningEyeAlert": "Summoning Eye figyelmeztetés",
+    "makeEnderchestsInEndGreen": "Végzetláda legyen zöld az Endben",
+    "changeColor": "Színváltoztatás",
+    "showInOtherGames": "Mutatás más játékokban",
+    "useVanillaTexture": "Használja a Vanilla textúrát",
+    "textStyle": "Szöveg stílusa",
+    "textStyles": {
+      "one": "Első stílus",
+      "two": "Második stílus"
+    },
+    "warningDuration": "Figyelmeztetés időtartama",
+    "dontOpenProfileWithBow": "Ne nyissa meg a profilt íjjal",
+    "stopDroppingSellingRareItems": "Rare tárgyak eldobásának/eladásának tiltása",
+    "makeBackpackInventoriesColored": "Színes eszköztárak",
+    "avoidBreakingBottomSugarCane": "Alsó cukornád kiütésének elkerülése",
+    "replaceRomanNumeralsWithNumbers": "Római számok kicserélése a tárgyakon"
   },
   "messages": {
     "dropConfirmation": "Dobd el ezt a tárgyat újra, hogy megerősítsd!",
@@ -85,6 +86,11 @@
       "enchants": "Enchantok",
       "reforges": "Reforgeok"
     },
-    "cancelledStemBreak": "A SkyblockAddons megállította, hogy kiüsd a növény szárát. Használd az öklöd, ha ki szeretnéd ütni."
+    "slotLocked": "A slot le van zárva!",
+    "summoningEyeFound": "Summoning Eye!",
+    "cancelledStemBreak": "A SkyblockAddons megállította, hogy kiüsd ezt. Használd az öklöd, ha ki szeretnéd ütni.",
+    "cancelledProfileOpening": "A SkyblockAddons megállította, hogy megnyisd ennek a játékosnak a profilját, amíg íj van a kezedben.",
+    "cancelledDropping": "A SkyblockAddons megállította, hogy eldobd ezt a rare tárgyat vagy eszközt.",
+    "clickMoreTimes": "Kattints/dobd el ezt a tárgyat még %times% alkalommal, ha tényleg ezt szeretnéd."
   }
 }

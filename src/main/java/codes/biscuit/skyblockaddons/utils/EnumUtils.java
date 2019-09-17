@@ -1,5 +1,15 @@
 package codes.biscuit.skyblockaddons.utils;
 
+import codes.biscuit.skyblockaddons.SkyblockAddons;
+import net.minecraft.entity.Entity;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.Vec3d;
+
+import java.util.Arrays;
+import java.util.EnumSet;
+import java.util.Set;
+
 import static codes.biscuit.skyblockaddons.utils.Message.*;
 
 public class EnumUtils {
@@ -69,18 +79,18 @@ public class EnumUtils {
             return y;
         }
 
-        public AnchorPoint getNextType() {
-            int nextType = ordinal()+1;
-            if (nextType > values().length-1) {
-                nextType = 0;
-            }
-            return values()[nextType];
-        }
+//        public AnchorPoint getNextType() {
+//            int nextType = ordinal()+1;
+//            if (nextType > values().length-1) {
+//                nextType = 0;
+//            }
+//            return values()[nextType];
+//        }
     }
 
     public enum ButtonType {
         TOGGLE,
-        COLOR,
+        //        COLOR,
         SOLID
     }
 
@@ -99,24 +109,8 @@ public class EnumUtils {
         }
     }
 
-    public enum Backpack {
-        SMALL("Small Backpack"),
-        MEDIUM("Medium Backpack"),
-        LARGE("Large Backpack");
-
-        private String itemName;
-
-        Backpack(String itemName) {
-            this.itemName = itemName;
-        }
-
-        public String getItemName() {
-            return itemName;
-        }
-    }
-
     public enum BackpackStyle {
-        GUI(BACKPACK_STYLE_GUI),
+        GUI(BACKPACK_STYLE_REGULAR),
         BOX(BACKPACK_STYLE_COMPACT);
 
         private Message message;
@@ -139,8 +133,8 @@ public class EnumUtils {
     }
 
     public enum TextStyle {
-        REGULAR(TEXT_STYLE_REGULAR),
-        BLACK_SHADOW(TEXT_STYLE_BLACK_SHADOW);
+        REGULAR(TEXT_STYLE_ONE),
+        BLACK_SHADOW(TEXT_STYLE_TWO);
 
         private Message message;
 
@@ -165,6 +159,10 @@ public class EnumUtils {
         ISLAND("Your Island"),
         BLAZING_FORTRESS("Blazing Fortress"),
         VILLAGE("Village"),
+        WILDERNESS("Wilderness"),
+        BANK("Bank"),
+        THE_END("The End"),
+        DRAGONS_NEST("Dragon's Nest"),
         AUCTION_HOUSE("Auction House");
 
         private String scoreboardName;
@@ -215,6 +213,115 @@ public class EnumUtils {
 
         public String getInventiveTalentEvent() {
             return inventiveTalentEvent;
+        }
+    }
+
+    public enum SkyblockNPC {
+        AUCTION_MASTER(17.5, 71, -78.5, Location.VILLAGE, Location.AUCTION_HOUSE),
+        BANKER(20.5, 71, -40.5, Location.VILLAGE, Location.BANK),
+        LOBBY_SELECTOR(-9, 70, -79, Location.VILLAGE),
+        SIRIUS(91.5, 75, 176.5, Location.WILDERNESS);
+
+        Set<Location> locations;
+        private AxisAlignedBB hideArea;
+        private double x;
+        private double y;
+        private double z;
+
+        SkyblockNPC(double x, double y, double z, Location... locations) {
+            this.x = x;
+            this.y = y;
+            this.z = z;
+            hideArea = new AxisAlignedBB(x - 3, y - 3, z - 3, x + 3, y + 3, z + 3);
+            this.locations = EnumSet.copyOf(Arrays.asList(locations));
+        }
+
+//        public static boolean isNPC(double x, double y, double z) {
+//            for (SkyblockNPC npc : values()) {
+//                if (npc.x == x && npc.y == y && npc.z == z) {
+//                    return true;
+//                }
+//            }
+//            return false;
+//        }
+
+        public static boolean isNearNPC(Entity e) {
+            for (SkyblockNPC npc : values()) {
+                if (npc.locations.contains(SkyblockAddons.getInstance().getUtils().getLocation())) {
+                    double x = e.posX;
+                    double y = e.posY;
+                    double z = e.posZ;
+                    if (npc.hideArea.contains(new Vec3d(x, y, z))
+                            && (npc.x != x || npc.y != y || npc.z != z)) {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+    }
+
+    public enum SkyblockAddonsGuiTab {
+        FEATURES, FIXES, GUI_FEATURES, GENERAL_SETTINGS
+    }
+
+    public enum FeatureSetting {
+        COLOR,
+        GUI_SCALE,
+        ENABLED_IN_OTHER_GAMES,
+        USE_VANILLA_TEXTURE,
+        //        WARNING_TIME,
+        BACKPACK_STYLE,
+        SHOW_ONLY_WHEN_HOLDING_SHIFT,
+        MAKE_INVENTORY_COLORED
+    }
+
+    public enum Merchant {
+
+        ADVENTURER("Adventurer"),
+        BUILDER("Builder"),
+        WEAPONSMITH("Weaponsmith"),
+        ARMORSMITH("Armorsmith"),
+        GOLD_FORGER("Gold Forger"),
+        IRON_FORGER("Iron Forger");
+
+        private String name;
+
+        Merchant(String name) {
+            this.name = name;
+        }
+
+        public static boolean isMerchant(String name) {
+            for (Merchant merchant : values()) {
+                if (name.equals(merchant.name)) {
+                    return true;
+                }
+            }
+            return name.contains("Merchant");
+        }
+    }
+
+    public enum Rarity {
+        COMMON("f"),
+        UNCOMMON("a"),
+        RARE("9"),
+        EPIC("5"),
+        LEGENDARY("6"),
+        SPECIAL("d");
+
+        private String tag;
+
+        Rarity(String s) {
+            this.tag = "\u00A7" + s;
+        }
+
+        public static Rarity getRarity(ItemStack item) {
+            if (item == null) return null;
+            String itemName = item.getDisplayName();
+            for (Rarity rarity : Rarity.values()) {
+                if (itemName.startsWith(rarity.tag)) return rarity;
+            }
+            return null;
         }
     }
 }

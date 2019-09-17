@@ -1,20 +1,20 @@
 {
   "language": "Deutsch",
   "settings": {
+    "tab": {
+      "features": "Funktionen",
+      "fixes": "Fehlerbehebungen",
+      "guiFeatures": "GUI-Funktionen",
+      "generalSettings": "Allgemeine Einstellungen"
+    },
     "settings": "Einstellungen",
-    "openSettings": "Zusätzliche Einstellungen",
     "magmaBossWarning": "Magma Boss Spawn Warnung",
     "itemDropConfirmation": "Item Auswurf Bestätigung",
-    "warningTime": "Warnung zeigen für %time%s",
     "hideSkeletonHatBones": "Skelett-Helm Knochen verstecken",
     "skeletonHatBonesBar": "Skelett-Helm Knochen Leiste",
     "hideFoodAndArmor": "Hunger- und Rüstungsleiste verstecken",
     "fullInventoryWarning": "Warnung bei vollem Inventar",
     "disableEmberRodAbility": "Ember Rod auf der Insel deaktivieren",
-    "warningColor": "Farbe der Warnungen",
-    "confirmationColor": "Farbe der Bestätigung",
-    "manaTextColor": "Farbe des Mana-Textes",
-    "manaBarColor": "Farbe des Mana-Leiste",
     "editLocations": "Lage der GUIs-Teile bearbeiten",
     "guiScale": "GUI Größe: %scale%",
     "resetLocations": "GUI-Lage zurücksetzen",
@@ -24,22 +24,14 @@
     "hideAuctionHousePlayers": "Spieler im Auktionshaus verstecken",
     "backpackStyle": "Rucksack-Stil: %style%",
     "backpackStyles": {
-      "inventory": "Inventar",
+      "regular": "Normal",
       "compact": "Kompakt"
     },
     "showBackpackPreview": "Rucksack-Vorschau zeigen",
     "hideHealthBar": "Lebensleiste verstecken",
-    "healthTextColor": "Farbe des Lebens-Textes",
-    "healthBarColor": "Farbe der Lebens-Leiste",
-    "defenceTextColor": "Farbe des Verteidigung-Textes",
-    "defencePercentageColor": "Verteidigungs-Prozent Farbe",
-    "disableDoubleDropAutomatically": "Item-Drop automatisch deaktivieren",
     "fullMinionWarning": "Warnung bei vollem Minion",
-    "nextPage": "Nächste Seite",
-    "previousPage": "Vorherige Seite",
     "ignoreItemFrameClicks": "Klicks auf Gegenstandsrahmen ignorieren",
-    "useVanillaTextureDefence": "Vanilla-Textur für das Verteidigunssymbol nutzen",
-    "showBackpackHoldingShift": "Rucksack nur bei Shift anzeigen",
+    "showOnlyWhenHoldingShift": "Nur beim Halten von Shift anzeigen",
     "manaBar": "Mana-Leiste",
     "manaText": "Mana-Anzahl",
     "healthBar": "Lebensleiste",
@@ -49,23 +41,32 @@
     "defencePercentage": "Verteidigungs-Prozentsatz",
     "healthUpdates": "Lebens-Veränderungs-Zahl",
     "hidePlayersInLobby": "Verstecke weit entfernte Spieler in der Lobby",
-    "textStyle": "Text Stil: %style%",
-    "textStyles": {
-      "regular": "Normal",
-      "blackShadow": "Schwarzer Schatten"
-    },
     "darkAuctionTimer": "Dunkelauktionstimer",
     "magmaBossTimer": "Magma Boss Timer",
-    "itemPickupLog": "Aufgehobene Gegenstands-Liste",
-    "avoidPlacingEnchantedItems": "Platziere keine Verzauberten Blöcke\/Items",
-    "avoidBreakingStems": "Deaktiviere das Zerstören der Melonen-\/Kürbisstämme",
-    "magmaBossTimerColor": "Magma Boss Timer Farbe",
-    "darkAuctionTimerColor": "Schwarzauktions Timer Farbe",
+    "itemPickupLog": "Aufgehobene Items-Liste",
+    "avoidPlacingEnchantedItems": "Platziere keine Verzauberten Blöcke/Items",
+    "avoidBreakingStems": "Deaktiviere das Zerstören der Melonen-/Kürbisstämme",
     "stopBowChargeFromResetting": "Verhindere das Zurücksetzen des Bogenladens",
-    "showMagmaTimerInOtherGames": "Zeige den Magma Boss-Timer in anderen Spielen",
     "preventMovementOnDeath": "Verhindere das Laufen nach dem Tot",
-    "showDarkAuctionTimerInOtherGames": "Zeige den Dunkle Auktionstimer in andere Spielen",
-    "showItemAnvilUses": "Zeige Ambossnutzungen eines Items"
+    "showItemAnvilUses": "Zeige Ambossnutzungen eines Items",
+    "lockSlots": "Sperren von Slots erlauben",
+    "dontResetCursorInventory": "Mauszeiger zwischen Inventaren nicht zurücksetzen",
+    "summoningEyeAlert": "Summoning Eye Alarm",
+    "makeEnderchestsInEndGreen": "Färbe Endertruhen im End grün",
+    "changeColor": "Farbe ändern",
+    "showInOtherGames": "In anderen Spielen anzeigen",
+    "useVanillaTexture": "Vanilla Textur benutzen",
+    "textStyle": "Text Stil",
+    "textStyles": {
+      "one": "Stil Eins",
+      "two": "Stil Zwei"
+    },
+    "warningDuration": "Warnungsdauer",
+    "dontOpenProfileWithBow": "Profile nicht mit dem Bogen öffnen",
+    "stopDroppingSellingRareItems": "Stoppe entfernen/verkaufen von seltenen Items",
+    "makeBackpackInventoriesColored": "Farbige Inventare",
+    "avoidBreakingBottomSugarCane": "Zerstören des Zuckerrohrs blockieren",
+    "replaceRomanNumeralsWithNumbers": "Ersetze Römische Nummern auf Gegenständen"
   },
   "messages": {
     "dropConfirmation": "Werfe diesen Gegenstand nochmal, um zu bestätigen!",
@@ -85,6 +86,11 @@
       "enchants": "Verzauberungen",
       "reforges": "Verbesserungen"
     },
-    "cancelledStemBreak": "SkyblockAddons hat dich davon abgehalten, diesen Stamm zu zerstören. Nutze deine leere Hand um ihn trotzdem zu zerstören."
+    "slotLocked": "Dieser Slot ist gesperrt!",
+    "summoningEyeFound": "Beschwörungsauge!",
+    "cancelledStemBreak": "SkyblockAddons hat dich davon abgehalten, diesen Stamm zu zerstören. Nutze deine Hand um ihn trotzdem zu zerstören.",
+    "cancelledProfileOpening": "SkyblockAddons hat dich davon abgehalten, das Profil dieses Spielers zu öffnen, während du einen Bogen hältst.",
+    "cancelledDropping": "SkyblockAddons hat dich davon abgehalten, dieses seltene Item oder Werkzeug aus deiner Hotbar zu entfernen.",
+    "clickMoreTimes": "Klicke/entferne dieses Item %times% mal mehr, wenn du das wirklich tun möchtest."
   }
 }

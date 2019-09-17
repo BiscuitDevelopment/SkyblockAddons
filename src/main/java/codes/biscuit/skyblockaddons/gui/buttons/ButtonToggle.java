@@ -1,16 +1,15 @@
 package codes.biscuit.skyblockaddons.gui.buttons;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.utils.ConfigColor;
 import codes.biscuit.skyblockaddons.utils.Feature;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
-
-import java.awt.*;
-
-import static codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui.BUTTON_MAX_WIDTH;
+import net.minecraft.util.ResourceLocation;
 
 public class ButtonToggle extends ButtonFeature {
+
+    private static ResourceLocation TOGGLE_ON = new ResourceLocation("skyblockaddons", "toggleon.png");
+    private static ResourceLocation TOGGLE_OFF = new ResourceLocation("skyblockaddons", "toggleoff.png");
 
     private SkyblockAddons main;
 
@@ -20,63 +19,35 @@ public class ButtonToggle extends ButtonFeature {
     /**
      * Create a button for toggling a feature on or off. This includes all the {@link Feature}s that have a proper ID.
      */
-    public ButtonToggle(double x, double y, int width, int height, String buttonText, SkyblockAddons main, Feature feature) {
-        super(0, (int)x, (int)y, buttonText, feature);
+    public ButtonToggle(double x, double y, SkyblockAddons main, Feature feature) {
+        super(0, (int) x, (int) y, "", feature);
         this.main = main;
         this.feature = feature;
-        this.width = width;
-        this.height = height;
+        this.width = 31;
+        this.height = 15;
     }
 
     @Override
-    public void drawButton(Minecraft mc, int mouseX, int mouseY, float partialTicks) {
-        if (visible) {
-            int alpha;
-            float alphaMultiplier = 1F;
-            if (main.getUtils().isFadingIn()) {
-                long timeSinceOpen = System.currentTimeMillis() - timeOpened;
-                int fadeMilis = 500;
-                if (timeSinceOpen <= fadeMilis) {
-                    alphaMultiplier = (float) timeSinceOpen / fadeMilis;
-                }
-                alpha = (int) (255 * alphaMultiplier);
-            } else {
-                alpha = 255;
+    public void drawButton(Minecraft mc, int mouseX, int mouseY, float part) {
+        float alphaMultiplier = 1F;
+        if (main.getUtils().isFadingIn()) {
+            long timeSinceOpen = System.currentTimeMillis() - timeOpened;
+            int fadeMilis = 500;
+            if (timeSinceOpen <= fadeMilis) {
+                alphaMultiplier = (float) timeSinceOpen / fadeMilis;
             }
-            hovered = mouseX >= this.x && mouseY >= this.y && mouseX < this.x + this.width && mouseY < this.y + this.height;
-            if (alpha < 4) alpha = 4;
-            int boxColor;
-            int fontColor = new Color(224, 224, 224, alpha).getRGB();
-            int boxAlpha = 100;
-            if (hovered) {
-                boxAlpha = 170;
-                fontColor = new Color(255, 255, 160, alpha).getRGB();
-            }
-            // Alpha multiplier is from 0 to 1, multiplying it creates the fade effect.
-            boxAlpha *= alphaMultiplier;
-            // Regular features are red if disabled, green if enabled or part of the gui feature is enabled.
-            if (main.getConfigValues().isDisabled(feature)) {
-                boxColor = ConfigColor.RED.getColor(boxAlpha);
-            } else {
-                boxColor = ConfigColor.GREEN.getColor(boxAlpha);
-            }
-            GlStateManager.enableBlend();
-            float scale = 1;
-            int stringWidth = mc.fontRenderer.getStringWidth(displayString);
-            float widthLimit = BUTTON_MAX_WIDTH -10;
-            if (feature == Feature.WARNING_TIME) {
-                widthLimit = 90;
-            }
-            if (stringWidth > widthLimit) {
-                scale = 1/(stringWidth/widthLimit);
-            }
-            drawRect(x, y, x + this.width, y + this.height, boxColor);
-            float scaleMultiplier = 1/scale;
-            GlStateManager.pushMatrix();
-            GlStateManager.scale(scale, scale, 1);
-            this.drawCenteredString(mc.fontRenderer, displayString, (int) ((x + width / 2) * scaleMultiplier), (int) ((y + (this.height - (8 / scaleMultiplier)) / 2) * scaleMultiplier), fontColor);
-            GlStateManager.disableBlend();
-            GlStateManager.popMatrix();
         }
+        hovered = mouseX >= this.x && mouseY >= this.y && mouseX < this.x + this.width && mouseY < this.y + this.height;
+        GlStateManager.enableBlend();
+        GlStateManager.color(1, 1, 1, alphaMultiplier * 0.7F);
+        if (hovered) {
+            GlStateManager.color(1, 1, 1, 1);
+        }
+        if (main.getConfigValues().isEnabled(feature)) {
+            mc.getTextureManager().bindTexture(TOGGLE_ON);
+        } else {
+            mc.getTextureManager().bindTexture(TOGGLE_OFF);
+        }
+        drawModalRectWithCustomSizedTexture(x, y, 0, 0, width, height, width, height);
     }
 }

@@ -1,20 +1,20 @@
 {
   "language": "Svenska",
   "settings": {
+    "tab": {
+      "features": "Funktioner",
+      "fixes": "Fixer",
+      "guiFeatures": "GUI Funktioner",
+      "generalSettings": "Allmänna Inställningar"
+    },
     "settings": "Inställningar",
-    "openSettings": "Öppna Fler Inställningar",
     "magmaBossWarning": "Magma Boss Varning",
     "itemDropConfirmation": "Släpp Artikelbekräftelse",
-    "warningTime": "Varningstid: %time%s",
     "hideSkeletonHatBones": "Göm Skelett Hjälm Ben",
     "skeletonHatBonesBar": "Skelett Hjälm Ben Bar",
     "hideFoodAndArmor": "Göm Mat & Rustning Bar",
     "fullInventoryWarning": "Full Lager Varning",
     "disableEmberRodAbility": "Inaktivera Ö Ember Rod",
-    "warningColor": "Varning Färg",
-    "confirmationColor": "Bekräftelse Färg",
-    "manaTextColor": "Mana Text Färg",
-    "manaBarColor": "Mana Bar Färg",
     "editLocations": "Redigera GUI Platser",
     "guiScale": "Gui Skala: %scale%",
     "resetLocations": "Återställ Platser",
@@ -24,22 +24,14 @@
     "hideAuctionHousePlayers": "Göm Spelare Nära Auktionshus",
     "backpackStyle": "Ryggsäck Stil: %style%",
     "backpackStyles": {
-      "inventory": "Lager",
+      "regular": "Vanliga",
       "compact": "Kompakt"
     },
     "showBackpackPreview": "Visa Förhandsgranskning av Ryggsäck",
     "hideHealthBar": "Göm Vanilla Hälso Bar",
-    "healthTextColor": "Hälsa Text Färg",
-    "healthBarColor": "Hälsa Bar Färg",
-    "defenceTextColor": "Skydd Text Färg",
-    "defencePercentageColor": "Skydd Procentsats Färg",
-    "disableDoubleDropAutomatically": "Inaktivera Dubbel Släpp Automatiskt",
     "fullMinionWarning": "Full Tjänare Varning",
-    "nextPage": "Nästa Sida",
-    "previousPage": "Föregående Sida",
     "ignoreItemFrameClicks": "Ignorera Klick På Artikelramar",
-    "useVanillaTextureDefence": "Använd Vanilla Texturen För Skydd Ikon",
-    "showBackpackHoldingShift": "Visa Bara Ryggsäck Meda Du Håller Shift",
+    "showOnlyWhenHoldingShift": "Visa Bara När Du Håller Shift",
     "manaBar": "Mana Bar",
     "manaText": "Mana Nummer",
     "healthBar": "Hälso Bar",
@@ -47,25 +39,34 @@
     "defenceIcon": "Skydd Symbol",
     "defenceText": "Skydd Nummer",
     "defencePercentage": "Skydd Percentsats",
-    "healthUpdates": "Ändra Hälso Nummer",
-    "hidePlayersInLobby": "Göm Entiteter Lång Borta I Lobbyn",
-    "textStyle": "Text Stil: %style%",
-    "textStyles": {
-      "regular": "Vanlig",
-      "blackShadow": "Svart Skugga"
-    },
-    "darkAuctionTimer": "Mörk Auktion Timer",
+    "healthUpdates": "Hälsoförändrings Nummer",
+    "hidePlayersInLobby": "Göm Enheter Lång Borta i Lobbyn",
+    "darkAuctionTimer": "Mörk Auktions Timer",
     "magmaBossTimer": "Magma Boss Timer",
     "itemPickupLog": "Plocka Upp Artikel Log",
     "avoidPlacingEnchantedItems": "Förhindra Att Placera Förtrollade Block",
     "avoidBreakingStems": "Undvik Att Förstöra Stjälk",
-    "magmaBossTimerColor": "Magma Boss Timer Färg",
-    "darkAuctionTimerColor": "Mörk Auction Timer Färg",
     "stopBowChargeFromResetting": "Stoppa Pilbågar Från Att Återställas",
-    "showMagmaTimerInOtherGames": "Visa Magma Boss Timer I Andra Spel",
     "preventMovementOnDeath": "Förhindra Gående Efter Död",
-    "showDarkAuctionTimerInOtherGames": "Visa Mörk Auction Timer I Andra Spel",
-    "showItemAnvilUses": "Visa Atikel Städ Användningar"
+    "showItemAnvilUses": "Visa Atikel Städ Användningar",
+    "lockSlots": "Tillåt Att Låsa Luckor",
+    "dontResetCursorInventory": "Återställ Inte Markör Mellan Lager",
+    "summoningEyeAlert": "Tillkallande Ögas Larm",
+    "makeEnderchestsInEndGreen": "Gör Enderkistor i End Gröna",
+    "changeColor": "Ändra Färg",
+    "showInOtherGames": "Visa i Andra Spel",
+    "useVanillaTexture": "Använd Ursprungliga Texturen",
+    "textStyle": "Textstil",
+    "textStyles": {
+      "one": "Stil Ett",
+      "two": "Stil Två"
+    },
+    "warningDuration": "Varningstid",
+    "dontOpenProfileWithBow": "Öppna inte profiler med pilbåge",
+    "stopDroppingSellingRareItems": "Undvik att slänga/sälja sällsynta saker",
+    "makeBackpackInventoriesColored": "Färglägg Lager",
+    "avoidBreakingBottomSugarCane": "Undvik att förstöra botten av sockerrör",
+    "replaceRomanNumeralsWithNumbers": "Ersätt romanska siffror på saker"
   },
   "messages": {
     "dropConfirmation": "Släpp Det Här Igen För Att Bekräfta!",
@@ -85,6 +86,11 @@
       "enchants": "Förtrollningar",
       "reforges": "Reforges"
     },
-    "cancelledStemBreak": "SkyblockAddons har förhindrat dig från att förstöra den här stjälken. Använd dina händer om du vill förstöra den."
+    "slotLocked": "Denna luckan är låst!",
+    "summoningEyeFound": "Tillkallande Öga!",
+    "cancelledStemBreak": "SkyblockAddons har förhindrat dig från att förstöra dessa grödor. Använd din hand om du ändå vill förstöra dem.",
+    "cancelledProfileOpening": "SkyblockAddons har stoppat dig från att öppna denna spelares profil medan du håller en pilbåge.",
+    "cancelledDropping": "SkyblockAddons har stoppat dig från att slänga denna sällsynta sak eller verktyg från ditt lager.",
+    "clickMoreTimes": "Släng denna sak %times% fler gånger om du verkligen vill göra detta."
   }
 }

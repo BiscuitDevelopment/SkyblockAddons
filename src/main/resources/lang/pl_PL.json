@@ -1,20 +1,20 @@
 {
   "language": "Polski",
   "settings": {
+    "tab": {
+      "features": "Funkcje",
+      "fixes": "Naprawy błędów",
+      "guiFeatures": "Opcje interfejsu",
+      "generalSettings": "Ustawienia ogólne"
+    },
     "settings": "Ustawienia",
-    "openSettings": "Otwórz Ustawienia",
     "magmaBossWarning": "Ostrzeżenie o Bossie Magmy",
     "itemDropConfirmation": "Potwierdzenie Wyrzucenia Przedmiotu",
-    "warningTime": "Długość Ostrzeżenia: %time%s",
     "hideSkeletonHatBones": "Ukryj Kości z Hełmu Szkieleta",
     "skeletonHatBonesBar": "Pasek Kości z Hełmu Szkieleta",
     "hideFoodAndArmor": "Ukryj Pasek Głodu i Pancerza",
     "fullInventoryWarning": "Ostrzeżenie o Pełnym Ekwipunku",
     "disableEmberRodAbility": "Wyłącz Umiejętność Ember Rod'a na Wyspie",
-    "warningColor": "Kolor Ostrzeżenia",
-    "confirmationColor": "Kolor Potwierdzenia",
-    "manaTextColor": "Kolor Tekstu Many",
-    "manaBarColor": "Kolor Paska Many",
     "editLocations": "Edytuj Lokalizacje",
     "guiScale": "Skala GUI: %scale%",
     "resetLocations": "Zresetuj Położenie Elementów",
@@ -24,22 +24,14 @@
     "hideAuctionHousePlayers": "Ukryj Graczy w Pobliżu Domu Aukcyjnego",
     "backpackStyle": "Styl Plecaka: %style%",
     "backpackStyles": {
-      "inventory": "Domyślny",
+      "regular": "Zwykłe",
       "compact": "Kompaktowy"
     },
     "showBackpackPreview": "Pokaż Podgląd Plecaka",
     "hideHealthBar": "Ukryj Pasek Zdrowia",
-    "healthTextColor": "Kolor Tekstu Zdrowia",
-    "healthBarColor": "Kolor Paska Zdrowia",
-    "defenceTextColor": "Kolor Tekstu Pancerza",
-    "defencePercentageColor": "Kolor Procentu Pancerza",
-    "disableDoubleDropAutomatically": "Automatycznie Wyłącz Funkcję Podwójnego Kliknięcia",
     "fullMinionWarning": "Ostrzeżenie o Zapełnionym Minionie",
-    "nextPage": "Następna Strona",
-    "previousPage": "Poprzednia Strona",
     "ignoreItemFrameClicks": "Ignoruj Kliknięcia w Ramki na Przedmioty",
-    "useVanillaTextureDefence": "Użyj Domyślnej Tekstury Jako Ikonę Pancerza",
-    "showBackpackHoldingShift": "Pokazuj Podgląd Plecaka Tylko Trzymając Shift",
+    "showOnlyWhenHoldingShift": "Pokaż jedynie trzymając Shift",
     "manaBar": "Pasek Many",
     "manaText": "Tekst Many",
     "healthBar": "Pasek Zdrowia",
@@ -48,24 +40,33 @@
     "defenceText": "Liczba Pancerza",
     "defencePercentage": "Procent Zakotwiczenia",
     "healthUpdates": "Liczba Różnicy Zdrowia",
-    "hidePlayersInLobby": "Ukryj Pobliskie Jednostki w Lobby",
-    "textStyle": "Styl Tekstu: %style%",
-    "textStyles": {
-      "regular": "Domyślny",
-      "blackShadow": "Czarna Ramka"
-    },
+    "hidePlayersInLobby": "Ukryj widoczność graczy z daleka",
     "darkAuctionTimer": "Timer Dark Auction",
     "magmaBossTimer": "Timer Magma Bossa",
     "itemPickupLog": "Rejestruj Podnoszone Przedmioty",
     "avoidPlacingEnchantedItems": "Zablokuj Stawianie Zaklętych Przedmiotów",
     "avoidBreakingStems": "Zablokuj Niszczenie Łodyg",
-    "magmaBossTimerColor": "Kolor Timera Magma Bossa",
-    "darkAuctionTimerColor": "Kolor Timera Dark Auction",
     "stopBowChargeFromResetting": "Anuluj Resetowanie Się Naładowania Łuku",
-    "showMagmaTimerInOtherGames": "Pokaż Timer Magma Bossa w Innych Grach",
     "preventMovementOnDeath": "Zatrzymaj Poruszanie Się Po Śmierci",
-    "showDarkAuctionTimerInOtherGames": "Pokaż Timer Dark Auction w Innych Grach",
-    "showItemAnvilUses": "Pokaż Liczbę Użyć Kowadła na Przedmiocie"
+    "showItemAnvilUses": "Pokaż Liczbę Użyć Kowadła na Przedmiocie",
+    "lockSlots": "Zezwól na blokowanie slotów",
+    "dontResetCursorInventory": "Nie resetuj kursora pomiędzy ekwipunkami",
+    "summoningEyeAlert": "Alarm o oku przywołującym",
+    "makeEnderchestsInEndGreen": "Uczyń Skrzynie Endu w Endzie zielone",
+    "changeColor": "Zmień kolor",
+    "showInOtherGames": "Pokaż w innych grach",
+    "useVanillaTexture": "Użyj zwyczajnych tekstur",
+    "textStyle": "Styl tekstu",
+    "textStyles": {
+      "one": "Styl nr 1",
+      "two": "Styl nr 2"
+    },
+    "warningDuration": "Długość Ostrzeżenia",
+    "dontOpenProfileWithBow": "Nie otwieraj profilu za pomocą łuku",
+    "stopDroppingSellingRareItems": "Nie upuszczaj/sprzedawaj rzadkich przedmiotów",
+    "makeBackpackInventoriesColored": "Zmień kolor plecaka",
+    "avoidBreakingBottomSugarCane": "Unikaj niszczenia dolnej części trzciny cukrowej",
+    "replaceRomanNumeralsWithNumbers": "Zamień cyfry rzymskie na normalne"
   },
   "messages": {
     "dropConfirmation": "Wyrzuć ten przedmiot ponownie, aby potwierdzić!",
@@ -85,6 +86,11 @@
       "enchants": "Zaklęcia",
       "reforges": "Reforge"
     },
-    "cancelledStemBreak": "SkyblockAddons anulował zniszczenie tej łodygi. Użyj pustej ręki, jeśli chcesz ją zniszczyć."
+    "slotLocked": "Ten slot jest zablokowany!",
+    "summoningEyeFound": "Oko przywołujące!",
+    "cancelledStemBreak": "SkyblockAddons zatrzymał cię przed niszczeniem tej łodygi. Użyj pustej ręki, jeśli chcesz ją zniszczyć.",
+    "cancelledProfileOpening": "SkyblockAddons zatrzymał cię przed otwieraniem profilu tej osoby trzymając łuk.",
+    "cancelledDropping": "SkyblockAddons zatrzymał cię przed upuszczeniem tego rzadkiego przedmiotu lub narzędzia z twojego paska narzędzi.",
+    "clickMoreTimes": "Naciśnij/upuść ten przedmiot %times% razy więcej jeśli naprawdę chcesz to zrobić."
   }
 }

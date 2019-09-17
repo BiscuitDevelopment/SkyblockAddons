@@ -2,6 +2,7 @@ package codes.biscuit.skyblockaddons.commands;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.listeners.PlayerListener;
+import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import com.mojang.realmsclient.gui.ChatFormatting;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
@@ -49,7 +50,7 @@ public class SkyblockAddonsCommand extends CommandBase {
         if (args.length > 0) {
             if (args[0].equalsIgnoreCase("edit")) {
                 main.getUtils().setFadingIn(false);
-                main.getRenderListener().setGuiToOpen(PlayerListener.GUIType.EDIT_LOCATIONS);
+                main.getRenderListener().setGuiToOpen(PlayerListener.GUIType.EDIT_LOCATIONS, 1, EnumUtils.SkyblockAddonsGuiTab.FEATURES);
                 return;
             } else if (args[0].equalsIgnoreCase("nbt")) {
                 boolean copyingNBT = !main.getUtils().isCopyNBT();
@@ -61,6 +62,6 @@ public class SkyblockAddonsCommand extends CommandBase {
             }
         }
         main.getUtils().setFadingIn(true);
-        main.getRenderListener().setGuiToOpen(PlayerListener.GUIType.MAIN);
+        main.getRenderListener().setGuiToOpen(PlayerListener.GUIType.MAIN, 1, EnumUtils.SkyblockAddonsGuiTab.FEATURES);
     }
 }
