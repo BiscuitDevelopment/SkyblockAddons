@@ -39,8 +39,24 @@ public enum ConfigColor {
         return chatFormatting;
     }
 
+    /**
+     *
+     * @param alpha Alpha value from 0 to 255
+     */
     public int getColor(float alpha) {
         return new Color(r,g,b,(int)alpha).getRGB();
+    }
+
+    public int getR() {
+        return r;
+    }
+
+    public int getG() {
+        return g;
+    }
+
+    public int getB() {
+        return b;
     }
 
     public ConfigColor getNextColor() {

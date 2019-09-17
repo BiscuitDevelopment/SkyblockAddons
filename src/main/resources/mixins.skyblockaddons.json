@@ -9,8 +9,15 @@
     "MixinEntityRenderer",
     "MixinRenderManager",
     "MixinGuiContainer",
-    "MixinItem",
     "MixinGuiScreen",
-    "MixinGuiChest"
+    "MixinGuiChest",
+    "MixinPlayerControllerMP",
+    "MixinNetHandlerPlayClient",
+    "MixinMouseHelper",
+    "MixinGuiInventory",
+    "MixinTileEntityEnderChestRenderer",
+    "MixinRendererLivingEntity",
+    "MixinGuiHopper",
+    "MixinGuiDispenser"
   ]
 }
