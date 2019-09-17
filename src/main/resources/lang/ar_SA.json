@@ -88,7 +88,8 @@
     },
     "slotLocked": "هذه السلوت مغلقة!",
     "summoningEyeFound": "عين الاستدعاء!",
-    "cancelledStemBreak": "منعك تطبيق من كسر هذا. أن أردت كسره فأستخدم يدك.",
+    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this stem. Use your bare hand if you'd like to actually break it.",
+    "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use your another tool if you'd actually like to break it.",
     "cancelledProfileOpening": "منعك التطبيق من فتح شخصية هذا اللاعب وانت تحمل القوس.",
     "cancelledDropping": "منعك التطبيق من اسقاط هذه الأداة او الشيء النادران من قائمة أدواتك.",
     "clickMoreTimes": "أضغط أو اسقط هذا الشيء %times% مرات زيادة ان كنت حقيقتاً تريد فعل هذا."
