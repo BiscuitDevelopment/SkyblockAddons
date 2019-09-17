@@ -513,7 +513,7 @@ public class PlayerListener {
         if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.REPLACE_ROMAN_NUMERALS_WITH_NUMBERS) &&
                 e.toolTip != null) {
             for (int i = 0; i < e.toolTip.size(); i++) {
-                e.toolTip.set(i, main.getUtils().replaceRomanNumerals(e.toolTip.get(i)));
+                e.toolTip.set(i, RomanNumeralsParser.replaceNumeralsWithIntegers(e.toolTip.get(i)));
             }
         }
     }
