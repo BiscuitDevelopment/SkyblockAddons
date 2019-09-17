@@ -88,8 +88,8 @@
     },
     "slotLocked": "Acest slot este blocat!",
     "summoningEyeFound": "Summoning Eye!",
-    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this stem. Use your bare hand if you'd like to actually break it.",
-    "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use your another tool if you'd actually like to break it.",
+    "cancelledStemBreak": "Modul SkyblockAddons te-a oprit din a sparge block-ul. Folosește mana libera dacă ești sigur că vrei sa spargi.",
+    "cancelledCaneBreak": "SkyblockAddons te-a oprit din spargerea acestei trestiei de zahar. Te rog folosește altă unealtă dacă vrei să o spargi.",
     "cancelledProfileOpening": "Modul SkyblockAddons te-a oprit sa deschizi profilul jucătorului in timp ce utilizezi un arc.",
     "cancelledDropping": "Modul SkyblockAddons te-a oprit să arunci acest item sau unealtă rară din inventar.",
     "clickMoreTimes": "Aruncă acest item de încă %times% dacă vrei să faci asta."
