@@ -1,10 +1,10 @@
 {
-  "language": "繁體中文",
+  "language": "英文",
   "settings": {
     "tab": {
       "features": "功能",
       "fixes": "修復",
-      "guiFeatures": "介面設定",
+      "guiFeatures": "GUI介面設定",
       "generalSettings": "一般設定"
     },
     "settings": "設定",
@@ -62,10 +62,10 @@
       "two": "樣式二"
     },
     "warningDuration": "警報持續時間",
-    "dontOpenProfileWithBow": "拿弓時不開啟玩家資料",
-    "stopDroppingSellingRareItems": "避免賣出或丟出稀有以上的物品",
-    "makeBackpackInventoriesColored": "染色背包影響物品欄顏色",
-    "avoidBreakingBottomSugarCane": "避免破壞最下面的甘蔗",
+    "dontOpenProfileWithBow": "拿弓時將不會開啟玩家資料",
+    "stopDroppingSellingRareItems": "避免賣出或丟出稀有等級以上的物品",
+    "makeBackpackInventoriesColored": "背包內部顏色與外部相同",
+    "avoidBreakingBottomSugarCane": "避免破壞位於底部的甘蔗",
     "replaceRomanNumeralsWithNumbers": "將羅馬數字替換為阿拉伯數字"
   },
   "messages": {
@@ -88,10 +88,10 @@
     },
     "slotLocked": "這個欄位已被鎖定!",
     "summoningEyeFound": "召喚之眼!",
-    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this stem. Use your bare hand if you'd like to actually break it.",
-    "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use your another tool if you'd actually like to break it.",
-    "cancelledProfileOpening": "SkyblockAddons 避免了你拿著弓時打開其他玩家的資料。",
-    "cancelledDropping": "SkyblockAddons 避免了你丟出快捷鍵中稀有以上的物品。",
-    "clickMoreTimes": "如果你真的想這麼做，再點擊或按丟出 %times% 次。"
+    "cancelledStemBreak": "SkyblockAddons阻止了你破壞這個梗, 如確實想破壞, 請使用空手",
+    "cancelledCaneBreak": "SkyblockAddons阻止了你破壞此甘蔗, 如確實想破壞, 請使用其他工具",
+    "cancelledProfileOpening": "SkyblockAddons阻止了你拿著弓打開其他玩家的資料。",
+    "cancelledDropping": "SkyblockAddons阻止了你丟出快捷欄中稀有等級以上的物品。",
+    "clickMoreTimes": "如果你真的想這麼做, 請再點擊或按丟出%times%次。"
   }
 }
