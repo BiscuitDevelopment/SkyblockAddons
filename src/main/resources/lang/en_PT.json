@@ -88,8 +88,8 @@
     },
     "slotLocked": "Ahoy, matey! This here slot be locked!",
     "summoningEyeFound": "Summinin' Aye!",
-    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this stem. Use your bare hand if you'd like to actually break it.",
-    "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use your another tool if you'd actually like to break it.",
+    "cancelledStemBreak": "'ay there, SkyblockAddons 'as stopped ye from breakin' this here stem. Use yer bare hand if ye'd like to break it.",
+    "cancelledCaneBreak": "'ay there, SkyblockAddons 'as stopped ye from breakin' this here block o’ sugarcane. Use yer bare hand if ye'd like to break it.",
     "cancelledProfileOpening": "'ay there lad! SkyblockAddons 'as stopped ye from openin' this here player's profile while oldin' a bow.",
     "cancelledDropping": "'ay mate! SkyblockAddons 'as stopped ye from droppin' this here Rare Item or Tool from yer 'otbarrr.",
     "clickMoreTimes": "'ay lad, Click/Drop this here item %times% more times if ye really wants t' do this."
