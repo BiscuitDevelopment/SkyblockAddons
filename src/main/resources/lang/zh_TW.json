@@ -88,7 +88,8 @@
     },
     "slotLocked": "這個欄位已被鎖定!",
     "summoningEyeFound": "召喚之眼!",
-    "cancelledStemBreak": "SkyblockAddons阻止了你破壞此物, 如依舊想破壞, 請使用空手",
+    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this stem. Use your bare hand if you'd like to actually break it.",
+    "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use your another tool if you'd actually like to break it.",
     "cancelledProfileOpening": "SkyblockAddons 避免了你拿著弓時打開其他玩家的資料。",
     "cancelledDropping": "SkyblockAddons 避免了你丟出快捷鍵中稀有以上的物品。",
     "clickMoreTimes": "如果你真的想這麼做，再點擊或按丟出 %times% 次。"
