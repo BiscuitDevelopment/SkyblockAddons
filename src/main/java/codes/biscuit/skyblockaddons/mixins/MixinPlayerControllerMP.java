@@ -50,8 +50,10 @@ public class MixinPlayerControllerMP {
                 return;
             }
         }
-        if (main.getUtils().getLocation().equals(EnumUtils.Location.ISLAND) && main.getConfigValues().isEnabled(Feature.AVOID_BREAKING_BOTTOM_SUGAR_CANE) && (block.equals(Blocks.reeds) && mc.theWorld.getBlockState(loc.down()).getBlock() != Blocks.reeds)) {
-            if (heldItem == null || heldItem.getItem().equals(Items.reeds) || heldItem.getItem().equals(Items.diamond_hoe) || heldItem.getItem().equals(Items.iron_hoe) || heldItem.getItem().equals(Items.golden_hoe) || heldItem.getItem().equals(Items.stone_hoe)
+        if (main.getUtils().getLocation() == EnumUtils.Location.ISLAND && main.getConfigValues().isEnabled(Feature.AVOID_BREAKING_BOTTOM_SUGAR_CANE)
+                && (block.equals(Blocks.reeds) && mc.theWorld.getBlockState(loc.down()).getBlock() != Blocks.reeds)) {
+            if (heldItem == null || heldItem.getItem().equals(Items.reeds) || heldItem.getItem().equals(Items.diamond_hoe)
+                    || heldItem.getItem().equals(Items.iron_hoe) || heldItem.getItem().equals(Items.golden_hoe) || heldItem.getItem().equals(Items.stone_hoe)
                     || heldItem.getItem().equals(Items.wooden_hoe) || heldItem.getItem().equals(Items.wooden_hoe)) {
                 if (System.currentTimeMillis() - lastStemMessage > 20000) {
                     lastStemMessage = System.currentTimeMillis();
