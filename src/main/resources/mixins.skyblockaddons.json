@@ -9,7 +9,6 @@
     "MixinEntityRenderer",
     "MixinRenderManager",
     "MixinGuiContainer",
-    "MixinItem",
     "MixinGuiScreen",
     "MixinGuiChest",
     "MixinPlayerControllerMP",
@@ -17,6 +16,8 @@
     "MixinMouseHelper",
     "MixinGuiInventory",
     "MixinTileEntityEnderChestRenderer",
-    "MixinRendererLivingEntity"
+    "MixinGuiHopper",
+    "MixinGuiDispenser",
+    "MixinGuiFurnace"
   ]
 }

@@ -74,8 +74,7 @@ public class SkyblockAddonsGui extends GuiScreen {
                     Feature.REPLACE_ROMAN_NUMERALS_WITH_NUMBERS, Feature.DROP_CONFIRMATION};
         } else if (tab == EnumUtils.SkyblockAddonsGuiTab.FIXES) {
             array = new Feature[]{Feature.HIDE_BONES, Feature.DISABLE_EMBER_ROD, Feature.HIDE_AUCTION_HOUSE_PLAYERS,
-                    Feature.STOP_BOW_CHARGE_FROM_RESETTING, Feature.AVOID_PLACING_ENCHANTED_ITEMS, Feature.PREVENT_MOVEMENT_ON_DEATH
-                    , Feature.HIDE_DURABILITY};
+                    Feature.STOP_BOW_CHARGE_FROM_RESETTING, Feature.AVOID_PLACING_ENCHANTED_ITEMS, Feature.PREVENT_MOVEMENT_ON_DEATH};
         } else if (tab == EnumUtils.SkyblockAddonsGuiTab.GUI_FEATURES) {
             array = new Feature[]{Feature.MAGMA_BOSS_TIMER, Feature.MANA_BAR, Feature.MANA_TEXT, Feature.DEFENCE_TEXT, Feature.DEFENCE_PERCENTAGE,
                     Feature.HEALTH_BAR, Feature.HEALTH_TEXT, Feature.DEFENCE_ICON, Feature.SKELETON_BAR, Feature.HEALTH_UPDATES,
@@ -101,22 +100,44 @@ public class SkyblockAddonsGui extends GuiScreen {
                 skip--;
             }
         }
-        ScaledResolution sr = new ScaledResolution(mc);
-        float textScale = 1.4F;
-        int x = sr.getScaledWidth()/2;
-        int y = 70;
-        String text = Message.TAB_FEATURES.getMessage();
-        buttonList.add(new ButtonSwitchTab(x-180, y, (int)(fontRendererObj.getStringWidth(text)*textScale),
-                14, text, main, EnumUtils.SkyblockAddonsGuiTab.FEATURES, tab));
-        text = Message.TAB_FIXES.getMessage();
-        buttonList.add(new ButtonSwitchTab(x-80, y, (int)(fontRendererObj.getStringWidth(text)*textScale),
-                14, text, main, EnumUtils.SkyblockAddonsGuiTab.FIXES, tab));
-        text = Message.TAB_GUI_FEATURES.getMessage();
-        buttonList.add(new ButtonSwitchTab(x-20, y, (int)(fontRendererObj.getStringWidth(text)*textScale),
-                14, text, main, EnumUtils.SkyblockAddonsGuiTab.GUI_FEATURES, tab));
-        text = Message.TAB_GENERAL_SETTINGS.getMessage();
-        buttonList.add(new ButtonSwitchTab(x+90, y, (int)(fontRendererObj.getStringWidth(text)*textScale),
-                14, text, main, EnumUtils.SkyblockAddonsGuiTab.GENERAL_SETTINGS, tab));
+
+        this.addTabs();
+    }
+
+    private void addTabs() {
+        int collumn = 1;
+        for (EnumUtils.SkyblockAddonsGuiTab loopTab : EnumUtils.SkyblockAddonsGuiTab.values()) {
+            if (tab != loopTab) {
+                String text = "";
+                switch (loopTab) {
+                    case FEATURES:
+                        text = Message.TAB_FEATURES.getMessage();
+                        break;
+                    case FIXES:
+                        text = Message.TAB_FIXES.getMessage();
+                        break;
+                    case GUI_FEATURES:
+                        text = Message.TAB_GUI_FEATURES.getMessage();
+                        break;
+                    case GENERAL_SETTINGS:
+                        text = Message.TAB_GENERAL_SETTINGS.getMessage();
+                        break;
+                }
+                float stringWidth = fontRenderer.getStringWidth(text);
+                int tabX = 0;
+                int halfWidth = width/2;
+                if (collumn == 1) {
+                    tabX = (int)Math.round(halfWidth-140-(stringWidth/2)*1.4);
+                } else if (collumn == 2) {
+                    tabX = (int)Math.round(halfWidth-(stringWidth/2)*1.4);
+                } else if (collumn == 3) {
+                    tabX = (int)Math.round(halfWidth+140-(stringWidth/2)*1.4);
+                }
+                buttonList.add(new ButtonSwitchTab(tabX, 70, (int)(stringWidth*1.4),
+                                                   14, text, main, loopTab, tab));
+                collumn++;
+            }
+        }
     }
 
     private int findDisplayCount() {
@@ -226,10 +247,10 @@ public class SkyblockAddonsGui extends GuiScreen {
      * To avoid repeating the code for scaled text, use this instead.
      */
     private void drawScaledString(String text, int y, int color, double scale, int xOff) {
-        double x = width/2;
+        double x = width / 2.0;
         GlStateManager.pushMatrix();
         GlStateManager.scale(scale, scale, 1);
-        drawCenteredString(fontRendererObj, text,
+        drawCenteredString(fontRenderer, text,
                 (int)(x/scale)+xOff, (int)(y/scale), color);
         GlStateManager.popMatrix();
     }
@@ -258,7 +279,7 @@ public class SkyblockAddonsGui extends GuiScreen {
         if (buttonType == EnumUtils.ButtonType.TOGGLE) {
             buttonList.add(new ButtonNormal(x, y, text, main, feature));
 
-            if (getSettings(feature).size() > 0) {
+            if (!getSettings(feature).isEmpty()) {
                 buttonList.add(new ButtonSettings(x + boxWidth - 33, y + boxHeight - 23, text, main, feature));
             }
             buttonList.add(new ButtonToggle(x+40, y+boxHeight-23, main, feature));
@@ -306,7 +327,7 @@ public class SkyblockAddonsGui extends GuiScreen {
         int boxWidth = 140;
         int boxHeight = 50;
         int x = halfWidth+90;
-        double y = getRowHeight(displayCount/3+1);
+        double y = getRowHeight(displayCount/3.0+1);
         buttonList.add(new ButtonNormal(x, y, boxWidth, boxHeight, "Language: "+Feature.LANGUAGE.getMessage(), main, Feature.LANGUAGE));
     }
 
@@ -315,7 +336,7 @@ public class SkyblockAddonsGui extends GuiScreen {
         int boxWidth = 140;
         int boxHeight = 50;
         int x = halfWidth-90-boxWidth;
-        double y = getRowHeight(displayCount/3+1);
+        double y = getRowHeight(displayCount/3.0+1);
         buttonList.add(new ButtonNormal(x, y, boxWidth, boxHeight, Feature.EDIT_LOCATIONS.getMessage(), main, Feature.EDIT_LOCATIONS));
     }
 
@@ -329,7 +350,7 @@ public class SkyblockAddonsGui extends GuiScreen {
                     String[] stringSplit = magmaTextField.getText().split(Pattern.quote(":"), 3);
                     int[] magmaTimes = new int[3];
                     for (int timePart = 0; timePart < stringSplit.length; timePart++) {
-                        magmaTimes[timePart] = Integer.valueOf(stringSplit[timePart]);
+                        magmaTimes[timePart] = Integer.parseInt(stringSplit[timePart]);
                     }
                     int magmaTime = 0;
                     magmaTime += magmaTimes[0] * 3600;

@@ -4,9 +4,9 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.utils.ConfigColor;
 import codes.biscuit.skyblockaddons.utils.Feature;
 import codes.biscuit.skyblockaddons.utils.ItemDiff;
+import com.mojang.realmsclient.gui.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.util.EnumChatFormatting;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +29,7 @@ public class ButtonLocation extends ButtonFeature {
     }
 
     @Override
-    public void drawButton(Minecraft mc, int mouseX, int mouseY) {
+    public void drawButton(Minecraft mc, int mouseX, int mouseY, float partialTicks) {
         lastMouseX = mouseX;
         lastMouseY = mouseY;
         // The scale of the GUI
@@ -57,9 +57,9 @@ public class ButtonLocation extends ButtonFeature {
             GlStateManager.popMatrix();
         } else if (feature == Feature.ITEM_PICKUP_LOG) {
             List<ItemDiff> collectionLog = new ArrayList<>();
-            collectionLog.add(new ItemDiff(EnumChatFormatting.DARK_PURPLE+"Forceful Ember Chestplate", 1));
+            collectionLog.add(new ItemDiff(ChatFormatting.DARK_PURPLE+"Forceful Ember Chestplate", 1));
             collectionLog.add(new ItemDiff("Boat", -1));
-            collectionLog.add(new ItemDiff(EnumChatFormatting.BLUE+"Aspect of the End", 1));
+            collectionLog.add(new ItemDiff(ChatFormatting.BLUE+"Aspect of the End", 1));
             float scale = main.getConfigValues().getGuiScale(feature);
             GlStateManager.pushMatrix();
             GlStateManager.scale(scale, scale, 1);

@@ -51,14 +51,14 @@ public class LocationEditGui extends GuiScreen {
 
         ScaledResolution scaledResolution = new ScaledResolution(Minecraft.getMinecraft());
         String text = Message.SETTING_RESET_LOCATIONS.getMessage();
-        int boxWidth = fontRendererObj.getStringWidth(text)+10;
+        int boxWidth = fontRenderer.getStringWidth(text)+10;
         int boxHeight = 20;
         if (boxWidth > BUTTON_MAX_WIDTH) boxWidth = BUTTON_MAX_WIDTH;
         int x = scaledResolution.getScaledWidth()/2-boxWidth/2;
         int y = scaledResolution.getScaledHeight()/2-boxHeight/2;
         buttonList.add(new ButtonSolid(x, y, boxWidth, boxHeight, text, main, Feature.RESET_LOCATION));
 //        text = Message.SETTING_ANCHOR_POINT.getMessage();
-//        boxWidth = fontRendererObj.getStringWidth(text)+10;
+//        boxWidth = fontRenderer.getStringWidth(text)+10;
 //        boxHeight = 20;
 //        x = scaledResolution.getScaledWidth()/2-boxWidth/2;
 //        y = scaledResolution.getScaledHeight()/2-boxHeight/2;

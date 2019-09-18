@@ -65,8 +65,8 @@
     "dontOpenProfileWithBow": "Não Abrir Perfil com Arco",
     "stopDroppingSellingRareItems": "Não Largar/Vender Itens Raros",
     "makeBackpackInventoriesColored": "Inventários Coloridos",
-    "avoidBreakingBottomSugarCane": "Avoid Breaking Bottom Sugar Cane",
-    "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Items"
+    "avoidBreakingBottomSugarCane": "Evitar Quebrar a Cana de Açúcar de Baixo",
+    "replaceRomanNumeralsWithNumbers": "Substituir Números Romanos em Itens"
   },
   "messages": {
     "dropConfirmation": "Large este item de novo para confirmar!",
@@ -89,8 +89,8 @@
     "slotLocked": "Este Slot Está Travado!",
     "summoningEyeFound": "Olho de Convocação!",
     "cancelledStemBreak": "SkyblockAddons impediu que você quebrasse isso. Use sua mão se deseja mesmo quebrar.",
-    "cancelledProfileOpening": "SkyblockAddons has stopped you from opening this player's profile while holding a bow.",
-    "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare item or tool from your hotbar.",
-    "clickMoreTimes": "Click/drop this item %times% more times if you really want to do this."
+    "cancelledProfileOpening": "O SkyblockAddons impediu você de abrir o perfil deste jogador enquanto segura um arco.",
+    "cancelledDropping": "O SkyblockAddons impediu você de largar este item ou ferramenta rara de seu hotbar.",
+    "clickMoreTimes": "Clique/largue este item mais %times% vezes se quer mesmo fazer isso."
   }
 }

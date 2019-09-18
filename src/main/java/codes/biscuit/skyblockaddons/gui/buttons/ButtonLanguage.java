@@ -30,27 +30,27 @@ public class ButtonLanguage extends GuiButton {
     }
 
     @Override
-    public void drawButton(Minecraft mc, int mouseX, int mouseY) {
+    public void drawButton(Minecraft mc, int mouseX, int mouseY, float partialTicks) {
         if (visible) {
             GlStateManager.color(1,1,1,0.7F);
             mc.getTextureManager().bindTexture(FEATURE_BACKGROUND);
-            drawModalRectWithCustomSizedTexture(xPosition, yPosition,0,0,width,height,width,height);
+            drawModalRectWithCustomSizedTexture(x, y,0,0,width,height,width,height);
             GlStateManager.color(1,1,1,1F);
             try {
                 mc.getTextureManager().bindTexture(new ResourceLocation("skyblockaddons", "flags/"+language.getPath()+".png"));
-                drawModalRectWithCustomSizedTexture(xPosition+width-32, yPosition, 0, 0, 30, 26, 30, 26);
+                drawModalRectWithCustomSizedTexture(x+width-32, y, 0, 0, 30, 26, 30, 26);
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
 
-            hovered = mouseX >= this.xPosition && mouseY >= this.yPosition && mouseX < this.xPosition + this.width && mouseY < this.yPosition + this.height;
+            hovered = mouseX >= this.x && mouseY >= this.y && mouseX < this.x + this.width && mouseY < this.y + this.height;
 
             int fontColor = main.getUtils().getDefaultBlue(255);
             if (hovered) {
                 fontColor = new Color(255, 255, 160, 255).getRGB();
             }
             main.getConfigValues().loadLanguageFile(language);
-            this.drawCenteredString(mc.fontRendererObj, Message.LANGUAGE.getMessage(), xPosition+width/2, yPosition+10, fontColor);
+            this.drawCenteredString(mc.fontRenderer, Message.LANGUAGE.getMessage(), x+width/2, y+10, fontColor);
         }
     }
 

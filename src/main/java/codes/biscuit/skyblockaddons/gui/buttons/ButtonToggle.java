@@ -28,7 +28,7 @@ public class ButtonToggle extends ButtonFeature {
     }
 
     @Override
-    public void drawButton(Minecraft mc, int mouseX, int mouseY) {
+    public void drawButton(Minecraft mc, int mouseX, int mouseY, float partialTicks) {
         float alphaMultiplier = 1F;
         if (main.getUtils().isFadingIn()) {
             long timeSinceOpen = System.currentTimeMillis() - timeOpened;
@@ -37,7 +37,7 @@ public class ButtonToggle extends ButtonFeature {
                 alphaMultiplier = (float) timeSinceOpen / fadeMilis;
             }
         }
-        hovered = mouseX >= this.xPosition && mouseY >= this.yPosition && mouseX < this.xPosition + this.width && mouseY < this.yPosition + this.height;
+        hovered = mouseX >= this.x && mouseY >= this.y && mouseX < this.x + this.width && mouseY < this.y + this.height;
         GlStateManager.enableBlend();
         GlStateManager.color(1,1,1,alphaMultiplier*0.7F);
         if (hovered) {
@@ -48,6 +48,6 @@ public class ButtonToggle extends ButtonFeature {
         } else {
             mc.getTextureManager().bindTexture(TOGGLE_OFF);
         }
-        drawModalRectWithCustomSizedTexture(xPosition, yPosition,0,0,width,height,width,height);
+        drawModalRectWithCustomSizedTexture(x, y,0,0,width,height,width,height);
     }
 }

@@ -33,7 +33,7 @@ public class ButtonArrow extends GuiButton {
     }
 
     @Override
-    public void drawButton(Minecraft mc, int mouseX, int mouseY) {
+    public void drawButton(Minecraft mc, int mouseX, int mouseY, float partialTicks) {
         if (visible) {
             float alphaMultiplier = 1F;
             if (main.getUtils().isFadingIn()) {
@@ -43,7 +43,7 @@ public class ButtonArrow extends GuiButton {
                     alphaMultiplier = (float) timeSinceOpen / fadeMilis;
                 }
             }
-            hovered = mouseX >= this.xPosition && mouseY >= this.yPosition && mouseX < this.xPosition + this.width && mouseY < this.yPosition + this.height;
+            hovered = mouseX >= this.x && mouseY >= this.y && mouseX < this.x + this.width && mouseY < this.y + this.height;
             // Alpha multiplier is from 0 to 1, multiplying it creates the fade effect.
             // Regular features are red if disabled, green if enabled or part of the gui feature is enabled.
             GlStateManager.enableBlend();
@@ -60,7 +60,7 @@ public class ButtonArrow extends GuiButton {
                     GlStateManager.color(1, 1, 1, 1);
                 }
             }
-            drawModalRectWithCustomSizedTexture(xPosition, yPosition,0,0,width,height,width,height);
+            drawModalRectWithCustomSizedTexture(x, y,0,0,width,height,width,height);
         }
     }
 

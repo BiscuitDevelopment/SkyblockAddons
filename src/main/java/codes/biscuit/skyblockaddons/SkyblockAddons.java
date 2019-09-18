@@ -23,12 +23,12 @@ import org.lwjgl.input.Keyboard;
 import java.util.Timer;
 import java.util.TimerTask;
 
-@Mod(modid = SkyblockAddons.MOD_ID, version = SkyblockAddons.VERSION, name = SkyblockAddons.MOD_NAME, clientSideOnly = true, acceptedMinecraftVersions = "[1.8.9]")
+@Mod(modid = SkyblockAddons.MOD_ID, version = SkyblockAddons.VERSION, name = SkyblockAddons.MOD_NAME, clientSideOnly = true, acceptedMinecraftVersions = "[1.12,1.12.2]")
 public class SkyblockAddons {
 
     static final String MOD_ID = "skyblockaddons";
     static final String MOD_NAME = "SkyblockAddons";
-    public static final String VERSION = "1.3.0";
+    public static final String VERSION = "1.3.3";
 
     private static SkyblockAddons instance; // for Mixins cause they don't have a constructor
     private ConfigValues configValues;
@@ -61,7 +61,7 @@ public class SkyblockAddons {
         usingLabymod = Loader.isModLoaded("labymod");
         if (Loader.isModLoaded("refractionoof")) {
             for (ModContainer modContainer : Loader.instance().getModList()) {
-                if (modContainer.getModId().equals("refractionoof") && modContainer.getVersion().equals("1.0")) {
+                if ("refractionoof".equals(modContainer.getModId()) && "1.0".equals(modContainer.getVersion())) {
                     usingOofModv1 = true;
                 }
             }

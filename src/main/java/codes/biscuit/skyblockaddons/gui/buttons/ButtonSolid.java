@@ -30,7 +30,7 @@ public class ButtonSolid extends ButtonText {
     }
 
     @Override
-    public void drawButton(Minecraft mc, int mouseX, int mouseY) {
+    public void drawButton(Minecraft mc, int mouseX, int mouseY, float partialTicks) {
         if (feature == Feature.TEXT_STYLE) {
             displayString = main.getConfigValues().getTextStyle().getMessage();
         } if (feature == Feature.WARNING_TIME) {
@@ -48,7 +48,7 @@ public class ButtonSolid extends ButtonText {
         } else {
             alpha = 255;
         }
-        hovered = mouseX >= this.xPosition && mouseY >= this.yPosition && mouseX < this.xPosition + this.width && mouseY < this.yPosition + this.height;
+        hovered = mouseX >= this.x && mouseY >= this.y && mouseX < this.x + this.width && mouseY < this.y + this.height;
         int boxAlpha = 100;
         if (hovered && feature != Feature.WARNING_TIME) boxAlpha = 170;
         // Alpha multiplier is from 0 to 1, multiplying it creates the fade effect.
@@ -61,7 +61,7 @@ public class ButtonSolid extends ButtonText {
             fontColor = new Color(255, 255, 160, alpha).getRGB();
         }
         float scale = 1;
-        int stringWidth = mc.fontRendererObj.getStringWidth(displayString);
+        int stringWidth = mc.fontRenderer.getStringWidth(displayString);
         float widthLimit = BUTTON_MAX_WIDTH -10;
         if (feature == Feature.WARNING_TIME) {
             widthLimit = 90;

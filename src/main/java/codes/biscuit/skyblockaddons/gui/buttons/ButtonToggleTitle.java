@@ -15,9 +15,9 @@ public class ButtonToggleTitle extends ButtonToggle {
     }
 
     @Override
-    public void drawButton(Minecraft mc, int mouseX, int mouseY) {
-        super.drawButton(mc, mouseX, mouseY);
+    public void drawButton(Minecraft mc, int mouseX, int mouseY, float partialTicks) {
+        super.drawButton(mc, mouseX, mouseY, partialTicks);
         int fontColor = main.getUtils().getDefaultBlue(255);
-        drawCenteredString(mc.fontRendererObj, displayString, xPosition+width/2, yPosition-10, fontColor);
+        drawCenteredString(mc.fontRenderer, displayString, x+width/2, y-10, fontColor);
     }
 }

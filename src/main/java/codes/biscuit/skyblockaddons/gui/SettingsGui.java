@@ -77,22 +77,44 @@ public class SettingsGui extends GuiScreen {
                 addButton(setting);
             }
         }
-        ScaledResolution sr = new ScaledResolution(mc);
-        float textScale = 1.4F;
-        int x = sr.getScaledWidth()/2;
-        int y = 70;
-        String text = "Features";
-        buttonList.add(new ButtonSwitchTab(x-180, y, (int)(fontRendererObj.getStringWidth(text)*textScale),
-                14, text, main, EnumUtils.SkyblockAddonsGuiTab.FEATURES, null));
-        text = "Fixes";
-        buttonList.add(new ButtonSwitchTab(x-80, y, (int)(fontRendererObj.getStringWidth(text)*textScale),
-                14, text, main, EnumUtils.SkyblockAddonsGuiTab.FIXES, null));
-        text = "GUI Features";
-        buttonList.add(new ButtonSwitchTab(x-20, y, (int)(fontRendererObj.getStringWidth(text)*textScale),
-                14, text, main, EnumUtils.SkyblockAddonsGuiTab.GUI_FEATURES, null));
-        text = "General Settings";
-        buttonList.add(new ButtonSwitchTab(x+90, y, (int)(fontRendererObj.getStringWidth(text)*textScale),
-                14, text, main, EnumUtils.SkyblockAddonsGuiTab.GENERAL_SETTINGS, null));
+
+        this.addTabs();
+    }
+
+    private void addTabs() {
+        int collumn = 1;
+        for (EnumUtils.SkyblockAddonsGuiTab loopTab : EnumUtils.SkyblockAddonsGuiTab.values()) {
+            if (lastTab != loopTab) {
+                String text = "";
+                switch (loopTab) {
+                    case FEATURES:
+                        text = Message.TAB_FEATURES.getMessage();
+                        break;
+                    case FIXES:
+                        text = Message.TAB_FIXES.getMessage();
+                        break;
+                    case GUI_FEATURES:
+                        text = Message.TAB_GUI_FEATURES.getMessage();
+                        break;
+                    case GENERAL_SETTINGS:
+                        text = Message.TAB_GENERAL_SETTINGS.getMessage();
+                        break;
+                }
+                float stringWidth = fontRenderer.getStringWidth(text);
+                int tabX = 0;
+                int halfWidth = width/2;
+                if (collumn == 1) {
+                    tabX = (int)Math.round(halfWidth-140-(stringWidth/2)*1.4);
+                } else if (collumn == 2) {
+                    tabX = (int)Math.round(halfWidth-(stringWidth/2)*1.4);
+                } else if (collumn == 3) {
+                    tabX = (int)Math.round(halfWidth+140-(stringWidth/2)*1.4);
+                }
+                buttonList.add(new ButtonSwitchTab(tabX, 70, (int)(stringWidth*1.4),
+                                                   14, text, main, loopTab, lastTab));
+                collumn++;
+            }
+        }
     }
 
     private int findDisplayCount() {
@@ -207,10 +229,10 @@ public class SettingsGui extends GuiScreen {
      * To avoid repeating the code for scaled text, use this instead.
      */
     private void drawScaledString(String text, int y, int color, double scale, int xOff) {
-        double x = width/2;
+        double x = width/2.0;
         GlStateManager.pushMatrix();
         GlStateManager.scale(scale, scale, 1);
-        drawCenteredString(fontRendererObj, text,
+        drawCenteredString(fontRenderer, text,
                 (int)(x/scale)+xOff, (int)(y/scale), color);
         GlStateManager.popMatrix();
     }

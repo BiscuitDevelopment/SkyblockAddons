@@ -34,7 +34,7 @@ public enum Language {
     TURKISH("tr_TR"),
     VIETNAMESE("vi_VN");
 
-    private String path;
+    private final String path;
 
     Language(String path) {
         this.path = path;

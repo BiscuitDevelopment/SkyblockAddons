@@ -33,7 +33,7 @@ public class ButtonSwitchTab extends GuiButton {
     }
 
     @Override
-    public void drawButton(Minecraft mc, int mouseX, int mouseY) {
+    public void drawButton(Minecraft mc, int mouseX, int mouseY, float partialTicks) {
         if (visible) {
             float alphaMultiplier = 1F;
             if (main.getUtils().isFadingIn()) {
@@ -43,7 +43,7 @@ public class ButtonSwitchTab extends GuiButton {
                     alphaMultiplier = (float) timeSinceOpen / fadeMilis;
                 }
             }
-            hovered = mouseX >= this.xPosition && mouseY >= this.yPosition && mouseX < this.xPosition + this.width && mouseY < this.yPosition + this.height;
+            hovered = mouseX >= this.x && mouseY >= this.y && mouseX < this.x + this.width && mouseY < this.y + this.height;
             if (currentTab == tab) hovered = false;
             if (alphaMultiplier < 0.1) alphaMultiplier = 0.1F;
             int boxColor = main.getUtils().getDefaultBlue((int)(alphaMultiplier*50));
@@ -56,13 +56,13 @@ public class ButtonSwitchTab extends GuiButton {
             if (hovered) {
                 fontColor = new Color(255, 255, 160, (int)(alphaMultiplier*255)).getRGB();
             }
-            drawRect(xPosition, yPosition, xPosition+width, yPosition+height, boxColor);
+            drawRect(x, y, x+width, y+height, boxColor);
             float scale = 1.4F;
             float scaleMultiplier = 1/scale;
             GlStateManager.pushMatrix();
             GlStateManager.scale(scale, scale, 1);
             GlStateManager.enableBlend();
-            drawCenteredString(mc.fontRendererObj, displayString, (int)((xPosition+width/2)*scaleMultiplier), (int)((yPosition+(this.height-(8/scaleMultiplier))/2)*scaleMultiplier),
+            drawCenteredString(mc.fontRenderer, displayString, (int)((x+width/2)*scaleMultiplier), (int)((y+(this.height-(8/scaleMultiplier))/2)*scaleMultiplier),
                     fontColor);
             GlStateManager.popMatrix();
         }

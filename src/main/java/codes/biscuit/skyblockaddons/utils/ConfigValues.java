@@ -4,7 +4,7 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import com.google.gson.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
-import net.minecraft.util.MathHelper;
+import net.minecraft.util.math.MathHelper;
 import org.apache.commons.lang3.mutable.MutableFloat;
 
 import java.awt.geom.Point2D;
@@ -131,14 +131,14 @@ public class ConfigValues {
 
             if (settingsConfig.has("anchorPoints")) {
                 for (Map.Entry<String, JsonElement> element : settingsConfig.getAsJsonObject("anchorPoints").entrySet()) {
-                    Feature feature = Feature.fromId(Integer.valueOf(element.getKey()));
+                    Feature feature = Feature.fromId(Integer.parseInt(element.getKey()));
                     anchorPoints.put(feature, EnumUtils.AnchorPoint.fromId(element.getValue().getAsInt()));
                 }
             }
 
             if (settingsConfig.has("guiScales")) {
                 for (Map.Entry<String, JsonElement> element : settingsConfig.getAsJsonObject("guiScales").entrySet()) {
-                    Feature feature = Feature.fromId(Integer.valueOf(element.getKey()));
+                    Feature feature = Feature.fromId(Integer.parseInt(element.getKey()));
                     guiScales.put(feature, new MutableFloat(element.getValue().getAsFloat()));
                 }
             }
@@ -162,20 +162,20 @@ public class ConfigValues {
             }
 
             int configVersion;
-            if (settingsConfig.has("configVersion")) {
+            if (settingsConfig.has("configVersion"))
                 configVersion = settingsConfig.get("configVersion").getAsInt();
-            } else {
+            else
                 configVersion = 0;
-            }
+
             if (configVersion == 0) {
                 disabledFeatures.add(Feature.HIDE_HEALTH_BAR);
                 disabledFeatures.add(Feature.MINION_STOP_WARNING);
                 disabledFeatures.add(Feature.MINION_FULL_WARNING);
                 Feature[] newFeatures = {Feature.HEALTH_BAR, Feature.HEALTH_TEXT, Feature.DEFENCE_TEXT, Feature.DEFENCE_PERCENTAGE,
                         Feature.DEFENCE_ICON};
-                for (Feature feature : newFeatures) {
+
+                for (Feature feature : newFeatures)
                     putDefaultCoordinates(feature);
-                }
             } else if (configVersion <= 1) {
                 disabledFeatures.add(Feature.USE_VANILLA_TEXTURE_DEFENCE);
                 disabledFeatures.add(Feature.IGNORE_ITEM_FRAME_CLICKS);
@@ -190,11 +190,10 @@ public class ConfigValues {
                 disabledFeatures.add(Feature.SHOW_DARK_AUCTION_TIMER_IN_OTHER_GAMES);
                 disabledFeatures.add(Feature.PREVENT_MOVEMENT_ON_DEATH);
             } else if (configVersion <= 4) {
-                if (disabledFeatures.contains(Feature.DOUBLE_DROP_IN_OTHER_GAMES)) { // I inverted this feature thats why
+                if (disabledFeatures.contains(Feature.DOUBLE_DROP_IN_OTHER_GAMES)) // I inverted this feature thats why
                     disabledFeatures.remove(Feature.DOUBLE_DROP_IN_OTHER_GAMES);
-                } else {
+                else
                     disabledFeatures.add(Feature.DOUBLE_DROP_IN_OTHER_GAMES);
-                }
             } else if (configVersion <= 5) {
                 disabledFeatures.add(Feature.REPLACE_ROMAN_NUMERALS_WITH_NUMBERS);
             }
@@ -338,7 +337,7 @@ public class ConfigValues {
 
     public void loadLanguageFile(Language language) {
         try {
-            InputStream fileStream = getClass().getClassLoader().getResourceAsStream("lang/" + language.getPath() + ".json");
+            InputStream fileStream = getClass().getClassLoader().getResourceAsStream("lang/" + language.getPath().toLowerCase() + ".json");
             if (fileStream != null) {
                 ByteArrayOutputStream result = new ByteArrayOutputStream();
                 byte[] buffer = new byte[1024];
@@ -613,11 +612,11 @@ public class ConfigValues {
     // these are taken from GuiOptionSlider
     private float denormalizeScale(float value) {
         return snapToStepClamp(ConfigValues.GUI_SCALE_MINIMUM + (ConfigValues.GUI_SCALE_MAXIMUM - ConfigValues.GUI_SCALE_MINIMUM) *
-                MathHelper.clamp_float(value, 0.0F, 1.0F));
+                MathHelper.clamp(value, 0.0F, 1.0F));
     }
     private float snapToStepClamp(float value) {
         value = ConfigValues.GUI_SCALE_STEP * (float) Math.round(value / ConfigValues.GUI_SCALE_STEP);
-        return MathHelper.clamp_float(value, ConfigValues.GUI_SCALE_MINIMUM, ConfigValues.GUI_SCALE_MAXIMUM);
+        return MathHelper.clamp(value, ConfigValues.GUI_SCALE_MINIMUM, ConfigValues.GUI_SCALE_MAXIMUM);
     }
 
 

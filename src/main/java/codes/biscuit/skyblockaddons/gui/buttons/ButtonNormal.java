@@ -34,7 +34,7 @@ public class ButtonNormal extends ButtonFeature {
     }
 
     @Override
-    public void drawButton(Minecraft mc, int mouseX, int mouseY) {
+    public void drawButton(Minecraft mc, int mouseX, int mouseY, float partialTicks) {
         if (visible) {
             int alpha;
             float alphaMultiplier = 1F;
@@ -48,12 +48,12 @@ public class ButtonNormal extends ButtonFeature {
             } else {
                 alpha = 255;
             }
-            hovered = mouseX >= this.xPosition && mouseY >= this.yPosition && mouseX < this.xPosition + this.width && mouseY < this.yPosition + this.height;
+            hovered = mouseX >= this.x && mouseY >= this.y && mouseX < this.x + this.width && mouseY < this.y + this.height;
             if (alpha < 4) alpha = 4;
             int fontColor = main.getUtils().getDefaultBlue(alpha);
             GlStateManager.enableBlend();
             float scale = 1;
-            int stringWidth = mc.fontRendererObj.getStringWidth(displayString);
+            int stringWidth = mc.fontRenderer.getStringWidth(displayString);
             float widthLimit = BUTTON_MAX_WIDTH -10;
             if (feature == Feature.WARNING_TIME) {
                 widthLimit = 90;
@@ -63,18 +63,18 @@ public class ButtonNormal extends ButtonFeature {
             }
             GlStateManager.color(1,1,1,0.7F);
             mc.getTextureManager().bindTexture(FEATURE_BACKGROUND);
-            drawModalRectWithCustomSizedTexture(xPosition, yPosition,0,0,width,height,width,height);
+            drawModalRectWithCustomSizedTexture(x, y,0,0,width,height,width,height);
             float scaleMultiplier = 1/scale;
             GlStateManager.pushMatrix();
             GlStateManager.scale(scale, scale, 1);
-            this.drawCenteredString(mc.fontRendererObj, displayString, (int)((xPosition+width/2)*scaleMultiplier), (int)(yPosition*scaleMultiplier+10), fontColor);
+            this.drawCenteredString(mc.fontRenderer, displayString, (int)((x+width/2)*scaleMultiplier), (int)(y*scaleMultiplier+10), fontColor);
             GlStateManager.disableBlend();
             GlStateManager.popMatrix();
             if (feature == Feature.LANGUAGE) {
                 GlStateManager.color(1,1,1,1F);
                 try {
                     mc.getTextureManager().bindTexture(new ResourceLocation("skyblockaddons", "flags/"+main.getConfigValues().getLanguage().getPath()+".png"));
-                    drawModalRectWithCustomSizedTexture(xPosition + width / 2 - 20, yPosition + 20, 0, 0, 38, 30, 38, 30);
+                    drawModalRectWithCustomSizedTexture(x + width / 2 - 20, y + 20, 0, 0, 38, 30, 38, 30);
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
@@ -82,7 +82,7 @@ public class ButtonNormal extends ButtonFeature {
                 GlStateManager.color(1,1,1,1F);
                 try {
                     mc.getTextureManager().bindTexture(new ResourceLocation("skyblockaddons", "move.png"));
-                    drawModalRectWithCustomSizedTexture(xPosition + width / 2 - 12, yPosition + 22, 0, 0, 25, 25, 25, 25);
+                    drawModalRectWithCustomSizedTexture(x + width / 2 - 12, y + 22, 0, 0, 25, 25, 25, 25);
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
