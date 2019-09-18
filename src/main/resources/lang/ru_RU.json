@@ -65,7 +65,7 @@
     "dontOpenProfileWithBow": "Не открывать профили луком",
     "stopDroppingSellingRareItems": "Перестать выбрасывать/продавать редкие предметы",
     "makeBackpackInventoriesColored": "Цветные ячейки рюкзаков",
-    "avoidBreakingBottomSugarCane": "Избегать ломание нижнего тростника",
+    "avoidBreakingBottomSugarCane": "Не ломать стебель тростника",
     "replaceRomanNumeralsWithNumbers": "Заменять римские цифры на арабские"
   },
   "messages": {
@@ -88,10 +88,10 @@
     },
     "slotLocked": "Слот заблокирован!",
     "summoningEyeFound": "Summoning Eye!",
-    "cancelledStemBreak": "SkyBlockAddons остановил вас от ломания этого стебля. Используйте руку, если вы хотите это сделать.",
-    "cancelledCaneBreak": "SkyBlockAddons остановил вас от ломания этого тростника. Используйте другой предмет, если вы хотите действительно это сделать.",
+    "cancelledStemBreak": "SkyBlockAddons предотвратил попытку сломать стебель. Используйте руку.",
+    "cancelledCaneBreak": "SkyBlockAddons предотвратил попытку сломать стебель тростника. Используйте другой предмет, если вы хотите сделать это.",
     "cancelledProfileOpening": "SkyBlockAddons остановил вас от открытия профиля игрока с луком в руках.",
-    "cancelledDropping": "SkyBlockAddons оставил вас от выбрасывания этого редкого предмета или инструмента из панели быстрого доступа.",
+    "cancelledDropping": "SkyBlockAddons предотвратил попытку выбросить этот предмет из панели быстрого доступа.",
     "clickMoreTimes": "Нажмите/выберите этот предмет еще %times% раз, если вы действительно хотите сделать это."
   }
 }
