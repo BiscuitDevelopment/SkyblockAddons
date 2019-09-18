@@ -30,10 +30,6 @@ public class MixinRenderManager {
                 cir.setReturnValue(false);
             }
         }
-        /*if (entityIn instanceof EntityItem && entityIn.isRiding() && "item.item.bone".equals(entityIn.getName())) { // Conditions for Skeleton Hat flying bones
-            if (main.getConfigValues().isEnabled(Feature.HIDE_BONES))
-                cir.setReturnValue(false);
-        }*/
 
         if (main.getConfigValues().isEnabled(Feature.HIDE_AUCTION_HOUSE_PLAYERS) && entityIn instanceof EntityOtherPlayerMP) {
             for (EnumUtils.SkyblockNPC npc : EnumUtils.SkyblockNPC.values()) {
@@ -45,7 +41,9 @@ public class MixinRenderManager {
         }
 
         if (main.getConfigValues().isEnabled(Feature.HIDE_PLAYERS_IN_LOBBY)) {
-            if ((location == EnumUtils.Location.VILLAGE || location == EnumUtils.Location.AUCTION_HOUSE)) {
+            if (location == EnumUtils.Location.VILLAGE ||
+                    location == EnumUtils.Location.AUCTION_HOUSE ||
+                    location == EnumUtils.Location.BANK) {
                 // TODO: Particles are no longer entities (entityIn instanceof Particle)
                 if ((entityIn instanceof EntityOtherPlayerMP || entityIn instanceof EntityItemFrame) &&
                 entityIn.getDistance(Minecraft.getMinecraft().player) > 7) {
