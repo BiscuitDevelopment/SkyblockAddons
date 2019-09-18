@@ -45,7 +45,7 @@
     "magmaBossTimer": "Tiempo para Magma Boss",
     "itemPickupLog": "Registro de Items Recogidos",
     "avoidPlacingEnchantedItems": "Evitar Construcción con Objetos Encantados",
-    "avoidBreakingStems": "Evitar Ruptura de Tallo de Cultivos",
+    "avoidBreakingStems": "Evitar Destrucción de Tallo de Cultivos",
     "stopBowChargeFromResetting": "Evitar Reinicio de Arco Cargado",
     "preventMovementOnDeath": "Evitar Caminar Después de Morir",
     "showItemAnvilUses": "Mostrar los Usos de Anvil/Yunque",
@@ -65,7 +65,7 @@
     "dontOpenProfileWithBow": "No Abrir Perfiles con Arco en la Mano",
     "stopDroppingSellingRareItems": "Detener Arrojo/Venta de Objetos Raros",
     "makeBackpackInventoriesColored": "Colorear Inventarios",
-    "avoidBreakingBottomSugarCane": "Evitar Ruptura de Parte Inferior de Caña de Azúcar",
+    "avoidBreakingBottomSugarCane": "Evitar Destrucción de Parte Inferior de Caña de Azúcar",
     "replaceRomanNumeralsWithNumbers": "Reemplazar Números Romanos en Objetos"
   },
   "messages": {
@@ -88,8 +88,8 @@
     },
     "slotLocked": "Esta ranura está bloqueada!",
     "summoningEyeFound": "Summoning Eye!",
-    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this stem. Use your bare hand if you'd like to actually break it.",
-    "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use your another tool if you'd actually like to break it.",
+    "cancelledStemBreak": "SkyblockAddons ha detenido la destrucción del tallo. Usa sólo tus manos si en realidad quieres romperlo.",
+    "cancelledCaneBreak": "SkyblockAddons ha detenido la destrucción de la caña de azucar. Usa sólo tu mano si en realidad quieres romperlo.",
     "cancelledProfileOpening": "SkyblockAddons ha evitado que abras el perfil de este jugador con tu arco en la mano.",
     "cancelledDropping": "SkyblockAddons ha evitado que arrojes este objeto o herramienta rara.",
     "clickMoreTimes": "Haz clic/arroja el objeto %times% veces más si en realidad quieres hacerlo."
