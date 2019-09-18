@@ -2,7 +2,7 @@
   "language": "Polski",
   "settings": {
     "tab": {
-      "features": "Funkcje",
+      "features": "Cechy",
       "fixes": "Naprawy błędów",
       "guiFeatures": "Opcje interfejsu",
       "generalSettings": "Ustawienia ogólne"
@@ -24,7 +24,7 @@
     "hideAuctionHousePlayers": "Ukryj Graczy w Pobliżu Domu Aukcyjnego",
     "backpackStyle": "Styl Plecaka: %style%",
     "backpackStyles": {
-      "regular": "Zwykłe",
+      "regular": "Normalne",
       "compact": "Kompaktowy"
     },
     "showBackpackPreview": "Pokaż Podgląd Plecaka",
@@ -40,7 +40,7 @@
     "defenceText": "Liczba Pancerza",
     "defencePercentage": "Procent Zakotwiczenia",
     "healthUpdates": "Liczba Różnicy Zdrowia",
-    "hidePlayersInLobby": "Ukryj widoczność graczy z daleka",
+    "hidePlayersInLobby": "Ukryj widoczność obiektów z daleka",
     "darkAuctionTimer": "Timer Dark Auction",
     "magmaBossTimer": "Timer Magma Bossa",
     "itemPickupLog": "Rejestruj Podnoszone Przedmioty",
@@ -51,22 +51,22 @@
     "showItemAnvilUses": "Pokaż Liczbę Użyć Kowadła na Przedmiocie",
     "lockSlots": "Zezwól na blokowanie slotów",
     "dontResetCursorInventory": "Nie resetuj kursora pomiędzy ekwipunkami",
-    "summoningEyeAlert": "Alarm o oku przywołującym",
-    "makeEnderchestsInEndGreen": "Uczyń Skrzynie Endu w Endzie zielone",
+    "summoningEyeAlert": "Alarm o przywoływaniu oczu Bossa",
+    "makeEnderchestsInEndGreen": "Uczyń Skrzynie Endu zielone w Endzie",
     "changeColor": "Zmień kolor",
-    "showInOtherGames": "Pokaż w innych grach",
-    "useVanillaTexture": "Użyj zwyczajnych tekstur",
-    "textStyle": "Styl tekstu",
+    "showInOtherGames": "Pokaż w Innych Grach",
+    "useVanillaTexture": "Użyj Klasycznych tekstur",
+    "textStyle": "Styl Tekstu",
     "textStyles": {
-      "one": "Styl nr 1",
-      "two": "Styl nr 2"
+      "one": "Styl pierwszy",
+      "two": "Styl drugi"
     },
-    "warningDuration": "Długość Ostrzeżenia",
+    "warningDuration": "Długość trwania Ostrzeżenia",
     "dontOpenProfileWithBow": "Nie otwieraj profilu za pomocą łuku",
-    "stopDroppingSellingRareItems": "Nie upuszczaj/sprzedawaj rzadkich przedmiotów",
-    "makeBackpackInventoriesColored": "Zmień kolor plecaka",
+    "stopDroppingSellingRareItems": "Nie upuszczaj/sprzedawaj Rzadkich przedmiotów",
+    "makeBackpackInventoriesColored": "Zmień kolor ekwipunku",
     "avoidBreakingBottomSugarCane": "Unikaj niszczenia dolnej części trzciny cukrowej",
-    "replaceRomanNumeralsWithNumbers": "Zamień cyfry rzymskie na normalne"
+    "replaceRomanNumeralsWithNumbers": "Zamień cyfry Rzymskie na Normalne"
   },
   "messages": {
     "dropConfirmation": "Wyrzuć ten przedmiot ponownie, aby potwierdzić!",
@@ -88,10 +88,10 @@
     },
     "slotLocked": "Ten slot jest zablokowany!",
     "summoningEyeFound": "Oko przywołujące!",
-    "cancelledStemBreak": "SkyblockAddons anulował zniszczenie tej łodygi. Użyj pustej ręki, jeśli chcesz ją zniszczyć.",
-    "cancelledCaneBreak": "SkyblockAddons anulował zniszczenie tego bloku trzciny cukrowej. Użyj innego narzędzia, jeśli chcesz go zniszczyć.",
+    "cancelledStemBreak": "SkyblockAddons zatrzyman cię przed zniszczeniem tej łodygi. Użyj pustej ręki, jeśli chcesz ją zniszczyć.",
+    "cancelledCaneBreak": "SkyblockAddons powstrzymał cię przed zniszczeniem tego bloku trzciny cukrowej. Użyj innego narzędzia, jeśli chcesz go zniszczyć.",
     "cancelledProfileOpening": "SkyblockAddons anulował otwieranie profilu tej osoby trzymając łuk.",
-    "cancelledDropping": "SkyblockAddons anulował upuszczenie tego rzadkiego przedmiotu lub narzędzia z twojego paska narzędzi.",
+    "cancelledDropping": "SkyblockAddons zatrzymał cię przed upuszczeniem tego rzadkiego przedmiotu lub narzędzia z twojego paska narzędzi.",
     "clickMoreTimes": "Naciśnij/upuść ten przedmiot %times% razy więcej jeśli naprawdę chcesz to zrobić."
   }
 }
