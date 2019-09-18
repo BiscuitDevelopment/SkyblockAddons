@@ -257,6 +257,13 @@ public class RenderListener {
         float x = main.getConfigValues().getActualX(feature);
         float y = main.getConfigValues().getActualY(feature);
         int textureY = main.getConfigValues().getColor(feature).ordinal()*10;
+        if (feature == Feature.HEALTH_BAR && main.getConfigValues().isEnabled(Feature.POTION_HEALTH)) {
+            if (mc.thePlayer.isPotionActive(19/* Poison */)) {
+                textureY = ConfigColor.DARK_GREEN.ordinal() * 10;
+            } else if (mc.thePlayer.isPotionActive(20/* Wither */)) {
+                textureY = ConfigColor.BLACK.ordinal() * 10;
+            }
+        }
 
         // Put the x & y to scale, remove half the width and height to center this element.
         x/=scale;

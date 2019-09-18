@@ -77,7 +77,7 @@ public class SkyblockAddonsGui extends GuiScreen {
                     Feature.STOP_BOW_CHARGE_FROM_RESETTING, Feature.AVOID_PLACING_ENCHANTED_ITEMS, Feature.PREVENT_MOVEMENT_ON_DEATH};
         } else if (tab == EnumUtils.SkyblockAddonsGuiTab.GUI_FEATURES) {
             array = new Feature[]{Feature.MAGMA_BOSS_TIMER, Feature.MANA_BAR, Feature.MANA_TEXT, Feature.DEFENCE_TEXT, Feature.DEFENCE_PERCENTAGE,
-                    Feature.HEALTH_BAR, Feature.HEALTH_TEXT, Feature.DEFENCE_ICON, Feature.SKELETON_BAR, Feature.HEALTH_UPDATES,
+                    Feature.HEALTH_BAR, Feature.HEALTH_TEXT, Feature.DEFENCE_ICON, Feature.SKELETON_BAR, Feature.HEALTH_UPDATES, Feature.POTION_HEALTH,
                     Feature.ITEM_PICKUP_LOG, Feature.DARK_AUCTION_TIMER};
         } else {
             array = new Feature[]{Feature.TEXT_STYLE, Feature.WARNING_TIME};

@@ -66,7 +66,8 @@
     "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Items",
     "makeBackpackInventoriesColored": "Color Inventories",
     "avoidBreakingBottomSugarCane": "Avoid Breaking Bottom Sugar Cane",
-    "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Items"
+    "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Items",
+    "potionHealth": "Change Healthbar Color for Potions"
   },
   "messages": {
     "dropConfirmation": "Drop this item again to confirm!",
