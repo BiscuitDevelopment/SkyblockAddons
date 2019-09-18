@@ -49,10 +49,10 @@
     "stopBowChargeFromResetting": "Останавливать заряд лука от перезагрузки",
     "preventMovementOnDeath": "Предотвращать ходьбу после смерти",
     "showItemAnvilUses": "Показывать Использования предмета на наковальне",
-    "lockSlots": "Разрешить блокировку слотов",
+    "lockSlots": "Включить блок. слотов",
     "dontResetCursorInventory": "Не сбрасывать курсор между инвентарями",
     "summoningEyeAlert": "Оповещение о Summoning Eye",
-    "makeEnderchestsInEndGreen": "Сделать сундуки края в краю зелёными",
+    "makeEnderchestsInEndGreen": "Сделать сундуки края в Краю зелёными",
     "changeColor": "Изменить цвет",
     "showInOtherGames": "Показывать в остальных играх",
     "useVanillaTexture": "Использовать обычные текстуры",
@@ -62,11 +62,11 @@
       "two": "Стиль 2"
     },
     "warningDuration": "Длительность предупреждения",
-    "dontOpenProfileWithBow": "Не открывать профиль луком",
+    "dontOpenProfileWithBow": "Не открывать профили луком",
     "stopDroppingSellingRareItems": "Перестать выбрасывать/продавать редкие предметы",
     "makeBackpackInventoriesColored": "Цветные ячейки рюкзаков",
     "avoidBreakingBottomSugarCane": "Избегать ломание нижнего тростника",
-    "replaceRomanNumeralsWithNumbers": "Заменить римские номера на предметах"
+    "replaceRomanNumeralsWithNumbers": "Заменять римские цифры на арабские"
   },
   "messages": {
     "dropConfirmation": "Выбросите предмет ещё раз для подтверждения!",
@@ -86,7 +86,7 @@
       "enchants": "Зачарования",
       "reforges": "Перековки"
     },
-    "slotLocked": "Этот слот заблокирован!",
+    "slotLocked": "Слот заблокирован!",
     "summoningEyeFound": "Summoning Eye!",
     "cancelledStemBreak": "SkyBlockAddons остановил вас от ломания этого стебля. Используйте руку, если вы хотите это сделать.",
     "cancelledCaneBreak": "SkyBlockAddons остановил вас от ломания этого тростника. Используйте другой предмет, если вы хотите действительно это сделать.",
