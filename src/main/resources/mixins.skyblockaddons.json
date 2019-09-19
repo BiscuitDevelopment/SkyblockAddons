@@ -19,6 +19,7 @@
     "MixinRendererLivingEntity",
     "MixinGuiHopper",
     "MixinGuiDispenser",
-    "MixinGuiFurnace"
+    "MixinGuiFurnace",
+    "MixinGuiBeacon"
   ]
 }
