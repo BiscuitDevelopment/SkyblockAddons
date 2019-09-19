@@ -49,24 +49,24 @@
     "stopBowChargeFromResetting": "Yay Doldururken Sıfırlanmayı Engelle",
     "preventMovementOnDeath": "Öldükten Sonra Yürümeyi Engelle",
     "showItemAnvilUses": "Örste İşlenme Sayısını Göster",
-    "lockSlots": "Allow Locking Slots",
+    "lockSlots": "Slotları Kilitlemeye İzin Ver",
     "dontResetCursorInventory": "Don't Reset Cursor Between Inventories",
     "summoningEyeAlert": "Çağırma Gözü Uyarısı",
-    "makeEnderchestsInEndGreen": "Make Enderchests in the End Green",
-    "changeColor": "Change Color",
-    "showInOtherGames": "Show in Other Games",
-    "useVanillaTexture": "Use the Vanilla Texture",
-    "textStyle": "Text Style",
+    "makeEnderchestsInEndGreen": "Yeşil End'de Ender Sandığı Yap",
+    "changeColor": "Rengi değiştir",
+    "showInOtherGames": "Diğer Oyunlarda da Göster",
+    "useVanillaTexture": "Sade Dokuları kullan",
+    "textStyle": "Yazı Sitili",
     "textStyles": {
-      "one": "Style One",
-      "two": "Style Two"
+      "one": "Stil Bir",
+      "two": "Stil 2"
     },
-    "warningDuration": "Warning Duration",
-    "dontOpenProfileWithBow": "Don't Open Profile With Bow",
-    "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Items",
-    "makeBackpackInventoriesColored": "Color Inventories",
-    "avoidBreakingBottomSugarCane": "Avoid Breaking Bottom Sugar Cane",
-    "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Items"
+    "warningDuration": "Uyarı Süresi",
+    "dontOpenProfileWithBow": "Yay ile Profil Açamama",
+    "stopDroppingSellingRareItems": "Nadir Eşya Düşürme/Satmayı Önler",
+    "makeBackpackInventoriesColored": "Envanter Renkleri",
+    "avoidBreakingBottomSugarCane": "Şeker Kamışının Altını Kırmayı Engelle",
+    "replaceRomanNumeralsWithNumbers": "Eşyalardaki Romen Rakamlarını Değiştir"
   },
   "messages": {
     "dropConfirmation": "Eşyayı düşürmeyi onaylamak için düşürme tuşuna bir daha bas!",
@@ -86,12 +86,12 @@
       "enchants": "Büyüler",
       "reforges": "Reforge'lar"
     },
-    "slotLocked": "This slot is locked!",
-    "summoningEyeFound": "Summoning Eye!",
-    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this stem. Use your bare hand if you'd like to actually break it.",
-    "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use your another tool if you'd actually like to break it.",
-    "cancelledProfileOpening": "SkyblockAddons has stopped you from opening this player's profile while holding a bow.",
-    "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare item or tool from your hotbar.",
-    "clickMoreTimes": "Click/drop this item %times% more times if you really want to do this."
+    "slotLocked": "Bu slot kilitli!",
+    "summoningEyeFound": "Çağırma Gözü!",
+    "cancelledStemBreak": "SkyblockAddons sizi bu kökü kırmanızı engelledi. Gerçekten kırmak istiyorsanız çıplak elinizi kullanın.",
+    "cancelledCaneBreak": "SkyblockAddons sizi şeker kamışının altını kırmanızı engelledi. Gerçekten kırmak istiyorsanız başka bir eşya kullanın.",
+    "cancelledProfileOpening": "SkyblockAddons yay ile oyuncu profili açmanızı engelledi.",
+    "cancelledDropping": "SkyblockAddons değerli eşyanızı yere atmanızı engelledi.",
+    "clickMoreTimes": "Eğer gerçekten eşyayı yere atmak istiyorsanız %times% kez eşyaya tıklayın."
   }
 }
