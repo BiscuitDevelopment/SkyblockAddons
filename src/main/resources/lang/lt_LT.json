@@ -16,13 +16,13 @@
     "fullInventoryWarning": "Pilnas Inventorius Įspėjimas",
     "disableEmberRodAbility": "Išjungti salos Ember Rod",
     "editLocations": "Regaduoti GUI vietas",
-    "guiScale": "Gui Scale: %scale%",
+    "guiScale": "Gui Skalė %scale%",
     "resetLocations": "Iš Naujo Nustatyti Vietas",
     "hideDurability": "Paslėpti Daiktų Patvarumą",
     "showEnchantmentsReforges": "Užburimai Ir Reformos",
     "minionStopWarning": "\"Minionas Negali Pasiekti\" Įspėjimas",
     "hideAuctionHousePlayers": "Paslėpti Žaidėjus Arti Aukciono",
-    "backpackStyle": "Backpack Style: %style%",
+    "backpackStyle": "Kuprinės Stilius %style%",
     "backpackStyles": {
       "regular": "Įprasta",
       "compact": "Kompaktiška"
@@ -65,7 +65,7 @@
     "dontOpenProfileWithBow": "Neatidaryti Profilius Su Lanku",
     "stopDroppingSellingRareItems": "Baigti Mesti/Parduoti Retus Daiktus",
     "makeBackpackInventoriesColored": "Spalvų Inventoriai",
-    "avoidBreakingBottomSugarCane": "Avoid Breaking Bottom Sugar Cane",
+    "avoidBreakingBottomSugarCane": "Vengti Apatinės Cukranendres Išgriovimą",
     "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Items"
   },
   "messages": {
