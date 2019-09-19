@@ -2,10 +2,10 @@
   "language": "Biscuish",
   "settings": {
     "tab": {
-      "features": "Features",
-      "fixes": "Fixes",
-      "guiFeatures": "GUI Features",
-      "generalSettings": "General Settings"
+      "features": "Biscuits",
+      "fixes": "Bixcuits",
+      "guiFeatures": "Buscuit features",
+      "generalSettings": "General biscuits"
     },
     "settings": "Bake Biscuits",
     "magmaBossWarning": "Big Biscuit Warning",
@@ -24,14 +24,14 @@
     "hideAuctionHousePlayers": "Hide Biscuits Near Bakery",
     "backpackStyle": "Biscuit Style: %style%",
     "backpackStyles": {
-      "regular": "Regular",
+      "regular": "Biscuitar",
       "compact": "Compressed Biscuit"
     },
     "showBackpackPreview": "Get Biscuit Sneak Peeeek",
     "hideHealthBar": "Hide The Basic Biscuits",
     "fullMinionWarning": "Full Biscuit Warning",
     "ignoreItemFrameClicks": "Ignore Bites On Biscuit Plates",
-    "showOnlyWhenHoldingShift": "Show Only When Holding Shift",
+    "showOnlyWhenHoldingShift": "Show only when i order biscuit",
     "manaBar": "Biscuit Bar 1",
     "manaText": "Amount of Biscuits on Screen",
     "healthBar": "Biscuit Bar 2",
