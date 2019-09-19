@@ -28,7 +28,7 @@ public class SkyblockAddonsCommand extends CommandBase {
     @Override
     public List<String> getAliases()
     {
-        return Collections.singletonList("/sba");
+        return Collections.singletonList("sba");
     }
 
     @Override
