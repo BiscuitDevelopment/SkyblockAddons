@@ -3,9 +3,9 @@
   "settings": {
     "tab": {
       "features": "Özellikler",
-      "fixes": "Fixes",
-      "guiFeatures": "GUI Features",
-      "generalSettings": "General Settings"
+      "fixes": "Düzeltmeler",
+      "guiFeatures": "Menü Özellikleri",
+      "generalSettings": "Genel Ayarlar"
     },
     "settings": "Ayarlar",
     "magmaBossWarning": "Magma Boss için Uyarı",
@@ -24,14 +24,14 @@
     "hideAuctionHousePlayers": "Açık Arttırma Evindeki Oyuncuları Gizle",
     "backpackStyle": "Sırt Çantası Tipi: %style%",
     "backpackStyles": {
-      "regular": "Regular",
+      "regular": "Sıradan",
       "compact": "Sade"
     },
     "showBackpackPreview": "Sırt Çantası Önizlemesi",
     "hideHealthBar": "Vanilla Can Göstergesi Gizle",
     "fullMinionWarning": "Minyon Alan Dolu Uyarısı",
     "ignoreItemFrameClicks": "Eşya Çerçevelerine Tıklamayı Görmezden Gel",
-    "showOnlyWhenHoldingShift": "Show Only When Holding Shift",
+    "showOnlyWhenHoldingShift": "Sadece Eğildiğinde Göster",
     "manaBar": "Mana Çubuğu",
     "manaText": "Mana'yı Göster (sayı ile)",
     "healthBar": "Can Çubuğu",
@@ -40,7 +40,7 @@
     "defenceText": "Zırh'ı Göster (sayı ile)",
     "defencePercentage": "Koruma Yüzdesi",
     "healthUpdates": "Candaki Değişiklikleri Göster",
-    "hidePlayersInLobby": "Hide Far Entities in Lobby",
+    "hidePlayersInLobby": "Lobide Uzaktaki Kişileri Gizle",
     "darkAuctionTimer": "Dark Auction Sayacı",
     "magmaBossTimer": "Magma Boss Sayacı",
     "itemPickupLog": "Toplanan Eşya'yı Yaz",
@@ -51,7 +51,7 @@
     "showItemAnvilUses": "Örste İşlenme Sayısını Göster",
     "lockSlots": "Allow Locking Slots",
     "dontResetCursorInventory": "Don't Reset Cursor Between Inventories",
-    "summoningEyeAlert": "Summoning Eye Alert",
+    "summoningEyeAlert": "Çağırma Gözü Uyarısı",
     "makeEnderchestsInEndGreen": "Make Enderchests in the End Green",
     "changeColor": "Change Color",
     "showInOtherGames": "Show in Other Games",
