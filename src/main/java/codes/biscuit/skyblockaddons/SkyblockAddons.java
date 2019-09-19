@@ -3,12 +3,14 @@ package codes.biscuit.skyblockaddons;
 import codes.biscuit.skyblockaddons.commands.SkyblockAddonsCommand;
 import codes.biscuit.skyblockaddons.listeners.PlayerListener;
 import codes.biscuit.skyblockaddons.listeners.RenderListener;
+import codes.biscuit.skyblockaddons.utils.Commands;
 import codes.biscuit.skyblockaddons.utils.ConfigValues;
 import codes.biscuit.skyblockaddons.utils.InventoryUtils;
 import codes.biscuit.skyblockaddons.utils.Scheduler;
 import codes.biscuit.skyblockaddons.utils.Utils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
+import net.minecraft.command.CommandBase;
 import net.minecraftforge.client.ClientCommandHandler;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
@@ -45,14 +47,22 @@ public class SkyblockAddons {
     public void preInit(FMLPreInitializationEvent e) {
         instance = this;
         configValues = new ConfigValues(this, e.getSuggestedConfigurationFile());
+        Commands.addCommand(SkyblockAddonsCommand.class);
     }
+
     @Mod.EventHandler
     public void init(FMLInitializationEvent e) {
         MinecraftForge.EVENT_BUS.register(playerListener);
         MinecraftForge.EVENT_BUS.register(renderListener);
         MinecraftForge.EVENT_BUS.register(scheduler);
         ClientRegistry.registerKeyBinding(lockSlot);
-        ClientCommandHandler.instance.registerCommand(new SkyblockAddonsCommand(this));
+
+        for (Class<? extends CommandBase> clazz : Commands.COMMAND_CLASSES) {
+            try {
+                CommandBase base = clazz.getConstructor(SkyblockAddons.class).newInstance(this);
+                ClientCommandHandler.instance.registerCommand(base);
+            } catch (Exception ignored) { }
+        }
     }
 
     @Mod.EventHandler
