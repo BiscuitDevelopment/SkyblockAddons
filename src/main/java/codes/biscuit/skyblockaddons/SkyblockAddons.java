@@ -3,7 +3,7 @@ package codes.biscuit.skyblockaddons;
 import codes.biscuit.skyblockaddons.commands.SkyblockAddonsCommand;
 import codes.biscuit.skyblockaddons.listeners.PlayerListener;
 import codes.biscuit.skyblockaddons.listeners.RenderListener;
-import codes.biscuit.skyblockaddons.utils.Commands;
+import codes.biscuit.skyblockaddons.utils.ForgeInitHelper;
 import codes.biscuit.skyblockaddons.utils.ConfigValues;
 import codes.biscuit.skyblockaddons.utils.InventoryUtils;
 import codes.biscuit.skyblockaddons.utils.Scheduler;
@@ -22,6 +22,8 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import org.lwjgl.input.Keyboard;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -34,8 +36,7 @@ public class SkyblockAddons {
 
     private static SkyblockAddons instance; // for Mixins cause they don't have a constructor
     private ConfigValues configValues;
-    private PlayerListener playerListener = new PlayerListener(this);
-    private RenderListener renderListener = new RenderListener(this);
+    private Map<Class<?>, Object> listeners = new HashMap<>();
     private Utils utils = new Utils(this);
     private InventoryUtils inventoryUtils = new InventoryUtils(this);
     private Scheduler scheduler = new Scheduler(this);
@@ -47,17 +48,25 @@ public class SkyblockAddons {
     public void preInit(FMLPreInitializationEvent e) {
         instance = this;
         configValues = new ConfigValues(this, e.getSuggestedConfigurationFile());
-        Commands.addCommand(SkyblockAddonsCommand.class);
+        ForgeInitHelper.addCommand(SkyblockAddonsCommand.class);
+        ForgeInitHelper.addListener(PlayerListener.class);
+        ForgeInitHelper.addListener(RenderListener.class);
     }
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent e) {
-        MinecraftForge.EVENT_BUS.register(playerListener);
-        MinecraftForge.EVENT_BUS.register(renderListener);
+        for (Class<?> clazz : ForgeInitHelper.LISTENER_CLASSES) {
+            try {
+                Object listener = clazz.getConstructor(SkyblockAddons.class).newInstance(this);
+                this.listeners.put(clazz, listener);
+                MinecraftForge.EVENT_BUS.register(listener);
+            } catch (Exception ignored) { }
+        }
+
         MinecraftForge.EVENT_BUS.register(scheduler);
         ClientRegistry.registerKeyBinding(lockSlot);
 
-        for (Class<? extends CommandBase> clazz : Commands.COMMAND_CLASSES) {
+        for (Class<? extends CommandBase> clazz : ForgeInitHelper.COMMAND_CLASSES) {
             try {
                 CommandBase base = clazz.getConstructor(SkyblockAddons.class).newInstance(this);
                 ClientCommandHandler.instance.registerCommand(base);
@@ -98,11 +107,11 @@ public class SkyblockAddons {
     }
 
     public PlayerListener getPlayerListener() {
-        return playerListener;
+        return (PlayerListener)this.listeners.get(PlayerListener.class);
     }
 
     public RenderListener getRenderListener() {
-        return renderListener;
+        return (RenderListener)this.listeners.get(RenderListener.class);
     }
 
     public Utils getUtils() {
