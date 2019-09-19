@@ -53,7 +53,7 @@
     "dontResetCursorInventory": "Don't Reset Cursor Between Inventories",
     "summoningEyeAlert": "Summoning Eye Alert",
     "makeEnderchestsInEndGreen": "Make Enderchests in the End Green",
-    "changeColor": "Change Color",
+    "changeColor": "Pakeisti Spalvą",
     "showInOtherGames": "Show in Other Games",
     "useVanillaTexture": "Use the Vanilla Texture",
     "textStyle": "Text Style",
@@ -71,7 +71,7 @@
   "messages": {
     "dropConfirmation": "Drop this item again to confirm!",
     "magmaBossWarning": "Magma Cube Boss!",
-    "fullInventory": "Full Inventory!",
+    "fullInventory": "Pilnas Inventorius!",
     "newVersion": "A new version, %newestVersion% is available. Download it by clicking here.",
     "discord": "Want to view the changes? Click here to join my discord.",
     "developmentVersion": "You are running a development version: %version%. The latest online version is %newestVersion%",
