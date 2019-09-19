@@ -66,7 +66,7 @@
     "stopDroppingSellingRareItems": "إيقاف إسقاط أو بيع الأشياء النادرة",
     "makeBackpackInventoriesColored": "لون القائمة",
     "avoidBreakingBottomSugarCane": "أيقاف كسر قصم السكر السفلي",
-    "replaceRomanNumeralsWithNumbers": "تحويل الترقيم الرمزي او الحرفي الى الرقمي"
+    "replaceRomanNumeralsWithNumbers": "تحويل الترقيم الروماني أو الحرفي إلى الرقمي"
   },
   "messages": {
     "dropConfirmation": "!إرمي هذا العنصر مرة أخرى للتأكيد",
@@ -86,12 +86,12 @@
       "enchants": "التطويرات",
       "reforges": "اعادة تشكيل\n"
     },
-    "slotLocked": "هذه السلوت مغلقة!",
+    "slotLocked": "هذه الخانة مغلقة!",
     "summoningEyeFound": "عين الاستدعاء!",
     "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this stem. Use your bare hand if you'd like to actually break it.",
     "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use your another tool if you'd actually like to break it.",
-    "cancelledProfileOpening": "منعك التطبيق من فتح شخصية هذا اللاعب وانت تحمل القوس.",
-    "cancelledDropping": "منعك التطبيق من اسقاط هذه الأداة او الشيء النادران من قائمة أدواتك.",
-    "clickMoreTimes": "أضغط أو اسقط هذا الشيء %times% مرات زيادة ان كنت حقيقتاً تريد فعل هذا."
+    "cancelledProfileOpening": "SkyblockAddons منعك من فتح شخصية هذا اللاعب وانت تحمل القوس.",
+    "cancelledDropping": "SkyblockAddons منعك من إسقاط هذه الأداة أو الشيء النادر من قائمة أدواتك.",
+    "clickMoreTimes": "أضغط أو اسقط هذا الشيء %times% مرات زيادة إن كنت حقيقتاً تريد فعل هذا."
   }
 }
