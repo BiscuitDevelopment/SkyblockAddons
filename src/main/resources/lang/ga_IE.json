@@ -50,9 +50,9 @@
     "preventMovementOnDeath": "Cosc ag siúl tar éis Bás",
     "showItemAnvilUses": "Taispeán Usáid Inneoin",
     "lockSlots": "Cur Sliotán faoi Ghlas",
-    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories",
+    "dontResetCursorInventory": "Ná Athshocraigh an Cursor idir Fardal",
     "summoningEyeAlert": "Summoning Eye Alert",
-    "makeEnderchestsInEndGreen": "Make Enderchests in the End Green",
+    "makeEnderchestsInEndGreen": "Deán na Enderchests san End Glas",
     "changeColor": "Athrú Dath",
     "showInOtherGames": "Taispeán i gCluiche eile",
     "useVanillaTexture": "Usáid an Gnáth-Uigeacht",
@@ -62,15 +62,15 @@
       "two": "Stíl a Dhó"
     },
     "warningDuration": "Fad Rabhadh",
-    "dontOpenProfileWithBow": "Don't Open Profile With Bow",
-    "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Items",
+    "dontOpenProfileWithBow": "Ná oscail Profíl le Bogha",
+    "stopDroppingSellingRareItems": "Cosc ag Leag/Díol Mír Anamh",
     "makeBackpackInventoriesColored": "Dath Fardal",
-    "avoidBreakingBottomSugarCane": "Avoid Breaking Bottom Sugar Cane",
-    "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Items"
+    "avoidBreakingBottomSugarCane": "Ná briseadh an Cána Siúcra ag an mBun",
+    "replaceRomanNumeralsWithNumbers": "Athchuir Uimhir Rómhánach ar mír"
   },
   "messages": {
-    "dropConfirmation": "Drop this item again to confirm!",
-    "magmaBossWarning": "Magma Cube Boss!",
+    "dropConfirmation": "Leag síos an mír seo arís le cinntiú!",
+    "magmaBossWarning": "Saoiste Ciúb Magma!",
     "fullInventory": "Fardal Lán!",
     "newVersion": "A new version, %newestVersion% is available. Download it by clicking here.",
     "discord": "Want to view the changes? Click here to join my discord.",
@@ -83,15 +83,15 @@
     "enchantsToMatch": "%type% To Match:",
     "enchantsToExclude": "%type% To Exclude:",
     "inventoryTypes": {
-      "enchants": "Enchants",
-      "reforges": "Reforges"
+      "enchants": "Draíocht",
+      "reforges": "Ré-Cruthach"
     },
     "slotLocked": "Tá an Sliotán seo faoi ghlas!",
     "summoningEyeFound": "Summoning Eye!",
-    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this stem. Use your bare hand if you'd like to actually break it.",
-    "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use your another tool if you'd actually like to break it.",
-    "cancelledProfileOpening": "SkyblockAddons has stopped you from opening this player's profile while holding a bow.",
-    "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare item or tool from your hotbar.",
-    "clickMoreTimes": "Click/drop this item %times% more times if you really want to do this."
+    "cancelledStemBreak": "Chur SkyblockAddons cosc ort an gas seo a briseadh. Usáid to lámh má tá tú ag iarraidh é a briseadh.",
+    "cancelledCaneBreak": "Chur SkyblockAddons cosc ort an píosa cána siúcra seo a briseadh. Usáid uirlis eile má tá tú ag iarraidh é a briseadh.",
+    "cancelledProfileOpening": "Chur SkyblockAddons cosc ort ag oscailt an profíl seo fad is atá bogha i do lámh.",
+    "cancelledDropping": "Chur SkyblockAddons cosc or an mír anamh seo a leag síos ó do hotbar.",
+    "clickMoreTimes": "Cliceál/leag síos an mír seo %times% uaireanta eile má tá tú cinnte faoi seo."
   }
 }
