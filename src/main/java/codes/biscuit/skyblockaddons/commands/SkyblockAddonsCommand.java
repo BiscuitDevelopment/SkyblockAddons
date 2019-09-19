@@ -7,14 +7,10 @@ import com.mojang.realmsclient.gui.ChatFormatting;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
-import net.minecraft.entity.monster.EntityEnderman;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.server.MinecraftServer;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class SkyblockAddonsCommand extends CommandBase {
 
@@ -32,7 +28,7 @@ public class SkyblockAddonsCommand extends CommandBase {
     @Override
     public List<String> getAliases()
     {
-        return Collections.singletonList("sba");
+        return Collections.singletonList("/sba");
     }
 
     @Override
