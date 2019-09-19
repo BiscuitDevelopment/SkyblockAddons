@@ -90,10 +90,8 @@ public class PlayerListener {
         if (damageSource != null) {
             Entity trueSource = damageSource.getTrueSource();
 
-            if (trueSource != null && Minecraft.getMinecraft().player.getName().equals(trueSource.getName())) {
-                main.getUtils().sendMessage("Dmg: " + event.getAmount() + ": " + entity.getHealth() + ": " + entity.getMaxHealth()) ;
+            if (trueSource != null && Minecraft.getMinecraft().player.getName().equals(trueSource.getName()))
                 this.attackedEntity.add(entity);
-            }
         }
     }
 
