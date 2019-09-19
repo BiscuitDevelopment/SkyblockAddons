@@ -41,7 +41,7 @@
     "defencePercentage": "Defence Percentage",
     "healthUpdates": "Health Change Number",
     "hidePlayersInLobby": "Hide Far Entities in Lobby",
-    "darkAuctionTimer": "Dark Auction Timer",
+    "darkAuctionTimer": "Mørk auktion Timer",
     "magmaBossTimer": "Magma Boss Timer",
     "itemPickupLog": "Varehentningslog",
     "avoidPlacingEnchantedItems": "Undgå at placere fortrolige genstande",
@@ -58,11 +58,11 @@
     "useVanillaTexture": "Use the Vanilla Texture",
     "textStyle": "Text Style",
     "textStyles": {
-      "one": "Style One",
-      "two": "Style Two"
+      "one": "Stil en",
+      "two": "Stil To"
     },
-    "warningDuration": "Warning Duration",
-    "dontOpenProfileWithBow": "Don't Open Profile With Bow",
+    "warningDuration": "Advarsel svarighed",
+    "dontOpenProfileWithBow": "Åbn ikke profil med sløjfe",
     "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Items",
     "makeBackpackInventoriesColored": "Color Inventories",
     "avoidBreakingBottomSugarCane": "Avoid Breaking Bottom Sugar Cane",
@@ -71,8 +71,8 @@
   "messages": {
     "dropConfirmation": "Drop this item again to confirm!",
     "magmaBossWarning": "Magma Cube Boss!",
-    "fullInventory": "Full Inventory!",
-    "newVersion": "A new version, %newestVersion% is available. Download it by clicking here.",
+    "fullInventory": "Fuld inventar!",
+    "newVersion": "En ny version %newestVersion% er tilgængelig. Download det ved at klikke her.",
     "discord": "Want to view the changes? Click here to join my discord.",
     "developmentVersion": "You are running a development version: %version%. The latest online version is %newestVersion%",
     "labymod": "Labymod Users: Hide Food, Armor, and Health Bar, is incompatible.",
