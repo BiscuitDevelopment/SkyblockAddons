@@ -1,6 +1,7 @@
 package codes.biscuit.skyblockaddons.listeners;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.events.PlayerKillEntityEvent;
 import codes.biscuit.skyblockaddons.utils.Attribute;
 import codes.biscuit.skyblockaddons.utils.CoordsPair;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
@@ -14,6 +15,7 @@ import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.inventory.GuiChest;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityArmorStand;
 import net.minecraft.entity.monster.EntityBlaze;
 import net.minecraft.entity.monster.EntityMagmaCube;
@@ -21,6 +23,7 @@ import net.minecraft.entity.monster.EntitySlime;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.ChatType;
@@ -28,8 +31,11 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.client.event.GuiOpenEvent;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.EntityEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
+import net.minecraftforge.event.entity.living.LivingAttackEvent;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.world.ChunkEvent;
@@ -59,6 +65,7 @@ public class PlayerListener {
     private Integer healthUpdate = null;
     private long lastHealthUpdate;
 
+    private final Set<EntityLivingBase> attackedEntity = new HashSet<>();
     private Set<CoordsPair> recentlyLoadedChunks = new HashSet<>();
     private EnumUtils.MagmaTimerAccuracy magmaAccuracy = EnumUtils.MagmaTimerAccuracy.NO_DATA;
     private int magmaTime = 0;
@@ -72,6 +79,30 @@ public class PlayerListener {
 
     public PlayerListener(SkyblockAddons main) {
         this.main = main;
+    }
+
+    @SubscribeEvent
+    public void onLivingAttack(LivingAttackEvent event) {
+        EntityLivingBase entity = event.getEntityLiving();
+        DamageSource damageSource = event.getSource();
+        event.getAmount();
+
+        if (damageSource != null) {
+            Entity trueSource = damageSource.getTrueSource();
+
+            if (trueSource != null && Minecraft.getMinecraft().player.getName().equals(trueSource.getName())) {
+                main.getUtils().sendMessage("Dmg: " + event.getAmount() + ": " + entity.getHealth() + ": " + entity.getMaxHealth()) ;
+                this.attackedEntity.add(entity);
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public void onEntityDeath(LivingDeathEvent event) {
+        EntityLivingBase entity = event.getEntityLiving();
+
+        if (this.attackedEntity.remove(entity))
+            MinecraftForge.EVENT_BUS.post(new PlayerKillEntityEvent(entity));
     }
 
     /**
