@@ -61,6 +61,7 @@ dependencies {
     provided("org.spongepowered:mixin:0.7.11-SNAPSHOT") {
         transitive = false
     }
+
     // you may put jars on which you depend on in ./libs
     // or you may define them like so..
     //compile "some.group:artifact:version:classifier"
