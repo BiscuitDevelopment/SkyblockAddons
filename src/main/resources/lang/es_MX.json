@@ -66,7 +66,8 @@
     "stopDroppingSellingRareItems": "Detener Arrojo/Venta de Objetos Raros",
     "makeBackpackInventoriesColored": "Colorear Inventarios",
     "avoidBreakingBottomSugarCane": "Evitar Ruptura de Parte Inferior de Caña de Azúcar",
-    "replaceRomanNumeralsWithNumbers": "Reemplazar Números Romanos en Objetos"
+    "replaceRomanNumeralsWithNumbers": "Reemplazar Números Romanos en Objetos",
+    "organizeLongEnchantmentLists": "Ordenar Listas de Encantamientos"
   },
   "messages": {
     "dropConfirmation": "Arroja este objeto otra vez para confirmar!",

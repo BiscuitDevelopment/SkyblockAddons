@@ -66,7 +66,8 @@
     "stopDroppingSellingRareItems": "Parar de Soltar/Vender Objetos Raros",
     "makeBackpackInventoriesColored": "Inventarios de Color",
     "avoidBreakingBottomSugarCane": "Evitar Romper Debajo de la Caña de Azúcar",
-    "replaceRomanNumeralsWithNumbers": "Reemplazar Números Romanos en Objetos"
+    "replaceRomanNumeralsWithNumbers": "Reemplazar Números Romanos en Objetos",
+    "organizeLongEnchantmentLists": "Ordenar Listas de Encantamientos"
   },
   "messages": {
     "dropConfirmation": "¡Dropea el Objeto otra vez para soltar!",
