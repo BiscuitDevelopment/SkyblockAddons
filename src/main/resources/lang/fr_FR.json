@@ -92,6 +92,6 @@
     "cancelledCaneBreak": "SkyblockAddons vous a empêché de casser ce bloc de canne à sucre. Utiliser un autre outil si vous souhaitez le casser.",
     "cancelledProfileOpening": "SkyblockAddons vous a empêché d'ouvrir le profil de ce joueur en utilisant un arc.",
     "cancelledDropping": "SkyblockAddons vous a empêché de jeter cet objet ou outil rare de votre barre d'action.",
-    "clickMoreTimes": "Cliquez/jetez cet objet %times% fois si vous le souhaitez vraiment."
+    "clickMoreTimes": "Cliquez/jetez cet objet encore %times% fois si vous le souhaitez."
   }
 }
