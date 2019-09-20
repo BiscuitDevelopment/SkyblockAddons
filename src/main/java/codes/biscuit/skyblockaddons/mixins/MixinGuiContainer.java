@@ -192,7 +192,7 @@ public class MixinGuiContainer extends GuiScreen {
                 GlStateManager.disableLighting();
                 GlStateManager.pushMatrix();
                 GlStateManager.translate(0,0, 300);
-                Gui.drawRect(x, y, x + (16 * 9) + 3, y + (16 * (length / 9)) + 3, ConfigColor.DARK_GRAY.getColor(250));
+                Gui.drawRect(x, y, x + (16 * 9) + 3, y + (16 * (length / 9)) + 3, ConfigColor.DARK_GRAY.getRGB(250));
                 GlStateManager.popMatrix();
                 GlStateManager.enableLighting();
 
@@ -266,7 +266,7 @@ public class MixinGuiContainer extends GuiScreen {
         main.getUtils().setLastHoveredSlot(slotNum);
         if (!skipSlot && hoveredSlot != null && main.getConfigValues().isEnabled(Feature.LOCK_SLOTS) &&
                 main.getUtils().isOnSkyblock() && main.getConfigValues().getLockedSlots().contains(slotNum)) {
-            int red = ConfigColor.RED.getColor(127);
+            int red = ConfigColor.RED.getRGB(127);
             drawGradientRect(left,top,right,bottom,red,red);
         } else {
             drawGradientRect(left,top,right,bottom,startColor,endColor);

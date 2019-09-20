@@ -144,7 +144,7 @@ public class RenderListener {
             if (message != null) {
                 String text = message.getMessage();
                 mc.ingameGUI.getFontRenderer().drawString(text, (float) (-mc.ingameGUI.getFontRenderer().getStringWidth(text) / 2), -20.0F,
-                        main.getConfigValues().getColor(titleFeature).getColor(255), true);
+                        main.getConfigValues().getColor(titleFeature).getRGB(255), true);
             }
             GlStateManager.popMatrix();
             GlStateManager.popMatrix();
@@ -172,7 +172,7 @@ public class RenderListener {
                     text = message.getMessage();
                 }
                 mc.ingameGUI.getFontRenderer().drawString(text, (float) (-mc.ingameGUI.getFontRenderer().getStringWidth(text) / 2), -23.0F,
-                        main.getConfigValues().getColor(subtitleFeature).getColor(255), true);
+                        main.getConfigValues().getColor(subtitleFeature).getRGB(255), true);
             }
             GlStateManager.popMatrix();
             GlStateManager.popMatrix();
@@ -380,7 +380,7 @@ public class RenderListener {
     public void drawText(Feature feature, float scale, Minecraft mc, ButtonLocation buttonLocation) {
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         String text;
-        int color = main.getConfigValues().getColor(feature).getColor(255);
+        int color = main.getConfigValues().getColor(feature).getRGB(255);
         if (feature == Feature.MANA_TEXT) {
             text = getAttribute(Attribute.MANA) + "/" + getAttribute(Attribute.MAX_MANA);
         } else if (feature == Feature.HEALTH_TEXT) {
@@ -396,14 +396,14 @@ public class RenderListener {
             Integer healthUpdate = main.getPlayerListener().getHealthUpdate();
             if (buttonLocation == null) {
                 if (healthUpdate != null) {
-                    color = healthUpdate > 0 ? ConfigColor.GREEN.getColor(255) : ConfigColor.RED.getColor(255);
+                    color = healthUpdate > 0 ? ConfigColor.GREEN.getRGB(255) : ConfigColor.RED.getRGB(255);
                     text = (healthUpdate > 0 ? "+" : "-") + Math.abs(healthUpdate);
                 } else {
                     return;
                 }
             } else {
                 text = "+123";
-                color = ConfigColor.GREEN.getColor(255);
+                color = ConfigColor.GREEN.getRGB(255);
             }
         } else if (feature == Feature.DARK_AUCTION_TIMER) { // The timezone of the server, to avoid problems with like timezones that are 30 minutes ahead or whatnot.
             Calendar nextDarkAuction = Calendar.getInstance(TimeZone.getTimeZone("America/New_York"));
@@ -522,7 +522,7 @@ public class RenderListener {
         for (ItemDiff itemDiff : log) {
             String text = String.format("%s %sx \u00A7r%s", itemDiff.getAmount() > 0 ? "\u00A7a+":"\u00A7c-",
                     Math.abs(itemDiff.getAmount()), itemDiff.getDisplayName());
-            drawString(mc, text, intX, intY+(i*mc.fontRenderer.FONT_HEIGHT), ConfigColor.WHITE.getColor(255));
+            drawString(mc, text, intX, intY+(i*mc.fontRenderer.FONT_HEIGHT), ConfigColor.WHITE.getRGB(255));
             i++;
         }
     }

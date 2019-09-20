@@ -35,12 +35,12 @@ public class ButtonModify extends ButtonText {
             boxAlpha = 170;
         }
         if (hitMaximum()) {
-            boxColor = ConfigColor.GRAY.getColor(boxAlpha);
+            boxColor = ConfigColor.GRAY.getRGB(boxAlpha);
         } else {
             if (feature == Feature.ADD) {
-                boxColor = ConfigColor.GREEN.getColor(boxAlpha);
+                boxColor = ConfigColor.GREEN.getRGB(boxAlpha);
             } else {
-                boxColor = ConfigColor.RED.getColor(boxAlpha);
+                boxColor = ConfigColor.RED.getRGB(boxAlpha);
             }
         }
         GlStateManager.enableBlend();

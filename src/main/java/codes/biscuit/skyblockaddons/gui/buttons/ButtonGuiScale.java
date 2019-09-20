@@ -68,7 +68,7 @@ public class ButtonGuiScale extends ButtonFeature {
 
             mc.getTextureManager().bindTexture(BUTTON_TEXTURES);
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-            drawRect(this.x + (int) (this.sliderValue * (float) (this.width - 8))+1, this.y, this.x + (int) (this.sliderValue * (float) (this.width - 8))+7, this.y + 20, ConfigColor.WHITE.getColor(255));
+            drawRect(this.x + (int) (this.sliderValue * (float) (this.width - 8))+1, this.y, this.x + (int) (this.sliderValue * (float) (this.width - 8))+7, this.y + 20, ConfigColor.WHITE.getRGB(255));
         }
     }
 

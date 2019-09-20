@@ -90,7 +90,7 @@ public class ButtonLocation extends ButtonFeature {
         if (hovered) {
             boxAlpha = 170;
         }
-        int boxColor = ConfigColor.GRAY.getColor(boxAlpha);
+        int boxColor = ConfigColor.GRAY.getRGB(boxAlpha);
         drawRect(boxXOne, boxYOne,
                 boxXTwo, boxYTwo, boxColor);
     }

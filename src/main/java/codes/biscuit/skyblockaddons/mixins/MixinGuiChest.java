@@ -81,11 +81,11 @@ public abstract class MixinGuiChest extends GuiContainer {
             GlStateManager.popMatrix();
             textFieldMatch.drawTextBox();
             if ("".equals(textFieldMatch.getText())) {
-                mc.ingameGUI.drawString(mc.fontRenderer, "ex. \"prot, feather\"", x+4, guiTop + 86, ConfigColor.DARK_GRAY.getColor(255));
+                mc.ingameGUI.drawString(mc.fontRenderer, "ex. \"prot, feather\"", x+4, guiTop + 86, ConfigColor.DARK_GRAY.getRGB(255));
             }
             textFieldExclusions.drawTextBox();
             if ("".equals(textFieldExclusions.getText())) {
-                mc.ingameGUI.drawString(mc.fontRenderer, "ex. \"proj, blast\"", x+4, guiTop + 126, ConfigColor.DARK_GRAY.getColor(255));
+                mc.ingameGUI.drawString(mc.fontRenderer, "ex. \"proj, blast\"", x+4, guiTop + 126, ConfigColor.DARK_GRAY.getRGB(255));
             }
         }
     }
