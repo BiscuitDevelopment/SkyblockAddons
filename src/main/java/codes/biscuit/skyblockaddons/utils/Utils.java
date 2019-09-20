@@ -47,7 +47,7 @@ public class Utils {
             "dragon hunter","power","snipe","piercing","aiming","infinite quiver", // Bow Main
             "smite","bane of arthropods","knockback","fire aspect","venomous", // Sword Bad
             "sharpness","critical","first strike","giant killer","execute","lethality","ender slayer","cubism","impaling", // Sword Damage
-            "looting","experience","scavenger","luck","vampirism","life steal","cleave","thunderlord", // Sword Others
+            "vampirism","life steal","looting","luck","scavenger","experience","cleave","thunderlord", // Sword Others
             "punch","flame", // Bow Others
             "telekinesis"
     ));
