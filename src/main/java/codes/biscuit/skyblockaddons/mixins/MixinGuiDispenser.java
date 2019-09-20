@@ -18,7 +18,6 @@ public abstract class MixinGuiDispenser extends GuiContainer {
 	@Override
 	protected void handleMouseClick(Slot slotIn, int slotId, int mouseButton, ClickType type) {
 		SkyblockAddons main = SkyblockAddons.getInstance();
-		out:
 		if (slotIn != null && main.getConfigValues().isEnabled(Feature.LOCK_SLOTS) &&
 				main.getUtils().isOnSkyblock()) {
 			int slotNum = slotIn.slotNumber;

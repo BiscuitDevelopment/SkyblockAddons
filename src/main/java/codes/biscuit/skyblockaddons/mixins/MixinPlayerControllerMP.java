@@ -39,7 +39,14 @@ public class MixinPlayerControllerMP {
     /**
      * Cancels stem breaks if holding an item, to avoid accidental breaking.
      */
-    @Inject(method = "clickBlock", at = @At(value = "HEAD"), locals = LocalCapture.CAPTURE_FAILSOFT, cancellable = true)
+    @Inject(
+            method = "clickBlock",
+            at = @At(
+                    value = "HEAD"
+            ),
+            locals = LocalCapture.CAPTURE_FAILSOFT,
+            cancellable = true
+    )
     private void onPlayerDamageBlock(BlockPos loc, EnumFacing face, CallbackInfoReturnable<Boolean> cir) {
         SkyblockAddons main = SkyblockAddons.getInstance();
         Minecraft mc = Minecraft.getMinecraft();
@@ -87,7 +94,13 @@ public class MixinPlayerControllerMP {
     /**
      * This blocks interaction with Ember Rods on your island, to avoid blowing up chests.
      */
-    @Inject(method = "processRightClick", at = @At(value = "HEAD"), cancellable = true)
+    @Inject(
+            method = "processRightClick",
+            at = @At(
+                    value = "HEAD"
+            ),
+            cancellable = true
+    )
     public void processRightClick(EntityPlayer player, World worldIn, EnumHand hand, CallbackInfoReturnable<EnumActionResult> cir) {
         Minecraft mc = Minecraft.getMinecraft();
         ItemStack heldItem = player.getHeldItemMainhand();
@@ -113,7 +126,13 @@ public class MixinPlayerControllerMP {
     /**
      * This blocks placing items such as enchanted lava buckets and string.
      */
-    @Inject(method = "processRightClickBlock", at = @At(value = "HEAD"), cancellable = true)
+    @Inject(
+            method = "processRightClickBlock",
+            at = @At(
+                    value = "HEAD"
+            ),
+            cancellable = true
+    )
     public void processRightClickBlock(EntityPlayerSP player, WorldClient worldIn, BlockPos pos, EnumFacing direction, Vec3d vec, EnumHand hand, CallbackInfoReturnable<EnumActionResult> cir) {
         Minecraft mc = Minecraft.getMinecraft();
         ItemStack heldItem = player.getHeldItemMainhand();
@@ -137,7 +156,14 @@ public class MixinPlayerControllerMP {
         }
     }
 
-    @Inject(method = "interactWithEntity", at = @At(value = "HEAD"), locals = LocalCapture.CAPTURE_FAILSOFT, cancellable = true)
+    @Inject(
+            method = "interactWithEntity",
+            at = @At(
+                    value = "HEAD"
+            ),
+            locals = LocalCapture.CAPTURE_FAILSOFT,
+            cancellable = true
+    )
     private void onInteractWithEntity(EntityPlayer player, Entity target, EnumHand hand, CallbackInfoReturnable<EnumActionResult> cir) {
         SkyblockAddons main = SkyblockAddons.getInstance();
 
@@ -146,7 +172,7 @@ public class MixinPlayerControllerMP {
                 ItemStack item = player.inventory.getCurrentItem();
 
                 if (item != null && item.getItem() != null && item.getItem().equals(Items.BOW)) {
-                    if (System.currentTimeMillis()- lastProfileMessage > 20000) {
+                    if (System.currentTimeMillis() - lastProfileMessage > 20000) {
                         lastProfileMessage = System.currentTimeMillis();
                         main.getUtils().sendMessage(ChatFormatting.RED + Message.MESSAGE_STOPPED_OPENING_PROFILE.getMessage());
                     }
@@ -156,4 +182,5 @@ public class MixinPlayerControllerMP {
             }
         }
     }
+
 }

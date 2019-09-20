@@ -19,7 +19,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(RenderManager.class)
 public class MixinRenderManager {
 
-    @Inject(method = "shouldRender", at = @At(value = "HEAD"), cancellable = true)
+    @Inject(
+            method = "shouldRender",
+            at = @At(
+                    value = "HEAD"
+            ),
+            cancellable = true
+    )
     private void shouldRender(Entity entityIn, ICamera camera, double camX, double camY, double camZ, CallbackInfoReturnable<Boolean> cir) {
         SkyblockAddons main = SkyblockAddons.getInstance();
         EnumUtils.Location location = main.getUtils().getLocation();
@@ -52,4 +58,5 @@ public class MixinRenderManager {
             }
         }
     }
+
 }

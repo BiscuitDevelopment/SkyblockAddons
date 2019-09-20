@@ -22,7 +22,12 @@ public class MixinNetHandlerPlayClient {
     /**
      *  These two injections make sure
      */
-    @Inject(method = "handleSetSlot", at = @At(value = "HEAD"), cancellable = true)
+    @Inject(
+            method = "handleSetSlot",
+            at = @At(value = "HEAD"
+            ),
+            cancellable = true
+    )
     private void handleSetSlot(SPacketSetSlot packetIn, CallbackInfo ci) {
         if (packetIn != null) {
             ItemStack item = packetIn.getStack();
@@ -47,7 +52,12 @@ public class MixinNetHandlerPlayClient {
         }
     }
 
-    @Inject(method = "handleWindowItems", at = @At(value = "HEAD"))
+    @Inject(
+            method = "handleWindowItems",
+            at = @At(
+                    value = "HEAD"
+            )
+    )
     private void handleSetSlot(SPacketWindowItems packetIn, CallbackInfo ci) {
         if (packetIn != null) {
             ItemStack[] itemStacks = packetIn.getItemStacks().toArray(new ItemStack[0]);
@@ -82,4 +92,5 @@ public class MixinNetHandlerPlayClient {
         }
         return false;
     }
+
 }

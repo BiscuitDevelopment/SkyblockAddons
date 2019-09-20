@@ -235,7 +235,14 @@ public abstract class MixinGuiChest extends GuiContainer {
 
     private Backpack backpack = null;
 
-    @Redirect(method = "drawGuiContainerBackgroundLayer", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/GlStateManager;color(FFFF)V", ordinal = 0))
+    @Redirect(
+            method = "drawGuiContainerBackgroundLayer",
+            at = @At(
+                    value = "INVOKE",
+                    target = "Lnet/minecraft/client/renderer/GlStateManager;color(FFFF)V",
+                    ordinal = 0
+            )
+    )
     private void color(float colorRed, float colorGreen, float colorBlue, float colorAlpha) { //Item item, ItemStack stack
         SkyblockAddons main = SkyblockAddons.getInstance();
         if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.SHOW_BACKPACK_PREVIEW) &&
@@ -252,12 +259,26 @@ public abstract class MixinGuiChest extends GuiContainer {
         GlStateManager.color(colorRed, colorGreen, colorBlue, colorAlpha);
     }
 
-    @Redirect(method = "drawGuiContainerForegroundLayer", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/FontRenderer;drawString(Ljava/lang/String;III)I", ordinal = 0))
+    @Redirect(
+            method = "drawGuiContainerForegroundLayer",
+            at = @At(
+                    value = "INVOKE",
+                    target = "Lnet/minecraft/client/gui/FontRenderer;drawString(Ljava/lang/String;III)I",
+                    ordinal = 0
+            )
+    )
     private int drawStringTop(int mouseX, int mouseY) { //Item item, ItemStack stack
         return drawBackpackTest(this.lowerChestInventory.getDisplayName().getUnformattedText(), mouseX, mouseY);
     }
 
-    @Redirect(method = "drawGuiContainerForegroundLayer", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/FontRenderer;drawString(Ljava/lang/String;III)I", ordinal = 1))
+    @Redirect(
+            method = "drawGuiContainerForegroundLayer",
+            at = @At(
+                    value = "INVOKE",
+                    target = "Lnet/minecraft/client/gui/FontRenderer;drawString(Ljava/lang/String;III)I",
+                    ordinal = 1
+            )
+    )
     private int drawStringBottom(int mouseX, int mouseY) { //Item item, ItemStack stack
         return drawBackpackTest(this.upperChestInventory.getDisplayName().getUnformattedText(), mouseX, mouseY);
     }

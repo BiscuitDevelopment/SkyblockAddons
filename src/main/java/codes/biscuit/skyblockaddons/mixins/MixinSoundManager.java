@@ -17,7 +17,14 @@ public abstract class MixinSoundManager {
     // Modifying master volume for a single sound is very complex, don't do it.
 
     // This makes sure our warning plays at full volume (only affected by master volume switch).
-    @Redirect(method = "playSound", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/audio/SoundManager;getClampedVolume(Lnet/minecraft/client/audio/ISound;)F", ordinal = 0))
+    @Redirect(
+            method = "playSound",
+            at = @At(
+                    value = "INVOKE",
+                    target = "Lnet/minecraft/client/audio/SoundManager;getClampedVolume(Lnet/minecraft/client/audio/ISound;)F",
+                    ordinal = 0
+            )
+    )
     private float getNormalizedVolumeBypass(SoundManager soundManager, ISound sound) {
         return SkyblockAddons.getInstance().getUtils().isPlayingSound() ? 1 : getClampedVolume(sound);
     }

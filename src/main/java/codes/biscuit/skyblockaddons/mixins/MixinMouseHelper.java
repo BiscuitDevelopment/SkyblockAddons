@@ -12,7 +12,14 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 @Mixin(MouseHelper.class)
 public class MixinMouseHelper {
 
-    @Redirect(method = "ungrabMouseCursor", at = @At(value = "INVOKE", target = "Lorg/lwjgl/input/Mouse;setCursorPosition(II)V", ordinal = 0))
+    @Redirect(
+            method = "ungrabMouseCursor",
+            at = @At(
+                    value = "INVOKE",
+                    target = "Lorg/lwjgl/input/Mouse;setCursorPosition(II)V",
+                    ordinal = 0
+            )
+    )
     public void ungrabMouseCursor() {
         SkyblockAddons main = SkyblockAddons.getInstance();
 

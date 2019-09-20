@@ -52,8 +52,15 @@ public class MixinGuiContainer extends GuiScreen {
     private EnchantPair reforgeToRender = null;
     private Set<EnchantPair> enchantsToRender = new HashSet<>();
 
-    @Inject(method = "drawSlot", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/RenderItem;renderItemOverlayIntoGUI(Lnet/minecraft/client/gui/FontRenderer;Lnet/minecraft/item/ItemStack;IILjava/lang/String;)V",
-            ordinal = 0), locals = LocalCapture.CAPTURE_FAILSOFT)
+    @Inject(
+            method = "drawSlot",
+            at = @At(
+                    value = "INVOKE",
+                    target = "Lnet/minecraft/client/renderer/RenderItem;renderItemOverlayIntoGUI(Lnet/minecraft/client/gui/FontRenderer;Lnet/minecraft/item/ItemStack;IILjava/lang/String;)V",
+                    ordinal = 0
+            ),
+            locals = LocalCapture.CAPTURE_FAILSOFT
+    )
     private void shouldRenderSaveSlots(Slot slotIn, CallbackInfo ci, int x, int y, ItemStack item, boolean flag, boolean flag1,
                                        ItemStack itemstack1, String s) {
         SkyblockAddons main = SkyblockAddons.getInstance();
@@ -125,7 +132,12 @@ public class MixinGuiContainer extends GuiScreen {
         }
     }
 
-    @Inject(method = "drawScreen", at = @At(value = "RETURN"))
+    @Inject(
+            method = "drawScreen",
+            at = @At(
+                    value = "RETURN"
+            )
+    )
     private void drawBackpacks(int mouseX, int mouseY, float partialTicks, CallbackInfo ci) {
         SkyblockAddons main = SkyblockAddons.getInstance();
         Backpack backpack = main.getUtils().getBackpackToRender();
@@ -213,13 +225,26 @@ public class MixinGuiContainer extends GuiScreen {
     }
 
 
-    @Inject(method="drawScreen", at=@At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/OpenGlHelper;setLightmapTextureCoords(IFF)V",
-            ordinal = 0))
+    @Inject(
+            method = "drawScreen",
+            at = @At(
+                    value = "INVOKE",
+                    target = "Lnet/minecraft/client/renderer/OpenGlHelper;setLightmapTextureCoords(IFF)V",
+                    ordinal = 0
+            )
+    )
     private void setLightmapTextureCoords(int mouseX, int mouseY, float partialTicks, CallbackInfo ci) {
         SkyblockAddons.getInstance().getUtils().setLastHoveredSlot(-1);
     }
 
-    @Redirect(method="drawScreen", at=@At(value = "INVOKE", target = "Lnet/minecraft/client/gui/inventory/GuiContainer;drawGradientRect(IIIIII)V", ordinal = 0))
+    @Redirect(
+            method = "drawScreen",
+            at = @At(
+                    value = "INVOKE",
+                    target = "Lnet/minecraft/client/gui/inventory/GuiContainer;drawGradientRect(IIIIII)V",
+                    ordinal = 0
+            )
+    )
     private void drawGradientRect(GuiContainer guiContainer, int left, int top, int right, int bottom, int startColor, int endColor) {
         SkyblockAddons main = SkyblockAddons.getInstance();
         int slotNum = hoveredSlot.slotNumber;
@@ -248,8 +273,16 @@ public class MixinGuiContainer extends GuiScreen {
         }
     }
 
-    @Inject(method = "drawScreen", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/inventory/GuiContainer;drawSlot(Lnet/minecraft/inventory/Slot;)V",
-            ordinal = 0, shift = At.Shift.AFTER), locals = LocalCapture.CAPTURE_FAILSOFT)
+    @Inject(
+            method = "drawScreen",
+            at = @At(
+                    value = "INVOKE",
+                    target = "Lnet/minecraft/client/gui/inventory/GuiContainer;drawSlot(Lnet/minecraft/inventory/Slot;)V",
+                    ordinal = 0,
+                    shift = At.Shift.AFTER
+            ),
+            locals = LocalCapture.CAPTURE_FAILSOFT
+    )
     private void drawSlot(int mouseX, int mouseY, float partialTicks, CallbackInfo ci, int i, int j, int k, int l, int i1, Slot slot) {
         SkyblockAddons main = SkyblockAddons.getInstance();
         if (slot != null && main.getConfigValues().isEnabled(Feature.LOCK_SLOTS) &&
@@ -281,8 +314,17 @@ public class MixinGuiContainer extends GuiScreen {
         }
     }
 
-    @Inject(method = "keyTyped", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/inventory/GuiContainer;checkHotbarKeys(I)Z",
-            ordinal = 0, shift = At.Shift.BEFORE), locals = LocalCapture.CAPTURE_FAILSOFT, cancellable = true)
+    @Inject(
+            method = "keyTyped",
+            at = @At(
+                    value = "INVOKE",
+                    target = "Lnet/minecraft/client/gui/inventory/GuiContainer;checkHotbarKeys(I)Z",
+                    ordinal = 0,
+                    shift = At.Shift.BEFORE
+            ),
+            locals = LocalCapture.CAPTURE_FAILSOFT,
+            cancellable = true
+    )
     private void keyTyped(char typedChar, int keyCode, CallbackInfo ci) {
         SkyblockAddons main = SkyblockAddons.getInstance();
 
@@ -322,4 +364,5 @@ public class MixinGuiContainer extends GuiScreen {
             }
         }
     }
+
 }

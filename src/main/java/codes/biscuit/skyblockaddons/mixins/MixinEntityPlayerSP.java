@@ -22,7 +22,13 @@ public class MixinEntityPlayerSP {
     private Item lastItem = null;
     private long lastDrop = System.currentTimeMillis();
 
-    @Inject(method = "dropItem", at = @At(value = "HEAD"), cancellable = true)
+    @Inject(
+            method = "dropItem",
+            at = @At(
+                    value = "HEAD"
+            ),
+            cancellable = true
+    )
     private void dropItemConfirmation(boolean dropAll, CallbackInfoReturnable<EntityItem> cir) {
         SkyblockAddons main = SkyblockAddons.getInstance();
         ItemStack heldItemStack = Minecraft.getMinecraft().player.getHeldItem(EnumHand.MAIN_HAND);

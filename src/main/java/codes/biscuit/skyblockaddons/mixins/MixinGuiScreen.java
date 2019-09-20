@@ -20,7 +20,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(GuiScreen.class)
 public abstract class MixinGuiScreen {
 
-    @Inject(method = "renderToolTip", at = @At(value = "HEAD"), cancellable = true)
+    @Inject(
+            method = "renderToolTip",
+            at = @At(
+                    value = "HEAD"
+            ),
+            cancellable = true
+    )
     private void shouldRenderRedirect(ItemStack stack, int x, int y, CallbackInfo ci) {
         SkyblockAddons main = SkyblockAddons.getInstance();
         if (stack.getItem().equals(Items.SKULL) && main.getConfigValues().isEnabled(Feature.SHOW_BACKPACK_PREVIEW)) {

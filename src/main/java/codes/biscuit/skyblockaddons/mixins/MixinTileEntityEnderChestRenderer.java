@@ -23,9 +23,14 @@ public abstract class MixinTileEntityEnderChestRenderer extends TileEntitySpecia
 
     private final ResourceLocation GREEN_ENDERCHEST = new ResourceLocation("skyblockaddons", "greenenderchest.png");
 
-    @Redirect(method = "render",
-            at = @At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/tileentity/TileEntityEnderChestRenderer;bindTexture(Lnet/minecraft/util/ResourceLocation;)V",
-    ordinal = 1))
+    @Redirect(
+            method = "render",
+            at = @At(
+                    value = "INVOKE",
+                    target = "Lnet/minecraft/client/renderer/tileentity/TileEntityEnderChestRenderer;bindTexture(Lnet/minecraft/util/ResourceLocation;)V",
+                    ordinal = 1
+            )
+    )
     public void render(TileEntityEnderChest te, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
         SkyblockAddons main = SkyblockAddons.getInstance();
         Minecraft mc = Minecraft.getMinecraft();
