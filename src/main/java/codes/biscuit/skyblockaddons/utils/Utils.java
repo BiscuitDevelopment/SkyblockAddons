@@ -42,10 +42,10 @@ public class Utils {
     private final Pattern STRIP_COLOR_PATTERN = Pattern.compile("(?i)\\u00A7[0-9A-FK-OR]");
 
     private static final List<String> ORDERED_ENCHANTMENTS = Collections.unmodifiableList(Arrays.asList(
+            "smite","bane of arthropods","knockback","fire aspect","venomous", // Sword Bad
             "thorns","growth","protection","depth strider","respiration","aqua affinity", // Armor
             "lure","caster","luck of the sea","blessing","angler","frail","magnet","spiked hook", // Fishing
             "dragon hunter","power","snipe","piercing","aiming","infinite quiver", // Bow Main
-            "smite","bane of arthropods","knockback","fire aspect","venomous", // Sword Bad
             "sharpness","critical","first strike","giant killer","execute","lethality","ender slayer","cubism","impaling", // Sword Damage
             "vampirism","life steal","looting","luck","scavenger","experience","cleave","thunderlord", // Sword Others
             "punch","flame", // Bow Others
