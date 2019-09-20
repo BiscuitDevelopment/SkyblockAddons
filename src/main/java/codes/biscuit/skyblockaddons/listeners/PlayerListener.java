@@ -99,8 +99,10 @@ public class PlayerListener {
     public void onEntityDeath(LivingDeathEvent event) {
         EntityLivingBase entity = event.getEntityLiving();
 
-        if (this.attackedEntity.remove(entity))
+        if (this.attackedEntity.contains(entity)) {
             MinecraftForge.EVENT_BUS.post(new PlayerKillEntityEvent(entity));
+            this.attackedEntity.remove(entity);
+        }
     }
 
     /**
