@@ -85,7 +85,6 @@ public class PlayerListener {
     public void onLivingAttack(LivingAttackEvent event) {
         EntityLivingBase entity = event.getEntityLiving();
         DamageSource damageSource = event.getSource();
-        event.getAmount();
 
         if (damageSource != null) {
             Entity trueSource = damageSource.getTrueSource();
