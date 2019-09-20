@@ -13,7 +13,7 @@ import java.util.*;
 
 public class ConfigValues {
 
-    private static final int CONFIG_VERSION = 6;
+    private static final int CONFIG_VERSION = 7;
     private static final Feature[] GUI_FEATURES = {Feature.SKELETON_BAR, Feature.DEFENCE_ICON, Feature.DEFENCE_TEXT,
             Feature.DEFENCE_PERCENTAGE, Feature.HEALTH_BAR, Feature.HEALTH_TEXT, Feature.MANA_BAR, Feature.MANA_TEXT, Feature.HEALTH_UPDATES,
             Feature.ITEM_PICKUP_LOG, Feature.MAGMA_BOSS_TIMER, Feature.DARK_AUCTION_TIMER};
@@ -197,6 +197,8 @@ public class ConfigValues {
                 }
             } else if (configVersion <= 5) {
                 disabledFeatures.add(Feature.REPLACE_ROMAN_NUMERALS_WITH_NUMBERS);
+            } else if (configVersion <= 6) {
+                disabledFeatures.add(Feature.ORGANIZE_ENCHANTMENTS);
             }
         } else {
             addDefaultsAndSave();
@@ -249,7 +251,8 @@ public class ConfigValues {
         Feature[] toDisable = {Feature.DROP_CONFIRMATION, Feature.MINION_STOP_WARNING, Feature.HIDE_HEALTH_BAR,
             Feature.USE_VANILLA_TEXTURE_DEFENCE, Feature.IGNORE_ITEM_FRAME_CLICKS, Feature.SHOW_BACKPACK_HOLDING_SHIFT,
             Feature.HEALTH_BAR, Feature.DEFENCE_PERCENTAGE, Feature.HIDE_PLAYERS_IN_LOBBY, Feature.SHOW_MAGMA_TIMER_IN_OTHER_GAMES,
-            Feature.SHOW_DARK_AUCTION_TIMER_IN_OTHER_GAMES, Feature.PREVENT_MOVEMENT_ON_DEATH, Feature.REPLACE_ROMAN_NUMERALS_WITH_NUMBERS};
+            Feature.SHOW_DARK_AUCTION_TIMER_IN_OTHER_GAMES, Feature.PREVENT_MOVEMENT_ON_DEATH,
+            Feature.ORGANIZE_ENCHANTMENTS, Feature.REPLACE_ROMAN_NUMERALS_WITH_NUMBERS};
         disabledFeatures.addAll(Arrays.asList(toDisable));
         setAllCoordinatesToDefault();
         saveConfig();
