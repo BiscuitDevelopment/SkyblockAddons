@@ -1,14 +1,14 @@
 {
-  "language": "English",
+  "language": "Norsk",
   "settings": {
     "tab": {
-      "features": "Features",
-      "fixes": "Fixes",
-      "guiFeatures": "GUI Features",
-      "generalSettings": "General Settings"
+      "features": "Funksjoner",
+      "fixes": "Reparasjoner",
+      "guiFeatures": "GUI Funksjoner",
+      "generalSettings": "Generelle Innstillinger"
     },
-    "settings": "Settings",
-    "magmaBossWarning": "Magma Boss Warning",
+    "settings": "Innstillinger",
+    "magmaBossWarning": "Magma Boss Varsel",
     "itemDropConfirmation": "Item Drop Confirmation",
     "hideSkeletonHatBones": "Hide Skeleton Helmet Bones",
     "skeletonHatBonesBar": "Skeleton Helmet Bones Bar",
