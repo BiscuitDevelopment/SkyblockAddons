@@ -23,10 +23,10 @@ public enum ConfigColor {
     YELLOW(ChatFormatting.YELLOW, 255,255,85),
     WHITE(ChatFormatting.WHITE, 255,255,255);
 
-    private ChatFormatting chatFormatting;
-    private int r;
-    private int g;
-    private int b;
+    private final ChatFormatting chatFormatting;
+    private final int r;
+    private final int g;
+    private final int b;
 
     ConfigColor(ChatFormatting chatFormatting, int r, int g, int b) {
         this.chatFormatting = chatFormatting;
@@ -39,12 +39,20 @@ public enum ConfigColor {
         return chatFormatting;
     }
 
-    /**
-     *
-     * @param alpha Alpha value from 0 to 255
-     */
-    public int getColor(float alpha) {
-        return new Color(r,g,b,(int)alpha).getRGB();
+    public Color getColor() {
+        return this.getColor(255);
+    }
+
+    public Color getColor(float alpha) {
+        return new Color(r, g, b,(int)alpha);
+    }
+
+    public int getRGB() {
+        return this.getColor().getRGB();
+    }
+
+    public int getRGB(float alpha) {
+        return this.getColor(alpha).getRGB();
     }
 
     public int getR() {
