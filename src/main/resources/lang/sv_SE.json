@@ -55,7 +55,7 @@
     "makeEnderchestsInEndGreen": "Gör Enderkistor i Slutet Gröna",
     "changeColor": "Ändra Färg",
     "showInOtherGames": "Visa i Andra Spel",
-    "useVanillaTexture": "Använd Ursprungliga Texturen",
+    "useVanillaTexture": "Använd VanligaTexturen",
     "textStyle": "Textstil",
     "textStyles": {
       "one": "Stil Ett",
@@ -64,7 +64,7 @@
     "warningDuration": "Varningstid",
     "dontOpenProfileWithBow": "Öppna inte profiler med pilbåge",
     "stopDroppingSellingRareItems": "Undvik att slänga/sälja sällsynta saker",
-    "makeBackpackInventoriesColored": "Färglägg Lager",
+    "makeBackpackInventoriesColored": "Färglägg Föråd",
     "avoidBreakingBottomSugarCane": "Undvik att förstöra botten av sockerrör",
     "replaceRomanNumeralsWithNumbers": "Ersätt romanska siffror på saker"
   },
