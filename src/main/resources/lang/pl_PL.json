@@ -2,7 +2,7 @@
   "language": "Polski",
   "settings": {
     "tab": {
-      "features": "Cechy",
+      "features": "Funkcje",
       "fixes": "Naprawy błędów",
       "guiFeatures": "Opcje interfejsu",
       "generalSettings": "Ustawienia ogólne"
@@ -51,7 +51,7 @@
     "showItemAnvilUses": "Pokaż Liczbę Użyć Kowadła na Przedmiocie",
     "lockSlots": "Zezwól na blokowanie slotów",
     "dontResetCursorInventory": "Nie resetuj kursora pomiędzy ekwipunkami",
-    "summoningEyeAlert": "Alarm o przywoływaniu oczu Bossa",
+    "summoningEyeAlert": "Alarm o oku przywołującym",
     "makeEnderchestsInEndGreen": "Uczyń Skrzynie Endu zielone w Endzie",
     "changeColor": "Zmień kolor",
     "showInOtherGames": "Pokaż w Innych Grach",
