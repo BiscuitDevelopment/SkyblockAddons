@@ -62,8 +62,8 @@
       "two": "Stíl a Dhó"
     },
     "warningDuration": "Fad Rabhadh",
-    "dontOpenProfileWithBow": "Ná oscail Prófíl le Bogha",
-    "stopDroppingSellingRareItems": "Cosc ag Leag/Díol Mír Anamh",
+    "dontOpenProfileWithBow": "Ná oscail Próifíl le Bogha",
+    "stopDroppingSellingRareItems": "Cosc ag Leag/Díol Mír Annamh",
     "makeBackpackInventoriesColored": "Dath Fardal",
     "avoidBreakingBottomSugarCane": "Ná briseadh an Cána Siúcra ag an mBun",
     "replaceRomanNumeralsWithNumbers": "Athchuir Uimhir Rómhánach ar mír"
@@ -72,15 +72,15 @@
     "dropConfirmation": "Leag síos an mír seo arís le cinntiú!",
     "magmaBossWarning": "Saoiste Ciúb Magma!",
     "fullInventory": "Fardal Lán!",
-    "newVersion": "Tá leagan nua, %newestVersion% infhaighte. Ioslódáil é ag brú anseo.",
-    "discord": "Ar mhaith leat na athrúchán a fheicáil? Brúigh anseo chun bheith pairt do mo discord.",
-    "developmentVersion": "Tá tú ag usáid leagan forbairte: %version%. Tá an leagan is deánaí ná %newestVersion%",
-    "labymod": "Úsáideoir Labymod: Níl tú in ann na barraí Bia, Cosainte agus Sláinte a folaigh.",
+    "newVersion": "Tá leagan nua, %newestVersion% infhaighte. Íoslódáil é ag brú anseo.",
+    "discord": "Ar mhaith leat na athrúchán a feiceáil? Brúigh anseo chun bheith páirteach i mo discord.",
+    "developmentVersion": "Tá tú ag úsáid leagan forbartha: %version%. Tá an leagan is déanaí ná %newestVersion%",
+    "labymod": "Úsáideoir Labymod: Níl tú in ann na barraí Bia, Cosaint agus Sláinte a folaigh.",
     "minionCannotReach": "Níl an %type% giolla in ann réim agus tá cosc ar ag sceathrach!",
     "minionIsFull": "Tá giolla ar do oileán lán!",
     "typeEnchantmentsHere": "Cuir Isteach %type% Anseo!",
     "separateMultiple": "Scar Iolrach le Camóga.",
-    "enchantsToMatch": "%type% Le Maitseál:",
+    "enchantsToMatch": "%type% Le Meaitseáil:",
     "enchantsToExclude": "%type% Le Eisiaigh:",
     "inventoryTypes": {
       "enchants": "Draíocht",
@@ -88,10 +88,10 @@
     },
     "slotLocked": "Tá an Sliotán seo faoi ghlas!",
     "summoningEyeFound": "Súil Seirbheáil!",
-    "cancelledStemBreak": "Chur SkyblockAddons cosc ort an gas seo a briseadh. Usáid to lámh má tá tú ag iarraidh é a briseadh.",
-    "cancelledCaneBreak": "Chur SkyblockAddons cosc ort an píosa cána siúcra seo a briseadh. Usáid uirlis eile má tá tú ag iarraidh é a briseadh.",
-    "cancelledProfileOpening": "Chur SkyblockAddons cosc ort ag oscailt an profíl seo fad is atá bogha i do lámh.",
-    "cancelledDropping": "Chur SkyblockAddons cosc or an mír anamh seo a leag síos ó do hotbar.",
-    "clickMoreTimes": "Cliceál/leag síos an mír seo %times% uaireanta eile má tá tú cinnte faoi seo."
+    "cancelledStemBreak": "Chur SkyblockAddons cosc ort an gas seo a briseadh. Úsáid to lámh má tá tú ag iarraidh é a briseadh.",
+    "cancelledCaneBreak": "Chur SkyblockAddons cosc ort an píosa cána siúcra seo a briseadh. Úsáid uirlis eile má tá tú ag iarraidh é a briseadh.",
+    "cancelledProfileOpening": "Chur SkyblockAddons cosc ort ag oscailt an próifíl seo fad is atá bogha i do lámh.",
+    "cancelledDropping": "Chur SkyblockAddons cosc or an mír annamh seo a leag síos ó do hotbar.",
+    "clickMoreTimes": "Cliceáil/leag síos an mír seo %times% uaireanta eile má tá tú cinnte faoi seo."
   }
 }
