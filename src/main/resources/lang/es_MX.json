@@ -4,8 +4,8 @@
     "tab": {
       "features": "Características",
       "fixes": "Arreglos",
-      "guiFeatures": "Características de Menú",
-      "generalSettings": "Configuraciones Generales"
+      "guiFeatures": "Menú",
+      "generalSettings": "Configuración General"
     },
     "settings": "Opciones",
     "magmaBossWarning": "Alerta de Boss de Magma",
