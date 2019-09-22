@@ -173,6 +173,8 @@ public class LocationEditGui extends GuiScreen {
     @Override
     public void onGuiClosed() {
         main.getConfigValues().saveConfig();
-        main.getRenderListener().setGuiToOpen(PlayerListener.GUIType.MAIN, lastPage, lastTab);
+        if (lastTab != null) {
+            main.getRenderListener().setGuiToOpen(PlayerListener.GUIType.MAIN, lastPage, lastTab);
+        }
     }
 }
