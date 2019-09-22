@@ -12,7 +12,7 @@
     "itemDropConfirmation": "Item Drop Confirmation",
     "hideSkeletonHatBones": "Skjul Bein Fra Skjelett-Hjelmer",
     "skeletonHatBonesBar": "Skeleton Helmet Bones Bar",
-    "hideFoodAndArmor": "Hide Food & Armor Bar",
+    "hideFoodAndArmor": "Skjul Mat & Beskyttelses Bar",
     "fullInventoryWarning": "Full Inventar Varsel",
     "disableEmberRodAbility": "Disable Island Ember Rod",
     "editLocations": "Edit GUI Locations",
@@ -34,7 +34,7 @@
     "showOnlyWhenHoldingShift": "Show Only When Holding Shift",
     "manaBar": "Mana Bar",
     "manaText": "Mana Number",
-    "healthBar": "Health Bar",
+    "healthBar": "Livs Bar",
     "healthText": "Health Number",
     "defenceIcon": "Defence Symbol",
     "defenceText": "Defence Number",
@@ -66,15 +66,15 @@
     "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Items",
     "makeBackpackInventoriesColored": "Color Inventories",
     "avoidBreakingBottomSugarCane": "Avoid Breaking Bottom Sugar Cane",
-    "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Items"
+    "replaceRomanNumeralsWithNumbers": "Bytt Ut Romertall på Gjenstander"
   },
   "messages": {
-    "dropConfirmation": "Drop this item again to confirm!",
+    "dropConfirmation": "Slipp denne gjenstanden igjen for å bekrefte!",
     "magmaBossWarning": "Magma Cube Boss!",
-    "fullInventory": "Full Inventory!",
-    "newVersion": "A new version, %newestVersion% is available. Download it by clicking here.",
-    "discord": "Want to view the changes? Click here to join my discord.",
-    "developmentVersion": "You are running a development version: %version%. The latest online version is %newestVersion%",
+    "fullInventory": "Full inventar!",
+    "newVersion": "En ny versjon, %newestVersion% er tilgjengelig. Last den ned ved å klikke her.",
+    "discord": "Vil du se endringene? Klikk her for å bli med i min Discord.",
+    "developmentVersion": "Du bruker en utviklings versjon: %version%. Den nyeste fullstendige versjonen er %newestVersion%",
     "labymod": "Labymod Users: Hide Food, Armor, and Health Bar, is incompatible.",
     "minionCannotReach": "A %type% minion cannot reach and has stopped spawning!",
     "minionIsFull": "A minion on your island is full!",
@@ -92,6 +92,6 @@
     "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use your another tool if you'd actually like to break it.",
     "cancelledProfileOpening": "SkyblockAddons has stopped you from opening this player's profile while holding a bow.",
     "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare item or tool from your hotbar.",
-    "clickMoreTimes": "Click/drop this item %times% more times if you really want to do this."
+    "clickMoreTimes": "Klikk/slipp denne gjenstanden %times% flere ganger hvis du virkelig vil gjøre dette."
   }
 }
