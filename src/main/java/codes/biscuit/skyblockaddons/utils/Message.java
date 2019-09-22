@@ -170,7 +170,7 @@ public enum Message {
             }
         } catch (NullPointerException ex) { // In case I messed up some translation or something.
             ex.printStackTrace();
-            text = "";
+            text = memberName;
         }
         return text;
     }
