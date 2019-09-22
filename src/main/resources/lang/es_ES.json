@@ -88,8 +88,8 @@
     },
     "slotLocked": "¡Esta ranura está bloqueada!",
     "summoningEyeFound": "Ojo de Invocación!",
-    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this stem. Use your bare hand if you'd like to actually break it.",
-    "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use your another tool if you'd actually like to break it.",
+    "cancelledStemBreak": "SkyblockAddons te ha impedido romper este tallo. Usa tu mano si quieres romperlo.",
+    "cancelledCaneBreak": "SkyblockAddons te ha impedido romper este bloque de caña de azúcar. Usa tu otra herramienta si realmente quieres romperlo.",
     "cancelledProfileOpening": "SkyblockAddons te ha impedido abrir el perfil de este jugador mientras mantienes un arco.",
     "cancelledDropping": "SkyblockAddons te ha impedido que soltaras este objeto o herramienta rara de tu hotbar.",
     "clickMoreTimes": "Haga clic/soltar este objeto %times% veces más si realmente quieres hacer esto."
