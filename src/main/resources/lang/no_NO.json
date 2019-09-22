@@ -75,23 +75,23 @@
     "newVersion": "En ny versjon, %newestVersion% er tilgjengelig. Last den ned ved å klikke her.",
     "discord": "Vil du se endringene? Klikk her for å bli med i min Discord.",
     "developmentVersion": "Du bruker en utviklings versjon: %version%. Den nyeste fullstendige versjonen er %newestVersion%",
-    "labymod": "Labymod Users: Hide Food, Armor, and Health Bar, is incompatible.",
+    "labymod": "Labymod Brukere: Kan ikke Skjule Sult, Rustning, og Livs Bar.",
     "minionCannotReach": "A %type% minion cannot reach and has stopped spawning!",
     "minionIsFull": "A minion on your island is full!",
     "typeEnchantmentsHere": "Type %type% Here!",
-    "separateMultiple": "Separate Multiple With Commas.",
-    "enchantsToMatch": "%type% To Match:",
-    "enchantsToExclude": "%type% To Exclude:",
+    "separateMultiple": "Skill Mellom Flere Ledd Med Komma.",
+    "enchantsToMatch": "%type% Å Matche:",
+    "enchantsToExclude": "%type% Å Ekskludere:",
     "inventoryTypes": {
       "enchants": "Enchants",
       "reforges": "Reforges"
     },
-    "slotLocked": "This slot is locked!",
+    "slotLocked": "Denne ruten er låst!",
     "summoningEyeFound": "Summoning Eye!",
-    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this stem. Use your bare hand if you'd like to actually break it.",
-    "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use your another tool if you'd actually like to break it.",
-    "cancelledProfileOpening": "SkyblockAddons has stopped you from opening this player's profile while holding a bow.",
-    "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare item or tool from your hotbar.",
+    "cancelledStemBreak": "SkyblockAddons har stoppet deg fra å ødelegge denne stilken. Bruk hånden din hvis du vil ødelegge den.",
+    "cancelledCaneBreak": "SkyblockAddons har stoppet deg fra å ødelegge denne blokken av Sugar Cane. Bruk et annet redskap hvis du vil ødelegge den.",
+    "cancelledProfileOpening": "SkyblockAddons har stoppet deg fra å åpne denne spillerens profil siden du holder en bue.",
+    "cancelledDropping": "SkyblockAddons har stoppet deg fra å slippe denne sjeldne gjenstanden/redskap fra din hotbar.",
     "clickMoreTimes": "Klikk/slipp denne gjenstanden %times% flere ganger hvis du virkelig vil gjøre dette."
   }
 }
