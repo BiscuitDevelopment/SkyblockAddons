@@ -74,7 +74,7 @@ public class SkyblockAddonsGui extends GuiScreen {
                     Feature.REPLACE_ROMAN_NUMERALS_WITH_NUMBERS, Feature.DROP_CONFIRMATION};
         } else if (tab == EnumUtils.SkyblockAddonsGuiTab.FIXES) {
             array = new Feature[]{Feature.HIDE_BONES, Feature.DISABLE_EMBER_ROD, Feature.HIDE_AUCTION_HOUSE_PLAYERS,
-                    Feature.STOP_BOW_CHARGE_FROM_RESETTING, Feature.AVOID_PLACING_ENCHANTED_ITEMS, Feature.PREVENT_MOVEMENT_ON_DEATH};
+                    Feature.STOP_BOW_CHARGE_FROM_RESETTING, Feature.AVOID_PLACING_ENCHANTED_ITEMS, Feature.PREVENT_MOVEMENT_ON_DEATH, Feature.AVOID_BLINKING_NIGHT_VISION};
         } else if (tab == EnumUtils.SkyblockAddonsGuiTab.GUI_FEATURES) {
             array = new Feature[]{Feature.MAGMA_BOSS_TIMER, Feature.MANA_BAR, Feature.MANA_TEXT, Feature.DEFENCE_TEXT, Feature.DEFENCE_PERCENTAGE,
                     Feature.HEALTH_BAR, Feature.HEALTH_TEXT, Feature.DEFENCE_ICON, Feature.SKELETON_BAR, Feature.HEALTH_UPDATES,
