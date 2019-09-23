@@ -55,6 +55,7 @@ public class PlayerListener {
     private long lastMinionSound = -1;
     private Integer healthUpdate = null;
     private long lastHealthUpdate;
+    private long lastFishingAlert = 0;
     private long lastBobberEnteredWater = Long.MAX_VALUE;
     private boolean oldBobberIsInWater = false;
     private double oldBobberPosY = 0;
@@ -632,12 +633,17 @@ public class PlayerListener {
             // Highly consistent detection by checking when the hook has been in the water for a while and
             // suddenly moves downward. The client may rarely bug out with the idle bobbing and trigger a false positive.
             EntityFishHook bobber = mc.thePlayer.fishEntity;
-            if (bobber.isInWater() && !oldBobberIsInWater) lastBobberEnteredWater = System.currentTimeMillis();
+            long currentTime = System.currentTimeMillis();
+            if (bobber.isInWater() && !oldBobberIsInWater) lastBobberEnteredWater = currentTime;
             oldBobberIsInWater = bobber.isInWater();
             if (bobber.isInWater() && Math.abs(bobber.motionX) < 0.01 && Math.abs(bobber.motionZ) < 0.01
-                    && System.currentTimeMillis() - lastBobberEnteredWater > 1500) {
-                double movement = bobber.posY - oldBobberPosY;
+                    && currentTime - lastFishingAlert > 1000 && currentTime - lastBobberEnteredWater > 1500) {
+                double movement = bobber.posY - oldBobberPosY; // The Entity#motionY field is inaccurate for this purpose
                 oldBobberPosY = bobber.posY;
+                if (movement < -0.04d){
+                    lastFishingAlert = currentTime;
+                    return true;
+                }
                 return movement < -0.03d;
             }
         }
