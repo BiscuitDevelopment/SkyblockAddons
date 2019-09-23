@@ -25,13 +25,13 @@
     "backpackStyle": "Ryggsekk stil %style%",
     "backpackStyles": {
       "regular": "Vanlig",
-      "compact": "Compact"
+      "compact": "Kompakt"
     },
     "showBackpackPreview": "Show Backpack Preview",
-    "hideHealthBar": "Hide Vanilla Health Bar",
+    "hideHealthBar": "Skjul Vanilla helse bar",
     "fullMinionWarning": "Full Minion Warning",
-    "ignoreItemFrameClicks": "Ignore Clicks On Item Frames",
-    "showOnlyWhenHoldingShift": "Show Only When Holding Shift",
+    "ignoreItemFrameClicks": "Ignorer trykk på rammer",
+    "showOnlyWhenHoldingShift": "Vis kun mens du holder shift",
     "manaBar": "Mana Bar",
     "manaText": "Mana Number",
     "healthBar": "Livs Bar",
