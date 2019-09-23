@@ -197,6 +197,7 @@ public class ConfigValues {
                 }
             } else if (configVersion <= 5) {
                 disabledFeatures.add(Feature.REPLACE_ROMAN_NUMERALS_WITH_NUMBERS);
+            }
         } else {
             addDefaultsAndSave();
         }
