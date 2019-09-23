@@ -21,10 +21,10 @@
     "hideDurability": "Skjul Redskaps Varighet",
     "showEnchantmentsReforges": "Enchants & Reforges",
     "minionStopWarning": "\"Minion Cannot Reach\" Warning",
-    "hideAuctionHousePlayers": "Hide Players Near Auction House",
-    "backpackStyle": "Backpack Style: %style%",
+    "hideAuctionHousePlayers": "Skjul spillere nær aksjonshuset",
+    "backpackStyle": "Ryggsekk stil %style%",
     "backpackStyles": {
-      "regular": "Regular",
+      "regular": "Vanlig",
       "compact": "Compact"
     },
     "showBackpackPreview": "Show Backpack Preview",
