@@ -219,6 +219,7 @@ public class EnumUtils {
     public enum SkyblockNPC {
         AUCTION_MASTER(17.5,71,-78.5, Location.VILLAGE, Location.AUCTION_HOUSE),
         BANKER(20.5,71,-40.5, Location.VILLAGE, Location.BANK),
+        BAKER(34.5, 71, -44.5, Location.VILLAGE),
         LOBBY_SELECTOR(-9,70,-79, Location.VILLAGE),
         SIRIUS(91.5,75,176.5, Location.WILDERNESS);
 
