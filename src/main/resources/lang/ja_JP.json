@@ -38,7 +38,7 @@
     "healthText": "体力数",
     "defenceIcon": "ディフェンスマーク",
     "defenceText": "ディフェンス数",
-    "defencePercentage": "ディフェンスのパーセンテージ",
+    "defencePercentage": "ダメージの軽減率",
     "healthUpdates": "体力の変動を表示",
     "hidePlayersInLobby": "ロビーで遠くにいる人を非表示",
     "darkAuctionTimer": "ダークオークションタイマー",
