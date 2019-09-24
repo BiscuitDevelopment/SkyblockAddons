@@ -496,6 +496,16 @@ public class PlayerListener {
         }
 
         if (e.toolTip != null && e.toolTip.size() > 0 && main.getUtils().isOnSkyblock()) {
+
+            if (!hoveredItem.getItem().equals(Items.enchanted_book)) {
+                // Clean buggy enchantments at the top of armor tooltip. No check for actual armor because of custom helmets
+                while(true) {
+                    String tip = e.toolTip.get(1);
+                    if (tip.contains("Respiration") || tip.contains("Aqua Affinity") || tip.contains("Depth Strider")) {
+                        e.toolTip.remove(tip);
+                    } else break;
+                }
+            }
             if (main.getConfigValues().isEnabled(Feature.SHOW_ITEM_ANVIL_USES)) {
                 // Anvil Uses ~ original done by Dahn#6036
                 if (hoveredItem.hasTagCompound()) {
