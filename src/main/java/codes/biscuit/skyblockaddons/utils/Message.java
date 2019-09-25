@@ -65,6 +65,7 @@ public enum Message {
     SETTING_MAKE_BACKPACK_INVENTORIES_COLORED(MessageObject.SETTING, "makeBackpackInventoriesColored"),
     SETTING_AVOID_BREAKING_BOTTOM_SUGAR_CANE(MessageObject.SETTING, "avoidBreakingBottomSugarCane"),
     SETTING_REPLACE_ROMAN_NUMERALS_WITH_NUMBERS(MessageObject.SETTING, "replaceRomanNumeralsWithNumbers"),
+    SETTING_DISABLE_MINION_LOCATION_WARNING(MessageObject.SETTING, "disableMinionLocationWarning"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.STYLE, "compact"),

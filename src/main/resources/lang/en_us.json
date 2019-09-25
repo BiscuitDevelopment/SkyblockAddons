@@ -66,7 +66,8 @@
     "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Items",
     "makeBackpackInventoriesColored": "Color Inventories",
     "avoidBreakingBottomSugarCane": "Avoid Breaking Bottom Sugar Cane",
-    "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Items"
+    "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Items",
+    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings"
   },
   "messages": {
     "dropConfirmation": "Drop this item again to confirm!",
