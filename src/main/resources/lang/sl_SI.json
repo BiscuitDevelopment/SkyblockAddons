@@ -62,15 +62,15 @@
       "two": "Style Two"
     },
     "warningDuration": "Warning Duration",
-    "dontOpenProfileWithBow": "Don't Open Profile With Bow",
+    "dontOpenProfileWithBow": "Ne Odpri Profila z Lokom",
     "stopDroppingSellingRareItems": "Prenehajte Odvreči/Prodati redkih stvari",
     "makeBackpackInventoriesColored": "Barvne shrambe",
     "avoidBreakingBottomSugarCane": "Preprečite uničenje spodnjega dela sladkornega trsa",
     "replaceRomanNumeralsWithNumbers": "Zamenjajte Rimske številke z navadnimi"
   },
   "messages": {
-    "dropConfirmation": "Drop this item again to confirm!",
-    "magmaBossWarning": "Magma Cube Boss!",
+    "dropConfirmation": "Ponovno izpusti stvar za potrditev!",
+    "magmaBossWarning": "Magma Cube Šef!",
     "fullInventory": "Polna shramba!",
     "newVersion": "Nova verzija, %newestVersion% je navoljo. naložite jo tako da kliknete tukaj.",
     "discord": "Želite videti spremembe? Kliknite tokuaj da se pridružite mojemu discordu.",
@@ -84,7 +84,7 @@
     "enchantsToExclude": "%type% za odšteti:",
     "inventoryTypes": {
       "enchants": "Začarano",
-      "reforges": "Reforges"
+      "reforges": "Reforge-i"
     },
     "slotLocked": "Ta prostor je zaklenjen!",
     "summoningEyeFound": "Priklicevalno oko!",
