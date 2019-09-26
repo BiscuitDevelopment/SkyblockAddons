@@ -21,7 +21,7 @@
     "hideDurability": "Sakrij Trajnost Alata",
     "showEnchantmentsReforges": "Èarolije i Reforge-ovi",
     "minionStopWarning": "\"Minion Ne Može Dohvatiti\" Upozorenje",
-    "hideAuctionHousePlayers": "Sakrij Igraèe Blizu Dražbavaonice",
+    "hideAuctionHousePlayers": "Hide Players Near Important NPCs",
     "backpackStyle": "Stil Ruksaka: %style%",
     "backpackStyles": {
       "regular": "Regularne",
@@ -89,7 +89,7 @@
     "slotLocked": "Ovaj Slot je Zaključan!",
     "summoningEyeFound": "Evokacijsko Oko!",
     "cancelledStemBreak": "SkyblockAddons te zaustavio od rušenja ove stabljike. Koristi svoju ruku ako je želiš slomiti.",
-    "cancelledCaneBreak": "SkyblockAddons te zaustavio od rušenja ovog bloka šećerne trske. Koristi drugi alat ako to želiš slomiti.",
+    "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use another tool if you'd actually like to break it.",
     "cancelledProfileOpening": "SkyblockAddons te zaustavio od otvaranja profila ovog igrača dok držiš luk.",
     "cancelledDropping": "SkyblockAddons te zaustavio od bacanje ove rijetke stvari ili alata od tvojeg hotbara.",
     "clickMoreTimes": "Klikni/dropaj ovu stvar %times% više puta ako zapravo želiš ovo napraviti."
