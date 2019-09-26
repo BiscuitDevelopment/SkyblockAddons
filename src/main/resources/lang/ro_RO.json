@@ -21,7 +21,7 @@
     "hideDurability": "Ascunde Durabilitatea Uneltelor",
     "showEnchantmentsReforges": "Refauriri și enchanturi",
     "minionStopWarning": "\"Minionul nu ajunge\" Avertisment",
-    "hideAuctionHousePlayers": "Hide Players Near Important NPCs",
+    "hideAuctionHousePlayers": "Ascunde jucătorii din apropierea NPC-urilor importante",
     "backpackStyle": "Stilul Backpackului: %style%",
     "backpackStyles": {
       "regular": "Obișnuit",
@@ -89,7 +89,7 @@
     "slotLocked": "Acest slot este blocat!",
     "summoningEyeFound": "Summoning Eye!",
     "cancelledStemBreak": "Modul SkyblockAddons te-a oprit din a sparge block-ul. Folosește mana libera dacă ești sigur că vrei sa spargi.",
-    "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use another tool if you'd actually like to break it.",
+    "cancelledCaneBreak": "SkyblockAddons te-a oprit din spargerea acestei trestiei de zahar. Te rog folosește altă unealtă dacă vrei să o spargi.",
     "cancelledProfileOpening": "Modul SkyblockAddons te-a oprit sa deschizi profilul jucătorului in timp ce utilizezi un arc.",
     "cancelledDropping": "Modul SkyblockAddons te-a oprit să arunci acest item sau unealtă rară din inventar.",
     "clickMoreTimes": "Aruncă acest item de încă %times% dacă vrei să faci asta."
