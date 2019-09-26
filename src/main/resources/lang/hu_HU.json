@@ -21,7 +21,7 @@
     "hideDurability": "Eszköz viseltéségének elrejtése",
     "showEnchantmentsReforges": "Enchantok & Reforgok",
     "minionStopWarning": "\"A minion nem ér el valamit\" figyelmeztetés",
-    "hideAuctionHousePlayers": "Játékosok elrejtése az aukciósház körül",
+    "hideAuctionHousePlayers": "Hide Players Near Important NPCs",
     "backpackStyle": "Hátizsák stílus: %style%",
     "backpackStyles": {
       "regular": "Normál",
@@ -89,7 +89,7 @@
     "slotLocked": "A slot le van zárva!",
     "summoningEyeFound": "Summoning Eye!",
     "cancelledStemBreak": "A SkyblockAddons megállította, hogy kiüsd a növény szárát. Használd az öklöd, ha ki szeretnéd ütni.",
-    "cancelledCaneBreak": "A SkyblockAddons megállította, hogy kiüsd ezt a cukornád blokkot. Használj egy másik eszközt, ha ki szeretnéd ütni.",
+    "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use another tool if you'd actually like to break it.",
     "cancelledProfileOpening": "A SkyblockAddons megállította, hogy megnyisd ennek a játékosnak a profilját, amíg íj van a kezedben.",
     "cancelledDropping": "A SkyblockAddons megállította, hogy eldobd ezt a rare tárgyat vagy eszközt.",
     "clickMoreTimes": "Kattints/dobd el ezt a tárgyat még %times% alkalommal, ha tényleg ezt szeretnéd."
