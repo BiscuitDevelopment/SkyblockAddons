@@ -21,7 +21,7 @@
     "hideDurability": "Eşyaların Dayanıklılığını Sakla",
     "showEnchantmentsReforges": "Büyü ve Reforge'lar",
     "minionStopWarning": "\"Minyon Erişemiyor\" Uyarısı",
-    "hideAuctionHousePlayers": "Açık Arttırma Evindeki Oyuncuları Gizle",
+    "hideAuctionHousePlayers": "Hide Players Near Important NPCs",
     "backpackStyle": "Sırt Çantası Tipi: %style%",
     "backpackStyles": {
       "regular": "Sıradan",
@@ -89,7 +89,7 @@
     "slotLocked": "Bu slot kilitli!",
     "summoningEyeFound": "Çağırma Gözü!",
     "cancelledStemBreak": "SkyblockAddons sizi bu kökü kırmanızı engelledi. Gerçekten kırmak istiyorsanız çıplak elinizi kullanın.",
-    "cancelledCaneBreak": "SkyblockAddons sizi şeker kamışının altını kırmanızı engelledi. Gerçekten kırmak istiyorsanız başka bir eşya kullanın.",
+    "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use another tool if you'd actually like to break it.",
     "cancelledProfileOpening": "SkyblockAddons yay ile oyuncu profili açmanızı engelledi.",
     "cancelledDropping": "SkyblockAddons değerli eşyanızı yere atmanızı engelledi.",
     "clickMoreTimes": "Eğer gerçekten eşyayı yere atmak istiyorsanız %times% kez eşyaya tıklayın."
