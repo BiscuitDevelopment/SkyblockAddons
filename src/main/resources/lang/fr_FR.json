@@ -21,7 +21,7 @@
     "hideDurability": "Masquer la durabilité des outils",
     "showEnchantmentsReforges": "Enchantements & Reforges",
     "minionStopWarning": "Alerte minion à l'arrêt",
-    "hideAuctionHousePlayers": "Masquer les joueurs près de l'HDV",
+    "hideAuctionHousePlayers": "Hide Players Near Important NPCs",
     "backpackStyle": "Affichage du sac à dos: %style%",
     "backpackStyles": {
       "regular": "Normal",
@@ -89,7 +89,7 @@
     "slotLocked": "Cet emplacement est bloqué!",
     "summoningEyeFound": "Œil d'invocation!",
     "cancelledStemBreak": "SkyblockAddons vous a empêché de casser cette graine. Utilisez votre main si vous souhaitez la casser.",
-    "cancelledCaneBreak": "SkyblockAddons vous a empêché de casser ce bloc de canne à sucre. Utiliser un autre outil si vous souhaitez le casser.",
+    "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use another tool if you'd actually like to break it.",
     "cancelledProfileOpening": "SkyblockAddons vous a empêché d'ouvrir le profil de ce joueur en utilisant un arc.",
     "cancelledDropping": "SkyblockAddons vous a empêché de jeter cet objet ou outil rare de votre barre d'action.",
     "clickMoreTimes": "Cliquez/jetez cet objet encore %times% fois si vous le souhaitez."
