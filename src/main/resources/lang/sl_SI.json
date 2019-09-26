@@ -21,7 +21,7 @@
     "hideDurability": "Skrij Trpežnost Orodja",
     "showEnchantmentsReforges": "Enchanti & Reforgi",
     "minionStopWarning": "\"Minion Ne Doseže\" Opozorilo",
-    "hideAuctionHousePlayers": "Skrij Igralce Blizu Dražbene Hiše",
+    "hideAuctionHousePlayers": "Hide Players Near Important NPCs",
     "backpackStyle": "Stil Nahrbtnika: %style%",
     "backpackStyles": {
       "regular": "Navaden",
@@ -89,7 +89,7 @@
     "slotLocked": "Ta prostor je zaklenjen!",
     "summoningEyeFound": "Summoning oko!",
     "cancelledStemBreak": "SkyblockAddons vam je preprečil uničiti to sadiko. Uporabite gole roke, če jo želite uničiti.",
-    "cancelledCaneBreak": "SkyblockAddons vam je preprečil uničiti to kocko sladkornega trsa. Uporabite drugo orodje, če jo resnično želite uničiti.",
+    "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use another tool if you'd actually like to break it.",
     "cancelledProfileOpening": "SkyblockAddons vam je preprečil odpiranje profila tega igralca medtem, ko držite lok.",
     "cancelledDropping": "SkyblockAddons vam je preprečil izpust te redke stvari iz svojega hotbarja.",
     "clickMoreTimes": "Kliknite/izpustite to stvar še %times% -krat, če to res želite storiti."
