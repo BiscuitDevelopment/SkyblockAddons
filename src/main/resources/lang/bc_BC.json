@@ -21,7 +21,7 @@
     "hideDurability": "Hide How Many Biscuits are Left",
     "showEnchantmentsReforges": "Bischants & Bisforges",
     "minionStopWarning": "\"Biscuits Cannot Bake\" Warning",
-    "hideAuctionHousePlayers": "Hide Biscuits Near Bakery",
+    "hideAuctionHousePlayers": "Hide Players Near Important NPCs",
     "backpackStyle": "Biscuit Style: %style%",
     "backpackStyles": {
       "regular": "Biscuitar",
@@ -89,7 +89,7 @@
     "slotLocked": "This slot is locked!",
     "summoningEyeFound": "Summoning Eye!",
     "cancelledStemBreak": "The biscuit gods have stopped you from eating this biscuit. Use your hands if you'd like to eat it.",
-    "cancelledCaneBreak": "The biscuit gods have stopped you from eating this biscuit. Use your hands if you'd like to eat it.",
+    "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use another tool if you'd actually like to break it.",
     "cancelledProfileOpening": "SkyblockAddons has stopped you from opening this player's profile while holding a bow.",
     "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare item or tool from your hotbar.",
     "clickMoreTimes": "Click/drop this item %times% more times if you really want to do this."
