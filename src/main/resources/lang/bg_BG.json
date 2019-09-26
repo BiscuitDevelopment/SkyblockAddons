@@ -21,7 +21,7 @@
     "hideDurability": "Скрии Използваността на Инструментите",
     "showEnchantmentsReforges": "Омагьосвания & Модификации",
     "minionStopWarning": "\"Миньонът не Може да Стигне\" Предупреждение",
-    "hideAuctionHousePlayers": "Скрий Играчите Близо до Търговската Къща",
+    "hideAuctionHousePlayers": "Hide Players Near Important NPCs",
     "backpackStyle": "Стил на Чантата: %style%",
     "backpackStyles": {
       "regular": "Редовен",
@@ -89,7 +89,7 @@
     "slotLocked": "Този Слот е Зaлючен!",
     "summoningEyeFound": "Призоваващо Око!",
     "cancelledStemBreak": "SkyblockAddons ви е Спрял от Унищожаване на Това Стъбло . Използвайте Ръце за да го Премахнете .",
-    "cancelledCaneBreak": "SkyblockAddons ви е Спрял от Унищожаване на Това Стъбло. Използвайте друг предмет за да го Премахнете.",
+    "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use another tool if you'd actually like to break it.",
     "cancelledProfileOpening": "SkyblockAddons спря от отваряне на този профил на играч който държи лък",
     "cancelledDropping": "SkyblockAddons ви спря като се опитахте да хвърлите този рядък предмет или инструмент от вашия hotbar.",
     "clickMoreTimes": "Натиснете Копчето Ви За Хвърляне На Предмети Още %times% Път/Пъти Ако Найстина Искате Да Го Изхвърлитен"
