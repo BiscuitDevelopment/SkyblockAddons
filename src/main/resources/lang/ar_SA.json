@@ -21,7 +21,7 @@
     "hideDurability": "إخفاء متانة الأداة",
     "showEnchantmentsReforges": "تطوير و إعادة تشكيل",
     "minionStopWarning": "تحذير إيقاف التابع",
-    "hideAuctionHousePlayers": "إخفاء اللاعبين بالقرب من دار المزاد",
+    "hideAuctionHousePlayers": "Hide Players Near Important NPCs",
     "backpackStyle": "%style% :نمط حقيبة الظهر",
     "backpackStyles": {
       "regular": "المظهر العادي",
@@ -89,7 +89,7 @@
     "slotLocked": "هذه الخانة مغلقة!",
     "summoningEyeFound": "عين الاستدعاء!",
     "cancelledStemBreak": "SkyblockAddons منعك من كسر هذا الجذر. إن أردت كسره فإستخدم يدك.",
-    "cancelledCaneBreak": "SkyblockAddons منعك من كسر هذا القصب. إن أردت كسره فإستخدم أداة أخرى.",
+    "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use another tool if you'd actually like to break it.",
     "cancelledProfileOpening": "SkyblockAddons منعك من فتح شخصية هذا اللاعب وانت تحمل القوس.",
     "cancelledDropping": "SkyblockAddons منعك من إسقاط هذه الأداة أو الشيء النادر من قائمة أدواتك.",
     "clickMoreTimes": "أضغط أو اسقط هذا الشيء %times% مرات زيادة إن كنت حقيقتاً تريد فعل هذا."
