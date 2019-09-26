@@ -247,11 +247,12 @@ public class EnumUtils {
 //        }
 
         public static boolean isNearNPC(Entity e) {
+            Utils utils = SkyblockAddons.getInstance().getUtils();
             for (SkyblockNPC npc : values()) {
-                if (npc.locations.contains(SkyblockAddons.getInstance().getUtils().getLocation())) {
+                if (npc.locations.contains(utils.getLocation())) {
                     double x = e.posX; double y = e.posY; double z = e.posZ;
-                    if (npc.hideArea.isVecInside(new Vec3(x, y,z))
-                            && (npc.x != x || npc.y != y || npc.z != z)) {
+                    if (npc.hideArea.isVecInside(new Vec3(x, y,z)) &&
+                            (npc.x != x || npc.y != y || npc.z != z) && !utils.isNPC(e)) {
                         return true;
                     }
                 }

@@ -165,12 +165,12 @@ public enum Message {
 //                    text = text.replace("%anchor%", main.getConfigValues().getAnchorPoint(lastHovered).getMessage());
 //                }
             }
-            if (text != null && main.getConfigValues().getLanguage() == Language.HEBREW) {
+            if (text != null && (main.getConfigValues().getLanguage() == Language.HEBREW || main.getConfigValues().getLanguage() == Language.ARABIC)) {
                 text = main.getUtils().reverseText(text);
             }
         } catch (NullPointerException ex) { // In case I messed up some translation or something.
             ex.printStackTrace();
-            text = "";
+            text = memberName;
         }
         return text;
     }

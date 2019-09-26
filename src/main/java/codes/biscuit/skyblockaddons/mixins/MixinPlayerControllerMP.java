@@ -9,18 +9,18 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.multiplayer.PlayerControllerMP;
+import net.minecraft.client.network.NetHandlerPlayClient;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.Packet;
 import net.minecraft.util.BlockPos;
-import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.MovingObjectPosition;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
@@ -44,7 +44,7 @@ public class MixinPlayerControllerMP {
             if (main.getConfigValues().isEnabled(Feature.AVOID_BREAKING_STEMS) && (block.equals(Blocks.melon_stem) || block.equals(Blocks.pumpkin_stem))) {
                 if (System.currentTimeMillis()- lastStemMessage > 20000) {
                     lastStemMessage = System.currentTimeMillis();
-                    main.getUtils().sendMessage(EnumChatFormatting.RED+Message.MESSAGE_CANCELLED_STEM_BREAK.getMessage());
+                    main.getUtils().sendMessage(main.getConfigValues().getColor(Feature.AVOID_BREAKING_STEMS).getChatFormatting()+Message.MESSAGE_CANCELLED_STEM_BREAK.getMessage());
                 }
                 cir.setReturnValue(false);
                 return;
@@ -57,27 +57,46 @@ public class MixinPlayerControllerMP {
                     || heldItem.getItem().equals(Items.wooden_hoe)) {
                 if (System.currentTimeMillis() - lastStemMessage > 20000) {
                     lastStemMessage = System.currentTimeMillis();
-                    main.getUtils().sendMessage(EnumChatFormatting.RED + Message.MESSAGE_CANCELLED_CANE_BREAK.getMessage());
+                    main.getUtils().sendMessage(main.getConfigValues().getColor(Feature.AVOID_BREAKING_BOTTOM_SUGAR_CANE).getChatFormatting() + Message.MESSAGE_CANCELLED_CANE_BREAK.getMessage());
                 }
                 cir.setReturnValue(false);
             }
         }
     }
 
-    @Inject(method = "isPlayerRightClickingOnEntity", at = @At(value = "HEAD"), locals = LocalCapture.CAPTURE_FAILSOFT, cancellable = true)
-    private void onPlayerRightClickEntity(EntityPlayer player, Entity entityIn, MovingObjectPosition movingObject, CallbackInfoReturnable<Boolean> cir) {
+    @Redirect(method = "isPlayerRightClickingOnEntity", at = @At(value = "INVOKE",
+            target = "Lnet/minecraft/client/network/NetHandlerPlayClient;addToSendQueue(Lnet/minecraft/network/Packet;)V",
+    ordinal = 0))
+    private void onPlayerRightClickEntity(NetHandlerPlayClient netHandlerPlayClient, Packet p_147297_1_) {
+        checkIfShouldSendPacket(netHandlerPlayClient, p_147297_1_);
+    }
+
+    @Redirect(method = "interactWithEntitySendPacket", at = @At(value = "INVOKE",
+            target = "Lnet/minecraft/client/network/NetHandlerPlayClient;addToSendQueue(Lnet/minecraft/network/Packet;)V",
+            ordinal = 0))
+    private void interactWithEntitySendPacket(NetHandlerPlayClient netHandlerPlayClient, Packet p_147297_1_) {
+        checkIfShouldSendPacket(netHandlerPlayClient, p_147297_1_);
+    }
+
+    private void checkIfShouldSendPacket(NetHandlerPlayClient netHandlerPlayClient, Packet p_147297_1_) {
         SkyblockAddons main = SkyblockAddons.getInstance();
         if (main.getConfigValues().isEnabled(Feature.DONT_OPEN_PROFILES_WITH_BOW)) {
-            if (entityIn instanceof EntityOtherPlayerMP) {
-                ItemStack item = player.inventory.getCurrentItem();
-                if (item != null && item.getItem() != null && item.getItem().equals(Items.bow)) {
+            Minecraft mc = Minecraft.getMinecraft();
+            Entity entityIn = mc.objectMouseOver.entityHit;
+            if (entityIn instanceof EntityOtherPlayerMP && !main.getUtils().isNPC(entityIn)) {
+                ItemStack item = mc.thePlayer.inventory.getCurrentItem();
+                ItemStack itemInUse = mc.thePlayer.getItemInUse();
+                if ((item != null && item.getItem() != null && item.getItem().equals(Items.bow)) ||
+                        (itemInUse != null && itemInUse.getItem() != null && itemInUse.getItem().equals(Items.bow))) {
                     if (System.currentTimeMillis()- lastProfileMessage > 20000) {
                         lastProfileMessage = System.currentTimeMillis();
-                        main.getUtils().sendMessage(EnumChatFormatting.RED+Message.MESSAGE_STOPPED_OPENING_PROFILE.getMessage());
+                        main.getUtils().sendMessage(main.getConfigValues().getColor(Feature.DONT_OPEN_PROFILES_WITH_BOW).getChatFormatting()+
+                                Message.MESSAGE_STOPPED_OPENING_PROFILE.getMessage());
                     }
-                    cir.setReturnValue(true);
+                    return;
                 }
             }
         }
+        netHandlerPlayClient.addToSendQueue(p_147297_1_);
     }
 }

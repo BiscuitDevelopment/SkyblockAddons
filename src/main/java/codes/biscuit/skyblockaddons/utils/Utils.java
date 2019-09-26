@@ -7,14 +7,14 @@ import com.google.common.collect.Sets;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityOtherPlayerMP;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.event.ClickEvent;
 import net.minecraft.item.ItemStack;
 import net.minecraft.launchwrapper.Launch;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.scoreboard.Score;
-import net.minecraft.scoreboard.ScoreObjective;
-import net.minecraft.scoreboard.ScorePlayerTeam;
-import net.minecraft.scoreboard.Scoreboard;
+import net.minecraft.scoreboard.*;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
@@ -312,6 +312,19 @@ public class Utils {
         }).start();
     }
 
+    public boolean isNPC(Entity entity) {
+        if (entity instanceof EntityOtherPlayerMP) {
+            EntityPlayer p = (EntityPlayer)entity;
+            Team team = p.getTeam();
+            if (team instanceof ScorePlayerTeam) {
+                ScorePlayerTeam playerTeam = (ScorePlayerTeam)team;
+                String color = playerTeam.getColorPrefix();
+                return color != null && color.equals("");
+            }
+        }
+        return false;
+    }
+
     public int getDefaultColor(float alphaFloat) {
         int alpha = (int) alphaFloat;
         return new Color(150, 236, 255, alpha).getRGB();
@@ -423,7 +436,12 @@ public class Utils {
             if (extraAttributes.hasKey("ExtraAttributes")) {
                 extraAttributes = extraAttributes.getCompoundTag("ExtraAttributes");
                 if (extraAttributes.hasKey("modifier")) {
-                    return WordUtils.capitalizeFully(extraAttributes.getString("modifier"));
+                    String reforge = WordUtils.capitalizeFully(extraAttributes.getString("modifier"));
+
+                    reforge = reforge.replace("_sword", ""); //fixes reforges like "Odd_sword"
+                    reforge = reforge.replace("_bow", "");
+
+                    return reforge;
                 }
             }
         }
