@@ -219,11 +219,12 @@ public class EnumUtils {
     public enum SkyblockNPC {
         AUCTION_MASTER(17.5,71,-78.5, Location.VILLAGE, Location.AUCTION_HOUSE),
         BANKER(20.5,71,-40.5, Location.VILLAGE, Location.BANK),
+        BAKER(34.5, 71, -44.5, Location.VILLAGE),
         LOBBY_SELECTOR(-9,70,-79, Location.VILLAGE),
         SIRIUS(91.5,75,176.5, Location.WILDERNESS);
 
         private final int hideRadius = 3;
-        private AxisAlignedBB hideArea;
+        private final AxisAlignedBB hideArea;
         private double x;
         private double y;
         private double z;
@@ -233,7 +234,7 @@ public class EnumUtils {
             this.x = x;
             this.y = y;
             this.z = z;
-            hideArea = new AxisAlignedBB(x - hideRadius, y - hideRadius, z - hideRadius, x + hideRadius, y + hideRadius, z + hideRadius);
+            this.hideArea = new AxisAlignedBB(x - hideRadius, y - hideRadius, z - hideRadius, x + hideRadius, y + hideRadius, z + hideRadius);
             this.locations = EnumSet.copyOf(Arrays.asList(locations));
         }
 
@@ -252,15 +253,6 @@ public class EnumUtils {
 
             return false;
         }
-
-//        public static boolean isNPC(double x, double y, double z) {
-//            for (SkyblockNPC npc : values()) {
-//                if (npc.x == x && npc.y == y && npc.z == z) {
-//                    return true;
-//                }
-//            }
-//            return false;
-//        }
 
         public static boolean isNearAnyNPC(Entity e) {
             for (SkyblockNPC npc : values()) {

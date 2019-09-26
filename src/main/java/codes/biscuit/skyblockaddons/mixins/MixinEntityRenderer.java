@@ -35,7 +35,7 @@ public class MixinEntityRenderer {
     }
 
     // This method exists in a debug enviroment instead
-    /*@Inject(
+    @Inject(
             method = "getMouseOver",
             at = @At(value = "INVOKE",
                     target = "Ljava/util/List;size()I",
@@ -44,7 +44,7 @@ public class MixinEntityRenderer {
     )
     private void getMouseOver(float partialTicks, CallbackInfo ci, Entity entity, double d0, Vec3d Vec3d, boolean flag, int i, double d1, Vec3d Vec3d1, Vec3d Vec3d2, Vec3d Vec3d3, float f, List<Entity> list, double d2, int j) {
         removeEntities(list);
-    }*/
+    }
 
     private void removeEntities(List<Entity> list) {
         if (SkyblockAddons.getInstance().getUtils().isOnSkyblock()) {
