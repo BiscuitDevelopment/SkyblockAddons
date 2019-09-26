@@ -21,7 +21,7 @@
     "hideDurability": "Folaigh Buanfas Uirlisí",
     "showEnchantmentsReforges": "Draíocht & Ré-Cruthach",
     "minionStopWarning": "Rabhadh \"Giolla as Raon\"",
-    "hideAuctionHousePlayers": "Folaigh Daoine timpeall Teach Ceantáil",
+    "hideAuctionHousePlayers": "Hide Players Near Important NPCs",
     "backpackStyle": "Stíl Mála: %style%",
     "backpackStyles": {
       "regular": "Gnáthach",
@@ -89,7 +89,7 @@
     "slotLocked": "Tá an Sliotán seo faoi ghlas!",
     "summoningEyeFound": "Súil Seirbheáil!",
     "cancelledStemBreak": "Chur SkyblockAddons cosc ort an gas seo a briseadh. Úsáid to lámh má tá tú ag iarraidh é a briseadh.",
-    "cancelledCaneBreak": "Chur SkyblockAddons cosc ort an píosa cána siúcra seo a briseadh. Úsáid uirlis eile má tá tú ag iarraidh é a briseadh.",
+    "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use another tool if you'd actually like to break it.",
     "cancelledProfileOpening": "Chur SkyblockAddons cosc ort ag oscailt an próifíl seo fad is atá bogha i do lámh.",
     "cancelledDropping": "Chur SkyblockAddons cosc or an mír annamh seo a leag síos ó do hotbar.",
     "clickMoreTimes": "Cliceáil/leag síos an mír seo %times% uaireanta eile má tá tú cinnte faoi seo."
