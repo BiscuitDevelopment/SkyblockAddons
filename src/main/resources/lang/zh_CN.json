@@ -21,7 +21,7 @@
     "hideDurability": "隐藏物品耐久度",
     "showEnchantmentsReforges": "附魔 & 重铸",
     "minionStopWarning": "\"仆从无法触及生物\"警告",
-    "hideAuctionHousePlayers": "Hide Players Near Important NPCs",
+    "hideAuctionHousePlayers": "隐藏重要 NPC 附近的玩家",
     "backpackStyle": "背包样式: %style%",
     "backpackStyles": {
       "regular": "常规",
@@ -89,7 +89,7 @@
     "slotLocked": "该栏已锁！",
     "summoningEyeFound": "召唤之眼！",
     "cancelledStemBreak": "SkyblockAddons阻止你破坏此作物，请使用空手来进行破坏。",
-    "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use another tool if you'd actually like to break it.",
+    "cancelledCaneBreak": "SkyblockAddons 已阻止你破坏此甘蔗。如果你真的想要破坏它，请使用其他工具。",
     "cancelledProfileOpening": "SkyblockAddons阻止了你在持弓的时候打开他人的档案。",
     "cancelledDropping": "SkyblockAddons 防止了你把这个工具或物品扔掉",
     "clickMoreTimes": "如果你想要把这个东西掉了，在如果你想要把这个东西掉了，在点击%times% 次"
