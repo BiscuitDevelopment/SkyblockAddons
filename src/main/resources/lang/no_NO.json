@@ -21,7 +21,7 @@
     "hideDurability": "Skjul Redskaps Varighet",
     "showEnchantmentsReforges": "Fortryllinger og reforges",
     "minionStopWarning": "\"Lakei kan ikke nå\" advarsel",
-    "hideAuctionHousePlayers": "Skjul spillere nær aksjonshuset",
+    "hideAuctionHousePlayers": "Hide Players Near Important NPCs",
     "backpackStyle": "Ryggsekk stil %style%",
     "backpackStyles": {
       "regular": "Vanlig",
@@ -89,7 +89,7 @@
     "slotLocked": "Denne ruten er låst!",
     "summoningEyeFound": "Summoning Eye!",
     "cancelledStemBreak": "SkyblockAddons har stoppet deg fra å ødelegge denne stilken. Bruk hånden din hvis du vil ødelegge den.",
-    "cancelledCaneBreak": "SkyblockAddons har stoppet deg fra å ødelegge denne blokken av Sugar Cane. Bruk et annet redskap hvis du vil ødelegge den.",
+    "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use another tool if you'd actually like to break it.",
     "cancelledProfileOpening": "SkyblockAddons har stoppet deg fra å åpne denne spillerens profil siden du holder en bue.",
     "cancelledDropping": "SkyblockAddons har stoppet deg fra å slippe denne sjeldne gjenstanden/redskap fra din hotbar.",
     "clickMoreTimes": "Klikk/slipp denne gjenstanden %times% flere ganger hvis du virkelig vil gjøre dette."
