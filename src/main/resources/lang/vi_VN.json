@@ -21,7 +21,7 @@
     "hideDurability": "Ẩn Thanh Độ Bền",
     "showEnchantmentsReforges": "Phù phép & Rèn luyện",
     "minionStopWarning": "Cảnh Báo \"Minion Không Thể Với Tới\"",
-    "hideAuctionHousePlayers": "Ẩn Người Chơi gần Auction House",
+    "hideAuctionHousePlayers": "Hide Players Near Important NPCs",
     "backpackStyle": "Kiểu Ba lô: %style%",
     "backpackStyles": {
       "regular": "Thường",
@@ -89,7 +89,7 @@
     "slotLocked": "Ô này đã bị khoá!",
     "summoningEyeFound": "Mắt Triệu Hồi!",
     "cancelledStemBreak": "SkyblockAddons Đã Ngăn Bạn Phá Hạt Giống Này. Hãy Dùng Tay Không Nếu Bạn Muốn Phá Nó.",
-    "cancelledCaneBreak": "SkyblockAddons đã ngăn bạn khỏi việc phá phần mía này. Hãy sử dụng cụ khác nếu bạn muốn phá nó.",
+    "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use another tool if you'd actually like to break it.",
     "cancelledProfileOpening": "SkyblockAddons Đã Ngăn Bạn Xem Thông Về Người Chơi Này Khi Bạn Đang Cầm Cung.",
     "cancelledDropping": "SkyblockAddons đã ngăn bạn làm rơi đồ hiếm từ thanh vật phẩm.",
     "clickMoreTimes": "Bấm/Thả Đồ Vật Này Thêm %times% Lần Nữa Nếu Bạn Muốn Thực Hiện Điều Này."
