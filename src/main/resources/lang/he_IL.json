@@ -21,7 +21,7 @@
     "hideDurability": "הסתר רמת שימוש",
     "showEnchantmentsReforges": "כישופים ושיפורים",
     "minionStopWarning": "\"המיניון לא יכול להגיע\" אזהרה",
-    "hideAuctionHousePlayers": "הסתר שחקנים ליד בית המכירה הפומבית",
+    "hideAuctionHousePlayers": "Hide Players Near Important NPCs",
     "backpackStyle": "סטייל תרמיל גב: %style%",
     "backpackStyles": {
       "regular": "רגיל",
@@ -89,7 +89,7 @@
     "slotLocked": "משבצת זו נעולה!",
     "summoningEyeFound": "עין לזימון דרקון!",
     "cancelledStemBreak": "SkyblockAddons עצר אותך מלשבור את הגידול. תשתמש ביד שלך אם ברצונך לשבור את זה.",
-    "cancelledCaneBreak": "SkyblockAddons עצר אותך מלשבור את הכנה סוכר הזה. תשתמש ביד שלך בכדי לשבור את זה.",
+    "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use another tool if you'd actually like to break it.",
     "cancelledProfileOpening": "SkyBlockAddons עצר אותך מלפתוח את הפרופיל של האדם בזמן שהחזקתה קשת.",
     "cancelledDropping": "SkyBlockAddons עצר אותך מלהפיל את החפץ או הכלי הנדיר הזה.",
     "clickMoreTimes": "תלחץ/תזרוק את החפץ %times% פעמים נוספות אם אתה בטוח רוצה לעשות את זה."
