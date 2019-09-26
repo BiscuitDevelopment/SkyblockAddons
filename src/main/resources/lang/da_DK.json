@@ -21,7 +21,7 @@
     "hideDurability": "Skjul redskabs skader",
     "showEnchantmentsReforges": "Fortryllelser & Reforges",
     "minionStopWarning": "\"minion kan ikke nå\" advarsel",
-    "hideAuctionHousePlayers": "Skjul spillere i nærheden af ​​auktionshuset",
+    "hideAuctionHousePlayers": "Hide Players Near Important NPCs",
     "backpackStyle": "Taske design: %style%",
     "backpackStyles": {
       "regular": "Regulær",
@@ -89,7 +89,7 @@
     "slotLocked": "Dette slot er låst!",
     "summoningEyeFound": "Ringer øje!",
     "cancelledStemBreak": "SkyblockAddons har forhindret dig i at bryde denne stilk. Brug din bare hånd, hvis du gerne vil bryde den.",
-    "cancelledCaneBreak": "SkyblockAddons har forhindret dig i at bryde denne blok sukkerrør. Brug dit andet værktøj, hvis du faktisk gerne vil bryde det.",
+    "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use another tool if you'd actually like to break it.",
     "cancelledProfileOpening": "SkyblockAddons har forhindret dig i at åbne denne spillers profil, mens du holder en bue.",
     "cancelledDropping": "SkyblockAddons har forhindret dig i at droppe dette sjældne element eller værktøj fra din hotbar.",
     "clickMoreTimes": "Klik / slip dette emne %times% flere gange, hvis du virkelig ønsker at gøre dette."
