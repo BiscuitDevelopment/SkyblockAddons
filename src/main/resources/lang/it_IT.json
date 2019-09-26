@@ -21,7 +21,7 @@
     "hideDurability": "Nascondi la Durabilità degli strumenti",
     "showEnchantmentsReforges": "Incantesimi & Forge",
     "minionStopWarning": "Avviso che \"i Minion non possono raggiungere le risorse\" ",
-    "hideAuctionHousePlayers": "Hide Players Near Important NPCs",
+    "hideAuctionHousePlayers": "Nascondi i giocatori vicino agli NPC importanti",
     "backpackStyle": "Stile Zaino: %style%",
     "backpackStyles": {
       "regular": "Regolare",
@@ -89,7 +89,7 @@
     "slotLocked": "Questo slot è bloccato!",
     "summoningEyeFound": "Occhio dell'evocazione!",
     "cancelledStemBreak": "SkyblockAddons ti ha impedito di rompere questo stelo. Usa la tua mano se lo vuoi rompere.",
-    "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use another tool if you'd actually like to break it.",
+    "cancelledCaneBreak": "SkyblockAddons ti ha impedito di rompere questo pezzo di canna da zucchero. Usa un altro strumento se lo vuoi rompere.",
     "cancelledProfileOpening": "SkyblockAddons ti ha impedito di aprire il profilo di questo giocatore mentre avevi l’arco in mano.",
     "cancelledDropping": "SkyblockAddons ti ha impedito di gettare questo oggetto o strumento raro dalla tua hotbar.",
     "clickMoreTimes": "Clicca/getta questo oggetto altre %times% volte se vuoi davvero farlo."
