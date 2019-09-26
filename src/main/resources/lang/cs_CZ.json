@@ -21,7 +21,7 @@
     "hideDurability": "Skrýt výdrž nástrojů",
     "showEnchantmentsReforges": "Očarování a překování",
     "minionStopWarning": "Várování o nedosáhnutí miniona",
-    "hideAuctionHousePlayers": "Hide Players Near Important NPCs",
+    "hideAuctionHousePlayers": "Skrýt hráče blízko důležitých Vesničanů",
     "backpackStyle": "Styl batůžků: %style%",
     "backpackStyles": {
       "regular": "Klasický",
@@ -89,7 +89,7 @@
     "slotLocked": "Tento slot je uzamčen!",
     "summoningEyeFound": "Vyvolávací oko!",
     "cancelledStemBreak": "Mód SkyblockAddons tě zastavil před zničením tohoto blocku. Použil svoji prázdnou ruku aby jsi to zničil.",
-    "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use another tool if you'd actually like to break it.",
+    "cancelledCaneBreak": "Mód SkyblockAddons tě zastavil před zničením tohoto blocku Sugar canu. Požij jiný nástroj pokud ho chceš zničit.",
     "cancelledProfileOpening": "SkyblockAddons vám zabránil otevřít profil hráče při držení luku.",
     "cancelledDropping": "SkyblockAddons vám zabránil vyhodit tento vzácný předmět nebo nástroj z vašeho hotbaru.",
     "clickMoreTimes": "Klikněte/vyhoďte tento předmět %times%-krát, pokud to chcete opravdu udělat."
