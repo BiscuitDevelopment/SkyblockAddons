@@ -21,7 +21,7 @@
     "hideDurability": "Ocultar Durabilidad de Herramientas",
     "showEnchantmentsReforges": "Encantamientos & Reforjados",
     "minionStopWarning": "Alerta de Minion Detenido",
-    "hideAuctionHousePlayers": "Hide Players Near Important NPCs",
+    "hideAuctionHousePlayers": "Ocultar Jugadores Cerca de NPCs Importantes",
     "backpackStyle": "Estilo de Backpack: %style%",
     "backpackStyles": {
       "regular": "Normal",
@@ -89,7 +89,7 @@
     "slotLocked": "Esta ranura está bloqueada!",
     "summoningEyeFound": "Summoning Eye!",
     "cancelledStemBreak": "SkyblockAddons ha detenido la destrucción del tallo. Usa sólo tus manos si en realidad quieres romperlo.",
-    "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use another tool if you'd actually like to break it.",
+    "cancelledCaneBreak": "SkyblockAddons te ha impedido romper este bloque de caña de azúcar. Usa otra herramienta si realmente te gustaría romperla.",
     "cancelledProfileOpening": "SkyblockAddons ha evitado que abras el perfil de este jugador con tu arco en la mano.",
     "cancelledDropping": "SkyblockAddons ha evitado que arrojes este objeto o herramienta rara.",
     "clickMoreTimes": "Haz clic/arroja el objeto %times% veces más si en realidad quieres hacerlo."
