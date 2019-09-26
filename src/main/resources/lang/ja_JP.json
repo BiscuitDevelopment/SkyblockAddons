@@ -21,7 +21,7 @@
     "hideDurability": "耐久値を非表示",
     "showEnchantmentsReforges": "エンチャントとリフォージの内容を表示",
     "minionStopWarning": "ミニオンが停止している時のアラート",
-    "hideAuctionHousePlayers": "Hide Players Near Important NPCs",
+    "hideAuctionHousePlayers": "重要なNPCの近くのプレイヤーを隠す",
     "backpackStyle": "バックパックのスタイル: %style%",
     "backpackStyles": {
       "regular": "標準",
@@ -89,7 +89,7 @@
     "slotLocked": "このスロットはロックされています。",
     "summoningEyeFound": "サモニングアイ！",
     "cancelledStemBreak": "SkyblockAddonsがこの幹を壊すのを阻止しました。壊したい場合は素手で壊してください。",
-    "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use another tool if you'd actually like to break it.",
+    "cancelledCaneBreak": "SkyblockAddonsがこのサトウキビを壊すのを阻止しました。壊したい場合は別のツールで壊してください。",
     "cancelledProfileOpening": "SkyblockAddonsがこのプレイヤーのプロフィールを開くことを阻止しました。",
     "cancelledDropping": "SkyblockAddonsがこのアイテムを捨てることを阻止しました。",
     "clickMoreTimes": "本当に落としたい場合はもう%times%回クリック/ドロップしてください。"
