@@ -21,7 +21,7 @@
     "hideDurability": "Göm Verktyg Hållbarhet",
     "showEnchantmentsReforges": "Förtrollningar & Reforges",
     "minionStopWarning": "\"Tjänare Kan Inte Nå\" Varning",
-    "hideAuctionHousePlayers": "Göm Spelare Nära Auktionshus",
+    "hideAuctionHousePlayers": "Hide Players Near Important NPCs",
     "backpackStyle": "Ryggsäck Stil: %style%",
     "backpackStyles": {
       "regular": "Vanliga",
@@ -89,7 +89,7 @@
     "slotLocked": "Denna luckan är låst!",
     "summoningEyeFound": "Tillkallande Öga!",
     "cancelledStemBreak": "SkyblockAddons har förhindrat dig från att förstöra denna stjälk. Använd din hand om du ändå vill förstöra den.",
-    "cancelledCaneBreak": "SkyblockAddons har förhindrat dig från att förstöra botten av det här sockerröret. Använd din hand om du ändå vill förstöra den.",
+    "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use another tool if you'd actually like to break it.",
     "cancelledProfileOpening": "SkyblockAddons har stoppat dig från att öppna denna spelares profil medan du håller en pilbåge.",
     "cancelledDropping": "SkyblockAddons har stoppat dig från att slänga denna sällsynta sak eller verktyg från ditt lager.",
     "clickMoreTimes": "Släng denna sak %times% fler gånger om du verkligen vill göra detta."
