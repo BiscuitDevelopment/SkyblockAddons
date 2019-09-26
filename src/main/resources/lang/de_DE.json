@@ -52,7 +52,7 @@
     "lockSlots": "Slots sperren erlauben",
     "dontResetCursorInventory": "Mauszeiger zwischen Inventaren nicht zurücksetzen",
     "summoningEyeAlert": "Summoning Eye Alarm",
-    "makeEnderchestsInEndGreen": "Endertruhen grün färben",
+    "makeEnderchestsInEndGreen": "Färbe Endertruhen im End grün",
     "changeColor": "Farbe ändern",
     "showInOtherGames": "In anderen Spielen anzeigen",
     "useVanillaTexture": "Vanilla Textur benutzen",
@@ -89,7 +89,7 @@
     "slotLocked": "Dieser Slot ist gesperrt!",
     "summoningEyeFound": "Summoning Eye!",
     "cancelledStemBreak": "SkyblockAddons hat dich davon abgehalten, diesen Stamm zu zerstören. Nutze deine Hand um ihn trotzdem zu zerstören.",
-    "cancelledCaneBreak": "SkyblockAddons hat das abbauen von dem Zuckerrohr vermieden. Benutze ein anderes Tool um es abzubauen.",
+    "cancelledCaneBreak": "SkyblockAddons hat das Abbauen von dem Zuckerrohr vermieden. Benutze ein anderes Werkzeug um es abzubauen.",
     "cancelledProfileOpening": "SkyblockAddons hat dich davon abgehalten, das Profil dieses Spielers zu öffnen, während du einen Bogen hältst.",
     "cancelledDropping": "SkyblockAddons hat dich davon abgehalten, dieses seltene Item oder Werkzeug aus deiner Hotbar zu droppen.",
     "clickMoreTimes": "Klicke/droppe dieses Item %times% mal mehr, wenn du das wirklich tun möchtest."
