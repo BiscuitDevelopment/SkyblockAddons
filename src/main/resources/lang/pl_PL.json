@@ -21,7 +21,7 @@
     "hideDurability": "Wyłącz Pasek Wytrzymałości Narzędzi",
     "showEnchantmentsReforges": "Zaklęcia oraz Reforge",
     "minionStopWarning": "Ostrzeżenie o Przerwaniu Pracy Miniona",
-    "hideAuctionHousePlayers": "Ukryj Graczy w Pobliżu Domu Aukcyjnego",
+    "hideAuctionHousePlayers": "Hide Players Near Important NPCs",
     "backpackStyle": "Styl Plecaka: %style%",
     "backpackStyles": {
       "regular": "Normalne",
@@ -89,7 +89,7 @@
     "slotLocked": "Ten slot jest zablokowany!",
     "summoningEyeFound": "Oko przywołujące!",
     "cancelledStemBreak": "SkyblockAddons zatrzyman cię przed zniszczeniem tej łodygi. Użyj pustej ręki, jeśli chcesz ją zniszczyć.",
-    "cancelledCaneBreak": "SkyblockAddons powstrzymał cię przed zniszczeniem tego bloku trzciny cukrowej. Użyj innego narzędzia, jeśli chcesz go zniszczyć.",
+    "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use another tool if you'd actually like to break it.",
     "cancelledProfileOpening": "SkyblockAddons anulował otwieranie profilu tej osoby trzymając łuk.",
     "cancelledDropping": "SkyblockAddons zatrzymał cię przed upuszczeniem tego rzadkiego przedmiotu lub narzędzia z twojego paska narzędzi.",
     "clickMoreTimes": "Naciśnij/upuść ten przedmiot %times% razy więcej jeśli naprawdę chcesz to zrobić."
