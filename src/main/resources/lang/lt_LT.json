@@ -21,7 +21,7 @@
     "hideDurability": "Paslėpti Daiktų Patvarumą",
     "showEnchantmentsReforges": "Užkerimai Ir Perdirbimai",
     "minionStopWarning": "\"Minionas Negali Pasiekti\" Įspėjimas",
-    "hideAuctionHousePlayers": "Paslėpti Žaidėjus Arti Aukciono",
+    "hideAuctionHousePlayers": "Hide Players Near Important NPCs",
     "backpackStyle": "Kuprinės Stilius %style%",
     "backpackStyles": {
       "regular": "Įprasta",
@@ -89,7 +89,7 @@
     "slotLocked": "Šitas langelis yra užrakintas!",
     "summoningEyeFound": "Ender Drakono Spawninimo Akis!",
     "cancelledStemBreak": "SkyblockAddons sustabdė jus nuo šio stiebo išgriovimo. Naudokite savo ranką jeigu norėtumėte jį iš tikrųjų išgriauti.",
-    "cancelledCaneBreak": "SkyblockAddons sustabdė jus nuo griaunant šį cukranendrės bloko. Naudokite kitą įrankį jeigu norėtumėte jį iš tikrųjų išgriauti.",
+    "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use another tool if you'd actually like to break it.",
     "cancelledProfileOpening": "SkyblockAddons sustabdė jumis nuo šio žaidėjo profilio atidarymo, kai jūs rankoje laikote lanką.",
     "cancelledDropping": "SkyblockAddons sustabdė jumis nuo šio reto daikto išmetimo iš jūsų inventoriaus ar hotbaro.",
     "clickMoreTimes": "Paspauskite/meskite šį daiktą %times% tiek kartų jeigu iš tikrųjų norite jį išmesti."
