@@ -21,7 +21,7 @@
     "hideDurability": "Esconder a durabilidade das ferramentas",
     "showEnchantmentsReforges": "Encantamentos e Reforges",
     "minionStopWarning": "Aviso \"Minion Cannot Reach\"",
-    "hideAuctionHousePlayers": "Hide Players Near Important NPCs",
+    "hideAuctionHousePlayers": "Esconder jogadores perto de NPCs importantes",
     "backpackStyle": "Estilo da Backpack: %style%",
     "backpackStyles": {
       "regular": "Normal",
@@ -89,7 +89,7 @@
     "slotLocked": "Este slot está bloqueado!",
     "summoningEyeFound": "Summoning Eye!",
     "cancelledStemBreak": "O SkyblockAddons preveniu-te de partires esta semente. Usa a tua própria mão se a quiseres mesmo partir.",
-    "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use another tool if you'd actually like to break it.",
+    "cancelledCaneBreak": "O SkyblockAddons preveniu-te de partires este bloco de cana de açúcar. Usa outra ferramenta se quiseres mesmo parti-lo.",
     "cancelledProfileOpening": "O SkyblockAddons preveniu-te de abrires o perfil deste jogador enquanto seguras um arco.",
     "cancelledDropping": "O SkyblockAddons preveniu-te de dropar este item ou ferramenta rara da tua hotbar.",
     "clickMoreTimes": "Clica/dropa este item mais %times% vezes se quiseres mesmo fazer isto."
