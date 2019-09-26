@@ -21,7 +21,7 @@
     "hideDurability": "Verberg Duurzaamheid Gereedschap",
     "showEnchantmentsReforges": "Betoveringen & Omsmedingen",
     "minionStopWarning": "Minion is gestopt Waarschuwing",
-    "hideAuctionHousePlayers": "Hide Players Near Important NPCs",
+    "hideAuctionHousePlayers": "Spelers in de buurt van belangrijke NPC's verbergen",
     "backpackStyle": "Rugzak stijl: %style%",
     "backpackStyles": {
       "regular": "Normaal",
@@ -89,7 +89,7 @@
     "slotLocked": "Deze Slot is vergrendeld!",
     "summoningEyeFound": "Oproepend oog!",
     "cancelledStemBreak": "SkyblockAddons heeft je ervan weerhouden deze stengel te breken. Gebruik je lege hand als je het wilt breken.",
-    "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use another tool if you'd actually like to break it.",
+    "cancelledCaneBreak": "SkyblockAddons heeft je ervan weerhouden deze suikerriet te breken. Gebruik iets anders als je het wilt breken.",
     "cancelledProfileOpening": "SkyblockAddons heeft je ervan weerhouden het profiel van deze speler te openen terwijl je een boog vast hebt.",
     "cancelledDropping": "SkyblockAddons heeft je ervan weerhouden dit zeldzame item of gereedschap uit je hotbar te gooien.",
     "clickMoreTimes": "Klik/gooi dit item %times% keer als je dit echt wilt doen."
