@@ -21,7 +21,7 @@
     "hideDurability": "Pagtago ng tibay ng Tool",
     "showEnchantmentsReforges": "Pandayan at Enchants",
     "minionStopWarning": "\"Di Maabot ng Minion\" Babala",
-    "hideAuctionHousePlayers": "Hide Players Near Important NPCs",
+    "hideAuctionHousePlayers": "I-tago ang mga Tao malapit sa mga NPC",
     "backpackStyle": "Istilo ng Backpack: %style%",
     "backpackStyles": {
       "regular": "Regular",
@@ -62,11 +62,11 @@
       "two": "Pangalawang Istilo"
     },
     "warningDuration": "Katagalan ng Babala",
-    "dontOpenProfileWithBow": "Don't Open Profile With Bow",
-    "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Items",
-    "makeBackpackInventoriesColored": "Color Inventories",
-    "avoidBreakingBottomSugarCane": "Avoid Breaking Bottom Sugar Cane",
-    "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Items"
+    "dontOpenProfileWithBow": "Huwag buksan ang profile gamit ang pana",
+    "stopDroppingSellingRareItems": "Huwag i-hulog/ibenta ang mga mahalagang gamit",
+    "makeBackpackInventoriesColored": "Makulay na Imbentaryo",
+    "avoidBreakingBottomSugarCane": "Iwasan ang pagsira ng bottom Sugar Cane",
+    "replaceRomanNumeralsWithNumbers": "Palitan ang Roman Numerals sa mga bagay"
   },
   "messages": {
     "dropConfirmation": "Ihulog ang item muli para kumpirmado!",
@@ -88,8 +88,8 @@
     },
     "slotLocked": "Ang slot na ito ay nakakandado pa!",
     "summoningEyeFound": "Pangsummon na Mata!",
-    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this stem. Use your bare hand if you'd like to actually break it.",
-    "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use another tool if you'd actually like to break it.",
+    "cancelledStemBreak": "Itinigil ng SkyblockAddons sa pag-sira ng tangkay na ito. Gamitin mo ang iyong kamay kung gusto mo talaga sirain.",
+    "cancelledCaneBreak": "Itinigil ng SkyblockAddons sa pag-sira ng Sugar Cane. Gamitin mo ang iyong kamay kung gusto mo talaga sirain.",
     "cancelledProfileOpening": "SkyblockAddons has stopped you from opening this player's profile while holding a bow.",
     "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare item or tool from your hotbar.",
     "clickMoreTimes": "Click/drop this item %times% more times if you really want to do this."
