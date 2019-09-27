@@ -25,7 +25,7 @@ public class SettingsGui extends GuiScreen {
     private SkyblockAddons main;
     private int page;
     private int row = 1;
-    private int collumn = 1;
+    private int column = 1;
     private int displayCount;
     private Feature feature;
     private int lastPage;
@@ -52,6 +52,8 @@ public class SettingsGui extends GuiScreen {
     @Override
     public void initGui() {
         if (feature == Feature.LANGUAGE) {
+            row = 1;
+            column = 1;
             displayCount = findDisplayCount();
             // Add the buttons for each page.
             int skip = (page-1)*displayCount;
@@ -212,6 +214,8 @@ public class SettingsGui extends GuiScreen {
             ButtonArrow arrow = (ButtonArrow)abstractButton;
             if (arrow.isNotMax()) {
                 main.getUtils().setFadingIn(false);
+                closingGui = true;
+
                 if (arrow.getArrowType() == ButtonArrow.ArrowType.RIGHT) {
                     mc.displayGuiScreen(new SettingsGui(main, feature, ++page, lastPage, lastTab, settings));
                 } else {
@@ -243,18 +247,18 @@ public class SettingsGui extends GuiScreen {
         int halfWidth = width/2;
         int boxWidth = 140;
         int x = 0;
-        if (collumn == 1) {
+        if (column == 1) {
             x = halfWidth-90-boxWidth;
-        } else if (collumn == 2) {
+        } else if (column == 2) {
             x = halfWidth-(boxWidth/2);
-        } else if (collumn == 3) {
+        } else if (column == 3) {
             x = halfWidth+90;
         }
         double y = getRowHeight(row);
         buttonList.add(new ButtonLanguage(x, y, text, main, language));
-        collumn++;
-        if (collumn > 3) {
-            collumn = 1;
+        column++;
+        if (column > 3) {
+            column = 1;
             row++;
         }
         displayCount--;

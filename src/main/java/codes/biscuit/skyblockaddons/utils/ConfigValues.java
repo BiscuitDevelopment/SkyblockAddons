@@ -143,16 +143,30 @@ public class ConfigValues {
                 }
             }
 
-            loadColor("warningColor", Feature.MAGMA_WARNING, ConfigColor.RED);
-            loadColor("confirmationColor", Feature.DROP_CONFIRMATION, ConfigColor.RED);
-            loadColor("manaBarColor", Feature.MANA_BAR, ConfigColor.BLUE);
-            loadColor("manaBarTextColor", Feature.MANA_TEXT, ConfigColor.BLUE);
-            loadColor("defencePercentageColor", Feature.DEFENCE_PERCENTAGE, ConfigColor.GREEN);
-            loadColor("defenceTextColor", Feature.DEFENCE_TEXT, ConfigColor.GREEN);
-            loadColor("healthBarColor", Feature.HEALTH_BAR, ConfigColor.RED);
-            loadColor("healthTextColor", Feature.HEALTH_TEXT, ConfigColor.RED);
-            loadColor("magmaBossTimerColor", Feature.MAGMA_BOSS_TIMER, ConfigColor.GOLD);
-            loadColor("darkAuctionTimerColor", Feature.DARK_AUCTION_TIMER, ConfigColor.GOLD);
+            loadLegacyColor("warningColor", Feature.MAGMA_WARNING);
+            loadLegacyColor("confirmationColor", Feature.DROP_CONFIRMATION);
+            loadLegacyColor("manaBarColor", Feature.MANA_BAR);
+            loadLegacyColor("manaBarTextColor", Feature.MANA_TEXT);
+            loadLegacyColor("defencePercentageColor", Feature.DEFENCE_PERCENTAGE);
+            loadLegacyColor("defenceTextColor", Feature.DEFENCE_TEXT);
+            loadLegacyColor("healthBarColor", Feature.HEALTH_BAR);
+            loadLegacyColor("healthTextColor", Feature.HEALTH_TEXT);
+            loadLegacyColor("magmaBossTimerColor", Feature.MAGMA_BOSS_TIMER);
+            loadLegacyColor("darkAuctionTimerColor", Feature.DARK_AUCTION_TIMER);
+
+            if (settingsConfig.has("featureColors")) {
+                for (Map.Entry<String, JsonElement> element : settingsConfig.getAsJsonObject("featureColors").entrySet()) {
+                    Feature feature = Feature.fromId(Integer.parseInt(element.getKey()));
+                    int ordinal = element.getValue().getAsInt();
+                    if (ConfigColor.values().length > ordinal) {
+                        featureColors.put(feature, ConfigColor.values()[ordinal]);
+                    }
+                }
+            }
+
+            setDefaultColorIfNotSet(ConfigColor.BLUE, Feature.MANA_BAR, Feature.MANA_TEXT);
+            setDefaultColorIfNotSet(ConfigColor.GREEN, Feature.DEFENCE_TEXT, Feature.DEFENCE_PERCENTAGE);
+            setDefaultColorIfNotSet(ConfigColor.GOLD, Feature.MAGMA_BOSS_TIMER, Feature.DARK_AUCTION_TIMER);
 
             if (settingsConfig.has("textStyle")) {
                 int ordinal = settingsConfig.get("textStyle").getAsInt();
@@ -203,14 +217,19 @@ public class ConfigValues {
         loadLanguageFile();
     }
 
-    private void loadColor(String memberName, Feature feature, ConfigColor defaultColor) {
-        if (settingsConfig.has(memberName)) { // migrate from old config
+    private void setDefaultColorIfNotSet(ConfigColor color, Feature... features) {
+        for (Feature feature : features) {
+            if (!featureColors.containsKey(feature)) featureColors.put(feature, color);
+        }
+    }
+
+    @Deprecated()
+    private void loadLegacyColor(String memberName, Feature feature) {
+        if (settingsConfig.has(memberName)) {
             int ordinal = settingsConfig.get(memberName).getAsInt();
             if (ConfigColor.values().length > ordinal) {
                 featureColors.put(feature, ConfigColor.values()[ordinal]);
             }
-        } else {
-            featureColors.put(feature, defaultColor);
         }
     }
 
@@ -387,10 +406,15 @@ public class ConfigValues {
             }
             settingsConfig.add("guiScales", scalesObject);
 
-            settingsConfig.addProperty("warningColor", getColor(Feature.MAGMA_WARNING).ordinal());
-            settingsConfig.addProperty("confirmationColor", getColor(Feature.DROP_CONFIRMATION).ordinal());
-            settingsConfig.addProperty("manaBarColor", getColor(Feature.MANA_BAR).ordinal());
-            settingsConfig.addProperty("manaBarTextColor", getColor(Feature.MANA_TEXT).ordinal());
+            JsonObject colorsObject = new JsonObject();
+            for (Feature feature : featureColors.keySet()) {
+                ConfigColor featureColor = featureColors.get(feature);
+                if (featureColor != ConfigColor.RED) { // red is default, no need to save
+                    colorsObject.addProperty(String.valueOf(feature.getId()), featureColor.ordinal());
+                }
+            }
+            settingsConfig.add("featureColors", colorsObject);
+
             settingsConfig.addProperty("warningSeconds", warningSeconds);
             settingsConfig.addProperty("manaBarX", getRelativeCoords(Feature.MANA_BAR).getX());
             settingsConfig.addProperty("manaBarY", getRelativeCoords(Feature.MANA_BAR).getY());
@@ -409,10 +433,6 @@ public class ConfigValues {
             settingsConfig.addProperty("defencePercentageY", getRelativeCoords(Feature.DEFENCE_PERCENTAGE).getY());
             settingsConfig.addProperty("defenceIconX", getRelativeCoords(Feature.DEFENCE_ICON).getX());
             settingsConfig.addProperty("defenceIconY", getRelativeCoords(Feature.DEFENCE_ICON).getY());
-            settingsConfig.addProperty("defencePercentageColor", getColor(Feature.DEFENCE_PERCENTAGE).ordinal());
-            settingsConfig.addProperty("defenceTextColor", getColor(Feature.DEFENCE_TEXT).ordinal());
-            settingsConfig.addProperty("healthBarColor", getColor(Feature.HEALTH_BAR).ordinal());
-            settingsConfig.addProperty("healthTextColor", getColor(Feature.HEALTH_TEXT).ordinal());
             settingsConfig.addProperty("healthUpdatesX", getRelativeCoords(Feature.HEALTH_UPDATES).getX());
             settingsConfig.addProperty("healthUpdatesY", getRelativeCoords(Feature.HEALTH_UPDATES).getY());
             settingsConfig.addProperty("itemPickupLogX", getRelativeCoords(Feature.ITEM_PICKUP_LOG).getX());
@@ -421,8 +441,6 @@ public class ConfigValues {
             settingsConfig.addProperty("magmaBossTimerY", getRelativeCoords(Feature.MAGMA_BOSS_TIMER).getY());
             settingsConfig.addProperty("darkAuctionTimerX", getRelativeCoords(Feature.DARK_AUCTION_TIMER).getX());
             settingsConfig.addProperty("darkAuctionTimerY", getRelativeCoords(Feature.DARK_AUCTION_TIMER).getY());
-            settingsConfig.addProperty("magmaBossTimerColor", getColor(Feature.MAGMA_BOSS_TIMER).ordinal());
-            settingsConfig.addProperty("darkAuctionTimerColor", getColor(Feature.DARK_AUCTION_TIMER).ordinal());
             settingsConfig.addProperty("textStyle", textStyle.ordinal());
 //            settingsConfig.addProperty("nextMagmaTimestamp", nextMagmaTimestamp);
 

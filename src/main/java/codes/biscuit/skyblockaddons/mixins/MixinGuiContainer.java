@@ -21,6 +21,7 @@ import net.minecraft.client.renderer.RenderItem;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.Container;
+import net.minecraft.inventory.ContainerBeacon;
 import net.minecraft.inventory.ContainerChest;
 import net.minecraft.inventory.ContainerDispenser;
 import net.minecraft.inventory.ContainerFurnace;
@@ -262,6 +263,9 @@ public class MixinGuiContainer extends GuiScreen {
         } else if (container instanceof ContainerFurnace) {
             slotNum += 6;
             if (slotNum < 9) skipSlot = true;
+        } else if (container instanceof ContainerBeacon) {
+            slotNum += 8;
+            if (slotNum < 9) skipSlot = true;
         }
         main.getUtils().setLastHoveredSlot(slotNum);
         if (!skipSlot && hoveredSlot != null && main.getConfigValues().isEnabled(Feature.LOCK_SLOTS) &&
@@ -299,6 +303,9 @@ public class MixinGuiContainer extends GuiScreen {
                 if (slotNum < 9) return;
             } else if (container instanceof ContainerFurnace) {
                 slotNum += 6;
+                if (slotNum < 9) return;
+            } else if (container instanceof ContainerBeacon) {
+                slotNum += 8;
                 if (slotNum < 9) return;
             }
             if (main.getConfigValues().getLockedSlots().contains(slotNum)) {

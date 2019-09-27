@@ -61,7 +61,8 @@ public class MixinPlayerControllerMP {
                     if (Blocks.MELON_STEM.equals(block) || Blocks.PUMPKIN_STEM.equals(block)) {
                         if (System.currentTimeMillis() - lastStemMessage > 20000) {
                             lastStemMessage = System.currentTimeMillis();
-                            main.getUtils().sendMessage(ChatFormatting.RED + Message.MESSAGE_CANCELLED_STEM_BREAK.getMessage());
+                            ChatFormatting formatting = main.getConfigValues().getColor(Feature.AVOID_BREAKING_STEMS).getChatFormatting();
+                            main.getUtils().sendMessage(formatting + Message.MESSAGE_CANCELLED_STEM_BREAK.getMessage());
                         }
 
                         cir.setReturnValue(false);
@@ -80,7 +81,8 @@ public class MixinPlayerControllerMP {
                             (Blocks.CACTUS.equals(block) && !Blocks.CACTUS.equals(blockFloor))) {
                         if (System.currentTimeMillis() - lastStemMessage > 20000) {
                             lastStemMessage = System.currentTimeMillis();
-                            main.getUtils().sendMessage(ChatFormatting.RED + Message.MESSAGE_CANCELLED_CANE_BREAK.getMessage());
+                            ChatFormatting formatting = main.getConfigValues().getColor(Feature.AVOID_BREAKING_BOTTOM_SUGAR_CANE).getChatFormatting();
+                            main.getUtils().sendMessage(formatting + Message.MESSAGE_CANCELLED_CANE_BREAK.getMessage());
                         }
 
                         cir.setReturnValue(false);
@@ -168,13 +170,14 @@ public class MixinPlayerControllerMP {
         SkyblockAddons main = SkyblockAddons.getInstance();
 
         if (main.getConfigValues().isEnabled(Feature.DONT_OPEN_PROFILES_WITH_BOW)) {
-            if (target instanceof EntityOtherPlayerMP) {
+            if (target instanceof EntityOtherPlayerMP && !main.getUtils().isNPC(target)) {
                 ItemStack item = player.inventory.getCurrentItem();
 
                 if (item != null && item.getItem() != null && item.getItem().equals(Items.BOW)) {
                     if (System.currentTimeMillis() - lastProfileMessage > 20000) {
                         lastProfileMessage = System.currentTimeMillis();
-                        main.getUtils().sendMessage(ChatFormatting.RED + Message.MESSAGE_STOPPED_OPENING_PROFILE.getMessage());
+                        ChatFormatting formatting = main.getConfigValues().getColor(Feature.DONT_OPEN_PROFILES_WITH_BOW).getChatFormatting();
+                        main.getUtils().sendMessage(formatting + Message.MESSAGE_STOPPED_OPENING_PROFILE.getMessage());
                     }
 
                     cir.setReturnValue(EnumActionResult.PASS);

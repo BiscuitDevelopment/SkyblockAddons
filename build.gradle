@@ -96,7 +96,8 @@ jar {
                 'FMLAT': 'skyblockaddons_at.cfg',
                 'MixinConfigs': 'mixins.skyblockaddons.json',
                 'TweakOrder': '0',
-                'TweakClass': 'codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsTweaker'
+                'TweakClass': 'codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsTweaker',
+                'Main-Class': 'OpenErrorMessage'
         )
     }
 

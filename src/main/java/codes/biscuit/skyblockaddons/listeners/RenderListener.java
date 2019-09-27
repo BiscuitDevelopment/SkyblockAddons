@@ -431,23 +431,25 @@ public class RenderListener {
             magmaBuilder.append(main.getPlayerListener().getMagmaAccuracy().getSymbol());
             EnumUtils.MagmaTimerAccuracy ma = main.getPlayerListener().getMagmaAccuracy();
             if (ma == EnumUtils.MagmaTimerAccuracy.ABOUT || ma == EnumUtils.MagmaTimerAccuracy.EXACTLY) {
-                int totalSeconds = main.getPlayerListener().getMagmaTime();
-                if (totalSeconds < 0) totalSeconds = 0;
-                int hours = totalSeconds / 3600;
-                int minutes = totalSeconds / 60 % 60;
-                int seconds = totalSeconds % 60;
-                if (Math.abs(hours) >= 10) hours = 10;
-                magmaBuilder.append(hours).append(":");
-                if (minutes < 10) {
-                    magmaBuilder.append("0");
+                if (buttonLocation == null) {
+                    int totalSeconds = main.getPlayerListener().getMagmaTime();
+                    if (totalSeconds < 0) totalSeconds = 0;
+                    int hours = totalSeconds / 3600;
+                    int minutes = totalSeconds / 60 % 60;
+                    int seconds = totalSeconds % 60;
+                    if (Math.abs(hours) >= 10) hours = 10;
+                    magmaBuilder.append(hours).append(":");
+                    if (minutes < 10) {
+                        magmaBuilder.append("0");
+                    }
+                    magmaBuilder.append(minutes).append(":");
+                    if (seconds < 10) {
+                        magmaBuilder.append("0");
+                    }
+                    magmaBuilder.append(seconds);
+                } else {
+                    magmaBuilder.append("1:23:45");
                 }
-                magmaBuilder.append(minutes).append(":");
-                if (seconds < 10) {
-                    magmaBuilder.append("0");
-                }
-                magmaBuilder.append(seconds);
-            } else {
-                magmaBuilder.append("1:23:45");
             }
             text = magmaBuilder.toString();
         } else {

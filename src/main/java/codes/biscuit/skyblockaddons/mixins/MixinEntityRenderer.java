@@ -47,15 +47,14 @@ public class MixinEntityRenderer {
     }
 
     private void removeEntities(List<Entity> list) {
-        if (SkyblockAddons.getInstance().getUtils().isOnSkyblock()) {
-            // conditions for the invisible zombie that Skeleton hat bones are riding
-            //list.removeIf(listEntity -> listEntity instanceof EntityZombie && listEntity.isInvisible() && listEntity.getRidingEntity() instanceof EntityItem);
+        SkyblockAddons main = SkyblockAddons.getInstance();
 
-            if (!GuiScreen.isCtrlKeyDown() && !SkyblockAddons.getInstance().getConfigValues().isDisabled(Feature.IGNORE_ITEM_FRAME_CLICKS))
+        if (main.getUtils().isOnSkyblock()) {
+            if (!GuiScreen.isCtrlKeyDown() && !main.getConfigValues().isDisabled(Feature.IGNORE_ITEM_FRAME_CLICKS))
                 list.removeIf(listEntity -> listEntity instanceof EntityItemFrame);
 
-            if (SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.HIDE_AUCTION_HOUSE_PLAYERS))
-                list.removeIf(EnumUtils.SkyblockNPC.AUCTION_MASTER::isNearEntity);
+            if (main.getConfigValues().isEnabled(Feature.HIDE_AUCTION_HOUSE_PLAYERS))
+                list.removeIf(EnumUtils.SkyblockNPC::isNearNPC);
         }
     }
 
