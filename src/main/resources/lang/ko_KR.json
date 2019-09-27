@@ -21,7 +21,7 @@
     "hideDurability": "도구 내구도 숨기기",
     "showEnchantmentsReforges": "인챈트 및 리포지",
     "minionStopWarning": "\"미니언 사거리\" 경고",
-    "hideAuctionHousePlayers": "Hide Players Near Important NPCs",
+    "hideAuctionHousePlayers": "옥션 근처의 플레이어 숨김",
     "backpackStyle": "백팩 스타일: %style%",
     "backpackStyles": {
       "regular": "일반",
@@ -89,7 +89,7 @@
     "slotLocked": "이 슬롯은 잠겨있습니다!",
     "summoningEyeFound": "소환의 눈!",
     "cancelledStemBreak": "SkyblockAddons이 이 줄기를 부수는 것을 방지했습니다. 정말로 부수려면, 빈 손으로 부수세요.",
-    "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use another tool if you'd actually like to break it.",
+    "cancelledCaneBreak": "사탕수수의 밑둥을 부수는 것을 skyblockAddons이 제한했습니다. 부수고 싶다면 다른 도구를 사용하십시오.",
     "cancelledProfileOpening": "SkyblockAddons이 활을 든 채 이 플레이어의 프로필을 여는 것을 방지했습니다.",
     "cancelledDropping": "SkyblockAddons이 이 희귀한 아이템 또는 도구를 핫바에서 떨어뜨리는 것을 방지했습니다.",
     "clickMoreTimes": "정말 이 아이템을 떨어뜨리려면 %times%번 더 떨어뜨리세요."
