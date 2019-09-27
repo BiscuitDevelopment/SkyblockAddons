@@ -50,7 +50,9 @@ public abstract class MixinGuiChest extends GuiContainer {
 
     @Override
     public void onGuiClosed() {
-        Keyboard.enableRepeatEvents(false);
+        if (this.textFieldMatch != null && this.textFieldExclusions != null) {
+            Keyboard.enableRepeatEvents(false);
+        }
     }
 
     @Override
