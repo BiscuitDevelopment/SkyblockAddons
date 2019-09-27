@@ -50,9 +50,9 @@
     "preventMovementOnDeath": "منع المشي بعد الموت",
     "showItemAnvilUses": "أظهار عدد مرات أستخدام السندان",
     "lockSlots": "السماح بقفل الخانات",
-    "dontResetCursorInventory": "لا تقوم باعادة الكورسر ما بين الانفينتوري",
+    "dontResetCursorInventory": "لا تقم بإعادة ضبط المؤشر بين المخازن",
     "summoningEyeAlert": "تنبيه عين الاستدعاء",
-    "makeEnderchestsInEndGreen": "جعل الصندوق المتنقل الذي يحمله الاندرمان أخضر",
+    "makeEnderchestsInEndGreen": "تغيير لون الصندوق المتنقل في عالم النهاية الى اخضر",
     "changeColor": "تغيير اللون",
     "showInOtherGames": "إظهار في ألعاب أخرى",
     "useVanillaTexture": "استخدام الشكل الأصلي",
@@ -65,8 +65,8 @@
     "dontOpenProfileWithBow": "عدم فتح خانة الشخصية عند حمل القوس",
     "stopDroppingSellingRareItems": "إيقاف إسقاط أو بيع الأشياء النادرة",
     "makeBackpackInventoriesColored": "لون القائمة",
-    "avoidBreakingBottomSugarCane": "أيقاف كسر قصم السكر السفلي",
-    "replaceRomanNumeralsWithNumbers": "تحويل الترقيم الروماني أو الحرفي إلى الرقمي"
+    "avoidBreakingBottomSugarCane": "أيقاف كسر قصب السكر السفلي",
+    "replaceRomanNumeralsWithNumbers": "تحويل الترقيم الروماني إلى الرقمي"
   },
   "messages": {
     "dropConfirmation": "!إرمي هذا العنصر مرة أخرى للتأكيد",
@@ -86,12 +86,12 @@
       "enchants": "التطويرات",
       "reforges": "اعادة تشكيل\n"
     },
-    "slotLocked": "هذه الخانة مغلقة!",
+    "slotLocked": "الخانة مقفله!",
     "summoningEyeFound": "عين الاستدعاء!",
-    "cancelledStemBreak": "SkyblockAddons منعك من كسر هذا الجذر. إن أردت كسره فإستخدم يدك.",
+    "cancelledStemBreak": "SkyblockAddons منعك من كسر هذا الجذر. إن أردت كسره فإستخدم يدك الفارغة.",
     "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use another tool if you'd actually like to break it.",
     "cancelledProfileOpening": "SkyblockAddons منعك من فتح شخصية هذا اللاعب وانت تحمل القوس.",
     "cancelledDropping": "SkyblockAddons منعك من إسقاط هذه الأداة أو الشيء النادر من قائمة أدواتك.",
-    "clickMoreTimes": "أضغط أو اسقط هذا الشيء %times% مرات زيادة إن كنت حقيقتاً تريد فعل هذا."
+    "clickMoreTimes": "أضغط أو اسقط هذا الشيء %times% مرات أخرى إن كنت حقيقتاً تريد فعل هذا."
   }
 }
