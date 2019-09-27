@@ -17,6 +17,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.GuiIngameForge;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
+import net.minecraftforge.client.event.RenderLivingEvent;
 import net.minecraftforge.fml.client.GuiNotification;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
@@ -81,6 +82,26 @@ public class RenderListener {
                 renderWarnings(e.resolution);
             } else {
                 renderTimersOnly();
+            }
+        }
+    }
+
+    @SubscribeEvent()
+    public void onRenderLiving(RenderLivingEvent.Specials.Pre e) {
+        Entity entity = e.entity;
+        if (main.getConfigValues().isEnabled(Feature.MINION_DISABLE_LOCATION_WARNING)) {
+            if (entity.getCustomNameTag().startsWith("\u00A7cThis location isn\'t perfect! :(")) {
+                e.setCanceled(true);
+            }
+            if (entity.getCustomNameTag().startsWith("\u00A7c/!\\")) {
+                for (Entity listEntity : Minecraft.getMinecraft().theWorld.loadedEntityList) {
+                    if (listEntity.getCustomNameTag().startsWith("\u00A7cThis location isn\'t perfect! :(") &&
+                            listEntity.posX == entity.posX && listEntity.posZ == entity.posZ &&
+                            listEntity.posY + 0.375 == entity.posY) {
+                        e.setCanceled(true);
+                        break;
+                    }
+                }
             }
         }
     }

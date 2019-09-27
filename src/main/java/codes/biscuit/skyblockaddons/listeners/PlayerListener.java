@@ -336,17 +336,6 @@ public class PlayerListener {
                         main.getRenderListener().setSubtitleFeature(Feature.MINION_STOP_WARNING);
                         main.getScheduler().schedule(Scheduler.CommandType.RESET_SUBTITLE_FEATURE, main.getConfigValues().getWarningSeconds());
                     }
-                } else if (main.getConfigValues().isEnabled(Feature.MINION_DISABLE_LOCATION_WARNING) &&
-                        entity.getCustomNameTag().startsWith("\u00A7cThis location isn\'t perfect! :(")) {
-                    entity.setAlwaysRenderNameTag(false);
-                    for (Entity listEntity : Minecraft.getMinecraft().theWorld.loadedEntityList) {
-                        if (listEntity.getCustomNameTag().startsWith("\u00A7c/!\\") &&
-                                listEntity.posX == entity.posX && listEntity.posZ == entity.posZ &&
-                                listEntity.posY - entity.posY == 0.375) {
-                            listEntity.setAlwaysRenderNameTag(false);
-                            break;
-                        }
-                    }
                 } // Apparently it no longer has a health bar
             }// else if (magmaAccuracy == EnumUtils.MagmaTimerAccuracy.SPAWNED &&
 //                    main.getConfigValues().isEnabled(Feature.MAGMA_BOSS_TIMER)) {
