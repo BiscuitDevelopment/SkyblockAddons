@@ -11,13 +11,14 @@ import java.util.Set;
 public class Blacklist {
 
 	public static Set<BlacklistedItem> DO_NOT_PLACE = Sets.newHashSet(
-		new BlacklistedItem(Item.getItemFromBlock(Blocks.END_STONE), true, false, false, Feature.AVOID_PLACING_ENCHANTED_ITEMS),
-		new BlacklistedItem(Items.STRING, true, false, true, Feature.AVOID_PLACING_ENCHANTED_ITEMS)
+			new BlacklistedItem(Items.LAVA_BUCKET, true, false, false, Feature.AVOID_PLACING_ENCHANTED_ITEMS),
+			new BlacklistedItem(Item.getItemFromBlock(Blocks.DIAMOND_BLOCK), true, false, false, Feature.AVOID_PLACING_ENCHANTED_ITEMS),
+			new BlacklistedItem(Items.STRING, true, false, true, Feature.AVOID_PLACING_ENCHANTED_ITEMS)
 	);
 
 	public static Set<BlacklistedItem> DO_NOT_RIGHT_CLICK = Sets.newHashSet(
-		new BlacklistedItem(Items.LAVA_BUCKET, true, false, false, Feature.AVOID_PLACING_ENCHANTED_ITEMS),
-		new BlacklistedItem(Items.BLAZE_ROD, true, true, false, Feature.DISABLE_EMBER_ROD)
+			new BlacklistedItem(Items.LAVA_BUCKET, true, false, false, Feature.AVOID_PLACING_ENCHANTED_ITEMS),
+			new BlacklistedItem(Items.BLAZE_ROD, true, true, false, Feature.DISABLE_EMBER_ROD)
 	);
 
 	public static class BlacklistedItem {
