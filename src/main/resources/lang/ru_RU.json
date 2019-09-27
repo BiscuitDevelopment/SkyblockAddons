@@ -21,7 +21,7 @@
     "hideDurability": "Скрыть прочность инструментов",
     "showEnchantmentsReforges": "Зачарование и Перековка",
     "minionStopWarning": "Предупреждение об остановки миньона",
-    "hideAuctionHousePlayers": "Hide Players Near Important NPCs",
+    "hideAuctionHousePlayers": "Скрыть игроков у важных НПС",
     "backpackStyle": "Стиль рюкзака: %style%",
     "backpackStyles": {
       "regular": "Обычный",
@@ -89,7 +89,7 @@
     "slotLocked": "Слот заблокирован!",
     "summoningEyeFound": "Summoning Eye!",
     "cancelledStemBreak": "SkyBlockAddons предотвратил попытку сломать стебель. Используйте руку.",
-    "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use another tool if you'd actually like to break it.",
+    "cancelledCaneBreak": "SkyBlockAddons остановил вас от ломания этого тростника. Используйте другой предмет, чтобы сломать его.",
     "cancelledProfileOpening": "SkyBlockAddons остановил вас от открытия профиля игрока с луком в руках.",
     "cancelledDropping": "SkyBlockAddons предотвратил попытку выбросить этот предмет из панели быстрого доступа.",
     "clickMoreTimes": "Нажмите/выберите этот предмет еще %times% раз, если вы действительно хотите сделать это."
