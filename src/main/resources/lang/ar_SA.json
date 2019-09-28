@@ -88,10 +88,10 @@
     },
     "slotLocked": "الخانة مقفله!",
     "summoningEyeFound": "عين الاستدعاء!",
-    "cancelledStemBreak": "SkyblockAddons منعك من كسر هذا الجذر. إن أردت كسره استخدم يدك الفارغة.",
-    "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use another tool if you'd actually like to break it.",
-    "cancelledProfileOpening": "SkyblockAddons منعك من فتح شخصية هذا اللاعب وانت تحمل القوس.",
-    "cancelledDropping": "SkyblockAddons منعك من إسقاط هذه الأداة أو الشيء النادر من قائمة أدواتك.",
+    "cancelledStemBreak": "إضافات سكاي بلوك منعك من كسر هذا الجذر. إن أردت كسره استخدم يدك الفارغة.",
+    "cancelledCaneBreak": "إضافات سكاي بلوك منعك من كسر هذا القصب، إن أردت كسره استعمل اداة اخرى.",
+    "cancelledProfileOpening": "إضافات سكاي بلوك منعك من فتح شخصية هذا اللاعب وانت تحمل القوس.",
+    "cancelledDropping": "إضافات سكاي بلوك منعك من إلقاء هذه الأداة أو الشيء النادر من قائمة أدواتك.",
     "clickMoreTimes": "أضغط أو اسقط هذا الشيء %times% مرات أخرى إن كنت حقيقا تريد فعل هذا."
   }
 }
