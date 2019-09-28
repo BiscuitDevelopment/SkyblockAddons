@@ -498,10 +498,11 @@ public class PlayerListener {
         if (e.toolTip != null && e.toolTip.size() > 0 && main.getUtils().isOnSkyblock()) {
 
             if (!hoveredItem.getItem().equals(Items.enchanted_book)) {
-                // Clean buggy enchantments at the top of armor tooltip. No check for actual armor because of custom helmets
+                // Clean buggy enchantments at the top of equipment tooltips
                 while(true) {
                     String tip = e.toolTip.get(1);
-                    if (tip.contains("Respiration") || tip.contains("Aqua Affinity") || tip.contains("Depth Strider")) {
+                    if (tip.contains("Respiration") || tip.contains("Aqua Affinity")
+							|| tip.contains("Depth Strider") || tip.contains("Efficiency")) {
                         e.toolTip.remove(tip);
                     } else break;
                 }
