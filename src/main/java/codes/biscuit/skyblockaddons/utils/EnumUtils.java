@@ -157,13 +157,51 @@ public class EnumUtils {
 
     public enum Location {
         ISLAND("Your Island"),
-        BLAZING_FORTRESS("Blazing Fortress"),
+        // Hub
         VILLAGE("Village"),
-        WILDERNESS("Wilderness"),
+        AUCTION_HOUSE("Auction House"),
         BANK("Bank"),
+        LIBRARY("Library"),
+        COAL_MINE("Coal Mine"),
+        GRAVEYARD("Graveyard"),
+        COLOSSEUM("Colosseum"),
+        WILDERNESS("Wilderness"),
+        MOUNTAIN("Mountain"),
+        WIZARD_TOWER("Wizard Tower"),
+        RUINS("Ruins"),
+        FOREST("Forest"),
+        FARM("Farm"),
+        FISHERMANS_HUT("Fisherman's Hut"),
+        HIGH_LEVEL("High Level"),
+        FLOWER_HOUSE("Flower House"),
+        CANVAS_ROOM("Canvas Room"),
+        // Floating Islands
+        BIRCH_PARK("Birch Park"),
+        SPRUCE_WOODS("Spruce Woods"),
+        JUNGLE_ISLAND("Jungle Island"),
+        SAVANNA_WOODLAND("Savanna Woodland"),
+        DARK_THICKET("Dark Thicket"),
+        // Gold Mine
+        GOLD_MINE("Gold Mine"),
+        // Deep Caverns
+        DEEP_CAVERNS("Deep Caverns"),
+        GUNPOWDER_MINES("Gunpowder Mines"),
+        LAPIS_QUARRY("Lapis Quarry"),
+        PIGMAN_DEN("Pigmen's Den"),
+        SLIMEHILL("Slimehill"),
+        DIAMOND_RESERVE("Diamond Reserve"),
+        OBSIDIAN_SANCTUARY("Obsidian Sanctuary"),
+        // The Barn
+        THE_BARN("The Barn"),
+        // Mushroom Desert
+        MUSHROOM_DESERT("Mushroom Desert"),
+        //Spider Den
+        SPIDERS_DEN("Spider's Den"),
+        // Blazing fortress
+        BLAZING_FORTRESS("Blazing Fortress"),
+        // End
         THE_END("The End"),
-        DRAGONS_NEST("Dragon's Nest"),
-        AUCTION_HOUSE("Auction House");
+        DRAGONS_NEST("Dragon's Nest");
 
         private String scoreboardName;
 
@@ -175,6 +213,7 @@ public class EnumUtils {
             return scoreboardName;
         }
     }
+
 
     // Different indicators of the magma boss are more accurate than others, display how accurate the time is.
     public enum MagmaTimerAccuracy {
