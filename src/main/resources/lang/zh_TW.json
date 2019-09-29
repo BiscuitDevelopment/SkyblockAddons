@@ -83,16 +83,16 @@
       "enchants": "附魔",
       "reforges": "重鑄"
     },
-    "newUpdateAvailable": "一個新的版本, %version%, 現已上線!",
+    "newUpdateAvailable": "A new update (%version%) is available!",
     "deleteOldFile": "下載已完成, 請使用下方的按鈕打開你的模組資料夾, 關閉你的Minecraft, 並刪除舊的版本(依個人也可稍後刪除)",
     "wantToViewPatchNotes": "想要查看更新內容?",
     "downloadLink": "更新連結",
     "downloadAutomatically": "自動下載",
-    "openModFolder": "模組資料夾",
+    "openModFolder": "MODS FOLDER",
     "joinTheDiscord": "加入Discord",
     "update": {
-      "majorAvailable": "一個新的大型改版, %version%, 現已上線! 聊天室中可見下載連結",
-      "patchAvailable": "一個新的補丁更新, %version%, 現已上線! 前往下載連結或嘗試自動下載補丁!",
+      "majorAvailable": "A new major update (%version%) is available! The link for the download can be found in chat.",
+      "patchAvailable": "A new patch update (%version%) is available! Look for the download link or to attempt to download the patch automatically!",
       "downloading": "正在下載補丁! 進度: %downloaded%/%total% 請注意下載完成後你必須刪除舊的檔案",
       "failed": "補丁下載失敗! 請使用聊天室中的連結手動下載",
       "downloadFinished": "補丁以安裝完成。它已被保存為 %file%。關閉你的Minecraft請不要忘記刪除舊的版本"
