@@ -72,9 +72,6 @@
     "dropConfirmation": "Laat dit object opnieuw vallen om te Bevestigen!",
     "magmaBossWarning": "MagmaKubus Baas!",
     "fullInventory": "Volle Inventaris!",
-    "newVersion": "Een nieuwe versie, %newestVersion% is beschikbaar. Download het door hier te klikken.",
-    "discord": "Wilt u de wijzigingen bekijken? Klik hier voor bij mijn discord te aansluiten.",
-    "developmentVersion": "U gebruikt een ontwikkelings versie: %version%. De laatste online versie is %newestVersion%",
     "labymod": "Labymod Gebruikers: Verstop Voedsel & Harnas Bar is onverenigbaar.",
     "minionCannotReach": "Een %type% handlanger kan het niet bereiken en is gestopt!",
     "minionIsFull": "Een handlager op je eiland is vol!",
@@ -85,6 +82,20 @@
     "inventoryTypes": {
       "enchants": "Betoveringen",
       "reforges": "Omsmedingen"
+    },
+    "newUpdateAvailable": "A new update, %version%, is available!",
+    "deleteOldFile": "The download has finished, please open your mods folder using the button below, close your Minecraft, and delete the old version (or delete it later if you prefer).",
+    "wantToViewPatchNotes": "Want to read the changes?",
+    "downloadLink": "UPDATE LINK",
+    "downloadAutomatically": "AUTO DOWNLOAD",
+    "openModFolder": "MOD FOLDER",
+    "joinTheDiscord": "JOIN DISCORD",
+    "update": {
+      "majorAvailable": "A new major update, %version% is available! The link for the download can be found in chat.",
+      "patchAvailable": "A new patch update, %version% is available! Look for the download link or to attempt to download the patch automatically!",
+      "downloading": "The patch is downloading! Status: %downloaded%/%total% Please note that after the download has finished, you must delete the old file.",
+      "failed": "The patch download has failed! Please download it manually using the link in chat.",
+      "downloadFinished": "The patch has finished downloading. It has been saved as %file%. Please don't forget to delete the old file after closing your Minecraft. Click the message in chat to open up the folder."
     },
     "slotLocked": "Deze Slot is vergrendeld!",
     "summoningEyeFound": "Oproepend oog!",
