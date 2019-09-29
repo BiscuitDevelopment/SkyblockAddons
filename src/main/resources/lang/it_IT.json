@@ -91,11 +91,11 @@
     "openModFolder": "CARTELLA MODS",
     "joinTheDiscord": "ENTRA NEL SERVER DI DISCORD",
     "update": {
-      "majorAvailable": "Un nuovo aggiornamento importante, %version% è disponibile! Il link per il download si trova nella chat.",
+      "majorAvailable": "Un nuovo aggiornamento importante, %version% è disponibile! Il link per il download si trova in chat.",
       "patchAvailable": "Un nuovo aggiornamento di correzioni, %version% è disponibile! Cerca il link di download o prova a scaricare automaticamente l’aggiornamento!",
       "downloading": "Download delle correzioni! Status: %downloaded%/%total% Ricorda che al termine del download dovrai eliminare il file vecchio.",
-      "failed": "The patch download has failed! Please download it manually using the link in chat.",
-      "downloadFinished": "The patch has finished downloading. It has been saved as %file%. Please don't forget to delete the old file after closing your Minecraft. Click the message in chat to open up the folder."
+      "failed": "Il download delle correzioni non è riuscito! Scaricalo manualmente utilizzando il link in chat.",
+      "downloadFinished": "L’aggiornamento con le correzioni è stato scaricato. È stato salvato come %file%. Non dimenticarti di eliminare il vecchio file dopo aver chiuso Minecraft. Clicca sul messaggio in chat per aprire la cartella."
     },
     "slotLocked": "Questo slot è bloccato!",
     "summoningEyeFound": "Occhio dell'evocazione!",
