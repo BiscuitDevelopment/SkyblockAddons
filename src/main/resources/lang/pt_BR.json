@@ -64,7 +64,7 @@
     "warningDuration": "Duração do Aviso",
     "dontOpenProfileWithBow": "Não abrir perfil com Arco na mão",
     "stopDroppingSellingRareItems": "Não Largar/Vender Itens Raros",
-    "makeBackpackInventoriesColored": "Inventário de Cores",
+    "makeBackpackInventoriesColored": "Inventários Coloridos",
     "avoidBreakingBottomSugarCane": "Evitar a quebra da Cana de Açúcar debaixo",
     "replaceRomanNumeralsWithNumbers": "Substituir números romanos nos Itens"
   },
@@ -95,14 +95,14 @@
       "patchAvailable": "Uma nova atualização para correção de erros está disponível, (%version%)! Procure o link de download ou tente atualizá-lo automaticamente!",
       "downloading": "O download da atualização está sendo efetuado! Status: %downloaded%/%total%. Por favor, quando o download terminar, delete a versão antiga.",
       "failed": "O download da atualização falhou! Por favor faça o download manualmente utilizando o link do chat.",
-      "downloadFinished": "O patch terminou de baixar. Foi salvo como %file%. Por favor, não se esqueça de excluir o arquivo antigo após fechar seu Minecraft. Clique na mensagem no chat para abrir a pasta."
+      "downloadFinished": "A atualização terminou de baixar. Foi salvo como %file%. Por favor, não se esqueça de excluir o arquivo antigo após fechar seu Minecraft. Clique na mensagem que está no chat para abrir a pasta."
     },
     "slotLocked": "Este slot está trancado!",
-    "summoningEyeFound": "Olho de Convocação do Dragão!",
+    "summoningEyeFound": "Olho de Convocação!",
     "cancelledStemBreak": "SkyBlockAddons impediu você de quebrar esta semente. Use a sua mão caso queira realmente quebrar.",
     "cancelledCaneBreak": "SkyBlockAddons impediu você de quebrar este bloco de Cana de Açúcar. Use outro tipo de ferramenta caso queira realmente quebrar.",
     "cancelledProfileOpening": "O SkyblockAddons impediu você de abrir o perfil deste jogador enquanto segura um arco.",
-    "cancelledDropping": "O SkyblockAddons impediu você de dropar este item/ferramenta rara da sua hotbar.",
+    "cancelledDropping": "O SkyblockAddons impediu você de largar este item ou ferramenta rara da sua hotbar.",
     "clickMoreTimes": "Clique/Largue este item mais %times% vezes caso realmente queira fazer isso."
   }
 }
