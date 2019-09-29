@@ -83,7 +83,7 @@
       "enchants": "Encantamentos",
       "reforges": "Reforges"
     },
-    "newUpdateAvailable": "A new update (%version%) is available!",
+    "newUpdateAvailable": "Uma nova atualização (%version%) está disponível!",
     "deleteOldFile": "O download terminou. Abre a tua pasta mods usando os botões abaixo, fecha o Minecraft e apaga a versão antiga (ou apaga-a mais tarde se preferires).",
     "wantToViewPatchNotes": "Queres ler as alterações?",
     "downloadLink": "LINK DA ATUALIZAÇÃO",
