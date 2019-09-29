@@ -72,9 +72,6 @@
     "dropConfirmation": "Jetez cet objet une nouvelle fois pour confirmer!",
     "magmaBossWarning": "Magma Boss!",
     "fullInventory": "Inventaire plein!",
-    "newVersion": "La version %newestVersion% est disponible. Télécharger la en cliquant ici.",
-    "discord": "Vous voulez voir les changements? Cliquez ici pour rejoindre mon discord.",
-    "developmentVersion": "Vous utilisez une version de développement : %version%. La dernière version disponible est %newestVersion%",
     "labymod": "Utilisateurs de Labymod: Il y a une incompatibilité avec l'option Masquer la barre de nourriture et d'armure",
     "minionCannotReach": "Le minon %type% n'arrive pas à atteindre les entités et à arrêté le spawn!",
     "minionIsFull": "Un minion sur votre île est plein",
@@ -85,6 +82,20 @@
     "inventoryTypes": {
       "enchants": "Enchantements",
       "reforges": "Reforges"
+    },
+    "newUpdateAvailable": "A new update, %version%, is available!",
+    "deleteOldFile": "The download has finished, please open your mods folder using the button below, close your Minecraft, and delete the old version (or delete it later if you prefer).",
+    "wantToViewPatchNotes": "Want to read the changes?",
+    "downloadLink": "UPDATE LINK",
+    "downloadAutomatically": "AUTO DOWNLOAD",
+    "openModFolder": "MOD FOLDER",
+    "joinTheDiscord": "JOIN DISCORD",
+    "update": {
+      "majorAvailable": "A new major update, %version% is available! The link for the download can be found in chat.",
+      "patchAvailable": "A new patch update, %version% is available! Look for the download link or to attempt to download the patch automatically!",
+      "downloading": "The patch is downloading! Status: %downloaded%/%total% Please note that after the download has finished, you must delete the old file.",
+      "failed": "The patch download has failed! Please download it manually using the link in chat.",
+      "downloadFinished": "The patch has finished downloading. It has been saved as %file%. Please don't forget to delete the old file after closing your Minecraft. Click the message in chat to open up the folder."
     },
     "slotLocked": "Cet emplacement est bloqué!",
     "summoningEyeFound": "Œil d'invocation!",
