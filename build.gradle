@@ -26,7 +26,7 @@ plugins {
     id "net.minecraftforge.gradle.forge" version "2.0.2"
 }
 */
-version = "1.3.3" //remember don't update the version until its released
+version = "1.3.4" //remember don't update the version until its released
 group= "codes.biscuit.skyblockaddons" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "SkyblockAddons"
 
