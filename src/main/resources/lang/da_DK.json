@@ -95,7 +95,7 @@
       "patchAvailable": "En ny opdatering (%version%) er klar! Kig efter overførsel link'et eller forsøg at overføre automatisk!",
       "downloading": "Opdateringen bliver hentet! Status: %downloaded%/%total% Noter at efter overførslen er færdig, så skal du slette den gamle fil.",
       "failed": "Der var en fejl ved at hente opdateringen! Hent den manuelt ved brug af link'et i chatten.",
-      "downloadFinished": "The patch has finished downloading. It has been saved as %file%. Please don't forget to delete the old file after closing your Minecraft. Click the message in chat to open up the folder."
+      "downloadFinished": "Opdateringen er færdig med at blive hentet.. Den er blevet gemt som %file%. Glem ikke at slette den gamle fil efter at lukke Minecraft. Klik på beskeden i chatten for at åbne mappen."
     },
     "slotLocked": "Dette slot er låst!",
     "summoningEyeFound": "Ringer øje!",
