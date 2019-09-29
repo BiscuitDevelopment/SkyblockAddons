@@ -83,16 +83,16 @@
       "enchants": "Enchantements",
       "reforges": "Reforges"
     },
-    "newUpdateAvailable": "A new update (%version%) is available!",
+    "newUpdateAvailable": "La mise à jour %version% est disponible!",
     "deleteOldFile": "Le téléchargement s'est terminé, veuillez ouvrir votre dossier mods en utilisant le bouton ci-dessous, fermer Minecraft et supprimer l'ancienne version (ou la supprimer plus tard si vous le préférez).",
     "wantToViewPatchNotes": "Voulez vous lire les changements ?",
     "downloadLink": "LIEN DE MISE A JOUR",
     "downloadAutomatically": "TÉLECHARGÉMENT AUTOMATIQUE",
-    "openModFolder": "MODS FOLDER",
+    "openModFolder": "DOSSIER MODS",
     "joinTheDiscord": "REJOINDRE LE DISCORD",
     "update": {
-      "majorAvailable": "A new major update (%version%) is available! The link for the download can be found in chat.",
-      "patchAvailable": "A new patch update (%version%) is available! Look for the download link or to attempt to download the patch automatically!",
+      "majorAvailable": "Une nouvelle mise à jour majeure, %version% est disponible ! Le lien pour le télécharger est disponible dans le chat.",
+      "patchAvailable": "La mise à jour %version% est disponible! Recherchez le lien de téléchargement ou essayez de télécharger automatiquement le patch !",
       "downloading": "Le patch est en cours de téléchargement! Statut : %downloaded%/%total% Veuillez noter qu'après la fin du téléchargement, vous devez supprimer l'ancien fichier.",
       "failed": "Le téléchargement du patch a échoué! Veuillez le télécharger manuellement en utilisant le lien dans le chat.",
       "downloadFinished": "Le téléchargement du patch est fini. Il a été enregistré comme %file%. N'oubliez pas de supprimer l'ancien fichier après avoir fermé votre Minecraft. Cliquez sur le message dans le chat pour ouvrir le dossier."
