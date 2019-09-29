@@ -83,19 +83,19 @@
       "enchants": "Čarolije",
       "reforges": "Reforge-ovi"
     },
-    "newUpdateAvailable": "A new update (%version%) is available!",
+    "newUpdateAvailable": "Dostupna je nova (%version%) verzija!",
     "deleteOldFile": "Skidanje je zavrseno, molimo was otvorite \"mods\" folder koristeci Minecraft dugme ispod, zatvorite vas minecraft, i izbrisite staru verziju (ili izbrisite kasnije ako zelite).",
     "wantToViewPatchNotes": "Zalite li da procitate izmene?",
     "downloadLink": "LINK ZA AZURIRANjE",
     "downloadAutomatically": "AUTOMATSKO AZURIRANJE",
-    "openModFolder": "MODS FOLDER",
+    "openModFolder": "MODS Fascikla",
     "joinTheDiscord": "UDjITE U DISCORD SERVER",
     "update": {
-      "majorAvailable": "A new major update (%version%) is available! The link for the download can be found in chat.",
-      "patchAvailable": "A new patch update (%version%) is available! Look for the download link or to attempt to download the patch automatically!",
-      "downloading": "The patch is downloading! Status: %downloaded%/%total% Please note that after the download has finished, you must delete the old file.",
-      "failed": "The patch download has failed! Please download it manually using the link in chat.",
-      "downloadFinished": "The patch has finished downloading. It has been saved as %file%. Please don't forget to delete the old file after closing your Minecraft. Click the message in chat to open up the folder."
+      "majorAvailable": "Dostupno je novo veliko ažuriranje (%version%)! Link za preuzimanje može se naći u chatu.",
+      "patchAvailable": "Novi Patch-Update (%version%) je dostupan! Potražite link za preuzimanje ili pokušajte automatski preuzeti novi Update!",
+      "downloading": "Patch-Update se preuzima! Status: %downloaded%/%total% Imajte na umu da nakon preuzimanja obrišete staru datoteku.",
+      "failed": "Preuzimanje Patch-Update nije uspelo! Preuzmite ga ručno koristeći link u chatu.",
+      "downloadFinished": "Patch-Update je preuzet. Sačuvan je u %file%. Nemojte zaboraviti da obrišete staru datoteku nakon što zatvorite minecraft. Kliknite na poruku u chatu da otvorite folder."
     },
     "slotLocked": "Ovaj nalog je zaključan!",
     "summoningEyeFound": "Summoning Eye!",
