@@ -86,6 +86,7 @@ dependencies {
 }
 
 jar {
+    archiveName = archivesBaseName + "-" + version + "-for-MC-1.12.x.jar"
     //noinspection GroovyAssignabilityCheck
     from configurations.provided.asFileTree.files.collect {
         zipTree(it)
