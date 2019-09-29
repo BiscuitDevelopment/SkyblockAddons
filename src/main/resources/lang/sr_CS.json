@@ -21,7 +21,7 @@
     "hideDurability": "Sakrij Trajnost Alata",
     "showEnchantmentsReforges": "Čarolije i Reforge-ovi",
     "minionStopWarning": "\"Minion Ne Može Dosezati\" Upozorenje",
-    "hideAuctionHousePlayers": "Hide Players Near Important NPCs",
+    "hideAuctionHousePlayers": "Sakrij igrače Blizu Važnih NPC-ova",
     "backpackStyle": "Stil Ranca: %style%",
     "backpackStyles": {
       "regular": "Regular",
@@ -31,7 +31,7 @@
     "hideHealthBar": "Sakrij Vanilla Bar Zdravlja",
     "fullMinionWarning": "Pun Minion - upozorenje",
     "ignoreItemFrameClicks": "Ignoriši Klikove na Item Okrivirima",
-    "showOnlyWhenHoldingShift": "Show Only When Holding Shift",
+    "showOnlyWhenHoldingShift": "Pokaži samo dok držiš Shift",
     "manaBar": "Bar Mane",
     "manaText": "Broj Mane",
     "healthBar": "Bar Zdravlja",
