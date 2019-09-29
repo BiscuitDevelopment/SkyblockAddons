@@ -90,8 +90,8 @@
     "summoningEyeFound": "Summoning Eye!",
     "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this stem. Use your bare hand if you'd like to actually break it.",
     "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use another tool if you'd actually like to break it.",
-    "cancelledProfileOpening": "SkyblockAddons has stopped you from opening this player's profile while holding a bow.",
-    "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare item or tool from your hotbar.",
-    "clickMoreTimes": "Click/drop this item %times% more times if you really want to do this."
+    "cancelledProfileOpening": "SkyblockAddons te je zaustavio od otvaranja inventara ovog igrača dok držiš luk i strelu.",
+    "cancelledDropping": "SkyblockAddons te je zaustavio od bacanja ovog vrednog predmeta ili oruđa iz tvog hotbara.",
+    "clickMoreTimes": "Klikni/Baci ovaj predmet još %times% puta ako stvarno želiš ovo da uradiš."
   }
 }
