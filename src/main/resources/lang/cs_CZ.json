@@ -83,16 +83,16 @@
       "enchants": "Očarování",
       "reforges": "Překování"
     },
-    "newUpdateAvailable": "Nový update %version% je dostupný!",
+    "newUpdateAvailable": "A new update (%version%) is available!",
     "deleteOldFile": "Stahování skočilo, prosím otevři svoji složku mods pomocí tlačítka dole, zavři minecraft, a smaž starou verzi(nebo ji smaž potom pokud chceš).",
     "wantToViewPatchNotes": "Chceš si přečíst změny?",
     "downloadLink": "Link pro aktualizaci",
     "downloadAutomatically": "Aoutomacké stáhnutí",
-    "openModFolder": "Složka s módy",
+    "openModFolder": "MODS FOLDER",
     "joinTheDiscord": "Připojit se na discord",
     "update": {
-      "majorAvailable": "Nová aktualizace, %version% je dostupná! Link pro stáhnutí múžeš najít v chatu.",
-      "patchAvailable": "Nová aktualizace, %version% je dostupná! Podívej se po linku pro stáhnutí nebo skus stáhnout aktualizaci automaticky!",
+      "majorAvailable": "A new major update (%version%) is available! The link for the download can be found in chat.",
+      "patchAvailable": "A new patch update (%version%) is available! Look for the download link or to attempt to download the patch automatically!",
       "downloading": "Aktualizace se stahuje! Status: %downloaded%/%total% Prosím berte na vědomí že potom co se aktualizace dokončí, musíte smazat starou složku.",
       "failed": "Stáhnutí aktualizace selhalo! Prosím stáhněte ho manuálně pomocí linku v chatu.",
       "downloadFinished": "Aktualizace dokončila stažení. Byla uložena jako %file%. Prosím nezapomeň smazat starou složku potom co zavřeš minecraft."
