@@ -5,7 +5,7 @@
       "features": "Features",
       "fixes": "Fixes",
       "guiFeatures": "GUI Features",
-      "generalSettings": "General Settings"
+      "generalSettings": "Opšta podešavanja"
     },
     "settings": "Podešavanja",
     "magmaBossWarning": "Magma Boss Upozorenje",
@@ -65,8 +65,8 @@
     "dontOpenProfileWithBow": "Don't Open Profile With Bow",
     "stopDroppingSellingRareItems": "Zaustavi Bacanje/Prodaju vrednih stvari",
     "makeBackpackInventoriesColored": "Color Inventories",
-    "avoidBreakingBottomSugarCane": "Avoid Breaking Bottom Sugar Cane",
-    "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Items"
+    "avoidBreakingBottomSugarCane": "Prekini unišavanje donje trske",
+    "replaceRomanNumeralsWithNumbers": "Zameni Rimske Brojeve na predmetima"
   },
   "messages": {
     "dropConfirmation": "Opet baci ovu stvar za potvrdu!",
@@ -86,10 +86,10 @@
       "enchants": "Čarolije",
       "reforges": "Reforge-ovi"
     },
-    "slotLocked": "This slot is locked!",
+    "slotLocked": "Ovaj nalog je zaključan!",
     "summoningEyeFound": "Summoning Eye!",
-    "cancelledStemBreak": "SkyblockAddons has stopped you from breaking this stem. Use your bare hand if you'd like to actually break it.",
-    "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use another tool if you'd actually like to break it.",
+    "cancelledStemBreak": "SkyblockAddons te zaustavio od rušenja ove stabljike. Koristi svoju ruku ako je zapravo želiš slomiti.",
+    "cancelledCaneBreak": "SkyblockAddons te je zaustavio od uništavanja ovog dela trske. Koristi neko drugi alat ako zapravo želiš da je unistiš.",
     "cancelledProfileOpening": "SkyblockAddons te je zaustavio od otvaranja inventara ovog igrača dok držiš luk i strelu.",
     "cancelledDropping": "SkyblockAddons te je zaustavio od bacanja ovog vrednog predmeta ili oruđa iz tvog hotbara.",
     "clickMoreTimes": "Klikni/Baci ovaj predmet još %times% puta ako stvarno želiš ovo da uradiš."
