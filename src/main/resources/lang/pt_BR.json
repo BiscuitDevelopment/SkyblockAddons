@@ -24,7 +24,7 @@
     "hideAuctionHousePlayers": "Esconder Jogadores Perto de NPCs Importantes",
     "backpackStyle": "Estilo de Mochila: %style%",
     "backpackStyles": {
-      "regular": "Normal",
+      "regular": "Padrão",
       "compact": "Compacto"
     },
     "showBackpackPreview": "Mostrar Conteúdo de Mochilas",
@@ -51,22 +51,22 @@
     "showItemAnvilUses": "Mostrar Usos na Bigorna de Itens",
     "lockSlots": "Permitir Trava de Slots",
     "dontResetCursorInventory": "Não reajustar cursor entre inventários",
-    "summoningEyeAlert": "Alerta de aparição do Olho",
+    "summoningEyeAlert": "Alerta de aparição do Olho de Dragão",
     "makeEnderchestsInEndGreen": "Tornar Baús do Fim Verdes no Final",
     "changeColor": "Mudar Cor",
     "showInOtherGames": "Mostar em Outros Jogos",
     "useVanillaTexture": "Usar Textura Padrão",
     "textStyle": "Estilo do Texto",
     "textStyles": {
-      "one": "Estilo Um",
-      "two": "Estilo Dois"
+      "one": "Simples",
+      "two": "Contornado"
     },
     "warningDuration": "Duração do Aviso",
-    "dontOpenProfileWithBow": "Não Abrir Perfil com Arco",
-    "stopDroppingSellingRareItems": "Não Largar/Vender Itens Raros",
-    "makeBackpackInventoriesColored": "Inventários Coloridos",
-    "avoidBreakingBottomSugarCane": "Evitar Quebrar a Cana de Açúcar de Baixo",
-    "replaceRomanNumeralsWithNumbers": "Substituir Números Romanos em Itens"
+    "dontOpenProfileWithBow": "Não abrir perfil com Arco na mão",
+    "stopDroppingSellingRareItems": "Não dropar/vender itens raros",
+    "makeBackpackInventoriesColored": "Inventário de Cores",
+    "avoidBreakingBottomSugarCane": "Evitar a quebra da Cana de Açúcar debaixo",
+    "replaceRomanNumeralsWithNumbers": "Substituir números romanos nos Itens"
   },
   "messages": {
     "dropConfirmation": "Large este item de novo para confirmar!",
@@ -84,11 +84,11 @@
       "reforges": "Reforjadas"
     },
     "newUpdateAvailable": "Uma nova atualização (%version%) está disponível!",
-    "deleteOldFile": "O download terminou, abra sua pasta \"mods\" utilizando o botão abaixo, feche seu Minecraft e delete a versão antiga (ou delete mais tarde se você preferir).",
+    "deleteOldFile": "O download terminou, por favor, abra sua pasta de mods utilizando o botão abaixo, feche seu Minecraft e delete a versão antiga (ou delete mais tarde se você preferir).",
     "wantToViewPatchNotes": "Quer ler as alterações?",
     "downloadLink": "Link da Atualização",
     "downloadAutomatically": "Download Automático",
-    "openModFolder": "Pasta MODS",
+    "openModFolder": "MODS FOLDER",
     "joinTheDiscord": "Entre no discord",
     "update": {
       "majorAvailable": "Uma nova atualização importante (%version%) está disponível! O link para o download pode ser encontrado no chat.",
@@ -97,12 +97,12 @@
       "failed": "The patch download has failed! Please download it manually using the link in chat.",
       "downloadFinished": "O patch terminou de baixar. Foi salvo como %file%. Por favor, não se esqueça de excluir o arquivo antigo após fechar seu Minecraft. Clique na mensagem no chat para abrir a pasta."
     },
-    "slotLocked": "Este Slot Está Travado!",
-    "summoningEyeFound": "Olho de Convocação!",
-    "cancelledStemBreak": "SkyBlockAddons impediu você de quebrar essa semente. Use a sua mão se você realmente quer quebra-la.",
-    "cancelledCaneBreak": "SkyblockAddons impediu você de quebrar este bloco de cana de açúcar. Use outra ferramenta se quer mesmo quebrar.",
+    "slotLocked": "Este slot está trancado!",
+    "summoningEyeFound": "Olho de Convocação do Dragão!",
+    "cancelledStemBreak": "SkyBlockAddons impediu você de quebrar esta semente. Use a sua mão caso queira realmente quebrar.",
+    "cancelledCaneBreak": "SkyBlockAddons impediu você de quebrar este bloco de Cana de Açúcar. Use outro tipo de ferramenta caso queira realmente quebrar.",
     "cancelledProfileOpening": "O SkyblockAddons impediu você de abrir o perfil deste jogador enquanto segura um arco.",
-    "cancelledDropping": "O SkyblockAddons impediu você de largar este item ou ferramenta rara de seu hotbar.",
+    "cancelledDropping": "O SkyblockAddons impediu você de dropar este item/ferramenta rara da sua hotbar.",
     "clickMoreTimes": "Clique/largue este item mais %times% vezes se quer mesmo fazer isso."
   }
 }
