@@ -83,16 +83,16 @@
       "enchants": "Encantamentos",
       "reforges": "Reforges"
     },
-    "newUpdateAvailable": "A nova atualização %version% está disponível!",
+    "newUpdateAvailable": "A new update (%version%) is available!",
     "deleteOldFile": "O download terminou. Abre a tua pasta mods usando os botões abaixo, fecha o Minecraft e apaga a versão antiga (ou apaga-a mais tarde se preferires).",
     "wantToViewPatchNotes": "Queres ler as alterações?",
     "downloadLink": "LINK DA ATUALIZAÇÃO",
     "downloadAutomatically": "DOWNLOAD AUTOMÁTICO",
-    "openModFolder": "PASTA MODS",
+    "openModFolder": "MODS FOLDER",
     "joinTheDiscord": "ENTRA NO DISCORD",
     "update": {
-      "majorAvailable": "Uma nova atualização importante (%version%) está disponível! O link para o download está no chat.",
-      "patchAvailable": "Uma atualização de correção de erros, %version%, está disponível! Procura o link do download ou tenta descarregar a atualização automaticamente!",
+      "majorAvailable": "A new major update (%version%) is available! The link for the download can be found in chat.",
+      "patchAvailable": "A new patch update (%version%) is available! Look for the download link or to attempt to download the patch automatically!",
       "downloading": "A atualização está a descarregar! Estado: %downloaded%/%total% Assim que o download terminar terás de apagar o ficheiro antigo.",
       "failed": "O download da atualização falhou! Por favor descarrega-o manualmente usando o link no chat.",
       "downloadFinished": "A atualização terminou de ser descarregada e foi guardada como %file%. Não te esqueças de apagar o ficheiro antigo depois de fechares o Minecraft. Clica a mensagem no chat para abrir a pasta."
