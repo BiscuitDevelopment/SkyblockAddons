@@ -72,9 +72,6 @@
     "dropConfirmation": "Släpp Det Här Igen För Att Bekräfta!",
     "magmaBossWarning": "MagmaKub Boss!",
     "fullInventory": "Full Lager!",
-    "newVersion": "En Ny Version %newestVersion% Är Tillgänglig. Ladda Ner Den Genom Att Klicka Här.",
-    "discord": "Vill du se de nya ändringarna? klicka här för att komma in i min discord.",
-    "developmentVersion": "Du använder en utvecklingsversion: %version%. Den senaste uppkopplade versionen är %newestVersion%",
     "labymod": "Labymod Användare: Göm Mat, Rustning och Hälsobar är inkompatibel.",
     "minionCannotReach": "En %type% tjänare kan inte nå och har slutat spawna!",
     "minionIsFull": "En Tjänare på din ö är full!",
@@ -85,6 +82,20 @@
     "inventoryTypes": {
       "enchants": "Förtrollningar",
       "reforges": "Reforges"
+    },
+    "newUpdateAvailable": "A new update, %version%, is available!",
+    "deleteOldFile": "The download has finished, please open your mods folder using the button below, close your Minecraft, and delete the old version (or delete it later if you prefer).",
+    "wantToViewPatchNotes": "Want to read the changes?",
+    "downloadLink": "UPDATE LINK",
+    "downloadAutomatically": "AUTO DOWNLOAD",
+    "openModFolder": "MOD FOLDER",
+    "joinTheDiscord": "JOIN DISCORD",
+    "update": {
+      "majorAvailable": "A new major update, %version% is available! The link for the download can be found in chat.",
+      "patchAvailable": "A new patch update, %version% is available! Look for the download link or to attempt to download the patch automatically!",
+      "downloading": "The patch is downloading! Status: %downloaded%/%total% Please note that after the download has finished, you must delete the old file.",
+      "failed": "The patch download has failed! Please download it manually using the link in chat.",
+      "downloadFinished": "The patch has finished downloading. It has been saved as %file%. Please don't forget to delete the old file after closing your Minecraft. Click the message in chat to open up the folder."
     },
     "slotLocked": "Denna luckan är låst!",
     "summoningEyeFound": "Tillkallande Öga!",
