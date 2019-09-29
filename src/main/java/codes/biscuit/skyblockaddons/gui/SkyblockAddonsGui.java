@@ -2,6 +2,7 @@ package codes.biscuit.skyblockaddons.gui;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.gui.buttons.*;
+import codes.biscuit.skyblockaddons.utils.CoordsPair;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.Feature;
 import codes.biscuit.skyblockaddons.utils.Message;
@@ -16,6 +17,7 @@ import net.minecraftforge.client.GuiIngameForge;
 
 import java.awt.*;
 import java.io.IOException;
+import java.net.URI;
 import java.util.EnumSet;
 import java.util.Set;
 import java.util.regex.Pattern;
@@ -241,6 +243,11 @@ public class SkyblockAddonsGui extends GuiScreen {
                 main.getUtils().setFadingIn(false);
                 mc.displayGuiScreen(new SkyblockAddonsGui(main, 1, tab.getTab()));
             }
+        } else if (abstractButton instanceof ButtonCredit) {
+            EnumUtils.FeatureCredit credit = ((ButtonCredit)abstractButton).getCredit();
+            try {
+                Desktop.getDesktop().browse(new URI(credit.getUrl()));
+            } catch (Exception ignored) {}
         }
     }
 
@@ -278,7 +285,14 @@ public class SkyblockAddonsGui extends GuiScreen {
         }
         double y = getRowHeight(row);
         if (buttonType == EnumUtils.ButtonType.TOGGLE) {
-            buttonList.add(new ButtonNormal(x, y, text, main, feature));
+            ButtonNormal button = new ButtonNormal(x, y, text, main, feature);
+            buttonList.add(button);
+
+            EnumUtils.FeatureCredit credit = EnumUtils.FeatureCredit.fromFeature(feature);
+            if (credit != null) {
+                CoordsPair coords = button.getCreditsCoords(credit);
+                buttonList.add(new ButtonCredit(coords.getX(), coords.getY(), text, main, credit));
+            }
 
             if (getSettings(feature).size() > 0) {
                 buttonList.add(new ButtonSettings(x + boxWidth - 33, y + boxHeight - 23, text, main, feature));

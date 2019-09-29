@@ -394,6 +394,9 @@ public class PlayerListener {
                                 }
                             }
                         }
+                        if (!foundBoss && main.getRenderListener().getTitleFeature() == Feature.MAGMA_WARNING) {
+                            main.getRenderListener().setTitleFeature(null);
+                        }
                         if (!foundBoss && magmaAccuracy == EnumUtils.MagmaTimerAccuracy.SPAWNED) {
                             magmaAccuracy = EnumUtils.MagmaTimerAccuracy.ABOUT;
                             setMagmaTime(7200, true);

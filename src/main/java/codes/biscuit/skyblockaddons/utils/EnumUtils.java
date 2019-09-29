@@ -5,10 +5,12 @@ import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.Vec3;
+import org.apache.commons.lang3.text.WordUtils;
 
 import java.util.Arrays;
 import java.util.EnumSet;
 import java.util.Set;
+import java.util.regex.Pattern;
 
 import static codes.biscuit.skyblockaddons.utils.Message.*;
 
@@ -301,6 +303,39 @@ public class EnumUtils {
         }
     }
 
+    public enum FeatureCredit {
+        INVENTIVE_TALENT("InventiveTalent", "inventivetalent.org", Feature.MAGMA_BOSS_TIMER),
+        FSCK("fsck", "github.com/fsckmc", Feature.AVOID_BREAKING_BOTTOM_SUGAR_CANE),
+        ORCHID_ALLOY("orchidalloy", "github.com/orchidalloy", Feature.SUMMONING_EYE_ALERT),
+        HIGH_CRIT("HighCrit", "github.com/HighCrit", Feature.PREVENT_MOVEMENT_ON_DEATH),
+        DIDI_SKYWALKER("DidiSkywalker", "github.com/didiskywalker", Feature.ITEM_PICKUP_LOG, Feature.HEALTH_UPDATES, Feature.REPLACE_ROMAN_NUMERALS_WITH_NUMBERS);
+
+        private Set<Feature> features;
+        private String author;
+        private String url;
+
+        FeatureCredit(String author, String url, Feature... features) {
+            this.features = EnumSet.of(features[0], features);
+            this.author = author;
+            this.url = url;
+        }
+
+        public static FeatureCredit fromFeature(Feature feature) {
+            for (FeatureCredit credit : values()) {
+                if (credit.features.contains(feature)) return credit;
+            }
+            return null;
+        }
+
+        public String getAuthor() {
+            return "Contrib. " + author;
+        }
+
+        public String getUrl() {
+            return "https://"+url;
+        }
+    }
+
     public enum Rarity {
         COMMON("f"),
         UNCOMMON("a"),
@@ -322,6 +357,28 @@ public class EnumUtils {
                 if(itemName.startsWith(rarity.tag)) return rarity;
             }
             return null;
+        }
+    }
+
+    public enum UpdateMessageType {
+        MAJOR_AVAILABLE(UPDATE_MESSAGE_MAJOR),
+        PATCH_AVAILABLE(UPDATE_MESSAGE_PATCH),
+        DOWNLOADING(UPDATE_MESSAGE_DOWNLOAD),
+        FAILED(UPDATE_MESSAGE_FAILED),
+        DOWNLOAD_FINISHED(UPDATE_MESSAGE_DOWNLOAD_FINISHED),
+        DEVELOPMENT(null);
+
+        private Message message;
+
+        UpdateMessageType(Message message) {
+            this.message = message;
+        }
+
+        public String[] getMessages(String... variables) {
+            if (this == DEVELOPMENT) return WordUtils.wrap("You are running a development version: "+SkyblockAddons.getInstance().getRenderListener().getDownloadInfo().getNewestVersion()+
+                    ". Please report any bugs that haven't been found yet. Thank you.", 36).replace("\r", "").split(Pattern.quote("\n"));
+            String text = WordUtils.wrap(message.getMessage(variables), 36).replace("\r", "");
+            return text.split(Pattern.quote("\n"));
         }
     }
 }
