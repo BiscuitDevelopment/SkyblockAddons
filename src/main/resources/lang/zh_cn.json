@@ -21,7 +21,7 @@
     "hideDurability": "隐藏物品耐久度",
     "showEnchantmentsReforges": "附魔 & 重铸",
     "minionStopWarning": "\"仆从无法触及生物\"警告",
-    "hideAuctionHousePlayers": "隐藏拍卖所内玩家",
+    "hideAuctionHousePlayers": "隐藏重要 NPC 附近的玩家",
     "backpackStyle": "背包样式: %style%",
     "backpackStyles": {
       "regular": "常规",
@@ -66,15 +66,12 @@
     "stopDroppingSellingRareItems": "防止把贵重的物品买了",
     "makeBackpackInventoriesColored": "在背包里加颜色",
     "avoidBreakingBottomSugarCane": "阻止断绝底部甘蔗",
-    "replaceRomanNumeralsWithNumbers": "替换物品上的罗马编号"
+    "replaceRomanNumeralsWithNumbers": "使用阿拉伯编号"
   },
   "messages": {
     "dropConfirmation": "再次丢弃此物品以确认!",
     "magmaBossWarning": "!!!岩浆怪Boss已出生!!!",
     "fullInventory": "背包已满!",
-    "newVersion": "新版本，%newestVersion%已发布。点击这里下载。",
-    "discord": "想看到有那些改变? 点击此处以加入我的Discord.",
-    "developmentVersion": "你在正使用一个开发版本: %version%ﾟ. 上一个正式版本为 %newestVersion%",
     "labymod": "Labymod使用者: 隐藏食物, 装甲值, 以及血条, 不兼容。",
     "minionCannotReach": "有一个%type%仆从无法触及到生物而停止运作了!",
     "minionIsFull": "有一个仆从因为背包已满而停止运作了!",
@@ -86,10 +83,25 @@
       "enchants": "附魔",
       "reforges": "重铸"
     },
+    "newUpdateAvailable": "A new update, %version%, is available!",
+    "deleteOldFile": "The download has finished, please open your mods folder using the button below, close your Minecraft, and delete the old version (or delete it later if you prefer).",
+    "wantToViewPatchNotes": "Want to read the changes?",
+    "downloadLink": "UPDATE LINK",
+    "downloadAutomatically": "AUTO DOWNLOAD",
+    "openModFolder": "MOD FOLDER",
+    "joinTheDiscord": "JOIN DISCORD",
+    "update": {
+      "majorAvailable": "A new major update, %version% is available! The link for the download can be found in chat.",
+      "patchAvailable": "A new patch update, %version% is available! Look for the download link or to attempt to download the patch automatically!",
+      "downloading": "The patch is downloading! Status: %downloaded%/%total% Please note that after the download has finished, you must delete the old file.",
+      "failed": "The patch download has failed! Please download it manually using the link in chat.",
+      "downloadFinished": "The patch has finished downloading. It has been saved as %file%. Please don't forget to delete the old file after closing your Minecraft. Click the message in chat to open up the folder."
+    },
     "slotLocked": "该栏已锁！",
     "summoningEyeFound": "召唤之眼！",
-    "cancelledStemBreak": "SkyblockAddons阻止你破坏此方块，请使用空手来进行破坏。",
-    "cancelledProfileOpening": "SkyblockAddons 防止了你拿着弓他开这个人的 (IDK what profile's translation is)",
+    "cancelledStemBreak": "SkyblockAddons阻止你破坏此作物，请使用空手来进行破坏。",
+    "cancelledCaneBreak": "SkyblockAddons 已阻止你破坏此甘蔗。如果你真的想要破坏它，请使用其他工具。",
+    "cancelledProfileOpening": "SkyblockAddons阻止了你在持弓的时候打开他人的档案。",
     "cancelledDropping": "SkyblockAddons 防止了你把这个工具或物品扔掉",
     "clickMoreTimes": "如果你想要把这个东西掉了，在如果你想要把这个东西掉了，在点击%times% 次"
   }

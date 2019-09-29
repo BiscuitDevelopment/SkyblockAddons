@@ -1,7 +1,16 @@
 package codes.biscuit.skyblockaddons.gui;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.gui.buttons.*;
+import codes.biscuit.skyblockaddons.gui.buttons.ButtonArrow;
+import codes.biscuit.skyblockaddons.gui.buttons.ButtonCredit;
+import codes.biscuit.skyblockaddons.gui.buttons.ButtonFeature;
+import codes.biscuit.skyblockaddons.gui.buttons.ButtonModify;
+import codes.biscuit.skyblockaddons.gui.buttons.ButtonNormal;
+import codes.biscuit.skyblockaddons.gui.buttons.ButtonSettings;
+import codes.biscuit.skyblockaddons.gui.buttons.ButtonSolid;
+import codes.biscuit.skyblockaddons.gui.buttons.ButtonSwitchTab;
+import codes.biscuit.skyblockaddons.gui.buttons.ButtonToggle;
+import codes.biscuit.skyblockaddons.utils.CoordsPair;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.Feature;
 import codes.biscuit.skyblockaddons.utils.Message;
@@ -14,8 +23,10 @@ import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraftforge.client.GuiIngameForge;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Desktop;
 import java.io.IOException;
+import java.net.URI;
 import java.util.EnumSet;
 import java.util.Set;
 import java.util.regex.Pattern;
@@ -241,6 +252,11 @@ public class SkyblockAddonsGui extends GuiScreen {
                 main.getUtils().setFadingIn(false);
                 mc.displayGuiScreen(new SkyblockAddonsGui(main, 1, tab.getTab()));
             }
+        } else if (abstractButton instanceof ButtonCredit) {
+            EnumUtils.FeatureCredit credit = ((ButtonCredit)abstractButton).getCredit();
+            try {
+                Desktop.getDesktop().browse(new URI(credit.getUrl()));
+            } catch (Exception ignored) {}
         }
     }
 
@@ -278,7 +294,14 @@ public class SkyblockAddonsGui extends GuiScreen {
         }
         double y = getRowHeight(row);
         if (buttonType == EnumUtils.ButtonType.TOGGLE) {
-            buttonList.add(new ButtonNormal(x, y, text, main, feature));
+            ButtonNormal button = new ButtonNormal(x, y, text, main, feature);
+            buttonList.add(button);
+
+            EnumUtils.FeatureCredit credit = EnumUtils.FeatureCredit.fromFeature(feature);
+            if (credit != null) {
+                CoordsPair coords = button.getCreditsCoords(credit);
+                buttonList.add(new ButtonCredit(coords.getX(), coords.getY(), text, main, credit));
+            }
 
             if (!getSettings(feature).isEmpty()) {
                 buttonList.add(new ButtonSettings(x + boxWidth - 33, y + boxHeight - 23, text, main, feature));

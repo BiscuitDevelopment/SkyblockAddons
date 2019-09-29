@@ -6,6 +6,7 @@ import codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui;
 import codes.biscuit.skyblockaddons.gui.buttons.ButtonLocation;
 import codes.biscuit.skyblockaddons.utils.Attribute;
 import codes.biscuit.skyblockaddons.utils.ConfigColor;
+import codes.biscuit.skyblockaddons.utils.DownloadInfo;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.Feature;
 import codes.biscuit.skyblockaddons.utils.ItemDiff;
@@ -45,6 +46,8 @@ public class RenderListener {
     private boolean predictHealth = false;
     private boolean predictMana = false;
 
+    private final DownloadInfo downloadInfo;
+
     private Feature subtitleFeature = null;
     private Feature titleFeature = null;
     private String cannotReachMobName = null;
@@ -55,6 +58,7 @@ public class RenderListener {
 
     public RenderListener(SkyblockAddons main) {
         this.main = main;
+        this.downloadInfo = new DownloadInfo(main);
     }
     /**
      * Render overlays and warnings for clients without labymod.
@@ -69,6 +73,7 @@ public class RenderListener {
                 } else {
                     renderTimersOnly();
                 }
+                drawUpdateMessage();
             }
         }
     }
@@ -87,6 +92,7 @@ public class RenderListener {
             } else {
                 renderTimersOnly();
             }
+            drawUpdateMessage();
         }
     }
 
@@ -286,6 +292,36 @@ public class RenderListener {
             buttonLocation.drawTexturedModalRect(intX, intY, 0, textureY, width, height);
             if (filled > 0) {
                 buttonLocation.drawTexturedModalRect(intX, intY, 0, textureY+5, filled, height);
+            }
+        }
+    }
+
+    private void drawUpdateMessage() {
+        EnumUtils.UpdateMessageType messageType = downloadInfo.getMessageType();
+        if (messageType != null) {
+            Minecraft mc = Minecraft.getMinecraft();
+            String[] textList;
+            if (messageType == EnumUtils.UpdateMessageType.PATCH_AVAILABLE || messageType == EnumUtils.UpdateMessageType.MAJOR_AVAILABLE) {
+                textList = downloadInfo.getMessageType().getMessages(downloadInfo.getNewestVersion());
+            } else if (messageType == EnumUtils.UpdateMessageType.DOWNLOADING) {
+                textList = downloadInfo.getMessageType().getMessages(String.valueOf(downloadInfo.getDownloadedBytes()), String.valueOf(downloadInfo.getTotalBytes()));
+            } else if (messageType == EnumUtils.UpdateMessageType.DOWNLOAD_FINISHED) {
+                textList = downloadInfo.getMessageType().getMessages(downloadInfo.getOutputFileName());
+            } else {
+                textList = downloadInfo.getMessageType().getMessages();
+            }
+            int halfWidth = new ScaledResolution(mc).getScaledWidth() / 2;
+            Gui.drawRect(halfWidth - 110, 20, halfWidth + 110, 53+textList.length*10, ConfigColor.RED.getColor(127).getRGB());
+            String text = "SkyblockAddons";
+            GlStateManager.pushMatrix();
+            float scale = 1.5F;
+            GlStateManager.scale(scale, scale, 1);
+            mc.fontRenderer.drawString(text, (int) (halfWidth / scale) - mc.fontRenderer.getStringWidth(text) / 2, (int) (30 / scale), ConfigColor.WHITE.getColor(255).getRGB());
+            GlStateManager.popMatrix();
+            int y = 45;
+            for (String line : textList) {
+                mc.fontRenderer.drawString(line, halfWidth - mc.fontRenderer.getStringWidth(line) / 2, y, ConfigColor.WHITE.getColor(255).getRGB());
+                y+=10;
             }
         }
     }
@@ -618,4 +654,9 @@ public class RenderListener {
     Feature getTitleFeature() {
         return titleFeature;
     }
+
+    public DownloadInfo getDownloadInfo() {
+        return downloadInfo;
+    }
+
 }

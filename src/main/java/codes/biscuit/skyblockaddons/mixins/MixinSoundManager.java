@@ -26,7 +26,12 @@ public abstract class MixinSoundManager {
             )
     )
     private float getNormalizedVolumeBypass(SoundManager soundManager, ISound sound) {
-        return SkyblockAddons.getInstance().getUtils().isPlayingSound() ? 1 : getClampedVolume(sound);
+        SkyblockAddons main = SkyblockAddons.getInstance();
+        if (main != null && main.getUtils() != null && main.getUtils().isPlayingSound()) {
+            return 1;
+        } else {
+            return getClampedVolume(sound);
+        }
     }
 
 }

@@ -9,6 +9,8 @@ import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.server.MinecraftServer;
 
+import java.awt.Desktop;
+import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 
@@ -56,6 +58,18 @@ public class SkyblockAddonsCommand extends CommandBase {
                 main.getUtils().setCopyNBT(copyingNBT);
                 if (copyingNBT) main.getUtils().sendMessage(ChatFormatting.GREEN+"You are now able to copy the nbt of items. Hover over any item and press CTRL to copy.");
                 else main.getUtils().sendMessage(ChatFormatting.RED+"You have disabled the ability to copy nbt.");
+                return;
+            } else if ("update".equalsIgnoreCase(args[0])) {
+                if (main.getRenderListener().getDownloadInfo().isPatch())
+                    main.getUtils().downloadPatch(main.getRenderListener().getDownloadInfo().getNewestVersion());
+
+                return;
+            } else if ("folder".equalsIgnoreCase(args[0])) {
+                try {
+                    Desktop.getDesktop().open(main.getUtils().getSBAFolder(false));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 return;
             }
         }

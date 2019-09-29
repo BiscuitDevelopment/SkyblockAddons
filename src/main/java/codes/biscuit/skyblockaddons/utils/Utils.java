@@ -3,6 +3,7 @@ package codes.biscuit.skyblockaddons.utils;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
+import com.google.common.collect.ObjectArrays;
 import com.google.common.collect.Sets;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -26,14 +27,26 @@ import net.minecraft.util.text.event.ClickEvent;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.FMLLog;
+import net.minecraftforge.fml.common.MetadataCollection;
+import net.minecraftforge.fml.common.ModMetadata;
+import net.minecraftforge.fml.relauncher.CoreModManager;
+import net.minecraftforge.fml.relauncher.FMLInjectionData;
+import net.minecraftforge.fml.relauncher.FileListHelper;
 import org.apache.commons.lang3.mutable.MutableInt;
 import org.apache.commons.lang3.text.WordUtils;
 
 import java.awt.Color;
+import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
@@ -44,9 +57,11 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.jar.JarFile;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+import java.util.zip.ZipEntry;
 
 @SuppressWarnings("deprecation")
 public class Utils {
@@ -210,6 +225,7 @@ public class Utils {
                         break;
                     }
                 }
+                main.getRenderListener().getDownloadInfo().setNewestVersion(newestVersion);
                 reader.close();
                 List<Integer> newestVersionNumbers = new ArrayList<>();
                 List<Integer> thisVersionNumbers = new ArrayList<>();
@@ -260,20 +276,19 @@ public class Utils {
                         } catch (Exception ex) {
                             ex.printStackTrace();
                         } finally {
-                            sendMessage(skyblockAddonsHeader);
-                            TextComponentString newVersion = new TextComponentString(ChatFormatting.YELLOW + Message.MESSAGE_NEW_VERSION.getMessage(newestVersion) + "\n");
-                            newVersion.setStyle(newVersion.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, link)));
-                            sendMessage(newVersion);
-                            /*TextComponentString discord = new TextComponentString(ChatFormatting.YELLOW + Message.MESSAGE_DISCORD.getMessage());
-                            discord.setStyle(discord.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://discord.gg/PqTAEek")));
-                            sendMessage(discord);*/
-                            sendMessage(ChatFormatting.GRAY.toString() + ChatFormatting.STRIKETHROUGH + "---------------------------------------");
+                            main.getRenderListener().getDownloadInfo().setDownloadLink(link);
+                            if (i == 2 || i == 3) { // 0.0.x or 0.0.0-bx
+                                main.getRenderListener().getDownloadInfo().setPatch();
+                                main.getRenderListener().getDownloadInfo().setMessageType(EnumUtils.UpdateMessageType.PATCH_AVAILABLE);
+                                sendUpdateMessage(true,true);
+                            } else {
+                                main.getRenderListener().getDownloadInfo().setMessageType(EnumUtils.UpdateMessageType.MAJOR_AVAILABLE);
+                                sendUpdateMessage(true,false);
+                            }
                         }
                         break;
                     } else if (thisVersionNumbers.get(i) > newestVersionNumbers.get(i)) {
-                        sendMessage(skyblockAddonsHeader);
-                        sendMessage(ChatFormatting.YELLOW + Message.MESSAGE_DEVELOPMENT_VERSION.getMessage(SkyblockAddons.VERSION, newestVersion));
-                        sendMessage(ChatFormatting.GRAY.toString() + ChatFormatting.STRIKETHROUGH + "---------------------------------------");
+                        main.getRenderListener().getDownloadInfo().setMessageType(EnumUtils.UpdateMessageType.DEVELOPMENT);
                         break;
                     }
                 }
@@ -281,6 +296,46 @@ public class Utils {
                 ex.printStackTrace();
             }
         }).start();
+    }
+
+    void sendUpdateMessage(boolean showDownload, boolean showAutoDownload) {
+        String newestVersion = main.getRenderListener().getDownloadInfo().getNewestVersion();
+        sendMessage(ConfigColor.GRAY.toString() + ChatFormatting.STRIKETHROUGH + "--------" + ConfigColor.GRAY + "[" +
+                            ConfigColor.AQUA + ChatFormatting.BOLD + " SkyblockAddons " + ConfigColor.GRAY + "]" + ConfigColor.GRAY + ChatFormatting.STRIKETHROUGH + "--------");
+        if (main.getRenderListener().getDownloadInfo().getMessageType() == EnumUtils.UpdateMessageType.DOWNLOAD_FINISHED) {
+            TextComponentString deleteOldFile = new TextComponentString(ConfigColor.RED+Message.MESSAGE_DELETE_OLD_FILE.getMessage()+"\n");
+            sendMessage(deleteOldFile);
+        } else {
+            TextComponentString newUpdate = new TextComponentString(ConfigColor.AQUA+Message.MESSAGE_NEW_UPDATE.getMessage(newestVersion)+"\n");
+            sendMessage(newUpdate);
+        }
+
+        TextComponentString buttonsMessage = new TextComponentString("");
+        if (showDownload) {
+            buttonsMessage = new TextComponentString(ConfigColor.AQUA.toString() + ChatFormatting.BOLD + "[" + Message.MESSAGE_DOWNLOAD_LINK.getMessage(newestVersion) + "]");
+            buttonsMessage.setStyle(buttonsMessage.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, main.getRenderListener().getDownloadInfo().getDownloadLink())));
+            buttonsMessage.appendSibling(new TextComponentString(" "));
+        }
+
+        if (showAutoDownload) {
+            TextComponentString downloadAutomatically = new TextComponentString(ConfigColor.GREEN.toString() + ChatFormatting.BOLD + "[" + Message.MESSAGE_DOWNLOAD_AUTOMATICALLY.getMessage(newestVersion) + "]");
+            downloadAutomatically.setStyle(downloadAutomatically.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/sba update")));
+            buttonsMessage.appendSibling(downloadAutomatically);
+            buttonsMessage.appendSibling(new TextComponentString(" "));
+        }
+
+        TextComponentString openModsFolder = new TextComponentString(ConfigColor.YELLOW.toString() + ChatFormatting.BOLD + "[" + Message.MESSAGE_OPEN_MODS_FOLDER.getMessage(newestVersion) + "]");
+        openModsFolder.setStyle(openModsFolder.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/sba folder")));
+        buttonsMessage.appendSibling(openModsFolder);
+
+        sendMessage(buttonsMessage);
+        if (main.getRenderListener().getDownloadInfo().getMessageType() != EnumUtils.UpdateMessageType.DOWNLOAD_FINISHED) {
+            TextComponentString discord = new TextComponentString(ConfigColor.AQUA + Message.MESSAGE_VIEW_PATCH_NOTES.getMessage() + " " +
+                                                                      ConfigColor.BLUE.toString() + ChatFormatting.BOLD + "[" + Message.MESSAGE_JOIN_DISCORD.getMessage() + "]");
+            discord.setStyle(discord.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://discord.gg/PqTAEek")));
+            sendMessage(discord);
+        }
+        sendMessage(ConfigColor.GRAY.toString() + ChatFormatting.STRIKETHROUGH + "----------------------------------");
     }
 
     public void checkDisabledFeatures() {
@@ -486,6 +541,85 @@ public class Utils {
             return item.getItem().isDamageable() || (rarity != EnumUtils.Rarity.COMMON && rarity != EnumUtils.Rarity.UNCOMMON
                     && rarity != EnumUtils.Rarity.RARE) || (item.hasDisplayName() && item.getDisplayName().contains("Backpack"));
         }
+    }
+
+    public void downloadPatch(String version) {
+        File sbaFolder = getSBAFolder(true);
+        if (sbaFolder != null) {
+            new Thread(() -> {
+                try {
+                    String fileName = "SkyblockAddons-"+version+"-for-MC-1.8.9.jar";
+                    URL url = new URL("https://github.com/biscuut/SkyblockAddons/releases/download/v"+version+"/"+fileName);
+                    File outputFile = new File(sbaFolder.toString()+ File.separator+fileName);
+                    URLConnection connection = url.openConnection();
+                    long totalFileSize = connection.getContentLengthLong();
+                    main.getRenderListener().getDownloadInfo().setTotalBytes(totalFileSize);
+                    main.getRenderListener().getDownloadInfo().setOutputFileName(fileName);
+                    main.getRenderListener().getDownloadInfo().setMessageType(EnumUtils.UpdateMessageType.DOWNLOADING);
+                    connection.setConnectTimeout(5000);
+                    connection.setReadTimeout(5000);
+                    BufferedInputStream inputStream = new BufferedInputStream(connection.getInputStream());
+                    FileOutputStream fileOutputStream = new FileOutputStream(outputFile);
+                    byte[] dataBuffer = new byte[1024];
+                    int bytesRead;
+                    while ((bytesRead = inputStream.read(dataBuffer, 0, 1024)) != -1) {
+                        fileOutputStream.write(dataBuffer, 0, bytesRead);
+                        main.getRenderListener().getDownloadInfo().setDownloadedBytes(main.getRenderListener().getDownloadInfo().getDownloadedBytes()+bytesRead);
+                    }
+                    main.getRenderListener().getDownloadInfo().setMessageType(EnumUtils.UpdateMessageType.DOWNLOAD_FINISHED);
+                } catch (IOException e) {
+                    main.getRenderListener().getDownloadInfo().setMessageType(EnumUtils.UpdateMessageType.FAILED);
+                    e.printStackTrace();
+                }
+            }).start();
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    public File getSBAFolder(boolean changeMessage) {
+        try {
+            Method setupCoreModDir = CoreModManager.class.getDeclaredMethod("setupCoreModDir", File.class);
+            setupCoreModDir.setAccessible(true);
+            File coreModFolder = (File) setupCoreModDir.invoke(null, Minecraft.getMinecraft().mcDataDir);
+            setupCoreModDir.setAccessible(false);
+            if (coreModFolder.isDirectory()) {
+                FilenameFilter fileFilter = (dir, name) -> name.endsWith(".jar");
+                File[] coreModList = coreModFolder.listFiles(fileFilter);
+                if (coreModList != null) {
+                    Field mccversion = FMLInjectionData.class.getDeclaredField("mccversion");
+                    mccversion.setAccessible(true);
+                    File versionedModDir = new File(coreModFolder, (String)mccversion.get(null));
+                    mccversion.setAccessible(false);
+                    if (versionedModDir.isDirectory()) {
+                        File[] versionedCoreMods = versionedModDir.listFiles(fileFilter);
+                        if (versionedCoreMods != null) {
+                            coreModList = ObjectArrays.concat(coreModList, versionedCoreMods, File.class);
+                        }
+                    }
+                    //coreModList = ObjectArrays.concat(coreModList, ModListHelper.additionalMods.values().toArray(new File[0]), File.class);
+                    FileListHelper.sortFileList(coreModList);
+                    for (File coreMod : coreModList) {
+                        JarFile jar = new JarFile(coreMod);
+                        ZipEntry modInfo = jar.getEntry("mcmod.info");
+                        if (modInfo != null) {
+                            MetadataCollection metadata = MetadataCollection.from(jar.getInputStream(modInfo), coreMod.getName());
+                            Field metadatas = metadata.getClass().getDeclaredField("metadatas");
+                            metadatas.setAccessible(true);
+                            for (String modId : ((Map<String, ModMetadata>)metadatas.get(metadata)).keySet()) {
+                                if ("skyblockaddons".equals(modId)) {
+                                    return coreMod.getParentFile();
+                                }
+                            }
+                            metadatas.setAccessible(false);
+                        }
+                    }
+                }
+            }
+        } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException | NoSuchFieldException | IOException e) {
+            e.printStackTrace();
+            if (changeMessage) main.getRenderListener().getDownloadInfo().setMessageType(EnumUtils.UpdateMessageType.FAILED);
+        }
+        return null;
     }
 
     public boolean isDevEnviroment() {

@@ -44,6 +44,10 @@ public enum Language {
         return path;
     }
 
+    public String getFlagPath() {
+        return path.toLowerCase();
+    }
+
 //    public Language getNextLanguage() {
 //        int nextType = ordinal()+1;
 //        if (nextType > values().length-1) {
