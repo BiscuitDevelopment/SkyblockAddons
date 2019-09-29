@@ -21,7 +21,7 @@
     "hideDurability": "Скрыть прочность инструментов",
     "showEnchantmentsReforges": "Зачарование и Перековка",
     "minionStopWarning": "Предупреждение об остановки миньона",
-    "hideAuctionHousePlayers": "Прятать игроков у аукциона",
+    "hideAuctionHousePlayers": "Скрыть игроков у важных НПС",
     "backpackStyle": "Стиль рюкзака: %style%",
     "backpackStyles": {
       "regular": "Обычный",
@@ -49,10 +49,10 @@
     "stopBowChargeFromResetting": "Останавливать заряд лука от перезагрузки",
     "preventMovementOnDeath": "Предотвращать ходьбу после смерти",
     "showItemAnvilUses": "Показывать Использования предмета на наковальне",
-    "lockSlots": "Разрешить блокировку слотов",
+    "lockSlots": "Включить блок. слотов",
     "dontResetCursorInventory": "Не сбрасывать курсор между инвентарями",
     "summoningEyeAlert": "Оповещение о Summoning Eye",
-    "makeEnderchestsInEndGreen": "Сделать сундуки края в краю зелёными",
+    "makeEnderchestsInEndGreen": "Сделать сундуки края в Краю зелёными",
     "changeColor": "Изменить цвет",
     "showInOtherGames": "Показывать в остальных играх",
     "useVanillaTexture": "Использовать обычные текстуры",
@@ -62,19 +62,16 @@
       "two": "Стиль 2"
     },
     "warningDuration": "Длительность предупреждения",
-    "dontOpenProfileWithBow": "Не открывать профиль луком",
+    "dontOpenProfileWithBow": "Не открывать профили луком",
     "stopDroppingSellingRareItems": "Перестать выбрасывать/продавать редкие предметы",
     "makeBackpackInventoriesColored": "Цветные ячейки рюкзаков",
-    "avoidBreakingBottomSugarCane": "Избегать ломание нижнего тростника",
-    "replaceRomanNumeralsWithNumbers": "Заменить римские номера на предметах"
+    "avoidBreakingBottomSugarCane": "Не ломать стебель тростника",
+    "replaceRomanNumeralsWithNumbers": "Заменять римские цифры на арабские"
   },
   "messages": {
     "dropConfirmation": "Выбросите предмет ещё раз для подтверждения!",
     "magmaBossWarning": "МагмаКуб Босс!",
     "fullInventory": "Инвентарь полон!",
-    "newVersion": "Новая версия, %newestVersion% доступна. Скачайте её нажав сюда.",
-    "discord": "Хотите видеть что изменилось? Нажмите сюда чтобы присоединиться к моему дискорду.",
-    "developmentVersion": "Вы запустили версию находящуюся в разработке: %version%. Последняя онлайн версия: %newestVersion%",
     "labymod": "Пользователи Labymod: Скрытие полос Еды, Защиты и Жизни несовместимо.",
     "minionCannotReach": "%type% миньон не может найти и перестал спавнить!",
     "minionIsFull": "Миньон на вашем острове заполнен!",
@@ -86,11 +83,26 @@
       "enchants": "Зачарования",
       "reforges": "Перековки"
     },
-    "slotLocked": "Этот слот заблокирован!",
+    "newUpdateAvailable": "A new update, %version%, is available!",
+    "deleteOldFile": "The download has finished, please open your mods folder using the button below, close your Minecraft, and delete the old version (or delete it later if you prefer).",
+    "wantToViewPatchNotes": "Want to read the changes?",
+    "downloadLink": "UPDATE LINK",
+    "downloadAutomatically": "AUTO DOWNLOAD",
+    "openModFolder": "MOD FOLDER",
+    "joinTheDiscord": "JOIN DISCORD",
+    "update": {
+      "majorAvailable": "A new major update, %version% is available! The link for the download can be found in chat.",
+      "patchAvailable": "A new patch update, %version% is available! Look for the download link or to attempt to download the patch automatically!",
+      "downloading": "The patch is downloading! Status: %downloaded%/%total% Please note that after the download has finished, you must delete the old file.",
+      "failed": "The patch download has failed! Please download it manually using the link in chat.",
+      "downloadFinished": "The patch has finished downloading. It has been saved as %file%. Please don't forget to delete the old file after closing your Minecraft. Click the message in chat to open up the folder."
+    },
+    "slotLocked": "Слот заблокирован!",
     "summoningEyeFound": "Summoning Eye!",
-    "cancelledStemBreak": "SkyBlockAddons оставил вас от ломания. Используйте руку, если вы хотите действительно сломать.",
+    "cancelledStemBreak": "SkyBlockAddons предотвратил попытку сломать стебель. Используйте руку.",
+    "cancelledCaneBreak": "SkyBlockAddons остановил вас от ломания этого тростника. Используйте другой предмет, чтобы сломать его.",
     "cancelledProfileOpening": "SkyBlockAddons остановил вас от открытия профиля игрока с луком в руках.",
-    "cancelledDropping": "SkyBlockAddons оставил вас от выбрасывания этого редкого предмета или инструмента из панели быстрого доступа.",
+    "cancelledDropping": "SkyBlockAddons предотвратил попытку выбросить этот предмет из панели быстрого доступа.",
     "clickMoreTimes": "Нажмите/выберите этот предмет еще %times% раз, если вы действительно хотите сделать это."
   }
 }

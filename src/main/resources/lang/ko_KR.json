@@ -20,8 +20,8 @@
     "resetLocations": "위치 설정 초기화",
     "hideDurability": "도구 내구도 숨기기",
     "showEnchantmentsReforges": "인챈트 및 리포지",
-    "minionStopWarning": "\"미니언 사거리 \" 경고",
-    "hideAuctionHousePlayers": "경매장 주위 플레이어 숨기기",
+    "minionStopWarning": "\"미니언 사거리\" 경고",
+    "hideAuctionHousePlayers": "옥션 근처의 플레이어 숨김",
     "backpackStyle": "백팩 스타일: %style%",
     "backpackStyles": {
       "regular": "일반",
@@ -51,7 +51,7 @@
     "showItemAnvilUses": "아이템 모루질 횟수 표시",
     "lockSlots": "슬롯 잠금 활성화",
     "dontResetCursorInventory": "인벤토리 내의 마우스 위치 리셋 방지",
-    "summoningEyeAlert": "드래곤 소환 눈 알림",
+    "summoningEyeAlert": "소환의 눈 알림",
     "makeEnderchestsInEndGreen": "엔드 섬에서 엔더상자를 초록색으로 표시",
     "changeColor": "색상 변경",
     "showInOtherGames": "다른 미니게임에서도 보이기",
@@ -63,18 +63,15 @@
     },
     "warningDuration": "경고 길이",
     "dontOpenProfileWithBow": "활을 든 채 프로필 열기 방지",
-    "stopDroppingSellingRareItems": "레어 아이템들을 떨어뜨리거나 파는 것을 막기",
-    "makeBackpackInventoriesColored": "색깔 있는 인벤토리",
-    "avoidBreakingBottomSugarCane": "하단 사탕수수 방지",
-    "replaceRomanNumeralsWithNumbers": "로마숫자 숫자 표시"
+    "stopDroppingSellingRareItems": "희귀한 아이템 떨어뜨림 및 판매 방지",
+    "makeBackpackInventoriesColored": "색깔 있는 백팩 인벤토리",
+    "avoidBreakingBottomSugarCane": "사탕수수 밑동 부수기 방지",
+    "replaceRomanNumeralsWithNumbers": "로마숫자를 숫자로 표시"
   },
   "messages": {
     "dropConfirmation": "아이템을 정말로 버리려면 다시 버리세요!",
     "magmaBossWarning": "마그마 큐브 보스!",
     "fullInventory": "인벤토리 꽉 참!",
-    "newVersion": "새 %newestVersion% 버전이 있습니다. 여기를 눌러 다운로드하세요!",
-    "discord": "뭐가 바뀌었는지 알고싶나요? 여기를 눌러 디스코드를 참가하세요[영어권 주의].",
-    "developmentVersion": "당신은 개발중인 %version% 버전을 사용하고 있습니다. 업로드 되어 있는 최신 버전은 %newestVersion% 버전입니다.",
     "labymod": "LabyMod 유저들에게: 배고픔, 갑옷, 체력 바 숨기기는 LabyMod와 호환되지 않습니다.",
     "minionCannotReach": "%type% 미니언과 몹의 거리가 멀어 생산을 중지했습니다!",
     "minionIsFull": "당신의 미니언의 수납 공간이 꽉 찼습니다!",
@@ -86,11 +83,26 @@
       "enchants": "인챈트",
       "reforges": "리포지"
     },
+    "newUpdateAvailable": "A new update, %version%, is available!",
+    "deleteOldFile": "The download has finished, please open your mods folder using the button below, close your Minecraft, and delete the old version (or delete it later if you prefer).",
+    "wantToViewPatchNotes": "Want to read the changes?",
+    "downloadLink": "UPDATE LINK",
+    "downloadAutomatically": "AUTO DOWNLOAD",
+    "openModFolder": "MOD FOLDER",
+    "joinTheDiscord": "JOIN DISCORD",
+    "update": {
+      "majorAvailable": "A new major update, %version% is available! The link for the download can be found in chat.",
+      "patchAvailable": "A new patch update, %version% is available! Look for the download link or to attempt to download the patch automatically!",
+      "downloading": "The patch is downloading! Status: %downloaded%/%total% Please note that after the download has finished, you must delete the old file.",
+      "failed": "The patch download has failed! Please download it manually using the link in chat.",
+      "downloadFinished": "The patch has finished downloading. It has been saved as %file%. Please don't forget to delete the old file after closing your Minecraft. Click the message in chat to open up the folder."
+    },
     "slotLocked": "이 슬롯은 잠겨있습니다!",
     "summoningEyeFound": "소환의 눈!",
-    "cancelledStemBreak": "SkyblockAddons이 이 블럭을 부수는 것을 방지했습니다. 만약 정말 부수려면, 빈 손으로 부수세요.",
-    "cancelledProfileOpening": "SkyblockAddons이 활을 든 채 이 플레이어의 프로필을 여는 것을 방지했습니다,",
-    "cancelledDropping": "SkyblockAddons이 이 레어 아이템 또는 도구를 핫바에서 떨어뜨리는 것을 방지했습니다",
-    "clickMoreTimes": "만약 이 아이템을 정말 떨어뜨리려면 %times%번 더 떨어뜨리세요."
+    "cancelledStemBreak": "SkyblockAddons이 이 줄기를 부수는 것을 방지했습니다. 정말로 부수려면, 빈 손으로 부수세요.",
+    "cancelledCaneBreak": "사탕수수의 밑둥을 부수는 것을 skyblockAddons이 제한했습니다. 부수고 싶다면 다른 도구를 사용하십시오.",
+    "cancelledProfileOpening": "SkyblockAddons이 활을 든 채 이 플레이어의 프로필을 여는 것을 방지했습니다.",
+    "cancelledDropping": "SkyblockAddons이 이 희귀한 아이템 또는 도구를 핫바에서 떨어뜨리는 것을 방지했습니다.",
+    "clickMoreTimes": "정말 이 아이템을 떨어뜨리려면 %times%번 더 떨어뜨리세요."
   }
 }
