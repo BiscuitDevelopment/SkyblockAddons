@@ -72,9 +72,6 @@
     "dropConfirmation": "아이템을 정말로 버리려면 다시 버리세요!",
     "magmaBossWarning": "마그마 큐브 보스!",
     "fullInventory": "인벤토리 꽉 참!",
-    "newVersion": "새 %newestVersion% 버전이 있습니다. 여기를 눌러 다운로드하세요!",
-    "discord": "뭐가 바뀌었는지 알고싶나요? 여기를 눌러 디스코드를 참가하세요[영어권 주의].",
-    "developmentVersion": "당신은 개발중인 %version% 버전을 사용하고 있습니다. 업로드 되어 있는 최신 버전은 %newestVersion% 버전입니다.",
     "labymod": "LabyMod 유저들에게: 배고픔, 갑옷, 체력 바 숨기기는 LabyMod와 호환되지 않습니다.",
     "minionCannotReach": "%type% 미니언과 몹의 거리가 멀어 생산을 중지했습니다!",
     "minionIsFull": "당신의 미니언의 수납 공간이 꽉 찼습니다!",
@@ -85,6 +82,20 @@
     "inventoryTypes": {
       "enchants": "인챈트",
       "reforges": "리포지"
+    },
+    "newUpdateAvailable": "A new update, %version%, is available!",
+    "deleteOldFile": "The download has finished, please open your mods folder using the button below, close your Minecraft, and delete the old version (or delete it later if you prefer).",
+    "wantToViewPatchNotes": "Want to read the changes?",
+    "downloadLink": "UPDATE LINK",
+    "downloadAutomatically": "AUTO DOWNLOAD",
+    "openModFolder": "MOD FOLDER",
+    "joinTheDiscord": "JOIN DISCORD",
+    "update": {
+      "majorAvailable": "A new major update, %version% is available! The link for the download can be found in chat.",
+      "patchAvailable": "A new patch update, %version% is available! Look for the download link or to attempt to download the patch automatically!",
+      "downloading": "The patch is downloading! Status: %downloaded%/%total% Please note that after the download has finished, you must delete the old file.",
+      "failed": "The patch download has failed! Please download it manually using the link in chat.",
+      "downloadFinished": "The patch has finished downloading. It has been saved as %file%. Please don't forget to delete the old file after closing your Minecraft. Click the message in chat to open up the folder."
     },
     "slotLocked": "이 슬롯은 잠겨있습니다!",
     "summoningEyeFound": "소환의 눈!",
