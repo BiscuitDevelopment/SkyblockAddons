@@ -72,9 +72,6 @@
     "dropConfirmation": "Large este item de novo para confirmar!",
     "magmaBossWarning": "Cubo de Magma Chefão!",
     "fullInventory": "Inventário Cheio!",
-    "newVersion": "Uma nova versão, %newestVersion% está disponível. Para baixá-la clique aqui.",
-    "discord": "Quer ver o que mudou? Clique aqui para entrar em meu Discord.",
-    "developmentVersion": "Você está usando uma versão de desenvolvimento: %version%. A versão online mais recente é %newestVersion%",
     "labymod": "Usuários de Labymod: Esconder Barras de Fome, Armadura e Vida não é compatível.",
     "minionCannotReach": "Um criado de %type% não alcança e parou de trabalhar!",
     "minionIsFull": "Um criado em sua ilha está cheio!",
@@ -85,6 +82,20 @@
     "inventoryTypes": {
       "enchants": "Encantamentos",
       "reforges": "Reforjadas"
+    },
+    "newUpdateAvailable": "A new update, %version%, is available!",
+    "deleteOldFile": "The download has finished, please open your mods folder using the button below, close your Minecraft, and delete the old version (or delete it later if you prefer).",
+    "wantToViewPatchNotes": "Want to read the changes?",
+    "downloadLink": "UPDATE LINK",
+    "downloadAutomatically": "AUTO DOWNLOAD",
+    "openModFolder": "MOD FOLDER",
+    "joinTheDiscord": "JOIN DISCORD",
+    "update": {
+      "majorAvailable": "A new major update, %version% is available! The link for the download can be found in chat.",
+      "patchAvailable": "A new patch update, %version% is available! Look for the download link or to attempt to download the patch automatically!",
+      "downloading": "The patch is downloading! Status: %downloaded%/%total% Please note that after the download has finished, you must delete the old file.",
+      "failed": "The patch download has failed! Please download it manually using the link in chat.",
+      "downloadFinished": "The patch has finished downloading. It has been saved as %file%. Please don't forget to delete the old file after closing your Minecraft. Click the message in chat to open up the folder."
     },
     "slotLocked": "Este Slot Está Travado!",
     "summoningEyeFound": "Olho de Convocação!",
