@@ -66,7 +66,7 @@
     "stopDroppingSellingRareItems": "防止把贵重的物品买了",
     "makeBackpackInventoriesColored": "在背包里加颜色",
     "avoidBreakingBottomSugarCane": "阻止断绝底部甘蔗",
-    "replaceRomanNumeralsWithNumbers": "替换物品上的罗马编号"
+    "replaceRomanNumeralsWithNumbers": "使用阿拉伯编号"
   },
   "messages": {
     "dropConfirmation": "再次丢弃此物品以确认!",
