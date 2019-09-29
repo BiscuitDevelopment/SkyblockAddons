@@ -2,9 +2,9 @@
   "language": "OwO wanguage uwu",
   "settings": {
     "tab": {
-      "features": "Features",
-      "fixes": "Fixes",
-      "guiFeatures": "GUI Features",
+      "features": "Fwetwues",
+      "fixes": "Fwxes",
+      "guiFeatures": "GUI Fwetwues",
       "generalSettings": "General Settings"
     },
     "settings": "Settings",
@@ -24,7 +24,7 @@
     "hideAuctionHousePlayers": "Hide Pwawews Nyeaw Auwction Howose",
     "backpackStyle": "Bwackpack Stywe: %style%",
     "backpackStyles": {
-      "regular": "Regular",
+      "regular": "Rwguwar",
       "compact": "Compwact"
     },
     "showBackpackPreview": "Showo Bwackpack Pwefiew",
@@ -41,7 +41,7 @@
     "defencePercentage": "Defence Pewcentage",
     "healthUpdates": "Heawth Change Numbew",
     "hidePlayersInLobby": "Hide Faw Entities In Wobby",
-    "darkAuctionTimer": "Dark Auction Timer",
+    "darkAuctionTimer": "Dwark Wuction Twimer",
     "magmaBossTimer": "Magmwa Bowoss Timwe",
     "itemPickupLog": "Item Pickup Wog",
     "avoidPlacingEnchantedItems": "Awoid Pwacing Enchawnted Items",
@@ -53,15 +53,15 @@
     "dontResetCursorInventory": "Don't Reset Cursor Between Inventories",
     "summoningEyeAlert": "Summoning Eye Alert",
     "makeEnderchestsInEndGreen": "Make Enderchests in the End Green",
-    "changeColor": "Change Color",
+    "changeColor": "Chwange Cwlor",
     "showInOtherGames": "Show in Other Games",
-    "useVanillaTexture": "Use the Vanilla Texture",
+    "useVanillaTexture": "Wse whe Vwanwa Twextwre",
     "textStyle": "Text Stywe: %style%",
     "textStyles": {
-      "one": "Style One",
-      "two": "Style Two"
+      "one": "Stwle Wne",
+      "two": "Stwle Two"
     },
-    "warningDuration": "Warning Duration",
+    "warningDuration": "Wawning Duwation",
     "dontOpenProfileWithBow": "Don't Open Profile With Bow",
     "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Items",
     "makeBackpackInventoriesColored": "Color Inventories",
