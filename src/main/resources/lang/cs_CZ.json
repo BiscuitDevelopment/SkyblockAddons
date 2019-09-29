@@ -83,19 +83,19 @@
       "enchants": "Očarování",
       "reforges": "Překování"
     },
-    "newUpdateAvailable": "Nový update (verze %version%) je dostupný!",
-    "deleteOldFile": "The download has finished, please open your mods folder using the button below, close your Minecraft, and delete the old version (or delete it later if you prefer).",
-    "wantToViewPatchNotes": "Want to read the changes?",
+    "newUpdateAvailable": "Nový update %version% je dostupný!",
+    "deleteOldFile": "Stahování skočilo, prosím otevři svoji složku mods pomocí tlačítka dole, zavři minecraft, a smaž starou verzi(nebo ji smaž potom pokud chceš).",
+    "wantToViewPatchNotes": "Chceš si přečíst změny?",
     "downloadLink": "UPDATE LINK",
-    "downloadAutomatically": "AUTO DOWNLOAD",
-    "openModFolder": "MOD FOLDER",
-    "joinTheDiscord": "JOIN DISCORD",
+    "downloadAutomatically": "Aoutomacké stáhnutí",
+    "openModFolder": "Složka s módy",
+    "joinTheDiscord": "Připojit se na discord",
     "update": {
-      "majorAvailable": "A new major update, %version% is available! The link for the download can be found in chat.",
+      "majorAvailable": "Nová aktualizace, %version% je dostupná! Link pro stáhnutí múžeš najít v chatu.",
       "patchAvailable": "A new patch update, %version% is available! Look for the download link or to attempt to download the patch automatically!",
       "downloading": "The patch is downloading! Status: %downloaded%/%total% Please note that after the download has finished, you must delete the old file.",
       "failed": "The patch download has failed! Please download it manually using the link in chat.",
-      "downloadFinished": "The patch has finished downloading. It has been saved as %file%. Please don't forget to delete the old file after closing your Minecraft. Click the message in chat to open up the folder."
+      "downloadFinished": "Aktualizace dokončila stažení. Byla uložena jako %file%. Prosím nezapomeň smazat starou složku potom co zavřeš minecraft."
     },
     "slotLocked": "Tento slot je uzamčen!",
     "summoningEyeFound": "Vyvolávací oko!",
