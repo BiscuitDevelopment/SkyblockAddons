@@ -16,7 +16,7 @@ public class RomanNumeralParser {
 	/**
 	 * Pattern that finds words that begin with a Roman numeral
 	 */
-	private static final Pattern NUMERAL_FINDING_PATTERN = Pattern.compile("(?=[MDCLXVI])M*(C[MD]|D?C{0,3})(X[CL]|L?X{0,3})(I[XV]|V?I{0,3})\\w+");
+	private static final Pattern NUMERAL_FINDING_PATTERN = Pattern.compile(" ((?=[MDCLXVI])M*(C[MD]|D?C{0,3})(X[CL]|L?X{0,3})(I[XV]|V?I{0,3}))\\w*");
 
 	private enum Numeral {
 
@@ -56,10 +56,11 @@ public class RomanNumeralParser {
 		Matcher matcher = NUMERAL_FINDING_PATTERN.matcher(input);
 		while (matcher.find()) {
 			// The matcher finds all words that begin with a Roman numeral as groups
-			String group = matcher.group();
+			String group = matcher.group().trim();
 			if (isNumeralValid(group)) { // check if that word is actually a valid numeral in itself (to catch things like Vampirism)
-				int startIndex = matcher.start();
-				int endIndex = matcher.end();
+				// capturing group 1 matches the actual numeral
+				int startIndex = matcher.start(1);
+				int endIndex = matcher.end(1);
 				int parsedInteger = parseNumeral(group);
 				String parsedIntegerString = String.valueOf(parsedInteger);
 				int lengthDiff = group.length() - parsedIntegerString.length();
