@@ -210,7 +210,7 @@ public class Utils {
     public void checkUpdates() {
         new Thread(() -> {
             try {
-                URL url = new URL("https://raw.githubusercontent.com/biscuut/SkyblockAddons/master/build.gradle");
+                URL url = new URL("https://raw.githubusercontent.com/Net-Coding/SkyblockAddons/1.12/build.gradle");
                 URLConnection connection = url.openConnection();
                 connection.setReadTimeout(5000);
                 connection.addRequestProperty("User-Agent", "SkyblockAddons update checker");
@@ -263,7 +263,8 @@ public class Utils {
                     if (newestVersionNumbers.get(i) > thisVersionNumbers.get(i)) {
                         String link = "https://hypixel.net/threads/forge-1-8-9-skyblockaddons-useful-features-for-skyblock.2109217/";
                         try {
-                            url = new URL("https://raw.githubusercontent.com/biscuut/SkyblockAddons/master/updatelink.txt");
+                            link = "https://github.com/Net-Coding/SkyblockAddons/releases/latest";
+                            /*url = new URL("https://raw.githubusercontent.com/biscuut/SkyblockAddons/master/updatelink.txt");
                             connection = url.openConnection();
                             connection.setReadTimeout(5000);
                             connection.addRequestProperty("User-Agent", "SkyblockAddons");
@@ -272,7 +273,7 @@ public class Utils {
                             while ((currentLine = reader.readLine()) != null) {
                                 link = currentLine;
                             }
-                            reader.close();
+                            reader.close();*/
                         } catch (Exception ex) {
                             ex.printStackTrace();
                         } finally {
@@ -331,7 +332,7 @@ public class Utils {
         sendMessage(buttonsMessage);
         if (main.getRenderListener().getDownloadInfo().getMessageType() != EnumUtils.UpdateMessageType.DOWNLOAD_FINISHED) {
             TextComponentString discord = new TextComponentString(ConfigColor.AQUA + Message.MESSAGE_VIEW_PATCH_NOTES.getMessage() + " " +
-                                                                      ConfigColor.BLUE.toString() + ChatFormatting.BOLD + "[" + Message.MESSAGE_JOIN_DISCORD.getMessage() + "]");
+                                                                          ConfigColor.BLUE.toString() + ChatFormatting.BOLD + "[" + Message.MESSAGE_JOIN_DISCORD.getMessage() + "]");
             discord.setStyle(discord.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://discord.gg/PqTAEek")));
             sendMessage(discord);
         }
@@ -443,7 +444,7 @@ public class Utils {
                 long currentTime = responseJson.get("queryTime").getAsLong();
                 int magmaSpawnTime = (int)((estimate-currentTime)/1000);
                 FMLLog.info("[SkyblockAddons] Query time was " + currentTime +", server time estimate is " +
-                        estimate+". Updating magma boss spawn to be in "+magmaSpawnTime+" seconds.");
+                                    estimate+". Updating magma boss spawn to be in "+magmaSpawnTime+" seconds.");
 
                 main.getPlayerListener().setMagmaTime(magmaSpawnTime, true);
                 main.getPlayerListener().setMagmaAccuracy(EnumUtils.MagmaTimerAccuracy.ABOUT);
@@ -548,8 +549,8 @@ public class Utils {
         if (sbaFolder != null) {
             new Thread(() -> {
                 try {
-                    String fileName = "SkyblockAddons-"+version+"-for-MC-1.8.9.jar";
-                    URL url = new URL("https://github.com/biscuut/SkyblockAddons/releases/download/v"+version+"/"+fileName);
+                    String fileName = "SkyblockAddons-"+version+"-for-MC-1.12.x.jar";
+                    URL url = new URL("https://github.com/Net-Coding/SkyblockAddons/releases/download/v"+version+"-1.12/"+fileName);
                     File outputFile = new File(sbaFolder.toString()+ File.separator+fileName);
                     URLConnection connection = url.openConnection();
                     long totalFileSize = connection.getContentLengthLong();
