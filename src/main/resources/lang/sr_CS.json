@@ -2,9 +2,9 @@
   "language": "Latinski Srpski",
   "settings": {
     "tab": {
-      "features": "Features",
-      "fixes": "Fixes",
-      "guiFeatures": "GUI Features",
+      "features": "Karakteristike",
+      "fixes": "Popravljeno",
+      "guiFeatures": "GUI Karakteristike",
       "generalSettings": "Opšta podešavanja"
     },
     "settings": "Podešavanja",
@@ -24,7 +24,7 @@
     "hideAuctionHousePlayers": "Sakrij igrače Blizu Važnih NPC-ova",
     "backpackStyle": "Stil Ranca: %style%",
     "backpackStyles": {
-      "regular": "Regular",
+      "regular": "Standardno",
       "compact": "Kompakt"
     },
     "showBackpackPreview": "Prikaži Pregled Ranca",
@@ -49,22 +49,22 @@
     "stopBowChargeFromResetting": "Zaustavi Punjenje Luka od Resetiranja",
     "preventMovementOnDeath": "Izbegni Hod Posle Smrti",
     "showItemAnvilUses": "Pokaži Broj Korištenja Stvari u Anvil-u",
-    "lockSlots": "Allow Locking Slots",
-    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories",
-    "summoningEyeAlert": "Summoning Eye Alert",
-    "makeEnderchestsInEndGreen": "Make Enderchests in the End Green",
-    "changeColor": "Change Color",
-    "showInOtherGames": "Show in Other Games",
-    "useVanillaTexture": "Use the Vanilla Texture",
-    "textStyle": "Text Style",
+    "lockSlots": "Dozvoli Zaključavanje Slotova",
+    "dontResetCursorInventory": "Nemoj Restartovati Kursor Između Inventara",
+    "summoningEyeAlert": "Upozorenje Za Summoning Eye",
+    "makeEnderchestsInEndGreen": "Napravi Enderchestove u End-u Zelene",
+    "changeColor": "Promeni boju",
+    "showInOtherGames": "Prikaži u drugim igrama",
+    "useVanillaTexture": "Koristi Vanilla Teksuru",
+    "textStyle": "Izgled Teksta",
     "textStyles": {
-      "one": "Style One",
-      "two": "Style Two"
+      "one": "Izgled 1",
+      "two": "Izgled 2"
     },
-    "warningDuration": "Warning Duration",
-    "dontOpenProfileWithBow": "Don't Open Profile With Bow",
+    "warningDuration": "Trajanje Upozorenja",
+    "dontOpenProfileWithBow": "Nemoj Otvoriti Profil sa Lukom",
     "stopDroppingSellingRareItems": "Zaustavi Bacanje/Prodaju vrednih stvari",
-    "makeBackpackInventoriesColored": "Color Inventories",
+    "makeBackpackInventoriesColored": "Boja inventara",
     "avoidBreakingBottomSugarCane": "Prekini unišavanje donje trske",
     "replaceRomanNumeralsWithNumbers": "Zameni Rimske Brojeve na predmetima"
   },
