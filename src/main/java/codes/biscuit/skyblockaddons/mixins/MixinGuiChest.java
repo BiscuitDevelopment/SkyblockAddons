@@ -12,6 +12,8 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.*;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
+
+import org.lwjgl.input.Keyboard;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -38,11 +40,26 @@ public abstract class MixinGuiChest extends GuiContainer {
         super(inventorySlotsIn);
     }
 
+    @Override
+    public void updateScreen() {
+        if (this.textFieldMatch != null && this.textFieldExclusions != null) {
+            this.textFieldMatch.updateCursorCounter();
+            this.textFieldExclusions.updateCursorCounter();
+        }
+    }
+
+    @Override
+    public void onGuiClosed() {
+        if (this.textFieldMatch != null && this.textFieldExclusions != null) {
+            Keyboard.enableRepeatEvents(false);
+        }
+    }
 
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
         super.drawScreen(mouseX, mouseY, partialTicks);
         if (textFieldMatch != null) {
+            Keyboard.enableRepeatEvents(true);
             GlStateManager.color(1F, 1F, 1F);
             SkyblockAddons main = SkyblockAddons.getInstance();
             String inventoryMessage = inventoryType.getMessage();
