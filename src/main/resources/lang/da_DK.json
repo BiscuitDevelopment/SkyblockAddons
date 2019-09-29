@@ -83,8 +83,8 @@
       "enchants": "Fortryller",
       "reforges": "Reforges"
     },
-    "newUpdateAvailable": "A new update (%version%) is available!",
-    "deleteOldFile": "The download has finished, please open your mods folder using the button below, close your Minecraft, and delete the old version (or delete it later if you prefer).",
+    "newUpdateAvailable": "En ny opdatering (%version%) er klar!",
+    "deleteOldFile": "Overførslen er færdig, åbn din mods mappe ved brug af knappen nedenfor, luk Minecraft, og slet den gamle version (eller slet den senere hvis du fortrækker det).",
     "wantToViewPatchNotes": "Want to read the changes?",
     "downloadLink": "UPDATE LINK",
     "downloadAutomatically": "AUTO DOWNLOAD",
