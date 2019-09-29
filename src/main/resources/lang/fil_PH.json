@@ -72,9 +72,6 @@
     "dropConfirmation": "Ihulog ang item muli para kumpirmado!",
     "magmaBossWarning": "Babala! Magma Cube Boss",
     "fullInventory": "Punong Imbentaryo!",
-    "newVersion": "Bagong versyon, %newestVersion% ang pwedeng magamit. Pwede mo ito i-download sa pamamagitan ng pag-click dito.",
-    "discord": "Gusto mo ba makita ang mga pagbabago? I-click mo dito para makasali ka sa aming discord.",
-    "developmentVersion": "Ikaw ay gumagamit ng development versyon: %version%. Ang pinakabagong versyon ay %newestVersion%",
     "labymod": "Mga gumagamit ng Labymod: Pagtago ng Food, Armor, and Health Bar, ay hindi maaari.",
     "minionCannotReach": "Ang iyong %type% minion hindi maabot at tumigil sa pagtatrabaho",
     "minionIsFull": "Ang iyong minion sa iyong isla ay puno na!",
@@ -85,6 +82,20 @@
     "inventoryTypes": {
       "enchants": "Enchants",
       "reforges": "Pandayan"
+    },
+    "newUpdateAvailable": "A new update, %version%, is available!",
+    "deleteOldFile": "The download has finished, please open your mods folder using the button below, close your Minecraft, and delete the old version (or delete it later if you prefer).",
+    "wantToViewPatchNotes": "Want to read the changes?",
+    "downloadLink": "UPDATE LINK",
+    "downloadAutomatically": "AUTO DOWNLOAD",
+    "openModFolder": "MOD FOLDER",
+    "joinTheDiscord": "JOIN DISCORD",
+    "update": {
+      "majorAvailable": "A new major update, %version% is available! The link for the download can be found in chat.",
+      "patchAvailable": "A new patch update, %version% is available! Look for the download link or to attempt to download the patch automatically!",
+      "downloading": "The patch is downloading! Status: %downloaded%/%total% Please note that after the download has finished, you must delete the old file.",
+      "failed": "The patch download has failed! Please download it manually using the link in chat.",
+      "downloadFinished": "The patch has finished downloading. It has been saved as %file%. Please don't forget to delete the old file after closing your Minecraft. Click the message in chat to open up the folder."
     },
     "slotLocked": "Ang slot na ito ay nakakandado pa!",
     "summoningEyeFound": "Pangsummon na Mata!",
