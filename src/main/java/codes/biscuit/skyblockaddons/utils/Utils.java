@@ -32,6 +32,7 @@ import net.minecraftforge.fml.common.ModMetadata;
 import net.minecraftforge.fml.relauncher.CoreModManager;
 import net.minecraftforge.fml.relauncher.FMLInjectionData;
 import net.minecraftforge.fml.relauncher.FileListHelper;
+import net.minecraftforge.fml.relauncher.libraries.ModList;
 import org.apache.commons.lang3.mutable.MutableInt;
 import org.apache.commons.lang3.text.WordUtils;
 
@@ -259,7 +260,6 @@ public class Utils {
                     if (i >= thisVersionNumbers.size()) {
                         thisVersionNumbers.add(i, 0);
                     }
-                    String skyblockAddonsHeader = ChatFormatting.GRAY.toString() + ChatFormatting.STRIKETHROUGH + "--------------" + ChatFormatting.GRAY + "[" + ChatFormatting.BLUE + ChatFormatting.BOLD + " SkyblockAddons " + ChatFormatting.GRAY + "]" + ChatFormatting.GRAY + ChatFormatting.STRIKETHROUGH + "--------------";
                     if (newestVersionNumbers.get(i) > thisVersionNumbers.get(i)) {
                         String link = "https://hypixel.net/threads/forge-1-8-9-skyblockaddons-useful-features-for-skyblock.2109217/";
                         try {
@@ -596,7 +596,11 @@ public class Utils {
                             coreModList = ObjectArrays.concat(coreModList, versionedCoreMods, File.class);
                         }
                     }
-                    //coreModList = ObjectArrays.concat(coreModList, ModListHelper.additionalMods.values().toArray(new File[0]), File.class);
+                    List<File> knownFiles = new ArrayList<>();
+                    ModList.getKnownLists(Minecraft.getMinecraft().mcDataDir).forEach(modList -> {
+                        modList.getArtifacts().forEach(artifact -> knownFiles.add(artifact.getFile()));
+                    });
+                    coreModList = ObjectArrays.concat(coreModList, knownFiles.toArray(new File[0]), File.class);
                     FileListHelper.sortFileList(coreModList);
                     for (File coreMod : coreModList) {
                         JarFile jar = new JarFile(coreMod);
