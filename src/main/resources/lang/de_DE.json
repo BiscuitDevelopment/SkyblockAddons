@@ -83,16 +83,16 @@
       "enchants": "Verzauberungen",
       "reforges": "Verbesserungen"
     },
-    "newUpdateAvailable": "Das neue Update, %version%, ist verfügbar!",
+    "newUpdateAvailable": "A new update (%version%) is available!",
     "deleteOldFile": "Der Download ist beendet, benutze den Knopf unten, um den mods Ordner zu öffnen, schließe dein Minecraft und lösche die alte Version (oder lösche es später).",
     "wantToViewPatchNotes": "Möchtest du die Änderungen lesen?",
     "downloadLink": "UPDATE LINK",
     "downloadAutomatically": "AUTO DOWNLOAD",
-    "openModFolder": "MODS ORDNER",
+    "openModFolder": "MODS FOLDER",
     "joinTheDiscord": "BETRETE DISCORD",
     "update": {
-      "majorAvailable": "Das neue wichtige Update, %version%, ist verfügbar! Du findest den Link zum Download im Chat.",
-      "patchAvailable": "Das neue Patch-Update, %version%, ist verfügbar! Suche den Download-Link oder versuche den Patch automatisch herunterzuladen!",
+      "majorAvailable": "A new major update (%version%) is available! The link for the download can be found in chat.",
+      "patchAvailable": "A new patch update (%version%) is available! Look for the download link or to attempt to download the patch automatically!",
       "downloading": "Der Patch wird heruntergeladen! Status: %downloaded%/%total% Beachte, dass du nach dem Download die alte Datei löschen musst.",
       "failed": "Der Patch-Download ist fehlgeschlagen! Bitte lade es manuell mit dem Link im Chat herunter.",
       "downloadFinished": "Der Patch-Download wurde heruntergeladen. Er wurde als %file% gespeichert. Bitte vergesse nicht die alte Datei nach dem Schließen von Minecraft, zu löschen. Klicke auf die Nachricht im Chat um den Ordner zu öffnen."
