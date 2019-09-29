@@ -95,7 +95,7 @@
       "patchAvailable": "A new patch update (%version%) is available! Look for the download link or to attempt to download the patch automatically!",
       "downloading": "The patch is downloading! Status: %downloaded%/%total% Please note that after the download has finished, you must delete the old file.",
       "failed": "The patch download has failed! Please download it manually using the link in chat.",
-      "downloadFinished": "The patch has finished downloading. It has been saved as %file%. Please don't forget to delete the old file after closing your Minecraft. Click the message in chat to open up the folder."
+      "downloadFinished": "O patch terminou de baixar. Foi salvo como %file%. Por favor, não se esqueça de excluir o arquivo antigo após fechar seu Minecraft. Clique na mensagem no chat para abrir a pasta."
     },
     "slotLocked": "Este Slot Está Travado!",
     "summoningEyeFound": "Olho de Convocação!",
