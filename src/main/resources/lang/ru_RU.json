@@ -83,16 +83,16 @@
       "enchants": "Зачарования",
       "reforges": "Перековки"
     },
-    "newUpdateAvailable": "A new update (%version%) is available!",
+    "newUpdateAvailable": "Доступно новое обновление (%version%)!",
     "deleteOldFile": "Загрузка завершена. Пожалуйста, откройте папку модов, используя кнопку ниже, закройте Minecraft и удалите старую версию (или удалите её позже).",
     "wantToViewPatchNotes": "Хотите прочесть изменения?",
     "downloadLink": "ОБНОВИТЬ ССЫЛКУ",
     "downloadAutomatically": "АВТОМАТИЧЕСКАЯ ЗАГРУЗКА",
-    "openModFolder": "MODS FOLDER",
+    "openModFolder": "ПАПКА МОДОВ",
     "joinTheDiscord": "ПРИСОЕДИНИТЬСЯ К ДИСКОРДУ",
     "update": {
-      "majorAvailable": "A new major update (%version%) is available! The link for the download can be found in chat.",
-      "patchAvailable": "A new patch update (%version%) is available! Look for the download link or to attempt to download the patch automatically!",
+      "majorAvailable": "Доступно новое большое обновление (%version%)! Ссылка на загрузку можно найти в чате.",
+      "patchAvailable": "Доступно новое обновление патча (%version%)! Ищите ссылку на скачивание или попробуйте загрузить патч автоматически!",
       "downloading": "Патч загружается! Статус: %downloaded%/%total% Пожалуйста, учтите, что после завершения загрузки, вам следует удалить старый файл.",
       "failed": "Ошибка загрузки патча! Пожалуйста, загрузите его вручную, используя ссылку в чате.",
       "downloadFinished": "Патч закончил загрузку. Он был сохранён как %file%. Пожалуйста, не забудьте удалить старый файл после закрытия Minecraft. Нажмите на сообщение в чате, чтобы открыть папку."
