@@ -41,7 +41,7 @@ public class DownloadInfo {
         return patch;
     }
 
-    public void setNewestVersion(String newestVersion) {
+    void setNewestVersion(String newestVersion) {
         this.newestVersion = newestVersion;
     }
 

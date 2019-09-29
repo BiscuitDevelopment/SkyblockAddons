@@ -375,7 +375,7 @@ public class EnumUtils {
         }
 
         public String[] getMessages(String... variables) {
-            if (this == DEVELOPMENT) return WordUtils.wrap("You are running a development version: "+SkyblockAddons.getInstance().getRenderListener().getDownloadInfo().getNewestVersion()+
+            if (this == DEVELOPMENT) return WordUtils.wrap("You are running a development version: "+SkyblockAddons.VERSION+
                     ". Please report any bugs that haven't been found yet. Thank you.", 36).replace("\r", "").split(Pattern.quote("\n"));
             String text = WordUtils.wrap(message.getMessage(variables), 36).replace("\r", "");
             return text.split(Pattern.quote("\n"));

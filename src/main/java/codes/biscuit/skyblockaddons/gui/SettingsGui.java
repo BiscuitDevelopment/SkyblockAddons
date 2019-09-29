@@ -66,7 +66,7 @@ public class SettingsGui extends GuiScreen {
             for (Language language : Language.values()) {
                 if (skip == 0) {
                     if (language == Language.ENGLISH) continue;
-                    if (language == Language.ARABIC) {
+                    if (language == Language.CHINESE_TRADITIONAL) {
                         addLanguageButton(Language.ENGLISH);
                     }
                     addLanguageButton(language);
