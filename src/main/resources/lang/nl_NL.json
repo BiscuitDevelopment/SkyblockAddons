@@ -83,16 +83,16 @@
       "enchants": "Betoveringen",
       "reforges": "Omsmedingen"
     },
-    "newUpdateAvailable": "A new update (%version%) is available!",
+    "newUpdateAvailable": "Een nieuwe update (%version%) is beschikbaar!",
     "deleteOldFile": "De download is voltooid, open uw mods map met behulp van de onderstaande knop, sluit uw Minecraft en verwijder de oude versie (of verwijder het later als u wilt).",
     "wantToViewPatchNotes": "Wil je de wijzigingen lezen?",
     "downloadLink": "UPDATE LINK",
     "downloadAutomatically": "AUTOMATISCHE DOWNLOAD",
-    "openModFolder": "MODS FOLDER",
+    "openModFolder": "MODS MAP",
     "joinTheDiscord": "JOIN DISCORD",
     "update": {
-      "majorAvailable": "A new major update (%version%) is available! The link for the download can be found in chat.",
-      "patchAvailable": "A new patch update (%version%) is available! Look for the download link or to attempt to download the patch automatically!",
+      "majorAvailable": "Een nieuwe grote update (%version%) is beschikbaar! De link voor de download kan worden gevonden in de chat.",
+      "patchAvailable": "Een nieuwe patch update (%version%) is beschikbaar! Zoek naar de download link of probeer de patch automatisch te downloaden!",
       "downloading": "De patch is aan het downloaden! Status: %downloaded%/%total% Let op dat u het oude bestand moet verwijderen nadat de download is voltooid.",
       "failed": "De patch download is mislukt! Download het handmatig met behulp van de link in de chat.",
       "downloadFinished": "De patch is klaar met downloaden. Het is opgeslagen als %file%. Vergeet niet het oude bestand te verwijderen nadat je Minecraft hebt gesloten. Klik op het bericht in de chat om de map te openen."
