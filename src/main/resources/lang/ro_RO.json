@@ -87,15 +87,15 @@
     "deleteOldFile": "The download has finished, please open your mods folder using the button below, close your Minecraft, and delete the old version (or delete it later if you prefer).",
     "wantToViewPatchNotes": "Want to read the changes?",
     "downloadLink": "UPDATE LINK",
-    "downloadAutomatically": "AUTO DOWNLOAD",
-    "openModFolder": "MODS FOLDER",
+    "downloadAutomatically": "DOWNLOADED AUTOMAT",
+    "openModFolder": "FOLDER-UL DE MODS",
     "joinTheDiscord": "JOIN DISCORD",
     "update": {
       "majorAvailable": "Un update major nou (%version%) este disponibila! Link-ul pentru download poate fii gasit in chat.",
-      "patchAvailable": "A new patch update (%version%) is available! Look for the download link or to attempt to download the patch automatically!",
-      "downloading": "The patch is downloading! Status: %downloaded%/%total% Please note that after the download has finished, you must delete the old file.",
-      "failed": "The patch download has failed! Please download it manually using the link in chat.",
-      "downloadFinished": "The patch has finished downloading. It has been saved as %file%. Please don't forget to delete the old file after closing your Minecraft. Click the message in chat to open up the folder."
+      "patchAvailable": "Un nou patch este disponibil (%version%)! Uite-te pentru link-ul de download sau incearca descarci patch-ul automat!",
+      "downloading": "Patch-ul se descarca acum! Status: %downloaded%/%total% Va rugam sa retineti ca dupa ce sa sa descarcat, trebuie sa stergeti fisierul vechi.",
+      "failed": "Descarcarea patch-ului a esuat! Va rugam sa il descarcati manual folosind linkul din chat.",
+      "downloadFinished": "Patch-ul a terminat descarcarea. A fost salvat ca %file%. Va rugam sa nu uitati sa stergeți fișierul vechi după ce ati inchis Minecraft. Faceți click pe mesajul din chat pentru a deschide dosarul."
     },
     "slotLocked": "Acest slot este blocat!",
     "summoningEyeFound": "Summoning Eye!",
