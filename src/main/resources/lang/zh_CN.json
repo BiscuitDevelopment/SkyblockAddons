@@ -72,9 +72,6 @@
     "dropConfirmation": "再次丢弃此物品以确认!",
     "magmaBossWarning": "!!!岩浆怪Boss已出生!!!",
     "fullInventory": "背包已满!",
-    "newVersion": "新版本，%newestVersion%已发布。点击这里下载。",
-    "discord": "想看到有那些改变? 点击此处以加入我的Discord.",
-    "developmentVersion": "你在正使用一个开发版本: %version%ﾟ. 上一个正式版本为 %newestVersion%",
     "labymod": "Labymod使用者: 隐藏食物, 装甲值, 以及血条, 不兼容。",
     "minionCannotReach": "有一个%type%仆从无法触及到生物而停止运作了!",
     "minionIsFull": "有一个仆从因为背包已满而停止运作了!",
@@ -85,6 +82,20 @@
     "inventoryTypes": {
       "enchants": "附魔",
       "reforges": "重铸"
+    },
+    "newUpdateAvailable": "A new update, %version%, is available!",
+    "deleteOldFile": "The download has finished, please open your mods folder using the button below, close your Minecraft, and delete the old version (or delete it later if you prefer).",
+    "wantToViewPatchNotes": "Want to read the changes?",
+    "downloadLink": "UPDATE LINK",
+    "downloadAutomatically": "AUTO DOWNLOAD",
+    "openModFolder": "MOD FOLDER",
+    "joinTheDiscord": "JOIN DISCORD",
+    "update": {
+      "majorAvailable": "A new major update, %version% is available! The link for the download can be found in chat.",
+      "patchAvailable": "A new patch update, %version% is available! Look for the download link or to attempt to download the patch automatically!",
+      "downloading": "The patch is downloading! Status: %downloaded%/%total% Please note that after the download has finished, you must delete the old file.",
+      "failed": "The patch download has failed! Please download it manually using the link in chat.",
+      "downloadFinished": "The patch has finished downloading. It has been saved as %file%. Please don't forget to delete the old file after closing your Minecraft. Click the message in chat to open up the folder."
     },
     "slotLocked": "该栏已锁！",
     "summoningEyeFound": "召唤之眼！",
