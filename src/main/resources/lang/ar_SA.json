@@ -83,12 +83,12 @@
       "enchants": "التطويرات",
       "reforges": "إعادة تشكيل"
     },
-    "newUpdateAvailable": "A new update (%version%) is available!",
+    "newUpdateAvailable": "تحديث جديد (%version%) الآن متاح!",
     "deleteOldFile": "تم التنزيل، الرجاء فتح ملف المودات مستعملا الزر ادناه، اغلق ماينكرافت، قم بإلغاء النسخة القديمه (أو الغيها لاحقا اذا اردت).",
     "wantToViewPatchNotes": "هل تريد قراءة التغييرات؟",
     "downloadLink": "رابط التحديث",
     "downloadAutomatically": "تنزيل تلقائي",
-    "openModFolder": "MODS FOLDER",
+    "openModFolder": "ملف المودات",
     "joinTheDiscord": "أدخل الديسكورد",
     "update": {
       "majorAvailable": "A new major update (%version%) is available! The link for the download can be found in chat.",
