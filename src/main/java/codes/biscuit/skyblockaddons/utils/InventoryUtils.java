@@ -5,7 +5,7 @@ import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
-import net.minecraft.inventory.Slot;
+import net.minecraft.inventory.*;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
@@ -240,5 +240,16 @@ public class InventoryUtils {
             }
         }
         return false;
+    }
+
+    /**
+     * The difference between a slot number in any given {@link Container} and what that number would be in a {@link ContainerPlayer}.
+     */
+    public int getSlotDifference(Container container) {
+        if (container instanceof ContainerChest) return 9-((ContainerChest)container).getLowerChestInventory().getSizeInventory();
+        else if (container instanceof ContainerHopper) return 4;
+        else if (container instanceof ContainerFurnace) return 6;
+        else if (container instanceof ContainerBeacon) return 8;
+        else return 0;
     }
 }

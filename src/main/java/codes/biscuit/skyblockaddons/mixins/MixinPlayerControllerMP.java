@@ -13,6 +13,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.inventory.ContainerPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumChatFormatting;
@@ -77,6 +78,24 @@ public class MixinPlayerControllerMP {
                     }
                     cir.setReturnValue(true);
                 }
+            }
+        }
+    }
+
+    /**
+     * Cancels clicking a locked inventory slot, even from other mods
+     */
+    @Inject(method = "windowClick", at = @At("HEAD"), locals = LocalCapture.CAPTURE_FAILSOFT, cancellable = true)
+    public void onWindowClick(int windowId, int slotNum, int clickButton, int clickModifier, EntityPlayer player, CallbackInfoReturnable<ItemStack> cir) {
+        SkyblockAddons main = SkyblockAddons.getInstance();
+        if (player != null && player.openContainer != null) {
+            slotNum += main.getInventoryUtils().getSlotDifference(player.openContainer);
+            if (main.getConfigValues().isEnabled(Feature.LOCK_SLOTS) && main.getUtils().isOnSkyblock()
+                    && main.getConfigValues().getLockedSlots().contains(slotNum)
+                    && (slotNum >= 9 || player.openContainer instanceof ContainerPlayer && slotNum >= 5)){
+                main.getUtils().playSound("note.bass", 0.5);
+                cir.setReturnValue(null);
+                cir.cancel();
             }
         }
     }
