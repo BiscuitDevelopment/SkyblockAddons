@@ -214,6 +214,9 @@ public class MixinGuiContainer extends GuiScreen {
         } else if (container instanceof ContainerFurnace) {
             slotNum += 6;
             if (slotNum < 9) skipSlot = true;
+        } else if (container instanceof ContainerBeacon) {
+            slotNum += 8;
+            if (slotNum < 9) skipSlot = true;
         }
         main.getUtils().setLastHoveredSlot(slotNum);
         if (!skipSlot && theSlot != null && main.getConfigValues().isEnabled(Feature.LOCK_SLOTS) &&
@@ -243,6 +246,9 @@ public class MixinGuiContainer extends GuiScreen {
                 if (slotNum < 9) return;
             } else if (container instanceof ContainerFurnace) {
                 slotNum += 6;
+                if (slotNum < 9) return;
+            } else if (container instanceof ContainerBeacon) {
+                slotNum += 8;
                 if (slotNum < 9) return;
             }
             if (main.getConfigValues().getLockedSlots().contains(slotNum)) {

@@ -37,7 +37,7 @@ public class ButtonLanguage extends GuiButton {
             drawModalRectWithCustomSizedTexture(xPosition, yPosition,0,0,width,height,width,height);
             GlStateManager.color(1,1,1,1F);
             try {
-                mc.getTextureManager().bindTexture(new ResourceLocation("skyblockaddons", "flags/"+language.getPath()+".png"));
+                mc.getTextureManager().bindTexture(new ResourceLocation("skyblockaddons", "flags/"+language.getFlagPath()+".png"));
                 drawModalRectWithCustomSizedTexture(xPosition+width-32, yPosition, 0, 0, 30, 26, 30, 26);
             } catch (Exception ex) {
                 ex.printStackTrace();

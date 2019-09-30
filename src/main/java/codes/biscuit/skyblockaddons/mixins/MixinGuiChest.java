@@ -9,9 +9,13 @@ import net.minecraft.client.gui.inventory.GuiChest;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.*;
+import net.minecraft.inventory.Container;
+import net.minecraft.inventory.ContainerChest;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
+import org.lwjgl.input.Keyboard;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -38,6 +42,20 @@ public abstract class MixinGuiChest extends GuiContainer {
         super(inventorySlotsIn);
     }
 
+    @Override
+    public void updateScreen() {
+        if (this.textFieldMatch != null && this.textFieldExclusions != null) {
+            this.textFieldMatch.updateCursorCounter();
+            this.textFieldExclusions.updateCursorCounter();
+        }
+    }
+
+    @Override
+    public void onGuiClosed() {
+        if (this.textFieldMatch != null && this.textFieldExclusions != null) {
+            Keyboard.enableRepeatEvents(false);
+        }
+    }
 
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
@@ -115,6 +133,7 @@ public abstract class MixinGuiChest extends GuiContainer {
             if (text.length() > 0) {
                 textFieldExclusions.setText(text);
             }
+            Keyboard.enableRepeatEvents(true);
         }
     }
 
@@ -192,7 +211,7 @@ public abstract class MixinGuiChest extends GuiContainer {
                 return;
             }
         }
-        if (main.getConfigValues().isEnabled(Feature.STOP_DROPPING_SELLING_RARE_ITEMS) &&
+        if (main.getConfigValues().isEnabled(Feature.STOP_DROPPING_SELLING_RARE_ITEMS) && main.getUtils().isOnSkyblock() &&
                 lowerChestInventory.hasCustomName() && EnumUtils.Merchant.isMerchant(lowerChestInventory.getDisplayName().getUnformattedText())
                 && slotIn != null && slotIn.inventory instanceof InventoryPlayer) {
             if (main.getInventoryUtils().shouldCancelDrop(slotIn)) return;

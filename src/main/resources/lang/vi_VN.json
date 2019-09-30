@@ -4,7 +4,7 @@
     "tab": {
       "features": "Tính năng",
       "fixes": "Sửa lỗi",
-      "guiFeatures": "GUI Features",
+      "guiFeatures": "Tính Năng GUI",
       "generalSettings": "Cài đặt chung"
     },
     "settings": "Cài Đặt",
@@ -21,8 +21,8 @@
     "hideDurability": "Ẩn Thanh Độ Bền",
     "showEnchantmentsReforges": "Phù phép & Rèn luyện",
     "minionStopWarning": "Cảnh Báo \"Minion Không Thể Với Tới\"",
-    "hideAuctionHousePlayers": "Ẩn Người Chơi gần Auction House",
-    "backpackStyle": "Kiểu Backpack: %style%",
+    "hideAuctionHousePlayers": "Giấu người chơi gần NPC quan trọng",
+    "backpackStyle": "Kiểu Ba lô: %style%",
     "backpackStyles": {
       "regular": "Thường",
       "compact": "Gọn"
@@ -49,32 +49,29 @@
     "stopBowChargeFromResetting": "Dừng việc nạp cung bị gián đoạn",
     "preventMovementOnDeath": "Tránh di chuyển sau khi chết",
     "showItemAnvilUses": "Hiện số lần dùng đe",
-    "lockSlots": "Allow Locking Slots",
-    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories",
-    "summoningEyeAlert": "Summoning Eye Alert",
+    "lockSlots": "Cho phép khóa ô",
+    "dontResetCursorInventory": "Không di chuyển con trỏ khi mở túi đồ",
+    "summoningEyeAlert": "Cảnh báo: Nhặt Mắt Triệu hồi",
     "makeEnderchestsInEndGreen": "Làm Cho Hòm Ender Màu Xanh Ở The End",
     "changeColor": "Thay đổi màu sắc",
     "showInOtherGames": "Hiện trong các trò khác",
     "useVanillaTexture": "Sử dụng đồ họa nguyên bản",
-    "textStyle": "Text Style",
+    "textStyle": "Kiểu chữ",
     "textStyles": {
-      "one": "Style One",
-      "two": "Style Two"
+      "one": "Kiểu 1",
+      "two": "Kiểu 2"
     },
-    "warningDuration": "Warning Duration",
+    "warningDuration": "Cảnh báo thời lượng",
     "dontOpenProfileWithBow": "Chặn Mở Ô Thông Tin Về Người Chơi Khác Khi Cầm Cung",
-    "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Items",
-    "makeBackpackInventoriesColored": "Đổi Màu Giao Diện Túi Đồ Của Ba Lô",
-    "avoidBreakingBottomSugarCane": "Avoid Breaking Bottom Sugar Cane",
-    "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Items"
+    "stopDroppingSellingRareItems": "Ngăn thả/bán đồ hiếm",
+    "makeBackpackInventoriesColored": "Màu Balô",
+    "avoidBreakingBottomSugarCane": "Tránh phá Mía Ở Dưới Cùng",
+    "replaceRomanNumeralsWithNumbers": "Thay thế chữ số La Mã trên vật phẩm"
   },
   "messages": {
     "dropConfirmation": "Nhấn \"Q\" Thêm Một Lần Nữa Để Xác Nhận!",
     "magmaBossWarning": "Trùm Dung Nham!",
     "fullInventory": "Túi Đồ Đã Đầy!",
-    "newVersion": "Phiên bản mới, %newestVersion% đã có sẵn. Tải về bằng cách nhấn tại đây.",
-    "discord": "Xem có thay đổi gì? Nhấn vào đây để tham gia Discord.",
-    "developmentVersion": "Bạn đang sử dụng phiên bản \"phát triển\": %version%. Phiên bản online mới nhất là %newestVersion%",
     "labymod": "Người dùng Labymod: Ẩn thanh Thức ăn, Giáp, Máu là không thực hiện được.",
     "minionCannotReach": "%type% Minion không thể với tới và đã dừng hoạt động!",
     "minionIsFull": "Một con Minion trên đảo đã đầy!",
@@ -86,11 +83,26 @@
       "enchants": "Phù phép",
       "reforges": "Rèn luyện"
     },
-    "slotLocked": "This slot is locked!",
+    "newUpdateAvailable": "A new update, %version%, is available!",
+    "deleteOldFile": "The download has finished, please open your mods folder using the button below, close your Minecraft, and delete the old version (or delete it later if you prefer).",
+    "wantToViewPatchNotes": "Want to read the changes?",
+    "downloadLink": "UPDATE LINK",
+    "downloadAutomatically": "AUTO DOWNLOAD",
+    "openModFolder": "MOD FOLDER",
+    "joinTheDiscord": "JOIN DISCORD",
+    "update": {
+      "majorAvailable": "A new major update, %version% is available! The link for the download can be found in chat.",
+      "patchAvailable": "A new patch update, %version% is available! Look for the download link or to attempt to download the patch automatically!",
+      "downloading": "The patch is downloading! Status: %downloaded%/%total% Please note that after the download has finished, you must delete the old file.",
+      "failed": "The patch download has failed! Please download it manually using the link in chat.",
+      "downloadFinished": "The patch has finished downloading. It has been saved as %file%. Please don't forget to delete the old file after closing your Minecraft. Click the message in chat to open up the folder."
+    },
+    "slotLocked": "Ô này đã bị khoá!",
     "summoningEyeFound": "Mắt Triệu Hồi!",
     "cancelledStemBreak": "SkyblockAddons Đã Ngăn Bạn Phá Hạt Giống Này. Hãy Dùng Tay Không Nếu Bạn Muốn Phá Nó.",
+    "cancelledCaneBreak": "SkyblockAddons đã ngăn bạn khỏi việc phá khối mía này. Hãy dùng dụng cụ khác nếu bạn thật sự muốn phá nó.",
     "cancelledProfileOpening": "SkyblockAddons Đã Ngăn Bạn Xem Thông Về Người Chơi Này Khi Bạn Đang Cầm Cung.",
-    "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare item or tool from your hotbar.",
+    "cancelledDropping": "SkyblockAddons đã ngăn bạn làm rơi đồ hiếm từ thanh vật phẩm.",
     "clickMoreTimes": "Bấm/Thả Đồ Vật Này Thêm %times% Lần Nữa Nếu Bạn Muốn Thực Hiện Điều Này."
   }
 }

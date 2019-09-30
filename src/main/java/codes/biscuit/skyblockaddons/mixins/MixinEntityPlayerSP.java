@@ -36,7 +36,7 @@ public class MixinEntityPlayerSP {
         }
         if (heldItemStack != null) {
             EnumUtils.Rarity rarity = EnumUtils.Rarity.getRarity(heldItemStack);
-            if (rarity != null && main.getConfigValues().isEnabled(Feature.STOP_DROPPING_SELLING_RARE_ITEMS) &&
+            if (rarity != null && main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.STOP_DROPPING_SELLING_RARE_ITEMS) &&
                     main.getUtils().cantDropItem(heldItemStack, rarity, true)) {
                 SkyblockAddons.getInstance().getUtils().sendMessage(main.getConfigValues().getColor(Feature.STOP_DROPPING_SELLING_RARE_ITEMS).
                         getChatFormatting() + Message.MESSAGE_CANCELLED_DROPPING.getMessage());
