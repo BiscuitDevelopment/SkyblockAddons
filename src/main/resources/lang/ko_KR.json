@@ -92,7 +92,7 @@
     "joinTheDiscord": "디스코드 가입",
     "update": {
       "majorAvailable": "새로운 업데이트 ( % version %) 가 제공됩니다! 다운로드 링크는 채팅에서 찾을수 있습니다.",
-      "patchAvailable": "새로운 패치 업데이트 (%version%) 가 제공됩니다! 다운로드 링크를 찾거나 패치를 자동으로 다운로드 하십시오!",
+      "patchAvailable": "A new patch update (%version%) is available! Look in chat for download options!",
       "downloading": "패치가 다운로드 중입니다! 상태:%downloaded%/%total% 다운로드가 완료되면 이전 파일을 삭제해야합니다.",
       "failed": "패치 다운로드에 실패했습니다! 채팅 링크를 사용하여 수동으로 다운로드하십시오.",
       "downloadFinished": "모드 다운로드가 %file%로 저장되었습니다. 마인크래프트를 닫은 후 이전파일을 삭제하는 것을 잊지 마십시오. 채팅에서 메세지를 클릭하여 폴더를 엽니다."
