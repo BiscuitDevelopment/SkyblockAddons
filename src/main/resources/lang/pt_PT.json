@@ -92,7 +92,7 @@
     "joinTheDiscord": "ENTRA NO DISCORD",
     "update": {
       "majorAvailable": "Está disponível uma nova atualização importante (%version%)! O link para o download pode ser encontrado no chat.",
-      "patchAvailable": "A new patch update (%version%) is available! Look for the download link or to attempt to download the patch automatically!",
+      "patchAvailable": "A new patch update (%version%) is available! Look in chat for download options!",
       "downloading": "A atualização está a descarregar! Estado: %downloaded%/%total% Assim que o download terminar terás de apagar o ficheiro antigo.",
       "failed": "O download da atualização falhou! Descarrega-o manualmente usando o link no chat.",
       "downloadFinished": "A atualização terminou de ser descarregada e foi guardada como %file%. Não te esqueças de apagar o ficheiro antigo depois de fechares o Minecraft. Clica a mensagem no chat para abrires a pasta."
