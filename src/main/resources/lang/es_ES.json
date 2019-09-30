@@ -92,7 +92,7 @@
     "joinTheDiscord": "UNIRSE A DISCORD",
     "update": {
       "majorAvailable": "A new major update (%version%) is available! The link for the download can be found in chat.",
-      "patchAvailable": "A new patch update (%version%) is available! Look for the download link or to attempt to download the patch automatically!",
+      "patchAvailable": "A new patch update (%version%) is available! Look in chat for download options!",
       "downloading": "¡El parche está descargando! Estado: %downloaded%/%total% Por favor, tenga en cuenta que después de que la descarga haya terminado, debe eliminar el archivo antiguo.",
       "failed": "¡La descarga del parche ha fallado! Por favor, descargalo manualmente usando el enlace en el chat.",
       "downloadFinished": "El parche ha terminado de descargar. Se ha guardado como %file%. Por favor, no olvide eliminar el archivo antiguo después de cerrar tu Minecraft. Haga clic en el mensaje en el chat para abrir la carpeta."
