@@ -498,7 +498,7 @@ public class PlayerListener {
             }
         }
 
-        if (e.toolTip != null && e.toolTip.size() > 0 && main.getUtils().isOnSkyblock()) {
+        if (e.toolTip != null && e.toolTip.size() > 1 && main.getUtils().isOnSkyblock()) {
 
             if (!hoveredItem.getItem().equals(Items.enchanted_book)) {
                 // Clean buggy enchantments at the top of equipment tooltips
