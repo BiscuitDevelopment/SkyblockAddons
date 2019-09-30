@@ -21,7 +21,7 @@
     "hideDurability": "'ide Item Durability",
     "showEnchantmentsReforges": "Magic n' Reforgery",
     "minionStopWarning": "\"Minion Cannot Reach\" Warnin'",
-    "hideAuctionHousePlayers": "'ide Mateys nearrr Auction 'ouse",
+    "hideAuctionHousePlayers": "'ide Players near yer Importn't NPCs",
     "backpackStyle": "Style o' Yer Booty: %style%",
     "backpackStyles": {
       "regular": "Regularrr",
@@ -72,9 +72,6 @@
     "dropConfirmation": "'ay lad, drop this here item again to confirm!",
     "magmaBossWarning": "Yer Fire Boss Spawned!",
     "fullInventory": "Ahoy mate, yer pouch there be full!",
-    "newVersion": "Avast, before you wander the seven seas, you best update to %newestVersion%! Click this here text to 'ave it.",
-    "discord": "Ye a curious lad, 'uh? click 'ere to join me ol' Discord.",
-    "developmentVersion": "Har, you're running a development version: %version%. Yer latest stable build be %newestVersion%",
     "labymod": "'ay ye LabyMod Lads: 'ide grub, booty, an' 'ealth bar, be incompatible.",
     "minionCannotReach": "Arr, mate, one o' yer %type% crew couldn't reach an' stopped spawnin'!",
     "minionIsFull": "Lad, A minion on yer island be full!",
@@ -86,9 +83,24 @@
       "enchants": "Yer magic",
       "reforges": "Reforgery"
     },
+    "newUpdateAvailable": "A new update, %version%, is available!",
+    "deleteOldFile": "The download has finished, please open your mods folder using the button below, close your Minecraft, and delete the old version (or delete it later if you prefer).",
+    "wantToViewPatchNotes": "Want to read the changes?",
+    "downloadLink": "UPDATE LINK",
+    "downloadAutomatically": "AUTO DOWNLOAD",
+    "openModFolder": "MOD FOLDER",
+    "joinTheDiscord": "JOIN DISCORD",
+    "update": {
+      "majorAvailable": "A new major update, %version% is available! The link for the download can be found in chat.",
+      "patchAvailable": "A new patch update, %version% is available! Look for the download link or to attempt to download the patch automatically!",
+      "downloading": "The patch is downloading! Status: %downloaded%/%total% Please note that after the download has finished, you must delete the old file.",
+      "failed": "The patch download has failed! Please download it manually using the link in chat.",
+      "downloadFinished": "The patch has finished downloading. It has been saved as %file%. Please don't forget to delete the old file after closing your Minecraft. Click the message in chat to open up the folder."
+    },
     "slotLocked": "Ahoy, matey! This here slot be locked!",
     "summoningEyeFound": "Summinin' Aye!",
     "cancelledStemBreak": "'ay there, SkyblockAddons 'as stopped ye from breakin' this here stem. Use yer bare hand if ye'd like to break it.",
+    "cancelledCaneBreak": "'ay there, SkyblockAddons 'as stopped ye from breakin' this here block o’ sugarcane. Use yer bare hand if ye'd like to break it.",
     "cancelledProfileOpening": "'ay there lad! SkyblockAddons 'as stopped ye from openin' this here player's profile while oldin' a bow.",
     "cancelledDropping": "'ay mate! SkyblockAddons 'as stopped ye from droppin' this here Rare Item or Tool from yer 'otbarrr.",
     "clickMoreTimes": "'ay lad, Click/Drop this here item %times% more times if ye really wants t' do this."
