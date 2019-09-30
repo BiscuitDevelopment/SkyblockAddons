@@ -92,7 +92,7 @@
     "joinTheDiscord": "REJOINDRE LE DISCORD",
     "update": {
       "majorAvailable": "Une nouvelle mise à jour majeure, %version% est disponible ! Le lien pour le télécharger est disponible dans le chat.",
-      "patchAvailable": "La mise à jour %version% est disponible! Recherchez le lien de téléchargement ou essayez de télécharger automatiquement le patch !",
+      "patchAvailable": "A new patch update (%version%) is available! Look in chat for download options!",
       "downloading": "Le patch est en cours de téléchargement! Statut : %downloaded%/%total% Veuillez noter qu'après la fin du téléchargement, vous devez supprimer l'ancien fichier.",
       "failed": "Le téléchargement du patch a échoué! Veuillez le télécharger manuellement en utilisant le lien dans le chat.",
       "downloadFinished": "Le téléchargement du patch est fini. Il a été enregistré comme %file%. N'oubliez pas de supprimer l'ancien fichier après avoir fermé votre Minecraft. Cliquez sur le message dans le chat pour ouvrir le dossier."
