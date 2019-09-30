@@ -92,7 +92,7 @@
     "joinTheDiscord": "Entre no discord",
     "update": {
       "majorAvailable": "Uma nova atualização importante (%version%) está disponível! O link para o download pode ser encontrado no chat.",
-      "patchAvailable": "A new patch update (%version%) is available! Look in chat for download options!",
+      "patchAvailable": "Uma nova atualização de correção (%version%) está disponível! O link para as opções de download está no chat!",
       "downloading": "O download da atualização está sendo efetuado! Status: %downloaded%/%total%. Por favor, quando o download terminar, delete a versão antiga.",
       "failed": "O download da atualização falhou! Por favor faça o download manualmente utilizando o link do chat.",
       "downloadFinished": "A atualização terminou de baixar. Foi salvo como %file%. Por favor, não se esqueça de excluir o arquivo antigo após fechar seu Minecraft. Clique na mensagem que está no chat para abrir a pasta."
