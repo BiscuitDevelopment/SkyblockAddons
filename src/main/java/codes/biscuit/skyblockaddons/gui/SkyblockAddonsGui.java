@@ -2,6 +2,7 @@ package codes.biscuit.skyblockaddons.gui;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.gui.buttons.*;
+import codes.biscuit.skyblockaddons.utils.CoordsPair;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.Feature;
 import codes.biscuit.skyblockaddons.utils.Message;
@@ -16,6 +17,7 @@ import net.minecraftforge.client.GuiIngameForge;
 
 import java.awt.*;
 import java.io.IOException;
+import java.net.URI;
 import java.util.EnumSet;
 import java.util.Set;
 import java.util.regex.Pattern;
@@ -38,7 +40,8 @@ public class SkyblockAddonsGui extends GuiScreen {
     private static Set<Feature> colorSettingFeatures = Sets.newHashSet(Feature.MAGMA_WARNING, Feature.DROP_CONFIRMATION,
             Feature.MANA_BAR, Feature.MANA_TEXT, Feature.HEALTH_BAR, Feature.HEALTH_TEXT, Feature.DEFENCE_TEXT,
             Feature.DEFENCE_PERCENTAGE, Feature.MAGMA_BOSS_TIMER, Feature.DARK_AUCTION_TIMER,
-            Feature.FULL_INVENTORY_WARNING, Feature.MINION_FULL_WARNING, Feature.MINION_STOP_WARNING, Feature.SUMMONING_EYE_ALERT);
+            Feature.FULL_INVENTORY_WARNING, Feature.MINION_FULL_WARNING, Feature.MINION_STOP_WARNING, Feature.SUMMONING_EYE_ALERT,
+            Feature.AVOID_BREAKING_STEMS, Feature.AVOID_BREAKING_BOTTOM_SUGAR_CANE, Feature.DONT_OPEN_PROFILES_WITH_BOW);
 
     private static Set<Feature> guiScaleFeatures = Sets.newHashSet(Feature.ITEM_PICKUP_LOG, Feature.HEALTH_UPDATES,
             Feature.MANA_BAR, Feature.MANA_TEXT, Feature.HEALTH_BAR, Feature.HEALTH_TEXT, Feature.DEFENCE_TEXT,
@@ -240,6 +243,11 @@ public class SkyblockAddonsGui extends GuiScreen {
                 main.getUtils().setFadingIn(false);
                 mc.displayGuiScreen(new SkyblockAddonsGui(main, 1, tab.getTab()));
             }
+        } else if (abstractButton instanceof ButtonCredit) {
+            EnumUtils.FeatureCredit credit = ((ButtonCredit)abstractButton).getCredit();
+            try {
+                Desktop.getDesktop().browse(new URI(credit.getUrl()));
+            } catch (Exception ignored) {}
         }
     }
 
@@ -277,7 +285,14 @@ public class SkyblockAddonsGui extends GuiScreen {
         }
         double y = getRowHeight(row);
         if (buttonType == EnumUtils.ButtonType.TOGGLE) {
-            buttonList.add(new ButtonNormal(x, y, text, main, feature));
+            ButtonNormal button = new ButtonNormal(x, y, text, main, feature);
+            buttonList.add(button);
+
+            EnumUtils.FeatureCredit credit = EnumUtils.FeatureCredit.fromFeature(feature);
+            if (credit != null) {
+                CoordsPair coords = button.getCreditsCoords(credit);
+                buttonList.add(new ButtonCredit(coords.getX(), coords.getY(), text, main, credit));
+            }
 
             if (getSettings(feature).size() > 0) {
                 buttonList.add(new ButtonSettings(x + boxWidth - 33, y + boxHeight - 23, text, main, feature));

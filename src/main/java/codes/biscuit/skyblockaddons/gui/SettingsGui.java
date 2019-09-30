@@ -52,6 +52,8 @@ public class SettingsGui extends GuiScreen {
     @Override
     public void initGui() {
         if (feature == Feature.LANGUAGE) {
+            row = 1;
+            collumn = 1;
             displayCount = findDisplayCount();
             // Add the buttons for each page.
             int skip = (page-1)*displayCount;
@@ -64,7 +66,7 @@ public class SettingsGui extends GuiScreen {
             for (Language language : Language.values()) {
                 if (skip == 0) {
                     if (language == Language.ENGLISH) continue;
-                    if (language == Language.ARABIC) {
+                    if (language == Language.CHINESE_TRADITIONAL) {
                         addLanguageButton(Language.ENGLISH);
                     }
                     addLanguageButton(language);
@@ -214,8 +216,10 @@ public class SettingsGui extends GuiScreen {
             if (arrow.isNotMax()) {
                 main.getUtils().setFadingIn(false);
                 if (arrow.getArrowType() == ButtonArrow.ArrowType.RIGHT) {
+                    closingGui = true;
                     mc.displayGuiScreen(new SettingsGui(main, feature, ++page, lastPage, lastTab, settings));
                 } else {
+                    closingGui = true;
                     mc.displayGuiScreen(new SettingsGui(main, feature, --page, lastPage, lastTab, settings));
                 }
             }
