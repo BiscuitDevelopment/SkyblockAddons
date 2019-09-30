@@ -91,7 +91,7 @@
     "openModFolder": "ملف المودات",
     "joinTheDiscord": "أدخل الديسكورد",
     "update": {
-      "majorAvailable": "A new major update (%version%) is available! The link for the download can be found in chat.",
+      "majorAvailable": "يوجد هناك تحديث جديد، (%version%) متاح! يمكن ايجاد رابط التنزيل في الدردشه.",
       "patchAvailable": "يوجد هناك تحديث جديد، (%version%) متاح! ابحث عن رابط التنزيل أو لمحاولة تنزيل التحديث تلقائيًا!",
       "downloading": "يتم تنزيل التصحيح! الحاله: %downloaded%/%total% ملحوظه الرجاء بعد انهاء التحميل، يجب عليك الغاء الملفات القديمة.",
       "failed": "تنزيل التصحيح قد فشل! الرجاء تنزيله يدويا بإستعمال الرابط في الدردشة.",
