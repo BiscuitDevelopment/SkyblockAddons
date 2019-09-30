@@ -92,7 +92,7 @@
     "joinTheDiscord": "UDjITE U DISCORD SERVER",
     "update": {
       "majorAvailable": "Dostupno je novo veliko ažuriranje (%version%)! Link za preuzimanje može se naći u chatu.",
-      "patchAvailable": "Novi Patch-Update (%version%) je dostupan! Potražite link za preuzimanje ili pokušajte automatski preuzeti novi Update!",
+      "patchAvailable": "A new patch update (%version%) is available! Look in chat for download options!",
       "downloading": "Patch-Update se preuzima! Status: %downloaded%/%total% Imajte na umu da nakon preuzimanja obrišete staru datoteku.",
       "failed": "Preuzimanje Patch-Update nije uspelo! Preuzmite ga ručno koristeći link u chatu.",
       "downloadFinished": "Patch-Update je preuzet. Sačuvan je u %file%. Nemojte zaboraviti da obrišete staru datoteku nakon što zatvorite minecraft. Kliknite na poruku u chatu da otvorite folder."
