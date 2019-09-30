@@ -92,7 +92,7 @@
     "joinTheDiscord": "DISCORD'A KATILIN",
     "update": {
       "majorAvailable": "Yeni bir sürüm (%version%) mevcut! İndirme linkini sohbette bulabilirsin.",
-      "patchAvailable": "Yeni bir sürüm (%version%) mevcut! İndirme linkini bul veya sürümü otomatik olarak indirmeyi dene!",
+      "patchAvailable": "A new patch update (%version%) is available! Look in chat for download options!",
       "downloading": "Güncelleştirme iniyor! Durun: %downloaded%/%total% Lütfen indirme bittikten sonra eski dosyayı silmeyi unutmayın.",
       "failed": "Güncellemeyi indirmek başarısız oldu! Lütfen sohbetteki linki kullanarak kendiniz indirin.",
       "downloadFinished": "Güncelleme başarıyla indirildi. Güncelleme %file% olarak kaydedildi. Lütfen Minecraft'ınızı kapattıktan sonra eski dosyayı silmeyi unutmayın. \nSohbetteki mesaja tıklayıp dosyayı açın."
