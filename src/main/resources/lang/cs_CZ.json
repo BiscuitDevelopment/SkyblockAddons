@@ -92,7 +92,7 @@
     "joinTheDiscord": "Připojit se na discord",
     "update": {
       "majorAvailable": "A new major update (%version%) is available! The link for the download can be found in chat.",
-      "patchAvailable": "A new patch update (%version%) is available! Look for the download link or to attempt to download the patch automatically!",
+      "patchAvailable": "A new patch update (%version%) is available! Look in chat for download options!",
       "downloading": "Aktualizace se stahuje! Status: %downloaded%/%total% Prosím berte na vědomí že potom co se aktualizace dokončí, musíte smazat starou složku.",
       "failed": "Stáhnutí aktualizace selhalo! Prosím stáhněte ho manuálně pomocí linku v chatu.",
       "downloadFinished": "Aktualizace dokončila stažení. Byla uložena jako %file%. Prosím nezapomeň smazat starou složku potom co zavřeš minecraft."
