@@ -92,7 +92,7 @@
     "joinTheDiscord": "Discordに参加する",
     "update": {
       "majorAvailable": "新しいメジャーアップデート(%version%)が利用可能です! チャットからダウンロードリンクを探してください。",
-      "patchAvailable": "新しいパッチアップデート(%version%)が利用可能です! ダウンロードリンクを探すか、自動でパッチをダウンロードしてください。",
+      "patchAvailable": "A new patch update (%version%) is available! Look in chat for download options!",
       "downloading": "パッチをダウンロードしています! 進捗 : %downloaded%/%total% ダウンロードが終わったら、旧バージョンを削除する事を忘れないでください。",
       "failed": "パッチダウンロードに失敗しました! ダウンロードリンクから手動でダウンロードしてください。",
       "downloadFinished": "パッチダウンロードが終了しました。 ファイルは %file% に保存されました。旧バージョンの削除を忘れないでください。メッセージをクリックするとフォルダが開きます。"
