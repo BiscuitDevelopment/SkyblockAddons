@@ -95,9 +95,9 @@
       "patchAvailable": "一個新的補丁更新 (%version%) 現已上線! 前往下載連結或嘗試自動下載補丁!",
       "downloading": "正在下載補丁! 進度: %downloaded%/%total% 請注意下載完成後你必須刪除舊的檔案",
       "failed": "補丁下載失敗! 請使用聊天室中的連結手動下載",
-      "downloadFinished": "補丁以安裝完成。它已被保存為 %file%。關閉你的Minecraft請不要忘記刪除舊的版本"
+      "downloadFinished": "補丁以安裝完成。它已被保存為 %file%。關閉你的Minecraft後請不要忘記刪除舊的版本"
     },
-    "slotLocked": "這個欄位已被鎖定!",
+    "slotLocked": "此欄位已被鎖定!",
     "summoningEyeFound": "召喚之眼!",
     "cancelledStemBreak": "SkyblockAddons阻止了你破壞這個梗, 如確實想破壞, 請使用空手",
     "cancelledCaneBreak": "SkyblockAddons阻止了你破壞此甘蔗, 如確實想破壞, 請使用其他工具",
