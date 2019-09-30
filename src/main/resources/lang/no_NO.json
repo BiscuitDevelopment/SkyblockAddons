@@ -92,7 +92,7 @@
     "joinTheDiscord": "bli med Discord",
     "update": {
       "majorAvailable": "A new major update (%version%) is available! The link for the download can be found in chat.",
-      "patchAvailable": "A new patch update (%version%) is available! Look for the download link or to attempt to download the patch automatically!",
+      "patchAvailable": "A new patch update (%version%) is available! Look in chat for download options!",
       "downloading": "nedlasting",
       "failed": "grunnstøting",
       "downloadFinished": "nedlastingen fullført"
