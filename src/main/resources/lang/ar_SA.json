@@ -50,6 +50,7 @@
     "preventMovementOnDeath": "منع المشي بعد الموت",
     "showItemAnvilUses": "أظهار عدد مرات أستخدام السندان",
     "lockSlots": "السماح بقفل الخانات",
+    "lockSlot": "Lock Slot",
     "dontResetCursorInventory": "لا تقم بإعادة ضبط المؤشر بين المخازن",
     "summoningEyeAlert": "تنبيه عين الاستدعاء",
     "makeEnderchestsInEndGreen": "تغيير لون الصندوق المتنقل في عالم النهاية إلى اخضر",
