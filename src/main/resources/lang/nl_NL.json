@@ -50,6 +50,7 @@
     "preventMovementOnDeath": "Stop het Bewegen Na het Doodgaan",
     "showItemAnvilUses": "Toon Aantal keren Item In Aambeeld Gebruikt",
     "lockSlots": "Slots Vergrendelen toestaan",
+    "lockSlot": "Lock Slot",
     "dontResetCursorInventory": "Cursor niet resetten tussen Inventarissen",
     "summoningEyeAlert": "Oproepend oog Alarm",
     "makeEnderchestsInEndGreen": "Maak Enderchests in de End Groen",
