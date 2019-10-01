@@ -93,7 +93,7 @@
     "joinTheDiscord": "TILSLUT DISCORD",
     "update": {
       "majorAvailable": "En ny stor opdatering (%version%) er klar! Link'et for overførslen kan blive fundet i chatten.",
-      "patchAvailable": "A new patch update (%version%) is available! Look in chat for download options!",
+      "patchAvailable": "En ny opdatering (%version%) er klar! Kig i chatten for overførsels muligheder!",
       "downloading": "Opdateringen bliver hentet! Status: %downloaded%/%total% Noter at efter overførslen er færdig, så skal du slette den gamle fil.",
       "failed": "Der var en fejl ved at hente opdateringen! Hent den manuelt ved brug af link'et i chatten.",
       "downloadFinished": "Opdateringen er færdig med at blive hentet.. Den er blevet gemt som %file%. Glem ikke at slette den gamle fil efter at lukke Minecraft. Klik på beskeden i chatten for at åbne mappen."
