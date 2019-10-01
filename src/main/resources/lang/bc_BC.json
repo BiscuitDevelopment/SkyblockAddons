@@ -21,13 +21,13 @@
     "hideDurability": "Hide How Many Biscuits are Left",
     "showEnchantmentsReforges": "Bischants & Bisforges",
     "minionStopWarning": "\"Biscuits Cannot Bake\" Warning",
-    "hideAuctionHousePlayers": "Hide Players Near Important NPCs",
+    "hideAuctionHousePlayers": "Hide Biscuits Near Important BAKERs",
     "backpackStyle": "Biscuit Style: %style%",
     "backpackStyles": {
       "regular": "Biscuitar",
       "compact": "Compressed Biscuit"
     },
-    "showBackpackPreview": "Get Biscuit Sneak Peeeek",
+    "showBackpackPreview": "Expose the Biscuits",
     "hideHealthBar": "Hide The Basic Biscuits",
     "fullMinionWarning": "Full Biscuit Warning",
     "ignoreItemFrameClicks": "Ignore Bites On Biscuit Plates",
@@ -50,7 +50,7 @@
     "preventMovementOnDeath": "Prevent Running Out of Biscuits in the Afterlife",
     "showItemAnvilUses": "Show How Much Your Biscuits Gonna Cost lol",
     "lockSlots": "Allow locking biscuit boxes",
-    "lockSlot": "Lock Slot",
+    "lockSlot": "Lock Biscuits because expensive can't afford it",
     "dontResetCursorInventory": "Dont reset biscuit between biscuit boxes",
     "summoningEyeAlert": "Chcolate biscuit alert",
     "makeEnderchestsInEndGreen": "Make transfering biscuit boxes in the biscuit end have mold",
@@ -66,8 +66,8 @@
     "dontOpenProfileWithBow": "Dont open other biscuits whit a bow",
     "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Biscuit",
     "makeBackpackInventoriesColored": "Color Biscuit Biscuit",
-    "avoidBreakingBottomSugarCane": "Avoid Breaking Bottom Sugar Cane",
-    "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Items"
+    "avoidBreakingBottomSugarCane": "Avoid eating sweet biscuit cane",
+    "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Biscuits"
   },
   "messages": {
     "dropConfirmation": "Throw out this biscuit again to confirm!",
@@ -85,24 +85,24 @@
       "reforges": "Bisforges"
     },
     "newUpdateAvailable": "A new update (%version%) is out of the oven!",
-    "deleteOldFile": "The download has finished, please open your mods folder using the button below, close your Minecraft, and delete the old version (or delete it later if you prefer).",
-    "wantToViewPatchNotes": "Want to read the changes?",
-    "downloadLink": "UPDATE LINK",
-    "downloadAutomatically": "AUTO DOWNLOAD",
-    "openModFolder": "MODS FOLDER",
-    "joinTheDiscord": "JOIN DISCORD",
+    "deleteOldFile": "Fresh Biscuits is here! Please open your mods folder using the button below, close your Minecraft, and delete the old biscuit (or delete it later if you prefer).",
+    "wantToViewPatchNotes": "Want to taste the new biscuits?",
+    "downloadLink": "BISCUIT UPDATE LINK",
+    "downloadAutomatically": "AUTO BAKE BISCUIT",
+    "openModFolder": "BISCUITS FOLDER",
+    "joinTheDiscord": "JOIN DISCORD FOR BISCUITS",
     "update": {
-      "majorAvailable": "A new major update (%version%) is available! The link for the download can be found in chat.",
-      "patchAvailable": "A new patch update (%version%) is available! Look in chat for download options!",
-      "downloading": "The patch is downloading! Status: %downloaded%/%total% Please note that after the download has finished, you must delete the old file.",
-      "failed": "The patch download has failed! Please download it manually using the link in chat.",
-      "downloadFinished": "The patch has finished downloading. It has been saved as %file%. Please don't forget to delete the old file after closing your Minecraft. Click the message in chat to open up the folder."
+      "majorAvailable": "A new major favor of biscuit (%version%) is available! The link to the bakery for the download can be found in chat.",
+      "patchAvailable": "A new small biscuit update (%version%) is available! Look in chat for download options!",
+      "downloading": "The biscuit is baking! Status: %downloaded%/%total% Please note that after the download has finished, you must throw the old biscuit out.",
+      "failed": "The biscuit mission has failed! Please download it manually using the link in chat.",
+      "downloadFinished": "The small biscuit has finished downloading. It has been saved as %file%. Please don't forget to throw out the old biscuit after closing your Minecraft. Click the message in chat to open up the folder."
     },
-    "slotLocked": "This slot is locked!",
-    "summoningEyeFound": "Summoning Eye!",
+    "slotLocked": "This biscuit is locked!",
+    "summoningEyeFound": "Biscuit Eye!",
     "cancelledStemBreak": "The biscuit gods have stopped you from eating this biscuit. Use your hands if you'd like to eat it.",
-    "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use another tool if you'd actually like to break it.",
-    "cancelledProfileOpening": "SkyblockAddons has stopped you from opening this player's profile while holding a bow.",
+    "cancelledCaneBreak": "SkyblockAddons has stopped you from eating this block of sweet biscuit cane. Use another tool if you'd actually like to eat it.",
+    "cancelledProfileOpening": "BiscuitAddons has stopped you from eating this player's biscuit while holding a Bow.",
     "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare biscuit or tool from your hotbar.",
     "clickMoreTimes": "Click/drop this biscuit %times% more times if you really want to do this poor biscuit."
   }
