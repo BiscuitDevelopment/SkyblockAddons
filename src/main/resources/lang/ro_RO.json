@@ -50,6 +50,7 @@
     "preventMovementOnDeath": "Evită Mersul După Moarte",
     "showItemAnvilUses": "Arată Utilizările Nicovalei pe Obiect",
     "lockSlots": "Permite blocarea sloturilor",
+    "lockSlot": "Lock Slot",
     "dontResetCursorInventory": "Nu reseta cursorul între inventare",
     "summoningEyeAlert": "Alertă Summoning Eye",
     "makeEnderchestsInEndGreen": "Fă culorile cuferelor din end verzi",
