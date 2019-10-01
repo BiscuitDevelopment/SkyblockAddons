@@ -50,6 +50,7 @@
     "preventMovementOnDeath": "עצירת תזוזה לאחר המוות",
     "showItemAnvilUses": "הצגת שימושי סדן של הפריט",
     "lockSlots": "אפשר נעילת משבצת",
+    "lockSlot": "Lock Slot",
     "dontResetCursorInventory": "אל תאפס את העכבר בין תיקים",
     "summoningEyeAlert": "התראת עין לזימון דרקון",
     "makeEnderchestsInEndGreen": "הפוך אנדרצ'אסטים לירוקות באנד",
