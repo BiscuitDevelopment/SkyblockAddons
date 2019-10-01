@@ -50,6 +50,7 @@
     "preventMovementOnDeath": "Zatrzymaj Poruszanie Się Po Śmierci",
     "showItemAnvilUses": "Pokaż Liczbę Użyć Kowadła na Przedmiocie",
     "lockSlots": "Zezwól na blokowanie slotów",
+    "lockSlot": "Lock Slot",
     "dontResetCursorInventory": "Nie resetuj kursora pomiędzy ekwipunkami",
     "summoningEyeAlert": "Alarm o oku przywołującym",
     "makeEnderchestsInEndGreen": "Uczyń Skrzynie Endu zielone w Endzie",
