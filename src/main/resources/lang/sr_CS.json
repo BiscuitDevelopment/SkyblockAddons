@@ -50,6 +50,7 @@
     "preventMovementOnDeath": "Izbegni Hod Posle Smrti",
     "showItemAnvilUses": "Pokaži Broj Korištenja Stvari u Anvil-u",
     "lockSlots": "Dozvoli Zaključavanje Slotova",
+    "lockSlot": "Lock Slot",
     "dontResetCursorInventory": "Nemoj Restartovati Kursor Između Inventara",
     "summoningEyeAlert": "Upozorenje Za Summoning Eye",
     "makeEnderchestsInEndGreen": "Napravi Enderchestove u End-u Zelene",
