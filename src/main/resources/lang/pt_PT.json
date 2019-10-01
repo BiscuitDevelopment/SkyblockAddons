@@ -50,6 +50,7 @@
     "preventMovementOnDeath": "Não andar depois da morte",
     "showItemAnvilUses": "Mostrar os usos na bigorna",
     "lockSlots": "Permitir o bloqueio de slots",
+    "lockSlot": "Lock Slot",
     "dontResetCursorInventory": "Não resetar o cursor entre inventários",
     "summoningEyeAlert": "Alerta de Summoning Eyes",
     "makeEnderchestsInEndGreen": "Tornar os baús do fim no Fim verdes",
