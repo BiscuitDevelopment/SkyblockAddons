@@ -84,7 +84,7 @@
       "enchants": "Očarování",
       "reforges": "Překování"
     },
-    "newUpdateAvailable": "A new update (%version%) is available!",
+    "newUpdateAvailable": "Nová aktualizace (%version%) je připravena!",
     "deleteOldFile": "Stahování skočilo, prosím otevři svoji složku mods pomocí tlačítka dole, zavři minecraft, a smaž starou verzi(nebo ji smaž potom pokud chceš).",
     "wantToViewPatchNotes": "Chceš si přečíst změny?",
     "downloadLink": "Link pro aktualizaci",
@@ -92,7 +92,7 @@
     "openModFolder": "MODS FOLDER",
     "joinTheDiscord": "Připojit se na discord",
     "update": {
-      "majorAvailable": "A new major update (%version%) is available! The link for the download can be found in chat.",
+      "majorAvailable": "Nová hlavní aktualizace (%version%) je připravena! Link na stažení je v chatu.",
       "patchAvailable": "Nový opravující update (verze %version%) je nyní dostupný! Koukněte do chatu pro možnosti stahování!",
       "downloading": "Aktualizace se stahuje! Status: %downloaded%/%total% Prosím berte na vědomí že potom co se aktualizace dokončí, musíte smazat starou složku.",
       "failed": "Stáhnutí aktualizace selhalo! Prosím stáhněte ho manuálně pomocí linku v chatu.",
