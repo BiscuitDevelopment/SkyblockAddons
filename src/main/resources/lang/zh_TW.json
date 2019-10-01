@@ -50,6 +50,7 @@
     "preventMovementOnDeath": "防止死亡後進行移動",
     "showItemAnvilUses": "顯示物品已使用幾次鐵砧",
     "lockSlots": "允許鎖定欄位",
+    "lockSlot": "Lock Slot",
     "dontResetCursorInventory": "打開物品欄不會重製鼠標位置",
     "summoningEyeAlert": "召喚之眼警報",
     "makeEnderchestsInEndGreen": "使在終界的終界箱顯示為綠色",
