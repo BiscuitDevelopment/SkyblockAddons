@@ -50,6 +50,7 @@
     "preventMovementOnDeath": "Neleisti Vaikščioti Po Mirties",
     "showItemAnvilUses": "Rodyti Kiek Daiktas Buvo Naudotas Priekale",
     "lockSlots": "Leisti Užrakinti Langelius",
+    "lockSlot": "Lock Slot",
     "dontResetCursorInventory": "Nenustatatinėti Iš Naujo Rodyklės Perjungiant Inventorių",
     "summoningEyeAlert": "Drakono Sumoninimo Akies Paimimo Signalas",
     "makeEnderchestsInEndGreen": "Padaryti Ender Chestus Žalius End'e",
