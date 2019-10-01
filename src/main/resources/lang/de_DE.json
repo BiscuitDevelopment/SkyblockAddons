@@ -50,6 +50,7 @@
     "preventMovementOnDeath": "Verhindere das Laufen nach dem Tot",
     "showItemAnvilUses": "Zeige Ambossnutzungen eines Items",
     "lockSlots": "Slots sperren erlauben",
+    "lockSlot": "Lock Slot",
     "dontResetCursorInventory": "Mauszeiger zwischen Inventaren nicht zurücksetzen",
     "summoningEyeAlert": "Summoning Eye Alarm",
     "makeEnderchestsInEndGreen": "Färbe Endertruhen im End grün",
