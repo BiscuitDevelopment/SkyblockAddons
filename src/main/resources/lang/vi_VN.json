@@ -50,6 +50,7 @@
     "preventMovementOnDeath": "Tránh di chuyển sau khi chết",
     "showItemAnvilUses": "Hiện số lần dùng đe",
     "lockSlots": "Cho phép khóa ô",
+    "lockSlot": "Lock Slot",
     "dontResetCursorInventory": "Không di chuyển con trỏ khi mở túi đồ",
     "summoningEyeAlert": "Cảnh báo: Nhặt Mắt Triệu hồi",
     "makeEnderchestsInEndGreen": "Làm Cho Hòm Ender Màu Xanh Ở The End",
