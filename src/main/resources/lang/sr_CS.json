@@ -73,13 +73,13 @@
     "dropConfirmation": "Opet baci ovu stvar za potvrdu!",
     "magmaBossWarning": "MagmaCube Boss!",
     "fullInventory": "Pun Inventar!",
-    "labymod": "Labymod Korisnici: Sakrij Hranu, Armor, i Bar Zdravlja su neuskladivi.",
-    "minionCannotReach": "%type% minion ne može posegnuti i presto je stvarati!",
+    "labymod": "Labymod Users: Hide Food, Armor, and Health Bar, is incompatible.",
+    "minionCannotReach": "%type% minion ne može dohvatiti svoja stvorenja i presto je stvarati!",
     "minionIsFull": "Minion na tvojom ostrvu je pun!",
     "typeEnchantmentsHere": "Napiši %type% Ovde!",
     "separateMultiple": "Razdvoji Mnogostruke sa Zarezima.",
     "enchantsToMatch": "%type% Da Odgovara:",
-    "enchantsToExclude": "%type% Da Odstraniti:",
+    "enchantsToExclude": "%type% Da se ne racuna:",
     "inventoryTypes": {
       "enchants": "Čarolije",
       "reforges": "Reforge-ovi"
