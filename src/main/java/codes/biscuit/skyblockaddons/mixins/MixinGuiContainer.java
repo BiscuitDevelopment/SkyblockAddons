@@ -200,27 +200,12 @@ public class MixinGuiContainer extends GuiScreen {
     @Redirect(method="drawScreen", at=@At(value = "INVOKE", target = "Lnet/minecraft/client/gui/inventory/GuiContainer;drawGradientRect(IIIIII)V", ordinal = 0))
     private void drawGradientRect(GuiContainer guiContainer, int left, int top, int right, int bottom, int startColor, int endColor) {
         SkyblockAddons main = SkyblockAddons.getInstance();
-        int slotNum = theSlot.slotNumber;
-        boolean skipSlot = false;
         Container container = mc.thePlayer.openContainer;
-        if (container instanceof ContainerChest) {
-            slotNum -= ((ContainerChest)container).getLowerChestInventory().getSizeInventory()-9;
-            if (slotNum < 9) skipSlot = true;
-        } else if (container instanceof ContainerHopper) {
-            slotNum += 4;
-            if (slotNum < 9) skipSlot = true;
-        } else if (container instanceof ContainerDispenser) {
-            if (slotNum < 9) skipSlot = true;
-        } else if (container instanceof ContainerFurnace) {
-            slotNum += 6;
-            if (slotNum < 9) skipSlot = true;
-        } else if (container instanceof ContainerBeacon) {
-            slotNum += 8;
-            if (slotNum < 9) skipSlot = true;
-        }
+        int slotNum = theSlot.slotNumber + main.getInventoryUtils().getSlotDifference(container);
         main.getUtils().setLastHoveredSlot(slotNum);
-        if (!skipSlot && theSlot != null && main.getConfigValues().isEnabled(Feature.LOCK_SLOTS) &&
-                main.getUtils().isOnSkyblock() && main.getConfigValues().getLockedSlots().contains(slotNum)) {
+        if (theSlot != null && main.getConfigValues().isEnabled(Feature.LOCK_SLOTS) &&
+                main.getUtils().isOnSkyblock() && main.getConfigValues().getLockedSlots().contains(slotNum)
+                && (slotNum >= 9 || container instanceof ContainerPlayer && slotNum >= 5)) {
             int red = ConfigColor.RED.getColor(127);
             drawGradientRect(left,top,right,bottom,red,red);
         } else {
@@ -234,24 +219,10 @@ public class MixinGuiContainer extends GuiScreen {
         SkyblockAddons main = SkyblockAddons.getInstance();
         if (slot != null && main.getConfigValues().isEnabled(Feature.LOCK_SLOTS) &&
                 main.getUtils().isOnSkyblock()) {
-            int slotNum = slot.slotNumber;
             Container container = mc.thePlayer.openContainer;
-            if (container instanceof ContainerChest) {
-                slotNum -= ((ContainerChest)container).getLowerChestInventory().getSizeInventory()-9;
-                if (slotNum < 9) return;
-            } else if (container instanceof ContainerHopper) {
-                slotNum += 4;
-                if (slotNum < 9) return;
-            } else if (container instanceof ContainerDispenser) {
-                if (slotNum < 9) return;
-            } else if (container instanceof ContainerFurnace) {
-                slotNum += 6;
-                if (slotNum < 9) return;
-            } else if (container instanceof ContainerBeacon) {
-                slotNum += 8;
-                if (slotNum < 9) return;
-            }
-            if (main.getConfigValues().getLockedSlots().contains(slotNum)) {
+            int slotNum = slot.slotNumber + main.getInventoryUtils().getSlotDifference(container);
+            if (main.getConfigValues().getLockedSlots().contains(slotNum)
+                    && (slotNum >= 9 || container instanceof ContainerPlayer && slotNum >= 5)) {
                 GlStateManager.disableLighting();
                 GlStateManager.disableDepth();
                 GlStateManager.color(1,1,1,0.4F);
@@ -278,7 +249,7 @@ public class MixinGuiContainer extends GuiScreen {
                         }
                     }
                 }
-                if (slot >= 9 || (slot >= 5 && mc.currentScreen instanceof GuiInventory)) {
+                if (slot >= 9 || mc.thePlayer.openContainer instanceof ContainerPlayer && slot >= 5) {
                     if (main.getConfigValues().getLockedSlots().contains(slot)) {
                         if (main.getLockSlot().getKeyCode() == keyCode) {
                             main.getUtils().playSound("random.orb", 1);
