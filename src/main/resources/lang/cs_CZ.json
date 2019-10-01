@@ -50,7 +50,7 @@
     "preventMovementOnDeath": "Zabránit chození po smrti",
     "showItemAnvilUses": "Ukázat použití kovadliny na předmětech",
     "lockSlots": "Povolit zamykaní slotů",
-    "lockSlot": "Lock Slot",
+    "lockSlot": "Uzamčený slot",
     "dontResetCursorInventory": "Neresetuj kurzor mezi inventářema",
     "summoningEyeAlert": "Upozornění na Vyvolávací oko",
     "makeEnderchestsInEndGreen": "Zvýraznit Ender truhly v Endu zelenou",
@@ -89,7 +89,7 @@
     "wantToViewPatchNotes": "Chceš si přečíst změny?",
     "downloadLink": "Link pro aktualizaci",
     "downloadAutomatically": "Aoutomacké stáhnutí",
-    "openModFolder": "MODS FOLDER",
+    "openModFolder": "SLOŽKA S MODY",
     "joinTheDiscord": "Připojit se na discord",
     "update": {
       "majorAvailable": "Nová hlavní aktualizace (%version%) je připravena! Link na stažení je v chatu.",
