@@ -50,6 +50,7 @@
     "preventMovementOnDeath": "Quit walkin' after a plunderin'",
     "showItemAnvilUses": "Show Yer Anvil Uses",
     "lockSlots": "Allow Lockin' yer Slots",
+    "lockSlot": "Lock Slot",
     "dontResetCursorInventory": "Don't reset cursor between yer inventories",
     "summoningEyeAlert": "Ye Ol' Summonin' Aye Alert",
     "makeEnderchestsInEndGreen": "Make Enderchests in this 'ere End Green",
