@@ -5,7 +5,7 @@
       "features": "Fwetwues",
       "fixes": "Fwxes",
       "guiFeatures": "GUI Fwetwues",
-      "generalSettings": "General Settings"
+      "generalSettings": "Genewaw Settings"
     },
     "settings": "Settings",
     "magmaBossWarning": "Magmwa Bowoss Wawning",
@@ -31,7 +31,7 @@
     "hideHealthBar": "Hide Waniwwa Heawth Baw",
     "fullMinionWarning": "Fuww Minwion Wawning",
     "ignoreItemFrameClicks": "Ignowo Cwicks On Item Fwames",
-    "showOnlyWhenHoldingShift": "Show Only When Holding Shift",
+    "showOnlyWhenHoldingShift": "Show onwy when howding shift",
     "manaBar": "Mana Baw",
     "manaText": "Mana Numbew",
     "healthBar": "Heawth Baw",
@@ -49,8 +49,8 @@
     "stopBowChargeFromResetting": "Stwop Bowo Chawge Fwom Wesetting",
     "preventMovementOnDeath": "Pwewent Wawking Aftew Death",
     "showItemAnvilUses": "Showo Item Anwiw Uses",
-    "lockSlots": "Allow Locking Slots",
-    "lockSlot": "Lock Slot",
+    "lockSlots": "Awwow locking swots",
+    "lockSlot": "Lock swot",
     "dontResetCursorInventory": "Don't Reset Cursor Between Inventories",
     "summoningEyeAlert": "Summoning Eye Alert",
     "makeEnderchestsInEndGreen": "Make Enderchests in the End Green",
