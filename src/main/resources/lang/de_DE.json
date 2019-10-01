@@ -93,7 +93,7 @@
     "joinTheDiscord": "BETRETE DISCORD",
     "update": {
       "majorAvailable": "Ein neues wichtiges Update (%version%) ist verfügbar! Den Link für den Download findest du im Chat.",
-      "patchAvailable": "A new patch update (%version%) is available! Look in chat for download options!",
+      "patchAvailable": "Ein Neuer Patch (%version%) ist verfügbar!\nSchau im Chat für die Download Möglichkeiten!",
       "downloading": "Der Patch wird heruntergeladen! Status: %downloaded%/%total% Beachte, dass du nach dem Download die alte Datei löschen musst.",
       "failed": "Der Patch-Download ist fehlgeschlagen! Bitte lade es manuell mit dem Link im Chat herunter.",
       "downloadFinished": "Der Patch-Download wurde heruntergeladen. Er wurde als %file% gespeichert. Bitte vergesse nicht die alte Datei nach dem Schließen von Minecraft, zu löschen. Klicke auf die Nachricht im Chat um den Ordner zu öffnen."
