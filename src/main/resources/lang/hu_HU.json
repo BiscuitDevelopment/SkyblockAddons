@@ -50,6 +50,7 @@
     "preventMovementOnDeath": "Sétálás megakadályozása halál után",
     "showItemAnvilUses": "Tárgy üllő használatának mutatása",
     "lockSlots": "Slot lezárás engedélyezése",
+    "lockSlot": "Lock Slot",
     "dontResetCursorInventory": "Ne állítsa vissza a kurzort az eszköztárak között",
     "summoningEyeAlert": "Summoning Eye figyelmeztetés",
     "makeEnderchestsInEndGreen": "Végzetláda legyen zöld az Endben",
