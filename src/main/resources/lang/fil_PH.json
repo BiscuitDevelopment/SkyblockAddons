@@ -50,6 +50,7 @@
     "preventMovementOnDeath": "Pigilan ang paglakad pagkatapos ng Kamatayan",
     "showItemAnvilUses": "Ipakita ang mga gamit ng Item sa Anvil",
     "lockSlots": "Payagan ang mga Nakakandadong Slots",
+    "lockSlot": "Lock Slot",
     "dontResetCursorInventory": "Huwag I-reset ang Kursor sa pagitan ng iyong Imbentaryo",
     "summoningEyeAlert": "Alerto ng Pangsummon na Mata",
     "makeEnderchestsInEndGreen": "Gawing Kulay Berde Ang Mga Enderchest Sa The End",
