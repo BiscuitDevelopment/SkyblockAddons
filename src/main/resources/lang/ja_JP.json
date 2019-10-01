@@ -50,7 +50,7 @@
     "preventMovementOnDeath": "死んだ直後に歩き続けるのを防止",
     "showItemAnvilUses": "金床を使用した回数を表示",
     "lockSlots": "スロットのロックを許可",
-    "lockSlot": "Lock Slot",
+    "lockSlot": "スロットをロック",
     "dontResetCursorInventory": "インベントリ間でのカーソルの位置のリセットを防止",
     "summoningEyeAlert": "サモニングアイの警告",
     "makeEnderchestsInEndGreen": "エンドにいる時エンダーチェストを緑色に",
@@ -93,7 +93,7 @@
     "joinTheDiscord": "Discordに参加する",
     "update": {
       "majorAvailable": "新しいメジャーアップデート(%version%)が利用可能です! チャットからダウンロードリンクを探してください。",
-      "patchAvailable": "A new patch update (%version%) is available! Look in chat for download options!",
+      "patchAvailable": "新しいパッチアップデート(%version%)が利用可能です! チャットからダウンロードオプションを確認してください。",
       "downloading": "パッチをダウンロードしています! 進捗 : %downloaded%/%total% ダウンロードが終わったら、旧バージョンを削除する事を忘れないでください。",
       "failed": "パッチダウンロードに失敗しました! ダウンロードリンクから手動でダウンロードしてください。",
       "downloadFinished": "パッチダウンロードが終了しました。 ファイルは %file% に保存されました。旧バージョンの削除を忘れないでください。メッセージをクリックするとフォルダが開きます。"
