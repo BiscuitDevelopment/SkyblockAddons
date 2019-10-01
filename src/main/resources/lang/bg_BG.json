@@ -50,6 +50,7 @@
     "preventMovementOnDeath": "Предотвратяване от Ходене След Смърт",
     "showItemAnvilUses": "Показване на Използванията на Наковалня",
     "lockSlots": "Позволяване на Заключване на Слотове",
+    "lockSlot": "Lock Slot",
     "dontResetCursorInventory": "Не Рестартирай Курсора Между Инвентари",
     "summoningEyeAlert": "Предупреждение за Призоваващо Око",
     "makeEnderchestsInEndGreen": "Нaпрaви Ендер Сандъците в Края да са Зелени",
