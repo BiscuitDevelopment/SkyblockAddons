@@ -19,7 +19,7 @@
     "guiScale": "GUWU scawe: %scale%",
     "resetLocations": "Weset Wowocations",
     "hideDurability": "Hide Toow Duwabiwiwy",
-    "showEnchantmentsReforges": "Enchants & Wefowoges",
+    "showEnchantmentsReforges": "Enchawnts & Wefowoges",
     "minionStopWarning": "\"Minwion Cannwot Weach\" Wawning",
     "hideAuctionHousePlayers": "Hide Pwawews Nyeaw Auwction Howose",
     "backpackStyle": "Bwackpack Stywe: %style%",
@@ -66,7 +66,7 @@
     "dontOpenProfileWithBow": "Don't Open Profile With Bow",
     "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Items",
     "makeBackpackInventoriesColored": "Color Inventories",
-    "avoidBreakingBottomSugarCane": "Avoid Breaking Bottom Sugar Cane",
+    "avoidBreakingBottomSugarCane": "Awoid Bweaking Bwottom Sugar Cwane",
     "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Items"
   },
   "messages": {
@@ -81,7 +81,7 @@
     "enchantsToMatch": "%type% To Match:",
     "enchantsToExclude": "%type% To Excwude:",
     "inventoryTypes": {
-      "enchants": "Enchants",
+      "enchants": "Enchawnts",
       "reforges": "Wefowges"
     },
     "newUpdateAvailable": "A new update (%version%) is available!",
