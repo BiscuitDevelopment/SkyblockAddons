@@ -50,6 +50,7 @@
     "preventMovementOnDeath": "Empêcher de marcher après la mort",
     "showItemAnvilUses": "Afficher le nombre d'usage de l'enclume",
     "lockSlots": "Autoriser le verrouillage d'emplacement",
+    "lockSlot": "Lock Slot",
     "dontResetCursorInventory": "Ne pas réinitialiser le curseur entre les inventaires",
     "summoningEyeAlert": "Alerte Œil d'invocation",
     "makeEnderchestsInEndGreen": "Rendre les Enderchests dans l'End vert",
