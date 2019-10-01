@@ -50,6 +50,7 @@
     "preventMovementOnDeath": "Förhindra Att Fortsätta Gå Efter Du Dör",
     "showItemAnvilUses": "Visa Föremåls Städ Användningar",
     "lockSlots": "Tillåt Att Låsa Luckor",
+    "lockSlot": "Lock Slot",
     "dontResetCursorInventory": "Återställ Inte Muspekaren Mellan Lager",
     "summoningEyeAlert": "Tillkallande Ögas Larm",
     "makeEnderchestsInEndGreen": "Gör Enderkistor i End Gröna",
