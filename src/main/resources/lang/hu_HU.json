@@ -94,9 +94,9 @@
     "update": {
       "majorAvailable": "Egy új nagy frissítés (%version%) elérhető! A link a letöltéshez a chatben találod.",
       "patchAvailable": "Egy új hibajavító frissítés (%version%) elérhető! Nyisd meg a chatet a letöltésekért!",
-      "downloading": "The patch is downloading! Status: %downloaded%/%total% Please note that after the download has finished, you must delete the old file.",
-      "failed": "The patch download has failed! Please download it manually using the link in chat.",
-      "downloadFinished": "The patch has finished downloading. It has been saved as %file%. Please don't forget to delete the old file after closing your Minecraft. Click the message in chat to open up the folder."
+      "downloading": "A frissítés éppen letöltődik! Letöltve: %downloaded%/%total% Viszont a letöltés végeztével törölnöd kell az előző verziót.",
+      "failed": "A frissítés letöltése hibába ütközött, használd a letöltési linket a chatből.",
+      "downloadFinished": "A frissítés letöltés sikeresen befejeződött. el lett mentve %file% néven. Ne felejtsd törölni a régi verziót miután bezártad a Minecraft-ot. Kattints az üzenetre hogy megnyisd a mappát."
     },
     "slotLocked": "A slot le van zárva!",
     "summoningEyeFound": "Summoning Eye!",
