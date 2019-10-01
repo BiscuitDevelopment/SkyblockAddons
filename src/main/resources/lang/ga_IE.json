@@ -50,6 +50,7 @@
     "preventMovementOnDeath": "Cosc ag siúl tar éis Bás",
     "showItemAnvilUses": "Taispeáin Úsáid Inneoin",
     "lockSlots": "Cur Sliotán faoi Ghlas",
+    "lockSlot": "Lock Slot",
     "dontResetCursorInventory": "Ná Athshocraigh an Cursor idir Fardal",
     "summoningEyeAlert": "Práinn Súil Seirbheáil",
     "makeEnderchestsInEndGreen": "Déan na Enderchests san End Glas",
