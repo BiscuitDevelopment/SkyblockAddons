@@ -50,6 +50,7 @@
     "preventMovementOnDeath": "Öldükten Sonra Yürümeyi Engelle",
     "showItemAnvilUses": "Örste İşlenme Sayısını Göster",
     "lockSlots": "Slotları Kilitlemeye İzin Ver",
+    "lockSlot": "Lock Slot",
     "dontResetCursorInventory": "Envantörler arası fare imlecini sıfırlama",
     "summoningEyeAlert": "Summoning Eye Uyarısı",
     "makeEnderchestsInEndGreen": "End'deki Enderchestleri Yeşil Yap",
