@@ -50,6 +50,7 @@
     "preventMovementOnDeath": "Prevent Running Out of Biscuits in the Afterlife",
     "showItemAnvilUses": "Show How Much Your Biscuits Gonna Cost lol",
     "lockSlots": "Allow locking biscuit boxes",
+    "lockSlot": "Lock Slot",
     "dontResetCursorInventory": "Dont reset biscuit between biscuit boxes",
     "summoningEyeAlert": "Chcolate biscuit alert",
     "makeEnderchestsInEndGreen": "Make transfering biscuit boxes in the biscuit end have mold",
