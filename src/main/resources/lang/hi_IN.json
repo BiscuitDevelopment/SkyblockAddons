@@ -50,6 +50,7 @@
     "preventMovementOnDeath": "मौत के बाद चलना रोकें",
     "showItemAnvilUses": "आइटम दिखाएँ",
     "lockSlots": "लॉकिंग स्लॉट की अनुमति दें",
+    "lockSlot": "Lock Slot",
     "dontResetCursorInventory": "सूची के बीच कर्सर को रीसेट न करें",
     "summoningEyeAlert": "सुमोइंग आई अलर्ट",
     "makeEnderchestsInEndGreen": "अंत में हरे रंग में एंडरचेस्ट बनाएं",
