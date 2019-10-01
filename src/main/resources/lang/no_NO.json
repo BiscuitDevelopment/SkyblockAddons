@@ -50,6 +50,7 @@
     "preventMovementOnDeath": "Unngå gåing etter død",
     "showItemAnvilUses": "Vis gjenstands bruk av anviller",
     "lockSlots": "Tillat låsning av slots",
+    "lockSlot": "Lock Slot",
     "dontResetCursorInventory": "Ikke nullstill musen mellom inventories",
     "summoningEyeAlert": "Innkallende øye varsling",
     "makeEnderchestsInEndGreen": "Gjør enderkister i end grønne",
