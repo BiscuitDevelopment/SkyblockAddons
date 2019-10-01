@@ -50,6 +50,7 @@
     "preventMovementOnDeath": "死んだ直後に歩き続けるのを防止",
     "showItemAnvilUses": "金床を使用した回数を表示",
     "lockSlots": "スロットのロックを許可",
+    "lockSlot": "Lock Slot",
     "dontResetCursorInventory": "インベントリ間でのカーソルの位置のリセットを防止",
     "summoningEyeAlert": "サモニングアイの警告",
     "makeEnderchestsInEndGreen": "エンドにいる時エンダーチェストを緑色に",
