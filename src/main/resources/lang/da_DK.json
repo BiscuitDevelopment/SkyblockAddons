@@ -50,6 +50,7 @@
     "preventMovementOnDeath": "Undgå at gå efter døden",
     "showItemAnvilUses": "Vis brug af ambolt",
     "lockSlots": "Tillad låsning af slots",
+    "lockSlot": "Lock Slot",
     "dontResetCursorInventory": "Nulstil ikke markøren mellem lagrene",
     "summoningEyeAlert": "Afkaldende øjenalarm",
     "makeEnderchestsInEndGreen": "Lav enderchests i slutningen grøn",
