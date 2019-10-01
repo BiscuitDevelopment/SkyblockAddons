@@ -64,8 +64,8 @@
     },
     "warningDuration": "Baking Time Left",
     "dontOpenProfileWithBow": "Dont open other biscuits whit a bow",
-    "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Items",
-    "makeBackpackInventoriesColored": "Color Inventories",
+    "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Biscuit",
+    "makeBackpackInventoriesColored": "Color Biscuit Biscuit",
     "avoidBreakingBottomSugarCane": "Avoid Breaking Bottom Sugar Cane",
     "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Items"
   },
@@ -84,7 +84,7 @@
       "enchants": "Bischants",
       "reforges": "Bisforges"
     },
-    "newUpdateAvailable": "A new update (%version%) is available!",
+    "newUpdateAvailable": "A new update (%version%) is out of the oven!",
     "deleteOldFile": "The download has finished, please open your mods folder using the button below, close your Minecraft, and delete the old version (or delete it later if you prefer).",
     "wantToViewPatchNotes": "Want to read the changes?",
     "downloadLink": "UPDATE LINK",
@@ -103,7 +103,7 @@
     "cancelledStemBreak": "The biscuit gods have stopped you from eating this biscuit. Use your hands if you'd like to eat it.",
     "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use another tool if you'd actually like to break it.",
     "cancelledProfileOpening": "SkyblockAddons has stopped you from opening this player's profile while holding a bow.",
-    "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare item or tool from your hotbar.",
-    "clickMoreTimes": "Click/drop this item %times% more times if you really want to do this."
+    "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare biscuit or tool from your hotbar.",
+    "clickMoreTimes": "Click/drop this biscuit %times% more times if you really want to do this poor biscuit."
   }
 }
