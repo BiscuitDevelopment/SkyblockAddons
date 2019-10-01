@@ -50,6 +50,7 @@
     "preventMovementOnDeath": "Prevent Walking After Death",
     "showItemAnvilUses": "Show Item Anvil Uses",
     "lockSlots": "Allow Locking Slots",
+    "lockSlot": "Lock Slot",
     "dontResetCursorInventory": "Don't Reset Cursor Between Inventories",
     "summoningEyeAlert": "Summoning Eye Alert",
     "makeEnderchestsInEndGreen": "Make Enderchests in the End Green",

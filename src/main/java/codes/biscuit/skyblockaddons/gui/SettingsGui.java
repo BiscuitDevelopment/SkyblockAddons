@@ -187,6 +187,7 @@ public class SettingsGui extends GuiScreen {
             Language language = ((ButtonLanguage)abstractButton).getLanguage();
             main.getConfigValues().setLanguage(language);
             main.getConfigValues().loadLanguageFile();
+            main.loadKeyBindingDescriptions();
             returnToGui();
         } else if (abstractButton instanceof ButtonSwitchTab) {
             ButtonSwitchTab tab = (ButtonSwitchTab)abstractButton;

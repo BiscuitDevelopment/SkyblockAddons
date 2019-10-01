@@ -51,7 +51,7 @@ public class SkyblockAddonsCommand extends CommandBase {
         if (args.length > 0) {
             if (args[0].equalsIgnoreCase("edit")) {
                 main.getUtils().setFadingIn(false);
-                main.getRenderListener().setGuiToOpen(PlayerListener.GUIType.EDIT_LOCATIONS, 1, EnumUtils.SkyblockAddonsGuiTab.FEATURES);
+                main.getRenderListener().setGuiToOpen(PlayerListener.GUIType.EDIT_LOCATIONS, 0, null);
                 return;
             } else if (args[0].equalsIgnoreCase("nbt")) {
                 boolean copyingNBT = !main.getUtils().isCopyNBT();
