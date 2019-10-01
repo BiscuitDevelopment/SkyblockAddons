@@ -50,6 +50,7 @@
     "preventMovementOnDeath": "Zabránit chození po smrti",
     "showItemAnvilUses": "Ukázat použití kovadliny na předmětech",
     "lockSlots": "Povolit zamykaní slotů",
+    "lockSlot": "Lock Slot",
     "dontResetCursorInventory": "Neresetuj kurzor mezi inventářema",
     "summoningEyeAlert": "Upozornění na Vyvolávací oko",
     "makeEnderchestsInEndGreen": "Zvýraznit Ender truhly v Endu zelenou",
