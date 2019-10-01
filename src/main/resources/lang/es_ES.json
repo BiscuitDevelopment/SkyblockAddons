@@ -50,6 +50,7 @@
     "preventMovementOnDeath": "Prevenir moverse cuando mueres",
     "showItemAnvilUses": "Mostrar usos del Item en el Yunque",
     "lockSlots": "Permitir las ranuras bloquedas",
+    "lockSlot": "Lock Slot",
     "dontResetCursorInventory": "No reiniciar el cursor entre los inventarios",
     "summoningEyeAlert": "Alerta de uso de un ojo de invocación",
     "makeEnderchestsInEndGreen": "Hacer los Enderchests de color verde en el End",
