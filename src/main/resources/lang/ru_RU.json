@@ -50,6 +50,7 @@
     "preventMovementOnDeath": "Предотвращать ходьбу после смерти",
     "showItemAnvilUses": "Показывать Использования предмета на наковальне",
     "lockSlots": "Включить блок. слотов",
+    "lockSlot": "Lock Slot",
     "dontResetCursorInventory": "Не сбрасывать курсор между инвентарями",
     "summoningEyeAlert": "Оповещение о Summoning Eye",
     "makeEnderchestsInEndGreen": "Сделать сундуки края в Краю зелёными",
