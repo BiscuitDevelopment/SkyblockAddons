@@ -94,9 +94,9 @@
     "update": {
       "majorAvailable": "มีอัพเดทใหญ่ (%version%) พร้อมให้ดาวน์โหลดแล้ว! หาลิงค์ดาวน์โหลดได้ในช่องแชท",
       "patchAvailable": "มี Patch ใหม่ (%version%) พร้อมให้ดาวน์โหลดแล้ว! หาลิงค์ดาวน์โหลดได้ในช่องแชท",
-      "downloading": "The patch is downloading! Status: %downloaded%/%total% Please note that after the download has finished, you must delete the old file.",
-      "failed": "The patch download has failed! Please download it manually using the link in chat.",
-      "downloadFinished": "The patch has finished downloading. It has been saved as %file%. Please don't forget to delete the old file after closing your Minecraft. Click the message in chat to open up the folder."
+      "downloading": "กำลังดาวน์โหลด Patch ใหม่! สถานะ: %downloaded%/%total% โปรดจำไว้ว่าหลังดาวน์โหลดเสร็จแล้ว คุณต้องลบไฟล์เวอร์ชั่นเก่าออก",
+      "failed": "ดาวน์โหลด Patch ไม่สำเร็จ! กรุณาดาวน์โหลดโดยใช้ลิงค์ในช่องแชท",
+      "downloadFinished": "ดาวน์โหลด Patch สำเร็จ ไฟล์ได้ถูกบักทึกเป็น %file% กรุณาอย่าลืมลบไฟล์เก่าหลังจากปิด Minecraft คลิกที่ข้อความในช่องแชทเพื่อเปิดโฟลเดอร์"
     },
     "slotLocked": "ช่องนี้ถูกล็อคไว้!",
     "summoningEyeFound": "ดวงตาอัญเชิญ!",
