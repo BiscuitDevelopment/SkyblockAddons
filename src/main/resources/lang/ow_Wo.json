@@ -92,11 +92,11 @@
     "openModFolder": "MOOWODS FOWOLDER",
     "joinTheDiscord": "JOIN DISCOWD",
     "update": {
-      "majorAvailable": "A new major update (%version%) is available! The link for the download can be found in chat.",
-      "patchAvailable": "A new patch update (%version%) is available! Look in chat for download options!",
-      "downloading": "The patch is downloading! Status: %downloaded%/%total% Please note that after the download has finished, you must delete the old file.",
-      "failed": "The patch download has failed! Please download it manually using the link in chat.",
-      "downloadFinished": "The patch has finished downloading. It has been saved as %file%. Please don't forget to delete the old file after closing your Minecraft. Click the message in chat to open up the folder."
+      "majorAvailable": "A new majow update (%version%) is avaiwabwe! the wink fow the downwoad can be found in chat.",
+      "patchAvailable": "A new patch update (%version%) is avaiwabwe! look in chat fow downwoad options!",
+      "downloading": "The patch is downwoading! status: %downloaded%/%total% pwease note that aftew the downwoad has finished, you must dewete the owd fiwe.",
+      "failed": "The patch downwoad has faiwed! pwease downwoad it manuawwy using the wink in chat.",
+      "downloadFinished": "The patch has finished downwoading. It has been saved as %file%. Pwease don't fowget to dewete the owd fiwe aftew cwosing youw minecwaft. Cwick the message in chat to open up the fowdew."
     },
     "slotLocked": "This swot is wocked!",
     "summoningEyeFound": "OWO EYE!!!!! OWOWOWOWOWO",
