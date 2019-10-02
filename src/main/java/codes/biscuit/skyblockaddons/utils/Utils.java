@@ -100,7 +100,7 @@ public class Utils {
         this.sendMessage(new TextComponentString(text));
     }
 
-    private void sendMessage(TextComponentString text) {
+    public void sendMessage(TextComponentString text) {
         ClientChatReceivedEvent event = new ClientChatReceivedEvent(ChatType.SYSTEM, text);
         MinecraftForge.EVENT_BUS.post(event); // Let other mods pick up the new message
         if (!event.isCanceled()) {
