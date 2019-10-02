@@ -63,7 +63,7 @@
       "two": "स्टाइल्स दो"
     },
     "warningDuration": "चेतावनी की अवधि",
-    "dontOpenProfileWithBow": "Don't Open Profile With Bow",
+    "dontOpenProfileWithBow": "धनुष के साथ प्रोफ़ाइल न खोलें",
     "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Items",
     "makeBackpackInventoriesColored": "Color Inventories",
     "avoidBreakingBottomSugarCane": "Avoid Breaking Bottom Sugar Cane",
@@ -85,7 +85,7 @@
       "reforges": "रीफोर्गे"
     },
     "newUpdateAvailable": "एक नया अपडेट (%version%) उपलब्ध है!",
-    "deleteOldFile": "The download has finished, please open your mods folder using the button below, close your Minecraft, and delete the old version (or delete it later if you prefer).",
+    "deleteOldFile": "डाउनलोड समाप्त हो गया है, कृपया नीचे दिए गए बटन का उपयोग करके अपने मॉड फ़ोल्डर को खोलें, अपने Minecraft को बंद करें, और पुराने वर्शन को हटा दें (या यदि आप चाहें तो इसे बाद में हटा दें)।",
     "wantToViewPatchNotes": "परिवर्तनों को पढ़ना चाहते हैं?",
     "downloadLink": "अपडेट लिंक",
     "downloadAutomatically": "ऑटो डाउनलोड",
@@ -104,6 +104,6 @@
     "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use another tool if you'd actually like to break it.",
     "cancelledProfileOpening": "SkyblockAddons has stopped you from opening this player's profile while holding a bow.",
     "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare item or tool from your hotbar.",
-    "clickMoreTimes": "Click/drop this item %times% more times if you really want to do this."
+    "clickMoreTimes": "इस आइटम को %times% बार क्लिक / ड्रॉप करें यदि आप वास्तव में ऐसा करना चाहते हैं।"
   }
 }
