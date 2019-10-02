@@ -84,7 +84,7 @@
       "enchants": "Enchants",
       "reforges": "ตีบวกของ"
     },
-    "newUpdateAvailable": "มีเวอร์ชั่นใหม่ (%version%) พร้อมให้ดาวน์โหลดแล้ว!",
+    "newUpdateAvailable": "มีอัพเดทใหม่ (%version%) พร้อมให้ดาวน์โหลดแล้ว!",
     "deleteOldFile": "การดาวน์โหลดเสร็จสมบูรณ์ กรุณาเปิดโฟลเดอร์มอดโดยใช้ปุ่มข้างล่างนี้ จากนั้นปิด Minecraft และลบมอดเวอร์ชั่นเก่า (หรือจะลบทีหลังก็ได้ถ้าต้องการ)",
     "wantToViewPatchNotes": "ต้องการอ่านการเปลี่ยนแปลงหรือไม่?",
     "downloadLink": "ลิงค์อัพเดท",
@@ -92,8 +92,8 @@
     "openModFolder": "โฟลเดอร์มอด",
     "joinTheDiscord": "เข้าร่วม Discord",
     "update": {
-      "majorAvailable": "A new major update (%version%) is available! The link for the download can be found in chat.",
-      "patchAvailable": "A new patch update (%version%) is available! Look in chat for download options!",
+      "majorAvailable": "มีอัพเดทใหญ่ (%version%) พร้อมให้ดาวน์โหลดแล้ว! หาลิงค์ดาวน์โหลดได้ในช่องแชท",
+      "patchAvailable": "มี Patch ใหม่ (%version%) พร้อมให้ดาวน์โหลดแล้ว! หาลิงค์ดาวน์โหลดได้ในช่องแชท",
       "downloading": "The patch is downloading! Status: %downloaded%/%total% Please note that after the download has finished, you must delete the old file.",
       "failed": "The patch download has failed! Please download it manually using the link in chat.",
       "downloadFinished": "The patch has finished downloading. It has been saved as %file%. Please don't forget to delete the old file after closing your Minecraft. Click the message in chat to open up the folder."
