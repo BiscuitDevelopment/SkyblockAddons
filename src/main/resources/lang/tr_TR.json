@@ -96,7 +96,7 @@
       "patchAvailable": "Yeni bir versiyon (%version%) mevcut! İndirme seçenekleri için sohbet'e bak!",
       "downloading": "Güncelleştirme iniyor! Durun: %downloaded%/%total% Lütfen indirme bittikten sonra eski dosyayı silmeyi unutmayın.",
       "failed": "Güncellemeyi indirmek başarısız oldu! Lütfen sohbetteki linki kullanarak kendiniz indirin.",
-      "downloadFinished": "Güncelleme başarıyla indirildi. Güncelleme %file% olarak kaydedildi. Lütfen Minecraft'ınızı kapattıktan sonra eski dosyayı silmeyi unutmayın. \nSohbetteki mesaja tıklayıp dosyayı açın."
+      "downloadFinished": "Güncelleme başarıyla indirildi. Güncelleme %file% olarak kaydedildi. Lütfen Minecraft'ınızı kapattıktan sonra eski dosyayı silmeyi unutmayın. \nSohbetteki mesaja tıklayıp dosyayı açabilirsiniz."
     },
     "slotLocked": "Bu slot kilitli!",
     "summoningEyeFound": "Summoning Eye!",
