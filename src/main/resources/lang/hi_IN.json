@@ -86,10 +86,10 @@
     },
     "newUpdateAvailable": "एक नया अपडेट (%version%) उपलब्ध है!",
     "deleteOldFile": "The download has finished, please open your mods folder using the button below, close your Minecraft, and delete the old version (or delete it later if you prefer).",
-    "wantToViewPatchNotes": "Want to read the changes?",
+    "wantToViewPatchNotes": "परिवर्तनों को पढ़ना चाहते हैं?",
     "downloadLink": "अपडेट लिंक",
-    "downloadAutomatically": "AUTO DOWNLOAD",
-    "openModFolder": "MODS FOLDER",
+    "downloadAutomatically": "ऑटो डाउनलोड",
+    "openModFolder": "मॉड फ़ोल्डर",
     "joinTheDiscord": "Discord में शामिल हो",
     "update": {
       "majorAvailable": "एक नया प्रमुख अपडेट (%version%) उपलब्ध है! डाउनलोड के लिए लिंक चैट में पाया जा सकता है।",
