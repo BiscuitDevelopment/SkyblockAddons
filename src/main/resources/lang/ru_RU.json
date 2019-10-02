@@ -50,7 +50,7 @@
     "preventMovementOnDeath": "Предотвращать ходьбу после смерти",
     "showItemAnvilUses": "Показывать Использования предмета на наковальне",
     "lockSlots": "Включить блок. слотов",
-    "lockSlot": "Lock Slot",
+    "lockSlot": "Закрыть слот",
     "dontResetCursorInventory": "Не сбрасывать курсор между инвентарями",
     "summoningEyeAlert": "Оповещение о Summoning Eye",
     "makeEnderchestsInEndGreen": "Сделать сундуки края в Краю зелёными",
@@ -93,7 +93,7 @@
     "joinTheDiscord": "ПРИСОЕДИНИТЬСЯ К ДИСКОРДУ",
     "update": {
       "majorAvailable": "Доступно новое большое обновление (%version%)! Ссылку на загрузку можно найти в чате.",
-      "patchAvailable": "A new patch update (%version%) is available! Look in chat for download options!",
+      "patchAvailable": "Новое обновление (%version%) теперь доступно! Посмотри в чат для опций загрузки!",
       "downloading": "Патч загружается! Статус: %downloaded%/%total% Пожалуйста, учтите, что после завершения загрузки, вам следует удалить старый файл.",
       "failed": "Ошибка загрузки патча! Пожалуйста, загрузите его вручную, используя ссылку в чате.",
       "downloadFinished": "Патч закончил загрузку. Он был сохранён как %file%. Пожалуйста, не забудьте удалить старый файл после закрытия Minecraft. Нажмите на сообщение в чате, чтобы открыть папку."
