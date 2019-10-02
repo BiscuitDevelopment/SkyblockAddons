@@ -55,7 +55,7 @@
     "summoningEyeAlert": "Summoning Eye Awewt",
     "makeEnderchestsInEndGreen": "Make Endewchests In The End Gween",
     "changeColor": "Chwange Cwlor",
-    "showInOtherGames": "Show in Other Games",
+    "showInOtherGames": "Showo OwO in OwO Gamewes",
     "useVanillaTexture": "Wse whe Vwanwa Twextwre",
     "textStyle": "Text Stywe: %style%",
     "textStyles": {
@@ -63,8 +63,8 @@
       "two": "Stwle Two"
     },
     "warningDuration": "Wawning Duwation",
-    "dontOpenProfileWithBow": "Don't Open Profile With Bow",
-    "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Items",
+    "dontOpenProfileWithBow": "UwU No Bow Prowofile",
+    "stopDroppingSellingRareItems": ">w< no sell rowre item",
     "makeBackpackInventoriesColored": "Cowow Inventowies",
     "avoidBreakingBottomSugarCane": "Awoid Bweaking Bwottom Sugar Cwane",
     "replaceRomanNumeralsWithNumbers": "Wepwace Roman Nyumewaws on woman"
@@ -78,18 +78,18 @@
     "minionIsFull": "A minwion on uwu iswand is fuww!",
     "typeEnchantmentsHere": "Type %type% Hewe!",
     "separateMultiple": "Sepeawate Multipwe With Cowommas.",
-    "enchantsToMatch": "%type% To Match:",
+    "enchantsToMatch": "OwO %type% to OwO:",
     "enchantsToExclude": "%type% To Excwude:",
     "inventoryTypes": {
       "enchants": "Enchawnts",
       "reforges": "Wefowges"
     },
-    "newUpdateAvailable": "A new update (%version%) is available!",
+    "newUpdateAvailable": "new OwO Updowoe (%version%) is owo!",
     "deleteOldFile": "The download has finished, please open your mods folder using the button below, close your Minecraft, and delete the old version (or delete it later if you prefer).",
     "wantToViewPatchNotes": "Want to read the changes?",
     "downloadLink": "UPDATE LINK",
     "downloadAutomatically": "AUTO DOWNLOAD",
-    "openModFolder": "MODS FOLDER",
+    "openModFolder": "MOOWODS FOWOLDER",
     "joinTheDiscord": "JOIN DISCORD",
     "update": {
       "majorAvailable": "A new major update (%version%) is available! The link for the download can be found in chat.",
@@ -99,11 +99,11 @@
       "downloadFinished": "The patch has finished downloading. It has been saved as %file%. Please don't forget to delete the old file after closing your Minecraft. Click the message in chat to open up the folder."
     },
     "slotLocked": "This swot is wocked!",
-    "summoningEyeFound": "Summoning Eye!",
+    "summoningEyeFound": "OWO EYE!!!!! OWOWOWOWOWO",
     "cancelledStemBreak": "SkybwockAddons has stwopped uwu fwom bweaking this shtem. Use uwur bear hands if uwu'd wike to bweak it owo.",
-    "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use another tool if you'd actually like to break it.",
-    "cancelledProfileOpening": "SkyblockAddons has stopped you from opening this player's profile while holding a bow.",
-    "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare item or tool from your hotbar.",
+    "cancelledCaneBreak": "Owoaddons has Owo you from Owo this block of Owo cane. Use another owo if you'd actually like to owo it.",
+    "cancelledProfileOpening": "OwoAdddon has Owoed you from owoing this Owo's prowo whowo holdowoing a bowo.",
+    "cancelledDropping": "OwoAddons has owoed you from drowoing this rare owo or owo2 from your owobar.",
     "clickMoreTimes": "Cwick/dwop this item %times% mwore twimes if you weally want to do whis."
   }
 }
