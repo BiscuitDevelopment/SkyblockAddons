@@ -50,7 +50,7 @@
     "preventMovementOnDeath": "Cosc ag siúl tar éis Bás",
     "showItemAnvilUses": "Taispeáin Úsáid Inneoin",
     "lockSlots": "Cur Sliotán faoi Ghlas",
-    "lockSlot": "Lock Slot",
+    "lockSlot": "Glas Sliotán",
     "dontResetCursorInventory": "Ná Athshocraigh an Cursor idir Fardal",
     "summoningEyeAlert": "Práinn Súil Seirbheáil",
     "makeEnderchestsInEndGreen": "Déan na Enderchests san End Glas",
@@ -101,7 +101,7 @@
     "slotLocked": "Tá an Sliotán seo faoi ghlas!",
     "summoningEyeFound": "Súil Seirbheáil!",
     "cancelledStemBreak": "Chur SkyblockAddons cosc ort an gas seo a briseadh. Úsáid to lámh má tá tú ag iarraidh é a briseadh.",
-    "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use another tool if you'd actually like to break it.",
+    "cancelledCaneBreak": "Chur SkyblockAddons cosc ort an píosa cána siúcra seo a briseadh. Úsáid uirlis eile má tá tú ag iarraidh é a briseadh.",
     "cancelledProfileOpening": "Chur SkyblockAddons cosc ort ag oscailt an próifíl seo fad is atá bogha i do lámh.",
     "cancelledDropping": "Chur SkyblockAddons cosc or an mír annamh seo a leag síos ó do hotbar.",
     "clickMoreTimes": "Cliceáil/leag síos an mír seo %times% uaireanta eile má tá tú cinnte faoi seo."
