@@ -9,6 +9,7 @@ import codes.biscuit.skyblockaddons.utils.Feature;
 import codes.biscuit.skyblockaddons.utils.Message;
 import com.mojang.realmsclient.gui.ChatFormatting;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.client.gui.inventory.GuiChest;
 import net.minecraft.client.gui.inventory.GuiContainer;
@@ -283,8 +284,8 @@ public abstract class MixinGuiChest extends GuiContainer {
                     ordinal = 0
             )
     )
-    private int drawStringTop(int mouseX, int mouseY) { //Item item, ItemStack stack
-        return drawBackpackTest(this.lowerChestInventory.getDisplayName().getUnformattedText(), mouseX, mouseY);
+    private int drawStringTop(FontRenderer fontRenderer, String str, int mouseX, int mouseY, int color) { //Item item, ItemStack stack
+        return drawBackpackTest(this.lowerChestInventory.getDisplayName().getUnformattedText(), mouseX, mouseY, color);
     }
 
     @Redirect(
@@ -295,15 +296,15 @@ public abstract class MixinGuiChest extends GuiContainer {
                     ordinal = 1
             )
     )
-    private int drawStringBottom(int mouseX, int mouseY) { //Item item, ItemStack stack
-        return drawBackpackTest(this.upperChestInventory.getDisplayName().getUnformattedText(), mouseX, mouseY);
+    private int drawStringBottom(FontRenderer fontRenderer, String str, int mouseX, int mouseY, int color) { //Item item, ItemStack stack
+        return drawBackpackTest(this.upperChestInventory.getDisplayName().getUnformattedText(), mouseX, mouseY, color);
     }
 
-    private int drawBackpackTest(String text, int x, int y) {
+    private int drawBackpackTest(String text, int x, int y, int color) {
         if (backpack != null)
             return this.fontRenderer.drawString(text, x, y, backpack.getBackpackColor().getTextColor());
 
-        return this.fontRenderer.drawString(text, x, y, 4210752);
+        return this.fontRenderer.drawString(text, x, y, color); // 4210752
     }
 
 }
