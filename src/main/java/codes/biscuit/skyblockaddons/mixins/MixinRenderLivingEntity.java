@@ -27,7 +27,7 @@ public class MixinRenderLivingEntity {
 	@Redirect(method = "applyRotations", at = @At(value = "INVOKE",
 			target = "Lnet/minecraft/entity/player/EntityPlayer;isWearing(Lnet/minecraft/entity/player/EnumPlayerModelParts;)Z", ordinal = 0))
 	private boolean applyRotationsIsWearing(EntityPlayer entityPlayer, EnumPlayerModelParts parts) {
-		return isCoolPerson || !entityPlayer.isWearing(parts);
+		return (!isCoolPerson && entityPlayer.isWearing(parts)) || (isCoolPerson && !entityPlayer.isWearing(parts));
 	}
 
 }
