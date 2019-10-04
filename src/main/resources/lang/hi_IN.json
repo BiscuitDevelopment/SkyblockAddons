@@ -64,15 +64,15 @@
     },
     "warningDuration": "चेतावनी की अवधि",
     "dontOpenProfileWithBow": "धनुष के साथ प्रोफ़ाइल न खोलें",
-    "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Items",
+    "stopDroppingSellingRareItems": "रेयर वस्तु को गिराना / बेचना बंद करें",
     "makeBackpackInventoriesColored": "Color Inventories",
     "avoidBreakingBottomSugarCane": "Avoid Breaking Bottom Sugar Cane",
     "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Items"
   },
   "messages": {
     "dropConfirmation": "Drop this item again to confirm!",
-    "magmaBossWarning": "Magma Cube Boss!",
-    "fullInventory": "Full Inventory!",
+    "magmaBossWarning": "मैग्मा क्यूब बॉस!",
+    "fullInventory": "पूरी इन्वेंटरी",
     "labymod": "Labymod Users: Hide Food, Armor, and Health Bar, is incompatible.",
     "minionCannotReach": "A %type% minion cannot reach and has stopped spawning!",
     "minionIsFull": "A minion on your island is full!",
