@@ -48,7 +48,7 @@
     "avoidBreakingStems": "Evitar de Quebar Raizes",
     "stopBowChargeFromResetting": "Impedir Arco e Flecha de Resetar",
     "preventMovementOnDeath": "Impedir Movimento Após Morte",
-    "showItemAnvilUses": "Mostrar Usos na Bigorna de Itens",
+    "showItemAnvilUses": "Mostrar Usos de Bigorna no Item",
     "lockSlots": "Permitir Trava de Slots",
     "lockSlot": "Slot Travado",
     "dontResetCursorInventory": "Não reajustar cursor entre inventários",
@@ -96,7 +96,7 @@
       "patchAvailable": "Uma nova atualização para correção de erros (%version%) está disponível! O link para as opções de download está no chat!",
       "downloading": "O download da atualização está sendo efetuado! Status: %downloaded%/%total%. Por favor, quando o download terminar, delete a versão antiga.",
       "failed": "O download da atualização falhou! Por favor faça o download manualmente utilizando o link do chat.",
-      "downloadFinished": "A atualização terminou de baixar. Foi salva como %file%. Por favor, não se esqueça de excluir o arquivo antigo após fechar seu Minecraft. Clique na mensagem que está no chat para abrir a pasta."
+      "downloadFinished": "A atualização terminou de baixar. Foi salvo como %file%. Por favor, não se esqueça de excluir o arquivo antigo após fechar seu Minecraft. Clique na mensagem que está no chat para abrir a pasta."
     },
     "slotLocked": "Este slot está trancado!",
     "summoningEyeFound": "Olho de Invocação!",
