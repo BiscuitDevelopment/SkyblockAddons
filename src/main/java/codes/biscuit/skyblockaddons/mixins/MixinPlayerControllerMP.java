@@ -17,6 +17,9 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.init.SoundEvents;
+import net.minecraft.inventory.ClickType;
+import net.minecraft.inventory.ContainerPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
@@ -50,8 +53,6 @@ public class MixinPlayerControllerMP {
     private void onPlayerDamageBlock(BlockPos loc, EnumFacing face, CallbackInfoReturnable<Boolean> cir) {
         SkyblockAddons main = SkyblockAddons.getInstance();
         Minecraft mc = Minecraft.getMinecraft();
-        EntityPlayerSP p = mc.player;
-        //ItemStack heldItem = p.getHeldItem(EnumHand.MAIN_HAND);
         Block block = mc.world.getBlockState(loc).getBlock();
         Block blockFloor = mc.world.getBlockState(loc.down()).getBlock();
 
@@ -72,10 +73,6 @@ public class MixinPlayerControllerMP {
             }
 
             if (main.getConfigValues().isEnabled(Feature.AVOID_BREAKING_BOTTOM_SUGAR_CANE)) {
-                //if (ItemStack.EMPTY.equals(heldItem) || heldItem.getItem().equals(Items.REEDS)
-                //        || heldItem.getItem().equals(Items.DIAMOND_HOE) || heldItem.getItem().equals(Items.IRON_HOE)
-                //        || heldItem.getItem().equals(Items.GOLDEN_HOE) || heldItem.getItem().equals(Items.STONE_HOE)
-                //        || heldItem.getItem().equals(Items.WOODEN_HOE)) {
                 if (!GuiScreen.isCtrlKeyDown()) {
                     if ((Blocks.REEDS.equals(block) && !Blocks.REEDS.equals(blockFloor)) ||
                             (Blocks.CACTUS.equals(block) && !Blocks.CACTUS.equals(blockFloor))) {
@@ -88,7 +85,6 @@ public class MixinPlayerControllerMP {
                         cir.setReturnValue(false);
                     }
                 }
-                //}
             }
         }
     }
@@ -182,6 +178,25 @@ public class MixinPlayerControllerMP {
 
                     cir.setReturnValue(EnumActionResult.PASS);
                 }
+            }
+        }
+    }
+
+    /**
+     * Cancels clicking a locked inventory slot, even from other mods
+     */
+    @Inject(method = "windowClick", at = @At("HEAD"), locals = LocalCapture.CAPTURE_FAILSOFT, cancellable = true)
+    public void onWindowClick(int windowId, int slotId, int mouseButton, ClickType type, EntityPlayer player, CallbackInfoReturnable<ItemStack> cir) {
+        SkyblockAddons main = SkyblockAddons.getInstance();
+
+        if (player != null && player.openContainer != null) {
+            slotId += main.getInventoryUtils().getSlotDifference(player.openContainer);
+
+            if (main.getConfigValues().isEnabled(Feature.LOCK_SLOTS) && main.getUtils().isOnSkyblock()
+                    && main.getConfigValues().getLockedSlots().contains(slotId)
+                    && (slotId >= 9 || player.openContainer instanceof ContainerPlayer && slotId >= 5)) {
+                main.getUtils().playSound(SoundEvents.BLOCK_NOTE_BASS, 0.5);
+                cir.setReturnValue(null);
             }
         }
     }

@@ -5,21 +5,18 @@
   "verbose": true,
   "mixins": [
     "MixinEntityPlayerSP",
-    "MixinSoundManager",
     "MixinEntityRenderer",
-    "MixinRenderManager",
-    "MixinGuiContainer",
-    "MixinGuiScreen",
     "MixinGuiChest",
-    "MixinPlayerControllerMP",
-    "MixinNetHandlerPlayClient",
-    "MixinMouseHelper",
+    "MixinGuiContainer",
     "MixinGuiInventory",
-    "MixinTileEntityEnderChestRenderer",
+    "MixinGuiScreen",
+    "MixinMouseHelper",
+    "MixinNetHandlerPlayClient",
+    "MixinPlayerControllerMP",
+    "MixinRenderEndermanEnderChest",
     "MixinRenderLivingEntity",
-    "MixinGuiHopper",
-    "MixinGuiDispenser",
-    "MixinGuiFurnace",
-    "MixinGuiBeacon"
+    "MixinRenderManager",
+    "MixinSoundManager",
+    "MixinTileEntityEnderChestRenderer"
   ]
 }

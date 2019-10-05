@@ -38,9 +38,10 @@ public abstract class MixinGuiInventory extends GuiContainer {
         int k = guiTop;
         boolean isOutsideGui = oldMouseX < j || oldMouseY < k || oldMouseX >= j + xSize || oldMouseY >= k + ySize;
 
-        if (main.getConfigValues().isEnabled(Feature.STOP_DROPPING_SELLING_RARE_ITEMS) &&
-                mc.player.inventory.getItemStack() != null && isOutsideGui &&
-                main.getInventoryUtils().shouldCancelDrop(mc.player.inventory.getItemStack())) return;
+        if (main.getConfigValues().isEnabled(Feature.STOP_DROPPING_SELLING_RARE_ITEMS) && mc.player.inventory.getItemStack() != null && isOutsideGui &&
+                main.getInventoryUtils().shouldCancelDrop(mc.player.inventory.getItemStack()))
+            return;
+
         super.handleMouseClick(slotIn, slotId, clickedButton, clickType);
     }
 

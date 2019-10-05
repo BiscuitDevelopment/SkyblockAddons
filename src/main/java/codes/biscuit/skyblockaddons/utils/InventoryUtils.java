@@ -7,6 +7,12 @@ import com.mojang.realmsclient.gui.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.init.SoundEvents;
+import net.minecraft.inventory.Container;
+import net.minecraft.inventory.ContainerBeacon;
+import net.minecraft.inventory.ContainerChest;
+import net.minecraft.inventory.ContainerFurnace;
+import net.minecraft.inventory.ContainerHopper;
+import net.minecraft.inventory.ContainerPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.Item;
@@ -230,6 +236,9 @@ public class InventoryUtils {
         if (ItemStack.EMPTY.equals(stack))
             return false;
 
+        if (!main.getUtils().isOnSkyblock())
+            return false;
+
         if (main.getUtils().cantDropItem(stack, EnumUtils.Rarity.getRarity(stack), false)) {
             Item item = stack.getItem();
             if (lastItem != null && lastItem.equals(item) && System.currentTimeMillis() - lastDrop < 3000 && dropCount >= 2) {
@@ -255,6 +264,22 @@ public class InventoryUtils {
         }
 
         return false;
+    }
+
+    /**
+     * The difference between a slot number in any given {@link Container} and what that number would be in a {@link ContainerPlayer}.
+     */
+    public int getSlotDifference(Container container) {
+        if (container instanceof ContainerChest)
+            return 9 - ((ContainerChest)container).getLowerChestInventory().getSizeInventory();
+        else if (container instanceof ContainerHopper)
+            return 4;
+        else if (container instanceof ContainerFurnace)
+            return 6;
+        else if (container instanceof ContainerBeacon)
+            return 8;
+
+        else return 0;
     }
 
 }

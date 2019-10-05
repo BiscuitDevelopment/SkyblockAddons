@@ -6,6 +6,7 @@ import codes.biscuit.skyblockaddons.listeners.RenderListener;
 import codes.biscuit.skyblockaddons.utils.ConfigValues;
 import codes.biscuit.skyblockaddons.utils.ForgeInitHelper;
 import codes.biscuit.skyblockaddons.utils.InventoryUtils;
+import codes.biscuit.skyblockaddons.utils.Message;
 import codes.biscuit.skyblockaddons.utils.Scheduler;
 import codes.biscuit.skyblockaddons.utils.Utils;
 import net.minecraft.client.Minecraft;
@@ -42,7 +43,9 @@ public class SkyblockAddons {
     private Scheduler scheduler = new Scheduler(this);
     private boolean usingLabymod = false;
     private boolean usingOofModv1 = false;
-    private KeyBinding lockSlot = new KeyBinding("Lock Slot", Keyboard.KEY_L, "SkyblockAddons");
+    private int openSettingsKeyIndex = -1;
+    private int openEditLocationsKeyIndex = -1;
+    private int lockSlotKeyIndex = -1;
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent e) {
@@ -55,6 +58,15 @@ public class SkyblockAddons {
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent e) {
+        MinecraftForge.EVENT_BUS.register(scheduler);
+        ClientRegistry.registerKeyBinding(new KeyBinding("Open Settings", Keyboard.KEY_NONE, MOD_NAME));
+        ClientRegistry.registerKeyBinding(new KeyBinding("Edit GUI Locations", Keyboard.KEY_NONE, MOD_NAME));
+        ClientRegistry.registerKeyBinding(new KeyBinding("Lock Slot", Keyboard.KEY_L, MOD_NAME));
+        int keyBindings = Minecraft.getMinecraft().gameSettings.keyBindings.length;
+        openSettingsKeyIndex = keyBindings - 3;
+        openEditLocationsKeyIndex = keyBindings - 2;
+        lockSlotKeyIndex = keyBindings - 1;
+
         for (Class<?> clazz : ForgeInitHelper.LISTENER_CLASSES) {
             try {
                 Object listener = clazz.getConstructor(SkyblockAddons.class).newInstance(this);
@@ -62,9 +74,6 @@ public class SkyblockAddons {
                 MinecraftForge.EVENT_BUS.register(listener);
             } catch (Exception ignored) { }
         }
-
-        MinecraftForge.EVENT_BUS.register(scheduler);
-        ClientRegistry.registerKeyBinding(lockSlot);
 
         for (Class<? extends CommandBase> clazz : ForgeInitHelper.COMMAND_CLASSES) {
             try {
@@ -77,16 +86,25 @@ public class SkyblockAddons {
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent e) {
         configValues.loadConfig();
+        loadKeyBindingDescriptions();
         usingLabymod = Loader.isModLoaded("labymod");
+
         if (Loader.isModLoaded("refractionoof")) {
             for (ModContainer modContainer : Loader.instance().getModList()) {
-                if ("refractionoof".equals(modContainer.getModId()) && "1.0".equals(modContainer.getVersion())) {
+                if ("refractionoof".equals(modContainer.getModId()) && "1.0".equals(modContainer.getVersion()))
                     usingOofModv1 = true;
-                }
             }
         }
+
         utils.checkDisabledFeatures();
         scheduleMagmaCheck();
+    }
+
+    public void loadKeyBindingDescriptions() {
+        KeyBinding[] keys = Minecraft.getMinecraft().gameSettings.keyBindings;
+        keys[openSettingsKeyIndex] = new KeyBinding(Message.SETTING_SETTINGS.getMessage(), keys[openSettingsKeyIndex].getKeyCode(), keys[openSettingsKeyIndex].getKeyCategory());
+        keys[openEditLocationsKeyIndex] = new KeyBinding(Message.SETTING_EDIT_LOCATIONS.getMessage(), keys[openEditLocationsKeyIndex].getKeyCode(), keys[openEditLocationsKeyIndex].getKeyCategory());
+        keys[lockSlotKeyIndex] =  new KeyBinding(Message.SETTING_LOCK_SLOT.getMessage(), keys[lockSlotKeyIndex].getKeyCode(), keys[lockSlotKeyIndex].getKeyCategory());
     }
 
     private void scheduleMagmaCheck() {
@@ -138,7 +156,16 @@ public class SkyblockAddons {
         return scheduler;
     }
 
-    public KeyBinding getLockSlot() {
-        return lockSlot;
+    public KeyBinding getOpenSettingsKey() {
+        return Minecraft.getMinecraft().gameSettings.keyBindings[openSettingsKeyIndex];
     }
+
+    public KeyBinding getOpenEditLocationsKey() {
+        return Minecraft.getMinecraft().gameSettings.keyBindings[openEditLocationsKeyIndex];
+    }
+
+    public KeyBinding getLockSlot() {
+        return Minecraft.getMinecraft().gameSettings.keyBindings[lockSlotKeyIndex];
+    }
+
 }

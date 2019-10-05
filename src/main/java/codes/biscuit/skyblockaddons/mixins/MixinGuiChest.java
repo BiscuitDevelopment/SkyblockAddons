@@ -19,7 +19,6 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.ClickType;
 import net.minecraft.inventory.Container;
-import net.minecraft.inventory.ContainerChest;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
@@ -217,20 +216,8 @@ public abstract class MixinGuiChest extends GuiContainer {
                 }
             }
         }
-        out:
-        if (slotIn != null && main.getConfigValues().isEnabled(Feature.LOCK_SLOTS) &&
-                main.getUtils().isOnSkyblock()) {
-            int slotNum = slotIn.slotNumber;
-            Container container = mc.player.openContainer;
-            slotNum -= ((ContainerChest)container).getLowerChestInventory().getSizeInventory()-9;
-            if (slotNum < 9) break out; // for chests
-            if (main.getConfigValues().getLockedSlots().contains(slotNum)) {
-                main.getUtils().playSound(SoundEvents.BLOCK_NOTE_BASS, 0.5);
-                return;
-            }
-        }
 
-        if (main.getConfigValues().isEnabled(Feature.STOP_DROPPING_SELLING_RARE_ITEMS) && main.getUtils().isOnSkyblock() &&
+        if (main.getConfigValues().isEnabled(Feature.STOP_DROPPING_SELLING_RARE_ITEMS) &&
                 lowerChestInventory.hasCustomName() && EnumUtils.Merchant.isMerchant(lowerChestInventory.getDisplayName().getUnformattedText()) &&
                 slotIn != null && slotIn.inventory instanceof InventoryPlayer) {
             if (main.getInventoryUtils().shouldCancelDrop(slotIn))

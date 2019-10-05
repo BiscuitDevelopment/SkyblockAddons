@@ -8,6 +8,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.init.SoundEvents;
+import net.minecraft.inventory.ContainerPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
@@ -30,12 +31,14 @@ public class MixinEntityPlayerSP {
             cancellable = true
     )
     private void dropItemConfirmation(boolean dropAll, CallbackInfoReturnable<EntityItem> cir) {
+        Minecraft mc = Minecraft.getMinecraft();
         SkyblockAddons main = SkyblockAddons.getInstance();
-        ItemStack heldItemStack = Minecraft.getMinecraft().player.getHeldItem(EnumHand.MAIN_HAND);
+        ItemStack heldItemStack = mc.player.getHeldItem(EnumHand.MAIN_HAND);
 
         if (main.getConfigValues().isEnabled(Feature.LOCK_SLOTS) && main.getUtils().isOnSkyblock()) {
-            int slot = Minecraft.getMinecraft().player.inventory.currentItem+36;
-            if (main.getConfigValues().getLockedSlots().contains(slot)) {
+            int slot = mc.player.inventory.currentItem+36;
+            if (main.getConfigValues().getLockedSlots().contains(slot)
+                    && (slot >= 9 || mc.player.openContainer instanceof ContainerPlayer && slot >= 5)) {
                 main.getUtils().playSound(SoundEvents.BLOCK_NOTE_BASS, 0.5);
                 SkyblockAddons.getInstance().getUtils().sendMessage(main.getConfigValues().getColor(Feature.DROP_CONFIRMATION).getChatFormatting() +
                                                                             Message.MESSAGE_SLOT_LOCKED.getMessage());

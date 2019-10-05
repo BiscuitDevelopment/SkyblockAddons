@@ -26,6 +26,7 @@ import net.minecraft.inventory.ContainerChest;
 import net.minecraft.inventory.ContainerDispenser;
 import net.minecraft.inventory.ContainerFurnace;
 import net.minecraft.inventory.ContainerHopper;
+import net.minecraft.inventory.ContainerPlayer;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -74,7 +75,6 @@ public class MixinGuiContainer extends GuiScreen {
                     if (toolip.size() > 2) {
                         String enchantLine = toolip.get(2);
                         String toMatch = enchantLine.split(Pattern.quote("* "))[1];
-//                        String enchant = ChatFormatting.YELLOW + enchantLine.split(Pattern.quote("* "))[1];
                         String enchant;
                         if (!main.getUtils().getEnchantmentMatch().isEmpty() &&
                                 main.getUtils().enchantReforgeMatches(toMatch)) {
@@ -248,28 +248,13 @@ public class MixinGuiContainer extends GuiScreen {
     )
     private void drawGradientRect(GuiContainer guiContainer, int left, int top, int right, int bottom, int startColor, int endColor) {
         SkyblockAddons main = SkyblockAddons.getInstance();
-        int slotNum = hoveredSlot.slotNumber;
-        boolean skipSlot = false;
         Container container = mc.player.openContainer;
-
-        if (container instanceof ContainerChest) {
-            slotNum -= ((ContainerChest)container).getLowerChestInventory().getSizeInventory()-9;
-            if (slotNum < 9) skipSlot = true;
-        } else if (container instanceof ContainerHopper) {
-            slotNum += 4;
-            if (slotNum < 9) skipSlot = true;
-        } else if (container instanceof ContainerDispenser) {
-            if (slotNum < 9) skipSlot = true;
-        } else if (container instanceof ContainerFurnace) {
-            slotNum += 6;
-            if (slotNum < 9) skipSlot = true;
-        } else if (container instanceof ContainerBeacon) {
-            slotNum += 8;
-            if (slotNum < 9) skipSlot = true;
-        }
+        int slotNum = hoveredSlot.slotNumber + main.getInventoryUtils().getSlotDifference(container);
         main.getUtils().setLastHoveredSlot(slotNum);
-        if (!skipSlot && hoveredSlot != null && main.getConfigValues().isEnabled(Feature.LOCK_SLOTS) &&
-                main.getUtils().isOnSkyblock() && main.getConfigValues().getLockedSlots().contains(slotNum)) {
+
+        if (main.getConfigValues().isEnabled(Feature.LOCK_SLOTS) &&
+                main.getUtils().isOnSkyblock() && main.getConfigValues().getLockedSlots().contains(slotNum)
+                && (slotNum >= 9 || container instanceof ContainerPlayer && slotNum >= 5)) {
             int red = ConfigColor.RED.getRGB(127);
             drawGradientRect(left,top,right,bottom,red,red);
         } else {
@@ -289,26 +274,13 @@ public class MixinGuiContainer extends GuiScreen {
     )
     private void drawSlot(int mouseX, int mouseY, float partialTicks, CallbackInfo ci, int i, int j, int k, int l, int i1, Slot slot) {
         SkyblockAddons main = SkyblockAddons.getInstance();
-        if (slot != null && main.getConfigValues().isEnabled(Feature.LOCK_SLOTS) &&
-                main.getUtils().isOnSkyblock()) {
-            int slotNum = slot.slotNumber;
+
+        if (slot != null && main.getConfigValues().isEnabled(Feature.LOCK_SLOTS) && main.getUtils().isOnSkyblock()) {
             Container container = mc.player.openContainer;
-            if (container instanceof ContainerChest) {
-                slotNum -= ((ContainerChest)container).getLowerChestInventory().getSizeInventory()-9;
-                if (slotNum < 9) return;
-            } else if (container instanceof ContainerHopper) {
-                slotNum += 4;
-                if (slotNum < 9) return;
-            } else if (container instanceof ContainerDispenser) {
-                if (slotNum < 9) return;
-            } else if (container instanceof ContainerFurnace) {
-                slotNum += 6;
-                if (slotNum < 9) return;
-            } else if (container instanceof ContainerBeacon) {
-                slotNum += 8;
-                if (slotNum < 9) return;
-            }
-            if (main.getConfigValues().getLockedSlots().contains(slotNum)) {
+            int slotNum = slot.slotNumber + main.getInventoryUtils().getSlotDifference(container);
+
+            if (main.getConfigValues().getLockedSlots().contains(slotNum)
+                    && (slotNum >= 9 || container instanceof ContainerPlayer && slotNum >= 5)) {
                 GlStateManager.disableLighting();
                 GlStateManager.disableDepth();
                 GlStateManager.color(1,1,1,0.4F);
@@ -345,7 +317,7 @@ public class MixinGuiContainer extends GuiScreen {
                         }
                     }
                 }
-                if (slot >= 9 || (slot >= 5 && mc.currentScreen instanceof GuiInventory)) {
+                if (slot >= 9 || mc.player.openContainer instanceof ContainerPlayer && slot >= 5) {
                     if (main.getConfigValues().getLockedSlots().contains(slot)) {
                         if (main.getLockSlot().getKeyCode() == keyCode) {
                             main.getUtils().playSound(SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, 1);
