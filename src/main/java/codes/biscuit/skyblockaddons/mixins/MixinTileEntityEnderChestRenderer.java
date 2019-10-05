@@ -31,11 +31,10 @@ public abstract class MixinTileEntityEnderChestRenderer extends TileEntitySpecia
                     ordinal = 1
             )
     )
-    public void render(TileEntityEnderChest te, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
+    public void render(TileEntityEnderChestRenderer tileEntityEnderChestRenderer, ResourceLocation location) {
         SkyblockAddons main = SkyblockAddons.getInstance();
         Minecraft mc = Minecraft.getMinecraft();
 
-        // TODO: Does this even work?
         if (main.getUtils().isOnSkyblock() && mc.currentScreen == null && main.getConfigValues().isEnabled(Feature.MAKE_ENDERCHESTS_GREEN_IN_END) &&
                 (main.getUtils().getLocation() == EnumUtils.Location.THE_END || main.getUtils().getLocation() == EnumUtils.Location.DRAGONS_NEST))
             bindTexture(GREEN_ENDERCHEST);
