@@ -21,7 +21,7 @@ public class MixinRenderLivingEntity {
 			target = "Ljava/lang/String;equals(Ljava/lang/Object;)Z", ordinal = 0))
 	private boolean applyRotationsEquals(String name, Object obj) {
 		List<String> coolPeople = Arrays.asList("Dinnerbone", "Biscut", "CraftedFury", "GoldenDusk");
-		return (isCoolPerson = coolPeople.contains(name));
+		return (isCoolPerson = coolPeople.contains(obj));
 	}
 
 	@Redirect(method = "applyRotations", at = @At(value = "INVOKE",
