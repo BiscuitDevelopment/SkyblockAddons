@@ -21,10 +21,10 @@
     "hideDurability": "Göm Verktyg Hållbarhet",
     "showEnchantmentsReforges": "Förtrollningar & Reforges",
     "minionStopWarning": "\"Tjänare Kan Inte Nå\" Varning",
-    "hideAuctionHousePlayers": "Göm Spelare Nära Viktiga NPCer",
+    "hideAuctionHousePlayers": "Göm Spelare brevid Viktiga NPCer",
     "backpackStyle": "Ryggsäck Stil: %style%",
     "backpackStyles": {
-      "regular": "Vanliga",
+      "regular": "Vanlig",
       "compact": "Kompakt"
     },
     "showBackpackPreview": "Visa Förhandsgranskning av Ryggsäck",
@@ -39,7 +39,7 @@
     "defenceIcon": "Skydd Symbol",
     "defenceText": "Skydd Nummer",
     "defencePercentage": "Skydd Percentsats",
-    "healthUpdates": "Hälsoförändrings Nummer",
+    "healthUpdates": "HälsoUppdateringar",
     "hidePlayersInLobby": "Göm Spelare Som Är Långt Bort I Lobbyn",
     "darkAuctionTimer": "Mörk Auktions Timer",
     "magmaBossTimer": "Magma Boss Timer",
@@ -90,13 +90,13 @@
     "downloadLink": "Uppdaterings länk",
     "downloadAutomatically": "AUTO NEDLADNING",
     "openModFolder": "Mods mappen",
-    "joinTheDiscord": "JOIN DISCORD",
+    "joinTheDiscord": "Joina discord servern",
     "update": {
-      "majorAvailable": "A new major update (%version%) is available! The link for the download can be found in chat.",
-      "patchAvailable": "A new patch update (%version%) is available! Look in chat for download options!",
-      "downloading": "The patch is downloading! Status: %downloaded%/%total% Please note that after the download has finished, you must delete the old file.",
-      "failed": "The patch download has failed! Please download it manually using the link in chat.",
-      "downloadFinished": "The patch has finished downloading. It has been saved as %file%. Please don't forget to delete the old file after closing your Minecraft. Click the message in chat to open up the folder."
+      "majorAvailable": "En ny Stor updatering (%version%) är tillgänligt! Du hittar Nedladning's länlen i chatten.",
+      "patchAvailable": "En ny Patch updatering (%version%) är tillgänligt! Nedladning länken är i chatten!",
+      "downloading": "Patch updateringen är redo! Status: %downloaded%/%total% Snälla notera att du måste ta bort den gamla filen när updaternigen blir klar.",
+      "failed": "Patch updateringen misslyckades! Snälla ladda ner den manuellt genom länken i chatten,.",
+      "downloadFinished": "Nedladningen av Patch updateringen är klar. Den har sparats som %file%. Snälla glöm inte att ta bort den gamla filen när du stänger av din Minecraft. Tryck på msgen i chatten för att öppna Mods mappen."
     },
     "slotLocked": "Denna luckan är låst!",
     "summoningEyeFound": "Tillkallande Öga!",
