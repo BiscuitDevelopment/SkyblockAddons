@@ -74,6 +74,7 @@ public class MixinPlayerControllerMP {
 
     /**
      * This blocks interaction with Ember Rods on your island, to avoid blowing up chests.
+     * @author CraftedFury
      */
     @Inject(
             method = "processRightClick",
@@ -105,7 +106,8 @@ public class MixinPlayerControllerMP {
     }
 
     /**
-     * This blocks placing items such as enchanted lava buckets and string.
+     * This blocks placing items such as enchanted lava buckets and string and interaction with Ember Rods on your island, to avoid blowing up chests.
+     * @author CraftedFury
      */
     @Inject(
             method = "processRightClickBlock",
@@ -150,6 +152,7 @@ public class MixinPlayerControllerMP {
             }
         }
     }
+
     @Inject(method = "interactWithEntity(Lnet/minecraft/entity/player/EntityPlayer;Lnet/minecraft/entity/Entity;Lnet/minecraft/util/EnumHand;)Lnet/minecraft/util/EnumActionResult;", at = @At(value = "HEAD"), locals = LocalCapture.CAPTURE_FAILSOFT, cancellable = true)
     private void onPlayerRightClickEntity(EntityPlayer player, Entity entityIn, EnumHand hand, CallbackInfoReturnable<Boolean> cir) {
         SkyblockAddons main = SkyblockAddons.getInstance();
