@@ -30,7 +30,7 @@ public class MixinEntityPlayerSP {
         if (main.getConfigValues().isEnabled(Feature.LOCK_SLOTS) && main.getUtils().isOnSkyblock()) {
             int slot = mc.player.inventory.currentItem + 36;
             if (main.getConfigValues().getLockedSlots().contains(slot)
-                    && (slot >= 9 || mc.thePlayer.openContainer instanceof ContainerPlayer && slot >= 5)) {
+                    && (slot >= 9 || mc.player.openContainer instanceof ContainerPlayer && slot >= 5)) {
                 main.getUtils().playSound("note.bass", 0.5);
                 SkyblockAddons.getInstance().getUtils().sendMessage(main.getConfigValues().getColor(Feature.DROP_CONFIRMATION).getChatFormatting() +
                         Message.MESSAGE_SLOT_LOCKED.getMessage());
