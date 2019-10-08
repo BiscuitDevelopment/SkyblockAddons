@@ -10,8 +10,8 @@ import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.item.EntityArmorStand;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -40,6 +40,8 @@ public class RenderListener {
     private boolean predictHealth = false;
     private boolean predictMana = false;
 
+    private DownloadInfo downloadInfo;
+
     private Feature subtitleFeature = null;
     private Feature titleFeature = null;
     private String cannotReachMobName = null;
@@ -50,6 +52,7 @@ public class RenderListener {
 
     public RenderListener(SkyblockAddons main) {
         this.main = main;
+        downloadInfo = new DownloadInfo(main);
     }
     /**
      * Render overlays and warnings for clients without labymod.
@@ -64,6 +67,7 @@ public class RenderListener {
                 } else {
                     renderTimersOnly();
                 }
+                drawUpdateMessage();
             }
         }
     }
@@ -82,6 +86,7 @@ public class RenderListener {
             } else {
                 renderTimersOnly();
             }
+            drawUpdateMessage();
         }
     }
 
@@ -285,6 +290,36 @@ public class RenderListener {
         }
     }
 
+    private void drawUpdateMessage() {
+        EnumUtils.UpdateMessageType messageType = downloadInfo.getMessageType();
+        if (messageType != null) {
+            Minecraft mc = Minecraft.getMinecraft();
+            String[] textList;
+            if (messageType == EnumUtils.UpdateMessageType.PATCH_AVAILABLE || messageType == EnumUtils.UpdateMessageType.MAJOR_AVAILABLE) {
+                textList = downloadInfo.getMessageType().getMessages(downloadInfo.getNewestVersion());
+            } else if (messageType == EnumUtils.UpdateMessageType.DOWNLOADING) {
+                textList = downloadInfo.getMessageType().getMessages(String.valueOf(downloadInfo.getDownloadedBytes()), String.valueOf(downloadInfo.getTotalBytes()));
+            } else if (messageType == EnumUtils.UpdateMessageType.DOWNLOAD_FINISHED) {
+                textList = downloadInfo.getMessageType().getMessages(downloadInfo.getOutputFileName());
+            } else {
+                textList = downloadInfo.getMessageType().getMessages();
+            }
+            int halfWidth = new ScaledResolution(mc).getScaledWidth() / 2;
+            Gui.drawRect(halfWidth - 110, 20, halfWidth + 110, 53 + textList.length * 10, ConfigColor.RED.getColor(127));
+            String text = "SkyblockAddons";
+            GlStateManager.pushMatrix();
+            float scale = 1.5F;
+            GlStateManager.scale(scale, scale, 1);
+            mc.fontRenderer.drawString(text, (int) (halfWidth / scale) - mc.fontRenderer.getStringWidth(text) / 2, (int) (30 / scale), ConfigColor.WHITE.getColor(255));
+            GlStateManager.popMatrix();
+            int y = 45;
+            for (String line : textList) {
+                mc.fontRenderer.drawString(line, halfWidth - mc.fontRenderer.getStringWidth(line) / 2, y, ConfigColor.WHITE.getColor(255));
+                y += 10;
+            }
+        }
+    }
+
     /**
      * This renders the skeleton bar.
      */
@@ -295,7 +330,7 @@ public class RenderListener {
         if (!(mc.currentScreen instanceof LocationEditGui)) {
             for (Entity listEntity : mc.world.loadedEntityList) {
                 if (listEntity instanceof EntityItem &&
-                        listEntity.getRidingEntity() instanceof EntityZombie && listEntity.getRidingEntity().isInvisible() && listEntity.getDistance(mc.player) <= 8) {
+                        listEntity.getRidingEntity() instanceof EntityArmorStand && listEntity.getRidingEntity().isInvisible() && listEntity.getDistance(mc.player) <= 8) {
                     bones++;
                 }
             }
@@ -423,23 +458,25 @@ public class RenderListener {
             magmaBuilder.append(main.getPlayerListener().getMagmaAccuracy().getSymbol());
             EnumUtils.MagmaTimerAccuracy ma = main.getPlayerListener().getMagmaAccuracy();
             if (ma == EnumUtils.MagmaTimerAccuracy.ABOUT || ma == EnumUtils.MagmaTimerAccuracy.EXACTLY) {
-                int totalSeconds = main.getPlayerListener().getMagmaTime();
-                if (totalSeconds < 0) totalSeconds = 0;
-                int hours = totalSeconds / 3600;
-                int minutes = totalSeconds / 60 % 60;
-                int seconds = totalSeconds % 60;
-                if (Math.abs(hours) >= 10) hours = 10;
-                magmaBuilder.append(hours).append(":");
-                if (minutes < 10) {
-                    magmaBuilder.append("0");
+                if (buttonLocation == null) {
+                    int totalSeconds = main.getPlayerListener().getMagmaTime();
+                    if (totalSeconds < 0) totalSeconds = 0;
+                    int hours = totalSeconds / 3600;
+                    int minutes = totalSeconds / 60 % 60;
+                    int seconds = totalSeconds % 60;
+                    if (Math.abs(hours) >= 10) hours = 10;
+                    magmaBuilder.append(hours).append(":");
+                    if (minutes < 10) {
+                        magmaBuilder.append("0");
+                    }
+                    magmaBuilder.append(minutes).append(":");
+                    if (seconds < 10) {
+                        magmaBuilder.append("0");
+                    }
+                    magmaBuilder.append(seconds);
+                } else {
+                    magmaBuilder.append("1:23:45");
                 }
-                magmaBuilder.append(minutes).append(":");
-                if (seconds < 10) {
-                    magmaBuilder.append("0");
-                }
-                magmaBuilder.append(seconds);
-            } else {
-                magmaBuilder.append("1:23:45");
             }
             text = magmaBuilder.toString();
         } else {
@@ -607,5 +644,9 @@ public class RenderListener {
 
     Feature getTitleFeature() {
         return titleFeature;
+    }
+
+    public DownloadInfo getDownloadInfo() {
+        return downloadInfo;
     }
 }

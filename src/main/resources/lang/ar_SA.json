@@ -3,9 +3,9 @@
   "settings": {
     "tab": {
       "features": "الميزات",
-      "fixes": "التصليحات",
+      "fixes": "الاصلاحات",
       "guiFeatures": "ميزات الواجهة",
-      "generalSettings": "الاعدادات العامة"
+      "generalSettings": "الإعدادات العامة"
     },
     "settings": "الإعدادات",
     "magmaBossWarning": "تحذير زعيم الصهارة",
@@ -21,7 +21,7 @@
     "hideDurability": "إخفاء متانة الأداة",
     "showEnchantmentsReforges": "تطوير و إعادة تشكيل",
     "minionStopWarning": "تحذير إيقاف التابع",
-    "hideAuctionHousePlayers": "إخفاء اللاعبين بالقرب من دار المزاد",
+    "hideAuctionHousePlayers": "اخفاء اللاعبين عند الشخصية الغير قابلة للعب المهمه",
     "backpackStyle": "%style% :نمط حقيبة الظهر",
     "backpackStyles": {
       "regular": "المظهر العادي",
@@ -30,8 +30,8 @@
     "showBackpackPreview": "عرض محتوى حقيبة الظهر",
     "hideHealthBar": "إخفاء شريط الصحة",
     "fullMinionWarning": "تحذير التابع الممتلئ",
-    "ignoreItemFrameClicks": "تجاهل الكبس على إطارات الأدوات",
-    "showOnlyWhenHoldingShift": "إظهار فقط عند الرخي",
+    "ignoreItemFrameClicks": "تجاهل النقر على إطارات الأدوات",
+    "showOnlyWhenHoldingShift": "إظهار فقط عند الضغط على Shift",
     "manaBar": "شريط الطاقة",
     "manaText": "كمية الطاقة",
     "healthBar": "شريط الدم",
@@ -46,15 +46,15 @@
     "itemPickupLog": "سجل التقاط الأداة",
     "avoidPlacingEnchantedItems": "تجنب وضع الأدوات المطورة",
     "avoidBreakingStems": "تجنب كسر القصب",
-    "stopBowChargeFromResetting": "أيقاف الملئ القوس من الاعادة",
+    "stopBowChargeFromResetting": "أيقاف ملئ القوس من الإعادة",
     "preventMovementOnDeath": "منع المشي بعد الموت",
     "showItemAnvilUses": "أظهار عدد مرات أستخدام السندان",
-    "lockSlots": "السماح باغلاق السلوت",
-    "dontResetCursorInventory": "لا تقوم باعادة الكورسر ما بين الانفينتوري",
+    "lockSlots": "السماح بقفل الخانات",
+    "dontResetCursorInventory": "لا تقم بإعادة ضبط المؤشر بين المخازن",
     "summoningEyeAlert": "تنبيه عين الاستدعاء",
-    "makeEnderchestsInEndGreen": "جعل الصندوق المتنقل الذي يحمله الاندرمان أخضر",
+    "makeEnderchestsInEndGreen": "تغيير لون الصندوق المتنقل في عالم النهاية إلى اخضر",
     "changeColor": "تغيير اللون",
-    "showInOtherGames": "إظهار في العاب آخرى",
+    "showInOtherGames": "إظهار في ألعاب أخرى",
     "useVanillaTexture": "استخدام الشكل الأصلي",
     "textStyle": "نمط النص",
     "textStyles": {
@@ -63,18 +63,15 @@
     },
     "warningDuration": "مدة التحذير",
     "dontOpenProfileWithBow": "عدم فتح خانة الشخصية عند حمل القوس",
-    "stopDroppingSellingRareItems": "إيقاف اسقاط او بيع الأشياء النادرة",
+    "stopDroppingSellingRareItems": "إيقاف إسقاط أو بيع الأشياء النادرة",
     "makeBackpackInventoriesColored": "لون القائمة",
-    "avoidBreakingBottomSugarCane": "أيقاف كسر قصم السكر السفلي",
-    "replaceRomanNumeralsWithNumbers": "تحويل الترقيم الرمزي او الحرفي الى الرقمي"
+    "avoidBreakingBottomSugarCane": "أيقاف كسر قصب السكر السفلي",
+    "replaceRomanNumeralsWithNumbers": "تحويل الترقيم الروماني إلى الرقمي"
   },
   "messages": {
     "dropConfirmation": "!إرمي هذا العنصر مرة أخرى للتأكيد",
     "magmaBossWarning": "!زعيم مكعب الصهارة",
     "fullInventory": "!جرد كامل",
-    "newVersion": ".متاح الاّن. قم بتنزيله بالنقر هنا %newestVersion% ,نسخة جديدة",
-    "discord": ".تريد رؤية التغييرات؟ انقر هنا للانضمام إلى الدسكورد الخاص بي",
-    "developmentVersion": "%newestVersion% أحدث نسخة على الإنترنت هي .%version% :أنت تقوم بتشغيل إصدار تطوير",
     "labymod": ".مستعملي اللابي مود: إن إخفاء عظام خوذة الهيكل العظمي غير متوافق",
     "minionCannotReach": "!لا يمكنه الوصول وانه سيتوقف عن الإنشاء %type%إن تابع ال",
     "minionIsFull": "امتلأت حقيبة أحدى خدامك في جزيرتك!",
@@ -84,13 +81,28 @@
     "enchantsToExclude": "%type% للاستبعاد:",
     "inventoryTypes": {
       "enchants": "التطويرات",
-      "reforges": "اعادة تشكيل\n"
+      "reforges": "إعادة تشكيل"
     },
-    "slotLocked": "هذه السلوت مغلقة!",
+    "newUpdateAvailable": "A new update, %version%, is available!",
+    "deleteOldFile": "The download has finished, please open your mods folder using the button below, close your Minecraft, and delete the old version (or delete it later if you prefer).",
+    "wantToViewPatchNotes": "Want to read the changes?",
+    "downloadLink": "UPDATE LINK",
+    "downloadAutomatically": "AUTO DOWNLOAD",
+    "openModFolder": "MOD FOLDER",
+    "joinTheDiscord": "JOIN DISCORD",
+    "update": {
+      "majorAvailable": "A new major update, %version% is available! The link for the download can be found in chat.",
+      "patchAvailable": "A new patch update, %version% is available! Look for the download link or to attempt to download the patch automatically!",
+      "downloading": "The patch is downloading! Status: %downloaded%/%total% Please note that after the download has finished, you must delete the old file.",
+      "failed": "The patch download has failed! Please download it manually using the link in chat.",
+      "downloadFinished": "The patch has finished downloading. It has been saved as %file%. Please don't forget to delete the old file after closing your Minecraft. Click the message in chat to open up the folder."
+    },
+    "slotLocked": "الخانة مقفله!",
     "summoningEyeFound": "عين الاستدعاء!",
-    "cancelledStemBreak": "منعك تطبيق من كسر هذا. أن أردت كسره فأستخدم يدك.",
-    "cancelledProfileOpening": "منعك التطبيق من فتح شخصية هذا اللاعب وانت تحمل القوس.",
-    "cancelledDropping": "منعك التطبيق من اسقاط هذه الأداة او الشيء النادران من قائمة أدواتك.",
-    "clickMoreTimes": "أضغط أو اسقط هذا الشيء %times% مرات زيادة ان كنت حقيقتاً تريد فعل هذا."
+    "cancelledStemBreak": "إضافات سكاي بلوك منعك من كسر هذا الجذر. إن أردت كسره استخدم يدك الفارغة.",
+    "cancelledCaneBreak": "إضافات سكاي بلوك منعك من كسر هذا القصب، إن أردت كسره استعمل اداة اخرى.",
+    "cancelledProfileOpening": "إضافات سكاي بلوك منعك من فتح شخصية هذا اللاعب وانت تحمل القوس.",
+    "cancelledDropping": "إضافات سكاي بلوك منعك من إلقاء هذه الأداة أو الشيء النادر من قائمة أدواتك.",
+    "clickMoreTimes": "أضغط أو اسقط هذا الشيء %times% مرات أخرى إن كنت حقيقا تريد فعل هذا."
   }
 }

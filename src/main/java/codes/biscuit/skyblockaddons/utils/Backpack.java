@@ -31,6 +31,34 @@ public class Backpack {
         this.y = y;
     }
 
+    public int getX() {
+        return x;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    public ItemStack[] getItems() {
+        return items;
+    }
+
+    public String getBackpackName() {
+        return backpackName;
+    }
+
+    public BackpackColor getBackpackColor() {
+        return backpackColor;
+    }
+
     public static Backpack getFromItem(ItemStack stack) {
         if (stack == null) return null;
         if (stack.hasTagCompound()) {
@@ -95,33 +123,5 @@ public class Backpack {
             }
         }
         return null;
-    }
-
-    public int getX() {
-        return x;
-    }
-
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public void setY(int y) {
-        this.y = y;
-    }
-
-    public ItemStack[] getItems() {
-        return items;
-    }
-
-    public String getBackpackName() {
-        return backpackName;
-    }
-
-    public BackpackColor getBackpackColor() {
-        return backpackColor;
     }
 }

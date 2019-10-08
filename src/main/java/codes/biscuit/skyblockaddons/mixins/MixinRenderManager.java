@@ -34,10 +34,14 @@ public class MixinRenderManager {
                     cir.setReturnValue(false);
                 }
             }
-            if (main.getConfigValues().isEnabled(Feature.HIDE_PLAYERS_IN_LOBBY) &&
-                    (entityIn instanceof EntityOtherPlayerMP /*TODO Particles are no longer entities|| entityIn instanceof Particle*/ || entityIn instanceof EntityItemFrame) &&
-                    entityIn.getDistance(Minecraft.getMinecraft().player) > 7 && main.getUtils().getLocation() == EnumUtils.Location.VILLAGE) {
-                cir.setReturnValue(false);
+            if (main.getConfigValues().isEnabled(Feature.HIDE_PLAYERS_IN_LOBBY)) {
+                if (main.getUtils().getLocation() == EnumUtils.Location.VILLAGE || main.getUtils().getLocation() == EnumUtils.Location.AUCTION_HOUSE ||
+                        main.getUtils().getLocation() == EnumUtils.Location.BANK) {
+                    if ((entityIn instanceof EntityOtherPlayerMP /*TODO Particles are no longer entities|| entityIn instanceof Particle*/ || entityIn instanceof EntityItemFrame) &&
+                            entityIn.getDistance(Minecraft.getMinecraft().player) > 7 && main.getUtils().getLocation() == EnumUtils.Location.VILLAGE) {
+                        cir.setReturnValue(false);
+                    }
+                }
             }
         }
     }

@@ -4,7 +4,7 @@
     "tab": {
       "features": "功能",
       "fixes": "修復",
-      "guiFeatures": "介面設定",
+      "guiFeatures": "GUI介面設定",
       "generalSettings": "一般設定"
     },
     "settings": "設定",
@@ -21,7 +21,7 @@
     "hideDurability": "隱藏物品耐久度",
     "showEnchantmentsReforges": "於畫面上顯示附魔 & 重鑄",
     "minionStopWarning": "\"機器人無法觸及生物\"警告",
-    "hideAuctionHousePlayers": "隱藏競標房內玩家",
+    "hideAuctionHousePlayers": "隱藏重要NPC旁的玩家",
     "backpackStyle": "背包樣式: %style%",
     "backpackStyles": {
       "regular": "一般",
@@ -62,19 +62,16 @@
       "two": "樣式二"
     },
     "warningDuration": "警報持續時間",
-    "dontOpenProfileWithBow": "拿弓時不開啟玩家資料",
-    "stopDroppingSellingRareItems": "避免賣出或丟出稀有以上的物品",
-    "makeBackpackInventoriesColored": "染色背包影響物品欄顏色",
-    "avoidBreakingBottomSugarCane": "避免破壞最下面的甘蔗",
+    "dontOpenProfileWithBow": "拿弓時將不會開啟玩家資料",
+    "stopDroppingSellingRareItems": "避免賣出或丟出稀有等級以上的物品",
+    "makeBackpackInventoriesColored": "背包內部顏色與外部相同",
+    "avoidBreakingBottomSugarCane": "避免破壞位於底部的甘蔗",
     "replaceRomanNumeralsWithNumbers": "將羅馬數字替換為阿拉伯數字"
   },
   "messages": {
     "dropConfirmation": "再次丟棄此物品以確認!",
     "magmaBossWarning": "!!!熔岩史萊姆王已出生!!!",
     "fullInventory": "背包已滿!",
-    "newVersion": "新的版本, %newestVersion% 現已上線. 點擊此處以下載。",
-    "discord": "想看到有那些改變? 點擊此處以加入我的Discord.",
-    "developmentVersion": "你在正使用一個開發版本: %version%. 上一個正式版本為 %newestVersion%",
     "labymod": "Labymod使用者請注意: 隱藏食物, 裝甲值以及血條, 還未完成。",
     "minionCannotReach": "有一個 %type% 機器人無法觸及到生物而停止運作了!",
     "minionIsFull": "有一個機器人因為背包已滿而停止運作了!",
@@ -86,11 +83,26 @@
       "enchants": "附魔",
       "reforges": "重鑄"
     },
+    "newUpdateAvailable": "A new update, %version%, is available!",
+    "deleteOldFile": "The download has finished, please open your mods folder using the button below, close your Minecraft, and delete the old version (or delete it later if you prefer).",
+    "wantToViewPatchNotes": "Want to read the changes?",
+    "downloadLink": "UPDATE LINK",
+    "downloadAutomatically": "AUTO DOWNLOAD",
+    "openModFolder": "MOD FOLDER",
+    "joinTheDiscord": "JOIN DISCORD",
+    "update": {
+      "majorAvailable": "A new major update, %version% is available! The link for the download can be found in chat.",
+      "patchAvailable": "A new patch update, %version% is available! Look for the download link or to attempt to download the patch automatically!",
+      "downloading": "The patch is downloading! Status: %downloaded%/%total% Please note that after the download has finished, you must delete the old file.",
+      "failed": "The patch download has failed! Please download it manually using the link in chat.",
+      "downloadFinished": "The patch has finished downloading. It has been saved as %file%. Please don't forget to delete the old file after closing your Minecraft. Click the message in chat to open up the folder."
+    },
     "slotLocked": "這個欄位已被鎖定!",
     "summoningEyeFound": "召喚之眼!",
-    "cancelledStemBreak": "SkyblockAddons阻止了你破壞此物, 如依舊想破壞, 請使用空手",
-    "cancelledProfileOpening": "SkyblockAddons 避免了你拿著弓時打開其他玩家的資料。",
-    "cancelledDropping": "SkyblockAddons 避免了你丟出快捷鍵中稀有以上的物品。",
-    "clickMoreTimes": "如果你真的想這麼做，再點擊或按丟出 %times% 次。"
+    "cancelledStemBreak": "SkyblockAddons阻止了你破壞這個梗, 如確實想破壞, 請使用空手",
+    "cancelledCaneBreak": "SkyblockAddons阻止了你破壞此甘蔗, 如確實想破壞, 請使用其他工具",
+    "cancelledProfileOpening": "SkyblockAddons阻止了你拿著弓打開其他玩家的資料。",
+    "cancelledDropping": "SkyblockAddons阻止了你丟出快捷欄中稀有等級以上的物品。",
+    "clickMoreTimes": "如果你真的想這麼做, 請再點擊或按丟出%times%次。"
   }
 }

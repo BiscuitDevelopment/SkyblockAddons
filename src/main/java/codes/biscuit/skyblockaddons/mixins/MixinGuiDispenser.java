@@ -23,8 +23,7 @@ public abstract class MixinGuiDispenser extends GuiContainer {
         if (slotIn != null && main.getConfigValues().isEnabled(Feature.LOCK_SLOTS) &&
                 main.getUtils().isOnSkyblock()) {
             int slotNum = slotIn.slotNumber;
-            if (slotNum < 9) break out; // for dispensers
-            if (main.getConfigValues().getLockedSlots().contains(slotNum)) {
+            if (slotNum > 8 && main.getConfigValues().getLockedSlots().contains(slotNum)) {
                 main.getUtils().playSound("note.bass", 0.5);
                 return;
             }

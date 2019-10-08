@@ -59,7 +59,17 @@ public class SkyblockAddonsCommand extends CommandBase {
                     main.getUtils().sendMessage(ChatFormatting.GREEN + "You are now able to copy the nbt of items. Hover over any item and press CTRL to copy.");
                 else main.getUtils().sendMessage(ChatFormatting.RED + "You have disabled the ability to copy nbt.");
                 return;
-            }
+            }/* else if (args[0].equalsIgnoreCase("update")) {
+                if (main.getRenderListener().getDownloadInfo().isPatch()) main.getUtils().downloadPatch(main.getRenderListener().getDownloadInfo().getNewestVersion());
+                return;
+            } else if (args[0].equalsIgnoreCase("folder")) {
+                try {
+                    Desktop.getDesktop().open(main.getUtils().getSBAFolder(false));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                return;
+            }*/
         }
         main.getUtils().setFadingIn(true);
         main.getRenderListener().setGuiToOpen(PlayerListener.GUIType.MAIN, 1, EnumUtils.SkyblockAddonsGuiTab.FEATURES);

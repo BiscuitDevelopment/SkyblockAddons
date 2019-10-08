@@ -215,6 +215,7 @@ public class InventoryUtils {
                 }
             }
         }
+        return;
     }
 
     public boolean shouldCancelDrop(Slot slot) {

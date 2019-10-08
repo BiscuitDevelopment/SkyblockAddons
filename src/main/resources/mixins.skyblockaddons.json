@@ -6,9 +6,11 @@
   "mixins": [
     "MixinEntityPlayerSP",
     "MixinEntityRenderer",
+    "MixinGuiBeacon",
     "MixinGuiChest",
     "MixinGuiContainer",
     "MixinGuiDispenser",
+    "MixinGuiFurnace",
     "MixinGuiHopper",
     "MixinGuiInventory",
     "MixinGuiScreen",

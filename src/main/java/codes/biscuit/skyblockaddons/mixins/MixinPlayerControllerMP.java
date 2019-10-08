@@ -1,7 +1,6 @@
 package codes.biscuit.skyblockaddons.mixins;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.utils.Blacklist;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.Feature;
 import codes.biscuit.skyblockaddons.utils.Message;
@@ -9,19 +8,16 @@ import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.client.entity.EntityPlayerSP;
-import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.multiplayer.PlayerControllerMP;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
-import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -64,32 +60,6 @@ public class MixinPlayerControllerMP {
                     main.getUtils().sendMessage(TextFormatting.RED + Message.MESSAGE_CANCELLED_CANE_BREAK.getMessage());
                 }
                 cir.setReturnValue(false);
-            }
-        }
-    }
-
-    /**
-     * This blocks interaction with Ember Rods on your island, to avoid blowing up chests.
-     */
-    @Inject(method = "processRightClick", at = @At(value = "HEAD"), cancellable = true)
-    public void processRightClick(EntityPlayer player, World worldIn, EnumHand hand, CallbackInfoReturnable<EnumActionResult> cir) {
-        Minecraft mc = Minecraft.getMinecraft();
-        ItemStack heldItem = player.getHeldItemMainhand();
-
-        if (player.equals(mc.player) && !ItemStack.EMPTY.equals(heldItem)) {
-            for (Blacklist.BlacklistedItem blacklistedItem : Blacklist.DO_NOT_RIGHT_CLICK) {
-                if (blacklistedItem.isEnabled()) {
-                    if (!blacklistedItem.isOnlyEnchanted() || heldItem.isItemEnchanted()) {
-                        if (!blacklistedItem.isOnlyOnIsland() || SkyblockAddons.getInstance().getUtils().getLocation() == EnumUtils.Location.ISLAND) {
-                            if (blacklistedItem.getItem().equals(heldItem.getItem())) {
-                                if (!blacklistedItem.canCtrlKeyBypass() || !GuiScreen.isCtrlKeyDown()) {
-                                    cir.setReturnValue(EnumActionResult.FAIL);
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                }
             }
         }
     }

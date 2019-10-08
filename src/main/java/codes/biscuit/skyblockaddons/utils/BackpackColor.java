@@ -23,8 +23,6 @@ public enum BackpackColor {
     ORANGE(249, 128, 29),
     WHITE(255, 255, 255);
 
-    private static Set<BackpackColor> darkColors = EnumSet.of(BackpackColor.BLACK, BackpackColor.PURPLE, BackpackColor.GREEN,
-            BackpackColor.MAGENTA, BackpackColor.RED, BackpackColor.BROWN, BackpackColor.BLUE, BackpackColor.GREY);
     private int r;
     private int g;
     private int b;
@@ -46,6 +44,9 @@ public enum BackpackColor {
     public float getB() {
         return (float) b / 255;
     }
+
+    private static Set<BackpackColor> darkColors = EnumSet.of(BackpackColor.BLACK, BackpackColor.PURPLE, BackpackColor.GREEN,
+            BackpackColor.MAGENTA, BackpackColor.RED, BackpackColor.BROWN, BackpackColor.BLUE, BackpackColor.GREY);
 
     public int getTextColor() {
         int rgb = 4210752;

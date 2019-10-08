@@ -113,46 +113,9 @@ public class PlayerListener {
         main.getUtils().getAttributes().get(attribute).setValue(value);
     }
 
-    @SubscribeEvent
-    public void onInteract1(PlayerInteractEvent.RightClickItem e) {
-        Minecraft mc = Minecraft.getMinecraft();
-        ItemStack heldItem = e.getEntityPlayer().getHeldItemMainhand();
-        if (e.getEntityPlayer() == mc.player && heldItem != ItemStack.EMPTY && heldItem.isItemEnchanted()) {
-            if (main.getConfigValues().isEnabled(Feature.DISABLE_EMBER_ROD)) {
-                if (heldItem.getItem().equals(Items.BLAZE_ROD) && main.getUtils().getLocation() == EnumUtils.Location.ISLAND) {
-                    e.setCanceled(true);
-                    return;
-                }
-            }
-            if (main.getConfigValues().isEnabled(Feature.AVOID_PLACING_ENCHANTED_ITEMS)) {
-                if ((heldItem.getItem().equals(Items.LAVA_BUCKET) || heldItem.getItem().equals(Items.STRING))) {
-                    e.setCanceled(true);
-                }
-            }
-        }
-    }
-
-    @SubscribeEvent
-    public void onInteract2(PlayerInteractEvent.RightClickBlock e) {
-        Minecraft mc = Minecraft.getMinecraft();
-        ItemStack heldItem = e.getEntityPlayer().getHeldItemMainhand();
-        if (e.getEntityPlayer() == mc.player && heldItem != ItemStack.EMPTY && heldItem.isItemEnchanted()) {
-            if (main.getConfigValues().isEnabled(Feature.DISABLE_EMBER_ROD)) {
-                if (heldItem.getItem().equals(Items.BLAZE_ROD) && main.getUtils().getLocation() == EnumUtils.Location.ISLAND) {
-                    e.setCanceled(true);
-                    return;
-                }
-            }
-            if (main.getConfigValues().isEnabled(Feature.AVOID_PLACING_ENCHANTED_ITEMS)) {
-                if ((heldItem.getItem().equals(Items.LAVA_BUCKET) || heldItem.getItem().equals(Items.STRING))) {
-                    e.setCanceled(true);
-                }
-            }
-        }
-    }
-
     private long lastClosedInv = -1;
-
+    private long lastBossSpawnPost = -1;
+    private long lastBossDeathPost = -1;
     /**
      * Interprets the action bar to extract mana, health, and defence. Enables/disables mana/health prediction,
      * and looks for mana usage messages in chat while predicting.
@@ -201,7 +164,7 @@ public class PlayerListener {
                         setAttribute(Attribute.HEALTH, newHealth);
                         setAttribute(Attribute.MAX_HEALTH, Integer.parseInt(healthSplit[1]));
                         if (defencePart != null) {
-                            setAttribute(Attribute.DEFENCE, Integer.valueOf(main.getUtils().getNumbersOnly(defencePart).trim()));
+                            setAttribute(Attribute.DEFENCE, Integer.parseInt(main.getUtils().getNumbersOnly(defencePart).trim()));
                         }
                         String[] manaSplit = main.getUtils().getNumbersOnly(manaPart).split(Pattern.quote("/"));
                         setAttribute(Attribute.MANA, Integer.parseInt(manaSplit[0]));
@@ -254,6 +217,12 @@ public class PlayerListener {
             if (main.getConfigValues().isEnabled(Feature.PREVENT_MOVEMENT_ON_DEATH) && e.getMessage().getFormattedText().startsWith("\u00A7r\u00A7c \u2620 \u00A7r\u00A77You ")) {
                 KeyBinding.unPressAllKeys();
             }
+            // credits to tomotomo, thanks lol
+            if (main.getConfigValues().isEnabled(Feature.SUMMONING_EYE_ALERT) && e.getMessage().getFormattedText().equals("\u00A7r\u00A76\u00A7lRARE DROP! \u00A7r\u00A75Summoning Eye\u00A7r")) {
+                main.getUtils().playSound("random.orb", 0.5);
+                main.getRenderListener().setTitleFeature(Feature.SUMMONING_EYE_ALERT);
+                main.getScheduler().schedule(Scheduler.CommandType.RESET_TITLE_FEATURE, main.getConfigValues().getWarningSeconds());
+            }
         }
     }
 
@@ -270,8 +239,48 @@ public class PlayerListener {
 //        }
 //    }
 
-    private long lastBossSpawnPost = -1;
-    private long lastBossDeathPost = -1;
+
+    /**
+     * Theese block interaction with Ember Rods on your island, to avoid blowing up chests, and placing enchanted items
+     * such as enchanted lava buckets.
+     */
+    @SubscribeEvent
+    public void onInteract1(PlayerInteractEvent.RightClickItem e) {
+        Minecraft mc = Minecraft.getMinecraft();
+        ItemStack heldItem = e.getEntityPlayer().getHeldItemMainhand();
+        if (e.getEntityPlayer() == mc.player && heldItem != ItemStack.EMPTY && heldItem.isItemEnchanted()) {
+            if (main.getConfigValues().isEnabled(Feature.DISABLE_EMBER_ROD)) {
+                if (heldItem.getItem().equals(Items.BLAZE_ROD) && main.getUtils().getLocation() == EnumUtils.Location.ISLAND) {
+                    e.setCanceled(true);
+                    return;
+                }
+            }
+            if (main.getConfigValues().isEnabled(Feature.AVOID_PLACING_ENCHANTED_ITEMS)) {
+                if ((heldItem.getItem().equals(Items.LAVA_BUCKET) || heldItem.getItem().equals(Items.STRING))) {
+                    e.setCanceled(true);
+                }
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public void onInteract2(PlayerInteractEvent.RightClickBlock e) {
+        Minecraft mc = Minecraft.getMinecraft();
+        ItemStack heldItem = e.getEntityPlayer().getHeldItemMainhand();
+        if (e.getEntityPlayer() == mc.player && heldItem != ItemStack.EMPTY && heldItem.isItemEnchanted()) {
+            if (main.getConfigValues().isEnabled(Feature.DISABLE_EMBER_ROD)) {
+                if (heldItem.getItem().equals(Items.BLAZE_ROD) && main.getUtils().getLocation() == EnumUtils.Location.ISLAND) {
+                    e.setCanceled(true);
+                    return;
+                }
+            }
+            if (main.getConfigValues().isEnabled(Feature.AVOID_PLACING_ENCHANTED_ITEMS)) {
+                if ((heldItem.getItem().equals(Items.LAVA_BUCKET) || heldItem.getItem().equals(Items.STRING))) {
+                    e.setCanceled(true);
+                }
+            }
+        }
+    }
 
     /**
      * The main timer for a bunch of stuff.
@@ -451,6 +460,9 @@ public class PlayerListener {
                                 }
                             }
                         }
+                        if (!foundBoss && main.getRenderListener().getTitleFeature() == Feature.MAGMA_WARNING) {
+                            main.getRenderListener().setTitleFeature(null);
+                        }
                         if (!foundBoss && magmaAccuracy == EnumUtils.MagmaTimerAccuracy.SPAWNED) {
                             magmaAccuracy = EnumUtils.MagmaTimerAccuracy.ABOUT;
                             setMagmaTime(7200, true);
@@ -531,7 +543,7 @@ public class PlayerListener {
         if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.REPLACE_ROMAN_NUMERALS_WITH_NUMBERS) &&
                 e.getToolTip() != null) {
             for (int i = 0; i < e.getToolTip().size(); i++) {
-                e.getToolTip().set(i, main.getUtils().replaceRomanNumerals(e.getToolTip().get(i)));
+                e.getToolTip().set(i, RomanNumeralParser.replaceNumeralsWithIntegers(e.getToolTip().get(i)));
             }
         }
     }

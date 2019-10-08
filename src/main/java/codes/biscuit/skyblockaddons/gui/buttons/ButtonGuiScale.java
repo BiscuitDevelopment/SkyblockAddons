@@ -26,9 +26,8 @@ public class ButtonGuiScale extends ButtonFeature {
         this.width = width;
         this.height = height;
     }
-
     @Override
-    public void drawButton(Minecraft mc, int mouseX, int mouseY, float partialTicks) {
+    public void drawButton(Minecraft mc, int mouseX, int mouseY, float part) {
         FontRenderer fontrenderer = mc.fontRenderer;
         mc.getTextureManager().bindTexture(BUTTON_TEXTURES);
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);

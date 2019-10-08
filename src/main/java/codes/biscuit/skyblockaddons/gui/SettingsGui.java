@@ -52,6 +52,8 @@ public class SettingsGui extends GuiScreen {
     @Override
     public void initGui() {
         if (feature == Feature.LANGUAGE) {
+            row = 1;
+            collumn = 1;
             displayCount = findDisplayCount();
             // Add the buttons for each page.
             int skip = (page - 1) * displayCount;
@@ -64,7 +66,7 @@ public class SettingsGui extends GuiScreen {
             for (Language language : Language.values()) {
                 if (skip == 0) {
                     if (language == Language.ENGLISH) continue;
-                    if (language == Language.ARABIC) {
+                    if (language == Language.CHINESE_TRADITIONAL) {
                         addLanguageButton(Language.ENGLISH);
                     }
                     addLanguageButton(language);
@@ -85,11 +87,6 @@ public class SettingsGui extends GuiScreen {
         int collumn = 1;
         for (EnumUtils.SkyblockAddonsGuiTab loopTab : EnumUtils.SkyblockAddonsGuiTab.values()) {
             if (lastTab != loopTab) {
-                int tabX = 0;
-                if (collumn == 1) tabX = 120;
-                else if (collumn == 2) tabX = 230;
-                else if (collumn == 3) tabX = 340;
-
                 String text = "";
                 switch (loopTab) {
                     case FEATURES:
@@ -106,11 +103,21 @@ public class SettingsGui extends GuiScreen {
                         break;
                 }
                 int stringWidth = fontRenderer.getStringWidth(text);
-                buttonList.add(new ButtonSwitchTab((tabX - stringWidth / 2) * 1.4, 70, (int) (stringWidth * 1.4),
+                int tabX = 0;
+                int halfWidth = width / 2;
+                if (collumn == 1) {
+                    tabX = (int) Math.round(halfWidth - 140 - (stringWidth / 2) * 1.4);
+                } else if (collumn == 2) {
+                    tabX = (int) Math.round(halfWidth - (stringWidth / 2) * 1.4);
+                } else if (collumn == 3) {
+                    tabX = (int) Math.round(halfWidth + 140 - (stringWidth / 2) * 1.4);
+                }
+                buttonList.add(new ButtonSwitchTab(tabX, 70, (int) (stringWidth * 1.4),
                         14, text, main, loopTab, lastTab));
                 collumn++;
             }
         }
+        return;
     }
 
 
@@ -210,8 +217,10 @@ public class SettingsGui extends GuiScreen {
             if (arrow.isNotMax()) {
                 main.getUtils().setFadingIn(false);
                 if (arrow.getArrowType() == ButtonArrow.ArrowType.RIGHT) {
+                    closingGui = true;
                     mc.displayGuiScreen(new SettingsGui(main, feature, ++page, lastPage, lastTab, settings));
                 } else {
+                    closingGui = true;
                     mc.displayGuiScreen(new SettingsGui(main, feature, --page, lastPage, lastTab, settings));
                 }
             }

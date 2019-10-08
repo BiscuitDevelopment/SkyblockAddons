@@ -14,6 +14,7 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.*;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
+import org.lwjgl.input.Keyboard;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -42,8 +43,15 @@ public abstract class MixinGuiChest extends GuiContainer {
         super(inventorySlotsIn);
     }
 
-
     private Backpack backpack = null;
+
+    @Override
+    public void updateScreen() {
+        if (this.textFieldMatch != null && this.textFieldExclusions != null) {
+            this.textFieldMatch.updateCursorCounter();
+            this.textFieldExclusions.updateCursorCounter();
+        }
+    }
 
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
@@ -98,50 +106,9 @@ public abstract class MixinGuiChest extends GuiContainer {
     }
 
     @Override
-    public void initGui() {
-        super.initGui();
-        String guiName = lowerChestInventory.getDisplayName().getUnformattedText();
-        if (guiName.equals("Enchant Item")) inventoryType = EnumUtils.InventoryType.ENCHANTMENT_TABLE;
-        if (guiName.equals("Reforge Item")) inventoryType = EnumUtils.InventoryType.REFORGE_ANVIL;
-        if (inventoryType != null) {
-            int xPos = guiLeft - 160;
-            if (xPos < 0) {
-                xPos = 20;
-            }
-            int yPos = guiTop + 80;
-            textFieldMatch = new GuiTextField(2, this.fontRenderer, xPos, yPos, 120, 20);
-            textFieldMatch.setMaxStringLength(500);
-            List<String> lockedEnchantments = SkyblockAddons.getInstance().getUtils().getEnchantmentMatch();
-            StringBuilder enchantmentBuilder = new StringBuilder();
-            int i = 1;
-            for (String enchantment : lockedEnchantments) {
-                enchantmentBuilder.append(enchantment);
-                if (i < lockedEnchantments.size()) {
-                    enchantmentBuilder.append(",");
-                }
-                i++;
-            }
-            String text = enchantmentBuilder.toString();
-            if (text.length() > 0) {
-                textFieldMatch.setText(text);
-            }
-            yPos += 40;
-            textFieldExclusions = new GuiTextField(2, this.fontRenderer, xPos, yPos, 120, 20);
-            textFieldExclusions.setMaxStringLength(500);
-            lockedEnchantments = SkyblockAddons.getInstance().getUtils().getEnchantmentExclusion();
-            enchantmentBuilder = new StringBuilder();
-            i = 1;
-            for (String enchantment : lockedEnchantments) {
-                enchantmentBuilder.append(enchantment);
-                if (i < lockedEnchantments.size()) {
-                    enchantmentBuilder.append(",");
-                }
-                i++;
-            }
-            text = enchantmentBuilder.toString();
-            if (text.length() > 0) {
-                textFieldExclusions.setText(text);
-            }
+    public void onGuiClosed() {
+        if (this.textFieldMatch != null && this.textFieldExclusions != null) {
+            Keyboard.enableRepeatEvents(false);
         }
     }
 
@@ -217,6 +184,67 @@ public abstract class MixinGuiChest extends GuiContainer {
         super.handleMouseClick(slotIn, slotId, mouseButton, type);
     }
 
+    @Override
+    public void initGui() {
+        super.initGui();
+        String guiName = lowerChestInventory.getDisplayName().getUnformattedText();
+        if (guiName.equals("Enchant Item")) inventoryType = EnumUtils.InventoryType.ENCHANTMENT_TABLE;
+        if (guiName.equals("Reforge Item")) inventoryType = EnumUtils.InventoryType.REFORGE_ANVIL;
+        if (inventoryType != null) {
+            int xPos = guiLeft - 160;
+            if (xPos < 0) {
+                xPos = 20;
+            }
+            int yPos = guiTop + 80;
+            textFieldMatch = new GuiTextField(2, this.fontRenderer, xPos, yPos, 120, 20);
+            textFieldMatch.setMaxStringLength(500);
+            List<String> lockedEnchantments = SkyblockAddons.getInstance().getUtils().getEnchantmentMatch();
+            StringBuilder enchantmentBuilder = new StringBuilder();
+            int i = 1;
+            for (String enchantment : lockedEnchantments) {
+                enchantmentBuilder.append(enchantment);
+                if (i < lockedEnchantments.size()) {
+                    enchantmentBuilder.append(",");
+                }
+                i++;
+            }
+            String text = enchantmentBuilder.toString();
+            if (text.length() > 0) {
+                textFieldMatch.setText(text);
+            }
+            yPos += 40;
+            textFieldExclusions = new GuiTextField(2, this.fontRenderer, xPos, yPos, 120, 20);
+            textFieldExclusions.setMaxStringLength(500);
+            lockedEnchantments = SkyblockAddons.getInstance().getUtils().getEnchantmentExclusion();
+            enchantmentBuilder = new StringBuilder();
+            i = 1;
+            for (String enchantment : lockedEnchantments) {
+                enchantmentBuilder.append(enchantment);
+                if (i < lockedEnchantments.size()) {
+                    enchantmentBuilder.append(",");
+                }
+                i++;
+            }
+            text = enchantmentBuilder.toString();
+            if (text.length() > 0) {
+                textFieldExclusions.setText(text);
+            }
+            Keyboard.enableRepeatEvents(true);
+        }
+    }
+
+    @Redirect(method = "drawGuiContainerForegroundLayer", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/FontRenderer;drawString(Ljava/lang/String;III)I", ordinal = 1))
+    private int drawStringBottom(FontRenderer fontRenderer, String text, int x, int y, int color) { //Item item, ItemStack stack
+        return drawBackpackTest(fontRenderer, text, x, y, color);
+    }
+
+    private int drawBackpackTest(FontRenderer fontRenderer, String text, int x, int y, int color) {
+        if (backpack != null) {
+            return fontRenderer.drawString(text, x, y, backpack.getBackpackColor().getTextColor());
+        }
+        return fontRenderer.drawString(text, x, y, color);
+    }
+
     @Redirect(method = "drawGuiContainerBackgroundLayer", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/GlStateManager;color(FFFF)V", ordinal = 0))
     private void color(float colorRed, float colorGreen, float colorBlue, float colorAlpha) { //Item item, ItemStack stack
         SkyblockAddons main = SkyblockAddons.getInstance();
@@ -239,15 +267,4 @@ public abstract class MixinGuiChest extends GuiContainer {
         return drawBackpackTest(fontRenderer, text, x, y, color);
     }
 
-    @Redirect(method = "drawGuiContainerForegroundLayer", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/FontRenderer;drawString(Ljava/lang/String;III)I", ordinal = 1))
-    private int drawStringBottom(FontRenderer fontRenderer, String text, int x, int y, int color) { //Item item, ItemStack stack
-        return drawBackpackTest(fontRenderer, text, x, y, color);
-    }
-
-    private int drawBackpackTest(FontRenderer fontRenderer, String text, int x, int y, int color) {
-        if (backpack != null) {
-            return fontRenderer.drawString(text, x, y, backpack.getBackpackColor().getTextColor());
-        }
-        return fontRenderer.drawString(text, x, y, color);
-    }
 }

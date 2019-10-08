@@ -2,37 +2,44 @@ package codes.biscuit.skyblockaddons.utils;
 
 public enum Language {
 
-    ARABIC("ar_SA"),
-    BISCUITISH("bc_BC"),
-    BULGARIAN("bg_BG"),
-    CHINESE_TRADITIONAL("zh_TW"),
-    CHINESE_SIMPLIFIED("zh_CN"),
-    CROATIAN("hr_HR"),
-    CZECH("cs_CZ"),
-    DANISH("da_DK"),
-    DUTCH_NETHERLANDS("nl_NL"),
+    // listed by popularity
     ENGLISH("en_us"),
-    FILIPINO("fil_PH"),
-    FINNISH("fi_FI"),
-    FRENCH("fr_FR"),
-    GERMAN_GERMANY("de_DE"),
-    HEBREW("he_IL"),
-    HUNGARIAN("hu_HU"),
-    ITALIAN("it_IT"),
-    JAPANESE("ja_JP"),
-    PIRATE_ENGLISH("en_PT"),
-    POLISH("pl_PL"),
-    PORTUGUESE_BRAZIL("pt_BR"),
-    PORTUGUESE_PORTUGAL("pt_PT"),
-    ROMANIAN("ro_RO"),
-    RUSSIAN("ru_RU"),
-    SERBIAN_LATIN("sr_CS"),
-    SPANISH_MEXICO("es_MX"),
-    SPANISH_SPAIN("es_ES"),
-    SWEDISH("sv_SE"),
-    THAI("th_TH"),
-    TURKISH("tr_TR"),
-    VIETNAMESE("vi_VN");
+    CHINESE_TRADITIONAL("zh_tw"),
+    CHINESE_SIMPLIFIED("zh_cn"),
+    SPANISH_MEXICO("es_mx"),
+    SPANISH_SPAIN("es_es"),
+    FRENCH("fr_fr"),
+    ARABIC("ar_sa"),
+    RUSSIAN("ru_ru"),
+    PORTUGUESE_BRAZIL("pt_br"),
+    PORTUGUESE_PORTUGAL("pt_pt"),
+    GERMAN_GERMANY("de_de"),
+    JAPANESE("ja_jp"),
+    TURKISH("tr_tr"),
+    KOREAN("ko_kr"),
+    VIETNAMESE("vi_vn"),
+    ITALIAN("it_it"),
+    THAI("th_th"),
+    FILIPINO("fil_ph"),
+
+    //rest listed alphabetically
+    BULGARIAN("bg_bg"),
+    CROATIAN("hr_hr"),
+    CZECH("cs_cz"),
+    DANISH("da_dk"),
+    DUTCH_NETHERLANDS("nl_nl"),
+    FINNISH("fi_fi"),
+    HEBREW("he_il"),
+    HUNGARIAN("hu_hu"),
+    IRISH("ga_ir"),
+    LITHUANIAN("lt_lt"),
+    NORWEGIAN("no_no"),
+    POLISH("pl_pl"),
+    ROMANIAN("ro_ro"),
+    SERBIAN_LATIN("sr_cs"),
+    SWEDISH("sv_se"),
+    PIRATE_ENGLISH("en_pt"),
+    BISCUITISH("bc_bc");
 
     private String path;
 
@@ -42,6 +49,10 @@ public enum Language {
 
     public String getPath() {
         return path;
+    }
+
+    public String getFlagPath() {
+        return path.toLowerCase();
     }
 
 //    public Language getNextLanguage() {
