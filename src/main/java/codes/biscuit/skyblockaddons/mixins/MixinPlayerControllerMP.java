@@ -1,6 +1,7 @@
 package codes.biscuit.skyblockaddons.mixins;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.utils.Blacklist;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.Feature;
 import codes.biscuit.skyblockaddons.utils.Message;
@@ -8,7 +9,9 @@ import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.client.entity.EntityPlayerSP;
+import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.multiplayer.PlayerControllerMP;
+import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -16,10 +19,13 @@ import net.minecraft.init.Items;
 import net.minecraft.inventory.ClickType;
 import net.minecraft.inventory.ContainerPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -66,6 +72,84 @@ public class MixinPlayerControllerMP {
         }
     }
 
+    /**
+     * This blocks interaction with Ember Rods on your island, to avoid blowing up chests.
+     */
+    @Inject(
+            method = "processRightClick",
+            at = @At(
+                    value = "HEAD"
+            ),
+            cancellable = true
+    )
+    public void processRightClick(EntityPlayer player, World worldIn, EnumHand hand, CallbackInfoReturnable<EnumActionResult> cir) {
+        Minecraft mc = Minecraft.getMinecraft();
+        ItemStack heldItem = player.getHeldItemMainhand();
+
+        if (player.equals(mc.player) && !ItemStack.EMPTY.equals(heldItem)) {
+            for (Blacklist.BlacklistedItem blacklistedItem : Blacklist.DO_NOT_RIGHT_CLICK) {
+                if (blacklistedItem.isEnabled()) {
+                    if (!blacklistedItem.isOnlyEnchanted() || heldItem.isItemEnchanted()) {
+                        if (!blacklistedItem.isOnlyOnIsland() || SkyblockAddons.getInstance().getUtils().getLocation() == EnumUtils.Location.ISLAND) {
+                            if (blacklistedItem.getItem().equals(heldItem.getItem())) {
+                                if (!blacklistedItem.canCtrlKeyBypass() || !GuiScreen.isCtrlKeyDown()) {
+                                    cir.setReturnValue(EnumActionResult.FAIL);
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * This blocks placing items such as enchanted lava buckets and string.
+     */
+    @Inject(
+            method = "processRightClickBlock",
+            at = @At(
+                    value = "HEAD"
+            ),
+            cancellable = true
+    )
+    public void processRightClickBlock(EntityPlayerSP player, WorldClient worldIn, BlockPos pos, EnumFacing direction, Vec3d vec, EnumHand hand, CallbackInfoReturnable<EnumActionResult> cir) {
+        Minecraft mc = Minecraft.getMinecraft();
+        ItemStack heldItem = player.getHeldItemMainhand();
+        // TODO: Check {pos} to see if it contains the clicked block I want to go through
+
+        if (player.equals(mc.player) && !ItemStack.EMPTY.equals(heldItem)) {
+            for (Blacklist.BlacklistedItem blacklistedItem : Blacklist.DO_NOT_PLACE) {
+                if (blacklistedItem.isEnabled()) {
+                    if (!blacklistedItem.isOnlyEnchanted() || heldItem.isItemEnchanted()) {
+                        if (!blacklistedItem.isOnlyOnIsland() || SkyblockAddons.getInstance().getUtils().getLocation() == EnumUtils.Location.ISLAND) {
+                            if (blacklistedItem.getItem().equals(heldItem.getItem())) {
+                                if (!blacklistedItem.canCtrlKeyBypass() || !GuiScreen.isCtrlKeyDown()) {
+                                    cir.setReturnValue(EnumActionResult.FAIL);
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            for (Blacklist.BlacklistedItem blacklistedItem : Blacklist.DO_NOT_RIGHT_CLICK) {
+                if (blacklistedItem.isEnabled()) {
+                    if (!blacklistedItem.isOnlyEnchanted() || heldItem.isItemEnchanted()) {
+                        if (!blacklistedItem.isOnlyOnIsland() || SkyblockAddons.getInstance().getUtils().getLocation() == EnumUtils.Location.ISLAND) {
+                            if (blacklistedItem.getItem().equals(heldItem.getItem())) {
+                                if (!blacklistedItem.canCtrlKeyBypass() || !GuiScreen.isCtrlKeyDown()) {
+                                    cir.setReturnValue(EnumActionResult.FAIL);
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
     @Inject(method = "interactWithEntity(Lnet/minecraft/entity/player/EntityPlayer;Lnet/minecraft/entity/Entity;Lnet/minecraft/util/EnumHand;)Lnet/minecraft/util/EnumActionResult;", at = @At(value = "HEAD"), locals = LocalCapture.CAPTURE_FAILSOFT, cancellable = true)
     private void onPlayerRightClickEntity(EntityPlayer player, Entity entityIn, EnumHand hand, CallbackInfoReturnable<Boolean> cir) {
         SkyblockAddons main = SkyblockAddons.getInstance();
