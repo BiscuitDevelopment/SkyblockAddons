@@ -31,6 +31,7 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.ChunkEvent;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.InputEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 import java.awt.*;
@@ -559,12 +560,17 @@ public class PlayerListener {
         }
     }
 
-//    @SubscribeEvent(receiveCanceled = true)
-//    public void onKeyInput(InputEvent.KeyInputEvent e) {
-//        if (main.getLockSlot().isPressed()) {
-//            main.getConfigValues().getLockedSlots().add(main.getUtils().getLastHoveredSlot());
-//        }
-//    }
+    @SubscribeEvent(receiveCanceled = true)
+    public void onKeyInput(InputEvent.KeyInputEvent e) {
+        if (main.getOpenSettingsKey().isPressed()) {
+            main.getUtils().setFadingIn(true);
+            main.getRenderListener().setGuiToOpen(PlayerListener.GUIType.MAIN, 1, EnumUtils.SkyblockAddonsGuiTab.FEATURES);
+        }
+        else if (main.getOpenEditLocationsKey().isPressed()) {
+            main.getUtils().setFadingIn(false);
+            main.getRenderListener().setGuiToOpen(PlayerListener.GUIType.EDIT_LOCATIONS, 0, null);
+        }
+    }
 
     public boolean shouldResetMouse() {
         return System.currentTimeMillis() - lastClosedInv > 100;

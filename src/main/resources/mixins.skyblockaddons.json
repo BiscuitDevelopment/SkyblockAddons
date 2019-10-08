@@ -18,8 +18,5 @@
     "MixinNetHandlerPlayClient",
     "MixinPlayerControllerMP",
     "MixinRendererLivingEntity",
-    "MixinRenderManager",
-    "MixinSoundManager",
-    "MixinTileEntityEnderChestRenderer"
   ]
 }

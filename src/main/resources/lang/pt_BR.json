@@ -2,9 +2,9 @@
   "language": "Português (Brasil)",
   "settings": {
     "tab": {
-      "features": "Funcionalidades",
+      "features": "Funções",
       "fixes": "Ajustes",
-      "guiFeatures": "Funcionalidades de Interface",
+      "guiFeatures": "Funções de Interface",
       "generalSettings": "Configurações Gerais"
     },
     "settings": "Opções",
@@ -24,7 +24,7 @@
     "hideAuctionHousePlayers": "Esconder Jogadores Perto de NPCs Importantes",
     "backpackStyle": "Estilo de Mochila: %style%",
     "backpackStyles": {
-      "regular": "Normal",
+      "regular": "Padrão",
       "compact": "Compacto"
     },
     "showBackpackPreview": "Mostrar Conteúdo de Mochilas",
@@ -40,7 +40,7 @@
     "defenceText": "Número de Defesa",
     "defencePercentage": "Porcentagem de Defesa",
     "healthUpdates": "Número de Mudanças de Vida",
-    "hidePlayersInLobby": "Esconder Objetos Longes no Lobby",
+    "hidePlayersInLobby": "Esconder entidades longe no Lobby",
     "darkAuctionTimer": "Timer do Leilão Sombrio",
     "magmaBossTimer": "Timer do Chefão Magma",
     "itemPickupLog": "Registro de Items Pegados",
@@ -50,23 +50,23 @@
     "preventMovementOnDeath": "Impedir Movimento Após Morte",
     "showItemAnvilUses": "Mostrar Usos na Bigorna de Itens",
     "lockSlots": "Permitir Trava de Slots",
-    "dontResetCursorInventory": "Não Resetar Cursor Entre Inventários",
-    "summoningEyeAlert": "Alerta de Olhos Convocação",
-    "makeEnderchestsInEndGreen": "Tornar Baús do Fim Verdes no Fim",
+    "dontResetCursorInventory": "Não reajustar cursor entre inventários",
+    "summoningEyeAlert": "Alerta de Olhos de Invocação",
+    "makeEnderchestsInEndGreen": "Tornar Baús do Fim Verdes no Final",
     "changeColor": "Mudar Cor",
     "showInOtherGames": "Mostar em Outros Jogos",
-    "useVanillaTexture": "Usar Textura Vanilla",
+    "useVanillaTexture": "Usar Textura Padrão",
     "textStyle": "Estilo do Texto",
     "textStyles": {
-      "one": "Estilo Um",
-      "two": "Estilo Dois"
+      "one": "Simples",
+      "two": "Contornado"
     },
     "warningDuration": "Duração do Aviso",
-    "dontOpenProfileWithBow": "Não Abrir Perfil com Arco",
+    "dontOpenProfileWithBow": "Não abrir perfil com Arco na mão",
     "stopDroppingSellingRareItems": "Não Largar/Vender Itens Raros",
     "makeBackpackInventoriesColored": "Inventários Coloridos",
-    "avoidBreakingBottomSugarCane": "Evitar Quebrar a Cana de Açúcar de Baixo",
-    "replaceRomanNumeralsWithNumbers": "Substituir Números Romanos em Itens"
+    "avoidBreakingBottomSugarCane": "Evitar a quebra da Cana de Açúcar debaixo",
+    "replaceRomanNumeralsWithNumbers": "Substituir números romanos nos Itens"
   },
   "messages": {
     "dropConfirmation": "Large este item de novo para confirmar!",
@@ -83,26 +83,26 @@
       "enchants": "Encantamentos",
       "reforges": "Reforjadas"
     },
-    "newUpdateAvailable": "A new update, %version%, is available!",
-    "deleteOldFile": "The download has finished, please open your mods folder using the button below, close your Minecraft, and delete the old version (or delete it later if you prefer).",
-    "wantToViewPatchNotes": "Want to read the changes?",
-    "downloadLink": "UPDATE LINK",
-    "downloadAutomatically": "AUTO DOWNLOAD",
-    "openModFolder": "MOD FOLDER",
-    "joinTheDiscord": "JOIN DISCORD",
+    "newUpdateAvailable": "Uma nova atualização (%version%) está disponível!",
+    "deleteOldFile": "O download terminou, por favor, abra sua pasta de mods utilizando o botão abaixo, feche seu Minecraft e delete a versão antiga (ou delete mais tarde se você preferir).",
+    "wantToViewPatchNotes": "Quer ler as alterações?",
+    "downloadLink": "Link da Atualização",
+    "downloadAutomatically": "Download Automático",
+    "openModFolder": "Pasta mods",
+    "joinTheDiscord": "Entre no discord",
     "update": {
-      "majorAvailable": "A new major update, %version% is available! The link for the download can be found in chat.",
-      "patchAvailable": "A new patch update, %version% is available! Look for the download link or to attempt to download the patch automatically!",
-      "downloading": "The patch is downloading! Status: %downloaded%/%total% Please note that after the download has finished, you must delete the old file.",
-      "failed": "The patch download has failed! Please download it manually using the link in chat.",
-      "downloadFinished": "The patch has finished downloading. It has been saved as %file%. Please don't forget to delete the old file after closing your Minecraft. Click the message in chat to open up the folder."
+      "majorAvailable": "Uma nova atualização importante (%version%) está disponível! O link para o download pode ser encontrado no chat.",
+      "patchAvailable": "Uma nova atualização para correção de erros (%version%) está disponível! O link para as opções de download está no chat!",
+      "downloading": "O download da atualização está sendo efetuado! Status: %downloaded%/%total%. Por favor, quando o download terminar, delete a versão antiga.",
+      "failed": "O download da atualização falhou! Por favor faça o download manualmente utilizando o link do chat.",
+      "downloadFinished": "A atualização terminou de baixar. Foi salvo como %file%. Por favor, não se esqueça de excluir o arquivo antigo após fechar seu Minecraft. Clique na mensagem que está no chat para abrir a pasta."
     },
-    "slotLocked": "Este Slot Está Travado!",
+    "slotLocked": "Este slot está trancado!",
     "summoningEyeFound": "Olho de Convocação!",
-    "cancelledStemBreak": "SkyBlockAddons impediu você de quebrar essa semente. Use a sua mão se você realmente quer quebra-la.",
-    "cancelledCaneBreak": "SkyblockAddons impediu você de quebrar este bloco de cana de açúcar. Use outra ferramenta se quer mesmo quebrar.",
+    "cancelledStemBreak": "SkyBlockAddons impediu você de quebrar esta semente. Use a sua mão caso queira realmente quebrar.",
+    "cancelledCaneBreak": "SkyBlockAddons impediu você de quebrar este bloco de Cana de Açúcar. Use outro tipo de ferramenta caso queira realmente quebrar.",
     "cancelledProfileOpening": "O SkyblockAddons impediu você de abrir o perfil deste jogador enquanto segura um arco.",
-    "cancelledDropping": "O SkyblockAddons impediu você de largar este item ou ferramenta rara de seu hotbar.",
-    "clickMoreTimes": "Clique/largue este item mais %times% vezes se quer mesmo fazer isso."
+    "cancelledDropping": "O SkyblockAddons impediu você de largar este item ou ferramenta rara da sua hotbar.",
+    "clickMoreTimes": "Clique/Largue este item mais %times% vezes caso realmente queira fazer isso."
   }
 }
