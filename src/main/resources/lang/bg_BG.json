@@ -21,7 +21,7 @@
     "hideDurability": "Скрии Използваността на Инструментите",
     "showEnchantmentsReforges": "Омагьосвания & Модификации",
     "minionStopWarning": "\"Миньонът не Може да Стигне\" Предупреждение",
-    "hideAuctionHousePlayers": "Hide Players Near Important NPCs",
+    "hideAuctionHousePlayers": "Скрии Други Игрaчи Близо До Вaжни NPC-тa",
     "backpackStyle": "Стил на Чантата: %style%",
     "backpackStyles": {
       "regular": "Редовен",
@@ -50,7 +50,7 @@
     "preventMovementOnDeath": "Предотвратяване от Ходене След Смърт",
     "showItemAnvilUses": "Показване на Използванията на Наковалня",
     "lockSlots": "Позволяване на Заключване на Слотове",
-    "lockSlot": "Lock Slot",
+    "lockSlot": "Зaключи слот",
     "dontResetCursorInventory": "Не Рестартирай Курсора Между Инвентари",
     "summoningEyeAlert": "Предупреждение за Призоваващо Око",
     "makeEnderchestsInEndGreen": "Нaпрaви Ендер Сандъците в Края да са Зелени",
@@ -84,7 +84,7 @@
       "enchants": "Омягюосвания",
       "reforges": "Модификации"
     },
-    "newUpdateAvailable": "A new update (%version%) is available!",
+    "newUpdateAvailable": "Имa новa версия (%version%)!",
     "deleteOldFile": "The download has finished, please open your mods folder using the button below, close your Minecraft, and delete the old version (or delete it later if you prefer).",
     "wantToViewPatchNotes": "Want to read the changes?",
     "downloadLink": "UPDATE LINK",
