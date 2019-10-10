@@ -254,7 +254,7 @@ public class EnumUtils {
                 if (npc.locations.contains(utils.getLocation())) {
                     double x = e.posX; double y = e.posY; double z = e.posZ;
                     if (npc.hideArea.isVecInside(new Vec3(x, y,z)) &&
-                            (npc.x != x || npc.y != y || npc.z != z) && !utils.isNPC(e)) {
+                            (npc.x != x || npc.y != y || npc.z != z) && utils.isNotNPC(e)) {
                         return true;
                     }
                 }
@@ -303,11 +303,13 @@ public class EnumUtils {
         }
     }
 
+    @SuppressWarnings("deprecation")
     public enum FeatureCredit {
         INVENTIVE_TALENT("InventiveTalent", "inventivetalent.org", Feature.MAGMA_BOSS_TIMER),
         FSCK("fsck", "github.com/fsckmc", Feature.AVOID_BREAKING_BOTTOM_SUGAR_CANE),
         ORCHID_ALLOY("orchidalloy", "github.com/orchidalloy", Feature.SUMMONING_EYE_ALERT),
         HIGH_CRIT("HighCrit", "github.com/HighCrit", Feature.PREVENT_MOVEMENT_ON_DEATH),
+        MOULBERRY("Moulberry", "github.com/Moulberry", Feature.DONT_RESET_CURSOR_INVENTORY),
         DIDI_SKYWALKER("DidiSkywalker", "github.com/didiskywalker", Feature.ITEM_PICKUP_LOG, Feature.HEALTH_UPDATES, Feature.REPLACE_ROMAN_NUMERALS_WITH_NUMBERS);
 
         private Set<Feature> features;

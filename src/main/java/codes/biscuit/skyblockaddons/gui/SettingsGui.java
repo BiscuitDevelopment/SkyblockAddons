@@ -83,6 +83,7 @@ public class SettingsGui extends GuiScreen {
         addTabs();
     }
 
+    @SuppressWarnings("IntegerDivisionInFloatingPointContext")
     private void addTabs() {
         int collumn = 1;
         for (EnumUtils.SkyblockAddonsGuiTab loopTab : EnumUtils.SkyblockAddonsGuiTab.values()) {
@@ -174,7 +175,7 @@ public class SettingsGui extends GuiScreen {
         }
         super.drawScreen(mouseX, mouseY, partialTicks); // Draw buttons.
         if (feature == Feature.LANGUAGE) {
-            main.getConfigValues().loadLanguageFile();
+            main.getConfigValues().loadLanguageFile(false);
         }
     }
 
@@ -186,7 +187,7 @@ public class SettingsGui extends GuiScreen {
         if (abstractButton instanceof ButtonLanguage) {
             Language language = ((ButtonLanguage)abstractButton).getLanguage();
             main.getConfigValues().setLanguage(language);
-            main.getConfigValues().loadLanguageFile();
+            main.getConfigValues().loadLanguageFile(true);
             main.loadKeyBindingDescriptions();
             returnToGui();
         } else if (abstractButton instanceof ButtonSwitchTab) {

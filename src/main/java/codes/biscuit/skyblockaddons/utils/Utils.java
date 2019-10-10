@@ -333,7 +333,6 @@ public class Utils {
                 URLConnection connection = url.openConnection();
                 connection.setReadTimeout(5000);
                 connection.addRequestProperty("User-Agent", "SkyblockAddons");
-                connection.setDoOutput(true);
                 BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
                 String currentLine;
                 Set<Feature> disabledFeatures = main.getConfigValues().getRemoteDisabledFeatures();
@@ -361,17 +360,17 @@ public class Utils {
         }).start();
     }
 
-    public boolean isNPC(Entity entity) {
+    public boolean isNotNPC(Entity entity) {
         if (entity instanceof EntityOtherPlayerMP) {
             EntityPlayer p = (EntityPlayer)entity;
             Team team = p.getTeam();
             if (team instanceof ScorePlayerTeam) {
                 ScorePlayerTeam playerTeam = (ScorePlayerTeam)team;
                 String color = playerTeam.getColorPrefix();
-                return color != null && color.equals("");
+                return color == null || !color.equals("");
             }
         }
-        return false;
+        return true;
     }
 
     public int getDefaultColor(float alphaFloat) {
@@ -426,6 +425,7 @@ public class Utils {
                         response.append(line);
                     }
                 }
+                connection.disconnect();
                 JsonObject responseJson = new Gson().fromJson(response.toString(), JsonObject.class);
                 long estimate = responseJson.get("estimate").getAsLong();
                 long currentTime = responseJson.get("queryTime").getAsLong();

@@ -24,10 +24,12 @@ public abstract class MixinGuiInventory extends GuiContainer {
         SkyblockAddons main = SkyblockAddons.getInstance();
         int j = guiLeft;
         int k = guiTop;
-        boolean isOutsideGui = oldMouseX < j || oldMouseY < k || oldMouseX >= j + xSize || oldMouseY >= k + ySize;
-        if (main.getConfigValues().isEnabled(Feature.STOP_DROPPING_SELLING_RARE_ITEMS) &&
-                mc.thePlayer.inventory.getItemStack() != null && isOutsideGui &&
-                main.getInventoryUtils().shouldCancelDrop(mc.thePlayer.inventory.getItemStack())) return;
+        if (main.getUtils().isOnSkyblock()) {
+            boolean isOutsideGui = oldMouseX < j || oldMouseY < k || oldMouseX >= j + xSize || oldMouseY >= k + ySize;
+            if (main.getConfigValues().isEnabled(Feature.STOP_DROPPING_SELLING_RARE_ITEMS) &&
+                    mc.thePlayer.inventory.getItemStack() != null && isOutsideGui &&
+                    main.getInventoryUtils().shouldCancelDrop(mc.thePlayer.inventory.getItemStack())) return;
+        }
         super.handleMouseClick(slotIn, slotId, clickedButton, clickType);
     }
 }
