@@ -67,7 +67,8 @@
     "stopDroppingSellingRareItems": "עצור זריקה/מכירת חפצים נדירים",
     "makeBackpackInventoriesColored": "צבע טיקים",
     "avoidBreakingBottomSugarCane": "מנע הריסת שוגר קיין תחתון",
-    "replaceRomanNumeralsWithNumbers": "החלף מספרים רומאים בחפצים"
+    "replaceRomanNumeralsWithNumbers": "החלף מספרים רומאים בחפצים",
+    "changeBarColorForPotions": "Change Bar Color for Wither & Poison"
   },
   "messages": {
     "dropConfirmation": "זרוק פריט זה שוב לאישור!",
@@ -104,6 +105,7 @@
     "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use another tool if you'd actually like to break it.",
     "cancelledProfileOpening": "SkyBlockAddons עצר אותך מלפתוח את הפרופיל של האדם בזמן שהחזקתה קשת.",
     "cancelledDropping": "SkyBlockAddons עצר אותך מלהפיל את החפץ או הכלי הנדיר הזה.",
-    "clickMoreTimes": "תלחץ/תזרוק את החפץ %times% פעמים נוספות אם אתה בטוח רוצה לעשות את זה."
+    "clickMoreTimes": "תלחץ/תזרוק את החפץ %times% פעמים נוספות אם אתה בטוח רוצה לעשות את זה.",
+    "featureDisabled": "Feature Disabled"
   }
 }
