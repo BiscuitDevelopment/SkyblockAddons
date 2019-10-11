@@ -67,7 +67,8 @@
     "stopDroppingSellingRareItems": "防止丢弃或出售稀有物品",
     "makeBackpackInventoriesColored": "彩色背包",
     "avoidBreakingBottomSugarCane": "防止破坏底部甘蔗",
-    "replaceRomanNumeralsWithNumbers": "使用阿拉伯编号"
+    "replaceRomanNumeralsWithNumbers": "使用阿拉伯编号",
+    "changeBarColorForPotions": "Change Bar Color for Wither & Poison"
   },
   "messages": {
     "dropConfirmation": "再次丢弃此物品以确认!",
@@ -104,6 +105,7 @@
     "cancelledCaneBreak": "SkyblockAddons 已阻止你破坏此甘蔗。如果你真的想要破坏它，请使用其他工具。",
     "cancelledProfileOpening": "SkyblockAddons阻止了你在持弓的时候打开他人的档案。",
     "cancelledDropping": "SkyblockAddons 已阻止你将物品栏中的稀有物品或工具丢弃。",
-    "clickMoreTimes": "SkyblockAddons 已阻止你丢弃物品。如果你真的想丢弃它，请再点击%times%次。"
+    "clickMoreTimes": "SkyblockAddons 已阻止你丢弃物品。如果你真的想丢弃它，请再点击%times%次。",
+    "featureDisabled": "Feature Disabled"
   }
 }
