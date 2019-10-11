@@ -67,7 +67,8 @@
     "stopDroppingSellingRareItems": "Voorkom het Weggooien/Verkopen van Zeldzame Items",
     "makeBackpackInventoriesColored": "Gekleurde Inventarissen",
     "avoidBreakingBottomSugarCane": "Vermijd het breken van onderste suikerriet",
-    "replaceRomanNumeralsWithNumbers": "Vervang Romeinse Nummers op Items"
+    "replaceRomanNumeralsWithNumbers": "Vervang Romeinse Nummers op Items",
+    "changeBarColorForPotions": "Change Bar Color for Wither & Poison"
   },
   "messages": {
     "dropConfirmation": "Laat dit object opnieuw vallen om te Bevestigen!",
@@ -104,6 +105,7 @@
     "cancelledCaneBreak": "SkyblockAddons heeft je ervan weerhouden deze suikerriet te breken. Gebruik iets anders als je het wilt breken.",
     "cancelledProfileOpening": "SkyblockAddons heeft je ervan weerhouden het profiel van deze speler te openen terwijl je een boog vast hebt.",
     "cancelledDropping": "SkyblockAddons heeft je ervan weerhouden dit zeldzame item of gereedschap uit je hotbar te gooien.",
-    "clickMoreTimes": "Klik/gooi dit item %times% keer als je dit echt wilt doen."
+    "clickMoreTimes": "Klik/gooi dit item %times% keer als je dit echt wilt doen.",
+    "featureDisabled": "Feature Disabled"
   }
 }
