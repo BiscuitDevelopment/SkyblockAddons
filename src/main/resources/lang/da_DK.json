@@ -67,7 +67,8 @@
     "stopDroppingSellingRareItems": "Stop med at droppe / sælge sjældne varer",
     "makeBackpackInventoriesColored": "Farvebeholdninger",
     "avoidBreakingBottomSugarCane": "Undgå at bryde sukkerrøret",
-    "replaceRomanNumeralsWithNumbers": "Udskift romertal på poster"
+    "replaceRomanNumeralsWithNumbers": "Udskift romertal på poster",
+    "changeBarColorForPotions": "Change Bar Color for Wither & Poison"
   },
   "messages": {
     "dropConfirmation": "Slip denne vare igen for at bekræfte!",
@@ -104,6 +105,7 @@
     "cancelledCaneBreak": "SkyblockAddons har stoppet dig fra at ødelægge denne blok af sukkerrør. Brug et andet redskab hvis du gerne vil ødelægge den.",
     "cancelledProfileOpening": "SkyblockAddons har forhindret dig i at åbne denne spillers profil, mens du holder en bue.",
     "cancelledDropping": "SkyblockAddons har forhindret dig i at droppe dette sjældne element eller værktøj fra din hotbar.",
-    "clickMoreTimes": "Klik / slip dette emne %times% flere gange, hvis du virkelig ønsker at gøre dette."
+    "clickMoreTimes": "Klik / slip dette emne %times% flere gange, hvis du virkelig ønsker at gøre dette.",
+    "featureDisabled": "Feature Disabled"
   }
 }
