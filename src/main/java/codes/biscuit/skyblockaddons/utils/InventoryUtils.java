@@ -17,12 +17,10 @@ import java.util.*;
  */
 public class InventoryUtils {
 
-    private static final String SUMMONING_EYE_DISPLAY_NAME = "\u00A75Summoning Eye";
-
     /**
-     * Display name of the Quiver Arrow item
+     * Slot index the SkyBlock menu is at
      */
-    private static final String QUIVER_ARROW_DISPLAY_NAME = "\u00A78Quiver Arrow";
+    private static final int SKYBLOCK_MENU_SLOT = 8;
 
     /**
      * Display name of the Skeleton Helmet
@@ -72,6 +70,11 @@ public class InventoryUtils {
         if (previousInventory != null) {
 
             for(int i = 0; i < newInventory.size(); i++) {
+                if(i == SKYBLOCK_MENU_SLOT) {
+                    // Skip the SkyBlock Menu slot all together (which includes the Quiver Arrow now)
+                    continue;
+                }
+
                 ItemStack previousItem = previousInventory.get(i);
                 ItemStack newItem = newInventory.get(i);
 
@@ -81,15 +84,6 @@ public class InventoryUtils {
                 }
 
                 if(newItem != null) {
-                    if(newItem.getDisplayName().equals(QUIVER_ARROW_DISPLAY_NAME)) {
-
-                        newInventory.set(i, previousItem);
-                        if(previousItem != null) {
-                            newItem = previousItem;
-                        } else {
-                            continue;
-                        }
-                    }
                     if (newItem.getDisplayName().contains(" "+ EnumChatFormatting.DARK_GRAY+"x")) {
                         String newName = newItem.getDisplayName().substring(0, newItem.getDisplayName().lastIndexOf(" "));
                         newItem.setStackDisplayName(newName); // This is a workaround for merchants, it adds x64 or whatever to the end of the name.
