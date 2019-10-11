@@ -67,7 +67,8 @@
     "stopDroppingSellingRareItems": "レアアイテムを捨てたり売ったりすることを阻止",
     "makeBackpackInventoriesColored": "インベントリの色",
     "avoidBreakingBottomSugarCane": "サトウキビの根本の破壊を防止",
-    "replaceRomanNumeralsWithNumbers": "エンチャントのローマ数字をアラビア数字に置き換え"
+    "replaceRomanNumeralsWithNumbers": "エンチャントのローマ数字をアラビア数字に置き換え",
+    "changeBarColorForPotions": "Change Bar Color for Wither & Poison"
   },
   "messages": {
     "dropConfirmation": "落としてもいいのであれば、このアイテムをもう一度ドロップしてください。",
@@ -104,6 +105,7 @@
     "cancelledCaneBreak": "SkyblockAddonsがこのサトウキビを壊すのを阻止しました。壊したい場合は別のツールで壊してください。",
     "cancelledProfileOpening": "SkyblockAddonsがこのプレイヤーのプロフィールを開くことを阻止しました。",
     "cancelledDropping": "SkyblockAddonsがこのアイテムを捨てることを阻止しました。",
-    "clickMoreTimes": "本当に落としたい場合はもう%times%回クリック/ドロップしてください。"
+    "clickMoreTimes": "本当に落としたい場合はもう%times%回クリック/ドロップしてください。",
+    "featureDisabled": "Feature Disabled"
   }
 }
