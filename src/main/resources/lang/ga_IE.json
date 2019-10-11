@@ -67,7 +67,8 @@
     "stopDroppingSellingRareItems": "Cosc ag Leag/Díol Mír Annamh",
     "makeBackpackInventoriesColored": "Dath Fardal",
     "avoidBreakingBottomSugarCane": "Ná briseadh an Cána Siúcra ag an mBun",
-    "replaceRomanNumeralsWithNumbers": "Athchuir Uimhir Rómhánach ar mír"
+    "replaceRomanNumeralsWithNumbers": "Athchuir Uimhir Rómhánach ar mír",
+    "changeBarColorForPotions": "Change Bar Color for Wither & Poison"
   },
   "messages": {
     "dropConfirmation": "Leag síos an mír seo arís le cinntiú!",
@@ -104,6 +105,7 @@
     "cancelledCaneBreak": "Chur SkyblockAddons cosc ort an píosa cána siúcra seo a briseadh. Úsáid uirlis eile má tá tú ag iarraidh é a briseadh.",
     "cancelledProfileOpening": "Chur SkyblockAddons cosc ort ag oscailt an próifíl seo fad is atá bogha i do lámh.",
     "cancelledDropping": "Chur SkyblockAddons cosc or an mír annamh seo a leag síos ó do hotbar.",
-    "clickMoreTimes": "Cliceáil/leag síos an mír seo %times% uaireanta eile má tá tú cinnte faoi seo."
+    "clickMoreTimes": "Cliceáil/leag síos an mír seo %times% uaireanta eile má tá tú cinnte faoi seo.",
+    "featureDisabled": "Feature Disabled"
   }
 }
