@@ -63,10 +63,10 @@
       "two": "风格二"
     },
     "warningDuration": "警报持续时间",
-    "dontOpenProfileWithBow": "不用弓打开配置文件",
-    "stopDroppingSellingRareItems": "防止把贵重的物品买了",
-    "makeBackpackInventoriesColored": "在背包里加颜色",
-    "avoidBreakingBottomSugarCane": "阻止断绝底部甘蔗",
+    "dontOpenProfileWithBow": "不在持弓时打开玩家信息",
+    "stopDroppingSellingRareItems": "防止丢弃或出售稀有物品",
+    "makeBackpackInventoriesColored": "背包颜色",
+    "avoidBreakingBottomSugarCane": "防止破坏底部甘蔗",
     "replaceRomanNumeralsWithNumbers": "使用阿拉伯编号"
   },
   "messages": {
@@ -103,7 +103,7 @@
     "cancelledStemBreak": "SkyblockAddons阻止你破坏此作物，请使用空手来进行破坏。",
     "cancelledCaneBreak": "SkyblockAddons 已阻止你破坏此甘蔗。如果你真的想要破坏它，请使用其他工具。",
     "cancelledProfileOpening": "SkyblockAddons阻止了你在持弓的时候打开他人的档案。",
-    "cancelledDropping": "SkyblockAddons 防止了你把这个工具或物品扔掉",
-    "clickMoreTimes": "如果你想要把这个东西掉了，在如果你想要把这个东西掉了，在点击%times% 次"
+    "cancelledDropping": "SkyblockAddons 已阻止你将物品栏中的稀有物品或工具丢弃。",
+    "clickMoreTimes": "SkyblockAddons 已阻止你丢弃物品。如果你真的想丢弃它，请再点击%times%次。"
   }
 }
