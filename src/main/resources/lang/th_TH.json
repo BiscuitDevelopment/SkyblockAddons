@@ -67,7 +67,8 @@
     "stopDroppingSellingRareItems": "ป้องกันการทิ้งหรือขายไอเทม Rare",
     "makeBackpackInventoriesColored": "สีช่องเก็บของ Backpack",
     "avoidBreakingBottomSugarCane": "ป้องกันการทำลายต้นล่างสุดของ Sugar Cane",
-    "replaceRomanNumeralsWithNumbers": "เปลี่ยนตัวเลขโรมันให้เป็นตัวเลขอารบิก"
+    "replaceRomanNumeralsWithNumbers": "เปลี่ยนตัวเลขโรมันให้เป็นตัวเลขอารบิก",
+    "changeBarColorForPotions": "Change Bar Color for Wither & Poison"
   },
   "messages": {
     "dropConfirmation": "กดทิ้งของอีกที่เพื่อยืนยันทิ้งของสิ่งนี้!",
@@ -104,6 +105,7 @@
     "cancelledCaneBreak": "SkyblockAddons ได้หยุดคุณจากการทำลาย Sugar cane ส่วนนี้ โปรดใช้เครื่องมืออื่นถ้าต้องการทำลาย",
     "cancelledProfileOpening": "ม็อด SkyblockAddons ได้หยุดคุณจากการเปิดดูโปรไฟล์ผู้เล่นเมื่อคุณถือธนูไว้",
     "cancelledDropping": "ม็อด SkyblockAddons ได้หยุดคุณจากการทิ้งไอเทม Rare หรืออุปกรณ์จากช่อง Hotbar ของคุณ",
-    "clickMoreTimes": "คลิกหรือทิ้งไอเทมนี้อีก %times% ครั้งเพื่อยืนยัน"
+    "clickMoreTimes": "คลิกหรือทิ้งไอเทมนี้อีก %times% ครั้งเพื่อยืนยัน",
+    "featureDisabled": "Feature Disabled"
   }
 }
