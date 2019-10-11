@@ -67,7 +67,8 @@
     "stopDroppingSellingRareItems": "Huwag i-hulog/ibenta ang mga mahalagang gamit",
     "makeBackpackInventoriesColored": "Makulay na Imbentaryo",
     "avoidBreakingBottomSugarCane": "Iwasan ang pagsira ng bottom Sugar Cane",
-    "replaceRomanNumeralsWithNumbers": "Palitan ang Roman Numerals sa mga bagay"
+    "replaceRomanNumeralsWithNumbers": "Palitan ang Roman Numerals sa mga bagay",
+    "changeBarColorForPotions": "Change Bar Color for Wither & Poison"
   },
   "messages": {
     "dropConfirmation": "Ihulog ang item muli para kumpirmado!",
@@ -104,6 +105,7 @@
     "cancelledCaneBreak": "Itinigil ng SkyblockAddons sa pag-sira ng Sugar Cane. Gamitin mo ang iyong kamay kung gusto mo talaga sirain.",
     "cancelledProfileOpening": "Itinigil ng SkyblockAddons sa pag bukas ng profile habang may hawak na pana.",
     "cancelledDropping": "Itinigil ng SkyblockAddons sa pag hulog ng mahalagang gamit sa iyong imbentaryo.",
-    "clickMoreTimes": "I-click/hulog ang gamit %times% na ito maraming beses kung gusto mo talaga gawin to."
+    "clickMoreTimes": "I-click/hulog ang gamit %times% na ito maraming beses kung gusto mo talaga gawin to.",
+    "featureDisabled": "Feature Disabled"
   }
 }
