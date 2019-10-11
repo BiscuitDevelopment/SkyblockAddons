@@ -114,6 +114,7 @@ public class Scheduler {
         RESET_TITLE_FEATURE,
         RESET_SUBTITLE_FEATURE,
         RESET_UPDATE_MESSAGE,
+        SET_LAST_SECOND_HEALTH,
         DELETE_RECENT_CHUNK;
 
         public void execute(Command command, int count) {
@@ -141,6 +142,8 @@ public class Scheduler {
             } else if (this == RESET_UPDATE_MESSAGE) {
                 if (main.getRenderListener().getDownloadInfo().getMessageType() == commandData[0])
                 main.getRenderListener().getDownloadInfo().setMessageType(null);
+            } else if (this == SET_LAST_SECOND_HEALTH) {
+                main.getPlayerListener().setLastSecondHealth((int)commandData[0]);
             }
         }
     }

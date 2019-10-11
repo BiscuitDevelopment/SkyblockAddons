@@ -164,7 +164,7 @@ public class LocationEditGui extends GuiScreen {
             if (x > 0) {
                 main.getConfigValues().setSizeX(dragging, x);
             }
-            if (y > 1) {
+            if (y > 0) {
                 main.getConfigValues().setSizeY(dragging, y);
             }
 

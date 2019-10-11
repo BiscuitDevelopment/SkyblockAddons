@@ -80,7 +80,7 @@ public class SkyblockAddonsGui extends GuiScreen {
                     Feature.STOP_BOW_CHARGE_FROM_RESETTING, Feature.AVOID_PLACING_ENCHANTED_ITEMS, Feature.PREVENT_MOVEMENT_ON_DEATH};
         } else if (tab == EnumUtils.SkyblockAddonsGuiTab.GUI_FEATURES) {
             array = new Feature[]{Feature.MAGMA_BOSS_TIMER, Feature.MANA_BAR, Feature.MANA_TEXT, Feature.DEFENCE_TEXT, Feature.DEFENCE_PERCENTAGE,
-                    Feature.HEALTH_BAR, Feature.HEALTH_TEXT, Feature.DEFENCE_ICON, Feature.SKELETON_BAR, Feature.HEALTH_UPDATES,
+                    Feature.DEFENCE_ICON, Feature.HEALTH_BAR, Feature.HEALTH_TEXT, Feature.SKELETON_BAR, Feature.HEALTH_UPDATES,
                     Feature.ITEM_PICKUP_LOG, Feature.DARK_AUCTION_TIMER};
         } else {
             array = new Feature[]{Feature.TEXT_STYLE, Feature.WARNING_TIME};
@@ -91,6 +91,9 @@ public class SkyblockAddonsGui extends GuiScreen {
         buttonList.add(new ButtonArrow(width/2-15-50, height-70, main, ButtonArrow.ArrowType.LEFT, max));
         max = array.length-skip-displayCount <= 0;
         buttonList.add(new ButtonArrow(width/2-15+50, height-70, main, ButtonArrow.ArrowType.RIGHT, max));
+
+        buttonList.add(new ButtonSocial(width/2+200, 30, main, ButtonSocial.Social.YOUTUBE));
+        buttonList.add(new ButtonSocial(width/2+175, 30, main, ButtonSocial.Social.DISCORD));
 
         for (Feature feature : array) {
             if (skip == 0) {
@@ -204,6 +207,7 @@ public class SkyblockAddonsGui extends GuiScreen {
                 main.getUtils().setFadingIn(false);
                 Minecraft.getMinecraft().displayGuiScreen(new LocationEditGui(main, page, tab));
             } else if (abstractButton instanceof ButtonToggle) {
+                if (main.getConfigValues().isRemoteDisabled(feature)) return;
                 if (main.getConfigValues().isDisabled(feature)) {
                     main.getConfigValues().getDisabledFeatures().remove(feature);
                 } else {
@@ -227,6 +231,12 @@ public class SkyblockAddonsGui extends GuiScreen {
                         main.getConfigValues().setWarningSeconds(main.getConfigValues().getWarningSeconds() - 1);
                     }
                 }
+            } else if (abstractButton instanceof ButtonCredit) {
+                if (main.getConfigValues().isRemoteDisabled(feature)) return;
+                EnumUtils.FeatureCredit credit = ((ButtonCredit)abstractButton).getCredit();
+                try {
+                    Desktop.getDesktop().browse(new URI(credit.getUrl()));
+                } catch (Exception ignored) {}
             }
         } else if (abstractButton instanceof ButtonArrow) {
             ButtonArrow arrow = (ButtonArrow)abstractButton;
@@ -244,10 +254,16 @@ public class SkyblockAddonsGui extends GuiScreen {
                 main.getUtils().setFadingIn(false);
                 mc.displayGuiScreen(new SkyblockAddonsGui(main, 1, tab.getTab()));
             }
-        } else if (abstractButton instanceof ButtonCredit) {
-            EnumUtils.FeatureCredit credit = ((ButtonCredit)abstractButton).getCredit();
+        } else if (abstractButton instanceof ButtonSocial) {
+            ButtonSocial.Social social = ((ButtonSocial)abstractButton).getSocial();
             try {
-                Desktop.getDesktop().browse(new URI(credit.getUrl()));
+                URI uri;
+                if (social == ButtonSocial.Social.YOUTUBE) {
+                    uri = new URI("https://www.youtube.com/channel/UCYmE9-052frn0wQwqa6i8_Q");
+                } else {
+                    uri = new URI("https://discordapp.com/invite/PqTAEek");
+                }
+                Desktop.getDesktop().browse(uri);
             } catch (Exception ignored) {}
         }
     }
@@ -269,9 +285,6 @@ public class SkyblockAddonsGui extends GuiScreen {
      */
     private void addButton(Feature feature, EnumUtils.ButtonType buttonType) {
         if (displayCount == 0) return;
-        if (main.getConfigValues().isRemoteDisabled(feature)) { // Don't display features that I have disabled
-            return;
-        }
         String text = feature.getMessage();
         int halfWidth = width/2;
         int boxWidth = 140;
@@ -292,7 +305,7 @@ public class SkyblockAddonsGui extends GuiScreen {
             EnumUtils.FeatureCredit credit = EnumUtils.FeatureCredit.fromFeature(feature);
             if (credit != null) {
                 CoordsPair coords = button.getCreditsCoords(credit);
-                buttonList.add(new ButtonCredit(coords.getX(), coords.getY(), text, main, credit));
+                buttonList.add(new ButtonCredit(coords.getX(), coords.getY(), text, main, credit, feature));
             }
 
             if (getSettings(feature).size() > 0) {
@@ -334,6 +347,9 @@ public class SkyblockAddonsGui extends GuiScreen {
             settings.add(EnumUtils.FeatureSetting.BACKPACK_STYLE);
             settings.add(EnumUtils.FeatureSetting.SHOW_ONLY_WHEN_HOLDING_SHIFT);
             settings.add(EnumUtils.FeatureSetting.MAKE_INVENTORY_COLORED);
+        }
+        if (feature == Feature.HEALTH_BAR) {
+            settings.add(EnumUtils.FeatureSetting.CHANGE_BAR_COLOR_WITH_POTIONS);
         }
         return settings;
     }

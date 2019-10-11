@@ -266,6 +266,14 @@ public class RenderListener {
         float y = main.getConfigValues().getActualY(feature);
         ConfigColor color = main.getConfigValues().getColor(feature);
 
+        if (feature == Feature.HEALTH_BAR && main.getConfigValues().isEnabled(Feature.CHANGE_BAR_COLOR_FOR_POTIONS)) {
+            if (mc.thePlayer.isPotionActive(19/* Poison */)) {
+                color = ConfigColor.DARK_GREEN;
+            } else if (mc.thePlayer.isPotionActive(20/* Wither */)) {
+                color = ConfigColor.DARK_GRAY;
+            }
+        }
+
         // Put the x & y to scale, remove half the width and height to center this element.
         x/=scale;
         y/=scale;
@@ -604,6 +612,9 @@ public class RenderListener {
         float x = main.getConfigValues().getActualX(Feature.ITEM_PICKUP_LOG);
         float y = main.getConfigValues().getActualY(Feature.ITEM_PICKUP_LOG);
 
+        EnumUtils.AnchorPoint anchorPoint = main.getConfigValues().getAnchorPoint(Feature.ITEM_PICKUP_LOG);
+        boolean downwards = anchorPoint == EnumUtils.AnchorPoint.TOP_RIGHT || anchorPoint == EnumUtils.AnchorPoint.TOP_LEFT;
+
         int height = 8*3;
         int width = mc.fontRendererObj.getStringWidth("+ 1x Forceful Ember Chestplate");
         x-=Math.round(width*scale/2);
@@ -628,7 +639,12 @@ public class RenderListener {
         for (ItemDiff itemDiff : log) {
             String text = String.format("%s %sx \u00A7r%s", itemDiff.getAmount() > 0 ? "\u00A7a+":"\u00A7c-",
                     Math.abs(itemDiff.getAmount()), itemDiff.getDisplayName());
-            drawString(mc, text, intX, intY+(i*mc.fontRendererObj.FONT_HEIGHT), ConfigColor.WHITE.getColor());
+            int stringY = intY+(i*mc.fontRendererObj.FONT_HEIGHT);
+            if (!downwards) {
+                stringY = intY-(i*mc.fontRendererObj.FONT_HEIGHT);
+                stringY += 18;
+            }
+            drawString(mc, text, intX, stringY, ConfigColor.WHITE.getColor());
             i++;
         }
     }

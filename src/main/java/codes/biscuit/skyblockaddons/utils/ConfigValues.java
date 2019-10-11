@@ -118,7 +118,7 @@ public class ConfigValues {
             }
 
             for (Feature feature : new Feature[] {Feature.HEALTH_BAR, Feature.MANA_BAR}) {
-                String property = Introspector.decapitalize(WordUtils.capitalizeFully(feature.toString().replace("_", " ")));
+                String property = Introspector.decapitalize(WordUtils.capitalizeFully(feature.toString().replace("_", " "))).replace(" ", "");
                 String w = property+"W";
                 String h = property+"H";
                 if (settingsConfig.has(w)) {
@@ -368,6 +368,7 @@ public class ConfigValues {
     }
 
     private void tryPullingLanguageOnline(Language language) {
+        if (main.getUtils().isDevEnviroment()) return; // it makes all my new entries disappear lol
         FMLLog.info("[SkyblockAddons] Attempting to pull updated language files from online.");
         try {
             URL url = new URL("https://raw.githubusercontent.com/biscuut/SkyblockAddons/master/src/main/resources/lang/" + language.getPath() + ".json");
@@ -436,14 +437,14 @@ public class ConfigValues {
             settingsConfig.addProperty("warningSeconds", warningSeconds);
 
             for (Feature feature : GUI_FEATURES) {
-                String property = Introspector.decapitalize(WordUtils.capitalizeFully(feature.toString().replace("_", " ")));
+                String property = Introspector.decapitalize(WordUtils.capitalizeFully(feature.toString().replace("_", " "))).replace(" ", "");
                 settingsConfig.addProperty(property+"X", getRelativeCoords(feature).getX());
                 settingsConfig.addProperty(property+"Y", getRelativeCoords(feature).getY());
             }
 
             for (Feature feature : new Feature[] {Feature.HEALTH_BAR, Feature.MANA_BAR}) {
                 if (barSizes.containsKey(feature)) {
-                    String property = Introspector.decapitalize(WordUtils.capitalizeFully(feature.toString().replace("_", " ")));
+                    String property = Introspector.decapitalize(WordUtils.capitalizeFully(feature.toString().replace("_", " "))).replace(" ", "");
                     int width = getSizes(feature).getX();
                     int height = getSizes(feature).getY();
                     if (width != 7 || height > 1) {

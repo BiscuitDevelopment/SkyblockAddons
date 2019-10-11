@@ -70,8 +70,7 @@ public class InventoryUtils {
         if (previousInventory != null) {
 
             for(int i = 0; i < newInventory.size(); i++) {
-                if(i == SKYBLOCK_MENU_SLOT) {
-                    // Skip the SkyBlock Menu slot all together (which includes the Quiver Arrow now)
+                if (i == SKYBLOCK_MENU_SLOT) { // Skip the SkyBlock Menu slot all together (which includes the Quiver Arrow now)
                     continue;
                 }
 
