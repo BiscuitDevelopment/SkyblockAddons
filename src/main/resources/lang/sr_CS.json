@@ -67,7 +67,8 @@
     "stopDroppingSellingRareItems": "Zaustavi Bacanje/Prodaju vrednih stvari",
     "makeBackpackInventoriesColored": "Boja inventara",
     "avoidBreakingBottomSugarCane": "Prekini unišavanje donje trske",
-    "replaceRomanNumeralsWithNumbers": "Zameni Rimske Brojeve na predmetima"
+    "replaceRomanNumeralsWithNumbers": "Zameni Rimske Brojeve na predmetima",
+    "changeBarColorForPotions": "Change Bar Color for Wither & Poison"
   },
   "messages": {
     "dropConfirmation": "Opet baci ovu stvar za potvrdu!",
@@ -104,6 +105,7 @@
     "cancelledCaneBreak": "SkyblockAddons te je zaustavio od uništavanja ovog dela trske. Koristi neko drugi alat ako zapravo želiš da je unistiš.",
     "cancelledProfileOpening": "SkyblockAddons te je zaustavio od otvaranja inventara ovog igrača dok držiš luk i strelu.",
     "cancelledDropping": "SkyblockAddons te je zaustavio od bacanja ovog vrednog predmeta ili oruđa iz tvog hotbara.",
-    "clickMoreTimes": "Klikni/Baci ovaj predmet još %times% puta ako stvarno želiš ovo da uradiš."
+    "clickMoreTimes": "Klikni/Baci ovaj predmet još %times% puta ako stvarno želiš ovo da uradiš.",
+    "featureDisabled": "Feature Disabled"
   }
 }
