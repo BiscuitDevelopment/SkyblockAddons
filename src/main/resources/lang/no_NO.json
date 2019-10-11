@@ -21,7 +21,7 @@
     "hideDurability": "Skjul Redskaps Varighet",
     "showEnchantmentsReforges": "Fortryllinger og reforges",
     "minionStopWarning": "\"Lakei kan ikke nå\" advarsel",
-    "hideAuctionHousePlayers": "Hide Players Near Important NPCs",
+    "hideAuctionHousePlayers": "Gjem spillere nærme viktige NPCer",
     "backpackStyle": "Ryggsekk stil %style%",
     "backpackStyles": {
       "regular": "Vanlig",
@@ -93,7 +93,7 @@
     "joinTheDiscord": "bli med Discord",
     "update": {
       "majorAvailable": "En ny stor oppdatering (%version%) er ute! Du kan finne nedlastingslenken under i chatten.",
-      "patchAvailable": "A new patch update (%version%) is available! Look in chat for download options!",
+      "patchAvailable": "En ny oppdatering (%version%) er ute! Se i chattten for alternativer for nedlastninger!",
       "downloading": "nedlasting",
       "failed": "grunnstøting",
       "downloadFinished": "nedlastingen fullført"
@@ -101,7 +101,7 @@
     "slotLocked": "Denne ruten er låst!",
     "summoningEyeFound": "Summoning Eye!",
     "cancelledStemBreak": "SkyblockAddons har stoppet deg fra å ødelegge denne stilken. Bruk hånden din hvis du vil ødelegge den.",
-    "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use another tool if you'd actually like to break it.",
+    "cancelledCaneBreak": "SkyblockAddons har stoppet deg fra å ødelegge dette sukkerrøret. Bruk et annet redskap hvis du vil ødelegge den.",
     "cancelledProfileOpening": "SkyblockAddons har stoppet deg fra å åpne denne spillerens profil siden du holder en bue.",
     "cancelledDropping": "SkyblockAddons har stoppet deg fra å slippe denne sjeldne gjenstanden/redskap fra din hotbar.",
     "clickMoreTimes": "Klikk/slipp denne gjenstanden %times% flere ganger hvis du virkelig vil gjøre dette."
