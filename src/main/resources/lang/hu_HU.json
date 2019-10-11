@@ -67,7 +67,8 @@
     "stopDroppingSellingRareItems": "Rare tárgyak eldobásának/eladásának tiltása",
     "makeBackpackInventoriesColored": "Színes eszköztárak",
     "avoidBreakingBottomSugarCane": "Alsó cukornád kiütésének elkerülése",
-    "replaceRomanNumeralsWithNumbers": "Római számok kicserélése a tárgyakon"
+    "replaceRomanNumeralsWithNumbers": "Római számok kicserélése a tárgyakon",
+    "changeBarColorForPotions": "Change Bar Color for Wither & Poison"
   },
   "messages": {
     "dropConfirmation": "Dobd el ezt a tárgyat újra, hogy megerősítsd!",
@@ -104,6 +105,7 @@
     "cancelledCaneBreak": "A SkyblockAddons megállította, hogy kiüsd ezt a cukornád blokkot. Használj egy másik eszközt, ha ki szeretnéd ütni.",
     "cancelledProfileOpening": "A SkyblockAddons megállította, hogy megnyisd ennek a játékosnak a profilját, amíg íj van a kezedben.",
     "cancelledDropping": "A SkyblockAddons megállította, hogy eldobd ezt a rare tárgyat vagy eszközt.",
-    "clickMoreTimes": "Kattints/dobd el ezt a tárgyat még %times% alkalommal, ha tényleg ezt szeretnéd."
+    "clickMoreTimes": "Kattints/dobd el ezt a tárgyat még %times% alkalommal, ha tényleg ezt szeretnéd.",
+    "featureDisabled": "Feature Disabled"
   }
 }
