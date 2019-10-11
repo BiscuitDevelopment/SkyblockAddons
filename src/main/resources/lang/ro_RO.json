@@ -67,7 +67,8 @@
     "stopDroppingSellingRareItems": "Oprește aruncarea/vânzarea itemelor rare",
     "makeBackpackInventoriesColored": "Colorează inventarele",
     "avoidBreakingBottomSugarCane": "Evită spargerea sugar cane-ului de jos",
-    "replaceRomanNumeralsWithNumbers": "Schimba numerele romane de pe iteme"
+    "replaceRomanNumeralsWithNumbers": "Schimba numerele romane de pe iteme",
+    "changeBarColorForPotions": "Change Bar Color for Wither & Poison"
   },
   "messages": {
     "dropConfirmation": "Arunca acest obiect iar ca să confirmi!",
@@ -104,6 +105,7 @@
     "cancelledCaneBreak": "SkyblockAddons te-a oprit din spargerea acestei trestiei de zahar. Te rog folosește altă unealtă dacă vrei să o spargi.",
     "cancelledProfileOpening": "Modul SkyblockAddons te-a oprit sa deschizi profilul jucătorului in timp ce utilizezi un arc.",
     "cancelledDropping": "Modul SkyblockAddons te-a oprit să arunci acest item sau unealtă rară din inventar.",
-    "clickMoreTimes": "Aruncă acest item de încă %times% dacă vrei să faci asta."
+    "clickMoreTimes": "Aruncă acest item de încă %times% dacă vrei să faci asta.",
+    "featureDisabled": "Feature Disabled"
   }
 }
