@@ -68,7 +68,7 @@
     "makeBackpackInventoriesColored": "Inventários Coloridos",
     "avoidBreakingBottomSugarCane": "Evitar a quebra da Cana de Açúcar debaixo",
     "replaceRomanNumeralsWithNumbers": "Substituir números romanos nos Itens",
-    "changeBarColorForPotions": "Change Bar Color for Wither & Poison"
+    "changeBarColorForPotions": "Mudar cor da barra para Wither e Veneno"
   },
   "messages": {
     "dropConfirmation": "Large este item de novo para confirmar!",
@@ -106,6 +106,6 @@
     "cancelledProfileOpening": "O SkyblockAddons impediu você de abrir o perfil deste jogador enquanto segura um arco.",
     "cancelledDropping": "O SkyblockAddons impediu você de largar este item ou ferramenta rara da sua hotbar.",
     "clickMoreTimes": "Clique/Largue este item mais %times% vezes caso realmente queira fazer isso.",
-    "featureDisabled": "Feature Disabled"
+    "featureDisabled": "Função desabilitada"
   }
 }
