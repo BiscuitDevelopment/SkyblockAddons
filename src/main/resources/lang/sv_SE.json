@@ -67,7 +67,8 @@
     "stopDroppingSellingRareItems": "Undvik att slänga/sälja sällsynta saker",
     "makeBackpackInventoriesColored": "Färglägg Ryggsäcken",
     "avoidBreakingBottomSugarCane": "Undvik att förstöra botten av sockerrör",
-    "replaceRomanNumeralsWithNumbers": "Ersätt romanska siffror på saker"
+    "replaceRomanNumeralsWithNumbers": "Ersätt romanska siffror på saker",
+    "changeBarColorForPotions": "Change Bar Color for Wither & Poison"
   },
   "messages": {
     "dropConfirmation": "Släpp Det Här Igen För Att Bekräfta!",
@@ -104,6 +105,7 @@
     "cancelledCaneBreak": "SkyblockAddons har stoppat dig från att förstöra botten av sockerröret. Använd ett annat verktyg ifall du skulle vilja förstöra det ändå.",
     "cancelledProfileOpening": "SkyblockAddons har stoppat dig från att öppna denna spelares profil medan du håller en pilbåge.",
     "cancelledDropping": "SkyblockAddons har stoppat dig från att slänga denna sällsynta sak eller verktyg från ditt lager.",
-    "clickMoreTimes": "Släng denna sak %times% fler gånger om du verkligen vill göra detta."
+    "clickMoreTimes": "Släng denna sak %times% fler gånger om du verkligen vill göra detta.",
+    "featureDisabled": "Feature Disabled"
   }
 }
