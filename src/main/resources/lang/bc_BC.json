@@ -67,7 +67,8 @@
     "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Biscuit",
     "makeBackpackInventoriesColored": "Color Biscuit Biscuit",
     "avoidBreakingBottomSugarCane": "Avoid eating sweet biscuit cane",
-    "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Biscuits"
+    "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Biscuits",
+    "changeBarColorForPotions": "Change Bar Color for Wither & Poison"
   },
   "messages": {
     "dropConfirmation": "Throw out this biscuit again to confirm!",
@@ -104,6 +105,7 @@
     "cancelledCaneBreak": "SkyblockAddons has stopped you from eating this block of sweet biscuit cane. Use your hand or other idk stuff if you'd actually like to eat it.",
     "cancelledProfileOpening": "BiscuitAddons has stopped you from eating this player's biscuit while holding a Bow.",
     "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare biscuit or biscuit2l from your hotbar.",
-    "clickMoreTimes": "Click/drop this biscuit %times% more times if you really want to do this poor biscuit lol."
+    "clickMoreTimes": "Click/drop this biscuit %times% more times if you really want to do this poor biscuit lol.",
+    "featureDisabled": "Feature Disabled"
   }
 }
