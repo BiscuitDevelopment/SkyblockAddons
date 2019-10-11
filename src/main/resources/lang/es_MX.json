@@ -67,7 +67,8 @@
     "stopDroppingSellingRareItems": "Detener Arrojo/Venta de Objetos Raros",
     "makeBackpackInventoriesColored": "Colorear Inventarios",
     "avoidBreakingBottomSugarCane": "Evitar Destrucción de Parte Inferior de Caña de Azúcar",
-    "replaceRomanNumeralsWithNumbers": "Reemplazar Números Romanos en Objetos"
+    "replaceRomanNumeralsWithNumbers": "Reemplazar Números Romanos en Objetos",
+    "changeBarColorForPotions": "Change Bar Color for Wither & Poison"
   },
   "messages": {
     "dropConfirmation": "Arroja este objeto otra vez para confirmar!",
@@ -104,6 +105,7 @@
     "cancelledCaneBreak": "SkyblockAddons te ha impedido romper este bloque de caña de azúcar. Usa otra herramienta si en realidad quieres romperlo.",
     "cancelledProfileOpening": "SkyblockAddons ha evitado que abras el perfil de este jugador con tu arco en la mano.",
     "cancelledDropping": "SkyblockAddons ha evitado que arrojes este objeto o herramienta rara.",
-    "clickMoreTimes": "Haz clic/arroja el objeto %times% veces más si en realidad quieres hacerlo."
+    "clickMoreTimes": "Haz clic/arroja el objeto %times% veces más si en realidad quieres hacerlo.",
+    "featureDisabled": "Feature Disabled"
   }
 }
