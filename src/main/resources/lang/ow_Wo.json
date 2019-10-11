@@ -67,7 +67,8 @@
     "stopDroppingSellingRareItems": "Stowp Dwopping/Sewwing Rawr Itewms",
     "makeBackpackInventoriesColored": "Cowow Inventowies",
     "avoidBreakingBottomSugarCane": "Awoid Bweaking Bwottom Sugar Cwane",
-    "replaceRomanNumeralsWithNumbers": "Wepwace Roman Numuwuals on Itwems"
+    "replaceRomanNumeralsWithNumbers": "Wepwace Roman Numuwuals on Itwems",
+    "changeBarColorForPotions": "Change Bar Color for Wither & Poison"
   },
   "messages": {
     "dropConfirmation": "Dwop thwis itwem agwain to confiwm!",
@@ -104,6 +105,7 @@
     "cancelledCaneBreak": "SkybwockAwwons has stwopped you from bweaking dis bwock of sugrawr cane. Use another twool if uwu'd actwually like to bweak it.",
     "cancelledProfileOpening": "SkybwockAwwons has stwopped uwu from opwening this plawer's pwofile whowo holdowoing a bowo.",
     "cancelledDropping": "SkybwockAwwons has owoed you from dwopping dis rawr itwem or twool from your hawtbar.",
-    "clickMoreTimes": "Cwick/dwop this item %times% mwore twimes if you weally want to do whis."
+    "clickMoreTimes": "Cwick/dwop this item %times% mwore twimes if you weally want to do whis.",
+    "featureDisabled": "Feature Disabled"
   }
 }
