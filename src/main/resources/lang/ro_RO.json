@@ -2,7 +2,7 @@
   "language": "Română",
   "settings": {
     "tab": {
-      "features": "Caracteristici",
+      "features": "Funcție",
       "fixes": "Rezolvări",
       "guiFeatures": "Funcțiile interfeței",
       "generalSettings": "Setările Generale"
@@ -30,7 +30,7 @@
     "showBackpackPreview": "Arată Preview la Backpack",
     "hideHealthBar": "Hide Health Bar",
     "fullMinionWarning": "Avertisment Minioni Plini",
-    "ignoreItemFrameClicks": "Ignoră Click-ul pe Item Frame-uri",
+    "ignoreItemFrameClicks": "Ignoră Click-uri pe Item Frame-uri",
     "showOnlyWhenHoldingShift": "Afișează numai când apeși pe shift",
     "manaBar": "Bara cu Mană",
     "manaText": "Numărul de Mană",
@@ -48,7 +48,7 @@
     "avoidBreakingStems": "Evită spargerea Plantelor",
     "stopBowChargeFromResetting": "Oprește Arcul din resetare",
     "preventMovementOnDeath": "Evită Mersul După Moarte",
-    "showItemAnvilUses": "Arată Utilizările Nicovalei pe Obiect",
+    "showItemAnvilUses": "Afiseaza elementul Utilizari Anvil",
     "lockSlots": "Permite blocarea sloturilor",
     "lockSlot": "Blochează itemul",
     "dontResetCursorInventory": "Nu reseta cursorul între inventare",
@@ -68,7 +68,7 @@
     "makeBackpackInventoriesColored": "Colorează inventarele",
     "avoidBreakingBottomSugarCane": "Evită spargerea sugar cane-ului de jos",
     "replaceRomanNumeralsWithNumbers": "Schimba numerele romane de pe iteme",
-    "changeBarColorForPotions": "Change Bar Color for Wither & Poison"
+    "changeBarColorForPotions": "Schimbați culoarea barei pentru Wither & Otravă"
   },
   "messages": {
     "dropConfirmation": "Arunca acest obiect iar ca să confirmi!",
@@ -106,6 +106,6 @@
     "cancelledProfileOpening": "Modul SkyblockAddons te-a oprit sa deschizi profilul jucătorului in timp ce utilizezi un arc.",
     "cancelledDropping": "Modul SkyblockAddons te-a oprit să arunci acest item sau unealtă rară din inventar.",
     "clickMoreTimes": "Aruncă acest item de încă %times% dacă vrei să faci asta.",
-    "featureDisabled": "Feature Disabled"
+    "featureDisabled": "Funcție dezactivată"
   }
 }
