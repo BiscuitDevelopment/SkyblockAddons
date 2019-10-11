@@ -67,7 +67,8 @@
     "stopDroppingSellingRareItems": "إيقاف إسقاط أو بيع الأشياء النادرة",
     "makeBackpackInventoriesColored": "لون القائمة",
     "avoidBreakingBottomSugarCane": "أيقاف كسر قصب السكر السفلي",
-    "replaceRomanNumeralsWithNumbers": "تحويل الترقيم الروماني إلى الرقمي"
+    "replaceRomanNumeralsWithNumbers": "تحويل الترقيم الروماني إلى الرقمي",
+    "changeBarColorForPotions": "Change Bar Color for Wither & Poison"
   },
   "messages": {
     "dropConfirmation": "!إرمي هذا العنصر مرة أخرى للتأكيد",
@@ -104,6 +105,7 @@
     "cancelledCaneBreak": "إضافات سكاي بلوك منعك من كسر هذا القصب، إن أردت كسره استعمل اداة اخرى.",
     "cancelledProfileOpening": "إضافات سكاي بلوك منعك من فتح شخصية هذا اللاعب وانت تحمل القوس.",
     "cancelledDropping": "إضافات سكاي بلوك منعك من إلقاء هذه الأداة أو الشيء النادر من قائمة أدواتك.",
-    "clickMoreTimes": "أضغط أو اسقط هذا الشيء %times% مرات أخرى إن كنت حقيقا تريد فعل هذا."
+    "clickMoreTimes": "أضغط أو اسقط هذا الشيء %times% مرات أخرى إن كنت حقيقا تريد فعل هذا.",
+    "featureDisabled": "Feature Disabled"
   }
 }
