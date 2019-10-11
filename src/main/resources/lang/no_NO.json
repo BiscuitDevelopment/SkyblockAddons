@@ -68,7 +68,7 @@
     "makeBackpackInventoriesColored": "Fargede inventories",
     "avoidBreakingBottomSugarCane": "Unngå ødelegging av nederste sukkerrør",
     "replaceRomanNumeralsWithNumbers": "Bytt Ut Romertall på Gjenstander",
-    "changeBarColorForPotions": "Change Bar Color for Wither & Poison"
+    "changeBarColorForPotions": "Bytt ut bar farge for visne og gift effekter"
   },
   "messages": {
     "dropConfirmation": "Slipp denne gjenstanden igjen for å bekrefte!",
@@ -106,6 +106,6 @@
     "cancelledProfileOpening": "SkyblockAddons har stoppet deg fra å åpne denne spillerens profil siden du holder en bue.",
     "cancelledDropping": "SkyblockAddons har stoppet deg fra å slippe denne sjeldne gjenstanden/redskap fra din hotbar.",
     "clickMoreTimes": "Klikk/slipp denne gjenstanden %times% flere ganger hvis du virkelig vil gjøre dette.",
-    "featureDisabled": "Feature Disabled"
+    "featureDisabled": "Funksjon Deaktivert"
   }
 }
