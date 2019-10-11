@@ -50,7 +50,7 @@
     "preventMovementOnDeath": "Stop het Bewegen Na het Doodgaan",
     "showItemAnvilUses": "Toon Aantal keren Item In Aambeeld Gebruikt",
     "lockSlots": "Slots Vergrendelen toestaan",
-    "lockSlot": "Vergrendel Hokje",
+    "lockSlot": "Vergrendel Vakje",
     "dontResetCursorInventory": "Cursor niet resetten tussen Inventarissen",
     "summoningEyeAlert": "Oproepend oog Alarm",
     "makeEnderchestsInEndGreen": "Maak Enderchests in de End Groen",
@@ -68,7 +68,7 @@
     "makeBackpackInventoriesColored": "Gekleurde Inventarissen",
     "avoidBreakingBottomSugarCane": "Vermijd het breken van onderste suikerriet",
     "replaceRomanNumeralsWithNumbers": "Vervang Romeinse Nummers op Items",
-    "changeBarColorForPotions": "Change Bar Color for Wither & Poison"
+    "changeBarColorForPotions": "Verander Kleur Balk voor Verdorring & Gif"
   },
   "messages": {
     "dropConfirmation": "Laat dit object opnieuw vallen om te Bevestigen!",
@@ -106,6 +106,6 @@
     "cancelledProfileOpening": "SkyblockAddons heeft je ervan weerhouden het profiel van deze speler te openen terwijl je een boog vast hebt.",
     "cancelledDropping": "SkyblockAddons heeft je ervan weerhouden dit zeldzame item of gereedschap uit je hotbar te gooien.",
     "clickMoreTimes": "Klik/gooi dit item %times% keer als je dit echt wilt doen.",
-    "featureDisabled": "Feature Disabled"
+    "featureDisabled": "Functie uitgeschakeld"
   }
 }
