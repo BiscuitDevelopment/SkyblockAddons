@@ -236,10 +236,12 @@ public class PlayerListener {
                 }
             }
             if (main.getConfigValues().isEnabled(Feature.AVOID_PLACING_ENCHANTED_ITEMS)) {
-                if ((e.action == PlayerInteractEvent.Action.RIGHT_CLICK_BLOCK || e.action == PlayerInteractEvent.Action.RIGHT_CLICK_AIR) &&
-                        (heldItem.getItem().equals(Items.lava_bucket) || heldItem.getItem().equals(Items.string) ||
-                                heldItem.getItem().equals(Item.getItemFromBlock(Blocks.diamond_block)))) {
-                    e.setCanceled(true);
+                if ((e.action == PlayerInteractEvent.Action.RIGHT_CLICK_BLOCK || e.action == PlayerInteractEvent.Action.RIGHT_CLICK_AIR)
+                    && !main.getUtils().isMaterialForRecipe(heldItem)) {
+                    if (heldItem.getItem().equals(Items.lava_bucket) || heldItem.getItem().equals(Items.string) ||
+                            heldItem.getItem().equals(Item.getItemFromBlock(Blocks.diamond_block))) {
+                        e.setCanceled(true);
+                    }
                 }
             }
         }
