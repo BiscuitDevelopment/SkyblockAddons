@@ -67,7 +67,8 @@
     "stopDroppingSellingRareItems": "Спри изхвърляне/продаване на редки предмети",
     "makeBackpackInventoriesColored": "Оцветени инвентари",
     "avoidBreakingBottomSugarCane": "Избегване На Чупене На Най-Долната Захарна Трастика",
-    "replaceRomanNumeralsWithNumbers": "Замени Римски цифри на предмети"
+    "replaceRomanNumeralsWithNumbers": "Замени Римски цифри на предмети",
+    "changeBarColorForPotions": "Change Bar Color for Wither & Poison"
   },
   "messages": {
     "dropConfirmation": "Хвърлете Този Предмет Отново за да Потвърдите!",
@@ -104,6 +105,7 @@
     "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use another tool if you'd actually like to break it.",
     "cancelledProfileOpening": "SkyblockAddons спря от отваряне на този профил на играч който държи лък",
     "cancelledDropping": "SkyblockAddons ви спря като се опитахте да хвърлите този рядък предмет или инструмент от вашия hotbar.",
-    "clickMoreTimes": "Натиснете Копчето Ви За Хвърляне На Предмети Още %times% Път/Пъти Ако Найстина Искате Да Го Изхвърлитен"
+    "clickMoreTimes": "Натиснете Копчето Ви За Хвърляне На Предмети Още %times% Път/Пъти Ако Найстина Искате Да Го Изхвърлитен",
+    "featureDisabled": "Feature Disabled"
   }
 }
