@@ -67,7 +67,8 @@
     "stopDroppingSellingRareItems": "Nadir Eşyaları Düşürmeyi/Satmayı Önle",
     "makeBackpackInventoriesColored": "Envanter Renkleri",
     "avoidBreakingBottomSugarCane": "Şeker Kamışının Altını Kırmayı Engelle",
-    "replaceRomanNumeralsWithNumbers": "Eşyalardaki Romen Rakamlarını Değiştir"
+    "replaceRomanNumeralsWithNumbers": "Eşyalardaki Romen Rakamlarını Değiştir",
+    "changeBarColorForPotions": "Change Bar Color for Wither & Poison"
   },
   "messages": {
     "dropConfirmation": "Eşyayı düşürmeyi onaylamak için düşürme tuşuna bir daha bas!",
@@ -104,6 +105,7 @@
     "cancelledCaneBreak": "SkyblockAddons seni bu şeker kamışı bloğunu kırmanızı engelledi. Eğer şeker kamışını kırmak istiyorsanız başka bir alet kullanın.",
     "cancelledProfileOpening": "SkyblockAddons elinizde yay olduğundan bu oyuncunun profilini açmanı engelledi.",
     "cancelledDropping": "SkyblockAddons bu değerli eşyanızı yere atmanızı engelledi.",
-    "clickMoreTimes": "Eğer gerçekten eşyayı yere atmak istiyorsanız %times% kez eşyaya tıklayın."
+    "clickMoreTimes": "Eğer gerçekten eşyayı yere atmak istiyorsanız %times% kez eşyaya tıklayın.",
+    "featureDisabled": "Feature Disabled"
   }
 }
