@@ -67,7 +67,8 @@
     "stopDroppingSellingRareItems": "Neleisti Išmesti/Parduoti Retus Daiktus",
     "makeBackpackInventoriesColored": "Spalvoti Inventoriai",
     "avoidBreakingBottomSugarCane": "Vengti Apatinės Cukranendres Išgriovimą",
-    "replaceRomanNumeralsWithNumbers": "Pakeisti Romėniškus Skaitmenys Ant Daiktų"
+    "replaceRomanNumeralsWithNumbers": "Pakeisti Romėniškus Skaitmenys Ant Daiktų",
+    "changeBarColorForPotions": "Change Bar Color for Wither & Poison"
   },
   "messages": {
     "dropConfirmation": "Meskite Šį Daiktą Dar Kartą, Kad Patvirtintumėte!",
@@ -104,6 +105,7 @@
     "cancelledCaneBreak": "SkyblockAddons modas sustabde jus nuo apatinio cuknanendės bloko išgriovimo. Naudokite kitą įrankį jei iš tikrūjų norite jį išgriauti.",
     "cancelledProfileOpening": "SkyblockAddons sustabdė jumis nuo šio žaidėjo profilio atidarymo, kai jūs rankoje laikote lanką.",
     "cancelledDropping": "SkyblockAddons sustabdė jumis nuo šio reto daikto išmetimo iš jūsų inventoriaus ar hotbaro.",
-    "clickMoreTimes": "Paspauskite/meskite šį daiktą %times% tiek kartų jeigu iš tikrųjų norite jį išmesti."
+    "clickMoreTimes": "Paspauskite/meskite šį daiktą %times% tiek kartų jeigu iš tikrųjų norite jį išmesti.",
+    "featureDisabled": "Feature Disabled"
   }
 }
