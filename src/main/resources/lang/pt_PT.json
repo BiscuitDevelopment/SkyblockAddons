@@ -4,7 +4,7 @@
     "tab": {
       "features": "Funcionalidades",
       "fixes": "Correções",
-      "guiFeatures": "Funcionalidades da interface",
+      "guiFeatures": "Funções da Interface",
       "generalSettings": "Definições gerais"
     },
     "settings": "Definições",
@@ -68,7 +68,7 @@
     "makeBackpackInventoriesColored": "Inventários coloridos",
     "avoidBreakingBottomSugarCane": "Evitar partir a cana de açúcar de baixo",
     "replaceRomanNumeralsWithNumbers": "Substituir os números romanos nos itens",
-    "changeBarColorForPotions": "Change Bar Color for Wither & Poison"
+    "changeBarColorForPotions": "Mudar a cor da barra com Wither ou Veneno"
   },
   "messages": {
     "dropConfirmation": "Dropa este item outra vez para confirmar!",
@@ -94,7 +94,7 @@
     "joinTheDiscord": "ENTRA NO DISCORD",
     "update": {
       "majorAvailable": "Está disponível uma nova atualização importante (%version%)! O link para o download pode ser encontrado no chat.",
-      "patchAvailable": "A new patch update (%version%) is available! Look in chat for download options!",
+      "patchAvailable": "Uma nova atualização (%version%) está disponível! Procura pelas opções de download no chat!",
       "downloading": "A atualização está a descarregar! Estado: %downloaded%/%total% Assim que o download terminar terás de apagar o ficheiro antigo.",
       "failed": "O download da atualização falhou! Descarrega-o manualmente usando o link no chat.",
       "downloadFinished": "A atualização terminou de ser descarregada e foi guardada como %file%. Não te esqueças de apagar o ficheiro antigo depois de fechares o Minecraft. Clica a mensagem no chat para abrires a pasta."
@@ -106,6 +106,6 @@
     "cancelledProfileOpening": "O SkyblockAddons preveniu-te de abrires o perfil deste jogador enquanto seguras um arco.",
     "cancelledDropping": "O SkyblockAddons preveniu-te de dropar este item ou ferramenta rara da tua hotbar.",
     "clickMoreTimes": "Clica/dropa este item mais %times% vezes se quiseres mesmo fazer isto.",
-    "featureDisabled": "Feature Disabled"
+    "featureDisabled": "Função Desativada"
   }
 }
