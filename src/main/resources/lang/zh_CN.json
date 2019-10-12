@@ -67,18 +67,18 @@
     "stopDroppingSellingRareItems": "防止丢弃或出售稀有物品",
     "makeBackpackInventoriesColored": "彩色背包",
     "avoidBreakingBottomSugarCane": "防止破坏底部甘蔗",
-    "replaceRomanNumeralsWithNumbers": "使用阿拉伯编号",
+    "replaceRomanNumeralsWithNumbers": "替换仆从的罗马数字为阿拉伯数字",
     "changeBarColorForPotions": "更改药水条颜色"
   },
   "messages": {
     "dropConfirmation": "再次丢弃此物品以确认!",
-    "magmaBossWarning": "!!!岩浆怪Boss已出生!!!",
+    "magmaBossWarning": "⚠ 岩浆怪 Boss 已生成 ⚠",
     "fullInventory": "背包已满!",
-    "labymod": "Labymod使用者: 隐藏食物, 装甲值, 以及血条, 不兼容。",
-    "minionCannotReach": "有一个%type%仆从无法触及到生物而停止运作了!",
-    "minionIsFull": "有一个仆从因为背包已满而停止运作了!",
+    "labymod": "Labymod 使用者: 不兼容隐藏饱食度、装甲值和生命值 。",
+    "minionCannotReach": "有%type%仆从因无法触及生物而停止运作了!",
+    "minionIsFull": "有仆从因背包已满而停止运作了!",
     "typeEnchantmentsHere": "在这里输入%type%目标!",
-    "separateMultiple": "请使用英文标点逗号以间隔多个目标。",
+    "separateMultiple": "使用英文逗号间隔多个目标。",
     "enchantsToMatch": "包含%type%:",
     "enchantsToExclude": "不包含%type%:",
     "inventoryTypes": {
@@ -86,8 +86,8 @@
       "reforges": "重铸"
     },
     "newUpdateAvailable": "新版本 %version% 可用！",
-    "deleteOldFile": "下载已完成，请使用下面的按钮打开您的 mods 文件夹，关闭 Minecraft，然后删除旧版本（或根据需要稍后删除）。",
-    "wantToViewPatchNotes": "是否想阅读更新内容？",
+    "deleteOldFile": "下载完成，使用下方按钮打开 mods 文件夹，关闭 Minecraft，删除旧文件。",
+    "wantToViewPatchNotes": "想阅读更新内容？",
     "downloadLink": "更新链接",
     "downloadAutomatically": "自动下载",
     "openModFolder": "Mods 文件夹",
@@ -97,7 +97,7 @@
       "patchAvailable": "%version% 补丁更新！下载链接可以在聊天中找到。",
       "downloading": "补丁正在下载（%downloaded%/%total%）\n请注意，下载完成后，请您务必删除旧文件。",
       "failed": "补丁下载失败！请在聊天中寻找下载链接。",
-      "downloadFinished": "补丁下载完成，它被保存为 %file%。\n请不要忘记在关闭您的 Minecraft 后删除旧文件，点击此处打开文件夹。"
+      "downloadFinished": "补丁下载完成，它被保存为 %file%。\n请不要忘记在关闭 Minecraft 后删除旧文件，点击此处打开文件夹。"
     },
     "slotLocked": "该栏已锁！",
     "summoningEyeFound": "召唤之眼！",
