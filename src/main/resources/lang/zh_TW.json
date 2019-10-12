@@ -68,7 +68,8 @@
     "makeBackpackInventoriesColored": "背包內部顏色與外部相同",
     "avoidBreakingBottomSugarCane": "避免破壞位於底部的甘蔗",
     "replaceRomanNumeralsWithNumbers": "將羅馬數字替換為阿拉伯數字",
-    "changeBarColorForPotions": "Change Bar Color for Wither & Poison"
+    "changeBarColorForPotions": "Change Bar Color for Wither & Poison",
+    "craftingPatterns": "Choose Crafting Patterns"
   },
   "messages": {
     "dropConfirmation": "再次丟棄此物品以確認!",
@@ -83,7 +84,8 @@
     "enchantsToExclude": "排斥%type%:",
     "inventoryTypes": {
       "enchants": "附魔",
-      "reforges": "重鑄"
+      "reforges": "重鑄",
+      "crafting": "Crafting"
     },
     "newUpdateAvailable": "一個新的版本 (%version%) 現已上線!",
     "deleteOldFile": "下載已完成, 請使用下方的按鈕打開你的模組資料夾, 關閉你的Minecraft, 並刪除舊的版本(依個人也可稍後刪除)",
