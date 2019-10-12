@@ -21,7 +21,7 @@
     "hideDurability": "Wyłącz Pasek Wytrzymałości Narzędzi",
     "showEnchantmentsReforges": "Zaklęcia oraz Reforge",
     "minionStopWarning": "Ostrzeżenie o Przerwaniu Pracy Miniona",
-    "hideAuctionHousePlayers": "Hide Players Near Important NPCs",
+    "hideAuctionHousePlayers": "Ukryj graczy blisko ważnych NPC",
     "backpackStyle": "Styl Plecaka: %style%",
     "backpackStyles": {
       "regular": "Normalne",
@@ -85,13 +85,13 @@
       "enchants": "Zaklęcia",
       "reforges": "Reforge"
     },
-    "newUpdateAvailable": "A new update (%version%) is available!",
+    "newUpdateAvailable": "Dostępna jest nowa wersja (%version%)!",
     "deleteOldFile": "The download has finished, please open your mods folder using the button below, close your Minecraft, and delete the old version (or delete it later if you prefer).",
     "wantToViewPatchNotes": "Want to read the changes?",
     "downloadLink": "UPDATE LINK",
-    "downloadAutomatically": "AUTO DOWNLOAD",
-    "openModFolder": "MODS FOLDER",
-    "joinTheDiscord": "JOIN DISCORD",
+    "downloadAutomatically": "AUTOMATYCZNE POBIERANIE",
+    "openModFolder": "FOLDER Z MODAMI",
+    "joinTheDiscord": "DOŁĄCZ NA DISCORDA",
     "update": {
       "majorAvailable": "A new major update (%version%) is available! The link for the download can be found in chat.",
       "patchAvailable": "A new patch update (%version%) is available! Look in chat for download options!",
@@ -106,6 +106,6 @@
     "cancelledProfileOpening": "SkyblockAddons anulował otwieranie profilu tej osoby trzymając łuk.",
     "cancelledDropping": "SkyblockAddons zatrzymał cię przed upuszczeniem tego rzadkiego przedmiotu lub narzędzia z twojego paska narzędzi.",
     "clickMoreTimes": "Naciśnij/upuść ten przedmiot %times% razy więcej jeśli naprawdę chcesz to zrobić.",
-    "featureDisabled": "Feature Disabled"
+    "featureDisabled": "Funkcja wyłączona"
   }
 }
