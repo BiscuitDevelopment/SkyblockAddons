@@ -66,6 +66,7 @@ public enum Message {
     SETTING_MAKE_BACKPACK_INVENTORIES_COLORED(MessageObject.SETTING, "makeBackpackInventoriesColored"),
     @Deprecated SETTING_AVOID_BREAKING_BOTTOM_SUGAR_CANE(MessageObject.SETTING, "avoidBreakingBottomSugarCane"), // disallowed
     SETTING_REPLACE_ROMAN_NUMERALS_WITH_NUMBERS(MessageObject.SETTING, "replaceRomanNumeralsWithNumbers"),
+    SETTING_CRAFTING_PATTERNS(MessageObject.SETTING, "craftingPatterns"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.STYLE, "compact"),
@@ -119,7 +120,8 @@ public enum Message {
     TAB_GENERAL_SETTINGS(MessageObject.TAB, "generalSettings"),
 
     INVENTORY_TYPE_ENCHANTS(MessageObject.INVENTORY_TYPE, "enchants"),
-    INVENTORY_TYPE_REFORGES(MessageObject.INVENTORY_TYPE, "reforges");
+    INVENTORY_TYPE_REFORGES(MessageObject.INVENTORY_TYPE, "reforges"),
+    INVENTORY_TYPE_CRAFTING(MessageObject.INVENTORY_TYPE, "crafting");
 
     private MessageObject messageObject;
     private String memberName;

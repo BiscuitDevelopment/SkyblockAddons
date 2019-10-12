@@ -1,6 +1,7 @@
 package codes.biscuit.skyblockaddons.mixins;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.gui.elements.CraftingPatternSelection;
 import codes.biscuit.skyblockaddons.listeners.RenderListener;
 import codes.biscuit.skyblockaddons.utils.*;
 import net.minecraft.client.Minecraft;
@@ -8,7 +9,6 @@ import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraft.client.gui.inventory.GuiInventory;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.entity.RenderItem;
@@ -32,6 +32,10 @@ import java.util.regex.Pattern;
 
 @Mixin(GuiContainer.class)
 public class MixinGuiContainer extends GuiScreen {
+
+    private static final int OVERLAY_RED = ConfigColor.RED.getColor(127);
+    private static final int OVERLAY_GREEN = ConfigColor.GREEN.getColor(127);
+
 
     @Shadow private Slot theSlot;
     private ResourceLocation CHEST_GUI_TEXTURE = new ResourceLocation("textures/gui/container/generic_54.png");
@@ -206,8 +210,7 @@ public class MixinGuiContainer extends GuiScreen {
         if (theSlot != null && main.getConfigValues().isEnabled(Feature.LOCK_SLOTS) &&
                 main.getUtils().isOnSkyblock() && main.getConfigValues().getLockedSlots().contains(slotNum)
                 && (slotNum >= 9 || container instanceof ContainerPlayer && slotNum >= 5)) {
-            int red = ConfigColor.RED.getColor(127);
-            drawGradientRect(left,top,right,bottom,red,red);
+            drawGradientRect(left,top,right,bottom, OVERLAY_RED, OVERLAY_RED);
         } else {
             drawGradientRect(left,top,right,bottom,startColor,endColor);
         }
@@ -217,20 +220,46 @@ public class MixinGuiContainer extends GuiScreen {
             ordinal = 0, shift = At.Shift.AFTER), locals = LocalCapture.CAPTURE_FAILSOFT)
     private void drawSlot(int mouseX, int mouseY, float partialTicks, CallbackInfo ci, int i, int j, int k, int l, int i1, Slot slot) {
         SkyblockAddons main = SkyblockAddons.getInstance();
-        if (slot != null && main.getConfigValues().isEnabled(Feature.LOCK_SLOTS) &&
-                main.getUtils().isOnSkyblock()) {
-            Container container = mc.thePlayer.openContainer;
-            int slotNum = slot.slotNumber + main.getInventoryUtils().getSlotDifference(container);
-            if (main.getConfigValues().getLockedSlots().contains(slotNum)
-                    && (slotNum >= 9 || container instanceof ContainerPlayer && slotNum >= 5)) {
-                GlStateManager.disableLighting();
-                GlStateManager.disableDepth();
-                GlStateManager.color(1,1,1,0.4F);
-                GlStateManager.enableBlend();
-                Minecraft.getMinecraft().getTextureManager().bindTexture(RenderListener.LOCK);
-                mc.ingameGUI.drawTexturedModalRect(slot.xDisplayPosition, slot.yDisplayPosition, 0, 0, 16, 16);
-                GlStateManager.enableLighting();
-                GlStateManager.enableDepth();
+        Container container = mc.thePlayer.openContainer;
+
+        if(slot != null) {
+            // Draw crafting pattern overlays inside the crafting grid
+            if(main.getConfigValues().isEnabled(Feature.CRAFTING_PATTERNS) && main.getUtils().isOnSkyblock()
+                    && slot.inventory.getDisplayName().getUnformattedText().equals(CraftingPattern.CRAFTING_TABLE_DISPLAYNAME)
+                    && CraftingPatternSelection.selectedPattern != CraftingPattern.FREE) {
+
+                int craftingGridIndex = CraftingPattern.slotToCraftingGridIndex(slot.getSlotIndex());
+                if(craftingGridIndex >= 0) {
+                    int slotLeft = slot.xDisplayPosition;
+                    int slotTop = slot.yDisplayPosition;
+                    int slotRight = slotLeft + 16;
+                    int slotBottom = slotTop + 16;
+                    if(CraftingPatternSelection.selectedPattern.isSlotInPattern(craftingGridIndex)) {
+                        if(!slot.getHasStack()) {
+                            drawGradientRect(slotLeft, slotTop, slotRight, slotBottom, OVERLAY_GREEN, OVERLAY_GREEN);
+                        }
+                    } else {
+                        if(slot.getHasStack()) {
+                            drawGradientRect(slotLeft, slotTop, slotRight, slotBottom, OVERLAY_RED, OVERLAY_RED);
+                        }
+                    }
+                }
+            }
+
+            if (main.getConfigValues().isEnabled(Feature.LOCK_SLOTS) &&
+                    main.getUtils().isOnSkyblock()) {
+                int slotNum = slot.slotNumber + main.getInventoryUtils().getSlotDifference(container);
+                if (main.getConfigValues().getLockedSlots().contains(slotNum)
+                        && (slotNum >= 9 || container instanceof ContainerPlayer && slotNum >= 5)) {
+                    GlStateManager.disableLighting();
+                    GlStateManager.disableDepth();
+                    GlStateManager.color(1,1,1,0.4F);
+                    GlStateManager.enableBlend();
+                    Minecraft.getMinecraft().getTextureManager().bindTexture(RenderListener.LOCK);
+                    mc.ingameGUI.drawTexturedModalRect(slot.xDisplayPosition, slot.yDisplayPosition, 0, 0, 16, 16);
+                    GlStateManager.enableLighting();
+                    GlStateManager.enableDepth();
+                }
             }
         }
     }

@@ -67,7 +67,8 @@
     "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Items",
     "makeBackpackInventoriesColored": "Color Inventories",
     "avoidBreakingBottomSugarCane": "Avoid Breaking Bottom Sugar Cane",
-    "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Items"
+    "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Items",
+    "craftingPatterns": "Crafting Patterns"
   },
   "messages": {
     "dropConfirmation": "Drop this item again to confirm!",
@@ -82,7 +83,8 @@
     "enchantsToExclude": "%type% To Exclude:",
     "inventoryTypes": {
       "enchants": "Enchants",
-      "reforges": "Reforges"
+      "reforges": "Reforges",
+      "crafting": "Crafting"
     },
     "newUpdateAvailable": "A new update (%version%) is available!",
     "deleteOldFile": "The download has finished, please open your mods folder using the button below, close your Minecraft, and delete the old version (or delete it later if you prefer).",

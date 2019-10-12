@@ -68,7 +68,7 @@ public class SkyblockAddonsGui extends GuiScreen {
         // Add the buttons for each page.
         Feature[] array;
         if (tab == EnumUtils.SkyblockAddonsGuiTab.FEATURES) {
-            array = new Feature[]{Feature.SHOW_ENCHANTMENTS_REFORGES, Feature.SHOW_BACKPACK_PREVIEW,
+            array = new Feature[]{Feature.SHOW_ENCHANTMENTS_REFORGES, Feature.SHOW_BACKPACK_PREVIEW, Feature.CRAFTING_PATTERNS,
                     Feature.MINION_FULL_WARNING, Feature.FULL_INVENTORY_WARNING,
                     Feature.IGNORE_ITEM_FRAME_CLICKS, Feature.HIDE_FOOD_ARMOR_BAR, Feature.HIDE_HEALTH_BAR,
                     Feature.AVOID_BREAKING_STEMS, Feature.MAGMA_WARNING, Feature.HIDE_PLAYERS_IN_LOBBY, Feature.MINION_STOP_WARNING,
