@@ -68,7 +68,8 @@
     "makeBackpackInventoriesColored": "สีช่องเก็บของ Backpack",
     "avoidBreakingBottomSugarCane": "ป้องกันการทำลายต้นล่างสุดของ Sugar Cane",
     "replaceRomanNumeralsWithNumbers": "เปลี่ยนตัวเลขโรมันให้เป็นตัวเลขอารบิก",
-    "changeBarColorForPotions": "Change Bar Color for Wither & Poison"
+    "changeBarColorForPotions": "Change Bar Color for Wither & Poison",
+    "craftingPatterns": "Choose Crafting Patterns"
   },
   "messages": {
     "dropConfirmation": "กดทิ้งของอีกที่เพื่อยืนยันทิ้งของสิ่งนี้!",
@@ -83,7 +84,8 @@
     "enchantsToExclude": "%type% เพื่อไม่รวม:",
     "inventoryTypes": {
       "enchants": "Enchants",
-      "reforges": "ตีบวกของ"
+      "reforges": "ตีบวกของ",
+      "crafting": "Crafting"
     },
     "newUpdateAvailable": "มีอัพเดทใหม่ (%version%) พร้อมให้ดาวน์โหลดแล้ว!",
     "deleteOldFile": "การดาวน์โหลดเสร็จสมบูรณ์ กรุณาเปิดโฟลเดอร์มอดโดยใช้ปุ่มข้างล่างนี้ จากนั้นปิด Minecraft และลบมอดเวอร์ชั่นเก่า (หรือจะลบทีหลังก็ได้ถ้าต้องการ)",
