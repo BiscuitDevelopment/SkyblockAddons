@@ -68,7 +68,8 @@
     "makeBackpackInventoriesColored": "Rucksäcke färben",
     "avoidBreakingBottomSugarCane": "Zerstören des unteren Zuckerrohrs blockieren",
     "replaceRomanNumeralsWithNumbers": "Ersetze Römische Nummern auf Gegenständen",
-    "changeBarColorForPotions": "Farbe der Wither & Gift Leiste ändern"
+    "changeBarColorForPotions": "Farbe der Wither & Gift Leiste ändern",
+    "craftingPatterns": "Choose Crafting Patterns"
   },
   "messages": {
     "dropConfirmation": "Werfe diesen Gegenstand nochmal, um zu bestätigen!",
@@ -83,7 +84,8 @@
     "enchantsToExclude": "%type% die du nicht möchtest:",
     "inventoryTypes": {
       "enchants": "Verzauberungen",
-      "reforges": "Verbesserungen"
+      "reforges": "Verbesserungen",
+      "crafting": "Crafting"
     },
     "newUpdateAvailable": "Ein neues Update (%version%) ist verfügbar!",
     "deleteOldFile": "Der Download ist beendet, benutze den Knopf unten, um den mods Ordner zu öffnen, schließe dein Minecraft und lösche die alte Version (oder lösche es später).",
