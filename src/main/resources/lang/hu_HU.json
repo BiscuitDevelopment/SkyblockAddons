@@ -68,8 +68,8 @@
     "makeBackpackInventoriesColored": "Színes eszköztárak",
     "avoidBreakingBottomSugarCane": "Alsó cukornád kiütésének elkerülése",
     "replaceRomanNumeralsWithNumbers": "Római számok kicserélése a tárgyakon",
-    "changeBarColorForPotions": "Change Bar Color for Wither & Poison",
-    "craftingPatterns": "Choose Crafting Patterns"
+    "changeBarColorForPotions": "Sorvadás és méreg sebzőszínei",
+    "craftingPatterns": "Válassz Barkácsolómintát"
   },
   "messages": {
     "dropConfirmation": "Dobd el ezt a tárgyat újra, hogy megerősítsd!",
@@ -85,7 +85,7 @@
     "inventoryTypes": {
       "enchants": "Enchantok",
       "reforges": "Reforgeok",
-      "crafting": "Crafting"
+      "crafting": "Barkácsolás"
     },
     "newUpdateAvailable": "Egy új frissítés (%version%) érhető el!",
     "deleteOldFile": "A letöltés befejeződött, nyisd meg a mods mappádat az alsó gomb segítségével, zárd be a Minecraft-ot és töröld a régi verzióját a mod-nak \n(ezt később is megteheted).",
@@ -108,6 +108,6 @@
     "cancelledProfileOpening": "A SkyblockAddons megállította, hogy megnyisd ennek a játékosnak a profilját, amíg íj van a kezedben.",
     "cancelledDropping": "A SkyblockAddons megállította, hogy eldobd ezt a rare tárgyat vagy eszközt.",
     "clickMoreTimes": "Kattints/dobd el ezt a tárgyat még %times% alkalommal, ha tényleg ezt szeretnéd.",
-    "featureDisabled": "Feature Disabled"
+    "featureDisabled": "Szolgáltatás kikapcsolva"
   }
 }
