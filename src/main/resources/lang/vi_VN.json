@@ -68,7 +68,8 @@
     "makeBackpackInventoriesColored": "Màu Balô",
     "avoidBreakingBottomSugarCane": "Tránh phá Mía Ở Dưới Cùng",
     "replaceRomanNumeralsWithNumbers": "Thay thế chữ số La Mã trên vật phẩm",
-    "changeBarColorForPotions": "Thay đổi màu thanh cho Khô Héo & Độc"
+    "changeBarColorForPotions": "Thay đổi màu thanh cho Khô Héo & Độc",
+    "craftingPatterns": "Choose Crafting Patterns"
   },
   "messages": {
     "dropConfirmation": "Nhấn \"Q\" Thêm Một Lần Nữa Để Xác Nhận!",
@@ -83,7 +84,8 @@
     "enchantsToExclude": "%type% Để Loại Trừ:",
     "inventoryTypes": {
       "enchants": "Phù phép",
-      "reforges": "Rèn luyện"
+      "reforges": "Rèn luyện",
+      "crafting": "Crafting"
     },
     "newUpdateAvailable": "Cập nhật mới (%version%) có sẵn!",
     "deleteOldFile": "Tải về hoàn tất, hãy mở thư mục mod bằng nút dưới đây, tắt Minecraft đi và xoá phiên bản cũ đi (hoặc có thể xoá sau tùy bạn).",
