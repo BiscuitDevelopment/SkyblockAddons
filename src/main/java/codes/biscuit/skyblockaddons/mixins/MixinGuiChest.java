@@ -104,6 +104,11 @@ public abstract class MixinGuiChest extends GuiContainer {
     @Override
     public void initGui() {
         super.initGui();
+        // don't draw any overlays outside SkyBlock
+        if(!SkyblockAddons.getInstance().getUtils().isOnSkyblock()) {
+            return;
+        }
+
         String guiName = lowerChestInventory.getDisplayName().getUnformattedText();
         if (guiName.equals("Enchant Item")) inventoryType = EnumUtils.InventoryType.ENCHANTMENT_TABLE;
         if (guiName.equals("Reforge Item")) inventoryType = EnumUtils.InventoryType.REFORGE_ANVIL;
