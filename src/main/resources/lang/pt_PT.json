@@ -68,7 +68,8 @@
     "makeBackpackInventoriesColored": "Inventários coloridos",
     "avoidBreakingBottomSugarCane": "Evitar partir a cana de açúcar de baixo",
     "replaceRomanNumeralsWithNumbers": "Substituir os números romanos nos itens",
-    "changeBarColorForPotions": "Mudar a cor da barra com Wither ou Veneno"
+    "changeBarColorForPotions": "Mudar a cor da barra com Wither ou Veneno",
+    "craftingPatterns": "Choose Crafting Patterns"
   },
   "messages": {
     "dropConfirmation": "Dropa este item outra vez para confirmar!",
@@ -83,7 +84,8 @@
     "enchantsToExclude": "%type% para excluír:",
     "inventoryTypes": {
       "enchants": "Encantamentos",
-      "reforges": "Reforges"
+      "reforges": "Reforges",
+      "crafting": "Crafting"
     },
     "newUpdateAvailable": "Está disponível uma nova atualização (%version%)!",
     "deleteOldFile": "O download terminou. Abre a tua pasta mods usando os botões abaixo, fecha o Minecraft e apaga a versão antiga (ou apaga-a mais tarde se preferires).",
