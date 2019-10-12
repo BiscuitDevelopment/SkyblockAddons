@@ -68,7 +68,7 @@
     "makeBackpackInventoriesColored": "इन्वेंट्रीज़ को रंग दो",
     "avoidBreakingBottomSugarCane": "स्थापना -> गन्ना तोड़ने से बचें",
     "replaceRomanNumeralsWithNumbers": "समायोजन -> नंबर के साथ रोमन अंकों को बदलें",
-    "changeBarColorForPotions": "Change Bar Color for Wither & Poison"
+    "changeBarColorForPotions": "समायोजन -> औषधि के लिए बार रंग बदलें"
   },
   "messages": {
     "dropConfirmation": "Drop this item again to confirm!",
