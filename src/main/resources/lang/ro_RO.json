@@ -68,7 +68,8 @@
     "makeBackpackInventoriesColored": "Colorează inventarele",
     "avoidBreakingBottomSugarCane": "Evită spargerea sugar cane-ului de jos",
     "replaceRomanNumeralsWithNumbers": "Schimba numerele romane de pe iteme",
-    "changeBarColorForPotions": "Schimbați culoarea barei pentru Wither & Otravă"
+    "changeBarColorForPotions": "Schimbați culoarea barei pentru Wither & Otravă",
+    "craftingPatterns": "Choose Crafting Patterns"
   },
   "messages": {
     "dropConfirmation": "Arunca acest obiect iar ca să confirmi!",
@@ -83,7 +84,8 @@
     "enchantsToExclude": "%type% să se Excludă:",
     "inventoryTypes": {
       "enchants": "Enchant-uri",
-      "reforges": "Refăuriri"
+      "reforges": "Refăuriri",
+      "crafting": "Crafting"
     },
     "newUpdateAvailable": "O nouă versiune (%version%) este disponibilă!",
     "deleteOldFile": "Instalarea s-a terminat, vă rugam sa deschideți folder-ul cu modurile apăsând butonul de mai jos, închideți Minecraft-ul și ștergeți versiunea cea veche (sau puteți să o ștergeți mai târziu).",
