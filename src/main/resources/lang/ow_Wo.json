@@ -68,7 +68,8 @@
     "makeBackpackInventoriesColored": "Cowow Inventowies",
     "avoidBreakingBottomSugarCane": "Awoid Bweaking Bwottom Sugar Cwane",
     "replaceRomanNumeralsWithNumbers": "Wepwace Roman Numuwuals on Itwems",
-    "changeBarColorForPotions": "Change Bar Color for Wither & Poison"
+    "changeBarColorForPotions": "Change Bar Color for Wither & Poison",
+    "craftingPatterns": "Choose Crafting Patterns"
   },
   "messages": {
     "dropConfirmation": "Dwop thwis itwem agwain to confiwm!",
@@ -83,7 +84,8 @@
     "enchantsToExclude": "%type% To Excwude:",
     "inventoryTypes": {
       "enchants": "Enchawnts",
-      "reforges": "Wefowges"
+      "reforges": "Wefowges",
+      "crafting": "Crafting"
     },
     "newUpdateAvailable": "A nuwu OwO Updowoe (%version%) is avaiwable!",
     "deleteOldFile": "The downwoad has fiwinished, pwease open ywour mods fowdew using the button bewow, cwose youw minecwaft, and dewete the owd vewsion (ow dewete it latew if you pwefew).",
