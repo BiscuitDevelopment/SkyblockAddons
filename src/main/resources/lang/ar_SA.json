@@ -68,7 +68,7 @@
     "makeBackpackInventoriesColored": "لون القائمة",
     "avoidBreakingBottomSugarCane": "أيقاف كسر قصب السكر السفلي",
     "replaceRomanNumeralsWithNumbers": "تحويل الترقيم الروماني إلى الرقمي",
-    "changeBarColorForPotions": "Change Bar Color for Wither & Poison"
+    "changeBarColorForPotions": "تغيير لون الشريط للويذر و التسمم"
   },
   "messages": {
     "dropConfirmation": "!إرمي هذا العنصر مرة أخرى للتأكيد",
@@ -106,6 +106,6 @@
     "cancelledProfileOpening": "إضافات سكاي بلوك منعك من فتح شخصية هذا اللاعب وانت تحمل القوس.",
     "cancelledDropping": "إضافات سكاي بلوك منعك من إلقاء هذه الأداة أو الشيء النادر من قائمة أدواتك.",
     "clickMoreTimes": "أضغط أو اسقط هذا الشيء %times% مرات أخرى إن كنت حقيقا تريد فعل هذا.",
-    "featureDisabled": "Feature Disabled"
+    "featureDisabled": "تعطل الميزة"
   }
 }
