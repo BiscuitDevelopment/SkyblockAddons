@@ -21,7 +21,7 @@
     "hideDurability": "Skjul Redskaps Varighet",
     "showEnchantmentsReforges": "Fortryllinger og reforges",
     "minionStopWarning": "\"Lakei kan ikke nå\" advarsel",
-    "hideAuctionHousePlayers": "Hide Players Near Important NPCs",
+    "hideAuctionHousePlayers": "Gjem spillere nærme viktige NPCer",
     "backpackStyle": "Ryggsekk stil %style%",
     "backpackStyles": {
       "regular": "Vanlig",
@@ -50,6 +50,7 @@
     "preventMovementOnDeath": "Unngå gåing etter død",
     "showItemAnvilUses": "Vis gjenstands bruk av anviller",
     "lockSlots": "Tillat låsning av slots",
+    "lockSlot": "Lås Slot",
     "dontResetCursorInventory": "Ikke nullstill musen mellom inventories",
     "summoningEyeAlert": "Innkallende øye varsling",
     "makeEnderchestsInEndGreen": "Gjør enderkister i end grønne",
@@ -66,7 +67,8 @@
     "stopDroppingSellingRareItems": "Ikke slipp/selg sjeldne gjenstander",
     "makeBackpackInventoriesColored": "Fargede inventories",
     "avoidBreakingBottomSugarCane": "Unngå ødelegging av nederste sukkerrør",
-    "replaceRomanNumeralsWithNumbers": "Bytt Ut Romertall på Gjenstander"
+    "replaceRomanNumeralsWithNumbers": "Bytt Ut Romertall på Gjenstander",
+    "changeBarColorForPotions": "Bytt ut bar farge for visne og gift effekter"
   },
   "messages": {
     "dropConfirmation": "Slipp denne gjenstanden igjen for å bekrefte!",
@@ -83,16 +85,16 @@
       "enchants": "Enchants",
       "reforges": "Reforges"
     },
-    "newUpdateAvailable": "A new update (%version%) is available!",
-    "deleteOldFile": "The download has finished, please open your mods folder using the button below, close your Minecraft, and delete the old version (or delete it later if you prefer).",
-    "wantToViewPatchNotes": "Want to read the changes?",
-    "downloadLink": "UPDATE LINK",
-    "downloadAutomatically": "AUTO DOWNLOAD",
-    "openModFolder": "MODS FOLDER",
+    "newUpdateAvailable": "En ny oppdatering (%version%) er ute!",
+    "deleteOldFile": "Nedlastningen er ferdig, åpne opp modifikasjonsmappen ved bruk av knappen nedenfor, lukk igjen Minecraft, og slett den gamle versjonen (eller slett den senere hvis du vil).",
+    "wantToViewPatchNotes": "Vil du lese endringene?",
+    "downloadLink": "OPPDATERINGSLENKE",
+    "downloadAutomatically": "AUTOMATISK NEDLASTING",
+    "openModFolder": "MODIFIKASJONS MAPPE",
     "joinTheDiscord": "bli med Discord",
     "update": {
-      "majorAvailable": "A new major update (%version%) is available! The link for the download can be found in chat.",
-      "patchAvailable": "A new patch update (%version%) is available! Look in chat for download options!",
+      "majorAvailable": "En ny stor oppdatering (%version%) er ute! Du kan finne nedlastingslenken under i chatten.",
+      "patchAvailable": "En ny oppdatering (%version%) er ute! Se i chattten for alternativer for nedlastninger!",
       "downloading": "nedlasting",
       "failed": "grunnstøting",
       "downloadFinished": "nedlastingen fullført"
@@ -100,9 +102,10 @@
     "slotLocked": "Denne ruten er låst!",
     "summoningEyeFound": "Summoning Eye!",
     "cancelledStemBreak": "SkyblockAddons har stoppet deg fra å ødelegge denne stilken. Bruk hånden din hvis du vil ødelegge den.",
-    "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use another tool if you'd actually like to break it.",
+    "cancelledCaneBreak": "SkyblockAddons har stoppet deg fra å ødelegge dette sukkerrøret. Bruk et annet redskap hvis du vil ødelegge den.",
     "cancelledProfileOpening": "SkyblockAddons har stoppet deg fra å åpne denne spillerens profil siden du holder en bue.",
     "cancelledDropping": "SkyblockAddons har stoppet deg fra å slippe denne sjeldne gjenstanden/redskap fra din hotbar.",
-    "clickMoreTimes": "Klikk/slipp denne gjenstanden %times% flere ganger hvis du virkelig vil gjøre dette."
+    "clickMoreTimes": "Klikk/slipp denne gjenstanden %times% flere ganger hvis du virkelig vil gjøre dette.",
+    "featureDisabled": "Funksjon Deaktivert"
   }
 }

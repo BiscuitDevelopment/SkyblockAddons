@@ -50,6 +50,7 @@
     "preventMovementOnDeath": "Sprije?i Hodanje Nakon Smrti",
     "showItemAnvilUses": "Pokaži Broj Koristi Stvari u Anvil-u",
     "lockSlots": "Dopusti Zaključavanje Slotova",
+    "lockSlot": "Lock Slot",
     "dontResetCursorInventory": "Nemoj Resetirati Kursor Između Inventara",
     "summoningEyeAlert": "Upozorenje Za Evokacijske Oči",
     "makeEnderchestsInEndGreen": "Napravi Ender Škrinje u End-u Zelene",
@@ -66,7 +67,8 @@
     "stopDroppingSellingRareItems": "Zaustavi Bacanje/Slanje Rijetkih Stvari",
     "makeBackpackInventoriesColored": "Obojani Inventari",
     "avoidBreakingBottomSugarCane": "Zaustavi Prijelom Dna Šećerne Trske",
-    "replaceRomanNumeralsWithNumbers": "Zamijeni Rimske Brojeve na Stvarima"
+    "replaceRomanNumeralsWithNumbers": "Zamijeni Rimske Brojeve na Stvarima",
+    "changeBarColorForPotions": "Change Bar Color for Wither & Poison"
   },
   "messages": {
     "dropConfirmation": "Opet baci ovu stvar za konfirmaciju!",
@@ -103,6 +105,7 @@
     "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use another tool if you'd actually like to break it.",
     "cancelledProfileOpening": "SkyblockAddons te zaustavio od otvaranja profila ovog igrača dok držiš luk.",
     "cancelledDropping": "SkyblockAddons te zaustavio od bacanje ove rijetke stvari ili alata od tvojeg hotbara.",
-    "clickMoreTimes": "Klikni/dropaj ovu stvar %times% više puta ako zapravo želiš ovo napraviti."
+    "clickMoreTimes": "Klikni/dropaj ovu stvar %times% više puta ako zapravo želiš ovo napraviti.",
+    "featureDisabled": "Feature Disabled"
   }
 }

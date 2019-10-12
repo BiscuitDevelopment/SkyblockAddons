@@ -50,6 +50,7 @@
     "preventMovementOnDeath": "Zatrzymaj Poruszanie Się Po Śmierci",
     "showItemAnvilUses": "Pokaż Liczbę Użyć Kowadła na Przedmiocie",
     "lockSlots": "Zezwól na blokowanie slotów",
+    "lockSlot": "Lock Slot",
     "dontResetCursorInventory": "Nie resetuj kursora pomiędzy ekwipunkami",
     "summoningEyeAlert": "Alarm o oku przywołującym",
     "makeEnderchestsInEndGreen": "Uczyń Skrzynie Endu zielone w Endzie",
@@ -66,7 +67,8 @@
     "stopDroppingSellingRareItems": "Nie upuszczaj/sprzedawaj Rzadkich przedmiotów",
     "makeBackpackInventoriesColored": "Zmień kolor ekwipunku",
     "avoidBreakingBottomSugarCane": "Unikaj niszczenia dolnej części trzciny cukrowej",
-    "replaceRomanNumeralsWithNumbers": "Zamień cyfry Rzymskie na Normalne"
+    "replaceRomanNumeralsWithNumbers": "Zamień cyfry Rzymskie na Normalne",
+    "changeBarColorForPotions": "Change Bar Color for Wither & Poison"
   },
   "messages": {
     "dropConfirmation": "Wyrzuć ten przedmiot ponownie, aby potwierdzić!",
@@ -103,6 +105,7 @@
     "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use another tool if you'd actually like to break it.",
     "cancelledProfileOpening": "SkyblockAddons anulował otwieranie profilu tej osoby trzymając łuk.",
     "cancelledDropping": "SkyblockAddons zatrzymał cię przed upuszczeniem tego rzadkiego przedmiotu lub narzędzia z twojego paska narzędzi.",
-    "clickMoreTimes": "Naciśnij/upuść ten przedmiot %times% razy więcej jeśli naprawdę chcesz to zrobić."
+    "clickMoreTimes": "Naciśnij/upuść ten przedmiot %times% razy więcej jeśli naprawdę chcesz to zrobić.",
+    "featureDisabled": "Feature Disabled"
   }
 }

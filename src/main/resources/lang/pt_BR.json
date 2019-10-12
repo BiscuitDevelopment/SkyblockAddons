@@ -24,7 +24,7 @@
     "hideAuctionHousePlayers": "Esconder Jogadores Perto de NPCs Importantes",
     "backpackStyle": "Estilo de Mochila: %style%",
     "backpackStyles": {
-      "regular": "Padrão",
+      "regular": "Normal",
       "compact": "Compacto"
     },
     "showBackpackPreview": "Mostrar Conteúdo de Mochilas",
@@ -48,11 +48,12 @@
     "avoidBreakingStems": "Evitar de Quebar Raizes",
     "stopBowChargeFromResetting": "Impedir Arco e Flecha de Resetar",
     "preventMovementOnDeath": "Impedir Movimento Após Morte",
-    "showItemAnvilUses": "Mostrar Usos na Bigorna de Itens",
+    "showItemAnvilUses": "Mostrar Usos de Bigorna no Item",
     "lockSlots": "Permitir Trava de Slots",
+    "lockSlot": "Bloquear um slot",
     "dontResetCursorInventory": "Não reajustar cursor entre inventários",
     "summoningEyeAlert": "Alerta de Olhos de Invocação",
-    "makeEnderchestsInEndGreen": "Tornar Baús do Fim Verdes no Final",
+    "makeEnderchestsInEndGreen": "Tornar Baús do Fim Verdes no Fim",
     "changeColor": "Mudar Cor",
     "showInOtherGames": "Mostar em Outros Jogos",
     "useVanillaTexture": "Usar Textura Padrão",
@@ -66,7 +67,8 @@
     "stopDroppingSellingRareItems": "Não Largar/Vender Itens Raros",
     "makeBackpackInventoriesColored": "Inventários Coloridos",
     "avoidBreakingBottomSugarCane": "Evitar a quebra da Cana de Açúcar debaixo",
-    "replaceRomanNumeralsWithNumbers": "Substituir números romanos nos Itens"
+    "replaceRomanNumeralsWithNumbers": "Substituir números romanos nos Itens",
+    "changeBarColorForPotions": "Mudar cor da barra para Wither e Veneno"
   },
   "messages": {
     "dropConfirmation": "Large este item de novo para confirmar!",
@@ -98,11 +100,12 @@
       "downloadFinished": "A atualização terminou de baixar. Foi salvo como %file%. Por favor, não se esqueça de excluir o arquivo antigo após fechar seu Minecraft. Clique na mensagem que está no chat para abrir a pasta."
     },
     "slotLocked": "Este slot está trancado!",
-    "summoningEyeFound": "Olho de Convocação!",
+    "summoningEyeFound": "Olho de Invocação!",
     "cancelledStemBreak": "SkyBlockAddons impediu você de quebrar esta semente. Use a sua mão caso queira realmente quebrar.",
     "cancelledCaneBreak": "SkyBlockAddons impediu você de quebrar este bloco de Cana de Açúcar. Use outro tipo de ferramenta caso queira realmente quebrar.",
     "cancelledProfileOpening": "O SkyblockAddons impediu você de abrir o perfil deste jogador enquanto segura um arco.",
     "cancelledDropping": "O SkyblockAddons impediu você de largar este item ou ferramenta rara da sua hotbar.",
-    "clickMoreTimes": "Clique/Largue este item mais %times% vezes caso realmente queira fazer isso."
+    "clickMoreTimes": "Clique/Largue este item mais %times% vezes caso realmente queira fazer isso.",
+    "featureDisabled": "Função desabilitada"
   }
 }

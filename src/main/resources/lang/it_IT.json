@@ -50,6 +50,7 @@
     "preventMovementOnDeath": "Impedisci di Camminare Dopo Essere Morto",
     "showItemAnvilUses": "Mostra Numero di Usi dell’Incudine",
     "lockSlots": "Permetti di bloccare gli slot",
+    "lockSlot": "Blocca Slot",
     "dontResetCursorInventory": "Non resettare il cursore tra gli inventari",
     "summoningEyeAlert": "Avviso di acquisizione di un Occhio dell'evocazione",
     "makeEnderchestsInEndGreen": "Rendi le casse nell'End verdi",
@@ -66,7 +67,8 @@
     "stopDroppingSellingRareItems": "Smetti di gettare/vendere oggetti rari",
     "makeBackpackInventoriesColored": "Colora gli inventari",
     "avoidBreakingBottomSugarCane": "Evita di Rompere la Base della Canna da Zucchero",
-    "replaceRomanNumeralsWithNumbers": "Rimpiazza Numeri Romani sugli Oggetti"
+    "replaceRomanNumeralsWithNumbers": "Rimpiazza Numeri Romani sugli Oggetti",
+    "changeBarColorForPotions": "Change Bar Color for Wither & Poison"
   },
   "messages": {
     "dropConfirmation": "Getta questo oggetto nuovamente per confermare!",
@@ -92,7 +94,7 @@
     "joinTheDiscord": "ENTRA NEL SERVER DI DISCORD",
     "update": {
       "majorAvailable": "Un nuovo aggiornamento importante (%version%) è disponibile! Il link per il download si trova in chat.",
-      "patchAvailable": "A new patch update (%version%) is available! Look in chat for download options!",
+      "patchAvailable": "Un nuovo aggiornamento con correzioni di errori (%version%) è disponibile! Cerca le opzioni di download in chat!",
       "downloading": "Download delle correzioni! Status: %downloaded%/%total% Ricorda che al termine del download dovrai eliminare il file vecchio.",
       "failed": "Il download delle correzioni non è riuscito! Scaricalo manualmente utilizzando il link in chat.",
       "downloadFinished": "L’aggiornamento con le correzioni è stato scaricato. È stato salvato come %file%. Non dimenticarti di eliminare il vecchio file dopo aver chiuso Minecraft. Clicca sul messaggio in chat per aprire la cartella."
@@ -103,6 +105,7 @@
     "cancelledCaneBreak": "SkyblockAddons ti ha impedito di rompere questo pezzo di canna da zucchero. Usa un altro strumento se lo vuoi rompere.",
     "cancelledProfileOpening": "SkyblockAddons ti ha impedito di aprire il profilo di questo giocatore mentre avevi l’arco in mano.",
     "cancelledDropping": "SkyblockAddons ti ha impedito di gettare questo oggetto o strumento raro dalla tua hotbar.",
-    "clickMoreTimes": "Clicca/getta questo oggetto altre %times% volte se vuoi davvero farlo."
+    "clickMoreTimes": "Clicca/getta questo oggetto altre %times% volte se vuoi davvero farlo.",
+    "featureDisabled": "Feature Disabled"
   }
 }
