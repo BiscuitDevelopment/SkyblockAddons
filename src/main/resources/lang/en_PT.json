@@ -68,7 +68,8 @@
     "makeBackpackInventoriesColored": "Col'r yer Booty",
     "avoidBreakingBottomSugarCane": "Avast breakin' bottom o' Sugarrr Cane",
     "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on yer Items",
-    "changeBarColorForPotions": "Change Bar Color for Wither & Poison"
+    "changeBarColorForPotions": "Change Bar Color for Wither & Poison",
+    "craftingPatterns": "Choose Crafting Patterns"
   },
   "messages": {
     "dropConfirmation": "'ay lad, drop this here item again to confirm!",
@@ -83,7 +84,8 @@
     "enchantsToExclude": "%type% to exclude:",
     "inventoryTypes": {
       "enchants": "Yer magic",
-      "reforges": "Reforgery"
+      "reforges": "Reforgery",
+      "crafting": "Crafting"
     },
     "newUpdateAvailable": "A new update (%version%) is available!",
     "deleteOldFile": "The download has finished, please open your mods folder using the button below, close your Minecraft, and delete the old version (or delete it later if you prefer).",
