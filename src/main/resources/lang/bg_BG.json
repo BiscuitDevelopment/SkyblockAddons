@@ -68,7 +68,8 @@
     "makeBackpackInventoriesColored": "Оцветени инвентари",
     "avoidBreakingBottomSugarCane": "Избегване На Чупене На Най-Долната Захарна Трастика",
     "replaceRomanNumeralsWithNumbers": "Замени Римски цифри на предмети",
-    "changeBarColorForPotions": "Change Bar Color for Wither & Poison"
+    "changeBarColorForPotions": "Change Bar Color for Wither & Poison",
+    "craftingPatterns": "Choose Crafting Patterns"
   },
   "messages": {
     "dropConfirmation": "Хвърлете Този Предмет Отново за да Потвърдите!",
@@ -83,7 +84,8 @@
     "enchantsToExclude": "%type% Да Изключите:",
     "inventoryTypes": {
       "enchants": "Омягюосвания",
-      "reforges": "Модификации"
+      "reforges": "Модификации",
+      "crafting": "Crafting"
     },
     "newUpdateAvailable": "Имa новa версия (%version%)!",
     "deleteOldFile": "The download has finished, please open your mods folder using the button below, close your Minecraft, and delete the old version (or delete it later if you prefer).",
