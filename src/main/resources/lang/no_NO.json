@@ -69,7 +69,7 @@
     "avoidBreakingBottomSugarCane": "Unngå ødelegging av nederste sukkerrør",
     "replaceRomanNumeralsWithNumbers": "Bytt Ut Romertall på Gjenstander",
     "changeBarColorForPotions": "Bytt ut bar farge for visne og gift effekter",
-    "craftingPatterns": "Choose Crafting Patterns"
+    "craftingPatterns": "Velg utformingsmønstre"
   },
   "messages": {
     "dropConfirmation": "Slipp denne gjenstanden igjen for å bekrefte!",
@@ -85,7 +85,7 @@
     "inventoryTypes": {
       "enchants": "Enchants",
       "reforges": "Reforges",
-      "crafting": "Crafting"
+      "crafting": "Utforming"
     },
     "newUpdateAvailable": "En ny oppdatering (%version%) er ute!",
     "deleteOldFile": "Nedlastningen er ferdig, åpne opp modifikasjonsmappen ved bruk av knappen nedenfor, lukk igjen Minecraft, og slett den gamle versjonen (eller slett den senere hvis du vil).",
