@@ -43,7 +43,7 @@ public class ConfigValues {
     private Language language = Language.ENGLISH;
     private EnumUtils.BackpackStyle backpackStyle = EnumUtils.BackpackStyle.GUI;
     private EnumUtils.TextStyle textStyle = EnumUtils.TextStyle.REGULAR;
-    private Set<Feature> remoteDisabledFeatures = EnumSet.noneOf(Feature.class);
+    @SuppressWarnings("deprecation") private Set<Feature> remoteDisabledFeatures = EnumSet.of(Feature.AVOID_BREAKING_BOTTOM_SUGAR_CANE);
     private Set<Integer> lockedSlots = new HashSet<>();
 
     public ConfigValues(SkyblockAddons main, File settingsConfigFile) {
