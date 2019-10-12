@@ -68,7 +68,8 @@
     "makeBackpackInventoriesColored": "Color Biscuit Biscuit",
     "avoidBreakingBottomSugarCane": "Avoid eating sweet biscuit cane",
     "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Biscuits",
-    "changeBarColorForPotions": "Change Bar Color for Wither & Poison"
+    "changeBarColorForPotions": "Change Bar Color for Wither & Poison",
+    "craftingPatterns": "Choose Crafting Patterns"
   },
   "messages": {
     "dropConfirmation": "Throw out this biscuit again to confirm!",
@@ -83,7 +84,8 @@
     "enchantsToExclude": "%type% To Throw Away:",
     "inventoryTypes": {
       "enchants": "Bischants",
-      "reforges": "Bisforges"
+      "reforges": "Bisforges",
+      "crafting": "Crafting"
     },
     "newUpdateAvailable": "A new update (%version%) is out of the oven!",
     "deleteOldFile": "Fresh Biscuits is here! Please open your mods folder using the button below, close your Minecraft, and delete the old biscuit (or delete it later if you prefer).",
