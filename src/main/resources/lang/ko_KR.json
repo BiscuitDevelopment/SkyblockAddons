@@ -68,7 +68,8 @@
     "makeBackpackInventoriesColored": "색깔 있는 백팩 인벤토리",
     "avoidBreakingBottomSugarCane": "사탕수수 밑동 부수기 방지",
     "replaceRomanNumeralsWithNumbers": "로마숫자를 숫자로 표시",
-    "changeBarColorForPotions": "Change Bar Color for Wither & Poison"
+    "changeBarColorForPotions": "Change Bar Color for Wither & Poison",
+    "craftingPatterns": "Choose Crafting Patterns"
   },
   "messages": {
     "dropConfirmation": "아이템을 정말로 버리려면 다시 버리세요!",
@@ -83,7 +84,8 @@
     "enchantsToExclude": "제외할 %type%:",
     "inventoryTypes": {
       "enchants": "인챈트",
-      "reforges": "리포지"
+      "reforges": "리포지",
+      "crafting": "Crafting"
     },
     "newUpdateAvailable": "새로운 버전을 (%version%) 를 사용할수있습니다",
     "deleteOldFile": "다운로드가 완료되었습니다. 아래 버튼을 사용하여 mods 폴더를 열고 마인크래프트를 종료 후 이전 버전을 삭제하십시오 (원하는경우 나중에 삭제하십시오).",
