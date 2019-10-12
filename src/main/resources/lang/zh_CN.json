@@ -85,7 +85,7 @@
       "enchants": "附魔",
       "reforges": "重铸"
     },
-    "newUpdateAvailable": "新版本 %version% 可用！",
+    "newUpdateAvailable": "新版本 %version% 可用！\n\nhttps://biscuit.codes/mods/skyblockaddons/dl/",
     "deleteOldFile": "下载完成，使用下方按钮打开 mods 文件夹，关闭 Minecraft，删除旧文件。",
     "wantToViewPatchNotes": "想阅读更新内容？",
     "downloadLink": "更新链接",
@@ -103,7 +103,7 @@
     "summoningEyeFound": "召唤之眼！",
     "cancelledStemBreak": "SkyblockAddons 已阻止你破坏此作物，如果你真的想要破坏它，请使用空手。",
     "cancelledCaneBreak": "SkyblockAddons 已阻止你破坏此甘蔗。如果你真的想要破坏它，请使用其他工具。",
-    "cancelledProfileOpening": "SkyblockAddons阻止了你在持弓的时候打开他人的档案。",
+    "cancelledProfileOpening": "SkyblockAddons 已阻止你在持弓时打开玩家信息。",
     "cancelledDropping": "SkyblockAddons 已阻止你将物品栏中的稀有物品或工具丢弃。",
     "clickMoreTimes": "SkyblockAddons 已阻止你丢弃物品。如果你真的想丢弃它，请再点击%times%次。",
     "featureDisabled": "功能已禁用"
