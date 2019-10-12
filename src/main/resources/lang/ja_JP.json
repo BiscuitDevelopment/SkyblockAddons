@@ -68,7 +68,7 @@
     "makeBackpackInventoriesColored": "インベントリの色",
     "avoidBreakingBottomSugarCane": "サトウキビの根本の破壊を防止",
     "replaceRomanNumeralsWithNumbers": "エンチャントのローマ数字をアラビア数字に置き換え",
-    "changeBarColorForPotions": "Change Bar Color for Wither & Poison"
+    "changeBarColorForPotions": "ウィザーと毒状態の時にバーの色を変える"
   },
   "messages": {
     "dropConfirmation": "落としてもいいのであれば、このアイテムをもう一度ドロップしてください。",
@@ -106,6 +106,6 @@
     "cancelledProfileOpening": "SkyblockAddonsがこのプレイヤーのプロフィールを開くことを阻止しました。",
     "cancelledDropping": "SkyblockAddonsがこのアイテムを捨てることを阻止しました。",
     "clickMoreTimes": "本当に落としたい場合はもう%times%回クリック/ドロップしてください。",
-    "featureDisabled": "Feature Disabled"
+    "featureDisabled": "機能を無効化"
   }
 }
