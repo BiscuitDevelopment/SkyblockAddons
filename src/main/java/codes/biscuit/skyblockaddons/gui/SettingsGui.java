@@ -305,6 +305,11 @@ public class SettingsGui extends GuiScreen {
             x = halfWidth - (boxWidth / 2);
             y = getRowHeightSetting(row);
             buttonList.add(new ButtonToggleTitle(x, y, Message.SETTING_MAKE_BACKPACK_INVENTORIES_COLORED.getMessage(), main, Feature.MAKE_BACKPACK_INVENTORIES_COLORED));
+        } else if (setting == EnumUtils.FeatureSetting.CHANGE_BAR_COLOR_WITH_POTIONS) {
+            boxWidth = 31;
+            x = halfWidth - (boxWidth / 2);
+            y = getRowHeightSetting(row);
+            buttonList.add(new ButtonToggleTitle(x, y, Message.SETTING_CHANGE_BAR_COLOR_WITH_POTIONS.getMessage(), main, Feature.CHANGE_BAR_COLOR_FOR_POTIONS));
         } else if (setting == EnumUtils.FeatureSetting.BACKPACK_STYLE) {
             boxWidth = 140;
             x = halfWidth-(boxWidth/2);

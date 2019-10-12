@@ -10,8 +10,8 @@
     "settings": "Settings",
     "magmaBossWarning": "Magma Boss Warning",
     "itemDropConfirmation": "Item Drop Confirmation",
-    "hideSkeletonHatBones": "Hide Skeleton Helmet Bones",
-    "skeletonHatBonesBar": "Skeleton Helmet Bones Bar",
+    "hideSkeletonHatBones": "Hide Skeleton's Helmet Bones",
+    "skeletonHatBonesBar": "Skeleton's Helmet Bones Bar",
     "hideFoodAndArmor": "Hide Food & Armor Bar",
     "fullInventoryWarning": "Full Inventory Warning",
     "disableEmberRodAbility": "Disable Island Ember Rod",
@@ -68,6 +68,7 @@
     "makeBackpackInventoriesColored": "Color Inventories",
     "avoidBreakingBottomSugarCane": "Avoid Breaking Bottom Sugar Cane",
     "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Items",
+    "changeBarColorForPotions": "Change Bar Color for Wither & Poison",
     "craftingPatterns": "Crafting Patterns"
   },
   "messages": {
@@ -106,6 +107,7 @@
     "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use another tool if you'd actually like to break it.",
     "cancelledProfileOpening": "SkyblockAddons has stopped you from opening this player's profile while holding a bow.",
     "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare item or tool from your hotbar.",
-    "clickMoreTimes": "Click/drop this item %times% more times if you really want to do this."
+    "clickMoreTimes": "Click/drop this item %times% more times if you really want to do this.",
+    "featureDisabled": "Feature Disabled"
   }
 }

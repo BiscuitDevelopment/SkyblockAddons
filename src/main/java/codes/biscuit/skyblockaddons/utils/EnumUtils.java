@@ -276,7 +276,8 @@ public class EnumUtils {
 //        WARNING_TIME,
         BACKPACK_STYLE,
         SHOW_ONLY_WHEN_HOLDING_SHIFT,
-        MAKE_INVENTORY_COLORED
+        MAKE_INVENTORY_COLORED,
+        CHANGE_BAR_COLOR_WITH_POTIONS
     }
 
     public enum Merchant {

@@ -50,6 +50,7 @@
     "preventMovementOnDeath": "Prepreči Hojo Po Smrti",
     "showItemAnvilUses": "Prikaži Število Uporab na Nakovalu",
     "lockSlots": "Dovoli Zaklepanje Prostorov",
+    "lockSlot": "Lock Slot",
     "dontResetCursorInventory": "Ne Ponastavljaj Kazalca Med Inventarji",
     "summoningEyeAlert": "Opozorilo Za Summoning Oko",
     "makeEnderchestsInEndGreen": "Naredi Ender Skrinje v Endu Zelene",
@@ -66,7 +67,8 @@
     "stopDroppingSellingRareItems": "Ustavi Spuščanje/Prodajanje Redkih Stvari",
     "makeBackpackInventoriesColored": "Barvni Inventarji",
     "avoidBreakingBottomSugarCane": "Prepreči Uničenje Spodnjega Dela Sladkornega Trsa",
-    "replaceRomanNumeralsWithNumbers": "Zamenjaj Rimska Števila na Stvareh"
+    "replaceRomanNumeralsWithNumbers": "Zamenjaj Rimska Števila na Stvareh",
+    "changeBarColorForPotions": "Change Bar Color for Wither & Poison"
   },
   "messages": {
     "dropConfirmation": "Ponovno Izpusti To Stvar za Potrditev!",
@@ -103,6 +105,7 @@
     "cancelledCaneBreak": "SkyblockAddons vam je preprečil uničiti to kocko sladkornega trsa. Uporabite drugo orodje, če jo resnično želite uničiti.",
     "cancelledProfileOpening": "SkyblockAddons vam je preprečil odpiranje profila tega igralca medtem, ko držite lok.",
     "cancelledDropping": "SkyblockAddons vam je preprečil izpust te redke stvari iz svojega hotbarja.",
-    "clickMoreTimes": "Kliknite/izpustite to stvar še %times% -krat, če to res želite storiti."
+    "clickMoreTimes": "Kliknite/izpustite to stvar še %times% -krat, če to res želite storiti.",
+    "featureDisabled": "Feature Disabled"
   }
 }

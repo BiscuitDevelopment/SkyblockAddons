@@ -53,6 +53,8 @@ public class PlayerListener {
     private int timerTick = 1;
     private long lastScreenOpen = -1;
     private long lastMinionSound = -1;
+
+    private int lastSecondHealth = -1;
     private Integer healthUpdate = null;
     private long lastHealthUpdate;
 
@@ -137,11 +139,14 @@ public class PlayerListener {
                         } else {
                             manaPart = splitMessage[1];
                         }
+                        if (healthPart.contains("+")) {
+                            healthPart = healthPart.substring(0, healthPart.indexOf('+'));
+                        }
                         String[] healthSplit = main.getUtils().getNumbersOnly(main.getUtils().stripColor(healthPart)).split(Pattern.quote("/"));
                         int newHealth = Integer.parseInt(healthSplit[0]);
-                        int health = getAttribute(Attribute.HEALTH);
-                        if(newHealth != health) {
-                            healthUpdate = newHealth - health;
+                        main.getScheduler().schedule(Scheduler.CommandType.SET_LAST_SECOND_HEALTH, 1, newHealth);
+                        if (lastSecondHealth != -1 && lastSecondHealth != newHealth) {
+                            healthUpdate = newHealth - lastSecondHealth;
                             lastHealthUpdate = System.currentTimeMillis();
                         }
                         setAttribute(Attribute.HEALTH, newHealth);
@@ -262,8 +267,9 @@ public class PlayerListener {
                     EntityPlayerSP p = mc.thePlayer;
                     if (p != null) { //Reverse calculate the player's health by using the player's vanilla hearts. Also calculate the health change for the gui item.
                         int newHealth = Math.round(getAttribute(Attribute.MAX_HEALTH) * (p.getHealth() / p.getMaxHealth()));
-                        if(newHealth != getAttribute(Attribute.HEALTH)) {
-                            healthUpdate = newHealth - getAttribute(Attribute.HEALTH);
+                        main.getScheduler().schedule(Scheduler.CommandType.SET_LAST_SECOND_HEALTH, 1, newHealth);
+                        if (lastSecondHealth != -1 && lastSecondHealth != newHealth) {
+                            healthUpdate = newHealth - lastSecondHealth;
                             lastHealthUpdate = System.currentTimeMillis();
                         }
                         setAttribute(Attribute.HEALTH, newHealth);
@@ -614,5 +620,9 @@ public class PlayerListener {
 
     public Set<CoordsPair> getRecentlyLoadedChunks() {
         return recentlyLoadedChunks;
+    }
+
+    public void setLastSecondHealth(int lastSecondHealth) {
+        this.lastSecondHealth = lastSecondHealth;
     }
 }

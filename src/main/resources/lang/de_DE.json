@@ -9,7 +9,7 @@
     },
     "settings": "Einstellungen",
     "magmaBossWarning": "Magma Boss Spawn Warnung",
-    "itemDropConfirmation": "Item Auswurf Bestätigung",
+    "itemDropConfirmation": "Item Drop Bestätigung",
     "hideSkeletonHatBones": "Skelett-Helm Knochen verstecken",
     "skeletonHatBonesBar": "Skelett-Helm Knochen Leiste",
     "hideFoodAndArmor": "Hunger- und Rüstungsleiste verstecken",
@@ -50,6 +50,7 @@
     "preventMovementOnDeath": "Verhindere das Laufen nach dem Tot",
     "showItemAnvilUses": "Zeige Ambossnutzungen eines Items",
     "lockSlots": "Slots sperren erlauben",
+    "lockSlot": "Sperre slot",
     "dontResetCursorInventory": "Mauszeiger zwischen Inventaren nicht zurücksetzen",
     "summoningEyeAlert": "Summoning Eye Alarm",
     "makeEnderchestsInEndGreen": "Färbe Endertruhen im End grün",
@@ -64,9 +65,10 @@
     "warningDuration": "Warnungsdauer",
     "dontOpenProfileWithBow": "Profile nicht mit dem Bogen öffnen",
     "stopDroppingSellingRareItems": "Stoppe entfernen/verkaufen von seltenen Items",
-    "makeBackpackInventoriesColored": "Backpacks färben",
+    "makeBackpackInventoriesColored": "Rucksäcke färben",
     "avoidBreakingBottomSugarCane": "Zerstören des unteren Zuckerrohrs blockieren",
-    "replaceRomanNumeralsWithNumbers": "Ersetze Römische Nummern auf Gegenständen"
+    "replaceRomanNumeralsWithNumbers": "Ersetze Römische Nummern auf Gegenständen",
+    "changeBarColorForPotions": "Farbe der Wither & Gift Leiste ändern"
   },
   "messages": {
     "dropConfirmation": "Werfe diesen Gegenstand nochmal, um zu bestätigen!",
@@ -89,10 +91,10 @@
     "downloadLink": "UPDATE LINK",
     "downloadAutomatically": "AUTO DOWNLOAD",
     "openModFolder": "MODS ORDNER",
-    "joinTheDiscord": "BETRETE DISCORD",
+    "joinTheDiscord": "TRITT DISCORD BEI",
     "update": {
       "majorAvailable": "Ein neues wichtiges Update (%version%) ist verfügbar! Den Link für den Download findest du im Chat.",
-      "patchAvailable": "A new patch update (%version%) is available! Look in chat for download options!",
+      "patchAvailable": "Ein Neuer Patch (%version%) ist verfügbar!\nSchau im Chat für die Download Möglichkeiten!",
       "downloading": "Der Patch wird heruntergeladen! Status: %downloaded%/%total% Beachte, dass du nach dem Download die alte Datei löschen musst.",
       "failed": "Der Patch-Download ist fehlgeschlagen! Bitte lade es manuell mit dem Link im Chat herunter.",
       "downloadFinished": "Der Patch-Download wurde heruntergeladen. Er wurde als %file% gespeichert. Bitte vergesse nicht die alte Datei nach dem Schließen von Minecraft, zu löschen. Klicke auf die Nachricht im Chat um den Ordner zu öffnen."
@@ -103,6 +105,7 @@
     "cancelledCaneBreak": "SkyblockAddons hat das Abbauen von dem Zuckerrohr vermieden. Benutze ein anderes Werkzeug um es abzubauen.",
     "cancelledProfileOpening": "SkyblockAddons hat dich davon abgehalten, das Profil dieses Spielers zu öffnen, während du einen Bogen hältst.",
     "cancelledDropping": "SkyblockAddons hat dich davon abgehalten, dieses seltene Item oder Werkzeug aus deiner Hotbar zu droppen.",
-    "clickMoreTimes": "Klicke/droppe dieses Item %times% mal mehr, wenn du das wirklich tun möchtest."
+    "clickMoreTimes": "Klicke/droppe dieses Item %times% mal mehr, wenn du das wirklich tun möchtest.",
+    "featureDisabled": "Funktion deaktivieren"
   }
 }

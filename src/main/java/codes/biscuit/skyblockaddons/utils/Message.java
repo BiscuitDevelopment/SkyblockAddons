@@ -66,6 +66,7 @@ public enum Message {
     SETTING_MAKE_BACKPACK_INVENTORIES_COLORED(MessageObject.SETTING, "makeBackpackInventoriesColored"),
     @Deprecated SETTING_AVOID_BREAKING_BOTTOM_SUGAR_CANE(MessageObject.SETTING, "avoidBreakingBottomSugarCane"), // disallowed
     SETTING_REPLACE_ROMAN_NUMERALS_WITH_NUMBERS(MessageObject.SETTING, "replaceRomanNumeralsWithNumbers"),
+    SETTING_CHANGE_BAR_COLOR_WITH_POTIONS(MessageObject.SETTING, "changeBarColorForPotions"),
     SETTING_CRAFTING_PATTERNS(MessageObject.SETTING, "craftingPatterns"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.STYLE, "regular"),
@@ -98,6 +99,7 @@ public enum Message {
     MESSAGE_OPEN_MODS_FOLDER(MessageObject.MESSAGES, "openModFolder"),
     MESSAGE_JOIN_DISCORD(MessageObject.MESSAGES, "joinTheDiscord"),
     MESSAGE_DELETE_OLD_FILE(MessageObject.MESSAGES, "deleteOldFile"),
+    MESSAGE_FEATURE_DISABLED(MessageObject.MESSAGES, "featureDisabled"),
 
     @Deprecated ANCHOR_POINT_TOP_LEFT(MessageObject.ANCHOR_POINT, "topLeft"),
     @Deprecated ANCHOR_POINT_TOP_RIGHT(MessageObject.ANCHOR_POINT, "topRight"),
