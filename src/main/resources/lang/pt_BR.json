@@ -50,7 +50,7 @@
     "preventMovementOnDeath": "Impedir Movimento Após Morte",
     "showItemAnvilUses": "Mostrar Usos de Bigorna no Item",
     "lockSlots": "Permitir Trava de Slots",
-    "lockSlot": "Slot Travado",
+    "lockSlot": "Bloquear um slot",
     "dontResetCursorInventory": "Não reajustar cursor entre inventários",
     "summoningEyeAlert": "Alerta de Olhos de Invocação",
     "makeEnderchestsInEndGreen": "Tornar Baús do Fim Verdes no Fim",
