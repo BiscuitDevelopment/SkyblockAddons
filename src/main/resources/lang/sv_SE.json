@@ -68,7 +68,8 @@
     "makeBackpackInventoriesColored": "Färglägg Ryggsäcken",
     "avoidBreakingBottomSugarCane": "Undvik att förstöra botten av sockerrör",
     "replaceRomanNumeralsWithNumbers": "Ersätt romanska siffror på saker",
-    "changeBarColorForPotions": "Change Bar Color for Wither & Poison"
+    "changeBarColorForPotions": "Change Bar Color for Wither & Poison",
+    "craftingPatterns": "Choose Crafting Patterns"
   },
   "messages": {
     "dropConfirmation": "Släpp Det Här Igen För Att Bekräfta!",
@@ -83,7 +84,8 @@
     "enchantsToExclude": "%type% För Att Utesluta:",
     "inventoryTypes": {
       "enchants": "Förtrollningar",
-      "reforges": "Reforges"
+      "reforges": "Reforges",
+      "crafting": "Crafting"
     },
     "newUpdateAvailable": "En ny updatering (%version%) är tillgänligt!",
     "deleteOldFile": "Updateringen är klar, snälla öppna använd knappen nedan för att oppna mods mappen, stäng din minecraft, och Ta bort den gammla versionen( eller du kan ta bort den sen om du vill).",
