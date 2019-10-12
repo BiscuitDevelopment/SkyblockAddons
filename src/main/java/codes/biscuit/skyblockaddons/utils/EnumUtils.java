@@ -92,7 +92,7 @@ public class EnumUtils {
 
     public enum ButtonType {
         TOGGLE,
-//        COLOR,
+        //        COLOR,
         SOLID
     }
 
@@ -177,6 +177,7 @@ public class EnumUtils {
         HIGH_LEVEL("High Level"),
         FLOWER_HOUSE("Flower House"),
         CANVAS_ROOM("Canvas Room"),
+        TAVERN("Tavern"),
         // Floating Islands
         BIRCH_PARK("Birch Park"),
         SPRUCE_WOODS("Spruce Woods"),
@@ -258,23 +259,44 @@ public class EnumUtils {
     }
 
     public enum SkyblockNPC {
-        AUCTION_MASTER(17.5,71,-78.5, Location.VILLAGE, Location.AUCTION_HOUSE),
-        BANKER(20.5,71,-40.5, Location.VILLAGE, Location.BANK),
-        BAKER(34.5, 71, -44.5, Location.VILLAGE),
-        LOBBY_SELECTOR(-9,70,-79, Location.VILLAGE),
-        SIRIUS(91.5,75,176.5, Location.WILDERNESS);
+        AUCTION_MASTER(17.5,71,-78.5, false, Location.VILLAGE, Location.AUCTION_HOUSE),
+        BANKER(20.5,71,-40.5, false, Location.VILLAGE, Location.BANK),
+        BAKER(34.5, 71, -44.5, false, Location.VILLAGE),
+        LOBBY_SELECTOR(-9,70,-79, false, Location.VILLAGE),
+        LUMBER_MERCHANT(-18.5,70,-90, true, Location.VILLAGE),
+        ADVENTURER(-18.5,70,-77, true, Location.VILLAGE),
+        FISH_MERCHANT(-25.5,70,-77, true, Location.VILLAGE),
+        ARMORSMITH(-25.5,70,-90, true, Location.VILLAGE),
+        BLACKSMITH(-19.5,71,-124.5, false, Location.VILLAGE),
+        BLACKSMITH_2(-39.5,77,-299.5, false, Location.GOLD_MINE),
+        FARM_MERCHANT(-7,70,-48.5, true, Location.VILLAGE),
+        MINE_MERCHANT(-19,70,-48.5, true, Location.VILLAGE),
+        WEAPONSMITH(-19,70,-41.5, false, Location.VILLAGE),
+        BUILDER(-7,70,-41.5, true, Location.VILLAGE),
+        LIBRARIAN(17.5,71,-16.5, true, Location.VILLAGE, Location.LIBRARY),
+        MARCO(9.5,71,-14, false, Location.VILLAGE, Location.FLOWER_HOUSE),
+        ALCHEMIST(-33.5,73,-14.5, true, Location.VILLAGE),
+        PAT(-129.5,73,-98.5, true, Location.GRAVEYARD),
+        EVENT_MASTER(-61.5,71,-54.5, false, Location.COLOSSEUM, Location.VILLAGE),
+        GOLD_FORGER(-27.5,74,-294.5, true, Location.GOLD_MINE),
+        IRON_FORGER(-1.5,75,-307.5, false, Location.GOLD_MINE),
+        RUSTY(-20,78,-325.5, false, Location.GOLD_MINE),
+        MADDOX_THE_SLAYER(-87,66,-70, false, Location.VILLAGE, Location.TAVERN),
+        SIRIUS(91.5,75,176.5, false, Location.WILDERNESS);
 
-        private final int hideRadius = 3;
+        private final int hideRadius = 4;
         private final AxisAlignedBB hideArea;
         private double x;
         private double y;
         private double z;
+        private boolean isMerchant;
         Set<Location> locations;
 
-        SkyblockNPC(double x, double y, double z, Location... locations) {
+        SkyblockNPC(double x, double y, double z, boolean isMerchant, Location... locations) {
             this.x = x;
             this.y = y;
             this.z = z;
+            this.isMerchant = isMerchant;
             this.hideArea = new AxisAlignedBB(x - hideRadius, y - hideRadius, z - hideRadius, x + hideRadius, y + hideRadius, z + hideRadius);
             this.locations = EnumSet.copyOf(Arrays.asList(locations));
         }
@@ -285,7 +307,6 @@ public class EnumUtils {
 
         public boolean isNearEntity(Entity entity) {
             Utils utils = SkyblockAddons.getInstance().getUtils();
-
             if (this.locations.contains(utils.getLocation())) {
                 double x = entity.posX;
                 double y = entity.posY;
@@ -293,7 +314,6 @@ public class EnumUtils {
 
                 return this.hideArea.contains(new Vec3d(x, y, z)) && (this.x != x || this.y != y || this.z != z) && !utils.isNPC(entity);
             }
-
             return false;
         }
 
@@ -302,8 +322,18 @@ public class EnumUtils {
                 if (npc.isNearEntity(entity))
                     return true;
             }
-
             return false;
+        }
+
+        public static boolean isMerchant(String name) {// inventory
+            for (SkyblockNPC npc : values()) {
+                if (npc.isMerchant) {
+                    if (name.replaceAll(" ", "_").equalsIgnoreCase(npc.name())) {
+                        return true;
+                    }
+                }
+            }
+            return name.contains("Merchant");
         }
 
     }
@@ -321,32 +351,6 @@ public class EnumUtils {
         BACKPACK_STYLE,
         SHOW_ONLY_WHEN_HOLDING_SHIFT,
         MAKE_INVENTORY_COLORED
-    }
-
-    public enum Merchant {
-
-        ADVENTURER("Adventurer"),
-        BUILDER("Builder"),
-        WEAPONSMITH("Weaponsmith"),
-        ARMORSMITH("Armorsmith"),
-        GOLD_FORGER("Gold Forger"),
-        IRON_FORGER("Iron Forger");
-
-        private String name;
-
-        Merchant(String name) {
-            this.name = name;
-        }
-
-        public static boolean isMerchant(String name) {
-            for (Merchant merchant : values()) {
-                if (name.equals(merchant.name)) {
-                    return true;
-                }
-            }
-            return name.contains("Merchant");
-        }
-
     }
 
     public enum FeatureCredit {
