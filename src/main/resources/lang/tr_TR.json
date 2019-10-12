@@ -68,7 +68,8 @@
     "makeBackpackInventoriesColored": "Envanter Renkleri",
     "avoidBreakingBottomSugarCane": "Şeker Kamışının Altını Kırmayı Engelle",
     "replaceRomanNumeralsWithNumbers": "Eşyalardaki Romen Rakamlarını Değiştir",
-    "changeBarColorForPotions": "Change Bar Color for Wither & Poison"
+    "changeBarColorForPotions": "Change Bar Color for Wither & Poison",
+    "craftingPatterns": "Choose Crafting Patterns"
   },
   "messages": {
     "dropConfirmation": "Eşyayı düşürmeyi onaylamak için düşürme tuşuna bir daha bas!",
@@ -83,7 +84,8 @@
     "enchantsToExclude": "İstenmeyen %type% :",
     "inventoryTypes": {
       "enchants": "Büyüler",
-      "reforges": "Reforge'lar"
+      "reforges": "Reforge'lar",
+      "crafting": "Crafting"
     },
     "newUpdateAvailable": "Yeni bir sürüm (%version%) mevcut!",
     "deleteOldFile": "İndirme bitirildi, lütfen aşağıdaki düğmeye basarak mods klasörünü açtıktan sonra Minecraft'ı kapatıp eksi sürümü silin(veya sonradan silebilirsiniz).",
