@@ -68,7 +68,8 @@
     "makeBackpackInventoriesColored": "Obojani Inventari",
     "avoidBreakingBottomSugarCane": "Zaustavi Prijelom Dna Šećerne Trske",
     "replaceRomanNumeralsWithNumbers": "Zamijeni Rimske Brojeve na Stvarima",
-    "changeBarColorForPotions": "Change Bar Color for Wither & Poison"
+    "changeBarColorForPotions": "Change Bar Color for Wither & Poison",
+    "craftingPatterns": "Choose Crafting Patterns"
   },
   "messages": {
     "dropConfirmation": "Opet baci ovu stvar za konfirmaciju!",
@@ -83,7 +84,8 @@
     "enchantsToExclude": "%type% Da Odstraniti:",
     "inventoryTypes": {
       "enchants": "Čarolije",
-      "reforges": "Reforge-ovi"
+      "reforges": "Reforge-ovi",
+      "crafting": "Crafting"
     },
     "newUpdateAvailable": "A new update (%version%) is available!",
     "deleteOldFile": "The download has finished, please open your mods folder using the button below, close your Minecraft, and delete the old version (or delete it later if you prefer).",
