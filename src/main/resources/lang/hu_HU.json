@@ -68,7 +68,8 @@
     "makeBackpackInventoriesColored": "Színes eszköztárak",
     "avoidBreakingBottomSugarCane": "Alsó cukornád kiütésének elkerülése",
     "replaceRomanNumeralsWithNumbers": "Római számok kicserélése a tárgyakon",
-    "changeBarColorForPotions": "Change Bar Color for Wither & Poison"
+    "changeBarColorForPotions": "Change Bar Color for Wither & Poison",
+    "craftingPatterns": "Choose Crafting Patterns"
   },
   "messages": {
     "dropConfirmation": "Dobd el ezt a tárgyat újra, hogy megerősítsd!",
@@ -83,7 +84,8 @@
     "enchantsToExclude": "%type% kihagyása:",
     "inventoryTypes": {
       "enchants": "Enchantok",
-      "reforges": "Reforgeok"
+      "reforges": "Reforgeok",
+      "crafting": "Crafting"
     },
     "newUpdateAvailable": "Egy új frissítés (%version%) érhető el!",
     "deleteOldFile": "A letöltés befejeződött, nyisd meg a mods mappádat az alsó gomb segítségével, zárd be a Minecraft-ot és töröld a régi verzióját a mod-nak \n(ezt később is megteheted).",
