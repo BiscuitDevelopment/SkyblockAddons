@@ -68,7 +68,8 @@
     "makeBackpackInventoriesColored": "Vybarvit inventáře",
     "avoidBreakingBottomSugarCane": "Zabránění rozbití spodní vrstvy cukrové třtiny",
     "replaceRomanNumeralsWithNumbers": "Nahrazení římských číslic na předmětech",
-    "changeBarColorForPotions": "Change Bar Color for Wither & Poison"
+    "changeBarColorForPotions": "Change Bar Color for Wither & Poison",
+    "craftingPatterns": "Choose Crafting Patterns"
   },
   "messages": {
     "dropConfirmation": "Vyhoď tento item pro vyhození!",
@@ -83,7 +84,8 @@
     "enchantsToExclude": "%type% Vyloučit:",
     "inventoryTypes": {
       "enchants": "Očarování",
-      "reforges": "Překování"
+      "reforges": "Překování",
+      "crafting": "Crafting"
     },
     "newUpdateAvailable": "Nová aktualizace (%version%) je připravena!",
     "deleteOldFile": "Stahování skočilo, prosím otevři svoji složku mods pomocí tlačítka dole, zavři minecraft, a smaž starou verzi(nebo ji smaž potom pokud chceš).",
