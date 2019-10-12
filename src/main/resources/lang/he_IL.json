@@ -68,7 +68,8 @@
     "makeBackpackInventoriesColored": "צבע טיקים",
     "avoidBreakingBottomSugarCane": "מנע הריסת שוגר קיין תחתון",
     "replaceRomanNumeralsWithNumbers": "החלף מספרים רומאים בחפצים",
-    "changeBarColorForPotions": "Change Bar Color for Wither & Poison"
+    "changeBarColorForPotions": "Change Bar Color for Wither & Poison",
+    "craftingPatterns": "Choose Crafting Patterns"
   },
   "messages": {
     "dropConfirmation": "זרוק פריט זה שוב לאישור!",
@@ -83,7 +84,8 @@
     "enchantsToExclude": "%type% לא לכלול:",
     "inventoryTypes": {
       "enchants": "כישופים",
-      "reforges": "שדרוגים"
+      "reforges": "שדרוגים",
+      "crafting": "Crafting"
     },
     "newUpdateAvailable": "גירסה חדשה (%version%) ניתנת להורדה!",
     "deleteOldFile": "ההורדה הושלמה, בבקשה תפתח את תקיית המודים שלך בעזרת הכפתור למטה, תסגור את מיינקראפט, ומחק את הגרסה הישנה(או שתמחק אחר כך אם אתה מעדיף).",
