@@ -71,7 +71,7 @@
     "changeBarColorForPotions": "समायोजन -> औषधि के लिए बार रंग बदलें"
   },
   "messages": {
-    "dropConfirmation": "Drop this item again to confirm!",
+    "dropConfirmation": "संदेशों -> ड्रॉप क चेतावनी",
     "magmaBossWarning": "मैग्मा क्यूब बॉस!",
     "fullInventory": "पूरी इन्वेंटरी",
     "labymod": "Labymod Users: Hide Food, Armor, and Health Bar, is incompatible.",
