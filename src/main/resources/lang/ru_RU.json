@@ -69,7 +69,7 @@
     "avoidBreakingBottomSugarCane": "Не ломать стебель тростника",
     "replaceRomanNumeralsWithNumbers": "Заменять римские цифры на арабские",
     "changeBarColorForPotions": "Change Bar Color for Wither & Poison",
-    "craftingPatterns": "Choose Crafting Patterns"
+    "craftingPatterns": "Выбрать шаблоны создания"
   },
   "messages": {
     "dropConfirmation": "Выбросите предмет ещё раз для подтверждения!",
@@ -85,7 +85,7 @@
     "inventoryTypes": {
       "enchants": "Зачарования",
       "reforges": "Перековки",
-      "crafting": "Crafting"
+      "crafting": "Создание"
     },
     "newUpdateAvailable": "Доступно новое обновление (%version%)!",
     "deleteOldFile": "Загрузка завершена. Пожалуйста, откройте папку модов, используя кнопку ниже, закройте Minecraft и удалите старую версию (или удалите её позже).",
@@ -108,6 +108,6 @@
     "cancelledProfileOpening": "SkyBlockAddons остановил вас от открытия профиля игрока с луком в руках.",
     "cancelledDropping": "SkyBlockAddons предотвратил попытку выбросить этот предмет из панели быстрого доступа.",
     "clickMoreTimes": "Нажмите/выберите этот предмет еще %times% раз, если вы действительно хотите сделать это.",
-    "featureDisabled": "Feature Disabled"
+    "featureDisabled": "Функция отключена"
   }
 }
