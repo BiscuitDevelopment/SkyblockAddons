@@ -68,7 +68,7 @@
     "makeBackpackInventoriesColored": "Rucksäcke färben",
     "avoidBreakingBottomSugarCane": "Zerstören des unteren Zuckerrohrs blockieren",
     "replaceRomanNumeralsWithNumbers": "Ersetze Römische Nummern auf Gegenständen",
-    "changeBarColorForPotions": "Farbe der Wither & Gift Leiste ändern",
+    "changeBarColorForPotions": "Farbe der Leiste bei Wither und Gift ändern",
     "craftingPatterns": "Wähle Herstellung-Muster"
   },
   "messages": {
@@ -108,6 +108,6 @@
     "cancelledProfileOpening": "SkyblockAddons hat dich davon abgehalten, das Profil dieses Spielers zu öffnen, während du einen Bogen hältst.",
     "cancelledDropping": "SkyblockAddons hat dich davon abgehalten, dieses seltene Item oder Werkzeug aus deiner Hotbar zu droppen.",
     "clickMoreTimes": "Klicke/droppe dieses Item %times% mal mehr, wenn du das wirklich tun möchtest.",
-    "featureDisabled": "Funktion deaktivieren"
+    "featureDisabled": "Funktion deaktiviert"
   }
 }
