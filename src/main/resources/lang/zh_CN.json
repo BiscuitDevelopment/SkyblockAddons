@@ -69,7 +69,7 @@
     "avoidBreakingBottomSugarCane": "防止破坏底部甘蔗",
     "replaceRomanNumeralsWithNumbers": "替换罗马数字为阿拉伯数字",
     "changeBarColorForPotions": "更改药水条颜色",
-    "craftingPatterns": "Choose Crafting Patterns"
+    "craftingPatterns": "选择合成样式"
   },
   "messages": {
     "dropConfirmation": "再次丢弃此物品以确认!",
@@ -85,7 +85,7 @@
     "inventoryTypes": {
       "enchants": "附魔",
       "reforges": "重铸",
-      "crafting": "Crafting"
+      "crafting": "合成"
     },
     "newUpdateAvailable": "新版本 %version% 现已上线！\n\nhttps://biscuit.codes/mods/skyblockaddons/dl/",
     "deleteOldFile": "下载完成，使用下方按钮打开 mods 文件夹，关闭 Minecraft，删除旧文件。",
