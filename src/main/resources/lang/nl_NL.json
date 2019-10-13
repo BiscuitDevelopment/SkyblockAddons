@@ -10,7 +10,7 @@
     "settings": "Instellingen",
     "magmaBossWarning": "Magma Baas Waarschuwing",
     "itemDropConfirmation": "Object laten vallen Bevestiging",
-    "hideSkeletonHatBones": "Verstop Skelet Hoed Botten",
+    "hideSkeletonHatBones": "Verberg Botten Skelet Helm",
     "skeletonHatBonesBar": "Skelet Helm Botten Balk",
     "hideFoodAndArmor": "Verberg Voedsel & Harnas Balk",
     "fullInventoryWarning": "Volle Inventaris Waarschuwing",
@@ -85,7 +85,7 @@
     "inventoryTypes": {
       "enchants": "Betoveringen",
       "reforges": "Omsmedingen",
-      "crafting": "Vervaardiging"
+      "crafting": "Maken"
     },
     "newUpdateAvailable": "Een nieuwe update (%version%) is beschikbaar!",
     "deleteOldFile": "De download is voltooid, open uw mods map met behulp van de onderstaande knop, sluit uw Minecraft en verwijder de oude versie (of verwijder het later als u wilt).",
