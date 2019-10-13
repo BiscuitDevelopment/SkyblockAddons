@@ -69,7 +69,7 @@
     "avoidBreakingBottomSugarCane": "Undgå at bryde sukkerrøret",
     "replaceRomanNumeralsWithNumbers": "Udskift romertal på poster",
     "changeBarColorForPotions": "Ændre bar farve for wither og gift",
-    "craftingPatterns": "Choose Crafting Patterns"
+    "craftingPatterns": "Vælg bygge mønster"
   },
   "messages": {
     "dropConfirmation": "Slip denne vare igen for at bekræfte!",
@@ -85,7 +85,7 @@
     "inventoryTypes": {
       "enchants": "Fortryller",
       "reforges": "Reforges",
-      "crafting": "Laver"
+      "crafting": "Bygger"
     },
     "newUpdateAvailable": "En ny opdatering (%version%) er klar!",
     "deleteOldFile": "Overførslen er færdig, åbn din mods mappe ved brug af knappen nedenfor, luk Minecraft, og slet den gamle version (eller slet den senere hvis du fortrækker det).",
