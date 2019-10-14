@@ -280,7 +280,7 @@ public class EnumUtils {
         EVENT_MASTER(-61.5,71,-54.5, false, Location.COLOSSEUM, Location.VILLAGE),
         GOLD_FORGER(-27.5,74,-294.5, true, Location.GOLD_MINE),
         IRON_FORGER(-1.5,75,-307.5, false, Location.GOLD_MINE),
-        RUSTY(-20,78,-325.5, false, Location.GOLD_MINE),
+        RUSTY(-20,78,-326, false, Location.GOLD_MINE),
         MADDOX_THE_SLAYER(-87,66,-70, false, Location.VILLAGE, Location.TAVERN),
         SIRIUS(91.5,75,176.5, false, Location.WILDERNESS);
 
