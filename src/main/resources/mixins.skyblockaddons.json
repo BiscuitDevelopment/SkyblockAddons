@@ -1,0 +1,22 @@
+{
+  "package": "codes.biscuit.skyblockaddons.mixins",
+  "refmap": "mixins.skyblockaddons.refmap.json",
+  "compatibilityLevel": "JAVA_8",
+  "verbose": true,
+  "mixins": [
+    "MixinEntityPlayerSP",
+    "MixinEntityRenderer",
+    "MixinGuiChest",
+    "MixinGuiContainer",
+    "MixinGuiInventory",
+    "MixinGuiScreen",
+    "MixinMouseHelper",
+    "MixinNetHandlerPlayClient",
+    "MixinPlayerControllerMP",
+    "MixinRenderEndermanEnderChest",
+    "MixinRenderLivingEntity",
+    "MixinRenderManager",
+    "MixinSoundManager",
+    "MixinTileEntityEnderChestRenderer"
+  ]
+}
