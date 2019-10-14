@@ -336,7 +336,7 @@ public class Utils {
                 BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
                 String currentLine;
                 Set<Feature> disabledFeatures = main.getConfigValues().getRemoteDisabledFeatures();
-                while ((currentLine = reader.readLine()) != null) { //test
+                while ((currentLine = reader.readLine()) != null) {
                     String[] splitLine = currentLine.split(Pattern.quote("|"));
                     if (!currentLine.startsWith("all|")) {
                         if (!SkyblockAddons.VERSION.equals(splitLine[0])) {

@@ -368,7 +368,6 @@ public class ConfigValues {
     }
 
     private void tryPullingLanguageOnline(Language language) {
-        if (main.getUtils().isDevEnviroment()) return; // it makes all my new entries disappear lol
         FMLLog.info("[SkyblockAddons] Attempting to pull updated language files from online.");
         try {
             URL url = new URL("https://raw.githubusercontent.com/biscuut/SkyblockAddons/master/src/main/resources/lang/" + language.getPath() + ".json");
@@ -386,10 +385,32 @@ public class ConfigValues {
                 }
             }
             connection.disconnect();
-            languageConfig = new Gson().fromJson(response.toString(), JsonObject.class);
+            JsonObject onlineMessages = new Gson().fromJson(response.toString(), JsonObject.class);
+            mergeLanguageJsonObject(onlineMessages, languageConfig);
         } catch (JsonParseException | IllegalStateException | IOException ex) {
             ex.printStackTrace();
             System.out.println("SkyblockAddons: There was an error loading the language file online");
+        }
+    }
+
+    /**
+     * This is used to merge in the online language entries into the existing ones.
+     * Using this method rather than an overwrite allows new entries in development to still exist.
+     *
+     * @param jsonObject The object to be merged (online entries).
+     * @param targetObject The object to me merged in to (local entries).
+     */
+    private void mergeLanguageJsonObject(JsonObject jsonObject, JsonObject targetObject) {
+        for (Map.Entry<String, JsonElement> entry : targetObject.entrySet()) {
+            String memberName = entry.getKey();
+            JsonElement value = entry.getValue();
+            if (jsonObject.has(memberName)) {
+                if (value instanceof JsonObject) {
+                    mergeLanguageJsonObject(jsonObject.getAsJsonObject(memberName), (JsonObject)value);
+                } else {
+                    targetObject.add(memberName, value);
+                }
+            }
         }
     }
 
