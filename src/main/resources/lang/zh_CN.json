@@ -10,7 +10,7 @@
     "settings": "设定",
     "magmaBossWarning": "岩浆怪 Boss 警告",
     "itemDropConfirmation": "确认丢弃物品",
-    "hideSkeletonHatBones": "隐藏骷髅头盔骨头屏障",
+    "hideSkeletonHatBones": "隐藏骷髅的头盔骨头",
     "skeletonHatBonesBar": "骷髅头盔可抵挡攻击次数",
     "hideFoodAndArmor": "隐藏饱食度 & 盔甲值",
     "fullInventoryWarning": "背包空间不足警报",
@@ -107,7 +107,7 @@
     "cancelledCaneBreak": "SkyblockAddons 已阻止你破坏此甘蔗。如果你真的想要破坏它，请使用其他工具。",
     "cancelledProfileOpening": "SkyblockAddons 已阻止你持弓打开玩家信息。",
     "cancelledDropping": "SkyblockAddons 已阻止你将物品栏中的稀有物品或工具丢弃。",
-    "clickMoreTimes": "SkyblockAddons 已阻止你丢弃物品。如果你真的想丢弃它，请再点击%times%次。",
+    "clickMoreTimes": "SkyblockAddons 已阻止你售出物品。如果你真的想卖掉它，请再点击 %times% 次。",
     "featureDisabled": "功能已禁用"
   }
 }
