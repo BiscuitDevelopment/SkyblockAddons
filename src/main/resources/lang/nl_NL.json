@@ -50,6 +50,7 @@
     "preventMovementOnDeath": "Stop het Bewegen Na het Doodgaan",
     "showItemAnvilUses": "Toon Aantal keren Item In Aambeeld Gebruikt",
     "lockSlots": "Slots Vergrendelen toestaan",
+    "lockSlot": "Vergrendel Vakje",
     "dontResetCursorInventory": "Cursor niet resetten tussen Inventarissen",
     "summoningEyeAlert": "Oproepend oog Alarm",
     "makeEnderchestsInEndGreen": "Maak Enderchests in de End Groen",
@@ -66,7 +67,12 @@
     "stopDroppingSellingRareItems": "Voorkom het Weggooien/Verkopen van Zeldzame Items",
     "makeBackpackInventoriesColored": "Gekleurde Inventarissen",
     "avoidBreakingBottomSugarCane": "Vermijd het breken van onderste suikerriet",
-    "replaceRomanNumeralsWithNumbers": "Vervang Romeinse Nummers op Items"
+    "replaceRomanNumeralsWithNumbers": "Vervang Romeinse Nummers op Items",
+    "changeBarColorForPotions": "Verander Kleur Balk voor Verdorring & Gif",
+    "craftingPatterns": "Kies Crafting Patroon",
+    "soundIndicatorForFishing": "Sound Indicator for Fishing",
+    "avoidBlinkingNightVision": "Avoid Blinking Night Vision Potion",
+    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings"
   },
   "messages": {
     "dropConfirmation": "Laat dit object opnieuw vallen om te Bevestigen!",
@@ -81,7 +87,8 @@
     "enchantsToExclude": "%type% Om Te Negeren:",
     "inventoryTypes": {
       "enchants": "Betoveringen",
-      "reforges": "Omsmedingen"
+      "reforges": "Omsmedingen",
+      "crafting": "Maken"
     },
     "newUpdateAvailable": "Een nieuwe update (%version%) is beschikbaar!",
     "deleteOldFile": "De download is voltooid, open uw mods map met behulp van de onderstaande knop, sluit uw Minecraft en verwijder de oude versie (of verwijder het later als u wilt).",
@@ -92,7 +99,7 @@
     "joinTheDiscord": "JOIN DISCORD",
     "update": {
       "majorAvailable": "Een nieuwe grote update (%version%) is beschikbaar! De link voor de download kan worden gevonden in de chat.",
-      "patchAvailable": "A new patch update (%version%) is available! Look in chat for download options!",
+      "patchAvailable": "Een nieuwe patch update (%version%) is beschikbaar! Kijk in de chat voor download opties!",
       "downloading": "De patch is aan het downloaden! Status: %downloaded%/%total% Let op dat u het oude bestand moet verwijderen nadat de download is voltooid.",
       "failed": "De patch download is mislukt! Download het handmatig met behulp van de link in de chat.",
       "downloadFinished": "De patch is klaar met downloaden. Het is opgeslagen als %file%. Vergeet niet het oude bestand te verwijderen nadat je Minecraft hebt gesloten. Klik op het bericht in de chat om de map te openen."
@@ -103,6 +110,7 @@
     "cancelledCaneBreak": "SkyblockAddons heeft je ervan weerhouden deze suikerriet te breken. Gebruik iets anders als je het wilt breken.",
     "cancelledProfileOpening": "SkyblockAddons heeft je ervan weerhouden het profiel van deze speler te openen terwijl je een boog vast hebt.",
     "cancelledDropping": "SkyblockAddons heeft je ervan weerhouden dit zeldzame item of gereedschap uit je hotbar te gooien.",
-    "clickMoreTimes": "Klik/gooi dit item %times% keer als je dit echt wilt doen."
+    "clickMoreTimes": "Klik/gooi dit item %times% keer als je dit echt wilt doen.",
+    "featureDisabled": "Functie uitgeschakeld"
   }
 }

@@ -1,7 +1,6 @@
 package codes.biscuit.skyblockaddons.mixins;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.Feature;
 import codes.biscuit.skyblockaddons.utils.Message;
 import net.minecraft.block.Block;
@@ -50,25 +49,9 @@ public class MixinPlayerControllerMP {
                     main.getUtils().sendMessage(main.getConfigValues().getColor(Feature.AVOID_BREAKING_STEMS).getChatFormatting()+Message.MESSAGE_CANCELLED_STEM_BREAK.getMessage());
                 }
                 cir.setReturnValue(false);
-                return;
-            }
-        }
-        if (main.getConfigValues().isEnabled(Feature.AVOID_BREAKING_BOTTOM_SUGAR_CANE) && main.getUtils().getLocation() == EnumUtils.Location.ISLAND
-                && (block.equals(Blocks.reeds) && mc.theWorld.getBlockState(loc.down()).getBlock() != Blocks.reeds)) {
-            if (heldItem == null || heldItem.getItem().equals(Items.reeds) || heldItem.getItem().equals(Items.diamond_hoe)
-                    || heldItem.getItem().equals(Items.iron_hoe) || heldItem.getItem().equals(Items.golden_hoe) || heldItem.getItem().equals(Items.stone_hoe)
-                    || heldItem.getItem().equals(Items.wooden_hoe)) {
-                if (System.currentTimeMillis() - lastStemMessage > 20000) {
-                    lastStemMessage = System.currentTimeMillis();
-                    main.getUtils().sendMessage(main.getConfigValues().getColor(Feature.AVOID_BREAKING_BOTTOM_SUGAR_CANE).getChatFormatting() + Message.MESSAGE_CANCELLED_CANE_BREAK.getMessage());
-                }
-                cir.setReturnValue(false);
-                return;
-            }
-        }
-        if (main.getConfigValues().isEnabled(Feature.AVOID_BREAKING_LOG_BEFORE_JUNGLE_AXE_COOLDOWN_ENDS)) {
-            if (heldItem != null && heldItem.getDisplayName().contains("Jungle Axe") && (block.equals(Blocks.log) || block.equals(Blocks.log2))) {
-                if (this.lastLogBroken + 1500l > System.currentTimeMillis()) {
+            } else if (main.getConfigValues().isEnabled(Feature.AVOID_BREAKING_LOG_BEFORE_JUNGLE_AXE_COOLDOWN_ENDS) && heldItem.getDisplayName().contains("Jungle Axe") && 
+                       (block.equals(Blocks.log) || block.equals(Blocks.log2))) {
+                if (lastLogBroken + 15000 > System.currentTimeMillis()) {
                     cir.setReturnValue(false);
                 }
             }
@@ -102,10 +85,10 @@ public class MixinPlayerControllerMP {
 
     private void checkIfShouldSendPacket(NetHandlerPlayClient netHandlerPlayClient, Packet p_147297_1_) {
         SkyblockAddons main = SkyblockAddons.getInstance();
-        if (main.getConfigValues().isEnabled(Feature.DONT_OPEN_PROFILES_WITH_BOW)) {
+        if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.DONT_OPEN_PROFILES_WITH_BOW)) {
             Minecraft mc = Minecraft.getMinecraft();
             Entity entityIn = mc.objectMouseOver.entityHit;
-            if (entityIn instanceof EntityOtherPlayerMP && !main.getUtils().isNPC(entityIn)) {
+            if (entityIn instanceof EntityOtherPlayerMP && main.getUtils().isNotNPC(entityIn)) {
                 ItemStack item = mc.thePlayer.inventory.getCurrentItem();
                 ItemStack itemInUse = mc.thePlayer.getItemInUse();
                 if ((item != null && item.getItem() != null && item.getItem().equals(Items.bow)) ||
@@ -126,7 +109,7 @@ public class MixinPlayerControllerMP {
      * Cancels clicking a locked inventory slot, even from other mods
      */
     @Inject(method = "windowClick", at = @At("HEAD"), locals = LocalCapture.CAPTURE_FAILSOFT, cancellable = true)
-    public void onWindowClick(int windowId, int slotNum, int clickButton, int clickModifier, EntityPlayer player, CallbackInfoReturnable<ItemStack> cir) {
+    private void onWindowClick(int windowId, int slotNum, int clickButton, int clickModifier, EntityPlayer player, CallbackInfoReturnable<ItemStack> cir) {
         SkyblockAddons main = SkyblockAddons.getInstance();
         if (player != null && player.openContainer != null) {
             slotNum += main.getInventoryUtils().getSlotDifference(player.openContainer);

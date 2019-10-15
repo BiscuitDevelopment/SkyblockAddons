@@ -4,14 +4,14 @@
     "tab": {
       "features": "Özellikler",
       "fixes": "Düzeltmeler",
-      "guiFeatures": "Arayüzü Özellikleri",
+      "guiFeatures": "Arayüz Özellikleri",
       "generalSettings": "Genel Ayarlar"
     },
     "settings": "Ayarlar",
     "magmaBossWarning": "Magma Boss için Uyarı",
     "itemDropConfirmation": "Eşya Atarken Onay",
-    "hideSkeletonHatBones": "İskelet Kaskının Kemiklerini Sakla",
-    "skeletonHatBonesBar": "İskelet Kaskı Kemikleri Göstergesi",
+    "hideSkeletonHatBones": "Skeleton Helmet'in Kemiklerini Sakla",
+    "skeletonHatBonesBar": "Skeleton Helmet Kemikleri Göstergesi",
     "hideFoodAndArmor": "Açlık ve Defans Göstergelerini Sakla",
     "fullInventoryWarning": "Envanter Dolunca Uyarı",
     "disableEmberRodAbility": "Adada Ember Rod Özelliğini Kapat",
@@ -21,7 +21,7 @@
     "hideDurability": "Eşyaların Dayanıklılığını Sakla",
     "showEnchantmentsReforges": "Büyü ve Reforge'lar",
     "minionStopWarning": "\"Minyon Erişemiyor\" Uyarısı",
-    "hideAuctionHousePlayers": "Önemli NPC'lerin yanında Oyuncuları gizle",
+    "hideAuctionHousePlayers": "Önemli NPC'lerin yakınındaki oyuncuları gizle",
     "backpackStyle": "Sırt Çantası Tipi: %style%",
     "backpackStyles": {
       "regular": "Sıradan",
@@ -50,7 +50,8 @@
     "preventMovementOnDeath": "Öldükten Sonra Yürümeyi Engelle",
     "showItemAnvilUses": "Örste İşlenme Sayısını Göster",
     "lockSlots": "Slotları Kilitlemeye İzin Ver",
-    "dontResetCursorInventory": "Envantörler arası fare imlecini sıfırlama",
+    "lockSlot": "Slot kilitleme",
+    "dontResetCursorInventory": "Envanterler arasında fare imlecini sıfırlama",
     "summoningEyeAlert": "Summoning Eye Uyarısı",
     "makeEnderchestsInEndGreen": "End'deki Enderchestleri Yeşil Yap",
     "changeColor": "Rengi değiştir",
@@ -62,11 +63,16 @@
       "two": "Stil 2"
     },
     "warningDuration": "Uyarı Süresi",
-    "dontOpenProfileWithBow": "Yay ile Profil Açamama",
-    "stopDroppingSellingRareItems": "Nadir Eşyaları Düşürmeyi/Satmayı Önler",
+    "dontOpenProfileWithBow": "Yay tutulduğunda ile profil açama",
+    "stopDroppingSellingRareItems": "Nadir Eşyaları Düşürmeyi/Satmayı Önle",
     "makeBackpackInventoriesColored": "Envanter Renkleri",
     "avoidBreakingBottomSugarCane": "Şeker Kamışının Altını Kırmayı Engelle",
-    "replaceRomanNumeralsWithNumbers": "Eşyalardaki Romen Rakamlarını Değiştir"
+    "replaceRomanNumeralsWithNumbers": "Eşyalardaki Romen Rakamlarını Değiştir",
+    "changeBarColorForPotions": "Change Bar Color for Wither & Poison",
+    "craftingPatterns": "Choose Crafting Patterns",
+    "soundIndicatorForFishing": "Sound Indicator for Fishing",
+    "avoidBlinkingNightVision": "Avoid Blinking Night Vision Potion",
+    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings"
   },
   "messages": {
     "dropConfirmation": "Eşyayı düşürmeyi onaylamak için düşürme tuşuna bir daha bas!",
@@ -81,7 +87,8 @@
     "enchantsToExclude": "İstenmeyen %type% :",
     "inventoryTypes": {
       "enchants": "Büyüler",
-      "reforges": "Reforge'lar"
+      "reforges": "Reforge'lar",
+      "crafting": "Crafting"
     },
     "newUpdateAvailable": "Yeni bir sürüm (%version%) mevcut!",
     "deleteOldFile": "İndirme bitirildi, lütfen aşağıdaki düğmeye basarak mods klasörünü açtıktan sonra Minecraft'ı kapatıp eksi sürümü silin(veya sonradan silebilirsiniz).",
@@ -92,17 +99,18 @@
     "joinTheDiscord": "DISCORD'A KATILIN",
     "update": {
       "majorAvailable": "Yeni bir sürüm (%version%) mevcut! İndirme linkini sohbette bulabilirsin.",
-      "patchAvailable": "A new patch update (%version%) is available! Look in chat for download options!",
+      "patchAvailable": "Yeni bir versiyon (%version%) mevcut! İndirme seçenekleri için sohbet'e bak!",
       "downloading": "Güncelleştirme iniyor! Durun: %downloaded%/%total% Lütfen indirme bittikten sonra eski dosyayı silmeyi unutmayın.",
       "failed": "Güncellemeyi indirmek başarısız oldu! Lütfen sohbetteki linki kullanarak kendiniz indirin.",
-      "downloadFinished": "Güncelleme başarıyla indirildi. Güncelleme %file% olarak kaydedildi. Lütfen Minecraft'ınızı kapattıktan sonra eski dosyayı silmeyi unutmayın. \nSohbetteki mesaja tıklayıp dosyayı açın."
+      "downloadFinished": "Güncelleme başarıyla indirildi. Güncelleme %file% olarak kaydedildi. Lütfen Minecraft'ınızı kapattıktan sonra eski dosyayı silmeyi unutmayın. \nSohbetteki mesaja tıklayıp dosyayı açabilirsiniz."
     },
     "slotLocked": "Bu slot kilitli!",
     "summoningEyeFound": "Summoning Eye!",
     "cancelledStemBreak": "SkyblockAddons sizi bu kökü kırmanızı engelledi. Gerçekten kırmak istiyorsanız çıplak elinizi kullanın.",
     "cancelledCaneBreak": "SkyblockAddons seni bu şeker kamışı bloğunu kırmanızı engelledi. Eğer şeker kamışını kırmak istiyorsanız başka bir alet kullanın.",
-    "cancelledProfileOpening": "SkyblockAddons elinde yay olduğundan bu oyuncunun profilini açmanı engelledi.",
+    "cancelledProfileOpening": "SkyblockAddons elinizde yay olduğundan bu oyuncunun profilini açmanı engelledi.",
     "cancelledDropping": "SkyblockAddons bu değerli eşyanızı yere atmanızı engelledi.",
-    "clickMoreTimes": "Eğer gerçekten eşyayı yere atmak istiyorsanız %times% kez eşyaya tıklayın."
+    "clickMoreTimes": "Eğer gerçekten eşyayı yere atmak istiyorsanız %times% kez eşyaya tıklayın.",
+    "featureDisabled": "Feature Disabled"
   }
 }

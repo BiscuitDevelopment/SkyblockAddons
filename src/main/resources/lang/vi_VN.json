@@ -10,7 +10,7 @@
     "settings": "Cài Đặt",
     "magmaBossWarning": "Nhắc nhở Magma Boss",
     "itemDropConfirmation": "Xác Nhận Vứt Đồ",
-    "hideSkeletonHatBones": "Ẩn Mũ Xương",
+    "hideSkeletonHatBones": "Ẩn Xương Xung Quanh Mũ Xương",
     "skeletonHatBonesBar": "Thanh Mũ Xương",
     "hideFoodAndArmor": "Ẩn Thanh Thức Ăn Và Giáp",
     "fullInventoryWarning": "Cảnh Báo Túi Đồ Đầy",
@@ -50,6 +50,7 @@
     "preventMovementOnDeath": "Tránh di chuyển sau khi chết",
     "showItemAnvilUses": "Hiện số lần dùng đe",
     "lockSlots": "Cho phép khóa ô",
+    "lockSlot": "Khoá ô",
     "dontResetCursorInventory": "Không di chuyển con trỏ khi mở túi đồ",
     "summoningEyeAlert": "Cảnh báo: Nhặt Mắt Triệu hồi",
     "makeEnderchestsInEndGreen": "Làm Cho Hòm Ender Màu Xanh Ở The End",
@@ -66,7 +67,12 @@
     "stopDroppingSellingRareItems": "Ngăn thả/bán đồ hiếm",
     "makeBackpackInventoriesColored": "Màu Balô",
     "avoidBreakingBottomSugarCane": "Tránh phá Mía Ở Dưới Cùng",
-    "replaceRomanNumeralsWithNumbers": "Thay thế chữ số La Mã trên vật phẩm"
+    "replaceRomanNumeralsWithNumbers": "Thay thế chữ số La Mã trên vật phẩm",
+    "changeBarColorForPotions": "Thay đổi màu thanh cho Khô Héo & Độc",
+    "craftingPatterns": "Choose Crafting Patterns",
+    "soundIndicatorForFishing": "Sound Indicator for Fishing",
+    "avoidBlinkingNightVision": "Avoid Blinking Night Vision Potion",
+    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings"
   },
   "messages": {
     "dropConfirmation": "Nhấn \"Q\" Thêm Một Lần Nữa Để Xác Nhận!",
@@ -81,21 +87,22 @@
     "enchantsToExclude": "%type% Để Loại Trừ:",
     "inventoryTypes": {
       "enchants": "Phù phép",
-      "reforges": "Rèn luyện"
+      "reforges": "Rèn luyện",
+      "crafting": "Crafting"
     },
-    "newUpdateAvailable": "A new update (%version%) is available!",
-    "deleteOldFile": "The download has finished, please open your mods folder using the button below, close your Minecraft, and delete the old version (or delete it later if you prefer).",
-    "wantToViewPatchNotes": "Want to read the changes?",
-    "downloadLink": "UPDATE LINK",
-    "downloadAutomatically": "AUTO DOWNLOAD",
-    "openModFolder": "MODS FOLDER",
-    "joinTheDiscord": "JOIN DISCORD",
+    "newUpdateAvailable": "Cập nhật mới (%version%) có sẵn!",
+    "deleteOldFile": "Tải về hoàn tất, hãy mở thư mục mod bằng nút dưới đây, tắt Minecraft đi và xoá phiên bản cũ đi (hoặc có thể xoá sau tùy bạn).",
+    "wantToViewPatchNotes": "Muốn đọc những thay đổi không?",
+    "downloadLink": "LIÊN KẾT CẬP NHẬT",
+    "downloadAutomatically": "TỰ ĐỘNG TẢI VỀ",
+    "openModFolder": "THƯ MỤC MOD",
+    "joinTheDiscord": "THAM GIA DISCORD",
     "update": {
-      "majorAvailable": "A new major update (%version%) is available! The link for the download can be found in chat.",
-      "patchAvailable": "A new patch update (%version%) is available! Look in chat for download options!",
-      "downloading": "The patch is downloading! Status: %downloaded%/%total% Please note that after the download has finished, you must delete the old file.",
-      "failed": "The patch download has failed! Please download it manually using the link in chat.",
-      "downloadFinished": "The patch has finished downloading. It has been saved as %file%. Please don't forget to delete the old file after closing your Minecraft. Click the message in chat to open up the folder."
+      "majorAvailable": "Bản cập nhật quan trọng (%version%) có sẵn! Liên kết tải về có thể tìm thấy trong chat.",
+      "patchAvailable": "Bản vá mới (%version%) có sẵn! Các lựa chọn tải về ở trong chat!",
+      "downloading": "Bản vá đang được tải về! Quá trình: %downloaded%/%total% Vui lòng nhớ rằng sau khi tải xong, bạn phải xoá bản cũ.",
+      "failed": "Tải về bản vá thất bại! Vui lòng tự tải về bằng liên kết trong chat.",
+      "downloadFinished": "Bản vá đã tải về hoàn tất. Nó đã được lưu như %file%. Vui lòng xoá bản cũ sau khi đóng Minecraft. Nhấn vào tin nhắn ở chất để mở thư mục."
     },
     "slotLocked": "Ô này đã bị khoá!",
     "summoningEyeFound": "Mắt Triệu Hồi!",
@@ -103,6 +110,7 @@
     "cancelledCaneBreak": "SkyblockAddons đã ngăn bạn khỏi việc phá khối mía này. Hãy dùng dụng cụ khác nếu bạn thật sự muốn phá nó.",
     "cancelledProfileOpening": "SkyblockAddons Đã Ngăn Bạn Xem Thông Về Người Chơi Này Khi Bạn Đang Cầm Cung.",
     "cancelledDropping": "SkyblockAddons đã ngăn bạn làm rơi đồ hiếm từ thanh vật phẩm.",
-    "clickMoreTimes": "Bấm/Thả Đồ Vật Này Thêm %times% Lần Nữa Nếu Bạn Muốn Thực Hiện Điều Này."
+    "clickMoreTimes": "Bấm/Thả Đồ Vật Này Thêm %times% Lần Nữa Nếu Bạn Muốn Thực Hiện Điều Này.",
+    "featureDisabled": "Feature Disabled"
   }
 }

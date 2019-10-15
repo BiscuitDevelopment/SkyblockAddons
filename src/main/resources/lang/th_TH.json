@@ -50,6 +50,7 @@
     "preventMovementOnDeath": "ป้องกันการเดินหลังตาย",
     "showItemAnvilUses": "แสดงจำนวนการใช้ Anvil ของไอเทม",
     "lockSlots": "สามารถล็อคช่องได้",
+    "lockSlot": "การล็อคช่อง",
     "dontResetCursorInventory": "เคอร์เซอร์ไม่จัดตำแหน่งใหม่เมื่อเปลี่ยนช่องเก็บของ",
     "summoningEyeAlert": "แจ้งเตือนดวงตาอัญเชิญ",
     "makeEnderchestsInEndGreen": "ทำให้หีบ Ender เป็นสีเขียวเมื่ออยู่ใน The End",
@@ -66,7 +67,12 @@
     "stopDroppingSellingRareItems": "ป้องกันการทิ้งหรือขายไอเทม Rare",
     "makeBackpackInventoriesColored": "สีช่องเก็บของ Backpack",
     "avoidBreakingBottomSugarCane": "ป้องกันการทำลายต้นล่างสุดของ Sugar Cane",
-    "replaceRomanNumeralsWithNumbers": "เปลี่ยนตัวเลขโรมันให้เป็นตัวเลขอารบิก"
+    "replaceRomanNumeralsWithNumbers": "เปลี่ยนตัวเลขโรมันให้เป็นตัวเลขอารบิก",
+    "changeBarColorForPotions": "เปลี่ยนสีหลอดเหลือดเมื่อโดน Wither & Poison",
+    "craftingPatterns": "รูปแบบการคราฟของ",
+    "soundIndicatorForFishing": "Sound Indicator for Fishing",
+    "avoidBlinkingNightVision": "Avoid Blinking Night Vision Potion",
+    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings"
   },
   "messages": {
     "dropConfirmation": "กดทิ้งของอีกที่เพื่อยืนยันทิ้งของสิ่งนี้!",
@@ -81,21 +87,22 @@
     "enchantsToExclude": "%type% เพื่อไม่รวม:",
     "inventoryTypes": {
       "enchants": "Enchants",
-      "reforges": "ตีบวกของ"
+      "reforges": "ตีบวกของ",
+      "crafting": "คราฟของ"
     },
-    "newUpdateAvailable": "A new update (%version%) is available!",
-    "deleteOldFile": "The download has finished, please open your mods folder using the button below, close your Minecraft, and delete the old version (or delete it later if you prefer).",
-    "wantToViewPatchNotes": "Want to read the changes?",
-    "downloadLink": "UPDATE LINK",
-    "downloadAutomatically": "AUTO DOWNLOAD",
-    "openModFolder": "MODS FOLDER",
-    "joinTheDiscord": "JOIN DISCORD",
+    "newUpdateAvailable": "มีอัพเดทใหม่ (%version%) พร้อมให้ดาวน์โหลดแล้ว!",
+    "deleteOldFile": "การดาวน์โหลดเสร็จสมบูรณ์ กรุณาเปิดโฟลเดอร์มอดโดยใช้ปุ่มข้างล่างนี้ จากนั้นปิด Minecraft และลบมอดเวอร์ชั่นเก่า (หรือจะลบทีหลังก็ได้ถ้าต้องการ)",
+    "wantToViewPatchNotes": "ต้องการอ่านการเปลี่ยนแปลงหรือไม่?",
+    "downloadLink": "ลิงค์อัพเดท",
+    "downloadAutomatically": "ดาวน์โหลดอัตโนมัติ",
+    "openModFolder": "โฟลเดอร์มอด",
+    "joinTheDiscord": "เข้าร่วม Discord",
     "update": {
-      "majorAvailable": "A new major update (%version%) is available! The link for the download can be found in chat.",
-      "patchAvailable": "A new patch update (%version%) is available! Look in chat for download options!",
-      "downloading": "The patch is downloading! Status: %downloaded%/%total% Please note that after the download has finished, you must delete the old file.",
-      "failed": "The patch download has failed! Please download it manually using the link in chat.",
-      "downloadFinished": "The patch has finished downloading. It has been saved as %file%. Please don't forget to delete the old file after closing your Minecraft. Click the message in chat to open up the folder."
+      "majorAvailable": "มีอัพเดทใหญ่ (%version%) พร้อมให้ดาวน์โหลดแล้ว! หาลิงค์ดาวน์โหลดได้ในช่องแชท",
+      "patchAvailable": "มี Patch ใหม่ (%version%) พร้อมให้ดาวน์โหลดแล้ว! หาลิงค์ดาวน์โหลดได้ในช่องแชท",
+      "downloading": "กำลังดาวน์โหลด Patch ใหม่! สถานะ: %downloaded%/%total% โปรดจำไว้ว่าหลังดาวน์โหลดเสร็จแล้ว คุณต้องลบไฟล์เวอร์ชั่นเก่าออก",
+      "failed": "ดาวน์โหลด Patch ไม่สำเร็จ! กรุณาดาวน์โหลดโดยใช้ลิงค์ในช่องแชท",
+      "downloadFinished": "ดาวน์โหลด Patch สำเร็จ ไฟล์ได้ถูกบักทึกเป็น %file% กรุณาอย่าลืมลบไฟล์เก่าหลังจากปิด Minecraft คลิกที่ข้อความในช่องแชทเพื่อเปิดโฟลเดอร์"
     },
     "slotLocked": "ช่องนี้ถูกล็อคไว้!",
     "summoningEyeFound": "ดวงตาอัญเชิญ!",
@@ -103,6 +110,7 @@
     "cancelledCaneBreak": "SkyblockAddons ได้หยุดคุณจากการทำลาย Sugar cane ส่วนนี้ โปรดใช้เครื่องมืออื่นถ้าต้องการทำลาย",
     "cancelledProfileOpening": "ม็อด SkyblockAddons ได้หยุดคุณจากการเปิดดูโปรไฟล์ผู้เล่นเมื่อคุณถือธนูไว้",
     "cancelledDropping": "ม็อด SkyblockAddons ได้หยุดคุณจากการทิ้งไอเทม Rare หรืออุปกรณ์จากช่อง Hotbar ของคุณ",
-    "clickMoreTimes": "คลิกหรือทิ้งไอเทมนี้อีก %times% ครั้งเพื่อยืนยัน"
+    "clickMoreTimes": "คลิกหรือทิ้งไอเทมนี้อีก %times% ครั้งเพื่อยืนยัน",
+    "featureDisabled": "ปิดใช้งานฟีเจอร์นี้แล้ว"
   }
 }

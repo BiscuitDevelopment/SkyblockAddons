@@ -50,6 +50,7 @@
     "preventMovementOnDeath": "防止死亡後進行移動",
     "showItemAnvilUses": "顯示物品已使用幾次鐵砧",
     "lockSlots": "允許鎖定欄位",
+    "lockSlot": "鎖定欄位",
     "dontResetCursorInventory": "打開物品欄不會重製鼠標位置",
     "summoningEyeAlert": "召喚之眼警報",
     "makeEnderchestsInEndGreen": "使在終界的終界箱顯示為綠色",
@@ -66,7 +67,12 @@
     "stopDroppingSellingRareItems": "避免賣出或丟出稀有等級以上的物品",
     "makeBackpackInventoriesColored": "背包內部顏色與外部相同",
     "avoidBreakingBottomSugarCane": "避免破壞位於底部的甘蔗",
-    "replaceRomanNumeralsWithNumbers": "將羅馬數字替換為阿拉伯數字"
+    "replaceRomanNumeralsWithNumbers": "將羅馬數字替換為阿拉伯數字",
+    "changeBarColorForPotions": "在凋零或中毒時改變計量條顏色",
+    "craftingPatterns": "選擇合成模式",
+    "soundIndicatorForFishing": "Sound Indicator for Fishing",
+    "avoidBlinkingNightVision": "Avoid Blinking Night Vision Potion",
+    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings"
   },
   "messages": {
     "dropConfirmation": "再次丟棄此物品以確認!",
@@ -81,7 +87,8 @@
     "enchantsToExclude": "排斥%type%:",
     "inventoryTypes": {
       "enchants": "附魔",
-      "reforges": "重鑄"
+      "reforges": "重鑄",
+      "crafting": "合成"
     },
     "newUpdateAvailable": "一個新的版本 (%version%) 現已上線!",
     "deleteOldFile": "下載已完成, 請使用下方的按鈕打開你的模組資料夾, 關閉你的Minecraft, 並刪除舊的版本(依個人也可稍後刪除)",
@@ -92,7 +99,7 @@
     "joinTheDiscord": "加入Discord",
     "update": {
       "majorAvailable": "一個新的大型改版 (%version%) 現已上線! 聊天室中可見下載連結",
-      "patchAvailable": "A new patch update (%version%) is available! Look in chat for download options!",
+      "patchAvailable": "一個新的補丁更新 (%version%) 現已上線! 見聊天室中下載選項!",
       "downloading": "正在下載補丁! 進度: %downloaded%/%total% 請注意下載完成後你必須刪除舊的檔案",
       "failed": "補丁下載失敗! 請使用聊天室中的連結手動下載",
       "downloadFinished": "補丁以安裝完成。它已被保存為 %file%。關閉你的Minecraft後請不要忘記刪除舊的版本"
@@ -103,6 +110,7 @@
     "cancelledCaneBreak": "SkyblockAddons阻止了你破壞此甘蔗, 如確實想破壞, 請使用其他工具",
     "cancelledProfileOpening": "SkyblockAddons阻止了你拿著弓打開其他玩家的資料。",
     "cancelledDropping": "SkyblockAddons阻止了你丟出快捷欄中稀有等級以上的物品。",
-    "clickMoreTimes": "如果你真的想這麼做, 請再點擊或按丟出%times%次。"
+    "clickMoreTimes": "如果你真的想這麼做, 請再點擊或按丟出%times%次。",
+    "featureDisabled": "停用功能"
   }
 }

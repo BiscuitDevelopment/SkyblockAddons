@@ -50,6 +50,7 @@
     "preventMovementOnDeath": "Pigilan ang paglakad pagkatapos ng Kamatayan",
     "showItemAnvilUses": "Ipakita ang mga gamit ng Item sa Anvil",
     "lockSlots": "Payagan ang mga Nakakandadong Slots",
+    "lockSlot": "Naka-locked na Slot",
     "dontResetCursorInventory": "Huwag I-reset ang Kursor sa pagitan ng iyong Imbentaryo",
     "summoningEyeAlert": "Alerto ng Pangsummon na Mata",
     "makeEnderchestsInEndGreen": "Gawing Kulay Berde Ang Mga Enderchest Sa The End",
@@ -66,7 +67,12 @@
     "stopDroppingSellingRareItems": "Huwag i-hulog/ibenta ang mga mahalagang gamit",
     "makeBackpackInventoriesColored": "Makulay na Imbentaryo",
     "avoidBreakingBottomSugarCane": "Iwasan ang pagsira ng bottom Sugar Cane",
-    "replaceRomanNumeralsWithNumbers": "Palitan ang Roman Numerals sa mga bagay"
+    "replaceRomanNumeralsWithNumbers": "Palitan ang Roman Numerals sa mga bagay",
+    "changeBarColorForPotions": "Change Bar Color for Wither & Poison",
+    "craftingPatterns": "Choose Crafting Patterns",
+    "soundIndicatorForFishing": "Sound Indicator for Fishing",
+    "avoidBlinkingNightVision": "Avoid Blinking Night Vision Potion",
+    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings"
   },
   "messages": {
     "dropConfirmation": "Ihulog ang item muli para kumpirmado!",
@@ -81,21 +87,22 @@
     "enchantsToExclude": "%type% Tanggalin ang:",
     "inventoryTypes": {
       "enchants": "Enchants",
-      "reforges": "Pandayan"
+      "reforges": "Pandayan",
+      "crafting": "Crafting"
     },
-    "newUpdateAvailable": "A new update (%version%) is available!",
-    "deleteOldFile": "The download has finished, please open your mods folder using the button below, close your Minecraft, and delete the old version (or delete it later if you prefer).",
-    "wantToViewPatchNotes": "Want to read the changes?",
-    "downloadLink": "UPDATE LINK",
-    "downloadAutomatically": "AUTO DOWNLOAD",
+    "newUpdateAvailable": "Ang bagong bersyon (%version%) ay pwede na!",
+    "deleteOldFile": "Tapos na ang pagdodownload, pakibukas ng iyong mods folder gamit ang button sa baba, pakisara ng Minecraft, at paki-delete ng lumang bersyon (pwede naman i-delete mamaya kung gusto mo).",
+    "wantToViewPatchNotes": "Gusto mo ba basahin ang mga pagbabago?",
+    "downloadLink": "LINK NG BERSYON",
+    "downloadAutomatically": "AWTOMATIKO NA DOWNLOAD",
     "openModFolder": "MODS FOLDER",
-    "joinTheDiscord": "JOIN DISCORD",
+    "joinTheDiscord": "SUMALI SA DISCORD",
     "update": {
-      "majorAvailable": "A new major update (%version%) is available! The link for the download can be found in chat.",
-      "patchAvailable": "A new patch update (%version%) is available! Look in chat for download options!",
-      "downloading": "The patch is downloading! Status: %downloaded%/%total% Please note that after the download has finished, you must delete the old file.",
-      "failed": "The patch download has failed! Please download it manually using the link in chat.",
-      "downloadFinished": "The patch has finished downloading. It has been saved as %file%. Please don't forget to delete the old file after closing your Minecraft. Click the message in chat to open up the folder."
+      "majorAvailable": "Ang pangunahing bersyon (%version%) ay pwede na! Ang link para sa pag-download ay pwede makita sa chat.",
+      "patchAvailable": "Ang pangunahing bersyon (%version%) ay pwede na! Tumingin sa chat para sa pagpipilian sa pag-download!",
+      "downloading": "Ang patch ay nagdodownload! Status: %downloaded%/%total% Paalala na pagkatapos ng pagka-download, paki-delete ng lumang file.",
+      "failed": "Ang pagdodownload sa patch ay nabigo! Makiki-download nalamang nang manual gamit ang link sa chat.",
+      "downloadFinished": "Tapos na ang pagdodownload sa patch. Nai-save ito bilang %file%. Paalala, huwag kalimutan i-delete ang lumang patch pagkatapos mo i-close ang Minecraft. Pindutin mo ang message sa chat para buksan ang folder."
     },
     "slotLocked": "Ang slot na ito ay nakakandado pa!",
     "summoningEyeFound": "Pangsummon na Mata!",
@@ -103,6 +110,7 @@
     "cancelledCaneBreak": "Itinigil ng SkyblockAddons sa pag-sira ng Sugar Cane. Gamitin mo ang iyong kamay kung gusto mo talaga sirain.",
     "cancelledProfileOpening": "Itinigil ng SkyblockAddons sa pag bukas ng profile habang may hawak na pana.",
     "cancelledDropping": "Itinigil ng SkyblockAddons sa pag hulog ng mahalagang gamit sa iyong imbentaryo.",
-    "clickMoreTimes": "I-click/hulog ang gamit %times% na ito maraming beses kung gusto mo talaga gawin to."
+    "clickMoreTimes": "I-click/hulog ang gamit %times% na ito maraming beses kung gusto mo talaga gawin to.",
+    "featureDisabled": "Feature Disabled"
   }
 }

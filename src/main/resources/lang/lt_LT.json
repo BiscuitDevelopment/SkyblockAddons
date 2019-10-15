@@ -50,6 +50,7 @@
     "preventMovementOnDeath": "Neleisti Vaikščioti Po Mirties",
     "showItemAnvilUses": "Rodyti Kiek Daiktas Buvo Naudotas Priekale",
     "lockSlots": "Leisti Užrakinti Langelius",
+    "lockSlot": "Lock Slot",
     "dontResetCursorInventory": "Nenustatatinėti Iš Naujo Rodyklės Perjungiant Inventorių",
     "summoningEyeAlert": "Drakono Sumoninimo Akies Paimimo Signalas",
     "makeEnderchestsInEndGreen": "Padaryti Ender Chestus Žalius End'e",
@@ -66,7 +67,12 @@
     "stopDroppingSellingRareItems": "Neleisti Išmesti/Parduoti Retus Daiktus",
     "makeBackpackInventoriesColored": "Spalvoti Inventoriai",
     "avoidBreakingBottomSugarCane": "Vengti Apatinės Cukranendres Išgriovimą",
-    "replaceRomanNumeralsWithNumbers": "Pakeisti Romėniškus Skaitmenys Ant Daiktų"
+    "replaceRomanNumeralsWithNumbers": "Pakeisti Romėniškus Skaitmenys Ant Daiktų",
+    "changeBarColorForPotions": "Change Bar Color for Wither & Poison",
+    "craftingPatterns": "Choose Crafting Patterns",
+    "soundIndicatorForFishing": "Sound Indicator for Fishing",
+    "avoidBlinkingNightVision": "Avoid Blinking Night Vision Potion",
+    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings"
   },
   "messages": {
     "dropConfirmation": "Meskite Šį Daiktą Dar Kartą, Kad Patvirtintumėte!",
@@ -81,7 +87,8 @@
     "enchantsToExclude": "%type%, Kad Išskirtumėte:",
     "inventoryTypes": {
       "enchants": "Užkerimai",
-      "reforges": "Perdarimai"
+      "reforges": "Perdarimai",
+      "crafting": "Crafting"
     },
     "newUpdateAvailable": "Galima nauja (%version%) versija!",
     "deleteOldFile": "The download has finished, please open your mods folder using the button below, close your Minecraft, and delete the old version (or delete it later if you prefer).",
@@ -103,6 +110,7 @@
     "cancelledCaneBreak": "SkyblockAddons modas sustabde jus nuo apatinio cuknanendės bloko išgriovimo. Naudokite kitą įrankį jei iš tikrūjų norite jį išgriauti.",
     "cancelledProfileOpening": "SkyblockAddons sustabdė jumis nuo šio žaidėjo profilio atidarymo, kai jūs rankoje laikote lanką.",
     "cancelledDropping": "SkyblockAddons sustabdė jumis nuo šio reto daikto išmetimo iš jūsų inventoriaus ar hotbaro.",
-    "clickMoreTimes": "Paspauskite/meskite šį daiktą %times% tiek kartų jeigu iš tikrųjų norite jį išmesti."
+    "clickMoreTimes": "Paspauskite/meskite šį daiktą %times% tiek kartų jeigu iš tikrųjų norite jį išmesti.",
+    "featureDisabled": "Feature Disabled"
   }
 }

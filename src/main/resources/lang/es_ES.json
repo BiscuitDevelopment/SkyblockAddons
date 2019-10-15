@@ -50,6 +50,7 @@
     "preventMovementOnDeath": "Prevenir moverse cuando mueres",
     "showItemAnvilUses": "Mostrar usos del Item en el Yunque",
     "lockSlots": "Permitir las ranuras bloquedas",
+    "lockSlot": "Bloquea el Espacio",
     "dontResetCursorInventory": "No reiniciar el cursor entre los inventarios",
     "summoningEyeAlert": "Alerta de uso de un ojo de invocación",
     "makeEnderchestsInEndGreen": "Hacer los Enderchests de color verde en el End",
@@ -66,7 +67,12 @@
     "stopDroppingSellingRareItems": "Parar de Soltar/Vender Objetos Raros",
     "makeBackpackInventoriesColored": "Inventarios de Color",
     "avoidBreakingBottomSugarCane": "Evitar Romper Debajo de la Caña de Azúcar",
-    "replaceRomanNumeralsWithNumbers": "Reemplazar Números Romanos en Objetos"
+    "replaceRomanNumeralsWithNumbers": "Reemplazar Números Romanos en Objetos",
+    "changeBarColorForPotions": "Cambiar el Color de Barra para Wither & Veneno",
+    "craftingPatterns": "Elige Patrones De Fabricación",
+    "soundIndicatorForFishing": "Sound Indicator for Fishing",
+    "avoidBlinkingNightVision": "Avoid Blinking Night Vision Potion",
+    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings"
   },
   "messages": {
     "dropConfirmation": "¡Dropea el Objeto otra vez para soltar!",
@@ -81,18 +87,19 @@
     "enchantsToExclude": "%type% para excluir:",
     "inventoryTypes": {
       "enchants": "Encantamientos",
-      "reforges": "Reforjar"
+      "reforges": "Reforjar",
+      "crafting": "Fabricación"
     },
-    "newUpdateAvailable": "A new update (%version%) is available!",
+    "newUpdateAvailable": "¡Una nueva actualización (%version%) está disponible!",
     "deleteOldFile": "La descarga ha terminado, por favor abre la carpeta de mods usando el botón de abajo, cierra tu Minecraft y elimina la versión anterior (o borrala más tarde si lo prefieres).",
     "wantToViewPatchNotes": "¿Quieres leer los cambios?",
     "downloadLink": "LINK DE LA ACTUALIZACIÓN",
     "downloadAutomatically": "AUTO DESCARGAR",
-    "openModFolder": "MODS FOLDER",
+    "openModFolder": "CARPETA DE MODS",
     "joinTheDiscord": "UNIRSE A DISCORD",
     "update": {
-      "majorAvailable": "A new major update (%version%) is available! The link for the download can be found in chat.",
-      "patchAvailable": "A new patch update (%version%) is available! Look in chat for download options!",
+      "majorAvailable": "¡Una nueva actualización importante (%version%) está disponible! El link para la descarga se puede encontrar en el chat.",
+      "patchAvailable": "¡Una nueva actualización (%version%) está disponible! ¡Busca en el chat para optiones de descargar!",
       "downloading": "¡El parche está descargando! Estado: %downloaded%/%total% Por favor, tenga en cuenta que después de que la descarga haya terminado, debe eliminar el archivo antiguo.",
       "failed": "¡La descarga del parche ha fallado! Por favor, descargalo manualmente usando el enlace en el chat.",
       "downloadFinished": "El parche ha terminado de descargar. Se ha guardado como %file%. Por favor, no olvide eliminar el archivo antiguo después de cerrar tu Minecraft. Haga clic en el mensaje en el chat para abrir la carpeta."
@@ -103,6 +110,7 @@
     "cancelledCaneBreak": "SkyblockAddons te ha impedido romper este bloque de caña de azúcar. Usa tu otra herramienta si realmente quieres romperlo.",
     "cancelledProfileOpening": "SkyblockAddons te ha impedido abrir el perfil de este jugador mientras mantienes un arco.",
     "cancelledDropping": "SkyblockAddons te ha impedido que soltaras este objeto o herramienta rara de tu hotbar.",
-    "clickMoreTimes": "Haga clic/soltar este objeto %times% veces más si realmente quieres hacer esto."
+    "clickMoreTimes": "Haga clic/soltar este objeto %times% veces más si realmente quieres hacer esto.",
+    "featureDisabled": "Función Desactivada"
   }
 }

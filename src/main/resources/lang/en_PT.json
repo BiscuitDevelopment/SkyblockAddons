@@ -50,6 +50,7 @@
     "preventMovementOnDeath": "Quit walkin' after a plunderin'",
     "showItemAnvilUses": "Show Yer Anvil Uses",
     "lockSlots": "Allow Lockin' yer Slots",
+    "lockSlot": "Lock Slot",
     "dontResetCursorInventory": "Don't reset cursor between yer inventories",
     "summoningEyeAlert": "Ye Ol' Summonin' Aye Alert",
     "makeEnderchestsInEndGreen": "Make Enderchests in this 'ere End Green",
@@ -66,7 +67,12 @@
     "stopDroppingSellingRareItems": "Avast droppin'/sellin' ye rare items",
     "makeBackpackInventoriesColored": "Col'r yer Booty",
     "avoidBreakingBottomSugarCane": "Avast breakin' bottom o' Sugarrr Cane",
-    "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on yer Items"
+    "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on yer Items",
+    "changeBarColorForPotions": "Change Bar Color for Wither & Poison",
+    "craftingPatterns": "Choose Crafting Patterns",
+    "soundIndicatorForFishing": "Sound Indicator for Fishing",
+    "avoidBlinkingNightVision": "Avoid Blinking Night Vision Potion",
+    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings"
   },
   "messages": {
     "dropConfirmation": "'ay lad, drop this here item again to confirm!",
@@ -81,7 +87,8 @@
     "enchantsToExclude": "%type% to exclude:",
     "inventoryTypes": {
       "enchants": "Yer magic",
-      "reforges": "Reforgery"
+      "reforges": "Reforgery",
+      "crafting": "Crafting"
     },
     "newUpdateAvailable": "A new update (%version%) is available!",
     "deleteOldFile": "The download has finished, please open your mods folder using the button below, close your Minecraft, and delete the old version (or delete it later if you prefer).",
@@ -103,6 +110,7 @@
     "cancelledCaneBreak": "'ay there, SkyblockAddons 'as stopped ye from breakin' this here block o’ sugarcane. Use yer bare hand if ye'd like to break it.",
     "cancelledProfileOpening": "'ay there lad! SkyblockAddons 'as stopped ye from openin' this here player's profile while oldin' a bow.",
     "cancelledDropping": "'ay mate! SkyblockAddons 'as stopped ye from droppin' this here Rare Item or Tool from yer 'otbarrr.",
-    "clickMoreTimes": "'ay lad, Click/Drop this here item %times% more times if ye really wants t' do this."
+    "clickMoreTimes": "'ay lad, Click/Drop this here item %times% more times if ye really wants t' do this.",
+    "featureDisabled": "Feature Disabled"
   }
 }

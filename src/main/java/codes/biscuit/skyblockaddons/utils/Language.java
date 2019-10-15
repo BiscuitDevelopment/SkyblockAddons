@@ -6,6 +6,7 @@ public enum Language {
     ENGLISH("en_us"),
     CHINESE_TRADITIONAL("zh_TW"),
     CHINESE_SIMPLIFIED("zh_CN"),
+    HINDI("hi_IN"),
     SPANISH_MEXICO("es_MX"),
     SPANISH_SPAIN("es_ES"),
     FRENCH("fr_FR"),
@@ -39,7 +40,8 @@ public enum Language {
     SERBIAN_LATIN("sr_CS"),
     SWEDISH("sv_SE"),
     PIRATE_ENGLISH("en_PT"),
-    BISCUITISH("bc_BC");
+    BISCUITISH("bc_BC"),
+    OWO("ow_Wo");
 
     private String path;
 
