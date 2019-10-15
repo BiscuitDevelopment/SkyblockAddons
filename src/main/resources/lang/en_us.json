@@ -68,7 +68,7 @@
     "makeBackpackInventoriesColored": "Color Inventories",
     "avoidBreakingBottomSugarCane": "Avoid Breaking Bottom Sugar Cane",
     "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Items",
-    "avoidBreakingLogBeforeJungleAxeCooldownEnds": "Avoid Breaking Log Before Jungle Axe Cooldown Ends"
+    "jungleAxeCooldown": "Jungle Axe Cooldown"
   },
   "messages": {
     "dropConfirmation": "Drop this item again to confirm!",
