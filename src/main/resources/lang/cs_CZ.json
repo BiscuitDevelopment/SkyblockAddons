@@ -21,7 +21,7 @@
     "hideDurability": "Skrýt výdrž nástrojů",
     "showEnchantmentsReforges": "Očarování a překování",
     "minionStopWarning": "Várování o nedosáhnutí miniona",
-    "hideAuctionHousePlayers": "Skrýt hráče u Auction house",
+    "hideAuctionHousePlayers": "Skrýt hráče blízko důležitých Vesničanů",
     "backpackStyle": "Styl batůžků: %style%",
     "backpackStyles": {
       "regular": "Klasický",
@@ -50,6 +50,7 @@
     "preventMovementOnDeath": "Zabránit chození po smrti",
     "showItemAnvilUses": "Ukázat použití kovadliny na předmětech",
     "lockSlots": "Povolit zamykaní slotů",
+    "lockSlot": "Uzamčený slot",
     "dontResetCursorInventory": "Neresetuj kurzor mezi inventářema",
     "summoningEyeAlert": "Upozornění na Vyvolávací oko",
     "makeEnderchestsInEndGreen": "Zvýraznit Ender truhly v Endu zelenou",
@@ -66,15 +67,13 @@
     "stopDroppingSellingRareItems": "Zakázat vyhazování/prodávání vzácných předmětů",
     "makeBackpackInventoriesColored": "Vybarvit inventáře",
     "avoidBreakingBottomSugarCane": "Zabránění rozbití spodní vrstvy cukrové třtiny",
-    "replaceRomanNumeralsWithNumbers": "Nahrazení římských číslic na předmětech"
+    "replaceRomanNumeralsWithNumbers": "Nahrazení římských číslic na předmětech",
+    "changeBarColorForPotions": "Change Bar Color for Wither & Poison"
   },
   "messages": {
     "dropConfirmation": "Vyhoď tento item pro vyhození!",
     "magmaBossWarning": "Objevil se Magma Boss!",
     "fullInventory": "Plný inventář!",
-    "newVersion": "Nová verze, %newestVersion% je dostupná. Stáhni ji kliknutím zde.",
-    "discord": "Chceš být informován o změnách? Klikni zde, aby jsi se připojil na můj Discord server.",
-    "developmentVersion": "Používáš vývojovou verzi: %version%. Nejnovější verze je %newestVersion%",
     "labymod": "Uživatelé Labymodu: Skrytí jídla, armoru a ukazatel zdraví je nekompatabilní.",
     "minionCannotReach": "%type% minion Nemůže dosáhnout a přestal pracovat!",
     "minionIsFull": "Minion na tvém ostrově je plný!",
@@ -86,11 +85,27 @@
       "enchants": "Očarování",
       "reforges": "Překování"
     },
+    "newUpdateAvailable": "Nová aktualizace (%version%) je připravena!",
+    "deleteOldFile": "Stahování skočilo, prosím otevři svoji složku mods pomocí tlačítka dole, zavři minecraft, a smaž starou verzi(nebo ji smaž potom pokud chceš).",
+    "wantToViewPatchNotes": "Chceš si přečíst změny?",
+    "downloadLink": "Link pro aktualizaci",
+    "downloadAutomatically": "Aoutomacké stáhnutí",
+    "openModFolder": "SLOŽKA S MODY",
+    "joinTheDiscord": "Připojit se na discord",
+    "update": {
+      "majorAvailable": "Nová hlavní aktualizace (%version%) je připravena! Link na stažení je v chatu.",
+      "patchAvailable": "Nový opravující update (verze %version%) je nyní dostupný! Koukněte do chatu pro možnosti stahování!",
+      "downloading": "Aktualizace se stahuje! Status: %downloaded%/%total% Prosím berte na vědomí že potom co se aktualizace dokončí, musíte smazat starou složku.",
+      "failed": "Stáhnutí aktualizace selhalo! Prosím stáhněte ho manuálně pomocí linku v chatu.",
+      "downloadFinished": "Aktualizace dokončila stažení. Byla uložena jako %file%. Prosím nezapomeň smazat starou složku potom co zavřeš minecraft."
+    },
     "slotLocked": "Tento slot je uzamčen!",
     "summoningEyeFound": "Vyvolávací oko!",
-    "cancelledStemBreak": "SkyblockAddons vám zabránil tohle zničit. Použijte svoji ruku, pokud tohle chcete zničit.",
+    "cancelledStemBreak": "Mód SkyblockAddons tě zastavil před zničením tohoto blocku. Použil svoji prázdnou ruku aby jsi to zničil.",
+    "cancelledCaneBreak": "Mód SkyblockAddons tě zastavil před zničením tohoto blocku Sugar canu. Požij jiný nástroj pokud ho chceš zničit.",
     "cancelledProfileOpening": "SkyblockAddons vám zabránil otevřít profil hráče při držení luku.",
     "cancelledDropping": "SkyblockAddons vám zabránil vyhodit tento vzácný předmět nebo nástroj z vašeho hotbaru.",
-    "clickMoreTimes": "Klikněte/vyhoďte tento předmět %times%-krát, pokud to chcete opravdu udělat."
+    "clickMoreTimes": "Klikněte/vyhoďte tento předmět %times%-krát, pokud to chcete opravdu udělat.",
+    "featureDisabled": "Feature Disabled"
   }
 }

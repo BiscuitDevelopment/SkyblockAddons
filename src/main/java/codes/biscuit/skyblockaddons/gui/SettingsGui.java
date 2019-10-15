@@ -52,6 +52,8 @@ public class SettingsGui extends GuiScreen {
     @Override
     public void initGui() {
         if (feature == Feature.LANGUAGE) {
+            row = 1;
+            collumn = 1;
             displayCount = findDisplayCount();
             // Add the buttons for each page.
             int skip = (page-1)*displayCount;
@@ -64,7 +66,7 @@ public class SettingsGui extends GuiScreen {
             for (Language language : Language.values()) {
                 if (skip == 0) {
                     if (language == Language.ENGLISH) continue;
-                    if (language == Language.ARABIC) {
+                    if (language == Language.CHINESE_TRADITIONAL) {
                         addLanguageButton(Language.ENGLISH);
                     }
                     addLanguageButton(language);
@@ -81,6 +83,7 @@ public class SettingsGui extends GuiScreen {
         addTabs();
     }
 
+    @SuppressWarnings("IntegerDivisionInFloatingPointContext")
     private void addTabs() {
         int collumn = 1;
         for (EnumUtils.SkyblockAddonsGuiTab loopTab : EnumUtils.SkyblockAddonsGuiTab.values()) {
@@ -172,7 +175,7 @@ public class SettingsGui extends GuiScreen {
         }
         super.drawScreen(mouseX, mouseY, partialTicks); // Draw buttons.
         if (feature == Feature.LANGUAGE) {
-            main.getConfigValues().loadLanguageFile();
+            main.getConfigValues().loadLanguageFile(false);
         }
     }
 
@@ -184,7 +187,8 @@ public class SettingsGui extends GuiScreen {
         if (abstractButton instanceof ButtonLanguage) {
             Language language = ((ButtonLanguage)abstractButton).getLanguage();
             main.getConfigValues().setLanguage(language);
-            main.getConfigValues().loadLanguageFile();
+            main.getConfigValues().loadLanguageFile(true);
+            main.loadKeyBindingDescriptions();
             returnToGui();
         } else if (abstractButton instanceof ButtonSwitchTab) {
             ButtonSwitchTab tab = (ButtonSwitchTab)abstractButton;
@@ -214,8 +218,10 @@ public class SettingsGui extends GuiScreen {
             if (arrow.isNotMax()) {
                 main.getUtils().setFadingIn(false);
                 if (arrow.getArrowType() == ButtonArrow.ArrowType.RIGHT) {
+                    closingGui = true;
                     mc.displayGuiScreen(new SettingsGui(main, feature, ++page, lastPage, lastTab, settings));
                 } else {
+                    closingGui = true;
                     mc.displayGuiScreen(new SettingsGui(main, feature, --page, lastPage, lastTab, settings));
                 }
             }
@@ -299,6 +305,11 @@ public class SettingsGui extends GuiScreen {
             x = halfWidth - (boxWidth / 2);
             y = getRowHeightSetting(row);
             buttonList.add(new ButtonToggleTitle(x, y, Message.SETTING_MAKE_BACKPACK_INVENTORIES_COLORED.getMessage(), main, Feature.MAKE_BACKPACK_INVENTORIES_COLORED));
+        } else if (setting == EnumUtils.FeatureSetting.CHANGE_BAR_COLOR_WITH_POTIONS) {
+            boxWidth = 31;
+            x = halfWidth - (boxWidth / 2);
+            y = getRowHeightSetting(row);
+            buttonList.add(new ButtonToggleTitle(x, y, Message.SETTING_CHANGE_BAR_COLOR_WITH_POTIONS.getMessage(), main, Feature.CHANGE_BAR_COLOR_FOR_POTIONS));
         } else if (setting == EnumUtils.FeatureSetting.BACKPACK_STYLE) {
             boxWidth = 140;
             x = halfWidth-(boxWidth/2);

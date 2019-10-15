@@ -6,12 +6,14 @@ import codes.biscuit.skyblockaddons.utils.Feature;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.EntityRenderer;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItemFrame;
 import net.minecraft.util.Vec3;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
 import java.util.List;
@@ -30,12 +32,21 @@ public class MixinEntityRenderer {
         removeEntities(list);
     }
 
+    @Inject(method = "getNightVisionBrightness", at = @At("HEAD"), cancellable = true)
+    private void preventBlink(EntityLivingBase p_getNightVisionBrightness_1_, float p_getNightVisionBrightness_2_, CallbackInfoReturnable<Float> cir) {
+        SkyblockAddons main = SkyblockAddons.getInstance();
+        if (main.getConfigValues().isEnabled(Feature.AVOID_BLINKING_NIGHT_VISION)) {
+            cir.setReturnValue(1.0F);
+        }
+    }
+
     private void removeEntities(List<Entity> list) {
-        if (SkyblockAddons.getInstance().getUtils().isOnSkyblock()) {
-            if (!GuiScreen.isCtrlKeyDown() && SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.IGNORE_ITEM_FRAME_CLICKS)) {
+        SkyblockAddons main = SkyblockAddons.getInstance();
+        if (main.getUtils().isOnSkyblock()) {
+            if (!GuiScreen.isCtrlKeyDown() && main.getConfigValues().isEnabled(Feature.IGNORE_ITEM_FRAME_CLICKS)) {
                 list.removeIf(listEntity -> listEntity instanceof EntityItemFrame);
             }
-            if (SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.HIDE_AUCTION_HOUSE_PLAYERS)) {
+            if (main.getConfigValues().isEnabled(Feature.HIDE_AUCTION_HOUSE_PLAYERS)) {
                 list.removeIf(EnumUtils.SkyblockNPC::isNearNPC);
             }
         }

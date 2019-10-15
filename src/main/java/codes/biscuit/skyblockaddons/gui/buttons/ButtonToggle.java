@@ -43,6 +43,9 @@ public class ButtonToggle extends ButtonFeature {
         if (hovered) {
             GlStateManager.color(1,1,1,1);
         }
+        if (main.getConfigValues().isRemoteDisabled(feature)) {
+            GlStateManager.color(0.3F,0.3F,0.3F,0.7F);
+        }
         if (main.getConfigValues().isEnabled(feature)) {
             mc.getTextureManager().bindTexture(TOGGLE_ON);
         } else {

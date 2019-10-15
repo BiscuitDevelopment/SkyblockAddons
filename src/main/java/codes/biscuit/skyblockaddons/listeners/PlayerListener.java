@@ -12,6 +12,7 @@ import net.minecraft.entity.item.EntityArmorStand;
 import net.minecraft.entity.monster.EntityBlaze;
 import net.minecraft.entity.monster.EntityMagmaCube;
 import net.minecraft.entity.monster.EntitySlime;
+import net.minecraft.entity.projectile.EntityFishHook;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -31,6 +32,7 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.ChunkEvent;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.InputEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 import java.awt.*;
@@ -52,8 +54,14 @@ public class PlayerListener {
     private int timerTick = 1;
     private long lastScreenOpen = -1;
     private long lastMinionSound = -1;
+
+    private int lastSecondHealth = -1;
     private Integer healthUpdate = null;
     private long lastHealthUpdate;
+    private long lastFishingAlert = 0;
+    private long lastBobberEnteredWater = Long.MAX_VALUE;
+    private boolean oldBobberIsInWater = false;
+    private double oldBobberPosY = 0;
 
     private Set<CoordsPair> recentlyLoadedChunks = new HashSet<>();
     private EnumUtils.MagmaTimerAccuracy magmaAccuracy = EnumUtils.MagmaTimerAccuracy.NO_DATA;
@@ -137,11 +145,14 @@ public class PlayerListener {
                         } else {
                             manaPart = splitMessage[1];
                         }
+                        if (healthPart.contains("+")) {
+                            healthPart = healthPart.substring(0, healthPart.indexOf('+'));
+                        }
                         String[] healthSplit = main.getUtils().getNumbersOnly(main.getUtils().stripColor(healthPart)).split(Pattern.quote("/"));
                         int newHealth = Integer.parseInt(healthSplit[0]);
-                        int health = getAttribute(Attribute.HEALTH);
-                        if (newHealth != health) {
-                            healthUpdate = newHealth - health;
+                        main.getScheduler().schedule(Scheduler.CommandType.SET_LAST_SECOND_HEALTH, 1, newHealth);
+                        if (lastSecondHealth != -1 && lastSecondHealth != newHealth) {
+                            healthUpdate = newHealth - lastSecondHealth;
                             lastHealthUpdate = System.currentTimeMillis();
                         }
                         setAttribute(Attribute.HEALTH, newHealth);
@@ -228,19 +239,29 @@ public class PlayerListener {
     public void onInteract(PlayerInteractEvent e) {
         Minecraft mc = Minecraft.getMinecraft();
         ItemStack heldItem = e.entityPlayer.getHeldItem();
-        if (main.getUtils().isOnSkyblock() && e.entityPlayer == mc.thePlayer && heldItem != null && heldItem.isItemEnchanted()) {
-            if (main.getConfigValues().isEnabled(Feature.DISABLE_EMBER_ROD)) {
-                if (heldItem.getItem().equals(Items.blaze_rod) && main.getUtils().getLocation() == EnumUtils.Location.ISLAND) {
+        if (main.getUtils().isOnSkyblock() && e.entityPlayer == mc.thePlayer && heldItem != null) {
+            // Prevent using ember rod on personal island
+            if (heldItem.getItem().equals(Items.blaze_rod) && heldItem.isItemEnchanted()) {
+                if (main.getConfigValues().isEnabled(Feature.DISABLE_EMBER_ROD) && main.getUtils().getLocation() == EnumUtils.Location.ISLAND) {
                     e.setCanceled(true);
-                    return;
                 }
             }
-            if (main.getConfigValues().isEnabled(Feature.AVOID_PLACING_ENCHANTED_ITEMS)) {
-                if ((e.action == PlayerInteractEvent.Action.RIGHT_CLICK_BLOCK || e.action == PlayerInteractEvent.Action.RIGHT_CLICK_AIR) &&
-                        (heldItem.getItem().equals(Items.lava_bucket) || heldItem.getItem().equals(Items.string) ||
-                                heldItem.getItem().equals(Item.getItemFromBlock(Blocks.diamond_block)))) {
-                    e.setCanceled(true);
+            // Update fishing status
+            else if (heldItem.getItem().equals(Items.fishing_rod)) {
+                if ((e.action == PlayerInteractEvent.Action.RIGHT_CLICK_BLOCK || e.action == PlayerInteractEvent.Action.RIGHT_CLICK_AIR)
+                        && main.getConfigValues().isEnabled(Feature.FISHING_SOUND_INDICATOR)) {
+                    oldBobberIsInWater = false;
+                    lastBobberEnteredWater = Long.MAX_VALUE;
+                    oldBobberPosY = 0;
                 }
+            }
+            // Prevent placing enchanted items
+            else if ((e.action == PlayerInteractEvent.Action.RIGHT_CLICK_BLOCK || e.action == PlayerInteractEvent.Action.RIGHT_CLICK_AIR)
+                    && heldItem.isItemEnchanted()
+                    && (heldItem.getItem().equals(Items.lava_bucket) || heldItem.getItem().equals(Items.string)
+                        || heldItem.getItem().equals(Item.getItemFromBlock(Blocks.diamond_block)))
+                    && main.getConfigValues().isEnabled(Feature.AVOID_PLACING_ENCHANTED_ITEMS)) {
+                e.setCanceled(true);
             }
         }
     }
@@ -262,12 +283,16 @@ public class PlayerListener {
                     EntityPlayerSP p = mc.thePlayer;
                     if (p != null) { //Reverse calculate the player's health by using the player's vanilla hearts. Also calculate the health change for the gui item.
                         int newHealth = Math.round(getAttribute(Attribute.MAX_HEALTH) * (p.getHealth() / p.getMaxHealth()));
-                        if (newHealth != getAttribute(Attribute.HEALTH)) {
-                            healthUpdate = newHealth - getAttribute(Attribute.HEALTH);
+                        main.getScheduler().schedule(Scheduler.CommandType.SET_LAST_SECOND_HEALTH, 1, newHealth);
+                        if (lastSecondHealth != -1 && lastSecondHealth != newHealth) {
+                            healthUpdate = newHealth - lastSecondHealth;
                             lastHealthUpdate = System.currentTimeMillis();
                         }
                         setAttribute(Attribute.HEALTH, newHealth);
                     }
+                }
+                if (shouldTriggerFishingIndicator()) { // The logic fits better in its own function
+                    main.getUtils().playSound("random.successful_hit", 0.8);
                 }
                 if (timerTick == 20) { // Add natural mana every second (increase is based on your max mana).
                     if (main.getRenderListener().isPredictMana()) {
@@ -394,6 +419,9 @@ public class PlayerListener {
                                     }
                                 }
                             }
+                        }
+                        if (!foundBoss && main.getRenderListener().getTitleFeature() == Feature.MAGMA_WARNING) {
+                            main.getRenderListener().setTitleFeature(null);
                         }
                         if (!foundBoss && magmaAccuracy == EnumUtils.MagmaTimerAccuracy.SPAWNED) {
                             magmaAccuracy = EnumUtils.MagmaTimerAccuracy.ABOUT;
@@ -539,12 +567,17 @@ public class PlayerListener {
         }
     }
 
-//    @SubscribeEvent(receiveCanceled = true)
-//    public void onKeyInput(InputEvent.KeyInputEvent e) {
-//        if (main.getLockSlot().isPressed()) {
-//            main.getConfigValues().getLockedSlots().add(main.getUtils().getLastHoveredSlot());
-//        }
-//    }
+    @SubscribeEvent(receiveCanceled = true)
+    public void onKeyInput(InputEvent.KeyInputEvent e) {
+        if (main.getOpenSettingsKey().isPressed()) {
+            main.getUtils().setFadingIn(true);
+            main.getRenderListener().setGuiToOpen(PlayerListener.GUIType.MAIN, 1, EnumUtils.SkyblockAddonsGuiTab.FEATURES);
+        }
+        else if (main.getOpenEditLocationsKey().isPressed()) {
+            main.getUtils().setFadingIn(false);
+            main.getRenderListener().setGuiToOpen(PlayerListener.GUIType.EDIT_LOCATIONS, 0, null);
+        }
+    }
 
     public boolean shouldResetMouse() {
         return System.currentTimeMillis() - lastClosedInv > 100;
@@ -606,5 +639,34 @@ public class PlayerListener {
 
     public Set<CoordsPair> getRecentlyLoadedChunks() {
         return recentlyLoadedChunks;
+    }
+
+    private boolean shouldTriggerFishingIndicator() {
+        Minecraft mc =  Minecraft.getMinecraft();
+        if (mc.thePlayer != null && mc.thePlayer.fishEntity != null && mc.thePlayer.getHeldItem() != null
+                && mc.thePlayer.getHeldItem().getItem().equals(Items.fishing_rod)
+                && main.getConfigValues().isEnabled(Feature.FISHING_SOUND_INDICATOR)) {
+            // Highly consistent detection by checking when the hook has been in the water for a while and
+            // suddenly moves downward. The client may rarely bug out with the idle bobbing and trigger a false positive.
+            EntityFishHook bobber = mc.thePlayer.fishEntity;
+            long currentTime = System.currentTimeMillis();
+            if (bobber.isInWater() && !oldBobberIsInWater) lastBobberEnteredWater = currentTime;
+            oldBobberIsInWater = bobber.isInWater();
+            if (bobber.isInWater() && Math.abs(bobber.motionX) < 0.01 && Math.abs(bobber.motionZ) < 0.01
+                    && currentTime - lastFishingAlert > 1000 && currentTime - lastBobberEnteredWater > 1500) {
+                double movement = bobber.posY - oldBobberPosY; // The Entity#motionY field is inaccurate for this purpose
+                oldBobberPosY = bobber.posY;
+                if (movement < -0.04d){
+                    lastFishingAlert = currentTime;
+                    return true;
+                }
+                return movement < -0.03d;
+            }
+        }
+        return false;
+    }
+
+    public void setLastSecondHealth(int lastSecondHealth) {
+        this.lastSecondHealth = lastSecondHealth;
     }
 }

@@ -21,7 +21,7 @@
     "hideDurability": "הסתר רמת שימוש",
     "showEnchantmentsReforges": "כישופים ושיפורים",
     "minionStopWarning": "\"המיניון לא יכול להגיע\" אזהרה",
-    "hideAuctionHousePlayers": "הסתר שחקנים ליד בית המכירה הפומבית",
+    "hideAuctionHousePlayers": "הסתר שחקנים ליד NPC מיוחדים",
     "backpackStyle": "סטייל תרמיל גב: %style%",
     "backpackStyles": {
       "regular": "רגיל",
@@ -50,6 +50,7 @@
     "preventMovementOnDeath": "עצירת תזוזה לאחר המוות",
     "showItemAnvilUses": "הצגת שימושי סדן של הפריט",
     "lockSlots": "אפשר נעילת משבצת",
+    "lockSlot": "Lock Slot",
     "dontResetCursorInventory": "אל תאפס את העכבר בין תיקים",
     "summoningEyeAlert": "התראת עין לזימון דרקון",
     "makeEnderchestsInEndGreen": "הפוך אנדרצ'אסטים לירוקות באנד",
@@ -66,15 +67,13 @@
     "stopDroppingSellingRareItems": "עצור זריקה/מכירת חפצים נדירים",
     "makeBackpackInventoriesColored": "צבע טיקים",
     "avoidBreakingBottomSugarCane": "מנע הריסת שוגר קיין תחתון",
-    "replaceRomanNumeralsWithNumbers": "החלף מספרים רומאים בחפצים"
+    "replaceRomanNumeralsWithNumbers": "החלף מספרים רומאים בחפצים",
+    "changeBarColorForPotions": "Change Bar Color for Wither & Poison"
   },
   "messages": {
     "dropConfirmation": "זרוק פריט זה שוב לאישור!",
     "magmaBossWarning": "בוס המגמה!",
     "fullInventory": "תיק מלא!",
-    "newVersion": "גירסה חדשה!, %newestVersion% זמינה כעת. לחצו פה בכדי להוריד אותה.",
-    "discord": "רוצים לראות את השינויים? לחצו כאן כדי להצטרף לדיסקורד שלי.",
-    "developmentVersion": "אתה מריץ גירסת תכנות: %version%. הגירסה האחרונה היא %newestVersion%",
     "labymod": "למשתמשי לאיבימוד: הסתרת עמודות אוכל, שריון וחיים לא נתמכת.",
     "minionCannotReach": "מיניון %type% לא יכול להגיע והפסיק לעבוד!",
     "minionIsFull": "אחד מהמיניונים על האי שלך מלא!",
@@ -86,11 +85,27 @@
       "enchants": "כישופים",
       "reforges": "שדרוגים"
     },
+    "newUpdateAvailable": "גירסה חדשה (%version%) ניתנת להורדה!",
+    "deleteOldFile": "ההורדה הושלמה, בבקשה תפתח את תקיית המודים שלך בעזרת הכפתור למטה, תסגור את מיינקראפט, ומחק את הגרסה הישנה(או שתמחק אחר כך אם אתה מעדיף).",
+    "wantToViewPatchNotes": "רוצה לקרוא את השינויים?",
+    "downloadLink": "קישור לעידכון",
+    "downloadAutomatically": "הורדה אוטומתית",
+    "openModFolder": "תקיית מודים",
+    "joinTheDiscord": "כניסה לדיסקורד",
+    "update": {
+      "majorAvailable": "עידכון חדש קטן (%version%) ניתן להורדה! הקישור להורדה נמצא בצ'אט.",
+      "patchAvailable": "A new patch update (%version%) is available! Look in chat for download options!",
+      "downloading": "The patch is downloading! Status: %downloaded%/%total% Please note that after the download has finished, you must delete the old file.",
+      "failed": "The patch download has failed! Please download it manually using the link in chat.",
+      "downloadFinished": "The patch has finished downloading. It has been saved as %file%. Please don't forget to delete the old file after closing your Minecraft. Click the message in chat to open up the folder."
+    },
     "slotLocked": "משבצת זו נעולה!",
     "summoningEyeFound": "עין לזימון דרקון!",
-    "cancelledStemBreak": "SkyBlockAddons עצר אותך מלשבור את זה. השתמש ביד שלך אם אתה רוצה לשבור את זה.",
+    "cancelledStemBreak": "SkyblockAddons עצר אותך מלשבור את הגידול. תשתמש ביד שלך אם ברצונך לשבור את זה.",
+    "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use another tool if you'd actually like to break it.",
     "cancelledProfileOpening": "SkyBlockAddons עצר אותך מלפתוח את הפרופיל של האדם בזמן שהחזקתה קשת.",
     "cancelledDropping": "SkyBlockAddons עצר אותך מלהפיל את החפץ או הכלי הנדיר הזה.",
-    "clickMoreTimes": "תלחץ/תזרוק את החפץ %times% פעמים נוספות אם אתה בטוח רוצה לעשות את זה."
+    "clickMoreTimes": "תלחץ/תזרוק את החפץ %times% פעמים נוספות אם אתה בטוח רוצה לעשות את זה.",
+    "featureDisabled": "Feature Disabled"
   }
 }

@@ -21,7 +21,7 @@
     "hideDurability": "Sakrij Trajnost Alata",
     "showEnchantmentsReforges": "Èarolije i Reforge-ovi",
     "minionStopWarning": "\"Minion Ne Može Dohvatiti\" Upozorenje",
-    "hideAuctionHousePlayers": "Sakrij Igraèe Blizu Dražbavaonice",
+    "hideAuctionHousePlayers": "Hide Players Near Important NPCs",
     "backpackStyle": "Stil Ruksaka: %style%",
     "backpackStyles": {
       "regular": "Regularne",
@@ -50,6 +50,7 @@
     "preventMovementOnDeath": "Sprije?i Hodanje Nakon Smrti",
     "showItemAnvilUses": "Pokaži Broj Koristi Stvari u Anvil-u",
     "lockSlots": "Dopusti Zaključavanje Slotova",
+    "lockSlot": "Lock Slot",
     "dontResetCursorInventory": "Nemoj Resetirati Kursor Između Inventara",
     "summoningEyeAlert": "Upozorenje Za Evokacijske Oči",
     "makeEnderchestsInEndGreen": "Napravi Ender Škrinje u End-u Zelene",
@@ -66,15 +67,13 @@
     "stopDroppingSellingRareItems": "Zaustavi Bacanje/Slanje Rijetkih Stvari",
     "makeBackpackInventoriesColored": "Obojani Inventari",
     "avoidBreakingBottomSugarCane": "Zaustavi Prijelom Dna Šećerne Trske",
-    "replaceRomanNumeralsWithNumbers": "Zamijeni Rimske Brojeve na Stvarima"
+    "replaceRomanNumeralsWithNumbers": "Zamijeni Rimske Brojeve na Stvarima",
+    "changeBarColorForPotions": "Change Bar Color for Wither & Poison"
   },
   "messages": {
     "dropConfirmation": "Opet baci ovu stvar za konfirmaciju!",
     "magmaBossWarning": "MagmaCube Boss!",
     "fullInventory": "Pun Inventar!",
-    "newVersion": "Nova Verzija, %newestVersion% je dostupna. Preuzmi je tako što klikneš ovdje.",
-    "discord": "Želiš li vidjeti promjene? Klikni ovdje da uðeš u moj discord server.",
-    "developmentVersion": "Ti imaš razvojnu verziju: %version%. Najnovija online verzija je %newestVersion%",
     "labymod": "Labymod Korisnici: Sakrij Hranu, Armor, i Bar Zdravlja su neuskladivi.",
     "minionCannotReach": "%type% minion ne može posegnuti i prestao je stvarati!",
     "minionIsFull": "Minion na tvojom otoku je pun!",
@@ -86,11 +85,27 @@
       "enchants": "Čarolije",
       "reforges": "Reforge-ovi"
     },
+    "newUpdateAvailable": "A new update (%version%) is available!",
+    "deleteOldFile": "The download has finished, please open your mods folder using the button below, close your Minecraft, and delete the old version (or delete it later if you prefer).",
+    "wantToViewPatchNotes": "Want to read the changes?",
+    "downloadLink": "UPDATE LINK",
+    "downloadAutomatically": "AUTO DOWNLOAD",
+    "openModFolder": "MODS FOLDER",
+    "joinTheDiscord": "JOIN DISCORD",
+    "update": {
+      "majorAvailable": "A new major update (%version%) is available! The link for the download can be found in chat.",
+      "patchAvailable": "A new patch update (%version%) is available! Look in chat for download options!",
+      "downloading": "The patch is downloading! Status: %downloaded%/%total% Please note that after the download has finished, you must delete the old file.",
+      "failed": "The patch download has failed! Please download it manually using the link in chat.",
+      "downloadFinished": "The patch has finished downloading. It has been saved as %file%. Please don't forget to delete the old file after closing your Minecraft. Click the message in chat to open up the folder."
+    },
     "slotLocked": "Ovaj Slot je Zaključan!",
     "summoningEyeFound": "Evokacijsko Oko!",
-    "cancelledStemBreak": "SkyBlockAddons te zaustavio od rušenja ovoga. Koristi svoju ruku ako to želiš slomiti.",
+    "cancelledStemBreak": "SkyblockAddons te zaustavio od rušenja ove stabljike. Koristi svoju ruku ako je želiš slomiti.",
+    "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use another tool if you'd actually like to break it.",
     "cancelledProfileOpening": "SkyblockAddons te zaustavio od otvaranja profila ovog igrača dok držiš luk.",
     "cancelledDropping": "SkyblockAddons te zaustavio od bacanje ove rijetke stvari ili alata od tvojeg hotbara.",
-    "clickMoreTimes": "Klikni/dropaj ovu stvar %times% više puta ako zapravo želiš ovo napraviti."
+    "clickMoreTimes": "Klikni/dropaj ovu stvar %times% više puta ako zapravo želiš ovo napraviti.",
+    "featureDisabled": "Feature Disabled"
   }
 }

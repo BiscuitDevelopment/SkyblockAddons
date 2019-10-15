@@ -4,8 +4,8 @@
     "tab": {
       "features": "Características",
       "fixes": "Arreglos",
-      "guiFeatures": "Características de Menú",
-      "generalSettings": "Configuraciones Generales"
+      "guiFeatures": "Menú",
+      "generalSettings": "Configuración General"
     },
     "settings": "Opciones",
     "magmaBossWarning": "Alerta de Boss de Magma",
@@ -21,7 +21,7 @@
     "hideDurability": "Ocultar Durabilidad de Herramientas",
     "showEnchantmentsReforges": "Encantamientos & Reforjados",
     "minionStopWarning": "Alerta de Minion Detenido",
-    "hideAuctionHousePlayers": "Ocultar Jugadores Cerca de Auction House",
+    "hideAuctionHousePlayers": "Ocultar Jugadores Cerca de NPCs Importantes",
     "backpackStyle": "Estilo de Backpack: %style%",
     "backpackStyles": {
       "regular": "Normal",
@@ -45,11 +45,12 @@
     "magmaBossTimer": "Tiempo para Magma Boss",
     "itemPickupLog": "Registro de Items Recogidos",
     "avoidPlacingEnchantedItems": "Evitar Construcción con Objetos Encantados",
-    "avoidBreakingStems": "Evitar Ruptura de Tallo de Cultivos",
+    "avoidBreakingStems": "Evitar Destrucción de Tallo de Cultivos",
     "stopBowChargeFromResetting": "Evitar Reinicio de Arco Cargado",
     "preventMovementOnDeath": "Evitar Caminar Después de Morir",
     "showItemAnvilUses": "Mostrar los Usos de Anvil/Yunque",
     "lockSlots": "Permitir Bloqueo de Ranuras",
+    "lockSlot": "Bloquear Ranura",
     "dontResetCursorInventory": "Evitar Reinicio del Cursor entre Inventarios",
     "summoningEyeAlert": "Alerta de Summoning Eye",
     "makeEnderchestsInEndGreen": "Colorear Enderchest de Verde en The End",
@@ -65,16 +66,14 @@
     "dontOpenProfileWithBow": "No Abrir Perfiles con Arco en la Mano",
     "stopDroppingSellingRareItems": "Detener Arrojo/Venta de Objetos Raros",
     "makeBackpackInventoriesColored": "Colorear Inventarios",
-    "avoidBreakingBottomSugarCane": "Evitar Ruptura de Parte Inferior de Caña de Azúcar",
-    "replaceRomanNumeralsWithNumbers": "Reemplazar Números Romanos en Objetos"
+    "avoidBreakingBottomSugarCane": "Evitar Destrucción de Parte Inferior de Caña de Azúcar",
+    "replaceRomanNumeralsWithNumbers": "Reemplazar Números Romanos en Objetos",
+    "changeBarColorForPotions": "Change Bar Color for Wither & Poison"
   },
   "messages": {
     "dropConfirmation": "Arroja este objeto otra vez para confirmar!",
     "magmaBossWarning": "Boss de MagmaCube!",
     "fullInventory": "Inventario Lleno!",
-    "newVersion": "La nueva versión %newestVersion% se encuentra disponible. Para descargarla haz clic aquí.",
-    "discord": "Quieres ver los cambios? Haz clic aquí para unirte a mi servidor de discord.",
-    "developmentVersion": "Estás usando una versión en desarrollo: %version%. La última versión pública es %newestVersion%",
     "labymod": "Usuarios de Labymod: Ocultar Barra de Comida y Armadura no es compatible.",
     "minionCannotReach": "Un minion de %type% no puede alcanzar sus mobs y se ha detenido!",
     "minionIsFull": "Un minion en tu isla está lleno!",
@@ -86,11 +85,27 @@
       "enchants": "Encantamientos",
       "reforges": "Reforjas"
     },
+    "newUpdateAvailable": "Una nueva actualización (%version%) está disponible!",
+    "deleteOldFile": "La descarga ha finalizado, por favor abre tu carpeta de mods usando el botón inferior, cierra Minecraft y elimina la versión antigua (o hazlo mas tarde si lo prefieres).",
+    "wantToViewPatchNotes": "Quieres leer los cambios?",
+    "downloadLink": "LINK DE ACTUALIZACION",
+    "downloadAutomatically": "AUTO DESCARGAR",
+    "openModFolder": "CARPETA DE MODS",
+    "joinTheDiscord": "UNIRSE A DISCORD",
+    "update": {
+      "majorAvailable": "Una nueva actualización importante (%version%) se encuentra disponible! El link de descarga puede encontrarse en el chat.",
+      "patchAvailable": "Un nuevo parche de actualización (%version%) se encuentra disponible! Las opciones de descarga están en el chat!",
+      "downloading": "El parche se está descargando! Estado: %downloaded%/%total% Por favor, ten en cuenta que después de que la descarga haya finalizado, debes eliminar el archivo antiguo.",
+      "failed": "La descarga del parche ha fallado! Por favor, descárgalo manualmente usando el link en el chat.",
+      "downloadFinished": "El parche ha sido descargado. Se guardó como %file%. Por favor, no te olvides de eliminar el archivo antiguo después de cerrar Minecraft. Haz clic en el mensaje del chat para abrir la carpeta."
+    },
     "slotLocked": "Esta ranura está bloqueada!",
     "summoningEyeFound": "Summoning Eye!",
-    "cancelledStemBreak": "SkyblockAddons ha evitado que rompas este tallo. Usa sólo tu mano si en realidad deseas romperlo.",
+    "cancelledStemBreak": "SkyblockAddons ha impedido que rompas este tallo. Usa sólo tus manos si en realidad quieres romperlo.",
+    "cancelledCaneBreak": "SkyblockAddons te ha impedido romper este bloque de caña de azúcar. Usa otra herramienta si en realidad quieres romperlo.",
     "cancelledProfileOpening": "SkyblockAddons ha evitado que abras el perfil de este jugador con tu arco en la mano.",
     "cancelledDropping": "SkyblockAddons ha evitado que arrojes este objeto o herramienta rara.",
-    "clickMoreTimes": "Haz clic/arroja el objeto %times% veces más si en realidad quieres hacerlo."
+    "clickMoreTimes": "Haz clic/arroja el objeto %times% veces más si en realidad quieres hacerlo.",
+    "featureDisabled": "Feature Disabled"
   }
 }

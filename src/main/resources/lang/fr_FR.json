@@ -21,7 +21,7 @@
     "hideDurability": "Masquer la durabilité des outils",
     "showEnchantmentsReforges": "Enchantements & Reforges",
     "minionStopWarning": "Alerte minion à l'arrêt",
-    "hideAuctionHousePlayers": "Masquer les joueurs près de l'HDV",
+    "hideAuctionHousePlayers": "Masquer les joueurs à côté des PNJ importants",
     "backpackStyle": "Affichage du sac à dos: %style%",
     "backpackStyles": {
       "regular": "Normal",
@@ -50,6 +50,7 @@
     "preventMovementOnDeath": "Empêcher de marcher après la mort",
     "showItemAnvilUses": "Afficher le nombre d'usage de l'enclume",
     "lockSlots": "Autoriser le verrouillage d'emplacement",
+    "lockSlot": "Case bloqué",
     "dontResetCursorInventory": "Ne pas réinitialiser le curseur entre les inventaires",
     "summoningEyeAlert": "Alerte Œil d'invocation",
     "makeEnderchestsInEndGreen": "Rendre les Enderchests dans l'End vert",
@@ -66,15 +67,13 @@
     "stopDroppingSellingRareItems": "Arrêter le jet/vente d'objets rare",
     "makeBackpackInventoriesColored": "Inventaire coloré",
     "avoidBreakingBottomSugarCane": "Destruction de la base de la canne à sucre",
-    "replaceRomanNumeralsWithNumbers": "Remplacer les numéros romains sur les objets"
+    "replaceRomanNumeralsWithNumbers": "Remplacer les numéros romains sur les objets",
+    "changeBarColorForPotions": "Change Bar Color for Wither & Poison"
   },
   "messages": {
     "dropConfirmation": "Jetez cet objet une nouvelle fois pour confirmer!",
     "magmaBossWarning": "Magma Boss!",
     "fullInventory": "Inventaire plein!",
-    "newVersion": "La version %newestVersion% est disponible. Télécharger la en cliquant ici.",
-    "discord": "Vous voulez voir les changements? Cliquez ici pour rejoindre mon discord.",
-    "developmentVersion": "Vous utilisez une version de développement : %version%. La dernière version disponible est %newestVersion%",
     "labymod": "Utilisateurs de Labymod: Il y a une incompatibilité avec l'option Masquer la barre de nourriture et d'armure",
     "minionCannotReach": "Le minon %type% n'arrive pas à atteindre les entités et à arrêté le spawn!",
     "minionIsFull": "Un minion sur votre île est plein",
@@ -86,11 +85,27 @@
       "enchants": "Enchantements",
       "reforges": "Reforges"
     },
+    "newUpdateAvailable": "La mise à jour %version% est disponible!",
+    "deleteOldFile": "Le téléchargement s'est terminé, veuillez ouvrir votre dossier mods en utilisant le bouton ci-dessous, fermer Minecraft et supprimer l'ancienne version (ou la supprimer plus tard si vous le préférez).",
+    "wantToViewPatchNotes": "Voulez vous lire les changements ?",
+    "downloadLink": "LIEN DE MISE A JOUR",
+    "downloadAutomatically": "TÉLECHARGÉMENT AUTOMATIQUE",
+    "openModFolder": "DOSSIER MODS",
+    "joinTheDiscord": "REJOINDRE LE DISCORD",
+    "update": {
+      "majorAvailable": "Une nouvelle mise à jour majeure, %version% est disponible ! Le lien pour le télécharger est disponible dans le chat.",
+      "patchAvailable": "Le nouveau patch %version% est disponible! Regardez dans le chat pour le télécharger!",
+      "downloading": "Le patch est en cours de téléchargement! Statut : %downloaded%/%total% Veuillez noter qu'après la fin du téléchargement, vous devez supprimer l'ancien fichier.",
+      "failed": "Le téléchargement du patch a échoué! Veuillez le télécharger manuellement en utilisant le lien dans le chat.",
+      "downloadFinished": "Le téléchargement du patch est fini. Il a été enregistré comme %file%. N'oubliez pas de supprimer l'ancien fichier après avoir fermé votre Minecraft. Cliquez sur le message dans le chat pour ouvrir le dossier."
+    },
     "slotLocked": "Cet emplacement est bloqué!",
     "summoningEyeFound": "Œil d'invocation!",
-    "cancelledStemBreak": "SkyblockAddons vous a empêché de casser ceci. Utilisez votre main nue si vous souhaitez la casser.",
+    "cancelledStemBreak": "SkyblockAddons vous a empêché de casser cette graine. Utilisez votre main si vous souhaitez la casser.",
+    "cancelledCaneBreak": "SkyblockAddons vous a empêché de casser ce bloc de canne à sucre. Utiliser un autre outil si vous souhaitez le casser.",
     "cancelledProfileOpening": "SkyblockAddons vous a empêché d'ouvrir le profil de ce joueur en utilisant un arc.",
     "cancelledDropping": "SkyblockAddons vous a empêché de jeter cet objet ou outil rare de votre barre d'action.",
-    "clickMoreTimes": "Cliquez/jetez cet objet %times% fois si vous le souhaitez vraiment."
+    "clickMoreTimes": "Cliquez/jetez cet objet encore %times% fois si vous le souhaitez.",
+    "featureDisabled": "Feature Disabled"
   }
 }
