@@ -69,7 +69,10 @@
     "avoidBreakingBottomSugarCane": "Unikaj niszczenia dolnej części trzciny cukrowej",
     "replaceRomanNumeralsWithNumbers": "Zamień cyfry rzymskie na arabskie",
     "changeBarColorForPotions": "Zmień kolor paska dla funkcji Wither & Mikstury",
-    "craftingPatterns": "Wybierz wzór wytwarzania"
+    "craftingPatterns": "Wybierz wzór wytwarzania",
+    "soundIndicatorForFishing": "Sound Indicator for Fishing",
+    "avoidBlinkingNightVision": "Avoid Blinking Night Vision Potion",
+    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings"
   },
   "messages": {
     "dropConfirmation": "Wyrzuć ten przedmiot ponownie, aby potwierdzić!",
