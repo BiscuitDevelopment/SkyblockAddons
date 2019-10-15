@@ -92,7 +92,7 @@
     "wantToViewPatchNotes": "¿Quieres leer los cambios?",
     "downloadLink": "LINK DE LA ACTUALIZACIÓN",
     "downloadAutomatically": "AUTO DESCARGAR",
-    "openModFolder": "MODS FOLDER",
+    "openModFolder": "CARPETA DE MODS",
     "joinTheDiscord": "UNIRSE A DISCORD",
     "update": {
       "majorAvailable": "A new major update (%version%) is available! The link for the download can be found in chat.",
@@ -108,6 +108,6 @@
     "cancelledProfileOpening": "SkyblockAddons te ha impedido abrir el perfil de este jugador mientras mantienes un arco.",
     "cancelledDropping": "SkyblockAddons te ha impedido que soltaras este objeto o herramienta rara de tu hotbar.",
     "clickMoreTimes": "Haga clic/soltar este objeto %times% veces más si realmente quieres hacer esto.",
-    "featureDisabled": "Feature Disabled"
+    "featureDisabled": "Función Desactivada"
   }
 }
