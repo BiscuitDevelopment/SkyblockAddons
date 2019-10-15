@@ -69,7 +69,10 @@
     "avoidBreakingBottomSugarCane": "Alsó cukornád kiütésének elkerülése",
     "replaceRomanNumeralsWithNumbers": "Római számok kicserélése a tárgyakon",
     "changeBarColorForPotions": "Sorvadás és méreg sebzőszínei",
-    "craftingPatterns": "Válassz Barkácsolómintát"
+    "craftingPatterns": "Válassz Barkácsolómintát",
+    "soundIndicatorForFishing": "Sound Indicator for Fishing",
+    "avoidBlinkingNightVision": "Avoid Blinking Night Vision Potion",
+    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings"
   },
   "messages": {
     "dropConfirmation": "Dobd el ezt a tárgyat újra, hogy megerősítsd!",
