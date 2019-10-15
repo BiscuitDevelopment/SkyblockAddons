@@ -69,7 +69,10 @@
     "avoidBreakingBottomSugarCane": "Unngå ødelegging av nederste sukkerrør",
     "replaceRomanNumeralsWithNumbers": "Bytt Ut Romertall på Gjenstander",
     "changeBarColorForPotions": "Bytt ut bar farge for visne og gift effekter",
-    "craftingPatterns": "Velg utformingsmønstre"
+    "craftingPatterns": "Velg utformingsmønstre",
+    "soundIndicatorForFishing": "Sound Indicator for Fishing",
+    "avoidBlinkingNightVision": "Avoid Blinking Night Vision Potion",
+    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings"
   },
   "messages": {
     "dropConfirmation": "Slipp denne gjenstanden igjen for å bekrefte!",
