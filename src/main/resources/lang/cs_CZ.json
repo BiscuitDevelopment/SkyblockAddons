@@ -69,7 +69,10 @@
     "avoidBreakingBottomSugarCane": "Zabránění rozbití spodní vrstvy cukrové třtiny",
     "replaceRomanNumeralsWithNumbers": "Nahrazení římských číslic na předmětech",
     "changeBarColorForPotions": "Změň barvu ukazetele pro wither a poison efekt",
-    "craftingPatterns": "Vybrat si crafting vzory"
+    "craftingPatterns": "Vybrat si crafting vzory",
+    "soundIndicatorForFishing": "Sound Indicator for Fishing",
+    "avoidBlinkingNightVision": "Avoid Blinking Night Vision Potion",
+    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings"
   },
   "messages": {
     "dropConfirmation": "Vyhoď tento item pro vyhození!",
