@@ -69,7 +69,8 @@
     "avoidBreakingBottomSugarCane": "Avoid Breaking Bottom Sugar Cane",
     "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Items",
     "changeBarColorForPotions": "Change Bar Color for Wither & Poison",
-    "craftingPatterns": "Choose Crafting Patterns"
+    "craftingPatterns": "Choose Crafting Patterns",
+    "soundIndicatorForFishing": "Sound Indicator for Fishing"
   },
   "messages": {
     "dropConfirmation": "Drop this item again to confirm!",

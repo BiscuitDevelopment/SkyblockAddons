@@ -68,6 +68,7 @@ public enum Message {
     SETTING_REPLACE_ROMAN_NUMERALS_WITH_NUMBERS(MessageObject.SETTING, "replaceRomanNumeralsWithNumbers"),
     SETTING_CHANGE_BAR_COLOR_WITH_POTIONS(MessageObject.SETTING, "changeBarColorForPotions"),
     SETTING_CRAFTING_PATTERNS(MessageObject.SETTING, "craftingPatterns"),
+    SETTING_FISHING_SOUND_INDICATOR(MessageObject.SETTING, "soundIndicatorForFishing"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.STYLE, "compact"),
