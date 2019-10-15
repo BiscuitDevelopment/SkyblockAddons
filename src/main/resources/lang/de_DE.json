@@ -72,7 +72,8 @@
     "craftingPatterns": "Wähle Herstellung-Muster",
     "soundIndicatorForFishing": "Sound Indicator for Fishing",
     "avoidBlinkingNightVision": "Avoid Blinking Night Vision Potion",
-    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings"
+    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings",
+    "jungleAxeCooldown": "Jungle Axe Cooldown"
   },
   "messages": {
     "dropConfirmation": "Werfe diesen Gegenstand nochmal, um zu bestätigen!",
