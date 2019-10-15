@@ -69,7 +69,10 @@
     "avoidBreakingBottomSugarCane": "أيقاف كسر قصب السكر السفلي",
     "replaceRomanNumeralsWithNumbers": "تحويل الترقيم الروماني إلى الرقمي",
     "changeBarColorForPotions": "تغيير لون الشريط للويذر و التسمم",
-    "craftingPatterns": "Choose Crafting Patterns"
+    "craftingPatterns": "Choose Crafting Patterns",
+    "soundIndicatorForFishing": "Sound Indicator for Fishing",
+    "avoidBlinkingNightVision": "Avoid Blinking Night Vision Potion",
+    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings"
   },
   "messages": {
     "dropConfirmation": "!إرمي هذا العنصر مرة أخرى للتأكيد",
