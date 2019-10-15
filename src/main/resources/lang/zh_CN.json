@@ -69,7 +69,10 @@
     "avoidBreakingBottomSugarCane": "防止破坏底部甘蔗",
     "replaceRomanNumeralsWithNumbers": "替换罗马数字为阿拉伯数字",
     "changeBarColorForPotions": "更改药水条颜色",
-    "craftingPatterns": "选择合成样式"
+    "craftingPatterns": "选择合成样式",
+    "soundIndicatorForFishing": "Sound Indicator for Fishing",
+    "avoidBlinkingNightVision": "Avoid Blinking Night Vision Potion",
+    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings"
   },
   "messages": {
     "dropConfirmation": "再次丢弃此物品以确认!",
