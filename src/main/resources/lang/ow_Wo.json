@@ -69,7 +69,10 @@
     "avoidBreakingBottomSugarCane": "Awoid Bweaking Bwottom Sugar Cwane",
     "replaceRomanNumeralsWithNumbers": "Wepwace Roman Numuwuals on Itwems",
     "changeBarColorForPotions": "Change Bar Color for Wither & Poison",
-    "craftingPatterns": "Choose Crafting Patterns"
+    "craftingPatterns": "Choose Crafting Patterns",
+    "soundIndicatorForFishing": "Sound Indicator for Fishing",
+    "avoidBlinkingNightVision": "Avoid Blinking Night Vision Potion",
+    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings"
   },
   "messages": {
     "dropConfirmation": "Dwop thwis itwem agwain to confiwm!",
