@@ -69,7 +69,10 @@
     "avoidBreakingBottomSugarCane": "Iwasan ang pagsira ng bottom Sugar Cane",
     "replaceRomanNumeralsWithNumbers": "Palitan ang Roman Numerals sa mga bagay",
     "changeBarColorForPotions": "Change Bar Color for Wither & Poison",
-    "craftingPatterns": "Choose Crafting Patterns"
+    "craftingPatterns": "Choose Crafting Patterns",
+    "soundIndicatorForFishing": "Sound Indicator for Fishing",
+    "avoidBlinkingNightVision": "Avoid Blinking Night Vision Potion",
+    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings"
   },
   "messages": {
     "dropConfirmation": "Ihulog ang item muli para kumpirmado!",
