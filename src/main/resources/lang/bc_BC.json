@@ -69,7 +69,10 @@
     "avoidBreakingBottomSugarCane": "Avoid eating sweet biscuit cane",
     "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Biscuits",
     "changeBarColorForPotions": "Change Bar Color for Wither & Poison",
-    "craftingPatterns": "Choose Crafting Patterns"
+    "craftingPatterns": "Choose Crafting Patterns",
+    "soundIndicatorForFishing": "Sound Indicator for Fishing",
+    "avoidBlinkingNightVision": "Avoid Blinking Night Vision Potion",
+    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings"
   },
   "messages": {
     "dropConfirmation": "Throw out this biscuit again to confirm!",
