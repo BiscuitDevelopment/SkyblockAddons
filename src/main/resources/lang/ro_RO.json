@@ -69,7 +69,10 @@
     "avoidBreakingBottomSugarCane": "Evită spargerea sugar cane-ului de jos",
     "replaceRomanNumeralsWithNumbers": "Schimba numerele romane de pe iteme",
     "changeBarColorForPotions": "Schimbați culoarea barei pentru Wither & Otravă",
-    "craftingPatterns": "Choose Crafting Patterns"
+    "craftingPatterns": "Choose Crafting Patterns",
+    "soundIndicatorForFishing": "Sound Indicator for Fishing",
+    "avoidBlinkingNightVision": "Avoid Blinking Night Vision Potion",
+    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings"
   },
   "messages": {
     "dropConfirmation": "Arunca acest obiect iar ca să confirmi!",
