@@ -71,7 +71,7 @@ public enum Message {
     SETTING_FISHING_SOUND_INDICATOR(MessageObject.SETTING, "soundIndicatorForFishing"),
     SETTING_AVOID_BLINKING_NIGHT_VISION(MessageObject.SETTING, "avoidBlinkingNightVision"),
     SETTING_DISABLE_MINION_LOCATION_WARNING(MessageObject.SETTING, "disableMinionLocationWarning"),
-    SETTING_AVOID_BREAKING_LOG_BEFORE_JUNGLE_AXE_COOLDOWN_ENDS(MessageObject.SETTING, "avoidBreakingLogBeforeJungleAxeCooldownEnds"),
+    SETTING_JUNGLE_AXE_COOLDOWN(MessageObject.SETTING, "jungleAxeCooldown"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.STYLE, "compact"),

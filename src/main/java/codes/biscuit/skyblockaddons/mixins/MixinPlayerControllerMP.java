@@ -49,7 +49,7 @@ public class MixinPlayerControllerMP {
                     main.getUtils().sendMessage(main.getConfigValues().getColor(Feature.AVOID_BREAKING_STEMS).getChatFormatting()+Message.MESSAGE_CANCELLED_STEM_BREAK.getMessage());
                 }
                 cir.setReturnValue(false);
-            } else if (main.getConfigValues().isEnabled(Feature.AVOID_BREAKING_LOG_BEFORE_JUNGLE_AXE_COOLDOWN_ENDS) && heldItem.getDisplayName().contains("Jungle Axe") && 
+            } else if (main.getConfigValues().isEnabled(Feature.JUNGLE_AXE_COOLDOWN) && heldItem.getDisplayName().contains("Jungle Axe") &&
                        (block.equals(Blocks.log) || block.equals(Blocks.log2))) {
                 if (lastLogBroken + 15000 > System.currentTimeMillis()) {
                     cir.setReturnValue(false);

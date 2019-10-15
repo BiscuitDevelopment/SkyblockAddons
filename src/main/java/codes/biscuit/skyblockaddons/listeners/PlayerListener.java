@@ -13,9 +13,7 @@ import net.minecraft.entity.monster.EntityBlaze;
 import net.minecraft.entity.monster.EntityMagmaCube;
 import net.minecraft.entity.monster.EntitySlime;
 import net.minecraft.entity.projectile.EntityFishHook;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
@@ -243,20 +241,13 @@ public class PlayerListener {
         ItemStack heldItem = e.entityPlayer.getHeldItem();
         if (main.getUtils().isOnSkyblock() && e.entityPlayer == mc.thePlayer && heldItem != null) {
             // Prevent using ember rod on personal island
-            if (heldItem.getItem().equals(Items.blaze_rod) && heldItem.isItemEnchanted()) {
-                if (main.getConfigValues().isEnabled(Feature.DISABLE_EMBER_ROD) && main.getUtils().getLocation() == EnumUtils.Location.ISLAND) {
-                    e.setCanceled(true);
-                }
-            } else if (main.getConfigValues().isEnabled(Feature.FISHING_SOUND_INDICATOR) && heldItem.getItem().equals(Items.fishing_rod) // Update fishing status
-                && (e.action == PlayerInteractEvent.Action.RIGHT_CLICK_BLOCK || e.action == PlayerInteractEvent.Action.RIGHT_CLICK_AIR)) {
-                    oldBobberIsInWater = false;
-                    lastBobberEnteredWater = Long.MAX_VALUE;
-                    oldBobberPosY = 0;
-            } else if (main.getConfigValues().isEnabled(Feature.AVOID_PLACING_ENCHANTED_ITEMS) && 
-                     (e.action == PlayerInteractEvent.Action.RIGHT_CLICK_BLOCK || e.action == PlayerInteractEvent.Action.RIGHT_CLICK_AIR)
-                    && heldItem.isItemEnchanted() && !main.getUtils().isMaterialForRecipe(heldItem)
-                    && (heldItem.getItem().equals(Items.lava_bucket) || heldItem.getItem().equals(Items.string)
-                        || heldItem.getItem().equals(Item.getItemFromBlock(Blocks.diamond_block)))) {
+            if (main.getConfigValues().isEnabled(Feature.FISHING_SOUND_INDICATOR) && heldItem.getItem().equals(Items.fishing_rod) // Update fishing status
+                    && (e.action == PlayerInteractEvent.Action.RIGHT_CLICK_BLOCK || e.action == PlayerInteractEvent.Action.RIGHT_CLICK_AIR)) {
+                oldBobberIsInWater = false;
+                lastBobberEnteredWater = Long.MAX_VALUE;
+                oldBobberPosY = 0;
+            } else if (main.getConfigValues().isEnabled(Feature.AVOID_PLACING_ENCHANTED_ITEMS) && EnchantedItemBlacklist.shouldBlockUsage(heldItem)
+                    && (e.action == PlayerInteractEvent.Action.RIGHT_CLICK_BLOCK || e.action == PlayerInteractEvent.Action.RIGHT_CLICK_AIR)) {
                 e.setCanceled(true);
             }
         }
