@@ -69,7 +69,10 @@
     "avoidBreakingBottomSugarCane": "Zerstören des unteren Zuckerrohrs blockieren",
     "replaceRomanNumeralsWithNumbers": "Ersetze Römische Nummern auf Gegenständen",
     "changeBarColorForPotions": "Farbe der Leiste bei Wither und Gift ändern",
-    "craftingPatterns": "Wähle Herstellung-Muster"
+    "craftingPatterns": "Wähle Herstellung-Muster",
+    "soundIndicatorForFishing": "Sound Indicator for Fishing",
+    "avoidBlinkingNightVision": "Avoid Blinking Night Vision Potion",
+    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings"
   },
   "messages": {
     "dropConfirmation": "Werfe diesen Gegenstand nochmal, um zu bestätigen!",
