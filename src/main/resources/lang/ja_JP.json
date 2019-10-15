@@ -69,7 +69,10 @@
     "avoidBreakingBottomSugarCane": "サトウキビの根本の破壊を防止",
     "replaceRomanNumeralsWithNumbers": "エンチャントのローマ数字をアラビア数字に置き換え",
     "changeBarColorForPotions": "ウィザーと毒状態の時にバーの色を変える",
-    "craftingPatterns": "クラフトのパターンを選ぶ"
+    "craftingPatterns": "クラフトのパターンを選ぶ",
+    "soundIndicatorForFishing": "Sound Indicator for Fishing",
+    "avoidBlinkingNightVision": "Avoid Blinking Night Vision Potion",
+    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings"
   },
   "messages": {
     "dropConfirmation": "落としてもいいのであれば、このアイテムをもう一度ドロップしてください。",
