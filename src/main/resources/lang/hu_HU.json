@@ -70,9 +70,9 @@
     "replaceRomanNumeralsWithNumbers": "Római számok kicserélése a tárgyakon",
     "changeBarColorForPotions": "Sorvadás és méreg sebzőszínei",
     "craftingPatterns": "Válassz Barkácsolómintát",
-    "soundIndicatorForFishing": "Sound Indicator for Fishing",
-    "avoidBlinkingNightVision": "Avoid Blinking Night Vision Potion",
-    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings"
+    "soundIndicatorForFishing": "Hangjelzés halászatkor",
+    "avoidBlinkingNightVision": "Éjszakai látás \"pislogás\" elkerülése",
+    "disableMinionLocationWarning": "\"Hely nem tökéletes\" minion jelzés kikapcsolása"
   },
   "messages": {
     "dropConfirmation": "Dobd el ezt a tárgyat újra, hogy megerősítsd!",
