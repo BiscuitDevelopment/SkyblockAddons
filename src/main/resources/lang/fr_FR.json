@@ -69,7 +69,10 @@
     "avoidBreakingBottomSugarCane": "Destruction de la base de la canne à sucre",
     "replaceRomanNumeralsWithNumbers": "Remplacer les numéros romains sur les objets",
     "changeBarColorForPotions": "Changer la couleur de la barre pour le Wither & Poison",
-    "craftingPatterns": "Choisir le modèle de fabrication"
+    "craftingPatterns": "Choisir le modèle de fabrication",
+    "soundIndicatorForFishing": "Sound Indicator for Fishing",
+    "avoidBlinkingNightVision": "Avoid Blinking Night Vision Potion",
+    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings"
   },
   "messages": {
     "dropConfirmation": "Jetez cet objet une nouvelle fois pour confirmer!",
