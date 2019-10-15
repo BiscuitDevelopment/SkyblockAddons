@@ -479,6 +479,16 @@ public class Utils {
         }).start();
     }
 
+    public boolean isMaterialForRecipe(ItemStack item) {
+        final List<String> tooltip = item.getTooltip(null, false);
+        for (String s : tooltip) {
+            if (s.equals("§5§o§eRight-click to view recipes!")) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public String getReforgeFromItem(ItemStack item) {
         if (item.hasTagCompound()) {
             NBTTagCompound extraAttributes = item.getTagCompound();

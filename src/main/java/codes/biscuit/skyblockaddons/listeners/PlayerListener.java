@@ -247,22 +247,16 @@ public class PlayerListener {
                 if (main.getConfigValues().isEnabled(Feature.DISABLE_EMBER_ROD) && main.getUtils().getLocation() == EnumUtils.Location.ISLAND) {
                     e.setCanceled(true);
                 }
-            }
-            // Update fishing status
-            else if (heldItem.getItem().equals(Items.fishing_rod)) {
-                if ((e.action == PlayerInteractEvent.Action.RIGHT_CLICK_BLOCK || e.action == PlayerInteractEvent.Action.RIGHT_CLICK_AIR)
-                        && main.getConfigValues().isEnabled(Feature.FISHING_SOUND_INDICATOR)) {
+            } else if (main.getConfigValues().isEnabled(Feature.FISHING_SOUND_INDICATOR) && heldItem.getItem().equals(Items.fishing_rod) // Update fishing status
+                && (e.action == PlayerInteractEvent.Action.RIGHT_CLICK_BLOCK || e.action == PlayerInteractEvent.Action.RIGHT_CLICK_AIR)) {
                     oldBobberIsInWater = false;
                     lastBobberEnteredWater = Long.MAX_VALUE;
                     oldBobberPosY = 0;
-                }
-            }
-            // Prevent placing enchanted items
-            else if ((e.action == PlayerInteractEvent.Action.RIGHT_CLICK_BLOCK || e.action == PlayerInteractEvent.Action.RIGHT_CLICK_AIR)
-                    && heldItem.isItemEnchanted()
+            } else if (main.getConfigValues().isEnabled(Feature.AVOID_PLACING_ENCHANTED_ITEMS) && 
+                     (e.action == PlayerInteractEvent.Action.RIGHT_CLICK_BLOCK || e.action == PlayerInteractEvent.Action.RIGHT_CLICK_AIR)
+                    && heldItem.isItemEnchanted() && !main.getUtils().isMaterialForRecipe(heldItem)
                     && (heldItem.getItem().equals(Items.lava_bucket) || heldItem.getItem().equals(Items.string)
-                        || heldItem.getItem().equals(Item.getItemFromBlock(Blocks.diamond_block)))
-                    && main.getConfigValues().isEnabled(Feature.AVOID_PLACING_ENCHANTED_ITEMS)) {
+                        || heldItem.getItem().equals(Item.getItemFromBlock(Blocks.diamond_block)))) {
                 e.setCanceled(true);
             }
         }
