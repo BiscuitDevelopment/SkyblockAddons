@@ -66,6 +66,11 @@ public enum Message {
     SETTING_MAKE_BACKPACK_INVENTORIES_COLORED(MessageObject.SETTING, "makeBackpackInventoriesColored"),
     @Deprecated SETTING_AVOID_BREAKING_BOTTOM_SUGAR_CANE(MessageObject.SETTING, "avoidBreakingBottomSugarCane"), // disallowed
     SETTING_REPLACE_ROMAN_NUMERALS_WITH_NUMBERS(MessageObject.SETTING, "replaceRomanNumeralsWithNumbers"),
+    SETTING_CHANGE_BAR_COLOR_WITH_POTIONS(MessageObject.SETTING, "changeBarColorForPotions"),
+    SETTING_CRAFTING_PATTERNS(MessageObject.SETTING, "craftingPatterns"),
+    SETTING_FISHING_SOUND_INDICATOR(MessageObject.SETTING, "soundIndicatorForFishing"),
+    SETTING_AVOID_BLINKING_NIGHT_VISION(MessageObject.SETTING, "avoidBlinkingNightVision"),
+    SETTING_DISABLE_MINION_LOCATION_WARNING(MessageObject.SETTING, "disableMinionLocationWarning"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.STYLE, "compact"),
@@ -97,6 +102,7 @@ public enum Message {
     MESSAGE_OPEN_MODS_FOLDER(MessageObject.MESSAGES, "openModFolder"),
     MESSAGE_JOIN_DISCORD(MessageObject.MESSAGES, "joinTheDiscord"),
     MESSAGE_DELETE_OLD_FILE(MessageObject.MESSAGES, "deleteOldFile"),
+    MESSAGE_FEATURE_DISABLED(MessageObject.MESSAGES, "featureDisabled"),
 
     @Deprecated ANCHOR_POINT_TOP_LEFT(MessageObject.ANCHOR_POINT, "topLeft"),
     @Deprecated ANCHOR_POINT_TOP_RIGHT(MessageObject.ANCHOR_POINT, "topRight"),
@@ -119,7 +125,8 @@ public enum Message {
     TAB_GENERAL_SETTINGS(MessageObject.TAB, "generalSettings"),
 
     INVENTORY_TYPE_ENCHANTS(MessageObject.INVENTORY_TYPE, "enchants"),
-    INVENTORY_TYPE_REFORGES(MessageObject.INVENTORY_TYPE, "reforges");
+    INVENTORY_TYPE_REFORGES(MessageObject.INVENTORY_TYPE, "reforges"),
+    INVENTORY_TYPE_CRAFTING(MessageObject.INVENTORY_TYPE, "crafting");
 
     private MessageObject messageObject;
     private String memberName;

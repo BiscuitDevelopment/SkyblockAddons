@@ -43,7 +43,7 @@ public class ConfigValues {
     private Language language = Language.ENGLISH;
     private EnumUtils.BackpackStyle backpackStyle = EnumUtils.BackpackStyle.GUI;
     private EnumUtils.TextStyle textStyle = EnumUtils.TextStyle.REGULAR;
-    private Set<Feature> remoteDisabledFeatures = EnumSet.noneOf(Feature.class);
+    @SuppressWarnings("deprecation") private Set<Feature> remoteDisabledFeatures = EnumSet.of(Feature.AVOID_BREAKING_BOTTOM_SUGAR_CANE);
     private Set<Integer> lockedSlots = new HashSet<>();
 
     public ConfigValues(SkyblockAddons main, File settingsConfigFile) {
@@ -118,7 +118,7 @@ public class ConfigValues {
             }
 
             for (Feature feature : new Feature[] {Feature.HEALTH_BAR, Feature.MANA_BAR}) {
-                String property = Introspector.decapitalize(WordUtils.capitalizeFully(feature.toString().replace("_", " ")));
+                String property = Introspector.decapitalize(WordUtils.capitalizeFully(feature.toString().replace("_", " "))).replace(" ", "");
                 String w = property+"W";
                 String h = property+"H";
                 if (settingsConfig.has(w)) {
@@ -385,10 +385,32 @@ public class ConfigValues {
                 }
             }
             connection.disconnect();
-            languageConfig = new Gson().fromJson(response.toString(), JsonObject.class);
+            JsonObject onlineMessages = new Gson().fromJson(response.toString(), JsonObject.class);
+            mergeLanguageJsonObject(onlineMessages, languageConfig);
         } catch (JsonParseException | IllegalStateException | IOException ex) {
             ex.printStackTrace();
             System.out.println("SkyblockAddons: There was an error loading the language file online");
+        }
+    }
+
+    /**
+     * This is used to merge in the online language entries into the existing ones.
+     * Using this method rather than an overwrite allows new entries in development to still exist.
+     *
+     * @param jsonObject The object to be merged (online entries).
+     * @param targetObject The object to me merged in to (local entries).
+     */
+    private void mergeLanguageJsonObject(JsonObject jsonObject, JsonObject targetObject) {
+        for (Map.Entry<String, JsonElement> entry : targetObject.entrySet()) {
+            String memberName = entry.getKey();
+            JsonElement value = entry.getValue();
+            if (jsonObject.has(memberName)) {
+                if (value instanceof JsonObject) {
+                    mergeLanguageJsonObject(jsonObject.getAsJsonObject(memberName), (JsonObject)value);
+                } else {
+                    targetObject.add(memberName, value);
+                }
+            }
         }
     }
 
@@ -436,14 +458,14 @@ public class ConfigValues {
             settingsConfig.addProperty("warningSeconds", warningSeconds);
 
             for (Feature feature : GUI_FEATURES) {
-                String property = Introspector.decapitalize(WordUtils.capitalizeFully(feature.toString().replace("_", " ")));
+                String property = Introspector.decapitalize(WordUtils.capitalizeFully(feature.toString().replace("_", " "))).replace(" ", "");
                 settingsConfig.addProperty(property+"X", getRelativeCoords(feature).getX());
                 settingsConfig.addProperty(property+"Y", getRelativeCoords(feature).getY());
             }
 
             for (Feature feature : new Feature[] {Feature.HEALTH_BAR, Feature.MANA_BAR}) {
                 if (barSizes.containsKey(feature)) {
-                    String property = Introspector.decapitalize(WordUtils.capitalizeFully(feature.toString().replace("_", " ")));
+                    String property = Introspector.decapitalize(WordUtils.capitalizeFully(feature.toString().replace("_", " "))).replace(" ", "");
                     int width = getSizes(feature).getX();
                     int height = getSizes(feature).getY();
                     if (width != 7 || height > 1) {

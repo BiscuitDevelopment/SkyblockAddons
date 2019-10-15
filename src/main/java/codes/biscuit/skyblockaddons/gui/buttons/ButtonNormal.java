@@ -4,10 +4,13 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.utils.CoordsPair;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.Feature;
+import codes.biscuit.skyblockaddons.utils.Message;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.SoundHandler;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
+
+import java.awt.*;
 
 import static codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui.BUTTON_MAX_WIDTH;
 
@@ -53,6 +56,9 @@ public class ButtonNormal extends ButtonFeature {
             hovered = mouseX >= this.xPosition && mouseY >= this.yPosition && mouseX < this.xPosition + this.width && mouseY < this.yPosition + this.height;
             if (alpha < 4) alpha = 4;
             int fontColor = main.getUtils().getDefaultBlue(alpha);
+            if (main.getConfigValues().isRemoteDisabled(feature)) {
+                fontColor = new Color(60,60,60).getRGB();
+            }
             GlStateManager.enableBlend();
             float scale = 1;
             int stringWidth = mc.fontRendererObj.getStringWidth(displayString);
@@ -64,6 +70,9 @@ public class ButtonNormal extends ButtonFeature {
                 scale = 1/(stringWidth/widthLimit);
             }
             GlStateManager.color(1,1,1,0.7F);
+            if (main.getConfigValues().isRemoteDisabled(feature)) {
+                GlStateManager.color(0.3F,0.3F,0.3F,0.7F);
+            }
             mc.getTextureManager().bindTexture(FEATURE_BACKGROUND);
             drawModalRectWithCustomSizedTexture(xPosition, yPosition,0,0,width,height,width,height);
 
@@ -103,6 +112,10 @@ public class ButtonNormal extends ButtonFeature {
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
+            }
+
+            if (main.getConfigValues().isRemoteDisabled(feature)) {
+                this.drawCenteredString(mc.fontRendererObj, Message.MESSAGE_FEATURE_DISABLED.getMessage(), textX, textY + 6 , main.getUtils().getDefaultBlue(alpha));
             }
         }
     }

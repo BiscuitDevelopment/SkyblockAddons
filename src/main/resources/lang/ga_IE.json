@@ -50,6 +50,7 @@
     "preventMovementOnDeath": "Cosc ag siúl tar éis Bás",
     "showItemAnvilUses": "Taispeáin Úsáid Inneoin",
     "lockSlots": "Cur Sliotán faoi Ghlas",
+    "lockSlot": "Glas Sliotán",
     "dontResetCursorInventory": "Ná Athshocraigh an Cursor idir Fardal",
     "summoningEyeAlert": "Práinn Súil Seirbheáil",
     "makeEnderchestsInEndGreen": "Déan na Enderchests san End Glas",
@@ -66,7 +67,8 @@
     "stopDroppingSellingRareItems": "Cosc ag Leag/Díol Mír Annamh",
     "makeBackpackInventoriesColored": "Dath Fardal",
     "avoidBreakingBottomSugarCane": "Ná briseadh an Cána Siúcra ag an mBun",
-    "replaceRomanNumeralsWithNumbers": "Athchuir Uimhir Rómhánach ar mír"
+    "replaceRomanNumeralsWithNumbers": "Athchuir Uimhir Rómhánach ar mír",
+    "changeBarColorForPotions": "Change Bar Color for Wither & Poison"
   },
   "messages": {
     "dropConfirmation": "Leag síos an mír seo arís le cinntiú!",
@@ -87,7 +89,7 @@
     "deleteOldFile": "The download has finished, please open your mods folder using the button below, close your Minecraft, and delete the old version (or delete it later if you prefer).",
     "wantToViewPatchNotes": "Want to read the changes?",
     "downloadLink": "Nuashonraigh Nasc",
-    "downloadAutomatically": "AUTO DOWNLOAD",
+    "downloadAutomatically": "Íoslódáil Uathoibríoch",
     "openModFolder": "MODS FOLDER",
     "joinTheDiscord": "JOIN DISCORD",
     "update": {
@@ -100,9 +102,10 @@
     "slotLocked": "Tá an Sliotán seo faoi ghlas!",
     "summoningEyeFound": "Súil Seirbheáil!",
     "cancelledStemBreak": "Chur SkyblockAddons cosc ort an gas seo a briseadh. Úsáid to lámh má tá tú ag iarraidh é a briseadh.",
-    "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use another tool if you'd actually like to break it.",
+    "cancelledCaneBreak": "Chur SkyblockAddons cosc ort an píosa cána siúcra seo a briseadh. Úsáid uirlis eile má tá tú ag iarraidh é a briseadh.",
     "cancelledProfileOpening": "Chur SkyblockAddons cosc ort ag oscailt an próifíl seo fad is atá bogha i do lámh.",
     "cancelledDropping": "Chur SkyblockAddons cosc or an mír annamh seo a leag síos ó do hotbar.",
-    "clickMoreTimes": "Cliceáil/leag síos an mír seo %times% uaireanta eile má tá tú cinnte faoi seo."
+    "clickMoreTimes": "Cliceáil/leag síos an mír seo %times% uaireanta eile má tá tú cinnte faoi seo.",
+    "featureDisabled": "Feature Disabled"
   }
 }

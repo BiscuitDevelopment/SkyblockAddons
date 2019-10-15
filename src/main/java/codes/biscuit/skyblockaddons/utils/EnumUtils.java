@@ -98,7 +98,8 @@ public class EnumUtils {
 
     public enum InventoryType {
         ENCHANTMENT_TABLE(INVENTORY_TYPE_ENCHANTS),
-        REFORGE_ANVIL(INVENTORY_TYPE_REFORGES);
+        REFORGE_ANVIL(INVENTORY_TYPE_REFORGES),
+        CRAFTING_TABLE(INVENTORY_TYPE_CRAFTING);
 
         private Message message;
 
@@ -275,7 +276,8 @@ public class EnumUtils {
 //        WARNING_TIME,
         BACKPACK_STYLE,
         SHOW_ONLY_WHEN_HOLDING_SHIFT,
-        MAKE_INVENTORY_COLORED
+        MAKE_INVENTORY_COLORED,
+        CHANGE_BAR_COLOR_WITH_POTIONS
     }
 
     public enum Merchant {
@@ -310,7 +312,7 @@ public class EnumUtils {
         ORCHID_ALLOY("orchidalloy", "github.com/orchidalloy", Feature.SUMMONING_EYE_ALERT),
         HIGH_CRIT("HighCrit", "github.com/HighCrit", Feature.PREVENT_MOVEMENT_ON_DEATH),
         MOULBERRY("Moulberry", "github.com/Moulberry", Feature.DONT_RESET_CURSOR_INVENTORY),
-        DIDI_SKYWALKER("DidiSkywalker", "github.com/didiskywalker", Feature.ITEM_PICKUP_LOG, Feature.HEALTH_UPDATES, Feature.REPLACE_ROMAN_NUMERALS_WITH_NUMBERS);
+        DIDI_SKYWALKER("DidiSkywalker", "github.com/didiskywalker", Feature.ITEM_PICKUP_LOG, Feature.HEALTH_UPDATES, Feature.REPLACE_ROMAN_NUMERALS_WITH_NUMBERS, Feature.CRAFTING_PATTERNS);
 
         private Set<Feature> features;
         private String author;

@@ -50,6 +50,7 @@
     "preventMovementOnDeath": "Empêcher de marcher après la mort",
     "showItemAnvilUses": "Afficher le nombre d'usage de l'enclume",
     "lockSlots": "Autoriser le verrouillage d'emplacement",
+    "lockSlot": "Case bloqué",
     "dontResetCursorInventory": "Ne pas réinitialiser le curseur entre les inventaires",
     "summoningEyeAlert": "Alerte Œil d'invocation",
     "makeEnderchestsInEndGreen": "Rendre les Enderchests dans l'End vert",
@@ -66,7 +67,8 @@
     "stopDroppingSellingRareItems": "Arrêter le jet/vente d'objets rare",
     "makeBackpackInventoriesColored": "Inventaire coloré",
     "avoidBreakingBottomSugarCane": "Destruction de la base de la canne à sucre",
-    "replaceRomanNumeralsWithNumbers": "Remplacer les numéros romains sur les objets"
+    "replaceRomanNumeralsWithNumbers": "Remplacer les numéros romains sur les objets",
+    "changeBarColorForPotions": "Change Bar Color for Wither & Poison"
   },
   "messages": {
     "dropConfirmation": "Jetez cet objet une nouvelle fois pour confirmer!",
@@ -92,7 +94,7 @@
     "joinTheDiscord": "REJOINDRE LE DISCORD",
     "update": {
       "majorAvailable": "Une nouvelle mise à jour majeure, %version% est disponible ! Le lien pour le télécharger est disponible dans le chat.",
-      "patchAvailable": "A new patch update (%version%) is available! Look in chat for download options!",
+      "patchAvailable": "Le nouveau patch %version% est disponible! Regardez dans le chat pour le télécharger!",
       "downloading": "Le patch est en cours de téléchargement! Statut : %downloaded%/%total% Veuillez noter qu'après la fin du téléchargement, vous devez supprimer l'ancien fichier.",
       "failed": "Le téléchargement du patch a échoué! Veuillez le télécharger manuellement en utilisant le lien dans le chat.",
       "downloadFinished": "Le téléchargement du patch est fini. Il a été enregistré comme %file%. N'oubliez pas de supprimer l'ancien fichier après avoir fermé votre Minecraft. Cliquez sur le message dans le chat pour ouvrir le dossier."
@@ -103,6 +105,7 @@
     "cancelledCaneBreak": "SkyblockAddons vous a empêché de casser ce bloc de canne à sucre. Utiliser un autre outil si vous souhaitez le casser.",
     "cancelledProfileOpening": "SkyblockAddons vous a empêché d'ouvrir le profil de ce joueur en utilisant un arc.",
     "cancelledDropping": "SkyblockAddons vous a empêché de jeter cet objet ou outil rare de votre barre d'action.",
-    "clickMoreTimes": "Cliquez/jetez cet objet encore %times% fois si vous le souhaitez."
+    "clickMoreTimes": "Cliquez/jetez cet objet encore %times% fois si vous le souhaitez.",
+    "featureDisabled": "Feature Disabled"
   }
 }
