@@ -69,7 +69,10 @@
     "avoidBreakingBottomSugarCane": "Evitar partir a cana de açúcar de baixo",
     "replaceRomanNumeralsWithNumbers": "Substituir os números romanos nos itens",
     "changeBarColorForPotions": "Mudar a cor da barra com Wither ou Veneno",
-    "craftingPatterns": "Escolhe os padrões de criação"
+    "craftingPatterns": "Escolhe os padrões de criação",
+    "soundIndicatorForFishing": "Sound Indicator for Fishing",
+    "avoidBlinkingNightVision": "Avoid Blinking Night Vision Potion",
+    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings"
   },
   "messages": {
     "dropConfirmation": "Dropa este item outra vez para confirmar!",
