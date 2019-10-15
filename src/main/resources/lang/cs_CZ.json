@@ -68,8 +68,8 @@
     "makeBackpackInventoriesColored": "Vybarvit inventáře",
     "avoidBreakingBottomSugarCane": "Zabránění rozbití spodní vrstvy cukrové třtiny",
     "replaceRomanNumeralsWithNumbers": "Nahrazení římských číslic na předmětech",
-    "changeBarColorForPotions": "Change Bar Color for Wither & Poison",
-    "craftingPatterns": "Vybrat si výrobní vzory"
+    "changeBarColorForPotions": "Změň barvu ukazetele pro wither a poison efekt",
+    "craftingPatterns": "Vybrat si crafting vzory"
   },
   "messages": {
     "dropConfirmation": "Vyhoď tento item pro vyhození!",
@@ -108,6 +108,6 @@
     "cancelledProfileOpening": "SkyblockAddons vám zabránil otevřít profil hráče při držení luku.",
     "cancelledDropping": "SkyblockAddons vám zabránil vyhodit tento vzácný předmět nebo nástroj z vašeho hotbaru.",
     "clickMoreTimes": "Klikněte/vyhoďte tento předmět %times%-krát, pokud to chcete opravdu udělat.",
-    "featureDisabled": "Feature Disabled"
+    "featureDisabled": "Vlsatnost je vypnuta"
   }
 }
