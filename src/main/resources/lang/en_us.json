@@ -70,7 +70,8 @@
     "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Items",
     "changeBarColorForPotions": "Change Bar Color for Wither & Poison",
     "craftingPatterns": "Choose Crafting Patterns",
-    "soundIndicatorForFishing": "Sound Indicator for Fishing"
+    "soundIndicatorForFishing": "Sound Indicator for Fishing",
+    "avoidBlinkingNightVision": "Avoid Blinking Night Vision Potion"
   },
   "messages": {
     "dropConfirmation": "Drop this item again to confirm!",
