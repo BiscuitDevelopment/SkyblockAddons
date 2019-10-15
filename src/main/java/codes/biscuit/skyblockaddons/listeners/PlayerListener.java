@@ -106,6 +106,7 @@ public class PlayerListener {
             main.getScheduler().schedule(Scheduler.CommandType.DELETE_RECENT_CHUNK, 20, x, z);
         }
     }
+
     /**
      * Interprets the action bar to extract mana, health, and defence. Enables/disables mana/health prediction,
      * and looks for mana usage messages in chat while predicting.
@@ -210,7 +211,7 @@ public class PlayerListener {
                 KeyBinding.unPressAllKeys();
             }
             // credits to tomotomo, thanks lol
-            if (main.getConfigValues().isEnabled(Feature.SUMMONING_EYE_ALERT) && e.message.getFormattedText().equals("\u00A7r\u00A76\u00A7lRARE DROP! \u00A7r\u00A75Summoning Eye\u00A7r")){
+            if (main.getConfigValues().isEnabled(Feature.SUMMONING_EYE_ALERT) && e.message.getFormattedText().equals("\u00A7r\u00A76\u00A7lRARE DROP! \u00A7r\u00A75Summoning Eye\u00A7r")) {
                 main.getUtils().playSound("random.orb", 0.5);
                 main.getRenderListener().setTitleFeature(Feature.SUMMONING_EYE_ALERT);
                 main.getScheduler().schedule(Scheduler.CommandType.RESET_TITLE_FEATURE, main.getConfigValues().getWarningSeconds());
@@ -219,7 +220,7 @@ public class PlayerListener {
     }
 
     private void changeMana(int change) {
-        setAttribute(Attribute.MANA, getAttribute(Attribute.MANA)+change);
+        setAttribute(Attribute.MANA, getAttribute(Attribute.MANA) + change);
     }
 
     private int getAttribute(Attribute attribute) {
@@ -275,7 +276,7 @@ public class PlayerListener {
             Minecraft mc = Minecraft.getMinecraft();
             if (mc != null) { // Predict health every tick if needed.
 
-                if(healthUpdate != null && System.currentTimeMillis()-lastHealthUpdate > 3000) {
+                if (healthUpdate != null && System.currentTimeMillis() - lastHealthUpdate > 3000) {
                     healthUpdate = null;
                 }
                 if (main.getRenderListener().isPredictHealth()) {
@@ -313,7 +314,7 @@ public class PlayerListener {
                         if (mc.currentScreen != null) {
                             lastScreenOpen = System.currentTimeMillis();
                         } else if (main.getConfigValues().isEnabled(Feature.ITEM_PICKUP_LOG)
-                                    && main.getPlayerListener().didntRecentlyJoinWorld()) {
+                                && main.getPlayerListener().didntRecentlyJoinWorld()) {
                             main.getInventoryUtils().getInventoryDifference(p.inventory.mainInventory);
                         }
                     }
@@ -412,7 +413,7 @@ public class PlayerListener {
 //                                logServer(mc);
                                     }
                                     magmaAccuracy = EnumUtils.MagmaTimerAccuracy.SPAWNED;
-                                    if (currentTime- lastBossSpawnPost > 300000) {
+                                    if (currentTime - lastBossSpawnPost > 300000) {
                                         lastBossSpawnPost = currentTime;
                                         main.getUtils().sendPostRequest(EnumUtils.MagmaEvent.BOSS_SPAWN);
                                     }
@@ -425,7 +426,7 @@ public class PlayerListener {
                         if (!foundBoss && magmaAccuracy == EnumUtils.MagmaTimerAccuracy.SPAWNED) {
                             magmaAccuracy = EnumUtils.MagmaTimerAccuracy.ABOUT;
                             setMagmaTime(7200, true);
-                            if (currentTime- lastBossDeathPost > 300000) {
+                            if (currentTime - lastBossDeathPost > 300000) {
                                 lastBossDeathPost = currentTime;
                                 main.getUtils().sendPostRequest(EnumUtils.MagmaEvent.BOSS_DEATH);
                             }
@@ -459,7 +460,7 @@ public class PlayerListener {
         AxisAlignedBB spawnArea = new AxisAlignedBB(-244, 0, -566, -379, 255, -635);
 
         if (main.getUtils().getLocation() == EnumUtils.Location.BLAZING_FORTRESS) {
-            Entity entity =  e.entity;
+            Entity entity = e.entity;
             if (spawnArea.isVecInside(new Vec3(entity.posX, entity.posY, entity.posZ))) { // timers will trigger if 15 magmas/8 blazes spawn in the box within a 4 second time period
                 long currentTime = System.currentTimeMillis();
                 if (e.entity instanceof EntityMagmaCube) {
@@ -469,7 +470,7 @@ public class PlayerListener {
                         if (recentMagmaCubes >= 17) {
                             setMagmaTime(600, true);
                             magmaAccuracy = EnumUtils.MagmaTimerAccuracy.EXACTLY;
-                            if (currentTime- lastMagmaWavePost > 300000) {
+                            if (currentTime - lastMagmaWavePost > 300000) {
                                 lastMagmaWavePost = currentTime;
                                 main.getUtils().sendPostRequest(EnumUtils.MagmaEvent.MAGMA_WAVE);
                             }
@@ -482,7 +483,7 @@ public class PlayerListener {
                         if (recentBlazes >= 10) {
                             setMagmaTime(1200, true);
                             magmaAccuracy = EnumUtils.MagmaTimerAccuracy.EXACTLY;
-                            if (currentTime- lastBlazeWavePost > 300000) {
+                            if (currentTime - lastBlazeWavePost > 300000) {
                                 lastBlazeWavePost = currentTime;
                                 main.getUtils().sendPostRequest(EnumUtils.MagmaEvent.BLAZE_WAVE);
                             }
