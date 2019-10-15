@@ -41,11 +41,12 @@ public class MixinEntityRenderer {
     }
 
     private void removeEntities(List<Entity> list) {
-        if (SkyblockAddons.getInstance().getUtils().isOnSkyblock()) {
-            if (!GuiScreen.isCtrlKeyDown() && SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.IGNORE_ITEM_FRAME_CLICKS)) {
+        SkyblockAddons main = SkyblockAddons.getInstance();
+        if (main.getUtils().isOnSkyblock()) {
+            if (!GuiScreen.isCtrlKeyDown() && main.getConfigValues().isEnabled(Feature.IGNORE_ITEM_FRAME_CLICKS)) {
                 list.removeIf(listEntity -> listEntity instanceof EntityItemFrame);
             }
-            if (SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.HIDE_AUCTION_HOUSE_PLAYERS)) {
+            if (main.getConfigValues().isEnabled(Feature.HIDE_AUCTION_HOUSE_PLAYERS)) {
                 list.removeIf(EnumUtils.SkyblockNPC::isNearNPC);
             }
         }

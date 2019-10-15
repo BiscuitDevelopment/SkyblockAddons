@@ -21,7 +21,7 @@
     "hideDurability": "隐藏物品耐久度",
     "showEnchantmentsReforges": "附魔 & 重铸",
     "minionStopWarning": "\"仆从无法触及生物\"警告",
-    "hideAuctionHousePlayers": "隐藏拍卖所内玩家",
+    "hideAuctionHousePlayers": "隐藏重要 NPC 附近的玩家",
     "backpackStyle": "背包样式: %style%",
     "backpackStyles": {
       "regular": "常规",
@@ -50,6 +50,7 @@
     "preventMovementOnDeath": "暂时阻止死亡后移动",
     "showItemAnvilUses": "显示物品铁砧合成次数",
     "lockSlots": "锁定快捷栏功能",
+    "lockSlot": "锁定槽位",
     "dontResetCursorInventory": "阻止切换物品栏菜单时光标重置",
     "summoningEyeAlert": "召唤之眼获取提醒",
     "makeEnderchestsInEndGreen": "将末地中末影箱渲染为绿色",
@@ -62,19 +63,17 @@
       "two": "风格二"
     },
     "warningDuration": "警报持续时间",
-    "dontOpenProfileWithBow": "不用弓打开配置文件",
-    "stopDroppingSellingRareItems": "防止把贵重的物品买了",
-    "makeBackpackInventoriesColored": "在背包里加颜色",
-    "avoidBreakingBottomSugarCane": "阻止断绝底部甘蔗",
-    "replaceRomanNumeralsWithNumbers": "替换物品上的罗马编号"
+    "dontOpenProfileWithBow": "不在持弓时打开玩家信息",
+    "stopDroppingSellingRareItems": "防止丢弃或出售稀有物品",
+    "makeBackpackInventoriesColored": "彩色背包",
+    "avoidBreakingBottomSugarCane": "防止破坏底部甘蔗",
+    "replaceRomanNumeralsWithNumbers": "使用阿拉伯编号",
+    "changeBarColorForPotions": "Change Bar Color for Wither & Poison"
   },
   "messages": {
     "dropConfirmation": "再次丢弃此物品以确认!",
     "magmaBossWarning": "!!!岩浆怪Boss已出生!!!",
     "fullInventory": "背包已满!",
-    "newVersion": "新版本，%newestVersion%已发布。点击这里下载。",
-    "discord": "想看到有那些改变? 点击此处以加入我的Discord.",
-    "developmentVersion": "你在正使用一个开发版本: %version%ﾟ. 上一个正式版本为 %newestVersion%",
     "labymod": "Labymod使用者: 隐藏食物, 装甲值, 以及血条, 不兼容。",
     "minionCannotReach": "有一个%type%仆从无法触及到生物而停止运作了!",
     "minionIsFull": "有一个仆从因为背包已满而停止运作了!",
@@ -86,11 +85,27 @@
       "enchants": "附魔",
       "reforges": "重铸"
     },
+    "newUpdateAvailable": "新版本 %version% 可用！",
+    "deleteOldFile": "下载已完成，请使用下面的按钮打开您的 mods 文件夹，关闭 Minecraft，然后删除旧版本（或根据需要稍后删除）。",
+    "wantToViewPatchNotes": "是否想阅读更新内容？",
+    "downloadLink": "更新链接",
+    "downloadAutomatically": "自动下载",
+    "openModFolder": "Mods 文件夹",
+    "joinTheDiscord": "加入 Discord",
+    "update": {
+      "majorAvailable": "%version% 重要更新！下载链接可以在聊天中找到。",
+      "patchAvailable": "%version% 补丁更新！下载链接可以在聊天中找到。",
+      "downloading": "补丁正在下载（%downloaded%/%total%）\n请注意，下载完成后，请您务必删除旧文件。",
+      "failed": "补丁下载失败！请在聊天中寻找下载链接。",
+      "downloadFinished": "补丁下载完成，它被保存为 %file%。\n请不要忘记在关闭您的 Minecraft 后删除旧文件，点击此处打开文件夹。"
+    },
     "slotLocked": "该栏已锁！",
     "summoningEyeFound": "召唤之眼！",
-    "cancelledStemBreak": "SkyblockAddons阻止你破坏此方块，请使用空手来进行破坏。",
-    "cancelledProfileOpening": "SkyblockAddons 防止了你拿着弓他开这个人的 (IDK what profile's translation is)",
-    "cancelledDropping": "SkyblockAddons 防止了你把这个工具或物品扔掉",
-    "clickMoreTimes": "如果你想要把这个东西掉了，在如果你想要把这个东西掉了，在点击%times% 次"
+    "cancelledStemBreak": "SkyblockAddons 已阻止你破坏此作物，如果你真的想要破坏它，请使用空手。",
+    "cancelledCaneBreak": "SkyblockAddons 已阻止你破坏此甘蔗。如果你真的想要破坏它，请使用其他工具。",
+    "cancelledProfileOpening": "SkyblockAddons阻止了你在持弓的时候打开他人的档案。",
+    "cancelledDropping": "SkyblockAddons 已阻止你将物品栏中的稀有物品或工具丢弃。",
+    "clickMoreTimes": "SkyblockAddons 已阻止你丢弃物品。如果你真的想丢弃它，请再点击%times%次。",
+    "featureDisabled": "Feature Disabled"
   }
 }

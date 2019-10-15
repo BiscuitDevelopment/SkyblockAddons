@@ -5,7 +5,7 @@ import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
-import net.minecraft.inventory.Slot;
+import net.minecraft.inventory.*;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
@@ -17,12 +17,10 @@ import java.util.*;
  */
 public class InventoryUtils {
 
-    private static final String SUMMONING_EYE_DISPLAY_NAME = "\u00A75Summoning Eye";
-
     /**
-     * Display name of the Quiver Arrow item
+     * Slot index the SkyBlock menu is at
      */
-    private static final String QUIVER_ARROW_DISPLAY_NAME = "\u00A78Quiver Arrow";
+    private static final int SKYBLOCK_MENU_SLOT = 8;
 
     /**
      * Display name of the Skeleton Helmet
@@ -72,6 +70,10 @@ public class InventoryUtils {
         if (previousInventory != null) {
 
             for(int i = 0; i < newInventory.size(); i++) {
+                if (i == SKYBLOCK_MENU_SLOT) { // Skip the SkyBlock Menu slot all together (which includes the Quiver Arrow now)
+                    continue;
+                }
+
                 ItemStack previousItem = previousInventory.get(i);
                 ItemStack newItem = newInventory.get(i);
 
@@ -81,15 +83,6 @@ public class InventoryUtils {
                 }
 
                 if(newItem != null) {
-                    if(newItem.getDisplayName().equals(QUIVER_ARROW_DISPLAY_NAME)) {
-
-                        newInventory.set(i, previousItem);
-                        if(previousItem != null) {
-                            newItem = previousItem;
-                        } else {
-                            continue;
-                        }
-                    }
                     if (newItem.getDisplayName().contains(" "+ EnumChatFormatting.DARK_GRAY+"x")) {
                         String newName = newItem.getDisplayName().substring(0, newItem.getDisplayName().lastIndexOf(" "));
                         newItem.setStackDisplayName(newName); // This is a workaround for merchants, it adds x64 or whatever to the end of the name.
@@ -240,5 +233,16 @@ public class InventoryUtils {
             }
         }
         return false;
+    }
+
+    /**
+     * The difference between a slot number in any given {@link Container} and what that number would be in a {@link ContainerPlayer}.
+     */
+    public int getSlotDifference(Container container) {
+        if (container instanceof ContainerChest) return 9-((ContainerChest)container).getLowerChestInventory().getSizeInventory();
+        else if (container instanceof ContainerHopper) return 4;
+        else if (container instanceof ContainerFurnace) return 6;
+        else if (container instanceof ContainerBeacon) return 8;
+        else return 0;
     }
 }

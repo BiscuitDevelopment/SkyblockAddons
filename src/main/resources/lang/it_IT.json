@@ -21,7 +21,7 @@
     "hideDurability": "Nascondi la Durabilità degli strumenti",
     "showEnchantmentsReforges": "Incantesimi & Forge",
     "minionStopWarning": "Avviso che \"i Minion non possono raggiungere le risorse\" ",
-    "hideAuctionHousePlayers": "Nascondi i Giocatori vicino alla Auction House",
+    "hideAuctionHousePlayers": "Nascondi i giocatori vicino agli NPC importanti",
     "backpackStyle": "Stile Zaino: %style%",
     "backpackStyles": {
       "regular": "Regolare",
@@ -50,6 +50,7 @@
     "preventMovementOnDeath": "Impedisci di Camminare Dopo Essere Morto",
     "showItemAnvilUses": "Mostra Numero di Usi dell’Incudine",
     "lockSlots": "Permetti di bloccare gli slot",
+    "lockSlot": "Blocca Slot",
     "dontResetCursorInventory": "Non resettare il cursore tra gli inventari",
     "summoningEyeAlert": "Avviso di acquisizione di un Occhio dell'evocazione",
     "makeEnderchestsInEndGreen": "Rendi le casse nell'End verdi",
@@ -66,15 +67,13 @@
     "stopDroppingSellingRareItems": "Smetti di gettare/vendere oggetti rari",
     "makeBackpackInventoriesColored": "Colora gli inventari",
     "avoidBreakingBottomSugarCane": "Evita di Rompere la Base della Canna da Zucchero",
-    "replaceRomanNumeralsWithNumbers": "Rimpiazza Numeri Romani sugli Oggetti"
+    "replaceRomanNumeralsWithNumbers": "Rimpiazza Numeri Romani sugli Oggetti",
+    "changeBarColorForPotions": "Change Bar Color for Wither & Poison"
   },
   "messages": {
     "dropConfirmation": "Getta questo oggetto nuovamente per confermare!",
     "magmaBossWarning": "Magma Boss!",
     "fullInventory": "Inventario pieno!",
-    "newVersion": "Una nuova versione, %newestVersion% è disponibile. Scaricala cliccando qui.",
-    "discord": "Vuoi vedere i nuovi cambiamenti? Clicca qui per entrare nel nostro server di Discord.",
-    "developmentVersion": "Stai utilizzando la versione: %version%. L’ultima versione online è %newestVersion%",
     "labymod": "Utenti LabyMod: Le Barre Nascondi Cibo, Armatura e Vita sono incompatibili.",
     "minionCannotReach": "Un %type% minion non riesce a raggiungere le risorse ed ha smesso di generarne altre!",
     "minionIsFull": "Un minion sulla tua isola ha l’inventario pieno!",
@@ -86,11 +85,27 @@
       "enchants": "Incantesimi",
       "reforges": "Forge"
     },
+    "newUpdateAvailable": "Un nuovo aggiornamento (%version%) è disponibile!",
+    "deleteOldFile": "Il download è terminato. Apri la cartella mods utilizzando il tasto sottostante, chiudi Minecraft, ed elimina la versione vecchia (oppure eliminala più tardi se preferisci).",
+    "wantToViewPatchNotes": "Vuoi leggere le modifiche?",
+    "downloadLink": "LINK AGGIORNAMENTO",
+    "downloadAutomatically": "DOWNLOAD AUTOMATICO",
+    "openModFolder": "CARTELLA MODS",
+    "joinTheDiscord": "ENTRA NEL SERVER DI DISCORD",
+    "update": {
+      "majorAvailable": "Un nuovo aggiornamento importante (%version%) è disponibile! Il link per il download si trova in chat.",
+      "patchAvailable": "Un nuovo aggiornamento con correzioni di errori (%version%) è disponibile! Cerca le opzioni di download in chat!",
+      "downloading": "Download delle correzioni! Status: %downloaded%/%total% Ricorda che al termine del download dovrai eliminare il file vecchio.",
+      "failed": "Il download delle correzioni non è riuscito! Scaricalo manualmente utilizzando il link in chat.",
+      "downloadFinished": "L’aggiornamento con le correzioni è stato scaricato. È stato salvato come %file%. Non dimenticarti di eliminare il vecchio file dopo aver chiuso Minecraft. Clicca sul messaggio in chat per aprire la cartella."
+    },
     "slotLocked": "Questo slot è bloccato!",
     "summoningEyeFound": "Occhio dell'evocazione!",
     "cancelledStemBreak": "SkyblockAddons ti ha impedito di rompere questo stelo. Usa la tua mano se lo vuoi rompere.",
+    "cancelledCaneBreak": "SkyblockAddons ti ha impedito di rompere questo pezzo di canna da zucchero. Usa un altro strumento se lo vuoi rompere.",
     "cancelledProfileOpening": "SkyblockAddons ti ha impedito di aprire il profilo di questo giocatore mentre avevi l’arco in mano.",
     "cancelledDropping": "SkyblockAddons ti ha impedito di gettare questo oggetto o strumento raro dalla tua hotbar.",
-    "clickMoreTimes": "Clicca/getta questo oggetto altre %times% volte se vuoi davvero farlo."
+    "clickMoreTimes": "Clicca/getta questo oggetto altre %times% volte se vuoi davvero farlo.",
+    "featureDisabled": "Feature Disabled"
   }
 }

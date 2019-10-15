@@ -5,10 +5,12 @@ import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.Vec3;
+import org.apache.commons.lang3.text.WordUtils;
 
 import java.util.Arrays;
 import java.util.EnumSet;
 import java.util.Set;
+import java.util.regex.Pattern;
 
 import static codes.biscuit.skyblockaddons.utils.Message.*;
 
@@ -96,7 +98,8 @@ public class EnumUtils {
 
     public enum InventoryType {
         ENCHANTMENT_TABLE(INVENTORY_TYPE_ENCHANTS),
-        REFORGE_ANVIL(INVENTORY_TYPE_REFORGES);
+        REFORGE_ANVIL(INVENTORY_TYPE_REFORGES),
+        CRAFTING_TABLE(INVENTORY_TYPE_CRAFTING);
 
         private Message message;
 
@@ -219,6 +222,7 @@ public class EnumUtils {
     public enum SkyblockNPC {
         AUCTION_MASTER(17.5,71,-78.5, Location.VILLAGE, Location.AUCTION_HOUSE),
         BANKER(20.5,71,-40.5, Location.VILLAGE, Location.BANK),
+        BAKER(34.5, 71, -44.5, Location.VILLAGE),
         LOBBY_SELECTOR(-9,70,-79, Location.VILLAGE),
         SIRIUS(91.5,75,176.5, Location.WILDERNESS);
 
@@ -246,11 +250,12 @@ public class EnumUtils {
 //        }
 
         public static boolean isNearNPC(Entity e) {
+            Utils utils = SkyblockAddons.getInstance().getUtils();
             for (SkyblockNPC npc : values()) {
-                if (npc.locations.contains(SkyblockAddons.getInstance().getUtils().getLocation())) {
+                if (npc.locations.contains(utils.getLocation())) {
                     double x = e.posX; double y = e.posY; double z = e.posZ;
-                    if (npc.hideArea.isVecInside(new Vec3(x, y,z))
-                            && (npc.x != x || npc.y != y || npc.z != z)) {
+                    if (npc.hideArea.isVecInside(new Vec3(x, y,z)) &&
+                            (npc.x != x || npc.y != y || npc.z != z) && utils.isNotNPC(e)) {
                         return true;
                     }
                 }
@@ -271,7 +276,8 @@ public class EnumUtils {
 //        WARNING_TIME,
         BACKPACK_STYLE,
         SHOW_ONLY_WHEN_HOLDING_SHIFT,
-        MAKE_INVENTORY_COLORED
+        MAKE_INVENTORY_COLORED,
+        CHANGE_BAR_COLOR_WITH_POTIONS
     }
 
     public enum Merchant {
@@ -299,6 +305,41 @@ public class EnumUtils {
         }
     }
 
+    @SuppressWarnings("deprecation")
+    public enum FeatureCredit {
+        INVENTIVE_TALENT("InventiveTalent", "inventivetalent.org", Feature.MAGMA_BOSS_TIMER),
+        FSCK("fsck", "github.com/fsckmc", Feature.AVOID_BREAKING_BOTTOM_SUGAR_CANE),
+        ORCHID_ALLOY("orchidalloy", "github.com/orchidalloy", Feature.SUMMONING_EYE_ALERT),
+        HIGH_CRIT("HighCrit", "github.com/HighCrit", Feature.PREVENT_MOVEMENT_ON_DEATH),
+        MOULBERRY("Moulberry", "github.com/Moulberry", Feature.DONT_RESET_CURSOR_INVENTORY),
+        DIDI_SKYWALKER("DidiSkywalker", "github.com/didiskywalker", Feature.ITEM_PICKUP_LOG, Feature.HEALTH_UPDATES, Feature.REPLACE_ROMAN_NUMERALS_WITH_NUMBERS, Feature.CRAFTING_PATTERNS);
+
+        private Set<Feature> features;
+        private String author;
+        private String url;
+
+        FeatureCredit(String author, String url, Feature... features) {
+            this.features = EnumSet.of(features[0], features);
+            this.author = author;
+            this.url = url;
+        }
+
+        public static FeatureCredit fromFeature(Feature feature) {
+            for (FeatureCredit credit : values()) {
+                if (credit.features.contains(feature)) return credit;
+            }
+            return null;
+        }
+
+        public String getAuthor() {
+            return "Contrib. " + author;
+        }
+
+        public String getUrl() {
+            return "https://"+url;
+        }
+    }
+
     public enum Rarity {
         COMMON("f"),
         UNCOMMON("a"),
@@ -320,6 +361,28 @@ public class EnumUtils {
                 if(itemName.startsWith(rarity.tag)) return rarity;
             }
             return null;
+        }
+    }
+
+    public enum UpdateMessageType {
+        MAJOR_AVAILABLE(UPDATE_MESSAGE_MAJOR),
+        PATCH_AVAILABLE(UPDATE_MESSAGE_PATCH),
+        DOWNLOADING(UPDATE_MESSAGE_DOWNLOAD),
+        FAILED(UPDATE_MESSAGE_FAILED),
+        DOWNLOAD_FINISHED(UPDATE_MESSAGE_DOWNLOAD_FINISHED),
+        DEVELOPMENT(null);
+
+        private Message message;
+
+        UpdateMessageType(Message message) {
+            this.message = message;
+        }
+
+        public String[] getMessages(String... variables) {
+            if (this == DEVELOPMENT) return WordUtils.wrap("You are running a development version: "+SkyblockAddons.VERSION+
+                    ". Please report any bugs that haven't been found yet. Thank you.", 36).replace("\r", "").split(Pattern.quote("\n"));
+            String text = WordUtils.wrap(message.getMessage(variables), 36).replace("\r", "");
+            return text.split(Pattern.quote("\n"));
         }
     }
 }

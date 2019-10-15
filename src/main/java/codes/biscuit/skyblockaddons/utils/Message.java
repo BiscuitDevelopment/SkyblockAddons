@@ -55,6 +55,7 @@ public enum Message {
     SETTING_SHOW_ITEM_ANVIL_USES(MessageObject.SETTING, "showItemAnvilUses"),
     SETTING_PREVENT_MOVEMENT_ON_DEATH(MessageObject.SETTING, "preventMovementOnDeath"),
     SETTING_LOCK_SLOTS(MessageObject.SETTING, "lockSlots"),
+    SETTING_LOCK_SLOT(MessageObject.SETTING, "lockSlot"),
     SETTING_DONT_RESET_CURSOR_INVENTORY(MessageObject.SETTING, "dontResetCursorInventory"),
     SETTING_SUMMONING_EYE_ALERT(MessageObject.SETTING, "summoningEyeAlert"),
     SETTING_CHANGE_COLOR(MessageObject.SETTING, "changeColor"),
@@ -63,8 +64,11 @@ public enum Message {
     SETTING_MAKE_ENDERCHESTS_IN_END_GREEN(MessageObject.SETTING, "makeEnderchestsInEndGreen"),
     SETTING_STOP_DROPPING_SELLING_RARE_ITEMS(MessageObject.SETTING, "stopDroppingSellingRareItems"),
     SETTING_MAKE_BACKPACK_INVENTORIES_COLORED(MessageObject.SETTING, "makeBackpackInventoriesColored"),
-    SETTING_AVOID_BREAKING_BOTTOM_SUGAR_CANE(MessageObject.SETTING, "avoidBreakingBottomSugarCane"),
+    @Deprecated SETTING_AVOID_BREAKING_BOTTOM_SUGAR_CANE(MessageObject.SETTING, "avoidBreakingBottomSugarCane"), // disallowed
     SETTING_REPLACE_ROMAN_NUMERALS_WITH_NUMBERS(MessageObject.SETTING, "replaceRomanNumeralsWithNumbers"),
+    SETTING_CHANGE_BAR_COLOR_WITH_POTIONS(MessageObject.SETTING, "changeBarColorForPotions"),
+    SETTING_CRAFTING_PATTERNS(MessageObject.SETTING, "craftingPatterns"),
+    SETTING_FISHING_SOUND_INDICATOR(MessageObject.SETTING, "soundIndicatorForFishing"),
     SETTING_AVOID_BLINKING_NIGHT_VISION(MessageObject.SETTING, "avoidBlinkingNightVision"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.STYLE, "regular"),
@@ -73,12 +77,12 @@ public enum Message {
     MESSAGE_DROP_CONFIRMATION(MessageObject.MESSAGES, "dropConfirmation"),
     MESSAGE_MAGMA_BOSS_WARNING(MessageObject.MESSAGES, "magmaBossWarning"),
     MESSAGE_FULL_INVENTORY(MessageObject.MESSAGES, "fullInventory"),
-    MESSAGE_NEW_VERSION(MessageObject.MESSAGES, "newVersion"),
+//    MESSAGE_NEW_VERSION(MessageObject.MESSAGES, "newVersion"),
     MESSAGE_LABYMOD(MessageObject.MESSAGES, "labymod"),
-    MESSAGE_DISCORD(MessageObject.MESSAGES, "discord"),
+//    MESSAGE_DISCORD(MessageObject.MESSAGES, "discord"),
     MESSAGE_MINION_CANNOT_REACH(MessageObject.MESSAGES, "minionCannotReach"),
     MESSAGE_MINION_IS_FULL(MessageObject.MESSAGES, "minionIsFull"),
-    MESSAGE_DEVELOPMENT_VERSION(MessageObject.MESSAGES, "developmentVersion"),
+//    MESSAGE_DEVELOPMENT_VERSION(MessageObject.MESSAGES, "developmentVersion"),
     MESSAGE_TYPE_ENCHANTMENTS(MessageObject.MESSAGES, "typeEnchantmentsHere"),
     MESSAGE_SEPARATE_ENCHANTMENTS(MessageObject.MESSAGES, "separateMultiple"),
     MESSAGE_ENCHANTS_TO_MATCH(MessageObject.MESSAGES, "enchantsToMatch"),
@@ -90,12 +94,26 @@ public enum Message {
     MESSAGE_CANCELLED_DROPPING(MessageObject.MESSAGES, "cancelledDropping"),
     MESSAGE_CLICK_MORE_TIMES(MessageObject.MESSAGES, "clickMoreTimes"),
     MESSAGE_CANCELLED_CANE_BREAK(MessageObject.MESSAGES, "cancelledCaneBreak"),
+    MESSAGE_NEW_UPDATE(MessageObject.MESSAGES, "newUpdateAvailable"),
+    MESSAGE_VIEW_PATCH_NOTES(MessageObject.MESSAGES, "wantToViewPatchNotes"),
+    MESSAGE_DOWNLOAD_LINK(MessageObject.MESSAGES, "downloadLink"),
+    MESSAGE_DOWNLOAD_AUTOMATICALLY(MessageObject.MESSAGES, "downloadAutomatically"),
+    MESSAGE_OPEN_MODS_FOLDER(MessageObject.MESSAGES, "openModFolder"),
+    MESSAGE_JOIN_DISCORD(MessageObject.MESSAGES, "joinTheDiscord"),
+    MESSAGE_DELETE_OLD_FILE(MessageObject.MESSAGES, "deleteOldFile"),
+    MESSAGE_FEATURE_DISABLED(MessageObject.MESSAGES, "featureDisabled"),
 
     @Deprecated ANCHOR_POINT_TOP_LEFT(MessageObject.ANCHOR_POINT, "topLeft"),
     @Deprecated ANCHOR_POINT_TOP_RIGHT(MessageObject.ANCHOR_POINT, "topRight"),
     @Deprecated ANCHOR_POINT_BOTTOM_LEFT(MessageObject.ANCHOR_POINT, "bottomLeft"),
     @Deprecated ANCHOR_POINT_BOTTOM_RIGHT(MessageObject.ANCHOR_POINT, "bottomRight"),
     @Deprecated ANCHOR_POINT_HEALTH_BAR(MessageObject.ANCHOR_POINT, "healthBar"),
+
+    UPDATE_MESSAGE_MAJOR(MessageObject.UPDATE_MESSAGES, "majorAvailable"),
+    UPDATE_MESSAGE_PATCH(MessageObject.UPDATE_MESSAGES, "patchAvailable"),
+    UPDATE_MESSAGE_DOWNLOAD(MessageObject.UPDATE_MESSAGES, "downloading"),
+    UPDATE_MESSAGE_FAILED(MessageObject.UPDATE_MESSAGES, "failed"),
+    UPDATE_MESSAGE_DOWNLOAD_FINISHED(MessageObject.UPDATE_MESSAGES, "downloadFinished"),
 
     TEXT_STYLE_ONE(MessageObject.TEXT_STYLE, "one"),
     TEXT_STYLE_TWO(MessageObject.TEXT_STYLE, "two"),
@@ -106,7 +124,8 @@ public enum Message {
     TAB_GENERAL_SETTINGS(MessageObject.TAB, "generalSettings"),
 
     INVENTORY_TYPE_ENCHANTS(MessageObject.INVENTORY_TYPE, "enchants"),
-    INVENTORY_TYPE_REFORGES(MessageObject.INVENTORY_TYPE, "reforges");
+    INVENTORY_TYPE_REFORGES(MessageObject.INVENTORY_TYPE, "reforges"),
+    INVENTORY_TYPE_CRAFTING(MessageObject.INVENTORY_TYPE, "crafting");
 
     private MessageObject messageObject;
     private String memberName;
@@ -141,21 +160,21 @@ public enum Message {
                     text = text.replace("%style%", main.getConfigValues().getBackpackStyle().getMessage());
                 } else if (this == Message.SETTING_GUI_SCALE) {
                     text = text.replace("%scale%", variables[0]);
-                } else if (this == Message.MESSAGE_NEW_VERSION) {
-                    text = text.replace("%newestVersion%", variables[0]);
+                } else if (this == Message.MESSAGE_NEW_UPDATE || this == UPDATE_MESSAGE_MAJOR || this == UPDATE_MESSAGE_PATCH) {
+                    text = text.replace("%version%", variables[0]);
                 //} else if (this == Message.SETTING_BACKPACK_STYLE) {
                 //    text = text.replace("%style%", main.getConfigValues().getBackpackStyle().getMessage());
                 } else if (this == Message.SETTING_TEXT_STYLE) {
                     text = text.replace("%style%", main.getConfigValues().getTextStyle().getMessage());
-                } else if (this == Message.MESSAGE_DEVELOPMENT_VERSION) {
-                    text = text.replace("%version%", variables[0]).replace("%newestVersion%", variables[1]);
-                //} else if (this == Message.LANGUAGE) {
-                //    text = "Language: " + text;
                 } else if (this == Message.MESSAGE_MINION_CANNOT_REACH || this == Message.MESSAGE_TYPE_ENCHANTMENTS
                         || this == Message.MESSAGE_ENCHANTS_TO_MATCH || this == Message.MESSAGE_ENCHANTS_TO_EXCLUDE) {
                     text = text.replace("%type%", variables[0]);
                 } else if (this == Message.MESSAGE_CLICK_MORE_TIMES) {
                     text = text.replace("%times%", variables[0]);
+                } else if (this == Message.UPDATE_MESSAGE_DOWNLOAD) {
+                    text = text.replace("%downloaded%", variables[0]).replace("%total%", variables[1]);
+                } else if (this == Message.UPDATE_MESSAGE_DOWNLOAD_FINISHED) {
+                    text = text.replace("%file%", variables[0]);
                 }
                 // else if (this == Message.SETTING_ANCHOR_POINT) { //unused at the moment.
 //                    Feature lastHovered = ButtonLocation.getLastHoveredFeature();
@@ -166,12 +185,12 @@ public enum Message {
 //                    text = text.replace("%anchor%", main.getConfigValues().getAnchorPoint(lastHovered).getMessage());
 //                }
             }
-            if (text != null && main.getConfigValues().getLanguage() == Language.HEBREW) {
+            if (text != null && (main.getConfigValues().getLanguage() == Language.HEBREW || main.getConfigValues().getLanguage() == Language.ARABIC)) {
                 text = main.getUtils().reverseText(text);
             }
         } catch (NullPointerException ex) { // In case I messed up some translation or something.
             ex.printStackTrace();
-            text = "";
+            text = memberName;
         }
         return text;
     }
@@ -184,6 +203,7 @@ public enum Message {
         INVENTORY_TYPE("messages.inventoryTypes"),
         TEXT_STYLE("settings.textStyles"),
         TAB("settings.tab"),
+        UPDATE_MESSAGES("messages.update"),
         ANCHOR_POINT("settings.anchorPoints");
 
         private List<String> path;

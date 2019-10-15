@@ -21,7 +21,7 @@
     "hideDurability": "Eszköz viseltéségének elrejtése",
     "showEnchantmentsReforges": "Enchantok & Reforgok",
     "minionStopWarning": "\"A minion nem ér el valamit\" figyelmeztetés",
-    "hideAuctionHousePlayers": "Játékosok elrejtése az aukciósház körül",
+    "hideAuctionHousePlayers": "Játékosok elrejtése a fontos NPC-k közelében",
     "backpackStyle": "Hátizsák stílus: %style%",
     "backpackStyles": {
       "regular": "Normál",
@@ -49,10 +49,11 @@
     "stopBowChargeFromResetting": "Íj felhúzásának megállítása újratöltéskor",
     "preventMovementOnDeath": "Sétálás megakadályozása halál után",
     "showItemAnvilUses": "Tárgy üllő használatának mutatása",
-    "lockSlots": "Slot lezárás engedélyezése",
+    "lockSlots": "Gyorstár lezárás engedélyezése",
+    "lockSlot": "Gyorstár lezárása",
     "dontResetCursorInventory": "Ne állítsa vissza a kurzort az eszköztárak között",
     "summoningEyeAlert": "Summoning Eye figyelmeztetés",
-    "makeEnderchestsInEndGreen": "Végzetláda legyen zöld az Endben",
+    "makeEnderchestsInEndGreen": "Végzetládák kiemelése zölddel az Endben",
     "changeColor": "Színváltoztatás",
     "showInOtherGames": "Mutatás más játékokban",
     "useVanillaTexture": "Használja a Vanilla textúrát",
@@ -62,19 +63,17 @@
       "two": "Második stílus"
     },
     "warningDuration": "Figyelmeztetés időtartama",
-    "dontOpenProfileWithBow": "Ne nyissa meg a profilt íjjal",
+    "dontOpenProfileWithBow": "Ne nyissa meg a játékosprofilt íjjal",
     "stopDroppingSellingRareItems": "Rare tárgyak eldobásának/eladásának tiltása",
     "makeBackpackInventoriesColored": "Színes eszköztárak",
     "avoidBreakingBottomSugarCane": "Alsó cukornád kiütésének elkerülése",
-    "replaceRomanNumeralsWithNumbers": "Római számok kicserélése a tárgyakon"
+    "replaceRomanNumeralsWithNumbers": "Római számok kicserélése a tárgyakon",
+    "changeBarColorForPotions": "Change Bar Color for Wither & Poison"
   },
   "messages": {
     "dropConfirmation": "Dobd el ezt a tárgyat újra, hogy megerősítsd!",
     "magmaBossWarning": "Magmakocka Boss!",
     "fullInventory": "Megtelt a felszerelésed!",
-    "newVersion": "Egy új verzió, %newestVersion% elérhető. A letöltéshez kattints ide.",
-    "discord": "Kíváncsi vagy a változtatásokra? Kattints ide, hogy csatlakozz a discordomra.",
-    "developmentVersion": "Jelenleg ez a fejlesztői verzió fut: %version%. A legutóbbi elérhető frissítés %newestVersion%",
     "labymod": "Labymod felhasznlók: A étel, páncél és életerő sáv elrejtése nem elérhető.",
     "minionCannotReach": "Az egyik %type% minion nem ér el semmit, ezért nem dolgozik.",
     "minionIsFull": "A szigeten lévő egyik minion tele van!",
@@ -86,11 +85,27 @@
       "enchants": "Enchantok",
       "reforges": "Reforgeok"
     },
-    "slotLocked": "A slot le van zárva!",
+    "newUpdateAvailable": "Egy új frissítés (%version%) érhető el!",
+    "deleteOldFile": "A letöltés befejeződött, nyisd meg a mods mappádat az alsó gomb segítségével, zárd be a Minecraft-ot és töröld a régi verzióját a mod-nak \n(ezt később is megteheted).",
+    "wantToViewPatchNotes": "Meg szeretnéd nézni a változásokat?",
+    "downloadLink": "Frissítési Link",
+    "downloadAutomatically": "Automata Letöltés",
+    "openModFolder": "MODS MAPPA",
+    "joinTheDiscord": "Csatlakozz a Discord szerverünkhöz",
+    "update": {
+      "majorAvailable": "Egy új nagy frissítés (%version%) elérhető! A linket a letöltéshez a chatben találod.",
+      "patchAvailable": "Egy új hibajavító frissítés (%version%) elérhető! Nyisd meg a chatet a letöltésekért!",
+      "downloading": "A frissítés éppen letöltődik! Letöltve: %downloaded%/%total% Viszont a letöltés végeztével törölnöd kell az előző verziót.",
+      "failed": "A frissítés letöltése hibába ütközött, használd a letöltési linket a chatből.",
+      "downloadFinished": "A frissítés letöltés sikeresen befejeződött. %file% néven lett elmentve. Ne felejtsd törölni a régi verziót miután bezártad a Minecraft-ot. Kattints az üzenetre hogy megnyisd a mappát."
+    },
+    "slotLocked": "Ez a gyorstár le van zárva!",
     "summoningEyeFound": "Summoning Eye!",
-    "cancelledStemBreak": "A SkyblockAddons megállította, hogy kiüsd ezt. Használd az öklöd, ha ki szeretnéd ütni.",
+    "cancelledStemBreak": "A SkyblockAddons megállította, hogy kiüsd a növény szárát. Használd az öklöd, ha ki szeretnéd ütni.",
+    "cancelledCaneBreak": "A SkyblockAddons megállította, hogy kiüsd ezt a cukornád blokkot. Használj egy másik eszközt, ha ki szeretnéd ütni.",
     "cancelledProfileOpening": "A SkyblockAddons megállította, hogy megnyisd ennek a játékosnak a profilját, amíg íj van a kezedben.",
     "cancelledDropping": "A SkyblockAddons megállította, hogy eldobd ezt a rare tárgyat vagy eszközt.",
-    "clickMoreTimes": "Kattints/dobd el ezt a tárgyat még %times% alkalommal, ha tényleg ezt szeretnéd."
+    "clickMoreTimes": "Kattints/dobd el ezt a tárgyat még %times% alkalommal, ha tényleg ezt szeretnéd.",
+    "featureDisabled": "Feature Disabled"
   }
 }
