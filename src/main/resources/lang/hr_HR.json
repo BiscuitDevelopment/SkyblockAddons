@@ -69,7 +69,10 @@
     "avoidBreakingBottomSugarCane": "Zaustavi Prijelom Dna Šećerne Trske",
     "replaceRomanNumeralsWithNumbers": "Zamijeni Rimske Brojeve na Stvarima",
     "changeBarColorForPotions": "Change Bar Color for Wither & Poison",
-    "craftingPatterns": "Choose Crafting Patterns"
+    "craftingPatterns": "Choose Crafting Patterns",
+    "soundIndicatorForFishing": "Sound Indicator for Fishing",
+    "avoidBlinkingNightVision": "Avoid Blinking Night Vision Potion",
+    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings"
   },
   "messages": {
     "dropConfirmation": "Opet baci ovu stvar za konfirmaciju!",
