@@ -50,6 +50,7 @@
     "preventMovementOnDeath": "死んだ直後に歩き続けるのを防止",
     "showItemAnvilUses": "金床を使用した回数を表示",
     "lockSlots": "スロットのロックを許可",
+    "lockSlot": "スロットをロック",
     "dontResetCursorInventory": "インベントリ間でのカーソルの位置のリセットを防止",
     "summoningEyeAlert": "サモニングアイの警告",
     "makeEnderchestsInEndGreen": "エンドにいる時エンダーチェストを緑色に",
@@ -66,7 +67,8 @@
     "stopDroppingSellingRareItems": "レアアイテムを捨てたり売ったりすることを阻止",
     "makeBackpackInventoriesColored": "インベントリの色",
     "avoidBreakingBottomSugarCane": "サトウキビの根本の破壊を防止",
-    "replaceRomanNumeralsWithNumbers": "エンチャントのローマ数字をアラビア数字に置き換え"
+    "replaceRomanNumeralsWithNumbers": "エンチャントのローマ数字をアラビア数字に置き換え",
+    "changeBarColorForPotions": "Change Bar Color for Wither & Poison"
   },
   "messages": {
     "dropConfirmation": "落としてもいいのであれば、このアイテムをもう一度ドロップしてください。",
@@ -83,19 +85,19 @@
       "enchants": "エンチャント",
       "reforges": "リフォージ"
     },
-    "newUpdateAvailable": "A new update, %version%, is available!",
-    "deleteOldFile": "The download has finished, please open your mods folder using the button below, close your Minecraft, and delete the old version (or delete it later if you prefer).",
-    "wantToViewPatchNotes": "Want to read the changes?",
-    "downloadLink": "UPDATE LINK",
-    "downloadAutomatically": "AUTO DOWNLOAD",
-    "openModFolder": "MOD FOLDER",
-    "joinTheDiscord": "JOIN DISCORD",
+    "newUpdateAvailable": "新しいバージョン(%version%)が利用可能です!",
+    "deleteOldFile": "新しいバージョンのダウンロードが完了しました。Minecraftを閉じてからあなたのmodsフォルダにある旧バージョンを削除してください。(必要に応じて後で削除しても構いません)",
+    "wantToViewPatchNotes": "変更点を知りたいですか?",
+    "downloadLink": "アップデートのダウンロードリンク",
+    "downloadAutomatically": "自動でダウンロード",
+    "openModFolder": "modsフォルダを開く",
+    "joinTheDiscord": "Discordに参加する",
     "update": {
-      "majorAvailable": "A new major update, %version% is available! The link for the download can be found in chat.",
-      "patchAvailable": "A new patch update, %version% is available! Look for the download link or to attempt to download the patch automatically!",
-      "downloading": "The patch is downloading! Status: %downloaded%/%total% Please note that after the download has finished, you must delete the old file.",
-      "failed": "The patch download has failed! Please download it manually using the link in chat.",
-      "downloadFinished": "The patch has finished downloading. It has been saved as %file%. Please don't forget to delete the old file after closing your Minecraft. Click the message in chat to open up the folder."
+      "majorAvailable": "新しいメジャーアップデート (%version%) が利用可能です！チャットからダウンロードリンクを探してください。",
+      "patchAvailable": "新しいパッチアップデート (%version%) が利用可能です！チャットからダウンロードオプションを確認してください。",
+      "downloading": "パッチをダウンロードしています！進捗: %downloaded%/%total% ダウンロードが終わったら、旧バージョンを削除する事を忘れないでください。",
+      "failed": "パッチダウンロードに失敗しました！ダウンロードリンクから手動でダウンロードしてください。",
+      "downloadFinished": "パッチのダウンロードが終了しました。ファイルは %file% に保存されました。旧バージョンの削除を忘れないでください。メッセージをクリックするとフォルダが開きます。"
     },
     "slotLocked": "このスロットはロックされています。",
     "summoningEyeFound": "サモニングアイ！",
@@ -103,6 +105,7 @@
     "cancelledCaneBreak": "SkyblockAddonsがこのサトウキビを壊すのを阻止しました。壊したい場合は別のツールで壊してください。",
     "cancelledProfileOpening": "SkyblockAddonsがこのプレイヤーのプロフィールを開くことを阻止しました。",
     "cancelledDropping": "SkyblockAddonsがこのアイテムを捨てることを阻止しました。",
-    "clickMoreTimes": "本当に落としたい場合はもう%times%回クリック/ドロップしてください。"
+    "clickMoreTimes": "本当に落としたい場合はもう%times%回クリック/ドロップしてください。",
+    "featureDisabled": "Feature Disabled"
   }
 }

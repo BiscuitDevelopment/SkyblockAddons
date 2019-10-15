@@ -50,6 +50,7 @@
     "preventMovementOnDeath": "Предотвращать ходьбу после смерти",
     "showItemAnvilUses": "Показывать Использования предмета на наковальне",
     "lockSlots": "Включить блок. слотов",
+    "lockSlot": "Закрыть слот",
     "dontResetCursorInventory": "Не сбрасывать курсор между инвентарями",
     "summoningEyeAlert": "Оповещение о Summoning Eye",
     "makeEnderchestsInEndGreen": "Сделать сундуки края в Краю зелёными",
@@ -66,7 +67,8 @@
     "stopDroppingSellingRareItems": "Перестать выбрасывать/продавать редкие предметы",
     "makeBackpackInventoriesColored": "Цветные ячейки рюкзаков",
     "avoidBreakingBottomSugarCane": "Не ломать стебель тростника",
-    "replaceRomanNumeralsWithNumbers": "Заменять римские цифры на арабские"
+    "replaceRomanNumeralsWithNumbers": "Заменять римские цифры на арабские",
+    "changeBarColorForPotions": "Change Bar Color for Wither & Poison"
   },
   "messages": {
     "dropConfirmation": "Выбросите предмет ещё раз для подтверждения!",
@@ -83,19 +85,19 @@
       "enchants": "Зачарования",
       "reforges": "Перековки"
     },
-    "newUpdateAvailable": "A new update, %version%, is available!",
-    "deleteOldFile": "The download has finished, please open your mods folder using the button below, close your Minecraft, and delete the old version (or delete it later if you prefer).",
-    "wantToViewPatchNotes": "Want to read the changes?",
-    "downloadLink": "UPDATE LINK",
-    "downloadAutomatically": "AUTO DOWNLOAD",
-    "openModFolder": "MOD FOLDER",
-    "joinTheDiscord": "JOIN DISCORD",
+    "newUpdateAvailable": "Доступно новое обновление (%version%)!",
+    "deleteOldFile": "Загрузка завершена. Пожалуйста, откройте папку модов, используя кнопку ниже, закройте Minecraft и удалите старую версию (или удалите её позже).",
+    "wantToViewPatchNotes": "Хотите прочесть изменения?",
+    "downloadLink": "ОБНОВИТЬ ССЫЛКУ",
+    "downloadAutomatically": "АВТОМАТИЧЕСКАЯ ЗАГРУЗКА",
+    "openModFolder": "ПАПКА МОДОВ",
+    "joinTheDiscord": "ПРИСОЕДИНИТЬСЯ К ДИСКОРДУ",
     "update": {
-      "majorAvailable": "A new major update, %version% is available! The link for the download can be found in chat.",
-      "patchAvailable": "A new patch update, %version% is available! Look for the download link or to attempt to download the patch automatically!",
-      "downloading": "The patch is downloading! Status: %downloaded%/%total% Please note that after the download has finished, you must delete the old file.",
-      "failed": "The patch download has failed! Please download it manually using the link in chat.",
-      "downloadFinished": "The patch has finished downloading. It has been saved as %file%. Please don't forget to delete the old file after closing your Minecraft. Click the message in chat to open up the folder."
+      "majorAvailable": "Доступно новое большое обновление (%version%)! Ссылку на загрузку можно найти в чате.",
+      "patchAvailable": "Новое обновление (%version%) теперь доступно! Посмотри в чат для опций загрузки!",
+      "downloading": "Патч загружается! Статус: %downloaded%/%total% Пожалуйста, учтите, что после завершения загрузки, вам следует удалить старый файл.",
+      "failed": "Ошибка загрузки патча! Пожалуйста, загрузите его вручную, используя ссылку в чате.",
+      "downloadFinished": "Патч закончил загрузку. Он был сохранён как %file%. Пожалуйста, не забудьте удалить старый файл после закрытия Minecraft. Нажмите на сообщение в чате, чтобы открыть папку."
     },
     "slotLocked": "Слот заблокирован!",
     "summoningEyeFound": "Summoning Eye!",
@@ -103,6 +105,7 @@
     "cancelledCaneBreak": "SkyBlockAddons остановил вас от ломания этого тростника. Используйте другой предмет, чтобы сломать его.",
     "cancelledProfileOpening": "SkyBlockAddons остановил вас от открытия профиля игрока с луком в руках.",
     "cancelledDropping": "SkyBlockAddons предотвратил попытку выбросить этот предмет из панели быстрого доступа.",
-    "clickMoreTimes": "Нажмите/выберите этот предмет еще %times% раз, если вы действительно хотите сделать это."
+    "clickMoreTimes": "Нажмите/выберите этот предмет еще %times% раз, если вы действительно хотите сделать это.",
+    "featureDisabled": "Feature Disabled"
   }
 }

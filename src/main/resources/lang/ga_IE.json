@@ -1,5 +1,5 @@
 {
-  "language": "Béarla",
+  "language": "Gaeilge",
   "settings": {
     "tab": {
       "features": "Gnéithe",
@@ -21,7 +21,7 @@
     "hideDurability": "Folaigh Buanfas Uirlisí",
     "showEnchantmentsReforges": "Draíocht & Ré-Cruthach",
     "minionStopWarning": "Rabhadh \"Giolla as Raon\"",
-    "hideAuctionHousePlayers": "Hide Players Near Important NPCs",
+    "hideAuctionHousePlayers": "Imreoirí in aice le NPCs tábhachtacha Folaigh",
     "backpackStyle": "Stíl Mála: %style%",
     "backpackStyles": {
       "regular": "Gnáthach",
@@ -50,6 +50,7 @@
     "preventMovementOnDeath": "Cosc ag siúl tar éis Bás",
     "showItemAnvilUses": "Taispeáin Úsáid Inneoin",
     "lockSlots": "Cur Sliotán faoi Ghlas",
+    "lockSlot": "Glas Sliotán",
     "dontResetCursorInventory": "Ná Athshocraigh an Cursor idir Fardal",
     "summoningEyeAlert": "Práinn Súil Seirbheáil",
     "makeEnderchestsInEndGreen": "Déan na Enderchests san End Glas",
@@ -66,7 +67,8 @@
     "stopDroppingSellingRareItems": "Cosc ag Leag/Díol Mír Annamh",
     "makeBackpackInventoriesColored": "Dath Fardal",
     "avoidBreakingBottomSugarCane": "Ná briseadh an Cána Siúcra ag an mBun",
-    "replaceRomanNumeralsWithNumbers": "Athchuir Uimhir Rómhánach ar mír"
+    "replaceRomanNumeralsWithNumbers": "Athchuir Uimhir Rómhánach ar mír",
+    "changeBarColorForPotions": "Change Bar Color for Wither & Poison"
   },
   "messages": {
     "dropConfirmation": "Leag síos an mír seo arís le cinntiú!",
@@ -83,16 +85,16 @@
       "enchants": "Draíocht",
       "reforges": "Ré-Cruthach"
     },
-    "newUpdateAvailable": "A new update, %version%, is available!",
+    "newUpdateAvailable": "A new update (%version%) is available!",
     "deleteOldFile": "The download has finished, please open your mods folder using the button below, close your Minecraft, and delete the old version (or delete it later if you prefer).",
     "wantToViewPatchNotes": "Want to read the changes?",
-    "downloadLink": "UPDATE LINK",
-    "downloadAutomatically": "AUTO DOWNLOAD",
-    "openModFolder": "MOD FOLDER",
+    "downloadLink": "Nuashonraigh Nasc",
+    "downloadAutomatically": "Íoslódáil Uathoibríoch",
+    "openModFolder": "MODS FOLDER",
     "joinTheDiscord": "JOIN DISCORD",
     "update": {
-      "majorAvailable": "A new major update, %version% is available! The link for the download can be found in chat.",
-      "patchAvailable": "A new patch update, %version% is available! Look for the download link or to attempt to download the patch automatically!",
+      "majorAvailable": "A new major update (%version%) is available! The link for the download can be found in chat.",
+      "patchAvailable": "A new patch update (%version%) is available! Look in chat for download options!",
       "downloading": "The patch is downloading! Status: %downloaded%/%total% Please note that after the download has finished, you must delete the old file.",
       "failed": "The patch download has failed! Please download it manually using the link in chat.",
       "downloadFinished": "The patch has finished downloading. It has been saved as %file%. Please don't forget to delete the old file after closing your Minecraft. Click the message in chat to open up the folder."
@@ -100,9 +102,10 @@
     "slotLocked": "Tá an Sliotán seo faoi ghlas!",
     "summoningEyeFound": "Súil Seirbheáil!",
     "cancelledStemBreak": "Chur SkyblockAddons cosc ort an gas seo a briseadh. Úsáid to lámh má tá tú ag iarraidh é a briseadh.",
-    "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use another tool if you'd actually like to break it.",
+    "cancelledCaneBreak": "Chur SkyblockAddons cosc ort an píosa cána siúcra seo a briseadh. Úsáid uirlis eile má tá tú ag iarraidh é a briseadh.",
     "cancelledProfileOpening": "Chur SkyblockAddons cosc ort ag oscailt an próifíl seo fad is atá bogha i do lámh.",
     "cancelledDropping": "Chur SkyblockAddons cosc or an mír annamh seo a leag síos ó do hotbar.",
-    "clickMoreTimes": "Cliceáil/leag síos an mír seo %times% uaireanta eile má tá tú cinnte faoi seo."
+    "clickMoreTimes": "Cliceáil/leag síos an mír seo %times% uaireanta eile má tá tú cinnte faoi seo.",
+    "featureDisabled": "Feature Disabled"
   }
 }

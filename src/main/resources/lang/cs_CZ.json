@@ -50,6 +50,7 @@
     "preventMovementOnDeath": "Zabránit chození po smrti",
     "showItemAnvilUses": "Ukázat použití kovadliny na předmětech",
     "lockSlots": "Povolit zamykaní slotů",
+    "lockSlot": "Uzamčený slot",
     "dontResetCursorInventory": "Neresetuj kurzor mezi inventářema",
     "summoningEyeAlert": "Upozornění na Vyvolávací oko",
     "makeEnderchestsInEndGreen": "Zvýraznit Ender truhly v Endu zelenou",
@@ -66,7 +67,8 @@
     "stopDroppingSellingRareItems": "Zakázat vyhazování/prodávání vzácných předmětů",
     "makeBackpackInventoriesColored": "Vybarvit inventáře",
     "avoidBreakingBottomSugarCane": "Zabránění rozbití spodní vrstvy cukrové třtiny",
-    "replaceRomanNumeralsWithNumbers": "Nahrazení římských číslic na předmětech"
+    "replaceRomanNumeralsWithNumbers": "Nahrazení římských číslic na předmětech",
+    "changeBarColorForPotions": "Change Bar Color for Wither & Poison"
   },
   "messages": {
     "dropConfirmation": "Vyhoď tento item pro vyhození!",
@@ -83,19 +85,19 @@
       "enchants": "Očarování",
       "reforges": "Překování"
     },
-    "newUpdateAvailable": "A new update, %version%, is available!",
-    "deleteOldFile": "The download has finished, please open your mods folder using the button below, close your Minecraft, and delete the old version (or delete it later if you prefer).",
-    "wantToViewPatchNotes": "Want to read the changes?",
-    "downloadLink": "UPDATE LINK",
-    "downloadAutomatically": "AUTO DOWNLOAD",
-    "openModFolder": "MOD FOLDER",
-    "joinTheDiscord": "JOIN DISCORD",
+    "newUpdateAvailable": "Nová aktualizace (%version%) je připravena!",
+    "deleteOldFile": "Stahování skočilo, prosím otevři svoji složku mods pomocí tlačítka dole, zavři minecraft, a smaž starou verzi(nebo ji smaž potom pokud chceš).",
+    "wantToViewPatchNotes": "Chceš si přečíst změny?",
+    "downloadLink": "Link pro aktualizaci",
+    "downloadAutomatically": "Aoutomacké stáhnutí",
+    "openModFolder": "SLOŽKA S MODY",
+    "joinTheDiscord": "Připojit se na discord",
     "update": {
-      "majorAvailable": "A new major update, %version% is available! The link for the download can be found in chat.",
-      "patchAvailable": "A new patch update, %version% is available! Look for the download link or to attempt to download the patch automatically!",
-      "downloading": "The patch is downloading! Status: %downloaded%/%total% Please note that after the download has finished, you must delete the old file.",
-      "failed": "The patch download has failed! Please download it manually using the link in chat.",
-      "downloadFinished": "The patch has finished downloading. It has been saved as %file%. Please don't forget to delete the old file after closing your Minecraft. Click the message in chat to open up the folder."
+      "majorAvailable": "Nová hlavní aktualizace (%version%) je připravena! Link na stažení je v chatu.",
+      "patchAvailable": "Nový opravující update (verze %version%) je nyní dostupný! Koukněte do chatu pro možnosti stahování!",
+      "downloading": "Aktualizace se stahuje! Status: %downloaded%/%total% Prosím berte na vědomí že potom co se aktualizace dokončí, musíte smazat starou složku.",
+      "failed": "Stáhnutí aktualizace selhalo! Prosím stáhněte ho manuálně pomocí linku v chatu.",
+      "downloadFinished": "Aktualizace dokončila stažení. Byla uložena jako %file%. Prosím nezapomeň smazat starou složku potom co zavřeš minecraft."
     },
     "slotLocked": "Tento slot je uzamčen!",
     "summoningEyeFound": "Vyvolávací oko!",
@@ -103,6 +105,7 @@
     "cancelledCaneBreak": "Mód SkyblockAddons tě zastavil před zničením tohoto blocku Sugar canu. Požij jiný nástroj pokud ho chceš zničit.",
     "cancelledProfileOpening": "SkyblockAddons vám zabránil otevřít profil hráče při držení luku.",
     "cancelledDropping": "SkyblockAddons vám zabránil vyhodit tento vzácný předmět nebo nástroj z vašeho hotbaru.",
-    "clickMoreTimes": "Klikněte/vyhoďte tento předmět %times%-krát, pokud to chcete opravdu udělat."
+    "clickMoreTimes": "Klikněte/vyhoďte tento předmět %times%-krát, pokud to chcete opravdu udělat.",
+    "featureDisabled": "Feature Disabled"
   }
 }

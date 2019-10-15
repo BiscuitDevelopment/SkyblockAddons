@@ -32,6 +32,7 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.ChunkEvent;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.InputEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 import java.awt.*;
@@ -53,6 +54,8 @@ public class PlayerListener {
     private int timerTick = 1;
     private long lastScreenOpen = -1;
     private long lastMinionSound = -1;
+
+    private int lastSecondHealth = -1;
     private Integer healthUpdate = null;
     private long lastHealthUpdate;
     private long lastFishingAlert = 0;
@@ -141,11 +144,14 @@ public class PlayerListener {
                         } else {
                             manaPart = splitMessage[1];
                         }
+                        if (healthPart.contains("+")) {
+                            healthPart = healthPart.substring(0, healthPart.indexOf('+'));
+                        }
                         String[] healthSplit = main.getUtils().getNumbersOnly(main.getUtils().stripColor(healthPart)).split(Pattern.quote("/"));
                         int newHealth = Integer.parseInt(healthSplit[0]);
-                        int health = getAttribute(Attribute.HEALTH);
-                        if(newHealth != health) {
-                            healthUpdate = newHealth - health;
+                        main.getScheduler().schedule(Scheduler.CommandType.SET_LAST_SECOND_HEALTH, 1, newHealth);
+                        if (lastSecondHealth != -1 && lastSecondHealth != newHealth) {
+                            healthUpdate = newHealth - lastSecondHealth;
                             lastHealthUpdate = System.currentTimeMillis();
                         }
                         setAttribute(Attribute.HEALTH, newHealth);
@@ -276,8 +282,9 @@ public class PlayerListener {
                     EntityPlayerSP p = mc.thePlayer;
                     if (p != null) { //Reverse calculate the player's health by using the player's vanilla hearts. Also calculate the health change for the gui item.
                         int newHealth = Math.round(getAttribute(Attribute.MAX_HEALTH) * (p.getHealth() / p.getMaxHealth()));
-                        if(newHealth != getAttribute(Attribute.HEALTH)) {
-                            healthUpdate = newHealth - getAttribute(Attribute.HEALTH);
+                        main.getScheduler().schedule(Scheduler.CommandType.SET_LAST_SECOND_HEALTH, 1, newHealth);
+                        if (lastSecondHealth != -1 && lastSecondHealth != newHealth) {
+                            healthUpdate = newHealth - lastSecondHealth;
                             lastHealthUpdate = System.currentTimeMillis();
                         }
                         setAttribute(Attribute.HEALTH, newHealth);
@@ -559,12 +566,17 @@ public class PlayerListener {
         }
     }
 
-//    @SubscribeEvent(receiveCanceled = true)
-//    public void onKeyInput(InputEvent.KeyInputEvent e) {
-//        if (main.getLockSlot().isPressed()) {
-//            main.getConfigValues().getLockedSlots().add(main.getUtils().getLastHoveredSlot());
-//        }
-//    }
+    @SubscribeEvent(receiveCanceled = true)
+    public void onKeyInput(InputEvent.KeyInputEvent e) {
+        if (main.getOpenSettingsKey().isPressed()) {
+            main.getUtils().setFadingIn(true);
+            main.getRenderListener().setGuiToOpen(PlayerListener.GUIType.MAIN, 1, EnumUtils.SkyblockAddonsGuiTab.FEATURES);
+        }
+        else if (main.getOpenEditLocationsKey().isPressed()) {
+            main.getUtils().setFadingIn(false);
+            main.getRenderListener().setGuiToOpen(PlayerListener.GUIType.EDIT_LOCATIONS, 0, null);
+        }
+    }
 
     public boolean shouldResetMouse() {
         return System.currentTimeMillis() - lastClosedInv > 100;
@@ -651,5 +663,9 @@ public class PlayerListener {
             }
         }
         return false;
+    }
+
+    public void setLastSecondHealth(int lastSecondHealth) {
+        this.lastSecondHealth = lastSecondHealth;
     }
 }

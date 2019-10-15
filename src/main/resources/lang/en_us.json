@@ -10,8 +10,8 @@
     "settings": "Settings",
     "magmaBossWarning": "Magma Boss Warning",
     "itemDropConfirmation": "Item Drop Confirmation",
-    "hideSkeletonHatBones": "Hide Skeleton Helmet Bones",
-    "skeletonHatBonesBar": "Skeleton Helmet Bones Bar",
+    "hideSkeletonHatBones": "Hide Skeleton's Helmet Bones",
+    "skeletonHatBonesBar": "Skeleton's Helmet Bones Bar",
     "hideFoodAndArmor": "Hide Food & Armor Bar",
     "fullInventoryWarning": "Full Inventory Warning",
     "disableEmberRodAbility": "Disable Island Ember Rod",
@@ -50,6 +50,7 @@
     "preventMovementOnDeath": "Prevent Walking After Death",
     "showItemAnvilUses": "Show Item Anvil Uses",
     "lockSlots": "Allow Locking Slots",
+    "lockSlot": "Lock Slot",
     "dontResetCursorInventory": "Don't Reset Cursor Between Inventories",
     "summoningEyeAlert": "Summoning Eye Alert",
     "makeEnderchestsInEndGreen": "Make Enderchests in the End Green",
@@ -66,8 +67,10 @@
     "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Items",
     "makeBackpackInventoriesColored": "Color Inventories",
     "avoidBreakingBottomSugarCane": "Avoid Breaking Bottom Sugar Cane",
+    "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Items",
+    "changeBarColorForPotions": "Change Bar Color for Wither & Poison",
+    "craftingPatterns": "Choose Crafting Patterns"
     "soundIndicatorForFishing": "Sound Indicator for Fishing",
-    "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Items"
   },
   "messages": {
     "dropConfirmation": "Drop this item again to confirm!",
@@ -82,7 +85,8 @@
     "enchantsToExclude": "%type% To Exclude:",
     "inventoryTypes": {
       "enchants": "Enchants",
-      "reforges": "Reforges"
+      "reforges": "Reforges",
+      "crafting": "Crafting"
     },
     "newUpdateAvailable": "A new update (%version%) is available!",
     "deleteOldFile": "The download has finished, please open your mods folder using the button below, close your Minecraft, and delete the old version (or delete it later if you prefer).",
@@ -93,7 +97,7 @@
     "joinTheDiscord": "JOIN DISCORD",
     "update": {
       "majorAvailable": "A new major update (%version%) is available! The link for the download can be found in chat.",
-      "patchAvailable": "A new patch update (%version%) is available! Look for the download link or to attempt to download the patch automatically!",
+      "patchAvailable": "A new patch update (%version%) is available! Look in chat for download options!",
       "downloading": "The patch is downloading! Status: %downloaded%/%total% Please note that after the download has finished, you must delete the old file.",
       "failed": "The patch download has failed! Please download it manually using the link in chat.",
       "downloadFinished": "The patch has finished downloading. It has been saved as %file%. Please don't forget to delete the old file after closing your Minecraft. Click the message in chat to open up the folder."
@@ -104,6 +108,7 @@
     "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use another tool if you'd actually like to break it.",
     "cancelledProfileOpening": "SkyblockAddons has stopped you from opening this player's profile while holding a bow.",
     "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare item or tool from your hotbar.",
-    "clickMoreTimes": "Click/drop this item %times% more times if you really want to do this."
+    "clickMoreTimes": "Click/drop this item %times% more times if you really want to do this.",
+    "featureDisabled": "Feature Disabled"
   }
 }

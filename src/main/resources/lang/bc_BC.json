@@ -1,5 +1,5 @@
 {
-  "language": "Biscuish",
+  "language": "Biscuitish",
   "settings": {
     "tab": {
       "features": "Biscuits",
@@ -21,13 +21,13 @@
     "hideDurability": "Hide How Many Biscuits are Left",
     "showEnchantmentsReforges": "Bischants & Bisforges",
     "minionStopWarning": "\"Biscuits Cannot Bake\" Warning",
-    "hideAuctionHousePlayers": "Hide Players Near Important NPCs",
+    "hideAuctionHousePlayers": "Hide Biscuits Near Important BAKERs",
     "backpackStyle": "Biscuit Style: %style%",
     "backpackStyles": {
       "regular": "Biscuitar",
       "compact": "Compressed Biscuit"
     },
-    "showBackpackPreview": "Get Biscuit Sneak Peeeek",
+    "showBackpackPreview": "Expose the Biscuits",
     "hideHealthBar": "Hide The Basic Biscuits",
     "fullMinionWarning": "Full Biscuit Warning",
     "ignoreItemFrameClicks": "Ignore Bites On Biscuit Plates",
@@ -37,7 +37,7 @@
     "healthBar": "Biscuit Bar 2",
     "healthText": "The Health of Your Biscuits (important)",
     "defenceIcon": "Umm Biscuit Symbol",
-    "defenceText": "Amount of Biscuits on Screen #2?",
+    "defenceText": "HoW hArD iS tHe BiScUiT?",
     "defencePercentage": "Biscuits Eaten Percentage",
     "healthUpdates": "Show Change In Biscuits",
     "hidePlayersInLobby": "Hide biscuits far in the Bakery",
@@ -50,6 +50,7 @@
     "preventMovementOnDeath": "Prevent Running Out of Biscuits in the Afterlife",
     "showItemAnvilUses": "Show How Much Your Biscuits Gonna Cost lol",
     "lockSlots": "Allow locking biscuit boxes",
+    "lockSlot": "Lock Biscuits because expensive can't afford it",
     "dontResetCursorInventory": "Dont reset biscuit between biscuit boxes",
     "summoningEyeAlert": "Chcolate biscuit alert",
     "makeEnderchestsInEndGreen": "Make transfering biscuit boxes in the biscuit end have mold",
@@ -63,10 +64,11 @@
     },
     "warningDuration": "Baking Time Left",
     "dontOpenProfileWithBow": "Dont open other biscuits whit a bow",
-    "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Items",
-    "makeBackpackInventoriesColored": "Color Inventories",
-    "avoidBreakingBottomSugarCane": "Avoid Breaking Bottom Sugar Cane",
-    "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Items"
+    "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Biscuit",
+    "makeBackpackInventoriesColored": "Color Biscuit Biscuit",
+    "avoidBreakingBottomSugarCane": "Avoid eating sweet biscuit cane",
+    "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Biscuits",
+    "changeBarColorForPotions": "Change Bar Color for Wither & Poison"
   },
   "messages": {
     "dropConfirmation": "Throw out this biscuit again to confirm!",
@@ -83,26 +85,27 @@
       "enchants": "Bischants",
       "reforges": "Bisforges"
     },
-    "newUpdateAvailable": "A new update, %version%, is available!",
-    "deleteOldFile": "The download has finished, please open your mods folder using the button below, close your Minecraft, and delete the old version (or delete it later if you prefer).",
-    "wantToViewPatchNotes": "Want to read the changes?",
-    "downloadLink": "UPDATE LINK",
-    "downloadAutomatically": "AUTO DOWNLOAD",
-    "openModFolder": "MOD FOLDER",
-    "joinTheDiscord": "JOIN DISCORD",
+    "newUpdateAvailable": "A new update (%version%) is out of the oven!",
+    "deleteOldFile": "Fresh Biscuits is here! Please open your mods folder using the button below, close your Minecraft, and delete the old biscuit (or delete it later if you prefer).",
+    "wantToViewPatchNotes": "Want to taste the new biscuits?",
+    "downloadLink": "BISCUIT UPDATE LINK",
+    "downloadAutomatically": "AUTO BAKE BISCUIT",
+    "openModFolder": "BISCUITS FOLDER",
+    "joinTheDiscord": "JOIN DISCORD FOR BISCUITS",
     "update": {
-      "majorAvailable": "A new major update, %version% is available! The link for the download can be found in chat.",
-      "patchAvailable": "A new patch update, %version% is available! Look for the download link or to attempt to download the patch automatically!",
-      "downloading": "The patch is downloading! Status: %downloaded%/%total% Please note that after the download has finished, you must delete the old file.",
-      "failed": "The patch download has failed! Please download it manually using the link in chat.",
-      "downloadFinished": "The patch has finished downloading. It has been saved as %file%. Please don't forget to delete the old file after closing your Minecraft. Click the message in chat to open up the folder."
+      "majorAvailable": "A new major favor of biscuit (%version%) is available! The link to the bakery for the download can be found in chat.",
+      "patchAvailable": "A new small biscuit update (%version%) is available! Look in chat for download options!",
+      "downloading": "The biscuit is baking! Status: %downloaded%/%total% Please note that after the download has finished, you must throw the old biscuit out.",
+      "failed": "The biscuit mission has failed! Please download it manually using the link in chat.",
+      "downloadFinished": "The small biscuit has finished downloading. It has been saved as %file%. Please don't forget to throw out the old biscuit after closing your Minecraft. Click the message in chat to open up the folder."
     },
-    "slotLocked": "This slot is locked!",
-    "summoningEyeFound": "Summoning Eye!",
+    "slotLocked": "This biscuit is locked!",
+    "summoningEyeFound": "Biscuit Eye!",
     "cancelledStemBreak": "The biscuit gods have stopped you from eating this biscuit. Use your hands if you'd like to eat it.",
-    "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use another tool if you'd actually like to break it.",
-    "cancelledProfileOpening": "SkyblockAddons has stopped you from opening this player's profile while holding a bow.",
-    "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare item or tool from your hotbar.",
-    "clickMoreTimes": "Click/drop this item %times% more times if you really want to do this."
+    "cancelledCaneBreak": "SkyblockAddons has stopped you from eating this block of sweet biscuit cane. Use your hand or other idk stuff if you'd actually like to eat it.",
+    "cancelledProfileOpening": "BiscuitAddons has stopped you from eating this player's biscuit while holding a Bow.",
+    "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare biscuit or biscuit2l from your hotbar.",
+    "clickMoreTimes": "Click/drop this biscuit %times% more times if you really want to do this poor biscuit lol.",
+    "featureDisabled": "Feature Disabled"
   }
 }

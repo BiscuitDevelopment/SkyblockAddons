@@ -4,11 +4,10 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.Feature;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
 
-public class ButtonCredit extends GuiButton {
+public class ButtonCredit extends ButtonFeature {
 
     private static ResourceLocation WEB = new ResourceLocation("skyblockaddons", "web.png");
 
@@ -18,12 +17,10 @@ public class ButtonCredit extends GuiButton {
     // Used to calculate the transparency when fading in.
     private long timeOpened = System.currentTimeMillis();
 
-    /**
-     * Create a button for toggling a feature on or off. This includes all the {@link Feature}s that have a proper ID.
-     */
-    public ButtonCredit(double x, double y, String buttonText, SkyblockAddons main, EnumUtils.FeatureCredit credit) {
-        super(0, (int)x, (int)y, buttonText);
+    public ButtonCredit(double x, double y, String buttonText, SkyblockAddons main, EnumUtils.FeatureCredit credit, Feature feature) {
+        super(0, (int)x, (int)y, buttonText, feature);
         this.main = main;
+        this.feature = feature;
         this.width = 12;
         this.height = 12;
         this.credit = credit;
@@ -49,6 +46,9 @@ public class ButtonCredit extends GuiButton {
                 GlStateManager.color(1,1,1,alphaMultiplier*1);
             } else {
                 GlStateManager.color(1,1,1,alphaMultiplier*0.7F);
+            }
+            if (main.getConfigValues().isRemoteDisabled(feature)) {
+                GlStateManager.color(0.3F,0.3F,0.3F,0.7F);
             }
             GlStateManager.pushMatrix();
             GlStateManager.scale(scale,scale,1);
