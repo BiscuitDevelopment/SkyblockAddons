@@ -69,7 +69,10 @@
     "avoidBreakingBottomSugarCane": "Prekini unišavanje donje trske",
     "replaceRomanNumeralsWithNumbers": "Zameni Rimske Brojeve na predmetima",
     "changeBarColorForPotions": "Promeni boju Bar-a za Wither & Otrov",
-    "craftingPatterns": "Choose Crafting Patterns"
+    "craftingPatterns": "Choose Crafting Patterns",
+    "soundIndicatorForFishing": "Sound Indicator for Fishing",
+    "avoidBlinkingNightVision": "Avoid Blinking Night Vision Potion",
+    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings"
   },
   "messages": {
     "dropConfirmation": "Opet baci ovu stvar za potvrdu!",
