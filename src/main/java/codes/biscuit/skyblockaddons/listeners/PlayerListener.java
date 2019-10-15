@@ -159,6 +159,8 @@ public class PlayerListener {
                         setAttribute(Attribute.MAX_HEALTH, Integer.parseInt(healthSplit[1]));
                         if (defencePart != null) {
                             setAttribute(Attribute.DEFENCE, Integer.parseInt(main.getUtils().getNumbersOnly(defencePart).trim()));
+                        } else if (collectionPart == null) { // if neither defence nor collection are showed, this indicates they just have no defence.
+                            setAttribute(Attribute.DEFENCE, 0);
                         }
                         String[] manaSplit = main.getUtils().getNumbersOnly(manaPart).split(Pattern.quote("/"));
                         setAttribute(Attribute.MANA, Integer.parseInt(manaSplit[0]));

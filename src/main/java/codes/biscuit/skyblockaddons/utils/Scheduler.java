@@ -12,7 +12,7 @@ public class Scheduler {
 
     private SkyblockAddons main;
     private long totalTicks = 0;
-    private Map<Long, Set<Command>> queue = new TreeMap<>();
+    private Map<Long, Set<Command>> queue = new HashMap<>();
 
     public Scheduler(SkyblockAddons main) {
         this.main = main;
