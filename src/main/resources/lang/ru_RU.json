@@ -69,7 +69,10 @@
     "avoidBreakingBottomSugarCane": "Не ломать стебель тростника",
     "replaceRomanNumeralsWithNumbers": "Заменять римские цифры на арабские",
     "changeBarColorForPotions": "Change Bar Color for Wither & Poison",
-    "craftingPatterns": "Выбрать шаблоны создания"
+    "craftingPatterns": "Выбрать шаблоны создания",
+    "soundIndicatorForFishing": "Sound Indicator for Fishing",
+    "avoidBlinkingNightVision": "Avoid Blinking Night Vision Potion",
+    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings"
   },
   "messages": {
     "dropConfirmation": "Выбросите предмет ещё раз для подтверждения!",
