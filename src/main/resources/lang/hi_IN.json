@@ -66,12 +66,16 @@
     "dontOpenProfileWithBow": "धनुष के साथ प्रोफ़ाइल न खोलें",
     "stopDroppingSellingRareItems": "रेयर वस्तु को गिराना / बेचना बंद करें",
     "makeBackpackInventoriesColored": "इन्वेंट्रीज़ को रंग दो",
-    "avoidBreakingBottomSugarCane": "Avoid Breaking Bottom Sugar Cane",
-    "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Items",
-    "changeBarColorForPotions": "Change Bar Color for Wither & Poison"
+    "avoidBreakingBottomSugarCane": "स्थापना -> गन्ना तोड़ने से बचें",
+    "replaceRomanNumeralsWithNumbers": "समायोजन -> नंबर के साथ रोमन अंकों को बदलें",
+    "changeBarColorForPotions": "समायोजन -> औषधि के लिए बार रंग बदलें",
+    "craftingPatterns": "Choose Crafting Patterns",
+    "soundIndicatorForFishing": "Sound Indicator for Fishing",
+    "avoidBlinkingNightVision": "Avoid Blinking Night Vision Potion",
+    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings"
   },
   "messages": {
-    "dropConfirmation": "Drop this item again to confirm!",
+    "dropConfirmation": "संदेशों -> ड्रॉप क चेतावनी",
     "magmaBossWarning": "मैग्मा क्यूब बॉस!",
     "fullInventory": "पूरी इन्वेंटरी",
     "labymod": "Labymod Users: Hide Food, Armor, and Health Bar, is incompatible.",
@@ -83,7 +87,8 @@
     "enchantsToExclude": "%type% To Exclude:",
     "inventoryTypes": {
       "enchants": "एन्चैंट",
-      "reforges": "रीफोर्गे"
+      "reforges": "रीफोर्गे",
+      "crafting": "Crafting"
     },
     "newUpdateAvailable": "एक नया अपडेट (%version%) उपलब्ध है!",
     "deleteOldFile": "डाउनलोड समाप्त हो गया है, कृपया नीचे दिए गए बटन का उपयोग करके अपने मॉड फ़ोल्डर को खोलें, अपने Minecraft को बंद करें, और पुराने वर्शन को हटा दें (या यदि आप चाहें तो इसे बाद में हटा दें)।",

@@ -68,7 +68,11 @@
     "makeBackpackInventoriesColored": "Dath Fardal",
     "avoidBreakingBottomSugarCane": "Ná briseadh an Cána Siúcra ag an mBun",
     "replaceRomanNumeralsWithNumbers": "Athchuir Uimhir Rómhánach ar mír",
-    "changeBarColorForPotions": "Change Bar Color for Wither & Poison"
+    "changeBarColorForPotions": "Change Bar Color for Wither & Poison",
+    "craftingPatterns": "Choose Crafting Patterns",
+    "soundIndicatorForFishing": "Sound Indicator for Fishing",
+    "avoidBlinkingNightVision": "Avoid Blinking Night Vision Potion",
+    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings"
   },
   "messages": {
     "dropConfirmation": "Leag síos an mír seo arís le cinntiú!",
@@ -83,7 +87,8 @@
     "enchantsToExclude": "%type% Le Eisiaigh:",
     "inventoryTypes": {
       "enchants": "Draíocht",
-      "reforges": "Ré-Cruthach"
+      "reforges": "Ré-Cruthach",
+      "crafting": "Crafting"
     },
     "newUpdateAvailable": "A new update (%version%) is available!",
     "deleteOldFile": "The download has finished, please open your mods folder using the button below, close your Minecraft, and delete the old version (or delete it later if you prefer).",

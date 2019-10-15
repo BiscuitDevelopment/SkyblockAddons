@@ -68,7 +68,11 @@
     "makeBackpackInventoriesColored": "Vybarvit inventáře",
     "avoidBreakingBottomSugarCane": "Zabránění rozbití spodní vrstvy cukrové třtiny",
     "replaceRomanNumeralsWithNumbers": "Nahrazení římských číslic na předmětech",
-    "changeBarColorForPotions": "Change Bar Color for Wither & Poison"
+    "changeBarColorForPotions": "Změň barvu ukazetele pro wither a poison efekt",
+    "craftingPatterns": "Vybrat si crafting vzory",
+    "soundIndicatorForFishing": "Sound Indicator for Fishing",
+    "avoidBlinkingNightVision": "Avoid Blinking Night Vision Potion",
+    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings"
   },
   "messages": {
     "dropConfirmation": "Vyhoď tento item pro vyhození!",
@@ -83,7 +87,8 @@
     "enchantsToExclude": "%type% Vyloučit:",
     "inventoryTypes": {
       "enchants": "Očarování",
-      "reforges": "Překování"
+      "reforges": "Překování",
+      "crafting": "Výroba"
     },
     "newUpdateAvailable": "Nová aktualizace (%version%) je připravena!",
     "deleteOldFile": "Stahování skočilo, prosím otevři svoji složku mods pomocí tlačítka dole, zavři minecraft, a smaž starou verzi(nebo ji smaž potom pokud chceš).",
@@ -106,6 +111,6 @@
     "cancelledProfileOpening": "SkyblockAddons vám zabránil otevřít profil hráče při držení luku.",
     "cancelledDropping": "SkyblockAddons vám zabránil vyhodit tento vzácný předmět nebo nástroj z vašeho hotbaru.",
     "clickMoreTimes": "Klikněte/vyhoďte tento předmět %times%-krát, pokud to chcete opravdu udělat.",
-    "featureDisabled": "Feature Disabled"
+    "featureDisabled": "Vlsatnost je vypnuta"
   }
 }

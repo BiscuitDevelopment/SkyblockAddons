@@ -68,7 +68,11 @@
     "makeBackpackInventoriesColored": "Fargede inventories",
     "avoidBreakingBottomSugarCane": "Unngå ødelegging av nederste sukkerrør",
     "replaceRomanNumeralsWithNumbers": "Bytt Ut Romertall på Gjenstander",
-    "changeBarColorForPotions": "Bytt ut bar farge for visne og gift effekter"
+    "changeBarColorForPotions": "Bytt ut bar farge for visne og gift effekter",
+    "craftingPatterns": "Velg utformingsmønstre",
+    "soundIndicatorForFishing": "Sound Indicator for Fishing",
+    "avoidBlinkingNightVision": "Avoid Blinking Night Vision Potion",
+    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings"
   },
   "messages": {
     "dropConfirmation": "Slipp denne gjenstanden igjen for å bekrefte!",
@@ -83,7 +87,8 @@
     "enchantsToExclude": "%type% Å Ekskludere:",
     "inventoryTypes": {
       "enchants": "Enchants",
-      "reforges": "Reforges"
+      "reforges": "Reforges",
+      "crafting": "Utforming"
     },
     "newUpdateAvailable": "En ny oppdatering (%version%) er ute!",
     "deleteOldFile": "Nedlastningen er ferdig, åpne opp modifikasjonsmappen ved bruk av knappen nedenfor, lukk igjen Minecraft, og slett den gamle versjonen (eller slett den senere hvis du vil).",

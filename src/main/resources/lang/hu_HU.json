@@ -10,8 +10,8 @@
     "settings": "Beállítások",
     "magmaBossWarning": "Magma Boss figyelmeztetés",
     "itemDropConfirmation": "Tárgy kidobás megerősítése",
-    "hideSkeletonHatBones": "Skeleton Helmet csontok elrejtése",
-    "skeletonHatBonesBar": "Skeleton Hat csont sáv",
+    "hideSkeletonHatBones": "Skeleton's Helmet csontok elrejtése",
+    "skeletonHatBonesBar": "Skeleton's Helmet csont sáv",
     "hideFoodAndArmor": "Étel és páncél sáv elrejtése",
     "fullInventoryWarning": "Teli felszerelés figyelmeztetés",
     "disableEmberRodAbility": "Ember Rod tiltása a szigeten",
@@ -68,7 +68,11 @@
     "makeBackpackInventoriesColored": "Színes eszköztárak",
     "avoidBreakingBottomSugarCane": "Alsó cukornád kiütésének elkerülése",
     "replaceRomanNumeralsWithNumbers": "Római számok kicserélése a tárgyakon",
-    "changeBarColorForPotions": "Change Bar Color for Wither & Poison"
+    "changeBarColorForPotions": "Sorvadás és méreg sebzőszínei",
+    "craftingPatterns": "Válassz Barkácsolómintát",
+    "soundIndicatorForFishing": "Hangjelzés halászatkor",
+    "avoidBlinkingNightVision": "Éjszakai látás \"pislogás\" elkerülése",
+    "disableMinionLocationWarning": "\"Hely nem tökéletes\" minion jelzés kikapcsolása"
   },
   "messages": {
     "dropConfirmation": "Dobd el ezt a tárgyat újra, hogy megerősítsd!",
@@ -83,7 +87,8 @@
     "enchantsToExclude": "%type% kihagyása:",
     "inventoryTypes": {
       "enchants": "Enchantok",
-      "reforges": "Reforgeok"
+      "reforges": "Reforgeok",
+      "crafting": "Barkácsolás"
     },
     "newUpdateAvailable": "Egy új frissítés (%version%) érhető el!",
     "deleteOldFile": "A letöltés befejeződött, nyisd meg a mods mappádat az alsó gomb segítségével, zárd be a Minecraft-ot és töröld a régi verzióját a mod-nak \n(ezt később is megteheted).",
@@ -106,6 +111,6 @@
     "cancelledProfileOpening": "A SkyblockAddons megállította, hogy megnyisd ennek a játékosnak a profilját, amíg íj van a kezedben.",
     "cancelledDropping": "A SkyblockAddons megállította, hogy eldobd ezt a rare tárgyat vagy eszközt.",
     "clickMoreTimes": "Kattints/dobd el ezt a tárgyat még %times% alkalommal, ha tényleg ezt szeretnéd.",
-    "featureDisabled": "Feature Disabled"
+    "featureDisabled": "Funkció kikapcsolva"
   }
 }

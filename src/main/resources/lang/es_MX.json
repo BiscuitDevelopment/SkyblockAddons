@@ -11,7 +11,7 @@
     "magmaBossWarning": "Alerta de Boss de Magma",
     "itemDropConfirmation": "Confirmación de Arrojar Objetos",
     "hideSkeletonHatBones": "Ocultar Huesos de Skeleton Hat",
-    "skeletonHatBonesBar": "Barra de huesos de Skeleton Hat",
+    "skeletonHatBonesBar": "Barra de Huesos de Skeleton Hat",
     "hideFoodAndArmor": "Esconder Barra de Comida y Armadura",
     "fullInventoryWarning": "Alerta de Inventario Lleno",
     "disableEmberRodAbility": "Desactivar Ember Rod en Isla",
@@ -68,7 +68,11 @@
     "makeBackpackInventoriesColored": "Colorear Inventarios",
     "avoidBreakingBottomSugarCane": "Evitar Destrucción de Parte Inferior de Caña de Azúcar",
     "replaceRomanNumeralsWithNumbers": "Reemplazar Números Romanos en Objetos",
-    "changeBarColorForPotions": "Change Bar Color for Wither & Poison"
+    "changeBarColorForPotions": "Cambiar Color de Barra para Wither y Veneno",
+    "craftingPatterns": "Elegir Patrones de Crafteo",
+    "soundIndicatorForFishing": "Sound Indicator for Fishing",
+    "avoidBlinkingNightVision": "Avoid Blinking Night Vision Potion",
+    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings"
   },
   "messages": {
     "dropConfirmation": "Arroja este objeto otra vez para confirmar!",
@@ -83,7 +87,8 @@
     "enchantsToExclude": "Excluir %type%:",
     "inventoryTypes": {
       "enchants": "Encantamientos",
-      "reforges": "Reforjas"
+      "reforges": "Reforjas",
+      "crafting": "Crafteo"
     },
     "newUpdateAvailable": "Una nueva actualización (%version%) está disponible!",
     "deleteOldFile": "La descarga ha finalizado, por favor abre tu carpeta de mods usando el botón inferior, cierra Minecraft y elimina la versión antigua (o hazlo mas tarde si lo prefieres).",
@@ -106,6 +111,6 @@
     "cancelledProfileOpening": "SkyblockAddons ha evitado que abras el perfil de este jugador con tu arco en la mano.",
     "cancelledDropping": "SkyblockAddons ha evitado que arrojes este objeto o herramienta rara.",
     "clickMoreTimes": "Haz clic/arroja el objeto %times% veces más si en realidad quieres hacerlo.",
-    "featureDisabled": "Feature Disabled"
+    "featureDisabled": "Característica Desactivada"
   }
 }

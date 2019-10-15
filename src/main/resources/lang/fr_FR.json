@@ -68,7 +68,11 @@
     "makeBackpackInventoriesColored": "Inventaire coloré",
     "avoidBreakingBottomSugarCane": "Destruction de la base de la canne à sucre",
     "replaceRomanNumeralsWithNumbers": "Remplacer les numéros romains sur les objets",
-    "changeBarColorForPotions": "Change Bar Color for Wither & Poison"
+    "changeBarColorForPotions": "Changer la couleur de la barre pour le Wither & Poison",
+    "craftingPatterns": "Choisir le modèle de fabrication",
+    "soundIndicatorForFishing": "Sound Indicator for Fishing",
+    "avoidBlinkingNightVision": "Avoid Blinking Night Vision Potion",
+    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings"
   },
   "messages": {
     "dropConfirmation": "Jetez cet objet une nouvelle fois pour confirmer!",
@@ -83,7 +87,8 @@
     "enchantsToExclude": "%type% à exclure:",
     "inventoryTypes": {
       "enchants": "Enchantements",
-      "reforges": "Reforges"
+      "reforges": "Reforges",
+      "crafting": "Assemblage"
     },
     "newUpdateAvailable": "La mise à jour %version% est disponible!",
     "deleteOldFile": "Le téléchargement s'est terminé, veuillez ouvrir votre dossier mods en utilisant le bouton ci-dessous, fermer Minecraft et supprimer l'ancienne version (ou la supprimer plus tard si vous le préférez).",
@@ -106,6 +111,6 @@
     "cancelledProfileOpening": "SkyblockAddons vous a empêché d'ouvrir le profil de ce joueur en utilisant un arc.",
     "cancelledDropping": "SkyblockAddons vous a empêché de jeter cet objet ou outil rare de votre barre d'action.",
     "clickMoreTimes": "Cliquez/jetez cet objet encore %times% fois si vous le souhaitez.",
-    "featureDisabled": "Feature Disabled"
+    "featureDisabled": "Fonction désactivée"
   }
 }

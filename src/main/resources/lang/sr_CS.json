@@ -68,7 +68,11 @@
     "makeBackpackInventoriesColored": "Boja inventara",
     "avoidBreakingBottomSugarCane": "Prekini unišavanje donje trske",
     "replaceRomanNumeralsWithNumbers": "Zameni Rimske Brojeve na predmetima",
-    "changeBarColorForPotions": "Change Bar Color for Wither & Poison"
+    "changeBarColorForPotions": "Promeni boju Bar-a za Wither & Otrov",
+    "craftingPatterns": "Choose Crafting Patterns",
+    "soundIndicatorForFishing": "Sound Indicator for Fishing",
+    "avoidBlinkingNightVision": "Avoid Blinking Night Vision Potion",
+    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings"
   },
   "messages": {
     "dropConfirmation": "Opet baci ovu stvar za potvrdu!",
@@ -83,7 +87,8 @@
     "enchantsToExclude": "%type% Da se ne racuna:",
     "inventoryTypes": {
       "enchants": "Čarolije",
-      "reforges": "Reforge-ovi"
+      "reforges": "Reforge-ovi",
+      "crafting": "Pravljenje"
     },
     "newUpdateAvailable": "Dostupna je nova (%version%) verzija!",
     "deleteOldFile": "Skidanje je zavrseno, molimo was otvorite \"mods\" folder koristeci Minecraft dugme ispod, zatvorite vas minecraft, i izbrisite staru verziju (ili izbrisite kasnije ako zelite).",
@@ -106,6 +111,6 @@
     "cancelledProfileOpening": "SkyblockAddons te je zaustavio od otvaranja inventara ovog igrača dok držiš luk i strelu.",
     "cancelledDropping": "SkyblockAddons te je zaustavio od bacanja ovog vrednog predmeta ili oruđa iz tvog hotbara.",
     "clickMoreTimes": "Klikni/Baci ovaj predmet još %times% puta ako stvarno želiš ovo da uradiš.",
-    "featureDisabled": "Feature Disabled"
+    "featureDisabled": "Funkcija Isključena"
   }
 }

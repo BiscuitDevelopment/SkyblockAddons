@@ -68,7 +68,11 @@
     "makeBackpackInventoriesColored": "Farvebeholdninger",
     "avoidBreakingBottomSugarCane": "Undgå at bryde sukkerrøret",
     "replaceRomanNumeralsWithNumbers": "Udskift romertal på poster",
-    "changeBarColorForPotions": "Ændre bar farve for wither og gift"
+    "changeBarColorForPotions": "Ændre bar farve for wither og gift",
+    "craftingPatterns": "Vælg bygge mønster",
+    "soundIndicatorForFishing": "Sound Indicator for Fishing",
+    "avoidBlinkingNightVision": "Avoid Blinking Night Vision Potion",
+    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings"
   },
   "messages": {
     "dropConfirmation": "Slip denne vare igen for at bekræfte!",
@@ -83,7 +87,8 @@
     "enchantsToExclude": "%type% At ekskludere:",
     "inventoryTypes": {
       "enchants": "Fortryller",
-      "reforges": "Reforges"
+      "reforges": "Reforges",
+      "crafting": "Bygger"
     },
     "newUpdateAvailable": "En ny opdatering (%version%) er klar!",
     "deleteOldFile": "Overførslen er færdig, åbn din mods mappe ved brug af knappen nedenfor, luk Minecraft, og slet den gamle version (eller slet den senere hvis du fortrækker det).",

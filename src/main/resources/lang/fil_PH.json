@@ -68,7 +68,11 @@
     "makeBackpackInventoriesColored": "Makulay na Imbentaryo",
     "avoidBreakingBottomSugarCane": "Iwasan ang pagsira ng bottom Sugar Cane",
     "replaceRomanNumeralsWithNumbers": "Palitan ang Roman Numerals sa mga bagay",
-    "changeBarColorForPotions": "Change Bar Color for Wither & Poison"
+    "changeBarColorForPotions": "Change Bar Color for Wither & Poison",
+    "craftingPatterns": "Choose Crafting Patterns",
+    "soundIndicatorForFishing": "Sound Indicator for Fishing",
+    "avoidBlinkingNightVision": "Avoid Blinking Night Vision Potion",
+    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings"
   },
   "messages": {
     "dropConfirmation": "Ihulog ang item muli para kumpirmado!",
@@ -83,7 +87,8 @@
     "enchantsToExclude": "%type% Tanggalin ang:",
     "inventoryTypes": {
       "enchants": "Enchants",
-      "reforges": "Pandayan"
+      "reforges": "Pandayan",
+      "crafting": "Crafting"
     },
     "newUpdateAvailable": "Ang bagong bersyon (%version%) ay pwede na!",
     "deleteOldFile": "Tapos na ang pagdodownload, pakibukas ng iyong mods folder gamit ang button sa baba, pakisara ng Minecraft, at paki-delete ng lumang bersyon (pwede naman i-delete mamaya kung gusto mo).",

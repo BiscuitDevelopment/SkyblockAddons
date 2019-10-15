@@ -68,7 +68,11 @@
     "makeBackpackInventoriesColored": "Gekleurde Inventarissen",
     "avoidBreakingBottomSugarCane": "Vermijd het breken van onderste suikerriet",
     "replaceRomanNumeralsWithNumbers": "Vervang Romeinse Nummers op Items",
-    "changeBarColorForPotions": "Verander Kleur Balk voor Verdorring & Gif"
+    "changeBarColorForPotions": "Verander Kleur Balk voor Verdorring & Gif",
+    "craftingPatterns": "Kies Crafting Patroon",
+    "soundIndicatorForFishing": "Sound Indicator for Fishing",
+    "avoidBlinkingNightVision": "Avoid Blinking Night Vision Potion",
+    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings"
   },
   "messages": {
     "dropConfirmation": "Laat dit object opnieuw vallen om te Bevestigen!",
@@ -83,7 +87,8 @@
     "enchantsToExclude": "%type% Om Te Negeren:",
     "inventoryTypes": {
       "enchants": "Betoveringen",
-      "reforges": "Omsmedingen"
+      "reforges": "Omsmedingen",
+      "crafting": "Maken"
     },
     "newUpdateAvailable": "Een nieuwe update (%version%) is beschikbaar!",
     "deleteOldFile": "De download is voltooid, open uw mods map met behulp van de onderstaande knop, sluit uw Minecraft en verwijder de oude versie (of verwijder het later als u wilt).",

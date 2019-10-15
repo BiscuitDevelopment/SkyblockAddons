@@ -68,7 +68,11 @@
     "makeBackpackInventoriesColored": "Inventários Coloridos",
     "avoidBreakingBottomSugarCane": "Evitar a quebra da Cana de Açúcar debaixo",
     "replaceRomanNumeralsWithNumbers": "Substituir números romanos nos Itens",
-    "changeBarColorForPotions": "Mudar cor da barra para Wither e Veneno"
+    "changeBarColorForPotions": "Mudar cor da barra para Wither e Veneno",
+    "craftingPatterns": "Escolha os padrões de criação",
+    "soundIndicatorForFishing": "Sound Indicator for Fishing",
+    "avoidBlinkingNightVision": "Avoid Blinking Night Vision Potion",
+    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings"
   },
   "messages": {
     "dropConfirmation": "Large este item de novo para confirmar!",
@@ -83,7 +87,8 @@
     "enchantsToExclude": "%type% Para Excluir:",
     "inventoryTypes": {
       "enchants": "Encantamentos",
-      "reforges": "Reforjadas"
+      "reforges": "Reforjadas",
+      "crafting": "Criação"
     },
     "newUpdateAvailable": "Uma nova atualização (%version%) está disponível!",
     "deleteOldFile": "O download terminou, por favor, abra sua pasta de mods utilizando o botão abaixo, feche seu Minecraft e delete a versão antiga (ou delete mais tarde se você preferir).",
