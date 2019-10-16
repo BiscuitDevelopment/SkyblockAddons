@@ -48,7 +48,18 @@ import java.util.zip.ZipEntry;
 
 public class Utils {
 
-    private final Pattern STRIP_COLOR_PATTERN = Pattern.compile("(?i)" + '\u00A7' + "[0-9A-FK-OR]");
+    private final Pattern STRIP_COLOR_PATTERN = Pattern.compile("(?i)\\u00A7[0-9A-FK-OR]");
+
+    private static final List<String> ORDERED_ENCHANTMENTS = Collections.unmodifiableList(Arrays.asList(
+            "smite","bane of arthropods","knockback","fire aspect","venomous", // Sword Bad
+            "thorns","growth","protection","depth strider","respiration","aqua affinity", // Armor
+            "lure","caster","luck of the sea","blessing","angler","frail","magnet","spiked hook", // Fishing
+            "dragon hunter","power","snipe","piercing","aiming","infinite quiver", // Bow Main
+            "sharpness","critical","first strike","giant killer","execute","lethality","ender slayer","cubism","impaling", // Sword Damage
+            "vampirism","life steal","looting","luck","scavenger","experience","cleave","thunderlord", // Sword Others
+            "punch","flame", // Bow Others
+            "telekinesis"
+    ));
 
     private Map<Attribute, MutableInt> attributes = new EnumMap<>(Attribute.class);
     private List<String> enchantmentMatch = new LinkedList<>();
@@ -698,6 +709,21 @@ public class Utils {
 
     public int getLastHoveredSlot() {
         return lastHoveredSlot;
+    }
+
+    public void reorderEnchantmentList(List<String> enchantments) {
+        SortedMap<Integer, String> orderedEnchants = new TreeMap<>();
+        for (int i = 0; i < enchantments.size(); i++) {
+            int nameEnd = enchantments.get(i).lastIndexOf(' ');
+            if (nameEnd < 0) nameEnd = enchantments.get(i).length();
+
+            int key = ORDERED_ENCHANTMENTS.indexOf(enchantments.get(i).substring(0, nameEnd).toLowerCase());
+            if (key < 0) key = 100 + i;
+            orderedEnchants.put(key, enchantments.get(i));
+        }
+
+        enchantments.clear();
+        enchantments.addAll(orderedEnchants.values());
     }
 
 }
