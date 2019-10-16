@@ -72,9 +72,9 @@
     "craftingPatterns": "Choisir le modèle de fabrication",
     "soundIndicatorForFishing": "Indicateur sonore pour la pêche",
     "avoidBlinkingNightVision": "Empêcher le clignotement de l'effet vision nocturne",
-    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings",
-    "jungleAxeCooldown": "Jungle Axe Cooldown",
-    "organizeLongEnchantmentLists": "Organize Long Enchantment Lists"
+    "disableMinionLocationWarning": "Désativer l'alerte des emplacements des minions",
+    "jungleAxeCooldown": "Temps de recharge de la Jungle Axe",
+    "organizeLongEnchantmentLists": "Organiser la liste des long nom d'enchantements"
   },
   "messages": {
     "dropConfirmation": "Jetez cet objet une nouvelle fois pour confirmer!",
