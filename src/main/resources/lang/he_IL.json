@@ -103,16 +103,16 @@
       "majorAvailable": "עידכון חדש קטן (%version%) ניתן להורדה! הקישור להורדה נמצא בצ'אט.",
       "patchAvailable": "עידכון חדש לתיקון (%version%)!\nהסתכל בצ'אט לאפשרויות הורדה!",
       "downloading": "התיקון בהורדה! כרגע:\n%downloaded%/%total% לאחר ההורדה תצתרך למחוק את הקובץ הישן.",
-      "failed": "The patch download has failed! Please download it manually using the link in chat.",
-      "downloadFinished": "The patch has finished downloading. It has been saved as %file%. Please don't forget to delete the old file after closing your Minecraft. Click the message in chat to open up the folder."
+      "failed": "הורדת התיקון נכשלה! בבקשה הורד אותו בעצמך בעמצאות הלינק שנמצא בצ'אט.",
+      "downloadFinished": "הורדת התיקון הסתיימה. הקובץ נשמר בשם %file%. בבקשה אל תשכח למחוק את הקובץ הישן אחרי שאתה סוגר את מיינקראפט. תלחץ על ההודעה בצאט כדי לפתוח את ההודעה."
     },
     "slotLocked": "משבצת זו נעולה!",
     "summoningEyeFound": "עין לזימון דרקון!",
     "cancelledStemBreak": "SkyblockAddons עצר אותך מלשבור את הגידול. תשתמש ביד שלך אם ברצונך לשבור את זה.",
-    "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use another tool if you'd actually like to break it.",
+    "cancelledCaneBreak": "SkyblockAddons עצר אותך מלשבור את כנה הסוכר הזה. תשתמש בכלי אחר בכדי לשבור את זה.",
     "cancelledProfileOpening": "SkyBlockAddons עצר אותך מלפתוח את הפרופיל של האדם בזמן שהחזקתה קשת.",
     "cancelledDropping": "SkyBlockAddons עצר אותך מלהפיל את החפץ או הכלי הנדיר הזה.",
     "clickMoreTimes": "תלחץ/תזרוק את החפץ %times% פעמים נוספות אם אתה בטוח רוצה לעשות את זה.",
-    "featureDisabled": "Feature Disabled"
+    "featureDisabled": "פיטצ'ר מבוטל"
   }
 }
