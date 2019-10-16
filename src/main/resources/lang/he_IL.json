@@ -102,7 +102,7 @@
     "update": {
       "majorAvailable": "עידכון חדש קטן (%version%) ניתן להורדה! הקישור להורדה נמצא בצ'אט.",
       "patchAvailable": "עידכון חדש לתיקון (%version%)!\nהסתכל בצ'אט לאפשרויות הורדה!",
-      "downloading": "The patch is downloading! Status: %downloaded%/%total% Please note that after the download has finished, you must delete the old file.",
+      "downloading": "התיקון בהורדה! כרגע:\n%downloaded%/%total% לאחר ההורדה תצתרך למחוק את הקובץ הישן.",
       "failed": "The patch download has failed! Please download it manually using the link in chat.",
       "downloadFinished": "The patch has finished downloading. It has been saved as %file%. Please don't forget to delete the old file after closing your Minecraft. Click the message in chat to open up the folder."
     },
