@@ -70,11 +70,11 @@
     "replaceRomanNumeralsWithNumbers": "Reemplazar Números Romanos en Objetos",
     "changeBarColorForPotions": "Cambiar el Color de Barra para Wither & Veneno",
     "craftingPatterns": "Elige Patrones De Fabricación",
-    "soundIndicatorForFishing": "Sound Indicator for Fishing",
-    "avoidBlinkingNightVision": "Disable Night Vision Potion Blinking",
+    "soundIndicatorForFishing": "Indicador de sonido para la Pesca",
+    "avoidBlinkingNightVision": "Desactiva el Parpadeo del Poción de Visión Nocturna",
     "disableMinionLocationWarning": "Disable Location Not Perfect Warnings",
     "jungleAxeCooldown": "Jungle Axe Cooldown",
-    "organizeLongEnchantmentLists": "Organize Long Enchantment Lists"
+    "organizeLongEnchantmentLists": "Organiza lista de Encantamientos largas"
   },
   "messages": {
     "dropConfirmation": "¡Dropea el Objeto otra vez para soltar!",
