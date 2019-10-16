@@ -1,17 +1,17 @@
 {
-  "language": "Português (Portugal)",
+  "language": "Português",
   "settings": {
     "tab": {
       "features": "Funcionalidades",
       "fixes": "Correções",
-      "guiFeatures": "Funcionalidades da interface",
+      "guiFeatures": "Funções da Interface",
       "generalSettings": "Definições gerais"
     },
     "settings": "Definições",
     "magmaBossWarning": "Alerta do Magma Boss",
     "itemDropConfirmation": "Confirmação para dropar itens",
-    "hideSkeletonHatBones": "Esconder os ossos do Skeleton Helmet",
-    "skeletonHatBonesBar": "Barra de ossos do Skeleton Helmet",
+    "hideSkeletonHatBones": "Esconder os ossos do Capacete do Esqueleto",
+    "skeletonHatBonesBar": "Barra de ossos do Capacete do Esqueleto",
     "hideFoodAndArmor": "Esconder a barra de comida e armadura",
     "fullInventoryWarning": "Aviso de inventário cheio",
     "disableEmberRodAbility": "Desativar a Ember Rod na ilha",
@@ -50,6 +50,7 @@
     "preventMovementOnDeath": "Não andar depois da morte",
     "showItemAnvilUses": "Mostrar os usos na bigorna",
     "lockSlots": "Permitir o bloqueio de slots",
+    "lockSlot": "Bloquear um slot",
     "dontResetCursorInventory": "Não resetar o cursor entre inventários",
     "summoningEyeAlert": "Alerta de Summoning Eyes",
     "makeEnderchestsInEndGreen": "Tornar os baús do fim no Fim verdes",
@@ -66,7 +67,12 @@
     "stopDroppingSellingRareItems": "Não dropar/vender itens raros",
     "makeBackpackInventoriesColored": "Inventários coloridos",
     "avoidBreakingBottomSugarCane": "Evitar partir a cana de açúcar de baixo",
-    "replaceRomanNumeralsWithNumbers": "Substituir os números romanos nos itens"
+    "replaceRomanNumeralsWithNumbers": "Substituir os números romanos nos itens",
+    "changeBarColorForPotions": "Mudar a cor da barra com Wither ou Veneno",
+    "craftingPatterns": "Escolhe os padrões de criação",
+    "soundIndicatorForFishing": "Sound Indicator for Fishing",
+    "avoidBlinkingNightVision": "Avoid Blinking Night Vision Potion",
+    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings"
   },
   "messages": {
     "dropConfirmation": "Dropa este item outra vez para confirmar!",
@@ -81,21 +87,22 @@
     "enchantsToExclude": "%type% para excluír:",
     "inventoryTypes": {
       "enchants": "Encantamentos",
-      "reforges": "Reforges"
+      "reforges": "Reforges",
+      "crafting": "Criação"
     },
-    "newUpdateAvailable": "A new update, %version%, is available!",
-    "deleteOldFile": "The download has finished, please open your mods folder using the button below, close your Minecraft, and delete the old version (or delete it later if you prefer).",
-    "wantToViewPatchNotes": "Want to read the changes?",
-    "downloadLink": "UPDATE LINK",
-    "downloadAutomatically": "AUTO DOWNLOAD",
-    "openModFolder": "MOD FOLDER",
-    "joinTheDiscord": "JOIN DISCORD",
+    "newUpdateAvailable": "Está disponível uma nova atualização (%version%)!",
+    "deleteOldFile": "O download terminou. Abre a tua pasta mods usando os botões abaixo, fecha o Minecraft e apaga a versão antiga (ou apaga-a mais tarde se preferires).",
+    "wantToViewPatchNotes": "Queres ler as alterações?",
+    "downloadLink": "LINK DA ATUALIZAÇÃO",
+    "downloadAutomatically": "DOWNLOAD AUTOMÁTICO",
+    "openModFolder": "PASTA MODS",
+    "joinTheDiscord": "ENTRA NO DISCORD",
     "update": {
-      "majorAvailable": "A new major update, %version% is available! The link for the download can be found in chat.",
-      "patchAvailable": "A new patch update, %version% is available! Look for the download link or to attempt to download the patch automatically!",
-      "downloading": "The patch is downloading! Status: %downloaded%/%total% Please note that after the download has finished, you must delete the old file.",
-      "failed": "The patch download has failed! Please download it manually using the link in chat.",
-      "downloadFinished": "The patch has finished downloading. It has been saved as %file%. Please don't forget to delete the old file after closing your Minecraft. Click the message in chat to open up the folder."
+      "majorAvailable": "Está disponível uma nova atualização importante (%version%)! O link para o download pode ser encontrado no chat.",
+      "patchAvailable": "Uma nova atualização (%version%) está disponível! Procura pelas opções de download no chat!",
+      "downloading": "A atualização está a descarregar! Estado: %downloaded%/%total% Assim que o download terminar terás de apagar o ficheiro antigo.",
+      "failed": "O download da atualização falhou! Descarrega-o manualmente usando o link no chat.",
+      "downloadFinished": "A atualização terminou de ser descarregada e foi guardada como %file%. Não te esqueças de apagar o ficheiro antigo depois de fechares o Minecraft. Clica a mensagem no chat para abrires a pasta."
     },
     "slotLocked": "Este slot está bloqueado!",
     "summoningEyeFound": "Summoning Eye!",
@@ -103,6 +110,7 @@
     "cancelledCaneBreak": "O SkyblockAddons preveniu-te de partires este bloco de cana de açúcar. Usa outra ferramenta se quiseres mesmo parti-lo.",
     "cancelledProfileOpening": "O SkyblockAddons preveniu-te de abrires o perfil deste jogador enquanto seguras um arco.",
     "cancelledDropping": "O SkyblockAddons preveniu-te de dropar este item ou ferramenta rara da tua hotbar.",
-    "clickMoreTimes": "Clica/dropa este item mais %times% vezes se quiseres mesmo fazer isto."
+    "clickMoreTimes": "Clica/dropa este item mais %times% vezes se quiseres mesmo fazer isto.",
+    "featureDisabled": "Função Desativada"
   }
 }

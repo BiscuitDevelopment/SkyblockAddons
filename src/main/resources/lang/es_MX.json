@@ -11,7 +11,7 @@
     "magmaBossWarning": "Alerta de Boss de Magma",
     "itemDropConfirmation": "Confirmación de Arrojar Objetos",
     "hideSkeletonHatBones": "Ocultar Huesos de Skeleton Hat",
-    "skeletonHatBonesBar": "Barra de huesos de Skeleton Hat",
+    "skeletonHatBonesBar": "Barra de Huesos de Skeleton Hat",
     "hideFoodAndArmor": "Esconder Barra de Comida y Armadura",
     "fullInventoryWarning": "Alerta de Inventario Lleno",
     "disableEmberRodAbility": "Desactivar Ember Rod en Isla",
@@ -50,6 +50,7 @@
     "preventMovementOnDeath": "Evitar Caminar Después de Morir",
     "showItemAnvilUses": "Mostrar los Usos de Anvil/Yunque",
     "lockSlots": "Permitir Bloqueo de Ranuras",
+    "lockSlot": "Bloquear Ranura",
     "dontResetCursorInventory": "Evitar Reinicio del Cursor entre Inventarios",
     "summoningEyeAlert": "Alerta de Summoning Eye",
     "makeEnderchestsInEndGreen": "Colorear Enderchest de Verde en The End",
@@ -67,7 +68,11 @@
     "makeBackpackInventoriesColored": "Colorear Inventarios",
     "avoidBreakingBottomSugarCane": "Evitar Destrucción de Parte Inferior de Caña de Azúcar",
     "replaceRomanNumeralsWithNumbers": "Reemplazar Números Romanos en Objetos",
-	"organizeLongEnchantmentLists": "Ordenar Listas de Encantamientos"
+    "changeBarColorForPotions": "Cambiar Color de Barra para Wither y Veneno",
+    "craftingPatterns": "Elegir Patrones de Crafteo",
+    "soundIndicatorForFishing": "Sound Indicator for Fishing",
+    "avoidBlinkingNightVision": "Avoid Blinking Night Vision Potion",
+    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings"
   },
   "messages": {
     "dropConfirmation": "Arroja este objeto otra vez para confirmar!",
@@ -82,28 +87,30 @@
     "enchantsToExclude": "Excluir %type%:",
     "inventoryTypes": {
       "enchants": "Encantamientos",
-      "reforges": "Reforjas"
+      "reforges": "Reforjas",
+      "crafting": "Crafteo"
     },
-    "newUpdateAvailable": "A new update, %version%, is available!",
-    "deleteOldFile": "The download has finished, please open your mods folder using the button below, close your Minecraft, and delete the old version (or delete it later if you prefer).",
-    "wantToViewPatchNotes": "Want to read the changes?",
-    "downloadLink": "UPDATE LINK",
-    "downloadAutomatically": "AUTO DOWNLOAD",
-    "openModFolder": "MOD FOLDER",
-    "joinTheDiscord": "JOIN DISCORD",
+    "newUpdateAvailable": "Una nueva actualización (%version%) está disponible!",
+    "deleteOldFile": "La descarga ha finalizado, por favor abre tu carpeta de mods usando el botón inferior, cierra Minecraft y elimina la versión antigua (o hazlo mas tarde si lo prefieres).",
+    "wantToViewPatchNotes": "Quieres leer los cambios?",
+    "downloadLink": "LINK DE ACTUALIZACION",
+    "downloadAutomatically": "AUTO DESCARGAR",
+    "openModFolder": "CARPETA DE MODS",
+    "joinTheDiscord": "UNIRSE A DISCORD",
     "update": {
-      "majorAvailable": "A new major update, %version% is available! The link for the download can be found in chat.",
-      "patchAvailable": "A new patch update, %version% is available! Look for the download link or to attempt to download the patch automatically!",
-      "downloading": "The patch is downloading! Status: %downloaded%/%total% Please note that after the download has finished, you must delete the old file.",
-      "failed": "The patch download has failed! Please download it manually using the link in chat.",
-      "downloadFinished": "The patch has finished downloading. It has been saved as %file%. Please don't forget to delete the old file after closing your Minecraft. Click the message in chat to open up the folder."
+      "majorAvailable": "Una nueva actualización importante (%version%) se encuentra disponible! El link de descarga puede encontrarse en el chat.",
+      "patchAvailable": "Un nuevo parche de actualización (%version%) se encuentra disponible! Las opciones de descarga están en el chat!",
+      "downloading": "El parche se está descargando! Estado: %downloaded%/%total% Por favor, ten en cuenta que después de que la descarga haya finalizado, debes eliminar el archivo antiguo.",
+      "failed": "La descarga del parche ha fallado! Por favor, descárgalo manualmente usando el link en el chat.",
+      "downloadFinished": "El parche ha sido descargado. Se guardó como %file%. Por favor, no te olvides de eliminar el archivo antiguo después de cerrar Minecraft. Haz clic en el mensaje del chat para abrir la carpeta."
     },
     "slotLocked": "Esta ranura está bloqueada!",
     "summoningEyeFound": "Summoning Eye!",
-    "cancelledStemBreak": "SkyblockAddons ha detenido la destrucción del tallo. Usa sólo tus manos si en realidad quieres romperlo.",
-    "cancelledCaneBreak": "SkyblockAddons te ha impedido romper este bloque de caña de azúcar. Usa otra herramienta si realmente te gustaría romperla.",
+    "cancelledStemBreak": "SkyblockAddons ha impedido que rompas este tallo. Usa sólo tus manos si en realidad quieres romperlo.",
+    "cancelledCaneBreak": "SkyblockAddons te ha impedido romper este bloque de caña de azúcar. Usa otra herramienta si en realidad quieres romperlo.",
     "cancelledProfileOpening": "SkyblockAddons ha evitado que abras el perfil de este jugador con tu arco en la mano.",
     "cancelledDropping": "SkyblockAddons ha evitado que arrojes este objeto o herramienta rara.",
-    "clickMoreTimes": "Haz clic/arroja el objeto %times% veces más si en realidad quieres hacerlo."
+    "clickMoreTimes": "Haz clic/arroja el objeto %times% veces más si en realidad quieres hacerlo.",
+    "featureDisabled": "Característica Desactivada"
   }
 }

@@ -1,6 +1,7 @@
 package codes.biscuit.skyblockaddons.mixins;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.gui.elements.CraftingPatternSelection;
 import codes.biscuit.skyblockaddons.utils.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
@@ -10,7 +11,6 @@ import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
-import net.minecraft.inventory.ContainerChest;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
@@ -32,9 +32,15 @@ import java.util.regex.Pattern;
 @Mixin(GuiChest.class)
 public abstract class MixinGuiChest extends GuiContainer {
 
+    /**
+     * clickType value in {@link #handleMouseClick(Slot, int, int, int)} for shift-clicks
+     */
+    private static final int SHIFTCLICK_CLICK_TYPE = 1;
+
     private EnumUtils.InventoryType inventoryType = null;
     private GuiTextField textFieldMatch = null;
     private GuiTextField textFieldExclusions = null;
+    private CraftingPatternSelection craftingPatternSelection = null;
 
     @Shadow private IInventory lowerChestInventory;
 
@@ -60,6 +66,13 @@ public abstract class MixinGuiChest extends GuiContainer {
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
         super.drawScreen(mouseX, mouseY, partialTicks);
+
+        if(inventoryType == EnumUtils.InventoryType.CRAFTING_TABLE
+                && craftingPatternSelection != null) {
+            craftingPatternSelection.draw();
+            return;
+        }
+
         if (textFieldMatch != null) {
             GlStateManager.color(1F, 1F, 1F);
             SkyblockAddons main = SkyblockAddons.getInstance();
@@ -79,11 +92,11 @@ public abstract class MixinGuiChest extends GuiContainer {
             GlStateManager.popMatrix();
             textFieldMatch.drawTextBox();
             if (textFieldMatch.getText().equals("")) {
-                mc.ingameGUI.drawString(mc.fontRendererObj, "ex. \"prot, feather\"", x+4, guiTop + 86, ConfigColor.DARK_GRAY.getColor(255));
+                mc.ingameGUI.drawString(mc.fontRendererObj, "ex. \"prot, feather\"", x+4, guiTop + 86, ConfigColor.DARK_GRAY.getColor());
             }
             textFieldExclusions.drawTextBox();
             if (textFieldExclusions.getText().equals("")) {
-                mc.ingameGUI.drawString(mc.fontRendererObj, "ex. \"proj, blast\"", x+4, guiTop + 126, ConfigColor.DARK_GRAY.getColor(255));
+                mc.ingameGUI.drawString(mc.fontRendererObj, "ex. \"proj, blast\"", x+4, guiTop + 126, ConfigColor.DARK_GRAY.getColor());
             }
         }
     }
@@ -91,10 +104,24 @@ public abstract class MixinGuiChest extends GuiContainer {
     @Override
     public void initGui() {
         super.initGui();
+        // don't draw any overlays outside SkyBlock
+        if(!SkyblockAddons.getInstance().getUtils().isOnSkyblock()) {
+            return;
+        }
+
         String guiName = lowerChestInventory.getDisplayName().getUnformattedText();
         if (guiName.equals("Enchant Item")) inventoryType = EnumUtils.InventoryType.ENCHANTMENT_TABLE;
         if (guiName.equals("Reforge Item")) inventoryType = EnumUtils.InventoryType.REFORGE_ANVIL;
+        if (guiName.equals(CraftingPattern.CRAFTING_TABLE_DISPLAYNAME)) inventoryType = EnumUtils.InventoryType.CRAFTING_TABLE;
         if (inventoryType != null) {
+
+            if(inventoryType == EnumUtils.InventoryType.CRAFTING_TABLE) {
+                if(SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.CRAFTING_PATTERNS)) {
+                    craftingPatternSelection = new CraftingPatternSelection(mc, Math.max(guiLeft - CraftingPatternSelection.ICON_SIZE - 2, 10), guiTop);
+                }
+                return;
+            }
+
             int xPos = guiLeft - 160;
             if (xPos<0) {
                 xPos = 20;
@@ -139,7 +166,7 @@ public abstract class MixinGuiChest extends GuiContainer {
 
     @Override
     protected void keyTyped(char typedChar, int keyCode) throws IOException {
-        if (inventoryType != null) {
+        if (inventoryType != null && inventoryType != EnumUtils.InventoryType.CRAFTING_TABLE) {
             if (keyCode != this.mc.gameSettings.keyBindInventory.getKeyCode() || (!textFieldMatch.isFocused() && !textFieldExclusions.isFocused())) {
                 super.keyTyped(typedChar, keyCode);
             }
@@ -159,9 +186,9 @@ public abstract class MixinGuiChest extends GuiContainer {
     @Override
     protected void handleMouseClick(Slot slotIn, int slotId, int clickedButton, int clickType) {
         SkyblockAddons main = SkyblockAddons.getInstance();
+        Container slots = inventorySlots;
         if (main.getUtils().getEnchantmentMatch().size() > 0) {
             if (slotIn != null && !slotIn.inventory.equals(mc.thePlayer.inventory) && slotIn.getHasStack()) {
-                Container slots = inventorySlots;
                 if (slotIn.getSlotIndex() == 13 && inventoryType == EnumUtils.InventoryType.ENCHANTMENT_TABLE) {
                     ItemStack[] enchantBottles = {slots.getSlot(29).getStack(), slots.getSlot(31).getStack(), slots.getSlot(33).getStack()};
                     for (ItemStack bottle : enchantBottles) {
@@ -199,20 +226,39 @@ public abstract class MixinGuiChest extends GuiContainer {
                 }
             }
         }
-        out:
-        if (slotIn != null && main.getConfigValues().isEnabled(Feature.LOCK_SLOTS) &&
-                main.getUtils().isOnSkyblock()) {
-            int slotNum = slotIn.slotNumber;
-            Container container = mc.thePlayer.openContainer;
-            slotNum -= ((ContainerChest)container).getLowerChestInventory().getSizeInventory()-9;
-            if (slotNum < 9) break out; // for chests
-            if (main.getConfigValues().getLockedSlots().contains(slotNum)) {
-                main.getUtils().playSound("note.bass", 0.5);
-                return;
+
+        // Crafting patterns
+        if(slotIn != null && inventoryType == EnumUtils.InventoryType.CRAFTING_TABLE
+                && main.getConfigValues().isEnabled(Feature.CRAFTING_PATTERNS)) {
+            CraftingPattern selectedPattern = CraftingPatternSelection.selectedPattern;
+            if(selectedPattern != CraftingPattern.FREE) {
+                boolean[] filledPattern = new boolean[9];
+                for (int i = 0; i < CraftingPattern.CRAFTING_GRID_SLOTS.size(); i++) {
+                    int slotIndex = CraftingPattern.CRAFTING_GRID_SLOTS.get(i);
+                    filledPattern[i] = slots.getSlot(slotIndex).getHasStack();
+                }
+                boolean patternFilled = selectedPattern.fillsPattern(filledPattern); // whether all pattern slots are filled
+                boolean patternSatisfied = selectedPattern.satisfiesPattern(filledPattern); // whether all pattern slots are filled and no non-pattern slots are filled
+
+                if(slotIn.inventory.equals(mc.thePlayer.inventory)) {
+                    if(patternFilled && clickType == SHIFTCLICK_CLICK_TYPE) {
+                        // cancel shift-clicking items from the inventory if the pattern is already filled
+                        main.getUtils().playSound("note.bass", 0.5);
+                        return;
+                    }
+                } else {
+                    if(slotIn.getSlotIndex() == CraftingPattern.CRAFTING_RESULT_INDEX
+                            && !patternSatisfied) {
+                        // cancel clicking the result if the pattern isn't satisfied
+                        main.getUtils().playSound("note.bass", 0.5);
+                        return;
+                    }
+                }
             }
         }
-        if (main.getConfigValues().isEnabled(Feature.STOP_DROPPING_SELLING_RARE_ITEMS) && main.getUtils().isOnSkyblock() &&
-                lowerChestInventory.hasCustomName() && EnumUtils.Merchant.isMerchant(lowerChestInventory.getDisplayName().getUnformattedText())
+
+        if (main.getConfigValues().isEnabled(Feature.STOP_DROPPING_SELLING_RARE_ITEMS) &&
+                lowerChestInventory.hasCustomName() && EnumUtils.SkyblockNPC.isMerchant(lowerChestInventory.getDisplayName().getUnformattedText())
                 && slotIn != null && slotIn.inventory instanceof InventoryPlayer) {
             if (main.getInventoryUtils().shouldCancelDrop(slotIn)) return;
         }
@@ -225,6 +271,10 @@ public abstract class MixinGuiChest extends GuiContainer {
         if (textFieldMatch != null) {
             textFieldMatch.mouseClicked(mouseX, mouseY, mouseButton);
             textFieldExclusions.mouseClicked(mouseX, mouseY, mouseButton);
+        }
+
+        if(craftingPatternSelection != null) {
+            craftingPatternSelection.mouseClicked(mouseX, mouseY, mouseButton);
         }
     }
 

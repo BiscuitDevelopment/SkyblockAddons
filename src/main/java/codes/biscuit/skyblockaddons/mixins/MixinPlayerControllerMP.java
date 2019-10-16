@@ -1,7 +1,6 @@
 package codes.biscuit.skyblockaddons.mixins;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.Feature;
 import codes.biscuit.skyblockaddons.utils.Message;
 import net.minecraft.block.Block;
@@ -11,8 +10,10 @@ import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.multiplayer.PlayerControllerMP;
 import net.minecraft.client.network.NetHandlerPlayClient;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.inventory.ContainerPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.Packet;
 import net.minecraft.util.BlockPos;
@@ -29,6 +30,7 @@ public class MixinPlayerControllerMP {
 
     private long lastStemMessage = -1;
     private long lastProfileMessage = -1;
+    private long lastLogBroken = -1;
 
     /**
      * Cancels stem breaks if holding an item, to avoid accidental breaking.
@@ -47,20 +49,23 @@ public class MixinPlayerControllerMP {
                     main.getUtils().sendMessage(main.getConfigValues().getColor(Feature.AVOID_BREAKING_STEMS).getChatFormatting()+Message.MESSAGE_CANCELLED_STEM_BREAK.getMessage());
                 }
                 cir.setReturnValue(false);
-                return;
+            } else if (main.getConfigValues().isEnabled(Feature.JUNGLE_AXE_COOLDOWN) && heldItem.getDisplayName().contains("Jungle Axe") &&
+                       (block.equals(Blocks.log) || block.equals(Blocks.log2))) {
+                if (lastLogBroken + 15000 > System.currentTimeMillis()) {
+                    cir.setReturnValue(false);
+                }
             }
         }
-        if (main.getConfigValues().isEnabled(Feature.AVOID_BREAKING_BOTTOM_SUGAR_CANE) && main.getUtils().getLocation() == EnumUtils.Location.ISLAND
-                && (block.equals(Blocks.reeds) && mc.theWorld.getBlockState(loc.down()).getBlock() != Blocks.reeds)) {
-            if (heldItem == null || heldItem.getItem().equals(Items.reeds) || heldItem.getItem().equals(Items.diamond_hoe)
-                    || heldItem.getItem().equals(Items.iron_hoe) || heldItem.getItem().equals(Items.golden_hoe) || heldItem.getItem().equals(Items.stone_hoe)
-                    || heldItem.getItem().equals(Items.wooden_hoe)) {
-                if (System.currentTimeMillis() - lastStemMessage > 20000) {
-                    lastStemMessage = System.currentTimeMillis();
-                    main.getUtils().sendMessage(main.getConfigValues().getColor(Feature.AVOID_BREAKING_BOTTOM_SUGAR_CANE).getChatFormatting() + Message.MESSAGE_CANCELLED_CANE_BREAK.getMessage());
-                }
-                cir.setReturnValue(false);
-            }
+    }
+
+    @Inject(method = "onPlayerDestroyBlock", at = @At(value = "HEAD"), locals = LocalCapture.CAPTURE_FAILSOFT, cancellable = true)
+    private void onPlayerDestroyBlock(BlockPos pos, EnumFacing face, CallbackInfoReturnable<Boolean> cir) {
+        Minecraft minecraft = Minecraft.getMinecraft();
+        EntityPlayerSP player = minecraft.thePlayer;
+        Block block = minecraft.theWorld.getBlockState(pos).getBlock();
+
+        if (block.equals(Blocks.log) || block.equals(Blocks.log2)) {
+            this.lastLogBroken = System.currentTimeMillis();
         }
     }
 
@@ -80,10 +85,10 @@ public class MixinPlayerControllerMP {
 
     private void checkIfShouldSendPacket(NetHandlerPlayClient netHandlerPlayClient, Packet p_147297_1_) {
         SkyblockAddons main = SkyblockAddons.getInstance();
-        if (main.getConfigValues().isEnabled(Feature.DONT_OPEN_PROFILES_WITH_BOW)) {
+        if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.DONT_OPEN_PROFILES_WITH_BOW)) {
             Minecraft mc = Minecraft.getMinecraft();
             Entity entityIn = mc.objectMouseOver.entityHit;
-            if (entityIn instanceof EntityOtherPlayerMP && !main.getUtils().isNPC(entityIn)) {
+            if (entityIn instanceof EntityOtherPlayerMP && main.getUtils().isNotNPC(entityIn)) {
                 ItemStack item = mc.thePlayer.inventory.getCurrentItem();
                 ItemStack itemInUse = mc.thePlayer.getItemInUse();
                 if ((item != null && item.getItem() != null && item.getItem().equals(Items.bow)) ||
@@ -98,5 +103,23 @@ public class MixinPlayerControllerMP {
             }
         }
         netHandlerPlayClient.addToSendQueue(p_147297_1_);
+    }
+
+    /**
+     * Cancels clicking a locked inventory slot, even from other mods
+     */
+    @Inject(method = "windowClick", at = @At("HEAD"), locals = LocalCapture.CAPTURE_FAILSOFT, cancellable = true)
+    private void onWindowClick(int windowId, int slotNum, int clickButton, int clickModifier, EntityPlayer player, CallbackInfoReturnable<ItemStack> cir) {
+        SkyblockAddons main = SkyblockAddons.getInstance();
+        if (player != null && player.openContainer != null) {
+            slotNum += main.getInventoryUtils().getSlotDifference(player.openContainer);
+            if (main.getConfigValues().isEnabled(Feature.LOCK_SLOTS) && main.getUtils().isOnSkyblock()
+                    && main.getConfigValues().getLockedSlots().contains(slotNum)
+                    && (slotNum >= 9 || player.openContainer instanceof ContainerPlayer && slotNum >= 5)){
+                main.getUtils().playSound("note.bass", 0.5);
+                cir.setReturnValue(null);
+                cir.cancel();
+            }
+        }
     }
 }

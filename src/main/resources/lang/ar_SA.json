@@ -50,6 +50,7 @@
     "preventMovementOnDeath": "منع المشي بعد الموت",
     "showItemAnvilUses": "أظهار عدد مرات أستخدام السندان",
     "lockSlots": "السماح بقفل الخانات",
+    "lockSlot": "إقفال الخانة",
     "dontResetCursorInventory": "لا تقم بإعادة ضبط المؤشر بين المخازن",
     "summoningEyeAlert": "تنبيه عين الاستدعاء",
     "makeEnderchestsInEndGreen": "تغيير لون الصندوق المتنقل في عالم النهاية إلى اخضر",
@@ -66,7 +67,12 @@
     "stopDroppingSellingRareItems": "إيقاف إسقاط أو بيع الأشياء النادرة",
     "makeBackpackInventoriesColored": "لون القائمة",
     "avoidBreakingBottomSugarCane": "أيقاف كسر قصب السكر السفلي",
-    "replaceRomanNumeralsWithNumbers": "تحويل الترقيم الروماني إلى الرقمي"
+    "replaceRomanNumeralsWithNumbers": "تحويل الترقيم الروماني إلى الرقمي",
+    "changeBarColorForPotions": "تغيير لون الشريط للويذر و التسمم",
+    "craftingPatterns": "Choose Crafting Patterns",
+    "soundIndicatorForFishing": "Sound Indicator for Fishing",
+    "avoidBlinkingNightVision": "Avoid Blinking Night Vision Potion",
+    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings"
   },
   "messages": {
     "dropConfirmation": "!إرمي هذا العنصر مرة أخرى للتأكيد",
@@ -81,21 +87,22 @@
     "enchantsToExclude": "%type% للاستبعاد:",
     "inventoryTypes": {
       "enchants": "التطويرات",
-      "reforges": "إعادة تشكيل"
+      "reforges": "إعادة تشكيل",
+      "crafting": "Crafting"
     },
-    "newUpdateAvailable": "A new update, %version%, is available!",
-    "deleteOldFile": "The download has finished, please open your mods folder using the button below, close your Minecraft, and delete the old version (or delete it later if you prefer).",
-    "wantToViewPatchNotes": "Want to read the changes?",
-    "downloadLink": "UPDATE LINK",
-    "downloadAutomatically": "AUTO DOWNLOAD",
-    "openModFolder": "MOD FOLDER",
-    "joinTheDiscord": "JOIN DISCORD",
+    "newUpdateAvailable": "تحديث جديد (%version%) الآن متاح!",
+    "deleteOldFile": "تم التنزيل، الرجاء فتح ملف المودات مستعملا الزر ادناه، اغلق ماينكرافت، قم بإلغاء النسخة القديمه (أو الغيها لاحقا اذا اردت).",
+    "wantToViewPatchNotes": "هل تريد قراءة التغييرات؟",
+    "downloadLink": "رابط التحديث",
+    "downloadAutomatically": "تنزيل تلقائي",
+    "openModFolder": "ملف المودات",
+    "joinTheDiscord": "أدخل الديسكورد",
     "update": {
-      "majorAvailable": "A new major update, %version% is available! The link for the download can be found in chat.",
-      "patchAvailable": "A new patch update, %version% is available! Look for the download link or to attempt to download the patch automatically!",
-      "downloading": "The patch is downloading! Status: %downloaded%/%total% Please note that after the download has finished, you must delete the old file.",
-      "failed": "The patch download has failed! Please download it manually using the link in chat.",
-      "downloadFinished": "The patch has finished downloading. It has been saved as %file%. Please don't forget to delete the old file after closing your Minecraft. Click the message in chat to open up the folder."
+      "majorAvailable": "يوجد هناك تحديث جديد، (%version%) متاح! يمكن ايجاد رابط التنزيل في الدردشه.",
+      "patchAvailable": "تحديث تصحيحات (%version%) الآن متاح!\nانظر في الدردشة لتنزيل الخيارات!",
+      "downloading": "يتم تنزيل التصحيح! الحاله: %downloaded%/%total% ملحوظه الرجاء بعد انهاء التحميل، يجب عليك الغاء الملفات القديمة.",
+      "failed": "تنزيل التصحيح قد فشل! الرجاء تنزيله يدويا بإستعمال الرابط في الدردشة.",
+      "downloadFinished": "لقد انتهى تنزيل التصحيح. تم حفظه على شكل %file%. الرجاء عدم نسيان الغاء الملفات القديمة بعد إغلاق ماينكرافت. اضغط على الرسالة في الدردشه لفتح الملف."
     },
     "slotLocked": "الخانة مقفله!",
     "summoningEyeFound": "عين الاستدعاء!",
@@ -103,6 +110,7 @@
     "cancelledCaneBreak": "إضافات سكاي بلوك منعك من كسر هذا القصب، إن أردت كسره استعمل اداة اخرى.",
     "cancelledProfileOpening": "إضافات سكاي بلوك منعك من فتح شخصية هذا اللاعب وانت تحمل القوس.",
     "cancelledDropping": "إضافات سكاي بلوك منعك من إلقاء هذه الأداة أو الشيء النادر من قائمة أدواتك.",
-    "clickMoreTimes": "أضغط أو اسقط هذا الشيء %times% مرات أخرى إن كنت حقيقا تريد فعل هذا."
+    "clickMoreTimes": "أضغط أو اسقط هذا الشيء %times% مرات أخرى إن كنت حقيقا تريد فعل هذا.",
+    "featureDisabled": "تعطل الميزة"
   }
 }

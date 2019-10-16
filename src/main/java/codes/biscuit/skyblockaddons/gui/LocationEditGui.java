@@ -2,12 +2,10 @@ package codes.biscuit.skyblockaddons.gui;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.gui.buttons.ButtonLocation;
+import codes.biscuit.skyblockaddons.gui.buttons.ButtonResize;
 import codes.biscuit.skyblockaddons.gui.buttons.ButtonSolid;
 import codes.biscuit.skyblockaddons.listeners.PlayerListener;
-import codes.biscuit.skyblockaddons.utils.ConfigColor;
-import codes.biscuit.skyblockaddons.utils.EnumUtils;
-import codes.biscuit.skyblockaddons.utils.Feature;
-import codes.biscuit.skyblockaddons.utils.Message;
+import codes.biscuit.skyblockaddons.utils.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiButton;
@@ -24,6 +22,9 @@ public class LocationEditGui extends GuiScreen {
 
     private SkyblockAddons main;
     // The feature that is currently being dragged, or null for nothing.
+    private boolean resizing = false;
+    private int barOriginalHeight = 0;
+    private int barOriginalWidth = 0;
     private Feature dragging = null;
     private int xOffset = 0;
     private int yOffset = 0;
@@ -46,6 +47,9 @@ public class LocationEditGui extends GuiScreen {
         for (Feature feature : features) {
             if (!main.getConfigValues().isDisabled(feature)) { // Don't display features that have been disabled
                 buttonList.add(new ButtonLocation(main, feature));
+                if (feature == Feature.HEALTH_BAR || feature == Feature.MANA_BAR) {
+                    addResizeButtons(feature);
+                }
             }
         }
 
@@ -65,6 +69,31 @@ public class LocationEditGui extends GuiScreen {
 ////        if (boxWidth > BUTTON_MAX_WIDTH) boxWidth = BUTTON_MAX_WIDTH;
 //        y-=25;
 //        buttonList.add(new ButtonSolid(x, y, boxWidth, boxHeight, text, main, Feature.ANCHOR_POINT));
+    }
+
+    private void addResizeButtons(Feature feature) {
+        buttonList.removeIf((button) -> button instanceof ButtonResize && ((ButtonResize)button).getFeature() == dragging);
+        float scale = main.getConfigValues().getGuiScale(feature);
+        int barHeightExpansion = 2*main.getConfigValues().getSizes(feature).getY();
+        int height = 3+barHeightExpansion;
+        int barWidthExpansion = 9*main.getConfigValues().getSizes(feature).getX();
+        int width = 22+barWidthExpansion;
+        float x = main.getConfigValues().getActualX(feature);
+        float y = main.getConfigValues().getActualY(feature);
+        x/=scale;
+        y/=scale;
+        x-=(float)width/2;
+        y-=(float)height/2;
+        int intX = Math.round(x);
+        int intY = Math.round(y);
+        int boxXOne = intX-4;
+        int boxXTwo = intX+width+5;
+        int boxYOne = intY-3;
+        int boxYTwo = intY+height+4;
+        buttonList.add(new ButtonResize(boxXOne, boxYOne, feature));
+        buttonList.add(new ButtonResize(boxXTwo, boxYOne, feature));
+        buttonList.add(new ButtonResize(boxXOne, boxYTwo, feature));
+        buttonList.add(new ButtonResize(boxXTwo, boxYTwo, feature));
     }
 
     @Override
@@ -97,7 +126,7 @@ public class LocationEditGui extends GuiScreen {
             dragging = buttonLocation.getFeature();
             xOffset = buttonLocation.getLastMouseX()-main.getConfigValues().getActualX(buttonLocation.getFeature());
             yOffset = buttonLocation.getLastMouseY()-main.getConfigValues().getActualY(buttonLocation.getFeature());
-        } else {
+        } else if (abstractButton instanceof ButtonSolid) {
             ButtonSolid buttonSolid = (ButtonSolid)abstractButton;
             if (buttonSolid.getFeature() == Feature.RESET_LOCATION) {
                 main.getConfigValues().setAllCoordinatesToDefault();
@@ -107,6 +136,15 @@ public class LocationEditGui extends GuiScreen {
 //                Minecraft.getMinecraft().displayGuiScreen(new LocationEditGui(main));
 //                cancelScreenReturn = false;
 //            }
+        } else if (abstractButton instanceof ButtonResize) {
+            ButtonResize buttonResize = (ButtonResize)abstractButton;
+            dragging = buttonResize.getFeature();
+            xOffset = buttonResize.getLastMouseX();
+            yOffset = buttonResize.getLastMouseY();
+            CoordsPair sizes = main.getConfigValues().getSizes(dragging);
+            barOriginalWidth = sizes.getX();
+            barOriginalHeight = sizes.getY();
+            resizing = true;
         }
     }
 
@@ -117,11 +155,28 @@ public class LocationEditGui extends GuiScreen {
     protected void mouseClickMove(int mouseX, int mouseY, int clickedMouseButton, long timeSinceLastClick) {
         super.mouseClickMove(mouseX, mouseY, clickedMouseButton, timeSinceLastClick);
         ScaledResolution sr = new ScaledResolution(mc);
-        if (dragging != null) {
+        if (resizing) {
+            int x = (mouseX-xOffset)/15;
+            int y = (mouseY-yOffset)/7;
+            y = -y;
+            x+=barOriginalWidth;
+            y+=barOriginalHeight;
+            if (x > 0) {
+                main.getConfigValues().setSizeX(dragging, x);
+            }
+            if (y > 0) {
+                main.getConfigValues().setSizeY(dragging, y);
+            }
+
+            addResizeButtons(dragging);
+        } else if (dragging != null) {
             int x = mouseX-main.getConfigValues().getAnchorPoint(dragging).getX(sr.getScaledWidth());
             int y = mouseY-main.getConfigValues().getAnchorPoint(dragging).getY(sr.getScaledHeight());
             main.getConfigValues().setCoords(dragging, x-xOffset, y-yOffset);
             main.getConfigValues().setClosestAnchorPoint(dragging);
+            if (dragging == Feature.HEALTH_BAR || dragging == Feature.MANA_BAR) {
+                addResizeButtons(dragging);
+            }
         }
     }
 
@@ -165,6 +220,7 @@ public class LocationEditGui extends GuiScreen {
     protected void mouseReleased(int mouseX, int mouseY, int state) {
         super.mouseReleased(mouseX, mouseY, state);
         dragging = null;
+        resizing = false;
     }
 
     /**
@@ -173,6 +229,8 @@ public class LocationEditGui extends GuiScreen {
     @Override
     public void onGuiClosed() {
         main.getConfigValues().saveConfig();
-        main.getRenderListener().setGuiToOpen(PlayerListener.GUIType.MAIN, lastPage, lastTab);
+        if (lastTab != null) {
+            main.getRenderListener().setGuiToOpen(PlayerListener.GUIType.MAIN, lastPage, lastTab);
+        }
     }
 }

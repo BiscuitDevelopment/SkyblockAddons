@@ -10,8 +10,8 @@
     "settings": "Beállítások",
     "magmaBossWarning": "Magma Boss figyelmeztetés",
     "itemDropConfirmation": "Tárgy kidobás megerősítése",
-    "hideSkeletonHatBones": "Skeleton Helmet csontok elrejtése",
-    "skeletonHatBonesBar": "Skeleton Hat csont sáv",
+    "hideSkeletonHatBones": "Skeleton's Helmet csontok elrejtése",
+    "skeletonHatBonesBar": "Skeleton's Helmet csont sáv",
     "hideFoodAndArmor": "Étel és páncél sáv elrejtése",
     "fullInventoryWarning": "Teli felszerelés figyelmeztetés",
     "disableEmberRodAbility": "Ember Rod tiltása a szigeten",
@@ -49,10 +49,11 @@
     "stopBowChargeFromResetting": "Íj felhúzásának megállítása újratöltéskor",
     "preventMovementOnDeath": "Sétálás megakadályozása halál után",
     "showItemAnvilUses": "Tárgy üllő használatának mutatása",
-    "lockSlots": "Slot lezárás engedélyezése",
+    "lockSlots": "Gyorstár lezárás engedélyezése",
+    "lockSlot": "Gyorstár lezárása",
     "dontResetCursorInventory": "Ne állítsa vissza a kurzort az eszköztárak között",
     "summoningEyeAlert": "Summoning Eye figyelmeztetés",
-    "makeEnderchestsInEndGreen": "Végzetláda legyen zöld az Endben",
+    "makeEnderchestsInEndGreen": "Végzetládák kiemelése zölddel az Endben",
     "changeColor": "Színváltoztatás",
     "showInOtherGames": "Mutatás más játékokban",
     "useVanillaTexture": "Használja a Vanilla textúrát",
@@ -62,11 +63,16 @@
       "two": "Második stílus"
     },
     "warningDuration": "Figyelmeztetés időtartama",
-    "dontOpenProfileWithBow": "Ne nyissa meg a profilt íjjal",
+    "dontOpenProfileWithBow": "Ne nyissa meg a játékosprofilt íjjal",
     "stopDroppingSellingRareItems": "Rare tárgyak eldobásának/eladásának tiltása",
     "makeBackpackInventoriesColored": "Színes eszköztárak",
     "avoidBreakingBottomSugarCane": "Alsó cukornád kiütésének elkerülése",
-    "replaceRomanNumeralsWithNumbers": "Római számok kicserélése a tárgyakon"
+    "replaceRomanNumeralsWithNumbers": "Római számok kicserélése a tárgyakon",
+    "changeBarColorForPotions": "Sorvadás és méreg sebzőszínei",
+    "craftingPatterns": "Válassz Barkácsolómintát",
+    "soundIndicatorForFishing": "Hangjelzés halászatkor",
+    "avoidBlinkingNightVision": "Éjszakai látás \"pislogás\" elkerülése",
+    "disableMinionLocationWarning": "\"Hely nem tökéletes\" minion jelzés kikapcsolása"
   },
   "messages": {
     "dropConfirmation": "Dobd el ezt a tárgyat újra, hogy megerősítsd!",
@@ -81,28 +87,30 @@
     "enchantsToExclude": "%type% kihagyása:",
     "inventoryTypes": {
       "enchants": "Enchantok",
-      "reforges": "Reforgeok"
+      "reforges": "Reforgeok",
+      "crafting": "Barkácsolás"
     },
-    "newUpdateAvailable": "A new update, %version%, is available!",
-    "deleteOldFile": "The download has finished, please open your mods folder using the button below, close your Minecraft, and delete the old version (or delete it later if you prefer).",
-    "wantToViewPatchNotes": "Want to read the changes?",
-    "downloadLink": "UPDATE LINK",
-    "downloadAutomatically": "AUTO DOWNLOAD",
-    "openModFolder": "MOD FOLDER",
-    "joinTheDiscord": "JOIN DISCORD",
+    "newUpdateAvailable": "Egy új frissítés (%version%) érhető el!",
+    "deleteOldFile": "A letöltés befejeződött, nyisd meg a mods mappádat az alsó gomb segítségével, zárd be a Minecraft-ot és töröld a régi verzióját a mod-nak \n(ezt később is megteheted).",
+    "wantToViewPatchNotes": "Meg szeretnéd nézni a változásokat?",
+    "downloadLink": "Frissítési Link",
+    "downloadAutomatically": "Automata Letöltés",
+    "openModFolder": "MODS MAPPA",
+    "joinTheDiscord": "Csatlakozz a Discord szerverünkhöz",
     "update": {
-      "majorAvailable": "A new major update, %version% is available! The link for the download can be found in chat.",
-      "patchAvailable": "A new patch update, %version% is available! Look for the download link or to attempt to download the patch automatically!",
-      "downloading": "The patch is downloading! Status: %downloaded%/%total% Please note that after the download has finished, you must delete the old file.",
-      "failed": "The patch download has failed! Please download it manually using the link in chat.",
-      "downloadFinished": "The patch has finished downloading. It has been saved as %file%. Please don't forget to delete the old file after closing your Minecraft. Click the message in chat to open up the folder."
+      "majorAvailable": "Egy új nagy frissítés (%version%) elérhető! A linket a letöltéshez a chatben találod.",
+      "patchAvailable": "Egy új hibajavító frissítés (%version%) elérhető! Nyisd meg a chatet a letöltésekért!",
+      "downloading": "A frissítés éppen letöltődik! Letöltve: %downloaded%/%total% Viszont a letöltés végeztével törölnöd kell az előző verziót.",
+      "failed": "A frissítés letöltése hibába ütközött, használd a letöltési linket a chatből.",
+      "downloadFinished": "A frissítés letöltés sikeresen befejeződött. %file% néven lett elmentve. Ne felejtsd törölni a régi verziót miután bezártad a Minecraft-ot. Kattints az üzenetre hogy megnyisd a mappát."
     },
-    "slotLocked": "A slot le van zárva!",
+    "slotLocked": "Ez a gyorstár le van zárva!",
     "summoningEyeFound": "Summoning Eye!",
     "cancelledStemBreak": "A SkyblockAddons megállította, hogy kiüsd a növény szárát. Használd az öklöd, ha ki szeretnéd ütni.",
     "cancelledCaneBreak": "A SkyblockAddons megállította, hogy kiüsd ezt a cukornád blokkot. Használj egy másik eszközt, ha ki szeretnéd ütni.",
     "cancelledProfileOpening": "A SkyblockAddons megállította, hogy megnyisd ennek a játékosnak a profilját, amíg íj van a kezedben.",
     "cancelledDropping": "A SkyblockAddons megállította, hogy eldobd ezt a rare tárgyat vagy eszközt.",
-    "clickMoreTimes": "Kattints/dobd el ezt a tárgyat még %times% alkalommal, ha tényleg ezt szeretnéd."
+    "clickMoreTimes": "Kattints/dobd el ezt a tárgyat még %times% alkalommal, ha tényleg ezt szeretnéd.",
+    "featureDisabled": "Funkció kikapcsolva"
   }
 }

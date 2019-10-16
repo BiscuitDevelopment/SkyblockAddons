@@ -50,6 +50,7 @@
     "preventMovementOnDeath": "Neleisti Vaikščioti Po Mirties",
     "showItemAnvilUses": "Rodyti Kiek Daiktas Buvo Naudotas Priekale",
     "lockSlots": "Leisti Užrakinti Langelius",
+    "lockSlot": "Lock Slot",
     "dontResetCursorInventory": "Nenustatatinėti Iš Naujo Rodyklės Perjungiant Inventorių",
     "summoningEyeAlert": "Drakono Sumoninimo Akies Paimimo Signalas",
     "makeEnderchestsInEndGreen": "Padaryti Ender Chestus Žalius End'e",
@@ -66,7 +67,12 @@
     "stopDroppingSellingRareItems": "Neleisti Išmesti/Parduoti Retus Daiktus",
     "makeBackpackInventoriesColored": "Spalvoti Inventoriai",
     "avoidBreakingBottomSugarCane": "Vengti Apatinės Cukranendres Išgriovimą",
-    "replaceRomanNumeralsWithNumbers": "Pakeisti Romėniškus Skaitmenys Ant Daiktų"
+    "replaceRomanNumeralsWithNumbers": "Pakeisti Romėniškus Skaitmenys Ant Daiktų",
+    "changeBarColorForPotions": "Change Bar Color for Wither & Poison",
+    "craftingPatterns": "Choose Crafting Patterns",
+    "soundIndicatorForFishing": "Sound Indicator for Fishing",
+    "avoidBlinkingNightVision": "Avoid Blinking Night Vision Potion",
+    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings"
   },
   "messages": {
     "dropConfirmation": "Meskite Šį Daiktą Dar Kartą, Kad Patvirtintumėte!",
@@ -81,18 +87,19 @@
     "enchantsToExclude": "%type%, Kad Išskirtumėte:",
     "inventoryTypes": {
       "enchants": "Užkerimai",
-      "reforges": "Perdarimai"
+      "reforges": "Perdarimai",
+      "crafting": "Crafting"
     },
-    "newUpdateAvailable": "A new update, %version%, is available!",
+    "newUpdateAvailable": "Galima nauja (%version%) versija!",
     "deleteOldFile": "The download has finished, please open your mods folder using the button below, close your Minecraft, and delete the old version (or delete it later if you prefer).",
     "wantToViewPatchNotes": "Want to read the changes?",
     "downloadLink": "UPDATE LINK",
     "downloadAutomatically": "AUTO DOWNLOAD",
-    "openModFolder": "MOD FOLDER",
+    "openModFolder": "MODS FOLDER",
     "joinTheDiscord": "JOIN DISCORD",
     "update": {
-      "majorAvailable": "A new major update, %version% is available! The link for the download can be found in chat.",
-      "patchAvailable": "A new patch update, %version% is available! Look for the download link or to attempt to download the patch automatically!",
+      "majorAvailable": "A new major update (%version%) is available! The link for the download can be found in chat.",
+      "patchAvailable": "A new patch update (%version%) is available! Look in chat for download options!",
       "downloading": "The patch is downloading! Status: %downloaded%/%total% Please note that after the download has finished, you must delete the old file.",
       "failed": "The patch download has failed! Please download it manually using the link in chat.",
       "downloadFinished": "The patch has finished downloading. It has been saved as %file%. Please don't forget to delete the old file after closing your Minecraft. Click the message in chat to open up the folder."
@@ -103,6 +110,7 @@
     "cancelledCaneBreak": "SkyblockAddons modas sustabde jus nuo apatinio cuknanendės bloko išgriovimo. Naudokite kitą įrankį jei iš tikrūjų norite jį išgriauti.",
     "cancelledProfileOpening": "SkyblockAddons sustabdė jumis nuo šio žaidėjo profilio atidarymo, kai jūs rankoje laikote lanką.",
     "cancelledDropping": "SkyblockAddons sustabdė jumis nuo šio reto daikto išmetimo iš jūsų inventoriaus ar hotbaro.",
-    "clickMoreTimes": "Paspauskite/meskite šį daiktą %times% tiek kartų jeigu iš tikrųjų norite jį išmesti."
+    "clickMoreTimes": "Paspauskite/meskite šį daiktą %times% tiek kartų jeigu iš tikrųjų norite jį išmesti.",
+    "featureDisabled": "Feature Disabled"
   }
 }
