@@ -70,11 +70,11 @@
     "replaceRomanNumeralsWithNumbers": "Substituir os números romanos nos itens",
     "changeBarColorForPotions": "Mudar a cor da barra com Wither ou Veneno",
     "craftingPatterns": "Escolhe os padrões de criação",
-    "soundIndicatorForFishing": "Sound Indicator for Fishing",
-    "avoidBlinkingNightVision": "Avoid Blinking Night Vision Potion",
-    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings",
-    "jungleAxeCooldown": "Jungle Axe Cooldown",
-    "organizeLongEnchantmentLists": "Organize Long Enchantment Lists"
+    "soundIndicatorForFishing": "Aviso sonoro para a pesca",
+    "avoidBlinkingNightVision": "Evitar que a poção de visão noturna pisque",
+    "disableMinionLocationWarning": "Esconder os avisos “Location not perfect”",
+    "jungleAxeCooldown": "Tempo de espera do Jungle Axe",
+    "organizeLongEnchantmentLists": "Listas de encantamentos grandes organizadas"
   },
   "messages": {
     "dropConfirmation": "Dropa este item outra vez para confirmar!",
