@@ -70,11 +70,11 @@
     "replaceRomanNumeralsWithNumbers": "Заменять римские цифры на арабские",
     "changeBarColorForPotions": "Change Bar Color for Wither & Poison",
     "craftingPatterns": "Выбрать шаблоны создания",
-    "soundIndicatorForFishing": "Sound Indicator for Fishing",
+    "soundIndicatorForFishing": "Индикатор звука для рыбалки",
     "avoidBlinkingNightVision": "Avoid Blinking Night Vision Potion",
-    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings",
+    "disableMinionLocationWarning": "Отключить ошибку об неверном расположении",
     "jungleAxeCooldown": "Jungle Axe Cooldown",
-    "organizeLongEnchantmentLists": "Organize Long Enchantment Lists"
+    "organizeLongEnchantmentLists": "Организовать список длинных зачарований"
   },
   "messages": {
     "dropConfirmation": "Выбросите предмет ещё раз для подтверждения!",
