@@ -84,7 +84,7 @@
     "minionCannotReach": "%type% миньон не может найти и перестал спавнить!",
     "minionIsFull": "Миньон на вашем острове заполнен!",
     "typeEnchantmentsHere": "Пишите %type% здесь!",
-    "separateMultiple": "Разделяйте несколько запятыми.",
+    "separateMultiple": "Разделяйте зачар-я несколькими запятыми.",
     "enchantsToMatch": "Искать %type%:",
     "enchantsToExclude": "Не искать %type%:",
     "inventoryTypes": {
