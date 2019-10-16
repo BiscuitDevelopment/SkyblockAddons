@@ -70,9 +70,11 @@
     "replaceRomanNumeralsWithNumbers": "Vervang Romeinse Nummers op Items",
     "changeBarColorForPotions": "Verander Kleur Balk voor Verdorring & Gif",
     "craftingPatterns": "Kies Crafting Patroon",
-    "soundIndicatorForFishing": "Sound Indicator for Fishing",
-    "avoidBlinkingNightVision": "Avoid Blinking Night Vision Potion",
-    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings"
+    "soundIndicatorForFishing": "Geluidsindicator tijdens vissen",
+    "avoidBlinkingNightVision": "Voorkom knippering tijdens nachtzicht",
+    "disableMinionLocationWarning": "Meldingen minion locatie uitschakelen",
+    "jungleAxeCooldown": "Jungle Bijl Cooldown",
+    "organizeLongEnchantmentLists": "Orden Lange Betoverings Lijsten"
   },
   "messages": {
     "dropConfirmation": "Laat dit object opnieuw vallen om te Bevestigen!",

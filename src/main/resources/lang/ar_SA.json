@@ -69,10 +69,12 @@
     "avoidBreakingBottomSugarCane": "أيقاف كسر قصب السكر السفلي",
     "replaceRomanNumeralsWithNumbers": "تحويل الترقيم الروماني إلى الرقمي",
     "changeBarColorForPotions": "تغيير لون الشريط للويذر و التسمم",
-    "craftingPatterns": "Choose Crafting Patterns",
-    "soundIndicatorForFishing": "Sound Indicator for Fishing",
-    "avoidBlinkingNightVision": "Avoid Blinking Night Vision Potion",
-    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings"
+    "craftingPatterns": "اختيار أنماط الصناعة",
+    "soundIndicatorForFishing": "مؤشر صوت للصيد",
+    "avoidBlinkingNightVision": "تجنب وميض جرعه الرؤية الليليه",
+    "disableMinionLocationWarning": "تعطيل الموقع ليس مثاليا",
+    "jungleAxeCooldown": "تباطؤ فأس الغابة",
+    "organizeLongEnchantmentLists": "ترتيب قائمة التطويرات الطويله"
   },
   "messages": {
     "dropConfirmation": "!إرمي هذا العنصر مرة أخرى للتأكيد",
@@ -88,7 +90,7 @@
     "inventoryTypes": {
       "enchants": "التطويرات",
       "reforges": "إعادة تشكيل",
-      "crafting": "Crafting"
+      "crafting": "صناعة"
     },
     "newUpdateAvailable": "تحديث جديد (%version%) الآن متاح!",
     "deleteOldFile": "تم التنزيل، الرجاء فتح ملف المودات مستعملا الزر ادناه، اغلق ماينكرافت، قم بإلغاء النسخة القديمه (أو الغيها لاحقا اذا اردت).",

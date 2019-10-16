@@ -70,9 +70,11 @@
     "replaceRomanNumeralsWithNumbers": "Rimpiazza Numeri Romani sugli Oggetti",
     "changeBarColorForPotions": "Cambia il colore della barra per il Wither & il Veleno",
     "craftingPatterns": "Scegli lo schema di fabbricazione",
-    "soundIndicatorForFishing": "Sound Indicator for Fishing",
-    "avoidBlinkingNightVision": "Avoid Blinking Night Vision Potion",
-    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings"
+    "soundIndicatorForFishing": "Indicatore audio per la pesca",
+    "avoidBlinkingNightVision": "Evita l'intermittenza della pozione di visione notturna",
+    "disableMinionLocationWarning": "Disattiva gli avvisi di posizione non perfetta",
+    "jungleAxeCooldown": "Ricarica della Jungle Axe",
+    "organizeLongEnchantmentLists": "Organizza gli elenchi di incantesimi lunghi"
   },
   "messages": {
     "dropConfirmation": "Getta questo oggetto nuovamente per confermare!",

@@ -70,9 +70,11 @@
     "replaceRomanNumeralsWithNumbers": "Substituir números romanos nos Itens",
     "changeBarColorForPotions": "Mudar cor da barra para Wither e Veneno",
     "craftingPatterns": "Escolha os padrões de criação",
-    "soundIndicatorForFishing": "Sound Indicator for Fishing",
-    "avoidBlinkingNightVision": "Avoid Blinking Night Vision Potion",
-    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings"
+    "soundIndicatorForFishing": "Indicador de som para pesca",
+    "avoidBlinkingNightVision": "Evite a poção de Visão Noturna piscar",
+    "disableMinionLocationWarning": "Desativar avisos de localização não perfeita",
+    "jungleAxeCooldown": "Recarga do Machado da Selva",
+    "organizeLongEnchantmentLists": "Organizar lista de encantamentos longos"
   },
   "messages": {
     "dropConfirmation": "Large este item de novo para confirmar!",

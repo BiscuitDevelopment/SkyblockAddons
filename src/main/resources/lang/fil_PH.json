@@ -71,8 +71,10 @@
     "changeBarColorForPotions": "Change Bar Color for Wither & Poison",
     "craftingPatterns": "Choose Crafting Patterns",
     "soundIndicatorForFishing": "Sound Indicator for Fishing",
-    "avoidBlinkingNightVision": "Avoid Blinking Night Vision Potion",
-    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings"
+    "avoidBlinkingNightVision": "Disable Night Vision Potion Blinking",
+    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings",
+    "jungleAxeCooldown": "Jungle Axe Cooldown",
+    "organizeLongEnchantmentLists": "Organize Long Enchantment Lists"
   },
   "messages": {
     "dropConfirmation": "Ihulog ang item muli para kumpirmado!",

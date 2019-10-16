@@ -71,8 +71,10 @@
     "changeBarColorForPotions": "Cambiar el Color de Barra para Wither & Veneno",
     "craftingPatterns": "Elige Patrones De Fabricación",
     "soundIndicatorForFishing": "Sound Indicator for Fishing",
-    "avoidBlinkingNightVision": "Avoid Blinking Night Vision Potion",
-    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings"
+    "avoidBlinkingNightVision": "Disable Night Vision Potion Blinking",
+    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings",
+    "jungleAxeCooldown": "Jungle Axe Cooldown",
+    "organizeLongEnchantmentLists": "Organize Long Enchantment Lists"
   },
   "messages": {
     "dropConfirmation": "¡Dropea el Objeto otra vez para soltar!",

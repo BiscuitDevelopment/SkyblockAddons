@@ -72,7 +72,9 @@
     "craftingPatterns": "Válassz Barkácsolómintát",
     "soundIndicatorForFishing": "Hangjelzés halászatkor",
     "avoidBlinkingNightVision": "Éjszakai látás \"pislogás\" elkerülése",
-    "disableMinionLocationWarning": "\"Hely nem tökéletes\" minion jelzés kikapcsolása"
+    "disableMinionLocationWarning": "\"Hely nem tökéletes\" minion jelzés kikapcsolása",
+    "jungleAxeCooldown": "Jungle Axe Töltési idő",
+    "organizeLongEnchantmentLists": "Organize Long Enchantment Lists"
   },
   "messages": {
     "dropConfirmation": "Dobd el ezt a tárgyat újra, hogy megerősítsd!",

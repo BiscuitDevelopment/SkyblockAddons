@@ -50,7 +50,7 @@
     "preventMovementOnDeath": "עצירת תזוזה לאחר המוות",
     "showItemAnvilUses": "הצגת שימושי סדן של הפריט",
     "lockSlots": "אפשר נעילת משבצת",
-    "lockSlot": "Lock Slot",
+    "lockSlot": "לנעול סלוט",
     "dontResetCursorInventory": "אל תאפס את העכבר בין תיקים",
     "summoningEyeAlert": "התראת עין לזימון דרקון",
     "makeEnderchestsInEndGreen": "הפוך אנדרצ'אסטים לירוקות באנד",
@@ -68,11 +68,13 @@
     "makeBackpackInventoriesColored": "צבע טיקים",
     "avoidBreakingBottomSugarCane": "מנע הריסת שוגר קיין תחתון",
     "replaceRomanNumeralsWithNumbers": "החלף מספרים רומאים בחפצים",
-    "changeBarColorForPotions": "Change Bar Color for Wither & Poison",
-    "craftingPatterns": "Choose Crafting Patterns",
-    "soundIndicatorForFishing": "Sound Indicator for Fishing",
-    "avoidBlinkingNightVision": "Avoid Blinking Night Vision Potion",
-    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings"
+    "changeBarColorForPotions": "לשנות את צבע המד כאשר אתה מושפע מוויטר או רעל",
+    "craftingPatterns": "בחר תבנית הרכבה",
+    "soundIndicatorForFishing": "מזהה סאונד לדייג",
+    "avoidBlinkingNightVision": "למנוע מצמוץ שיקוי ראיית לילה",
+    "disableMinionLocationWarning": "ביטול אזהרות מיקום לא מושלם",
+    "jungleAxeCooldown": "טעינת גרזן ג'ונגל",
+    "organizeLongEnchantmentLists": "סדר רשימת כישופים ארוכה"
   },
   "messages": {
     "dropConfirmation": "זרוק פריט זה שוב לאישור!",
@@ -88,7 +90,7 @@
     "inventoryTypes": {
       "enchants": "כישופים",
       "reforges": "שדרוגים",
-      "crafting": "Crafting"
+      "crafting": "הרכבה"
     },
     "newUpdateAvailable": "גירסה חדשה (%version%) ניתנת להורדה!",
     "deleteOldFile": "ההורדה הושלמה, בבקשה תפתח את תקיית המודים שלך בעזרת הכפתור למטה, תסגור את מיינקראפט, ומחק את הגרסה הישנה(או שתמחק אחר כך אם אתה מעדיף).",
@@ -99,18 +101,18 @@
     "joinTheDiscord": "כניסה לדיסקורד",
     "update": {
       "majorAvailable": "עידכון חדש קטן (%version%) ניתן להורדה! הקישור להורדה נמצא בצ'אט.",
-      "patchAvailable": "A new patch update (%version%) is available! Look in chat for download options!",
-      "downloading": "The patch is downloading! Status: %downloaded%/%total% Please note that after the download has finished, you must delete the old file.",
-      "failed": "The patch download has failed! Please download it manually using the link in chat.",
-      "downloadFinished": "The patch has finished downloading. It has been saved as %file%. Please don't forget to delete the old file after closing your Minecraft. Click the message in chat to open up the folder."
+      "patchAvailable": "עידכון חדש לתיקון (%version%)!\nהסתכל בצ'אט לאפשרויות הורדה!",
+      "downloading": "התיקון בהורדה! כרגע:\n%downloaded%/%total% לאחר ההורדה תצתרך למחוק את הקובץ הישן.",
+      "failed": "הורדת התיקון נכשלה! בבקשה הורד אותו בעצמך בעמצאות הלינק שנמצא בצ'אט.",
+      "downloadFinished": "הורדת התיקון הסתיימה. הקובץ נשמר בשם %file%. בבקשה אל תשכח למחוק את הקובץ הישן אחרי שאתה סוגר את מיינקראפט. תלחץ על ההודעה בצאט כדי לפתוח את ההודעה."
     },
     "slotLocked": "משבצת זו נעולה!",
     "summoningEyeFound": "עין לזימון דרקון!",
     "cancelledStemBreak": "SkyblockAddons עצר אותך מלשבור את הגידול. תשתמש ביד שלך אם ברצונך לשבור את זה.",
-    "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use another tool if you'd actually like to break it.",
+    "cancelledCaneBreak": "SkyblockAddons עצר אותך מלשבור את כנה הסוכר הזה. תשתמש בכלי אחר בכדי לשבור את זה.",
     "cancelledProfileOpening": "SkyBlockAddons עצר אותך מלפתוח את הפרופיל של האדם בזמן שהחזקתה קשת.",
     "cancelledDropping": "SkyBlockAddons עצר אותך מלהפיל את החפץ או הכלי הנדיר הזה.",
     "clickMoreTimes": "תלחץ/תזרוק את החפץ %times% פעמים נוספות אם אתה בטוח רוצה לעשות את זה.",
-    "featureDisabled": "Feature Disabled"
+    "featureDisabled": "פיטצ'ר מבוטל"
   }
 }

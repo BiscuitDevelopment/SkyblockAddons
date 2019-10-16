@@ -69,10 +69,12 @@
     "avoidBreakingBottomSugarCane": "Evită spargerea sugar cane-ului de jos",
     "replaceRomanNumeralsWithNumbers": "Schimba numerele romane de pe iteme",
     "changeBarColorForPotions": "Schimbați culoarea barei pentru Wither & Otravă",
-    "craftingPatterns": "Choose Crafting Patterns",
-    "soundIndicatorForFishing": "Sound Indicator for Fishing",
-    "avoidBlinkingNightVision": "Avoid Blinking Night Vision Potion",
-    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings"
+    "craftingPatterns": "Model de craftare",
+    "soundIndicatorForFishing": "Indicator de sunet pentru pescuire",
+    "avoidBlinkingNightVision": "Evită clipirea Visiune de noapte",
+    "disableMinionLocationWarning": "Dezactiveaza Avertizarea De Locatia minionului",
+    "jungleAxeCooldown": "Timp ramas pentru a folosi Jungle Axe",
+    "organizeLongEnchantmentLists": "Organize Long Enchantment Lists"
   },
   "messages": {
     "dropConfirmation": "Arunca acest obiect iar ca să confirmi!",
