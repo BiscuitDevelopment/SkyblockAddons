@@ -50,7 +50,7 @@
     "preventMovementOnDeath": "עצירת תזוזה לאחר המוות",
     "showItemAnvilUses": "הצגת שימושי סדן של הפריט",
     "lockSlots": "אפשר נעילת משבצת",
-    "lockSlot": "Lock Slot",
+    "lockSlot": "לנעול סלוט",
     "dontResetCursorInventory": "אל תאפס את העכבר בין תיקים",
     "summoningEyeAlert": "התראת עין לזימון דרקון",
     "makeEnderchestsInEndGreen": "הפוך אנדרצ'אסטים לירוקות באנד",
@@ -68,13 +68,13 @@
     "makeBackpackInventoriesColored": "צבע טיקים",
     "avoidBreakingBottomSugarCane": "מנע הריסת שוגר קיין תחתון",
     "replaceRomanNumeralsWithNumbers": "החלף מספרים רומאים בחפצים",
-    "changeBarColorForPotions": "Change Bar Color for Wither & Poison",
-    "craftingPatterns": "Choose Crafting Patterns",
+    "changeBarColorForPotions": "לשנות את צבע המד כאשר אתה מושפע מוויטר או רעל",
+    "craftingPatterns": "בחר תבנית הרכבה",
     "soundIndicatorForFishing": "מזהה סאונד לדייג",
     "avoidBlinkingNightVision": "למנוע מצמוץ שיקוי ראיית לילה",
     "disableMinionLocationWarning": "ביטול אזהרות מיקום לא מושלם",
-    "jungleAxeCooldown": "Jungle Axe Cooldown",
-    "organizeLongEnchantmentLists": "Organize Long Enchantment Lists"
+    "jungleAxeCooldown": "טעינת גרזן ג'ונגל",
+    "organizeLongEnchantmentLists": "סדר רשימת כישופים ארוכה"
   },
   "messages": {
     "dropConfirmation": "זרוק פריט זה שוב לאישור!",
@@ -90,7 +90,7 @@
     "inventoryTypes": {
       "enchants": "כישופים",
       "reforges": "שדרוגים",
-      "crafting": "Crafting"
+      "crafting": "הרכבה"
     },
     "newUpdateAvailable": "גירסה חדשה (%version%) ניתנת להורדה!",
     "deleteOldFile": "ההורדה הושלמה, בבקשה תפתח את תקיית המודים שלך בעזרת הכפתור למטה, תסגור את מיינקראפט, ומחק את הגרסה הישנה(או שתמחק אחר כך אם אתה מעדיף).",
@@ -101,7 +101,7 @@
     "joinTheDiscord": "כניסה לדיסקורד",
     "update": {
       "majorAvailable": "עידכון חדש קטן (%version%) ניתן להורדה! הקישור להורדה נמצא בצ'אט.",
-      "patchAvailable": "A new patch update (%version%) is available! Look in chat for download options!",
+      "patchAvailable": "עידכון חדש לתיקון (%version%)!\nהסתכל בצ'אט לאפשרויות הורדה!",
       "downloading": "The patch is downloading! Status: %downloaded%/%total% Please note that after the download has finished, you must delete the old file.",
       "failed": "The patch download has failed! Please download it manually using the link in chat.",
       "downloadFinished": "The patch has finished downloading. It has been saved as %file%. Please don't forget to delete the old file after closing your Minecraft. Click the message in chat to open up the folder."
