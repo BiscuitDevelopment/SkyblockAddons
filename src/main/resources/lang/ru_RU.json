@@ -71,7 +71,7 @@
     "changeBarColorForPotions": "Change Bar Color for Wither & Poison",
     "craftingPatterns": "Выбрать шаблоны создания",
     "soundIndicatorForFishing": "Индикатор звука для рыбалки",
-    "avoidBlinkingNightVision": "Avoid Blinking Night Vision Potion",
+    "avoidBlinkingNightVision": "Disable Night Vision Potion Blinking",
     "disableMinionLocationWarning": "Отключить ошибку об неверном расположении",
     "jungleAxeCooldown": "Jungle Axe Cooldown",
     "organizeLongEnchantmentLists": "Организовать список длинных зачарований"
