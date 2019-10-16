@@ -70,11 +70,11 @@
     "replaceRomanNumeralsWithNumbers": "Zamień cyfry rzymskie na arabskie",
     "changeBarColorForPotions": "Zmień kolor paska dla funkcji Wither & Mikstury",
     "craftingPatterns": "Wybierz wzór wytwarzania",
-    "soundIndicatorForFishing": "Sound Indicator for Fishing",
+    "soundIndicatorForFishing": "Powiadomienia dźwiękowe podczas łowienia",
     "avoidBlinkingNightVision": "Avoid Blinking Night Vision Potion",
-    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings",
-    "jungleAxeCooldown": "Jungle Axe Cooldown",
-    "organizeLongEnchantmentLists": "Organize Long Enchantment Lists"
+    "disableMinionLocationWarning": "Wyłącz ostrzeżenia \"Location Not Perfect\"",
+    "jungleAxeCooldown": "Czas odnowienia Jungle Axe",
+    "organizeLongEnchantmentLists": "Uporządkuj długie listy enchantów"
   },
   "messages": {
     "dropConfirmation": "Wyrzuć ten przedmiot ponownie, aby potwierdzić!",
