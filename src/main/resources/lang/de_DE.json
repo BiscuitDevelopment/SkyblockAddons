@@ -71,10 +71,10 @@
     "changeBarColorForPotions": "Farbe der Leiste bei Wither und Gift ändern",
     "craftingPatterns": "Wähle Herstellung-Muster",
     "soundIndicatorForFishing": "Sound Indicator for Fishing",
-    "avoidBlinkingNightVision": "Disable Night Vision Potion Blinking",
+    "avoidBlinkingNightVision": "Deaktiviere Nacht Sicht Blinken",
     "disableMinionLocationWarning": "Disable Location Not Perfect Warnings",
-    "jungleAxeCooldown": "Jungle Axe Cooldown",
-    "organizeLongEnchantmentLists": "Organize Long Enchantment Lists"
+    "jungleAxeCooldown": "Jungle Axe Abklingzeit",
+    "organizeLongEnchantmentLists": "Organisieren von langen Verzauberungslisten"
   },
   "messages": {
     "dropConfirmation": "Werfe diesen Gegenstand nochmal, um zu bestätigen!",
