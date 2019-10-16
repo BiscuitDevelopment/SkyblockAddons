@@ -73,7 +73,8 @@
     "soundIndicatorForFishing": "Sound Indicator for Fishing",
     "avoidBlinkingNightVision": "Avoid Blinking Night Vision Potion",
     "disableMinionLocationWarning": "Disable Location Not Perfect Warnings",
-    "jungleAxeCooldown": "Jungle Axe Cooldown"
+    "jungleAxeCooldown": "Jungle Axe Cooldown",
+    "organizeLongEnchantmentLists": "Organize Long Enchantment Lists"
   },
   "messages": {
     "dropConfirmation": "Slip denne vare igen for at bekræfte!",
