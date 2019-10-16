@@ -70,11 +70,11 @@
     "replaceRomanNumeralsWithNumbers": "エンチャントのローマ数字をアラビア数字に置き換え",
     "changeBarColorForPotions": "ウィザーと毒状態の時にバーの色を変える",
     "craftingPatterns": "クラフトのパターンを選ぶ",
-    "soundIndicatorForFishing": "Sound Indicator for Fishing",
-    "avoidBlinkingNightVision": "Avoid Blinking Night Vision Potion",
-    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings",
-    "jungleAxeCooldown": "Jungle Axe Cooldown",
-    "organizeLongEnchantmentLists": "Organize Long Enchantment Lists"
+    "soundIndicatorForFishing": "釣り用のサウンドインジケーター",
+    "avoidBlinkingNightVision": "暗視のポーションの点滅を無くす",
+    "disableMinionLocationWarning": "Location Not Perfectのアラートを無効化",
+    "jungleAxeCooldown": "Jungle Axeのクールタイムを表示",
+    "organizeLongEnchantmentLists": "長いエンチャントのリストを整理する"
   },
   "messages": {
     "dropConfirmation": "落としてもいいのであれば、このアイテムをもう一度ドロップしてください。",
