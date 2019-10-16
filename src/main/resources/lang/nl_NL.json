@@ -72,9 +72,9 @@
     "craftingPatterns": "Kies Crafting Patroon",
     "soundIndicatorForFishing": "Geluidsindicator tijdens vissen",
     "avoidBlinkingNightVision": "Voorkom knippering tijdens nachtzicht",
-    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings",
-    "jungleAxeCooldown": "Jungle Axe Cooldown",
-    "organizeLongEnchantmentLists": "Organize Long Enchantment Lists"
+    "disableMinionLocationWarning": "Meldingen minion locatie uitschakelen",
+    "jungleAxeCooldown": "Jungle Bijl Cooldown",
+    "organizeLongEnchantmentLists": "Orden Lange Betoverings Lijsten"
   },
   "messages": {
     "dropConfirmation": "Laat dit object opnieuw vallen om te Bevestigen!",
