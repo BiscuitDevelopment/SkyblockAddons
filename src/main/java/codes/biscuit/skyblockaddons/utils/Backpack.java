@@ -60,57 +60,54 @@ public class Backpack {
 
     public static Backpack getFromItem(ItemStack stack) {
         if (stack == null) return null;
-        if (stack.hasTagCompound()) {
-            NBTTagCompound extraAttributes = stack.getTagCompound();
-            if (extraAttributes.hasKey("ExtraAttributes")) {
-                extraAttributes = extraAttributes.getCompoundTag("ExtraAttributes");
-                String id = extraAttributes.getString("id");
-                if (id.contains("BACKPACK")) {
-                    byte[] bytes = null;
-                    for (String key : extraAttributes.getKeySet()) {
-                        if (key.endsWith("backpack_data")) {
-                            bytes = extraAttributes.getByteArray(key);
-                            break;
-                        }
+        String id = ItemUtils.getSkyBlockItemID(stack);
+        if (!id.isEmpty()) {
+            NBTTagCompound extraAttributes = stack.getTagCompound().getCompoundTag("ExtraAttributes");
+            if (id.contains("BACKPACK")) {
+                byte[] bytes = null;
+                for (String key : extraAttributes.getKeySet()) {
+                    if (key.endsWith("backpack_data")) {
+                        bytes = extraAttributes.getByteArray(key);
+                        break;
                     }
-                    if (bytes == null) return null;
-                    try {
-                        NBTTagCompound nbtTagCompound = CompressedStreamTools.readCompressed(new ByteArrayInputStream(bytes));
-                        NBTTagList list = nbtTagCompound.getTagList("i", Constants.NBT.TAG_COMPOUND);
-                        int length = list.tagCount();
-                        ItemStack[] items = new ItemStack[length];
-                        for (int i = 0; i < length; i++) {
-                            NBTTagCompound item = list.getCompoundTagAt(i);
-                            // This fixes an issue in Hypixel where enchanted potatoes have the wrong id (potato block instead of item).
-                            short itemID = item.getShort("id");
-                            if (itemID == 142 && item.hasKey("tag")) {
-                                nbtTagCompound = item.getCompoundTag("tag");
-                                if (nbtTagCompound.hasKey("ExtraAttributes")) {
-                                    id = nbtTagCompound.getCompoundTag("ExtraAttributes").getString("id");
-                                    if (id.equals("ENCHANTED_POTATO")) {
-                                        item.setShort("id", (short)392);
-                                    }
+                }
+                if (bytes == null) return null;
+                try {
+                    NBTTagCompound nbtTagCompound = CompressedStreamTools.readCompressed(new ByteArrayInputStream(bytes));
+                    NBTTagList list = nbtTagCompound.getTagList("i", Constants.NBT.TAG_COMPOUND);
+                    int length = list.tagCount();
+                    ItemStack[] items = new ItemStack[length];
+                    for (int i = 0; i < length; i++) {
+                        NBTTagCompound item = list.getCompoundTagAt(i);
+                        // This fixes an issue in Hypixel where enchanted potatoes have the wrong id (potato block instead of item).
+                        short itemID = item.getShort("id");
+                        if (itemID == 142 && item.hasKey("tag")) {
+                            nbtTagCompound = item.getCompoundTag("tag");
+                            if (nbtTagCompound.hasKey("ExtraAttributes")) {
+                                id = nbtTagCompound.getCompoundTag("ExtraAttributes").getString("id");
+                                if (id.equals("ENCHANTED_POTATO")) {
+                                    item.setShort("id", (short)392);
                                 }
                             }
-                            ItemStack itemStack = ItemStack.loadItemStackFromNBT(item);
-                            items[i] = itemStack;
                         }
+                        ItemStack itemStack = ItemStack.loadItemStackFromNBT(item);
+                        items[i] = itemStack;
+                    }
 //                        main.getUtils().setBackpackToRender(new Backpack(x, y, items, main.getUtils().stripColor(stack.getDisplayName())));
-                        BackpackColor color = BackpackColor.WHITE;
-                        if (extraAttributes.hasKey("backpack_color")) {
-                            try {
-                                color = BackpackColor.valueOf(extraAttributes.getString("backpack_color"));
-                            } catch (IllegalArgumentException ignored) {}
-                        }
-                        return new Backpack(items, SkyblockAddons.getInstance().getUtils().stripColor(stack.getDisplayName()), color);
+                    BackpackColor color = BackpackColor.WHITE;
+                    if (extraAttributes.hasKey("backpack_color")) {
+                        try {
+                            color = BackpackColor.valueOf(extraAttributes.getString("backpack_color"));
+                        } catch (IllegalArgumentException ignored) {}
+                    }
+                    return new Backpack(items, SkyblockAddons.getInstance().getUtils().stripColor(stack.getDisplayName()), color);
 
 //                        main.getUtils().setBackpackColor(color);
 //                        main.getPlayerListener().onItemTooltip(new ItemTooltipEvent(stack,
 //                                null, null, false));
 //                        ci.cancel();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
             }
         }

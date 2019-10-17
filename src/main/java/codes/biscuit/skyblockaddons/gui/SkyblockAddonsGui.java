@@ -46,7 +46,7 @@ public class SkyblockAddonsGui extends GuiScreen {
     private static Set<Feature> guiScaleFeatures = Sets.newHashSet(Feature.ITEM_PICKUP_LOG, Feature.HEALTH_UPDATES,
             Feature.MANA_BAR, Feature.MANA_TEXT, Feature.HEALTH_BAR, Feature.HEALTH_TEXT, Feature.DEFENCE_TEXT,
             Feature.DEFENCE_PERCENTAGE, Feature.MAGMA_BOSS_TIMER, Feature.SKELETON_BAR, Feature.DARK_AUCTION_TIMER,
-            Feature.DEFENCE_ICON);
+            Feature.DEFENCE_ICON, Feature.REVENANT_INDICATOR);
 
     /**
      * The main gui, opened with /sba.
@@ -82,7 +82,7 @@ public class SkyblockAddonsGui extends GuiScreen {
         } else if (tab == EnumUtils.SkyblockAddonsGuiTab.GUI_FEATURES) {
             array = new Feature[]{Feature.MAGMA_BOSS_TIMER, Feature.MANA_BAR, Feature.MANA_TEXT, Feature.DEFENCE_TEXT, Feature.DEFENCE_PERCENTAGE,
                     Feature.DEFENCE_ICON, Feature.HEALTH_BAR, Feature.HEALTH_TEXT, Feature.SKELETON_BAR, Feature.HEALTH_UPDATES,
-                    Feature.ITEM_PICKUP_LOG, Feature.DARK_AUCTION_TIMER};
+                    Feature.ITEM_PICKUP_LOG, Feature.DARK_AUCTION_TIMER, Feature.REVENANT_INDICATOR};
         } else {
             array = new Feature[]{Feature.TEXT_STYLE, Feature.WARNING_TIME};
         }

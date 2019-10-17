@@ -299,6 +299,7 @@ public class PlayerListener {
                         main.getUtils().checkGameLocationDate();
                         main.getInventoryUtils().checkIfInventoryIsFull(mc, p);
                         main.getInventoryUtils().checkIfWearingSkeletonHelmet(p);
+                        main.getInventoryUtils().checkIfWearingRevenantArmor(p);
                         if (!sentUpdate) {
                             main.getUtils().checkUpdates();
                             sentUpdate = true;

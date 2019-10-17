@@ -6,9 +6,12 @@ import codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui;
 import codes.biscuit.skyblockaddons.gui.buttons.ButtonLocation;
 import codes.biscuit.skyblockaddons.utils.*;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.RenderHelper;
+import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityArmorStand;
 import net.minecraft.entity.item.EntityItem;
@@ -23,9 +26,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 import java.math.BigDecimal;
-import java.util.Calendar;
-import java.util.Collection;
-import java.util.TimeZone;
+import java.util.*;
 
 import static net.minecraft.client.gui.Gui.icons;
 
@@ -252,6 +253,16 @@ public class RenderListener {
                 GlStateManager.pushMatrix();
                 GlStateManager.scale(scale, scale, 1);
                 drawItemPickupLog(mc, scale, null, null);
+                GlStateManager.popMatrix();
+            }
+
+            if (main.getConfigValues().isEnabled(Feature.REVENANT_INDICATOR)) {
+                float scale = main.getConfigValues().getGuiScale(Feature.REVENANT_INDICATOR);
+                Map<Integer, RevenantArmorProgress> revenantArmorProgress = main.getInventoryUtils().getRevenantArmorProgresses();
+
+                GlStateManager.pushMatrix();
+                GlStateManager.scale(scale, scale, 1);
+                drawRevenantIndicator(mc, revenantArmorProgress, scale, null);
                 GlStateManager.popMatrix();
             }
         }
@@ -585,6 +596,8 @@ public class RenderListener {
                 }
             }
             text = magmaBuilder.toString();
+        } else if (feature == Feature.REVENANT_INDICATOR) {
+            text = "";
         } else {
             return;
         }
@@ -620,13 +633,65 @@ public class RenderListener {
         } else {
             mc.ingameGUI.drawString(mc.fontRendererObj, text, intX, intY, color);
         }
-        mc.getTextureManager().bindTexture(TEXT_ICONS);
         GlStateManager.color(1,1,1,1);
         if (feature == Feature.DARK_AUCTION_TIMER) {
+            mc.getTextureManager().bindTexture(TEXT_ICONS);
             Gui.drawModalRectWithCustomSizedTexture(intX-18, intY-5, 16, 0, 16,16,32,32);
         } else if (feature == Feature.MAGMA_BOSS_TIMER) {
+            mc.getTextureManager().bindTexture(TEXT_ICONS);
             Gui.drawModalRectWithCustomSizedTexture(intX-18, intY-5, 0, 0, 16,16,32,32);
         }
+    }
+
+    public void drawRevenantIndicator(final Minecraft mc, final Map<Integer, RevenantArmorProgress> revenantArmorProgresses, final float scale, final ButtonLocation buttonLocation) {
+        float x = main.getConfigValues().getActualX(Feature.REVENANT_INDICATOR);
+        float y = main.getConfigValues().getActualY(Feature.REVENANT_INDICATOR);
+
+        int longest = -1;
+        for (RevenantArmorProgress s : revenantArmorProgresses.values()) {
+            int textWidth = mc.fontRendererObj.getStringWidth(s.getProgressText());
+            if (textWidth > longest) {
+                longest = textWidth;
+            }
+        }
+        if (longest == -1) return;
+
+        int height = 15 * 3;
+        int width = longest + 15;
+        x-=Math.round(width*scale/2);
+        y-=Math.round(height*scale/2);
+        x/=scale;
+        y/=scale;
+        int intX = Math.round(x);
+        int intY = Math.round(y);
+        if (buttonLocation != null) {
+            int boxXOne = intX-4;
+            int boxXTwo = intX+width+4;
+            int boxYOne = intY-4;
+            int boxYTwo = intY+height+4;
+            buttonLocation.checkHoveredAndDrawBox(boxXOne, boxXTwo, boxYOne, boxYTwo, scale);
+            GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+        }
+
+        int n = 0;
+        for (int i = 2; i > -1; i--) {
+            RevenantArmorProgress progress = revenantArmorProgresses.get(i);
+            if (progress == null) continue;
+
+            int fixedY = intY + n * 15;
+            drawItemStack(mc, progress.getItemStack(), intX, fixedY);
+            drawString(mc, progress.getProgressText(), intX + 17, fixedY + 5, 0xFFFFFFFF);
+            n++;
+        }
+    }
+
+    private void drawItemStack(final Minecraft mc, final ItemStack item, final int x, final int y) {
+        RenderHelper.enableGUIStandardItemLighting();
+
+        RenderItem itemRender = mc.getRenderItem();
+        itemRender.renderItemIntoGUI(item, x, y);
+
+        RenderHelper.disableStandardItemLighting();
     }
 
     public void drawItemPickupLog(Minecraft mc, float scale, Collection<ItemDiff> dummyLog, ButtonLocation buttonLocation) {

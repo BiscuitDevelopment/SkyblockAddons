@@ -25,12 +25,14 @@ public class InventoryUtils {
     /**
      * Display name of the Skeleton Helmet
      */
-    private static final String SKELETON_HELMET_DISPLAY_NAME = "Skeleton's Helmet";
+    private static final String SKELETON_HELMET_ID = "SKELETON_HELMET";
 
     private List<ItemStack> previousInventory;
     private Multimap<String, ItemDiff> itemPickupLog = ArrayListMultimap.create();
     private boolean inventoryIsFull;
     private boolean wearingSkeletonHelmet;
+
+    private Map<Integer, RevenantArmorProgress> revenantArmorProgresses = new LinkedHashMap<>();
 
     private SkyblockAddons main;
 
@@ -175,7 +177,8 @@ public class InventoryUtils {
      */
     public void checkIfWearingSkeletonHelmet(EntityPlayerSP p) {
         ItemStack item = p.getEquipmentInSlot(4);
-        if (item != null && item.hasDisplayName() && item.getDisplayName().contains(SKELETON_HELMET_DISPLAY_NAME)) {
+        String itemID = ItemUtils.getSkyBlockItemID(item);
+        if (item != null && itemID.equals(SKELETON_HELMET_ID)) {
             wearingSkeletonHelmet = true;
             return;
         }
@@ -244,5 +247,34 @@ public class InventoryUtils {
         else if (container instanceof ContainerFurnace) return 6;
         else if (container instanceof ContainerBeacon) return 8;
         else return 0;
+    }
+
+    public void checkIfWearingRevenantArmor(EntityPlayerSP p) {
+        for (int i = 2; i > -1; i--) {
+            ItemStack item = p.inventory.armorInventory[i];
+            String itemID = ItemUtils.getSkyBlockItemID(item);
+            if (itemID.startsWith("REVENANT")) {
+                String progress = null;
+                List<String> tooltip = item.getTooltip(null, false);
+                for (String s : tooltip) {
+                    if (s.contains("Next Upgrade")) {
+                        progress = s.substring(s.indexOf(": ") + 1);
+                        break;
+                    }
+                }
+                if (progress != null) {
+                    if (revenantArmorProgresses.get(i) == null) {
+                        revenantArmorProgresses.put(i, new RevenantArmorProgress(item, progress));
+                    }
+                    revenantArmorProgresses.get(i).setProgressText(progress);
+                }
+            } else {
+                revenantArmorProgresses.remove(i);
+            }
+        }
+    }
+
+    public Map<Integer, RevenantArmorProgress> getRevenantArmorProgresses() {
+        return revenantArmorProgresses;
     }
 }

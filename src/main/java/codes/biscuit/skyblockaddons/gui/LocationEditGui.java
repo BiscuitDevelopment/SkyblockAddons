@@ -43,7 +43,7 @@ public class LocationEditGui extends GuiScreen {
         // Add all gui elements that can be edited to the gui.
         Feature[] features = {Feature.MANA_BAR, Feature.HEALTH_BAR, Feature.SKELETON_BAR, Feature.MANA_TEXT,
                 Feature.HEALTH_TEXT, Feature.DEFENCE_ICON, Feature.DEFENCE_TEXT, Feature.DEFENCE_PERCENTAGE,
-                Feature.HEALTH_UPDATES, Feature.DARK_AUCTION_TIMER, Feature.MAGMA_BOSS_TIMER, Feature.ITEM_PICKUP_LOG};
+                Feature.HEALTH_UPDATES, Feature.DARK_AUCTION_TIMER, Feature.MAGMA_BOSS_TIMER, Feature.ITEM_PICKUP_LOG, Feature.REVENANT_INDICATOR};
         for (Feature feature : features) {
             if (!main.getConfigValues().isDisabled(feature)) { // Don't display features that have been disabled
                 buttonList.add(new ButtonLocation(main, feature));

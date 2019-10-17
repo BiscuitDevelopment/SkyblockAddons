@@ -4,12 +4,17 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.utils.ConfigColor;
 import codes.biscuit.skyblockaddons.utils.Feature;
 import codes.biscuit.skyblockaddons.utils.ItemDiff;
+import codes.biscuit.skyblockaddons.utils.RevenantArmorProgress;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ButtonLocation extends ButtonFeature {
 
@@ -75,11 +80,22 @@ public class ButtonLocation extends ButtonFeature {
             scale /= 1.5;
             GlStateManager.scale(scale,scale,1);
             GlStateManager.popMatrix();
+        } else if (feature == Feature.REVENANT_INDICATOR) {
+            Map<Integer, RevenantArmorProgress> dummy = new LinkedHashMap<>();
+            dummy.put(2, new RevenantArmorProgress(new ItemStack(Item.getItemById(311))));
+            dummy.put(1, new RevenantArmorProgress(new ItemStack(Item.getItemById(304))));
+            dummy.put(0, new RevenantArmorProgress(new ItemStack(Item.getItemById(313))));
+            float scale = main.getConfigValues().getGuiScale(feature);
+            GlStateManager.pushMatrix();
+            GlStateManager.scale(scale, scale, 1);
+            main.getRenderListener().drawRevenantIndicator(mc, dummy, scale, this);
+            GlStateManager.popMatrix();
         }
         if (hovered) {
             lastHoveredFeature = feature;
         }
     }
+
 
     /**
      * This just updates the hovered status and draws the box around each feature. To avoid repetitive code.

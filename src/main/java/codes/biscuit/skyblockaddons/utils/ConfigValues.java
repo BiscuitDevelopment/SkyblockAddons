@@ -21,7 +21,7 @@ public class ConfigValues {
     private static final int CONFIG_VERSION = 6;
     private static final Feature[] GUI_FEATURES = {Feature.SKELETON_BAR, Feature.DEFENCE_ICON, Feature.DEFENCE_TEXT,
             Feature.DEFENCE_PERCENTAGE, Feature.HEALTH_BAR, Feature.HEALTH_TEXT, Feature.MANA_BAR, Feature.MANA_TEXT, Feature.HEALTH_UPDATES,
-            Feature.ITEM_PICKUP_LOG, Feature.MAGMA_BOSS_TIMER, Feature.DARK_AUCTION_TIMER};
+            Feature.ITEM_PICKUP_LOG, Feature.MAGMA_BOSS_TIMER, Feature.DARK_AUCTION_TIMER, Feature.REVENANT_INDICATOR};
 
     private final static float GUI_SCALE_MINIMUM = 0.5F;
     private final static float GUI_SCALE_MAXIMUM = 5;
@@ -291,6 +291,7 @@ public class ConfigValues {
         for (Feature feature : features) {
             anchorPoints.put(feature, EnumUtils.AnchorPoint.TOP_RIGHT);
         }
+        anchorPoints.put(Feature.REVENANT_INDICATOR, EnumUtils.AnchorPoint.BOTTOM_LEFT);
     }
 
     private void putDefaultCoordinates(Feature feature) {
