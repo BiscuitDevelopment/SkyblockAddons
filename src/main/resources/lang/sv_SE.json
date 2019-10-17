@@ -3,7 +3,7 @@
   "settings": {
     "tab": {
       "features": "Funktioner",
-      "fixes": "Fixer",
+      "fixes": "Fixar",
       "guiFeatures": "GUI Funktioner",
       "generalSettings": "Allmänna Inställningar"
     },
@@ -69,12 +69,12 @@
     "avoidBreakingBottomSugarCane": "Undvik att förstöra botten av sockerrör",
     "replaceRomanNumeralsWithNumbers": "Ersätt romanska siffror på saker",
     "changeBarColorForPotions": "Ändra färgen på hälsobaren ifall du en Wither eller Gift effekt på dig",
-    "craftingPatterns": "Choose Crafting Patterns",
+    "craftingPatterns": "Välj Tillverknings Mönster",
     "soundIndicatorForFishing": "Inställningar -> LjudIndikatorFörFiske",
     "avoidBlinkingNightVision": "Inställningar -> UndvikBlinkandeNattseende",
     "disableMinionLocationWarning": "Inställningar -> inaktiveraminionplatsvarning",
-    "jungleAxeCooldown": "Inställningar -> NerkylningAvJungelYxan",
-    "organizeLongEnchantmentLists": "Inställningar -> organiseraLongaEnchantmentListor"
+    "jungleAxeCooldown": "JungelYxaNedkylnig",
+    "organizeLongEnchantmentLists": "Organisera Långa Enchantment listor"
   },
   "messages": {
     "dropConfirmation": "Släpp Det Här Igen För Att Bekräfta!",
@@ -90,7 +90,7 @@
     "inventoryTypes": {
       "enchants": "Förtrollningar",
       "reforges": "Reforges",
-      "crafting": "Meddelande -> InventarieTyper -> Tillverkning"
+      "crafting": "Tilvkerning"
     },
     "newUpdateAvailable": "En ny updatering (%version%) är tillgänligt!",
     "deleteOldFile": "Updateringen är klar, snälla öppna använd knappen nedan för att öppna mod mappen, stäng ditt minecraft, och ta bort den gammla versionen (eller du kan ta bort den sen om du vill).",
