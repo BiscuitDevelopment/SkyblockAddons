@@ -69,12 +69,12 @@
     "avoidBreakingBottomSugarCane": "Şeker Kamışının Altını Kırmayı Engelle",
     "replaceRomanNumeralsWithNumbers": "Eşyalardaki Romen Rakamlarını Değiştir",
     "changeBarColorForPotions": "Wither ve Poison efektleri için üstteki barın rengini değiştir",
-    "craftingPatterns": "Crafting şablonlarını seçme",
+    "craftingPatterns": "Crafting Şablonlarını Seçme",
     "soundIndicatorForFishing": "Balık Tutarken Sesle Uyar",
     "avoidBlinkingNightVision": "Gece Görüşü Efekti Biterken Olan Yanıp Sönme Efektini Kapat",
     "disableMinionLocationWarning": "Minionların \"Location Not Perfect\" Uyarılarını Kapat",
-    "jungleAxeCooldown": "Jungle Axe bekleme süresi",
-    "organizeLongEnchantmentLists": "Uzun enchant listelerini organize et"
+    "jungleAxeCooldown": "Jungle Axe Bekleme Süresi",
+    "organizeLongEnchantmentLists": "Uzun Büyü Listelerini Düzelt"
   },
   "messages": {
     "dropConfirmation": "Eşyayı düşürmeyi onaylamak için düşürme tuşuna bir daha bas!",
@@ -90,7 +90,7 @@
     "inventoryTypes": {
       "enchants": "Büyüler",
       "reforges": "Reforge'lar",
-      "crafting": "Craftlama"
+      "crafting": "Crafting"
     },
     "newUpdateAvailable": "Yeni bir sürüm (%version%) mevcut!",
     "deleteOldFile": "İndirme bitirildi, lütfen aşağıdaki düğmeye basarak mods klasörünü açtıktan sonra Minecraft'ı kapatıp eksi sürümü silin(veya sonradan silebilirsiniz).",
