@@ -71,10 +71,10 @@
     "changeBarColorForPotions": "Změň barvu ukazetele pro wither a poison efekt",
     "craftingPatterns": "Vybrat si crafting vzory",
     "soundIndicatorForFishing": "Zvukový indikátor pro rybu",
-    "avoidBlinkingNightVision": "Vyhnout Se Blikajícímu Night Vision Potionu",
-    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings",
+    "avoidBlinkingNightVision": "Vyhnout blikání night vision potionu",
+    "disableMinionLocationWarning": "Vypnout lokace neperfektních upozornění",
     "jungleAxeCooldown": "Jungle Axe Cooldown",
-    "organizeLongEnchantmentLists": "Organize Long Enchantment Lists"
+    "organizeLongEnchantmentLists": "Organizovat dlouhé seznamy enchantů"
   },
   "messages": {
     "dropConfirmation": "Vyhoď tento item pro vyhození!",
