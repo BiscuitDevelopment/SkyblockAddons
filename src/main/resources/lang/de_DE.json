@@ -90,7 +90,7 @@
     "inventoryTypes": {
       "enchants": "Verzauberungen",
       "reforges": "Verbesserungen",
-      "crafting": "Crafting"
+      "crafting": "Craften"
     },
     "newUpdateAvailable": "Ein neues Update (%version%) ist verfügbar!",
     "deleteOldFile": "Der Download ist beendet, benutze den Knopf unten, um den mods Ordner zu öffnen, schließe dein Minecraft und lösche die alte Version (oder lösche es später).",
