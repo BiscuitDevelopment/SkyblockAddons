@@ -68,7 +68,7 @@
     "makeBackpackInventoriesColored": "Färglägg Inventarie",
     "avoidBreakingBottomSugarCane": "Undvik att förstöra botten av sockerrör",
     "replaceRomanNumeralsWithNumbers": "Ersätt romanska siffror på saker",
-    "changeBarColorForPotions": "Change Bar Color for Wither & Poison",
+    "changeBarColorForPotions": "Ändra färgen på hälsobaren ifall du en Wither eller Gift effekt på dig",
     "craftingPatterns": "Choose Crafting Patterns",
     "soundIndicatorForFishing": "Inställningar -> LjudIndikatorFörFiske",
     "avoidBlinkingNightVision": "Inställningar -> UndvikBlinkandeNattseende",
@@ -103,8 +103,8 @@
       "majorAvailable": "En ny Stor updatering (%version%) är tillgänlig! Du hittar Nedladning's länlen i chatten.",
       "patchAvailable": "En ny Patch updatering (%version%) är tillgänligt! Nedladning länken är i chatten!",
       "downloading": "Patch updateringen är redo! Status: %downloaded%/%total% Snälla notera att du måste ta bort den gamla filen när updaternigen blir klar.",
-      "failed": "Patch updateringen misslyckades! Snälla ladda ner den manuellt genom länken i chatten,.",
-      "downloadFinished": "Nedladningen av Patch updateringen är klar. Den har sparats som %file%. Snälla glöm inte att ta bort den gamla filen när du stänger av din Minecraft. Tryck på msgen i chatten för att öppna Mods mappen."
+      "failed": "Patch updateringen misslyckades! Ladda ner den manuellt genom länken i chatten,.",
+      "downloadFinished": "Nedladningen av Patch updateringen är klar. Den har sparats som %file%. Glöm inte att ta bort den gamla filen när du stänger av din Minecraft. Tryck på meddelandet i chatten för att öppna Mods mappen."
     },
     "slotLocked": "Denna luckan är låst!",
     "summoningEyeFound": "Tillkallande Öga!",
