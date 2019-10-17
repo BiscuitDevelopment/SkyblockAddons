@@ -70,9 +70,9 @@
     "replaceRomanNumeralsWithNumbers": "Ersätt romanska siffror på saker",
     "changeBarColorForPotions": "Change Bar Color for Wither & Poison",
     "craftingPatterns": "Choose Crafting Patterns",
-    "soundIndicatorForFishing": "Sound Indicator for Fishing",
-    "avoidBlinkingNightVision": "Disable Night Vision Potion Blinking",
-    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings",
+    "soundIndicatorForFishing": "Inställningar -> LjudIndikatorFörFiske",
+    "avoidBlinkingNightVision": "Inställningar -> UndvikBlinkandeNattseende",
+    "disableMinionLocationWarning": "Inställningar -> inaktiveraminionplatsvarning",
     "jungleAxeCooldown": "Jungle Axe Cooldown",
     "organizeLongEnchantmentLists": "Organize Long Enchantment Lists"
   },
