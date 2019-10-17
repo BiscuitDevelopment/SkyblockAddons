@@ -24,7 +24,7 @@
     "hideAuctionHousePlayers": "Göm Spelare nära Viktiga NPCer",
     "backpackStyle": "Ryggsäck Stil: %style%",
     "backpackStyles": {
-      "regular": "Vanlig",
+      "regular": "Vanliga",
       "compact": "Kompakt"
     },
     "showBackpackPreview": "Visa Förhandsgranskning av Ryggsäck",
@@ -52,7 +52,7 @@
     "lockSlots": "Tillåt Att Låsa Luckor",
     "lockSlot": "Lösa Luckor",
     "dontResetCursorInventory": "Återställ Inte Muspekaren Mellan Inventarie",
-    "summoningEyeAlert": "Tillkallande Öga Larm",
+    "summoningEyeAlert": "Tillkallande Öga Varning",
     "makeEnderchestsInEndGreen": "Gör Enderkistor i End Gröna",
     "changeColor": "Ändra Färg",
     "showInOtherGames": "Visa i Andra Spel",
