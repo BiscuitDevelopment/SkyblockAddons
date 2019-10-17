@@ -596,8 +596,6 @@ public class RenderListener {
                 }
             }
             text = magmaBuilder.toString();
-        } else if (feature == Feature.REVENANT_INDICATOR) {
-            text = "";
         } else {
             return;
         }
