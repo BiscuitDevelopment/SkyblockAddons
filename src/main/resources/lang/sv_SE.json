@@ -101,18 +101,18 @@
     "joinTheDiscord": "Gå med I discord servern",
     "update": {
       "majorAvailable": "En ny Stor updatering (%version%) är tillgänlig! Du hittar Nedladnings länken i chatten.",
-      "patchAvailable": "En ny Patch updatering (%version%) är tillgänligt! Nedladning länken är i chatten!",
-      "downloading": "Patch updateringen är redo! Status: %downloaded%/%total% Snälla notera att du måste ta bort den gamla filen när updaternigen blir klar.",
+      "patchAvailable": "En ny programfix (%version%) är tillgänlig! Nedladnings länken finns i chatten!",
+      "downloading": "Programfix uppdateringen är redo! Status: %downloaded%/%total% Snälla notera att du måste ta bort den gamla filen när uppdateringen blir klar.",
       "failed": "Patch updateringen misslyckades! Ladda ner den manuellt genom länken i chatten,.",
-      "downloadFinished": "Nedladningen av Patch updateringen är klar. Den har sparats som %file%. Glöm inte att ta bort den gamla filen när du stänger av din Minecraft. Tryck på meddelandet i chatten för att öppna Mods mappen."
+      "downloadFinished": "Nedladningen av Programfix uppdateringen är klar. Den har sparats som %file%. Glöm inte att ta bort den gamla filen när du stänger av din Minecraft. Tryck på meddelandet i chatten för att öppna mods mappen."
     },
     "slotLocked": "Denna luckan är låst!",
     "summoningEyeFound": "Tillkallande Öga!",
     "cancelledStemBreak": "SkyblockAddons har förhindrat dig från att förstöra denna stjälk. Ifall du ändå vill förstöra den använd då din hand.",
     "cancelledCaneBreak": "SkyblockAddons har stoppat dig från att förstöra botten av sockerröret. Använd ett annat verktyg ifall du skulle vilja förstöra det ändå.",
     "cancelledProfileOpening": "SkyblockAddons har stoppat dig från att öppna denna spelares profil medan du håller en pilbåge.",
-    "cancelledDropping": "SkyblockAddons har stoppat dig från att slänga denna sällsynta sak eller verktyg från ditt lager.",
+    "cancelledDropping": "SkyblockAddons har stoppat dig från att slänga denna sällsynta sak eller verktyg från ditt inventarie.",
     "clickMoreTimes": "Släng denna sak %times% fler gånger om du verkligen vill göra detta.",
-    "featureDisabled": "Meddelande -> funktionInaktiverad"
+    "featureDisabled": "Funktion.Inaktiverat"
   }
 }
