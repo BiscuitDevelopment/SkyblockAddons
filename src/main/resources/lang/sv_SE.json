@@ -73,8 +73,8 @@
     "soundIndicatorForFishing": "Inställningar -> LjudIndikatorFörFiske",
     "avoidBlinkingNightVision": "Inställningar -> UndvikBlinkandeNattseende",
     "disableMinionLocationWarning": "Inställningar -> inaktiveraminionplatsvarning",
-    "jungleAxeCooldown": "Jungle Axe Cooldown",
-    "organizeLongEnchantmentLists": "Organize Long Enchantment Lists"
+    "jungleAxeCooldown": "Inställningar -> NerkylningAvJungelYxan",
+    "organizeLongEnchantmentLists": "Inställningar -> organiseraLongaEnchantmentListor"
   },
   "messages": {
     "dropConfirmation": "Släpp Det Här Igen För Att Bekräfta!",
@@ -90,7 +90,7 @@
     "inventoryTypes": {
       "enchants": "Förtrollningar",
       "reforges": "Reforges",
-      "crafting": "Crafting"
+      "crafting": "Meddelande -> InventarieTyper -> Tillverkning"
     },
     "newUpdateAvailable": "En ny updatering (%version%) är tillgänligt!",
     "deleteOldFile": "Updateringen är klar, snälla öppna använd knappen nedan för att oppna mods mappen, stäng din minecraft, och Ta bort den gammla versionen( eller du kan ta bort den sen om du vill).",
