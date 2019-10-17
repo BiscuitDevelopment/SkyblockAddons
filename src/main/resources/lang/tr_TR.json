@@ -70,9 +70,9 @@
     "replaceRomanNumeralsWithNumbers": "Eşyalardaki Romen Rakamlarını Değiştir",
     "changeBarColorForPotions": "Wither ve Poison efektleri için üstteki barın rengini değiştir",
     "craftingPatterns": "Crafting şablonlarını seçme",
-    "soundIndicatorForFishing": "Balık tutarken sesle uyar",
-    "avoidBlinkingNightVision": "Night vision efekti biterken olan efekti kapat",
-    "disableMinionLocationWarning": "Location not perfect",
+    "soundIndicatorForFishing": "Balık Tutarken Sesle Uyar",
+    "avoidBlinkingNightVision": "Gece Görüşü Efekti Biterken Olan Yanıp Sönme Efektini Kapat",
+    "disableMinionLocationWarning": "Minionların \"Location Not Perfect\" Uyarılarını Kapat",
     "jungleAxeCooldown": "Jungle Axe bekleme süresi",
     "organizeLongEnchantmentLists": "Uzun enchant listelerini organize et"
   },
