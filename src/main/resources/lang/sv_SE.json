@@ -100,7 +100,7 @@
     "openModFolder": "Mods mappen",
     "joinTheDiscord": "Joina discord servern",
     "update": {
-      "majorAvailable": "En ny Stor updatering (%version%) är tillgänligt! Du hittar Nedladning's länlen i chatten.",
+      "majorAvailable": "En ny Stor updatering (%version%) är tillgänlig! Du hittar Nedladning's länlen i chatten.",
       "patchAvailable": "En ny Patch updatering (%version%) är tillgänligt! Nedladning länken är i chatten!",
       "downloading": "Patch updateringen är redo! Status: %downloaded%/%total% Snälla notera att du måste ta bort den gamla filen när updaternigen blir klar.",
       "failed": "Patch updateringen misslyckades! Snälla ladda ner den manuellt genom länken i chatten,.",
