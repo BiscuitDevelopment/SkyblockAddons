@@ -21,7 +21,7 @@
     "hideDurability": "Göm Verktyg Hållbarhet",
     "showEnchantmentsReforges": "Förtrollningar & Reforges",
     "minionStopWarning": "\"Tjänare Kan Inte Nå\" Varning",
-    "hideAuctionHousePlayers": "Göm Spelare brevid Viktiga NPCer",
+    "hideAuctionHousePlayers": "Göm Spelare nära Viktiga NPCer",
     "backpackStyle": "Ryggsäck Stil: %style%",
     "backpackStyles": {
       "regular": "Vanlig",
@@ -31,7 +31,7 @@
     "hideHealthBar": "Göm Vanilla Hälso Bar",
     "fullMinionWarning": "Full Tjänare Varning",
     "ignoreItemFrameClicks": "Ignorera Klick På Föremålsramar",
-    "showOnlyWhenHoldingShift": "Visa Bara När Du Håller Shift",
+    "showOnlyWhenHoldingShift": "Visa Bara När Shift Hålls Ner",
     "manaBar": "Mana Mätare",
     "manaText": "Mana Nummer",
     "healthBar": "Hälso Bar",
@@ -43,10 +43,10 @@
     "hidePlayersInLobby": "Göm Spelare Som Är Långt Bort I Lobbyn",
     "darkAuctionTimer": "Mörk Auktions Timer",
     "magmaBossTimer": "Magma Boss Timer",
-    "itemPickupLog": "Plocka Upp Artikel Log",
+    "itemPickupLog": "Upp Plocknings Artikel Log",
     "avoidPlacingEnchantedItems": "Förhindra Att Placera Förtrollade Block",
     "avoidBreakingStems": "Undvik Att Förstöra Stjälkar",
-    "stopBowChargeFromResetting": "Stoppa Pilbågar Från Att Återställas",
+    "stopBowChargeFromResetting": "Stoppa Pilbågar Från Återställning",
     "preventMovementOnDeath": "Förhindra Att Fortsätta Gå Efter Du Dör",
     "showItemAnvilUses": "Visa Föremåls Städ Användningar",
     "lockSlots": "Tillåt Att Låsa Luckor",
@@ -113,6 +113,6 @@
     "cancelledProfileOpening": "SkyblockAddons har stoppat dig från att öppna denna spelares profil medan du håller en pilbåge.",
     "cancelledDropping": "SkyblockAddons har stoppat dig från att slänga denna sällsynta sak eller verktyg från ditt lager.",
     "clickMoreTimes": "Släng denna sak %times% fler gånger om du verkligen vill göra detta.",
-    "featureDisabled": "Feature Disabled"
+    "featureDisabled": "Meddelande -> funktionInaktiverad"
   }
 }
