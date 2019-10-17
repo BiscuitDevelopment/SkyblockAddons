@@ -70,11 +70,11 @@
     "replaceRomanNumeralsWithNumbers": "替换罗马数字为阿拉伯数字",
     "changeBarColorForPotions": "更改药水条颜色",
     "craftingPatterns": "选择合成样式",
-    "soundIndicatorForFishing": "Sound Indicator for Fishing",
-    "avoidBlinkingNightVision": "Disable Night Vision Potion Blinking",
-    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings",
-    "jungleAxeCooldown": "Jungle Axe Cooldown",
-    "organizeLongEnchantmentLists": "Organize Long Enchantment Lists"
+    "soundIndicatorForFishing": "钓鱼声音指示",
+    "avoidBlinkingNightVision": "禁用夜视耗尽闪烁",
+    "disableMinionLocationWarning": "禁用仆从“位置不是很好”警告",
+    "jungleAxeCooldown": "丛林斧冷却",
+    "organizeLongEnchantmentLists": "整理长版附魔列表"
   },
   "messages": {
     "dropConfirmation": "再次丢弃此物品以确认!",
