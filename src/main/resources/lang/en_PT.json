@@ -100,11 +100,11 @@
     "openModFolder": "Mods Foldarr",
     "joinTheDiscord": "Join arr Discord",
     "update": {
-      "majorAvailable": "A new major update (%version%) is available! The link for the download can be found in chat.",
-      "patchAvailable": "A new patch update (%version%) is available! Look in chat for download options!",
-      "downloading": "The patch is downloading! Status: %downloaded%/%total% Please note that after the download has finished, you must delete the old file.",
-      "failed": "The patch download has failed! Please download it manually using the link in chat.",
-      "downloadFinished": "The patch has finished downloading. It has been saved as %file%. Please don't forget to delete the old file after closing your Minecraft. Click the message in chat to open up the folder."
+      "majorAvailable": "A new major update (%version%) be available! The download link can be found in yer chat.",
+      "patchAvailable": "A new patch update (%version%) be available! Look in chat fer download options!",
+      "downloading": "The patch be downloading! Status: %downloaded%/%total% Please note that there after the download 'as finished, ye must delete the old file.",
+      "failed": "The patch download failed! Please download it manually usin' the link in chat.",
+      "downloadFinished": "The patch finished downloadin'. It been saved as %file%. Please don't forget to delete the old file after closin' yer Minecraft. Click the message in yer chat to open up the folder."
     },
     "slotLocked": "Ahoy, matey! This here slot be locked!",
     "summoningEyeFound": "Summinin' Aye!",
