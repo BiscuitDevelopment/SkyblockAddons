@@ -75,7 +75,7 @@
     "disableMinionLocationWarning": "\"Hely nem tökéletes\" minion jelzés kikapcsolása",
     "jungleAxeCooldown": "Jungle Axe Töltési idő",
     "organizeLongEnchantmentLists": "Organize Long Enchantment Lists",
-    "showItemCooldowns": "Show Item Cooldowns"
+    "showItemCooldowns": "Mutasd az a tárgy visszatöltési idejét"
   },
   "messages": {
     "dropConfirmation": "Dobd el ezt a tárgyat újra, hogy megerősítsd!",
