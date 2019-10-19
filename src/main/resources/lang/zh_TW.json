@@ -74,7 +74,8 @@
     "avoidBlinkingNightVision": "Disable Night Vision Potion Blinking",
     "disableMinionLocationWarning": "Disable Location Not Perfect Warnings",
     "jungleAxeCooldown": "Jungle Axe Cooldown",
-    "organizeLongEnchantmentLists": "Organize Long Enchantment Lists"
+    "organizeLongEnchantmentLists": "Organize Long Enchantment Lists",
+    "showItemCooldowns": "Show Item Cooldowns"
   },
   "messages": {
     "dropConfirmation": "再次丟棄此物品以確認!",
@@ -113,6 +114,7 @@
     "cancelledProfileOpening": "SkyblockAddons阻止了你拿著弓打開其他玩家的資料。",
     "cancelledDropping": "SkyblockAddons阻止了你丟出快捷欄中稀有等級以上的物品。",
     "clickMoreTimes": "如果你真的想這麼做, 請再點擊或按丟出%times%次。",
-    "featureDisabled": "停用功能"
+    "featureDisabled": "停用功能",
+    "anvilUses": "Anvil Uses: %uses%"
   }
 }
