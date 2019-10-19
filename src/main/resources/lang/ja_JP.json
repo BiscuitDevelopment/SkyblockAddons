@@ -74,7 +74,8 @@
     "avoidBlinkingNightVision": "暗視のポーションの点滅を無くす",
     "disableMinionLocationWarning": "Location Not Perfectのアラートを無効化",
     "jungleAxeCooldown": "Jungle Axeのクールタイムを表示",
-    "organizeLongEnchantmentLists": "長いエンチャントのリストを整理"
+    "organizeLongEnchantmentLists": "長いエンチャントのリストを整理",
+    "showItemCooldowns": "Show Item Cooldowns"
   },
   "messages": {
     "dropConfirmation": "落としてもいいのであれば、このアイテムをもう一度ドロップしてください。",
@@ -113,6 +114,7 @@
     "cancelledProfileOpening": "SkyblockAddonsがこのプレイヤーのプロフィールを開くことを阻止しました。",
     "cancelledDropping": "SkyblockAddonsがこのアイテムを捨てることを阻止しました。",
     "clickMoreTimes": "本当に落としたい場合はもう%times%回クリック/ドロップしてください。",
-    "featureDisabled": "機能を無効化"
+    "featureDisabled": "機能を無効化",
+    "anvilUses": "Anvil Uses: %uses%"
   }
 }
