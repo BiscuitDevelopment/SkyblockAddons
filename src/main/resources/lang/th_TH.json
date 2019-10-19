@@ -72,7 +72,7 @@
     "craftingPatterns": "รูปแบบการคราฟของ",
     "soundIndicatorForFishing": "เสียงแจ้งเตือนเมื่อตกปลาได้",
     "avoidBlinkingNightVision": "ปิด Effect Night Vision ตอนกำลังหมด",
-    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings",
+    "disableMinionLocationWarning": "ปิดคำเตือน Location not perfect",
     "jungleAxeCooldown": "คูลดาวน์ Jungle Axe",
     "organizeLongEnchantmentLists": "จัดรายชื่อ Enchantment ที่ยาวๆ",
     "showItemCooldowns": "แสดงคูลดาวน์ไอเทม"
