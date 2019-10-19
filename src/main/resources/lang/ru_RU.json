@@ -74,7 +74,8 @@
     "avoidBlinkingNightVision": "Disable Night Vision Potion Blinking",
     "disableMinionLocationWarning": "Отключить ошибку об неверном расположении",
     "jungleAxeCooldown": "Jungle Axe Cooldown",
-    "organizeLongEnchantmentLists": "Организовать список длинных зачарований"
+    "organizeLongEnchantmentLists": "Организовать список длинных зачарований",
+    "showItemCooldowns": "Show Item Cooldowns"
   },
   "messages": {
     "dropConfirmation": "Выбросите предмет ещё раз для подтверждения!",
@@ -113,6 +114,7 @@
     "cancelledProfileOpening": "SkyBlockAddons остановил вас от открытия профиля игрока с луком в руках.",
     "cancelledDropping": "SkyBlockAddons предотвратил попытку выбросить этот предмет из панели быстрого доступа.",
     "clickMoreTimes": "Нажмите/выберите этот предмет еще %times% раз, если вы действительно хотите сделать это.",
-    "featureDisabled": "Функция отключена"
+    "featureDisabled": "Функция отключена",
+    "anvilUses": "Anvil Uses: %uses%"
   }
 }
