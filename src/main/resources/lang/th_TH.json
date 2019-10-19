@@ -74,7 +74,8 @@
     "avoidBlinkingNightVision": "Disable Night Vision Potion Blinking",
     "disableMinionLocationWarning": "Disable Location Not Perfect Warnings",
     "jungleAxeCooldown": "Jungle Axe Cooldown",
-    "organizeLongEnchantmentLists": "Organize Long Enchantment Lists"
+    "organizeLongEnchantmentLists": "Organize Long Enchantment Lists",
+    "showItemCooldowns": "Show Item Cooldowns"
   },
   "messages": {
     "dropConfirmation": "กดทิ้งของอีกที่เพื่อยืนยันทิ้งของสิ่งนี้!",
@@ -113,6 +114,7 @@
     "cancelledProfileOpening": "ม็อด SkyblockAddons ได้หยุดคุณจากการเปิดดูโปรไฟล์ผู้เล่นเมื่อคุณถือธนูไว้",
     "cancelledDropping": "ม็อด SkyblockAddons ได้หยุดคุณจากการทิ้งไอเทม Rare หรืออุปกรณ์จากช่อง Hotbar ของคุณ",
     "clickMoreTimes": "คลิกหรือทิ้งไอเทมนี้อีก %times% ครั้งเพื่อยืนยัน",
-    "featureDisabled": "ปิดใช้งานฟีเจอร์นี้แล้ว"
+    "featureDisabled": "ปิดใช้งานฟีเจอร์นี้แล้ว",
+    "anvilUses": "Anvil Uses: %uses%"
   }
 }
