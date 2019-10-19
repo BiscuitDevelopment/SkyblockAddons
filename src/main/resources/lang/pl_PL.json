@@ -74,7 +74,8 @@
     "avoidBlinkingNightVision": "Disable Night Vision Potion Blinking",
     "disableMinionLocationWarning": "Wyłącz ostrzeżenia \"Location Not Perfect\"",
     "jungleAxeCooldown": "Czas odnowienia Jungle Axe",
-    "organizeLongEnchantmentLists": "Uporządkuj długie listy enchantów"
+    "organizeLongEnchantmentLists": "Uporządkuj długie listy enchantów",
+    "showItemCooldowns": "Show Item Cooldowns"
   },
   "messages": {
     "dropConfirmation": "Wyrzuć ten przedmiot ponownie, aby potwierdzić!",
@@ -113,6 +114,7 @@
     "cancelledProfileOpening": "SkyblockAddons powstrzymał otwieranie profilu tej osoby podczas trzymania łuku.",
     "cancelledDropping": "SkyblockAddons anulował upuszczenie tego rzadkiego przedmiotu lub narzędzia z twojego paska narzędzi.",
     "clickMoreTimes": "Naciśnij/upuść ten przedmiot %times% razy więcej, jeśli naprawdę chcesz to zrobić.",
-    "featureDisabled": "Funkcja wyłączona"
+    "featureDisabled": "Funkcja wyłączona",
+    "anvilUses": "Anvil Uses: %uses%"
   }
 }
