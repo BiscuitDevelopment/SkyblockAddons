@@ -74,7 +74,8 @@
     "avoidBlinkingNightVision": "Disable Night Vision Potion Blinking",
     "disableMinionLocationWarning": "Disable Location Not Perfect Warnings",
     "jungleAxeCooldown": "Jungle Axe Cooldown",
-    "organizeLongEnchantmentLists": "Organize Long Enchantment Lists"
+    "organizeLongEnchantmentLists": "Organize Long Enchantment Lists",
+    "showItemCooldowns": "Show Item Cooldowns"
   },
   "messages": {
     "dropConfirmation": "Leag síos an mír seo arís le cinntiú!",
@@ -113,6 +114,7 @@
     "cancelledProfileOpening": "Chur SkyblockAddons cosc ort ag oscailt an próifíl seo fad is atá bogha i do lámh.",
     "cancelledDropping": "Chur SkyblockAddons cosc or an mír annamh seo a leag síos ó do hotbar.",
     "clickMoreTimes": "Cliceáil/leag síos an mír seo %times% uaireanta eile má tá tú cinnte faoi seo.",
-    "featureDisabled": "Feature Disabled"
+    "featureDisabled": "Feature Disabled",
+    "anvilUses": "Anvil Uses: %uses%"
   }
 }
