@@ -75,7 +75,7 @@
     "disableMinionLocationWarning": "Deaktiviere \"Location not perfect\" Warnung",
     "jungleAxeCooldown": "Jungle Axe Abklingzeit",
     "organizeLongEnchantmentLists": "Organisieren von langen Verzauberungslisten",
-    "showItemCooldowns": "Item Cooldowns anzeigen"
+    "showItemCooldowns": "Item Abklingzeit anzeigen"
   },
   "messages": {
     "dropConfirmation": "Werfe diesen Gegenstand nochmal, um zu bestätigen!",
