@@ -75,7 +75,7 @@
     "disableMinionLocationWarning": "ביטול אזהרות מיקום לא מושלם",
     "jungleAxeCooldown": "טעינת גרזן ג'ונגל",
     "organizeLongEnchantmentLists": "סדר רשימת כישופים ארוכה",
-    "showItemCooldowns": "Show Item Cooldowns"
+    "showItemCooldowns": "הראה טעינת חפצים"
   },
   "messages": {
     "dropConfirmation": "זרוק פריט זה שוב לאישור!",
@@ -115,6 +115,6 @@
     "cancelledDropping": "SkyBlockAddons עצר אותך מלהפיל את החפץ או הכלי הנדיר הזה.",
     "clickMoreTimes": "תלחץ/תזרוק את החפץ %times% פעמים נוספות אם אתה בטוח רוצה לעשות את זה.",
     "featureDisabled": "פיטצ'ר מבוטל",
-    "anvilUses": "Anvil Uses: %uses%"
+    "anvilUses": "שימוים בסדן: %uses%"
   }
 }
