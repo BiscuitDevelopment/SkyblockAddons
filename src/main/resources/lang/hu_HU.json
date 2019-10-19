@@ -70,12 +70,12 @@
     "replaceRomanNumeralsWithNumbers": "Római számok kicserélése a tárgyakon",
     "changeBarColorForPotions": "Sorvadás és méreg sebzőszínei",
     "craftingPatterns": "Válassz Barkácsolómintát",
-    "soundIndicatorForFishing": "Hangjelzés halászatkor",
-    "avoidBlinkingNightVision": "Éjszakai látás \"pislogás\" elkerülése",
-    "disableMinionLocationWarning": "\"Hely nem tökéletes\" minion jelzés kikapcsolása",
+    "soundIndicatorForFishing": "Hangjelzés horgászatkor",
+    "avoidBlinkingNightVision": "Éjjel látás villogás elkerülése",
+    "disableMinionLocationWarning": "\"Location not perfect\" minion jelzés kikapcsolása",
     "jungleAxeCooldown": "Jungle Axe Töltési idő",
-    "organizeLongEnchantmentLists": "Organize Long Enchantment Lists",
-    "showItemCooldowns": "Mutasd az a tárgy visszatöltési idejét"
+    "organizeLongEnchantmentLists": "Hosszú enchant lista rendezése",
+    "showItemCooldowns": "Mutasd az a tárgy töltési idejét"
   },
   "messages": {
     "dropConfirmation": "Dobd el ezt a tárgyat újra, hogy megerősítsd!",
