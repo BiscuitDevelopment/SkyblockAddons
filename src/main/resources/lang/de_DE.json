@@ -75,7 +75,7 @@
     "disableMinionLocationWarning": "Deaktiviere \"Location not perfect\" Warnung",
     "jungleAxeCooldown": "Jungle Axe Abklingzeit",
     "organizeLongEnchantmentLists": "Organisieren von langen Verzauberungslisten",
-    "showItemCooldowns": "Show Item Cooldowns"
+    "showItemCooldowns": "Item Cooldowns anzeigen"
   },
   "messages": {
     "dropConfirmation": "Werfe diesen Gegenstand nochmal, um zu bestätigen!",
@@ -115,6 +115,6 @@
     "cancelledDropping": "SkyblockAddons hat dich davon abgehalten, dieses seltene Item oder Werkzeug aus deiner Hotbar zu droppen.",
     "clickMoreTimes": "Klicke/droppe dieses Item %times% mal mehr, wenn du das wirklich tun möchtest.",
     "featureDisabled": "Funktion deaktiviert",
-    "anvilUses": "Anvil Uses: %uses%"
+    "anvilUses": "Ambossnutzungen: %uses%"
   }
 }
