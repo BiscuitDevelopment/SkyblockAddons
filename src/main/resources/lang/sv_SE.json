@@ -75,7 +75,7 @@
     "disableMinionLocationWarning": "Inaktivera Position Inte Perfect Varning",
     "jungleAxeCooldown": "JungelYxaNedkylnig",
     "organizeLongEnchantmentLists": "Organisera Långa Enchantment listor",
-    "showItemCooldowns": "Show Item Cooldowns"
+    "showItemCooldowns": "Visa artikel nedkylning"
   },
   "messages": {
     "dropConfirmation": "Släpp Det Här Igen För Att Bekräfta!",
@@ -115,6 +115,6 @@
     "cancelledDropping": "SkyblockAddons har stoppat dig från att slänga denna sällsynta sak eller verktyg från ditt inventarie.",
     "clickMoreTimes": "Släng denna sak %times% fler gånger om du verkligen vill göra detta.",
     "featureDisabled": "Funktion.Inaktiverat",
-    "anvilUses": "Anvil Uses: %uses%"
+    "anvilUses": "Städ användningar %uses%"
   }
 }
