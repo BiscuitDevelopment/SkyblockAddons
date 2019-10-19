@@ -74,7 +74,8 @@
     "avoidBlinkingNightVision": "Disable Night Vision Potion Blinking",
     "disableMinionLocationWarning": "Disable Location Not Perfect Warnings",
     "jungleAxeCooldown": "Jungle Axe Cooldown",
-    "organizeLongEnchantmentLists": "Organize Long Enchantment Lists"
+    "organizeLongEnchantmentLists": "Organize Long Enchantment Lists",
+    "showItemCooldowns": "Show Item Cooldowns"
   },
   "messages": {
     "dropConfirmation": "Ponovno Izpusti To Stvar za Potrditev!",
@@ -113,6 +114,7 @@
     "cancelledProfileOpening": "SkyblockAddons vam je preprečil odpiranje profila tega igralca medtem, ko držite lok.",
     "cancelledDropping": "SkyblockAddons vam je preprečil izpust te redke stvari iz svojega hotbarja.",
     "clickMoreTimes": "Kliknite/izpustite to stvar še %times% -krat, če to res želite storiti.",
-    "featureDisabled": "Funkcija izklopljena"
+    "featureDisabled": "Funkcija izklopljena",
+    "anvilUses": "Anvil Uses: %uses%"
   }
 }
