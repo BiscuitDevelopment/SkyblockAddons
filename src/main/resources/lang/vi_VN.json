@@ -75,7 +75,7 @@
     "disableMinionLocationWarning": "Tắt cảnh báo Vị trí không phù hợp",
     "jungleAxeCooldown": "Hồi phục Rìu Rừng Rậm",
     "organizeLongEnchantmentLists": "Sắp xếp danh sách phù phép dài",
-    "showItemCooldowns": "Show Item Cooldowns"
+    "showItemCooldowns": "Hiển thị thời gian hồi vật phẩm"
   },
   "messages": {
     "dropConfirmation": "Nhấn \"Q\" Thêm Một Lần Nữa Để Xác Nhận!",
