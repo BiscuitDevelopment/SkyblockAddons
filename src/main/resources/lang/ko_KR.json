@@ -74,7 +74,8 @@
     "avoidBlinkingNightVision": "Disable Night Vision Potion Blinking",
     "disableMinionLocationWarning": "Disable Location Not Perfect Warnings",
     "jungleAxeCooldown": "Jungle Axe Cooldown",
-    "organizeLongEnchantmentLists": "Organize Long Enchantment Lists"
+    "organizeLongEnchantmentLists": "Organize Long Enchantment Lists",
+    "showItemCooldowns": "Show Item Cooldowns"
   },
   "messages": {
     "dropConfirmation": "아이템을 정말로 버리려면 다시 버리세요!",
@@ -113,6 +114,7 @@
     "cancelledProfileOpening": "SkyblockAddons이 활을 든 채 이 플레이어의 프로필을 여는 것을 방지했습니다.",
     "cancelledDropping": "SkyblockAddons이 이 희귀한 아이템 또는 도구를 핫바에서 떨어뜨리는 것을 방지했습니다.",
     "clickMoreTimes": "정말 이 아이템을 떨어뜨리려면 %times%번 더 떨어뜨리세요.",
-    "featureDisabled": "Feature Disabled"
+    "featureDisabled": "Feature Disabled",
+    "anvilUses": "Anvil Uses: %uses%"
   }
 }
