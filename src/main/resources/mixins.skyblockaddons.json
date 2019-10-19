@@ -17,5 +17,6 @@
     "MixinGuiInventory",
     "MixinTileEntityEnderChestRenderer",
     "MixinRendererLivingEntity",
+    "MixinItem"
   ]
 }

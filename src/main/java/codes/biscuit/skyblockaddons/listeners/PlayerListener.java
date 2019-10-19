@@ -14,10 +14,7 @@ import net.minecraft.entity.monster.EntityMagmaCube;
 import net.minecraft.entity.monster.EntitySlime;
 import net.minecraft.entity.projectile.EntityFishHook;
 import net.minecraft.init.Items;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
@@ -41,15 +38,17 @@ import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.StringSelection;
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.io.IOException;
-import java.util.List;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class PlayerListener {
 
     private final Pattern ENCHANTMENT_TOOLTIP_PATTERN = Pattern.compile("\\u00A7.\\u00A7.(\\u00A79[\\w ]+(, )?)+");
+    private final Pattern ABILITY_CHAT_PATTERN = Pattern.compile("\\u00A7r\\u00A7aUsed \\u00A7r\\u00A76[A-Za-z ]+\\u00A7r\\u00A7a! \\u00A7r\\u00A7b\\([0-9]+ Mana\\)\\u00A7r");
 
     private boolean sentUpdate = false;
     private long lastWorldJoin = -1;
@@ -222,6 +221,10 @@ public class PlayerListener {
                 main.getRenderListener().setTitleFeature(Feature.SUMMONING_EYE_ALERT);
                 main.getScheduler().schedule(Scheduler.CommandType.RESET_TITLE_FEATURE, main.getConfigValues().getWarningSeconds());
             }
+            Matcher matcher = ABILITY_CHAT_PATTERN.matcher(e.message.getFormattedText());
+            if (matcher.matches()) {
+                main.getUtils().logEntry(Minecraft.getMinecraft().thePlayer.getHeldItem());
+            }
         }
     }
 
@@ -247,11 +250,16 @@ public class PlayerListener {
         ItemStack heldItem = e.entityPlayer.getHeldItem();
         if (main.getUtils().isOnSkyblock() && e.entityPlayer == mc.thePlayer && heldItem != null) {
             // Prevent using ember rod on personal island
-            if (main.getConfigValues().isEnabled(Feature.FISHING_SOUND_INDICATOR) && heldItem.getItem().equals(Items.fishing_rod) // Update fishing status
+            if (heldItem.getItem().equals(Items.fishing_rod) // Update fishing status
                     && (e.action == PlayerInteractEvent.Action.RIGHT_CLICK_BLOCK || e.action == PlayerInteractEvent.Action.RIGHT_CLICK_AIR)) {
-                oldBobberIsInWater = false;
-                lastBobberEnteredWater = Long.MAX_VALUE;
-                oldBobberPosY = 0;
+                if (main.getConfigValues().isEnabled(Feature.FISHING_SOUND_INDICATOR)) {
+                    oldBobberIsInWater = false;
+                    lastBobberEnteredWater = Long.MAX_VALUE;
+                    oldBobberPosY = 0;
+                }
+                if (main.getConfigValues().isEnabled(Feature.SHOW_ITEM_COOLDOWNS) && mc.thePlayer.fishEntity != null) {
+                    SkyblockAddons.getInstance().getUtils().logEntry(Minecraft.getMinecraft().thePlayer.getHeldItem());
+                }
             } else if (main.getConfigValues().isEnabled(Feature.AVOID_PLACING_ENCHANTED_ITEMS) && EnchantedItemBlacklist.shouldBlockUsage(heldItem)
                     && (e.action == PlayerInteractEvent.Action.RIGHT_CLICK_BLOCK || e.action == PlayerInteractEvent.Action.RIGHT_CLICK_AIR)) {
                 e.setCanceled(true);
@@ -512,41 +520,34 @@ public class PlayerListener {
             }
         }
 
-        if (e.toolTip != null && e.toolTip.size() > 1 && main.getUtils().isOnSkyblock()) {
-
-            if (!hoveredItem.getItem().equals(Items.enchanted_book)) {
-                // Clean buggy enchantments at the top of equipment tooltips
-                while(true) {
-                    String tip = e.toolTip.get(1);
-                    if (tip.contains("Respiration") || tip.contains("Aqua Affinity")
-							|| tip.contains("Depth Strider") || tip.contains("Efficiency")) {
-                        e.toolTip.remove(tip);
-                    } else break;
+        if (e.toolTip != null && e.toolTip.size() > 3 && main.getUtils().isOnSkyblock()) {
+            for (int i = 1; i <= 3; i++) { // only a max of 2 gray enchants are possible
+                String line = e.toolTip.get(i);
+//                System.out.println(line);
+                if (!line.startsWith("\u00A75\u00A7o\u00A79") && (line.contains("Respiration") || line.contains("Aqua Affinity")
+                        || line.contains("Depth Strider") || line.contains("Efficiency"))) {
+                    e.toolTip.remove(line);
+                    i--;
                 }
             }
             if (main.getConfigValues().isEnabled(Feature.SHOW_ITEM_ANVIL_USES)) {
                 // Anvil Uses ~ original done by Dahn#6036
-                if (hoveredItem.hasTagCompound()) {
-                    NBTTagCompound nbt = hoveredItem.getTagCompound();
-                    if (nbt.hasKey("ExtraAttributes")) {
-                        if (nbt.getCompoundTag("ExtraAttributes").hasKey("anvil_uses")) {
-                            int insertAt = e.toolTip.size();
-                            insertAt--; // 1 line for the rarity
-                            if (Minecraft.getMinecraft().gameSettings.advancedItemTooltips) {
-                                insertAt -= 2; // 1 line for the item name, and 1 line for the nbt
-                                if (e.itemStack.isItemDamaged()) {
-                                    insertAt--; // 1 line for damage
-                                }
-                            }
-                            int anvilUses = nbt.getCompoundTag("ExtraAttributes").getInteger("anvil_uses");
-                            if (nbt.getCompoundTag("ExtraAttributes").hasKey("hot_potato_count")) {
-                                int hotPotatoCount = nbt.getCompoundTag("ExtraAttributes").getInteger("hot_potato_count");
-                                anvilUses -= hotPotatoCount;
-                            }
-                            if (anvilUses > 0) {
-                                e.toolTip.add(insertAt, "Anvil Uses: " + EnumChatFormatting.RED.toString() + anvilUses);
-                            }
+                int anvilUses = main.getUtils().getNBTInteger(hoveredItem, "ExtraAttributes", "anvil_uses");
+                if (anvilUses != -1) {
+                    int insertAt = e.toolTip.size();
+                    insertAt--; // 1 line for the rarity
+                    if (Minecraft.getMinecraft().gameSettings.advancedItemTooltips) {
+                        insertAt -= 2; // 1 line for the item name, and 1 line for the nbt
+                        if (e.itemStack.isItemDamaged()) {
+                            insertAt--; // 1 line for damage
                         }
+                    }
+                    int hotPotatoCount = main.getUtils().getNBTInteger(hoveredItem, "ExtraAttributes", "hot_potato_count");
+                    if (hotPotatoCount != -1) {
+                        anvilUses -= hotPotatoCount;
+                    }
+                    if (anvilUses > 0) {
+                        e.toolTip.add(insertAt, Message.MESSAGE_ANVIL_USES.getMessage(String.valueOf(anvilUses)));
                     }
                 }
             }
@@ -707,7 +708,6 @@ public class PlayerListener {
                     lastFishingAlert = currentTime;
                     return true;
                 }
-                return movement < -0.03d;
             }
         }
         return false;

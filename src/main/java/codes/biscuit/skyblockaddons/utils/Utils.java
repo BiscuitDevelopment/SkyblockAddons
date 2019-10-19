@@ -12,6 +12,7 @@ import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.event.ClickEvent;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.launchwrapper.Launch;
 import net.minecraft.nbt.NBTTagCompound;
@@ -49,6 +50,9 @@ import java.util.zip.ZipEntry;
 public class Utils {
 
     private final Pattern STRIP_COLOR_PATTERN = Pattern.compile("(?i)\\u00A7[0-9A-FK-OR]");
+    private final Pattern ITEM_COOLDOWN_PATTERN = Pattern.compile("\\u00A75\\u00A7o\\u00A78Cooldown: \\u00A7a([0-9]+)s");
+    private final Pattern ALTERNATE_COOLDOWN_PATTERN = Pattern.compile("\\u00A75\\u00A7o\\u00A78([0-9]+) Second Cooldown");
+    private final Pattern ITEM_ABILITY_PATTERN = Pattern.compile("\\u00A75\\u00A7o\\u00A76Item Ability: ([A-Za-z ]+) \\u00A7e\\u00A7l[A-Z ]+");
 
     private static final List<String> ORDERED_ENCHANTMENTS = Collections.unmodifiableList(Arrays.asList(
             "smite","bane of arthropods","knockback","fire aspect","venomous", // Sword Bad
@@ -64,6 +68,7 @@ public class Utils {
     private Map<Attribute, MutableInt> attributes = new EnumMap<>(Attribute.class);
     private List<String> enchantmentMatch = new LinkedList<>();
     private List<String> enchantmentExclusion = new LinkedList<>();
+    private Set<CooldownEntry> cooldownEntries = new HashSet<>();
     private Backpack backpackToRender = null;
     private static boolean onSkyblock = false;
     private EnumUtils.Location location = null;
@@ -627,6 +632,112 @@ public class Utils {
         } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException | NoSuchFieldException | IOException e) {
             e.printStackTrace();
             if (changeMessage) main.getRenderListener().getDownloadInfo().setMessageType(EnumUtils.UpdateMessageType.FAILED);
+        }
+        return null;
+    }
+
+    public int getNBTInteger(ItemStack item, String... path) {
+        if (item != null && item.hasTagCompound()) {
+            NBTTagCompound tag = item.getTagCompound();
+            for (String tagName : path) {
+                if (path[path.length-1] == tagName) continue;
+                if (tag.hasKey(tagName)) {
+                    tag = tag.getCompoundTag(tagName);
+                } else {
+                    return -1;
+                }
+            }
+            return tag.getInteger(path[path.length-1]);
+        }
+        return -1;
+    }
+
+    public void logEntry(ItemStack itemStack) {
+        if (itemStack != null && itemStack.hasDisplayName()) {
+            Item item = itemStack.getItem();
+            String name = itemStack.getDisplayName();
+            int cooldownSeconds = getLoreCooldown(itemStack);
+            if (cooldownSeconds != -1) {
+                String abilityName = getAbilityName(itemStack);
+                CooldownEntry cooldownEntry = getCooldownEntry(item, name);
+                if (!item.isDamageable() && abilityName == null) return; // if its not a tool and has no ability, its not gonna have a cooldown
+                if (cooldownEntry != null) {
+                    cooldownEntry.setLastUse();
+                } else {
+                    cooldownEntries.add(new CooldownEntry(item,name,cooldownSeconds));
+                }
+            }
+        }
+    }
+
+    public double getItemCooldown(ItemStack item) {
+        if (item != null) {
+            Iterator<CooldownEntry> iterator = cooldownEntries.iterator();
+            while (iterator.hasNext()) {
+                CooldownEntry entry = iterator.next();
+                double cooldown = entry.getCooldown();
+                if (entry.getItem().equals(item.getItem()) && entry.getItemName().equals(item.getDisplayName())) {
+                    return cooldown;
+                }
+                if (cooldown == 1) {
+                    iterator.remove();
+                }
+            }
+        }
+        return -1;
+    }
+
+    public CooldownEntry getItemCooldown(String itemName) {
+        Iterator<CooldownEntry> iterator = cooldownEntries.iterator();
+        while (iterator.hasNext()) {
+            CooldownEntry entry = iterator.next();
+            if (entry.getItemName().equals(itemName)) {
+                return entry;
+            }
+            double cooldown = entry.getCooldown();
+            if (cooldown == 1) {
+                iterator.remove();
+            }
+        }
+        return null;
+    }
+
+    private int getLoreCooldown(ItemStack item) {
+        for (String loreLine : item.getTooltip(Minecraft.getMinecraft().thePlayer, false)) {
+            Matcher matcher = ITEM_COOLDOWN_PATTERN.matcher(loreLine);
+            if (matcher.matches()) {
+                try {
+                    return Integer.parseInt(matcher.group(1));
+                } catch (NumberFormatException ignored) { }
+            } else {
+                matcher = ALTERNATE_COOLDOWN_PATTERN.matcher(loreLine);
+                if (matcher.matches()) {
+                    try {
+                        return Integer.parseInt(matcher.group(1));
+                    } catch (NumberFormatException ignored) { }
+                }
+            }
+        }
+        return -1;
+    }
+
+    private String getAbilityName(ItemStack item) {
+        for (String loreLine : item.getTooltip(Minecraft.getMinecraft().thePlayer, false)) {
+            Matcher matcher = ITEM_ABILITY_PATTERN.matcher(loreLine);
+            if (matcher.matches()) {
+                try {
+                    return matcher.group(1);
+                } catch (NumberFormatException ignored) { }
+            }
+        }
+        return null;
+    }
+
+    private CooldownEntry getCooldownEntry(Item item, String itemname) {
+        for (CooldownEntry entry : cooldownEntries) {
+            if (entry.getItem().equals(item) && entry.getItemName().equals(itemname)) {
+                return entry;
+            }
         }
         return null;
     }

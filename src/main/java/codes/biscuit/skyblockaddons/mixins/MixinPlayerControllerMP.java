@@ -1,6 +1,7 @@
 package codes.biscuit.skyblockaddons.mixins;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.utils.CooldownEntry;
 import codes.biscuit.skyblockaddons.utils.Feature;
 import codes.biscuit.skyblockaddons.utils.Message;
 import net.minecraft.block.Block;
@@ -30,7 +31,6 @@ public class MixinPlayerControllerMP {
 
     private long lastStemMessage = -1;
     private long lastProfileMessage = -1;
-    private long lastLogBroken = -1;
 
     /**
      * Cancels stem breaks if holding an item, to avoid accidental breaking.
@@ -49,9 +49,9 @@ public class MixinPlayerControllerMP {
                     main.getUtils().sendMessage(main.getConfigValues().getColor(Feature.AVOID_BREAKING_STEMS).getChatFormatting()+Message.MESSAGE_CANCELLED_STEM_BREAK.getMessage());
                 }
                 cir.setReturnValue(false);
-            } else if (main.getConfigValues().isEnabled(Feature.JUNGLE_AXE_COOLDOWN) && heldItem.getDisplayName().contains("Jungle Axe") &&
-                       (block.equals(Blocks.log) || block.equals(Blocks.log2))) {
-                if (lastLogBroken + 15000 > System.currentTimeMillis()) {
+            } else if (main.getConfigValues().isEnabled(Feature.JUNGLE_AXE_COOLDOWN)) {
+                CooldownEntry cooldown = main.getUtils().getItemCooldown("\u00A7aJungle Axe");
+                if (cooldown != null && (block.equals(Blocks.log) || block.equals(Blocks.log2)) && cooldown.getLastUse() + cooldown.getCooldownMillis() > System.currentTimeMillis()) {
                     cir.setReturnValue(false);
                 }
             }
@@ -60,12 +60,9 @@ public class MixinPlayerControllerMP {
 
     @Inject(method = "onPlayerDestroyBlock", at = @At(value = "HEAD"), locals = LocalCapture.CAPTURE_FAILSOFT, cancellable = true)
     private void onPlayerDestroyBlock(BlockPos pos, EnumFacing face, CallbackInfoReturnable<Boolean> cir) {
-        Minecraft minecraft = Minecraft.getMinecraft();
-        EntityPlayerSP player = minecraft.thePlayer;
-        Block block = minecraft.theWorld.getBlockState(pos).getBlock();
-
-        if (block.equals(Blocks.log) || block.equals(Blocks.log2)) {
-            this.lastLogBroken = System.currentTimeMillis();
+        SkyblockAddons main = SkyblockAddons.getInstance();
+        if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.SHOW_ITEM_COOLDOWNS)) {
+            SkyblockAddons.getInstance().getUtils().logEntry(Minecraft.getMinecraft().thePlayer.getHeldItem());
         }
     }
 

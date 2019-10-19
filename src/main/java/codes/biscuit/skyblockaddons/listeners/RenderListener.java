@@ -303,9 +303,9 @@ public class RenderListener {
         int intX = Math.round(x);
         int intY = Math.round(y);
         if (buttonLocation == null) {
-            drawModularBar(mc, color, false, intX, intY, null,feature,filled, width);
+            drawModularBar(mc, color, false, intX, intY+barHeightExpansion/2, null,feature,filled, width);
             if (filled > 0) {
-                drawModularBar(mc, color, true, intX, intY, null,feature,filled, width);
+                drawModularBar(mc, color, true, intX, intY+barHeightExpansion/2, null,feature,filled, width);
             }
         } else {
             int boxXOne = intX-4;
@@ -327,8 +327,8 @@ public class RenderListener {
         }
         if (color == ConfigColor.BLACK) {
             GlStateManager.color(0.25F,0.25F,0.25F); // too dark normally
-        } else {
-            GlStateManager.color((float) color.getR() / 255, (float) color.getG() / 255, (float) color.getB() / 255);
+        } else { // a little darker for contrast
+            GlStateManager.color(((float)color.getR() / 255)*0.9F, ((float)color.getG() / 255)*0.9F, ((float)color.getB() / 255)*0.9F);
         }
         CoordsPair sizes = main.getConfigValues().getSizes(feature);
         drawBarStart(gui,x,y, filled, sizes.getX(), sizes.getY(), fillWidth, color, maxWidth);
