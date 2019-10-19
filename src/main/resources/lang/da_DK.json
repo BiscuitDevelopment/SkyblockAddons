@@ -75,7 +75,7 @@
     "disableMinionLocationWarning": "Disable Location Not Perfect Warnings",
     "jungleAxeCooldown": "Jungle Axe Cooldown",
     "organizeLongEnchantmentLists": "Organize Long Enchantment Lists",
-    "showItemCooldowns": "Show Item Cooldowns"
+    "showItemCooldowns": "Vis genstand ned brug"
   },
   "messages": {
     "dropConfirmation": "Slip denne vare igen for at bekræfte!",
@@ -115,6 +115,6 @@
     "cancelledDropping": "SkyblockAddons har forhindret dig i at droppe dette sjældne element eller værktøj fra din hotbar.",
     "clickMoreTimes": "Klik / slip dette emne %times% flere gange, hvis du virkelig ønsker at gøre dette.",
     "featureDisabled": "Funktion deaktiveret",
-    "anvilUses": "Anvil Uses: %uses%"
+    "anvilUses": "Ambolt brug: %uses%"
   }
 }
