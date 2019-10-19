@@ -74,7 +74,8 @@
     "avoidBlinkingNightVision": "Disable Night Vision Potion Blinking",
     "disableMinionLocationWarning": "Disable Location Not Perfect Warnings",
     "jungleAxeCooldown": "Jungle Axe Cooldown",
-    "organizeLongEnchantmentLists": "Organize Long Enchantment Lists"
+    "organizeLongEnchantmentLists": "Organize Long Enchantment Lists",
+    "showItemCooldowns": "Show Item Cooldowns"
   },
   "messages": {
     "dropConfirmation": "संदेशों -> ड्रॉप क चेतावनी",
@@ -113,6 +114,7 @@
     "cancelledProfileOpening": "SkyblockAddons has stopped you from opening this player's profile while holding a bow.",
     "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare item or tool from your hotbar.",
     "clickMoreTimes": "इस आइटम को %times% बार क्लिक / ड्रॉप करें यदि आप वास्तव में ऐसा करना चाहते हैं।",
-    "featureDisabled": "Feature Disabled"
+    "featureDisabled": "Feature Disabled",
+    "anvilUses": "Anvil Uses: %uses%"
   }
 }
