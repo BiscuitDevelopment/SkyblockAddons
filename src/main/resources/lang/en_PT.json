@@ -74,7 +74,8 @@
     "avoidBlinkingNightVision": "Swab Night Seein' Potion Blinkin'",
     "disableMinionLocationWarning": "Disable Location Isn't Perfect Warnings",
     "jungleAxeCooldown": "Jungle Axe Cooldown",
-    "organizeLongEnchantmentLists": "Organize yer Longer Magic Lists"
+    "organizeLongEnchantmentLists": "Organize yer Longer Magic Lists",
+    "showItemCooldowns": "Show Item Cooldowns"
   },
   "messages": {
     "dropConfirmation": "'ay lad, drop this here item again to confirm!",
@@ -113,6 +114,7 @@
     "cancelledProfileOpening": "'ay there lad! SkyblockAddons 'as stopped ye from openin' this here player's profile while oldin' a bow.",
     "cancelledDropping": "'ay mate! SkyblockAddons 'as stopped ye from droppin' this here Rare Item or Tool from yer 'otbarrr.",
     "clickMoreTimes": "'ay lad, Click/Drop this here item %times% more times if ye really wants t' do this.",
-    "featureDisabled": "Yer feature be Disabled"
+    "featureDisabled": "Yer feature be Disabled",
+    "anvilUses": "Anvil Uses: %uses%"
   }
 }
