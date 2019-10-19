@@ -74,7 +74,8 @@
     "avoidBlinkingNightVision": "Empêcher le clignotement de l'effet vision nocturne",
     "disableMinionLocationWarning": "Désativer l'alerte des emplacements des minions",
     "jungleAxeCooldown": "Temps de recharge de la Jungle Axe",
-    "organizeLongEnchantmentLists": "Organiser la liste des long nom d'enchantements"
+    "organizeLongEnchantmentLists": "Organiser la liste des long nom d'enchantements",
+    "showItemCooldowns": "Show Item Cooldowns"
   },
   "messages": {
     "dropConfirmation": "Jetez cet objet une nouvelle fois pour confirmer!",
@@ -113,6 +114,7 @@
     "cancelledProfileOpening": "SkyblockAddons vous a empêché d'ouvrir le profil de ce joueur en utilisant un arc.",
     "cancelledDropping": "SkyblockAddons vous a empêché de jeter cet objet ou outil rare de votre barre d'action.",
     "clickMoreTimes": "Cliquez/jetez cet objet encore %times% fois si vous le souhaitez.",
-    "featureDisabled": "Fonction désactivée"
+    "featureDisabled": "Fonction désactivée",
+    "anvilUses": "Anvil Uses: %uses%"
   }
 }
