@@ -74,7 +74,8 @@
     "avoidBlinkingNightVision": "I-disable ang Night Vision Potion Blinking",
     "disableMinionLocationWarning": "I-disable ang Not Perfect Warnings sa Lokasyon",
     "jungleAxeCooldown": "Jungle Axe Cooldown",
-    "organizeLongEnchantmentLists": "I-organize ang mahabang Listahan ng mga Enchantment"
+    "organizeLongEnchantmentLists": "I-organize ang mahabang Listahan ng mga Enchantment",
+    "showItemCooldowns": "Show Item Cooldowns"
   },
   "messages": {
     "dropConfirmation": "Ihulog ang item muli para kumpirmado!",
@@ -113,6 +114,7 @@
     "cancelledProfileOpening": "Itinigil ng SkyblockAddons sa pag bukas ng profile habang may hawak na pana.",
     "cancelledDropping": "Itinigil ng SkyblockAddons sa pag hulog ng mahalagang gamit sa iyong imbentaryo.",
     "clickMoreTimes": "I-click/hulog ang gamit %times% na ito maraming beses kung gusto mo talaga gawin to.",
-    "featureDisabled": "Mga Disabled na Feature"
+    "featureDisabled": "Mga Disabled na Feature",
+    "anvilUses": "Anvil Uses: %uses%"
   }
 }
