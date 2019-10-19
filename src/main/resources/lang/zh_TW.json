@@ -71,11 +71,11 @@
     "changeBarColorForPotions": "在凋零或中毒時改變計量條顏色",
     "craftingPatterns": "選擇合成模式",
     "soundIndicatorForFishing": "釣魚聲音提示",
-    "avoidBlinkingNightVision": "禁用夜視藥水閃爍",
-    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings",
-    "jungleAxeCooldown": "Jungle Axe Cooldown",
+    "avoidBlinkingNightVision": "取消夜視藥水閃爍",
+    "disableMinionLocationWarning": "取消Minion位置不完美警告",
+    "jungleAxeCooldown": "叢林之斧冷卻",
     "organizeLongEnchantmentLists": "Organize Long Enchantment Lists",
-    "showItemCooldowns": "Show Item Cooldowns"
+    "showItemCooldowns": "顯示物品冷卻"
   },
   "messages": {
     "dropConfirmation": "再次丟棄此物品以確認!",
@@ -115,6 +115,6 @@
     "cancelledDropping": "SkyblockAddons阻止了你丟出快捷欄中稀有等級以上的物品。",
     "clickMoreTimes": "如果你真的想這麼做, 請再點擊或按丟出%times%次。",
     "featureDisabled": "停用功能",
-    "anvilUses": "Anvil Uses: %uses%"
+    "anvilUses": "鐵砧使用次數: %uses%"
   }
 }
