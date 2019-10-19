@@ -74,7 +74,8 @@
     "avoidBlinkingNightVision": "Disable Night Vision Potion Blinking",
     "disableMinionLocationWarning": "Disable Location Not Perfect Warnings",
     "jungleAxeCooldown": "Jungle Axe Cooldown",
-    "organizeLongEnchantmentLists": "Organize Long Enchantment Lists"
+    "organizeLongEnchantmentLists": "Organize Long Enchantment Lists",
+    "showItemCooldowns": "Show Item Cooldowns"
   },
   "messages": {
     "dropConfirmation": "Хвърлете Този Предмет Отново за да Потвърдите!",
@@ -113,6 +114,7 @@
     "cancelledProfileOpening": "SkyblockAddons спря от отваряне на този профил на играч който държи лък",
     "cancelledDropping": "SkyblockAddons ви спря като се опитахте да хвърлите този рядък предмет или инструмент от вашия hotbar.",
     "clickMoreTimes": "Натиснете Копчето Ви За Хвърляне На Предмети Още %times% Път/Пъти Ако Найстина Искате Да Го Изхвърлитен",
-    "featureDisabled": "Feature Disabled"
+    "featureDisabled": "Feature Disabled",
+    "anvilUses": "Anvil Uses: %uses%"
   }
 }
