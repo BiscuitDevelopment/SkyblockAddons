@@ -74,7 +74,8 @@
     "avoidBlinkingNightVision": "Gece Görüşü Efekti Biterken Olan Yanıp Sönme Efektini Kapat",
     "disableMinionLocationWarning": "Minionların \"Location Not Perfect\" Uyarılarını Kapat",
     "jungleAxeCooldown": "Jungle Axe Bekleme Süresi",
-    "organizeLongEnchantmentLists": "Uzun Büyü Listelerini Düzelt"
+    "organizeLongEnchantmentLists": "Uzun Büyü Listelerini Düzelt",
+    "showItemCooldowns": "Show Item Cooldowns"
   },
   "messages": {
     "dropConfirmation": "Eşyayı düşürmeyi onaylamak için düşürme tuşuna bir daha bas!",
@@ -113,6 +114,7 @@
     "cancelledProfileOpening": "SkyblockAddons elinizde yay olduğundan bu oyuncunun profilini açmanı engelledi.",
     "cancelledDropping": "SkyblockAddons bu değerli eşyanızı yere atmanızı engelledi.",
     "clickMoreTimes": "Eğer gerçekten eşyayı yere atmak istiyorsanız %times% kez eşyaya tıklayın.",
-    "featureDisabled": "Özellik Devre Dışı"
+    "featureDisabled": "Özellik Devre Dışı",
+    "anvilUses": "Anvil Uses: %uses%"
   }
 }
