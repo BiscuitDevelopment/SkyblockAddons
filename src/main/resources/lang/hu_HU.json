@@ -74,7 +74,8 @@
     "avoidBlinkingNightVision": "Éjszakai látás \"pislogás\" elkerülése",
     "disableMinionLocationWarning": "\"Hely nem tökéletes\" minion jelzés kikapcsolása",
     "jungleAxeCooldown": "Jungle Axe Töltési idő",
-    "organizeLongEnchantmentLists": "Organize Long Enchantment Lists"
+    "organizeLongEnchantmentLists": "Organize Long Enchantment Lists",
+    "showItemCooldowns": "Show Item Cooldowns"
   },
   "messages": {
     "dropConfirmation": "Dobd el ezt a tárgyat újra, hogy megerősítsd!",
@@ -113,6 +114,7 @@
     "cancelledProfileOpening": "A SkyblockAddons megállította, hogy megnyisd ennek a játékosnak a profilját, amíg íj van a kezedben.",
     "cancelledDropping": "A SkyblockAddons megállította, hogy eldobd ezt a rare tárgyat vagy eszközt.",
     "clickMoreTimes": "Kattints/dobd el ezt a tárgyat még %times% alkalommal, ha tényleg ezt szeretnéd.",
-    "featureDisabled": "Funkció kikapcsolva"
+    "featureDisabled": "Funkció kikapcsolva",
+    "anvilUses": "Anvil Uses: %uses%"
   }
 }
