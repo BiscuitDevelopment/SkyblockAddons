@@ -74,7 +74,8 @@
     "avoidBlinkingNightVision": "Evită clipirea Visiune de noapte",
     "disableMinionLocationWarning": "Dezactiveaza Avertizarea De Locatia minionului",
     "jungleAxeCooldown": "Timp ramas pentru a folosi Jungle Axe",
-    "organizeLongEnchantmentLists": "Organize Long Enchantment Lists"
+    "organizeLongEnchantmentLists": "Organize Long Enchantment Lists",
+    "showItemCooldowns": "Show Item Cooldowns"
   },
   "messages": {
     "dropConfirmation": "Arunca acest obiect iar ca să confirmi!",
@@ -113,6 +114,7 @@
     "cancelledProfileOpening": "Modul SkyblockAddons te-a oprit sa deschizi profilul jucătorului in timp ce utilizezi un arc.",
     "cancelledDropping": "Modul SkyblockAddons te-a oprit să arunci acest item sau unealtă rară din inventar.",
     "clickMoreTimes": "Aruncă acest item de încă %times% dacă vrei să faci asta.",
-    "featureDisabled": "Funcție dezactivată"
+    "featureDisabled": "Funcție dezactivată",
+    "anvilUses": "Anvil Uses: %uses%"
   }
 }
