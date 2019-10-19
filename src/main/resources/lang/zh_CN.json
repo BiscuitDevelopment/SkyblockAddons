@@ -74,7 +74,8 @@
     "avoidBlinkingNightVision": "禁用夜视耗尽闪烁",
     "disableMinionLocationWarning": "禁用仆从“位置不是很好”警告",
     "jungleAxeCooldown": "丛林斧冷却",
-    "organizeLongEnchantmentLists": "整理长版附魔列表"
+    "organizeLongEnchantmentLists": "整理长版附魔列表",
+    "showItemCooldowns": "Show Item Cooldowns"
   },
   "messages": {
     "dropConfirmation": "再次丢弃此物品以确认!",
@@ -113,6 +114,7 @@
     "cancelledProfileOpening": "SkyblockAddons 已阻止你持弓打开玩家信息。",
     "cancelledDropping": "SkyblockAddons 已阻止你将物品栏中的稀有物品或工具丢弃。",
     "clickMoreTimes": "SkyblockAddons 已阻止你售出物品。如果你真的想卖掉它，请再点击 %times% 次。",
-    "featureDisabled": "功能已禁用"
+    "featureDisabled": "功能已禁用",
+    "anvilUses": "Anvil Uses: %uses%"
   }
 }
