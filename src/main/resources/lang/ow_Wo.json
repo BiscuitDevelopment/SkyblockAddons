@@ -75,7 +75,7 @@
     "disableMinionLocationWarning": "Disabwe Wocation Not Pewfect Wawnings",
     "jungleAxeCooldown": "Jungwe Axe Coowdown",
     "organizeLongEnchantmentLists": "Owganize Wong Enchantment Wists",
-    "showItemCooldowns": "Show Item Cooldowns"
+    "showItemCooldowns": "Show Item Coowdowns"
   },
   "messages": {
     "dropConfirmation": "Dwop thwis itwem agwain to confiwm!",
@@ -115,6 +115,6 @@
     "cancelledDropping": "SkybwockAwwons has owoed you from dwopping dis rawr itwem or twool from your hawtbar.",
     "clickMoreTimes": "Cwick/dwop this item %times% mwore twimes if you weally want to do whis.",
     "featureDisabled": "Fweature Diswabled",
-    "anvilUses": "Anvil Uses: %uses%"
+    "anvilUses": "Anviw Uses: %uses%"
   }
 }
