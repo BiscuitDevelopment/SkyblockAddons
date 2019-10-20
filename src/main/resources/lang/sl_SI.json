@@ -50,7 +50,7 @@
     "preventMovementOnDeath": "Prepreči Hojo Po Smrti",
     "showItemAnvilUses": "Prikaži Število Uporab na Nakovalu",
     "lockSlots": "Dovoli Zaklepanje Prostorov",
-    "lockSlot": "Zakleni prostor",
+    "lockSlot": "Zakleni Prostor",
     "dontResetCursorInventory": "Ne Ponastavljaj Kazalca Med Inventarji",
     "summoningEyeAlert": "Opozorilo Za Summoning Oko",
     "makeEnderchestsInEndGreen": "Naredi Ender Skrinje v Endu Zelene",
@@ -97,7 +97,7 @@
     "deleteOldFile": "The download has finished, please open your mods folder using the button below, close your Minecraft, and delete the old version (or delete it later if you prefer).",
     "wantToViewPatchNotes": "Want to read the changes?",
     "downloadLink": "UPDATE LINK",
-    "downloadAutomatically": "Automatsko snemanje",
+    "downloadAutomatically": "Automatsko prenesi",
     "openModFolder": "MODS FOLDER",
     "joinTheDiscord": "Pridruži se Discordu",
     "update": {
