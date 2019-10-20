@@ -75,7 +75,7 @@
     "disableMinionLocationWarning": "Location Not Perfectのアラートを無効化",
     "jungleAxeCooldown": "Jungle Axeのクールタイムを表示",
     "organizeLongEnchantmentLists": "長いエンチャントのリストを整理",
-    "showItemCooldowns": "Show Item Cooldowns"
+    "showItemCooldowns": "アイテムのクールタイムを表示"
   },
   "messages": {
     "dropConfirmation": "落としてもいいのであれば、このアイテムをもう一度ドロップしてください。",
@@ -115,6 +115,6 @@
     "cancelledDropping": "SkyblockAddonsがこのアイテムを捨てることを阻止しました。",
     "clickMoreTimes": "本当に落としたい場合はもう%times%回クリック/ドロップしてください。",
     "featureDisabled": "機能を無効化",
-    "anvilUses": "Anvil Uses: %uses%"
+    "anvilUses": "金床の使用数 : %uses%"
   }
 }
