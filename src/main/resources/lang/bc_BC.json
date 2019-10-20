@@ -75,7 +75,7 @@
     "disableMinionLocationWarning": "Disable Biscution Not Perfect Biscutings",
     "jungleAxeCooldown": "Jungle Biscuit Cooldown",
     "organizeLongEnchantmentLists": "Organize Long Biscuitment Lists",
-    "showItemCooldowns": "Show Item Cooldowns"
+    "showItemCooldowns": "Show Biscuits Cooldowns"
   },
   "messages": {
     "dropConfirmation": "Throw out this biscuit again to confirm!",
@@ -115,6 +115,6 @@
     "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare biscuit or biscuit2l from your hotbar.",
     "clickMoreTimes": "Click/drop this biscuit %times% more times if you really want to do this poor biscuit lol.",
     "featureDisabled": "Biscture Disabled",
-    "anvilUses": "Anvil Uses: %uses%"
+    "anvilUses": "Biscoots Uses: %uses%"
   }
 }
