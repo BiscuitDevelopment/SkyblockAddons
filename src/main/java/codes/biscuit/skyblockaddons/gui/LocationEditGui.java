@@ -30,9 +30,9 @@ public class LocationEditGui extends GuiScreen {
     private int yOffset = 0;
 
     private int lastPage;
-    private EnumUtils.SkyblockAddonsGuiTab lastTab;
+    private EnumUtils.GuiTab lastTab;
 
-    public LocationEditGui(SkyblockAddons main, int lastPage, EnumUtils.SkyblockAddonsGuiTab lastTab) {
+    public LocationEditGui(SkyblockAddons main, int lastPage, EnumUtils.GuiTab lastTab) {
         this.main = main;
         this.lastPage = lastPage;
         this.lastTab = lastTab;

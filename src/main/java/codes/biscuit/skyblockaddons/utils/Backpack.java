@@ -9,8 +9,12 @@ import net.minecraftforge.common.util.Constants;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Backpack {
+
+    private static final Pattern BACKPACK_ID_PATTERN = Pattern.compile("([A-Z]+)_BACKPACK");
 
     private int x;
     private int y;
@@ -65,7 +69,8 @@ public class Backpack {
             if (extraAttributes.hasKey("ExtraAttributes")) {
                 extraAttributes = extraAttributes.getCompoundTag("ExtraAttributes");
                 String id = extraAttributes.getString("id");
-                if (id.contains("BACKPACK")) {
+                Matcher matcher = BACKPACK_ID_PATTERN.matcher(id);
+                if (matcher.matches()) {
                     byte[] bytes = null;
                     for (String key : extraAttributes.getKeySet()) {
                         if (key.endsWith("backpack_data")) {
@@ -73,29 +78,41 @@ public class Backpack {
                             break;
                         }
                     }
-                    if (bytes == null) return null;
                     try {
-                        NBTTagCompound nbtTagCompound = CompressedStreamTools.readCompressed(new ByteArrayInputStream(bytes));
-                        NBTTagList list = nbtTagCompound.getTagList("i", Constants.NBT.TAG_COMPOUND);
-                        int length = list.tagCount();
+                        int length = 9; //default is small
+                        String backpackType = matcher.group(1);
+                        switch (backpackType) { // because sometimes the size of the tag is not updated (etc. when you upcraft it)
+                            case "MEDIUM": length = 18; break;
+                            case "LARGE": length = 27; break;
+                            case "GREATER": length = 36; break;
+                        }
                         ItemStack[] items = new ItemStack[length];
-                        for (int i = 0; i < length; i++) {
-                            NBTTagCompound item = list.getCompoundTagAt(i);
-                            // This fixes an issue in Hypixel where enchanted potatoes have the wrong id (potato block instead of item).
-                            short itemID = item.getShort("id");
-                            if (itemID == 142 && item.hasKey("tag")) {
-                                nbtTagCompound = item.getCompoundTag("tag");
-                                if (nbtTagCompound.hasKey("ExtraAttributes")) {
-                                    id = nbtTagCompound.getCompoundTag("ExtraAttributes").getString("id");
-                                    if (id.equals("ENCHANTED_POTATO")) {
-                                        item.setShort("id", (short)392);
+                        if (bytes != null) {
+                            NBTTagCompound nbtTagCompound = CompressedStreamTools.readCompressed(new ByteArrayInputStream(bytes));
+                            NBTTagList list = nbtTagCompound.getTagList("i", Constants.NBT.TAG_COMPOUND);
+//                            int length = list.tagCount();
+                            for (int i = 0; i < length; i++) {
+                                NBTTagCompound item = list.getCompoundTagAt(i);
+                                // This fixes an issue in Hypixel where enchanted potatoes have the wrong id (potato block instead of item).
+                                short itemID = item.getShort("id");
+                                if (itemID == 142 && item.hasKey("tag")) {
+                                    nbtTagCompound = item.getCompoundTag("tag");
+                                    if (nbtTagCompound.hasKey("ExtraAttributes")) {
+                                        id = nbtTagCompound.getCompoundTag("ExtraAttributes").getString("id");
+                                        if (id.equals("ENCHANTED_POTATO")) {
+                                            item.setShort("id", (short) 392);
+                                        }
                                     }
                                 }
+                                ItemStack itemStack = ItemStack.loadItemStackFromNBT(item);
+                                items[i] = itemStack;
                             }
-                            ItemStack itemStack = ItemStack.loadItemStackFromNBT(item);
-                            items[i] = itemStack;
                         }
-//                        main.getUtils().setBackpackToRender(new Backpack(x, y, items, main.getUtils().stripColor(stack.getDisplayName())));
+                        boolean foundItem = false;
+                        for (ItemStack item : items) {
+                            if (item != null) foundItem = true;
+                        }
+                        if (!foundItem) return null;
                         BackpackColor color = BackpackColor.WHITE;
                         if (extraAttributes.hasKey("backpack_color")) {
                             try {

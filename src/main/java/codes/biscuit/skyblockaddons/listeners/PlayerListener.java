@@ -47,8 +47,10 @@ import java.util.regex.Pattern;
 
 public class PlayerListener {
 
-    private final Pattern ENCHANTMENT_TOOLTIP_PATTERN = Pattern.compile("\\u00A7.\\u00A7.(\\u00A79[\\w ]+(, )?)+");
-    private final Pattern ABILITY_CHAT_PATTERN = Pattern.compile("\\u00A7r\\u00A7aUsed \\u00A7r\\u00A76[A-Za-z ]+\\u00A7r\\u00A7a! \\u00A7r\\u00A7b\\([0-9]+ Mana\\)\\u00A7r");
+    private final Pattern ENCHANTMENT_TOOLTIP_PATTERN = Pattern.compile("§.§.(§9[\\w ]+(, )?)+");
+    private final Pattern ABILITY_CHAT_PATTERN = Pattern.compile("§r§aUsed §r§6[A-Za-z ]+§r§a! §r§b\\([0-9]+ Mana\\)§r");
+    private Pattern PROFILE_CHAT_PATTERN = Pattern.compile("§aYou are playing on profile: §e([A-Za-z]+).*");
+    private Pattern SWITCH_PROFILE_CHAT_PATTERN = Pattern.compile("§aYour profile was changed to: §e([A-Za-z]+).*");
 
     private boolean sentUpdate = false;
     private long lastWorldJoin = -1;
@@ -118,10 +120,10 @@ public class PlayerListener {
     public void onChatReceive(ClientChatReceivedEvent e) {
         String message = e.message.getUnformattedText();
         if (e.type == 2) {
-            if (message.endsWith("\u270E Mana\u00A7r")) {
+            if (message.endsWith("\u270E Mana§r")) {
                 try {
                     String returnMessage;
-                    if (message.startsWith("\u00A7d\u00A7lTHE END RACE")) { // Might be doing the end race!
+                    if (message.startsWith("§d§lTHE END RACE")) { // Might be doing the end race!
                         // Example Action Bar: '§d§lTHE END RACE §e00:52.370            §b147/147✎ Mana§r'
                         String[] messageSplit = message.split(" {12}");
                         String[] manaSplit = main.getUtils().getNumbersOnly(messageSplit[1]).split(Pattern.quote("/"));
@@ -212,11 +214,11 @@ public class PlayerListener {
             /*  Resets all user input on dead as to not walk backwards or stafe into the portal
                 Might get trigger upon encountering a non named "You" though this chance is so
                 minimal it can be discarded as a bug. */
-            if (main.getConfigValues().isEnabled(Feature.PREVENT_MOVEMENT_ON_DEATH) && e.message.getFormattedText().startsWith("\u00A7r\u00A7c \u2620 \u00A7r\u00A77You ")) {
+            if (main.getConfigValues().isEnabled(Feature.PREVENT_MOVEMENT_ON_DEATH) && e.message.getFormattedText().startsWith("§r§c \u2620 §r§7You ")) {
                 KeyBinding.unPressAllKeys();
             }
             // credits to tomotomo, thanks lol
-            if (main.getConfigValues().isEnabled(Feature.SUMMONING_EYE_ALERT) && e.message.getFormattedText().equals("\u00A7r\u00A76\u00A7lRARE DROP! \u00A7r\u00A75Summoning Eye\u00A7r")) {
+            if (main.getConfigValues().isEnabled(Feature.SUMMONING_EYE_ALERT) && e.message.getFormattedText().equals("§r§6§lRARE DROP! §r§5Summoning Eye§r")) {
                 main.getUtils().playSound("random.orb", 0.5);
                 main.getRenderListener().setTitleFeature(Feature.SUMMONING_EYE_ALERT);
                 main.getScheduler().schedule(Scheduler.CommandType.RESET_TITLE_FEATURE, main.getConfigValues().getWarningSeconds());
@@ -224,6 +226,18 @@ public class PlayerListener {
             Matcher matcher = ABILITY_CHAT_PATTERN.matcher(e.message.getFormattedText());
             if (matcher.matches()) {
                 main.getUtils().logEntry(Minecraft.getMinecraft().thePlayer.getHeldItem());
+            } else {
+                PROFILE_CHAT_PATTERN = Pattern.compile("§aYou are playing on profile: §e([A-Za-z]+).*");
+                SWITCH_PROFILE_CHAT_PATTERN = Pattern.compile("§aYour profile was changed to: §e([A-Za-z]+).*");
+                matcher = PROFILE_CHAT_PATTERN.matcher(e.message.getFormattedText());
+                if (matcher.matches()) {
+                    main.getUtils().setProfileName(matcher.group(1));
+                } else {
+                    matcher = SWITCH_PROFILE_CHAT_PATTERN.matcher(e.message.getFormattedText());
+                    if (matcher.matches()) {
+                        main.getUtils().setProfileName(matcher.group(1));
+                    }
+                }
             }
         }
     }
@@ -340,7 +354,7 @@ public class PlayerListener {
             if (main.getUtils().getLocation() == EnumUtils.Location.ISLAND) {
                 int cooldown = main.getConfigValues().getWarningSeconds() * 1000 + 5000;
                 if (main.getConfigValues().isEnabled(Feature.MINION_FULL_WARNING) &&
-                        entity.getCustomNameTag().equals("\u00A7cMy storage is full! :(")) {
+                        entity.getCustomNameTag().equals("§cMy storage is full! :(")) {
                     long now = System.currentTimeMillis();
                     if (now - lastMinionSound > cooldown) { //this just spams message...
                         lastMinionSound = now;
@@ -349,12 +363,12 @@ public class PlayerListener {
                         main.getScheduler().schedule(Scheduler.CommandType.RESET_SUBTITLE_FEATURE, main.getConfigValues().getWarningSeconds());
                     }
                 } else if (main.getConfigValues().isEnabled(Feature.MINION_STOP_WARNING) &&
-                        entity.getCustomNameTag().startsWith("\u00A7cI can\'t reach any ")) {
+                        entity.getCustomNameTag().startsWith("§cI can\'t reach any ")) {
                     long now = System.currentTimeMillis();
                     if (now - lastMinionSound > cooldown) {
                         lastMinionSound = now;
                         main.getUtils().playSound("random.orb", 1);
-                        String mobName = entity.getCustomNameTag().split(Pattern.quote("\u00A7cI can\'t reach any "))[1].toLowerCase();
+                        String mobName = entity.getCustomNameTag().split(Pattern.quote("§cI can\'t reach any "))[1].toLowerCase();
                         if (mobName.lastIndexOf("s") == mobName.length() - 1) {
                             mobName = mobName.substring(0, mobName.length() - 1);
                         }
@@ -524,7 +538,7 @@ public class PlayerListener {
             for (int i = 1; i <= 3; i++) { // only a max of 2 gray enchants are possible
                 String line = e.toolTip.get(i);
 //                System.out.println(line);
-                if (!line.startsWith("\u00A75\u00A7o\u00A79") && (line.contains("Respiration") || line.contains("Aqua Affinity")
+                if (!line.startsWith("§5§o§9") && (line.contains("Respiration") || line.contains("Aqua Affinity")
                         || line.contains("Depth Strider") || line.contains("Efficiency"))) {
                     e.toolTip.remove(line);
                     i--;
@@ -586,9 +600,9 @@ public class PlayerListener {
                     int columns = enchantments.size() < 15 ? 2 : 3;
                     for (int i = 0; !enchantments.isEmpty(); i++) {
                         StringBuilder sb = new StringBuilder();
-                        sb.append("\u00A75\u00A7o");
+                        sb.append("§5§o");
                         for (int j = 0; j < columns && !enchantments.isEmpty(); j++) {
-                            sb.append("\u00A79");
+                            sb.append("§9");
                             sb.append(enchantments.get(0));
                             sb.append(", ");
                             enchantments.remove(0);
@@ -619,7 +633,7 @@ public class PlayerListener {
     public void onKeyInput(InputEvent.KeyInputEvent e) {
         if (main.getOpenSettingsKey().isPressed()) {
             main.getUtils().setFadingIn(true);
-            main.getRenderListener().setGuiToOpen(PlayerListener.GUIType.MAIN, 1, EnumUtils.SkyblockAddonsGuiTab.FEATURES);
+            main.getRenderListener().setGuiToOpen(PlayerListener.GUIType.MAIN, 1, EnumUtils.GuiTab.FEATURES);
         }
         else if (main.getOpenEditLocationsKey().isPressed()) {
             main.getUtils().setFadingIn(false);

@@ -27,7 +27,7 @@ public class SkyblockAddonsGui extends GuiScreen {
     public static final int BUTTON_MAX_WIDTH = 140;
 //    private static Feature tooltipFeature;
 
-    private EnumUtils.SkyblockAddonsGuiTab tab;
+    private EnumUtils.GuiTab tab;
     private SkyblockAddons main;
     private int page;
     private GuiTextField magmaTextField = null;
@@ -51,7 +51,7 @@ public class SkyblockAddonsGui extends GuiScreen {
     /**
      * The main gui, opened with /sba.
      */
-    public SkyblockAddonsGui(SkyblockAddons main, int page, EnumUtils.SkyblockAddonsGuiTab tab) {
+    public SkyblockAddonsGui(SkyblockAddons main, int page, EnumUtils.GuiTab tab) {
         this.tab = tab;
         this.main = main;
         this.page = page;
@@ -67,7 +67,7 @@ public class SkyblockAddonsGui extends GuiScreen {
         addEditLocationsButton();
         // Add the buttons for each page.
         Feature[] array;
-        if (tab == EnumUtils.SkyblockAddonsGuiTab.FEATURES) {
+        if (tab == EnumUtils.GuiTab.FEATURES) {
             array = new Feature[]{Feature.SHOW_ENCHANTMENTS_REFORGES, Feature.SHOW_BACKPACK_PREVIEW, Feature.CRAFTING_PATTERNS,
                     Feature.MINION_FULL_WARNING, Feature.FULL_INVENTORY_WARNING,
                     Feature.IGNORE_ITEM_FRAME_CLICKS, Feature.HIDE_FOOD_ARMOR_BAR, Feature.HIDE_HEALTH_BAR,
@@ -76,10 +76,10 @@ public class SkyblockAddonsGui extends GuiScreen {
                     Feature.MAKE_ENDERCHESTS_GREEN_IN_END, Feature.SUMMONING_EYE_ALERT, Feature.FISHING_SOUND_INDICATOR, Feature.DONT_RESET_CURSOR_INVENTORY,
                     Feature.REPLACE_ROMAN_NUMERALS_WITH_NUMBERS, Feature.DROP_CONFIRMATION, Feature.ORGANIZE_ENCHANTMENTS, Feature.JUNGLE_AXE_COOLDOWN,
                     Feature.MINION_DISABLE_LOCATION_WARNING, Feature.SHOW_ITEM_COOLDOWNS, Feature.AVOID_BREAKING_BOTTOM_SUGAR_CANE};
-        } else if (tab == EnumUtils.SkyblockAddonsGuiTab.FIXES) {
+        } else if (tab == EnumUtils.GuiTab.FIXES) {
             array = new Feature[]{Feature.HIDE_BONES, Feature.DISABLE_EMBER_ROD, Feature.HIDE_AUCTION_HOUSE_PLAYERS,
                     Feature.STOP_BOW_CHARGE_FROM_RESETTING, Feature.AVOID_PLACING_ENCHANTED_ITEMS, Feature.PREVENT_MOVEMENT_ON_DEATH, Feature.AVOID_BLINKING_NIGHT_VISION};
-        } else if (tab == EnumUtils.SkyblockAddonsGuiTab.GUI_FEATURES) {
+        } else if (tab == EnumUtils.GuiTab.GUI_FEATURES) {
             array = new Feature[]{Feature.MAGMA_BOSS_TIMER, Feature.MANA_BAR, Feature.MANA_TEXT, Feature.DEFENCE_TEXT, Feature.DEFENCE_PERCENTAGE,
                     Feature.DEFENCE_ICON, Feature.HEALTH_BAR, Feature.HEALTH_TEXT, Feature.SKELETON_BAR, Feature.HEALTH_UPDATES,
                     Feature.ITEM_PICKUP_LOG, Feature.DARK_AUCTION_TIMER};
@@ -114,7 +114,7 @@ public class SkyblockAddonsGui extends GuiScreen {
     @SuppressWarnings("IntegerDivisionInFloatingPointContext")
     private void addTabs() {
         int collumn = 1;
-        for (EnumUtils.SkyblockAddonsGuiTab loopTab : EnumUtils.SkyblockAddonsGuiTab.values()) {
+        for (EnumUtils.GuiTab loopTab : EnumUtils.GuiTab.values()) {
             if (tab != loopTab) {
                 String text = "";
                 switch (loopTab) {
@@ -341,9 +341,6 @@ public class SkyblockAddonsGui extends GuiScreen {
         if (feature == Feature.MAGMA_BOSS_TIMER || feature == Feature.DARK_AUCTION_TIMER
                 || feature == Feature.DROP_CONFIRMATION) settings.add(EnumUtils.FeatureSetting.ENABLED_IN_OTHER_GAMES);
         if (feature == Feature.DEFENCE_ICON) settings.add(EnumUtils.FeatureSetting.USE_VANILLA_TEXTURE);
-//        if (feature == Feature.SUMMONING_EYE_ALERT || feature == Feature.MAGMA_WARNING
-//                || feature == Feature.MINION_FULL_WARNING || feature == Feature.MINION_STOP_WARNING
-//                || feature == Feature.FULL_INVENTORY_WARNING) settings.add(EnumUtils.FeatureSetting.WARNING_TIME);
         if (feature == Feature.SHOW_BACKPACK_PREVIEW) {
             settings.add(EnumUtils.FeatureSetting.BACKPACK_STYLE);
             settings.add(EnumUtils.FeatureSetting.SHOW_ONLY_WHEN_HOLDING_SHIFT);

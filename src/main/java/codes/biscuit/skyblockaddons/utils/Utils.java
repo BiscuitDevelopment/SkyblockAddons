@@ -49,10 +49,10 @@ import java.util.zip.ZipEntry;
 
 public class Utils {
 
-    private final Pattern STRIP_COLOR_PATTERN = Pattern.compile("(?i)\\u00A7[0-9A-FK-OR]");
-    private final Pattern ITEM_COOLDOWN_PATTERN = Pattern.compile("\\u00A75\\u00A7o\\u00A78Cooldown: \\u00A7a([0-9]+)s");
-    private final Pattern ALTERNATE_COOLDOWN_PATTERN = Pattern.compile("\\u00A75\\u00A7o\\u00A78([0-9]+) Second Cooldown");
-    private final Pattern ITEM_ABILITY_PATTERN = Pattern.compile("\\u00A75\\u00A7o\\u00A76Item Ability: ([A-Za-z ]+) \\u00A7e\\u00A7l[A-Z ]+");
+    private final Pattern STRIP_COLOR_PATTERN = Pattern.compile("(?i)§[0-9A-FK-OR]");
+    private final Pattern ITEM_COOLDOWN_PATTERN = Pattern.compile("§5§o§8Cooldown: §a([0-9]+)s");
+    private final Pattern ALTERNATE_COOLDOWN_PATTERN = Pattern.compile("§5§o§8([0-9]+) Second Cooldown");
+    private final Pattern ITEM_ABILITY_PATTERN = Pattern.compile("§5§o§6Item Ability: ([A-Za-z ]+) §e§l[A-Z ]+");
 
     private static final List<String> ORDERED_ENCHANTMENTS = Collections.unmodifiableList(Arrays.asList(
             "smite","bane of arthropods","knockback","fire aspect","venomous", // Sword Bad
@@ -72,6 +72,7 @@ public class Utils {
     private Backpack backpackToRender = null;
     private static boolean onSkyblock = false;
     private EnumUtils.Location location = null;
+    private String profileName = null;
     private boolean playingSound = false;
     private boolean copyNBT = false;
     private String serverID = "";
@@ -837,4 +838,11 @@ public class Utils {
         enchantments.addAll(orderedEnchants.values());
     }
 
+    public String getProfileName() {
+        return profileName;
+    }
+
+    public void setProfileName(String profileName) {
+        this.profileName = profileName;
+    }
 }

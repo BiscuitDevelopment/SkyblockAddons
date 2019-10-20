@@ -338,7 +338,7 @@ public class EnumUtils {
 
     }
 
-    public enum SkyblockAddonsGuiTab {
+    public enum GuiTab {
         FEATURES, FIXES, GUI_FEATURES, GENERAL_SETTINGS
     }
 
@@ -403,7 +403,7 @@ public class EnumUtils {
         private String tag;
 
         Rarity(String s) {
-            this.tag = "\u00A7"+s;
+            this.tag = "§"+s;
         }
 
         public static Rarity getRarity(ItemStack item) {

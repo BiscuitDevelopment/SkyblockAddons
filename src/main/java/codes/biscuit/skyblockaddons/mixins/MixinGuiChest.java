@@ -285,11 +285,20 @@ public abstract class MixinGuiChest extends GuiContainer {
         SkyblockAddons main = SkyblockAddons.getInstance();
         if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.SHOW_BACKPACK_PREVIEW) &&
                 main.getConfigValues().isEnabled(Feature.MAKE_BACKPACK_INVENTORIES_COLORED)
-        && lowerChestInventory.hasCustomName() && lowerChestInventory.getDisplayName().getUnformattedText().contains("Backpack")) {
-            backpack = Backpack.getFromItem(mc.thePlayer.getHeldItem());
-            if (backpack != null) {
-                BackpackColor color = backpack.getBackpackColor();
-                GlStateManager.color(color.getR(), color.getG(), color.getB(), 1);
+        && lowerChestInventory.hasCustomName()) {
+            if (lowerChestInventory.getDisplayName().getUnformattedText().contains("Backpack")) {
+                backpack = Backpack.getFromItem(mc.thePlayer.getHeldItem());
+                if (backpack != null) {
+                    BackpackColor color = backpack.getBackpackColor();
+                    GlStateManager.color(color.getR(), color.getG(), color.getB(), 1);
+                    return;
+                }
+            } else if (lowerChestInventory.getDisplayName().getUnformattedText().contains("Bank")) {
+                ItemStack item = mc.thePlayer.getHeldItem(); // easter egg question mark
+                if (item != null && item.hasDisplayName() && item.getDisplayName().contains("Piggy Bank")) {
+                    BackpackColor color = BackpackColor.PINK;
+                    GlStateManager.color(color.getR(), color.getG(), color.getB(), 1);
+                }
                 return;
             }
         }

@@ -49,7 +49,7 @@ public class RenderListener {
 
     private PlayerListener.GUIType guiToOpen = null;
     private int guiPageToOpen = 1;
-    private EnumUtils.SkyblockAddonsGuiTab guiTabToOpen = EnumUtils.SkyblockAddonsGuiTab.FEATURES;
+    private EnumUtils.GuiTab guiTabToOpen = EnumUtils.GuiTab.FEATURES;
 
     public RenderListener(SkyblockAddons main) {
         this.main = main;
@@ -95,12 +95,12 @@ public class RenderListener {
     public void onRenderLiving(RenderLivingEvent.Specials.Pre e) {
         Entity entity = e.entity;
         if (main.getConfigValues().isEnabled(Feature.MINION_DISABLE_LOCATION_WARNING)) {
-            if (entity.getCustomNameTag().startsWith("\u00A7cThis location isn\'t perfect! :(")) {
+            if (entity.getCustomNameTag().startsWith("§cThis location isn\'t perfect! :(")) {
                 e.setCanceled(true);
             }
-            if (entity.getCustomNameTag().startsWith("\u00A7c/!\\")) {
+            if (entity.getCustomNameTag().startsWith("§c/!\\")) {
                 for (Entity listEntity : Minecraft.getMinecraft().theWorld.loadedEntityList) {
-                    if (listEntity.getCustomNameTag().startsWith("\u00A7cThis location isn\'t perfect! :(") &&
+                    if (listEntity.getCustomNameTag().startsWith("§cThis location isn\'t perfect! :(") &&
                             listEntity.posX == entity.posX && listEntity.posZ == entity.posZ &&
                             listEntity.posY + 0.375 == entity.posY) {
                         e.setCanceled(true);
@@ -658,7 +658,7 @@ public class RenderListener {
             log = dummyLog;
         }
         for (ItemDiff itemDiff : log) {
-            String text = String.format("%s %sx \u00A7r%s", itemDiff.getAmount() > 0 ? "\u00A7a+":"\u00A7c-",
+            String text = String.format("%s %sx §r%s", itemDiff.getAmount() > 0 ? "§a+":"§c-",
                     Math.abs(itemDiff.getAmount()), itemDiff.getDisplayName());
             int stringY = intY+(i*mc.fontRendererObj.FONT_HEIGHT);
             if (!downwards) {
@@ -746,7 +746,7 @@ public class RenderListener {
         this.titleFeature = titleFeature;
     }
 
-    public void setGuiToOpen(PlayerListener.GUIType guiToOpen, int page, EnumUtils.SkyblockAddonsGuiTab tab) {
+    public void setGuiToOpen(PlayerListener.GUIType guiToOpen, int page, EnumUtils.GuiTab tab) {
         this.guiToOpen = guiToOpen;
         this.guiPageToOpen = page;
         this.guiTabToOpen = tab;

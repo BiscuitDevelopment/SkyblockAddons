@@ -44,7 +44,8 @@ public class ConfigValues {
     private EnumUtils.BackpackStyle backpackStyle = EnumUtils.BackpackStyle.GUI;
     private EnumUtils.TextStyle textStyle = EnumUtils.TextStyle.REGULAR;
     @SuppressWarnings("deprecation") private Set<Feature> remoteDisabledFeatures = EnumSet.of(Feature.AVOID_BREAKING_BOTTOM_SUGAR_CANE);
-    private Set<Integer> lockedSlots = new HashSet<>();
+    private Set<Integer> legacyLockedSlots = new HashSet<>();
+    private Map<String, Set<Integer>> profileLockedSlots = new HashMap<>();
 
     public ConfigValues(SkyblockAddons main, File settingsConfigFile) {
         this.main = main;
@@ -82,7 +83,18 @@ public class ConfigValues {
             }
             if (settingsConfig.has("lockedSlots")) {
                 for (JsonElement element : settingsConfig.getAsJsonArray("lockedSlots")) {
-                    lockedSlots.add(element.getAsInt());
+                    legacyLockedSlots.add(element.getAsInt());
+                }
+            }
+
+            if (settingsConfig.has("profileLockedSlots")) {
+                JsonObject profileSlotsObject = settingsConfig.getAsJsonObject("profileLockedSlots");
+                for (Map.Entry<String, JsonElement> entry : profileSlotsObject.entrySet()) {
+                    Set<Integer> slots = new HashSet<>();
+                    for (JsonElement element : entry.getValue().getAsJsonArray()) {
+                        slots.add(element.getAsInt());
+                    }
+                    profileLockedSlots.put(entry.getKey(), slots);
                 }
             }
 
@@ -100,7 +112,6 @@ public class ConfigValues {
                     backpackStyle = EnumUtils.BackpackStyle.values()[ordinal];
                 }
             }
-
 
             if (settingsConfig.has("anchorPoints")) {
                 for (Map.Entry<String, JsonElement> element : settingsConfig.getAsJsonObject("anchorPoints").entrySet()) {
@@ -436,10 +447,20 @@ public class ConfigValues {
             settingsConfig.add("disabledFeatures", jsonArray);
 
             jsonArray = new JsonArray();
-            for (int slot : lockedSlots) {
+            for (int slot : legacyLockedSlots) {
                 jsonArray.add(new GsonBuilder().create().toJsonTree(slot));
             }
             settingsConfig.add("lockedSlots", jsonArray);
+
+            JsonObject profileSlotsObject = new JsonObject();
+            for (Map.Entry<String, Set<Integer>> entry : profileLockedSlots.entrySet()) {
+                JsonArray lockedSlots = new JsonArray();
+                for (int slot : entry.getValue()) {
+                    lockedSlots.add(new GsonBuilder().create().toJsonTree(slot));
+                }
+                profileSlotsObject.add(entry.getKey(), lockedSlots);
+            }
+            settingsConfig.add("profileLockedSlots", profileSlotsObject);
 
             JsonObject anchorObject = new JsonObject();
             for (Feature feature : GUI_FEATURES) {
@@ -481,24 +502,6 @@ public class ConfigValues {
             settingsConfig.add("barSizes", barSizesObject);
 
             settingsConfig.addProperty("warningSeconds", warningSeconds);
-
-//            for (Feature feature : GUI_FEATURES) {
-//                String property = Introspector.decapitalize(WordUtils.capitalizeFully(feature.toString().replace("_", " "))).replace(" ", "");
-//                settingsConfig.addProperty(property+"X", getRelativeCoords(feature).getX());
-//                settingsConfig.addProperty(property+"Y", getRelativeCoords(feature).getY());
-//            }
-
-//            for (Feature feature : new Feature[] {Feature.HEALTH_BAR, Feature.MANA_BAR}) {
-//                if (barSizes.containsKey(feature)) {
-//                    String property = Introspector.decapitalize(WordUtils.capitalizeFully(feature.toString().replace("_", " "))).replace(" ", "");
-//                    int width = getSizes(feature).getX();
-//                    int height = getSizes(feature).getY();
-//                    if (width != 7 || height > 1) {
-//                        settingsConfig.addProperty(property + "W", width);
-//                        settingsConfig.addProperty(property + "H", height);
-//                    }
-//                }
-//            }
 
             settingsConfig.addProperty("textStyle", textStyle.ordinal());
             settingsConfig.addProperty("language", language.getPath());
@@ -678,7 +681,12 @@ public class ConfigValues {
     }
 
     public Set<Integer> getLockedSlots() {
-        return lockedSlots;
+        String profile = main.getUtils().getProfileName();
+        if (profile == null) return legacyLockedSlots;
+        if (!profileLockedSlots.containsKey(profile)) {
+            profileLockedSlots.put(profile, new HashSet<>(legacyLockedSlots));
+        }
+        return profileLockedSlots.get(profile);
     }
 
     public void setGuiScale(Feature feature, float scale) {

@@ -29,7 +29,7 @@ public class SettingsGui extends GuiScreen {
     private int displayCount;
     private Feature feature;
     private int lastPage;
-    private EnumUtils.SkyblockAddonsGuiTab lastTab;
+    private EnumUtils.GuiTab lastTab;
     private boolean closingGui = false;
     private Set<EnumUtils.FeatureSetting> settings;
 
@@ -39,7 +39,7 @@ public class SettingsGui extends GuiScreen {
      * The main gui, opened with /sba.
      */
     SettingsGui(SkyblockAddons main, Feature feature, int page,
-                int lastPage, EnumUtils.SkyblockAddonsGuiTab lastTab, Set<EnumUtils.FeatureSetting> settings) {
+                int lastPage, EnumUtils.GuiTab lastTab, Set<EnumUtils.FeatureSetting> settings) {
         this.main = main;
         this.feature = feature;
         this.page = page;
@@ -86,7 +86,7 @@ public class SettingsGui extends GuiScreen {
     @SuppressWarnings("IntegerDivisionInFloatingPointContext")
     private void addTabs() {
         int collumn = 1;
-        for (EnumUtils.SkyblockAddonsGuiTab loopTab : EnumUtils.SkyblockAddonsGuiTab.values()) {
+        for (EnumUtils.GuiTab loopTab : EnumUtils.GuiTab.values()) {
             if (lastTab != loopTab) {
                 String text = "";
                 switch (loopTab) {

@@ -50,7 +50,7 @@ public class MixinPlayerControllerMP {
                 }
                 cir.setReturnValue(false);
             } else if (main.getConfigValues().isEnabled(Feature.JUNGLE_AXE_COOLDOWN)) {
-                CooldownEntry cooldown = main.getUtils().getItemCooldown("\u00A7aJungle Axe");
+                CooldownEntry cooldown = main.getUtils().getItemCooldown("§aJungle Axe");
                 if (cooldown != null && (block.equals(Blocks.log) || block.equals(Blocks.log2)) && cooldown.getLastUse() + cooldown.getCooldownMillis() > System.currentTimeMillis()) {
                     cir.setReturnValue(false);
                 }

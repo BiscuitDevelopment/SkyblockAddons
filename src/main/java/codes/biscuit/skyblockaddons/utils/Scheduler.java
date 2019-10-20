@@ -35,16 +35,12 @@ public class Scheduler {
                     return;
                 }
             }
-            addNewCommand(commandType, ticks, data);
+            commands.add(new Command(commandType, data));
         } else {
-            addNewCommand(commandType, ticks, data);
+            Set<Command> commandSet = new HashSet<>();
+            commandSet.add(new Command(commandType, data));
+            queue.put(ticks, commandSet);
         }
-    }
-
-    private void addNewCommand(CommandType commandType, long ticks, Object... data) {
-        Set<Command> commandSet = new HashSet<>();
-        commandSet.add(new Command(commandType, data));
-        queue.put(ticks, commandSet);
     }
 
     private boolean delayingMagmaCall = false; // this addition should decrease the amount of calls by a lot
