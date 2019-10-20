@@ -75,7 +75,7 @@
     "disableMinionLocationWarning": "Desativar avisos de localização não perfeita",
     "jungleAxeCooldown": "Recarga do Machado da Selva",
     "organizeLongEnchantmentLists": "Organizar lista de encantamentos longos",
-    "showItemCooldowns": "Show Item Cooldowns"
+    "showItemCooldowns": "Mostrar tempo de recarga dos itens"
   },
   "messages": {
     "dropConfirmation": "Large este item de novo para confirmar!",
@@ -115,6 +115,6 @@
     "cancelledDropping": "O SkyblockAddons impediu você de largar este item ou ferramenta rara da sua hotbar.",
     "clickMoreTimes": "Clique/Largue este item mais %times% vezes caso realmente queira fazer isso.",
     "featureDisabled": "Função desabilitada",
-    "anvilUses": "Anvil Uses: %uses%"
+    "anvilUses": "Usos na Bigorna: %uses%"
   }
 }
