@@ -75,7 +75,7 @@
     "disableMinionLocationWarning": "禁用仆从“位置不是很好”警告",
     "jungleAxeCooldown": "丛林斧冷却",
     "organizeLongEnchantmentLists": "整理长版附魔列表",
-    "showItemCooldowns": "Show Item Cooldowns"
+    "showItemCooldowns": "显示物品冷却时间"
   },
   "messages": {
     "dropConfirmation": "再次丢弃此物品以确认!",
@@ -115,6 +115,6 @@
     "cancelledDropping": "SkyblockAddons 已阻止你将物品栏中的稀有物品或工具丢弃。",
     "clickMoreTimes": "SkyblockAddons 已阻止你售出物品。如果你真的想卖掉它，请再点击 %times% 次。",
     "featureDisabled": "功能已禁用",
-    "anvilUses": "Anvil Uses: %uses%"
+    "anvilUses": "铁砧使用次数: %uses%"
   }
 }
