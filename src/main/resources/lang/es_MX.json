@@ -75,7 +75,7 @@
     "disableMinionLocationWarning": "Desactivar Alerta de Colocación Incorrecta",
     "jungleAxeCooldown": "Tiempo de Espera de Jungle Axe",
     "organizeLongEnchantmentLists": "Organizar Listas Largas de Encantamientos",
-    "showItemCooldowns": "Show Item Cooldowns"
+    "showItemCooldowns": "Mostrar Tiempo de Espera de Objetos"
   },
   "messages": {
     "dropConfirmation": "Arroja este objeto otra vez para confirmar!",
@@ -115,6 +115,6 @@
     "cancelledDropping": "SkyblockAddons ha evitado que arrojes este objeto o herramienta rara.",
     "clickMoreTimes": "Haz clic/arroja el objeto %times% veces más si en realidad quieres hacerlo.",
     "featureDisabled": "Característica Desactivada",
-    "anvilUses": "Anvil Uses: %uses%"
+    "anvilUses": "Usos en Anvil/Yunque: %uses%"
   }
 }
