@@ -2,8 +2,8 @@
   "language": "Suomi",
   "settings": {
     "tab": {
-      "features": "Ominaisuudet: Features",
-      "fixes": "Korjattu",
+      "features": "Ominaisuudet",
+      "fixes": "Korjaukset",
       "guiFeatures": "GUI Ominaisuudet",
       "generalSettings": "Yleiset Asetukset"
     },
@@ -21,7 +21,7 @@
     "hideDurability": "Piilota Työkalujen Kestävyys",
     "showEnchantmentsReforges": "Lumoukset & Uudelleentakomiset",
     "minionStopWarning": "\"Kätyri Ei Yllä\" Varoitus",
-    "hideAuctionHousePlayers": "Piillota Pelejaat Tärkeän NPC Läheltä",
+    "hideAuctionHousePlayers": "Piilota Pelaajat Tärkeidenn NPC Läheltä",
     "backpackStyle": "Repun Tyyli: %style%",
     "backpackStyles": {
       "regular": "Tavallinen",
@@ -32,8 +32,8 @@
     "fullMinionWarning": "Täysi Kätyri Varoitus",
     "ignoreItemFrameClicks": "Sivuuta kehyksien klikkaus",
     "showOnlyWhenHoldingShift": "Näytä Vain Kun Pidät Shiftiä Pohjassa",
-    "manaBar": "Mana Barii",
-    "manaText": "Mana Numero",
+    "manaBar": "Manapalkki",
+    "manaText": "Mananumero",
     "healthBar": "Terveys Baari",
     "healthText": "Terveys Numero",
     "defenceIcon": "Puolustus Symbooli",
@@ -111,10 +111,10 @@
     "summoningEyeFound": "Kutsumissilmä!",
     "cancelledStemBreak": "SkyblockAddons on pysäyttänyt sinua rikkomasta tämän varren. Käytä nyrkkiäsi jos haluat rikkoa sen.",
     "cancelledCaneBreak": "SkyblockAddons on pysäyttänyt sinua rikkomasta tätä sokeriruokoblockia. Käytä toista työkalua rikkoaksesi sen.",
-    "cancelledProfileOpening": "SkyblockAddons has stopped you from opening this player's profile while holding a bow.",
-    "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare item or tool from your hotbar.",
-    "clickMoreTimes": "Click/drop this item %times% more times if you really want to do this.",
-    "featureDisabled": "Feature Disabled",
-    "anvilUses": "Anvil Uses: %uses%"
+    "cancelledProfileOpening": "SkyblockAddons on pysäyttänyt sinua avaamasta tämän pelaajan profiilia, kun sinulla on jousi kädessä.",
+    "cancelledDropping": "SkyblockAddons on pysäyttänyt sinua pudottamasta tämän arvokkaan esineen tai työkalun hotbaristasi.",
+    "clickMoreTimes": "Klikkaa/pudota tämä esine %times% kertaa jos haluat tehdä tämän.",
+    "featureDisabled": "Toiminto pois käytöstä",
+    "anvilUses": "Alasimen käytöt: %uses%"
   }
 }
