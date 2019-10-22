@@ -75,7 +75,7 @@
     "disableMinionLocationWarning": "Vypnout lokace neperfektních upozornění",
     "jungleAxeCooldown": "Jungle Axe Cooldown",
     "organizeLongEnchantmentLists": "Organizovat dlouhé seznamy enchantů",
-    "showItemCooldowns": "Show Item Cooldowns"
+    "showItemCooldowns": "Ukaž čas přebití itemu"
   },
   "messages": {
     "dropConfirmation": "Vyhoď tento item pro vyhození!",
@@ -115,6 +115,6 @@
     "cancelledDropping": "SkyblockAddons vám zabránil vyhodit tento vzácný předmět nebo nástroj z vašeho hotbaru.",
     "clickMoreTimes": "Klikněte/vyhoďte tento předmět %times%-krát, pokud to chcete opravdu udělat.",
     "featureDisabled": "Vlsatnost je vypnuta",
-    "anvilUses": "Anvil Uses: %uses%"
+    "anvilUses": "Použití kovadliny: %uses%"
   }
 }
