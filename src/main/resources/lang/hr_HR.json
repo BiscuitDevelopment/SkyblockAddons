@@ -73,9 +73,9 @@
     "soundIndicatorForFishing": "Zvučni Indikator za Ribolov",
     "avoidBlinkingNightVision": "Isključi Treptanje Napitka Noćne Vizije",
     "disableMinionLocationWarning": "Isključi Upozorenja Lokacija Nije Odlična",
-    "jungleAxeCooldown": "Jungle Axe Cooldown",
-    "organizeLongEnchantmentLists": "Organize Long Enchantment Lists",
-    "showItemCooldowns": "Show Item Cooldowns"
+    "jungleAxeCooldown": "Hlađenje Sjekire Đungle",
+    "organizeLongEnchantmentLists": "Organiziraj Duge Liste Enchantanja",
+    "showItemCooldowns": "Pokaži Hlađenje Stvari"
   },
   "messages": {
     "dropConfirmation": "Opet baci ovu stvar za konfirmaciju!",
@@ -91,20 +91,20 @@
     "inventoryTypes": {
       "enchants": "Čarolije",
       "reforges": "Reforge-ovi",
-      "crafting": "Crafting"
+      "crafting": "Kraftanje"
     },
-    "newUpdateAvailable": "A new update (%version%) is available!",
-    "deleteOldFile": "The download has finished, please open your mods folder using the button below, close your Minecraft, and delete the old version (or delete it later if you prefer).",
-    "wantToViewPatchNotes": "Want to read the changes?",
-    "downloadLink": "UPDATE LINK",
-    "downloadAutomatically": "AUTO DOWNLOAD",
-    "openModFolder": "MODS FOLDER",
-    "joinTheDiscord": "JOIN DISCORD",
+    "newUpdateAvailable": "Nova verzija (%version%) je dostupna!",
+    "deleteOldFile": "Preuzimanje je gotovo, molim te otvori tvoj mods direktorij, koristi se ovim gumbom dolje, zatvori Minecraft, i obriši staru verziju (ili je obriši kasnije ako želiš).",
+    "wantToViewPatchNotes": "Želiš li pročitati promjene?",
+    "downloadLink": "AŽURIRAJ LINK",
+    "downloadAutomatically": "AUTOMATIČKO PREUZIMANJE",
+    "openModFolder": "MODS DIREKTORIJ",
+    "joinTheDiscord": "UĐI U DISCORD",
     "update": {
-      "majorAvailable": "A new major update (%version%) is available! The link for the download can be found in chat.",
-      "patchAvailable": "A new patch update (%version%) is available! Look in chat for download options!",
-      "downloading": "The patch is downloading! Status: %downloaded%/%total% Please note that after the download has finished, you must delete the old file.",
-      "failed": "The patch download has failed! Please download it manually using the link in chat.",
+      "majorAvailable": "Nova glavna verzija (%version%) je dostupna! Veza za preuzimanje može biti pronađena u chat-u.",
+      "patchAvailable": "Nova zakrpna verzija (%version%) je dostupna! Pogledaj u chat za opcije preuzimanja!",
+      "downloading": "Zakrpa se preuzima! Trenutno stanje: %downloaded%/%total% Molim te shvati da nakon preuzimanja moraš obrisati staru datoteku.",
+      "failed": "Preuzimanja zakrpa je neuspješna! Molim te ručno je preuzmi koristeći poveznicu u chat-u.",
       "downloadFinished": "The patch has finished downloading. It has been saved as %file%. Please don't forget to delete the old file after closing your Minecraft. Click the message in chat to open up the folder."
     },
     "slotLocked": "Ovaj Slot je Zaključan!",
