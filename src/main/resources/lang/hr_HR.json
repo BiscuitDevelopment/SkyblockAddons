@@ -105,16 +105,16 @@
       "patchAvailable": "Nova zakrpna verzija (%version%) je dostupna! Pogledaj u chat za opcije preuzimanja!",
       "downloading": "Zakrpa se preuzima! Trenutno stanje: %downloaded%/%total% Molim te shvati da nakon preuzimanja moraš obrisati staru datoteku.",
       "failed": "Preuzimanja zakrpa je neuspješna! Molim te ručno je preuzmi koristeći poveznicu u chat-u.",
-      "downloadFinished": "The patch has finished downloading. It has been saved as %file%. Please don't forget to delete the old file after closing your Minecraft. Click the message in chat to open up the folder."
+      "downloadFinished": "Zakrpa je skinuta. Spremljena je kao %file%. Molim te ne zaboravi obrisati staru datoteku prije zatvaranja Minecrafta. Klikni poruku u chat-u da otvoriš direktorij."
     },
     "slotLocked": "Ovaj Slot je Zaključan!",
     "summoningEyeFound": "Evokacijsko Oko!",
     "cancelledStemBreak": "SkyblockAddons te zaustavio od rušenja ove stabljike. Koristi svoju ruku ako je želiš slomiti.",
-    "cancelledCaneBreak": "SkyblockAddons has stopped you from breaking this block of sugar cane. Use another tool if you'd actually like to break it.",
+    "cancelledCaneBreak": "SkyblockAddons te zaustavio od rušenja ovog bloka šećerne trske. Koristi drugi alat ako to želiš slomiti.",
     "cancelledProfileOpening": "SkyblockAddons te zaustavio od otvaranja profila ovog igrača dok držiš luk.",
     "cancelledDropping": "SkyblockAddons te zaustavio od bacanje ove rijetke stvari ili alata od tvojeg hotbara.",
     "clickMoreTimes": "Klikni/dropaj ovu stvar %times% više puta ako zapravo želiš ovo napraviti.",
-    "featureDisabled": "Feature Disabled",
-    "anvilUses": "Anvil Uses: %uses%"
+    "featureDisabled": "Svojstvo Onemogućeno",
+    "anvilUses": "Korištenja u Anvilu: %uses%"
   }
 }
