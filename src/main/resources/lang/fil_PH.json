@@ -75,7 +75,9 @@
     "disableMinionLocationWarning": "I-disable ang Not Perfect Warnings sa Lokasyon",
     "jungleAxeCooldown": "Jungle Axe Cooldown",
     "organizeLongEnchantmentLists": "I-organize ang mahabang Listahan ng mga Enchantment",
-    "showItemCooldowns": "Show Item Cooldowns"
+    "showItemCooldowns": "Show Item Cooldowns",
+    "speedPercentage": "Speed Percentage",
+    "collectionDisplay": "Collection Display"
   },
   "messages": {
     "dropConfirmation": "Ihulog ang item muli para kumpirmado!",
