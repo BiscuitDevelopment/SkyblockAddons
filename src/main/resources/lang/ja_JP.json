@@ -75,7 +75,9 @@
     "disableMinionLocationWarning": "Location Not Perfectのアラートを無効化",
     "jungleAxeCooldown": "Jungle Axeのクールタイムを表示",
     "organizeLongEnchantmentLists": "長いエンチャントのリストを整理",
-    "showItemCooldowns": "アイテムのクールタイムを表示"
+    "showItemCooldowns": "アイテムのクールタイムを表示",
+    "speedPercentage": "Speed Percentage",
+    "collectionDisplay": "Collection Display"
   },
   "messages": {
     "dropConfirmation": "落としてもいいのであれば、このアイテムをもう一度ドロップしてください。",
