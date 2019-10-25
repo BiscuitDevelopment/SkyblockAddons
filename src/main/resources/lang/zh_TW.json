@@ -75,7 +75,9 @@
     "disableMinionLocationWarning": "取消Minion位置不完美警告",
     "jungleAxeCooldown": "叢林之斧冷卻",
     "organizeLongEnchantmentLists": "Organize Long Enchantment Lists",
-    "showItemCooldowns": "顯示物品冷卻"
+    "showItemCooldowns": "顯示物品冷卻",
+    "speedPercentage": "Speed Percentage",
+    "collectionDisplay": "Collection Display"
   },
   "messages": {
     "dropConfirmation": "再次丟棄此物品以確認!",
