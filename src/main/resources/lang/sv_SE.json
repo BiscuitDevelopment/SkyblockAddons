@@ -75,7 +75,9 @@
     "disableMinionLocationWarning": "Inaktivera Position Inte Perfect Varning",
     "jungleAxeCooldown": "JungelYxaNedkylnig",
     "organizeLongEnchantmentLists": "Organisera Långa Enchantment listor",
-    "showItemCooldowns": "Visa artikel nedkylning"
+    "showItemCooldowns": "Visa artikel nedkylning",
+    "speedPercentage": "Speed Percentage",
+    "collectionDisplay": "Collection Display"
   },
   "messages": {
     "dropConfirmation": "Släpp Det Här Igen För Att Bekräfta!",
