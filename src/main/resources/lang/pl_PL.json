@@ -75,7 +75,9 @@
     "disableMinionLocationWarning": "Wyłącz ostrzeżenia \"Location Not Perfect\"",
     "jungleAxeCooldown": "Czas odnowienia Jungle Axe",
     "organizeLongEnchantmentLists": "Uporządkuj długie listy enchantów",
-    "showItemCooldowns": "Pokazuj colldown itemów"
+    "showItemCooldowns": "Pokazuj colldown itemów",
+    "speedPercentage": "Speed Percentage",
+    "collectionDisplay": "Collection Display"
   },
   "messages": {
     "dropConfirmation": "Wyrzuć ten przedmiot ponownie, aby potwierdzić!",
