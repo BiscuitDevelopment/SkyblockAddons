@@ -77,7 +77,7 @@
     "organizeLongEnchantmentLists": "Organize Long Enchantment Lists",
     "showItemCooldowns": "Show Item Cooldowns",
     "speedPercentage": "Speed Percentage",
-    "collectionDisplay": "Collection Display"
+    "collectionDisplay": "Skill Progress Display"
   },
   "messages": {
     "dropConfirmation": "아이템을 정말로 버리려면 다시 버리세요!",
