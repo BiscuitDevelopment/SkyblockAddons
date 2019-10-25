@@ -76,8 +76,8 @@
     "jungleAxeCooldown": "Jungle Axe ned brug",
     "organizeLongEnchantmentLists": "Organiser lange fortryllelses lister",
     "showItemCooldowns": "Vis genstand ned brug",
-    "speedPercentage": "Speed Percentage",
-    "collectionDisplay": "Skill Progress Display"
+    "speedPercentage": "Hastigheds procent",
+    "collectionDisplay": "Dygtigheds fremskridt visning"
   },
   "messages": {
     "dropConfirmation": "Slip denne vare igen for at bekræfte!",
