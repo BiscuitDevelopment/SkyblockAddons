@@ -71,12 +71,12 @@
     "changeBarColorForPotions": "Zmień kolor paska dla funkcji Wither & Mikstury",
     "craftingPatterns": "Wybierz wzór wytwarzania",
     "soundIndicatorForFishing": "Powiadomienia dźwiękowe podczas łowienia",
-    "avoidBlinkingNightVision": "Disable Night Vision Potion Blinking",
+    "avoidBlinkingNightVision": "Wyłącz miganie mikstury widzenia w ciemności",
     "disableMinionLocationWarning": "Wyłącz ostrzeżenia \"Location Not Perfect\"",
     "jungleAxeCooldown": "Czas odnowienia Jungle Axe",
     "organizeLongEnchantmentLists": "Uporządkuj długie listy enchantów",
     "showItemCooldowns": "Pokazuj colldown itemów",
-    "speedPercentage": "Speed Percentage",
+    "speedPercentage": "Procent szybkości",
     "collectionDisplay": "Skill Progress Display"
   },
   "messages": {
