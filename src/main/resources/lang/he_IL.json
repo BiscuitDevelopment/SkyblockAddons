@@ -75,7 +75,9 @@
     "disableMinionLocationWarning": "ביטול אזהרות מיקום לא מושלם",
     "jungleAxeCooldown": "טעינת גרזן ג'ונגל",
     "organizeLongEnchantmentLists": "סדר רשימת כישופים ארוכה",
-    "showItemCooldowns": "הראה טעינת חפצים"
+    "showItemCooldowns": "הראה טעינת חפצים",
+    "speedPercentage": "Speed Percentage",
+    "collectionDisplay": "Collection Display"
   },
   "messages": {
     "dropConfirmation": "זרוק פריט זה שוב לאישור!",
