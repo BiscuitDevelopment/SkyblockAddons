@@ -77,7 +77,7 @@
     "organizeLongEnchantmentLists": "Organizar lista de encantamentos longos",
     "showItemCooldowns": "Mostrar tempo de recarga dos itens",
     "speedPercentage": "Speed Percentage",
-    "collectionDisplay": "Collection Display"
+    "collectionDisplay": "Skill Progress Display"
   },
   "messages": {
     "dropConfirmation": "Large este item de novo para confirmar!",
