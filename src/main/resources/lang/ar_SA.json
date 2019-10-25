@@ -75,7 +75,9 @@
     "disableMinionLocationWarning": "تعطيل الموقع ليس مثاليا",
     "jungleAxeCooldown": "تباطؤ فأس الغابة",
     "organizeLongEnchantmentLists": "ترتيب قائمة التطويرات الطويله",
-    "showItemCooldowns": "اظهار تباطؤ الأدوات"
+    "showItemCooldowns": "اظهار تباطؤ الأدوات",
+    "speedPercentage": "Speed Percentage",
+    "collectionDisplay": "Collection Display"
   },
   "messages": {
     "dropConfirmation": "!إرمي هذا العنصر مرة أخرى للتأكيد",
