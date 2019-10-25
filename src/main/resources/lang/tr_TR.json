@@ -75,7 +75,9 @@
     "disableMinionLocationWarning": "Minionların \"Location Not Perfect\" Uyarılarını Kapat",
     "jungleAxeCooldown": "Jungle Axe Bekleme Süresi",
     "organizeLongEnchantmentLists": "Uzun Büyü Listelerini Düzelt",
-    "showItemCooldowns": "Eşya Bekleme Sürelerini Göster"
+    "showItemCooldowns": "Eşya Bekleme Sürelerini Göster",
+    "speedPercentage": "Speed Percentage",
+    "collectionDisplay": "Collection Display"
   },
   "messages": {
     "dropConfirmation": "Eşyayı düşürmeyi onaylamak için düşürme tuşuna bir daha bas!",
