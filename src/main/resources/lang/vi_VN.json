@@ -76,8 +76,8 @@
     "jungleAxeCooldown": "Hồi phục Rìu Rừng Rậm",
     "organizeLongEnchantmentLists": "Sắp xếp danh sách phù phép dài",
     "showItemCooldowns": "Hiển thị thời gian hồi vật phẩm",
-    "speedPercentage": "Speed Percentage",
-    "collectionDisplay": "Skill Progress Display"
+    "speedPercentage": "Phần trăm tốc độ",
+    "collectionDisplay": "Hiển thị kĩ năng"
   },
   "messages": {
     "dropConfirmation": "Nhấn \"Q\" Thêm Một Lần Nữa Để Xác Nhận!",
