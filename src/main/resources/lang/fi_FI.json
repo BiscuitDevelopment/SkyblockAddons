@@ -76,8 +76,8 @@
     "jungleAxeCooldown": "Viidakkokirveen jäähtymisaika",
     "organizeLongEnchantmentLists": "Järjestä pitkät lumouslistat",
     "showItemCooldowns": "Näytä tavaran jäähtymisaika",
-    "speedPercentage": "Speed Percentage",
-    "collectionDisplay": "Collection Display"
+    "speedPercentage": "Nopeuden prosenttimäärä",
+    "collectionDisplay": "Keräysnäyttö"
   },
   "messages": {
     "dropConfirmation": "Pudota tämä esine uudelleen vahvistaaksesi!",
