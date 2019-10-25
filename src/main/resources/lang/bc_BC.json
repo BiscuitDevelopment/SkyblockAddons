@@ -75,7 +75,9 @@
     "disableMinionLocationWarning": "Disable Biscution Not Perfect Biscutings",
     "jungleAxeCooldown": "Jungle Biscuit Cooldown",
     "organizeLongEnchantmentLists": "Organize Long Biscuitment Lists",
-    "showItemCooldowns": "Show Biscuits Cooldowns"
+    "showItemCooldowns": "Show Biscuits Cooldowns",
+    "speedPercentage": "Speed Percentage",
+    "collectionDisplay": "Collection Display"
   },
   "messages": {
     "dropConfirmation": "Throw out this biscuit again to confirm!",
