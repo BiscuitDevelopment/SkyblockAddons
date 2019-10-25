@@ -77,7 +77,7 @@
     "organizeLongEnchantmentLists": "Organize Long Biscuitment Lists",
     "showItemCooldowns": "Show Biscuits Cooldowns",
     "speedPercentage": "Speed Percentage",
-    "collectionDisplay": "Collection Display"
+    "collectionDisplay": "Skill Progress Display"
   },
   "messages": {
     "dropConfirmation": "Throw out this biscuit again to confirm!",
