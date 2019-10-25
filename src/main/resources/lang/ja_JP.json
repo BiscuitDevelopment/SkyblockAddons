@@ -76,8 +76,8 @@
     "jungleAxeCooldown": "Jungle Axeのクールタイムを表示",
     "organizeLongEnchantmentLists": "長いエンチャントのリストを整理",
     "showItemCooldowns": "アイテムのクールタイムを表示",
-    "speedPercentage": "Speed Percentage",
-    "collectionDisplay": "Skill Progress Display"
+    "speedPercentage": "スピード",
+    "collectionDisplay": "スキルの進捗のディスプレイ"
   },
   "messages": {
     "dropConfirmation": "落としてもいいのであれば、このアイテムをもう一度ドロップしてください。",
