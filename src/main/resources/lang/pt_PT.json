@@ -75,7 +75,9 @@
     "disableMinionLocationWarning": "Esconder os avisos “Location not perfect”",
     "jungleAxeCooldown": "Tempo de espera do Jungle Axe",
     "organizeLongEnchantmentLists": "Listas de encantamentos grandes organizadas",
-    "showItemCooldowns": "Mostrar os tempos de espera dos itens"
+    "showItemCooldowns": "Mostrar os tempos de espera dos itens",
+    "speedPercentage": "Speed Percentage",
+    "collectionDisplay": "Collection Display"
   },
   "messages": {
     "dropConfirmation": "Dropa este item outra vez para confirmar!",
