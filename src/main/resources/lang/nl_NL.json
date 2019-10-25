@@ -75,7 +75,9 @@
     "disableMinionLocationWarning": "Meldingen minion locatie uitschakelen",
     "jungleAxeCooldown": "Jungle Bijl Cooldown",
     "organizeLongEnchantmentLists": "Orden Lange Betoverings Lijsten",
-    "showItemCooldowns": "Show Item Cooldowns"
+    "showItemCooldowns": "Show Item Cooldowns",
+    "speedPercentage": "Speed Percentage",
+    "collectionDisplay": "Collection Display"
   },
   "messages": {
     "dropConfirmation": "Laat dit object opnieuw vallen om te Bevestigen!",
