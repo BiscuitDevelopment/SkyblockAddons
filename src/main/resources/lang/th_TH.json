@@ -75,7 +75,9 @@
     "disableMinionLocationWarning": "ปิดคำเตือน Location not perfect",
     "jungleAxeCooldown": "คูลดาวน์ Jungle Axe",
     "organizeLongEnchantmentLists": "จัดรายชื่อ Enchantment ที่ยาวๆ",
-    "showItemCooldowns": "แสดงคูลดาวน์ไอเทม"
+    "showItemCooldowns": "แสดงคูลดาวน์ไอเทม",
+    "speedPercentage": "Speed Percentage",
+    "collectionDisplay": "Collection Display"
   },
   "messages": {
     "dropConfirmation": "กดทิ้งของอีกที่เพื่อยืนยันทิ้งของสิ่งนี้!",
