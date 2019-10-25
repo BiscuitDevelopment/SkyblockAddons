@@ -75,7 +75,9 @@
     "disableMinionLocationWarning": "Desativar avisos de localização não perfeita",
     "jungleAxeCooldown": "Recarga do Machado da Selva",
     "organizeLongEnchantmentLists": "Organizar lista de encantamentos longos",
-    "showItemCooldowns": "Mostrar tempo de recarga dos itens"
+    "showItemCooldowns": "Mostrar tempo de recarga dos itens",
+    "speedPercentage": "Speed Percentage",
+    "collectionDisplay": "Collection Display"
   },
   "messages": {
     "dropConfirmation": "Large este item de novo para confirmar!",
