@@ -31,12 +31,6 @@ import java.util.regex.Pattern;
 // Credits to MrGhetto#0236 for the original contribution/code (modified)
 @Mixin(GuiChest.class)
 public abstract class MixinGuiChest extends GuiContainer {
-
-    /**
-     * clickType value in {@link #handleMouseClick(Slot, int, int, int)} for shift-clicks
-     */
-    private static final int SHIFTCLICK_CLICK_TYPE = 1;
-
     private EnumUtils.InventoryType inventoryType = null;
     private GuiTextField textFieldMatch = null;
     private GuiTextField textFieldExclusions = null;
@@ -58,6 +52,8 @@ public abstract class MixinGuiChest extends GuiContainer {
 
     @Override
     public void onGuiClosed() {
+        SkyblockAddons.getInstance().getUtils().setInventoryType(null);
+
         if (this.textFieldMatch != null && this.textFieldExclusions != null) {
             Keyboard.enableRepeatEvents(false);
         }
@@ -113,6 +109,9 @@ public abstract class MixinGuiChest extends GuiContainer {
         if (guiName.equals("Enchant Item")) inventoryType = EnumUtils.InventoryType.ENCHANTMENT_TABLE;
         if (guiName.equals("Reforge Item")) inventoryType = EnumUtils.InventoryType.REFORGE_ANVIL;
         if (guiName.equals(CraftingPattern.CRAFTING_TABLE_DISPLAYNAME)) inventoryType = EnumUtils.InventoryType.CRAFTING_TABLE;
+
+        SkyblockAddons.getInstance().getUtils().setInventoryType(inventoryType);
+
         if (inventoryType != null) {
 
             if(inventoryType == EnumUtils.InventoryType.CRAFTING_TABLE) {
@@ -222,36 +221,6 @@ public abstract class MixinGuiChest extends GuiContainer {
                                 }
                             }
                         }
-                    }
-                }
-            }
-        }
-
-        // Crafting patterns
-        if(slotIn != null && inventoryType == EnumUtils.InventoryType.CRAFTING_TABLE
-                && main.getConfigValues().isEnabled(Feature.CRAFTING_PATTERNS)) {
-            CraftingPattern selectedPattern = CraftingPatternSelection.selectedPattern;
-            if(selectedPattern != CraftingPattern.FREE) {
-                boolean[] filledPattern = new boolean[9];
-                for (int i = 0; i < CraftingPattern.CRAFTING_GRID_SLOTS.size(); i++) {
-                    int slotIndex = CraftingPattern.CRAFTING_GRID_SLOTS.get(i);
-                    filledPattern[i] = slots.getSlot(slotIndex).getHasStack();
-                }
-                boolean patternFilled = selectedPattern.fillsPattern(filledPattern); // whether all pattern slots are filled
-                boolean patternSatisfied = selectedPattern.satisfiesPattern(filledPattern); // whether all pattern slots are filled and no non-pattern slots are filled
-
-                if(slotIn.inventory.equals(mc.thePlayer.inventory)) {
-                    if(patternFilled && clickType == SHIFTCLICK_CLICK_TYPE) {
-                        // cancel shift-clicking items from the inventory if the pattern is already filled
-                        main.getUtils().playSound("note.bass", 0.5);
-                        return;
-                    }
-                } else {
-                    if(slotIn.getSlotIndex() == CraftingPattern.CRAFTING_RESULT_INDEX
-                            && !patternSatisfied) {
-                        // cancel clicking the result if the pattern isn't satisfied
-                        main.getUtils().playSound("note.bass", 0.5);
-                        return;
                     }
                 }
             }

@@ -1,9 +1,8 @@
 package codes.biscuit.skyblockaddons.mixins;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.utils.CooldownEntry;
-import codes.biscuit.skyblockaddons.utils.Feature;
-import codes.biscuit.skyblockaddons.utils.Message;
+import codes.biscuit.skyblockaddons.gui.elements.CraftingPatternSelection;
+import codes.biscuit.skyblockaddons.utils.*;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityOtherPlayerMP;
@@ -14,7 +13,9 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ContainerPlayer;
+import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.Packet;
 import net.minecraft.util.BlockPos;
@@ -28,7 +29,10 @@ import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
 @Mixin(PlayerControllerMP.class)
 public class MixinPlayerControllerMP {
-
+    /**
+     * clickType value in {@link #onWindowClick(int, int, int, int, EntityPlayer, CallbackInfoReturnable)} for shift-clicks
+     */
+    private static final int SHIFTCLICK_CLICK_TYPE = 1;
     private long lastStemMessage = -1;
     private long lastProfileMessage = -1;
 
@@ -108,6 +112,9 @@ public class MixinPlayerControllerMP {
     @Inject(method = "windowClick", at = @At("HEAD"), locals = LocalCapture.CAPTURE_FAILSOFT, cancellable = true)
     private void onWindowClick(int windowId, int slotNum, int clickButton, int clickModifier, EntityPlayer player, CallbackInfoReturnable<ItemStack> cir) {
         SkyblockAddons main = SkyblockAddons.getInstance();
+        Minecraft mc = Minecraft.getMinecraft();
+        int slotId = slotNum;
+
         if (player != null && player.openContainer != null) {
             slotNum += main.getInventoryUtils().getSlotDifference(player.openContainer);
             if (main.getConfigValues().isEnabled(Feature.LOCK_SLOTS) && main.getUtils().isOnSkyblock()
@@ -116,6 +123,47 @@ public class MixinPlayerControllerMP {
                 main.getUtils().playSound("note.bass", 0.5);
                 cir.setReturnValue(null);
                 cir.cancel();
+            }
+
+            Container slots = player.openContainer;
+
+            Slot slotIn;
+            try {
+                slotIn = slots.getSlot(slotId);
+            } catch (ArrayIndexOutOfBoundsException e) {
+                slotIn = null;
+            }
+
+            if(slotIn != null && main.getUtils().getInventoryType() == EnumUtils.InventoryType.CRAFTING_TABLE
+                    && main.getConfigValues().isEnabled(Feature.CRAFTING_PATTERNS)) {
+                CraftingPattern selectedPattern = CraftingPatternSelection.selectedPattern;
+                if (selectedPattern != CraftingPattern.FREE) {
+                    boolean[] filledPattern = new boolean[9];
+                    for (int i = 0; i < CraftingPattern.CRAFTING_GRID_SLOTS.size(); i++) {
+                        int slotIndex = CraftingPattern.CRAFTING_GRID_SLOTS.get(i);
+
+                        filledPattern[i] = slots.getSlot(slotIndex).getHasStack();
+                    }
+                    boolean patternFilled = selectedPattern.fillsPattern(filledPattern); // whether all pattern slots are filled
+                    boolean patternSatisfied = selectedPattern.satisfiesPattern(filledPattern); // whether all pattern slots are filled and no non-pattern slots are filled
+
+                    if (slotIn.inventory.equals(mc.thePlayer.inventory)) {
+                        if (patternFilled && clickModifier == SHIFTCLICK_CLICK_TYPE) {
+                            // cancel shift-clicking items from the inventory if the pattern is already filled
+                            main.getUtils().playSound("note.bass", 0.5);
+                            cir.setReturnValue(null);
+                            cir.cancel();
+                        }
+                    } else {
+                        if (slotIn.getSlotIndex() == CraftingPattern.CRAFTING_RESULT_INDEX
+                                && !patternSatisfied) {
+                            // cancel clicking the result if the pattern isn't satisfied
+                            main.getUtils().playSound("note.bass", 0.5);
+                            cir.setReturnValue(null);
+                            cir.cancel();
+                        }
+                    }
+                }
             }
         }
     }
