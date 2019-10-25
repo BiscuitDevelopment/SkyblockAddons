@@ -75,7 +75,9 @@
     "disableMinionLocationWarning": "Disabwe Wocation Not Pewfect Wawnings",
     "jungleAxeCooldown": "Jungwe Axe Coowdown",
     "organizeLongEnchantmentLists": "Owganize Wong Enchantment Wists",
-    "showItemCooldowns": "Show Item Coowdowns"
+    "showItemCooldowns": "Show Item Coowdowns",
+    "speedPercentage": "Speed Percentage",
+    "collectionDisplay": "Collection Display"
   },
   "messages": {
     "dropConfirmation": "Dwop thwis itwem agwain to confiwm!",
