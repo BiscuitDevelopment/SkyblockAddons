@@ -75,7 +75,9 @@
     "disableMinionLocationWarning": "Poista ”Paikka Ei Täydellinen” Varoitukset",
     "jungleAxeCooldown": "Viidakkokirveen jäähtymisaika",
     "organizeLongEnchantmentLists": "Järjestä pitkät lumouslistat",
-    "showItemCooldowns": "Näytä tavaran jäähtymisaika"
+    "showItemCooldowns": "Näytä tavaran jäähtymisaika",
+    "speedPercentage": "Speed Percentage",
+    "collectionDisplay": "Collection Display"
   },
   "messages": {
     "dropConfirmation": "Pudota tämä esine uudelleen vahvistaaksesi!",
