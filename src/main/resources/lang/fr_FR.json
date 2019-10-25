@@ -76,8 +76,8 @@
     "jungleAxeCooldown": "Temps de recharge de la Jungle Axe",
     "organizeLongEnchantmentLists": "Organiser la liste des long nom d'enchantements",
     "showItemCooldowns": "Afficher le temps de recharge des objets",
-    "speedPercentage": "Speed Percentage",
-    "collectionDisplay": "Skill Progress Display"
+    "speedPercentage": "Pourcentage de vitesse",
+    "collectionDisplay": "Affichage de la progression des compétences"
   },
   "messages": {
     "dropConfirmation": "Jetez cet objet une nouvelle fois pour confirmer!",
