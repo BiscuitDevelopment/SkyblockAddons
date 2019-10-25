@@ -77,7 +77,7 @@
     "organizeLongEnchantmentLists": "Organiser la liste des long nom d'enchantements",
     "showItemCooldowns": "Afficher le temps de recharge des objets",
     "speedPercentage": "Speed Percentage",
-    "collectionDisplay": "Collection Display"
+    "collectionDisplay": "Skill Progress Display"
   },
   "messages": {
     "dropConfirmation": "Jetez cet objet une nouvelle fois pour confirmer!",
