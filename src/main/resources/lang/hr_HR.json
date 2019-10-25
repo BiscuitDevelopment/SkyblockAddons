@@ -75,7 +75,9 @@
     "disableMinionLocationWarning": "Isključi Upozorenja Lokacija Nije Odlična",
     "jungleAxeCooldown": "Hlađenje Sjekire Đungle",
     "organizeLongEnchantmentLists": "Organiziraj Duge Liste Enchantanja",
-    "showItemCooldowns": "Pokaži Hlađenje Stvari"
+    "showItemCooldowns": "Pokaži Hlađenje Stvari",
+    "speedPercentage": "Speed Percentage",
+    "collectionDisplay": "Collection Display"
   },
   "messages": {
     "dropConfirmation": "Opet baci ovu stvar za konfirmaciju!",
