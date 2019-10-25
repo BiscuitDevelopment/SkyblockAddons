@@ -75,7 +75,9 @@
     "disableMinionLocationWarning": "Dezactiveaza Avertizarea De Locatia minionului",
     "jungleAxeCooldown": "Timp ramas pentru a folosi Jungle Axe",
     "organizeLongEnchantmentLists": "Organize Long Enchantment Lists",
-    "showItemCooldowns": "Show Item Cooldowns"
+    "showItemCooldowns": "Show Item Cooldowns",
+    "speedPercentage": "Speed Percentage",
+    "collectionDisplay": "Collection Display"
   },
   "messages": {
     "dropConfirmation": "Arunca acest obiect iar ca să confirmi!",
