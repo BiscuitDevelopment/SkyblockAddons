@@ -75,7 +75,9 @@
     "disableMinionLocationWarning": "Disable Location Not Perfect Warnings",
     "jungleAxeCooldown": "Jungle Axe Cooldown",
     "organizeLongEnchantmentLists": "Organize Long Enchantment Lists",
-    "showItemCooldowns": "Show Item Cooldowns"
+    "showItemCooldowns": "Show Item Cooldowns",
+    "speedPercentage": "Speed Percentage",
+    "collectionDisplay": "Collection Display"
   },
   "messages": {
     "dropConfirmation": "Хвърлете Този Предмет Отново за да Потвърдите!",
