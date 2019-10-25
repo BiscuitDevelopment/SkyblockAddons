@@ -77,7 +77,7 @@
     "organizeLongEnchantmentLists": "Organizar Listas Largas de Encantamientos",
     "showItemCooldowns": "Mostrar Tiempo de Espera de Objetos",
     "speedPercentage": "Speed Percentage",
-    "collectionDisplay": "Collection Display"
+    "collectionDisplay": "Skill Progress Display"
   },
   "messages": {
     "dropConfirmation": "Arroja este objeto otra vez para confirmar!",
