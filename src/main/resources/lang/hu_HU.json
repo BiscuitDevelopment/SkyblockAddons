@@ -75,7 +75,9 @@
     "disableMinionLocationWarning": "\"Location not perfect\" minion jelzés kikapcsolása",
     "jungleAxeCooldown": "Jungle Axe Töltési idő",
     "organizeLongEnchantmentLists": "Hosszú enchant lista rendezése",
-    "showItemCooldowns": "Mutasd az a tárgy töltési idejét"
+    "showItemCooldowns": "Mutasd az a tárgy töltési idejét",
+    "speedPercentage": "Speed Percentage",
+    "collectionDisplay": "Collection Display"
   },
   "messages": {
     "dropConfirmation": "Dobd el ezt a tárgyat újra, hogy megerősítsd!",
