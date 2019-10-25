@@ -73,10 +73,10 @@
     "soundIndicatorForFishing": "Indicatore audio per la pesca",
     "avoidBlinkingNightVision": "Evita l'intermittenza della pozione di visione notturna",
     "disableMinionLocationWarning": "Disattiva gli avvisi di posizione non perfetta",
-    "jungleAxeCooldown": "Ricarica della Jungle Axe",
+    "jungleAxeCooldown": "Tempo di ricarica della Jungle Axe",
     "organizeLongEnchantmentLists": "Organizza gli elenchi di incantesimi lunghi",
-    "showItemCooldowns": "Show Item Cooldowns",
-    "speedPercentage": "Speed Percentage",
+    "showItemCooldowns": "Mostra i tempi di ricarica degli oggetti",
+    "speedPercentage": "Percentuale di Velocità",
     "collectionDisplay": "Collection Display"
   },
   "messages": {
@@ -117,6 +117,6 @@
     "cancelledDropping": "SkyblockAddons ti ha impedito di gettare questo oggetto o strumento raro dalla tua hotbar.",
     "clickMoreTimes": "Clicca/getta questo oggetto altre %times% volte se vuoi davvero farlo.",
     "featureDisabled": "Funzione disabilitata",
-    "anvilUses": "Anvil Uses: %uses%"
+    "anvilUses": "Utilizzi dell’incudine: %uses%"
   }
 }
