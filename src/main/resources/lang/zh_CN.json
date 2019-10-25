@@ -76,8 +76,8 @@
     "jungleAxeCooldown": "丛林斧冷却",
     "organizeLongEnchantmentLists": "整理长版附魔列表",
     "showItemCooldowns": "显示物品冷却时间",
-    "speedPercentage": "Speed Percentage",
-    "collectionDisplay": "Skill Progress Display"
+    "speedPercentage": "速度百分比",
+    "collectionDisplay": "显示技能进度"
   },
   "messages": {
     "dropConfirmation": "再次丢弃此物品以确认!",
