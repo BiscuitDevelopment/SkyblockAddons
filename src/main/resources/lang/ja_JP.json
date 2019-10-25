@@ -77,7 +77,7 @@
     "organizeLongEnchantmentLists": "長いエンチャントのリストを整理",
     "showItemCooldowns": "アイテムのクールタイムを表示",
     "speedPercentage": "Speed Percentage",
-    "collectionDisplay": "Collection Display"
+    "collectionDisplay": "Skill Progress Display"
   },
   "messages": {
     "dropConfirmation": "落としてもいいのであれば、このアイテムをもう一度ドロップしてください。",
