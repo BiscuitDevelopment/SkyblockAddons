@@ -78,6 +78,7 @@ public class Utils {
     private String serverID = "";
     private SkyblockDate currentDate = new SkyblockDate(SkyblockDate.SkyblockMonth.EARLY_WINTER, 1, 1, 1);
     private int lastHoveredSlot = -1;
+    private EnumUtils.InventoryType inventoryType = null;
 
     private boolean fadingIn;
 
@@ -844,5 +845,13 @@ public class Utils {
 
     public void setProfileName(String profileName) {
         this.profileName = profileName;
+    }
+
+    public EnumUtils.InventoryType getInventoryType() {
+        return inventoryType;
+    }
+
+    public void setInventoryType(EnumUtils.InventoryType inventoryType) {
+        this.inventoryType = inventoryType;
     }
 }
