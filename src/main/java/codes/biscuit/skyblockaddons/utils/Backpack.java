@@ -79,18 +79,20 @@ public class Backpack {
                         }
                     }
                     try {
-                        int length = 9; //default is small
+                        int length;
                         String backpackType = matcher.group(1);
                         switch (backpackType) { // because sometimes the size of the tag is not updated (etc. when you upcraft it)
+                            case "SMALL": length = 9; break;
                             case "MEDIUM": length = 18; break;
                             case "LARGE": length = 27; break;
                             case "GREATER": length = 36; break;
+                            default: length = 45; break;
                         }
                         ItemStack[] items = new ItemStack[length];
                         if (bytes != null) {
                             NBTTagCompound nbtTagCompound = CompressedStreamTools.readCompressed(new ByteArrayInputStream(bytes));
                             NBTTagList list = nbtTagCompound.getTagList("i", Constants.NBT.TAG_COMPOUND);
-//                            int length = list.tagCount();
+                            if (list.tagCount() > length) length = list.tagCount();
                             for (int i = 0; i < length; i++) {
                                 NBTTagCompound item = list.getCompoundTagAt(i);
                                 // This fixes an issue in Hypixel where enchanted potatoes have the wrong id (potato block instead of item).
@@ -120,11 +122,6 @@ public class Backpack {
                             } catch (IllegalArgumentException ignored) {}
                         }
                         return new Backpack(items, SkyblockAddons.getInstance().getUtils().stripColor(stack.getDisplayName()), color);
-
-//                        main.getUtils().setBackpackColor(color);
-//                        main.getPlayerListener().onItemTooltip(new ItemTooltipEvent(stack,
-//                                null, null, false));
-//                        ci.cancel();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

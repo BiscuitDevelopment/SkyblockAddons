@@ -6,7 +6,6 @@ import codes.biscuit.skyblockaddons.utils.CoordsPair;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.Feature;
 import codes.biscuit.skyblockaddons.utils.Message;
-import com.google.common.collect.Sets;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
@@ -18,7 +17,6 @@ import net.minecraftforge.client.GuiIngameForge;
 import java.awt.*;
 import java.io.IOException;
 import java.net.URI;
-import java.util.EnumSet;
 import java.util.Set;
 import java.util.regex.Pattern;
 
@@ -37,17 +35,6 @@ public class SkyblockAddonsGui extends GuiScreen {
 
     private long timeOpened = System.currentTimeMillis();
 
-    private static Set<Feature> colorSettingFeatures = Sets.newHashSet(Feature.MAGMA_WARNING, Feature.DROP_CONFIRMATION,
-            Feature.MANA_BAR, Feature.MANA_TEXT, Feature.HEALTH_BAR, Feature.HEALTH_TEXT, Feature.DEFENCE_TEXT,
-            Feature.DEFENCE_PERCENTAGE, Feature.MAGMA_BOSS_TIMER, Feature.DARK_AUCTION_TIMER,
-            Feature.FULL_INVENTORY_WARNING, Feature.MINION_FULL_WARNING, Feature.MINION_STOP_WARNING, Feature.SUMMONING_EYE_ALERT,
-            Feature.AVOID_BREAKING_STEMS, Feature.DONT_OPEN_PROFILES_WITH_BOW);
-
-    private static Set<Feature> guiScaleFeatures = Sets.newHashSet(Feature.ITEM_PICKUP_LOG, Feature.HEALTH_UPDATES,
-            Feature.MANA_BAR, Feature.MANA_TEXT, Feature.HEALTH_BAR, Feature.HEALTH_TEXT, Feature.DEFENCE_TEXT,
-            Feature.DEFENCE_PERCENTAGE, Feature.MAGMA_BOSS_TIMER, Feature.SKELETON_BAR, Feature.DARK_AUCTION_TIMER,
-            Feature.DEFENCE_ICON);
-
     /**
      * The main gui, opened with /sba.
      */
@@ -57,7 +44,7 @@ public class SkyblockAddonsGui extends GuiScreen {
         this.page = page;
     }
 
-    @SuppressWarnings({"IntegerDivisionInFloatingPointContext", "deprecation"})
+    @SuppressWarnings({"IntegerDivisionInFloatingPointContext"})
     @Override
     public void initGui() {
         row = 1;
@@ -66,49 +53,32 @@ public class SkyblockAddonsGui extends GuiScreen {
         addLanguageButton();
         addEditLocationsButton();
         // Add the buttons for each page.
-        Feature[] array;
-        if (tab == EnumUtils.GuiTab.FEATURES) {
-            array = new Feature[]{Feature.SHOW_ENCHANTMENTS_REFORGES, Feature.SHOW_BACKPACK_PREVIEW, Feature.CRAFTING_PATTERNS,
-                    Feature.MINION_FULL_WARNING, Feature.FULL_INVENTORY_WARNING,
-                    Feature.IGNORE_ITEM_FRAME_CLICKS, Feature.HIDE_FOOD_ARMOR_BAR, Feature.HIDE_HEALTH_BAR,
-                    Feature.AVOID_BREAKING_STEMS, Feature.MAGMA_WARNING, Feature.HIDE_PLAYERS_IN_LOBBY, Feature.MINION_STOP_WARNING,
-                    Feature.SHOW_ITEM_ANVIL_USES, Feature.LOCK_SLOTS, Feature.DONT_OPEN_PROFILES_WITH_BOW, Feature.STOP_DROPPING_SELLING_RARE_ITEMS,
-                    Feature.MAKE_ENDERCHESTS_GREEN_IN_END, Feature.SUMMONING_EYE_ALERT, Feature.FISHING_SOUND_INDICATOR, Feature.DONT_RESET_CURSOR_INVENTORY,
-                    Feature.REPLACE_ROMAN_NUMERALS_WITH_NUMBERS, Feature.DROP_CONFIRMATION, Feature.ORGANIZE_ENCHANTMENTS, Feature.JUNGLE_AXE_COOLDOWN,
-                    Feature.MINION_DISABLE_LOCATION_WARNING, Feature.SHOW_ITEM_COOLDOWNS, Feature.AVOID_BREAKING_BOTTOM_SUGAR_CANE};
-        } else if (tab == EnumUtils.GuiTab.FIXES) {
-            array = new Feature[]{Feature.HIDE_BONES, Feature.DISABLE_EMBER_ROD, Feature.HIDE_AUCTION_HOUSE_PLAYERS,
-                    Feature.STOP_BOW_CHARGE_FROM_RESETTING, Feature.AVOID_PLACING_ENCHANTED_ITEMS, Feature.PREVENT_MOVEMENT_ON_DEATH, Feature.AVOID_BLINKING_NIGHT_VISION};
-        } else if (tab == EnumUtils.GuiTab.GUI_FEATURES) {
-            array = new Feature[]{Feature.MAGMA_BOSS_TIMER, Feature.MANA_BAR, Feature.MANA_TEXT, Feature.DEFENCE_TEXT, Feature.DEFENCE_PERCENTAGE,
-                    Feature.DEFENCE_ICON, Feature.HEALTH_BAR, Feature.HEALTH_TEXT, Feature.SKELETON_BAR, Feature.HEALTH_UPDATES,
-                    Feature.ITEM_PICKUP_LOG, Feature.DARK_AUCTION_TIMER};
-        } else {
-            array = new Feature[]{Feature.TEXT_STYLE, Feature.WARNING_TIME};
-        }
-        int skip = (page-1)*displayCount;
+        Set<Feature> features = tab.getFeatures();
+        if (features != null) {
+            int skip = (page - 1) * displayCount;
 
-        boolean max = page == 1;
-        buttonList.add(new ButtonArrow(width/2-15-50, height-70, main, ButtonArrow.ArrowType.LEFT, max));
-        max = array.length-skip-displayCount <= 0;
-        buttonList.add(new ButtonArrow(width/2-15+50, height-70, main, ButtonArrow.ArrowType.RIGHT, max));
+            boolean max = page == 1;
+            buttonList.add(new ButtonArrow(width / 2 - 15 - 50, height - 70, main, ButtonArrow.ArrowType.LEFT, max));
+            max = features.size() - skip - displayCount <= 0;
+            buttonList.add(new ButtonArrow(width / 2 - 15 + 50, height - 70, main, ButtonArrow.ArrowType.RIGHT, max));
 
-        buttonList.add(new ButtonSocial(width/2+200, 30, main, ButtonSocial.Social.YOUTUBE));
-        buttonList.add(new ButtonSocial(width/2+175, 30, main, ButtonSocial.Social.DISCORD));
+            buttonList.add(new ButtonSocial(width / 2 + 200, 30, main, ButtonSocial.Social.YOUTUBE));
+            buttonList.add(new ButtonSocial(width / 2 + 175, 30, main, ButtonSocial.Social.DISCORD));
 
-        for (Feature feature : array) {
-            if (skip == 0) {
-                if (feature == Feature.TEXT_STYLE || feature == Feature.WARNING_TIME) {
-                    addButton(feature, EnumUtils.ButtonType.SOLID);
+            for (Feature feature : features) {
+                if (skip == 0) {
+                    if (feature == Feature.TEXT_STYLE || feature == Feature.WARNING_TIME) {
+                        addButton(feature, EnumUtils.ButtonType.SOLID);
+                    } else {
+                        addButton(feature, EnumUtils.ButtonType.TOGGLE);
+                    }
                 } else {
-                    addButton(feature, EnumUtils.ButtonType.TOGGLE);
+                    skip--;
                 }
-            } else {
-                skip--;
             }
-        }
 
-        addTabs();
+            addTabs();
+        }
     }
 
     @SuppressWarnings("IntegerDivisionInFloatingPointContext")
@@ -198,7 +168,7 @@ public class SkyblockAddonsGui extends GuiScreen {
             Feature feature = ((ButtonFeature)abstractButton).getFeature();
             if (abstractButton instanceof ButtonSettings) {
                 main.getUtils().setFadingIn(false);
-                Minecraft.getMinecraft().displayGuiScreen(new SettingsGui(main, feature, 1, page, tab, getSettings(feature)));
+                Minecraft.getMinecraft().displayGuiScreen(new SettingsGui(main, feature, 1, page, tab, feature.getSettings()));
                 return;
             }
             if (feature == Feature.LANGUAGE) {
@@ -255,7 +225,7 @@ public class SkyblockAddonsGui extends GuiScreen {
                 main.getUtils().setFadingIn(false);
                 mc.displayGuiScreen(new SkyblockAddonsGui(main, 1, tab.getTab()));
             }
-        } else if (abstractButton instanceof ButtonSocial) {
+        } else if (abstractButton instanceof ButtonSocial) { //TODO add github
             ButtonSocial.Social social = ((ButtonSocial)abstractButton).getSocial();
             try {
                 URI uri;
@@ -309,7 +279,7 @@ public class SkyblockAddonsGui extends GuiScreen {
                 buttonList.add(new ButtonCredit(coords.getX(), coords.getY(), text, main, credit, feature));
             }
 
-            if (getSettings(feature).size() > 0) {
+            if (feature.getSettings().size() > 0) {
                 buttonList.add(new ButtonSettings(x + boxWidth - 33, y + boxHeight - 23, text, main, feature));
             }
             buttonList.add(new ButtonToggle(x+40, y+boxHeight-23, main, feature));
@@ -332,24 +302,6 @@ public class SkyblockAddonsGui extends GuiScreen {
             row++;
         }
         displayCount--;
-    }
-
-    private Set<EnumUtils.FeatureSetting> getSettings(Feature feature) {
-        Set<EnumUtils.FeatureSetting> settings = EnumSet.noneOf(EnumUtils.FeatureSetting.class);
-        if (colorSettingFeatures.contains(feature)) settings.add(EnumUtils.FeatureSetting.COLOR);
-        if (guiScaleFeatures.contains(feature)) settings.add(EnumUtils.FeatureSetting.GUI_SCALE);
-        if (feature == Feature.MAGMA_BOSS_TIMER || feature == Feature.DARK_AUCTION_TIMER
-                || feature == Feature.DROP_CONFIRMATION) settings.add(EnumUtils.FeatureSetting.ENABLED_IN_OTHER_GAMES);
-        if (feature == Feature.DEFENCE_ICON) settings.add(EnumUtils.FeatureSetting.USE_VANILLA_TEXTURE);
-        if (feature == Feature.SHOW_BACKPACK_PREVIEW) {
-            settings.add(EnumUtils.FeatureSetting.BACKPACK_STYLE);
-            settings.add(EnumUtils.FeatureSetting.SHOW_ONLY_WHEN_HOLDING_SHIFT);
-            settings.add(EnumUtils.FeatureSetting.MAKE_INVENTORY_COLORED);
-        }
-        if (feature == Feature.HEALTH_BAR) {
-            settings.add(EnumUtils.FeatureSetting.CHANGE_BAR_COLOR_WITH_POTIONS);
-        }
-        return settings;
     }
 
     private void addLanguageButton() {

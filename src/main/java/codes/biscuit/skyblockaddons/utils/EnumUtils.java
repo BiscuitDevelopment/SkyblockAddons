@@ -2,6 +2,9 @@ package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import net.minecraft.entity.Entity;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.Vec3;
@@ -22,7 +25,7 @@ public class EnumUtils {
         TOP_RIGHT(1, ANCHOR_POINT_TOP_RIGHT),
         BOTTOM_LEFT(2, ANCHOR_POINT_BOTTOM_LEFT),
         BOTTOM_RIGHT(3, ANCHOR_POINT_BOTTOM_RIGHT),
-        HEALTH_BAR(4, ANCHOR_POINT_HEALTH_BAR);
+        BOTTOM_MIDDLE(4, ANCHOR_POINT_HEALTH_BAR);
 
         private Message message;
         private int id;
@@ -55,8 +58,8 @@ public class EnumUtils {
                 case TOP_RIGHT: case BOTTOM_RIGHT:
                     x = maxX;
                     break;
-                case HEALTH_BAR:
-                    x = maxX / 2 - 91;
+                case BOTTOM_MIDDLE:
+                    x = maxX / 2;// - 91;
                     break;
                 default: // or case TOP_LEFT: case BOTTOM_LEFT:
                     x = 0;
@@ -68,12 +71,12 @@ public class EnumUtils {
         public int getY(int maxY) {
             int y;
             switch (this) {
-                case BOTTOM_LEFT: case BOTTOM_RIGHT:
+                case BOTTOM_LEFT: case BOTTOM_RIGHT: case BOTTOM_MIDDLE:
                     y = maxY;
                     break;
-                case HEALTH_BAR:
-                    y = maxY - 39;
-                    break;
+//                case BOTTOM_MIDDLE:
+//                    y = maxY - 39;
+//                    break;
                 default: // or case TOP_LEFT: case TOP_RIGHT:
                     y = 0;
 
@@ -339,7 +342,17 @@ public class EnumUtils {
     }
 
     public enum GuiTab {
-        FEATURES, FIXES, GUI_FEATURES, GENERAL_SETTINGS
+        FEATURES, FIXES, GUI_FEATURES, GENERAL_SETTINGS;
+
+        public Set<Feature> getFeatures() {
+            switch (this) {
+                case FEATURES: return Feature.getFeatures();
+                case FIXES: return Feature.getFixes();
+                case GUI_FEATURES: return Feature.getGuiFeatures();
+                case GENERAL_SETTINGS: return Feature.getGeneralFeatures();
+            }
+            return null;
+        }
     }
 
     public enum FeatureSetting {
@@ -436,5 +449,47 @@ public class EnumUtils {
             String text = WordUtils.wrap(message.getMessage(variables), 36).replace("\r", "");
             return text.split(Pattern.quote("\n"));
         }
+    }
+
+    public enum SkillType {
+        FARMING("Farming", Items.golden_hoe),
+        MINING("Mining", Items.diamond_pickaxe),
+        COMBAT("Combat", Items.iron_sword),
+        FORAGING("Foraging", Item.getItemFromBlock(Blocks.sapling)),
+        FISHING("Fishing", Items.fishing_rod),
+        ENCHANTING("Enchanting", Item.getItemFromBlock(Blocks.enchanting_table)),
+        ALCHEMY("Alchemy", Item.getItemFromBlock(Blocks.brewing_stand)),
+        CARPENTRY("Carpentry", Item.getItemFromBlock(Blocks.crafting_table)),
+        RUNECRAFTING("Runecrafting", Items.magma_cream),
+        OTHER(null, null);
+
+        private String skillName;
+        private ItemStack item;
+
+        SkillType(String skillName, Item item) {
+            this.skillName = skillName;
+            this.item = new ItemStack(item);
+        }
+
+        public static SkillType getFromString(String text) {
+            for (SkillType skillType : values()) {
+                if (skillType.skillName != null && skillType.skillName.equals(text)) {
+                    return skillType;
+                }
+            }
+            return OTHER;
+        }
+
+        public ItemStack getItem() {
+            return item;
+        }
+    }
+
+    public enum DrawType {
+        SKELETON_BAR,
+        BAR,
+        TEXT,
+        PICKUP_LOG,
+        DEFENCE_ICON
     }
 }

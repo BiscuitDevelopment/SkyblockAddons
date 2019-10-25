@@ -32,11 +32,13 @@ import static net.minecraft.client.gui.Gui.icons;
 public class RenderListener {
 
     private SkyblockAddons main;
-    private final static ItemStack BONE_ITEM = new ItemStack(Item.getItemById(352));
+
+    public final static ResourceLocation LOCK = new ResourceLocation("skyblockaddons", "lock.png");
+
+    private final ItemStack BONE_ITEM = new ItemStack(Item.getItemById(352));
     private final ResourceLocation BARS = new ResourceLocation("skyblockaddons", "bars.png");
     private final ResourceLocation DEFENCE_VANILLA = new ResourceLocation("skyblockaddons", "defence.png");
     private final ResourceLocation TEXT_ICONS = new ResourceLocation("skyblockaddons", "icons.png");
-    public static final ResourceLocation LOCK = new ResourceLocation("skyblockaddons", "lock.png");
 
     private boolean predictHealth = false;
     private boolean predictMana = false;
@@ -46,6 +48,10 @@ public class RenderListener {
     private Feature subtitleFeature = null;
     private Feature titleFeature = null;
     private String cannotReachMobName = null;
+
+    private EnumUtils.SkillType skill = null;
+    private int progress = 0;
+    private int maxSkill = 0;
 
     private PlayerListener.GUIType guiToOpen = null;
     private int guiPageToOpen = 1;
@@ -207,58 +213,20 @@ public class RenderListener {
         Minecraft mc = Minecraft.getMinecraft();
         if (!(mc.currentScreen instanceof LocationEditGui) && !(mc.currentScreen instanceof GuiNotification)) {
             GlStateManager.disableBlend();
-            if ((main.getConfigValues().isEnabled(Feature.SKELETON_BAR)) && main.getInventoryUtils().isWearingSkeletonHelmet()) {
-                float scale = main.getConfigValues().getGuiScale(Feature.SKELETON_BAR);
-                GlStateManager.pushMatrix();
-                GlStateManager.scale(scale, scale, 1);
-                drawSkeletonBar(scale, mc, null);
-                GlStateManager.popMatrix();
-            }
-            Feature[] bars = {Feature.MANA_BAR, Feature.HEALTH_BAR};
-            for (Feature feature : bars) {
+
+            for (Feature feature : Feature.getGuiFeatures()) {
                 if (main.getConfigValues().isEnabled(feature)) {
+                    if (feature == Feature.SKELETON_BAR && !main.getInventoryUtils().isWearingSkeletonHelmet()) return;
+                    if (feature == Feature.HEALTH_UPDATES && main.getPlayerListener().getHealthUpdate() == null) return;
+
                     float scale = main.getConfigValues().getGuiScale(feature);
                     GlStateManager.pushMatrix();
                     GlStateManager.scale(scale, scale, 1);
-                    drawBar(feature, scale, mc);
+                    feature.draw(scale, mc, null);
                     GlStateManager.popMatrix();
                 }
             }
-
-            if (main.getConfigValues().isEnabled(Feature.DEFENCE_ICON)) {
-                float scale = main.getConfigValues().getGuiScale(Feature.DEFENCE_ICON);
-                GlStateManager.pushMatrix();
-                GlStateManager.scale(scale, scale, 1);
-                drawIcon(scale, mc, null);
-                GlStateManager.popMatrix();
-            }
-
-            Feature[] texts = {Feature.DEFENCE_TEXT, Feature.DEFENCE_PERCENTAGE, Feature.MANA_TEXT, Feature.HEALTH_TEXT, Feature.HEALTH_UPDATES
-                    , Feature.DARK_AUCTION_TIMER, Feature.MAGMA_BOSS_TIMER};
-            for (Feature feature : texts) {
-                if (main.getConfigValues().isEnabled(feature)) {
-                    if (feature != Feature.HEALTH_UPDATES || main.getPlayerListener().getHealthUpdate() != null) {
-                        float scale = main.getConfigValues().getGuiScale(feature);
-                        GlStateManager.pushMatrix();
-                        GlStateManager.scale(scale, scale, 1);
-                        drawText(feature, scale, mc, null);
-                        GlStateManager.popMatrix();
-                    }
-                }
-            }
-
-            if(main.getConfigValues().isEnabled(Feature.ITEM_PICKUP_LOG)) {
-                float scale = main.getConfigValues().getGuiScale(Feature.ITEM_PICKUP_LOG);
-                GlStateManager.pushMatrix();
-                GlStateManager.scale(scale, scale, 1);
-                drawItemPickupLog(mc, scale, null, null);
-                GlStateManager.popMatrix();
-            }
         }
-    }
-
-    private void drawBar(Feature feature, float scaleMultiplier, Minecraft mc) {
-        drawBar(feature, scaleMultiplier, mc, null);
     }
 
     /**
@@ -522,9 +490,12 @@ public class RenderListener {
             text = String.valueOf(getAttribute(Attribute.DEFENCE));
         } else if (feature == Feature.DEFENCE_PERCENTAGE) {
             double doubleDefence = (double)getAttribute(Attribute.DEFENCE);
-            double percentage = ((doubleDefence/100)/((doubleDefence/100)+1))*100; //Formula taken from https://hypixel.net/threads/how-armor-works-and-the-diminishing-return-of-higher-defence.2178928/
+            double percentage = ((doubleDefence/100)/((doubleDefence/100)+1))*100; //Taken from https://hypixel.net/threads/how-armor-works-and-the-diminishing-return-of-higher-defence.2178928/
             BigDecimal bigDecimal = new BigDecimal(percentage).setScale(1, BigDecimal.ROUND_HALF_UP);
             text = bigDecimal.toString()+"%";
+        } else if (feature == Feature.SPEED_PERCENTAGE) {
+            String walkSpeed = String.valueOf(Minecraft.getMinecraft().thePlayer.capabilities.getWalkSpeed()*1000);
+            text = walkSpeed.substring(0, walkSpeed.length() >= 3 ? 3 : walkSpeed.length())+"%";
         } else if (feature == Feature.HEALTH_UPDATES) {
             Integer healthUpdate = main.getPlayerListener().getHealthUpdate();
             if (buttonLocation == null) {
@@ -585,6 +556,16 @@ public class RenderListener {
                 }
             }
             text = magmaBuilder.toString();
+        } else if (feature == Feature.COLLECTION_DISPLAY) {
+            if (buttonLocation == null) {
+                if (skill != null) {
+                    text = progress + "/" + maxSkill;
+                } else {
+                    return;
+                }
+            } else {
+                text = "20000/50000";
+            }
         } else {
             return;
         }
@@ -604,7 +585,7 @@ public class RenderListener {
             int boxXTwo = intX+width+4;
             int boxYOne = intY-4;
             int boxYTwo = intY+height+4;
-            if (feature == Feature.MAGMA_BOSS_TIMER || feature == Feature.DARK_AUCTION_TIMER) {
+            if (feature == Feature.MAGMA_BOSS_TIMER || feature == Feature.DARK_AUCTION_TIMER || feature == Feature.COLLECTION_DISPLAY ) {
                 boxXOne-=18;
                 boxYOne-=2;
             }
@@ -626,6 +607,9 @@ public class RenderListener {
             Gui.drawModalRectWithCustomSizedTexture(intX-18, intY-5, 16, 0, 16,16,32,32);
         } else if (feature == Feature.MAGMA_BOSS_TIMER) {
             Gui.drawModalRectWithCustomSizedTexture(intX-18, intY-5, 0, 0, 16,16,32,32);
+        } else if (feature == Feature.COLLECTION_DISPLAY && ((skill != null && skill.getItem() != null) || buttonLocation != null) ) {
+            mc.getRenderItem().renderItemIntoGUI(buttonLocation == null ? skill.getItem() : EnumUtils.SkillType.FARMING.getItem(),
+                    intX-18, intY-5);
         }
     }
 
@@ -762,5 +746,17 @@ public class RenderListener {
 
     public DownloadInfo getDownloadInfo() {
         return downloadInfo;
+    }
+
+    void setSkill(String skill) {
+        this.skill = EnumUtils.SkillType.getFromString(skill);
+    }
+
+    void setMaxSkill(int maxSkill) {
+        this.maxSkill = maxSkill;
+    }
+
+    void setProgress(int progress) {
+        this.progress = progress;
     }
 }

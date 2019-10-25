@@ -76,6 +76,15 @@ public class SkyblockAddons {
         }
         utils.checkDisabledFeatures();
         scheduleMagmaCheck();
+
+        for (Feature feature : Feature.values()) {
+            if (feature.isGuiFeature()) {
+                feature.getSettings().add(EnumUtils.FeatureSetting.GUI_SCALE);
+            }
+            if (feature.isColorFeature()) {
+                feature.getSettings().add(EnumUtils.FeatureSetting.COLOR);
+            }
+        }
     }
 
     public void loadKeyBindingDescriptions() {

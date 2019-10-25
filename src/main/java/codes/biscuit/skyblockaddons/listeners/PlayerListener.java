@@ -49,15 +49,15 @@ public class PlayerListener {
 
     private final Pattern ENCHANTMENT_TOOLTIP_PATTERN = Pattern.compile("§.§.(§9[\\w ]+(, )?)+");
     private final Pattern ABILITY_CHAT_PATTERN = Pattern.compile("§r§aUsed §r§6[A-Za-z ]+§r§a! §r§b\\([0-9]+ Mana\\)§r");
-    private Pattern PROFILE_CHAT_PATTERN = Pattern.compile("§aYou are playing on profile: §e([A-Za-z]+).*");
-    private Pattern SWITCH_PROFILE_CHAT_PATTERN = Pattern.compile("§aYour profile was changed to: §e([A-Za-z]+).*");
+    private final Pattern PROFILE_CHAT_PATTERN = Pattern.compile("§aYou are playing on profile: §e([A-Za-z]+).*");
+    private final Pattern SWITCH_PROFILE_CHAT_PATTERN = Pattern.compile("§aYour profile was changed to: §e([A-Za-z]+).*");
+    private final Pattern COLLECTIONS_CHAT_PATTERN = Pattern.compile("§.\\+§?[0-9a-f]?[0-9.]+ §?[0-9a-f]?([A-Za-z]+) \\(([0-9]+)[0-9.]*/([0-9.]+)\\)");
 
     private boolean sentUpdate = false;
     private long lastWorldJoin = -1;
     private long lastBoss = -1;
     private int magmaTick = 1;
     private int timerTick = 1;
-    private long lastScreenOpen = -1;
     private long lastMinionSound = -1;
 
     private int lastSecondHealth = -1;
@@ -144,7 +144,13 @@ public class PlayerListener {
                             if (!splitMessage[1].contains("(")) { // Example Collection Bar: '§c986/986❤     §3+1 Mining (10,714.7/15,000)     §b297/323✎ Mana§r'
                                 defencePart = splitMessage[1];
                             } else {
-                                collectionPart = splitMessage[1];
+                                collectionPart = splitMessage[1]; // Another Example: §5+§d30 §5Runecrafting (969/1000)
+                                Matcher matcher = COLLECTIONS_CHAT_PATTERN.matcher(collectionPart.replace(",", ""));
+                                if (matcher.matches()) {
+                                    main.getRenderListener().setSkill(matcher.group(1));
+                                    main.getRenderListener().setProgress(Integer.parseInt(matcher.group(2)));
+                                    main.getRenderListener().setMaxSkill(Integer.parseInt(matcher.group(3)));
+                                }
                             }
                             manaPart = splitMessage[2];
                         } else {
@@ -174,12 +180,13 @@ public class PlayerListener {
                         main.getRenderListener().setPredictHealth(false);
                         StringBuilder newMessage = new StringBuilder();
                         boolean showHealth = main.getConfigValues().isDisabled(Feature.HEALTH_BAR) && main.getConfigValues().isDisabled(Feature.HEALTH_TEXT);
+                        boolean showCollection = collectionPart != null && main.getConfigValues().isDisabled(Feature.COLLECTION_DISPLAY);
                         boolean showDefence = defencePart != null && main.getConfigValues().isDisabled(Feature.DEFENCE_PERCENTAGE) && main.getConfigValues().isDisabled(Feature.DEFENCE_TEXT);
                         boolean showMana = main.getConfigValues().isDisabled(Feature.MANA_BAR) && main.getConfigValues().isDisabled(Feature.MANA_TEXT);
                         if (showHealth) {
                             newMessage.append(healthPart);
                         }
-                        if (collectionPart != null) {
+                        if (showCollection) {
                             if (showHealth) newMessage.append("     ");
                             newMessage.append(collectionPart);
                         }
@@ -227,8 +234,6 @@ public class PlayerListener {
             if (matcher.matches()) {
                 main.getUtils().logEntry(Minecraft.getMinecraft().thePlayer.getHeldItem());
             } else {
-                PROFILE_CHAT_PATTERN = Pattern.compile("§aYou are playing on profile: §e([A-Za-z]+).*");
-                SWITCH_PROFILE_CHAT_PATTERN = Pattern.compile("§aYour profile was changed to: §e([A-Za-z]+).*");
                 matcher = PROFILE_CHAT_PATTERN.matcher(e.message.getFormattedText());
                 if (matcher.matches()) {
                     main.getUtils().setProfileName(matcher.group(1));
@@ -326,9 +331,7 @@ public class PlayerListener {
                             sentUpdate = true;
                         }
 
-                        if (mc.currentScreen != null) {
-                            lastScreenOpen = System.currentTimeMillis();
-                        } else if (main.getConfigValues().isEnabled(Feature.ITEM_PICKUP_LOG)
+                        if (mc.currentScreen == null && main.getConfigValues().isEnabled(Feature.ITEM_PICKUP_LOG)
                                 && main.getPlayerListener().didntRecentlyJoinWorld()) {
                             main.getInventoryUtils().getInventoryDifference(p.inventory.mainInventory);
                         }
@@ -643,10 +646,6 @@ public class PlayerListener {
 
     public boolean shouldResetMouse() {
         return System.currentTimeMillis() - lastClosedInv > 100;
-    }
-
-    public boolean didntRecentlyCloseScreen() {
-        return System.currentTimeMillis() - lastScreenOpen > 500;
     }
 
     public boolean didntRecentlyJoinWorld() {

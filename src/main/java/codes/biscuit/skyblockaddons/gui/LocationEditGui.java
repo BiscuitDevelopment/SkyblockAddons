@@ -41,10 +41,7 @@ public class LocationEditGui extends GuiScreen {
     @Override
     public void initGui() {
         // Add all gui elements that can be edited to the gui.
-        Feature[] features = {Feature.MANA_BAR, Feature.HEALTH_BAR, Feature.SKELETON_BAR, Feature.MANA_TEXT,
-                Feature.HEALTH_TEXT, Feature.DEFENCE_ICON, Feature.DEFENCE_TEXT, Feature.DEFENCE_PERCENTAGE,
-                Feature.HEALTH_UPDATES, Feature.DARK_AUCTION_TIMER, Feature.MAGMA_BOSS_TIMER, Feature.ITEM_PICKUP_LOG};
-        for (Feature feature : features) {
+        for (Feature feature : Feature.getGuiFeatures()) {
             if (!main.getConfigValues().isDisabled(feature)) { // Don't display features that have been disabled
                 buttonList.add(new ButtonLocation(main, feature));
                 if (feature == Feature.HEALTH_BAR || feature == Feature.MANA_BAR) {
@@ -61,14 +58,6 @@ public class LocationEditGui extends GuiScreen {
         int x = scaledResolution.getScaledWidth()/2-boxWidth/2;
         int y = scaledResolution.getScaledHeight()/2-boxHeight/2;
         buttonList.add(new ButtonSolid(x, y, boxWidth, boxHeight, text, main, Feature.RESET_LOCATION));
-//        text = Message.SETTING_ANCHOR_POINT.getMessage();
-//        boxWidth = fontRendererObj.getStringWidth(text)+10;
-//        boxHeight = 20;
-//        x = scaledResolution.getScaledWidth()/2-boxWidth/2;
-//        y = scaledResolution.getScaledHeight()/2-boxHeight/2;
-////        if (boxWidth > BUTTON_MAX_WIDTH) boxWidth = BUTTON_MAX_WIDTH;
-//        y-=25;
-//        buttonList.add(new ButtonSolid(x, y, boxWidth, boxHeight, text, main, Feature.ANCHOR_POINT));
     }
 
     private void addResizeButtons(Feature feature) {
@@ -130,12 +119,7 @@ public class LocationEditGui extends GuiScreen {
             ButtonSolid buttonSolid = (ButtonSolid)abstractButton;
             if (buttonSolid.getFeature() == Feature.RESET_LOCATION) {
                 main.getConfigValues().setAllCoordinatesToDefault();
-            }// else if (buttonSolid.getFeature() == Feature.ANCHOR_POINT) {
-//                main.getConfigValues().setNextAnchorPoint(ButtonLocation.getLastHoveredFeature());
-//                cancelScreenReturn = true;
-//                Minecraft.getMinecraft().displayGuiScreen(new LocationEditGui(main));
-//                cancelScreenReturn = false;
-//            }
+            }
         } else if (abstractButton instanceof ButtonResize) {
             ButtonResize buttonResize = (ButtonResize)abstractButton;
             dragging = buttonResize.getFeature();

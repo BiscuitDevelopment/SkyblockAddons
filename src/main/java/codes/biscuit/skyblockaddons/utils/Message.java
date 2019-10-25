@@ -75,6 +75,8 @@ public enum Message {
     SETTING_JUNGLE_AXE_COOLDOWN(MessageObject.SETTING, "jungleAxeCooldown"),
     SETTING_ORGANIZE_ENCHANTMENTS(MessageObject.SETTING, "organizeLongEnchantmentLists"),
     SETTING_SHOW_ITEM_COOLDOWNS(MessageObject.SETTING, "showItemCooldowns"),
+    SETTING_COLLECTION_DISPLAY(MessageObject.SETTING, "collectionDisplay"),
+    SETTING_SPEED_PERCENTAGE(MessageObject.SETTING, "speedPercentage"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.STYLE, "compact"),

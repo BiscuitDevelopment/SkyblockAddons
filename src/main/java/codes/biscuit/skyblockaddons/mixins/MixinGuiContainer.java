@@ -55,25 +55,27 @@ public class MixinGuiContainer extends GuiScreen {
                     List<String> toolip = item.getTooltip(mc.thePlayer, false);
                     if (toolip.size() > 2) {
                         String enchantLine = toolip.get(2);
-                        String toMatch = enchantLine.split(Pattern.quote("* "))[1];
-//                        String enchant = EnumChatFormatting.YELLOW + enchantLine.split(Pattern.quote("* "))[1];
-                        String enchant;
-                        if (main.getUtils().getEnchantmentMatch().size() > 0 &&
-                                main.getUtils().enchantReforgeMatches(toMatch)) {
-                            enchant = EnumChatFormatting.RED + enchantLine.split(Pattern.quote("* "))[1];
-                        } else {
-                            enchant = EnumChatFormatting.YELLOW + enchantLine.split(Pattern.quote("* "))[1];
+                        String[] lines = enchantLine.split(Pattern.quote("* "));
+                        if (lines.length >= 2) {
+                            String toMatch = lines[1];
+                            String enchant;
+                            if (main.getUtils().getEnchantmentMatch().size() > 0 &&
+                                    main.getUtils().enchantReforgeMatches(toMatch)) {
+                                enchant = EnumChatFormatting.RED + toMatch;
+                            } else {
+                                enchant = EnumChatFormatting.YELLOW + toMatch;
+                            }
+                            float yOff;
+                            if (slotIn.slotNumber == 29 || slotIn.slotNumber == 33) {
+                                yOff = 26;
+                            } else {
+                                yOff = 36;
+                            }
+                            float scaleMultiplier = 1 / 0.75F;
+                            float halfStringWidth = fr.getStringWidth(enchant) / 2;
+                            x += 8; // to center it
+                            enchantsToRender.add(new EnchantPair(x * scaleMultiplier - halfStringWidth, y * scaleMultiplier + yOff, enchant));
                         }
-                        float yOff;
-                        if (slotIn.slotNumber == 29 || slotIn.slotNumber == 33) {
-                            yOff = 26;
-                        } else {
-                            yOff = 36;
-                        }
-                        float scaleMultiplier = 1 / 0.75F;
-                        float halfStringWidth = fr.getStringWidth(enchant) / 2;
-                        x += 8; // to center it
-                        enchantsToRender.add(new EnchantPair(x * scaleMultiplier - halfStringWidth, y * scaleMultiplier + yOff, enchant));
                     }
                 } else if (slotIn.inventory.getDisplayName().getUnformattedText().equals("Reforge Item") && slotIn.slotNumber == 13) {
                     String reforge = main.getUtils().getReforgeFromItem(item);
