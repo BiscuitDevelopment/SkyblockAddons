@@ -76,8 +76,8 @@
     "jungleAxeCooldown": "JungelYxaNedkylnig",
     "organizeLongEnchantmentLists": "Organisera Långa Enchantment listor",
     "showItemCooldowns": "Visa artikel nedkylning",
-    "speedPercentage": "Speed Percentage",
-    "collectionDisplay": "Collection Display"
+    "speedPercentage": "Fart Procent",
+    "collectionDisplay": "Skill Progress Display"
   },
   "messages": {
     "dropConfirmation": "Släpp Det Här Igen För Att Bekräfta!",
