@@ -77,7 +77,7 @@
     "organizeLongEnchantmentLists": "Järjestä pitkät lumouslistat",
     "showItemCooldowns": "Näytä tavaran jäähtymisaika",
     "speedPercentage": "Nopeuden prosenttimäärä",
-    "collectionDisplay": "Keräysnäyttö"
+    "collectionDisplay": "Skill Progress Display"
   },
   "messages": {
     "dropConfirmation": "Pudota tämä esine uudelleen vahvistaaksesi!",
