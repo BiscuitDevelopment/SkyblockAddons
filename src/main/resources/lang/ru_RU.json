@@ -75,7 +75,9 @@
     "disableMinionLocationWarning": "Отключить ошибку об неверном расположении",
     "jungleAxeCooldown": "Jungle Axe Cooldown",
     "organizeLongEnchantmentLists": "Организовать список длинных зачарований",
-    "showItemCooldowns": "Show Item Cooldowns"
+    "showItemCooldowns": "Show Item Cooldowns",
+    "speedPercentage": "Speed Percentage",
+    "collectionDisplay": "Collection Display"
   },
   "messages": {
     "dropConfirmation": "Выбросите предмет ещё раз для подтверждения!",
