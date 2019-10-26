@@ -74,10 +74,10 @@
     "avoidBlinkingNightVision": "取消夜視藥水閃爍",
     "disableMinionLocationWarning": "取消Minion位置不完美警告",
     "jungleAxeCooldown": "叢林之斧冷卻",
-    "organizeLongEnchantmentLists": "Organize Long Enchantment Lists",
+    "organizeLongEnchantmentLists": "整理長附魔名稱列表",
     "showItemCooldowns": "顯示物品冷卻",
-    "speedPercentage": "Speed Percentage",
-    "collectionDisplay": "Skill Progress Display"
+    "speedPercentage": "速度百分比",
+    "collectionDisplay": "技能進度顯示"
   },
   "messages": {
     "dropConfirmation": "再次丟棄此物品以確認!",
