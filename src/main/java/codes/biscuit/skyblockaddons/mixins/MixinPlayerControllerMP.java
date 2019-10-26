@@ -26,10 +26,14 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
+import java.util.Arrays;
+import java.util.List;
+
 @Mixin(PlayerControllerMP.class)
 public class MixinPlayerControllerMP {
 
     private long lastStemMessage = -1;
+    private long lastUnmineableMessage = -1;
     private long lastProfileMessage = -1;
 
     /**
@@ -42,12 +46,38 @@ public class MixinPlayerControllerMP {
         EntityPlayerSP p = mc.thePlayer;
         ItemStack heldItem = p.getHeldItem();
         Block block = mc.theWorld.getBlockState(loc).getBlock();
+        List<EnumUtils.Location> deepCavernsLocations = Arrays.asList(
+                EnumUtils.Location.DEEP_CAVERNS,
+                EnumUtils.Location.GUNPOWDER_MINES,
+                EnumUtils.Location.LAPIS_QUARRY,
+                EnumUtils.Location.PIGMAN_DEN,
+                EnumUtils.Location.SLIMEHILL,
+                EnumUtils.Location.DIAMOND_RESERVE,
+                EnumUtils.Location.OBSIDIAN_SANCTUARY);
+        List<Block> mineableBlocks = Arrays.asList(
+                Blocks.coal_ore,
+                Blocks.iron_ore,
+                Blocks.gold_ore,
+                Blocks.redstone_ore,
+                Blocks.emerald_ore,
+                Blocks.diamond_ore,
+                Blocks.diamond_block,
+                Blocks.obsidian
+        );
+
         if (heldItem != null) {
             if (main.getConfigValues().isEnabled(Feature.AVOID_BREAKING_STEMS) && (block.equals(Blocks.melon_stem) || block.equals(Blocks.pumpkin_stem))) {
                 if (System.currentTimeMillis()- lastStemMessage > 20000) {
                     lastStemMessage = System.currentTimeMillis();
                     main.getUtils().sendMessage(main.getConfigValues().getColor(Feature.AVOID_BREAKING_STEMS).getChatFormatting()+Message.MESSAGE_CANCELLED_STEM_BREAK.getMessage());
                 }
+                cir.setReturnValue(false);
+            } else if (main.getConfigValues().isEnabled(Feature.ONLY_MINE_ORES_DEEP_CAVERNS) && deepCavernsLocations.contains(main.getUtils().getLocation()) && heldItem.getUnlocalizedName().contains("pickaxe") && !mineableBlocks.contains(block)) {
+                if (System.currentTimeMillis()- lastUnmineableMessage > 60000) {
+                    lastUnmineableMessage = System.currentTimeMillis();
+                    main.getUtils().sendMessage(main.getConfigValues().getColor(Feature.ONLY_MINE_ORES_DEEP_CAVERNS).getChatFormatting() + Message.MESSAGE_CANCELLED_NON_ORES_BREAK.getMessage());
+                }
+
                 cir.setReturnValue(false);
             } else if (main.getConfigValues().isEnabled(Feature.JUNGLE_AXE_COOLDOWN)) {
                 CooldownEntry cooldown = main.getUtils().getItemCooldown("§aJungle Axe");

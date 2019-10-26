@@ -77,7 +77,8 @@
     "organizeLongEnchantmentLists": "Organize Long Enchantment Lists",
     "showItemCooldowns": "Show Item Cooldowns",
     "speedPercentage": "Speed Percentage",
-    "collectionDisplay": "Skill Progress Display"
+    "collectionDisplay": "Skill Progress Display",
+    "onlyMineOresDeepCaverns": "Only mine ores in Deep Caverns"
   },
   "messages": {
     "dropConfirmation": "Drop this item again to confirm!",
@@ -117,6 +118,7 @@
     "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare item or tool from your hotbar.",
     "clickMoreTimes": "Click/drop this item %times% more times if you really want to do this.",
     "featureDisabled": "Feature Disabled",
-    "anvilUses": "Anvil Uses: %uses%"
+    "anvilUses": "Anvil Uses: %uses%",
+    "cancelledNonOresBreak": "SkyblockAddons has stopped you from breaking this block inside Deep Caverns. Disable this feature if you'd like to actually break it."
   }
 }

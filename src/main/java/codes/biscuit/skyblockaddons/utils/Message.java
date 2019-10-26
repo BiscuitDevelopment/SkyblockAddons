@@ -77,6 +77,7 @@ public enum Message {
     SETTING_SHOW_ITEM_COOLDOWNS(MessageObject.SETTING, "showItemCooldowns"),
     SETTING_COLLECTION_DISPLAY(MessageObject.SETTING, "collectionDisplay"),
     SETTING_SPEED_PERCENTAGE(MessageObject.SETTING, "speedPercentage"),
+    SETTING_ONLY_MINE_ORES_DEEP_CAVERNS(MessageObject.SETTING, "onlyMineOresDeepCaverns"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.STYLE, "compact"),
@@ -110,6 +111,7 @@ public enum Message {
     MESSAGE_DELETE_OLD_FILE(MessageObject.MESSAGES, "deleteOldFile"),
     MESSAGE_FEATURE_DISABLED(MessageObject.MESSAGES, "featureDisabled"),
     MESSAGE_ANVIL_USES(MessageObject.MESSAGES, "anvilUses"),
+    MESSAGE_CANCELLED_NON_ORES_BREAK(MessageObject.MESSAGES, "cancelledNonOresBreak"),
 
     @Deprecated ANCHOR_POINT_TOP_LEFT(MessageObject.ANCHOR_POINT, "topLeft"),
     @Deprecated ANCHOR_POINT_TOP_RIGHT(MessageObject.ANCHOR_POINT, "topRight"),
