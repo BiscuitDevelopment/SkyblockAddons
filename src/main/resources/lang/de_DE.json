@@ -71,13 +71,13 @@
     "changeBarColorForPotions": "Farbe der Leiste bei Wither und Gift ändern",
     "craftingPatterns": "Wähle Herstellung-Muster",
     "soundIndicatorForFishing": "Tonindikator für Fischerei",
-    "avoidBlinkingNightVision": "Deaktiviere Nacht Sicht Blinken",
+    "avoidBlinkingNightVision": "Deaktiviere Nachtsicht Blinken",
     "disableMinionLocationWarning": "Deaktiviere \"Location not perfect\" Warnung",
-    "jungleAxeCooldown": "Jungle Axe Abklingzeit",
+    "jungleAxeCooldown": "Dschungelaxt Abklingzeit",
     "organizeLongEnchantmentLists": "Organisieren von langen Verzauberungslisten",
     "showItemCooldowns": "Item Abklingzeit anzeigen",
-    "speedPercentage": "Speed Percentage",
-    "collectionDisplay": "Skill Progress Display"
+    "speedPercentage": "Geschwindigkeit in Prozent",
+    "collectionDisplay": "Skillfortschrittsanzeige"
   },
   "messages": {
     "dropConfirmation": "Werfe diesen Gegenstand nochmal, um zu bestätigen!",
@@ -93,7 +93,7 @@
     "inventoryTypes": {
       "enchants": "Verzauberungen",
       "reforges": "Verbesserungen",
-      "crafting": "Craften"
+      "crafting": "Crafting"
     },
     "newUpdateAvailable": "Ein neues Update (%version%) ist verfügbar!",
     "deleteOldFile": "Der Download ist beendet, benutze den Knopf unten, um den mods Ordner zu öffnen, schließe dein Minecraft und lösche die alte Version (oder lösche es später).",
