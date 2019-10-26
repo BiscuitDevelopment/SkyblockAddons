@@ -76,8 +76,8 @@
     "jungleAxeCooldown": "Jungle Axe Bekleme Süresi",
     "organizeLongEnchantmentLists": "Uzun Büyü Listelerini Düzelt",
     "showItemCooldowns": "Eşya Bekleme Sürelerini Göster",
-    "speedPercentage": "Speed Percentage",
-    "collectionDisplay": "Skill Progress Display"
+    "speedPercentage": "Hız yüzdesi",
+    "collectionDisplay": "Beceri ilerleme göstergesi"
   },
   "messages": {
     "dropConfirmation": "Eşyayı düşürmeyi onaylamak için düşürme tuşuna bir daha bas!",
