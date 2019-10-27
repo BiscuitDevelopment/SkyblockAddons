@@ -70,9 +70,9 @@
     "replaceRomanNumeralsWithNumbers": "Bytt Ut Romertall på Gjenstander",
     "changeBarColorForPotions": "Bytt ut bar farge for visne og gift effekter",
     "craftingPatterns": "Velg utformingsmønstre",
-    "soundIndicatorForFishing": "Sound Indicator for Fishing",
-    "avoidBlinkingNightVision": "Disable Night Vision Potion Blinking",
-    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings",
+    "soundIndicatorForFishing": "Lyd Indikator for Fisking",
+    "avoidBlinkingNightVision": "Deaktivere Nattsyn Trylledrikk Blinking",
+    "disableMinionLocationWarning": "Deaktivere Plassering Ikke Perfekt Advarsler",
     "jungleAxeCooldown": "Jungel Øks Pause",
     "organizeLongEnchantmentLists": "Organiser Lang Fortryllelse Lister",
     "showItemCooldowns": "Show Item Cooldowns",
@@ -117,6 +117,6 @@
     "cancelledDropping": "SkyblockAddons har stoppet deg fra å slippe denne sjeldne gjenstanden/redskap fra din hotbar.",
     "clickMoreTimes": "Klikk/slipp denne gjenstanden %times% flere ganger hvis du virkelig vil gjøre dette.",
     "featureDisabled": "Funksjon Deaktivert",
-    "anvilUses": "Ambolt Bruk; %uses%"
+    "anvilUses": "Ambolt Bruk: %uses%"
   }
 }
