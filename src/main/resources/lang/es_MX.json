@@ -76,8 +76,8 @@
     "jungleAxeCooldown": "Tiempo de Espera de Jungle Axe",
     "organizeLongEnchantmentLists": "Organizar Listas Largas de Encantamientos",
     "showItemCooldowns": "Mostrar Tiempo de Espera de Objetos",
-    "speedPercentage": "Speed Percentage",
-    "collectionDisplay": "Skill Progress Display"
+    "speedPercentage": "Porcentaje de Velocidad",
+    "collectionDisplay": "Progreso de Hablidades"
   },
   "messages": {
     "dropConfirmation": "Arroja este objeto otra vez para confirmar!",
