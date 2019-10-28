@@ -70,11 +70,14 @@
     "replaceRomanNumeralsWithNumbers": "Reemplazar Números Romanos en Objetos",
     "changeBarColorForPotions": "Cambiar Color de Barra para Wither y Veneno",
     "craftingPatterns": "Elegir Patrones de Crafteo",
-    "soundIndicatorForFishing": "Sound Indicator for Fishing",
-    "avoidBlinkingNightVision": "Disable Night Vision Potion Blinking",
-    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings",
-    "jungleAxeCooldown": "Jungle Axe Cooldown",
-    "organizeLongEnchantmentLists": "Organize Long Enchantment Lists"
+    "soundIndicatorForFishing": "Alerta de Sonido al Pescar",
+    "avoidBlinkingNightVision": "Desactivar Efecto de Parpadeo de Visión Nocturna",
+    "disableMinionLocationWarning": "Desactivar Alerta de Colocación Incorrecta",
+    "jungleAxeCooldown": "Tiempo de Espera de Jungle Axe",
+    "organizeLongEnchantmentLists": "Organizar Listas Largas de Encantamientos",
+    "showItemCooldowns": "Mostrar Tiempo de Espera de Objetos",
+    "speedPercentage": "Porcentaje de Velocidad",
+    "collectionDisplay": "Progreso de Hablidades"
   },
   "messages": {
     "dropConfirmation": "Arroja este objeto otra vez para confirmar!",
@@ -113,6 +116,7 @@
     "cancelledProfileOpening": "SkyblockAddons ha evitado que abras el perfil de este jugador con tu arco en la mano.",
     "cancelledDropping": "SkyblockAddons ha evitado que arrojes este objeto o herramienta rara.",
     "clickMoreTimes": "Haz clic/arroja el objeto %times% veces más si en realidad quieres hacerlo.",
-    "featureDisabled": "Característica Desactivada"
+    "featureDisabled": "Característica Desactivada",
+    "anvilUses": "Usos en Anvil/Yunque: %uses%"
   }
 }

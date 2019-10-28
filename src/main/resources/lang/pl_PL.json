@@ -71,10 +71,13 @@
     "changeBarColorForPotions": "Zmień kolor paska dla funkcji Wither & Mikstury",
     "craftingPatterns": "Wybierz wzór wytwarzania",
     "soundIndicatorForFishing": "Powiadomienia dźwiękowe podczas łowienia",
-    "avoidBlinkingNightVision": "Disable Night Vision Potion Blinking",
+    "avoidBlinkingNightVision": "Wyłącz miganie mikstury widzenia w ciemności",
     "disableMinionLocationWarning": "Wyłącz ostrzeżenia \"Location Not Perfect\"",
     "jungleAxeCooldown": "Czas odnowienia Jungle Axe",
-    "organizeLongEnchantmentLists": "Uporządkuj długie listy enchantów"
+    "organizeLongEnchantmentLists": "Uporządkuj długie listy enchantów",
+    "showItemCooldowns": "Pokazuj colldown itemów",
+    "speedPercentage": "Procent szybkości",
+    "collectionDisplay": "Skill Progress Display"
   },
   "messages": {
     "dropConfirmation": "Wyrzuć ten przedmiot ponownie, aby potwierdzić!",
@@ -113,6 +116,7 @@
     "cancelledProfileOpening": "SkyblockAddons powstrzymał otwieranie profilu tej osoby podczas trzymania łuku.",
     "cancelledDropping": "SkyblockAddons anulował upuszczenie tego rzadkiego przedmiotu lub narzędzia z twojego paska narzędzi.",
     "clickMoreTimes": "Naciśnij/upuść ten przedmiot %times% razy więcej, jeśli naprawdę chcesz to zrobić.",
-    "featureDisabled": "Funkcja wyłączona"
+    "featureDisabled": "Funkcja wyłączona",
+    "anvilUses": "Użycia kowadła: %uses%"
   }
 }

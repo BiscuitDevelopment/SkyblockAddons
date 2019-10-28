@@ -74,7 +74,10 @@
     "avoidBlinkingNightVision": "Evite a poção de Visão Noturna piscar",
     "disableMinionLocationWarning": "Desativar avisos de localização não perfeita",
     "jungleAxeCooldown": "Recarga do Machado da Selva",
-    "organizeLongEnchantmentLists": "Organizar lista de encantamentos longos"
+    "organizeLongEnchantmentLists": "Organizar lista de encantamentos longos",
+    "showItemCooldowns": "Mostrar tempo de recarga dos itens",
+    "speedPercentage": "Speed Percentage",
+    "collectionDisplay": "Skill Progress Display"
   },
   "messages": {
     "dropConfirmation": "Large este item de novo para confirmar!",
@@ -113,6 +116,7 @@
     "cancelledProfileOpening": "O SkyblockAddons impediu você de abrir o perfil deste jogador enquanto segura um arco.",
     "cancelledDropping": "O SkyblockAddons impediu você de largar este item ou ferramenta rara da sua hotbar.",
     "clickMoreTimes": "Clique/Largue este item mais %times% vezes caso realmente queira fazer isso.",
-    "featureDisabled": "Função desabilitada"
+    "featureDisabled": "Função desabilitada",
+    "anvilUses": "Usos na Bigorna: %uses%"
   }
 }

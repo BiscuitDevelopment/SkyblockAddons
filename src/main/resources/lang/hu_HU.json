@@ -70,11 +70,14 @@
     "replaceRomanNumeralsWithNumbers": "Római számok kicserélése a tárgyakon",
     "changeBarColorForPotions": "Sorvadás és méreg sebzőszínei",
     "craftingPatterns": "Válassz Barkácsolómintát",
-    "soundIndicatorForFishing": "Hangjelzés halászatkor",
-    "avoidBlinkingNightVision": "Éjszakai látás \"pislogás\" elkerülése",
-    "disableMinionLocationWarning": "\"Hely nem tökéletes\" minion jelzés kikapcsolása",
+    "soundIndicatorForFishing": "Hangjelzés horgászatkor",
+    "avoidBlinkingNightVision": "Éjjel látás villogás elkerülése",
+    "disableMinionLocationWarning": "\"Location not perfect\" minion jelzés kikapcsolása",
     "jungleAxeCooldown": "Jungle Axe Töltési idő",
-    "organizeLongEnchantmentLists": "Organize Long Enchantment Lists"
+    "organizeLongEnchantmentLists": "Hosszú enchant lista rendezése",
+    "showItemCooldowns": "Mutasd az a tárgy töltési idejét",
+    "speedPercentage": "Sebesség százalékos megjelenitése",
+    "collectionDisplay": "Képességfejlődés megjelenítése"
   },
   "messages": {
     "dropConfirmation": "Dobd el ezt a tárgyat újra, hogy megerősítsd!",
@@ -113,6 +116,7 @@
     "cancelledProfileOpening": "A SkyblockAddons megállította, hogy megnyisd ennek a játékosnak a profilját, amíg íj van a kezedben.",
     "cancelledDropping": "A SkyblockAddons megállította, hogy eldobd ezt a rare tárgyat vagy eszközt.",
     "clickMoreTimes": "Kattints/dobd el ezt a tárgyat még %times% alkalommal, ha tényleg ezt szeretnéd.",
-    "featureDisabled": "Funkció kikapcsolva"
+    "featureDisabled": "Funkció kikapcsolva",
+    "anvilUses": "Üllő használat: %uses%"
   }
 }
