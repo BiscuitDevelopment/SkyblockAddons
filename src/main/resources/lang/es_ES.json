@@ -77,7 +77,8 @@
     "organizeLongEnchantmentLists": "Organiza lista de Encantamientos largas",
     "showItemCooldowns": "Show Item Cooldowns",
     "speedPercentage": "Speed Percentage",
-    "collectionDisplay": "Skill Progress Display"
+    "collectionDisplay": "Skill Progress Display",
+    "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns"
   },
   "messages": {
     "dropConfirmation": "¡Dropea el Objeto otra vez para soltar!",
@@ -112,10 +113,10 @@
     "slotLocked": "¡Esta ranura está bloqueada!",
     "summoningEyeFound": "Ojo de Invocación!",
     "cancelledStemBreak": "SkyblockAddons te ha impedido romper este tallo. Usa tu mano si quieres romperlo.",
-    "cancelledCaneBreak": "SkyblockAddons te ha impedido romper este bloque de caña de azúcar. Usa tu otra herramienta si realmente quieres romperlo.",
     "cancelledProfileOpening": "SkyblockAddons te ha impedido abrir el perfil de este jugador mientras mantienes un arco.",
     "cancelledDropping": "SkyblockAddons te ha impedido que soltaras este objeto o herramienta rara de tu hotbar.",
     "clickMoreTimes": "Haga clic/soltar este objeto %times% veces más si realmente quieres hacer esto.",
+    "cancelledDeepCaverns": "A SkyblockAddons feature has stopped you from mining this block here.",
     "featureDisabled": "Función Desactivada",
     "anvilUses": "Anvil Uses: %uses%"
   }
