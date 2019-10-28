@@ -69,12 +69,15 @@
     "avoidBreakingBottomSugarCane": "Şeker Kamışının Altını Kırmayı Engelle",
     "replaceRomanNumeralsWithNumbers": "Eşyalardaki Romen Rakamlarını Değiştir",
     "changeBarColorForPotions": "Wither ve Poison efektleri için üstteki barın rengini değiştir",
-    "craftingPatterns": "Crafting şablonlarını seçme",
-    "soundIndicatorForFishing": "Balık tutarken sesle uyar",
-    "avoidBlinkingNightVision": "Night vision efekti biterken olan efekti kapat",
-    "disableMinionLocationWarning": "Location not perfect",
-    "jungleAxeCooldown": "Jungle Axe bekleme süresi",
-    "organizeLongEnchantmentLists": "Uzun enchant listelerini organize et"
+    "craftingPatterns": "Crafting Şablonlarını Seçme",
+    "soundIndicatorForFishing": "Balık Tutarken Sesle Uyar",
+    "avoidBlinkingNightVision": "Gece Görüşü Efekti Biterken Olan Yanıp Sönme Efektini Kapat",
+    "disableMinionLocationWarning": "Minionların \"Location Not Perfect\" Uyarılarını Kapat",
+    "jungleAxeCooldown": "Jungle Axe Bekleme Süresi",
+    "organizeLongEnchantmentLists": "Uzun Büyü Listelerini Düzelt",
+    "showItemCooldowns": "Eşya Bekleme Sürelerini Göster",
+    "speedPercentage": "Hız yüzdesi",
+    "collectionDisplay": "Beceri ilerleme göstergesi"
   },
   "messages": {
     "dropConfirmation": "Eşyayı düşürmeyi onaylamak için düşürme tuşuna bir daha bas!",
@@ -90,7 +93,7 @@
     "inventoryTypes": {
       "enchants": "Büyüler",
       "reforges": "Reforge'lar",
-      "crafting": "Craftlama"
+      "crafting": "Crafting"
     },
     "newUpdateAvailable": "Yeni bir sürüm (%version%) mevcut!",
     "deleteOldFile": "İndirme bitirildi, lütfen aşağıdaki düğmeye basarak mods klasörünü açtıktan sonra Minecraft'ı kapatıp eksi sürümü silin(veya sonradan silebilirsiniz).",
@@ -113,6 +116,7 @@
     "cancelledProfileOpening": "SkyblockAddons elinizde yay olduğundan bu oyuncunun profilini açmanı engelledi.",
     "cancelledDropping": "SkyblockAddons bu değerli eşyanızı yere atmanızı engelledi.",
     "clickMoreTimes": "Eğer gerçekten eşyayı yere atmak istiyorsanız %times% kez eşyaya tıklayın.",
-    "featureDisabled": "Özellik Devre Dışı"
+    "featureDisabled": "Özellik Devre Dışı",
+    "anvilUses": "Örs Kullanımı: %uses%"
   }
 }

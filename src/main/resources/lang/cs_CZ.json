@@ -71,10 +71,13 @@
     "changeBarColorForPotions": "Změň barvu ukazetele pro wither a poison efekt",
     "craftingPatterns": "Vybrat si crafting vzory",
     "soundIndicatorForFishing": "Zvukový indikátor pro rybu",
-    "avoidBlinkingNightVision": "Vyhnout Se Blikajícímu Night Vision Potionu",
-    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings",
+    "avoidBlinkingNightVision": "Vyhnout blikání night vision potionu",
+    "disableMinionLocationWarning": "Vypnout lokace neperfektních upozornění",
     "jungleAxeCooldown": "Jungle Axe Cooldown",
-    "organizeLongEnchantmentLists": "Organize Long Enchantment Lists"
+    "organizeLongEnchantmentLists": "Organizovat dlouhé seznamy enchantů",
+    "showItemCooldowns": "Ukaž čas přebití itemu",
+    "speedPercentage": "Procenta rychlosti",
+    "collectionDisplay": "Zobrazení postupu skillů"
   },
   "messages": {
     "dropConfirmation": "Vyhoď tento item pro vyhození!",
@@ -113,6 +116,7 @@
     "cancelledProfileOpening": "SkyblockAddons vám zabránil otevřít profil hráče při držení luku.",
     "cancelledDropping": "SkyblockAddons vám zabránil vyhodit tento vzácný předmět nebo nástroj z vašeho hotbaru.",
     "clickMoreTimes": "Klikněte/vyhoďte tento předmět %times%-krát, pokud to chcete opravdu udělat.",
-    "featureDisabled": "Vlsatnost je vypnuta"
+    "featureDisabled": "Vlsatnost je vypnuta",
+    "anvilUses": "Použití kovadliny: %uses%"
   }
 }

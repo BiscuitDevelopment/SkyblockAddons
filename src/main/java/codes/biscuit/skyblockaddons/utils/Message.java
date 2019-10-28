@@ -26,7 +26,6 @@ public enum Message {
     SETTING_GUI_SCALE(MessageObject.SETTING, "guiScale"),
     SETTING_RESET_LOCATIONS(MessageObject.SETTING, "resetLocations"),
     SETTING_SETTINGS(MessageObject.SETTING, "settings"),
-//    SETTING_HIDE_DURABILITY(MessageObject.SETTING, "hideDurability"), // removed
     SETTING_ENCHANTS_AND_REFORGES(MessageObject.SETTING, "showEnchantmentsReforges"),
     SETTING_MINION_STOP_WARNING(MessageObject.SETTING, "minionStopWarning"),
     SETTING_AUCTION_HOUSE_PLAYERS(MessageObject.SETTING, "hideAuctionHousePlayers"),
@@ -77,6 +76,7 @@ public enum Message {
     SETTING_SHOW_ITEM_COOLDOWNS(MessageObject.SETTING, "showItemCooldowns"),
     SETTING_COLLECTION_DISPLAY(MessageObject.SETTING, "collectionDisplay"),
     SETTING_SPEED_PERCENTAGE(MessageObject.SETTING, "speedPercentage"),
+    SETTING_ONLY_MINE_ORES_DEEP_CAVERNS(MessageObject.SETTING, "onlyMineOresDeepCaverns"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.STYLE, "compact"),
@@ -84,12 +84,9 @@ public enum Message {
     MESSAGE_DROP_CONFIRMATION(MessageObject.MESSAGES, "dropConfirmation"),
     MESSAGE_MAGMA_BOSS_WARNING(MessageObject.MESSAGES, "magmaBossWarning"),
     MESSAGE_FULL_INVENTORY(MessageObject.MESSAGES, "fullInventory"),
-//    MESSAGE_NEW_VERSION(MessageObject.MESSAGES, "newVersion"),
     MESSAGE_LABYMOD(MessageObject.MESSAGES, "labymod"),
-//    MESSAGE_DISCORD(MessageObject.MESSAGES, "discord"),
     MESSAGE_MINION_CANNOT_REACH(MessageObject.MESSAGES, "minionCannotReach"),
     MESSAGE_MINION_IS_FULL(MessageObject.MESSAGES, "minionIsFull"),
-//    MESSAGE_DEVELOPMENT_VERSION(MessageObject.MESSAGES, "developmentVersion"),
     MESSAGE_TYPE_ENCHANTMENTS(MessageObject.MESSAGES, "typeEnchantmentsHere"),
     MESSAGE_SEPARATE_ENCHANTMENTS(MessageObject.MESSAGES, "separateMultiple"),
     MESSAGE_ENCHANTS_TO_MATCH(MessageObject.MESSAGES, "enchantsToMatch"),
@@ -110,6 +107,7 @@ public enum Message {
     MESSAGE_DELETE_OLD_FILE(MessageObject.MESSAGES, "deleteOldFile"),
     MESSAGE_FEATURE_DISABLED(MessageObject.MESSAGES, "featureDisabled"),
     MESSAGE_ANVIL_USES(MessageObject.MESSAGES, "anvilUses"),
+    MESSAGE_CANCELLED_NON_ORES_BREAK(MessageObject.MESSAGES, "cancelledDeepCaverns"),
 
     @Deprecated ANCHOR_POINT_TOP_LEFT(MessageObject.ANCHOR_POINT, "topLeft"),
     @Deprecated ANCHOR_POINT_TOP_RIGHT(MessageObject.ANCHOR_POINT, "topRight"),

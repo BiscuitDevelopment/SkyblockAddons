@@ -50,7 +50,7 @@
     "preventMovementOnDeath": "Prepreči Hojo Po Smrti",
     "showItemAnvilUses": "Prikaži Število Uporab na Nakovalu",
     "lockSlots": "Dovoli Zaklepanje Prostorov",
-    "lockSlot": "Lock Slot",
+    "lockSlot": "Zakleni Prostor",
     "dontResetCursorInventory": "Ne Ponastavljaj Kazalca Med Inventarji",
     "summoningEyeAlert": "Opozorilo Za Summoning Oko",
     "makeEnderchestsInEndGreen": "Naredi Ender Skrinje v Endu Zelene",
@@ -68,13 +68,16 @@
     "makeBackpackInventoriesColored": "Barvni Inventarji",
     "avoidBreakingBottomSugarCane": "Prepreči Uničenje Spodnjega Dela Sladkornega Trsa",
     "replaceRomanNumeralsWithNumbers": "Zamenjaj Rimska Števila na Stvareh",
-    "changeBarColorForPotions": "Change Bar Color for Wither & Poison",
-    "craftingPatterns": "Choose Crafting Patterns",
+    "changeBarColorForPotions": "Spremeni Barvo Vrstice za Wither in Poison",
+    "craftingPatterns": "Izberi Vzorce Izdelovanja",
     "soundIndicatorForFishing": "Sound Indicator for Fishing",
     "avoidBlinkingNightVision": "Disable Night Vision Potion Blinking",
     "disableMinionLocationWarning": "Disable Location Not Perfect Warnings",
     "jungleAxeCooldown": "Jungle Axe Cooldown",
-    "organizeLongEnchantmentLists": "Organize Long Enchantment Lists"
+    "organizeLongEnchantmentLists": "Organize Long Enchantment Lists",
+    "showItemCooldowns": "Show Item Cooldowns",
+    "speedPercentage": "Speed Percentage",
+    "collectionDisplay": "Skill Progress Display"
   },
   "messages": {
     "dropConfirmation": "Ponovno Izpusti To Stvar za Potrditev!",
@@ -96,7 +99,7 @@
     "deleteOldFile": "The download has finished, please open your mods folder using the button below, close your Minecraft, and delete the old version (or delete it later if you prefer).",
     "wantToViewPatchNotes": "Want to read the changes?",
     "downloadLink": "UPDATE LINK",
-    "downloadAutomatically": "Automatsko snemanje",
+    "downloadAutomatically": "Automatsko prenesi",
     "openModFolder": "MODS FOLDER",
     "joinTheDiscord": "Pridruži se Discordu",
     "update": {
@@ -113,6 +116,7 @@
     "cancelledProfileOpening": "SkyblockAddons vam je preprečil odpiranje profila tega igralca medtem, ko držite lok.",
     "cancelledDropping": "SkyblockAddons vam je preprečil izpust te redke stvari iz svojega hotbarja.",
     "clickMoreTimes": "Kliknite/izpustite to stvar še %times% -krat, če to res želite storiti.",
-    "featureDisabled": "Funkcija izklopljena"
+    "featureDisabled": "Funkcija izklopljena",
+    "anvilUses": "Anvil Uses: %uses%"
   }
 }

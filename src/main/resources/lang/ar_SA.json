@@ -74,13 +74,16 @@
     "avoidBlinkingNightVision": "تجنب وميض جرعه الرؤية الليليه",
     "disableMinionLocationWarning": "تعطيل الموقع ليس مثاليا",
     "jungleAxeCooldown": "تباطؤ فأس الغابة",
-    "organizeLongEnchantmentLists": "ترتيب قائمة التطويرات الطويله"
+    "organizeLongEnchantmentLists": "ترتيب قائمة التطويرات الطويله",
+    "showItemCooldowns": "اظهار تباطؤ الأدوات",
+    "speedPercentage": "نسبة السرعه",
+    "collectionDisplay": "عرض تقدم المهارة"
   },
   "messages": {
     "dropConfirmation": "!إرمي هذا العنصر مرة أخرى للتأكيد",
     "magmaBossWarning": "!زعيم مكعب الصهارة",
     "fullInventory": "!جرد كامل",
-    "labymod": ".مستعملي اللابي مود: إن إخفاء عظام خوذة الهيكل العظمي غير متوافق",
+    "labymod": "مستعملي اللابي مود: إن إخفاء شريط الطعام، الدروع، الصحه، غير متوافق.",
     "minionCannotReach": "!لا يمكنه الوصول وانه سيتوقف عن الإنشاء %type%إن تابع ال",
     "minionIsFull": "امتلأت حقيبة أحدى خدامك في جزيرتك!",
     "typeEnchantmentsHere": "اكتب %type% في هذه الخانة!",
@@ -113,6 +116,7 @@
     "cancelledProfileOpening": "إضافات سكاي بلوك منعك من فتح شخصية هذا اللاعب وانت تحمل القوس.",
     "cancelledDropping": "إضافات سكاي بلوك منعك من إلقاء هذه الأداة أو الشيء النادر من قائمة أدواتك.",
     "clickMoreTimes": "أضغط أو اسقط هذا الشيء %times% مرات أخرى إن كنت حقيقا تريد فعل هذا.",
-    "featureDisabled": "تعطل الميزة"
+    "featureDisabled": "تعطل الميزة",
+    "anvilUses": "استخدامات السندان: %uses%"
   }
 }

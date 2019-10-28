@@ -14,6 +14,7 @@ import net.minecraft.entity.item.EntityArmorStand;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.GuiIngameForge;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
@@ -23,9 +24,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 import java.math.BigDecimal;
-import java.util.Calendar;
-import java.util.Collection;
-import java.util.TimeZone;
+import java.util.*;
 
 import static net.minecraft.client.gui.Gui.icons;
 
@@ -216,8 +215,8 @@ public class RenderListener {
 
             for (Feature feature : Feature.getGuiFeatures()) {
                 if (main.getConfigValues().isEnabled(feature)) {
-                    if (feature == Feature.SKELETON_BAR && !main.getInventoryUtils().isWearingSkeletonHelmet()) return;
-                    if (feature == Feature.HEALTH_UPDATES && main.getPlayerListener().getHealthUpdate() == null) return;
+                    if (feature == Feature.SKELETON_BAR && !main.getInventoryUtils().isWearingSkeletonHelmet()) continue;
+                    if (feature == Feature.HEALTH_UPDATES && main.getPlayerListener().getHealthUpdate() == null) continue;
 
                     float scale = main.getConfigValues().getGuiScale(feature);
                     GlStateManager.pushMatrix();
@@ -613,7 +612,10 @@ public class RenderListener {
         }
     }
 
-    public void drawItemPickupLog(Minecraft mc, float scale, Collection<ItemDiff> dummyLog, ButtonLocation buttonLocation) {
+    private static List<ItemDiff> DUMMY_LOG = new ArrayList<>(Arrays.asList(new ItemDiff(EnumChatFormatting.DARK_PURPLE + "Forceful Ember Chestplate", 1),
+            new ItemDiff("Boat", -1), new ItemDiff(EnumChatFormatting.BLUE + "Aspect of the End", 1)));
+
+    public void drawItemPickupLog(Minecraft mc, float scale, ButtonLocation buttonLocation) {
         float x = main.getConfigValues().getActualX(Feature.ITEM_PICKUP_LOG);
         float y = main.getConfigValues().getActualY(Feature.ITEM_PICKUP_LOG);
 
@@ -628,7 +630,7 @@ public class RenderListener {
         y/=scale;
         int intX = Math.round(x);
         int intY = Math.round(y);
-        if (dummyLog != null) {
+        if (buttonLocation != null) {
             int boxXOne = intX-4;
             int boxXTwo = intX+width+4;
             int boxYOne = intY-4;
@@ -638,8 +640,8 @@ public class RenderListener {
         }
         int i = 0;
         Collection<ItemDiff> log = main.getInventoryUtils().getItemPickupLog();
-        if (dummyLog != null) {
-            log = dummyLog;
+        if (buttonLocation != null) {
+            log = DUMMY_LOG;
         }
         for (ItemDiff itemDiff : log) {
             String text = String.format("%s %sx §r%s", itemDiff.getAmount() > 0 ? "§a+":"§c-",

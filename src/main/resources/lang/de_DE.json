@@ -70,11 +70,14 @@
     "replaceRomanNumeralsWithNumbers": "Ersetze Römische Nummern auf Gegenständen",
     "changeBarColorForPotions": "Farbe der Leiste bei Wither und Gift ändern",
     "craftingPatterns": "Wähle Herstellung-Muster",
-    "soundIndicatorForFishing": "Sound Indicator for Fishing",
-    "avoidBlinkingNightVision": "Deaktiviere Nacht Sicht Blinken",
+    "soundIndicatorForFishing": "Tonindikator für Fischerei",
+    "avoidBlinkingNightVision": "Deaktiviere Nachtsicht Blinken",
     "disableMinionLocationWarning": "Deaktiviere \"Location not perfect\" Warnung",
-    "jungleAxeCooldown": "Jungle Axe Abklingzeit",
-    "organizeLongEnchantmentLists": "Organisieren von langen Verzauberungslisten"
+    "jungleAxeCooldown": "Dschungelaxt Abklingzeit",
+    "organizeLongEnchantmentLists": "Organisieren von langen Verzauberungslisten",
+    "showItemCooldowns": "Item Abklingzeit anzeigen",
+    "speedPercentage": "Geschwindigkeit in Prozent",
+    "collectionDisplay": "Skillfortschrittsanzeige"
   },
   "messages": {
     "dropConfirmation": "Werfe diesen Gegenstand nochmal, um zu bestätigen!",
@@ -113,6 +116,7 @@
     "cancelledProfileOpening": "SkyblockAddons hat dich davon abgehalten, das Profil dieses Spielers zu öffnen, während du einen Bogen hältst.",
     "cancelledDropping": "SkyblockAddons hat dich davon abgehalten, dieses seltene Item oder Werkzeug aus deiner Hotbar zu droppen.",
     "clickMoreTimes": "Klicke/droppe dieses Item %times% mal mehr, wenn du das wirklich tun möchtest.",
-    "featureDisabled": "Funktion deaktiviert"
+    "featureDisabled": "Funktion deaktiviert",
+    "anvilUses": "Ambossnutzungen: %uses%"
   }
 }

@@ -74,7 +74,10 @@
     "avoidBlinkingNightVision": "Voorkom knippering tijdens nachtzicht",
     "disableMinionLocationWarning": "Meldingen minion locatie uitschakelen",
     "jungleAxeCooldown": "Jungle Bijl Cooldown",
-    "organizeLongEnchantmentLists": "Orden Lange Betoverings Lijsten"
+    "organizeLongEnchantmentLists": "Orden Lange Betoverings Lijsten",
+    "showItemCooldowns": "Show Item Cooldowns",
+    "speedPercentage": "Speed Percentage",
+    "collectionDisplay": "Skill Progress Display"
   },
   "messages": {
     "dropConfirmation": "Laat dit object opnieuw vallen om te Bevestigen!",
@@ -113,6 +116,7 @@
     "cancelledProfileOpening": "SkyblockAddons heeft je ervan weerhouden het profiel van deze speler te openen terwijl je een boog vast hebt.",
     "cancelledDropping": "SkyblockAddons heeft je ervan weerhouden dit zeldzame item of gereedschap uit je hotbar te gooien.",
     "clickMoreTimes": "Klik/gooi dit item %times% keer als je dit echt wilt doen.",
-    "featureDisabled": "Functie uitgeschakeld"
+    "featureDisabled": "Functie uitgeschakeld",
+    "anvilUses": "Anvil Uses: %uses%"
   }
 }
