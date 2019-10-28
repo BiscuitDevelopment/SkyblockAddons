@@ -21,7 +21,7 @@
     "hideDurability": "Wyłącz Pasek Wytrzymałości Narzędzi",
     "showEnchantmentsReforges": "Zaklęcia oraz Reforge",
     "minionStopWarning": "Ostrzeżenie o Przerwaniu Pracy Miniona",
-    "hideAuctionHousePlayers": "Ukryj graczy blisko ważnych NPC",
+    "hideAuctionHousePlayers": "Ukryj graczy blisko ważnych NPC-tów",
     "backpackStyle": "Styl Plecaka: %style%",
     "backpackStyles": {
       "regular": "Zwykłe",
@@ -77,7 +77,8 @@
     "organizeLongEnchantmentLists": "Uporządkuj długie listy enchantów",
     "showItemCooldowns": "Pokazuj colldown itemów",
     "speedPercentage": "Procent szybkości",
-    "collectionDisplay": "Skill Progress Display"
+    "collectionDisplay": "Skill Progress Display",
+    "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns"
   },
   "messages": {
     "dropConfirmation": "Wyrzuć ten przedmiot ponownie, aby potwierdzić!",
@@ -112,10 +113,10 @@
     "slotLocked": "Ten slot jest zablokowany!",
     "summoningEyeFound": "Oko przywołujące!",
     "cancelledStemBreak": "SkyblockAddons zatrzyman cię przed zniszczeniem tej łodygi. Użyj pustej ręki, jeśli chcesz ją zniszczyć.",
-    "cancelledCaneBreak": "SkyblockAddons powstrzymał cię przed zniszczeniem tego bloku trzciny cukrowej. Użyj innego narzędzia, jeśli chcesz go zniszczyć.",
     "cancelledProfileOpening": "SkyblockAddons powstrzymał otwieranie profilu tej osoby podczas trzymania łuku.",
     "cancelledDropping": "SkyblockAddons anulował upuszczenie tego rzadkiego przedmiotu lub narzędzia z twojego paska narzędzi.",
     "clickMoreTimes": "Naciśnij/upuść ten przedmiot %times% razy więcej, jeśli naprawdę chcesz to zrobić.",
+    "cancelledDeepCaverns": "A SkyblockAddons feature has stopped you from mining this block here.",
     "featureDisabled": "Funkcja wyłączona",
     "anvilUses": "Użycia kowadła: %uses%"
   }
