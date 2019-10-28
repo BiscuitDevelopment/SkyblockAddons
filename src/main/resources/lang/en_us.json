@@ -58,6 +58,7 @@
     "showInOtherGames": "Show in Other Games",
     "useVanillaTexture": "Use the Vanilla Texture",
     "textStyle": "Text Style",
+    "specialZealotAlert": "Special Zealot Alert",
     "textStyles": {
       "one": "Style One",
       "two": "Style Two"
@@ -115,6 +116,7 @@
     "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare item or tool from your hotbar.",
     "clickMoreTimes": "Click/drop this item %times% more times if you really want to do this.",
     "featureDisabled": "Feature Disabled",
-    "anvilUses": "Anvil Uses: %uses%"
+    "anvilUses": "Anvil Uses: %uses%",
+    "specialZealotFound": "Special Zealot!"
   }
 }

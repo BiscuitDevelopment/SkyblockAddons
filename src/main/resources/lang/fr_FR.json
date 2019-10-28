@@ -58,6 +58,7 @@
     "showInOtherGames": "Afficher dans les autres jeux",
     "useVanillaTexture": "Utiliser la texture vanilla",
     "textStyle": "Style du texte",
+    "specialZealotAlert": "Alerte Zealot spéciale",
     "textStyles": {
       "one": "Premier modèle",
       "two": "Second modèle"
@@ -113,6 +114,7 @@
     "cancelledProfileOpening": "SkyblockAddons vous a empêché d'ouvrir le profil de ce joueur en utilisant un arc.",
     "cancelledDropping": "SkyblockAddons vous a empêché de jeter cet objet ou outil rare de votre barre d'action.",
     "clickMoreTimes": "Cliquez/jetez cet objet encore %times% fois si vous le souhaitez.",
-    "featureDisabled": "Fonction désactivée"
+    "featureDisabled": "Fonction désactivée",
+    "specialZealotFound": "Zealot spéciale!"
   }
 }

@@ -75,6 +75,7 @@ public enum Message {
     SETTING_JUNGLE_AXE_COOLDOWN(MessageObject.SETTING, "jungleAxeCooldown"),
     SETTING_ORGANIZE_ENCHANTMENTS(MessageObject.SETTING, "organizeLongEnchantmentLists"),
     SETTING_SHOW_ITEM_COOLDOWNS(MessageObject.SETTING, "showItemCooldowns"),
+    SETTING_SPECIAL_ZEALOT_ALERT(MessageObject.SETTING, "specialZealotAlert"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.STYLE, "compact"),
@@ -108,6 +109,7 @@ public enum Message {
     MESSAGE_DELETE_OLD_FILE(MessageObject.MESSAGES, "deleteOldFile"),
     MESSAGE_FEATURE_DISABLED(MessageObject.MESSAGES, "featureDisabled"),
     MESSAGE_ANVIL_USES(MessageObject.MESSAGES, "anvilUses"),
+    MESSAGE_SPECIAL_ZEALOT_FOUND(MessageObject.MESSAGES, "specialZealotFound"),
 
     @Deprecated ANCHOR_POINT_TOP_LEFT(MessageObject.ANCHOR_POINT, "topLeft"),
     @Deprecated ANCHOR_POINT_TOP_RIGHT(MessageObject.ANCHOR_POINT, "topRight"),

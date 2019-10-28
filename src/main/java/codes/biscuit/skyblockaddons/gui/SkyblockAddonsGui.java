@@ -41,7 +41,7 @@ public class SkyblockAddonsGui extends GuiScreen {
             Feature.MANA_BAR, Feature.MANA_TEXT, Feature.HEALTH_BAR, Feature.HEALTH_TEXT, Feature.DEFENCE_TEXT,
             Feature.DEFENCE_PERCENTAGE, Feature.MAGMA_BOSS_TIMER, Feature.DARK_AUCTION_TIMER,
             Feature.FULL_INVENTORY_WARNING, Feature.MINION_FULL_WARNING, Feature.MINION_STOP_WARNING, Feature.SUMMONING_EYE_ALERT,
-            Feature.AVOID_BREAKING_STEMS, Feature.DONT_OPEN_PROFILES_WITH_BOW);
+            Feature.AVOID_BREAKING_STEMS, Feature.DONT_OPEN_PROFILES_WITH_BOW, Feature.SPECIAL_ZEALOT_ALERT);
 
     private static Set<Feature> guiScaleFeatures = Sets.newHashSet(Feature.ITEM_PICKUP_LOG, Feature.HEALTH_UPDATES,
             Feature.MANA_BAR, Feature.MANA_TEXT, Feature.HEALTH_BAR, Feature.HEALTH_TEXT, Feature.DEFENCE_TEXT,
@@ -75,7 +75,7 @@ public class SkyblockAddonsGui extends GuiScreen {
                     Feature.SHOW_ITEM_ANVIL_USES, Feature.LOCK_SLOTS, Feature.DONT_OPEN_PROFILES_WITH_BOW, Feature.STOP_DROPPING_SELLING_RARE_ITEMS,
                     Feature.MAKE_ENDERCHESTS_GREEN_IN_END, Feature.SUMMONING_EYE_ALERT, Feature.FISHING_SOUND_INDICATOR, Feature.DONT_RESET_CURSOR_INVENTORY,
                     Feature.REPLACE_ROMAN_NUMERALS_WITH_NUMBERS, Feature.DROP_CONFIRMATION, Feature.ORGANIZE_ENCHANTMENTS, Feature.JUNGLE_AXE_COOLDOWN,
-                    Feature.MINION_DISABLE_LOCATION_WARNING, Feature.SHOW_ITEM_COOLDOWNS, Feature.AVOID_BREAKING_BOTTOM_SUGAR_CANE};
+                    Feature.MINION_DISABLE_LOCATION_WARNING, Feature.SHOW_ITEM_COOLDOWNS, Feature.AVOID_BREAKING_BOTTOM_SUGAR_CANE, Feature.SPECIAL_ZEALOT_ALERT};
         } else if (tab == EnumUtils.GuiTab.FIXES) {
             array = new Feature[]{Feature.HIDE_BONES, Feature.DISABLE_EMBER_ROD, Feature.HIDE_AUCTION_HOUSE_PLAYERS,
                     Feature.STOP_BOW_CHARGE_FROM_RESETTING, Feature.AVOID_PLACING_ENCHANTED_ITEMS, Feature.PREVENT_MOVEMENT_ON_DEATH, Feature.AVOID_BLINKING_NIGHT_VISION};
