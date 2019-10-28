@@ -77,7 +77,8 @@
     "organizeLongEnchantmentLists": "Hosszú enchant lista rendezése",
     "showItemCooldowns": "Mutasd az a tárgy töltési idejét",
     "speedPercentage": "Sebesség százalékos megjelenitése",
-    "collectionDisplay": "Képességfejlődés megjelenítése"
+    "collectionDisplay": "Képességfejlődés megjelenítése",
+    "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns"
   },
   "messages": {
     "dropConfirmation": "Dobd el ezt a tárgyat újra, hogy megerősítsd!",
@@ -112,10 +113,10 @@
     "slotLocked": "Ez a gyorstár le van zárva!",
     "summoningEyeFound": "Summoning Eye!",
     "cancelledStemBreak": "A SkyblockAddons megállította, hogy kiüsd a növény szárát. Használd az öklöd, ha ki szeretnéd ütni.",
-    "cancelledCaneBreak": "A SkyblockAddons megállította, hogy kiüsd ezt a cukornád blokkot. Használj egy másik eszközt, ha ki szeretnéd ütni.",
     "cancelledProfileOpening": "A SkyblockAddons megállította, hogy megnyisd ennek a játékosnak a profilját, amíg íj van a kezedben.",
     "cancelledDropping": "A SkyblockAddons megállította, hogy eldobd ezt a rare tárgyat vagy eszközt.",
     "clickMoreTimes": "Kattints/dobd el ezt a tárgyat még %times% alkalommal, ha tényleg ezt szeretnéd.",
+    "cancelledDeepCaverns": "A SkyblockAddons feature has stopped you from mining this block here.",
     "featureDisabled": "Funkció kikapcsolva",
     "anvilUses": "Üllő használat: %uses%"
   }
