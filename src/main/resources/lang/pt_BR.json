@@ -77,7 +77,8 @@
     "organizeLongEnchantmentLists": "Organizar lista de encantamentos longos",
     "showItemCooldowns": "Mostrar tempo de recarga dos itens",
     "speedPercentage": "Speed Percentage",
-    "collectionDisplay": "Skill Progress Display"
+    "collectionDisplay": "Skill Progress Display",
+    "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns"
   },
   "messages": {
     "dropConfirmation": "Large este item de novo para confirmar!",
@@ -112,10 +113,10 @@
     "slotLocked": "Este slot está trancado!",
     "summoningEyeFound": "Olho de Invocação!",
     "cancelledStemBreak": "SkyBlockAddons impediu você de quebrar esta semente. Use a sua mão caso queira realmente quebrar.",
-    "cancelledCaneBreak": "SkyBlockAddons impediu você de quebrar este bloco de Cana de Açúcar. Use outro tipo de ferramenta caso queira realmente quebrar.",
     "cancelledProfileOpening": "O SkyblockAddons impediu você de abrir o perfil deste jogador enquanto segura um arco.",
     "cancelledDropping": "O SkyblockAddons impediu você de largar este item ou ferramenta rara da sua hotbar.",
     "clickMoreTimes": "Clique/Largue este item mais %times% vezes caso realmente queira fazer isso.",
+    "cancelledDeepCaverns": "A SkyblockAddons feature has stopped you from mining this block here.",
     "featureDisabled": "Função desabilitada",
     "anvilUses": "Usos na Bigorna: %uses%"
   }
