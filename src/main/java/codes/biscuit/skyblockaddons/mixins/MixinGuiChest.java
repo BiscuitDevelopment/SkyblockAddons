@@ -195,12 +195,16 @@ public abstract class MixinGuiChest extends GuiContainer {
                         if (bottle != null && bottle.hasDisplayName()) {
                             if (bottle.getDisplayName().startsWith(EnumChatFormatting.GREEN + "Enchant Item")) {
                                 Minecraft mc = Minecraft.getMinecraft();
-                                List<String> toolip = bottle.getTooltip(mc.thePlayer, false);
-                                if (toolip.size() > 2) {
-                                    String enchantLine = toolip.get(2).split(Pattern.quote("* "))[1];
-                                    if (main.getUtils().enchantReforgeMatches(enchantLine)) {
-                                        main.getUtils().playSound("random.orb", 0.1);
-                                        return;
+                                List<String> tooltip = bottle.getTooltip(mc.thePlayer, false);
+                                if (tooltip.size() > 2) {
+                                    String[] enchantLines = tooltip.get(2).split(Pattern.quote("* "));
+
+                                    if (enchantLines.length > 1) {
+                                        String enchantLine = enchantLines[1];
+                                        if (main.getUtils().enchantReforgeMatches(enchantLine)) {
+                                            main.getUtils().playSound("random.orb", 0.1);
+                                            return;
+                                        }
                                     }
                                 }
                             } else if (bottle.getDisplayName().startsWith(EnumChatFormatting.RED + "Enchant Item")) {
