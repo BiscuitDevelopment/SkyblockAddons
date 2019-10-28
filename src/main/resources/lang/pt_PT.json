@@ -78,7 +78,7 @@
     "showItemCooldowns": "Mostrar os tempos de espera dos itens",
     "speedPercentage": "Percentagem de velocidade",
     "collectionDisplay": "Progresso das habilidades",
-    "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns"
+    "onlyMineOresDeepCaverns": "Só partir minérios nas Deep Caverns"
   },
   "messages": {
     "dropConfirmation": "Dropa este item outra vez para confirmar!",
@@ -116,7 +116,7 @@
     "cancelledProfileOpening": "O SkyblockAddons preveniu-te de abrires o perfil deste jogador enquanto seguras um arco.",
     "cancelledDropping": "O SkyblockAddons preveniu-te de dropar este item ou ferramenta rara da tua hotbar.",
     "clickMoreTimes": "Clica/dropa este item mais %times% vezes se quiseres mesmo fazer isto.",
-    "cancelledDeepCaverns": "A SkyblockAddons feature has stopped you from mining this block here.",
+    "cancelledDeepCaverns": "Uma funcionalidade do SkyblockAddons preveniu-te de partires este minério aqui.",
     "featureDisabled": "Função Desativada",
     "anvilUses": "Usos na bigorna: %uses%"
   }
