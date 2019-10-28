@@ -2,7 +2,7 @@
   "language": "OwO wanguage uwu",
   "settings": {
     "tab": {
-      "features": "Fwetwues",
+      "features": "Fwetuwures",
       "fixes": "Fwxes",
       "guiFeatures": "GUI Fwetwues",
       "generalSettings": "Genewal Settings"
@@ -78,7 +78,7 @@
     "showItemCooldowns": "Show Item Coowdowns",
     "speedPercentage": "Spweed Pwocentage",
     "collectionDisplay": "Skwill Prowogess Dispway",
-    "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns"
+    "onlyMineOresDeepCaverns": "OwOnly Mwine Owores in twhe deep Cavwerns"
   },
   "messages": {
     "dropConfirmation": "Dwop thwis itwem agwain to confiwm!",
@@ -116,7 +116,7 @@
     "cancelledProfileOpening": "SkybwockAwwons has stwopped uwu from opwening this plawer's pwofile whowo holdowoing a bowo.",
     "cancelledDropping": "SkybwockAwwons has owoed you from dwopping dis rawr itwem or twool from your hawtbar.",
     "clickMoreTimes": "Cwick/dwop this item %times% mwore twimes if you weally want to do whis.",
-    "cancelledDeepCaverns": "A SkyblockAddons feature has stopped you from mining this block here.",
+    "cancelledDeepCaverns": "A SkwyBwlockAddowons fweature hwas stowopped ywou from mining thwis blowock hwere.",
     "featureDisabled": "Fweature Diswabled",
     "anvilUses": "Anviw Uses: %uses%"
   }
