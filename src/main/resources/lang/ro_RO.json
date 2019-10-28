@@ -77,7 +77,8 @@
     "organizeLongEnchantmentLists": "Organize Long Enchantment Lists",
     "showItemCooldowns": "Show Item Cooldowns",
     "speedPercentage": "Speed Percentage",
-    "collectionDisplay": "Skill Progress Display"
+    "collectionDisplay": "Skill Progress Display",
+    "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns"
   },
   "messages": {
     "dropConfirmation": "Arunca acest obiect iar ca să confirmi!",
@@ -112,10 +113,10 @@
     "slotLocked": "Acest slot este blocat!",
     "summoningEyeFound": "Summoning Eye!",
     "cancelledStemBreak": "Modul SkyblockAddons te-a oprit din a sparge block-ul. Folosește mana libera dacă ești sigur că vrei sa spargi.",
-    "cancelledCaneBreak": "SkyblockAddons te-a oprit din spargerea acestei trestiei de zahar. Te rog folosește altă unealtă dacă vrei să o spargi.",
     "cancelledProfileOpening": "Modul SkyblockAddons te-a oprit sa deschizi profilul jucătorului in timp ce utilizezi un arc.",
     "cancelledDropping": "Modul SkyblockAddons te-a oprit să arunci acest item sau unealtă rară din inventar.",
     "clickMoreTimes": "Aruncă acest item de încă %times% dacă vrei să faci asta.",
+    "cancelledDeepCaverns": "A SkyblockAddons feature has stopped you from mining this block here.",
     "featureDisabled": "Funcție dezactivată",
     "anvilUses": "Anvil Uses: %uses%"
   }
