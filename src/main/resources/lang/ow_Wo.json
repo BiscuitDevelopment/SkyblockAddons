@@ -77,7 +77,8 @@
     "organizeLongEnchantmentLists": "Owganize Wong Enchantment Wists",
     "showItemCooldowns": "Show Item Coowdowns",
     "speedPercentage": "Spweed Pwocentage",
-    "collectionDisplay": "Skwill Prowogess Dispway"
+    "collectionDisplay": "Skwill Prowogess Dispway",
+    "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns"
   },
   "messages": {
     "dropConfirmation": "Dwop thwis itwem agwain to confiwm!",
@@ -112,10 +113,10 @@
     "slotLocked": "Thwis swot is secwure!",
     "summoningEyeFound": "Summonuwuing Eye!",
     "cancelledStemBreak": "SkybwockAddons has stwopped uwu fwom bweaking this stwem. Use uwur bear hands if uwu'd wike to bweak it owo.",
-    "cancelledCaneBreak": "SkybwockAwwons has stwopped you from bweaking dis bwock of sugrawr cane. Use another twool if uwu'd actwually like to bweak it.",
     "cancelledProfileOpening": "SkybwockAwwons has stwopped uwu from opwening this plawer's pwofile whowo holdowoing a bowo.",
     "cancelledDropping": "SkybwockAwwons has owoed you from dwopping dis rawr itwem or twool from your hawtbar.",
     "clickMoreTimes": "Cwick/dwop this item %times% mwore twimes if you weally want to do whis.",
+    "cancelledDeepCaverns": "A SkyblockAddons feature has stopped you from mining this block here.",
     "featureDisabled": "Fweature Diswabled",
     "anvilUses": "Anviw Uses: %uses%"
   }
