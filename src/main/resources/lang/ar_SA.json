@@ -77,7 +77,8 @@
     "organizeLongEnchantmentLists": "ترتيب قائمة التطويرات الطويله",
     "showItemCooldowns": "اظهار تباطؤ الأدوات",
     "speedPercentage": "نسبة السرعه",
-    "collectionDisplay": "عرض تقدم المهارة"
+    "collectionDisplay": "عرض تقدم المهارة",
+    "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns"
   },
   "messages": {
     "dropConfirmation": "!إرمي هذا العنصر مرة أخرى للتأكيد",
@@ -112,10 +113,10 @@
     "slotLocked": "الخانة مقفله!",
     "summoningEyeFound": "عين الاستدعاء!",
     "cancelledStemBreak": "إضافات سكاي بلوك منعك من كسر هذا الجذر. إن أردت كسره استخدم يدك الفارغة.",
-    "cancelledCaneBreak": "إضافات سكاي بلوك منعك من كسر هذا القصب، إن أردت كسره استعمل اداة اخرى.",
     "cancelledProfileOpening": "إضافات سكاي بلوك منعك من فتح شخصية هذا اللاعب وانت تحمل القوس.",
     "cancelledDropping": "إضافات سكاي بلوك منعك من إلقاء هذه الأداة أو الشيء النادر من قائمة أدواتك.",
     "clickMoreTimes": "أضغط أو اسقط هذا الشيء %times% مرات أخرى إن كنت حقيقا تريد فعل هذا.",
+    "cancelledDeepCaverns": "A SkyblockAddons feature has stopped you from mining this block here.",
     "featureDisabled": "تعطل الميزة",
     "anvilUses": "استخدامات السندان: %uses%"
   }
