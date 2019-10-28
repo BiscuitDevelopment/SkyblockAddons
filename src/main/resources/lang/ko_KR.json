@@ -77,7 +77,8 @@
     "organizeLongEnchantmentLists": "Organize Long Enchantment Lists",
     "showItemCooldowns": "Show Item Cooldowns",
     "speedPercentage": "Speed Percentage",
-    "collectionDisplay": "Skill Progress Display"
+    "collectionDisplay": "Skill Progress Display",
+    "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns"
   },
   "messages": {
     "dropConfirmation": "아이템을 정말로 버리려면 다시 버리세요!",
@@ -112,10 +113,10 @@
     "slotLocked": "이 슬롯은 잠겨있습니다!",
     "summoningEyeFound": "소환의 눈!",
     "cancelledStemBreak": "SkyblockAddons이 이 줄기를 부수는 것을 방지했습니다. 정말로 부수려면, 빈 손으로 부수세요.",
-    "cancelledCaneBreak": "사탕수수의 밑둥을 부수는 것을 skyblockAddons이 제한했습니다. 부수고 싶다면 다른 도구를 사용하십시오.",
     "cancelledProfileOpening": "SkyblockAddons이 활을 든 채 이 플레이어의 프로필을 여는 것을 방지했습니다.",
     "cancelledDropping": "SkyblockAddons이 이 희귀한 아이템 또는 도구를 핫바에서 떨어뜨리는 것을 방지했습니다.",
     "clickMoreTimes": "정말 이 아이템을 떨어뜨리려면 %times%번 더 떨어뜨리세요.",
+    "cancelledDeepCaverns": "A SkyblockAddons feature has stopped you from mining this block here.",
     "featureDisabled": "Feature Disabled",
     "anvilUses": "Anvil Uses: %uses%"
   }
