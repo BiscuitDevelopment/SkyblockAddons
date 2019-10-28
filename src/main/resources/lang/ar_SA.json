@@ -78,7 +78,7 @@
     "showItemCooldowns": "اظهار تباطؤ الأدوات",
     "speedPercentage": "نسبة السرعه",
     "collectionDisplay": "عرض تقدم المهارة",
-    "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns"
+    "onlyMineOresDeepCaverns": "حفر المعادن فقظ في الكهوف العميقة"
   },
   "messages": {
     "dropConfirmation": "!إرمي هذا العنصر مرة أخرى للتأكيد",
@@ -116,7 +116,7 @@
     "cancelledProfileOpening": "إضافات سكاي بلوك منعك من فتح شخصية هذا اللاعب وانت تحمل القوس.",
     "cancelledDropping": "إضافات سكاي بلوك منعك من إلقاء هذه الأداة أو الشيء النادر من قائمة أدواتك.",
     "clickMoreTimes": "أضغط أو اسقط هذا الشيء %times% مرات أخرى إن كنت حقيقا تريد فعل هذا.",
-    "cancelledDeepCaverns": "A SkyblockAddons feature has stopped you from mining this block here.",
+    "cancelledDeepCaverns": "إضافات سكاي بلوك منعك من كسر هذا المعدن.",
     "featureDisabled": "تعطل الميزة",
     "anvilUses": "استخدامات السندان: %uses%"
   }
