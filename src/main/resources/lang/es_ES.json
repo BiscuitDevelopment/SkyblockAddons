@@ -70,11 +70,14 @@
     "replaceRomanNumeralsWithNumbers": "Reemplazar Números Romanos en Objetos",
     "changeBarColorForPotions": "Cambiar el Color de Barra para Wither & Veneno",
     "craftingPatterns": "Elige Patrones De Fabricación",
-    "soundIndicatorForFishing": "Sound Indicator for Fishing",
-    "avoidBlinkingNightVision": "Disable Night Vision Potion Blinking",
+    "soundIndicatorForFishing": "Indicador de sonido para la Pesca",
+    "avoidBlinkingNightVision": "Desactiva el Parpadeo del Poción de Visión Nocturna",
     "disableMinionLocationWarning": "Disable Location Not Perfect Warnings",
     "jungleAxeCooldown": "Jungle Axe Cooldown",
-    "organizeLongEnchantmentLists": "Organize Long Enchantment Lists"
+    "organizeLongEnchantmentLists": "Organiza lista de Encantamientos largas",
+    "showItemCooldowns": "Show Item Cooldowns",
+    "speedPercentage": "Speed Percentage",
+    "collectionDisplay": "Skill Progress Display"
   },
   "messages": {
     "dropConfirmation": "¡Dropea el Objeto otra vez para soltar!",
@@ -113,6 +116,7 @@
     "cancelledProfileOpening": "SkyblockAddons te ha impedido abrir el perfil de este jugador mientras mantienes un arco.",
     "cancelledDropping": "SkyblockAddons te ha impedido que soltaras este objeto o herramienta rara de tu hotbar.",
     "clickMoreTimes": "Haga clic/soltar este objeto %times% veces más si realmente quieres hacer esto.",
-    "featureDisabled": "Función Desactivada"
+    "featureDisabled": "Función Desactivada",
+    "anvilUses": "Anvil Uses: %uses%"
   }
 }

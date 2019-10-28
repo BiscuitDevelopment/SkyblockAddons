@@ -74,7 +74,10 @@
     "avoidBlinkingNightVision": "Avoid Bwinking Night Vision Potion",
     "disableMinionLocationWarning": "Disabwe Wocation Not Pewfect Wawnings",
     "jungleAxeCooldown": "Jungwe Axe Coowdown",
-    "organizeLongEnchantmentLists": "Owganize Wong Enchantment Wists"
+    "organizeLongEnchantmentLists": "Owganize Wong Enchantment Wists",
+    "showItemCooldowns": "Show Item Coowdowns",
+    "speedPercentage": "Spweed Pwocentage",
+    "collectionDisplay": "Skwill Prowogess Dispway"
   },
   "messages": {
     "dropConfirmation": "Dwop thwis itwem agwain to confiwm!",
@@ -113,6 +116,7 @@
     "cancelledProfileOpening": "SkybwockAwwons has stwopped uwu from opwening this plawer's pwofile whowo holdowoing a bowo.",
     "cancelledDropping": "SkybwockAwwons has owoed you from dwopping dis rawr itwem or twool from your hawtbar.",
     "clickMoreTimes": "Cwick/dwop this item %times% mwore twimes if you weally want to do whis.",
-    "featureDisabled": "Fweature Diswabled"
+    "featureDisabled": "Fweature Diswabled",
+    "anvilUses": "Anviw Uses: %uses%"
   }
 }

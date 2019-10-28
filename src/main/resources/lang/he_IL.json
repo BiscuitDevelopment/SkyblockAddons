@@ -74,7 +74,10 @@
     "avoidBlinkingNightVision": "למנוע מצמוץ שיקוי ראיית לילה",
     "disableMinionLocationWarning": "ביטול אזהרות מיקום לא מושלם",
     "jungleAxeCooldown": "טעינת גרזן ג'ונגל",
-    "organizeLongEnchantmentLists": "סדר רשימת כישופים ארוכה"
+    "organizeLongEnchantmentLists": "סדר רשימת כישופים ארוכה",
+    "showItemCooldowns": "הראה טעינת חפצים",
+    "speedPercentage": "אחוז מהירות",
+    "collectionDisplay": "מסך התקדמות יכולות"
   },
   "messages": {
     "dropConfirmation": "זרוק פריט זה שוב לאישור!",
@@ -113,6 +116,7 @@
     "cancelledProfileOpening": "SkyBlockAddons עצר אותך מלפתוח את הפרופיל של האדם בזמן שהחזקתה קשת.",
     "cancelledDropping": "SkyBlockAddons עצר אותך מלהפיל את החפץ או הכלי הנדיר הזה.",
     "clickMoreTimes": "תלחץ/תזרוק את החפץ %times% פעמים נוספות אם אתה בטוח רוצה לעשות את זה.",
-    "featureDisabled": "פיטצ'ר מבוטל"
+    "featureDisabled": "פיטצ'ר מבוטל",
+    "anvilUses": "שימוים בסדן: %uses%"
   }
 }

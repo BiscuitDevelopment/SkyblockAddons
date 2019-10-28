@@ -68,13 +68,16 @@
     "makeBackpackInventoriesColored": "Цветные ячейки рюкзаков",
     "avoidBreakingBottomSugarCane": "Не ломать стебель тростника",
     "replaceRomanNumeralsWithNumbers": "Заменять римские цифры на арабские",
-    "changeBarColorForPotions": "Change Bar Color for Wither & Poison",
+    "changeBarColorForPotions": "Изменять цвет панели при иссушении и отравлении",
     "craftingPatterns": "Выбрать шаблоны создания",
     "soundIndicatorForFishing": "Индикатор звука для рыбалки",
-    "avoidBlinkingNightVision": "Disable Night Vision Potion Blinking",
+    "avoidBlinkingNightVision": "Отключить моргание от зелья ночного зрения",
     "disableMinionLocationWarning": "Отключить ошибку об неверном расположении",
-    "jungleAxeCooldown": "Jungle Axe Cooldown",
-    "organizeLongEnchantmentLists": "Организовать список длинных зачарований"
+    "jungleAxeCooldown": "Откат топора джунглей",
+    "organizeLongEnchantmentLists": "Организовать список длинных зачарований",
+    "showItemCooldowns": "Показывать откат вещей",
+    "speedPercentage": "Процент скорости",
+    "collectionDisplay": "Показывать прогресс навыков"
   },
   "messages": {
     "dropConfirmation": "Выбросите предмет ещё раз для подтверждения!",
@@ -84,7 +87,7 @@
     "minionCannotReach": "%type% миньон не может найти и перестал спавнить!",
     "minionIsFull": "Миньон на вашем острове заполнен!",
     "typeEnchantmentsHere": "Пишите %type% здесь!",
-    "separateMultiple": "Разделяйте несколько запятыми.",
+    "separateMultiple": "Разделяйте зачар-я несколькими запятыми.",
     "enchantsToMatch": "Искать %type%:",
     "enchantsToExclude": "Не искать %type%:",
     "inventoryTypes": {
@@ -113,6 +116,7 @@
     "cancelledProfileOpening": "SkyBlockAddons остановил вас от открытия профиля игрока с луком в руках.",
     "cancelledDropping": "SkyBlockAddons предотвратил попытку выбросить этот предмет из панели быстрого доступа.",
     "clickMoreTimes": "Нажмите/выберите этот предмет еще %times% раз, если вы действительно хотите сделать это.",
-    "featureDisabled": "Функция отключена"
+    "featureDisabled": "Функция отключена",
+    "anvilUses": "Использований наковальни: %uses%"
   }
 }

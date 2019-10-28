@@ -71,10 +71,13 @@
     "changeBarColorForPotions": "Mudar a cor da barra com Wither ou Veneno",
     "craftingPatterns": "Escolhe os padrões de criação",
     "soundIndicatorForFishing": "Aviso sonoro para a pesca",
-    "avoidBlinkingNightVision": "Evitar que a poção de visão noturna pisque",
+    "avoidBlinkingNightVision": "Desativar a poção de visão noturna a piscar",
     "disableMinionLocationWarning": "Esconder os avisos “Location not perfect”",
     "jungleAxeCooldown": "Tempo de espera do Jungle Axe",
-    "organizeLongEnchantmentLists": "Listas de encantamentos grandes organizadas"
+    "organizeLongEnchantmentLists": "Listas de encantamentos grandes organizadas",
+    "showItemCooldowns": "Mostrar os tempos de espera dos itens",
+    "speedPercentage": "Percentagem de velocidade",
+    "collectionDisplay": "Progresso das habilidades"
   },
   "messages": {
     "dropConfirmation": "Dropa este item outra vez para confirmar!",
@@ -113,6 +116,7 @@
     "cancelledProfileOpening": "O SkyblockAddons preveniu-te de abrires o perfil deste jogador enquanto seguras um arco.",
     "cancelledDropping": "O SkyblockAddons preveniu-te de dropar este item ou ferramenta rara da tua hotbar.",
     "clickMoreTimes": "Clica/dropa este item mais %times% vezes se quiseres mesmo fazer isto.",
-    "featureDisabled": "Função Desativada"
+    "featureDisabled": "Função Desativada",
+    "anvilUses": "Usos na bigorna: %uses%"
   }
 }
