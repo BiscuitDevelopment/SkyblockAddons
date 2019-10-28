@@ -77,7 +77,8 @@
     "organizeLongEnchantmentLists": "Organize Long Enchantment Lists",
     "showItemCooldowns": "Show Item Cooldowns",
     "speedPercentage": "Speed Percentage",
-    "collectionDisplay": "Skill Progress Display"
+    "collectionDisplay": "Skill Progress Display",
+    "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns"
   },
   "messages": {
     "dropConfirmation": "Leag síos an mír seo arís le cinntiú!",
@@ -112,10 +113,10 @@
     "slotLocked": "Tá an Sliotán seo faoi ghlas!",
     "summoningEyeFound": "Súil Seirbheáil!",
     "cancelledStemBreak": "Chur SkyblockAddons cosc ort an gas seo a briseadh. Úsáid to lámh má tá tú ag iarraidh é a briseadh.",
-    "cancelledCaneBreak": "Chur SkyblockAddons cosc ort an píosa cána siúcra seo a briseadh. Úsáid uirlis eile má tá tú ag iarraidh é a briseadh.",
     "cancelledProfileOpening": "Chur SkyblockAddons cosc ort ag oscailt an próifíl seo fad is atá bogha i do lámh.",
     "cancelledDropping": "Chur SkyblockAddons cosc or an mír annamh seo a leag síos ó do hotbar.",
     "clickMoreTimes": "Cliceáil/leag síos an mír seo %times% uaireanta eile má tá tú cinnte faoi seo.",
+    "cancelledDeepCaverns": "A SkyblockAddons feature has stopped you from mining this block here.",
     "featureDisabled": "Feature Disabled",
     "anvilUses": "Anvil Uses: %uses%"
   }
