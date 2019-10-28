@@ -78,7 +78,7 @@
     "showItemCooldowns": "Mostra i tempi di ricarica degli oggetti",
     "speedPercentage": "Percentuale di Velocità",
     "collectionDisplay": "Visualizzazione del progresso dell’abilità",
-    "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns"
+    "onlyMineOresDeepCaverns": "Estrai minerali solo nelle Deep Caverns"
   },
   "messages": {
     "dropConfirmation": "Getta questo oggetto nuovamente per confermare!",
@@ -116,7 +116,7 @@
     "cancelledProfileOpening": "SkyblockAddons ti ha impedito di aprire il profilo di questo giocatore mentre avevi l’arco in mano.",
     "cancelledDropping": "SkyblockAddons ti ha impedito di gettare questo oggetto o strumento raro dalla tua hotbar.",
     "clickMoreTimes": "Clicca/getta questo oggetto altre %times% volte se vuoi davvero farlo.",
-    "cancelledDeepCaverns": "A SkyblockAddons feature has stopped you from mining this block here.",
+    "cancelledDeepCaverns": "Una funzione di SkyBlockAddons ti ha impedito di estrarre questo blocco.",
     "featureDisabled": "Funzione disabilitata",
     "anvilUses": "Utilizzi dell’incudine: %uses%"
   }
