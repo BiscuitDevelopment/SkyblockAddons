@@ -2,6 +2,7 @@ package codes.biscuit.skyblockaddons.mixins;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.utils.CooldownEntry;
+import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.Feature;
 import codes.biscuit.skyblockaddons.utils.Message;
 import net.minecraft.block.Block;
@@ -26,11 +27,20 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
+import java.util.*;
+
 @Mixin(PlayerControllerMP.class)
 public class MixinPlayerControllerMP {
 
+    private static final Set<EnumUtils.Location> DEEP_CAVERNS_LOCATIONS = EnumSet.of(EnumUtils.Location.DEEP_CAVERNS, EnumUtils.Location.GUNPOWDER_MINES,
+            EnumUtils.Location.LAPIS_QUARRY, EnumUtils.Location.PIGMAN_DEN, EnumUtils.Location.SLIMEHILL, EnumUtils.Location.DIAMOND_RESERVE, EnumUtils.Location.OBSIDIAN_SANCTUARY);
+
+    private static final Set<Block> MINEABLE_BLOCKS = new HashSet<>(Arrays.asList(Blocks.coal_ore, Blocks.iron_ore, Blocks.gold_ore, Blocks.redstone_ore, Blocks.emerald_ore,
+            Blocks.diamond_ore, Blocks.diamond_block, Blocks.obsidian));
+
     private long lastStemMessage = -1;
     private long lastProfileMessage = -1;
+    private long lastUnmineableMessage = -1;
 
     /**
      * Cancels stem breaks if holding an item, to avoid accidental breaking.
@@ -41,17 +51,25 @@ public class MixinPlayerControllerMP {
         Minecraft mc = Minecraft.getMinecraft();
         EntityPlayerSP p = mc.thePlayer;
         ItemStack heldItem = p.getHeldItem();
-        Block block = mc.theWorld.getBlockState(loc).getBlock();
         if (heldItem != null) {
+            Block block = mc.theWorld.getBlockState(loc).getBlock();
+            long now = System.currentTimeMillis();
             if (main.getConfigValues().isEnabled(Feature.AVOID_BREAKING_STEMS) && (block.equals(Blocks.melon_stem) || block.equals(Blocks.pumpkin_stem))) {
-                if (System.currentTimeMillis()- lastStemMessage > 20000) {
-                    lastStemMessage = System.currentTimeMillis();
+                if (now- lastStemMessage > 20000) {
+                    lastStemMessage = now;
                     main.getUtils().sendMessage(main.getConfigValues().getColor(Feature.AVOID_BREAKING_STEMS).getChatFormatting()+Message.MESSAGE_CANCELLED_STEM_BREAK.getMessage());
+                }
+                cir.setReturnValue(false);
+            } else if (main.getConfigValues().isEnabled(Feature.ONLY_MINE_ORES_DEEP_CAVERNS) && DEEP_CAVERNS_LOCATIONS.contains(main.getUtils().getLocation())
+                    && main.getUtils().isPickaxe(heldItem.getItem()) && !MINEABLE_BLOCKS.contains(block)) {
+                if (now-lastUnmineableMessage > 60000) {
+                    lastUnmineableMessage = now;
+                    main.getUtils().sendMessage(main.getConfigValues().getColor(Feature.ONLY_MINE_ORES_DEEP_CAVERNS).getChatFormatting() + Message.MESSAGE_CANCELLED_NON_ORES_BREAK.getMessage());
                 }
                 cir.setReturnValue(false);
             } else if (main.getConfigValues().isEnabled(Feature.JUNGLE_AXE_COOLDOWN)) {
                 CooldownEntry cooldown = main.getUtils().getItemCooldown("§aJungle Axe");
-                if (cooldown != null && (block.equals(Blocks.log) || block.equals(Blocks.log2)) && cooldown.getLastUse() + cooldown.getCooldownMillis() > System.currentTimeMillis()) {
+                if (cooldown != null && (block.equals(Blocks.log) || block.equals(Blocks.log2)) && cooldown.getLastUse() + cooldown.getCooldownMillis() > now) {
                     cir.setReturnValue(false);
                 }
             }

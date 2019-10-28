@@ -188,9 +188,9 @@ public class EnumUtils {
         JUNGLE_ISLAND("Jungle Island"),
         SAVANNA_WOODLAND("Savanna Woodland"),
         DARK_THICKET("Dark Thicket"),
-        // Gold Mine
+
         GOLD_MINE("Gold Mine"),
-        // Deep Caverns
+
         DEEP_CAVERNS("Deep Caverns"),
         GUNPOWDER_MINES("Gunpowder Mines"),
         LAPIS_QUARRY("Lapis Quarry"),
@@ -198,15 +198,14 @@ public class EnumUtils {
         SLIMEHILL("Slimehill"),
         DIAMOND_RESERVE("Diamond Reserve"),
         OBSIDIAN_SANCTUARY("Obsidian Sanctuary"),
-        // The Barn
         THE_BARN("The Barn"),
-        // Mushroom Desert
+
         MUSHROOM_DESERT("Mushroom Desert"),
-        //Spider Den
+
         SPIDERS_DEN("Spider's Den"),
-        // Blazing fortress
+
         BLAZING_FORTRESS("Blazing Fortress"),
-        // End
+
         THE_END("The End"),
         DRAGONS_NEST("Dragon's Nest");
 
@@ -287,7 +286,6 @@ public class EnumUtils {
         MADDOX_THE_SLAYER(-87,66,-70, false, Location.VILLAGE, Location.TAVERN),
         SIRIUS(91.5,75,176.5, false, Location.WILDERNESS);
 
-        private final int hideRadius = 4;
         private final AxisAlignedBB hideArea;
         private double x;
         private double y;
@@ -300,17 +298,18 @@ public class EnumUtils {
             this.y = y;
             this.z = z;
             this.isMerchant = isMerchant;
+            int hideRadius = 4;
             this.hideArea = new AxisAlignedBB(x - hideRadius, y - hideRadius, z - hideRadius, x + hideRadius, y + hideRadius, z + hideRadius);
             this.locations = EnumSet.copyOf(Arrays.asList(locations));
         }
 
         public boolean isAtLocation(Location location) {
-            return this.locations.contains(location);
+            return locations.contains(location);
         }
 
         public boolean isNearEntity(Entity entity) {
             Utils utils = SkyblockAddons.getInstance().getUtils();
-            if (this.locations.contains(utils.getLocation())) {
+            if (isAtLocation(utils.getLocation())) {
                 double x = entity.posX;
                 double y = entity.posY;
                 double z = entity.posZ;
@@ -369,6 +368,8 @@ public class EnumUtils {
 
     @SuppressWarnings("deprecation")
     public enum FeatureCredit {
+        // If you make a feature, feel free to add your name here with an associated website of your choice.
+
         INVENTIVE_TALENT("InventiveTalent", "inventivetalent.org", Feature.MAGMA_BOSS_TIMER),
         FSCK("fsck", "github.com/fsckmc", Feature.AVOID_BREAKING_BOTTOM_SUGAR_CANE),
         ORCHID_ALLOY("orchidalloy", "github.com/orchidalloy", Feature.SUMMONING_EYE_ALERT, Feature.FISHING_SOUND_INDICATOR, Feature.ORGANIZE_ENCHANTMENTS),
@@ -377,6 +378,7 @@ public class EnumUtils {
         TOMOCRAFTER("tomocrafter","github.com/tomocrafter", Feature.AVOID_BLINKING_NIGHT_VISION),
         DAPIGGUY("DaPigGuy", "github.com/DaPigGuy", Feature.MINION_DISABLE_LOCATION_WARNING),
         COMNIEMEER("comniemeer","github.com/comniemeer", Feature.JUNGLE_AXE_COOLDOWN),
+        KEAGEL("Keagel", "github.com/Keagel", Feature.ONLY_MINE_ORES_DEEP_CAVERNS),
         DIDI_SKYWALKER("DidiSkywalker", "github.com/didiskywalker", Feature.ITEM_PICKUP_LOG, Feature.HEALTH_UPDATES, Feature.REPLACE_ROMAN_NUMERALS_WITH_NUMBERS, Feature.CRAFTING_PATTERNS);
 
         private Set<Feature> features;
