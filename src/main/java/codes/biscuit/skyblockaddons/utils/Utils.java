@@ -112,7 +112,7 @@ public class Utils {
 
     private static final Pattern SERVER_REGEX = Pattern.compile("([0-9]{2}/[0-9]{2}/[0-9]{2}) (mini[0-9]{1,3}[A-Za-z])");
     // english, chinese simplified
-    private static Set<String> skyblockInAllLanguages = Sets.newHashSet("SKYBLOCK","\u7A7A\u5C9B\u751F\u5B58");
+    private static final Set<String> SKYBLOCK_IN_ALL_LANGUAGES = Sets.newHashSet("SKYBLOCK","\u7A7A\u5C9B\u751F\u5B58");
 
     public void checkGameLocationDate() {
         boolean foundLocation = false;
@@ -123,7 +123,7 @@ public class Utils {
             if (sidebarObjective != null) {
                 String objectiveName = stripColor(sidebarObjective.getDisplayName());
                 onSkyblock = false;
-                for (String skyblock : skyblockInAllLanguages) {
+                for (String skyblock : SKYBLOCK_IN_ALL_LANGUAGES) {
                     if (objectiveName.startsWith(skyblock)) {
                         onSkyblock = true;
                     }
@@ -686,6 +686,11 @@ public class Utils {
             }
         }
         return -1;
+    }
+
+    public boolean isHalloween() {
+        Calendar calendar = Calendar.getInstance();
+        return calendar.get(Calendar.MONTH) == Calendar.OCTOBER && calendar.get(Calendar.DAY_OF_MONTH) == 31;
     }
 
     public CooldownEntry getItemCooldown(String itemName) {

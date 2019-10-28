@@ -110,11 +110,6 @@ public class Backpack {
                                 items[i] = itemStack;
                             }
                         }
-                        boolean foundItem = false;
-                        for (ItemStack item : items) {
-                            if (item != null) foundItem = true;
-                        }
-                        if (!foundItem) return null;
                         BackpackColor color = BackpackColor.WHITE;
                         if (extraAttributes.hasKey("backpack_color")) {
                             try {

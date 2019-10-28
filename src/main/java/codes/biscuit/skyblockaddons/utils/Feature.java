@@ -3,9 +3,11 @@ package codes.biscuit.skyblockaddons.utils;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.gui.buttons.ButtonLocation;
 import net.minecraft.client.Minecraft;
-import net.minecraft.util.EnumChatFormatting;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @SuppressWarnings({"deprecation", "DeprecatedIsStillUsed"})
 public enum Feature {
@@ -66,7 +68,8 @@ public enum Feature {
     SHOW_ITEM_COOLDOWNS(53, Message.SETTING_SHOW_ITEM_COOLDOWNS, null, false),
     COLLECTION_DISPLAY(54, Message.SETTING_COLLECTION_DISPLAY, new GuiFeatureData(EnumUtils.DrawType.TEXT, ConfigColor.AQUA, EnumUtils.AnchorPoint.TOP_RIGHT, -131, 13), false),
     SPEED_PERCENTAGE(55, Message.SETTING_SPEED_PERCENTAGE, new GuiFeatureData(EnumUtils.DrawType.TEXT, ConfigColor.WHITE, EnumUtils.AnchorPoint.BOTTOM_MIDDLE, -110, -11), false),
-//    HIDE_HUD_BARS(41, null),
+
+    HALLOWEEN(100, null, null, false),
 
     WARNING_TIME(-1, Message.SETTING_WARNING_DURATION, null, false),
 
@@ -143,9 +146,6 @@ public enum Feature {
         return defaultDisabled;
     }
 
-    private static List<ItemDiff> DUMMY_LOG = new ArrayList<>(Arrays.asList(new ItemDiff(EnumChatFormatting.DARK_PURPLE + "Forceful Ember Chestplate", 1),
-            new ItemDiff("Boat", -1), new ItemDiff(EnumChatFormatting.BLUE + "Aspect of the End", 1)));
-
     public void draw(float scale, Minecraft mc, ButtonLocation buttonLocation) {
         if (guiFeatureData != null) {
             SkyblockAddons main = SkyblockAddons.getInstance();
@@ -156,7 +156,7 @@ public enum Feature {
             } else if (guiFeatureData.getDrawType() == EnumUtils.DrawType.TEXT) {
                 main.getRenderListener().drawText(this, scale, mc, buttonLocation);
             } else if (guiFeatureData.getDrawType() == EnumUtils.DrawType.PICKUP_LOG) {
-                main.getRenderListener().drawItemPickupLog(mc, scale, DUMMY_LOG, buttonLocation);
+                main.getRenderListener().drawItemPickupLog(mc, scale, buttonLocation);
             } else if (guiFeatureData.getDrawType() == EnumUtils.DrawType.DEFENCE_ICON) {
                 main.getRenderListener().drawIcon(scale, mc, buttonLocation);
             }
