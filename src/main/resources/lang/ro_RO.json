@@ -74,11 +74,11 @@
     "avoidBlinkingNightVision": "Evită clipirea Visiune de noapte",
     "disableMinionLocationWarning": "Dezactiveaza Avertizarea De Locatia minionului",
     "jungleAxeCooldown": "Timp ramas pentru a folosi Jungle Axe",
-    "organizeLongEnchantmentLists": "Organize Long Enchantment Lists",
-    "showItemCooldowns": "Show Item Cooldowns",
-    "speedPercentage": "Speed Percentage",
-    "collectionDisplay": "Skill Progress Display",
-    "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns"
+    "organizeLongEnchantmentLists": "Organizează Liste Lungi cu Enchant-uri",
+    "showItemCooldowns": "Arată Cooldown-ul Obiectelor",
+    "speedPercentage": "Procentul Vitezei",
+    "collectionDisplay": "Display Progres Abilități",
+    "onlyMineOresDeepCaverns": "Minează Numai Minereuri în Deep Caverns"
   },
   "messages": {
     "dropConfirmation": "Arunca acest obiect iar ca să confirmi!",
@@ -94,7 +94,7 @@
     "inventoryTypes": {
       "enchants": "Enchant-uri",
       "reforges": "Refăuriri",
-      "crafting": "Crafting"
+      "crafting": "Fabricație"
     },
     "newUpdateAvailable": "O nouă versiune (%version%) este disponibilă!",
     "deleteOldFile": "Instalarea s-a terminat, vă rugam sa deschideți folder-ul cu modurile apăsând butonul de mai jos, închideți Minecraft-ul și ștergeți versiunea cea veche (sau puteți să o ștergeți mai târziu).",
@@ -116,8 +116,8 @@
     "cancelledProfileOpening": "Modul SkyblockAddons te-a oprit sa deschizi profilul jucătorului in timp ce utilizezi un arc.",
     "cancelledDropping": "Modul SkyblockAddons te-a oprit să arunci acest item sau unealtă rară din inventar.",
     "clickMoreTimes": "Aruncă acest item de încă %times% dacă vrei să faci asta.",
-    "cancelledDeepCaverns": "A SkyblockAddons feature has stopped you from mining this block here.",
+    "cancelledDeepCaverns": "O funcție SkyblockAddons te-a oprit din minatul acestui cub.",
     "featureDisabled": "Funcție dezactivată",
-    "anvilUses": "Anvil Uses: %uses%"
+    "anvilUses": "Utilizări Nicovală: %uses%"
   }
 }
