@@ -77,7 +77,8 @@
     "organizeLongEnchantmentLists": "Organize Long Enchantment Lists",
     "showItemCooldowns": "Show Item Cooldowns",
     "speedPercentage": "Speed Percentage",
-    "collectionDisplay": "Skill Progress Display"
+    "collectionDisplay": "Skill Progress Display",
+    "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns"
   },
   "messages": {
     "dropConfirmation": "Meskite Šį Daiktą Dar Kartą, Kad Patvirtintumėte!",
@@ -112,10 +113,10 @@
     "slotLocked": "Šitas langelis yra užrakintas!",
     "summoningEyeFound": "Ender Drakono Spawninimo Akis!",
     "cancelledStemBreak": "SkyblockAddons sustabdė jus nuo šio stiebo išgriovimo. Naudokite savo ranką jeigu norėtumėte jį iš tikrųjų išgriauti.",
-    "cancelledCaneBreak": "SkyblockAddons modas sustabde jus nuo apatinio cuknanendės bloko išgriovimo. Naudokite kitą įrankį jei iš tikrūjų norite jį išgriauti.",
     "cancelledProfileOpening": "SkyblockAddons sustabdė jumis nuo šio žaidėjo profilio atidarymo, kai jūs rankoje laikote lanką.",
     "cancelledDropping": "SkyblockAddons sustabdė jumis nuo šio reto daikto išmetimo iš jūsų inventoriaus ar hotbaro.",
     "clickMoreTimes": "Paspauskite/meskite šį daiktą %times% tiek kartų jeigu iš tikrųjų norite jį išmesti.",
+    "cancelledDeepCaverns": "A SkyblockAddons feature has stopped you from mining this block here.",
     "featureDisabled": "Feature Disabled",
     "anvilUses": "Anvil Uses: %uses%"
   }
