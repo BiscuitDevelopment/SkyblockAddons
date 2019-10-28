@@ -227,7 +227,6 @@ public class PlayerListener {
                 main.getUtils().playSound("random.orb", 0.5);
                 main.getRenderListener().setTitleFeature(Feature.SPECIAL_ZEALOT_ALERT);
                 main.getScheduler().schedule(Scheduler.CommandType.RESET_TITLE_FEATURE, main.getConfigValues().getWarningSeconds());
-                System.out.println("Log say yes.");
             }
 
             Matcher matcher = ABILITY_CHAT_PATTERN.matcher(e.message.getFormattedText());
