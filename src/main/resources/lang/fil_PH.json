@@ -77,7 +77,8 @@
     "organizeLongEnchantmentLists": "I-organize ang mahabang Listahan ng mga Enchantment",
     "showItemCooldowns": "Show Item Cooldowns",
     "speedPercentage": "Speed Percentage",
-    "collectionDisplay": "Skill Progress Display"
+    "collectionDisplay": "Skill Progress Display",
+    "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns"
   },
   "messages": {
     "dropConfirmation": "Ihulog ang item muli para kumpirmado!",
@@ -112,10 +113,10 @@
     "slotLocked": "Ang slot na ito ay nakakandado pa!",
     "summoningEyeFound": "Pangsummon na Mata!",
     "cancelledStemBreak": "Itinigil ng SkyblockAddons sa pag-sira ng tangkay na ito. Gamitin mo ang iyong kamay kung gusto mo talaga sirain.",
-    "cancelledCaneBreak": "Itinigil ng SkyblockAddons sa pag-sira ng Sugar Cane. Gamitin mo ang iyong kamay kung gusto mo talaga sirain.",
     "cancelledProfileOpening": "Itinigil ng SkyblockAddons sa pag bukas ng profile habang may hawak na pana.",
     "cancelledDropping": "Itinigil ng SkyblockAddons sa pag hulog ng mahalagang gamit sa iyong imbentaryo.",
     "clickMoreTimes": "I-click/hulog ang gamit %times% na ito maraming beses kung gusto mo talaga gawin to.",
+    "cancelledDeepCaverns": "A SkyblockAddons feature has stopped you from mining this block here.",
     "featureDisabled": "Mga Disabled na Feature",
     "anvilUses": "Anvil Uses: %uses%"
   }
