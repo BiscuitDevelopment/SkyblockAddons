@@ -158,9 +158,6 @@ public class RenderListener {
                 case FULL_INVENTORY_WARNING:
                     message = Message.MESSAGE_FULL_INVENTORY;
                     break;
-                case SUMMONING_EYE_ALERT:
-                    message = Message.MESSAGE_SUMMONING_EYE_FOUND;
-                    break;
                 case SPECIAL_ZEALOT_ALERT:
                     message = Message.MESSAGE_SPECIAL_ZEALOT_FOUND;
                     break;

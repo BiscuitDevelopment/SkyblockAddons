@@ -217,12 +217,6 @@ public class PlayerListener {
             if (main.getConfigValues().isEnabled(Feature.PREVENT_MOVEMENT_ON_DEATH) && e.message.getFormattedText().startsWith("§r§c \u2620 §r§7You ")) {
                 KeyBinding.unPressAllKeys();
             }
-            // credits to tomotomo, thanks lol
-            if (main.getConfigValues().isEnabled(Feature.SUMMONING_EYE_ALERT) && e.message.getFormattedText().equals("§r§6§lRARE DROP! §r§5Summoning Eye§r")) {
-                main.getUtils().playSound("random.orb", 0.5);
-                main.getRenderListener().setTitleFeature(Feature.SUMMONING_EYE_ALERT);
-                main.getScheduler().schedule(Scheduler.CommandType.RESET_TITLE_FEATURE, main.getConfigValues().getWarningSeconds());
-            }
             if (main.getConfigValues().isEnabled(Feature.SPECIAL_ZEALOT_ALERT) && e.message.getFormattedText().equals("§r§aA special §r§5Zealot §r§ahas spawned nearby!§r")) {
                 main.getUtils().playSound("random.orb", 0.5);
                 main.getRenderListener().setTitleFeature(Feature.SPECIAL_ZEALOT_ALERT);

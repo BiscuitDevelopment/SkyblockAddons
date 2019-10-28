@@ -40,7 +40,7 @@ public class SkyblockAddonsGui extends GuiScreen {
     private static Set<Feature> colorSettingFeatures = Sets.newHashSet(Feature.MAGMA_WARNING, Feature.DROP_CONFIRMATION,
             Feature.MANA_BAR, Feature.MANA_TEXT, Feature.HEALTH_BAR, Feature.HEALTH_TEXT, Feature.DEFENCE_TEXT,
             Feature.DEFENCE_PERCENTAGE, Feature.MAGMA_BOSS_TIMER, Feature.DARK_AUCTION_TIMER,
-            Feature.FULL_INVENTORY_WARNING, Feature.MINION_FULL_WARNING, Feature.MINION_STOP_WARNING, Feature.SUMMONING_EYE_ALERT,
+            Feature.FULL_INVENTORY_WARNING, Feature.MINION_FULL_WARNING, Feature.MINION_STOP_WARNING,
             Feature.AVOID_BREAKING_STEMS, Feature.DONT_OPEN_PROFILES_WITH_BOW, Feature.SPECIAL_ZEALOT_ALERT);
 
     private static Set<Feature> guiScaleFeatures = Sets.newHashSet(Feature.ITEM_PICKUP_LOG, Feature.HEALTH_UPDATES,
@@ -73,7 +73,7 @@ public class SkyblockAddonsGui extends GuiScreen {
                     Feature.IGNORE_ITEM_FRAME_CLICKS, Feature.HIDE_FOOD_ARMOR_BAR, Feature.HIDE_HEALTH_BAR,
                     Feature.AVOID_BREAKING_STEMS, Feature.MAGMA_WARNING, Feature.HIDE_PLAYERS_IN_LOBBY, Feature.MINION_STOP_WARNING,
                     Feature.SHOW_ITEM_ANVIL_USES, Feature.LOCK_SLOTS, Feature.DONT_OPEN_PROFILES_WITH_BOW, Feature.STOP_DROPPING_SELLING_RARE_ITEMS,
-                    Feature.MAKE_ENDERCHESTS_GREEN_IN_END, Feature.SUMMONING_EYE_ALERT, Feature.FISHING_SOUND_INDICATOR, Feature.DONT_RESET_CURSOR_INVENTORY,
+                    Feature.MAKE_ENDERCHESTS_GREEN_IN_END, Feature.FISHING_SOUND_INDICATOR, Feature.DONT_RESET_CURSOR_INVENTORY,
                     Feature.REPLACE_ROMAN_NUMERALS_WITH_NUMBERS, Feature.DROP_CONFIRMATION, Feature.ORGANIZE_ENCHANTMENTS, Feature.JUNGLE_AXE_COOLDOWN,
                     Feature.MINION_DISABLE_LOCATION_WARNING, Feature.SHOW_ITEM_COOLDOWNS, Feature.AVOID_BREAKING_BOTTOM_SUGAR_CANE, Feature.SPECIAL_ZEALOT_ALERT};
         } else if (tab == EnumUtils.GuiTab.FIXES) {
