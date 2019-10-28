@@ -77,7 +77,8 @@
     "organizeLongEnchantmentLists": "Järjestä pitkät lumouslistat",
     "showItemCooldowns": "Näytä tavaran jäähtymisaika",
     "speedPercentage": "Nopeuden prosenttimäärä",
-    "collectionDisplay": "Skill Progress Display"
+    "collectionDisplay": "Skill Progress Display",
+    "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns"
   },
   "messages": {
     "dropConfirmation": "Pudota tämä esine uudelleen vahvistaaksesi!",
@@ -112,10 +113,10 @@
     "slotLocked": "Tämä paikka on lukittu!",
     "summoningEyeFound": "Kutsumissilmä!",
     "cancelledStemBreak": "SkyblockAddons on pysäyttänyt sinua rikkomasta tämän varren. Käytä nyrkkiäsi jos haluat rikkoa sen.",
-    "cancelledCaneBreak": "SkyblockAddons on pysäyttänyt sinua rikkomasta tätä sokeriruokoblockia. Käytä toista työkalua rikkoaksesi sen.",
     "cancelledProfileOpening": "SkyblockAddons on pysäyttänyt sinua avaamasta tämän pelaajan profiilia, kun sinulla on jousi kädessä.",
     "cancelledDropping": "SkyblockAddons on pysäyttänyt sinua pudottamasta tämän arvokkaan esineen tai työkalun hotbaristasi.",
     "clickMoreTimes": "Klikkaa/pudota tämä esine %times% kertaa jos haluat tehdä tämän.",
+    "cancelledDeepCaverns": "A SkyblockAddons feature has stopped you from mining this block here.",
     "featureDisabled": "Toiminto pois käytöstä",
     "anvilUses": "Alasimen käytöt: %uses%"
   }
