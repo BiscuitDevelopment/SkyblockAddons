@@ -77,7 +77,8 @@
     "organizeLongEnchantmentLists": "長いエンチャントのリストを整理",
     "showItemCooldowns": "アイテムのクールタイムを表示",
     "speedPercentage": "スピード",
-    "collectionDisplay": "スキルの進捗のディスプレイ"
+    "collectionDisplay": "スキルの進捗のディスプレイ",
+    "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns"
   },
   "messages": {
     "dropConfirmation": "落としてもいいのであれば、このアイテムをもう一度ドロップしてください。",
@@ -112,10 +113,10 @@
     "slotLocked": "このスロットはロックされています。",
     "summoningEyeFound": "サモニングアイ！",
     "cancelledStemBreak": "SkyblockAddonsがこの幹を壊すのを阻止しました。壊したい場合は素手で壊してください。",
-    "cancelledCaneBreak": "SkyblockAddonsがこのサトウキビを壊すのを阻止しました。壊したい場合は別のツールで壊してください。",
     "cancelledProfileOpening": "SkyblockAddonsがこのプレイヤーのプロフィールを開くことを阻止しました。",
     "cancelledDropping": "SkyblockAddonsがこのアイテムを捨てることを阻止しました。",
     "clickMoreTimes": "本当に落としたい場合はもう%times%回クリック/ドロップしてください。",
+    "cancelledDeepCaverns": "A SkyblockAddons feature has stopped you from mining this block here.",
     "featureDisabled": "機能を無効化",
     "anvilUses": "金床の使用数 : %uses%"
   }
