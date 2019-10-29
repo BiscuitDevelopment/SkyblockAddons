@@ -78,7 +78,7 @@
     "showItemCooldowns": "Показывать откат вещей",
     "speedPercentage": "Процент скорости",
     "collectionDisplay": "Показывать прогресс навыков",
-    "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns"
+    "onlyMineOresDeepCaverns": "Копать только руды в Глубоких Пещерах"
   },
   "messages": {
     "dropConfirmation": "Выбросите предмет ещё раз для подтверждения!",
@@ -116,7 +116,7 @@
     "cancelledProfileOpening": "SkyBlockAddons остановил вас от открытия профиля игрока с луком в руках.",
     "cancelledDropping": "SkyBlockAddons предотвратил попытку выбросить этот предмет из панели быстрого доступа.",
     "clickMoreTimes": "Нажмите/выберите этот предмет еще %times% раз, если вы действительно хотите сделать это.",
-    "cancelledDeepCaverns": "A SkyblockAddons feature has stopped you from mining this block here.",
+    "cancelledDeepCaverns": "Функция SkyblockAddons остановила вас от копания этого блока.",
     "featureDisabled": "Функция отключена",
     "anvilUses": "Использований наковальни: %uses%"
   }
