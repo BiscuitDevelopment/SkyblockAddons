@@ -78,7 +78,7 @@
     "showItemCooldowns": "アイテムのクールタイムを表示",
     "speedPercentage": "スピード",
     "collectionDisplay": "スキルの進捗のディスプレイ",
-    "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns"
+    "onlyMineOresDeepCaverns": "Deep Cavernsで鉱石のみを掘れるように"
   },
   "messages": {
     "dropConfirmation": "落としてもいいのであれば、このアイテムをもう一度ドロップしてください。",
@@ -116,7 +116,7 @@
     "cancelledProfileOpening": "SkyblockAddonsがこのプレイヤーのプロフィールを開くことを阻止しました。",
     "cancelledDropping": "SkyblockAddonsがこのアイテムを捨てることを阻止しました。",
     "clickMoreTimes": "本当に落としたい場合はもう%times%回クリック/ドロップしてください。",
-    "cancelledDeepCaverns": "A SkyblockAddons feature has stopped you from mining this block here.",
+    "cancelledDeepCaverns": "SkyblockAddonsが鉱石以外のブロックの破壊を阻止しました。",
     "featureDisabled": "機能を無効化",
     "anvilUses": "金床の使用数 : %uses%"
   }
