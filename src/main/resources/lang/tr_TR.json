@@ -79,7 +79,8 @@
     "speedPercentage": "Hız yüzdesi",
     "collectionDisplay": "Beceri ilerleme göstergesi",
     "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns",
-    "revenantIndicator": "Revenant Armor Progress Indicator"
+    "revenantIndicator": "Revenant Armor Progress Indicator",
+    "specialZealotAlert": "Special Zealot Alert"
   },
   "messages": {
     "dropConfirmation": "Eşyayı düşürmeyi onaylamak için düşürme tuşuna bir daha bas!",
@@ -119,6 +120,7 @@
     "clickMoreTimes": "Eğer gerçekten eşyayı yere atmak istiyorsanız %times% kez eşyaya tıklayın.",
     "cancelledDeepCaverns": "A SkyblockAddons feature has stopped you from mining this block here.",
     "featureDisabled": "Özellik Devre Dışı",
-    "anvilUses": "Örs Kullanımı: %uses%"
+    "anvilUses": "Örs Kullanımı: %uses%",
+    "specialZealotFound": "Special Zealot!"
   }
 }
