@@ -78,7 +78,8 @@
     "showItemCooldowns": "显示物品冷却时间",
     "speedPercentage": "速度百分比",
     "collectionDisplay": "显示技能进度",
-    "onlyMineOresDeepCaverns": "仅深层矿洞的矿物"
+    "onlyMineOresDeepCaverns": "仅深层矿洞的矿物",
+    "revenantIndicator": "Revenant Armor Progress Indicator"
   },
   "messages": {
     "dropConfirmation": "再次丢弃此物品以确认!",
