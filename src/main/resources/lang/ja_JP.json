@@ -79,7 +79,8 @@
     "speedPercentage": "スピード",
     "collectionDisplay": "スキルの進捗のディスプレイ",
     "onlyMineOresDeepCaverns": "Deep Cavernsで鉱石のみを掘れるように",
-    "revenantIndicator": "Revenant Armor Progress Indicator"
+    "revenantIndicator": "Revenant Armor Progress Indicator",
+    "specialZealotAlert": "Special Zealot Alert"
   },
   "messages": {
     "dropConfirmation": "落としてもいいのであれば、このアイテムをもう一度ドロップしてください。",
@@ -119,6 +120,7 @@
     "clickMoreTimes": "本当に落としたい場合はもう%times%回クリック/ドロップしてください。",
     "cancelledDeepCaverns": "SkyblockAddonsが鉱石以外のブロックの破壊を阻止しました。",
     "featureDisabled": "機能を無効化",
-    "anvilUses": "金床の使用数 : %uses%"
+    "anvilUses": "金床の使用数 : %uses%",
+    "specialZealotFound": "Special Zealot!"
   }
 }
