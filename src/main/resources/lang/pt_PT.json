@@ -79,7 +79,8 @@
     "speedPercentage": "Percentagem de velocidade",
     "collectionDisplay": "Progresso das habilidades",
     "onlyMineOresDeepCaverns": "Só partir minérios nas Deep Caverns",
-    "revenantIndicator": "Revenant Armor Progress Indicator"
+    "revenantIndicator": "Revenant Armor Progress Indicator",
+    "specialZealotAlert": "Special Zealot Alert"
   },
   "messages": {
     "dropConfirmation": "Dropa este item outra vez para confirmar!",
@@ -119,6 +120,7 @@
     "clickMoreTimes": "Clica/dropa este item mais %times% vezes se quiseres mesmo fazer isto.",
     "cancelledDeepCaverns": "Uma funcionalidade do SkyblockAddons preveniu-te de partires este minério aqui.",
     "featureDisabled": "Função Desativada",
-    "anvilUses": "Usos na bigorna: %uses%"
+    "anvilUses": "Usos na bigorna: %uses%",
+    "specialZealotFound": "Special Zealot!"
   }
 }
