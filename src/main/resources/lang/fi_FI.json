@@ -79,7 +79,8 @@
     "speedPercentage": "Nopeuden prosenttimäärä",
     "collectionDisplay": "Skill Progress Display",
     "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns",
-    "revenantIndicator": "Revenant Armor Progress Indicator"
+    "revenantIndicator": "Revenant Armor Progress Indicator",
+    "specialZealotAlert": "Special Zealot Alert"
   },
   "messages": {
     "dropConfirmation": "Pudota tämä esine uudelleen vahvistaaksesi!",
@@ -119,6 +120,7 @@
     "clickMoreTimes": "Klikkaa/pudota tämä esine %times% kertaa jos haluat tehdä tämän.",
     "cancelledDeepCaverns": "A SkyblockAddons feature has stopped you from mining this block here.",
     "featureDisabled": "Toiminto pois käytöstä",
-    "anvilUses": "Alasimen käytöt: %uses%"
+    "anvilUses": "Alasimen käytöt: %uses%",
+    "specialZealotFound": "Special Zealot!"
   }
 }
