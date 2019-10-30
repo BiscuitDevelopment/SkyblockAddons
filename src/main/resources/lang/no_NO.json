@@ -78,7 +78,8 @@
     "showItemCooldowns": "Vis Ting Pause",
     "speedPercentage": "Farts Prosent",
     "collectionDisplay": "Ferdighetsutvikling Visning",
-    "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns"
+    "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns",
+    "revenantIndicator": "Revenant Armor Progress Indicator"
   },
   "messages": {
     "dropConfirmation": "Slipp denne gjenstanden igjen for å bekrefte!",
