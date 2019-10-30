@@ -79,7 +79,8 @@
     "speedPercentage": "Farts Prosent",
     "collectionDisplay": "Ferdighetsutvikling Visning",
     "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns",
-    "revenantIndicator": "Revenant Armor Progress Indicator"
+    "revenantIndicator": "Revenant Armor Progress Indicator",
+    "specialZealotAlert": "Special Zealot Alert"
   },
   "messages": {
     "dropConfirmation": "Slipp denne gjenstanden igjen for å bekrefte!",
@@ -119,6 +120,7 @@
     "clickMoreTimes": "Klikk/slipp denne gjenstanden %times% flere ganger hvis du virkelig vil gjøre dette.",
     "cancelledDeepCaverns": "A SkyblockAddons feature has stopped you from mining this block here.",
     "featureDisabled": "Funksjon Deaktivert",
-    "anvilUses": "Ambolt Bruk: %uses%"
+    "anvilUses": "Ambolt Bruk: %uses%",
+    "specialZealotFound": "Special Zealot!"
   }
 }
