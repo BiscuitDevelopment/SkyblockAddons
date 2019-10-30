@@ -79,7 +79,8 @@
     "speedPercentage": "نسبة السرعه",
     "collectionDisplay": "عرض تقدم المهارة",
     "onlyMineOresDeepCaverns": "حفر المعادن فقظ في الكهوف العميقة",
-    "revenantIndicator": "Revenant Armor Progress Indicator"
+    "revenantIndicator": "Revenant Armor Progress Indicator",
+    "specialZealotAlert": "Special Zealot Alert"
   },
   "messages": {
     "dropConfirmation": "!إرمي هذا العنصر مرة أخرى للتأكيد",
@@ -119,6 +120,7 @@
     "clickMoreTimes": "أضغط أو اسقط هذا الشيء %times% مرات أخرى إن كنت حقيقا تريد فعل هذا.",
     "cancelledDeepCaverns": "إضافات سكاي بلوك منعك من كسر هذا المعدن.",
     "featureDisabled": "تعطل الميزة",
-    "anvilUses": "استخدامات السندان: %uses%"
+    "anvilUses": "استخدامات السندان: %uses%",
+    "specialZealotFound": "Special Zealot!"
   }
 }
