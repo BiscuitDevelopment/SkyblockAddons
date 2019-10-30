@@ -79,7 +79,8 @@
     "speedPercentage": "Speed Percentage",
     "collectionDisplay": "Skill Progress Display",
     "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns",
-    "revenantIndicator": "Revenant Armor Progress Indicator"
+    "revenantIndicator": "Revenant Armor Progress Indicator",
+    "specialZealotAlert": "Special Zealot Alert"
   },
   "messages": {
     "dropConfirmation": "아이템을 정말로 버리려면 다시 버리세요!",
@@ -119,6 +120,7 @@
     "clickMoreTimes": "정말 이 아이템을 떨어뜨리려면 %times%번 더 떨어뜨리세요.",
     "cancelledDeepCaverns": "A SkyblockAddons feature has stopped you from mining this block here.",
     "featureDisabled": "Feature Disabled",
-    "anvilUses": "Anvil Uses: %uses%"
+    "anvilUses": "Anvil Uses: %uses%",
+    "specialZealotFound": "Special Zealot!"
   }
 }
