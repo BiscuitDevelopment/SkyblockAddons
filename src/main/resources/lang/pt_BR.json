@@ -76,9 +76,9 @@
     "jungleAxeCooldown": "Recarga do Machado da Selva",
     "organizeLongEnchantmentLists": "Organizar lista de encantamentos longos",
     "showItemCooldowns": "Mostrar tempo de recarga dos itens",
-    "speedPercentage": "Speed Percentage",
-    "collectionDisplay": "Skill Progress Display",
-    "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns"
+    "speedPercentage": "Porcentagem de velocidade",
+    "collectionDisplay": "Exibição do progresso da habilidade",
+    "onlyMineOresDeepCaverns": "Apenas quebrar minérios nas Cavernas Profundas"
   },
   "messages": {
     "dropConfirmation": "Large este item de novo para confirmar!",
@@ -116,7 +116,7 @@
     "cancelledProfileOpening": "O SkyblockAddons impediu você de abrir o perfil deste jogador enquanto segura um arco.",
     "cancelledDropping": "O SkyblockAddons impediu você de largar este item ou ferramenta rara da sua hotbar.",
     "clickMoreTimes": "Clique/Largue este item mais %times% vezes caso realmente queira fazer isso.",
-    "cancelledDeepCaverns": "A SkyblockAddons feature has stopped you from mining this block here.",
+    "cancelledDeepCaverns": "Uma função do SkyblockAddons impediu você de minerar este bloco aqui.",
     "featureDisabled": "Função desabilitada",
     "anvilUses": "Usos na Bigorna: %uses%"
   }
