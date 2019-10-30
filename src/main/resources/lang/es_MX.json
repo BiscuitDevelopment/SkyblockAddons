@@ -79,7 +79,8 @@
     "speedPercentage": "Porcentaje de Velocidad",
     "collectionDisplay": "Progreso de Hablidades",
     "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns",
-    "revenantIndicator": "Revenant Armor Progress Indicator"
+    "revenantIndicator": "Revenant Armor Progress Indicator",
+    "specialZealotAlert": "Special Zealot Alert"
   },
   "messages": {
     "dropConfirmation": "Arroja este objeto otra vez para confirmar!",
@@ -119,6 +120,7 @@
     "clickMoreTimes": "Haz clic/arroja el objeto %times% veces más si en realidad quieres hacerlo.",
     "cancelledDeepCaverns": "A SkyblockAddons feature has stopped you from mining this block here.",
     "featureDisabled": "Característica Desactivada",
-    "anvilUses": "Usos en Anvil/Yunque: %uses%"
+    "anvilUses": "Usos en Anvil/Yunque: %uses%",
+    "specialZealotFound": "Special Zealot!"
   }
 }
