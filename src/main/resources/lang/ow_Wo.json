@@ -79,7 +79,8 @@
     "speedPercentage": "Spweed Pwocentage",
     "collectionDisplay": "Skwill Prowogess Dispway",
     "onlyMineOresDeepCaverns": "OwOnly Mwine Owores in twhe deep Cavwerns",
-    "revenantIndicator": "Revenant Armor Progress Indicator"
+    "revenantIndicator": "Revenant Armor Progress Indicator",
+    "specialZealotAlert": "Special Zealot Alert"
   },
   "messages": {
     "dropConfirmation": "Dwop thwis itwem agwain to confiwm!",
@@ -119,6 +120,7 @@
     "clickMoreTimes": "Cwick/dwop this item %times% mwore twimes if you weally want to do whis.",
     "cancelledDeepCaverns": "A SkwyBwlockAddowons fweature hwas stowopped ywou from mining thwis blowock hwere.",
     "featureDisabled": "Fweature Diswabled",
-    "anvilUses": "Anviw Uses: %uses%"
+    "anvilUses": "Anviw Uses: %uses%",
+    "specialZealotFound": "Special Zealot!"
   }
 }
