@@ -79,7 +79,8 @@
     "speedPercentage": "Speed Percentage",
     "collectionDisplay": "Skill Progress Display",
     "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns",
-    "revenantIndicator": "Revenant Armor Progress Indicator"
+    "revenantIndicator": "Revenant Armor Progress Indicator",
+    "specialZealotAlert": "Special Zealot Alert"
   },
   "messages": {
     "dropConfirmation": "संदेशों -> ड्रॉप क चेतावनी",
@@ -119,6 +120,7 @@
     "clickMoreTimes": "इस आइटम को %times% बार क्लिक / ड्रॉप करें यदि आप वास्तव में ऐसा करना चाहते हैं।",
     "cancelledDeepCaverns": "A SkyblockAddons feature has stopped you from mining this block here.",
     "featureDisabled": "Feature Disabled",
-    "anvilUses": "Anvil Uses: %uses%"
+    "anvilUses": "Anvil Uses: %uses%",
+    "specialZealotFound": "Special Zealot!"
   }
 }
