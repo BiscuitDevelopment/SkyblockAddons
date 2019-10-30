@@ -78,7 +78,8 @@
     "showItemCooldowns": "Show Biscuits Cooldowns",
     "speedPercentage": "Bisceet Percentage",
     "collectionDisplay": "Biskill Progress Biscplay",
-    "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns"
+    "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns",
+    "revenantIndicator": "Revenant Armor Progress Indicator"
   },
   "messages": {
     "dropConfirmation": "Throw out this biscuit again to confirm!",
