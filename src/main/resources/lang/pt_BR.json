@@ -45,7 +45,7 @@
     "magmaBossTimer": "Timer do Chefão Magma",
     "itemPickupLog": "Registro de Items Pegados",
     "avoidPlacingEnchantedItems": "Evitar de Colocar Itens Encantados",
-    "avoidBreakingStems": "Evitar de Quebar Raizes",
+    "avoidBreakingStems": "Evitar de Quebrar Sementes",
     "stopBowChargeFromResetting": "Impedir Arco e Flecha de Resetar",
     "preventMovementOnDeath": "Impedir Movimento Após Morte",
     "showItemAnvilUses": "Mostrar Usos de Bigorna no Item",
@@ -78,7 +78,8 @@
     "showItemCooldowns": "Mostrar tempo de recarga dos itens",
     "speedPercentage": "Porcentagem de velocidade",
     "collectionDisplay": "Exibição do progresso da habilidade",
-    "onlyMineOresDeepCaverns": "Apenas quebrar minérios nas Cavernas Profundas"
+    "onlyMineOresDeepCaverns": "Apenas quebrar minérios nas Cavernas Profundas",
+    "revenantIndicator": "Revenant Armor Progress Indicator"
   },
   "messages": {
     "dropConfirmation": "Large este item de novo para confirmar!",
