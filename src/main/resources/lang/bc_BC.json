@@ -79,7 +79,8 @@
     "speedPercentage": "Bisceet Percentage",
     "collectionDisplay": "Biskill Progress Biscplay",
     "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns",
-    "revenantIndicator": "Revenant Armor Progress Indicator"
+    "revenantIndicator": "Revenant Armor Progress Indicator",
+    "specialZealotAlert": "Special Zealot Alert"
   },
   "messages": {
     "dropConfirmation": "Throw out this biscuit again to confirm!",
@@ -119,6 +120,7 @@
     "clickMoreTimes": "Click/drop this biscuit %times% more times if you really want to do this poor biscuit lol.",
     "cancelledDeepCaverns": "A SkyblockAddons feature has stopped you from mining this block here.",
     "featureDisabled": "Biscture Disabled",
-    "anvilUses": "Biscoots Uses: %uses%"
+    "anvilUses": "Biscoots Uses: %uses%",
+    "specialZealotFound": "Special Zealot!"
   }
 }
