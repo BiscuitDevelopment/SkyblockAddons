@@ -78,7 +78,8 @@
     "showItemCooldowns": "Item Abklingzeit anzeigen",
     "speedPercentage": "Geschwindigkeit in Prozent",
     "collectionDisplay": "Skillfortschrittsanzeige",
-    "onlyMineOresDeepCaverns": "Nur Erze in Deep Caverns abbauen"
+    "onlyMineOresDeepCaverns": "Nur Erze in Deep Caverns abbauen",
+    "revenantIndicator": "Revenant Armor Progress Indicator"
   },
   "messages": {
     "dropConfirmation": "Werfe diesen Gegenstand nochmal, um zu bestätigen!",
