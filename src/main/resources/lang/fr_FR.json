@@ -78,7 +78,8 @@
     "showItemCooldowns": "Afficher le temps de recharge des objets",
     "speedPercentage": "Pourcentage de vitesse",
     "collectionDisplay": "Affichage de la progression des compétences",
-    "onlyMineOresDeepCaverns": "Miner uniquement les minerais dans la Deep Caverns"
+    "onlyMineOresDeepCaverns": "Miner uniquement les minerais dans la Deep Caverns",
+    "specialZealotAlert": "Alerte Zealot spéciale"
   },
   "messages": {
     "dropConfirmation": "Jetez cet objet une nouvelle fois pour confirmer!",
@@ -118,6 +119,7 @@
     "clickMoreTimes": "Cliquez/jetez cet objet encore %times% fois si vous le souhaitez.",
     "cancelledDeepCaverns": "Une fonctionnalité SkyblockAddons vous a empêché de miner ce bloc ici.",
     "featureDisabled": "Fonction désactivée",
-    "anvilUses": "Utilisation de l'enclume: %uses%"
+    "anvilUses": "Utilisation de l'enclume: %uses%",
+    "specialZealotFound": "Zealot spéciale!"
   }
 }

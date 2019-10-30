@@ -168,6 +168,9 @@ public class RenderListener {
                 case SUMMONING_EYE_ALERT:
                     message = Message.MESSAGE_SUMMONING_EYE_FOUND;
                     break;
+                case SPECIAL_ZEALOT_ALERT:
+                    message = Message.MESSAGE_SPECIAL_ZEALOT_FOUND;
+                    break;
             }
             if (message != null) {
                 String text = message.getMessage();
