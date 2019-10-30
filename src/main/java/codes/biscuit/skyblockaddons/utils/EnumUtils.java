@@ -1,6 +1,7 @@
 package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.Entity;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -375,7 +376,7 @@ public class EnumUtils {
         ORCHID_ALLOY("orchidalloy", "github.com/orchidalloy", Feature.SUMMONING_EYE_ALERT, Feature.FISHING_SOUND_INDICATOR, Feature.ORGANIZE_ENCHANTMENTS),
         HIGH_CRIT("HighCrit", "github.com/HighCrit", Feature.PREVENT_MOVEMENT_ON_DEATH),
         MOULBERRY("Moulberry", "github.com/Moulberry", Feature.DONT_RESET_CURSOR_INVENTORY),
-        TOMOCRAFTER("tomocrafter","github.com/tomocrafter", Feature.AVOID_BLINKING_NIGHT_VISION),
+        TOMOCRAFTER("tomocrafter","github.com/tomocrafter", Feature.AVOID_BLINKING_NIGHT_VISION, Feature.REVENANT_INDICATOR),
         DAPIGGUY("DaPigGuy", "github.com/DaPigGuy", Feature.MINION_DISABLE_LOCATION_WARNING),
         COMNIEMEER("comniemeer","github.com/comniemeer", Feature.JUNGLE_AXE_COOLDOWN),
         KEAGEL("Keagel", "github.com/Keagel", Feature.ONLY_MINE_ORES_DEEP_CAVERNS),
@@ -460,7 +461,7 @@ public class EnumUtils {
         FORAGING("Foraging", Item.getItemFromBlock(Blocks.sapling)),
         FISHING("Fishing", Items.fishing_rod),
         ENCHANTING("Enchanting", Item.getItemFromBlock(Blocks.enchanting_table)),
-        ALCHEMY("Alchemy", Item.getItemFromBlock(Blocks.brewing_stand)),
+        ALCHEMY("Alchemy", Items.brewing_stand),
         CARPENTRY("Carpentry", Item.getItemFromBlock(Blocks.crafting_table)),
         RUNECRAFTING("Runecrafting", Items.magma_cream),
         OTHER(null, null);
@@ -471,6 +472,7 @@ public class EnumUtils {
         SkillType(String skillName, Item item) {
             this.skillName = skillName;
             this.item = new ItemStack(item);
+            this.item.addEnchantment(Enchantment.unbreaking, 1);
         }
 
         public static SkillType getFromString(String text) {
@@ -492,6 +494,7 @@ public class EnumUtils {
         BAR,
         TEXT,
         PICKUP_LOG,
-        DEFENCE_ICON
+        DEFENCE_ICON,
+        REVENANT_PROGRESS
     }
 }

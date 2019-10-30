@@ -72,10 +72,12 @@ public class ConfigValues {
                 addDefaultsAndSave();
                 return;
             }
-            for (JsonElement element : settingsConfig.getAsJsonArray("disabledFeatures")) {
-                Feature feature = Feature.fromId(element.getAsInt());
-                if (feature != null) {
-                    disabledFeatures.add(feature);
+            if (settingsConfig.has("disabledFeatures")) {
+                for (JsonElement element : settingsConfig.getAsJsonArray("disabledFeatures")) {
+                    Feature feature = Feature.fromId(element.getAsInt());
+                    if (feature != null) {
+                        disabledFeatures.add(feature);
+                    }
                 }
             }
             if (settingsConfig.has("lockedSlots")) {
@@ -95,7 +97,9 @@ public class ConfigValues {
                 }
             }
 
-            warningSeconds = settingsConfig.get("warningSeconds").getAsInt();
+            if (settingsConfig.has("warningSeconds")) {
+                warningSeconds = settingsConfig.get("warningSeconds").getAsInt();
+            }
 
             if (settingsConfig.has("language")) {
                 Language configLanguage = Language.getFromPath(settingsConfig.get("language").getAsString().toLowerCase());
@@ -157,11 +161,6 @@ public class ConfigValues {
                     }
                 }
             }
-
-            setDefaultColorIfNotSet(ConfigColor.BLUE, Feature.MANA_BAR, Feature.MANA_TEXT);
-            setDefaultColorIfNotSet(ConfigColor.GREEN, Feature.DEFENCE_TEXT, Feature.DEFENCE_PERCENTAGE);
-            setDefaultColorIfNotSet(ConfigColor.GOLD, Feature.MAGMA_BOSS_TIMER, Feature.DARK_AUCTION_TIMER);
-            setDefaultColorIfNotSet(ConfigColor.WHITE, Feature.SPEED_PERCENTAGE);
 
             if (settingsConfig.has("textStyle")) {
                 int ordinal = settingsConfig.get("textStyle").getAsInt();
@@ -229,12 +228,6 @@ public class ConfigValues {
                 JsonArray array = element.getValue().getAsJsonArray();
                 targetObject.put(feature, new CoordsPair(array.get(0).getAsInt(), array.get(1).getAsInt()));
             }
-        }
-    }
-
-    private void setDefaultColorIfNotSet(ConfigColor color, Feature... features) {
-        for (Feature feature : features) {
-            if (!featureColors.containsKey(feature)) featureColors.put(feature, color);
         }
     }
 
@@ -517,7 +510,8 @@ public class ConfigValues {
     }
 
     public ConfigColor getColor(Feature feature) {
-        return featureColors.getOrDefault(feature, ConfigColor.RED);
+        ConfigColor defaultColor = feature.getDefaultColor();
+        return featureColors.getOrDefault(feature, defaultColor != null ? defaultColor : ConfigColor.RED);
     }
 
     public int getWarningSeconds() {

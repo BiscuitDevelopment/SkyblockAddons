@@ -51,7 +51,7 @@ public class PlayerListener {
     private final Pattern ABILITY_CHAT_PATTERN = Pattern.compile("§r§aUsed §r§6[A-Za-z ]+§r§a! §r§b\\([0-9]+ Mana\\)§r");
     private final Pattern PROFILE_CHAT_PATTERN = Pattern.compile("§aYou are playing on profile: §e([A-Za-z]+).*");
     private final Pattern SWITCH_PROFILE_CHAT_PATTERN = Pattern.compile("§aYour profile was changed to: §e([A-Za-z]+).*");
-    private final Pattern COLLECTIONS_CHAT_PATTERN = Pattern.compile("§.\\+§?[0-9a-f]?[0-9.]+ §?[0-9a-f]?([A-Za-z]+) \\(([0-9]+)[0-9.]*/([0-9.]+)\\)");
+    private final Pattern COLLECTIONS_CHAT_PATTERN = Pattern.compile("§.\\+§?[0-9a-f]?([0-9.]+) §?[0-9a-f]?([A-Za-z]+) \\(([0-9]+)[0-9.]*/([0-9.]+)\\)");
 
     private boolean sentUpdate = false;
     private long lastWorldJoin = -1;
@@ -147,9 +147,10 @@ public class PlayerListener {
                                 collectionPart = splitMessage[1]; // Another Example: §5+§d30 §5Runecrafting (969/1000)
                                 Matcher matcher = COLLECTIONS_CHAT_PATTERN.matcher(collectionPart.replace(",", ""));
                                 if (matcher.matches()) {
-                                    main.getRenderListener().setSkill(matcher.group(1));
-                                    main.getRenderListener().setProgress(Integer.parseInt(matcher.group(2)));
-                                    main.getRenderListener().setMaxSkill(Integer.parseInt(matcher.group(3)));
+                                    main.getRenderListener().setSkillChange(Float.parseFloat(matcher.group(1)));
+                                    main.getRenderListener().setSkill(matcher.group(2));
+                                    main.getRenderListener().setProgress(Integer.parseInt(matcher.group(3)));
+                                    main.getRenderListener().setMaxSkill(Integer.parseInt(matcher.group(4)));
                                 }
                             }
                             manaPart = splitMessage[2];
@@ -329,6 +330,7 @@ public class PlayerListener {
                         main.getUtils().checkGameLocationDate();
                         main.getInventoryUtils().checkIfInventoryIsFull(mc, p);
                         main.getInventoryUtils().checkIfWearingSkeletonHelmet(p);
+                        main.getInventoryUtils().checkIfWearingRevenantArmor(p);
                         if (!sentUpdate) {
                             main.getUtils().checkUpdates();
                             sentUpdate = true;

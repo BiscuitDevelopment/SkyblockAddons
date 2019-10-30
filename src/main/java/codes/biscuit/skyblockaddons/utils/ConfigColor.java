@@ -70,4 +70,9 @@ public enum ConfigColor {
         }
         return values()[nextColor];
     }
+
+    @Override
+    public String toString() {
+        return chatFormatting.toString();
+    }
 }

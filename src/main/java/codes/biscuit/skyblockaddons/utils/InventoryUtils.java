@@ -8,9 +8,12 @@ import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.inventory.*;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumChatFormatting;
 
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Utility methods related to player inventories
@@ -25,12 +28,16 @@ public class InventoryUtils {
     /**
      * Display name of the Skeleton Helmet
      */
-    private static final String SKELETON_HELMET_DISPLAY_NAME = "Skeleton's Helmet";
+    private static final String SKELETON_HELMET_ID = "SKELETON_HELMET";
+
+    private static final Pattern REVENANT_UPGRADE_PATTERN = Pattern.compile("§5§o§7Next Upgrade: §a\\+([0-9]+❈) §8\\(§a([0-9,]+)§7/§c([0-9,]+)§8\\)");
 
     private List<ItemStack> previousInventory;
     private Multimap<String, ItemDiff> itemPickupLog = ArrayListMultimap.create();
     private boolean inventoryIsFull;
     private boolean wearingSkeletonHelmet;
+
+    private RevenantArmorProgress[] revenantArmorProgresses = new RevenantArmorProgress[3];
 
     private SkyblockAddons main;
 
@@ -175,7 +182,7 @@ public class InventoryUtils {
      */
     public void checkIfWearingSkeletonHelmet(EntityPlayerSP p) {
         ItemStack item = p.getEquipmentInSlot(4);
-        if (item != null && item.hasDisplayName() && item.getDisplayName().contains(SKELETON_HELMET_DISPLAY_NAME)) {
+        if (item != null && SKELETON_HELMET_ID.equals(getSkyBlockItemID(item))) {
             wearingSkeletonHelmet = true;
             return;
         }
@@ -244,5 +251,47 @@ public class InventoryUtils {
         else if (container instanceof ContainerFurnace) return 6;
         else if (container instanceof ContainerBeacon) return 8;
         else return 0;
+    }
+
+    String getSkyBlockItemID(final ItemStack item) {
+        if (item == null) return null;
+        if (item.hasTagCompound()) {
+            NBTTagCompound skyBlockData = item.getTagCompound().getCompoundTag("ExtraAttributes");
+            return skyBlockData.getString("id");
+        }
+        return null;
+    }
+
+    public void checkIfWearingRevenantArmor(EntityPlayerSP p) {
+        ConfigColor color = main.getConfigValues().getColor(Feature.REVENANT_INDICATOR);
+        for (int i = 2; i > -1; i--) {
+            ItemStack item = p.inventory.armorInventory[i];
+            String itemID = getSkyBlockItemID(item);
+            if (itemID != null && itemID.startsWith("REVENANT")) {
+                String progress = null;
+                List<String> tooltip = item.getTooltip(null, false);
+                for (String line : tooltip) {
+                    Matcher matcher = REVENANT_UPGRADE_PATTERN.matcher(line);
+                    if (matcher.matches()) { // Example: line§5§o§7Next Upgrade: §a+240❈ §8(§a14,418§7/§c15,000§8)
+                        try {
+                            progress = color.toString() + matcher.group(2)+"/"+matcher.group(3) + " (" + ConfigColor.GREEN+ matcher.group(1) + color + ")";
+                            break;
+                        } catch (NumberFormatException ignored) {}
+                    }
+                }
+                if (progress != null) {
+                    if (revenantArmorProgresses[i] == null) {
+                        revenantArmorProgresses[i] = new RevenantArmorProgress(item, progress);
+                    }
+                    revenantArmorProgresses[i].setProgressText(progress);
+                }
+            } else {
+                revenantArmorProgresses[i] = null;
+            }
+        }
+    }
+
+    public RevenantArmorProgress[] getRevenantArmorProgresses() {
+        return revenantArmorProgresses;
     }
 }

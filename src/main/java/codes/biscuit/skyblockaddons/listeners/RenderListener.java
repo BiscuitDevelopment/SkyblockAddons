@@ -9,6 +9,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityArmorStand;
 import net.minecraft.entity.item.EntityItem;
@@ -48,6 +49,7 @@ public class RenderListener {
     private Feature titleFeature = null;
     private String cannotReachMobName = null;
 
+    private float skillChange = 0;
     private EnumUtils.SkillType skill = null;
     private int progress = 0;
     private int maxSkill = 0;
@@ -558,12 +560,12 @@ public class RenderListener {
         } else if (feature == Feature.COLLECTION_DISPLAY) {
             if (buttonLocation == null) {
                 if (skill != null) {
-                    text = progress + "/" + maxSkill;
+                    text = "+" + skillChange + " " + progress + "/" + maxSkill;
                 } else {
                     return;
                 }
             } else {
-                text = "20000/50000";
+                text = "+10 20000/50000";
             }
         } else {
             return;
@@ -600,11 +602,12 @@ public class RenderListener {
         } else {
             mc.ingameGUI.drawString(mc.fontRendererObj, text, intX, intY, color);
         }
-        mc.getTextureManager().bindTexture(TEXT_ICONS);
         GlStateManager.color(1,1,1,1);
         if (feature == Feature.DARK_AUCTION_TIMER) {
+            mc.getTextureManager().bindTexture(TEXT_ICONS);
             Gui.drawModalRectWithCustomSizedTexture(intX-18, intY-5, 16, 0, 16,16,32,32);
         } else if (feature == Feature.MAGMA_BOSS_TIMER) {
+            mc.getTextureManager().bindTexture(TEXT_ICONS);
             Gui.drawModalRectWithCustomSizedTexture(intX-18, intY-5, 0, 0, 16,16,32,32);
         } else if (feature == Feature.COLLECTION_DISPLAY && ((skill != null && skill.getItem() != null) || buttonLocation != null) ) {
             mc.getRenderItem().renderItemIntoGUI(buttonLocation == null ? skill.getItem() : EnumUtils.SkillType.FARMING.getItem(),
@@ -612,7 +615,71 @@ public class RenderListener {
         }
     }
 
-    private static List<ItemDiff> DUMMY_LOG = new ArrayList<>(Arrays.asList(new ItemDiff(EnumChatFormatting.DARK_PURPLE + "Forceful Ember Chestplate", 1),
+    private static final RevenantArmorProgress[] DUMMY_PROGRESSES = new RevenantArmorProgress[]{new RevenantArmorProgress(new ItemStack(Item.getItemById(313))),
+            new RevenantArmorProgress(new ItemStack(Item.getItemById(304))), new RevenantArmorProgress(new ItemStack(Item.getItemById(311)))};
+
+    public void drawRevenantIndicator(float scale, Minecraft mc, ButtonLocation buttonLocation) {
+        float x = main.getConfigValues().getActualX(Feature.REVENANT_INDICATOR);
+        float y = main.getConfigValues().getActualY(Feature.REVENANT_INDICATOR);
+
+        int longest = -1;
+        RevenantArmorProgress[] progresses = main.getInventoryUtils().getRevenantArmorProgresses();
+        if (buttonLocation != null) progresses = DUMMY_PROGRESSES;
+        for (RevenantArmorProgress progress : progresses) {
+            if (progress == null) continue;
+
+            int textWidth = mc.fontRendererObj.getStringWidth(progress.getProgressText());
+            if (textWidth > longest) {
+                longest = textWidth;
+            }
+        }
+        if (longest == -1) return;
+
+        int height = 15 * 3;
+        int width = longest + 15;
+        x-=Math.round(width*scale/2);
+        y-=Math.round(height*scale/2);
+        x/=scale;
+        y/=scale;
+        int intX = Math.round(x);
+        int intY = Math.round(y);
+        if (buttonLocation != null) {
+            int boxXOne = intX-4;
+            int boxXTwo = intX+width+4;
+            int boxYOne = intY-4;
+            int boxYTwo = intY+height+4;
+            buttonLocation.checkHoveredAndDrawBox(boxXOne, boxXTwo, boxYOne, boxYTwo, scale);
+            GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+        }
+
+        EnumUtils.AnchorPoint anchorPoint = main.getConfigValues().getAnchorPoint(Feature.REVENANT_INDICATOR);
+        boolean downwards = (anchorPoint == EnumUtils.AnchorPoint.TOP_LEFT || anchorPoint == EnumUtils.AnchorPoint.TOP_RIGHT);
+
+        int drawnCount = 0;
+        for (int armorPiece = 2; armorPiece >= 0; armorPiece--) {
+            RevenantArmorProgress progress = progresses[downwards ? armorPiece : 2-armorPiece];
+            if (progress == null) continue;
+
+            int fixedY;
+            if (downwards) {
+                fixedY = intY + drawnCount * 15;
+            } else {
+                fixedY = (intY+30) - drawnCount * 15;
+            }
+            drawItemStack(mc, progress.getItemStack(), intX-2, fixedY);
+            drawString(mc, progress.getProgressText(), intX + 17, fixedY + 5, 0xFFFFFFFF);
+            drawnCount++;
+        }
+    }
+
+
+    private void drawItemStack(Minecraft mc, ItemStack item, int x, int y) {
+        RenderHelper.enableGUIStandardItemLighting();
+        mc.getRenderItem().renderItemIntoGUI(item, x, y);
+        RenderHelper.disableStandardItemLighting();
+    }
+
+    private static List<ItemDiff> DUMMY_PICKUP_LOG = new ArrayList<>(Arrays.asList(new ItemDiff(EnumChatFormatting.DARK_PURPLE + "Forceful Ember Chestplate", 1),
             new ItemDiff("Boat", -1), new ItemDiff(EnumChatFormatting.BLUE + "Aspect of the End", 1)));
 
     public void drawItemPickupLog(Minecraft mc, float scale, ButtonLocation buttonLocation) {
@@ -641,7 +708,7 @@ public class RenderListener {
         int i = 0;
         Collection<ItemDiff> log = main.getInventoryUtils().getItemPickupLog();
         if (buttonLocation != null) {
-            log = DUMMY_LOG;
+            log = DUMMY_PICKUP_LOG;
         }
         for (ItemDiff itemDiff : log) {
             String text = String.format("%s %sx §r%s", itemDiff.getAmount() > 0 ? "§a+":"§c-",
@@ -760,5 +827,9 @@ public class RenderListener {
 
     void setProgress(int progress) {
         this.progress = progress;
+    }
+
+    public void setSkillChange(float skillChange) {
+        this.skillChange = skillChange;
     }
 }
