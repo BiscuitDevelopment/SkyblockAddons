@@ -80,7 +80,7 @@
     "collectionDisplay": "Zobrazení postupu skillů",
     "onlyMineOresDeepCaverns": "Těžit rudy pouze v Deep Caverns",
     "revenantIndicator": "Revenant Armor Progress Indicator",
-    "specialZealotAlert": "Special Zealot Alert"
+    "specialZealotAlert": "Speciální Zealot Upozornění"
   },
   "messages": {
     "dropConfirmation": "Vyhoď tento item pro vyhození!",
@@ -121,6 +121,6 @@
     "cancelledDeepCaverns": "Funkce SkyblockAddons vás zastavila před zničením tohoto bloku.",
     "featureDisabled": "Vlsatnost je vypnuta",
     "anvilUses": "Použití kovadliny: %uses%",
-    "specialZealotFound": "Special Zealot!"
+    "specialZealotFound": "Specialní Zealot!"
   }
 }
