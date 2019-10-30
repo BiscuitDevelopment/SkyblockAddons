@@ -79,7 +79,8 @@
     "speedPercentage": "Geschwindigkeit in Prozent",
     "collectionDisplay": "Skillfortschrittsanzeige",
     "onlyMineOresDeepCaverns": "Nur Erze in Deep Caverns abbauen",
-    "revenantIndicator": "Revenant Armor Progress Indicator"
+    "revenantIndicator": "Revenant Armor Progress Indicator",
+    "specialZealotAlert": "Special Zealot Alert"
   },
   "messages": {
     "dropConfirmation": "Werfe diesen Gegenstand nochmal, um zu bestätigen!",
@@ -119,6 +120,7 @@
     "clickMoreTimes": "Klicke/droppe dieses Item %times% mal mehr, wenn du das wirklich tun möchtest.",
     "cancelledDeepCaverns": "SkyblockAddons hat dich davon abgehalten diesen Block abbzubauen.",
     "featureDisabled": "Funktion deaktiviert",
-    "anvilUses": "Ambossnutzungen: %uses%"
+    "anvilUses": "Ambossnutzungen: %uses%",
+    "specialZealotFound": "Special Zealot!"
   }
 }
