@@ -77,7 +77,8 @@
     "organizeLongEnchantmentLists": "整理長附魔名稱列表",
     "showItemCooldowns": "顯示物品冷卻",
     "speedPercentage": "速度百分比",
-    "collectionDisplay": "技能進度顯示"
+    "collectionDisplay": "技能進度顯示",
+    "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns"
   },
   "messages": {
     "dropConfirmation": "再次丟棄此物品以確認!",
@@ -112,10 +113,10 @@
     "slotLocked": "此欄位已被鎖定!",
     "summoningEyeFound": "召喚之眼!",
     "cancelledStemBreak": "SkyblockAddons阻止了你破壞這個梗, 如確實想破壞, 請使用空手",
-    "cancelledCaneBreak": "SkyblockAddons阻止了你破壞此甘蔗, 如確實想破壞, 請使用其他工具",
     "cancelledProfileOpening": "SkyblockAddons阻止了你拿著弓打開其他玩家的資料。",
     "cancelledDropping": "SkyblockAddons阻止了你丟出快捷欄中稀有等級以上的物品。",
     "clickMoreTimes": "如果你真的想這麼做, 請再點擊或按丟出%times%次。",
+    "cancelledDeepCaverns": "A SkyblockAddons feature has stopped you from mining this block here.",
     "featureDisabled": "停用功能",
     "anvilUses": "鐵砧使用次數: %uses%"
   }

@@ -77,7 +77,8 @@
     "organizeLongEnchantmentLists": "Organiser la liste des long nom d'enchantements",
     "showItemCooldowns": "Afficher le temps de recharge des objets",
     "speedPercentage": "Pourcentage de vitesse",
-    "collectionDisplay": "Affichage de la progression des compétences"
+    "collectionDisplay": "Affichage de la progression des compétences",
+    "onlyMineOresDeepCaverns": "Miner uniquement les minerais dans la Deep Caverns"
   },
   "messages": {
     "dropConfirmation": "Jetez cet objet une nouvelle fois pour confirmer!",
@@ -112,10 +113,10 @@
     "slotLocked": "Cet emplacement est bloqué!",
     "summoningEyeFound": "Œil d'invocation!",
     "cancelledStemBreak": "SkyblockAddons vous a empêché de casser cette graine. Utilisez votre main si vous souhaitez la casser.",
-    "cancelledCaneBreak": "SkyblockAddons vous a empêché de casser ce bloc de canne à sucre. Utiliser un autre outil si vous souhaitez le casser.",
     "cancelledProfileOpening": "SkyblockAddons vous a empêché d'ouvrir le profil de ce joueur en utilisant un arc.",
     "cancelledDropping": "SkyblockAddons vous a empêché de jeter cet objet ou outil rare de votre barre d'action.",
     "clickMoreTimes": "Cliquez/jetez cet objet encore %times% fois si vous le souhaitez.",
+    "cancelledDeepCaverns": "Une fonctionnalité SkyblockAddons vous a empêché de miner ce bloc ici.",
     "featureDisabled": "Fonction désactivée",
     "anvilUses": "Utilisation de l'enclume: %uses%"
   }

@@ -77,7 +77,8 @@
     "organizeLongEnchantmentLists": "Organisera Långa Enchantment listor",
     "showItemCooldowns": "Visa artikel nedkylning",
     "speedPercentage": "Fart Procent",
-    "collectionDisplay": "Skill Progress Display"
+    "collectionDisplay": "Skill Progress Display",
+    "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns"
   },
   "messages": {
     "dropConfirmation": "Släpp Det Här Igen För Att Bekräfta!",
@@ -112,10 +113,10 @@
     "slotLocked": "Denna luckan är låst!",
     "summoningEyeFound": "Tillkallande Öga!",
     "cancelledStemBreak": "SkyblockAddons har förhindrat dig från att förstöra denna stjälk. Ifall du ändå vill förstöra den använd då din hand.",
-    "cancelledCaneBreak": "SkyblockAddons har stoppat dig från att förstöra botten av sockerröret. Använd ett annat verktyg ifall du skulle vilja förstöra det ändå.",
     "cancelledProfileOpening": "SkyblockAddons har stoppat dig från att öppna denna spelares profil medan du håller en pilbåge.",
     "cancelledDropping": "SkyblockAddons har stoppat dig från att slänga denna sällsynta sak eller verktyg från ditt inventarie.",
     "clickMoreTimes": "Släng denna sak %times% fler gånger om du verkligen vill göra detta.",
+    "cancelledDeepCaverns": "A SkyblockAddons feature has stopped you from mining this block here.",
     "featureDisabled": "Funktion.Inaktiverat",
     "anvilUses": "Städ användningar %uses%"
   }

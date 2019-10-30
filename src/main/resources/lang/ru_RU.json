@@ -77,7 +77,8 @@
     "organizeLongEnchantmentLists": "Организовать список длинных зачарований",
     "showItemCooldowns": "Показывать откат вещей",
     "speedPercentage": "Процент скорости",
-    "collectionDisplay": "Показывать прогресс навыков"
+    "collectionDisplay": "Показывать прогресс навыков",
+    "onlyMineOresDeepCaverns": "Копать только руды в Глубоких Пещерах"
   },
   "messages": {
     "dropConfirmation": "Выбросите предмет ещё раз для подтверждения!",
@@ -112,10 +113,10 @@
     "slotLocked": "Слот заблокирован!",
     "summoningEyeFound": "Summoning Eye!",
     "cancelledStemBreak": "SkyBlockAddons предотвратил попытку сломать стебель. Используйте руку.",
-    "cancelledCaneBreak": "SkyBlockAddons остановил вас от ломания этого тростника. Используйте другой предмет, чтобы сломать его.",
     "cancelledProfileOpening": "SkyBlockAddons остановил вас от открытия профиля игрока с луком в руках.",
     "cancelledDropping": "SkyBlockAddons предотвратил попытку выбросить этот предмет из панели быстрого доступа.",
     "clickMoreTimes": "Нажмите/выберите этот предмет еще %times% раз, если вы действительно хотите сделать это.",
+    "cancelledDeepCaverns": "Функция SkyblockAddons остановила вас от копания этого блока.",
     "featureDisabled": "Функция отключена",
     "anvilUses": "Использований наковальни: %uses%"
   }

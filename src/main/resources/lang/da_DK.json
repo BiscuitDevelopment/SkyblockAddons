@@ -77,7 +77,8 @@
     "organizeLongEnchantmentLists": "Organiser lange fortryllelses lister",
     "showItemCooldowns": "Vis genstand ned brug",
     "speedPercentage": "Hastigheds procent",
-    "collectionDisplay": "Dygtigheds fremskridt visning"
+    "collectionDisplay": "Dygtigheds fremskridt visning",
+    "onlyMineOresDeepCaverns": "Kun mine malm i Deep Caverns"
   },
   "messages": {
     "dropConfirmation": "Slip denne vare igen for at bekræfte!",
@@ -112,10 +113,10 @@
     "slotLocked": "Dette slot er låst!",
     "summoningEyeFound": "Ringer øje!",
     "cancelledStemBreak": "SkyblockAddons har forhindret dig i at bryde denne stilk. Brug din bare hånd, hvis du gerne vil bryde den.",
-    "cancelledCaneBreak": "SkyblockAddons har stoppet dig fra at ødelægge denne blok af sukkerrør. Brug et andet redskab hvis du gerne vil ødelægge den.",
     "cancelledProfileOpening": "SkyblockAddons har forhindret dig i at åbne denne spillers profil, mens du holder en bue.",
     "cancelledDropping": "SkyblockAddons har forhindret dig i at droppe dette sjældne element eller værktøj fra din hotbar.",
     "clickMoreTimes": "Klik / slip dette emne %times% flere gange, hvis du virkelig ønsker at gøre dette.",
+    "cancelledDeepCaverns": "En SkyblockAddons funktion har stoppet dig fra at mine denne her blok.",
     "featureDisabled": "Funktion deaktiveret",
     "anvilUses": "Ambolt brug: %uses%"
   }

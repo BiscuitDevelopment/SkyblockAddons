@@ -77,7 +77,8 @@
     "organizeLongEnchantmentLists": "Organisieren von langen Verzauberungslisten",
     "showItemCooldowns": "Item Abklingzeit anzeigen",
     "speedPercentage": "Geschwindigkeit in Prozent",
-    "collectionDisplay": "Skillfortschrittsanzeige"
+    "collectionDisplay": "Skillfortschrittsanzeige",
+    "onlyMineOresDeepCaverns": "Nur Erze in Deep Caverns abbauen"
   },
   "messages": {
     "dropConfirmation": "Werfe diesen Gegenstand nochmal, um zu bestätigen!",
@@ -112,10 +113,10 @@
     "slotLocked": "Dieser Slot ist gesperrt!",
     "summoningEyeFound": "Summoning Eye!",
     "cancelledStemBreak": "SkyblockAddons hat dich davon abgehalten, diesen Stamm zu zerstören. Nutze deine Hand um ihn trotzdem zu zerstören.",
-    "cancelledCaneBreak": "SkyblockAddons hat das Abbauen von dem Zuckerrohr vermieden. Benutze ein anderes Werkzeug um es abzubauen.",
     "cancelledProfileOpening": "SkyblockAddons hat dich davon abgehalten, das Profil dieses Spielers zu öffnen, während du einen Bogen hältst.",
     "cancelledDropping": "SkyblockAddons hat dich davon abgehalten, dieses seltene Item oder Werkzeug aus deiner Hotbar zu droppen.",
     "clickMoreTimes": "Klicke/droppe dieses Item %times% mal mehr, wenn du das wirklich tun möchtest.",
+    "cancelledDeepCaverns": "SkyblockAddons hat dich davon abgehalten diesen Block abbzubauen.",
     "featureDisabled": "Funktion deaktiviert",
     "anvilUses": "Ambossnutzungen: %uses%"
   }

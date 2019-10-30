@@ -76,8 +76,9 @@
     "jungleAxeCooldown": "Jungle Bijl Cooldown",
     "organizeLongEnchantmentLists": "Orden Lange Betoverings Lijsten",
     "showItemCooldowns": "Show Item Cooldowns",
-    "speedPercentage": "Speed Percentage",
-    "collectionDisplay": "Skill Progress Display"
+    "speedPercentage": "Snelheidspercentage",
+    "collectionDisplay": "Skill Progress Display",
+    "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns"
   },
   "messages": {
     "dropConfirmation": "Laat dit object opnieuw vallen om te Bevestigen!",
@@ -112,10 +113,10 @@
     "slotLocked": "Deze Slot is vergrendeld!",
     "summoningEyeFound": "Oproepend oog!",
     "cancelledStemBreak": "SkyblockAddons heeft je ervan weerhouden deze stengel te breken. Gebruik je lege hand als je het wilt breken.",
-    "cancelledCaneBreak": "SkyblockAddons heeft je ervan weerhouden deze suikerriet te breken. Gebruik iets anders als je het wilt breken.",
     "cancelledProfileOpening": "SkyblockAddons heeft je ervan weerhouden het profiel van deze speler te openen terwijl je een boog vast hebt.",
     "cancelledDropping": "SkyblockAddons heeft je ervan weerhouden dit zeldzame item of gereedschap uit je hotbar te gooien.",
     "clickMoreTimes": "Klik/gooi dit item %times% keer als je dit echt wilt doen.",
+    "cancelledDeepCaverns": "A SkyblockAddons feature has stopped you from mining this block here.",
     "featureDisabled": "Functie uitgeschakeld",
     "anvilUses": "Anvil Uses: %uses%"
   }

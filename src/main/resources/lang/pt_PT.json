@@ -77,7 +77,8 @@
     "organizeLongEnchantmentLists": "Listas de encantamentos grandes organizadas",
     "showItemCooldowns": "Mostrar os tempos de espera dos itens",
     "speedPercentage": "Percentagem de velocidade",
-    "collectionDisplay": "Progresso das habilidades"
+    "collectionDisplay": "Progresso das habilidades",
+    "onlyMineOresDeepCaverns": "Só partir minérios nas Deep Caverns"
   },
   "messages": {
     "dropConfirmation": "Dropa este item outra vez para confirmar!",
@@ -112,10 +113,10 @@
     "slotLocked": "Este slot está bloqueado!",
     "summoningEyeFound": "Summoning Eye!",
     "cancelledStemBreak": "O SkyblockAddons preveniu-te de partires esta semente. Usa a tua própria mão se a quiseres mesmo partir.",
-    "cancelledCaneBreak": "O SkyblockAddons preveniu-te de partires este bloco de cana de açúcar. Usa outra ferramenta se quiseres mesmo parti-lo.",
     "cancelledProfileOpening": "O SkyblockAddons preveniu-te de abrires o perfil deste jogador enquanto seguras um arco.",
     "cancelledDropping": "O SkyblockAddons preveniu-te de dropar este item ou ferramenta rara da tua hotbar.",
     "clickMoreTimes": "Clica/dropa este item mais %times% vezes se quiseres mesmo fazer isto.",
+    "cancelledDeepCaverns": "Uma funcionalidade do SkyblockAddons preveniu-te de partires este minério aqui.",
     "featureDisabled": "Função Desativada",
     "anvilUses": "Usos na bigorna: %uses%"
   }
