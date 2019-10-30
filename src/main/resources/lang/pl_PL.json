@@ -78,7 +78,8 @@
     "showItemCooldowns": "Pokazuj colldown itemów",
     "speedPercentage": "Procent szybkości",
     "collectionDisplay": "Skill Progress Display",
-    "onlyMineOresDeepCaverns": "Rudy kop tylko w Deep Caverns"
+    "onlyMineOresDeepCaverns": "Rudy kop tylko w Deep Caverns",
+    "revenantIndicator": "Revenant Armor Progress Indicator"
   },
   "messages": {
     "dropConfirmation": "Wyrzuć ten przedmiot ponownie, aby potwierdzić!",
