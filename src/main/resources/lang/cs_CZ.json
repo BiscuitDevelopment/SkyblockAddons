@@ -78,7 +78,8 @@
     "showItemCooldowns": "Ukaž čas přebití itemu",
     "speedPercentage": "Procenta rychlosti",
     "collectionDisplay": "Zobrazení postupu skillů",
-    "onlyMineOresDeepCaverns": "Těžit rudy pouze v Deep Caverns"
+    "onlyMineOresDeepCaverns": "Těžit rudy pouze v Deep Caverns",
+    "revenantIndicator": "Revenant Armor Progress Indicator"
   },
   "messages": {
     "dropConfirmation": "Vyhoď tento item pro vyhození!",
