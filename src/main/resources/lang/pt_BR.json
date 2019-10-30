@@ -79,7 +79,8 @@
     "speedPercentage": "Porcentagem de velocidade",
     "collectionDisplay": "Exibição do progresso da habilidade",
     "onlyMineOresDeepCaverns": "Apenas quebrar minérios nas Cavernas Profundas",
-    "revenantIndicator": "Revenant Armor Progress Indicator"
+    "revenantIndicator": "Revenant Armor Progress Indicator",
+    "specialZealotAlert": "Special Zealot Alert"
   },
   "messages": {
     "dropConfirmation": "Large este item de novo para confirmar!",
@@ -119,6 +120,7 @@
     "clickMoreTimes": "Clique/Largue este item mais %times% vezes caso realmente queira fazer isso.",
     "cancelledDeepCaverns": "Uma função do SkyblockAddons impediu você de minerar este bloco aqui.",
     "featureDisabled": "Função desabilitada",
-    "anvilUses": "Usos na Bigorna: %uses%"
+    "anvilUses": "Usos na Bigorna: %uses%",
+    "specialZealotFound": "Special Zealot!"
   }
 }
