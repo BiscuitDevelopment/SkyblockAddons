@@ -78,7 +78,8 @@
     "showItemCooldowns": "Eşya Bekleme Sürelerini Göster",
     "speedPercentage": "Hız yüzdesi",
     "collectionDisplay": "Beceri ilerleme göstergesi",
-    "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns"
+    "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns",
+    "revenantIndicator": "Revenant Armor Progress Indicator"
   },
   "messages": {
     "dropConfirmation": "Eşyayı düşürmeyi onaylamak için düşürme tuşuna bir daha bas!",
