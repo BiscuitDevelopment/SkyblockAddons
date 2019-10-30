@@ -8,9 +8,12 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Vec3;
 import org.apache.commons.lang3.text.WordUtils;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Arrays;
 import java.util.EnumSet;
 import java.util.Set;
@@ -497,5 +500,31 @@ public class EnumUtils {
         PICKUP_LOG,
         DEFENCE_ICON,
         REVENANT_PROGRESS
+    }
+
+    public enum Social {
+        YOUTUBE(new ResourceLocation("skyblockaddons", "youtube.png"), "https://www.youtube.com/channel/UCYmE9-052frn0wQwqa6i8_Q"),
+        DISCORD(new ResourceLocation("skyblockaddons", "discord.png"), "https://discordapp.com/invite/PqTAEek"),
+        GITHUB(new ResourceLocation("skyblockaddons", "github.png"), "https://github.com/BiscuitDevelopment/SkyblockAddons");
+
+        private ResourceLocation resourceLocation;
+        private URI url;
+
+        Social(ResourceLocation resourceLocation, String url) {
+            this.resourceLocation = resourceLocation;
+            try {
+                this.url = new URI(url);
+            } catch (URISyntaxException e) {
+                e.printStackTrace();
+            }
+        }
+
+        public ResourceLocation getResourceLocation() {
+            return resourceLocation;
+        }
+
+        public URI getUrl() {
+            return url;
+        }
     }
 }

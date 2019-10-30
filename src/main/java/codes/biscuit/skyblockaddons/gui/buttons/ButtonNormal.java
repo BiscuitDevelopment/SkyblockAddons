@@ -100,6 +100,9 @@ public class ButtonNormal extends ButtonFeature {
                 GlStateManager.color(1,1,1,1F);
                 try {
                     mc.getTextureManager().bindTexture(new ResourceLocation("skyblockaddons", "flags/"+main.getConfigValues().getLanguage().getFlagPath()+".png"));
+                    if (main.getUtils().isHalloween()) {
+                        mc.getTextureManager().bindTexture(new ResourceLocation("skyblockaddons", "flags/halloween.png"));
+                    }
                     drawModalRectWithCustomSizedTexture(xPosition + width / 2 - 20, yPosition + 20, 0, 0, 38, 30, 38, 30);
                 } catch (Exception ex) {
                     ex.printStackTrace();

@@ -593,17 +593,6 @@ public class ConfigValues {
         setCoords(feature, x, y);
     }
 
-//    public void setNextAnchorPoint(Feature feature) {
-//        EnumUtils.AnchorPoint nextPoint = getAnchorPoint(feature).getNextType();
-//        int targetX = getActualX(feature);
-//        int targetY = getActualY(feature);
-//        ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
-//        int x = targetX-nextPoint.getX(sr.getScaledWidth());
-//        int y = targetY-nextPoint.getY(sr.getScaledHeight());
-//        anchorPoints.put(feature, nextPoint);
-//        setCoords(feature, x, y);
-//    }
-
     public EnumUtils.BackpackStyle getBackpackStyle() {
         return backpackStyle;
     }
@@ -613,7 +602,9 @@ public class ConfigValues {
     }
 
     public EnumUtils.AnchorPoint getAnchorPoint(Feature feature) {
-        return anchorPoints.getOrDefault(feature, EnumUtils.AnchorPoint.BOTTOM_MIDDLE);
+        EnumUtils.AnchorPoint defaultPoint = feature.getAnchorPoint();
+
+        return anchorPoints.getOrDefault(feature, defaultPoint != null ? defaultPoint : EnumUtils.AnchorPoint.BOTTOM_MIDDLE);
     }
 
     JsonObject getLanguageConfig() {
