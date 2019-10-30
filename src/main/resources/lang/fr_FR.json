@@ -78,7 +78,8 @@
     "showItemCooldowns": "Afficher le temps de recharge des objets",
     "speedPercentage": "Pourcentage de vitesse",
     "collectionDisplay": "Affichage de la progression des compétences",
-    "onlyMineOresDeepCaverns": "Miner uniquement les minerais dans la Deep Caverns"
+    "onlyMineOresDeepCaverns": "Miner uniquement les minerais dans la Deep Caverns",
+    "revenantIndicator": "Revenant Armor Progress Indicator"
   },
   "messages": {
     "dropConfirmation": "Jetez cet objet une nouvelle fois pour confirmer!",
