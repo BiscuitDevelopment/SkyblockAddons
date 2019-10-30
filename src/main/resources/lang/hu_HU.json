@@ -78,7 +78,8 @@
     "showItemCooldowns": "Mutasd az a tárgy töltési idejét",
     "speedPercentage": "Sebesség százalékos megjelenitése",
     "collectionDisplay": "Képességfejlődés megjelenítése",
-    "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns"
+    "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns",
+    "revenantIndicator": "Revenant Armor Progress Indicator"
   },
   "messages": {
     "dropConfirmation": "Dobd el ezt a tárgyat újra, hogy megerősítsd!",
