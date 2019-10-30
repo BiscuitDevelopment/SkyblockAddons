@@ -78,7 +78,8 @@
     "showItemCooldowns": "Arată Cooldown-ul Obiectelor",
     "speedPercentage": "Procentul Vitezei",
     "collectionDisplay": "Display Progres Abilități",
-    "onlyMineOresDeepCaverns": "Minează Numai Minereuri în Deep Caverns"
+    "onlyMineOresDeepCaverns": "Minează Numai Minereuri în Deep Caverns",
+    "revenantIndicator": "Revenant Armor Progress Indicator"
   },
   "messages": {
     "dropConfirmation": "Arunca acest obiect iar ca să confirmi!",
