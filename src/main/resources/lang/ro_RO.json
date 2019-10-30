@@ -79,7 +79,8 @@
     "speedPercentage": "Procentul Vitezei",
     "collectionDisplay": "Display Progres Abilități",
     "onlyMineOresDeepCaverns": "Minează Numai Minereuri în Deep Caverns",
-    "revenantIndicator": "Revenant Armor Progress Indicator"
+    "revenantIndicator": "Revenant Armor Progress Indicator",
+    "specialZealotAlert": "Special Zealot Alert"
   },
   "messages": {
     "dropConfirmation": "Arunca acest obiect iar ca să confirmi!",
@@ -119,6 +120,7 @@
     "clickMoreTimes": "Aruncă acest item de încă %times% dacă vrei să faci asta.",
     "cancelledDeepCaverns": "O funcție SkyblockAddons te-a oprit din minatul acestui cub.",
     "featureDisabled": "Funcție dezactivată",
-    "anvilUses": "Utilizări Nicovală: %uses%"
+    "anvilUses": "Utilizări Nicovală: %uses%",
+    "specialZealotFound": "Special Zealot!"
   }
 }
