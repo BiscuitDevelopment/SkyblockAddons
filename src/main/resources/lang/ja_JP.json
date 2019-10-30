@@ -78,7 +78,8 @@
     "showItemCooldowns": "アイテムのクールタイムを表示",
     "speedPercentage": "スピード",
     "collectionDisplay": "スキルの進捗のディスプレイ",
-    "onlyMineOresDeepCaverns": "Deep Cavernsで鉱石のみを掘れるように"
+    "onlyMineOresDeepCaverns": "Deep Cavernsで鉱石のみを掘れるように",
+    "revenantIndicator": "Revenant Armor Progress Indicator"
   },
   "messages": {
     "dropConfirmation": "落としてもいいのであれば、このアイテムをもう一度ドロップしてください。",
