@@ -78,7 +78,8 @@
     "showItemCooldowns": "Mostrar os tempos de espera dos itens",
     "speedPercentage": "Percentagem de velocidade",
     "collectionDisplay": "Progresso das habilidades",
-    "onlyMineOresDeepCaverns": "Só partir minérios nas Deep Caverns"
+    "onlyMineOresDeepCaverns": "Só partir minérios nas Deep Caverns",
+    "revenantIndicator": "Revenant Armor Progress Indicator"
   },
   "messages": {
     "dropConfirmation": "Dropa este item outra vez para confirmar!",
