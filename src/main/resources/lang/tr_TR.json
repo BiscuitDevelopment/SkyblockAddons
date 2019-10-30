@@ -78,9 +78,9 @@
     "showItemCooldowns": "Eşya Bekleme Sürelerini Göster",
     "speedPercentage": "Hız yüzdesi",
     "collectionDisplay": "Beceri ilerleme göstergesi",
-    "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns",
+    "onlyMineOresDeepCaverns": "Deep caverns'ta sadece madenleri kaz",
     "revenantIndicator": "Revenant Armor Progress Indicator",
-    "specialZealotAlert": "Special Zealot Alert"
+    "specialZealotAlert": "Özel zealot alarmı"
   },
   "messages": {
     "dropConfirmation": "Eşyayı düşürmeyi onaylamak için düşürme tuşuna bir daha bas!",
@@ -118,9 +118,9 @@
     "cancelledProfileOpening": "SkyblockAddons elinizde yay olduğundan bu oyuncunun profilini açmanı engelledi.",
     "cancelledDropping": "SkyblockAddons bu değerli eşyanızı yere atmanızı engelledi.",
     "clickMoreTimes": "Eğer gerçekten eşyayı yere atmak istiyorsanız %times% kez eşyaya tıklayın.",
-    "cancelledDeepCaverns": "A SkyblockAddons feature has stopped you from mining this block here.",
+    "cancelledDeepCaverns": "Skyblockaddons kırmaya çalıştığınız bloğu kırmanızı önledi.",
     "featureDisabled": "Özellik Devre Dışı",
     "anvilUses": "Örs Kullanımı: %uses%",
-    "specialZealotFound": "Special Zealot!"
+    "specialZealotFound": "Özel zealot!"
   }
 }
