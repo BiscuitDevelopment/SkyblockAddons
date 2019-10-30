@@ -78,7 +78,8 @@
     "showItemCooldowns": "Vis genstand ned brug",
     "speedPercentage": "Hastigheds procent",
     "collectionDisplay": "Dygtigheds fremskridt visning",
-    "onlyMineOresDeepCaverns": "Kun mine malm i Deep Caverns"
+    "onlyMineOresDeepCaverns": "Kun mine malm i Deep Caverns",
+    "revenantIndicator": "Revenant Armor Progress Indicator"
   },
   "messages": {
     "dropConfirmation": "Slip denne vare igen for at bekræfte!",
