@@ -78,7 +78,8 @@
     "showItemCooldowns": "顯示物品冷卻",
     "speedPercentage": "速度百分比",
     "collectionDisplay": "技能進度顯示",
-    "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns"
+    "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns",
+    "revenantIndicator": "Revenant Armor Progress Indicator"
   },
   "messages": {
     "dropConfirmation": "再次丟棄此物品以確認!",
