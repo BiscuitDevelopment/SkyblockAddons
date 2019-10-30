@@ -79,7 +79,8 @@
     "speedPercentage": "Phần trăm tốc độ",
     "collectionDisplay": "Hiển thị kĩ năng",
     "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns",
-    "revenantIndicator": "Revenant Armor Progress Indicator"
+    "revenantIndicator": "Revenant Armor Progress Indicator",
+    "specialZealotAlert": "Special Zealot Alert"
   },
   "messages": {
     "dropConfirmation": "Nhấn \"Q\" Thêm Một Lần Nữa Để Xác Nhận!",
@@ -119,6 +120,7 @@
     "clickMoreTimes": "Bấm/Thả Đồ Vật Này Thêm %times% Lần Nữa Nếu Bạn Muốn Thực Hiện Điều Này.",
     "cancelledDeepCaverns": "A SkyblockAddons feature has stopped you from mining this block here.",
     "featureDisabled": "Vô hiệu hóa tính năng",
-    "anvilUses": "Số lần sử dụng đe: %uses%"
+    "anvilUses": "Số lần sử dụng đe: %uses%",
+    "specialZealotFound": "Special Zealot!"
   }
 }
