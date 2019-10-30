@@ -80,7 +80,7 @@
     "collectionDisplay": "Visualizzazione del progresso dell’abilità",
     "onlyMineOresDeepCaverns": "Estrai minerali solo nelle Deep Caverns",
     "revenantIndicator": "Revenant Armor Progress Indicator",
-    "specialZealotAlert": "Special Zealot Alert"
+    "specialZealotAlert": "Avviso di Zealot Speciale"
   },
   "messages": {
     "dropConfirmation": "Getta questo oggetto nuovamente per confermare!",
@@ -121,6 +121,6 @@
     "cancelledDeepCaverns": "Una funzione di SkyBlockAddons ti ha impedito di estrarre questo blocco.",
     "featureDisabled": "Funzione disabilitata",
     "anvilUses": "Utilizzi dell’incudine: %uses%",
-    "specialZealotFound": "Special Zealot!"
+    "specialZealotFound": "Zealot Speciale!"
   }
 }
