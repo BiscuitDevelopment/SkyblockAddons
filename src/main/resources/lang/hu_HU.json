@@ -79,7 +79,8 @@
     "speedPercentage": "Sebesség százalékos megjelenitése",
     "collectionDisplay": "Képességfejlődés megjelenítése",
     "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns",
-    "revenantIndicator": "Revenant Armor Progress Indicator"
+    "revenantIndicator": "Revenant Armor Progress Indicator",
+    "specialZealotAlert": "Special Zealot Alert"
   },
   "messages": {
     "dropConfirmation": "Dobd el ezt a tárgyat újra, hogy megerősítsd!",
@@ -119,6 +120,7 @@
     "clickMoreTimes": "Kattints/dobd el ezt a tárgyat még %times% alkalommal, ha tényleg ezt szeretnéd.",
     "cancelledDeepCaverns": "A SkyblockAddons feature has stopped you from mining this block here.",
     "featureDisabled": "Funkció kikapcsolva",
-    "anvilUses": "Üllő használat: %uses%"
+    "anvilUses": "Üllő használat: %uses%",
+    "specialZealotFound": "Special Zealot!"
   }
 }
