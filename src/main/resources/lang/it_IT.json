@@ -78,7 +78,8 @@
     "showItemCooldowns": "Mostra i tempi di ricarica degli oggetti",
     "speedPercentage": "Percentuale di Velocità",
     "collectionDisplay": "Visualizzazione del progresso dell’abilità",
-    "onlyMineOresDeepCaverns": "Estrai minerali solo nelle Deep Caverns"
+    "onlyMineOresDeepCaverns": "Estrai minerali solo nelle Deep Caverns",
+    "revenantIndicator": "Revenant Armor Progress Indicator"
   },
   "messages": {
     "dropConfirmation": "Getta questo oggetto nuovamente per confermare!",
