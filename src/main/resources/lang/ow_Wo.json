@@ -78,7 +78,8 @@
     "showItemCooldowns": "Show Item Coowdowns",
     "speedPercentage": "Spweed Pwocentage",
     "collectionDisplay": "Skwill Prowogess Dispway",
-    "onlyMineOresDeepCaverns": "OwOnly Mwine Owores in twhe deep Cavwerns"
+    "onlyMineOresDeepCaverns": "OwOnly Mwine Owores in twhe deep Cavwerns",
+    "revenantIndicator": "Revenant Armor Progress Indicator"
   },
   "messages": {
     "dropConfirmation": "Dwop thwis itwem agwain to confiwm!",
