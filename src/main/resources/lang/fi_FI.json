@@ -78,7 +78,8 @@
     "showItemCooldowns": "Näytä tavaran jäähtymisaika",
     "speedPercentage": "Nopeuden prosenttimäärä",
     "collectionDisplay": "Skill Progress Display",
-    "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns"
+    "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns",
+    "revenantIndicator": "Revenant Armor Progress Indicator"
   },
   "messages": {
     "dropConfirmation": "Pudota tämä esine uudelleen vahvistaaksesi!",
