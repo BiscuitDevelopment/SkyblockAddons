@@ -78,7 +78,8 @@
     "showItemCooldowns": "Mostrar Tiempo de Espera de Objetos",
     "speedPercentage": "Porcentaje de Velocidad",
     "collectionDisplay": "Progreso de Hablidades",
-    "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns"
+    "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns",
+    "revenantIndicator": "Revenant Armor Progress Indicator"
   },
   "messages": {
     "dropConfirmation": "Arroja este objeto otra vez para confirmar!",
