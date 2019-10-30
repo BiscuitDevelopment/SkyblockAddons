@@ -78,7 +78,8 @@
     "showItemCooldowns": "Hiển thị thời gian hồi vật phẩm",
     "speedPercentage": "Phần trăm tốc độ",
     "collectionDisplay": "Hiển thị kĩ năng",
-    "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns"
+    "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns",
+    "revenantIndicator": "Revenant Armor Progress Indicator"
   },
   "messages": {
     "dropConfirmation": "Nhấn \"Q\" Thêm Một Lần Nữa Để Xác Nhận!",
