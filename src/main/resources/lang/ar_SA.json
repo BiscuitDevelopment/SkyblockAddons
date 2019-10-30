@@ -78,7 +78,8 @@
     "showItemCooldowns": "اظهار تباطؤ الأدوات",
     "speedPercentage": "نسبة السرعه",
     "collectionDisplay": "عرض تقدم المهارة",
-    "onlyMineOresDeepCaverns": "حفر المعادن فقظ في الكهوف العميقة"
+    "onlyMineOresDeepCaverns": "حفر المعادن فقظ في الكهوف العميقة",
+    "revenantIndicator": "Revenant Armor Progress Indicator"
   },
   "messages": {
     "dropConfirmation": "!إرمي هذا العنصر مرة أخرى للتأكيد",
