@@ -50,7 +50,7 @@
     "preventMovementOnDeath": "Neleisti Vaikščioti Po Mirties",
     "showItemAnvilUses": "Rodyti Kiek Daiktas Buvo Naudotas Priekale",
     "lockSlots": "Leisti Užrakinti Langelius",
-    "lockSlot": "Lock Slot",
+    "lockSlot": "Užrakinimo langas",
     "dontResetCursorInventory": "Nenustatatinėti Iš Naujo Rodyklės Perjungiant Inventorių",
     "summoningEyeAlert": "Drakono Sumoninimo Akies Paimimo Signalas",
     "makeEnderchestsInEndGreen": "Padaryti Ender Chestus Žalius End'e",
@@ -76,11 +76,11 @@
     "jungleAxeCooldown": "Jungle Axe Cooldown",
     "organizeLongEnchantmentLists": "Organize Long Enchantment Lists",
     "showItemCooldowns": "Show Item Cooldowns",
-    "speedPercentage": "Speed Percentage",
+    "speedPercentage": "Greičio Procentai",
     "collectionDisplay": "Skill Progress Display",
     "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns",
     "revenantIndicator": "Revenant Armor Progress Indicator",
-    "specialZealotAlert": "Special Zealot Alert"
+    "specialZealotAlert": "Specialaus Zealoto Įspėjimas"
   },
   "messages": {
     "dropConfirmation": "Meskite Šį Daiktą Dar Kartą, Kad Patvirtintumėte!",
@@ -100,7 +100,7 @@
     },
     "newUpdateAvailable": "Galima nauja (%version%) versija!",
     "deleteOldFile": "The download has finished, please open your mods folder using the button below, close your Minecraft, and delete the old version (or delete it later if you prefer).",
-    "wantToViewPatchNotes": "Want to read the changes?",
+    "wantToViewPatchNotes": "Norite perskaityti pakeitimus?",
     "downloadLink": "UPDATE LINK",
     "downloadAutomatically": "AUTO DOWNLOAD",
     "openModFolder": "MODS FOLDER",
@@ -119,8 +119,8 @@
     "cancelledDropping": "SkyblockAddons sustabdė jumis nuo šio reto daikto išmetimo iš jūsų inventoriaus ar hotbaro.",
     "clickMoreTimes": "Paspauskite/meskite šį daiktą %times% tiek kartų jeigu iš tikrųjų norite jį išmesti.",
     "cancelledDeepCaverns": "A SkyblockAddons feature has stopped you from mining this block here.",
-    "featureDisabled": "Feature Disabled",
-    "anvilUses": "Anvil Uses: %uses%",
-    "specialZealotFound": "Special Zealot!"
+    "featureDisabled": "Funkcija išjungta",
+    "anvilUses": "Priekalo Panaudojimai: %uses%",
+    "specialZealotFound": "Specialus Zealotas!"
   }
 }
