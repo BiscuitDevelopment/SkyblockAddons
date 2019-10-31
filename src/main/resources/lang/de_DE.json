@@ -50,7 +50,7 @@
     "preventMovementOnDeath": "Verhindere das Laufen nach dem Tot",
     "showItemAnvilUses": "Zeige Ambossnutzungen eines Items",
     "lockSlots": "Slots sperren erlauben",
-    "lockSlot": "Sperre slot",
+    "lockSlot": "Sperre Slot",
     "dontResetCursorInventory": "Mauszeiger zwischen Inventaren nicht zurücksetzen",
     "summoningEyeAlert": "Summoning Eye Alarm",
     "makeEnderchestsInEndGreen": "Färbe Endertruhen im End grün",
@@ -79,8 +79,8 @@
     "speedPercentage": "Geschwindigkeit in Prozent",
     "collectionDisplay": "Skillfortschrittsanzeige",
     "onlyMineOresDeepCaverns": "Nur Erze in Deep Caverns abbauen",
-    "revenantIndicator": "Revenant Armor Progress Indicator",
-    "specialZealotAlert": "Special Zealot Alert"
+    "revenantIndicator": "Indikator zum Fortschritt der Revenant Armor",
+    "specialZealotAlert": "Benachrichtigung bei speziellen Zealots"
   },
   "messages": {
     "dropConfirmation": "Werfe diesen Gegenstand nochmal, um zu bestätigen!",
@@ -121,6 +121,6 @@
     "cancelledDeepCaverns": "SkyblockAddons hat dich davon abgehalten diesen Block abbzubauen.",
     "featureDisabled": "Funktion deaktiviert",
     "anvilUses": "Ambossnutzungen: %uses%",
-    "specialZealotFound": "Special Zealot!"
+    "specialZealotFound": "Spezieller Zealot!"
   }
 }
