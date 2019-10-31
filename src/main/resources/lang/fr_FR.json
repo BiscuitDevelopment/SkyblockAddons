@@ -79,8 +79,8 @@
     "speedPercentage": "Pourcentage de vitesse",
     "collectionDisplay": "Affichage de la progression des compétences",
     "onlyMineOresDeepCaverns": "Miner uniquement les minerais dans la Deep Caverns",
-    "revenantIndicator": "Revenant Armor Progress Indicator",
-    "specialZealotAlert": "Special Zealot Alert"
+    "revenantIndicator": "Indicateur de progression de l'armure Revenant",
+    "specialZealotAlert": "Alerte Zealot spécial"
   },
   "messages": {
     "dropConfirmation": "Jetez cet objet une nouvelle fois pour confirmer!",
@@ -121,6 +121,6 @@
     "cancelledDeepCaverns": "Une fonctionnalité SkyblockAddons vous a empêché de miner ce bloc ici.",
     "featureDisabled": "Fonction désactivée",
     "anvilUses": "Utilisation de l'enclume: %uses%",
-    "specialZealotFound": "Special Zealot!"
+    "specialZealotFound": "Zealot spécial!"
   }
 }
