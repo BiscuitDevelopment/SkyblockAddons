@@ -79,8 +79,8 @@
     "speedPercentage": "เปอร์เซ็นต์ความเร็ว",
     "collectionDisplay": "แสดงความคืบหน้าของสกิล",
     "onlyMineOresDeepCaverns": "ขุดแร่ใน Deep Caverns เท่านั้น",
-    "revenantIndicator": "Revenant Armor Progress Indicator",
-    "specialZealotAlert": "Special Zealot Alert"
+    "revenantIndicator": "ตัวบอกความคืบหน้าของเกราะ Revenant",
+    "specialZealotAlert": "แจ้งเตือน Special Zealot"
   },
   "messages": {
     "dropConfirmation": "กดทิ้งของอีกที่เพื่อยืนยันทิ้งของสิ่งนี้!",
