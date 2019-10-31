@@ -79,7 +79,7 @@
     "speedPercentage": "Porcentagem de velocidade",
     "collectionDisplay": "Exibição do progresso da habilidade",
     "onlyMineOresDeepCaverns": "Apenas quebrar minérios nas Cavernas Profundas",
-    "revenantIndicator": "Revenant Armor Progress Indicator",
+    "revenantIndicator": "Indicador de Progresso da Revenant Armor",
     "specialZealotAlert": "Special Zealot Alert"
   },
   "messages": {
@@ -121,6 +121,6 @@
     "cancelledDeepCaverns": "Uma função do SkyblockAddons impediu você de minerar este bloco aqui.",
     "featureDisabled": "Função desabilitada",
     "anvilUses": "Usos na Bigorna: %uses%",
-    "specialZealotFound": "Special Zealot!"
+    "specialZealotFound": "Zealot especial!"
   }
 }
