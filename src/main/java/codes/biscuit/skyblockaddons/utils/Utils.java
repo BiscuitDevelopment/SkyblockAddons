@@ -10,6 +10,7 @@ import com.google.gson.JsonObject;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.event.ClickEvent;
 import net.minecraft.init.Items;
@@ -388,7 +389,8 @@ public class Utils {
                 return color == null || !color.equals("");
             }
         }
-        return true;
+
+        return !(entity instanceof EntityVillager);
     }
 
     public int getDefaultColor(float alphaFloat) {
