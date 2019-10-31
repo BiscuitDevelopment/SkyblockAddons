@@ -51,7 +51,7 @@ public class PlayerListener {
     private final Pattern ABILITY_CHAT_PATTERN = Pattern.compile("§r§aUsed §r§6[A-Za-z ]+§r§a! §r§b\\([0-9]+ Mana\\)§r");
     private final Pattern PROFILE_CHAT_PATTERN = Pattern.compile("§aYou are playing on profile: §e([A-Za-z]+).*");
     private final Pattern SWITCH_PROFILE_CHAT_PATTERN = Pattern.compile("§aYour profile was changed to: §e([A-Za-z]+).*");
-    private final Pattern COLLECTIONS_CHAT_PATTERN = Pattern.compile("§.\\+§?[0-9a-f]?([0-9.]+) §?[0-9a-f]?([A-Za-z]+) \\(([0-9]+)[0-9.]*/([0-9.]+)\\)");
+    private final Pattern COLLECTIONS_CHAT_PATTERN = Pattern.compile("§.\\+§?[0-9a-f]?([0-9.]+) §?[0-9a-f]?([A-Za-z]+) (\\([0-9.,]+/[0-9.,]+\\))");
 
     private boolean sentUpdate = false;
     private long lastWorldJoin = -1;
@@ -145,12 +145,10 @@ public class PlayerListener {
                                 defencePart = splitMessage[1];
                             } else {
                                 collectionPart = splitMessage[1]; // Another Example: §5+§d30 §5Runecrafting (969/1000)
-                                Matcher matcher = COLLECTIONS_CHAT_PATTERN.matcher(collectionPart.replace(",", ""));
+                                Matcher matcher = COLLECTIONS_CHAT_PATTERN.matcher(collectionPart);
                                 if (matcher.matches()) {
-                                    main.getRenderListener().setSkillChange(Float.parseFloat(matcher.group(1)));
+                                    main.getRenderListener().setSkillText("+"+matcher.group(1)+" "+matcher.group(3));
                                     main.getRenderListener().setSkill(matcher.group(2));
-                                    main.getRenderListener().setProgress(Integer.parseInt(matcher.group(3)));
-                                    main.getRenderListener().setMaxSkill(Integer.parseInt(matcher.group(4)));
                                 }
                             }
                             manaPart = splitMessage[2];
@@ -547,7 +545,7 @@ public class PlayerListener {
             }
         }
 
-        if (e.toolTip != null && e.toolTip.size() > 3 && main.getUtils().isOnSkyblock()) {
+        if (e.toolTip != null && e.toolTip.size() > 4 && main.getUtils().isOnSkyblock()) {
             for (int i = 1; i <= 3; i++) { // only a max of 2 gray enchants are possible
                 String line = e.toolTip.get(i);
 //                System.out.println(line);

@@ -1,7 +1,6 @@
 package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.Entity;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -476,7 +475,6 @@ public class EnumUtils {
         SkillType(String skillName, Item item) {
             this.skillName = skillName;
             this.item = new ItemStack(item);
-            this.item.addEnchantment(Enchantment.unbreaking, 1);
         }
 
         public static SkillType getFromString(String text) {

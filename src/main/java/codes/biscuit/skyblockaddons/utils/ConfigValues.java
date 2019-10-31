@@ -533,7 +533,8 @@ public class ConfigValues {
     }
 
     public CoordsPair getSizes(Feature feature) {
-        return barSizes.getOrDefault(feature, new CoordsPair(7,1));
+        CoordsPair defaultSize = feature.getDefaultBarSize();
+        return barSizes.getOrDefault(feature, defaultSize != null ? defaultSize : new CoordsPair(7,1));
     }
 
     public void setSizeX(Feature feature, int x) {

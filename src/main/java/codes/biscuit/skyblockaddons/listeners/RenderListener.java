@@ -49,10 +49,8 @@ public class RenderListener {
     private Feature titleFeature = null;
     private String cannotReachMobName = null;
 
-    private float skillChange = 0;
     private EnumUtils.SkillType skill = null;
-    private int progress = 0;
-    private int maxSkill = 0;
+    private String skillText = null;
 
     private PlayerListener.GUIType guiToOpen = null;
     private int guiPageToOpen = 1;
@@ -562,13 +560,10 @@ public class RenderListener {
             text = magmaBuilder.toString();
         } else if (feature == Feature.COLLECTION_DISPLAY) {
             if (buttonLocation == null) {
-                if (skill != null) {
-                    text = "+" + skillChange + " " + progress + "/" + maxSkill;
-                } else {
-                    return;
-                }
+                text = skillText;
+                if (text == null) return;
             } else {
-                text = "+10 20000/50000";
+                text = "+10 (20,000/50,000)";
             }
         } else {
             return;
@@ -824,15 +819,7 @@ public class RenderListener {
         this.skill = EnumUtils.SkillType.getFromString(skill);
     }
 
-    void setMaxSkill(int maxSkill) {
-        this.maxSkill = maxSkill;
-    }
-
-    void setProgress(int progress) {
-        this.progress = progress;
-    }
-
-    public void setSkillChange(float skillChange) {
-        this.skillChange = skillChange;
+    public void setSkillText(String skillText) {
+        this.skillText = skillText;
     }
 }
