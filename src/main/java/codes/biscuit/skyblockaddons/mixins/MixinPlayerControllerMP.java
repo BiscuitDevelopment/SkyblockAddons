@@ -1,29 +1,25 @@
 package codes.biscuit.skyblockaddons.mixins;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.utils.CooldownEntry;
-import codes.biscuit.skyblockaddons.utils.EnumUtils;
-import codes.biscuit.skyblockaddons.utils.Feature;
-import codes.biscuit.skyblockaddons.utils.Message;
+import codes.biscuit.skyblockaddons.utils.*;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.multiplayer.PlayerControllerMP;
-import net.minecraft.client.network.NetHandlerPlayClient;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.item.EntityItemFrame;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.ContainerPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.network.Packet;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.MovingObjectPosition;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
@@ -84,40 +80,57 @@ public class MixinPlayerControllerMP {
         }
     }
 
-    @Redirect(method = "isPlayerRightClickingOnEntity", at = @At(value = "INVOKE",
-            target = "Lnet/minecraft/client/network/NetHandlerPlayClient;addToSendQueue(Lnet/minecraft/network/Packet;)V",
-    ordinal = 0))
-    private void onPlayerRightClickEntity(NetHandlerPlayClient netHandlerPlayClient, Packet p_147297_1_) {
-        checkIfShouldSendPacket(netHandlerPlayClient, p_147297_1_);
+    private boolean isItemBow(ItemStack item) {
+        return item != null && item.getItem() != null &&
+                item.getItem().equals(Items.bow);
     }
 
-    @Redirect(method = "interactWithEntitySendPacket", at = @At(value = "INVOKE",
-            target = "Lnet/minecraft/client/network/NetHandlerPlayClient;addToSendQueue(Lnet/minecraft/network/Packet;)V",
-            ordinal = 0))
-    private void interactWithEntitySendPacket(NetHandlerPlayClient netHandlerPlayClient, Packet p_147297_1_) {
-        checkIfShouldSendPacket(netHandlerPlayClient, p_147297_1_);
-    }
-
-    private void checkIfShouldSendPacket(NetHandlerPlayClient netHandlerPlayClient, Packet p_147297_1_) {
+    @Inject(method = "isPlayerRightClickingOnEntity", cancellable = true,
+            at = @At(value = "INVOKE", shift = At.Shift.AFTER, target = "Lnet/minecraft/client/multiplayer/PlayerControllerMP;syncCurrentPlayItem()V"))
+    private void shouldPlayerRightClickEntity(EntityPlayer player, Entity entity, MovingObjectPosition ignored, CallbackInfoReturnable<Boolean> cb) {
         SkyblockAddons main = SkyblockAddons.getInstance();
-        if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.DONT_OPEN_PROFILES_WITH_BOW)) {
-            Minecraft mc = Minecraft.getMinecraft();
-            Entity entityIn = mc.objectMouseOver.entityHit;
-            if (entityIn instanceof EntityOtherPlayerMP && main.getUtils().isNotNPC(entityIn)) {
-                ItemStack item = mc.thePlayer.inventory.getCurrentItem();
-                ItemStack itemInUse = mc.thePlayer.getItemInUse();
-                if ((item != null && item.getItem() != null && item.getItem().equals(Items.bow)) ||
-                        (itemInUse != null && itemInUse.getItem() != null && itemInUse.getItem().equals(Items.bow))) {
-                    if (System.currentTimeMillis()- lastProfileMessage > 20000) {
-                        lastProfileMessage = System.currentTimeMillis();
-                        main.getUtils().sendMessage(main.getConfigValues().getColor(Feature.DONT_OPEN_PROFILES_WITH_BOW).getChatFormatting()+
+        Utils utils = main.getUtils();
+
+        if(!utils.isOnSkyblock())
+            return;
+
+        ConfigValues config = main.getConfigValues();
+        boolean cancel = false;
+        if(config.isEnabled(Feature.DONT_OPEN_PROFILES_WITH_BOW)) {
+            if(entity instanceof EntityOtherPlayerMP && utils.isNotNPC(entity)) {
+                ItemStack item = player.inventory.getCurrentItem();
+                ItemStack itemInUse = player.getItemInUse();
+
+                if(isItemBow(item) || isItemBow(itemInUse)) {
+                    long currentTime = System.currentTimeMillis();
+                    if((currentTime - lastProfileMessage) > 20000) {
+                        lastProfileMessage = currentTime;
+
+                        utils.sendMessage(config.getColor(Feature.DONT_OPEN_PROFILES_WITH_BOW).getChatFormatting() +
                                 Message.MESSAGE_STOPPED_OPENING_PROFILE.getMessage());
                     }
-                    return;
+
+                    cancel = true;
                 }
             }
         }
-        netHandlerPlayClient.addToSendQueue(p_147297_1_);
+
+        if(config.isEnabled(Feature.LOCK_SLOTS)) {
+            if(entity instanceof EntityItemFrame && ((EntityItemFrame)entity).getDisplayedItem() == null) {
+                int slot = player.inventory.currentItem + 36;
+                if(config.getLockedSlots().contains(slot) && (slot >= 9 || player.openContainer instanceof ContainerPlayer && slot >= 5)) {
+                    utils.playSound("note.bass", 0.5);
+                    utils.sendMessage(config.getColor(Feature.DROP_CONFIRMATION).getChatFormatting() + Message.MESSAGE_SLOT_LOCKED.getMessage());
+
+                    cancel = true;
+                }
+            }
+        }
+
+        if(cancel) {
+            cb.setReturnValue(true);
+            cb.cancel();
+        }
     }
 
     /**
