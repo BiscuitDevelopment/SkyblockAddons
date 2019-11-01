@@ -139,6 +139,14 @@ public class MixinPlayerControllerMP {
      */
     @Inject(method = "windowClick", at = @At("HEAD"), locals = LocalCapture.CAPTURE_FAILSOFT, cancellable = true)
     private void onWindowClick(int windowId, int slotNum, int clickButton, int clickModifier, EntityPlayer player, CallbackInfoReturnable<ItemStack> cir) {
+        // Handle blocking the next click, sorry I did it this way
+        if(Utils.blockNextClick) {
+            Utils.blockNextClick = false;
+            cir.setReturnValue(null);
+            cir.cancel();
+            return;
+        }
+
         SkyblockAddons main = SkyblockAddons.getInstance();
         final int slotId = slotNum;
         if (player != null && player.openContainer != null) {

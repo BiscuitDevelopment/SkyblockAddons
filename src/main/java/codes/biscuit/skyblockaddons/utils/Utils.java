@@ -31,6 +31,7 @@ import net.minecraftforge.fml.relauncher.FileListHelper;
 import net.minecraftforge.fml.relauncher.ModListHelper;
 import org.apache.commons.lang3.mutable.MutableInt;
 import org.apache.commons.lang3.text.WordUtils;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.awt.*;
 import java.io.*;
@@ -49,6 +50,12 @@ import java.util.stream.Collectors;
 import java.util.zip.ZipEntry;
 
 public class Utils {
+
+    /**
+     * Turn true to block the next window click in {@link codes.biscuit.skyblockaddons.mixins.MixinPlayerControllerMP#onWindowClick(int, int, int, int, EntityPlayer, CallbackInfoReturnable)}
+     */
+    // I know this is messy af, but frustration led me to take this dark path
+    public static boolean blockNextClick = false;
 
     private final Pattern STRIP_COLOR_PATTERN = Pattern.compile("(?i)§[0-9A-FK-OR]");
     private final Pattern ITEM_COOLDOWN_PATTERN = Pattern.compile("§5§o§8Cooldown: §a([0-9]+)s");

@@ -3,6 +3,7 @@ package codes.biscuit.skyblockaddons.gui.elements;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.utils.ConfigColor;
 import codes.biscuit.skyblockaddons.utils.CraftingPattern;
+import codes.biscuit.skyblockaddons.utils.Utils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 
@@ -101,6 +102,8 @@ public class CheckBox {
             if (onToggleListener != null) {
                 onToggleListener.onToggle(value);
             }
+
+            Utils.blockNextClick = true;
         }
     }
 

@@ -239,7 +239,6 @@ public abstract class MixinGuiChest extends GuiContainer {
 
     @Override
     protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {
-        super.mouseClicked(mouseX, mouseY, mouseButton);
         if (textFieldMatch != null) {
             textFieldMatch.mouseClicked(mouseX, mouseY, mouseButton);
             textFieldExclusions.mouseClicked(mouseX, mouseY, mouseButton);
@@ -248,6 +247,7 @@ public abstract class MixinGuiChest extends GuiContainer {
         if(craftingPatternSelection != null) {
             craftingPatternSelection.mouseClicked(mouseX, mouseY, mouseButton);
         }
+        super.mouseClicked(mouseX, mouseY, mouseButton);
     }
 
     private Backpack backpack = null;
