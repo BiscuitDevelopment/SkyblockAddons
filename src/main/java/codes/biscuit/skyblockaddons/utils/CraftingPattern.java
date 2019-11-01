@@ -4,7 +4,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * {@link Feature#CRAFTING_PATTERNS Crafting patterns} enum, constants and utility methods
@@ -81,7 +83,8 @@ public enum CraftingPattern {
 
         boolean filled = true;
         boolean satisfied = true;
-        int freeSpace = 0;
+        int emptySpace = 0;
+        Map<String, ItemDiff> freeSpaceMap = new HashMap<>();
 
         for(int i = 0; i < pattern.length; i++) {
             ItemStack itemStack = grid[i];
@@ -96,15 +99,20 @@ public enum CraftingPattern {
 
             if(isSlotInPattern(i)) {
                 if(hasStack) {
-                    freeSpace += itemStack.getMaxStackSize() - itemStack.stackSize;
+                    if(!freeSpaceMap.containsKey(itemStack.getDisplayName())) {
+                        freeSpaceMap.put(itemStack.getDisplayName(), new ItemDiff(itemStack.getDisplayName(), 0));
+                    }
+
+                    ItemDiff diff = freeSpaceMap.get(itemStack.getDisplayName());
+                    diff.add(itemStack.getMaxStackSize() - itemStack.stackSize);
                 } else {
                     // empty slot inside the pattern: add 64 free space
-                    freeSpace += 64;
+                    emptySpace += 64;
                 }
             }
         }
 
-        return new CraftingPatternResult(filled, satisfied, freeSpace);
+        return new CraftingPatternResult(filled, satisfied, emptySpace, freeSpaceMap);
     }
 
     /**

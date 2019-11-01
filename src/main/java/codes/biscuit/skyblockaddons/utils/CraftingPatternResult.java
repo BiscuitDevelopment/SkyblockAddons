@@ -2,6 +2,8 @@ package codes.biscuit.skyblockaddons.utils;
 
 import net.minecraft.item.ItemStack;
 
+import java.util.Map;
+
 /**
  * Class containing results of pattern checks through {@link CraftingPattern#checkAgainstGrid(ItemStack[])}
  */
@@ -9,12 +11,14 @@ public class CraftingPatternResult {
 
     private final boolean filled;
     private final boolean satisfied;
-    private final int freeSpace;
+    private final int emptySpace;
+    private final Map<String, ItemDiff> freeSpaceMap;
 
-    CraftingPatternResult(boolean filled, boolean satisfied, int freeSpace) {
+    CraftingPatternResult(boolean filled, boolean satisfied, int emptySpace, Map<String, ItemDiff> freeSpaceMap) {
         this.filled = filled;
         this.satisfied = satisfied;
-        this.freeSpace = freeSpace;
+        this.emptySpace = emptySpace;
+        this.freeSpaceMap = freeSpaceMap;
     }
 
     /**
@@ -36,9 +40,17 @@ public class CraftingPatternResult {
     }
 
     /**
-     * @return Available space for items left in the item stacks inside the pattern
+     * Checks whether a given ItemStack can still fit inside without violating the pattern.
+     *
+     * @param itemStack ItemStack to check
+     * @return Whether that ItemStack can safely fit the pattern
      */
-    public int getFreeSpace() {
-        return freeSpace;
+    public boolean fitsItem(ItemStack itemStack) {
+        ItemDiff itemDiff = freeSpaceMap.getOrDefault(itemStack.getDisplayName(), null);
+        if(itemDiff != null) {
+            return itemStack.stackSize <= itemDiff.getAmount();
+        } else {
+            return itemStack.stackSize <= emptySpace;
+        }
     }
 }

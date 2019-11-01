@@ -20,7 +20,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.network.Packet;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
-import net.minecraftforge.fml.common.FMLLog;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -28,7 +27,10 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.EnumSet;
+import java.util.HashSet;
+import java.util.Set;
 
 @Mixin(PlayerControllerMP.class)
 public class MixinPlayerControllerMP {
@@ -172,10 +174,9 @@ public class MixinPlayerControllerMP {
                     }
 
                     final CraftingPatternResult result = selectedPattern.checkAgainstGrid(craftingGrid);
-                    final int clickedStackSize = slotIn.getStack().stackSize;
 
                     if(slotIn.inventory.equals(Minecraft.getMinecraft().thePlayer.inventory)) {
-                        if(result.isFilled() && result.getFreeSpace() < clickedStackSize && clickModifier == SHIFTCLICK_CLICK_TYPE) {
+                        if(result.isFilled() && !result.fitsItem(clickedItem) && clickModifier == SHIFTCLICK_CLICK_TYPE) {
                             // cancel shift-clicking items from the inventory if the pattern is already filled
                             if(System.currentTimeMillis() > lastCraftingSoundPlayed+CRAFTING_PATTERN_SOUND_COOLDOWN) {
                                 main.getUtils().playSound("note.bass", 0.5);
