@@ -1,5 +1,6 @@
 package codes.biscuit.skyblockaddons.utils;
 
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
 import java.util.Arrays;
@@ -65,35 +66,45 @@ public enum CraftingPattern {
     }
 
     /**
-     * Test if a pattern of filled slots fills this pattern, meaning every expected slot
-     * is filled, but unexpected slots may be filled aswell.
+     * Checks the items of a crafting grid against the pattern for these characteristics:
+     * - filled: Every expected slot is filled, but other slots may be filled too
+     * - satisfied: Only expected slots are filled
+     * - free space: Amount of items that still fit into the stacks inside the patterns
      *
-     * @param filledSlots Filled slots grid, true meaning filled, false not filled
-     * @return Whether the pattern is filled
+     * @param grid ItemStack array of length 9 containing the items of the crafting grid
+     * @return {@link CraftingPatternResult} containing all above mentioned characteristics
      */
-    public boolean fillsPattern(boolean[] filledSlots) {
-        for(int i = 0; i < pattern.length; i++) {
-            if((pattern[i] == 1 && !filledSlots[i])) {
-                return false;
-            }
+    public CraftingPatternResult checkAgainstGrid(ItemStack[] grid) {
+        if(grid == null || grid.length < 9) {
+            throw new IllegalArgumentException("grid cannot be null or smaller than 9.");
         }
-        return true;
-    }
 
-    /**
-     * Test if a pattern of filled slots satisfies this crafting patten fully, meaning every
-     * expected slot is filled and no unexpected slot is filled.
-     *
-     * @param filledSlots Filled slots grid, true meaning filled, false not filled
-     * @return Whether the pattern is satisfied
-     */
-    public boolean satisfiesPattern(boolean[] filledSlots) {
+        boolean filled = true;
+        boolean satisfied = true;
+        int freeSpace = 0;
+
         for(int i = 0; i < pattern.length; i++) {
-            if((pattern[i] == 1 && !filledSlots[i]) || (pattern[i] == 0 && filledSlots[i])) {
-                return false;
+            ItemStack itemStack = grid[i];
+            boolean hasStack = itemStack != null;
+
+            if(isSlotInPattern(i) && !hasStack) {
+                filled = false;
+                satisfied = false;
+            } else if(!isSlotInPattern(i) && hasStack) {
+                satisfied = false;
+            }
+
+            if(isSlotInPattern(i)) {
+                if(hasStack) {
+                    freeSpace += itemStack.getMaxStackSize() - itemStack.stackSize;
+                } else {
+                    // empty slot inside the pattern: add 64 free space
+                    freeSpace += 64;
+                }
             }
         }
-        return true;
+
+        return new CraftingPatternResult(filled, satisfied, freeSpace);
     }
 
     /**

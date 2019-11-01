@@ -234,25 +234,27 @@ public abstract class MixinGuiChest extends GuiContainer {
         // Crafting patterns
         if(slotIn != null && inventoryType == EnumUtils.InventoryType.CRAFTING_TABLE
                 && main.getConfigValues().isEnabled(Feature.CRAFTING_PATTERNS)) {
-            CraftingPattern selectedPattern = CraftingPatternSelection.selectedPattern;
-            if(selectedPattern != CraftingPattern.FREE) {
-                boolean[] filledPattern = new boolean[9];
+            final CraftingPattern selectedPattern = CraftingPatternSelection.selectedPattern;
+            final ItemStack clickedItem = slotIn.getStack();
+            if(selectedPattern != CraftingPattern.FREE && clickedItem != null) {
+                final ItemStack[] craftingGrid = new ItemStack[9];
                 for (int i = 0; i < CraftingPattern.CRAFTING_GRID_SLOTS.size(); i++) {
                     int slotIndex = CraftingPattern.CRAFTING_GRID_SLOTS.get(i);
-                    filledPattern[i] = slots.getSlot(slotIndex).getHasStack();
+                    craftingGrid[i] = slots.getSlot(slotIndex).getStack();
                 }
-                boolean patternFilled = selectedPattern.fillsPattern(filledPattern); // whether all pattern slots are filled
-                boolean patternSatisfied = selectedPattern.satisfiesPattern(filledPattern); // whether all pattern slots are filled and no non-pattern slots are filled
+
+                final CraftingPatternResult result = selectedPattern.checkAgainstGrid(craftingGrid);
+                final int clickedStackSize = slotIn.getStack().stackSize;
 
                 if(slotIn.inventory.equals(mc.thePlayer.inventory)) {
-                    if(patternFilled && clickType == SHIFTCLICK_CLICK_TYPE) {
+                    if(result.isFilled() && result.getFreeSpace() < clickedStackSize && clickType == SHIFTCLICK_CLICK_TYPE) {
                         // cancel shift-clicking items from the inventory if the pattern is already filled
                         main.getUtils().playSound("note.bass", 0.5);
                         return;
                     }
                 } else {
                     if(slotIn.getSlotIndex() == CraftingPattern.CRAFTING_RESULT_INDEX
-                            && !patternSatisfied) {
+                            && !result.isSatisfied()) {
                         // cancel clicking the result if the pattern isn't satisfied
                         main.getUtils().playSound("note.bass", 0.5);
                         return;
