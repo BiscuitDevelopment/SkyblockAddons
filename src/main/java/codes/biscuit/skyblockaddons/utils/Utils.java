@@ -749,6 +749,19 @@ public class Utils {
         return null;
     }
 
+    public void drawString(Minecraft mc, String text, int x, int y, int color) {
+        if (main.getConfigValues().getTextStyle() == EnumUtils.TextStyle.BLACK_SHADOW) {
+            String strippedText = main.getUtils().stripColor(text);
+            mc.fontRendererObj.drawString(strippedText, x + 1, y, 0);
+            mc.fontRendererObj.drawString(strippedText, x - 1, y, 0);
+            mc.fontRendererObj.drawString(strippedText, x, y + 1, 0);
+            mc.fontRendererObj.drawString(strippedText, x, y - 1, 0);
+            mc.fontRendererObj.drawString(text, x, y, color);
+        } else {
+            mc.ingameGUI.drawString(mc.fontRendererObj, text, x, y, color);
+        }
+    }
+
     public boolean isPickaxe(Item item) {
         return Items.wooden_pickaxe.equals(item) || Items.stone_pickaxe.equals(item) || Items.golden_pickaxe.equals(item) || Items.iron_pickaxe.equals(item) || Items.diamond_pickaxe.equals(item);
     }
@@ -855,4 +868,5 @@ public class Utils {
     public void setProfileName(String profileName) {
         this.profileName = profileName;
     }
+
 }

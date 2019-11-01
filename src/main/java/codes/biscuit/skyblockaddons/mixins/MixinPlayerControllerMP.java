@@ -186,7 +186,8 @@ public class MixinPlayerControllerMP {
                         }
                     } else {
                         if(slotIn.getSlotIndex() == CraftingPattern.CRAFTING_RESULT_INDEX
-                                && !result.isSatisfied()) {
+                                && !result.isSatisfied()
+                                && CraftingPatternSelection.blockCraftingIncomplete) {
                             // cancel clicking the result if the pattern isn't satisfied
                             if(System.currentTimeMillis() > lastCraftingSoundPlayed+CRAFTING_PATTERN_SOUND_COOLDOWN) {
                                 main.getUtils().playSound("note.bass", 0.5);

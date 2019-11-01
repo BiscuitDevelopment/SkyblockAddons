@@ -2,6 +2,7 @@ package codes.biscuit.skyblockaddons.gui.elements;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.utils.CraftingPattern;
+import codes.biscuit.skyblockaddons.utils.Message;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 
@@ -26,14 +27,29 @@ public class CraftingPatternSelection {
      * Currently selected crafting pattern
      */
     public static CraftingPattern selectedPattern = CraftingPattern.FREE;
+
+    /**
+     * Whether crafting incomplete patterns should be blocked
+     */
+    public static boolean blockCraftingIncomplete = true;
+
     private final Minecraft mc;
     private final int x;
     private final int y;
+    private final CheckBox blockIncompleteCheckBox;
 
     public CraftingPatternSelection(Minecraft mc, int x, int y) {
         this.mc = mc;
         this.x = x;
         this.y = y;
+        int checkBoxY = (y - MARGIN - 8);
+        String checkBoxText = Message.BLOCK_INCOMPLETE_PATTERNS.getMessage();
+        blockIncompleteCheckBox = new CheckBox(mc, x, checkBoxY, 8, checkBoxText, blockCraftingIncomplete);
+        blockIncompleteCheckBox.setOnToggleListener(value -> blockCraftingIncomplete = value);
+    }
+
+    public void onGuiClosed() {
+        blockCraftingIncomplete = true;
     }
 
     public void draw() {
@@ -41,6 +57,7 @@ public class CraftingPatternSelection {
         GlStateManager.disableDepth();
         GlStateManager.enableBlend();
         Minecraft.getMinecraft().getTextureManager().bindTexture(CraftingPattern.ICONS);
+        GlStateManager.color(1,1,1, 1F);
         for(CraftingPattern craftingPattern : CraftingPattern.values()) {
             int offset = getYOffsetByIndex(craftingPattern.index);
             GlStateManager.color(1,1,1, 1F);
@@ -52,9 +69,12 @@ public class CraftingPatternSelection {
         }
         GlStateManager.enableLighting();
         GlStateManager.enableDepth();
+
+        blockIncompleteCheckBox.draw();
     }
 
     public void mouseClicked(int mouseX, int mouseY, int mouseButton) {
+        blockIncompleteCheckBox.onMouseClick(mouseX, mouseY, mouseButton);
         if(mouseButton != 0
                 || mouseX < this.x || mouseX > this.x + ICON_SIZE
                 || mouseY < this.y || mouseY > this.y + CraftingPattern.values().length * (ICON_SIZE + MARGIN)) {

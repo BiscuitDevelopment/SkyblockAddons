@@ -54,6 +54,9 @@ public abstract class MixinGuiChest extends GuiContainer {
     @Override
     public void onGuiClosed() {
         EnumUtils.InventoryType.resetCurrentInventoryType();
+        if(craftingPatternSelection != null) {
+            craftingPatternSelection.onGuiClosed();
+        }
         if (this.textFieldMatch != null && this.textFieldExclusions != null) {
             Keyboard.enableRepeatEvents(false);
         }
@@ -112,7 +115,7 @@ public abstract class MixinGuiChest extends GuiContainer {
 
             if(inventoryType == EnumUtils.InventoryType.CRAFTING_TABLE) {
                 if(SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.CRAFTING_PATTERNS)) {
-                    craftingPatternSelection = new CraftingPatternSelection(mc, Math.max(guiLeft - CraftingPatternSelection.ICON_SIZE - 2, 10), guiTop);
+                    craftingPatternSelection = new CraftingPatternSelection(mc, Math.max(guiLeft - CraftingPatternSelection.ICON_SIZE - 2, 10), guiTop + 1);
                 }
                 return;
             }
