@@ -79,8 +79,8 @@
     "speedPercentage": "Процент скорости",
     "collectionDisplay": "Показывать прогресс навыков",
     "onlyMineOresDeepCaverns": "Копать только руды в Глубоких Пещерах",
-    "revenantIndicator": "Revenant Armor Progress Indicator",
-    "specialZealotAlert": "Special Zealot Alert"
+    "revenantIndicator": "Индикатор Прогресса Брони Призрака",
+    "specialZealotAlert": "Уведомление об Особом Зеалоте"
   },
   "messages": {
     "dropConfirmation": "Выбросите предмет ещё раз для подтверждения!",
@@ -121,6 +121,6 @@
     "cancelledDeepCaverns": "Функция SkyblockAddons остановила вас от копания этого блока.",
     "featureDisabled": "Функция отключена",
     "anvilUses": "Использований наковальни: %uses%",
-    "specialZealotFound": "Special Zealot!"
+    "specialZealotFound": "Особый Зеалот!"
   }
 }
