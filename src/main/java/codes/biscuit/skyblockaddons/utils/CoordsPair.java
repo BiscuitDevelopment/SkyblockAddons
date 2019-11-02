@@ -50,4 +50,8 @@ public class CoordsPair {
     public String toString() {
         return getX()+"|"+getY();
     }
+
+    protected CoordsPair cloneCoords() {
+        return new CoordsPair(getX(), getY());
+    }
 }

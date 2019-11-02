@@ -89,9 +89,13 @@ public class SkyblockAddons {
 
     public void loadKeyBindingDescriptions() {
         KeyBinding[] keys = Minecraft.getMinecraft().gameSettings.keyBindings;
-        keys[openSettingsKeyIndex] =      new KeyBinding(Message.SETTING_SETTINGS.getMessage(),       keys[openSettingsKeyIndex].getKeyCode(),      keys[openSettingsKeyIndex].getKeyCategory());
-        keys[openEditLocationsKeyIndex] = new KeyBinding(Message.SETTING_EDIT_LOCATIONS.getMessage(), keys[openEditLocationsKeyIndex].getKeyCode(), keys[openEditLocationsKeyIndex].getKeyCategory());
-        keys[lockSlotKeyIndex] =          new KeyBinding(Message.SETTING_LOCK_SLOT.getMessage(),      keys[lockSlotKeyIndex].getKeyCode(),          keys[lockSlotKeyIndex].getKeyCategory());
+        try {
+            keys[openSettingsKeyIndex] = new KeyBinding(Message.SETTING_SETTINGS.getMessage(), keys[openSettingsKeyIndex].getKeyCode(), keys[openSettingsKeyIndex].getKeyCategory());
+            keys[openEditLocationsKeyIndex] = new KeyBinding(Message.SETTING_EDIT_LOCATIONS.getMessage(), keys[openEditLocationsKeyIndex].getKeyCode(), keys[openEditLocationsKeyIndex].getKeyCategory());
+            keys[lockSlotKeyIndex] = new KeyBinding(Message.SETTING_LOCK_SLOT.getMessage(), keys[lockSlotKeyIndex].getKeyCode(), keys[lockSlotKeyIndex].getKeyCategory());
+        } catch (ArrayIndexOutOfBoundsException ex) {
+            ex.printStackTrace();
+        }
     }
 
     private void scheduleMagmaCheck() {

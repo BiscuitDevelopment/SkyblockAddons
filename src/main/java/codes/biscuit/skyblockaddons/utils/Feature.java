@@ -98,8 +98,8 @@ public enum Feature {
     private static Set<Feature> FIXES = new LinkedHashSet<>(Arrays.asList(HIDE_BONES, DISABLE_EMBER_ROD, HIDE_AUCTION_HOUSE_PLAYERS,
             STOP_BOW_CHARGE_FROM_RESETTING, AVOID_PLACING_ENCHANTED_ITEMS, PREVENT_MOVEMENT_ON_DEATH, AVOID_BLINKING_NIGHT_VISION));
 
-    private static Set<Feature> GUI_FEATURES = new LinkedHashSet<>(Arrays.asList(MAGMA_BOSS_TIMER, MANA_BAR, MANA_TEXT, DEFENCE_TEXT, DEFENCE_PERCENTAGE,
-            DEFENCE_ICON, HEALTH_BAR, HEALTH_TEXT, SKELETON_BAR, HEALTH_UPDATES, ITEM_PICKUP_LOG, DARK_AUCTION_TIMER, COLLECTION_DISPLAY, SPEED_PERCENTAGE, REVENANT_INDICATOR));
+    private static Set<Feature> GUI_FEATURES = new LinkedHashSet<>(Arrays.asList(MAGMA_BOSS_TIMER, MANA_BAR, MANA_TEXT, DEFENCE_ICON, DEFENCE_TEXT,
+            DEFENCE_PERCENTAGE, HEALTH_BAR, HEALTH_TEXT, SKELETON_BAR, HEALTH_UPDATES, ITEM_PICKUP_LOG, DARK_AUCTION_TIMER, COLLECTION_DISPLAY, SPEED_PERCENTAGE, REVENANT_INDICATOR));
 
     private static Set<Feature> GENERAL_FEATURES = new LinkedHashSet<>(Arrays.asList(TEXT_STYLE, WARNING_TIME));
 
@@ -171,14 +171,16 @@ public enum Feature {
 
     public CoordsPair getDefaultCoordinates() {
         if (guiFeatureData != null) {
-            return guiFeatureData.getDefaultPos();
+            CoordsPair coords = guiFeatureData.getDefaultPos();
+            if (coords != null) return coords.cloneCoords();
         }
         return null;
     }
 
     public CoordsPair getDefaultBarSize() {
         if (guiFeatureData != null) {
-            return guiFeatureData.getDefaultBarSize();
+            CoordsPair coords = guiFeatureData.getDefaultBarSize();
+            if (coords != null) return coords.cloneCoords();
         }
         return null;
     }
