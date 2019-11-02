@@ -21,7 +21,7 @@
     "hideDurability": "Piilota Työkalujen Kestävyys",
     "showEnchantmentsReforges": "Lumoukset & Uudelleentakomiset",
     "minionStopWarning": "\"Kätyri Ei Yllä\" Varoitus",
-    "hideAuctionHousePlayers": "Piilota Pelaajat Tärkeidenn NPC Läheltä",
+    "hideAuctionHousePlayers": "Piilota Pelaajat Tärkeiden NPCeiden Läheltä",
     "backpackStyle": "Repun Tyyli: %style%",
     "backpackStyles": {
       "regular": "Tavallinen",
@@ -78,7 +78,7 @@
     "showItemCooldowns": "Näytä tavaran jäähtymisaika",
     "speedPercentage": "Nopeuden prosenttimäärä",
     "collectionDisplay": "Taitojen Edistymisen Näyttö",
-    "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns",
+    "onlyMineOresDeepCaverns": "Vain Mineraalien kaivuu Deep Cavernissä",
     "revenantIndicator": "Revenant tavaroiden etenemis indikaattori",
     "specialZealotAlert": "Erikois Zealot Ilmoitukset"
   },
