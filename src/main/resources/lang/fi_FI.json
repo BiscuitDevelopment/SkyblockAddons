@@ -79,8 +79,8 @@
     "speedPercentage": "Nopeuden prosenttimäärä",
     "collectionDisplay": "Taitojen Edistymisen Näyttö",
     "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns",
-    "revenantIndicator": "Revenant Armor Progress Indicator",
-    "specialZealotAlert": "Special Zealot Alert"
+    "revenantIndicator": "Revenant tavaroiden etenemis indikaattori",
+    "specialZealotAlert": "Erikois Zealot Ilmoitukset"
   },
   "messages": {
     "dropConfirmation": "Pudota tämä esine uudelleen vahvistaaksesi!",
@@ -121,6 +121,6 @@
     "cancelledDeepCaverns": "SkyblockAddons -ominaisuus on estänyt sinut kaivamasta tämän kuution.",
     "featureDisabled": "Toiminto pois käytöstä",
     "anvilUses": "Alasimen käytöt: %uses%",
-    "specialZealotFound": "Erityinen Fanaatikko!"
+    "specialZealotFound": "Erityinen Zealot!"
   }
 }
