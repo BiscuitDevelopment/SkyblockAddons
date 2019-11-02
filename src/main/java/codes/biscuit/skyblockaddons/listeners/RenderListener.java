@@ -39,6 +39,7 @@ public class RenderListener {
     private final ResourceLocation BARS = new ResourceLocation("skyblockaddons", "bars.png");
     private final ResourceLocation DEFENCE_VANILLA = new ResourceLocation("skyblockaddons", "defence.png");
     private final ResourceLocation TEXT_ICONS = new ResourceLocation("skyblockaddons", "icons.png");
+    private final ResourceLocation IMPERIAL_BARS_FIX = new ResourceLocation("skyblockaddons", "imperialbarsfix.png");
 
     private boolean predictHealth = false;
     private boolean predictMana = false;
@@ -236,11 +237,16 @@ public class RenderListener {
      */
     public void drawBar(Feature feature, float scale, Minecraft mc, ButtonLocation buttonLocation) {
         mc.getTextureManager().bindTexture(BARS);
+
+        if (main.getUtils().isUsingOldSkyblockPackTexture(BARS)) {
+            mc.getTextureManager().bindTexture(IMPERIAL_BARS_FIX);
+        }
+
         // The height and width of this element (box not included)
         int barHeightExpansion = 2*main.getConfigValues().getSizes(feature).getY();
         int height = 3+barHeightExpansion;
 
-        int barWidthExpansion = 9*main.getConfigValues().getSizes(feature).getX();
+        int barWidthExpansion = 10*main.getConfigValues().getSizes(feature).getX();
         int width = 22+barWidthExpansion;
 
         // The fill of the bar from 0 to 1
@@ -301,13 +307,14 @@ public class RenderListener {
             GlStateManager.color(((float)color.getR() / 255)*0.9F, ((float)color.getG() / 255)*0.9F, ((float)color.getB() / 255)*0.9F);
         }
         CoordsPair sizes = main.getConfigValues().getSizes(feature);
+        if (!filled) fillWidth = maxWidth;
         drawBarStart(gui,x,y, filled, sizes.getX(), sizes.getY(), fillWidth, color, maxWidth);
     }
 
     private void drawBarStart(Gui gui, int x, int y, boolean filled, int barWidth, int barHeight, int fillWidth, ConfigColor color, int maxWidth) {
-        int baseTextureY = filled ? 0 : 8;
+        int baseTextureY = filled ? 0 : 6;
 
-        drawMiddleThreeRows(gui,x+10,y,barHeight,22,baseTextureY,2, fillWidth, 2); // these 2 just fill some gaps in the bar
+        drawMiddleThreeRows(gui,x+10,y,barHeight,22,baseTextureY,2, fillWidth, 2); // these two lines just fill some gaps in the bar
         drawMiddleThreeRows(gui,x+11+(barWidth*9),y,barHeight,22,baseTextureY,2, fillWidth, 2);
 
         drawAllFiveRows(gui, x, y, barHeight, 0, baseTextureY, 11, fillWidth);
@@ -316,28 +323,28 @@ public class RenderListener {
 
         if (fillWidth < maxWidth && fillWidth > 0) {
             GlStateManager.color(((float) color.getR() / 255) * 0.8F, ((float) color.getG() / 255) * 0.8F, ((float) color.getB() / 255) * 0.8F);
-            drawMiddleThreeRows(gui, x + fillWidth, y, barHeight, 22, 8, 2, fillWidth, 2);
+            drawMiddleThreeRows(gui, x + fillWidth, y, barHeight, 11, 8, 2, fillWidth, 2);
         }
     }
 
     private void drawMiddleBarParts(Gui gui, int x, int y, int baseTextureY, int barWidth, int barHeight, int fillWidth) {
         int endBarX = 0;
         for (int i = 0; i < barWidth; i++) {
-            endBarX = x+(i*9);
-            drawAllFiveRows(gui, endBarX, y, barHeight, 13, baseTextureY, 9,fillWidth-11-1-(i*9));
+            endBarX = x+(i*10);
+            drawAllFiveRows(gui, endBarX, y, barHeight, 12, baseTextureY, 9,fillWidth-11-(i*10));
         }
-        drawBarEnd(gui, endBarX+9, y, baseTextureY, barWidth, barHeight,fillWidth);
+        drawBarEnd(gui, endBarX+10, y, baseTextureY, barWidth, barHeight,fillWidth);
     }
 
     private void drawBarSeparators(Gui gui, int x, int y, int baseTextureY, int barWidth, int barHeight, int fillWidth) {
         for (int i = 0; i <= barWidth; i++) {
-            drawMiddleThreeRows(gui,x+(i*9),y,barHeight,22,baseTextureY,1, fillWidth-11-1-(i*9), 2);
+            drawMiddleThreeRows(gui,x+(i*10),y,barHeight,11,baseTextureY,1, fillWidth-11-(i*10), 2);
         }
         drawMiddleBarParts(gui, x+1, y, baseTextureY, barWidth, barHeight,fillWidth);
     }
 
     private void drawBarEnd(Gui gui, int x, int y, int baseTextureY, int barWidth, int barHeight, int fillWidth) {
-        drawAllFiveRows(gui, x, y, barHeight, 24, baseTextureY, 11,fillWidth-11-1-(barWidth*9));
+        drawAllFiveRows(gui, x, y, barHeight, 22, baseTextureY, 11,fillWidth-11-(barWidth*10));
     }
 
     private void drawAllFiveRows(Gui gui, int x, int y, int barHeight, int textureX, int baseTextureY, int width, int fillWidth) {
@@ -346,23 +353,23 @@ public class RenderListener {
 
         drawMiddleThreeRows(gui,x,y,barHeight,textureX,baseTextureY,width,fillWidth, 1);
 
-        gui.drawTexturedModalRect(x, y+3+barHeight, textureX, baseTextureY+6, fillWidth, 1);
+        gui.drawTexturedModalRect(x, y+3+barHeight, textureX, baseTextureY+4, fillWidth, 1);
     }
 
     private void drawMiddleThreeRows(Gui gui, int x, int y, int barHeight, int textureX, int baseTextureY,  int width, int fillWidth, int rowHeight) {
         if (fillWidth > width || baseTextureY >= 8) fillWidth = width;
         for (int i = 0; i < barHeight; i++) {
-            if (rowHeight == 2) { //drawing bar separators is a little different
+            if (rowHeight == 2) { //this means its drawing bar separators, and its a little different
                 gui.drawTexturedModalRect(x, y-i, textureX, baseTextureY, fillWidth, rowHeight);
             } else {
                 gui.drawTexturedModalRect(x, y + 1 - i, textureX, baseTextureY + 1, fillWidth, rowHeight);
             }
         }
 
-        gui.drawTexturedModalRect(x, y+2, textureX, baseTextureY+3, fillWidth, 1);
+        gui.drawTexturedModalRect(x, y+2, textureX, baseTextureY+2, fillWidth, 1);
 
         for (int i = 0; i < barHeight; i++) {
-            gui.drawTexturedModalRect(x, y+3+i, textureX, baseTextureY+5, fillWidth, rowHeight);
+            gui.drawTexturedModalRect(x, y+3+i, textureX, baseTextureY+3, fillWidth, rowHeight);
         }
     }
 
@@ -608,7 +615,7 @@ public class RenderListener {
             mc.getTextureManager().bindTexture(TEXT_ICONS);
             Gui.drawModalRectWithCustomSizedTexture(intX-18, intY-5, 0, 0, 16,16,32,32);
         } else if (feature == Feature.COLLECTION_DISPLAY && ((skill != null && skill.getItem() != null) || buttonLocation != null) ) {
-            mc.getRenderItem().renderItemIntoGUI(buttonLocation == null ? skill.getItem() : EnumUtils.SkillType.FARMING.getItem(),
+            mc.getRenderItem().renderItemIntoGUI(buttonLocation == null ? skill.getItem() : EnumUtils.SkillType.FARMING.getItem(), //TODO set Z level behind chat
                     intX-18, intY-5);
         }
     }

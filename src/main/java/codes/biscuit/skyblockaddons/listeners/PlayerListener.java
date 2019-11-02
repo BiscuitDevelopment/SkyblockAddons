@@ -51,7 +51,8 @@ public class PlayerListener {
     private final Pattern ABILITY_CHAT_PATTERN = Pattern.compile("§r§aUsed §r§6[A-Za-z ]+§r§a! §r§b\\([0-9]+ Mana\\)§r");
     private final Pattern PROFILE_CHAT_PATTERN = Pattern.compile("§aYou are playing on profile: §e([A-Za-z]+).*");
     private final Pattern SWITCH_PROFILE_CHAT_PATTERN = Pattern.compile("§aYour profile was changed to: §e([A-Za-z]+).*");
-    private final Pattern COLLECTIONS_CHAT_PATTERN = Pattern.compile("§.\\+§?[0-9a-f]?([0-9.]+) §?[0-9a-f]?([A-Za-z]+) (\\([0-9.,]+/[0-9.,]+\\))");
+    private final Pattern COLLECTIONS_CHAT_PATTERN = Pattern.compile("§.\\+([0-9.]+) §?[0-9a-f]?([A-Za-z]+) (\\([0-9.,]+/[0-9.,]+\\))");
+    private final Pattern COLLECTIONS_CHAT_PATTERN_COLORED = Pattern.compile("§.\\+§[0-9a-f]([0-9.]+) §?[0-9a-f]?([A-Za-z]+) (\\([0-9.,]+/[0-9.,]+\\))");
 
     private boolean sentUpdate = false;
     private long lastWorldJoin = -1;
@@ -149,6 +150,12 @@ public class PlayerListener {
                                 if (matcher.matches()) {
                                     main.getRenderListener().setSkillText("+"+matcher.group(1)+" "+matcher.group(3));
                                     main.getRenderListener().setSkill(matcher.group(2));
+                                } else {
+                                    matcher = COLLECTIONS_CHAT_PATTERN_COLORED.matcher(collectionPart);
+                                    if (matcher.matches()) {
+                                        main.getRenderListener().setSkillText("+"+matcher.group(1)+" "+matcher.group(3));
+                                        main.getRenderListener().setSkill(matcher.group(2));
+                                    }
                                 }
                             }
                             manaPart = splitMessage[2];

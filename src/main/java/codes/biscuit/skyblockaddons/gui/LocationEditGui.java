@@ -61,7 +61,7 @@ public class LocationEditGui extends GuiScreen {
     }
 
     private void addResizeButtons(Feature feature) {
-        buttonList.removeIf((button) -> button instanceof ButtonResize && ((ButtonResize)button).getFeature() == dragging);
+        buttonList.removeIf((button) -> button instanceof ButtonResize && ((ButtonResize)button).getFeature() == feature);
         float scale = main.getConfigValues().getGuiScale(feature);
         int barHeightExpansion = 2*main.getConfigValues().getSizes(feature).getY();
         int height = 3+barHeightExpansion;
@@ -119,6 +119,13 @@ public class LocationEditGui extends GuiScreen {
             ButtonSolid buttonSolid = (ButtonSolid)abstractButton;
             if (buttonSolid.getFeature() == Feature.RESET_LOCATION) {
                 main.getConfigValues().setAllCoordinatesToDefault();
+                for (Feature feature : Feature.getGuiFeatures()) {
+                    if (!main.getConfigValues().isDisabled(feature)) { // Don't display features that have been disabled
+                        if (feature == Feature.HEALTH_BAR || feature == Feature.MANA_BAR) {
+                            addResizeButtons(feature);
+                        }
+                    }
+                }
             }
         } else if (abstractButton instanceof ButtonResize) {
             ButtonResize buttonResize = (ButtonResize)abstractButton;

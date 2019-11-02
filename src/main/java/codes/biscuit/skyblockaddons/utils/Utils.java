@@ -9,6 +9,8 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityOtherPlayerMP;
+import net.minecraft.client.renderer.texture.TextureUtil;
+import net.minecraft.client.resources.IResource;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.event.ClickEvent;
@@ -20,6 +22,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.scoreboard.*;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.FMLLog;
@@ -33,6 +36,8 @@ import org.apache.commons.lang3.mutable.MutableInt;
 import org.apache.commons.lang3.text.WordUtils;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.awt.image.DataBuffer;
 import java.io.*;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -751,6 +756,34 @@ public class Utils {
 
     public boolean isPickaxe(Item item) {
         return Items.wooden_pickaxe.equals(item) || Items.stone_pickaxe.equals(item) || Items.golden_pickaxe.equals(item) || Items.iron_pickaxe.equals(item) || Items.diamond_pickaxe.equals(item);
+    }
+
+    public boolean isUsingOldSkyblockPackTexture(ResourceLocation resourceLocation) {
+        try {
+            Minecraft mc = Minecraft.getMinecraft();
+            IResource resource = mc.getResourceManager().getResource(resourceLocation);
+            BufferedImage targetImage = TextureUtil.readBufferedImage(resource.getInputStream());
+            DataBuffer targetData = targetImage.getData().getDataBuffer();
+            int sizeA = targetData.getSize();
+
+            BufferedImage originalImage = TextureUtil.readBufferedImage(getClass().getClassLoader().getResourceAsStream("assets/skyblockaddons/imperialoldbars.png"));
+            DataBuffer originalData = originalImage.getData().getDataBuffer();
+            int sizeB = originalData.getSize();
+            // compare data-buffer objects //
+            if (sizeA == sizeB) {
+                for(int i=0; i<sizeA; i++) {
+                    if(targetData.getElem(i) != originalData.getElem(i)) {
+                        return false;
+                    }
+                }
+                return true;
+            } else {
+                return false;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     public boolean isDevEnviroment() {
