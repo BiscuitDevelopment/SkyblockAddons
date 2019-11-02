@@ -76,7 +76,6 @@ public class CheckBox {
         int color = value ? ConfigColor.WHITE.getColor(255) : ConfigColor.GRAY.getColor(255);
         SkyblockAddons.getInstance().getUtils().drawString(mc, text, scaledX + Math.round(size * 1.5f / scale), scaledY + (size / 2), color);
 
-        GlStateManager.disableLighting();
         GlStateManager.disableDepth();
         GlStateManager.enableBlend();
         Minecraft.getMinecraft().getTextureManager().bindTexture(CraftingPattern.ICONS);
@@ -88,7 +87,6 @@ public class CheckBox {
             mc.ingameGUI.drawTexturedModalRect(scaledX, scaledY, 33, 34, 16, 16);
         }
 
-        GlStateManager.enableLighting();
         GlStateManager.enableDepth();
         GlStateManager.popMatrix();
     }

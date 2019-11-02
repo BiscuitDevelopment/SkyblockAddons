@@ -54,7 +54,6 @@ public class CraftingPatternSelection {
     }
 
     public void draw() {
-        GlStateManager.disableLighting();
         GlStateManager.disableDepth();
         GlStateManager.enableBlend();
         Minecraft.getMinecraft().getTextureManager().bindTexture(CraftingPattern.ICONS);
@@ -68,7 +67,7 @@ public class CraftingPatternSelection {
                 mc.ingameGUI.drawTexturedModalRect(x, y+ offset, 33, 0, ICON_SIZE, ICON_SIZE);
             }
         }
-        GlStateManager.enableLighting();
+        GlStateManager.disableBlend();
         GlStateManager.enableDepth();
 
         blockIncompleteCheckBox.draw();

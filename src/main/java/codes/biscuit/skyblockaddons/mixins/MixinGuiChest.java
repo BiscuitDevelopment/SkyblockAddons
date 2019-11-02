@@ -66,12 +66,6 @@ public abstract class MixinGuiChest extends GuiContainer {
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
         super.drawScreen(mouseX, mouseY, partialTicks);
 
-        if(inventoryType == EnumUtils.InventoryType.CRAFTING_TABLE
-                && craftingPatternSelection != null) {
-            craftingPatternSelection.draw();
-            return;
-        }
-
         if (textFieldMatch != null) {
             GlStateManager.color(1F, 1F, 1F);
             SkyblockAddons main = SkyblockAddons.getInstance();
@@ -255,6 +249,13 @@ public abstract class MixinGuiChest extends GuiContainer {
     @Redirect(method = "drawGuiContainerBackgroundLayer", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/GlStateManager;color(FFFF)V", ordinal = 0))
     private void color(float colorRed, float colorGreen, float colorBlue, float colorAlpha) { //Item item, ItemStack stack
         SkyblockAddons main = SkyblockAddons.getInstance();
+
+        // Draw here to make sure it's in the background of the GUI and items overlay it
+        if(inventoryType == EnumUtils.InventoryType.CRAFTING_TABLE
+                && craftingPatternSelection != null) {
+            craftingPatternSelection.draw();
+        }
+
         if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.SHOW_BACKPACK_PREVIEW) &&
                 main.getConfigValues().isEnabled(Feature.MAKE_BACKPACK_INVENTORIES_COLORED)
         && lowerChestInventory.hasCustomName()) {
