@@ -67,12 +67,12 @@
     "stopDroppingSellingRareItems": "Estä harvinaisten tavaroiden droppaamista/myymistä",
     "makeBackpackInventoriesColored": "Väri inventoryt",
     "avoidBreakingBottomSugarCane": "Vältä alimman sugar canen hajottamista",
-    "replaceRomanNumeralsWithNumbers": "Vaihda numerot roomalaisiksi numeroiksi tavaroissa",
+    "replaceRomanNumeralsWithNumbers": "Vaihda roomalaiset numerot tavaroissa",
     "changeBarColorForPotions": "Vaihda palkin väriä näivetyksen & myrkyn alaisena",
     "craftingPatterns": "Valitse Craftauskuviot",
     "soundIndicatorForFishing": "Ääni-indikaattori kalastukseen",
-    "avoidBlinkingNightVision": "Poista Yönäkö-taikajuoman räpsäyttäminen",
-    "disableMinionLocationWarning": "Poista ”Paikka Ei Täydellinen” Varoitukset",
+    "avoidBlinkingNightVision": "Poista Yönäkö-taikajuoman Välkkyminen",
+    "disableMinionLocationWarning": "Poista ”Paikka Ei Ole Täydellinen” Varoitukset",
     "jungleAxeCooldown": "Viidakkokirveen jäähtymisaika",
     "organizeLongEnchantmentLists": "Järjestä pitkät lumouslistat",
     "showItemCooldowns": "Näytä tavaran jäähtymisaika",
@@ -84,7 +84,7 @@
   },
   "messages": {
     "dropConfirmation": "Pudota tämä esine uudelleen vahvistaaksesi!",
-    "magmaBossWarning": "Magma Cube Boss!",
+    "magmaBossWarning": "Magmakuutio Hirviö!",
     "fullInventory": "Täysi Inventaario!",
     "labymod": "Labymod Users: Piilota Ruoka-, Suojaus-, ja Elämäpalkki on yhteensopimaton.",
     "minionCannotReach": "%type% kätyri ei yllä ja on lopettanut spawnaamisen!",
@@ -121,6 +121,6 @@
     "cancelledDeepCaverns": "A SkyblockAddons feature has stopped you from mining this block here.",
     "featureDisabled": "Toiminto pois käytöstä",
     "anvilUses": "Alasimen käytöt: %uses%",
-    "specialZealotFound": "Special Zealot!"
+    "specialZealotFound": "Erityinen Fanaatikko!"
   }
 }
