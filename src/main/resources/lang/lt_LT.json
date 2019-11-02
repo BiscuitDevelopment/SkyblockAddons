@@ -73,13 +73,13 @@
     "soundIndicatorForFishing": "Žvėjojimo garso indikatorius",
     "avoidBlinkingNightVision": "Išjugti Naktinio Matymo Eleksyro Mirkčiojimą",
     "disableMinionLocationWarning": "Išjungti Netinkamos Lokacijos Perspejimus",
-    "jungleAxeCooldown": "Jungle Axe Cooldown",
+    "jungleAxeCooldown": "Džiunglių Kirvio Cooldown'as",
     "organizeLongEnchantmentLists": "Sutvarkyti Ilgus Užkerėjimų Sąrašus",
-    "showItemCooldowns": "Show Item Cooldowns",
+    "showItemCooldowns": "Rodyti Daiktų Cooldown'us",
     "speedPercentage": "Greičio Procentai",
-    "collectionDisplay": "Skill Progress Display",
-    "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns",
-    "revenantIndicator": "Revenant Armor Progress Indicator",
+    "collectionDisplay": "Įgūdžių progreso lentelė",
+    "onlyMineOresDeepCaverns": "Kasti tik rūdas Deep Cavern'usuose",
+    "revenantIndicator": "Revenant Šarvų Progreso Indikatorius",
     "specialZealotAlert": "Specialaus Zealoto Įspėjimas"
   },
   "messages": {
@@ -96,7 +96,7 @@
     "inventoryTypes": {
       "enchants": "Užkerimai",
       "reforges": "Perdarimai",
-      "crafting": "Crafting"
+      "crafting": "Gaminimas"
     },
     "newUpdateAvailable": "Galima nauja (%version%) versija!",
     "deleteOldFile": "Atsisiūntimas pasibaigė, prašome atidaryti mod'ų aplankalą naudojantis mygtuku žemiau, uždaryti Minecraft'ą, ir ištrinti senąją versiją (arba jeigu norite ištrinkite vėliau).",
@@ -109,8 +109,8 @@
       "majorAvailable": "Naujas pagrindinis atnaujinimas (%version%) yra galimas atsisiūsti. Atsisiūntimo saitas galimas rasti pokalbyje.",
       "patchAvailable": "Naujas pataisymas (%version%) yra galimas atsisiūsti! Atsisiūntimo ieškokite pokalbyje!",
       "downloading": "Pataisymas atsisiunčiamas! Statusas: %downloaded%/%total% Prašome prisiminti, kad ištrintumėte senąjį failą.",
-      "failed": "The patch download has failed! Please download it manually using the link in chat.",
-      "downloadFinished": "The patch has finished downloading. It has been saved as %file%. Please don't forget to delete the old file after closing your Minecraft. Click the message in chat to open up the folder."
+      "failed": "Pataisymo atsisiuntimas nepavyko! Prašome atsisiusti jį patiems naudojant saitą pokalbyje.",
+      "downloadFinished": "Pataisymas pabaigė siustis. Jis buvo išsaugotas pavadinimu %file%. Prašome nepamiršti ištrinti senąjį failą kai uždarėte Minecraft. Paspauskite ant žinutės pokalbyje kad atidarytumėte aplankalą."
     },
     "slotLocked": "Šitas langelis yra užrakintas!",
     "summoningEyeFound": "Sušaukimo Akis!",
