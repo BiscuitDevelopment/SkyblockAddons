@@ -78,7 +78,9 @@
     "showItemCooldowns": "Mostrar Tiempo de Espera de Objetos",
     "speedPercentage": "Porcentaje de Velocidad",
     "collectionDisplay": "Progreso de Hablidades",
-    "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns"
+    "onlyMineOresDeepCaverns": "Minar Minerales Sólo en Deep Caverns",
+    "revenantIndicator": "Indicador de Progresso de Revenant Armor",
+    "specialZealotAlert": "Alerta de Zealot Especial"
   },
   "messages": {
     "dropConfirmation": "Arroja este objeto otra vez para confirmar!",
@@ -116,8 +118,9 @@
     "cancelledProfileOpening": "SkyblockAddons ha evitado que abras el perfil de este jugador con tu arco en la mano.",
     "cancelledDropping": "SkyblockAddons ha evitado que arrojes este objeto o herramienta rara.",
     "clickMoreTimes": "Haz clic/arroja el objeto %times% veces más si en realidad quieres hacerlo.",
-    "cancelledDeepCaverns": "A SkyblockAddons feature has stopped you from mining this block here.",
+    "cancelledDeepCaverns": "Una característica especial de SkyblockAddons ha impedido que mines ese bloque aquí.",
     "featureDisabled": "Característica Desactivada",
-    "anvilUses": "Usos en Anvil/Yunque: %uses%"
+    "anvilUses": "Usos en Anvil/Yunque: %uses%",
+    "specialZealotFound": "Zealot Especial!"
   }
 }

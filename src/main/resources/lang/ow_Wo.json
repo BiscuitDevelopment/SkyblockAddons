@@ -78,7 +78,9 @@
     "showItemCooldowns": "Show Item Coowdowns",
     "speedPercentage": "Spweed Pwocentage",
     "collectionDisplay": "Skwill Prowogess Dispway",
-    "onlyMineOresDeepCaverns": "OwOnly Mwine Owores in twhe deep Cavwerns"
+    "onlyMineOresDeepCaverns": "OwOnly Mwine Owores in twhe deep Cavwerns",
+    "revenantIndicator": "Rewenaunt Armuwu pwogwess Indicotwor",
+    "specialZealotAlert": "Spwecial Wealots Awert"
   },
   "messages": {
     "dropConfirmation": "Dwop thwis itwem agwain to confiwm!",
@@ -118,6 +120,7 @@
     "clickMoreTimes": "Cwick/dwop this item %times% mwore twimes if you weally want to do whis.",
     "cancelledDeepCaverns": "A SkwyBwlockAddowons fweature hwas stowopped ywou from mining thwis blowock hwere.",
     "featureDisabled": "Fweature Diswabled",
-    "anvilUses": "Anviw Uses: %uses%"
+    "anvilUses": "Anviw Uses: %uses%",
+    "specialZealotFound": "Spwecial Wealots OwO!"
   }
 }

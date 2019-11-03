@@ -78,7 +78,9 @@
     "showItemCooldowns": "Vis genstand ned brug",
     "speedPercentage": "Hastigheds procent",
     "collectionDisplay": "Dygtigheds fremskridt visning",
-    "onlyMineOresDeepCaverns": "Kun mine malm i Deep Caverns"
+    "onlyMineOresDeepCaverns": "Kun mine malm i Deep Caverns",
+    "revenantIndicator": "Genopstående rustnings fremskridt indikator",
+    "specialZealotAlert": "Speciel Zealot alarm"
   },
   "messages": {
     "dropConfirmation": "Slip denne vare igen for at bekræfte!",
@@ -118,6 +120,7 @@
     "clickMoreTimes": "Klik / slip dette emne %times% flere gange, hvis du virkelig ønsker at gøre dette.",
     "cancelledDeepCaverns": "En SkyblockAddons funktion har stoppet dig fra at mine denne her blok.",
     "featureDisabled": "Funktion deaktiveret",
-    "anvilUses": "Ambolt brug: %uses%"
+    "anvilUses": "Ambolt brug: %uses%",
+    "specialZealotFound": "Speciel Zealot!"
   }
 }
