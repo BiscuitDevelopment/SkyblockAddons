@@ -40,7 +40,7 @@
     "defenceText": "Puolustus Numero",
     "defencePercentage": "Puolutus Prosentit",
     "healthUpdates": "Tervellisyys Vaihto Numero",
-    "hidePlayersInLobby": "Piilota Pitkällä Olevat Yhteisöt Lobbyssä",
+    "hidePlayersInLobby": "Piilota Pitkällä Olevat Entiteetit Lobbyssä",
     "darkAuctionTimer": "Musta Huutokauppa Ajastin",
     "magmaBossTimer": "Magma Pomo Ajastin",
     "itemPickupLog": "Tavara Logi",
@@ -79,7 +79,7 @@
     "speedPercentage": "Nopeuden prosenttimäärä",
     "collectionDisplay": "Taitojen Edistymisen Näyttö",
     "onlyMineOresDeepCaverns": "Vain Mineraalien kaivuu Deep Cavernissä",
-    "revenantIndicator": "Revenant tavaroiden etenemis indikaattori",
+    "revenantIndicator": "Slayer Armor Progress Indicator",
     "specialZealotAlert": "Erikois Zealot Ilmoitukset"
   },
   "messages": {
