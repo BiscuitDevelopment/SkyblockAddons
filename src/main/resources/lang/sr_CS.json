@@ -78,7 +78,9 @@
     "showItemCooldowns": "Show Item Cooldowns",
     "speedPercentage": "Speed Percentage",
     "collectionDisplay": "Skill Progress Display",
-    "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns"
+    "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns",
+    "revenantIndicator": "Revenant Armor Progress Indicator",
+    "specialZealotAlert": "Special Zealot Alert"
   },
   "messages": {
     "dropConfirmation": "Opet baci ovu stvar za potvrdu!",
@@ -118,6 +120,7 @@
     "clickMoreTimes": "Klikni/Baci ovaj predmet još %times% puta ako stvarno želiš ovo da uradiš.",
     "cancelledDeepCaverns": "A SkyblockAddons feature has stopped you from mining this block here.",
     "featureDisabled": "Funkcija Isključena",
-    "anvilUses": "Anvil Uses: %uses%"
+    "anvilUses": "Anvil Uses: %uses%",
+    "specialZealotFound": "Special Zealot!"
   }
 }

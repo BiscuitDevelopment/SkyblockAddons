@@ -65,7 +65,7 @@ public class CraftingPatternSelection {
             int offset = getYOffsetByIndex(craftingPattern.index);
             if(mouseY > this.y + offset && mouseY < this.y + offset + ICON_SIZE) {
                 if(selectedPattern != craftingPattern) {
-                    SkyblockAddons.getInstance().getUtils().playSound("gui.button.press", 1F);
+                    SkyblockAddons.getInstance().getUtils().playLoudSound("gui.button.press", 1F);
                     selectedPattern = craftingPattern;
                 }
             }

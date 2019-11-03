@@ -3,6 +3,7 @@ package codes.biscuit.skyblockaddons.mixins;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.Feature;
+import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.EntityRenderer;
 import net.minecraft.entity.Entity;
@@ -47,7 +48,7 @@ public class MixinEntityRenderer {
                 list.removeIf(listEntity -> listEntity instanceof EntityItemFrame);
             }
             if (main.getConfigValues().isEnabled(Feature.HIDE_AUCTION_HOUSE_PLAYERS)) {
-                list.removeIf(EnumUtils.SkyblockNPC::isNearNPC);
+                list.removeIf((entity -> entity instanceof EntityOtherPlayerMP && EnumUtils.SkyblockNPC.isNearNPC(entity)));
             }
         }
     }

@@ -45,7 +45,7 @@
     "magmaBossTimer": "Timer do Chefão Magma",
     "itemPickupLog": "Registro de Items Pegados",
     "avoidPlacingEnchantedItems": "Evitar de Colocar Itens Encantados",
-    "avoidBreakingStems": "Evitar de Quebar Raizes",
+    "avoidBreakingStems": "Evitar de Quebrar Sementes",
     "stopBowChargeFromResetting": "Impedir Arco e Flecha de Resetar",
     "preventMovementOnDeath": "Impedir Movimento Após Morte",
     "showItemAnvilUses": "Mostrar Usos de Bigorna no Item",
@@ -78,7 +78,9 @@
     "showItemCooldowns": "Mostrar tempo de recarga dos itens",
     "speedPercentage": "Porcentagem de velocidade",
     "collectionDisplay": "Exibição do progresso da habilidade",
-    "onlyMineOresDeepCaverns": "Apenas quebrar minérios nas Cavernas Profundas"
+    "onlyMineOresDeepCaverns": "Apenas quebrar minérios nas Cavernas Profundas",
+    "revenantIndicator": "Indicador de Progresso da Revenant Armor",
+    "specialZealotAlert": "Alerta Zealot especial"
   },
   "messages": {
     "dropConfirmation": "Large este item de novo para confirmar!",
@@ -118,6 +120,7 @@
     "clickMoreTimes": "Clique/Largue este item mais %times% vezes caso realmente queira fazer isso.",
     "cancelledDeepCaverns": "Uma função do SkyblockAddons impediu você de minerar este bloco aqui.",
     "featureDisabled": "Função desabilitada",
-    "anvilUses": "Usos na Bigorna: %uses%"
+    "anvilUses": "Usos na Bigorna: %uses%",
+    "specialZealotFound": "Zealot especial!"
   }
 }

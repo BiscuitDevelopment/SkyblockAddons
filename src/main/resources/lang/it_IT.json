@@ -78,7 +78,9 @@
     "showItemCooldowns": "Mostra i tempi di ricarica degli oggetti",
     "speedPercentage": "Percentuale di Velocità",
     "collectionDisplay": "Visualizzazione del progresso dell’abilità",
-    "onlyMineOresDeepCaverns": "Estrai minerali solo nelle Deep Caverns"
+    "onlyMineOresDeepCaverns": "Estrai minerali solo nelle Deep Caverns",
+    "revenantIndicator": "Indicatore di progresso dell’Armatura Revenant",
+    "specialZealotAlert": "Avviso di Zealot Speciale"
   },
   "messages": {
     "dropConfirmation": "Getta questo oggetto nuovamente per confermare!",
@@ -118,6 +120,7 @@
     "clickMoreTimes": "Clicca/getta questo oggetto altre %times% volte se vuoi davvero farlo.",
     "cancelledDeepCaverns": "Una funzione di SkyBlockAddons ti ha impedito di estrarre questo blocco.",
     "featureDisabled": "Funzione disabilitata",
-    "anvilUses": "Utilizzi dell’incudine: %uses%"
+    "anvilUses": "Utilizzi dell’incudine: %uses%",
+    "specialZealotFound": "Zealot Speciale!"
   }
 }
