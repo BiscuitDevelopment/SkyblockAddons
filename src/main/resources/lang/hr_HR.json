@@ -76,9 +76,11 @@
     "jungleAxeCooldown": "Hlađenje Sjekire Đungle",
     "organizeLongEnchantmentLists": "Organiziraj Duge Liste Enchantanja",
     "showItemCooldowns": "Pokaži Hlađenje Stvari",
-    "speedPercentage": "Speed Percentage",
-    "collectionDisplay": "Skill Progress Display",
-    "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns"
+    "speedPercentage": "Postotak Brzine",
+    "collectionDisplay": "Prikaz Napretka Vještina",
+    "onlyMineOresDeepCaverns": "Samo Kopaj Rude u Deep Cavernsu",
+    "revenantIndicator": "Revenant Oklop Indikator Napretka",
+    "specialZealotAlert": "Posebni Upozorenje za Zealote"
   },
   "messages": {
     "dropConfirmation": "Opet baci ovu stvar za konfirmaciju!",
@@ -116,8 +118,9 @@
     "cancelledProfileOpening": "SkyblockAddons te zaustavio od otvaranja profila ovog igrača dok držiš luk.",
     "cancelledDropping": "SkyblockAddons te zaustavio od bacanje ove rijetke stvari ili alata od tvojeg hotbara.",
     "clickMoreTimes": "Klikni/dropaj ovu stvar %times% više puta ako zapravo želiš ovo napraviti.",
-    "cancelledDeepCaverns": "A SkyblockAddons feature has stopped you from mining this block here.",
+    "cancelledDeepCaverns": "SkyblockAddons značajka te zaustavila od kopanja ovog bloka ovdje.",
     "featureDisabled": "Svojstvo Onemogućeno",
-    "anvilUses": "Korištenja u Anvilu: %uses%"
+    "anvilUses": "Korištenja u Anvilu: %uses%",
+    "specialZealotFound": "Posebni Zealot!"
   }
 }

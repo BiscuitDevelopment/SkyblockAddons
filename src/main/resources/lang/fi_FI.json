@@ -21,7 +21,7 @@
     "hideDurability": "Piilota Työkalujen Kestävyys",
     "showEnchantmentsReforges": "Lumoukset & Uudelleentakomiset",
     "minionStopWarning": "\"Kätyri Ei Yllä\" Varoitus",
-    "hideAuctionHousePlayers": "Piilota Pelaajat Tärkeidenn NPC Läheltä",
+    "hideAuctionHousePlayers": "Piilota Pelaajat Tärkeiden NPCeiden Läheltä",
     "backpackStyle": "Repun Tyyli: %style%",
     "backpackStyles": {
       "regular": "Tavallinen",
@@ -67,22 +67,24 @@
     "stopDroppingSellingRareItems": "Estä harvinaisten tavaroiden droppaamista/myymistä",
     "makeBackpackInventoriesColored": "Väri inventoryt",
     "avoidBreakingBottomSugarCane": "Vältä alimman sugar canen hajottamista",
-    "replaceRomanNumeralsWithNumbers": "Vaihda numerot roomalaisiksi numeroiksi tavaroissa",
+    "replaceRomanNumeralsWithNumbers": "Vaihda roomalaiset numerot tavaroissa",
     "changeBarColorForPotions": "Vaihda palkin väriä näivetyksen & myrkyn alaisena",
     "craftingPatterns": "Valitse Craftauskuviot",
     "soundIndicatorForFishing": "Ääni-indikaattori kalastukseen",
-    "avoidBlinkingNightVision": "Poista Yönäkö-taikajuoman räpsäyttäminen",
-    "disableMinionLocationWarning": "Poista ”Paikka Ei Täydellinen” Varoitukset",
+    "avoidBlinkingNightVision": "Poista Yönäkö-taikajuoman Välkkyminen",
+    "disableMinionLocationWarning": "Poista ”Paikka Ei Ole Täydellinen” Varoitukset",
     "jungleAxeCooldown": "Viidakkokirveen jäähtymisaika",
     "organizeLongEnchantmentLists": "Järjestä pitkät lumouslistat",
     "showItemCooldowns": "Näytä tavaran jäähtymisaika",
     "speedPercentage": "Nopeuden prosenttimäärä",
-    "collectionDisplay": "Skill Progress Display",
-    "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns"
+    "collectionDisplay": "Taitojen Edistymisen Näyttö",
+    "onlyMineOresDeepCaverns": "Vain Mineraalien kaivuu Deep Cavernissä",
+    "revenantIndicator": "Revenant tavaroiden etenemis indikaattori",
+    "specialZealotAlert": "Erikois Zealot Ilmoitukset"
   },
   "messages": {
     "dropConfirmation": "Pudota tämä esine uudelleen vahvistaaksesi!",
-    "magmaBossWarning": "Magma Cube Boss!",
+    "magmaBossWarning": "Magmakuutio Hirviö!",
     "fullInventory": "Täysi Inventaario!",
     "labymod": "Labymod Users: Piilota Ruoka-, Suojaus-, ja Elämäpalkki on yhteensopimaton.",
     "minionCannotReach": "%type% kätyri ei yllä ja on lopettanut spawnaamisen!",
@@ -116,8 +118,9 @@
     "cancelledProfileOpening": "SkyblockAddons on pysäyttänyt sinua avaamasta tämän pelaajan profiilia, kun sinulla on jousi kädessä.",
     "cancelledDropping": "SkyblockAddons on pysäyttänyt sinua pudottamasta tämän arvokkaan esineen tai työkalun hotbaristasi.",
     "clickMoreTimes": "Klikkaa/pudota tämä esine %times% kertaa jos haluat tehdä tämän.",
-    "cancelledDeepCaverns": "A SkyblockAddons feature has stopped you from mining this block here.",
+    "cancelledDeepCaverns": "SkyblockAddons -ominaisuus on estänyt sinut kaivamasta tämän kuution.",
     "featureDisabled": "Toiminto pois käytöstä",
-    "anvilUses": "Alasimen käytöt: %uses%"
+    "anvilUses": "Alasimen käytöt: %uses%",
+    "specialZealotFound": "Erityinen Zealot!"
   }
 }

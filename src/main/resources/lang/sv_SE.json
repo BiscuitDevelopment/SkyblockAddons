@@ -78,7 +78,9 @@
     "showItemCooldowns": "Visa artikel nedkylning",
     "speedPercentage": "Fart Procent",
     "collectionDisplay": "Skill Progress Display",
-    "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns"
+    "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns",
+    "revenantIndicator": "Revenant Armor Progress Indicator",
+    "specialZealotAlert": "Special Zealot Alert"
   },
   "messages": {
     "dropConfirmation": "Släpp Det Här Igen För Att Bekräfta!",
@@ -118,6 +120,7 @@
     "clickMoreTimes": "Släng denna sak %times% fler gånger om du verkligen vill göra detta.",
     "cancelledDeepCaverns": "A SkyblockAddons feature has stopped you from mining this block here.",
     "featureDisabled": "Funktion.Inaktiverat",
-    "anvilUses": "Städ användningar %uses%"
+    "anvilUses": "Städ användningar %uses%",
+    "specialZealotFound": "Special Zealot!"
   }
 }

@@ -202,7 +202,7 @@ public abstract class MixinGuiChest extends GuiContainer {
                                     if (lines.length > 1) {
                                         String enchantLine = lines[1];
                                         if (main.getUtils().enchantReforgeMatches(enchantLine)) {
-                                            main.getUtils().playSound("random.orb", 0.1);
+                                            main.getUtils().playLoudSound("random.orb", 0.1);
                                             return;
                                         }
                                     }
@@ -221,7 +221,7 @@ public abstract class MixinGuiChest extends GuiContainer {
                             String reforge = main.getUtils().getReforgeFromItem(item);
                             if (reforge != null) {
                                 if (main.getUtils().enchantReforgeMatches(reforge)) {
-                                    main.getUtils().playSound("random.orb", 0.1);
+                                    main.getUtils().playLoudSound("random.orb", 0.1);
                                     return;
                                 }
                             }
