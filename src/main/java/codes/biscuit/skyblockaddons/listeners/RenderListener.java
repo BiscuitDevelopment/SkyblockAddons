@@ -635,11 +635,15 @@ public class RenderListener {
             mc.getTextureManager().bindTexture(TEXT_ICONS);
             Gui.drawModalRectWithCustomSizedTexture(intX-18, intY-5, 0, 0, 16,16,32,32);
         } else if (feature == Feature.SKILL_DISPLAY && ((skill != null && skill.getItem() != null) || buttonLocation != null) ) {
+            GlStateManager.enableRescaleNormal();
+            RenderHelper.enableGUIStandardItemLighting();
             if (!(mc.currentScreen instanceof GuiChat)) {
                 if (buttonLocation != null || textAlpha > 0.1) {
                     mc.getRenderItem().renderItemIntoGUI(buttonLocation == null ? skill.getItem() : EnumUtils.SkillType.FARMING.getItem(),intX - 18, intY - 5);
                 }
             }
+            RenderHelper.disableStandardItemLighting();
+            GlStateManager.disableRescaleNormal();
         }
     }
 
