@@ -78,7 +78,9 @@
     "showItemCooldowns": "הראה טעינת חפצים",
     "speedPercentage": "אחוז מהירות",
     "collectionDisplay": "מסך התקדמות יכולות",
-    "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns"
+    "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns",
+    "revenantIndicator": "Revenant Armor Progress Indicator",
+    "specialZealotAlert": "Special Zealot Alert"
   },
   "messages": {
     "dropConfirmation": "זרוק פריט זה שוב לאישור!",
@@ -118,6 +120,7 @@
     "clickMoreTimes": "תלחץ/תזרוק את החפץ %times% פעמים נוספות אם אתה בטוח רוצה לעשות את זה.",
     "cancelledDeepCaverns": "A SkyblockAddons feature has stopped you from mining this block here.",
     "featureDisabled": "פיטצ'ר מבוטל",
-    "anvilUses": "שימוים בסדן: %uses%"
+    "anvilUses": "שימוים בסדן: %uses%",
+    "specialZealotFound": "Special Zealot!"
   }
 }

@@ -283,17 +283,17 @@ public class MixinGuiContainer extends GuiScreen {
                 if (slot >= 9 || mc.thePlayer.openContainer instanceof ContainerPlayer && slot >= 5) {
                     if (main.getConfigValues().getLockedSlots().contains(slot)) {
                         if (main.getLockSlot().getKeyCode() == keyCode) {
-                            main.getUtils().playSound("random.orb", 1);
+                            main.getUtils().playLoudSound("random.orb", 1);
                             main.getConfigValues().getLockedSlots().remove(slot);
                             main.getConfigValues().saveConfig();
                         } else {
-                            main.getUtils().playSound("note.bass", 0.5);
+                            main.getUtils().playLoudSound("note.bass", 0.5);
                             ci.cancel(); // slot is locked
                             return;
                         }
                     } else {
                         if (main.getLockSlot().getKeyCode() == keyCode) {
-                            main.getUtils().playSound("random.orb", 0.1);
+                            main.getUtils().playLoudSound("random.orb", 0.1);
                             main.getConfigValues().getLockedSlots().add(slot);
                             main.getConfigValues().saveConfig();
                         }

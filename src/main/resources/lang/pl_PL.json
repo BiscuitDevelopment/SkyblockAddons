@@ -78,7 +78,9 @@
     "showItemCooldowns": "Pokazuj colldown itemów",
     "speedPercentage": "Procent szybkości",
     "collectionDisplay": "Skill Progress Display",
-    "onlyMineOresDeepCaverns": "Rudy kop tylko w Deep Caverns"
+    "onlyMineOresDeepCaverns": "Rudy kop tylko w Deep Caverns",
+    "revenantIndicator": "Revenant Armor Progress Indicator",
+    "specialZealotAlert": "Special Zealot Alert"
   },
   "messages": {
     "dropConfirmation": "Wyrzuć ten przedmiot ponownie, aby potwierdzić!",
@@ -118,6 +120,7 @@
     "clickMoreTimes": "Naciśnij/upuść ten przedmiot %times% razy więcej, jeśli naprawdę chcesz to zrobić.",
     "cancelledDeepCaverns": "Funkcja Skyblock Addons powstrzymała cię od kopania tego bloku.",
     "featureDisabled": "Funkcja wyłączona",
-    "anvilUses": "Użycia kowadła: %uses%"
+    "anvilUses": "Użycia kowadła: %uses%",
+    "specialZealotFound": "Special Zealot!"
   }
 }
