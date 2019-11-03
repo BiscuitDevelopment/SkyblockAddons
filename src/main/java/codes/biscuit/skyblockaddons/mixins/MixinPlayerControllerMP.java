@@ -36,7 +36,7 @@ public class MixinPlayerControllerMP {
             EnumUtils.Location.LAPIS_QUARRY, EnumUtils.Location.PIGMAN_DEN, EnumUtils.Location.SLIMEHILL, EnumUtils.Location.DIAMOND_RESERVE, EnumUtils.Location.OBSIDIAN_SANCTUARY);
 
     private static final Set<Block> MINEABLE_BLOCKS = new HashSet<>(Arrays.asList(Blocks.coal_ore, Blocks.iron_ore, Blocks.gold_ore, Blocks.redstone_ore, Blocks.emerald_ore,
-            Blocks.diamond_ore, Blocks.diamond_block, Blocks.obsidian));
+            Blocks.diamond_ore, Blocks.diamond_block, Blocks.obsidian, Blocks.lapis_ore, Blocks.lit_redstone_ore));
 
     private long lastStemMessage = -1;
     private long lastProfileMessage = -1;
@@ -131,7 +131,7 @@ public class MixinPlayerControllerMP {
             if (main.getConfigValues().isEnabled(Feature.LOCK_SLOTS) && main.getUtils().isOnSkyblock()
                     && main.getConfigValues().getLockedSlots().contains(slotNum)
                     && (slotNum >= 9 || player.openContainer instanceof ContainerPlayer && slotNum >= 5)){
-                main.getUtils().playSound("note.bass", 0.5);
+                main.getUtils().playLoudSound("note.bass", 0.5);
                 cir.setReturnValue(null);
                 cir.cancel();
             }

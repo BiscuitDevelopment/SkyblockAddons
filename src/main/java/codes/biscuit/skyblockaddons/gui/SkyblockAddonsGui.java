@@ -62,8 +62,9 @@ public class SkyblockAddonsGui extends GuiScreen {
             max = features.size() - skip - displayCount <= 0;
             buttonList.add(new ButtonArrow(width / 2 - 15 + 50, height - 70, main, ButtonArrow.ArrowType.RIGHT, max));
 
-            buttonList.add(new ButtonSocial(width / 2 + 200, 30, main, ButtonSocial.Social.YOUTUBE));
-            buttonList.add(new ButtonSocial(width / 2 + 175, 30, main, ButtonSocial.Social.DISCORD));
+            buttonList.add(new ButtonSocial(width / 2 + 200, 30, main, EnumUtils.Social.YOUTUBE));
+            buttonList.add(new ButtonSocial(width / 2 + 175, 30, main, EnumUtils.Social.DISCORD));
+            buttonList.add(new ButtonSocial(width / 2 + 150, 30, main, EnumUtils.Social.GITHUB));
 
             for (Feature feature : features) {
                 if (skip == 0) {
@@ -225,16 +226,10 @@ public class SkyblockAddonsGui extends GuiScreen {
                 main.getUtils().setFadingIn(false);
                 mc.displayGuiScreen(new SkyblockAddonsGui(main, 1, tab.getTab()));
             }
-        } else if (abstractButton instanceof ButtonSocial) { //TODO add github
-            ButtonSocial.Social social = ((ButtonSocial)abstractButton).getSocial();
+        } else if (abstractButton instanceof ButtonSocial) {
+            EnumUtils.Social social = ((ButtonSocial)abstractButton).getSocial();
             try {
-                URI uri;
-                if (social == ButtonSocial.Social.YOUTUBE) {
-                    uri = new URI("https://www.youtube.com/channel/UCYmE9-052frn0wQwqa6i8_Q");
-                } else {
-                    uri = new URI("https://discordapp.com/invite/PqTAEek");
-                }
-                Desktop.getDesktop().browse(uri);
+                Desktop.getDesktop().browse(social.getUrl());
             } catch (Exception ignored) {}
         }
     }

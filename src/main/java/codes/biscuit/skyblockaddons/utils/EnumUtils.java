@@ -1,16 +1,18 @@
 package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.Entity;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Vec3;
 import org.apache.commons.lang3.text.WordUtils;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Arrays;
 import java.util.EnumSet;
 import java.util.Set;
@@ -376,10 +378,11 @@ public class EnumUtils {
         ORCHID_ALLOY("orchidalloy", "github.com/orchidalloy", Feature.SUMMONING_EYE_ALERT, Feature.FISHING_SOUND_INDICATOR, Feature.ORGANIZE_ENCHANTMENTS),
         HIGH_CRIT("HighCrit", "github.com/HighCrit", Feature.PREVENT_MOVEMENT_ON_DEATH),
         MOULBERRY("Moulberry", "github.com/Moulberry", Feature.DONT_RESET_CURSOR_INVENTORY),
-        TOMOCRAFTER("tomocrafter","github.com/tomocrafter", Feature.AVOID_BLINKING_NIGHT_VISION, Feature.REVENANT_INDICATOR),
+        TOMOCRAFTER("tomocrafter","github.com/tomocrafter", Feature.AVOID_BLINKING_NIGHT_VISION, Feature.SLAYER_INDICATOR),
         DAPIGGUY("DaPigGuy", "github.com/DaPigGuy", Feature.MINION_DISABLE_LOCATION_WARNING),
         COMNIEMEER("comniemeer","github.com/comniemeer", Feature.JUNGLE_AXE_COOLDOWN),
         KEAGEL("Keagel", "github.com/Keagel", Feature.ONLY_MINE_ORES_DEEP_CAVERNS),
+        SUPERHIZE("SuperHiZe", "github.com/superhize", Feature.SPECIAL_ZEALOT_ALERT),
         DIDI_SKYWALKER("DidiSkywalker", "github.com/didiskywalker", Feature.ITEM_PICKUP_LOG, Feature.HEALTH_UPDATES, Feature.REPLACE_ROMAN_NUMERALS_WITH_NUMBERS, Feature.CRAFTING_PATTERNS);
 
         private Set<Feature> features;
@@ -472,7 +475,6 @@ public class EnumUtils {
         SkillType(String skillName, Item item) {
             this.skillName = skillName;
             this.item = new ItemStack(item);
-            this.item.addEnchantment(Enchantment.unbreaking, 1);
         }
 
         public static SkillType getFromString(String text) {
@@ -496,5 +498,31 @@ public class EnumUtils {
         PICKUP_LOG,
         DEFENCE_ICON,
         REVENANT_PROGRESS
+    }
+
+    public enum Social {
+        YOUTUBE(new ResourceLocation("skyblockaddons", "youtube.png"), "https://www.youtube.com/channel/UCYmE9-052frn0wQwqa6i8_Q"),
+        DISCORD(new ResourceLocation("skyblockaddons", "discord.png"), "https://discordapp.com/invite/PqTAEek"),
+        GITHUB(new ResourceLocation("skyblockaddons", "github.png"), "https://github.com/BiscuitDevelopment/SkyblockAddons");
+
+        private ResourceLocation resourceLocation;
+        private URI url;
+
+        Social(ResourceLocation resourceLocation, String url) {
+            this.resourceLocation = resourceLocation;
+            try {
+                this.url = new URI(url);
+            } catch (URISyntaxException e) {
+                e.printStackTrace();
+            }
+        }
+
+        public ResourceLocation getResourceLocation() {
+            return resourceLocation;
+        }
+
+        public URI getUrl() {
+            return url;
+        }
     }
 }

@@ -7,12 +7,14 @@ import codes.biscuit.skyblockaddons.gui.buttons.ButtonLocation;
 import codes.biscuit.skyblockaddons.utils.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
+import net.minecraft.client.gui.GuiChat;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityArmorStand;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
@@ -24,7 +26,9 @@ import net.minecraftforge.fml.client.GuiNotification;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
+import java.awt.*;
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.*;
 
 import static net.minecraft.client.gui.Gui.icons;
@@ -39,6 +43,7 @@ public class RenderListener {
     private final ResourceLocation BARS = new ResourceLocation("skyblockaddons", "bars.png");
     private final ResourceLocation DEFENCE_VANILLA = new ResourceLocation("skyblockaddons", "defence.png");
     private final ResourceLocation TEXT_ICONS = new ResourceLocation("skyblockaddons", "icons.png");
+    private final ResourceLocation IMPERIAL_BARS_FIX = new ResourceLocation("skyblockaddons", "imperialbarsfix.png");
 
     private boolean predictHealth = false;
     private boolean predictMana = false;
@@ -49,10 +54,9 @@ public class RenderListener {
     private Feature titleFeature = null;
     private String cannotReachMobName = null;
 
-    private float skillChange = 0;
+    private long skillFadeOutTime = -1;
     private EnumUtils.SkillType skill = null;
-    private int progress = 0;
-    private int maxSkill = 0;
+    private String skillText = null;
 
     private PlayerListener.GUIType guiToOpen = null;
     private int guiPageToOpen = 1;
@@ -168,6 +172,9 @@ public class RenderListener {
                 case SUMMONING_EYE_ALERT:
                     message = Message.MESSAGE_SUMMONING_EYE_FOUND;
                     break;
+                case SPECIAL_ZEALOT_ALERT:
+                    message = Message.MESSAGE_SPECIAL_ZEALOT_FOUND;
+                    break;
             }
             if (message != null) {
                 String text = message.getMessage();
@@ -235,11 +242,16 @@ public class RenderListener {
      */
     public void drawBar(Feature feature, float scale, Minecraft mc, ButtonLocation buttonLocation) {
         mc.getTextureManager().bindTexture(BARS);
+
+        if (main.getUtils().isUsingOldSkyblockPackTexture(BARS)) {
+            mc.getTextureManager().bindTexture(IMPERIAL_BARS_FIX);
+        }
+
         // The height and width of this element (box not included)
         int barHeightExpansion = 2*main.getConfigValues().getSizes(feature).getY();
         int height = 3+barHeightExpansion;
 
-        int barWidthExpansion = 9*main.getConfigValues().getSizes(feature).getX();
+        int barWidthExpansion = 10*main.getConfigValues().getSizes(feature).getX();
         int width = 22+barWidthExpansion;
 
         // The fill of the bar from 0 to 1
@@ -300,14 +312,15 @@ public class RenderListener {
             GlStateManager.color(((float)color.getR() / 255)*0.9F, ((float)color.getG() / 255)*0.9F, ((float)color.getB() / 255)*0.9F);
         }
         CoordsPair sizes = main.getConfigValues().getSizes(feature);
+        if (!filled) fillWidth = maxWidth;
         drawBarStart(gui,x,y, filled, sizes.getX(), sizes.getY(), fillWidth, color, maxWidth);
     }
 
     private void drawBarStart(Gui gui, int x, int y, boolean filled, int barWidth, int barHeight, int fillWidth, ConfigColor color, int maxWidth) {
-        int baseTextureY = filled ? 0 : 8;
+        int baseTextureY = filled ? 0 : 6;
 
-        drawMiddleThreeRows(gui,x+10,y,barHeight,22,baseTextureY,2, fillWidth, 2); // these 2 just fill some gaps in the bar
-        drawMiddleThreeRows(gui,x+11+(barWidth*9),y,barHeight,22,baseTextureY,2, fillWidth, 2);
+//        drawMiddleThreeRows(gui,x+10,y,barHeight,22,baseTextureY,2, fillWidth, 2); // these two lines just fill some gaps in the bar
+//        drawMiddleThreeRows(gui,x+11+(barWidth*9),y,barHeight,22,baseTextureY,2, fillWidth, 2);
 
         drawAllFiveRows(gui, x, y, barHeight, 0, baseTextureY, 11, fillWidth);
 
@@ -315,28 +328,28 @@ public class RenderListener {
 
         if (fillWidth < maxWidth && fillWidth > 0) {
             GlStateManager.color(((float) color.getR() / 255) * 0.8F, ((float) color.getG() / 255) * 0.8F, ((float) color.getB() / 255) * 0.8F);
-            drawMiddleThreeRows(gui, x + fillWidth, y, barHeight, 22, 8, 2, fillWidth, 2);
+            drawMiddleThreeRows(gui, x + fillWidth, y, barHeight, 11, 6, 2, fillWidth, 2);
         }
     }
 
     private void drawMiddleBarParts(Gui gui, int x, int y, int baseTextureY, int barWidth, int barHeight, int fillWidth) {
         int endBarX = 0;
         for (int i = 0; i < barWidth; i++) {
-            endBarX = x+(i*9);
-            drawAllFiveRows(gui, endBarX, y, barHeight, 13, baseTextureY, 9,fillWidth-11-1-(i*9));
+            endBarX = x+(i*10);
+            drawAllFiveRows(gui, endBarX, y, barHeight, 12, baseTextureY, 9,fillWidth-11-(i*10));
         }
-        drawBarEnd(gui, endBarX+9, y, baseTextureY, barWidth, barHeight,fillWidth);
+        drawBarEnd(gui, endBarX+10, y, baseTextureY, barWidth, barHeight,fillWidth);
     }
 
     private void drawBarSeparators(Gui gui, int x, int y, int baseTextureY, int barWidth, int barHeight, int fillWidth) {
         for (int i = 0; i <= barWidth; i++) {
-            drawMiddleThreeRows(gui,x+(i*9),y,barHeight,22,baseTextureY,1, fillWidth-11-1-(i*9), 2);
+            drawMiddleThreeRows(gui,x+(i*10),y,barHeight,11,baseTextureY,1, fillWidth-11-(i*10), 2);
         }
         drawMiddleBarParts(gui, x+1, y, baseTextureY, barWidth, barHeight,fillWidth);
     }
 
     private void drawBarEnd(Gui gui, int x, int y, int baseTextureY, int barWidth, int barHeight, int fillWidth) {
-        drawAllFiveRows(gui, x, y, barHeight, 24, baseTextureY, 11,fillWidth-11-1-(barWidth*9));
+        drawAllFiveRows(gui, x, y, barHeight, 22, baseTextureY, 11,fillWidth-11-(barWidth*10));
     }
 
     private void drawAllFiveRows(Gui gui, int x, int y, int barHeight, int textureX, int baseTextureY, int width, int fillWidth) {
@@ -345,23 +358,23 @@ public class RenderListener {
 
         drawMiddleThreeRows(gui,x,y,barHeight,textureX,baseTextureY,width,fillWidth, 1);
 
-        gui.drawTexturedModalRect(x, y+3+barHeight, textureX, baseTextureY+6, fillWidth, 1);
+        gui.drawTexturedModalRect(x, y+3+barHeight, textureX, baseTextureY+4, fillWidth, 1);
     }
 
     private void drawMiddleThreeRows(Gui gui, int x, int y, int barHeight, int textureX, int baseTextureY,  int width, int fillWidth, int rowHeight) {
         if (fillWidth > width || baseTextureY >= 8) fillWidth = width;
         for (int i = 0; i < barHeight; i++) {
-            if (rowHeight == 2) { //drawing bar separators is a little different
+            if (rowHeight == 2) { //this means its drawing bar separators, and its a little different
                 gui.drawTexturedModalRect(x, y-i, textureX, baseTextureY, fillWidth, rowHeight);
             } else {
                 gui.drawTexturedModalRect(x, y + 1 - i, textureX, baseTextureY + 1, fillWidth, rowHeight);
             }
         }
 
-        gui.drawTexturedModalRect(x, y+2, textureX, baseTextureY+3, fillWidth, 1);
+        gui.drawTexturedModalRect(x, y+2, textureX, baseTextureY+2, fillWidth, 1);
 
         for (int i = 0; i < barHeight; i++) {
-            gui.drawTexturedModalRect(x, y+3+i, textureX, baseTextureY+5, fillWidth, rowHeight);
+            gui.drawTexturedModalRect(x, y+3+i, textureX, baseTextureY+3, fillWidth, rowHeight);
         }
     }
 
@@ -483,6 +496,7 @@ public class RenderListener {
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         String text;
         int color = main.getConfigValues().getColor(feature).getColor();
+        float textAlpha = 1;
         if (feature == Feature.MANA_TEXT) {
             text = getAttribute(Attribute.MANA) + "/" + getAttribute(Attribute.MAX_MANA);
         } else if (feature == Feature.HEALTH_TEXT) {
@@ -496,7 +510,11 @@ public class RenderListener {
             text = bigDecimal.toString()+"%";
         } else if (feature == Feature.SPEED_PERCENTAGE) {
             String walkSpeed = String.valueOf(Minecraft.getMinecraft().thePlayer.capabilities.getWalkSpeed()*1000);
-            text = walkSpeed.substring(0, walkSpeed.length() >= 3 ? 3 : walkSpeed.length())+"%";
+            text = walkSpeed.substring(0, walkSpeed.length() >= 3 ? 3 : walkSpeed.length());
+
+            if (text.endsWith(".")) text = text.substring(0, text.indexOf('.')); //remove trailing periods
+
+            text += "%";
         } else if (feature == Feature.HEALTH_UPDATES) {
             Integer healthUpdate = main.getPlayerListener().getHealthUpdate();
             if (buttonLocation == null) {
@@ -511,8 +529,7 @@ public class RenderListener {
                 color = ConfigColor.GREEN.getColor();
             }
         } else if (feature == Feature.DARK_AUCTION_TIMER) { // The timezone of the server, to avoid problems with like timezones that are 30 minutes ahead or whatnot.
-            Calendar nextDarkAuction = Calendar.getInstance(TimeZone.getTimeZone("America/New_York"));
-//            nextDarkAuction.setTimeInMillis(System.currentTimeMillis());
+            Calendar nextDarkAuction = Calendar.getInstance(TimeZone.getTimeZone("EST"));
             if (nextDarkAuction.get(Calendar.MINUTE) >= 55) {
                 nextDarkAuction.add(Calendar.HOUR_OF_DAY, 1);
             }
@@ -557,15 +574,21 @@ public class RenderListener {
                 }
             }
             text = magmaBuilder.toString();
-        } else if (feature == Feature.COLLECTION_DISPLAY) {
+        } else if (feature == Feature.SKILL_DISPLAY) {
             if (buttonLocation == null) {
-                if (skill != null) {
-                    text = "+" + skillChange + " " + progress + "/" + maxSkill;
-                } else {
-                    return;
-                }
+                text = skillText;
+                if (text == null) return;
             } else {
-                text = "+10 20000/50000";
+                text = "+10 (20,000/50,000)";
+            }
+            if (buttonLocation == null) {
+                int remainingTime = (int) (skillFadeOutTime - System.currentTimeMillis());
+                if (remainingTime < 0) {
+                    if (remainingTime < -2000) remainingTime = -2000;
+
+                    textAlpha = (float) 1 - ((float) -remainingTime / 2000);
+                    color = main.getConfigValues().getColor(feature).getColor(textAlpha * 255 >= 4 ? textAlpha * 255 : 4); // so it fades out, 0.016 is the minimum alpha
+                }
             }
         } else {
             return;
@@ -586,7 +609,7 @@ public class RenderListener {
             int boxXTwo = intX+width+4;
             int boxYOne = intY-4;
             int boxYTwo = intY+height+4;
-            if (feature == Feature.MAGMA_BOSS_TIMER || feature == Feature.DARK_AUCTION_TIMER || feature == Feature.COLLECTION_DISPLAY ) {
+            if (feature == Feature.MAGMA_BOSS_TIMER || feature == Feature.DARK_AUCTION_TIMER || feature == Feature.SKILL_DISPLAY) {
                 boxXOne-=18;
                 boxYOne-=2;
             }
@@ -594,10 +617,12 @@ public class RenderListener {
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         }
         if (main.getConfigValues().getTextStyle() == EnumUtils.TextStyle.BLACK_SHADOW) {
-            mc.fontRendererObj.drawString(text, intX + 1, intY, 0);
-            mc.fontRendererObj.drawString(text, intX - 1, intY, 0);
-            mc.fontRendererObj.drawString(text, intX, intY + 1, 0);
-            mc.fontRendererObj.drawString(text, intX, intY - 1, 0);
+            GlStateManager.enableBlend();
+            int colorBlack = new Color(0,0,0, textAlpha > 0.016 ? textAlpha : 0.016F).getRGB();
+            mc.fontRendererObj.drawString(text, intX + 1, intY, colorBlack);
+            mc.fontRendererObj.drawString(text, intX - 1, intY, colorBlack);
+            mc.fontRendererObj.drawString(text, intX, intY + 1, colorBlack);
+            mc.fontRendererObj.drawString(text, intX, intY - 1, colorBlack);
             mc.fontRendererObj.drawString(text, intX, intY, color);
         } else {
             mc.ingameGUI.drawString(mc.fontRendererObj, text, intX, intY, color);
@@ -609,23 +634,26 @@ public class RenderListener {
         } else if (feature == Feature.MAGMA_BOSS_TIMER) {
             mc.getTextureManager().bindTexture(TEXT_ICONS);
             Gui.drawModalRectWithCustomSizedTexture(intX-18, intY-5, 0, 0, 16,16,32,32);
-        } else if (feature == Feature.COLLECTION_DISPLAY && ((skill != null && skill.getItem() != null) || buttonLocation != null) ) {
-            mc.getRenderItem().renderItemIntoGUI(buttonLocation == null ? skill.getItem() : EnumUtils.SkillType.FARMING.getItem(),
-                    intX-18, intY-5);
+        } else if (feature == Feature.SKILL_DISPLAY && ((skill != null && skill.getItem() != null) || buttonLocation != null) ) {
+            if (!(mc.currentScreen instanceof GuiChat)) {
+                if (buttonLocation != null || textAlpha > 0.1) {
+                    mc.getRenderItem().renderItemIntoGUI(buttonLocation == null ? skill.getItem() : EnumUtils.SkillType.FARMING.getItem(),intX - 18, intY - 5);
+                }
+            }
         }
     }
 
-    private static final RevenantArmorProgress[] DUMMY_PROGRESSES = new RevenantArmorProgress[]{new RevenantArmorProgress(new ItemStack(Item.getItemById(313))),
-            new RevenantArmorProgress(new ItemStack(Item.getItemById(304))), new RevenantArmorProgress(new ItemStack(Item.getItemById(311)))};
+    private static final SlayerArmorProgress[] DUMMY_PROGRESSES = new SlayerArmorProgress[]{new SlayerArmorProgress(new ItemStack(Items.diamond_boots)),
+            new SlayerArmorProgress(new ItemStack(Items.chainmail_leggings)), new SlayerArmorProgress(new ItemStack(Items.diamond_chestplate)), new SlayerArmorProgress(new ItemStack(Items.leather_helmet))};
 
     public void drawRevenantIndicator(float scale, Minecraft mc, ButtonLocation buttonLocation) {
-        float x = main.getConfigValues().getActualX(Feature.REVENANT_INDICATOR);
-        float y = main.getConfigValues().getActualY(Feature.REVENANT_INDICATOR);
+        float x = main.getConfigValues().getActualX(Feature.SLAYER_INDICATOR);
+        float y = main.getConfigValues().getActualY(Feature.SLAYER_INDICATOR);
 
         int longest = -1;
-        RevenantArmorProgress[] progresses = main.getInventoryUtils().getRevenantArmorProgresses();
+        SlayerArmorProgress[] progresses = main.getInventoryUtils().getSlayerArmorProgresses();
         if (buttonLocation != null) progresses = DUMMY_PROGRESSES;
-        for (RevenantArmorProgress progress : progresses) {
+        for (SlayerArmorProgress progress : progresses) {
             if (progress == null) continue;
 
             int textWidth = mc.fontRendererObj.getStringWidth(progress.getProgressText());
@@ -635,7 +663,7 @@ public class RenderListener {
         }
         if (longest == -1) return;
 
-        int height = 15 * 3;
+        int height = 15 * 4;
         int width = longest + 15;
         x-=Math.round(width*scale/2);
         y-=Math.round(height*scale/2);
@@ -652,19 +680,19 @@ public class RenderListener {
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         }
 
-        EnumUtils.AnchorPoint anchorPoint = main.getConfigValues().getAnchorPoint(Feature.REVENANT_INDICATOR);
+        EnumUtils.AnchorPoint anchorPoint = main.getConfigValues().getAnchorPoint(Feature.SLAYER_INDICATOR);
         boolean downwards = (anchorPoint == EnumUtils.AnchorPoint.TOP_LEFT || anchorPoint == EnumUtils.AnchorPoint.TOP_RIGHT);
 
         int drawnCount = 0;
-        for (int armorPiece = 2; armorPiece >= 0; armorPiece--) {
-            RevenantArmorProgress progress = progresses[downwards ? armorPiece : 2-armorPiece];
+        for (int armorPiece = 3; armorPiece >= 0; armorPiece--) {
+            SlayerArmorProgress progress = progresses[downwards ? armorPiece : 3-armorPiece];
             if (progress == null) continue;
 
             int fixedY;
             if (downwards) {
                 fixedY = intY + drawnCount * 15;
             } else {
-                fixedY = (intY+30) - drawnCount * 15;
+                fixedY = (intY+45) - drawnCount * 15;
             }
             drawItemStack(mc, progress.getItemStack(), intX-2, fixedY);
             drawString(mc, progress.getProgressText(), intX + 17, fixedY + 5, 0xFFFFFFFF);
@@ -821,15 +849,11 @@ public class RenderListener {
         this.skill = EnumUtils.SkillType.getFromString(skill);
     }
 
-    void setMaxSkill(int maxSkill) {
-        this.maxSkill = maxSkill;
+    public void setSkillText(String skillText) {
+        this.skillText = skillText;
     }
 
-    void setProgress(int progress) {
-        this.progress = progress;
-    }
-
-    public void setSkillChange(float skillChange) {
-        this.skillChange = skillChange;
+    public void setSkillFadeOutTime(long skillFadeOutTime) {
+        this.skillFadeOutTime = skillFadeOutTime;
     }
 }
