@@ -401,10 +401,22 @@ public class Utils {
         return new Color(150, 236, 255, alpha).getRGB();
     }
 
-    public void playSound(String sound, double pitch) {
+    /**
+     * When you use this function, any sound played will bypass the player's
+     * volume setting, so make sure to only use this for like warnings or stuff like that.
+     */
+    public void playLoudSound(String sound, double pitch) {
         playingSound = true;
         Minecraft.getMinecraft().thePlayer.playSound(sound, 1, (float) pitch);
         playingSound = false;
+    }
+
+    /**
+     * This one plays the sound normally. See {@link Utils#playLoudSound(String, double)} for playing
+     * a sound that bypasses the user's volume settings.
+     */
+    public void playSound(String sound, double pitch) {
+        Minecraft.getMinecraft().thePlayer.playSound(sound, 1, (float) pitch);
     }
 
     public boolean enchantReforgeMatches(String text) {
@@ -668,7 +680,7 @@ public class Utils {
                 String abilityName = getAbilityName(itemStack);
                 CooldownEntry cooldownEntry = getCooldownEntry(item, name);
                 if (!item.isDamageable() && abilityName == null) return; // if its not a tool and has no ability, its not gonna have a cooldown
-                if (cooldownEntry != null) {
+                if (cooldownEntry != null && cooldownEntry.getCooldown() == 1) {
                     cooldownEntry.setLastUse();
                 } else {
                     cooldownEntries.add(new CooldownEntry(item,name,cooldownSeconds));

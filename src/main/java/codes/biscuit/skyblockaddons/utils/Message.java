@@ -77,7 +77,7 @@ public enum Message {
     SETTING_COLLECTION_DISPLAY(MessageObject.SETTING, "collectionDisplay"),
     SETTING_SPEED_PERCENTAGE(MessageObject.SETTING, "speedPercentage"),
     SETTING_ONLY_MINE_ORES_DEEP_CAVERNS(MessageObject.SETTING, "onlyMineOresDeepCaverns"),
-    SETTING_REVENANT_INDICATOR(MessageObject.SETTING, "revenantIndicator"),
+    SETTING_SLAYER_INDICATOR(MessageObject.SETTING, "revenantIndicator"),
     SETTING_SPECIAL_ZEALOT_ALERT(MessageObject.SETTING, "specialZealotAlert"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.STYLE, "regular"),

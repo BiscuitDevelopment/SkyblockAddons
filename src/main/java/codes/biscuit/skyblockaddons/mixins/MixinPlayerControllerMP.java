@@ -131,7 +131,7 @@ public class MixinPlayerControllerMP {
             if (main.getConfigValues().isEnabled(Feature.LOCK_SLOTS) && main.getUtils().isOnSkyblock()
                     && main.getConfigValues().getLockedSlots().contains(slotNum)
                     && (slotNum >= 9 || player.openContainer instanceof ContainerPlayer && slotNum >= 5)){
-                main.getUtils().playSound("note.bass", 0.5);
+                main.getUtils().playLoudSound("note.bass", 0.5);
                 cir.setReturnValue(null);
                 cir.cancel();
             }
