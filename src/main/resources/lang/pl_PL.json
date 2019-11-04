@@ -80,7 +80,7 @@
     "collectionDisplay": "Skill Progress Display",
     "onlyMineOresDeepCaverns": "Rudy kop tylko w Deep Caverns",
     "revenantIndicator": "Slayer Armor Progress Indicator",
-    "specialZealotAlert": "Special Zealot Alert"
+    "specialZealotAlert": "Alarmuj o Specjlanym Zealocie"
   },
   "messages": {
     "dropConfirmation": "Wyrzuć ten przedmiot ponownie, aby potwierdzić!",
@@ -121,6 +121,6 @@
     "cancelledDeepCaverns": "Funkcja Skyblock Addons powstrzymała cię od kopania tego bloku.",
     "featureDisabled": "Funkcja wyłączona",
     "anvilUses": "Użycia kowadła: %uses%",
-    "specialZealotFound": "Special Zealot!"
+    "specialZealotFound": "Specjalny Zealot!"
   }
 }
