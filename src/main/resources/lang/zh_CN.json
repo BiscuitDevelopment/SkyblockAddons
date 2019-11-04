@@ -79,8 +79,8 @@
     "speedPercentage": "速度百分比",
     "collectionDisplay": "显示技能进度",
     "onlyMineOresDeepCaverns": "仅深层矿洞的矿物",
-    "revenantIndicator": "Slayer Armor Progress Indicator",
-    "specialZealotAlert": "Special Zealot Alert"
+    "revenantIndicator": "杀手弓进度提示",
+    "specialZealotAlert": "末影战士警告"
   },
   "messages": {
     "dropConfirmation": "再次丢弃此物品以确认!",
@@ -121,6 +121,6 @@
     "cancelledDeepCaverns": "SkyblockAddons 已阻止在此开采矿物",
     "featureDisabled": "功能已禁用",
     "anvilUses": "铁砧使用次数: %uses%",
-    "specialZealotFound": "Special Zealot!"
+    "specialZealotFound": "末影战士！"
   }
 }
