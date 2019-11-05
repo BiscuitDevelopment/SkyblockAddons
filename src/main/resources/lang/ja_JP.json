@@ -121,6 +121,7 @@
     "cancelledDeepCaverns": "SkyblockAddonsが鉱石以外のブロックの破壊を阻止しました。",
     "featureDisabled": "この機能は現在無効化されています",
     "anvilUses": "金床の使用回数 : %uses%",
-    "specialZealotFound": "特別なZealotがスポーンしました!"
+    "specialZealotFound": "特別なZealotがスポーンしました!",
+    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)"
   }
 }
