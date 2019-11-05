@@ -121,6 +121,7 @@
     "cancelledDeepCaverns": "Una funzione di SkyBlockAddons ti ha impedito di estrarre questo blocco.",
     "featureDisabled": "Funzione disabilitata",
     "anvilUses": "Utilizzi dell’incudine: %uses%",
-    "specialZealotFound": "Zealot Speciale!"
+    "specialZealotFound": "Zealot Speciale!",
+    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)"
   }
 }
