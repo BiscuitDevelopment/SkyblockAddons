@@ -121,6 +121,7 @@
     "cancelledDeepCaverns": "En skyblockaddon du ktion har stoppat dig från att hugga blocket här.",
     "featureDisabled": "Funktion.Inaktiverat",
     "anvilUses": "Städ användningar %uses%",
-    "specialZealotFound": "Speciell Zealot!"
+    "specialZealotFound": "Speciell Zealot!",
+    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)"
   }
 }
