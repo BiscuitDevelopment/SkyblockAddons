@@ -121,6 +121,7 @@
     "cancelledDeepCaverns": "A SkwyBwlockAddowons fweature hwas stowopped ywou from mining thwis blowock hwere.",
     "featureDisabled": "Fweature Diswabled",
     "anvilUses": "Anviw Uses: %uses%",
-    "specialZealotFound": "Spwecial Wealots OwO!"
+    "specialZealotFound": "Spwecial Wealots OwO!",
+    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)"
   }
 }
