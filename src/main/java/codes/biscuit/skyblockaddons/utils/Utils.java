@@ -34,6 +34,7 @@ import net.minecraftforge.fml.relauncher.FileListHelper;
 import net.minecraftforge.fml.relauncher.ModListHelper;
 import org.apache.commons.lang3.mutable.MutableInt;
 import org.apache.commons.lang3.text.WordUtils;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -52,6 +53,12 @@ import java.util.stream.Collectors;
 import java.util.zip.ZipEntry;
 
 public class Utils {
+
+    /**
+     * Turn true to block the next window click in {@link codes.biscuit.skyblockaddons.mixins.MixinPlayerControllerMP#onWindowClick(int, int, int, int, EntityPlayer, CallbackInfoReturnable)}
+     */
+    // I know this is messy af, but frustration led me to take this dark path
+    public static boolean blockNextClick = false;
 
     private final Pattern STRIP_COLOR_PATTERN = Pattern.compile("(?i)§[0-9A-FK-OR]");
     private final Pattern ITEM_COOLDOWN_PATTERN = Pattern.compile("§5§o§8Cooldown: §a([0-9]+)s");
@@ -764,6 +771,19 @@ public class Utils {
         return null;
     }
 
+    public void drawString(Minecraft mc, String text, int x, int y, int color) {
+        if (main.getConfigValues().getTextStyle() == EnumUtils.TextStyle.BLACK_SHADOW) {
+            String strippedText = main.getUtils().stripColor(text);
+            mc.fontRendererObj.drawString(strippedText, x + 1, y, 0);
+            mc.fontRendererObj.drawString(strippedText, x - 1, y, 0);
+            mc.fontRendererObj.drawString(strippedText, x, y + 1, 0);
+            mc.fontRendererObj.drawString(strippedText, x, y - 1, 0);
+            mc.fontRendererObj.drawString(text, x, y, color);
+        } else {
+            mc.ingameGUI.drawString(mc.fontRendererObj, text, x, y, color);
+        }
+    }
+
     public boolean isPickaxe(Item item) {
         return Items.wooden_pickaxe.equals(item) || Items.stone_pickaxe.equals(item) || Items.golden_pickaxe.equals(item) || Items.iron_pickaxe.equals(item) || Items.diamond_pickaxe.equals(item);
     }
@@ -940,4 +960,5 @@ public class Utils {
     public void setProfileName(String profileName) {
         this.profileName = profileName;
     }
+
 }

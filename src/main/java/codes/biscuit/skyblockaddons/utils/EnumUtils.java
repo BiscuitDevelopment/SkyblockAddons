@@ -103,14 +103,48 @@ public class EnumUtils {
     }
 
     public enum InventoryType {
-        ENCHANTMENT_TABLE(INVENTORY_TYPE_ENCHANTS),
-        REFORGE_ANVIL(INVENTORY_TYPE_REFORGES),
-        CRAFTING_TABLE(INVENTORY_TYPE_CRAFTING);
+        ENCHANTMENT_TABLE(INVENTORY_TYPE_ENCHANTS, "Enchant Item"),
+        REFORGE_ANVIL(INVENTORY_TYPE_REFORGES, "Reforge Item"),
+        CRAFTING_TABLE(INVENTORY_TYPE_CRAFTING, CraftingPattern.CRAFTING_TABLE_DISPLAYNAME);
 
-        private Message message;
+        private static InventoryType currentInventoryType;
 
-        InventoryType(Message message) {
+        /**
+         * Resets the current inventory type
+         */
+        public static void resetCurrentInventoryType() {
+            currentInventoryType = null;
+        }
+
+        /**
+         * @return Current inventory type. Can be null
+         */
+        public static InventoryType getCurrentInventoryType() {
+            return currentInventoryType;
+        }
+
+        /**
+         * Get the inventory type based on an inventory name.
+         * Stores the found type to access later with {@link #getCurrentInventoryType()}
+         *
+         * @param inventoryName Unformatted inventory name
+         * @return Inventory type for that name or null
+         */
+        public static InventoryType getCurrentInventoryType(String inventoryName) {
+            for (InventoryType inventoryType : values()) {
+                if(inventoryType.inventoryName.equals(inventoryName)) {
+                    currentInventoryType = inventoryType;
+                    return inventoryType;
+                }
+            }
+            return null;
+        }
+
+        private final Message message;
+        private final String inventoryName;
+        InventoryType(Message message, String inventoryName) {
             this.message = message;
+            this.inventoryName = inventoryName;
         }
 
         public String getMessage() {

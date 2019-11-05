@@ -1,10 +1,8 @@
 package codes.biscuit.skyblockaddons.mixins;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.utils.CooldownEntry;
-import codes.biscuit.skyblockaddons.utils.EnumUtils;
-import codes.biscuit.skyblockaddons.utils.Feature;
-import codes.biscuit.skyblockaddons.utils.Message;
+import codes.biscuit.skyblockaddons.gui.elements.CraftingPatternSelection;
+import codes.biscuit.skyblockaddons.utils.*;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityOtherPlayerMP;
@@ -15,7 +13,9 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ContainerPlayer;
+import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.Packet;
 import net.minecraft.util.BlockPos;
@@ -27,10 +27,24 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.EnumSet;
+import java.util.HashSet;
+import java.util.Set;
 
 @Mixin(PlayerControllerMP.class)
 public class MixinPlayerControllerMP {
+
+    /**
+     * clickModifier value in {@link #onWindowClick(int, int, int, int, EntityPlayer, CallbackInfoReturnable)}  for shift-clicks
+     */
+    private static final int SHIFTCLICK_CLICK_TYPE = 1;
+
+    /**
+     * Cooldown between playing error sounds to avoid stacking up
+     */
+    private static int CRAFTING_PATTERN_SOUND_COOLDOWN = 400;
+    private long lastCraftingSoundPlayed = 0;
 
     private static final Set<EnumUtils.Location> DEEP_CAVERNS_LOCATIONS = EnumSet.of(EnumUtils.Location.DEEP_CAVERNS, EnumUtils.Location.GUNPOWDER_MINES,
             EnumUtils.Location.LAPIS_QUARRY, EnumUtils.Location.PIGMAN_DEN, EnumUtils.Location.SLIMEHILL, EnumUtils.Location.DIAMOND_RESERVE, EnumUtils.Location.OBSIDIAN_SANCTUARY);
@@ -125,7 +139,16 @@ public class MixinPlayerControllerMP {
      */
     @Inject(method = "windowClick", at = @At("HEAD"), locals = LocalCapture.CAPTURE_FAILSOFT, cancellable = true)
     private void onWindowClick(int windowId, int slotNum, int clickButton, int clickModifier, EntityPlayer player, CallbackInfoReturnable<ItemStack> cir) {
+        // Handle blocking the next click, sorry I did it this way
+        if(Utils.blockNextClick) {
+            Utils.blockNextClick = false;
+            cir.setReturnValue(null);
+            cir.cancel();
+            return;
+        }
+
         SkyblockAddons main = SkyblockAddons.getInstance();
+        final int slotId = slotNum;
         if (player != null && player.openContainer != null) {
             slotNum += main.getInventoryUtils().getSlotDifference(player.openContainer);
             if (main.getConfigValues().isEnabled(Feature.LOCK_SLOTS) && main.getUtils().isOnSkyblock()
@@ -134,6 +157,56 @@ public class MixinPlayerControllerMP {
                 main.getUtils().playLoudSound("note.bass", 0.5);
                 cir.setReturnValue(null);
                 cir.cancel();
+            }
+
+            // Crafting patterns
+            final Container slots = player.openContainer;
+
+            Slot slotIn;
+            try {
+                slotIn = slots.getSlot(slotId);
+            } catch (ArrayIndexOutOfBoundsException e) {
+                slotIn = null;
+            }
+
+            if(slotIn != null && EnumUtils.InventoryType.getCurrentInventoryType() == EnumUtils.InventoryType.CRAFTING_TABLE
+                    && main.getConfigValues().isEnabled(Feature.CRAFTING_PATTERNS)) {
+
+                final CraftingPattern selectedPattern = CraftingPatternSelection.selectedPattern;
+                final ItemStack clickedItem = slotIn.getStack();
+                if(selectedPattern != CraftingPattern.FREE && clickedItem != null) {
+                    final ItemStack[] craftingGrid = new ItemStack[9];
+                    for (int i = 0; i < CraftingPattern.CRAFTING_GRID_SLOTS.size(); i++) {
+                        int slotIndex = CraftingPattern.CRAFTING_GRID_SLOTS.get(i);
+                        craftingGrid[i] = slots.getSlot(slotIndex).getStack();
+                    }
+
+                    final CraftingPatternResult result = selectedPattern.checkAgainstGrid(craftingGrid);
+
+                    if(slotIn.inventory.equals(Minecraft.getMinecraft().thePlayer.inventory)) {
+                        if(result.isFilled() && !result.fitsItem(clickedItem) && clickModifier == SHIFTCLICK_CLICK_TYPE) {
+                            // cancel shift-clicking items from the inventory if the pattern is already filled
+                            if(System.currentTimeMillis() > lastCraftingSoundPlayed+CRAFTING_PATTERN_SOUND_COOLDOWN) {
+                                main.getUtils().playSound("note.bass", 0.5);
+                                lastCraftingSoundPlayed = System.currentTimeMillis();
+                            }
+                            cir.setReturnValue(null);
+                            cir.cancel();
+                        }
+                    } else {
+                        if(slotIn.getSlotIndex() == CraftingPattern.CRAFTING_RESULT_INDEX
+                                && !result.isSatisfied()
+                                && CraftingPatternSelection.blockCraftingIncomplete) {
+                            // cancel clicking the result if the pattern isn't satisfied
+                            if(System.currentTimeMillis() > lastCraftingSoundPlayed+CRAFTING_PATTERN_SOUND_COOLDOWN) {
+                                main.getUtils().playSound("note.bass", 0.5);
+                                lastCraftingSoundPlayed = System.currentTimeMillis();
+                            }
+                            cir.setReturnValue(null);
+                            cir.cancel();
+                        }
+                    }
+                }
             }
         }
     }
