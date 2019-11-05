@@ -121,6 +121,7 @@
     "cancelledDeepCaverns": "SkyblockAddons ได้หยุดคุณจากการขุดบล็อคนี้",
     "featureDisabled": "ปิดใช้งานฟีเจอร์นี้แล้ว",
     "anvilUses": "ใช้ Anvil: %uses%",
-    "specialZealotFound": "Special Zealot!"
+    "specialZealotFound": "Special Zealot!",
+    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)"
   }
 }
