@@ -70,7 +70,7 @@
     "replaceRomanNumeralsWithNumbers": "Athchuir Uimhir Rómhánach ar mír",
     "changeBarColorForPotions": "Change Bar Color for Wither & Poison",
     "craftingPatterns": "Choose Crafting Patterns",
-    "soundIndicatorForFishing": "Sound Indicator for Fishing",
+    "soundIndicatorForFishing": "Táscaire fuaim fa choinne iascaireacht",
     "avoidBlinkingNightVision": "Disable Night Vision Potion Blinking",
     "disableMinionLocationWarning": "Disable Location Not Perfect Warnings",
     "jungleAxeCooldown": "Jungle Axe Cooldown",
@@ -80,7 +80,7 @@
     "collectionDisplay": "Skill Progress Display",
     "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns",
     "revenantIndicator": "Slayer Armor Progress Indicator",
-    "specialZealotAlert": "Special Zealot Alert"
+    "specialZealotAlert": "Foláireamh Zealot spesialta"
   },
   "messages": {
     "dropConfirmation": "Leag síos an mír seo arís le cinntiú!",
