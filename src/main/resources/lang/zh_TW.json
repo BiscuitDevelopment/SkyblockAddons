@@ -121,6 +121,7 @@
     "cancelledDeepCaverns": "一個SkyblockAddons的功能阻止了你挖掘此方塊",
     "featureDisabled": "功能已被停用",
     "anvilUses": "鐵砧使用次數: %uses%",
-    "specialZealotFound": "特殊Zealot!"
+    "specialZealotFound": "特殊Zealot!",
+    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)"
   }
 }
