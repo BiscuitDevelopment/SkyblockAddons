@@ -121,6 +121,7 @@
     "cancelledDeepCaverns": "Uma funcionalidade do SkyblockAddons preveniu-te de partires este minério aqui.",
     "featureDisabled": "Função Desativada",
     "anvilUses": "Usos na bigorna: %uses%",
-    "specialZealotFound": "Zealot especial!"
+    "specialZealotFound": "Zealot especial!",
+    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)"
   }
 }
