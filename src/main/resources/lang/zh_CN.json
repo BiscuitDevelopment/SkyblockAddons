@@ -121,6 +121,7 @@
     "cancelledDeepCaverns": "SkyblockAddons 已阻止在此开采矿物",
     "featureDisabled": "功能已禁用",
     "anvilUses": "铁砧使用次数: %uses%",
-    "specialZealotFound": "末影战士！"
+    "specialZealotFound": "末影战士！",
+    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)"
   }
 }
