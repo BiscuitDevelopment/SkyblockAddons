@@ -122,6 +122,6 @@
     "featureDisabled": "Функция отключена",
     "anvilUses": "Использований наковальни: %uses%",
     "specialZealotFound": "Особый Зеалот!",
-    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)"
+    "blockIncompletePatterns": "Блокировать создание незавершённых шаблонов (рекомендуется)"
   }
 }
