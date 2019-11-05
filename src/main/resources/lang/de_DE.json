@@ -121,6 +121,7 @@
     "cancelledDeepCaverns": "SkyblockAddons hat dich davon abgehalten diesen Block abbzubauen.",
     "featureDisabled": "Funktion deaktiviert",
     "anvilUses": "Ambossnutzungen: %uses%",
-    "specialZealotFound": "Spezieller Zealot!"
+    "specialZealotFound": "Spezieller Zealot!",
+    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)"
   }
 }
