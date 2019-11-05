@@ -121,6 +121,7 @@
     "cancelledDeepCaverns": "SkyblockAddon đã ngăn bạn đào khối này.",
     "featureDisabled": "Vô hiệu hóa tính năng",
     "anvilUses": "Số lần sử dụng đe: %uses%",
-    "specialZealotFound": "Zealot hiếm!"
+    "specialZealotFound": "Zealot hiếm!",
+    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)"
   }
 }
