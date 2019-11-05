@@ -121,6 +121,7 @@
     "cancelledDeepCaverns": "Функция SkyblockAddons остановила вас от копания этого блока.",
     "featureDisabled": "Функция отключена",
     "anvilUses": "Использований наковальни: %uses%",
-    "specialZealotFound": "Особый Зеалот!"
+    "specialZealotFound": "Особый Зеалот!",
+    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)"
   }
 }
