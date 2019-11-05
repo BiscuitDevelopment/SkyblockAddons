@@ -121,6 +121,7 @@
     "cancelledDeepCaverns": "Une fonctionnalité SkyblockAddons vous a empêché de miner ce bloc ici.",
     "featureDisabled": "Fonction désactivée",
     "anvilUses": "Utilisation de l'enclume: %uses%",
-    "specialZealotFound": "Zealot spécial!"
+    "specialZealotFound": "Zealot spécial!",
+    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)"
   }
 }
