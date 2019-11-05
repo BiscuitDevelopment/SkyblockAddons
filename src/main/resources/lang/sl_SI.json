@@ -121,6 +121,7 @@
     "cancelledDeepCaverns": "Funkcija SkyblockAddons ti je preprečila uničiti to kocko.",
     "featureDisabled": "Funkcija izklopljena",
     "anvilUses": "Število Uporab Nakovala: %uses%",
-    "specialZealotFound": "Posebni Zealot!"
+    "specialZealotFound": "Posebni Zealot!",
+    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)"
   }
 }
