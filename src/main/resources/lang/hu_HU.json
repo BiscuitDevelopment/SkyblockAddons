@@ -121,6 +121,7 @@
     "cancelledDeepCaverns": "SkyblockAddons megállított ennek a blokknak a kiütésében.",
     "featureDisabled": "Funkció kikapcsolva",
     "anvilUses": "Üllő használat: %uses%",
-    "specialZealotFound": "Különleges Zealot!"
+    "specialZealotFound": "Különleges Zealot!",
+    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)"
   }
 }
