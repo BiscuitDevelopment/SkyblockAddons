@@ -23,7 +23,7 @@ public abstract class MixinTileEntityEnderChestRenderer extends TileEntitySpecia
 
     @Shadow @Final private static ResourceLocation ENDER_CHEST_TEXTURE;
 
-    private final ResourceLocation GREEN_ENDERCHEST = new ResourceLocation("skyblockaddons", "enderchest.png");
+    private final ResourceLocation BLANK_ENDERCHEST = new ResourceLocation("skyblockaddons", "enderchest.png");
 
     @Redirect(method = "renderTileEntityAt", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/tileentity/TileEntityEnderChestRenderer;bindTexture(Lnet/minecraft/util/ResourceLocation;)V",
             ordinal = 1))
@@ -31,22 +31,22 @@ public abstract class MixinTileEntityEnderChestRenderer extends TileEntitySpecia
         SkyblockAddons main = SkyblockAddons.getInstance();
         if (main.getUtils().isOnSkyblock() && Minecraft.getMinecraft().currentScreen == null && main.getConfigValues().isEnabled(Feature.MAKE_ENDERCHESTS_GREEN_IN_END) &&
                 (main.getUtils().getLocation() == EnumUtils.Location.THE_END || main.getUtils().getLocation() == EnumUtils.Location.DRAGONS_NEST)) {
-            bindTexture(GREEN_ENDERCHEST);
+            bindTexture(BLANK_ENDERCHEST);
         } else {
             bindTexture(ENDER_CHEST_TEXTURE);
         }
     }
 
-    @Inject(method = "renderTileEntityAt", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/model/ModelChest;renderAll()V", ordinal = 0)) //TODO half works, fix it lol
+    @Inject(method = "renderTileEntityAt", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/model/ModelChest;renderAll()V", ordinal = 0))
     private void renderAll(TileEntityEnderChest te, double x, double y, double z, float partialTicks, int destroyStage, CallbackInfo ci) {
         SkyblockAddons main = SkyblockAddons.getInstance();
         if (main.getUtils().isOnSkyblock() && Minecraft.getMinecraft().currentScreen == null && main.getConfigValues().isEnabled(Feature.MAKE_ENDERCHESTS_GREEN_IN_END) &&
                 (main.getUtils().getLocation() == EnumUtils.Location.THE_END || main.getUtils().getLocation() == EnumUtils.Location.DRAGONS_NEST)) {
             ConfigColor color = main.getConfigValues().getColor(Feature.MAKE_ENDERCHESTS_GREEN_IN_END);
             if (color == ConfigColor.GREEN) {
-                GlStateManager.color(0, 255, 0); // classic lime green
+                GlStateManager.color(0, 1, 0); // classic lime green
             } else {
-                GlStateManager.color(color.getR(), color.getG(), color.getB());
+                GlStateManager.color((float)color.getR()/255, (float)color.getG()/255, (float)color.getB()/255);
             }
         }
     }

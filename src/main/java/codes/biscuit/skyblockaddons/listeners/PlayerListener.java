@@ -149,9 +149,6 @@ public class PlayerListener {
                             } else {
                                 collectionPart = splitMessage[1]; // Another Example: §5+§d30 §5Runecrafting (969/1000)
                                 Matcher matcher = COLLECTIONS_CHAT_PATTERN.matcher(collectionPart);
-                                if (!matcher.matches()) {
-                                    matcher = COLLECTIONS_CHAT_PATTERN_COLORED.matcher(collectionPart);
-                                }
                                 if (matcher.matches()) {
                                     main.getRenderListener().setSkillText("+"+matcher.group(1)+" "+matcher.group(3));
                                     main.getRenderListener().setSkill(matcher.group(2));

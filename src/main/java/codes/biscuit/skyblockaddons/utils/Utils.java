@@ -42,9 +42,7 @@ import java.io.*;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLConnection;
+import java.net.*;
 import java.util.List;
 import java.util.*;
 import java.util.jar.JarFile;
@@ -792,10 +790,52 @@ public class Utils {
             } else {
                 return false;
             }
-        } catch (IOException e) {
+        } catch (IOException | NullPointerException e) {
             e.printStackTrace();
         }
         return false;
+    }
+
+    private boolean lookedOnline = false;
+    private URI featuredLink = null;
+
+    public URI getFeaturedURL() {
+        if (featuredLink != null) return featuredLink;
+
+        BufferedReader reader;
+        reader = new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream("assets/skyblockaddons/featuredlink.txt")));
+        try {
+            String currentLine;
+            while ((currentLine = reader.readLine()) != null) {
+                featuredLink = new URI(currentLine);
+            }
+            reader.close();
+        } catch (IOException | URISyntaxException ignored) {
+        }
+
+        return featuredLink;
+    }
+
+    public void getFeaturedURLOnline() {
+        if (!lookedOnline) {
+            lookedOnline = true;
+            new Thread(() -> {
+                try {
+                    URL url = new URL("https://raw.githubusercontent.com/biscuut/SkyblockAddons/master/resources/assets/skyblockaddons/featuredlink.txt");
+                    URLConnection connection = url.openConnection(); // try looking online
+                    connection.setReadTimeout(5000);
+                    connection.addRequestProperty("User-Agent", "SkyblockAddons");
+                    connection.setDoOutput(true);
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                    String currentLine;
+                    while ((currentLine = reader.readLine()) != null) {
+                        featuredLink = new URI(currentLine);
+                    }
+                    reader.close();
+                } catch (IOException | URISyntaxException ignored) {
+                }
+            }).start();
+        }
     }
 
     public boolean isDevEnviroment() {

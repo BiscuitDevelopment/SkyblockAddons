@@ -75,6 +75,7 @@ public class SkyblockAddons {
             }
         }
         utils.checkDisabledFeatures();
+        utils.getFeaturedURLOnline();
         scheduleMagmaCheck();
 
         for (Feature feature : Feature.values()) {
