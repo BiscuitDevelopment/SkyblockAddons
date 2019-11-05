@@ -78,9 +78,9 @@
     "showItemCooldowns": "Visa artikel nedkylning",
     "speedPercentage": "Fart Procent",
     "collectionDisplay": "Skill Progress Display",
-    "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns",
-    "revenantIndicator": "Revenant Armor Progress Indicator",
-    "specialZealotAlert": "Special Zealot Alert"
+    "onlyMineOresDeepCaverns": "Hugg bara minitaler I djupa gråttorna",
+    "revenantIndicator": "Slayer rustningar utväcklings indicator",
+    "specialZealotAlert": "Speciell Zealot Alarm"
   },
   "messages": {
     "dropConfirmation": "Släpp Det Här Igen För Att Bekräfta!",
@@ -118,9 +118,9 @@
     "cancelledProfileOpening": "SkyblockAddons har stoppat dig från att öppna denna spelares profil medan du håller en pilbåge.",
     "cancelledDropping": "SkyblockAddons har stoppat dig från att slänga denna sällsynta sak eller verktyg från ditt inventarie.",
     "clickMoreTimes": "Släng denna sak %times% fler gånger om du verkligen vill göra detta.",
-    "cancelledDeepCaverns": "A SkyblockAddons feature has stopped you from mining this block here.",
+    "cancelledDeepCaverns": "En skyblockaddon du ktion har stoppat dig från att hugga blocket här.",
     "featureDisabled": "Funktion.Inaktiverat",
     "anvilUses": "Städ användningar %uses%",
-    "specialZealotFound": "Special Zealot!"
+    "specialZealotFound": "Speciell Zealot!"
   }
 }

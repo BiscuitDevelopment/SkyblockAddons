@@ -52,7 +52,7 @@
     "lockSlots": "スロットのロックを許可",
     "lockSlot": "スロットをロック",
     "dontResetCursorInventory": "インベントリ間でのカーソルの位置のリセットを防止",
-    "summoningEyeAlert": "サモニングアイの警告",
+    "summoningEyeAlert": "サモニングアイのアラート",
     "makeEnderchestsInEndGreen": "エンドにいる時エンダーチェストを緑色に",
     "changeColor": "色を変更",
     "showInOtherGames": "他のゲームに居る時でも表示",
@@ -67,7 +67,7 @@
     "stopDroppingSellingRareItems": "レアアイテムを捨てたり売ったりすることを阻止",
     "makeBackpackInventoriesColored": "インベントリの色",
     "avoidBreakingBottomSugarCane": "サトウキビの根本の破壊を防止",
-    "replaceRomanNumeralsWithNumbers": "エンチャントのローマ数字をアラビア数字に置き換え",
+    "replaceRomanNumeralsWithNumbers": "ローマ数字をアラビア数字に置き換え",
     "changeBarColorForPotions": "ウィザーと毒状態の時にバーの色を変える",
     "craftingPatterns": "クラフトのパターンを選択",
     "soundIndicatorForFishing": "釣り用のサウンドインジケーター",
@@ -77,9 +77,9 @@
     "organizeLongEnchantmentLists": "長いエンチャントのリストを整理",
     "showItemCooldowns": "アイテムのクールタイムを表示",
     "speedPercentage": "スピード",
-    "collectionDisplay": "スキルの進捗のディスプレイ",
+    "collectionDisplay": "スキルの進捗の表示",
     "onlyMineOresDeepCaverns": "Deep Cavernsで鉱石のみを掘れるように",
-    "revenantIndicator": "Revenant装備の進捗を表示",
+    "revenantIndicator": "Slayer装備の進捗を表示",
     "specialZealotAlert": "特別なZealotのアラート"
   },
   "messages": {
@@ -119,7 +119,7 @@
     "cancelledDropping": "SkyblockAddonsがこのアイテムを捨てることを阻止しました。",
     "clickMoreTimes": "本当に落としたい場合はもう%times%回クリック/ドロップしてください。",
     "cancelledDeepCaverns": "SkyblockAddonsが鉱石以外のブロックの破壊を阻止しました。",
-    "featureDisabled": "機能を無効化",
+    "featureDisabled": "この機能は現在無効化されています",
     "anvilUses": "金床の使用回数 : %uses%",
     "specialZealotFound": "特別なZealotがスポーンしました!"
   }

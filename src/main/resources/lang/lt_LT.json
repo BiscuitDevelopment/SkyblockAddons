@@ -8,13 +8,13 @@
       "generalSettings": "Bendrieji nustatymai"
     },
     "settings": "Nustatymai",
-    "magmaBossWarning": "Magma Boso Įspėjimas",
+    "magmaBossWarning": "Magmos Boso Įspėjimas",
     "itemDropConfirmation": "Daikto Išmetimo Patvirtinimas",
     "hideSkeletonHatBones": "Paslėpti Skeleto Šalmo Kaulus",
     "skeletonHatBonesBar": "Skeleto Šalmo Kaulų Rodiklis",
     "hideFoodAndArmor": "Paslėpti Maisto Ir Šarvų Rodiklį",
     "fullInventoryWarning": "Pilno Inventorius Įspėjimas",
-    "disableEmberRodAbility": "Išjungti Ember Rod'o Naudojima Saloje",
+    "disableEmberRodAbility": "Išjungti Ember Rod'o Naudojimą Saloje",
     "editLocations": "Redaguoti GUI vietas",
     "guiScale": "Gui Skalė %scale%",
     "resetLocations": "Iš Naujo Nustatyti Vietas",
@@ -41,7 +41,7 @@
     "defencePercentage": "Gynybos Procentai",
     "healthUpdates": "Gyvybių Pasikeitimo Numeris",
     "hidePlayersInLobby": "Paslėpti Tolimus Objektus Hub'e",
-    "darkAuctionTimer": "Black Marketo Laikmatis",
+    "darkAuctionTimer": "Black Market'o Laikmatis",
     "magmaBossTimer": "Magmos Boso Laikmatis",
     "itemPickupLog": "Neseniai paimtų daiktų sąrašas",
     "avoidPlacingEnchantedItems": "Vengti Užburtų Daiktų Statymą",
@@ -79,7 +79,7 @@
     "speedPercentage": "Greičio Procentai",
     "collectionDisplay": "Įgūdžių progreso lentelė",
     "onlyMineOresDeepCaverns": "Kasti tik rūdas Deep Cavern'usuose",
-    "revenantIndicator": "Revenant Šarvų Progreso Indikatorius",
+    "revenantIndicator": "Žudiko Šarvų Progreso Indikatorius",
     "specialZealotAlert": "Specialaus Zealoto Įspėjimas"
   },
   "messages": {

@@ -79,7 +79,7 @@
     "speedPercentage": "速度百分比",
     "collectionDisplay": "技能進度顯示",
     "onlyMineOresDeepCaverns": "在Deep Caverns中只能挖掘礦物",
-    "revenantIndicator": "Revenant Armor進度指示",
+    "revenantIndicator": "Slayer裝備進度指示",
     "specialZealotAlert": "特殊Zealot警報"
   },
   "messages": {
@@ -119,7 +119,7 @@
     "cancelledDropping": "SkyblockAddons阻止了你丟出快捷欄中稀有等級以上的物品。",
     "clickMoreTimes": "如果你真的想這麼做, 請再點擊或按丟出%times%次。",
     "cancelledDeepCaverns": "一個SkyblockAddons的功能阻止了你挖掘此方塊",
-    "featureDisabled": "停用功能",
+    "featureDisabled": "功能已被停用",
     "anvilUses": "鐵砧使用次數: %uses%",
     "specialZealotFound": "特殊Zealot!"
   }
