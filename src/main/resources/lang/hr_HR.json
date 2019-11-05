@@ -121,6 +121,7 @@
     "cancelledDeepCaverns": "SkyblockAddons značajka te zaustavila od kopanja ovog bloka ovdje.",
     "featureDisabled": "Opcija Onemogućena",
     "anvilUses": "Korištenja u Anvilu: %uses%",
-    "specialZealotFound": "Posebni Zealot!"
+    "specialZealotFound": "Posebni Zealot!",
+    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)"
   }
 }
