@@ -121,6 +121,7 @@
     "cancelledDeepCaverns": "SkyblockAddons 기능으로 인해이 블록을 채굴하지 못했습니다.",
     "featureDisabled": "기능 비활성화",
     "anvilUses": "모루 사용:% uses %",
-    "specialZealotFound": "스페셜 질럿!"
+    "specialZealotFound": "스페셜 질럿!",
+    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)"
   }
 }
