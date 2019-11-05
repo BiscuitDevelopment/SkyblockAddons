@@ -121,6 +121,7 @@
     "cancelledDeepCaverns": "O funcție SkyblockAddons te-a oprit din minatul acestui cub.",
     "featureDisabled": "Funcție dezactivată",
     "anvilUses": "Utilizări Nicovală: %uses%",
-    "specialZealotFound": "Special Zealot!"
+    "specialZealotFound": "Special Zealot!",
+    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)"
   }
 }
