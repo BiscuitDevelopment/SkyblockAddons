@@ -121,6 +121,7 @@
     "cancelledDeepCaverns": "Funkce SkyblockAddons vás zastavila před zničením tohoto bloku.",
     "featureDisabled": "Vlsatnost je vypnuta",
     "anvilUses": "Použití kovadliny: %uses%",
-    "specialZealotFound": "Specialní Zealot!"
+    "specialZealotFound": "Specialní Zealot!",
+    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)"
   }
 }
