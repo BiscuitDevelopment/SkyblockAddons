@@ -121,6 +121,7 @@
     "cancelledDeepCaverns": "Skyblockaddons kırmaya çalıştığınız bloğu kırmanızı önledi.",
     "featureDisabled": "Özellik Devre Dışı",
     "anvilUses": "Örs Kullanımı: %uses%",
-    "specialZealotFound": "Özel zealot!"
+    "specialZealotFound": "Özel zealot!",
+    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)"
   }
 }
