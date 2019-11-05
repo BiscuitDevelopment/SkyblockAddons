@@ -121,6 +121,7 @@
     "cancelledDeepCaverns": "إضافات سكاي بلوك منعك من كسر هذا المعدن.",
     "featureDisabled": "تعطل الميزة",
     "anvilUses": "استخدامات السندان: %uses%",
-    "specialZealotFound": "زيلوت فريد!"
+    "specialZealotFound": "زيلوت فريد!",
+    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)"
   }
 }
