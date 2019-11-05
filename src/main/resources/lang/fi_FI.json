@@ -121,6 +121,7 @@
     "cancelledDeepCaverns": "SkyblockAddons -ominaisuus on estänyt sinut kaivamasta tämän kuution.",
     "featureDisabled": "Toiminto pois käytöstä",
     "anvilUses": "Alasimen käytöt: %uses%",
-    "specialZealotFound": "Erityinen Zealot!"
+    "specialZealotFound": "Erityinen Zealot!",
+    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)"
   }
 }
