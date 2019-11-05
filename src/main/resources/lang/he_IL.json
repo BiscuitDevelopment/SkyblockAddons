@@ -121,6 +121,7 @@
     "cancelledDeepCaverns": "פיטצ'ר של SkyblockAddons מנע ממך לחצוב את הבלוק כאן.",
     "featureDisabled": "פיטצ'ר מבוטל",
     "anvilUses": "שימוים בסדן: %uses%",
-    "specialZealotFound": "זלוט מיוחד!"
+    "specialZealotFound": "זלוט מיוחד!",
+    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)"
   }
 }
