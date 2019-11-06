@@ -844,7 +844,7 @@ public class Utils {
             lookedOnline = true;
             new Thread(() -> {
                 try {
-                    URL url = new URL("https://raw.githubusercontent.com/biscuut/SkyblockAddons/master/resources/assets/skyblockaddons/featuredlink.txt");
+                    URL url = new URL("https://raw.githubusercontent.com/BiscuitDevelopment/SkyblockAddons/master/src/main/resources/assets/skyblockaddons/featuredlink.txt");
                     URLConnection connection = url.openConnection(); // try looking online
                     connection.setReadTimeout(5000);
                     connection.addRequestProperty("User-Agent", "SkyblockAddons");
