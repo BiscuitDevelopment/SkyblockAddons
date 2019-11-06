@@ -53,7 +53,7 @@
     "lockSlot": "スロットをロック",
     "dontResetCursorInventory": "インベントリ間でのカーソルの位置のリセットを防止",
     "summoningEyeAlert": "サモニングアイのアラート",
-    "makeEnderchestsInEndGreen": "Change Enderchest Color in the End",
+    "makeEnderchestsInEndGreen": "エンドにいる時にエンダーチェストの色を変える",
     "changeColor": "色を変更",
     "showInOtherGames": "他のゲームに居る時でも表示",
     "useVanillaTexture": "バニラのテクスチャを使う",
