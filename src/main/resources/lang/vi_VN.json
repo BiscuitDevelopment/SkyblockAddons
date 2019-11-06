@@ -53,7 +53,7 @@
     "lockSlot": "Khoá ô",
     "dontResetCursorInventory": "Không di chuyển con trỏ khi mở túi đồ",
     "summoningEyeAlert": "Cảnh báo: Nhặt Mắt Triệu hồi",
-    "makeEnderchestsInEndGreen": "Change Enderchest Color in the End",
+    "makeEnderchestsInEndGreen": "Đổi màu rương ender trong The End",
     "changeColor": "Thay đổi màu sắc",
     "showInOtherGames": "Hiện trong các trò khác",
     "useVanillaTexture": "Sử dụng đồ họa nguyên bản",
@@ -79,7 +79,7 @@
     "speedPercentage": "Phần trăm tốc độ",
     "collectionDisplay": "Hiển thị kĩ năng",
     "onlyMineOresDeepCaverns": "Chỉ đào quặng trong Hang Sâu",
-    "revenantIndicator": "Slayer Armor Progress Indicator",
+    "revenantIndicator": "Hiển thị độ phát triển của giáp Slayer",
     "specialZealotAlert": "Cảnh báo Zealot đặc biệt"
   },
   "messages": {
@@ -122,6 +122,6 @@
     "featureDisabled": "Vô hiệu hóa tính năng",
     "anvilUses": "Số lần sử dụng đe: %uses%",
     "specialZealotFound": "Zealot hiếm!",
-    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)"
+    "blockIncompletePatterns": "Các nguyên liệu thiếu cho chế tạo block\n(Khuyến nghị)"
   }
 }
