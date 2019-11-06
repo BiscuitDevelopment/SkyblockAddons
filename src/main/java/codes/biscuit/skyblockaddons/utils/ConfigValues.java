@@ -102,7 +102,8 @@ public class ConfigValues {
             }
 
             if (settingsConfig.has("language")) {
-                Language configLanguage = Language.getFromPath(settingsConfig.get("language").getAsString().toLowerCase());
+                String languageKey = settingsConfig.get("language").getAsString();
+                Language configLanguage = Language.getFromPath(languageKey);
                 if (configLanguage != null) {
                     language = configLanguage;
                 }

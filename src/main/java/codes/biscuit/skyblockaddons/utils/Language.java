@@ -65,10 +65,17 @@ public enum Language {
 //        return values()[nextType];
 //    }
 
-    public static Language getFromPath(String text) {
+    /**
+     * Find the corresponding {@link Language} to a given key string like {@code en_US}.
+     * Case-insensitive.
+     *
+     * @param languageKey Key to look for
+     * @return Found language or null
+     */
+    public static Language getFromPath(String languageKey) {
         for (Language language : values()) {
             String path = language.getPath();
-            if (path != null && path.equals(text)) {
+            if (path != null && path.equalsIgnoreCase(languageKey)) {
                 return language;
             }
         }
