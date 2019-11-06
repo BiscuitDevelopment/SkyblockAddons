@@ -53,7 +53,7 @@
     "lockSlot": "スロットをロック",
     "dontResetCursorInventory": "インベントリ間でのカーソルの位置のリセットを防止",
     "summoningEyeAlert": "サモニングアイのアラート",
-    "makeEnderchestsInEndGreen": "Change Enderchest Color in the End",
+    "makeEnderchestsInEndGreen": "エンドにいる時にエンダーチェストの色を変える",
     "changeColor": "色を変更",
     "showInOtherGames": "他のゲームに居る時でも表示",
     "useVanillaTexture": "バニラのテクスチャを使う",
@@ -122,6 +122,6 @@
     "featureDisabled": "この機能は現在無効化されています",
     "anvilUses": "金床の使用回数 : %uses%",
     "specialZealotFound": "特別なZealotがスポーンしました!",
-    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)"
+    "blockIncompletePatterns": "不完全なパターンでのクラフトを防止する (推奨)"
   }
 }

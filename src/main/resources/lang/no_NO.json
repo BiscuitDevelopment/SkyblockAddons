@@ -53,7 +53,7 @@
     "lockSlot": "Lås Slot",
     "dontResetCursorInventory": "Ikke nullstill musen mellom inventories",
     "summoningEyeAlert": "Innkallende øye varsling",
-    "makeEnderchestsInEndGreen": "Change Enderchest Color in the End",
+    "makeEnderchestsInEndGreen": "Endre farge på Enderkiste i the End",
     "changeColor": "Endre farge",
     "showInOtherGames": "Vis i andre spill",
     "useVanillaTexture": "Bruk Vanilla teksturen",
@@ -79,8 +79,8 @@
     "speedPercentage": "Farts Prosent",
     "collectionDisplay": "Ferdighetsutvikling Visning",
     "onlyMineOresDeepCaverns": "Bare Grave Årer i de Dype Hulene",
-    "revenantIndicator": "Slayer Armor Progress Indicator",
-    "specialZealotAlert": "Special Zealot Alert"
+    "revenantIndicator": "Slayer Armour Fremgangs Indikator",
+    "specialZealotAlert": "Spesiell Zealot Alarm"
   },
   "messages": {
     "dropConfirmation": "Slipp denne gjenstanden igjen for å bekrefte!",
@@ -118,10 +118,10 @@
     "cancelledProfileOpening": "SkyblockAddons har stoppet deg fra å åpne denne spillerens profil siden du holder en bue.",
     "cancelledDropping": "SkyblockAddons har stoppet deg fra å slippe denne sjeldne gjenstanden/redskap fra din hotbar.",
     "clickMoreTimes": "Klikk/slipp denne gjenstanden %times% flere ganger hvis du virkelig vil gjøre dette.",
-    "cancelledDeepCaverns": "A SkyblockAddons feature has stopped you from mining this block here.",
+    "cancelledDeepCaverns": "En SkyblockAddons egenskap har stoppet deg fra å ødelegge denne blokken her.",
     "featureDisabled": "Funksjon Deaktivert",
     "anvilUses": "Ambolt Bruk: %uses%",
-    "specialZealotFound": "Special Zealot!",
-    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)"
+    "specialZealotFound": "Spesiell Zealot!",
+    "blockIncompletePatterns": "Blokk bygging med uferdig mønster (anbefalt)"
   }
 }
