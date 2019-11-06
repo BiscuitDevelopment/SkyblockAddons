@@ -90,7 +90,7 @@ public class SkyblockAddons {
 
     private void changeKeyBindDescription(KeyBinding bind, String desc) {
         try {
-            Field field = bind.getClass().getDeclaredField("keyDescription");
+            Field field = bind.getClass().getDeclaredField(utils.isDevEnviroment() ? "keyDescription" : "field_74515_c");
             field.setAccessible(true);
             field.set(bind, desc);
         } catch(NoSuchFieldException | IllegalAccessException e) {

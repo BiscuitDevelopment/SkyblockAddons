@@ -72,7 +72,7 @@ public enum Feature {
     SLAYER_INDICATOR(57, Message.SETTING_SLAYER_INDICATOR, new GuiFeatureData(EnumUtils.DrawType.REVENANT_PROGRESS, ConfigColor.AQUA, EnumUtils.AnchorPoint.BOTTOM_RIGHT, -84, -29), true),
     SPECIAL_ZEALOT_ALERT(58, Message.SETTING_SPECIAL_ZEALOT_ALERT, new GuiFeatureData(ConfigColor.RED), false),
 
-    HALLOWEEN(100, null, false),
+    HIDE_GREY_ENCHANTS(100, null, false), // allow remote disabling this feature
 
     WARNING_TIME(-1, Message.SETTING_WARNING_DURATION, false),
 

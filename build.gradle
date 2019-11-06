@@ -21,7 +21,7 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle.forge'
 apply plugin: 'org.spongepowered.mixin'
 
-version = "1.4.0" //remember don't update the version until its released
+version = "1.4.1" //remember don't update the version until its released
 group= "codes.biscuit.skyblockaddons"
 archivesBaseName = "SkyblockAddons"
 compileJava.options.encoding = 'UTF-8'

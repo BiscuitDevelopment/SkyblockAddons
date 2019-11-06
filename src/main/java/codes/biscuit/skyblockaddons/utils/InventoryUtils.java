@@ -276,7 +276,7 @@ public class InventoryUtils {
                     if (matcher.matches()) { // Example: line§5§o§7Next Upgrade: §a+240❈ §8(§a14,418§7/§c15,000§8)
                         try {
 //                            progress = color.toString() + matcher.group(2)+"/"+matcher.group(3) + " (" + ConfigColor.GREEN+ matcher.group(1) + color + ")";
-                            float percentage = Float.parseFloat(matcher.group(2).replace(",", ""))/Integer.parseInt(matcher.group(3).replace(",", ""));
+                            float percentage = Float.parseFloat(matcher.group(2).replace(",", ""))/Integer.parseInt(matcher.group(3).replace(",", ""))*100;
                             BigDecimal bigDecimal = new BigDecimal(percentage).setScale(0, BigDecimal.ROUND_HALF_UP);
                             progress = color.toString() + bigDecimal.toString() + "% (" + ConfigColor.GREEN+ matcher.group(1) + color + ")";
                             break;

@@ -54,7 +54,7 @@ public class PlayerListener {
     private final Pattern ABILITY_CHAT_PATTERN = Pattern.compile("§r§aUsed §r§6[A-Za-z ]+§r§a! §r§b\\([0-9]+ Mana\\)§r");
     private final Pattern PROFILE_CHAT_PATTERN = Pattern.compile("§aYou are playing on profile: §e([A-Za-z]+).*");
     private final Pattern SWITCH_PROFILE_CHAT_PATTERN = Pattern.compile("§aYour profile was changed to: §e([A-Za-z]+).*");
-    private final Pattern COLLECTIONS_CHAT_PATTERN = Pattern.compile("§.\\+§[0-9a-f]([0-9.]+) §?[0-9a-f]?([A-Za-z]+) (\\([0-9.,]+/[0-9.,]+\\))");
+    private final Pattern COLLECTIONS_CHAT_PATTERN = Pattern.compile("§.\\+(?:§[0-9a-f])?([0-9.]+) §?[0-9a-f]?([A-Za-z]+) (\\([0-9.,]+/[0-9.,]+\\))");
 
     private boolean sentUpdate = false;
     private long lastWorldJoin = -1;
@@ -546,8 +546,10 @@ public class PlayerListener {
             }
         }
 
-        if (e.toolTip != null && e.toolTip.size() > 4 && main.getUtils().isOnSkyblock()) {
+        if (e.toolTip != null && main.getUtils().isOnSkyblock() && !main.getConfigValues().isRemoteDisabled(Feature.HIDE_GREY_ENCHANTS)) {
             for (int i = 1; i <= 3; i++) { // only a max of 2 gray enchants are possible
+                if (i >= e.toolTip.size()) continue; // out of bounds
+
                 GuiScreen gui = Minecraft.getMinecraft().currentScreen;
                 if (gui instanceof GuiChest) {
                     Container chest = ((GuiChest)gui).inventorySlots;

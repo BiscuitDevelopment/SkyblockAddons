@@ -572,12 +572,13 @@ public class Utils {
     }
 
     public boolean cantDropItem(ItemStack item, EnumUtils.Rarity rarity, boolean hotbar) {
+        if (Items.bow.equals(item.getItem()) && rarity == EnumUtils.Rarity.COMMON) return false; // exclude rare bows lol
+        if (item.hasDisplayName() && item.getDisplayName().contains("Backpack")) return true; // dont drop backpacks ever
         if (hotbar) {
-            return item.getItem().isDamageable() || (rarity != EnumUtils.Rarity.COMMON && rarity != EnumUtils.Rarity.UNCOMMON)
-                    || (item.hasDisplayName() && item.getDisplayName().contains("Backpack"));
+            return item.getItem().isDamageable() || (rarity != EnumUtils.Rarity.COMMON && rarity != EnumUtils.Rarity.UNCOMMON);
         } else {
             return item.getItem().isDamageable() || (rarity != EnumUtils.Rarity.COMMON && rarity != EnumUtils.Rarity.UNCOMMON
-                    && rarity != EnumUtils.Rarity.RARE) || (item.hasDisplayName() && item.getDisplayName().contains("Backpack"));
+                    && rarity != EnumUtils.Rarity.RARE);
         }
     }
 
@@ -685,8 +686,10 @@ public class Utils {
                 String abilityName = getAbilityName(itemStack);
                 CooldownEntry cooldownEntry = getCooldownEntry(item, name);
                 if (!item.isDamageable() && abilityName == null) return; // if its not a tool and has no ability, its not gonna have a cooldown
-                if (cooldownEntry != null && cooldownEntry.getCooldown() == 1) {
-                    cooldownEntry.setLastUse();
+                if (cooldownEntry != null) {
+                    if (cooldownEntry.getCooldown() == 1) {
+                        cooldownEntry.setLastUse();
+                    }
                 } else {
                     cooldownEntries.add(new CooldownEntry(item,name,cooldownSeconds));
                 }
