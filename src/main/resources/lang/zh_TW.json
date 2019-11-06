@@ -53,7 +53,7 @@
     "lockSlot": "鎖定欄位",
     "dontResetCursorInventory": "打開物品欄不會重製鼠標位置",
     "summoningEyeAlert": "召喚之眼警報",
-    "makeEnderchestsInEndGreen": "使在終界的終界箱顯示為綠色",
+    "makeEnderchestsInEndGreen": "Change Enderchest Color in the End",
     "changeColor": "變更顏色",
     "showInOtherGames": "顯示於其他遊戲",
     "useVanillaTexture": "使用原版材質",
