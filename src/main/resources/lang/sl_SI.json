@@ -53,7 +53,7 @@
     "lockSlot": "Zakleni Prostor",
     "dontResetCursorInventory": "Ne Ponastavljaj Kazalca Med Inventarji",
     "summoningEyeAlert": "Opozorilo Za Summoning Oko",
-    "makeEnderchestsInEndGreen": "Naredi Ender Skrinje v Endu Zelene",
+    "makeEnderchestsInEndGreen": "Change Enderchest Color in the End",
     "changeColor": "Spremeni barvo",
     "showInOtherGames": "Pokaži v Drugih Igrah",
     "useVanillaTexture": "Uporabi Vanilla Izgled",
@@ -121,6 +121,7 @@
     "cancelledDeepCaverns": "Funkcija SkyblockAddons ti je preprečila uničiti to kocko.",
     "featureDisabled": "Funkcija izklopljena",
     "anvilUses": "Število Uporab Nakovala: %uses%",
-    "specialZealotFound": "Posebni Zealot!"
+    "specialZealotFound": "Posebni Zealot!",
+    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)"
   }
 }

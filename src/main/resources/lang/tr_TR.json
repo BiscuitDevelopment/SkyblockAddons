@@ -53,7 +53,7 @@
     "lockSlot": "Slot kilitleme",
     "dontResetCursorInventory": "Envanterler arasında fare imlecini sıfırlama",
     "summoningEyeAlert": "Summoning Eye Uyarısı",
-    "makeEnderchestsInEndGreen": "End'deki Enderchestleri Yeşil Yap",
+    "makeEnderchestsInEndGreen": "Change Enderchest Color in the End",
     "changeColor": "Rengi değiştir",
     "showInOtherGames": "Diğer Oyunlarda da Göster",
     "useVanillaTexture": "Sade Dokuları kullan",
@@ -121,6 +121,7 @@
     "cancelledDeepCaverns": "Skyblockaddons kırmaya çalıştığınız bloğu kırmanızı önledi.",
     "featureDisabled": "Özellik Devre Dışı",
     "anvilUses": "Örs Kullanımı: %uses%",
-    "specialZealotFound": "Özel zealot!"
+    "specialZealotFound": "Özel zealot!",
+    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)"
   }
 }

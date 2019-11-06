@@ -53,7 +53,7 @@
     "lockSlot": "锁定槽位",
     "dontResetCursorInventory": "阻止打开菜单时光标重置",
     "summoningEyeAlert": "召唤之眼获取提醒",
-    "makeEnderchestsInEndGreen": "将末地中末影箱渲染为绿色",
+    "makeEnderchestsInEndGreen": "Change Enderchest Color in the End",
     "changeColor": "更改颜色",
     "showInOtherGames": "在其他游戏显示",
     "useVanillaTexture": "使用原版材质",
@@ -121,6 +121,7 @@
     "cancelledDeepCaverns": "SkyblockAddons 已阻止在此开采矿物",
     "featureDisabled": "功能已禁用",
     "anvilUses": "铁砧使用次数: %uses%",
-    "specialZealotFound": "末影战士！"
+    "specialZealotFound": "末影战士！",
+    "blockIncompletePatterns": "阻止合成不完整的图案 - 推荐"
   }
 }

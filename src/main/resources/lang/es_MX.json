@@ -53,7 +53,7 @@
     "lockSlot": "Bloquear Ranura",
     "dontResetCursorInventory": "Evitar Reinicio del Cursor entre Inventarios",
     "summoningEyeAlert": "Alerta de Summoning Eye",
-    "makeEnderchestsInEndGreen": "Colorear Enderchest de Verde en The End",
+    "makeEnderchestsInEndGreen": "Change Enderchest Color in the End",
     "changeColor": "Cambiar Color",
     "showInOtherGames": "Mostrar en Otros Juegos",
     "useVanillaTexture": "Usar la Textura Vanilla",
@@ -121,6 +121,7 @@
     "cancelledDeepCaverns": "Una característica especial de SkyblockAddons ha impedido que mines ese bloque aquí.",
     "featureDisabled": "Característica Desactivada",
     "anvilUses": "Usos en Anvil/Yunque: %uses%",
-    "specialZealotFound": "Zealot Especial!"
+    "specialZealotFound": "Zealot Especial!",
+    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)"
   }
 }

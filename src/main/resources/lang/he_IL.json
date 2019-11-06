@@ -53,7 +53,7 @@
     "lockSlot": "לנעול סלוט",
     "dontResetCursorInventory": "אל תאפס את העכבר בין תיקים",
     "summoningEyeAlert": "התראת עין לזימון דרקון",
-    "makeEnderchestsInEndGreen": "הפוך אנדרצ'אסטים לירוקות באנד",
+    "makeEnderchestsInEndGreen": "Change Enderchest Color in the End",
     "changeColor": "שנה צבע",
     "showInOtherGames": "הראה במשחקים אחרים",
     "useVanillaTexture": "השתמש בטקסטורה רגילה",
@@ -121,6 +121,7 @@
     "cancelledDeepCaverns": "פיטצ'ר של SkyblockAddons מנע ממך לחצוב את הבלוק כאן.",
     "featureDisabled": "פיטצ'ר מבוטל",
     "anvilUses": "שימוים בסדן: %uses%",
-    "specialZealotFound": "זלוט מיוחד!"
+    "specialZealotFound": "זלוט מיוחד!",
+    "blockIncompletePatterns": "הרכבת בלוק ללא תבנית גמורה (מומלץ)"
   }
 }

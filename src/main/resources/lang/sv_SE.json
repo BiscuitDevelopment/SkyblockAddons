@@ -53,7 +53,7 @@
     "lockSlot": "Lösa Luckor",
     "dontResetCursorInventory": "Återställ Inte Muspekaren Mellan Inventarie",
     "summoningEyeAlert": "Tillkallande Öga Varning",
-    "makeEnderchestsInEndGreen": "Gör Enderkistor i End Gröna",
+    "makeEnderchestsInEndGreen": "Change Enderchest Color in the End",
     "changeColor": "Ändra Färg",
     "showInOtherGames": "Visa i Andra Spel",
     "useVanillaTexture": "Använd Vanliga Texturen",
@@ -121,6 +121,7 @@
     "cancelledDeepCaverns": "En skyblockaddon du ktion har stoppat dig från att hugga blocket här.",
     "featureDisabled": "Funktion.Inaktiverat",
     "anvilUses": "Städ användningar %uses%",
-    "specialZealotFound": "Speciell Zealot!"
+    "specialZealotFound": "Speciell Zealot!",
+    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)"
   }
 }

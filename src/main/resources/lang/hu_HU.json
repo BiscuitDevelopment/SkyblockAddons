@@ -53,7 +53,7 @@
     "lockSlot": "Gyorstár lezárása",
     "dontResetCursorInventory": "Ne állítsa vissza a kurzort az eszköztárak között",
     "summoningEyeAlert": "Summoning Eye figyelmeztetés",
-    "makeEnderchestsInEndGreen": "Végzetládák kiemelése zölddel az Endben",
+    "makeEnderchestsInEndGreen": "Change Enderchest Color in the End",
     "changeColor": "Színváltoztatás",
     "showInOtherGames": "Mutatás más játékokban",
     "useVanillaTexture": "Használja a Vanilla textúrát",
@@ -121,6 +121,7 @@
     "cancelledDeepCaverns": "SkyblockAddons megállított ennek a blokknak a kiütésében.",
     "featureDisabled": "Funkció kikapcsolva",
     "anvilUses": "Üllő használat: %uses%",
-    "specialZealotFound": "Különleges Zealot!"
+    "specialZealotFound": "Különleges Zealot!",
+    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)"
   }
 }

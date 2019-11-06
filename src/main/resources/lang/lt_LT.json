@@ -53,7 +53,7 @@
     "lockSlot": "Užrakinimo langas",
     "dontResetCursorInventory": "Neperstatyti Iš Naujo Rodykles Tarp Inventorių",
     "summoningEyeAlert": "Drakono Iškvietimo Akies Įspėjimas",
-    "makeEnderchestsInEndGreen": "Padaryti Ender Chestus Žalius End'e",
+    "makeEnderchestsInEndGreen": "Change Enderchest Color in the End",
     "changeColor": "Pakeisti Spalvą",
     "showInOtherGames": "Rodyti Kituose Žaidimuose",
     "useVanillaTexture": "Naudoti Pradinę Tekstūrą",
@@ -121,6 +121,7 @@
     "cancelledDeepCaverns": "SkyblockAddons funkcija sustabdė jus nuo bloko iškasimo šioje vietoje.",
     "featureDisabled": "Funkcija išjungta",
     "anvilUses": "Priekalo Panaudojimai: %uses%",
-    "specialZealotFound": "Specialus Zealotas!"
+    "specialZealotFound": "Specialus Zealotas!",
+    "blockIncompletePatterns": "Nepilnas blokų modelis (rekomenduojama)"
   }
 }

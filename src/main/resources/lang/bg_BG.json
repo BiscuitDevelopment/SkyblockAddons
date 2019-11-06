@@ -53,7 +53,7 @@
     "lockSlot": "Зaключи слот",
     "dontResetCursorInventory": "Не Рестартирай Курсора Между Инвентари",
     "summoningEyeAlert": "Предупреждение за Призоваващо Око",
-    "makeEnderchestsInEndGreen": "Нaпрaви Ендер Сандъците в Края да са Зелени",
+    "makeEnderchestsInEndGreen": "Change Enderchest Color in the End",
     "changeColor": "Смени Цвeтa",
     "showInOtherGames": "Покaжи в Други Игри",
     "useVanillaTexture": "Използвaй Ванила Визия",
@@ -121,6 +121,7 @@
     "cancelledDeepCaverns": "A SkyblockAddons feature has stopped you from mining this block here.",
     "featureDisabled": "Feature Disabled",
     "anvilUses": "Anvil Uses: %uses%",
-    "specialZealotFound": "Special Zealot!"
+    "specialZealotFound": "Special Zealot!",
+    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)"
   }
 }

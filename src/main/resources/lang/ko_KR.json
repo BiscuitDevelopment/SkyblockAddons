@@ -53,7 +53,7 @@
     "lockSlot": "슬롯 잠금",
     "dontResetCursorInventory": "인벤토리 내의 마우스 위치 리셋 방지",
     "summoningEyeAlert": "소환의 눈 알림",
-    "makeEnderchestsInEndGreen": "엔드 섬에서 엔더상자를 초록색으로 표시",
+    "makeEnderchestsInEndGreen": "Change Enderchest Color in the End",
     "changeColor": "색상 변경",
     "showInOtherGames": "다른 미니게임에서도 보이기",
     "useVanillaTexture": "원래 텍스쳐 유지하기",
@@ -121,6 +121,7 @@
     "cancelledDeepCaverns": "SkyblockAddons 기능으로 인해이 블록을 채굴하지 못했습니다.",
     "featureDisabled": "기능 비활성화",
     "anvilUses": "모루 사용:% uses %",
-    "specialZealotFound": "스페셜 질럿!"
+    "specialZealotFound": "스페셜 질럿!",
+    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)"
   }
 }

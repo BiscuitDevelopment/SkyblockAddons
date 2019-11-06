@@ -53,7 +53,7 @@
     "lockSlot": "Blocca Slot",
     "dontResetCursorInventory": "Non resettare il cursore tra gli inventari",
     "summoningEyeAlert": "Avviso di acquisizione di un Occhio dell'evocazione",
-    "makeEnderchestsInEndGreen": "Rendi le casse nell'End verdi",
+    "makeEnderchestsInEndGreen": "Change Enderchest Color in the End",
     "changeColor": "Cambia colore",
     "showInOtherGames": "Mostra in Altri Giochi",
     "useVanillaTexture": "Usa la Texture Vanilla",
@@ -121,6 +121,7 @@
     "cancelledDeepCaverns": "Una funzione di SkyBlockAddons ti ha impedito di estrarre questo blocco.",
     "featureDisabled": "Funzione disabilitata",
     "anvilUses": "Utilizzi dell’incudine: %uses%",
-    "specialZealotFound": "Zealot Speciale!"
+    "specialZealotFound": "Zealot Speciale!",
+    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)"
   }
 }

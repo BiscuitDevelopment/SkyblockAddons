@@ -53,7 +53,7 @@
     "lockSlot": "Lås slot",
     "dontResetCursorInventory": "Nulstil ikke markøren mellem lagrene",
     "summoningEyeAlert": "Afkaldende øjenalarm",
-    "makeEnderchestsInEndGreen": "Lav enderchests i slutningen grøn",
+    "makeEnderchestsInEndGreen": "Change Enderchest Color in the End",
     "changeColor": "Skift farve",
     "showInOtherGames": "Vis i andre spil",
     "useVanillaTexture": "Brug vanilla teksturen",
@@ -121,6 +121,7 @@
     "cancelledDeepCaverns": "En SkyblockAddons funktion har stoppet dig fra at mine denne her blok.",
     "featureDisabled": "Funktion deaktiveret",
     "anvilUses": "Ambolt brug: %uses%",
-    "specialZealotFound": "Speciel Zealot!"
+    "specialZealotFound": "Speciel Zealot!",
+    "blockIncompletePatterns": "Bloker byggelse af ufuldstændige mønstre (anbefalet)"
   }
 }

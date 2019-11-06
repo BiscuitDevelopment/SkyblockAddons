@@ -53,7 +53,7 @@
     "lockSlot": "Khoá ô",
     "dontResetCursorInventory": "Không di chuyển con trỏ khi mở túi đồ",
     "summoningEyeAlert": "Cảnh báo: Nhặt Mắt Triệu hồi",
-    "makeEnderchestsInEndGreen": "Làm Cho Hòm Ender Màu Xanh Ở The End",
+    "makeEnderchestsInEndGreen": "Change Enderchest Color in the End",
     "changeColor": "Thay đổi màu sắc",
     "showInOtherGames": "Hiện trong các trò khác",
     "useVanillaTexture": "Sử dụng đồ họa nguyên bản",
@@ -121,6 +121,7 @@
     "cancelledDeepCaverns": "SkyblockAddon đã ngăn bạn đào khối này.",
     "featureDisabled": "Vô hiệu hóa tính năng",
     "anvilUses": "Số lần sử dụng đe: %uses%",
-    "specialZealotFound": "Zealot hiếm!"
+    "specialZealotFound": "Zealot hiếm!",
+    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)"
   }
 }

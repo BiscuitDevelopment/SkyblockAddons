@@ -53,7 +53,7 @@
     "lockSlot": "Lock Biscuits because expensive can't afford it",
     "dontResetCursorInventory": "Dont reset biscuit between biscuit boxes",
     "summoningEyeAlert": "Chcolate biscuit alert",
-    "makeEnderchestsInEndGreen": "Make transfering biscuit boxes in the biscuit end have mold",
+    "makeEnderchestsInEndGreen": "Change Enderchest Color in the End",
     "changeColor": "DIY a Biscuit",
     "showInOtherGames": "Show in other Bakeries",
     "useVanillaTexture": "Use normal biscuit color",
@@ -121,6 +121,7 @@
     "cancelledDeepCaverns": "A SkyblockAddons feature has stopped you from mining this block here.",
     "featureDisabled": "Biscture Disabled",
     "anvilUses": "Biscoots Uses: %uses%",
-    "specialZealotFound": "Special Zealot!"
+    "specialZealotFound": "Special Zealot!",
+    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)"
   }
 }

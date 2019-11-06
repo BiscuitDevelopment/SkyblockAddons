@@ -53,7 +53,7 @@
     "lockSlot": "Vergrendel Vakje",
     "dontResetCursorInventory": "Cursor niet resetten tussen Inventarissen",
     "summoningEyeAlert": "Oproepend oog Alarm",
-    "makeEnderchestsInEndGreen": "Maak Enderchests in de End Groen",
+    "makeEnderchestsInEndGreen": "Change Enderchest Color in the End",
     "changeColor": "Kleur wijzigen",
     "showInOtherGames": "Toon in andere spellen",
     "useVanillaTexture": "Gebruik Vanilla Achtergrond",
@@ -121,6 +121,7 @@
     "cancelledDeepCaverns": "A SkyblockAddons feature has stopped you from mining this block here.",
     "featureDisabled": "Functie uitgeschakeld",
     "anvilUses": "Anvil Uses: %uses%",
-    "specialZealotFound": "Special Zealot!"
+    "specialZealotFound": "Special Zealot!",
+    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)"
   }
 }

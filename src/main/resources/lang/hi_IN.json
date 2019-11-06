@@ -53,7 +53,7 @@
     "lockSlot": "स्लॉट बंद",
     "dontResetCursorInventory": "सूची के बीच कर्सर को रीसेट न करें",
     "summoningEyeAlert": "सुमोइंग आई अलर्ट",
-    "makeEnderchestsInEndGreen": "एन्ड में हरे रंग में एंडरचेस्ट बनाएं",
+    "makeEnderchestsInEndGreen": "Change Enderchest Color in the End",
     "changeColor": "रंग बदलना",
     "showInOtherGames": "अन्य खेलों में दिखाओ",
     "useVanillaTexture": "वेनिला बनावट का उपयोग करें",
@@ -121,6 +121,7 @@
     "cancelledDeepCaverns": "A SkyblockAddons feature has stopped you from mining this block here.",
     "featureDisabled": "Feature Disabled",
     "anvilUses": "Anvil Uses: %uses%",
-    "specialZealotFound": "Special Zealot!"
+    "specialZealotFound": "Special Zealot!",
+    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)"
   }
 }
