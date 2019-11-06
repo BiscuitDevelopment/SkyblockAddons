@@ -53,7 +53,7 @@
     "lockSlot": "鎖定欄位",
     "dontResetCursorInventory": "打開物品欄不會重製鼠標位置",
     "summoningEyeAlert": "召喚之眼警報",
-    "makeEnderchestsInEndGreen": "Change Enderchest Color in the End",
+    "makeEnderchestsInEndGreen": "於終界變更終界箱顏色",
     "changeColor": "變更顏色",
     "showInOtherGames": "顯示於其他遊戲",
     "useVanillaTexture": "使用原版材質",
@@ -69,7 +69,7 @@
     "avoidBreakingBottomSugarCane": "避免破壞位於底部的甘蔗",
     "replaceRomanNumeralsWithNumbers": "將羅馬數字替換為阿拉伯數字",
     "changeBarColorForPotions": "在凋零或中毒時改變計量條顏色",
-    "craftingPatterns": "選擇合成模式",
+    "craftingPatterns": "選擇合成格式",
     "soundIndicatorForFishing": "釣魚聲音提示",
     "avoidBlinkingNightVision": "取消夜視藥水閃爍",
     "disableMinionLocationWarning": "取消Minion位置不完美警告",
@@ -122,6 +122,6 @@
     "featureDisabled": "功能已被停用",
     "anvilUses": "鐵砧使用次數: %uses%",
     "specialZealotFound": "特殊Zealot!",
-    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)"
+    "blockIncompletePatterns": "阻止合成不正確的格式 (推薦)"
   }
 }
