@@ -53,7 +53,7 @@
     "lockSlot": "슬롯 잠금",
     "dontResetCursorInventory": "인벤토리 내의 마우스 위치 리셋 방지",
     "summoningEyeAlert": "소환의 눈 알림",
-    "makeEnderchestsInEndGreen": "엔드 섬에서 엔더상자를 초록색으로 표시",
+    "makeEnderchestsInEndGreen": "Change Enderchest Color in the End",
     "changeColor": "색상 변경",
     "showInOtherGames": "다른 미니게임에서도 보이기",
     "useVanillaTexture": "원래 텍스쳐 유지하기",
