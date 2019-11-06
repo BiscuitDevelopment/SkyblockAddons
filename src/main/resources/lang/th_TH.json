@@ -53,7 +53,7 @@
     "lockSlot": "การล็อคช่อง",
     "dontResetCursorInventory": "เคอร์เซอร์ไม่จัดตำแหน่งใหม่เมื่อเปลี่ยนช่องเก็บของ",
     "summoningEyeAlert": "แจ้งเตือนดวงตาอัญเชิญ",
-    "makeEnderchestsInEndGreen": "ทำให้หีบ Ender เป็นสีเขียวเมื่ออยู่ใน The End",
+    "makeEnderchestsInEndGreen": "Change Enderchest Color in the End",
     "changeColor": "เปลี่ยนสี",
     "showInOtherGames": "แสดงเมื่ออยู่ในเกมอื่นๆ",
     "useVanillaTexture": "ใช้ Texture ปกติ",
