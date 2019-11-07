@@ -34,6 +34,7 @@ import net.minecraftforge.fml.relauncher.FileListHelper;
 import net.minecraftforge.fml.relauncher.ModListHelper;
 import org.apache.commons.lang3.mutable.MutableInt;
 import org.apache.commons.lang3.text.WordUtils;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -42,9 +43,7 @@ import java.io.*;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLConnection;
+import java.net.*;
 import java.util.List;
 import java.util.*;
 import java.util.jar.JarFile;
@@ -54,6 +53,12 @@ import java.util.stream.Collectors;
 import java.util.zip.ZipEntry;
 
 public class Utils {
+
+    /**
+     * Turn true to block the next window click in {@link codes.biscuit.skyblockaddons.mixins.MixinPlayerControllerMP#onWindowClick(int, int, int, int, EntityPlayer, CallbackInfoReturnable)}
+     */
+    // I know this is messy af, but frustration led me to take this dark path
+    public static boolean blockNextClick = false;
 
     private final Pattern STRIP_COLOR_PATTERN = Pattern.compile("(?i)§[0-9A-FK-OR]");
     private final Pattern ITEM_COOLDOWN_PATTERN = Pattern.compile("§5§o§8Cooldown: §a([0-9]+)s");
@@ -401,10 +406,22 @@ public class Utils {
         return new Color(150, 236, 255, alpha).getRGB();
     }
 
-    public void playSound(String sound, double pitch) {
+    /**
+     * When you use this function, any sound played will bypass the player's
+     * volume setting, so make sure to only use this for like warnings or stuff like that.
+     */
+    public void playLoudSound(String sound, double pitch) {
         playingSound = true;
         Minecraft.getMinecraft().thePlayer.playSound(sound, 1, (float) pitch);
         playingSound = false;
+    }
+
+    /**
+     * This one plays the sound normally. See {@link Utils#playLoudSound(String, double)} for playing
+     * a sound that bypasses the user's volume settings.
+     */
+    public void playSound(String sound, double pitch) {
+        Minecraft.getMinecraft().thePlayer.playSound(sound, 1, (float) pitch);
     }
 
     public boolean enchantReforgeMatches(String text) {
@@ -555,12 +572,13 @@ public class Utils {
     }
 
     public boolean cantDropItem(ItemStack item, EnumUtils.Rarity rarity, boolean hotbar) {
+        if (Items.bow.equals(item.getItem()) && rarity == EnumUtils.Rarity.COMMON) return false; // exclude rare bows lol
+        if (item.hasDisplayName() && item.getDisplayName().contains("Backpack")) return true; // dont drop backpacks ever
         if (hotbar) {
-            return item.getItem().isDamageable() || (rarity != EnumUtils.Rarity.COMMON && rarity != EnumUtils.Rarity.UNCOMMON)
-                    || (item.hasDisplayName() && item.getDisplayName().contains("Backpack"));
+            return item.getItem().isDamageable() || (rarity != EnumUtils.Rarity.COMMON && rarity != EnumUtils.Rarity.UNCOMMON);
         } else {
             return item.getItem().isDamageable() || (rarity != EnumUtils.Rarity.COMMON && rarity != EnumUtils.Rarity.UNCOMMON
-                    && rarity != EnumUtils.Rarity.RARE) || (item.hasDisplayName() && item.getDisplayName().contains("Backpack"));
+                    && rarity != EnumUtils.Rarity.RARE);
         }
     }
 
@@ -669,7 +687,9 @@ public class Utils {
                 CooldownEntry cooldownEntry = getCooldownEntry(item, name);
                 if (!item.isDamageable() && abilityName == null) return; // if its not a tool and has no ability, its not gonna have a cooldown
                 if (cooldownEntry != null) {
-                    cooldownEntry.setLastUse();
+                    if (cooldownEntry.getCooldown() == 1) {
+                        cooldownEntry.setLastUse();
+                    }
                 } else {
                     cooldownEntries.add(new CooldownEntry(item,name,cooldownSeconds));
                 }
@@ -754,6 +774,19 @@ public class Utils {
         return null;
     }
 
+    public void drawString(Minecraft mc, String text, int x, int y, int color) {
+        if (main.getConfigValues().getTextStyle() == EnumUtils.TextStyle.BLACK_SHADOW) {
+            String strippedText = main.getUtils().stripColor(text);
+            mc.fontRendererObj.drawString(strippedText, x + 1, y, 0);
+            mc.fontRendererObj.drawString(strippedText, x - 1, y, 0);
+            mc.fontRendererObj.drawString(strippedText, x, y + 1, 0);
+            mc.fontRendererObj.drawString(strippedText, x, y - 1, 0);
+            mc.fontRendererObj.drawString(text, x, y, color);
+        } else {
+            mc.ingameGUI.drawString(mc.fontRendererObj, text, x, y, color);
+        }
+    }
+
     public boolean isPickaxe(Item item) {
         return Items.wooden_pickaxe.equals(item) || Items.stone_pickaxe.equals(item) || Items.golden_pickaxe.equals(item) || Items.iron_pickaxe.equals(item) || Items.diamond_pickaxe.equals(item);
     }
@@ -780,10 +813,52 @@ public class Utils {
             } else {
                 return false;
             }
-        } catch (IOException e) {
+        } catch (IOException | NullPointerException e) {
             e.printStackTrace();
         }
         return false;
+    }
+
+    private boolean lookedOnline = false;
+    private URI featuredLink = null;
+
+    public URI getFeaturedURL() {
+        if (featuredLink != null) return featuredLink;
+
+        BufferedReader reader;
+        reader = new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream("assets/skyblockaddons/featuredlink.txt")));
+        try {
+            String currentLine;
+            while ((currentLine = reader.readLine()) != null) {
+                featuredLink = new URI(currentLine);
+            }
+            reader.close();
+        } catch (IOException | URISyntaxException ignored) {
+        }
+
+        return featuredLink;
+    }
+
+    public void getFeaturedURLOnline() {
+        if (!lookedOnline) {
+            lookedOnline = true;
+            new Thread(() -> {
+                try {
+                    URL url = new URL("https://raw.githubusercontent.com/BiscuitDevelopment/SkyblockAddons/master/src/main/resources/assets/skyblockaddons/featuredlink.txt");
+                    URLConnection connection = url.openConnection(); // try looking online
+                    connection.setReadTimeout(5000);
+                    connection.addRequestProperty("User-Agent", "SkyblockAddons");
+                    connection.setDoOutput(true);
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                    String currentLine;
+                    while ((currentLine = reader.readLine()) != null) {
+                        featuredLink = new URI(currentLine);
+                    }
+                    reader.close();
+                } catch (IOException | URISyntaxException ignored) {
+                }
+            }).start();
+        }
     }
 
     public boolean isDevEnviroment() {
@@ -888,4 +963,5 @@ public class Utils {
     public void setProfileName(String profileName) {
         this.profileName = profileName;
     }
+
 }

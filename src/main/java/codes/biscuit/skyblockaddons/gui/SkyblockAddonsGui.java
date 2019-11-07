@@ -52,6 +52,8 @@ public class SkyblockAddonsGui extends GuiScreen {
         displayCount = findDisplayCount();
         addLanguageButton();
         addEditLocationsButton();
+        addFeaturedBanner();
+
         // Add the buttons for each page.
         Set<Feature> features = tab.getFeatures();
         if (features != null) {
@@ -157,6 +159,7 @@ public class SkyblockAddonsGui extends GuiScreen {
         // The text at the top of the GUI
         drawScaledString("SkyblockAddons", 28, defaultBlue, 2.5F, 0);
         drawScaledString("v" + SkyblockAddons.VERSION + " by Biscut", 49, defaultBlue, 1.3, 50);
+        drawScaledString("Featured", 5, defaultBlue, 1, -200);
         super.drawScreen(mouseX, mouseY, partialTicks); // Draw buttons.
     }
 
@@ -230,6 +233,10 @@ public class SkyblockAddonsGui extends GuiScreen {
             EnumUtils.Social social = ((ButtonSocial)abstractButton).getSocial();
             try {
                 Desktop.getDesktop().browse(social.getUrl());
+            } catch (Exception ignored) {}
+        } else if (abstractButton instanceof ButtonBanner) {
+            try {
+                Desktop.getDesktop().browse(main.getUtils().getFeaturedURL());
             } catch (Exception ignored) {}
         }
     }
@@ -315,6 +322,14 @@ public class SkyblockAddonsGui extends GuiScreen {
         int x = halfWidth-90-boxWidth;
         double y = getRowHeight(displayCount/3+1);
         buttonList.add(new ButtonNormal(x, y, boxWidth, boxHeight, Feature.EDIT_LOCATIONS.getMessage(), main, Feature.EDIT_LOCATIONS));
+    }
+
+
+    private void addFeaturedBanner() {
+        if (main.getUtils().getFeaturedURL() != null) {
+            int halfWidth = width / 2;
+            buttonList.add(new ButtonBanner(halfWidth - 200, 15, main));
+        }
     }
 
     @Override

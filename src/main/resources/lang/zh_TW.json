@@ -53,7 +53,7 @@
     "lockSlot": "鎖定欄位",
     "dontResetCursorInventory": "打開物品欄不會重製鼠標位置",
     "summoningEyeAlert": "召喚之眼警報",
-    "makeEnderchestsInEndGreen": "使在終界的終界箱顯示為綠色",
+    "makeEnderchestsInEndGreen": "於終界變更終界箱顏色",
     "changeColor": "變更顏色",
     "showInOtherGames": "顯示於其他遊戲",
     "useVanillaTexture": "使用原版材質",
@@ -69,7 +69,7 @@
     "avoidBreakingBottomSugarCane": "避免破壞位於底部的甘蔗",
     "replaceRomanNumeralsWithNumbers": "將羅馬數字替換為阿拉伯數字",
     "changeBarColorForPotions": "在凋零或中毒時改變計量條顏色",
-    "craftingPatterns": "選擇合成模式",
+    "craftingPatterns": "選擇合成格式",
     "soundIndicatorForFishing": "釣魚聲音提示",
     "avoidBlinkingNightVision": "取消夜視藥水閃爍",
     "disableMinionLocationWarning": "取消Minion位置不完美警告",
@@ -78,7 +78,9 @@
     "showItemCooldowns": "顯示物品冷卻",
     "speedPercentage": "速度百分比",
     "collectionDisplay": "技能進度顯示",
-    "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns"
+    "onlyMineOresDeepCaverns": "在Deep Caverns中只能挖掘礦物",
+    "revenantIndicator": "Slayer裝備進度指示",
+    "specialZealotAlert": "特殊Zealot警報"
   },
   "messages": {
     "dropConfirmation": "再次丟棄此物品以確認!",
@@ -116,8 +118,10 @@
     "cancelledProfileOpening": "SkyblockAddons阻止了你拿著弓打開其他玩家的資料。",
     "cancelledDropping": "SkyblockAddons阻止了你丟出快捷欄中稀有等級以上的物品。",
     "clickMoreTimes": "如果你真的想這麼做, 請再點擊或按丟出%times%次。",
-    "cancelledDeepCaverns": "A SkyblockAddons feature has stopped you from mining this block here.",
-    "featureDisabled": "停用功能",
-    "anvilUses": "鐵砧使用次數: %uses%"
+    "cancelledDeepCaverns": "一個SkyblockAddons的功能阻止了你挖掘此方塊",
+    "featureDisabled": "功能已被停用",
+    "anvilUses": "鐵砧使用次數: %uses%",
+    "specialZealotFound": "特殊Zealot!",
+    "blockIncompletePatterns": "阻止合成不正確的格式 (推薦)"
   }
 }

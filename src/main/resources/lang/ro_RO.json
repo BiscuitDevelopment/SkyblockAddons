@@ -53,7 +53,7 @@
     "lockSlot": "Blochează itemul",
     "dontResetCursorInventory": "Nu reseta cursorul între inventare",
     "summoningEyeAlert": "Alertă Summoning Eye",
-    "makeEnderchestsInEndGreen": "Fă culorile cuferelor din end verzi",
+    "makeEnderchestsInEndGreen": "Change Enderchest Color in the End",
     "changeColor": "Schimbă Culoarea",
     "showInOtherGames": "Afișează în alte jocuri",
     "useVanillaTexture": "Utilizează textura vanilla",
@@ -78,7 +78,9 @@
     "showItemCooldowns": "Arată Cooldown-ul Obiectelor",
     "speedPercentage": "Procentul Vitezei",
     "collectionDisplay": "Display Progres Abilități",
-    "onlyMineOresDeepCaverns": "Minează Numai Minereuri în Deep Caverns"
+    "onlyMineOresDeepCaverns": "Minează Numai Minereuri în Deep Caverns",
+    "revenantIndicator": "Slayer Armor Progress Indicator",
+    "specialZealotAlert": "Special Zealot Alert"
   },
   "messages": {
     "dropConfirmation": "Arunca acest obiect iar ca să confirmi!",
@@ -118,6 +120,8 @@
     "clickMoreTimes": "Aruncă acest item de încă %times% dacă vrei să faci asta.",
     "cancelledDeepCaverns": "O funcție SkyblockAddons te-a oprit din minatul acestui cub.",
     "featureDisabled": "Funcție dezactivată",
-    "anvilUses": "Utilizări Nicovală: %uses%"
+    "anvilUses": "Utilizări Nicovală: %uses%",
+    "specialZealotFound": "Special Zealot!",
+    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)"
   }
 }

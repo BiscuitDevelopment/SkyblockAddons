@@ -53,7 +53,7 @@
     "lockSlot": "Zakljucaj polje",
     "dontResetCursorInventory": "Nemoj Restartovati Mis Između Inventara",
     "summoningEyeAlert": "Upozorenje Za Summoning Eye",
-    "makeEnderchestsInEndGreen": "Napravi Enderchestove u End-u Zelene",
+    "makeEnderchestsInEndGreen": "Change Enderchest Color in the End",
     "changeColor": "Promeni boju",
     "showInOtherGames": "Prikaži u drugim igrama",
     "useVanillaTexture": "Koristi Vanilla Teksuru",
@@ -78,7 +78,9 @@
     "showItemCooldowns": "Show Item Cooldowns",
     "speedPercentage": "Speed Percentage",
     "collectionDisplay": "Skill Progress Display",
-    "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns"
+    "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns",
+    "revenantIndicator": "Slayer Armor Progress Indicator",
+    "specialZealotAlert": "Special Zealot Alert"
   },
   "messages": {
     "dropConfirmation": "Opet baci ovu stvar za potvrdu!",
@@ -118,6 +120,8 @@
     "clickMoreTimes": "Klikni/Baci ovaj predmet još %times% puta ako stvarno želiš ovo da uradiš.",
     "cancelledDeepCaverns": "A SkyblockAddons feature has stopped you from mining this block here.",
     "featureDisabled": "Funkcija Isključena",
-    "anvilUses": "Anvil Uses: %uses%"
+    "anvilUses": "Anvil Uses: %uses%",
+    "specialZealotFound": "Special Zealot!",
+    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)"
   }
 }

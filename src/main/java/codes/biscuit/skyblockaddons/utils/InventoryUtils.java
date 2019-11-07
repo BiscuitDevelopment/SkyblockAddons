@@ -11,6 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumChatFormatting;
 
+import java.math.BigDecimal;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -37,7 +38,7 @@ public class InventoryUtils {
     private boolean inventoryIsFull;
     private boolean wearingSkeletonHelmet;
 
-    private RevenantArmorProgress[] revenantArmorProgresses = new RevenantArmorProgress[3];
+    private SlayerArmorProgress[] slayerArmorProgresses = new SlayerArmorProgress[4];
 
     private SkyblockAddons main;
 
@@ -167,7 +168,7 @@ public class InventoryUtils {
             if (!inventoryIsFull) {
                 inventoryIsFull = true;
                 if (mc.currentScreen == null && main.getPlayerListener().didntRecentlyJoinWorld()) {
-                    main.getUtils().playSound("random.orb", 0.5);
+                    main.getUtils().playLoudSound("random.orb", 0.5);
                     main.getRenderListener().setTitleFeature(Feature.FULL_INVENTORY_WARNING);
                     main.getScheduler().schedule(Scheduler.CommandType.RESET_TITLE_FEATURE, main.getConfigValues().getWarningSeconds());
                 }
@@ -235,7 +236,7 @@ public class InventoryUtils {
                         Message.MESSAGE_CLICK_MORE_TIMES.getMessage(String.valueOf(3-dropCount)));
                 lastItem = item;
                 lastDrop = System.currentTimeMillis();
-                main.getUtils().playSound("note.bass", 0.5);
+                main.getUtils().playLoudSound("note.bass", 0.5);
                 return true;
             }
         }
@@ -263,35 +264,38 @@ public class InventoryUtils {
     }
 
     public void checkIfWearingRevenantArmor(EntityPlayerSP p) {
-        ConfigColor color = main.getConfigValues().getColor(Feature.REVENANT_INDICATOR);
-        for (int i = 2; i > -1; i--) {
+        ConfigColor color = main.getConfigValues().getColor(Feature.SLAYER_INDICATOR);
+        for (int i = 3; i > -1; i--) {
             ItemStack item = p.inventory.armorInventory[i];
             String itemID = getSkyBlockItemID(item);
-            if (itemID != null && itemID.startsWith("REVENANT")) {
+            if (itemID != null && (itemID.startsWith("REVENANT") || itemID.startsWith("TARANTULA"))) {
                 String progress = null;
                 List<String> tooltip = item.getTooltip(null, false);
                 for (String line : tooltip) {
                     Matcher matcher = REVENANT_UPGRADE_PATTERN.matcher(line);
                     if (matcher.matches()) { // Example: line§5§o§7Next Upgrade: §a+240❈ §8(§a14,418§7/§c15,000§8)
                         try {
-                            progress = color.toString() + matcher.group(2)+"/"+matcher.group(3) + " (" + ConfigColor.GREEN+ matcher.group(1) + color + ")";
+//                            progress = color.toString() + matcher.group(2)+"/"+matcher.group(3) + " (" + ConfigColor.GREEN+ matcher.group(1) + color + ")";
+                            float percentage = Float.parseFloat(matcher.group(2).replace(",", ""))/Integer.parseInt(matcher.group(3).replace(",", ""))*100;
+                            BigDecimal bigDecimal = new BigDecimal(percentage).setScale(0, BigDecimal.ROUND_HALF_UP);
+                            progress = color.toString() + bigDecimal.toString() + "% (" + ConfigColor.GREEN+ matcher.group(1) + color + ")";
                             break;
                         } catch (NumberFormatException ignored) {}
                     }
                 }
                 if (progress != null) {
-                    if (revenantArmorProgresses[i] == null) {
-                        revenantArmorProgresses[i] = new RevenantArmorProgress(item, progress);
+                    if (slayerArmorProgresses[i] == null) {
+                        slayerArmorProgresses[i] = new SlayerArmorProgress(item, progress);
                     }
-                    revenantArmorProgresses[i].setProgressText(progress);
+                    slayerArmorProgresses[i].setProgressText(progress);
                 }
             } else {
-                revenantArmorProgresses[i] = null;
+                slayerArmorProgresses[i] = null;
             }
         }
     }
 
-    public RevenantArmorProgress[] getRevenantArmorProgresses() {
-        return revenantArmorProgresses;
+    public SlayerArmorProgress[] getSlayerArmorProgresses() {
+        return slayerArmorProgresses;
     }
 }

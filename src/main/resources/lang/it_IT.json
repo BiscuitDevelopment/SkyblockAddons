@@ -53,7 +53,7 @@
     "lockSlot": "Blocca Slot",
     "dontResetCursorInventory": "Non resettare il cursore tra gli inventari",
     "summoningEyeAlert": "Avviso di acquisizione di un Occhio dell'evocazione",
-    "makeEnderchestsInEndGreen": "Rendi le casse nell'End verdi",
+    "makeEnderchestsInEndGreen": "Cambia il colore dell’enderchest nell’End",
     "changeColor": "Cambia colore",
     "showInOtherGames": "Mostra in Altri Giochi",
     "useVanillaTexture": "Usa la Texture Vanilla",
@@ -78,7 +78,9 @@
     "showItemCooldowns": "Mostra i tempi di ricarica degli oggetti",
     "speedPercentage": "Percentuale di Velocità",
     "collectionDisplay": "Visualizzazione del progresso dell’abilità",
-    "onlyMineOresDeepCaverns": "Estrai minerali solo nelle Deep Caverns"
+    "onlyMineOresDeepCaverns": "Estrai minerali solo nelle Deep Caverns",
+    "revenantIndicator": "Indicatore di progresso dell’Armatura Slayer",
+    "specialZealotAlert": "Avviso di Zealot Speciale"
   },
   "messages": {
     "dropConfirmation": "Getta questo oggetto nuovamente per confermare!",
@@ -118,6 +120,8 @@
     "clickMoreTimes": "Clicca/getta questo oggetto altre %times% volte se vuoi davvero farlo.",
     "cancelledDeepCaverns": "Una funzione di SkyBlockAddons ti ha impedito di estrarre questo blocco.",
     "featureDisabled": "Funzione disabilitata",
-    "anvilUses": "Utilizzi dell’incudine: %uses%"
+    "anvilUses": "Utilizzi dell’incudine: %uses%",
+    "specialZealotFound": "Zealot Speciale!",
+    "blockIncompletePatterns": "Blocco degli schemi di fabbricazione incompleti (consigliato)"
   }
 }

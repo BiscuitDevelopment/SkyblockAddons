@@ -77,7 +77,7 @@ public enum Message {
     SETTING_COLLECTION_DISPLAY(MessageObject.SETTING, "collectionDisplay"),
     SETTING_SPEED_PERCENTAGE(MessageObject.SETTING, "speedPercentage"),
     SETTING_ONLY_MINE_ORES_DEEP_CAVERNS(MessageObject.SETTING, "onlyMineOresDeepCaverns"),
-    SETTING_REVENANT_INDICATOR(MessageObject.SETTING, "revenantIndicator"),
+    SETTING_SLAYER_INDICATOR(MessageObject.SETTING, "revenantIndicator"),
     SETTING_SPECIAL_ZEALOT_ALERT(MessageObject.SETTING, "specialZealotAlert"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.STYLE, "regular"),
@@ -111,6 +111,7 @@ public enum Message {
     MESSAGE_ANVIL_USES(MessageObject.MESSAGES, "anvilUses"),
     MESSAGE_CANCELLED_NON_ORES_BREAK(MessageObject.MESSAGES, "cancelledDeepCaverns"),
     MESSAGE_SPECIAL_ZEALOT_FOUND(MessageObject.MESSAGES, "specialZealotFound"),
+    BLOCK_INCOMPLETE_PATTERNS(MessageObject.MESSAGES, "blockIncompletePatterns"),
 
     @Deprecated ANCHOR_POINT_TOP_LEFT(MessageObject.ANCHOR_POINT, "topLeft"),
     @Deprecated ANCHOR_POINT_TOP_RIGHT(MessageObject.ANCHOR_POINT, "topRight"),

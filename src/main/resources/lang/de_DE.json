@@ -50,10 +50,10 @@
     "preventMovementOnDeath": "Verhindere das Laufen nach dem Tot",
     "showItemAnvilUses": "Zeige Ambossnutzungen eines Items",
     "lockSlots": "Slots sperren erlauben",
-    "lockSlot": "Sperre slot",
+    "lockSlot": "Sperre Slot",
     "dontResetCursorInventory": "Mauszeiger zwischen Inventaren nicht zurücksetzen",
     "summoningEyeAlert": "Summoning Eye Alarm",
-    "makeEnderchestsInEndGreen": "Färbe Endertruhen im End grün",
+    "makeEnderchestsInEndGreen": "Ändere die Endertruhenfarbe im End",
     "changeColor": "Farbe ändern",
     "showInOtherGames": "In anderen Spielen anzeigen",
     "useVanillaTexture": "Vanilla Textur benutzen",
@@ -78,7 +78,9 @@
     "showItemCooldowns": "Item Abklingzeit anzeigen",
     "speedPercentage": "Geschwindigkeit in Prozent",
     "collectionDisplay": "Skillfortschrittsanzeige",
-    "onlyMineOresDeepCaverns": "Nur Erze in Deep Caverns abbauen"
+    "onlyMineOresDeepCaverns": "Nur Erze in Deep Caverns abbauen",
+    "revenantIndicator": "Slayer Rüstung Fortschritt Anzeige",
+    "specialZealotAlert": "Spezieller Zealot Alarm"
   },
   "messages": {
     "dropConfirmation": "Werfe diesen Gegenstand nochmal, um zu bestätigen!",
@@ -118,6 +120,8 @@
     "clickMoreTimes": "Klicke/droppe dieses Item %times% mal mehr, wenn du das wirklich tun möchtest.",
     "cancelledDeepCaverns": "SkyblockAddons hat dich davon abgehalten diesen Block abbzubauen.",
     "featureDisabled": "Funktion deaktiviert",
-    "anvilUses": "Ambossnutzungen: %uses%"
+    "anvilUses": "Ambossnutzungen: %uses%",
+    "specialZealotFound": "Spezieller Zealot!",
+    "blockIncompletePatterns": "Block craften unvollständige Muster (empfohlen)"
   }
 }

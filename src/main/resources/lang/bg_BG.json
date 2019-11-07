@@ -53,7 +53,7 @@
     "lockSlot": "Зaключи слот",
     "dontResetCursorInventory": "Не Рестартирай Курсора Между Инвентари",
     "summoningEyeAlert": "Предупреждение за Призоваващо Око",
-    "makeEnderchestsInEndGreen": "Нaпрaви Ендер Сандъците в Края да са Зелени",
+    "makeEnderchestsInEndGreen": "Change Enderchest Color in the End",
     "changeColor": "Смени Цвeтa",
     "showInOtherGames": "Покaжи в Други Игри",
     "useVanillaTexture": "Използвaй Ванила Визия",
@@ -78,7 +78,9 @@
     "showItemCooldowns": "Show Item Cooldowns",
     "speedPercentage": "Speed Percentage",
     "collectionDisplay": "Skill Progress Display",
-    "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns"
+    "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns",
+    "revenantIndicator": "Slayer Armor Progress Indicator",
+    "specialZealotAlert": "Special Zealot Alert"
   },
   "messages": {
     "dropConfirmation": "Хвърлете Този Предмет Отново за да Потвърдите!",
@@ -118,6 +120,8 @@
     "clickMoreTimes": "Натиснете Копчето Ви За Хвърляне На Предмети Още %times% Път/Пъти Ако Найстина Искате Да Го Изхвърлитен",
     "cancelledDeepCaverns": "A SkyblockAddons feature has stopped you from mining this block here.",
     "featureDisabled": "Feature Disabled",
-    "anvilUses": "Anvil Uses: %uses%"
+    "anvilUses": "Anvil Uses: %uses%",
+    "specialZealotFound": "Special Zealot!",
+    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)"
   }
 }

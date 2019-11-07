@@ -53,7 +53,7 @@
     "lockSlot": "Khoá ô",
     "dontResetCursorInventory": "Không di chuyển con trỏ khi mở túi đồ",
     "summoningEyeAlert": "Cảnh báo: Nhặt Mắt Triệu hồi",
-    "makeEnderchestsInEndGreen": "Làm Cho Hòm Ender Màu Xanh Ở The End",
+    "makeEnderchestsInEndGreen": "Đổi màu rương ender trong The End",
     "changeColor": "Thay đổi màu sắc",
     "showInOtherGames": "Hiện trong các trò khác",
     "useVanillaTexture": "Sử dụng đồ họa nguyên bản",
@@ -78,7 +78,9 @@
     "showItemCooldowns": "Hiển thị thời gian hồi vật phẩm",
     "speedPercentage": "Phần trăm tốc độ",
     "collectionDisplay": "Hiển thị kĩ năng",
-    "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns"
+    "onlyMineOresDeepCaverns": "Chỉ đào quặng trong Hang Sâu",
+    "revenantIndicator": "Hiển thị độ phát triển của giáp Slayer",
+    "specialZealotAlert": "Cảnh báo Zealot đặc biệt"
   },
   "messages": {
     "dropConfirmation": "Nhấn \"Q\" Thêm Một Lần Nữa Để Xác Nhận!",
@@ -116,8 +118,10 @@
     "cancelledProfileOpening": "SkyblockAddons Đã Ngăn Bạn Xem Thông Về Người Chơi Này Khi Bạn Đang Cầm Cung.",
     "cancelledDropping": "SkyblockAddons đã ngăn bạn làm rơi đồ hiếm từ thanh vật phẩm.",
     "clickMoreTimes": "Bấm/Thả Đồ Vật Này Thêm %times% Lần Nữa Nếu Bạn Muốn Thực Hiện Điều Này.",
-    "cancelledDeepCaverns": "A SkyblockAddons feature has stopped you from mining this block here.",
+    "cancelledDeepCaverns": "SkyblockAddon đã ngăn bạn đào khối này.",
     "featureDisabled": "Vô hiệu hóa tính năng",
-    "anvilUses": "Số lần sử dụng đe: %uses%"
+    "anvilUses": "Số lần sử dụng đe: %uses%",
+    "specialZealotFound": "Zealot hiếm!",
+    "blockIncompletePatterns": "Các nguyên liệu thiếu cho chế tạo block\n(Khuyến nghị)"
   }
 }

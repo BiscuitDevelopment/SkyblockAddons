@@ -50,10 +50,10 @@
     "preventMovementOnDeath": "죽은 후 걸어지는 버그 방지",
     "showItemAnvilUses": "아이템 모루질 횟수 표시",
     "lockSlots": "슬롯 잠금 활성화",
-    "lockSlot": "Lock Slot",
+    "lockSlot": "슬롯 잠금",
     "dontResetCursorInventory": "인벤토리 내의 마우스 위치 리셋 방지",
     "summoningEyeAlert": "소환의 눈 알림",
-    "makeEnderchestsInEndGreen": "엔드 섬에서 엔더상자를 초록색으로 표시",
+    "makeEnderchestsInEndGreen": "Change Enderchest Color in the End",
     "changeColor": "색상 변경",
     "showInOtherGames": "다른 미니게임에서도 보이기",
     "useVanillaTexture": "원래 텍스쳐 유지하기",
@@ -68,17 +68,19 @@
     "makeBackpackInventoriesColored": "색깔 있는 백팩 인벤토리",
     "avoidBreakingBottomSugarCane": "사탕수수 밑동 부수기 방지",
     "replaceRomanNumeralsWithNumbers": "로마숫자를 숫자로 표시",
-    "changeBarColorForPotions": "Change Bar Color for Wither & Poison",
-    "craftingPatterns": "Choose Crafting Patterns",
-    "soundIndicatorForFishing": "Sound Indicator for Fishing",
-    "avoidBlinkingNightVision": "Disable Night Vision Potion Blinking",
-    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings",
-    "jungleAxeCooldown": "Jungle Axe Cooldown",
-    "organizeLongEnchantmentLists": "Organize Long Enchantment Lists",
-    "showItemCooldowns": "Show Item Cooldowns",
-    "speedPercentage": "Speed Percentage",
-    "collectionDisplay": "Skill Progress Display",
-    "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns"
+    "changeBarColorForPotions": "바 색상 변경",
+    "craftingPatterns": "제작 패턴 선택",
+    "soundIndicatorForFishing": "낚시 소리 표시",
+    "avoidBlinkingNightVision": "나이트비전 탈리스만 깜박이 비활성화",
+    "disableMinionLocationWarning": "완벽하지 않은 위치 비활성화",
+    "jungleAxeCooldown": "정글 도끼 쿨타임",
+    "organizeLongEnchantmentLists": "긴 마법 부여 목록 설정",
+    "showItemCooldowns": "아이템 쿨타임 표시",
+    "speedPercentage": "속도 퍼센트",
+    "collectionDisplay": "스킬 경험치 표시",
+    "onlyMineOresDeepCaverns": "깊은 동굴에서 한가지 광석",
+    "revenantIndicator": "Slayer Armor Progress Indicator",
+    "specialZealotAlert": "특별한 질럿 경고"
   },
   "messages": {
     "dropConfirmation": "아이템을 정말로 버리려면 다시 버리세요!",
@@ -94,7 +96,7 @@
     "inventoryTypes": {
       "enchants": "인챈트",
       "reforges": "리포지",
-      "crafting": "Crafting"
+      "crafting": "제작"
     },
     "newUpdateAvailable": "새로운 버전을 (%version%) 를 사용할수있습니다",
     "deleteOldFile": "다운로드가 완료되었습니다. 아래 버튼을 사용하여 mods 폴더를 열고 마인크래프트를 종료 후 이전 버전을 삭제하십시오 (원하는경우 나중에 삭제하십시오).",
@@ -105,7 +107,7 @@
     "joinTheDiscord": "디스코드 가입",
     "update": {
       "majorAvailable": "새로운 업데이트 ( % version %) 가 제공됩니다! 다운로드 링크는 채팅에서 찾을수 있습니다.",
-      "patchAvailable": "A new patch update (%version%) is available! Look in chat for download options!",
+      "patchAvailable": "새로운 패치 업데이트 ( % version %) 가 제공됩니다! 채팅에서 다운로드 옵션을 찾으십시오!",
       "downloading": "패치가 다운로드 중입니다! 상태:%downloaded%/%total% 다운로드가 완료되면 이전 파일을 삭제해야합니다.",
       "failed": "패치 다운로드에 실패했습니다! 채팅 링크를 사용하여 수동으로 다운로드하십시오.",
       "downloadFinished": "모드 다운로드가 %file%로 저장되었습니다. 마인크래프트를 닫은 후 이전파일을 삭제하는 것을 잊지 마십시오. 채팅에서 메세지를 클릭하여 폴더를 엽니다."
@@ -116,8 +118,10 @@
     "cancelledProfileOpening": "SkyblockAddons이 활을 든 채 이 플레이어의 프로필을 여는 것을 방지했습니다.",
     "cancelledDropping": "SkyblockAddons이 이 희귀한 아이템 또는 도구를 핫바에서 떨어뜨리는 것을 방지했습니다.",
     "clickMoreTimes": "정말 이 아이템을 떨어뜨리려면 %times%번 더 떨어뜨리세요.",
-    "cancelledDeepCaverns": "A SkyblockAddons feature has stopped you from mining this block here.",
-    "featureDisabled": "Feature Disabled",
-    "anvilUses": "Anvil Uses: %uses%"
+    "cancelledDeepCaverns": "SkyblockAddons 기능으로 인해이 블록을 채굴하지 못했습니다.",
+    "featureDisabled": "기능 비활성화",
+    "anvilUses": "모루 사용:% uses %",
+    "specialZealotFound": "스페셜 질럿!",
+    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)"
   }
 }

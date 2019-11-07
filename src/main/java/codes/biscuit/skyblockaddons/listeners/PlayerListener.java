@@ -14,6 +14,9 @@ import net.minecraft.entity.monster.EntityMagmaCube;
 import net.minecraft.entity.monster.EntitySlime;
 import net.minecraft.entity.projectile.EntityFishHook;
 import net.minecraft.init.Items;
+import net.minecraft.inventory.Container;
+import net.minecraft.inventory.ContainerChest;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.ChatComponentText;
@@ -51,8 +54,7 @@ public class PlayerListener {
     private final Pattern ABILITY_CHAT_PATTERN = Pattern.compile("§r§aUsed §r§6[A-Za-z ]+§r§a! §r§b\\([0-9]+ Mana\\)§r");
     private final Pattern PROFILE_CHAT_PATTERN = Pattern.compile("§aYou are playing on profile: §e([A-Za-z]+).*");
     private final Pattern SWITCH_PROFILE_CHAT_PATTERN = Pattern.compile("§aYour profile was changed to: §e([A-Za-z]+).*");
-    private final Pattern COLLECTIONS_CHAT_PATTERN = Pattern.compile("§.\\+([0-9.]+) §?[0-9a-f]?([A-Za-z]+) (\\([0-9.,]+/[0-9.,]+\\))");
-    private final Pattern COLLECTIONS_CHAT_PATTERN_COLORED = Pattern.compile("§.\\+§[0-9a-f]([0-9.]+) §?[0-9a-f]?([A-Za-z]+) (\\([0-9.,]+/[0-9.,]+\\))");
+    private final Pattern COLLECTIONS_CHAT_PATTERN = Pattern.compile("§.\\+(?:§[0-9a-f])?([0-9.]+) §?[0-9a-f]?([A-Za-z]+) (\\([0-9.,]+/[0-9.,]+\\))");
 
     private boolean sentUpdate = false;
     private long lastWorldJoin = -1;
@@ -150,12 +152,7 @@ public class PlayerListener {
                                 if (matcher.matches()) {
                                     main.getRenderListener().setSkillText("+"+matcher.group(1)+" "+matcher.group(3));
                                     main.getRenderListener().setSkill(matcher.group(2));
-                                } else {
-                                    matcher = COLLECTIONS_CHAT_PATTERN_COLORED.matcher(collectionPart);
-                                    if (matcher.matches()) {
-                                        main.getRenderListener().setSkillText("+"+matcher.group(1)+" "+matcher.group(3));
-                                        main.getRenderListener().setSkill(matcher.group(2));
-                                    }
+                                    main.getRenderListener().setSkillFadeOutTime(System.currentTimeMillis()+6000);
                                 }
                             }
                             manaPart = splitMessage[2];
@@ -186,7 +183,7 @@ public class PlayerListener {
                         main.getRenderListener().setPredictHealth(false);
                         StringBuilder newMessage = new StringBuilder();
                         boolean showHealth = main.getConfigValues().isDisabled(Feature.HEALTH_BAR) && main.getConfigValues().isDisabled(Feature.HEALTH_TEXT);
-                        boolean showCollection = collectionPart != null && main.getConfigValues().isDisabled(Feature.COLLECTION_DISPLAY);
+                        boolean showCollection = collectionPart != null && main.getConfigValues().isDisabled(Feature.SKILL_DISPLAY);
                         boolean showDefence = defencePart != null && main.getConfigValues().isDisabled(Feature.DEFENCE_PERCENTAGE) && main.getConfigValues().isDisabled(Feature.DEFENCE_TEXT);
                         boolean showMana = main.getConfigValues().isDisabled(Feature.MANA_BAR) && main.getConfigValues().isDisabled(Feature.MANA_TEXT);
                         if (showHealth) {
@@ -232,11 +229,11 @@ public class PlayerListener {
             }
             // credits to tomotomo, thanks lol
             if (main.getConfigValues().isEnabled(Feature.SUMMONING_EYE_ALERT) && e.message.getFormattedText().equals("§r§6§lRARE DROP! §r§5Summoning Eye§r")) {
-                main.getUtils().playSound("random.orb", 0.5);
+                main.getUtils().playLoudSound("random.orb", 0.5);
                 main.getRenderListener().setTitleFeature(Feature.SUMMONING_EYE_ALERT);
                 main.getScheduler().schedule(Scheduler.CommandType.RESET_TITLE_FEATURE, main.getConfigValues().getWarningSeconds());
             } else if (main.getConfigValues().isEnabled(Feature.SPECIAL_ZEALOT_ALERT) && e.message.getFormattedText().equals("§r§aA special §r§5Zealot §r§ahas spawned nearby!§r")) {
-                main.getUtils().playSound("random.orb", 0.5);
+                main.getUtils().playLoudSound("random.orb", 0.5);
                 main.getRenderListener().setTitleFeature(Feature.SUMMONING_EYE_ALERT);
                 main.getRenderListener().setTitleFeature(Feature.SPECIAL_ZEALOT_ALERT);
                 main.getScheduler().schedule(Scheduler.CommandType.RESET_TITLE_FEATURE, main.getConfigValues().getWarningSeconds());
@@ -288,10 +285,7 @@ public class PlayerListener {
                     oldBobberPosY = 0;
                 }
                 if (main.getConfigValues().isEnabled(Feature.SHOW_ITEM_COOLDOWNS) && mc.thePlayer.fishEntity != null) {
-                    CooldownEntry cooldown = main.getUtils().getItemCooldown("§aGrappling Hook");
-                    if (cooldown == null || cooldown.getCooldown() == 1) {
-                        main.getUtils().logEntry(mc.thePlayer.getHeldItem());
-                    }
+                    main.getUtils().logEntry(mc.thePlayer.getHeldItem());
                 }
             } else if (main.getConfigValues().isEnabled(Feature.AVOID_PLACING_ENCHANTED_ITEMS) && EnchantedItemBlacklist.shouldBlockUsage(heldItem)
                     && (e.action == PlayerInteractEvent.Action.RIGHT_CLICK_BLOCK || e.action == PlayerInteractEvent.Action.RIGHT_CLICK_AIR)) {
@@ -326,7 +320,7 @@ public class PlayerListener {
                     }
                 }
                 if (shouldTriggerFishingIndicator()) { // The logic fits better in its own function
-                    main.getUtils().playSound("random.successful_hit", 0.8);
+                    main.getUtils().playLoudSound("random.successful_hit", 0.8);
                 }
                 if (timerTick == 20) { // Add natural mana every second (increase is based on your max mana).
                     if (main.getRenderListener().isPredictMana()) {
@@ -376,7 +370,7 @@ public class PlayerListener {
                     long now = System.currentTimeMillis();
                     if (now - lastMinionSound > cooldown) { //this just spams message...
                         lastMinionSound = now;
-                        main.getUtils().playSound("random.pop", 1);
+                        main.getUtils().playLoudSound("random.pop", 1);
                         main.getRenderListener().setSubtitleFeature(Feature.MINION_FULL_WARNING);
                         main.getScheduler().schedule(Scheduler.CommandType.RESET_SUBTITLE_FEATURE, main.getConfigValues().getWarningSeconds());
                     }
@@ -385,7 +379,7 @@ public class PlayerListener {
                     long now = System.currentTimeMillis();
                     if (now - lastMinionSound > cooldown) {
                         lastMinionSound = now;
-                        main.getUtils().playSound("random.orb", 1);
+                        main.getUtils().playLoudSound("random.orb", 1);
                         String mobName = entity.getCustomNameTag().split(Pattern.quote("§cI can\'t reach any "))[1].toLowerCase();
                         if (mobName.lastIndexOf("s") == mobName.length() - 1) {
                             mobName = mobName.substring(0, mobName.length() - 1);
@@ -466,7 +460,7 @@ public class PlayerListener {
                         }
                     }
                     if (main.getRenderListener().getTitleFeature() == Feature.MAGMA_WARNING && magmaTick % 4 == 0) { // Play sound every 4 ticks or 1/5 second.
-                        main.getUtils().playSound("random.orb", 0.5);
+                        main.getUtils().playLoudSound("random.orb", 0.5);
                     }
                 }
             }
@@ -552,10 +546,21 @@ public class PlayerListener {
             }
         }
 
-        if (e.toolTip != null && e.toolTip.size() > 4 && main.getUtils().isOnSkyblock()) {
+        if (e.toolTip != null && main.getUtils().isOnSkyblock() && !main.getConfigValues().isRemoteDisabled(Feature.HIDE_GREY_ENCHANTS)) {
             for (int i = 1; i <= 3; i++) { // only a max of 2 gray enchants are possible
+                if (i >= e.toolTip.size()) continue; // out of bounds
+
+                GuiScreen gui = Minecraft.getMinecraft().currentScreen;
+                if (gui instanceof GuiChest) {
+                    Container chest = ((GuiChest)gui).inventorySlots;
+                    if (chest instanceof ContainerChest) {
+                        IInventory inventory = ((ContainerChest)chest).getLowerChestInventory();
+                        if (inventory.hasCustomName() && "Enchant Item".equals(inventory.getDisplayName().getUnformattedText())) {
+                            continue; // dont replace enchants when you are enchanting items in an enchantment table
+                        }
+                    }
+                }
                 String line = e.toolTip.get(i);
-//                System.out.println(line);
                 if (!line.startsWith("§5§o§9") && (line.contains("Respiration") || line.contains("Aqua Affinity")
                         || line.contains("Depth Strider") || line.contains("Efficiency"))) {
                     e.toolTip.remove(line);

@@ -53,7 +53,7 @@
     "lockSlot": "Bloquear um slot",
     "dontResetCursorInventory": "Não resetar o cursor entre inventários",
     "summoningEyeAlert": "Alerta de Summoning Eyes",
-    "makeEnderchestsInEndGreen": "Tornar os baús do fim no Fim verdes",
+    "makeEnderchestsInEndGreen": "Mudar a cor do baú do fim no Fim",
     "changeColor": "Mudar a cor",
     "showInOtherGames": "Mostrar em outros jogos",
     "useVanillaTexture": "Usar a textura do vanilla",
@@ -78,7 +78,9 @@
     "showItemCooldowns": "Mostrar os tempos de espera dos itens",
     "speedPercentage": "Percentagem de velocidade",
     "collectionDisplay": "Progresso das habilidades",
-    "onlyMineOresDeepCaverns": "Só partir minérios nas Deep Caverns"
+    "onlyMineOresDeepCaverns": "Partir minérios só nas Deep Caverns",
+    "revenantIndicator": "Indicador de progresso da Slayer Armor",
+    "specialZealotAlert": "Alerta para Zealots especiais"
   },
   "messages": {
     "dropConfirmation": "Dropa este item outra vez para confirmar!",
@@ -118,6 +120,8 @@
     "clickMoreTimes": "Clica/dropa este item mais %times% vezes se quiseres mesmo fazer isto.",
     "cancelledDeepCaverns": "Uma funcionalidade do SkyblockAddons preveniu-te de partires este minério aqui.",
     "featureDisabled": "Função Desativada",
-    "anvilUses": "Usos na bigorna: %uses%"
+    "anvilUses": "Usos na bigorna: %uses%",
+    "specialZealotFound": "Zealot especial!",
+    "blockIncompletePatterns": "Bloquear padrões de criação incompletos (recomendado)"
   }
 }

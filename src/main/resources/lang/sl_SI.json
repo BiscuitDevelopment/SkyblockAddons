@@ -1,5 +1,5 @@
 {
-  "language": "Slovenščina",
+  "language": "slovenščina",
   "settings": {
     "tab": {
       "features": "Funkcije",
@@ -53,7 +53,7 @@
     "lockSlot": "Zakleni Prostor",
     "dontResetCursorInventory": "Ne Ponastavljaj Kazalca Med Inventarji",
     "summoningEyeAlert": "Opozorilo Za Summoning Oko",
-    "makeEnderchestsInEndGreen": "Naredi Ender Skrinje v Endu Zelene",
+    "makeEnderchestsInEndGreen": "Change Enderchest Color in the End",
     "changeColor": "Spremeni barvo",
     "showInOtherGames": "Pokaži v Drugih Igrah",
     "useVanillaTexture": "Uporabi Vanilla Izgled",
@@ -70,15 +70,17 @@
     "replaceRomanNumeralsWithNumbers": "Zamenjaj Rimska Števila na Stvareh",
     "changeBarColorForPotions": "Spremeni Barvo Vrstice za Wither in Poison",
     "craftingPatterns": "Izberi Vzorce Izdelovanja",
-    "soundIndicatorForFishing": "Sound Indicator for Fishing",
-    "avoidBlinkingNightVision": "Disable Night Vision Potion Blinking",
-    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings",
-    "jungleAxeCooldown": "Jungle Axe Cooldown",
-    "organizeLongEnchantmentLists": "Organize Long Enchantment Lists",
-    "showItemCooldowns": "Show Item Cooldowns",
-    "speedPercentage": "Speed Percentage",
-    "collectionDisplay": "Skill Progress Display",
-    "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns"
+    "soundIndicatorForFishing": "Zvočni Indikator za Ribolov",
+    "avoidBlinkingNightVision": "Izključi Utripanje Night Vision Potion-a",
+    "disableMinionLocationWarning": "Izključi Opozorila o Neugodni Lokaciji",
+    "jungleAxeCooldown": "Cooldown Sekire Džungle",
+    "organizeLongEnchantmentLists": "Organiziraj Dolge Sezname Enchantanja",
+    "showItemCooldowns": "Prikaži Cooldown za Stvari",
+    "speedPercentage": "Odstotek Hitrosti",
+    "collectionDisplay": "Prikaz Skill Napredka",
+    "onlyMineOresDeepCaverns": "Uničuj Rude Samo v Deep Caverns-ih",
+    "revenantIndicator": "Slayer Armor Progress Indicator",
+    "specialZealotAlert": "Opozorilo za Posebnega Zealota"
   },
   "messages": {
     "dropConfirmation": "Ponovno Izpusti To Stvar za Potrditev!",
@@ -94,21 +96,21 @@
     "inventoryTypes": {
       "enchants": "Enchanti",
       "reforges": "Reforgi",
-      "crafting": "Crafting"
+      "crafting": "Izdelovanje"
     },
     "newUpdateAvailable": "Na voljo je nova različica (%version%)!",
-    "deleteOldFile": "The download has finished, please open your mods folder using the button below, close your Minecraft, and delete the old version (or delete it later if you prefer).",
-    "wantToViewPatchNotes": "Want to read the changes?",
-    "downloadLink": "UPDATE LINK",
+    "deleteOldFile": "Prenos je končan, prosim da odprete mapo za mode preko gumba nižje, zaprete veš Minecraft, in izbrišete staro različico (ali pa jo izbrišete kasneje, če želite).",
+    "wantToViewPatchNotes": "Želiš prebrati spremembe?",
+    "downloadLink": "LINK ZA POSODOBITEV",
     "downloadAutomatically": "Automatsko prenesi",
-    "openModFolder": "MODS FOLDER",
+    "openModFolder": "MAPA ZA MODE",
     "joinTheDiscord": "Pridruži se Discordu",
     "update": {
-      "majorAvailable": "A new major update (%version%) is available! The link for the download can be found in chat.",
-      "patchAvailable": "A new patch update (%version%) is available! Look in chat for download options!",
-      "downloading": "The patch is downloading! Status: %downloaded%/%total% Please note that after the download has finished, you must delete the old file.",
-      "failed": "The patch download has failed! Please download it manually using the link in chat.",
-      "downloadFinished": "The patch has finished downloading. It has been saved as %file%. Please don't forget to delete the old file after closing your Minecraft. Click the message in chat to open up the folder."
+      "majorAvailable": "Nova večja posodobitev (%version%) je na voljo! Link za prenos je v chatu.",
+      "patchAvailable": "Nova posodobitev (%version%) je na voljo! Poglej v chat za možnosti prenosa!",
+      "downloading": "Popravek se prenaša! Status: %downloaded%/%total% Prosim, da se spomnite izbrisati staro verzijo, ko se prenos zaključi.",
+      "failed": "Popravek se ni uspel prenesti! Prosim, da ga prenesete ročno preko linka v chatu.",
+      "downloadFinished": "Popravek se je prenesel. Shranjen je kot %file%. Prosim da ne pozabite izbrisati stare datoteke po zaprtju Minecrafta. Klikni na sporočilo v chatu da odpreš mapo."
     },
     "slotLocked": "Ta prostor je zaklenjen!",
     "summoningEyeFound": "Summoning oko!",
@@ -116,8 +118,10 @@
     "cancelledProfileOpening": "SkyblockAddons vam je preprečil odpiranje profila tega igralca medtem, ko držite lok.",
     "cancelledDropping": "SkyblockAddons vam je preprečil izpust te redke stvari iz svojega hotbarja.",
     "clickMoreTimes": "Kliknite/izpustite to stvar še %times% -krat, če to res želite storiti.",
-    "cancelledDeepCaverns": "A SkyblockAddons feature has stopped you from mining this block here.",
+    "cancelledDeepCaverns": "Funkcija SkyblockAddons ti je preprečila uničiti to kocko.",
     "featureDisabled": "Funkcija izklopljena",
-    "anvilUses": "Anvil Uses: %uses%"
+    "anvilUses": "Število Uporab Nakovala: %uses%",
+    "specialZealotFound": "Posebni Zealot!",
+    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)"
   }
 }

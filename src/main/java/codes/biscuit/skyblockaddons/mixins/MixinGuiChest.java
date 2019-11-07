@@ -32,11 +32,6 @@ import java.util.regex.Pattern;
 @Mixin(GuiChest.class)
 public abstract class MixinGuiChest extends GuiContainer {
 
-    /**
-     * clickType value in {@link #handleMouseClick(Slot, int, int, int)} for shift-clicks
-     */
-    private static final int SHIFTCLICK_CLICK_TYPE = 1;
-
     private EnumUtils.InventoryType inventoryType = null;
     private GuiTextField textFieldMatch = null;
     private GuiTextField textFieldExclusions = null;
@@ -58,6 +53,10 @@ public abstract class MixinGuiChest extends GuiContainer {
 
     @Override
     public void onGuiClosed() {
+        EnumUtils.InventoryType.resetCurrentInventoryType();
+        if(craftingPatternSelection != null) {
+            craftingPatternSelection.onGuiClosed();
+        }
         if (this.textFieldMatch != null && this.textFieldExclusions != null) {
             Keyboard.enableRepeatEvents(false);
         }
@@ -66,12 +65,6 @@ public abstract class MixinGuiChest extends GuiContainer {
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
         super.drawScreen(mouseX, mouseY, partialTicks);
-
-        if(inventoryType == EnumUtils.InventoryType.CRAFTING_TABLE
-                && craftingPatternSelection != null) {
-            craftingPatternSelection.draw();
-            return;
-        }
 
         if (textFieldMatch != null) {
             GlStateManager.color(1F, 1F, 1F);
@@ -110,14 +103,13 @@ public abstract class MixinGuiChest extends GuiContainer {
         }
 
         String guiName = lowerChestInventory.getDisplayName().getUnformattedText();
-        if (guiName.equals("Enchant Item")) inventoryType = EnumUtils.InventoryType.ENCHANTMENT_TABLE;
-        if (guiName.equals("Reforge Item")) inventoryType = EnumUtils.InventoryType.REFORGE_ANVIL;
-        if (guiName.equals(CraftingPattern.CRAFTING_TABLE_DISPLAYNAME)) inventoryType = EnumUtils.InventoryType.CRAFTING_TABLE;
+        inventoryType = EnumUtils.InventoryType.getCurrentInventoryType(guiName);
+
         if (inventoryType != null) {
 
             if(inventoryType == EnumUtils.InventoryType.CRAFTING_TABLE) {
                 if(SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.CRAFTING_PATTERNS)) {
-                    craftingPatternSelection = new CraftingPatternSelection(mc, Math.max(guiLeft - CraftingPatternSelection.ICON_SIZE - 2, 10), guiTop);
+                    craftingPatternSelection = new CraftingPatternSelection(mc, Math.max(guiLeft - CraftingPatternSelection.ICON_SIZE - 2, 10), guiTop + 1);
                 }
                 return;
             }
@@ -202,7 +194,7 @@ public abstract class MixinGuiChest extends GuiContainer {
                                     if (lines.length > 1) {
                                         String enchantLine = lines[1];
                                         if (main.getUtils().enchantReforgeMatches(enchantLine)) {
-                                            main.getUtils().playSound("random.orb", 0.1);
+                                            main.getUtils().playLoudSound("random.orb", 0.1);
                                             return;
                                         }
                                     }
@@ -221,41 +213,11 @@ public abstract class MixinGuiChest extends GuiContainer {
                             String reforge = main.getUtils().getReforgeFromItem(item);
                             if (reforge != null) {
                                 if (main.getUtils().enchantReforgeMatches(reforge)) {
-                                    main.getUtils().playSound("random.orb", 0.1);
+                                    main.getUtils().playLoudSound("random.orb", 0.1);
                                     return;
                                 }
                             }
                         }
-                    }
-                }
-            }
-        }
-
-        // Crafting patterns
-        if(slotIn != null && inventoryType == EnumUtils.InventoryType.CRAFTING_TABLE
-                && main.getConfigValues().isEnabled(Feature.CRAFTING_PATTERNS)) {
-            CraftingPattern selectedPattern = CraftingPatternSelection.selectedPattern;
-            if(selectedPattern != CraftingPattern.FREE) {
-                boolean[] filledPattern = new boolean[9];
-                for (int i = 0; i < CraftingPattern.CRAFTING_GRID_SLOTS.size(); i++) {
-                    int slotIndex = CraftingPattern.CRAFTING_GRID_SLOTS.get(i);
-                    filledPattern[i] = slots.getSlot(slotIndex).getHasStack();
-                }
-                boolean patternFilled = selectedPattern.fillsPattern(filledPattern); // whether all pattern slots are filled
-                boolean patternSatisfied = selectedPattern.satisfiesPattern(filledPattern); // whether all pattern slots are filled and no non-pattern slots are filled
-
-                if(slotIn.inventory.equals(mc.thePlayer.inventory)) {
-                    if(patternFilled && clickType == SHIFTCLICK_CLICK_TYPE) {
-                        // cancel shift-clicking items from the inventory if the pattern is already filled
-                        main.getUtils().playSound("note.bass", 0.5);
-                        return;
-                    }
-                } else {
-                    if(slotIn.getSlotIndex() == CraftingPattern.CRAFTING_RESULT_INDEX
-                            && !patternSatisfied) {
-                        // cancel clicking the result if the pattern isn't satisfied
-                        main.getUtils().playSound("note.bass", 0.5);
-                        return;
                     }
                 }
             }
@@ -271,7 +233,6 @@ public abstract class MixinGuiChest extends GuiContainer {
 
     @Override
     protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {
-        super.mouseClicked(mouseX, mouseY, mouseButton);
         if (textFieldMatch != null) {
             textFieldMatch.mouseClicked(mouseX, mouseY, mouseButton);
             textFieldExclusions.mouseClicked(mouseX, mouseY, mouseButton);
@@ -280,6 +241,7 @@ public abstract class MixinGuiChest extends GuiContainer {
         if(craftingPatternSelection != null) {
             craftingPatternSelection.mouseClicked(mouseX, mouseY, mouseButton);
         }
+        super.mouseClicked(mouseX, mouseY, mouseButton);
     }
 
     private Backpack backpack = null;
@@ -287,6 +249,13 @@ public abstract class MixinGuiChest extends GuiContainer {
     @Redirect(method = "drawGuiContainerBackgroundLayer", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/GlStateManager;color(FFFF)V", ordinal = 0))
     private void color(float colorRed, float colorGreen, float colorBlue, float colorAlpha) { //Item item, ItemStack stack
         SkyblockAddons main = SkyblockAddons.getInstance();
+
+        // Draw here to make sure it's in the background of the GUI and items overlay it
+        if(inventoryType == EnumUtils.InventoryType.CRAFTING_TABLE
+                && craftingPatternSelection != null) {
+            craftingPatternSelection.draw();
+        }
+
         if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.SHOW_BACKPACK_PREVIEW) &&
                 main.getConfigValues().isEnabled(Feature.MAKE_BACKPACK_INVENTORIES_COLORED)
         && lowerChestInventory.hasCustomName()) {

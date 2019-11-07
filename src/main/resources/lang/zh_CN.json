@@ -53,7 +53,7 @@
     "lockSlot": "锁定槽位",
     "dontResetCursorInventory": "阻止打开菜单时光标重置",
     "summoningEyeAlert": "召唤之眼获取提醒",
-    "makeEnderchestsInEndGreen": "将末地中末影箱渲染为绿色",
+    "makeEnderchestsInEndGreen": "Change Enderchest Color in the End",
     "changeColor": "更改颜色",
     "showInOtherGames": "在其他游戏显示",
     "useVanillaTexture": "使用原版材质",
@@ -78,7 +78,9 @@
     "showItemCooldowns": "显示物品冷却时间",
     "speedPercentage": "速度百分比",
     "collectionDisplay": "显示技能进度",
-    "onlyMineOresDeepCaverns": "仅深层矿洞的矿物"
+    "onlyMineOresDeepCaverns": "仅深层矿洞的矿物",
+    "revenantIndicator": "杀手弓进度提示",
+    "specialZealotAlert": "末影战士警告"
   },
   "messages": {
     "dropConfirmation": "再次丢弃此物品以确认!",
@@ -118,6 +120,8 @@
     "clickMoreTimes": "SkyblockAddons 已阻止你售出物品。如果你真的想卖掉它，请再点击 %times% 次。",
     "cancelledDeepCaverns": "SkyblockAddons 已阻止在此开采矿物",
     "featureDisabled": "功能已禁用",
-    "anvilUses": "铁砧使用次数: %uses%"
+    "anvilUses": "铁砧使用次数: %uses%",
+    "specialZealotFound": "末影战士！",
+    "blockIncompletePatterns": "阻止合成不完整的图案 - 推荐"
   }
 }

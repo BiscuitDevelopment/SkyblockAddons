@@ -53,7 +53,7 @@
     "lockSlot": "إقفال الخانة",
     "dontResetCursorInventory": "لا تقم بإعادة ضبط المؤشر بين المخازن",
     "summoningEyeAlert": "تنبيه عين الاستدعاء",
-    "makeEnderchestsInEndGreen": "تغيير لون الصندوق المتنقل في عالم النهاية إلى اخضر",
+    "makeEnderchestsInEndGreen": "Change Enderchest Color in the End",
     "changeColor": "تغيير اللون",
     "showInOtherGames": "إظهار في ألعاب أخرى",
     "useVanillaTexture": "استخدام الشكل الأصلي",
@@ -78,7 +78,9 @@
     "showItemCooldowns": "اظهار تباطؤ الأدوات",
     "speedPercentage": "نسبة السرعه",
     "collectionDisplay": "عرض تقدم المهارة",
-    "onlyMineOresDeepCaverns": "حفر المعادن فقظ في الكهوف العميقة"
+    "onlyMineOresDeepCaverns": "حفر المعادن فقظ في الكهوف العميقة",
+    "revenantIndicator": "Slayer Armor Progress Indicator",
+    "specialZealotAlert": "تنبيه زيلوت فريد"
   },
   "messages": {
     "dropConfirmation": "!إرمي هذا العنصر مرة أخرى للتأكيد",
@@ -118,6 +120,8 @@
     "clickMoreTimes": "أضغط أو اسقط هذا الشيء %times% مرات أخرى إن كنت حقيقا تريد فعل هذا.",
     "cancelledDeepCaverns": "إضافات سكاي بلوك منعك من كسر هذا المعدن.",
     "featureDisabled": "تعطل الميزة",
-    "anvilUses": "استخدامات السندان: %uses%"
+    "anvilUses": "استخدامات السندان: %uses%",
+    "specialZealotFound": "زيلوت فريد!",
+    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)"
   }
 }

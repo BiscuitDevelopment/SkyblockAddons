@@ -53,7 +53,7 @@
     "lockSlot": "Lås slot",
     "dontResetCursorInventory": "Nulstil ikke markøren mellem lagrene",
     "summoningEyeAlert": "Afkaldende øjenalarm",
-    "makeEnderchestsInEndGreen": "Lav enderchests i slutningen grøn",
+    "makeEnderchestsInEndGreen": "Skift Enderchest farve i End",
     "changeColor": "Skift farve",
     "showInOtherGames": "Vis i andre spil",
     "useVanillaTexture": "Brug vanilla teksturen",
@@ -78,7 +78,9 @@
     "showItemCooldowns": "Vis genstand ned brug",
     "speedPercentage": "Hastigheds procent",
     "collectionDisplay": "Dygtigheds fremskridt visning",
-    "onlyMineOresDeepCaverns": "Kun mine malm i Deep Caverns"
+    "onlyMineOresDeepCaverns": "Kun mine malm i Deep Caverns",
+    "revenantIndicator": "Slayer rustning fremskridts indikator",
+    "specialZealotAlert": "Speciel Zealot alarm"
   },
   "messages": {
     "dropConfirmation": "Slip denne vare igen for at bekræfte!",
@@ -118,6 +120,8 @@
     "clickMoreTimes": "Klik / slip dette emne %times% flere gange, hvis du virkelig ønsker at gøre dette.",
     "cancelledDeepCaverns": "En SkyblockAddons funktion har stoppet dig fra at mine denne her blok.",
     "featureDisabled": "Funktion deaktiveret",
-    "anvilUses": "Ambolt brug: %uses%"
+    "anvilUses": "Ambolt brug: %uses%",
+    "specialZealotFound": "Speciel Zealot!",
+    "blockIncompletePatterns": "Bloker byggelse af ufuldstændige mønstre (anbefalet)"
   }
 }

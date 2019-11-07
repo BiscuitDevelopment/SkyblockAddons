@@ -53,7 +53,7 @@
     "lockSlot": "Lösa Luckor",
     "dontResetCursorInventory": "Återställ Inte Muspekaren Mellan Inventarie",
     "summoningEyeAlert": "Tillkallande Öga Varning",
-    "makeEnderchestsInEndGreen": "Gör Enderkistor i End Gröna",
+    "makeEnderchestsInEndGreen": "Change Enderchest Color in the End",
     "changeColor": "Ändra Färg",
     "showInOtherGames": "Visa i Andra Spel",
     "useVanillaTexture": "Använd Vanliga Texturen",
@@ -78,7 +78,9 @@
     "showItemCooldowns": "Visa artikel nedkylning",
     "speedPercentage": "Fart Procent",
     "collectionDisplay": "Skill Progress Display",
-    "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns"
+    "onlyMineOresDeepCaverns": "Hugg bara minitaler I djupa gråttorna",
+    "revenantIndicator": "Slayer rustningar utväcklings indicator",
+    "specialZealotAlert": "Speciell Zealot Alarm"
   },
   "messages": {
     "dropConfirmation": "Släpp Det Här Igen För Att Bekräfta!",
@@ -116,8 +118,10 @@
     "cancelledProfileOpening": "SkyblockAddons har stoppat dig från att öppna denna spelares profil medan du håller en pilbåge.",
     "cancelledDropping": "SkyblockAddons har stoppat dig från att slänga denna sällsynta sak eller verktyg från ditt inventarie.",
     "clickMoreTimes": "Släng denna sak %times% fler gånger om du verkligen vill göra detta.",
-    "cancelledDeepCaverns": "A SkyblockAddons feature has stopped you from mining this block here.",
+    "cancelledDeepCaverns": "En skyblockaddon du ktion har stoppat dig från att hugga blocket här.",
     "featureDisabled": "Funktion.Inaktiverat",
-    "anvilUses": "Städ användningar %uses%"
+    "anvilUses": "Städ användningar %uses%",
+    "specialZealotFound": "Speciell Zealot!",
+    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)"
   }
 }

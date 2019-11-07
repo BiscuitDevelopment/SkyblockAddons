@@ -53,7 +53,7 @@
     "lockSlot": "Zablokuj slot",
     "dontResetCursorInventory": "Nie resetuj kursora pomiędzy ekwipunkami",
     "summoningEyeAlert": "Alarm o oku przywołującym",
-    "makeEnderchestsInEndGreen": "Uczyń Skrzynie Endu w Endzie zielone",
+    "makeEnderchestsInEndGreen": "Change Enderchest Color in the End",
     "changeColor": "Zmień kolor",
     "showInOtherGames": "Pokaż w innych grach",
     "useVanillaTexture": "Użyj zwyczajnych tekstur",
@@ -78,7 +78,9 @@
     "showItemCooldowns": "Pokazuj colldown itemów",
     "speedPercentage": "Procent szybkości",
     "collectionDisplay": "Skill Progress Display",
-    "onlyMineOresDeepCaverns": "Rudy kop tylko w Deep Caverns"
+    "onlyMineOresDeepCaverns": "Rudy kop tylko w Deep Caverns",
+    "revenantIndicator": "Slayer Armor Progress Indicator",
+    "specialZealotAlert": "Alarmuj o Specjlanym Zealocie"
   },
   "messages": {
     "dropConfirmation": "Wyrzuć ten przedmiot ponownie, aby potwierdzić!",
@@ -118,6 +120,8 @@
     "clickMoreTimes": "Naciśnij/upuść ten przedmiot %times% razy więcej, jeśli naprawdę chcesz to zrobić.",
     "cancelledDeepCaverns": "Funkcja Skyblock Addons powstrzymała cię od kopania tego bloku.",
     "featureDisabled": "Funkcja wyłączona",
-    "anvilUses": "Użycia kowadła: %uses%"
+    "anvilUses": "Użycia kowadła: %uses%",
+    "specialZealotFound": "Specjalny Zealot!",
+    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)"
   }
 }

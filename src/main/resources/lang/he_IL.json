@@ -53,7 +53,7 @@
     "lockSlot": "לנעול סלוט",
     "dontResetCursorInventory": "אל תאפס את העכבר בין תיקים",
     "summoningEyeAlert": "התראת עין לזימון דרקון",
-    "makeEnderchestsInEndGreen": "הפוך אנדרצ'אסטים לירוקות באנד",
+    "makeEnderchestsInEndGreen": "שנה את הצבע של תיבות האנדר באנד",
     "changeColor": "שנה צבע",
     "showInOtherGames": "הראה במשחקים אחרים",
     "useVanillaTexture": "השתמש בטקסטורה רגילה",
@@ -78,7 +78,9 @@
     "showItemCooldowns": "הראה טעינת חפצים",
     "speedPercentage": "אחוז מהירות",
     "collectionDisplay": "מסך התקדמות יכולות",
-    "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns"
+    "onlyMineOresDeepCaverns": "תחצוב מתכות רק בדיפ קוורנס",
+    "revenantIndicator": "מד התקדמות עם שריון סלייר",
+    "specialZealotAlert": "התראה של זלוט מיוחד"
   },
   "messages": {
     "dropConfirmation": "זרוק פריט זה שוב לאישור!",
@@ -116,8 +118,10 @@
     "cancelledProfileOpening": "SkyBlockAddons עצר אותך מלפתוח את הפרופיל של האדם בזמן שהחזקתה קשת.",
     "cancelledDropping": "SkyBlockAddons עצר אותך מלהפיל את החפץ או הכלי הנדיר הזה.",
     "clickMoreTimes": "תלחץ/תזרוק את החפץ %times% פעמים נוספות אם אתה בטוח רוצה לעשות את זה.",
-    "cancelledDeepCaverns": "A SkyblockAddons feature has stopped you from mining this block here.",
+    "cancelledDeepCaverns": "פיטצ'ר של SkyblockAddons מנע ממך לחצוב את הבלוק כאן.",
     "featureDisabled": "פיטצ'ר מבוטל",
-    "anvilUses": "שימוים בסדן: %uses%"
+    "anvilUses": "שימוים בסדן: %uses%",
+    "specialZealotFound": "זלוט מיוחד!",
+    "blockIncompletePatterns": "הרכבת בלוק ללא תבנית גמורה (מומלץ)"
   }
 }

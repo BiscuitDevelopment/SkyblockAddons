@@ -103,14 +103,48 @@ public class EnumUtils {
     }
 
     public enum InventoryType {
-        ENCHANTMENT_TABLE(INVENTORY_TYPE_ENCHANTS),
-        REFORGE_ANVIL(INVENTORY_TYPE_REFORGES),
-        CRAFTING_TABLE(INVENTORY_TYPE_CRAFTING);
+        ENCHANTMENT_TABLE(INVENTORY_TYPE_ENCHANTS, "Enchant Item"),
+        REFORGE_ANVIL(INVENTORY_TYPE_REFORGES, "Reforge Item"),
+        CRAFTING_TABLE(INVENTORY_TYPE_CRAFTING, CraftingPattern.CRAFTING_TABLE_DISPLAYNAME);
 
-        private Message message;
+        private static InventoryType currentInventoryType;
 
-        InventoryType(Message message) {
+        /**
+         * Resets the current inventory type
+         */
+        public static void resetCurrentInventoryType() {
+            currentInventoryType = null;
+        }
+
+        /**
+         * @return Current inventory type. Can be null
+         */
+        public static InventoryType getCurrentInventoryType() {
+            return currentInventoryType;
+        }
+
+        /**
+         * Get the inventory type based on an inventory name.
+         * Stores the found type to access later with {@link #getCurrentInventoryType()}
+         *
+         * @param inventoryName Unformatted inventory name
+         * @return Inventory type for that name or null
+         */
+        public static InventoryType getCurrentInventoryType(String inventoryName) {
+            for (InventoryType inventoryType : values()) {
+                if(inventoryType.inventoryName.equals(inventoryName)) {
+                    currentInventoryType = inventoryType;
+                    return inventoryType;
+                }
+            }
+            return null;
+        }
+
+        private final Message message;
+        private final String inventoryName;
+        InventoryType(Message message, String inventoryName) {
             this.message = message;
+            this.inventoryName = inventoryName;
         }
 
         public String getMessage() {
@@ -378,7 +412,7 @@ public class EnumUtils {
         ORCHID_ALLOY("orchidalloy", "github.com/orchidalloy", Feature.SUMMONING_EYE_ALERT, Feature.FISHING_SOUND_INDICATOR, Feature.ORGANIZE_ENCHANTMENTS),
         HIGH_CRIT("HighCrit", "github.com/HighCrit", Feature.PREVENT_MOVEMENT_ON_DEATH),
         MOULBERRY("Moulberry", "github.com/Moulberry", Feature.DONT_RESET_CURSOR_INVENTORY),
-        TOMOCRAFTER("tomocrafter","github.com/tomocrafter", Feature.AVOID_BLINKING_NIGHT_VISION, Feature.REVENANT_INDICATOR),
+        TOMOCRAFTER("tomocrafter","github.com/tomocrafter", Feature.AVOID_BLINKING_NIGHT_VISION, Feature.SLAYER_INDICATOR),
         DAPIGGUY("DaPigGuy", "github.com/DaPigGuy", Feature.MINION_DISABLE_LOCATION_WARNING),
         COMNIEMEER("comniemeer","github.com/comniemeer", Feature.JUNGLE_AXE_COOLDOWN),
         KEAGEL("Keagel", "github.com/Keagel", Feature.ONLY_MINE_ORES_DEEP_CAVERNS),
