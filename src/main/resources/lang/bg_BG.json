@@ -73,9 +73,9 @@
     "soundIndicatorForFishing": "Звуков индикатор за риболов",
     "avoidBlinkingNightVision": "Изключи премигването на отварата за нощно виждане",
     "disableMinionLocationWarning": "Изключи предупрежденията за Межтоположението не е иделано",
-    "jungleAxeCooldown": "Jungle Axe Cooldown",
+    "jungleAxeCooldown": "Кулдаун на брадва от джунглата",
     "organizeLongEnchantmentLists": "Организирай дълъг лист с омагьосвания",
-    "showItemCooldowns": "Show Item Cooldowns",
+    "showItemCooldowns": "Покажи кулдаyна на предметите",
     "speedPercentage": "Процент скорост",
     "collectionDisplay": "Дисплей за прогрес на умения",
     "onlyMineOresDeepCaverns": "Копай само руди в Дълбоките пещери",
@@ -121,7 +121,7 @@
     "cancelledDeepCaverns": "Свойство в SkyblockAddons Ви спря от това да разрушите този блок тук.",
     "featureDisabled": "Свойство Изключено",
     "anvilUses": "Използване на наковалня: %uses%",
-    "specialZealotFound": "Special Zealot!",
-    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)"
+    "specialZealotFound": "Специален Зийлът!",
+    "blockIncompletePatterns": "Блокиране на изработване на непълни модели (препоръчително)"
   }
 }
