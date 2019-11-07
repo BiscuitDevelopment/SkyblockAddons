@@ -243,7 +243,7 @@ public class RenderListener {
     public void drawBar(Feature feature, float scale, Minecraft mc, ButtonLocation buttonLocation) {
         mc.getTextureManager().bindTexture(BARS);
 
-        if (main.getUtils().isUsingOldSkyblockPackTexture(BARS)) {
+        if (main.getUtils().usingOldSkyBlockTexture) {
             mc.getTextureManager().bindTexture(IMPERIAL_BARS_FIX);
         }
 
