@@ -137,6 +137,7 @@ public class Utils {
                 for (String skyblock : SKYBLOCK_IN_ALL_LANGUAGES) {
                     if (objectiveName.startsWith(skyblock)) {
                         onSkyblock = true;
+                        break;
                     }
                 }
                 Collection<Score> collection = scoreboard.getSortedScores(sidebarObjective);
