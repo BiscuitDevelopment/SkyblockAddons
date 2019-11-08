@@ -69,14 +69,14 @@ public class MixinPlayerControllerMP {
             Block block = mc.theWorld.getBlockState(loc).getBlock();
             long now = System.currentTimeMillis();
             if (main.getConfigValues().isEnabled(Feature.AVOID_BREAKING_STEMS) && (block.equals(Blocks.melon_stem) || block.equals(Blocks.pumpkin_stem))) {
-                if (now- lastStemMessage > 20000) {
+                if (main.getConfigValues().isEnabled(Feature.ENABLE_MESSAGE_WHEN_BREAKING_STEMS) && now - lastStemMessage > 20000) {
                     lastStemMessage = now;
                     main.getUtils().sendMessage(main.getConfigValues().getColor(Feature.AVOID_BREAKING_STEMS).getChatFormatting()+Message.MESSAGE_CANCELLED_STEM_BREAK.getMessage());
                 }
                 cir.setReturnValue(false);
             } else if (main.getConfigValues().isEnabled(Feature.ONLY_MINE_ORES_DEEP_CAVERNS) && DEEP_CAVERNS_LOCATIONS.contains(main.getUtils().getLocation())
                     && main.getUtils().isPickaxe(heldItem.getItem()) && !MINEABLE_BLOCKS.contains(block)) {
-                if (now-lastUnmineableMessage > 60000) {
+                if (main.getConfigValues().isEnabled(Feature.ENABLE_MESSAGE_WHEN_MINING_DEEP_CAVERNS) && now - lastUnmineableMessage > 60000) {
                     lastUnmineableMessage = now;
                     main.getUtils().sendMessage(main.getConfigValues().getColor(Feature.ONLY_MINE_ORES_DEEP_CAVERNS).getChatFormatting() + Message.MESSAGE_CANCELLED_NON_ORES_BREAK.getMessage());
                 }
