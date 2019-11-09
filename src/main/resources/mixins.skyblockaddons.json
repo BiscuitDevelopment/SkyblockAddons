@@ -2,6 +2,7 @@
   "package": "codes.biscuit.skyblockaddons.mixins",
   "refmap": "mixins.skyblockaddons.refmap.json",
   "compatibilityLevel": "JAVA_8",
+  "minVersion": "0.6.4",
   "verbose": true,
   "mixins": [
     "MixinEntityPlayerSP",
