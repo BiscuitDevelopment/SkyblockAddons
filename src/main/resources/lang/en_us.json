@@ -80,7 +80,8 @@
     "collectionDisplay": "Skill Progress Display",
     "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns",
     "revenantIndicator": "Slayer Armor Progress Indicator",
-    "specialZealotAlert": "Special Zealot Alert"
+    "specialZealotAlert": "Special Zealot Alert",
+    "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Message"
   },
   "messages": {
     "dropConfirmation": "Drop this item again to confirm!",

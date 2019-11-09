@@ -79,6 +79,7 @@ public enum Message {
     SETTING_ONLY_MINE_ORES_DEEP_CAVERNS(MessageObject.SETTING, "onlyMineOresDeepCaverns"),
     SETTING_SLAYER_INDICATOR(MessageObject.SETTING, "revenantIndicator"),
     SETTING_SPECIAL_ZEALOT_ALERT(MessageObject.SETTING, "specialZealotAlert"),
+    SETTING_DISABLE_MAGICAL_SOUP_MESSAGE(MessageObject.SETTING, "disableMagicalSoupMessage"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.STYLE, "compact"),
