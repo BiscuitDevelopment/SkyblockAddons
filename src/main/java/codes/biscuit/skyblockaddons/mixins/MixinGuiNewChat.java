@@ -18,7 +18,7 @@ import java.util.Set;
 
 @Mixin(GuiNewChat.class)
 public class MixinGuiNewChat {
-    private static final Set<String> randomMessages = new HashSet<>(Arrays.asList("I feel like I can fly!", "What was in that soup?", "Hmm… tasty!", "You can now fly for 2 minutes.", "Your Magical Mushroom Soup flight has been extended for 2 extra minutes."));
+    private static final Set<String> randomMessages = new HashSet<>(Arrays.asList("I feel like I can fly!", "What was in that soup?", "Hmm… tasty!", "Hmm... tasty!", "You can now fly for 2 minutes.", "Your Magical Mushroom Soup flight has been extended for 2 extra minutes."));
 
     @Shadow
     public void printChatMessageWithOptionalDeletion(IChatComponent chatComponent, int chatLineId) {}
