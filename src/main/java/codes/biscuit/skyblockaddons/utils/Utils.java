@@ -61,8 +61,6 @@ public class Utils {
     public static boolean blockNextClick = false;
 
     private final Pattern STRIP_COLOR_PATTERN = Pattern.compile("(?i)§[0-9A-FK-OR]");
-    private final Pattern ITEM_COOLDOWN_PATTERN = Pattern.compile("§5§o§8Cooldown: §a([0-9]+)s");
-    private final Pattern ALTERNATE_COOLDOWN_PATTERN = Pattern.compile("§5§o§8([0-9]+) Second Cooldown");
     private final Pattern ITEM_ABILITY_PATTERN = Pattern.compile("§5§o§6Item Ability: ([A-Za-z ]+) §e§l[A-Z ]+");
 
     private static final List<String> ORDERED_ENCHANTMENTS = Collections.unmodifiableList(Arrays.asList(
@@ -79,7 +77,6 @@ public class Utils {
     private Map<Attribute, MutableInt> attributes = new EnumMap<>(Attribute.class);
     private List<String> enchantmentMatch = new LinkedList<>();
     private List<String> enchantmentExclusion = new LinkedList<>();
-    private Set<CooldownEntry> cooldownEntries = new HashSet<>();
     private Backpack backpackToRender = null;
     private static boolean onSkyblock = false;
     private EnumUtils.Location location = null;
@@ -677,80 +674,9 @@ public class Utils {
         return -1;
     }
 
-    public void logEntry(ItemStack itemStack) {
-        if (itemStack != null && itemStack.hasDisplayName()) {
-            Item item = itemStack.getItem();
-            String name = itemStack.getDisplayName();
-            int cooldownSeconds = getLoreCooldown(itemStack);
-            if (cooldownSeconds != -1) {
-                String abilityName = getAbilityName(itemStack);
-                CooldownEntry cooldownEntry = getCooldownEntry(item, name);
-                if (!item.isDamageable() && abilityName == null) return; // if its not a tool and has no ability, its not gonna have a cooldown
-                if (cooldownEntry != null) {
-                    if (cooldownEntry.getCooldown() == 1) {
-                        cooldownEntry.setLastUse();
-                    }
-                } else {
-                    cooldownEntries.add(new CooldownEntry(item,name,cooldownSeconds));
-                }
-            }
-        }
-    }
-
-    public double getItemCooldown(ItemStack item) {
-        if (item != null) {
-            Iterator<CooldownEntry> iterator = cooldownEntries.iterator();
-            while (iterator.hasNext()) {
-                CooldownEntry entry = iterator.next();
-                double cooldown = entry.getCooldown();
-                if (entry.getItem().equals(item.getItem()) && entry.getItemName().equals(item.getDisplayName())) {
-                    return cooldown;
-                }
-                if (cooldown == 1) {
-                    iterator.remove();
-                }
-            }
-        }
-        return -1;
-    }
-
     public boolean isHalloween() {
         Calendar calendar = Calendar.getInstance();
         return calendar.get(Calendar.MONTH) == Calendar.OCTOBER && calendar.get(Calendar.DAY_OF_MONTH) == 31;
-    }
-
-    public CooldownEntry getItemCooldown(String itemName) {
-        Iterator<CooldownEntry> iterator = cooldownEntries.iterator();
-        while (iterator.hasNext()) {
-            CooldownEntry entry = iterator.next();
-            if (entry.getItemName().equals(itemName)) {
-                return entry;
-            }
-            double cooldown = entry.getCooldown();
-            if (cooldown == 1) {
-                iterator.remove();
-            }
-        }
-        return null;
-    }
-
-    private int getLoreCooldown(ItemStack item) {
-        for (String loreLine : item.getTooltip(Minecraft.getMinecraft().thePlayer, false)) {
-            Matcher matcher = ITEM_COOLDOWN_PATTERN.matcher(loreLine);
-            if (matcher.matches()) {
-                try {
-                    return Integer.parseInt(matcher.group(1));
-                } catch (NumberFormatException ignored) { }
-            } else {
-                matcher = ALTERNATE_COOLDOWN_PATTERN.matcher(loreLine);
-                if (matcher.matches()) {
-                    try {
-                        return Integer.parseInt(matcher.group(1));
-                    } catch (NumberFormatException ignored) { }
-                }
-            }
-        }
-        return -1;
     }
 
     private String getAbilityName(ItemStack item) {
@@ -760,15 +686,6 @@ public class Utils {
                 try {
                     return matcher.group(1);
                 } catch (NumberFormatException ignored) { }
-            }
-        }
-        return null;
-    }
-
-    private CooldownEntry getCooldownEntry(Item item, String itemname) {
-        for (CooldownEntry entry : cooldownEntries) {
-            if (entry.getItem().equals(item) && entry.getItemName().equals(itemname)) {
-                return entry;
             }
         }
         return null;

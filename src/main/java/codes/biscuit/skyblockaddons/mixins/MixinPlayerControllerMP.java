@@ -82,8 +82,8 @@ public class MixinPlayerControllerMP {
                 }
                 cir.setReturnValue(false);
             } else if (main.getConfigValues().isEnabled(Feature.JUNGLE_AXE_COOLDOWN)) {
-                CooldownEntry cooldown = main.getUtils().getItemCooldown("§aJungle Axe");
-                if (cooldown != null && (block.equals(Blocks.log) || block.equals(Blocks.log2)) && cooldown.getLastUse() + cooldown.getCooldownMillis() > now) {
+                if ((block.equals(Blocks.log)|| block.equals(Blocks.log2))
+                        && CooldownManager.isOnCooldown(InventoryUtils.JUNGLE_AXE_DISPLAYNAME)) {
                     cir.setReturnValue(false);
                 }
             }
@@ -94,7 +94,7 @@ public class MixinPlayerControllerMP {
     private void onPlayerDestroyBlock(BlockPos pos, EnumFacing face, CallbackInfoReturnable<Boolean> cir) {
         SkyblockAddons main = SkyblockAddons.getInstance();
         if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.SHOW_ITEM_COOLDOWNS)) {
-            SkyblockAddons.getInstance().getUtils().logEntry(Minecraft.getMinecraft().thePlayer.getHeldItem());
+            CooldownManager.put(Minecraft.getMinecraft().thePlayer.getHeldItem());
         }
     }
 
