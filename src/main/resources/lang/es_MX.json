@@ -53,7 +53,7 @@
     "lockSlot": "Bloquear Ranura",
     "dontResetCursorInventory": "Evitar Reinicio del Cursor entre Inventarios",
     "summoningEyeAlert": "Alerta de Summoning Eye",
-    "makeEnderchestsInEndGreen": "Change Enderchest Color in the End",
+    "makeEnderchestsInEndGreen": "Cambiar el color del Enderchest en el End",
     "changeColor": "Cambiar Color",
     "showInOtherGames": "Mostrar en Otros Juegos",
     "useVanillaTexture": "Usar la Textura Vanilla",
@@ -79,7 +79,7 @@
     "speedPercentage": "Porcentaje de Velocidad",
     "collectionDisplay": "Progreso de Hablidades",
     "onlyMineOresDeepCaverns": "Minar Minerales Sólo en Deep Caverns",
-    "revenantIndicator": "Slayer Armor Progress Indicator",
+    "revenantIndicator": "Indicador de Progreso de Slayer Armor",
     "specialZealotAlert": "Alerta de Zealot Especial"
   },
   "messages": {
@@ -122,6 +122,6 @@
     "featureDisabled": "Característica Desactivada",
     "anvilUses": "Usos en Anvil/Yunque: %uses%",
     "specialZealotFound": "Zealot Especial!",
-    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)"
+    "blockIncompletePatterns": "Bloquear el crafteo de patrones incompletos (recomendado)"
   }
 }
