@@ -12,7 +12,7 @@
     "itemDropConfirmation": "Confirmation du jet",
     "hideSkeletonHatBones": "Masquer les os du Skeleton's Helmet",
     "skeletonHatBonesBar": "Barre du Skeleton's Helmet",
-    "hideFoodAndArmor": "Masquer l'armure & la nourriture",
+    "hideFoodAndArmor": "Masquer la nourriture & l'armure",
     "fullInventoryWarning": "Alerte inventaire plein",
     "disableEmberRodAbility": "Désativer l'Ember Rod sur votre île",
     "editLocations": "Modifier l'interface",
@@ -53,7 +53,7 @@
     "lockSlot": "Case bloqué",
     "dontResetCursorInventory": "Ne pas réinitialiser le curseur entre les inventaires",
     "summoningEyeAlert": "Alerte Œil d'invocation",
-    "makeEnderchestsInEndGreen": "Change Enderchest Color in the End",
+    "makeEnderchestsInEndGreen": "Modifier la couleur de l'Enderchest dans l'End",
     "changeColor": "Personnaliser les couleurs",
     "showInOtherGames": "Afficher dans les autres jeux",
     "useVanillaTexture": "Utiliser la texture vanilla",
@@ -122,6 +122,6 @@
     "featureDisabled": "Fonction désactivée",
     "anvilUses": "Utilisation de l'enclume: %uses%",
     "specialZealotFound": "Zealot spécial!",
-    "blockIncompletePatterns": "Modèles incomplets de fabrication (recommandé)"
+    "blockIncompletePatterns": "Ne pas fabriquer les modèles incomplet (recommandé)"
   }
 }
