@@ -30,6 +30,7 @@ import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.ChunkEvent;
+import net.minecraftforge.fml.common.FMLLog;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent;
@@ -150,9 +151,9 @@ public class PlayerListener {
                                 collectionPart = splitMessage[1]; // Another Example: §5+§d30 §5Runecrafting (969/1000)
                                 Matcher matcher = COLLECTIONS_CHAT_PATTERN.matcher(collectionPart);
                                 if (matcher.matches()) {
-                                    main.getRenderListener().setSkillText("+"+matcher.group(1)+" "+matcher.group(3));
+                                    main.getRenderListener().setSkillText("+" + matcher.group(1) + " " + matcher.group(3));
                                     main.getRenderListener().setSkill(matcher.group(2));
-                                    main.getRenderListener().setSkillFadeOutTime(System.currentTimeMillis()+6000);
+                                    main.getRenderListener().setSkillFadeOutTime(System.currentTimeMillis() + 6000);
                                 }
                             }
                             manaPart = splitMessage[2];
@@ -362,7 +363,24 @@ public class PlayerListener {
     @SubscribeEvent
     public void onEntityEvent(LivingEvent.LivingUpdateEvent e) {
         Entity entity = e.entity;
+
         if (main.getUtils().isOnSkyblock() && entity instanceof EntityArmorStand && entity.hasCustomName()) {
+
+            String customNameTag = entity.getCustomNameTag();
+            PowerOrb powerOrb = PowerOrb.getByDisplayname(customNameTag);
+            try {
+                if (powerOrb != null && powerOrb.isInRadius(entity.getPosition().distanceSq(Minecraft.getMinecraft().thePlayer.getPosition()))) {
+                    String[] customNameTagSplit = customNameTag.split(" ");
+                    String secondsString = customNameTagSplit[customNameTagSplit.length - 1]
+                            .replaceAll("§e", "")
+                            .replaceAll("s", "");
+                    int seconds = Integer.parseInt(secondsString);
+                    FMLLog.info("%s Power Orb: %d seconds", powerOrb.display, seconds);
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+
             if (main.getUtils().getLocation() == EnumUtils.Location.ISLAND) {
                 int cooldown = main.getConfigValues().getWarningSeconds() * 1000 + 5000;
                 if (main.getConfigValues().isEnabled(Feature.MINION_FULL_WARNING) &&
@@ -552,9 +570,9 @@ public class PlayerListener {
 
                 GuiScreen gui = Minecraft.getMinecraft().currentScreen;
                 if (gui instanceof GuiChest) {
-                    Container chest = ((GuiChest)gui).inventorySlots;
+                    Container chest = ((GuiChest) gui).inventorySlots;
                     if (chest instanceof ContainerChest) {
-                        IInventory inventory = ((ContainerChest)chest).getLowerChestInventory();
+                        IInventory inventory = ((ContainerChest) chest).getLowerChestInventory();
                         if (inventory.hasCustomName() && "Enchant Item".equals(inventory.getDisplayName().getUnformattedText())) {
                             continue; // dont replace enchants when you are enchanting items in an enchantment table
                         }
@@ -657,8 +675,7 @@ public class PlayerListener {
         if (main.getOpenSettingsKey().isPressed()) {
             main.getUtils().setFadingIn(true);
             main.getRenderListener().setGuiToOpen(PlayerListener.GUIType.MAIN, 1, EnumUtils.GuiTab.FEATURES);
-        }
-        else if (main.getOpenEditLocationsKey().isPressed()) {
+        } else if (main.getOpenEditLocationsKey().isPressed()) {
             main.getUtils().setFadingIn(false);
             main.getRenderListener().setGuiToOpen(PlayerListener.GUIType.EDIT_LOCATIONS, 0, null);
         }
@@ -723,7 +740,7 @@ public class PlayerListener {
     }
 
     private boolean shouldTriggerFishingIndicator() {
-        Minecraft mc =  Minecraft.getMinecraft();
+        Minecraft mc = Minecraft.getMinecraft();
         if (mc.thePlayer != null && mc.thePlayer.fishEntity != null && mc.thePlayer.getHeldItem() != null
                 && mc.thePlayer.getHeldItem().getItem().equals(Items.fishing_rod)
                 && main.getConfigValues().isEnabled(Feature.FISHING_SOUND_INDICATOR)) {
@@ -737,7 +754,7 @@ public class PlayerListener {
                     && currentTime - lastFishingAlert > 1000 && currentTime - lastBobberEnteredWater > 1500) {
                 double movement = bobber.posY - oldBobberPosY; // The Entity#motionY field is inaccurate for this purpose
                 oldBobberPosY = bobber.posY;
-                if (movement < -0.04d){
+                if (movement < -0.04d) {
                     lastFishingAlert = currentTime;
                     return true;
                 }

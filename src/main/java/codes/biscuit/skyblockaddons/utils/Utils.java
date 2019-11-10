@@ -878,7 +878,7 @@ public class Utils {
     }
 
     public boolean isOnSkyblock() {
-        return onSkyblock;
+        return onSkyblock || isDevEnviroment();
     }
 
     public boolean isFadingIn() {
