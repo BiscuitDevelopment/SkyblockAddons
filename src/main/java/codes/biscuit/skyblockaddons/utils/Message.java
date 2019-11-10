@@ -87,6 +87,7 @@ public enum Message {
     SETTING_POWER_ORB_DISPLAY_STYLE(MessageObject.SETTING, "powerOrbDisplayStyle"),
     SETTING_ZEALOT_COUNTER(MessageObject.SETTING, "zealotCounter"),
     SETTING_TICKER_CHARGES_DISPLAY(MessageObject.SETTING, "tickerChargesDisplay"),
+    SETTING_POTION_EFFECT_TIMERS(MessageObject.SETTING, "potionEffectTimers"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.BACKPACK_STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.BACKPACK_STYLE, "compact"),

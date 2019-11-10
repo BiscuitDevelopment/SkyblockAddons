@@ -753,6 +753,48 @@ public class RenderListener {
         }
     }
 
+    public void drawPotionEffectTimers(float scale, Minecraft mc, ButtonLocation buttonLocation){
+        float x = main.getConfigValues().getActualX(Feature.POTION_EFFECT_TIMER);
+        float y = main.getConfigValues().getActualY(Feature.POTION_EFFECT_TIMER);
+
+        List<PotionEffectTimer> timers = PotionEffectTimer.getPotionEffects();
+
+        if(timers.isEmpty()) {
+            if (buttonLocation == null) {
+                return;
+            } else { //We are editing GUI locations, draw something
+                timers = PotionEffectTimer.getDummyEffects();
+            }
+        }
+
+        int height = 27; //9 Px * 3 Effects
+        int width = 139; //About the longest width a potion effect can be
+        x-=Math.round(width*scale/2);
+        y-=Math.round(height*scale/2);
+        x/=scale;
+        y/=scale;
+        int intX = Math.round(x);
+        int intY = Math.round(y);
+        if (buttonLocation != null) {
+            int boxXOne = intX-4;
+            int boxXTwo = intX+width+4;
+            int boxYOne = intY-4;
+            int boxYTwo = intY+height+4;
+            buttonLocation.checkHoveredAndDrawBox(boxXOne, boxXTwo, boxYOne, boxYTwo, scale);
+            GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+        }
+
+        EnumUtils.AnchorPoint anchorPoint = main.getConfigValues().getAnchorPoint(Feature.POTION_EFFECT_TIMER);
+        boolean downwards = (anchorPoint == EnumUtils.AnchorPoint.TOP_LEFT || anchorPoint == EnumUtils.AnchorPoint.TOP_RIGHT);
+
+        int drawnCount = downwards ? 0 : 2;
+        for(PotionEffectTimer timer : timers){
+            int fixedY = intY + drawnCount * 9;
+            main.getUtils().drawString(mc, timer.getEffect(), intX, fixedY, 0xFFFFFFFF);
+            drawnCount += downwards ? 1 : -1;
+        }
+    }
+
     private void drawItemStack(Minecraft mc, ItemStack item, int x, int y) {
         RenderHelper.enableGUIStandardItemLighting();
         mc.getRenderItem().renderItemIntoGUI(item, x, y);
