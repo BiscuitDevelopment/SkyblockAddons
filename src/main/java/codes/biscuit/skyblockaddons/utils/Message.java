@@ -80,6 +80,7 @@ public enum Message {
     SETTING_ENABLE_MESSAGE_WHEN_ACTION_PREVENTED(MessageObject.SETTING, "enableMessageWhenActionPrevented"),
     SETTING_SLAYER_INDICATOR(MessageObject.SETTING, "revenantIndicator"),
     SETTING_SPECIAL_ZEALOT_ALERT(MessageObject.SETTING, "specialZealotAlert"),
+    SETTING_ONLY_MINE_VALUABLES_NETHER(MessageObject.SETTING, "onlyMineValuablesNether"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.STYLE, "compact"),

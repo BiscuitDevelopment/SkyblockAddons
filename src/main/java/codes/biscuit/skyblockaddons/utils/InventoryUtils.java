@@ -31,6 +31,9 @@ public class InventoryUtils {
      */
     private static final String SKELETON_HELMET_ID = "SKELETON_HELMET";
 
+    public static final String MADDOX_BATPHONE_DISPLAYNAME = "\u00A7aMaddox Batphone";
+    public static final String JUNGLE_AXE_DISPLAYNAME = "\u00A7aJungle Axe";
+
     private static final Pattern REVENANT_UPGRADE_PATTERN = Pattern.compile("§5§o§7Next Upgrade: §a\\+([0-9]+❈) §8\\(§a([0-9,]+)§7/§c([0-9,]+)§8\\)");
 
     private List<ItemStack> previousInventory;
