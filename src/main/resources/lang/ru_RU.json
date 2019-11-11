@@ -79,8 +79,10 @@
     "speedPercentage": "Процент скорости",
     "collectionDisplay": "Показывать прогресс навыков",
     "onlyMineOresDeepCaverns": "Копать только руды в Глубоких Пещерах",
+    "onlyMineValuablesNether": "Only Mine Valuables in the Nether",
     "revenantIndicator": "Индикатор Прогресса Брони Убийцы",
-    "specialZealotAlert": "Уведомление об Особом Зеалоте"
+    "specialZealotAlert": "Уведомление об Особом Зеалоте",
+    "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented"
   },
   "messages": {
     "dropConfirmation": "Выбросите предмет ещё раз для подтверждения!",
