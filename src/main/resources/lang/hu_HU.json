@@ -122,6 +122,6 @@
     "featureDisabled": "Funkció kikapcsolva",
     "anvilUses": "Üllő használat: %uses%",
     "specialZealotFound": "Különleges Zealot!",
-    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)"
+    "blockIncompletePatterns": "Félkész minták tiltása (ajánlott)"
   }
 }
