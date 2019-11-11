@@ -79,8 +79,10 @@
     "speedPercentage": "Fart Procent",
     "collectionDisplay": "Skill Progress Display",
     "onlyMineOresDeepCaverns": "Hugg bara minitaler I djupa gråttorna",
+    "onlyMineValuablesNether": "Only Mine Valuables in the Nether",
     "revenantIndicator": "Slayer rustningar utväcklings indicator",
-    "specialZealotAlert": "Speciell Zealot Alarm"
+    "specialZealotAlert": "Speciell Zealot Alarm",
+    "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented"
   },
   "messages": {
     "dropConfirmation": "Släpp Det Här Igen För Att Bekräfta!",
