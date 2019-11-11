@@ -79,8 +79,10 @@
     "speedPercentage": "Nopeuden prosenttimäärä",
     "collectionDisplay": "Taitojen Edistymisen Näyttö",
     "onlyMineOresDeepCaverns": "Vain Mineraalien kaivuu Deep Cavernissä",
+    "onlyMineValuablesNether": "Only Mine Valuables in the Nether",
     "revenantIndicator": "Slayer Armor Progress Indicator",
-    "specialZealotAlert": "Erikois Zealot Ilmoitukset"
+    "specialZealotAlert": "Erikois Zealot Ilmoitukset",
+    "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented"
   },
   "messages": {
     "dropConfirmation": "Pudota tämä esine uudelleen vahvistaaksesi!",
