@@ -79,8 +79,10 @@
     "speedPercentage": "Spweed Pwocentage",
     "collectionDisplay": "Skwill Prowogess Dispway",
     "onlyMineOresDeepCaverns": "OwOnly Mwine Owores in twhe deep Cavwerns",
+    "onlyMineValuablesNether": "Only Mine Valuables in the Nether",
     "revenantIndicator": "Swawwer Awmowo Pwogwess Indicator ",
-    "specialZealotAlert": "Spwecial Wealots Awert"
+    "specialZealotAlert": "Spwecial Wealots Awert",
+    "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented"
   },
   "messages": {
     "dropConfirmation": "Dwop thwis itwem agwain to confiwm!",
