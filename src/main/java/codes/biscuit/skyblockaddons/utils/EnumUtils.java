@@ -400,7 +400,8 @@ public class EnumUtils {
         BACKPACK_STYLE,
         SHOW_ONLY_WHEN_HOLDING_SHIFT,
         MAKE_INVENTORY_COLORED,
-        CHANGE_BAR_COLOR_WITH_POTIONS
+        CHANGE_BAR_COLOR_WITH_POTIONS,
+        ENABLE_MESSAGE_WHEN_ACTION_PREVENTED
     }
 
     @SuppressWarnings("deprecation")

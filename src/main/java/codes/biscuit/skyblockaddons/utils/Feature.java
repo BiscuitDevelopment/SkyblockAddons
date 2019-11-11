@@ -44,7 +44,7 @@ public enum Feature {
     ITEM_PICKUP_LOG(29, Message.SETTING_ITEM_PICKUP_LOG, new GuiFeatureData(EnumUtils.DrawType.PICKUP_LOG, EnumUtils.AnchorPoint.TOP_LEFT, 86, 17), false),
     AVOID_PLACING_ENCHANTED_ITEMS(30, Message.SETTING_AVOID_PLACING_ENCHANTED_ITEMS, false),
     STOP_BOW_CHARGE_FROM_RESETTING(31, Message.SETTING_STOP_BOW_CHARGE_FROM_RESETTING, false),
-    AVOID_BREAKING_STEMS(32, Message.SETTING_AVOID_BREAKING_STEMS, false),
+    AVOID_BREAKING_STEMS(32, Message.SETTING_AVOID_BREAKING_STEMS, false, EnumUtils.FeatureSetting.ENABLE_MESSAGE_WHEN_ACTION_PREVENTED),
     SHOW_DARK_AUCTION_TIMER_IN_OTHER_GAMES(33, null, false),
     SHOW_ITEM_ANVIL_USES(34, Message.SETTING_SHOW_ITEM_ANVIL_USES, new GuiFeatureData(ConfigColor.RED), false),
     PREVENT_MOVEMENT_ON_DEATH(35, Message.SETTING_PREVENT_MOVEMENT_ON_DEATH, true),
@@ -68,10 +68,12 @@ public enum Feature {
     SHOW_ITEM_COOLDOWNS(53, Message.SETTING_SHOW_ITEM_COOLDOWNS, false),
     SKILL_DISPLAY(54, Message.SETTING_COLLECTION_DISPLAY, new GuiFeatureData(EnumUtils.DrawType.TEXT, ConfigColor.AQUA, EnumUtils.AnchorPoint.BOTTOM_MIDDLE, 0, -66), false),
     SPEED_PERCENTAGE(55, Message.SETTING_SPEED_PERCENTAGE, new GuiFeatureData(EnumUtils.DrawType.TEXT, ConfigColor.WHITE, EnumUtils.AnchorPoint.BOTTOM_MIDDLE, -110, -11), false),
-    ONLY_MINE_ORES_DEEP_CAVERNS(56, Message.SETTING_ONLY_MINE_ORES_DEEP_CAVERNS, new GuiFeatureData(ConfigColor.RED),true),
+    ONLY_MINE_ORES_DEEP_CAVERNS(56, Message.SETTING_ONLY_MINE_ORES_DEEP_CAVERNS, new GuiFeatureData(ConfigColor.RED),true, EnumUtils.FeatureSetting.ENABLE_MESSAGE_WHEN_ACTION_PREVENTED),
     SLAYER_INDICATOR(57, Message.SETTING_SLAYER_INDICATOR, new GuiFeatureData(EnumUtils.DrawType.REVENANT_PROGRESS, ConfigColor.AQUA, EnumUtils.AnchorPoint.BOTTOM_RIGHT, -84, -29), true),
     SPECIAL_ZEALOT_ALERT(58, Message.SETTING_SPECIAL_ZEALOT_ALERT, new GuiFeatureData(ConfigColor.RED), false),
-    ONLY_MINE_VALUABLES_NETHER(59, Message.SETTING_ONLY_MINE_VALUABLES_NETHER, new GuiFeatureData(ConfigColor.RED), true),
+    ONLY_MINE_VALUABLES_NETHER(59, Message.SETTING_ONLY_MINE_VALUABLES_NETHER, new GuiFeatureData(ConfigColor.RED), true, EnumUtils.FeatureSetting.ENABLE_MESSAGE_WHEN_ACTION_PREVENTED),
+    ENABLE_MESSAGE_WHEN_MINING_DEEP_CAVERNS(60, null, false),
+    ENABLE_MESSAGE_WHEN_BREAKING_STEMS(61, null, false),
 
     HIDE_GREY_ENCHANTS(100, null, false), // allow remote disabling this feature
 

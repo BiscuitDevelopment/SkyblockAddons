@@ -314,6 +314,19 @@ public class SettingsGui extends GuiScreen {
             boxWidth = 140;
             x = halfWidth-(boxWidth/2);
             buttonList.add(new ButtonSolid(x, y, 140, 20, Message.SETTING_BACKPACK_STYLE.getMessage(), main, feature));
+        } else if (setting == EnumUtils.FeatureSetting.ENABLE_MESSAGE_WHEN_ACTION_PREVENTED) {
+            boxWidth = 31;
+            x = halfWidth - (boxWidth / 2);
+
+            // Don't forget to add another "else if" when pulling the nether feature
+            Feature settingFeature = null;
+            if (feature == Feature.ONLY_MINE_ORES_DEEP_CAVERNS) {
+                settingFeature = Feature.ENABLE_MESSAGE_WHEN_MINING_DEEP_CAVERNS;
+            } else if (feature == Feature.AVOID_BREAKING_STEMS) {
+                settingFeature = Feature.ENABLE_MESSAGE_WHEN_BREAKING_STEMS;
+            }
+
+            buttonList.add(new ButtonToggleTitle(x, y, Message.SETTING_ENABLE_MESSAGE_WHEN_ACTION_PREVENTED.getMessage(), main, settingFeature));
         }
         row++;
     }
@@ -326,7 +339,7 @@ public class SettingsGui extends GuiScreen {
 
     private double getRowHeightSetting(double row) {
         row--;
-        return 130+(row*35); //height*(0.18+(row*0.08));
+        return 140+(row*35); //height*(0.18+(row*0.08));
     }
 
     @Override
