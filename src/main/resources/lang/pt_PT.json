@@ -79,8 +79,10 @@
     "speedPercentage": "Percentagem de velocidade",
     "collectionDisplay": "Progresso das habilidades",
     "onlyMineOresDeepCaverns": "Partir minérios só nas Deep Caverns",
+    "onlyMineValuablesNether": "Only Mine Valuables in the Nether",
     "revenantIndicator": "Indicador de progresso da Slayer Armor",
-    "specialZealotAlert": "Alerta para Zealots especiais"
+    "specialZealotAlert": "Alerta para Zealots especiais",
+    "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented"
   },
   "messages": {
     "dropConfirmation": "Dropa este item outra vez para confirmar!",
