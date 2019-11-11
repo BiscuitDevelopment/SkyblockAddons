@@ -79,8 +79,10 @@
     "speedPercentage": "Greičio Procentai",
     "collectionDisplay": "Įgūdžių progreso lentelė",
     "onlyMineOresDeepCaverns": "Kasti tik rūdas Deep Cavern'usuose",
+    "onlyMineValuablesNether": "Only Mine Valuables in the Nether",
     "revenantIndicator": "Žudiko Šarvų Progreso Indikatorius",
-    "specialZealotAlert": "Specialaus Zealoto Įspėjimas"
+    "specialZealotAlert": "Specialaus Zealoto Įspėjimas",
+    "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented"
   },
   "messages": {
     "dropConfirmation": "Meskite Šį Daiktą Dar Kartą, Kad Patvirtintumėte!",
