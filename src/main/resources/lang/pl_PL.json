@@ -79,8 +79,10 @@
     "speedPercentage": "Procent szybkości",
     "collectionDisplay": "Skill Progress Display",
     "onlyMineOresDeepCaverns": "Rudy kop tylko w Deep Caverns",
+    "onlyMineValuablesNether": "Only Mine Valuables in the Nether",
     "revenantIndicator": "Slayer Armor Progress Indicator",
-    "specialZealotAlert": "Alarmuj o Specjlanym Zealocie"
+    "specialZealotAlert": "Alarmuj o Specjlanym Zealocie",
+    "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented"
   },
   "messages": {
     "dropConfirmation": "Wyrzuć ten przedmiot ponownie, aby potwierdzić!",
