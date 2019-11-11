@@ -16,12 +16,13 @@ import java.io.IOException;
 import java.io.InputStream;
 
 @Mixin(Minecraft.class)
+
 public class MixinMinecraft {
+
     private final ResourceLocation currentLocation = new ResourceLocation("skyblockaddons", "bars.png");
     private final String oldPath = "assets/skyblockaddons/imperialoldbars.png";
 
-    @Shadow
-    private IReloadableResourceManager mcResourceManager;
+    @Shadow private IReloadableResourceManager mcResourceManager;
 
     @Inject(method = "refreshResources", at = @At("RETURN"))
     private void onRefreshResources(CallbackInfo cb) {
@@ -40,10 +41,9 @@ public class MixinMinecraft {
             e.printStackTrace();
         }
 
-        SkyblockAddons sba = SkyblockAddons.getInstance();
-        // Minecraft reloads textures before and after mods are loaded. So only set the variable if sba was initialized
-        if (sba != null) {
-            sba.getUtils().usingOldSkyBlockTexture = usingOldTexture;
+        SkyblockAddons main = SkyblockAddons.getInstance();
+        if (main != null) { // Minecraft reloads textures before and after mods are loaded. So only set the variable if sba was initialized
+            main.getUtils().setUsingOldSkyBlockTexture(usingOldTexture);
         }
     }
 }

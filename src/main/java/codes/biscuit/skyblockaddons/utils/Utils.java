@@ -9,8 +9,6 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityOtherPlayerMP;
-import net.minecraft.client.renderer.texture.TextureUtil;
-import net.minecraft.client.resources.IResource;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.event.ClickEvent;
@@ -22,7 +20,6 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.scoreboard.*;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.FMLLog;
@@ -37,8 +34,6 @@ import org.apache.commons.lang3.text.WordUtils;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.awt.image.DataBuffer;
 import java.io.*;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -60,7 +55,7 @@ public class Utils {
     // I know this is messy af, but frustration led me to take this dark path
     public static boolean blockNextClick = false;
 
-    public boolean usingOldSkyBlockTexture = false;
+    private boolean usingOldSkyBlockTexture = false;
 
     private final Pattern STRIP_COLOR_PATTERN = Pattern.compile("(?i)§[0-9A-FK-OR]");
     private final Pattern ITEM_ABILITY_PATTERN = Pattern.compile("§5§o§6Item Ability: ([A-Za-z ]+) §e§l[A-Z ]+");
@@ -856,4 +851,11 @@ public class Utils {
         this.profileName = profileName;
     }
 
+    public boolean isUsingOldSkyBlockTexture() {
+        return usingOldSkyBlockTexture;
+    }
+
+    public void setUsingOldSkyBlockTexture(boolean usingOldSkyBlockTexture) {
+        this.usingOldSkyBlockTexture = usingOldSkyBlockTexture;
+    }
 }
