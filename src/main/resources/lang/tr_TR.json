@@ -79,8 +79,10 @@
     "speedPercentage": "Hız yüzdesi",
     "collectionDisplay": "Beceri ilerleme göstergesi",
     "onlyMineOresDeepCaverns": "Deep caverns'ta sadece madenleri kaz",
+    "onlyMineValuablesNether": "Only Mine Valuables in the Nether",
     "revenantIndicator": "Slayer Armor Progress Indicator",
-    "specialZealotAlert": "Özel zealot alarmı"
+    "specialZealotAlert": "Özel zealot alarmı",
+    "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented"
   },
   "messages": {
     "dropConfirmation": "Eşyayı düşürmeyi onaylamak için düşürme tuşuna bir daha bas!",
