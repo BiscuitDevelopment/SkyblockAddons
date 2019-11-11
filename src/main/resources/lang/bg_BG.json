@@ -79,8 +79,10 @@
     "speedPercentage": "Процент скорост",
     "collectionDisplay": "Дисплей за прогрес на умения",
     "onlyMineOresDeepCaverns": "Копай само руди в Дълбоките пещери",
+    "onlyMineValuablesNether": "Only Mine Valuables in the Nether",
     "revenantIndicator": "Индикатор за прогрес на бронята на убиеца",
-    "specialZealotAlert": "Сигнал за Специален Зийлът"
+    "specialZealotAlert": "Сигнал за Специален Зийлът",
+    "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented"
   },
   "messages": {
     "dropConfirmation": "Хвърлете Този Предмет Отново за да Потвърдите!",
