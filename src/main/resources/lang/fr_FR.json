@@ -79,8 +79,10 @@
     "speedPercentage": "Pourcentage de vitesse",
     "collectionDisplay": "Affichage de la progression des compétences",
     "onlyMineOresDeepCaverns": "Miner que les minerais dans la Deep Caverns",
+    "onlyMineValuablesNether": "Only Mine Valuables in the Nether",
     "revenantIndicator": "Progression de l'armure Revenant",
-    "specialZealotAlert": "Alerte Zealot spécial"
+    "specialZealotAlert": "Alerte Zealot spécial",
+    "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented"
   },
   "messages": {
     "dropConfirmation": "Jetez cet objet une nouvelle fois pour confirmer!",
