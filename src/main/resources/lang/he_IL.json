@@ -79,8 +79,10 @@
     "speedPercentage": "אחוז מהירות",
     "collectionDisplay": "מסך התקדמות יכולות",
     "onlyMineOresDeepCaverns": "תחצוב מתכות רק בדיפ קוורנס",
+    "onlyMineValuablesNether": "Only Mine Valuables in the Nether",
     "revenantIndicator": "מד התקדמות עם שריון סלייר",
-    "specialZealotAlert": "התראה של זלוט מיוחד"
+    "specialZealotAlert": "התראה של זלוט מיוחד",
+    "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented"
   },
   "messages": {
     "dropConfirmation": "זרוק פריט זה שוב לאישור!",
