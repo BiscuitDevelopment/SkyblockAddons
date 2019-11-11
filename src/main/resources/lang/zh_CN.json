@@ -2,8 +2,8 @@
   "language": "简体中文",
   "settings": {
     "tab": {
-      "features": "功能",
-      "fixes": "修复",
+      "features": "主要功能",
+      "fixes": "辅助功能",
       "guiFeatures": "GUI 功能",
       "generalSettings": "常规设置"
     },
@@ -98,7 +98,7 @@
       "reforges": "重铸",
       "crafting": "合成"
     },
-    "newUpdateAvailable": "新版本 %version% 现已上线！\n\nhttps://biscuit.codes/mods/skyblockaddons/dl/",
+    "newUpdateAvailable": "新版本 %version% 现已上线！\n\n下载地址：https://biscuit.codes/mods/skyblockaddons/dl/\n翻译项目：https://crowdin.com/project/skyblockaddons/",
     "deleteOldFile": "下载完成，使用下方按钮打开 mods 文件夹，关闭 Minecraft，删除旧文件。",
     "wantToViewPatchNotes": "想查看更新内容？",
     "downloadLink": "更新链接",
