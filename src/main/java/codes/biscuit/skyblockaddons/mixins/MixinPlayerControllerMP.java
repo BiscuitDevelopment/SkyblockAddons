@@ -5,25 +5,19 @@ import codes.biscuit.skyblockaddons.gui.elements.CraftingPatternSelection;
 import codes.biscuit.skyblockaddons.utils.*;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.multiplayer.PlayerControllerMP;
-import net.minecraft.client.network.NetHandlerPlayClient;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ContainerPlayer;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-import net.minecraft.network.Packet;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
@@ -55,7 +49,6 @@ public class MixinPlayerControllerMP {
     private static final Set<Block> NETHER_MINEABLE_BLOCKS = new HashSet<>(Arrays.asList(Blocks.glowstone, Blocks.quartz_ore, Blocks.nether_wart, Blocks.skull));
 
     private long lastStemMessage = -1;
-    private long lastProfileMessage = -1;
     private long lastUnmineableMessage = -1;
 
     /**
@@ -106,42 +99,6 @@ public class MixinPlayerControllerMP {
         if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.SHOW_ITEM_COOLDOWNS)) {
             CooldownManager.put(Minecraft.getMinecraft().thePlayer.getHeldItem());
         }
-    }
-
-    @Redirect(method = "isPlayerRightClickingOnEntity", at = @At(value = "INVOKE",
-            target = "Lnet/minecraft/client/network/NetHandlerPlayClient;addToSendQueue(Lnet/minecraft/network/Packet;)V",
-    ordinal = 0))
-    private void onPlayerRightClickEntity(NetHandlerPlayClient netHandlerPlayClient, Packet p_147297_1_) {
-        checkIfShouldSendPacket(netHandlerPlayClient, p_147297_1_);
-    }
-
-    @Redirect(method = "interactWithEntitySendPacket", at = @At(value = "INVOKE",
-            target = "Lnet/minecraft/client/network/NetHandlerPlayClient;addToSendQueue(Lnet/minecraft/network/Packet;)V",
-            ordinal = 0))
-    private void interactWithEntitySendPacket(NetHandlerPlayClient netHandlerPlayClient, Packet p_147297_1_) {
-        checkIfShouldSendPacket(netHandlerPlayClient, p_147297_1_);
-    }
-
-    private void checkIfShouldSendPacket(NetHandlerPlayClient netHandlerPlayClient, Packet p_147297_1_) {
-        SkyblockAddons main = SkyblockAddons.getInstance();
-        if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.DONT_OPEN_PROFILES_WITH_BOW)) {
-            Minecraft mc = Minecraft.getMinecraft();
-            Entity entityIn = mc.objectMouseOver.entityHit;
-            if (entityIn instanceof EntityOtherPlayerMP && main.getUtils().isNotNPC(entityIn)) {
-                ItemStack item = mc.thePlayer.inventory.getCurrentItem();
-                ItemStack itemInUse = mc.thePlayer.getItemInUse();
-                if ((item != null && item.getItem() != null && item.getItem().equals(Items.bow)) ||
-                        (itemInUse != null && itemInUse.getItem() != null && itemInUse.getItem().equals(Items.bow))) {
-                    if (System.currentTimeMillis()- lastProfileMessage > 20000) {
-                        lastProfileMessage = System.currentTimeMillis();
-                        main.getUtils().sendMessage(main.getConfigValues().getColor(Feature.DONT_OPEN_PROFILES_WITH_BOW).getChatFormatting()+
-                                Message.MESSAGE_STOPPED_OPENING_PROFILE.getMessage());
-                    }
-                    return;
-                }
-            }
-        }
-        netHandlerPlayClient.addToSendQueue(p_147297_1_);
     }
 
     /**
