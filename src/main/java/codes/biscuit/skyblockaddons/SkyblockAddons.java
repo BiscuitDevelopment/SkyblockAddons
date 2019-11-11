@@ -1,6 +1,7 @@
 package codes.biscuit.skyblockaddons;
 
 import codes.biscuit.skyblockaddons.commands.SkyblockAddonsCommand;
+import codes.biscuit.skyblockaddons.listeners.ChatListener;
 import codes.biscuit.skyblockaddons.listeners.PlayerListener;
 import codes.biscuit.skyblockaddons.listeners.RenderListener;
 import codes.biscuit.skyblockaddons.utils.*;
@@ -32,6 +33,7 @@ public class SkyblockAddons {
     private ConfigValues configValues;
     private PlayerListener playerListener = new PlayerListener(this);
     private RenderListener renderListener = new RenderListener(this);
+    private ChatListener chatListener = new ChatListener(this);
     private Utils utils = new Utils(this);
     private InventoryUtils inventoryUtils = new InventoryUtils(this);
     private Scheduler scheduler = new Scheduler(this);
@@ -50,6 +52,7 @@ public class SkyblockAddons {
     public void init(FMLInitializationEvent e) {
         MinecraftForge.EVENT_BUS.register(playerListener);
         MinecraftForge.EVENT_BUS.register(renderListener);
+        MinecraftForge.EVENT_BUS.register(chatListener);
         MinecraftForge.EVENT_BUS.register(scheduler);
         ClientCommandHandler.instance.registerCommand(new SkyblockAddonsCommand(this));
 
