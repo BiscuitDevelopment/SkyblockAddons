@@ -79,8 +79,10 @@
     "speedPercentage": "Sebesség százalékos megjelenitése",
     "collectionDisplay": "Képességfejlődés megjelenítése",
     "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns",
+    "onlyMineValuablesNether": "Only Mine Valuables in the Nether",
     "revenantIndicator": "Slayer Armor Progress Indicator",
-    "specialZealotAlert": "Special Zealot Alert"
+    "specialZealotAlert": "Special Zealot Alert",
+    "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented"
   },
   "messages": {
     "dropConfirmation": "Dobd el ezt a tárgyat újra, hogy megerősítsd!",
