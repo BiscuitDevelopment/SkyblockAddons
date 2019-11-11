@@ -79,8 +79,10 @@
     "speedPercentage": "スピード",
     "collectionDisplay": "スキルの進捗の表示",
     "onlyMineOresDeepCaverns": "Deep Cavernsで鉱石のみを掘れるように",
+    "onlyMineValuablesNether": "Only Mine Valuables in the Nether",
     "revenantIndicator": "Slayer装備の進捗を表示",
-    "specialZealotAlert": "特別なZealotのアラート"
+    "specialZealotAlert": "特別なZealotのアラート",
+    "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented"
   },
   "messages": {
     "dropConfirmation": "落としてもいいのであれば、このアイテムをもう一度ドロップしてください。",
