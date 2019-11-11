@@ -81,7 +81,7 @@
     "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns",
     "revenantIndicator": "Slayer Armor Progress Indicator",
     "specialZealotAlert": "Special Zealot Alert",
-    "enableMessageWhenActionPrevented": "Print a message when the action is prevented"
+    "enableMessageWhenActionPrevented": "Show a Message When Mining is Prevented"
   },
   "messages": {
     "dropConfirmation": "Drop this item again to confirm!",
