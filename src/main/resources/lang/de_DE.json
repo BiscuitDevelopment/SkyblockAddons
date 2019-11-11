@@ -70,7 +70,7 @@
     "replaceRomanNumeralsWithNumbers": "Ersetze Römische Nummern auf Gegenständen",
     "changeBarColorForPotions": "Farbe der Leiste bei Wither und Gift ändern",
     "craftingPatterns": "Wähle Herstellung-Muster",
-    "soundIndicatorForFishing": "Tonindikator für Fischerei",
+    "soundIndicatorForFishing": "Ton für Fischen",
     "avoidBlinkingNightVision": "Deaktiviere Nachtsicht Blinken",
     "disableMinionLocationWarning": "Deaktiviere \"Location not perfect\" Warnung",
     "jungleAxeCooldown": "Dschungelaxt Abklingzeit",
@@ -122,6 +122,6 @@
     "featureDisabled": "Funktion deaktiviert",
     "anvilUses": "Ambossnutzungen: %uses%",
     "specialZealotFound": "Spezieller Zealot!",
-    "blockIncompletePatterns": "Block craften unvollständige Muster (empfohlen)"
+    "blockIncompletePatterns": "Block craften, unvollständige Muster (empfohlen)"
   }
 }

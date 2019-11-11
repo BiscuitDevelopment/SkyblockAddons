@@ -238,9 +238,10 @@ public class PlayerListener {
                 main.getRenderListener().setTitleFeature(Feature.SPECIAL_ZEALOT_ALERT);
                 main.getScheduler().schedule(Scheduler.CommandType.RESET_TITLE_FEATURE, main.getConfigValues().getWarningSeconds());
             }
+
             Matcher matcher = ABILITY_CHAT_PATTERN.matcher(e.message.getFormattedText());
             if (matcher.matches()) {
-                main.getUtils().logEntry(Minecraft.getMinecraft().thePlayer.getHeldItem());
+                CooldownManager.put(Minecraft.getMinecraft().thePlayer.getHeldItem());
             } else {
                 matcher = PROFILE_CHAT_PATTERN.matcher(e.message.getFormattedText());
                 if (matcher.matches()) {
@@ -285,7 +286,7 @@ public class PlayerListener {
                     oldBobberPosY = 0;
                 }
                 if (main.getConfigValues().isEnabled(Feature.SHOW_ITEM_COOLDOWNS) && mc.thePlayer.fishEntity != null) {
-                    main.getUtils().logEntry(mc.thePlayer.getHeldItem());
+                    CooldownManager.put(mc.thePlayer.getHeldItem());
                 }
             } else if (main.getConfigValues().isEnabled(Feature.AVOID_PLACING_ENCHANTED_ITEMS) && EnchantedItemBlacklist.shouldBlockUsage(heldItem)
                     && (e.action == PlayerInteractEvent.Action.RIGHT_CLICK_BLOCK || e.action == PlayerInteractEvent.Action.RIGHT_CLICK_AIR)) {

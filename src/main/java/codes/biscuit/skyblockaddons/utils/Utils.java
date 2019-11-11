@@ -9,8 +9,6 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityOtherPlayerMP;
-import net.minecraft.client.renderer.texture.TextureUtil;
-import net.minecraft.client.resources.IResource;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.event.ClickEvent;
@@ -22,7 +20,6 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.scoreboard.*;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.FMLLog;
@@ -37,8 +34,6 @@ import org.apache.commons.lang3.text.WordUtils;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.awt.image.DataBuffer;
 import java.io.*;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -60,9 +55,9 @@ public class Utils {
     // I know this is messy af, but frustration led me to take this dark path
     public static boolean blockNextClick = false;
 
+    private boolean usingOldSkyBlockTexture = false;
+
     private final Pattern STRIP_COLOR_PATTERN = Pattern.compile("(?i)§[0-9A-FK-OR]");
-    private final Pattern ITEM_COOLDOWN_PATTERN = Pattern.compile("§5§o§8Cooldown: §a([0-9]+)s");
-    private final Pattern ALTERNATE_COOLDOWN_PATTERN = Pattern.compile("§5§o§8([0-9]+) Second Cooldown");
     private final Pattern ITEM_ABILITY_PATTERN = Pattern.compile("§5§o§6Item Ability: ([A-Za-z ]+) §e§l[A-Z ]+");
 
     private static final List<String> ORDERED_ENCHANTMENTS = Collections.unmodifiableList(Arrays.asList(
@@ -79,7 +74,6 @@ public class Utils {
     private Map<Attribute, MutableInt> attributes = new EnumMap<>(Attribute.class);
     private List<String> enchantmentMatch = new LinkedList<>();
     private List<String> enchantmentExclusion = new LinkedList<>();
-    private Set<CooldownEntry> cooldownEntries = new HashSet<>();
     private Backpack backpackToRender = null;
     private static boolean onSkyblock = false;
     private EnumUtils.Location location = null;
@@ -137,6 +131,7 @@ public class Utils {
                 for (String skyblock : SKYBLOCK_IN_ALL_LANGUAGES) {
                     if (objectiveName.startsWith(skyblock)) {
                         onSkyblock = true;
+                        break;
                     }
                 }
                 Collection<Score> collection = scoreboard.getSortedScores(sidebarObjective);
@@ -677,80 +672,9 @@ public class Utils {
         return -1;
     }
 
-    public void logEntry(ItemStack itemStack) {
-        if (itemStack != null && itemStack.hasDisplayName()) {
-            Item item = itemStack.getItem();
-            String name = itemStack.getDisplayName();
-            int cooldownSeconds = getLoreCooldown(itemStack);
-            if (cooldownSeconds != -1) {
-                String abilityName = getAbilityName(itemStack);
-                CooldownEntry cooldownEntry = getCooldownEntry(item, name);
-                if (!item.isDamageable() && abilityName == null) return; // if its not a tool and has no ability, its not gonna have a cooldown
-                if (cooldownEntry != null) {
-                    if (cooldownEntry.getCooldown() == 1) {
-                        cooldownEntry.setLastUse();
-                    }
-                } else {
-                    cooldownEntries.add(new CooldownEntry(item,name,cooldownSeconds));
-                }
-            }
-        }
-    }
-
-    public double getItemCooldown(ItemStack item) {
-        if (item != null) {
-            Iterator<CooldownEntry> iterator = cooldownEntries.iterator();
-            while (iterator.hasNext()) {
-                CooldownEntry entry = iterator.next();
-                double cooldown = entry.getCooldown();
-                if (entry.getItem().equals(item.getItem()) && entry.getItemName().equals(item.getDisplayName())) {
-                    return cooldown;
-                }
-                if (cooldown == 1) {
-                    iterator.remove();
-                }
-            }
-        }
-        return -1;
-    }
-
     public boolean isHalloween() {
         Calendar calendar = Calendar.getInstance();
         return calendar.get(Calendar.MONTH) == Calendar.OCTOBER && calendar.get(Calendar.DAY_OF_MONTH) == 31;
-    }
-
-    public CooldownEntry getItemCooldown(String itemName) {
-        Iterator<CooldownEntry> iterator = cooldownEntries.iterator();
-        while (iterator.hasNext()) {
-            CooldownEntry entry = iterator.next();
-            if (entry.getItemName().equals(itemName)) {
-                return entry;
-            }
-            double cooldown = entry.getCooldown();
-            if (cooldown == 1) {
-                iterator.remove();
-            }
-        }
-        return null;
-    }
-
-    private int getLoreCooldown(ItemStack item) {
-        for (String loreLine : item.getTooltip(Minecraft.getMinecraft().thePlayer, false)) {
-            Matcher matcher = ITEM_COOLDOWN_PATTERN.matcher(loreLine);
-            if (matcher.matches()) {
-                try {
-                    return Integer.parseInt(matcher.group(1));
-                } catch (NumberFormatException ignored) { }
-            } else {
-                matcher = ALTERNATE_COOLDOWN_PATTERN.matcher(loreLine);
-                if (matcher.matches()) {
-                    try {
-                        return Integer.parseInt(matcher.group(1));
-                    } catch (NumberFormatException ignored) { }
-                }
-            }
-        }
-        return -1;
     }
 
     private String getAbilityName(ItemStack item) {
@@ -760,15 +684,6 @@ public class Utils {
                 try {
                     return matcher.group(1);
                 } catch (NumberFormatException ignored) { }
-            }
-        }
-        return null;
-    }
-
-    private CooldownEntry getCooldownEntry(Item item, String itemname) {
-        for (CooldownEntry entry : cooldownEntries) {
-            if (entry.getItem().equals(item) && entry.getItemName().equals(itemname)) {
-                return entry;
             }
         }
         return null;
@@ -789,34 +704,6 @@ public class Utils {
 
     public boolean isPickaxe(Item item) {
         return Items.wooden_pickaxe.equals(item) || Items.stone_pickaxe.equals(item) || Items.golden_pickaxe.equals(item) || Items.iron_pickaxe.equals(item) || Items.diamond_pickaxe.equals(item);
-    }
-
-    public boolean isUsingOldSkyblockPackTexture(ResourceLocation resourceLocation) {
-        try {
-            Minecraft mc = Minecraft.getMinecraft();
-            IResource resource = mc.getResourceManager().getResource(resourceLocation);
-            BufferedImage targetImage = TextureUtil.readBufferedImage(resource.getInputStream());
-            DataBuffer targetData = targetImage.getData().getDataBuffer();
-            int sizeA = targetData.getSize();
-
-            BufferedImage originalImage = TextureUtil.readBufferedImage(getClass().getClassLoader().getResourceAsStream("assets/skyblockaddons/imperialoldbars.png"));
-            DataBuffer originalData = originalImage.getData().getDataBuffer();
-            int sizeB = originalData.getSize();
-            // compare data-buffer objects //
-            if (sizeA == sizeB) {
-                for(int i=0; i<sizeA; i++) {
-                    if(targetData.getElem(i) != originalData.getElem(i)) {
-                        return false;
-                    }
-                }
-                return true;
-            } else {
-                return false;
-            }
-        } catch (IOException | NullPointerException e) {
-            e.printStackTrace();
-        }
-        return false;
     }
 
     private boolean lookedOnline = false;
@@ -964,4 +851,11 @@ public class Utils {
         this.profileName = profileName;
     }
 
+    public boolean isUsingOldSkyBlockTexture() {
+        return usingOldSkyBlockTexture;
+    }
+
+    public void setUsingOldSkyBlockTexture(boolean usingOldSkyBlockTexture) {
+        this.usingOldSkyBlockTexture = usingOldSkyBlockTexture;
+    }
 }

@@ -400,7 +400,8 @@ public class EnumUtils {
         BACKPACK_STYLE,
         SHOW_ONLY_WHEN_HOLDING_SHIFT,
         MAKE_INVENTORY_COLORED,
-        CHANGE_BAR_COLOR_WITH_POTIONS
+        CHANGE_BAR_COLOR_WITH_POTIONS,
+        ENABLE_MESSAGE_WHEN_ACTION_PREVENTED
     }
 
     @SuppressWarnings("deprecation")
@@ -417,7 +418,8 @@ public class EnumUtils {
         COMNIEMEER("comniemeer","github.com/comniemeer", Feature.JUNGLE_AXE_COOLDOWN),
         KEAGEL("Keagel", "github.com/Keagel", Feature.ONLY_MINE_ORES_DEEP_CAVERNS),
         SUPERHIZE("SuperHiZe", "github.com/superhize", Feature.SPECIAL_ZEALOT_ALERT),
-        DIDI_SKYWALKER("DidiSkywalker", "github.com/didiskywalker", Feature.ITEM_PICKUP_LOG, Feature.HEALTH_UPDATES, Feature.REPLACE_ROMAN_NUMERALS_WITH_NUMBERS, Feature.CRAFTING_PATTERNS);
+        DIDI_SKYWALKER("DidiSkywalker", "github.com/didiskywalker", Feature.ITEM_PICKUP_LOG, Feature.HEALTH_UPDATES, Feature.REPLACE_ROMAN_NUMERALS_WITH_NUMBERS, Feature.CRAFTING_PATTERNS),
+        GARY("GARY_", "github.com/occanowey", Feature.ONLY_MINE_VALUABLES_NETHER);
 
         private Set<Feature> features;
         private String author;

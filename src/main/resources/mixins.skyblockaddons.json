@@ -19,6 +19,7 @@
     "MixinRendererLivingEntity",
     "MixinItem",
     "MixinGuiNewChat",
-    "MixinEntityLayerCustomHead"
+    "MixinEntityLayerCustomHead",
+    "MixinMinecraft"
   ]
 }
