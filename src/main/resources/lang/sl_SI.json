@@ -79,8 +79,10 @@
     "speedPercentage": "Odstotek Hitrosti",
     "collectionDisplay": "Prikaz Skill Napredka",
     "onlyMineOresDeepCaverns": "Uničuj Rude Samo v Deep Caverns-ih",
+    "onlyMineValuablesNether": "Only Mine Valuables in the Nether",
     "revenantIndicator": "Slayer Armor Progress Indicator",
-    "specialZealotAlert": "Opozorilo za Posebnega Zealota"
+    "specialZealotAlert": "Opozorilo za Posebnega Zealota",
+    "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented"
   },
   "messages": {
     "dropConfirmation": "Ponovno Izpusti To Stvar za Potrditev!",
