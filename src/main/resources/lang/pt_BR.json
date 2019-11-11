@@ -79,8 +79,10 @@
     "speedPercentage": "Porcentagem de velocidade",
     "collectionDisplay": "Exibição do progresso da habilidade",
     "onlyMineOresDeepCaverns": "Apenas quebrar minérios nas Cavernas Profundas",
+    "onlyMineValuablesNether": "Only Mine Valuables in the Nether",
     "revenantIndicator": "Slayer Armor Progress Indicator",
-    "specialZealotAlert": "Alerta Zealot especial"
+    "specialZealotAlert": "Alerta Zealot especial",
+    "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented"
   },
   "messages": {
     "dropConfirmation": "Large este item de novo para confirmar!",
