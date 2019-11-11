@@ -60,6 +60,8 @@ public class Utils {
     // I know this is messy af, but frustration led me to take this dark path
     public static boolean blockNextClick = false;
 
+    public boolean usingOldSkyBlockTexture = false;
+
     private final Pattern STRIP_COLOR_PATTERN = Pattern.compile("(?i)§[0-9A-FK-OR]");
     private final Pattern ITEM_COOLDOWN_PATTERN = Pattern.compile("§5§o§8Cooldown: §a([0-9]+)s");
     private final Pattern ALTERNATE_COOLDOWN_PATTERN = Pattern.compile("§5§o§8([0-9]+) Second Cooldown");
@@ -790,34 +792,6 @@ public class Utils {
 
     public boolean isPickaxe(Item item) {
         return Items.wooden_pickaxe.equals(item) || Items.stone_pickaxe.equals(item) || Items.golden_pickaxe.equals(item) || Items.iron_pickaxe.equals(item) || Items.diamond_pickaxe.equals(item);
-    }
-
-    public boolean isUsingOldSkyblockPackTexture(ResourceLocation resourceLocation) {
-        try {
-            Minecraft mc = Minecraft.getMinecraft();
-            IResource resource = mc.getResourceManager().getResource(resourceLocation);
-            BufferedImage targetImage = TextureUtil.readBufferedImage(resource.getInputStream());
-            DataBuffer targetData = targetImage.getData().getDataBuffer();
-            int sizeA = targetData.getSize();
-
-            BufferedImage originalImage = TextureUtil.readBufferedImage(getClass().getClassLoader().getResourceAsStream("assets/skyblockaddons/imperialoldbars.png"));
-            DataBuffer originalData = originalImage.getData().getDataBuffer();
-            int sizeB = originalData.getSize();
-            // compare data-buffer objects //
-            if (sizeA == sizeB) {
-                for(int i=0; i<sizeA; i++) {
-                    if(targetData.getElem(i) != originalData.getElem(i)) {
-                        return false;
-                    }
-                }
-                return true;
-            } else {
-                return false;
-            }
-        } catch (IOException | NullPointerException e) {
-            e.printStackTrace();
-        }
-        return false;
     }
 
     private boolean lookedOnline = false;
