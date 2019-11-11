@@ -48,14 +48,11 @@ public class MixinPlayerControllerMP {
 
     private static final Set<EnumUtils.Location> DEEP_CAVERNS_LOCATIONS = EnumSet.of(EnumUtils.Location.DEEP_CAVERNS, EnumUtils.Location.GUNPOWDER_MINES,
             EnumUtils.Location.LAPIS_QUARRY, EnumUtils.Location.PIGMAN_DEN, EnumUtils.Location.SLIMEHILL, EnumUtils.Location.DIAMOND_RESERVE, EnumUtils.Location.OBSIDIAN_SANCTUARY);
+
     private static final Set<Block> DEEP_CAVERNS_MINEABLE_BLOCKS = new HashSet<>(Arrays.asList(Blocks.coal_ore, Blocks.iron_ore, Blocks.gold_ore, Blocks.redstone_ore, Blocks.emerald_ore,
             Blocks.diamond_ore, Blocks.diamond_block, Blocks.obsidian, Blocks.lapis_ore, Blocks.lit_redstone_ore));
 
-    private static final EnumUtils.Location NETHER_LOCATION = EnumUtils.Location.BLAZING_FORTRESS;
-    private static final Set<Block> NETHER_MINEABLE_BLOCKS = new HashSet<>(Arrays.asList(Blocks.glowstone, Blocks.quartz_ore, Blocks.nether_wart));
-    private static final Set<BlockPos> NETHER_FAIRY_SOUL_MINEABLES = new HashSet<>(Arrays.asList(
-            new BlockPos(-336, 91, -447), new BlockPos(-236, 84, -592)
-    ));
+    private static final Set<Block> NETHER_MINEABLE_BLOCKS = new HashSet<>(Arrays.asList(Blocks.glowstone, Blocks.quartz_ore, Blocks.nether_wart, Blocks.skull));
 
     private long lastStemMessage = -1;
     private long lastProfileMessage = -1;
@@ -87,10 +84,8 @@ public class MixinPlayerControllerMP {
                     main.getUtils().sendMessage(main.getConfigValues().getColor(Feature.ONLY_MINE_ORES_DEEP_CAVERNS).getChatFormatting() + Message.MESSAGE_CANCELLED_NON_ORES_BREAK.getMessage());
                 }
                 cir.setReturnValue(false);
-            } else if (main.getConfigValues().isEnabled(Feature.ONLY_MINE_VALUABLES_NETHER) &&
-                    NETHER_LOCATION.equals(main.getUtils().getLocation()) &&
-                    main.getUtils().isPickaxe(heldItem.getItem()) &&
-                    (!NETHER_MINEABLE_BLOCKS.contains(block) && !NETHER_FAIRY_SOUL_MINEABLES.contains(loc))) {
+            } else if (main.getConfigValues().isEnabled(Feature.ONLY_MINE_VALUABLES_NETHER) && EnumUtils.Location.BLAZING_FORTRESS.equals(main.getUtils().getLocation()) &&
+                    main.getUtils().isPickaxe(heldItem.getItem()) && !NETHER_MINEABLE_BLOCKS.contains(block)) {
                 if (now - lastUnmineableMessage > 60000) {
                     lastUnmineableMessage = now;
                     main.getUtils().sendMessage(main.getConfigValues().getColor(Feature.ONLY_MINE_VALUABLES_NETHER).getChatFormatting() + Message.MESSAGE_CANCELLED_NON_ORES_BREAK.getMessage());
