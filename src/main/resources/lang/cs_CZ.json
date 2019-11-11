@@ -79,8 +79,10 @@
     "speedPercentage": "Procenta rychlosti",
     "collectionDisplay": "Zobrazení postupu skillů",
     "onlyMineOresDeepCaverns": "Těžit rudy pouze v Deep Caverns",
+    "onlyMineValuablesNether": "Only Mine Valuables in the Nether",
     "revenantIndicator": "Ukazatel Postupu Zabijáckého Brnění",
-    "specialZealotAlert": "Speciální Zealot Upozornění"
+    "specialZealotAlert": "Speciální Zealot Upozornění",
+    "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented"
   },
   "messages": {
     "dropConfirmation": "Vyhoď tento item pro vyhození!",
