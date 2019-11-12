@@ -79,10 +79,10 @@
     "speedPercentage": "Percentuale di Velocità",
     "collectionDisplay": "Visualizzazione del progresso dell’abilità",
     "onlyMineOresDeepCaverns": "Estrai minerali solo nelle Deep Caverns",
-    "onlyMineValuablesNether": "Only Mine Valuables in the Nether",
+    "onlyMineValuablesNether": "Estrai solo minerali di valore nel Nether",
     "revenantIndicator": "Indicatore di progresso dell’Armatura Slayer",
     "specialZealotAlert": "Avviso di Zealot Speciale",
-    "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented"
+    "enableMessageWhenActionPrevented": "Mostra un messaggio quando un’azione viene bloccata"
   },
   "messages": {
     "dropConfirmation": "Getta questo oggetto nuovamente per confermare!",
