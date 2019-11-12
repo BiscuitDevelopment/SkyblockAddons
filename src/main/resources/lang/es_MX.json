@@ -79,10 +79,10 @@
     "speedPercentage": "Porcentaje de Velocidad",
     "collectionDisplay": "Progreso de Hablidades",
     "onlyMineOresDeepCaverns": "Minar Minerales Sólo en Deep Caverns",
-    "onlyMineValuablesNether": "Only Mine Valuables in the Nether",
+    "onlyMineValuablesNether": "Minar Sólo Bloques Valiosos en Nether",
     "revenantIndicator": "Indicador de Progreso de Slayer Armor",
     "specialZealotAlert": "Alerta de Zealot Especial",
-    "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented"
+    "enableMessageWhenActionPrevented": "Mostrar un Mensaje al Prevenir una Acción"
   },
   "messages": {
     "dropConfirmation": "Arroja este objeto otra vez para confirmar!",
