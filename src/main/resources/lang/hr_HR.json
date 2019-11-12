@@ -79,10 +79,10 @@
     "speedPercentage": "Postotak Brzine",
     "collectionDisplay": "Prikaz Napretka Skill-ova",
     "onlyMineOresDeepCaverns": "Dopusti Kopanje Samo Ruda u Deep Cavernsu",
-    "onlyMineValuablesNether": "Only Mine Valuables in the Nether",
+    "onlyMineValuablesNether": "Samo kopaj vrijednosti u Paklu",
     "revenantIndicator": "Indikator Napretka Na Slayer Armor-u",
     "specialZealotAlert": "Upozorenje za Posebne Zealote",
-    "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented"
+    "enableMessageWhenActionPrevented": "Prikaži Poruku Kada je Akcija Spriječena"
   },
   "messages": {
     "dropConfirmation": "Opet baci ovu stvar za konfirmaciju!",
