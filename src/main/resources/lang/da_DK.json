@@ -79,10 +79,10 @@
     "speedPercentage": "Hastigheds procent",
     "collectionDisplay": "Dygtigheds fremskridt visning",
     "onlyMineOresDeepCaverns": "Kun mine malm i Deep Caverns",
-    "onlyMineValuablesNether": "Only Mine Valuables in the Nether",
+    "onlyMineValuablesNether": "Kun mine værdigenstande i Nether",
     "revenantIndicator": "Slayer rustning fremskridts indikator",
     "specialZealotAlert": "Speciel Zealot alarm",
-    "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented"
+    "enableMessageWhenActionPrevented": "Vis en besked når en aktion er forhindret"
   },
   "messages": {
     "dropConfirmation": "Slip denne vare igen for at bekræfte!",
