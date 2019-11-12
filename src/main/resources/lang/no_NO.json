@@ -79,10 +79,10 @@
     "speedPercentage": "Farts Prosent",
     "collectionDisplay": "Ferdighetsutvikling Visning",
     "onlyMineOresDeepCaverns": "Bare Grave Årer i de Dype Hulene",
-    "onlyMineValuablesNether": "Only Mine Valuables in the Nether",
+    "onlyMineValuablesNether": "Bare ødelegg verdifulle ting i Nether",
     "revenantIndicator": "Slayer Armour Fremgangs Indikator",
     "specialZealotAlert": "Spesiell Zealot Alarm",
-    "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented"
+    "enableMessageWhenActionPrevented": "Vis en melding når en hendelse er forhindret"
   },
   "messages": {
     "dropConfirmation": "Slipp denne gjenstanden igjen for å bekrefte!",
