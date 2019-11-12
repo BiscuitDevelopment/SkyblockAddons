@@ -79,10 +79,10 @@
     "speedPercentage": "Geschwindigkeit in Prozent",
     "collectionDisplay": "Skillfortschrittsanzeige",
     "onlyMineOresDeepCaverns": "Nur Erze in Deep Caverns abbauen",
-    "onlyMineValuablesNether": "Only Mine Valuables in the Nether",
+    "onlyMineValuablesNether": "Nur Wertvolle Materialien abbauen",
     "revenantIndicator": "Slayer Rüstung Fortschritt Anzeige",
     "specialZealotAlert": "Spezieller Zealot Alarm",
-    "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented"
+    "enableMessageWhenActionPrevented": "Nachricht anzeigen, wenn eine Aktion verhindert wird"
   },
   "messages": {
     "dropConfirmation": "Werfe diesen Gegenstand nochmal, um zu bestätigen!",
