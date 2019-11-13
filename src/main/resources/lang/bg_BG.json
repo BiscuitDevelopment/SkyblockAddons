@@ -79,11 +79,11 @@
     "speedPercentage": "Процент скорост",
     "collectionDisplay": "Дисплей за прогрес на умения",
     "onlyMineOresDeepCaverns": "Копай само руди в Дълбоките пещери",
-    "onlyMineValuablesNether": "Only Mine Valuables in the Nether",
+    "onlyMineValuablesNether": "Копай Само Ценности в Ада",
     "revenantIndicator": "Индикатор за прогрес на бронята на убиеца",
     "specialZealotAlert": "Сигнал за Специален Зийлът",
-    "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented",
-    "hidePetHealthBar": "Hide Pet Health Bar"
+    "enableMessageWhenActionPrevented": "Покажи Съобщение Когато Действие Бива Предотвратено",
+    "hidePetHealthBar": "Скрий Лентата За Живот На Любимеца"
   },
   "messages": {
     "dropConfirmation": "Хвърлете Този Предмет Отново за да Потвърдите!",
@@ -126,6 +126,6 @@
     "anvilUses": "Използване на наковалня: %uses%",
     "specialZealotFound": "Специален Зийлът!",
     "blockIncompletePatterns": "Блокиране на изработване на непълни модели (препоръчително)",
-    "searchFeatures": "Search features"
+    "searchFeatures": "Търси Свойства"
   }
 }
