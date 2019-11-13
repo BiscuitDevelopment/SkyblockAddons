@@ -116,6 +116,7 @@ public enum Message {
     MESSAGE_SPECIAL_ZEALOT_FOUND(MessageObject.MESSAGES, "specialZealotFound"),
     MESSAGE_BLOCK_INCOMPLETE_PATTERNS(MessageObject.MESSAGES, "blockIncompletePatterns"),
     MESSAGE_SEARCH_FEATURES(MessageObject.MESSAGES, "searchFeatures"),
+    MESSAGE_DOWNLOADING_UPDATE(MessageObject.MESSAGES, "downloadingUpdateFile"),
 
     @Deprecated ANCHOR_POINT_TOP_LEFT(MessageObject.ANCHOR_POINT, "topLeft"),
     @Deprecated ANCHOR_POINT_TOP_RIGHT(MessageObject.ANCHOR_POINT, "topRight"),
