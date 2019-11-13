@@ -126,6 +126,7 @@
     "anvilUses": "Usos na bigorna: %uses%",
     "specialZealotFound": "Zealot especial!",
     "blockIncompletePatterns": "Bloquear padrões de criação incompletos (recomendado)",
-    "searchFeatures": "Procurar funcionalidades"
+    "searchFeatures": "Procurar funcionalidades",
+    "downloadingUpdateFile": "Downloading update file..."
   }
 }
