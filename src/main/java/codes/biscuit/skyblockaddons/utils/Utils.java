@@ -580,6 +580,7 @@ public class Utils {
     public void downloadPatch(String version) {
         File sbaFolder = getSBAFolder(true);
         if (sbaFolder != null) {
+            main.getUtils().sendMessage(EnumChatFormatting.YELLOW+"Downloading update...");
             new Thread(() -> {
                 try {
                     String fileName = "SkyblockAddons-"+version+"-for-MC-1.8.9.jar";
