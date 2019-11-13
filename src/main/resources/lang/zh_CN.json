@@ -82,7 +82,8 @@
     "onlyMineValuablesNether": "仅在地狱开采有价值的矿物",
     "revenantIndicator": "杀手弓进度提示",
     "specialZealotAlert": "末影战士警告",
-    "enableMessageWhenActionPrevented": "阻止操作时显示消息"
+    "enableMessageWhenActionPrevented": "阻止操作时显示消息",
+    "hidePetHealthBar": "Hide Pet Health Bar"
   },
   "messages": {
     "dropConfirmation": "再次丢弃此物品以确认!",
@@ -124,6 +125,7 @@
     "featureDisabled": "功能已禁用",
     "anvilUses": "铁砧使用次数: %uses%",
     "specialZealotFound": "末影战士！",
-    "blockIncompletePatterns": "阻止合成不完整的图案 - 推荐"
+    "blockIncompletePatterns": "阻止合成不完整的图案 - 推荐",
+    "searchFeatures": "Search features"
   }
 }
