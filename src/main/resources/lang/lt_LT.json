@@ -126,6 +126,7 @@
     "anvilUses": "Priekalo Panaudojimai: %uses%",
     "specialZealotFound": "Specialus Zealotas!",
     "blockIncompletePatterns": "Nepilnas blokų modelis (rekomenduojama)",
-    "searchFeatures": "Search features"
+    "searchFeatures": "Search features",
+    "downloadingUpdateFile": "Downloading update file..."
   }
 }
