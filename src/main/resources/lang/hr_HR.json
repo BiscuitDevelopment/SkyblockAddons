@@ -82,7 +82,8 @@
     "onlyMineValuablesNether": "Samo kopaj vrijednosti u Paklu",
     "revenantIndicator": "Indikator Napretka Na Slayer Armor-u",
     "specialZealotAlert": "Upozorenje za Posebne Zealote",
-    "enableMessageWhenActionPrevented": "Prikaži Poruku Kada je Akcija Spriječena"
+    "enableMessageWhenActionPrevented": "Prikaži Poruku Kada je Akcija Spriječena",
+    "hidePetHealthBar": "Hide Pet Health Bar"
   },
   "messages": {
     "dropConfirmation": "Opet baci ovu stvar za konfirmaciju!",
@@ -124,6 +125,7 @@
     "featureDisabled": "Opcija Onemogućena",
     "anvilUses": "Korištenja u Anvilu: %uses%",
     "specialZealotFound": "Posebni Zealot!",
-    "blockIncompletePatterns": "Blokiraj pravljenje neispunjenih oblika (preporučeno)"
+    "blockIncompletePatterns": "Blokiraj pravljenje neispunjenih oblika (preporučeno)",
+    "searchFeatures": "Search features"
   }
 }
