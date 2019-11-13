@@ -126,6 +126,7 @@
     "anvilUses": "Utilisation de l'enclume: %uses%",
     "specialZealotFound": "Zealot spécial!",
     "blockIncompletePatterns": "Ne pas fabriquer les modèles incomplet (recommandé)",
-    "searchFeatures": "Rechercher des fonctionnalités"
+    "searchFeatures": "Rechercher des fonctionnalités",
+    "downloadingUpdateFile": "Downloading update file..."
   }
 }
