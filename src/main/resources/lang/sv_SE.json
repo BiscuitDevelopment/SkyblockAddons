@@ -126,6 +126,7 @@
     "anvilUses": "Städ användningar %uses%",
     "specialZealotFound": "Speciell Zealot!",
     "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)",
-    "searchFeatures": "Search features"
+    "searchFeatures": "Search features",
+    "downloadingUpdateFile": "Downloading update file..."
   }
 }
