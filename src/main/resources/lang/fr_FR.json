@@ -82,7 +82,8 @@
     "onlyMineValuablesNether": "Only Mine Valuables in the Nether",
     "revenantIndicator": "Progression de l'armure Revenant",
     "specialZealotAlert": "Alerte Zealot spécial",
-    "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented"
+    "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented",
+    "hidePetHealthBar": "Hide Pet Health Bar"
   },
   "messages": {
     "dropConfirmation": "Jetez cet objet une nouvelle fois pour confirmer!",
@@ -124,6 +125,7 @@
     "featureDisabled": "Fonction désactivée",
     "anvilUses": "Utilisation de l'enclume: %uses%",
     "specialZealotFound": "Zealot spécial!",
-    "blockIncompletePatterns": "Ne pas fabriquer les modèles incomplet (recommandé)"
+    "blockIncompletePatterns": "Ne pas fabriquer les modèles incomplet (recommandé)",
+    "searchFeatures": "Search features"
   }
 }
