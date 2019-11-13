@@ -82,7 +82,8 @@
     "onlyMineValuablesNether": "Only Mine Valuables in the Nether",
     "revenantIndicator": "Индикатор Прогресса Брони Убийцы",
     "specialZealotAlert": "Уведомление об Особом Зеалоте",
-    "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented"
+    "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented",
+    "hidePetHealthBar": "Hide Pet Health Bar"
   },
   "messages": {
     "dropConfirmation": "Выбросите предмет ещё раз для подтверждения!",
@@ -124,6 +125,7 @@
     "featureDisabled": "Функция отключена",
     "anvilUses": "Использований наковальни: %uses%",
     "specialZealotFound": "Особый Зеалот!",
-    "blockIncompletePatterns": "Блокировать создание незавершённых шаблонов (рекомендуется)"
+    "blockIncompletePatterns": "Блокировать создание незавершённых шаблонов (рекомендуется)",
+    "searchFeatures": "Search features"
   }
 }
