@@ -83,7 +83,7 @@
     "revenantIndicator": "Slayer装備の進捗を表示",
     "specialZealotAlert": "特別なZealotのアラート",
     "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented",
-    "hidePetHealthBar": "Hide Pet Health Bar"
+    "hidePetHealthBar": "ペットの体力バーを非表示"
   },
   "messages": {
     "dropConfirmation": "落としてもいいのであれば、このアイテムをもう一度ドロップしてください。",
@@ -126,6 +126,6 @@
     "anvilUses": "金床の使用回数 : %uses%",
     "specialZealotFound": "特別なZealotがスポーンしました!",
     "blockIncompletePatterns": "不完全なパターンでのクラフトを防止する (推奨)",
-    "searchFeatures": "Search features"
+    "searchFeatures": "機能を検索"
   }
 }
