@@ -82,7 +82,8 @@
     "onlyMineValuablesNether": "Only Mine Valuables in the Nether",
     "revenantIndicator": "Индикатор за прогрес на бронята на убиеца",
     "specialZealotAlert": "Сигнал за Специален Зийлът",
-    "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented"
+    "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented",
+    "hidePetHealthBar": "Hide Pet Health Bar"
   },
   "messages": {
     "dropConfirmation": "Хвърлете Този Предмет Отново за да Потвърдите!",
@@ -124,6 +125,7 @@
     "featureDisabled": "Свойство Изключено",
     "anvilUses": "Използване на наковалня: %uses%",
     "specialZealotFound": "Специален Зийлът!",
-    "blockIncompletePatterns": "Блокиране на изработване на непълни модели (препоръчително)"
+    "blockIncompletePatterns": "Блокиране на изработване на непълни модели (препоръчително)",
+    "searchFeatures": "Search features"
   }
 }
