@@ -126,6 +126,7 @@
     "anvilUses": "모루 사용:% uses %",
     "specialZealotFound": "스페셜 질럿!",
     "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)",
-    "searchFeatures": "Search features"
+    "searchFeatures": "Search features",
+    "downloadingUpdateFile": "Downloading update file..."
   }
 }
