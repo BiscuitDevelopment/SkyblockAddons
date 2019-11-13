@@ -79,8 +79,8 @@
     "speedPercentage": "Nopeuden prosenttimäärä",
     "collectionDisplay": "Taitojen Edistymisen Näyttö",
     "onlyMineOresDeepCaverns": "Vain Mineraalien kaivuu Deep Cavernissä",
-    "onlyMineValuablesNether": "Only Mine Valuables in the Nether",
-    "revenantIndicator": "Slayer Armor Progress Indicator",
+    "onlyMineValuablesNether": "Louhi vain arvotavarat Hornassa",
+    "revenantIndicator": "Slayerhaarniskan edistymisindikaattori",
     "specialZealotAlert": "Erikois Zealot Ilmoitukset",
     "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented",
     "hidePetHealthBar": "Hide Pet Health Bar"
