@@ -82,7 +82,8 @@
     "onlyMineValuablesNether": "Kun mine værdigenstande i Nether",
     "revenantIndicator": "Slayer rustning fremskridts indikator",
     "specialZealotAlert": "Speciel Zealot alarm",
-    "enableMessageWhenActionPrevented": "Vis en besked når en aktion er forhindret"
+    "enableMessageWhenActionPrevented": "Vis en besked når en aktion er forhindret",
+    "hidePetHealthBar": "Hide Pet Health Bar"
   },
   "messages": {
     "dropConfirmation": "Slip denne vare igen for at bekræfte!",
@@ -124,6 +125,7 @@
     "featureDisabled": "Funktion deaktiveret",
     "anvilUses": "Ambolt brug: %uses%",
     "specialZealotFound": "Speciel Zealot!",
-    "blockIncompletePatterns": "Bloker byggelse af ufuldstændige mønstre (anbefalet)"
+    "blockIncompletePatterns": "Bloker byggelse af ufuldstændige mønstre (anbefalet)",
+    "searchFeatures": "Search features"
   }
 }
