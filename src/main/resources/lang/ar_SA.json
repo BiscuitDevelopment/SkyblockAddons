@@ -82,7 +82,8 @@
     "onlyMineValuablesNether": "Only Mine Valuables in the Nether",
     "revenantIndicator": "مؤشر تقدم درع القاتل",
     "specialZealotAlert": "تنبيه زيلوت فريد",
-    "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented"
+    "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented",
+    "hidePetHealthBar": "Hide Pet Health Bar"
   },
   "messages": {
     "dropConfirmation": "!إرمي هذا العنصر مرة أخرى للتأكيد",
@@ -124,6 +125,7 @@
     "featureDisabled": "تعطل الميزة",
     "anvilUses": "استخدامات السندان: %uses%",
     "specialZealotFound": "زيلوت فريد!",
-    "blockIncompletePatterns": "أنماط انماط صناعة الحجر غير مكتملة\n(موصى بها)"
+    "blockIncompletePatterns": "أنماط انماط صناعة الحجر غير مكتملة\n(موصى بها)",
+    "searchFeatures": "Search features"
   }
 }
