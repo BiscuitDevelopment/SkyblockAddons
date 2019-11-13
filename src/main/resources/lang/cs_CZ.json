@@ -126,6 +126,7 @@
     "anvilUses": "Použití kovadliny: %uses%",
     "specialZealotFound": "Specialní Zealot!",
     "blockIncompletePatterns": "Blokovat Vyrábění Neúplných Vzorů (doporučeno)",
-    "searchFeatures": "Search features"
+    "searchFeatures": "Search features",
+    "downloadingUpdateFile": "Downloading update file..."
   }
 }
