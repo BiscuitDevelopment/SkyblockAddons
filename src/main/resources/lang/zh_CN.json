@@ -126,6 +126,7 @@
     "anvilUses": "铁砧使用次数: %uses%",
     "specialZealotFound": "末影战士！",
     "blockIncompletePatterns": "阻止合成不完整的图案 - 推荐",
-    "searchFeatures": "Search features"
+    "searchFeatures": "Search features",
+    "downloadingUpdateFile": "Downloading update file..."
   }
 }
