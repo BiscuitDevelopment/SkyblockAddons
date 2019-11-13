@@ -82,7 +82,8 @@
     "onlyMineValuablesNether": "Only Mine Valuables in the Nether",
     "revenantIndicator": "Slayer Armor Progress Indicator",
     "specialZealotAlert": "Erikois Zealot Ilmoitukset",
-    "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented"
+    "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented",
+    "hidePetHealthBar": "Hide Pet Health Bar"
   },
   "messages": {
     "dropConfirmation": "Pudota tämä esine uudelleen vahvistaaksesi!",
@@ -124,6 +125,7 @@
     "featureDisabled": "Toiminto pois käytöstä",
     "anvilUses": "Alasimen käytöt: %uses%",
     "specialZealotFound": "Erityinen Zealot!",
-    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)"
+    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)",
+    "searchFeatures": "Search features"
   }
 }
