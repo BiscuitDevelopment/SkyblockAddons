@@ -79,11 +79,11 @@
     "speedPercentage": "Pourcentage de vitesse",
     "collectionDisplay": "Affichage de la progression des compétences",
     "onlyMineOresDeepCaverns": "Miner que les minerais dans la Deep Caverns",
-    "onlyMineValuablesNether": "Only Mine Valuables in the Nether",
+    "onlyMineValuablesNether": "Miner uniquement les minerais de valeur dans le Nether",
     "revenantIndicator": "Progression de l'armure Revenant",
     "specialZealotAlert": "Alerte Zealot spécial",
-    "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented",
-    "hidePetHealthBar": "Hide Pet Health Bar"
+    "enableMessageWhenActionPrevented": "Afficher un message lorsqu'une action est annulée",
+    "hidePetHealthBar": "Masquer les PV des compagnons"
   },
   "messages": {
     "dropConfirmation": "Jetez cet objet une nouvelle fois pour confirmer!",
@@ -126,6 +126,6 @@
     "anvilUses": "Utilisation de l'enclume: %uses%",
     "specialZealotFound": "Zealot spécial!",
     "blockIncompletePatterns": "Ne pas fabriquer les modèles incomplet (recommandé)",
-    "searchFeatures": "Search features"
+    "searchFeatures": "Rechercher des fonctionnalités"
   }
 }
