@@ -126,6 +126,7 @@
     "anvilUses": "Ambossnutzungen: %uses%",
     "specialZealotFound": "Spezieller Zealot!",
     "blockIncompletePatterns": "Block craften, unvollständige Muster (empfohlen)",
-    "searchFeatures": "Suche Funktionen"
+    "searchFeatures": "Suche Funktionen",
+    "downloadingUpdateFile": "Downloading update file..."
   }
 }
