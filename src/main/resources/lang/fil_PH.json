@@ -82,7 +82,8 @@
     "onlyMineValuablesNether": "Only Mine Valuables in the Nether",
     "revenantIndicator": "Slayer Armor Progress Indicator",
     "specialZealotAlert": "Special Zealot Alert",
-    "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented"
+    "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented",
+    "hidePetHealthBar": "Hide Pet Health Bar"
   },
   "messages": {
     "dropConfirmation": "Ihulog ang item muli para kumpirmado!",
@@ -124,6 +125,7 @@
     "featureDisabled": "Mga Disabled na Feature",
     "anvilUses": "Anvil Uses: %uses%",
     "specialZealotFound": "Special Zealot!",
-    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)"
+    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)",
+    "searchFeatures": "Search features"
   }
 }
