@@ -53,7 +53,7 @@
     "lockSlot": "Bloquear um slot",
     "dontResetCursorInventory": "Não reajustar cursor entre inventários",
     "summoningEyeAlert": "Alerta de Olhos de Invocação",
-    "makeEnderchestsInEndGreen": "Change Enderchest Color in the End",
+    "makeEnderchestsInEndGreen": "Mudar a cor do Baú do Fim no The End",
     "changeColor": "Mudar Cor",
     "showInOtherGames": "Mostar em Outros Jogos",
     "useVanillaTexture": "Usar Textura Padrão",
@@ -79,8 +79,11 @@
     "speedPercentage": "Porcentagem de velocidade",
     "collectionDisplay": "Exibição do progresso da habilidade",
     "onlyMineOresDeepCaverns": "Apenas quebrar minérios nas Cavernas Profundas",
-    "revenantIndicator": "Slayer Armor Progress Indicator",
-    "specialZealotAlert": "Alerta Zealot especial"
+    "onlyMineValuablesNether": "Quebrar apenas itens valiosos no Nether",
+    "revenantIndicator": "Indicador de Progresso da Armadura de Slayer",
+    "specialZealotAlert": "Alerta Zealot especial",
+    "enableMessageWhenActionPrevented": "Mostrar uma Mensagem Quando uma Ação for Impedida",
+    "hidePetHealthBar": "Ocultar barra de vida do Pet"
   },
   "messages": {
     "dropConfirmation": "Large este item de novo para confirmar!",
@@ -122,6 +125,8 @@
     "featureDisabled": "Função desabilitada",
     "anvilUses": "Usos na Bigorna: %uses%",
     "specialZealotFound": "Zealot especial!",
-    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)"
+    "blockIncompletePatterns": "Bloquear padrões de criação incompletos (recomendado)",
+    "searchFeatures": "Buscar funcionalidades",
+    "downloadingUpdateFile": "Baixando arquivos da atualização..."
   }
 }

@@ -79,8 +79,11 @@
     "speedPercentage": "אחוז מהירות",
     "collectionDisplay": "מסך התקדמות יכולות",
     "onlyMineOresDeepCaverns": "תחצוב מתכות רק בדיפ קוורנס",
+    "onlyMineValuablesNether": "לחצוב חומרים יקרים רק בנטר",
     "revenantIndicator": "מד התקדמות עם שריון סלייר",
-    "specialZealotAlert": "התראה של זלוט מיוחד"
+    "specialZealotAlert": "התראה של זלוט מיוחד",
+    "enableMessageWhenActionPrevented": "הצג הודע כאשר נחסמת פעולה",
+    "hidePetHealthBar": "הסתר מד חיים של חיית מחמד"
   },
   "messages": {
     "dropConfirmation": "זרוק פריט זה שוב לאישור!",
@@ -122,6 +125,8 @@
     "featureDisabled": "פיטצ'ר מבוטל",
     "anvilUses": "שימוים בסדן: %uses%",
     "specialZealotFound": "זלוט מיוחד!",
-    "blockIncompletePatterns": "הרכבת בלוק ללא תבנית גמורה (מומלץ)"
+    "blockIncompletePatterns": "הרכבת בלוק ללא תבנית גמורה (מומלץ)",
+    "searchFeatures": "פיטצ'רים לחיפוש",
+    "downloadingUpdateFile": "Downloading update file..."
   }
 }

@@ -66,8 +66,8 @@
     "dontOpenProfileWithBow": "Не отваряй профили с лък",
     "stopDroppingSellingRareItems": "Спри изхвърляне/продаване на редки предмети",
     "makeBackpackInventoriesColored": "Оцветени инвентари",
-    "avoidBreakingBottomSugarCane": "Избегване На Чупене На Най-Долната Захарна Трастика",
-    "replaceRomanNumeralsWithNumbers": "Замени Римски цифри на предмети",
+    "avoidBreakingBottomSugarCane": "Избягване на чупенето на най-долната захарна трастика",
+    "replaceRomanNumeralsWithNumbers": "Замени римските цифри на предметите",
     "changeBarColorForPotions": "Промени цвета на лентата при Уйдър и Отрова",
     "craftingPatterns": "Избери модел на изработване",
     "soundIndicatorForFishing": "Звуков индикатор за риболов",
@@ -79,8 +79,11 @@
     "speedPercentage": "Процент скорост",
     "collectionDisplay": "Дисплей за прогрес на умения",
     "onlyMineOresDeepCaverns": "Копай само руди в Дълбоките пещери",
+    "onlyMineValuablesNether": "Копай Само Ценности в Ада",
     "revenantIndicator": "Индикатор за прогрес на бронята на убиеца",
-    "specialZealotAlert": "Сигнал за Специален Зийлът"
+    "specialZealotAlert": "Сигнал за Специален Зийлът",
+    "enableMessageWhenActionPrevented": "Покажи Съобщение Когато Действие Бива Предотвратено",
+    "hidePetHealthBar": "Скрий Лентата За Живот На Любимеца"
   },
   "messages": {
     "dropConfirmation": "Хвърлете Този Предмет Отново за да Потвърдите!",
@@ -98,7 +101,7 @@
       "reforges": "Модификации",
       "crafting": "Изработване"
     },
-    "newUpdateAvailable": "Имa новa версия (%version%)!",
+    "newUpdateAvailable": "Нова актуализация (%version%) е налична!",
     "deleteOldFile": "Изтеглянето приключи, моля отворете папката с модобе използвайки бутона по долу, затоврете вашият minecraft и изтрийите старата версия(или я изтрийте по-късно ако искате).",
     "wantToViewPatchNotes": "Искате да видите промените?",
     "downloadLink": "ЛИНК ЗА АКТУАЛИЗАЦИЯ",
@@ -114,14 +117,16 @@
     },
     "slotLocked": "Този Слот е Зaлючен!",
     "summoningEyeFound": "Призоваващо Око!",
-    "cancelledStemBreak": "SkyblockAddons ви е Спрял от Унищожаване на Това Стъбло . Използвайте Ръце за да го Премахнете .",
-    "cancelledProfileOpening": "SkyblockAddons спря от отваряне на този профил на играч който държи лък",
-    "cancelledDropping": "SkyblockAddons ви спря като се опитахте да хвърлите този рядък предмет или инструмент от вашия hotbar.",
+    "cancelledStemBreak": "SkyblockAddons Ви спря от това да счупите това стебло. Използвайте ръце за да го счупите.",
+    "cancelledProfileOpening": "SkyblockAddons Ви спря да отворите профилът на този играч докато държите лък.",
+    "cancelledDropping": "SkyblockAddons ви спря да изхвърлите този рядък предмет или инструмент от вашият хотбар.",
     "clickMoreTimes": "Натиснете Копчето Ви За Хвърляне На Предмети Още %times% Път/Пъти Ако Найстина Искате Да Го Изхвърлитен",
     "cancelledDeepCaverns": "Свойство в SkyblockAddons Ви спря от това да разрушите този блок тук.",
     "featureDisabled": "Свойство Изключено",
     "anvilUses": "Използване на наковалня: %uses%",
     "specialZealotFound": "Специален Зийлът!",
-    "blockIncompletePatterns": "Блокиране на изработване на непълни модели (препоръчително)"
+    "blockIncompletePatterns": "Блокиране на изработване на непълни модели (препоръчително)",
+    "searchFeatures": "Търси Свойства",
+    "downloadingUpdateFile": "Downloading update file..."
   }
 }

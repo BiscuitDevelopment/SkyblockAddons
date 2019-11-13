@@ -2,8 +2,8 @@
   "language": "简体中文",
   "settings": {
     "tab": {
-      "features": "功能",
-      "fixes": "修复",
+      "features": "主要功能",
+      "fixes": "辅助功能",
       "guiFeatures": "GUI 功能",
       "generalSettings": "常规设置"
     },
@@ -79,8 +79,11 @@
     "speedPercentage": "速度百分比",
     "collectionDisplay": "显示技能进度",
     "onlyMineOresDeepCaverns": "仅深层矿洞的矿物",
+    "onlyMineValuablesNether": "仅在地狱开采有价值的矿物",
     "revenantIndicator": "杀手弓进度提示",
-    "specialZealotAlert": "末影战士警告"
+    "specialZealotAlert": "末影战士警告",
+    "enableMessageWhenActionPrevented": "阻止操作时显示消息",
+    "hidePetHealthBar": "Hide Pet Health Bar"
   },
   "messages": {
     "dropConfirmation": "再次丢弃此物品以确认!",
@@ -98,7 +101,7 @@
       "reforges": "重铸",
       "crafting": "合成"
     },
-    "newUpdateAvailable": "新版本 %version% 现已上线！\n\nhttps://biscuit.codes/mods/skyblockaddons/dl/",
+    "newUpdateAvailable": "新版本 %version% 现已上线！\n\n下载地址：https://biscuit.codes/mods/skyblockaddons/dl/\n翻译项目：https://crowdin.com/project/skyblockaddons/",
     "deleteOldFile": "下载完成，使用下方按钮打开 mods 文件夹，关闭 Minecraft，删除旧文件。",
     "wantToViewPatchNotes": "想查看更新内容？",
     "downloadLink": "更新链接",
@@ -122,6 +125,8 @@
     "featureDisabled": "功能已禁用",
     "anvilUses": "铁砧使用次数: %uses%",
     "specialZealotFound": "末影战士！",
-    "blockIncompletePatterns": "阻止合成不完整的图案 - 推荐"
+    "blockIncompletePatterns": "阻止合成不完整的图案 - 推荐",
+    "searchFeatures": "Search features",
+    "downloadingUpdateFile": "Downloading update file..."
   }
 }

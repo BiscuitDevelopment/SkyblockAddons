@@ -79,8 +79,11 @@
     "speedPercentage": "Fart Procent",
     "collectionDisplay": "Skill Progress Display",
     "onlyMineOresDeepCaverns": "Hugg bara minitaler I djupa gråttorna",
+    "onlyMineValuablesNether": "Only Mine Valuables in the Nether",
     "revenantIndicator": "Slayer rustningar utväcklings indicator",
-    "specialZealotAlert": "Speciell Zealot Alarm"
+    "specialZealotAlert": "Speciell Zealot Alarm",
+    "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented",
+    "hidePetHealthBar": "Hide Pet Health Bar"
   },
   "messages": {
     "dropConfirmation": "Släpp Det Här Igen För Att Bekräfta!",
@@ -122,6 +125,8 @@
     "featureDisabled": "Funktion.Inaktiverat",
     "anvilUses": "Städ användningar %uses%",
     "specialZealotFound": "Speciell Zealot!",
-    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)"
+    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)",
+    "searchFeatures": "Search features",
+    "downloadingUpdateFile": "Downloading update file..."
   }
 }
