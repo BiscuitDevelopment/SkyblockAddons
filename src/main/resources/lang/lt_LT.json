@@ -82,7 +82,8 @@
     "onlyMineValuablesNether": "Only Mine Valuables in the Nether",
     "revenantIndicator": "Žudiko Šarvų Progreso Indikatorius",
     "specialZealotAlert": "Specialaus Zealoto Įspėjimas",
-    "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented"
+    "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented",
+    "hidePetHealthBar": "Hide Pet Health Bar"
   },
   "messages": {
     "dropConfirmation": "Meskite Šį Daiktą Dar Kartą, Kad Patvirtintumėte!",
@@ -124,6 +125,7 @@
     "featureDisabled": "Funkcija išjungta",
     "anvilUses": "Priekalo Panaudojimai: %uses%",
     "specialZealotFound": "Specialus Zealotas!",
-    "blockIncompletePatterns": "Nepilnas blokų modelis (rekomenduojama)"
+    "blockIncompletePatterns": "Nepilnas blokų modelis (rekomenduojama)",
+    "searchFeatures": "Search features"
   }
 }
