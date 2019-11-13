@@ -83,7 +83,7 @@
     "revenantIndicator": "Slayer rustning fremskridts indikator",
     "specialZealotAlert": "Speciel Zealot alarm",
     "enableMessageWhenActionPrevented": "Vis en besked når en aktion er forhindret",
-    "hidePetHealthBar": "Hide Pet Health Bar"
+    "hidePetHealthBar": "Skjul kæledyrs liv bar"
   },
   "messages": {
     "dropConfirmation": "Slip denne vare igen for at bekræfte!",
@@ -126,6 +126,6 @@
     "anvilUses": "Ambolt brug: %uses%",
     "specialZealotFound": "Speciel Zealot!",
     "blockIncompletePatterns": "Bloker byggelse af ufuldstændige mønstre (anbefalet)",
-    "searchFeatures": "Search features"
+    "searchFeatures": "Søg funktioner"
   }
 }
