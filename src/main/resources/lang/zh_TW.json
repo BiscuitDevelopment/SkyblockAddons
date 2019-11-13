@@ -82,7 +82,8 @@
     "onlyMineValuablesNether": "只在地獄中挖掘有價值的方塊",
     "revenantIndicator": "Slayer裝備進度指示",
     "specialZealotAlert": "特殊Zealot警報",
-    "enableMessageWhenActionPrevented": "當一個動作被預防時顯示訊息"
+    "enableMessageWhenActionPrevented": "當一個動作被預防時顯示訊息",
+    "hidePetHealthBar": "Hide Pet Health Bar"
   },
   "messages": {
     "dropConfirmation": "再次丟棄此物品以確認!",
@@ -124,6 +125,7 @@
     "featureDisabled": "功能已被停用",
     "anvilUses": "鐵砧使用次數: %uses%",
     "specialZealotFound": "特殊Zealot!",
-    "blockIncompletePatterns": "阻止合成不正確的格式 (推薦)"
+    "blockIncompletePatterns": "阻止合成不正確的格式 (推薦)",
+    "searchFeatures": "Search features"
   }
 }
