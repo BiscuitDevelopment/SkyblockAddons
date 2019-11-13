@@ -82,7 +82,8 @@
     "onlyMineValuablesNether": "Only Mine Valuables in the Nether",
     "revenantIndicator": "Slayer Armor Progress Indicator",
     "specialZealotAlert": "Special Zealot Alert",
-    "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented"
+    "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented",
+    "hidePetHealthBar": "Hide Pet Health Bar"
   },
   "messages": {
     "dropConfirmation": "Dobd el ezt a tárgyat újra, hogy megerősítsd!",
@@ -124,6 +125,7 @@
     "featureDisabled": "Funkció kikapcsolva",
     "anvilUses": "Üllő használat: %uses%",
     "specialZealotFound": "Különleges Zealot!",
-    "blockIncompletePatterns": "Félkész minták tiltása (ajánlott)"
+    "blockIncompletePatterns": "Félkész minták tiltása (ajánlott)",
+    "searchFeatures": "Search features"
   }
 }
