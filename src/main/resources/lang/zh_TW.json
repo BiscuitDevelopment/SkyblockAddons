@@ -126,6 +126,7 @@
     "anvilUses": "鐵砧使用次數: %uses%",
     "specialZealotFound": "特殊Zealot!",
     "blockIncompletePatterns": "阻止合成不正確的格式 (推薦)",
-    "searchFeatures": "搜尋功能"
+    "searchFeatures": "搜尋功能",
+    "downloadingUpdateFile": "Downloading update file..."
   }
 }
