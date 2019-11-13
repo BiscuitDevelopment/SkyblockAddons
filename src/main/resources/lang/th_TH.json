@@ -126,6 +126,7 @@
     "anvilUses": "ใช้ Anvil: %uses%",
     "specialZealotFound": "Special Zealot!",
     "blockIncompletePatterns": "ป้องกันการคราฟที่ไม่เป็นไปตามแบบ (แนะนำให้ใช้)",
-    "searchFeatures": "ค้นหาฟีเจอร์"
+    "searchFeatures": "ค้นหาฟีเจอร์",
+    "downloadingUpdateFile": "Downloading update file..."
   }
 }
