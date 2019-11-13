@@ -44,7 +44,7 @@ public class CraftingPatternSelection {
         this.x = x;
         this.y = y;
         int checkBoxY = (y - MARGIN - 8);
-        String checkBoxText = Message.BLOCK_INCOMPLETE_PATTERNS.getMessage();
+        String checkBoxText = Message.MESSAGE_BLOCK_INCOMPLETE_PATTERNS.getMessage();
         blockIncompleteCheckBox = new CheckBox(mc, x, checkBoxY, 8, checkBoxText, blockCraftingIncomplete);
         blockIncompleteCheckBox.setOnToggleListener(value -> blockCraftingIncomplete = value);
     }

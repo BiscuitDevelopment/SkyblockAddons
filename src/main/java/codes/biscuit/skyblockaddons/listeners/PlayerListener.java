@@ -152,7 +152,7 @@ public class PlayerListener {
                                 if (matcher.matches()) {
                                     main.getRenderListener().setSkillText("+"+matcher.group(1)+" "+matcher.group(3));
                                     main.getRenderListener().setSkill(matcher.group(2));
-                                    main.getRenderListener().setSkillFadeOutTime(System.currentTimeMillis()+6000);
+                                    main.getRenderListener().setSkillFadeOutTime(System.currentTimeMillis()+4000);
                                 }
                             }
                             manaPart = splitMessage[2];

@@ -85,6 +85,7 @@ public class SettingsGui extends GuiScreen {
 
     @SuppressWarnings("IntegerDivisionInFloatingPointContext")
     private void addTabs() {
+        if (true) return;
         int collumn = 1;
         for (EnumUtils.GuiTab loopTab : EnumUtils.GuiTab.values()) {
             if (lastTab != loopTab) {
