@@ -82,7 +82,8 @@
     "onlyMineValuablesNether": "Minar Sólo Bloques Valiosos en Nether",
     "revenantIndicator": "Indicador de Progreso de Slayer Armor",
     "specialZealotAlert": "Alerta de Zealot Especial",
-    "enableMessageWhenActionPrevented": "Mostrar un Mensaje al Prevenir una Acción"
+    "enableMessageWhenActionPrevented": "Mostrar un Mensaje al Prevenir una Acción",
+    "hidePetHealthBar": "Hide Pet Health Bar"
   },
   "messages": {
     "dropConfirmation": "Arroja este objeto otra vez para confirmar!",
@@ -124,6 +125,7 @@
     "featureDisabled": "Característica Desactivada",
     "anvilUses": "Usos en Anvil/Yunque: %uses%",
     "specialZealotFound": "Zealot Especial!",
-    "blockIncompletePatterns": "Bloquear el crafteo de patrones incompletos (recomendado)"
+    "blockIncompletePatterns": "Bloquear el crafteo de patrones incompletos (recomendado)",
+    "searchFeatures": "Search features"
   }
 }
