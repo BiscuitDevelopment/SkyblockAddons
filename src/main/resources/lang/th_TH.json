@@ -82,8 +82,8 @@
     "onlyMineValuablesNether": "Only Mine Valuables in the Nether",
     "revenantIndicator": "ตัวบอกความคืบหน้าของเกราะเควส Slayer",
     "specialZealotAlert": "แจ้งเตือน Special Zealot",
-    "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented",
-    "hidePetHealthBar": "Hide Pet Health Bar"
+    "enableMessageWhenActionPrevented": "แสดงข้อความเมื่อโดนห้ามทำ",
+    "hidePetHealthBar": "ซ่อนหลอดเลือดสัตว์เลี้ยง"
   },
   "messages": {
     "dropConfirmation": "กดทิ้งของอีกที่เพื่อยืนยันทิ้งของสิ่งนี้!",
@@ -126,6 +126,6 @@
     "anvilUses": "ใช้ Anvil: %uses%",
     "specialZealotFound": "Special Zealot!",
     "blockIncompletePatterns": "ป้องกันการคราฟที่ไม่เป็นไปตามแบบ (แนะนำให้ใช้)",
-    "searchFeatures": "Search features"
+    "searchFeatures": "ค้นหาฟีเจอร์"
   }
 }
