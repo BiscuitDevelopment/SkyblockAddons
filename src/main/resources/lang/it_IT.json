@@ -83,7 +83,7 @@
     "revenantIndicator": "Indicatore di progresso dell’Armatura Slayer",
     "specialZealotAlert": "Avviso di Zealot Speciale",
     "enableMessageWhenActionPrevented": "Mostra un messaggio quando un’azione viene bloccata",
-    "hidePetHealthBar": "Hide Pet Health Bar"
+    "hidePetHealthBar": "Nascondi la Barra di Vita dell’animale da compagnia"
   },
   "messages": {
     "dropConfirmation": "Getta questo oggetto nuovamente per confermare!",
@@ -126,6 +126,6 @@
     "anvilUses": "Utilizzi dell’incudine: %uses%",
     "specialZealotFound": "Zealot Speciale!",
     "blockIncompletePatterns": "Blocco degli schemi di fabbricazione incompleti (consigliato)",
-    "searchFeatures": "Search features"
+    "searchFeatures": "Cerca funzioni"
   }
 }
