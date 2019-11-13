@@ -126,6 +126,7 @@
     "anvilUses": "Użycia kowadła: %uses%",
     "specialZealotFound": "Specjalny Zealot!",
     "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)",
-    "searchFeatures": "Search features"
+    "searchFeatures": "Search features",
+    "downloadingUpdateFile": "Downloading update file..."
   }
 }
