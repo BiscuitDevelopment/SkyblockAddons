@@ -82,7 +82,8 @@
     "onlyMineValuablesNether": "Only Mine Valuables in the Nether",
     "revenantIndicator": "Swawwer Awmowo Pwogwess Indicator ",
     "specialZealotAlert": "Spwecial Wealots Awert",
-    "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented"
+    "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented",
+    "hidePetHealthBar": "Hide Pet Health Bar"
   },
   "messages": {
     "dropConfirmation": "Dwop thwis itwem agwain to confiwm!",
@@ -124,6 +125,7 @@
     "featureDisabled": "Fweature Diswabled",
     "anvilUses": "Anviw Uses: %uses%",
     "specialZealotFound": "Spwecial Wealots OwO!",
-    "blockIncompletePatterns": "Bwock cwafting incompwete pattewns (wecommended)"
+    "blockIncompletePatterns": "Bwock cwafting incompwete pattewns (wecommended)",
+    "searchFeatures": "Search features"
   }
 }
