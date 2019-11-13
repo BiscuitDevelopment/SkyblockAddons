@@ -126,6 +126,7 @@
     "anvilUses": "Использований наковальни: %uses%",
     "specialZealotFound": "Особый Зеалот!",
     "blockIncompletePatterns": "Блокировать создание незавершённых шаблонов (рекомендуется)",
-    "searchFeatures": "Search features"
+    "searchFeatures": "Search features",
+    "downloadingUpdateFile": "Downloading update file..."
   }
 }
