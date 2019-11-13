@@ -126,6 +126,7 @@
     "anvilUses": "استخدامات السندان: %uses%",
     "specialZealotFound": "زيلوت فريد!",
     "blockIncompletePatterns": "أنماط انماط صناعة الحجر غير مكتملة\n(موصى بها)",
-    "searchFeatures": "Search features"
+    "searchFeatures": "Search features",
+    "downloadingUpdateFile": "Downloading update file..."
   }
 }
