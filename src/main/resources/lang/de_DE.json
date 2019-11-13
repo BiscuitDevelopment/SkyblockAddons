@@ -83,7 +83,7 @@
     "revenantIndicator": "Slayer Rüstung Fortschritt Anzeige",
     "specialZealotAlert": "Spezieller Zealot Alarm",
     "enableMessageWhenActionPrevented": "Nachricht anzeigen, wenn eine Aktion verhindert wird",
-    "hidePetHealthBar": "Hide Pet Health Bar"
+    "hidePetHealthBar": "Verstecke Haustierlebensleiste"
   },
   "messages": {
     "dropConfirmation": "Werfe diesen Gegenstand nochmal, um zu bestätigen!",
@@ -126,6 +126,6 @@
     "anvilUses": "Ambossnutzungen: %uses%",
     "specialZealotFound": "Spezieller Zealot!",
     "blockIncompletePatterns": "Block craften, unvollständige Muster (empfohlen)",
-    "searchFeatures": "Search features"
+    "searchFeatures": "Suche Funktionen"
   }
 }
