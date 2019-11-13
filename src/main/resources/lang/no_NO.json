@@ -126,6 +126,7 @@
     "anvilUses": "Ambolt Bruk: %uses%",
     "specialZealotFound": "Spesiell Zealot!",
     "blockIncompletePatterns": "Blokk bygging med uferdig mønster (anbefalt)",
-    "searchFeatures": "Search features"
+    "searchFeatures": "Search features",
+    "downloadingUpdateFile": "Downloading update file..."
   }
 }
