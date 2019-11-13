@@ -126,6 +126,7 @@
     "anvilUses": "Utilizzi dell’incudine: %uses%",
     "specialZealotFound": "Zealot Speciale!",
     "blockIncompletePatterns": "Blocco degli schemi di fabbricazione incompleti (consigliato)",
-    "searchFeatures": "Cerca funzioni"
+    "searchFeatures": "Cerca funzioni",
+    "downloadingUpdateFile": "Downloading update file..."
   }
 }
