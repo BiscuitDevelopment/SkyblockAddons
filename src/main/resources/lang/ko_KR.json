@@ -82,7 +82,8 @@
     "onlyMineValuablesNether": "Only Mine Valuables in the Nether",
     "revenantIndicator": "Slayer Armor Progress Indicator",
     "specialZealotAlert": "특별한 질럿 경고",
-    "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented"
+    "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented",
+    "hidePetHealthBar": "Hide Pet Health Bar"
   },
   "messages": {
     "dropConfirmation": "아이템을 정말로 버리려면 다시 버리세요!",
@@ -124,6 +125,7 @@
     "featureDisabled": "기능 비활성화",
     "anvilUses": "모루 사용:% uses %",
     "specialZealotFound": "스페셜 질럿!",
-    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)"
+    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)",
+    "searchFeatures": "Search features"
   }
 }
