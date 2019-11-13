@@ -126,6 +126,7 @@
     "anvilUses": "Üllő használat: %uses%",
     "specialZealotFound": "Különleges Zealot!",
     "blockIncompletePatterns": "Félkész minták tiltása (ajánlott)",
-    "searchFeatures": "Search features"
+    "searchFeatures": "Search features",
+    "downloadingUpdateFile": "Downloading update file..."
   }
 }
