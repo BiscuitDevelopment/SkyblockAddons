@@ -126,6 +126,7 @@
     "anvilUses": "Korištenje Nakovnja %uses%",
     "specialZealotFound": "Posebni Zealot!",
     "blockIncompletePatterns": "Spriječi craftanje nedovršenih predložaka (preporučeno)",
-    "searchFeatures": "Search features"
+    "searchFeatures": "Search features",
+    "downloadingUpdateFile": "Downloading update file..."
   }
 }
