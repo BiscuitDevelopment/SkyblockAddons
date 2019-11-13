@@ -79,10 +79,11 @@
     "speedPercentage": "Geschwindigkeit in Prozent",
     "collectionDisplay": "Skillfortschrittsanzeige",
     "onlyMineOresDeepCaverns": "Nur Erze in Deep Caverns abbauen",
-    "onlyMineValuablesNether": "Nur Wertvolle Materialien abbauen",
+    "onlyMineValuablesNether": "Nur Wertvolle Materialien im Nether abbauen",
     "revenantIndicator": "Slayer Rüstung Fortschritt Anzeige",
     "specialZealotAlert": "Spezieller Zealot Alarm",
-    "enableMessageWhenActionPrevented": "Nachricht anzeigen, wenn eine Aktion verhindert wird"
+    "enableMessageWhenActionPrevented": "Nachricht anzeigen, wenn eine Aktion verhindert wird",
+    "hidePetHealthBar": "Hide Pet Health Bar"
   },
   "messages": {
     "dropConfirmation": "Werfe diesen Gegenstand nochmal, um zu bestätigen!",
@@ -124,6 +125,7 @@
     "featureDisabled": "Funktion deaktiviert",
     "anvilUses": "Ambossnutzungen: %uses%",
     "specialZealotFound": "Spezieller Zealot!",
-    "blockIncompletePatterns": "Block craften, unvollständige Muster (empfohlen)"
+    "blockIncompletePatterns": "Block craften, unvollständige Muster (empfohlen)",
+    "searchFeatures": "Search features"
   }
 }
