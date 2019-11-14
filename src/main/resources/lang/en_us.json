@@ -83,7 +83,8 @@
     "revenantIndicator": "Slayer Armor Progress Indicator",
     "specialZealotAlert": "Special Zealot Alert",
     "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented",
-    "hidePetHealthBar": "Hide Pet Health Bar"
+    "hidePetHealthBar": "Hide Pet Health Bar",
+    "onlyBreakLogsForest": "Only Break Logs in the Forest Islands"
   },
   "messages": {
     "dropConfirmation": "Drop this item again to confirm!",

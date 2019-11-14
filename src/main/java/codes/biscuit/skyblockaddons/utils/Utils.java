@@ -707,6 +707,10 @@ public class Utils {
         return Items.wooden_pickaxe.equals(item) || Items.stone_pickaxe.equals(item) || Items.golden_pickaxe.equals(item) || Items.iron_pickaxe.equals(item) || Items.diamond_pickaxe.equals(item);
     }
 
+    public boolean isAxe(Item item) {
+        return Items.wooden_axe.equals(item) || Items.stone_axe.equals(item) || Items.golden_axe.equals(item) || Items.iron_axe.equals(item) || Items.diamond_axe.equals(item);
+    }
+
     private boolean lookedOnline = false;
     private URI featuredLink = null;
 

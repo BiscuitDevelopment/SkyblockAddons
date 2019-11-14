@@ -9,6 +9,7 @@ import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.multiplayer.PlayerControllerMP;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ContainerPlayer;
 import net.minecraft.inventory.Slot;
@@ -43,6 +44,8 @@ public class MixinPlayerControllerMP {
     private static final Set<EnumUtils.Location> DEEP_CAVERNS_LOCATIONS = EnumSet.of(EnumUtils.Location.DEEP_CAVERNS, EnumUtils.Location.GUNPOWDER_MINES,
             EnumUtils.Location.LAPIS_QUARRY, EnumUtils.Location.PIGMAN_DEN, EnumUtils.Location.SLIMEHILL, EnumUtils.Location.DIAMOND_RESERVE, EnumUtils.Location.OBSIDIAN_SANCTUARY);
 
+    private static final Set<EnumUtils.Location> FOREST_LOCATIONS = EnumSet.of(EnumUtils.Location.FOREST, EnumUtils.Location.JUNGLE_ISLAND, EnumUtils.Location.SAVANNA_WOODLAND, EnumUtils.Location.DARK_THICKET, EnumUtils.Location.SPRUCE_WOODS, EnumUtils.Location.BIRCH_PARK);
+
     private static final Set<Block> DEEP_CAVERNS_MINEABLE_BLOCKS = new HashSet<>(Arrays.asList(Blocks.coal_ore, Blocks.iron_ore, Blocks.gold_ore, Blocks.redstone_ore, Blocks.emerald_ore,
             Blocks.diamond_ore, Blocks.diamond_block, Blocks.obsidian, Blocks.lapis_ore, Blocks.lit_redstone_ore));
 
@@ -63,6 +66,7 @@ public class MixinPlayerControllerMP {
         if (heldItem != null) {
             Block block = mc.theWorld.getBlockState(loc).getBlock();
             long now = System.currentTimeMillis();
+            boolean isLog = block.equals(Blocks.log) || block.equals(Blocks.log2);
 
             if (main.getConfigValues().isEnabled(Feature.AVOID_BREAKING_STEMS) && (block.equals(Blocks.melon_stem) || block.equals(Blocks.pumpkin_stem))) {
                 if (main.getConfigValues().isEnabled(Feature.ENABLE_MESSAGE_WHEN_BREAKING_STEMS) && now - lastStemMessage > 20000) {
@@ -84,9 +88,16 @@ public class MixinPlayerControllerMP {
                     main.getUtils().sendMessage(main.getConfigValues().getColor(Feature.ONLY_MINE_VALUABLES_NETHER).getChatFormatting() + Message.MESSAGE_CANCELLED_NON_ORES_BREAK.getMessage());
                 }
                 cir.setReturnValue(false);
-            } else if (main.getConfigValues().isEnabled(Feature.JUNGLE_AXE_COOLDOWN)) {
-                if ((block.equals(Blocks.log)|| block.equals(Blocks.log2))
-                        && CooldownManager.isOnCooldown(InventoryUtils.JUNGLE_AXE_DISPLAYNAME)) {
+            }
+
+            if (main.getConfigValues().isEnabled(Feature.JUNGLE_AXE_COOLDOWN)) {
+                if (isLog && CooldownManager.isOnCooldown(InventoryUtils.JUNGLE_AXE_DISPLAYNAME)) {
+                    cir.setReturnValue(false);
+                }
+            }
+
+            if (main.getConfigValues().isEnabled(Feature.ONLY_BREAK_LOGS_FOREST) && FOREST_LOCATIONS.contains(main.getUtils().getLocation())) {
+                if (!isLog && main.getUtils().isAxe(heldItem.getItem())) {
                     cir.setReturnValue(false);
                 }
             }
