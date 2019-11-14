@@ -53,7 +53,7 @@
     "lockSlot": "การล็อคช่อง",
     "dontResetCursorInventory": "เคอร์เซอร์ไม่จัดตำแหน่งใหม่เมื่อเปลี่ยนช่องเก็บของ",
     "summoningEyeAlert": "แจ้งเตือนดวงตาอัญเชิญ",
-    "makeEnderchestsInEndGreen": "Change Enderchest Color in the End",
+    "makeEnderchestsInEndGreen": "เปลี่ยนสี Enderchest เมื่ออยู่ใน The End",
     "changeColor": "เปลี่ยนสี",
     "showInOtherGames": "แสดงเมื่ออยู่ในเกมอื่นๆ",
     "useVanillaTexture": "ใช้ Texture ปกติ",
@@ -79,8 +79,11 @@
     "speedPercentage": "เปอร์เซ็นต์ความเร็ว",
     "collectionDisplay": "แสดงความคืบหน้าของสกิล",
     "onlyMineOresDeepCaverns": "ขุดแร่ใน Deep Caverns เท่านั้น",
+    "onlyMineValuablesNether": "ขุดเฉพาะบล็อคที่มีค่าใน Nether เท่านั้น",
     "revenantIndicator": "ตัวบอกความคืบหน้าของเกราะเควส Slayer",
-    "specialZealotAlert": "แจ้งเตือน Special Zealot"
+    "specialZealotAlert": "แจ้งเตือน Special Zealot",
+    "enableMessageWhenActionPrevented": "แสดงข้อความเมื่อโดนห้ามทำ",
+    "hidePetHealthBar": "ซ่อนหลอดเลือดสัตว์เลี้ยง"
   },
   "messages": {
     "dropConfirmation": "กดทิ้งของอีกที่เพื่อยืนยันทิ้งของสิ่งนี้!",
@@ -122,6 +125,8 @@
     "featureDisabled": "ปิดใช้งานฟีเจอร์นี้แล้ว",
     "anvilUses": "ใช้ Anvil: %uses%",
     "specialZealotFound": "Special Zealot!",
-    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)"
+    "blockIncompletePatterns": "ป้องกันการคราฟที่ไม่เป็นไปตามแบบ (แนะนำให้ใช้)",
+    "searchFeatures": "ค้นหาฟีเจอร์",
+    "downloadingUpdateFile": "Downloading update file..."
   }
 }

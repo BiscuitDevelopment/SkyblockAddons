@@ -79,8 +79,11 @@
     "speedPercentage": "速度百分比",
     "collectionDisplay": "技能進度顯示",
     "onlyMineOresDeepCaverns": "在Deep Caverns中只能挖掘礦物",
+    "onlyMineValuablesNether": "只在地獄中挖掘有價值的方塊",
     "revenantIndicator": "Slayer裝備進度指示",
-    "specialZealotAlert": "特殊Zealot警報"
+    "specialZealotAlert": "特殊Zealot警報",
+    "enableMessageWhenActionPrevented": "當一個動作被預防時顯示訊息",
+    "hidePetHealthBar": "隱藏寵物血條"
   },
   "messages": {
     "dropConfirmation": "再次丟棄此物品以確認!",
@@ -122,6 +125,8 @@
     "featureDisabled": "功能已被停用",
     "anvilUses": "鐵砧使用次數: %uses%",
     "specialZealotFound": "特殊Zealot!",
-    "blockIncompletePatterns": "阻止合成不正確的格式 (推薦)"
+    "blockIncompletePatterns": "阻止合成不正確的格式 (推薦)",
+    "searchFeatures": "搜尋功能",
+    "downloadingUpdateFile": "Downloading update file..."
   }
 }

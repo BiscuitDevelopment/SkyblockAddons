@@ -79,8 +79,11 @@
     "speedPercentage": "Nopeuden prosenttimäärä",
     "collectionDisplay": "Taitojen Edistymisen Näyttö",
     "onlyMineOresDeepCaverns": "Vain Mineraalien kaivuu Deep Cavernissä",
-    "revenantIndicator": "Slayer Armor Progress Indicator",
-    "specialZealotAlert": "Erikois Zealot Ilmoitukset"
+    "onlyMineValuablesNether": "Louhi vain arvotavarat Hornassa",
+    "revenantIndicator": "Slayerhaarniskan edistymisindikaattori",
+    "specialZealotAlert": "Erikois Zealot Ilmoitukset",
+    "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented",
+    "hidePetHealthBar": "Hide Pet Health Bar"
   },
   "messages": {
     "dropConfirmation": "Pudota tämä esine uudelleen vahvistaaksesi!",
@@ -122,6 +125,8 @@
     "featureDisabled": "Toiminto pois käytöstä",
     "anvilUses": "Alasimen käytöt: %uses%",
     "specialZealotFound": "Erityinen Zealot!",
-    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)"
+    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)",
+    "searchFeatures": "Search features",
+    "downloadingUpdateFile": "Downloading update file..."
   }
 }

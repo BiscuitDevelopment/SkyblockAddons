@@ -79,8 +79,11 @@
     "speedPercentage": "Percentuale di Velocità",
     "collectionDisplay": "Visualizzazione del progresso dell’abilità",
     "onlyMineOresDeepCaverns": "Estrai minerali solo nelle Deep Caverns",
+    "onlyMineValuablesNether": "Estrai solo minerali di valore nel Nether",
     "revenantIndicator": "Indicatore di progresso dell’Armatura Slayer",
-    "specialZealotAlert": "Avviso di Zealot Speciale"
+    "specialZealotAlert": "Avviso di Zealot Speciale",
+    "enableMessageWhenActionPrevented": "Mostra un messaggio quando un’azione viene bloccata",
+    "hidePetHealthBar": "Nascondi la Barra di Vita dell’animale da compagnia"
   },
   "messages": {
     "dropConfirmation": "Getta questo oggetto nuovamente per confermare!",
@@ -122,6 +125,8 @@
     "featureDisabled": "Funzione disabilitata",
     "anvilUses": "Utilizzi dell’incudine: %uses%",
     "specialZealotFound": "Zealot Speciale!",
-    "blockIncompletePatterns": "Blocco degli schemi di fabbricazione incompleti (consigliato)"
+    "blockIncompletePatterns": "Blocco degli schemi di fabbricazione incompleti (consigliato)",
+    "searchFeatures": "Cerca funzioni",
+    "downloadingUpdateFile": "Downloading update file..."
   }
 }

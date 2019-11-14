@@ -78,6 +78,7 @@ public class ButtonNormal extends ButtonFeature {
 
             int textX = xPosition+width/2;
             int textY = yPosition;
+            if (feature == Feature.GENERAL_SETTINGS) textY -= 5;
 
             GlStateManager.pushMatrix();
             GlStateManager.scale(scale, scale, 1);
@@ -132,11 +133,14 @@ public class ButtonNormal extends ButtonFeature {
 
     @Override
     public void playPressSound(SoundHandler soundHandlerIn) {
+        if (feature == Feature.LANGUAGE || feature == Feature.EDIT_LOCATIONS || feature == Feature.GENERAL_SETTINGS) {
+            super.playPressSound(soundHandlerIn);
+        }
     }
 
     @Override
     public boolean mousePressed(Minecraft mc, int mouseX, int mouseY) {
-        if (feature == Feature.LANGUAGE || feature == Feature.EDIT_LOCATIONS) {
+        if (feature == Feature.LANGUAGE || feature == Feature.EDIT_LOCATIONS || feature == Feature.GENERAL_SETTINGS) {
             return super.mousePressed(mc, mouseX, mouseY);
         }
         return false;

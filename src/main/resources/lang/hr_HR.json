@@ -53,7 +53,7 @@
     "lockSlot": "Zaključaj Slot",
     "dontResetCursorInventory": "Nemoj Resetirati Kursor Između Inventara",
     "summoningEyeAlert": "Upozorenje Za Summoning Eye",
-    "makeEnderchestsInEndGreen": "Change Enderchest Color in the End",
+    "makeEnderchestsInEndGreen": "Promijeni boju Enderchesta u Endu",
     "changeColor": "Promijeni Boju",
     "showInOtherGames": "Pokaži u Ostalim Igrama",
     "useVanillaTexture": "Koristi Vanilla Teksturu",
@@ -79,8 +79,11 @@
     "speedPercentage": "Postotak Brzine",
     "collectionDisplay": "Prikaz Napretka Skill-ova",
     "onlyMineOresDeepCaverns": "Dopusti Kopanje Samo Ruda u Deep Cavernsu",
+    "onlyMineValuablesNether": "Samo kopaj vrijednosti u Paklu",
     "revenantIndicator": "Indikator Napretka Na Slayer Armor-u",
-    "specialZealotAlert": "Upozorenje za Posebne Zealote"
+    "specialZealotAlert": "Upozorenje za Posebne Zealote",
+    "enableMessageWhenActionPrevented": "Prikaži Poruku Kada je Akcija Spriječena",
+    "hidePetHealthBar": "Hide Pet Health Bar"
   },
   "messages": {
     "dropConfirmation": "Opet baci ovu stvar za konfirmaciju!",
@@ -122,6 +125,8 @@
     "featureDisabled": "Opcija Onemogućena",
     "anvilUses": "Korištenja u Anvilu: %uses%",
     "specialZealotFound": "Posebni Zealot!",
-    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)"
+    "blockIncompletePatterns": "Blokiraj pravljenje neispunjenih oblika (preporučeno)",
+    "searchFeatures": "Search features",
+    "downloadingUpdateFile": "Downloading update file..."
   }
 }

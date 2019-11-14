@@ -77,8 +77,11 @@ public enum Message {
     SETTING_COLLECTION_DISPLAY(MessageObject.SETTING, "collectionDisplay"),
     SETTING_SPEED_PERCENTAGE(MessageObject.SETTING, "speedPercentage"),
     SETTING_ONLY_MINE_ORES_DEEP_CAVERNS(MessageObject.SETTING, "onlyMineOresDeepCaverns"),
+    SETTING_ENABLE_MESSAGE_WHEN_ACTION_PREVENTED(MessageObject.SETTING, "enableMessageWhenActionPrevented"),
     SETTING_SLAYER_INDICATOR(MessageObject.SETTING, "revenantIndicator"),
     SETTING_SPECIAL_ZEALOT_ALERT(MessageObject.SETTING, "specialZealotAlert"),
+    SETTING_ONLY_MINE_VALUABLES_NETHER(MessageObject.SETTING, "onlyMineValuablesNether"),
+    SETTING_HIDE_PET_HEALTH_BAR(MessageObject.SETTING, "hidePetHealthBar"),
     SETTING_POWER_ORB_DISPLAY(MessageObject.SETTING, "powerOrbDisplay"),
     SETTING_POWER_ORB_DISPLAY_STYLE(MessageObject.SETTING, "powerOrbDisplayStyle"),
 
@@ -113,7 +116,9 @@ public enum Message {
     MESSAGE_ANVIL_USES(MessageObject.MESSAGES, "anvilUses"),
     MESSAGE_CANCELLED_NON_ORES_BREAK(MessageObject.MESSAGES, "cancelledDeepCaverns"),
     MESSAGE_SPECIAL_ZEALOT_FOUND(MessageObject.MESSAGES, "specialZealotFound"),
-    BLOCK_INCOMPLETE_PATTERNS(MessageObject.MESSAGES, "blockIncompletePatterns"),
+    MESSAGE_BLOCK_INCOMPLETE_PATTERNS(MessageObject.MESSAGES, "blockIncompletePatterns"),
+    MESSAGE_SEARCH_FEATURES(MessageObject.MESSAGES, "searchFeatures"),
+    MESSAGE_DOWNLOADING_UPDATE(MessageObject.MESSAGES, "downloadingUpdateFile"),
 
     @Deprecated ANCHOR_POINT_TOP_LEFT(MessageObject.ANCHOR_POINT, "topLeft"),
     @Deprecated ANCHOR_POINT_TOP_RIGHT(MessageObject.ANCHOR_POINT, "topRight"),

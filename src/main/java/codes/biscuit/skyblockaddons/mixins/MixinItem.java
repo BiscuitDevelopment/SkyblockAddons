@@ -1,6 +1,7 @@
 package codes.biscuit.skyblockaddons.mixins;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.utils.CooldownManager;
 import codes.biscuit.skyblockaddons.utils.Feature;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -17,8 +18,9 @@ public class MixinItem {
     private boolean showDurabilityBar(ItemStack stack) { //Item item, ItemStack stacks
         SkyblockAddons main = SkyblockAddons.getInstance();
         if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.SHOW_ITEM_COOLDOWNS)) {
-            double cooldown = main.getUtils().getItemCooldown(stack);
-            if (cooldown != -1 && cooldown < 1) return true;
+            if(CooldownManager.isOnCooldown(stack)) {
+                return true;
+            }
         }
         return stack.isItemDamaged();
     }
@@ -27,8 +29,9 @@ public class MixinItem {
     private void showDurabilityBar(ItemStack stack, CallbackInfoReturnable<Double> cir) { //Item item, ItemStack stack
         SkyblockAddons main = SkyblockAddons.getInstance();
         if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.SHOW_ITEM_COOLDOWNS)) {
-            double cooldown = main.getUtils().getItemCooldown(stack);
-            if (cooldown != -1) cir.setReturnValue(1-cooldown);
+            if(CooldownManager.isOnCooldown(stack)) {
+                cir.setReturnValue(CooldownManager.getRemainingCooldownPercent(stack));
+            }
         }
     }
 }

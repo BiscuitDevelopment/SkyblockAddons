@@ -5,25 +5,19 @@ import codes.biscuit.skyblockaddons.gui.elements.CraftingPatternSelection;
 import codes.biscuit.skyblockaddons.utils.*;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.multiplayer.PlayerControllerMP;
-import net.minecraft.client.network.NetHandlerPlayClient;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ContainerPlayer;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-import net.minecraft.network.Packet;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
@@ -49,11 +43,12 @@ public class MixinPlayerControllerMP {
     private static final Set<EnumUtils.Location> DEEP_CAVERNS_LOCATIONS = EnumSet.of(EnumUtils.Location.DEEP_CAVERNS, EnumUtils.Location.GUNPOWDER_MINES,
             EnumUtils.Location.LAPIS_QUARRY, EnumUtils.Location.PIGMAN_DEN, EnumUtils.Location.SLIMEHILL, EnumUtils.Location.DIAMOND_RESERVE, EnumUtils.Location.OBSIDIAN_SANCTUARY);
 
-    private static final Set<Block> MINEABLE_BLOCKS = new HashSet<>(Arrays.asList(Blocks.coal_ore, Blocks.iron_ore, Blocks.gold_ore, Blocks.redstone_ore, Blocks.emerald_ore,
+    private static final Set<Block> DEEP_CAVERNS_MINEABLE_BLOCKS = new HashSet<>(Arrays.asList(Blocks.coal_ore, Blocks.iron_ore, Blocks.gold_ore, Blocks.redstone_ore, Blocks.emerald_ore,
             Blocks.diamond_ore, Blocks.diamond_block, Blocks.obsidian, Blocks.lapis_ore, Blocks.lit_redstone_ore));
 
+    private static final Set<Block> NETHER_MINEABLE_BLOCKS = new HashSet<>(Arrays.asList(Blocks.glowstone, Blocks.quartz_ore, Blocks.nether_wart));
+
     private long lastStemMessage = -1;
-    private long lastProfileMessage = -1;
     private long lastUnmineableMessage = -1;
 
     /**
@@ -68,22 +63,30 @@ public class MixinPlayerControllerMP {
         if (heldItem != null) {
             Block block = mc.theWorld.getBlockState(loc).getBlock();
             long now = System.currentTimeMillis();
+
             if (main.getConfigValues().isEnabled(Feature.AVOID_BREAKING_STEMS) && (block.equals(Blocks.melon_stem) || block.equals(Blocks.pumpkin_stem))) {
-                if (now- lastStemMessage > 20000) {
+                if (main.getConfigValues().isEnabled(Feature.ENABLE_MESSAGE_WHEN_BREAKING_STEMS) && now - lastStemMessage > 20000) {
                     lastStemMessage = now;
                     main.getUtils().sendMessage(main.getConfigValues().getColor(Feature.AVOID_BREAKING_STEMS).getChatFormatting()+Message.MESSAGE_CANCELLED_STEM_BREAK.getMessage());
                 }
                 cir.setReturnValue(false);
             } else if (main.getConfigValues().isEnabled(Feature.ONLY_MINE_ORES_DEEP_CAVERNS) && DEEP_CAVERNS_LOCATIONS.contains(main.getUtils().getLocation())
-                    && main.getUtils().isPickaxe(heldItem.getItem()) && !MINEABLE_BLOCKS.contains(block)) {
-                if (now-lastUnmineableMessage > 60000) {
+                    && main.getUtils().isPickaxe(heldItem.getItem()) && !DEEP_CAVERNS_MINEABLE_BLOCKS.contains(block)) {
+                if (main.getConfigValues().isEnabled(Feature.ENABLE_MESSAGE_WHEN_MINING_DEEP_CAVERNS) && now - lastUnmineableMessage > 60000) {
                     lastUnmineableMessage = now;
                     main.getUtils().sendMessage(main.getConfigValues().getColor(Feature.ONLY_MINE_ORES_DEEP_CAVERNS).getChatFormatting() + Message.MESSAGE_CANCELLED_NON_ORES_BREAK.getMessage());
                 }
                 cir.setReturnValue(false);
+            } else if (main.getConfigValues().isEnabled(Feature.ONLY_MINE_VALUABLES_NETHER) && EnumUtils.Location.BLAZING_FORTRESS.equals(main.getUtils().getLocation()) &&
+                    main.getUtils().isPickaxe(heldItem.getItem()) && !NETHER_MINEABLE_BLOCKS.contains(block)) {
+                if (main.getConfigValues().isEnabled(Feature.ENABLE_MESSAGE_WHEN_MINING_NETHER) && now - lastUnmineableMessage > 60000) {
+                    lastUnmineableMessage = now;
+                    main.getUtils().sendMessage(main.getConfigValues().getColor(Feature.ONLY_MINE_VALUABLES_NETHER).getChatFormatting() + Message.MESSAGE_CANCELLED_NON_ORES_BREAK.getMessage());
+                }
+                cir.setReturnValue(false);
             } else if (main.getConfigValues().isEnabled(Feature.JUNGLE_AXE_COOLDOWN)) {
-                CooldownEntry cooldown = main.getUtils().getItemCooldown("§aJungle Axe");
-                if (cooldown != null && (block.equals(Blocks.log) || block.equals(Blocks.log2)) && cooldown.getLastUse() + cooldown.getCooldownMillis() > now) {
+                if ((block.equals(Blocks.log)|| block.equals(Blocks.log2))
+                        && CooldownManager.isOnCooldown(InventoryUtils.JUNGLE_AXE_DISPLAYNAME)) {
                     cir.setReturnValue(false);
                 }
             }
@@ -94,44 +97,8 @@ public class MixinPlayerControllerMP {
     private void onPlayerDestroyBlock(BlockPos pos, EnumFacing face, CallbackInfoReturnable<Boolean> cir) {
         SkyblockAddons main = SkyblockAddons.getInstance();
         if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.SHOW_ITEM_COOLDOWNS)) {
-            SkyblockAddons.getInstance().getUtils().logEntry(Minecraft.getMinecraft().thePlayer.getHeldItem());
+            CooldownManager.put(Minecraft.getMinecraft().thePlayer.getHeldItem());
         }
-    }
-
-    @Redirect(method = "isPlayerRightClickingOnEntity", at = @At(value = "INVOKE",
-            target = "Lnet/minecraft/client/network/NetHandlerPlayClient;addToSendQueue(Lnet/minecraft/network/Packet;)V",
-    ordinal = 0))
-    private void onPlayerRightClickEntity(NetHandlerPlayClient netHandlerPlayClient, Packet p_147297_1_) {
-        checkIfShouldSendPacket(netHandlerPlayClient, p_147297_1_);
-    }
-
-    @Redirect(method = "interactWithEntitySendPacket", at = @At(value = "INVOKE",
-            target = "Lnet/minecraft/client/network/NetHandlerPlayClient;addToSendQueue(Lnet/minecraft/network/Packet;)V",
-            ordinal = 0))
-    private void interactWithEntitySendPacket(NetHandlerPlayClient netHandlerPlayClient, Packet p_147297_1_) {
-        checkIfShouldSendPacket(netHandlerPlayClient, p_147297_1_);
-    }
-
-    private void checkIfShouldSendPacket(NetHandlerPlayClient netHandlerPlayClient, Packet p_147297_1_) {
-        SkyblockAddons main = SkyblockAddons.getInstance();
-        if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.DONT_OPEN_PROFILES_WITH_BOW)) {
-            Minecraft mc = Minecraft.getMinecraft();
-            Entity entityIn = mc.objectMouseOver.entityHit;
-            if (entityIn instanceof EntityOtherPlayerMP && main.getUtils().isNotNPC(entityIn)) {
-                ItemStack item = mc.thePlayer.inventory.getCurrentItem();
-                ItemStack itemInUse = mc.thePlayer.getItemInUse();
-                if ((item != null && item.getItem() != null && item.getItem().equals(Items.bow)) ||
-                        (itemInUse != null && itemInUse.getItem() != null && itemInUse.getItem().equals(Items.bow))) {
-                    if (System.currentTimeMillis()- lastProfileMessage > 20000) {
-                        lastProfileMessage = System.currentTimeMillis();
-                        main.getUtils().sendMessage(main.getConfigValues().getColor(Feature.DONT_OPEN_PROFILES_WITH_BOW).getChatFormatting()+
-                                Message.MESSAGE_STOPPED_OPENING_PROFILE.getMessage());
-                    }
-                    return;
-                }
-            }
-        }
-        netHandlerPlayClient.addToSendQueue(p_147297_1_);
     }
 
     /**

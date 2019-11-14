@@ -158,7 +158,7 @@ public abstract class MixinGuiChest extends GuiContainer {
 
     @Override
     protected void keyTyped(char typedChar, int keyCode) throws IOException {
-        if (inventoryType != null && inventoryType != EnumUtils.InventoryType.CRAFTING_TABLE) {
+        if (inventoryType != null && (inventoryType == EnumUtils.InventoryType.ENCHANTMENT_TABLE || inventoryType == EnumUtils.InventoryType.REFORGE_ANVIL)) {
             if (keyCode != this.mc.gameSettings.keyBindInventory.getKeyCode() || (!textFieldMatch.isFocused() && !textFieldExclusions.isFocused())) {
                 super.keyTyped(typedChar, keyCode);
             }
