@@ -12,6 +12,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ContainerPlayer;
 import net.minecraft.inventory.Slot;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
@@ -128,6 +129,8 @@ public class MixinPlayerControllerMP {
 
             // Crafting patterns
             final Container slots = player.openContainer;
+            Minecraft mc = Minecraft.getMinecraft();
+            final EnumSet<StainedGlassPaneColor> glassPaneColors = EnumSet.of(StainedGlassPaneColor.RED, StainedGlassPaneColor.BLACK, StainedGlassPaneColor.LIME);
 
             Slot slotIn;
             try {
@@ -136,41 +139,57 @@ public class MixinPlayerControllerMP {
                 slotIn = null;
             }
 
-            if(slotIn != null && EnumUtils.InventoryType.getCurrentInventoryType() == EnumUtils.InventoryType.CRAFTING_TABLE
-                    && main.getConfigValues().isEnabled(Feature.CRAFTING_PATTERNS)) {
-
-                final CraftingPattern selectedPattern = CraftingPatternSelection.selectedPattern;
+            if (slotIn != null)  {
                 final ItemStack clickedItem = slotIn.getStack();
-                if(selectedPattern != CraftingPattern.FREE && clickedItem != null) {
-                    final ItemStack[] craftingGrid = new ItemStack[9];
-                    for (int i = 0; i < CraftingPattern.CRAFTING_GRID_SLOTS.size(); i++) {
-                        int slotIndex = CraftingPattern.CRAFTING_GRID_SLOTS.get(i);
-                        craftingGrid[i] = slots.getSlot(slotIndex).getStack();
-                    }
 
-                    final CraftingPatternResult result = selectedPattern.checkAgainstGrid(craftingGrid);
+                // If the slot clicked isn't in the player's inventory we check if the clicked item was a stained glass pane (red, black, lime)
+                // This is in case one of the stained glass panes is ever used as an actual item in the menu
+                // In such a case this feature would have to be removed but by limiting it to the 3 colors used in the menus the probabilities are reduced
+                if (main.getConfigValues().isEnabled(Feature.PREVENT_CLICKING_STAINED_GLASS_PANES_MENUS) && !slotIn.inventory.equals(mc.thePlayer.inventory)) {
+                    if (clickedItem != null && clickedItem.getItem().equals(Item.getItemFromBlock(Blocks.stained_glass_pane))) {
+                        StainedGlassPaneColor color = StainedGlassPaneColor.getStainedGlassPaneColor(clickedItem.getMetadata());
 
-                    if(slotIn.inventory.equals(Minecraft.getMinecraft().thePlayer.inventory)) {
-                        if(result.isFilled() && !result.fitsItem(clickedItem) && clickModifier == SHIFTCLICK_CLICK_TYPE) {
-                            // cancel shift-clicking items from the inventory if the pattern is already filled
-                            if(System.currentTimeMillis() > lastCraftingSoundPlayed+CRAFTING_PATTERN_SOUND_COOLDOWN) {
-                                main.getUtils().playSound("note.bass", 0.5);
-                                lastCraftingSoundPlayed = System.currentTimeMillis();
-                            }
+                        if (glassPaneColors.contains(color)) {
                             cir.setReturnValue(null);
                             cir.cancel();
                         }
-                    } else {
-                        if(slotIn.getSlotIndex() == CraftingPattern.CRAFTING_RESULT_INDEX
-                                && !result.isSatisfied()
-                                && CraftingPatternSelection.blockCraftingIncomplete) {
-                            // cancel clicking the result if the pattern isn't satisfied
-                            if(System.currentTimeMillis() > lastCraftingSoundPlayed+CRAFTING_PATTERN_SOUND_COOLDOWN) {
-                                main.getUtils().playSound("note.bass", 0.5);
-                                lastCraftingSoundPlayed = System.currentTimeMillis();
+                    }
+                }
+
+                if (EnumUtils.InventoryType.getCurrentInventoryType() == EnumUtils.InventoryType.CRAFTING_TABLE && main.getConfigValues().isEnabled(Feature.CRAFTING_PATTERNS)) {
+                    final CraftingPattern selectedPattern = CraftingPatternSelection.selectedPattern;
+
+                    if (selectedPattern != CraftingPattern.FREE && clickedItem != null) {
+                        final ItemStack[] craftingGrid = new ItemStack[9];
+                        for (int i = 0; i < CraftingPattern.CRAFTING_GRID_SLOTS.size(); i++) {
+                            int slotIndex = CraftingPattern.CRAFTING_GRID_SLOTS.get(i);
+                            craftingGrid[i] = slots.getSlot(slotIndex).getStack();
+                        }
+
+                        final CraftingPatternResult result = selectedPattern.checkAgainstGrid(craftingGrid);
+
+                        if (slotIn.inventory.equals(mc.thePlayer.inventory)) {
+                            if (result.isFilled() && !result.fitsItem(clickedItem) && clickModifier == SHIFTCLICK_CLICK_TYPE) {
+                                // cancel shift-clicking items from the inventory if the pattern is already filled
+                                if (System.currentTimeMillis() > lastCraftingSoundPlayed+CRAFTING_PATTERN_SOUND_COOLDOWN) {
+                                    main.getUtils().playSound("note.bass", 0.5);
+                                    lastCraftingSoundPlayed = System.currentTimeMillis();
+                                }
+                                cir.setReturnValue(null);
+                                cir.cancel();
                             }
-                            cir.setReturnValue(null);
-                            cir.cancel();
+                        } else {
+                            if (slotIn.getSlotIndex() == CraftingPattern.CRAFTING_RESULT_INDEX
+                                    && !result.isSatisfied()
+                                    && CraftingPatternSelection.blockCraftingIncomplete) {
+                                // cancel clicking the result if the pattern isn't satisfied
+                                if (System.currentTimeMillis() > lastCraftingSoundPlayed+CRAFTING_PATTERN_SOUND_COOLDOWN) {
+                                    main.getUtils().playSound("note.bass", 0.5);
+                                    lastCraftingSoundPlayed = System.currentTimeMillis();
+                                }
+                                cir.setReturnValue(null);
+                                cir.cancel();
+                            }
                         }
                     }
                 }
