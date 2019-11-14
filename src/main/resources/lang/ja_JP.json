@@ -79,10 +79,10 @@
     "speedPercentage": "スピード",
     "collectionDisplay": "スキルの進捗の表示",
     "onlyMineOresDeepCaverns": "Deep Cavernsで鉱石のみを掘れるように",
-    "onlyMineValuablesNether": "Only Mine Valuables in the Nether",
+    "onlyMineValuablesNether": "ネザーで希少物以外の採掘を防止",
     "revenantIndicator": "Slayer装備の進捗を表示",
     "specialZealotAlert": "特別なZealotのアラート",
-    "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented",
+    "enableMessageWhenActionPrevented": "動作を防止したときにメッセージを表示する",
     "hidePetHealthBar": "ペットの体力バーを非表示"
   },
   "messages": {
