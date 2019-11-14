@@ -9,7 +9,6 @@ import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.multiplayer.PlayerControllerMP;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ContainerPlayer;
 import net.minecraft.inventory.Slot;
@@ -78,14 +77,14 @@ public class MixinPlayerControllerMP {
                     && main.getUtils().isPickaxe(heldItem.getItem()) && !DEEP_CAVERNS_MINEABLE_BLOCKS.contains(block)) {
                 if (main.getConfigValues().isEnabled(Feature.ENABLE_MESSAGE_WHEN_MINING_DEEP_CAVERNS) && now - lastUnmineableMessage > 60000) {
                     lastUnmineableMessage = now;
-                    main.getUtils().sendMessage(main.getConfigValues().getColor(Feature.ONLY_MINE_ORES_DEEP_CAVERNS).getChatFormatting() + Message.MESSAGE_CANCELLED_NON_ORES_BREAK.getMessage());
+                    main.getUtils().sendMessage(main.getConfigValues().getColor(Feature.ONLY_MINE_ORES_DEEP_CAVERNS).getChatFormatting() + Message.MESSAGE_CANCELLED_MINING_BLOCK_HERE.getMessage());
                 }
                 cir.setReturnValue(false);
             } else if (main.getConfigValues().isEnabled(Feature.ONLY_MINE_VALUABLES_NETHER) && EnumUtils.Location.BLAZING_FORTRESS.equals(main.getUtils().getLocation()) &&
                     main.getUtils().isPickaxe(heldItem.getItem()) && !NETHER_MINEABLE_BLOCKS.contains(block)) {
                 if (main.getConfigValues().isEnabled(Feature.ENABLE_MESSAGE_WHEN_MINING_NETHER) && now - lastUnmineableMessage > 60000) {
                     lastUnmineableMessage = now;
-                    main.getUtils().sendMessage(main.getConfigValues().getColor(Feature.ONLY_MINE_VALUABLES_NETHER).getChatFormatting() + Message.MESSAGE_CANCELLED_NON_ORES_BREAK.getMessage());
+                    main.getUtils().sendMessage(main.getConfigValues().getColor(Feature.ONLY_MINE_VALUABLES_NETHER).getChatFormatting() + Message.MESSAGE_CANCELLED_MINING_BLOCK_HERE.getMessage());
                 }
                 cir.setReturnValue(false);
             }
@@ -98,6 +97,10 @@ public class MixinPlayerControllerMP {
 
             if (main.getConfigValues().isEnabled(Feature.ONLY_BREAK_LOGS_FOREST) && FOREST_LOCATIONS.contains(main.getUtils().getLocation())) {
                 if (!isLog && main.getUtils().isAxe(heldItem.getItem())) {
+                    if (main.getConfigValues().isEnabled(Feature.ENABLE_MESSAGE_WHEN_BREAKING_LOGS_FOREST_ISLANDS) && now - lastUnmineableMessage > 60000) {
+                        lastUnmineableMessage = now;
+                        main.getUtils().sendMessage(main.getConfigValues().getColor(Feature.ONLY_BREAK_LOGS_FOREST).getChatFormatting() + Message.MESSAGE_CANCELLED_MINING_BLOCK_HERE.getMessage());
+                    }
                     cir.setReturnValue(false);
                 }
             }

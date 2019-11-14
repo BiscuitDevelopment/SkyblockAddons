@@ -319,12 +319,15 @@ public class SettingsGui extends GuiScreen {
             boxWidth = 31;
             x = halfWidth - (boxWidth / 2);
 
-            // Don't forget to add another "else if" when pulling the nether feature
             Feature settingFeature = null;
             if (feature == Feature.ONLY_MINE_ORES_DEEP_CAVERNS) {
                 settingFeature = Feature.ENABLE_MESSAGE_WHEN_MINING_DEEP_CAVERNS;
             } else if (feature == Feature.AVOID_BREAKING_STEMS) {
                 settingFeature = Feature.ENABLE_MESSAGE_WHEN_BREAKING_STEMS;
+            } else if (feature == Feature.ONLY_MINE_VALUABLES_NETHER) {
+                settingFeature = Feature.ENABLE_MESSAGE_WHEN_MINING_NETHER;
+            } else if (feature == Feature.ONLY_BREAK_LOGS_FOREST) {
+                settingFeature = Feature.ENABLE_MESSAGE_WHEN_BREAKING_LOGS_FOREST_ISLANDS;
             }
 
             buttonList.add(new ButtonToggleTitle(x, y, Message.SETTING_ENABLE_MESSAGE_WHEN_ACTION_PREVENTED.getMessage(), main, settingFeature));

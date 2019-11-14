@@ -77,7 +77,8 @@ public enum Feature {
     ENABLE_MESSAGE_WHEN_BREAKING_STEMS(61, null, false),
     ENABLE_MESSAGE_WHEN_MINING_NETHER(62, null, false),
     HIDE_PET_HEALTH_BAR(63, Message.SETTING_HIDE_PET_HEALTH_BAR, false),
-    ONLY_BREAK_LOGS_FOREST(64, Message.SETTING_ONLY_BREAK_LOGS_FOREST, true),
+    ONLY_BREAK_LOGS_FOREST(64, Message.SETTING_ONLY_BREAK_LOGS_FOREST, new GuiFeatureData(ConfigColor.RED), true, EnumUtils.FeatureSetting.ENABLE_MESSAGE_WHEN_ACTION_PREVENTED),
+    ENABLE_MESSAGE_WHEN_BREAKING_LOGS_FOREST_ISLANDS(65, null, false),
 
     HIDE_GREY_ENCHANTS(100, null, false), // allow remote disabling this feature
 
