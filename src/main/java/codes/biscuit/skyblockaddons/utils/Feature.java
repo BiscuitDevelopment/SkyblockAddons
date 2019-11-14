@@ -3,7 +3,6 @@ package codes.biscuit.skyblockaddons.utils;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.gui.buttons.ButtonLocation;
 import net.minecraft.client.Minecraft;
-import net.minecraftforge.fml.common.FMLLog;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -72,7 +71,7 @@ public enum Feature {
     ONLY_MINE_ORES_DEEP_CAVERNS(56, Message.SETTING_ONLY_MINE_ORES_DEEP_CAVERNS, true),
     SLAYER_INDICATOR(57, Message.SETTING_SLAYER_INDICATOR, new GuiFeatureData(EnumUtils.DrawType.REVENANT_PROGRESS, ConfigColor.AQUA, EnumUtils.AnchorPoint.BOTTOM_RIGHT, -84, -29), true),
     SPECIAL_ZEALOT_ALERT(58, Message.SETTING_SPECIAL_ZEALOT_ALERT, new GuiFeatureData(ConfigColor.RED), false),
-    POWER_ORB_STATUS_DISPLAY(59, Message.MESSAGE_DOWNLOAD_LINK, new GuiFeatureData(EnumUtils.DrawType.TEXT, ConfigColor.WHITE, EnumUtils.AnchorPoint.TOP_RIGHT, 10, 10), false),
+    POWER_ORB_STATUS_DISPLAY(59, Message.SETTING_POWER_ORB_DISPLAY, new GuiFeatureData(EnumUtils.DrawType.POWER_ORB_DISPLAY, null, EnumUtils.AnchorPoint.TOP_LEFT, 100, 10), false, EnumUtils.FeatureSetting.POWER_ORB_DISPLAY_STYLE),
 
     HIDE_GREY_ENCHANTS(100, null, false), // allow remote disabling this feature
 
@@ -168,6 +167,8 @@ public enum Feature {
                 main.getRenderListener().drawIcon(scale, mc, buttonLocation);
             } else if (guiFeatureData.getDrawType() == EnumUtils.DrawType.REVENANT_PROGRESS) {
                 main.getRenderListener().drawRevenantIndicator(scale, mc, buttonLocation);
+            } else if(guiFeatureData.getDrawType() == EnumUtils.DrawType.POWER_ORB_DISPLAY) {
+                main.getRenderListener().drawPowerOrbStatus(mc, scale, buttonLocation);
             }
         }
     }

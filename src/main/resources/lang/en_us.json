@@ -80,7 +80,13 @@
     "collectionDisplay": "Skill Progress Display",
     "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns",
     "revenantIndicator": "Slayer Armor Progress Indicator",
-    "specialZealotAlert": "Special Zealot Alert"
+    "specialZealotAlert": "Special Zealot Alert",
+    "powerOrbDisplay": "Power Orb Display",
+    "powerOrbDisplayStyle": "Power Orb Style: %style%",
+    "powerOrbStyle": {
+      "detailed": "Detailed",
+      "compact": "Compact"
+    }
   },
   "messages": {
     "dropConfirmation": "Drop this item again to confirm!",

@@ -861,6 +861,14 @@ public class Utils {
         }
     }
 
+    public static String niceDouble(double value, int decimals) {
+        if(value == (long) value) {
+            return String.format("%d", (long)value);
+        } else {
+            return String.format("%."+decimals+"f", value);
+        }
+    }
+
     public boolean isDevEnviroment() {
         return (boolean) Launch.blackboard.get("fml.deobfuscatedEnvironment");
     }
@@ -878,7 +886,7 @@ public class Utils {
     }
 
     public boolean isOnSkyblock() {
-        return onSkyblock || isDevEnviroment();
+        return onSkyblock;
     }
 
     public boolean isFadingIn() {

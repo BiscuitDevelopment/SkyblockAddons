@@ -23,14 +23,13 @@ import net.minecraftforge.client.GuiIngameForge;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderLivingEvent;
 import net.minecraftforge.fml.client.GuiNotification;
-import net.minecraftforge.fml.common.FMLLog;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 import java.awt.*;
 import java.math.BigDecimal;
-import java.util.List;
 import java.util.*;
+import java.util.List;
 
 import static net.minecraft.client.gui.Gui.icons;
 
@@ -601,9 +600,6 @@ public class RenderListener {
                     color = main.getConfigValues().getColor(feature).getColor(textAlpha * 255 >= 4 ? textAlpha * 255 : 4); // so it fades out, 0.016 is the minimum alpha
                 }
             }
-        } else if (feature == Feature.POWER_ORB_STATUS_DISPLAY) {
-            drawPowerOrbStatus(mc, scale, buttonLocation);
-            text = "";
         } else {
             return;
         }
@@ -718,7 +714,6 @@ public class RenderListener {
         }
     }
 
-
     private void drawItemStack(Minecraft mc, ItemStack item, int x, int y) {
         RenderHelper.enableGUIStandardItemLighting();
         mc.getRenderItem().renderItemIntoGUI(item, x, y);
@@ -770,7 +765,136 @@ public class RenderListener {
     }
 
     public void drawPowerOrbStatus(Minecraft mc, float scale, ButtonLocation buttonLocation) {
-//        FMLLog.info("drawPowerOrbStatus activePowerOrb=%s", activePowerOrb);
+        PowerOrbManager.Entry activePowerOrb = PowerOrbManager.getInstance().get();
+        if (buttonLocation != null) {
+            activePowerOrb = PowerOrbManager.DUMMY_ENTRY;
+        }
+        if (activePowerOrb != null) {
+            PowerOrb powerOrb = activePowerOrb.getPowerOrb();
+            int seconds = activePowerOrb.getSeconds();
+
+            EnumUtils.PowerOrbDisplayStyle displayStyle = main.getConfigValues().getPowerOrbDisplayStyle();
+            if (displayStyle == EnumUtils.PowerOrbDisplayStyle.DETAILED) {
+                drawDetailedPowerOrbStatus(mc, scale, buttonLocation, powerOrb, seconds);
+            } else {
+                drawCompactPowerOrbStatus(mc, scale, buttonLocation, powerOrb, seconds);
+            }
+        }
+    }
+
+    /**
+     * Displays the power orb display in a compact way with only the amount of seconds to the right of the icon.
+     *
+     *  --
+     * |  | XXs
+     *  --
+     */
+    private void drawCompactPowerOrbStatus(Minecraft mc, float scale, ButtonLocation buttonLocation, PowerOrb powerOrb, int seconds) {
+        float x = main.getConfigValues().getActualX(Feature.POWER_ORB_STATUS_DISPLAY);
+        float y = main.getConfigValues().getActualY(Feature.POWER_ORB_STATUS_DISPLAY);
+
+        String secondsString = String.format("§e%ss", seconds);
+        int spacing = 1;
+        int iconSize = mc.fontRendererObj.FONT_HEIGHT * 3; // 3 because it looked the best
+        int width = iconSize + spacing + mc.fontRendererObj.getStringWidth(secondsString);
+        // iconSize also acts as height
+        x -= Math.round(width * scale / 2);
+        y -= Math.round(iconSize * scale / 2);
+        x /= scale;
+        y /= scale;
+        int intX = Math.round(x);
+        int intY = Math.round(y);
+
+        if (buttonLocation != null) {
+            int boxXOne = intX - 4;
+            int boxXTwo = intX + width + 4;
+            int boxYOne = intY - 4;
+            int boxYTwo = intY + iconSize + 4;
+            buttonLocation.checkHoveredAndDrawBox(boxXOne, boxXTwo, boxYOne, boxYTwo, scale);
+            GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+        }
+
+        GlStateManager.disableDepth();
+        GlStateManager.enableBlend();
+        mc.getTextureManager().bindTexture(powerOrb.resourceLocation);
+        GlStateManager.color(1, 1, 1, 1F);
+        Gui.drawModalRectWithCustomSizedTexture(intX, intY, 0, 0, iconSize, iconSize, iconSize, iconSize);
+        GlStateManager.disableBlend();
+        GlStateManager.enableDepth();
+
+        main.getUtils().drawString(mc, secondsString, intX + iconSize, intY + (iconSize / 2) - (mc.fontRendererObj.FONT_HEIGHT / 2), ConfigColor.WHITE.getColor(255));
+    }
+
+    /**
+     * Displays the power orb with detailed stats about the boost you're receiving.
+     *
+     *  --  +X ❤/s
+     * |  | +X ✎/s
+     *  --  +X ❁
+     *  XXs
+     */
+    private void drawDetailedPowerOrbStatus(Minecraft mc, float scale, ButtonLocation buttonLocation, PowerOrb powerOrb, int seconds) {
+        float x = main.getConfigValues().getActualX(Feature.POWER_ORB_STATUS_DISPLAY);
+        float y = main.getConfigValues().getActualY(Feature.POWER_ORB_STATUS_DISPLAY);
+
+        String secondsString = String.format("§e%ss", seconds);
+        int spacing = 1;
+        int iconSize = mc.fontRendererObj.FONT_HEIGHT * 3; // 3 because it looked the best
+        int iconAndSecondsHeight = iconSize + mc.fontRendererObj.FONT_HEIGHT;
+
+        int maxHealth = main.getUtils().getAttributes().get(Attribute.MAX_HEALTH).getValue();
+        int maxMana = main.getUtils().getAttributes().get(Attribute.MAX_MANA).getValue();
+        double healthRegen = maxHealth * powerOrb.healthRegen;
+        double manaRegen = maxMana / 50;
+        manaRegen = manaRegen + manaRegen * powerOrb.manaRegen;
+        double healIncrease = powerOrb.healIncrease * 100;
+
+        List<String> display = new LinkedList<>();
+        display.add(String.format("§c+%s ❤/s", Utils.niceDouble(healthRegen, 2)));
+        display.add(String.format("§b+%s ✎/s", Utils.niceDouble(manaRegen, 2)));
+        if (powerOrb.strength > 0) {
+            display.add(String.format("§4+%d ❁", powerOrb.strength));
+        }
+        if (healIncrease > 0) {
+            display.add(String.format("§2+%s%% Healing", Utils.niceDouble(healIncrease, 2)));
+        }
+
+        Optional<String> longestLine = display.stream().max(Comparator.comparingInt(String::length));
+
+        int effectsHeight = (mc.fontRendererObj.FONT_HEIGHT + spacing) * display.size();
+        int width = iconSize + longestLine.map(s -> mc.fontRendererObj.getStringWidth(s))
+                .orElseGet(() -> mc.fontRendererObj.getStringWidth(display.get(0)));
+        int height = Math.max(effectsHeight, iconAndSecondsHeight);
+        x -= Math.round(width * scale / 2);
+        y -= Math.round(24 * scale / 2);
+        x /= scale;
+        y /= scale;
+        int intX = Math.round(x);
+        int intY = Math.round(y);
+
+        if (buttonLocation != null) {
+            int boxXOne = intX - 4;
+            int boxXTwo = intX + width + 4;
+            int boxYOne = intY - 4;
+            int boxYTwo = intY + height + 4;
+            buttonLocation.checkHoveredAndDrawBox(boxXOne, boxXTwo, boxYOne, boxYTwo, scale);
+            GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+        }
+
+        GlStateManager.disableDepth();
+        GlStateManager.enableBlend();
+        mc.getTextureManager().bindTexture(powerOrb.resourceLocation);
+        GlStateManager.color(1, 1, 1, 1F);
+        Gui.drawModalRectWithCustomSizedTexture(intX, intY, 0, 0, iconSize, iconSize, iconSize, iconSize);
+        GlStateManager.disableBlend();
+        GlStateManager.enableDepth();
+
+        main.getUtils().drawString(mc, secondsString, intX + (iconSize / 2) - (mc.fontRendererObj.getStringWidth(secondsString) / 2), intY + iconSize, ConfigColor.WHITE.getColor(255));
+
+        int startY = Math.round(intY + (iconAndSecondsHeight / 2f) - (effectsHeight / 2f));
+        for (int i = 0; i < display.size(); i++) {
+            main.getUtils().drawString(mc, display.get(i), intX + iconSize + 3, startY + (i * (mc.fontRendererObj.FONT_HEIGHT + spacing)), ConfigColor.WHITE.getColor(255));
+        }
     }
 
     /**

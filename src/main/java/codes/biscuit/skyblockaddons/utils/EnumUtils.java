@@ -175,6 +175,29 @@ public class EnumUtils {
         }
     }
 
+    public enum PowerOrbDisplayStyle {
+        DETAILED(Message.POWER_ORB_DISPLAY_STYLE_DETAILED),
+        COMPACT(Message.POWER_ORB_DISPLAY_STYLE_COMPACT);
+
+        private final Message message;
+
+        PowerOrbDisplayStyle(Message message) {
+            this.message = message;
+        }
+
+        public String getMessage() {
+            return message.getMessage();
+        }
+
+        public PowerOrbDisplayStyle getNextType() {
+            int nextType = ordinal()+1;
+            if (nextType > values().length-1) {
+                nextType = 0;
+            }
+            return values()[nextType];
+        }
+    }
+
     public enum TextStyle {
         REGULAR(TEXT_STYLE_ONE),
         BLACK_SHADOW(TEXT_STYLE_TWO);
@@ -400,6 +423,7 @@ public class EnumUtils {
         BACKPACK_STYLE,
         SHOW_ONLY_WHEN_HOLDING_SHIFT,
         MAKE_INVENTORY_COLORED,
+        POWER_ORB_DISPLAY_STYLE,
         CHANGE_BAR_COLOR_WITH_POTIONS
     }
 
@@ -531,7 +555,8 @@ public class EnumUtils {
         TEXT,
         PICKUP_LOG,
         DEFENCE_ICON,
-        REVENANT_PROGRESS
+        REVENANT_PROGRESS,
+        POWER_ORB_DISPLAY
     }
 
     public enum Social {

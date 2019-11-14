@@ -30,7 +30,6 @@ import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.ChunkEvent;
-import net.minecraftforge.fml.common.FMLLog;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent;
@@ -365,20 +364,22 @@ public class PlayerListener {
         Entity entity = e.entity;
 
         if (main.getUtils().isOnSkyblock() && entity instanceof EntityArmorStand && entity.hasCustomName()) {
-
             String customNameTag = entity.getCustomNameTag();
+
             PowerOrb powerOrb = PowerOrb.getByDisplayname(customNameTag);
-            try {
-                if (powerOrb != null && powerOrb.isInRadius(entity.getPosition().distanceSq(Minecraft.getMinecraft().thePlayer.getPosition()))) {
-                    String[] customNameTagSplit = customNameTag.split(" ");
-                    String secondsString = customNameTagSplit[customNameTagSplit.length - 1]
-                            .replaceAll("§e", "")
-                            .replaceAll("s", "");
+            if (powerOrb != null
+                    && Minecraft.getMinecraft().thePlayer != null
+                    && powerOrb.isInRadius(entity.getPosition().distanceSq(Minecraft.getMinecraft().thePlayer.getPosition()))) {
+                String[] customNameTagSplit = customNameTag.split(" ");
+                String secondsString = customNameTagSplit[customNameTagSplit.length - 1]
+                        .replaceAll("§e", "")
+                        .replaceAll("s", "");
+                try {
+                    // Apparently they don't have a second count for moment after spawning, that's what this try-catch is for
                     int seconds = Integer.parseInt(secondsString);
-                    FMLLog.info("%s Power Orb: %d seconds", powerOrb.display, seconds);
+                    PowerOrbManager.getInstance().put(powerOrb, seconds);
+                } catch (NumberFormatException ignored) {
                 }
-            } catch (Exception ex) {
-                ex.printStackTrace();
             }
 
             if (main.getUtils().getLocation() == EnumUtils.Location.ISLAND) {

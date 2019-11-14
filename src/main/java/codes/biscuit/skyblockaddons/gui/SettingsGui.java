@@ -213,6 +213,11 @@ public class SettingsGui extends GuiScreen {
             closingGui = true;
             Minecraft.getMinecraft().displayGuiScreen(new SettingsGui(main, feature, page, lastPage, lastTab, settings));
             closingGui = false;
+        } else if(feature == Feature.POWER_ORB_STATUS_DISPLAY && abstractButton instanceof ButtonSolid) {
+            main.getConfigValues().setPowerOrbDisplayStyle(main.getConfigValues().getPowerOrbDisplayStyle().getNextType());
+            closingGui = true;
+            Minecraft.getMinecraft().displayGuiScreen(new SettingsGui(main, feature, page, lastPage, lastTab, settings));
+            closingGui = false;
         } else if (abstractButton instanceof ButtonArrow) {
             ButtonArrow arrow = (ButtonArrow)abstractButton;
             if (arrow.isNotMax()) {
@@ -314,6 +319,10 @@ public class SettingsGui extends GuiScreen {
             boxWidth = 140;
             x = halfWidth-(boxWidth/2);
             buttonList.add(new ButtonSolid(x, y, 140, 20, Message.SETTING_BACKPACK_STYLE.getMessage(), main, feature));
+        } else if(setting == EnumUtils.FeatureSetting.POWER_ORB_DISPLAY_STYLE) {
+            boxWidth = 140;
+            x = halfWidth-(boxWidth/2);
+            buttonList.add(new ButtonSolid(x, y, 140, 20, Message.SETTING_POWER_ORB_DISPLAY_STYLE.getMessage(), main, feature));
         }
         row++;
     }
