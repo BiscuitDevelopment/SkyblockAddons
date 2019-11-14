@@ -83,7 +83,7 @@
     "revenantIndicator": "杀手弓进度提示",
     "specialZealotAlert": "末影战士警告",
     "enableMessageWhenActionPrevented": "阻止操作时显示消息",
-    "hidePetHealthBar": "Hide Pet Health Bar"
+    "hidePetHealthBar": "隐藏宠物血条"
   },
   "messages": {
     "dropConfirmation": "再次丢弃此物品以确认!",
@@ -126,7 +126,7 @@
     "anvilUses": "铁砧使用次数: %uses%",
     "specialZealotFound": "末影战士！",
     "blockIncompletePatterns": "阻止合成不完整的图案 - 推荐",
-    "searchFeatures": "Search features",
-    "downloadingUpdateFile": "Downloading update file..."
+    "searchFeatures": "搜索功能",
+    "downloadingUpdateFile": "正在下载更新文件……"
   }
 }
