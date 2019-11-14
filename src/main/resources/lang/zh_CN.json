@@ -82,7 +82,7 @@
     "onlyMineValuablesNether": "仅在地狱开采有价值的矿物",
     "revenantIndicator": "杀手弓进度提示",
     "specialZealotAlert": "末影战士警告",
-    "enableMessageWhenActionPrevented": "阻止操作时显示消息",
+    "enableMessageWhenActionPrevented": "当操作被阻止时显示提示",
     "hidePetHealthBar": "隐藏宠物血条"
   },
   "messages": {
@@ -101,9 +101,9 @@
       "reforges": "重铸",
       "crafting": "合成"
     },
-    "newUpdateAvailable": "新版本 %version% 现已上线！\n\n下载地址：https://biscuit.codes/mods/skyblockaddons/dl/\n翻译项目：https://crowdin.com/project/skyblockaddons/",
+    "newUpdateAvailable": "新版本 %version% 现已上线！\n\n翻译项目：https://crowdin.com/project/skyblockaddons/",
     "deleteOldFile": "下载完成，使用下方按钮打开 mods 文件夹，关闭 Minecraft，删除旧文件。",
-    "wantToViewPatchNotes": "想查看更新内容？",
+    "wantToViewPatchNotes": "查看更新内容",
     "downloadLink": "更新链接",
     "downloadAutomatically": "自动下载",
     "openModFolder": "Mods 文件夹",
