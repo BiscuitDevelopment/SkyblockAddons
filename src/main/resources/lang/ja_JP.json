@@ -121,7 +121,7 @@
     "cancelledProfileOpening": "SkyblockAddonsがこのプレイヤーのプロフィールを開くことを阻止しました。",
     "cancelledDropping": "SkyblockAddonsがこのアイテムを捨てることを阻止しました。",
     "clickMoreTimes": "本当に落としたい場合はもう%times%回クリック/ドロップしてください。",
-    "cancelledDeepCaverns": "SkyblockAddonsが鉱石以外のブロックの破壊を阻止しました。",
+    "cancelledDeepCaverns": "SkyblockAddonsがこのブロックの破壊を阻止しました。",
     "featureDisabled": "この機能は現在無効化されています",
     "anvilUses": "金床の使用回数 : %uses%",
     "specialZealotFound": "特別なZealotがスポーンしました!",
