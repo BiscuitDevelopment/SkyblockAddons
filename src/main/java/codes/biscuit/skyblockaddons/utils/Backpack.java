@@ -9,8 +9,12 @@ import net.minecraftforge.common.util.Constants;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Backpack {
+
+    private static final Pattern BACKPACK_ID_PATTERN = Pattern.compile("([A-Z]+)_BACKPACK");
 
     private int x;
     private int y;
@@ -60,25 +64,33 @@ public class Backpack {
 
     public static Backpack getFromItem(ItemStack stack) {
         if (stack == null) return null;
-        if (stack.hasTagCompound()) {
-            NBTTagCompound extraAttributes = stack.getTagCompound();
-            if (extraAttributes.hasKey("ExtraAttributes")) {
-                extraAttributes = extraAttributes.getCompoundTag("ExtraAttributes");
-                String id = extraAttributes.getString("id");
-                if (id.contains("BACKPACK")) {
-                    byte[] bytes = null;
-                    for (String key : extraAttributes.getKeySet()) {
-                        if (key.endsWith("backpack_data")) {
-                            bytes = extraAttributes.getByteArray(key);
-                            break;
-                        }
+        String id = SkyblockAddons.getInstance().getInventoryUtils().getSkyBlockItemID(stack);
+        if (id != null) {
+            NBTTagCompound extraAttributes = stack.getTagCompound().getCompoundTag("ExtraAttributes");
+            Matcher matcher = BACKPACK_ID_PATTERN.matcher(id);
+            if (matcher.matches()) {
+                byte[] bytes = null;
+                for (String key : extraAttributes.getKeySet()) {
+                    if (key.endsWith("backpack_data")) {
+                        bytes = extraAttributes.getByteArray(key);
+                        break;
                     }
-                    if (bytes == null) return null;
-                    try {
+                }
+                try {
+                    int length;
+                    String backpackType = matcher.group(1);
+                    switch (backpackType) { // because sometimes the size of the tag is not updated (etc. when you upcraft it)
+                        case "SMALL": length = 9; break;
+                        case "MEDIUM": length = 18; break;
+                        case "LARGE": length = 27; break;
+                        case "GREATER": length = 36; break;
+                        default: length = 45; break;
+                    }
+                    ItemStack[] items = new ItemStack[length];
+                    if (bytes != null) {
                         NBTTagCompound nbtTagCompound = CompressedStreamTools.readCompressed(new ByteArrayInputStream(bytes));
                         NBTTagList list = nbtTagCompound.getTagList("i", Constants.NBT.TAG_COMPOUND);
-                        int length = list.tagCount();
-                        ItemStack[] items = new ItemStack[length];
+                        if (list.tagCount() > length) length = list.tagCount();
                         for (int i = 0; i < length; i++) {
                             NBTTagCompound item = list.getCompoundTagAt(i);
                             // This fixes an issue in Hypixel where enchanted potatoes have the wrong id (potato block instead of item).
@@ -88,29 +100,23 @@ public class Backpack {
                                 if (nbtTagCompound.hasKey("ExtraAttributes")) {
                                     id = nbtTagCompound.getCompoundTag("ExtraAttributes").getString("id");
                                     if (id.equals("ENCHANTED_POTATO")) {
-                                        item.setShort("id", (short)392);
+                                        item.setShort("id", (short) 392);
                                     }
                                 }
                             }
                             ItemStack itemStack = ItemStack.loadItemStackFromNBT(item);
                             items[i] = itemStack;
                         }
-//                        main.getUtils().setBackpackToRender(new Backpack(x, y, items, main.getUtils().stripColor(stack.getDisplayName())));
-                        BackpackColor color = BackpackColor.WHITE;
-                        if (extraAttributes.hasKey("backpack_color")) {
-                            try {
-                                color = BackpackColor.valueOf(extraAttributes.getString("backpack_color"));
-                            } catch (IllegalArgumentException ignored) {}
-                        }
-                        return new Backpack(items, SkyblockAddons.getInstance().getUtils().stripColor(stack.getDisplayName()), color);
-
-//                        main.getUtils().setBackpackColor(color);
-//                        main.getPlayerListener().onItemTooltip(new ItemTooltipEvent(stack,
-//                                null, null, false));
-//                        ci.cancel();
-                    } catch (IOException e) {
-                        e.printStackTrace();
                     }
+                    BackpackColor color = BackpackColor.WHITE;
+                    if (extraAttributes.hasKey("backpack_color")) {
+                        try {
+                            color = BackpackColor.valueOf(extraAttributes.getString("backpack_color"));
+                        } catch (IllegalArgumentException ignored) {}
+                    }
+                    return new Backpack(items, SkyblockAddons.getInstance().getUtils().stripColor(stack.getDisplayName()), color);
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
             }
         }

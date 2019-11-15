@@ -13,8 +13,8 @@ import java.awt.*;
 public class ButtonSwitchTab extends GuiButton {
 
     private SkyblockAddons main;
-    private EnumUtils.SkyblockAddonsGuiTab currentTab;
-    private EnumUtils.SkyblockAddonsGuiTab tab;
+    private EnumUtils.GuiTab currentTab;
+    private EnumUtils.GuiTab tab;
 
     // Used to calculate the transparency when fading in.
     private long timeOpened = System.currentTimeMillis();
@@ -23,7 +23,7 @@ public class ButtonSwitchTab extends GuiButton {
      * Create a button for toggling a feature on or off. This includes all the {@link Feature}s that have a proper ID.
      */
     public ButtonSwitchTab(double x, double y, int width, int height, String buttonText, SkyblockAddons main,
-                           EnumUtils.SkyblockAddonsGuiTab tab, EnumUtils.SkyblockAddonsGuiTab currentTab) {
+                           EnumUtils.GuiTab tab, EnumUtils.GuiTab currentTab) {
         super(0,(int)x,(int)y,width, height,buttonText);
         this.main = main;
         this.width = width;
@@ -73,7 +73,7 @@ public class ButtonSwitchTab extends GuiButton {
         if (currentTab != tab) super.playPressSound(soundHandlerIn);
     }
 
-    public EnumUtils.SkyblockAddonsGuiTab getTab() {
+    public EnumUtils.GuiTab getTab() {
         return tab;
     }
 }

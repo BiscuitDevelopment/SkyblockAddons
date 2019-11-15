@@ -1,6 +1,7 @@
 package codes.biscuit.skyblockaddons.mixins;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.gui.elements.CraftingPatternSelection;
 import codes.biscuit.skyblockaddons.utils.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
@@ -9,9 +10,12 @@ import net.minecraft.client.gui.inventory.GuiChest;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.*;
+import net.minecraft.inventory.Container;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
+import org.lwjgl.input.Keyboard;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -31,6 +35,7 @@ public abstract class MixinGuiChest extends GuiContainer {
     private EnumUtils.InventoryType inventoryType = null;
     private GuiTextField textFieldMatch = null;
     private GuiTextField textFieldExclusions = null;
+    private CraftingPatternSelection craftingPatternSelection = null;
 
     @Shadow private IInventory lowerChestInventory;
 
@@ -38,10 +43,29 @@ public abstract class MixinGuiChest extends GuiContainer {
         super(inventorySlotsIn);
     }
 
+    @Override
+    public void updateScreen() {
+        if (this.textFieldMatch != null && this.textFieldExclusions != null) {
+            this.textFieldMatch.updateCursorCounter();
+            this.textFieldExclusions.updateCursorCounter();
+        }
+    }
+
+    @Override
+    public void onGuiClosed() {
+        EnumUtils.InventoryType.resetCurrentInventoryType();
+        if(craftingPatternSelection != null) {
+            craftingPatternSelection.onGuiClosed();
+        }
+        if (this.textFieldMatch != null && this.textFieldExclusions != null) {
+            Keyboard.enableRepeatEvents(false);
+        }
+    }
 
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
         super.drawScreen(mouseX, mouseY, partialTicks);
+
         if (textFieldMatch != null) {
             GlStateManager.color(1F, 1F, 1F);
             SkyblockAddons main = SkyblockAddons.getInstance();
@@ -61,11 +85,11 @@ public abstract class MixinGuiChest extends GuiContainer {
             GlStateManager.popMatrix();
             textFieldMatch.drawTextBox();
             if (textFieldMatch.getText().equals("")) {
-                mc.ingameGUI.drawString(mc.fontRendererObj, "ex. \"prot, feather\"", x+4, guiTop + 86, ConfigColor.DARK_GRAY.getColor(255));
+                mc.ingameGUI.drawString(mc.fontRendererObj, "ex. \"prot, feather\"", x+4, guiTop + 86, ConfigColor.DARK_GRAY.getColor());
             }
             textFieldExclusions.drawTextBox();
             if (textFieldExclusions.getText().equals("")) {
-                mc.ingameGUI.drawString(mc.fontRendererObj, "ex. \"proj, blast\"", x+4, guiTop + 126, ConfigColor.DARK_GRAY.getColor(255));
+                mc.ingameGUI.drawString(mc.fontRendererObj, "ex. \"proj, blast\"", x+4, guiTop + 126, ConfigColor.DARK_GRAY.getColor());
             }
         }
     }
@@ -73,10 +97,23 @@ public abstract class MixinGuiChest extends GuiContainer {
     @Override
     public void initGui() {
         super.initGui();
+        // don't draw any overlays outside SkyBlock
+        if(!SkyblockAddons.getInstance().getUtils().isOnSkyblock()) {
+            return;
+        }
+
         String guiName = lowerChestInventory.getDisplayName().getUnformattedText();
-        if (guiName.equals("Enchant Item")) inventoryType = EnumUtils.InventoryType.ENCHANTMENT_TABLE;
-        if (guiName.equals("Reforge Item")) inventoryType = EnumUtils.InventoryType.REFORGE_ANVIL;
+        inventoryType = EnumUtils.InventoryType.getCurrentInventoryType(guiName);
+
         if (inventoryType != null) {
+
+            if(inventoryType == EnumUtils.InventoryType.CRAFTING_TABLE) {
+                if(SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.CRAFTING_PATTERNS)) {
+                    craftingPatternSelection = new CraftingPatternSelection(mc, Math.max(guiLeft - CraftingPatternSelection.ICON_SIZE - 2, 10), guiTop + 1);
+                }
+                return;
+            }
+
             int xPos = guiLeft - 160;
             if (xPos<0) {
                 xPos = 20;
@@ -115,12 +152,13 @@ public abstract class MixinGuiChest extends GuiContainer {
             if (text.length() > 0) {
                 textFieldExclusions.setText(text);
             }
+            Keyboard.enableRepeatEvents(true);
         }
     }
 
     @Override
     protected void keyTyped(char typedChar, int keyCode) throws IOException {
-        if (inventoryType != null) {
+        if (inventoryType != null && (inventoryType == EnumUtils.InventoryType.ENCHANTMENT_TABLE || inventoryType == EnumUtils.InventoryType.REFORGE_ANVIL)) {
             if (keyCode != this.mc.gameSettings.keyBindInventory.getKeyCode() || (!textFieldMatch.isFocused() && !textFieldExclusions.isFocused())) {
                 super.keyTyped(typedChar, keyCode);
             }
@@ -140,9 +178,9 @@ public abstract class MixinGuiChest extends GuiContainer {
     @Override
     protected void handleMouseClick(Slot slotIn, int slotId, int clickedButton, int clickType) {
         SkyblockAddons main = SkyblockAddons.getInstance();
+        Container slots = inventorySlots;
         if (main.getUtils().getEnchantmentMatch().size() > 0) {
             if (slotIn != null && !slotIn.inventory.equals(mc.thePlayer.inventory) && slotIn.getHasStack()) {
-                Container slots = inventorySlots;
                 if (slotIn.getSlotIndex() == 13 && inventoryType == EnumUtils.InventoryType.ENCHANTMENT_TABLE) {
                     ItemStack[] enchantBottles = {slots.getSlot(29).getStack(), slots.getSlot(31).getStack(), slots.getSlot(33).getStack()};
                     for (ItemStack bottle : enchantBottles) {
@@ -151,10 +189,14 @@ public abstract class MixinGuiChest extends GuiContainer {
                                 Minecraft mc = Minecraft.getMinecraft();
                                 List<String> toolip = bottle.getTooltip(mc.thePlayer, false);
                                 if (toolip.size() > 2) {
-                                    String enchantLine = toolip.get(2).split(Pattern.quote("* "))[1];
-                                    if (main.getUtils().enchantReforgeMatches(enchantLine)) {
-                                        main.getUtils().playSound("random.orb", 0.1);
-                                        return;
+                                    String[] lines = toolip.get(2).split(Pattern.quote("* "));
+
+                                    if (lines.length > 1) {
+                                        String enchantLine = lines[1];
+                                        if (main.getUtils().enchantReforgeMatches(enchantLine)) {
+                                            main.getUtils().playLoudSound("random.orb", 0.1);
+                                            return;
+                                        }
                                     }
                                 }
                             } else if (bottle.getDisplayName().startsWith(EnumChatFormatting.RED + "Enchant Item")) {
@@ -171,7 +213,7 @@ public abstract class MixinGuiChest extends GuiContainer {
                             String reforge = main.getUtils().getReforgeFromItem(item);
                             if (reforge != null) {
                                 if (main.getUtils().enchantReforgeMatches(reforge)) {
-                                    main.getUtils().playSound("random.orb", 0.1);
+                                    main.getUtils().playLoudSound("random.orb", 0.1);
                                     return;
                                 }
                             }
@@ -180,20 +222,9 @@ public abstract class MixinGuiChest extends GuiContainer {
                 }
             }
         }
-        out:
-        if (slotIn != null && main.getConfigValues().isEnabled(Feature.LOCK_SLOTS) &&
-                main.getUtils().isOnSkyblock()) {
-            int slotNum = slotIn.slotNumber;
-            Container container = mc.thePlayer.openContainer;
-            slotNum -= ((ContainerChest)container).getLowerChestInventory().getSizeInventory()-9;
-            if (slotNum < 9) break out; // for chests
-            if (main.getConfigValues().getLockedSlots().contains(slotNum)) {
-                main.getUtils().playSound("note.bass", 0.5);
-                return;
-            }
-        }
-        if (main.getConfigValues().isEnabled(Feature.STOP_DROPPING_SELLING_RARE_ITEMS) && main.getUtils().isOnSkyblock() &&
-                lowerChestInventory.hasCustomName() && EnumUtils.Merchant.isMerchant(lowerChestInventory.getDisplayName().getUnformattedText())
+
+        if (main.getConfigValues().isEnabled(Feature.STOP_DROPPING_SELLING_RARE_ITEMS) &&
+                lowerChestInventory.hasCustomName() && EnumUtils.SkyblockNPC.isMerchant(lowerChestInventory.getDisplayName().getUnformattedText())
                 && slotIn != null && slotIn.inventory instanceof InventoryPlayer) {
             if (main.getInventoryUtils().shouldCancelDrop(slotIn)) return;
         }
@@ -202,11 +233,15 @@ public abstract class MixinGuiChest extends GuiContainer {
 
     @Override
     protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {
-        super.mouseClicked(mouseX, mouseY, mouseButton);
         if (textFieldMatch != null) {
             textFieldMatch.mouseClicked(mouseX, mouseY, mouseButton);
             textFieldExclusions.mouseClicked(mouseX, mouseY, mouseButton);
         }
+
+        if(craftingPatternSelection != null) {
+            craftingPatternSelection.mouseClicked(mouseX, mouseY, mouseButton);
+        }
+        super.mouseClicked(mouseX, mouseY, mouseButton);
     }
 
     private Backpack backpack = null;
@@ -214,13 +249,29 @@ public abstract class MixinGuiChest extends GuiContainer {
     @Redirect(method = "drawGuiContainerBackgroundLayer", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/GlStateManager;color(FFFF)V", ordinal = 0))
     private void color(float colorRed, float colorGreen, float colorBlue, float colorAlpha) { //Item item, ItemStack stack
         SkyblockAddons main = SkyblockAddons.getInstance();
+
+        // Draw here to make sure it's in the background of the GUI and items overlay it
+        if(inventoryType == EnumUtils.InventoryType.CRAFTING_TABLE
+                && craftingPatternSelection != null) {
+            craftingPatternSelection.draw();
+        }
+
         if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.SHOW_BACKPACK_PREVIEW) &&
                 main.getConfigValues().isEnabled(Feature.MAKE_BACKPACK_INVENTORIES_COLORED)
-        && lowerChestInventory.hasCustomName() && lowerChestInventory.getDisplayName().getUnformattedText().contains("Backpack")) {
-            backpack = Backpack.getFromItem(mc.thePlayer.getHeldItem());
-            if (backpack != null) {
-                BackpackColor color = backpack.getBackpackColor();
-                GlStateManager.color(color.getR(), color.getG(), color.getB(), 1);
+        && lowerChestInventory.hasCustomName()) {
+            if (lowerChestInventory.getDisplayName().getUnformattedText().contains("Backpack")) {
+                backpack = Backpack.getFromItem(mc.thePlayer.getHeldItem());
+                if (backpack != null) {
+                    BackpackColor color = backpack.getBackpackColor();
+                    GlStateManager.color(color.getR(), color.getG(), color.getB(), 1);
+                    return;
+                }
+            } else if (lowerChestInventory.getDisplayName().getUnformattedText().contains("Bank")) {
+                ItemStack item = mc.thePlayer.getHeldItem(); // easter egg question mark
+                if (item != null && item.hasDisplayName() && item.getDisplayName().contains("Piggy Bank")) {
+                    BackpackColor color = BackpackColor.PINK;
+                    GlStateManager.color(color.getR(), color.getG(), color.getB(), 1);
+                }
                 return;
             }
         }

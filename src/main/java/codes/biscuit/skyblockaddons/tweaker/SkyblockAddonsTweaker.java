@@ -74,7 +74,6 @@ public class SkyblockAddonsTweaker implements ITweaker {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-
     }
 
     @Override

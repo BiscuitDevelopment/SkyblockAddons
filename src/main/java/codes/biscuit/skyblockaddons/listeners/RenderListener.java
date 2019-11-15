@@ -7,49 +7,65 @@ import codes.biscuit.skyblockaddons.gui.buttons.ButtonLocation;
 import codes.biscuit.skyblockaddons.utils.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
+import net.minecraft.client.gui.GuiChat;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.item.EntityArmorStand;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.monster.EntityZombie;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.GuiIngameForge;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
+import net.minecraftforge.client.event.RenderLivingEvent;
 import net.minecraftforge.fml.client.GuiNotification;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
+import java.awt.*;
 import java.math.BigDecimal;
-import java.util.Calendar;
-import java.util.Collection;
-import java.util.TimeZone;
+import java.util.List;
+import java.util.*;
 
 import static net.minecraft.client.gui.Gui.icons;
 
 public class RenderListener {
 
     private SkyblockAddons main;
-    private final static ItemStack BONE_ITEM = new ItemStack(Item.getItemById(352));
+
+    public final static ResourceLocation LOCK = new ResourceLocation("skyblockaddons", "lock.png");
+
+    private final ItemStack BONE_ITEM = new ItemStack(Item.getItemById(352));
     private final ResourceLocation BARS = new ResourceLocation("skyblockaddons", "bars.png");
     private final ResourceLocation DEFENCE_VANILLA = new ResourceLocation("skyblockaddons", "defence.png");
     private final ResourceLocation TEXT_ICONS = new ResourceLocation("skyblockaddons", "icons.png");
-    public static final ResourceLocation LOCK = new ResourceLocation("skyblockaddons", "lock.png");
+    private final ResourceLocation IMPERIAL_BARS_FIX = new ResourceLocation("skyblockaddons", "imperialbarsfix.png");
 
     private boolean predictHealth = false;
     private boolean predictMana = false;
+
+    private DownloadInfo downloadInfo;
 
     private Feature subtitleFeature = null;
     private Feature titleFeature = null;
     private String cannotReachMobName = null;
 
+    private long skillFadeOutTime = -1;
+    private EnumUtils.SkillType skill = null;
+    private String skillText = null;
+
     private PlayerListener.GUIType guiToOpen = null;
     private int guiPageToOpen = 1;
-    private EnumUtils.SkyblockAddonsGuiTab guiTabToOpen = EnumUtils.SkyblockAddonsGuiTab.FEATURES;
+    private EnumUtils.GuiTab guiTabToOpen = EnumUtils.GuiTab.FEATURES;
+    private String textToOpen = null;
 
     public RenderListener(SkyblockAddons main) {
         this.main = main;
+        downloadInfo = new DownloadInfo(main);
     }
     /**
      * Render overlays and warnings for clients without labymod.
@@ -57,13 +73,14 @@ public class RenderListener {
     @SubscribeEvent()
     public void onRenderRegular(RenderGameOverlayEvent.Post e) {
         if ((!main.isUsingLabymod() || Minecraft.getMinecraft().ingameGUI instanceof GuiIngameForge)) {
-            if (e.type == RenderGameOverlayEvent.ElementType.EXPERIENCE) {
+            if (e.type == RenderGameOverlayEvent.ElementType.EXPERIENCE || e.type == RenderGameOverlayEvent.ElementType.JUMPBAR) {
                 if (main.getUtils().isOnSkyblock()) {
                     renderOverlays();
                     renderWarnings(e.resolution);
                 } else {
                     renderTimersOnly();
                 }
+                drawUpdateMessage();
             }
         }
     }
@@ -81,6 +98,27 @@ public class RenderListener {
                 renderWarnings(e.resolution);
             } else {
                 renderTimersOnly();
+            }
+            drawUpdateMessage();
+        }
+    }
+
+    @SubscribeEvent()
+    public void onRenderLiving(RenderLivingEvent.Specials.Pre e) {
+        Entity entity = e.entity;
+        if (main.getConfigValues().isEnabled(Feature.MINION_DISABLE_LOCATION_WARNING)) {
+            if (entity.getCustomNameTag().startsWith("§cThis location isn\'t perfect! :(")) {
+                e.setCanceled(true);
+            }
+            if (entity.getCustomNameTag().startsWith("§c/!\\")) {
+                for (Entity listEntity : Minecraft.getMinecraft().theWorld.loadedEntityList) {
+                    if (listEntity.getCustomNameTag().startsWith("§cThis location isn\'t perfect! :(") &&
+                            listEntity.posX == entity.posX && listEntity.posZ == entity.posZ &&
+                            listEntity.posY + 0.375 == entity.posY) {
+                        e.setCanceled(true);
+                        break;
+                    }
+                }
             }
         }
     }
@@ -135,11 +173,14 @@ public class RenderListener {
                 case SUMMONING_EYE_ALERT:
                     message = Message.MESSAGE_SUMMONING_EYE_FOUND;
                     break;
+                case SPECIAL_ZEALOT_ALERT:
+                    message = Message.MESSAGE_SPECIAL_ZEALOT_FOUND;
+                    break;
             }
             if (message != null) {
                 String text = message.getMessage();
                 mc.ingameGUI.getFontRenderer().drawString(text, (float) (-mc.ingameGUI.getFontRenderer().getStringWidth(text) / 2), -20.0F,
-                        main.getConfigValues().getColor(titleFeature).getColor(255), true);
+                        main.getConfigValues().getColor(titleFeature).getColor(), true);
             }
             GlStateManager.popMatrix();
             GlStateManager.popMatrix();
@@ -167,7 +208,7 @@ public class RenderListener {
                     text = message.getMessage();
                 }
                 mc.ingameGUI.getFontRenderer().drawString(text, (float) (-mc.ingameGUI.getFontRenderer().getStringWidth(text) / 2), -23.0F,
-                        main.getConfigValues().getColor(subtitleFeature).getColor(255), true);
+                        main.getConfigValues().getColor(subtitleFeature).getColor(), true);
             }
             GlStateManager.popMatrix();
             GlStateManager.popMatrix();
@@ -181,58 +222,20 @@ public class RenderListener {
         Minecraft mc = Minecraft.getMinecraft();
         if (!(mc.currentScreen instanceof LocationEditGui) && !(mc.currentScreen instanceof GuiNotification)) {
             GlStateManager.disableBlend();
-            if ((main.getConfigValues().isEnabled(Feature.SKELETON_BAR)) && main.getInventoryUtils().isWearingSkeletonHelmet()) {
-                float scale = main.getConfigValues().getGuiScale(Feature.SKELETON_BAR);
-                GlStateManager.pushMatrix();
-                GlStateManager.scale(scale, scale, 1);
-                drawSkeletonBar(scale, mc, null);
-                GlStateManager.popMatrix();
-            }
-            Feature[] bars = {Feature.MANA_BAR, Feature.HEALTH_BAR};
-            for (Feature feature : bars) {
+
+            for (Feature feature : Feature.getGuiFeatures()) {
                 if (main.getConfigValues().isEnabled(feature)) {
+                    if (feature == Feature.SKELETON_BAR && !main.getInventoryUtils().isWearingSkeletonHelmet()) continue;
+                    if (feature == Feature.HEALTH_UPDATES && main.getPlayerListener().getHealthUpdate() == null) continue;
+
                     float scale = main.getConfigValues().getGuiScale(feature);
                     GlStateManager.pushMatrix();
                     GlStateManager.scale(scale, scale, 1);
-                    drawBar(feature, scale, mc);
+                    feature.draw(scale, mc, null);
                     GlStateManager.popMatrix();
                 }
             }
-
-            if (main.getConfigValues().isEnabled(Feature.DEFENCE_ICON)) {
-                float scale = main.getConfigValues().getGuiScale(Feature.DEFENCE_ICON);
-                GlStateManager.pushMatrix();
-                GlStateManager.scale(scale, scale, 1);
-                drawIcon(scale, mc, null);
-                GlStateManager.popMatrix();
-            }
-
-            Feature[] texts = {Feature.DEFENCE_TEXT, Feature.DEFENCE_PERCENTAGE, Feature.MANA_TEXT, Feature.HEALTH_TEXT, Feature.HEALTH_UPDATES
-            , Feature.DARK_AUCTION_TIMER, Feature.MAGMA_BOSS_TIMER};
-            for (Feature feature : texts) {
-                if (main.getConfigValues().isEnabled(feature)) {
-                    if (feature != Feature.HEALTH_UPDATES || main.getPlayerListener().getHealthUpdate() != null) {
-                        float scale = main.getConfigValues().getGuiScale(feature);
-                        GlStateManager.pushMatrix();
-                        GlStateManager.scale(scale, scale, 1);
-                        drawText(feature, scale, mc, null);
-                        GlStateManager.popMatrix();
-                    }
-                }
-            }
-
-            if(main.getConfigValues().isEnabled(Feature.ITEM_PICKUP_LOG)) {
-                float scale = main.getConfigValues().getGuiScale(Feature.ITEM_PICKUP_LOG);
-                GlStateManager.pushMatrix();
-                GlStateManager.scale(scale, scale, 1);
-                drawItemPickupLog(mc, scale, null, null);
-                GlStateManager.popMatrix();
-            }
         }
-    }
-
-    private void drawBar(Feature feature, float scaleMultiplier, Minecraft mc) {
-        drawBar(feature, scaleMultiplier, mc, null);
     }
 
     /**
@@ -240,9 +243,17 @@ public class RenderListener {
      */
     public void drawBar(Feature feature, float scale, Minecraft mc, ButtonLocation buttonLocation) {
         mc.getTextureManager().bindTexture(BARS);
+
+        if (main.getUtils().isUsingOldSkyBlockTexture()) {
+            mc.getTextureManager().bindTexture(IMPERIAL_BARS_FIX);
+        }
+
         // The height and width of this element (box not included)
-        int height = 5;
-        int width = 92;
+        int barHeightExpansion = 2*main.getConfigValues().getSizes(feature).getY();
+        int height = 3+barHeightExpansion;
+
+        int barWidthExpansion = 10*main.getConfigValues().getSizes(feature).getX();
+        int width = 22+barWidthExpansion;
 
         // The fill of the bar from 0 to 1
         float fill;
@@ -252,11 +263,19 @@ public class RenderListener {
             fill = (float) getAttribute(Attribute.HEALTH) / getAttribute(Attribute.MAX_HEALTH);
         }
         if (fill > 1) fill = 1;
-        int filled = (int) (fill * width);
+        int filled = Math.round(fill * width);
 
         float x = main.getConfigValues().getActualX(feature);
         float y = main.getConfigValues().getActualY(feature);
-        int textureY = main.getConfigValues().getColor(feature).ordinal()*10;
+        ConfigColor color = main.getConfigValues().getColor(feature);
+
+        if (feature == Feature.HEALTH_BAR && main.getConfigValues().isEnabled(Feature.CHANGE_BAR_COLOR_FOR_POTIONS)) {
+            if (mc.thePlayer.isPotionActive(19/* Poison */)) {
+                color = ConfigColor.DARK_GREEN;
+            } else if (mc.thePlayer.isPotionActive(20/* Wither */)) {
+                color = ConfigColor.DARK_GRAY;
+            }
+        }
 
         // Put the x & y to scale, remove half the width and height to center this element.
         x/=scale;
@@ -266,21 +285,126 @@ public class RenderListener {
         int intX = Math.round(x);
         int intY = Math.round(y);
         if (buttonLocation == null) {
-            GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-            mc.ingameGUI.drawTexturedModalRect(intX, intY, 0, textureY, width, height);
+            drawModularBar(mc, color, false, intX, intY+barHeightExpansion/2, null,feature,filled, width);
             if (filled > 0) {
-                mc.ingameGUI.drawTexturedModalRect(intX, intY, 0, textureY+5, filled, height);
+                drawModularBar(mc, color, true, intX, intY+barHeightExpansion/2, null,feature,filled, width);
             }
         } else {
             int boxXOne = intX-4;
-            int boxXTwo = intX+width+4;
-            int boxYOne = intY-4;
+            int boxXTwo = intX+width+5;
+            int boxYOne = intY-3;
             int boxYTwo = intY+height+4;
             buttonLocation.checkHoveredAndDrawBox(boxXOne, boxXTwo, boxYOne, boxYTwo, scale);
-            GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-            buttonLocation.drawTexturedModalRect(intX, intY, 0, textureY, width, height);
+            drawModularBar(mc, main.getConfigValues().getColor(feature), false, intX, intY+barHeightExpansion/2, buttonLocation,feature,filled, width);
             if (filled > 0) {
-                buttonLocation.drawTexturedModalRect(intX, intY, 0, textureY+5, filled, height);
+                drawModularBar(mc, main.getConfigValues().getColor(feature), true, intX, intY+barHeightExpansion/2, buttonLocation,feature,filled, width);
+            }
+        }
+    }
+
+    private void drawModularBar(Minecraft mc, ConfigColor color, boolean filled, int x, int y, ButtonLocation buttonLocation, Feature feature, int fillWidth, int maxWidth) {
+        Gui gui = mc.ingameGUI;
+        if (buttonLocation != null) {
+            gui = buttonLocation;
+        }
+        if (color == ConfigColor.BLACK) {
+            GlStateManager.color(0.25F,0.25F,0.25F); // too dark normally
+        } else { // a little darker for contrast
+            GlStateManager.color(((float)color.getR() / 255)*0.9F, ((float)color.getG() / 255)*0.9F, ((float)color.getB() / 255)*0.9F);
+        }
+        CoordsPair sizes = main.getConfigValues().getSizes(feature);
+        if (!filled) fillWidth = maxWidth;
+        drawBarStart(gui,x,y, filled, sizes.getX(), sizes.getY(), fillWidth, color, maxWidth);
+    }
+
+    private void drawBarStart(Gui gui, int x, int y, boolean filled, int barWidth, int barHeight, int fillWidth, ConfigColor color, int maxWidth) {
+        int baseTextureY = filled ? 0 : 6;
+
+//        drawMiddleThreeRows(gui,x+10,y,barHeight,22,baseTextureY,2, fillWidth, 2); // these two lines just fill some gaps in the bar
+//        drawMiddleThreeRows(gui,x+11+(barWidth*9),y,barHeight,22,baseTextureY,2, fillWidth, 2);
+
+        drawAllFiveRows(gui, x, y, barHeight, 0, baseTextureY, 11, fillWidth);
+
+        drawBarSeparators(gui, x+11, y, baseTextureY, barWidth, barHeight, fillWidth);
+
+        if (fillWidth < maxWidth && fillWidth > 0) {
+            GlStateManager.color(((float) color.getR() / 255) * 0.8F, ((float) color.getG() / 255) * 0.8F, ((float) color.getB() / 255) * 0.8F);
+            drawMiddleThreeRows(gui, x + fillWidth, y, barHeight, 11, 6, 2, fillWidth, 2);
+        }
+    }
+
+    private void drawMiddleBarParts(Gui gui, int x, int y, int baseTextureY, int barWidth, int barHeight, int fillWidth) {
+        int endBarX = 0;
+        for (int i = 0; i < barWidth; i++) {
+            endBarX = x+(i*10);
+            drawAllFiveRows(gui, endBarX, y, barHeight, 12, baseTextureY, 9,fillWidth-11-(i*10));
+        }
+        drawBarEnd(gui, endBarX+10, y, baseTextureY, barWidth, barHeight,fillWidth);
+    }
+
+    private void drawBarSeparators(Gui gui, int x, int y, int baseTextureY, int barWidth, int barHeight, int fillWidth) {
+        for (int i = 0; i <= barWidth; i++) {
+            drawMiddleThreeRows(gui,x+(i*10),y,barHeight,11,baseTextureY,1, fillWidth-11-(i*10), 2);
+        }
+        drawMiddleBarParts(gui, x+1, y, baseTextureY, barWidth, barHeight,fillWidth);
+    }
+
+    private void drawBarEnd(Gui gui, int x, int y, int baseTextureY, int barWidth, int barHeight, int fillWidth) {
+        drawAllFiveRows(gui, x, y, barHeight, 22, baseTextureY, 11,fillWidth-11-(barWidth*10));
+    }
+
+    private void drawAllFiveRows(Gui gui, int x, int y, int barHeight, int textureX, int baseTextureY, int width, int fillWidth) {
+        if (fillWidth > width || baseTextureY >= 8) fillWidth = width;
+        gui.drawTexturedModalRect(x, y+1-barHeight, textureX, baseTextureY, fillWidth, 1);
+
+        drawMiddleThreeRows(gui,x,y,barHeight,textureX,baseTextureY,width,fillWidth, 1);
+
+        gui.drawTexturedModalRect(x, y+3+barHeight, textureX, baseTextureY+4, fillWidth, 1);
+    }
+
+    private void drawMiddleThreeRows(Gui gui, int x, int y, int barHeight, int textureX, int baseTextureY,  int width, int fillWidth, int rowHeight) {
+        if (fillWidth > width || baseTextureY >= 8) fillWidth = width;
+        for (int i = 0; i < barHeight; i++) {
+            if (rowHeight == 2) { //this means its drawing bar separators, and its a little different
+                gui.drawTexturedModalRect(x, y-i, textureX, baseTextureY, fillWidth, rowHeight);
+            } else {
+                gui.drawTexturedModalRect(x, y + 1 - i, textureX, baseTextureY + 1, fillWidth, rowHeight);
+            }
+        }
+
+        gui.drawTexturedModalRect(x, y+2, textureX, baseTextureY+2, fillWidth, 1);
+
+        for (int i = 0; i < barHeight; i++) {
+            gui.drawTexturedModalRect(x, y+3+i, textureX, baseTextureY+3, fillWidth, rowHeight);
+        }
+    }
+
+    private void drawUpdateMessage() {
+        EnumUtils.UpdateMessageType messageType = downloadInfo.getMessageType();
+        if (messageType != null) {
+            Minecraft mc = Minecraft.getMinecraft();
+            String[] textList;
+            if (messageType == EnumUtils.UpdateMessageType.PATCH_AVAILABLE || messageType == EnumUtils.UpdateMessageType.MAJOR_AVAILABLE) {
+                textList = downloadInfo.getMessageType().getMessages(downloadInfo.getNewestVersion());
+            } else if (messageType == EnumUtils.UpdateMessageType.DOWNLOADING) {
+                textList = downloadInfo.getMessageType().getMessages(String.valueOf(downloadInfo.getDownloadedBytes()), String.valueOf(downloadInfo.getTotalBytes()));
+            } else if (messageType == EnumUtils.UpdateMessageType.DOWNLOAD_FINISHED) {
+                textList = downloadInfo.getMessageType().getMessages(downloadInfo.getOutputFileName());
+            } else {
+                textList = downloadInfo.getMessageType().getMessages();
+            }
+            int halfWidth = new ScaledResolution(mc).getScaledWidth() / 2;
+            Gui.drawRect(halfWidth - 110, 20, halfWidth + 110, 53+textList.length*10, ConfigColor.RED.getColor(127));
+            String text = "SkyblockAddons";
+            GlStateManager.pushMatrix();
+            float scale = 1.5F;
+            GlStateManager.scale(scale, scale, 1);
+            mc.fontRendererObj.drawString(text, (int) (halfWidth / scale) - mc.fontRendererObj.getStringWidth(text) / 2, (int) (30 / scale), ConfigColor.WHITE.getColor());
+            GlStateManager.popMatrix();
+            int y = 45;
+            for (String line : textList) {
+                mc.fontRendererObj.drawString(line, halfWidth - mc.fontRendererObj.getStringWidth(line) / 2, y, ConfigColor.WHITE.getColor());
+                y+=10;
             }
         }
     }
@@ -295,7 +419,7 @@ public class RenderListener {
         if (!(mc.currentScreen instanceof LocationEditGui)) {
             for (Entity listEntity : mc.theWorld.loadedEntityList) {
                 if (listEntity instanceof EntityItem &&
-                        listEntity.ridingEntity instanceof EntityZombie && listEntity.ridingEntity.isInvisible() && listEntity.getDistanceToEntity(mc.thePlayer) <= 8) {
+                        listEntity.ridingEntity instanceof EntityArmorStand && listEntity.ridingEntity.isInvisible() && listEntity.getDistanceToEntity(mc.thePlayer) <= 8) {
                     bones++;
                 }
             }
@@ -372,7 +496,8 @@ public class RenderListener {
     public void drawText(Feature feature, float scale, Minecraft mc, ButtonLocation buttonLocation) {
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         String text;
-        int color = main.getConfigValues().getColor(feature).getColor(255);
+        int color = main.getConfigValues().getColor(feature).getColor();
+        float textAlpha = 1;
         if (feature == Feature.MANA_TEXT) {
             text = getAttribute(Attribute.MANA) + "/" + getAttribute(Attribute.MAX_MANA);
         } else if (feature == Feature.HEALTH_TEXT) {
@@ -381,25 +506,31 @@ public class RenderListener {
             text = String.valueOf(getAttribute(Attribute.DEFENCE));
         } else if (feature == Feature.DEFENCE_PERCENTAGE) {
             double doubleDefence = (double)getAttribute(Attribute.DEFENCE);
-            double percentage = ((doubleDefence/100)/((doubleDefence/100)+1))*100; //Formula taken from https://hypixel.net/threads/how-armor-works-and-the-diminishing-return-of-higher-defence.2178928/
+            double percentage = ((doubleDefence/100)/((doubleDefence/100)+1))*100; //Taken from https://hypixel.net/threads/how-armor-works-and-the-diminishing-return-of-higher-defence.2178928/
             BigDecimal bigDecimal = new BigDecimal(percentage).setScale(1, BigDecimal.ROUND_HALF_UP);
             text = bigDecimal.toString()+"%";
+        } else if (feature == Feature.SPEED_PERCENTAGE) {
+            String walkSpeed = String.valueOf(Minecraft.getMinecraft().thePlayer.capabilities.getWalkSpeed()*1000);
+            text = walkSpeed.substring(0, walkSpeed.length() >= 3 ? 3 : walkSpeed.length());
+
+            if (text.endsWith(".")) text = text.substring(0, text.indexOf('.')); //remove trailing periods
+
+            text += "%";
         } else if (feature == Feature.HEALTH_UPDATES) {
             Integer healthUpdate = main.getPlayerListener().getHealthUpdate();
             if (buttonLocation == null) {
                 if (healthUpdate != null) {
-                    color = healthUpdate > 0 ? ConfigColor.GREEN.getColor(255) : ConfigColor.RED.getColor(255);
+                    color = healthUpdate > 0 ? ConfigColor.GREEN.getColor() : ConfigColor.RED.getColor();
                     text = (healthUpdate > 0 ? "+" : "-") + Math.abs(healthUpdate);
                 } else {
                     return;
                 }
             } else {
                 text = "+123";
-                color = ConfigColor.GREEN.getColor(255);
+                color = ConfigColor.GREEN.getColor();
             }
         } else if (feature == Feature.DARK_AUCTION_TIMER) { // The timezone of the server, to avoid problems with like timezones that are 30 minutes ahead or whatnot.
-            Calendar nextDarkAuction = Calendar.getInstance(TimeZone.getTimeZone("America/New_York"));
-//            nextDarkAuction.setTimeInMillis(System.currentTimeMillis());
+            Calendar nextDarkAuction = Calendar.getInstance(TimeZone.getTimeZone("EST"));
             if (nextDarkAuction.get(Calendar.MINUTE) >= 55) {
                 nextDarkAuction.add(Calendar.HOUR_OF_DAY, 1);
             }
@@ -444,6 +575,22 @@ public class RenderListener {
                 }
             }
             text = magmaBuilder.toString();
+        } else if (feature == Feature.SKILL_DISPLAY) {
+            if (buttonLocation == null) {
+                text = skillText;
+                if (text == null) return;
+            } else {
+                text = "+10 (20,000/50,000)";
+            }
+            if (buttonLocation == null) {
+                int remainingTime = (int) (skillFadeOutTime - System.currentTimeMillis());
+                if (remainingTime < 0) {
+                    if (remainingTime < -2000) remainingTime = -2000;
+
+                    textAlpha = (float) 1 - ((float) -remainingTime / 2000);
+                    color = main.getConfigValues().getColor(feature).getColor(textAlpha * 255 >= 4 ? textAlpha * 255 : 4); // so it fades out, 0.016 is the minimum alpha
+                }
+            }
         } else {
             return;
         }
@@ -463,7 +610,7 @@ public class RenderListener {
             int boxXTwo = intX+width+4;
             int boxYOne = intY-4;
             int boxYTwo = intY+height+4;
-            if (feature == Feature.MAGMA_BOSS_TIMER || feature == Feature.DARK_AUCTION_TIMER) {
+            if (feature == Feature.MAGMA_BOSS_TIMER || feature == Feature.DARK_AUCTION_TIMER || feature == Feature.SKILL_DISPLAY) {
                 boxXOne-=18;
                 boxYOne-=2;
             }
@@ -471,26 +618,109 @@ public class RenderListener {
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         }
         if (main.getConfigValues().getTextStyle() == EnumUtils.TextStyle.BLACK_SHADOW) {
-            mc.fontRendererObj.drawString(text, intX + 1, intY, 0);
-            mc.fontRendererObj.drawString(text, intX - 1, intY, 0);
-            mc.fontRendererObj.drawString(text, intX, intY + 1, 0);
-            mc.fontRendererObj.drawString(text, intX, intY - 1, 0);
+            GlStateManager.enableBlend();
+            int colorBlack = new Color(0,0,0, textAlpha > 0.016 ? textAlpha : 0.016F).getRGB();
+            mc.fontRendererObj.drawString(text, intX + 1, intY, colorBlack);
+            mc.fontRendererObj.drawString(text, intX - 1, intY, colorBlack);
+            mc.fontRendererObj.drawString(text, intX, intY + 1, colorBlack);
+            mc.fontRendererObj.drawString(text, intX, intY - 1, colorBlack);
             mc.fontRendererObj.drawString(text, intX, intY, color);
         } else {
             mc.ingameGUI.drawString(mc.fontRendererObj, text, intX, intY, color);
         }
-        mc.getTextureManager().bindTexture(TEXT_ICONS);
         GlStateManager.color(1,1,1,1);
         if (feature == Feature.DARK_AUCTION_TIMER) {
+            mc.getTextureManager().bindTexture(TEXT_ICONS);
             Gui.drawModalRectWithCustomSizedTexture(intX-18, intY-5, 16, 0, 16,16,32,32);
         } else if (feature == Feature.MAGMA_BOSS_TIMER) {
+            mc.getTextureManager().bindTexture(TEXT_ICONS);
             Gui.drawModalRectWithCustomSizedTexture(intX-18, intY-5, 0, 0, 16,16,32,32);
+        } else if (feature == Feature.SKILL_DISPLAY && ((skill != null && skill.getItem() != null) || buttonLocation != null) ) {
+            GlStateManager.enableRescaleNormal();
+            RenderHelper.enableGUIStandardItemLighting();
+            if (!(mc.currentScreen instanceof GuiChat)) {
+                if (buttonLocation != null || textAlpha > 0.1) {
+                    mc.getRenderItem().renderItemIntoGUI(buttonLocation == null ? skill.getItem() : EnumUtils.SkillType.FARMING.getItem(),intX - 18, intY - 5);
+                }
+            }
+            RenderHelper.disableStandardItemLighting();
+            GlStateManager.disableRescaleNormal();
         }
     }
 
-    public void drawItemPickupLog(Minecraft mc, float scale, Collection<ItemDiff> dummyLog, ButtonLocation buttonLocation) {
+    private static final SlayerArmorProgress[] DUMMY_PROGRESSES = new SlayerArmorProgress[]{new SlayerArmorProgress(new ItemStack(Items.diamond_boots)),
+            new SlayerArmorProgress(new ItemStack(Items.chainmail_leggings)), new SlayerArmorProgress(new ItemStack(Items.diamond_chestplate)), new SlayerArmorProgress(new ItemStack(Items.leather_helmet))};
+
+    public void drawRevenantIndicator(float scale, Minecraft mc, ButtonLocation buttonLocation) {
+        float x = main.getConfigValues().getActualX(Feature.SLAYER_INDICATOR);
+        float y = main.getConfigValues().getActualY(Feature.SLAYER_INDICATOR);
+
+        int longest = -1;
+        SlayerArmorProgress[] progresses = main.getInventoryUtils().getSlayerArmorProgresses();
+        if (buttonLocation != null) progresses = DUMMY_PROGRESSES;
+        for (SlayerArmorProgress progress : progresses) {
+            if (progress == null) continue;
+
+            int textWidth = mc.fontRendererObj.getStringWidth(progress.getProgressText());
+            if (textWidth > longest) {
+                longest = textWidth;
+            }
+        }
+        if (longest == -1) return;
+
+        int height = 15 * 4;
+        int width = longest + 15;
+        x-=Math.round(width*scale/2);
+        y-=Math.round(height*scale/2);
+        x/=scale;
+        y/=scale;
+        int intX = Math.round(x);
+        int intY = Math.round(y);
+        if (buttonLocation != null) {
+            int boxXOne = intX-4;
+            int boxXTwo = intX+width+4;
+            int boxYOne = intY-4;
+            int boxYTwo = intY+height+4;
+            buttonLocation.checkHoveredAndDrawBox(boxXOne, boxXTwo, boxYOne, boxYTwo, scale);
+            GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+        }
+
+        EnumUtils.AnchorPoint anchorPoint = main.getConfigValues().getAnchorPoint(Feature.SLAYER_INDICATOR);
+        boolean downwards = (anchorPoint == EnumUtils.AnchorPoint.TOP_LEFT || anchorPoint == EnumUtils.AnchorPoint.TOP_RIGHT);
+
+        int drawnCount = 0;
+        for (int armorPiece = 3; armorPiece >= 0; armorPiece--) {
+            SlayerArmorProgress progress = progresses[downwards ? armorPiece : 3-armorPiece];
+            if (progress == null) continue;
+
+            int fixedY;
+            if (downwards) {
+                fixedY = intY + drawnCount * 15;
+            } else {
+                fixedY = (intY+45) - drawnCount * 15;
+            }
+            drawItemStack(mc, progress.getItemStack(), intX-2, fixedY);
+            main.getUtils().drawString(mc, progress.getProgressText(), intX + 17, fixedY + 5, 0xFFFFFFFF);
+            drawnCount++;
+        }
+    }
+
+
+    private void drawItemStack(Minecraft mc, ItemStack item, int x, int y) {
+        RenderHelper.enableGUIStandardItemLighting();
+        mc.getRenderItem().renderItemIntoGUI(item, x, y);
+        RenderHelper.disableStandardItemLighting();
+    }
+
+    private static List<ItemDiff> DUMMY_PICKUP_LOG = new ArrayList<>(Arrays.asList(new ItemDiff(EnumChatFormatting.DARK_PURPLE + "Forceful Ember Chestplate", 1),
+            new ItemDiff("Boat", -1), new ItemDiff(EnumChatFormatting.BLUE + "Aspect of the End", 1)));
+
+    public void drawItemPickupLog(Minecraft mc, float scale, ButtonLocation buttonLocation) {
         float x = main.getConfigValues().getActualX(Feature.ITEM_PICKUP_LOG);
         float y = main.getConfigValues().getActualY(Feature.ITEM_PICKUP_LOG);
+
+        EnumUtils.AnchorPoint anchorPoint = main.getConfigValues().getAnchorPoint(Feature.ITEM_PICKUP_LOG);
+        boolean downwards = anchorPoint == EnumUtils.AnchorPoint.TOP_RIGHT || anchorPoint == EnumUtils.AnchorPoint.TOP_LEFT;
 
         int height = 8*3;
         int width = mc.fontRendererObj.getStringWidth("+ 1x Forceful Ember Chestplate");
@@ -500,7 +730,7 @@ public class RenderListener {
         y/=scale;
         int intX = Math.round(x);
         int intY = Math.round(y);
-        if (dummyLog != null) {
+        if (buttonLocation != null) {
             int boxXOne = intX-4;
             int boxXTwo = intX+width+4;
             int boxYOne = intY-4;
@@ -510,27 +740,19 @@ public class RenderListener {
         }
         int i = 0;
         Collection<ItemDiff> log = main.getInventoryUtils().getItemPickupLog();
-        if (dummyLog != null) {
-            log = dummyLog;
+        if (buttonLocation != null) {
+            log = DUMMY_PICKUP_LOG;
         }
         for (ItemDiff itemDiff : log) {
-            String text = String.format("%s %sx \u00A7r%s", itemDiff.getAmount() > 0 ? "\u00A7a+":"\u00A7c-",
+            String text = String.format("%s %sx §r%s", itemDiff.getAmount() > 0 ? "§a+":"§c-",
                     Math.abs(itemDiff.getAmount()), itemDiff.getDisplayName());
-            drawString(mc, text, intX, intY+(i*mc.fontRendererObj.FONT_HEIGHT), ConfigColor.WHITE.getColor(255));
+            int stringY = intY+(i*mc.fontRendererObj.FONT_HEIGHT);
+            if (!downwards) {
+                stringY = intY-(i*mc.fontRendererObj.FONT_HEIGHT);
+                stringY += 18;
+            }
+            main.getUtils().drawString(mc, text, intX, stringY, ConfigColor.WHITE.getColor());
             i++;
-        }
-    }
-
-    private void drawString(Minecraft mc, String text, int x, int y, int color) {
-        if (main.getConfigValues().getTextStyle() == EnumUtils.TextStyle.BLACK_SHADOW) {
-            String strippedText = main.getUtils().stripColor(text);
-            mc.fontRendererObj.drawString(strippedText, x + 1, y, 0);
-            mc.fontRendererObj.drawString(strippedText, x - 1, y, 0);
-            mc.fontRendererObj.drawString(strippedText, x, y + 1, 0);
-            mc.fontRendererObj.drawString(strippedText, x, y - 1, 0);
-            mc.fontRendererObj.drawString(text, x, y, color);
-        } else {
-            mc.ingameGUI.drawString(mc.fontRendererObj, text, x, y, color);
         }
     }
 
@@ -552,6 +774,9 @@ public class RenderListener {
                 if (main.getConfigValues().isEnabled(Feature.HIDE_HEALTH_BAR)) {
                     GuiIngameForge.renderHealth = false;
                 }
+                if (main.getConfigValues().isEnabled(Feature.HIDE_PET_HEALTH_BAR)) {
+                    GuiIngameForge.renderHealthMount = false;
+                }
             } else {
                 if (main.getConfigValues().isEnabled(Feature.HIDE_HEALTH_BAR)) {
                     GuiIngameForge.renderHealth = true;
@@ -565,7 +790,12 @@ public class RenderListener {
     @SubscribeEvent()
     public void onRender(TickEvent.RenderTickEvent e) {
         if (guiToOpen == PlayerListener.GUIType.MAIN) {
-            Minecraft.getMinecraft().displayGuiScreen(new SkyblockAddonsGui(main, guiPageToOpen, guiTabToOpen));
+            if (textToOpen == null) {
+                Minecraft.getMinecraft().displayGuiScreen(new SkyblockAddonsGui(main, guiPageToOpen, guiTabToOpen));
+            } else {
+                Minecraft.getMinecraft().displayGuiScreen(new SkyblockAddonsGui(main, guiPageToOpen, guiTabToOpen, textToOpen));
+                textToOpen = null;
+            }
         } else if (guiToOpen == PlayerListener.GUIType.EDIT_LOCATIONS) {
             Minecraft.getMinecraft().displayGuiScreen(new LocationEditGui(main, guiPageToOpen, guiTabToOpen));
         }
@@ -597,10 +827,15 @@ public class RenderListener {
         this.titleFeature = titleFeature;
     }
 
-    public void setGuiToOpen(PlayerListener.GUIType guiToOpen, int page, EnumUtils.SkyblockAddonsGuiTab tab) {
+    public void setGuiToOpen(PlayerListener.GUIType guiToOpen, int page, EnumUtils.GuiTab tab) {
         this.guiToOpen = guiToOpen;
-        this.guiPageToOpen = page;
-        this.guiTabToOpen = tab;
+        guiPageToOpen = page;
+        guiTabToOpen = tab;
+    }
+
+    public void setGuiToOpen(PlayerListener.GUIType guiToOpen, int page, EnumUtils.GuiTab tab, String text) {
+        setGuiToOpen(guiToOpen,page,tab);
+        textToOpen = text;
     }
 
     public void setSubtitleFeature(Feature subtitleFeature) {
@@ -609,5 +844,21 @@ public class RenderListener {
 
     Feature getTitleFeature() {
         return titleFeature;
+    }
+
+    public DownloadInfo getDownloadInfo() {
+        return downloadInfo;
+    }
+
+    void setSkill(String skill) {
+        this.skill = EnumUtils.SkillType.getFromString(skill);
+    }
+
+    public void setSkillText(String skillText) {
+        this.skillText = skillText;
+    }
+
+    public void setSkillFadeOutTime(long skillFadeOutTime) {
+        this.skillFadeOutTime = skillFadeOutTime;
     }
 }

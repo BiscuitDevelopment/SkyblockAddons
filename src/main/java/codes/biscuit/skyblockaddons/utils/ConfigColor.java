@@ -39,6 +39,10 @@ public enum ConfigColor {
         return chatFormatting;
     }
 
+    public int getColor() {
+        return getColor(255);
+    }
+
     /**
      *
      * @param alpha Alpha value from 0 to 255
@@ -65,5 +69,10 @@ public enum ConfigColor {
             nextColor = 0;
         }
         return values()[nextColor];
+    }
+
+    @Override
+    public String toString() {
+        return chatFormatting.toString();
     }
 }

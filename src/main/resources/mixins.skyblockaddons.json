@@ -17,9 +17,9 @@
     "MixinGuiInventory",
     "MixinTileEntityEnderChestRenderer",
     "MixinRendererLivingEntity",
-    "MixinGuiHopper",
-    "MixinGuiDispenser",
-    "MixinGuiFurnace",
-    "MixinGuiBeacon"
+    "MixinItem",
+    "MixinGuiNewChat",
+    "MixinEntityLayerCustomHead",
+    "MixinMinecraft"
   ]
 }

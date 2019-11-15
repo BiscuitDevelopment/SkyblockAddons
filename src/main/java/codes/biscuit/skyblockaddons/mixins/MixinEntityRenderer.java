@@ -3,15 +3,18 @@ package codes.biscuit.skyblockaddons.mixins;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.Feature;
+import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.EntityRenderer;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItemFrame;
 import net.minecraft.util.Vec3;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
 import java.util.List;
@@ -30,6 +33,14 @@ public class MixinEntityRenderer {
         removeEntities(list);
     }
 
+    @Inject(method = "getNightVisionBrightness", at = @At("HEAD"), cancellable = true)
+    private void preventBlink(EntityLivingBase p_getNightVisionBrightness_1_, float p_getNightVisionBrightness_2_, CallbackInfoReturnable<Float> cir) {
+        SkyblockAddons main = SkyblockAddons.getInstance();
+        if (main.getConfigValues().isEnabled(Feature.AVOID_BLINKING_NIGHT_VISION)) {
+            cir.setReturnValue(1.0F);
+        }
+    }
+
     private void removeEntities(List<Entity> list) {
         SkyblockAddons main = SkyblockAddons.getInstance();
         if (main.getUtils().isOnSkyblock()) {
@@ -37,7 +48,7 @@ public class MixinEntityRenderer {
                 list.removeIf(listEntity -> listEntity instanceof EntityItemFrame);
             }
             if (main.getConfigValues().isEnabled(Feature.HIDE_AUCTION_HOUSE_PLAYERS)) {
-                list.removeIf(EnumUtils.SkyblockNPC::isNearNPC);
+                list.removeIf((entity -> entity instanceof EntityOtherPlayerMP && EnumUtils.SkyblockNPC.isNearNPC(entity)));
             }
         }
     }

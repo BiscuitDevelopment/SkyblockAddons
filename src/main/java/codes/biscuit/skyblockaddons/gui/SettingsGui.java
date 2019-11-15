@@ -29,7 +29,7 @@ public class SettingsGui extends GuiScreen {
     private int displayCount;
     private Feature feature;
     private int lastPage;
-    private EnumUtils.SkyblockAddonsGuiTab lastTab;
+    private EnumUtils.GuiTab lastTab;
     private boolean closingGui = false;
     private Set<EnumUtils.FeatureSetting> settings;
 
@@ -39,7 +39,7 @@ public class SettingsGui extends GuiScreen {
      * The main gui, opened with /sba.
      */
     SettingsGui(SkyblockAddons main, Feature feature, int page,
-                int lastPage, EnumUtils.SkyblockAddonsGuiTab lastTab, Set<EnumUtils.FeatureSetting> settings) {
+                int lastPage, EnumUtils.GuiTab lastTab, Set<EnumUtils.FeatureSetting> settings) {
         this.main = main;
         this.feature = feature;
         this.page = page;
@@ -66,7 +66,7 @@ public class SettingsGui extends GuiScreen {
             for (Language language : Language.values()) {
                 if (skip == 0) {
                     if (language == Language.ENGLISH) continue;
-                    if (language == Language.ARABIC) {
+                    if (language == Language.CHINESE_TRADITIONAL) {
                         addLanguageButton(Language.ENGLISH);
                     }
                     addLanguageButton(language);
@@ -83,9 +83,11 @@ public class SettingsGui extends GuiScreen {
         addTabs();
     }
 
+    @SuppressWarnings("IntegerDivisionInFloatingPointContext")
     private void addTabs() {
+        if (true) return;
         int collumn = 1;
-        for (EnumUtils.SkyblockAddonsGuiTab loopTab : EnumUtils.SkyblockAddonsGuiTab.values()) {
+        for (EnumUtils.GuiTab loopTab : EnumUtils.GuiTab.values()) {
             if (lastTab != loopTab) {
                 String text = "";
                 switch (loopTab) {
@@ -174,7 +176,7 @@ public class SettingsGui extends GuiScreen {
         }
         super.drawScreen(mouseX, mouseY, partialTicks); // Draw buttons.
         if (feature == Feature.LANGUAGE) {
-            main.getConfigValues().loadLanguageFile();
+            main.getConfigValues().loadLanguageFile(false);
         }
     }
 
@@ -186,7 +188,8 @@ public class SettingsGui extends GuiScreen {
         if (abstractButton instanceof ButtonLanguage) {
             Language language = ((ButtonLanguage)abstractButton).getLanguage();
             main.getConfigValues().setLanguage(language);
-            main.getConfigValues().loadLanguageFile();
+            main.getConfigValues().loadLanguageFile(true);
+            main.loadKeyBindingDescriptions();
             returnToGui();
         } else if (abstractButton instanceof ButtonSwitchTab) {
             ButtonSwitchTab tab = (ButtonSwitchTab)abstractButton;
@@ -303,10 +306,28 @@ public class SettingsGui extends GuiScreen {
             x = halfWidth - (boxWidth / 2);
             y = getRowHeightSetting(row);
             buttonList.add(new ButtonToggleTitle(x, y, Message.SETTING_MAKE_BACKPACK_INVENTORIES_COLORED.getMessage(), main, Feature.MAKE_BACKPACK_INVENTORIES_COLORED));
+        } else if (setting == EnumUtils.FeatureSetting.CHANGE_BAR_COLOR_WITH_POTIONS) {
+            boxWidth = 31;
+            x = halfWidth - (boxWidth / 2);
+            y = getRowHeightSetting(row);
+            buttonList.add(new ButtonToggleTitle(x, y, Message.SETTING_CHANGE_BAR_COLOR_WITH_POTIONS.getMessage(), main, Feature.CHANGE_BAR_COLOR_FOR_POTIONS));
         } else if (setting == EnumUtils.FeatureSetting.BACKPACK_STYLE) {
             boxWidth = 140;
             x = halfWidth-(boxWidth/2);
             buttonList.add(new ButtonSolid(x, y, 140, 20, Message.SETTING_BACKPACK_STYLE.getMessage(), main, feature));
+        } else if (setting == EnumUtils.FeatureSetting.ENABLE_MESSAGE_WHEN_ACTION_PREVENTED) {
+            boxWidth = 31;
+            x = halfWidth - (boxWidth / 2);
+
+            // Don't forget to add another "else if" when pulling the nether feature
+            Feature settingFeature = null;
+            if (feature == Feature.ONLY_MINE_ORES_DEEP_CAVERNS) {
+                settingFeature = Feature.ENABLE_MESSAGE_WHEN_MINING_DEEP_CAVERNS;
+            } else if (feature == Feature.AVOID_BREAKING_STEMS) {
+                settingFeature = Feature.ENABLE_MESSAGE_WHEN_BREAKING_STEMS;
+            }
+
+            buttonList.add(new ButtonToggleTitle(x, y, Message.SETTING_ENABLE_MESSAGE_WHEN_ACTION_PREVENTED.getMessage(), main, settingFeature));
         }
         row++;
     }
@@ -319,7 +340,7 @@ public class SettingsGui extends GuiScreen {
 
     private double getRowHeightSetting(double row) {
         row--;
-        return 130+(row*35); //height*(0.18+(row*0.08));
+        return 140+(row*35); //height*(0.18+(row*0.08));
     }
 
     @Override
