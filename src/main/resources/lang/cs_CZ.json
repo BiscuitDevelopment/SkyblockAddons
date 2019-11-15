@@ -79,11 +79,11 @@
     "speedPercentage": "Procenta rychlosti",
     "collectionDisplay": "Zobrazení postupu skillů",
     "onlyMineOresDeepCaverns": "Těžit rudy pouze v Deep Caverns",
-    "onlyMineValuablesNether": "Only Mine Valuables in the Nether",
+    "onlyMineValuablesNether": "Pouze těžit cennosti v Netheru",
     "revenantIndicator": "Ukazatel Postupu Zabijáckého Brnění",
     "specialZealotAlert": "Speciální Zealot Upozornění",
-    "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented",
-    "hidePetHealthBar": "Hide Pet Health Bar"
+    "enableMessageWhenActionPrevented": "Ukázat zprávu, když je akce zablokovaná",
+    "hidePetHealthBar": "Skrýt ukazatel zdraví mazlíčka"
   },
   "messages": {
     "dropConfirmation": "Vyhoď tento item pro vyhození!",
@@ -126,7 +126,7 @@
     "anvilUses": "Použití kovadliny: %uses%",
     "specialZealotFound": "Specialní Zealot!",
     "blockIncompletePatterns": "Blokovat Vyrábění Neúplných Vzorů (doporučeno)",
-    "searchFeatures": "Search features",
-    "downloadingUpdateFile": "Downloading update file..."
+    "searchFeatures": "Vyhledat vlastnosti",
+    "downloadingUpdateFile": "Stahování souboru aktualizací..."
   }
 }
