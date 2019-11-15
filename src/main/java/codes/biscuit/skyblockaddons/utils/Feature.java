@@ -135,7 +135,7 @@ public enum Feature {
         return id;
     }
 
-    private Set<Integer> notFeatureIDs = Sets.newHashSet(14, 17, 18, 36, 43, 46, 60, 61, 62);
+    private Set<Integer> notFeatureIDs = Sets.newHashSet(14, 17, 18, 36, 43, 46, 60, 61, 62, 65);
 
     public boolean isActualFeature() {
         return id != -1 && message != null && getMessage() != null && !notFeatureIDs.contains(id);
