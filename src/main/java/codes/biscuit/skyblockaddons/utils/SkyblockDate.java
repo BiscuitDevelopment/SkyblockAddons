@@ -7,14 +7,14 @@ public class SkyblockDate {
 
     private SkyblockMonth month;
     private MutableInt day = new MutableInt();
-    private MutableInt hour = new MutableInt();
-    private MutableInt minute = new MutableInt();
+    private String hour;
+    private String minute;
 
-    SkyblockDate(SkyblockMonth month, int day, int hour, int minute) {
+    SkyblockDate(SkyblockMonth month, int day, String hour, String minute) {
         this.month = month;
         this.day.setValue(day);
-        this.hour.setValue(hour);
-        this.minute.setValue(minute);
+        this.hour = hour;
+        this.minute = minute;
     }
 
     public SkyblockMonth getMonth() {
@@ -25,24 +25,24 @@ public class SkyblockDate {
         return day.getValue();
     }
 
-    public int getHour() {
-        return hour.getValue();
+    public String getHour() {
+        return hour;
     }
 
-    public int getMinute() {
-        return minute.getValue();
+    public String getMinute() {
+        return minute;
     }
 
     void setDay(int day) {
         this.day.setValue(day);
     }
 
-    void setHour(int hour) {
-        this.hour.setValue(hour);
+    void setHour(String hour) {
+        this.hour = hour;
     }
 
-    void setMinute(int minute) {
-        this.minute.setValue(minute);
+    void setMinute(String minute) {
+        this.minute = minute;
     }
 
     void setMonth(SkyblockMonth month) {
