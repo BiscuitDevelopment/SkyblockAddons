@@ -81,7 +81,7 @@ public class Utils {
     private boolean playingSound = false;
     private boolean copyNBT = false;
     private String serverID = "";
-    private SkyblockDate currentDate = new SkyblockDate(SkyblockDate.SkyblockMonth.EARLY_WINTER, 1, 1, 1);
+    private SkyblockDate currentDate = new SkyblockDate(SkyblockDate.SkyblockMonth.EARLY_WINTER, 1, "1", "1");
     private int lastHoveredSlot = -1;
 
     private boolean fadingIn;
@@ -159,9 +159,9 @@ public class Utils {
                                 currentDate.setDay(day);
                                 if (timeString != null) {
                                     String[] timeSplit = timeString.split(Pattern.quote(":"));
-                                    int hour = Integer.valueOf(timeSplit[0]);
+                                    String hour = timeSplit[0];
                                     currentDate.setHour(hour);
-                                    int minute = Integer.valueOf(timeSplit[1]);
+                                    String minute = timeSplit[1];
                                     currentDate.setMinute(minute);
                                 }
                             } catch (IndexOutOfBoundsException | NumberFormatException ignored) {}
