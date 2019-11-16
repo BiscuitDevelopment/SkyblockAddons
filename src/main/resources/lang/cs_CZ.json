@@ -117,16 +117,16 @@
     },
     "slotLocked": "Tento slot je uzamčen!",
     "summoningEyeFound": "Vyvolávací oko!",
-    "cancelledStemBreak": "Mód SkyblockAddons tě zastavil před zničením tohoto blocku. Použil svoji prázdnou ruku aby jsi to zničil.",
+    "cancelledStemBreak": "Mód SkyblockAddons tě zastavil před zničením tohoto bloku. Použij svoji prázdnou ruku abys to zničil.",
     "cancelledProfileOpening": "SkyblockAddons vám zabránil otevřít profil hráče při držení luku.",
     "cancelledDropping": "SkyblockAddons vám zabránil vyhodit tento vzácný předmět nebo nástroj z vašeho hotbaru.",
     "clickMoreTimes": "Klikněte/vyhoďte tento předmět %times%-krát, pokud to chcete opravdu udělat.",
     "cancelledDeepCaverns": "Funkce SkyblockAddons vás zastavila před zničením tohoto bloku.",
-    "featureDisabled": "Vlsatnost je vypnuta",
+    "featureDisabled": "Vlastnost je vypnuta",
     "anvilUses": "Použití kovadliny: %uses%",
     "specialZealotFound": "Specialní Zealot!",
     "blockIncompletePatterns": "Blokovat Vyrábění Neúplných Vzorů (doporučeno)",
     "searchFeatures": "Vyhledat vlastnosti",
-    "downloadingUpdateFile": "Stahování souboru aktualizací..."
+    "downloadingUpdateFile": "Stahuji aktualizační soubor..."
   }
 }
