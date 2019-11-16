@@ -52,6 +52,9 @@ public class RenderListener {
 
     private Feature subtitleFeature = null;
     private Feature titleFeature = null;
+
+    private boolean isFewArrowsLeftAlert = false;
+
     private String cannotReachMobName = null;
 
     private long skillFadeOutTime = -1;
@@ -175,6 +178,13 @@ public class RenderListener {
                     break;
                 case SPECIAL_ZEALOT_ALERT:
                     message = Message.MESSAGE_SPECIAL_ZEALOT_FOUND;
+                    break;
+                case NO_ARROWS_LEFT_ALERT:
+                    if (isFewArrowsLeftAlert) {
+                        message = Message.MESSAGE_ONLY_FEW_ARROWS_LEFT;
+                    } else {
+                        message = Message.MESSAGE_NO_ARROWS_LEFT;
+                    }
                     break;
             }
             if (message != null) {
@@ -825,6 +835,13 @@ public class RenderListener {
 
     public void setTitleFeature(Feature titleFeature) {
         this.titleFeature = titleFeature;
+        if (titleFeature == null) {
+            this.isFewArrowsLeftAlert = false;
+        }
+    }
+
+    void setFewArrowsLeftAlert() {
+        this.isFewArrowsLeftAlert = true;
     }
 
     public void setGuiToOpen(PlayerListener.GUIType guiToOpen, int page, EnumUtils.GuiTab tab) {

@@ -83,7 +83,8 @@
     "revenantIndicator": "Slayer装備の進捗を表示",
     "specialZealotAlert": "特別なZealotのアラート",
     "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented",
-    "hidePetHealthBar": "ペットの体力バーを非表示"
+    "hidePetHealthBar": "ペットの体力バーを非表示",
+    "noArrowsLeftAlert": "弓矢切れのアラート"
   },
   "messages": {
     "dropConfirmation": "落としてもいいのであれば、このアイテムをもう一度ドロップしてください。",
@@ -127,6 +128,8 @@
     "specialZealotFound": "特別なZealotがスポーンしました!",
     "blockIncompletePatterns": "不完全なパターンでのクラフトを防止する (推奨)",
     "searchFeatures": "機能を検索",
-    "downloadingUpdateFile": "更新をダウンロード中..."
+    "downloadingUpdateFile": "更新をダウンロード中...",
+    "onlyFewArrowsLeft": "矢筒に残りの弓矢が少ないです！",
+    "noArrowsLeft": "弓矢がありません！"
   }
 }

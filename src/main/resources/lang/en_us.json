@@ -83,7 +83,8 @@
     "revenantIndicator": "Slayer Armor Progress Indicator",
     "specialZealotAlert": "Special Zealot Alert",
     "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented",
-    "hidePetHealthBar": "Hide Pet Health Bar"
+    "hidePetHealthBar": "Hide Pet Health Bar",
+    "noArrowsLeftAlert": "No Arrows Left Alert"
   },
   "messages": {
     "dropConfirmation": "Drop this item again to confirm!",
@@ -127,6 +128,8 @@
     "specialZealotFound": "Special Zealot!",
     "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)",
     "searchFeatures": "Search features",
-    "downloadingUpdateFile": "Downloading update file..."
+    "downloadingUpdateFile": "Downloading update file...",
+    "onlyFewArrowsLeft": "Only few arrows left!",
+    "noArrowsLeft": "No Arrows Left!"
   }
 }

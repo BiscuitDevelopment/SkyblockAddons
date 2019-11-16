@@ -82,6 +82,7 @@ public enum Message {
     SETTING_SPECIAL_ZEALOT_ALERT(MessageObject.SETTING, "specialZealotAlert"),
     SETTING_ONLY_MINE_VALUABLES_NETHER(MessageObject.SETTING, "onlyMineValuablesNether"),
     SETTING_HIDE_PET_HEALTH_BAR(MessageObject.SETTING, "hidePetHealthBar"),
+    SETTING_NO_ARROWS_LEFT_ALERT(MessageObject.SETTING, "noArrowsLeftAlert"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.STYLE, "compact"),
@@ -117,6 +118,8 @@ public enum Message {
     MESSAGE_BLOCK_INCOMPLETE_PATTERNS(MessageObject.MESSAGES, "blockIncompletePatterns"),
     MESSAGE_SEARCH_FEATURES(MessageObject.MESSAGES, "searchFeatures"),
     MESSAGE_DOWNLOADING_UPDATE(MessageObject.MESSAGES, "downloadingUpdateFile"),
+    MESSAGE_ONLY_FEW_ARROWS_LEFT(MessageObject.MESSAGES, "onlyFewArrowsLeft"),
+    MESSAGE_NO_ARROWS_LEFT(MessageObject.MESSAGES, "noArrowsLeft"),
 
     @Deprecated ANCHOR_POINT_TOP_LEFT(MessageObject.ANCHOR_POINT, "topLeft"),
     @Deprecated ANCHOR_POINT_TOP_RIGHT(MessageObject.ANCHOR_POINT, "topRight"),

@@ -239,6 +239,19 @@ public class PlayerListener {
                 main.getScheduler().schedule(Scheduler.CommandType.RESET_TITLE_FEATURE, main.getConfigValues().getWarningSeconds());
             }
 
+            if (main.getConfigValues().isEnabled(Feature.NO_ARROWS_LEFT_ALERT)) {
+                if (e.message.getFormattedText().equals("§r§cYou don't have any more Arrows left in your Quiver!§r")) {
+                    main.getUtils().playLoudSound("random.orb", 0.5);
+                    main.getRenderListener().setTitleFeature(Feature.NO_ARROWS_LEFT_ALERT);
+                    main.getScheduler().schedule(Scheduler.CommandType.RESET_TITLE_FEATURE, main.getConfigValues().getWarningSeconds());
+                } else if (e.message.getFormattedText().equals("§r§cYou only have 10 Arrows left in your Quiver!§r")) {
+                    main.getUtils().playLoudSound("random.orb", 0.5);
+                    main.getRenderListener().setTitleFeature(Feature.NO_ARROWS_LEFT_ALERT);
+                    main.getRenderListener().setFewArrowsLeftAlert();// THIS IS IMPORTANT
+                    main.getScheduler().schedule(Scheduler.CommandType.RESET_TITLE_FEATURE, main.getConfigValues().getWarningSeconds());
+                }
+            }
+
             Matcher matcher = ABILITY_CHAT_PATTERN.matcher(e.message.getFormattedText());
             if (matcher.matches()) {
                 CooldownManager.put(Minecraft.getMinecraft().thePlayer.getHeldItem());
