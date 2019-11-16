@@ -216,6 +216,7 @@ public class PlayerListener {
             main.getRenderListener().setPredictMana(true);
             main.getRenderListener().setPredictHealth(true);
         } else {
+            final String formattedText = e.message.getFormattedText();
             if (main.getRenderListener().isPredictMana() && message.startsWith("Used ") && message.endsWith("Mana)")) {
                 int manaLost = Integer.parseInt(message.split(Pattern.quote("! ("))[1].split(Pattern.quote(" Mana)"))[0]);
                 changeMana(-manaLost);
@@ -224,15 +225,15 @@ public class PlayerListener {
             /*  Resets all user input on dead as to not walk backwards or stafe into the portal
                 Might get trigger upon encountering a non named "You" though this chance is so
                 minimal it can be discarded as a bug. */
-            if (main.getConfigValues().isEnabled(Feature.PREVENT_MOVEMENT_ON_DEATH) && e.message.getFormattedText().startsWith("§r§c \u2620 §r§7You ")) {
+            if (main.getConfigValues().isEnabled(Feature.PREVENT_MOVEMENT_ON_DEATH) && formattedText.startsWith("§r§c \u2620 §r§7You ")) {
                 KeyBinding.unPressAllKeys();
             }
             // credits to tomotomo, thanks lol
-            if (main.getConfigValues().isEnabled(Feature.SUMMONING_EYE_ALERT) && e.message.getFormattedText().equals("§r§6§lRARE DROP! §r§5Summoning Eye§r")) {
+            if (main.getConfigValues().isEnabled(Feature.SUMMONING_EYE_ALERT) && formattedText.equals("§r§6§lRARE DROP! §r§5Summoning Eye§r")) {
                 main.getUtils().playLoudSound("random.orb", 0.5);
                 main.getRenderListener().setTitleFeature(Feature.SUMMONING_EYE_ALERT);
                 main.getScheduler().schedule(Scheduler.CommandType.RESET_TITLE_FEATURE, main.getConfigValues().getWarningSeconds());
-            } else if (main.getConfigValues().isEnabled(Feature.SPECIAL_ZEALOT_ALERT) && e.message.getFormattedText().equals("§r§aA special §r§5Zealot §r§ahas spawned nearby!§r")) {
+            } else if (main.getConfigValues().isEnabled(Feature.SPECIAL_ZEALOT_ALERT) && formattedText.equals("§r§aA special §r§5Zealot §r§ahas spawned nearby!§r")) {
                 main.getUtils().playLoudSound("random.orb", 0.5);
                 main.getRenderListener().setTitleFeature(Feature.SUMMONING_EYE_ALERT);
                 main.getRenderListener().setTitleFeature(Feature.SPECIAL_ZEALOT_ALERT);
@@ -240,15 +241,16 @@ public class PlayerListener {
             }
 
             if (main.getConfigValues().isEnabled(Feature.NO_ARROWS_LEFT_ALERT)) {
-                if (e.message.getFormattedText().equals("§r§cYou don't have any more Arrows left in your Quiver!§r")) {
+                if (formattedText.equals("§r§cYou don't have any more Arrows left in your Quiver!§r")) {
                     main.getUtils().playLoudSound("random.orb", 0.5);
-                    main.getRenderListener().setTitleFeature(Feature.NO_ARROWS_LEFT_ALERT);
-                    main.getScheduler().schedule(Scheduler.CommandType.RESET_TITLE_FEATURE, main.getConfigValues().getWarningSeconds());
-                } else if (e.message.getFormattedText().equals("§r§cYou only have 10 Arrows left in your Quiver!§r")) {
+                    main.getRenderListener().setSubtitleFeature(Feature.NO_ARROWS_LEFT_ALERT);
+                    main.getScheduler().schedule(Scheduler.CommandType.RESET_SUBTITLE_FEATURE, main.getConfigValues().getWarningSeconds());
+                } else if (formattedText.startsWith("§r§cYou only have") && formattedText.endsWith("Arrows left in your Quiver!§r")) {
+                    int arrowsLeft = Integer.parseInt(main.getUtils().getNumbersOnly(formattedText).trim());
                     main.getUtils().playLoudSound("random.orb", 0.5);
-                    main.getRenderListener().setTitleFeature(Feature.NO_ARROWS_LEFT_ALERT);
-                    main.getRenderListener().setFewArrowsLeftAlert();// THIS IS IMPORTANT
-                    main.getScheduler().schedule(Scheduler.CommandType.RESET_TITLE_FEATURE, main.getConfigValues().getWarningSeconds());
+                    main.getRenderListener().setSubtitleFeature(Feature.NO_ARROWS_LEFT_ALERT);
+                    main.getRenderListener().setArrowsLeft(arrowsLeft);// THIS IS IMPORTANT
+                    main.getScheduler().schedule(Scheduler.CommandType.RESET_SUBTITLE_FEATURE, main.getConfigValues().getWarningSeconds());
                 }
             }
 

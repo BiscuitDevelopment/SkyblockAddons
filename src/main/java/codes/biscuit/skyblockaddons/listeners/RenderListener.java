@@ -53,7 +53,7 @@ public class RenderListener {
     private Feature subtitleFeature = null;
     private Feature titleFeature = null;
 
-    private boolean isFewArrowsLeftAlert = false;
+    private int arrowsLeft;
 
     private String cannotReachMobName = null;
 
@@ -179,13 +179,6 @@ public class RenderListener {
                 case SPECIAL_ZEALOT_ALERT:
                     message = Message.MESSAGE_SPECIAL_ZEALOT_FOUND;
                     break;
-                case NO_ARROWS_LEFT_ALERT:
-                    if (isFewArrowsLeftAlert) {
-                        message = Message.MESSAGE_ONLY_FEW_ARROWS_LEFT;
-                    } else {
-                        message = Message.MESSAGE_NO_ARROWS_LEFT;
-                    }
-                    break;
             }
             if (message != null) {
                 String text = message.getMessage();
@@ -209,11 +202,16 @@ public class RenderListener {
                 case MINION_FULL_WARNING:
                     message = Message.MESSAGE_MINION_IS_FULL;
                     break;
+                case NO_ARROWS_LEFT_ALERT:
+                    message = Message.MESSAGE_NO_ARROWS_LEFT;
+                    break;
             }
             if (message != null) {
                 String text;
                 if (message == Message.MESSAGE_MINION_CANNOT_REACH) {
                     text = message.getMessage(cannotReachMobName);
+                } else if (subtitleFeature == Feature.NO_ARROWS_LEFT_ALERT && arrowsLeft != -1) {
+                    text = Message.MESSAGE_ONLY_FEW_ARROWS_LEFT.getMessage(Integer.toString(arrowsLeft));
                 } else {
                     text = message.getMessage();
                 }
@@ -835,13 +833,6 @@ public class RenderListener {
 
     public void setTitleFeature(Feature titleFeature) {
         this.titleFeature = titleFeature;
-        if (titleFeature == null) {
-            this.isFewArrowsLeftAlert = false;
-        }
-    }
-
-    void setFewArrowsLeftAlert() {
-        this.isFewArrowsLeftAlert = true;
     }
 
     public void setGuiToOpen(PlayerListener.GUIType guiToOpen, int page, EnumUtils.GuiTab tab) {
@@ -857,6 +848,9 @@ public class RenderListener {
 
     public void setSubtitleFeature(Feature subtitleFeature) {
         this.subtitleFeature = subtitleFeature;
+        if (subtitleFeature == null) {
+            this.arrowsLeft = -1;
+        }
     }
 
     Feature getTitleFeature() {
@@ -877,5 +871,9 @@ public class RenderListener {
 
     public void setSkillFadeOutTime(long skillFadeOutTime) {
         this.skillFadeOutTime = skillFadeOutTime;
+    }
+
+    public void setArrowsLeft(int arrowsLeft) {
+        this.arrowsLeft = arrowsLeft;
     }
 }

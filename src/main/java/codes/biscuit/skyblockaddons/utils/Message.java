@@ -195,6 +195,8 @@ public enum Message {
                     text = text.replace("%file%", variables[0]);
                 } else if (this == Message.MESSAGE_ANVIL_USES) {
                     text = text.replace("%uses%", EnumChatFormatting.RED.toString()+variables[0]+EnumChatFormatting.GRAY.toString());
+                } else if (this == Message.MESSAGE_ONLY_FEW_ARROWS_LEFT) {
+                    text = text.replace("%arrows%", variables[0]);
                 }
                 // else if (this == Message.SETTING_ANCHOR_POINT) { //unused at the moment.
 //                    Feature lastHovered = ButtonLocation.getLastHoveredFeature();

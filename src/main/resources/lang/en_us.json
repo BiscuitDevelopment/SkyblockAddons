@@ -129,7 +129,7 @@
     "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)",
     "searchFeatures": "Search features",
     "downloadingUpdateFile": "Downloading update file...",
-    "onlyFewArrowsLeft": "Only few arrows left!",
+    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
     "noArrowsLeft": "No Arrows Left!"
   }
 }
