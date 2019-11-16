@@ -53,7 +53,7 @@
     "lockSlot": "Khoá ô",
     "dontResetCursorInventory": "Không di chuyển con trỏ khi mở túi đồ",
     "summoningEyeAlert": "Cảnh báo: Nhặt Mắt Triệu hồi",
-    "makeEnderchestsInEndGreen": "Đổi màu rương ender trong The End",
+    "makeEnderchestsInEndGreen": "Đổi màu rương Ender trong The End",
     "changeColor": "Thay đổi màu sắc",
     "showInOtherGames": "Hiện trong các trò khác",
     "useVanillaTexture": "Sử dụng đồ họa nguyên bản",
@@ -73,16 +73,16 @@
     "soundIndicatorForFishing": "Biểu thị âm thanh dành cho câu cá",
     "avoidBlinkingNightVision": "Tắt hiệu ứng nháy thuốc nhìn đêm",
     "disableMinionLocationWarning": "Tắt cảnh báo Vị trí không phù hợp",
-    "jungleAxeCooldown": "Hồi phục Rìu Rừng Rậm",
-    "organizeLongEnchantmentLists": "Sắp xếp danh sách phù phép dài",
+    "jungleAxeCooldown": "Thời gian Hồi Jungle Axe",
+    "organizeLongEnchantmentLists": "Sắp xếp Danh Sách Enchantment dài",
     "showItemCooldowns": "Hiển thị thời gian hồi vật phẩm",
     "speedPercentage": "Phần trăm tốc độ",
     "collectionDisplay": "Hiển thị kĩ năng",
     "onlyMineOresDeepCaverns": "Chỉ đào quặng trong Hang Sâu",
-    "onlyMineValuablesNether": "Only Mine Valuables in the Nether",
+    "onlyMineValuablesNether": "Chỉ Đào Đồ có Giá Trị trong Nether",
     "revenantIndicator": "Hiển thị độ phát triển của giáp Slayer",
     "specialZealotAlert": "Cảnh báo Zealot đặc biệt",
-    "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented",
+    "enableMessageWhenActionPrevented": "Hiện Thông Báo Khi một Hành Động đã được chặn",
     "hidePetHealthBar": "Ẩn thanh máu Pet"
   },
   "messages": {
@@ -125,7 +125,7 @@
     "featureDisabled": "Vô hiệu hóa tính năng",
     "anvilUses": "Số lần sử dụng đe: %uses%",
     "specialZealotFound": "Zealot hiếm!",
-    "blockIncompletePatterns": "Các nguyên liệu thiếu cho chế tạo block\n(Khuyến nghị)",
+    "blockIncompletePatterns": "Chặn chế tạo khuôn chưa hoàn thành (Khuyến nghị)",
     "searchFeatures": "Tìm kiếm chức năng",
     "downloadingUpdateFile": "Đang tải về tệp tin Cập Nhật..."
   }
