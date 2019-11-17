@@ -73,7 +73,7 @@
     "soundIndicatorForFishing": "Индикатор звука для рыбалки",
     "avoidBlinkingNightVision": "Отключить моргание от зелья ночного зрения",
     "disableMinionLocationWarning": "Отключить уведомление о неидеальной локации",
-    "jungleAxeCooldown": "Откат топора джунглей",
+    "jungleAxeCooldown": "Откат Топора Джунглей",
     "organizeLongEnchantmentLists": "Организовать список длинных зачарований",
     "showItemCooldowns": "Показывать откат вещей",
     "speedPercentage": "Процент скорости",
@@ -116,17 +116,17 @@
       "downloadFinished": "Патч закончил загрузку. Он был сохранён как %file%. Пожалуйста, не забудьте удалить старый файл после закрытия Minecraft. Нажмите на сообщение в чате, чтобы открыть папку."
     },
     "slotLocked": "Слот заблокирован!",
-    "summoningEyeFound": "Summoning Eye!",
-    "cancelledStemBreak": "SkyBlockAddons предотвратил попытку сломать стебель. Используйте руку.",
+    "summoningEyeFound": "Око Призыва!",
+    "cancelledStemBreak": "SkyBlockAddons предотвратил попытку сломать стебель. Используйте руку, если хотите его сломать.",
     "cancelledProfileOpening": "SkyBlockAddons остановил вас от открытия профиля игрока с луком в руках.",
     "cancelledDropping": "SkyBlockAddons предотвратил попытку выбросить этот предмет из панели быстрого доступа.",
-    "clickMoreTimes": "Нажмите/выберите этот предмет еще %times% раз, если вы действительно хотите сделать это.",
+    "clickMoreTimes": "Щелкните/выбросьте этот предмет еще %times% раз(а), если вы действительно хотите сделать это.",
     "cancelledDeepCaverns": "Функция SkyblockAddons остановила вас от копания этого блока.",
     "featureDisabled": "Функция отключена",
     "anvilUses": "Использований наковальни: %uses%",
     "specialZealotFound": "Особый Зеалот!",
     "blockIncompletePatterns": "Блокировать создание незавершённых шаблонов (рекомендуется)",
-    "searchFeatures": "Search features",
-    "downloadingUpdateFile": "Downloading update file..."
+    "searchFeatures": "Поиск функций",
+    "downloadingUpdateFile": "Загрузка файла обновления..."
   }
 }
