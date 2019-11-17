@@ -53,7 +53,7 @@
     "lockSlot": "Закрыть слот",
     "dontResetCursorInventory": "Не сбрасывать курсор между инвентарями",
     "summoningEyeAlert": "Оповещение о Глазе Призыва",
-    "makeEnderchestsInEndGreen": "Change Enderchest Color in the End",
+    "makeEnderchestsInEndGreen": "Изменять цвет Эндер Сундуков в Краю",
     "changeColor": "Изменить цвет",
     "showInOtherGames": "Показывать в остальных играх",
     "useVanillaTexture": "Использовать обычную текстуру",
@@ -79,11 +79,11 @@
     "speedPercentage": "Процент скорости",
     "collectionDisplay": "Показывать прогресс навыков",
     "onlyMineOresDeepCaverns": "Копать только руды в Глубоких Пещерах",
-    "onlyMineValuablesNether": "Only Mine Valuables in the Nether",
+    "onlyMineValuablesNether": "Добывать только ценные предметы в Аду",
     "revenantIndicator": "Индикатор Прогресса Брони Убийцы",
     "specialZealotAlert": "Уведомление об Особом Зеалоте",
-    "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented",
-    "hidePetHealthBar": "Hide Pet Health Bar"
+    "enableMessageWhenActionPrevented": "Показывать предупреждение, когда действие не выполнено",
+    "hidePetHealthBar": "Скрыть здоровье питомцев"
   },
   "messages": {
     "dropConfirmation": "Выбросите предмет ещё раз для подтверждения!",
