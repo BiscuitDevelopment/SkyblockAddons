@@ -126,7 +126,7 @@ public class PlayerListener {
             if (message.endsWith("\u270E Mana§r")) {
                 try {
                     String returnMessage;
-                    if (message.startsWith("§d§lTHE END RACE")) { // Might be doing the end race!
+                    if (message.startsWith("§d§lTHE END RACE") || message.startsWith("§a§lWOOD RACING")) { // Might be doing the end race!
                         // Example Action Bar: '§d§lTHE END RACE §e00:52.370            §b147/147✎ Mana§r'
                         String[] messageSplit = message.split(" {12}");
                         String[] manaSplit = main.getUtils().getNumbersOnly(messageSplit[1]).split(Pattern.quote("/"));
