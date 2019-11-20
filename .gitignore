@@ -1,6 +1,7 @@
 /.gradle
 /.idea
 /.settings
+/bin
 /build
 /classes
 /run
