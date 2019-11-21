@@ -426,9 +426,10 @@ public class PlayerListener {
     	if(e.target instanceof EntityEnderman) {
     		if(main.getConfigValues().isEnabled(Feature.ZEALOT_COUNTER)) {
 	    		EntityEnderman enderman = (EntityEnderman) e.target;
-	    		String nametag = StringUtils.stripControlCodes(Minecraft.getMinecraft().theWorld.getEntitiesWithinAABB(EntityArmorStand.class, 
-	    				new AxisAlignedBB(enderman.posX - 1, enderman.posY, enderman.posZ - 1, enderman.posX + 1, enderman.posY + 4, enderman.posZ + 1))
-	    				.get(0).getCustomNameTag());
+	    		List<EntityArmorStand> stands = Minecraft.getMinecraft().theWorld.getEntitiesWithinAABB(EntityArmorStand.class, 
+	    				new AxisAlignedBB(enderman.posX - 1, enderman.posY, enderman.posZ - 1, enderman.posX + 1, enderman.posY + 5, enderman.posZ + 1));
+	    		if(stands.isEmpty()) return;
+	    		String nametag = StringUtils.stripControlCodes(stands.get(0).getCustomNameTag());
 	    		if(nametag.contains("Zealot") && !nametag.contains("2000\u2764") && !endermen.contains(enderman))
 	    			endermen.add(enderman);
     		}
