@@ -83,7 +83,7 @@
     "revenantIndicator": "Indicador de Progreso de Slayer Armor",
     "specialZealotAlert": "Alerta de Zealot Especial",
     "enableMessageWhenActionPrevented": "Mostrar un Mensaje al Prevenir una Acción",
-    "hidePetHealthBar": "Hide Pet Health Bar"
+    "hidePetHealthBar": "Esconder Vida de Mascota"
   },
   "messages": {
     "dropConfirmation": "Arroja este objeto otra vez para confirmar!",
