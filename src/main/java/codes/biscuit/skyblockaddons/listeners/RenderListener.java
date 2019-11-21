@@ -591,6 +591,9 @@ public class RenderListener {
                     color = main.getConfigValues().getColor(feature).getColor(textAlpha * 255 >= 4 ? textAlpha * 255 : 4); // so it fades out, 0.016 is the minimum alpha
                 }
             }
+        } else if(feature == Feature.ZEALOT_COUNTER) {
+        	if(main.getUtils().getLocation() != EnumUtils.Location.DRAGONS_NEST) return;
+        	text = "Zealots killed: " + main.getPlayerListener().getZealotsKilled();
         } else {
             return;
         }
