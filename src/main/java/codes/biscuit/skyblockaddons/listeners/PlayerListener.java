@@ -430,7 +430,7 @@ public class PlayerListener {
 	    				new AxisAlignedBB(enderman.posX - 1, enderman.posY, enderman.posZ - 1, enderman.posX + 1, enderman.posY + 5, enderman.posZ + 1));
 	    		if(stands.isEmpty()) return;
 	    		String nametag = StringUtils.stripControlCodes(stands.get(0).getCustomNameTag());
-	    		if(nametag.contains("Zealot") && !nametag.contains("/2000\u2764") && !endermen.contains(enderman))
+	    		if(nametag.contains("Zealot") && !endermen.contains(enderman))
 	    			endermen.add(enderman);
     		}
     	}
