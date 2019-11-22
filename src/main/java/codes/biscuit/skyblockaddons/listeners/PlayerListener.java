@@ -255,7 +255,7 @@ public class PlayerListener {
             }
             
             if(main.getConfigValues().isEnabled(Feature.ZEALOT_COUNTER) && message.equals("A special Zealot has spawned nearby!")) {
-            	zealotsKilled = 0;
+            	zealotsKilled = -1; //this is triggered before the death of the killed zealot, so this is set to -1 to account for that
             }
 
             Matcher matcher = ABILITY_CHAT_PATTERN.matcher(e.message.getFormattedText());
