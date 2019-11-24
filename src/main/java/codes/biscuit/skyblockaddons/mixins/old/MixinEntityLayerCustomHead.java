@@ -1,4 +1,4 @@
-package codes.biscuit.skyblockaddons.mixins;
+package codes.biscuit.skyblockaddons.mixins.old;
 
 import net.minecraft.client.renderer.entity.layers.LayerCustomHead;
 import org.spongepowered.asm.mixin.Mixin;

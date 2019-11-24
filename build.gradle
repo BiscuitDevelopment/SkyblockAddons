@@ -80,10 +80,17 @@ jar {
     
     manifest.attributes(
             'FMLAT': 'skyblockaddons_at.cfg',
+
+            'Main-Class': 'OpenErrorMessage',
+
             'MixinConfigs': 'mixins.skyblockaddons.json',
             'TweakOrder': '0',
             'TweakClass': 'codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsTweaker',
-            'Main-Class': 'OpenErrorMessage'
+
+            'FMLCorePlugin': 'codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsLoadingPlugin',
+            'ForceLoadAsMod': true,
+            'FMLCorePluginContainsFMLMod': true,
+            'ModSide': 'CLIENT'
     )
 
 }

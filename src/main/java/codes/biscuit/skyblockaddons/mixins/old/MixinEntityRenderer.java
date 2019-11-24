@@ -1,4 +1,4 @@
-package codes.biscuit.skyblockaddons.mixins;
+package codes.biscuit.skyblockaddons.mixins.old;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;

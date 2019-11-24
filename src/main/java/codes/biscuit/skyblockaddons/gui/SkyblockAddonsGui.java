@@ -205,6 +205,7 @@ public class SkyblockAddonsGui extends GuiScreen {
         drawScaledString("SkyblockAddons", 28, defaultBlue, 2.5F, 0);
         drawScaledString("v" + SkyblockAddons.VERSION + " by Biscut", 49, defaultBlue, 1.3, 50);
         drawScaledString("Featured aka my discord plug", 7, defaultBlue, 0.8, -212);
+        drawScaledString("Special Credits: InventiveTalent - Magma Boss Timer API", height-25, defaultBlue, 1, 0);
 
         featureSearchBar.drawTextBox();
         if (featureSearchBar.getText().equals("")) {

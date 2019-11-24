@@ -4,22 +4,16 @@
   "compatibilityLevel": "JAVA_8",
   "verbose": true,
   "mixins": [
-    "MixinEntityPlayerSP",
-    "MixinSoundManager",
-    "MixinEntityRenderer",
     "MixinRenderManager",
     "MixinGuiContainer",
     "MixinGuiScreen",
     "MixinGuiChest",
     "MixinPlayerControllerMP",
     "MixinNetHandlerPlayClient",
-    "MixinMouseHelper",
     "MixinGuiInventory",
-    "MixinTileEntityEnderChestRenderer",
     "MixinRendererLivingEntity",
     "MixinItem",
     "MixinGuiNewChat",
-    "MixinEntityLayerCustomHead",
     "MixinMinecraft"
   ]
 }
