@@ -146,7 +146,7 @@ public class MixinPlayerControllerMP {
                 // This is in case one of the stained glass panes is ever used as an actual item in the menu
                 // In such a case this feature would have to be removed but by limiting it to the 3 colors used in the menus the probabilities are reduced
                 if (main.getConfigValues().isEnabled(Feature.PREVENT_CLICKING_STAINED_GLASS_PANES_MENUS) && !slotIn.inventory.equals(mc.thePlayer.inventory)) {
-                    if (clickedItem != null && clickedItem.getItem().equals(Item.getItemFromBlock(Blocks.stained_glass_pane))) {
+                    if (clickedItem != null && clickedItem.getItem().equals(Item.getItemFromBlock(Blocks.stained_glass_pane)) && clickedItem.getDisplayName().equalsIgnoreCase(" ")) {
                         StainedGlassPaneColor color = StainedGlassPaneColor.getStainedGlassPaneColor(clickedItem.getMetadata());
 
                         if (glassPaneColors.contains(color)) {
