@@ -1,5 +1,5 @@
 {
-  "language": "Ye Old Englishe",
+  "language": "PiARRate English",
   "settings": {
     "tab": {
       "features": "Feat'rs",
@@ -121,12 +121,12 @@
     "cancelledProfileOpening": "'ay there lad! SkyblockAddons 'as stopped ye from openin' this here player's profile while oldin' a bow.",
     "cancelledDropping": "'ay mate! SkyblockAddons 'as stopped ye from droppin' this here Rare Item or Tool from yer 'otbarrr.",
     "clickMoreTimes": "'ay lad, Click/Drop this here item %times% more times if ye really wants t' do this.",
-    "cancelledDeepCaverns": "A SkyblockAddons feature has stopped you from mining this block here.",
+    "cancelledDeepCaverns": "Aye boomer, a SkyblockAddons feat're 'as stopped ye from minin' this here block 'ere!",
     "featureDisabled": "Yer feature be Disabled",
     "anvilUses": "Anvil Uses: %uses%",
-    "specialZealotFound": "Special Zealot!",
-    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)",
-    "searchFeatures": "Search features",
-    "downloadingUpdateFile": "Downloading update file..."
+    "specialZealotFound": "Ye Good Zealot!",
+    "blockIncompletePatterns": "Swab craftin' incomplete patt'rns (recommended)",
+    "searchFeatures": "Search feat'rs",
+    "downloadingUpdateFile": "Downloading yer updates..."
   }
 }
