@@ -82,6 +82,7 @@ public enum Message {
     SETTING_SPECIAL_ZEALOT_ALERT(MessageObject.SETTING, "specialZealotAlert"),
     SETTING_ONLY_MINE_VALUABLES_NETHER(MessageObject.SETTING, "onlyMineValuablesNether"),
     SETTING_HIDE_PET_HEALTH_BAR(MessageObject.SETTING, "hidePetHealthBar"),
+    SETTING_PREVENT_CLICKING_STAINED_GLASS_PANES_MENUS(MessageObject.SETTING, "preventClickingStainedGlassPanesMenus"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.STYLE, "compact"),
