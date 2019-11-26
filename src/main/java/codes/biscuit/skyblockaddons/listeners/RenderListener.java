@@ -844,15 +844,17 @@ public class RenderListener {
         int iconAndSecondsHeight = iconSize + mc.fontRendererObj.FONT_HEIGHT;
 
         int maxHealth = main.getUtils().getAttributes().get(Attribute.MAX_HEALTH).getValue();
-        int maxMana = main.getUtils().getAttributes().get(Attribute.MAX_MANA).getValue();
         double healthRegen = maxHealth * powerOrb.healthRegen;
-        double manaRegen = maxMana / 50;
-        manaRegen = manaRegen + manaRegen * powerOrb.manaRegen;
         double healIncrease = powerOrb.healIncrease * 100;
 
         List<String> display = new LinkedList<>();
         display.add(String.format("§c+%s ❤/s", Utils.niceDouble(healthRegen, 2)));
-        display.add(String.format("§b+%s ✎/s", Utils.niceDouble(manaRegen, 2)));
+        if(powerOrb.manaRegen > 0) {
+            int maxMana = main.getUtils().getAttributes().get(Attribute.MAX_MANA).getValue();
+            double manaRegen = maxMana / 50;
+            manaRegen = manaRegen + manaRegen * powerOrb.manaRegen;
+            display.add(String.format("§b+%s ✎/s", Utils.niceDouble(manaRegen, 2)));
+        }
         if (powerOrb.strength > 0) {
             display.add(String.format("§4+%d ❁", powerOrb.strength));
         }
