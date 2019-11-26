@@ -83,7 +83,7 @@
     "revenantIndicator": "Indikator Napretka Na Slayer Armor-u",
     "specialZealotAlert": "Upozorenje za Posebne Zealote",
     "enableMessageWhenActionPrevented": "Prikaži Poruku Kada je Akcija Spriječena",
-    "hidePetHealthBar": "Hide Pet Health Bar"
+    "hidePetHealthBar": "Sakrij Health Bar Pet-a"
   },
   "messages": {
     "dropConfirmation": "Opet baci ovu stvar za konfirmaciju!",
@@ -126,7 +126,7 @@
     "anvilUses": "Korištenja u Anvilu: %uses%",
     "specialZealotFound": "Posebni Zealot!",
     "blockIncompletePatterns": "Blokiraj pravljenje neispunjenih oblika (preporučeno)",
-    "searchFeatures": "Search features",
-    "downloadingUpdateFile": "Downloading update file..."
+    "searchFeatures": "Opcije pretraživanja",
+    "downloadingUpdateFile": "Preuzimanje update file-a..."
   }
 }
