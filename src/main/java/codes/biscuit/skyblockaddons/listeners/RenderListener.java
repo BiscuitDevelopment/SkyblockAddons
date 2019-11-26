@@ -112,7 +112,7 @@ public class RenderListener {
             }
             if (entity.getCustomNameTag().startsWith("§c/!\\")) {
                 for (Entity listEntity : Minecraft.getMinecraft().theWorld.loadedEntityList) {
-                    if (listEntity.getCustomNameTag().startsWith("§cThis location isn\'t perfect! :(") &&
+                    if (listEntity.getCustomNameTag() != null && listEntity.getCustomNameTag().startsWith("§cThis location isn\'t perfect! :(") &&
                             listEntity.posX == entity.posX && listEntity.posZ == entity.posZ &&
                             listEntity.posY + 0.375 == entity.posY) {
                         e.setCanceled(true);
