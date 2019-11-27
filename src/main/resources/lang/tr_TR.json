@@ -53,7 +53,7 @@
     "lockSlot": "Slot kilitleme",
     "dontResetCursorInventory": "Envanterler arasında fare imlecini sıfırlama",
     "summoningEyeAlert": "Summoning Eye Uyarısı",
-    "makeEnderchestsInEndGreen": "Change Enderchest Color in the End",
+    "makeEnderchestsInEndGreen": "Sonda ki Ender Sandıklarının rengini değiştir",
     "changeColor": "Rengi değiştir",
     "showInOtherGames": "Diğer Oyunlarda da Göster",
     "useVanillaTexture": "Sade Dokuları kullan",
@@ -79,10 +79,10 @@
     "speedPercentage": "Hız yüzdesi",
     "collectionDisplay": "Beceri ilerleme göstergesi",
     "onlyMineOresDeepCaverns": "Deep caverns'ta sadece madenleri kaz",
-    "onlyMineValuablesNether": "Only Mine Valuables in the Nether",
-    "revenantIndicator": "Slayer Armor Progress Indicator",
+    "onlyMineValuablesNether": "Netherdayken sadece cevherleri kaz",
+    "revenantIndicator": "Zırh ilerleme göstergesi",
     "specialZealotAlert": "Özel zealot alarmı",
-    "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented",
+    "enableMessageWhenActionPrevented": "Bir şey yapmanız engelendiğinde bir mesaj göster",
     "hidePetHealthBar": "Hide Pet Health Bar"
   },
   "messages": {
