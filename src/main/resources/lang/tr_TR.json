@@ -83,7 +83,7 @@
     "revenantIndicator": "Zırh ilerleme göstergesi",
     "specialZealotAlert": "Özel zealot alarmı",
     "enableMessageWhenActionPrevented": "Bir şey yapmanız engelendiğinde bir mesaj göster",
-    "hidePetHealthBar": "Hide Pet Health Bar"
+    "hidePetHealthBar": "Evcil Hayvan sağlık göstergesini gizle"
   },
   "messages": {
     "dropConfirmation": "Eşyayı düşürmeyi onaylamak için düşürme tuşuna bir daha bas!",
@@ -125,8 +125,8 @@
     "featureDisabled": "Özellik Devre Dışı",
     "anvilUses": "Örs Kullanımı: %uses%",
     "specialZealotFound": "Özel zealot!",
-    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)",
-    "searchFeatures": "Search features",
-    "downloadingUpdateFile": "Downloading update file..."
+    "blockIncompletePatterns": "Tam doldurulmamış desenleri engelle (tavsiye edilen)",
+    "searchFeatures": "Özzelikleri ara",
+    "downloadingUpdateFile": "Güncelleme dosyası indiriliyor..."
   }
 }
