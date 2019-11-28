@@ -457,7 +457,8 @@ public class EnumUtils {
         LEGENDARY("6§lLEGENDARY"),
         SPECIAL("d§lSPECIAL");
 
-        private String tag;
+        private final static Rarity[] VALUES = values();
+        private final String tag;
 
         Rarity(String s) {
             this.tag = "§5§o§"+s;
@@ -466,9 +467,9 @@ public class EnumUtils {
         public static Rarity getRarity(ItemStack item) {
             if (item == null) return null;
             List<String> lore = item.getTooltip(Minecraft.getMinecraft().thePlayer, false);
-            String lastLoreLine = lore.get(lore.size()-1);
-            System.out.println(lastLoreLine);
-            for(Rarity rarity: Rarity.values()) {
+            if (lore.isEmpty()) return null;
+            String lastLoreLine = lore.get(lore.size() - 1);
+            for(Rarity rarity : VALUES) {
                 if(lastLoreLine.startsWith(rarity.tag)) return rarity;
             }
             return null;

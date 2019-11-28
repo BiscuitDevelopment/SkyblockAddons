@@ -568,7 +568,12 @@ public class Utils {
 
     public boolean cantDropItem(ItemStack item, EnumUtils.Rarity rarity, boolean hotbar) {
         if (Items.bow.equals(item.getItem()) && rarity == EnumUtils.Rarity.COMMON) return false; // exclude rare bows lol
-        if (item.hasDisplayName() && item.getDisplayName().contains("Backpack")) return true; // dont drop backpacks ever
+        if (item.hasDisplayName()) {
+            String displayName = item.getDisplayName();
+            if (displayName.contains("Backpack") || displayName.contains("Lapis Armor")) {
+                return true; // dont drop backpacks ever
+            }
+        }
         if (hotbar) {
             return item.getItem().isDamageable() || (rarity != EnumUtils.Rarity.COMMON && rarity != EnumUtils.Rarity.UNCOMMON);
         } else {
