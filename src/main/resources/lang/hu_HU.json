@@ -78,12 +78,12 @@
     "showItemCooldowns": "Mutasd az a tárgy töltési idejét",
     "speedPercentage": "Sebesség százalékos megjelenitése",
     "collectionDisplay": "Képességfejlődés megjelenítése",
-    "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns",
-    "onlyMineValuablesNether": "Only Mine Valuables in the Nether",
-    "revenantIndicator": "Slayer Armor Progress Indicator",
-    "specialZealotAlert": "Special Zealot Alert",
-    "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented",
-    "hidePetHealthBar": "Hide Pet Health Bar"
+    "onlyMineOresDeepCaverns": "Ércek bányászása csak a Deep Caverns-ben",
+    "onlyMineValuablesNether": "Csak az értékek bányászása a Nether-ben",
+    "revenantIndicator": "Slayer Armor folyamat jelző",
+    "specialZealotAlert": "Különleges Zealot értesítés",
+    "enableMessageWhenActionPrevented": "Üzenet egy művelet megakadályozásánál",
+    "hidePetHealthBar": "Pet életerő sáv elrejtése"
   },
   "messages": {
     "dropConfirmation": "Dobd el ezt a tárgyat újra, hogy megerősítsd!",
