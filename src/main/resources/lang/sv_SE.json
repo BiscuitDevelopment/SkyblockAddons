@@ -53,7 +53,7 @@
     "lockSlot": "Lösa Luckor",
     "dontResetCursorInventory": "Återställ Inte Muspekaren Mellan Inventarie",
     "summoningEyeAlert": "Tillkallande Öga Varning",
-    "makeEnderchestsInEndGreen": "Change Enderchest Color in the End",
+    "makeEnderchestsInEndGreen": "Ändra färgen på Enderkistan i End dimensionen",
     "changeColor": "Ändra Färg",
     "showInOtherGames": "Visa i Andra Spel",
     "useVanillaTexture": "Använd Vanliga Texturen",
@@ -77,13 +77,13 @@
     "organizeLongEnchantmentLists": "Organisera Långa Enchantment listor",
     "showItemCooldowns": "Visa artikel nedkylning",
     "speedPercentage": "Fart Procent",
-    "collectionDisplay": "Skill Progress Display",
+    "collectionDisplay": "Skill utvecklings dispay",
     "onlyMineOresDeepCaverns": "Hugg bara minitaler I djupa gråttorna",
-    "onlyMineValuablesNether": "Only Mine Valuables in the Nether",
+    "onlyMineValuablesNether": "Gräv bara värdefulla material i Nether dimensionen",
     "revenantIndicator": "Slayer rustningar utväcklings indicator",
     "specialZealotAlert": "Speciell Zealot Alarm",
-    "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented",
-    "hidePetHealthBar": "Hide Pet Health Bar"
+    "enableMessageWhenActionPrevented": "Visa ett meddelande när en åtgärd hindras",
+    "hidePetHealthBar": "Göm ditt hudjurs hälsometer"
   },
   "messages": {
     "dropConfirmation": "Släpp Det Här Igen För Att Bekräfta!",
