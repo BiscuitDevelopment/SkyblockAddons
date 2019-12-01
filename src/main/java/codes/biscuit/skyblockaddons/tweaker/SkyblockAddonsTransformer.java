@@ -1,10 +1,11 @@
 package codes.biscuit.skyblockaddons.tweaker;
 
 import codes.biscuit.skyblockaddons.asm.*;
-import codes.biscuit.skyblockaddons.tweaker.transformer.Transformer;
+import codes.biscuit.skyblockaddons.tweaker.transformer.ITransformer;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.launchwrapper.IClassTransformer;
+import net.minecraft.launchwrapper.Launch;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.objectweb.asm.ClassReader;
@@ -18,19 +19,32 @@ import java.util.Collection;
 
 public class SkyblockAddonsTransformer implements IClassTransformer {
 
+    public final static boolean DEOBFUSCATED = (boolean)Launch.blackboard.get("fml.deobfuscatedEnvironment");
+
     private final static boolean OUTPUT_BYTECODE = true;
-    private Logger logger = LogManager.getLogger("SkyblockAddons - Transformer");
-    private final Multimap<String, Transformer> transformerMap = ArrayListMultimap.create();
+    private Logger logger = LogManager.getLogger("SkyblockAddons Transformer");
+    private final Multimap<String, ITransformer> transformerMap = ArrayListMultimap.create();
 
     public SkyblockAddonsTransformer() {
-        registerTransformer(new TileEntityEnderChestRendererTransformer());
-        registerTransformer(new MouseHelperTransformer());
-        registerTransformer(new EntityPlayerSPTransformer());
-        registerTransformer(new EntityRendererTransformer());
-        registerTransformer(new SoundManagerTransformer());
+        registerTransformer(new TileEntityEnderChestRendererTransformer()); //
+        registerTransformer(new MouseHelperTransformer()); //
+        registerTransformer(new EntityPlayerSPTransformer()); //
+        registerTransformer(new EntityRendererTransformer()); //
+        registerTransformer(new SoundManagerTransformer()); //
+        registerTransformer(new RenderManagerTransformer()); //
+        registerTransformer(new PlayerControllerMPTransformer()); //
+        registerTransformer(new NetHandlerPlayClientTransformer()); //
+        registerTransformer(new MinecraftTransformer()); //
+//        registerTransformer(new ItemTransformer());
+//        registerTransformer(new GuiScreenTransformer());
+//        registerTransformer(new GuiInventoryTransformer());
+//        registerTransformer(new GuiContainerTransformer());
+//        registerTransformer(new GuiChestTransformer());
+//        registerTransformer(new GuiNewChatTransformer());
+//        registerTransformer(new RendererLivingEntityTransformer());
     }
 
-    private void registerTransformer(Transformer transformer) {
+    private void registerTransformer(ITransformer transformer) {
         for (String cls : transformer.getClassName()) {
             transformerMap.put(cls, transformer);
         }
@@ -40,7 +54,7 @@ public class SkyblockAddonsTransformer implements IClassTransformer {
     public byte[] transform(String name, String transformedName, byte[] bytes) {
         if (bytes == null) return null;
 
-        Collection<Transformer> transformers = transformerMap.get(transformedName);
+        Collection<ITransformer> transformers = transformerMap.get(transformedName);
         if (transformers.isEmpty()) return bytes;
 
         logger.info("Found {} transformers for {}", transformers.size(), transformedName);
@@ -61,8 +75,16 @@ public class SkyblockAddonsTransformer implements IClassTransformer {
         } catch (Throwable t) {
             logger.error("Exception when transforming " + transformedName + " : " + t.getClass().getSimpleName());
             t.printStackTrace();
+            outputBytecode(transformedName, writer);
+            return bytes;
         }
 
+        outputBytecode(transformedName, writer);
+
+        return writer.toByteArray();
+    }
+
+    private void outputBytecode(String transformedName, ClassWriter writer) {
         if (OUTPUT_BYTECODE) {
             try {
                 File file = new File("C:\\Users\\jlroc\\Desktop\\bytecode", transformedName + ".class");
@@ -74,7 +96,5 @@ public class SkyblockAddonsTransformer implements IClassTransformer {
                 e.printStackTrace();
             }
         }
-
-        return writer.toByteArray();
     }
 }

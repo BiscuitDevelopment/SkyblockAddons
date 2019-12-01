@@ -1,13 +1,12 @@
 package codes.biscuit.skyblockaddons.asm;
 
-import codes.biscuit.skyblockaddons.tweaker.transformer.Transformer;
+import codes.biscuit.skyblockaddons.tweaker.transformer.ITransformer;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.tree.*;
 
 import java.util.Iterator;
-import java.util.List;
 
-public class TileEntityEnderChestRendererTransformer implements Transformer {
+public class TileEntityEnderChestRendererTransformer implements ITransformer {
 
     /**
      * {@link net.minecraft.client.renderer.tileentity.TileEntityEnderChestRenderer}
@@ -19,10 +18,10 @@ public class TileEntityEnderChestRendererTransformer implements Transformer {
 
     @Override
     public void transform(ClassNode classNode, String name) {
-        for (MethodNode methodNode : (List<MethodNode>)classNode.methods) { // Loop through all methods inside of the class.
+        for (MethodNode methodNode : classNode.methods) { // Loop through all methods inside of the class.
 
             String methodName = mapMethodName(classNode, methodNode); // Map all of the method names.
-            if (nameMatches(methodName,"renderTileEntityAt","func_180535_a")) {
+            if (nameMatches(methodName,"renderTileEntityAt", "func_180535_a")) {
 
                 // Objective:
                 // Find: this.bindTexture(ENDER_CHEST_TEXTURE);
@@ -35,13 +34,14 @@ public class TileEntityEnderChestRendererTransformer implements Transformer {
                 int bindTextureCount = 0;
 
                 Iterator<AbstractInsnNode> iterator = methodNode.instructions.iterator();
+
                 while (iterator.hasNext()) {
                     AbstractInsnNode abstractNode = iterator.next();
 
                     if (abstractNode instanceof MethodInsnNode && abstractNode.getOpcode() == Opcodes.INVOKEVIRTUAL) {
                         MethodInsnNode methodInsnNode = (MethodInsnNode)abstractNode;
-                        if (nameMatches(methodInsnNode.owner, "net/minecraft/client/renderer/tileentity/TileEntityEnderChestRenderer", "bhg")
-                                && nameMatches(methodInsnNode.name, "bindTexture", "func_147499_a", "a")) { // TileEntityEnderChestRendererHook.bindTexture(ENDER_CHEST_TEXTURE);
+                        if (nameMatches(methodInsnNode.owner, "net/minecraft/client/renderer/tileentity/TileEntityEnderChestRenderer")
+                                && nameMatches(methodInsnNode.name, "bindTexture", "func_147499_a")) { // TileEntityEnderChestRendererHook.bindTexture(ENDER_CHEST_TEXTURE);
                             if (bindTextureCount == 1) { // Find the second statement, not the first one.
                                 methodNode.instructions.insertBefore(abstractNode, new MethodInsnNode(Opcodes.INVOKESTATIC, "codes/biscuit/skyblockaddons/asm/hooks/TileEntityEnderChestRendererHook",
                                         // Add TileEntityEnderChestRendererHook.bindTexture(this, (ResourceLocation)ENDER_CHEST_TEXTURE);
@@ -49,8 +49,8 @@ public class TileEntityEnderChestRendererTransformer implements Transformer {
                                 iterator.remove(); // Remove the old method call.
                             }
                             bindTextureCount++;
-                        } else if (nameMatches(methodInsnNode.owner, "net/minecraft/client/model/ModelChest", "baz") &&
-                                nameMatches(methodInsnNode.name, "renderAll", "func_78231_a", "a")) { // The two lines are to make sure its before the "this" & the "field_147521_c".
+                        } else if (nameMatches(methodInsnNode.owner, "net/minecraft/client/model/ModelChest") &&
+                                nameMatches(methodInsnNode.name, "renderAll", "func_78231_a")) { // The two lines are to make sure its before the "this" & the "field_147521_c".
                             methodNode.instructions.insertBefore(methodNode.instructions.get(methodNode.instructions.indexOf(abstractNode)-2), insertChangeEnderchestColor());
                         }
                     }

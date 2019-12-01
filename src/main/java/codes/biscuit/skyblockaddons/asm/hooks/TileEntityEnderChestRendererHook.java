@@ -9,31 +9,18 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.tileentity.TileEntityEnderChestRenderer;
 import net.minecraft.util.ResourceLocation;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-
 public class TileEntityEnderChestRendererHook {
 
     private static final ResourceLocation BLANK_ENDERCHEST = new ResourceLocation("skyblockaddons", "enderchest.png");
 
-    private static Method bindTexture = null;
-
     public static void bindTexture(TileEntityEnderChestRenderer tileEntityEnderChestRenderer, ResourceLocation enderChestTexture) {
-        try {
-            SkyblockAddons main = SkyblockAddons.getInstance();
-            if (bindTexture == null) {
-                bindTexture = tileEntityEnderChestRenderer.getClass().getSuperclass().getDeclaredMethod(main.getUtils().isDevEnviroment() ? "bindTexture" : "func_147499_a", ResourceLocation.class);
-                bindTexture.setAccessible(true);
-            }
+        SkyblockAddons main = SkyblockAddons.getInstance();
 
-            if (main.getUtils().isOnSkyblock() && Minecraft.getMinecraft().currentScreen == null && main.getConfigValues().isEnabled(Feature.MAKE_ENDERCHESTS_GREEN_IN_END) &&
-                    (main.getUtils().getLocation() == EnumUtils.Location.THE_END || main.getUtils().getLocation() == EnumUtils.Location.DRAGONS_NEST)) {
-                bindTexture.invoke(tileEntityEnderChestRenderer, BLANK_ENDERCHEST);
-            } else {
-                bindTexture.invoke(tileEntityEnderChestRenderer, enderChestTexture);
-            }
-        } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
-            e.printStackTrace();
+        if (main.getUtils().isOnSkyblock() && Minecraft.getMinecraft().currentScreen == null && main.getConfigValues().isEnabled(Feature.MAKE_ENDERCHESTS_GREEN_IN_END) &&
+                (main.getUtils().getLocation() == EnumUtils.Location.THE_END || main.getUtils().getLocation() == EnumUtils.Location.DRAGONS_NEST)) {
+            tileEntityEnderChestRenderer.bindTexture(BLANK_ENDERCHEST);
+        } else {
+            tileEntityEnderChestRenderer.bindTexture(enderChestTexture);
         }
     }
 

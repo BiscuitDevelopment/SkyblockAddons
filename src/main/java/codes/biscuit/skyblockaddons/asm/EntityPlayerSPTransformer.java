@@ -1,12 +1,10 @@
 package codes.biscuit.skyblockaddons.asm;
 
-import codes.biscuit.skyblockaddons.tweaker.transformer.Transformer;
+import codes.biscuit.skyblockaddons.tweaker.transformer.ITransformer;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.tree.*;
 
-import java.util.List;
-
-public class EntityPlayerSPTransformer implements Transformer {
+public class EntityPlayerSPTransformer implements ITransformer {
 
     /**
      * {@link net.minecraft.client.entity.EntityPlayerSP}
@@ -18,7 +16,7 @@ public class EntityPlayerSPTransformer implements Transformer {
 
     @Override
     public void transform(ClassNode classNode, String name) {
-        for (MethodNode methodNode : (List<MethodNode>)classNode.methods) {
+        for (MethodNode methodNode : classNode.methods) {
             String methodName = mapMethodName(classNode, methodNode);
 
             // Objective:
@@ -29,7 +27,7 @@ public class EntityPlayerSPTransformer implements Transformer {
             //               return null;
             //           }
 
-            if (nameMatches(methodName, "dropOneItem","func_71040_bB")) {
+            if (nameMatches(methodName, "dropOneItem", "func_71040_bB")) {
                 methodNode.instructions.insertBefore(methodNode.instructions.getFirst(), insertConfirmation());
                 break;
             }
@@ -47,7 +45,7 @@ public class EntityPlayerSPTransformer implements Transformer {
         list.add(new VarInsnNode(Opcodes.ILOAD, 1));
         list.add(new VarInsnNode(Opcodes.ALOAD, 3)); // EntityPlayerSPHook.dropOneItemConfirmation(dropAll, returnValue);
         list.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "codes/biscuit/skyblockaddons/asm/hooks/EntityPlayerSPHook", "dropOneItemConfirmation",
-                "(ZLcodes/biscuit/skyblockaddons/asm/hooks/ReturnValue;)Lnet/minecraft/entity/item/EntityItem;", false));
+        "(ZLcodes/biscuit/skyblockaddons/asm/hooks/ReturnValue;)Lnet/minecraft/entity/item/EntityItem;", false));
 
         list.add(new VarInsnNode(Opcodes.ALOAD, 3));
         list.add(new MethodInsnNode(Opcodes.INVOKEVIRTUAL, "codes/biscuit/skyblockaddons/asm/hooks/ReturnValue", "isCancelled",
