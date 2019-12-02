@@ -25,7 +25,6 @@ import codes.biscuit.skyblockaddons.utils.RomanNumeralParser;
 import codes.biscuit.skyblockaddons.utils.Scheduler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
-import net.minecraft.client.gui.GuiDownloadTerrain;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.inventory.GuiChest;
 import net.minecraft.client.settings.KeyBinding;
@@ -255,6 +254,9 @@ public class PlayerListener {
             }
             
             if(main.getConfigValues().isEnabled(Feature.ZEALOT_COUNTER) && message.equals("A special Zealot has spawned nearby!")) {
+            	//edit message to include counter
+            	e.message = new ChatComponentText(e.message.getFormattedText() + EnumChatFormatting.GRAY + " (" + zealotsKilled + ")");
+            	
             	zealotsKilled = -1; //this is triggered before the death of the killed zealot, so this is set to -1 to account for that
             }
 
