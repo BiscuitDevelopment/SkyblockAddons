@@ -10,7 +10,7 @@
     "settings": "Postavke",
     "magmaBossWarning": "Magma Boss Upozorenje",
     "itemDropConfirmation": "Konfirmacija Bacanja Stvari",
-    "hideSkeletonHatBones": "Sakrij Kosti Skeleton Helmeta",
+    "hideSkeletonHatBones": "Sakrij Kosti Skeleton Kacige",
     "skeletonHatBonesBar": "Bar Kosti Skeleton Kacige",
     "hideFoodAndArmor": "Sakrij Hranu i Armor Bar",
     "fullInventoryWarning": "Upozorenje Za Full Inventar",
@@ -52,26 +52,26 @@
     "lockSlots": "Dopusti Zaključavanje Slotova",
     "lockSlot": "Zaključaj Slot",
     "dontResetCursorInventory": "Nemoj Resetirati Kursor Između Inventara",
-    "summoningEyeAlert": "Upozorenje Za Summoning Eye",
-    "makeEnderchestsInEndGreen": "Promijeni boju Enderchesta u Endu",
+    "summoningEyeAlert": "Upozorenje Za Evokacijske (Summoning) Oči",
+    "makeEnderchestsInEndGreen": "Promijeni Boju Enderchesta u Endu",
     "changeColor": "Promijeni Boju",
-    "showInOtherGames": "Pokaži u Ostalim Igrama",
+    "showInOtherGames": "Pokaži u Ostalim Igricama",
     "useVanillaTexture": "Koristi Vanilla Teksturu",
     "textStyle": "Stil Teksta",
     "textStyles": {
-      "one": "Prvi Stil",
-      "two": "Drugi Stil"
+      "one": "Stil Jedan",
+      "two": "Stil Dva"
     },
     "warningDuration": "Dužina Upozorenja",
-    "dontOpenProfileWithBow": "Ne Otvaraj Profil Sa Bow-om",
-    "stopDroppingSellingRareItems": "Spriječi Bacanje/Prodavanje Vrijednih Stvari",
+    "dontOpenProfileWithBow": "Nemoj Otvoriti Profil sa Lukom",
+    "stopDroppingSellingRareItems": "Zaustavi Bacanje/Slanje Rijetkih Stvari",
     "makeBackpackInventoriesColored": "Obojani Inventari",
-    "avoidBreakingBottomSugarCane": "Spriječi Trganje Sugar Cane-a Na Dnu",
+    "avoidBreakingBottomSugarCane": "Zaustavi Prijelom Dna Šećerne Trske",
     "replaceRomanNumeralsWithNumbers": "Zamijeni Rimske Brojeve na Stvarima",
     "changeBarColorForPotions": "Promjeni Boju Bara za Wither i Otrov",
-    "craftingPatterns": "Odaberi Crafting Uzorke",
-    "soundIndicatorForFishing": "Zvučni Indikator Kada Će Riba Zagristi",
-    "avoidBlinkingNightVision": "Odstrani Treperenje Kod Night Vision Napitka",
+    "craftingPatterns": "Odaberi Uzorke za Kraftanje",
+    "soundIndicatorForFishing": "Zvučni Indikator za Ribolov",
+    "avoidBlinkingNightVision": "Isključi Treptanje Napitka Noćne Vizije",
     "disableMinionLocationWarning": "Isključi Lokacija Nije Odlična Upozorenja",
     "jungleAxeCooldown": "Cooldown Jungle Sjekire",
     "organizeLongEnchantmentLists": "Organiziraj Duge Liste Enchantanja",
@@ -79,11 +79,11 @@
     "speedPercentage": "Postotak Brzine",
     "collectionDisplay": "Prikaz Napretka Skill-ova",
     "onlyMineOresDeepCaverns": "Dopusti Kopanje Samo Ruda u Deep Cavernsu",
-    "onlyMineValuablesNether": "Samo kopaj vrijednosti u Paklu",
-    "revenantIndicator": "Indikator Napretka Na Slayer Armor-u",
+    "onlyMineValuablesNether": "Samo Kopaj Vrijednosti u Nether-u",
+    "revenantIndicator": "Indikator Napretka Na Slayer Oklopu",
     "specialZealotAlert": "Upozorenje za Posebne Zealote",
     "enableMessageWhenActionPrevented": "Prikaži Poruku Kada je Akcija Spriječena",
-    "hidePetHealthBar": "Sakrij Health Bar Pet-a"
+    "hidePetHealthBar": "Sakrij Bar Zdravlja Ljubimca"
   },
   "messages": {
     "dropConfirmation": "Opet baci ovu stvar za konfirmaciju!",
@@ -104,9 +104,9 @@
     "newUpdateAvailable": "Nova verzija (%version%) je dostupna!",
     "deleteOldFile": "Preuzimanje je gotovo, molim vas da otvori svoj mods folder pomoću gumba dolje, zatvori Minecraft i obriši staru verziju (ili je obriši kasnije ako želiš).",
     "wantToViewPatchNotes": "Želiš li pročitati promjene?",
-    "downloadLink": "UPDATE LINK",
+    "downloadLink": "POVEZNICA AŽURIRANJA",
     "downloadAutomatically": "AUTOMATSKO PREUZIMANJE",
-    "openModFolder": "MODS FOLDER",
+    "openModFolder": "MODS DIREKTORIJ",
     "joinTheDiscord": "UĐI U DISCORD",
     "update": {
       "majorAvailable": "Nova velika verzija (%version%) je dostupna! Link za preuzimanje može biti pronađen u chat-u.",
@@ -127,6 +127,6 @@
     "specialZealotFound": "Posebni Zealot!",
     "blockIncompletePatterns": "Blokiraj pravljenje neispunjenih oblika (preporučeno)",
     "searchFeatures": "Opcije pretraživanja",
-    "downloadingUpdateFile": "Preuzimanje update file-a..."
+    "downloadingUpdateFile": "Preuzimanje datoteke ažuriranja..."
   }
 }
