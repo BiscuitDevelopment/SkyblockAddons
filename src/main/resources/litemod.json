@@ -5,8 +5,7 @@
   "url": "https://hypixel.net/threads/forge-1-8-9-skyblockaddons-useful-features-for-skyblock.2109217/",
   "version": "${version}",
   "mcversion": "${mcversion}",
-  "mixinConfigs": [
-    "mixins.skyblockaddons.json"
-  ],
-  "tweakClass": "codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsTweaker"
+  "classTransformerClasses": [
+    "codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsTransformer"
+  ]
 }

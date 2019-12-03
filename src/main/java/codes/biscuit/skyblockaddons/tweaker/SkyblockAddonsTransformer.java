@@ -12,12 +12,11 @@ import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.tree.ClassNode;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.Collection;
 
 public class SkyblockAddonsTransformer implements IClassTransformer {
+
+    public final static boolean NOTCH_MAPPINGS = true;
 
     public final static boolean DEOBFUSCATED = (boolean)Launch.blackboard.get("fml.deobfuscatedEnvironment");
 
@@ -26,22 +25,22 @@ public class SkyblockAddonsTransformer implements IClassTransformer {
     private final Multimap<String, ITransformer> transformerMap = ArrayListMultimap.create();
 
     public SkyblockAddonsTransformer() {
-        registerTransformer(new TileEntityEnderChestRendererTransformer()); //
-        registerTransformer(new MouseHelperTransformer()); //
-        registerTransformer(new EntityPlayerSPTransformer()); //
-        registerTransformer(new EntityRendererTransformer()); //
-        registerTransformer(new SoundManagerTransformer()); //
-        registerTransformer(new RenderManagerTransformer()); //
-        registerTransformer(new PlayerControllerMPTransformer()); //
-        registerTransformer(new NetHandlerPlayClientTransformer()); //
-        registerTransformer(new MinecraftTransformer()); //
-//        registerTransformer(new ItemTransformer());
-//        registerTransformer(new GuiScreenTransformer());
-//        registerTransformer(new GuiInventoryTransformer());
-//        registerTransformer(new GuiContainerTransformer());
-//        registerTransformer(new GuiChestTransformer());
-//        registerTransformer(new GuiNewChatTransformer());
-//        registerTransformer(new RendererLivingEntityTransformer());
+        registerTransformer(new TileEntityEnderChestRendererTransformer());
+        registerTransformer(new MouseHelperTransformer());
+        registerTransformer(new EntityPlayerSPTransformer());
+        registerTransformer(new EntityRendererTransformer());
+        registerTransformer(new SoundManagerTransformer());
+        registerTransformer(new RenderManagerTransformer());
+        registerTransformer(new PlayerControllerMPTransformer());
+        registerTransformer(new NetHandlerPlayClientTransformer());
+        registerTransformer(new MinecraftTransformer());
+        registerTransformer(new ItemTransformer());
+        registerTransformer(new GuiScreenTransformer());
+        registerTransformer(new GuiInventoryTransformer());
+        registerTransformer(new GuiContainerTransformer());
+        registerTransformer(new GuiChestTransformer());
+        registerTransformer(new GuiNewChatTransformer());
+        registerTransformer(new RendererLivingEntityTransformer());
     }
 
     private void registerTransformer(ITransformer transformer) {
@@ -75,26 +74,26 @@ public class SkyblockAddonsTransformer implements IClassTransformer {
         } catch (Throwable t) {
             logger.error("Exception when transforming " + transformedName + " : " + t.getClass().getSimpleName());
             t.printStackTrace();
-            outputBytecode(transformedName, writer);
+//            outputBytecode(transformedName, writer);
             return bytes;
         }
 
-        outputBytecode(transformedName, writer);
+//        outputBytecode(transformedName, writer);
 
         return writer.toByteArray();
     }
 
-    private void outputBytecode(String transformedName, ClassWriter writer) {
-        if (OUTPUT_BYTECODE) {
-            try {
-                File file = new File("C:\\Users\\jlroc\\Desktop\\bytecode", transformedName + ".class");
-                file.createNewFile();
-                FileOutputStream os = new FileOutputStream(file);
-                os.write(writer.toByteArray());
-                os.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
+//    private void outputBytecode(String transformedName, ClassWriter writer) {
+//        if (OUTPUT_BYTECODE) {
+//            try {
+//                File file = new File("C:\\Users\\jlroc\\Desktop\\bytecode", transformedName + ".class");
+//                file.createNewFile();
+//                FileOutputStream os = new FileOutputStream(file);
+//                os.write(writer.toByteArray());
+//                os.close();
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//    }
 }

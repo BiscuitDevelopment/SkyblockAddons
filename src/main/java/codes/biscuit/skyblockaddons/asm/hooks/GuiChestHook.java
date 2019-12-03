@@ -1,6 +1,7 @@
 package codes.biscuit.skyblockaddons.asm.hooks;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.asm.utils.ReturnValue;
 import codes.biscuit.skyblockaddons.gui.elements.CraftingPatternSelection;
 import codes.biscuit.skyblockaddons.utils.*;
 import net.minecraft.client.Minecraft;
@@ -45,7 +46,7 @@ public class GuiChestHook {
     }
 
     public static void drawScreen(int guiLeft, int guiTop) {
-        if (textFieldMatch != null) {
+        if (textFieldMatch != null && (inventoryType == EnumUtils.InventoryType.ENCHANTMENT_TABLE||inventoryType == EnumUtils.InventoryType.REFORGE_ANVIL)) {
             GlStateManager.color(1F, 1F, 1F);
             SkyblockAddons main = SkyblockAddons.getInstance();
             String inventoryMessage = inventoryType.getMessage();
@@ -136,20 +137,25 @@ public class GuiChestHook {
     public static boolean keyTyped(char typedChar, int keyCode) { // return whether to continue (super.keyTyped(typedChar, keyCode);)
         if ((inventoryType == EnumUtils.InventoryType.ENCHANTMENT_TABLE || inventoryType == EnumUtils.InventoryType.REFORGE_ANVIL)) {
             if (keyCode != Minecraft.getMinecraft().gameSettings.keyBindInventory.getKeyCode() || (!textFieldMatch.isFocused() && !textFieldExclusions.isFocused())) {
+                processTextFields(typedChar, keyCode);
                 return true;
             }
-            if (textFieldMatch != null) {
-                textFieldMatch.textboxKeyTyped(typedChar, keyCode);
-                textFieldExclusions.textboxKeyTyped(typedChar, keyCode);
-                List<String> enchantments = new LinkedList<>(Arrays.asList(textFieldMatch.getText().split(",")));
-                SkyblockAddons.getInstance().getUtils().setEnchantmentMatch(enchantments);
-                enchantments = new LinkedList<>(Arrays.asList(textFieldExclusions.getText().split(",")));
-                SkyblockAddons.getInstance().getUtils().setEnchantmentExclusion(enchantments);
-            }
+            processTextFields(typedChar, keyCode);
         } else {
             return true;
         }
         return false;
+    }
+
+    private static void processTextFields(char typedChar, int keyCode) {
+        if (textFieldMatch != null) {
+            textFieldMatch.textboxKeyTyped(typedChar, keyCode);
+            textFieldExclusions.textboxKeyTyped(typedChar, keyCode);
+            List<String> enchantments = new LinkedList<>(Arrays.asList(textFieldMatch.getText().split(",")));
+            SkyblockAddons.getInstance().getUtils().setEnchantmentMatch(enchantments);
+            enchantments = new LinkedList<>(Arrays.asList(textFieldExclusions.getText().split(",")));
+            SkyblockAddons.getInstance().getUtils().setEnchantmentExclusion(enchantments);
+        }
     }
 
     public static void handleMouseClick(Slot slotIn, Container slots, IInventory lowerChestInventory, ReturnValue returnValue) {

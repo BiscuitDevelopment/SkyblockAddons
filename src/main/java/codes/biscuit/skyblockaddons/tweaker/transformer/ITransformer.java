@@ -1,13 +1,10 @@
 package codes.biscuit.skyblockaddons.tweaker.transformer;
 
-import net.minecraft.launchwrapper.Launch;
 import net.minecraftforge.fml.common.asm.transformers.deobf.FMLDeobfuscatingRemapper;
 import org.objectweb.asm.tree.ClassNode;
 import org.objectweb.asm.tree.MethodNode;
 
 public interface ITransformer {
-
-    boolean DEOBFUSCATED = (boolean) Launch.blackboard.get("fml.deobfuscatedEnvironment");
 
     String[] getClassName();
 

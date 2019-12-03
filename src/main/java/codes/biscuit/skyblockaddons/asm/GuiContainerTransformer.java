@@ -1,6 +1,8 @@
 package codes.biscuit.skyblockaddons.asm;
 
-import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsTransformer;
+import codes.biscuit.skyblockaddons.asm.utils.TransformerClass;
+import codes.biscuit.skyblockaddons.asm.utils.TransformerField;
+import codes.biscuit.skyblockaddons.asm.utils.TransformerMethod;
 import codes.biscuit.skyblockaddons.tweaker.transformer.ITransformer;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.tree.*;
@@ -34,9 +36,8 @@ public class GuiContainerTransformer implements ITransformer {
                     AbstractInsnNode abstractNode = iterator.next();
                     if (abstractNode instanceof MethodInsnNode && abstractNode.getOpcode() == Opcodes.INVOKEVIRTUAL) {
                         MethodInsnNode methodInsnNode = (MethodInsnNode)abstractNode;
-                        if (nameMatches(methodInsnNode.owner,"net/minecraft/client/renderer/entity/RenderItem", "bjh") &&
-                                nameMatches(methodInsnNode.name,"renderItemAndEffectIntoGUI", "func_180450_b", "b") &&
-                                (!methodInsnNode.name.equals("b") || methodInsnNode.desc.equals("(Lzx;II)V"))) {
+                        if (methodInsnNode.owner.equals(TransformerClass.RenderItem.getNameRaw()) &&
+                                TransformerMethod.renderItemAndEffectIntoGUI.matches(methodInsnNode)) {
 
                             methodNode.instructions.insert(abstractNode, insertShowEnchantments());
                             break;
@@ -74,27 +75,22 @@ public class GuiContainerTransformer implements ITransformer {
                         }
                     } else if (abstractNode instanceof MethodInsnNode && abstractNode.getOpcode() == Opcodes.INVOKEVIRTUAL) {
                         MethodInsnNode methodInsnNode = (MethodInsnNode)abstractNode;
-                        if (nameMatches(methodInsnNode.owner,"net/minecraft/client/gui/inventory/GuiContainer", "ayl") &&
-                                nameMatches(methodInsnNode.name, "drawGradientRect", "func_73733_a", "a")
-                                && (!methodInsnNode.name.equals("a") || methodInsnNode.desc.equals("(IIIIII)V"))) {
+                        if (methodInsnNode.owner.equals(TransformerClass.GuiContainer.getNameRaw()) &&
+                                TransformerMethod.drawGradientRect.matches(methodInsnNode)) {
                             methodNode.instructions.insertBefore(abstractNode, new VarInsnNode(Opcodes.ALOAD, 0));
-                            methodNode.instructions.insertBefore(abstractNode, new FieldInsnNode(Opcodes.GETFIELD, SkyblockAddonsTransformer.DEOBFUSCATED ? "net/minecraft/client/gui/inventory/GuiContainer" : "ayl",
-                                    SkyblockAddonsTransformer.DEOBFUSCATED ? "theSlot" : "u", SkyblockAddonsTransformer.DEOBFUSCATED ? "Lnet/minecraft/inventory/Slot;" : "Lyg;")); // this.theSlot
+                            methodNode.instructions.insertBefore(abstractNode, TransformerField.theSlot.getField(TransformerClass.GuiContainer)); // this.theSlot
 
                             methodNode.instructions.insertBefore(abstractNode, new MethodInsnNode(Opcodes.INVOKESTATIC, "codes/biscuit/skyblockaddons/asm/hooks/GuiContainerHook",
-                                    "drawGradientRect", SkyblockAddonsTransformer.DEOBFUSCATED ? "(Lnet/minecraft/client/gui/inventory/GuiContainer;IIIIIILnet/minecraft/inventory/Slot;)V" :
-                                    "(Layl;IIIIIILyg;)V", false));
+                                    "drawGradientRect", "("+TransformerClass.GuiContainer.getName()+"IIIIII"+TransformerClass.Slot.getName()+")V", false));
                             // GuiContainerHook.drawGradientRect(this, j1, k1, j1 + 16, k1 + 16, -2130706433, -2130706433, this.theSlot);
 
                             iterator.remove(); // Remove previous call.
                         }
                     }  else if (abstractNode instanceof MethodInsnNode && abstractNode.getOpcode() == Opcodes.INVOKESPECIAL ) {
                         MethodInsnNode methodInsnNode = (MethodInsnNode)abstractNode;
-                        if (nameMatches(methodInsnNode.owner,"net/minecraft/client/gui/inventory/GuiContainer", "ayl") && nameMatches(methodInsnNode.name, "drawSlot", "func_146977_a", "a")
-                        && (!methodInsnNode.name.equals("a") || methodInsnNode.desc.equals("(Lyg;)V"))) {
+                        if (methodInsnNode.owner.equals(TransformerClass.GuiContainer.getNameRaw()) && TransformerMethod.drawSlot.matches(methodInsnNode)) {
                             methodNode.instructions.insert(abstractNode, new MethodInsnNode(Opcodes.INVOKESTATIC, "codes/biscuit/skyblockaddons/asm/hooks/GuiContainerHook",
-                                    "drawSlot", SkyblockAddonsTransformer.DEOBFUSCATED ? "(Lnet/minecraft/client/gui/inventory/GuiContainer;Lnet/minecraft/inventory/Slot;)V"
-                                    : "(Layl;Lyg;)V", false));
+                                    "drawSlot","("+TransformerClass.GuiContainer.getName()+TransformerClass.Slot.getName()+")V", false));
                             // GuiContainerHook.drawSlot(this, slot);
 
                             methodNode.instructions.insert(abstractNode, new VarInsnNode(Opcodes.ALOAD, 9)); // slot
@@ -118,8 +114,8 @@ public class GuiContainerTransformer implements ITransformer {
                     AbstractInsnNode abstractNode = iterator.next();
                     if (abstractNode instanceof MethodInsnNode && abstractNode.getOpcode() == Opcodes.INVOKEVIRTUAL) {
                         MethodInsnNode methodInsnNode = (MethodInsnNode)abstractNode;
-                        if (nameMatches(methodInsnNode.owner,"net/minecraft/client/gui/inventory/GuiContainer", "ayl")  &&
-                                nameMatches(methodInsnNode.name, "checkHotbarKeys", "func_146983_a", "b") && (!methodInsnNode.name.equals("b") || methodInsnNode.desc.equals("(I)Z"))) {
+                        if (methodInsnNode.owner.equals(TransformerClass.GuiContainer.getNameRaw())  &&
+                                TransformerMethod.checkHotbarKeys.matches(methodInsnNode)) {
                             methodNode.instructions.insertBefore(abstractNode.getPrevious().getPrevious(), insertKeyTyped());
                         }
                     }
@@ -136,8 +132,7 @@ public class GuiContainerTransformer implements ITransformer {
         list.add(new VarInsnNode(Opcodes.ILOAD, 3)); // j
         list.add(new VarInsnNode(Opcodes.ALOAD, 4)); // itemstack
         list.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "codes/biscuit/skyblockaddons/asm/hooks/GuiContainerHook",
-                "showEnchantments", DEOBFUSCATED ? "(Lnet/minecraft/client/gui/inventory/GuiContainer;IILnet/minecraft/item/ItemStack;)V" :
-                "(Lyg;IILzx;)V", false)); // GuiContainerHook.showEnchantments(slotIn, i, j, item);
+                "showEnchantments", "("+TransformerClass.Slot.getName()+"II"+TransformerClass.ItemStack.getName()+")V", false)); // GuiContainerHook.showEnchantments(slotIn, i, j, item);
 
         return list;
     }
@@ -148,11 +143,9 @@ public class GuiContainerTransformer implements ITransformer {
         list.add(new VarInsnNode(Opcodes.ALOAD, 0)); // this
 
         list.add(new VarInsnNode(Opcodes.ALOAD, 0)); // this.
-        list.add(new FieldInsnNode(Opcodes.GETFIELD, DEOBFUSCATED ? "net/minecraft/client/GuiScreen" : "ayl", SkyblockAddonsTransformer.DEOBFUSCATED ?
-                "fontRendererObj" : "q", DEOBFUSCATED ? "Lnet/minecraft/client/gui/FontRenderer;" : "Lavn;")); // fontRendererObj
+        list.add(TransformerField.fontRendererObj.getField(TransformerClass.GuiContainer)); // fontRendererObj
         list.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "codes/biscuit/skyblockaddons/asm/hooks/GuiContainerHook", // GuiContainerHook.drawBackpacks(this, this.fontRendererObj);
-                "drawBackpacks", DEOBFUSCATED ? "(Lnet/minecraft/client/gui/inventory/GuiContainer;Lnet/minecraft/client/gui/FontRenderer;)V" :
-                "(Layl;Lavn;)V", false));
+                "drawBackpacks", "("+TransformerClass.GuiContainer.getName()+TransformerClass.FontRenderer.getName()+")V", false));
 
         return list;
     }
@@ -160,26 +153,23 @@ public class GuiContainerTransformer implements ITransformer {
     private InsnList insertKeyTyped() {
         InsnList list = new InsnList();
 
-        list.add(new TypeInsnNode(Opcodes.NEW, "codes/biscuit/skyblockaddons/asm/hooks/ReturnValue"));
+        list.add(new TypeInsnNode(Opcodes.NEW, "codes/biscuit/skyblockaddons/asm/utils/ReturnValue"));
         list.add(new InsnNode(Opcodes.DUP)); // ReturnValue returnValue = new ReturnValue();
-        list.add(new MethodInsnNode(Opcodes.INVOKESPECIAL, "codes/biscuit/skyblockaddons/asm/hooks/ReturnValue", "<init>", "()V", false));
+        list.add(new MethodInsnNode(Opcodes.INVOKESPECIAL, "codes/biscuit/skyblockaddons/asm/utils/ReturnValue", "<init>", "()V", false));
         list.add(new VarInsnNode(Opcodes.ASTORE, 3));
 
         list.add(new VarInsnNode(Opcodes.ALOAD, 0)); // this
         list.add(new VarInsnNode(Opcodes.ILOAD, 2)); // keyCode
 
         list.add(new VarInsnNode(Opcodes.ALOAD, 0)); // this.theSlot
-        list.add(new FieldInsnNode(Opcodes.GETFIELD, DEOBFUSCATED ? "net/minecraft/client/gui/inventory/GuiContainer" : "ayl", SkyblockAddonsTransformer.DEOBFUSCATED ?
-                "theSlot" : "u",  //field_147006_u
-                DEOBFUSCATED ? "Lnet/minecraft/inventory/Slot;" :"Lyg;"));
+        list.add(TransformerField.theSlot.getField(TransformerClass.GuiContainer));
 
         list.add(new VarInsnNode(Opcodes.ALOAD, 3)); // GuiContainerHook.keyTyped(this, keyCode, this.theSlot, returnValue);
         list.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "codes/biscuit/skyblockaddons/asm/hooks/GuiContainerHook", "keyTyped",
-                DEOBFUSCATED ? "(Lnet/minecraft/client/gui/inventory/GuiContainer;ILnet/minecraft/inventory/Slot;Lcodes/biscuit/skyblockaddons/asm/hooks/ReturnValue;)V" :
-                        "(Layl;ILyg;Lcodes/biscuit/skyblockaddons/asm/hooks/ReturnValue;)V", false));
+                "("+TransformerClass.GuiContainer.getName()+"I"+TransformerClass.Slot.getName()+"Lcodes/biscuit/skyblockaddons/asm/utils/ReturnValue;)V", false));
 
         list.add(new VarInsnNode(Opcodes.ALOAD, 3));
-        list.add(new MethodInsnNode(Opcodes.INVOKEVIRTUAL, "codes/biscuit/skyblockaddons/asm/hooks/ReturnValue", "isCancelled",
+        list.add(new MethodInsnNode(Opcodes.INVOKEVIRTUAL, "codes/biscuit/skyblockaddons/asm/utils/ReturnValue", "isCancelled",
                 "()Z", false));
         LabelNode notCancelled = new LabelNode(); // if (returnValue.isCancelled())
         list.add(new JumpInsnNode(Opcodes.IFEQ, notCancelled));

@@ -1,6 +1,7 @@
 package codes.biscuit.skyblockaddons.asm.hooks;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.asm.utils.ReturnValue;
 import codes.biscuit.skyblockaddons.utils.Backpack;
 import codes.biscuit.skyblockaddons.utils.CooldownManager;
 import codes.biscuit.skyblockaddons.utils.Feature;

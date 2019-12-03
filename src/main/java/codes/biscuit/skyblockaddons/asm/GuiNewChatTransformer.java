@@ -1,5 +1,7 @@
 package codes.biscuit.skyblockaddons.asm;
 
+import codes.biscuit.skyblockaddons.asm.utils.TransformerClass;
+import codes.biscuit.skyblockaddons.asm.utils.TransformerMethod;
 import codes.biscuit.skyblockaddons.tweaker.transformer.ITransformer;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.tree.AbstractInsnNode;
@@ -35,10 +37,9 @@ public class GuiNewChatTransformer implements ITransformer {
                     AbstractInsnNode abstractNode = iterator.next();
                     if (abstractNode instanceof MethodInsnNode && abstractNode.getOpcode() == Opcodes.INVOKEINTERFACE) {
                         MethodInsnNode methodInsnNode = (MethodInsnNode) abstractNode;
-                        System.out.println(methodInsnNode.owner+"|"+methodInsnNode.name);
-                        if (nameMatches(methodInsnNode.owner, "net/minecraft/util/IChatComponent", "eu") && nameMatches(methodInsnNode.name, "getUnformattedText", "func_150260_c", "c")) {
+                        if (methodInsnNode.owner.equals(TransformerClass.IChatComponent.getNameRaw()) && TransformerMethod.getUnformattedText.matches(methodInsnNode)) {
                             methodNode.instructions.insertBefore(abstractNode, new MethodInsnNode(Opcodes.INVOKESTATIC, "codes/biscuit/skyblockaddons/asm/hooks/GuiNewChatHook",
-                                    "getUnformattedText", "(Lnet/minecraft/util/IChatComponent;)Ljava/lang/String;", false)); // GuiNewChatHook.getUnformattedText(chatComponent);
+                                    "getUnformattedText", "("+TransformerClass.IChatComponent.getName()+")Ljava/lang/String;", false)); // GuiNewChatHook.getUnformattedText(chatComponent);
 
                             iterator.remove(); // Remove the old line.
                             break;

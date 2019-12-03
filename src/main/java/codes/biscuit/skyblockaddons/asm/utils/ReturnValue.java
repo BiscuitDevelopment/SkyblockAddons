@@ -1,4 +1,4 @@
-package codes.biscuit.skyblockaddons.asm.hooks;
+package codes.biscuit.skyblockaddons.asm.utils;
 
 public class ReturnValue<R> {
 

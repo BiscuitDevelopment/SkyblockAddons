@@ -1,5 +1,6 @@
 package codes.biscuit.skyblockaddons.asm;
 
+import codes.biscuit.skyblockaddons.asm.utils.TransformerClass;
 import codes.biscuit.skyblockaddons.tweaker.transformer.ITransformer;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.tree.AbstractInsnNode;
@@ -54,9 +55,9 @@ public class RendererLivingEntityTransformer implements ITransformer {
                     AbstractInsnNode abstractNode = iterator.next();
                     if (abstractNode instanceof MethodInsnNode && abstractNode.getOpcode() == Opcodes.INVOKEVIRTUAL) {
                         MethodInsnNode methodInsnNode = (MethodInsnNode) abstractNode;
-                        if (methodInsnNode.owner.equals("net/minecraft/entity/player/EntityPlayer") && methodInsnNode.name.equals("isWearing")) {
+                        if (methodInsnNode.owner.equals(TransformerClass.EntityPlayer.getNameRaw()) && methodInsnNode.name.equals("isWearing")) {
                             methodNode.instructions.insertBefore(abstractNode, new MethodInsnNode(Opcodes.INVOKESTATIC, "codes/biscuit/skyblockaddons/asm/hooks/RendererLivingEntityHook",
-                                    "isWearing", "(Lnet/minecraft/entity/player/EntityPlayer;Lnet/minecraft/entity/player/EnumPlayerModelParts;)Z", false)); // RendererLivingEntityHook.equals(s, "Dinnerbone");
+                                    "isWearing", "("+TransformerClass.EntityPlayer.getName()+TransformerClass.EnumPlayerModelParts.getName()+")Z", false)); // RendererLivingEntityHook.equals(s, "Dinnerbone");
 
                             iterator.remove(); // Remove the old line.
                             break;

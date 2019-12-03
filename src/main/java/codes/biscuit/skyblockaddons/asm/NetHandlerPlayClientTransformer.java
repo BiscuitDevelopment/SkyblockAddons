@@ -1,5 +1,6 @@
 package codes.biscuit.skyblockaddons.asm;
 
+import codes.biscuit.skyblockaddons.asm.utils.TransformerClass;
 import codes.biscuit.skyblockaddons.tweaker.transformer.ITransformer;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.tree.*;
@@ -45,18 +46,18 @@ public class NetHandlerPlayClientTransformer implements ITransformer {
     private InsnList insertHandleSetSlot() {
         InsnList list = new InsnList();
 
-        list.add(new TypeInsnNode(Opcodes.NEW, "codes/biscuit/skyblockaddons/asm/hooks/ReturnValue"));
+        list.add(new TypeInsnNode(Opcodes.NEW, "codes/biscuit/skyblockaddons/asm/utils/ReturnValue"));
         list.add(new InsnNode(Opcodes.DUP)); // ReturnValue returnValue = new ReturnValue();
-        list.add(new MethodInsnNode(Opcodes.INVOKESPECIAL, "codes/biscuit/skyblockaddons/asm/hooks/ReturnValue", "<init>", "()V", false));
+        list.add(new MethodInsnNode(Opcodes.INVOKESPECIAL, "codes/biscuit/skyblockaddons/asm/utils/ReturnValue", "<init>", "()V", false));
         list.add(new VarInsnNode(Opcodes.ASTORE, 5));
 
         list.add(new VarInsnNode(Opcodes.ALOAD, 1)); // packetIn
         list.add(new VarInsnNode(Opcodes.ALOAD, 5)); // NetHanderPlayClientHook.handleSetSlot(packetIn, returnValue);
         list.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "codes/biscuit/skyblockaddons/asm/hooks/NetHanderPlayClientHook", "handleSetSlot",
-                "(Lnet/minecraft/network/play/server/S2FPacketSetSlot;Lcodes/biscuit/skyblockaddons/asm/hooks/ReturnValue;)V", false));
+                "("+TransformerClass.S2FPacketSetSlot+"Lcodes/biscuit/skyblockaddons/asm/utils/ReturnValue;)V", false));
 
         list.add(new VarInsnNode(Opcodes.ALOAD, 5));
-        list.add(new MethodInsnNode(Opcodes.INVOKEVIRTUAL, "codes/biscuit/skyblockaddons/asm/hooks/ReturnValue", "isCancelled",
+        list.add(new MethodInsnNode(Opcodes.INVOKEVIRTUAL, "codes/biscuit/skyblockaddons/asm/utils/ReturnValue", "isCancelled",
                 "()Z", false));
         LabelNode notCancelled = new LabelNode(); // if (returnValue.isCancelled())
         list.add(new JumpInsnNode(Opcodes.IFEQ, notCancelled));
@@ -72,7 +73,7 @@ public class NetHandlerPlayClientTransformer implements ITransformer {
 
         list.add(new VarInsnNode(Opcodes.ALOAD, 1)); // packetIn
         list.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "codes/biscuit/skyblockaddons/asm/hooks/NetHanderPlayClientHook", "handleWindowItems",
-                "(Lnet/minecraft/network/play/server/S30PacketWindowItems;)V", false));
+                "("+TransformerClass.S30PacketWindowItems+")V", false));
 
         return list;
     }
