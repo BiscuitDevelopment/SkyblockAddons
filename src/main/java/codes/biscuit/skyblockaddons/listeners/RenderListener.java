@@ -592,7 +592,7 @@ public class RenderListener {
                 }
             }
         } else if(feature == Feature.ZEALOT_COUNTER) {
-        	if(main.getUtils().getLocation() != EnumUtils.Location.DRAGONS_NEST) return;
+        	if(main.getUtils().getLocation() != EnumUtils.Location.DRAGONS_NEST && buttonLocation == null) return;
         	text = "Zealots killed: " + main.getPlayerListener().getZealotsKilled();
         } else {
             return;

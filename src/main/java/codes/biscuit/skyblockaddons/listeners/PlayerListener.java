@@ -253,7 +253,7 @@ public class PlayerListener {
                 main.getScheduler().schedule(Scheduler.CommandType.RESET_TITLE_FEATURE, main.getConfigValues().getWarningSeconds());
             }
             
-            if(main.getConfigValues().isEnabled(Feature.ZEALOT_COUNTER) && message.equals("A special Zealot has spawned nearby!")) {
+            if(main.getConfigValues().isEnabled(Feature.ZEALOT_COUNTER) && e.message.getFormattedText().equals("§r§aA special §r§5Zealot §r§ahas spawned nearby!§r")) {
             	//edit message to include counter
             	e.message = new ChatComponentText(e.message.getFormattedText() + EnumChatFormatting.GRAY + " (" + zealotsKilled + ")");
             	
