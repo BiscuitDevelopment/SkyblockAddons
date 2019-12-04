@@ -18,7 +18,7 @@ import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 
 public class GuiScreenHook {
 
-    private static final long MADDOX_BATPHONE_COOLDOWN = 3 * 60 * 1000;
+    private static final long MADDOX_BATPHONE_COOLDOWN = 1 * 60 * 1000;
 
     public static void renderBackpack(ItemStack stack, int x, int y, ReturnValue returnValue) {
         SkyblockAddons main = SkyblockAddons.getInstance();
