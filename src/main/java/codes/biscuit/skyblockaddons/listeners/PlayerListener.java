@@ -89,8 +89,6 @@ public class PlayerListener {
     private int recentMagmaCubes = 0;
     private int recentBlazes = 0;
     
-    private int zealotsKilled = 0;
-
 //    private Feature.Accuracy magmaTimerAccuracy = null;
 //    private long magmaTime = 7200;
 
@@ -255,9 +253,9 @@ public class PlayerListener {
             
             if(main.getConfigValues().isEnabled(Feature.ZEALOT_COUNTER) && e.message.getFormattedText().equals("§r§aA special §r§5Zealot §r§ahas spawned nearby!§r")) {
             	//edit message to include counter
-            	e.message = new ChatComponentText(e.message.getFormattedText() + EnumChatFormatting.GRAY + " (" + zealotsKilled + ")");
+            	e.message = new ChatComponentText(e.message.getFormattedText() + EnumChatFormatting.GRAY + " (" + main.getZealotCounter().getKills() + ")");
             	
-            	zealotsKilled = -1; //this is triggered before the death of the killed zealot, so this is set to -1 to account for that
+            	main.getZealotCounter().setKills(-1); //this is triggered before the death of the killed zealot, so this is set to -1 to account for that
             }
 
             Matcher matcher = ABILITY_CHAT_PATTERN.matcher(e.message.getFormattedText());
@@ -444,7 +442,7 @@ public class PlayerListener {
     		if(main.getConfigValues().isEnabled(Feature.ZEALOT_COUNTER)) {
 	    		EntityEnderman enderman = (EntityEnderman) e.entity;
 	    		if(endermen.remove(enderman)) {
-	    			zealotsKilled++;
+	    			main.getZealotCounter().addKill();
 	    		}
     		}
     	}
@@ -748,10 +746,6 @@ public class PlayerListener {
         return recentMagmaCubes;
     }
     
-    public int getZealotsKilled() {
-    	return zealotsKilled;
-    }
-
     public void setRecentBlazes(int recentBlazes) {
         this.recentBlazes = recentBlazes;
     }
