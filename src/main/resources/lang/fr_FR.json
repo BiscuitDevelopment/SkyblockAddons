@@ -90,7 +90,8 @@
       "detailed": "Détail",
       "compact": "Condensé"
     },
-    "disableMagicalSoupMessage": "Masquer les infos chat de la soupe"
+    "disableMagicalSoupMessage": "Masquer les infos chat de la soupe",
+    "zealotCounter": "Show Zealot Counter"
   },
   "messages": {
     "dropConfirmation": "Jetez cet objet une nouvelle fois pour confirmer!",
