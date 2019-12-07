@@ -83,7 +83,14 @@
     "revenantIndicator": "Slayer Oklop Indikator Napretka",
     "specialZealotAlert": "Upozorenje za Posebnog Zealota",
     "enableMessageWhenActionPrevented": "Prikaži Poruku Kada je Akcija Sprečena",
-    "hidePetHealthBar": "Hide Pet Health Bar"
+    "hidePetHealthBar": "Hide Pet Health Bar",
+    "powerOrbDisplay": "Power Orb Display",
+    "powerOrbDisplayStyle": "Power Orb Style: %style%",
+    "powerOrbStyle": {
+      "detailed": "Detailed",
+      "compact": "Compact"
+    },
+    "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages"
   },
   "messages": {
     "dropConfirmation": "Opet baci ovu stvar za potvrdu!",
