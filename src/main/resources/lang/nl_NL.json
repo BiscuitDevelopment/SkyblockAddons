@@ -83,7 +83,14 @@
     "revenantIndicator": "Slayer Pantser Voortgangsindicator",
     "specialZealotAlert": "Speciale Zealot Melding",
     "enableMessageWhenActionPrevented": "Toon een bericht wanneer een actie wordt gestopt",
-    "hidePetHealthBar": "Huisdiergezondheidsbalk verbergen"
+    "hidePetHealthBar": "Huisdiergezondheidsbalk verbergen",
+    "powerOrbDisplay": "Power Orb Display",
+    "powerOrbDisplayStyle": "Power Orb Style: %style%",
+    "powerOrbStyle": {
+      "detailed": "Detailed",
+      "compact": "Compact"
+    },
+    "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages"
   },
   "messages": {
     "dropConfirmation": "Laat dit object opnieuw vallen om te Bevestigen!",
