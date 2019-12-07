@@ -71,7 +71,7 @@
     "changeBarColorForPotions": "Změň barvu ukazetele pro wither a poison efekt",
     "craftingPatterns": "Vybrat si crafting vzory",
     "soundIndicatorForFishing": "Zvukový indikátor pro rybu",
-    "avoidBlinkingNightVision": "Vyhnout blikání night vision potionu",
+    "avoidBlinkingNightVision": "Vypnout blikání night vision potionu",
     "disableMinionLocationWarning": "Vypnout lokace neperfektních upozornění",
     "jungleAxeCooldown": "Jungle Axe Cooldown",
     "organizeLongEnchantmentLists": "Organizovat dlouhé seznamy enchantů",
@@ -79,11 +79,11 @@
     "speedPercentage": "Procenta rychlosti",
     "collectionDisplay": "Zobrazení postupu skillů",
     "onlyMineOresDeepCaverns": "Těžit rudy pouze v Deep Caverns",
-    "onlyMineValuablesNether": "Only Mine Valuables in the Nether",
+    "onlyMineValuablesNether": "Pouze těžit cennosti v Netheru",
     "revenantIndicator": "Ukazatel Postupu Zabijáckého Brnění",
     "specialZealotAlert": "Speciální Zealot Upozornění",
-    "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented",
-    "hidePetHealthBar": "Hide Pet Health Bar"
+    "enableMessageWhenActionPrevented": "Ukázat zprávu, když je akce zablokovaná",
+    "hidePetHealthBar": "Skrýt ukazatel zdraví mazlíčka"
   },
   "messages": {
     "dropConfirmation": "Vyhoď tento item pro vyhození!",
@@ -117,16 +117,16 @@
     },
     "slotLocked": "Tento slot je uzamčen!",
     "summoningEyeFound": "Vyvolávací oko!",
-    "cancelledStemBreak": "Mód SkyblockAddons tě zastavil před zničením tohoto blocku. Použil svoji prázdnou ruku aby jsi to zničil.",
+    "cancelledStemBreak": "Mód SkyblockAddons tě zastavil před zničením tohoto bloku. Použij svoji prázdnou ruku abys to zničil.",
     "cancelledProfileOpening": "SkyblockAddons vám zabránil otevřít profil hráče při držení luku.",
     "cancelledDropping": "SkyblockAddons vám zabránil vyhodit tento vzácný předmět nebo nástroj z vašeho hotbaru.",
     "clickMoreTimes": "Klikněte/vyhoďte tento předmět %times%-krát, pokud to chcete opravdu udělat.",
     "cancelledDeepCaverns": "Funkce SkyblockAddons vás zastavila před zničením tohoto bloku.",
-    "featureDisabled": "Vlsatnost je vypnuta",
+    "featureDisabled": "Vlastnost je vypnuta",
     "anvilUses": "Použití kovadliny: %uses%",
     "specialZealotFound": "Specialní Zealot!",
     "blockIncompletePatterns": "Blokovat Vyrábění Neúplných Vzorů (doporučeno)",
-    "searchFeatures": "Search features",
-    "downloadingUpdateFile": "Downloading update file..."
+    "searchFeatures": "Vyhledat vlastnosti",
+    "downloadingUpdateFile": "Stahuji aktualizační soubor..."
   }
 }

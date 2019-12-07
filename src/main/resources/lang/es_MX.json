@@ -83,7 +83,7 @@
     "revenantIndicator": "Indicador de Progreso de Slayer Armor",
     "specialZealotAlert": "Alerta de Zealot Especial",
     "enableMessageWhenActionPrevented": "Mostrar un Mensaje al Prevenir una Acción",
-    "hidePetHealthBar": "Hide Pet Health Bar"
+    "hidePetHealthBar": "Esconder Vida de Mascota"
   },
   "messages": {
     "dropConfirmation": "Arroja este objeto otra vez para confirmar!",
@@ -126,7 +126,7 @@
     "anvilUses": "Usos en Anvil/Yunque: %uses%",
     "specialZealotFound": "Zealot Especial!",
     "blockIncompletePatterns": "Bloquear el crafteo de patrones incompletos (recomendado)",
-    "searchFeatures": "Search features",
-    "downloadingUpdateFile": "Downloading update file..."
+    "searchFeatures": "Buscar características",
+    "downloadingUpdateFile": "Descargando archivo de actualización..."
   }
 }
