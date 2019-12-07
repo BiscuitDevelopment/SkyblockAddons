@@ -90,7 +90,8 @@
       "detailed": "Detailed",
       "compact": "コンパクト"
     },
-    "disableMagicalSoupMessage": "Magical Mushroom Soupのメッセージを非表示"
+    "disableMagicalSoupMessage": "Magical Mushroom Soupのメッセージを非表示",
+    "zealotCounter": "Show Zealot Counter"
   },
   "messages": {
     "dropConfirmation": "落としてもいいのであれば、このアイテムをもう一度ドロップしてください。",
