@@ -83,7 +83,14 @@
     "revenantIndicator": "Индикатор Прогресса Брони Убийцы",
     "specialZealotAlert": "Уведомление об Особом Зеалоте",
     "enableMessageWhenActionPrevented": "Показывать предупреждение, когда действие не выполнено",
-    "hidePetHealthBar": "Скрыть здоровье питомцев"
+    "hidePetHealthBar": "Скрыть здоровье питомцев",
+    "powerOrbDisplay": "Power Orb Display",
+    "powerOrbDisplayStyle": "Power Orb Style: %style%",
+    "powerOrbStyle": {
+      "detailed": "Detailed",
+      "compact": "Compact"
+    },
+    "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages"
   },
   "messages": {
     "dropConfirmation": "Выбросите предмет ещё раз для подтверждения!",
