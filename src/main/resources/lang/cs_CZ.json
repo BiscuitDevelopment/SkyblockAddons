@@ -90,7 +90,8 @@
       "detailed": "Detailed",
       "compact": "Compact"
     },
-    "disableMagicalSoupMessage": "Vypnout zprávu magické houbové polévky"
+    "disableMagicalSoupMessage": "Vypnout zprávu magické houbové polévky",
+    "zealotCounter": "Show Zealot Counter"
   },
   "messages": {
     "dropConfirmation": "Vyhoď tento item pro vyhození!",
