@@ -83,6 +83,7 @@
     "revenantIndicator": "Slayer Armor Progress Indicator",
     "specialZealotAlert": "Special Zealot Alert",
     "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented",
+    "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages"
     "hidePetHealthBar": "Hide Pet Health Bar"
   },
   "messages": {
