@@ -83,7 +83,14 @@
     "revenantIndicator": "Ukazatel Postupu Zabijáckého Brnění",
     "specialZealotAlert": "Speciální Zealot Upozornění",
     "enableMessageWhenActionPrevented": "Ukázat zprávu, když je akce zablokovaná",
-    "hidePetHealthBar": "Skrýt ukazatel zdraví mazlíčka"
+    "hidePetHealthBar": "Skrýt ukazatel zdraví mazlíčka",
+    "powerOrbDisplay": "Power Orb Display",
+    "powerOrbDisplayStyle": "Power Orb Style: %style%",
+    "powerOrbStyle": {
+      "detailed": "Detailed",
+      "compact": "Compact"
+    },
+    "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages"
   },
   "messages": {
     "dropConfirmation": "Vyhoď tento item pro vyhození!",
