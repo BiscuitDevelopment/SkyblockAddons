@@ -83,7 +83,14 @@
     "revenantIndicator": "Slayer rustning fremskridts indikator",
     "specialZealotAlert": "Speciel Zealot alarm",
     "enableMessageWhenActionPrevented": "Vis en besked når en aktion er forhindret",
-    "hidePetHealthBar": "Skjul kæledyrs liv bar"
+    "hidePetHealthBar": "Skjul kæledyrs liv bar",
+    "powerOrbDisplay": "Power Orb Display",
+    "powerOrbDisplayStyle": "Power Orb Style: %style%",
+    "powerOrbStyle": {
+      "detailed": "Detailed",
+      "compact": "Compact"
+    },
+    "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages"
   },
   "messages": {
     "dropConfirmation": "Slip denne vare igen for at bekræfte!",
