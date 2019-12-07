@@ -83,7 +83,14 @@
     "revenantIndicator": "Slayer Rüstung Fortschritt Anzeige",
     "specialZealotAlert": "Spezieller Zealot Alarm",
     "enableMessageWhenActionPrevented": "Nachricht anzeigen, wenn eine Aktion verhindert wird",
-    "hidePetHealthBar": "Verstecke Haustierlebensleiste"
+    "hidePetHealthBar": "Verstecke Haustierlebensleiste",
+    "powerOrbDisplay": "Power Orb Display",
+    "powerOrbDisplayStyle": "Power Orb Style: %style%",
+    "powerOrbStyle": {
+      "detailed": "Detailed",
+      "compact": "Compact"
+    },
+    "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages"
   },
   "messages": {
     "dropConfirmation": "Werfe diesen Gegenstand nochmal, um zu bestätigen!",
