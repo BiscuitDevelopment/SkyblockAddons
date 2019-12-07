@@ -83,7 +83,14 @@
     "revenantIndicator": "Slayer Armor folyamat jelző",
     "specialZealotAlert": "Különleges Zealot értesítés",
     "enableMessageWhenActionPrevented": "Üzenet egy művelet megakadályozásánál",
-    "hidePetHealthBar": "Pet életerő sáv elrejtése"
+    "hidePetHealthBar": "Pet életerő sáv elrejtése",
+    "powerOrbDisplay": "Power Orb Display",
+    "powerOrbDisplayStyle": "Power Orb Style: %style%",
+    "powerOrbStyle": {
+      "detailed": "Detailed",
+      "compact": "Compact"
+    },
+    "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages"
   },
   "messages": {
     "dropConfirmation": "Dobd el ezt a tárgyat újra, hogy megerősítsd!",
