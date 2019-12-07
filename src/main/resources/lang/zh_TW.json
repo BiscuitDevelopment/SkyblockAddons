@@ -84,13 +84,13 @@
     "specialZealotAlert": "特殊Zealot警報",
     "enableMessageWhenActionPrevented": "當一個動作被預防時顯示訊息",
     "hidePetHealthBar": "隱藏寵物血條",
-    "powerOrbDisplay": "Power Orb Display",
-    "powerOrbDisplayStyle": "Power Orb Style: %style%",
+    "powerOrbDisplay": "顯示Power Orb",
+    "powerOrbDisplayStyle": "Power Orb樣式: %style%",
     "powerOrbStyle": {
-      "detailed": "Detailed",
-      "compact": "Compact"
+      "detailed": "詳細",
+      "compact": "精簡"
     },
-    "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages"
+    "disableMagicalSoupMessage": "取消魔法蘑菇湯訊息"
   },
   "messages": {
     "dropConfirmation": "再次丟棄此物品以確認!",
