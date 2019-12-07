@@ -83,7 +83,14 @@
     "revenantIndicator": "Progression de l'armure Revenant",
     "specialZealotAlert": "Alerte Zealot spécial",
     "enableMessageWhenActionPrevented": "Afficher un message lorsqu'une action est annulée",
-    "hidePetHealthBar": "Masquer les PV des compagnons"
+    "hidePetHealthBar": "Masquer les PV des compagnons",
+    "powerOrbDisplay": "Power Orb Display",
+    "powerOrbDisplayStyle": "Power Orb Style: %style%",
+    "powerOrbStyle": {
+      "detailed": "Detailed",
+      "compact": "Compact"
+    },
+    "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages"
   },
   "messages": {
     "dropConfirmation": "Jetez cet objet une nouvelle fois pour confirmer!",
