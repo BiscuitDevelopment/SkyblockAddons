@@ -90,7 +90,8 @@
       "detailed": "Dettagliato",
       "compact": "Compatto"
     },
-    "disableMagicalSoupMessage": "Disabilita i messaggi della zuppa magica ai funghi"
+    "disableMagicalSoupMessage": "Disabilita i messaggi della zuppa magica ai funghi",
+    "zealotCounter": "Show Zealot Counter"
   },
   "messages": {
     "dropConfirmation": "Getta questo oggetto nuovamente per confermare!",
