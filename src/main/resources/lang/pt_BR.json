@@ -84,13 +84,13 @@
     "specialZealotAlert": "Alerta Zealot especial",
     "enableMessageWhenActionPrevented": "Mostrar uma Mensagem Quando uma Ação for Impedida",
     "hidePetHealthBar": "Ocultar barra de vida do Pet",
-    "powerOrbDisplay": "Power Orb Display",
+    "powerOrbDisplay": "Exibição de Poder da Esfera",
     "powerOrbDisplayStyle": "Power Orb Style: %style%",
     "powerOrbStyle": {
-      "detailed": "Detailed",
-      "compact": "Compact"
+      "detailed": "Detalhado",
+      "compact": "Compacto"
     },
-    "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages"
+    "disableMagicalSoupMessage": "Desativar mensagens da Sopa de Cogumelo Mágica"
   },
   "messages": {
     "dropConfirmation": "Large este item de novo para confirmar!",
