@@ -83,7 +83,14 @@
     "revenantIndicator": "Hiển thị độ phát triển của giáp Slayer",
     "specialZealotAlert": "Cảnh báo Zealot đặc biệt",
     "enableMessageWhenActionPrevented": "Hiện Thông Báo Khi một Hành Động đã được chặn",
-    "hidePetHealthBar": "Ẩn thanh máu Pet"
+    "hidePetHealthBar": "Ẩn thanh máu Pet",
+    "powerOrbDisplay": "Power Orb Display",
+    "powerOrbDisplayStyle": "Power Orb Style: %style%",
+    "powerOrbStyle": {
+      "detailed": "Detailed",
+      "compact": "Compact"
+    },
+    "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages"
   },
   "messages": {
     "dropConfirmation": "Nhấn \"Q\" Thêm Một Lần Nữa Để Xác Nhận!",
