@@ -83,7 +83,14 @@
     "revenantIndicator": "ye Slayer Armor Progress Indication",
     "specialZealotAlert": "ye Good Zealot Alert",
     "enableMessageWhenActionPrevented": "Show a message when actions be prevented",
-    "hidePetHealthBar": "'ide Pet Health Bar"
+    "hidePetHealthBar": "'ide Pet Health Bar",
+    "powerOrbDisplay": "Power Orb Display",
+    "powerOrbDisplayStyle": "Power Orb Style: %style%",
+    "powerOrbStyle": {
+      "detailed": "Detailed",
+      "compact": "Compact"
+    },
+    "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages"
   },
   "messages": {
     "dropConfirmation": "'ay lad, drop this here item again to confirm!",
