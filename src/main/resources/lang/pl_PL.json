@@ -90,7 +90,8 @@
       "detailed": "Szczegółowy",
       "compact": "Prosty"
     },
-    "disableMagicalSoupMessage": "Ukryj wiadomości z Magicznej Zupy"
+    "disableMagicalSoupMessage": "Ukryj wiadomości z Magicznej Zupy",
+    "zealotCounter": "Show Zealot Counter"
   },
   "messages": {
     "dropConfirmation": "Wyrzuć ten przedmiot ponownie, aby potwierdzić!",
