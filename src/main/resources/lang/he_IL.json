@@ -83,7 +83,14 @@
     "revenantIndicator": "מד התקדמות עם שריון סלייר",
     "specialZealotAlert": "התראה של זלוט מיוחד",
     "enableMessageWhenActionPrevented": "הצג הודע כאשר נחסמת פעולה",
-    "hidePetHealthBar": "הסתר מד חיים של חיית מחמד"
+    "hidePetHealthBar": "הסתר מד חיים של חיית מחמד",
+    "powerOrbDisplay": "Power Orb Display",
+    "powerOrbDisplayStyle": "Power Orb Style: %style%",
+    "powerOrbStyle": {
+      "detailed": "Detailed",
+      "compact": "Compact"
+    },
+    "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages"
   },
   "messages": {
     "dropConfirmation": "זרוק פריט זה שוב לאישור!",
