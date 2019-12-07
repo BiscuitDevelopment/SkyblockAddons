@@ -83,7 +83,14 @@
     "revenantIndicator": "ตัวบอกความคืบหน้าของเกราะเควส Slayer",
     "specialZealotAlert": "แจ้งเตือน Special Zealot",
     "enableMessageWhenActionPrevented": "แสดงข้อความเมื่อโดนห้ามทำ",
-    "hidePetHealthBar": "ซ่อนหลอดเลือดสัตว์เลี้ยง"
+    "hidePetHealthBar": "ซ่อนหลอดเลือดสัตว์เลี้ยง",
+    "powerOrbDisplay": "Power Orb Display",
+    "powerOrbDisplayStyle": "Power Orb Style: %style%",
+    "powerOrbStyle": {
+      "detailed": "Detailed",
+      "compact": "Compact"
+    },
+    "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages"
   },
   "messages": {
     "dropConfirmation": "กดทิ้งของอีกที่เพื่อยืนยันทิ้งของสิ่งนี้!",
