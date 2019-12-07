@@ -88,9 +88,9 @@
     "powerOrbDisplayStyle": "Power Orb Style: %style%",
     "powerOrbStyle": {
       "detailed": "Detailed",
-      "compact": "Compact"
+      "compact": "コンパクト"
     },
-    "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages"
+    "disableMagicalSoupMessage": "Magical Mushroom Soupのメッセージを非表示"
   },
   "messages": {
     "dropConfirmation": "落としてもいいのであれば、このアイテムをもう一度ドロップしてください。",
