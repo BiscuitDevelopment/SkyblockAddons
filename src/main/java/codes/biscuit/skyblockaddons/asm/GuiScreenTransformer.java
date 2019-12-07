@@ -1,6 +1,7 @@
 package codes.biscuit.skyblockaddons.asm;
 
 import codes.biscuit.skyblockaddons.asm.utils.TransformerClass;
+import codes.biscuit.skyblockaddons.asm.utils.TransformerMethod;
 import codes.biscuit.skyblockaddons.tweaker.transformer.ITransformer;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.tree.*;
@@ -12,16 +13,14 @@ public class GuiScreenTransformer implements ITransformer {
      */
     @Override
     public String[] getClassName() {
-        return new String[]{"net.minecraft.client.gui.GuiScreen"};
+        return new String[]{TransformerClass.GuiScreen.getTransformerName()};
     }
 
     @Override
     public void transform(ClassNode classNode, String name) {
         try {
-            for (MethodNode methodNode : classNode.methods) { // Loop through all methods inside of the class.
-
-                String methodName = mapMethodName(classNode, methodNode);
-                if (nameMatches(methodName, "renderToolTip", "func_146285_a")) {
+            for (MethodNode methodNode : classNode.methods) {
+                if (TransformerMethod.renderToolTip.matches(methodNode)) {
 
                     // Objective:
                     // Find: Method head.
@@ -33,7 +32,7 @@ public class GuiScreenTransformer implements ITransformer {
 
                     methodNode.instructions.insertBefore(methodNode.instructions.getFirst(), insertRenderBackpack());
                 }
-                if (nameMatches(methodName, "handleComponentClick", "func_175276_a")) {
+                if (TransformerMethod.handleComponentClick.matches(methodNode)) {
 
                     // Objective:
                     // Find: Method head.

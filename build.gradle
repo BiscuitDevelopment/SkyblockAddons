@@ -69,3 +69,9 @@ processResources {
         exclude 'litemod.json'
     }
 }
+
+//reobf { // Only for labymod client.
+//    jar {
+//        useNotchSrg()
+//    }
+//}

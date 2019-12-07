@@ -1,5 +1,7 @@
 package codes.biscuit.skyblockaddons.asm;
 
+import codes.biscuit.skyblockaddons.asm.utils.TransformerClass;
+import codes.biscuit.skyblockaddons.asm.utils.TransformerMethod;
 import codes.biscuit.skyblockaddons.tweaker.transformer.ITransformer;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.tree.AbstractInsnNode;
@@ -16,15 +18,13 @@ public class MouseHelperTransformer implements ITransformer {
      */
     @Override
     public String[] getClassName() {
-        return new String[]{"net.minecraft.util.MouseHelper"};
+        return new String[]{TransformerClass.MouseHelper.getTransformerName()};
     }
 
     @Override
     public void transform(ClassNode classNode, String name) {
-        for (MethodNode methodNode : classNode.methods) { // Loop through all methods inside of the class.
-
-            String methodName = mapMethodName(classNode, methodNode); // Map all of the method names.
-            if (nameMatches(methodName,"ungrabMouseCursor", "func_74373_b")) {
+        for (MethodNode methodNode : classNode.methods) {
+            if (TransformerMethod.ungrabMouseCursor.matches(methodNode)) {
 
                 // Objective:
                 // Find: Mouse.setCursorPosition(MouseHelperHook.ungrabMouseCursor() / 2, Display.getHeight() / 2);

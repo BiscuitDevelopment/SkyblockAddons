@@ -1,5 +1,7 @@
 package codes.biscuit.skyblockaddons.asm;
 
+import codes.biscuit.skyblockaddons.asm.utils.TransformerClass;
+import codes.biscuit.skyblockaddons.asm.utils.TransformerMethod;
 import codes.biscuit.skyblockaddons.tweaker.transformer.ITransformer;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.tree.*;
@@ -13,15 +15,13 @@ public class EntityRendererTransformer implements ITransformer {
      */
     @Override
     public String[] getClassName() {
-        return new String[]{"net.minecraft.client.renderer.EntityRenderer"};
+        return new String[]{TransformerClass.EntityRenderer.getTransformerName()};
     }
 
     @Override
     public void transform(ClassNode classNode, String name) {
-        for (MethodNode methodNode : classNode.methods) { // Loop through all methods inside of the class.
-
-            String methodName = mapMethodName(classNode, methodNode); // Map all of the method names.
-            if (nameMatches(methodName,"getMouseOver", "func_78473_a")) {
+        for (MethodNode methodNode : classNode.methods) {
+            if (TransformerMethod.getMouseOver.matches(methodNode)) {
 
                 // Objective:
                 // Find: The entity list variable.
@@ -38,7 +38,7 @@ public class EntityRendererTransformer implements ITransformer {
                         }
                     }
                 }
-            } else if (nameMatches(methodName,"getNightVisionBrightness", "func_180438_a")) {
+            } else if (TransformerMethod.getNightVisionBrightness.matches(methodNode)) {
 
                 // Objective:
                 // Find: Method head.

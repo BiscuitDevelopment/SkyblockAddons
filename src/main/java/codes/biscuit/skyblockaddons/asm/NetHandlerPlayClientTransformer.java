@@ -1,6 +1,7 @@
 package codes.biscuit.skyblockaddons.asm;
 
 import codes.biscuit.skyblockaddons.asm.utils.TransformerClass;
+import codes.biscuit.skyblockaddons.asm.utils.TransformerMethod;
 import codes.biscuit.skyblockaddons.tweaker.transformer.ITransformer;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.tree.*;
@@ -12,15 +13,13 @@ public class NetHandlerPlayClientTransformer implements ITransformer {
      */
     @Override
     public String[] getClassName() {
-        return new String[]{"net.minecraft.client.network.NetHandlerPlayClient"};
+        return new String[]{TransformerClass.NetHandlerPlayClient.getTransformerName()};
     }
 
     @Override
     public void transform(ClassNode classNode, String name) {
-        for (MethodNode methodNode : classNode.methods) { // Loop through all methods inside of the class.
-
-            String methodName = mapMethodName(classNode, methodNode); // Map all of the method names.
-            if (nameMatches(methodName, "handleSetSlot", "func_147266_a")) {
+        for (MethodNode methodNode : classNode.methods) {
+            if (TransformerMethod.handleSetSlot.matches(methodNode)) {
 
                 // Objective:
                 // Find: Method head.
@@ -32,7 +31,7 @@ public class NetHandlerPlayClientTransformer implements ITransformer {
 
                 methodNode.instructions.insertBefore(methodNode.instructions.getFirst(), insertHandleSetSlot());
             }
-            if (nameMatches(methodName, "handleWindowItems", "func_147241_a")) {
+            if (TransformerMethod.handleWindowItems.matches(methodNode)) {
 
                 // Objective:
                 // Find: Method head.

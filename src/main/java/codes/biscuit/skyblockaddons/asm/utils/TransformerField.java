@@ -32,10 +32,10 @@ public enum TransformerField {
     TransformerField(String deobfName, String seargeName, String notchName18, String type) {
         this.type = type;
 
-        if (SkyblockAddonsTransformer.DEOBFUSCATED) {
+        if (SkyblockAddonsTransformer.isDeobfuscated()) {
             name = deobfName;
         } else {
-            if (SkyblockAddonsTransformer.NOTCH_MAPPINGS) {
+            if (SkyblockAddonsTransformer.isUsingNotchMappings()) {
                 name = notchName18;
             } else {
                 name = seargeName;

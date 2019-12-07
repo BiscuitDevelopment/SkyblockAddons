@@ -14,7 +14,7 @@ public class GuiInventoryTransformer implements ITransformer {
      */
     @Override
     public String[] getClassName() {
-        return new String[]{"net.minecraft.client.gui.inventory.GuiInventory"};
+        return new String[]{TransformerClass.GuiInventory.getTransformerName()};
     }
 
     @Override

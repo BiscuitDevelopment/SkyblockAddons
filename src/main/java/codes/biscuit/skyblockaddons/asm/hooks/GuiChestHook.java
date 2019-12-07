@@ -27,6 +27,7 @@ public class GuiChestHook {
     private static GuiTextField textFieldMatch = null;
     private static GuiTextField textFieldExclusions = null;
     private static CraftingPatternSelection craftingPatternSelection = null;
+    private static Backpack backpack = null;
 
     public static void updateScreen() {
         if (textFieldMatch != null && textFieldExclusions != null) {
@@ -221,8 +222,6 @@ public class GuiChestHook {
             craftingPatternSelection.mouseClicked(mouseX, mouseY, mouseButton);
         }
     }
-
-    private static Backpack backpack = null;
 
     public static void color(float colorRed, float colorGreen, float colorBlue, float colorAlpha, IInventory lowerChestInventory) { //Item item, ItemStack stack
         SkyblockAddons main = SkyblockAddons.getInstance();

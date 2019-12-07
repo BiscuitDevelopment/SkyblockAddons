@@ -1,6 +1,7 @@
 package codes.biscuit.skyblockaddons.asm;
 
 import codes.biscuit.skyblockaddons.asm.utils.TransformerClass;
+import codes.biscuit.skyblockaddons.asm.utils.TransformerMethod;
 import codes.biscuit.skyblockaddons.tweaker.transformer.ITransformer;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.tree.*;
@@ -13,15 +14,13 @@ public class PlayerControllerMPTransformer implements ITransformer {
      */
     @Override
     public String[] getClassName() {
-        return new String[]{"net.minecraft.client.multiplayer.PlayerControllerMP"};
+        return new String[]{TransformerClass.PlayerControllerMP.getTransformerName()};
     }
 
     @Override
     public void transform(ClassNode classNode, String name) {
-        for (MethodNode methodNode : classNode.methods) { // Loop through all methods inside of the class.
-
-            String methodName = mapMethodName(classNode, methodNode); // Map all of the method names.
-            if (nameMatches(methodName,"clickBlock", "func_180511_b")) {
+        for (MethodNode methodNode : classNode.methods) {
+            if (TransformerMethod.clickBlock.matches(methodNode)) {
 
                 // Objective:
                 // Find: Method head.
@@ -33,7 +32,7 @@ public class PlayerControllerMPTransformer implements ITransformer {
 
                 methodNode.instructions.insertBefore(methodNode.instructions.getFirst(), insertOnClickBlock());
 
-            } else if (nameMatches(methodName,"onPlayerDestroyBlock", "func_178888_a")) {
+            } else if (TransformerMethod.onPlayerDestroyBlock.matches(methodNode)) {
 
                 // Objective:
                 // Find: Method head.
@@ -41,10 +40,10 @@ public class PlayerControllerMPTransformer implements ITransformer {
 
                 methodNode.instructions.insertBefore(methodNode.instructions.getFirst(), new MethodInsnNode(Opcodes.INVOKESTATIC,
                         "codes/biscuit/skyblockaddons/asm/hooks/PlayerControllerMPHook", "onPlayerDestroyBlock", "()V", false));
-            } else if (nameMatches(methodName,"windowClick", "func_78753_a")) {
+            } else if (TransformerMethod.windowClick.matches(methodNode)) {
 
-            // Objective:
-            // Find: Method head.
+                // Objective:
+                // Find: Method head.
                 // Insert:   ReturnValue returnValue = new ReturnValue();
                 //           PlayerControllerMPHook.onWindowClick(slotId, mode, playerIn, returnValue);
                 //           if (returnValue.isCancelled()) {

@@ -18,15 +18,13 @@ public class SoundManagerTransformer implements ITransformer {
      */
     @Override
     public String[] getClassName() {
-        return new String[]{"net.minecraft.client.audio.SoundManager"};
+        return new String[]{TransformerClass.SoundManager.getTransformerName()};
     }
 
     @Override
     public void transform(ClassNode classNode, String name) {
-        for (MethodNode methodNode : classNode.methods) { // Loop through all methods inside of the class.
-
-            String methodName = mapMethodName(classNode, methodNode); // Map all of the method names.
-            if (nameMatches(methodName,"playSound", "func_148611_c")) {
+        for (MethodNode methodNode : classNode.methods) {
+            if (TransformerMethod.playSound.matches(methodNode)) {
 
                 // Objective:
                 // Find: this.getNormalizedVolume(p_sound, soundpoolentry, soundcategory);

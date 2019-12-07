@@ -1,6 +1,7 @@
 package codes.biscuit.skyblockaddons.asm;
 
 import codes.biscuit.skyblockaddons.asm.utils.TransformerClass;
+import codes.biscuit.skyblockaddons.asm.utils.TransformerMethod;
 import codes.biscuit.skyblockaddons.tweaker.transformer.ITransformer;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.tree.*;
@@ -12,13 +13,12 @@ public class EntityPlayerSPTransformer implements ITransformer {
      */
     @Override
     public String[] getClassName() {
-        return new String[]{"net.minecraft.client.entity.EntityPlayerSP"};
+        return new String[]{TransformerClass.EntityPlayerSP.getTransformerName()};
     }
 
     @Override
     public void transform(ClassNode classNode, String name) {
         for (MethodNode methodNode : classNode.methods) {
-            String methodName = mapMethodName(classNode, methodNode);
 
             // Objective:
             // Find: Method head.
@@ -28,7 +28,7 @@ public class EntityPlayerSPTransformer implements ITransformer {
             //               return null;
             //           }
 
-            if (nameMatches(methodName, "dropOneItem", "func_71040_bB")) {
+            if (TransformerMethod.dropOneItem.matches(methodNode)) {
                 methodNode.instructions.insertBefore(methodNode.instructions.getFirst(), insertConfirmation());
                 break;
             }

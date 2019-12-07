@@ -16,16 +16,14 @@ public class GuiContainerTransformer implements ITransformer {
      */
     @Override
     public String[] getClassName() {
-        return new String[]{"net.minecraft.client.gui.inventory.GuiContainer"};
+        return new String[]{TransformerClass.GuiContainer.getTransformerName()};
     }
 
     @Override
     public void transform(ClassNode classNode, String name) {
 
-        for (MethodNode methodNode : classNode.methods) { // Loop through all methods inside of the class.
-
-            String methodName = mapMethodName(classNode, methodNode); // Map all of the method names.
-            if (nameMatches(methodName,"drawSlot", "func_146977_a")) {
+        for (MethodNode methodNode : classNode.methods) {
+            if (TransformerMethod.drawSlot.matches(methodNode)) {
 
                 // Objective:
                 // Find: After this.itemRender.renderItemAndEffectIntoGUI(itemstack, i, j);
@@ -44,7 +42,7 @@ public class GuiContainerTransformer implements ITransformer {
                         }
                     }
                 }
-            } else if (nameMatches(methodName,"drawScreen", "func_73863_a")) {
+            } else if (TransformerMethod.drawScreen.matches(methodNode)) {
 
                 // Objective 1:
                 // Find: Return statement.
@@ -99,7 +97,7 @@ public class GuiContainerTransformer implements ITransformer {
                         }
                     }
                 }
-            } else if (nameMatches(methodName,"keyTyped", "func_73869_a")) {
+            } else if (TransformerMethod.keyTyped.matches(methodNode)) {
 
                 // Objective:
                 // Find: 2 lines before "this.checkHotbarKeys(keyCode);"

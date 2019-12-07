@@ -2,6 +2,7 @@ package codes.biscuit.skyblockaddons.asm;
 
 import codes.biscuit.skyblockaddons.asm.utils.TransformerClass;
 import codes.biscuit.skyblockaddons.asm.utils.TransformerField;
+import codes.biscuit.skyblockaddons.asm.utils.TransformerMethod;
 import codes.biscuit.skyblockaddons.tweaker.transformer.ITransformer;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.tree.*;
@@ -15,15 +16,13 @@ public class MinecraftTransformer implements ITransformer {
      */
     @Override
     public String[] getClassName() {
-        return new String[]{"net.minecraft.client.Minecraft"};
+        return new String[]{TransformerClass.Minecraft.getTransformerName()};
     }
 
     @Override
     public void transform(ClassNode classNode, String name) {
-        for (MethodNode methodNode : classNode.methods) { // Loop through all methods inside of the class.
-
-            String methodName = mapMethodName(classNode, methodNode); // Map all of the method names.
-            if (nameMatches(methodName, "refreshResources", "func_110436_a")) {
+        for (MethodNode methodNode : classNode.methods) {
+            if (TransformerMethod.refreshResources.matches(methodNode)) {
 
                 // Objective:
                 // Find: Method return.
@@ -38,7 +37,7 @@ public class MinecraftTransformer implements ITransformer {
                     }
                 }
             }
-            if (nameMatches(methodName, "rightClickMouse", "func_147121_ag")) {
+            if (TransformerMethod.rightClickMouse.matches(methodNode)) {
 
                 // Objective:
                 // Find: Before "this.rightClickDelayTimer = 4;"

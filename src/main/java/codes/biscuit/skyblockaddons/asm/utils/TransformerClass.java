@@ -32,13 +32,32 @@ public enum TransformerClass {
     TileEntityEnderChestRenderer("net/minecraft/client/renderer/tileentity/TileEntityEnderChestRenderer", "bhg"),
     ResourceLocation("net/minecraft/util/ResourceLocation", "jy"),
     ModelChest("net/minecraft/client/model/ModelChest", "baz"),
+    EntityPlayerSP("net/minecraft/client/entity/EntityPlayerSP", "bew"),
+    EntityRenderer("net/minecraft/client/renderer/EntityRenderer", "bfk"),
+    GuiNewChat("net/minecraft/client/gui/GuiNewChat", "avt"),
+    Item("net/minecraft/item/Item", "zw"),
+    MouseHelper("net/minecraft/util/MouseHelper", "avf"),
+    NetHandlerPlayClient("net/minecraft/client/network/NetHandlerPlayClient", "bcy"),
+    PlayerControllerMP("net/minecraft/client/multiplayer/PlayerControllerMP", "bda"),
+    RendererLivingEntity("net/minecraft/client/renderer/entity/RendererLivingEntity", "bjl"),
+    RenderManager("net/minecraft/client/renderer/entity/RenderManager", "biu"),
+    EntityLivingBase("net/minecraft/entity/EntityLivingBase", "pr"),
+    EnumFacing("net/minecraft/util/EnumFacing", "cq"),
+    ICamera("net/minecraft/client/renderer/culling/ICamera", "bia"),
+    TileEntity("net/minecraft/tileentity/TileEntity", "akw"),
 
     NULL(null,null);
 
     private String name;
 
+    private String seargeClass;
+    private String notchClass18;
+
     TransformerClass(String seargeClass, String notchClass18) {
-        if (SkyblockAddonsTransformer.DEOBFUSCATED || !SkyblockAddonsTransformer.NOTCH_MAPPINGS) {
+        this.seargeClass = seargeClass;
+        this.notchClass18 = notchClass18;
+
+        if (SkyblockAddonsTransformer.isDeobfuscated() || !SkyblockAddonsTransformer.isUsingNotchMappings()) {
             name = seargeClass;
         } else {
             name = notchClass18;
@@ -51,5 +70,11 @@ public enum TransformerClass {
 
     public String getName() {
         return "L"+name+";";
+    }
+
+    public String getTransformerName() {
+        if (SkyblockAddonsTransformer.isLabymodClient()) return notchClass18;
+
+        return seargeClass.replaceAll("/", ".");
     }
 }

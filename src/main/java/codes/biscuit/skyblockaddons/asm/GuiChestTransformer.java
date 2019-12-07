@@ -16,7 +16,7 @@ public class GuiChestTransformer implements ITransformer {
      */
     @Override
     public String[] getClassName() {
-        return new String[]{"net.minecraft.client.gui.inventory.GuiChest"};
+        return new String[]{TransformerClass.GuiChest.getTransformerName()};
     }
 
     @Override
@@ -110,9 +110,7 @@ public class GuiChestTransformer implements ITransformer {
         classNode.methods.add(mouseClicked);
 
         for (MethodNode methodNode : classNode.methods) { // Loop through all methods inside of the class.
-
-            String methodName = mapMethodName(classNode, methodNode);
-            if (nameMatches(methodName, "drawGuiContainerBackgroundLayer", "func_146976_a")) {
+            if (TransformerMethod.drawGuiContainerBackgroundLayer.matches(methodNode)) {
 
                 // Objective:
                 // Find: GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
@@ -136,7 +134,7 @@ public class GuiChestTransformer implements ITransformer {
                         }
                     }
                 }
-            } else if (nameMatches(methodName, "drawGuiContainerForegroundLayer", "func_146979_b")) {
+            } else if (TransformerMethod.drawGuiContainerForegroundLayer.matches(methodNode)) {
 
                 // Objective:
                 // Find:

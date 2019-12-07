@@ -18,15 +18,13 @@ public class GuiNewChatTransformer implements ITransformer {
      */
     @Override
     public String[] getClassName() {
-        return new String[]{"net.minecraft.client.gui.GuiNewChat"};
+        return new String[]{TransformerClass.GuiNewChat.getTransformerName()};
     }
 
     @Override
     public void transform(ClassNode classNode, String name) {
-        for (MethodNode methodNode : classNode.methods) { // Loop through all methods inside of the class.
-
-            String methodName = mapMethodName(classNode, methodNode);
-            if (nameMatches(methodName, "printChatMessageWithOptionalDeletion", "func_146234_a")) {
+        for (MethodNode methodNode : classNode.methods) {
+            if (TransformerMethod.printChatMessageWithOptionalDeletion.matches(methodNode)) {
 
                 // Objective:
                 // Find: chatComponent.getUnformattedText();

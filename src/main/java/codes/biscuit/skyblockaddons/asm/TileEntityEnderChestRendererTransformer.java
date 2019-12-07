@@ -15,15 +15,13 @@ public class TileEntityEnderChestRendererTransformer implements ITransformer {
      */
     @Override
     public String[] getClassName() {
-        return new String[]{"net.minecraft.client.renderer.tileentity.TileEntityEnderChestRenderer"};
+        return new String[]{TransformerClass.TileEntityEnderChestRenderer.getTransformerName()};
     }
 
     @Override
     public void transform(ClassNode classNode, String name) {
-        for (MethodNode methodNode : classNode.methods) { // Loop through all methods inside of the class.
-
-            String methodName = mapMethodName(classNode, methodNode); // Map all of the method names.
-            if (nameMatches(methodName,"renderTileEntityAt", "func_180535_a")) {
+        for (MethodNode methodNode : classNode.methods) {
+            if (TransformerMethod.renderTileEntityAt.matches(methodNode)) {
 
                 // Objective:
                 // Find: this.bindTexture(ENDER_CHEST_TEXTURE);

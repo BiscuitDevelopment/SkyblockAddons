@@ -15,7 +15,7 @@ public class ItemTransformer implements ITransformer {
      */
     @Override
     public String[] getClassName() {
-        return new String[]{"net.minecraft.item.Item"};
+        return new String[]{TransformerClass.Item.getTransformerName()};
     }
 
     @Override

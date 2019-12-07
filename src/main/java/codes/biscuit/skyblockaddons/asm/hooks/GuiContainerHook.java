@@ -4,6 +4,7 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.asm.utils.ReturnValue;
 import codes.biscuit.skyblockaddons.gui.elements.CraftingPatternSelection;
 import codes.biscuit.skyblockaddons.listeners.RenderListener;
+import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsTransformer;
 import codes.biscuit.skyblockaddons.utils.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
@@ -20,6 +21,9 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.ResourceLocation;
 
 import java.awt.*;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -145,11 +149,11 @@ public class GuiContainerHook {
                         int itemX = x+8 + ((i % 9) * 18);
                         int itemY = y+18 + ((i / 9) * 18);
                         RenderItem renderItem = mc.getRenderItem();
-                        guiContainer.zLevel = 200;
+                        setZLevel(guiContainer, 200);
                         renderItem.zLevel = 200;
                         renderItem.renderItemAndEffectIntoGUI(item, itemX, itemY);
                         renderItem.renderItemOverlayIntoGUI(mc.fontRendererObj, item, itemX, itemY, null);
-                        guiContainer.zLevel = 0;
+                        setZLevel(guiContainer, 0);
                         renderItem.zLevel = 0;
                     }
                 }
@@ -170,11 +174,11 @@ public class GuiContainerHook {
                         int itemX = x + ((i % 9) * 16);
                         int itemY = y + ((i / 9) * 16);
                         RenderItem renderItem = mc.getRenderItem();
-                        guiContainer.zLevel = 200;
+                        setZLevel(guiContainer, 200);
                         renderItem.zLevel = 200;
                         renderItem.renderItemAndEffectIntoGUI(item, itemX, itemY);
                         renderItem.renderItemOverlayIntoGUI(mc.fontRendererObj, item, itemX, itemY, null);
-                        guiContainer.zLevel = 0;
+                        setZLevel(guiContainer, 0);
                         renderItem.zLevel = 0;
                     }
                 }
@@ -199,11 +203,11 @@ public class GuiContainerHook {
             if (main.getConfigValues().isEnabled(Feature.LOCK_SLOTS) &&
                     main.getUtils().isOnSkyblock() && main.getConfigValues().getLockedSlots().contains(slotNum)
                     && (slotNum >= 9 || container instanceof ContainerPlayer && slotNum >= 5)) {
-                guiContainer.drawGradientRect(left, top, right, bottom, OVERLAY_RED, OVERLAY_RED);
+                drawRightGradientRect(guiContainer, left, top, right, bottom, OVERLAY_RED, OVERLAY_RED);
                 return;
             }
         }
-        guiContainer.drawGradientRect(left, top, right, bottom, startColor, endColor);
+        drawRightGradientRect(guiContainer, left, top, right, bottom, startColor, endColor);
     }
 
     public static void drawSlot(GuiContainer guiContainer, Slot slot) {
@@ -225,11 +229,11 @@ public class GuiContainerHook {
                     int slotBottom = slotTop + 16;
                     if(CraftingPatternSelection.selectedPattern.isSlotInPattern(craftingGridIndex)) {
                         if(!slot.getHasStack()) {
-                            guiContainer.drawGradientRect(slotLeft, slotTop, slotRight, slotBottom, OVERLAY_GREEN, OVERLAY_GREEN);
+                            drawRightGradientRect(guiContainer, slotLeft, slotTop, slotRight, slotBottom, OVERLAY_GREEN, OVERLAY_GREEN);
                         }
                     } else {
                         if(slot.getHasStack()) {
-                            guiContainer.drawGradientRect(slotLeft, slotTop, slotRight, slotBottom, OVERLAY_RED, OVERLAY_RED);
+                            drawRightGradientRect(guiContainer, slotLeft, slotTop, slotRight, slotBottom, OVERLAY_RED, OVERLAY_RED);
                         }
                     }
                 }
@@ -253,8 +257,26 @@ public class GuiContainerHook {
         }
     }
 
-//    @Inject(method = "keyTyped", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/inventory/GuiContainer;checkHotbarKeys(I)Z",
-//            ordinal = 0, shift = At.Shift.BEFORE), locals = LocalCapture.CAPTURE_FAILSOFT, cancellable = true)
+    private static Method drawGradientRect = null;
+
+    private static void drawRightGradientRect(GuiContainer guiContainer, int left, int top, int right, int bottom, int startColor, int endColor) {
+        if (SkyblockAddonsTransformer.isLabymodClient()) { // There are no access transformers in labymod.
+            try {
+                if (drawGradientRect == null) {
+                    drawGradientRect = guiContainer.getClass().getSuperclass().getSuperclass().getDeclaredMethod("a", int.class, int.class, int.class, int.class, int.class, int.class);
+                    drawGradientRect.setAccessible(true);
+                }
+                if (drawGradientRect != null) {
+                    drawGradientRect.invoke(guiContainer, left, top, right, bottom, startColor, endColor);
+                }
+            } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
+                e.printStackTrace();
+            }
+        } else {
+            guiContainer.drawGradientRect(left, top, right, bottom, startColor, endColor);
+        }
+    }
+
     public static void keyTyped(GuiContainer guiContainer, int keyCode, Slot theSlot, ReturnValue returnValue) {
         SkyblockAddons main = SkyblockAddons.getInstance();
         Minecraft mc = Minecraft.getMinecraft();
@@ -291,6 +313,26 @@ public class GuiContainerHook {
             if (mc.gameSettings.keyBindDrop.getKeyCode() == keyCode && main.getConfigValues().isEnabled(Feature.STOP_DROPPING_SELLING_RARE_ITEMS)) {
                 if (main.getInventoryUtils().shouldCancelDrop(theSlot)) returnValue.cancel();
             }
+        }
+    }
+
+    private static Field zLevel = null;
+
+    private static void setZLevel(Gui gui, int zLevelToSet) {
+        if (SkyblockAddonsTransformer.isLabymodClient()) { // There are no access transformers in labymod.
+            try {
+                if (zLevel == null) {
+                    zLevel = gui.getClass().getDeclaredField("e");
+                    zLevel.setAccessible(true);
+                }
+                if (zLevel != null) {
+                    zLevel.set(gui, zLevelToSet);
+                }
+            } catch (IllegalAccessException | NoSuchFieldException e) {
+                e.printStackTrace();
+            }
+        } else {
+            gui.zLevel = zLevelToSet;
         }
     }
 }
