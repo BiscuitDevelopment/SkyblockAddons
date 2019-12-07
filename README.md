@@ -32,3 +32,10 @@ localization management platform to help us serve the mod in many languages!
 [Check out their website here](https://crowdin.com/)!
 
 Also thanks for our countless translators who help translate this mod!
+
+For Contributors
+------
+
+Make sure to add this VM argument to your debug configuration or whatnot, so all the transformers
+are applied properly in your dev environment!
+```-Dfml.coreMods.load=codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsLoadingPlugin```

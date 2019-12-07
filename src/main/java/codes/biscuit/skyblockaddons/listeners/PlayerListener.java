@@ -59,6 +59,16 @@ import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
+import java.awt.*;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.DataFlavor;
+import java.awt.datatransfer.StringSelection;
+import java.awt.datatransfer.UnsupportedFlavorException;
+import java.io.IOException;
+import java.util.*;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class PlayerListener {
 
@@ -67,6 +77,8 @@ public class PlayerListener {
     private final Pattern PROFILE_CHAT_PATTERN = Pattern.compile("§aYou are playing on profile: §e([A-Za-z]+).*");
     private final Pattern SWITCH_PROFILE_CHAT_PATTERN = Pattern.compile("§aYour profile was changed to: §e([A-Za-z]+).*");
     private final Pattern COLLECTIONS_CHAT_PATTERN = Pattern.compile("§.\\+(?:§[0-9a-f])?([0-9.]+) §?[0-9a-f]?([A-Za-z]+) (\\([0-9.,]+/[0-9.,]+\\))");
+    private final Set<String> randomMessages = new HashSet<>(Arrays.asList("I feel like I can fly!", "What was in that soup?", "Hmm… tasty!", "Hmm... tasty!", "You can now fly for 2 minutes.", "Your Magical Mushroom Soup flight has been extended for 2 extra minutes."));
+
 
     private boolean sentUpdate = false;
     private long lastWorldJoin = -1;
@@ -258,6 +270,10 @@ public class PlayerListener {
             	main.getZealotCounter().setKills(-1); //this is triggered before the death of the killed zealot, so this is set to -1 to account for that
             }
 
+            if (main.getConfigValues().isEnabled(Feature.DISABLE_MAGICAL_SOUP_MESSAGES) && randomMessages.contains(message)) {
+                e.setCanceled(true);
+            }
+
             Matcher matcher = ABILITY_CHAT_PATTERN.matcher(e.message.getFormattedText());
             if (matcher.matches()) {
                 CooldownManager.put(Minecraft.getMinecraft().thePlayer.getHeldItem());
@@ -307,8 +323,7 @@ public class PlayerListener {
                 if (main.getConfigValues().isEnabled(Feature.SHOW_ITEM_COOLDOWNS) && mc.thePlayer.fishEntity != null) {
                     CooldownManager.put(mc.thePlayer.getHeldItem());
                 }
-            } else if (main.getConfigValues().isEnabled(Feature.AVOID_PLACING_ENCHANTED_ITEMS) && EnchantedItemBlacklist.shouldBlockUsage(heldItem)
-                    && (e.action == PlayerInteractEvent.Action.RIGHT_CLICK_BLOCK || e.action == PlayerInteractEvent.Action.RIGHT_CLICK_AIR)) {
+            } else if (main.getConfigValues().isEnabled(Feature.AVOID_PLACING_ENCHANTED_ITEMS) && EnchantedItemBlacklist.shouldBlockUsage(heldItem, e.action)) {
                 e.setCanceled(true);
             }
         }
@@ -382,7 +397,26 @@ public class PlayerListener {
     @SubscribeEvent
     public void onEntityEvent(LivingEvent.LivingUpdateEvent e) {
         Entity entity = e.entity;
+
         if (main.getUtils().isOnSkyblock() && entity instanceof EntityArmorStand && entity.hasCustomName()) {
+            String customNameTag = entity.getCustomNameTag();
+
+            PowerOrb powerOrb = PowerOrb.getByDisplayname(customNameTag);
+            if (powerOrb != null
+                    && Minecraft.getMinecraft().thePlayer != null
+                    && powerOrb.isInRadius(entity.getPosition().distanceSq(Minecraft.getMinecraft().thePlayer.getPosition()))) {
+                String[] customNameTagSplit = customNameTag.split(" ");
+                String secondsString = customNameTagSplit[customNameTagSplit.length - 1]
+                        .replaceAll("§e", "")
+                        .replaceAll("s", "");
+                try {
+                    // Apparently they don't have a second count for moment after spawning, that's what this try-catch is for
+                    int seconds = Integer.parseInt(secondsString);
+                    PowerOrbManager.getInstance().put(powerOrb, seconds);
+                } catch (NumberFormatException ignored) {
+                }
+            }
+
             if (main.getUtils().getLocation() == EnumUtils.Location.ISLAND) {
                 int cooldown = main.getConfigValues().getWarningSeconds() * 1000 + 5000;
                 if (main.getConfigValues().isEnabled(Feature.MINION_FULL_WARNING) &&

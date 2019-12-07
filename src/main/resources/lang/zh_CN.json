@@ -10,7 +10,7 @@
     "settings": "设定",
     "magmaBossWarning": "岩浆怪 Boss 警告",
     "itemDropConfirmation": "确认丢弃物品",
-    "hideSkeletonHatBones": "隐藏骷髅的头盔骨头",
+    "hideSkeletonHatBones": "隐藏骷髅头盔的骨头",
     "skeletonHatBonesBar": "骷髅头盔可抵挡攻击次数",
     "hideFoodAndArmor": "隐藏饱食度 & 盔甲值",
     "fullInventoryWarning": "背包空间不足警报",
@@ -40,7 +40,7 @@
     "defenceText": "防御数",
     "defencePercentage": "防御百分比",
     "healthUpdates": "生命值波动",
-    "hidePlayersInLobby": "隐藏大厅远处玩家",
+    "hidePlayersInLobby": "在大厅隐藏远处的实体",
     "darkAuctionTimer": "暗黑拍卖会倒计时",
     "magmaBossTimer": "岩浆怪 Boss 倒计时",
     "itemPickupLog": "物品拾取记录",
@@ -73,17 +73,17 @@
     "soundIndicatorForFishing": "钓鱼声音指示",
     "avoidBlinkingNightVision": "禁用夜视耗尽闪烁",
     "disableMinionLocationWarning": "禁用仆从“位置不是很好”警告",
-    "jungleAxeCooldown": "丛林斧冷却",
+    "jungleAxeCooldown": "防止丛林斧冷却重置",
     "organizeLongEnchantmentLists": "整理长版附魔列表",
     "showItemCooldowns": "显示物品冷却时间",
     "speedPercentage": "速度百分比",
     "collectionDisplay": "显示技能进度",
-    "onlyMineOresDeepCaverns": "仅深层矿洞的矿物",
+    "onlyMineOresDeepCaverns": "在深层矿洞中只挖掘矿物",
     "onlyMineValuablesNether": "仅在地狱开采有价值的矿物",
     "revenantIndicator": "杀手弓进度提示",
     "specialZealotAlert": "末影战士警告",
-    "enableMessageWhenActionPrevented": "阻止操作时显示消息",
-    "hidePetHealthBar": "Hide Pet Health Bar"
+    "enableMessageWhenActionPrevented": "当操作被阻止时显示提示",
+    "hidePetHealthBar": "隐藏宠物血条"
   },
   "messages": {
     "dropConfirmation": "再次丢弃此物品以确认!",
@@ -101,9 +101,9 @@
       "reforges": "重铸",
       "crafting": "合成"
     },
-    "newUpdateAvailable": "新版本 %version% 现已上线！\n\n下载地址：https://biscuit.codes/mods/skyblockaddons/dl/\n翻译项目：https://crowdin.com/project/skyblockaddons/",
+    "newUpdateAvailable": "新版本 %version% 现已上线！\n\n翻译项目：https://crowdin.com/project/skyblockaddons/",
     "deleteOldFile": "下载完成，使用下方按钮打开 mods 文件夹，关闭 Minecraft，删除旧文件。",
-    "wantToViewPatchNotes": "想查看更新内容？",
+    "wantToViewPatchNotes": "查看更新内容",
     "downloadLink": "更新链接",
     "downloadAutomatically": "自动下载",
     "openModFolder": "Mods 文件夹",
@@ -126,7 +126,7 @@
     "anvilUses": "铁砧使用次数: %uses%",
     "specialZealotFound": "末影战士！",
     "blockIncompletePatterns": "阻止合成不完整的图案 - 推荐",
-    "searchFeatures": "Search features",
-    "downloadingUpdateFile": "Downloading update file..."
+    "searchFeatures": "搜索功能",
+    "downloadingUpdateFile": "正在下载更新文件……"
   }
 }

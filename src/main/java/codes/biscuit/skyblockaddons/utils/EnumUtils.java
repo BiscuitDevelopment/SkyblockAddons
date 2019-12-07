@@ -1,6 +1,7 @@
 package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -15,6 +16,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Arrays;
 import java.util.EnumSet;
+import java.util.List;
 import java.util.Set;
 import java.util.regex.Pattern;
 
@@ -167,6 +169,29 @@ public class EnumUtils {
         }
 
         public BackpackStyle getNextType() {
+            int nextType = ordinal()+1;
+            if (nextType > values().length-1) {
+                nextType = 0;
+            }
+            return values()[nextType];
+        }
+    }
+
+    public enum PowerOrbDisplayStyle {
+        DETAILED(Message.POWER_ORB_DISPLAY_STYLE_DETAILED),
+        COMPACT(Message.POWER_ORB_DISPLAY_STYLE_COMPACT);
+
+        private final Message message;
+
+        PowerOrbDisplayStyle(Message message) {
+            this.message = message;
+        }
+
+        public String getMessage() {
+            return message.getMessage();
+        }
+
+        public PowerOrbDisplayStyle getNextType() {
             int nextType = ordinal()+1;
             if (nextType > values().length-1) {
                 nextType = 0;
@@ -400,6 +425,7 @@ public class EnumUtils {
         BACKPACK_STYLE,
         SHOW_ONLY_WHEN_HOLDING_SHIFT,
         MAKE_INVENTORY_COLORED,
+        POWER_ORB_DISPLAY_STYLE,
         CHANGE_BAR_COLOR_WITH_POTIONS,
         ENABLE_MESSAGE_WHEN_ACTION_PREVENTED
     }
@@ -416,9 +442,10 @@ public class EnumUtils {
         TOMOCRAFTER("tomocrafter","github.com/tomocrafter", Feature.AVOID_BLINKING_NIGHT_VISION, Feature.SLAYER_INDICATOR),
         DAPIGGUY("DaPigGuy", "github.com/DaPigGuy", Feature.MINION_DISABLE_LOCATION_WARNING),
         COMNIEMEER("comniemeer","github.com/comniemeer", Feature.JUNGLE_AXE_COOLDOWN),
-        KEAGEL("Keagel", "github.com/Keagel", Feature.ONLY_MINE_ORES_DEEP_CAVERNS),
+        KEAGEL("Keagel", "github.com/Keagel", Feature.ONLY_MINE_ORES_DEEP_CAVERNS, Feature.DISABLE_MAGICAL_SOUP_MESSAGES),
         SUPERHIZE("SuperHiZe", "github.com/superhize", Feature.SPECIAL_ZEALOT_ALERT),
-        DIDI_SKYWALKER("DidiSkywalker", "github.com/didiskywalker", Feature.ITEM_PICKUP_LOG, Feature.HEALTH_UPDATES, Feature.REPLACE_ROMAN_NUMERALS_WITH_NUMBERS, Feature.CRAFTING_PATTERNS),
+        DIDI_SKYWALKER("DidiSkywalker", "twitter.com/didiskywalker", Feature.ITEM_PICKUP_LOG, Feature.HEALTH_UPDATES, Feature.REPLACE_ROMAN_NUMERALS_WITH_NUMBERS,
+                Feature.CRAFTING_PATTERNS, Feature.POWER_ORB_STATUS_DISPLAY),
         GARY("GARY_", "github.com/occanowey", Feature.ONLY_MINE_VALUABLES_NETHER),
         P0KE("P0ke", "p0ke.dev", Feature.ZEALOT_COUNTER);
 
@@ -449,24 +476,26 @@ public class EnumUtils {
     }
 
     public enum Rarity {
-        COMMON("f"),
-        UNCOMMON("a"),
-        RARE("9"),
-        EPIC("5"),
-        LEGENDARY("6"),
-        SPECIAL("d");
+        COMMON("f§lCOMMON"),
+        UNCOMMON("a§lUNCOMMON"),
+        RARE("9§lRARE"),
+        EPIC("5§lEPIC"),
+        LEGENDARY("6§lLEGENDARY"),
+        SPECIAL("d§lSPECIAL");
 
         private String tag;
 
         Rarity(String s) {
-            this.tag = "§"+s;
+            this.tag = "§5§o§"+s;
         }
 
         public static Rarity getRarity(ItemStack item) {
             if (item == null) return null;
-            String itemName = item.getDisplayName();
+            List<String> lore = item.getTooltip(Minecraft.getMinecraft().thePlayer, false);
+            String lastLoreLine = lore.get(lore.size()-1);
+            System.out.println(lastLoreLine);
             for(Rarity rarity: Rarity.values()) {
-                if(itemName.startsWith(rarity.tag)) return rarity;
+                if(lastLoreLine.startsWith(rarity.tag)) return rarity;
             }
             return null;
         }
@@ -534,7 +563,8 @@ public class EnumUtils {
         TEXT,
         PICKUP_LOG,
         DEFENCE_ICON,
-        REVENANT_PROGRESS
+        REVENANT_PROGRESS,
+        POWER_ORB_DISPLAY
     }
 
     public enum Social {

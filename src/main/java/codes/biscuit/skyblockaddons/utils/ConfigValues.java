@@ -39,6 +39,7 @@ public class ConfigValues {
     private Map<Feature, EnumUtils.AnchorPoint> anchorPoints = new EnumMap<>(Feature.class);
     private Language language = Language.ENGLISH;
     private EnumUtils.BackpackStyle backpackStyle = EnumUtils.BackpackStyle.GUI;
+    private EnumUtils.PowerOrbDisplayStyle powerOrbDisplayStyle = EnumUtils.PowerOrbDisplayStyle.COMPACT;
     private EnumUtils.TextStyle textStyle = EnumUtils.TextStyle.REGULAR;
     @SuppressWarnings("deprecation") private Set<Feature> remoteDisabledFeatures = EnumSet.of(Feature.AVOID_BREAKING_BOTTOM_SUGAR_CANE);
     private Set<Integer> legacyLockedSlots = new HashSet<>();
@@ -115,17 +116,30 @@ public class ConfigValues {
                 }
             }
 
+            if (settingsConfig.has("powerOrbStyle")) {
+                int ordinal = settingsConfig.get("powerOrbStyle").getAsInt();
+                if (EnumUtils.PowerOrbDisplayStyle.values().length > ordinal) {
+                    powerOrbDisplayStyle = EnumUtils.PowerOrbDisplayStyle.values()[ordinal];
+                }
+            }
+
+
             if (settingsConfig.has("anchorPoints")) {
                 for (Map.Entry<String, JsonElement> element : settingsConfig.getAsJsonObject("anchorPoints").entrySet()) {
                     Feature feature = Feature.fromId(Integer.valueOf(element.getKey()));
-                    anchorPoints.put(feature, EnumUtils.AnchorPoint.fromId(element.getValue().getAsInt()));
+                    EnumUtils.AnchorPoint anchorPoint = EnumUtils.AnchorPoint.fromId(element.getValue().getAsInt());
+                    if (feature != null && anchorPoint != null) {
+                        anchorPoints.put(feature, anchorPoint);
+                    }
                 }
             }
 
             if (settingsConfig.has("guiScales")) {
                 for (Map.Entry<String, JsonElement> element : settingsConfig.getAsJsonObject("guiScales").entrySet()) {
                     Feature feature = Feature.fromId(Integer.parseInt(element.getKey()));
-                    guiScales.put(feature, new MutableFloat(element.getValue().getAsFloat()));
+                    if (feature != null) {
+                        guiScales.put(feature, new MutableFloat(element.getValue().getAsFloat()));
+                    }
                 }
             }
 
@@ -156,9 +170,11 @@ public class ConfigValues {
             if (settingsConfig.has("featureColors")) {
                 for (Map.Entry<String, JsonElement> element : settingsConfig.getAsJsonObject("featureColors").entrySet()) {
                     Feature feature = Feature.fromId(Integer.parseInt(element.getKey()));
-                    int ordinal = element.getValue().getAsInt();
-                    if (ConfigColor.values().length > ordinal) {
-                        featureColors.put(feature, ConfigColor.values()[ordinal]);
+                    if (feature != null) {
+                        int ordinal = element.getValue().getAsInt();
+                        if (ConfigColor.values().length > ordinal) {
+                            featureColors.put(feature, ConfigColor.values()[ordinal]);
+                        }
                     }
                 }
             }
@@ -226,8 +242,10 @@ public class ConfigValues {
         if (settingsConfig.has(memberName)) {
             for (Map.Entry<String, JsonElement> element : settingsConfig.getAsJsonObject(memberName).entrySet()) {
                 Feature feature = Feature.fromId(Integer.parseInt(element.getKey()));
-                JsonArray array = element.getValue().getAsJsonArray();
-                targetObject.put(feature, new CoordsPair(array.get(0).getAsInt(), array.get(1).getAsInt()));
+                if (feature != null) {
+                    JsonArray array = element.getValue().getAsJsonArray();
+                    targetObject.put(feature, new CoordsPair(array.get(0).getAsInt(), array.get(1).getAsInt()));
+                }
             }
         }
     }
@@ -458,6 +476,7 @@ public class ConfigValues {
             settingsConfig.addProperty("textStyle", textStyle.ordinal());
             settingsConfig.addProperty("language", language.getPath());
             settingsConfig.addProperty("backpackStyle", backpackStyle.ordinal());
+            settingsConfig.addProperty("powerOrbStyle", powerOrbDisplayStyle.ordinal());
 
             settingsConfig.addProperty("configVersion", CONFIG_VERSION);
 
@@ -599,8 +618,16 @@ public class ConfigValues {
         return backpackStyle;
     }
 
+    public EnumUtils.PowerOrbDisplayStyle getPowerOrbDisplayStyle() {
+        return powerOrbDisplayStyle;
+    }
+
     public void setBackpackStyle(EnumUtils.BackpackStyle backpackStyle) {
         this.backpackStyle = backpackStyle;
+    }
+
+    public void setPowerOrbDisplayStyle(EnumUtils.PowerOrbDisplayStyle powerOrbDisplayStyle) {
+        this.powerOrbDisplayStyle = powerOrbDisplayStyle;
     }
 
     public EnumUtils.AnchorPoint getAnchorPoint(Feature feature) {

@@ -81,11 +81,14 @@ public enum Message {
     SETTING_SLAYER_INDICATOR(MessageObject.SETTING, "revenantIndicator"),
     SETTING_SPECIAL_ZEALOT_ALERT(MessageObject.SETTING, "specialZealotAlert"),
     SETTING_ONLY_MINE_VALUABLES_NETHER(MessageObject.SETTING, "onlyMineValuablesNether"),
+    SETTING_DISABLE_MAGICAL_SOUP_MESSAGE(MessageObject.SETTING, "disableMagicalSoupMessage"),
     SETTING_HIDE_PET_HEALTH_BAR(MessageObject.SETTING, "hidePetHealthBar"),
+    SETTING_POWER_ORB_DISPLAY(MessageObject.SETTING, "powerOrbDisplay"),
+    SETTING_POWER_ORB_DISPLAY_STYLE(MessageObject.SETTING, "powerOrbDisplayStyle"),
     SETTING_ZEALOT_COUNTER(MessageObject.SETTING, "zealotCounter"),
 
-    BACKPACK_STYLE_REGULAR(MessageObject.STYLE, "regular"),
-    BACKPACK_STYLE_COMPACT(MessageObject.STYLE, "compact"),
+    BACKPACK_STYLE_REGULAR(MessageObject.BACKPACK_STYLE, "regular"),
+    BACKPACK_STYLE_COMPACT(MessageObject.BACKPACK_STYLE, "compact"),
 
     MESSAGE_DROP_CONFIRMATION(MessageObject.MESSAGES, "dropConfirmation"),
     MESSAGE_MAGMA_BOSS_WARNING(MessageObject.MESSAGES, "magmaBossWarning"),
@@ -141,7 +144,10 @@ public enum Message {
 
     INVENTORY_TYPE_ENCHANTS(MessageObject.INVENTORY_TYPE, "enchants"),
     INVENTORY_TYPE_REFORGES(MessageObject.INVENTORY_TYPE, "reforges"),
-    INVENTORY_TYPE_CRAFTING(MessageObject.INVENTORY_TYPE, "crafting");
+    INVENTORY_TYPE_CRAFTING(MessageObject.INVENTORY_TYPE, "crafting"),
+
+    POWER_ORB_DISPLAY_STYLE_DETAILED(MessageObject.POWER_ORB_STYLE, "detailed"),
+    POWER_ORB_DISPLAY_STYLE_COMPACT(MessageObject.POWER_ORB_STYLE, "compact");
 
     private MessageObject messageObject;
     private String memberName;
@@ -174,6 +180,8 @@ public enum Message {
             if (text != null) {
                 if (this == Message.SETTING_BACKPACK_STYLE) {
                     text = text.replace("%style%", main.getConfigValues().getBackpackStyle().getMessage());
+                } else if(this == Message.SETTING_POWER_ORB_DISPLAY_STYLE) {
+                    text = text.replace("%style%", main.getConfigValues().getPowerOrbDisplayStyle().getMessage());
                 } else if (this == Message.SETTING_GUI_SCALE) {
                     text = text.replace("%scale%", variables[0]);
                 } else if (this == Message.MESSAGE_NEW_UPDATE || this == UPDATE_MESSAGE_MAJOR || this == UPDATE_MESSAGE_PATCH) {
@@ -217,7 +225,8 @@ public enum Message {
         ROOT(""),
         SETTING("settings"),
         MESSAGES("messages"),
-        STYLE("settings.backpackStyles"),
+        BACKPACK_STYLE("settings.backpackStyles"),
+        POWER_ORB_STYLE("settings.powerOrbStyle"),
         INVENTORY_TYPE("messages.inventoryTypes"),
         TEXT_STYLE("settings.textStyles"),
         TAB("settings.tab"),

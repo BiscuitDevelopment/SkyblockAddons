@@ -79,11 +79,11 @@
     "speedPercentage": "Greičio Procentai",
     "collectionDisplay": "Įgūdžių progreso lentelė",
     "onlyMineOresDeepCaverns": "Kasti tik rūdas Deep Cavern'usuose",
-    "onlyMineValuablesNether": "Only Mine Valuables in the Nether",
+    "onlyMineValuablesNether": "Pragare iškasti tik vertingus orus",
     "revenantIndicator": "Žudiko Šarvų Progreso Indikatorius",
     "specialZealotAlert": "Specialaus Zealoto Įspėjimas",
-    "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented",
-    "hidePetHealthBar": "Hide Pet Health Bar"
+    "enableMessageWhenActionPrevented": "Rodyti žinutę kai uždrausta atlikti veiksmą",
+    "hidePetHealthBar": "Slėpti gyvūno gyvybių liniją"
   },
   "messages": {
     "dropConfirmation": "Meskite Šį Daiktą Dar Kartą, Kad Patvirtintumėte!",
@@ -126,7 +126,7 @@
     "anvilUses": "Priekalo Panaudojimai: %uses%",
     "specialZealotFound": "Specialus Zealotas!",
     "blockIncompletePatterns": "Nepilnas blokų modelis (rekomenduojama)",
-    "searchFeatures": "Search features",
-    "downloadingUpdateFile": "Downloading update file..."
+    "searchFeatures": "Rasti funkciją",
+    "downloadingUpdateFile": "Atsiunčiami naujinimai..."
   }
 }
