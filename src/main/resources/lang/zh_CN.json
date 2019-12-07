@@ -83,7 +83,14 @@
     "revenantIndicator": "杀手弓进度提示",
     "specialZealotAlert": "末影战士警告",
     "enableMessageWhenActionPrevented": "当操作被阻止时显示提示",
-    "hidePetHealthBar": "隐藏宠物血条"
+    "hidePetHealthBar": "隐藏宠物血条",
+    "powerOrbDisplay": "Power Orb Display",
+    "powerOrbDisplayStyle": "Power Orb Style: %style%",
+    "powerOrbStyle": {
+      "detailed": "Detailed",
+      "compact": "Compact"
+    },
+    "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages"
   },
   "messages": {
     "dropConfirmation": "再次丢弃此物品以确认!",
