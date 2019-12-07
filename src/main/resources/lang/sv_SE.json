@@ -83,7 +83,14 @@
     "revenantIndicator": "Slayer rustningar utväcklings indicator",
     "specialZealotAlert": "Speciell Zealot Alarm",
     "enableMessageWhenActionPrevented": "Visa ett meddelande när en åtgärd hindras",
-    "hidePetHealthBar": "Göm husdjurs hälsometer"
+    "hidePetHealthBar": "Göm husdjurs hälsometer",
+    "powerOrbDisplay": "Power Orb Display",
+    "powerOrbDisplayStyle": "Power Orb Style: %style%",
+    "powerOrbStyle": {
+      "detailed": "Detailed",
+      "compact": "Compact"
+    },
+    "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages"
   },
   "messages": {
     "dropConfirmation": "Släpp Det Här Igen För Att Bekräfta!",
