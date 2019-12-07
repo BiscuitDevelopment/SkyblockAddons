@@ -85,7 +85,7 @@
     "enableMessageWhenActionPrevented": "Mostrar uma Mensagem Quando uma Ação for Impedida",
     "hidePetHealthBar": "Ocultar barra de vida do Pet",
     "powerOrbDisplay": "Exibição de Poder da Esfera",
-    "powerOrbDisplayStyle": "Power Orb Style: %style%",
+    "powerOrbDisplayStyle": "Poder da Esfera Estilo: %style%",
     "powerOrbStyle": {
       "detailed": "Detalhado",
       "compact": "Compacto"
