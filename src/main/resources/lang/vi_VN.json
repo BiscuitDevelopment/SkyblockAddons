@@ -90,7 +90,8 @@
       "detailed": "Chi tiết",
       "compact": "Gọn"
     },
-    "disableMagicalSoupMessage": "Tắt thông báo của Súp nấm thần"
+    "disableMagicalSoupMessage": "Tắt thông báo của Súp nấm thần",
+    "zealotCounter": "Show Zealot Counter"
   },
   "messages": {
     "dropConfirmation": "Nhấn \"Q\" Thêm Một Lần Nữa Để Xác Nhận!",
