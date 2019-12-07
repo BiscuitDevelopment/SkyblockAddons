@@ -83,7 +83,14 @@
     "revenantIndicator": "Žudiko Šarvų Progreso Indikatorius",
     "specialZealotAlert": "Specialaus Zealoto Įspėjimas",
     "enableMessageWhenActionPrevented": "Rodyti žinutę kai uždrausta atlikti veiksmą",
-    "hidePetHealthBar": "Slėpti gyvūno gyvybių liniją"
+    "hidePetHealthBar": "Slėpti gyvūno gyvybių liniją",
+    "powerOrbDisplay": "Power Orb Display",
+    "powerOrbDisplayStyle": "Power Orb Style: %style%",
+    "powerOrbStyle": {
+      "detailed": "Detailed",
+      "compact": "Compact"
+    },
+    "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages"
   },
   "messages": {
     "dropConfirmation": "Meskite Šį Daiktą Dar Kartą, Kad Patvirtintumėte!",
