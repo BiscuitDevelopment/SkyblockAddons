@@ -88,9 +88,9 @@
     "powerOrbDisplayStyle": "Affichage: %style%",
     "powerOrbStyle": {
       "detailed": "Détail",
-      "compact": "Compact"
+      "compact": "Condensé"
     },
-    "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages"
+    "disableMagicalSoupMessage": "Masquer les infos chat de la soupe"
   },
   "messages": {
     "dropConfirmation": "Jetez cet objet une nouvelle fois pour confirmer!",
