@@ -85,12 +85,12 @@
     "enableMessageWhenActionPrevented": "Mostra un messaggio quando un’azione viene bloccata",
     "hidePetHealthBar": "Nascondi la Barra di Vita dell’animale da compagnia",
     "powerOrbDisplay": "Power Orb Display",
-    "powerOrbDisplayStyle": "Power Orb Style: %style%",
+    "powerOrbDisplayStyle": "Stile del Power Orb: %style%",
     "powerOrbStyle": {
-      "detailed": "Detailed",
+      "detailed": "Dettagliato",
       "compact": "Compatto"
     },
-    "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages"
+    "disableMagicalSoupMessage": "Disabilita i messaggi della zuppa magica ai funghi"
   },
   "messages": {
     "dropConfirmation": "Getta questo oggetto nuovamente per confermare!",
