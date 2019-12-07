@@ -87,10 +87,10 @@
     "powerOrbDisplay": "Hiển thị cầu năng lượng",
     "powerOrbDisplayStyle": "Kiểu hình Cầu năng lượng: %style%",
     "powerOrbStyle": {
-      "detailed": "Detailed",
-      "compact": "Compact"
+      "detailed": "Chi tiết",
+      "compact": "Gọn"
     },
-    "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages"
+    "disableMagicalSoupMessage": "Tắt thông báo của Súp nấm thần"
   },
   "messages": {
     "dropConfirmation": "Nhấn \"Q\" Thêm Một Lần Nữa Để Xác Nhận!",
