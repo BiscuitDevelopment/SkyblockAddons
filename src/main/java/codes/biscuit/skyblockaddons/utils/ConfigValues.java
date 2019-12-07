@@ -39,6 +39,7 @@ public class ConfigValues {
     private Map<Feature, EnumUtils.AnchorPoint> anchorPoints = new EnumMap<>(Feature.class);
     private Language language = Language.ENGLISH;
     private EnumUtils.BackpackStyle backpackStyle = EnumUtils.BackpackStyle.GUI;
+    private EnumUtils.PowerOrbDisplayStyle powerOrbDisplayStyle = EnumUtils.PowerOrbDisplayStyle.COMPACT;
     private EnumUtils.TextStyle textStyle = EnumUtils.TextStyle.REGULAR;
     @SuppressWarnings("deprecation") private Set<Feature> remoteDisabledFeatures = EnumSet.of(Feature.AVOID_BREAKING_BOTTOM_SUGAR_CANE);
     private Set<Integer> legacyLockedSlots = new HashSet<>();
@@ -114,6 +115,14 @@ public class ConfigValues {
                     backpackStyle = EnumUtils.BackpackStyle.values()[ordinal];
                 }
             }
+
+            if (settingsConfig.has("powerOrbStyle")) {
+                int ordinal = settingsConfig.get("powerOrbStyle").getAsInt();
+                if (EnumUtils.PowerOrbDisplayStyle.values().length > ordinal) {
+                    powerOrbDisplayStyle = EnumUtils.PowerOrbDisplayStyle.values()[ordinal];
+                }
+            }
+
 
             if (settingsConfig.has("anchorPoints")) {
                 for (Map.Entry<String, JsonElement> element : settingsConfig.getAsJsonObject("anchorPoints").entrySet()) {
@@ -467,6 +476,7 @@ public class ConfigValues {
             settingsConfig.addProperty("textStyle", textStyle.ordinal());
             settingsConfig.addProperty("language", language.getPath());
             settingsConfig.addProperty("backpackStyle", backpackStyle.ordinal());
+            settingsConfig.addProperty("powerOrbStyle", powerOrbDisplayStyle.ordinal());
 
             settingsConfig.addProperty("configVersion", CONFIG_VERSION);
 
@@ -608,8 +618,16 @@ public class ConfigValues {
         return backpackStyle;
     }
 
+    public EnumUtils.PowerOrbDisplayStyle getPowerOrbDisplayStyle() {
+        return powerOrbDisplayStyle;
+    }
+
     public void setBackpackStyle(EnumUtils.BackpackStyle backpackStyle) {
         this.backpackStyle = backpackStyle;
+    }
+
+    public void setPowerOrbDisplayStyle(EnumUtils.PowerOrbDisplayStyle powerOrbDisplayStyle) {
+        this.powerOrbDisplayStyle = powerOrbDisplayStyle;
     }
 
     public EnumUtils.AnchorPoint getAnchorPoint(Feature feature) {

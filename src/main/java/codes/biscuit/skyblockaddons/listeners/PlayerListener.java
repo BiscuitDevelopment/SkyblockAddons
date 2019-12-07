@@ -366,7 +366,26 @@ public class PlayerListener {
     @SubscribeEvent
     public void onEntityEvent(LivingEvent.LivingUpdateEvent e) {
         Entity entity = e.entity;
+
         if (main.getUtils().isOnSkyblock() && entity instanceof EntityArmorStand && entity.hasCustomName()) {
+            String customNameTag = entity.getCustomNameTag();
+
+            PowerOrb powerOrb = PowerOrb.getByDisplayname(customNameTag);
+            if (powerOrb != null
+                    && Minecraft.getMinecraft().thePlayer != null
+                    && powerOrb.isInRadius(entity.getPosition().distanceSq(Minecraft.getMinecraft().thePlayer.getPosition()))) {
+                String[] customNameTagSplit = customNameTag.split(" ");
+                String secondsString = customNameTagSplit[customNameTagSplit.length - 1]
+                        .replaceAll("§e", "")
+                        .replaceAll("s", "");
+                try {
+                    // Apparently they don't have a second count for moment after spawning, that's what this try-catch is for
+                    int seconds = Integer.parseInt(secondsString);
+                    PowerOrbManager.getInstance().put(powerOrb, seconds);
+                } catch (NumberFormatException ignored) {
+                }
+            }
+
             if (main.getUtils().getLocation() == EnumUtils.Location.ISLAND) {
                 int cooldown = main.getConfigValues().getWarningSeconds() * 1000 + 5000;
                 if (main.getConfigValues().isEnabled(Feature.MINION_FULL_WARNING) &&

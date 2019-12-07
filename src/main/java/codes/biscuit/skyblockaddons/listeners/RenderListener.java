@@ -28,8 +28,8 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 import java.awt.*;
 import java.math.BigDecimal;
-import java.util.List;
 import java.util.*;
+import java.util.List;
 
 import static net.minecraft.client.gui.Gui.icons;
 
@@ -63,10 +63,12 @@ public class RenderListener {
     private EnumUtils.GuiTab guiTabToOpen = EnumUtils.GuiTab.FEATURES;
     private String textToOpen = null;
 
+
     public RenderListener(SkyblockAddons main) {
         this.main = main;
         downloadInfo = new DownloadInfo(main);
     }
+
     /**
      * Render overlays and warnings for clients without labymod.
      */
@@ -224,9 +226,17 @@ public class RenderListener {
             GlStateManager.disableBlend();
 
             for (Feature feature : Feature.getGuiFeatures()) {
+                if (feature == Feature.POWER_ORB_STATUS_DISPLAY) {
+//                    FMLLog.info("power orb feature");
+                }
                 if (main.getConfigValues().isEnabled(feature)) {
-                    if (feature == Feature.SKELETON_BAR && !main.getInventoryUtils().isWearingSkeletonHelmet()) continue;
-                    if (feature == Feature.HEALTH_UPDATES && main.getPlayerListener().getHealthUpdate() == null) continue;
+                    if (feature == Feature.POWER_ORB_STATUS_DISPLAY) {
+//                        FMLLog.info("power orb feature enabled");
+                    }
+                    if (feature == Feature.SKELETON_BAR && !main.getInventoryUtils().isWearingSkeletonHelmet())
+                        continue;
+                    if (feature == Feature.HEALTH_UPDATES && main.getPlayerListener().getHealthUpdate() == null)
+                        continue;
 
                     float scale = main.getConfigValues().getGuiScale(feature);
                     GlStateManager.pushMatrix();
@@ -249,11 +259,11 @@ public class RenderListener {
         }
 
         // The height and width of this element (box not included)
-        int barHeightExpansion = 2*main.getConfigValues().getSizes(feature).getY();
-        int height = 3+barHeightExpansion;
+        int barHeightExpansion = 2 * main.getConfigValues().getSizes(feature).getY();
+        int height = 3 + barHeightExpansion;
 
-        int barWidthExpansion = 10*main.getConfigValues().getSizes(feature).getX();
-        int width = 22+barWidthExpansion;
+        int barWidthExpansion = 10 * main.getConfigValues().getSizes(feature).getX();
+        int width = 22 + barWidthExpansion;
 
         // The fill of the bar from 0 to 1
         float fill;
@@ -278,26 +288,26 @@ public class RenderListener {
         }
 
         // Put the x & y to scale, remove half the width and height to center this element.
-        x/=scale;
-        y/=scale;
-        x-=(float)width/2;
-        y-=(float)height/2;
+        x /= scale;
+        y /= scale;
+        x -= (float) width / 2;
+        y -= (float) height / 2;
         int intX = Math.round(x);
         int intY = Math.round(y);
         if (buttonLocation == null) {
-            drawModularBar(mc, color, false, intX, intY+barHeightExpansion/2, null,feature,filled, width);
+            drawModularBar(mc, color, false, intX, intY + barHeightExpansion / 2, null, feature, filled, width);
             if (filled > 0) {
-                drawModularBar(mc, color, true, intX, intY+barHeightExpansion/2, null,feature,filled, width);
+                drawModularBar(mc, color, true, intX, intY + barHeightExpansion / 2, null, feature, filled, width);
             }
         } else {
-            int boxXOne = intX-4;
-            int boxXTwo = intX+width+5;
-            int boxYOne = intY-3;
-            int boxYTwo = intY+height+4;
+            int boxXOne = intX - 4;
+            int boxXTwo = intX + width + 5;
+            int boxYOne = intY - 3;
+            int boxYTwo = intY + height + 4;
             buttonLocation.checkHoveredAndDrawBox(boxXOne, boxXTwo, boxYOne, boxYTwo, scale);
-            drawModularBar(mc, main.getConfigValues().getColor(feature), false, intX, intY+barHeightExpansion/2, buttonLocation,feature,filled, width);
+            drawModularBar(mc, main.getConfigValues().getColor(feature), false, intX, intY + barHeightExpansion / 2, buttonLocation, feature, filled, width);
             if (filled > 0) {
-                drawModularBar(mc, main.getConfigValues().getColor(feature), true, intX, intY+barHeightExpansion/2, buttonLocation,feature,filled, width);
+                drawModularBar(mc, main.getConfigValues().getColor(feature), true, intX, intY + barHeightExpansion / 2, buttonLocation, feature, filled, width);
             }
         }
     }
@@ -308,13 +318,13 @@ public class RenderListener {
             gui = buttonLocation;
         }
         if (color == ConfigColor.BLACK) {
-            GlStateManager.color(0.25F,0.25F,0.25F); // too dark normally
+            GlStateManager.color(0.25F, 0.25F, 0.25F); // too dark normally
         } else { // a little darker for contrast
-            GlStateManager.color(((float)color.getR() / 255)*0.9F, ((float)color.getG() / 255)*0.9F, ((float)color.getB() / 255)*0.9F);
+            GlStateManager.color(((float) color.getR() / 255) * 0.9F, ((float) color.getG() / 255) * 0.9F, ((float) color.getB() / 255) * 0.9F);
         }
         CoordsPair sizes = main.getConfigValues().getSizes(feature);
         if (!filled) fillWidth = maxWidth;
-        drawBarStart(gui,x,y, filled, sizes.getX(), sizes.getY(), fillWidth, color, maxWidth);
+        drawBarStart(gui, x, y, filled, sizes.getX(), sizes.getY(), fillWidth, color, maxWidth);
     }
 
     private void drawBarStart(Gui gui, int x, int y, boolean filled, int barWidth, int barHeight, int fillWidth, ConfigColor color, int maxWidth) {
@@ -325,7 +335,7 @@ public class RenderListener {
 
         drawAllFiveRows(gui, x, y, barHeight, 0, baseTextureY, 11, fillWidth);
 
-        drawBarSeparators(gui, x+11, y, baseTextureY, barWidth, barHeight, fillWidth);
+        drawBarSeparators(gui, x + 11, y, baseTextureY, barWidth, barHeight, fillWidth);
 
         if (fillWidth < maxWidth && fillWidth > 0) {
             GlStateManager.color(((float) color.getR() / 255) * 0.8F, ((float) color.getG() / 255) * 0.8F, ((float) color.getB() / 255) * 0.8F);
@@ -336,46 +346,46 @@ public class RenderListener {
     private void drawMiddleBarParts(Gui gui, int x, int y, int baseTextureY, int barWidth, int barHeight, int fillWidth) {
         int endBarX = 0;
         for (int i = 0; i < barWidth; i++) {
-            endBarX = x+(i*10);
-            drawAllFiveRows(gui, endBarX, y, barHeight, 12, baseTextureY, 9,fillWidth-11-(i*10));
+            endBarX = x + (i * 10);
+            drawAllFiveRows(gui, endBarX, y, barHeight, 12, baseTextureY, 9, fillWidth - 11 - (i * 10));
         }
-        drawBarEnd(gui, endBarX+10, y, baseTextureY, barWidth, barHeight,fillWidth);
+        drawBarEnd(gui, endBarX + 10, y, baseTextureY, barWidth, barHeight, fillWidth);
     }
 
     private void drawBarSeparators(Gui gui, int x, int y, int baseTextureY, int barWidth, int barHeight, int fillWidth) {
         for (int i = 0; i <= barWidth; i++) {
-            drawMiddleThreeRows(gui,x+(i*10),y,barHeight,11,baseTextureY,1, fillWidth-11-(i*10), 2);
+            drawMiddleThreeRows(gui, x + (i * 10), y, barHeight, 11, baseTextureY, 1, fillWidth - 11 - (i * 10), 2);
         }
-        drawMiddleBarParts(gui, x+1, y, baseTextureY, barWidth, barHeight,fillWidth);
+        drawMiddleBarParts(gui, x + 1, y, baseTextureY, barWidth, barHeight, fillWidth);
     }
 
     private void drawBarEnd(Gui gui, int x, int y, int baseTextureY, int barWidth, int barHeight, int fillWidth) {
-        drawAllFiveRows(gui, x, y, barHeight, 22, baseTextureY, 11,fillWidth-11-(barWidth*10));
+        drawAllFiveRows(gui, x, y, barHeight, 22, baseTextureY, 11, fillWidth - 11 - (barWidth * 10));
     }
 
     private void drawAllFiveRows(Gui gui, int x, int y, int barHeight, int textureX, int baseTextureY, int width, int fillWidth) {
         if (fillWidth > width || baseTextureY >= 8) fillWidth = width;
-        gui.drawTexturedModalRect(x, y+1-barHeight, textureX, baseTextureY, fillWidth, 1);
+        gui.drawTexturedModalRect(x, y + 1 - barHeight, textureX, baseTextureY, fillWidth, 1);
 
-        drawMiddleThreeRows(gui,x,y,barHeight,textureX,baseTextureY,width,fillWidth, 1);
+        drawMiddleThreeRows(gui, x, y, barHeight, textureX, baseTextureY, width, fillWidth, 1);
 
-        gui.drawTexturedModalRect(x, y+3+barHeight, textureX, baseTextureY+4, fillWidth, 1);
+        gui.drawTexturedModalRect(x, y + 3 + barHeight, textureX, baseTextureY + 4, fillWidth, 1);
     }
 
-    private void drawMiddleThreeRows(Gui gui, int x, int y, int barHeight, int textureX, int baseTextureY,  int width, int fillWidth, int rowHeight) {
+    private void drawMiddleThreeRows(Gui gui, int x, int y, int barHeight, int textureX, int baseTextureY, int width, int fillWidth, int rowHeight) {
         if (fillWidth > width || baseTextureY >= 8) fillWidth = width;
         for (int i = 0; i < barHeight; i++) {
             if (rowHeight == 2) { //this means its drawing bar separators, and its a little different
-                gui.drawTexturedModalRect(x, y-i, textureX, baseTextureY, fillWidth, rowHeight);
+                gui.drawTexturedModalRect(x, y - i, textureX, baseTextureY, fillWidth, rowHeight);
             } else {
                 gui.drawTexturedModalRect(x, y + 1 - i, textureX, baseTextureY + 1, fillWidth, rowHeight);
             }
         }
 
-        gui.drawTexturedModalRect(x, y+2, textureX, baseTextureY+2, fillWidth, 1);
+        gui.drawTexturedModalRect(x, y + 2, textureX, baseTextureY + 2, fillWidth, 1);
 
         for (int i = 0; i < barHeight; i++) {
-            gui.drawTexturedModalRect(x, y+3+i, textureX, baseTextureY+3, fillWidth, rowHeight);
+            gui.drawTexturedModalRect(x, y + 3 + i, textureX, baseTextureY + 3, fillWidth, rowHeight);
         }
     }
 
@@ -394,7 +404,7 @@ public class RenderListener {
                 textList = downloadInfo.getMessageType().getMessages();
             }
             int halfWidth = new ScaledResolution(mc).getScaledWidth() / 2;
-            Gui.drawRect(halfWidth - 110, 20, halfWidth + 110, 53+textList.length*10, ConfigColor.RED.getColor(127));
+            Gui.drawRect(halfWidth - 110, 20, halfWidth + 110, 53 + textList.length * 10, ConfigColor.RED.getColor(127));
             String text = "SkyblockAddons";
             GlStateManager.pushMatrix();
             float scale = 1.5F;
@@ -404,7 +414,7 @@ public class RenderListener {
             int y = 45;
             for (String line : textList) {
                 mc.fontRendererObj.drawString(line, halfWidth - mc.fontRendererObj.getStringWidth(line) / 2, y, ConfigColor.WHITE.getColor());
-                y+=10;
+                y += 10;
             }
         }
     }
@@ -429,22 +439,22 @@ public class RenderListener {
         if (bones > 3) bones = 3;
 
         float height = 16;
-        float width = 3*15;
-        x-=Math.round(width*scale/2);
-        y-=Math.round(height*scale/2);
-        x/=scale;
-        y/=scale;
+        float width = 3 * 15;
+        x -= Math.round(width * scale / 2);
+        y -= Math.round(height * scale / 2);
+        x /= scale;
+        y /= scale;
         if (buttonLocation != null) {
-            int boxXOne = Math.round(x-4);
-            int boxXTwo = Math.round(x+width+4);
-            int boxYOne = Math.round(y-4);
-            int boxYTwo = Math.round(y+height+4);
+            int boxXOne = Math.round(x - 4);
+            int boxXTwo = Math.round(x + width + 4);
+            int boxYOne = Math.round(y - 4);
+            int boxYTwo = Math.round(y + height + 4);
             buttonLocation.checkHoveredAndDrawBox(boxXOne, boxXTwo, boxYOne, boxYTwo, scale);
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         }
 
         for (int boneCounter = 0; boneCounter < bones; boneCounter++) {
-            mc.getRenderItem().renderItemIntoGUI(BONE_ITEM, Math.round((x+boneCounter*15)), Math.round(y));
+            mc.getRenderItem().renderItemIntoGUI(BONE_ITEM, Math.round((x + boneCounter * 15)), Math.round(y));
         }
     }
 
@@ -464,26 +474,26 @@ public class RenderListener {
         float x = main.getConfigValues().getActualX(Feature.DEFENCE_ICON);
         float y = main.getConfigValues().getActualY(Feature.DEFENCE_ICON);
         if (buttonLocation == null) {
-            float newScale = scale*1.5F;
+            float newScale = scale * 1.5F;
             GlStateManager.pushMatrix();
             GlStateManager.scale(newScale, newScale, 1);
-            newScale*=scale;
-            x-=Math.round((float)width*newScale/2);
-            y-=Math.round((float)height*newScale/2);
-            mc.ingameGUI.drawTexturedModalRect(x/newScale, y/newScale, 34, 9, width, height);
+            newScale *= scale;
+            x -= Math.round((float) width * newScale / 2);
+            y -= Math.round((float) height * newScale / 2);
+            mc.ingameGUI.drawTexturedModalRect(x / newScale, y / newScale, 34, 9, width, height);
             GlStateManager.popMatrix();
         } else {
-            scale *= (scale/1.5);
-            x-=Math.round((float)width*scale/2);
-            y-=Math.round((float)height*scale/2);
-            x/=scale;
-            y/=scale;
+            scale *= (scale / 1.5);
+            x -= Math.round((float) width * scale / 2);
+            y -= Math.round((float) height * scale / 2);
+            x /= scale;
+            y /= scale;
             int intX = Math.round(x);
             int intY = Math.round(y);
-            int boxXOne = intX-2;
-            int boxXTwo = intX+width+2;
-            int boxYOne = intY-2;
-            int boxYTwo = intY+height+2;
+            int boxXOne = intX - 2;
+            int boxXTwo = intX + width + 2;
+            int boxYOne = intY - 2;
+            int boxYTwo = intY + height + 2;
             buttonLocation.checkHoveredAndDrawBox(boxXOne, boxXTwo, boxYOne, boxYTwo, scale);
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
             buttonLocation.drawTexturedModalRect(intX, intY, 34, 9, width, height);
@@ -505,12 +515,12 @@ public class RenderListener {
         } else if (feature == Feature.DEFENCE_TEXT) {
             text = String.valueOf(getAttribute(Attribute.DEFENCE));
         } else if (feature == Feature.DEFENCE_PERCENTAGE) {
-            double doubleDefence = (double)getAttribute(Attribute.DEFENCE);
-            double percentage = ((doubleDefence/100)/((doubleDefence/100)+1))*100; //Taken from https://hypixel.net/threads/how-armor-works-and-the-diminishing-return-of-higher-defence.2178928/
+            double doubleDefence = (double) getAttribute(Attribute.DEFENCE);
+            double percentage = ((doubleDefence / 100) / ((doubleDefence / 100) + 1)) * 100; //Taken from https://hypixel.net/threads/how-armor-works-and-the-diminishing-return-of-higher-defence.2178928/
             BigDecimal bigDecimal = new BigDecimal(percentage).setScale(1, BigDecimal.ROUND_HALF_UP);
-            text = bigDecimal.toString()+"%";
+            text = bigDecimal.toString() + "%";
         } else if (feature == Feature.SPEED_PERCENTAGE) {
-            String walkSpeed = String.valueOf(Minecraft.getMinecraft().thePlayer.capabilities.getWalkSpeed()*1000);
+            String walkSpeed = String.valueOf(Minecraft.getMinecraft().thePlayer.capabilities.getWalkSpeed() * 1000);
             text = walkSpeed.substring(0, walkSpeed.length() >= 3 ? 3 : walkSpeed.length());
 
             if (text.endsWith(".")) text = text.substring(0, text.indexOf('.')); //remove trailing periods
@@ -536,9 +546,9 @@ public class RenderListener {
             }
             nextDarkAuction.set(Calendar.MINUTE, 55);
             nextDarkAuction.set(Calendar.SECOND, 0);
-            int difference = (int)(nextDarkAuction.getTimeInMillis()-System.currentTimeMillis());
-            int minutes = difference/60000;
-            int seconds = (int)Math.round((double)(difference%60000)/1000);
+            int difference = (int) (nextDarkAuction.getTimeInMillis() - System.currentTimeMillis());
+            int minutes = difference / 60000;
+            int seconds = (int) Math.round((double) (difference % 60000) / 1000);
             StringBuilder timestamp = new StringBuilder();
             if (minutes < 10) {
                 timestamp.append("0");
@@ -599,27 +609,27 @@ public class RenderListener {
 
         int height = 7;
         int width = mc.fontRendererObj.getStringWidth(text);
-        x-=Math.round(width*scale/2);
-        y-=Math.round(height*scale/2);
-        x/=scale;
-        y/=scale;
+        x -= Math.round(width * scale / 2);
+        y -= Math.round(height * scale / 2);
+        x /= scale;
+        y /= scale;
         int intX = Math.round(x);
         int intY = Math.round(y);
         if (buttonLocation != null) {
-            int boxXOne = intX-4;
-            int boxXTwo = intX+width+4;
-            int boxYOne = intY-4;
-            int boxYTwo = intY+height+4;
+            int boxXOne = intX - 4;
+            int boxXTwo = intX + width + 4;
+            int boxYOne = intY - 4;
+            int boxYTwo = intY + height + 4;
             if (feature == Feature.MAGMA_BOSS_TIMER || feature == Feature.DARK_AUCTION_TIMER || feature == Feature.SKILL_DISPLAY) {
-                boxXOne-=18;
-                boxYOne-=2;
+                boxXOne -= 18;
+                boxYOne -= 2;
             }
             buttonLocation.checkHoveredAndDrawBox(boxXOne, boxXTwo, boxYOne, boxYTwo, scale);
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         }
         if (main.getConfigValues().getTextStyle() == EnumUtils.TextStyle.BLACK_SHADOW) {
             GlStateManager.enableBlend();
-            int colorBlack = new Color(0,0,0, textAlpha > 0.016 ? textAlpha : 0.016F).getRGB();
+            int colorBlack = new Color(0, 0, 0, textAlpha > 0.016 ? textAlpha : 0.016F).getRGB();
             mc.fontRendererObj.drawString(text, intX + 1, intY, colorBlack);
             mc.fontRendererObj.drawString(text, intX - 1, intY, colorBlack);
             mc.fontRendererObj.drawString(text, intX, intY + 1, colorBlack);
@@ -628,19 +638,19 @@ public class RenderListener {
         } else {
             mc.ingameGUI.drawString(mc.fontRendererObj, text, intX, intY, color);
         }
-        GlStateManager.color(1,1,1,1);
+        GlStateManager.color(1, 1, 1, 1);
         if (feature == Feature.DARK_AUCTION_TIMER) {
             mc.getTextureManager().bindTexture(TEXT_ICONS);
-            Gui.drawModalRectWithCustomSizedTexture(intX-18, intY-5, 16, 0, 16,16,32,32);
+            Gui.drawModalRectWithCustomSizedTexture(intX - 18, intY - 5, 16, 0, 16, 16, 32, 32);
         } else if (feature == Feature.MAGMA_BOSS_TIMER) {
             mc.getTextureManager().bindTexture(TEXT_ICONS);
-            Gui.drawModalRectWithCustomSizedTexture(intX-18, intY-5, 0, 0, 16,16,32,32);
-        } else if (feature == Feature.SKILL_DISPLAY && ((skill != null && skill.getItem() != null) || buttonLocation != null) ) {
+            Gui.drawModalRectWithCustomSizedTexture(intX - 18, intY - 5, 0, 0, 16, 16, 32, 32);
+        } else if (feature == Feature.SKILL_DISPLAY && ((skill != null && skill.getItem() != null) || buttonLocation != null)) {
             GlStateManager.enableRescaleNormal();
             RenderHelper.enableGUIStandardItemLighting();
             if (!(mc.currentScreen instanceof GuiChat)) {
                 if (buttonLocation != null || textAlpha > 0.1) {
-                    mc.getRenderItem().renderItemIntoGUI(buttonLocation == null ? skill.getItem() : EnumUtils.SkillType.FARMING.getItem(),intX - 18, intY - 5);
+                    mc.getRenderItem().renderItemIntoGUI(buttonLocation == null ? skill.getItem() : EnumUtils.SkillType.FARMING.getItem(), intX - 18, intY - 5);
                 }
             }
             RenderHelper.disableStandardItemLighting();
@@ -670,17 +680,17 @@ public class RenderListener {
 
         int height = 15 * 4;
         int width = longest + 15;
-        x-=Math.round(width*scale/2);
-        y-=Math.round(height*scale/2);
-        x/=scale;
-        y/=scale;
+        x -= Math.round(width * scale / 2);
+        y -= Math.round(height * scale / 2);
+        x /= scale;
+        y /= scale;
         int intX = Math.round(x);
         int intY = Math.round(y);
         if (buttonLocation != null) {
-            int boxXOne = intX-4;
-            int boxXTwo = intX+width+4;
-            int boxYOne = intY-4;
-            int boxYTwo = intY+height+4;
+            int boxXOne = intX - 4;
+            int boxXTwo = intX + width + 4;
+            int boxYOne = intY - 4;
+            int boxYTwo = intY + height + 4;
             buttonLocation.checkHoveredAndDrawBox(boxXOne, boxXTwo, boxYOne, boxYTwo, scale);
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         }
@@ -690,21 +700,20 @@ public class RenderListener {
 
         int drawnCount = 0;
         for (int armorPiece = 3; armorPiece >= 0; armorPiece--) {
-            SlayerArmorProgress progress = progresses[downwards ? armorPiece : 3-armorPiece];
+            SlayerArmorProgress progress = progresses[downwards ? armorPiece : 3 - armorPiece];
             if (progress == null) continue;
 
             int fixedY;
             if (downwards) {
                 fixedY = intY + drawnCount * 15;
             } else {
-                fixedY = (intY+45) - drawnCount * 15;
+                fixedY = (intY + 45) - drawnCount * 15;
             }
-            drawItemStack(mc, progress.getItemStack(), intX-2, fixedY);
+            drawItemStack(mc, progress.getItemStack(), intX - 2, fixedY);
             main.getUtils().drawString(mc, progress.getProgressText(), intX + 17, fixedY + 5, 0xFFFFFFFF);
             drawnCount++;
         }
     }
-
 
     private void drawItemStack(Minecraft mc, ItemStack item, int x, int y) {
         RenderHelper.enableGUIStandardItemLighting();
@@ -722,19 +731,19 @@ public class RenderListener {
         EnumUtils.AnchorPoint anchorPoint = main.getConfigValues().getAnchorPoint(Feature.ITEM_PICKUP_LOG);
         boolean downwards = anchorPoint == EnumUtils.AnchorPoint.TOP_RIGHT || anchorPoint == EnumUtils.AnchorPoint.TOP_LEFT;
 
-        int height = 8*3;
+        int height = 8 * 3;
         int width = mc.fontRendererObj.getStringWidth("+ 1x Forceful Ember Chestplate");
-        x-=Math.round(width*scale/2);
-        y-=Math.round(height*scale/2);
-        x/=scale;
-        y/=scale;
+        x -= Math.round(width * scale / 2);
+        y -= Math.round(height * scale / 2);
+        x /= scale;
+        y /= scale;
         int intX = Math.round(x);
         int intY = Math.round(y);
         if (buttonLocation != null) {
-            int boxXOne = intX-4;
-            int boxXTwo = intX+width+4;
-            int boxYOne = intY-4;
-            int boxYTwo = intY+height+4;
+            int boxXOne = intX - 4;
+            int boxXTwo = intX + width + 4;
+            int boxYOne = intY - 4;
+            int boxYTwo = intY + height + 4;
             buttonLocation.checkHoveredAndDrawBox(boxXOne, boxXTwo, boxYOne, boxYTwo, scale);
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         }
@@ -744,15 +753,150 @@ public class RenderListener {
             log = DUMMY_PICKUP_LOG;
         }
         for (ItemDiff itemDiff : log) {
-            String text = String.format("%s %sx §r%s", itemDiff.getAmount() > 0 ? "§a+":"§c-",
+            String text = String.format("%s %sx §r%s", itemDiff.getAmount() > 0 ? "§a+" : "§c-",
                     Math.abs(itemDiff.getAmount()), itemDiff.getDisplayName());
-            int stringY = intY+(i*mc.fontRendererObj.FONT_HEIGHT);
+            int stringY = intY + (i * mc.fontRendererObj.FONT_HEIGHT);
             if (!downwards) {
-                stringY = intY-(i*mc.fontRendererObj.FONT_HEIGHT);
+                stringY = intY - (i * mc.fontRendererObj.FONT_HEIGHT);
                 stringY += 18;
             }
             main.getUtils().drawString(mc, text, intX, stringY, ConfigColor.WHITE.getColor());
             i++;
+        }
+    }
+
+    public void drawPowerOrbStatus(Minecraft mc, float scale, ButtonLocation buttonLocation) {
+        PowerOrbManager.Entry activePowerOrb = PowerOrbManager.getInstance().get();
+        if (buttonLocation != null) {
+            activePowerOrb = PowerOrbManager.DUMMY_ENTRY;
+        }
+        if (activePowerOrb != null) {
+            PowerOrb powerOrb = activePowerOrb.getPowerOrb();
+            int seconds = activePowerOrb.getSeconds();
+
+            EnumUtils.PowerOrbDisplayStyle displayStyle = main.getConfigValues().getPowerOrbDisplayStyle();
+            if (displayStyle == EnumUtils.PowerOrbDisplayStyle.DETAILED) {
+                drawDetailedPowerOrbStatus(mc, scale, buttonLocation, powerOrb, seconds);
+            } else {
+                drawCompactPowerOrbStatus(mc, scale, buttonLocation, powerOrb, seconds);
+            }
+        }
+    }
+
+    /**
+     * Displays the power orb display in a compact way with only the amount of seconds to the right of the icon.
+     *
+     *  --
+     * |  | XXs
+     *  --
+     */
+    private void drawCompactPowerOrbStatus(Minecraft mc, float scale, ButtonLocation buttonLocation, PowerOrb powerOrb, int seconds) {
+        float x = main.getConfigValues().getActualX(Feature.POWER_ORB_STATUS_DISPLAY);
+        float y = main.getConfigValues().getActualY(Feature.POWER_ORB_STATUS_DISPLAY);
+
+        String secondsString = String.format("§e%ss", seconds);
+        int spacing = 1;
+        int iconSize = mc.fontRendererObj.FONT_HEIGHT * 3; // 3 because it looked the best
+        int width = iconSize + spacing + mc.fontRendererObj.getStringWidth(secondsString);
+        // iconSize also acts as height
+        x -= Math.round(width * scale / 2);
+        y -= Math.round(iconSize * scale / 2);
+        x /= scale;
+        y /= scale;
+        int intX = Math.round(x);
+        int intY = Math.round(y);
+
+        if (buttonLocation != null) {
+            int boxXOne = intX - 4;
+            int boxXTwo = intX + width + 4;
+            int boxYOne = intY - 4;
+            int boxYTwo = intY + iconSize + 4;
+            buttonLocation.checkHoveredAndDrawBox(boxXOne, boxXTwo, boxYOne, boxYTwo, scale);
+            GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+        }
+
+        GlStateManager.disableDepth();
+        GlStateManager.enableBlend();
+        mc.getTextureManager().bindTexture(powerOrb.resourceLocation);
+        GlStateManager.color(1, 1, 1, 1F);
+        Gui.drawModalRectWithCustomSizedTexture(intX, intY, 0, 0, iconSize, iconSize, iconSize, iconSize);
+        GlStateManager.disableBlend();
+        GlStateManager.enableDepth();
+
+        main.getUtils().drawString(mc, secondsString, intX + iconSize, intY + (iconSize / 2) - (mc.fontRendererObj.FONT_HEIGHT / 2), ConfigColor.WHITE.getColor(255));
+    }
+
+    /**
+     * Displays the power orb with detailed stats about the boost you're receiving.
+     *
+     *  --  +X ❤/s
+     * |  | +X ✎/s
+     *  --  +X ❁
+     *  XXs
+     */
+    private void drawDetailedPowerOrbStatus(Minecraft mc, float scale, ButtonLocation buttonLocation, PowerOrb powerOrb, int seconds) {
+        float x = main.getConfigValues().getActualX(Feature.POWER_ORB_STATUS_DISPLAY);
+        float y = main.getConfigValues().getActualY(Feature.POWER_ORB_STATUS_DISPLAY);
+
+        String secondsString = String.format("§e%ss", seconds);
+        int spacing = 1;
+        int iconSize = mc.fontRendererObj.FONT_HEIGHT * 3; // 3 because it looked the best
+        int iconAndSecondsHeight = iconSize + mc.fontRendererObj.FONT_HEIGHT;
+
+        int maxHealth = main.getUtils().getAttributes().get(Attribute.MAX_HEALTH).getValue();
+        double healthRegen = maxHealth * powerOrb.healthRegen;
+        double healIncrease = powerOrb.healIncrease * 100;
+
+        List<String> display = new LinkedList<>();
+        display.add(String.format("§c+%s ❤/s", Utils.niceDouble(healthRegen, 2)));
+        if(powerOrb.manaRegen > 0) {
+            int maxMana = main.getUtils().getAttributes().get(Attribute.MAX_MANA).getValue();
+            double manaRegen = maxMana / 50;
+            manaRegen = manaRegen + manaRegen * powerOrb.manaRegen;
+            display.add(String.format("§b+%s ✎/s", Utils.niceDouble(manaRegen, 2)));
+        }
+        if (powerOrb.strength > 0) {
+            display.add(String.format("§4+%d ❁", powerOrb.strength));
+        }
+        if (healIncrease > 0) {
+            display.add(String.format("§2+%s%% Healing", Utils.niceDouble(healIncrease, 2)));
+        }
+
+        Optional<String> longestLine = display.stream().max(Comparator.comparingInt(String::length));
+
+        int effectsHeight = (mc.fontRendererObj.FONT_HEIGHT + spacing) * display.size();
+        int width = iconSize + longestLine.map(s -> mc.fontRendererObj.getStringWidth(s))
+                .orElseGet(() -> mc.fontRendererObj.getStringWidth(display.get(0)));
+        int height = Math.max(effectsHeight, iconAndSecondsHeight);
+        x -= Math.round(width * scale / 2);
+        y -= Math.round(24 * scale / 2);
+        x /= scale;
+        y /= scale;
+        int intX = Math.round(x);
+        int intY = Math.round(y);
+
+        if (buttonLocation != null) {
+            int boxXOne = intX - 4;
+            int boxXTwo = intX + width + 4;
+            int boxYOne = intY - 4;
+            int boxYTwo = intY + height + 4;
+            buttonLocation.checkHoveredAndDrawBox(boxXOne, boxXTwo, boxYOne, boxYTwo, scale);
+            GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+        }
+
+        GlStateManager.disableDepth();
+        GlStateManager.enableBlend();
+        mc.getTextureManager().bindTexture(powerOrb.resourceLocation);
+        GlStateManager.color(1, 1, 1, 1F);
+        Gui.drawModalRectWithCustomSizedTexture(intX, intY, 0, 0, iconSize, iconSize, iconSize, iconSize);
+        GlStateManager.disableBlend();
+        GlStateManager.enableDepth();
+
+        main.getUtils().drawString(mc, secondsString, intX + (iconSize / 2) - (mc.fontRendererObj.getStringWidth(secondsString) / 2), intY + iconSize, ConfigColor.WHITE.getColor(255));
+
+        int startY = Math.round(intY + (iconAndSecondsHeight / 2f) - (effectsHeight / 2f));
+        for (int i = 0; i < display.size(); i++) {
+            main.getUtils().drawString(mc, display.get(i), intX + iconSize + 3, startY + (i * (mc.fontRendererObj.FONT_HEIGHT + spacing)), ConfigColor.WHITE.getColor(255));
         }
     }
 
@@ -787,6 +931,7 @@ public class RenderListener {
             }
         }
     }
+
     @SubscribeEvent()
     public void onRender(TickEvent.RenderTickEvent e) {
         if (guiToOpen == PlayerListener.GUIType.MAIN) {
@@ -861,4 +1006,5 @@ public class RenderListener {
     public void setSkillFadeOutTime(long skillFadeOutTime) {
         this.skillFadeOutTime = skillFadeOutTime;
     }
+
 }
