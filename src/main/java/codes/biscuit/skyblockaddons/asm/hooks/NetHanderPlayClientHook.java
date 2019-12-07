@@ -1,9 +1,9 @@
-package codes.biscuit.skyblockaddons.mixins;
+package codes.biscuit.skyblockaddons.asm.hooks;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.asm.utils.ReturnValue;
 import codes.biscuit.skyblockaddons.utils.Feature;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.network.NetHandlerPlayClient;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.init.Items;
@@ -11,19 +11,10 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.play.server.S2FPacketSetSlot;
 import net.minecraft.network.play.server.S30PacketWindowItems;
-import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(NetHandlerPlayClient.class)
-public class MixinNetHandlerPlayClient {
+public class NetHanderPlayClientHook {
 
-    /**
-     *  These two injections make sure
-     */
-    @Inject(method = "handleSetSlot", at = @At(value = "HEAD"), cancellable = true)
-    private void handleSetSlot(S2FPacketSetSlot packetIn, CallbackInfo ci) {
+    public static void handleSetSlot(S2FPacketSetSlot packetIn, ReturnValue returnValue) {
         if (packetIn != null) {
             ItemStack item = packetIn.func_149174_e();
             int windowID = packetIn.func_149175_c();
@@ -38,7 +29,7 @@ public class MixinNetHandlerPlayClient {
                         InventoryPlayer inventory = p.inventory;
                         if (inventory != null) {
                             if (slot-36 == inventory.currentItem && isShootingBow(item, mc, inventory.getCurrentItem())) {
-                                ci.cancel();
+                               returnValue.cancel();
                             }
                         }
                     }
@@ -47,8 +38,7 @@ public class MixinNetHandlerPlayClient {
         }
     }
 
-    @Inject(method = "handleWindowItems", at = @At(value = "HEAD"))
-    private void handleSetSlot(S30PacketWindowItems packetIn, CallbackInfo ci) {
+    public static void handleWindowItems(S30PacketWindowItems packetIn) {
         if (packetIn != null) {
             ItemStack[] itemStacks = packetIn.getItemStacks();
             SkyblockAddons main = SkyblockAddons.getInstance();
@@ -73,7 +63,7 @@ public class MixinNetHandlerPlayClient {
         }
     }
 
-    private boolean isShootingBow(ItemStack itemStack, Minecraft mc, ItemStack currentItemStack) {
+    private static boolean isShootingBow(ItemStack itemStack, Minecraft mc, ItemStack currentItemStack) {
         if (itemStack != null && currentItemStack != null) {
             Item item = itemStack.getItem();
             Item currentItem = currentItemStack.getItem();

@@ -83,7 +83,8 @@
     "revenantIndicator": "Slayer Armor Progress Indicator",
     "specialZealotAlert": "Special Zealot Alert",
     "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented",
-    "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Message"
+    "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages"
+    "hidePetHealthBar": "Hide Pet Health Bar"
   },
   "messages": {
     "dropConfirmation": "Drop this item again to confirm!",
@@ -125,6 +126,8 @@
     "featureDisabled": "Feature Disabled",
     "anvilUses": "Anvil Uses: %uses%",
     "specialZealotFound": "Special Zealot!",
-    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)"
+    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)",
+    "searchFeatures": "Search features",
+    "downloadingUpdateFile": "Downloading update file..."
   }
 }

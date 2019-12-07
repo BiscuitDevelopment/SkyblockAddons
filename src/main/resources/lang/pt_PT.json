@@ -79,8 +79,11 @@
     "speedPercentage": "Percentagem de velocidade",
     "collectionDisplay": "Progresso das habilidades",
     "onlyMineOresDeepCaverns": "Partir minérios só nas Deep Caverns",
+    "onlyMineValuablesNether": "Partir apenas coisas valiosas no Nether",
     "revenantIndicator": "Indicador de progresso da Slayer Armor",
-    "specialZealotAlert": "Alerta para Zealots especiais"
+    "specialZealotAlert": "Alerta para Zealots especiais",
+    "enableMessageWhenActionPrevented": "Enviar uma mensagem sempre que uma ação é prevenida",
+    "hidePetHealthBar": "Esconder a barra de vida dos animais"
   },
   "messages": {
     "dropConfirmation": "Dropa este item outra vez para confirmar!",
@@ -122,6 +125,8 @@
     "featureDisabled": "Função Desativada",
     "anvilUses": "Usos na bigorna: %uses%",
     "specialZealotFound": "Zealot especial!",
-    "blockIncompletePatterns": "Bloquear padrões de criação incompletos (recomendado)"
+    "blockIncompletePatterns": "Bloquear padrões de criação incompletos (recomendado)",
+    "searchFeatures": "Procurar funcionalidades",
+    "downloadingUpdateFile": "A descarregar o ficheiro da atualização..."
   }
 }

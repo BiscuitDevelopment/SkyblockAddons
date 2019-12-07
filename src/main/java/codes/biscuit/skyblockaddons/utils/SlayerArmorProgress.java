@@ -11,14 +11,12 @@ public class SlayerArmorProgress {
     private String progressText = null;
 
     public SlayerArmorProgress(ItemStack itemStack) {
-        this.itemStack = itemStack;
-        if (itemStack.getItem().equals(Items.leather_helmet)) {
-            ((ItemArmor)itemStack.getItem()).setColor(itemStack, ConfigColor.BLACK.getColor());
-        }
+        this.itemStack = new ItemStack(itemStack.getItem());
+        setHelmetColor();
     }
 
     SlayerArmorProgress(ItemStack itemStack, String progress) {
-        this(itemStack);
+        this.itemStack = itemStack;
         this.progressText = progress;
     }
 
@@ -29,7 +27,6 @@ public class SlayerArmorProgress {
     public String getProgressText() {
         if (progressText == null) {
             ConfigColor color = SkyblockAddons.getInstance().getConfigValues().getColor(Feature.SLAYER_INDICATOR);
-//            return color + "14,418/15,000 (§a240❈" + color + ")";
             return color + "55% (§a40❈" + color + ")";
         }
         return progressText;
@@ -37,5 +34,11 @@ public class SlayerArmorProgress {
 
     void setProgressText(String progressText) {
         this.progressText = progressText;
+    }
+
+    private void setHelmetColor() {
+        if (itemStack.getItem().equals(Items.leather_helmet)) {
+            ((ItemArmor)itemStack.getItem()).setColor(itemStack, ConfigColor.BLACK.getColor());
+        }
     }
 }

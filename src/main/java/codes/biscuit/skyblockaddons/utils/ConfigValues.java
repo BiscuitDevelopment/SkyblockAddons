@@ -118,14 +118,19 @@ public class ConfigValues {
             if (settingsConfig.has("anchorPoints")) {
                 for (Map.Entry<String, JsonElement> element : settingsConfig.getAsJsonObject("anchorPoints").entrySet()) {
                     Feature feature = Feature.fromId(Integer.valueOf(element.getKey()));
-                    anchorPoints.put(feature, EnumUtils.AnchorPoint.fromId(element.getValue().getAsInt()));
+                    EnumUtils.AnchorPoint anchorPoint = EnumUtils.AnchorPoint.fromId(element.getValue().getAsInt());
+                    if (feature != null && anchorPoint != null) {
+                        anchorPoints.put(feature, anchorPoint);
+                    }
                 }
             }
 
             if (settingsConfig.has("guiScales")) {
                 for (Map.Entry<String, JsonElement> element : settingsConfig.getAsJsonObject("guiScales").entrySet()) {
                     Feature feature = Feature.fromId(Integer.parseInt(element.getKey()));
-                    guiScales.put(feature, new MutableFloat(element.getValue().getAsFloat()));
+                    if (feature != null) {
+                        guiScales.put(feature, new MutableFloat(element.getValue().getAsFloat()));
+                    }
                 }
             }
 
@@ -156,9 +161,11 @@ public class ConfigValues {
             if (settingsConfig.has("featureColors")) {
                 for (Map.Entry<String, JsonElement> element : settingsConfig.getAsJsonObject("featureColors").entrySet()) {
                     Feature feature = Feature.fromId(Integer.parseInt(element.getKey()));
-                    int ordinal = element.getValue().getAsInt();
-                    if (ConfigColor.values().length > ordinal) {
-                        featureColors.put(feature, ConfigColor.values()[ordinal]);
+                    if (feature != null) {
+                        int ordinal = element.getValue().getAsInt();
+                        if (ConfigColor.values().length > ordinal) {
+                            featureColors.put(feature, ConfigColor.values()[ordinal]);
+                        }
                     }
                 }
             }
@@ -226,8 +233,10 @@ public class ConfigValues {
         if (settingsConfig.has(memberName)) {
             for (Map.Entry<String, JsonElement> element : settingsConfig.getAsJsonObject(memberName).entrySet()) {
                 Feature feature = Feature.fromId(Integer.parseInt(element.getKey()));
-                JsonArray array = element.getValue().getAsJsonArray();
-                targetObject.put(feature, new CoordsPair(array.get(0).getAsInt(), array.get(1).getAsInt()));
+                if (feature != null) {
+                    JsonArray array = element.getValue().getAsJsonArray();
+                    targetObject.put(feature, new CoordsPair(array.get(0).getAsInt(), array.get(1).getAsInt()));
+                }
             }
         }
     }

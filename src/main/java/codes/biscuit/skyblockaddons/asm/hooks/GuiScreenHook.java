@@ -1,6 +1,7 @@
-package codes.biscuit.skyblockaddons.mixins;
+package codes.biscuit.skyblockaddons.asm.hooks;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.asm.utils.ReturnValue;
 import codes.biscuit.skyblockaddons.utils.Backpack;
 import codes.biscuit.skyblockaddons.utils.CooldownManager;
 import codes.biscuit.skyblockaddons.utils.Feature;
@@ -14,19 +15,12 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IChatComponent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
-import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Mixin(GuiScreen.class)
-public abstract class MixinGuiScreen {
+public class GuiScreenHook {
 
-    private static final long MADDOX_BATPHONE_COOLDOWN = 3 * 60 * 1000;
+    private static final long MADDOX_BATPHONE_COOLDOWN = 1 * 60 * 1000;
 
-    @Inject(method = "renderToolTip", at = @At(value = "HEAD"), cancellable = true)
-    private void shouldRenderRedirect(ItemStack stack, int x, int y, CallbackInfo ci) {
+    public static void renderBackpack(ItemStack stack, int x, int y, ReturnValue returnValue) {
         SkyblockAddons main = SkyblockAddons.getInstance();
         if (stack.getItem().equals(Items.skull) && main.getConfigValues().isEnabled(Feature.SHOW_BACKPACK_PREVIEW)) {
             if (main.getConfigValues().isEnabled(Feature.SHOW_BACKPACK_HOLDING_SHIFT) && !GuiScreen.isShiftKeyDown()) {
@@ -48,22 +42,16 @@ public abstract class MixinGuiScreen {
                 backpack.setY(y);
                 main.getUtils().setBackpackToRender(backpack);
                 main.getPlayerListener().onItemTooltip(new ItemTooltipEvent(stack, null, null, false));
-                ci.cancel();
+                returnValue.cancel();
             }
         }
     }
 
-    @Inject(method = "handleComponentClick", at = @At(value = "INVOKE"))
-    private void handleComponentClick(IChatComponent component, CallbackInfoReturnable cir) {
+    public static void handleComponentClick(IChatComponent component) {
         SkyblockAddons main = SkyblockAddons.getInstance();
-        if (main.getUtils().isOnSkyblock()) {
-            if (component != null) {
-                if (component.getUnformattedText().equals("§2§l[OPEN MENU]")) { // Prompt when Maddox picks up the phone
-                    if (!CooldownManager.isOnCooldown(InventoryUtils.MADDOX_BATPHONE_DISPLAYNAME)) {
-                        CooldownManager.put(InventoryUtils.MADDOX_BATPHONE_DISPLAYNAME, MADDOX_BATPHONE_COOLDOWN);
-                    }
-                }
-            }
+        if (main.getUtils().isOnSkyblock() && component != null && component.getUnformattedText().equals("§2§l[OPEN MENU]") &&
+                !CooldownManager.isOnCooldown(InventoryUtils.MADDOX_BATPHONE_DISPLAYNAME)) {// The prompt when Maddox picks up the phone.
+            CooldownManager.put(InventoryUtils.MADDOX_BATPHONE_DISPLAYNAME, MADDOX_BATPHONE_COOLDOWN);
         }
     }
 }

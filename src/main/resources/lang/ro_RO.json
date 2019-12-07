@@ -79,8 +79,11 @@
     "speedPercentage": "Procentul Vitezei",
     "collectionDisplay": "Display Progres Abilități",
     "onlyMineOresDeepCaverns": "Minează Numai Minereuri în Deep Caverns",
+    "onlyMineValuablesNether": "Only Mine Valuables in the Nether",
     "revenantIndicator": "Slayer Armor Progress Indicator",
-    "specialZealotAlert": "Special Zealot Alert"
+    "specialZealotAlert": "Special Zealot Alert",
+    "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented",
+    "hidePetHealthBar": "Hide Pet Health Bar"
   },
   "messages": {
     "dropConfirmation": "Arunca acest obiect iar ca să confirmi!",
@@ -122,6 +125,8 @@
     "featureDisabled": "Funcție dezactivată",
     "anvilUses": "Utilizări Nicovală: %uses%",
     "specialZealotFound": "Special Zealot!",
-    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)"
+    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)",
+    "searchFeatures": "Search features",
+    "downloadingUpdateFile": "Downloading update file..."
   }
 }

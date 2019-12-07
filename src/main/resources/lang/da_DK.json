@@ -28,7 +28,7 @@
       "compact": "Kompakt"
     },
     "showBackpackPreview": "Forhåndsvis rygsæk",
-    "hideHealthBar": "Gem vanilla liv bar",
+    "hideHealthBar": "Skjul vanilla liv bar",
     "fullMinionWarning": "Fuld Minion-advarsel",
     "ignoreItemFrameClicks": "Ignorer klik på varerammer",
     "showOnlyWhenHoldingShift": "Vis kun, når du holder nede Skift",
@@ -79,8 +79,11 @@
     "speedPercentage": "Hastigheds procent",
     "collectionDisplay": "Dygtigheds fremskridt visning",
     "onlyMineOresDeepCaverns": "Kun mine malm i Deep Caverns",
+    "onlyMineValuablesNether": "Kun mine værdigenstande i Nether",
     "revenantIndicator": "Slayer rustning fremskridts indikator",
-    "specialZealotAlert": "Speciel Zealot alarm"
+    "specialZealotAlert": "Speciel Zealot alarm",
+    "enableMessageWhenActionPrevented": "Vis en besked når en aktion er forhindret",
+    "hidePetHealthBar": "Skjul kæledyrs liv bar"
   },
   "messages": {
     "dropConfirmation": "Slip denne vare igen for at bekræfte!",
@@ -122,6 +125,8 @@
     "featureDisabled": "Funktion deaktiveret",
     "anvilUses": "Ambolt brug: %uses%",
     "specialZealotFound": "Speciel Zealot!",
-    "blockIncompletePatterns": "Bloker byggelse af ufuldstændige mønstre (anbefalet)"
+    "blockIncompletePatterns": "Bloker byggelse af ufuldstændige mønstre (anbefalet)",
+    "searchFeatures": "Søg funktioner",
+    "downloadingUpdateFile": "Downloading update file..."
   }
 }

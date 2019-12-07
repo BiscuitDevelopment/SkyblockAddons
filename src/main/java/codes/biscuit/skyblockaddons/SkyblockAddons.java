@@ -3,6 +3,7 @@ package codes.biscuit.skyblockaddons;
 import codes.biscuit.skyblockaddons.commands.SkyblockAddonsCommand;
 import codes.biscuit.skyblockaddons.listeners.PlayerListener;
 import codes.biscuit.skyblockaddons.listeners.RenderListener;
+import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsTransformer;
 import codes.biscuit.skyblockaddons.utils.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
@@ -26,7 +27,7 @@ public class SkyblockAddons {
 
     static final String MOD_ID = "skyblockaddons";
     static final String MOD_NAME = "SkyblockAddons";
-    public static final String VERSION = "1.4.1";
+    public static final String VERSION = "1.4.2";
 
     private static SkyblockAddons instance; // for Mixins cause they don't have a constructor
     private ConfigValues configValues;
@@ -90,7 +91,7 @@ public class SkyblockAddons {
 
     private void changeKeyBindDescription(KeyBinding bind, String desc) {
         try {
-            Field field = bind.getClass().getDeclaredField(utils.isDevEnviroment() ? "keyDescription" : "field_74515_c");
+            Field field = bind.getClass().getDeclaredField(SkyblockAddonsTransformer.isDeobfuscated() ? "keyDescription" : "field_74515_c");
             field.setAccessible(true);
             field.set(bind, desc);
         } catch(NoSuchFieldException | IllegalAccessException e) {

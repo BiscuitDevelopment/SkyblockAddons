@@ -2,6 +2,7 @@ package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.gui.buttons.ButtonLocation;
+import com.google.common.collect.Sets;
 import net.minecraft.client.Minecraft;
 
 import java.util.Arrays;
@@ -63,7 +64,7 @@ public enum Feature {
     FISHING_SOUND_INDICATOR(48, Message.SETTING_FISHING_SOUND_INDICATOR, false),
     AVOID_BLINKING_NIGHT_VISION(49, Message.SETTING_AVOID_BLINKING_NIGHT_VISION, false),
     MINION_DISABLE_LOCATION_WARNING(50, Message.SETTING_DISABLE_MINION_LOCATION_WARNING, false),
-    JUNGLE_AXE_COOLDOWN(51, Message.SETTING_JUNGLE_AXE_COOLDOWN, false),
+    JUNGLE_AXE_COOLDOWN(51, Message.SETTING_JUNGLE_AXE_COOLDOWN, true),
     ORGANIZE_ENCHANTMENTS(52, Message.SETTING_ORGANIZE_ENCHANTMENTS, false),
     SHOW_ITEM_COOLDOWNS(53, Message.SETTING_SHOW_ITEM_COOLDOWNS, false),
     SKILL_DISPLAY(54, Message.SETTING_COLLECTION_DISPLAY, new GuiFeatureData(EnumUtils.DrawType.TEXT, ConfigColor.AQUA, EnumUtils.AnchorPoint.BOTTOM_MIDDLE, 0, -66), false),
@@ -75,7 +76,8 @@ public enum Feature {
     ENABLE_MESSAGE_WHEN_MINING_DEEP_CAVERNS(60, null, false),
     ENABLE_MESSAGE_WHEN_BREAKING_STEMS(61, null, false),
     ENABLE_MESSAGE_WHEN_MINING_NETHER(62, null, false),
-    DISABLE_MAGICAL_SOUP_MESSAGES(63, Message.SETTING_DISABLE_MAGICAL_SOUP_MESSAGE, true),
+    HIDE_PET_HEALTH_BAR(63, Message.SETTING_HIDE_PET_HEALTH_BAR, false),
+    DISABLE_MAGICAL_SOUP_MESSAGES(64, Message.SETTING_DISABLE_MAGICAL_SOUP_MESSAGE, true),
 
     HIDE_GREY_ENCHANTS(100, null, false), // allow remote disabling this feature
 
@@ -84,11 +86,12 @@ public enum Feature {
     ADD(-1, null, false),
     SUBTRACT(-1, null, false),
 
-    ANCHOR_POINT(-1, Message.SETTING_ANCHOR_POINT, false),
+//    ANCHOR_POINT(-1, Message.SETTING_ANCHOR_POINT, false),
 
     LANGUAGE(-1, Message.LANGUAGE, false),
     EDIT_LOCATIONS(-1, Message.SETTING_EDIT_LOCATIONS, false),
     RESET_LOCATION(-1, Message.SETTING_RESET_LOCATIONS, false),
+    GENERAL_SETTINGS(-1, Message.TAB_GENERAL_SETTINGS, false),
     TEXT_STYLE(-1, Message.SETTING_TEXT_STYLE, false);
 
     // Add any features to one of the following tab categories. They appear in the GUI in the order they are listed.
@@ -101,7 +104,8 @@ public enum Feature {
             JUNGLE_AXE_COOLDOWN, MINION_DISABLE_LOCATION_WARNING, SHOW_ITEM_COOLDOWNS, ONLY_MINE_ORES_DEEP_CAVERNS, ONLY_MINE_VALUABLES_NETHER, SUMMONING_EYE_ALERT, AVOID_BREAKING_BOTTOM_SUGAR_CANE, DISABLE_MAGICAL_SOUP_MESSAGES));
 
     private static Set<Feature> FIXES = new LinkedHashSet<>(Arrays.asList(HIDE_BONES, DISABLE_EMBER_ROD, HIDE_AUCTION_HOUSE_PLAYERS,
-            STOP_BOW_CHARGE_FROM_RESETTING, AVOID_PLACING_ENCHANTED_ITEMS, PREVENT_MOVEMENT_ON_DEATH, AVOID_BLINKING_NIGHT_VISION));
+            STOP_BOW_CHARGE_FROM_RESETTING, AVOID_PLACING_ENCHANTED_ITEMS, PREVENT_MOVEMENT_ON_DEATH, AVOID_BLINKING_NIGHT_VISION,
+            HIDE_PET_HEALTH_BAR));
 
     private static Set<Feature> GUI_FEATURES = new LinkedHashSet<>(Arrays.asList(MAGMA_BOSS_TIMER, MANA_BAR, MANA_TEXT, DEFENCE_ICON, DEFENCE_TEXT,
             DEFENCE_PERCENTAGE, HEALTH_BAR, HEALTH_TEXT, SKELETON_BAR, HEALTH_UPDATES, ITEM_PICKUP_LOG, DARK_AUCTION_TIMER, SKILL_DISPLAY, SPEED_PERCENTAGE, SLAYER_INDICATOR));
@@ -128,6 +132,12 @@ public enum Feature {
 
     public int getId() {
         return id;
+    }
+
+    private Set<Integer> notFeatureIDs = Sets.newHashSet(14, 17, 18, 36, 43, 46, 60, 61, 62);
+
+    public boolean isActualFeature() {
+        return id != -1 && message != null && getMessage() != null && !notFeatureIDs.contains(id);
     }
 
     public String getMessage(String... variables) {

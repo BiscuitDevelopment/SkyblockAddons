@@ -79,8 +79,11 @@
     "speedPercentage": "Farts Prosent",
     "collectionDisplay": "Ferdighetsutvikling Visning",
     "onlyMineOresDeepCaverns": "Bare Grave Årer i de Dype Hulene",
+    "onlyMineValuablesNether": "Bare ødelegg verdifulle ting i Nether",
     "revenantIndicator": "Slayer Armour Fremgangs Indikator",
-    "specialZealotAlert": "Spesiell Zealot Alarm"
+    "specialZealotAlert": "Spesiell Zealot Alarm",
+    "enableMessageWhenActionPrevented": "Vis en melding når en hendelse er forhindret",
+    "hidePetHealthBar": "Hide Pet Health Bar"
   },
   "messages": {
     "dropConfirmation": "Slipp denne gjenstanden igjen for å bekrefte!",
@@ -122,6 +125,8 @@
     "featureDisabled": "Funksjon Deaktivert",
     "anvilUses": "Ambolt Bruk: %uses%",
     "specialZealotFound": "Spesiell Zealot!",
-    "blockIncompletePatterns": "Blokk bygging med uferdig mønster (anbefalt)"
+    "blockIncompletePatterns": "Blokk bygging med uferdig mønster (anbefalt)",
+    "searchFeatures": "Search features",
+    "downloadingUpdateFile": "Downloading update file..."
   }
 }
