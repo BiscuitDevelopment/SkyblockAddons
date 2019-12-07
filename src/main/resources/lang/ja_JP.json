@@ -83,7 +83,14 @@
     "revenantIndicator": "Slayer装備の進捗を表示",
     "specialZealotAlert": "特別なZealotのアラート",
     "enableMessageWhenActionPrevented": "動作を防止したときにメッセージを表示する",
-    "hidePetHealthBar": "ペットの体力バーを非表示"
+    "hidePetHealthBar": "ペットの体力バーを非表示",
+    "powerOrbDisplay": "Power Orb Display",
+    "powerOrbDisplayStyle": "Power Orb Style: %style%",
+    "powerOrbStyle": {
+      "detailed": "Detailed",
+      "compact": "Compact"
+    },
+    "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages"
   },
   "messages": {
     "dropConfirmation": "落としてもいいのであれば、このアイテムをもう一度ドロップしてください。",
