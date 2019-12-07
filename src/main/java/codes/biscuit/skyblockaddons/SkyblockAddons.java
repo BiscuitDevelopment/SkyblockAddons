@@ -31,6 +31,7 @@ public class SkyblockAddons {
 
     private static SkyblockAddons instance; // for Mixins cause they don't have a constructor
     private ConfigValues configValues;
+    private ZealotCounter zealotCounter;
     private PlayerListener playerListener = new PlayerListener(this);
     private RenderListener renderListener = new RenderListener(this);
     private Utils utils = new Utils(this);
@@ -46,6 +47,7 @@ public class SkyblockAddons {
     public void preInit(FMLPreInitializationEvent e) {
         instance = this;
         configValues = new ConfigValues(this, e.getSuggestedConfigurationFile());
+        zealotCounter = new ZealotCounter(this, e.getModConfigurationDirectory());
     }
     @Mod.EventHandler
     public void init(FMLInitializationEvent e) {
@@ -65,6 +67,7 @@ public class SkyblockAddons {
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent e) {
         configValues.loadConfig();
+        zealotCounter.loadCounter();
         loadKeyBindingDescriptions();
 
         usingLabymod = Loader.isModLoaded("labymod");
@@ -121,6 +124,10 @@ public class SkyblockAddons {
 
     public ConfigValues getConfigValues() {
         return configValues;
+    }
+    
+    public ZealotCounter getZealotCounter() {
+    	return zealotCounter;
     }
 
     public PlayerListener getPlayerListener() {

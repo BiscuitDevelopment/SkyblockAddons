@@ -1,7 +1,28 @@
 package codes.biscuit.skyblockaddons.listeners;
 
+import java.awt.Toolkit;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.DataFlavor;
+import java.awt.datatransfer.StringSelection;
+import java.awt.datatransfer.UnsupportedFlavorException;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.utils.*;
+import codes.biscuit.skyblockaddons.utils.Attribute;
+import codes.biscuit.skyblockaddons.utils.CooldownManager;
+import codes.biscuit.skyblockaddons.utils.CoordsPair;
+import codes.biscuit.skyblockaddons.utils.EnchantedItemBlacklist;
+import codes.biscuit.skyblockaddons.utils.EnumUtils;
+import codes.biscuit.skyblockaddons.utils.Feature;
+import codes.biscuit.skyblockaddons.utils.Message;
+import codes.biscuit.skyblockaddons.utils.RomanNumeralParser;
+import codes.biscuit.skyblockaddons.utils.Scheduler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.gui.GuiScreen;
@@ -10,6 +31,7 @@ import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityArmorStand;
 import net.minecraft.entity.monster.EntityBlaze;
+import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.monster.EntityMagmaCube;
 import net.minecraft.entity.monster.EntitySlime;
 import net.minecraft.entity.projectile.EntityFishHook;
@@ -21,12 +43,15 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.StringUtils;
 import net.minecraft.util.Vec3;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.client.event.GuiOpenEvent;
 import net.minecraftforge.event.entity.EntityEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
+import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.ChunkEvent;
@@ -34,7 +59,6 @@ import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
-
 import java.awt.*;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.DataFlavor;
@@ -76,7 +100,7 @@ public class PlayerListener {
     private int magmaTime = 0;
     private int recentMagmaCubes = 0;
     private int recentBlazes = 0;
-
+    
 //    private Feature.Accuracy magmaTimerAccuracy = null;
 //    private long magmaTime = 7200;
 
@@ -237,6 +261,13 @@ public class PlayerListener {
                 main.getRenderListener().setTitleFeature(Feature.SUMMONING_EYE_ALERT);
                 main.getRenderListener().setTitleFeature(Feature.SPECIAL_ZEALOT_ALERT);
                 main.getScheduler().schedule(Scheduler.CommandType.RESET_TITLE_FEATURE, main.getConfigValues().getWarningSeconds());
+            }
+            
+            if(main.getConfigValues().isEnabled(Feature.ZEALOT_COUNTER) && e.message.getFormattedText().equals("§r§aA special §r§5Zealot §r§ahas spawned nearby!§r")) {
+            	//edit message to include counter
+            	e.message = new ChatComponentText(e.message.getFormattedText() + EnumChatFormatting.GRAY + " (" + main.getZealotCounter().getKills() + ")");
+            	
+            	main.getZealotCounter().setKills(-1); //this is triggered before the death of the killed zealot, so this is set to -1 to account for that
             }
 
             if (main.getConfigValues().isEnabled(Feature.DISABLE_MAGICAL_SOUP_MESSAGES) && randomMessages.contains(message)) {
@@ -420,6 +451,35 @@ public class PlayerListener {
 //                }
 //            }
         }
+    }
+    
+    private ArrayList<EntityEnderman> endermen = new ArrayList<EntityEnderman>();
+    
+    @SubscribeEvent
+    public void onAttack(AttackEntityEvent e) {
+    	if(e.target instanceof EntityEnderman) {
+    		if(main.getConfigValues().isEnabled(Feature.ZEALOT_COUNTER)) {
+	    		EntityEnderman enderman = (EntityEnderman) e.target;
+	    		List<EntityArmorStand> stands = Minecraft.getMinecraft().theWorld.getEntitiesWithinAABB(EntityArmorStand.class, 
+	    				new AxisAlignedBB(enderman.posX - 1, enderman.posY, enderman.posZ - 1, enderman.posX + 1, enderman.posY + 5, enderman.posZ + 1));
+	    		if(stands.isEmpty()) return;
+	    		String nametag = StringUtils.stripControlCodes(stands.get(0).getCustomNameTag());
+	    		if(nametag.contains("Zealot") && !endermen.contains(enderman))
+	    			endermen.add(enderman);
+    		}
+    	}
+    }
+    
+    @SubscribeEvent
+    public void onDeath(LivingDeathEvent e) {
+    	if(e.entity instanceof EntityEnderman) {
+    		if(main.getConfigValues().isEnabled(Feature.ZEALOT_COUNTER)) {
+	    		EntityEnderman enderman = (EntityEnderman) e.entity;
+	    		if(endermen.remove(enderman)) {
+	    			main.getZealotCounter().addKill();
+	    		}
+    		}
+    	}
     }
 
     // Doesn't work at the moment, using line 378 instead.
@@ -719,7 +779,7 @@ public class PlayerListener {
     public int getRecentMagmaCubes() {
         return recentMagmaCubes;
     }
-
+    
     public void setRecentBlazes(int recentBlazes) {
         this.recentBlazes = recentBlazes;
     }

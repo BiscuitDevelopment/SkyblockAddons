@@ -85,6 +85,7 @@ public enum Message {
     SETTING_HIDE_PET_HEALTH_BAR(MessageObject.SETTING, "hidePetHealthBar"),
     SETTING_POWER_ORB_DISPLAY(MessageObject.SETTING, "powerOrbDisplay"),
     SETTING_POWER_ORB_DISPLAY_STYLE(MessageObject.SETTING, "powerOrbDisplayStyle"),
+    SETTING_ZEALOT_COUNTER(MessageObject.SETTING, "zealotCounter"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.BACKPACK_STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.BACKPACK_STYLE, "compact"),
