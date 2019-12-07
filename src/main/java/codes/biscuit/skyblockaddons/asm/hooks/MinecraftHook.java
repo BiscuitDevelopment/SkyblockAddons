@@ -1,6 +1,7 @@
-package codes.biscuit.skyblockaddons.mixins;
+package codes.biscuit.skyblockaddons.asm.hooks;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.asm.utils.ReturnValue;
 import codes.biscuit.skyblockaddons.utils.Feature;
 import codes.biscuit.skyblockaddons.utils.Message;
 import net.minecraft.client.Minecraft;
@@ -14,29 +15,20 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.ResourceLocation;
 import org.apache.commons.codec.digest.DigestUtils;
-import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.io.IOException;
 import java.io.InputStream;
 
-@Mixin(Minecraft.class)
+public class MinecraftHook {
 
-public class MixinMinecraft {
+    private static final ResourceLocation currentLocation = new ResourceLocation("skyblockaddons", "bars.png");
 
-    private final ResourceLocation currentLocation = new ResourceLocation("skyblockaddons", "bars.png");
+    private static long lastProfileMessage = -1;
 
-    @Shadow private IReloadableResourceManager mcResourceManager;
-
-    @Inject(method = "refreshResources", at = @At("RETURN"))
-    private void onRefreshResources(CallbackInfo ci) {
+    public static void onRefreshResources(IReloadableResourceManager iReloadableResourceManager) {
         boolean usingOldTexture = false;
-
         try {
-            IResource currentResource = mcResourceManager.getResource(currentLocation);
+            IResource currentResource = iReloadableResourceManager.getResource(currentLocation);
             InputStream oldStream = SkyblockAddons.class.getClassLoader().getResourceAsStream("assets/skyblockaddons/imperialoldbars.png");
             if (oldStream != null) {
                 String currentHash = DigestUtils.md5Hex(currentResource.getInputStream());
@@ -49,16 +41,12 @@ public class MixinMinecraft {
         }
 
         SkyblockAddons main = SkyblockAddons.getInstance();
-        if (main != null) { // Minecraft reloads textures before and after mods are loaded. So only set the variable if sba was initialized
+        if (main != null) { // Minecraft reloads textures before and after mods are loaded. So only set the variable if sba was initialized.
             main.getUtils().setUsingOldSkyBlockTexture(usingOldTexture);
         }
     }
 
-    private long lastProfileMessage = -1;
-
-    @Inject(method = "rightClickMouse", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/multiplayer/PlayerControllerMP;getIsHittingBlock()Z", shift = At.Shift.AFTER, ordinal = 0),
-            cancellable = true)
-    private void rightClickMouse(CallbackInfo ci) {
+    public static void rightClickMouse(ReturnValue returnValue) {
         SkyblockAddons main = SkyblockAddons.getInstance();
         if (main.getUtils().isOnSkyblock()) {
             Minecraft mc = Minecraft.getMinecraft();
@@ -74,7 +62,7 @@ public class MixinMinecraft {
                                 main.getUtils().sendMessage(main.getConfigValues().getColor(Feature.DONT_OPEN_PROFILES_WITH_BOW).getChatFormatting() +
                                         Message.MESSAGE_STOPPED_OPENING_PROFILE.getMessage());
                             }
-                            ci.cancel();
+                            returnValue.cancel();
                             return;
                         }
                     }
@@ -84,14 +72,14 @@ public class MixinMinecraft {
                     if (main.getConfigValues().getLockedSlots().contains(slot) && slot >= 9) {
                         main.getUtils().playLoudSound("note.bass", 0.5);
                         main.getUtils().sendMessage(main.getConfigValues().getColor(Feature.DROP_CONFIRMATION) + Message.MESSAGE_SLOT_LOCKED.getMessage());
-                        ci.cancel();
+                        returnValue.cancel();
                     }
                 }
             }
         }
     }
 
-    private boolean isItemBow(ItemStack item) {
+    private static boolean isItemBow(ItemStack item) {
         return item != null && item.getItem() != null && item.getItem().equals(Items.bow);
     }
 }

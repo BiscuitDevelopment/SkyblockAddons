@@ -73,8 +73,10 @@ public class CooldownManager {
             throw new IllegalArgumentException("Cooldown must be positive and not 0");
         }
 
-        CooldownEntry cooldownEntry = new CooldownEntry(cooldown);
-        cooldowns.put(itemName, cooldownEntry);
+        if (!cooldowns.keySet().contains(itemName) || !cooldowns.get(itemName).isOnCooldown()) { // Don't allow overriding a current cooldown.
+            CooldownEntry cooldownEntry = new CooldownEntry(cooldown);
+            cooldowns.put(itemName, cooldownEntry);
+        }
     }
 
     /**

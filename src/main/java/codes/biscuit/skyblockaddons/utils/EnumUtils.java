@@ -1,6 +1,7 @@
 package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -15,6 +16,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Arrays;
 import java.util.EnumSet;
+import java.util.List;
 import java.util.Set;
 import java.util.regex.Pattern;
 
@@ -472,24 +474,26 @@ public class EnumUtils {
     }
 
     public enum Rarity {
-        COMMON("f"),
-        UNCOMMON("a"),
-        RARE("9"),
-        EPIC("5"),
-        LEGENDARY("6"),
-        SPECIAL("d");
+        COMMON("f§lCOMMON"),
+        UNCOMMON("a§lUNCOMMON"),
+        RARE("9§lRARE"),
+        EPIC("5§lEPIC"),
+        LEGENDARY("6§lLEGENDARY"),
+        SPECIAL("d§lSPECIAL");
 
         private String tag;
 
         Rarity(String s) {
-            this.tag = "§"+s;
+            this.tag = "§5§o§"+s;
         }
 
         public static Rarity getRarity(ItemStack item) {
             if (item == null) return null;
-            String itemName = item.getDisplayName();
+            List<String> lore = item.getTooltip(Minecraft.getMinecraft().thePlayer, false);
+            String lastLoreLine = lore.get(lore.size()-1);
+            System.out.println(lastLoreLine);
             for(Rarity rarity: Rarity.values()) {
-                if(itemName.startsWith(rarity.tag)) return rarity;
+                if(lastLoreLine.startsWith(rarity.tag)) return rarity;
             }
             return null;
         }

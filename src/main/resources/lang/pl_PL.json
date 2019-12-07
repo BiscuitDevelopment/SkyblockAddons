@@ -77,13 +77,13 @@
     "organizeLongEnchantmentLists": "Uporządkuj długie listy enchantów",
     "showItemCooldowns": "Pokazuj colldown itemów",
     "speedPercentage": "Procent szybkości",
-    "collectionDisplay": "Skill Progress Display",
+    "collectionDisplay": "Wyświetlaj postęp umiejętności",
     "onlyMineOresDeepCaverns": "Rudy kop tylko w Deep Caverns",
-    "onlyMineValuablesNether": "Only Mine Valuables in the Nether",
-    "revenantIndicator": "Slayer Armor Progress Indicator",
+    "onlyMineValuablesNether": "Kop tylko wartościowe rudy w piekle",
+    "revenantIndicator": "Wskaznik Postępu Zbroi",
     "specialZealotAlert": "Alarmuj o Specjlanym Zealocie",
-    "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented",
-    "hidePetHealthBar": "Hide Pet Health Bar"
+    "enableMessageWhenActionPrevented": "Pokaż wiadomość, gdy akcja jest blokowana",
+    "hidePetHealthBar": "Ukryj paski zdrowia peta"
   },
   "messages": {
     "dropConfirmation": "Wyrzuć ten przedmiot ponownie, aby potwierdzić!",
@@ -125,8 +125,8 @@
     "featureDisabled": "Funkcja wyłączona",
     "anvilUses": "Użycia kowadła: %uses%",
     "specialZealotFound": "Specjalny Zealot!",
-    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)",
-    "searchFeatures": "Search features",
-    "downloadingUpdateFile": "Downloading update file..."
+    "blockIncompletePatterns": "Blokuj crafting niepełnych patternów (rekomendowane)",
+    "searchFeatures": "Szukaj fukncji",
+    "downloadingUpdateFile": "Pobieranie aktualizacji..."
   }
 }

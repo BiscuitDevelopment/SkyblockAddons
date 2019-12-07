@@ -77,9 +77,9 @@
     "organizeLongEnchantmentLists": "Organiser & lister les enchantements",
     "showItemCooldowns": "Recharge des objets",
     "speedPercentage": "Pourcentage de vitesse",
-    "collectionDisplay": "Affichage de la progression des compétences",
-    "onlyMineOresDeepCaverns": "Miner que les minerais dans la Deep Caverns",
-    "onlyMineValuablesNether": "Miner uniquement les minerais de valeur dans le Nether",
+    "collectionDisplay": "Afficher la progression des compétences",
+    "onlyMineOresDeepCaverns": "Miner que les minerais de la Deep Caverns",
+    "onlyMineValuablesNether": "Miner que les minerais dans le Nether",
     "revenantIndicator": "Progression de l'armure Revenant",
     "specialZealotAlert": "Alerte Zealot spécial",
     "enableMessageWhenActionPrevented": "Afficher un message lorsqu'une action est annulée",
@@ -127,6 +127,6 @@
     "specialZealotFound": "Zealot spécial!",
     "blockIncompletePatterns": "Ne pas fabriquer les modèles incomplet (recommandé)",
     "searchFeatures": "Rechercher des fonctionnalités",
-    "downloadingUpdateFile": "Downloading update file..."
+    "downloadingUpdateFile": "Téléchargement de la mise à jour..."
   }
 }

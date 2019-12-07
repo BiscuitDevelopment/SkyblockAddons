@@ -90,6 +90,7 @@
       "detailed": "Detailed",
       "compact": "Compact"
     }
+    "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages"
   },
   "messages": {
     "dropConfirmation": "Drop this item again to confirm!",
