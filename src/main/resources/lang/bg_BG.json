@@ -90,7 +90,8 @@
       "detailed": "Подробно",
       "compact": "Компактно"
     },
-    "disableMagicalSoupMessage": "Изключи Съобщенията За Магическата Супа"
+    "disableMagicalSoupMessage": "Изключи Съобщенията За Магическата Супа",
+    "zealotCounter": "Show Zealot Counter"
   },
   "messages": {
     "dropConfirmation": "Хвърлете Този Предмет Отново за да Потвърдите!",
