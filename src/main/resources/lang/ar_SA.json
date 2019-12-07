@@ -83,7 +83,14 @@
     "revenantIndicator": "مؤشر تقدم درع القاتل",
     "specialZealotAlert": "تنبيه زيلوت فريد",
     "enableMessageWhenActionPrevented": "إظهار رسالة عند منع اجراء",
-    "hidePetHealthBar": "اخفاء شريط صحه الحيوان"
+    "hidePetHealthBar": "اخفاء شريط صحه الحيوان",
+    "powerOrbDisplay": "Power Orb Display",
+    "powerOrbDisplayStyle": "Power Orb Style: %style%",
+    "powerOrbStyle": {
+      "detailed": "Detailed",
+      "compact": "Compact"
+    },
+    "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages"
   },
   "messages": {
     "dropConfirmation": "!إرمي هذا العنصر مرة أخرى للتأكيد",
