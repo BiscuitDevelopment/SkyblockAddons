@@ -83,7 +83,14 @@
     "revenantIndicator": "Slayer Armour Fremgangs Indikator",
     "specialZealotAlert": "Spesiell Zealot Alarm",
     "enableMessageWhenActionPrevented": "Vis en melding når en hendelse er forhindret",
-    "hidePetHealthBar": "Hide Pet Health Bar"
+    "hidePetHealthBar": "Hide Pet Health Bar",
+    "powerOrbDisplay": "Power Orb Display",
+    "powerOrbDisplayStyle": "Power Orb Style: %style%",
+    "powerOrbStyle": {
+      "detailed": "Detailed",
+      "compact": "Compact"
+    },
+    "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages"
   },
   "messages": {
     "dropConfirmation": "Slipp denne gjenstanden igjen for å bekrefte!",
