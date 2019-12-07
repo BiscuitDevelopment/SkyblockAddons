@@ -83,7 +83,14 @@
     "revenantIndicator": "Slayer裝備進度指示",
     "specialZealotAlert": "特殊Zealot警報",
     "enableMessageWhenActionPrevented": "當一個動作被預防時顯示訊息",
-    "hidePetHealthBar": "隱藏寵物血條"
+    "hidePetHealthBar": "隱藏寵物血條",
+    "powerOrbDisplay": "Power Orb Display",
+    "powerOrbDisplayStyle": "Power Orb Style: %style%",
+    "powerOrbStyle": {
+      "detailed": "Detailed",
+      "compact": "Compact"
+    },
+    "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages"
   },
   "messages": {
     "dropConfirmation": "再次丟棄此物品以確認!",
