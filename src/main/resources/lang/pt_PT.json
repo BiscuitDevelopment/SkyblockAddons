@@ -90,7 +90,8 @@
       "detailed": "Detalhado",
       "compact": "Compacto"
     },
-    "disableMagicalSoupMessage": "Esconder mensagens da Magical Mushroom Soup"
+    "disableMagicalSoupMessage": "Esconder mensagens da Magical Mushroom Soup",
+    "zealotCounter": "Show Zealot Counter"
   },
   "messages": {
     "dropConfirmation": "Dropa este item outra vez para confirmar!",
