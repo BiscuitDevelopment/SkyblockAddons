@@ -84,13 +84,13 @@
     "specialZealotAlert": "Speciell Zealot Alarm",
     "enableMessageWhenActionPrevented": "Visa ett meddelande när en åtgärd hindras",
     "hidePetHealthBar": "Göm husdjurs hälsometer",
-    "powerOrbDisplay": "Power Orb Display",
-    "powerOrbDisplayStyle": "Power Orb Style: %style%",
+    "powerOrbDisplay": "Krafts glob skärm",
+    "powerOrbDisplayStyle": "Krafts glob stil: %style%",
     "powerOrbStyle": {
-      "detailed": "Detailed",
-      "compact": "Compact"
+      "detailed": "Detaljerad",
+      "compact": "Kompakt"
     },
-    "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages"
+    "disableMagicalSoupMessage": "Avaktivera Magiska Svamp Soppa Meddelanden"
   },
   "messages": {
     "dropConfirmation": "Släpp Det Här Igen För Att Bekräfta!",
