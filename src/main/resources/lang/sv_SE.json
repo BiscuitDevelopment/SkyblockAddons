@@ -90,7 +90,8 @@
       "detailed": "Detaljerad",
       "compact": "Kompakt"
     },
-    "disableMagicalSoupMessage": "Avaktivera Magiska Svamp Soppa Meddelanden"
+    "disableMagicalSoupMessage": "Avaktivera Magiska Svamp Soppa Meddelanden",
+    "zealotCounter": "Show Zealot Counter"
   },
   "messages": {
     "dropConfirmation": "Släpp Det Här Igen För Att Bekräfta!",
