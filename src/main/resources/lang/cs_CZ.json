@@ -90,7 +90,7 @@
       "detailed": "Detailed",
       "compact": "Compact"
     },
-    "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages"
+    "disableMagicalSoupMessage": "Vypnout zprávu magické houbové polévky"
   },
   "messages": {
     "dropConfirmation": "Vyhoď tento item pro vyhození!",
