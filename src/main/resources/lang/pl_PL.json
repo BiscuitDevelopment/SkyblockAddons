@@ -83,7 +83,14 @@
     "revenantIndicator": "Wskaznik Postępu Zbroi",
     "specialZealotAlert": "Alarmuj o Specjlanym Zealocie",
     "enableMessageWhenActionPrevented": "Pokaż wiadomość, gdy akcja jest blokowana",
-    "hidePetHealthBar": "Ukryj paski zdrowia peta"
+    "hidePetHealthBar": "Ukryj paski zdrowia peta",
+    "powerOrbDisplay": "Power Orb Display",
+    "powerOrbDisplayStyle": "Power Orb Style: %style%",
+    "powerOrbStyle": {
+      "detailed": "Detailed",
+      "compact": "Compact"
+    },
+    "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages"
   },
   "messages": {
     "dropConfirmation": "Wyrzuć ten przedmiot ponownie, aby potwierdzić!",
