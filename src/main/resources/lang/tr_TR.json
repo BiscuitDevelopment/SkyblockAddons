@@ -83,7 +83,14 @@
     "revenantIndicator": "Zırh ilerleme göstergesi",
     "specialZealotAlert": "Özel zealot alarmı",
     "enableMessageWhenActionPrevented": "Bir şey yapmanız engelendiğinde bir mesaj göster",
-    "hidePetHealthBar": "Evcil Hayvan sağlık göstergesini gizle"
+    "hidePetHealthBar": "Evcil Hayvan sağlık göstergesini gizle",
+    "powerOrbDisplay": "Power Orb Display",
+    "powerOrbDisplayStyle": "Power Orb Style: %style%",
+    "powerOrbStyle": {
+      "detailed": "Detailed",
+      "compact": "Compact"
+    },
+    "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages"
   },
   "messages": {
     "dropConfirmation": "Eşyayı düşürmeyi onaylamak için düşürme tuşuna bir daha bas!",
