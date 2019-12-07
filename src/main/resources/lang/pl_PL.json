@@ -84,13 +84,13 @@
     "specialZealotAlert": "Alarmuj o Specjlanym Zealocie",
     "enableMessageWhenActionPrevented": "Pokaż wiadomość, gdy akcja jest blokowana",
     "hidePetHealthBar": "Ukryj paski zdrowia peta",
-    "powerOrbDisplay": "Power Orb Display",
-    "powerOrbDisplayStyle": "Power Orb Style: %style%",
+    "powerOrbDisplay": "Ukryj Kulę Mocy",
+    "powerOrbDisplayStyle": "Styl Kuli Mocy: %style%",
     "powerOrbStyle": {
-      "detailed": "Detailed",
-      "compact": "Compact"
+      "detailed": "Szczegółowy",
+      "compact": "Prosty"
     },
-    "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages"
+    "disableMagicalSoupMessage": "Ukryj wiadomości z Magicznej Zupy"
   },
   "messages": {
     "dropConfirmation": "Wyrzuć ten przedmiot ponownie, aby potwierdzić!",
