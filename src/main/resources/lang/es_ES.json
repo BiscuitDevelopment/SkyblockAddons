@@ -83,7 +83,14 @@
     "revenantIndicator": "Indicador de Progreso de la Slayer Armor",
     "specialZealotAlert": "Alerta especial de Zealot",
     "enableMessageWhenActionPrevented": "Mostrar un Mensaje Cuando se Impida una Acción",
-    "hidePetHealthBar": "Ocultar Barra de Salud de Mascotas"
+    "hidePetHealthBar": "Ocultar Barra de Salud de Mascotas",
+    "powerOrbDisplay": "Power Orb Display",
+    "powerOrbDisplayStyle": "Power Orb Style: %style%",
+    "powerOrbStyle": {
+      "detailed": "Detailed",
+      "compact": "Compact"
+    },
+    "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages"
   },
   "messages": {
     "dropConfirmation": "¡Dropea el Objeto otra vez para soltar!",
