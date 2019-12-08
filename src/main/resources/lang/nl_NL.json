@@ -87,11 +87,11 @@
     "powerOrbDisplay": "Power Orb Display",
     "powerOrbDisplayStyle": "Power Orb Style: %style%",
     "powerOrbStyle": {
-      "detailed": "Detailed",
+      "detailed": "Uitgebreid",
       "compact": "Compact"
     },
     "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages",
-    "zealotCounter": "Show Zealot Counter"
+    "zealotCounter": "Toon Zealot teller"
   },
   "messages": {
     "dropConfirmation": "Laat dit object opnieuw vallen om te Bevestigen!",
