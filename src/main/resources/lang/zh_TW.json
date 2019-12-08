@@ -91,7 +91,8 @@
       "compact": "精簡"
     },
     "disableMagicalSoupMessage": "取消魔法蘑菇湯訊息",
-    "zealotCounter": "顯示Zealot計數器"
+    "zealotCounter": "顯示Zealot計數器",
+    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display"
   },
   "messages": {
     "dropConfirmation": "再次丟棄此物品以確認!",
