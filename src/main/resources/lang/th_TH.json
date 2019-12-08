@@ -91,7 +91,8 @@
       "compact": "กระทัดรัด"
     },
     "disableMagicalSoupMessage": "ปิดข้อความการใช้งานของซุปเห็ดบิน",
-    "zealotCounter": "แสดงจำนวนการฆ่า Zealot"
+    "zealotCounter": "แสดงจำนวนการฆ่า Zealot",
+    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display"
   },
   "messages": {
     "dropConfirmation": "กดทิ้งของอีกที่เพื่อยืนยันทิ้งของสิ่งนี้!",
