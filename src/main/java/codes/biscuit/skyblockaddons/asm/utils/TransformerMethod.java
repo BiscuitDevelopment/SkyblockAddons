@@ -77,6 +77,7 @@ public enum TransformerMethod {
 
     // RendererLivingEntity
     rotateCorpse("rotateCorpse", "func_77043_a", "a", "(Lnet/minecraft/entity/EntityLivingBase;FFF)V", "("+TransformerClass.EntityLivingBase.getName()+"FFF)V"),
+    isWearing("isWearing", "func_175148_a", "a", "(Lnet/minecraft/entity/player/EnumPlayerModelParts;)Z", "("+TransformerClass.EnumPlayerModelParts.getName()+")Z"),
 
     // RenderManager
     shouldRender("shouldRender", "func_178635_a", "a", "(Lnet/minecraft/entity/Entity;Lnet/minecraft/client/renderer/culling/ICamera;DDD)Z", "("+TransformerClass.Entity.getName()+TransformerClass.ICamera.getName()+"DDD)Z"),

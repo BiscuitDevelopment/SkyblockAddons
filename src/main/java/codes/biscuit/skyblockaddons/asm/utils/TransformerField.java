@@ -23,7 +23,6 @@ public enum TransformerField {
     //Minecraft
     mcResourceManager("mcResourceManager", "field_110451_am", "ay", TransformerClass.IReloadableResourceManager.getName()),
 
-
     NULL(null,null,null,null);
 
     private String name;

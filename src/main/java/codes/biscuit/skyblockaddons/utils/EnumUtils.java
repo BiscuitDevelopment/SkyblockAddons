@@ -564,7 +564,8 @@ public class EnumUtils {
         PICKUP_LOG,
         DEFENCE_ICON,
         REVENANT_PROGRESS,
-        POWER_ORB_DISPLAY
+        POWER_ORB_DISPLAY,
+        TICKER
     }
 
     public enum Social {

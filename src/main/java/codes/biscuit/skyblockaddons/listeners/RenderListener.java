@@ -44,6 +44,7 @@ public class RenderListener {
     private final ResourceLocation DEFENCE_VANILLA = new ResourceLocation("skyblockaddons", "defence.png");
     private final ResourceLocation TEXT_ICONS = new ResourceLocation("skyblockaddons", "icons.png");
     private final ResourceLocation IMPERIAL_BARS_FIX = new ResourceLocation("skyblockaddons", "imperialbarsfix.png");
+    private final ResourceLocation TICKER_SYMBOL = new ResourceLocation("skyblockaddons", "ticker.png");
 
     private boolean predictHealth = false;
     private boolean predictMana = false;
@@ -226,13 +227,7 @@ public class RenderListener {
             GlStateManager.disableBlend();
 
             for (Feature feature : Feature.getGuiFeatures()) {
-                if (feature == Feature.POWER_ORB_STATUS_DISPLAY) {
-//                    FMLLog.info("power orb feature");
-                }
                 if (main.getConfigValues().isEnabled(feature)) {
-                    if (feature == Feature.POWER_ORB_STATUS_DISPLAY) {
-//                        FMLLog.info("power orb feature enabled");
-                    }
                     if (feature == Feature.SKELETON_BAR && !main.getInventoryUtils().isWearingSkeletonHelmet())
                         continue;
                     if (feature == Feature.HEALTH_UPDATES && main.getPlayerListener().getHealthUpdate() == null)
@@ -420,9 +415,9 @@ public class RenderListener {
     }
 
     /**
-     * This renders the skeleton bar.
+     * This renders a bar for the skeleton hat bones bar.
      */
-    public void drawSkeletonBar(float scale, Minecraft mc, ButtonLocation buttonLocation) {
+    public void drawSkeletonBar(Minecraft mc, float scale, ButtonLocation buttonLocation) {
         float x = main.getConfigValues().getActualX(Feature.SKELETON_BAR);
         float y = main.getConfigValues().getActualY(Feature.SKELETON_BAR);
         int bones = 0;
@@ -457,6 +452,36 @@ public class RenderListener {
             mc.getRenderItem().renderItemIntoGUI(BONE_ITEM, Math.round((x + boneCounter * 15)), Math.round(y));
         }
     }
+
+    /**
+     * This renders the skeleton bar.
+     */
+    public void drawScorpionFoilTicker(Minecraft mc, float scale, ButtonLocation buttonLocation) {
+        float x = main.getConfigValues().getActualX(Feature.SCORPION_FOIL_TICKER_DISPLAY);
+        float y = main.getConfigValues().getActualY(Feature.SCORPION_FOIL_TICKER_DISPLAY);
+
+        float height = 11;
+        float width = 4 * 13;
+        x -= Math.round(width * scale / 2);
+        y -= Math.round(height * scale / 2);
+        x /= scale;
+        y /= scale;
+        if (buttonLocation != null) {
+            int boxXOne = Math.round(x - 4);
+            int boxXTwo = Math.round(x + width + 4);
+            int boxYOne = Math.round(y - 4);
+            int boxYTwo = Math.round(y + height + 4);
+            buttonLocation.checkHoveredAndDrawBox(boxXOne, boxXTwo, boxYOne, boxYTwo, scale);
+            GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+        }
+
+        for (int tickers = 0; tickers < (buttonLocation == null ? main.getPlayerListener().getTickers() : 4); tickers++) {
+            mc.getTextureManager().bindTexture(TICKER_SYMBOL);
+            GlStateManager.enableAlpha();
+            Gui.drawModalRectWithCustomSizedTexture(Math.round(x + tickers * 13), Math.round(y), 11, 0, 11, 11, 11, 11);
+        }
+    }
+
 
     /**
      * This renders the defence icon.
@@ -603,7 +628,9 @@ public class RenderListener {
             }
         } else if(feature == Feature.ZEALOT_COUNTER) {
         	if(main.getUtils().getLocation() != EnumUtils.Location.DRAGONS_NEST && buttonLocation == null) return;
-        	text = "Zealots killed: " + main.getZealotCounter().getKills();
+        	text = String.valueOf(main.getPersistentValues().getKills());
+
+            if (buttonLocation != null) text = "123";
         } else {
             return;
         }
@@ -626,6 +653,10 @@ public class RenderListener {
             if (feature == Feature.MAGMA_BOSS_TIMER || feature == Feature.DARK_AUCTION_TIMER || feature == Feature.SKILL_DISPLAY) {
                 boxXOne -= 18;
                 boxYOne -= 2;
+            } else if (feature == Feature.ZEALOT_COUNTER) {
+                boxXOne -= 14;
+                boxYOne -= 3;
+                boxYTwo += 4;
             }
             buttonLocation.checkHoveredAndDrawBox(boxXOne, boxXTwo, boxYOne, boxYTwo, scale);
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
@@ -648,6 +679,9 @@ public class RenderListener {
         } else if (feature == Feature.MAGMA_BOSS_TIMER) {
             mc.getTextureManager().bindTexture(TEXT_ICONS);
             Gui.drawModalRectWithCustomSizedTexture(intX - 18, intY - 5, 0, 0, 16, 16, 32, 32);
+        } else if (feature == Feature.ZEALOT_COUNTER) {
+            mc.getTextureManager().bindTexture(TEXT_ICONS);
+            Gui.drawModalRectWithCustomSizedTexture(intX - 18, intY - 6, 0, 20, 20, 20, 40, 40);
         } else if (feature == Feature.SKILL_DISPLAY && ((skill != null && skill.getItem() != null) || buttonLocation != null)) {
             GlStateManager.enableRescaleNormal();
             RenderHelper.enableGUIStandardItemLighting();

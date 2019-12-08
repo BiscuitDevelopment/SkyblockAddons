@@ -54,7 +54,7 @@ public class RendererLivingEntityTransformer implements ITransformer {
                     AbstractInsnNode abstractNode = iterator.next();
                     if (abstractNode instanceof MethodInsnNode && abstractNode.getOpcode() == Opcodes.INVOKEVIRTUAL) {
                         MethodInsnNode methodInsnNode = (MethodInsnNode) abstractNode;
-                        if (methodInsnNode.owner.equals(TransformerClass.EntityPlayer.getNameRaw()) && methodInsnNode.name.equals("isWearing")) {
+                        if (methodInsnNode.owner.equals(TransformerClass.EntityPlayer.getNameRaw()) && TransformerMethod.isWearing.matches(methodInsnNode)) {
                             methodNode.instructions.insertBefore(abstractNode, new MethodInsnNode(Opcodes.INVOKESTATIC, "codes/biscuit/skyblockaddons/asm/hooks/RendererLivingEntityHook",
                                     "isWearing", "("+TransformerClass.EntityPlayer.getName()+TransformerClass.EnumPlayerModelParts.getName()+")Z", false)); // RendererLivingEntityHook.equals(s, "Dinnerbone");
 

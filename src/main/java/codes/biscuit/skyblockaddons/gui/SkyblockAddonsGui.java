@@ -39,6 +39,8 @@ public class SkyblockAddonsGui extends GuiScreen {
 
     private String initialText = null;
 
+    private boolean cancelClose = false;
+
     /**
      * The main gui, opened with /sba.
      */
@@ -255,7 +257,9 @@ public class SkyblockAddonsGui extends GuiScreen {
                 }
             } else if (abstractButton instanceof ButtonSolid && feature == Feature.TEXT_STYLE) {
                 main.getConfigValues().setTextStyle(main.getConfigValues().getTextStyle().getNextType());
+                cancelClose = true;
                 Minecraft.getMinecraft().displayGuiScreen(new SkyblockAddonsGui(main, page, tab, featureSearchBar.getText()));
+                cancelClose = false;
             } else if (abstractButton instanceof ButtonModify) {
                 if (feature == Feature.ADD) {
                     if (main.getConfigValues().getWarningSeconds() < 99) {
@@ -435,11 +439,13 @@ public class SkyblockAddonsGui extends GuiScreen {
      */
     @Override
     public void onGuiClosed() {
-        if (tab == EnumUtils.GuiTab.GENERAL_SETTINGS) {
-            main.getRenderListener().setGuiToOpen(PlayerListener.GUIType.MAIN, 1, EnumUtils.GuiTab.FEATURES, featureSearchBar.getText());
+        if (!cancelClose) {
+            if (tab == EnumUtils.GuiTab.GENERAL_SETTINGS) {
+                main.getRenderListener().setGuiToOpen(PlayerListener.GUIType.MAIN, 1, EnumUtils.GuiTab.FEATURES, featureSearchBar.getText());
+            }
+            main.getConfigValues().saveConfig();
+            Keyboard.enableRepeatEvents(false);
         }
-        main.getConfigValues().saveConfig();
-        Keyboard.enableRepeatEvents(false);
     }
 
     @Override

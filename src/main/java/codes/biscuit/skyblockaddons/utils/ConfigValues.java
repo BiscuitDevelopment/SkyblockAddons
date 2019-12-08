@@ -485,7 +485,7 @@ public class ConfigValues {
             writer.close();
         } catch (Exception ex) {
             ex.printStackTrace();
-            System.out.println("An error occurred while attempting to save the config!");
+            System.out.println("SkyblockAddons: An error occurred while attempting to save the config!");
         }
     }
 
