@@ -91,7 +91,8 @@
       "compact": "Compact"
     },
     "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages",
-    "zealotCounter": "Show Zealot Counter"
+    "zealotCounter": "Show Zealot Counter",
+    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display"
   },
   "messages": {
     "dropConfirmation": "Leag síos an mír seo arís le cinntiú!",
