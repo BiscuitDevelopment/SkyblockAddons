@@ -91,7 +91,8 @@
       "compact": "Compact"
     },
     "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages",
-    "zealotCounter": "Show Zealot Counter"
+    "zealotCounter": "Show Zealot Counter",
+    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display"
   },
   "messages": {
     "dropConfirmation": "아이템을 정말로 버리려면 다시 버리세요!",
