@@ -91,7 +91,8 @@
       "compact": "Compakt"
     },
     "disableMagicalSoupMessage": "Deaktiver Magiske Svampe Suppe Beskeder",
-    "zealotCounter": "Vis Zealot Tæller"
+    "zealotCounter": "Vis Zealot Tæller",
+    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display"
   },
   "messages": {
     "dropConfirmation": "Slip denne vare igen for at bekræfte!",
