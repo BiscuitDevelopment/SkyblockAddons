@@ -91,7 +91,8 @@
       "compact": "Kompakt"
     },
     "disableMagicalSoupMessage": "Deaktiviere Magie-Pilz-Suppen Nachricht",
-    "zealotCounter": "Zeige Zealot-Counter"
+    "zealotCounter": "Zeige Zealot-Counter",
+    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display"
   },
   "messages": {
     "dropConfirmation": "Werfe diesen Gegenstand nochmal, um zu bestätigen!",
