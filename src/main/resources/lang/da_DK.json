@@ -87,11 +87,11 @@
     "powerOrbDisplay": "Power Orb Display",
     "powerOrbDisplayStyle": "Power Orb Style: %style%",
     "powerOrbStyle": {
-      "detailed": "Detailed",
-      "compact": "Compact"
+      "detailed": "Detaljeret",
+      "compact": "Compakt"
     },
-    "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages",
-    "zealotCounter": "Show Zealot Counter"
+    "disableMagicalSoupMessage": "Deaktiver Magiske Svampe Suppe Beskeder",
+    "zealotCounter": "Vis Zealot Tæller"
   },
   "messages": {
     "dropConfirmation": "Slip denne vare igen for at bekræfte!",
