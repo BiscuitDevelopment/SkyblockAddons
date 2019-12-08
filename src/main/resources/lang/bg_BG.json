@@ -91,7 +91,8 @@
       "compact": "Компактно"
     },
     "disableMagicalSoupMessage": "Изключи Съобщенията За Магическата Супа",
-    "zealotCounter": "Show Zealot Counter"
+    "zealotCounter": "Show Zealot Counter",
+    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display"
   },
   "messages": {
     "dropConfirmation": "Хвърлете Този Предмет Отново за да Потвърдите!",
