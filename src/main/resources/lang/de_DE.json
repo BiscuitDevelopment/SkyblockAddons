@@ -84,8 +84,8 @@
     "specialZealotAlert": "Spezieller Zealot Alarm",
     "enableMessageWhenActionPrevented": "Nachricht anzeigen, wenn eine Aktion verhindert wird",
     "hidePetHealthBar": "Verstecke Haustierlebensleiste",
-    "powerOrbDisplay": "Power Orb Display",
-    "powerOrbDisplayStyle": "Power Orb Style: %style%",
+    "powerOrbDisplay": "Power Orb Anzeige",
+    "powerOrbDisplayStyle": "Power Orb Aussehen: %style%",
     "powerOrbStyle": {
       "detailed": "Detailliert",
       "compact": "Kompakt"
