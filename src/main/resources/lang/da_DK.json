@@ -84,8 +84,8 @@
     "specialZealotAlert": "Speciel Zealot alarm",
     "enableMessageWhenActionPrevented": "Vis en besked når en aktion er forhindret",
     "hidePetHealthBar": "Skjul kæledyrs liv bar",
-    "powerOrbDisplay": "Power Orb Display",
-    "powerOrbDisplayStyle": "Power Orb Style: %style%",
+    "powerOrbDisplay": "Magt Orb Visning",
+    "powerOrbDisplayStyle": "Magt Orb Stil: %style%",
     "powerOrbStyle": {
       "detailed": "Detaljeret",
       "compact": "Compakt"
