@@ -91,7 +91,8 @@
       "compact": "コンパクト"
     },
     "disableMagicalSoupMessage": "Magical Mushroom Soupのメッセージを非表示",
-    "zealotCounter": "Zealotカウンターを表示"
+    "zealotCounter": "Zealotカウンターを表示",
+    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display"
   },
   "messages": {
     "dropConfirmation": "落としてもいいのであれば、このアイテムをもう一度ドロップしてください。",
