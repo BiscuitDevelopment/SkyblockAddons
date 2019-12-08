@@ -91,7 +91,8 @@
       "compact": "Compatto"
     },
     "disableMagicalSoupMessage": "Disabilita i messaggi della zuppa magica ai funghi",
-    "zealotCounter": "Mostra il contatore degli Zealot"
+    "zealotCounter": "Mostra il contatore degli Zealot",
+    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display"
   },
   "messages": {
     "dropConfirmation": "Getta questo oggetto nuovamente per confermare!",
