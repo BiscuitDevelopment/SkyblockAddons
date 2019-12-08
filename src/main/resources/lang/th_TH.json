@@ -84,14 +84,14 @@
     "specialZealotAlert": "แจ้งเตือน Special Zealot",
     "enableMessageWhenActionPrevented": "แสดงข้อความเมื่อโดนห้ามทำ",
     "hidePetHealthBar": "ซ่อนหลอดเลือดสัตว์เลี้ยง",
-    "powerOrbDisplay": "Power Orb Display",
-    "powerOrbDisplayStyle": "Power Orb Style: %style%",
+    "powerOrbDisplay": "แสดงลูกแก้ววิเศษ",
+    "powerOrbDisplayStyle": "รูปแบบลูกแก้ววิเศษ %style%",
     "powerOrbStyle": {
-      "detailed": "Detailed",
-      "compact": "Compact"
+      "detailed": "รายละเอียดสูง",
+      "compact": "กระทัดรัด"
     },
-    "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages",
-    "zealotCounter": "Show Zealot Counter"
+    "disableMagicalSoupMessage": "ปิดข้อความการใช้งานของซุปเห็ดบิน",
+    "zealotCounter": "แสดงจำนวนการฆ่า Zealot"
   },
   "messages": {
     "dropConfirmation": "กดทิ้งของอีกที่เพื่อยืนยันทิ้งของสิ่งนี้!",
