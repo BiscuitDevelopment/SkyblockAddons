@@ -1,12 +1,6 @@
 {
   "language": "Čeština",
   "settings": {
-    "tab": {
-      "features": "Vlastnosti",
-      "fixes": "Opravy",
-      "guiFeatures": "Vlastnosti GUI",
-      "generalSettings": "Obecná nastavení"
-    },
     "settings": "Nastavení",
     "magmaBossWarning": "Upozornění na Magma Bosse ",
     "itemDropConfirmation": "Potvrzení vyhození itemu",
@@ -92,7 +86,10 @@
     },
     "disableMagicalSoupMessage": "Vypnout zprávu magické houbové polévky",
     "zealotCounter": "Show Zealot Counter",
-    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display"
+    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display",
+    "tab": {
+      "generalSettings": "Obecná nastavení"
+    }
   },
   "messages": {
     "dropConfirmation": "Vyhoď tento item pro vyhození!",
