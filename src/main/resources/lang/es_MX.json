@@ -1,12 +1,6 @@
 {
   "language": "Español (México)",
   "settings": {
-    "tab": {
-      "features": "Características",
-      "fixes": "Arreglos",
-      "guiFeatures": "Menú",
-      "generalSettings": "Configuración General"
-    },
     "settings": "Opciones",
     "magmaBossWarning": "Alerta de Boss de Magma",
     "itemDropConfirmation": "Confirmación de Arrojar Objetos",
@@ -92,7 +86,10 @@
     },
     "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages",
     "zealotCounter": "Show Zealot Counter",
-    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display"
+    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display",
+    "tab": {
+      "generalSettings": "Configuración General"
+    }
   },
   "messages": {
     "dropConfirmation": "Arroja este objeto otra vez para confirmar!",
