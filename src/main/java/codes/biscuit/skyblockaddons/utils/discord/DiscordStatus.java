@@ -8,12 +8,15 @@ public enum DiscordStatus {
 
     NONE(() -> ""),
     LOCATION(() -> SkyblockAddons.getInstance().getUtils().getLocation().getScoreboardName()),
-    PURSE(() -> "Purse"),
+    PURSE(() -> String.format("%s Coins", Double.toString(SkyblockAddons.getInstance().getUtils().getPurse()))),
     STATS(() -> "Stats"),
-    ZEALOTS(() -> "Zealots"),
+    ZEALOTS(() -> String.format("%d Zealots killed", SkyblockAddons.getInstance().getPersistentValues().getKills())),
     ITEM(() -> "Item"),
     TIME(() -> SkyblockAddons.getInstance().getUtils().getCurrentDate().toString()),
-    PROFILE(() -> "Profile"),
+    PROFILE(() -> {
+        String profile = SkyblockAddons.getInstance().getUtils().getProfileName();
+        return profile == null ? "None" : profile;
+    }),
 
     // Generic status texts
     IN_GAME(() -> "In Game"),

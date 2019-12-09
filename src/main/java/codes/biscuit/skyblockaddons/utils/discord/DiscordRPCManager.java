@@ -3,29 +3,38 @@ package codes.biscuit.skyblockaddons.utils.discord;
 import com.jagrosh.discordipc.IPCClient;
 import com.jagrosh.discordipc.IPCListener;
 import com.jagrosh.discordipc.entities.RichPresence;
-import com.jagrosh.discordipc.exceptions.NoDiscordClientException;
 import net.minecraftforge.fml.common.FMLLog;
 import org.json.JSONObject;
 
 import java.time.OffsetDateTime;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class DiscordRPCManager implements IPCListener {
 
     private static final long APPLICATION_ID = 653443797182578707L;
+    private static final long UPDATE_PERIOD = 3000L;
 
     private IPCClient client;
-    private DiscordStatus detailsLine = DiscordStatus.PURSE;
-    private DiscordStatus stateLine = DiscordStatus.STATS;
+    private DiscordStatus detailsLine = DiscordStatus.LOCATION;
+    private DiscordStatus stateLine = DiscordStatus.ZEALOTS;
     private OffsetDateTime startTimestamp;
 
+    private Timer updateTimer;
+
     public void start() {
+        FMLLog.info("Starting Discord RP...");
+        if(isActive()) {
+            return;
+        }
+
         startTimestamp = OffsetDateTime.now();
         client = new IPCClient(APPLICATION_ID);
         client.setListener(this);
         try {
             client.connect();
-        } catch (NoDiscordClientException e) {
-            FMLLog.warning("Failed to connect to Discord RPC.");
+        } catch (Exception e) {
+            FMLLog.warning("Failed to connect to Discord RPC: %s", e.getMessage());
         }
     }
 
@@ -63,18 +72,33 @@ public class DiscordRPCManager implements IPCListener {
     @Override
     public void onReady(IPCClient client) {
         FMLLog.info("Discord RPC started");
-        updatePresence();
+        updateTimer = new Timer();
+        updateTimer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                updatePresence();
+            }
+        }, 0, UPDATE_PERIOD);
     }
 
     @Override
     public void onClose(IPCClient client, JSONObject json) {
         FMLLog.warning("Discord RPC closed");
         this.client = null;
+        cancelTimer();
     }
 
     @Override
     public void onDisconnect(IPCClient client, Throwable t) {
         FMLLog.warning("Discord RPC disconnected");
         this.client = null;
+        cancelTimer();
+    }
+
+    private void cancelTimer() {
+        if(updateTimer != null) {
+            updateTimer.cancel();
+            updateTimer = null;
+        }
     }
 }

@@ -81,7 +81,7 @@ public enum Feature {
     POWER_ORB_STATUS_DISPLAY(65, Message.SETTING_POWER_ORB_DISPLAY, new GuiFeatureData(EnumUtils.DrawType.POWER_ORB_DISPLAY, null, EnumUtils.AnchorPoint.TOP_LEFT, 25, 48), false, EnumUtils.FeatureSetting.POWER_ORB_DISPLAY_STYLE),
     ZEALOT_COUNTER(66, Message.SETTING_ZEALOT_COUNTER, new GuiFeatureData(EnumUtils.DrawType.TEXT, ConfigColor.DARK_AQUA, EnumUtils.AnchorPoint.TOP_RIGHT, -45, 48), false),
     SCORPION_FOIL_TICKER_DISPLAY(67, Message.SETTING_SCORPION_FOIL_TICKER_DISPLAY, new GuiFeatureData(EnumUtils.DrawType.TICKER, null, EnumUtils.AnchorPoint.BOTTOM_MIDDLE, 158, -29), false),
-    DISCORD_RPC(68, null, true),
+    DISCORD_RPC(68, Message.SETTING_DISCORD_RP, true),
 
     HIDE_GREY_ENCHANTS(100, null, false), // allow remote disabling this feature
 

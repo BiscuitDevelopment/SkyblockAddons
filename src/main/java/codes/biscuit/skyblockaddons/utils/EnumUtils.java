@@ -224,6 +224,9 @@ public class EnumUtils {
     }
 
     public enum Location {
+
+        UNKNOWN("Unknown"), // Used if for some reason the location wasn't found
+
         ISLAND("Your Island"),
         // Hub
         VILLAGE("Village"),

@@ -87,6 +87,7 @@ public enum Message {
     SETTING_POWER_ORB_DISPLAY_STYLE(MessageObject.SETTING, "powerOrbDisplayStyle"),
     SETTING_ZEALOT_COUNTER(MessageObject.SETTING, "zealotCounter"),
     SETTING_SCORPION_FOIL_TICKER_DISPLAY(MessageObject.SETTING, "scorpionFoilTickerDisplay"),
+    SETTING_DISCORD_RP(MessageObject.SETTING, "discordRP"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.BACKPACK_STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.BACKPACK_STYLE, "compact"),

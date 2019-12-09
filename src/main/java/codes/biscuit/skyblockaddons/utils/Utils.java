@@ -73,12 +73,13 @@ public class Utils {
     private List<String> enchantmentExclusion = new LinkedList<>();
     private Backpack backpackToRender = null;
     private static boolean onSkyblock = false;
-    private EnumUtils.Location location = null;
+    private EnumUtils.Location location = EnumUtils.Location.UNKNOWN;
     private String profileName = null;
     private boolean playingSound = false;
     private boolean copyNBT = false;
     private String serverID = "";
     private SkyblockDate currentDate = new SkyblockDate(SkyblockDate.SkyblockMonth.EARLY_WINTER, 1, 1, 1);
+    private double purse = 0;
     private int lastHoveredSlot = -1;
 
     private boolean fadingIn;
@@ -141,8 +142,8 @@ public class Utils {
                 String timeString = null;
                 for (Score score1 : collection) {
                     ScorePlayerTeam scorePlayerTeam = scoreboard.getPlayersTeam(score1.getPlayerName());
-                    String locationString = keepLettersAndNumbersOnly(
-                            stripColor(ScorePlayerTeam.formatPlayerName(scorePlayerTeam, score1.getPlayerName())));
+                    String strippedLine = stripColor(ScorePlayerTeam.formatPlayerName(scorePlayerTeam, score1.getPlayerName()));
+                    String locationString = keepLettersAndNumbersOnly(strippedLine);
                     if (locationString.endsWith("am") || locationString.endsWith("pm")) {
                         timeString = locationString.trim();
                         timeString = timeString.substring(0, timeString.length()-2);
@@ -165,6 +166,15 @@ public class Utils {
                             break;
                         }
                     }
+
+                    if(strippedLine.startsWith("Purse") || strippedLine.startsWith("Piggy")) {
+                        try {
+                            purse = Double.parseDouble(strippedLine.split(" ")[1]);
+                        } catch(ArrayIndexOutOfBoundsException | NumberFormatException ignored) {
+                            purse = 0;
+                        }
+                    }
+
                     if (locationString.contains("mini")) {
                         Matcher matcher = SERVER_REGEX.matcher(locationString);
                         if (matcher.matches()) {
@@ -192,7 +202,7 @@ public class Utils {
             onSkyblock = false;
         }
         if (!foundLocation) {
-            location = null;
+            location = EnumUtils.Location.UNKNOWN;
         }
     }
 
@@ -766,8 +776,18 @@ public class Utils {
         return STRIP_COLOR_PATTERN.matcher(input).replaceAll("");
     }
 
+    /**
+     * Get the Skyblock location the player is currently at.
+     * Might be {@link EnumUtils.Location#UNKNOWN} if for whatever reason none was found
+     *
+     * @return Skyblock Location
+     */
     public EnumUtils.Location getLocation() {
         return location;
+    }
+
+    public double getPurse() {
+        return purse;
     }
 
     public boolean isOnSkyblock() {

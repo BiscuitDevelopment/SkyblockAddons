@@ -97,7 +97,9 @@ public class SkyblockAddons {
         }
 
         discordRPCManager = new DiscordRPCManager();
-        discordRPCManager.start();
+        if (getConfigValues().isEnabled(Feature.DISCORD_RPC)) {
+            discordRPCManager.start();
+        }
     }
 
     @Mod.EventHandler
@@ -110,7 +112,7 @@ public class SkyblockAddons {
             Field field = bind.getClass().getDeclaredField(SkyblockAddonsTransformer.isDeobfuscated() ? "keyDescription" : "field_74515_c");
             field.setAccessible(true);
             field.set(bind, desc);
-        } catch(NoSuchFieldException | IllegalAccessException e) {
+        } catch (NoSuchFieldException | IllegalAccessException e) {
             System.out.println("Could not change key description: " + bind.toString());
             e.printStackTrace();
         }
@@ -138,9 +140,9 @@ public class SkyblockAddons {
     public ConfigValues getConfigValues() {
         return configValues;
     }
-    
+
     public PersistentValues getPersistentValues() {
-    	return persistentValues;
+        return persistentValues;
     }
 
     public PlayerListener getPlayerListener() {
@@ -185,5 +187,9 @@ public class SkyblockAddons {
 
     public KeyBinding getLockSlot() {
         return lockSlotKeyBind;
+    }
+
+    public DiscordRPCManager getDiscordRPCManager() {
+        return discordRPCManager;
     }
 }

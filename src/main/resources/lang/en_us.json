@@ -92,7 +92,8 @@
     },
     "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages",
     "zealotCounter": "Show Zealot Counter",
-    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display"
+    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display",
+    "discordRP": "Discord Rich Presence"
   },
   "messages": {
     "dropConfirmation": "Drop this item again to confirm!",

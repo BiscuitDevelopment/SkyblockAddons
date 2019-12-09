@@ -12,6 +12,7 @@ import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraftforge.client.GuiIngameForge;
+import net.minecraftforge.fml.common.FMLLog;
 import org.lwjgl.input.Keyboard;
 
 import java.awt.*;
@@ -247,12 +248,19 @@ public class SkyblockAddonsGui extends GuiScreen {
                 if (main.getConfigValues().isRemoteDisabled(feature)) return;
                 if (main.getConfigValues().isDisabled(feature)) {
                     main.getConfigValues().getDisabledFeatures().remove(feature);
+                    if(feature == Feature.DISCORD_RPC) {
+                        FMLLog.info("Enabled Discord Feature");
+                        main.getDiscordRPCManager().start();
+                    }
                 } else {
                     main.getConfigValues().getDisabledFeatures().add(feature);
                     if (feature == Feature.HIDE_FOOD_ARMOR_BAR) { // Reset the vanilla bars when disabling these two features.
                         GuiIngameForge.renderArmor = true; // The food gets automatically enabled, no need to include it.
                     } else if (feature == Feature.HIDE_HEALTH_BAR) {
                         GuiIngameForge.renderHealth = true;
+                    } else if(feature == Feature.DISCORD_RPC) {
+                        FMLLog.info("Disabled Discord feature");
+                        main.getDiscordRPCManager().stop();
                     }
                 }
             } else if (abstractButton instanceof ButtonSolid && feature == Feature.TEXT_STYLE) {
