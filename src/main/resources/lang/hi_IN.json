@@ -1,12 +1,6 @@
 {
   "language": "हिन्दी",
   "settings": {
-    "tab": {
-      "features": "विशेषताएं",
-      "fixes": "लगाना",
-      "guiFeatures": "GUI सुविधाएँ",
-      "generalSettings": "सामान्य सेटिंग्स"
-    },
     "settings": "समायोजन",
     "magmaBossWarning": "मैग्मा बॉस चेतावनी",
     "itemDropConfirmation": "आइटम ड्रॉप की पुष्टि",
@@ -92,7 +86,10 @@
     },
     "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages",
     "zealotCounter": "Show Zealot Counter",
-    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display"
+    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display",
+    "tab": {
+      "generalSettings": "सामान्य सेटिंग्स"
+    }
   },
   "messages": {
     "dropConfirmation": "संदेशों -> ड्रॉप क चेतावनी",
