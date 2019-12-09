@@ -1,12 +1,6 @@
 {
   "language": "Tiếng Việt",
   "settings": {
-    "tab": {
-      "features": "Tính năng",
-      "fixes": "Sửa lỗi",
-      "guiFeatures": "Tính Năng GUI",
-      "generalSettings": "Cài đặt chung"
-    },
     "settings": "Cài Đặt",
     "magmaBossWarning": "Nhắc nhở Magma Boss",
     "itemDropConfirmation": "Xác Nhận Vứt Đồ",
@@ -92,7 +86,10 @@
     },
     "disableMagicalSoupMessage": "Tắt thông báo của Súp nấm thần",
     "zealotCounter": "Show Zealot Counter",
-    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display"
+    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display",
+    "tab": {
+      "generalSettings": "Cài đặt chung"
+    }
   },
   "messages": {
     "dropConfirmation": "Nhấn \"Q\" Thêm Một Lần Nữa Để Xác Nhận!",
