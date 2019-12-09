@@ -1,12 +1,6 @@
 {
   "language": "English",
   "settings": {
-    "tab": {
-      "features": "Features",
-      "fixes": "Fixes",
-      "guiFeatures": "GUI Features",
-      "generalSettings": "General Settings"
-    },
     "settings": "Settings",
     "magmaBossWarning": "Magma Boss Warning",
     "itemDropConfirmation": "Item Drop Confirmation",
@@ -92,7 +86,10 @@
     },
     "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages",
     "zealotCounter": "Show Zealot Counter",
-    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display"
+    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display",
+    "tab": {
+      "generalSettings": "General Settings"
+    }
   },
   "messages": {
     "dropConfirmation": "Drop this item again to confirm!",
