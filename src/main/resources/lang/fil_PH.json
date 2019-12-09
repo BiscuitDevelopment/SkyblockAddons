@@ -1,12 +1,6 @@
 {
   "language": "Filipino",
   "settings": {
-    "tab": {
-      "features": "Mga Features",
-      "fixes": "Mga Fixes",
-      "guiFeatures": "GUI Features",
-      "generalSettings": "Mga pangkalahatan na settings"
-    },
     "settings": "Ang mga settings",
     "magmaBossWarning": "Babala ng Magma Boss",
     "itemDropConfirmation": "Pagkumpirmado sa Paghulog ng Item",
@@ -92,7 +86,10 @@
     },
     "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages",
     "zealotCounter": "Show Zealot Counter",
-    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display"
+    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display",
+    "tab": {
+      "generalSettings": "Mga pangkalahatan na settings"
+    }
   },
   "messages": {
     "dropConfirmation": "Ihulog ang item muli para kumpirmado!",
