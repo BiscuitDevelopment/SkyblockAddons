@@ -1,12 +1,6 @@
 {
   "language": "Български",
   "settings": {
-    "tab": {
-      "features": "Свойства",
-      "fixes": "Поправки",
-      "guiFeatures": "GUI Елементи",
-      "generalSettings": "Общи Настройки"
-    },
     "settings": "Настрйки",
     "magmaBossWarning": "Магма бос",
     "itemDropConfirmation": "Потвърждение за Изхвърляне на Предмет",
@@ -92,7 +86,10 @@
     },
     "disableMagicalSoupMessage": "Изключи Съобщенията За Магическата Супа",
     "zealotCounter": "Show Zealot Counter",
-    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display"
+    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display",
+    "tab": {
+      "generalSettings": "Общи Настройки"
+    }
   },
   "messages": {
     "dropConfirmation": "Хвърлете Този Предмет Отново за да Потвърдите!",
