@@ -1,12 +1,6 @@
 {
   "language": "Suomi",
   "settings": {
-    "tab": {
-      "features": "Ominaisuudet",
-      "fixes": "Korjaukset",
-      "guiFeatures": "GUI Ominaisuudet",
-      "generalSettings": "Yleiset Asetukset"
-    },
     "settings": "Asetukset",
     "magmaBossWarning": "Magma Boss Varoitus",
     "itemDropConfirmation": "Esineen Pudotusvahvistus",
@@ -92,7 +86,10 @@
     },
     "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages",
     "zealotCounter": "Show Zealot Counter",
-    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display"
+    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display",
+    "tab": {
+      "generalSettings": "Yleiset Asetukset"
+    }
   },
   "messages": {
     "dropConfirmation": "Pudota tämä esine uudelleen vahvistaaksesi!",
