@@ -1,12 +1,6 @@
 {
   "language": "日本語",
   "settings": {
-    "tab": {
-      "features": "機能",
-      "fixes": "修正",
-      "guiFeatures": "GUIの機能",
-      "generalSettings": "一般設定"
-    },
     "settings": "設定",
     "magmaBossWarning": "マグマボスのアラート",
     "itemDropConfirmation": "アイテムを捨てる確認",
@@ -92,7 +86,10 @@
     },
     "disableMagicalSoupMessage": "Magical Mushroom Soupのメッセージを非表示",
     "zealotCounter": "Zealotカウンターを表示",
-    "scorpionFoilTickerDisplay": "Scorpion FoilのTickerのゲージ"
+    "scorpionFoilTickerDisplay": "Scorpion FoilのTickerのゲージ",
+    "tab": {
+      "generalSettings": "一般設定"
+    }
   },
   "messages": {
     "dropConfirmation": "落としてもいいのであれば、このアイテムをもう一度ドロップしてください。",
