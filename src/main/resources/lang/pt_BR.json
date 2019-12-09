@@ -1,12 +1,6 @@
 {
   "language": "Português (Brasil)",
   "settings": {
-    "tab": {
-      "features": "Funções",
-      "fixes": "Ajustes",
-      "guiFeatures": "Funções de Interface",
-      "generalSettings": "Configurações Gerais"
-    },
     "settings": "Opções",
     "magmaBossWarning": "Aviso Chefão Magma",
     "itemDropConfirmation": "Confirmação Para Largar Item",
@@ -92,7 +86,10 @@
     },
     "disableMagicalSoupMessage": "Desativar mensagens da Sopa de Cogumelo Mágica",
     "zealotCounter": "Show Zealot Counter",
-    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display"
+    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display",
+    "tab": {
+      "generalSettings": "Configurações Gerais"
+    }
   },
   "messages": {
     "dropConfirmation": "Large este item de novo para confirmar!",
