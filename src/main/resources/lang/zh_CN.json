@@ -78,14 +78,14 @@
     "specialZealotAlert": "末影战士警告",
     "enableMessageWhenActionPrevented": "当操作被阻止时显示提示",
     "hidePetHealthBar": "隐藏宠物血条",
-    "powerOrbDisplay": "Power Orb Display",
-    "powerOrbDisplayStyle": "Power Orb Style: %style%",
+    "powerOrbDisplay": "治疗类宝珠显示",
+    "powerOrbDisplayStyle": "治疗类宝珠显示风格：%style%",
     "powerOrbStyle": {
       "detailed": "详细",
       "compact": "简洁"
     },
-    "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages",
-    "zealotCounter": "显示末影战士计数器",
+    "disableMagicalSoupMessage": "不显示神奇蘑菇汤的提示信息",
+    "zealotCounter": "末影战士计数器",
     "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display",
     "tab": {
       "generalSettings": "常规设置"
