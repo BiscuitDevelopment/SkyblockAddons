@@ -1,12 +1,6 @@
 {
   "language": "Română",
   "settings": {
-    "tab": {
-      "features": "Funcție",
-      "fixes": "Rezolvări",
-      "guiFeatures": "Funcțiile interfeței",
-      "generalSettings": "Setările Generale"
-    },
     "settings": "Setări",
     "magmaBossWarning": "Avertisment pentru Magma Boss",
     "itemDropConfirmation": "Confirmare aruncare obiecte",
@@ -92,7 +86,10 @@
     },
     "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages",
     "zealotCounter": "Show Zealot Counter",
-    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display"
+    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display",
+    "tab": {
+      "generalSettings": "Setările Generale"
+    }
   },
   "messages": {
     "dropConfirmation": "Arunca acest obiect iar ca să confirmi!",
