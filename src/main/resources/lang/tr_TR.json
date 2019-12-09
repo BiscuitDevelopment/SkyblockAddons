@@ -1,12 +1,6 @@
 {
   "language": "Türkçe",
   "settings": {
-    "tab": {
-      "features": "Özellikler",
-      "fixes": "Düzeltmeler",
-      "guiFeatures": "Arayüz Özellikleri",
-      "generalSettings": "Genel Ayarlar"
-    },
     "settings": "Ayarlar",
     "magmaBossWarning": "Magma Boss için Uyarı",
     "itemDropConfirmation": "Eşya Atarken Onay",
@@ -92,7 +86,10 @@
     },
     "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages",
     "zealotCounter": "Show Zealot Counter",
-    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display"
+    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display",
+    "tab": {
+      "generalSettings": "Genel Ayarlar"
+    }
   },
   "messages": {
     "dropConfirmation": "Eşyayı düşürmeyi onaylamak için düşürme tuşuna bir daha bas!",
