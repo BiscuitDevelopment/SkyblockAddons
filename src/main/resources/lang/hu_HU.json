@@ -1,12 +1,6 @@
 {
   "language": "Magyar",
   "settings": {
-    "tab": {
-      "features": "Funkciók",
-      "fixes": "Hibajavítások",
-      "guiFeatures": "GUI funkciók",
-      "generalSettings": "Általános beállítások"
-    },
     "settings": "Beállítások",
     "magmaBossWarning": "Magma Boss figyelmeztetés",
     "itemDropConfirmation": "Tárgy kidobás megerősítése",
@@ -92,7 +86,10 @@
     },
     "disableMagicalSoupMessage": "Magical Mushroom Soup üzenet tiltása",
     "zealotCounter": "Zealot számláló",
-    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display"
+    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display",
+    "tab": {
+      "generalSettings": "Általános beállítások"
+    }
   },
   "messages": {
     "dropConfirmation": "Dobd el ezt a tárgyat újra, hogy megerősítsd!",
