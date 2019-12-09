@@ -1,12 +1,6 @@
 {
   "language": "Dansk",
   "settings": {
-    "tab": {
-      "features": "Funktioner",
-      "fixes": "Rettelser",
-      "guiFeatures": "Skærm egenskaber",
-      "generalSettings": "Generelle indstillinger"
-    },
     "settings": "Indstillinger",
     "magmaBossWarning": "Magma boss advarsel",
     "itemDropConfirmation": "Smide genstand bekræftelse",
@@ -92,7 +86,10 @@
     },
     "disableMagicalSoupMessage": "Deaktiver Magiske Svampe Suppe Beskeder",
     "zealotCounter": "Vis Zealot Tæller",
-    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display"
+    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display",
+    "tab": {
+      "generalSettings": "Generelle indstillinger"
+    }
   },
   "messages": {
     "dropConfirmation": "Slip denne vare igen for at bekræfte!",
