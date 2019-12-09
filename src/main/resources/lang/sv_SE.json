@@ -1,12 +1,6 @@
 {
   "language": "Svenska",
   "settings": {
-    "tab": {
-      "features": "Funktioner",
-      "fixes": "Fixar",
-      "guiFeatures": "GUI Funktioner",
-      "generalSettings": "Allmänna Inställningar"
-    },
     "settings": "Inställningar",
     "magmaBossWarning": "Magma Boss Varning",
     "itemDropConfirmation": "Släpp Artikelbekräftelse",
@@ -92,7 +86,10 @@
     },
     "disableMagicalSoupMessage": "Avaktivera Magiska Svamp Soppa Meddelanden",
     "zealotCounter": "Visa Zealot Räknare",
-    "scorpionFoilTickerDisplay": "Skorpion Folie Tickare Skärm"
+    "scorpionFoilTickerDisplay": "Skorpion Folie Tickare Skärm",
+    "tab": {
+      "generalSettings": "Allmänna Inställningar"
+    }
   },
   "messages": {
     "dropConfirmation": "Släpp Det Här Igen För Att Bekräfta!",
