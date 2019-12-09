@@ -1,12 +1,6 @@
 {
   "language": "Gaeilge",
   "settings": {
-    "tab": {
-      "features": "Gnéithe",
-      "fixes": "Deisiúchán",
-      "guiFeatures": "Gnéithe GUI",
-      "generalSettings": "Socruithe Ginearálta"
-    },
     "settings": "Socruithe",
     "magmaBossWarning": "Rabhadh Saoiste Magma",
     "itemDropConfirmation": "Cinntiú Leagan Mír",
@@ -92,7 +86,10 @@
     },
     "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages",
     "zealotCounter": "Show Zealot Counter",
-    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display"
+    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display",
+    "tab": {
+      "generalSettings": "Socruithe Ginearálta"
+    }
   },
   "messages": {
     "dropConfirmation": "Leag síos an mír seo arís le cinntiú!",
