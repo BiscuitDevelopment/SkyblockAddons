@@ -1,12 +1,6 @@
 {
   "language": "Nederlands",
   "settings": {
-    "tab": {
-      "features": "Functies",
-      "fixes": "Oplossingen",
-      "guiFeatures": "GUI functies",
-      "generalSettings": "Algemene instellingen"
-    },
     "settings": "Instellingen",
     "magmaBossWarning": "Magma Baas Waarschuwing",
     "itemDropConfirmation": "Object laten vallen Bevestiging",
@@ -92,7 +86,10 @@
     },
     "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages",
     "zealotCounter": "Toon Zealot teller",
-    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display"
+    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display",
+    "tab": {
+      "generalSettings": "Algemene instellingen"
+    }
   },
   "messages": {
     "dropConfirmation": "Laat dit object opnieuw vallen om te Bevestigen!",
