@@ -1,12 +1,6 @@
 {
   "language": "العربية",
   "settings": {
-    "tab": {
-      "features": "الميزات",
-      "fixes": "الاصلاحات",
-      "guiFeatures": "ميزات الواجهة",
-      "generalSettings": "الإعدادات العامة"
-    },
     "settings": "الإعدادات",
     "magmaBossWarning": "تحذير زعيم الصهارة",
     "itemDropConfirmation": "تأكيد من رمي العنصر",
@@ -92,7 +86,10 @@
     },
     "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages",
     "zealotCounter": "Show Zealot Counter",
-    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display"
+    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display",
+    "tab": {
+      "generalSettings": "الإعدادات العامة"
+    }
   },
   "messages": {
     "dropConfirmation": "!إرمي هذا العنصر مرة أخرى للتأكيد",
