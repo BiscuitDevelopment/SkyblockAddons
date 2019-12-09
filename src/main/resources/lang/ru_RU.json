@@ -78,14 +78,14 @@
     "specialZealotAlert": "Уведомление об Особом Зеалоте",
     "enableMessageWhenActionPrevented": "Показывать предупреждение, когда действие не выполнено",
     "hidePetHealthBar": "Скрыть здоровье питомцев",
-    "powerOrbDisplay": "Power Orb Display",
+    "powerOrbDisplay": "Отображать Сферу Силы",
     "powerOrbDisplayStyle": "Power Orb Style: %style%",
     "powerOrbStyle": {
       "detailed": "Detailed",
       "compact": "Compact"
     },
-    "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages",
-    "zealotCounter": "Show Zealot Counter",
+    "disableMagicalSoupMessage": "Отключить уведомления о Магическом Супе",
+    "zealotCounter": "Показывать счетчик Зелотов",
     "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display",
     "tab": {
       "generalSettings": "Основные настройки"
