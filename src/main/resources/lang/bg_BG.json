@@ -79,13 +79,13 @@
     "enableMessageWhenActionPrevented": "Покажи Съобщение Когато Действие Бива Предотвратено",
     "hidePetHealthBar": "Скрий Лентата За Живот На Любимеца",
     "powerOrbDisplay": "Power Orb Display",
-    "powerOrbDisplayStyle": "Power Orb Style: %style%",
+    "powerOrbDisplayStyle": "Power Orb Стил: %style%",
     "powerOrbStyle": {
       "detailed": "Подробно",
       "compact": "Компактно"
     },
     "disableMagicalSoupMessage": "Изключи Съобщенията За Магическата Супа",
-    "zealotCounter": "Show Zealot Counter",
+    "zealotCounter": "Покажи Брояч На Зийлъти",
     "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display",
     "tab": {
       "generalSettings": "Общи Настройки"
