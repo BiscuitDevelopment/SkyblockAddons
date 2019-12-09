@@ -1,12 +1,6 @@
 {
   "language": "Polski",
   "settings": {
-    "tab": {
-      "features": "Funkcje",
-      "fixes": "Naprawy błędów",
-      "guiFeatures": "Opcje interfejsu",
-      "generalSettings": "Ustawienia ogólne"
-    },
     "settings": "Ustawienia",
     "magmaBossWarning": "Ostrzeżenie o Bossie Magmy",
     "itemDropConfirmation": "Potwierdzenie Wyrzucenia Przedmiotu",
@@ -92,7 +86,10 @@
     },
     "disableMagicalSoupMessage": "Ukryj wiadomości z Magicznej Zupy",
     "zealotCounter": "Show Zealot Counter",
-    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display"
+    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display",
+    "tab": {
+      "generalSettings": "Ustawienia ogólne"
+    }
   },
   "messages": {
     "dropConfirmation": "Wyrzuć ten przedmiot ponownie, aby potwierdzić!",
