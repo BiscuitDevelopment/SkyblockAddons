@@ -37,11 +37,15 @@ repositories {
 
 dependencies {
     // Discord RPC for Java https://github.com/jagrosh/DiscordIPC
-    compile 'com.jagrosh:DiscordIPC:0.4'
+    provided 'com.jagrosh:DiscordIPC:0.4'
 }
 
 jar {
     archiveName = archivesBaseName + "-" + version + "-for-MC-1.8.9.jar"
+
+    from {
+        configurations.provided.collect { it.isDirectory() ? it : zipTree(it) }
+    }
 
     manifest.attributes(
             'Main-Class': 'OpenErrorMessage',
@@ -51,7 +55,6 @@ jar {
             'ModSide': 'CLIENT',
             'FMLAT': 'skyblockaddons_at.cfg'
     )
-
 }
 
 configurations {
