@@ -1,12 +1,6 @@
 {
   "language": "Biscuitish",
   "settings": {
-    "tab": {
-      "features": "Biscuits",
-      "fixes": "Bixcuits",
-      "guiFeatures": "Buscuit features",
-      "generalSettings": "General biscuits"
-    },
     "settings": "Bake Biscuits",
     "magmaBossWarning": "Big Biscuit Warning",
     "itemDropConfirmation": "Don't Drop Dem Biscuits",
@@ -92,7 +86,10 @@
     },
     "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages",
     "zealotCounter": "Show Zealot Counter",
-    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display"
+    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display",
+    "tab": {
+      "generalSettings": "General biscuits"
+    }
   },
   "messages": {
     "dropConfirmation": "Throw out this biscuit again to confirm!",
