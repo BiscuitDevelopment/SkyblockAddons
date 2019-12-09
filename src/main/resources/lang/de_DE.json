@@ -1,12 +1,6 @@
 {
   "language": "Deutsch",
   "settings": {
-    "tab": {
-      "features": "Funktionen",
-      "fixes": "Fehlerbehebungen",
-      "guiFeatures": "GUI-Funktionen",
-      "generalSettings": "Allgemeine Einstellungen"
-    },
     "settings": "Einstellungen",
     "magmaBossWarning": "Magma Boss Spawn Warnung",
     "itemDropConfirmation": "Item Drop Bestätigung",
@@ -92,7 +86,10 @@
     },
     "disableMagicalSoupMessage": "Deaktiviere Magie-Pilz-Suppen Nachricht",
     "zealotCounter": "Zeige Zealot-Counter",
-    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display"
+    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display",
+    "tab": {
+      "generalSettings": "Allgemeine Einstellungen"
+    }
   },
   "messages": {
     "dropConfirmation": "Werfe diesen Gegenstand nochmal, um zu bestätigen!",
