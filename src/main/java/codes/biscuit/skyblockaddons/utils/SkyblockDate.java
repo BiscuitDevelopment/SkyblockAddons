@@ -74,4 +74,9 @@ public class SkyblockDate {
             return scoreboardString;
         }
     }
+
+    @Override
+    public String toString() {
+        return String.format("%s:%s, %s %s", hour, minute, day, month.scoreboardString);
+    }
 }

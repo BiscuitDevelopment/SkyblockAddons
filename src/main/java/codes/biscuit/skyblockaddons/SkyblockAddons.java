@@ -5,6 +5,7 @@ import codes.biscuit.skyblockaddons.listeners.PlayerListener;
 import codes.biscuit.skyblockaddons.listeners.RenderListener;
 import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsTransformer;
 import codes.biscuit.skyblockaddons.utils.*;
+import codes.biscuit.skyblockaddons.utils.discord.DiscordRPCManager;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraftforge.client.ClientCommandHandler;
@@ -14,6 +15,7 @@ import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.ModContainer;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLModDisabledEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import org.lwjgl.input.Keyboard;
@@ -43,12 +45,15 @@ public class SkyblockAddons {
     private KeyBinding editGUIKeyBind;
     private KeyBinding lockSlotKeyBind;
 
+    private DiscordRPCManager discordRPCManager;
+
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent e) {
         instance = this;
         configValues = new ConfigValues(this, e.getSuggestedConfigurationFile());
         persistentValues = new PersistentValues(e.getSuggestedConfigurationFile());
     }
+
     @Mod.EventHandler
     public void init(FMLInitializationEvent e) {
         MinecraftForge.EVENT_BUS.register(playerListener);
@@ -90,6 +95,14 @@ public class SkyblockAddons {
                 feature.getSettings().add(EnumUtils.FeatureSetting.COLOR);
             }
         }
+
+        discordRPCManager = new DiscordRPCManager();
+        discordRPCManager.start();
+    }
+
+    @Mod.EventHandler
+    public void stop(FMLModDisabledEvent e) {
+        discordRPCManager.stop();
     }
 
     private void changeKeyBindDescription(KeyBinding bind, String desc) {

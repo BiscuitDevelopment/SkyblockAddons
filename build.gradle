@@ -31,9 +31,18 @@ minecraft {
     mappings = "stable_22"
 }
 
+repositories {
+    jcenter()
+}
+
+dependencies {
+    // Discord RPC for Java https://github.com/jagrosh/DiscordIPC
+    compile 'com.jagrosh:DiscordIPC:0.4'
+}
+
 jar {
     archiveName = archivesBaseName + "-" + version + "-for-MC-1.8.9.jar"
-    
+
     manifest.attributes(
             'Main-Class': 'OpenErrorMessage',
             'FMLCorePlugin': 'codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsLoadingPlugin',
