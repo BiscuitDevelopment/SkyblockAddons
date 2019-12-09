@@ -1,12 +1,6 @@
 {
   "language": "Français",
   "settings": {
-    "tab": {
-      "features": "Caractéristiques",
-      "fixes": "Corrections",
-      "guiFeatures": "Interface",
-      "generalSettings": "Options"
-    },
     "settings": "Paramètres",
     "magmaBossWarning": "Alerte Magma Boss",
     "itemDropConfirmation": "Confirmer le jet",
@@ -92,7 +86,10 @@
     },
     "disableMagicalSoupMessage": "Masquer les infos chat de la soupe",
     "zealotCounter": "Compteur de Zélotes",
-    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display"
+    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display",
+    "tab": {
+      "generalSettings": "Options"
+    }
   },
   "messages": {
     "dropConfirmation": "Jetez cet objet une nouvelle fois pour confirmer!",
