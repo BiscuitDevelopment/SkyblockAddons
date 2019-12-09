@@ -84,15 +84,15 @@
     "specialZealotAlert": "特別なZealotのアラート",
     "enableMessageWhenActionPrevented": "動作を防止したときにメッセージを表示する",
     "hidePetHealthBar": "ペットの体力バーを非表示",
-    "powerOrbDisplay": "Power Orbの表示",
-    "powerOrbDisplayStyle": "Power Orbのスタイル: %style%",
+    "powerOrbDisplay": "Power Orbのゲージ",
+    "powerOrbDisplayStyle": "Power Orbゲージのスタイル: %style%",
     "powerOrbStyle": {
       "detailed": "詳細",
       "compact": "コンパクト"
     },
     "disableMagicalSoupMessage": "Magical Mushroom Soupのメッセージを非表示",
     "zealotCounter": "Zealotカウンターを表示",
-    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display"
+    "scorpionFoilTickerDisplay": "Scorpion FoilのTickerのゲージ"
   },
   "messages": {
     "dropConfirmation": "落としてもいいのであれば、このアイテムをもう一度ドロップしてください。",
