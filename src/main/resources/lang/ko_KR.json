@@ -1,12 +1,6 @@
 {
   "language": "한국어",
   "settings": {
-    "tab": {
-      "features": "기능",
-      "fixes": "수정 목록",
-      "guiFeatures": "GUI 기능들",
-      "generalSettings": "일반 설정"
-    },
     "settings": "설정",
     "magmaBossWarning": "마그마 보스 알림",
     "itemDropConfirmation": "아이템 버림 재확인",
@@ -92,7 +86,10 @@
     },
     "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages",
     "zealotCounter": "Show Zealot Counter",
-    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display"
+    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display",
+    "tab": {
+      "generalSettings": "일반 설정"
+    }
   },
   "messages": {
     "dropConfirmation": "아이템을 정말로 버리려면 다시 버리세요!",
