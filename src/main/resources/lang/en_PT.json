@@ -1,12 +1,6 @@
 {
   "language": "PiARRate English",
   "settings": {
-    "tab": {
-      "features": "Feat'rs",
-      "fixes": "Fixes",
-      "guiFeatures": "GUI Feat'rs",
-      "generalSettings": "General Settin's"
-    },
     "settings": "Yer Settin's",
     "magmaBossWarning": "Magma Boss Warnin'",
     "itemDropConfirmation": "Drop Ye Items Twice",
@@ -92,7 +86,10 @@
     },
     "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages",
     "zealotCounter": "Show Zealot Counter",
-    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display"
+    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display",
+    "tab": {
+      "generalSettings": "General Settin's"
+    }
   },
   "messages": {
     "dropConfirmation": "'ay lad, drop this here item again to confirm!",
