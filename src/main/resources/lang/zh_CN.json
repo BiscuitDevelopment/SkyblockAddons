@@ -1,12 +1,6 @@
 {
   "language": "简体中文",
   "settings": {
-    "tab": {
-      "features": "主要功能",
-      "fixes": "辅助功能",
-      "guiFeatures": "GUI 功能",
-      "generalSettings": "常规设置"
-    },
     "settings": "设定",
     "magmaBossWarning": "岩浆怪 Boss 警告",
     "itemDropConfirmation": "确认丢弃物品",
@@ -92,7 +86,10 @@
     },
     "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages",
     "zealotCounter": "Show Zealot Counter",
-    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display"
+    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display",
+    "tab": {
+      "generalSettings": "常规设置"
+    }
   },
   "messages": {
     "dropConfirmation": "再次丢弃此物品以确认!",
