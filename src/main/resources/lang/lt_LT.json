@@ -1,12 +1,6 @@
 {
   "language": "Lietuvių",
   "settings": {
-    "tab": {
-      "features": "Funkcijos",
-      "fixes": "Pataisymai",
-      "guiFeatures": "GUI Funkcijos",
-      "generalSettings": "Bendrieji nustatymai"
-    },
     "settings": "Nustatymai",
     "magmaBossWarning": "Magmos Boso Įspėjimas",
     "itemDropConfirmation": "Daikto Išmetimo Patvirtinimas",
@@ -92,7 +86,10 @@
     },
     "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages",
     "zealotCounter": "Show Zealot Counter",
-    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display"
+    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display",
+    "tab": {
+      "generalSettings": "Bendrieji nustatymai"
+    }
   },
   "messages": {
     "dropConfirmation": "Meskite Šį Daiktą Dar Kartą, Kad Patvirtintumėte!",
