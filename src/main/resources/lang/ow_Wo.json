@@ -1,12 +1,6 @@
 {
   "language": "OwO wanguage uwu",
   "settings": {
-    "tab": {
-      "features": "Fwetuwures",
-      "fixes": "Fwxes",
-      "guiFeatures": "GUI Fwetwues",
-      "generalSettings": "Genewal Settings"
-    },
     "settings": "Settings",
     "magmaBossWarning": "Magmwa Bowoss Wawning",
     "itemDropConfirmation": "Itwem Dwop Comfowmatiwon",
@@ -92,7 +86,10 @@
     },
     "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages",
     "zealotCounter": "Show Zealot Counter",
-    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display"
+    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display",
+    "tab": {
+      "generalSettings": "Genewal Settings"
+    }
   },
   "messages": {
     "dropConfirmation": "Dwop thwis itwem agwain to confiwm!",
