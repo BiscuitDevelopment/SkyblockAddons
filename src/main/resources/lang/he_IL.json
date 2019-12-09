@@ -1,12 +1,6 @@
 {
   "language": "עברית",
   "settings": {
-    "tab": {
-      "features": "מאפיינים",
-      "fixes": "תיקונים",
-      "guiFeatures": "מאפייני מסך",
-      "generalSettings": "הגדרות כלליות"
-    },
     "settings": "הגדרות",
     "magmaBossWarning": "אזהרת בוס מגמה",
     "itemDropConfirmation": "אישור זריקת פריט",
@@ -92,7 +86,10 @@
     },
     "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages",
     "zealotCounter": "Show Zealot Counter",
-    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display"
+    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display",
+    "tab": {
+      "generalSettings": "הגדרות כלליות"
+    }
   },
   "messages": {
     "dropConfirmation": "זרוק פריט זה שוב לאישור!",
