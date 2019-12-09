@@ -1,12 +1,6 @@
 {
   "language": "ภาษาไทย",
   "settings": {
-    "tab": {
-      "features": "ฟีเจอร์",
-      "fixes": "การแก้ไข",
-      "guiFeatures": "ตั้งค่าต่างๆของ GUI",
-      "generalSettings": "ตั้งค่าทั่วไป"
-    },
     "settings": "ตั้งค่า",
     "magmaBossWarning": "แจ้งเตือนว่าบอส Magma ได้เกิดแล้ว",
     "itemDropConfirmation": "ยืนยันการทิ้งไอเทม",
@@ -92,7 +86,10 @@
     },
     "disableMagicalSoupMessage": "ปิดข้อความการใช้งานของซุปเห็ดบิน",
     "zealotCounter": "แสดงจำนวนการฆ่า Zealot",
-    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display"
+    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display",
+    "tab": {
+      "generalSettings": "ตั้งค่าทั่วไป"
+    }
   },
   "messages": {
     "dropConfirmation": "กดทิ้งของอีกที่เพื่อยืนยันทิ้งของสิ่งนี้!",
