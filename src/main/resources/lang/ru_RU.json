@@ -79,10 +79,10 @@
     "enableMessageWhenActionPrevented": "Показывать предупреждение, когда действие не выполнено",
     "hidePetHealthBar": "Скрыть здоровье питомцев",
     "powerOrbDisplay": "Отображать Сферу Силы",
-    "powerOrbDisplayStyle": "Power Orb Style: %style%",
+    "powerOrbDisplayStyle": "Стиль Сферы Силы: %style%",
     "powerOrbStyle": {
-      "detailed": "Detailed",
-      "compact": "Compact"
+      "detailed": "Подробно",
+      "compact": "Компактно"
     },
     "disableMagicalSoupMessage": "Отключить уведомления о Магическом Супе",
     "zealotCounter": "Показывать счетчик Зелотов",
