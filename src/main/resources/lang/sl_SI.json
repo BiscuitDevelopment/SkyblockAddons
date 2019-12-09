@@ -1,12 +1,6 @@
 {
   "language": "slovenščina",
   "settings": {
-    "tab": {
-      "features": "Funkcije",
-      "fixes": "Popravki",
-      "guiFeatures": "Funkcije GUI-ja",
-      "generalSettings": "Splošne Nastavitve"
-    },
     "settings": "Nastavitve",
     "magmaBossWarning": "Magma Boss Opozorilo",
     "itemDropConfirmation": "Potrditev za Izpust Stvari",
@@ -92,7 +86,10 @@
     },
     "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages",
     "zealotCounter": "Show Zealot Counter",
-    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display"
+    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display",
+    "tab": {
+      "generalSettings": "Splošne Nastavitve"
+    }
   },
   "messages": {
     "dropConfirmation": "Ponovno Izpusti To Stvar za Potrditev!",
