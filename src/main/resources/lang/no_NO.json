@@ -1,12 +1,6 @@
 {
   "language": "Norsk",
   "settings": {
-    "tab": {
-      "features": "Funksjoner",
-      "fixes": "Reparasjoner",
-      "guiFeatures": "GUI Funksjoner",
-      "generalSettings": "Generelle Innstillinger"
-    },
     "settings": "Innstillinger",
     "magmaBossWarning": "Magma Boss Varsel",
     "itemDropConfirmation": "Bekreftelse for å slippe gjenstand",
@@ -92,7 +86,10 @@
     },
     "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages",
     "zealotCounter": "Show Zealot Counter",
-    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display"
+    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display",
+    "tab": {
+      "generalSettings": "Generelle Innstillinger"
+    }
   },
   "messages": {
     "dropConfirmation": "Slipp denne gjenstanden igjen for å bekrefte!",
