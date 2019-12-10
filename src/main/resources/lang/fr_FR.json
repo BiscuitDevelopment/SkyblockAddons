@@ -5,7 +5,7 @@
     "magmaBossWarning": "Alerte Magma Boss",
     "itemDropConfirmation": "Confirmer le jet",
     "hideSkeletonHatBones": "Masquer les os du casque du Squelette",
-    "skeletonHatBonesBar": "Barre du Skeleton's Helmet",
+    "skeletonHatBonesBar": "Barre du casque du Squelette",
     "hideFoodAndArmor": "Masquer la nourriture & l'armure",
     "fullInventoryWarning": "Alerte inventaire plein",
     "disableEmberRodAbility": "Désativer l'Ember Rod sur votre île",
@@ -86,7 +86,7 @@
     },
     "disableMagicalSoupMessage": "Masquer les infos chat de la soupe",
     "zealotCounter": "Compteur de Zélotes",
-    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display",
+    "scorpionFoilTickerDisplay": "Afficher les dards du Scorpion Foil",
     "tab": {
       "generalSettings": "Options"
     }
