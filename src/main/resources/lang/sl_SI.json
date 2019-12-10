@@ -81,11 +81,11 @@
     "powerOrbDisplay": "Power Orb Display",
     "powerOrbDisplayStyle": "Power Orb Style: %style%",
     "powerOrbStyle": {
-      "detailed": "Detailed",
-      "compact": "Compact"
+      "detailed": "Podrobno",
+      "compact": "Kompaktno"
     },
-    "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages",
-    "zealotCounter": "Show Zealot Counter",
+    "disableMagicalSoupMessage": "Onesposobljenje Sporočil Čarobne Gobje Juhe",
+    "zealotCounter": "Prikaz Števca Zealotov",
     "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display",
     "tab": {
       "generalSettings": "Splošne Nastavitve"
@@ -131,8 +131,8 @@
     "featureDisabled": "Funkcija izklopljena",
     "anvilUses": "Število Uporab Nakovala: %uses%",
     "specialZealotFound": "Posebni Zealot!",
-    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)",
-    "searchFeatures": "Search features",
-    "downloadingUpdateFile": "Downloading update file..."
+    "blockIncompletePatterns": "Blokiraj izdelovanje nepopolnih oblik (priporočljivo)",
+    "searchFeatures": "Iskanje Funkcij",
+    "downloadingUpdateFile": "Prenašanje posodobitev..."
   }
 }
