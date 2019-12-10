@@ -1,10 +1,11 @@
 package codes.biscuit.skyblockaddons.utils.discord;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.gui.buttons.ButtonSelect;
 
 import java.util.function.Supplier;
 
-public enum DiscordStatus {
+public enum DiscordStatus implements ButtonSelect.SelectItem {
 
     NONE(() -> ""),
     LOCATION(() -> SkyblockAddons.getInstance().getUtils().getLocation().getScoreboardName()),
@@ -33,5 +34,15 @@ public enum DiscordStatus {
 
     public String getDisplayMessage() {
         return displayMessageSupplier.get();
+    }
+
+    @Override
+    public String getName() {
+        return getDisplayMessage();
+    }
+
+    @Override
+    public String getDescription() {
+        return null;
     }
 }

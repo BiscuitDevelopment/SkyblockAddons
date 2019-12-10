@@ -430,7 +430,9 @@ public class EnumUtils {
         MAKE_INVENTORY_COLORED,
         POWER_ORB_DISPLAY_STYLE,
         CHANGE_BAR_COLOR_WITH_POTIONS,
-        ENABLE_MESSAGE_WHEN_ACTION_PREVENTED
+        ENABLE_MESSAGE_WHEN_ACTION_PREVENTED,
+        DISCORD_RP_STATE,
+        DISCORD_RP_DETAILS
     }
 
     @SuppressWarnings("deprecation")

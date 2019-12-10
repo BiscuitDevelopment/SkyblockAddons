@@ -37,7 +37,9 @@ repositories {
 
 dependencies {
     // Discord RPC for Java https://github.com/jagrosh/DiscordIPC
-    provided 'com.jagrosh:DiscordIPC:0.4'
+    provided('com.jagrosh:DiscordIPC:0.4') {
+        exclude module: 'log4j'
+    }
 }
 
 jar {
