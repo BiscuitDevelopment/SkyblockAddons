@@ -76,10 +76,10 @@
     "onlyMineValuablesNether": "Only Mine Valuables in the Nether",
     "revenantIndicator": "Slayer Armor Progress Indicator",
     "specialZealotAlert": "Opozorilo za Posebnega Zealota",
-    "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented",
-    "hidePetHealthBar": "Hide Pet Health Bar",
-    "powerOrbDisplay": "Power Orb Display",
-    "powerOrbDisplayStyle": "Power Orb Style: %style%",
+    "enableMessageWhenActionPrevented": "Prikaži Sporočilo, ko je Dejanje Onemogočeno",
+    "hidePetHealthBar": "Skrij Vrstico Zdravja Ljubljenčka",
+    "powerOrbDisplay": "Prikaz Power Orb-a",
+    "powerOrbDisplayStyle": "Stil Power Orb-a: %style%",
     "powerOrbStyle": {
       "detailed": "Podrobno",
       "compact": "Kompaktno"
