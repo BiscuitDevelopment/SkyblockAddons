@@ -44,7 +44,7 @@
     "preventMovementOnDeath": "Empêcher de marcher après la mort",
     "showItemAnvilUses": "Afficher l'utilisation de l'enclume",
     "lockSlots": "Verrouillage d'emplacement",
-    "lockSlot": "Case bloqué",
+    "lockSlot": "Bloquer une case",
     "dontResetCursorInventory": "Rendre le curseur libre dans les menus",
     "summoningEyeAlert": "Alerte Œil d'invocation",
     "makeEnderchestsInEndGreen": "Modifier la couleur de l'Enderchest dans l'End",
