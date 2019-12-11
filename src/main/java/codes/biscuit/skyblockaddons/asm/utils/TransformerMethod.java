@@ -88,6 +88,9 @@ public enum TransformerMethod {
     // TileEntityEnderChestRenderer
     renderTileEntityAt("renderTileEntityAt", "func_180535_a", "a", "(Lnet/minecraft/tileentity/TileEntity;DDDFI)V", "("+TransformerClass.TileEntity.getName()+"DDDFI)V"),
 
+    // Constructor
+    init("<init>", "<init>", "<init>", "()V"),
+
     NULL(null,null,null,null,false);
 
     private String name;
@@ -135,6 +138,6 @@ public enum TransformerMethod {
     }
 
     public boolean matches(MethodNode methodNode) {
-        return this.name.equals(methodNode.name) && this.description.equals(methodNode.desc);
+        return this.name.equals(methodNode.name) && (this.description.equals(methodNode.desc) || this == init);
     }
 }
