@@ -18,6 +18,7 @@ public enum TransformerMethod {
     drawGradientRect("drawGradientRect", "func_73733_a", "a", "(IIIIII)V"),
     drawSlot("drawSlot", "func_146977_a", "a", "(Lnet/minecraft/inventory/Slot;)V", "("+TransformerClass.Slot.getName()+")V"),
     checkHotbarKeys("checkHotbarKeys", "func_146983_a", "b", "(I)Z"),
+    actionPerformed("actionPerformed", "func_146284_a", "a", "(Lnet/minecraft/client/gui/GuiButton;)V", "("+TransformerClass.GuiButton.getName()+")V"),
 
     // GuiChest
     drawGuiContainerBackgroundLayer("drawGuiContainerBackgroundLayer", "func_146976_a", "a", "(FII)V"),
@@ -62,6 +63,7 @@ public enum TransformerMethod {
     // Minecraft
     refreshResources("refreshResources", "func_110436_a", "e", "()V"),
     rightClickMouse("rightClickMouse", "func_147121_ag", "ax", "()V"),
+    isIntegratedServerRunning("isIntegratedServerRunning", "func_71387_A", "E", "()Z"),
 
     // MouseHelper
     ungrabMouseCursor("ungrabMouseCursor", "func_74373_b", "b", "()V"),
