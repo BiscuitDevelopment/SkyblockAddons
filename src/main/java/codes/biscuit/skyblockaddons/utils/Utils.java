@@ -81,6 +81,12 @@ public class Utils {
     private SkyblockDate currentDate = new SkyblockDate(SkyblockDate.SkyblockMonth.EARLY_WINTER, 1, 1, 1);
     private int lastHoveredSlot = -1;
 
+    // Slayer Quest
+    private int currentKills = 0;
+    private int targetKills = 0;
+    private int currentExp = 0;
+    private int targetExp = 0;
+
     private boolean fadingIn;
 
     private SkyblockAddons main;
@@ -116,7 +122,7 @@ public class Utils {
     // english, chinese simplified
     private static final Set<String> SKYBLOCK_IN_ALL_LANGUAGES = Sets.newHashSet("SKYBLOCK","\u7A7A\u5C9B\u751F\u5B58");
 
-    public void checkGameLocationDate() {
+    public void fetchAttributeByScoreboard() {
         boolean foundLocation = false;
         Minecraft mc = Minecraft.getMinecraft();
         if (mc != null && mc.theWorld != null) {
@@ -141,45 +147,48 @@ public class Utils {
                 String timeString = null;
                 for (Score score1 : collection) {
                     ScorePlayerTeam scorePlayerTeam = scoreboard.getPlayersTeam(score1.getPlayerName());
-                    String locationString = keepLettersAndNumbersOnly(
+                    String cleanedLine = keepLettersAndNumbersOnly(
                             stripColor(ScorePlayerTeam.formatPlayerName(scorePlayerTeam, score1.getPlayerName())));
-                    if (locationString.endsWith("am") || locationString.endsWith("pm")) {
-                        timeString = locationString.trim();
+                    if (cleanedLine.endsWith("am") || cleanedLine.endsWith("pm")) {
+                        timeString = cleanedLine.trim();
                         timeString = timeString.substring(0, timeString.length()-2);
                     }
                     for (SkyblockDate.SkyblockMonth month : SkyblockDate.SkyblockMonth.values()) {
-                        if (locationString.contains(month.getScoreboardString())) {
+                        if (cleanedLine.contains(month.getScoreboardString())) {
                             try {
                                 currentDate.setMonth(month);
-                                String numberPart = locationString.substring(locationString.lastIndexOf(" ") + 1);
-                                int day = Integer.valueOf(getNumbersOnly(numberPart));
+                                String numberPart = cleanedLine.substring(cleanedLine.lastIndexOf(" ") + 1);
+                                int day = Integer.parseInt(getNumbersOnly(numberPart));
                                 currentDate.setDay(day);
                                 if (timeString != null) {
                                     String[] timeSplit = timeString.split(Pattern.quote(":"));
-                                    int hour = Integer.valueOf(timeSplit[0]);
+                                    int hour = Integer.parseInt(timeSplit[0]);
                                     currentDate.setHour(hour);
-                                    int minute = Integer.valueOf(timeSplit[1]);
+                                    int minute = Integer.parseInt(timeSplit[1]);
                                     currentDate.setMinute(minute);
                                 }
                             } catch (IndexOutOfBoundsException | NumberFormatException ignored) {}
                             break;
                         }
                     }
-                    if (locationString.contains("mini")) {
-                        Matcher matcher = SERVER_REGEX.matcher(locationString);
+                    if (cleanedLine.contains("mini")) {
+                        Matcher matcher = SERVER_REGEX.matcher(cleanedLine);
                         if (matcher.matches()) {
                             serverID = matcher.group(2);
                             continue; // skip to next line
                         }
                     }
-                    for (EnumUtils.Location loopLocation : EnumUtils.Location.values()) {
-                        if (locationString.endsWith(loopLocation.getScoreboardName())) {
-                            if (loopLocation == EnumUtils.Location.BLAZING_FORTRESS &&
-                                    location != EnumUtils.Location.BLAZING_FORTRESS) {
+                    if (cleanedLine.endsWith("Combat XP") || cleanedLine.endsWith("Kills")) {
+                        parseSlayerXPProgress(cleanedLine);
+                    }
+                    for (EnumUtils.Location location : EnumUtils.Location.values()) {
+                        if (cleanedLine.endsWith(location.getScoreboardName())) {
+                            if (location == EnumUtils.Location.BLAZING_FORTRESS &&
+                                    this.location != EnumUtils.Location.BLAZING_FORTRESS) {
                                 sendPostRequest(EnumUtils.MagmaEvent.PING); // going into blazing fortress
                                 main.getUtils().fetchEstimateFromServer();
                             }
-                            location = loopLocation;
+                            this.location = location;
                             foundLocation = true;
                             break;
                         }
@@ -196,8 +205,41 @@ public class Utils {
         }
     }
 
+    private void parseSlayerXPProgress(final String line) {
+        String[] format = line.trim().split(" ")[0].split("/");
+
+        boolean doAlert = false;
+
+        if (line.endsWith("Kills")) {
+            int oldCurrentKills = this.currentKills;
+            this.currentKills = Integer.parseInt(format[0]);
+
+            this.targetKills = Integer.parseInt(format[1]);
+
+            doAlert = oldCurrentKills != this.currentKills && (float) this.currentKills / this.targetKills > 0.9; // If boss percentage to spawn boss over 90%
+        } else if (line.endsWith("Combat XP")) {
+            int oldCurrentExp = this.currentExp;
+            this.currentExp = Integer.parseInt(format[0]);
+
+            if (format[1].endsWith("k")) {
+                float f = Float.parseFloat(format[1].substring(0, format[1].length() - 1));
+                this.targetExp = (int) (f * 1000);
+            } else {
+                this.targetExp = Integer.parseInt(format[1]);
+            }
+
+            doAlert = oldCurrentExp != this.currentExp && (float) this.currentExp / this.targetExp > 0.9;
+        }
+
+        if (main.getConfigValues().isEnabled(Feature.BOSS_APPROACH_ALERT) && doAlert) {
+            main.getUtils().playLoudSound("random.orb", 0.5);
+            main.getRenderListener().setTitleFeature(Feature.BOSS_APPROACH_ALERT);
+            main.getScheduler().schedule(Scheduler.CommandType.RESET_TITLE_FEATURE, main.getConfigValues().getWarningSeconds());
+        }
+    }
+
     private static final Pattern NUMBERS_SLASHES = Pattern.compile("[^0-9 /]");
-    private static final Pattern LETTERS_NUMBERS = Pattern.compile("[^a-z A-Z:0-9/']");
+    private static final Pattern LETTERS_NUMBERS = Pattern.compile("[^a-z A-Z:0-9/.']");
 
     private String keepLettersAndNumbersOnly(String text) {
         return LETTERS_NUMBERS.matcher(text).replaceAll("");

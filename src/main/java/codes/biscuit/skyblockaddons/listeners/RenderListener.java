@@ -179,6 +179,9 @@ public class RenderListener {
                 case SPECIAL_ZEALOT_ALERT:
                     message = Message.MESSAGE_SPECIAL_ZEALOT_FOUND;
                     break;
+                case BOSS_APPROACH_ALERT:
+                    message = Message.MESSAGE_BOSS_APPROACH_ALERT;
+                    break;
             }
             if (message != null) {
                 String text = message.getMessage();

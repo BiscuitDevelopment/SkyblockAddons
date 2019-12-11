@@ -366,7 +366,7 @@ public class PlayerListener {
                 } else if (timerTick % 5 == 0) { // Check inventory, location, updates, and skeleton helmet every 1/4 second.
                     EntityPlayerSP p = mc.thePlayer;
                     if (p != null) {
-                        main.getUtils().checkGameLocationDate();
+                        main.getUtils().fetchAttributeByScoreboard();
                         main.getInventoryUtils().checkIfInventoryIsFull(mc, p);
                         main.getInventoryUtils().checkIfWearingSkeletonHelmet(p);
                         main.getInventoryUtils().checkIfWearingRevenantArmor(p);

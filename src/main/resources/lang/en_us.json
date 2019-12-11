@@ -87,6 +87,7 @@
     "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages",
     "zealotCounter": "Show Zealot Counter",
     "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display",
+    "bossApproachAlert": "Boss Approach Alert",
     "tab": {
       "generalSettings": "General Settings"
     }
@@ -133,6 +134,7 @@
     "specialZealotFound": "Special Zealot!",
     "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)",
     "searchFeatures": "Search features",
-    "downloadingUpdateFile": "Downloading update file..."
+    "downloadingUpdateFile": "Downloading update file...",
+    "bossApproaching": "Close to spawn boss!"
   }
 }
