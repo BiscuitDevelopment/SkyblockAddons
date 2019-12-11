@@ -109,13 +109,13 @@ public class RenderListener {
     @SubscribeEvent()
     public void onRenderLiving(RenderLivingEvent.Specials.Pre e) {
         Entity entity = e.entity;
-        if (main.getConfigValues().isEnabled(Feature.MINION_DISABLE_LOCATION_WARNING)) {
+        if (main.getConfigValues().isEnabled(Feature.MINION_DISABLE_LOCATION_WARNING) && entity.hasCustomName()) {
             if (entity.getCustomNameTag().startsWith("§cThis location isn\'t perfect! :(")) {
                 e.setCanceled(true);
             }
             if (entity.getCustomNameTag().startsWith("§c/!\\")) {
                 for (Entity listEntity : Minecraft.getMinecraft().theWorld.loadedEntityList) {
-                    if (listEntity.getCustomNameTag().startsWith("§cThis location isn\'t perfect! :(") &&
+                    if (listEntity.hasCustomName() && listEntity.getCustomNameTag().startsWith("§cThis location isn\'t perfect! :(") &&
                             listEntity.posX == entity.posX && listEntity.posZ == entity.posZ &&
                             listEntity.posY + 0.375 == entity.posY) {
                         e.setCanceled(true);
@@ -457,28 +457,34 @@ public class RenderListener {
      * This renders the skeleton bar.
      */
     public void drawScorpionFoilTicker(Minecraft mc, float scale, ButtonLocation buttonLocation) {
-        float x = main.getConfigValues().getActualX(Feature.SCORPION_FOIL_TICKER_DISPLAY);
-        float y = main.getConfigValues().getActualY(Feature.SCORPION_FOIL_TICKER_DISPLAY);
+        if (buttonLocation != null || main.getPlayerListener().getTickers() != -1) {
+            float x = main.getConfigValues().getActualX(Feature.SCORPION_FOIL_TICKER_DISPLAY);
+            float y = main.getConfigValues().getActualY(Feature.SCORPION_FOIL_TICKER_DISPLAY);
 
-        float height = 11;
-        float width = 4 * 13;
-        x -= Math.round(width * scale / 2);
-        y -= Math.round(height * scale / 2);
-        x /= scale;
-        y /= scale;
-        if (buttonLocation != null) {
-            int boxXOne = Math.round(x - 4);
-            int boxXTwo = Math.round(x + width + 4);
-            int boxYOne = Math.round(y - 4);
-            int boxYTwo = Math.round(y + height + 4);
-            buttonLocation.checkHoveredAndDrawBox(boxXOne, boxXTwo, boxYOne, boxYTwo, scale);
-            GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-        }
+            float height = 9;
+            float width = 4 * 11;
+            x -= Math.round(width * scale / 2);
+            y -= Math.round(height * scale / 2);
+            x /= scale;
+            y /= scale;
+            if (buttonLocation != null) {
+                int boxXOne = Math.round(x - 4);
+                int boxXTwo = Math.round(x + width + 2);
+                int boxYOne = Math.round(y - 4);
+                int boxYTwo = Math.round(y + height + 4);
+                buttonLocation.checkHoveredAndDrawBox(boxXOne, boxXTwo, boxYOne, boxYTwo, scale);
+                GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+            }
 
-        for (int tickers = 0; tickers < (buttonLocation == null ? main.getPlayerListener().getTickers() : 4); tickers++) {
-            mc.getTextureManager().bindTexture(TICKER_SYMBOL);
-            GlStateManager.enableAlpha();
-            Gui.drawModalRectWithCustomSizedTexture(Math.round(x + tickers * 13), Math.round(y), 11, 0, 11, 11, 11, 11);
+            for (int tickers = 0; tickers < 4; tickers++) { //main.getPlayerListener().getTickers()
+                mc.getTextureManager().bindTexture(TICKER_SYMBOL);
+                GlStateManager.enableAlpha();
+                if (tickers < (buttonLocation == null ? main.getPlayerListener().getTickers() : 3)) {
+                    Gui.drawModalRectWithCustomSizedTexture(Math.round(x + tickers * 11), Math.round(y), 0, 0, 9, 9, 18, 9);
+                } else {
+                    Gui.drawModalRectWithCustomSizedTexture(Math.round(x + tickers * 11), Math.round(y), 9, 0, 9, 9, 18, 9);
+                }
+            }
         }
     }
 

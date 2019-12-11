@@ -165,14 +165,22 @@ public class PlayerListener {
                             manaPart = splitMessage[1];
                         }
 
-                        tickers = 0;
+                        tickers = -1;
 
                         String tickerPart = null;
                         if (manaPart.contains("Ⓞ")) { // Scorpion Foil Tickers
+                            tickers = 0;
                             String[] parts = manaPart.split(" {4}");
                             manaPart = parts[0];
                             tickerPart = parts[1];
-                            tickers = org.apache.commons.lang3.StringUtils.countMatches(tickerPart, "Ⓞ");
+                            System.out.println(tickerPart);
+                            for (char character : tickerPart.toCharArray()) {
+                                if (character == '7') { // If it reaches a grey color code, it means those tickers are used, so stop.
+                                    break;
+                                } else if (character == 'Ⓞ') { // Add the tickers that aren't grey.
+                                    tickers++;
+                                }
+                            }
                         }
                         if (healthPart.contains("+")) {
                             healthPart = healthPart.substring(0, healthPart.indexOf('+'));
@@ -451,7 +459,10 @@ public class PlayerListener {
                     new AxisAlignedBB(e.target.posX - 1, e.target.posY, e.target.posZ - 1, e.target.posX + 1, e.target.posY + 5, e.target.posZ + 1));
             if (stands.isEmpty()) return;
 
-            if (stands.get(0).getCustomNameTag().contains("Zealot")) countedEndermen.add(e.target);
+            EntityArmorStand armorStand = stands.get(0);
+            if (armorStand.hasCustomName() && armorStand.getCustomNameTag().contains("Zealot")) {
+                countedEndermen.add(e.target);
+            }
     	}
     }
     

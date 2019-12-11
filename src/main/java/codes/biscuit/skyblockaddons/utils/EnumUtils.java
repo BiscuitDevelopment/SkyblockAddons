@@ -503,10 +503,10 @@ public class EnumUtils {
         public static Rarity getRarity(ItemStack item) {
             if (item == null) return null;
             List<String> lore = item.getTooltip(Minecraft.getMinecraft().thePlayer, false);
-            String lastLoreLine = lore.get(lore.size()-1);
-            System.out.println(lastLoreLine);
-            for(Rarity rarity: Rarity.values()) {
-                if(lastLoreLine.startsWith(rarity.tag)) return rarity;
+            for (String loreLine : lore) {
+                for (Rarity rarity : Rarity.values()) {
+                    if (loreLine.startsWith(rarity.tag)) return rarity;
+                }
             }
             return null;
         }

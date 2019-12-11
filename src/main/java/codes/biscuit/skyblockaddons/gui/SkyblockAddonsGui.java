@@ -119,48 +119,7 @@ public class SkyblockAddonsGui extends GuiScreen {
                 skip--;
             }
         }
-
-        addTabs();
         Keyboard.enableRepeatEvents(true);
-    }
-
-    @Deprecated
-    @SuppressWarnings("IntegerDivisionInFloatingPointContext")
-    private void addTabs() {
-        if (true) return;
-        int collumn = 1;
-        for (EnumUtils.GuiTab loopTab : EnumUtils.GuiTab.values()) {
-            if (tab != loopTab) {
-                String text = "";
-                switch (loopTab) {
-                    case FEATURES:
-                        text = Message.TAB_FEATURES.getMessage();
-                        break;
-                    case FIXES:
-                        text = Message.TAB_FIXES.getMessage();
-                        break;
-                    case GUI_FEATURES:
-                        text = Message.TAB_GUI_FEATURES.getMessage();
-                        break;
-                    case GENERAL_SETTINGS:
-                        text = Message.TAB_GENERAL_SETTINGS.getMessage();
-                        break;
-                }
-                int stringWidth = fontRendererObj.getStringWidth(text);
-                int tabX = 0;
-                int halfWidth = width/2;
-                if (collumn == 1) {
-                    tabX = (int)Math.round(halfWidth-140-(stringWidth/2)*1.4);
-                } else if (collumn == 2) {
-                    tabX = (int)Math.round(halfWidth-(stringWidth/2)*1.4);
-                } else if (collumn == 3) {
-                    tabX = (int)Math.round(halfWidth+140-(stringWidth/2)*1.4);
-                }
-                buttonList.add(new ButtonSwitchTab(tabX, 70, (int)(stringWidth*1.4),
-                        14, text, main, loopTab, tab));
-                collumn++;
-            }
-        }
     }
 
     private boolean matchesSearch(String text) {

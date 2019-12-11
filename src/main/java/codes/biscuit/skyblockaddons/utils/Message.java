@@ -139,9 +139,9 @@ public enum Message {
     TEXT_STYLE_ONE(MessageObject.TEXT_STYLE, "one"),
     TEXT_STYLE_TWO(MessageObject.TEXT_STYLE, "two"),
 
-    TAB_FEATURES(MessageObject.TAB, "features"),
-    TAB_FIXES(MessageObject.TAB, "fixes"),
-    TAB_GUI_FEATURES(MessageObject.TAB, "guiFeatures"),
+    @Deprecated TAB_FEATURES(MessageObject.TAB, "features"), // Tabs are no longer in use.
+    @Deprecated TAB_FIXES(MessageObject.TAB, "fixes"),
+    @Deprecated TAB_GUI_FEATURES(MessageObject.TAB, "guiFeatures"),
     TAB_GENERAL_SETTINGS(MessageObject.TAB, "generalSettings"),
 
     INVENTORY_TYPE_ENCHANTS(MessageObject.INVENTORY_TYPE, "enchants"),
