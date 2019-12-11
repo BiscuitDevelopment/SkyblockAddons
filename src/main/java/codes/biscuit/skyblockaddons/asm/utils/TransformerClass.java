@@ -46,6 +46,8 @@ public enum TransformerClass {
     ICamera("net/minecraft/client/renderer/culling/ICamera", "bia"),
     TileEntity("net/minecraft/tileentity/TileEntity", "akw"),
     GuiDisconnected("net/minecraft/client/gui/GuiDisconnected", "axh"),
+    GuiButton("net/minecraft/client/gui/GuiButton", "avs"),
+    GuiIngameMenu("net/minecraft/client/gui/GuiIngameMenu", "axp"),
 
     NULL(null,null);
 
