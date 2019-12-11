@@ -44,7 +44,7 @@ public class SkyblockAddonsTransformer implements IClassTransformer {
 
     private static boolean USING_NOTCH_MAPPINGS = !DEOBFUSCATED;
 
-    private final static boolean OUTPUT_BYTECODE = true;
+    private final static boolean OUTPUT_BYTECODE = false;
     private Logger logger = LogManager.getLogger("SkyblockAddons Transformer");
     private final Multimap<String, ITransformer> transformerMap = ArrayListMultimap.create();
 
