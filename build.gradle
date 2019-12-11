@@ -33,11 +33,15 @@ minecraft {
 
 repositories {
     jcenter()
+
+    maven {
+        url 'https://jitpack.io'
+    }
 }
 
 dependencies {
     // Discord RPC for Java https://github.com/jagrosh/DiscordIPC
-    provided('com.jagrosh:DiscordIPC:0.4') {
+    provided('com.github.jagrosh:DiscordIPC:e29d6d8') {
         exclude module: 'log4j'
     }
 }

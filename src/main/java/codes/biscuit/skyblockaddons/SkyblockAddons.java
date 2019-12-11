@@ -56,6 +56,7 @@ public class SkyblockAddons {
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent e) {
+        discordRPCManager = new DiscordRPCManager();
         MinecraftForge.EVENT_BUS.register(playerListener);
         MinecraftForge.EVENT_BUS.register(renderListener);
         MinecraftForge.EVENT_BUS.register(scheduler);
@@ -94,11 +95,6 @@ public class SkyblockAddons {
             if (feature.isColorFeature()) {
                 feature.getSettings().add(EnumUtils.FeatureSetting.COLOR);
             }
-        }
-
-        discordRPCManager = new DiscordRPCManager();
-        if (getConfigValues().isEnabled(Feature.DISCORD_RPC)) {
-            discordRPCManager.start();
         }
     }
 

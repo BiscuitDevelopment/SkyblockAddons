@@ -342,7 +342,13 @@ public class SettingsGui extends GuiScreen {
         } else if(setting == EnumUtils.FeatureSetting.DISCORD_RP_DETAILS || setting == EnumUtils.FeatureSetting.DISCORD_RP_STATE) {
             boxWidth = 140;
             x = halfWidth-(boxWidth/2);
-            buttonList.add(new ButtonSelect(x, (int)y, boxWidth, 20, Arrays.asList(DiscordStatus.values())));
+            buttonList.add(new ButtonSelect(x, (int)y, boxWidth, 20, Arrays.asList(DiscordStatus.values()), 0, index -> {
+                if(setting == EnumUtils.FeatureSetting.DISCORD_RP_STATE) {
+                    main.getDiscordRPCManager().setStateLine(DiscordStatus.values()[index]);
+                } else {
+                    main.getDiscordRPCManager().setDetailsLine(DiscordStatus.values()[index]);
+                }
+            }));
         }
         row++;
     }

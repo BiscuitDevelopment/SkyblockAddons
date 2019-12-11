@@ -149,7 +149,30 @@ public enum Message {
     INVENTORY_TYPE_CRAFTING(MessageObject.INVENTORY_TYPE, "crafting"),
 
     POWER_ORB_DISPLAY_STYLE_DETAILED(MessageObject.POWER_ORB_STYLE, "detailed"),
-    POWER_ORB_DISPLAY_STYLE_COMPACT(MessageObject.POWER_ORB_STYLE, "compact");
+    POWER_ORB_DISPLAY_STYLE_COMPACT(MessageObject.POWER_ORB_STYLE, "compact"),
+
+    DISCORD_STATUS_NONE_TITLE(MessageObject.DISCORD_STATUS, "titleNone"),
+    DISCORD_STATUS_NONE_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionNone"),
+    DISCORD_STATUS_LOCATION_TITLE(MessageObject.DISCORD_STATUS, "titleLocation"),
+    DISCORD_STATUS_LOCATION_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionLocation"),
+    DISCORD_STATUS_PURSE_TITLE(MessageObject.DISCORD_STATUS, "titlePurse"),
+    DISCORD_STATUS_PURSE_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionPurse"),
+    DISCORD_STATUS_STATS_TITLE(MessageObject.DISCORD_STATUS, "titleStats"),
+    DISCORD_STATUS_STATS_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionStats"),
+    DISCORD_STATUS_ZEALOTS_TITLE(MessageObject.DISCORD_STATUS, "titleZealots"),
+    DISCORD_STATUS_ZEALOTS_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionZealots"),
+    DISCORD_STATUS_ITEM_TITLE(MessageObject.DISCORD_STATUS, "titleItem"),
+    DISCORD_STATUS_ITEM_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionItem"),
+    DISCORD_STATUS_TIME_TITLE(MessageObject.DISCORD_STATUS, "titleTime"),
+    DISCORD_STATUS_TIME_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionTime"),
+    DISCORD_STATUS_PROFILE_TITLE(MessageObject.DISCORD_STATUS, "titleProfile"),
+    DISCORD_STATUS_PROFILE_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionProfile"),
+    DISCORD_STATUS_IN_GAME_TITLE(MessageObject.DISCORD_STATUS, "titleInGame"),
+    DISCORD_STATUS_IN_GAME_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionInGame"),
+    DISCORD_STATUS_MINING_TITLE(MessageObject.DISCORD_STATUS, "titleMining"),
+    DISCORD_STATUS_MINING_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionMining"),
+    DISCORD_STATUS_GRINDING_TITLE(MessageObject.DISCORD_STATUS, "titleGrinding"),
+    DISCORD_STATUS_GRINDING_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionGrinding");
 
     private MessageObject messageObject;
     private String memberName;
@@ -214,7 +237,7 @@ public enum Message {
 //                }
             }
             if (text != null && (main.getConfigValues().getLanguage() == Language.HEBREW || main.getConfigValues().getLanguage() == Language.ARABIC)) {
-                text = main.getUtils().reverseText(text);
+                text = TextUtils.reverseText(text);
             }
         } catch (NullPointerException ex) { // In case I messed up some translation or something.
             ex.printStackTrace();
@@ -233,7 +256,8 @@ public enum Message {
         TEXT_STYLE("settings.textStyles"),
         TAB("settings.tab"),
         UPDATE_MESSAGES("messages.update"),
-        ANCHOR_POINT("settings.anchorPoints");
+        ANCHOR_POINT("settings.anchorPoints"),
+        DISCORD_STATUS("discord.status");
 
         private List<String> path;
 

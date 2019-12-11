@@ -19,7 +19,10 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ContainerChest;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.*;
+import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.Vec3;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.client.event.GuiOpenEvent;
 import net.minecraftforge.event.entity.EntityEvent;
@@ -41,8 +44,8 @@ import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.StringSelection;
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.io.IOException;
-import java.util.List;
 import java.util.*;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -130,7 +133,7 @@ public class PlayerListener {
                     if (message.startsWith("§d§lTHE END RACE")) { // Might be doing the end race!
                         // Example Action Bar: '§d§lTHE END RACE §e00:52.370            §b147/147✎ Mana§r'
                         String[] messageSplit = message.split(" {12}");
-                        String[] manaSplit = main.getUtils().getNumbersOnly(messageSplit[1]).split(Pattern.quote("/"));
+                        String[] manaSplit = TextUtils.getNumbersOnly(messageSplit[1]).split(Pattern.quote("/"));
                         setAttribute(Attribute.MANA, Integer.parseInt(manaSplit[0]));
                         setAttribute(Attribute.MAX_MANA, Integer.parseInt(manaSplit[1].trim()));
 
@@ -174,7 +177,7 @@ public class PlayerListener {
                         if (healthPart.contains("+")) {
                             healthPart = healthPart.substring(0, healthPart.indexOf('+'));
                         }
-                        String[] healthSplit = main.getUtils().getNumbersOnly(main.getUtils().stripColor(healthPart)).split(Pattern.quote("/"));
+                        String[] healthSplit = TextUtils.getNumbersOnly(TextUtils.stripColor(healthPart)).split(Pattern.quote("/"));
                         int newHealth = Integer.parseInt(healthSplit[0]);
                         main.getScheduler().schedule(Scheduler.CommandType.SET_LAST_SECOND_HEALTH, 1, newHealth);
                         if (lastSecondHealth != -1 && lastSecondHealth != newHealth) {
@@ -184,11 +187,11 @@ public class PlayerListener {
                         setAttribute(Attribute.HEALTH, newHealth);
                         setAttribute(Attribute.MAX_HEALTH, Integer.parseInt(healthSplit[1]));
                         if (defencePart != null) {
-                            setAttribute(Attribute.DEFENCE, Integer.parseInt(main.getUtils().getNumbersOnly(defencePart).trim()));
+                            setAttribute(Attribute.DEFENCE, Integer.parseInt(TextUtils.getNumbersOnly(defencePart).trim()));
                         } else if (collectionPart == null) { // if neither defence nor collection are showed, this indicates they just have no defence.
                             setAttribute(Attribute.DEFENCE, 0);
                         }
-                        String[] manaSplit = main.getUtils().getNumbersOnly(manaPart).split(Pattern.quote("/"));
+                        String[] manaSplit = TextUtils.getNumbersOnly(manaPart).split(Pattern.quote("/"));
                         setAttribute(Attribute.MANA, Integer.parseInt(manaSplit[0]));
                         setAttribute(Attribute.MAX_MANA, Integer.parseInt(manaSplit[1].trim()));
                         main.getRenderListener().setPredictMana(false);
@@ -651,7 +654,7 @@ public class PlayerListener {
 
                 for (int i = 0; i < e.toolTip.size(); i++) {
                     if (ENCHANTMENT_TOOLTIP_PATTERN.matcher(e.toolTip.get(i)).matches()) {
-                        String line = main.getUtils().stripColor(e.toolTip.get(i));
+                        String line = TextUtils.stripColor(e.toolTip.get(i));
                         int comma = line.indexOf(',');
                         if (comma < 0 || line.length() <= comma + 2) {
                             enchantments.add(line);

@@ -4,52 +4,85 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.utils.ConfigColor;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
 
 import java.util.List;
 
 /**
  * Button that lets the user select one item in a given set of items.
- *
- * TODO: callback on item selection, provide selected index
  */
 public class ButtonSelect extends GuiButton {
 
     private static ResourceLocation ARROW_LEFT = new ResourceLocation("skyblockaddons", "flat_arrow_left.png");
     private static ResourceLocation ARROW_RIGHT = new ResourceLocation("skyblockaddons", "flat_arrow_right.png");
 
+    /**
+     * Item that can be used in this Select button
+     */
     public interface SelectItem {
+
+        /**
+         * @return A name displayed inside the button
+         */
         String getName();
+
+        /**
+         * @return A description displayed below the button
+         */
         String getDescription();
     }
 
-    private List<SelectItem> itemList;
-    private final int textWidth;
+    @FunctionalInterface
+    public interface OnItemSelectedCallback {
+        /**
+         * Called whenever the selected item changes by clicking the next or previous button.
+         *
+         * @param index The new selected index
+         */
+        void onItemSelected(int index);
+    }
+
+    private final List<SelectItem> itemList;
     private int index = 0;
 
-    /**
-     * Note: effective width is about {@code width - 2 * height} as the arrow buttons are squares with
-     * a side length of {@code height}.
-     * Text will be trimmed and marked with ellipses {@code …} if it is too long to fit in the text area.
-     *
-     * @param x x position
-     * @param y y position
-     * @param width total width
-     * @param height height
-     * @param items List of items to choose from
-     */
+    private final int textWidth;
+    private OnItemSelectedCallback callback;
+
     /*
      * Rough sketch of the button
      *  __ __________ __
      * |< |          |> |
      *  -- ---------- --
      */
-    public ButtonSelect(int x, int y, int width, int height, List<SelectItem> items) {
+    /**
+     * Create a new Select button at (x, y) with a given width and height and set of items to select from.
+     * Initially selects the given {@code selectedIndex} or {@code 0} if that is out of bounds of the given list.
+     * Optionally accept a callback that is called whenever a new item is selected.
+     * Note: Effective width for text is about {@code width - 2 * height} as the arrow buttons are squares with
+     * a side length of {@code height}.
+     * Text will be trimmed and marked with ellipses {@code …} if it is too long to fit in the text area.
+     *
+     * @param x             x position
+     * @param y             y position
+     * @param width         total width
+     * @param height        height
+     * @param items         non-null and non-empty List of items to choose from
+     * @param selectedIndex initially selected index in the given list of items
+     * @param callback      Nullable callback when a new item is selected
+     */
+    public ButtonSelect(int x, int y, int width, int height, List<SelectItem> items, int selectedIndex, OnItemSelectedCallback callback) {
         super(0, x, y, "");
+        if(items == null || items.isEmpty()) {
+            throw new IllegalArgumentException("Item list must have at least one element.");
+        }
+
         textWidth = width - (2 * height) - 6; // 2 * 3 text padding on both sides
         this.width = width;
         this.height = height;
         itemList = items;
+        this.index = selectedIndex > 0 && selectedIndex < itemList.size() ? selectedIndex : 0;
+        this.callback = callback;
     }
 
     @Override
@@ -61,34 +94,53 @@ public class ButtonSelect extends GuiButton {
         int rightColor = SkyblockAddons.getInstance().getUtils().getDefaultColor(isOverRightButton(mouseX, mouseY) ? 200 : 90);
 
         String name = itemList.get(index).getName();
-        String text = minecraft.fontRendererObj.trimStringToWidth(name, textWidth);
-        if(!name.equals(text)) {
-            text = ellipsize(text);
+        String trimmedName = minecraft.fontRendererObj.trimStringToWidth(name, textWidth);
+        if (!name.equals(trimmedName)) {
+            trimmedName = ellipsize(trimmedName);
         }
+        String description = itemList.get(index).getDescription();
         // background / text area
-        drawRect(xPosition, yPosition, endX, yPosition+height, color);
+        drawRect(xPosition, yPosition, endX, yPosition + height, color);
         // left button
-        drawRect(xPosition, yPosition, xPosition+height, yPosition+height, leftColor);
+        drawRect(xPosition, yPosition, xPosition + height, yPosition + height, leftColor);
         //right button
-        drawRect(endX - height, yPosition, endX, yPosition+height, rightColor);
-        drawCenteredString(minecraft.fontRendererObj, text, xPosition + width/2, yPosition+height/4, ConfigColor.WHITE.getColor(255));
+        drawRect(endX - height, yPosition, endX, yPosition + height, rightColor);
 
+        // inside text
+        drawCenteredString(minecraft.fontRendererObj, trimmedName, xPosition + width / 2, yPosition + height / 4, ConfigColor.WHITE.getColor(255));
+        // description
+        drawCenteredString(minecraft.fontRendererObj, description, xPosition + width / 2, yPosition + height + 2, ConfigColor.GRAY.getColor(255));
+
+        GlStateManager.color(1, 1, 1, 1);
         minecraft.getTextureManager().bindTexture(ARROW_LEFT);
-        drawModalRectWithCustomSizedTexture(xPosition, yPosition,0,0,height,height,height,height);
+        drawModalRectWithCustomSizedTexture(xPosition, yPosition, 0, 0, height, height, height, height);
 
         minecraft.getTextureManager().bindTexture(ARROW_RIGHT);
-        drawModalRectWithCustomSizedTexture(endX - height, yPosition,0,0,height,height,height,height);
+        drawModalRectWithCustomSizedTexture(endX - height, yPosition, 0, 0, height, height, height, height);
     }
 
     @Override
     public boolean mousePressed(Minecraft minecraft, int mouseX, int mouseY) {
-        if(isOverLeftButton(mouseX, mouseY)) {
+        if (isOverLeftButton(mouseX, mouseY)) {
             index = index == itemList.size() - 1 ? 0 : index + 1;
+            notifyCallback(index);
         }
-        if(isOverRightButton(mouseX, mouseY)) {
+        if (isOverRightButton(mouseX, mouseY)) {
             index = index == 0 ? itemList.size() - 1 : index - 1;
+            notifyCallback(index);
         }
         return true;
+    }
+
+    /**
+     * Notifies the callback - if it's not null - that the given index was selected.
+     *
+     * @param index Selected index
+     */
+    private void notifyCallback(int index) {
+        if(callback != null) {
+            callback.onItemSelected(index);
+        }
     }
 
     /**

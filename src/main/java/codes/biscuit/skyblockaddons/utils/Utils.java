@@ -38,8 +38,8 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.*;
-import java.util.List;
 import java.util.*;
+import java.util.List;
 import java.util.jar.JarFile;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -54,7 +54,6 @@ public class Utils {
 
     private boolean usingOldSkyBlockTexture = false;
 
-    private final Pattern STRIP_COLOR_PATTERN = Pattern.compile("(?i)§[0-9A-FK-OR]");
     private final Pattern ITEM_ABILITY_PATTERN = Pattern.compile("§5§o§6Item Ability: ([A-Za-z ]+) §e§l[A-Z ]+");
 
     private static final List<String> ORDERED_ENCHANTMENTS = Collections.unmodifiableList(Arrays.asList(
@@ -120,11 +119,12 @@ public class Utils {
     public void checkGameLocationDate() {
         boolean foundLocation = false;
         Minecraft mc = Minecraft.getMinecraft();
+        boolean previouslyOnSkyblock = onSkyblock;
         if (mc != null && mc.theWorld != null) {
             Scoreboard scoreboard = mc.theWorld.getScoreboard();
             ScoreObjective sidebarObjective = mc.theWorld.getScoreboard().getObjectiveInDisplaySlot(1);
             if (sidebarObjective != null) {
-                String objectiveName = stripColor(sidebarObjective.getDisplayName());
+                String objectiveName = TextUtils.stripColor(sidebarObjective.getDisplayName());
                 onSkyblock = false;
                 for (String skyblock : SKYBLOCK_IN_ALL_LANGUAGES) {
                     if (objectiveName.startsWith(skyblock)) {
@@ -132,6 +132,7 @@ public class Utils {
                         break;
                     }
                 }
+
                 Collection<Score> collection = scoreboard.getSortedScores(sidebarObjective);
                 List<Score> list = Lists.newArrayList(collection.stream().filter(p_apply_1_ -> p_apply_1_.getPlayerName() != null && !p_apply_1_.getPlayerName().startsWith("#")).collect(Collectors.toList()));
                 if (list.size() > 15) {
@@ -142,8 +143,8 @@ public class Utils {
                 String timeString = null;
                 for (Score score1 : collection) {
                     ScorePlayerTeam scorePlayerTeam = scoreboard.getPlayersTeam(score1.getPlayerName());
-                    String strippedLine = stripColor(ScorePlayerTeam.formatPlayerName(scorePlayerTeam, score1.getPlayerName()));
-                    String locationString = keepLettersAndNumbersOnly(strippedLine);
+                    String strippedLine = TextUtils.stripColor(ScorePlayerTeam.formatPlayerName(scorePlayerTeam, score1.getPlayerName()));
+                    String locationString = TextUtils.keepLettersAndNumbersOnly(strippedLine);
                     if (locationString.endsWith("am") || locationString.endsWith("pm")) {
                         timeString = locationString.trim();
                         timeString = timeString.substring(0, timeString.length()-2);
@@ -153,7 +154,7 @@ public class Utils {
                             try {
                                 currentDate.setMonth(month);
                                 String numberPart = locationString.substring(locationString.lastIndexOf(" ") + 1);
-                                int day = Integer.valueOf(getNumbersOnly(numberPart));
+                                int day = Integer.valueOf(TextUtils.getNumbersOnly(numberPart));
                                 currentDate.setDay(day);
                                 if (timeString != null) {
                                     String[] timeSplit = timeString.split(Pattern.quote(":"));
@@ -167,10 +168,10 @@ public class Utils {
                         }
                     }
 
-                    if(strippedLine.startsWith("Purse") || strippedLine.startsWith("Piggy")) {
+                    if (strippedLine.startsWith("Purse") || strippedLine.startsWith("Piggy")) {
                         try {
-                            purse = Double.parseDouble(strippedLine.split(" ")[1]);
-                        } catch(ArrayIndexOutOfBoundsException | NumberFormatException ignored) {
+                            purse = Double.parseDouble(TextUtils.keepFloatCharactersOnly(strippedLine));
+                        } catch(NumberFormatException ignored) {
                             purse = 0;
                         }
                     }
@@ -201,28 +202,23 @@ public class Utils {
         } else {
             onSkyblock = false;
         }
+
+        if(!previouslyOnSkyblock && onSkyblock) {
+            // Joined Skyblock
+            if(main.getConfigValues().isEnabled(Feature.DISCORD_RPC)
+                    && !main.getDiscordRPCManager().isActive()) {
+                main.getDiscordRPCManager().start();
+            }
+        } else if(previouslyOnSkyblock && !onSkyblock) {
+            // Left Skyblock
+            if(main.getDiscordRPCManager().isActive()) {
+                main.getDiscordRPCManager().stop();
+            }
+        }
+
         if (!foundLocation) {
             location = EnumUtils.Location.UNKNOWN;
         }
-    }
-
-    private static final Pattern NUMBERS_SLASHES = Pattern.compile("[^0-9 /]");
-    private static final Pattern LETTERS_NUMBERS = Pattern.compile("[^a-z A-Z:0-9/']");
-
-    private String keepLettersAndNumbersOnly(String text) {
-        return LETTERS_NUMBERS.matcher(text).replaceAll("");
-    }
-
-//    private String keepLettersOnly(String text) {
-//        return LETTERS.matcher(text).replaceAll("");
-//    }
-
-    public String getNumbersOnly(String text) {
-        return NUMBERS_SLASHES.matcher(text).replaceAll("");
-    }
-
-    private String removeDuplicateSpaces(String text) {
-        return text.replaceAll("\\s+", " ");
     }
 
     public void checkUpdates() {
@@ -549,30 +545,6 @@ public class Utils {
         return null;
     }
 
-    // This reverses the text while leaving the english parts intact and in order.
-    // (Maybe its more complicated than it has to be, but it gets the job done.
-    String reverseText(String originalText) {
-        StringBuilder newString = new StringBuilder();
-        String[] parts = originalText.split(" ");
-        for (int i = parts.length; i > 0; i--) {
-            String textPart = parts[i-1];
-            boolean foundCharacter = false;
-            for (char letter : textPart.toCharArray()) {
-                if (letter > 191) { // Found special character
-                    foundCharacter = true;
-                    newString.append(new StringBuilder(textPart).reverse().toString());
-                    break;
-                }
-            }
-            newString.append(" ");
-            if (!foundCharacter) {
-                newString.insert(0, textPart);
-            }
-            newString.insert(0, " ");
-        }
-        return main.getUtils().removeDuplicateSpaces(newString.toString().trim());
-    }
-
     public boolean cantDropItem(ItemStack item, EnumUtils.Rarity rarity, boolean hotbar) {
         if (Items.bow.equals(item.getItem()) && rarity == EnumUtils.Rarity.COMMON) return false; // exclude rare bows lol
         if (item.hasDisplayName() && item.getDisplayName().contains("Backpack")) return true; // dont drop backpacks ever
@@ -699,7 +671,7 @@ public class Utils {
 
     public void drawString(Minecraft mc, String text, int x, int y, int color) {
         if (main.getConfigValues().getTextStyle() == EnumUtils.TextStyle.BLACK_SHADOW) {
-            String strippedText = main.getUtils().stripColor(text);
+            String strippedText = TextUtils.stripColor(text);
             mc.fontRendererObj.drawString(strippedText, x + 1, y, 0);
             mc.fontRendererObj.drawString(strippedText, x - 1, y, 0);
             mc.fontRendererObj.drawString(strippedText, x, y + 1, 0);
@@ -756,24 +728,12 @@ public class Utils {
         }
     }
 
-    public static String niceDouble(double value, int decimals) {
-        if(value == (long) value) {
-            return String.format("%d", (long)value);
-        } else {
-            return String.format("%."+decimals+"f", value);
-        }
-    }
-
     public boolean isDevEnviroment() {
         return (boolean) Launch.blackboard.get("fml.deobfuscatedEnvironment");
     }
 
     public int getDefaultBlue(int alpha) {
         return new Color(160, 225, 229, alpha).getRGB();
-    }
-
-    public String stripColor(final String input) {
-        return STRIP_COLOR_PATTERN.matcher(input).replaceAll("");
     }
 
     /**
@@ -884,4 +844,5 @@ public class Utils {
     public void setUsingOldSkyBlockTexture(boolean usingOldSkyBlockTexture) {
         this.usingOldSkyBlockTexture = usingOldSkyBlockTexture;
     }
+
 }

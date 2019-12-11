@@ -138,5 +138,31 @@
     "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)",
     "searchFeatures": "Search features",
     "downloadingUpdateFile": "Downloading update file..."
+  },
+  "discord": {
+    "status": {
+      "titleNone": "None",
+      "descriptionNone": "No text is displayed",
+      "titleLocation": "Location",
+      "descriptionLocation": "Shows your current location",
+      "titlePurse": "Purse",
+      "descriptionPurse": "Shows the amount of coins in your purse",
+      "titleStats": "Stats",
+      "descriptionStats": "Shows your HP, Defense and Mana stats",
+      "titleZealots": "Zealots",
+      "descriptionZealots": "Shows your Zealot counter",
+      "titleItem": "Held Item",
+      "descriptionItem": "Shows the name of the item you're holding",
+      "titleProfile": "Profile",
+      "descriptionProfile": "Shows your Profile name",
+      "titleTime": "Skyblock Time",
+      "descriptionTime": "Shows the Skyblock time like 12:00am 1st Early Winter",
+      "titleInGame": "In Game",
+      "descriptionInGame": "Generic status: In Game",
+      "titleMining": "Mining",
+      "descriptionMining": "Generic status: Mining",
+      "titleGrinding": "Grinding",
+      "descriptionGrinding": "Generic status: Grinding"
+    }
   }
 }

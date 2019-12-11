@@ -1,5 +1,7 @@
 package codes.biscuit.skyblockaddons.utils.discord;
 
+import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import com.jagrosh.discordipc.IPCClient;
 import com.jagrosh.discordipc.IPCListener;
 import com.jagrosh.discordipc.entities.RichPresence;
@@ -16,8 +18,8 @@ public class DiscordRPCManager implements IPCListener {
     private static final long UPDATE_PERIOD = 3000L;
 
     private IPCClient client;
-    private DiscordStatus detailsLine = DiscordStatus.LOCATION;
-    private DiscordStatus stateLine = DiscordStatus.ZEALOTS;
+    private DiscordStatus detailsLine = DiscordStatus.NONE;
+    private DiscordStatus stateLine = DiscordStatus.NONE;
     private OffsetDateTime startTimestamp;
 
     private Timer updateTimer;
@@ -47,22 +49,25 @@ public class DiscordRPCManager implements IPCListener {
     }
 
     public void updatePresence() {
+        EnumUtils.Location location = SkyblockAddons.getInstance().getUtils().getLocation();
         RichPresence presence = new RichPresence.Builder()
-                .setState(stateLine.getDisplayMessage())
-                .setDetails(detailsLine.getDisplayMessage())
+                .setState(stateLine.getDisplayString())
+                .setDetails(detailsLine.getDisplayString())
                 .setStartTimestamp(startTimestamp)
+                .setLargeImage(location.getDiscordIconKey(), "Early Winter 10th, 12:00am")
+                .setSmallImage("biscuit", "SkyblockAddons v1.5")
                 .build();
         client.sendRichPresence(presence);
     }
 
-    public void setFirstLine(DiscordStatus status) {
+    public void setStateLine(DiscordStatus status) {
         this.stateLine = status;
         if(isActive()) {
             updatePresence();
         }
     }
 
-    public void setSecondLine(DiscordStatus status) {
+    public void setDetailsLine(DiscordStatus status) {
         this.detailsLine = status;
         if(isActive()) {
             updatePresence();
