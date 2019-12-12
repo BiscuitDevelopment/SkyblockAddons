@@ -78,8 +78,8 @@
     "specialZealotAlert": "Speciální Zealot Upozornění",
     "enableMessageWhenActionPrevented": "Ukázat zprávu, když je akce zablokovaná",
     "hidePetHealthBar": "Skrýt ukazatel zdraví mazlíčka",
-    "powerOrbDisplay": "Power Orb Display",
-    "powerOrbDisplayStyle": "Power Orb Style: %style%",
+    "powerOrbDisplay": "Zobrazení Power orbu",
+    "powerOrbDisplayStyle": "Styl Power orbů: %style%",
     "powerOrbStyle": {
       "detailed": "Detailní",
       "compact": "Kompaktní"
