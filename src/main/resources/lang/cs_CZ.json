@@ -81,11 +81,11 @@
     "powerOrbDisplay": "Power Orb Display",
     "powerOrbDisplayStyle": "Power Orb Style: %style%",
     "powerOrbStyle": {
-      "detailed": "Detailed",
-      "compact": "Compact"
+      "detailed": "Detailní",
+      "compact": "Kompaktní"
     },
     "disableMagicalSoupMessage": "Vypnout zprávu magické houbové polévky",
-    "zealotCounter": "Show Zealot Counter",
+    "zealotCounter": "Ukázat počet Zealotů",
     "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display",
     "tab": {
       "generalSettings": "Obecná nastavení"
