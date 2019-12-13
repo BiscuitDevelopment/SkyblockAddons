@@ -1,4 +1,19 @@
-# Skyblock Addons
+<h1 align="center">Skyblock Addons</h1>
+
+<p align="center">
+  <a href="https://github.com/BiscuitDevelopment/SkyblockAddons/releases">
+    <img alt="downloads" src="https://img.shields.io/github/downloads/BiscuitDevelopment/SkyblockAddons/total?color=aqua" target="_blank" />
+  </a>
+  <a href="https://github.com/BiscuitDevelopment/SkyblockAddons/blob/master/LICENSE">
+    <img alt="license" src="https://img.shields.io/github/license/BiscuitDevelopment/SkyblockAddons?color=aqua" target="_blank" />
+  </a>
+    <a href="https://discord.gg/PqTAEek">
+      <img alt="discord" src="https://img.shields.io/discord/450878205294018560?color=aqua" target="_blank" />
+    </a>
+  <a href="https://twitter.com/bisccut">
+    <img alt="twitter" src="https://img.shields.io/twitter/follow/bisccut?style=social" target="_blank" />
+  </a>
+</p>
 
 A Minecraft Forge mod with many features to make your Hypixel skyblock experience better. Always looking for more features to add!
 
