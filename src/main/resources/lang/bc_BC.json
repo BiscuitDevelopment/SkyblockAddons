@@ -82,11 +82,11 @@
     "powerOrbDisplayStyle": "Biscuit Ball Flavor: %style%",
     "powerOrbStyle": {
       "detailed": "Fluffy",
-      "compact": "Compact"
+      "compact": "Crunchy"
     },
     "disableMagicalSoupMessage": "Disable Biscuit Soup Messages",
     "zealotCounter": "Show Biscuit Counter",
-    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display",
+    "scorpionFoilTickerDisplay": "Biscuit Foil Ticker Display",
     "tab": {
       "generalSettings": "General biscuits"
     }
@@ -127,7 +127,7 @@
     "cancelledProfileOpening": "BiscuitAddons has stopped you from eating this player's biscuit while holding a Bow.",
     "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare biscuit or biscuit2l from your hotbar.",
     "clickMoreTimes": "Click/drop this biscuit %times% more times if you really want to do this poor biscuit lol.",
-    "cancelledDeepCaverns": "A SkyblockAddons feature has stopped you from mining this block here.",
+    "cancelledDeepCaverns": "BiscuitAddons has stopped you from eating your biscuits here.",
     "featureDisabled": "Biscture Disabled",
     "anvilUses": "Biscoots Uses: %uses%",
     "specialZealotFound": "Tasty Biscuit!",
