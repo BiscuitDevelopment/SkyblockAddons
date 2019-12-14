@@ -72,20 +72,20 @@
     "showItemCooldowns": "Show Biscuits Cooldowns",
     "speedPercentage": "Bisceet Percentage",
     "collectionDisplay": "Biskill Progress Biscplay",
-    "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns",
-    "onlyMineValuablesNether": "Only Mine Valuables in the Nether",
-    "revenantIndicator": "Slayer Armor Progress Indicator",
-    "specialZealotAlert": "Special Zealot Alert",
-    "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented",
-    "hidePetHealthBar": "Hide Pet Health Bar",
-    "powerOrbDisplay": "Power Orb Display",
-    "powerOrbDisplayStyle": "Power Orb Style: %style%",
+    "onlyMineOresDeepCaverns": "Only eat biscuits in the basement",
+    "onlyMineValuablesNether": "Only Eat Biscuits in summer",
+    "revenantIndicator": "Biscuit clothes progress indicator",
+    "specialZealotAlert": "Tasty Biscuit Alert",
+    "enableMessageWhenActionPrevented": "Show a Message When Biscuits are stale",
+    "hidePetHealthBar": "Hide Biscuit Freshness Bar",
+    "powerOrbDisplay": "Biscuit Ball Display",
+    "powerOrbDisplayStyle": "Biscuit Ball Flavor: %style%",
     "powerOrbStyle": {
-      "detailed": "Detailed",
+      "detailed": "Fluffy",
       "compact": "Compact"
     },
-    "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages",
-    "zealotCounter": "Show Zealot Counter",
+    "disableMagicalSoupMessage": "Disable Biscuit Soup Messages",
+    "zealotCounter": "Show Biscuit Counter",
     "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display",
     "tab": {
       "generalSettings": "General biscuits"
@@ -130,9 +130,9 @@
     "cancelledDeepCaverns": "A SkyblockAddons feature has stopped you from mining this block here.",
     "featureDisabled": "Biscture Disabled",
     "anvilUses": "Biscoots Uses: %uses%",
-    "specialZealotFound": "Special Zealot!",
-    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)",
-    "searchFeatures": "Search features",
-    "downloadingUpdateFile": "Downloading update file..."
+    "specialZealotFound": "Tasty Biscuit!",
+    "blockIncompletePatterns": "Block eating uncooked biscuits (recommended)",
+    "searchFeatures": "Buy dem biscuits",
+    "downloadingUpdateFile": "Eating freshest biscuits..."
   }
 }
