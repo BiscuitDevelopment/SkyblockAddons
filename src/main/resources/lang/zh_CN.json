@@ -2,7 +2,7 @@
   "language": "简体中文",
   "settings": {
     "settings": "设定",
-    "magmaBossWarning": "岩浆怪 Boss 警告",
+    "magmaBossWarning": "岩浆怪 Boss 生成警告",
     "itemDropConfirmation": "确认丢弃物品",
     "hideSkeletonHatBones": "隐藏骷髅头盔的骨头",
     "skeletonHatBonesBar": "骷髅头盔可抵挡攻击次数",
