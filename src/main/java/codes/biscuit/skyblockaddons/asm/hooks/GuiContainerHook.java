@@ -5,7 +5,14 @@ import codes.biscuit.skyblockaddons.asm.utils.ReturnValue;
 import codes.biscuit.skyblockaddons.gui.elements.CraftingPatternSelection;
 import codes.biscuit.skyblockaddons.listeners.RenderListener;
 import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsTransformer;
-import codes.biscuit.skyblockaddons.utils.*;
+import codes.biscuit.skyblockaddons.utils.Backpack;
+import codes.biscuit.skyblockaddons.utils.BackpackColor;
+import codes.biscuit.skyblockaddons.utils.CraftingPattern;
+import codes.biscuit.skyblockaddons.utils.EnchantPair;
+import codes.biscuit.skyblockaddons.utils.EnumUtils;
+import codes.biscuit.skyblockaddons.utils.Feature;
+import codes.biscuit.skyblockaddons.utils.nifty.color.ChatFormatting;
+import codes.biscuit.skyblockaddons.utils.nifty.reflection.MinecraftReflection;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.Gui;
@@ -17,10 +24,8 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ContainerPlayer;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.ResourceLocation;
 
-import java.awt.*;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -32,8 +37,8 @@ import java.util.regex.Pattern;
 
 public class GuiContainerHook {
 
-    private static final int OVERLAY_RED = ConfigColor.RED.getColor(127);
-    private static final int OVERLAY_GREEN = ConfigColor.GREEN.getColor(127);
+    private static final int OVERLAY_RED = ChatFormatting.RED.getColor(127).asRGB();
+    private static final int OVERLAY_GREEN = ChatFormatting.GREEN.getColor(127).asRGB();
 
     private static ResourceLocation CHEST_GUI_TEXTURE = new ResourceLocation("textures/gui/container/generic_54.png");
     private static EnchantPair reforgeToRender = null;
@@ -43,9 +48,8 @@ public class GuiContainerHook {
         SkyblockAddons main = SkyblockAddons.getInstance();
         if (main.getConfigValues().isEnabled(Feature.SHOW_ENCHANTMENTS_REFORGES)) {
             Minecraft mc = Minecraft.getMinecraft();
-            FontRenderer fr = mc.fontRendererObj;
             if (item != null && item.hasDisplayName()) {
-                if (item.getDisplayName().startsWith(EnumChatFormatting.GREEN + "Enchant Item")) {
+                if (item.getDisplayName().startsWith(ChatFormatting.GREEN + "Enchant Item")) {
                     List<String> toolip = item.getTooltip(mc.thePlayer, false);
                     if (toolip.size() > 2) {
                         String enchantLine = toolip.get(2);
@@ -53,11 +57,11 @@ public class GuiContainerHook {
                         if (lines.length >= 2) {
                             String toMatch = lines[1];
                             String enchant;
-                            if (main.getUtils().getEnchantmentMatch().size() > 0 &&
+                            if (!main.getUtils().getEnchantmentMatch().isEmpty() &&
                                     main.getUtils().enchantReforgeMatches(toMatch)) {
-                                enchant = EnumChatFormatting.RED + toMatch;
+                                enchant = ChatFormatting.RED + toMatch;
                             } else {
-                                enchant = EnumChatFormatting.YELLOW + toMatch;
+                                enchant = ChatFormatting.YELLOW + toMatch;
                             }
                             float yOff;
                             if (slotIn.slotNumber == 29 || slotIn.slotNumber == 33) {
@@ -66,23 +70,23 @@ public class GuiContainerHook {
                                 yOff = 36;
                             }
                             float scaleMultiplier = 1 / 0.75F;
-                            float halfStringWidth = fr.getStringWidth(enchant) / 2;
+                            float halfStringWidth = MinecraftReflection.FontRenderer.getStringWidth(enchant) / 2F;
                             x += 8; // to center it
                             enchantsToRender.add(new EnchantPair(x * scaleMultiplier - halfStringWidth, y * scaleMultiplier + yOff, enchant));
                         }
                     }
-                } else if (slotIn.inventory.getDisplayName().getUnformattedText().equals("Reforge Item") && slotIn.slotNumber == 13) {
+                } else if ("Reforge Item".equals(slotIn.inventory.getDisplayName().getUnformattedText()) && slotIn.slotNumber == 13) {
                     String reforge = main.getUtils().getReforgeFromItem(item);
                     if (reforge != null) {
-                        if (main.getUtils().getEnchantmentMatch().size() > 0 &&
+                        if (!main.getUtils().getEnchantmentMatch().isEmpty() &&
                                 main.getUtils().enchantReforgeMatches(reforge)) {
-                            reforge = EnumChatFormatting.RED + reforge;
+                            reforge = ChatFormatting.RED + reforge;
                         } else {
-                            reforge = EnumChatFormatting.YELLOW + reforge;
+                            reforge = ChatFormatting.YELLOW + reforge;
                         }
                         x -= 28;
                         y += 22;
-                        float halfStringWidth = fr.getStringWidth(reforge) / 2;
+                        float halfStringWidth = MinecraftReflection.FontRenderer.getStringWidth(reforge) / 2F;
                         reforgeToRender = new EnchantPair(x - halfStringWidth, y, reforge);
                     }
                 }
@@ -94,14 +98,15 @@ public class GuiContainerHook {
                 GlStateManager.disableDepth();
                 GlStateManager.disableBlend();
                 if (reforgeToRender != null) {
-                    fr.drawStringWithShadow(reforgeToRender.getEnchant(), reforgeToRender.getX(), reforgeToRender.getY(), new Color(255, 255, 255, 255).getRGB());
+                    //new Color(255, 255, 255, 255).getRGB()
+                    MinecraftReflection.FontRenderer.drawString(reforgeToRender.getEnchant(), reforgeToRender.getX(), reforgeToRender.getY(), ChatFormatting.WHITE, true);
                     reforgeToRender = null;
                 }
                 GlStateManager.scale(0.75, 0.75, 1);
                 Iterator<EnchantPair> enchantPairIterator = enchantsToRender.iterator();
                 while (enchantPairIterator.hasNext()) {
                     EnchantPair enchant = enchantPairIterator.next();
-                    fr.drawStringWithShadow(enchant.getEnchant(), enchant.getX(), enchant.getY(), new Color(255, 255, 255, 255).getRGB());
+                    MinecraftReflection.FontRenderer.drawString(enchant.getEnchant(), enchant.getX(), enchant.getY(), ChatFormatting.WHITE, true);
                     enchantPairIterator.remove();
                 }
                 GlStateManager.enableLighting();
@@ -136,7 +141,7 @@ public class GuiContainerHook {
                 }
                 guiContainer.drawTexturedModalRect(x, y, 0, 0, 176, rows * 18 + 17);
                 guiContainer.drawTexturedModalRect(x, y + rows * 18 + 17, 0, 215, 176, 7);
-                fontRendererObj.drawString(backpack.getBackpackName(), x+8, y+6, textColor);
+                MinecraftReflection.FontRenderer.drawString(backpack.getBackpackName(), x+8, y+6, textColor);
                 GlStateManager.popMatrix();
                 GlStateManager.enableLighting();
 
@@ -161,7 +166,7 @@ public class GuiContainerHook {
                 GlStateManager.disableLighting();
                 GlStateManager.pushMatrix();
                 GlStateManager.translate(0,0, 300);
-                Gui.drawRect(x, y, x + (16 * 9) + 3, y + (16 * (length / 9)) + 3, ConfigColor.DARK_GRAY.getColor(250));
+                Gui.drawRect(x, y, x + (16 * 9) + 3, y + (16 * (length / 9)) + 3, ChatFormatting.DARK_GRAY.getColor(250).asRGB());
                 GlStateManager.popMatrix();
                 GlStateManager.enableLighting();
 

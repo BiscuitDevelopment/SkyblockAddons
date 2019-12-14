@@ -2,6 +2,7 @@ package codes.biscuit.skyblockaddons.listeners;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.utils.*;
+import codes.biscuit.skyblockaddons.utils.nifty.color.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.gui.GuiScreen;
@@ -77,7 +78,7 @@ public class PlayerListener {
     private int magmaTime = 0;
     private int recentMagmaCubes = 0;
     private int recentBlazes = 0;
-    
+
 //    private Feature.Accuracy magmaTimerAccuracy = null;
 //    private long magmaTime = 7200;
 
@@ -265,7 +266,7 @@ public class PlayerListener {
                 }
                 if (main.getConfigValues().isEnabled(Feature.ZEALOT_COUNTER)) {
                     // Edit the message to include counter.
-                    e.message = new ChatComponentText(e.message.getFormattedText() + EnumChatFormatting.GRAY + " (" + main.getPersistentValues().getKills() + ")");
+                    e.message = new ChatComponentText(e.message.getFormattedText() + ChatFormatting.GRAY + " (" + main.getPersistentValues().getKills() + ")");
                     main.getPersistentValues().setKills(-1); // This is triggered before the death of the killed zealot, so this is set to -1 to account for that.
                 }
             }
@@ -446,9 +447,9 @@ public class PlayerListener {
             }
         }
     }
-    
+
     private Set<Entity> countedEndermen = new HashSet<>();
-    
+
     @SubscribeEvent
     public void onAttack(AttackEntityEvent e) {
     	if (main.getConfigValues().isEnabled(Feature.ZEALOT_COUNTER) && e.target instanceof EntityEnderman) {
@@ -462,7 +463,7 @@ public class PlayerListener {
             }
     	}
     }
-    
+
     @SubscribeEvent
     public void onDeath(LivingDeathEvent e) {
     	if (main.getConfigValues().isEnabled(Feature.ZEALOT_COUNTER) && e.entity instanceof EntityEnderman) {
@@ -593,14 +594,14 @@ public class PlayerListener {
             try {
                 if (!clipboard.getData(DataFlavor.stringFlavor).equals(nbt)) {
                     clipboard.setContents(new StringSelection(nbt), null);
-                    main.getUtils().sendMessage(EnumChatFormatting.GREEN + "Copied this item's NBT to clipboard!");
+                    main.getUtils().sendMessage(ChatFormatting.GREEN + "Copied this item's NBT to clipboard!");
                 }
             } catch (UnsupportedFlavorException | IOException ex) {
                 try {
                     clipboard.setContents(new StringSelection(nbt), null);
-                    main.getUtils().sendMessage(EnumChatFormatting.GREEN + "Copied this item's NBT to clipboard!");
+                    main.getUtils().sendMessage(ChatFormatting.GREEN + "Copied this item's NBT to clipboard!");
                 } catch (IllegalStateException ex1) {
-                    main.getUtils().sendMessage(EnumChatFormatting.RED + "Error copying item NBT to clipboard!");
+                    main.getUtils().sendMessage(ChatFormatting.RED + "Error copying item NBT to clipboard!");
                     ex.printStackTrace();
                 }
             }
@@ -780,7 +781,7 @@ public class PlayerListener {
     public int getRecentMagmaCubes() {
         return recentMagmaCubes;
     }
-    
+
     public void setRecentBlazes(int recentBlazes) {
         this.recentBlazes = recentBlazes;
     }

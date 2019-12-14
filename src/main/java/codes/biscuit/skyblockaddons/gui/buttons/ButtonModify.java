@@ -1,13 +1,13 @@
 package codes.biscuit.skyblockaddons.gui.buttons;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.utils.ConfigColor;
 import codes.biscuit.skyblockaddons.utils.Feature;
+import codes.biscuit.skyblockaddons.utils.nifty.color.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.SoundHandler;
 import net.minecraft.client.renderer.GlStateManager;
 
-import java.awt.*;
+import java.awt.Color;
 
 public class ButtonModify extends ButtonText {
 
@@ -35,12 +35,12 @@ public class ButtonModify extends ButtonText {
             boxAlpha = 170;
         }
         if (hitMaximum()) {
-            boxColor = ConfigColor.GRAY.getColor(boxAlpha);
+            boxColor = ChatFormatting.GRAY.getColor(boxAlpha).asRGB();
         } else {
             if (feature == Feature.ADD) {
-                boxColor = ConfigColor.GREEN.getColor(boxAlpha);
+                boxColor = ChatFormatting.GREEN.getColor(boxAlpha).asRGB();
             } else {
-                boxColor = ConfigColor.RED.getColor(boxAlpha);
+                boxColor = ChatFormatting.RED.getColor(boxAlpha).asRGB();
             }
         }
         GlStateManager.enableBlend();

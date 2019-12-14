@@ -5,6 +5,7 @@ import codes.biscuit.skyblockaddons.asm.utils.ReturnValue;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.Feature;
 import codes.biscuit.skyblockaddons.utils.Message;
+import codes.biscuit.skyblockaddons.utils.nifty.color.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.inventory.ContainerPlayer;
@@ -25,7 +26,8 @@ public class EntityPlayerSPHook {
             if (main.getConfigValues().getLockedSlots().contains(slot)
                     && (slot >= 9 || mc.thePlayer.openContainer instanceof ContainerPlayer && slot >= 5)) {
                 main.getUtils().playLoudSound("note.bass", 0.5);
-                SkyblockAddons.getInstance().getUtils().sendMessage(main.getConfigValues().getColor(Feature.DROP_CONFIRMATION).getChatFormatting() +
+                ChatFormatting ecf = ChatFormatting.AQUA;
+                SkyblockAddons.getInstance().getUtils().sendMessage(main.getConfigValues().getColor(Feature.DROP_CONFIRMATION) +
                         Message.MESSAGE_SLOT_LOCKED.getMessage());
                 returnValue.cancel();
                 return null;
@@ -35,8 +37,8 @@ public class EntityPlayerSPHook {
             EnumUtils.Rarity rarity = EnumUtils.Rarity.getRarity(heldItemStack);
             if (rarity != null && main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.STOP_DROPPING_SELLING_RARE_ITEMS) &&
                     main.getUtils().cantDropItem(heldItemStack, rarity, true)) {
-                SkyblockAddons.getInstance().getUtils().sendMessage(main.getConfigValues().getColor(Feature.STOP_DROPPING_SELLING_RARE_ITEMS).
-                        getChatFormatting() + Message.MESSAGE_CANCELLED_DROPPING.getMessage());
+                SkyblockAddons.getInstance().getUtils().sendMessage(main.getConfigValues().getColor(Feature.STOP_DROPPING_SELLING_RARE_ITEMS)
+                                                                            + Message.MESSAGE_CANCELLED_DROPPING.getMessage());
                 returnValue.cancel();
                 return null;
             }
@@ -47,7 +49,7 @@ public class EntityPlayerSPHook {
                 lastDrop = System.currentTimeMillis();
 
                 if (lastItem == null || lastItem != heldItem || System.currentTimeMillis() - lastDrop >= 3000) {
-                    SkyblockAddons.getInstance().getUtils().sendMessage(main.getConfigValues().getColor(Feature.DROP_CONFIRMATION).getChatFormatting() +
+                    SkyblockAddons.getInstance().getUtils().sendMessage(main.getConfigValues().getColor(Feature.DROP_CONFIRMATION) +
                             Message.MESSAGE_DROP_CONFIRMATION.getMessage());
                     lastItem = heldItem;
                     returnValue.cancel();

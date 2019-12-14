@@ -1,18 +1,31 @@
 package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.utils.nifty.color.ChatFormatting;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
-import net.minecraft.inventory.*;
+import net.minecraft.inventory.Container;
+import net.minecraft.inventory.ContainerBeacon;
+import net.minecraft.inventory.ContainerChest;
+import net.minecraft.inventory.ContainerFurnace;
+import net.minecraft.inventory.ContainerHopper;
+import net.minecraft.inventory.ContainerPlayer;
+import net.minecraft.inventory.Slot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.EnumChatFormatting;
 
 import java.math.BigDecimal;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -94,7 +107,7 @@ public class InventoryUtils {
                 }
 
                 if(newItem != null) {
-                    if (newItem.getDisplayName().contains(" "+ EnumChatFormatting.DARK_GRAY+"x")) {
+                    if (newItem.getDisplayName().contains(" "+ ChatFormatting.DARK_GRAY+"x")) {
                         String newName = newItem.getDisplayName().substring(0, newItem.getDisplayName().lastIndexOf(" "));
                         newItem.setStackDisplayName(newName); // This is a workaround for merchants, it adds x64 or whatever to the end of the name.
                     }
@@ -235,7 +248,7 @@ public class InventoryUtils {
                     dropCount = 1;
                 }
                 SkyblockAddons.getInstance().getUtils().sendMessage(main.getConfigValues().getColor(
-                        Feature.STOP_DROPPING_SELLING_RARE_ITEMS).getChatFormatting() +
+                        Feature.STOP_DROPPING_SELLING_RARE_ITEMS) +
                         Message.MESSAGE_CLICK_MORE_TIMES.getMessage(String.valueOf(3-dropCount)));
                 lastItem = item;
                 lastDrop = System.currentTimeMillis();
@@ -268,7 +281,7 @@ public class InventoryUtils {
 
     public void checkIfWearingRevenantArmor(EntityPlayerSP p) {
         if (main.getConfigValues().isEnabled(Feature.SLAYER_INDICATOR)) {
-            ConfigColor color = main.getConfigValues().getColor(Feature.SLAYER_INDICATOR);
+            ChatFormatting color = main.getConfigValues().getColor(Feature.SLAYER_INDICATOR);
             for (int i = 3; i > -1; i--) {
                 ItemStack item = p.inventory.armorInventory[i];
                 String itemID = getSkyBlockItemID(item);
@@ -282,7 +295,7 @@ public class InventoryUtils {
 //                            progress = color.toString() + matcher.group(2)+"/"+matcher.group(3) + " (" + ConfigColor.GREEN+ matcher.group(1) + color + ")";
                                 float percentage = Float.parseFloat(matcher.group(2).replace(",", "")) / Integer.parseInt(matcher.group(3).replace(",", "")) * 100;
                                 BigDecimal bigDecimal = new BigDecimal(percentage).setScale(0, BigDecimal.ROUND_HALF_UP);
-                                progress = color.toString() + bigDecimal.toString() + "% (" + ConfigColor.GREEN + matcher.group(1) + color + ")";
+                                progress = color.toString() + bigDecimal.toString() + "% (" + ChatFormatting.GREEN + matcher.group(1) + color + ")";
                                 break;
                             } catch (NumberFormatException ignored) {
                             }

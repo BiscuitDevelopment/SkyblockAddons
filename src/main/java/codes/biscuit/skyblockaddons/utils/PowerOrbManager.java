@@ -48,7 +48,7 @@ public class PowerOrbManager {
                 .filter(powerOrbEntryEntry -> powerOrbEntryEntry.getValue().timestamp + 100 > System.currentTimeMillis())
                 .max(Comparator.comparing(Map.Entry::getKey));
 
-        return max.isPresent() ? max.get().getValue() : null;
+        return max.map(Map.Entry::getValue).orElse(null);
     }
 
     public static class Entry {

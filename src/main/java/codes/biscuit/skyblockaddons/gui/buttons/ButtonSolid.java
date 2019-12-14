@@ -2,11 +2,12 @@ package codes.biscuit.skyblockaddons.gui.buttons;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.utils.Feature;
+import codes.biscuit.skyblockaddons.utils.nifty.reflection.MinecraftReflection;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.SoundHandler;
 import net.minecraft.client.renderer.GlStateManager;
 
-import java.awt.*;
+import java.awt.Color;
 
 import static codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui.BUTTON_MAX_WIDTH;
 
@@ -61,7 +62,7 @@ public class ButtonSolid extends ButtonText {
             fontColor = new Color(255, 255, 160, alpha).getRGB();
         }
         float scale = 1;
-        int stringWidth = mc.fontRendererObj.getStringWidth(displayString);
+        int stringWidth = MinecraftReflection.FontRenderer.getStringWidth(displayString);
         float widthLimit = BUTTON_MAX_WIDTH -10;
         if (feature == Feature.WARNING_TIME) {
             widthLimit = 90;

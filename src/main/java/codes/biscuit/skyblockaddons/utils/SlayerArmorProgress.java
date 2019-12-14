@@ -1,6 +1,7 @@
 package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.utils.nifty.color.ChatFormatting;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
@@ -26,7 +27,7 @@ public class SlayerArmorProgress {
 
     public String getProgressText() {
         if (progressText == null) {
-            ConfigColor color = SkyblockAddons.getInstance().getConfigValues().getColor(Feature.SLAYER_INDICATOR);
+            ChatFormatting color = SkyblockAddons.getInstance().getConfigValues().getColor(Feature.SLAYER_INDICATOR);
             return color + "55% (§a40❈" + color + ")";
         }
         return progressText;
@@ -38,7 +39,7 @@ public class SlayerArmorProgress {
 
     private void setHelmetColor() {
         if (itemStack.getItem().equals(Items.leather_helmet)) {
-            ((ItemArmor)itemStack.getItem()).setColor(itemStack, ConfigColor.BLACK.getColor());
+            ((ItemArmor)itemStack.getItem()).setColor(itemStack, ChatFormatting.BLACK.getColor().asRGB());
         }
     }
 }

@@ -1,8 +1,8 @@
 package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.utils.nifty.color.ChatFormatting;
 import com.google.gson.JsonObject;
-import net.minecraft.util.EnumChatFormatting;
 
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -201,7 +201,7 @@ public enum Message {
                 } else if (this == Message.UPDATE_MESSAGE_DOWNLOAD_FINISHED) {
                     text = text.replace("%file%", variables[0]);
                 } else if (this == Message.MESSAGE_ANVIL_USES) {
-                    text = text.replace("%uses%", EnumChatFormatting.RED.toString()+variables[0]+EnumChatFormatting.GRAY.toString());
+                    text = text.replace("%uses%", ChatFormatting.RED.toString()+variables[0]+ChatFormatting.GRAY.toString());
                 }
                 // else if (this == Message.SETTING_ANCHOR_POINT) { //unused at the moment.
 //                    Feature lastHovered = ButtonLocation.getLastHoveredFeature();
