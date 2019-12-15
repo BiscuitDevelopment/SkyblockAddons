@@ -115,11 +115,11 @@
     "openModFolder": "MODS MAPPEN",
     "joinTheDiscord": "Gå med I discord servern",
     "update": {
-      "majorAvailable": "En ny Stor updatering (%version%) är tillgänlig! Du hittar Nedladnings länken i chatten.",
+      "majorAvailable": "En ny stor updatering (%version%) är tillgänlig! Du hittar nedladningslänken i chatten.",
       "patchAvailable": "En ny programfix (%version%) är tillgänlig! Nedladnings länken finns i chatten!",
-      "downloading": "Programfix uppdateringen är redo! Status: %downloaded%/%total% Snälla notera att du måste ta bort den gamla filen när uppdateringen blir klar.",
+      "downloading": "Programfix uppdateringen är redo! Status: %downloaded%/%total% Notera att du måste ta bort den gamla filen när uppdateringen blir klar.",
       "failed": "Patch updateringen misslyckades! Ladda ner den manuellt genom länken i chatten,.",
-      "downloadFinished": "Nedladningen av Programfix uppdateringen är klar. Den har sparats som %file%. Glöm inte att ta bort den gamla filen när du stänger av din Minecraft. Tryck på meddelandet i chatten för att öppna mods mappen."
+      "downloadFinished": "Nedladningen av Patch updateringen är klar. Den har sparats som %file%. Glöm inte att ta bort den gamla filen när du stänger av din Minecraft. Tryck på meddelandet i chatten för att öppna Mods mappen."
     },
     "slotLocked": "Denna ruta är låst!",
     "summoningEyeFound": "Tillkallande Öga!",
