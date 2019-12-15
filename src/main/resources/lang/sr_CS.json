@@ -82,11 +82,11 @@
     "powerOrbDisplayStyle": "Power Orb Style: %style%",
     "powerOrbStyle": {
       "detailed": "Detalji",
-      "compact": "Compact"
+      "compact": "Kompaktnost"
     },
     "disableMagicalSoupMessage": "Isključi poruke od magične supe",
     "zealotCounter": "Prikaži Zealot brojač",
-    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display",
+    "scorpionFoilTickerDisplay": "Prikaži Scorpion Foil Ticker",
     "tab": {
       "generalSettings": "Opšta podešavanja"
     }
