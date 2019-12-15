@@ -204,6 +204,7 @@ public class RenderListener {
                         main.getConfigValues().getColor(titleFeature).getRGB(), true);
                 MinecraftReflection.FontRenderer.drawString(text, (float) (-MinecraftReflection.FontRenderer.getStringWidth(text) / 2), -20.0F,
                         main.getConfigValues().getColor(titleFeature).getRGB(), true);
+
             }
             GlStateManager.popMatrix();
             GlStateManager.popMatrix();
