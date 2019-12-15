@@ -647,7 +647,6 @@ public class RenderListener {
                 int remainingTime = (int) (skillFadeOutTime - System.currentTimeMillis());
                 if (remainingTime < 0) {
                     if (remainingTime < -2000) remainingTime = -2000;
-
                     textAlpha = (float) 1 - ((float) -remainingTime / 2000);
                     color = main.getConfigValues().getColor(feature).getColor(textAlpha * 255 >= 4 ? textAlpha * 255 : 4).getRGB(); // so it fades out, 0.016 is the minimum alpha
                 }

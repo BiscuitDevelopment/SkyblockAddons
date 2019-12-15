@@ -109,7 +109,7 @@ public enum ChatFormatting {
 	public int getRGB() {
 		return this.getColor().getRGB();
 	}
-
+  
 	public boolean isColor() {
 		return !this.isFormat() && this != RESET;
 	}
