@@ -2,7 +2,7 @@ package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.utils.nifty.StringUtil;
-import codes.biscuit.skyblockaddons.utils.nifty.color.ChatFormatting;
+import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
 import codes.biscuit.skyblockaddons.utils.nifty.reflection.MinecraftReflection;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;

@@ -1,7 +1,5 @@
-package codes.biscuit.skyblockaddons.utils.nifty.color;
+package codes.biscuit.skyblockaddons.utils.nifty;
 
-import codes.biscuit.skyblockaddons.utils.nifty.RegexUtil;
-import codes.biscuit.skyblockaddons.utils.nifty.StringUtil;
 import com.google.common.base.Preconditions;
 
 import java.awt.Color;
@@ -40,7 +38,7 @@ public enum ChatFormatting {
 	private final boolean isFormat;
 	private final String jsonName;
 	private final String toString;
-	private final java.awt.Color color;
+	private final Color color;
 
 	ChatFormatting(char code) {
 		this(code, -1);

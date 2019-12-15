@@ -1,6 +1,6 @@
 package codes.biscuit.skyblockaddons.utils.nifty.reflection;
 
-import codes.biscuit.skyblockaddons.utils.nifty.color.ChatFormatting;
+import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
 import codes.biscuit.skyblockaddons.utils.nifty.reflection.accessor.MethodAccessor;
 
 /**

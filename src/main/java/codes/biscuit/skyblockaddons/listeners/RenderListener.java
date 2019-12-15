@@ -15,7 +15,7 @@ import codes.biscuit.skyblockaddons.utils.PowerOrb;
 import codes.biscuit.skyblockaddons.utils.PowerOrbManager;
 import codes.biscuit.skyblockaddons.utils.SlayerArmorProgress;
 import codes.biscuit.skyblockaddons.utils.Utils;
-import codes.biscuit.skyblockaddons.utils.nifty.color.ChatFormatting;
+import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
 import codes.biscuit.skyblockaddons.utils.nifty.reflection.MinecraftReflection;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
