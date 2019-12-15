@@ -77,15 +77,15 @@
     "revenantIndicator": "Slayer Oklop Indikator Napretka",
     "specialZealotAlert": "Upozorenje za Posebnog Zealota",
     "enableMessageWhenActionPrevented": "Prikaži Poruku Kada je Akcija Sprečena",
-    "hidePetHealthBar": "Hide Pet Health Bar",
+    "hidePetHealthBar": "Sakrij Health Bar Ljubimca",
     "powerOrbDisplay": "Power Orb Display",
     "powerOrbDisplayStyle": "Power Orb Style: %style%",
     "powerOrbStyle": {
-      "detailed": "Detailed",
+      "detailed": "Detalji",
       "compact": "Compact"
     },
-    "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages",
-    "zealotCounter": "Show Zealot Counter",
+    "disableMagicalSoupMessage": "Isključi poruke od magične supe",
+    "zealotCounter": "Prikaži Zealot brojač",
     "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display",
     "tab": {
       "generalSettings": "Opšta podešavanja"
@@ -132,7 +132,7 @@
     "anvilUses": "Korištenje Nakovnja %uses%",
     "specialZealotFound": "Posebni Zealot!",
     "blockIncompletePatterns": "Spriječi craftanje nedovršenih predložaka (preporučeno)",
-    "searchFeatures": "Search features",
-    "downloadingUpdateFile": "Downloading update file..."
+    "searchFeatures": "Pretraži karakteristike",
+    "downloadingUpdateFile": "Prеuzimanjе ažuriranja..."
   }
 }
