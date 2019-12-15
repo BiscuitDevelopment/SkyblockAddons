@@ -108,7 +108,7 @@
       "crafting": "Tillverkning"
     },
     "newUpdateAvailable": "En ny updatering (%version%) är tillgänlig!",
-    "deleteOldFile": "Updateringen är klar, snälla använd öppna knappen nedan för att öppna mod mappen, stäng ditt minecraft, och ta bort den gamla versionen (eller du kan ta bort den sen om du vill).",
+    "deleteOldFile": "Updateringen är klar, använd knappen nedan för att öppna mods mappen, stäng Minecraft, och ta bort den gamla versionen (eller kan du radera den senare om du vill).",
     "wantToViewPatchNotes": "Vill du läsa ändringarna?",
     "downloadLink": "UPPDATERINGS LÄNK",
     "downloadAutomatically": "AUTO NEDLADNING",
@@ -119,7 +119,7 @@
       "patchAvailable": "En ny programfix (%version%) är tillgänlig! Nedladnings länken finns i chatten!",
       "downloading": "Programfix uppdateringen är redo! Status: %downloaded%/%total% Notera att du måste ta bort den gamla filen när uppdateringen blir klar.",
       "failed": "Patch updateringen misslyckades! Ladda ner den manuellt genom länken i chatten,.",
-      "downloadFinished": "Nedladningen av Patch updateringen är klar. Den har sparats som %file%. Glöm inte att ta bort den gamla filen när du stänger av din Minecraft. Tryck på meddelandet i chatten för att öppna Mods mappen."
+      "downloadFinished": "Nedladningen av Programfix uppdateringen är klar. Den har sparats som %file%. Glöm inte att ta bort den gamla filen när du stänger av Minecraft. Tryck på meddelandet i chatten för att öppna mods mappen."
     },
     "slotLocked": "Denna ruta är låst!",
     "summoningEyeFound": "Tillkallande Öga!",
