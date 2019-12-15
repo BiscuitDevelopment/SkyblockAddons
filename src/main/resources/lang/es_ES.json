@@ -43,7 +43,7 @@
     "stopBowChargeFromResetting": "Prevenir el Reset del Arco",
     "preventMovementOnDeath": "Prevenir moverse cuando mueres",
     "showItemAnvilUses": "Mostrar usos del Item en el Yunque",
-    "lockSlots": "Permitir las ranuras bloquedas",
+    "lockSlots": "Habilitar Bloquear Slots",
     "lockSlot": "Bloquea el Espacio",
     "dontResetCursorInventory": "No reiniciar el cursor entre los inventarios",
     "summoningEyeAlert": "Alerta de uso de un ojo de invocación",
@@ -56,7 +56,7 @@
       "one": "Estilo Uno",
       "two": "Estilo Dos"
     },
-    "warningDuration": "Duración de la advertencia",
+    "warningDuration": "Duración de Aviso",
     "dontOpenProfileWithBow": "No Abrir Perfil Con Un Arco",
     "stopDroppingSellingRareItems": "Parar de Soltar/Vender Objetos Raros",
     "makeBackpackInventoriesColored": "Inventarios de Color",
