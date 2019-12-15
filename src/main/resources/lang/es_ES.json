@@ -78,14 +78,14 @@
     "specialZealotAlert": "Alerta especial de Zealot",
     "enableMessageWhenActionPrevented": "Mostrar un Mensaje Cuando se Impida una Acción",
     "hidePetHealthBar": "Ocultar Barra de Salud de Mascotas",
-    "powerOrbDisplay": "Power Orb Display",
-    "powerOrbDisplayStyle": "Power Orb Style: %style%",
+    "powerOrbDisplay": "Mostrar Power Orb",
+    "powerOrbDisplayStyle": "Estilo del Power Orb: %style%",
     "powerOrbStyle": {
-      "detailed": "Detailed",
-      "compact": "Compact"
+      "detailed": "Detallado",
+      "compact": "Compacto"
     },
-    "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages",
-    "zealotCounter": "Show Zealot Counter",
+    "disableMagicalSoupMessage": "Deshabilitar Mensajes de la Magical Mushroom Soup",
+    "zealotCounter": "Mostrar Contador de Zealots",
     "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display",
     "tab": {
       "generalSettings": "Opciones Generales"
