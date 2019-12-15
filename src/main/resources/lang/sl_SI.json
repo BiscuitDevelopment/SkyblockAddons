@@ -47,7 +47,7 @@
     "lockSlot": "Zakleni Prostor",
     "dontResetCursorInventory": "Ne Ponastavljaj Kazalca Med Inventarji",
     "summoningEyeAlert": "Opozorilo Za Summoning Oko",
-    "makeEnderchestsInEndGreen": "Change Enderchest Color in the End",
+    "makeEnderchestsInEndGreen": "Spremeni barvo Enderchest-a v End-u",
     "changeColor": "Spremeni barvo",
     "showInOtherGames": "Pokaži v Drugih Igrah",
     "useVanillaTexture": "Uporabi Vanilla Izgled",
@@ -73,8 +73,8 @@
     "speedPercentage": "Odstotek Hitrosti",
     "collectionDisplay": "Prikaz Skill Napredka",
     "onlyMineOresDeepCaverns": "Uničuj Rude Samo v Deep Caverns-ih",
-    "onlyMineValuablesNether": "Only Mine Valuables in the Nether",
-    "revenantIndicator": "Slayer Armor Progress Indicator",
+    "onlyMineValuablesNether": "Koplji samo dragocenosti v Nether-ju",
+    "revenantIndicator": "Indikator napredka na Slayer oklepu",
     "specialZealotAlert": "Opozorilo za Posebnega Zealota",
     "enableMessageWhenActionPrevented": "Prikaži Sporočilo, ko je Dejanje Onemogočeno",
     "hidePetHealthBar": "Skrij Vrstico Zdravja Ljubljenčka",
@@ -86,7 +86,7 @@
     },
     "disableMagicalSoupMessage": "Onesposobljenje Sporočil Čarobne Gobje Juhe",
     "zealotCounter": "Prikaz Števca Zealotov",
-    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display",
+    "scorpionFoilTickerDisplay": "Prikaz števca za Scorpion Foil",
     "tab": {
       "generalSettings": "Splošne Nastavitve"
     }
