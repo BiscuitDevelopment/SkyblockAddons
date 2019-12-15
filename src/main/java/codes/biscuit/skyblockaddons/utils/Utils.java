@@ -1,6 +1,9 @@
 package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.utils.nifty.StringUtil;
+import codes.biscuit.skyblockaddons.utils.nifty.color.ChatFormatting;
+import codes.biscuit.skyblockaddons.utils.nifty.reflection.MinecraftReflection;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.ObjectArrays;
@@ -17,9 +20,12 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.launchwrapper.Launch;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.scoreboard.*;
+import net.minecraft.scoreboard.Score;
+import net.minecraft.scoreboard.ScoreObjective;
+import net.minecraft.scoreboard.ScorePlayerTeam;
+import net.minecraft.scoreboard.Scoreboard;
+import net.minecraft.scoreboard.Team;
 import net.minecraft.util.ChatComponentText;
-import net.minecraft.util.EnumChatFormatting;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.FMLLog;
@@ -32,14 +38,35 @@ import net.minecraftforge.fml.relauncher.ModListHelper;
 import org.apache.commons.lang3.mutable.MutableInt;
 import org.apache.commons.lang3.text.WordUtils;
 
-import java.awt.*;
-import java.io.*;
+import java.awt.Color;
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FilenameFilter;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.net.*;
+import java.net.HttpURLConnection;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.EnumMap;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.*;
+import java.util.Map;
+import java.util.Set;
+import java.util.SortedMap;
+import java.util.TreeMap;
 import java.util.jar.JarFile;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -308,42 +335,42 @@ public class Utils {
 
     void sendUpdateMessage(boolean showDownload, boolean showAutoDownload) {
         String newestVersion = main.getRenderListener().getDownloadInfo().getNewestVersion();
-        sendMessage(EnumChatFormatting.GRAY.toString() + EnumChatFormatting.STRIKETHROUGH + "--------" + EnumChatFormatting.GRAY + "[" +
-                EnumChatFormatting.AQUA + EnumChatFormatting.BOLD + " SkyblockAddons " + EnumChatFormatting.GRAY + "]" + EnumChatFormatting.GRAY + EnumChatFormatting.STRIKETHROUGH + "--------");
+        sendMessage(ChatFormatting.GRAY.toString() + ChatFormatting.STRIKETHROUGH + "--------" + ChatFormatting.GRAY + "[" +
+                            ChatFormatting.AQUA + ChatFormatting.BOLD + " SkyblockAddons " + ChatFormatting.GRAY + "]" + ChatFormatting.GRAY + ChatFormatting.STRIKETHROUGH + "--------");
         if (main.getRenderListener().getDownloadInfo().getMessageType() == EnumUtils.UpdateMessageType.DOWNLOAD_FINISHED) {
-            ChatComponentText deleteOldFile = new ChatComponentText(EnumChatFormatting.RED+Message.MESSAGE_DELETE_OLD_FILE.getMessage()+"\n");
+            ChatComponentText deleteOldFile = new ChatComponentText(ChatFormatting.RED+Message.MESSAGE_DELETE_OLD_FILE.getMessage()+"\n");
             sendMessage(deleteOldFile);
         } else {
-            ChatComponentText newUpdate = new ChatComponentText(EnumChatFormatting.AQUA+Message.MESSAGE_NEW_UPDATE.getMessage(newestVersion)+"\n");
+            ChatComponentText newUpdate = new ChatComponentText(ChatFormatting.AQUA+Message.MESSAGE_NEW_UPDATE.getMessage(newestVersion)+"\n");
             sendMessage(newUpdate);
         }
 
         ChatComponentText buttonsMessage = new ChatComponentText("");
         if (showDownload) {
-            buttonsMessage = new ChatComponentText(EnumChatFormatting.AQUA.toString() + EnumChatFormatting.BOLD + "[" + Message.MESSAGE_DOWNLOAD_LINK.getMessage(newestVersion) + "]");
+            buttonsMessage = new ChatComponentText(ChatFormatting.AQUA.toString() + ChatFormatting.BOLD + "[" + Message.MESSAGE_DOWNLOAD_LINK.getMessage(newestVersion) + "]");
             buttonsMessage.setChatStyle(buttonsMessage.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, main.getRenderListener().getDownloadInfo().getDownloadLink())));
             buttonsMessage.appendSibling(new ChatComponentText(" "));
         }
 
         if (showAutoDownload) {
-            ChatComponentText downloadAutomatically = new ChatComponentText(EnumChatFormatting.GREEN.toString() + EnumChatFormatting.BOLD + "[" + Message.MESSAGE_DOWNLOAD_AUTOMATICALLY.getMessage(newestVersion) + "]");
+            ChatComponentText downloadAutomatically = new ChatComponentText(ChatFormatting.GREEN.toString() + ChatFormatting.BOLD + "[" + Message.MESSAGE_DOWNLOAD_AUTOMATICALLY.getMessage(newestVersion) + "]");
             downloadAutomatically.setChatStyle(downloadAutomatically.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/sba update")));
             buttonsMessage.appendSibling(downloadAutomatically);
             buttonsMessage.appendSibling(new ChatComponentText(" "));
         }
 
-        ChatComponentText openModsFolder = new ChatComponentText(EnumChatFormatting.YELLOW.toString() + EnumChatFormatting.BOLD + "[" + Message.MESSAGE_OPEN_MODS_FOLDER.getMessage(newestVersion) + "]");
+        ChatComponentText openModsFolder = new ChatComponentText(ChatFormatting.YELLOW.toString() + ChatFormatting.BOLD + "[" + Message.MESSAGE_OPEN_MODS_FOLDER.getMessage(newestVersion) + "]");
         openModsFolder.setChatStyle(openModsFolder.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/sba folder")));
         buttonsMessage.appendSibling(openModsFolder);
 
         sendMessage(buttonsMessage);
         if (main.getRenderListener().getDownloadInfo().getMessageType() != EnumUtils.UpdateMessageType.DOWNLOAD_FINISHED) {
-            ChatComponentText discord = new ChatComponentText(EnumChatFormatting.AQUA + Message.MESSAGE_VIEW_PATCH_NOTES.getMessage() + " " +
-                    EnumChatFormatting.BLUE.toString() + EnumChatFormatting.BOLD + "[" + Message.MESSAGE_JOIN_DISCORD.getMessage() + "]");
+            ChatComponentText discord = new ChatComponentText(ChatFormatting.AQUA + Message.MESSAGE_VIEW_PATCH_NOTES.getMessage() + " " +
+                                                                      ChatFormatting.BLUE.toString() + ChatFormatting.BOLD + "[" + Message.MESSAGE_JOIN_DISCORD.getMessage() + "]");
             discord.setChatStyle(discord.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://discord.gg/PqTAEek")));
             sendMessage(discord);
         }
-        sendMessage(EnumChatFormatting.GRAY.toString() + EnumChatFormatting.STRIKETHROUGH + "----------------------------------");
+        sendMessage(ChatFormatting.GRAY.toString() + ChatFormatting.STRIKETHROUGH + "----------------------------------");
     }
 
     public void checkDisabledFeatures() {
@@ -366,7 +393,7 @@ public class Utils {
                     if (splitLine.length > 1) {
                         for (int i = 1; i < splitLine.length; i++) {
                             String part = splitLine[i];
-                            Feature feature = Feature.fromId(Integer.valueOf(part));
+                            Feature feature = Feature.fromId(Integer.parseInt(part));
                             if (feature != null) {
                                 disabledFeatures.add(feature);
                             }
@@ -387,7 +414,7 @@ public class Utils {
             if (team instanceof ScorePlayerTeam) {
                 ScorePlayerTeam playerTeam = (ScorePlayerTeam)team;
                 String color = playerTeam.getColorPrefix();
-                return color == null || !color.equals("");
+                return color == null || !"".equals(color);
             }
         }
         return true;
@@ -420,11 +447,11 @@ public class Utils {
         text = text.toLowerCase();
         for (String enchant : enchantmentMatch) {
             enchant = enchant.trim().toLowerCase();
-            if (!enchant.equals("") && text.contains(enchant)) {
+            if (StringUtil.notEmpty(enchant) && text.contains(enchant)) {
                 boolean foundExclusion = false;
                 for (String exclusion : enchantmentExclusion) {
                     exclusion = exclusion.trim().toLowerCase();
-                    if (!exclusion.equals("") && text.contains(exclusion)) {
+                    if (StringUtil.notEmpty(exclusion) && text.contains(exclusion)) {
                         foundExclusion = true;
                         break;
                     }
@@ -514,7 +541,7 @@ public class Utils {
     public boolean isMaterialForRecipe(ItemStack item) {
         final List<String> tooltip = item.getTooltip(null, false);
         for (String s : tooltip) {
-            if (s.equals("§5§o§eRight-click to view recipes!")) {
+            if ("§5§o§eRight-click to view recipes!".equals(s)) {
                 return true;
             }
         }
@@ -577,7 +604,7 @@ public class Utils {
     public void downloadPatch(String version) {
         File sbaFolder = getSBAFolder(true);
         if (sbaFolder != null) {
-            main.getUtils().sendMessage(EnumChatFormatting.YELLOW+Message.MESSAGE_DOWNLOADING_UPDATE.getMessage());
+            main.getUtils().sendMessage(ChatFormatting.YELLOW+Message.MESSAGE_DOWNLOADING_UPDATE.getMessage());
             new Thread(() -> {
                 try {
                     String fileName = "SkyblockAddons-"+version+"-for-MC-1.8.9.jar";
@@ -638,7 +665,7 @@ public class Utils {
                             Field metadatas = metadata.getClass().getDeclaredField("metadatas");
                             metadatas.setAccessible(true);
                             for (String modId : ((Map<String, ModMetadata>)metadatas.get(metadata)).keySet()) {
-                                if (modId.equals("skyblockaddons")) {
+                                if ("skyblockaddons".equals(modId)) {
                                     return coreMod.getParentFile();
                                 }
                             }
@@ -690,13 +717,13 @@ public class Utils {
     public void drawString(Minecraft mc, String text, int x, int y, int color) {
         if (main.getConfigValues().getTextStyle() == EnumUtils.TextStyle.BLACK_SHADOW) {
             String strippedText = main.getUtils().stripColor(text);
-            mc.fontRendererObj.drawString(strippedText, x + 1, y, 0);
-            mc.fontRendererObj.drawString(strippedText, x - 1, y, 0);
-            mc.fontRendererObj.drawString(strippedText, x, y + 1, 0);
-            mc.fontRendererObj.drawString(strippedText, x, y - 1, 0);
-            mc.fontRendererObj.drawString(text, x, y, color);
+            MinecraftReflection.FontRenderer.drawString(strippedText, x + 1, y, 0);
+            MinecraftReflection.FontRenderer.drawString(strippedText, x - 1, y, 0);
+            MinecraftReflection.FontRenderer.drawString(strippedText, x, y + 1, 0);
+            MinecraftReflection.FontRenderer.drawString(strippedText, x, y - 1, 0);
+            MinecraftReflection.FontRenderer.drawString(text, x, y, color);
         } else {
-            mc.ingameGUI.drawString(mc.fontRendererObj, text, x, y, color);
+            MinecraftReflection.FontRenderer.drawString(text, x, y, color);
         }
     }
 

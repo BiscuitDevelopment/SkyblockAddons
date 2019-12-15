@@ -59,7 +59,7 @@ public class MinecraftHook {
                         if ((isItemBow(item) || isItemBow(itemInUse))) {
                             if (System.currentTimeMillis() - lastProfileMessage > 20000) {
                                 lastProfileMessage = System.currentTimeMillis();
-                                main.getUtils().sendMessage(main.getConfigValues().getColor(Feature.DONT_OPEN_PROFILES_WITH_BOW).getChatFormatting() +
+                                main.getUtils().sendMessage(main.getConfigValues().getColor(Feature.DONT_OPEN_PROFILES_WITH_BOW) +
                                         Message.MESSAGE_STOPPED_OPENING_PROFILE.getMessage());
                             }
                             returnValue.cancel();

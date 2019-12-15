@@ -31,7 +31,7 @@ public class GuiScreenHook {
                 IInventory chest = ((ContainerChest) playerContainer).getLowerChestInventory();
                 if (chest.hasCustomName()) {
                     String chestName = chest.getDisplayName().getUnformattedText();
-                    if (chestName.contains("Auction") || chestName.equals("Your Bids")) {
+                    if (chestName.contains("Auction") || "Your Bids".equals(chestName)) {
                         return;
                     }
                 }
@@ -49,7 +49,7 @@ public class GuiScreenHook {
 
     public static void handleComponentClick(IChatComponent component) {
         SkyblockAddons main = SkyblockAddons.getInstance();
-        if (main.getUtils().isOnSkyblock() && component != null && component.getUnformattedText().equals("§2§l[OPEN MENU]") &&
+        if (main.getUtils().isOnSkyblock() && component != null && "§2§l[OPEN MENU]".equals(component.getUnformattedText()) &&
                 !CooldownManager.isOnCooldown(InventoryUtils.MADDOX_BATPHONE_DISPLAYNAME)) {// The prompt when Maddox picks up the phone.
             CooldownManager.put(InventoryUtils.MADDOX_BATPHONE_DISPLAYNAME, MADDOX_BATPHONE_COOLDOWN);
         }

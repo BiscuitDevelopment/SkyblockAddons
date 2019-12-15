@@ -1,12 +1,20 @@
 package codes.biscuit.skyblockaddons.gui;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.gui.buttons.*;
+import codes.biscuit.skyblockaddons.gui.buttons.ButtonArrow;
+import codes.biscuit.skyblockaddons.gui.buttons.ButtonColor;
+import codes.biscuit.skyblockaddons.gui.buttons.ButtonFeature;
+import codes.biscuit.skyblockaddons.gui.buttons.ButtonGuiScale;
+import codes.biscuit.skyblockaddons.gui.buttons.ButtonLanguage;
+import codes.biscuit.skyblockaddons.gui.buttons.ButtonSolid;
+import codes.biscuit.skyblockaddons.gui.buttons.ButtonSwitchTab;
+import codes.biscuit.skyblockaddons.gui.buttons.ButtonToggleTitle;
 import codes.biscuit.skyblockaddons.listeners.PlayerListener;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.Feature;
 import codes.biscuit.skyblockaddons.utils.Language;
 import codes.biscuit.skyblockaddons.utils.Message;
+import codes.biscuit.skyblockaddons.utils.nifty.reflection.MinecraftReflection;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
@@ -15,7 +23,7 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.GuiIngameForge;
 
-import java.awt.*;
+import java.awt.Color;
 import java.util.Set;
 
 public class SettingsGui extends GuiScreen {
@@ -205,8 +213,7 @@ public class SettingsGui extends GuiScreen {
         double x = width/2;
         GlStateManager.pushMatrix();
         GlStateManager.scale(scale, scale, 1);
-        drawCenteredString(fontRendererObj, text,
-                (int)(x/scale)+xOff, (int)(y/scale), color);
+        MinecraftReflection.FontRenderer.drawCenteredString(text, (int)(x/scale)+xOff, (int)(y/scale), color);
         GlStateManager.popMatrix();
     }
 

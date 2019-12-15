@@ -1,9 +1,25 @@
 package codes.biscuit.skyblockaddons.gui;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.gui.buttons.*;
+import codes.biscuit.skyblockaddons.gui.buttons.ButtonArrow;
+import codes.biscuit.skyblockaddons.gui.buttons.ButtonBanner;
+import codes.biscuit.skyblockaddons.gui.buttons.ButtonCredit;
+import codes.biscuit.skyblockaddons.gui.buttons.ButtonFeature;
+import codes.biscuit.skyblockaddons.gui.buttons.ButtonModify;
+import codes.biscuit.skyblockaddons.gui.buttons.ButtonNormal;
+import codes.biscuit.skyblockaddons.gui.buttons.ButtonSettings;
+import codes.biscuit.skyblockaddons.gui.buttons.ButtonSocial;
+import codes.biscuit.skyblockaddons.gui.buttons.ButtonSolid;
+import codes.biscuit.skyblockaddons.gui.buttons.ButtonSwitchTab;
+import codes.biscuit.skyblockaddons.gui.buttons.ButtonToggle;
 import codes.biscuit.skyblockaddons.listeners.PlayerListener;
-import codes.biscuit.skyblockaddons.utils.*;
+import codes.biscuit.skyblockaddons.utils.CoordsPair;
+import codes.biscuit.skyblockaddons.utils.EnumUtils;
+import codes.biscuit.skyblockaddons.utils.Feature;
+import codes.biscuit.skyblockaddons.utils.Message;
+import codes.biscuit.skyblockaddons.utils.nifty.StringUtil;
+import codes.biscuit.skyblockaddons.utils.nifty.color.ChatFormatting;
+import codes.biscuit.skyblockaddons.utils.nifty.reflection.MinecraftReflection;
 import com.google.common.collect.Sets;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
@@ -14,7 +30,8 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraftforge.client.GuiIngameForge;
 import org.lwjgl.input.Keyboard;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URI;
 import java.util.Comparator;
@@ -53,7 +70,8 @@ public class SkyblockAddonsGui extends GuiScreen {
     public SkyblockAddonsGui(SkyblockAddons main, int page, EnumUtils.GuiTab tab, String text) {
         this(main,page,tab);
 
-        if (text != null && !text.equals("")) initialText = text;
+        if (StringUtil.notEmpty(text))
+            initialText = text;
     }
 
 
@@ -122,7 +140,7 @@ public class SkyblockAddonsGui extends GuiScreen {
     }
 
     private boolean matchesSearch(String text) {
-        if (featureSearchBar.getText().equals("")) return true;
+        if (StringUtil.isEmpty(featureSearchBar.getText())) return true;
 
         return text.toLowerCase().contains(featureSearchBar.getText().toLowerCase());
     }
@@ -169,8 +187,8 @@ public class SkyblockAddonsGui extends GuiScreen {
         drawScaledString("Special Credits: InventiveTalent - Magma Boss Timer API", height-25, defaultBlue, 1, 0);
 
         featureSearchBar.drawTextBox();
-        if (featureSearchBar.getText().equals("")) {
-            mc.ingameGUI.drawString(mc.fontRendererObj, Message.MESSAGE_SEARCH_FEATURES.getMessage(), width/2-60+4, 72, ConfigColor.DARK_GRAY.getColor());
+        if (StringUtil.isEmpty(featureSearchBar.getText())) {
+            MinecraftReflection.FontRenderer.drawString(Message.MESSAGE_SEARCH_FEATURES.getMessage(), width/2-60+4, 72, ChatFormatting.DARK_GRAY);
         }
 
         super.drawScreen(mouseX, mouseY, partialTicks); // Draw buttons.
@@ -271,7 +289,7 @@ public class SkyblockAddonsGui extends GuiScreen {
         double x = width/2;
         GlStateManager.pushMatrix();
         GlStateManager.scale(scale, scale, 1);
-        drawCenteredString(fontRendererObj, text,
+        MinecraftReflection.FontRenderer.drawCenteredString(text,
                 (int)(x/scale)+xOff, (int)(y/scale), color);
         GlStateManager.popMatrix();
     }

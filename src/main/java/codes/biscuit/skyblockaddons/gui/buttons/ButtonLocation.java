@@ -1,8 +1,8 @@
 package codes.biscuit.skyblockaddons.gui.buttons;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.utils.ConfigColor;
 import codes.biscuit.skyblockaddons.utils.Feature;
+import codes.biscuit.skyblockaddons.utils.nifty.color.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 
@@ -57,7 +57,7 @@ public class ButtonLocation extends ButtonFeature {
         if (hovered) {
             boxAlpha = 170;
         }
-        int boxColor = ConfigColor.GRAY.getColor(boxAlpha);
+        int boxColor = ChatFormatting.GRAY.getColor(boxAlpha).getRGB();
         drawRect(boxXOne, boxYOne,
                 boxXTwo, boxYTwo, boxColor);
     }

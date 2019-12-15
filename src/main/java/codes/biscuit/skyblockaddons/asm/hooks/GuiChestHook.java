@@ -3,7 +3,14 @@ package codes.biscuit.skyblockaddons.asm.hooks;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.asm.utils.ReturnValue;
 import codes.biscuit.skyblockaddons.gui.elements.CraftingPatternSelection;
-import codes.biscuit.skyblockaddons.utils.*;
+import codes.biscuit.skyblockaddons.utils.Backpack;
+import codes.biscuit.skyblockaddons.utils.BackpackColor;
+import codes.biscuit.skyblockaddons.utils.EnumUtils;
+import codes.biscuit.skyblockaddons.utils.Feature;
+import codes.biscuit.skyblockaddons.utils.Message;
+import codes.biscuit.skyblockaddons.utils.nifty.StringUtil;
+import codes.biscuit.skyblockaddons.utils.nifty.color.ChatFormatting;
+import codes.biscuit.skyblockaddons.utils.nifty.reflection.MinecraftReflection;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiTextField;
@@ -13,7 +20,6 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumChatFormatting;
 import org.lwjgl.input.Keyboard;
 
 import java.util.Arrays;
@@ -59,19 +65,18 @@ public class GuiChestHook {
             if (x<0) {
                 x = 20;
             }
-            Minecraft mc = Minecraft.getMinecraft();
-            mc.ingameGUI.drawString(mc.fontRendererObj, Message.MESSAGE_TYPE_ENCHANTMENTS.getMessage(inventoryMessage), Math.round(x/scale), Math.round((guiTop+40)/scale), defaultBlue);
-            mc.ingameGUI.drawString(mc.fontRendererObj, Message.MESSAGE_SEPARATE_ENCHANTMENTS.getMessage(), Math.round(x/scale), Math.round((guiTop + 50)/scale), defaultBlue);
-            mc.ingameGUI.drawString(mc.fontRendererObj, Message.MESSAGE_ENCHANTS_TO_MATCH.getMessage(inventoryMessage), Math.round(x/scale), Math.round((guiTop + 70)/scale), defaultBlue);
-            mc.ingameGUI.drawString(mc.fontRendererObj,Message.MESSAGE_ENCHANTS_TO_EXCLUDE.getMessage(inventoryMessage), Math.round(x/scale), Math.round((guiTop + 110)/scale), defaultBlue);
+            MinecraftReflection.FontRenderer.drawString(Message.MESSAGE_TYPE_ENCHANTMENTS.getMessage(inventoryMessage), Math.round(x/scale), Math.round((guiTop+40)/scale), defaultBlue);
+            MinecraftReflection.FontRenderer.drawString(Message.MESSAGE_SEPARATE_ENCHANTMENTS.getMessage(), Math.round(x/scale), Math.round((guiTop + 50)/scale), defaultBlue);
+            MinecraftReflection.FontRenderer.drawString(Message.MESSAGE_ENCHANTS_TO_MATCH.getMessage(inventoryMessage), Math.round(x/scale), Math.round((guiTop + 70)/scale), defaultBlue);
+            MinecraftReflection.FontRenderer.drawString(Message.MESSAGE_ENCHANTS_TO_EXCLUDE.getMessage(inventoryMessage), Math.round(x/scale), Math.round((guiTop + 110)/scale), defaultBlue);
             GlStateManager.popMatrix();
             textFieldMatch.drawTextBox();
-            if (textFieldMatch.getText().equals("")) {
-                mc.ingameGUI.drawString(mc.fontRendererObj, "ex. \"prot, feather\"", x+4, guiTop + 86, ConfigColor.DARK_GRAY.getColor());
+            if (StringUtil.isEmpty(textFieldMatch.getText())) {
+                MinecraftReflection.FontRenderer.drawString("ex. \"prot, feather\"", x+4, guiTop + 86, ChatFormatting.DARK_GRAY);
             }
             textFieldExclusions.drawTextBox();
-            if (textFieldExclusions.getText().equals("")) {
-                mc.ingameGUI.drawString(mc.fontRendererObj, "ex. \"proj, blast\"", x+4, guiTop + 126, ConfigColor.DARK_GRAY.getColor());
+            if (StringUtil.isEmpty(textFieldExclusions.getText())) {
+                MinecraftReflection.FontRenderer.drawString("ex. \"proj, blast\"", x+4, guiTop + 126, ChatFormatting.DARK_GRAY);
             }
         }
     }
@@ -167,7 +172,7 @@ public class GuiChestHook {
                     ItemStack[] enchantBottles = {slots.getSlot(29).getStack(), slots.getSlot(31).getStack(), slots.getSlot(33).getStack()};
                     for (ItemStack bottle : enchantBottles) {
                         if (bottle != null && bottle.hasDisplayName()) {
-                            if (bottle.getDisplayName().startsWith(EnumChatFormatting.GREEN + "Enchant Item")) {
+                            if (bottle.getDisplayName().startsWith(ChatFormatting.GREEN + "Enchant Item")) {
                                 Minecraft mc = Minecraft.getMinecraft();
                                 List<String> toolip = bottle.getTooltip(mc.thePlayer, false);
                                 if (toolip.size() > 2) {
@@ -181,7 +186,7 @@ public class GuiChestHook {
                                         }
                                     }
                                 }
-                            } else if (bottle.getDisplayName().startsWith(EnumChatFormatting.RED + "Enchant Item")) {
+                            } else if (bottle.getDisplayName().startsWith(ChatFormatting.RED + "Enchant Item")) {
                                 // Stop player from removing item before the enchants have even loaded.
                                 returnValue.cancel();
                             }

@@ -1,6 +1,7 @@
 package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.utils.nifty.color.ChatFormatting;
 import com.google.gson.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
@@ -31,7 +32,7 @@ public class ConfigValues {
     private JsonObject languageConfig = new JsonObject();
 
     private Set<Feature> disabledFeatures = EnumSet.noneOf(Feature.class);
-    private Map<Feature, ConfigColor> featureColors = new EnumMap<>(Feature.class);
+    private Map<Feature, ChatFormatting> featureColors = new EnumMap<>(Feature.class);
     private Map<Feature, MutableFloat> guiScales = new EnumMap<>(Feature.class);
     private Map<Feature, CoordsPair> barSizes = new EnumMap<>(Feature.class);
     private int warningSeconds = 4;
@@ -172,8 +173,8 @@ public class ConfigValues {
                     Feature feature = Feature.fromId(Integer.parseInt(element.getKey()));
                     if (feature != null) {
                         int ordinal = element.getValue().getAsInt();
-                        if (ConfigColor.values().length > ordinal) {
-                            featureColors.put(feature, ConfigColor.values()[ordinal]);
+                        if (ordinal < 16) {
+                            featureColors.put(feature, ChatFormatting.values()[ordinal]);
                         }
                     }
                 }
@@ -255,8 +256,8 @@ public class ConfigValues {
     private void loadLegacyColor(String memberName, Feature feature) {
         if (settingsConfig.has(memberName)) {
             int ordinal = settingsConfig.get(memberName).getAsInt();
-            if (ConfigColor.values().length > ordinal) {
-                featureColors.put(feature, ConfigColor.values()[ordinal]);
+            if (ordinal < 16) {
+                featureColors.put(feature, ChatFormatting.values()[ordinal]);
             }
         }
     }
@@ -283,7 +284,7 @@ public class ConfigValues {
         }
 
         for (Feature feature : Feature.values()) {
-            ConfigColor color = feature.getDefaultColor();
+            ChatFormatting color = feature.getDefaultColor();
             if (color != null) {
                 featureColors.put(feature, color);
             }
@@ -446,8 +447,8 @@ public class ConfigValues {
 
             JsonObject colorsObject = new JsonObject();
             for (Feature feature : featureColors.keySet()) {
-                ConfigColor featureColor = featureColors.get(feature);
-                if (featureColor != ConfigColor.RED) { // red is default, no need to save
+                ChatFormatting featureColor = featureColors.get(feature);
+                if (featureColor != ChatFormatting.RED) { // red is default, no need to save
                     colorsObject.addProperty(String.valueOf(feature.getId()), featureColor.ordinal());
                 }
             }
@@ -526,12 +527,12 @@ public class ConfigValues {
     }
 
     public void setNextColor(Feature feature) {
-        featureColors.put(feature, main.getConfigValues().getColor(feature).getNextColor());
+        featureColors.put(feature, main.getConfigValues().getColor(feature).getNextFormat());
     }
 
-    public ConfigColor getColor(Feature feature) {
-        ConfigColor defaultColor = feature.getDefaultColor();
-        return featureColors.getOrDefault(feature, defaultColor != null ? defaultColor : ConfigColor.RED);
+    public ChatFormatting getColor(Feature feature) {
+        ChatFormatting defaultColor = feature.getDefaultColor();
+        return featureColors.getOrDefault(feature, defaultColor != null ? defaultColor : ChatFormatting.RED);
     }
 
     public int getWarningSeconds() {

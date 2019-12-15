@@ -2,10 +2,11 @@ package codes.biscuit.skyblockaddons.gui.buttons;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.utils.Feature;
+import codes.biscuit.skyblockaddons.utils.nifty.reflection.MinecraftReflection;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 
-import java.awt.*;
+import java.awt.Color;
 
 import static codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui.BUTTON_MAX_WIDTH;
 
@@ -33,11 +34,11 @@ public class ButtonColor extends ButtonText {
             boxAlpha = 170;
             fontColor = new Color(255, 255, 160, 255).getRGB();
         }
-        boxColor = main.getConfigValues().getColor(feature).getColor(boxAlpha);
+        boxColor = main.getConfigValues().getColor(feature).getColor(boxAlpha).getRGB();
         // Regular features are red if disabled, green if enabled or part of the gui feature is enabled.
         GlStateManager.enableBlend();
         float scale = 1;
-        int stringWidth = mc.fontRendererObj.getStringWidth(displayString);
+        int stringWidth = MinecraftReflection.FontRenderer.getStringWidth(displayString);
         float widthLimit = BUTTON_MAX_WIDTH -10;
         if (stringWidth > widthLimit) {
             scale = 1/(stringWidth/widthLimit);
