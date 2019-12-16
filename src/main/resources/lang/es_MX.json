@@ -79,14 +79,14 @@
     "enableMessageWhenActionPrevented": "Mostrar un Mensaje al Prevenir una Acción",
     "hidePetHealthBar": "Esconder Vida de Mascota",
     "powerOrbDisplay": "Power Orb Display",
-    "powerOrbDisplayStyle": "Power Orb Style: %style%",
+    "powerOrbDisplayStyle": "Estilo de Power Orb: %style%",
     "powerOrbStyle": {
-      "detailed": "Detailed",
+      "detailed": "Detallado",
       "compact": "Compact"
     },
     "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages",
-    "zealotCounter": "Show Zealot Counter",
-    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display",
+    "zealotCounter": "Mostrar Contador de Zealot",
+    "scorpionFoilTickerDisplay": "Mostrar Indicador de Scorpion Foil",
     "tab": {
       "generalSettings": "Configuración General"
     }
