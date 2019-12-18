@@ -460,8 +460,12 @@ public class Reflection {
 		if (a.length != o.length) return false;
 
 		for (int i = 0; i < a.length; i++) {
-			if (o[i] != null && !a[i].equals(o[i]) && !a[i].isAssignableFrom(o[i]))
-				return false;
+			if (o[i] != null && !a[i].equals(o[i])) {
+				/*if (Primitives.isWrapperType(a[i]) || a[i].isPrimitive())
+					return false;
+				else */if (!a[i].isAssignableFrom(o[i]))
+					return false;
+			}
 		}
 
 		return true;
@@ -632,7 +636,7 @@ public class Reflection {
 		Class<?>[] newTypes = new Class<?>[types != null ? types.length : 0];
 
 		for (int i = 0; i < newTypes.length; i++)
-			newTypes[i] = (newTypes[i] != null ? Primitives.unwrap(types[i]) : null);
+			newTypes[i] = (types[i] != null ? Primitives.unwrap(types[i]) : null);
 
 		return newTypes;
 	}
