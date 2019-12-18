@@ -82,11 +82,11 @@
     "powerOrbDisplayStyle": "مظهر جرم القوة",
     "powerOrbStyle": {
       "detailed": "مفصل",
-      "compact": "Compact"
+      "compact": "متراص"
     },
     "disableMagicalSoupMessage": "تعطيل رسائل حساء الفطر السحري",
     "zealotCounter": "أظهار عداد زيلوت",
-    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display",
+    "scorpionFoilTickerDisplay": "أظهار شريط Scorpion Foil",
     "tab": {
       "generalSettings": "الإعدادات العامة"
     }
