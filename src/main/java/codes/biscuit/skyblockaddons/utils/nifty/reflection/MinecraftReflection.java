@@ -2,6 +2,11 @@ package codes.biscuit.skyblockaddons.utils.nifty.reflection;
 
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
 import codes.biscuit.skyblockaddons.utils.nifty.reflection.accessor.MethodAccessor;
+import net.minecraftforge.common.MinecraftForge;
+
+import java.lang.reflect.Method;
+import java.lang.reflect.ParameterizedType;
+import java.util.Collection;
 
 /**
  * Allows for assisted access to hidden minecraft fields, methods and classes.
@@ -11,6 +16,7 @@ import codes.biscuit.skyblockaddons.utils.nifty.reflection.accessor.MethodAccess
 public final class MinecraftReflection extends Reflection {
 
 	private static final String MINECRAFT_PACKAGE = "net.minecraft";
+	private static final Integer MINECRAFT_VERSION = Integer.valueOf(MinecraftForge.MC_VERSION.replace(".", ""));
 	private static final Reflection MINECRAFT = getCompatibleForgeReflection("Minecraft", MINECRAFT_PACKAGE, "client");
 	private static final MethodAccessor GET_MINECRAFT = MINECRAFT.getMethod(MINECRAFT.getClazz());
 
@@ -140,12 +146,125 @@ public final class MinecraftReflection extends Reflection {
 
 	}
 
+	public static final class IngameGUI {
+
+		private static final Reflection GUI_INGAME = getCompatibleForgeReflection("GuiIngame", MINECRAFT_PACKAGE, "client.gui");
+		private static final MethodAccessor DRAW_TEXTURED_MODAL_RECT = GUI_INGAME.getMethod(Void.class, Float.class, Float.class, Integer.class, Integer.class, Integer.class, Integer.class);
+
+		private static Object getGuiIngame() {
+			return MINECRAFT.getValue(GUI_INGAME, getMinecraftInstance());
+		}
+
+		public static void drawTexturedModalRect(int x, int y, int textureX, int textureY, int width, int height) {
+			drawTexturedModalRect((float)x, (float)y, textureX, textureY, width, height);
+		}
+
+		public static void drawTexturedModalRect(float x, float y, int textureX, int textureY, int width, int height) {
+			DRAW_TEXTURED_MODAL_RECT.invoke(getGuiIngame(), x, y, textureX, textureY, width, height);
+		}
+
+	}
+
+	public static final class TextureManager {
+
+		private static final Reflection TEXTURE_MANAGER = getCompatibleForgeReflection("TextureManager", MINECRAFT_PACKAGE, "client.renderer.texture");
+		private static final Reflection RESOURCE_LOCATION = getCompatibleForgeReflection("ResourceLocation", MINECRAFT_PACKAGE, "util");
+		private static final MethodAccessor BIND_TEXTURE = TEXTURE_MANAGER.getMethod(Void.class, RESOURCE_LOCATION.getClazz());
+
+		private static Object getTextureManager() {
+			return MINECRAFT.getValue(TEXTURE_MANAGER, getMinecraftInstance());
+		}
+
+	}
+
 	public static final class Player {
 
-		private static final Reflection ENTITY_PLAYER_SP = getCompatibleForgeReflection("EntityPlayerSP", MINECRAFT_PACKAGE, "client.entity");
+		private static final Reflection ENTITY_PLAYER = getCompatibleForgeReflection("EntityPlayer", MINECRAFT_PACKAGE, "entity.player");
+		//private static final Reflection ENTITY_PLAYER_SP = getCompatibleForgeReflection("EntityPlayerSP", MINECRAFT_PACKAGE, "client.entity");
+		private static final Reflection POTION_EFFECT = getCompatibleForgeReflection("PotionEffect", MINECRAFT_PACKAGE, "potion");
+		private static final Reflection POTION = getCompatibleForgeReflection("Potion", MINECRAFT_PACKAGE, "potion");
+		private static final MethodAccessor GET_ACTIVE_POTION_EFFECTS;
+
+		static {
+			MethodAccessor getActivePotionEffects = null;
+
+			for (Method method : ENTITY_PLAYER.getClazz().getMethods()) {
+				if (method.getReturnType().equals(Collection.class)) {
+					ParameterizedType collType = (ParameterizedType)method.getGenericReturnType();
+					Class<?> collClass = (Class<?>)collType.getActualTypeArguments()[0];
+
+					if (collClass.equals(POTION_EFFECT.getClazz()))
+						getActivePotionEffects = new MethodAccessor(ENTITY_PLAYER, method);
+				}
+			}
+
+			GET_ACTIVE_POTION_EFFECTS = getActivePotionEffects;
+		}
 
 		private static Object getPlayer() {
-			return MINECRAFT.getValue(ENTITY_PLAYER_SP, getMinecraftInstance());
+			return MINECRAFT.getValue(ENTITY_PLAYER, getMinecraftInstance());
+		}
+
+		public static boolean isPotionActive(int id) {
+			Collection<?> potionEffects = (Collection<?>)GET_ACTIVE_POTION_EFFECTS.invoke(getPlayer());
+
+			for (Object potionEffect : potionEffects) {
+				int potionId;
+
+				if (MINECRAFT_VERSION <= 189) { // 1.8.9 (and below?)
+					potionId = POTION_EFFECT.getValue(Integer.class, potionEffect);
+				} else {
+					Object potion = POTION_EFFECT.getValue(POTION, potionEffect);
+					MethodAccessor getIdFromPotion = POTION.getMethod(Integer.class, POTION.getClazz());
+					potionId = (int)getIdFromPotion.invoke(null, potion);
+				}
+
+				if (potionId == id)
+					return true;
+			}
+
+			return false;
+		}
+
+		public static void playSound(MinecraftReflection.SoundEvents soundEvent, float volume, float pitch) {
+			MethodAccessor playSound;
+
+			if (MINECRAFT_VERSION <= 189) {
+				playSound = ENTITY_PLAYER.getMethod(Void.class, String.class, Float.class, Float.class);
+			} else {
+				Reflection soundEvents = getCompatibleForgeReflection("SoundEvents", MINECRAFT_PACKAGE, "init");
+				playSound = ENTITY_PLAYER.getMethod(Void.class, soundEvents.getClazz(), Float.class, Float.class);
+			}
+
+			playSound.invoke(getPlayer(), soundEvent.getSound(), volume, pitch);
+		}
+
+	}
+
+	public enum SoundEvents {
+
+		BLOCK_LAVA_POP("random.pop", "block.lava.pop"),
+		ENTITY_ARROW_HIT_PLAYER("random.successful_hit", "entity.arrow.hit_player"),
+		BLOCK_NOTE_BASS("note.bass", "block.note.bass"),
+		ENTITY_EXPERIENCE_ORB_PICKUP("random.orb", "entity.experience_orb.pickup"),
+		UI_BUTTON_CLICK("gui.button.press", "ui.button.click");
+
+		private final String oldName;
+		private final String newName;
+
+		SoundEvents(String oldName, String newName) {
+			this.oldName = oldName;
+			this.newName = newName;
+		}
+
+		Object getSound() {
+			if (MINECRAFT_VERSION <= 189)
+				return this.oldName;
+			else {
+				Reflection soundEvents = getCompatibleForgeReflection("SoundEvents", MINECRAFT_PACKAGE, "init");
+				MethodAccessor getRegisteredSoundEvent = soundEvents.getMethod(soundEvents.getClazz(), String.class);
+				return getRegisteredSoundEvent.invoke(null, this.newName);
+			}
 		}
 
 	}
