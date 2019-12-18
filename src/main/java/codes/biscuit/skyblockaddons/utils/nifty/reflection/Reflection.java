@@ -28,8 +28,11 @@ import java.util.Map;
 public class Reflection {
 
 	private static final double JAVA_VERSION = Double.parseDouble(ManagementFactory.getRuntimeMXBean().getSpecVersion());
-	//private static final double JAVA_VERSION = Double.parseDouble(System.getProperty("java.specification.version"));
-	private static final transient Map<Class<?>, Map<Class<?>[], ConstructorAccessor>> CONSTRUCTOR_CACHE = new HashMap<>();
+	private static final transient Map<String, Map<Class<?>[], ConstructorAccessor>> CONSTRUCTOR_CACHE = new HashMap<>();
+	private static final transient Map<String, Map<Class<?>, Map<Class<?>[], MethodAccessor>>> METHOD_CACHE_CLASS = new HashMap<>();
+	private static final transient Map<String, Map<String, Map<Class<?>[], MethodAccessor>>> METHOD_CACHE_NAME = new HashMap<>();
+	private static final transient Map<String, Map<Class<?>, FieldAccessor>> FIELD_CACHE_CLASS = new HashMap<>();
+	private static final transient Map<String, Map<String, FieldAccessor>> FIELD_CACHE_NAME = new HashMap<>();
 	private static final transient Map<String, Class<?>> CLASS_CACHE = new HashMap<>();
 	private final String className;
 	private final String subPackage;
@@ -45,7 +48,7 @@ public class Reflection {
 		try {
 			this.className = clazz.getSimpleName();
 		} catch (Exception ex) {
-			System.out.println("Shit variables: " + clazz);
+			System.out.println("Variables for: " + clazz);
 			try {
 				System.out.println("Clazz string: " + clazz.toString());
 			} catch (Exception ignore) { }
@@ -64,7 +67,7 @@ public class Reflection {
 			try {
 				System.out.println("Package name: " + clazz.getPackage().getName());
 			} catch (Exception ignore) { }
-			throw new RuntimeException("Shit went horribly wrong!", ex);
+			throw new RuntimeException("Something horribly wrong!", ex);
 		}
 
 		if (clazz.getPackage() != null) {
@@ -177,13 +180,13 @@ public class Reflection {
 	public final ConstructorAccessor getConstructor(Class<?>... paramTypes) throws ReflectionException {
 		Class<?>[] types = toPrimitiveTypeArray(paramTypes);
 
-		if (CONSTRUCTOR_CACHE.containsKey(this.getClazz())) {
-			Map<Class<?>[], ConstructorAccessor> constructors = CONSTRUCTOR_CACHE.get(this.getClazz());
+		if (CONSTRUCTOR_CACHE.containsKey(this.getClazzPath())) {
+			Map<Class<?>[], ConstructorAccessor> constructors = CONSTRUCTOR_CACHE.get(this.getClazzPath());
 
 			if (constructors.containsKey(types))
 				return constructors.get(types);
 		} else
-			CONSTRUCTOR_CACHE.put(this.getClazz(), new HashMap<>());
+			CONSTRUCTOR_CACHE.put(this.getClazzPath(), new HashMap<>());
 
 		for (Constructor<?> constructor : this.getClazz().getDeclaredConstructors()) {
 			Class<?>[] constructorTypes = toPrimitiveTypeArray(constructor.getParameterTypes());
@@ -191,7 +194,7 @@ public class Reflection {
 			if (isEqualsTypeArray(constructorTypes, types)) {
 				constructor.setAccessible(true);
 				ConstructorAccessor constructorAccessor = new ConstructorAccessor(this, constructor);
-				CONSTRUCTOR_CACHE.get(this.getClazz()).put(types, constructorAccessor);
+				CONSTRUCTOR_CACHE.get(this.getClazzPath()).put(types, constructorAccessor);
 				return constructorAccessor;
 			}
 		}
@@ -216,10 +219,20 @@ public class Reflection {
 	public final FieldAccessor getField(Class<?> type) throws ReflectionException {
 		Class<?> utype = (type.isPrimitive() ? Primitives.wrap(type) : Primitives.unwrap(type));
 
+		if (FIELD_CACHE_CLASS.containsKey(this.getClazzPath())) {
+			Map<Class<?>, FieldAccessor> fields = FIELD_CACHE_CLASS.get(this.getClazzPath());
+
+			if (fields.containsKey(utype))
+				return fields.get(utype);
+		} else
+			FIELD_CACHE_CLASS.put(this.getClazzPath(), new HashMap<>());
+
 		for (Field field : this.getClazz().getDeclaredFields()) {
 			if (field.getType().equals(type) || type.isAssignableFrom(field.getType()) || field.getType().equals(utype) || utype.isAssignableFrom(field.getType())) {
 				field.setAccessible(true);
-				return new FieldAccessor(this, field);
+				FieldAccessor fieldAccessor = new FieldAccessor(this, field);
+				FIELD_CACHE_CLASS.get(this.getClazzPath()).put(type, fieldAccessor);
+				return fieldAccessor;
 			}
 		}
 
@@ -255,10 +268,20 @@ public class Reflection {
 	 * @throws ReflectionException When the class or field cannot be located.
 	 */
 	public final FieldAccessor getField(String name, boolean isCaseSensitive) throws ReflectionException {
+		if (FIELD_CACHE_NAME.containsKey(this.getClazzPath())) {
+			Map<String, FieldAccessor> fields = FIELD_CACHE_NAME.get(this.getClazzPath());
+
+			if (fields.containsKey(name))
+				return fields.get(name);
+		} else
+			FIELD_CACHE_NAME.put(this.getClazzPath(), new HashMap<>());
+
 		for (Field field : this.getClazz().getDeclaredFields()) {
 			if (isCaseSensitive ? field.getName().equals(name) : field.getName().equalsIgnoreCase(name)) {
 				field.setAccessible(true);
-				return new FieldAccessor(this, field);
+				FieldAccessor fieldAccessor = new FieldAccessor(this, field);
+				FIELD_CACHE_NAME.get(this.getClazzPath()).put(name, fieldAccessor);
+				return fieldAccessor;
 			}
 		}
 
@@ -293,13 +316,28 @@ public class Reflection {
 		Class<?> utype = (type.isPrimitive() ? Primitives.wrap(type) : Primitives.unwrap(type));
 		Class<?>[] types = toPrimitiveTypeArray(paramTypes);
 
+		if (METHOD_CACHE_CLASS.containsKey(this.getClazzPath())) {
+			Map<Class<?>, Map<Class<?>[], MethodAccessor>> methods = METHOD_CACHE_CLASS.get(this.getClazzPath());
+
+			if (methods.containsKey(type)) {
+				Map<Class<?>[], MethodAccessor> returnTypeMethods = methods.get(type);
+
+				if (returnTypeMethods.containsKey(types))
+					return returnTypeMethods.get(types);
+			} else
+				methods.put(type, new HashMap<>());
+		} else
+			METHOD_CACHE_CLASS.put(this.getClazzPath(), new HashMap<>());
+
 		for (Method method : this.getClazz().getDeclaredMethods()) {
 			Class<?>[] methodTypes = toPrimitiveTypeArray(method.getParameterTypes());
 			Class<?> returnType = method.getReturnType();
 
 			if ((returnType.equals(type) || type.isAssignableFrom(returnType) || returnType.equals(utype) || utype.isAssignableFrom(returnType)) && isEqualsTypeArray(methodTypes, types)) {
 				method.setAccessible(true);
-				return new MethodAccessor(this, method);
+				MethodAccessor methodAccessor = new MethodAccessor(this, method);
+				METHOD_CACHE_CLASS.get(this.getClazzPath()).get(type).put(types, methodAccessor);
+				return methodAccessor;
 			}
 		}
 
@@ -343,12 +381,27 @@ public class Reflection {
 	public final MethodAccessor getMethod(String name, boolean isCaseSensitive, Class<?>... paramTypes) throws ReflectionException {
 		Class<?>[] types = toPrimitiveTypeArray(paramTypes);
 
+		if (METHOD_CACHE_NAME.containsKey(this.getClazzPath())) {
+			Map<String, Map<Class<?>[], MethodAccessor>> methods = METHOD_CACHE_NAME.get(this.getClazzPath());
+
+			if (methods.containsKey(name)) {
+				Map<Class<?>[], MethodAccessor> nameMethods = methods.get(name);
+
+				if (nameMethods.containsKey(types))
+					return nameMethods.get(types);
+			} else
+				methods.put(name, new HashMap<>());
+		} else
+			METHOD_CACHE_NAME.put(this.getClazzPath(), new HashMap<>());
+
 		for (Method method : this.getClazz().getDeclaredMethods()) {
 			Class<?>[] methodTypes = toPrimitiveTypeArray(method.getParameterTypes());
 
 			if ((isCaseSensitive ? method.getName().equals(name) : method.getName().equalsIgnoreCase(name)) && isEqualsTypeArray(methodTypes, types)) {
 				method.setAccessible(true);
-				return new MethodAccessor(this, method);
+				MethodAccessor methodAccessor = new MethodAccessor(this, method);
+				METHOD_CACHE_NAME.get(this.getClazzPath()).get(name).put(types, methodAccessor);
+				return methodAccessor;
 			}
 		}
 
