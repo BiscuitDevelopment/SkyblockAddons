@@ -81,10 +81,10 @@
     "powerOrbDisplay": "عرض جرم القوة",
     "powerOrbDisplayStyle": "مظهر جرم القوة",
     "powerOrbStyle": {
-      "detailed": "Detailed",
+      "detailed": "مفصل",
       "compact": "Compact"
     },
-    "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages",
+    "disableMagicalSoupMessage": "تعطيل رسائل حساء الفطر السحري",
     "zealotCounter": "أظهار عداد زيلوت",
     "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display",
     "tab": {
