@@ -78,14 +78,14 @@
     "specialZealotAlert": "تنبيه زيلوت فريد",
     "enableMessageWhenActionPrevented": "إظهار رسالة عند منع اجراء",
     "hidePetHealthBar": "اخفاء شريط صحه الحيوان",
-    "powerOrbDisplay": "Power Orb Display",
-    "powerOrbDisplayStyle": "Power Orb Style: %style%",
+    "powerOrbDisplay": "عرض جرم القوة",
+    "powerOrbDisplayStyle": "مظهر جرم القوة",
     "powerOrbStyle": {
       "detailed": "Detailed",
       "compact": "Compact"
     },
     "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages",
-    "zealotCounter": "Show Zealot Counter",
+    "zealotCounter": "أظهار عداد زيلوت",
     "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display",
     "tab": {
       "generalSettings": "الإعدادات العامة"
