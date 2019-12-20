@@ -79,7 +79,7 @@
     "enableMessageWhenActionPrevented": "動作を防止したときにメッセージを表示する",
     "hidePetHealthBar": "ペットの体力バーを非表示",
     "powerOrbDisplay": "Power Orbのゲージ",
-    "powerOrbDisplayStyle": "Power Orbゲージのスタイル: %style%",
+    "powerOrbDisplayStyle": "Power Orbのゲージのスタイル: %style%",
     "powerOrbStyle": {
       "detailed": "詳細",
       "compact": "コンパクト"
