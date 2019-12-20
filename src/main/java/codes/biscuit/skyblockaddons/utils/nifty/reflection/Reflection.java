@@ -325,9 +325,11 @@ public class Reflection {
 				if (returnTypeMethods.containsKey(types))
 					return returnTypeMethods.get(types);
 			} else
-				methods.put(type, new HashMap<>());
-		} else
+				METHOD_CACHE_CLASS.get(this.getClazzPath()).put(type, new HashMap<>());
+		} else {
 			METHOD_CACHE_CLASS.put(this.getClazzPath(), new HashMap<>());
+			METHOD_CACHE_CLASS.get(this.getClazzPath()).put(type, new HashMap<>());
+		}
 
 		for (Method method : this.getClazz().getDeclaredMethods()) {
 			Class<?>[] methodTypes = toPrimitiveTypeArray(method.getParameterTypes());
@@ -390,9 +392,11 @@ public class Reflection {
 				if (nameMethods.containsKey(types))
 					return nameMethods.get(types);
 			} else
-				methods.put(name, new HashMap<>());
-		} else
+				METHOD_CACHE_NAME.get(this.getClazzPath()).put(name, new HashMap<>());
+		} else {
 			METHOD_CACHE_NAME.put(this.getClazzPath(), new HashMap<>());
+			METHOD_CACHE_NAME.get(this.getClazzPath()).put(name, new HashMap<>());
+		}
 
 		for (Method method : this.getClazz().getDeclaredMethods()) {
 			Class<?>[] methodTypes = toPrimitiveTypeArray(method.getParameterTypes());
