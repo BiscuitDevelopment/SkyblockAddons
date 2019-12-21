@@ -86,7 +86,7 @@
     },
     "disableMagicalSoupMessage": "Изключи Съобщенията За Магическата Супа",
     "zealotCounter": "Покажи Брояч На Зийлъти",
-    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display",
+    "tickerChargesDisplay": "Ticker/Charges Display",
     "tab": {
       "generalSettings": "Общи Настройки"
     }
