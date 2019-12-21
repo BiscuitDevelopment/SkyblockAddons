@@ -86,7 +86,7 @@
     },
     "disableMagicalSoupMessage": "Onemogući Magical Mushroom Soup Poruke",
     "zealotCounter": "Prikaži Brojač Zealota",
-    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Prikaz",
+    "tickerChargesDisplay": "Ticker/Charges Display",
     "tab": {
       "generalSettings": "Opće Postavke"
     }
