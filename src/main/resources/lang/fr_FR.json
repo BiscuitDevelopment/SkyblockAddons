@@ -86,7 +86,7 @@
     },
     "disableMagicalSoupMessage": "Masquer les infos chat de la soupe",
     "zealotCounter": "Compteur de Zélotes",
-    "scorpionFoilTickerDisplay": "Afficher les dards du Scorpion Foil",
+    "tickerChargesDisplay": "Ticker/Charges Display",
     "tab": {
       "generalSettings": "Options"
     }
