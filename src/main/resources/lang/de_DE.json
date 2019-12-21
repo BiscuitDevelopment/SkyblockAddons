@@ -86,7 +86,7 @@
     },
     "disableMagicalSoupMessage": "Deaktiviere Magie-Pilz-Suppen Nachricht",
     "zealotCounter": "Zeige Zealot-Counter",
-    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Anzeiger",
+    "tickerChargesDisplay": "Ticker/Charges Display",
     "tab": {
       "generalSettings": "Allgemeine Einstellungen"
     }
