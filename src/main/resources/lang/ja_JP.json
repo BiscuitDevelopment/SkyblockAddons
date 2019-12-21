@@ -86,7 +86,7 @@
     },
     "disableMagicalSoupMessage": "Magical Mushroom Soupのメッセージを非表示",
     "zealotCounter": "Zealotカウンターを表示",
-    "scorpionFoilTickerDisplay": "Scorpion FoilのTickerのゲージ",
+    "tickerChargesDisplay": "Ticker/Charges Display",
     "tab": {
       "generalSettings": "一般設定"
     }
