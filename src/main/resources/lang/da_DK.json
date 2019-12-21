@@ -86,7 +86,7 @@
     },
     "disableMagicalSoupMessage": "Deaktiver Magiske Svampe Suppe Beskeder",
     "zealotCounter": "Vis Zealot Tæller",
-    "tickerChargesDisplay": "Ticker/Ladnings Visning",
+    "tickerChargesDisplay": "Visning af ticker/ladninger",
     "tab": {
       "generalSettings": "Generelle indstillinger"
     }
