@@ -86,7 +86,7 @@
     },
     "disableMagicalSoupMessage": "Ukryj wiadomości z Magicznej Zupy",
     "zealotCounter": "Pokaż licznik Zealotów",
-    "scorpionFoilTickerDisplay": "Pokaż Ticker Scorpion Foil'a",
+    "tickerChargesDisplay": "Ticker/Charges Display",
     "tab": {
       "generalSettings": "Ustawienia ogólne"
     }
