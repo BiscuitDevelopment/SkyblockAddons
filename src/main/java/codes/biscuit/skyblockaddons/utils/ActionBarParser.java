@@ -2,7 +2,6 @@ package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.utils.nifty.StringUtil;
-import net.minecraftforge.fml.common.FMLLog;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -24,6 +23,8 @@ import java.util.regex.Pattern;
  * Zombie Sword with Skill XP: §c1390/1390❤     §3+10.9 Combat (313,948/600,000)     §b187/233✎ Mana    §a§lⓩⓩⓩⓩ§2§l§r
  * Normal with Wand:           §c1390/1390❤+§c30▅     §a724§a❈ Defense     §b97/171✎ Mana§r
  * End Race:                   §d§lTHE END RACE §e00:52.370            §b147/147✎ Mana§r
+ * Woods Race:                 §A§LWOODS RACING §e00:31.520            §b147/147✎ Mana§r
+ * Trials of Fire:             §c1078/1078❤   §610 DPS   §c1 second     §b421/421✎ Mana§r
  * <p>
  * To add something new to parse, add an else-if case in {@link #parseActionBar(String)} to call a method that
  * parses information from that section.
@@ -54,9 +55,9 @@ public class ActionBarParser {
      * @return New action bar without parsed stats.
      */
     public String parseActionBar(String actionBar) {
+//        FMLLog.info(actionBar);
         // First split the action bar into sections
-        FMLLog.info(actionBar);
-        String[] splitMessage = actionBar.split(" {4,}");
+        String[] splitMessage = actionBar.split(" {3,}");
         // This list holds the text of unused sections that aren't displayed anywhere else in SBA
         // so they can keep being displayed in the action bar
         List<String> unusedSections = new LinkedList<>();
