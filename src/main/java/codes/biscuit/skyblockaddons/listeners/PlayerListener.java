@@ -20,7 +20,9 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ContainerChest;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.*;
+import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.Vec3;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.client.event.GuiOpenEvent;
 import net.minecraftforge.event.entity.EntityEvent;
@@ -42,8 +44,8 @@ import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.StringSelection;
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.io.IOException;
-import java.util.List;
 import java.util.*;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -64,9 +66,6 @@ public class PlayerListener {
     private int timerTick = 1;
     private long lastMinionSound = -1;
 
-    private int lastSecondHealth = -1;
-    private Integer healthUpdate = null;
-    private long lastHealthUpdate;
     private long lastFishingAlert = 0;
     private long lastBobberEnteredWater = Long.MAX_VALUE;
     private boolean oldBobberIsInWater = false;
@@ -82,10 +81,12 @@ public class PlayerListener {
 //    private Feature.Accuracy magmaTimerAccuracy = null;
 //    private long magmaTime = 7200;
 
-    private SkyblockAddons main;
+    private final SkyblockAddons main;
+    private final ActionBarParser actionBarParser;
 
     public PlayerListener(SkyblockAddons main) {
         this.main = main;
+        actionBarParser = new ActionBarParser(main);
     }
 
     /**
@@ -125,120 +126,12 @@ public class PlayerListener {
     public void onChatReceive(ClientChatReceivedEvent e) {
         String message = e.message.getUnformattedText();
         if (e.type == 2) {
-            if (message.contains("✎ Mana")) {
-                try {
-                    String returnMessage;
-                    if (message.startsWith("§d§lTHE END RACE") || message.startsWith("§a§lWOOD RACING")) { // Might be doing the end race!
-                        // Example Action Bar: '§d§lTHE END RACE §e00:52.370            §b147/147✎ Mana§r'
-                        String[] messageSplit = message.split(" {12}");
-                        String[] manaSplit = main.getUtils().getNumbersOnly(messageSplit[1]).split(Pattern.quote("/"));
-                        setAttribute(Attribute.MANA, Integer.parseInt(manaSplit[0]));
-                        setAttribute(Attribute.MAX_MANA, Integer.parseInt(manaSplit[1].trim()));
-
-                        main.getRenderListener().setPredictMana(false);
-                        main.getRenderListener().setPredictHealth(true);
-                        returnMessage = messageSplit[0];
-                    } else {
-                        // Example Action Bar: '§c586/586❤     §a247§a❈ Defense     §b173/173✎ Mana§r'
-                        // Another Possibility w/ Tickers: `§c1072/1072❤     §a582§a❈ Defense     §b419/419✎ Mana    §e§lⓄⓄⓄⓄ§7§l§r`
-                        String[] splitMessage = message.split(" {5}");
-                        String healthPart = splitMessage[0];
-                        String defencePart = null;
-                        String collectionPart = null;
-                        String manaPart;
-                        if (splitMessage.length > 2) {
-                            if (!splitMessage[1].contains("(")) { // Example Collection Bar: '§c986/986❤     §3+1 Mining (10,714.7/15,000)     §b297/323✎ Mana§r'
-                                defencePart = splitMessage[1];
-                            } else {
-                                collectionPart = splitMessage[1]; // Another Example: §5+§d30 §5Runecrafting (969/1000)
-                                Matcher matcher = COLLECTIONS_CHAT_PATTERN.matcher(collectionPart);
-                                if (matcher.matches()) {
-                                    main.getRenderListener().setSkillText("+"+matcher.group(1)+" "+matcher.group(3));
-                                    main.getRenderListener().setSkill(matcher.group(2));
-                                    main.getRenderListener().setSkillFadeOutTime(System.currentTimeMillis()+4000);
-                                }
-                            }
-                            manaPart = splitMessage[2];
-                        } else {
-                            manaPart = splitMessage[1];
-                        }
-
-                        tickers = -1;
-
-                        String tickerPart = null;
-                        if (manaPart.contains("Ⓞ")) { // Scorpion Foil Tickers
-                            tickers = 0;
-                            String[] parts = manaPart.split(" {4}");
-                            manaPart = parts[0];
-                            tickerPart = parts[1];
-                            System.out.println(tickerPart);
-                            for (char character : tickerPart.toCharArray()) {
-                                if (character == '7') { // If it reaches a grey color code, it means those tickers are used, so stop.
-                                    break;
-                                } else if (character == 'Ⓞ') { // Add the tickers that aren't grey.
-                                    tickers++;
-                                }
-                            }
-                        }
-                        if (healthPart.contains("+")) {
-                            healthPart = healthPart.substring(0, healthPart.indexOf('+'));
-                        }
-                        String[] healthSplit = main.getUtils().getNumbersOnly(main.getUtils().stripColor(healthPart)).split(Pattern.quote("/"));
-                        int newHealth = Integer.parseInt(healthSplit[0]);
-                        main.getScheduler().schedule(Scheduler.CommandType.SET_LAST_SECOND_HEALTH, 1, newHealth);
-                        if (lastSecondHealth != -1 && lastSecondHealth != newHealth) {
-                            healthUpdate = newHealth - lastSecondHealth;
-                            lastHealthUpdate = System.currentTimeMillis();
-                        }
-                        setAttribute(Attribute.HEALTH, newHealth);
-                        setAttribute(Attribute.MAX_HEALTH, Integer.parseInt(healthSplit[1]));
-                        if (defencePart != null) {
-                            setAttribute(Attribute.DEFENCE, Integer.parseInt(main.getUtils().getNumbersOnly(defencePart).trim()));
-                        } else if (collectionPart == null) { // if neither defence nor collection are showed, this indicates they just have no defence.
-                            setAttribute(Attribute.DEFENCE, 0);
-                        }
-                        String[] manaSplit = main.getUtils().getNumbersOnly(manaPart).split(Pattern.quote("/"));
-                        setAttribute(Attribute.MANA, Integer.parseInt(manaSplit[0]));
-                        setAttribute(Attribute.MAX_MANA, Integer.parseInt(manaSplit[1].trim()));
-                        main.getRenderListener().setPredictMana(false);
-                        main.getRenderListener().setPredictHealth(false);
-                        StringBuilder newMessage = new StringBuilder();
-                        boolean showHealth = main.getConfigValues().isDisabled(Feature.HEALTH_BAR) && main.getConfigValues().isDisabled(Feature.HEALTH_TEXT);
-                        boolean showCollection = collectionPart != null && main.getConfigValues().isDisabled(Feature.SKILL_DISPLAY);
-                        boolean showDefence = defencePart != null && main.getConfigValues().isDisabled(Feature.DEFENCE_PERCENTAGE) && main.getConfigValues().isDisabled(Feature.DEFENCE_TEXT);
-                        boolean showMana = main.getConfigValues().isDisabled(Feature.MANA_BAR) && main.getConfigValues().isDisabled(Feature.MANA_TEXT);
-                        if (showHealth) {
-                            newMessage.append(healthPart);
-                        }
-                        if (showCollection) {
-                            if (showHealth) newMessage.append("     ");
-                            newMessage.append(collectionPart);
-                        }
-                        if (showDefence) {
-                            if (showHealth) newMessage.append("     ");
-                            newMessage.append(defencePart);
-                        }
-                        if (showMana) {
-                            if (showHealth || showDefence) newMessage.append("     ");
-                            newMessage.append(manaPart);
-                        }
-                        if (tickerPart != null && main.getConfigValues().isDisabled(Feature.SCORPION_FOIL_TICKER_DISPLAY)) {
-                            newMessage.append("    ").append(tickerPart);
-                        }
-                        returnMessage = newMessage.toString();
-                    }
-                    if (main.isUsingOofModv1() && returnMessage.trim().length() == 0) {
-                        e.setCanceled(true);
-                    }
-                    e.message = new ChatComponentText(returnMessage);
-                    return;
-                } catch (Exception ex) {
-                    main.getRenderListener().setPredictMana(true);
-                    main.getRenderListener().setPredictHealth(true);
-                }
+            // action bar message, parse using ActionBarParser and display the rest message instead
+            String restMessage = actionBarParser.parseActionBar(message);
+            if (main.isUsingOofModv1() && restMessage.trim().length() == 0) {
+                e.setCanceled(true);
             }
-            main.getRenderListener().setPredictMana(true);
-            main.getRenderListener().setPredictHealth(true);
+            e.message = new ChatComponentText(restMessage);
         } else {
             if (main.getRenderListener().isPredictMana() && message.startsWith("Used ") && message.endsWith("Mana)")) {
                 int manaLost = Integer.parseInt(message.split(Pattern.quote("! ("))[1].split(Pattern.quote(" Mana)"))[0]);
@@ -340,17 +233,17 @@ public class PlayerListener {
             Minecraft mc = Minecraft.getMinecraft();
             if (mc != null) { // Predict health every tick if needed.
 
-                if (healthUpdate != null && System.currentTimeMillis() - lastHealthUpdate > 3000) {
-                    healthUpdate = null;
+                if (actionBarParser.getHealthUpdate() != null && System.currentTimeMillis() - actionBarParser.getLastHealthUpdate() > 3000) {
+                    actionBarParser.setHealthUpdate(null);
                 }
                 if (main.getRenderListener().isPredictHealth()) {
                     EntityPlayerSP p = mc.thePlayer;
                     if (p != null) { //Reverse calculate the player's health by using the player's vanilla hearts. Also calculate the health change for the gui item.
                         int newHealth = Math.round(getAttribute(Attribute.MAX_HEALTH) * (p.getHealth() / p.getMaxHealth()));
                         main.getScheduler().schedule(Scheduler.CommandType.SET_LAST_SECOND_HEALTH, 1, newHealth);
-                        if (lastSecondHealth != -1 && lastSecondHealth != newHealth) {
-                            healthUpdate = newHealth - lastSecondHealth;
-                            lastHealthUpdate = System.currentTimeMillis();
+                        if (actionBarParser.getLastSecondHealth() != -1 && actionBarParser.getLastSecondHealth() != newHealth) {
+                            actionBarParser.setHealthUpdate(newHealth - actionBarParser.getLastSecondHealth());
+                            actionBarParser.setLastHealthUpdate(System.currentTimeMillis());
                         }
                         setAttribute(Attribute.HEALTH, newHealth);
                     }
@@ -763,7 +656,7 @@ public class PlayerListener {
     }
 
     Integer getHealthUpdate() {
-        return healthUpdate;
+        return actionBarParser.getHealthUpdate();
     }
 
     public EnumUtils.MagmaTimerAccuracy getMagmaAccuracy() {
@@ -804,10 +697,14 @@ public class PlayerListener {
     }
 
     public void setLastSecondHealth(int lastSecondHealth) {
-        this.lastSecondHealth = lastSecondHealth;
+        actionBarParser.setLastSecondHealth(lastSecondHealth);
     }
 
     public int getTickers() {
-        return tickers;
+        return actionBarParser.getTickers();
+    }
+
+    public int getMaxTickers() {
+        return actionBarParser.getMaxTickers();
     }
 }

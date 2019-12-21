@@ -459,8 +459,8 @@ public class RenderListener {
      */
     public void drawScorpionFoilTicker(Minecraft mc, float scale, ButtonLocation buttonLocation) {
         if (buttonLocation != null || main.getPlayerListener().getTickers() != -1) {
-            float x = main.getConfigValues().getActualX(Feature.SCORPION_FOIL_TICKER_DISPLAY);
-            float y = main.getConfigValues().getActualY(Feature.SCORPION_FOIL_TICKER_DISPLAY);
+            float x = main.getConfigValues().getActualX(Feature.TICKER_CHARGES_DISPLAY);
+            float y = main.getConfigValues().getActualY(Feature.TICKER_CHARGES_DISPLAY);
 
             float height = 9;
             float width = 4 * 11;
@@ -477,7 +477,8 @@ public class RenderListener {
                 GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
             }
 
-            for (int tickers = 0; tickers < 4; tickers++) { //main.getPlayerListener().getTickers()
+            int maxTickers = (buttonLocation == null) ? main.getPlayerListener().getMaxTickers() : 4;
+            for (int tickers = 0; tickers < maxTickers; tickers++) { //main.getPlayerListener().getTickers()
                 mc.getTextureManager().bindTexture(TICKER_SYMBOL);
                 GlStateManager.enableAlpha();
                 if (tickers < (buttonLocation == null ? main.getPlayerListener().getTickers() : 3)) {
@@ -987,11 +988,11 @@ public class RenderListener {
     }
 
 
-    void setPredictHealth(boolean predictHealth) {
+    public void setPredictHealth(boolean predictHealth) {
         this.predictHealth = predictHealth;
     }
 
-    void setPredictMana(boolean predictMana) {
+    public void setPredictMana(boolean predictMana) {
         this.predictMana = predictMana;
     }
 
@@ -1034,7 +1035,7 @@ public class RenderListener {
         return downloadInfo;
     }
 
-    void setSkill(String skill) {
+    public void setSkill(String skill) {
         this.skill = EnumUtils.SkillType.getFromString(skill);
     }
 

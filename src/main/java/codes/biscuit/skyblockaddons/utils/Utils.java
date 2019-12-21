@@ -213,7 +213,7 @@ public class Utils {
         return NUMBERS_SLASHES.matcher(text).replaceAll("");
     }
 
-    private String removeDuplicateSpaces(String text) {
+    public String removeDuplicateSpaces(String text) {
         return text.replaceAll("\\s+", " ");
     }
 
