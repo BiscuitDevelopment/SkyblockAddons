@@ -86,7 +86,7 @@
     },
     "disableMagicalSoupMessage": "Desativar mensagens da Sopa de Cogumelo Mágica",
     "zealotCounter": "Show Zealot Counter",
-    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display",
+    "tickerChargesDisplay": "Ticker/Charges Display",
     "tab": {
       "generalSettings": "Configurações Gerais"
     }
