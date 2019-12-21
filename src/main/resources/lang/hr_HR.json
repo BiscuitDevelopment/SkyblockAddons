@@ -78,15 +78,15 @@
     "specialZealotAlert": "Upozorenje za Posebne Zealote",
     "enableMessageWhenActionPrevented": "Prikaži Poruku Kada je Akcija Spriječena",
     "hidePetHealthBar": "Sakrij Bar Zdravlja Ljubimca",
-    "powerOrbDisplay": "Power Orb Display",
-    "powerOrbDisplayStyle": "Power Orb Style: %style%",
+    "powerOrbDisplay": "Power Orb Prikaz",
+    "powerOrbDisplayStyle": "Power Orb Stil: %style%",
     "powerOrbStyle": {
-      "detailed": "Detailed",
-      "compact": "Compact"
+      "detailed": "Detaljno",
+      "compact": "Kompaktno"
     },
-    "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages",
-    "zealotCounter": "Show Zealot Counter",
-    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display",
+    "disableMagicalSoupMessage": "Onemogući Magical Mushroom Soup Poruke",
+    "zealotCounter": "Prikaži Brojač Zealota",
+    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Prikaz",
     "tab": {
       "generalSettings": "Opće Postavke"
     }
