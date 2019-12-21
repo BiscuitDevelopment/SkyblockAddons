@@ -86,7 +86,7 @@
     },
     "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages",
     "zealotCounter": "Toon Zealot teller",
-    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display",
+    "tickerChargesDisplay": "Ticker/Charges Display",
     "tab": {
       "generalSettings": "Algemene instellingen"
     }
