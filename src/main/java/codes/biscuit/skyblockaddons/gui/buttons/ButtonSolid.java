@@ -70,7 +70,7 @@ public class ButtonSolid extends ButtonText {
         if (stringWidth > widthLimit) {
             scale = 1/(stringWidth/widthLimit);
         }
-        drawButtonBoxAndText(mc, boxColor, scale, fontColor);
+        drawButtonBoxAndText(boxColor, scale, fontColor);
     }
 
     @Override

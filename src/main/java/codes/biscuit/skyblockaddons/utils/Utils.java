@@ -1,8 +1,9 @@
 package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.utils.nifty.StringUtil;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
+import codes.biscuit.skyblockaddons.utils.nifty.RegexUtil;
+import codes.biscuit.skyblockaddons.utils.nifty.StringUtil;
 import codes.biscuit.skyblockaddons.utils.nifty.reflection.MinecraftReflection;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
@@ -20,11 +21,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.launchwrapper.Launch;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.scoreboard.Score;
-import net.minecraft.scoreboard.ScoreObjective;
-import net.minecraft.scoreboard.ScorePlayerTeam;
-import net.minecraft.scoreboard.Scoreboard;
-import net.minecraft.scoreboard.Team;
+import net.minecraft.scoreboard.*;
 import net.minecraft.util.ChatComponentText;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.common.MinecraftForge;
@@ -38,35 +35,14 @@ import net.minecraftforge.fml.relauncher.ModListHelper;
 import org.apache.commons.lang3.mutable.MutableInt;
 import org.apache.commons.lang3.text.WordUtils;
 
-import java.awt.Color;
-import java.io.BufferedInputStream;
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FilenameFilter;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.awt.*;
+import java.io.*;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.net.HttpURLConnection;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.net.URLConnection;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.EnumMap;
-import java.util.LinkedList;
+import java.net.*;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.SortedMap;
-import java.util.TreeMap;
+import java.util.*;
 import java.util.jar.JarFile;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -81,7 +57,6 @@ public class Utils {
 
     private boolean usingOldSkyBlockTexture = false;
 
-    private final Pattern STRIP_COLOR_PATTERN = Pattern.compile("(?i)§[0-9A-FK-OR]");
     private final Pattern ITEM_ABILITY_PATTERN = Pattern.compile("§5§o§6Item Ability: ([A-Za-z ]+) §e§l[A-Z ]+");
 
     private static final List<String> ORDERED_ENCHANTMENTS = Collections.unmodifiableList(Arrays.asList(
@@ -714,19 +689,6 @@ public class Utils {
         return null;
     }
 
-    public void drawString(Minecraft mc, String text, int x, int y, int color) {
-        if (main.getConfigValues().getTextStyle() == EnumUtils.TextStyle.BLACK_SHADOW) {
-            String strippedText = main.getUtils().stripColor(text);
-            MinecraftReflection.FontRenderer.drawString(strippedText, x + 1, y, 0);
-            MinecraftReflection.FontRenderer.drawString(strippedText, x - 1, y, 0);
-            MinecraftReflection.FontRenderer.drawString(strippedText, x, y + 1, 0);
-            MinecraftReflection.FontRenderer.drawString(strippedText, x, y - 1, 0);
-            MinecraftReflection.FontRenderer.drawString(text, x, y, color);
-        } else {
-            MinecraftReflection.FontRenderer.drawString(text, x, y, color);
-        }
-    }
-
     public boolean isPickaxe(Item item) {
         return Items.wooden_pickaxe.equals(item) || Items.stone_pickaxe.equals(item) || Items.golden_pickaxe.equals(item) || Items.iron_pickaxe.equals(item) || Items.diamond_pickaxe.equals(item);
     }
@@ -773,6 +735,32 @@ public class Utils {
         }
     }
 
+    public void drawTextWithStyle(String text, int x, int y, ChatFormatting color) {
+        drawTextWithStyle(text,x,y,color.getRGB(),1);
+    }
+
+    public void drawTextWithStyle(String text, int x, int y, ChatFormatting color, float textAlpha) {
+        drawTextWithStyle(text,x,y,color.getRGB(),textAlpha);
+    }
+
+    public void drawTextWithStyle(String text, int x, int y, int color) {
+        drawTextWithStyle(text,x,y,color,1);
+    }
+
+    public void drawTextWithStyle(String text, int x, int y, int color, float textAlpha) {
+        if (main.getConfigValues().getTextStyle() == EnumUtils.TextStyle.STYLE_TWO) {
+            int colorBlack = new Color(0, 0, 0, textAlpha > 0.016 ? textAlpha : 0.016F).getRGB();
+            String strippedText = main.getUtils().stripColor(text);
+            MinecraftReflection.FontRenderer.drawString(strippedText, x + 1, y, colorBlack);
+            MinecraftReflection.FontRenderer.drawString(strippedText, x - 1, y, colorBlack);
+            MinecraftReflection.FontRenderer.drawString(strippedText, x, y + 1, colorBlack);
+            MinecraftReflection.FontRenderer.drawString(strippedText, x, y - 1, colorBlack);
+            MinecraftReflection.FontRenderer.drawString(text, x, y, color);
+        } else {
+            MinecraftReflection.FontRenderer.drawString(text, x, y, color, true);
+        }
+    }
+
     public static String niceDouble(double value, int decimals) {
         if(value == (long) value) {
             return String.format("%d", (long)value);
@@ -789,8 +777,8 @@ public class Utils {
         return new Color(160, 225, 229, alpha).getRGB();
     }
 
-    public String stripColor(final String input) {
-        return STRIP_COLOR_PATTERN.matcher(input).replaceAll("");
+    public String stripColor(String text) {
+        return RegexUtil.strip(text, RegexUtil.VANILLA_PATTERN);
     }
 
     public EnumUtils.Location getLocation() {

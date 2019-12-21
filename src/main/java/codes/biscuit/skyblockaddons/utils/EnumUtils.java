@@ -201,8 +201,8 @@ public class EnumUtils {
     }
 
     public enum TextStyle {
-        REGULAR(TEXT_STYLE_ONE),
-        BLACK_SHADOW(TEXT_STYLE_TWO);
+        STYLE_ONE(TEXT_STYLE_ONE),
+        STYLE_TWO(TEXT_STYLE_TWO);
 
         private Message message;
 

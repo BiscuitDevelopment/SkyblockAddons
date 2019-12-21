@@ -93,15 +93,15 @@ public final class MinecraftReflection extends Reflection {
 		}
 
 		public static void drawCenteredString(String text, int x, int y, int color) {
-			drawString(text, x, y, color);
+			drawString(text, (float)x - (float)getStringWidth(text) / 2, y, color, true);
 		}
 
 		public static void drawCenteredString(String text, float x, float y, ChatFormatting format) {
-			drawString(text, x, y, format.getRGB());
+			drawString(text, x - (float)getStringWidth(text) / 2, y, format.getRGB(), true);
 		}
 
 		public static void drawCenteredString(String text, float x, float y, int color) {
-			drawString(text, x - getStringWidth(text) / 2F, y, color);
+			drawString(text, x - getStringWidth(text) / 2F, y, color, true);
 		}
 
 		public static void drawString(String text, int x, int y, ChatFormatting format) {

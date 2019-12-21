@@ -48,7 +48,7 @@ public class ButtonModify extends ButtonText {
         if (hovered && !hitMaximum()) {
             fontColor = new Color(255, 255, 160, 255).getRGB();
         }
-        drawButtonBoxAndText(mc, boxColor, 1, fontColor);
+        drawButtonBoxAndText(boxColor, 1, fontColor);
     }
 
     @Override

@@ -75,7 +75,7 @@ public class CheckBox {
         GlStateManager.scale(scale, scale, 1);
 
         int color = value ? ChatFormatting.WHITE.getRGB() : ChatFormatting.GRAY.getRGB();
-        SkyblockAddons.getInstance().getUtils().drawString(mc, text, scaledX + Math.round(size * 1.5f / scale), scaledY + (size / 2), color);
+        SkyblockAddons.getInstance().getUtils().drawTextWithStyle(text, scaledX + Math.round(size * 1.5f / scale), scaledY + (size / 2), color);
 
         GlStateManager.disableDepth();
         GlStateManager.enableBlend();

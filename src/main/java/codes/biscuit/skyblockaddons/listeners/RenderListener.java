@@ -4,17 +4,7 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.gui.LocationEditGui;
 import codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui;
 import codes.biscuit.skyblockaddons.gui.buttons.ButtonLocation;
-import codes.biscuit.skyblockaddons.utils.Attribute;
-import codes.biscuit.skyblockaddons.utils.CoordsPair;
-import codes.biscuit.skyblockaddons.utils.DownloadInfo;
-import codes.biscuit.skyblockaddons.utils.EnumUtils;
-import codes.biscuit.skyblockaddons.utils.Feature;
-import codes.biscuit.skyblockaddons.utils.ItemDiff;
-import codes.biscuit.skyblockaddons.utils.Message;
-import codes.biscuit.skyblockaddons.utils.PowerOrb;
-import codes.biscuit.skyblockaddons.utils.PowerOrbManager;
-import codes.biscuit.skyblockaddons.utils.SlayerArmorProgress;
-import codes.biscuit.skyblockaddons.utils.Utils;
+import codes.biscuit.skyblockaddons.utils.*;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
 import codes.biscuit.skyblockaddons.utils.nifty.reflection.MinecraftReflection;
 import net.minecraft.client.Minecraft;
@@ -37,17 +27,8 @@ import net.minecraftforge.fml.client.GuiNotification;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
-import java.awt.Color;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Optional;
-import java.util.TimeZone;
+import java.util.*;
 
 import static net.minecraft.client.gui.Gui.icons;
 
@@ -687,17 +668,10 @@ public class RenderListener {
             buttonLocation.checkHoveredAndDrawBox(boxXOne, boxXTwo, boxYOne, boxYTwo, scale);
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         }
-        if (main.getConfigValues().getTextStyle() == EnumUtils.TextStyle.BLACK_SHADOW) {
-            GlStateManager.enableBlend();
-            int colorBlack = new Color(0, 0, 0, textAlpha > 0.016 ? textAlpha : 0.016F).getRGB();
-            MinecraftReflection.FontRenderer.drawString(text, intX + 1, intY, colorBlack);
-            MinecraftReflection.FontRenderer.drawString(text, intX - 1, intY, colorBlack);
-            MinecraftReflection.FontRenderer.drawString(text, intX, intY + 1, colorBlack);
-            MinecraftReflection.FontRenderer.drawString(text, intX, intY - 1, colorBlack);
-            MinecraftReflection.FontRenderer.drawString(text, intX, intY, color);
-        } else {
-            MinecraftReflection.FontRenderer.drawString(text, intX, intY, color);
-        }
+
+        GlStateManager.enableBlend();
+        main.getUtils().drawTextWithStyle(text, intX, intY, color, textAlpha);
+
         GlStateManager.color(1, 1, 1, 1);
         if (feature == Feature.DARK_AUCTION_TIMER) {
             mc.getTextureManager().bindTexture(TEXT_ICONS);
@@ -773,7 +747,7 @@ public class RenderListener {
                 fixedY = (intY + 45) - drawnCount * 15;
             }
             drawItemStack(mc, progress.getItemStack(), intX - 2, fixedY);
-            main.getUtils().drawString(mc, progress.getProgressText(), intX + 17, fixedY + 5, 0xFFFFFFFF);
+            main.getUtils().drawTextWithStyle(progress.getProgressText(), intX + 17, fixedY + 5, 0xFFFFFFFF);
             drawnCount++;
         }
     }
@@ -823,7 +797,9 @@ public class RenderListener {
                 stringY = intY - (i * MinecraftReflection.FontRenderer.getFontHeight());
                 stringY += 18;
             }
-            main.getUtils().drawString(mc, text, intX, stringY, ChatFormatting.WHITE.getRGB());
+
+            GlStateManager.enableBlend();
+            main.getUtils().drawTextWithStyle(text, intX, stringY, ChatFormatting.WHITE);
             i++;
         }
     }
@@ -886,7 +862,7 @@ public class RenderListener {
         GlStateManager.disableBlend();
         GlStateManager.enableDepth();
 
-        main.getUtils().drawString(mc, secondsString, intX + iconSize, intY + (iconSize / 2) - (MinecraftReflection.FontRenderer.getFontHeight() / 2), ChatFormatting.WHITE.getColor(255).getRGB());
+        main.getUtils().drawTextWithStyle(secondsString, intX + iconSize, intY + (iconSize / 2) - (MinecraftReflection.FontRenderer.getFontHeight() / 2), ChatFormatting.WHITE.getColor(255).getRGB());
     }
 
     /**
@@ -955,11 +931,11 @@ public class RenderListener {
         GlStateManager.disableBlend();
         GlStateManager.enableDepth();
 
-        main.getUtils().drawString(mc, secondsString, intX + (iconSize / 2) - (MinecraftReflection.FontRenderer.getStringWidth(secondsString) / 2), intY + iconSize, ChatFormatting.WHITE.getColor(255).getRGB());
+        main.getUtils().drawTextWithStyle(secondsString, intX + (iconSize / 2) - (MinecraftReflection.FontRenderer.getStringWidth(secondsString) / 2), intY + iconSize, ChatFormatting.WHITE.getColor(255).getRGB());
 
         int startY = Math.round(intY + (iconAndSecondsHeight / 2f) - (effectsHeight / 2f));
         for (int i = 0; i < display.size(); i++) {
-            main.getUtils().drawString(mc, display.get(i), intX + iconSize + 3, startY + (i * (MinecraftReflection.FontRenderer.getFontHeight() + spacing)), ChatFormatting.WHITE.getColor(255).getRGB());
+            main.getUtils().drawTextWithStyle(display.get(i), intX + iconSize + 3, startY + (i * (MinecraftReflection.FontRenderer.getFontHeight() + spacing)), ChatFormatting.WHITE.getColor(255).getRGB());
         }
     }
 
