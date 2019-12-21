@@ -86,7 +86,7 @@
     },
     "disableMagicalSoupMessage": "Desactivar los Mensajes de Mushroom Soup",
     "zealotCounter": "Mostrar Contador de Zealot",
-    "scorpionFoilTickerDisplay": "Indicador de Scorpion Foil",
+    "tickerChargesDisplay": "Ticker/Charges Display",
     "tab": {
       "generalSettings": "Configuración General"
     }
