@@ -86,7 +86,7 @@
     },
     "disableMagicalSoupMessage": "تعطيل رسائل حساء الفطر السحري",
     "zealotCounter": "أظهار عداد زيلوت",
-    "scorpionFoilTickerDisplay": "أظهار شريط Scorpion Foil",
+    "tickerChargesDisplay": "Ticker/Charges Display",
     "tab": {
       "generalSettings": "الإعدادات العامة"
     }
