@@ -86,7 +86,7 @@
     },
     "disableMagicalSoupMessage": "ปิดข้อความการใช้งานของซุปเห็ดบิน",
     "zealotCounter": "แสดงจำนวนการฆ่า Zealot",
-    "scorpionFoilTickerDisplay": "แสดงจำนวนชาร์จ Scorpion Foil",
+    "tickerChargesDisplay": "Ticker/Charges Display",
     "tab": {
       "generalSettings": "ตั้งค่าทั่วไป"
     }
