@@ -86,7 +86,7 @@
     },
     "disableMagicalSoupMessage": "Disable Biscuit Soup Messages",
     "zealotCounter": "Show Biscuit Counter",
-    "scorpionFoilTickerDisplay": "Biscuit Foil Ticker Display",
+    "tickerChargesDisplay": "Ticker/Charges Display",
     "tab": {
       "generalSettings": "General biscuits"
     }
