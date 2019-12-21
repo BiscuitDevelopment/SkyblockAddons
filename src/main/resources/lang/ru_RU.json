@@ -86,7 +86,7 @@
     },
     "disableMagicalSoupMessage": "Отключить уведомления о Магическом Супе",
     "zealotCounter": "Показывать счетчик Зелотов",
-    "scorpionFoilTickerDisplay": "Показывать заряды Рапиры Скорпиона",
+    "tickerChargesDisplay": "Ticker/Charges Display",
     "tab": {
       "generalSettings": "Основные настройки"
     }
