@@ -86,7 +86,7 @@
     },
     "disableMagicalSoupMessage": "Tắt thông báo của Súp nấm thần",
     "zealotCounter": "Hiển thị bộ đếm Zealot",
-    "scorpionFoilTickerDisplay": "Scorpion Foil Ticker Display",
+    "tickerChargesDisplay": "Ticker/Charges Display",
     "tab": {
       "generalSettings": "Cài đặt chung"
     }
