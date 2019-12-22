@@ -60,26 +60,30 @@ public class PlayerListener {
 
 
     private boolean sentUpdate = false;
+
     private long lastWorldJoin = -1;
     private long lastBoss = -1;
     private int magmaTick = 1;
     private int timerTick = 1;
     private long lastMinionSound = -1;
-
+    private long lastBossSpawnPost = -1;
+    private long lastBossDeathPost = -1;
+    private long lastMagmaWavePost = -1;
+    private long lastBlazeWavePost = -1;
+    private Class lastOpenedInventory = null;
+    private long lastClosedInv = -1;
     private long lastFishingAlert = 0;
     private long lastBobberEnteredWater = Long.MAX_VALUE;
+
     private boolean oldBobberIsInWater = false;
     private double oldBobberPosY = 0;
-    private int tickers = 0;
 
+    private Set<Entity> countedEndermen = new HashSet<>();
     private Set<CoordsPair> recentlyLoadedChunks = new HashSet<>();
     private EnumUtils.MagmaTimerAccuracy magmaAccuracy = EnumUtils.MagmaTimerAccuracy.NO_DATA;
     private int magmaTime = 0;
     private int recentMagmaCubes = 0;
     private int recentBlazes = 0;
-
-//    private Feature.Accuracy magmaTimerAccuracy = null;
-//    private long magmaTime = 7200;
 
     private final SkyblockAddons main;
     private final ActionBarParser actionBarParser;
@@ -101,6 +105,7 @@ public class PlayerListener {
             timerTick = 1;
             main.getInventoryUtils().resetPreviousInventory();
             recentlyLoadedChunks.clear();
+            countedEndermen.clear();
         }
     }
 
@@ -341,8 +346,6 @@ public class PlayerListener {
         }
     }
 
-    private Set<Entity> countedEndermen = new HashSet<>();
-
     @SubscribeEvent
     public void onAttack(AttackEntityEvent e) {
     	if (main.getConfigValues().isEnabled(Feature.ZEALOT_COUNTER) && e.target instanceof EntityEnderman) {
@@ -365,9 +368,6 @@ public class PlayerListener {
             }
     	}
     }
-
-    private long lastBossSpawnPost = -1;
-    private long lastBossDeathPost = -1;
 
     /**
      * The main timer for the magma boss checker.
@@ -430,9 +430,6 @@ public class PlayerListener {
             }
         }
     }
-
-    private long lastMagmaWavePost = -1;
-    private long lastBlazeWavePost = -1;
 
     @SubscribeEvent()
     public void onTickMagmaBossChecker(EntityEvent.EnteringChunk e) { // EntityJoinWorldEvent
@@ -591,9 +588,6 @@ public class PlayerListener {
             }
         }
     }
-
-    private Class lastOpenedInventory = null;
-    private long lastClosedInv = -1;
 
     @SubscribeEvent
     public void onGuiOpen(GuiOpenEvent e) {
