@@ -86,7 +86,7 @@
     },
     "disableMagicalSoupMessage": "不显示神奇蘑菇汤的提示信息",
     "zealotCounter": "显示末影战士击杀数",
-    "tickerChargesDisplay": "刻数/充能显示",
+    "tickerChargesDisplay": "显示刻数/充能",
     "tab": {
       "generalSettings": "常规设置"
     }
