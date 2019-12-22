@@ -448,7 +448,7 @@ public class EnumUtils {
                 Feature.CRAFTING_PATTERNS, Feature.POWER_ORB_STATUS_DISPLAY),
         GARY("GARY_", "github.com/occanowey", Feature.ONLY_MINE_VALUABLES_NETHER),
         P0KE("P0ke", "p0ke.dev", Feature.ZEALOT_COUNTER),
-        BERISAN("Berisan", "github.com/Berisan", Feature.POTION_EFFECT_TIMER);
+        BERISAN("Berisan", "github.com/Berisan", Feature.TAB_EFFECT_TIMERS);
 
         private Set<Feature> features;
         private String author;
@@ -567,7 +567,7 @@ public class EnumUtils {
         REVENANT_PROGRESS,
         POWER_ORB_DISPLAY,
         TICKER,
-        POTION_EFFECT_TIMER
+        TAB_EFFECT_TIMERS
     }
 
     public enum Social {

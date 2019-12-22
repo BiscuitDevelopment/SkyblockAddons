@@ -754,21 +754,23 @@ public class RenderListener {
     }
 
     public void drawPotionEffectTimers(float scale, Minecraft mc, ButtonLocation buttonLocation){
-        float x = main.getConfigValues().getActualX(Feature.POTION_EFFECT_TIMER);
-        float y = main.getConfigValues().getActualY(Feature.POTION_EFFECT_TIMER);
+        float x = main.getConfigValues().getActualX(Feature.TAB_EFFECT_TIMERS);
+        float y = main.getConfigValues().getActualY(Feature.TAB_EFFECT_TIMERS);
 
-        List<PotionEffectTimer> timers = PotionEffectTimer.getPotionEffects();
+        List<TabEffectTimer> potionTimers = TabEffectTimer.getPotionTimers();
+        List<TabEffectTimer> powerupTimers = TabEffectTimer.getPowerupTimers();
 
-        if(timers.isEmpty()) {
+        if(potionTimers.isEmpty() && powerupTimers.isEmpty()) {
             if (buttonLocation == null) {
                 return;
             } else { //We are editing GUI locations, draw something
-                timers = PotionEffectTimer.getDummyEffects();
+                potionTimers = TabEffectTimer.getDummyPotions();
+                powerupTimers = TabEffectTimer.getDummyPowerups();
             }
         }
 
-        int height = 27; //9 Px * 3 Effects
-        int width = 139; //About the longest width a potion effect can be
+        int height = 27; //8 Px * 3 Effects + 3px spacer between Potions and Powerups
+        int width = 156; //String width of "Enchanting XP Boost III 1:23:45"
         x-=Math.round(width*scale/2);
         y-=Math.round(height*scale/2);
         x/=scale;
@@ -784,14 +786,19 @@ public class RenderListener {
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         }
 
-        EnumUtils.AnchorPoint anchorPoint = main.getConfigValues().getAnchorPoint(Feature.POTION_EFFECT_TIMER);
-        boolean downwards = (anchorPoint == EnumUtils.AnchorPoint.TOP_LEFT || anchorPoint == EnumUtils.AnchorPoint.TOP_RIGHT);
+        EnumUtils.AnchorPoint anchorPoint = main.getConfigValues().getAnchorPoint(Feature.TAB_EFFECT_TIMERS);
+        boolean topDown = (anchorPoint == EnumUtils.AnchorPoint.TOP_LEFT || anchorPoint == EnumUtils.AnchorPoint.TOP_RIGHT);
 
-        int drawnCount = downwards ? 0 : 2;
-        for(PotionEffectTimer timer : timers){
-            int fixedY = intY + drawnCount * 9;
-            main.getUtils().drawString(mc, timer.getEffect(), intX, fixedY, 0xFFFFFFFF);
-            drawnCount += downwards ? 1 : -1;
+        int drawnCount = topDown ? 0 : 2;
+        for(TabEffectTimer timer : potionTimers){
+            int fixedY = intY + drawnCount +(topDown ? 0 : 3) + drawnCount * 8;
+            main.getUtils().drawTextWithStyle(timer.getEffect(), intX, fixedY, ChatFormatting.WHITE);
+            drawnCount += topDown ? 1 : -1;
+        }
+        for(TabEffectTimer timer : powerupTimers){
+            int fixedY = intY + drawnCount + (topDown ? 3 : 0) + drawnCount * 8;
+            main.getUtils().drawTextWithStyle(timer.getEffect(), intX, fixedY, ChatFormatting.WHITE);
+            drawnCount += topDown ? 1 : -1;
         }
     }
 

@@ -279,8 +279,8 @@ public class PlayerListener {
                             main.getInventoryUtils().getInventoryDifference(p.inventory.mainInventory);
                         }
 
-                        if(main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.POTION_EFFECT_TIMER)){
-                            PotionEffectTimer.updatePotionEffects();
+                        if(main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.TAB_EFFECT_TIMERS)){
+                            TabEffectTimer.updatePotionEffects();
                         }
                     }
 
