@@ -78,14 +78,14 @@
     "specialZealotAlert": "Speciale Zealot Melding",
     "enableMessageWhenActionPrevented": "Toon een bericht wanneer een actie wordt gestopt",
     "hidePetHealthBar": "Huisdiergezondheidsbalk verbergen",
-    "powerOrbDisplay": "Power Orb Display",
-    "powerOrbDisplayStyle": "Power Orb Style: %style%",
+    "powerOrbDisplay": "Kracht Bol Weergave",
+    "powerOrbDisplayStyle": "Kracht Bol Stijl: %style%",
     "powerOrbStyle": {
-      "detailed": "Uitgebreid",
+      "detailed": "Gedetailleerd",
       "compact": "Compact"
     },
-    "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages",
-    "zealotCounter": "Toon Zealot teller",
+    "disableMagicalSoupMessage": "Uitschakelen Berichten Magische Paddenstoelen Soep",
+    "zealotCounter": "Toon Zealot Teller",
     "tickerChargesDisplay": "Ticker/Charges Display",
     "tab": {
       "generalSettings": "Algemene instellingen"
