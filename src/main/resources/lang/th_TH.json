@@ -86,7 +86,7 @@
     },
     "disableMagicalSoupMessage": "ปิดข้อความการใช้งานของซุปเห็ดบิน",
     "zealotCounter": "แสดงจำนวนการฆ่า Zealot",
-    "tickerChargesDisplay": "Ticker/Charges Display",
+    "tickerChargesDisplay": "แสดงจำนวนชาร์จ",
     "tab": {
       "generalSettings": "ตั้งค่าทั่วไป"
     }
