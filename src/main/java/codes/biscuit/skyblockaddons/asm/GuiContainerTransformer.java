@@ -46,7 +46,7 @@ public class GuiContainerTransformer implements ITransformer {
 
                 // Objective 1:
                 // Find: Return statement.
-                // Add: GuiContainerHook.drawBackpacks(this, this.fontRendererObj);
+                // Add: GuiContainerHook.drawBackpacks(this, mouseX, mouseY, this.fontRendererObj);
 
                 // Objective 2:
                 // Find: int l = 240;
@@ -99,7 +99,7 @@ public class GuiContainerTransformer implements ITransformer {
                 }
             } else if (TransformerMethod.keyTyped.matches(methodNode)) {
 
-                // Objective:
+                // Objective 1:
                 // Find: 2 lines before "this.checkHotbarKeys(keyCode);"
                 // Add: ReturnValue returnValue = new ReturnValue();
                 //      GuiContainerHook.keyTyped(this, keyCode, this.theSlot, returnValue);
@@ -118,8 +118,25 @@ public class GuiContainerTransformer implements ITransformer {
                         }
                     }
                 }
+
+                // Objective 2:
+                // Find: Method head.
+                // Add: GuiContainerHook.keyTyped(keyCode);
+
+                methodNode.instructions.insertBefore(methodNode.instructions.getFirst(), insertKeyTypedTwo());
+
             }
         }
+    }
+
+    private InsnList insertKeyTypedTwo() {
+        InsnList list = new InsnList();
+
+        list.add(new VarInsnNode(Opcodes.ILOAD, 2)); // keyCode
+        list.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "codes/biscuit/skyblockaddons/asm/hooks/GuiContainerHook",
+                "keyTyped", "(I)V", false)); // GuiContainerHook.keyTyped(keyCode);
+
+        return list;
     }
 
     private InsnList insertShowEnchantments() {
@@ -140,10 +157,13 @@ public class GuiContainerTransformer implements ITransformer {
 
         list.add(new VarInsnNode(Opcodes.ALOAD, 0)); // this
 
+        list.add(new VarInsnNode(Opcodes.ILOAD, 1)); // mouseX
+        list.add(new VarInsnNode(Opcodes.ILOAD, 2)); // mouseY
+
         list.add(new VarInsnNode(Opcodes.ALOAD, 0)); // this.
         list.add(TransformerField.fontRendererObj.getField(TransformerClass.GuiContainer)); // fontRendererObj
         list.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "codes/biscuit/skyblockaddons/asm/hooks/GuiContainerHook", // GuiContainerHook.drawBackpacks(this, this.fontRendererObj);
-                "drawBackpacks", "("+TransformerClass.GuiContainer.getName()+TransformerClass.FontRenderer.getName()+")V", false));
+                "drawBackpacks", "("+TransformerClass.GuiContainer.getName()+"II"+TransformerClass.FontRenderer.getName()+")V", false));
 
         return list;
     }
