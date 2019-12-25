@@ -46,14 +46,12 @@ public class PersistentValues {
 	private void saveCounter() {
 		JsonObject valuesObject = new JsonObject();
 
-		try {
-			FileWriter writer = new FileWriter(this.persistentValuesFile);
+		try (FileWriter writer = new FileWriter(this.persistentValuesFile)) {
 			BufferedWriter bufferedWriter = new BufferedWriter(writer);
 
 			valuesObject.addProperty("kills", this.kills);
 
 			bufferedWriter.write(valuesObject.toString());
-			bufferedWriter.close();
 
 		} catch (Exception ex) {
 			ex.printStackTrace();
