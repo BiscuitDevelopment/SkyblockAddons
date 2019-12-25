@@ -5,74 +5,73 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.JsonParser;
 
-import java.io.*;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 
 public class PersistentValues {
 
 	private File persistentValuesFile;
-	private JsonObject valuesObject = new JsonObject();
-	
+
 	private int kills;
-	
+
 	public PersistentValues(File configDir) {
-		this.persistentValuesFile = new File(configDir.getParentFile().getAbsolutePath()+"/skyblockaddons_persistent.cfg");
+		this.persistentValuesFile = new File(configDir.getParentFile().getAbsolutePath() + "/skyblockaddons_persistent.cfg");
 	}
-	
+
 	public void loadValues() {
-		if(persistentValuesFile.exists()) {
-			try {
-				FileReader reader = new FileReader(persistentValuesFile);
-				BufferedReader bufferedReader = new BufferedReader(reader);
-				StringBuilder builder = new StringBuilder();
-				String nextLine;
-				while ((nextLine = bufferedReader.readLine()) != null) {
-					builder.append(nextLine);
-				}
-				String complete = builder.toString();
-				JsonElement fileElement = new JsonParser().parse(complete);
+		if (this.persistentValuesFile.exists()) {
+			try (FileReader reader = new FileReader(this.persistentValuesFile)) {
+				JsonElement fileElement = new JsonParser().parse(reader);
+
 				if (fileElement == null || fileElement.isJsonNull()) {
 					throw new JsonParseException("File is null!");
 				}
-				valuesObject = fileElement.getAsJsonObject();
-			} catch (IOException | NumberFormatException ex) {
+
+				JsonObject valuesObject = fileElement.getAsJsonObject();
+				this.kills = valuesObject.has("kills") ? valuesObject.get("kills").getAsInt() : 0;
+
+			} catch (Exception ex) {
 				ex.printStackTrace();
 				System.out.println("SkyblockAddons: There was an error loading saved values.");
-				saveCounter();
+				this.saveCounter();
 			}
+
 		} else {
-			saveCounter();
+			this.saveCounter();
 		}
 	}
-	
-	public void saveCounter() {
-		valuesObject = new JsonObject();
+
+	private void saveCounter() {
+		JsonObject valuesObject = new JsonObject();
+
 		try {
-			persistentValuesFile.createNewFile();
-			FileWriter writer = new FileWriter(persistentValuesFile);
+			FileWriter writer = new FileWriter(this.persistentValuesFile);
 			BufferedWriter bufferedWriter = new BufferedWriter(writer);
 
-			valuesObject.addProperty("kills", kills);
+			valuesObject.addProperty("kills", this.kills);
 
 			bufferedWriter.write(valuesObject.toString());
 			bufferedWriter.close();
+
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			System.out.println("SkyblockAddons: An error occurred while attempted to save values!");
 		}
 	}
-	
+
 	public void addKill() {
-		kills++;
-		saveCounter();
-	}
-	
-	public void setKills(int kills) {
-		this.kills = kills;
-		saveCounter();
-	}
-	
-	public int getKills() {
-		return kills;
+		this.kills++;
+		this.saveCounter();
 	}
 
+	public void setKills(int kills) {
+		this.kills = kills;
+		this.saveCounter();
+	}
+
+	public int getKills() {
+		return this.kills;
+	}
 }
