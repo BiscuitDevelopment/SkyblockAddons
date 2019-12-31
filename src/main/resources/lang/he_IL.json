@@ -81,11 +81,11 @@
     "powerOrbDisplay": "Power Orb Display",
     "powerOrbDisplayStyle": "Power Orb Style: %style%",
     "powerOrbStyle": {
-      "detailed": "Detailed",
-      "compact": "Compact"
+      "detailed": "מפורט",
+      "compact": "מרוכז"
     },
     "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages",
-    "zealotCounter": "Show Zealot Counter",
+    "zealotCounter": "הצג מספר הקנאים",
     "tickerChargesDisplay": "Ticker/Charges Display",
     "tab": {
       "generalSettings": "הגדרות כלליות"
