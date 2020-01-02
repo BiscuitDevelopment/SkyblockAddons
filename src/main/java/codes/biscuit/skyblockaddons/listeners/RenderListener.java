@@ -52,6 +52,9 @@ public class RenderListener {
 
     private Feature subtitleFeature = null;
     private Feature titleFeature = null;
+
+    private int arrowsLeft;
+
     private String cannotReachMobName = null;
 
     private long skillFadeOutTime = -1;
@@ -203,11 +206,16 @@ public class RenderListener {
                 case MINION_FULL_WARNING:
                     message = Message.MESSAGE_MINION_IS_FULL;
                     break;
+                case NO_ARROWS_LEFT_ALERT:
+                    message = Message.MESSAGE_NO_ARROWS_LEFT;
+                    break;
             }
             if (message != null) {
                 String text;
                 if (message == Message.MESSAGE_MINION_CANNOT_REACH) {
                     text = message.getMessage(cannotReachMobName);
+                } else if (subtitleFeature == Feature.NO_ARROWS_LEFT_ALERT && arrowsLeft != -1) {
+                    text = Message.MESSAGE_ONLY_FEW_ARROWS_LEFT.getMessage(Integer.toString(arrowsLeft));
                 } else {
                     text = message.getMessage();
                 }
@@ -1075,6 +1083,9 @@ public class RenderListener {
 
     public void setSubtitleFeature(Feature subtitleFeature) {
         this.subtitleFeature = subtitleFeature;
+        if (subtitleFeature == null) {
+            this.arrowsLeft = -1;
+        }
     }
 
     Feature getTitleFeature() {
@@ -1097,4 +1108,7 @@ public class RenderListener {
         this.skillFadeOutTime = skillFadeOutTime;
     }
 
+    public void setArrowsLeft(int arrowsLeft) {
+        this.arrowsLeft = arrowsLeft;
+    }
 }
