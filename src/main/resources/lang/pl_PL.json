@@ -90,7 +90,8 @@
     "tab": {
       "generalSettings": "Ustawienia ogólne"
     },
-    "tabEffectTimers": "Potion and Powerup Timers"
+    "tabEffectTimers": "Potion and Powerup Timers",
+    "noArrowsLeftAlert": "No Arrows Left Alert"
   },
   "messages": {
     "dropConfirmation": "Wyrzuć ten przedmiot ponownie, aby potwierdzić!",
@@ -134,6 +135,8 @@
     "specialZealotFound": "Specjalny Zealot!",
     "blockIncompletePatterns": "Blokuj crafting niepełnych patternów (rekomendowane)",
     "searchFeatures": "Szukaj fukncji",
-    "downloadingUpdateFile": "Pobieranie aktualizacji..."
+    "downloadingUpdateFile": "Pobieranie aktualizacji...",
+    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
+    "noArrowsLeft": "No Arrows Left!"
   }
 }
