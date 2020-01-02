@@ -90,7 +90,7 @@
     "tab": {
       "generalSettings": "Opciones Generales"
     },
-    "tabEffectTimers": "Potion and Powerup Timers"
+    "tabEffectTimers": "Temporizador de Pociones y Powerup"
   },
   "messages": {
     "dropConfirmation": "¡Dropea el Objeto otra vez para soltar!",
