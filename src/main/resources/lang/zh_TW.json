@@ -90,7 +90,8 @@
     "tab": {
       "generalSettings": "一般設定"
     },
-    "tabEffectTimers": "Potion and Powerup Timers"
+    "tabEffectTimers": "Potion and Powerup Timers",
+    "noArrowsLeftAlert": "No Arrows Left Alert"
   },
   "messages": {
     "dropConfirmation": "再次丟棄此物品以確認!",
@@ -134,6 +135,8 @@
     "specialZealotFound": "特殊Zealot!",
     "blockIncompletePatterns": "阻止合成不正確的格式 (推薦)",
     "searchFeatures": "搜尋功能",
-    "downloadingUpdateFile": "更新檔下載中..."
+    "downloadingUpdateFile": "更新檔下載中...",
+    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
+    "noArrowsLeft": "No Arrows Left!"
   }
 }
