@@ -90,7 +90,8 @@
     "tab": {
       "generalSettings": "الإعدادات العامة"
     },
-    "tabEffectTimers": "Potion and Powerup Timers"
+    "tabEffectTimers": "Potion and Powerup Timers",
+    "noArrowsLeftAlert": "No Arrows Left Alert"
   },
   "messages": {
     "dropConfirmation": "!إرمي هذا العنصر مرة أخرى للتأكيد",
@@ -134,6 +135,8 @@
     "specialZealotFound": "زيلوت فريد!",
     "blockIncompletePatterns": "أنماط انماط صناعة الحجر غير مكتملة\n(موصى بها)",
     "searchFeatures": "البحث عن خاصيه",
-    "downloadingUpdateFile": "يتم تنزيل ملف التحديث..."
+    "downloadingUpdateFile": "يتم تنزيل ملف التحديث...",
+    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
+    "noArrowsLeft": "No Arrows Left!"
   }
 }
