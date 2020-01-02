@@ -89,7 +89,8 @@
     "tickerChargesDisplay": "Ticker/Punjenja Prikaz",
     "tab": {
       "generalSettings": "Opće Postavke"
-    }
+    },
+    "tabEffectTimers": "Potion and Powerup Timers"
   },
   "messages": {
     "dropConfirmation": "Opet baci ovu stvar za konfirmaciju!",
