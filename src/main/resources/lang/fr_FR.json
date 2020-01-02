@@ -90,7 +90,8 @@
     "tab": {
       "generalSettings": "Options"
     },
-    "tabEffectTimers": "Minuteur potions/capacités"
+    "tabEffectTimers": "Minuteur potions/capacités",
+    "noArrowsLeftAlert": "No Arrows Left Alert"
   },
   "messages": {
     "dropConfirmation": "Jetez cet objet une nouvelle fois pour confirmer!",
@@ -134,6 +135,8 @@
     "specialZealotFound": "Zealot spécial!",
     "blockIncompletePatterns": "Ne pas fabriquer les modèles incomplet (recommandé)",
     "searchFeatures": "Rechercher",
-    "downloadingUpdateFile": "Téléchargement de la mise à jour..."
+    "downloadingUpdateFile": "Téléchargement de la mise à jour...",
+    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
+    "noArrowsLeft": "No Arrows Left!"
   }
 }
