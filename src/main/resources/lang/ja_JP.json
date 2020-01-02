@@ -89,7 +89,8 @@
     "tickerChargesDisplay": "Tickerとチャージの表示",
     "tab": {
       "generalSettings": "一般設定"
-    }
+    },
+    "tabEffectTimers": "Potion and Powerup Timers"
   },
   "messages": {
     "dropConfirmation": "落としてもいいのであれば、このアイテムをもう一度ドロップしてください。",
