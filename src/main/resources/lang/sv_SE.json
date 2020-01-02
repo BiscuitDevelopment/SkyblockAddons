@@ -90,7 +90,8 @@
     "tab": {
       "generalSettings": "Allmänna Inställningar"
     },
-    "tabEffectTimers": "Potion and Powerup Timers"
+    "tabEffectTimers": "Potion and Powerup Timers",
+    "noArrowsLeftAlert": "No Arrows Left Alert"
   },
   "messages": {
     "dropConfirmation": "Släpp Det Här Igen För Att Bekräfta!",
@@ -134,6 +135,8 @@
     "specialZealotFound": "Speciell Zealot!",
     "blockIncompletePatterns": "Blockera ofullständiga arbetsbänk recept (rekommenderat)",
     "searchFeatures": "Sök på funktioner",
-    "downloadingUpdateFile": "Laddar ner uppdaterings fil..."
+    "downloadingUpdateFile": "Laddar ner uppdaterings fil...",
+    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
+    "noArrowsLeft": "No Arrows Left!"
   }
 }
