@@ -90,7 +90,8 @@
     "tab": {
       "generalSettings": "सामान्य सेटिंग्स"
     },
-    "tabEffectTimers": "Potion and Powerup Timers"
+    "tabEffectTimers": "Potion and Powerup Timers",
+    "noArrowsLeftAlert": "No Arrows Left Alert"
   },
   "messages": {
     "dropConfirmation": "संदेशों -> ड्रॉप क चेतावनी",
@@ -134,6 +135,8 @@
     "specialZealotFound": "Special Zealot!",
     "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)",
     "searchFeatures": "Search features",
-    "downloadingUpdateFile": "Downloading update file..."
+    "downloadingUpdateFile": "Downloading update file...",
+    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
+    "noArrowsLeft": "No Arrows Left!"
   }
 }
