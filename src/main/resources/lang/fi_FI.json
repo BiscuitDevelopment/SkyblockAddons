@@ -89,7 +89,8 @@
     "tickerChargesDisplay": "Ticker/Charges Display",
     "tab": {
       "generalSettings": "Yleiset Asetukset"
-    }
+    },
+    "tabEffectTimers": "Potion and Powerup Timers"
   },
   "messages": {
     "dropConfirmation": "Pudota tämä esine uudelleen vahvistaaksesi!",
