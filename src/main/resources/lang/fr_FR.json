@@ -89,7 +89,8 @@
     "tickerChargesDisplay": "Affichage des darts/charges",
     "tab": {
       "generalSettings": "Options"
-    }
+    },
+    "tabEffectTimers": "Potion and Powerup Timers"
   },
   "messages": {
     "dropConfirmation": "Jetez cet objet une nouvelle fois pour confirmer!",
