@@ -90,7 +90,8 @@
     "tab": {
       "generalSettings": "Основные настройки"
     },
-    "tabEffectTimers": "Potion and Powerup Timers"
+    "tabEffectTimers": "Potion and Powerup Timers",
+    "noArrowsLeftAlert": "No Arrows Left Alert"
   },
   "messages": {
     "dropConfirmation": "Выбросите предмет ещё раз для подтверждения!",
@@ -134,6 +135,8 @@
     "specialZealotFound": "Особый Зеалот!",
     "blockIncompletePatterns": "Блокировать создание незавершённых шаблонов (рекомендуется)",
     "searchFeatures": "Поиск функций",
-    "downloadingUpdateFile": "Загрузка файла обновления..."
+    "downloadingUpdateFile": "Загрузка файла обновления...",
+    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
+    "noArrowsLeft": "No Arrows Left!"
   }
 }
