@@ -89,7 +89,8 @@
     "tickerChargesDisplay": "Счетчик зарядов",
     "tab": {
       "generalSettings": "Основные настройки"
-    }
+    },
+    "tabEffectTimers": "Potion and Powerup Timers"
   },
   "messages": {
     "dropConfirmation": "Выбросите предмет ещё раз для подтверждения!",
