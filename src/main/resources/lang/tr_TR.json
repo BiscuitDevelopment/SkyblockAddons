@@ -90,7 +90,8 @@
     "tab": {
       "generalSettings": "Genel Ayarlar"
     },
-    "tabEffectTimers": "Potion and Powerup Timers"
+    "tabEffectTimers": "Potion and Powerup Timers",
+    "noArrowsLeftAlert": "No Arrows Left Alert"
   },
   "messages": {
     "dropConfirmation": "Eşyayı düşürmeyi onaylamak için düşürme tuşuna bir daha bas!",
@@ -134,6 +135,8 @@
     "specialZealotFound": "Özel zealot!",
     "blockIncompletePatterns": "Tam doldurulmamış desenleri engelle (tavsiye edilen)",
     "searchFeatures": "Özellikleri ara",
-    "downloadingUpdateFile": "Güncelleme dosyası indiriliyor..."
+    "downloadingUpdateFile": "Güncelleme dosyası indiriliyor...",
+    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
+    "noArrowsLeft": "No Arrows Left!"
   }
 }
