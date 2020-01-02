@@ -3,6 +3,7 @@ package codes.biscuit.skyblockaddons;
 import codes.biscuit.skyblockaddons.commands.SkyblockAddonsCommand;
 import codes.biscuit.skyblockaddons.listeners.PlayerListener;
 import codes.biscuit.skyblockaddons.listeners.RenderListener;
+import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsTransformer;
 import codes.biscuit.skyblockaddons.utils.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
@@ -30,6 +31,7 @@ public class SkyblockAddons {
 
     private static SkyblockAddons instance; // for Mixins cause they don't have a constructor
     private ConfigValues configValues;
+    private PersistentValues persistentValues;
     private PlayerListener playerListener = new PlayerListener(this);
     private RenderListener renderListener = new RenderListener(this);
     private Utils utils = new Utils(this);
@@ -37,14 +39,13 @@ public class SkyblockAddons {
     private Scheduler scheduler = new Scheduler(this);
     private boolean usingLabymod = false;
     private boolean usingOofModv1 = false;
-    private KeyBinding openSettingsKeyBind;
-    private KeyBinding editGUIKeyBind;
-    private KeyBinding lockSlotKeyBind;
+    private KeyBinding[] keyBindings = new KeyBinding[4];
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent e) {
         instance = this;
         configValues = new ConfigValues(this, e.getSuggestedConfigurationFile());
+        persistentValues = new PersistentValues(e.getSuggestedConfigurationFile());
     }
     @Mod.EventHandler
     public void init(FMLInitializationEvent e) {
@@ -53,17 +54,20 @@ public class SkyblockAddons {
         MinecraftForge.EVENT_BUS.register(scheduler);
         ClientCommandHandler.instance.registerCommand(new SkyblockAddonsCommand(this));
 
-        openSettingsKeyBind = new KeyBinding("key.skyblockaddons.open_settings", Keyboard.KEY_NONE, MOD_NAME);
-        editGUIKeyBind = new KeyBinding("key.skyblockaddons.edit_gui", Keyboard.KEY_NONE, MOD_NAME);
-        lockSlotKeyBind = new KeyBinding("key.skyblockaddons.lock_slot", Keyboard.KEY_L, MOD_NAME);
-        ClientRegistry.registerKeyBinding(openSettingsKeyBind);
-        ClientRegistry.registerKeyBinding(editGUIKeyBind);
-        ClientRegistry.registerKeyBinding(lockSlotKeyBind);
+        keyBindings[0] = new KeyBinding("key.skyblockaddons.open_settings", Keyboard.KEY_NONE, MOD_NAME);
+        keyBindings[1] = new KeyBinding("key.skyblockaddons.edit_gui", Keyboard.KEY_NONE, MOD_NAME);
+        keyBindings[2] = new KeyBinding("key.skyblockaddons.lock_slot", Keyboard.KEY_L, MOD_NAME);
+        keyBindings[3] = new KeyBinding("key.skyblockaddons.freeze_backpack",  Minecraft.isRunningOnMac ? 219 : 29, MOD_NAME); // ctrl
+
+        for (KeyBinding keyBinding : keyBindings) {
+            ClientRegistry.registerKeyBinding(keyBinding);
+        }
     }
 
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent e) {
         configValues.loadConfig();
+        persistentValues.loadValues();
         loadKeyBindingDescriptions();
 
         usingLabymod = Loader.isModLoaded("labymod");
@@ -90,7 +94,7 @@ public class SkyblockAddons {
 
     private void changeKeyBindDescription(KeyBinding bind, String desc) {
         try {
-            Field field = bind.getClass().getDeclaredField(utils.isDevEnviroment() ? "keyDescription" : "field_74515_c");
+            Field field = bind.getClass().getDeclaredField(SkyblockAddonsTransformer.isDeobfuscated() ? "keyDescription" : "field_74515_c");
             field.setAccessible(true);
             field.set(bind, desc);
         } catch(NoSuchFieldException | IllegalAccessException e) {
@@ -100,9 +104,10 @@ public class SkyblockAddons {
     }
 
     public void loadKeyBindingDescriptions() {
-        changeKeyBindDescription(openSettingsKeyBind, Message.SETTING_SETTINGS.getMessage());
-        changeKeyBindDescription(editGUIKeyBind, Message.SETTING_EDIT_LOCATIONS.getMessage());
-        changeKeyBindDescription(lockSlotKeyBind, Message.SETTING_LOCK_SLOT.getMessage());
+        changeKeyBindDescription(keyBindings[0], Message.SETTING_SETTINGS.getMessage());
+        changeKeyBindDescription(keyBindings[1], Message.SETTING_EDIT_LOCATIONS.getMessage());
+        changeKeyBindDescription(keyBindings[2], Message.SETTING_LOCK_SLOT.getMessage());
+        changeKeyBindDescription(keyBindings[3], Message.SETTING_SHOW_BACKPACK_PREVIEW.getMessage());
     }
 
     private void scheduleMagmaCheck() {
@@ -120,6 +125,10 @@ public class SkyblockAddons {
 
     public ConfigValues getConfigValues() {
         return configValues;
+    }
+    
+    public PersistentValues getPersistentValues() {
+    	return persistentValues;
     }
 
     public PlayerListener getPlayerListener() {
@@ -155,14 +164,18 @@ public class SkyblockAddons {
     }
 
     public KeyBinding getOpenSettingsKey() {
-        return openSettingsKeyBind;
+        return keyBindings[0];
     }
 
     public KeyBinding getOpenEditLocationsKey() {
-        return editGUIKeyBind;
+        return keyBindings[1];
     }
 
-    public KeyBinding getLockSlot() {
-        return lockSlotKeyBind;
+    public KeyBinding getLockSlotKey() {
+        return keyBindings[2];
+    }
+
+    public KeyBinding getFreezeBackpackKey() {
+        return keyBindings[3];
     }
 }

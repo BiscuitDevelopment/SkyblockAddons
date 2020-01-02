@@ -1,9 +1,10 @@
 package codes.biscuit.skyblockaddons.gui.elements;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.utils.ConfigColor;
 import codes.biscuit.skyblockaddons.utils.CraftingPattern;
 import codes.biscuit.skyblockaddons.utils.Utils;
+import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
+import codes.biscuit.skyblockaddons.utils.nifty.reflection.MinecraftReflection;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 
@@ -62,7 +63,7 @@ public class CheckBox {
         this.y = y;
         this.scale = (float) size / (float) ICON_SIZE;
         this.text = text;
-        this.textWidth = mc.fontRendererObj.getStringWidth(text);
+        this.textWidth = MinecraftReflection.FontRenderer.getStringWidth(text);
         this.size = size;
     }
 
@@ -73,8 +74,8 @@ public class CheckBox {
         GlStateManager.pushMatrix();
         GlStateManager.scale(scale, scale, 1);
 
-        int color = value ? ConfigColor.WHITE.getColor(255) : ConfigColor.GRAY.getColor(255);
-        SkyblockAddons.getInstance().getUtils().drawString(mc, text, scaledX + Math.round(size * 1.5f / scale), scaledY + (size / 2), color);
+        int color = value ? ChatFormatting.WHITE.getRGB() : ChatFormatting.GRAY.getRGB();
+        SkyblockAddons.getInstance().getUtils().drawTextWithStyle(text, scaledX + Math.round(size * 1.5f / scale), scaledY + (size / 2), color);
 
         GlStateManager.disableDepth();
         GlStateManager.enableBlend();

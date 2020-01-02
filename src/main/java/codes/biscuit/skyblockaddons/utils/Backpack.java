@@ -68,29 +68,34 @@ public class Backpack {
         if (id != null) {
             NBTTagCompound extraAttributes = stack.getTagCompound().getCompoundTag("ExtraAttributes");
             Matcher matcher = BACKPACK_ID_PATTERN.matcher(id);
-            if (matcher.matches()) {
+            boolean matches = matcher.matches();
+            if (matches) {// || "NEW_YEAR_CAKE_BAG".equals(id)) {
                 byte[] bytes = null;
                 for (String key : extraAttributes.getKeySet()) {
-                    if (key.endsWith("backpack_data")) {
+                    if (key.endsWith("backpack_data") || key.equals("new_year_cake_bag_data")) {
                         bytes = extraAttributes.getByteArray(key);
                         break;
                     }
                 }
                 try {
-                    int length;
-                    String backpackType = matcher.group(1);
-                    switch (backpackType) { // because sometimes the size of the tag is not updated (etc. when you upcraft it)
-                        case "SMALL": length = 9; break;
-                        case "MEDIUM": length = 18; break;
-                        case "LARGE": length = 27; break;
-                        case "GREATER": length = 36; break;
-                        default: length = 45; break;
+                    int length = 0;
+                    if (matches) {
+                        String backpackType = matcher.group(1);
+                        switch (backpackType) { // because sometimes the size of the tag is not updated (etc. when you upcraft it)
+                            case "SMALL": length = 9; break;
+                            case "MEDIUM": length = 18; break;
+                            case "LARGE": length = 27; break;
+                            case "GREATER": length = 36; break;
+                        }
                     }
                     ItemStack[] items = new ItemStack[length];
                     if (bytes != null) {
                         NBTTagCompound nbtTagCompound = CompressedStreamTools.readCompressed(new ByteArrayInputStream(bytes));
                         NBTTagList list = nbtTagCompound.getTagList("i", Constants.NBT.TAG_COMPOUND);
-                        if (list.tagCount() > length) length = list.tagCount();
+                        if (list.tagCount() > length) {
+                            length = list.tagCount();
+                            items = new ItemStack[length];
+                        }
                         for (int i = 0; i < length; i++) {
                             NBTTagCompound item = list.getCompoundTagAt(i);
                             // This fixes an issue in Hypixel where enchanted potatoes have the wrong id (potato block instead of item).

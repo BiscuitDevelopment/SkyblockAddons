@@ -1,18 +1,20 @@
 package codes.biscuit.skyblockaddons.utils;
 
+import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
+
 class GuiFeatureData {
 
-    private ConfigColor defaultColor = null;
+    private ChatFormatting defaultColor = null;
     private CoordsPair defaultPos = null;
     private CoordsPair defaultBarSize = null;
     private EnumUtils.AnchorPoint defaultAnchor = null;
     private EnumUtils.DrawType drawType = null;
 
-    GuiFeatureData(ConfigColor defaultColor) {
+    GuiFeatureData(ChatFormatting defaultColor) {
         this.defaultColor = defaultColor;
     }
 
-    GuiFeatureData(EnumUtils.DrawType drawType, ConfigColor defaultColor, EnumUtils.AnchorPoint defaultAnchor, int... positionThenSizes) {
+    GuiFeatureData(EnumUtils.DrawType drawType, ChatFormatting defaultColor, EnumUtils.AnchorPoint defaultAnchor, int... positionThenSizes) {
         this.drawType = drawType;
         this.defaultColor = defaultColor;
         this.defaultPos = new CoordsPair(positionThenSizes[0], positionThenSizes[1]);
@@ -29,7 +31,7 @@ class GuiFeatureData {
 
     }
 
-    ConfigColor getDefaultColor() {
+    ChatFormatting getDefaultColor() {
         return defaultColor;
     }
 

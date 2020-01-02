@@ -3,12 +3,13 @@ package codes.biscuit.skyblockaddons.gui.buttons;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.Feature;
+import codes.biscuit.skyblockaddons.utils.nifty.reflection.MinecraftReflection;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.SoundHandler;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.GlStateManager;
 
-import java.awt.*;
+import java.awt.Color;
 
 public class ButtonSwitchTab extends GuiButton {
 
@@ -62,7 +63,7 @@ public class ButtonSwitchTab extends GuiButton {
             GlStateManager.pushMatrix();
             GlStateManager.scale(scale, scale, 1);
             GlStateManager.enableBlend();
-            drawCenteredString(mc.fontRendererObj, displayString, (int)((xPosition+width/2)*scaleMultiplier), (int)((yPosition+(this.height-(8/scaleMultiplier))/2)*scaleMultiplier),
+            MinecraftReflection.FontRenderer.drawCenteredString(displayString, (int)((xPosition+width/2)*scaleMultiplier), (int)((yPosition+(this.height-(8/scaleMultiplier))/2)*scaleMultiplier),
                     fontColor);
             GlStateManager.popMatrix();
         }

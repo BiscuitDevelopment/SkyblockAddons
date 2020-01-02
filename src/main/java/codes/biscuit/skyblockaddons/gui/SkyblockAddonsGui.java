@@ -3,7 +3,13 @@ package codes.biscuit.skyblockaddons.gui;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.gui.buttons.*;
 import codes.biscuit.skyblockaddons.listeners.PlayerListener;
-import codes.biscuit.skyblockaddons.utils.*;
+import codes.biscuit.skyblockaddons.utils.CoordsPair;
+import codes.biscuit.skyblockaddons.utils.EnumUtils;
+import codes.biscuit.skyblockaddons.utils.Feature;
+import codes.biscuit.skyblockaddons.utils.Message;
+import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
+import codes.biscuit.skyblockaddons.utils.nifty.StringUtil;
+import codes.biscuit.skyblockaddons.utils.nifty.reflection.MinecraftReflection;
 import com.google.common.collect.Sets;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
@@ -39,6 +45,8 @@ public class SkyblockAddonsGui extends GuiScreen {
 
     private String initialText = null;
 
+    private boolean cancelClose = false;
+
     /**
      * The main gui, opened with /sba.
      */
@@ -51,7 +59,8 @@ public class SkyblockAddonsGui extends GuiScreen {
     public SkyblockAddonsGui(SkyblockAddons main, int page, EnumUtils.GuiTab tab, String text) {
         this(main,page,tab);
 
-        if (text != null && !text.equals("")) initialText = text;
+        if (StringUtil.notEmpty(text))
+            initialText = text;
     }
 
 
@@ -116,52 +125,11 @@ public class SkyblockAddonsGui extends GuiScreen {
                 skip--;
             }
         }
-
-        addTabs();
         Keyboard.enableRepeatEvents(true);
     }
 
-    @Deprecated
-    @SuppressWarnings("IntegerDivisionInFloatingPointContext")
-    private void addTabs() {
-        if (true) return;
-        int collumn = 1;
-        for (EnumUtils.GuiTab loopTab : EnumUtils.GuiTab.values()) {
-            if (tab != loopTab) {
-                String text = "";
-                switch (loopTab) {
-                    case FEATURES:
-                        text = Message.TAB_FEATURES.getMessage();
-                        break;
-                    case FIXES:
-                        text = Message.TAB_FIXES.getMessage();
-                        break;
-                    case GUI_FEATURES:
-                        text = Message.TAB_GUI_FEATURES.getMessage();
-                        break;
-                    case GENERAL_SETTINGS:
-                        text = Message.TAB_GENERAL_SETTINGS.getMessage();
-                        break;
-                }
-                int stringWidth = fontRendererObj.getStringWidth(text);
-                int tabX = 0;
-                int halfWidth = width/2;
-                if (collumn == 1) {
-                    tabX = (int)Math.round(halfWidth-140-(stringWidth/2)*1.4);
-                } else if (collumn == 2) {
-                    tabX = (int)Math.round(halfWidth-(stringWidth/2)*1.4);
-                } else if (collumn == 3) {
-                    tabX = (int)Math.round(halfWidth+140-(stringWidth/2)*1.4);
-                }
-                buttonList.add(new ButtonSwitchTab(tabX, 70, (int)(stringWidth*1.4),
-                        14, text, main, loopTab, tab));
-                collumn++;
-            }
-        }
-    }
-
     private boolean matchesSearch(String text) {
-        if (featureSearchBar.getText().equals("")) return true;
+        if (StringUtil.isEmpty(featureSearchBar.getText())) return true;
 
         return text.toLowerCase().contains(featureSearchBar.getText().toLowerCase());
     }
@@ -205,10 +173,11 @@ public class SkyblockAddonsGui extends GuiScreen {
         drawScaledString("SkyblockAddons", 28, defaultBlue, 2.5F, 0);
         drawScaledString("v" + SkyblockAddons.VERSION + " by Biscut", 49, defaultBlue, 1.3, 50);
         drawScaledString("Featured aka my discord plug", 7, defaultBlue, 0.8, -212);
+        drawScaledString("Special Credits: InventiveTalent - Magma Boss Timer API", height-25, defaultBlue, 1, 0);
 
         featureSearchBar.drawTextBox();
-        if (featureSearchBar.getText().equals("")) {
-            mc.ingameGUI.drawString(mc.fontRendererObj, Message.MESSAGE_SEARCH_FEATURES.getMessage(), width/2-60+4, 72, ConfigColor.DARK_GRAY.getColor());
+        if (StringUtil.isEmpty(featureSearchBar.getText())) {
+            MinecraftReflection.FontRenderer.drawString(Message.MESSAGE_SEARCH_FEATURES.getMessage(), width/2-60+4, 72, ChatFormatting.DARK_GRAY);
         }
 
         super.drawScreen(mouseX, mouseY, partialTicks); // Draw buttons.
@@ -254,7 +223,9 @@ public class SkyblockAddonsGui extends GuiScreen {
                 }
             } else if (abstractButton instanceof ButtonSolid && feature == Feature.TEXT_STYLE) {
                 main.getConfigValues().setTextStyle(main.getConfigValues().getTextStyle().getNextType());
+                cancelClose = true;
                 Minecraft.getMinecraft().displayGuiScreen(new SkyblockAddonsGui(main, page, tab, featureSearchBar.getText()));
+                cancelClose = false;
             } else if (abstractButton instanceof ButtonModify) {
                 if (feature == Feature.ADD) {
                     if (main.getConfigValues().getWarningSeconds() < 99) {
@@ -306,8 +277,8 @@ public class SkyblockAddonsGui extends GuiScreen {
     private void drawScaledString(String text, int y, int color, double scale, int xOff) {
         double x = width/2;
         GlStateManager.pushMatrix();
-        GlStateManager.scale(scale, scale, 1);
-        drawCenteredString(fontRendererObj, text,
+        GlStateManager.scale(scale, scale, 1); //TODO fix reflection detecting wrong method
+        MinecraftReflection.FontRenderer.drawCenteredString(text,
                 (int)(x/scale)+xOff, (int)(y/scale), color);
         GlStateManager.popMatrix();
     }
@@ -434,11 +405,13 @@ public class SkyblockAddonsGui extends GuiScreen {
      */
     @Override
     public void onGuiClosed() {
-        if (tab == EnumUtils.GuiTab.GENERAL_SETTINGS) {
-            main.getRenderListener().setGuiToOpen(PlayerListener.GUIType.MAIN, 1, EnumUtils.GuiTab.FEATURES, featureSearchBar.getText());
+        if (!cancelClose) {
+            if (tab == EnumUtils.GuiTab.GENERAL_SETTINGS) {
+                main.getRenderListener().setGuiToOpen(PlayerListener.GUIType.MAIN, 1, EnumUtils.GuiTab.FEATURES, featureSearchBar.getText());
+            }
+            main.getConfigValues().saveConfig();
+            Keyboard.enableRepeatEvents(false);
         }
-        main.getConfigValues().saveConfig();
-        Keyboard.enableRepeatEvents(false);
     }
 
     @Override

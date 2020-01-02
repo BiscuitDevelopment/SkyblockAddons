@@ -1,12 +1,6 @@
 {
   "language": "English",
   "settings": {
-    "tab": {
-      "features": "Features",
-      "fixes": "Fixes",
-      "guiFeatures": "GUI Features",
-      "generalSettings": "General Settings"
-    },
     "settings": "Settings",
     "magmaBossWarning": "Magma Boss Warning",
     "itemDropConfirmation": "Item Drop Confirmation",
@@ -84,6 +78,19 @@
     "specialZealotAlert": "Special Zealot Alert",
     "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented",
     "hidePetHealthBar": "Hide Pet Health Bar",
+    "powerOrbDisplay": "Power Orb Display",
+    "powerOrbDisplayStyle": "Power Orb Style: %style%",
+    "powerOrbStyle": {
+      "detailed": "Detailed",
+      "compact": "Compact"
+    },
+    "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages",
+    "zealotCounter": "Show Zealot Counter",
+    "tickerChargesDisplay": "Ticker/Charges Display",
+    "tab": {
+      "generalSettings": "General Settings"
+    },
+    "tabEffectTimers": "Potion and Powerup Timers",
     "noArrowsLeftAlert": "No Arrows Left Alert"
   },
   "messages": {

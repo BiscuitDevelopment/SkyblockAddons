@@ -53,7 +53,7 @@
     "lockSlot": "Vergrendel Vakje",
     "dontResetCursorInventory": "Cursor niet resetten tussen Inventarissen",
     "summoningEyeAlert": "Oproepend oog Alarm",
-    "makeEnderchestsInEndGreen": "Change Enderchest Color in the End",
+    "makeEnderchestsInEndGreen": "Verander Enderchest Kleur in The End",
     "changeColor": "Kleur wijzigen",
     "showInOtherGames": "Toon in andere spellen",
     "useVanillaTexture": "Gebruik Vanilla Achtergrond",
@@ -71,19 +71,19 @@
     "changeBarColorForPotions": "Verander Kleur Balk voor Verdorring & Gif",
     "craftingPatterns": "Kies Crafting Patroon",
     "soundIndicatorForFishing": "Geluidsindicator tijdens vissen",
-    "avoidBlinkingNightVision": "Voorkom knippering tijdens nachtzicht",
-    "disableMinionLocationWarning": "Meldingen minion locatie uitschakelen",
-    "jungleAxeCooldown": "Jungle Bijl Cooldown",
+    "avoidBlinkingNightVision": "Voorkom flikkeren door nachtzicht",
+    "disableMinionLocationWarning": "Locatie niet Perfect Melding uitschakelen",
+    "jungleAxeCooldown": "Jungle Bijl Afkoeling",
     "organizeLongEnchantmentLists": "Orden Lange Betoverings Lijsten",
-    "showItemCooldowns": "Show Item Cooldowns",
+    "showItemCooldowns": "Toon Item Afkoelingstijd",
     "speedPercentage": "Snelheidspercentage",
-    "collectionDisplay": "Skill Progress Display",
-    "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns",
-    "onlyMineValuablesNether": "Only Mine Valuables in the Nether",
-    "revenantIndicator": "Slayer Armor Progress Indicator",
-    "specialZealotAlert": "Special Zealot Alert",
-    "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented",
-    "hidePetHealthBar": "Hide Pet Health Bar"
+    "collectionDisplay": "Vaardigheid Voortgang Weergave",
+    "onlyMineOresDeepCaverns": "Breek Alleen Erts in de Diepe Grotten",
+    "onlyMineValuablesNether": "Breek Alleen Kostbaarheden in de Nether",
+    "revenantIndicator": "Slayer Pantser Voortgangsindicator",
+    "specialZealotAlert": "Speciale Zealot Melding",
+    "enableMessageWhenActionPrevented": "Toon een bericht wanneer een actie wordt gestopt",
+    "hidePetHealthBar": "Huisdiergezondheidsbalk verbergen"
   },
   "messages": {
     "dropConfirmation": "Laat dit object opnieuw vallen om te Bevestigen!",
@@ -99,7 +99,7 @@
     "inventoryTypes": {
       "enchants": "Betoveringen",
       "reforges": "Omsmedingen",
-      "crafting": "Maken"
+      "crafting": "Fabricatie"
     },
     "newUpdateAvailable": "Een nieuwe update (%version%) is beschikbaar!",
     "deleteOldFile": "De download is voltooid, open uw mods map met behulp van de onderstaande knop, sluit uw Minecraft en verwijder de oude versie (of verwijder het later als u wilt).",
@@ -121,12 +121,12 @@
     "cancelledProfileOpening": "SkyblockAddons heeft je ervan weerhouden het profiel van deze speler te openen terwijl je een boog vast hebt.",
     "cancelledDropping": "SkyblockAddons heeft je ervan weerhouden dit zeldzame item of gereedschap uit je hotbar te gooien.",
     "clickMoreTimes": "Klik/gooi dit item %times% keer als je dit echt wilt doen.",
-    "cancelledDeepCaverns": "A SkyblockAddons feature has stopped you from mining this block here.",
+    "cancelledDeepCaverns": "Een SkyblockAddons functie heeft u ervan weerhouden om deze blok te breken.",
     "featureDisabled": "Functie uitgeschakeld",
-    "anvilUses": "Anvil Uses: %uses%",
-    "specialZealotFound": "Special Zealot!",
-    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)",
-    "searchFeatures": "Search features",
-    "downloadingUpdateFile": "Downloading update file..."
+    "anvilUses": "Aambeeld Gebruikt: %uses%",
+    "specialZealotFound": "Speciale Zealot!",
+    "blockIncompletePatterns": "Blokkeer het maken van onvolledige patronen (aanbevolen)",
+    "searchFeatures": "Doorzoek functies",
+    "downloadingUpdateFile": "Update bestand downloaden..."
   }
 }
