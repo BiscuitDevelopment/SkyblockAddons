@@ -89,7 +89,8 @@
     "tickerChargesDisplay": "Ticker/Charges Display",
     "tab": {
       "generalSettings": "Cài đặt chung"
-    }
+    },
+    "tabEffectTimers": "Potion and Powerup Timers"
   },
   "messages": {
     "dropConfirmation": "Nhấn \"Q\" Thêm Một Lần Nữa Để Xác Nhận!",
