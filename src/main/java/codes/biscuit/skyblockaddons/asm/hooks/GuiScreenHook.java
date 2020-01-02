@@ -48,9 +48,7 @@ public class GuiScreenHook {
             if (backpack != null) {
                 backpack.setX(x);
                 backpack.setY(y);
-                if ((main.getFreezeBackpackKey().isKeyDown() || main.getFreezeBackpackKey().isPressed()
-                        || Keyboard.isKeyDown(main.getFreezeBackpackKey().getKeyCode()))
-                        && System.currentTimeMillis() - lastBackpackFreezeKey > 500) {
+                if (isFreezeKeyDown(main) && System.currentTimeMillis() - lastBackpackFreezeKey > 500) {
                     lastBackpackFreezeKey = System.currentTimeMillis();
                     GuiContainerHook.setFreezeBackpack(!GuiContainerHook.isFreezeBackpack());
                     main.getUtils().setBackpackToRender(backpack);
@@ -67,6 +65,16 @@ public class GuiScreenHook {
         }
     }
 
+    private static boolean isFreezeKeyDown(SkyblockAddons main) {
+        if (main.getFreezeBackpackKey().isKeyDown()) return true;
+        if (main.getFreezeBackpackKey().isPressed()) return true;
+        try {
+            if (Keyboard.isKeyDown(main.getFreezeBackpackKey().getKeyCode())) return true;
+        } catch (Exception ignored) {}
+
+        return false;
+    }
+
     public static void handleComponentClick(IChatComponent component) {
         SkyblockAddons main = SkyblockAddons.getInstance();
         if (main.getUtils().isOnSkyblock() && component != null && "§2§l[OPEN MENU]".equals(component.getUnformattedText()) &&
@@ -75,11 +83,11 @@ public class GuiScreenHook {
         }
     }
 
-    public static long getLastBackpackFreezeKey() {
+    static long getLastBackpackFreezeKey() {
         return lastBackpackFreezeKey;
     }
 
-    public static void setLastBackpackFreezeKey(long lastBackpackFreezeKey) {
+    static void setLastBackpackFreezeKey(long lastBackpackFreezeKey) {
         GuiScreenHook.lastBackpackFreezeKey = lastBackpackFreezeKey;
     }
 }

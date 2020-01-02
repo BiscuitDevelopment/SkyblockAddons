@@ -403,17 +403,7 @@ public class EnumUtils {
     }
 
     public enum GuiTab {
-        FEATURES, FIXES, GUI_FEATURES, GENERAL_SETTINGS;
-
-        public Set<Feature> getFeatures() {
-            switch (this) {
-                case FEATURES: return Feature.getFeatures();
-                case FIXES: return Feature.getFixes();
-                case GUI_FEATURES: return Feature.getGuiFeatures();
-                case GENERAL_SETTINGS: return Feature.getGeneralFeatures();
-            }
-            return null;
-        }
+        MAIN, GENERAL_SETTINGS
     }
 
     public enum FeatureSetting {

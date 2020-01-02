@@ -5,7 +5,6 @@ import codes.biscuit.skyblockaddons.asm.utils.ReturnValue;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.Feature;
 import codes.biscuit.skyblockaddons.utils.Message;
-import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.inventory.ContainerPlayer;
@@ -17,7 +16,7 @@ public class EntityPlayerSPHook {
     private static Item lastItem = null;
     private static long lastDrop = System.currentTimeMillis();
 
-    public static EntityItem dropOneItemConfirmation(boolean dropAll, ReturnValue returnValue) {
+    public static EntityItem dropOneItemConfirmation(ReturnValue returnValue) {
         SkyblockAddons main = SkyblockAddons.getInstance();
         Minecraft mc = Minecraft.getMinecraft();
         ItemStack heldItemStack = mc.thePlayer.getHeldItem();
@@ -26,7 +25,6 @@ public class EntityPlayerSPHook {
             if (main.getConfigValues().getLockedSlots().contains(slot)
                     && (slot >= 9 || mc.thePlayer.openContainer instanceof ContainerPlayer && slot >= 5)) {
                 main.getUtils().playLoudSound("note.bass", 0.5);
-                ChatFormatting ecf = ChatFormatting.AQUA;
                 SkyblockAddons.getInstance().getUtils().sendMessage(main.getConfigValues().getColor(Feature.DROP_CONFIRMATION) +
                         Message.MESSAGE_SLOT_LOCKED.getMessage());
                 returnValue.cancel();

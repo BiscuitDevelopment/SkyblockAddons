@@ -56,14 +56,8 @@ public class ConfigValues {
         if (settingsConfigFile.exists()) {
             try {
                 FileReader reader = new FileReader(settingsConfigFile);
-                BufferedReader bufferedReader = new BufferedReader(reader);
-                StringBuilder builder = new StringBuilder();
-                String nextLine;
-                while ((nextLine = bufferedReader.readLine()) != null) {
-                    builder.append(nextLine);
-                }
-                String complete = builder.toString();
-                JsonElement fileElement = new JsonParser().parse(complete);
+                JsonElement fileElement = new JsonParser().parse(reader);
+
                 if (fileElement == null || fileElement.isJsonNull()) {
                     throw new JsonParseException("File is null!");
                 }
@@ -154,7 +148,6 @@ public class ConfigValues {
                 }
             }
             loadFeatureArray("guiPositions", coordinates);
-
             loadFeatureArray("barSizes", barSizes);
 
             loadLegacyColor("warningColor", Feature.MAGMA_WARNING);

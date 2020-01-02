@@ -63,7 +63,7 @@ public class RenderListener {
 
     private PlayerListener.GUIType guiToOpen = null;
     private int guiPageToOpen = 1;
-    private EnumUtils.GuiTab guiTabToOpen = EnumUtils.GuiTab.FEATURES;
+    private EnumUtils.GuiTab guiTabToOpen = EnumUtils.GuiTab.MAIN;
     private String textToOpen = null;
 
 
@@ -762,23 +762,26 @@ public class RenderListener {
         }
     }
 
-    public void drawPotionEffectTimers(float scale, Minecraft mc, ButtonLocation buttonLocation){
+    public void drawPotionEffectTimers(float scale, ButtonLocation buttonLocation){
         float x = main.getConfigValues().getActualX(Feature.TAB_EFFECT_TIMERS);
         float y = main.getConfigValues().getActualY(Feature.TAB_EFFECT_TIMERS);
 
-        List<TabEffectTimer> potionTimers = TabEffectTimer.getPotionTimers();
-        List<TabEffectTimer> powerupTimers = TabEffectTimer.getPowerupTimers();
+        TabEffectManager tabEffect = TabEffectManager.getInstance();
+
+        List<String> potionTimers =tabEffect.getPotionTimers();
+        List<String> powerupTimers = tabEffect.getPowerupTimers();
 
         if(potionTimers.isEmpty() && powerupTimers.isEmpty()) {
             if (buttonLocation == null) {
                 return;
             } else { //We are editing GUI locations, draw something
-                potionTimers = TabEffectTimer.getDummyPotions();
-                powerupTimers = TabEffectTimer.getDummyPowerups();
+                potionTimers = TabEffectManager.getDummyPotions();
+                powerupTimers = TabEffectManager.getDummyPowerups();
             }
         }
 
-        int height = 27; //8 Px * 3 Effects + 3px spacer between Potions and Powerups
+        int height = (powerupTimers.size()+potionTimers.size()) * 8 +
+                ((!powerupTimers.isEmpty() && !potionTimers.isEmpty()) ? 3 : 0); //8 px per effect + 3px spacer between Potions and Powerups if they both exist
         int width = 156; //String width of "Enchanting XP Boost III 1:23:45"
         x-=Math.round(width*scale/2);
         y-=Math.round(height*scale/2);
@@ -799,14 +802,14 @@ public class RenderListener {
         boolean topDown = (anchorPoint == EnumUtils.AnchorPoint.TOP_LEFT || anchorPoint == EnumUtils.AnchorPoint.TOP_RIGHT);
 
         int drawnCount = topDown ? 0 : 2;
-        for(TabEffectTimer timer : potionTimers){
+        for(String potion : potionTimers){
             int fixedY = intY + drawnCount +(topDown ? 0 : 3) + drawnCount * 8;
-            main.getUtils().drawTextWithStyle(timer.getEffect(), intX, fixedY, ChatFormatting.WHITE);
+            main.getUtils().drawTextWithStyle(potion, intX, fixedY, ChatFormatting.WHITE);
             drawnCount += topDown ? 1 : -1;
         }
-        for(TabEffectTimer timer : powerupTimers){
+        for(String powerUp : powerupTimers){
             int fixedY = intY + drawnCount + (topDown ? 3 : 0) + drawnCount * 8;
-            main.getUtils().drawTextWithStyle(timer.getEffect(), intX, fixedY, ChatFormatting.WHITE);
+            main.getUtils().drawTextWithStyle(powerUp, intX, fixedY, ChatFormatting.WHITE);
             drawnCount += topDown ? 1 : -1;
         }
     }
@@ -963,7 +966,7 @@ public class RenderListener {
         Optional<String> longestLine = display.stream().max(Comparator.comparingInt(String::length));
 
         int effectsHeight = (MinecraftReflection.FontRenderer.getFontHeight() + spacing) * display.size();
-        int width = iconSize + longestLine.map(s -> MinecraftReflection.FontRenderer.getStringWidth(s))
+        int width = iconSize + longestLine.map(MinecraftReflection.FontRenderer::getStringWidth)
                 .orElseGet(() -> MinecraftReflection.FontRenderer.getStringWidth(display.get(0)));
         int height = Math.max(effectsHeight, iconAndSecondsHeight);
         x -= Math.round(width * scale / 2);

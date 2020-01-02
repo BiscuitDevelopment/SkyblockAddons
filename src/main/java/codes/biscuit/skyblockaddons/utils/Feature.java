@@ -23,7 +23,7 @@ public enum Feature {
     HIDE_FOOD_ARMOR_BAR(6, Message.SETTING_HIDE_FOOD_AND_ARMOR, false),
     FULL_INVENTORY_WARNING(7, Message.SETTING_FULL_INVENTORY_WARNING, new GuiFeatureData(ChatFormatting.RED), false),
     MAGMA_BOSS_TIMER(8, Message.SETTING_MAGMA_BOSS_TIMER, new GuiFeatureData(EnumUtils.DrawType.TEXT, ChatFormatting.GOLD, EnumUtils.AnchorPoint.TOP_RIGHT, -18, 13), false, EnumUtils.FeatureSetting.ENABLED_IN_OTHER_GAMES),
-//    HIDE_DURABILITY(9, Message.SETTING_HIDE_DURABILITY), // removed
+//    HIDE_DURABILITY(9, Message.SETTING_HIDE_DURABILITY), // Removed, added to Skyblock.
     SHOW_ENCHANTMENTS_REFORGES(10, Message.SETTING_ENCHANTS_AND_REFORGES, false),
     MINION_STOP_WARNING(11, Message.SETTING_MINION_STOP_WARNING, new GuiFeatureData(ChatFormatting.RED), true),
     HIDE_AUCTION_HOUSE_PLAYERS(12, Message.SETTING_AUCTION_HOUSE_PLAYERS, false),
@@ -58,7 +58,7 @@ public enum Feature {
     DONT_OPEN_PROFILES_WITH_BOW(41, Message.SETTING_DONT_OPEN_PROFILES_WITH_BOW, false),
     STOP_DROPPING_SELLING_RARE_ITEMS(42, Message.SETTING_STOP_DROPPING_SELLING_RARE_ITEMS, new GuiFeatureData(ChatFormatting.RED), false),
     MAKE_BACKPACK_INVENTORIES_COLORED(43, Message.SETTING_MAKE_BACKPACK_INVENTORIES_COLORED, false),
-    @Deprecated AVOID_BREAKING_BOTTOM_SUGAR_CANE(44, Message.SETTING_AVOID_BREAKING_BOTTOM_SUGAR_CANE, false), //disallowed
+    @Deprecated AVOID_BREAKING_BOTTOM_SUGAR_CANE(44, Message.SETTING_AVOID_BREAKING_BOTTOM_SUGAR_CANE, false), // Disallowed by the Hypixel admins.
     REPLACE_ROMAN_NUMERALS_WITH_NUMBERS(45, Message.SETTING_REPLACE_ROMAN_NUMERALS_WITH_NUMBERS, true),
     CHANGE_BAR_COLOR_FOR_POTIONS(46, Message.SETTING_CHANGE_BAR_COLOR_WITH_POTIONS, false),
     CRAFTING_PATTERNS(47, Message.SETTING_CRAFTING_PATTERNS, false),
@@ -83,16 +83,14 @@ public enum Feature {
     ZEALOT_COUNTER(66, Message.SETTING_ZEALOT_COUNTER, new GuiFeatureData(EnumUtils.DrawType.TEXT, ChatFormatting.DARK_AQUA, EnumUtils.AnchorPoint.TOP_RIGHT, -45, 48), false),
     TICKER_CHARGES_DISPLAY(67, Message.SETTING_TICKER_CHARGES_DISPLAY, new GuiFeatureData(EnumUtils.DrawType.TICKER, null, EnumUtils.AnchorPoint.BOTTOM_MIDDLE, 158, -29), false),
     TAB_EFFECT_TIMERS(68, Message.SETTING_TAB_EFFECT_TIMERS, new GuiFeatureData(EnumUtils.DrawType.TAB_EFFECT_TIMERS, EnumUtils.AnchorPoint.BOTTOM_RIGHT, -210, -18), false),
-    NO_ARROWS_LEFT_ALERT(69, Message.SETTING_NO_ARROWS_LEFT_ALERT, new GuiFeatureData(ConfigColor.RED), false),
+    NO_ARROWS_LEFT_ALERT(69, Message.SETTING_NO_ARROWS_LEFT_ALERT, new GuiFeatureData(ChatFormatting.RED), false),
 
-    HIDE_GREY_ENCHANTS(100, null, false), // allow remote disabling this feature
+    HIDE_GREY_ENCHANTS(100, null, false), // This is here just to allow remote disabling this feature- it's caused issues in the past haha.
 
     WARNING_TIME(-1, Message.SETTING_WARNING_DURATION, false),
 
     ADD(-1, null, false),
     SUBTRACT(-1, null, false),
-
-//    ANCHOR_POINT(-1, Message.SETTING_ANCHOR_POINT, false),
 
     LANGUAGE(-1, Message.LANGUAGE, false),
     EDIT_LOCATIONS(-1, Message.SETTING_EDIT_LOCATIONS, false),
@@ -100,25 +98,27 @@ public enum Feature {
     GENERAL_SETTINGS(-1, Message.TAB_GENERAL_SETTINGS, false),
     TEXT_STYLE(-1, Message.SETTING_TEXT_STYLE, false);
 
-    // Add any features to one of the following tab categories. They appear in the GUI in the order they are listed.
 
-    private static final Set<Feature> FEATURES = new LinkedHashSet<>(Arrays.asList(SHOW_ENCHANTMENTS_REFORGES, SHOW_BACKPACK_PREVIEW, CRAFTING_PATTERNS,
-            MINION_FULL_WARNING, FULL_INVENTORY_WARNING, IGNORE_ITEM_FRAME_CLICKS, HIDE_FOOD_ARMOR_BAR, HIDE_HEALTH_BAR,
-            AVOID_BREAKING_STEMS, MAGMA_WARNING, HIDE_PLAYERS_IN_LOBBY, MINION_STOP_WARNING, SHOW_ITEM_ANVIL_USES, LOCK_SLOTS,
-            DONT_OPEN_PROFILES_WITH_BOW, STOP_DROPPING_SELLING_RARE_ITEMS, MAKE_ENDERCHESTS_GREEN_IN_END, SPECIAL_ZEALOT_ALERT,
-            FISHING_SOUND_INDICATOR, DONT_RESET_CURSOR_INVENTORY, REPLACE_ROMAN_NUMERALS_WITH_NUMBERS, DROP_CONFIRMATION, ORGANIZE_ENCHANTMENTS,
-            JUNGLE_AXE_COOLDOWN, MINION_DISABLE_LOCATION_WARNING, SHOW_ITEM_COOLDOWNS, ONLY_MINE_ORES_DEEP_CAVERNS, ONLY_MINE_VALUABLES_NETHER, 
-            SUMMONING_EYE_ALERT, AVOID_BREAKING_BOTTOM_SUGAR_CANE, DISABLE_MAGICAL_SOUP_MESSAGES, NO_ARROWS_LEFT_ALERT));
-
-    private static Set<Feature> FIXES = new LinkedHashSet<>(Arrays.asList(HIDE_BONES, DISABLE_EMBER_ROD, HIDE_AUCTION_HOUSE_PLAYERS,
-            STOP_BOW_CHARGE_FROM_RESETTING, AVOID_PLACING_ENCHANTED_ITEMS, PREVENT_MOVEMENT_ON_DEATH, AVOID_BLINKING_NIGHT_VISION,
-            HIDE_PET_HEALTH_BAR));
-
+    /**
+     * Features that are considered gui ones. This is used for examnple when saving the config to ensure that these features'
+     * coordinates and colors are handled properly.
+     */
     private static Set<Feature> GUI_FEATURES = new LinkedHashSet<>(Arrays.asList(MAGMA_BOSS_TIMER, MANA_BAR, MANA_TEXT, DEFENCE_ICON, DEFENCE_TEXT,
             DEFENCE_PERCENTAGE, HEALTH_BAR, HEALTH_TEXT, SKELETON_BAR, HEALTH_UPDATES, ITEM_PICKUP_LOG, DARK_AUCTION_TIMER, SKILL_DISPLAY, SPEED_PERCENTAGE, SLAYER_INDICATOR,
             POWER_ORB_STATUS_DISPLAY, ZEALOT_COUNTER, TICKER_CHARGES_DISPLAY, TAB_EFFECT_TIMERS));
 
-    private static Set<Feature> GENERAL_FEATURES = new LinkedHashSet<>(Arrays.asList(TEXT_STYLE, WARNING_TIME));
+    /**
+     * These are features that are displayed separate, on the general tab.
+     */
+    private static Set<Feature> GENERAL_TAB_FEATURES = new LinkedHashSet<>(Arrays.asList(TEXT_STYLE, WARNING_TIME));
+
+    /**
+     * These are "features" that are not actually features, but just hold the place of a setting. If you are adding any new settings and create
+     * a feature here, make sure to add it!
+     */
+    private static final Set<Feature> SETTINGS = Sets.newHashSet(DOUBLE_DROP_IN_OTHER_GAMES,
+            USE_VANILLA_TEXTURE_DEFENCE, SHOW_BACKPACK_HOLDING_SHIFT, SHOW_MAGMA_TIMER_IN_OTHER_GAMES, MAKE_BACKPACK_INVENTORIES_COLORED,
+            CHANGE_BAR_COLOR_FOR_POTIONS, ENABLE_MESSAGE_WHEN_BREAKING_STEMS, ENABLE_MESSAGE_WHEN_MINING_DEEP_CAVERNS, ENABLE_MESSAGE_WHEN_MINING_NETHER);
 
     private int id;
     private Message message;
@@ -142,10 +142,8 @@ public enum Feature {
         return id;
     }
 
-    private Set<Integer> notFeatureIDs = Sets.newHashSet(14, 17, 18, 36, 43, 46, 60, 61, 62);
-
     public boolean isActualFeature() {
-        return id != -1 && message != null && getMessage() != null && !notFeatureIDs.contains(id);
+        return id != -1 && message != null && getMessage() != null && !SETTINGS.contains(this);
     }
 
     public String getMessage(String... variables) {
@@ -193,7 +191,7 @@ public enum Feature {
             } else if(guiFeatureData.getDrawType() == EnumUtils.DrawType.TICKER) {
                 main.getRenderListener().drawScorpionFoilTicker(mc, scale, buttonLocation);
             } else if (guiFeatureData.getDrawType() == EnumUtils.DrawType.TAB_EFFECT_TIMERS){
-                main.getRenderListener().drawPotionEffectTimers(scale, mc, buttonLocation);
+                main.getRenderListener().drawPotionEffectTimers(scale, buttonLocation);
             }
         }
     }
@@ -236,15 +234,7 @@ public enum Feature {
         return GUI_FEATURES;
     }
 
-    public static Set<Feature> getFeatures() {
-        return FEATURES;
-    }
-
-    public static Set<Feature> getFixes() {
-        return FIXES;
-    }
-
-    public static Set<Feature> getGeneralFeatures() {
-        return GENERAL_FEATURES;
+    public static Set<Feature> getGeneralTabFeatures() {
+        return GENERAL_TAB_FEATURES;
     }
 }

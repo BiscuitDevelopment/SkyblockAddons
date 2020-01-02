@@ -2,6 +2,7 @@ package codes.biscuit.skyblockaddons.utils.nifty.reflection;
 
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
 import codes.biscuit.skyblockaddons.utils.nifty.reflection.accessor.MethodAccessor;
+import net.minecraft.client.Minecraft;
 import net.minecraftforge.common.MinecraftForge;
 
 import java.lang.reflect.Method;
@@ -133,7 +134,8 @@ public final class MinecraftReflection extends Reflection {
 		}
 
 		public static void drawString(String text, float x, float y, int color, boolean dropShadow) {
-			DRAW_STRING.invoke(getFontRenderer(), text, x, y, color, dropShadow);
+			Minecraft.getMinecraft().fontRendererObj.drawString(text, x, y, color, dropShadow);
+//			DRAW_STRING.invoke(getFontRenderer(), text, x, y, color, dropShadow); //TODO Change this after the reflection is fixed.
 		}
 
 		public static int getFontHeight() {

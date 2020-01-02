@@ -76,7 +76,7 @@ public class SkyblockAddonsCommand extends CommandBase {
         }
 
         main.getUtils().setFadingIn(true);
-        main.getRenderListener().setGuiToOpen(PlayerListener.GUIType.MAIN, 1, EnumUtils.GuiTab.FEATURES);
+        main.getRenderListener().setGuiToOpen(PlayerListener.GUIType.MAIN, 1, EnumUtils.GuiTab.MAIN);
     }
 
 }

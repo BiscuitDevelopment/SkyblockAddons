@@ -88,7 +88,7 @@ public class SkyblockAddonsGui extends GuiScreen {
         // Add the buttons for each page.
 //        Set<Feature> features = tab.getFeatures();
         List<Feature> features = new LinkedList<>();
-        for (Feature feature : tab != EnumUtils.GuiTab.GENERAL_SETTINGS ? Sets.newHashSet(Feature.values()) : tab.getFeatures()) {
+        for (Feature feature : tab != EnumUtils.GuiTab.GENERAL_SETTINGS ? Sets.newHashSet(Feature.values()) : Feature.getGeneralTabFeatures()) {
             if ((feature.isActualFeature() || tab == EnumUtils.GuiTab.GENERAL_SETTINGS)
                     && !main.getConfigValues().isRemoteDisabled(feature) && matchesSearch(feature.getMessage())) { // dont add other random features or disabled features yet
                 features.add(feature);
@@ -204,7 +204,7 @@ public class SkyblockAddonsGui extends GuiScreen {
             }  else if (feature == Feature.GENERAL_SETTINGS) {
                 if (tab == EnumUtils.GuiTab.GENERAL_SETTINGS) {
                     main.getUtils().setFadingIn(false);
-                    Minecraft.getMinecraft().displayGuiScreen(new SkyblockAddonsGui(main, 1, EnumUtils.GuiTab.GUI_FEATURES, featureSearchBar.getText()));
+                    Minecraft.getMinecraft().displayGuiScreen(new SkyblockAddonsGui(main, 1, EnumUtils.GuiTab.MAIN, featureSearchBar.getText()));
                 } else {
                     main.getUtils().setFadingIn(false);
                     Minecraft.getMinecraft().displayGuiScreen(new SkyblockAddonsGui(main, 1, EnumUtils.GuiTab.GENERAL_SETTINGS, featureSearchBar.getText()));
@@ -277,9 +277,8 @@ public class SkyblockAddonsGui extends GuiScreen {
     private void drawScaledString(String text, int y, int color, double scale, int xOff) {
         double x = width/2;
         GlStateManager.pushMatrix();
-        GlStateManager.scale(scale, scale, 1); //TODO fix reflection detecting wrong method
-        MinecraftReflection.FontRenderer.drawCenteredString(text,
-                (int)(x/scale)+xOff, (int)(y/scale), color);
+        GlStateManager.scale(scale, scale, 1);
+        MinecraftReflection.FontRenderer.drawCenteredString(text, (int)(x/scale)+xOff, (int)(y/scale), color);
         GlStateManager.popMatrix();
     }
 
@@ -407,7 +406,7 @@ public class SkyblockAddonsGui extends GuiScreen {
     public void onGuiClosed() {
         if (!cancelClose) {
             if (tab == EnumUtils.GuiTab.GENERAL_SETTINGS) {
-                main.getRenderListener().setGuiToOpen(PlayerListener.GUIType.MAIN, 1, EnumUtils.GuiTab.FEATURES, featureSearchBar.getText());
+                main.getRenderListener().setGuiToOpen(PlayerListener.GUIType.MAIN, 1, EnumUtils.GuiTab.MAIN, featureSearchBar.getText());
             }
             main.getConfigValues().saveConfig();
             Keyboard.enableRepeatEvents(false);
