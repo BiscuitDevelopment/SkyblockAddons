@@ -91,7 +91,7 @@
       "generalSettings": "Opciones Generales"
     },
     "tabEffectTimers": "Temporizador de Pociones y Powerup",
-    "noArrowsLeftAlert": "No Arrows Left Alert"
+    "noArrowsLeftAlert": "Alerta de Quedarse sin Flechas"
   },
   "messages": {
     "dropConfirmation": "¡Dropea el Objeto otra vez para soltar!",
@@ -136,7 +136,7 @@
     "blockIncompletePatterns": "Bloquear el crafteo de patrones incompletos (recomendado)",
     "searchFeatures": "Buscar características",
     "downloadingUpdateFile": "Descargando archivo de actualización...",
-    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
-    "noArrowsLeft": "No Arrows Left!"
+    "onlyFewArrowsLeft": "¡Solo quedan %arrows% flechas restantes!",
+    "noArrowsLeft": "¡No quedan flechas!"
   }
 }
