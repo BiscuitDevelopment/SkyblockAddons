@@ -90,7 +90,8 @@
     "tab": {
       "generalSettings": "Algemene instellingen"
     },
-    "tabEffectTimers": "Potion and Powerup Timers"
+    "tabEffectTimers": "Potion and Powerup Timers",
+    "noArrowsLeftAlert": "No Arrows Left Alert"
   },
   "messages": {
     "dropConfirmation": "Laat dit object opnieuw vallen om te Bevestigen!",
@@ -134,6 +135,8 @@
     "specialZealotFound": "Speciale Zealot!",
     "blockIncompletePatterns": "Blokkeer het maken van onvolledige patronen (aanbevolen)",
     "searchFeatures": "Doorzoek functies",
-    "downloadingUpdateFile": "Update bestand downloaden..."
+    "downloadingUpdateFile": "Update bestand downloaden...",
+    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
+    "noArrowsLeft": "No Arrows Left!"
   }
 }
