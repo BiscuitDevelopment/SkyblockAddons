@@ -90,7 +90,8 @@
     "tab": {
       "generalSettings": "General biscuits"
     },
-    "tabEffectTimers": "Potion and Powerup Timers"
+    "tabEffectTimers": "Potion and Powerup Timers",
+    "noArrowsLeftAlert": "No Arrows Left Alert"
   },
   "messages": {
     "dropConfirmation": "Throw out this biscuit again to confirm!",
@@ -134,6 +135,8 @@
     "specialZealotFound": "Tasty Biscuit!",
     "blockIncompletePatterns": "Block eating uncooked biscuits (recommended)",
     "searchFeatures": "Buy dem biscuits",
-    "downloadingUpdateFile": "Eating freshest biscuits..."
+    "downloadingUpdateFile": "Eating freshest biscuits...",
+    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
+    "noArrowsLeft": "No Arrows Left!"
   }
 }
