@@ -89,7 +89,8 @@
     "tickerChargesDisplay": "Ticker/Charges Display",
     "tab": {
       "generalSettings": "Allmänna Inställningar"
-    }
+    },
+    "tabEffectTimers": "Potion and Powerup Timers"
   },
   "messages": {
     "dropConfirmation": "Släpp Det Här Igen För Att Bekräfta!",
