@@ -90,7 +90,8 @@
     "tab": {
       "generalSettings": "Genewal Settings"
     },
-    "tabEffectTimers": "Powotions and Poworup Timers"
+    "tabEffectTimers": "Powotions and Poworup Timers",
+    "noArrowsLeftAlert": "No Arrows Left Alert"
   },
   "messages": {
     "dropConfirmation": "Dwop thwis itwem agwain to confiwm!",
@@ -134,6 +135,8 @@
     "specialZealotFound": "Spwecial Wealots OwO!",
     "blockIncompletePatterns": "Bwock cwafting incompwete pattewns (wecommended)",
     "searchFeatures": "Search Fwetuwures",
-    "downloadingUpdateFile": "Downwoading update fiwe..."
+    "downloadingUpdateFile": "Downwoading update fiwe...",
+    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
+    "noArrowsLeft": "No Arrows Left!"
   }
 }
