@@ -89,7 +89,8 @@
     "tickerChargesDisplay": "显示刻数/充能",
     "tab": {
       "generalSettings": "常规设置"
-    }
+    },
+    "tabEffectTimers": "Potion and Powerup Timers"
   },
   "messages": {
     "dropConfirmation": "再次丢弃此物品以确认!",
