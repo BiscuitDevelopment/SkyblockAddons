@@ -90,7 +90,8 @@
     "tab": {
       "generalSettings": "Impostazioni Generali"
     },
-    "tabEffectTimers": "Timer pozioni e potenziamenti"
+    "tabEffectTimers": "Timer pozioni e potenziamenti",
+    "noArrowsLeftAlert": "No Arrows Left Alert"
   },
   "messages": {
     "dropConfirmation": "Getta questo oggetto nuovamente per confermare!",
@@ -134,6 +135,8 @@
     "specialZealotFound": "Zealot Speciale!",
     "blockIncompletePatterns": "Blocco degli schemi di fabbricazione incompleti (consigliato)",
     "searchFeatures": "Cerca funzioni",
-    "downloadingUpdateFile": "Download del file di aggiornamento in corso..."
+    "downloadingUpdateFile": "Download del file di aggiornamento in corso...",
+    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
+    "noArrowsLeft": "No Arrows Left!"
   }
 }
