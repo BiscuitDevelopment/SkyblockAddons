@@ -15,12 +15,20 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IChatComponent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
+import org.lwjgl.input.Keyboard;
 
 public class GuiScreenHook {
 
-    private static final long MADDOX_BATPHONE_COOLDOWN = 1 * 60 * 1000;
+    private static final int MADDOX_BATPHONE_COOLDOWN = 1 * 60 * 1000;
 
-    public static void renderBackpack(ItemStack stack, int x, int y, ReturnValue returnValue) {
+    /**
+     * The last time the backpack preview freeze key was pressed.
+     * This is to stop multiple methods that handle similar logic from
+     * performing the same actions multiple times.
+     */
+    private static long lastBackpackFreezeKey = -1;
+
+    public static void renderBackpack(ItemStack stack, int x, int y, ReturnValue<?> returnValue) {
         SkyblockAddons main = SkyblockAddons.getInstance();
         if (stack.getItem().equals(Items.skull) && main.getConfigValues().isEnabled(Feature.SHOW_BACKPACK_PREVIEW)) {
             if (main.getConfigValues().isEnabled(Feature.SHOW_BACKPACK_HOLDING_SHIFT) && !GuiScreen.isShiftKeyDown()) {
@@ -40,10 +48,22 @@ public class GuiScreenHook {
             if (backpack != null) {
                 backpack.setX(x);
                 backpack.setY(y);
-                main.getUtils().setBackpackToRender(backpack);
+                if ((main.getFreezeBackpackKey().isKeyDown() || main.getFreezeBackpackKey().isPressed()
+                        || Keyboard.isKeyDown(main.getFreezeBackpackKey().getKeyCode()))
+                        && System.currentTimeMillis() - lastBackpackFreezeKey > 500) {
+                    lastBackpackFreezeKey = System.currentTimeMillis();
+                    GuiContainerHook.setFreezeBackpack(!GuiContainerHook.isFreezeBackpack());
+                    main.getUtils().setBackpackToRender(backpack);
+                }
+                if (!GuiContainerHook.isFreezeBackpack()) {
+                    main.getUtils().setBackpackToRender(backpack);
+                }
                 main.getPlayerListener().onItemTooltip(new ItemTooltipEvent(stack, null, null, false));
                 returnValue.cancel();
             }
+        }
+        if (GuiContainerHook.isFreezeBackpack()) {
+            returnValue.cancel();
         }
     }
 
@@ -53,5 +73,13 @@ public class GuiScreenHook {
                 !CooldownManager.isOnCooldown(InventoryUtils.MADDOX_BATPHONE_DISPLAYNAME)) {// The prompt when Maddox picks up the phone.
             CooldownManager.put(InventoryUtils.MADDOX_BATPHONE_DISPLAYNAME, MADDOX_BATPHONE_COOLDOWN);
         }
+    }
+
+    public static long getLastBackpackFreezeKey() {
+        return lastBackpackFreezeKey;
+    }
+
+    public static void setLastBackpackFreezeKey(long lastBackpackFreezeKey) {
+        GuiScreenHook.lastBackpackFreezeKey = lastBackpackFreezeKey;
     }
 }

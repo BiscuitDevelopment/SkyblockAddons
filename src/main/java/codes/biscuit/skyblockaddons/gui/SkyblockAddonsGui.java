@@ -1,24 +1,14 @@
 package codes.biscuit.skyblockaddons.gui;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.gui.buttons.ButtonArrow;
-import codes.biscuit.skyblockaddons.gui.buttons.ButtonBanner;
-import codes.biscuit.skyblockaddons.gui.buttons.ButtonCredit;
-import codes.biscuit.skyblockaddons.gui.buttons.ButtonFeature;
-import codes.biscuit.skyblockaddons.gui.buttons.ButtonModify;
-import codes.biscuit.skyblockaddons.gui.buttons.ButtonNormal;
-import codes.biscuit.skyblockaddons.gui.buttons.ButtonSettings;
-import codes.biscuit.skyblockaddons.gui.buttons.ButtonSocial;
-import codes.biscuit.skyblockaddons.gui.buttons.ButtonSolid;
-import codes.biscuit.skyblockaddons.gui.buttons.ButtonSwitchTab;
-import codes.biscuit.skyblockaddons.gui.buttons.ButtonToggle;
+import codes.biscuit.skyblockaddons.gui.buttons.*;
 import codes.biscuit.skyblockaddons.listeners.PlayerListener;
 import codes.biscuit.skyblockaddons.utils.CoordsPair;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.Feature;
 import codes.biscuit.skyblockaddons.utils.Message;
-import codes.biscuit.skyblockaddons.utils.nifty.StringUtil;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
+import codes.biscuit.skyblockaddons.utils.nifty.StringUtil;
 import codes.biscuit.skyblockaddons.utils.nifty.reflection.MinecraftReflection;
 import com.google.common.collect.Sets;
 import net.minecraft.client.Minecraft;
@@ -30,8 +20,7 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraftforge.client.GuiIngameForge;
 import org.lwjgl.input.Keyboard;
 
-import java.awt.Color;
-import java.awt.Desktop;
+import java.awt.*;
 import java.io.IOException;
 import java.net.URI;
 import java.util.Comparator;
@@ -288,7 +277,7 @@ public class SkyblockAddonsGui extends GuiScreen {
     private void drawScaledString(String text, int y, int color, double scale, int xOff) {
         double x = width/2;
         GlStateManager.pushMatrix();
-        GlStateManager.scale(scale, scale, 1);
+        GlStateManager.scale(scale, scale, 1); //TODO fix reflection detecting wrong method
         MinecraftReflection.FontRenderer.drawCenteredString(text,
                 (int)(x/scale)+xOff, (int)(y/scale), color);
         GlStateManager.popMatrix();

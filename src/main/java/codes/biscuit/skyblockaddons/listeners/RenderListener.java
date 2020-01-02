@@ -333,8 +333,9 @@ public class RenderListener {
 
         drawBarSeparators(gui, x + 11, y, baseTextureY, barWidth, barHeight, fillWidth);
 
-        if (fillWidth < maxWidth && fillWidth > 0) {
-            GlStateManager.color(((float) color.getColor().getRed() / 255) * 0.8F, ((float) color.getColor().getBlue() / 255) * 0.8F, ((float) color.getColor().getBlue() / 255) * 0.8F);
+        if (fillWidth < maxWidth-1 && fillWidth > 0 && // This just draws a dark line to easily distinguish where the bar's progress is.
+                main.getUtils().isUsingDefaultBarTextures()) { // It doesn't always work out nicely when using like custom textures though.
+            GlStateManager.color(((float) color.getColor().getRed() / 255) * 0.8F, ((float) color.getColor().getGreen() / 255) * 0.8F, ((float) color.getColor().getBlue() / 255) * 0.8F);
             drawMiddleThreeRows(gui, x + fillWidth, y, barHeight, 11, 6, 2, fillWidth, 2);
         }
     }
@@ -811,7 +812,7 @@ public class RenderListener {
     private static List<ItemDiff> DUMMY_PICKUP_LOG = new ArrayList<>(Arrays.asList(new ItemDiff(ChatFormatting.DARK_PURPLE + "Forceful Ember Chestplate", 1),
             new ItemDiff("Boat", -1), new ItemDiff(ChatFormatting.BLUE + "Aspect of the End", 1)));
 
-    public void drawItemPickupLog(Minecraft mc, float scale, ButtonLocation buttonLocation) {
+    public void drawItemPickupLog(float scale, ButtonLocation buttonLocation) {
         float x = main.getConfigValues().getActualX(Feature.ITEM_PICKUP_LOG);
         float y = main.getConfigValues().getActualY(Feature.ITEM_PICKUP_LOG);
 

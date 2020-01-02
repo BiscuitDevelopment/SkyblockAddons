@@ -5,12 +5,7 @@ import codes.biscuit.skyblockaddons.asm.utils.ReturnValue;
 import codes.biscuit.skyblockaddons.gui.elements.CraftingPatternSelection;
 import codes.biscuit.skyblockaddons.listeners.RenderListener;
 import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsTransformer;
-import codes.biscuit.skyblockaddons.utils.Backpack;
-import codes.biscuit.skyblockaddons.utils.BackpackColor;
-import codes.biscuit.skyblockaddons.utils.CraftingPattern;
-import codes.biscuit.skyblockaddons.utils.EnchantPair;
-import codes.biscuit.skyblockaddons.utils.EnumUtils;
-import codes.biscuit.skyblockaddons.utils.Feature;
+import codes.biscuit.skyblockaddons.utils.*;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
 import codes.biscuit.skyblockaddons.utils.nifty.reflection.MinecraftReflection;
 import net.minecraft.client.Minecraft;
@@ -43,6 +38,12 @@ public class GuiContainerHook {
     private static ResourceLocation CHEST_GUI_TEXTURE = new ResourceLocation("textures/gui/container/generic_54.png");
     private static EnchantPair reforgeToRender = null;
     private static Set<EnchantPair> enchantsToRender = new HashSet<>();
+
+    /**
+     * This controls whether or not the backpack preview is frozen- allowing you
+     * to hover over a backpack's contents in full detail!
+     */
+    private static boolean freezeBackpack = false;
 
     public static void showEnchantments(Slot slotIn, int x, int y, ItemStack item) {
         SkyblockAddons main = SkyblockAddons.getInstance();
@@ -117,7 +118,20 @@ public class GuiContainerHook {
         }
     }
 
-    public static void drawBackpacks(GuiContainer guiContainer, FontRenderer fontRendererObj) {
+    public static void keyTyped(int keyCode) {
+        SkyblockAddons main = SkyblockAddons.getInstance();
+        if (keyCode == 1 || keyCode == Minecraft.getMinecraft().gameSettings.keyBindInventory.getKeyCode()) {
+            freezeBackpack = false;
+            main.getUtils().setBackpackToRender(null);
+        }
+        if (keyCode == main.getFreezeBackpackKey().getKeyCode() && freezeBackpack &&
+                System.currentTimeMillis() - GuiScreenHook.getLastBackpackFreezeKey() > 500) {
+            GuiScreenHook.setLastBackpackFreezeKey(System.currentTimeMillis());
+            freezeBackpack = false;
+        }
+    }
+
+    public static void drawBackpacks(GuiContainer guiContainer, int mouseX, int mouseY, FontRenderer fontRendererObj) {
         SkyblockAddons main = SkyblockAddons.getInstance();
         Backpack backpack = main.getUtils().getBackpackToRender();
         Minecraft mc = Minecraft.getMinecraft();
@@ -148,6 +162,9 @@ public class GuiContainerHook {
                 RenderHelper.enableGUIStandardItemLighting();
                 GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
                 GlStateManager.enableRescaleNormal();
+                ItemStack toRenderOverlay = null;
+//                int itemXtoRender = -1;
+//                int itemYtoRender = -1;
                 for (int i = 0; i < length; i++) {
                     ItemStack item = items[i];
                     if (item != null) {
@@ -158,9 +175,23 @@ public class GuiContainerHook {
                         renderItem.zLevel = 200;
                         renderItem.renderItemAndEffectIntoGUI(item, itemX, itemY);
                         renderItem.renderItemOverlayIntoGUI(mc.fontRendererObj, item, itemX, itemY, null);
+                        if (freezeBackpack && mouseX > itemX && mouseX < itemX+16 && mouseY > itemY && mouseY < itemY+16) {
+                            toRenderOverlay = item;
+//                            itemXtoRender = itemX;
+//                            itemYtoRender = itemY;
+                        }
                         setZLevel(guiContainer, 0);
                         renderItem.zLevel = 0;
                     }
+                }
+                if (toRenderOverlay != null) {
+//                    GlStateManager.disableLighting();
+//                    GlStateManager.disableDepth();
+//                    GlStateManager.colorMask(true, true, true, false);
+//                    guiContainer.drawGradientRect(itemXtoRender, itemYtoRender, itemXtoRender + 16, itemYtoRender + 16,
+//                            -2130706433, -2130706433);
+                    drawHoveringText(guiContainer, toRenderOverlay.getTooltip(null, mc.gameSettings.advancedItemTooltips),
+                            mouseX, mouseY);
                 }
             } else {
                 GlStateManager.disableLighting();
@@ -188,7 +219,9 @@ public class GuiContainerHook {
                     }
                 }
             }
-            main.getUtils().setBackpackToRender(null);
+            if (!freezeBackpack) {
+                main.getUtils().setBackpackToRender(null);
+            }
             GlStateManager.enableLighting();
             GlStateManager.enableDepth();
             RenderHelper.enableStandardItemLighting();
@@ -200,8 +233,9 @@ public class GuiContainerHook {
     }
 
     public static void drawGradientRect(GuiContainer guiContainer, int left, int top, int right, int bottom, int startColor, int endColor, Slot theSlot) {
+        if (freezeBackpack) return;
         SkyblockAddons main = SkyblockAddons.getInstance();
-        net.minecraft.inventory.Container container = Minecraft.getMinecraft().thePlayer.openContainer;
+        Container container = Minecraft.getMinecraft().thePlayer.openContainer;
         if (theSlot != null) {
             int slotNum = theSlot.slotNumber + main.getInventoryUtils().getSlotDifference(container);
             main.getUtils().setLastHoveredSlot(slotNum);
@@ -282,7 +316,7 @@ public class GuiContainerHook {
         }
     }
 
-    public static void keyTyped(GuiContainer guiContainer, int keyCode, Slot theSlot, ReturnValue returnValue) {
+    public static void keyTyped(GuiContainer guiContainer, int keyCode, Slot theSlot, ReturnValue<?> returnValue) {
         SkyblockAddons main = SkyblockAddons.getInstance();
         Minecraft mc = Minecraft.getMinecraft();
         if (main.getUtils().isOnSkyblock()) {
@@ -297,7 +331,7 @@ public class GuiContainerHook {
                 }
                 if (slot >= 9 || mc.thePlayer.openContainer instanceof ContainerPlayer && slot >= 5) {
                     if (main.getConfigValues().getLockedSlots().contains(slot)) {
-                        if (main.getLockSlot().getKeyCode() == keyCode) {
+                        if (main.getLockSlotKey().getKeyCode() == keyCode) {
                             main.getUtils().playLoudSound("random.orb", 1);
                             main.getConfigValues().getLockedSlots().remove(slot);
                             main.getConfigValues().saveConfig();
@@ -307,7 +341,7 @@ public class GuiContainerHook {
                             return;
                         }
                     } else {
-                        if (main.getLockSlot().getKeyCode() == keyCode) {
+                        if (main.getLockSlotKey().getKeyCode() == keyCode) {
                             main.getUtils().playLoudSound("random.orb", 0.1);
                             main.getConfigValues().getLockedSlots().add(slot);
                             main.getConfigValues().saveConfig();
@@ -339,5 +373,34 @@ public class GuiContainerHook {
         } else {
             gui.zLevel = zLevelToSet;
         }
+    }
+
+    private static Method drawHoveringText = null;
+
+    private static void drawHoveringText(GuiContainer guiContainer, List<String> text, int x, int y) {
+        if (SkyblockAddonsTransformer.isLabymodClient()) { // There are no access transformers in labymod.
+            try {
+                if (drawHoveringText == null) {
+                    drawHoveringText = guiContainer.getClass().getSuperclass().getDeclaredMethod("a",
+                            List.class, int.class, int.class);
+                    drawHoveringText.setAccessible(true);
+                }
+                if (drawHoveringText != null) {
+                    drawHoveringText.invoke(guiContainer, text, x , y);
+                }
+            } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
+                e.printStackTrace();
+            }
+        } else {
+            guiContainer.drawHoveringText(text, x, y);
+        }
+    }
+
+    public static void setFreezeBackpack(boolean freezeBackpack) {
+        GuiContainerHook.freezeBackpack = freezeBackpack;
+    }
+
+    public static boolean isFreezeBackpack() {
+        return freezeBackpack;
     }
 }
