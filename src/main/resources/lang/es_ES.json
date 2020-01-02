@@ -1,12 +1,6 @@
 {
   "language": "Español (España)",
   "settings": {
-    "tab": {
-      "features": "Características",
-      "fixes": "Correcciones",
-      "guiFeatures": "Características de la interfaz",
-      "generalSettings": "Opciones Generales"
-    },
     "settings": "Opciones",
     "magmaBossWarning": "Alerta de Magma Boss",
     "itemDropConfirmation": "Confirmar para soltar objeto",
@@ -49,7 +43,7 @@
     "stopBowChargeFromResetting": "Prevenir el Reset del Arco",
     "preventMovementOnDeath": "Prevenir moverse cuando mueres",
     "showItemAnvilUses": "Mostrar usos del Item en el Yunque",
-    "lockSlots": "Permitir las ranuras bloquedas",
+    "lockSlots": "Habilitar Bloquear Slots",
     "lockSlot": "Bloquea el Espacio",
     "dontResetCursorInventory": "No reiniciar el cursor entre los inventarios",
     "summoningEyeAlert": "Alerta de uso de un ojo de invocación",
@@ -62,7 +56,7 @@
       "one": "Estilo Uno",
       "two": "Estilo Dos"
     },
-    "warningDuration": "Duración de la advertencia",
+    "warningDuration": "Duración de Aviso",
     "dontOpenProfileWithBow": "No Abrir Perfil Con Un Arco",
     "stopDroppingSellingRareItems": "Parar de Soltar/Vender Objetos Raros",
     "makeBackpackInventoriesColored": "Inventarios de Color",
@@ -83,7 +77,21 @@
     "revenantIndicator": "Indicador de Progreso de la Slayer Armor",
     "specialZealotAlert": "Alerta especial de Zealot",
     "enableMessageWhenActionPrevented": "Mostrar un Mensaje Cuando se Impida una Acción",
-    "hidePetHealthBar": "Ocultar Barra de Salud de Mascotas"
+    "hidePetHealthBar": "Ocultar Barra de Salud de Mascotas",
+    "powerOrbDisplay": "Mostrar Power Orb",
+    "powerOrbDisplayStyle": "Estilo del Power Orb: %style%",
+    "powerOrbStyle": {
+      "detailed": "Detallado",
+      "compact": "Compacto"
+    },
+    "disableMagicalSoupMessage": "Deshabilitar Mensajes de la Magical Mushroom Soup",
+    "zealotCounter": "Mostrar Contador de Zealots",
+    "tickerChargesDisplay": "Mostrar Cargas/Ticker",
+    "tab": {
+      "generalSettings": "Opciones Generales"
+    },
+    "tabEffectTimers": "Temporizador de Pociones y Powerup",
+    "noArrowsLeftAlert": "Alerta de Quedarse sin Flechas"
   },
   "messages": {
     "dropConfirmation": "¡Dropea el Objeto otra vez para soltar!",
@@ -127,6 +135,8 @@
     "specialZealotFound": "¡Zealot Especial!",
     "blockIncompletePatterns": "Bloquear el crafteo de patrones incompletos (recomendado)",
     "searchFeatures": "Buscar características",
-    "downloadingUpdateFile": "Descargando archivo de actualización..."
+    "downloadingUpdateFile": "Descargando archivo de actualización...",
+    "onlyFewArrowsLeft": "¡Solo quedan %arrows% flechas restantes!",
+    "noArrowsLeft": "¡No quedan flechas!"
   }
 }

@@ -1,12 +1,6 @@
 {
   "language": "Suomi",
   "settings": {
-    "tab": {
-      "features": "Ominaisuudet",
-      "fixes": "Korjaukset",
-      "guiFeatures": "GUI Ominaisuudet",
-      "generalSettings": "Yleiset Asetukset"
-    },
     "settings": "Asetukset",
     "magmaBossWarning": "Magma Boss Varoitus",
     "itemDropConfirmation": "Esineen Pudotusvahvistus",
@@ -83,7 +77,21 @@
     "revenantIndicator": "Slayerhaarniskan edistymisindikaattori",
     "specialZealotAlert": "Erikois Zealot Ilmoitukset",
     "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented",
-    "hidePetHealthBar": "Hide Pet Health Bar"
+    "hidePetHealthBar": "Hide Pet Health Bar",
+    "powerOrbDisplay": "Power Orb Display",
+    "powerOrbDisplayStyle": "Power Orb Style: %style%",
+    "powerOrbStyle": {
+      "detailed": "Detailed",
+      "compact": "Compact"
+    },
+    "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages",
+    "zealotCounter": "Show Zealot Counter",
+    "tickerChargesDisplay": "Ticker/Charges Display",
+    "tab": {
+      "generalSettings": "Yleiset Asetukset"
+    },
+    "tabEffectTimers": "Potion and Powerup Timers",
+    "noArrowsLeftAlert": "No Arrows Left Alert"
   },
   "messages": {
     "dropConfirmation": "Pudota tämä esine uudelleen vahvistaaksesi!",
@@ -127,6 +135,8 @@
     "specialZealotFound": "Erityinen Zealot!",
     "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)",
     "searchFeatures": "Search features",
-    "downloadingUpdateFile": "Downloading update file..."
+    "downloadingUpdateFile": "Downloading update file...",
+    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
+    "noArrowsLeft": "No Arrows Left!"
   }
 }

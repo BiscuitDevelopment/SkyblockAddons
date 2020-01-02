@@ -1,12 +1,6 @@
 {
   "language": "Gaeilge",
   "settings": {
-    "tab": {
-      "features": "Gnéithe",
-      "fixes": "Deisiúchán",
-      "guiFeatures": "Gnéithe GUI",
-      "generalSettings": "Socruithe Ginearálta"
-    },
     "settings": "Socruithe",
     "magmaBossWarning": "Rabhadh Saoiste Magma",
     "itemDropConfirmation": "Cinntiú Leagan Mír",
@@ -83,7 +77,21 @@
     "revenantIndicator": "Slayer Armor Progress Indicator",
     "specialZealotAlert": "Foláireamh Zealot spesialta",
     "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented",
-    "hidePetHealthBar": "Hide Pet Health Bar"
+    "hidePetHealthBar": "Hide Pet Health Bar",
+    "powerOrbDisplay": "Power Orb Display",
+    "powerOrbDisplayStyle": "Power Orb Style: %style%",
+    "powerOrbStyle": {
+      "detailed": "Detailed",
+      "compact": "Compact"
+    },
+    "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages",
+    "zealotCounter": "Show Zealot Counter",
+    "tickerChargesDisplay": "Ticker/Charges Display",
+    "tab": {
+      "generalSettings": "Socruithe Ginearálta"
+    },
+    "tabEffectTimers": "Potion and Powerup Timers",
+    "noArrowsLeftAlert": "No Arrows Left Alert"
   },
   "messages": {
     "dropConfirmation": "Leag síos an mír seo arís le cinntiú!",
@@ -127,6 +135,8 @@
     "specialZealotFound": "Special Zealot!",
     "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)",
     "searchFeatures": "Search features",
-    "downloadingUpdateFile": "Downloading update file..."
+    "downloadingUpdateFile": "Downloading update file...",
+    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
+    "noArrowsLeft": "No Arrows Left!"
   }
 }

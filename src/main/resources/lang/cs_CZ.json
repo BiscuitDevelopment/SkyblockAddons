@@ -1,12 +1,6 @@
 {
   "language": "Čeština",
   "settings": {
-    "tab": {
-      "features": "Vlastnosti",
-      "fixes": "Opravy",
-      "guiFeatures": "Vlastnosti GUI",
-      "generalSettings": "Obecná nastavení"
-    },
     "settings": "Nastavení",
     "magmaBossWarning": "Upozornění na Magma Bosse ",
     "itemDropConfirmation": "Potvrzení vyhození itemu",
@@ -68,7 +62,7 @@
     "makeBackpackInventoriesColored": "Vybarvit inventáře",
     "avoidBreakingBottomSugarCane": "Zabránění rozbití spodní vrstvy cukrové třtiny",
     "replaceRomanNumeralsWithNumbers": "Nahrazení římských číslic na předmětech",
-    "changeBarColorForPotions": "Změň barvu ukazetele pro wither a poison efekt",
+    "changeBarColorForPotions": "Změň barvu ukazetele pro efekt withera a otrávení",
     "craftingPatterns": "Vybrat si crafting vzory",
     "soundIndicatorForFishing": "Zvukový indikátor pro rybu",
     "avoidBlinkingNightVision": "Vypnout blikání night vision potionu",
@@ -83,7 +77,21 @@
     "revenantIndicator": "Ukazatel Postupu Zabijáckého Brnění",
     "specialZealotAlert": "Speciální Zealot Upozornění",
     "enableMessageWhenActionPrevented": "Ukázat zprávu, když je akce zablokovaná",
-    "hidePetHealthBar": "Skrýt ukazatel zdraví mazlíčka"
+    "hidePetHealthBar": "Skrýt ukazatel zdraví mazlíčka",
+    "powerOrbDisplay": "Zobrazení Power orbu",
+    "powerOrbDisplayStyle": "Styl Power orbů: %style%",
+    "powerOrbStyle": {
+      "detailed": "Detailní",
+      "compact": "Kompaktní"
+    },
+    "disableMagicalSoupMessage": "Vypnout zprávu magické houbové polévky",
+    "zealotCounter": "Ukázat Počítadlo Zealotů",
+    "tickerChargesDisplay": "Ticker/Charges Display",
+    "tab": {
+      "generalSettings": "Obecná nastavení"
+    },
+    "tabEffectTimers": "Časovače Lektvarů a Powerupů",
+    "noArrowsLeftAlert": "No Arrows Left Alert"
   },
   "messages": {
     "dropConfirmation": "Vyhoď tento item pro vyhození!",
@@ -94,18 +102,18 @@
     "minionIsFull": "Minion na tvém ostrově je plný!",
     "typeEnchantmentsHere": "Typ %type% je tady!",
     "separateMultiple": "Oddělte více čárkami.",
-    "enchantsToMatch": "%type% Schodovat se:",
-    "enchantsToExclude": "%type% Vyloučit:",
+    "enchantsToMatch": "Shodující se %type%:",
+    "enchantsToExclude": "Vyloučené %type%:",
     "inventoryTypes": {
-      "enchants": "Očarování",
-      "reforges": "Překování",
+      "enchants": "očarování",
+      "reforges": "překování",
       "crafting": "Výroba"
     },
     "newUpdateAvailable": "Nová aktualizace (%version%) je připravena!",
     "deleteOldFile": "Stahování skočilo, prosím otevři svoji složku mods pomocí tlačítka dole, zavři minecraft, a smaž starou verzi(nebo ji smaž potom pokud chceš).",
     "wantToViewPatchNotes": "Chceš si přečíst změny?",
-    "downloadLink": "Link pro aktualizaci",
-    "downloadAutomatically": "Aoutomacké stáhnutí",
+    "downloadLink": "Odkaz pro aktualizaci",
+    "downloadAutomatically": "Automatické stahování",
     "openModFolder": "SLOŽKA S MODY",
     "joinTheDiscord": "Připojit se na discord",
     "update": {
@@ -127,6 +135,8 @@
     "specialZealotFound": "Specialní Zealot!",
     "blockIncompletePatterns": "Blokovat Vyrábění Neúplných Vzorů (doporučeno)",
     "searchFeatures": "Vyhledat vlastnosti",
-    "downloadingUpdateFile": "Stahuji aktualizační soubor..."
+    "downloadingUpdateFile": "Stahuji aktualizační soubor...",
+    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
+    "noArrowsLeft": "No Arrows Left!"
   }
 }

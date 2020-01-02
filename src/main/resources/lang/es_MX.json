@@ -1,12 +1,6 @@
 {
   "language": "Español (México)",
   "settings": {
-    "tab": {
-      "features": "Características",
-      "fixes": "Arreglos",
-      "guiFeatures": "Menú",
-      "generalSettings": "Configuración General"
-    },
     "settings": "Opciones",
     "magmaBossWarning": "Alerta de Boss de Magma",
     "itemDropConfirmation": "Confirmación de Arrojar Objetos",
@@ -83,7 +77,21 @@
     "revenantIndicator": "Indicador de Progreso de Slayer Armor",
     "specialZealotAlert": "Alerta de Zealot Especial",
     "enableMessageWhenActionPrevented": "Mostrar un Mensaje al Prevenir una Acción",
-    "hidePetHealthBar": "Esconder Vida de Mascota"
+    "hidePetHealthBar": "Esconder Vida de Mascota",
+    "powerOrbDisplay": "Indicador de Power Orb",
+    "powerOrbDisplayStyle": "Estilo de Power Orb: %style%",
+    "powerOrbStyle": {
+      "detailed": "Detallado",
+      "compact": "Compacto"
+    },
+    "disableMagicalSoupMessage": "Desactivar los Mensajes de Mushroom Soup",
+    "zealotCounter": "Mostrar Contador de Zealot",
+    "tickerChargesDisplay": "Ticker/Charges Display",
+    "tab": {
+      "generalSettings": "Configuración General"
+    },
+    "tabEffectTimers": "Potion and Powerup Timers",
+    "noArrowsLeftAlert": "No Arrows Left Alert"
   },
   "messages": {
     "dropConfirmation": "Arroja este objeto otra vez para confirmar!",
@@ -127,6 +135,8 @@
     "specialZealotFound": "Zealot Especial!",
     "blockIncompletePatterns": "Bloquear el crafteo de patrones incompletos (recomendado)",
     "searchFeatures": "Buscar características",
-    "downloadingUpdateFile": "Descargando archivo de actualización..."
+    "downloadingUpdateFile": "Descargando archivo de actualización...",
+    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
+    "noArrowsLeft": "No Arrows Left!"
   }
 }

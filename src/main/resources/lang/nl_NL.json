@@ -1,12 +1,6 @@
 {
   "language": "Nederlands",
   "settings": {
-    "tab": {
-      "features": "Functies",
-      "fixes": "Oplossingen",
-      "guiFeatures": "GUI functies",
-      "generalSettings": "Algemene instellingen"
-    },
     "settings": "Instellingen",
     "magmaBossWarning": "Magma Baas Waarschuwing",
     "itemDropConfirmation": "Object laten vallen Bevestiging",
@@ -83,7 +77,21 @@
     "revenantIndicator": "Slayer Pantser Voortgangsindicator",
     "specialZealotAlert": "Speciale Zealot Melding",
     "enableMessageWhenActionPrevented": "Toon een bericht wanneer een actie wordt gestopt",
-    "hidePetHealthBar": "Huisdiergezondheidsbalk verbergen"
+    "hidePetHealthBar": "Huisdiergezondheidsbalk verbergen",
+    "powerOrbDisplay": "Kracht Bol Weergave",
+    "powerOrbDisplayStyle": "Kracht Bol Stijl: %style%",
+    "powerOrbStyle": {
+      "detailed": "Gedetailleerd",
+      "compact": "Compact"
+    },
+    "disableMagicalSoupMessage": "Magische Paddenstoel Soep Berichten uitschakelen",
+    "zealotCounter": "Toon Zealot teller",
+    "tickerChargesDisplay": "Tikker/Lading Weergave",
+    "tab": {
+      "generalSettings": "Algemene instellingen"
+    },
+    "tabEffectTimers": "Potion and Powerup Timers",
+    "noArrowsLeftAlert": "No Arrows Left Alert"
   },
   "messages": {
     "dropConfirmation": "Laat dit object opnieuw vallen om te Bevestigen!",
@@ -127,6 +135,8 @@
     "specialZealotFound": "Speciale Zealot!",
     "blockIncompletePatterns": "Blokkeer het maken van onvolledige patronen (aanbevolen)",
     "searchFeatures": "Doorzoek functies",
-    "downloadingUpdateFile": "Update bestand downloaden..."
+    "downloadingUpdateFile": "Update bestand downloaden...",
+    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
+    "noArrowsLeft": "No Arrows Left!"
   }
 }

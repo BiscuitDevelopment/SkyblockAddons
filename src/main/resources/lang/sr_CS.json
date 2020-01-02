@@ -1,12 +1,6 @@
 {
   "language": "Srpski",
   "settings": {
-    "tab": {
-      "features": "Karakteristike",
-      "fixes": "Popravljeno",
-      "guiFeatures": "GUI Karakteristike",
-      "generalSettings": "Opšta podešavanja"
-    },
     "settings": "Podešavanja",
     "magmaBossWarning": "Magma Boss Upozorenje",
     "itemDropConfirmation": "Konfirmacija Bacanja Predmeta",
@@ -83,7 +77,21 @@
     "revenantIndicator": "Slayer Oklop Indikator Napretka",
     "specialZealotAlert": "Upozorenje za Posebnog Zealota",
     "enableMessageWhenActionPrevented": "Prikaži Poruku Kada je Akcija Sprečena",
-    "hidePetHealthBar": "Hide Pet Health Bar"
+    "hidePetHealthBar": "Sakrij Health Bar Ljubimca",
+    "powerOrbDisplay": "Power Orb Display",
+    "powerOrbDisplayStyle": "Power Orb Style: %style%",
+    "powerOrbStyle": {
+      "detailed": "Detalji",
+      "compact": "Kompaktnost"
+    },
+    "disableMagicalSoupMessage": "Isključi poruke od magične supe",
+    "zealotCounter": "Prikaži Zealot brojač",
+    "tickerChargesDisplay": "Ticker/Charges Display",
+    "tab": {
+      "generalSettings": "Opšta podešavanja"
+    },
+    "tabEffectTimers": "Potion and Powerup Timers",
+    "noArrowsLeftAlert": "No Arrows Left Alert"
   },
   "messages": {
     "dropConfirmation": "Opet baci ovu stvar za potvrdu!",
@@ -126,7 +134,9 @@
     "anvilUses": "Korištenje Nakovnja %uses%",
     "specialZealotFound": "Posebni Zealot!",
     "blockIncompletePatterns": "Spriječi craftanje nedovršenih predložaka (preporučeno)",
-    "searchFeatures": "Search features",
-    "downloadingUpdateFile": "Downloading update file..."
+    "searchFeatures": "Pretraži karakteristike",
+    "downloadingUpdateFile": "Prеuzimanjе ažuriranja...",
+    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
+    "noArrowsLeft": "No Arrows Left!"
   }
 }

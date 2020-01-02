@@ -1,12 +1,6 @@
 {
   "language": "日本語",
   "settings": {
-    "tab": {
-      "features": "機能",
-      "fixes": "修正",
-      "guiFeatures": "GUIの機能",
-      "generalSettings": "一般設定"
-    },
     "settings": "設定",
     "magmaBossWarning": "マグマボスのアラート",
     "itemDropConfirmation": "アイテムを捨てる確認",
@@ -129,7 +123,7 @@
     "blockIncompletePatterns": "不完全なパターンでのクラフトを防止する (推奨)",
     "searchFeatures": "機能を検索",
     "downloadingUpdateFile": "更新をダウンロード中...",
-    "onlyFewArrowsLeft": "矢筒に残り %arrows% 本しかないです！",
-    "noArrowsLeft": "弓矢がありません！"
+    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
+    "noArrowsLeft": "No Arrows Left!"
   }
 }

@@ -1,12 +1,6 @@
 {
   "language": "Norsk",
   "settings": {
-    "tab": {
-      "features": "Funksjoner",
-      "fixes": "Reparasjoner",
-      "guiFeatures": "GUI Funksjoner",
-      "generalSettings": "Generelle Innstillinger"
-    },
     "settings": "Innstillinger",
     "magmaBossWarning": "Magma Boss Varsel",
     "itemDropConfirmation": "Bekreftelse for å slippe gjenstand",
@@ -83,7 +77,21 @@
     "revenantIndicator": "Slayer Armour Fremgangs Indikator",
     "specialZealotAlert": "Spesiell Zealot Alarm",
     "enableMessageWhenActionPrevented": "Vis en melding når en hendelse er forhindret",
-    "hidePetHealthBar": "Hide Pet Health Bar"
+    "hidePetHealthBar": "Hide Pet Health Bar",
+    "powerOrbDisplay": "Power Orb Display",
+    "powerOrbDisplayStyle": "Power Orb Style: %style%",
+    "powerOrbStyle": {
+      "detailed": "Detailed",
+      "compact": "Compact"
+    },
+    "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages",
+    "zealotCounter": "Show Zealot Counter",
+    "tickerChargesDisplay": "Ticker/Charges Display",
+    "tab": {
+      "generalSettings": "Generelle Innstillinger"
+    },
+    "tabEffectTimers": "Potion and Powerup Timers",
+    "noArrowsLeftAlert": "No Arrows Left Alert"
   },
   "messages": {
     "dropConfirmation": "Slipp denne gjenstanden igjen for å bekrefte!",
@@ -127,6 +135,8 @@
     "specialZealotFound": "Spesiell Zealot!",
     "blockIncompletePatterns": "Blokk bygging med uferdig mønster (anbefalt)",
     "searchFeatures": "Search features",
-    "downloadingUpdateFile": "Downloading update file..."
+    "downloadingUpdateFile": "Downloading update file...",
+    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
+    "noArrowsLeft": "No Arrows Left!"
   }
 }

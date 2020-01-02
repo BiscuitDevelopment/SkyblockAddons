@@ -1,12 +1,6 @@
 {
   "language": "Deutsch",
   "settings": {
-    "tab": {
-      "features": "Funktionen",
-      "fixes": "Fehlerbehebungen",
-      "guiFeatures": "GUI-Funktionen",
-      "generalSettings": "Allgemeine Einstellungen"
-    },
     "settings": "Einstellungen",
     "magmaBossWarning": "Magma Boss Spawn Warnung",
     "itemDropConfirmation": "Item Drop Bestätigung",
@@ -83,7 +77,21 @@
     "revenantIndicator": "Slayer Rüstung Fortschritt Anzeige",
     "specialZealotAlert": "Spezieller Zealot Alarm",
     "enableMessageWhenActionPrevented": "Nachricht anzeigen, wenn eine Aktion verhindert wird",
-    "hidePetHealthBar": "Verstecke Haustierlebensleiste"
+    "hidePetHealthBar": "Verstecke Haustierlebensleiste",
+    "powerOrbDisplay": "Power Orb Anzeige",
+    "powerOrbDisplayStyle": "Power Orb Aussehen: %style%",
+    "powerOrbStyle": {
+      "detailed": "Detailliert",
+      "compact": "Kompakt"
+    },
+    "disableMagicalSoupMessage": "Deaktiviere Magie-Pilz-Suppen Nachricht",
+    "zealotCounter": "Zeige Zealot-Counter",
+    "tickerChargesDisplay": "Ticker/Ladungs Anzeige",
+    "tab": {
+      "generalSettings": "Allgemeine Einstellungen"
+    },
+    "tabEffectTimers": "Potion and Powerup Timers",
+    "noArrowsLeftAlert": "No Arrows Left Alert"
   },
   "messages": {
     "dropConfirmation": "Werfe diesen Gegenstand nochmal, um zu bestätigen!",
@@ -127,6 +135,8 @@
     "specialZealotFound": "Spezieller Zealot!",
     "blockIncompletePatterns": "Block craften, unvollständige Muster (empfohlen)",
     "searchFeatures": "Suche Funktionen",
-    "downloadingUpdateFile": "Update-Datei wird heruntergeladen..."
+    "downloadingUpdateFile": "Update-Datei wird heruntergeladen...",
+    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
+    "noArrowsLeft": "No Arrows Left!"
   }
 }

@@ -1,12 +1,6 @@
 {
   "language": "OwO wanguage uwu",
   "settings": {
-    "tab": {
-      "features": "Fwetuwures",
-      "fixes": "Fwxes",
-      "guiFeatures": "GUI Fwetwues",
-      "generalSettings": "Genewal Settings"
-    },
     "settings": "Settings",
     "magmaBossWarning": "Magmwa Bowoss Wawning",
     "itemDropConfirmation": "Itwem Dwop Comfowmatiwon",
@@ -83,7 +77,21 @@
     "revenantIndicator": "Swawwer Awmowo Pwogwess Indicator ",
     "specialZealotAlert": "Spwecial Wealots Awert",
     "enableMessageWhenActionPrevented": "Show a Message When an Action is Pwevented",
-    "hidePetHealthBar": "Hwide Pwet Heawth Bawr"
+    "hidePetHealthBar": "Hwide Pwet Heawth Bawr",
+    "powerOrbDisplay": "POwO Owb Dispway",
+    "powerOrbDisplayStyle": "POwO Owb Style",
+    "powerOrbStyle": {
+      "detailed": "Detailed",
+      "compact": "Compact"
+    },
+    "disableMagicalSoupMessage": "Disable Magical Mushwoom Sowop Message",
+    "zealotCounter": "Showo Wealots Counter :3",
+    "tickerChargesDisplay": "Tiwwer/chawwer disway",
+    "tab": {
+      "generalSettings": "Genewal Settings"
+    },
+    "tabEffectTimers": "Powotions and Poworup Timers",
+    "noArrowsLeftAlert": "No Arrows Left Alert"
   },
   "messages": {
     "dropConfirmation": "Dwop thwis itwem agwain to confiwm!",
@@ -127,6 +135,8 @@
     "specialZealotFound": "Spwecial Wealots OwO!",
     "blockIncompletePatterns": "Bwock cwafting incompwete pattewns (wecommended)",
     "searchFeatures": "Search Fwetuwures",
-    "downloadingUpdateFile": "Downwoading update fiwe..."
+    "downloadingUpdateFile": "Downwoading update fiwe...",
+    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
+    "noArrowsLeft": "No Arrows Left!"
   }
 }
