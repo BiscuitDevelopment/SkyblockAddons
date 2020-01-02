@@ -90,7 +90,8 @@
     "tab": {
       "generalSettings": "Splošne Nastavitve"
     },
-    "tabEffectTimers": "Potion and Powerup Timers"
+    "tabEffectTimers": "Potion and Powerup Timers",
+    "noArrowsLeftAlert": "No Arrows Left Alert"
   },
   "messages": {
     "dropConfirmation": "Ponovno Izpusti To Stvar za Potrditev!",
@@ -134,6 +135,8 @@
     "specialZealotFound": "Posebni Zealot!",
     "blockIncompletePatterns": "Blokiraj izdelovanje nepopolnih oblik (priporočljivo)",
     "searchFeatures": "Iskanje Funkcij",
-    "downloadingUpdateFile": "Prenašanje posodobitev..."
+    "downloadingUpdateFile": "Prenašanje posodobitev...",
+    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
+    "noArrowsLeft": "No Arrows Left!"
   }
 }
