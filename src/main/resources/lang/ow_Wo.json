@@ -89,7 +89,8 @@
     "tickerChargesDisplay": "Tiwwer/chawwer disway",
     "tab": {
       "generalSettings": "Genewal Settings"
-    }
+    },
+    "tabEffectTimers": "Potion and Powerup Timers"
   },
   "messages": {
     "dropConfirmation": "Dwop thwis itwem agwain to confiwm!",
