@@ -90,7 +90,8 @@
     "tab": {
       "generalSettings": "Bendrieji nustatymai"
     },
-    "tabEffectTimers": "Potion and Powerup Timers"
+    "tabEffectTimers": "Potion and Powerup Timers",
+    "noArrowsLeftAlert": "No Arrows Left Alert"
   },
   "messages": {
     "dropConfirmation": "Meskite Šį Daiktą Dar Kartą, Kad Patvirtintumėte!",
@@ -134,6 +135,8 @@
     "specialZealotFound": "Specialus Zealotas!",
     "blockIncompletePatterns": "Nepilnas blokų modelis (rekomenduojama)",
     "searchFeatures": "Rasti funkciją",
-    "downloadingUpdateFile": "Atsiunčiami naujinimai..."
+    "downloadingUpdateFile": "Atsiunčiami naujinimai...",
+    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
+    "noArrowsLeft": "No Arrows Left!"
   }
 }
