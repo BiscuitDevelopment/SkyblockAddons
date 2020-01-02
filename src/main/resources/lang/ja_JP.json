@@ -91,7 +91,7 @@
       "generalSettings": "一般設定"
     },
     "tabEffectTimers": "Potion and Powerup Timers",
-    "noArrowsLeftAlert": "No Arrows Left Alert"
+    "noArrowsLeftAlert": "弓矢切れのアラート"
   },
   "messages": {
     "dropConfirmation": "落としてもいいのであれば、このアイテムをもう一度ドロップしてください。",
