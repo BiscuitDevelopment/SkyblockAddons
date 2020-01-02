@@ -14,10 +14,7 @@ import java.lang.reflect.Method;
 import java.net.URL;
 import java.security.CodeSource;
 import java.security.ProtectionDomain;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Allows for access to hidden fields, methods and classes.
@@ -183,8 +180,12 @@ public class Reflection {
 		if (CONSTRUCTOR_CACHE.containsKey(this.getClazzPath())) {
 			Map<Class<?>[], ConstructorAccessor> constructors = CONSTRUCTOR_CACHE.get(this.getClazzPath());
 
-			if (constructors.containsKey(types))
-				return constructors.get(types);
+			for (Iterator<Map.Entry<Class<?>[], ConstructorAccessor>> it = constructors.entrySet().iterator(); it.hasNext(); ) {
+				Map.Entry<Class<?>[], ConstructorAccessor> entry = it.next();
+				if(Arrays.equals(entry.getKey(), types)){
+					return entry.getValue();
+				}
+			}
 		} else
 			CONSTRUCTOR_CACHE.put(this.getClazzPath(), new HashMap<>());
 
@@ -322,8 +323,12 @@ public class Reflection {
 			if (methods.containsKey(type)) {
 				Map<Class<?>[], MethodAccessor> returnTypeMethods = methods.get(type);
 
-				if (returnTypeMethods.containsKey(types))
-					return returnTypeMethods.get(types);
+				for (Iterator<Map.Entry<Class<?>[], MethodAccessor>> it = returnTypeMethods.entrySet().iterator(); it.hasNext(); ) {
+					Map.Entry<Class<?>[], MethodAccessor> entry = it.next();
+					if(Arrays.equals(entry.getKey(), types)){
+						return entry.getValue();
+					}
+				}
 			} else
 				METHOD_CACHE_CLASS.get(this.getClazzPath()).put(type, new HashMap<>());
 		} else {
@@ -389,8 +394,12 @@ public class Reflection {
 			if (methods.containsKey(name)) {
 				Map<Class<?>[], MethodAccessor> nameMethods = methods.get(name);
 
-				if (nameMethods.containsKey(types))
-					return nameMethods.get(types);
+				for (Iterator<Map.Entry<Class<?>[], MethodAccessor>> it = nameMethods.entrySet().iterator(); it.hasNext(); ) {
+					Map.Entry<Class<?>[], MethodAccessor> entry = it.next();
+					if(Arrays.equals(entry.getKey(), types)){
+						return entry.getValue();
+					}
+				}
 			} else
 				METHOD_CACHE_NAME.get(this.getClazzPath()).put(name, new HashMap<>());
 		} else {
