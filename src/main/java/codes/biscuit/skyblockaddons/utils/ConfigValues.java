@@ -1,6 +1,7 @@
 package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
 import com.google.gson.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
@@ -31,7 +32,7 @@ public class ConfigValues {
     private JsonObject languageConfig = new JsonObject();
 
     private Set<Feature> disabledFeatures = EnumSet.noneOf(Feature.class);
-    private Map<Feature, ConfigColor> featureColors = new EnumMap<>(Feature.class);
+    private Map<Feature, ChatFormatting> featureColors = new EnumMap<>(Feature.class);
     private Map<Feature, MutableFloat> guiScales = new EnumMap<>(Feature.class);
     private Map<Feature, CoordsPair> barSizes = new EnumMap<>(Feature.class);
     private int warningSeconds = 4;
@@ -40,7 +41,7 @@ public class ConfigValues {
     private Language language = Language.ENGLISH;
     private EnumUtils.BackpackStyle backpackStyle = EnumUtils.BackpackStyle.GUI;
     private EnumUtils.PowerOrbDisplayStyle powerOrbDisplayStyle = EnumUtils.PowerOrbDisplayStyle.COMPACT;
-    private EnumUtils.TextStyle textStyle = EnumUtils.TextStyle.REGULAR;
+    private EnumUtils.TextStyle textStyle = EnumUtils.TextStyle.STYLE_ONE;
     @SuppressWarnings("deprecation") private Set<Feature> remoteDisabledFeatures = EnumSet.of(Feature.AVOID_BREAKING_BOTTOM_SUGAR_CANE);
     private Set<Integer> legacyLockedSlots = new HashSet<>();
     private Map<String, Set<Integer>> profileLockedSlots = new HashMap<>();
@@ -55,14 +56,8 @@ public class ConfigValues {
         if (settingsConfigFile.exists()) {
             try {
                 FileReader reader = new FileReader(settingsConfigFile);
-                BufferedReader bufferedReader = new BufferedReader(reader);
-                StringBuilder builder = new StringBuilder();
-                String nextLine;
-                while ((nextLine = bufferedReader.readLine()) != null) {
-                    builder.append(nextLine);
-                }
-                String complete = builder.toString();
-                JsonElement fileElement = new JsonParser().parse(complete);
+                JsonElement fileElement = new JsonParser().parse(reader);
+
                 if (fileElement == null || fileElement.isJsonNull()) {
                     throw new JsonParseException("File is null!");
                 }
@@ -153,7 +148,6 @@ public class ConfigValues {
                 }
             }
             loadFeatureArray("guiPositions", coordinates);
-
             loadFeatureArray("barSizes", barSizes);
 
             loadLegacyColor("warningColor", Feature.MAGMA_WARNING);
@@ -172,8 +166,8 @@ public class ConfigValues {
                     Feature feature = Feature.fromId(Integer.parseInt(element.getKey()));
                     if (feature != null) {
                         int ordinal = element.getValue().getAsInt();
-                        if (ConfigColor.values().length > ordinal) {
-                            featureColors.put(feature, ConfigColor.values()[ordinal]);
+                        if (ordinal < 16) {
+                            featureColors.put(feature, ChatFormatting.values()[ordinal]);
                         }
                     }
                 }
@@ -255,8 +249,8 @@ public class ConfigValues {
     private void loadLegacyColor(String memberName, Feature feature) {
         if (settingsConfig.has(memberName)) {
             int ordinal = settingsConfig.get(memberName).getAsInt();
-            if (ConfigColor.values().length > ordinal) {
-                featureColors.put(feature, ConfigColor.values()[ordinal]);
+            if (ordinal < 16) {
+                featureColors.put(feature, ChatFormatting.values()[ordinal]);
             }
         }
     }
@@ -283,7 +277,7 @@ public class ConfigValues {
         }
 
         for (Feature feature : Feature.values()) {
-            ConfigColor color = feature.getDefaultColor();
+            ChatFormatting color = feature.getDefaultColor();
             if (color != null) {
                 featureColors.put(feature, color);
             }
@@ -446,8 +440,8 @@ public class ConfigValues {
 
             JsonObject colorsObject = new JsonObject();
             for (Feature feature : featureColors.keySet()) {
-                ConfigColor featureColor = featureColors.get(feature);
-                if (featureColor != ConfigColor.RED) { // red is default, no need to save
+                ChatFormatting featureColor = featureColors.get(feature);
+                if (featureColor != ChatFormatting.RED) { // red is default, no need to save
                     colorsObject.addProperty(String.valueOf(feature.getId()), featureColor.ordinal());
                 }
             }
@@ -485,7 +479,7 @@ public class ConfigValues {
             writer.close();
         } catch (Exception ex) {
             ex.printStackTrace();
-            System.out.println("An error occurred while attempting to save the config!");
+            System.out.println("SkyblockAddons: An error occurred while attempting to save the config!");
         }
     }
 
@@ -526,12 +520,12 @@ public class ConfigValues {
     }
 
     public void setNextColor(Feature feature) {
-        featureColors.put(feature, main.getConfigValues().getColor(feature).getNextColor());
+        featureColors.put(feature, main.getConfigValues().getColor(feature).getNextFormat());
     }
 
-    public ConfigColor getColor(Feature feature) {
-        ConfigColor defaultColor = feature.getDefaultColor();
-        return featureColors.getOrDefault(feature, defaultColor != null ? defaultColor : ConfigColor.RED);
+    public ChatFormatting getColor(Feature feature) {
+        ChatFormatting defaultColor = feature.getDefaultColor();
+        return featureColors.getOrDefault(feature, defaultColor != null ? defaultColor : ChatFormatting.RED);
     }
 
     public int getWarningSeconds() {

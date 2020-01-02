@@ -1,12 +1,6 @@
 {
   "language": "English",
   "settings": {
-    "tab": {
-      "features": "Features",
-      "fixes": "Fixes",
-      "guiFeatures": "GUI Features",
-      "generalSettings": "General Settings"
-    },
     "settings": "Settings",
     "magmaBossWarning": "Magma Boss Warning",
     "itemDropConfirmation": "Item Drop Confirmation",
@@ -89,8 +83,15 @@
     "powerOrbStyle": {
       "detailed": "Detailed",
       "compact": "Compact"
-    }
-    "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages"
+    },
+    "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages",
+    "zealotCounter": "Show Zealot Counter",
+    "tickerChargesDisplay": "Ticker/Charges Display",
+    "tab": {
+      "generalSettings": "General Settings"
+    },
+    "tabEffectTimers": "Potion and Powerup Timers",
+    "noArrowsLeftAlert": "No Arrows Left Alert"
   },
   "messages": {
     "dropConfirmation": "Drop this item again to confirm!",
@@ -134,6 +135,8 @@
     "specialZealotFound": "Special Zealot!",
     "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)",
     "searchFeatures": "Search features",
-    "downloadingUpdateFile": "Downloading update file..."
+    "downloadingUpdateFile": "Downloading update file...",
+    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
+    "noArrowsLeft": "No Arrows Left!"
   }
 }

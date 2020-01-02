@@ -23,7 +23,7 @@ public class EntityPlayerSPTransformer implements ITransformer {
             // Objective:
             // Find: Method head.
             // Insert:   ReturnValue returnValue = new ReturnValue();
-            //           EntityPlayerSPHook.dropOneItemConfirmation(dropAll, returnValue);
+            //           EntityPlayerSPHook.dropOneItemConfirmation(returnValue);
             //           if (returnValue.isCancelled()) {
             //               return null;
             //           }
@@ -43,10 +43,9 @@ public class EntityPlayerSPTransformer implements ITransformer {
         list.add(new MethodInsnNode(Opcodes.INVOKESPECIAL, "codes/biscuit/skyblockaddons/asm/utils/ReturnValue", "<init>", "()V", false));
         list.add(new VarInsnNode(Opcodes.ASTORE, 3));
 
-        list.add(new VarInsnNode(Opcodes.ILOAD, 1));
-        list.add(new VarInsnNode(Opcodes.ALOAD, 3)); // EntityPlayerSPHook.dropOneItemConfirmation(dropAll, returnValue);
+        list.add(new VarInsnNode(Opcodes.ALOAD, 3)); // EntityPlayerSPHook.dropOneItemConfirmation(returnValue);
         list.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "codes/biscuit/skyblockaddons/asm/hooks/EntityPlayerSPHook", "dropOneItemConfirmation",
-                "(ZLcodes/biscuit/skyblockaddons/asm/utils/ReturnValue;)"+ TransformerClass.EntityItem.getName(), false));
+                "(Lcodes/biscuit/skyblockaddons/asm/utils/ReturnValue;)"+ TransformerClass.EntityItem.getName(), false));
 
         list.add(new VarInsnNode(Opcodes.ALOAD, 3));
         list.add(new MethodInsnNode(Opcodes.INVOKEVIRTUAL, "codes/biscuit/skyblockaddons/asm/utils/ReturnValue", "isCancelled",

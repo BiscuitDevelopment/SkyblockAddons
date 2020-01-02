@@ -8,8 +8,8 @@ public enum TransformerClass {
     EntityItem("net/minecraft/entity/item/EntityItem", "uz"),
     GuiChest("net/minecraft/client/gui/inventory/GuiChest", "ayr"),
     IInventory("net/minecraft/inventory/IInventory", "og"),
-    FontRenderer("Lnet/minecraft/client/gui/FontRenderer", "avn"),
-    GuiScreen("net/minecraft/client/GuiScreen", "axu"),
+    FontRenderer("net/minecraft/client/gui/FontRenderer", "avn"),
+    GuiScreen("net/minecraft/client/gui/GuiScreen", "axu"),
     GuiContainer("net/minecraft/client/gui/inventory/GuiContainer", "ayl"),
     ItemStack("net/minecraft/item/ItemStack", "zx"),
     GlStateManager("net/minecraft/client/renderer/GlStateManager", "bfl"),
@@ -45,6 +45,9 @@ public enum TransformerClass {
     EnumFacing("net/minecraft/util/EnumFacing", "cq"),
     ICamera("net/minecraft/client/renderer/culling/ICamera", "bia"),
     TileEntity("net/minecraft/tileentity/TileEntity", "akw"),
+    GuiDisconnected("net/minecraft/client/gui/GuiDisconnected", "axh"),
+    GuiButton("net/minecraft/client/gui/GuiButton", "avs"),
+    GuiIngameMenu("net/minecraft/client/gui/GuiIngameMenu", "axp"),
 
     NULL(null,null);
 

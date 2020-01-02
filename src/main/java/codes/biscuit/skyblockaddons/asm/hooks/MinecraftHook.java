@@ -27,14 +27,21 @@ public class MinecraftHook {
 
     public static void onRefreshResources(IReloadableResourceManager iReloadableResourceManager) {
         boolean usingOldTexture = false;
+        boolean usingDefaultTexture = true;
         try {
             IResource currentResource = iReloadableResourceManager.getResource(currentLocation);
+            String currentHash = DigestUtils.md5Hex(currentResource.getInputStream());
+
             InputStream oldStream = SkyblockAddons.class.getClassLoader().getResourceAsStream("assets/skyblockaddons/imperialoldbars.png");
             if (oldStream != null) {
-                String currentHash = DigestUtils.md5Hex(currentResource.getInputStream());
                 String oldHash = DigestUtils.md5Hex(oldStream);
-
                 usingOldTexture = currentHash.equals(oldHash);
+            }
+
+            InputStream barsStream = SkyblockAddons.class.getClassLoader().getResourceAsStream("assets/skyblockaddons/bars.png");
+            if (barsStream != null) {
+                String barsHash = DigestUtils.md5Hex(barsStream);
+                usingDefaultTexture = currentHash.equals(barsHash);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -43,6 +50,7 @@ public class MinecraftHook {
         SkyblockAddons main = SkyblockAddons.getInstance();
         if (main != null) { // Minecraft reloads textures before and after mods are loaded. So only set the variable if sba was initialized.
             main.getUtils().setUsingOldSkyBlockTexture(usingOldTexture);
+            main.getUtils().setUsingDefaultBarTextures(usingDefaultTexture);
         }
     }
 
@@ -59,7 +67,7 @@ public class MinecraftHook {
                         if ((isItemBow(item) || isItemBow(itemInUse))) {
                             if (System.currentTimeMillis() - lastProfileMessage > 20000) {
                                 lastProfileMessage = System.currentTimeMillis();
-                                main.getUtils().sendMessage(main.getConfigValues().getColor(Feature.DONT_OPEN_PROFILES_WITH_BOW).getChatFormatting() +
+                                main.getUtils().sendMessage(main.getConfigValues().getColor(Feature.DONT_OPEN_PROFILES_WITH_BOW) +
                                         Message.MESSAGE_STOPPED_OPENING_PROFILE.getMessage());
                             }
                             returnValue.cancel();

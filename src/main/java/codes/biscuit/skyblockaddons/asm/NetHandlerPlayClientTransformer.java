@@ -53,7 +53,7 @@ public class NetHandlerPlayClientTransformer implements ITransformer {
         list.add(new VarInsnNode(Opcodes.ALOAD, 1)); // packetIn
         list.add(new VarInsnNode(Opcodes.ALOAD, 5)); // NetHanderPlayClientHook.handleSetSlot(packetIn, returnValue);
         list.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "codes/biscuit/skyblockaddons/asm/hooks/NetHanderPlayClientHook", "handleSetSlot",
-                "("+TransformerClass.S2FPacketSetSlot+"Lcodes/biscuit/skyblockaddons/asm/utils/ReturnValue;)V", false));
+                "("+TransformerClass.S2FPacketSetSlot.getName()+"Lcodes/biscuit/skyblockaddons/asm/utils/ReturnValue;)V", false));
 
         list.add(new VarInsnNode(Opcodes.ALOAD, 5));
         list.add(new MethodInsnNode(Opcodes.INVOKEVIRTUAL, "codes/biscuit/skyblockaddons/asm/utils/ReturnValue", "isCancelled",
@@ -72,7 +72,7 @@ public class NetHandlerPlayClientTransformer implements ITransformer {
 
         list.add(new VarInsnNode(Opcodes.ALOAD, 1)); // packetIn
         list.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "codes/biscuit/skyblockaddons/asm/hooks/NetHanderPlayClientHook", "handleWindowItems",
-                "("+TransformerClass.S30PacketWindowItems+")V", false));
+                "("+TransformerClass.S30PacketWindowItems.getName()+")V", false));
 
         return list;
     }

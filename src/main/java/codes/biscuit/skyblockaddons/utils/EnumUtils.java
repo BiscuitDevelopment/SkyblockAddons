@@ -201,8 +201,8 @@ public class EnumUtils {
     }
 
     public enum TextStyle {
-        REGULAR(TEXT_STYLE_ONE),
-        BLACK_SHADOW(TEXT_STYLE_TWO);
+        STYLE_ONE(TEXT_STYLE_ONE),
+        STYLE_TWO(TEXT_STYLE_TWO);
 
         private Message message;
 
@@ -403,17 +403,7 @@ public class EnumUtils {
     }
 
     public enum GuiTab {
-        FEATURES, FIXES, GUI_FEATURES, GENERAL_SETTINGS;
-
-        public Set<Feature> getFeatures() {
-            switch (this) {
-                case FEATURES: return Feature.getFeatures();
-                case FIXES: return Feature.getFixes();
-                case GUI_FEATURES: return Feature.getGuiFeatures();
-                case GENERAL_SETTINGS: return Feature.getGeneralFeatures();
-            }
-            return null;
-        }
+        MAIN, GENERAL_SETTINGS
     }
 
     public enum FeatureSetting {
@@ -439,14 +429,16 @@ public class EnumUtils {
         ORCHID_ALLOY("orchidalloy", "github.com/orchidalloy", Feature.SUMMONING_EYE_ALERT, Feature.FISHING_SOUND_INDICATOR, Feature.ORGANIZE_ENCHANTMENTS),
         HIGH_CRIT("HighCrit", "github.com/HighCrit", Feature.PREVENT_MOVEMENT_ON_DEATH),
         MOULBERRY("Moulberry", "github.com/Moulberry", Feature.DONT_RESET_CURSOR_INVENTORY),
-        TOMOCRAFTER("tomocrafter","github.com/tomocrafter", Feature.AVOID_BLINKING_NIGHT_VISION, Feature.SLAYER_INDICATOR),
+        TOMOCRAFTER("tomocrafter","github.com/tomocrafter", Feature.AVOID_BLINKING_NIGHT_VISION, Feature.SLAYER_INDICATOR, Feature.NO_ARROWS_LEFT_ALERT),
         DAPIGGUY("DaPigGuy", "github.com/DaPigGuy", Feature.MINION_DISABLE_LOCATION_WARNING),
         COMNIEMEER("comniemeer","github.com/comniemeer", Feature.JUNGLE_AXE_COOLDOWN),
         KEAGEL("Keagel", "github.com/Keagel", Feature.ONLY_MINE_ORES_DEEP_CAVERNS, Feature.DISABLE_MAGICAL_SOUP_MESSAGES),
         SUPERHIZE("SuperHiZe", "github.com/superhize", Feature.SPECIAL_ZEALOT_ALERT),
         DIDI_SKYWALKER("DidiSkywalker", "twitter.com/didiskywalker", Feature.ITEM_PICKUP_LOG, Feature.HEALTH_UPDATES, Feature.REPLACE_ROMAN_NUMERALS_WITH_NUMBERS,
                 Feature.CRAFTING_PATTERNS, Feature.POWER_ORB_STATUS_DISPLAY),
-        GARY("GARY_", "github.com/occanowey", Feature.ONLY_MINE_VALUABLES_NETHER);
+        GARY("GARY_", "github.com/occanowey", Feature.ONLY_MINE_VALUABLES_NETHER),
+        P0KE("P0ke", "p0ke.dev", Feature.ZEALOT_COUNTER),
+        BERISAN("Berisan", "github.com/Berisan", Feature.TAB_EFFECT_TIMERS);
 
         private Set<Feature> features;
         private String author;
@@ -491,10 +483,10 @@ public class EnumUtils {
         public static Rarity getRarity(ItemStack item) {
             if (item == null) return null;
             List<String> lore = item.getTooltip(Minecraft.getMinecraft().thePlayer, false);
-            String lastLoreLine = lore.get(lore.size()-1);
-            System.out.println(lastLoreLine);
-            for(Rarity rarity: Rarity.values()) {
-                if(lastLoreLine.startsWith(rarity.tag)) return rarity;
+            for (String loreLine : lore) {
+                for (Rarity rarity : Rarity.values()) {
+                    if (loreLine.startsWith(rarity.tag)) return rarity;
+                }
             }
             return null;
         }
@@ -563,7 +555,9 @@ public class EnumUtils {
         PICKUP_LOG,
         DEFENCE_ICON,
         REVENANT_PROGRESS,
-        POWER_ORB_DISPLAY
+        POWER_ORB_DISPLAY,
+        TICKER,
+        TAB_EFFECT_TIMERS
     }
 
     public enum Social {

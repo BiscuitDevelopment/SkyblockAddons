@@ -1,8 +1,8 @@
 package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
 import com.google.gson.JsonObject;
-import net.minecraft.util.EnumChatFormatting;
 
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -85,6 +85,10 @@ public enum Message {
     SETTING_HIDE_PET_HEALTH_BAR(MessageObject.SETTING, "hidePetHealthBar"),
     SETTING_POWER_ORB_DISPLAY(MessageObject.SETTING, "powerOrbDisplay"),
     SETTING_POWER_ORB_DISPLAY_STYLE(MessageObject.SETTING, "powerOrbDisplayStyle"),
+    SETTING_ZEALOT_COUNTER(MessageObject.SETTING, "zealotCounter"),
+    SETTING_TICKER_CHARGES_DISPLAY(MessageObject.SETTING, "tickerChargesDisplay"),
+    SETTING_TAB_EFFECT_TIMERS(MessageObject.SETTING, "tabEffectTimers"),
+    SETTING_NO_ARROWS_LEFT_ALERT(MessageObject.SETTING, "noArrowsLeftAlert"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.BACKPACK_STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.BACKPACK_STYLE, "compact"),
@@ -120,6 +124,8 @@ public enum Message {
     MESSAGE_BLOCK_INCOMPLETE_PATTERNS(MessageObject.MESSAGES, "blockIncompletePatterns"),
     MESSAGE_SEARCH_FEATURES(MessageObject.MESSAGES, "searchFeatures"),
     MESSAGE_DOWNLOADING_UPDATE(MessageObject.MESSAGES, "downloadingUpdateFile"),
+    MESSAGE_ONLY_FEW_ARROWS_LEFT(MessageObject.MESSAGES, "onlyFewArrowsLeft"),
+    MESSAGE_NO_ARROWS_LEFT(MessageObject.MESSAGES, "noArrowsLeft"),
 
     @Deprecated ANCHOR_POINT_TOP_LEFT(MessageObject.ANCHOR_POINT, "topLeft"),
     @Deprecated ANCHOR_POINT_TOP_RIGHT(MessageObject.ANCHOR_POINT, "topRight"),
@@ -136,9 +142,9 @@ public enum Message {
     TEXT_STYLE_ONE(MessageObject.TEXT_STYLE, "one"),
     TEXT_STYLE_TWO(MessageObject.TEXT_STYLE, "two"),
 
-    TAB_FEATURES(MessageObject.TAB, "features"),
-    TAB_FIXES(MessageObject.TAB, "fixes"),
-    TAB_GUI_FEATURES(MessageObject.TAB, "guiFeatures"),
+    @Deprecated TAB_FEATURES(MessageObject.TAB, "features"), // Tabs are no longer in use.
+    @Deprecated TAB_FIXES(MessageObject.TAB, "fixes"),
+    @Deprecated TAB_GUI_FEATURES(MessageObject.TAB, "guiFeatures"),
     TAB_GENERAL_SETTINGS(MessageObject.TAB, "generalSettings"),
 
     INVENTORY_TYPE_ENCHANTS(MessageObject.INVENTORY_TYPE, "enchants"),
@@ -199,7 +205,9 @@ public enum Message {
                 } else if (this == Message.UPDATE_MESSAGE_DOWNLOAD_FINISHED) {
                     text = text.replace("%file%", variables[0]);
                 } else if (this == Message.MESSAGE_ANVIL_USES) {
-                    text = text.replace("%uses%", EnumChatFormatting.RED.toString()+variables[0]+EnumChatFormatting.GRAY.toString());
+                    text = text.replace("%uses%", ChatFormatting.RED.toString()+variables[0]+ChatFormatting.GRAY.toString());
+                } else if (this == Message.MESSAGE_ONLY_FEW_ARROWS_LEFT) {
+                    text = text.replace("%arrows%", variables[0]);
                 }
                 // else if (this == Message.SETTING_ANCHOR_POINT) { //unused at the moment.
 //                    Feature lastHovered = ButtonLocation.getLastHoveredFeature();

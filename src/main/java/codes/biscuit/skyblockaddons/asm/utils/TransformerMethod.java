@@ -18,6 +18,7 @@ public enum TransformerMethod {
     drawGradientRect("drawGradientRect", "func_73733_a", "a", "(IIIIII)V"),
     drawSlot("drawSlot", "func_146977_a", "a", "(Lnet/minecraft/inventory/Slot;)V", "("+TransformerClass.Slot.getName()+")V"),
     checkHotbarKeys("checkHotbarKeys", "func_146983_a", "b", "(I)Z"),
+    actionPerformed("actionPerformed", "func_146284_a", "a", "(Lnet/minecraft/client/gui/GuiButton;)V", "("+TransformerClass.GuiButton.getName()+")V"),
 
     // GuiChest
     drawGuiContainerBackgroundLayer("drawGuiContainerBackgroundLayer", "func_146976_a", "a", "(FII)V"),
@@ -62,6 +63,7 @@ public enum TransformerMethod {
     // Minecraft
     refreshResources("refreshResources", "func_110436_a", "e", "()V"),
     rightClickMouse("rightClickMouse", "func_147121_ag", "ax", "()V"),
+    isIntegratedServerRunning("isIntegratedServerRunning", "func_71387_A", "E", "()Z"),
 
     // MouseHelper
     ungrabMouseCursor("ungrabMouseCursor", "func_74373_b", "b", "()V"),
@@ -77,6 +79,7 @@ public enum TransformerMethod {
 
     // RendererLivingEntity
     rotateCorpse("rotateCorpse", "func_77043_a", "a", "(Lnet/minecraft/entity/EntityLivingBase;FFF)V", "("+TransformerClass.EntityLivingBase.getName()+"FFF)V"),
+    isWearing("isWearing", "func_175148_a", "a", "(Lnet/minecraft/entity/player/EnumPlayerModelParts;)Z", "("+TransformerClass.EnumPlayerModelParts.getName()+")Z"),
 
     // RenderManager
     shouldRender("shouldRender", "func_178635_a", "a", "(Lnet/minecraft/entity/Entity;Lnet/minecraft/client/renderer/culling/ICamera;DDD)Z", "("+TransformerClass.Entity.getName()+TransformerClass.ICamera.getName()+"DDD)Z"),
@@ -86,6 +89,9 @@ public enum TransformerMethod {
 
     // TileEntityEnderChestRenderer
     renderTileEntityAt("renderTileEntityAt", "func_180535_a", "a", "(Lnet/minecraft/tileentity/TileEntity;DDDFI)V", "("+TransformerClass.TileEntity.getName()+"DDDFI)V"),
+
+    // Constructor
+    init("<init>", "<init>", "<init>", "()V"),
 
     NULL(null,null,null,null,false);
 
@@ -134,6 +140,6 @@ public enum TransformerMethod {
     }
 
     public boolean matches(MethodNode methodNode) {
-        return this.name.equals(methodNode.name) && this.description.equals(methodNode.desc);
+        return this.name.equals(methodNode.name) && (this.description.equals(methodNode.desc) || this == init);
     }
 }

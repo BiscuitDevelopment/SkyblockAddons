@@ -1,12 +1,20 @@
 package codes.biscuit.skyblockaddons.gui;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.gui.buttons.*;
+import codes.biscuit.skyblockaddons.gui.buttons.ButtonArrow;
+import codes.biscuit.skyblockaddons.gui.buttons.ButtonColor;
+import codes.biscuit.skyblockaddons.gui.buttons.ButtonFeature;
+import codes.biscuit.skyblockaddons.gui.buttons.ButtonGuiScale;
+import codes.biscuit.skyblockaddons.gui.buttons.ButtonLanguage;
+import codes.biscuit.skyblockaddons.gui.buttons.ButtonSolid;
+import codes.biscuit.skyblockaddons.gui.buttons.ButtonSwitchTab;
+import codes.biscuit.skyblockaddons.gui.buttons.ButtonToggleTitle;
 import codes.biscuit.skyblockaddons.listeners.PlayerListener;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.Feature;
 import codes.biscuit.skyblockaddons.utils.Language;
 import codes.biscuit.skyblockaddons.utils.Message;
+import codes.biscuit.skyblockaddons.utils.nifty.reflection.MinecraftReflection;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
@@ -15,7 +23,7 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.GuiIngameForge;
 
-import java.awt.*;
+import java.awt.Color;
 import java.util.Set;
 
 public class SettingsGui extends GuiScreen {
@@ -77,46 +85,6 @@ public class SettingsGui extends GuiScreen {
         } else {
             for (EnumUtils.FeatureSetting setting : settings) {
                 addButton(setting);
-            }
-        }
-
-        addTabs();
-    }
-
-    @SuppressWarnings("IntegerDivisionInFloatingPointContext")
-    private void addTabs() {
-        if (true) return;
-        int collumn = 1;
-        for (EnumUtils.GuiTab loopTab : EnumUtils.GuiTab.values()) {
-            if (lastTab != loopTab) {
-                String text = "";
-                switch (loopTab) {
-                    case FEATURES:
-                        text = Message.TAB_FEATURES.getMessage();
-                        break;
-                    case FIXES:
-                        text = Message.TAB_FIXES.getMessage();
-                        break;
-                    case GUI_FEATURES:
-                        text = Message.TAB_GUI_FEATURES.getMessage();
-                        break;
-                    case GENERAL_SETTINGS:
-                        text = Message.TAB_GENERAL_SETTINGS.getMessage();
-                        break;
-                }
-                int stringWidth = fontRendererObj.getStringWidth(text);
-                int tabX = 0;
-                int halfWidth = width/2;
-                if (collumn == 1) {
-                    tabX = (int)Math.round(halfWidth-140-(stringWidth/2)*1.4);
-                } else if (collumn == 2) {
-                    tabX = (int)Math.round(halfWidth-(stringWidth/2)*1.4);
-                } else if (collumn == 3) {
-                    tabX = (int)Math.round(halfWidth+140-(stringWidth/2)*1.4);
-                }
-                buttonList.add(new ButtonSwitchTab(tabX, 70, (int)(stringWidth*1.4),
-                        14, text, main, loopTab, lastTab));
-                collumn++;
             }
         }
     }
@@ -245,8 +213,7 @@ public class SettingsGui extends GuiScreen {
         double x = width/2;
         GlStateManager.pushMatrix();
         GlStateManager.scale(scale, scale, 1);
-        drawCenteredString(fontRendererObj, text,
-                (int)(x/scale)+xOff, (int)(y/scale), color);
+        MinecraftReflection.FontRenderer.drawCenteredString(text, (int)(x/scale)+xOff, (int)(y/scale), color);
         GlStateManager.popMatrix();
     }
 
@@ -324,12 +291,13 @@ public class SettingsGui extends GuiScreen {
             boxWidth = 31;
             x = halfWidth - (boxWidth / 2);
 
-            // Don't forget to add another "else if" when pulling the nether feature
             Feature settingFeature = null;
             if (feature == Feature.ONLY_MINE_ORES_DEEP_CAVERNS) {
                 settingFeature = Feature.ENABLE_MESSAGE_WHEN_MINING_DEEP_CAVERNS;
             } else if (feature == Feature.AVOID_BREAKING_STEMS) {
                 settingFeature = Feature.ENABLE_MESSAGE_WHEN_BREAKING_STEMS;
+            } else if (feature == Feature.ONLY_MINE_VALUABLES_NETHER) {
+                settingFeature = Feature.ENABLE_MESSAGE_WHEN_MINING_NETHER;
             }
 
             buttonList.add(new ButtonToggleTitle(x, y, Message.SETTING_ENABLE_MESSAGE_WHEN_ACTION_PREVENTED.getMessage(), main, settingFeature));
