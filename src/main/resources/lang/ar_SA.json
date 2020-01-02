@@ -89,7 +89,8 @@
     "tickerChargesDisplay": "Ticker/Charges Display",
     "tab": {
       "generalSettings": "الإعدادات العامة"
-    }
+    },
+    "tabEffectTimers": "Potion and Powerup Timers"
   },
   "messages": {
     "dropConfirmation": "!إرمي هذا العنصر مرة أخرى للتأكيد",
