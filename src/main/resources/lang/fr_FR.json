@@ -90,7 +90,7 @@
     "tab": {
       "generalSettings": "Options"
     },
-    "tabEffectTimers": "Potion and Powerup Timers"
+    "tabEffectTimers": "Minuteur potions/capacités"
   },
   "messages": {
     "dropConfirmation": "Jetez cet objet une nouvelle fois pour confirmer!",
