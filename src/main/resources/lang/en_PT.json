@@ -90,7 +90,8 @@
     "tab": {
       "generalSettings": "General Settin's"
     },
-    "tabEffectTimers": "Potion and Powerup Timers"
+    "tabEffectTimers": "Potion and Powerup Timers",
+    "noArrowsLeftAlert": "No Arrows Left Alert"
   },
   "messages": {
     "dropConfirmation": "'ay lad, drop this here item again to confirm!",
@@ -134,6 +135,8 @@
     "specialZealotFound": "Ye Good Zealot!",
     "blockIncompletePatterns": "Swab craftin' incomplete patt'rns (recommended)",
     "searchFeatures": "Search feat'rs",
-    "downloadingUpdateFile": "Downloading yer updates..."
+    "downloadingUpdateFile": "Downloading yer updates...",
+    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
+    "noArrowsLeft": "No Arrows Left!"
   }
 }
