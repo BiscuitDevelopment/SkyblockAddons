@@ -90,7 +90,8 @@
     "tab": {
       "generalSettings": "一般設定"
     },
-    "tabEffectTimers": "Potion and Powerup Timers"
+    "tabEffectTimers": "Potion and Powerup Timers",
+    "noArrowsLeftAlert": "No Arrows Left Alert"
   },
   "messages": {
     "dropConfirmation": "落としてもいいのであれば、このアイテムをもう一度ドロップしてください。",
@@ -134,6 +135,8 @@
     "specialZealotFound": "スペシャルZealotがスポーンしました!",
     "blockIncompletePatterns": "不完全なパターンでのクラフトを防止する (推奨)",
     "searchFeatures": "機能を検索",
-    "downloadingUpdateFile": "更新をダウンロード中..."
+    "downloadingUpdateFile": "更新をダウンロード中...",
+    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
+    "noArrowsLeft": "No Arrows Left!"
   }
 }
