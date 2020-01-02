@@ -91,7 +91,7 @@
       "generalSettings": "Impostazioni Generali"
     },
     "tabEffectTimers": "Timer pozioni e potenziamenti",
-    "noArrowsLeftAlert": "No Arrows Left Alert"
+    "noArrowsLeftAlert": "Avviso frecce finite"
   },
   "messages": {
     "dropConfirmation": "Getta questo oggetto nuovamente per confermare!",
@@ -136,7 +136,7 @@
     "blockIncompletePatterns": "Blocco degli schemi di fabbricazione incompleti (consigliato)",
     "searchFeatures": "Cerca funzioni",
     "downloadingUpdateFile": "Download del file di aggiornamento in corso...",
-    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
-    "noArrowsLeft": "No Arrows Left!"
+    "onlyFewArrowsLeft": "Solo %arrows% frecce rimaste!",
+    "noArrowsLeft": "Frecce finite!"
   }
 }
