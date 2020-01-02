@@ -56,6 +56,7 @@ public class Utils {
     public static boolean blockNextClick = false;
 
     private boolean usingOldSkyBlockTexture = false;
+    private boolean usingDefaultBarTextures = true;
 
     private final Pattern ITEM_ABILITY_PATTERN = Pattern.compile("§5§o§6Item Ability: ([A-Za-z ]+) §e§l[A-Z ]+");
 
@@ -878,5 +879,13 @@ public class Utils {
 
     public void setUsingOldSkyBlockTexture(boolean usingOldSkyBlockTexture) {
         this.usingOldSkyBlockTexture = usingOldSkyBlockTexture;
+    }
+
+    public void setUsingDefaultBarTextures(boolean usingDefaultBarTextures) {
+        this.usingDefaultBarTextures = usingDefaultBarTextures;
+    }
+
+    public boolean isUsingDefaultBarTextures() {
+        return usingDefaultBarTextures;
     }
 }

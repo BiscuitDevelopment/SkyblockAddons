@@ -180,7 +180,7 @@ public enum Feature {
             } else if (guiFeatureData.getDrawType() == EnumUtils.DrawType.TEXT) {
                 main.getRenderListener().drawText(this, scale, mc, buttonLocation);
             } else if (guiFeatureData.getDrawType() == EnumUtils.DrawType.PICKUP_LOG) {
-                main.getRenderListener().drawItemPickupLog(mc, scale, buttonLocation);
+                main.getRenderListener().drawItemPickupLog(scale, buttonLocation);
             } else if (guiFeatureData.getDrawType() == EnumUtils.DrawType.DEFENCE_ICON) {
                 main.getRenderListener().drawIcon(scale, mc, buttonLocation);
             } else if (guiFeatureData.getDrawType() == EnumUtils.DrawType.REVENANT_PROGRESS) {

@@ -180,9 +180,8 @@ public class Reflection {
 		if (CONSTRUCTOR_CACHE.containsKey(this.getClazzPath())) {
 			Map<Class<?>[], ConstructorAccessor> constructors = CONSTRUCTOR_CACHE.get(this.getClazzPath());
 
-			for (Iterator<Map.Entry<Class<?>[], ConstructorAccessor>> it = constructors.entrySet().iterator(); it.hasNext(); ) {
-				Map.Entry<Class<?>[], ConstructorAccessor> entry = it.next();
-				if(Arrays.equals(entry.getKey(), types)){
+			for (Map.Entry<Class<?>[], ConstructorAccessor> entry : constructors.entrySet()) {
+				if (Arrays.equals(entry.getKey(), types)) {
 					return entry.getValue();
 				}
 			}
@@ -323,9 +322,8 @@ public class Reflection {
 			if (methods.containsKey(type)) {
 				Map<Class<?>[], MethodAccessor> returnTypeMethods = methods.get(type);
 
-				for (Iterator<Map.Entry<Class<?>[], MethodAccessor>> it = returnTypeMethods.entrySet().iterator(); it.hasNext(); ) {
-					Map.Entry<Class<?>[], MethodAccessor> entry = it.next();
-					if(Arrays.equals(entry.getKey(), types)){
+				for (Map.Entry<Class<?>[], MethodAccessor> entry : returnTypeMethods.entrySet()) {
+					if (Arrays.equals(entry.getKey(), types)) {
 						return entry.getValue();
 					}
 				}
@@ -394,9 +392,8 @@ public class Reflection {
 			if (methods.containsKey(name)) {
 				Map<Class<?>[], MethodAccessor> nameMethods = methods.get(name);
 
-				for (Iterator<Map.Entry<Class<?>[], MethodAccessor>> it = nameMethods.entrySet().iterator(); it.hasNext(); ) {
-					Map.Entry<Class<?>[], MethodAccessor> entry = it.next();
-					if(Arrays.equals(entry.getKey(), types)){
+				for (Map.Entry<Class<?>[], MethodAccessor> entry : nameMethods.entrySet()) {
+					if (Arrays.equals(entry.getKey(), types)) {
 						return entry.getValue();
 					}
 				}
