@@ -89,7 +89,8 @@
     "tickerChargesDisplay": "Tikker/Lading Weergave",
     "tab": {
       "generalSettings": "Algemene instellingen"
-    }
+    },
+    "tabEffectTimers": "Potion and Powerup Timers"
   },
   "messages": {
     "dropConfirmation": "Laat dit object opnieuw vallen om te Bevestigen!",
