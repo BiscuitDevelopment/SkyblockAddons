@@ -90,7 +90,8 @@
     "tab": {
       "generalSettings": "Cài đặt chung"
     },
-    "tabEffectTimers": "Potion and Powerup Timers"
+    "tabEffectTimers": "Potion and Powerup Timers",
+    "noArrowsLeftAlert": "No Arrows Left Alert"
   },
   "messages": {
     "dropConfirmation": "Nhấn \"Q\" Thêm Một Lần Nữa Để Xác Nhận!",
@@ -134,6 +135,8 @@
     "specialZealotFound": "Zealot hiếm!",
     "blockIncompletePatterns": "Chặn chế tạo khuôn chưa hoàn thành (Khuyến nghị)",
     "searchFeatures": "Tìm kiếm chức năng",
-    "downloadingUpdateFile": "Đang tải về tệp tin Cập Nhật..."
+    "downloadingUpdateFile": "Đang tải về tệp tin Cập Nhật...",
+    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
+    "noArrowsLeft": "No Arrows Left!"
   }
 }
