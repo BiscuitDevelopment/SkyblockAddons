@@ -90,7 +90,8 @@
     "tab": {
       "generalSettings": "Generelle indstillinger"
     },
-    "tabEffectTimers": "Trylledrik og Power-Up Timere"
+    "tabEffectTimers": "Trylledrik og Power-Up Timere",
+    "noArrowsLeftAlert": "No Arrows Left Alert"
   },
   "messages": {
     "dropConfirmation": "Slip denne vare igen for at bekræfte!",
@@ -134,6 +135,8 @@
     "specialZealotFound": "Speciel Zealot!",
     "blockIncompletePatterns": "Bloker byggelse af ufuldstændige mønstre (anbefalet)",
     "searchFeatures": "Søg funktioner",
-    "downloadingUpdateFile": "Henter opdaterings filen..."
+    "downloadingUpdateFile": "Henter opdaterings filen...",
+    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
+    "noArrowsLeft": "No Arrows Left!"
   }
 }
