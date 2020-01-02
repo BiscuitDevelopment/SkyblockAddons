@@ -90,7 +90,8 @@
     "tab": {
       "generalSettings": "일반 설정"
     },
-    "tabEffectTimers": "Potion and Powerup Timers"
+    "tabEffectTimers": "Potion and Powerup Timers",
+    "noArrowsLeftAlert": "No Arrows Left Alert"
   },
   "messages": {
     "dropConfirmation": "아이템을 정말로 버리려면 다시 버리세요!",
@@ -134,6 +135,8 @@
     "specialZealotFound": "스페셜 질럿!",
     "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)",
     "searchFeatures": "Search features",
-    "downloadingUpdateFile": "Downloading update file..."
+    "downloadingUpdateFile": "Downloading update file...",
+    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
+    "noArrowsLeft": "No Arrows Left!"
   }
 }
