@@ -89,7 +89,8 @@
     "tickerChargesDisplay": "Mostrador de Tickers/Cargas",
     "tab": {
       "generalSettings": "Definições gerais"
-    }
+    },
+    "tabEffectTimers": "Potion and Powerup Timers"
   },
   "messages": {
     "dropConfirmation": "Dropa este item outra vez para confirmar!",
