@@ -447,7 +447,8 @@ public class EnumUtils {
         DIDI_SKYWALKER("DidiSkywalker", "twitter.com/didiskywalker", Feature.ITEM_PICKUP_LOG, Feature.HEALTH_UPDATES, Feature.REPLACE_ROMAN_NUMERALS_WITH_NUMBERS,
                 Feature.CRAFTING_PATTERNS, Feature.POWER_ORB_STATUS_DISPLAY),
         GARY("GARY_", "github.com/occanowey", Feature.ONLY_MINE_VALUABLES_NETHER),
-        P0KE("P0ke", "p0ke.dev", Feature.ZEALOT_COUNTER);
+        P0KE("P0ke", "p0ke.dev", Feature.ZEALOT_COUNTER),
+        BERISAN("Berisan", "github.com/Berisan", Feature.TAB_EFFECT_TIMERS);
 
         private Set<Feature> features;
         private String author;
@@ -565,7 +566,8 @@ public class EnumUtils {
         DEFENCE_ICON,
         REVENANT_PROGRESS,
         POWER_ORB_DISPLAY,
-        TICKER
+        TICKER,
+        TAB_EFFECT_TIMERS
     }
 
     public enum Social {

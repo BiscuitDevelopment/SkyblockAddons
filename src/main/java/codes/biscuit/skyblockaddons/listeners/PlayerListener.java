@@ -278,6 +278,10 @@ public class PlayerListener {
                                 && main.getPlayerListener().didntRecentlyJoinWorld()) {
                             main.getInventoryUtils().getInventoryDifference(p.inventory.mainInventory);
                         }
+
+                        if(main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.TAB_EFFECT_TIMERS)){
+                            TabEffectTimer.updatePotionEffects();
+                        }
                     }
 
                     main.getInventoryUtils().cleanUpPickupLog();

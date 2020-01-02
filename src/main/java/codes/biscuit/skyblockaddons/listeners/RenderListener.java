@@ -754,6 +754,55 @@ public class RenderListener {
         }
     }
 
+    public void drawPotionEffectTimers(float scale, Minecraft mc, ButtonLocation buttonLocation){
+        float x = main.getConfigValues().getActualX(Feature.TAB_EFFECT_TIMERS);
+        float y = main.getConfigValues().getActualY(Feature.TAB_EFFECT_TIMERS);
+
+        List<TabEffectTimer> potionTimers = TabEffectTimer.getPotionTimers();
+        List<TabEffectTimer> powerupTimers = TabEffectTimer.getPowerupTimers();
+
+        if(potionTimers.isEmpty() && powerupTimers.isEmpty()) {
+            if (buttonLocation == null) {
+                return;
+            } else { //We are editing GUI locations, draw something
+                potionTimers = TabEffectTimer.getDummyPotions();
+                powerupTimers = TabEffectTimer.getDummyPowerups();
+            }
+        }
+
+        int height = 27; //8 Px * 3 Effects + 3px spacer between Potions and Powerups
+        int width = 156; //String width of "Enchanting XP Boost III 1:23:45"
+        x-=Math.round(width*scale/2);
+        y-=Math.round(height*scale/2);
+        x/=scale;
+        y/=scale;
+        int intX = Math.round(x);
+        int intY = Math.round(y);
+        if (buttonLocation != null) {
+            int boxXOne = intX-4;
+            int boxXTwo = intX+width+4;
+            int boxYOne = intY-4;
+            int boxYTwo = intY+height+4;
+            buttonLocation.checkHoveredAndDrawBox(boxXOne, boxXTwo, boxYOne, boxYTwo, scale);
+            GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+        }
+
+        EnumUtils.AnchorPoint anchorPoint = main.getConfigValues().getAnchorPoint(Feature.TAB_EFFECT_TIMERS);
+        boolean topDown = (anchorPoint == EnumUtils.AnchorPoint.TOP_LEFT || anchorPoint == EnumUtils.AnchorPoint.TOP_RIGHT);
+
+        int drawnCount = topDown ? 0 : 2;
+        for(TabEffectTimer timer : potionTimers){
+            int fixedY = intY + drawnCount +(topDown ? 0 : 3) + drawnCount * 8;
+            main.getUtils().drawTextWithStyle(timer.getEffect(), intX, fixedY, ChatFormatting.WHITE);
+            drawnCount += topDown ? 1 : -1;
+        }
+        for(TabEffectTimer timer : powerupTimers){
+            int fixedY = intY + drawnCount + (topDown ? 3 : 0) + drawnCount * 8;
+            main.getUtils().drawTextWithStyle(timer.getEffect(), intX, fixedY, ChatFormatting.WHITE);
+            drawnCount += topDown ? 1 : -1;
+        }
+    }
+
     private void drawItemStack(Minecraft mc, ItemStack item, int x, int y) {
         RenderHelper.enableGUIStandardItemLighting();
         mc.getRenderItem().renderItemIntoGUI(item, x, y);
