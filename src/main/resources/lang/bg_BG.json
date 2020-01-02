@@ -90,7 +90,8 @@
     "tab": {
       "generalSettings": "Общи Настройки"
     },
-    "tabEffectTimers": "Potion and Powerup Timers"
+    "tabEffectTimers": "Potion and Powerup Timers",
+    "noArrowsLeftAlert": "No Arrows Left Alert"
   },
   "messages": {
     "dropConfirmation": "Хвърлете Този Предмет Отново за да Потвърдите!",
@@ -134,6 +135,8 @@
     "specialZealotFound": "Специален Зийлът!",
     "blockIncompletePatterns": "Блокиране на изработване на непълни модели (препоръчително)",
     "searchFeatures": "Търси Свойства",
-    "downloadingUpdateFile": "Изтегляне на актуализация..."
+    "downloadingUpdateFile": "Изтегляне на актуализация...",
+    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
+    "noArrowsLeft": "No Arrows Left!"
   }
 }
