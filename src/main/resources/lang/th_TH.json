@@ -89,7 +89,8 @@
     "tickerChargesDisplay": "แสดงจำนวนชาร์จ",
     "tab": {
       "generalSettings": "ตั้งค่าทั่วไป"
-    }
+    },
+    "tabEffectTimers": "Potion and Powerup Timers"
   },
   "messages": {
     "dropConfirmation": "กดทิ้งของอีกที่เพื่อยืนยันทิ้งของสิ่งนี้!",
