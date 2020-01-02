@@ -89,7 +89,8 @@
     "tickerChargesDisplay": "Mostra le cariche",
     "tab": {
       "generalSettings": "Impostazioni Generali"
-    }
+    },
+    "tabEffectTimers": "Potion and Powerup Timers"
   },
   "messages": {
     "dropConfirmation": "Getta questo oggetto nuovamente per confermare!",
