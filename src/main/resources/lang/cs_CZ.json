@@ -90,7 +90,8 @@
     "tab": {
       "generalSettings": "Obecná nastavení"
     },
-    "tabEffectTimers": "Časovače Lektvarů a Powerupů"
+    "tabEffectTimers": "Časovače Lektvarů a Powerupů",
+    "noArrowsLeftAlert": "No Arrows Left Alert"
   },
   "messages": {
     "dropConfirmation": "Vyhoď tento item pro vyhození!",
@@ -134,6 +135,8 @@
     "specialZealotFound": "Specialní Zealot!",
     "blockIncompletePatterns": "Blokovat Vyrábění Neúplných Vzorů (doporučeno)",
     "searchFeatures": "Vyhledat vlastnosti",
-    "downloadingUpdateFile": "Stahuji aktualizační soubor..."
+    "downloadingUpdateFile": "Stahuji aktualizační soubor...",
+    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
+    "noArrowsLeft": "No Arrows Left!"
   }
 }
