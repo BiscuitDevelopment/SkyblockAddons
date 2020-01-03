@@ -90,8 +90,8 @@
     "tab": {
       "generalSettings": "Основные настройки"
     },
-    "tabEffectTimers": "Potion and Powerup Timers",
-    "noArrowsLeftAlert": "No Arrows Left Alert"
+    "tabEffectTimers": "Таймеры зелий и улучшений",
+    "noArrowsLeftAlert": "Предупреждение о законченных стрелах"
   },
   "messages": {
     "dropConfirmation": "Выбросите предмет ещё раз для подтверждения!",
@@ -112,7 +112,7 @@
     "newUpdateAvailable": "Доступно новое обновление (%version%)!",
     "deleteOldFile": "Загрузка завершена. Пожалуйста, откройте папку модов, используя кнопку ниже, закройте Minecraft и удалите старую версию (или удалите её позже).",
     "wantToViewPatchNotes": "Хотите прочесть изменения?",
-    "downloadLink": "ОБНОВИТЬ ССЫЛКУ",
+    "downloadLink": "ССЫЛКА ОБНОВЛЕНИЯ",
     "downloadAutomatically": "АВТОМАТИЧЕСКАЯ ЗАГРУЗКА",
     "openModFolder": "ПАПКА МОДОВ",
     "joinTheDiscord": "ПРИСОЕДИНИТЬСЯ К ДИСКОРДУ",
@@ -136,7 +136,7 @@
     "blockIncompletePatterns": "Блокировать создание незавершённых шаблонов (рекомендуется)",
     "searchFeatures": "Поиск функций",
     "downloadingUpdateFile": "Загрузка файла обновления...",
-    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
-    "noArrowsLeft": "No Arrows Left!"
+    "onlyFewArrowsLeft": "Осталось только %arrows% стрел!",
+    "noArrowsLeft": "Стрел не осталось!"
   }
 }
