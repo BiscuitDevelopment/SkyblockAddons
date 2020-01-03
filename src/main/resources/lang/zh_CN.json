@@ -91,7 +91,7 @@
       "generalSettings": "常规设置"
     },
     "tabEffectTimers": "Potion and Powerup Timers",
-    "noArrowsLeftAlert": "No Arrows Left Alert"
+    "noArrowsLeftAlert": "箭矢射完提醒"
   },
   "messages": {
     "dropConfirmation": "再次丢弃此物品以确认!",
@@ -136,7 +136,7 @@
     "blockIncompletePatterns": "阻止合成不完整的图案 - 推荐",
     "searchFeatures": "搜索功能",
     "downloadingUpdateFile": "正在下载更新文件……",
-    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
-    "noArrowsLeft": "No Arrows Left!"
+    "onlyFewArrowsLeft": "还剩下%arrows%只箭矢！",
+    "noArrowsLeft": "箭射完了！"
   }
 }
