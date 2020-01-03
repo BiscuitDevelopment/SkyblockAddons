@@ -91,7 +91,7 @@
       "generalSettings": "Options"
     },
     "tabEffectTimers": "Minuteur potions/capacités",
-    "noArrowsLeftAlert": "No Arrows Left Alert"
+    "noArrowsLeftAlert": "Alerte aucune flèche"
   },
   "messages": {
     "dropConfirmation": "Jetez cet objet une nouvelle fois pour confirmer!",
@@ -136,7 +136,7 @@
     "blockIncompletePatterns": "Ne pas fabriquer les modèles incomplet (recommandé)",
     "searchFeatures": "Rechercher",
     "downloadingUpdateFile": "Téléchargement de la mise à jour...",
-    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
-    "noArrowsLeft": "No Arrows Left!"
+    "onlyFewArrowsLeft": "Il ne reste que %arrows% flèches !",
+    "noArrowsLeft": "Pas de flèches restantes!"
   }
 }
