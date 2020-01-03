@@ -1,12 +1,6 @@
 {
   "language": "PiARRate English",
   "settings": {
-    "tab": {
-      "features": "Feat'rs",
-      "fixes": "Fixes",
-      "guiFeatures": "GUI Feat'rs",
-      "generalSettings": "General Settin's"
-    },
     "settings": "Yer Settin's",
     "magmaBossWarning": "Magma Boss Warnin'",
     "itemDropConfirmation": "Drop Ye Items Twice",
@@ -83,7 +77,21 @@
     "revenantIndicator": "ye Slayer Armor Progress Indication",
     "specialZealotAlert": "ye Good Zealot Alert",
     "enableMessageWhenActionPrevented": "Show a message when actions be prevented",
-    "hidePetHealthBar": "'ide Pet Health Bar"
+    "hidePetHealthBar": "'ide Pet Health Bar",
+    "powerOrbDisplay": "Power Orb Display",
+    "powerOrbDisplayStyle": "Power Orb Style: %style%",
+    "powerOrbStyle": {
+      "detailed": "Detailed",
+      "compact": "Compact"
+    },
+    "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages",
+    "zealotCounter": "Show Zealot Counter",
+    "tickerChargesDisplay": "Ticker/Charges Display",
+    "tab": {
+      "generalSettings": "General Settin's"
+    },
+    "tabEffectTimers": "Potion and Powerup Timers",
+    "noArrowsLeftAlert": "No Arrows Left Alert"
   },
   "messages": {
     "dropConfirmation": "'ay lad, drop this here item again to confirm!",
@@ -127,6 +135,8 @@
     "specialZealotFound": "Ye Good Zealot!",
     "blockIncompletePatterns": "Swab craftin' incomplete patt'rns (recommended)",
     "searchFeatures": "Search feat'rs",
-    "downloadingUpdateFile": "Downloading yer updates..."
+    "downloadingUpdateFile": "Downloading yer updates...",
+    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
+    "noArrowsLeft": "No Arrows Left!"
   }
 }

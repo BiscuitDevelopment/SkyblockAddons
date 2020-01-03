@@ -1,12 +1,6 @@
 {
   "language": "Hrvatski",
   "settings": {
-    "tab": {
-      "features": "Značajke",
-      "fixes": "Popravljanja",
-      "guiFeatures": "GUI Elementi",
-      "generalSettings": "Opće Postavke"
-    },
     "settings": "Postavke",
     "magmaBossWarning": "Magma Boss Upozorenje",
     "itemDropConfirmation": "Konfirmacija Bacanja Stvari",
@@ -83,7 +77,21 @@
     "revenantIndicator": "Indikator Napretka Na Slayer Oklopu",
     "specialZealotAlert": "Upozorenje za Posebne Zealote",
     "enableMessageWhenActionPrevented": "Prikaži Poruku Kada je Akcija Spriječena",
-    "hidePetHealthBar": "Sakrij Bar Zdravlja Ljubimca"
+    "hidePetHealthBar": "Sakrij Bar Zdravlja Ljubimca",
+    "powerOrbDisplay": "Power Orb Prikaz",
+    "powerOrbDisplayStyle": "Power Orb Stil: %style%",
+    "powerOrbStyle": {
+      "detailed": "Detaljno",
+      "compact": "Kompaktno"
+    },
+    "disableMagicalSoupMessage": "Onemogući Magical Mushroom Soup Poruke",
+    "zealotCounter": "Prikaži Brojač Zealota",
+    "tickerChargesDisplay": "Ticker/Punjenja Prikaz",
+    "tab": {
+      "generalSettings": "Opće Postavke"
+    },
+    "tabEffectTimers": "Potion and Powerup Timers",
+    "noArrowsLeftAlert": "No Arrows Left Alert"
   },
   "messages": {
     "dropConfirmation": "Opet baci ovu stvar za konfirmaciju!",
@@ -127,6 +135,8 @@
     "specialZealotFound": "Posebni Zealot!",
     "blockIncompletePatterns": "Blokiraj pravljenje neispunjenih oblika (preporučeno)",
     "searchFeatures": "Opcije pretraživanja",
-    "downloadingUpdateFile": "Preuzimanje datoteke ažuriranja..."
+    "downloadingUpdateFile": "Preuzimanje datoteke ažuriranja...",
+    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
+    "noArrowsLeft": "No Arrows Left!"
   }
 }

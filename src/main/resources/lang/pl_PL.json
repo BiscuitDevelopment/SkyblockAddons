@@ -1,12 +1,6 @@
 {
   "language": "Polski",
   "settings": {
-    "tab": {
-      "features": "Funkcje",
-      "fixes": "Naprawy błędów",
-      "guiFeatures": "Opcje interfejsu",
-      "generalSettings": "Ustawienia ogólne"
-    },
     "settings": "Ustawienia",
     "magmaBossWarning": "Ostrzeżenie o Bossie Magmy",
     "itemDropConfirmation": "Potwierdzenie Wyrzucenia Przedmiotu",
@@ -83,7 +77,21 @@
     "revenantIndicator": "Wskaznik Postępu Zbroi",
     "specialZealotAlert": "Alarmuj o Specjlanym Zealocie",
     "enableMessageWhenActionPrevented": "Pokaż wiadomość, gdy akcja jest blokowana",
-    "hidePetHealthBar": "Ukryj paski zdrowia peta"
+    "hidePetHealthBar": "Ukryj paski zdrowia peta",
+    "powerOrbDisplay": "Ukryj Kulę Mocy",
+    "powerOrbDisplayStyle": "Styl Kuli Mocy: %style%",
+    "powerOrbStyle": {
+      "detailed": "Szczegółowy",
+      "compact": "Prosty"
+    },
+    "disableMagicalSoupMessage": "Ukryj wiadomości z Magicznej Zupy",
+    "zealotCounter": "Pokaż licznik Zealotów",
+    "tickerChargesDisplay": "Ticker/Charges Display",
+    "tab": {
+      "generalSettings": "Ustawienia ogólne"
+    },
+    "tabEffectTimers": "Potion and Powerup Timers",
+    "noArrowsLeftAlert": "No Arrows Left Alert"
   },
   "messages": {
     "dropConfirmation": "Wyrzuć ten przedmiot ponownie, aby potwierdzić!",
@@ -127,6 +135,8 @@
     "specialZealotFound": "Specjalny Zealot!",
     "blockIncompletePatterns": "Blokuj crafting niepełnych patternów (rekomendowane)",
     "searchFeatures": "Szukaj fukncji",
-    "downloadingUpdateFile": "Pobieranie aktualizacji..."
+    "downloadingUpdateFile": "Pobieranie aktualizacji...",
+    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
+    "noArrowsLeft": "No Arrows Left!"
   }
 }

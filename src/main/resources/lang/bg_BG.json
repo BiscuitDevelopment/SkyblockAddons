@@ -1,12 +1,6 @@
 {
   "language": "Български",
   "settings": {
-    "tab": {
-      "features": "Добавки",
-      "fixes": "Поправки",
-      "guiFeatures": "GUI Елементи",
-      "generalSettings": "Общи Настройки"
-    },
     "settings": "Настрйки",
     "magmaBossWarning": "Магма бос",
     "itemDropConfirmation": "Потвърждение за Изхвърляне на Предмет",
@@ -24,14 +18,14 @@
     "hideAuctionHousePlayers": "Скрии Други Игрaчи Близо До Вaжни NPC-тa",
     "backpackStyle": "Стил на Чантата: %style%",
     "backpackStyles": {
-      "regular": "Редовен",
+      "regular": "Обикновен",
       "compact": "Компактен"
     },
     "showBackpackPreview": "Предварително Показване на Съдържанието в Чантите",
     "hideHealthBar": "Скриване на Оригиналната Лента за Кръв",
     "fullMinionWarning": "Предупреждение за Пълен Миньон",
     "ignoreItemFrameClicks": "Игнориране на Рамки за Предмети",
-    "showOnlyWhenHoldingShift": "Показвай Само Когато Задържам Shift",
+    "showOnlyWhenHoldingShift": "Показвай Само При Задържане на Shift",
     "manaBar": "Лента за Маната",
     "manaText": "Мана",
     "healthBar": "Лента за Кръвта",
@@ -40,7 +34,7 @@
     "defenceText": "Защита",
     "defencePercentage": "Процент Защита",
     "healthUpdates": "Номер при Промяна на Кръвта",
-    "hidePlayersInLobby": "Скрий Обекти Които са Надалеч в Лобито",
+    "hidePlayersInLobby": "Скрий Далечните Обекти В Лобита",
     "darkAuctionTimer": "Таймер за Dark Auction",
     "magmaBossTimer": "Магма Бос Таймер",
     "itemPickupLog": "Дневник при Вдигане на Предмети",
@@ -49,23 +43,23 @@
     "stopBowChargeFromResetting": "Спиране на Рестартирането при Зареждане на Лък",
     "preventMovementOnDeath": "Предотвратяване от Ходене След Смърт",
     "showItemAnvilUses": "Показване на Използванията на Наковалня",
-    "lockSlots": "Позволяване на Заключване на Слотове",
+    "lockSlots": "Позволи Заключване На Слотове",
     "lockSlot": "Зaключи слот",
     "dontResetCursorInventory": "Не Рестартирай Курсора Между Инвентари",
     "summoningEyeAlert": "Предупреждение за Призоваващо Око",
-    "makeEnderchestsInEndGreen": "Промени цвета на сандъка от Края в Края",
-    "changeColor": "Смени Цвeтa",
+    "makeEnderchestsInEndGreen": "Промени цвета на сандъка от Края в Енда",
+    "changeColor": "Смени Цвят",
     "showInOtherGames": "Покaжи в Други Игри",
-    "useVanillaTexture": "Използвaй Ванила Визия",
+    "useVanillaTexture": "Използвaй Обикновените Текстури",
     "textStyle": "Стил нa Текстa",
     "textStyles": {
-      "one": "Стил 1",
-      "two": "Стил 2"
+      "one": "Стил едно",
+      "two": "Стил две"
     },
     "warningDuration": "Продължителност на Предупрежденията",
-    "dontOpenProfileWithBow": "Не отваряй профили с лък",
+    "dontOpenProfileWithBow": "Не Отваряй Профили С Лък",
     "stopDroppingSellingRareItems": "Спри изхвърляне/продаване на редки предмети",
-    "makeBackpackInventoriesColored": "Оцветени инвентари",
+    "makeBackpackInventoriesColored": "Цветни Инвентари",
     "avoidBreakingBottomSugarCane": "Избягване на чупенето на най-долната захарна трастика",
     "replaceRomanNumeralsWithNumbers": "Замени римските цифри на предметите",
     "changeBarColorForPotions": "Промени цвета на лентата при Уйдър и Отрова",
@@ -83,7 +77,21 @@
     "revenantIndicator": "Индикатор за прогрес на бронята на убиеца",
     "specialZealotAlert": "Сигнал за Специален Зийлът",
     "enableMessageWhenActionPrevented": "Покажи Съобщение Когато Действие Бива Предотвратено",
-    "hidePetHealthBar": "Скрий Лентата За Живот На Любимеца"
+    "hidePetHealthBar": "Скрий Лентата За Живот На Любимеца",
+    "powerOrbDisplay": "Power Orb Display",
+    "powerOrbDisplayStyle": "Power Orb Стил: %style%",
+    "powerOrbStyle": {
+      "detailed": "Подробно",
+      "compact": "Компактно"
+    },
+    "disableMagicalSoupMessage": "Изключи Съобщенията За Магическата Супа",
+    "zealotCounter": "Покажи Брояч На Зийлъти",
+    "tickerChargesDisplay": "Ticker/Charges Display",
+    "tab": {
+      "generalSettings": "Общи Настройки"
+    },
+    "tabEffectTimers": "Potion and Powerup Timers",
+    "noArrowsLeftAlert": "No Arrows Left Alert"
   },
   "messages": {
     "dropConfirmation": "Хвърлете Този Предмет Отново за да Потвърдите!",
@@ -127,6 +135,8 @@
     "specialZealotFound": "Специален Зийлът!",
     "blockIncompletePatterns": "Блокиране на изработване на непълни модели (препоръчително)",
     "searchFeatures": "Търси Свойства",
-    "downloadingUpdateFile": "Изтегляне на актуализация..."
+    "downloadingUpdateFile": "Изтегляне на актуализация...",
+    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
+    "noArrowsLeft": "No Arrows Left!"
   }
 }

@@ -1,12 +1,6 @@
 {
   "language": "Magyar",
   "settings": {
-    "tab": {
-      "features": "Funkciók",
-      "fixes": "Hibajavítások",
-      "guiFeatures": "GUI funkciók",
-      "generalSettings": "Általános beállítások"
-    },
     "settings": "Beállítások",
     "magmaBossWarning": "Magma Boss figyelmeztetés",
     "itemDropConfirmation": "Tárgy kidobás megerősítése",
@@ -83,7 +77,21 @@
     "revenantIndicator": "Slayer Armor folyamat jelző",
     "specialZealotAlert": "Különleges Zealot értesítés",
     "enableMessageWhenActionPrevented": "Üzenet egy művelet megakadályozásánál",
-    "hidePetHealthBar": "Pet életerő sáv elrejtése"
+    "hidePetHealthBar": "Pet életerő sáv elrejtése",
+    "powerOrbDisplay": "Power Orb megjelenítése",
+    "powerOrbDisplayStyle": "Power Orb stílusa: %style%",
+    "powerOrbStyle": {
+      "detailed": "Részletes",
+      "compact": "Tömörített"
+    },
+    "disableMagicalSoupMessage": "Magical Mushroom Soup üzenet tiltása",
+    "zealotCounter": "Zealot számláló",
+    "tickerChargesDisplay": "Ticker/Charges Display",
+    "tab": {
+      "generalSettings": "Általános beállítások"
+    },
+    "tabEffectTimers": "Potion and Powerup Timers",
+    "noArrowsLeftAlert": "No Arrows Left Alert"
   },
   "messages": {
     "dropConfirmation": "Dobd el ezt a tárgyat újra, hogy megerősítsd!",
@@ -127,6 +135,8 @@
     "specialZealotFound": "Különleges Zealot!",
     "blockIncompletePatterns": "Félkész minták tiltása (ajánlott)",
     "searchFeatures": "Keresési funkciók",
-    "downloadingUpdateFile": "Frissítés letöltése..."
+    "downloadingUpdateFile": "Frissítés letöltése...",
+    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
+    "noArrowsLeft": "No Arrows Left!"
   }
 }

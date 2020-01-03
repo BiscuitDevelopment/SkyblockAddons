@@ -1,12 +1,6 @@
 {
   "language": "العربية",
   "settings": {
-    "tab": {
-      "features": "الميزات",
-      "fixes": "الاصلاحات",
-      "guiFeatures": "ميزات الواجهة",
-      "generalSettings": "الإعدادات العامة"
-    },
     "settings": "الإعدادات",
     "magmaBossWarning": "تحذير زعيم الصهارة",
     "itemDropConfirmation": "تأكيد من رمي العنصر",
@@ -73,17 +67,31 @@
     "soundIndicatorForFishing": "مؤشر صوت للصيد",
     "avoidBlinkingNightVision": "تجنب وميض جرعه الرؤية الليليه",
     "disableMinionLocationWarning": "تعطيل الموقع ليس مثاليا",
-    "jungleAxeCooldown": "تباطؤ فأس الغابة",
+    "jungleAxeCooldown": "فترة انتظار فأس الغابة",
     "organizeLongEnchantmentLists": "ترتيب قائمة التطويرات الطويله",
-    "showItemCooldowns": "اظهار تباطؤ الأدوات",
+    "showItemCooldowns": "أظهار فترة أنتظار الأداة",
     "speedPercentage": "نسبة السرعه",
     "collectionDisplay": "عرض تقدم المهارة",
     "onlyMineOresDeepCaverns": "حفر المعادن فقظ في الكهوف العميقة",
-    "onlyMineValuablesNether": "كسر الاحجار القيمه في العالم السفلي",
+    "onlyMineValuablesNether": "حفر الأشياء الثمينة فقط في العالم السفلي",
     "revenantIndicator": "مؤشر تقدم درع القاتل",
     "specialZealotAlert": "تنبيه زيلوت فريد",
     "enableMessageWhenActionPrevented": "إظهار رسالة عند منع اجراء",
-    "hidePetHealthBar": "اخفاء شريط صحه الحيوان"
+    "hidePetHealthBar": "اخفاء شريط صحه الحيوان",
+    "powerOrbDisplay": "عرض جرم القوة",
+    "powerOrbDisplayStyle": "مظهر جرم القوة",
+    "powerOrbStyle": {
+      "detailed": "مفصل",
+      "compact": "متراص"
+    },
+    "disableMagicalSoupMessage": "تعطيل رسائل حساء الفطر السحري",
+    "zealotCounter": "أظهار عداد زيلوت",
+    "tickerChargesDisplay": "Ticker/Charges Display",
+    "tab": {
+      "generalSettings": "الإعدادات العامة"
+    },
+    "tabEffectTimers": "Potion and Powerup Timers",
+    "noArrowsLeftAlert": "No Arrows Left Alert"
   },
   "messages": {
     "dropConfirmation": "!إرمي هذا العنصر مرة أخرى للتأكيد",
@@ -127,6 +135,8 @@
     "specialZealotFound": "زيلوت فريد!",
     "blockIncompletePatterns": "أنماط انماط صناعة الحجر غير مكتملة\n(موصى بها)",
     "searchFeatures": "البحث عن خاصيه",
-    "downloadingUpdateFile": "يتم تنزيل ملف التحديث..."
+    "downloadingUpdateFile": "يتم تنزيل ملف التحديث...",
+    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
+    "noArrowsLeft": "No Arrows Left!"
   }
 }
