@@ -566,9 +566,20 @@ public class Utils {
         return main.getUtils().removeDuplicateSpaces(newString.toString().trim());
     }
 
+    /**
+     * Items containing these in the name should never be dropped.
+     * Helmets a lot of times in skyblock are weird items and not damageable
+     * so that's why its included.
+     */
+    private static final String[] RARE_EXCLUSIONS = {"Backpack", "Helmet"};
+
     public boolean cantDropItem(ItemStack item, EnumUtils.Rarity rarity, boolean hotbar) {
         if (Items.bow.equals(item.getItem()) && rarity == EnumUtils.Rarity.COMMON) return false; // exclude rare bows lol
-        if (item.hasDisplayName() && item.getDisplayName().contains("Backpack")) return true; // dont drop backpacks ever
+        if (item.hasDisplayName()) {
+            for (String exclusion : RARE_EXCLUSIONS) {
+                if (item.getDisplayName().contains(exclusion)) return true;
+            }
+        }
         if (hotbar) {
             return item.getItem().isDamageable() || (rarity != EnumUtils.Rarity.COMMON && rarity != EnumUtils.Rarity.UNCOMMON);
         } else {

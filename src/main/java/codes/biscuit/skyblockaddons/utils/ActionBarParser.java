@@ -13,8 +13,8 @@ import java.util.regex.Pattern;
  * Parses things like health, defense, mana, skill xp, item ability tickers and
  * if they are displayed else where by SBA, removes them from the action bar.
  * <p>
- * Action bars can take many shapes, but they're always divided into sections separated by 4 or more spaces
- * (usually 5, zombie tickers by 4, race timer by 12.
+ * Action bars can take many shapes, but they're always divided into sections separated by 3 or more spaces
+ * (usually 5, zombie tickers by 4, race timer by 12, trials of fire by 3).
  * Here are some examples:
  * <p>
  * Normal:                     §c1390/1390❤     §a720§a❈ Defense     §b183/171✎ Mana§r
@@ -22,6 +22,8 @@ import java.util.regex.Pattern;
  * Zombie Sword:               §c1390/1390❤     §a725§a❈ Defense     §b175/233✎ Mana    §a§lⓩⓩⓩⓩ§2§l§r
  * Zombie Sword with Skill XP: §c1390/1390❤     §3+10.9 Combat (313,948/600,000)     §b187/233✎ Mana    §a§lⓩⓩⓩⓩ§2§l§r
  * Normal with Wand:           §c1390/1390❤+§c30▅     §a724§a❈ Defense     §b97/171✎ Mana§r
+ * Normal with Absorption:     §61181/1161❤     §a593§a❈ Defense     §b550/550✎ Mana§r
+ * Normal with Absorp + Wand:  §61181/1161❤+§c20▆     §a593§a❈ Defense     §b501/550✎ Mana§r
  * End Race:                   §d§lTHE END RACE §e00:52.370            §b147/147✎ Mana§r
  * Woods Race:                 §A§LWOODS RACING §e00:31.520            §b147/147✎ Mana§r
  * Trials of Fire:             §c1078/1078❤   §610 DPS   §c1 second     §b421/421✎ Mana§r
@@ -127,6 +129,10 @@ public class ActionBarParser {
         String returnString = healthSection;
         int newHealth;
         int maxHealth;
+        if (healthSection.startsWith("§6")) { // Absorption chances §c to §6. Remove §6 to make sure it isn't detected as a number of health.
+            healthSection = healthSection.substring(2);
+            splitStats[0] = splitStats[0].substring(1); // One less because the '§' was already removed.
+        }
         if (healthSection.contains("+")) {
             // Contains the Wand indicator so it has to be split differently
             String[] splitHealthAndWand = healthSection.split("\\+");

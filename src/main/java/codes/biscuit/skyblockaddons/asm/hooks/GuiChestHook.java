@@ -29,7 +29,6 @@ import java.util.regex.Pattern;
 
 public class GuiChestHook {
 
-    private static EnumUtils.InventoryType inventoryType = null;
     private static GuiTextField textFieldMatch = null;
     private static GuiTextField textFieldExclusions = null;
     private static CraftingPatternSelection craftingPatternSelection = null;
@@ -53,7 +52,9 @@ public class GuiChestHook {
     }
 
     public static void drawScreen(int guiLeft, int guiTop) {
-        if (textFieldMatch != null && (inventoryType == EnumUtils.InventoryType.ENCHANTMENT_TABLE||inventoryType == EnumUtils.InventoryType.REFORGE_ANVIL)) {
+        EnumUtils.InventoryType inventoryType = EnumUtils.InventoryType.getCurrentInventoryType();
+        if (textFieldMatch != null && (inventoryType == EnumUtils.InventoryType.ENCHANTMENT_TABLE ||
+                inventoryType== EnumUtils.InventoryType.REFORGE_ANVIL)) {
             GlStateManager.color(1F, 1F, 1F);
             SkyblockAddons main = SkyblockAddons.getInstance();
             String inventoryMessage = inventoryType.getMessage();
@@ -87,12 +88,12 @@ public class GuiChestHook {
         }
 
         String guiName = lowerChestInventory.getDisplayName().getUnformattedText();
-        inventoryType = EnumUtils.InventoryType.getCurrentInventoryType(guiName);
+        EnumUtils.InventoryType inventoryType = EnumUtils.InventoryType.getCurrentInventoryType(guiName);
 
         if (inventoryType != null) {
 
-            if(inventoryType == EnumUtils.InventoryType.CRAFTING_TABLE) {
-                if(SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.CRAFTING_PATTERNS)) {
+            if (inventoryType == EnumUtils.InventoryType.CRAFTING_TABLE) {
+                if (SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.CRAFTING_PATTERNS)) {
                     craftingPatternSelection = new CraftingPatternSelection(Minecraft.getMinecraft(), Math.max(guiLeft - CraftingPatternSelection.ICON_SIZE - 2, 10), guiTop + 1);
                 }
                 return;
@@ -141,7 +142,8 @@ public class GuiChestHook {
     }
 
     public static boolean keyTyped(char typedChar, int keyCode) { // return whether to continue (super.keyTyped(typedChar, keyCode);)
-        if ((inventoryType == EnumUtils.InventoryType.ENCHANTMENT_TABLE || inventoryType == EnumUtils.InventoryType.REFORGE_ANVIL)) {
+        if ((EnumUtils.InventoryType.getCurrentInventoryType() == EnumUtils.InventoryType.ENCHANTMENT_TABLE ||
+                EnumUtils.InventoryType.getCurrentInventoryType() == EnumUtils.InventoryType.REFORGE_ANVIL)) {
             if (keyCode != Minecraft.getMinecraft().gameSettings.keyBindInventory.getKeyCode() || (!textFieldMatch.isFocused() && !textFieldExclusions.isFocused())) {
                 processTextFields(typedChar, keyCode);
                 return true;
@@ -168,7 +170,7 @@ public class GuiChestHook {
         SkyblockAddons main = SkyblockAddons.getInstance();
         if (main.getUtils().getEnchantmentMatch().size() > 0) {
             if (slotIn != null && !slotIn.inventory.equals(Minecraft.getMinecraft().thePlayer.inventory) && slotIn.getHasStack()) {
-                if (slotIn.getSlotIndex() == 13 && inventoryType == EnumUtils.InventoryType.ENCHANTMENT_TABLE) {
+                if (slotIn.getSlotIndex() == 13 && EnumUtils.InventoryType.getCurrentInventoryType() == EnumUtils.InventoryType.ENCHANTMENT_TABLE) {
                     ItemStack[] enchantBottles = {slots.getSlot(29).getStack(), slots.getSlot(31).getStack(), slots.getSlot(33).getStack()};
                     for (ItemStack bottle : enchantBottles) {
                         if (bottle != null && bottle.hasDisplayName()) {
@@ -192,7 +194,7 @@ public class GuiChestHook {
                             }
                         }
                     }
-                } else if (slotIn.getSlotIndex() == 22 && inventoryType == EnumUtils.InventoryType.REFORGE_ANVIL) {
+                } else if (slotIn.getSlotIndex() == 22 && EnumUtils.InventoryType.getCurrentInventoryType() == EnumUtils.InventoryType.REFORGE_ANVIL) {
                     Slot itemSlot = slots.getSlot(13);
                     if (itemSlot != null && itemSlot.getHasStack()) {
                         ItemStack item = itemSlot.getStack();
@@ -231,9 +233,8 @@ public class GuiChestHook {
     public static void color(float colorRed, float colorGreen, float colorBlue, float colorAlpha, IInventory lowerChestInventory) { //Item item, ItemStack stack
         SkyblockAddons main = SkyblockAddons.getInstance();
 
-        // Draw here to make sure it's in the background of the GUI and items overlay it
-        if(inventoryType == EnumUtils.InventoryType.CRAFTING_TABLE
-                && craftingPatternSelection != null) {
+        // Draw here to make sure it's in the background of the GUI and items overlay it.
+        if (EnumUtils.InventoryType.getCurrentInventoryType() == EnumUtils.InventoryType.CRAFTING_TABLE && craftingPatternSelection != null) {
             craftingPatternSelection.draw();
         }
 
