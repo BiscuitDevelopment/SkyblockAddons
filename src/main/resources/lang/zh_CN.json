@@ -91,7 +91,7 @@
       "generalSettings": "常规设置"
     },
     "tabEffectTimers": "药水及加成效果计时器",
-    "noArrowsLeftAlert": "没有箭矢提醒"
+    "noArrowsLeftAlert": "箭矢不足提醒"
   },
   "messages": {
     "dropConfirmation": "再次丢弃此物品以确认!",
@@ -136,7 +136,7 @@
     "blockIncompletePatterns": "阻止合成不完整的图案 - 推荐",
     "searchFeatures": "搜索功能",
     "downloadingUpdateFile": "正在下载更新文件……",
-    "onlyFewArrowsLeft": "还有%arrows%箭矢剩余！",
+    "onlyFewArrowsLeft": "还剩余 %arrows% 只箭！",
     "noArrowsLeft": "没有箭矢了！"
   }
 }
