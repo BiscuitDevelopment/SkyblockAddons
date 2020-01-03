@@ -90,8 +90,8 @@
     "tab": {
       "generalSettings": "Allgemeine Einstellungen"
     },
-    "tabEffectTimers": "Potion and Powerup Timers",
-    "noArrowsLeftAlert": "No Arrows Left Alert"
+    "tabEffectTimers": "Trank und Powerup Timer",
+    "noArrowsLeftAlert": "\"Keine Pfeile übrig\" Warnung"
   },
   "messages": {
     "dropConfirmation": "Werfe diesen Gegenstand nochmal, um zu bestätigen!",
@@ -136,7 +136,7 @@
     "blockIncompletePatterns": "Block craften, unvollständige Muster (empfohlen)",
     "searchFeatures": "Suche Funktionen",
     "downloadingUpdateFile": "Update-Datei wird heruntergeladen...",
-    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
-    "noArrowsLeft": "No Arrows Left!"
+    "onlyFewArrowsLeft": "Nur noch %arrows% Pfeile übrig!",
+    "noArrowsLeft": "Keine Pfeile mehr übrig!"
   }
 }
