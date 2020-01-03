@@ -91,7 +91,7 @@
       "generalSettings": "Generelle indstillinger"
     },
     "tabEffectTimers": "Trylledrik og Power-Up Timere",
-    "noArrowsLeftAlert": "No Arrows Left Alert"
+    "noArrowsLeftAlert": "Ingen pile tilbage alarm"
   },
   "messages": {
     "dropConfirmation": "Slip denne vare igen for at bekræfte!",
@@ -136,7 +136,7 @@
     "blockIncompletePatterns": "Bloker byggelse af ufuldstændige mønstre (anbefalet)",
     "searchFeatures": "Søg funktioner",
     "downloadingUpdateFile": "Henter opdaterings filen...",
-    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
-    "noArrowsLeft": "No Arrows Left!"
+    "onlyFewArrowsLeft": "Kun %arrows% pile tilbage!",
+    "noArrowsLeft": "Ingen pile tilbage!"
   }
 }
