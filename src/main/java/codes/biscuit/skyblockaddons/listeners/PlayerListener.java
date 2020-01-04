@@ -74,6 +74,7 @@ public class PlayerListener {
     private long lastClosedInv = -1;
     private long lastFishingAlert = 0;
     private long lastBobberEnteredWater = Long.MAX_VALUE;
+    private long lastServerChangeAttempt = Long.MAX_VALUE;
 
     private boolean oldBobberIsInWater = false;
     private double oldBobberPosY = 0;
@@ -185,6 +186,10 @@ public class PlayerListener {
                     main.getRenderListener().setArrowsLeft(arrowsLeft);// THIS IS IMPORTANT
                     main.getScheduler().schedule(Scheduler.CommandType.RESET_SUBTITLE_FEATURE, main.getConfigValues().getWarningSeconds());
                 }
+            }
+
+            if (formattedText.startsWith("§7Sending to server ")){
+                lastServerChangeAttempt = System.currentTimeMillis();
             }
 
             Matcher matcher = ABILITY_CHAT_PATTERN.matcher(e.message.getFormattedText());
@@ -666,6 +671,8 @@ public class PlayerListener {
     public boolean didntRecentlyJoinWorld() {
         return System.currentTimeMillis() - lastWorldJoin > 3000;
     }
+
+    public boolean aboutToChangeWorld() { return System.currentTimeMillis() - lastServerChangeAttempt < 6000; }
 
     Integer getHealthUpdate() {
         return actionBarParser.getHealthUpdate();
