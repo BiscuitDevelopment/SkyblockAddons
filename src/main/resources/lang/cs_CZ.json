@@ -136,7 +136,7 @@
     "blockIncompletePatterns": "Blokovat Vyrábění Neúplných Vzorů (doporučeno)",
     "searchFeatures": "Vyhledat vlastnosti",
     "downloadingUpdateFile": "Stahuji aktualizační soubor...",
-    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
-    "noArrowsLeft": "No Arrows Left!"
+    "onlyFewArrowsLeft": "Zbývá %arrows% šípů!",
+    "noArrowsLeft": "Došly šípy!"
   }
 }
