@@ -417,7 +417,8 @@ public class EnumUtils {
         MAKE_INVENTORY_COLORED,
         POWER_ORB_DISPLAY_STYLE,
         CHANGE_BAR_COLOR_WITH_POTIONS,
-        ENABLE_MESSAGE_WHEN_ACTION_PREVENTED
+        ENABLE_MESSAGE_WHEN_ACTION_PREVENTED,
+        HIDE_NIGHT_VISION_EFFECT
     }
 
     @SuppressWarnings("deprecation")

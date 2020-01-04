@@ -88,6 +88,7 @@ public enum Message {
     SETTING_ZEALOT_COUNTER(MessageObject.SETTING, "zealotCounter"),
     SETTING_TICKER_CHARGES_DISPLAY(MessageObject.SETTING, "tickerChargesDisplay"),
     SETTING_TAB_EFFECT_TIMERS(MessageObject.SETTING, "tabEffectTimers"),
+    SETTING_HIDE_NIGHT_VISION_EFFECT_TIMER(MessageObject.SETTING, "hideNightVisionEffectTimer"),
     SETTING_NO_ARROWS_LEFT_ALERT(MessageObject.SETTING, "noArrowsLeftAlert"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.BACKPACK_STYLE, "regular"),

@@ -82,8 +82,9 @@ public enum Feature {
     POWER_ORB_STATUS_DISPLAY(65, Message.SETTING_POWER_ORB_DISPLAY, new GuiFeatureData(EnumUtils.DrawType.POWER_ORB_DISPLAY, null, EnumUtils.AnchorPoint.TOP_LEFT, 25, 48), false, EnumUtils.FeatureSetting.POWER_ORB_DISPLAY_STYLE),
     ZEALOT_COUNTER(66, Message.SETTING_ZEALOT_COUNTER, new GuiFeatureData(EnumUtils.DrawType.TEXT, ChatFormatting.DARK_AQUA, EnumUtils.AnchorPoint.TOP_RIGHT, -45, 48), false),
     TICKER_CHARGES_DISPLAY(67, Message.SETTING_TICKER_CHARGES_DISPLAY, new GuiFeatureData(EnumUtils.DrawType.TICKER, null, EnumUtils.AnchorPoint.BOTTOM_MIDDLE, 158, -29), false),
-    TAB_EFFECT_TIMERS(68, Message.SETTING_TAB_EFFECT_TIMERS, new GuiFeatureData(EnumUtils.DrawType.TAB_EFFECT_TIMERS, EnumUtils.AnchorPoint.BOTTOM_RIGHT, -210, -18), false),
+    TAB_EFFECT_TIMERS(68, Message.SETTING_TAB_EFFECT_TIMERS, new GuiFeatureData(EnumUtils.DrawType.TAB_EFFECT_TIMERS, EnumUtils.AnchorPoint.BOTTOM_RIGHT, -210, -28), false, EnumUtils.FeatureSetting.HIDE_NIGHT_VISION_EFFECT),
     NO_ARROWS_LEFT_ALERT(69, Message.SETTING_NO_ARROWS_LEFT_ALERT, new GuiFeatureData(ChatFormatting.RED), false),
+    HIDE_NIGHT_VISION_EFFECT_TIMER(70, Message.SETTING_HIDE_NIGHT_VISION_EFFECT_TIMER, false),
 
     HIDE_GREY_ENCHANTS(100, null, false), // This is here just to allow remote disabling this feature- it's caused issues in the past haha.
 
@@ -118,7 +119,7 @@ public enum Feature {
      */
     private static final Set<Feature> SETTINGS = Sets.newHashSet(DOUBLE_DROP_IN_OTHER_GAMES,
             USE_VANILLA_TEXTURE_DEFENCE, SHOW_BACKPACK_HOLDING_SHIFT, SHOW_MAGMA_TIMER_IN_OTHER_GAMES, MAKE_BACKPACK_INVENTORIES_COLORED,
-            CHANGE_BAR_COLOR_FOR_POTIONS, ENABLE_MESSAGE_WHEN_BREAKING_STEMS, ENABLE_MESSAGE_WHEN_MINING_DEEP_CAVERNS, ENABLE_MESSAGE_WHEN_MINING_NETHER);
+            CHANGE_BAR_COLOR_FOR_POTIONS, ENABLE_MESSAGE_WHEN_BREAKING_STEMS, ENABLE_MESSAGE_WHEN_MINING_DEEP_CAVERNS, ENABLE_MESSAGE_WHEN_MINING_NETHER, HIDE_NIGHT_VISION_EFFECT_TIMER);
 
     private int id;
     private Message message;
