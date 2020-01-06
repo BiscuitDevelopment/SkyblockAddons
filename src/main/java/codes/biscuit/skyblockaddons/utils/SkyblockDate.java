@@ -1,20 +1,51 @@
 package codes.biscuit.skyblockaddons.utils;
 
-import org.apache.commons.lang3.mutable.MutableInt;
+import java.text.DecimalFormat;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @SuppressWarnings("unused")
 public class SkyblockDate {
 
-    private SkyblockMonth month;
-    private MutableInt day = new MutableInt();
-    private MutableInt hour = new MutableInt();
-    private MutableInt minute = new MutableInt();
+    private static final Pattern DATE_PATTERN = Pattern.compile("(?<month>[\\w ]+) (?<day>\\d{1,2})(th|st|nd|rd)");
+    private static final Pattern TIME_PATTERN = Pattern.compile("(?<hour>\\d{1,2}):(?<minute>\\d\\d)(?<period>am|pm)");
 
-    SkyblockDate(SkyblockMonth month, int day, int hour, int minute) {
+    public static SkyblockDate parse(String dateString, String timeString) {
+        if(dateString == null || timeString == null) {
+            return null;
+        }
+
+        Matcher dateMatcher = DATE_PATTERN.matcher(dateString.trim());
+        Matcher timeMatcher = TIME_PATTERN.matcher(timeString.trim());
+        int day = 1;
+        int hour = 0;
+        int minute = 0;
+        String month = SkyblockMonth.EARLY_SPRING.scoreboardString;
+        String period = "am";
+        if(dateMatcher.find()) {
+            month = dateMatcher.group("month");
+            day = Integer.parseInt(dateMatcher.group("day"));
+        }
+        if(timeMatcher.find()) {
+            hour = Integer.parseInt(timeMatcher.group("hour"));
+            minute = Integer.parseInt(timeMatcher.group("minute"));
+            period = timeMatcher.group("period");
+        }
+        return new SkyblockDate(SkyblockMonth.fromName(month), day, hour, minute, period);
+    }
+
+    private SkyblockMonth month;
+    private int day;
+    private int hour;
+    private int minute;
+    private String period;
+
+    SkyblockDate(SkyblockMonth month, int day, int hour, int minute, String period) {
         this.month = month;
-        this.day.setValue(day);
-        this.hour.setValue(hour);
-        this.minute.setValue(minute);
+        this.day = day;
+        this.hour = hour;
+        this.minute = minute;
+        this.period = period;
     }
 
     public SkyblockMonth getMonth() {
@@ -22,31 +53,39 @@ public class SkyblockDate {
     }
 
     public int getDay() {
-        return day.getValue();
+        return day;
     }
 
     public int getHour() {
-        return hour.getValue();
+        return hour;
     }
 
     public int getMinute() {
-        return minute.getValue();
+        return minute;
     }
 
     void setDay(int day) {
-        this.day.setValue(day);
+        this.day = day;
     }
 
     void setHour(int hour) {
-        this.hour.setValue(hour);
+        this.hour = hour;
     }
 
     void setMinute(int minute) {
-        this.minute.setValue(minute);
+        this.minute = minute;
     }
 
     void setMonth(SkyblockMonth month) {
         this.month = month;
+    }
+
+    public String getPeriod() {
+        return period;
+    }
+
+    public void setPeriod(String period) {
+        this.period = period;
     }
 
     @SuppressWarnings("unused")
@@ -73,10 +112,26 @@ public class SkyblockDate {
         public String getScoreboardString() {
             return scoreboardString;
         }
+
+        public static SkyblockMonth fromName(String scoreboardName) {
+            for (SkyblockMonth skyblockMonth : values()) {
+                if(skyblockMonth.scoreboardString.equals(scoreboardName)) {
+                    return skyblockMonth;
+                }
+            }
+            return null;
+        }
     }
 
     @Override
     public String toString() {
-        return String.format("%s:%s, %s %s", hour, minute, day, month.scoreboardString);
+        // Month Day, hh:mm
+        DecimalFormat decimalFormat = new DecimalFormat("00");
+        return String.format("%s %s, %d:%s%s",
+                month.scoreboardString,
+                day + TextUtils.getOrdinalSuffix(day),
+                hour,
+                decimalFormat.format(minute),
+                period);
     }
 }

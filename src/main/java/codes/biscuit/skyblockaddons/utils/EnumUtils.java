@@ -247,6 +247,7 @@ public class EnumUtils {
         FLOWER_HOUSE("Flower House", "flower-house"),
         CANVAS_ROOM("Canvas Room", "canvas-room"),
         TAVERN("Tavern", "tavern"),
+        FASHION_SHOP("Fashion Shop", "fashion-shop"),
         // Floating Islands
         BIRCH_PARK("Birch Park", "birch-park"),
         SPRUCE_WOODS("Spruce Woods", "spruce-woods"),
@@ -437,8 +438,8 @@ public class EnumUtils {
         POWER_ORB_DISPLAY_STYLE,
         CHANGE_BAR_COLOR_WITH_POTIONS,
         ENABLE_MESSAGE_WHEN_ACTION_PREVENTED,
-        DISCORD_RP_STATE,
-        DISCORD_RP_DETAILS
+        DISCORD_RP_DETAILS,
+        DISCORD_RP_STATE
     }
 
     @SuppressWarnings("deprecation")

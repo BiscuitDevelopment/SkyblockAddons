@@ -77,7 +77,7 @@ public class Utils {
     private boolean playingSound = false;
     private boolean copyNBT = false;
     private String serverID = "";
-    private SkyblockDate currentDate = new SkyblockDate(SkyblockDate.SkyblockMonth.EARLY_WINTER, 1, 1, 1);
+    private SkyblockDate currentDate = new SkyblockDate(SkyblockDate.SkyblockMonth.EARLY_WINTER, 1, 1, 1, "am");
     private double purse = 0;
     private int lastHoveredSlot = -1;
 
@@ -133,40 +133,49 @@ public class Utils {
                     }
                 }
 
-                Collection<Score> collection = scoreboard.getSortedScores(sidebarObjective);
-                List<Score> list = Lists.newArrayList(collection.stream().filter(p_apply_1_ -> p_apply_1_.getPlayerName() != null && !p_apply_1_.getPlayerName().startsWith("#")).collect(Collectors.toList()));
+                Collection<Score> scoreboardLines = scoreboard.getSortedScores(sidebarObjective);
+                List<Score> list = Lists.newArrayList(scoreboardLines.stream().filter(p_apply_1_ -> p_apply_1_.getPlayerName() != null && !p_apply_1_.getPlayerName().startsWith("#")).collect(Collectors.toList()));
                 if (list.size() > 15) {
-                    collection = Lists.newArrayList(Iterables.skip(list, collection.size() - 15));
+                    scoreboardLines = Lists.newArrayList(Iterables.skip(list, scoreboardLines.size() - 15));
                 } else {
-                    collection = list;
+                    scoreboardLines = list;
                 }
                 String timeString = null;
-                for (Score score1 : collection) {
-                    ScorePlayerTeam scorePlayerTeam = scoreboard.getPlayersTeam(score1.getPlayerName());
-                    String strippedLine = TextUtils.stripColor(ScorePlayerTeam.formatPlayerName(scorePlayerTeam, score1.getPlayerName()));
+                String dateString = null;
+                for (Score line : scoreboardLines) {
+                    ScorePlayerTeam scorePlayerTeam = scoreboard.getPlayersTeam(line.getPlayerName());
+                    String strippedLine = TextUtils.stripColor(ScorePlayerTeam.formatPlayerName(scorePlayerTeam, line.getPlayerName()));
                     String locationString = TextUtils.keepLettersAndNumbersOnly(strippedLine);
+
                     if (locationString.endsWith("am") || locationString.endsWith("pm")) {
-                        timeString = locationString.trim();
-                        timeString = timeString.substring(0, timeString.length()-2);
+                        timeString = locationString;
                     }
-                    for (SkyblockDate.SkyblockMonth month : SkyblockDate.SkyblockMonth.values()) {
-                        if (locationString.contains(month.getScoreboardString())) {
-                            try {
-                                currentDate.setMonth(month);
-                                String numberPart = locationString.substring(locationString.lastIndexOf(" ") + 1);
-                                int day = Integer.valueOf(TextUtils.getNumbersOnly(numberPart));
-                                currentDate.setDay(day);
-                                if (timeString != null) {
-                                    String[] timeSplit = timeString.split(Pattern.quote(":"));
-                                    int hour = Integer.valueOf(timeSplit[0]);
-                                    currentDate.setHour(hour);
-                                    int minute = Integer.valueOf(timeSplit[1]);
-                                    currentDate.setMinute(minute);
-                                }
-                            } catch (IndexOutOfBoundsException | NumberFormatException ignored) {}
-                            break;
-                        }
+                    if(locationString.endsWith("st")
+                            || locationString.endsWith("nd")
+                            || locationString.endsWith("rd")
+                            || locationString.endsWith("th")) {
+                        dateString = locationString;
                     }
+//                    for (SkyblockDate.SkyblockMonth month : SkyblockDate.SkyblockMonth.values()) {
+//                        if (locationString.contains(month.getScoreboardString())) {
+//                            try {
+//                                currentDate.setMonth(month);
+//                                String numberPart = locationString.substring(locationString.lastIndexOf(" ") + 1);
+//                                int day = Integer.valueOf(TextUtils.getNumbersOnly(numberPart));
+//                                currentDate.setDay(day);
+//                                if (timeString != null) {
+//                                    String[] timeSplit = timeString.split(Pattern.quote(":"));
+//                                    int hour = Integer.valueOf(timeSplit[0]);
+//                                    currentDate.setHour(hour);
+//                                    int minute = Integer.valueOf(timeSplit[1]);
+//                                    currentDate.setMinute(minute);
+//
+//                                    currentDate.setPeriod(period);
+//                                }
+//                            } catch (IndexOutOfBoundsException | NumberFormatException ignored) {}
+//                            break;
+//                        }
+//                    }
 
                     if (strippedLine.startsWith("Purse") || strippedLine.startsWith("Piggy")) {
                         try {
@@ -196,6 +205,7 @@ public class Utils {
                         }
                     }
                 }
+                currentDate = SkyblockDate.parse(dateString, timeString);
             } else {
                 onSkyblock = false;
             }

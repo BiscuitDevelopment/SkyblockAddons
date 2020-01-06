@@ -2,6 +2,7 @@ package codes.biscuit.skyblockaddons.utils.discord;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
+import codes.biscuit.skyblockaddons.utils.SkyblockDate;
 import com.jagrosh.discordipc.IPCClient;
 import com.jagrosh.discordipc.IPCListener;
 import com.jagrosh.discordipc.entities.RichPresence;
@@ -50,11 +51,12 @@ public class DiscordRPCManager implements IPCListener {
 
     public void updatePresence() {
         EnumUtils.Location location = SkyblockAddons.getInstance().getUtils().getLocation();
+        SkyblockDate skyblockDate = SkyblockAddons.getInstance().getUtils().getCurrentDate();
         RichPresence presence = new RichPresence.Builder()
                 .setState(stateLine.getDisplayString())
                 .setDetails(detailsLine.getDisplayString())
                 .setStartTimestamp(startTimestamp)
-                .setLargeImage(location.getDiscordIconKey(), "Early Winter 10th, 12:00am")
+                .setLargeImage(location.getDiscordIconKey(), skyblockDate.toString())
                 .setSmallImage("biscuit", "SkyblockAddons v1.5")
                 .build();
         client.sendRichPresence(presence);
