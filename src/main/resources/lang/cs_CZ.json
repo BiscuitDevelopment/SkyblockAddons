@@ -91,7 +91,7 @@
       "generalSettings": "Obecná nastavení"
     },
     "tabEffectTimers": "Časovače Lektvarů a Powerupů",
-    "noArrowsLeftAlert": "No Arrows Left Alert"
+    "noArrowsLeftAlert": "Upozornění na nedostatek šípů"
   },
   "messages": {
     "dropConfirmation": "Vyhoď tento item pro vyhození!",
@@ -136,7 +136,7 @@
     "blockIncompletePatterns": "Blokovat Vyrábění Neúplných Vzorů (doporučeno)",
     "searchFeatures": "Vyhledat vlastnosti",
     "downloadingUpdateFile": "Stahuji aktualizační soubor...",
-    "onlyFewArrowsLeft": "Zbývá %arrows% šípů!",
+    "onlyFewArrowsLeft": "Zbývá %arrows% šíp/ů!",
     "noArrowsLeft": "Došly šípy!"
   }
 }
