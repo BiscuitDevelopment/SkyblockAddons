@@ -87,8 +87,12 @@ public class PlayerControllerMPHook {
 
     public static void onPlayerDestroyBlock() {
         SkyblockAddons main = SkyblockAddons.getInstance();
-        if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.SHOW_ITEM_COOLDOWNS)) {
-            CooldownManager.put(Minecraft.getMinecraft().thePlayer.getHeldItem());
+        ItemStack heldItem = Minecraft.getMinecraft().thePlayer.getHeldItem();
+        if (main.getUtils().isOnSkyblock()
+                && main.getConfigValues().isEnabled(Feature.SHOW_ITEM_COOLDOWNS)
+                && heldItem != null
+                && InventoryUtils.JUNGLE_AXE_DISPLAYNAME.equals(heldItem.getDisplayName())) {
+            CooldownManager.put(heldItem);
         }
     }
 
