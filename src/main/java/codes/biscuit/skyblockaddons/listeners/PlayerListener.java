@@ -74,7 +74,7 @@ public class PlayerListener {
     private long lastClosedInv = -1;
     private long lastFishingAlert = 0;
     private long lastBobberEnteredWater = Long.MAX_VALUE;
-    private long lastServerChangeAttempt = Long.MAX_VALUE;
+    private long lastSkyblockServerJoinAttempt = 0;
 
     private boolean oldBobberIsInWater = false;
     private double oldBobberPosY = 0;
@@ -189,7 +189,7 @@ public class PlayerListener {
             }
 
             if (formattedText.startsWith("§7Sending to server ")){
-                lastServerChangeAttempt = System.currentTimeMillis();
+                lastSkyblockServerJoinAttempt = System.currentTimeMillis();
             }
 
             Matcher matcher = ABILITY_CHAT_PATTERN.matcher(e.message.getFormattedText());
@@ -672,7 +672,7 @@ public class PlayerListener {
         return System.currentTimeMillis() - lastWorldJoin > 3000;
     }
 
-    public boolean aboutToChangeWorld() { return System.currentTimeMillis() - lastServerChangeAttempt < 6000; }
+    public boolean aboutToJoinSkyblockServer() { return System.currentTimeMillis() - lastSkyblockServerJoinAttempt < 6000; }
 
     Integer getHealthUpdate() {
         return actionBarParser.getHealthUpdate();
