@@ -247,8 +247,7 @@ public class InventoryUtils {
                 } else {
                     dropCount = 1;
                 }
-                SkyblockAddons.getInstance().getUtils().sendMessage(main.getConfigValues().getColor(
-                        Feature.STOP_DROPPING_SELLING_RARE_ITEMS) +
+                SkyblockAddons.getInstance().getUtils().sendMessage(main.getConfigValues().getRestrictedColor(Feature.STOP_DROPPING_SELLING_RARE_ITEMS) +
                         Message.MESSAGE_CLICK_MORE_TIMES.getMessage(String.valueOf(3-dropCount)));
                 lastItem = item;
                 lastDrop = System.currentTimeMillis();
@@ -281,7 +280,7 @@ public class InventoryUtils {
 
     public void checkIfWearingRevenantArmor(EntityPlayerSP p) {
         if (main.getConfigValues().isEnabled(Feature.SLAYER_INDICATOR)) {
-            ChatFormatting color = main.getConfigValues().getColor(Feature.SLAYER_INDICATOR);
+            ChatFormatting color = main.getConfigValues().getRestrictedColor(Feature.SLAYER_INDICATOR);
             for (int i = 3; i > -1; i--) {
                 ItemStack item = p.inventory.armorInventory[i];
                 String itemID = getSkyBlockItemID(item);

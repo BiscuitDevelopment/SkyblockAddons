@@ -27,23 +27,23 @@ import net.minecraftforge.fml.client.GuiNotification;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
+import java.awt.*;
 import java.math.BigDecimal;
 import java.util.*;
+import java.util.List;
 
 import static net.minecraft.client.gui.Gui.icons;
 
 public class RenderListener {
 
+    private final static ItemStack BONE_ITEM = new ItemStack(Item.getItemById(352));
+    private final static ResourceLocation BARS = new ResourceLocation("skyblockaddons", "bars.png");
+    private final static ResourceLocation DEFENCE_VANILLA = new ResourceLocation("skyblockaddons", "defence.png");
+    private final static ResourceLocation TEXT_ICONS = new ResourceLocation("skyblockaddons", "icons.png");
+    private final static ResourceLocation IMPERIAL_BARS_FIX = new ResourceLocation("skyblockaddons", "imperialbarsfix.png");
+    private final static ResourceLocation TICKER_SYMBOL = new ResourceLocation("skyblockaddons", "ticker.png");
+
     private SkyblockAddons main;
-
-    public final static ResourceLocation LOCK = new ResourceLocation("skyblockaddons", "lock.png");
-
-    private final ItemStack BONE_ITEM = new ItemStack(Item.getItemById(352));
-    private final ResourceLocation BARS = new ResourceLocation("skyblockaddons", "bars.png");
-    private final ResourceLocation DEFENCE_VANILLA = new ResourceLocation("skyblockaddons", "defence.png");
-    private final ResourceLocation TEXT_ICONS = new ResourceLocation("skyblockaddons", "icons.png");
-    private final ResourceLocation IMPERIAL_BARS_FIX = new ResourceLocation("skyblockaddons", "imperialbarsfix.png");
-    private final ResourceLocation TICKER_SYMBOL = new ResourceLocation("skyblockaddons", "ticker.png");
 
     private boolean predictHealth = false;
     private boolean predictMana = false;
@@ -186,8 +186,6 @@ public class RenderListener {
                 String text = message.getMessage();
                 MinecraftReflection.FontRenderer.drawString(text, (float) (-MinecraftReflection.FontRenderer.getStringWidth(text) / 2), -20.0F,
                         main.getConfigValues().getColor(titleFeature).getRGB(), true);
-                MinecraftReflection.FontRenderer.drawString(text, (float) (-MinecraftReflection.FontRenderer.getStringWidth(text) / 2), -20.0F,
-                        main.getConfigValues().getColor(titleFeature).getRGB(), true);
             }
             GlStateManager.popMatrix();
             GlStateManager.popMatrix();
@@ -281,13 +279,13 @@ public class RenderListener {
 
         float x = main.getConfigValues().getActualX(feature);
         float y = main.getConfigValues().getActualY(feature);
-        ChatFormatting color = main.getConfigValues().getColor(feature);
+        Color color = main.getConfigValues().getColor(feature);
 
         if (feature == Feature.HEALTH_BAR && main.getConfigValues().isEnabled(Feature.CHANGE_BAR_COLOR_FOR_POTIONS)) {
             if (mc.thePlayer.isPotionActive(19/* Poison */)) {
-                color = ChatFormatting.DARK_GREEN;
+                color = ChatFormatting.DARK_GREEN.getColor();
             } else if (mc.thePlayer.isPotionActive(20/* Wither */)) {
-                color = ChatFormatting.DARK_GRAY;
+                color = ChatFormatting.DARK_GRAY.getColor();
             }
         }
 
@@ -309,29 +307,29 @@ public class RenderListener {
             int boxYOne = intY - 3;
             int boxYTwo = intY + height + 4;
             buttonLocation.checkHoveredAndDrawBox(boxXOne, boxXTwo, boxYOne, boxYTwo, scale);
-            drawModularBar(mc, main.getConfigValues().getColor(feature), false, intX, intY + barHeightExpansion / 2, buttonLocation, feature, filled, width);
+            drawModularBar(mc, color, false, intX, intY + barHeightExpansion / 2, buttonLocation, feature, filled, width);
             if (filled > 0) {
-                drawModularBar(mc, main.getConfigValues().getColor(feature), true, intX, intY + barHeightExpansion / 2, buttonLocation, feature, filled, width);
+                drawModularBar(mc, color, true, intX, intY + barHeightExpansion / 2, buttonLocation, feature, filled, width);
             }
         }
     }
 
-    private void drawModularBar(Minecraft mc, ChatFormatting color, boolean filled, int x, int y, ButtonLocation buttonLocation, Feature feature, int fillWidth, int maxWidth) {
+    private void drawModularBar(Minecraft mc, Color color, boolean filled, int x, int y, ButtonLocation buttonLocation, Feature feature, int fillWidth, int maxWidth) {
         Gui gui = mc.ingameGUI;
         if (buttonLocation != null) {
             gui = buttonLocation;
         }
-        if (color == ChatFormatting.BLACK) {
+        if (color.getRGB() == ChatFormatting.BLACK.getRGB()) {
             GlStateManager.color(0.25F, 0.25F, 0.25F); // too dark normally
         } else { // a little darker for contrast
-            GlStateManager.color(((float) color.getColor().getRed() / 255) * 0.9F, ((float) color.getColor().getGreen() / 255) * 0.9F, ((float) color.getColor().getBlue() / 255) * 0.9F);
+            GlStateManager.color(((float) color.getRed() / 255) * 0.9F, ((float) color.getGreen() / 255) * 0.9F, ((float) color.getBlue() / 255) * 0.9F);
         }
         CoordsPair sizes = main.getConfigValues().getSizes(feature);
         if (!filled) fillWidth = maxWidth;
         drawBarStart(gui, x, y, filled, sizes.getX(), sizes.getY(), fillWidth, color, maxWidth);
     }
 
-    private void drawBarStart(Gui gui, int x, int y, boolean filled, int barWidth, int barHeight, int fillWidth, ChatFormatting color, int maxWidth) {
+    private void drawBarStart(Gui gui, int x, int y, boolean filled, int barWidth, int barHeight, int fillWidth, Color color, int maxWidth) {
         int baseTextureY = filled ? 0 : 6;
 
 //        drawMiddleThreeRows(gui,x+10,y,barHeight,22,baseTextureY,2, fillWidth, 2); // these two lines just fill some gaps in the bar
@@ -343,7 +341,7 @@ public class RenderListener {
 
         if (fillWidth < maxWidth-1 && fillWidth > 0 && // This just draws a dark line to easily distinguish where the bar's progress is.
                 main.getUtils().isUsingDefaultBarTextures()) { // It doesn't always work out nicely when using like custom textures though.
-            GlStateManager.color(((float) color.getColor().getRed() / 255) * 0.8F, ((float) color.getColor().getGreen() / 255) * 0.8F, ((float) color.getColor().getBlue() / 255) * 0.8F);
+            GlStateManager.color(((float) color.getRed() / 255) * 0.8F, ((float) color.getGreen() / 255) * 0.8F, ((float) color.getBlue() / 255) * 0.8F);
             drawMiddleThreeRows(gui, x + fillWidth, y, barHeight, 11, 6, 2, fillWidth, 2);
         }
     }
@@ -640,7 +638,7 @@ public class RenderListener {
                     if (remainingTime < -2000) remainingTime = -2000;
 
                     textAlpha = (float) 1 - ((float) -remainingTime / 2000);
-                    color = main.getConfigValues().getColor(feature).getColor(textAlpha * 255 >= 4 ? textAlpha * 255 : 4).getRGB(); // so it fades out, 0.016 is the minimum alpha
+                    color = main.getConfigValues().getColor(feature, Math.round(textAlpha * 255 >= 4 ? textAlpha * 255 : 4)).getRGB(); // so it fades out, 0.016 is the minimum alpha
                 }
             }
         } else if(feature == Feature.ZEALOT_COUNTER) {

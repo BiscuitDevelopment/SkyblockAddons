@@ -10,6 +10,7 @@ import net.minecraftforge.fml.common.FMLLog;
 import org.apache.commons.lang3.mutable.MutableFloat;
 import org.apache.commons.lang3.text.WordUtils;
 
+import java.awt.*;
 import java.awt.geom.Point2D;
 import java.beans.Introspector;
 import java.io.*;
@@ -32,7 +33,9 @@ public class ConfigValues {
     private JsonObject languageConfig = new JsonObject();
 
     private Set<Feature> disabledFeatures = EnumSet.noneOf(Feature.class);
+    @Deprecated // Replaced with colors
     private Map<Feature, ChatFormatting> featureColors = new EnumMap<>(Feature.class);
+    private Map<Feature, Integer> colors = new HashMap<>();
     private Map<Feature, MutableFloat> guiScales = new EnumMap<>(Feature.class);
     private Map<Feature, CoordsPair> barSizes = new EnumMap<>(Feature.class);
     private int warningSeconds = 4;
@@ -167,8 +170,22 @@ public class ConfigValues {
                     if (feature != null) {
                         int ordinal = element.getValue().getAsInt();
                         if (ordinal < 16) {
-                            featureColors.put(feature, ChatFormatting.values()[ordinal]);
+                            ChatFormatting chatFormatting = ChatFormatting.values()[ordinal];
+                            featureColors.put(feature, chatFormatting);
+                            if (chatFormatting != ChatFormatting.RED) { // It's default, no need.
+                                colors.put(feature, chatFormatting.getRGB()); // TODO this loads a legacy color.
+                            }
                         }
+                    }
+                }
+            }
+
+            if (settingsConfig.has("colors")) {
+                for (Map.Entry<String, JsonElement> element : settingsConfig.getAsJsonObject("colors").entrySet()) {
+                    Feature feature = Feature.fromId(Integer.parseInt(element.getKey()));
+                    if (feature != null) {
+                        int color = element.getValue().getAsInt();
+                        colors.put(feature, color);
                     }
                 }
             }
@@ -279,7 +296,7 @@ public class ConfigValues {
         for (Feature feature : Feature.values()) {
             ChatFormatting color = feature.getDefaultColor();
             if (color != null) {
-                featureColors.put(feature, color);
+                colors.put(feature, color.getRGB());
             }
             if (feature.isDefaultDisabled()) {
                 disabledFeatures.add(feature);
@@ -438,14 +455,23 @@ public class ConfigValues {
             }
             settingsConfig.add("guiScales", scalesObject);
 
-            JsonObject colorsObject = new JsonObject();
+            JsonObject oldColorsObject = new JsonObject(); //TODO might not need this in the future.
             for (Feature feature : featureColors.keySet()) {
                 ChatFormatting featureColor = featureColors.get(feature);
-                if (featureColor != ChatFormatting.RED) { // red is default, no need to save
-                    colorsObject.addProperty(String.valueOf(feature.getId()), featureColor.ordinal());
+                if (featureColor != ChatFormatting.RED) { // Red is default, no need to save it!
+                    oldColorsObject.addProperty(String.valueOf(feature.getId()), featureColor.ordinal());
                 }
             }
-            settingsConfig.add("featureColors", colorsObject);
+            settingsConfig.add("featureColors", oldColorsObject);
+
+            JsonObject colorsObject = new JsonObject();
+            for (Feature feature : colors.keySet()) {
+                int featureColor = colors.get(feature);
+                if (featureColor != ChatFormatting.RED.getRGB()) { // Red is default, no need to save it!
+                    colorsObject.addProperty(String.valueOf(feature.getId()), colors.get(feature));
+                }
+            }
+            settingsConfig.add("colors", colorsObject);
 
             JsonObject coordinatesObject = new JsonObject();
             for (Feature feature : coordinates.keySet()) {
@@ -519,13 +545,33 @@ public class ConfigValues {
         return language;
     }
 
-    public void setNextColor(Feature feature) {
-        featureColors.put(feature, main.getConfigValues().getColor(feature).getNextFormat());
+    public Color getColor(Feature feature, int alpha) {
+        Color color = getColor(feature);
+
+        return new Color(color.getRed(), color.getGreen(), color.getBlue(), alpha);
     }
 
-    public ChatFormatting getColor(Feature feature) {
+    public Color getColor(Feature feature) {
         ChatFormatting defaultColor = feature.getDefaultColor();
-        return featureColors.getOrDefault(feature, defaultColor != null ? defaultColor : ChatFormatting.RED);
+        return new Color(colors.getOrDefault(feature, defaultColor != null ? defaultColor.getRGB() : ChatFormatting.RED.getRGB()));
+    }
+
+    public ChatFormatting getRestrictedColor(Feature feature) {
+        Integer featureColor = colors.get(feature);
+
+        if (featureColor != null) {
+            for (ChatFormatting chatFormatting : ChatFormatting.values()) {
+                if (chatFormatting.getRGB() == featureColor) {
+                    return chatFormatting;
+                }
+            }
+        }
+
+        return feature.getDefaultColor();
+    }
+
+    public void setColor(Feature feature, int color) {
+        colors.put(feature, color);
     }
 
     public int getWarningSeconds() {

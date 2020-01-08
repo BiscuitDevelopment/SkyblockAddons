@@ -161,19 +161,14 @@ public class SkyblockAddonsGui extends GuiScreen {
         }
         int alpha = (int)(255*alphaMultiplier); // Alpha of the text will increase from 0 to 127 over 500ms.
 
-        int startColor = new Color(0,0, 0, alpha).getRGB(); // Black
-        int endColor = new Color(0,0, 0, (int)(alpha*1.5)).getRGB(); // Orange
+        int startColor = new Color(0,0, 0, alpha).getRGB();
+        int endColor = new Color(0,0, 0, (int)(alpha*1.5)).getRGB();
         drawGradientRect(0, 0, width, height, startColor, endColor);
         GlStateManager.enableBlend();
 
         if (alpha < 4) alpha = 4; // Text under 4 alpha appear 100% transparent for some reason o.O
-        int defaultBlue = main.getUtils().getDefaultBlue(alpha*2);
 
-        // The text at the top of the GUI
-        drawScaledString("SkyblockAddons", 28, defaultBlue, 2.5F, 0);
-        drawScaledString("v" + SkyblockAddons.VERSION + " by Biscut", 49, defaultBlue, 1.3, 50);
-        drawScaledString("Featured aka my discord plug", 7, defaultBlue, 0.8, -212);
-        drawScaledString("Special Credits: InventiveTalent - Magma Boss Timer API", height-25, defaultBlue, 1, 0);
+        drawDefaultTitleText(this, alpha*2);
 
         featureSearchBar.drawTextBox();
         if (StringUtil.isEmpty(featureSearchBar.getText())) {
@@ -272,13 +267,35 @@ public class SkyblockAddonsGui extends GuiScreen {
     }
 
     /**
-     * To avoid repeating the code for scaled text, use this instead.
+     * Draws the default text at the top at bottoms of the GUI.
+     * @param gui The gui to draw the text on.
      */
-    private void drawScaledString(String text, int y, int color, double scale, int xOff) {
-        double x = width/2;
+    static void drawDefaultTitleText(GuiScreen gui, int alpha) {
+        int defaultBlue = SkyblockAddons.getInstance().getUtils().getDefaultBlue(alpha);
+
+        drawScaledString(gui, "SkyblockAddons", 28, defaultBlue, 2.5F, 0);
+        drawScaledString(gui,"v" + SkyblockAddons.VERSION + " by Biscut", 49, defaultBlue, 1.3, 50);
+
+        if (gui instanceof SkyblockAddonsGui) {
+            drawScaledString(gui, "Featured aka my discord plug", 7, defaultBlue, 0.8, -212);
+            drawScaledString(gui, "Special Credits: InventiveTalent - Magma Boss Timer API", gui.height - 25, defaultBlue, 1, 0);
+        }
+    }
+
+    /**
+     * Draws a centered string at the middle of the screen on the x axis, with a specified scale and location.
+     *
+     * @param text The text to draw.
+     * @param y The y level to draw the text/
+     * @param color The text color.
+     * @param scale The scale to draw the text.
+     * @param xOffset The offset from the center x that the text should be drawn at.
+     */
+    static void drawScaledString(GuiScreen guiScreen, String text, int y, int color, double scale, int xOffset) {
         GlStateManager.pushMatrix();
         GlStateManager.scale(scale, scale, 1);
-        MinecraftReflection.FontRenderer.drawCenteredString(text, (int)(x/scale)+xOff, (int)(y/scale), color);
+        MinecraftReflection.FontRenderer.drawCenteredString(text, Math.round((float)guiScreen.width/2/scale)+xOffset,
+                Math.round((float)y/scale), color);
         GlStateManager.popMatrix();
     }
 
@@ -387,9 +404,6 @@ public class SkyblockAddonsGui extends GuiScreen {
     @Override
     protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {
         super.mouseClicked(mouseX, mouseY, mouseButton);
-//        if (magmaTextField != null) {
-//            magmaTextField.mouseClicked(mouseX, mouseY, mouseButton);
-//        }
         featureSearchBar.mouseClicked(mouseX, mouseY, mouseButton);
     }
 

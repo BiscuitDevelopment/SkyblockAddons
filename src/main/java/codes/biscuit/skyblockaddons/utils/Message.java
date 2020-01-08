@@ -205,7 +205,7 @@ public enum Message {
                 } else if (this == Message.UPDATE_MESSAGE_DOWNLOAD_FINISHED) {
                     text = text.replace("%file%", variables[0]);
                 } else if (this == Message.MESSAGE_ANVIL_USES) {
-                    text = text.replace("%uses%", ChatFormatting.RED.toString()+variables[0]+ChatFormatting.GRAY.toString());
+                    text = text.replace("%uses%", main.getConfigValues().getRestrictedColor(Feature.SHOW_ITEM_ANVIL_USES)+variables[0]+ChatFormatting.GRAY.toString());
                 } else if (this == Message.MESSAGE_ONLY_FEW_ARROWS_LEFT) {
                     text = text.replace("%arrows%", variables[0]);
                 }

@@ -1,20 +1,12 @@
 package codes.biscuit.skyblockaddons.gui;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.gui.buttons.ButtonArrow;
-import codes.biscuit.skyblockaddons.gui.buttons.ButtonColor;
-import codes.biscuit.skyblockaddons.gui.buttons.ButtonFeature;
-import codes.biscuit.skyblockaddons.gui.buttons.ButtonGuiScale;
-import codes.biscuit.skyblockaddons.gui.buttons.ButtonLanguage;
-import codes.biscuit.skyblockaddons.gui.buttons.ButtonSolid;
-import codes.biscuit.skyblockaddons.gui.buttons.ButtonSwitchTab;
-import codes.biscuit.skyblockaddons.gui.buttons.ButtonToggleTitle;
+import codes.biscuit.skyblockaddons.gui.buttons.*;
 import codes.biscuit.skyblockaddons.listeners.PlayerListener;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.Feature;
 import codes.biscuit.skyblockaddons.utils.Language;
 import codes.biscuit.skyblockaddons.utils.Message;
-import codes.biscuit.skyblockaddons.utils.nifty.reflection.MinecraftReflection;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
@@ -23,7 +15,7 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.GuiIngameForge;
 
-import java.awt.Color;
+import java.awt.*;
 import java.util.Set;
 
 public class SettingsGui extends GuiScreen {
@@ -124,10 +116,8 @@ public class SettingsGui extends GuiScreen {
         if (alpha < 4) alpha = 4; // Text under 4 alpha appear 100% transparent for some reason o.O
         int defaultBlue = main.getUtils().getDefaultBlue(alpha*2);
 
-        // The text at the top of the GUI
-        drawScaledString("SkyblockAddons", 28, defaultBlue, 2.5F);
-        drawScaledString("v" + SkyblockAddons.VERSION + " by Biscut", 49, defaultBlue, 1.3, 50);
-//        drawScaledString("Features", 0.21, defaultBlue, 1.5, -100, 0);
+        SkyblockAddonsGui.drawDefaultTitleText(this, alpha*2);
+
         if (feature != Feature.LANGUAGE) {
             mc.getTextureManager().bindTexture(FEATURE_BACKGROUND);
             int halfWidth = width/2;
@@ -140,7 +130,7 @@ public class SettingsGui extends GuiScreen {
             GlStateManager.enableBlend();
             GlStateManager.color(1,1,1,0.7F);
             drawModalRectWithCustomSizedTexture(x, y,0,0,width,height,width,height);
-            drawScaledString(Message.SETTING_SETTINGS.getMessage(), 110, defaultBlue, 1.5);
+            SkyblockAddonsGui.drawScaledString(this, Message.SETTING_SETTINGS.getMessage(), 110, defaultBlue, 1.5, 0);
         }
         super.drawScreen(mouseX, mouseY, partialTicks); // Draw buttons.
         if (feature == Feature.LANGUAGE) {
@@ -162,8 +152,9 @@ public class SettingsGui extends GuiScreen {
         } else if (abstractButton instanceof ButtonSwitchTab) {
             ButtonSwitchTab tab = (ButtonSwitchTab)abstractButton;
             mc.displayGuiScreen(new SkyblockAddonsGui(main, 1, tab.getTab()));
-        } else if (abstractButton instanceof ButtonColor) {
-            main.getConfigValues().setNextColor(feature);
+        } else if (abstractButton instanceof ButtonOpenColorMenu) {
+            closingGui = true;
+            mc.displayGuiScreen(new ColorSelectionGui(feature, lastTab, lastPage));
         } else if (abstractButton instanceof ButtonToggleTitle) {
             ButtonFeature button = (ButtonFeature)abstractButton;
             Feature feature = button.getFeature();
@@ -202,21 +193,6 @@ public class SettingsGui extends GuiScreen {
         }
     }
 
-    private void drawScaledString(String text, int y, int color, double scale) {
-        drawScaledString(text, y, color, scale, 0);
-    }
-
-    /**
-     * To avoid repeating the code for scaled text, use this instead.
-     */
-    private void drawScaledString(String text, int y, int color, double scale, int xOff) {
-        double x = width/2;
-        GlStateManager.pushMatrix();
-        GlStateManager.scale(scale, scale, 1);
-        MinecraftReflection.FontRenderer.drawCenteredString(text, (int)(x/scale)+xOff, (int)(y/scale), color);
-        GlStateManager.popMatrix();
-    }
-
     private void addLanguageButton(Language language) {
         if (displayCount == 0) return;
         String text = feature.getMessage();
@@ -246,7 +222,7 @@ public class SettingsGui extends GuiScreen {
         int x = halfWidth-(boxWidth/2);
         double y = getRowHeightSetting(row);
         if (setting == EnumUtils.FeatureSetting.COLOR) {
-            buttonList.add(new ButtonColor(x, y, 100, 20, Message.SETTING_CHANGE_COLOR.getMessage(), main, feature));
+            buttonList.add(new ButtonOpenColorMenu(x, y, 100, 20, Message.SETTING_CHANGE_COLOR.getMessage(), main, feature));
         } else if (setting == EnumUtils.FeatureSetting.GUI_SCALE) {
             buttonList.add(new ButtonGuiScale(x, y, 100, 20, main, feature));
         } else if (setting == EnumUtils.FeatureSetting.ENABLED_IN_OTHER_GAMES) {

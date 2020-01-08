@@ -69,7 +69,7 @@ public class Backpack {
             NBTTagCompound extraAttributes = stack.getTagCompound().getCompoundTag("ExtraAttributes");
             Matcher matcher = BACKPACK_ID_PATTERN.matcher(id);
             boolean matches = matcher.matches();
-            if (matches) {// || "NEW_YEAR_CAKE_BAG".equals(id)) {
+            if (matches || "NEW_YEAR_CAKE_BAG".equals(id)) {
                 byte[] bytes = null;
                 for (String key : extraAttributes.getKeySet()) {
                     if (key.endsWith("backpack_data") || key.equals("new_year_cake_bag_data")) {
