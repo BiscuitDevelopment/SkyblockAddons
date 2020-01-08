@@ -136,7 +136,7 @@
     "blockIncompletePatterns": "Bloquear padrões de criação incompletos (recomendado)",
     "searchFeatures": "Procurar funcionalidades",
     "downloadingUpdateFile": "A descarregar o ficheiro da atualização...",
-    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
+    "onlyFewArrowsLeft": "Só tens mais %arrows% flechas!",
     "noArrowsLeft": "Acabaram-se as flechas!"
   }
 }
