@@ -86,12 +86,12 @@
     },
     "disableMagicalSoupMessage": "تعطيل رسائل حساء الفطر السحري",
     "zealotCounter": "أظهار عداد زيلوت",
-    "tickerChargesDisplay": "Ticker/Charges Display",
+    "tickerChargesDisplay": "عرض شريط المؤشرات/الشحنات",
     "tab": {
       "generalSettings": "الإعدادات العامة"
     },
-    "tabEffectTimers": "Potion and Powerup Timers",
-    "noArrowsLeftAlert": "No Arrows Left Alert"
+    "tabEffectTimers": "مؤقتي الجرعات و مقويات الطاقة",
+    "noArrowsLeftAlert": "تنبيه النفاذ من السهوم"
   },
   "messages": {
     "dropConfirmation": "!إرمي هذا العنصر مرة أخرى للتأكيد",
@@ -136,7 +136,7 @@
     "blockIncompletePatterns": "أنماط انماط صناعة الحجر غير مكتملة\n(موصى بها)",
     "searchFeatures": "البحث عن خاصيه",
     "downloadingUpdateFile": "يتم تنزيل ملف التحديث...",
-    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
-    "noArrowsLeft": "No Arrows Left!"
+    "onlyFewArrowsLeft": "مبقي %arrows% من السهوم فقط!",
+    "noArrowsLeft": "نفذت من السهوم!"
   }
 }
