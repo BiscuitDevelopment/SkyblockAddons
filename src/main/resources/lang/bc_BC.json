@@ -90,8 +90,8 @@
     "tab": {
       "generalSettings": "General biscuits"
     },
-    "tabEffectTimers": "مؤقتات الجرعه و القوى",
-    "noArrowsLeftAlert": "تنبيه لا توجد أسهم"
+    "tabEffectTimers": "Biscoots and Biscootup Timers",
+    "noArrowsLeftAlert": "No Biscuits Left Alert"
   },
   "messages": {
     "dropConfirmation": "Throw out this biscuit again to confirm!",
@@ -136,7 +136,7 @@
     "blockIncompletePatterns": "Block eating uncooked biscuits (recommended)",
     "searchFeatures": "Buy dem biscuits",
     "downloadingUpdateFile": "Eating freshest biscuits...",
-    "onlyFewArrowsLeft": "فقط %arrows% اسهم بقيت!",
-    "noArrowsLeft": "لم يتبقى اسهم!"
+    "onlyFewArrowsLeft": "Only %arrows% bicuits left!",
+    "noArrowsLeft": "No Biscuits Left!"
   }
 }
