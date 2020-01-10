@@ -797,14 +797,14 @@ public class RenderListener {
         if (buttonLocation != null) {
             int boxXOne = intX-4;
             int boxXTwo = intX+width+4;
-            int boxYOffset = topDown ? 0 : (3-totalEffects) * 9;
+            int boxYOffset = topDown ? 0 : (1-totalEffects) * 9;
             int boxYOne = intY-4 + boxYOffset;
             int boxYTwo = intY+4+height - 3 + boxYOffset;
             buttonLocation.checkHoveredAndDrawBox(boxXOne, boxXTwo, boxYOne, boxYTwo, scale);
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         }
 
-        int drawnCount = topDown ? 0 : 2;
+        int drawnCount = 0;
         for(String potion : potionTimers){
             int fixedY = intY + (topDown ? 0 : spacer) + (drawnCount * 9);
             main.getUtils().drawTextWithStyle(potion, intX, fixedY, ChatFormatting.WHITE);
