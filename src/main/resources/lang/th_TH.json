@@ -137,6 +137,6 @@
     "searchFeatures": "ค้นหาฟีเจอร์",
     "downloadingUpdateFile": "กำลังดาวน์โหลดไฟล์อัพเดท",
     "onlyFewArrowsLeft": "Only %arrows% arrows left!",
-    "noArrowsLeft": "No Arrows Left!"
+    "noArrowsLeft": "ลูกศรหมดแล้ว"
   }
 }
