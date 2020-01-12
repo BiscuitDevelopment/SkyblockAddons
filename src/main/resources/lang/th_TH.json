@@ -90,8 +90,8 @@
     "tab": {
       "generalSettings": "ตั้งค่าทั่วไป"
     },
-    "tabEffectTimers": "Potion and Powerup Timers",
-    "noArrowsLeftAlert": "No Arrows Left Alert"
+    "tabEffectTimers": "ระบะเวลายาและพลังวิเศษ",
+    "noArrowsLeftAlert": "แจ้งเตือนลูกศรหมด"
   },
   "messages": {
     "dropConfirmation": "กดทิ้งของอีกที่เพื่อยืนยันทิ้งของสิ่งนี้!",
@@ -136,7 +136,7 @@
     "blockIncompletePatterns": "ป้องกันการคราฟที่ไม่เป็นไปตามแบบ (แนะนำให้ใช้)",
     "searchFeatures": "ค้นหาฟีเจอร์",
     "downloadingUpdateFile": "กำลังดาวน์โหลดไฟล์อัพเดท",
-    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
+    "onlyFewArrowsLeft": "ลูกศรเหลือ %arrows% ดอก",
     "noArrowsLeft": "ลูกศรหมดแล้ว"
   }
 }
