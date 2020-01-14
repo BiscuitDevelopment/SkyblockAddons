@@ -91,7 +91,8 @@
       "generalSettings": "General Settin's"
     },
     "tabEffectTimers": "Potion and Powerup Timers",
-    "noArrowsLeftAlert": "No Arrows Left Alert"
+    "noArrowsLeftAlert": "No Arrows Left Alert",
+    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer"
   },
   "messages": {
     "dropConfirmation": "'ay lad, drop this here item again to confirm!",
