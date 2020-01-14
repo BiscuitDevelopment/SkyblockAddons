@@ -91,7 +91,8 @@
       "generalSettings": "Generelle indstillinger"
     },
     "tabEffectTimers": "Trylledrik og Power-Up Timere",
-    "noArrowsLeftAlert": "Ingen pile tilbage alarm"
+    "noArrowsLeftAlert": "Ingen pile tilbage alarm",
+    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer"
   },
   "messages": {
     "dropConfirmation": "Slip denne vare igen for at bekræfte!",
