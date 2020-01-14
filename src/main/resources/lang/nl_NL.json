@@ -91,7 +91,8 @@
       "generalSettings": "Algemene instellingen"
     },
     "tabEffectTimers": "Drank- en Power-up Timers",
-    "noArrowsLeftAlert": "Geen Pijlen Resterend Waarschuwing"
+    "noArrowsLeftAlert": "Geen Pijlen Resterend Waarschuwing",
+    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer"
   },
   "messages": {
     "dropConfirmation": "Laat dit object opnieuw vallen om te Bevestigen!",
