@@ -92,8 +92,8 @@
     },
     "tabEffectTimers": "Timer pozioni e potenziamenti",
     "noArrowsLeftAlert": "Avviso frecce finite",
-    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
-    "showCakeBagPreview": "Show Preview for Cake Bags"
+    "hideNightVisionEffectTimer": "Nascondi il timer dell’effetto visione notturna",
+    "showCakeBagPreview": "Mostra anteprima delle Cake Bags"
   },
   "messages": {
     "dropConfirmation": "Getta questo oggetto nuovamente per confermare!",
@@ -140,8 +140,8 @@
     "downloadingUpdateFile": "Download del file di aggiornamento in corso...",
     "onlyFewArrowsLeft": "Solo %arrows% frecce rimaste!",
     "noArrowsLeft": "Frecce finite!",
-    "chooseAColor": "Choose a Color",
-    "selectedColor": "Selected Color",
+    "chooseAColor": "Scegli un colore",
+    "selectedColor": "Colore selezionato",
     "setHexColor": "Set Hex Color"
   }
 }
