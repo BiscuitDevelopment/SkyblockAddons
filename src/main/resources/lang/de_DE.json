@@ -91,7 +91,8 @@
       "generalSettings": "Allgemeine Einstellungen"
     },
     "tabEffectTimers": "Trank und Powerup Timer",
-    "noArrowsLeftAlert": "\"Keine Pfeile übrig\" Warnung"
+    "noArrowsLeftAlert": "\"Keine Pfeile übrig\" Warnung",
+    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer"
   },
   "messages": {
     "dropConfirmation": "Werfe diesen Gegenstand nochmal, um zu bestätigen!",
