@@ -93,7 +93,7 @@
     "tabEffectTimers": "Trylledrik og Power-Up Timere",
     "noArrowsLeftAlert": "Ingen pile tilbage alarm",
     "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
-    "showCakeBagPreview": "Show Preview for Cake Bags"
+    "showCakeBagPreview": "Forhåndsvis Kage Rygsæk"
   },
   "messages": {
     "dropConfirmation": "Slip denne vare igen for at bekræfte!",
@@ -140,8 +140,8 @@
     "downloadingUpdateFile": "Henter opdaterings filen...",
     "onlyFewArrowsLeft": "Kun %arrows% pile tilbage!",
     "noArrowsLeft": "Ingen pile tilbage!",
-    "chooseAColor": "Choose a Color",
-    "selectedColor": "Selected Color",
+    "chooseAColor": "Vælg en farve",
+    "selectedColor": "Valgte en farve",
     "setHexColor": "Set Hex Color"
   }
 }
