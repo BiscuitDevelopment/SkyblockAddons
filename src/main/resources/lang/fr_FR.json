@@ -91,7 +91,8 @@
       "generalSettings": "Options"
     },
     "tabEffectTimers": "Minuteur potions/capacités",
-    "noArrowsLeftAlert": "Alerte aucune flèche"
+    "noArrowsLeftAlert": "Alerte aucune flèche",
+    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer"
   },
   "messages": {
     "dropConfirmation": "Jetez cet objet une nouvelle fois pour confirmer!",
