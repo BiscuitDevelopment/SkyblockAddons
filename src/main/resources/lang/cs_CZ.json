@@ -141,7 +141,7 @@
     "onlyFewArrowsLeft": "Zbývá %arrows% šíp/ů!",
     "noArrowsLeft": "Došly šípy!",
     "chooseAColor": "Choose a Color",
-    "selectedColor": "Selected Color",
+    "selectedColor": "Vybraná barva",
     "setHexColor": "Set Hex Color"
   }
 }
