@@ -92,7 +92,8 @@
     },
     "tabEffectTimers": "Trylledrik og Power-Up Timere",
     "noArrowsLeftAlert": "Ingen pile tilbage alarm",
-    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer"
+    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
+    "showCakeBagPreview": "Show Preview for Cake Bags"
   },
   "messages": {
     "dropConfirmation": "Slip denne vare igen for at bekræfte!",
@@ -138,6 +139,9 @@
     "searchFeatures": "Søg funktioner",
     "downloadingUpdateFile": "Henter opdaterings filen...",
     "onlyFewArrowsLeft": "Kun %arrows% pile tilbage!",
-    "noArrowsLeft": "Ingen pile tilbage!"
+    "noArrowsLeft": "Ingen pile tilbage!",
+    "chooseAColor": "Choose a Color",
+    "selectedColor": "Selected Color",
+    "setHexColor": "Set Hex Color"
   }
 }
