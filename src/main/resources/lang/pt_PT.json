@@ -92,7 +92,7 @@
     },
     "tabEffectTimers": "Potion and Powerup Timers",
     "noArrowsLeftAlert": "No Arrows Left Alert",
-    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
+    "hideNightVisionEffectTimer": "Esconder o efeito de visão noturna",
     "showCakeBagPreview": "Show Preview for Cake Bags"
   },
   "messages": {
@@ -140,8 +140,8 @@
     "downloadingUpdateFile": "A descarregar o ficheiro da atualização...",
     "onlyFewArrowsLeft": "Só tens mais %arrows% flechas!",
     "noArrowsLeft": "Acabaram-se as flechas!",
-    "chooseAColor": "Choose a Color",
-    "selectedColor": "Selected Color",
-    "setHexColor": "Set Hex Color"
+    "chooseAColor": "Escolher uma cor",
+    "selectedColor": "Cor selecionada",
+    "setHexColor": "Definir a cor em hex"
   }
 }
