@@ -92,7 +92,8 @@
     },
     "tabEffectTimers": "Biscoots and Biscootup Timers",
     "noArrowsLeftAlert": "No Biscuits Left Alert",
-    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer"
+    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
+    "showCakeBagPreview": "Show Preview for Cake Bags"
   },
   "messages": {
     "dropConfirmation": "Throw out this biscuit again to confirm!",
@@ -138,6 +139,9 @@
     "searchFeatures": "Buy dem biscuits",
     "downloadingUpdateFile": "Eating freshest biscuits...",
     "onlyFewArrowsLeft": "Only %arrows% bicuits left!",
-    "noArrowsLeft": "No Biscuits Left!"
+    "noArrowsLeft": "No Biscuits Left!",
+    "chooseAColor": "Choose a Color",
+    "selectedColor": "Selected Color",
+    "setHexColor": "Set Hex Color"
   }
 }
