@@ -92,7 +92,8 @@
     },
     "tabEffectTimers": "バフ効果のタイマー",
     "noArrowsLeftAlert": "弓矢切れのアラート",
-    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer"
+    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
+    "showCakeBagPreview": "Show Preview for Cake Bags"
   },
   "messages": {
     "dropConfirmation": "落としてもいいのであれば、このアイテムをもう一度ドロップしてください。",
@@ -138,6 +139,9 @@
     "searchFeatures": "機能を検索",
     "downloadingUpdateFile": "更新をダウンロード中...",
     "onlyFewArrowsLeft": "矢筒に残り %arrows% 本しかないです！",
-    "noArrowsLeft": "矢がありません！"
+    "noArrowsLeft": "矢がありません！",
+    "chooseAColor": "Choose a Color",
+    "selectedColor": "Selected Color",
+    "setHexColor": "Set Hex Color"
   }
 }
