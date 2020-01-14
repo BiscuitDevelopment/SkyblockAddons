@@ -92,7 +92,8 @@
     },
     "tabEffectTimers": "Powotions and Poworup Timers",
     "noArrowsLeftAlert": "No Awwows Weft Awewt",
-    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer"
+    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
+    "showCakeBagPreview": "Show Preview for Cake Bags"
   },
   "messages": {
     "dropConfirmation": "Dwop thwis itwem agwain to confiwm!",
@@ -138,6 +139,9 @@
     "searchFeatures": "Search Fwetuwures",
     "downloadingUpdateFile": "Downwoading update fiwe...",
     "onlyFewArrowsLeft": "Onwy %arrows% weft!",
-    "noArrowsLeft": "No Awwows Weft!"
+    "noArrowsLeft": "No Awwows Weft!",
+    "chooseAColor": "Choose a Color",
+    "selectedColor": "Selected Color",
+    "setHexColor": "Set Hex Color"
   }
 }
