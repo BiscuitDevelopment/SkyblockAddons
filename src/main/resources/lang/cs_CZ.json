@@ -92,7 +92,8 @@
     },
     "tabEffectTimers": "Časovače Lektvarů a Powerupů",
     "noArrowsLeftAlert": "Upozornění na nedostatek šípů",
-    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer"
+    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
+    "showCakeBagPreview": "Show Preview for Cake Bags"
   },
   "messages": {
     "dropConfirmation": "Vyhoď tento item pro vyhození!",
@@ -138,6 +139,9 @@
     "searchFeatures": "Vyhledat vlastnosti",
     "downloadingUpdateFile": "Stahuji aktualizační soubor...",
     "onlyFewArrowsLeft": "Zbývá %arrows% šíp/ů!",
-    "noArrowsLeft": "Došly šípy!"
+    "noArrowsLeft": "Došly šípy!",
+    "chooseAColor": "Choose a Color",
+    "selectedColor": "Selected Color",
+    "setHexColor": "Set Hex Color"
   }
 }
