@@ -92,7 +92,8 @@
     },
     "tabEffectTimers": "Temporizador de Pociones y Powerup",
     "noArrowsLeftAlert": "Alerta de Quedarse sin Flechas",
-    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer"
+    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
+    "showCakeBagPreview": "Show Preview for Cake Bags"
   },
   "messages": {
     "dropConfirmation": "¡Dropea el Objeto otra vez para soltar!",
@@ -138,6 +139,9 @@
     "searchFeatures": "Buscar características",
     "downloadingUpdateFile": "Descargando archivo de actualización...",
     "onlyFewArrowsLeft": "¡Solo quedan %arrows% flechas restantes!",
-    "noArrowsLeft": "¡No quedan flechas!"
+    "noArrowsLeft": "¡No quedan flechas!",
+    "chooseAColor": "Choose a Color",
+    "selectedColor": "Selected Color",
+    "setHexColor": "Set Hex Color"
   }
 }
