@@ -91,7 +91,8 @@
       "generalSettings": "General biscuits"
     },
     "tabEffectTimers": "Biscoots and Biscootup Timers",
-    "noArrowsLeftAlert": "No Biscuits Left Alert"
+    "noArrowsLeftAlert": "No Biscuits Left Alert",
+    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer"
   },
   "messages": {
     "dropConfirmation": "Throw out this biscuit again to confirm!",
