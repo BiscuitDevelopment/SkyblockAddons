@@ -20,7 +20,7 @@ public class EntityPlayerSPHook {
         SkyblockAddons main = SkyblockAddons.getInstance();
         Minecraft mc = Minecraft.getMinecraft();
         ItemStack heldItemStack = mc.thePlayer.getHeldItem();
-        if (main.getConfigValues().isEnabled(Feature.LOCK_SLOTS) && main.getUtils().isOnSkyblock()) {
+        if (main.getConfigValues().isEnabled(Feature.LOCK_SLOTS) && (main.getUtils().isOnSkyblock() || main.getPlayerListener().aboutToJoinSkyblockServer() || !main.getPlayerListener().didntRecentlyJoinWorld())) {
             int slot = mc.thePlayer.inventory.currentItem + 36;
             if (main.getConfigValues().getLockedSlots().contains(slot)
                     && (slot >= 9 || mc.thePlayer.openContainer instanceof ContainerPlayer && slot >= 5)) {
@@ -33,7 +33,7 @@ public class EntityPlayerSPHook {
         }
         if (heldItemStack != null) {
             EnumUtils.Rarity rarity = EnumUtils.Rarity.getRarity(heldItemStack);
-            if (rarity != null && main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.STOP_DROPPING_SELLING_RARE_ITEMS) &&
+            if (rarity != null && (main.getUtils().isOnSkyblock() || main.getPlayerListener().aboutToJoinSkyblockServer() || !main.getPlayerListener().didntRecentlyJoinWorld()) && main.getConfigValues().isEnabled(Feature.STOP_DROPPING_SELLING_RARE_ITEMS) &&
                     main.getUtils().cantDropItem(heldItemStack, rarity, true)) {
                 SkyblockAddons.getInstance().getUtils().sendMessage(main.getConfigValues().getRestrictedColor(Feature.STOP_DROPPING_SELLING_RARE_ITEMS)
                                                                             + Message.MESSAGE_CANCELLED_DROPPING.getMessage());
