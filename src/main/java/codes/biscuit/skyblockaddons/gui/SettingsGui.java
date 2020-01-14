@@ -281,6 +281,11 @@ public class SettingsGui extends GuiScreen {
             boxWidth = 140;
             x = halfWidth-(boxWidth/2);
             buttonList.add(new ButtonSolid(x, y, 140, 20, Message.SETTING_POWER_ORB_DISPLAY_STYLE.getMessage(), main, feature));
+        } else if(setting == EnumUtils.FeatureSetting.HIDE_NIGHT_VISION_EFFECT) {
+            boxWidth = 31;
+            x = halfWidth-(boxWidth/2);
+            y = getRowHeightSetting(row);
+            buttonList.add(new ButtonToggleTitle(x, y, Message.SETTING_HIDE_NIGHT_VISION_EFFECT_TIMER.getMessage(), main, Feature.HIDE_NIGHT_VISION_EFFECT_TIMER));
         }
         row++;
     }

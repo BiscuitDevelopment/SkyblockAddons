@@ -778,11 +778,16 @@ public class RenderListener {
             }
         }
 
-        int height = (powerupTimers.size()+potionTimers.size()) * 8 +
-                ((!powerupTimers.isEmpty() && !potionTimers.isEmpty()) ? 3 : 0); //8 px per effect + 3px spacer between Potions and Powerups if they both exist
+        EnumUtils.AnchorPoint anchorPoint = main.getConfigValues().getAnchorPoint(Feature.TAB_EFFECT_TIMERS);
+        boolean topDown = (anchorPoint == EnumUtils.AnchorPoint.TOP_LEFT || anchorPoint == EnumUtils.AnchorPoint.TOP_RIGHT);
+
+        int totalEffects = potionTimers.size() + powerupTimers.size();
+        int spacer = (!potionTimers.isEmpty() && !powerupTimers.isEmpty()) ? 3 : 0;
+
+        int height = (totalEffects * 9) + spacer; //9 px per effect + 3px spacer between Potions and Powerups if both exist
         int width = 156; //String width of "Enchanting XP Boost III 1:23:45"
         x-=Math.round(width*scale/2);
-        y-=Math.round(height*scale/2);
+        y-=Math.round(height*scale/2)-(totalEffects * 4);
         x/=scale;
         y/=scale;
         int intX = Math.round(x);
@@ -790,23 +795,21 @@ public class RenderListener {
         if (buttonLocation != null) {
             int boxXOne = intX-4;
             int boxXTwo = intX+width+4;
-            int boxYOne = intY-4;
-            int boxYTwo = intY+height+4;
+            int boxYOffset = topDown ? 0 : (1-totalEffects) * 9;
+            int boxYOne = intY-4 + boxYOffset;
+            int boxYTwo = intY+4+height - 3 + boxYOffset;
             buttonLocation.checkHoveredAndDrawBox(boxXOne, boxXTwo, boxYOne, boxYTwo, scale);
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         }
 
-        EnumUtils.AnchorPoint anchorPoint = main.getConfigValues().getAnchorPoint(Feature.TAB_EFFECT_TIMERS);
-        boolean topDown = (anchorPoint == EnumUtils.AnchorPoint.TOP_LEFT || anchorPoint == EnumUtils.AnchorPoint.TOP_RIGHT);
-
-        int drawnCount = topDown ? 0 : 2;
+        int drawnCount = 0;
         for(String potion : potionTimers){
-            int fixedY = intY + drawnCount +(topDown ? 0 : 3) + drawnCount * 8;
+            int fixedY = intY + (topDown ? 0 : spacer) + (drawnCount * 9);
             main.getUtils().drawTextWithStyle(potion, intX, fixedY, ChatFormatting.WHITE);
             drawnCount += topDown ? 1 : -1;
         }
         for(String powerUp : powerupTimers){
-            int fixedY = intY + drawnCount + (topDown ? 3 : 0) + drawnCount * 8;
+            int fixedY = intY + (topDown ? spacer : 0) + (drawnCount * 9);
             main.getUtils().drawTextWithStyle(powerUp, intX, fixedY, ChatFormatting.WHITE);
             drawnCount += topDown ? 1 : -1;
         }
