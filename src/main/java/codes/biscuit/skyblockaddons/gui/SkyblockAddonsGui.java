@@ -89,9 +89,18 @@ public class SkyblockAddonsGui extends GuiScreen {
 //        Set<Feature> features = tab.getFeatures();
         List<Feature> features = new LinkedList<>();
         for (Feature feature : tab != EnumUtils.GuiTab.GENERAL_SETTINGS ? Sets.newHashSet(Feature.values()) : Feature.getGeneralTabFeatures()) {
-            if ((feature.isActualFeature() || tab == EnumUtils.GuiTab.GENERAL_SETTINGS)
-                    && !main.getConfigValues().isRemoteDisabled(feature) && matchesSearch(feature.getMessage())) { // dont add other random features or disabled features yet
-                features.add(feature);
+            if ((feature.isActualFeature() || tab == EnumUtils.GuiTab.GENERAL_SETTINGS) && !main.getConfigValues().isRemoteDisabled(feature)) { // Don't add disabled features yet
+                if (matchesSearch(feature.getMessage())) { // Matches search.
+                    features.add(feature);
+                } else { // If a sub-setting matches the search show it up in the results as well.
+                    for (EnumUtils.FeatureSetting setting : feature.getSettings()) {
+                        try {
+                            if (matchesSearch(setting.getMessage().getMessage())) {
+                                features.add(feature);
+                            }
+                        } catch (Exception ignored) {} // Hit a message that probably needs variables to fill in, just skip it.
+                    }
+                }
             }
         }
 
@@ -187,15 +196,15 @@ public class SkyblockAddonsGui extends GuiScreen {
             Feature feature = ((ButtonFeature)abstractButton).getFeature();
             if (abstractButton instanceof ButtonSettings) {
                 main.getUtils().setFadingIn(false);
-                Minecraft.getMinecraft().displayGuiScreen(new SettingsGui(main, feature, 1, page, tab, feature.getSettings()));
+                Minecraft.getMinecraft().displayGuiScreen(new SettingsGui(main, feature, 1, page, tab, feature.getSettings(), featureSearchBar.getText()));
                 return;
             }
             if (feature == Feature.LANGUAGE) {
                 main.getUtils().setFadingIn(false);
-                Minecraft.getMinecraft().displayGuiScreen(new SettingsGui(main, Feature.LANGUAGE, 1, page,tab, null));
+                Minecraft.getMinecraft().displayGuiScreen(new SettingsGui(main, Feature.LANGUAGE, 1, page,tab, null, featureSearchBar.getText()));
             }  else if (feature == Feature.EDIT_LOCATIONS) {
                 main.getUtils().setFadingIn(false);
-                Minecraft.getMinecraft().displayGuiScreen(new LocationEditGui(main, page, tab));
+                Minecraft.getMinecraft().displayGuiScreen(new LocationEditGui(main, page, tab, featureSearchBar.getText()));
             }  else if (feature == Feature.GENERAL_SETTINGS) {
                 if (tab == EnumUtils.GuiTab.GENERAL_SETTINGS) {
                     main.getUtils().setFadingIn(false);

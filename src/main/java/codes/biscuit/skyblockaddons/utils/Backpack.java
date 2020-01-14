@@ -64,12 +64,14 @@ public class Backpack {
 
     public static Backpack getFromItem(ItemStack stack) {
         if (stack == null) return null;
-        String id = SkyblockAddons.getInstance().getInventoryUtils().getSkyBlockItemID(stack);
+        SkyblockAddons main = SkyblockAddons.getInstance();
+        String id = main.getInventoryUtils().getSkyBlockItemID(stack);
         if (id != null) {
             NBTTagCompound extraAttributes = stack.getTagCompound().getCompoundTag("ExtraAttributes");
             Matcher matcher = BACKPACK_ID_PATTERN.matcher(id);
             boolean matches = matcher.matches();
-            if (matches || "NEW_YEAR_CAKE_BAG".equals(id)) {
+            if (matches || (main.getConfigValues().isEnabled(Feature.CAKE_BAG_PREVIEW) // If it's a backpack OR it's a cake
+                    && "NEW_YEAR_CAKE_BAG".equals(id))) { //                              bag and they have the setting enabled.
                 byte[] bytes = null;
                 for (String key : extraAttributes.getKeySet()) {
                     if (key.endsWith("backpack_data") || key.equals("new_year_cake_bag_data")) {
@@ -119,7 +121,7 @@ public class Backpack {
                             color = BackpackColor.valueOf(extraAttributes.getString("backpack_color"));
                         } catch (IllegalArgumentException ignored) {}
                     }
-                    return new Backpack(items, SkyblockAddons.getInstance().getUtils().stripColor(stack.getDisplayName()), color);
+                    return new Backpack(items, main.getUtils().stripColor(stack.getDisplayName()), color);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

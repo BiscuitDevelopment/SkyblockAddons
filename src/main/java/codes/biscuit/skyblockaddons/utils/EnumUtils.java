@@ -409,21 +409,46 @@ public class EnumUtils {
     /**
      * Settings that modify the behavior of features- without technically being
      * a feature itself.
+     *
+     * For the equivalent feature (that holds the state) use the ids instead of the enum directly
+     * because the enum Feature depends on FeatureSetting, so FeatureSetting can't depend on Feature on creation.
      */
     public enum FeatureSetting {
-        COLOR,
-        GUI_SCALE,
-        ENABLED_IN_OTHER_GAMES,
-        USE_VANILLA_TEXTURE,
-//        WARNING_TIME,
-        BACKPACK_STYLE,
-        SHOW_ONLY_WHEN_HOLDING_SHIFT,
-        MAKE_INVENTORY_COLORED,
-        POWER_ORB_DISPLAY_STYLE,
-        CHANGE_BAR_COLOR_WITH_POTIONS,
-        ENABLE_MESSAGE_WHEN_ACTION_PREVENTED,
-        HIDE_NIGHT_VISION_EFFECT
-        ENABLE_CAKE_BAG_PREVIEW
+        COLOR(SETTING_CHANGE_COLOR, -1),
+        GUI_SCALE(SETTING_GUI_SCALE, -1),
+        ENABLED_IN_OTHER_GAMES(SETTING_SHOW_IN_OTHER_GAMES, -1),
+        USE_VANILLA_TEXTURE(SETTING_USE_VANILLA_TEXTURE, 17),
+        BACKPACK_STYLE(SETTING_BACKPACK_STYLE, -1),
+        SHOW_ONLY_WHEN_HOLDING_SHIFT(SETTING_SHOW_ONLY_WHEN_HOLDING_SHIFT, 18),
+        MAKE_INVENTORY_COLORED(SETTING_MAKE_BACKPACK_INVENTORIES_COLORED, 43),
+        POWER_ORB_DISPLAY_STYLE(SETTING_POWER_ORB_DISPLAY_STYLE, -1),
+        CHANGE_BAR_COLOR_WITH_POTIONS(SETTING_CHANGE_BAR_COLOR_WITH_POTIONS, 46),
+        ENABLE_MESSAGE_WHEN_ACTION_PREVENTED(SETTING_ENABLE_MESSAGE_WHEN_ACTION_PREVENTED, -1),
+        HIDE_NIGHT_VISION_EFFECT(SETTING_HIDE_NIGHT_VISION_EFFECT_TIMER, 70),
+        ENABLE_CAKE_BAG_PREVIEW(SETTING_SHOW_CAKE_BAG_PREVIEW, 71);
+
+        private Message message;
+        private int featureEquivalent;
+
+        FeatureSetting(Message message, int featureEquivalent) {
+            this.message = message;
+            this.featureEquivalent = featureEquivalent;
+        }
+
+        public Message getMessage() {
+            return message;
+        }
+
+        public Feature getFeatureEquivalent() {
+            if (featureEquivalent == -1) return null;
+
+            for (Feature feature : Feature.values()) {
+                if (feature.getId() == featureEquivalent) {
+                    return feature;
+                }
+            }
+            return null;
+        }
     }
 
     @SuppressWarnings("deprecation")

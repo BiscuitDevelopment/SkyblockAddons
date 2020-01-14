@@ -33,11 +33,13 @@ public class LocationEditGui extends GuiScreen {
 
     private int lastPage;
     private EnumUtils.GuiTab lastTab;
+    private String lastText;
 
-    public LocationEditGui(SkyblockAddons main, int lastPage, EnumUtils.GuiTab lastTab) {
+    public LocationEditGui(SkyblockAddons main, int lastPage, EnumUtils.GuiTab lastTab, String lastText) {
         this.main = main;
         this.lastPage = lastPage;
         this.lastTab = lastTab;
+        this.lastText = lastText;
     }
 
     @Override
@@ -223,7 +225,7 @@ public class LocationEditGui extends GuiScreen {
     public void onGuiClosed() {
         main.getConfigValues().saveConfig();
         if (lastTab != null) {
-            main.getRenderListener().setGuiToOpen(PlayerListener.GUIType.MAIN, lastPage, lastTab);
+            main.getRenderListener().setGuiToOpen(PlayerListener.GUIType.MAIN, lastPage, lastTab, lastText);
         }
     }
 }

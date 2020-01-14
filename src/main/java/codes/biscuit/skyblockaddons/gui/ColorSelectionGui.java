@@ -5,6 +5,7 @@ import codes.biscuit.skyblockaddons.gui.buttons.ButtonColorBox;
 import codes.biscuit.skyblockaddons.listeners.PlayerListener;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.Feature;
+import codes.biscuit.skyblockaddons.utils.Message;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
 import codes.biscuit.skyblockaddons.utils.nifty.reflection.MinecraftReflection;
 import net.minecraft.client.Minecraft;
@@ -103,7 +104,7 @@ public class ColorSelectionGui extends GuiScreen {
 
         if (feature.getGuiFeatureData() != null) {
             if (feature.getGuiFeatureData().isColorsRestricted()) {
-                SkyblockAddonsGui.drawScaledString(this, "Choose a Color", 90,
+                SkyblockAddonsGui.drawScaledString(this, Message.MESSAGE_CHOOSE_A_COLOR.getMessage(), 90,
                         SkyblockAddons.getInstance().getUtils().getDefaultBlue(255), 1.5, 0);
 
             } else {
@@ -117,11 +118,11 @@ public class ColorSelectionGui extends GuiScreen {
                 mc.getTextureManager().bindTexture(COLOR_PICKER);
                 Gui.drawModalRectWithCustomSizedTexture(imageX, imageY, 0, 0, pickerWidth, pickerHeight, pickerWidth, pickerHeight);
 
-                SkyblockAddonsGui.drawScaledString(this, "Selected Color", 120,
+                SkyblockAddonsGui.drawScaledString(this, Message.MESSAGE_SELECTED_COLOR.getMessage(), 120,
                         SkyblockAddons.getInstance().getUtils().getDefaultBlue(255), 1.5, 75);
                 drawRect(width / 2 + 90, 140, width / 2 + 130, 160, SkyblockAddons.getInstance().getConfigValues().getColor(feature).getRGB());
 
-                SkyblockAddonsGui.drawScaledString(this, "Set Hex Color", 200,
+                SkyblockAddonsGui.drawScaledString(this, Message.MESSAGE_SET_HEX_COLOR.getMessage(), 200,
                         SkyblockAddons.getInstance().getUtils().getDefaultBlue(255), 1.5, 75);
                 hexColorField.drawTextBox();
             }

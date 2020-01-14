@@ -1044,7 +1044,7 @@ public class RenderListener {
                 textToOpen = null;
             }
         } else if (guiToOpen == PlayerListener.GUIType.EDIT_LOCATIONS) {
-            Minecraft.getMinecraft().displayGuiScreen(new LocationEditGui(main, guiPageToOpen, guiTabToOpen));
+            Minecraft.getMinecraft().displayGuiScreen(new LocationEditGui(main, guiPageToOpen, guiTabToOpen, textToOpen));
         }
         guiToOpen = null;
     }

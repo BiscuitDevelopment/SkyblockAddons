@@ -32,6 +32,7 @@ public class SettingsGui extends GuiScreen {
     private EnumUtils.GuiTab lastTab;
     private boolean closingGui = false;
     private Set<EnumUtils.FeatureSetting> settings;
+    private String lastText;
 
     private long timeOpened = System.currentTimeMillis();
 
@@ -39,13 +40,14 @@ public class SettingsGui extends GuiScreen {
      * The main gui, opened with /sba.
      */
     SettingsGui(SkyblockAddons main, Feature feature, int page,
-                int lastPage, EnumUtils.GuiTab lastTab, Set<EnumUtils.FeatureSetting> settings) {
+                int lastPage, EnumUtils.GuiTab lastTab, Set<EnumUtils.FeatureSetting> settings, String lastText) {
         this.main = main;
         this.feature = feature;
         this.page = page;
         this.lastPage = lastPage;
         this.lastTab = lastTab;
         this.settings = settings;
+        this.lastText = lastText;
     }
 
     @SuppressWarnings("IntegerDivisionInFloatingPointContext")
@@ -125,7 +127,7 @@ public class SettingsGui extends GuiScreen {
             int x = halfWidth-90-boxWidth;
             int width = halfWidth+90+boxWidth;
             width -= x;
-            int height = (int)(getRowHeight(6)-getRowHeight(1));
+            int height = (int)(getRowHeightSetting(settings.size())-50);
             int y =(int)getRowHeight(1);
             GlStateManager.enableBlend();
             GlStateManager.color(1,1,1,0.7F);
@@ -158,6 +160,7 @@ public class SettingsGui extends GuiScreen {
         } else if (abstractButton instanceof ButtonToggleTitle) {
             ButtonFeature button = (ButtonFeature)abstractButton;
             Feature feature = button.getFeature();
+            if (feature == null) return;
             if (main.getConfigValues().isDisabled(feature)) {
                 main.getConfigValues().getDisabledFeatures().remove(feature);
             } else {
@@ -171,12 +174,12 @@ public class SettingsGui extends GuiScreen {
         } else if (feature == Feature.SHOW_BACKPACK_PREVIEW) {
             main.getConfigValues().setBackpackStyle(main.getConfigValues().getBackpackStyle().getNextType());
             closingGui = true;
-            Minecraft.getMinecraft().displayGuiScreen(new SettingsGui(main, feature, page, lastPage, lastTab, settings));
+            Minecraft.getMinecraft().displayGuiScreen(new SettingsGui(main, feature, page, lastPage, lastTab, settings, lastText));
             closingGui = false;
         } else if(feature == Feature.POWER_ORB_STATUS_DISPLAY && abstractButton instanceof ButtonSolid) {
             main.getConfigValues().setPowerOrbDisplayStyle(main.getConfigValues().getPowerOrbDisplayStyle().getNextType());
             closingGui = true;
-            Minecraft.getMinecraft().displayGuiScreen(new SettingsGui(main, feature, page, lastPage, lastTab, settings));
+            Minecraft.getMinecraft().displayGuiScreen(new SettingsGui(main, feature, page, lastPage, lastTab, settings, lastText));
             closingGui = false;
         } else if (abstractButton instanceof ButtonArrow) {
             ButtonArrow arrow = (ButtonArrow)abstractButton;
@@ -184,10 +187,10 @@ public class SettingsGui extends GuiScreen {
                 main.getUtils().setFadingIn(false);
                 if (arrow.getArrowType() == ButtonArrow.ArrowType.RIGHT) {
                     closingGui = true;
-                    mc.displayGuiScreen(new SettingsGui(main, feature, ++page, lastPage, lastTab, settings));
+                    mc.displayGuiScreen(new SettingsGui(main, feature, ++page, lastPage, lastTab, settings, lastText));
                 } else {
                     closingGui = true;
-                    mc.displayGuiScreen(new SettingsGui(main, feature, --page, lastPage, lastTab, settings));
+                    mc.displayGuiScreen(new SettingsGui(main, feature, --page, lastPage, lastTab, settings, lastText));
                 }
             }
         }
@@ -229,36 +232,13 @@ public class SettingsGui extends GuiScreen {
             boxWidth = 31;
             x = halfWidth-(boxWidth/2);
             y = getRowHeightSetting(row);
+
             Feature settingFeature = null;
-            if (feature == Feature.MAGMA_BOSS_TIMER) {
-                settingFeature = Feature.SHOW_MAGMA_TIMER_IN_OTHER_GAMES;
-            } else if (feature == Feature.DARK_AUCTION_TIMER) {
-                settingFeature = Feature.SHOW_DARK_AUCTION_TIMER_IN_OTHER_GAMES;
-            } else if (feature == Feature.DROP_CONFIRMATION) {
-                settingFeature = Feature.DOUBLE_DROP_IN_OTHER_GAMES;
-            }
+            if (feature == Feature.MAGMA_BOSS_TIMER) { settingFeature = Feature.SHOW_MAGMA_TIMER_IN_OTHER_GAMES;
+            } else if (feature == Feature.DARK_AUCTION_TIMER) { settingFeature = Feature.SHOW_DARK_AUCTION_TIMER_IN_OTHER_GAMES;
+            } else if (feature == Feature.DROP_CONFIRMATION) { settingFeature = Feature.DOUBLE_DROP_IN_OTHER_GAMES; }
+
             buttonList.add(new ButtonToggleTitle(x, y, Message.SETTING_SHOW_IN_OTHER_GAMES.getMessage(), main, settingFeature));
-        } else if (setting == EnumUtils.FeatureSetting.USE_VANILLA_TEXTURE) {
-            row++;
-            boxWidth = 31;
-            x = halfWidth-(boxWidth/2);
-            y = getRowHeightSetting(row);
-            buttonList.add(new ButtonToggleTitle(x, y, Message.SETTING_USE_VANILLA_TEXTURE.getMessage(), main, Feature.USE_VANILLA_TEXTURE_DEFENCE));
-        } else if (setting == EnumUtils.FeatureSetting.SHOW_ONLY_WHEN_HOLDING_SHIFT) {
-            boxWidth = 31;
-            x = halfWidth - (boxWidth / 2);
-            y = getRowHeightSetting(row);
-            buttonList.add(new ButtonToggleTitle(x, y, Message.SETTING_SHOW_ONLY_WHEN_HOLDING_SHIFT.getMessage(), main, Feature.SHOW_BACKPACK_HOLDING_SHIFT));
-        } else if (setting == EnumUtils.FeatureSetting.MAKE_INVENTORY_COLORED) {
-            boxWidth = 31;
-            x = halfWidth - (boxWidth / 2);
-            y = getRowHeightSetting(row);
-            buttonList.add(new ButtonToggleTitle(x, y, Message.SETTING_MAKE_BACKPACK_INVENTORIES_COLORED.getMessage(), main, Feature.MAKE_BACKPACK_INVENTORIES_COLORED));
-        } else if (setting == EnumUtils.FeatureSetting.CHANGE_BAR_COLOR_WITH_POTIONS) {
-            boxWidth = 31;
-            x = halfWidth - (boxWidth / 2);
-            y = getRowHeightSetting(row);
-            buttonList.add(new ButtonToggleTitle(x, y, Message.SETTING_CHANGE_BAR_COLOR_WITH_POTIONS.getMessage(), main, Feature.CHANGE_BAR_COLOR_FOR_POTIONS));
         } else if (setting == EnumUtils.FeatureSetting.BACKPACK_STYLE) {
             boxWidth = 140;
             x = halfWidth-(boxWidth/2);
@@ -268,24 +248,24 @@ public class SettingsGui extends GuiScreen {
             x = halfWidth - (boxWidth / 2);
 
             Feature settingFeature = null;
-            if (feature == Feature.ONLY_MINE_ORES_DEEP_CAVERNS) {
-                settingFeature = Feature.ENABLE_MESSAGE_WHEN_MINING_DEEP_CAVERNS;
-            } else if (feature == Feature.AVOID_BREAKING_STEMS) {
-                settingFeature = Feature.ENABLE_MESSAGE_WHEN_BREAKING_STEMS;
-            } else if (feature == Feature.ONLY_MINE_VALUABLES_NETHER) {
-                settingFeature = Feature.ENABLE_MESSAGE_WHEN_MINING_NETHER;
-            }
+            if (feature == Feature.ONLY_MINE_ORES_DEEP_CAVERNS) { settingFeature = Feature.ENABLE_MESSAGE_WHEN_MINING_DEEP_CAVERNS;
+            } else if (feature == Feature.AVOID_BREAKING_STEMS) { settingFeature = Feature.ENABLE_MESSAGE_WHEN_BREAKING_STEMS;
+            } else if (feature == Feature.ONLY_MINE_VALUABLES_NETHER) { settingFeature = Feature.ENABLE_MESSAGE_WHEN_MINING_NETHER; }
 
             buttonList.add(new ButtonToggleTitle(x, y, Message.SETTING_ENABLE_MESSAGE_WHEN_ACTION_PREVENTED.getMessage(), main, settingFeature));
         } else if(setting == EnumUtils.FeatureSetting.POWER_ORB_DISPLAY_STYLE) {
             boxWidth = 140;
             x = halfWidth-(boxWidth/2);
             buttonList.add(new ButtonSolid(x, y, 140, 20, Message.SETTING_POWER_ORB_DISPLAY_STYLE.getMessage(), main, feature));
-        } else if(setting == EnumUtils.FeatureSetting.HIDE_NIGHT_VISION_EFFECT) {
-            boxWidth = 31;
+        } else {
+            boxWidth = 31; // Default size and stuff.
             x = halfWidth-(boxWidth/2);
             y = getRowHeightSetting(row);
-            buttonList.add(new ButtonToggleTitle(x, y, Message.SETTING_HIDE_NIGHT_VISION_EFFECT_TIMER.getMessage(), main, Feature.HIDE_NIGHT_VISION_EFFECT_TIMER));
+            System.out.println(setting.name());
+            buttonList.add(new ButtonToggleTitle(x, y, setting.getMessage().getMessage(), main, setting.getFeatureEquivalent()));
+            if (setting.getFeatureEquivalent() == null) {
+                System.out.println(feature.getId());
+            }
         }
         row++;
     }
@@ -310,6 +290,6 @@ public class SettingsGui extends GuiScreen {
 
     private void returnToGui() {
         closingGui = true;
-        main.getRenderListener().setGuiToOpen(PlayerListener.GUIType.MAIN, lastPage, lastTab);
+        main.getRenderListener().setGuiToOpen(PlayerListener.GUIType.MAIN, lastPage, lastTab, lastText);
     }
 }

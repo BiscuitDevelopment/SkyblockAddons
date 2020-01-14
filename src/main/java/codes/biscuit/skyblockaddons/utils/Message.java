@@ -90,6 +90,7 @@ public enum Message {
     SETTING_TAB_EFFECT_TIMERS(MessageObject.SETTING, "tabEffectTimers"),
     SETTING_HIDE_NIGHT_VISION_EFFECT_TIMER(MessageObject.SETTING, "hideNightVisionEffectTimer"),
     SETTING_NO_ARROWS_LEFT_ALERT(MessageObject.SETTING, "noArrowsLeftAlert"),
+    SETTING_SHOW_CAKE_BAG_PREVIEW(MessageObject.SETTING, "showCakeBagPreview"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.BACKPACK_STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.BACKPACK_STYLE, "compact"),
@@ -127,6 +128,9 @@ public enum Message {
     MESSAGE_DOWNLOADING_UPDATE(MessageObject.MESSAGES, "downloadingUpdateFile"),
     MESSAGE_ONLY_FEW_ARROWS_LEFT(MessageObject.MESSAGES, "onlyFewArrowsLeft"),
     MESSAGE_NO_ARROWS_LEFT(MessageObject.MESSAGES, "noArrowsLeft"),
+    MESSAGE_CHOOSE_A_COLOR(MessageObject.MESSAGES, "chooseAColor"),
+    MESSAGE_SELECTED_COLOR(MessageObject.MESSAGES, "selectedColor"),
+    MESSAGE_SET_HEX_COLOR(MessageObject.MESSAGES, "setHexColor"),
 
     @Deprecated ANCHOR_POINT_TOP_LEFT(MessageObject.ANCHOR_POINT, "topLeft"),
     @Deprecated ANCHOR_POINT_TOP_RIGHT(MessageObject.ANCHOR_POINT, "topRight"),
