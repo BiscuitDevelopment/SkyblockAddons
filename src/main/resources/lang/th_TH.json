@@ -91,7 +91,8 @@
       "generalSettings": "ตั้งค่าทั่วไป"
     },
     "tabEffectTimers": "ระบะเวลายาและพลังวิเศษ",
-    "noArrowsLeftAlert": "แจ้งเตือนลูกศรหมด"
+    "noArrowsLeftAlert": "แจ้งเตือนลูกศรหมด",
+    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer"
   },
   "messages": {
     "dropConfirmation": "กดทิ้งของอีกที่เพื่อยืนยันทิ้งของสิ่งนี้!",
