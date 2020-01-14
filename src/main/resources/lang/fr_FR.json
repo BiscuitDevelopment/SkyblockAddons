@@ -92,8 +92,8 @@
     },
     "tabEffectTimers": "Minuteur potions/capacités",
     "noArrowsLeftAlert": "Alerte aucune flèche",
-    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
-    "showCakeBagPreview": "Show Preview for Cake Bags"
+    "hideNightVisionEffectTimer": "Masquer le minuteur de la vision nocturne",
+    "showCakeBagPreview": "Aperçu des sacs à gâteau"
   },
   "messages": {
     "dropConfirmation": "Jetez cet objet une nouvelle fois pour confirmer!",
@@ -140,8 +140,8 @@
     "downloadingUpdateFile": "Téléchargement de la mise à jour...",
     "onlyFewArrowsLeft": "Il ne reste que %arrows% flèches !",
     "noArrowsLeft": "Pas de flèches restantes!",
-    "chooseAColor": "Choose a Color",
-    "selectedColor": "Selected Color",
-    "setHexColor": "Set Hex Color"
+    "chooseAColor": "Choisir une couleur",
+    "selectedColor": "Couleur sélectionnée",
+    "setHexColor": "Définir la couleur hexadécimale"
   }
 }
