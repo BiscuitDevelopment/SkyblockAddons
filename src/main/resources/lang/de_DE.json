@@ -92,7 +92,8 @@
     },
     "tabEffectTimers": "Trank und Powerup Timer",
     "noArrowsLeftAlert": "\"Keine Pfeile übrig\" Warnung",
-    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer"
+    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
+    "showCakeBagPreview": "Show Preview for Cake Bags"
   },
   "messages": {
     "dropConfirmation": "Werfe diesen Gegenstand nochmal, um zu bestätigen!",
@@ -138,6 +139,9 @@
     "searchFeatures": "Suche Funktionen",
     "downloadingUpdateFile": "Update-Datei wird heruntergeladen...",
     "onlyFewArrowsLeft": "Nur noch %arrows% Pfeile übrig!",
-    "noArrowsLeft": "Keine Pfeile mehr übrig!"
+    "noArrowsLeft": "Keine Pfeile mehr übrig!",
+    "chooseAColor": "Choose a Color",
+    "selectedColor": "Selected Color",
+    "setHexColor": "Set Hex Color"
   }
 }
