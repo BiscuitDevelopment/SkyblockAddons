@@ -91,7 +91,8 @@
       "generalSettings": "常规设置"
     },
     "tabEffectTimers": "药水及加成效果计时器",
-    "noArrowsLeftAlert": "箭矢不足提醒"
+    "noArrowsLeftAlert": "箭矢不足提醒",
+    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer"
   },
   "messages": {
     "dropConfirmation": "再次丢弃此物品以确认!",
