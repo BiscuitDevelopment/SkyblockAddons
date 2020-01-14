@@ -92,8 +92,8 @@
     },
     "tabEffectTimers": "藥水及充能計時器",
     "noArrowsLeftAlert": "箭矢不足警報",
-    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
-    "showCakeBagPreview": "Show Preview for Cake Bags"
+    "hideNightVisionEffectTimer": "隱藏夜視效果持續時間",
+    "showCakeBagPreview": "顯示蛋糕背包預覽"
   },
   "messages": {
     "dropConfirmation": "再次丟棄此物品以確認!",
@@ -140,8 +140,8 @@
     "downloadingUpdateFile": "更新檔下載中...",
     "onlyFewArrowsLeft": "剩餘%arrows%支箭矢!",
     "noArrowsLeft": "箭矢不足!",
-    "chooseAColor": "Choose a Color",
-    "selectedColor": "Selected Color",
+    "chooseAColor": "選擇顏色",
+    "selectedColor": "已選取顏色",
     "setHexColor": "Set Hex Color"
   }
 }
