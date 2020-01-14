@@ -91,7 +91,8 @@
       "generalSettings": "Impostazioni Generali"
     },
     "tabEffectTimers": "Timer pozioni e potenziamenti",
-    "noArrowsLeftAlert": "Avviso frecce finite"
+    "noArrowsLeftAlert": "Avviso frecce finite",
+    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer"
   },
   "messages": {
     "dropConfirmation": "Getta questo oggetto nuovamente per confermare!",
