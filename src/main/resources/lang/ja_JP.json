@@ -91,7 +91,8 @@
       "generalSettings": "一般設定"
     },
     "tabEffectTimers": "バフ効果のタイマー",
-    "noArrowsLeftAlert": "弓矢切れのアラート"
+    "noArrowsLeftAlert": "弓矢切れのアラート",
+    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer"
   },
   "messages": {
     "dropConfirmation": "落としてもいいのであれば、このアイテムをもう一度ドロップしてください。",
