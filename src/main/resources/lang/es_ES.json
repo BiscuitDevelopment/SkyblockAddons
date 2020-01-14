@@ -91,7 +91,8 @@
       "generalSettings": "Opciones Generales"
     },
     "tabEffectTimers": "Temporizador de Pociones y Powerup",
-    "noArrowsLeftAlert": "Alerta de Quedarse sin Flechas"
+    "noArrowsLeftAlert": "Alerta de Quedarse sin Flechas",
+    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer"
   },
   "messages": {
     "dropConfirmation": "¡Dropea el Objeto otra vez para soltar!",
