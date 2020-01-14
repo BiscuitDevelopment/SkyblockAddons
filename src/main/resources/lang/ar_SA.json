@@ -91,7 +91,8 @@
       "generalSettings": "الإعدادات العامة"
     },
     "tabEffectTimers": "مؤقتي الجرعات و مقويات الطاقة",
-    "noArrowsLeftAlert": "تنبيه النفاذ من السهوم"
+    "noArrowsLeftAlert": "تنبيه النفاذ من السهوم",
+    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer"
   },
   "messages": {
     "dropConfirmation": "!إرمي هذا العنصر مرة أخرى للتأكيد",
