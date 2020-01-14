@@ -90,10 +90,10 @@
     "tab": {
       "generalSettings": "Allmänna Inställningar"
     },
-    "tabEffectTimers": "Potion and Powerup Timers",
-    "noArrowsLeftAlert": "No Arrows Left Alert",
-    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
-    "showCakeBagPreview": "Show Preview for Cake Bags"
+    "tabEffectTimers": "Trolldryck och uppgraderings timer",
+    "noArrowsLeftAlert": "Inga pilar kvar",
+    "hideNightVisionEffectTimer": "Göm Night vision charm effekt timern",
+    "showCakeBagPreview": "Visa förhandsvisning för tårt ryggsäckar"
   },
   "messages": {
     "dropConfirmation": "Släpp Det Här Igen För Att Bekräfta!",
@@ -138,10 +138,10 @@
     "blockIncompletePatterns": "Blockera ofullständiga arbetsbänk recept (rekommenderat)",
     "searchFeatures": "Sök på funktioner",
     "downloadingUpdateFile": "Laddar ner uppdaterings fil...",
-    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
-    "noArrowsLeft": "No Arrows Left!",
-    "chooseAColor": "Choose a Color",
-    "selectedColor": "Selected Color",
-    "setHexColor": "Set Hex Color"
+    "onlyFewArrowsLeft": "Bara %arrows% pilar kvar!",
+    "noArrowsLeft": "Inga pilar kvar!",
+    "chooseAColor": "Välj en färg",
+    "selectedColor": "Välj färg",
+    "setHexColor": "Sett en hex färg"
   }
 }
