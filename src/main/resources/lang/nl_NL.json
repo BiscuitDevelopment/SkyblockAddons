@@ -92,7 +92,8 @@
     },
     "tabEffectTimers": "Drank- en Power-up Timers",
     "noArrowsLeftAlert": "Geen Pijlen Resterend Waarschuwing",
-    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer"
+    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
+    "showCakeBagPreview": "Show Preview for Cake Bags"
   },
   "messages": {
     "dropConfirmation": "Laat dit object opnieuw vallen om te Bevestigen!",
@@ -138,6 +139,9 @@
     "searchFeatures": "Doorzoek functies",
     "downloadingUpdateFile": "Update bestand downloaden...",
     "onlyFewArrowsLeft": "Nog maar %arrows% pijlen over!",
-    "noArrowsLeft": "Geen Pijlen Resterend!"
+    "noArrowsLeft": "Geen Pijlen Resterend!",
+    "chooseAColor": "Choose a Color",
+    "selectedColor": "Selected Color",
+    "setHexColor": "Set Hex Color"
   }
 }
