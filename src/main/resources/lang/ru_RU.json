@@ -92,7 +92,8 @@
     },
     "tabEffectTimers": "Таймеры зелий и улучшений",
     "noArrowsLeftAlert": "Предупреждение о законченных стрелах",
-    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer"
+    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
+    "showCakeBagPreview": "Show Preview for Cake Bags"
   },
   "messages": {
     "dropConfirmation": "Выбросите предмет ещё раз для подтверждения!",
@@ -138,6 +139,9 @@
     "searchFeatures": "Поиск функций",
     "downloadingUpdateFile": "Загрузка файла обновления...",
     "onlyFewArrowsLeft": "Осталось только %arrows% стрел(-ы/-а)!",
-    "noArrowsLeft": "Стрел не осталось!"
+    "noArrowsLeft": "Стрел не осталось!",
+    "chooseAColor": "Choose a Color",
+    "selectedColor": "Selected Color",
+    "setHexColor": "Set Hex Color"
   }
 }
