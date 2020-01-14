@@ -67,7 +67,7 @@ public class MinecraftHook {
                         if ((isItemBow(item) || isItemBow(itemInUse))) {
                             if (System.currentTimeMillis() - lastProfileMessage > 20000) {
                                 lastProfileMessage = System.currentTimeMillis();
-                                main.getUtils().sendMessage(main.getConfigValues().getColor(Feature.DONT_OPEN_PROFILES_WITH_BOW) +
+                                main.getUtils().sendMessage(main.getConfigValues().getRestrictedColor(Feature.DONT_OPEN_PROFILES_WITH_BOW) +
                                         Message.MESSAGE_STOPPED_OPENING_PROFILE.getMessage());
                             }
                             returnValue.cancel();
@@ -79,7 +79,7 @@ public class MinecraftHook {
                     int slot = mc.thePlayer.inventory.currentItem + 36;
                     if (main.getConfigValues().getLockedSlots().contains(slot) && slot >= 9) {
                         main.getUtils().playLoudSound("note.bass", 0.5);
-                        main.getUtils().sendMessage(main.getConfigValues().getColor(Feature.DROP_CONFIRMATION) + Message.MESSAGE_SLOT_LOCKED.getMessage());
+                        main.getUtils().sendMessage(main.getConfigValues().getRestrictedColor(Feature.DROP_CONFIRMATION) + Message.MESSAGE_SLOT_LOCKED.getMessage());
                         returnValue.cancel();
                     }
                 }

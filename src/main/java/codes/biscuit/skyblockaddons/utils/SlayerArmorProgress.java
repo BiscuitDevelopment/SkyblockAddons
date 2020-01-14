@@ -27,7 +27,7 @@ public class SlayerArmorProgress {
 
     public String getProgressText() {
         if (progressText == null) {
-            ChatFormatting color = SkyblockAddons.getInstance().getConfigValues().getColor(Feature.SLAYER_INDICATOR);
+            ChatFormatting color = SkyblockAddons.getInstance().getConfigValues().getRestrictedColor(Feature.SLAYER_INDICATOR);
             return color + "55% (§a40❈" + color + ")";
         }
         return progressText;

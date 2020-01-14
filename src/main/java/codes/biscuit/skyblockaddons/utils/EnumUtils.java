@@ -406,6 +406,10 @@ public class EnumUtils {
         MAIN, GENERAL_SETTINGS
     }
 
+    /**
+     * Settings that modify the behavior of features- without technically being
+     * a feature itself.
+     */
     public enum FeatureSetting {
         COLOR,
         GUI_SCALE,
@@ -419,6 +423,7 @@ public class EnumUtils {
         CHANGE_BAR_COLOR_WITH_POTIONS,
         ENABLE_MESSAGE_WHEN_ACTION_PREVENTED,
         HIDE_NIGHT_VISION_EFFECT
+        ENABLE_CAKE_BAG_PREVIEW
     }
 
     @SuppressWarnings("deprecation")

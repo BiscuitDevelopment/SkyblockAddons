@@ -557,12 +557,15 @@ public class PlayerListener {
                     }
                 }
             }
-            if (main.getConfigValues().isEnabled(Feature.REPLACE_ROMAN_NUMERALS_WITH_NUMBERS)) {
 
+            if (main.getConfigValues().isEnabled(Feature.REPLACE_ROMAN_NUMERALS_WITH_NUMBERS)
+                    // To avoid "I" as in "me" to be replaced in that specific tooltip
+                    && !InventoryUtils.FAIRY_SOUL_EXCHANGE_DISPLAYNAME.equals(hoveredItem.getDisplayName())) {
                 for (int i = 0; i < e.toolTip.size(); i++) {
                     e.toolTip.set(i, RomanNumeralParser.replaceNumeralsWithIntegers(e.toolTip.get(i)));
                 }
             }
+
             if (main.getConfigValues().isEnabled(Feature.ORGANIZE_ENCHANTMENTS)) {
 
                 List<String> enchantments = new ArrayList<>();

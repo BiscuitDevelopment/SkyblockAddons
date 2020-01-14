@@ -85,7 +85,7 @@ public final class MinecraftReflection extends Reflection {
 		private static final Reflection FONT_RENDERER = getCompatibleForgeReflection("FontRenderer", MINECRAFT_PACKAGE, "client.gui");
 		private static final MethodAccessor DRAW_STRING = FONT_RENDERER.getMethod(Integer.class, String.class, Float.class, Float.class, Integer.class, Boolean.class);
 
-		private static Object getFontRenderer() {
+		public static Object getFontRenderer() {
 			return MINECRAFT.getValue(FONT_RENDERER, getMinecraftInstance());
 		}
 

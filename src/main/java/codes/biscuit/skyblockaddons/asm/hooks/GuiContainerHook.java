@@ -3,7 +3,6 @@ package codes.biscuit.skyblockaddons.asm.hooks;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.asm.utils.ReturnValue;
 import codes.biscuit.skyblockaddons.gui.elements.CraftingPatternSelection;
-import codes.biscuit.skyblockaddons.listeners.RenderListener;
 import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsTransformer;
 import codes.biscuit.skyblockaddons.utils.*;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
@@ -32,10 +31,11 @@ import java.util.regex.Pattern;
 
 public class GuiContainerHook {
 
-    private static final int OVERLAY_RED = ChatFormatting.RED.getColor(127).getRGB();
-    private static final int OVERLAY_GREEN = ChatFormatting.GREEN.getColor(127).getRGB();
+    private final static ResourceLocation LOCK = new ResourceLocation("skyblockaddons", "lock.png");
+    private final static ResourceLocation CHEST_GUI_TEXTURE = new ResourceLocation("textures/gui/container/generic_54.png");
+    private final static int OVERLAY_RED = ChatFormatting.RED.getColor(127).getRGB();
+    private final static int OVERLAY_GREEN = ChatFormatting.GREEN.getColor(127).getRGB();
 
-    private static ResourceLocation CHEST_GUI_TEXTURE = new ResourceLocation("textures/gui/container/generic_54.png");
     private static EnchantPair reforgeToRender = null;
     private static Set<EnchantPair> enchantsToRender = new HashSet<>();
 
@@ -99,7 +99,6 @@ public class GuiContainerHook {
                 GlStateManager.disableDepth();
                 GlStateManager.disableBlend();
                 if (reforgeToRender != null) {
-                    //new Color(255, 255, 255, 255).getRGB()
                     MinecraftReflection.FontRenderer.drawString(reforgeToRender.getEnchant(), reforgeToRender.getX(), reforgeToRender.getY(), ChatFormatting.WHITE, true);
                     reforgeToRender = null;
                 }
@@ -163,8 +162,6 @@ public class GuiContainerHook {
                 GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
                 GlStateManager.enableRescaleNormal();
                 ItemStack toRenderOverlay = null;
-//                int itemXtoRender = -1;
-//                int itemYtoRender = -1;
                 for (int i = 0; i < length; i++) {
                     ItemStack item = items[i];
                     if (item != null) {
@@ -177,19 +174,12 @@ public class GuiContainerHook {
                         renderItem.renderItemOverlayIntoGUI(mc.fontRendererObj, item, itemX, itemY, null);
                         if (freezeBackpack && mouseX > itemX && mouseX < itemX+16 && mouseY > itemY && mouseY < itemY+16) {
                             toRenderOverlay = item;
-//                            itemXtoRender = itemX;
-//                            itemYtoRender = itemY;
                         }
                         setZLevel(guiContainer, 0);
                         renderItem.zLevel = 0;
                     }
                 }
                 if (toRenderOverlay != null) {
-//                    GlStateManager.disableLighting();
-//                    GlStateManager.disableDepth();
-//                    GlStateManager.colorMask(true, true, true, false);
-//                    guiContainer.drawGradientRect(itemXtoRender, itemYtoRender, itemXtoRender + 16, itemYtoRender + 16,
-//                            -2130706433, -2130706433);
                     drawHoveringText(guiContainer, toRenderOverlay.getTooltip(null, mc.gameSettings.advancedItemTooltips),
                             mouseX, mouseY);
                 }
@@ -254,24 +244,24 @@ public class GuiContainerHook {
         Minecraft mc = Minecraft.getMinecraft();
         Container container = mc.thePlayer.openContainer;
 
-        if(slot != null) {
-            // Draw crafting pattern overlays inside the crafting grid
-            if(main.getConfigValues().isEnabled(Feature.CRAFTING_PATTERNS) && main.getUtils().isOnSkyblock()
+        if (slot != null) {
+            // Draw crafting pattern overlays inside the crafting grid.
+            if (main.getConfigValues().isEnabled(Feature.CRAFTING_PATTERNS) && main.getUtils().isOnSkyblock()
                     && slot.inventory.getDisplayName().getUnformattedText().equals(CraftingPattern.CRAFTING_TABLE_DISPLAYNAME)
                     && CraftingPatternSelection.selectedPattern != CraftingPattern.FREE) {
 
                 int craftingGridIndex = CraftingPattern.slotToCraftingGridIndex(slot.getSlotIndex());
-                if(craftingGridIndex >= 0) {
+                if (craftingGridIndex >= 0) {
                     int slotLeft = slot.xDisplayPosition;
                     int slotTop = slot.yDisplayPosition;
                     int slotRight = slotLeft + 16;
                     int slotBottom = slotTop + 16;
-                    if(CraftingPatternSelection.selectedPattern.isSlotInPattern(craftingGridIndex)) {
-                        if(!slot.getHasStack()) {
+                    if (CraftingPatternSelection.selectedPattern.isSlotInPattern(craftingGridIndex)) {
+                        if (!slot.getHasStack()) {
                             drawRightGradientRect(guiContainer, slotLeft, slotTop, slotRight, slotBottom, OVERLAY_GREEN, OVERLAY_GREEN);
                         }
                     } else {
-                        if(slot.getHasStack()) {
+                        if (slot.getHasStack()) {
                             drawRightGradientRect(guiContainer, slotLeft, slotTop, slotRight, slotBottom, OVERLAY_RED, OVERLAY_RED);
                         }
                     }
@@ -287,7 +277,7 @@ public class GuiContainerHook {
                     GlStateManager.disableDepth();
                     GlStateManager.color(1,1,1,0.4F);
                     GlStateManager.enableBlend();
-                    Minecraft.getMinecraft().getTextureManager().bindTexture(RenderListener.LOCK);
+                    mc.getTextureManager().bindTexture(LOCK);
                     mc.ingameGUI.drawTexturedModalRect(slot.xDisplayPosition, slot.yDisplayPosition, 0, 0, 16, 16);
                     GlStateManager.enableLighting();
                     GlStateManager.enableDepth();

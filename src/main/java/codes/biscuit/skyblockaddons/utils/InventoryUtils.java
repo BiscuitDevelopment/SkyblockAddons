@@ -46,6 +46,7 @@ public class InventoryUtils {
 
     public static final String MADDOX_BATPHONE_DISPLAYNAME = "\u00A7aMaddox Batphone";
     public static final String JUNGLE_AXE_DISPLAYNAME = "\u00A7aJungle Axe";
+    public static final String FAIRY_SOUL_EXCHANGE_DISPLAYNAME = "\u00a7aExchange Fairy Souls";
 
     private static final Pattern REVENANT_UPGRADE_PATTERN = Pattern.compile("§5§o§7Next Upgrade: §a\\+([0-9]+❈) §8\\(§a([0-9,]+)§7/§c([0-9,]+)§8\\)");
 
@@ -247,8 +248,7 @@ public class InventoryUtils {
                 } else {
                     dropCount = 1;
                 }
-                SkyblockAddons.getInstance().getUtils().sendMessage(main.getConfigValues().getColor(
-                        Feature.STOP_DROPPING_SELLING_RARE_ITEMS) +
+                SkyblockAddons.getInstance().getUtils().sendMessage(main.getConfigValues().getRestrictedColor(Feature.STOP_DROPPING_SELLING_RARE_ITEMS) +
                         Message.MESSAGE_CLICK_MORE_TIMES.getMessage(String.valueOf(3-dropCount)));
                 lastItem = item;
                 lastDrop = System.currentTimeMillis();
@@ -281,7 +281,7 @@ public class InventoryUtils {
 
     public void checkIfWearingRevenantArmor(EntityPlayerSP p) {
         if (main.getConfigValues().isEnabled(Feature.SLAYER_INDICATOR)) {
-            ChatFormatting color = main.getConfigValues().getColor(Feature.SLAYER_INDICATOR);
+            ChatFormatting color = main.getConfigValues().getRestrictedColor(Feature.SLAYER_INDICATOR);
             for (int i = 3; i > -1; i--) {
                 ItemStack item = p.inventory.armorInventory[i];
                 String itemID = getSkyBlockItemID(item);

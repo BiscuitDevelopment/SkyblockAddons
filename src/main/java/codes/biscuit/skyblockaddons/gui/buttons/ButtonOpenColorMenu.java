@@ -10,14 +10,14 @@ import java.awt.Color;
 
 import static codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui.BUTTON_MAX_WIDTH;
 
-public class ButtonColor extends ButtonText {
+public class ButtonOpenColorMenu extends ButtonText {
 
     private SkyblockAddons main;
 
     /**
      * Create a button that displays the color of whatever feature it is assigned to.
      */
-    public ButtonColor(double x, double y, int width, int height, String buttonText, SkyblockAddons main, Feature feature) {
+    public ButtonOpenColorMenu(double x, double y, int width, int height, String buttonText, SkyblockAddons main, Feature feature) {
         super(0, (int)x, (int)y, buttonText, feature);
         this.main = main;
         this.width = width;
@@ -34,7 +34,7 @@ public class ButtonColor extends ButtonText {
             boxAlpha = 170;
             fontColor = new Color(255, 255, 160, 255).getRGB();
         }
-        boxColor = main.getConfigValues().getColor(feature).getColor(boxAlpha).getRGB();
+        boxColor = main.getConfigValues().getColor(feature, boxAlpha).getRGB();
         // Regular features are red if disabled, green if enabled or part of the gui feature is enabled.
         GlStateManager.enableBlend();
         float scale = 1;
