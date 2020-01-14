@@ -140,8 +140,8 @@
     "downloadingUpdateFile": "Stahuji aktualizační soubor...",
     "onlyFewArrowsLeft": "Zbývá %arrows% šíp/ů!",
     "noArrowsLeft": "Došly šípy!",
-    "chooseAColor": "Choose a Color",
+    "chooseAColor": "Zvolit barvu",
     "selectedColor": "Vybraná barva",
-    "setHexColor": "Set Hex Color"
+    "setHexColor": "Nastavit hexadecimální barvu"
   }
 }
