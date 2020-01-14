@@ -92,7 +92,8 @@
     },
     "tabEffectTimers": "مؤقتي الجرعات و مقويات الطاقة",
     "noArrowsLeftAlert": "تنبيه النفاذ من السهوم",
-    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer"
+    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
+    "showCakeBagPreview": "Show Preview for Cake Bags"
   },
   "messages": {
     "dropConfirmation": "!إرمي هذا العنصر مرة أخرى للتأكيد",
@@ -138,6 +139,9 @@
     "searchFeatures": "البحث عن خاصيه",
     "downloadingUpdateFile": "يتم تنزيل ملف التحديث...",
     "onlyFewArrowsLeft": "مبقي %arrows% من السهوم فقط!",
-    "noArrowsLeft": "نفذت من السهوم!"
+    "noArrowsLeft": "نفذت من السهوم!",
+    "chooseAColor": "Choose a Color",
+    "selectedColor": "Selected Color",
+    "setHexColor": "Set Hex Color"
   }
 }
