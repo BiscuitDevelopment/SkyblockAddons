@@ -92,7 +92,8 @@
     },
     "tabEffectTimers": "药水及加成效果计时器",
     "noArrowsLeftAlert": "箭矢不足提醒",
-    "hideNightVisionEffectTimer": "隐藏夜视效果计时器"
+    "hideNightVisionEffectTimer": "隐藏夜视效果计时器",
+    "showCakeBagPreview": "Show Preview for Cake Bags"
   },
   "messages": {
     "dropConfirmation": "再次丢弃此物品以确认!",
@@ -138,6 +139,9 @@
     "searchFeatures": "搜索功能",
     "downloadingUpdateFile": "正在下载更新文件……",
     "onlyFewArrowsLeft": "剩余 %arrows% 支箭！",
-    "noArrowsLeft": "箭矢不足！"
+    "noArrowsLeft": "箭矢不足！",
+    "chooseAColor": "Choose a Color",
+    "selectedColor": "Selected Color",
+    "setHexColor": "Set Hex Color"
   }
 }
