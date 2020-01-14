@@ -91,7 +91,8 @@
       "generalSettings": "Genewal Settings"
     },
     "tabEffectTimers": "Powotions and Poworup Timers",
-    "noArrowsLeftAlert": "No Awwows Weft Awewt"
+    "noArrowsLeftAlert": "No Awwows Weft Awewt",
+    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer"
   },
   "messages": {
     "dropConfirmation": "Dwop thwis itwem agwain to confiwm!",
