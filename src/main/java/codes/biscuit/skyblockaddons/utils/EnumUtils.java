@@ -223,8 +223,12 @@ public class EnumUtils {
         }
     }
 
+    /**
+     * A list of all the Skyblock locations
+     */
     public enum Location {
         ISLAND("Your Island"),
+        
         // Hub
         VILLAGE("Village"),
         AUCTION_HOUSE("Auction House"),
@@ -244,15 +248,17 @@ public class EnumUtils {
         FLOWER_HOUSE("Flower House"),
         CANVAS_ROOM("Canvas Room"),
         TAVERN("Tavern"),
-        // Floating Islands
+        
+        // The Park
         BIRCH_PARK("Birch Park"),
         SPRUCE_WOODS("Spruce Woods"),
-        JUNGLE_ISLAND("Jungle Island"),
         SAVANNA_WOODLAND("Savanna Woodland"),
         DARK_THICKET("Dark Thicket"),
+        JUNGLE_ISLAND("Jungle Island"),
 
         GOLD_MINE("Gold Mine"),
 
+        // Deep Caverns
         DEEP_CAVERNS("Deep Caverns"),
         GUNPOWDER_MINES("Gunpowder Mines"),
         LAPIS_QUARRY("Lapis Quarry"),
@@ -260,6 +266,7 @@ public class EnumUtils {
         SLIMEHILL("Slimehill"),
         DIAMOND_RESERVE("Diamond Reserve"),
         OBSIDIAN_SANCTUARY("Obsidian Sanctuary"),
+        
         THE_BARN("The Barn"),
 
         MUSHROOM_DESERT("Mushroom Desert"),
@@ -268,8 +275,13 @@ public class EnumUtils {
 
         BLAZING_FORTRESS("Blazing Fortress"),
 
+        // The End
         THE_END("The End"),
-        DRAGONS_NEST("Dragon's Nest");
+        DRAGONS_NEST("Dragon's Nest"),
+        
+        //TODO: Jerry's workshop
+        
+        NONE("None");
 
         private String scoreboardName;
 
@@ -277,6 +289,11 @@ public class EnumUtils {
             this.scoreboardName = scoreboardName;
         }
 
+        /**
+         * Returns the name of this location as shown on the ingame scoreboard.
+         
+         @returns the display name of this location on the scoreboard
+         */
         public String getScoreboardName() {
             return scoreboardName;
         }
@@ -322,6 +339,9 @@ public class EnumUtils {
         }
     }
 
+    /**
+     * A list of all the skyblock NPCs
+     */
     public enum SkyblockNPC {
         AUCTION_MASTER(17.5,71,-78.5, false, Location.VILLAGE, Location.AUCTION_HOUSE),
         BANKER(20.5,71,-40.5, false, Location.VILLAGE, Location.BANK),
