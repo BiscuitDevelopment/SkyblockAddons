@@ -90,10 +90,10 @@
     "tab": {
       "generalSettings": "Ustawienia ogólne"
     },
-    "tabEffectTimers": "Potion and Powerup Timers",
-    "noArrowsLeftAlert": "No Arrows Left Alert",
-    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
-    "showCakeBagPreview": "Show Preview for Cake Bags"
+    "tabEffectTimers": "Zegary mikstur i umiejętności",
+    "noArrowsLeftAlert": "Alarm o braku strzał",
+    "hideNightVisionEffectTimer": "Ukryj zegar widzenia w ciemności",
+    "showCakeBagPreview": "Pokaż podgląd dla torb na ciasta"
   },
   "messages": {
     "dropConfirmation": "Wyrzuć ten przedmiot ponownie, aby potwierdzić!",
@@ -138,10 +138,10 @@
     "blockIncompletePatterns": "Blokuj crafting niepełnych patternów (rekomendowane)",
     "searchFeatures": "Szukaj fukncji",
     "downloadingUpdateFile": "Pobieranie aktualizacji...",
-    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
-    "noArrowsLeft": "No Arrows Left!",
-    "chooseAColor": "Choose a Color",
-    "selectedColor": "Selected Color",
-    "setHexColor": "Set Hex Color"
+    "onlyFewArrowsLeft": "Zostało tylko %arrows% strzał!",
+    "noArrowsLeft": "Alarm o braku strzał!",
+    "chooseAColor": "Wybierz kolor",
+    "selectedColor": "Wybrany kolor",
+    "setHexColor": "Ustaw kolor heksalny"
   }
 }
