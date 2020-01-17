@@ -90,10 +90,10 @@
     "tab": {
       "generalSettings": "Configuración General"
     },
-    "tabEffectTimers": "Potion and Powerup Timers",
-    "noArrowsLeftAlert": "No Arrows Left Alert",
-    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
-    "showCakeBagPreview": "Show Preview for Cake Bags"
+    "tabEffectTimers": "Temporizador de Poción y Poderes",
+    "noArrowsLeftAlert": "Alerta de Falta de Flechas",
+    "hideNightVisionEffectTimer": "Esconder el Temporizador del Efecto de Visión Nocturna",
+    "showCakeBagPreview": "Previsualizar Cake Bags"
   },
   "messages": {
     "dropConfirmation": "Arroja este objeto otra vez para confirmar!",
@@ -138,10 +138,10 @@
     "blockIncompletePatterns": "Bloquear el crafteo de patrones incompletos (recomendado)",
     "searchFeatures": "Buscar características",
     "downloadingUpdateFile": "Descargando archivo de actualización...",
-    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
-    "noArrowsLeft": "No Arrows Left!",
-    "chooseAColor": "Choose a Color",
-    "selectedColor": "Selected Color",
+    "onlyFewArrowsLeft": "Quedan %arrows% flechas!",
+    "noArrowsLeft": "No Hay Flechas!",
+    "chooseAColor": "Selecciona un Color",
+    "selectedColor": "Color Seleccionado",
     "setHexColor": "Establecer Hex de Color"
   }
 }
