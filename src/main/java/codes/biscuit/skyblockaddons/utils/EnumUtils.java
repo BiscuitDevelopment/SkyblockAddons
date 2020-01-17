@@ -290,9 +290,9 @@ public class EnumUtils {
         }
 
         /**
-         * Returns the name of this location as shown on the ingame scoreboard.
-         
-         @returns the display name of this location on the scoreboard
+         * Returns the name of this location as shown on the in-game scoreboard.
+         *
+         * @return the display name of this location on the scoreboard
          */
         public String getScoreboardName() {
             return scoreboardName;
@@ -340,7 +340,7 @@ public class EnumUtils {
     }
 
     /**
-     * A list of all the skyblock NPCs
+     * A list of all the Skyblock NPCs
      */
     public enum SkyblockNPC {
         AUCTION_MASTER(17.5,71,-78.5, false, Location.VILLAGE, Location.AUCTION_HOUSE),
@@ -366,7 +366,10 @@ public class EnumUtils {
         IRON_FORGER(-1.5,75,-307.5, false, Location.GOLD_MINE),
         RUSTY(-20,78,-326, false, Location.GOLD_MINE),
         MADDOX_THE_SLAYER(-87,66,-70, false, Location.VILLAGE, Location.TAVERN),
-        SIRIUS(91.5,75,176.5, false, Location.WILDERNESS);
+        SIRIUS(91.5,75,176.5, false, Location.WILDERNESS),
+        
+        // Furniture
+        HARP(0, 0, 0, false, Location.SAVANNA_WOODLAND);
 
         private final AxisAlignedBB hideArea;
         private double x;
@@ -380,8 +383,8 @@ public class EnumUtils {
             this.y = y;
             this.z = z;
             this.isMerchant = isMerchant;
-            int hideRadius = 4;
-            this.hideArea = new AxisAlignedBB(x - hideRadius, y - hideRadius, z - hideRadius, x + hideRadius, y + hideRadius, z + hideRadius);
+            final int HIDE_RADIUS = 4;
+            this.hideArea = new AxisAlignedBB(x - HIDE_RADIUS, y - HIDE_RADIUS, z - HIDE_RADIUS, x + HIDE_RADIUS, y + HIDE_RADIUS, z + HIDE_RADIUS);
             this.locations = EnumSet.copyOf(Arrays.asList(locations));
         }
 
@@ -401,12 +404,29 @@ public class EnumUtils {
             return false;
         }
 
-        public static boolean isNearNPC(Entity entity) {
+        /**
+         * Checks if the given entity is near any NPC.
+         *
+         * @param entity the entity to check
+         * @return whether the entity is near any NPC
+         */
+        public static boolean isNearAnyNPC(Entity entity) {
             for (SkyblockNPC npc : values()) {
                 if (npc.isNearEntity(entity))
                     return true;
             }
             return false;
+        }
+
+        /**
+         * Checks if the given entity is near a given NPC
+         *
+         * @param entity the entity to check
+         * @param npc the NPC to check
+         * @return whether the given entity is near the given NPC
+         */
+        public static boolean isNearNPC(Entity entity, SkyblockNPC npc) {
+            return npc.isNearEntity(entity);
         }
 
         public static boolean isMerchant(String name) {// inventory

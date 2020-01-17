@@ -20,7 +20,7 @@ public class EntityRendererHook {
                 list.removeIf(listEntity -> listEntity instanceof EntityItemFrame);
             }
             if (main.getConfigValues().isEnabled(Feature.HIDE_AUCTION_HOUSE_PLAYERS)) {
-                list.removeIf((entity -> entity instanceof EntityOtherPlayerMP && EnumUtils.SkyblockNPC.isNearNPC(entity)));
+                list.removeIf((entity -> entity instanceof EntityOtherPlayerMP && EnumUtils.SkyblockNPC.isNearAnyNPC(entity)));
             }
         }
     }

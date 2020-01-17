@@ -24,7 +24,7 @@ public class RenderManagerHook {
                 }
             }
             if (main.getConfigValues().isEnabled(Feature.HIDE_AUCTION_HOUSE_PLAYERS) && entityIn instanceof EntityOtherPlayerMP) {
-                if (EnumUtils.SkyblockNPC.isNearNPC(entityIn)) {
+                if (EnumUtils.SkyblockNPC.isNearAnyNPC(entityIn)) {
                     returnValue.cancel();
                 }
             }
@@ -33,6 +33,14 @@ public class RenderManagerHook {
                         main.getUtils().getLocation() == EnumUtils.Location.BANK) {
                     if ((entityIn instanceof EntityOtherPlayerMP || entityIn instanceof EntityFX || entityIn instanceof EntityItemFrame) &&
                             entityIn.getDistanceToEntity(Minecraft.getMinecraft().thePlayer) > 7) {
+                        returnValue.cancel();
+                    }
+                }
+            }
+
+            if (main.getConfigValues().isEnabled(Feature.HIDE_PLAYERS_AROUND_HARP) && entityIn instanceof EntityOtherPlayerMP) {
+                if (main.getUtils().getLocation() == EnumUtils.Location.SAVANNA_WOODLAND) {
+                    if (EnumUtils.SkyblockNPC.isNearNPC(entityIn, EnumUtils.SkyblockNPC.HARP)) {
                         returnValue.cancel();
                     }
                 }
