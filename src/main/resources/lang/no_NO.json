@@ -85,14 +85,14 @@
       "compact": "Kompakt"
     },
     "disableMagicalSoupMessage": "Skru Av Magisk Sopp Suppe Meldinger",
-    "zealotCounter": "Vis Zealot teller",
+    "zealotCounter": "Vis Zealot Teller",
     "tickerChargesDisplay": "Ticker/Charges Display",
     "tab": {
       "generalSettings": "Generelle Innstillinger"
     },
     "tabEffectTimers": "Potion and Powerup Timers",
-    "noArrowsLeftAlert": "No Arrows Left Alert",
-    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
+    "noArrowsLeftAlert": "Ingen Piler Igjen Varsel",
+    "hideNightVisionEffectTimer": "Skjul Natt Syn Effekt Timer",
     "showCakeBagPreview": "Show Preview for Cake Bags"
   },
   "messages": {
@@ -136,7 +136,7 @@
     "anvilUses": "Ambolt Bruk: %uses%",
     "specialZealotFound": "Spesiell Zealot!",
     "blockIncompletePatterns": "Blokk bygging med uferdig mønster (anbefalt)",
-    "searchFeatures": "Search features",
+    "searchFeatures": "Søk Funksjoner",
     "downloadingUpdateFile": "Downloading update file...",
     "onlyFewArrowsLeft": "Only %arrows% arrows left!",
     "noArrowsLeft": "No Arrows Left!",
