@@ -142,6 +142,6 @@
     "noArrowsLeft": "矢がありません！",
     "chooseAColor": "色を選択",
     "selectedColor": "選択中の色",
-    "setHexColor": "Set Hex Color"
+    "setHexColor": "16進数で色を設定"
   }
 }
