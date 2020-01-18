@@ -16,7 +16,7 @@
     "showEnchantmentsReforges": "Fortryllinger og reforges",
     "minionStopWarning": "\"Lakei kan ikke nå\" advarsel",
     "hideAuctionHousePlayers": "Gjem spillere nærme viktige NPCer",
-    "backpackStyle": "Ryggsekk stil %style%",
+    "backpackStyle": "Ryggsekk Stil: %style%",
     "backpackStyles": {
       "regular": "Vanlig",
       "compact": "Kompakt"
@@ -24,7 +24,7 @@
     "showBackpackPreview": "Vis forhåndsvisning for ryggsekk",
     "hideHealthBar": "Skjul Vanilla helse bar",
     "fullMinionWarning": "Full lakei advarsel",
-    "ignoreItemFrameClicks": "Ignorer trykk på rammer",
+    "ignoreItemFrameClicks": "Ignorer Trykk På Gjenstands Rammer",
     "showOnlyWhenHoldingShift": "Vis kun mens du holder shift",
     "manaBar": "Mana Bar",
     "manaText": "Mana nummer",
@@ -93,7 +93,7 @@
     "tabEffectTimers": "Potion and Powerup Timers",
     "noArrowsLeftAlert": "Ingen Piler Igjen Varsel",
     "hideNightVisionEffectTimer": "Skjul Natt Syn Effekt Timer",
-    "showCakeBagPreview": "Show Preview for Cake Bags"
+    "showCakeBagPreview": "Vis Forhåndsvisning for Kake Sekker"
   },
   "messages": {
     "dropConfirmation": "Slipp denne gjenstanden igjen for å bekrefte!",
@@ -136,12 +136,12 @@
     "anvilUses": "Ambolt Bruk: %uses%",
     "specialZealotFound": "Spesiell Zealot!",
     "blockIncompletePatterns": "Blokk bygging med uferdig mønster (anbefalt)",
-    "searchFeatures": "Søk Funksjoner",
-    "downloadingUpdateFile": "Downloading update file...",
-    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
-    "noArrowsLeft": "No Arrows Left!",
-    "chooseAColor": "Choose a Color",
-    "selectedColor": "Selected Color",
-    "setHexColor": "Set Hex Color"
+    "searchFeatures": "Søk funksjoner",
+    "downloadingUpdateFile": "Laster ned oppdaterings fil...",
+    "onlyFewArrowsLeft": "Bare %arrows% piler igjen!",
+    "noArrowsLeft": "Ingen Piler Igjen!",
+    "chooseAColor": "Velg en Farge",
+    "selectedColor": "Valgt Farge",
+    "setHexColor": "Endre Hex Farge"
   }
 }
