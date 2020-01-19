@@ -384,7 +384,7 @@ public class EnumUtils {
         SIRIUS(91.5,75,176.5, singletonList(NPCType.OTHER), singletonList(Location.WILDERNESS)),
         
         // Furniture
-        HARP(0, 0, 0, singletonList(NPCType.FURNITURE), singletonList(Location.SAVANNA_WOODLAND));
+        HARP(-394.5, 110.5, 33.5, singletonList(NPCType.FURNITURE), singletonList(Location.SAVANNA_WOODLAND));
 
         private final AxisAlignedBB hideArea;
         private double x;

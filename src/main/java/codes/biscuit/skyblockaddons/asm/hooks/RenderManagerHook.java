@@ -16,7 +16,10 @@ public class RenderManagerHook {
 
     public static void shouldRender(Entity entityIn, ReturnValue<Boolean> returnValue) {
         SkyblockAddons main = SkyblockAddons.getInstance();
+
         if (main.getUtils().isOnSkyblock()) {
+            EnumUtils.Location currentLocation = main.getUtils().getLocation();
+
             if (entityIn instanceof EntityItem &&
                     entityIn.ridingEntity instanceof EntityArmorStand && entityIn.ridingEntity.isInvisible()) { // Conditions for skeleton helmet flying bones
                 if (main.getConfigValues().isEnabled(Feature.HIDE_BONES)) {
@@ -29,16 +32,16 @@ public class RenderManagerHook {
                 }
             }
             if (main.getConfigValues().isEnabled(Feature.HIDE_PLAYERS_IN_LOBBY)) {
-                if (main.getUtils().getLocation() == EnumUtils.Location.VILLAGE || main.getUtils().getLocation() == EnumUtils.Location.AUCTION_HOUSE ||
-                        main.getUtils().getLocation() == EnumUtils.Location.BANK) {
+                if (currentLocation == EnumUtils.Location.VILLAGE || currentLocation == EnumUtils.Location.AUCTION_HOUSE ||
+                        currentLocation == EnumUtils.Location.BANK) {
                     if ((entityIn instanceof EntityOtherPlayerMP || entityIn instanceof EntityFX || entityIn instanceof EntityItemFrame) &&
                             entityIn.getDistanceToEntity(Minecraft.getMinecraft().thePlayer) > 7) {
                         returnValue.cancel();
                     }
                 }
             }
-            if (main.getConfigValues().isEnabled(Feature.HIDE_PLAYERS_AROUND_HARP)) {
-                if (main.getUtils().getLocation() == EnumUtils.Location.SAVANNA_WOODLAND) {
+            if (main.getConfigValues().isEnabled(Feature.HIDE_PLAYERS_NEAR_HARP)) {
+                if (currentLocation == EnumUtils.Location.SAVANNA_WOODLAND) {
                     if (EnumUtils.SkyblockNPC.isNearNPC(entityIn, EnumUtils.SkyblockNPC.HARP) && entityIn instanceof EntityOtherPlayerMP) {
                         returnValue.cancel();
                     }
