@@ -15,7 +15,7 @@
     "hideDurability": "Hide Tool Durability",
     "showEnchantmentsReforges": "Enchants & Reforges",
     "minionStopWarning": "\"Minion Cannot Reach\" Warning",
-    "hideAuctionHousePlayers": "Hide Players Near Important NPCs",
+    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
     "backpackStyle": "Backpack Style: %style%",
     "backpackStyles": {
       "regular": "Regular",

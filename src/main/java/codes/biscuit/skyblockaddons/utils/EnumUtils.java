@@ -14,13 +14,15 @@ import org.apache.commons.lang3.text.WordUtils;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.EnumSet;
 import java.util.List;
 import java.util.Set;
 import java.util.regex.Pattern;
 
 import static codes.biscuit.skyblockaddons.utils.Message.*;
+import static java.util.Arrays.asList;
+import static java.util.Collections.singletonList;
 
 public class EnumUtils {
 
@@ -340,52 +342,84 @@ public class EnumUtils {
     }
 
     /**
+     * Available types for Skyblock NPCs
+     */
+    public enum NPCType {
+        EVENT,
+        FURNITURE, // For public island furniture
+        MERCHANT,
+        MERCHANT_BUY_ONLY,
+        QUEST_NPC,
+        OTHER,
+        UTILITY
+    }
+
+    /**
      * A list of all the Skyblock NPCs
      */
     public enum SkyblockNPC {
-        AUCTION_MASTER(17.5,71,-78.5, false, Location.VILLAGE, Location.AUCTION_HOUSE),
-        BANKER(20.5,71,-40.5, false, Location.VILLAGE, Location.BANK),
-        BAKER(34.5, 71, -44.5, false, Location.VILLAGE),
-        LOBBY_SELECTOR(-9,70,-79, false, Location.VILLAGE),
-        LUMBER_MERCHANT(-18.5,70,-90, true, Location.VILLAGE),
-        ADVENTURER(-18.5,70,-77, true, Location.VILLAGE),
-        FISH_MERCHANT(-25.5,70,-77, true, Location.VILLAGE),
-        ARMORSMITH(-25.5,70,-90, true, Location.VILLAGE),
-        BLACKSMITH(-19.5,71,-124.5, false, Location.VILLAGE),
-        BLACKSMITH_2(-39.5,77,-299.5, false, Location.GOLD_MINE),
-        FARM_MERCHANT(-7,70,-48.5, true, Location.VILLAGE),
-        MINE_MERCHANT(-19,70,-48.5, true, Location.VILLAGE),
-        WEAPONSMITH(-19,70,-41.5, false, Location.VILLAGE),
-        BUILDER(-7,70,-41.5, true, Location.VILLAGE),
-        LIBRARIAN(17.5,71,-16.5, true, Location.VILLAGE, Location.LIBRARY),
-        MARCO(9.5,71,-14, false, Location.VILLAGE, Location.FLOWER_HOUSE),
-        ALCHEMIST(-33.5,73,-14.5, true, Location.VILLAGE),
-        PAT(-129.5,73,-98.5, true, Location.GRAVEYARD),
-        EVENT_MASTER(-61.5,71,-54.5, false, Location.COLOSSEUM, Location.VILLAGE),
-        GOLD_FORGER(-27.5,74,-294.5, true, Location.GOLD_MINE),
-        IRON_FORGER(-1.5,75,-307.5, false, Location.GOLD_MINE),
-        RUSTY(-20,78,-326, false, Location.GOLD_MINE),
-        MADDOX_THE_SLAYER(-87,66,-70, false, Location.VILLAGE, Location.TAVERN),
-        SIRIUS(91.5,75,176.5, false, Location.WILDERNESS),
+        AUCTION_MASTER(17.5,71,-78.5, singletonList(NPCType.OTHER), asList(Location.VILLAGE, Location.AUCTION_HOUSE)),
+        BANKER(20.5,71,-40.5, singletonList(NPCType.OTHER), asList(Location.VILLAGE, Location.BANK)),
+        BAKER(34.5, 71, -44.5, singletonList(NPCType.EVENT), singletonList(Location.VILLAGE)),
+        LOBBY_SELECTOR(-9,70,-79, singletonList(NPCType.OTHER), singletonList(Location.VILLAGE)),
+        LUMBER_MERCHANT(-18.5,70,-90, singletonList(NPCType.MERCHANT), singletonList(Location.VILLAGE)),
+        ADVENTURER(-18.5,70,-77, singletonList(NPCType.MERCHANT), singletonList(Location.VILLAGE)),
+        FISH_MERCHANT(-25.5,70,-77, singletonList(NPCType.MERCHANT), singletonList(Location.VILLAGE)),
+        ARMORSMITH(-25.5,70,-90, singletonList(NPCType.MERCHANT), singletonList(Location.VILLAGE)),
+        BLACKSMITH(-19.5,71,-124.5, singletonList(NPCType.UTILITY), singletonList(Location.VILLAGE)),
+        BLACKSMITH_2(-39.5,77,-299.5, singletonList(NPCType.UTILITY), singletonList(Location.GOLD_MINE)),
+        FARM_MERCHANT(-7,70,-48.5, singletonList(NPCType.MERCHANT), singletonList(Location.VILLAGE)),
+        MINE_MERCHANT(-19,70,-48.5, singletonList(NPCType.MERCHANT), singletonList(Location.VILLAGE)),
+        WEAPONSMITH(-19,70,-41.5, singletonList(NPCType.MERCHANT), singletonList(Location.VILLAGE)),
+        BUILDER(-7,70,-41.5, singletonList(NPCType.MERCHANT), singletonList(Location.VILLAGE)),
+        LIBRARIAN(17.5,71,-16.5, singletonList(NPCType.MERCHANT), asList(Location.VILLAGE, Location.LIBRARY)),
+        MARCO(9.5,71,-14, singletonList(NPCType.QUEST_NPC), asList(Location.VILLAGE, Location.FLOWER_HOUSE)),
+        ALCHEMIST(-33.5,73,-14.5, singletonList(NPCType.MERCHANT), singletonList(Location.VILLAGE)),
+        PAT(-129.5,73,-98.5, singletonList(NPCType.MERCHANT), singletonList(Location.GRAVEYARD)),
+        EVENT_MASTER(-61.5,71,-54.5, singletonList(NPCType.OTHER), asList(Location.COLOSSEUM, Location.VILLAGE)),
+        GOLD_FORGER(-27.5,74,-294.5, singletonList(NPCType.MERCHANT), singletonList(Location.GOLD_MINE)),
+        IRON_FORGER(-1.5,75,-307.5, singletonList(NPCType.MERCHANT), singletonList(Location.GOLD_MINE)),
+        RUSTY(-20,78,-326, singletonList(NPCType.UTILITY), singletonList(Location.GOLD_MINE)),
+        MADDOX_THE_SLAYER(-87,66,-70, singletonList(NPCType.QUEST_NPC), asList(Location.VILLAGE, Location.TAVERN)),
+        SIRIUS(91.5,75,176.5, singletonList(NPCType.OTHER), singletonList(Location.WILDERNESS)),
         
         // Furniture
-        HARP(0, 0, 0, false, Location.SAVANNA_WOODLAND);
+        HARP(0, 0, 0, singletonList(NPCType.FURNITURE), singletonList(Location.SAVANNA_WOODLAND));
 
         private final AxisAlignedBB hideArea;
         private double x;
         private double y;
         private double z;
-        private boolean isMerchant;
-        Set<Location> locations;
+        List<NPCType> npcTypes;
+        List<Location> locations;
 
-        SkyblockNPC(double x, double y, double z, boolean isMerchant, Location... locations) {
+        SkyblockNPC(double x, double y, double z, List<NPCType> npcTypes, List<Location> locations) {
             this.x = x;
             this.y = y;
             this.z = z;
-            this.isMerchant = isMerchant;
+            this.npcTypes = npcTypes;
             final int HIDE_RADIUS = 4;
             this.hideArea = new AxisAlignedBB(x - HIDE_RADIUS, y - HIDE_RADIUS, z - HIDE_RADIUS, x + HIDE_RADIUS, y + HIDE_RADIUS, z + HIDE_RADIUS);
-            this.locations = EnumSet.copyOf(Arrays.asList(locations));
+            this.locations = locations;
+        }
+
+        /**
+         * Returns all the types this NPC falls under
+         *
+         * @return the types pertaining to this NPC
+         */
+        public List<NPCType> getTypes() {
+            return this.npcTypes;
+        }
+
+        /**
+         * Checks if this NPC is of the given type
+         *
+         * @param type the type to check for
+         * @return whether this NPC is of the given type
+         */
+        public boolean isType(NPCType type) {
+            return this.npcTypes.contains(type);
         }
 
         public boolean isAtLocation(Location location) {
@@ -419,6 +453,34 @@ public class EnumUtils {
         }
 
         /**
+         * Checks if the given entity is near any Player NPC, meaning this excludes furniture
+         *
+         * @param entity the entity to check
+         * @return whether the entity is near any Player NPC
+         */
+        public static boolean isNearAnyPlayerNPC(Entity entity) {
+            for(SkyblockNPC npc : values()) {
+                if (!npc.isType(NPCType.FURNITURE) && npc.isNearEntity(entity))
+                    return true;
+            }
+            return false;
+        }
+
+        /**
+         * Checks if the given entity is near any public lobby furniture
+         *
+         * @param entity the entity to check
+         * @return whether the entity is near any furniture
+         */
+        public static boolean isNearFurniture(Entity entity) {
+            for(SkyblockNPC npc : values()) {
+                if (npc.isType(NPCType.FURNITURE) && npc.isNearEntity(entity))
+                    return true;
+            }
+            return false;
+        }
+
+        /**
          * Checks if the given entity is near a given NPC
          *
          * @param entity the entity to check
@@ -429,9 +491,15 @@ public class EnumUtils {
             return npc.isNearEntity(entity);
         }
 
+        /**
+         * Checks if the NPC with the given name is a merchant
+         *
+         * @param name the NPC's name
+         * @return whether the NPC is a merchant or not
+         */
         public static boolean isMerchant(String name) {// inventory
             for (SkyblockNPC npc : values()) {
-                if (npc.isMerchant) {
+                if (npc.npcTypes.contains(NPCType.MERCHANT)) {
                     if (name.replaceAll(" ", "_").equalsIgnoreCase(npc.name())) {
                         return true;
                     }

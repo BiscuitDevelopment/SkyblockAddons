@@ -28,7 +28,7 @@ public enum Message {
     SETTING_SETTINGS(MessageObject.SETTING, "settings"),
     SETTING_ENCHANTS_AND_REFORGES(MessageObject.SETTING, "showEnchantmentsReforges"),
     SETTING_MINION_STOP_WARNING(MessageObject.SETTING, "minionStopWarning"),
-    SETTING_AUCTION_HOUSE_PLAYERS(MessageObject.SETTING, "hideAuctionHousePlayers"),
+    SETTING_PLAYERS_NEAR_NPCS(MessageObject.SETTING, "hidePlayersNearNPCs"),
     SETTING_BACKPACK_STYLE(MessageObject.SETTING, "backpackStyle"),
     SETTING_SHOW_BACKPACK_PREVIEW(MessageObject.SETTING, "showBackpackPreview"),
     SETTING_HIDE_HEALTH_BAR(MessageObject.SETTING, "hideHealthBar"),

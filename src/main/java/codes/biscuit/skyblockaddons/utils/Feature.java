@@ -26,7 +26,7 @@ public enum Feature {
 //    HIDE_DURABILITY(9, Message.SETTING_HIDE_DURABILITY), // Removed, added to Skyblock.
     SHOW_ENCHANTMENTS_REFORGES(10, Message.SETTING_ENCHANTS_AND_REFORGES, false),
     MINION_STOP_WARNING(11, Message.SETTING_MINION_STOP_WARNING, new GuiFeatureData(ChatFormatting.RED), true),
-    HIDE_AUCTION_HOUSE_PLAYERS(12, Message.SETTING_AUCTION_HOUSE_PLAYERS, false),
+    HIDE_PLAYERS_NEAR_NPCS(12, Message.SETTING_PLAYERS_NEAR_NPCS, false),
     HIDE_HEALTH_BAR(13, Message.SETTING_HIDE_HEALTH_BAR, true),
     DOUBLE_DROP_IN_OTHER_GAMES(14, null, false),
     MINION_FULL_WARNING(15, Message.SETTING_FULL_MINION, new GuiFeatureData(ChatFormatting.RED), false),
