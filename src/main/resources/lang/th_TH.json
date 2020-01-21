@@ -92,8 +92,8 @@
     },
     "tabEffectTimers": "ระบะเวลายาและพลังวิเศษ",
     "noArrowsLeftAlert": "แจ้งเตือนลูกศรหมด",
-    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
-    "showCakeBagPreview": "Show Preview for Cake Bags"
+    "hideNightVisionEffectTimer": "ซ่อนระยะเวลาเอฟเฟ็ค Night Vision",
+    "showCakeBagPreview": "แสดงไอเท็มในถุงเก็บเค้ก"
   },
   "messages": {
     "dropConfirmation": "กดทิ้งของอีกที่เพื่อยืนยันทิ้งของสิ่งนี้!",
@@ -140,8 +140,8 @@
     "downloadingUpdateFile": "กำลังดาวน์โหลดไฟล์อัพเดท",
     "onlyFewArrowsLeft": "ลูกศรเหลือ %arrows% ดอก",
     "noArrowsLeft": "ลูกศรหมดแล้ว",
-    "chooseAColor": "Choose a Color",
-    "selectedColor": "Selected Color",
-    "setHexColor": "Set Hex Color"
+    "chooseAColor": "เลือกสี",
+    "selectedColor": "สีที่เลือก",
+    "setHexColor": "ตั้งค่าสี"
   }
 }
