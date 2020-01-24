@@ -11,6 +11,7 @@ import codes.biscuit.skyblockaddons.utils.Message;
 import codes.biscuit.skyblockaddons.utils.nifty.StringUtil;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
 import codes.biscuit.skyblockaddons.utils.nifty.reflection.MinecraftReflection;
+import codes.biscuit.skyblockaddons.utils.npc.NPCUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiTextField;
@@ -213,7 +214,7 @@ public class GuiChestHook {
         }
 
         if (main.getConfigValues().isEnabled(Feature.STOP_DROPPING_SELLING_RARE_ITEMS) &&
-                lowerChestInventory.hasCustomName() && EnumUtils.SkyblockNPC.isMerchant(lowerChestInventory.getDisplayName().getUnformattedText())
+                lowerChestInventory.hasCustomName() && NPCUtils.isMerchant(lowerChestInventory.getDisplayName().getUnformattedText())
                 && slotIn != null && slotIn.inventory instanceof InventoryPlayer) {
             if (main.getInventoryUtils().shouldCancelDrop(slotIn)) returnValue.cancel();
         }

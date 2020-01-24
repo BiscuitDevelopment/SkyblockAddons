@@ -22,11 +22,11 @@ import java.lang.reflect.Field;
 import java.util.Timer;
 import java.util.TimerTask;
 
-@Mod(modid = SkyblockAddons.MOD_ID, version = SkyblockAddons.VERSION, name = SkyblockAddons.MOD_NAME, clientSideOnly = true, acceptedMinecraftVersions = "[1.8.9]")
+@Mod(modid = SkyblockAddons.MOD_ID, version = SkyblockAddons.VERSION, name = SkyblockAddons.MOD_NAME, useMetadata = true, clientSideOnly = true, acceptedMinecraftVersions = "[1.8.9]")
 public class SkyblockAddons {
 
     static final String MOD_ID = "skyblockaddons";
-    static final String MOD_NAME = "SkyblockAddons";
+    static final String MOD_NAME = "Skyblock Addons";
     public static final String VERSION = "1.4.2";
 
     private static SkyblockAddons instance; // for Mixins cause they don't have a constructor

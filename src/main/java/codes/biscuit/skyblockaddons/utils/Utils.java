@@ -180,7 +180,7 @@ public class Utils {
                             if (loopLocation == EnumUtils.Location.BLAZING_FORTRESS &&
                                     location != EnumUtils.Location.BLAZING_FORTRESS) {
                                 sendPostRequest(EnumUtils.MagmaEvent.PING); // going into blazing fortress
-                                main.getUtils().fetchEstimateFromServer();
+                                fetchEstimateFromServer();
                             }
                             location = loopLocation;
                             foundLocation = true;

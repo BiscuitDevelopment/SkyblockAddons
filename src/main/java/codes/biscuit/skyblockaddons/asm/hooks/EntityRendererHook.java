@@ -4,6 +4,7 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.asm.utils.ReturnValue;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.Feature;
+import codes.biscuit.skyblockaddons.utils.npc.NPCUtils;
 import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.Entity;
@@ -17,16 +18,14 @@ public class EntityRendererHook {
         SkyblockAddons main = SkyblockAddons.getInstance();
 
         if (main.getUtils().isOnSkyblock()) {
-            EnumUtils.Location currentLocation = main.getUtils().getLocation();
-
             if (!GuiScreen.isCtrlKeyDown() && main.getConfigValues().isEnabled(Feature.IGNORE_ITEM_FRAME_CLICKS)) {
                 list.removeIf(listEntity -> listEntity instanceof EntityItemFrame);
             }
             if (main.getConfigValues().isEnabled(Feature.HIDE_PLAYERS_NEAR_NPCS)) {
-                list.removeIf(entity -> entity instanceof EntityOtherPlayerMP && EnumUtils.SkyblockNPC.isNearAnyNPC(entity));
+                list.removeIf(entity -> entity instanceof EntityOtherPlayerMP && NPCUtils.isNearAnyPlayerNPC(entity) && !NPCUtils.isNPC(entity));
             }
             if(main.getConfigValues().isEnabled(Feature.HIDE_PLAYERS_NEAR_HARP)) {
-                list.removeIf(entity -> currentLocation == EnumUtils.Location.SAVANNA_WOODLAND && entity instanceof EntityOtherPlayerMP && EnumUtils.SkyblockNPC.isNearNPC(entity, EnumUtils.SkyblockNPC.HARP));
+                list.removeIf(entity -> entity instanceof EntityOtherPlayerMP && NPCUtils.isNearNPC(entity, "HARP"));
             }
         }
     }

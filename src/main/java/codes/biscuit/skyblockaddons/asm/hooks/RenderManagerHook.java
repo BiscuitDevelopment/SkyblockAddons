@@ -4,6 +4,7 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.asm.utils.ReturnValue;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.Feature;
+import codes.biscuit.skyblockaddons.utils.npc.NPCUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.client.particle.EntityFX;
@@ -27,7 +28,7 @@ public class RenderManagerHook {
                 }
             }
             if (main.getConfigValues().isEnabled(Feature.HIDE_PLAYERS_NEAR_NPCS)) {
-                if (entityIn instanceof EntityOtherPlayerMP && EnumUtils.SkyblockNPC.isNearAnyPlayerNPC(entityIn)) {
+                if (entityIn instanceof EntityOtherPlayerMP && NPCUtils.isNearAnyPlayerNPC(entityIn) && !NPCUtils.isNPC(entityIn)) {
                     returnValue.cancel();
                 }
             }
@@ -41,10 +42,8 @@ public class RenderManagerHook {
                 }
             }
             if (main.getConfigValues().isEnabled(Feature.HIDE_PLAYERS_NEAR_HARP)) {
-                if (currentLocation == EnumUtils.Location.SAVANNA_WOODLAND) {
-                    if (EnumUtils.SkyblockNPC.isNearNPC(entityIn, EnumUtils.SkyblockNPC.HARP) && entityIn instanceof EntityOtherPlayerMP) {
-                        returnValue.cancel();
-                    }
+                if (entityIn instanceof EntityOtherPlayerMP && NPCUtils.isNearNPC(entityIn, "HARP")) {
+                    returnValue.cancel();
                 }
             }
         }
