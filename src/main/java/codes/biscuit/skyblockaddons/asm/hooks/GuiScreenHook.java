@@ -40,7 +40,12 @@ public class GuiScreenHook {
                 if (chest.hasCustomName()) {
                     String chestName = chest.getDisplayName().getUnformattedText();
                     if (chestName.contains("Auction") || "Your Bids".equals(chestName)) {
-                        return;
+
+                        // Make an exception for the new year cake bag.
+                        String itemName = stack.getDisplayName();
+                        if (!itemName.contains("New Year Cake Bag")) {
+                            return;
+                        }
                     }
                 }
             }
