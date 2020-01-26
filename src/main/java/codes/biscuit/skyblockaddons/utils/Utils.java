@@ -155,13 +155,13 @@ public class Utils {
                             try {
                                 currentDate.setMonth(month);
                                 String numberPart = locationString.substring(locationString.lastIndexOf(" ") + 1);
-                                int day = Integer.valueOf(getNumbersOnly(numberPart));
+                                int day = Integer.parseInt(getNumbersOnly(numberPart));
                                 currentDate.setDay(day);
                                 if (timeString != null) {
                                     String[] timeSplit = timeString.split(Pattern.quote(":"));
-                                    int hour = Integer.valueOf(timeSplit[0]);
+                                    int hour = Integer.parseInt(timeSplit[0]);
                                     currentDate.setHour(hour);
-                                    int minute = Integer.valueOf(timeSplit[1]);
+                                    int minute = Integer.parseInt(timeSplit[1]);
                                     currentDate.setMinute(minute);
                                 }
                             } catch (IndexOutOfBoundsException | NumberFormatException ignored) {}
@@ -381,19 +381,6 @@ public class Utils {
                 ex.printStackTrace();
             }
         }).start();
-    }
-
-    public boolean isNotNPC(Entity entity) {
-        if (entity instanceof EntityOtherPlayerMP) {
-            EntityPlayer p = (EntityPlayer)entity;
-            Team team = p.getTeam();
-            if (team instanceof ScorePlayerTeam) {
-                ScorePlayerTeam playerTeam = (ScorePlayerTeam)team;
-                String color = playerTeam.getColorPrefix();
-                return color == null || !"".equals(color);
-            }
-        }
-        return true;
     }
 
     public int getDefaultColor(float alphaFloat) {

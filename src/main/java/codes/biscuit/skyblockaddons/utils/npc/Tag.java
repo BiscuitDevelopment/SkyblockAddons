@@ -10,6 +10,7 @@ enum Tag {
     BUY_ONLY, // For merchants with only a purchase option
     EVENT,
     FURNITURE, // For public island furniture
+    IMPORTANT,
     MERCHANT,
     PLAYER,
     QUEST_NPC,

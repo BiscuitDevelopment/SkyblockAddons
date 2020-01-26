@@ -4,6 +4,7 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.item.EntityArmorStand;
 import net.minecraft.util.Vec3;
 
 import java.util.EnumSet;
@@ -22,6 +23,15 @@ public class NPCUtils {
 
     static final int HIDE_RADIUS = 4;
     static final Set<NPC> NPC_LIST = EnumSet.allOf(NPC.class);
+
+    /**
+     * Returns a set of all the NPCs listed in {@link NPC}
+     *
+     * @return all the NPCs listed in {@code NPC}
+     */
+    public Set<NPC> getNPCs() {
+        return NPC_LIST;
+    }
 
     /**
      * Checks if the given NPC is a merchant
@@ -197,12 +207,18 @@ public class NPCUtils {
      * @return {@code true} if the entity is an NPC, {@code false} otherwise
      */
     public static boolean isNPC(Entity entity) {
-        Pattern SKYBLOCK_PLAYER_TEAM_PATTERN = Pattern.compile("(a\\d{9})");
+        if (entity instanceof EntityOtherPlayerMP) {
+            Pattern SKYBLOCK_PLAYER_TEAM_PATTERN = Pattern.compile("(a\\d{9})");
+            Matcher PLAYER_TEAM_MATCHER = SKYBLOCK_PLAYER_TEAM_PATTERN.matcher(((EntityOtherPlayerMP) entity).getTeam().getRegisteredName());
 
-        // Check if it's not a player because idk how to check if it's a Hypixel NPC
-        if (entity.getClass() == EntityOtherPlayerMP.class) {
-            return !SKYBLOCK_PLAYER_TEAM_PATTERN.matcher(((EntityOtherPlayerMP) entity).getTeam().getRegisteredName()).matches();
+            // Check if it's not a player because idk how to check if it's a Hypixel NPC
+            return !PLAYER_TEAM_MATCHER.matches();
         }
-        return false;
+        else if (entity instanceof EntityArmorStand) {
+            return entity.isInvisible();
+        }
+        else {
+            return false;
+        }
     }
 }

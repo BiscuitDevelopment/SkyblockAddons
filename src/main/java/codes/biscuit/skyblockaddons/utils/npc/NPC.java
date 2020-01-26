@@ -15,30 +15,35 @@ import static java.util.Collections.singletonList;
  * @version 1.0
  */
 enum NPC {
-    AUCTION_MASTER(17.5,71,-78.5, asList(Tag.PLAYER, Tag.OTHER), asList(EnumUtils.Location.VILLAGE, EnumUtils.Location.AUCTION_HOUSE)),
-    BANKER(20.5,71,-40.5, asList(Tag.PLAYER, Tag.OTHER), asList(EnumUtils.Location.VILLAGE, EnumUtils.Location.BANK)),
-    BAKER(34.5, 71, -44.5, asList(Tag.PLAYER, Tag.EVENT), singletonList(EnumUtils.Location.VILLAGE)),
-    LOBBY_SELECTOR(-9,70,-79, asList(Tag.PLAYER, Tag.OTHER), singletonList(EnumUtils.Location.VILLAGE)),
-    LUMBER_MERCHANT(-18.5,70,-90, asList(Tag.PLAYER, Tag.MERCHANT), singletonList(EnumUtils.Location.VILLAGE)),
+    // These are organized by island
+
+    // Hub
     ADVENTURER(-18.5,70,-77, asList(Tag.PLAYER, Tag.MERCHANT), singletonList(EnumUtils.Location.VILLAGE)),
-    FISH_MERCHANT(-25.5,70,-77, asList(Tag.PLAYER, Tag.MERCHANT), singletonList(EnumUtils.Location.VILLAGE)),
-    ARMORSMITH(-25.5,70,-90, asList(Tag.PLAYER, Tag.MERCHANT), singletonList(EnumUtils.Location.VILLAGE)),
-    BLACKSMITH(-19.5,71,-124.5, asList(Tag.PLAYER, Tag.UTILITY), singletonList(EnumUtils.Location.VILLAGE)),
-    BLACKSMITH_2(-39.5,77,-299.5, asList(Tag.PLAYER, Tag.UTILITY), singletonList(EnumUtils.Location.GOLD_MINE)),
-    FARM_MERCHANT(-7,70,-48.5, asList(Tag.PLAYER, Tag.MERCHANT), singletonList(EnumUtils.Location.VILLAGE)),
-    MINE_MERCHANT(-19,70,-48.5, asList(Tag.PLAYER, Tag.MERCHANT), singletonList(EnumUtils.Location.VILLAGE)),
-    WEAPONSMITH(-19,70,-41.5, asList(Tag.PLAYER, Tag.MERCHANT), singletonList(EnumUtils.Location.VILLAGE)),
-    BUILDER(-7,70,-41.5, asList(Tag.PLAYER, Tag.MERCHANT), singletonList(EnumUtils.Location.VILLAGE)),
-    LIBRARIAN(17.5,71,-16.5, asList(Tag.PLAYER, Tag.MERCHANT), asList(EnumUtils.Location.VILLAGE, EnumUtils.Location.LIBRARY)),
-    MARCO(9.5,71,-14, asList(Tag.PLAYER, Tag.QUEST_NPC), asList(EnumUtils.Location.VILLAGE, EnumUtils.Location.FLOWER_HOUSE)),
     ALCHEMIST(-33.5,73,-14.5, asList(Tag.PLAYER, Tag.MERCHANT), singletonList(EnumUtils.Location.VILLAGE)),
-    PAT(-129.5,73,-98.5, asList(Tag.PLAYER, Tag.MERCHANT), singletonList(EnumUtils.Location.GRAVEYARD)),
+    ARMORSMITH(-25.5,70,-90, asList(Tag.PLAYER, Tag.MERCHANT), singletonList(EnumUtils.Location.VILLAGE)),
+    AUCTION_MASTER(17.5,71,-78.5, asList(Tag.PLAYER, Tag.OTHER), asList(EnumUtils.Location.VILLAGE, EnumUtils.Location.AUCTION_HOUSE)),
+    BAKER(34.5, 71, -44.5, asList(Tag.PLAYER, Tag.EVENT), singletonList(EnumUtils.Location.VILLAGE)),
+    BANKER(20.5,71,-40.5, asList(Tag.PLAYER, Tag.OTHER), asList(EnumUtils.Location.VILLAGE, EnumUtils.Location.BANK)),
+    BLACKSMITH(-19.5,71,-124.5, asList(Tag.PLAYER, Tag.UTILITY), singletonList(EnumUtils.Location.VILLAGE)),
+    BUILDER(-7,70,-41.5, asList(Tag.PLAYER, Tag.MERCHANT), singletonList(EnumUtils.Location.VILLAGE)),
     EVENT_MASTER(-61.5,71,-54.5, asList(Tag.PLAYER, Tag.OTHER), asList(EnumUtils.Location.COLOSSEUM, EnumUtils.Location.VILLAGE)),
+    FARM_MERCHANT(-7,70,-48.5, asList(Tag.PLAYER, Tag.MERCHANT), singletonList(EnumUtils.Location.VILLAGE)),
+    FISH_MERCHANT(-25.5,70,-77, asList(Tag.PLAYER, Tag.MERCHANT), singletonList(EnumUtils.Location.VILLAGE)),
+    HUB_SELECTOR(-9,70,-79, asList(Tag.PLAYER, Tag.OTHER), singletonList(EnumUtils.Location.VILLAGE)),
+    LIBRARIAN(17.5,71,-16.5, asList(Tag.PLAYER, Tag.MERCHANT), asList(EnumUtils.Location.VILLAGE, EnumUtils.Location.LIBRARY)),
+    LUMBER_MERCHANT(-18.5,70,-90, asList(Tag.PLAYER, Tag.MERCHANT), singletonList(EnumUtils.Location.VILLAGE)),
+    MADDOX_THE_SLAYER(-87,66,-70, asList(Tag.PLAYER, Tag.QUEST_NPC), asList(EnumUtils.Location.VILLAGE, EnumUtils.Location.TAVERN)),
+    MARCO(9.5,71,-14, asList(Tag.PLAYER, Tag.QUEST_NPC), asList(EnumUtils.Location.VILLAGE, EnumUtils.Location.FLOWER_HOUSE)),
+    MINE_MERCHANT(-19,70,-48.5, asList(Tag.PLAYER, Tag.MERCHANT), singletonList(EnumUtils.Location.VILLAGE)),
+    PAT(-129.5,73,-98.5, asList(Tag.PLAYER, Tag.MERCHANT), singletonList(EnumUtils.Location.GRAVEYARD)),
+    SIRIUS(91.5,75,176.5, asList(Tag.PLAYER, Tag.OTHER), singletonList(EnumUtils.Location.WILDERNESS)),
+    WEAPONSMITH(-19,70,-41.5, asList(Tag.PLAYER, Tag.MERCHANT), singletonList(EnumUtils.Location.VILLAGE)),
+
+    // Gold Mine,
+    BLACKSMITH_2(-39.5,77,-299.5, asList(Tag.PLAYER, Tag.UTILITY), singletonList(EnumUtils.Location.GOLD_MINE)),
     GOLD_FORGER(-27.5,74,-294.5, asList(Tag.PLAYER, Tag.MERCHANT), singletonList(EnumUtils.Location.GOLD_MINE)),
     IRON_FORGER(-1.5,75,-307.5, asList(Tag.PLAYER, Tag.MERCHANT), singletonList(EnumUtils.Location.GOLD_MINE)),
     RUSTY(-20,78,-326, asList(Tag.PLAYER, Tag.UTILITY), singletonList(EnumUtils.Location.GOLD_MINE)),
-    MADDOX_THE_SLAYER(-87,66,-70, asList(Tag.PLAYER, Tag.QUEST_NPC), asList(EnumUtils.Location.VILLAGE, EnumUtils.Location.TAVERN)),
-    SIRIUS(91.5,75,176.5, asList(Tag.PLAYER, Tag.OTHER), singletonList(EnumUtils.Location.WILDERNESS)),
 
     // Furniture
     HARP(-394.5, 110.5, 33.5, singletonList(Tag.FURNITURE), singletonList(EnumUtils.Location.SAVANNA_WOODLAND));

@@ -25,7 +25,7 @@ public class EntityRendererHook {
                 list.removeIf(entity -> entity instanceof EntityOtherPlayerMP && NPCUtils.isNearAnyPlayerNPC(entity) && !NPCUtils.isNPC(entity));
             }
             if(main.getConfigValues().isEnabled(Feature.HIDE_PLAYERS_NEAR_HARP)) {
-                list.removeIf(entity -> entity instanceof EntityOtherPlayerMP && NPCUtils.isNearNPC(entity, "HARP"));
+                list.removeIf(entity -> entity instanceof EntityOtherPlayerMP && NPCUtils.isNearNPC(entity, "HARP") && !NPCUtils.isNPC(entity));
             }
         }
     }
