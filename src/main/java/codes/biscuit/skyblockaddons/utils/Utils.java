@@ -12,19 +12,18 @@ import com.google.common.collect.Sets;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.entity.EntityOtherPlayerMP;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.event.ClickEvent;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.launchwrapper.Launch;
+import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.scoreboard.*;
 import net.minecraft.util.ChatComponentText;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.fml.common.FMLLog;
 import net.minecraftforge.fml.common.MetadataCollection;
 import net.minecraftforge.fml.common.ModMetadata;
@@ -100,7 +99,13 @@ public class Utils {
     }
 
     public void sendMessage(String text) {
-        ClientChatReceivedEvent event = new ClientChatReceivedEvent((byte) 1, new ChatComponentText(text));
+        StringBuilder stringBuilder = new StringBuilder(String.valueOf(ChatFormatting.WHITE));
+
+        // Header
+        stringBuilder.append('[').append(ChatFormatting.YELLOW).append(SkyblockAddons.MOD_NAME).append(ChatFormatting.WHITE).append("] ").append(ChatFormatting.WHITE);
+
+        stringBuilder.append(text);
+        ClientChatReceivedEvent event = new ClientChatReceivedEvent((byte) 1, new ChatComponentText(stringBuilder.toString()));
         MinecraftForge.EVENT_BUS.post(event); // Let other mods pick up the new message
         if (!event.isCanceled()) {
             Minecraft.getMinecraft().thePlayer.addChatMessage(event.message); // Just for logs
@@ -108,11 +113,25 @@ public class Utils {
     }
 
     private void sendMessage(ChatComponentText text) {
-        ClientChatReceivedEvent event = new ClientChatReceivedEvent((byte) 1, text);
+        StringBuilder stringBuilder = new StringBuilder(String.valueOf(ChatFormatting.WHITE));
+
+        // Header
+        stringBuilder.append('[').append(ChatFormatting.YELLOW).append(SkyblockAddons.MOD_NAME).append(ChatFormatting.WHITE).append("] ").append(ChatFormatting.WHITE);
+
+        stringBuilder.append(text.toString());
+        ChatComponentText output = new ChatComponentText(stringBuilder.toString());
+        ClientChatReceivedEvent event = new ClientChatReceivedEvent((byte) 1, output);
         MinecraftForge.EVENT_BUS.post(event); // Let other mods pick up the new message
         if (!event.isCanceled()) {
             Minecraft.getMinecraft().thePlayer.addChatMessage(event.message); // Just for logs
         }
+    }
+
+    public void sendErrorMessage(String errorText) {
+        StringBuilder stringBuilder = new StringBuilder(String.valueOf(ChatFormatting.RED));
+
+        stringBuilder.append(ChatFormatting.BOLD).append("Error: ").append(ChatFormatting.WHITE).append(errorText);
+        sendMessage(stringBuilder.toString());
     }
 
     private static final Pattern SERVER_REGEX = Pattern.compile("([0-9]{2}/[0-9]{2}/[0-9]{2}) (mini[0-9]{1,3}[A-Za-z])");
@@ -834,6 +853,47 @@ public class Utils {
 
     public void setCopyNBT(boolean copyNBT) {
         this.copyNBT = copyNBT;
+    }
+
+    /**
+     * Formats a compound NBT tag to be easier to read
+     *
+     * @param nbtTagCompound the compound NBT tag to format
+     * @return the tag as a formatted string
+     */
+    public static String formatCompoundTag(NBTTagCompound nbtTagCompound) {
+        Set<String> keySet = nbtTagCompound.getKeySet();
+        StringBuilder stringBuilder = new StringBuilder("{" + System.lineSeparator());
+
+        for (String key : keySet) {
+            NBTBase currentTag = nbtTagCompound.getTag(key);
+            int currentTagType = nbtTagCompound.getTagId(key);
+
+            stringBuilder.append("    ");
+
+            // Check for nested compound tags.
+            if (currentTagType == Constants.NBT.TAG_COMPOUND) {
+                stringBuilder.append("    ");
+                stringBuilder.append(formatCompoundTag((NBTTagCompound) currentTag));
+            }
+            else {
+                stringBuilder.append(key).append(": ").append(currentTag.toString());
+                stringBuilder.append(System.lineSeparator());
+            }
+            stringBuilder.append("}");
+        }
+
+        return stringBuilder.toString();
+    }
+
+    /**
+     * Determines if a given NBT tag is a compound tag.
+     *
+     * @param tag the tag to check
+     * @return whether the tag is a compound tag
+     */
+    public static boolean isCompoundTag(NBTBase tag) {
+        return tag.getId() == Constants.NBT.TAG_COMPOUND;
     }
 
     public SkyblockDate getCurrentDate() {

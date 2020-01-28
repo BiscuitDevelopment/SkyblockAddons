@@ -1,5 +1,8 @@
-import javax.swing.*;
+import javax.swing.JOptionPane;
 
+/**
+ * Shows an error message if the mod jar is opened directly instead of in forge.
+ */
 public class OpenErrorMessage {
 
     public static void main(String[] args) {

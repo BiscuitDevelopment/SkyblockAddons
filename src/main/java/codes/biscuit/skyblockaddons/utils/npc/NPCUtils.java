@@ -29,7 +29,7 @@ public class NPCUtils {
      *
      * @return all the NPCs listed in {@code NPC}
      */
-    public Set<NPC> getNPCs() {
+    public static Set<NPC> getNPCs() {
         return NPC_LIST;
     }
 
