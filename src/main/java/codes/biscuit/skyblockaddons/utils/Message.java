@@ -91,6 +91,7 @@ public enum Message {
     SETTING_HIDE_NIGHT_VISION_EFFECT_TIMER(MessageObject.SETTING, "hideNightVisionEffectTimer"),
     SETTING_NO_ARROWS_LEFT_ALERT(MessageObject.SETTING, "noArrowsLeftAlert"),
     SETTING_SHOW_CAKE_BAG_PREVIEW(MessageObject.SETTING, "showCakeBagPreview"),
+    SETTING_SHOW_BACKPACK_PREVIEW_AH(MessageObject.SETTING, "showBackpackAH"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.BACKPACK_STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.BACKPACK_STYLE, "compact"),

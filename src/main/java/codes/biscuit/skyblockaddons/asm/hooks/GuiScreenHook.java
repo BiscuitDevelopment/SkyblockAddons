@@ -19,7 +19,7 @@ import org.lwjgl.input.Keyboard;
 
 public class GuiScreenHook {
 
-    private static final int MADDOX_BATPHONE_COOLDOWN = 1 * 60 * 1000;
+    private static final int MADDOX_BATPHONE_COOLDOWN = 60 * 1000;
 
     /**
      * The last time the backpack preview freeze key was pressed.
@@ -34,21 +34,32 @@ public class GuiScreenHook {
             if (main.getConfigValues().isEnabled(Feature.SHOW_BACKPACK_HOLDING_SHIFT) && !GuiScreen.isShiftKeyDown()) {
                 return;
             }
+
             Container playerContainer = Minecraft.getMinecraft().thePlayer.openContainer;
             if (playerContainer instanceof ContainerChest) { // Avoid showing backpack preview in auction stuff.
-                IInventory chest = ((ContainerChest) playerContainer).getLowerChestInventory();
-                if (chest.hasCustomName()) {
-                    String chestName = chest.getDisplayName().getUnformattedText();
+                IInventory chestInventory = ((ContainerChest) playerContainer).getLowerChestInventory();
+                if (chestInventory.hasCustomName()) {
+                    String chestName = chestInventory.getDisplayName().getUnformattedText();
                     if (chestName.contains("Auction") || "Your Bids".equals(chestName)) {
 
-                        // Make an exception for the new year cake bag.
-                        String itemName = stack.getDisplayName();
-                        if (!itemName.contains("New Year Cake Bag")) {
+                        // Show preview for backpacks in player inventory if enabled.
+                        if (!main.getConfigValues().isEnabled(Feature.BACKPACK_PREVIEW_AH)) {
                             return;
+                        }
+
+                        /*
+                        If the backpack is in the auction house window, ignore it.
+                        Empty backpacks can't be listed in the auction.
+                         */
+                        for (int i = 0; i < chestInventory.getSizeInventory(); i++) {
+                            if (ItemStack.areItemStackTagsEqual(chestInventory.getStackInSlot(i), stack)) {
+                                return;
+                            }
                         }
                     }
                 }
             }
+
             Backpack backpack = Backpack.getFromItem(stack);
             if (backpack != null) {
                 backpack.setX(x);
