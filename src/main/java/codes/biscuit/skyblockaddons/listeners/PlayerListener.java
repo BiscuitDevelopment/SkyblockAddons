@@ -11,7 +11,6 @@ import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.inventory.GuiChest;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityArmorStand;
 import net.minecraft.entity.monster.EntityBlaze;
 import net.minecraft.entity.monster.EntityEnderman;
@@ -23,8 +22,7 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ContainerChest;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
-import net.minecraft.scoreboard.ScorePlayerTeam;
-import net.minecraft.scoreboard.Team;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.Vec3;
@@ -42,7 +40,6 @@ import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
-import org.lwjgl.input.Keyboard;
 
 import java.util.*;
 import java.util.regex.Matcher;
@@ -74,6 +71,7 @@ public class PlayerListener {
     private long lastFishingAlert = 0;
     private long lastBobberEnteredWater = Long.MAX_VALUE;
     private long lastSkyblockServerJoinAttempt = 0;
+    private ItemStack hoveredItem = null;
 
     private boolean oldBobberIsInWater = false;
     private double oldBobberPosY = 0;
@@ -499,9 +497,9 @@ public class PlayerListener {
      */
     @SubscribeEvent()
     public void onItemTooltip(ItemTooltipEvent e) {
-        ItemStack hoveredItem = e.itemStack;
+        hoveredItem = e.itemStack;
         if (hoveredItem.hasTagCompound() && GuiScreen.isCtrlKeyDown() && main.getUtils().isCopyNBT()) {
-            DevUtils.copyNBTToClipboard(hoveredItem.getTagCompound());
+            DevUtils.copyNBTTagToClipboard(hoveredItem.getTagCompound());
         }
 
         if (e.toolTip != null && main.getUtils().isOnSkyblock() && !main.getConfigValues().isRemoteDisabled(Feature.HIDE_GREY_ENCHANTS)) {
@@ -620,47 +618,25 @@ public class PlayerListener {
             main.getUtils().setFadingIn(false);
             main.getRenderListener().setGuiToOpen(PlayerListener.GUIType.EDIT_LOCATIONS, 0, null);
         }
-        else if (Keyboard.isKeyDown(Keyboard.KEY_LCONTROL)) {
+        else if (main.getDevKey().isPressed()) {
             // TODO Do this properly
             List<Entity> entityList = Minecraft.getMinecraft().theWorld.loadedEntityList;
+            List<NBTTagCompound> nbtList = new LinkedList<>();
             EntityPlayerSP playerSP = Minecraft.getMinecraft().thePlayer;
 
-            SkyblockAddons.getInstance().getUtils().sendMessage("Player:");
-            SkyblockAddons.getInstance().getUtils().sendMessage("Name: " + playerSP.getName());
-            SkyblockAddons.getInstance().getUtils().sendMessage("Team: " + playerSP.getTeam().getRegisteredName());
-            SkyblockAddons.getInstance().getUtils().sendMessage("Team Colour: " + ((ScorePlayerTeam) playerSP.getTeam()).getColorPrefix() + "Text");
-            SkyblockAddons.getInstance().getUtils().sendMessage("");
+            nbtList.add(playerSP.getNBTTagCompound());
 
             for (Entity entity:
                  entityList) {
                 if (entity.getDistanceToEntity(playerSP) < 3) {
                     if (entity.getClass() == EntityOtherPlayerMP.class || entity.getClass() == EntityArmorStand.class) {
-                        Team team = ((EntityLivingBase) entity).getTeam();
-                        ScorePlayerTeam playerTeam = null;
-
-                        if (team instanceof ScorePlayerTeam)
-                            playerTeam = (ScorePlayerTeam) team;
-
-                        SkyblockAddons.getInstance().getUtils().sendMessage("Entity:");
-                        SkyblockAddons.getInstance().getUtils().sendMessage("Class: " + entity.getClass().getName());
-                        if (entity.getName() != null) {
-                            SkyblockAddons.getInstance().getUtils().sendMessage("Name: " + entity.getName());
-                        }
-                        else {
-                            SkyblockAddons.getInstance().getUtils().sendMessage("Name: null");
-                        }
-                        if (team != null) {
-                            SkyblockAddons.getInstance().getUtils().sendMessage("Team: " + ((team.getRegisteredName())));
-
-                            if (playerTeam != null && playerTeam.getColorPrefix() != null) {
-                                SkyblockAddons.getInstance().getUtils().sendMessage("Team Colour: " + playerTeam.getColorPrefix() + "Text");
-                            }
-                        }
-                        else {
-                            SkyblockAddons.getInstance().getUtils().sendMessage("Team: null");
-                        }
+                        nbtList.add(entity.getNBTTagCompound());
                     }
                 }
+            }
+
+            if (!nbtList.isEmpty()) {
+                DevUtils.copyNBTTagsToClipboard(nbtList);
             }
         }
     }

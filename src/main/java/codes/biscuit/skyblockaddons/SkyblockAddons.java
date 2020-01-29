@@ -39,7 +39,7 @@ public class SkyblockAddons {
     private Scheduler scheduler = new Scheduler(this);
     private boolean usingLabymod = false;
     private boolean usingOofModv1 = false;
-    private KeyBinding[] keyBindings = new KeyBinding[4];
+    private KeyBinding[] keyBindings = new KeyBinding[5];
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent e) {
@@ -58,6 +58,7 @@ public class SkyblockAddons {
         keyBindings[1] = new KeyBinding("key.skyblockaddons.edit_gui", Keyboard.KEY_NONE, MOD_NAME);
         keyBindings[2] = new KeyBinding("key.skyblockaddons.lock_slot", Keyboard.KEY_L, MOD_NAME);
         keyBindings[3] = new KeyBinding("key.skyblockaddons.freeze_backpack", Keyboard.KEY_F, MOD_NAME);
+        keyBindings[4] = new KeyBinding("key.skyblockaddons.dev", Keyboard.KEY_NONE, MOD_NAME);
 
         for (KeyBinding keyBinding : keyBindings) {
             ClientRegistry.registerKeyBinding(keyBinding);
@@ -177,5 +178,9 @@ public class SkyblockAddons {
 
     public KeyBinding getFreezeBackpackKey() {
         return keyBindings[3];
+    }
+
+    public KeyBinding getDevKey() {
+        return keyBindings[4];
     }
 }

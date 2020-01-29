@@ -17,13 +17,11 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.launchwrapper.Launch;
-import net.minecraft.nbt.NBTBase;
-import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.*;
 import net.minecraft.scoreboard.*;
 import net.minecraft.util.ChatComponentText;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.fml.common.FMLLog;
 import net.minecraftforge.fml.common.MetadataCollection;
 import net.minecraftforge.fml.common.ModMetadata;
@@ -59,6 +57,8 @@ public class Utils {
 
     private final Pattern ITEM_ABILITY_PATTERN = Pattern.compile("§5§o§6Item Ability: ([A-Za-z ]+) §e§l[A-Z ]+");
 
+    private static final String MESSAGE_HEADER = ChatFormatting.WHITE + "[" + ChatFormatting.YELLOW + SkyblockAddons.MOD_NAME +
+            ChatFormatting.WHITE + "] ";
     private static final List<String> ORDERED_ENCHANTMENTS = Collections.unmodifiableList(Arrays.asList(
             "smite","bane of arthropods","knockback","fire aspect","venomous", // Sword Bad
             "thorns","growth","protection","depth strider","respiration","aqua affinity", // Armor
@@ -99,13 +99,7 @@ public class Utils {
     }
 
     public void sendMessage(String text) {
-        StringBuilder stringBuilder = new StringBuilder(String.valueOf(ChatFormatting.WHITE));
-
-        // Header
-        stringBuilder.append('[').append(ChatFormatting.YELLOW).append(SkyblockAddons.MOD_NAME).append(ChatFormatting.WHITE).append("] ").append(ChatFormatting.WHITE);
-
-        stringBuilder.append(text);
-        ClientChatReceivedEvent event = new ClientChatReceivedEvent((byte) 1, new ChatComponentText(stringBuilder.toString()));
+        ClientChatReceivedEvent event = new ClientChatReceivedEvent((byte) 1, new ChatComponentText(MESSAGE_HEADER + text));
         MinecraftForge.EVENT_BUS.post(event); // Let other mods pick up the new message
         if (!event.isCanceled()) {
             Minecraft.getMinecraft().thePlayer.addChatMessage(event.message); // Just for logs
@@ -113,13 +107,7 @@ public class Utils {
     }
 
     private void sendMessage(ChatComponentText text) {
-        StringBuilder stringBuilder = new StringBuilder(String.valueOf(ChatFormatting.WHITE));
-
-        // Header
-        stringBuilder.append('[').append(ChatFormatting.YELLOW).append(SkyblockAddons.MOD_NAME).append(ChatFormatting.WHITE).append("] ").append(ChatFormatting.WHITE);
-
-        stringBuilder.append(text.toString());
-        ChatComponentText output = new ChatComponentText(stringBuilder.toString());
+        ChatComponentText output = new ChatComponentText(MESSAGE_HEADER + text);
         ClientChatReceivedEvent event = new ClientChatReceivedEvent((byte) 1, output);
         MinecraftForge.EVENT_BUS.post(event); // Let other mods pick up the new message
         if (!event.isCanceled()) {
@@ -128,10 +116,9 @@ public class Utils {
     }
 
     public void sendErrorMessage(String errorText) {
-        StringBuilder stringBuilder = new StringBuilder(String.valueOf(ChatFormatting.RED));
+        String errorPrefix = ChatFormatting.BOLD + "Error: " + ChatFormatting.WHITE;
 
-        stringBuilder.append(ChatFormatting.BOLD).append("Error: ").append(ChatFormatting.WHITE).append(errorText);
-        sendMessage(stringBuilder.toString());
+        sendMessage(errorPrefix + errorText);
     }
 
     private static final Pattern SERVER_REGEX = Pattern.compile("([0-9]{2}/[0-9]{2}/[0-9]{2}) (mini[0-9]{1,3}[A-Za-z])");
@@ -330,8 +317,8 @@ public class Utils {
 
     void sendUpdateMessage(boolean showDownload, boolean showAutoDownload) {
         String newestVersion = main.getRenderListener().getDownloadInfo().getNewestVersion();
-        sendMessage(ChatFormatting.GRAY.toString() + ChatFormatting.STRIKETHROUGH + "--------" + ChatFormatting.GRAY + "[" +
-                            ChatFormatting.AQUA + ChatFormatting.BOLD + " SkyblockAddons " + ChatFormatting.GRAY + "]" + ChatFormatting.GRAY + ChatFormatting.STRIKETHROUGH + "--------");
+        sendMessage(ChatFormatting.GRAY.toString() + ChatFormatting.STRIKETHROUGH + "--------" + ChatFormatting.GRAY + '[' +
+                            ChatFormatting.AQUA + ChatFormatting.BOLD + " SkyblockAddons " + ChatFormatting.GRAY + ']' + ChatFormatting.GRAY + ChatFormatting.STRIKETHROUGH + "--------");
         if (main.getRenderListener().getDownloadInfo().getMessageType() == EnumUtils.UpdateMessageType.DOWNLOAD_FINISHED) {
             ChatComponentText deleteOldFile = new ChatComponentText(ChatFormatting.RED+Message.MESSAGE_DELETE_OLD_FILE.getMessage()+"\n");
             sendMessage(deleteOldFile);
@@ -342,26 +329,26 @@ public class Utils {
 
         ChatComponentText buttonsMessage = new ChatComponentText("");
         if (showDownload) {
-            buttonsMessage = new ChatComponentText(ChatFormatting.AQUA.toString() + ChatFormatting.BOLD + "[" + Message.MESSAGE_DOWNLOAD_LINK.getMessage(newestVersion) + "]");
+            buttonsMessage = new ChatComponentText(ChatFormatting.AQUA.toString() + ChatFormatting.BOLD + '[' + Message.MESSAGE_DOWNLOAD_LINK.getMessage(newestVersion) + ']');
             buttonsMessage.setChatStyle(buttonsMessage.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, main.getRenderListener().getDownloadInfo().getDownloadLink())));
             buttonsMessage.appendSibling(new ChatComponentText(" "));
         }
 
         if (showAutoDownload) {
-            ChatComponentText downloadAutomatically = new ChatComponentText(ChatFormatting.GREEN.toString() + ChatFormatting.BOLD + "[" + Message.MESSAGE_DOWNLOAD_AUTOMATICALLY.getMessage(newestVersion) + "]");
+            ChatComponentText downloadAutomatically = new ChatComponentText(ChatFormatting.GREEN.toString() + ChatFormatting.BOLD + '[' + Message.MESSAGE_DOWNLOAD_AUTOMATICALLY.getMessage(newestVersion) + ']');
             downloadAutomatically.setChatStyle(downloadAutomatically.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/sba update")));
             buttonsMessage.appendSibling(downloadAutomatically);
             buttonsMessage.appendSibling(new ChatComponentText(" "));
         }
 
-        ChatComponentText openModsFolder = new ChatComponentText(ChatFormatting.YELLOW.toString() + ChatFormatting.BOLD + "[" + Message.MESSAGE_OPEN_MODS_FOLDER.getMessage(newestVersion) + "]");
+        ChatComponentText openModsFolder = new ChatComponentText(ChatFormatting.YELLOW.toString() + ChatFormatting.BOLD + '[' + Message.MESSAGE_OPEN_MODS_FOLDER.getMessage(newestVersion) + ']');
         openModsFolder.setChatStyle(openModsFolder.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/sba folder")));
         buttonsMessage.appendSibling(openModsFolder);
 
         sendMessage(buttonsMessage);
         if (main.getRenderListener().getDownloadInfo().getMessageType() != EnumUtils.UpdateMessageType.DOWNLOAD_FINISHED) {
             ChatComponentText discord = new ChatComponentText(ChatFormatting.AQUA + Message.MESSAGE_VIEW_PATCH_NOTES.getMessage() + " " +
-                                                                      ChatFormatting.BLUE.toString() + ChatFormatting.BOLD + "[" + Message.MESSAGE_JOIN_DISCORD.getMessage() + "]");
+                                                                      ChatFormatting.BLUE.toString() + ChatFormatting.BOLD + '[' + Message.MESSAGE_JOIN_DISCORD.getMessage() + ']');
             discord.setChatStyle(discord.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://discord.gg/PqTAEek")));
             sendMessage(discord);
         }
@@ -853,47 +840,6 @@ public class Utils {
 
     public void setCopyNBT(boolean copyNBT) {
         this.copyNBT = copyNBT;
-    }
-
-    /**
-     * Formats a compound NBT tag to be easier to read
-     *
-     * @param nbtTagCompound the compound NBT tag to format
-     * @return the tag as a formatted string
-     */
-    public static String formatCompoundTag(NBTTagCompound nbtTagCompound) {
-        Set<String> keySet = nbtTagCompound.getKeySet();
-        StringBuilder stringBuilder = new StringBuilder("{" + System.lineSeparator());
-
-        for (String key : keySet) {
-            NBTBase currentTag = nbtTagCompound.getTag(key);
-            int currentTagType = nbtTagCompound.getTagId(key);
-
-            stringBuilder.append("    ");
-
-            // Check for nested compound tags.
-            if (currentTagType == Constants.NBT.TAG_COMPOUND) {
-                stringBuilder.append("    ");
-                stringBuilder.append(formatCompoundTag((NBTTagCompound) currentTag));
-            }
-            else {
-                stringBuilder.append(key).append(": ").append(currentTag.toString());
-                stringBuilder.append(System.lineSeparator());
-            }
-            stringBuilder.append("}");
-        }
-
-        return stringBuilder.toString();
-    }
-
-    /**
-     * Determines if a given NBT tag is a compound tag.
-     *
-     * @param tag the tag to check
-     * @return whether the tag is a compound tag
-     */
-    public static boolean isCompoundTag(NBTBase tag) {
-        return tag.getId() == Constants.NBT.TAG_COMPOUND;
     }
 
     public SkyblockDate getCurrentDate() {
