@@ -78,13 +78,13 @@
     "specialZealotAlert": "התראה של זלוט מיוחד",
     "enableMessageWhenActionPrevented": "הצג הודע כאשר נחסמת פעולה",
     "hidePetHealthBar": "הסתר מד חיים של חיית מחמד",
-    "powerOrbDisplay": "Power Orb Display",
-    "powerOrbDisplayStyle": "Power Orb Style: %style%",
+    "powerOrbDisplay": "צג כדור עוצמה",
+    "powerOrbDisplayStyle": "סגנון כדור עוצמה: %style%",
     "powerOrbStyle": {
       "detailed": "מפורט",
       "compact": "מרוכז"
     },
-    "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages",
+    "disableMagicalSoupMessage": "בטל הודעה ממרק פטריות קסום",
     "zealotCounter": "הצג מספר הקנאים",
     "tickerChargesDisplay": "Ticker/Charges Display",
     "tab": {
