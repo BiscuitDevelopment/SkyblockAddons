@@ -94,7 +94,8 @@
     "noArrowsLeftAlert": "No Arrows Left Alert",
     "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
     "showCakeBagPreview": "Show Preview for Cake Bags",
-    "hidePlayersNearHarp": "Hide Players Near Melody's Harp"
+    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
+    "enableDevFeatures": "Enable Developer Features"
   },
   "messages": {
     "dropConfirmation": "Drop this item again to confirm!",

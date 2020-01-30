@@ -92,6 +92,7 @@ public enum Message {
     SETTING_NO_ARROWS_LEFT_ALERT(MessageObject.SETTING, "noArrowsLeftAlert"),
     SETTING_SHOW_CAKE_BAG_PREVIEW(MessageObject.SETTING, "showCakeBagPreview"),
     SETTING_HIDE_PLAYERS_NEAR_HARP(MessageObject.SETTING, "hidePlayersNearHarp"),
+    SETTING_ENABLE_DEV_FEATURES(MessageObject.SETTING, "enableDevFeatures"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.BACKPACK_STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.BACKPACK_STYLE, "compact"),
