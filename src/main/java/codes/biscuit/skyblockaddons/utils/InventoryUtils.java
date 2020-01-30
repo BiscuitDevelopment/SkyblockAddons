@@ -6,26 +6,12 @@ import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
-import net.minecraft.inventory.Container;
-import net.minecraft.inventory.ContainerBeacon;
-import net.minecraft.inventory.ContainerChest;
-import net.minecraft.inventory.ContainerFurnace;
-import net.minecraft.inventory.ContainerHopper;
-import net.minecraft.inventory.ContainerPlayer;
-import net.minecraft.inventory.Slot;
-import net.minecraft.item.Item;
+import net.minecraft.inventory.*;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -221,7 +207,7 @@ public class InventoryUtils {
         return itemPickupLog.values();
     }
 
-    private Item lastItem = null;
+    private String lastItemName = null;
     private long lastDrop = System.currentTimeMillis();
     private int dropCount = 1;
 
@@ -235,11 +221,13 @@ public class InventoryUtils {
 
     public boolean shouldCancelDrop(ItemStack stack) {
         if (main.getUtils().cantDropItem(stack, EnumUtils.Rarity.getRarity(stack), false)) {
-            Item item = stack.getItem();
-            if (lastItem != null && lastItem == item && System.currentTimeMillis() - lastDrop < 3000 && dropCount >= 2) {
+
+            String heldItemName = stack.hasDisplayName() ? stack.getDisplayName() : stack.getUnlocalizedName();
+
+            if (lastItemName != null && lastItemName.equals(heldItemName) && System.currentTimeMillis() - lastDrop < 3000 && dropCount >= 2) {
                 lastDrop = System.currentTimeMillis();
             } else {
-                if (lastItem == item) {
+                if (heldItemName.equals(lastItemName)) {
                     if (System.currentTimeMillis() - lastDrop > 3000) {
                         dropCount = 1;
                     } else {
@@ -250,7 +238,7 @@ public class InventoryUtils {
                 }
                 SkyblockAddons.getInstance().getUtils().sendMessage(main.getConfigValues().getRestrictedColor(Feature.STOP_DROPPING_SELLING_RARE_ITEMS) +
                         Message.MESSAGE_CLICK_MORE_TIMES.getMessage(String.valueOf(3-dropCount)));
-                lastItem = item;
+                lastItemName = heldItemName;
                 lastDrop = System.currentTimeMillis();
                 main.getUtils().playLoudSound("note.bass", 0.5);
                 return true;

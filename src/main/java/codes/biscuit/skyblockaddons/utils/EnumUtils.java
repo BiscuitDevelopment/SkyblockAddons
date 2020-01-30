@@ -508,17 +508,20 @@ public class EnumUtils {
         private String tag;
 
         Rarity(String s) {
-            this.tag = "§5§o§"+s;
+            this.tag = "§"+s;
         }
 
         public static Rarity getRarity(ItemStack item) {
             if (item == null) return null;
+
             List<String> lore = item.getTooltip(Minecraft.getMinecraft().thePlayer, false);
+
             for (String loreLine : lore) {
                 for (Rarity rarity : Rarity.values()) {
-                    if (loreLine.startsWith(rarity.tag)) return rarity;
+                    if (loreLine.contains(rarity.tag)) return rarity;
                 }
             }
+
             return null;
         }
     }

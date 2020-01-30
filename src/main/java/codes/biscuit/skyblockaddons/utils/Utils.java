@@ -580,11 +580,10 @@ public class Utils {
                 if (item.getDisplayName().contains(exclusion)) return true;
             }
         }
-        if (hotbar) {
-            return item.getItem().isDamageable() || (rarity != EnumUtils.Rarity.COMMON && rarity != EnumUtils.Rarity.UNCOMMON);
+        if (hotbar) { // Hotbar items also restrict rare rarity.
+            return item.getItem().isDamageable() || rarity != EnumUtils.Rarity.COMMON;
         } else {
-            return item.getItem().isDamageable() || (rarity != EnumUtils.Rarity.COMMON && rarity != EnumUtils.Rarity.UNCOMMON
-                    && rarity != EnumUtils.Rarity.RARE);
+            return item.getItem().isDamageable() || (rarity != EnumUtils.Rarity.COMMON && rarity != EnumUtils.Rarity.UNCOMMON);
         }
     }
 

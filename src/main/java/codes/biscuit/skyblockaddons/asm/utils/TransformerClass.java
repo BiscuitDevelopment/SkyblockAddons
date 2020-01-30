@@ -67,10 +67,16 @@ public enum TransformerClass {
         }
     }
 
+    /**
+     * @return The name used for the owner of a field or method, or a field type.
+     */
     public String getNameRaw() {
         return name;
     }
 
+    /**
+     * @return The name used in a method descriptor to represent an object.
+     */
     public String getName() {
         return "L"+name+";";
     }

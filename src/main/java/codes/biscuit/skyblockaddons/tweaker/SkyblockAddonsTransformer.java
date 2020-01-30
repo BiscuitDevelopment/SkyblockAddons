@@ -60,7 +60,6 @@ public class SkyblockAddonsTransformer implements IClassTransformer {
         registerTransformer(new MinecraftTransformer());
         registerTransformer(new ItemTransformer());
         registerTransformer(new GuiScreenTransformer());
-        registerTransformer(new GuiInventoryTransformer());
         registerTransformer(new GuiContainerTransformer());
         registerTransformer(new GuiChestTransformer());
         registerTransformer(new GuiNewChatTransformer());
@@ -113,10 +112,12 @@ public class SkyblockAddonsTransformer implements IClassTransformer {
         if (OUTPUT_BYTECODE) {
             try {
                 File file = new File("C:\\Users\\jlroc\\Desktop\\bytecode", transformedName + ".class");
-                file.createNewFile();
-                FileOutputStream os = new FileOutputStream(file);
-                os.write(writer.toByteArray());
-                os.close();
+                if (file.getParentFile().exists()) {
+                    file.createNewFile();
+                    FileOutputStream os = new FileOutputStream(file);
+                    os.write(writer.toByteArray());
+                    os.close();
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
