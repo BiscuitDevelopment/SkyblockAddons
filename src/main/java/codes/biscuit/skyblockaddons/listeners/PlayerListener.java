@@ -620,10 +620,10 @@ public class PlayerListener {
         }
         else if (main.getDevKey().isPressed()) {
             // TODO Do this properly
+            // Also this throws nullpointerexception for some reason
             List<Entity> entityList = Minecraft.getMinecraft().theWorld.loadedEntityList;
             List<NBTTagCompound> nbtList = new LinkedList<>();
             EntityPlayerSP playerSP = Minecraft.getMinecraft().thePlayer;
-
             nbtList.add(playerSP.getNBTTagCompound());
 
             for (Entity entity:
