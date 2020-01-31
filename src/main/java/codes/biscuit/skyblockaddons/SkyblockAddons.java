@@ -109,6 +109,7 @@ public class SkyblockAddons {
         changeKeyBindDescription(keyBindings[1], Message.SETTING_EDIT_LOCATIONS.getMessage());
         changeKeyBindDescription(keyBindings[2], Message.SETTING_LOCK_SLOT.getMessage());
         changeKeyBindDescription(keyBindings[3], Message.SETTING_SHOW_BACKPACK_PREVIEW.getMessage());
+        changeKeyBindDescription(keyBindings[4], Message.SETTING_ENABLE_DEV_FEATURES.getMessage());
     }
 
     private void scheduleMagmaCheck() {

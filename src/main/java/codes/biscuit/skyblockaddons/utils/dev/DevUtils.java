@@ -9,6 +9,7 @@ import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 /**
  * This is a class of utilities for Skyblock Addons developers.
@@ -17,6 +18,8 @@ import java.util.List;
  * @version 1.0
  */
 public class DevUtils {
+    private static final int ENTITY_COPY_RADIUS = 3;
+
     /**
      * Copies the provided NBT tag to the clipboard as a formatted string.
      *
@@ -45,6 +48,55 @@ public class DevUtils {
         }
 
         writeToClipboard(stringBuilder.toString(), "NBT data was copied to clipboard!");
+    }
+
+    /**
+     * Copies a string to the clipboard.
+     *
+     * @param string the string to copy
+     */
+    public static void copyStringToClipboard(String string) {
+        writeToClipboard(string, "Value was copied to clipboard!");
+    }
+
+    /**
+     * <p>Copies a string to the clipboard</p>
+     * <p>Also shows the provided message in chat when successful</p>
+     *
+     * @param string the string to copy
+     * @param successMessage the custom message to show after successful copy
+     */
+    public static void copyStringToClipboard(String string, String successMessage) {
+        writeToClipboard(string, successMessage);
+    }
+
+    /**
+     * Copies a list of strings to the clipboard, each on separate lines.
+     *
+     * @param strings the string to copy
+     */
+    public static void copyStringsToClipboard(List<String> strings) {
+        writeToClipboard(buildMultiLineStringFromList(strings), "Value was copied to clipboard!");
+    }
+
+    /**
+     * <p>Copies a list of strings to the clipboard, each on separate lines.</p>
+     * <p>Also shows the provided message in chat when successful</p>
+     *
+     * @param strings the strings to copy
+     * @param successMessage the custom message to show after successful copy
+     */
+    public static void copyStringsToClipboard(List<String> strings, String successMessage) {
+        writeToClipboard(buildMultiLineStringFromList(strings), successMessage);
+    }
+
+    /**
+     * Returns the radius for copying entity data
+     *
+     * @return the radius for copying entity data
+     */
+    public static int getEntityCopyRadius() {
+        return ENTITY_COPY_RADIUS;
     }
 
     // FIXME add support for TAG_LONG_ARRAY when updating to 1.12
@@ -146,6 +198,27 @@ public class DevUtils {
         // This includes the tags: byte, short, int, long, float, double, and string
         else {
             stringBuilder.append(nbt.toString());
+        }
+
+        return stringBuilder.toString();
+    }
+
+    // Internal methods
+
+    // Converts a list of strings to a single multi-line string
+    private static String buildMultiLineStringFromList(List<String> strings) {
+        ListIterator<String> listIterator = strings.listIterator();
+        StringBuilder stringBuilder = new StringBuilder();
+
+        while (listIterator.hasNext()) {
+            String currentString = listIterator.next();
+
+            stringBuilder.append(currentString);
+
+            // Go to the next line.
+            if (listIterator.hasNext()) {
+                stringBuilder.append(System.lineSeparator());
+            }
         }
 
         return stringBuilder.toString();

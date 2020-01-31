@@ -9,8 +9,10 @@ import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.inventory.GuiChest;
+import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityArmorStand;
 import net.minecraft.entity.monster.EntityBlaze;
 import net.minecraft.entity.monster.EntityEnderman;
@@ -21,9 +23,12 @@ import net.minecraft.init.Items;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ContainerChest;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.scoreboard.ScorePlayerTeam;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.Vec3;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
@@ -71,7 +76,6 @@ public class PlayerListener {
     private long lastFishingAlert = 0;
     private long lastBobberEnteredWater = Long.MAX_VALUE;
     private long lastSkyblockServerJoinAttempt = 0;
-    private ItemStack hoveredItem = null;
 
     private boolean oldBobberIsInWater = false;
     private double oldBobberPosY = 0;
@@ -497,10 +501,7 @@ public class PlayerListener {
      */
     @SubscribeEvent()
     public void onItemTooltip(ItemTooltipEvent e) {
-        hoveredItem = e.itemStack;
-        if (hoveredItem.hasTagCompound() && GuiScreen.isCtrlKeyDown() && main.getUtils().isCopyNBT()) {
-            DevUtils.copyNBTTagToClipboard(hoveredItem.getTagCompound());
-        }
+        ItemStack hoveredItem = e.itemStack;
 
         if (e.toolTip != null && main.getUtils().isOnSkyblock() && !main.getConfigValues().isRemoteDisabled(Feature.HIDE_GREY_ENCHANTS)) {
             for (int i = 1; i <= 3; i++) { // only a max of 2 gray enchants are possible
@@ -619,24 +620,59 @@ public class PlayerListener {
             main.getRenderListener().setGuiToOpen(PlayerListener.GUIType.EDIT_LOCATIONS, 0, null);
         }
         else if (main.getDevKey().isPressed()) {
-            // TODO Do this properly
-            // Also this throws nullpointerexception for some reason
-            List<Entity> entityList = Minecraft.getMinecraft().theWorld.loadedEntityList;
-            List<NBTTagCompound> nbtList = new LinkedList<>();
-            EntityPlayerSP playerSP = Minecraft.getMinecraft().thePlayer;
-            nbtList.add(playerSP.getNBTTagCompound());
+            // Copy item NBT if player is hovering over an item, otherwise copy entity NBT
+            GuiScreen currentScreen = Minecraft.getMinecraft().currentScreen;
 
-            for (Entity entity:
-                 entityList) {
-                if (entity.getDistanceToEntity(playerSP) < 3) {
-                    if (entity.getClass() == EntityOtherPlayerMP.class || entity.getClass() == EntityArmorStand.class) {
-                        nbtList.add(entity.getNBTTagCompound());
-                    }
+            if (currentScreen instanceof GuiContainer) {
+                GuiContainer inventoryScreen = (GuiContainer) currentScreen;
+                Slot currentSlot = inventoryScreen.getSlotUnderMouse();
+
+                if (currentSlot != null && currentSlot.getHasStack()) {
+                    DevUtils.copyNBTTagToClipboard(currentSlot.getStack().getTagCompound());
                 }
             }
+            else {
+                EntityPlayerSP playerSP = Minecraft.getMinecraft().thePlayer;
+                List<Entity> entityList = Minecraft.getMinecraft().theWorld.getLoadedEntityList();
+                List<String> entityData = new LinkedList<>();
 
-            if (!nbtList.isEmpty()) {
-                DevUtils.copyNBTTagsToClipboard(nbtList);
+                // We only care about other players and armor stands.
+                entityList.removeIf(entity -> entity.getDistanceToEntity(playerSP) > DevUtils.getEntityCopyRadius() &&
+                        !(entity instanceof EntityOtherPlayerMP || entity instanceof EntityArmorStand));
+
+                if (!entityList.isEmpty()) {
+                    ListIterator<Entity> entityListIterator = entityList.listIterator();
+
+                    while (entityListIterator.hasNext()) {
+                        Entity entity = entityListIterator.next();
+
+                        if (entity.getDistanceToEntity(playerSP) < DevUtils.getEntityCopyRadius()) {
+                            if (entity instanceof EntityOtherPlayerMP || entity instanceof EntityArmorStand) {
+                                BlockPos entityPosition = entity.getPosition();
+
+                                entityData.add("Name: " + entity.getName());
+                                entityData.add("Type: " + entity.getClass().getSimpleName());
+
+                                // Some may not have a team.
+                                if (((EntityLivingBase) entity).getTeam() != null) {
+                                    entityData.add("Team: " + ((EntityLivingBase) entity).getTeam().getRegisteredName());
+                                }
+                                else {
+                                    entityData.add("Team: None");
+                                }
+                                entityData.add("Position: " + "[" + entityPosition.getX() + ", " +
+                                        entityPosition.getY() + ", " + entityPosition.getZ() + "]");
+
+                                // Add a blank line for spacing.
+                                if (entityListIterator.hasNext()) {
+                                    entityData.add("");
+                                }
+                            }
+                        }
+                    }
+
+                    DevUtils.copyStringsToClipboard(entityData, "Entity data copied to clipboard!");
+                }
             }
         }
     }
