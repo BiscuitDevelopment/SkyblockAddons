@@ -138,7 +138,7 @@
     "blockIncompletePatterns": "不完全なパターンでのクラフトを防止する (推奨)",
     "searchFeatures": "機能を検索",
     "downloadingUpdateFile": "更新をダウンロード中...",
-    "onlyFewArrowsLeft": "矢筒に残り %arrows% 本しかないです！",
+    "onlyFewArrowsLeft": "矢が残り %arrows% 本しかないです！",
     "noArrowsLeft": "矢がありません！",
     "chooseAColor": "色を選択",
     "selectedColor": "選択中の色",
