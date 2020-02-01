@@ -8,8 +8,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.gui.inventory.GuiChest;
-import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.client.gui.inventory.*;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -23,10 +22,7 @@ import net.minecraft.init.Items;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ContainerChest;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.scoreboard.ScorePlayerTeam;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.ChatComponentText;
@@ -620,62 +616,50 @@ public class PlayerListener {
             main.getRenderListener().setGuiToOpen(PlayerListener.GUIType.EDIT_LOCATIONS, 0, null);
         }
         else if (main.getDevKey().isPressed()) {
+
+            // Copy Entity Data
             if (main.isDevMode()) {
-                // Copy item NBT if player is hovering over an item, otherwise copy entity NBT
-                GuiScreen currentScreen = Minecraft.getMinecraft().currentScreen;
+                EntityPlayerSP playerSP = Minecraft.getMinecraft().thePlayer;
+                List<Entity> entityList = Minecraft.getMinecraft().theWorld.getLoadedEntityList();
+                List<String> entityData = new LinkedList<>();
 
-                if (currentScreen instanceof GuiContainer) {
-                    GuiContainer inventoryScreen = (GuiContainer) currentScreen;
-                    Slot currentSlot = inventoryScreen.getSlotUnderMouse();
+                // We only care about other players and armor stands.
+                entityList.removeIf(entity -> entity.getDistanceToEntity(playerSP) > DevUtils.getEntityCopyRadius() &&
+                        !(entity instanceof EntityOtherPlayerMP || entity instanceof EntityArmorStand));
 
-                    if (currentSlot != null && currentSlot.getHasStack()) {
-                        DevUtils.copyNBTTagToClipboard(currentSlot.getStack().getTagCompound(),
-                                ChatFormatting.GREEN + Message.MESSAGE_DEV_ITEM_DATA_COPIED.getMessage());
-                    }
-                }
-                else {
-                    EntityPlayerSP playerSP = Minecraft.getMinecraft().thePlayer;
-                    List<Entity> entityList = Minecraft.getMinecraft().theWorld.getLoadedEntityList();
-                    List<String> entityData = new LinkedList<>();
+                if (!entityList.isEmpty()) {
+                    ListIterator<Entity> entityListIterator = entityList.listIterator();
 
-                    // We only care about other players and armor stands.
-                    entityList.removeIf(entity -> entity.getDistanceToEntity(playerSP) > DevUtils.getEntityCopyRadius() &&
-                            !(entity instanceof EntityOtherPlayerMP || entity instanceof EntityArmorStand));
+                    while (entityListIterator.hasNext()) {
+                        Entity entity = entityListIterator.next();
 
-                    if (!entityList.isEmpty()) {
-                        ListIterator<Entity> entityListIterator = entityList.listIterator();
+                        // The client isn't allowed to get the full entity NBT from the server.
+                        if (entity.getDistanceToEntity(playerSP) < DevUtils.getEntityCopyRadius()) {
+                            if (entity instanceof EntityOtherPlayerMP || entity instanceof EntityArmorStand) {
+                                BlockPos entityPosition = entity.getPosition();
 
-                        while (entityListIterator.hasNext()) {
-                            Entity entity = entityListIterator.next();
+                                entityData.add("Name: " + entity.getName());
+                                entityData.add("Type: " + entity.getClass().getSimpleName());
 
-                            // The client isn't allowed to get the full entity NBT from the server.
-                            if (entity.getDistanceToEntity(playerSP) < DevUtils.getEntityCopyRadius()) {
-                                if (entity instanceof EntityOtherPlayerMP || entity instanceof EntityArmorStand) {
-                                    BlockPos entityPosition = entity.getPosition();
+                                // Some may not have a team.
+                                if (((EntityLivingBase) entity).getTeam() != null) {
+                                    entityData.add("Team: " + ((EntityLivingBase) entity).getTeam().getRegisteredName());
+                                }
+                                else {
+                                    entityData.add("Team: None");
+                                }
+                                entityData.add("Position: " + "[" + entityPosition.getX() + ", " +
+                                        entityPosition.getY() + ", " + entityPosition.getZ() + "]");
 
-                                    entityData.add("Name: " + entity.getName());
-                                    entityData.add("Type: " + entity.getClass().getSimpleName());
-
-                                    // Some may not have a team.
-                                    if (((EntityLivingBase) entity).getTeam() != null) {
-                                        entityData.add("Team: " + ((EntityLivingBase) entity).getTeam().getRegisteredName());
-                                    }
-                                    else {
-                                        entityData.add("Team: None");
-                                    }
-                                    entityData.add("Position: " + "[" + entityPosition.getX() + ", " +
-                                            entityPosition.getY() + ", " + entityPosition.getZ() + "]");
-
-                                    // Add a blank line for spacing.
-                                    if (entityListIterator.hasNext()) {
-                                        entityData.add("");
-                                    }
+                                // Add a blank line for spacing.
+                                if (entityListIterator.hasNext()) {
+                                    entityData.add("");
                                 }
                             }
                         }
-
-                        DevUtils.copyStringsToClipboard(entityData, ChatFormatting.GREEN + Message.MESSAGE_DEV_ENTITY_DATA_COPIED.getMessage());
                     }
+
+                    DevUtils.copyStringsToClipboard(entityData, ChatFormatting.GREEN + Message.MESSAGE_DEV_ENTITY_DATA_COPIED.getMessage());
                 }
             }
             else {
