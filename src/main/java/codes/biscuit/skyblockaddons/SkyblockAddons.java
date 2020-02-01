@@ -39,6 +39,7 @@ public class SkyblockAddons {
     private Scheduler scheduler = new Scheduler(this);
     private boolean usingLabymod = false;
     private boolean usingOofModv1 = false;
+    private boolean devMode = false;
     private KeyBinding[] keyBindings = new KeyBinding[5];
 
     @Mod.EventHandler
@@ -159,6 +160,26 @@ public class SkyblockAddons {
 
     public boolean isUsingOofModv1() {
         return usingOofModv1;
+    }
+
+    /**
+     * Check whether developer mode is enabled.
+     *
+     * @return {@code true} if developer mode is enabled, {@code false} if it isn't
+     */
+    public boolean isDevMode() {
+        return devMode;
+    }
+
+    /**
+     * <p>Toggles developer mode.</p>
+     * <p>Developer mode enables a set of features that are useful for Skyblock Addons Developers,
+     * like NBT data copying.</p>
+     *
+     * @param devMode Set to {@code true} to enable developer mode
+     */
+    public void setDevMode(boolean devMode) {
+        this.devMode = devMode;
     }
 
     public Scheduler getScheduler() {

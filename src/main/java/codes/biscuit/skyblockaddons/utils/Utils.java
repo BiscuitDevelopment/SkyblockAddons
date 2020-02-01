@@ -78,7 +78,6 @@ public class Utils {
     private EnumUtils.Location location = null;
     private String profileName = null;
     private boolean playingSound = false;
-    private boolean copyNBT = false;
     private String serverID = "";
     private SkyblockDate currentDate = new SkyblockDate(SkyblockDate.SkyblockMonth.EARLY_WINTER, 1, 1, 1);
     private int lastHoveredSlot = -1;
@@ -128,6 +127,7 @@ public class Utils {
     public void checkGameLocationDate() {
         boolean foundLocation = false;
         Minecraft mc = Minecraft.getMinecraft();
+
         if (mc != null && mc.theWorld != null) {
             Scoreboard scoreboard = mc.theWorld.getScoreboard();
             ScoreObjective sidebarObjective = mc.theWorld.getScoreboard().getObjectiveInDisplaySlot(1);
@@ -140,15 +140,16 @@ public class Utils {
                         break;
                     }
                 }
-                Collection<Score> collection = scoreboard.getSortedScores(sidebarObjective);
-                List<Score> list = Lists.newArrayList(collection.stream().filter(p_apply_1_ -> p_apply_1_.getPlayerName() != null && !p_apply_1_.getPlayerName().startsWith("#")).collect(Collectors.toList()));
+
+                Collection<Score> scores = scoreboard.getSortedScores(sidebarObjective);
+                List<Score> list = Lists.newArrayList(scores.stream().filter(p_apply_1_ -> p_apply_1_.getPlayerName() != null && !p_apply_1_.getPlayerName().startsWith("#")).collect(Collectors.toList()));
                 if (list.size() > 15) {
-                    collection = Lists.newArrayList(Iterables.skip(list, collection.size() - 15));
+                    scores = Lists.newArrayList(Iterables.skip(list, scores.size() - 15));
                 } else {
-                    collection = list;
+                    scores = list;
                 }
                 String timeString = null;
-                for (Score score1 : collection) {
+                for (Score score1 : scores) {
                     ScorePlayerTeam scorePlayerTeam = scoreboard.getPlayersTeam(score1.getPlayerName());
                     String locationString = keepLettersAndNumbersOnly(
                             stripColor(ScorePlayerTeam.formatPlayerName(scorePlayerTeam, score1.getPlayerName())));
@@ -832,14 +833,6 @@ public class Utils {
 
     public Map<Attribute, MutableInt> getAttributes() {
         return attributes;
-    }
-
-    public boolean isCopyNBT() {
-        return copyNBT;
-    }
-
-    public void setCopyNBT(boolean copyNBT) {
-        this.copyNBT = copyNBT;
     }
 
     public SkyblockDate getCurrentDate() {

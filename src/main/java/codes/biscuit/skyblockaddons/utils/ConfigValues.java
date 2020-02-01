@@ -124,7 +124,7 @@ public class ConfigValues {
 
             if (settingsConfig.has("anchorPoints")) {
                 for (Map.Entry<String, JsonElement> element : settingsConfig.getAsJsonObject("anchorPoints").entrySet()) {
-                    Feature feature = Feature.fromId(Integer.valueOf(element.getKey()));
+                    Feature feature = Feature.fromId(Integer.parseInt(element.getKey()));
                     EnumUtils.AnchorPoint anchorPoint = EnumUtils.AnchorPoint.fromId(element.getValue().getAsInt());
                     if (feature != null && anchorPoint != null) {
                         anchorPoints.put(feature, anchorPoint);

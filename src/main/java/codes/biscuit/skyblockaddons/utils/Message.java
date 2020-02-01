@@ -133,6 +133,11 @@ public enum Message {
     MESSAGE_CHOOSE_A_COLOR(MessageObject.MESSAGES, "chooseAColor"),
     MESSAGE_SELECTED_COLOR(MessageObject.MESSAGES, "selectedColor"),
     MESSAGE_SET_HEX_COLOR(MessageObject.MESSAGES, "setHexColor"),
+    MESSAGE_DEV_MODE_ENABLED(MessageObject.MESSAGES, "devModeEnabled"),
+    MESSAGE_DEV_MODE_DISABLED(MessageObject.MESSAGES, "devModeDisabled"),
+    MESSAGE_DEV_BUTTON_DISABLED(MessageObject.MESSAGES, "devButtonDisabled"),
+    MESSAGE_DEV_ITEM_DATA_COPIED(MessageObject.MESSAGES, "devItemDataCopied"),
+    MESSAGE_DEV_ENTITY_DATA_COPIED(MessageObject.MESSAGES, "devEntityDataCopied"),
 
     @Deprecated ANCHOR_POINT_TOP_LEFT(MessageObject.ANCHOR_POINT, "topLeft"),
     @Deprecated ANCHOR_POINT_TOP_RIGHT(MessageObject.ANCHOR_POINT, "topRight"),

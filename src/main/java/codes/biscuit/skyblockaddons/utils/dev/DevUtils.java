@@ -24,17 +24,19 @@ public class DevUtils {
      * Copies the provided NBT tag to the clipboard as a formatted string.
      *
      * @param nbtTag the NBT tag to copy
+     * @param message the message to show in chat when the NBT tag is copied
      */
-    public static void copyNBTTagToClipboard(NBTBase nbtTag) {
-        writeToClipboard(prettyPrintNBT(nbtTag), "NBT data was copied to clipboard!");
+    public static void copyNBTTagToClipboard(NBTBase nbtTag, String message) {
+        writeToClipboard(prettyPrintNBT(nbtTag), message);
     }
 
     /**
      * Copies the provided NBT tags to the clipboard as a formatted string.
      *
      * @param nbtTags the NBT tags to copy
+     * @param message the message to show in chat when the NBT tag is copied
      */
-    public static void copyNBTTagsToClipboard(List<? extends NBTBase> nbtTags) {
+    public static void copyNBTTagsToClipboard(List<? extends NBTBase> nbtTags, String message) {
         StringBuilder stringBuilder = new StringBuilder();
 
         for (int i = 0; i < nbtTags.size(); i++) {
@@ -47,7 +49,7 @@ public class DevUtils {
             }
         }
 
-        writeToClipboard(stringBuilder.toString(), "NBT data was copied to clipboard!");
+        writeToClipboard(stringBuilder.toString(), message);
     }
 
     /**

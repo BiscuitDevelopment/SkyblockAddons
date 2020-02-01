@@ -208,11 +208,18 @@ public class NPCUtils {
      */
     public static boolean isNPC(Entity entity) {
         if (entity instanceof EntityOtherPlayerMP) {
-            Pattern SKYBLOCK_PLAYER_TEAM_PATTERN = Pattern.compile("(a\\d{9})");
-            Matcher PLAYER_TEAM_MATCHER = SKYBLOCK_PLAYER_TEAM_PATTERN.matcher(((EntityOtherPlayerMP) entity).getTeam().getRegisteredName());
+            EntityOtherPlayerMP player = (EntityOtherPlayerMP) entity;
+            Pattern skyblockPlayerTeamPattern = Pattern.compile("(a\\d{9})");
+            Matcher playerTeamMatcher;
+
+            // If it doesn't have a team, it's likely not a player.
+            if (player.getTeam() == null) {
+                return false;
+            }
 
             // Check if it's not a player because idk how to check if it's a Hypixel NPC
-            return !PLAYER_TEAM_MATCHER.matches();
+            playerTeamMatcher = skyblockPlayerTeamPattern.matcher(player.getTeam().getRegisteredName());
+            return !playerTeamMatcher.matches();
         }
         else if (entity instanceof EntityArmorStand) {
             return entity.isInvisible();

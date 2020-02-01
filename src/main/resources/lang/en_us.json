@@ -144,6 +144,11 @@
     "noArrowsLeft": "No Arrows Left!",
     "chooseAColor": "Choose a Color",
     "selectedColor": "Selected Color",
-    "setHexColor": "Set Hex Color"
+    "setHexColor": "Set Hex Color",
+    "devModeEnabled": "Developer mode enabled!",
+    "devModeDisabled": "Developer mode disabled!",
+    "devButtonDisabled": "Developer mode is off. This button does nothing.",
+    "devItemDataCopied": "Item data was copied to clipboard!",
+    "devEntityDataCopied": "Entity data was copied to clipboard!"
   }
 }

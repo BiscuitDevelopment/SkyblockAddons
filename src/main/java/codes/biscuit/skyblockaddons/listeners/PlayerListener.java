@@ -620,59 +620,66 @@ public class PlayerListener {
             main.getRenderListener().setGuiToOpen(PlayerListener.GUIType.EDIT_LOCATIONS, 0, null);
         }
         else if (main.getDevKey().isPressed()) {
-            // Copy item NBT if player is hovering over an item, otherwise copy entity NBT
-            GuiScreen currentScreen = Minecraft.getMinecraft().currentScreen;
+            if (main.isDevMode()) {
+                // Copy item NBT if player is hovering over an item, otherwise copy entity NBT
+                GuiScreen currentScreen = Minecraft.getMinecraft().currentScreen;
 
-            if (currentScreen instanceof GuiContainer) {
-                GuiContainer inventoryScreen = (GuiContainer) currentScreen;
-                Slot currentSlot = inventoryScreen.getSlotUnderMouse();
+                if (currentScreen instanceof GuiContainer) {
+                    GuiContainer inventoryScreen = (GuiContainer) currentScreen;
+                    Slot currentSlot = inventoryScreen.getSlotUnderMouse();
 
-                if (currentSlot != null && currentSlot.getHasStack()) {
-                    DevUtils.copyNBTTagToClipboard(currentSlot.getStack().getTagCompound());
+                    if (currentSlot != null && currentSlot.getHasStack()) {
+                        DevUtils.copyNBTTagToClipboard(currentSlot.getStack().getTagCompound(),
+                                ChatFormatting.GREEN + Message.MESSAGE_DEV_ITEM_DATA_COPIED.getMessage());
+                    }
                 }
-            }
-            else {
-                EntityPlayerSP playerSP = Minecraft.getMinecraft().thePlayer;
-                List<Entity> entityList = Minecraft.getMinecraft().theWorld.getLoadedEntityList();
-                List<String> entityData = new LinkedList<>();
+                else {
+                    EntityPlayerSP playerSP = Minecraft.getMinecraft().thePlayer;
+                    List<Entity> entityList = Minecraft.getMinecraft().theWorld.getLoadedEntityList();
+                    List<String> entityData = new LinkedList<>();
 
-                // We only care about other players and armor stands.
-                entityList.removeIf(entity -> entity.getDistanceToEntity(playerSP) > DevUtils.getEntityCopyRadius() &&
-                        !(entity instanceof EntityOtherPlayerMP || entity instanceof EntityArmorStand));
+                    // We only care about other players and armor stands.
+                    entityList.removeIf(entity -> entity.getDistanceToEntity(playerSP) > DevUtils.getEntityCopyRadius() &&
+                            !(entity instanceof EntityOtherPlayerMP || entity instanceof EntityArmorStand));
 
-                if (!entityList.isEmpty()) {
-                    ListIterator<Entity> entityListIterator = entityList.listIterator();
+                    if (!entityList.isEmpty()) {
+                        ListIterator<Entity> entityListIterator = entityList.listIterator();
 
-                    while (entityListIterator.hasNext()) {
-                        Entity entity = entityListIterator.next();
+                        while (entityListIterator.hasNext()) {
+                            Entity entity = entityListIterator.next();
 
-                        if (entity.getDistanceToEntity(playerSP) < DevUtils.getEntityCopyRadius()) {
-                            if (entity instanceof EntityOtherPlayerMP || entity instanceof EntityArmorStand) {
-                                BlockPos entityPosition = entity.getPosition();
+                            // The client isn't allowed to get the full entity NBT from the server.
+                            if (entity.getDistanceToEntity(playerSP) < DevUtils.getEntityCopyRadius()) {
+                                if (entity instanceof EntityOtherPlayerMP || entity instanceof EntityArmorStand) {
+                                    BlockPos entityPosition = entity.getPosition();
 
-                                entityData.add("Name: " + entity.getName());
-                                entityData.add("Type: " + entity.getClass().getSimpleName());
+                                    entityData.add("Name: " + entity.getName());
+                                    entityData.add("Type: " + entity.getClass().getSimpleName());
 
-                                // Some may not have a team.
-                                if (((EntityLivingBase) entity).getTeam() != null) {
-                                    entityData.add("Team: " + ((EntityLivingBase) entity).getTeam().getRegisteredName());
-                                }
-                                else {
-                                    entityData.add("Team: None");
-                                }
-                                entityData.add("Position: " + "[" + entityPosition.getX() + ", " +
-                                        entityPosition.getY() + ", " + entityPosition.getZ() + "]");
+                                    // Some may not have a team.
+                                    if (((EntityLivingBase) entity).getTeam() != null) {
+                                        entityData.add("Team: " + ((EntityLivingBase) entity).getTeam().getRegisteredName());
+                                    }
+                                    else {
+                                        entityData.add("Team: None");
+                                    }
+                                    entityData.add("Position: " + "[" + entityPosition.getX() + ", " +
+                                            entityPosition.getY() + ", " + entityPosition.getZ() + "]");
 
-                                // Add a blank line for spacing.
-                                if (entityListIterator.hasNext()) {
-                                    entityData.add("");
+                                    // Add a blank line for spacing.
+                                    if (entityListIterator.hasNext()) {
+                                        entityData.add("");
+                                    }
                                 }
                             }
                         }
-                    }
 
-                    DevUtils.copyStringsToClipboard(entityData, "Entity data copied to clipboard!");
+                        DevUtils.copyStringsToClipboard(entityData, ChatFormatting.GREEN + Message.MESSAGE_DEV_ENTITY_DATA_COPIED.getMessage());
+                    }
                 }
+            }
+            else {
+                main.getUtils().sendMessage(ChatFormatting.RED + Message.MESSAGE_DEV_BUTTON_DISABLED.getMessage());
             }
         }
     }

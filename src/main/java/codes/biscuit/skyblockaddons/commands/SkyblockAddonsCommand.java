@@ -3,6 +3,7 @@ package codes.biscuit.skyblockaddons.commands;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.listeners.PlayerListener;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
+import codes.biscuit.skyblockaddons.utils.Message;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
@@ -13,6 +14,8 @@ import java.util.Collections;
 import java.util.List;
 
 public class SkyblockAddonsCommand extends CommandBase {
+    private static String[] HELP_MESSAGE = {"Skyblock Addons Command Help", "Usage: /sba <option>", "help — Shows this help message",
+            "edit — Edit the GUI", "dev — Toggles developer mode", "folder — Opens the Minecraft mods folder", "update — Checks for updates"};
 
     private SkyblockAddons main;
 
@@ -49,15 +52,25 @@ public class SkyblockAddonsCommand extends CommandBase {
     public void processCommand(ICommandSender sender, String[] args) {
         if (args.length > 0) {
             switch (args[0]) {
+                case "help":
+                    for (String line:
+                         HELP_MESSAGE) {
+                        main.getUtils().sendMessage(line);
+                    }
+                    break;
                 case "edit":
                     main.getUtils().setFadingIn(false);
                     main.getRenderListener().setGuiToOpen(PlayerListener.GUIType.EDIT_LOCATIONS, 0, null);
                     break;
-                case "nbt":
-                    boolean copyingNBT = !main.getUtils().isCopyNBT();
-                    main.getUtils().setCopyNBT(copyingNBT);
-                    if (copyingNBT) main.getUtils().sendMessage(ChatFormatting.GREEN+"You are now able to copy the nbt of items. Hover over any item and press CTRL to copy.");
-                    else main.getUtils().sendMessage(ChatFormatting.RED+"You have disabled the ability to copy nbt.");
+                case "dev":
+                    boolean currentDevModeSetting = main.isDevMode();
+
+                    main.setDevMode(!currentDevModeSetting);
+
+                    if (main.isDevMode())
+                        main.getUtils().sendMessage(ChatFormatting.GREEN + Message.MESSAGE_DEV_MODE_ENABLED.getMessage());
+                    else
+                        main.getUtils().sendMessage(ChatFormatting.RED + Message.MESSAGE_DEV_MODE_DISABLED.getMessage());
                     break;
                 case "update":
                     if (main.getRenderListener().getDownloadInfo().isPatch())
@@ -71,12 +84,12 @@ public class SkyblockAddonsCommand extends CommandBase {
                     }
                     break;
             }
-
-            return;
         }
-
-        main.getUtils().setFadingIn(true);
-        main.getRenderListener().setGuiToOpen(PlayerListener.GUIType.MAIN, 1, EnumUtils.GuiTab.MAIN);
+        else {
+            // If there's no arguments given, open the main GUI
+            main.getUtils().setFadingIn(true);
+            main.getRenderListener().setGuiToOpen(PlayerListener.GUIType.MAIN, 1, EnumUtils.GuiTab.MAIN);
+        }
     }
 
 }
