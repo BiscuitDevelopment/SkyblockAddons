@@ -5,10 +5,13 @@ import codes.biscuit.skyblockaddons.asm.utils.ReturnValue;
 import codes.biscuit.skyblockaddons.utils.Feature;
 import codes.biscuit.skyblockaddons.utils.Message;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.client.resources.IReloadableResourceManager;
 import net.minecraft.client.resources.IResource;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItemFrame;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.ResourceLocation;
 import org.apache.commons.codec.digest.DigestUtils;
@@ -57,6 +60,21 @@ public class MinecraftHook {
             Minecraft mc = Minecraft.getMinecraft();
             if (mc.objectMouseOver != null && mc.objectMouseOver.typeOfHit == MovingObjectPosition.MovingObjectType.ENTITY) {
                 Entity entityIn = mc.objectMouseOver.entityHit;
+                if (main.getConfigValues().isEnabled(Feature.DONT_OPEN_PROFILES_WITH_BOW)) {
+                    if (entityIn instanceof EntityOtherPlayerMP && main.getUtils().isNotNPC(entityIn)) {
+                        ItemStack item = mc.thePlayer.inventory.getCurrentItem();
+                        ItemStack itemInUse = mc.thePlayer.getItemInUse();
+                        if ((isItemBow(item) || isItemBow(itemInUse))) {
+                            if (System.currentTimeMillis() - lastProfileMessage > 20000) {
+                                lastProfileMessage = System.currentTimeMillis();
+                                main.getUtils().sendMessage(main.getConfigValues().getRestrictedColor(Feature.DONT_OPEN_PROFILES_WITH_BOW) +
+                                        Message.MESSAGE_STOPPED_OPENING_PROFILE.getMessage());
+                            }
+                            returnValue.cancel();
+                            return;
+                        }
+                    }
+                }
                 if (main.getConfigValues().isEnabled(Feature.LOCK_SLOTS) && entityIn instanceof EntityItemFrame && ((EntityItemFrame)entityIn).getDisplayedItem() == null) {
                     int slot = mc.thePlayer.inventory.currentItem + 36;
                     if (main.getConfigValues().getLockedSlots().contains(slot) && slot >= 9) {
@@ -67,5 +85,9 @@ public class MinecraftHook {
                 }
             }
         }
+    }
+
+    private static boolean isItemBow(ItemStack item) {
+        return item != null && item.getItem() != null && item.getItem().equals(Items.bow);
     }
 }
