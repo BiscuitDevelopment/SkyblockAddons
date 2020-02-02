@@ -15,7 +15,7 @@
     "hideDurability": "Skjul Redskaps Varighet",
     "showEnchantmentsReforges": "Fortryllinger og reforges",
     "minionStopWarning": "\"Lakei Kan Ikke Nå\" Advarsel",
-    "hideAuctionHousePlayers": "Gjem Spillere Nærme Viktige NPCer",
+    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
     "backpackStyle": "Ryggsekk Stil: %style%",
     "backpackStyles": {
       "regular": "Vanlig",
@@ -94,7 +94,9 @@
     "noArrowsLeftAlert": "Ingen Piler Igjen Varsel",
     "hideNightVisionEffectTimer": "Skjul Natt Syn Effekt Timer",
     "showCakeBagPreview": "Vis Forhåndsvisning for Kake Sekker",
-    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open"
+    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
+    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
+    "enableDevFeatures": "Enable Developer Features"
   },
   "messages": {
     "dropConfirmation": "Slipp denne gjenstanden igjen for å bekrefte!",
