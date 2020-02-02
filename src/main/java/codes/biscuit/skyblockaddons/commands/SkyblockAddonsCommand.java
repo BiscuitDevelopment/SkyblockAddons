@@ -53,8 +53,7 @@ public class SkyblockAddonsCommand extends CommandBase {
         if (args.length > 0) {
             switch (args[0]) {
                 case "help":
-                    for (String line:
-                         HELP_MESSAGE) {
+                    for (String line: HELP_MESSAGE) {
                         main.getUtils().sendMessage(line);
                     }
                     break;
@@ -63,14 +62,13 @@ public class SkyblockAddonsCommand extends CommandBase {
                     main.getRenderListener().setGuiToOpen(PlayerListener.GUIType.EDIT_LOCATIONS, 0, null);
                     break;
                 case "dev":
-                    boolean currentDevModeSetting = main.isDevMode();
+                    main.setDevMode(!main.isDevMode());
 
-                    main.setDevMode(!currentDevModeSetting);
-
-                    if (main.isDevMode())
+                    if (main.isDevMode()) {
                         main.getUtils().sendMessage(ChatFormatting.GREEN + Message.MESSAGE_DEV_MODE_ENABLED.getMessage());
-                    else
+                    } else {
                         main.getUtils().sendMessage(ChatFormatting.RED + Message.MESSAGE_DEV_MODE_DISABLED.getMessage());
+                    }
                     break;
                 case "update":
                     if (main.getRenderListener().getDownloadInfo().isPatch())
