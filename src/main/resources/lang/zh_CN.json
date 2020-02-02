@@ -96,7 +96,7 @@
     "showCakeBagPreview": "显示蛋糕袋预览",
     "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
     "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
-    "enableDevFeatures": "Enable Developer Features"
+    "enableDevFeatures": "Developer Mode Key"
   },
   "messages": {
     "dropConfirmation": "再次丢弃此物品以确认!",
@@ -131,7 +131,7 @@
     "slotLocked": "该栏已锁！",
     "summoningEyeFound": "召唤之眼！",
     "cancelledStemBreak": "SkyblockAddons 已阻止你破坏此作物，如果你真的想要破坏它，请使用空手。",
-    "cancelledProfileOpening": "SkyblockAddons 已阻止你持弓打开玩家信息。",
+    "cancelledProfileOpening": "SkyblockAddons阻止了你在持弓的时候打开他人的档案。",
     "cancelledDropping": "SkyblockAddons 已阻止你将物品栏中的稀有物品或工具丢弃。",
     "clickMoreTimes": "SkyblockAddons 已阻止你售出物品。如果你真的想卖掉它，请再点击 %times% 次。",
     "cancelledDeepCaverns": "SkyblockAddons 已阻止在此开采矿物",
