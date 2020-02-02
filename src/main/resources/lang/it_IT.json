@@ -93,7 +93,8 @@
     "tabEffectTimers": "Timer pozioni e potenziamenti",
     "noArrowsLeftAlert": "Avviso frecce finite",
     "hideNightVisionEffectTimer": "Nascondi il timer dell’effetto visione notturna",
-    "showCakeBagPreview": "Mostra anteprima delle Cake Bags"
+    "showCakeBagPreview": "Mostra anteprima delle Cake Bags",
+    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open"
   },
   "messages": {
     "dropConfirmation": "Getta questo oggetto nuovamente per confermare!",
