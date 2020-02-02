@@ -93,7 +93,8 @@
     "tabEffectTimers": "Časovače Lektvarů a Powerupů",
     "noArrowsLeftAlert": "Upozornění na nedostatek šípů",
     "hideNightVisionEffectTimer": "Skrýt časovač efektu nočního vidění",
-    "showCakeBagPreview": "Ukázat přehled pro Tašky na Dorty"
+    "showCakeBagPreview": "Ukázat přehled pro Tašky na Dorty",
+    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open"
   },
   "messages": {
     "dropConfirmation": "Vyhoď tento item pro vyhození!",
