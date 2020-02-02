@@ -93,7 +93,8 @@
     "tabEffectTimers": "Minuteur potions/capacités",
     "noArrowsLeftAlert": "Alerte aucune flèche",
     "hideNightVisionEffectTimer": "Masquer le minuteur de la vision nocturne",
-    "showCakeBagPreview": "Aperçu des sacs à gâteau"
+    "showCakeBagPreview": "Aperçu des sacs à gâteau",
+    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open"
   },
   "messages": {
     "dropConfirmation": "Jetez cet objet une nouvelle fois pour confirmer!",
