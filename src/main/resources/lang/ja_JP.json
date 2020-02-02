@@ -95,8 +95,8 @@
     "hideNightVisionEffectTimer": "暗視効果のタイマーを表示しない",
     "showCakeBagPreview": "ケーキバッグのプレビューを表示",
     "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
-    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
-    "enableDevFeatures": "Enable Developer Features"
+    "hidePlayersNearHarp": "ハープの近くのプレイヤーを隠す",
+    "enableDevFeatures": "開発者機能の有効化"
   },
   "messages": {
     "dropConfirmation": "落としてもいいのであれば、このアイテムをもう一度ドロップしてください。",
