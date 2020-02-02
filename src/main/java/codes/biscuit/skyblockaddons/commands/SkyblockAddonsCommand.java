@@ -2,6 +2,7 @@ package codes.biscuit.skyblockaddons.commands;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
+import codes.biscuit.skyblockaddons.utils.Utils;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
@@ -14,12 +15,12 @@ import java.util.List;
 public class SkyblockAddonsCommand extends CommandBase {
 
     private static String[] HELP_MESSAGE = {
-            color("&7&m--------------&7[&b&l SkyblockAddons &7]&7&m--------------"),
-            color("&a● /sba &7- Open the main menu"),
-            color("&a● /sba edit &7- Edit GUI locations"),
-            color("&a● /sba dev &7- Toggle developer mode"),
-            color("&a● /sba folder &7- Open your mods folder"),
-            color("&7&m----------------------------------------------")};
+            Utils.color("&7&m------------&7[&b&l SkyblockAddons &7]&7&m------------"),
+            Utils.color("&b● /sba &7- Open the main menu"),
+            Utils.color("&b● /sba edit &7- Edit GUI locations"),
+            Utils.color("&b● /sba dev &7- Toggle developer mode"),
+            Utils.color("&b● /sba folder &7- Open your mods folder"),
+            Utils.color("&7&m----------------------------------------------")};
 
     private SkyblockAddons main;
 
@@ -92,9 +93,5 @@ public class SkyblockAddonsCommand extends CommandBase {
             main.getUtils().setFadingIn(true);
             main.getRenderListener().setGuiToOpen(EnumUtils.GUIType.MAIN, 1, EnumUtils.GuiTab.MAIN);
         }
-    }
-
-    public static String color(String text) {
-        return ChatFormatting.translateAlternateColorCodes('&', text);
     }
 }

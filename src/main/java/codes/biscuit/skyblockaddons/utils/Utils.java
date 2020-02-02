@@ -55,7 +55,7 @@ public class Utils {
 
     /** Added to the beginning of messages. */
     private static final String MESSAGE_PREFIX =
-            ChatFormatting.WHITE + "[" + ChatFormatting.BLUE + SkyblockAddons.MOD_NAME + ChatFormatting.WHITE + "] ";
+            ChatFormatting.GRAY + "[" + ChatFormatting.AQUA + SkyblockAddons.MOD_NAME + ChatFormatting.GRAY + "] ";
 
     /** Enchantments listed by how good they are. May or may not be subjective lol. */
     private static final List<String> ORDERED_ENCHANTMENTS = Collections.unmodifiableList(Arrays.asList(
@@ -135,7 +135,7 @@ public class Utils {
     }
 
     public void sendMessage(String text, boolean prefix) {
-        ClientChatReceivedEvent event = new ClientChatReceivedEvent((byte) 1, new ChatComponentText(prefix ? MESSAGE_PREFIX : "" + text));
+        ClientChatReceivedEvent event = new ClientChatReceivedEvent((byte) 1, new ChatComponentText((prefix ? MESSAGE_PREFIX : "") + text));
         MinecraftForge.EVENT_BUS.post(event); // Let other mods pick up the new message
         if (!event.isCanceled()) {
             Minecraft.getMinecraft().thePlayer.addChatMessage(event.message); // Just for logs
@@ -148,6 +148,10 @@ public class Utils {
 
     private void sendMessage(ChatComponentText text) {
         sendMessage(text.getFormattedText());
+    }
+
+    private void sendMessage(ChatComponentText text, boolean prefix) {
+        sendMessage(text.getFormattedText(), prefix);
     }
 
     public void sendErrorMessage(String errorText) {
@@ -352,14 +356,13 @@ public class Utils {
 
     void sendUpdateMessage(boolean showDownload, boolean showAutoDownload) {
         String newestVersion = main.getRenderListener().getDownloadInfo().getNewestVersion();
-        sendMessage(ChatFormatting.GRAY.toString() + ChatFormatting.STRIKETHROUGH + "--------" + ChatFormatting.GRAY + '[' +
-                            ChatFormatting.AQUA + ChatFormatting.BOLD + " SkyblockAddons " + ChatFormatting.GRAY + ']' + ChatFormatting.GRAY + ChatFormatting.STRIKETHROUGH + "--------");
+        sendMessage(color("&7&m------------&7[&b&l SkyblockAddons &7]&7&m------------"), false);
         if (main.getRenderListener().getDownloadInfo().getMessageType() == EnumUtils.UpdateMessageType.DOWNLOAD_FINISHED) {
             ChatComponentText deleteOldFile = new ChatComponentText(ChatFormatting.RED+Message.MESSAGE_DELETE_OLD_FILE.getMessage()+"\n");
-            sendMessage(deleteOldFile);
+            sendMessage(deleteOldFile, false);
         } else {
             ChatComponentText newUpdate = new ChatComponentText(ChatFormatting.AQUA+Message.MESSAGE_NEW_UPDATE.getMessage(newestVersion)+"\n");
-            sendMessage(newUpdate);
+            sendMessage(newUpdate, false);
         }
 
         ChatComponentText buttonsMessage = new ChatComponentText("");
@@ -380,14 +383,14 @@ public class Utils {
         openModsFolder.setChatStyle(openModsFolder.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/sba folder")));
         buttonsMessage.appendSibling(openModsFolder);
 
-        sendMessage(buttonsMessage);
+        sendMessage(buttonsMessage, false);
         if (main.getRenderListener().getDownloadInfo().getMessageType() != EnumUtils.UpdateMessageType.DOWNLOAD_FINISHED) {
             ChatComponentText discord = new ChatComponentText(ChatFormatting.AQUA + Message.MESSAGE_VIEW_PATCH_NOTES.getMessage() + " " +
                                                                       ChatFormatting.BLUE.toString() + ChatFormatting.BOLD + '[' + Message.MESSAGE_JOIN_DISCORD.getMessage() + ']');
             discord.setChatStyle(discord.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://discord.gg/PqTAEek")));
             sendMessage(discord);
         }
-        sendMessage(ChatFormatting.GRAY.toString() + ChatFormatting.STRIKETHROUGH + "----------------------------------");
+        sendMessage(color("&7&m----------------------------------------------"), false);
     }
 
     public void checkDisabledFeatures() {
@@ -635,6 +638,10 @@ public class Utils {
                 }
             }).start();
         }
+    }
+
+    public static String color(String text) {
+        return ChatFormatting.translateAlternateColorCodes('&', text);
     }
 
     @SuppressWarnings("unchecked")
