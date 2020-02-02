@@ -15,7 +15,7 @@
     "hideDurability": "Folaigh Buanfas Uirlisí",
     "showEnchantmentsReforges": "Draíocht & Ré-Cruthach",
     "minionStopWarning": "Rabhadh \"Giolla as Raon\"",
-    "hideAuctionHousePlayers": "Imreoirí in aice le NPCs tábhachtacha Folaigh",
+    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
     "backpackStyle": "Stíl Mála: %style%",
     "backpackStyles": {
       "regular": "Gnáthach",
@@ -94,7 +94,9 @@
     "noArrowsLeftAlert": "No Arrows Left Alert",
     "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
     "showCakeBagPreview": "Show Preview for Cake Bags",
-    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open"
+    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
+    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
+    "enableDevFeatures": "Enable Developer Features"
   },
   "messages": {
     "dropConfirmation": "Leag síos an mír seo arís le cinntiú!",
