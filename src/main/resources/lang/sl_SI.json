@@ -93,7 +93,8 @@
     "tabEffectTimers": "Časovnik za napoje in učinke",
     "noArrowsLeftAlert": "Opozorilo za manjko puščic",
     "hideNightVisionEffectTimer": "Skrij časovnik za Night Vision Potion",
-    "showCakeBagPreview": "Pokaži predogled torb s tortami"
+    "showCakeBagPreview": "Pokaži predogled torb s tortami",
+    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open"
   },
   "messages": {
     "dropConfirmation": "Ponovno Izpusti To Stvar za Potrditev!",
