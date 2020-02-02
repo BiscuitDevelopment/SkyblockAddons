@@ -93,7 +93,8 @@
     "tabEffectTimers": "Temporizador de Pociones y Powerup",
     "noArrowsLeftAlert": "Alerta de Quedarse sin Flechas",
     "hideNightVisionEffectTimer": "Ocultar el temporizador del efecto de visión nocturna",
-    "showCakeBagPreview": "Mostrar Preview para los Cake Bags"
+    "showCakeBagPreview": "Mostrar Preview para los Cake Bags",
+    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open"
   },
   "messages": {
     "dropConfirmation": "¡Dropea el Objeto otra vez para soltar!",
