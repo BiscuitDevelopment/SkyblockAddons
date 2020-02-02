@@ -16,8 +16,8 @@
   <a href="https://twitter.com/bisccut">
     <img alt="twitter" src="https://img.shields.io/twitter/follow/bisccut?style=social" target="_blank" />
   </a>
-  <a href="https://discord.gg/PqTAEek">
-    <img alt="discord" src="https://badges.crowdin.net/skyblockaddons/localized.svg?color=56bcd3" target="_blank" />
+  <a href="https://translate.biscuit.codes">
+    <img alt="discord" src="https://badges.crowdin.net/skyblockaddons/localized.svg" target="_blank" />
   </a>
 </p>
 
