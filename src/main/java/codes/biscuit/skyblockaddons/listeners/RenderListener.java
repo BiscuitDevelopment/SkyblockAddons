@@ -407,7 +407,7 @@ public class RenderListener {
                 textList = downloadInfo.getMessageType().getMessages();
             }
             int halfWidth = new ScaledResolution(mc).getScaledWidth() / 2;
-            Gui.drawRect(halfWidth - 110, 20, halfWidth + 110, 53 + textList.length * 10, ChatFormatting.RED.getColor(127).getRGB());
+            Gui.drawRect(halfWidth - 110, 20, halfWidth + 110, 53 + textList.length * 10, main.getUtils().getDefaultBlue(140));
             String text = "SkyblockAddons";
             GlStateManager.pushMatrix();
             float scale = 1.5F;
