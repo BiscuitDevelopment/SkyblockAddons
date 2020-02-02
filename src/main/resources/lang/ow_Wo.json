@@ -15,7 +15,7 @@
     "hideDurability": "Hide Toow Duwabiwiwy",
     "showEnchantmentsReforges": "Enchawnts & Wefowoges",
     "minionStopWarning": "\"Minwion Cannwot Weach\" Wawning",
-    "hideAuctionHousePlayers": "Hide Pwayers Nyeaw Auwction Howse",
+    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
     "backpackStyle": "Bwackpack Stywe: %style%",
     "backpackStyles": {
       "regular": "Regurawr",
@@ -94,7 +94,9 @@
     "noArrowsLeftAlert": "No Awwows Weft Awewt",
     "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
     "showCakeBagPreview": "Show Preview for Cake Bags",
-    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open"
+    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
+    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
+    "enableDevFeatures": "Enable Developer Features"
   },
   "messages": {
     "dropConfirmation": "Dwop thwis itwem agwain to confiwm!",
