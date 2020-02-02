@@ -15,7 +15,7 @@
     "hideDurability": "Skrýt výdrž nástrojů",
     "showEnchantmentsReforges": "Očarování a překování",
     "minionStopWarning": "Várování o nedosáhnutí miniona",
-    "hideAuctionHousePlayers": "Skrýt hráče blízko důležitých Vesničanů",
+    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
     "backpackStyle": "Styl batůžků: %style%",
     "backpackStyles": {
       "regular": "Klasický",
@@ -94,7 +94,9 @@
     "noArrowsLeftAlert": "Upozornění na nedostatek šípů",
     "hideNightVisionEffectTimer": "Skrýt časovač efektu nočního vidění",
     "showCakeBagPreview": "Ukázat přehled pro Tašky na Dorty",
-    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open"
+    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
+    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
+    "enableDevFeatures": "Enable Developer Features"
   },
   "messages": {
     "dropConfirmation": "Vyhoď tento item pro vyhození!",
