@@ -95,8 +95,8 @@
     "hideNightVisionEffectTimer": "Skrýt časovač efektu nočního vidění",
     "showCakeBagPreview": "Ukázat přehled pro Tašky na Dorty",
     "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
-    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
-    "enableDevFeatures": "Enable Developer Features"
+    "hidePlayersNearHarp": "Skrýt hráče poblíž Melodyho harfy",
+    "enableDevFeatures": "Aktivovat možnosti pro vývojáře"
   },
   "messages": {
     "dropConfirmation": "Vyhoď tento item pro vyhození!",
