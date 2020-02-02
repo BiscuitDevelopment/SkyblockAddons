@@ -1,6 +1,7 @@
 package codes.biscuit.skyblockaddons;
 
 import codes.biscuit.skyblockaddons.commands.SkyblockAddonsCommand;
+import codes.biscuit.skyblockaddons.listeners.GuiScreenListener;
 import codes.biscuit.skyblockaddons.listeners.PlayerListener;
 import codes.biscuit.skyblockaddons.listeners.RenderListener;
 import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsTransformer;
@@ -22,7 +23,7 @@ import java.lang.reflect.Field;
 import java.util.Timer;
 import java.util.TimerTask;
 
-@Mod(modid = SkyblockAddons.MOD_ID, version = SkyblockAddons.VERSION, name = SkyblockAddons.MOD_NAME, clientSideOnly = true, acceptedMinecraftVersions = "[1.8.9]")
+@Mod(modid = SkyblockAddons.MOD_ID, version = SkyblockAddons.VERSION, name = SkyblockAddons.MOD_NAME, useMetadata = true, clientSideOnly = true, acceptedMinecraftVersions = "[1.8.9]")
 public class SkyblockAddons {
 
     static final String MOD_ID = "skyblockaddons";
@@ -33,13 +34,15 @@ public class SkyblockAddons {
     private ConfigValues configValues;
     private PersistentValues persistentValues;
     private PlayerListener playerListener = new PlayerListener(this);
+    private GuiScreenListener guiScreenListener = new GuiScreenListener(this);
     private RenderListener renderListener = new RenderListener(this);
     private Utils utils = new Utils(this);
     private InventoryUtils inventoryUtils = new InventoryUtils(this);
     private Scheduler scheduler = new Scheduler(this);
     private boolean usingLabymod = false;
     private boolean usingOofModv1 = false;
-    private KeyBinding[] keyBindings = new KeyBinding[4];
+    private boolean devMode = false;
+    private KeyBinding[] keyBindings = new KeyBinding[5];
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent e) {
@@ -50,6 +53,7 @@ public class SkyblockAddons {
     @Mod.EventHandler
     public void init(FMLInitializationEvent e) {
         MinecraftForge.EVENT_BUS.register(playerListener);
+        MinecraftForge.EVENT_BUS.register(guiScreenListener);
         MinecraftForge.EVENT_BUS.register(renderListener);
         MinecraftForge.EVENT_BUS.register(scheduler);
         ClientCommandHandler.instance.registerCommand(new SkyblockAddonsCommand(this));
@@ -58,6 +62,7 @@ public class SkyblockAddons {
         keyBindings[1] = new KeyBinding("key.skyblockaddons.edit_gui", Keyboard.KEY_NONE, MOD_NAME);
         keyBindings[2] = new KeyBinding("key.skyblockaddons.lock_slot", Keyboard.KEY_L, MOD_NAME);
         keyBindings[3] = new KeyBinding("key.skyblockaddons.freeze_backpack", Keyboard.KEY_F, MOD_NAME);
+        keyBindings[4] = new KeyBinding("key.skyblockaddons.dev", Keyboard.KEY_NONE, MOD_NAME);
 
         for (KeyBinding keyBinding : keyBindings) {
             ClientRegistry.registerKeyBinding(keyBinding);
@@ -108,6 +113,7 @@ public class SkyblockAddons {
         changeKeyBindDescription(keyBindings[1], Message.SETTING_EDIT_LOCATIONS.getMessage());
         changeKeyBindDescription(keyBindings[2], Message.SETTING_LOCK_SLOT.getMessage());
         changeKeyBindDescription(keyBindings[3], Message.SETTING_SHOW_BACKPACK_PREVIEW.getMessage());
+        changeKeyBindDescription(keyBindings[4], Message.SETTING_ENABLE_DEV_FEATURES.getMessage());
     }
 
     private void scheduleMagmaCheck() {
@@ -159,6 +165,26 @@ public class SkyblockAddons {
         return usingOofModv1;
     }
 
+    /**
+     * Check whether developer mode is enabled.
+     *
+     * @return {@code true} if developer mode is enabled, {@code false} if it isn't
+     */
+    public boolean isDevMode() {
+        return devMode;
+    }
+
+    /**
+     * <p>Toggles developer mode.</p>
+     * <p>Developer mode enables a set of features that are useful for Skyblock Addons Developers,
+     * like NBT data copying.</p>
+     *
+     * @param devMode Set to {@code true} to enable developer mode
+     */
+    public void setDevMode(boolean devMode) {
+        this.devMode = devMode;
+    }
+
     public Scheduler getScheduler() {
         return scheduler;
     }
@@ -177,5 +203,9 @@ public class SkyblockAddons {
 
     public KeyBinding getFreezeBackpackKey() {
         return keyBindings[3];
+    }
+
+    public KeyBinding getDevKey() {
+        return keyBindings[4];
     }
 }

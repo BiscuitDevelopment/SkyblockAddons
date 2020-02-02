@@ -2,13 +2,16 @@ package codes.biscuit.skyblockaddons.listeners;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.utils.*;
+import codes.biscuit.skyblockaddons.utils.dev.DevUtils;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.gui.inventory.GuiChest;
+import net.minecraft.client.gui.inventory.*;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityArmorStand;
 import net.minecraft.entity.monster.EntityBlaze;
 import net.minecraft.entity.monster.EntityEnderman;
@@ -21,6 +24,7 @@ import net.minecraft.inventory.ContainerChest;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.Vec3;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
@@ -38,14 +42,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
-import java.awt.*;
-import java.awt.datatransfer.Clipboard;
-import java.awt.datatransfer.DataFlavor;
-import java.awt.datatransfer.StringSelection;
-import java.awt.datatransfer.UnsupportedFlavorException;
-import java.io.IOException;
 import java.util.*;
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -501,24 +498,6 @@ public class PlayerListener {
     @SubscribeEvent()
     public void onItemTooltip(ItemTooltipEvent e) {
         ItemStack hoveredItem = e.itemStack;
-        if (hoveredItem.hasTagCompound() && GuiScreen.isCtrlKeyDown() && main.getUtils().isCopyNBT()) {
-            Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-            String nbt = hoveredItem.getTagCompound().toString();
-            try {
-                if (!clipboard.getData(DataFlavor.stringFlavor).equals(nbt)) {
-                    clipboard.setContents(new StringSelection(nbt), null);
-                    main.getUtils().sendMessage(ChatFormatting.GREEN + "Copied this item's NBT to clipboard!");
-                }
-            } catch (UnsupportedFlavorException | IOException ex) {
-                try {
-                    clipboard.setContents(new StringSelection(nbt), null);
-                    main.getUtils().sendMessage(ChatFormatting.GREEN + "Copied this item's NBT to clipboard!");
-                } catch (IllegalStateException ex1) {
-                    main.getUtils().sendMessage(ChatFormatting.RED + "Error copying item NBT to clipboard!");
-                    ex.printStackTrace();
-                }
-            }
-        }
 
         if (e.toolTip != null && main.getUtils().isOnSkyblock() && !main.getConfigValues().isRemoteDisabled(Feature.HIDE_GREY_ENCHANTS)) {
             for (int i = 1; i <= 3; i++) { // only a max of 2 gray enchants are possible
@@ -635,6 +614,57 @@ public class PlayerListener {
         else if (main.getOpenEditLocationsKey().isPressed()) {
             main.getUtils().setFadingIn(false);
             main.getRenderListener().setGuiToOpen(PlayerListener.GUIType.EDIT_LOCATIONS, 0, null);
+        }
+        else if (main.getDevKey().isPressed()) {
+
+            // Copy Entity Data
+            if (main.isDevMode()) {
+                EntityPlayerSP playerSP = Minecraft.getMinecraft().thePlayer;
+                List<Entity> entityList = Minecraft.getMinecraft().theWorld.getLoadedEntityList();
+                List<String> entityData = new LinkedList<>();
+
+                // We only care about other players and armor stands.
+                entityList.removeIf(entity -> entity.getDistanceToEntity(playerSP) > DevUtils.getEntityCopyRadius() &&
+                        !(entity instanceof EntityOtherPlayerMP || entity instanceof EntityArmorStand));
+
+                if (!entityList.isEmpty()) {
+                    ListIterator<Entity> entityListIterator = entityList.listIterator();
+
+                    while (entityListIterator.hasNext()) {
+                        Entity entity = entityListIterator.next();
+
+                        // The client isn't allowed to get the full entity NBT from the server.
+                        if (entity.getDistanceToEntity(playerSP) < DevUtils.getEntityCopyRadius()) {
+                            if (entity instanceof EntityOtherPlayerMP || entity instanceof EntityArmorStand) {
+                                BlockPos entityPosition = entity.getPosition();
+
+                                entityData.add("Name: " + entity.getName());
+                                entityData.add("Type: " + entity.getClass().getSimpleName());
+
+                                // Some may not have a team.
+                                if (((EntityLivingBase) entity).getTeam() != null) {
+                                    entityData.add("Team: " + ((EntityLivingBase) entity).getTeam().getRegisteredName());
+                                }
+                                else {
+                                    entityData.add("Team: None");
+                                }
+                                entityData.add("Position: " + "[" + entityPosition.getX() + ", " +
+                                        entityPosition.getY() + ", " + entityPosition.getZ() + "]");
+
+                                // Add a blank line for spacing.
+                                if (entityListIterator.hasNext()) {
+                                    entityData.add("");
+                                }
+                            }
+                        }
+                    }
+
+                    DevUtils.copyStringsToClipboard(entityData, ChatFormatting.GREEN + Message.MESSAGE_DEV_ENTITY_DATA_COPIED.getMessage());
+                }
+            }
+            else {
+                main.getUtils().sendMessage(ChatFormatting.RED + Message.MESSAGE_DEV_BUTTON_DISABLED.getMessage());
+            }
         }
     }
 

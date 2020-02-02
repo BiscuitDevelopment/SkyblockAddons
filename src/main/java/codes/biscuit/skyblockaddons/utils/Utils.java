@@ -12,15 +12,12 @@ import com.google.common.collect.Sets;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.entity.EntityOtherPlayerMP;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.event.ClickEvent;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.launchwrapper.Launch;
-import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.*;
 import net.minecraft.scoreboard.*;
 import net.minecraft.util.ChatComponentText;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
@@ -60,6 +57,8 @@ public class Utils {
 
     private final Pattern ITEM_ABILITY_PATTERN = Pattern.compile("§5§o§6Item Ability: ([A-Za-z ]+) §e§l[A-Z ]+");
 
+    private static final String MESSAGE_HEADER = ChatFormatting.WHITE + "[" + ChatFormatting.BLUE + SkyblockAddons.MOD_NAME +
+            ChatFormatting.WHITE + "] ";
     private static final List<String> ORDERED_ENCHANTMENTS = Collections.unmodifiableList(Arrays.asList(
             "smite","bane of arthropods","knockback","fire aspect","venomous", // Sword Bad
             "thorns","growth","protection","depth strider","respiration","aqua affinity", // Armor
@@ -79,7 +78,6 @@ public class Utils {
     private EnumUtils.Location location = null;
     private String profileName = null;
     private boolean playingSound = false;
-    private boolean copyNBT = false;
     private String serverID = "";
     private SkyblockDate currentDate = new SkyblockDate(SkyblockDate.SkyblockMonth.EARLY_WINTER, 1, 1, 1);
     private int lastHoveredSlot = -1;
@@ -100,7 +98,7 @@ public class Utils {
     }
 
     public void sendMessage(String text) {
-        ClientChatReceivedEvent event = new ClientChatReceivedEvent((byte) 1, new ChatComponentText(text));
+        ClientChatReceivedEvent event = new ClientChatReceivedEvent((byte) 1, new ChatComponentText(MESSAGE_HEADER + text));
         MinecraftForge.EVENT_BUS.post(event); // Let other mods pick up the new message
         if (!event.isCanceled()) {
             Minecraft.getMinecraft().thePlayer.addChatMessage(event.message); // Just for logs
@@ -108,11 +106,18 @@ public class Utils {
     }
 
     private void sendMessage(ChatComponentText text) {
-        ClientChatReceivedEvent event = new ClientChatReceivedEvent((byte) 1, text);
+        ChatComponentText output = new ChatComponentText(MESSAGE_HEADER + text);
+        ClientChatReceivedEvent event = new ClientChatReceivedEvent((byte) 1, output);
         MinecraftForge.EVENT_BUS.post(event); // Let other mods pick up the new message
         if (!event.isCanceled()) {
             Minecraft.getMinecraft().thePlayer.addChatMessage(event.message); // Just for logs
         }
+    }
+
+    public void sendErrorMessage(String errorText) {
+        String errorPrefix = ChatFormatting.BOLD + "Error: " + ChatFormatting.WHITE;
+
+        sendMessage(errorPrefix + errorText);
     }
 
     private static final Pattern SERVER_REGEX = Pattern.compile("([0-9]{2}/[0-9]{2}/[0-9]{2}) (mini[0-9]{1,3}[A-Za-z])");
@@ -122,6 +127,7 @@ public class Utils {
     public void checkGameLocationDate() {
         boolean foundLocation = false;
         Minecraft mc = Minecraft.getMinecraft();
+
         if (mc != null && mc.theWorld != null) {
             Scoreboard scoreboard = mc.theWorld.getScoreboard();
             ScoreObjective sidebarObjective = mc.theWorld.getScoreboard().getObjectiveInDisplaySlot(1);
@@ -134,15 +140,16 @@ public class Utils {
                         break;
                     }
                 }
-                Collection<Score> collection = scoreboard.getSortedScores(sidebarObjective);
-                List<Score> list = Lists.newArrayList(collection.stream().filter(p_apply_1_ -> p_apply_1_.getPlayerName() != null && !p_apply_1_.getPlayerName().startsWith("#")).collect(Collectors.toList()));
+
+                Collection<Score> scores = scoreboard.getSortedScores(sidebarObjective);
+                List<Score> list = Lists.newArrayList(scores.stream().filter(p_apply_1_ -> p_apply_1_.getPlayerName() != null && !p_apply_1_.getPlayerName().startsWith("#")).collect(Collectors.toList()));
                 if (list.size() > 15) {
-                    collection = Lists.newArrayList(Iterables.skip(list, collection.size() - 15));
+                    scores = Lists.newArrayList(Iterables.skip(list, scores.size() - 15));
                 } else {
-                    collection = list;
+                    scores = list;
                 }
                 String timeString = null;
-                for (Score score1 : collection) {
+                for (Score score1 : scores) {
                     ScorePlayerTeam scorePlayerTeam = scoreboard.getPlayersTeam(score1.getPlayerName());
                     String locationString = keepLettersAndNumbersOnly(
                             stripColor(ScorePlayerTeam.formatPlayerName(scorePlayerTeam, score1.getPlayerName())));
@@ -155,13 +162,13 @@ public class Utils {
                             try {
                                 currentDate.setMonth(month);
                                 String numberPart = locationString.substring(locationString.lastIndexOf(" ") + 1);
-                                int day = Integer.valueOf(getNumbersOnly(numberPart));
+                                int day = Integer.parseInt(getNumbersOnly(numberPart));
                                 currentDate.setDay(day);
                                 if (timeString != null) {
                                     String[] timeSplit = timeString.split(Pattern.quote(":"));
-                                    int hour = Integer.valueOf(timeSplit[0]);
+                                    int hour = Integer.parseInt(timeSplit[0]);
                                     currentDate.setHour(hour);
-                                    int minute = Integer.valueOf(timeSplit[1]);
+                                    int minute = Integer.parseInt(timeSplit[1]);
                                     currentDate.setMinute(minute);
                                 }
                             } catch (IndexOutOfBoundsException | NumberFormatException ignored) {}
@@ -180,7 +187,7 @@ public class Utils {
                             if (loopLocation == EnumUtils.Location.BLAZING_FORTRESS &&
                                     location != EnumUtils.Location.BLAZING_FORTRESS) {
                                 sendPostRequest(EnumUtils.MagmaEvent.PING); // going into blazing fortress
-                                main.getUtils().fetchEstimateFromServer();
+                                fetchEstimateFromServer();
                             }
                             location = loopLocation;
                             foundLocation = true;
@@ -319,8 +326,8 @@ public class Utils {
 
     void sendUpdateMessage(boolean showDownload, boolean showAutoDownload) {
         String newestVersion = main.getRenderListener().getDownloadInfo().getNewestVersion();
-        sendMessage(ChatFormatting.GRAY.toString() + ChatFormatting.STRIKETHROUGH + "--------" + ChatFormatting.GRAY + "[" +
-                            ChatFormatting.AQUA + ChatFormatting.BOLD + " SkyblockAddons " + ChatFormatting.GRAY + "]" + ChatFormatting.GRAY + ChatFormatting.STRIKETHROUGH + "--------");
+        sendMessage(ChatFormatting.GRAY.toString() + ChatFormatting.STRIKETHROUGH + "--------" + ChatFormatting.GRAY + '[' +
+                            ChatFormatting.AQUA + ChatFormatting.BOLD + " SkyblockAddons " + ChatFormatting.GRAY + ']' + ChatFormatting.GRAY + ChatFormatting.STRIKETHROUGH + "--------");
         if (main.getRenderListener().getDownloadInfo().getMessageType() == EnumUtils.UpdateMessageType.DOWNLOAD_FINISHED) {
             ChatComponentText deleteOldFile = new ChatComponentText(ChatFormatting.RED+Message.MESSAGE_DELETE_OLD_FILE.getMessage()+"\n");
             sendMessage(deleteOldFile);
@@ -331,26 +338,26 @@ public class Utils {
 
         ChatComponentText buttonsMessage = new ChatComponentText("");
         if (showDownload) {
-            buttonsMessage = new ChatComponentText(ChatFormatting.AQUA.toString() + ChatFormatting.BOLD + "[" + Message.MESSAGE_DOWNLOAD_LINK.getMessage(newestVersion) + "]");
+            buttonsMessage = new ChatComponentText(ChatFormatting.AQUA.toString() + ChatFormatting.BOLD + '[' + Message.MESSAGE_DOWNLOAD_LINK.getMessage(newestVersion) + ']');
             buttonsMessage.setChatStyle(buttonsMessage.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, main.getRenderListener().getDownloadInfo().getDownloadLink())));
             buttonsMessage.appendSibling(new ChatComponentText(" "));
         }
 
         if (showAutoDownload) {
-            ChatComponentText downloadAutomatically = new ChatComponentText(ChatFormatting.GREEN.toString() + ChatFormatting.BOLD + "[" + Message.MESSAGE_DOWNLOAD_AUTOMATICALLY.getMessage(newestVersion) + "]");
+            ChatComponentText downloadAutomatically = new ChatComponentText(ChatFormatting.GREEN.toString() + ChatFormatting.BOLD + '[' + Message.MESSAGE_DOWNLOAD_AUTOMATICALLY.getMessage(newestVersion) + ']');
             downloadAutomatically.setChatStyle(downloadAutomatically.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/sba update")));
             buttonsMessage.appendSibling(downloadAutomatically);
             buttonsMessage.appendSibling(new ChatComponentText(" "));
         }
 
-        ChatComponentText openModsFolder = new ChatComponentText(ChatFormatting.YELLOW.toString() + ChatFormatting.BOLD + "[" + Message.MESSAGE_OPEN_MODS_FOLDER.getMessage(newestVersion) + "]");
+        ChatComponentText openModsFolder = new ChatComponentText(ChatFormatting.YELLOW.toString() + ChatFormatting.BOLD + '[' + Message.MESSAGE_OPEN_MODS_FOLDER.getMessage(newestVersion) + ']');
         openModsFolder.setChatStyle(openModsFolder.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/sba folder")));
         buttonsMessage.appendSibling(openModsFolder);
 
         sendMessage(buttonsMessage);
         if (main.getRenderListener().getDownloadInfo().getMessageType() != EnumUtils.UpdateMessageType.DOWNLOAD_FINISHED) {
             ChatComponentText discord = new ChatComponentText(ChatFormatting.AQUA + Message.MESSAGE_VIEW_PATCH_NOTES.getMessage() + " " +
-                                                                      ChatFormatting.BLUE.toString() + ChatFormatting.BOLD + "[" + Message.MESSAGE_JOIN_DISCORD.getMessage() + "]");
+                                                                      ChatFormatting.BLUE.toString() + ChatFormatting.BOLD + '[' + Message.MESSAGE_JOIN_DISCORD.getMessage() + ']');
             discord.setChatStyle(discord.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://discord.gg/PqTAEek")));
             sendMessage(discord);
         }
@@ -389,19 +396,6 @@ public class Utils {
                 ex.printStackTrace();
             }
         }).start();
-    }
-
-    public boolean isNotNPC(Entity entity) {
-        if (entity instanceof EntityOtherPlayerMP) {
-            EntityPlayer p = (EntityPlayer)entity;
-            Team team = p.getTeam();
-            if (team instanceof ScorePlayerTeam) {
-                ScorePlayerTeam playerTeam = (ScorePlayerTeam)team;
-                String color = playerTeam.getColorPrefix();
-                return color == null || !"".equals(color);
-            }
-        }
-        return true;
     }
 
     public int getDefaultColor(float alphaFloat) {
@@ -846,14 +840,6 @@ public class Utils {
 
     public Map<Attribute, MutableInt> getAttributes() {
         return attributes;
-    }
-
-    public boolean isCopyNBT() {
-        return copyNBT;
-    }
-
-    public void setCopyNBT(boolean copyNBT) {
-        this.copyNBT = copyNBT;
     }
 
     public SkyblockDate getCurrentDate() {
