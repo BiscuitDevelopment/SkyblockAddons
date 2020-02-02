@@ -57,7 +57,7 @@ public class Utils {
 
     private final Pattern ITEM_ABILITY_PATTERN = Pattern.compile("§5§o§6Item Ability: ([A-Za-z ]+) §e§l[A-Z ]+");
 
-    private static final String MESSAGE_HEADER = ChatFormatting.WHITE + "[" + ChatFormatting.YELLOW + SkyblockAddons.MOD_NAME +
+    private static final String MESSAGE_HEADER = ChatFormatting.WHITE + "[" + ChatFormatting.BLUE + SkyblockAddons.MOD_NAME +
             ChatFormatting.WHITE + "] ";
     private static final List<String> ORDERED_ENCHANTMENTS = Collections.unmodifiableList(Arrays.asList(
             "smite","bane of arthropods","knockback","fire aspect","venomous", // Sword Bad
