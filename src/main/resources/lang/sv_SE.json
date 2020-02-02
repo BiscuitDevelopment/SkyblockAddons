@@ -93,7 +93,8 @@
     "tabEffectTimers": "Trolldryck och uppgraderings timer",
     "noArrowsLeftAlert": "Inga pilar kvar",
     "hideNightVisionEffectTimer": "Göm Night vision charm effekt timern",
-    "showCakeBagPreview": "Visa förhandsvisning för tårt ryggsäckar"
+    "showCakeBagPreview": "Visa förhandsvisning för tårt ryggsäckar",
+    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open"
   },
   "messages": {
     "dropConfirmation": "Släpp Det Här Igen För Att Bekräfta!",
