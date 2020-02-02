@@ -93,7 +93,8 @@
     "tabEffectTimers": "Zegary mikstur i umiejętności",
     "noArrowsLeftAlert": "Alarm o braku strzał",
     "hideNightVisionEffectTimer": "Ukryj zegar widzenia w ciemności",
-    "showCakeBagPreview": "Pokaż podgląd dla torb na ciasta"
+    "showCakeBagPreview": "Pokaż podgląd dla torb na ciasta",
+    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open"
   },
   "messages": {
     "dropConfirmation": "Wyrzuć ten przedmiot ponownie, aby potwierdzić!",
