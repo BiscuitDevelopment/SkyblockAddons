@@ -93,7 +93,8 @@
     "tabEffectTimers": "Potion and Powerup Timers",
     "noArrowsLeftAlert": "No Arrows Left Alert",
     "hideNightVisionEffectTimer": "Esconder o efeito de visão noturna",
-    "showCakeBagPreview": "Mostrar pré-visualização do saco de bolos"
+    "showCakeBagPreview": "Mostrar pré-visualização do saco de bolos",
+    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open"
   },
   "messages": {
     "dropConfirmation": "Dropa este item outra vez para confirmar!",
