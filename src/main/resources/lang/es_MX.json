@@ -93,7 +93,8 @@
     "tabEffectTimers": "Temporizador de Poción y Poderes",
     "noArrowsLeftAlert": "Alerta de Falta de Flechas",
     "hideNightVisionEffectTimer": "Esconder el Temporizador del Efecto de Visión Nocturna",
-    "showCakeBagPreview": "Previsualizar Cake Bags"
+    "showCakeBagPreview": "Previsualizar Cake Bags",
+    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open"
   },
   "messages": {
     "dropConfirmation": "Arroja este objeto otra vez para confirmar!",
