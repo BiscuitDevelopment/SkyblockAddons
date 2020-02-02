@@ -8,12 +8,11 @@ import codes.biscuit.skyblockaddons.utils.Message;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.inventory.ContainerPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 public class EntityPlayerSPHook {
 
-    private static Item lastItem = null;
+    private static String lastItemName = null;
     private static long lastDrop = System.currentTimeMillis();
 
     public static EntityItem dropOneItemConfirmation(ReturnValue returnValue) {
@@ -42,14 +41,15 @@ public class EntityPlayerSPHook {
             }
             if (main.getConfigValues().isEnabled(Feature.DROP_CONFIRMATION) && (main.getUtils().isOnSkyblock() ||
                     main.getConfigValues().isEnabled(Feature.DOUBLE_DROP_IN_OTHER_GAMES))) {
-                Item heldItem = heldItemStack.getItem();
 
                 lastDrop = System.currentTimeMillis();
 
-                if (lastItem == null || lastItem != heldItem || System.currentTimeMillis() - lastDrop >= 3000) {
+                String heldItemName = heldItemStack.hasDisplayName() ? heldItemStack.getDisplayName() : heldItemStack.getUnlocalizedName();
+
+                if (lastItemName == null || !lastItemName.equals(heldItemName) || System.currentTimeMillis() - lastDrop >= 3000) {
                     SkyblockAddons.getInstance().getUtils().sendMessage(main.getConfigValues().getRestrictedColor(Feature.DROP_CONFIRMATION) +
                             Message.MESSAGE_DROP_CONFIRMATION.getMessage());
-                    lastItem = heldItem;
+                    lastItemName = heldItemName;
                     returnValue.cancel();
                 }
             }

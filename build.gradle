@@ -31,6 +31,12 @@ minecraft {
     mappings = "stable_22"
 }
 
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+
 jar {
     archiveName = archivesBaseName + "-" + version + "-for-MC-1.8.9.jar"
     

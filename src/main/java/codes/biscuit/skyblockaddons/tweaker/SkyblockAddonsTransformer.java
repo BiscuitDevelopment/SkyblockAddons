@@ -33,18 +33,22 @@ public class SkyblockAddonsTransformer implements IClassTransformer {
             Map<String,Object> blackboard = (Map<String,Object>)blackboardField.get(null);
             DEOBFUSCATED = (boolean) blackboard.get("fml.deobfuscatedEnvironment");
             foundLaunchClass = true;
-        } catch (ClassNotFoundException | NoSuchFieldException | IllegalAccessException ignore) {} // If the class doesn't exist, its probably just obfuscated labymod client, so leave it false.
+        } catch (ClassNotFoundException | NoSuchFieldException | IllegalAccessException ex) {
+            // If the class doesn't exist, its probably just obfuscated labymod client, so leave it false.
+        }
 
         LABYMOD_CLIENT = false;
         try {
             Class.forName("net.labymod.api.LabyModAddon"); // Try to find a labymod class.
             LABYMOD_CLIENT = !foundLaunchClass; // If the launch class is also found, they are probably using labymod for forge and not the client.
-        } catch (ClassNotFoundException ignored) {} // They just aren't using labymod.
+        } catch (ClassNotFoundException ex) {
+            // They just aren't using labymod.
+        }
     }
 
     private static boolean USING_NOTCH_MAPPINGS = !DEOBFUSCATED;
 
-    private final static boolean OUTPUT_BYTECODE = false;
+    private final static boolean OUTPUT_BYTECODE = true;
     private Logger logger = LogManager.getLogger("SkyblockAddons Transformer");
     private final Multimap<String, ITransformer> transformerMap = ArrayListMultimap.create();
 
@@ -60,7 +64,6 @@ public class SkyblockAddonsTransformer implements IClassTransformer {
         registerTransformer(new MinecraftTransformer());
         registerTransformer(new ItemTransformer());
         registerTransformer(new GuiScreenTransformer());
-        registerTransformer(new GuiInventoryTransformer());
         registerTransformer(new GuiContainerTransformer());
         registerTransformer(new GuiChestTransformer());
         registerTransformer(new GuiNewChatTransformer());
@@ -113,10 +116,12 @@ public class SkyblockAddonsTransformer implements IClassTransformer {
         if (OUTPUT_BYTECODE) {
             try {
                 File file = new File("C:\\Users\\jlroc\\Desktop\\bytecode", transformedName + ".class");
-                file.createNewFile();
-                FileOutputStream os = new FileOutputStream(file);
-                os.write(writer.toByteArray());
-                os.close();
+                if (file.getParentFile().exists()) {
+                    file.createNewFile();
+                    FileOutputStream os = new FileOutputStream(file);
+                    os.write(writer.toByteArray());
+                    os.close();
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }

@@ -358,7 +358,8 @@ public class EnumUtils {
         CHANGE_BAR_COLOR_WITH_POTIONS(SETTING_CHANGE_BAR_COLOR_WITH_POTIONS, 46),
         ENABLE_MESSAGE_WHEN_ACTION_PREVENTED(SETTING_ENABLE_MESSAGE_WHEN_ACTION_PREVENTED, -1),
         HIDE_NIGHT_VISION_EFFECT(SETTING_HIDE_NIGHT_VISION_EFFECT_TIMER, 70),
-        ENABLE_CAKE_BAG_PREVIEW(SETTING_SHOW_CAKE_BAG_PREVIEW, 71);
+        ENABLE_CAKE_BAG_PREVIEW(SETTING_SHOW_CAKE_BAG_PREVIEW, 71),
+        ENABLE_BACKPACK_PREVIEW_AH(SETTING_SHOW_BACKPACK_PREVIEW_AH, 72);
 
         private Message message;
         private int featureEquivalent;
@@ -441,17 +442,20 @@ public class EnumUtils {
         private String tag;
 
         Rarity(String s) {
-            this.tag = "§5§o§"+s;
+            this.tag = "§"+s;
         }
 
         public static Rarity getRarity(ItemStack item) {
             if (item == null) return null;
+
             List<String> lore = item.getTooltip(Minecraft.getMinecraft().thePlayer, false);
+
             for (String loreLine : lore) {
                 for (Rarity rarity : Rarity.values()) {
-                    if (loreLine.startsWith(rarity.tag)) return rarity;
+                    if (loreLine.contains(rarity.tag)) return rarity;
                 }
             }
+
             return null;
         }
     }

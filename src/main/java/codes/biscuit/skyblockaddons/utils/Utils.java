@@ -278,7 +278,15 @@ public class Utils {
                     if (i >= thisVersionNumbers.size()) {
                         thisVersionNumbers.add(i, 0);
                     }
-                    if (newestVersionNumbers.get(i) > thisVersionNumbers.get(i)) {
+                }
+
+                boolean outOfBeta = newestVersionNumbers.get(1).equals(thisVersionNumbers.get(1)) &&
+                        newestVersionNumbers.get(2).equals(thisVersionNumbers.get(2)) && // Update message when either: the version numbers are the same, but its longer a build.
+                        newestVersionNumbers.get(3).equals(thisVersionNumbers.get(3)) && SkyblockAddons.VERSION.contains("b") && !newestVersion.contains("b");
+
+                for (int i = 0; i < 4; i++) {
+                    if (newestVersionNumbers.get(i) > thisVersionNumbers.get(i) || // OR: one of the version numbers is higher.
+                            outOfBeta) {
                         String link = "https://hypixel.net/threads/forge-1-8-9-skyblockaddons-useful-features-for-skyblock.2109217/";
                         try {
                             url = new URL("https://raw.githubusercontent.com/biscuut/SkyblockAddons/master/updatelink.txt");
@@ -295,7 +303,7 @@ public class Utils {
                             ex.printStackTrace();
                         } finally {
                             main.getRenderListener().getDownloadInfo().setDownloadLink(link);
-                            if (i == 2 || i == 3) { // 0.0.x or 0.0.0-bx
+                            if (i == 2 || i == 3 || outOfBeta) { // 0.0.x or 0.0.0-bx
                                 main.getRenderListener().getDownloadInfo().setPatch();
                                 main.getRenderListener().getDownloadInfo().setMessageType(EnumUtils.UpdateMessageType.PATCH_AVAILABLE);
                                 sendUpdateMessage(true,true);
@@ -574,11 +582,10 @@ public class Utils {
                 if (item.getDisplayName().contains(exclusion)) return true;
             }
         }
-        if (hotbar) {
-            return item.getItem().isDamageable() || (rarity != EnumUtils.Rarity.COMMON && rarity != EnumUtils.Rarity.UNCOMMON);
+        if (hotbar) { // Hotbar items also restrict rare rarity.
+            return item.getItem().isDamageable() || rarity != EnumUtils.Rarity.COMMON;
         } else {
-            return item.getItem().isDamageable() || (rarity != EnumUtils.Rarity.COMMON && rarity != EnumUtils.Rarity.UNCOMMON
-                    && rarity != EnumUtils.Rarity.RARE);
+            return item.getItem().isDamageable() || (rarity != EnumUtils.Rarity.COMMON && rarity != EnumUtils.Rarity.UNCOMMON);
         }
     }
 
