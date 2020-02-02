@@ -768,13 +768,13 @@ public class RenderListener {
 
         TabEffectManager tabEffect = TabEffectManager.getInstance();
 
-        List<String> potionTimers =tabEffect.getPotionTimers();
+        List<String> potionTimers = tabEffect.getPotionTimers();
         List<String> powerupTimers = tabEffect.getPowerupTimers();
 
         if(potionTimers.isEmpty() && powerupTimers.isEmpty()) {
             if (buttonLocation == null) {
                 return;
-            } else { //We are editing GUI locations, draw something
+            } else { // When editing GUI draw dummy timers.
                 potionTimers = TabEffectManager.getDummyPotionTimers();
                 powerupTimers = TabEffectManager.getDummyPowerupTimers();
             }

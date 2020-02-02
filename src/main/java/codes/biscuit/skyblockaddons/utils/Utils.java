@@ -134,21 +134,20 @@ public class Utils {
         }
     }
 
-    public void sendMessage(String text) {
-        ClientChatReceivedEvent event = new ClientChatReceivedEvent((byte) 1, new ChatComponentText(MESSAGE_PREFIX + text));
+    public void sendMessage(String text, boolean prefix) {
+        ClientChatReceivedEvent event = new ClientChatReceivedEvent((byte) 1, new ChatComponentText(prefix ? MESSAGE_PREFIX : "" + text));
         MinecraftForge.EVENT_BUS.post(event); // Let other mods pick up the new message
         if (!event.isCanceled()) {
             Minecraft.getMinecraft().thePlayer.addChatMessage(event.message); // Just for logs
         }
     }
 
+    public void sendMessage(String text) {
+        sendMessage(text, true);
+    }
+
     private void sendMessage(ChatComponentText text) {
-        ChatComponentText output = new ChatComponentText(MESSAGE_PREFIX + text);
-        ClientChatReceivedEvent event = new ClientChatReceivedEvent((byte) 1, output);
-        MinecraftForge.EVENT_BUS.post(event); // Let other mods pick up the new message
-        if (!event.isCanceled()) {
-            Minecraft.getMinecraft().thePlayer.addChatMessage(event.message); // Just for logs
-        }
+        sendMessage(text.getFormattedText());
     }
 
     public void sendErrorMessage(String errorText) {
@@ -499,7 +498,6 @@ public class Utils {
                 main.getPlayerListener().setMagmaAccuracy(EnumUtils.MagmaTimerAccuracy.ABOUT);
             } catch (IOException ex) {
                 FMLLog.warning("[SkyblockAddons] Failed to get magma boss spawn estimate from server");
-                ex.printStackTrace();
             }
         }).start();
     }
@@ -536,7 +534,6 @@ public class Utils {
                 }
             } catch (IOException ex) {
                 FMLLog.warning("[SkyblockAddons] Failed to post event to server");
-                ex.printStackTrace();
             }
         }).start();
     }

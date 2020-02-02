@@ -15,13 +15,10 @@ public class SlayerArmorProgress {
     private final ItemStack itemStack;
 
     /** The current slayer progress of the item. */
-    @Setter private String progressText;
+    @Setter private String progressText = null;
 
     public SlayerArmorProgress(ItemStack itemStack) {
         this.itemStack = new ItemStack(itemStack.getItem()); // Cloned because we change the helmet color later.
-
-        ChatFormatting color = SkyblockAddons.getInstance().getConfigValues().getRestrictedColor(Feature.SLAYER_INDICATOR);
-        this.progressText = color + "55% (§a40❈" + color + ")";
 
         setHelmetColor();
     }
@@ -35,5 +32,14 @@ public class SlayerArmorProgress {
         if (itemStack.getItem().equals(Items.leather_helmet)) {
             ((ItemArmor)itemStack.getItem()).setColor(itemStack, ChatFormatting.BLACK.getRGB());
         }
+    }
+
+    public String getProgressText() {
+        if (progressText == null) { // Cannot create in constructor, so create it here instead.
+            ChatFormatting color = SkyblockAddons.getInstance().getConfigValues().getRestrictedColor(Feature.SLAYER_INDICATOR);
+            progressText = color + "55% (§a40❈" + color + ")";
+        }
+
+        return progressText;
     }
 }

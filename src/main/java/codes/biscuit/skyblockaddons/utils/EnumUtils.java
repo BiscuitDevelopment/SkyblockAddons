@@ -370,9 +370,11 @@ public class EnumUtils {
         }
 
         public String[] getMessages(String... variables) {
-            String messageText = message.getMessage(variables);
+            String messageText;
             if (this == DEVELOPMENT) {
                 messageText = "You are running a development version: " + SkyblockAddons.VERSION + ". Please report any bugs that haven't been found yet. Thank you.";
+            } else {
+                messageText = message.getMessage(variables);
             }
 
             // Wrap around the text, replace the carriage returns, and split at the new lines.

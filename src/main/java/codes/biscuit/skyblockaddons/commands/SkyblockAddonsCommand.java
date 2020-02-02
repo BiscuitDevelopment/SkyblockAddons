@@ -12,8 +12,14 @@ import java.util.Collections;
 import java.util.List;
 
 public class SkyblockAddonsCommand extends CommandBase {
-    private static String[] HELP_MESSAGE = {"Skyblock Addons Command Help", "Usage: /sba <option>", "help — Shows this help message",
-            "edit — Edit the GUI", "dev — Toggles developer mode", "folder — Opens the Minecraft mods folder", "update — Checks for updates"};
+
+    private static String[] HELP_MESSAGE = {
+            color("&7&m--------------&7[&b&l SkyblockAddons &7]&7&m--------------"),
+            color("&a● /sba &7- Open the main menu"),
+            color("&a● /sba edit &7- Edit GUI locations"),
+            color("&a● /sba dev &7- Toggle developer mode"),
+            color("&a● /sba folder &7- Open your mods folder"),
+            color("&7&m----------------------------------------------")};
 
     private SkyblockAddons main;
 
@@ -52,7 +58,7 @@ public class SkyblockAddonsCommand extends CommandBase {
             switch (args[0]) {
                 case "help":
                     for (String line: HELP_MESSAGE) {
-                        main.getUtils().sendMessage(line);
+                        main.getUtils().sendMessage(line, false);
                     }
                     break;
                 case "edit":
@@ -68,7 +74,7 @@ public class SkyblockAddonsCommand extends CommandBase {
                         main.getUtils().sendMessage(ChatFormatting.RED + "Developer mode disabled!");
                     }
                     break;
-                case "update":
+                case "update": // Not actually a command.
                     if (main.getRenderListener().getDownloadInfo().isPatch())
                         main.getUtils().downloadPatch(main.getRenderListener().getDownloadInfo().getNewestVersion());
                     break;
@@ -88,4 +94,7 @@ public class SkyblockAddonsCommand extends CommandBase {
         }
     }
 
+    public static String color(String text) {
+        return ChatFormatting.translateAlternateColorCodes('&', text);
+    }
 }

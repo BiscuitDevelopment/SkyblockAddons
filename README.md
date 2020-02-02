@@ -60,6 +60,9 @@ are applied properly in your dev environment!
 Setters. If you are using IntelliJ, please download the plugin called Lombok either in your IDE or by 
 [visiting this link](https://plugins.jetbrains.com/plugin/6317-lombok) so that everything works correctly. 
 If you are using Eclipse, [you can read this page here.](https://projectlombok.org/setup/eclipse)
+3. After installing the plugin in IntelliJ, go to `File` → `Settings` → `Build` → 
+`Execution, Deployment, Compiler` → `Annotation Processors`, and check ☑ 
+`Enable annotation processing` on the top right. This will allow you to debug properly.
 
 Note: If your jar build is failing because the code is trying to access private methods or fields,
 this way be because someone added some access transformers. 
