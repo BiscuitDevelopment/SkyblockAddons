@@ -15,7 +15,7 @@
     "hideDurability": "Masquer la durabilité des outils",
     "showEnchantmentsReforges": "Enchantements & Reforges",
     "minionStopWarning": "Alerte minion à l'arrêt",
-    "hidePlayersNearNPCs": "Cacher les joueurs proche des PNJ utiles",
+    "hidePlayersNearNPCs": "Masquer les joueurs proche des PNJ utiles",
     "backpackStyle": "Affichage: %style%",
     "backpackStyles": {
       "regular": "Normal",
@@ -96,7 +96,7 @@
     "showCakeBagPreview": "Aperçu des sacs à gâteau",
     "showBackpackPreviewInAH": "Afficher l'aperçu du sac à dos dans le /AH",
     "hidePlayersNearHarp": "Masquer les joueurs près de la harpe de Mélodie",
-    "enableDevFeatures": "Enable Developer Features"
+    "enableDevFeatures": "Activer le mode développeur"
   },
   "messages": {
     "dropConfirmation": "Jetez cet objet une nouvelle fois pour confirmer!",
