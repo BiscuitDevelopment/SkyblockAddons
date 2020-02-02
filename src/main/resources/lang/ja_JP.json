@@ -93,7 +93,8 @@
     "tabEffectTimers": "バフ効果のタイマー",
     "noArrowsLeftAlert": "弓矢切れのアラート",
     "hideNightVisionEffectTimer": "暗視効果のタイマーを表示しない",
-    "showCakeBagPreview": "ケーキバッグのプレビューを表示"
+    "showCakeBagPreview": "ケーキバッグのプレビューを表示",
+    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open"
   },
   "messages": {
     "dropConfirmation": "落としてもいいのであれば、このアイテムをもう一度ドロップしてください。",
