@@ -96,7 +96,7 @@
     "showCakeBagPreview": "顯示蛋糕袋預覽",
     "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
     "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
-    "enableDevFeatures": "Enable Developer Features"
+    "enableDevFeatures": "Developer Mode Key"
   },
   "messages": {
     "dropConfirmation": "再次丟棄此物品以確認!",
