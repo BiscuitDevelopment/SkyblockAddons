@@ -15,7 +15,7 @@
     "hideDurability": "إخفاء متانة الأداة",
     "showEnchantmentsReforges": "تطوير و إعادة تشكيل",
     "minionStopWarning": "تحذير إيقاف التابع",
-    "hideAuctionHousePlayers": "اخفاء اللاعبين عند الشخصية الغير قابلة للعب المهمه",
+    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
     "backpackStyle": "%style% :نمط حقيبة الظهر",
     "backpackStyles": {
       "regular": "المظهر العادي",
@@ -86,12 +86,17 @@
     },
     "disableMagicalSoupMessage": "تعطيل رسائل حساء الفطر السحري",
     "zealotCounter": "أظهار عداد زيلوت",
-    "tickerChargesDisplay": "Ticker/Charges Display",
+    "tickerChargesDisplay": "عرض شريط المؤشرات/الشحنات",
     "tab": {
       "generalSettings": "الإعدادات العامة"
     },
-    "tabEffectTimers": "Potion and Powerup Timers",
-    "noArrowsLeftAlert": "No Arrows Left Alert"
+    "tabEffectTimers": "مؤقتي الجرعات و مقويات الطاقة",
+    "noArrowsLeftAlert": "تنبيه النفاذ من السهوم",
+    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
+    "showCakeBagPreview": "Show Preview for Cake Bags",
+    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
+    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
+    "enableDevFeatures": "Enable Developer Features"
   },
   "messages": {
     "dropConfirmation": "!إرمي هذا العنصر مرة أخرى للتأكيد",
@@ -136,7 +141,10 @@
     "blockIncompletePatterns": "أنماط انماط صناعة الحجر غير مكتملة\n(موصى بها)",
     "searchFeatures": "البحث عن خاصيه",
     "downloadingUpdateFile": "يتم تنزيل ملف التحديث...",
-    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
-    "noArrowsLeft": "No Arrows Left!"
+    "onlyFewArrowsLeft": "مبقي %arrows% من السهوم فقط!",
+    "noArrowsLeft": "نفذت من السهوم!",
+    "chooseAColor": "Choose a Color",
+    "selectedColor": "Selected Color",
+    "setHexColor": "Set Hex Color"
   }
 }

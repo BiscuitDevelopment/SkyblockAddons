@@ -15,7 +15,7 @@
     "hideDurability": "Piilota Työkalujen Kestävyys",
     "showEnchantmentsReforges": "Lumoukset & Uudelleentakomiset",
     "minionStopWarning": "\"Kätyri Ei Yllä\" Varoitus",
-    "hideAuctionHousePlayers": "Piilota Pelaajat Tärkeiden NPCeiden Läheltä",
+    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
     "backpackStyle": "Repun Tyyli: %style%",
     "backpackStyles": {
       "regular": "Tavallinen",
@@ -91,7 +91,12 @@
       "generalSettings": "Yleiset Asetukset"
     },
     "tabEffectTimers": "Potion and Powerup Timers",
-    "noArrowsLeftAlert": "No Arrows Left Alert"
+    "noArrowsLeftAlert": "No Arrows Left Alert",
+    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
+    "showCakeBagPreview": "Show Preview for Cake Bags",
+    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
+    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
+    "enableDevFeatures": "Enable Developer Features"
   },
   "messages": {
     "dropConfirmation": "Pudota tämä esine uudelleen vahvistaaksesi!",
@@ -137,6 +142,9 @@
     "searchFeatures": "Search features",
     "downloadingUpdateFile": "Downloading update file...",
     "onlyFewArrowsLeft": "Only %arrows% arrows left!",
-    "noArrowsLeft": "No Arrows Left!"
+    "noArrowsLeft": "No Arrows Left!",
+    "chooseAColor": "Choose a Color",
+    "selectedColor": "Selected Color",
+    "setHexColor": "Set Hex Color"
   }
 }

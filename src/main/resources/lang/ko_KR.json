@@ -15,7 +15,7 @@
     "hideDurability": "도구 내구도 숨기기",
     "showEnchantmentsReforges": "인챈트 및 리포지",
     "minionStopWarning": "\"미니언 사거리\" 경고",
-    "hideAuctionHousePlayers": "옥션 근처의 플레이어 숨김",
+    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
     "backpackStyle": "백팩 스타일: %style%",
     "backpackStyles": {
       "regular": "일반",
@@ -91,7 +91,12 @@
       "generalSettings": "일반 설정"
     },
     "tabEffectTimers": "Potion and Powerup Timers",
-    "noArrowsLeftAlert": "No Arrows Left Alert"
+    "noArrowsLeftAlert": "No Arrows Left Alert",
+    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
+    "showCakeBagPreview": "Show Preview for Cake Bags",
+    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
+    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
+    "enableDevFeatures": "Enable Developer Features"
   },
   "messages": {
     "dropConfirmation": "아이템을 정말로 버리려면 다시 버리세요!",
@@ -137,6 +142,9 @@
     "searchFeatures": "Search features",
     "downloadingUpdateFile": "Downloading update file...",
     "onlyFewArrowsLeft": "Only %arrows% arrows left!",
-    "noArrowsLeft": "No Arrows Left!"
+    "noArrowsLeft": "No Arrows Left!",
+    "chooseAColor": "Choose a Color",
+    "selectedColor": "Selected Color",
+    "setHexColor": "Set Hex Color"
   }
 }

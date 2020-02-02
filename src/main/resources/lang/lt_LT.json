@@ -15,7 +15,7 @@
     "hideDurability": "Paslėpti Daiktų Patvarumą",
     "showEnchantmentsReforges": "Užkerėjimai Ir Perdirbimai",
     "minionStopWarning": "\"Pakalikas Negali Pasiekti\" Įspėjimas",
-    "hideAuctionHousePlayers": "Nerodyti žaidėjų prie įpatingų NPC (Aukcijonas,Bankas ir tt.)",
+    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
     "backpackStyle": "Kuprinės Stilius %style%",
     "backpackStyles": {
       "regular": "Įprasta",
@@ -91,7 +91,12 @@
       "generalSettings": "Bendrieji nustatymai"
     },
     "tabEffectTimers": "Potion and Powerup Timers",
-    "noArrowsLeftAlert": "No Arrows Left Alert"
+    "noArrowsLeftAlert": "No Arrows Left Alert",
+    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
+    "showCakeBagPreview": "Show Preview for Cake Bags",
+    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
+    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
+    "enableDevFeatures": "Enable Developer Features"
   },
   "messages": {
     "dropConfirmation": "Meskite Šį Daiktą Dar Kartą, Kad Patvirtintumėte!",
@@ -137,6 +142,9 @@
     "searchFeatures": "Rasti funkciją",
     "downloadingUpdateFile": "Atsiunčiami naujinimai...",
     "onlyFewArrowsLeft": "Only %arrows% arrows left!",
-    "noArrowsLeft": "No Arrows Left!"
+    "noArrowsLeft": "No Arrows Left!",
+    "chooseAColor": "Choose a Color",
+    "selectedColor": "Selected Color",
+    "setHexColor": "Set Hex Color"
   }
 }
