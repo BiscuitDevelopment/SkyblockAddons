@@ -93,7 +93,8 @@
     "tabEffectTimers": "Trylledrik og Power-Up Timere",
     "noArrowsLeftAlert": "Ingen pile tilbage alarm",
     "hideNightVisionEffectTimer": "Skjul Nattesyns Effect Timer",
-    "showCakeBagPreview": "Forhåndsvis Kage Rygsæk"
+    "showCakeBagPreview": "Forhåndsvis Kage Rygsæk",
+    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open"
   },
   "messages": {
     "dropConfirmation": "Slip denne vare igen for at bekræfte!",
