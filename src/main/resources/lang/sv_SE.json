@@ -15,7 +15,7 @@
     "hideDurability": "Göm Verktyg Hållbarhet",
     "showEnchantmentsReforges": "Förtrollningar & Reforges",
     "minionStopWarning": "\"Tjänare Kan Inte Nå\" Varning",
-    "hideAuctionHousePlayers": "Göm Spelare nära Viktiga NPCer",
+    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
     "backpackStyle": "Ryggsäck Stil: %style%",
     "backpackStyles": {
       "regular": "Vanlig",
@@ -94,7 +94,9 @@
     "noArrowsLeftAlert": "Inga pilar kvar",
     "hideNightVisionEffectTimer": "Göm Night vision charm effekt timern",
     "showCakeBagPreview": "Visa förhandsvisning för tårt ryggsäckar",
-    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open"
+    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
+    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
+    "enableDevFeatures": "Enable Developer Features"
   },
   "messages": {
     "dropConfirmation": "Släpp Det Här Igen För Att Bekräfta!",
