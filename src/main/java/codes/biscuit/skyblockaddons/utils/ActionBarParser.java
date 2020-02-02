@@ -2,6 +2,8 @@ package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.utils.nifty.StringUtil;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -31,17 +33,22 @@ import java.util.regex.Pattern;
  * To add something new to parse, add an else-if case in {@link #parseActionBar(String)} to call a method that
  * parses information from that section.
  */
+
+@Getter
 public class ActionBarParser {
 
     private final Pattern COLLECTIONS_CHAT_PATTERN = Pattern.compile("§.\\+(?:§[0-9a-f])?([0-9,.]+) §?[0-9a-f]?([A-Za-z]+) (\\([0-9.,]+/[0-9.,]+\\))");
 
     private final SkyblockAddons main;
 
+    /** The amount of usable tickers or -1 if none are in the action bar. */
     private int tickers = -1;
+
+    /** The total amount of possible tickers or 0 if none are in the action bar. */
     private int maxTickers = 0;
-    private int lastSecondHealth = -1;
-    private Integer healthUpdate = null;
-    private long lastHealthUpdate;
+    @Setter private int lastSecondHealth = -1;
+    @Setter private Integer healthUpdate = null;
+    @Setter private long lastHealthUpdate;
 
     public ActionBarParser(SkyblockAddons main) {
         this.main = main;
@@ -212,7 +219,7 @@ public class ActionBarParser {
         Matcher matcher = COLLECTIONS_CHAT_PATTERN.matcher(skillSection);
         if (matcher.matches() && main.getConfigValues().isEnabled(Feature.SKILL_DISPLAY)) {
             main.getRenderListener().setSkillText("+" + matcher.group(1) + " " + matcher.group(3));
-            main.getRenderListener().setSkill(matcher.group(2));
+            main.getRenderListener().setSkill(EnumUtils.SkillType.getFromString(matcher.group(2)));
             main.getRenderListener().setSkillFadeOutTime(System.currentTimeMillis() + 4000);
             return null;
         }
@@ -265,43 +272,5 @@ public class ActionBarParser {
      */
     private void setAttribute(Attribute attribute, int value) {
         main.getUtils().getAttributes().get(attribute).setValue(value);
-    }
-
-    /**
-     * @return The amount of usable tickers or -1 if none are in the action bar
-     */
-    public int getTickers() {
-        return tickers;
-    }
-
-    /**
-     * @return The total amount of possible tickers or 0 if none are in the action bar
-     */
-    public int getMaxTickers() {
-        return maxTickers;
-    }
-
-    public int getLastSecondHealth() {
-        return lastSecondHealth;
-    }
-
-    public void setLastSecondHealth(int lastSecondHealth) {
-        this.lastSecondHealth = lastSecondHealth;
-    }
-
-    public Integer getHealthUpdate() {
-        return healthUpdate;
-    }
-
-    public void setHealthUpdate(Integer healthUpdate) {
-        this.healthUpdate = healthUpdate;
-    }
-
-    public long getLastHealthUpdate() {
-        return lastHealthUpdate;
-    }
-
-    public void setLastHealthUpdate(long lastHealthUpdate) {
-        this.lastHealthUpdate = lastHealthUpdate;
     }
 }

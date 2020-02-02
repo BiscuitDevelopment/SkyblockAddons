@@ -7,6 +7,8 @@ import codes.biscuit.skyblockaddons.gui.buttons.ButtonLocation;
 import codes.biscuit.skyblockaddons.utils.*;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
 import codes.biscuit.skyblockaddons.utils.nifty.reflection.MinecraftReflection;
+import lombok.Getter;
+import lombok.Setter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiChat;
@@ -45,23 +47,23 @@ public class RenderListener {
 
     private SkyblockAddons main;
 
-    private boolean predictHealth = false;
-    private boolean predictMana = false;
+    @Getter @Setter private boolean predictHealth = false;
+    @Getter @Setter private boolean predictMana = false;
 
-    private DownloadInfo downloadInfo;
+    @Getter private DownloadInfo downloadInfo;
 
     private Feature subtitleFeature = null;
-    private Feature titleFeature = null;
+    @Getter @Setter private Feature titleFeature = null;
 
-    private int arrowsLeft;
+    @Setter private int arrowsLeft;
 
-    private String cannotReachMobName = null;
+    @Setter private String cannotReachMobName = null;
 
-    private long skillFadeOutTime = -1;
-    private EnumUtils.SkillType skill = null;
-    private String skillText = null;
+    @Setter private long skillFadeOutTime = -1;
+    @Setter private EnumUtils.SkillType skill = null;
+    @Setter private String skillText = null;
 
-    private PlayerListener.GUIType guiToOpen = null;
+    private EnumUtils.GUIType guiToOpen = null;
     private int guiPageToOpen = 1;
     private EnumUtils.GuiTab guiTabToOpen = EnumUtils.GuiTab.MAIN;
     private String textToOpen = null;
@@ -642,7 +644,7 @@ public class RenderListener {
                 }
             }
         } else if(feature == Feature.ZEALOT_COUNTER) {
-        	if(main.getUtils().getLocation() != EnumUtils.Location.DRAGONS_NEST && buttonLocation == null) return;
+        	if(main.getUtils().getLocation() != Location.DRAGONS_NEST && buttonLocation == null) return;
         	text = String.valueOf(main.getPersistentValues().getKills());
 
             if (buttonLocation != null) text = "123";
@@ -773,8 +775,8 @@ public class RenderListener {
             if (buttonLocation == null) {
                 return;
             } else { //We are editing GUI locations, draw something
-                potionTimers = TabEffectManager.getDummyPotions();
-                powerupTimers = TabEffectManager.getDummyPowerups();
+                potionTimers = TabEffectManager.getDummyPotionTimers();
+                powerupTimers = TabEffectManager.getDummyPowerupTimers();
             }
         }
 
@@ -1036,51 +1038,26 @@ public class RenderListener {
 
     @SubscribeEvent()
     public void onRender(TickEvent.RenderTickEvent e) {
-        if (guiToOpen == PlayerListener.GUIType.MAIN) {
+        if (guiToOpen == EnumUtils.GUIType.MAIN) {
             if (textToOpen == null) {
                 Minecraft.getMinecraft().displayGuiScreen(new SkyblockAddonsGui(main, guiPageToOpen, guiTabToOpen));
             } else {
                 Minecraft.getMinecraft().displayGuiScreen(new SkyblockAddonsGui(main, guiPageToOpen, guiTabToOpen, textToOpen));
                 textToOpen = null;
             }
-        } else if (guiToOpen == PlayerListener.GUIType.EDIT_LOCATIONS) {
+        } else if (guiToOpen == EnumUtils.GUIType.EDIT_LOCATIONS) {
             Minecraft.getMinecraft().displayGuiScreen(new LocationEditGui(main, guiPageToOpen, guiTabToOpen, textToOpen));
         }
         guiToOpen = null;
     }
 
-
-    public void setPredictHealth(boolean predictHealth) {
-        this.predictHealth = predictHealth;
-    }
-
-    public void setPredictMana(boolean predictMana) {
-        this.predictMana = predictMana;
-    }
-
-    boolean isPredictMana() {
-        return predictMana;
-    }
-
-    boolean isPredictHealth() {
-        return predictHealth;
-    }
-
-    void setCannotReachMobName(String cannotReachMobName) {
-        this.cannotReachMobName = cannotReachMobName;
-    }
-
-    public void setTitleFeature(Feature titleFeature) {
-        this.titleFeature = titleFeature;
-    }
-
-    public void setGuiToOpen(PlayerListener.GUIType guiToOpen, int page, EnumUtils.GuiTab tab) {
+    public void setGuiToOpen(EnumUtils.GUIType guiToOpen, int page, EnumUtils.GuiTab tab) {
         this.guiToOpen = guiToOpen;
         guiPageToOpen = page;
         guiTabToOpen = tab;
     }
 
-    public void setGuiToOpen(PlayerListener.GUIType guiToOpen, int page, EnumUtils.GuiTab tab, String text) {
+    public void setGuiToOpen(EnumUtils.GUIType guiToOpen, int page, EnumUtils.GuiTab tab, String text) {
         setGuiToOpen(guiToOpen,page,tab);
         textToOpen = text;
     }
@@ -1090,29 +1067,5 @@ public class RenderListener {
         if (subtitleFeature == null) {
             this.arrowsLeft = -1;
         }
-    }
-
-    Feature getTitleFeature() {
-        return titleFeature;
-    }
-
-    public DownloadInfo getDownloadInfo() {
-        return downloadInfo;
-    }
-
-    public void setSkill(String skill) {
-        this.skill = EnumUtils.SkillType.getFromString(skill);
-    }
-
-    public void setSkillText(String skillText) {
-        this.skillText = skillText;
-    }
-
-    public void setSkillFadeOutTime(long skillFadeOutTime) {
-        this.skillFadeOutTime = skillFadeOutTime;
-    }
-
-    public void setArrowsLeft(int arrowsLeft) {
-        this.arrowsLeft = arrowsLeft;
     }
 }

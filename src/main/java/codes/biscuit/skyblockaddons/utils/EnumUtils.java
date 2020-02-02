@@ -1,6 +1,7 @@
 package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import lombok.Getter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -29,7 +30,7 @@ public class EnumUtils {
         BOTTOM_MIDDLE(4, ANCHOR_POINT_HEALTH_BAR);
 
         private Message message;
-        private int id;
+        @Getter private int id;
 
         AnchorPoint(int id, Message message) {
             this.message = message;
@@ -38,10 +39,6 @@ public class EnumUtils {
 
         public String getMessage() {
             return message.getMessage();
-        }
-
-        public int getId() {
-            return id;
         }
 
         public static AnchorPoint fromId(int id) {
@@ -75,23 +72,12 @@ public class EnumUtils {
                 case BOTTOM_LEFT: case BOTTOM_RIGHT: case BOTTOM_MIDDLE:
                     y = maxY;
                     break;
-//                case BOTTOM_MIDDLE:
-//                    y = maxY - 39;
-//                    break;
                 default: // or case TOP_LEFT: case TOP_RIGHT:
                     y = 0;
 
             }
             return y;
         }
-
-//        public AnchorPoint getNextType() {
-//            int nextType = ordinal()+1;
-//            if (nextType > values().length-1) {
-//                nextType = 0;
-//            }
-//            return values()[nextType];
-//        }
     }
 
     public enum ButtonType {
@@ -105,20 +91,14 @@ public class EnumUtils {
         REFORGE_ANVIL(INVENTORY_TYPE_REFORGES, "Reforge Item"),
         CRAFTING_TABLE(INVENTORY_TYPE_CRAFTING, CraftingPattern.CRAFTING_TABLE_DISPLAYNAME);
 
-        private static InventoryType currentInventoryType;
+        /** The current inventory type. Can be null. */
+        @Getter private static InventoryType currentInventoryType;
 
         /**
          * Resets the current inventory type
          */
         public static void resetCurrentInventoryType() {
             currentInventoryType = null;
-        }
-
-        /**
-         * @return Current inventory type. Can be null
-         */
-        public static InventoryType getCurrentInventoryType() {
-            return currentInventoryType;
         }
 
         /**
@@ -140,6 +120,7 @@ public class EnumUtils {
 
         private final Message message;
         private final String inventoryName;
+
         InventoryType(Message message, String inventoryName) {
             this.message = message;
             this.inventoryName = inventoryName;
@@ -219,83 +200,8 @@ public class EnumUtils {
         }
     }
 
-    /**
-     * A list of all the Skyblock locations
-     */
-    public enum Location {
-        ISLAND("Your Island"),
-        
-        // Hub
-        VILLAGE("Village"),
-        AUCTION_HOUSE("Auction House"),
-        BANK("Bank"),
-        LIBRARY("Library"),
-        COAL_MINE("Coal Mine"),
-        GRAVEYARD("Graveyard"),
-        COLOSSEUM("Colosseum"),
-        WILDERNESS("Wilderness"),
-        MOUNTAIN("Mountain"),
-        WIZARD_TOWER("Wizard Tower"),
-        RUINS("Ruins"),
-        FOREST("Forest"),
-        FARM("Farm"),
-        FISHERMANS_HUT("Fisherman's Hut"),
-        HIGH_LEVEL("High Level"),
-        FLOWER_HOUSE("Flower House"),
-        CANVAS_ROOM("Canvas Room"),
-        TAVERN("Tavern"),
-        
-        // The Park
-        BIRCH_PARK("Birch Park"),
-        SPRUCE_WOODS("Spruce Woods"),
-        SAVANNA_WOODLAND("Savanna Woodland"),
-        DARK_THICKET("Dark Thicket"),
-        JUNGLE_ISLAND("Jungle Island"),
-
-        GOLD_MINE("Gold Mine"),
-
-        // Deep Caverns
-        DEEP_CAVERNS("Deep Caverns"),
-        GUNPOWDER_MINES("Gunpowder Mines"),
-        LAPIS_QUARRY("Lapis Quarry"),
-        PIGMAN_DEN("Pigmen's Den"),
-        SLIMEHILL("Slimehill"),
-        DIAMOND_RESERVE("Diamond Reserve"),
-        OBSIDIAN_SANCTUARY("Obsidian Sanctuary"),
-        
-        THE_BARN("The Barn"),
-
-        MUSHROOM_DESERT("Mushroom Desert"),
-
-        SPIDERS_DEN("Spider's Den"),
-
-        BLAZING_FORTRESS("Blazing Fortress"),
-
-        // The End
-        THE_END("The End"),
-        DRAGONS_NEST("Dragon's Nest"),
-        
-        //TODO: Jerry's workshop
-        
-        NONE("None");
-
-        private String scoreboardName;
-
-        Location(String scoreboardName) {
-            this.scoreboardName = scoreboardName;
-        }
-
-        /**
-         * Returns the name of this location as shown on the in-game scoreboard.
-         *
-         * @return the display name of this location on the scoreboard
-         */
-        public String getScoreboardName() {
-            return scoreboardName;
-        }
-    }
-
-    // Different indicators of the magma boss are more accurate than others, display how accurate the time is.
+    /** Different detection methods of the magma boss are more accurate than others, display how accurate the time is. */
+    @Getter
     public enum MagmaTimerAccuracy {
         NO_DATA("N/A"),
         SPAWNED("NOW"),
@@ -308,12 +214,9 @@ public class EnumUtils {
         MagmaTimerAccuracy(String symbol) {
             this.symbol = symbol;
         }
-
-        public String getSymbol() {
-            return symbol;
-        }
     }
 
+    @Getter
     public enum MagmaEvent {
         MAGMA_WAVE("magma"),
         BLAZE_WAVE("blaze"),
@@ -328,10 +231,6 @@ public class EnumUtils {
 
         MagmaEvent(String inventiveTalentEvent) {
             this.inventiveTalentEvent = inventiveTalentEvent;
-        }
-
-        public String getInventiveTalentEvent() {
-            return inventiveTalentEvent;
         }
     }
 
@@ -361,16 +260,12 @@ public class EnumUtils {
         ENABLE_CAKE_BAG_PREVIEW(SETTING_SHOW_CAKE_BAG_PREVIEW, 71),
         ENABLE_BACKPACK_PREVIEW_AH(SETTING_SHOW_BACKPACK_PREVIEW_AH, 72);
 
-        private Message message;
+        @Getter private Message message;
         private int featureEquivalent;
 
         FeatureSetting(Message message, int featureEquivalent) {
             this.message = message;
             this.featureEquivalent = featureEquivalent;
-        }
-
-        public Message getMessage() {
-            return message;
         }
 
         public Feature getFeatureEquivalent() {
@@ -475,10 +370,13 @@ public class EnumUtils {
         }
 
         public String[] getMessages(String... variables) {
-            if (this == DEVELOPMENT) return WordUtils.wrap("You are running a development version: "+SkyblockAddons.VERSION+
-                    ". Please report any bugs that haven't been found yet. Thank you.", 36).replace("\r", "").split(Pattern.quote("\n"));
-            String text = WordUtils.wrap(message.getMessage(variables), 36).replace("\r", "");
-            return text.split(Pattern.quote("\n"));
+            String messageText = message.getMessage(variables);
+            if (this == DEVELOPMENT) {
+                messageText = "You are running a development version: " + SkyblockAddons.VERSION + ". Please report any bugs that haven't been found yet. Thank you.";
+            }
+
+            // Wrap around the text, replace the carriage returns, and split at the new lines.
+            return WordUtils.wrap(messageText, 36).replace("\r", "").split(Pattern.quote("\n"));
         }
     }
 
@@ -495,7 +393,7 @@ public class EnumUtils {
         OTHER(null, null);
 
         private String skillName;
-        private ItemStack item;
+        @Getter private ItemStack item;
 
         SkillType(String skillName, Item item) {
             this.skillName = skillName;
@@ -509,10 +407,6 @@ public class EnumUtils {
                 }
             }
             return OTHER;
-        }
-
-        public ItemStack getItem() {
-            return item;
         }
     }
 
@@ -528,9 +422,10 @@ public class EnumUtils {
         TAB_EFFECT_TIMERS
     }
 
+    @Getter
     public enum Social {
         YOUTUBE(new ResourceLocation("skyblockaddons", "youtube.png"), "https://www.youtube.com/channel/UCYmE9-052frn0wQwqa6i8_Q"),
-        DISCORD(new ResourceLocation("skyblockaddons", "discord.png"), "https://discordapp.com/invite/PqTAEek"),
+        DISCORD(new ResourceLocation("skyblockaddons", "discord.png"), "https://biscuit.codes/discord"),
         GITHUB(new ResourceLocation("skyblockaddons", "github.png"), "https://github.com/BiscuitDevelopment/SkyblockAddons");
 
         private ResourceLocation resourceLocation;
@@ -544,13 +439,10 @@ public class EnumUtils {
                 e.printStackTrace();
             }
         }
+    }
 
-        public ResourceLocation getResourceLocation() {
-            return resourceLocation;
-        }
-
-        public URI getUrl() {
-            return url;
-        }
+    public enum GUIType {
+        MAIN,
+        EDIT_LOCATIONS
     }
 }

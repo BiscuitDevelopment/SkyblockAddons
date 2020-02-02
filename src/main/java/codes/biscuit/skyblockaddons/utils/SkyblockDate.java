@@ -1,7 +1,10 @@
 package codes.biscuit.skyblockaddons.utils;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.apache.commons.lang3.mutable.MutableInt;
 
+@Getter @Setter
 @SuppressWarnings("unused")
 public class SkyblockDate {
 
@@ -15,10 +18,6 @@ public class SkyblockDate {
         this.day.setValue(day);
         this.hour.setValue(hour);
         this.minute.setValue(minute);
-    }
-
-    public SkyblockMonth getMonth() {
-        return month;
     }
 
     public int getDay() {
@@ -45,11 +44,7 @@ public class SkyblockDate {
         this.minute.setValue(minute);
     }
 
-    void setMonth(SkyblockMonth month) {
-        this.month = month;
-    }
-
-    @SuppressWarnings("unused")
+    @Getter @SuppressWarnings("unused")
     public enum SkyblockMonth {
         EARLY_WINTER("Early Winter"),
         WINTER("Winter"),
@@ -68,10 +63,6 @@ public class SkyblockDate {
 
         SkyblockMonth(String scoreboardString) {
             this.scoreboardString = scoreboardString;
-        }
-
-        public String getScoreboardString() {
-            return scoreboardString;
         }
     }
 }

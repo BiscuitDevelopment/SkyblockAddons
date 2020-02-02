@@ -1,14 +1,12 @@
 package codes.biscuit.skyblockaddons.commands;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.listeners.PlayerListener;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
-import codes.biscuit.skyblockaddons.utils.Message;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
 
-import java.awt.Desktop;
+import java.awt.*;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
@@ -59,15 +57,15 @@ public class SkyblockAddonsCommand extends CommandBase {
                     break;
                 case "edit":
                     main.getUtils().setFadingIn(false);
-                    main.getRenderListener().setGuiToOpen(PlayerListener.GUIType.EDIT_LOCATIONS, 0, null);
+                    main.getRenderListener().setGuiToOpen(EnumUtils.GUIType.EDIT_LOCATIONS, 0, null);
                     break;
                 case "dev":
                     main.setDevMode(!main.isDevMode());
 
                     if (main.isDevMode()) {
-                        main.getUtils().sendMessage(ChatFormatting.GREEN + Message.MESSAGE_DEV_MODE_ENABLED.getMessage());
+                        main.getUtils().sendMessage(ChatFormatting.GREEN + "Developer mode enabled!");
                     } else {
-                        main.getUtils().sendMessage(ChatFormatting.RED + Message.MESSAGE_DEV_MODE_DISABLED.getMessage());
+                        main.getUtils().sendMessage(ChatFormatting.RED + "Developer mode disabled!");
                     }
                     break;
                 case "update":
@@ -86,7 +84,7 @@ public class SkyblockAddonsCommand extends CommandBase {
         else {
             // If there's no arguments given, open the main GUI
             main.getUtils().setFadingIn(true);
-            main.getRenderListener().setGuiToOpen(PlayerListener.GUIType.MAIN, 1, EnumUtils.GuiTab.MAIN);
+            main.getRenderListener().setGuiToOpen(EnumUtils.GUIType.MAIN, 1, EnumUtils.GuiTab.MAIN);
         }
     }
 

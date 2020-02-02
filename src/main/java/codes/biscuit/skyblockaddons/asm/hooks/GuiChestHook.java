@@ -107,7 +107,7 @@ public class GuiChestHook {
             int yPos = guiTop + 80;
             textFieldMatch = new GuiTextField(2, fontRendererObj, xPos, yPos, 120, 20);
             textFieldMatch.setMaxStringLength(500);
-            List<String> lockedEnchantments = SkyblockAddons.getInstance().getUtils().getEnchantmentMatch();
+            List<String> lockedEnchantments = SkyblockAddons.getInstance().getUtils().getEnchantmentMatches();
             StringBuilder enchantmentBuilder = new StringBuilder();
             int i = 1;
             for (String enchantment : lockedEnchantments) {
@@ -124,7 +124,7 @@ public class GuiChestHook {
             yPos += 40;
             textFieldExclusions = new GuiTextField(2, fontRendererObj, xPos, yPos, 120, 20);
             textFieldExclusions.setMaxStringLength(500);
-            lockedEnchantments = SkyblockAddons.getInstance().getUtils().getEnchantmentExclusion();
+            lockedEnchantments = SkyblockAddons.getInstance().getUtils().getEnchantmentExclusions();
             enchantmentBuilder = new StringBuilder();
             i = 1;
             for (String enchantment : lockedEnchantments) {
@@ -161,15 +161,15 @@ public class GuiChestHook {
             textFieldMatch.textboxKeyTyped(typedChar, keyCode);
             textFieldExclusions.textboxKeyTyped(typedChar, keyCode);
             List<String> enchantments = new LinkedList<>(Arrays.asList(textFieldMatch.getText().split(",")));
-            SkyblockAddons.getInstance().getUtils().setEnchantmentMatch(enchantments);
+            SkyblockAddons.getInstance().getUtils().setEnchantmentMatches(enchantments);
             enchantments = new LinkedList<>(Arrays.asList(textFieldExclusions.getText().split(",")));
-            SkyblockAddons.getInstance().getUtils().setEnchantmentExclusion(enchantments);
+            SkyblockAddons.getInstance().getUtils().setEnchantmentExclusions(enchantments);
         }
     }
 
     public static void handleMouseClick(Slot slotIn, Container slots, IInventory lowerChestInventory, ReturnValue returnValue) {
         SkyblockAddons main = SkyblockAddons.getInstance();
-        if (main.getUtils().getEnchantmentMatch().size() > 0) {
+        if (main.getUtils().getEnchantmentMatches().size() > 0) {
             if (slotIn != null && !slotIn.inventory.equals(Minecraft.getMinecraft().thePlayer.inventory) && slotIn.getHasStack()) {
                 if (slotIn.getSlotIndex() == 13 && EnumUtils.InventoryType.getCurrentInventoryType() == EnumUtils.InventoryType.ENCHANTMENT_TABLE) {
                     ItemStack[] enchantBottles = {slots.getSlot(29).getStack(), slots.getSlot(31).getStack(), slots.getSlot(33).getStack()};
@@ -266,7 +266,7 @@ public class GuiChestHook {
 
     public static int drawString(FontRenderer fontRenderer, String text, int x, int y, int color) {
         if (backpack != null) {
-            return fontRenderer.drawString(text, x,y, backpack.getBackpackColor().getTextColor());
+            return fontRenderer.drawString(text, x,y, backpack.getBackpackColor().getInventoryTextColor());
         }
         return fontRenderer.drawString(text,x,y,color);
     }

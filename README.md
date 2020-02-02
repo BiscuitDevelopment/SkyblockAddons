@@ -51,10 +51,15 @@ Also thanks for our countless translators who help translate this mod!
 For Contributors
 ------
 
-Make sure to add this VM argument to your debug configuration or your IDE's equivalent, so all the transformers
+1. Make sure to add this VM argument to your debug configuration or your IDE's equivalent, so all the transformers
 are applied properly in your dev environment!
 ```-Dfml.coreMods.load=codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsLoadingPlugin```
+2. This project uses Lombok, which helps with things such as not having to manually create Getters and 
+Setters. If you are using IntelliJ, please download the plugin called Lombok either in your IDE or by 
+[visiting this link](https://plugins.jetbrains.com/plugin/6317-lombok) so that everything works correctly. 
+If you are using Eclipse, [you can read this page here.](https://projectlombok.org/setup/eclipse)
 
-Note: If your jar build is failing because some code is trying to access private methods or fields, 
-you may want to re-run the gradle tasks `setupDecompWorkspace` and `setupDevWorkspace` so 
-the access transformer is applied to the source code!
+Note: If your jar build is failing because the code is trying to access private methods or fields,
+this way be because someone added some access transformers. 
+You may want to re-run the gradle tasks `setupDecompWorkspace` and `setupDevWorkspace` so 
+the access transformers are applied to the source code!

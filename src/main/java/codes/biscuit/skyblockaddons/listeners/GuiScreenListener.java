@@ -1,7 +1,6 @@
 package codes.biscuit.skyblockaddons.listeners;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.utils.Message;
 import codes.biscuit.skyblockaddons.utils.dev.DevUtils;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
 import net.minecraft.client.Minecraft;
@@ -51,12 +50,12 @@ public class GuiScreenListener {
 
                         if (currentSlot != null && currentSlot.getHasStack()) {
                             DevUtils.copyNBTTagToClipboard(currentSlot.getStack().getTagCompound(),
-                                    ChatFormatting.GREEN + Message.MESSAGE_DEV_ITEM_DATA_COPIED.getMessage());
+                                    ChatFormatting.GREEN + "Item data was copied to clipboard!");
                         }
                     }
                 }
                 else {
-                    main.getUtils().sendMessage(ChatFormatting.RED + Message.MESSAGE_DEV_BUTTON_DISABLED.getMessage());
+                    main.getUtils().sendMessage(ChatFormatting.RED + "Developer mode is off. This button does nothing.");
                 }
             }
 

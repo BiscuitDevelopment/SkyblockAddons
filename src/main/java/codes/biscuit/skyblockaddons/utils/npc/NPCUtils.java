@@ -1,7 +1,7 @@
 package codes.biscuit.skyblockaddons.utils.npc;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.utils.EnumUtils;
+import codes.biscuit.skyblockaddons.utils.Location;
 import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityArmorStand;
@@ -21,17 +21,10 @@ import java.util.regex.Pattern;
  */
 public class NPCUtils {
 
-    static final int HIDE_RADIUS = 4;
-    static final Set<NPC> NPC_LIST = EnumSet.allOf(NPC.class);
+    private static final int HIDE_RADIUS = 4;
 
-    /**
-     * Returns a set of all the NPCs listed in {@link NPC}
-     *
-     * @return all the NPCs listed in {@code NPC}
-     */
-    public static Set<NPC> getNPCs() {
-        return NPC_LIST;
-    }
+    /** All the NPCs listed in {@code NPC} */
+    private static final Set<NPC> NPC_LIST = EnumSet.allOf(NPC.class);
 
     /**
      * Checks if the given NPC is a merchant
@@ -59,7 +52,7 @@ public class NPCUtils {
      */
     public static boolean isNearAnyNPC(Entity entity) {
         SkyblockAddons main = SkyblockAddons.getInstance();
-        EnumUtils.Location currentLocation = main.getUtils().getLocation();
+        Location currentLocation = main.getUtils().getLocation();
 
         for (NPC npc:
              NPC_LIST) {
@@ -83,7 +76,7 @@ public class NPCUtils {
      */
     public static boolean isNearAnyNPCWithTag(Entity entity, Tag tag) {
         SkyblockAddons main = SkyblockAddons.getInstance();
-        EnumUtils.Location currentLocation = main.getUtils().getLocation();
+        Location currentLocation = main.getUtils().getLocation();
 
         for (NPC npc:
                 NPC_LIST) {
@@ -109,7 +102,7 @@ public class NPCUtils {
      */
     public static boolean isNearNPC(Entity entity, String NPCName) {
         SkyblockAddons main = SkyblockAddons.getInstance();
-        EnumUtils.Location currentLocation = main.getUtils().getLocation();
+        Location currentLocation = main.getUtils().getLocation();
 
         for (NPC npc:
              NPC_LIST) {
@@ -133,7 +126,7 @@ public class NPCUtils {
      */
     public static boolean isNearAnyNPCWithTags(Entity entity, Set<Tag> tags) {
         SkyblockAddons main = SkyblockAddons.getInstance();
-        EnumUtils.Location currentLocation = main.getUtils().getLocation();
+        Location currentLocation = main.getUtils().getLocation();
 
         for (NPC npc:
                 NPC_LIST) {
@@ -158,7 +151,7 @@ public class NPCUtils {
      */
     public static boolean isNearAnyPlayerNPC(Entity entity) {
         SkyblockAddons main = SkyblockAddons.getInstance();
-        EnumUtils.Location currentLocation = main.getUtils().getLocation();
+        Location currentLocation = main.getUtils().getLocation();
 
         for (NPC npc:
                 NPC_LIST) {
@@ -183,7 +176,7 @@ public class NPCUtils {
      */
     public static boolean isNearAnyFurnitureNPC(Entity entity) {
         SkyblockAddons main = SkyblockAddons.getInstance();
-        EnumUtils.Location currentLocation = main.getUtils().getLocation();
+        Location currentLocation = main.getUtils().getLocation();
 
         for (NPC npc:
                 NPC_LIST) {
