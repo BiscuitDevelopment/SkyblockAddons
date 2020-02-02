@@ -15,7 +15,7 @@
     "hideDurability": "ซ่อนหลอดความทนทานของอุปกรณ์",
     "showEnchantmentsReforges": "การ Enchants และตีบวกของ",
     "minionStopWarning": "แจ้งเตือนมินเนียนไม่สามารถเอื้อมถึง Mob ได้",
-    "hideAuctionHousePlayers": "ซ่อนผู้เล่นที่อยู่ใกล้ NPC สำคัญ",
+    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
     "backpackStyle": "ลักษณะของกระเป๋า: %style%",
     "backpackStyles": {
       "regular": "ปกติ",
@@ -94,7 +94,9 @@
     "noArrowsLeftAlert": "แจ้งเตือนลูกศรหมด",
     "hideNightVisionEffectTimer": "ซ่อนระยะเวลาเอฟเฟ็ค Night Vision",
     "showCakeBagPreview": "แสดงไอเท็มในถุงเก็บเค้ก",
-    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open"
+    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
+    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
+    "enableDevFeatures": "Enable Developer Features"
   },
   "messages": {
     "dropConfirmation": "กดทิ้งของอีกที่เพื่อยืนยันทิ้งของสิ่งนี้!",
