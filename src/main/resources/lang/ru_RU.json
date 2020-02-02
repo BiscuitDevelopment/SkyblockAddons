@@ -15,7 +15,7 @@
     "hideDurability": "Скрыть прочность инструментов",
     "showEnchantmentsReforges": "Зачарование и Перековка",
     "minionStopWarning": "Предупреждение об остановки миньона",
-    "hideAuctionHousePlayers": "Скрыть игроков у важных НИП'ов",
+    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
     "backpackStyle": "Стиль рюкзака: %style%",
     "backpackStyles": {
       "regular": "Обычный",
@@ -94,7 +94,9 @@
     "noArrowsLeftAlert": "Предупреждение о законченных стрелах",
     "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
     "showCakeBagPreview": "Show Preview for Cake Bags",
-    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open"
+    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
+    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
+    "enableDevFeatures": "Enable Developer Features"
   },
   "messages": {
     "dropConfirmation": "Выбросите предмет ещё раз для подтверждения!",
