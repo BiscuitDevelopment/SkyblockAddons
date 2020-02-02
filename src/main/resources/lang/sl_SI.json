@@ -15,7 +15,7 @@
     "hideDurability": "Skrij Trpežnost Orodja",
     "showEnchantmentsReforges": "Enchanti & Reforgi",
     "minionStopWarning": "\"Minion Ne Doseže\" Opozorilo",
-    "hideAuctionHousePlayers": "Skrij Igralce Blizu Pomembnih NPC-jev",
+    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
     "backpackStyle": "Stil Nahrbtnika: %style%",
     "backpackStyles": {
       "regular": "Navaden",
@@ -94,7 +94,9 @@
     "noArrowsLeftAlert": "Opozorilo za manjko puščic",
     "hideNightVisionEffectTimer": "Skrij časovnik za Night Vision Potion",
     "showCakeBagPreview": "Pokaži predogled torb s tortami",
-    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open"
+    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
+    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
+    "enableDevFeatures": "Enable Developer Features"
   },
   "messages": {
     "dropConfirmation": "Ponovno Izpusti To Stvar za Potrditev!",
