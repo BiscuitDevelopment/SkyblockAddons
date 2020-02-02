@@ -93,7 +93,8 @@
     "tabEffectTimers": "مؤقتي الجرعات و مقويات الطاقة",
     "noArrowsLeftAlert": "تنبيه النفاذ من السهوم",
     "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
-    "showCakeBagPreview": "Show Preview for Cake Bags"
+    "showCakeBagPreview": "Show Preview for Cake Bags",
+    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open"
   },
   "messages": {
     "dropConfirmation": "!إرمي هذا العنصر مرة أخرى للتأكيد",
