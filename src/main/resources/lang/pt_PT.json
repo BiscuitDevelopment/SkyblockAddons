@@ -15,7 +15,7 @@
     "hideDurability": "Esconder a durabilidade das ferramentas",
     "showEnchantmentsReforges": "Encantamentos e Reforges",
     "minionStopWarning": "Aviso \"Minion Cannot Reach\"",
-    "hideAuctionHousePlayers": "Esconder jogadores perto de NPCs importantes",
+    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
     "backpackStyle": "Estilo da Backpack: %style%",
     "backpackStyles": {
       "regular": "Normal",
@@ -94,7 +94,9 @@
     "noArrowsLeftAlert": "No Arrows Left Alert",
     "hideNightVisionEffectTimer": "Esconder o efeito de visão noturna",
     "showCakeBagPreview": "Mostrar pré-visualização do saco de bolos",
-    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open"
+    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
+    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
+    "enableDevFeatures": "Enable Developer Features"
   },
   "messages": {
     "dropConfirmation": "Dropa este item outra vez para confirmar!",
