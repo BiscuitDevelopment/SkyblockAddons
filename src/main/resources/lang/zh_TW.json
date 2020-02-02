@@ -15,7 +15,7 @@
     "hideDurability": "隱藏物品耐久度",
     "showEnchantmentsReforges": "於畫面上顯示附魔 & 重鑄",
     "minionStopWarning": "\"機器人無法觸及生物\"警告",
-    "hideAuctionHousePlayers": "隱藏重要NPC旁的玩家",
+    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
     "backpackStyle": "背包樣式: %style%",
     "backpackStyles": {
       "regular": "一般",
@@ -94,7 +94,9 @@
     "noArrowsLeftAlert": "箭矢不足警報",
     "hideNightVisionEffectTimer": "隱藏夜視效果持續時間",
     "showCakeBagPreview": "顯示蛋糕袋預覽",
-    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open"
+    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
+    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
+    "enableDevFeatures": "Enable Developer Features"
   },
   "messages": {
     "dropConfirmation": "再次丟棄此物品以確認!",
