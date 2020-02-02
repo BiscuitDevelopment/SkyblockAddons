@@ -93,7 +93,8 @@
     "tabEffectTimers": "Magisk Drikk og Powerup Timere",
     "noArrowsLeftAlert": "Ingen Piler Igjen Varsel",
     "hideNightVisionEffectTimer": "Skjul Natt Syn Effekt Timer",
-    "showCakeBagPreview": "Vis Forhåndsvisning for Kake Sekker"
+    "showCakeBagPreview": "Vis Forhåndsvisning for Kake Sekker",
+    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open"
   },
   "messages": {
     "dropConfirmation": "Slipp denne gjenstanden igjen for å bekrefte!",
