@@ -5,6 +5,7 @@ import codes.biscuit.skyblockaddons.asm.utils.ReturnValue;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.Feature;
 import codes.biscuit.skyblockaddons.utils.npc.NPCUtils;
+import codes.biscuit.skyblockaddons.utils.npc.Tag;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.client.particle.EntityFX;
@@ -28,7 +29,7 @@ public class RenderManagerHook {
                 }
             }
             if (main.getConfigValues().isEnabled(Feature.HIDE_PLAYERS_NEAR_NPCS)) {
-                if (entityIn instanceof EntityOtherPlayerMP && NPCUtils.isNearAnyPlayerNPC(entityIn) && !NPCUtils.isNPC(entityIn)) {
+                if (entityIn instanceof EntityOtherPlayerMP && NPCUtils.isNearAnyNPCWithTag(entityIn, Tag.IMPORTANT) && !NPCUtils.isNPC(entityIn)) {
                     returnValue.cancel();
                 }
             }
@@ -39,11 +40,6 @@ public class RenderManagerHook {
                             entityIn.getDistanceToEntity(Minecraft.getMinecraft().thePlayer) > 7) {
                         returnValue.cancel();
                     }
-                }
-            }
-            if (main.getConfigValues().isEnabled(Feature.HIDE_PLAYERS_NEAR_HARP)) {
-                if (entityIn instanceof EntityOtherPlayerMP && NPCUtils.isNearNPC(entityIn, "HARP")) {
-                    returnValue.cancel();
                 }
             }
         }
