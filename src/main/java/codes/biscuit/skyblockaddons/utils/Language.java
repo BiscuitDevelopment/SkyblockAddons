@@ -1,5 +1,8 @@
 package codes.biscuit.skyblockaddons.utils;
 
+import lombok.Getter;
+
+@Getter
 public enum Language {
 
     // listed by popularity
@@ -49,28 +52,17 @@ public enum Language {
         this.path = path;
     }
 
-    public String getPath() {
-        return path;
-    }
-
+    /** Resources in later Minecraft versions can only use lowercase paths, so all of the flags are lowercase. */
     public String getFlagPath() {
         return path.toLowerCase();
     }
-
-//    public Language getNextLanguage() {
-//        int nextType = ordinal()+1;
-//        if (nextType > values().length-1) {
-//            nextType = 0;
-//        }
-//        return values()[nextType];
-//    }
 
     /**
      * Find the corresponding {@link Language} to a given key string like {@code en_US}.
      * Case-insensitive.
      *
-     * @param languageKey Key to look for
-     * @return Found language or null
+     * @param languageKey The lanugage key to look for.
+     * @return The language if one was found, or null.
      */
     public static Language getFromPath(String languageKey) {
         for (Language language : values()) {

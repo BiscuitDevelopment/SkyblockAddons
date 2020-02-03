@@ -15,7 +15,7 @@
     "hideDurability": "Pagtago ng tibay ng Tool",
     "showEnchantmentsReforges": "Pandayan at Enchants",
     "minionStopWarning": "\"Di Maabot ng Minion\" Babala",
-    "hideAuctionHousePlayers": "I-tago ang mga Tao malapit sa mga NPC",
+    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
     "backpackStyle": "Istilo ng Backpack: %style%",
     "backpackStyles": {
       "regular": "Regular",
@@ -91,7 +91,12 @@
       "generalSettings": "Mga pangkalahatan na settings"
     },
     "tabEffectTimers": "Potion and Powerup Timers",
-    "noArrowsLeftAlert": "No Arrows Left Alert"
+    "noArrowsLeftAlert": "No Arrows Left Alert",
+    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
+    "showCakeBagPreview": "Show Preview for Cake Bags",
+    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
+    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
+    "enableDevFeatures": "Enable Developer Features"
   },
   "messages": {
     "dropConfirmation": "Ihulog ang item muli para kumpirmado!",
@@ -137,6 +142,9 @@
     "searchFeatures": "Search features",
     "downloadingUpdateFile": "Downloading update file...",
     "onlyFewArrowsLeft": "Only %arrows% arrows left!",
-    "noArrowsLeft": "No Arrows Left!"
+    "noArrowsLeft": "No Arrows Left!",
+    "chooseAColor": "Choose a Color",
+    "selectedColor": "Selected Color",
+    "setHexColor": "Set Hex Color"
   }
 }

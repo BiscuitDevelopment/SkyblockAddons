@@ -1,7 +1,9 @@
 package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
+import lombok.Getter;
 
+@Getter
 public class GuiFeatureData {
 
     private ChatFormatting defaultColor = null;
@@ -11,7 +13,10 @@ public class GuiFeatureData {
     private EnumUtils.DrawType drawType = null;
 
     /**
-     * Whether the color selection is restricted to the minecraft color codes only.
+     * This represents whether the color selection is restricted to the minecraft color codes only
+     * such as &f, &a, and &b (white, green, and blue respectively).<br>
+     *
+     * Colors that cannot be used include other hex colors such as #FF00FF.
      */
     private boolean colorsRestricted;
 
@@ -43,38 +48,10 @@ public class GuiFeatureData {
         this(drawType, defaultAnchor, false, position);
     }
 
-    GuiFeatureData(EnumUtils.DrawType drawType, EnumUtils.AnchorPoint defaultAnchor, boolean colorsRestricted, int... position) {
+    private GuiFeatureData(EnumUtils.DrawType drawType, EnumUtils.AnchorPoint defaultAnchor, boolean colorsRestricted, int... position) {
         this.drawType = drawType;
         this.defaultAnchor = defaultAnchor;
         this.colorsRestricted = colorsRestricted;
         this.defaultPos = new CoordsPair(position[0], position[1]);
-
-    }
-
-    ChatFormatting getDefaultColor() {
-        return defaultColor;
-    }
-
-    EnumUtils.DrawType getDrawType() {
-        return drawType;
-    }
-
-    CoordsPair getDefaultPos() {
-        return defaultPos;
-    }
-
-    EnumUtils.AnchorPoint getDefaultAnchor() {
-        return defaultAnchor;
-    }
-
-    CoordsPair getDefaultBarSize() {
-        return defaultBarSize;
-    }
-
-    /**
-     * Get whether the color selection is restricted to the minecraft colors codes only.
-     */
-    public boolean isColorsRestricted() {
-        return colorsRestricted;
     }
 }

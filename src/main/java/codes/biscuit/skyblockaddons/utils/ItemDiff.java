@@ -1,5 +1,9 @@
 package codes.biscuit.skyblockaddons.utils;
 
+import lombok.AccessLevel;
+import lombok.Getter;
+
+@Getter
 public class ItemDiff {
 
     /**
@@ -7,13 +11,17 @@ public class ItemDiff {
      */
     static final long LIFESPAN = 5000;
 
+    /** The item's display name. */
     private final String displayName;
+
+    /** The changed amount. */
     private int amount;
-    private long timestamp;
+
+    @Getter(AccessLevel.NONE) private long timestamp;
 
     /**
-     * @param displayName The item's display name
-     * @param amount      The changed amount
+     * @param displayName The item's display name.
+     * @param amount      The changed amount.
      */
     public ItemDiff(String displayName, int amount) {
         this.displayName = displayName;
@@ -22,7 +30,7 @@ public class ItemDiff {
     }
 
     /**
-     * Update the changed amount of the item
+     * Update the changed amount of the item.
      *
      * @param amount Amount to be added
      */
@@ -36,21 +44,7 @@ public class ItemDiff {
     }
 
     /**
-     * @return The item's display name
-     */
-    public String getDisplayName() {
-        return displayName;
-    }
-
-    /**
-     * @return The changed amount
-     */
-    public int getAmount() {
-        return amount;
-    }
-
-    /**
-     * @return Amount of ms since the ItemDiff was created
+     * @return Amount of time in ms since the ItemDiff was created.
      */
     long getLifetime() {
         return System.currentTimeMillis() - timestamp;

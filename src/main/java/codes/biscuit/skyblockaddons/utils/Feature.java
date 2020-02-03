@@ -4,6 +4,7 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.gui.buttons.ButtonLocation;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
 import com.google.common.collect.Sets;
+import lombok.Getter;
 import net.minecraft.client.Minecraft;
 
 import java.util.Arrays;
@@ -11,6 +12,7 @@ import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+@Getter
 @SuppressWarnings({"DeprecatedIsStillUsed"})
 public enum Feature {
 
@@ -26,7 +28,7 @@ public enum Feature {
 //    HIDE_DURABILITY(9, Message.SETTING_HIDE_DURABILITY), // Removed, added to Skyblock.
     SHOW_ENCHANTMENTS_REFORGES(10, Message.SETTING_ENCHANTS_AND_REFORGES, false),
     MINION_STOP_WARNING(11, Message.SETTING_MINION_STOP_WARNING, new GuiFeatureData(ChatFormatting.RED), true),
-    HIDE_PLAYERS_NEAR_NPCS(12, Message.SETTING_PLAYERS_NEAR_NPCS, false),
+    HIDE_PLAYERS_NEAR_NPCS(12, Message.SETTING_HIDE_PLAYERS_NEAR_NPCS, false),
     HIDE_HEALTH_BAR(13, Message.SETTING_HIDE_HEALTH_BAR, true),
     DOUBLE_DROP_IN_OTHER_GAMES(14, null, false),
     MINION_FULL_WARNING(15, Message.SETTING_FULL_MINION, new GuiFeatureData(ChatFormatting.RED), false),
@@ -115,14 +117,14 @@ public enum Feature {
      * Features that are considered gui ones. This is used for examnple when saving the config to ensure that these features'
      * coordinates and colors are handled properly.
      */
-    private static Set<Feature> GUI_FEATURES = new LinkedHashSet<>(Arrays.asList(MAGMA_BOSS_TIMER, MANA_BAR, MANA_TEXT, DEFENCE_ICON, DEFENCE_TEXT,
+    @Getter private static Set<Feature> guiFeatures = new LinkedHashSet<>(Arrays.asList(MAGMA_BOSS_TIMER, MANA_BAR, MANA_TEXT, DEFENCE_ICON, DEFENCE_TEXT,
             DEFENCE_PERCENTAGE, HEALTH_BAR, HEALTH_TEXT, SKELETON_BAR, HEALTH_UPDATES, ITEM_PICKUP_LOG, DARK_AUCTION_TIMER, SKILL_DISPLAY, SPEED_PERCENTAGE, SLAYER_INDICATOR,
             POWER_ORB_STATUS_DISPLAY, ZEALOT_COUNTER, TICKER_CHARGES_DISPLAY, TAB_EFFECT_TIMERS));
 
     /**
      * These are features that are displayed separate, on the general tab.
      */
-    private static Set<Feature> GENERAL_TAB_FEATURES = new LinkedHashSet<>(Arrays.asList(TEXT_STYLE, WARNING_TIME));
+    @Getter private static Set<Feature> generalTabFeatures = new LinkedHashSet<>(Arrays.asList(TEXT_STYLE, WARNING_TIME));
 
     private int id;
     private Message message;
@@ -140,10 +142,6 @@ public enum Feature {
 
     Feature(int id, Message settingMessage, boolean defaultDisabled, EnumUtils.FeatureSetting... settings) {
         this(id, settingMessage,null, defaultDisabled, settings);
-    }
-
-    public int getId() {
-        return id;
     }
 
     public boolean isActualFeature() {
@@ -164,15 +162,11 @@ public enum Feature {
     }
 
     public boolean isGuiFeature() {
-        return GUI_FEATURES.contains(this);
+        return guiFeatures.contains(this);
     }
 
     public boolean isColorFeature() {
         return guiFeatureData != null && guiFeatureData.getDefaultColor() != null;
-    }
-
-    public boolean isDefaultDisabled() {
-        return defaultDisabled;
     }
 
     public void draw(float scale, Minecraft mc, ButtonLocation buttonLocation) {
@@ -228,21 +222,5 @@ public enum Feature {
             return guiFeatureData.getDefaultColor();
         }
         return null;
-    }
-
-    public Set<EnumUtils.FeatureSetting> getSettings() {
-        return settings;
-    }
-
-    public static Set<Feature> getGuiFeatures() {
-        return GUI_FEATURES;
-    }
-
-    public static Set<Feature> getGeneralTabFeatures() {
-        return GENERAL_TAB_FEATURES;
-    }
-
-    public GuiFeatureData getGuiFeatureData() {
-        return guiFeatureData;
     }
 }

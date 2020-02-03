@@ -1,6 +1,7 @@
 package codes.biscuit.skyblockaddons.utils.npc;
 
-import codes.biscuit.skyblockaddons.utils.EnumUtils;
+import codes.biscuit.skyblockaddons.utils.Location;
+import lombok.Getter;
 
 import java.util.List;
 
@@ -14,9 +15,10 @@ import static java.util.Collections.singletonList;
  * @author ILikePlayingGames
  * @version 1.0
  */
+@Getter
 enum NPC {
     // These are organized by island
-
+  
     /*
     Hub
     It's been broken down into sub-sections since it's such a large island.
@@ -123,11 +125,11 @@ enum NPC {
     // TODO Jerry's Workshop
 
 
-    double x;
-    double y;
-    double z;
-    List<Tag> tags;
-    List<EnumUtils.Location> locations;
+    private double x;
+    private double y;
+    private double z;
+    private List<Tag> tags;
+    private List<Location> locations;
 
     /**
      * Creates a new NPC entry.
@@ -138,7 +140,7 @@ enum NPC {
      * @param tags NPC Type(s)
      * @param locations NPC Location(s)
      */
-    NPC(double x, double y, double z, List<Tag> tags, List<EnumUtils.Location> locations) {
+    NPC(double x, double y, double z, List<Tag> tags, List<Location> locations) {
         this.x = x;
         this.y = y;
         this.z = z;
@@ -146,31 +148,11 @@ enum NPC {
         this.locations = locations;
     }
 
-    double getX() {
-        return x;
-    }
-
-    double getY() {
-        return y;
-    }
-
-    double getZ() {
-        return z;
-    }
-
-    List<Tag> getTags() {
-        return tags;
-    }
-
-    List<EnumUtils.Location> getLocations() {
-        return locations;
-    }
-
     boolean hasTag(Tag tag) {
         return tags.contains(tag);
     }
 
-    boolean hasLocation(EnumUtils.Location location) {
+    boolean hasLocation(Location location) {
         return locations.contains(location);
     }
 }

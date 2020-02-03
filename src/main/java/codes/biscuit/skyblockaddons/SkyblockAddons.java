@@ -6,6 +6,9 @@ import codes.biscuit.skyblockaddons.listeners.PlayerListener;
 import codes.biscuit.skyblockaddons.listeners.RenderListener;
 import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsTransformer;
 import codes.biscuit.skyblockaddons.utils.*;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.Setter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraftforge.client.ClientCommandHandler;
@@ -23,14 +26,17 @@ import java.lang.reflect.Field;
 import java.util.Timer;
 import java.util.TimerTask;
 
+@Getter
 @Mod(modid = SkyblockAddons.MOD_ID, version = SkyblockAddons.VERSION, name = SkyblockAddons.MOD_NAME, useMetadata = true, clientSideOnly = true, acceptedMinecraftVersions = "[1.8.9]")
 public class SkyblockAddons {
 
     static final String MOD_ID = "skyblockaddons";
-    static final String MOD_NAME = "SkyblockAddons";
+    public static final String MOD_NAME = "SkyblockAddons";
     public static final String VERSION = "1.5.0-b4";
 
-    private static SkyblockAddons instance; // for Mixins cause they don't have a constructor
+    /** The main instance of the mod, used mainly my mixins who don't get it passed to them. */
+    @Getter private static SkyblockAddons instance;
+
     private ConfigValues configValues;
     private PersistentValues persistentValues;
     private PlayerListener playerListener = new PlayerListener(this);
@@ -38,11 +44,15 @@ public class SkyblockAddons {
     private RenderListener renderListener = new RenderListener(this);
     private Utils utils = new Utils(this);
     private InventoryUtils inventoryUtils = new InventoryUtils(this);
+
+    /** Get the scheduler that be can be used to easily execute tasks. */
     private Scheduler scheduler = new Scheduler(this);
     private boolean usingLabymod = false;
     private boolean usingOofModv1 = false;
-    private boolean devMode = false;
-    private KeyBinding[] keyBindings = new KeyBinding[5];
+
+    /** Whether developer mode is enabled. */
+    @Setter private boolean devMode = false;
+    @Setter(AccessLevel.NONE) private KeyBinding[] keyBindings = new KeyBinding[5];
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent e) {
@@ -127,66 +137,6 @@ public class SkyblockAddons {
                 }
             }
         }, 5000);
-    }
-
-    public ConfigValues getConfigValues() {
-        return configValues;
-    }
-    
-    public PersistentValues getPersistentValues() {
-    	return persistentValues;
-    }
-
-    public PlayerListener getPlayerListener() {
-        return playerListener;
-    }
-
-    public RenderListener getRenderListener() {
-        return renderListener;
-    }
-
-    public Utils getUtils() {
-        return utils;
-    }
-
-    public InventoryUtils getInventoryUtils() {
-        return inventoryUtils;
-    }
-
-    public boolean isUsingLabymod() {
-        return usingLabymod;
-    }
-
-    public static SkyblockAddons getInstance() {
-        return instance;
-    }
-
-    public boolean isUsingOofModv1() {
-        return usingOofModv1;
-    }
-
-    /**
-     * Check whether developer mode is enabled.
-     *
-     * @return {@code true} if developer mode is enabled, {@code false} if it isn't
-     */
-    public boolean isDevMode() {
-        return devMode;
-    }
-
-    /**
-     * <p>Toggles developer mode.</p>
-     * <p>Developer mode enables a set of features that are useful for Skyblock Addons Developers,
-     * like NBT data copying.</p>
-     *
-     * @param devMode Set to {@code true} to enable developer mode
-     */
-    public void setDevMode(boolean devMode) {
-        this.devMode = devMode;
-    }
-
-    public Scheduler getScheduler() {
-        return scheduler;
     }
 
     public KeyBinding getOpenSettingsKey() {

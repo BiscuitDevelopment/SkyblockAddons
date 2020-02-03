@@ -15,7 +15,7 @@
     "hideDurability": "'ide Item Durability",
     "showEnchantmentsReforges": "Magic n' Reforgery",
     "minionStopWarning": "\"Minion Cannot Reach\" Warnin'",
-    "hideAuctionHousePlayers": "'ide Players near mportn't NPCs",
+    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
     "backpackStyle": "Style o' Yer Booty: %style%",
     "backpackStyles": {
       "regular": "Regularrr",
@@ -91,7 +91,12 @@
       "generalSettings": "General Settin's"
     },
     "tabEffectTimers": "Potion and Powerup Timers",
-    "noArrowsLeftAlert": "No Arrows Left Alert"
+    "noArrowsLeftAlert": "No Arrows Left Alert",
+    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
+    "showCakeBagPreview": "Show Preview for Cake Bags",
+    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
+    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
+    "enableDevFeatures": "Enable Developer Features"
   },
   "messages": {
     "dropConfirmation": "'ay lad, drop this here item again to confirm!",
@@ -137,6 +142,9 @@
     "searchFeatures": "Search feat'rs",
     "downloadingUpdateFile": "Downloading yer updates...",
     "onlyFewArrowsLeft": "Only %arrows% arrows left!",
-    "noArrowsLeft": "No Arrows Left!"
+    "noArrowsLeft": "No Arrows Left!",
+    "chooseAColor": "Choose a Color",
+    "selectedColor": "Selected Color",
+    "setHexColor": "Set Hex Color"
   }
 }

@@ -15,7 +15,7 @@
     "hideDurability": "Verberg Duurzaamheid Gereedschap",
     "showEnchantmentsReforges": "Betoveringen & Omsmedingen",
     "minionStopWarning": "Minion is gestopt Waarschuwing",
-    "hideAuctionHousePlayers": "Spelers in de buurt van belangrijke NPC's verbergen",
+    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
     "backpackStyle": "Rugzak stijl: %style%",
     "backpackStyles": {
       "regular": "Normaal",
@@ -90,8 +90,13 @@
     "tab": {
       "generalSettings": "Algemene instellingen"
     },
-    "tabEffectTimers": "Potion and Powerup Timers",
-    "noArrowsLeftAlert": "No Arrows Left Alert"
+    "tabEffectTimers": "Drank- en Power-up Timers",
+    "noArrowsLeftAlert": "Geen Pijlen Resterend Waarschuwing",
+    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
+    "showCakeBagPreview": "Show Preview for Cake Bags",
+    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
+    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
+    "enableDevFeatures": "Enable Developer Features"
   },
   "messages": {
     "dropConfirmation": "Laat dit object opnieuw vallen om te Bevestigen!",
@@ -136,7 +141,10 @@
     "blockIncompletePatterns": "Blokkeer het maken van onvolledige patronen (aanbevolen)",
     "searchFeatures": "Doorzoek functies",
     "downloadingUpdateFile": "Update bestand downloaden...",
-    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
-    "noArrowsLeft": "No Arrows Left!"
+    "onlyFewArrowsLeft": "Nog maar %arrows% pijlen over!",
+    "noArrowsLeft": "Geen Pijlen Resterend!",
+    "chooseAColor": "Choose a Color",
+    "selectedColor": "Selected Color",
+    "setHexColor": "Set Hex Color"
   }
 }

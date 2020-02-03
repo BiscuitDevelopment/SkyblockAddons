@@ -3,6 +3,8 @@ package codes.biscuit.skyblockaddons.utils;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
 import com.google.gson.*;
+import lombok.Getter;
+import lombok.Setter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.util.MathHelper;
@@ -27,25 +29,24 @@ public class ConfigValues {
     private final static float GUI_SCALE_STEP = 0.1F;
 
     private SkyblockAddons main;
+
     private File settingsConfigFile;
     private JsonObject settingsConfig = new JsonObject();
+    @Getter private JsonObject languageConfig = new JsonObject();
 
-    private JsonObject languageConfig = new JsonObject();
-
-    private Set<Feature> disabledFeatures = EnumSet.noneOf(Feature.class);
-    @Deprecated // Replaced with colors
-    private Map<Feature, ChatFormatting> featureColors = new EnumMap<>(Feature.class);
+    @Getter private Set<Feature> disabledFeatures = EnumSet.noneOf(Feature.class);
+    @Deprecated private Map<Feature, ChatFormatting> featureColors = new EnumMap<>(Feature.class); // Replaced with colors
     private Map<Feature, Integer> colors = new HashMap<>();
     private Map<Feature, MutableFloat> guiScales = new EnumMap<>(Feature.class);
     private Map<Feature, CoordsPair> barSizes = new EnumMap<>(Feature.class);
-    private int warningSeconds = 4;
+    @Getter @Setter private int warningSeconds = 4;
     private Map<Feature, CoordsPair> coordinates = new EnumMap<>(Feature.class);
     private Map<Feature, EnumUtils.AnchorPoint> anchorPoints = new EnumMap<>(Feature.class);
-    private Language language = Language.ENGLISH;
-    private EnumUtils.BackpackStyle backpackStyle = EnumUtils.BackpackStyle.GUI;
-    private EnumUtils.PowerOrbDisplayStyle powerOrbDisplayStyle = EnumUtils.PowerOrbDisplayStyle.COMPACT;
-    private EnumUtils.TextStyle textStyle = EnumUtils.TextStyle.STYLE_ONE;
-    @SuppressWarnings("deprecation") private Set<Feature> remoteDisabledFeatures = EnumSet.of(Feature.AVOID_BREAKING_BOTTOM_SUGAR_CANE);
+    @Getter @Setter private Language language = Language.ENGLISH;
+    @Getter @Setter private EnumUtils.BackpackStyle backpackStyle = EnumUtils.BackpackStyle.GUI;
+    @Getter @Setter private EnumUtils.PowerOrbDisplayStyle powerOrbDisplayStyle = EnumUtils.PowerOrbDisplayStyle.COMPACT;
+    @Getter @Setter private EnumUtils.TextStyle textStyle = EnumUtils.TextStyle.STYLE_ONE;
+    @Getter @SuppressWarnings("deprecation") private Set<Feature> remoteDisabledFeatures = EnumSet.of(Feature.AVOID_BREAKING_BOTTOM_SUGAR_CANE);
     private Set<Integer> legacyLockedSlots = new HashSet<>();
     private Map<String, Set<Integer>> profileLockedSlots = new HashMap<>();
 
@@ -140,7 +141,6 @@ public class ConfigValues {
                     }
                 }
             }
-
 
             for (Feature feature : Feature.getGuiFeatures()) { // Deprecated - Legacy Loader
                 String property = Introspector.decapitalize(WordUtils.capitalizeFully(feature.toString().replace("_", " "))).replace(" ", "");
@@ -533,18 +533,6 @@ public class ConfigValues {
         return !isDisabled(feature);
     }
 
-    public Set<Feature> getDisabledFeatures() {
-        return disabledFeatures;
-    }
-
-    public void setLanguage(Language language) {
-        this.language = language;
-    }
-
-    public Language getLanguage() {
-        return language;
-    }
-
     public Color getColor(Feature feature, int alpha) {
         Color color = getColor(feature);
 
@@ -572,14 +560,6 @@ public class ConfigValues {
 
     public void setColor(Feature feature, int color) {
         colors.put(feature, color);
-    }
-
-    public int getWarningSeconds() {
-        return warningSeconds;
-    }
-
-    public void setWarningSeconds(int warningSeconds) {
-        this.warningSeconds = warningSeconds;
     }
 
     public int getActualX(Feature feature) {
@@ -654,42 +634,10 @@ public class ConfigValues {
         setCoords(feature, x, y);
     }
 
-    public EnumUtils.BackpackStyle getBackpackStyle() {
-        return backpackStyle;
-    }
-
-    public EnumUtils.PowerOrbDisplayStyle getPowerOrbDisplayStyle() {
-        return powerOrbDisplayStyle;
-    }
-
-    public void setBackpackStyle(EnumUtils.BackpackStyle backpackStyle) {
-        this.backpackStyle = backpackStyle;
-    }
-
-    public void setPowerOrbDisplayStyle(EnumUtils.PowerOrbDisplayStyle powerOrbDisplayStyle) {
-        this.powerOrbDisplayStyle = powerOrbDisplayStyle;
-    }
-
     public EnumUtils.AnchorPoint getAnchorPoint(Feature feature) {
         EnumUtils.AnchorPoint defaultPoint = feature.getAnchorPoint();
 
         return anchorPoints.getOrDefault(feature, defaultPoint != null ? defaultPoint : EnumUtils.AnchorPoint.BOTTOM_MIDDLE);
-    }
-
-    JsonObject getLanguageConfig() {
-        return languageConfig;
-    }
-
-    public EnumUtils.TextStyle getTextStyle() {
-        return textStyle;
-    }
-
-    public void setTextStyle(EnumUtils.TextStyle textStyle) {
-        this.textStyle = textStyle;
-    }
-
-    Set<Feature> getRemoteDisabledFeatures() {
-        return remoteDisabledFeatures;
     }
 
     public Set<Integer> getLockedSlots() {
@@ -722,7 +670,7 @@ public class ConfigValues {
         return value;
     }
 
-    // these are taken from GuiOptionSlider
+    /** These two are taken from GuiOptionSlider. */
     private float denormalizeScale(float value) {
         return snapToStepClamp(ConfigValues.GUI_SCALE_MINIMUM + (ConfigValues.GUI_SCALE_MAXIMUM - ConfigValues.GUI_SCALE_MINIMUM) *
                 MathHelper.clamp_float(value, 0.0F, 1.0F));
@@ -731,10 +679,4 @@ public class ConfigValues {
         value = ConfigValues.GUI_SCALE_STEP * (float) Math.round(value / ConfigValues.GUI_SCALE_STEP);
         return MathHelper.clamp_float(value, ConfigValues.GUI_SCALE_MINIMUM, ConfigValues.GUI_SCALE_MAXIMUM);
     }
-
-
-
-//    private float getRoundedValue(float value) {
-//        return new BigDecimal(String.valueOf(value)).setScale(2, BigDecimal.ROUND_HALF_UP).floatValue();
-//    }
 }

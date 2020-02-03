@@ -15,7 +15,7 @@
     "hideDurability": "Eşyaların Dayanıklılığını Sakla",
     "showEnchantmentsReforges": "Büyü ve Reforge'lar",
     "minionStopWarning": "\"Minyon Erişemiyor\" Uyarısı",
-    "hideAuctionHousePlayers": "Önemli NPC'lerin yakınındaki oyuncuları gizle",
+    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
     "backpackStyle": "Sırt Çantası Tipi: %style%",
     "backpackStyles": {
       "regular": "Sıradan",
@@ -91,7 +91,12 @@
       "generalSettings": "Genel Ayarlar"
     },
     "tabEffectTimers": "Potion and Powerup Timers",
-    "noArrowsLeftAlert": "No Arrows Left Alert"
+    "noArrowsLeftAlert": "No Arrows Left Alert",
+    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
+    "showCakeBagPreview": "Show Preview for Cake Bags",
+    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
+    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
+    "enableDevFeatures": "Enable Developer Features"
   },
   "messages": {
     "dropConfirmation": "Eşyayı düşürmeyi onaylamak için düşürme tuşuna bir daha bas!",
@@ -137,6 +142,9 @@
     "searchFeatures": "Özellikleri ara",
     "downloadingUpdateFile": "Güncelleme dosyası indiriliyor...",
     "onlyFewArrowsLeft": "Only %arrows% arrows left!",
-    "noArrowsLeft": "No Arrows Left!"
+    "noArrowsLeft": "No Arrows Left!",
+    "chooseAColor": "Choose a Color",
+    "selectedColor": "Selected Color",
+    "setHexColor": "Set Hex Color"
   }
 }

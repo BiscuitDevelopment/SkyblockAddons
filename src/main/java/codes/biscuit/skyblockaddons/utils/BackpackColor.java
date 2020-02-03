@@ -48,9 +48,10 @@ public enum  BackpackColor {
     private static Set<BackpackColor> darkColors = EnumSet.of(BackpackColor.BLACK, BackpackColor.PURPLE, BackpackColor.GREEN,
             BackpackColor.MAGENTA, BackpackColor.RED, BackpackColor.BROWN, BackpackColor.BLUE, BackpackColor.GREY);
 
-    public int getTextColor() {
-        int rgb = 4210752;
-        if (darkColors.contains(this)) {
+    public int getInventoryTextColor() {
+        int rgb = 4210752; // Default inventory grey.
+
+        if (darkColors.contains(this)) { // Dark colors need a contrasting lighter white color.
             rgb = new Color(219, 219, 219, 255).getRGB();
         }
         return rgb;

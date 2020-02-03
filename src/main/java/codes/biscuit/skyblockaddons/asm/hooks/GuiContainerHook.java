@@ -58,7 +58,7 @@ public class GuiContainerHook {
                         if (lines.length >= 2) {
                             String toMatch = lines[1];
                             String enchant;
-                            if (!main.getUtils().getEnchantmentMatch().isEmpty() &&
+                            if (!main.getUtils().getEnchantmentMatches().isEmpty() &&
                                     main.getUtils().enchantReforgeMatches(toMatch)) {
                                 enchant = ChatFormatting.RED + toMatch;
                             } else {
@@ -79,7 +79,7 @@ public class GuiContainerHook {
                 } else if ("Reforge Item".equals(slotIn.inventory.getDisplayName().getUnformattedText()) && slotIn.slotNumber == 13) {
                     String reforge = main.getUtils().getReforgeFromItem(item);
                     if (reforge != null) {
-                        if (!main.getUtils().getEnchantmentMatch().isEmpty() &&
+                        if (!main.getUtils().getEnchantmentMatches().isEmpty() &&
                                 main.getUtils().enchantReforgeMatches(reforge)) {
                             reforge = ChatFormatting.RED + reforge;
                         } else {
@@ -150,7 +150,7 @@ public class GuiContainerHook {
                 if (main.getConfigValues().isEnabled(Feature.MAKE_BACKPACK_INVENTORIES_COLORED)) {
                     BackpackColor color = backpack.getBackpackColor();
                     GlStateManager.color(color.getR(), color.getG(), color.getB(), 1);
-                    textColor = color.getTextColor();
+                    textColor = color.getInventoryTextColor();
                 }
                 guiContainer.drawTexturedModalRect(x, y, 0, 0, 176, rows * 18 + 17);
                 guiContainer.drawTexturedModalRect(x, y + rows * 18 + 17, 0, 215, 176, 7);

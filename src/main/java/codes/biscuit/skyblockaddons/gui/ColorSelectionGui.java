@@ -2,7 +2,6 @@ package codes.biscuit.skyblockaddons.gui;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.gui.buttons.ButtonColorBox;
-import codes.biscuit.skyblockaddons.listeners.PlayerListener;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.Feature;
 import codes.biscuit.skyblockaddons.utils.Message;
@@ -206,6 +205,6 @@ public class ColorSelectionGui extends GuiScreen {
     public void onGuiClosed() {
         Keyboard.enableRepeatEvents(false);
 
-        SkyblockAddons.getInstance().getRenderListener().setGuiToOpen(PlayerListener.GUIType.MAIN, lastPage, lastTab);
+        SkyblockAddons.getInstance().getRenderListener().setGuiToOpen(EnumUtils.GUIType.MAIN, lastPage, lastTab);
     }
 }
