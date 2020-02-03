@@ -15,7 +15,7 @@
     "hideDurability": "Ocultar Durabilidad de Herramientas",
     "showEnchantmentsReforges": "Ver Encantamientos y Reforjes",
     "minionStopWarning": "Aviso de Detención de Minion",
-    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
+    "hidePlayersNearNPCs": "Ocultar Jugadores cerca de NPCs importantes",
     "backpackStyle": "Estilo de Mochila: %style%",
     "backpackStyles": {
       "regular": "Normal",
@@ -94,9 +94,9 @@
     "noArrowsLeftAlert": "Alerta de Quedarse sin Flechas",
     "hideNightVisionEffectTimer": "Ocultar el temporizador del efecto de visión nocturna",
     "showCakeBagPreview": "Mostrar Preview para los Cake Bags",
-    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
-    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
-    "enableDevFeatures": "Developer Mode Key"
+    "showBackpackPreviewInAH": "Mostrar Preview de la Mochila mientras Auction House esta abierto",
+    "hidePlayersNearHarp": "Ocultar jugadores cerca de Melody's Harp",
+    "enableDevFeatures": "Modo De Desarrollador"
   },
   "messages": {
     "dropConfirmation": "¡Dropea el Objeto otra vez para soltar!",
