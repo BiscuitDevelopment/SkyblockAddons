@@ -34,9 +34,10 @@ public class GuiScreenListener {
      */
     @SubscribeEvent(receiveCanceled = true)
     public void onKeyInput(GuiScreenEvent.KeyboardInputEvent event) {
+        int eventKey = Keyboard.getEventKey();
 
         // Forge key binding key press detection doesn't work in GUIs
-        if (Keyboard.getEventKey() == main.getDevKey().getKeyCode()) {
+        if (eventKey != Keyboard.KEY_NONE && eventKey == main.getDevKey().getKeyCode()) {
 
             // For some reason four key presses are detected for each actual press so count only the first one.
             if (Minecraft.getSystemTime() - lastDevKeyEvent > 100L) {
