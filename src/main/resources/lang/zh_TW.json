@@ -15,7 +15,7 @@
     "hideDurability": "隱藏物品耐久度",
     "showEnchantmentsReforges": "於畫面上顯示附魔 & 重鑄",
     "minionStopWarning": "\"機器人無法觸及生物\"警告",
-    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
+    "hidePlayersNearNPCs": "隱藏重要NPC旁的玩家",
     "backpackStyle": "背包樣式: %style%",
     "backpackStyles": {
       "regular": "一般",
@@ -94,9 +94,9 @@
     "noArrowsLeftAlert": "箭矢不足警報",
     "hideNightVisionEffectTimer": "隱藏夜視效果持續時間",
     "showCakeBagPreview": "顯示蛋糕袋預覽",
-    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
-    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
-    "enableDevFeatures": "Developer Mode Key"
+    "showBackpackPreviewInAH": "在競標開啟時顯示你背包物品的預覽",
+    "hidePlayersNearHarp": "隱藏在Melody豎琴旁的玩家",
+    "enableDevFeatures": "開發者模式按鈕"
   },
   "messages": {
     "dropConfirmation": "再次丟棄此物品以確認!",
@@ -130,11 +130,11 @@
     },
     "slotLocked": "此欄位已被鎖定!",
     "summoningEyeFound": "召喚之眼!",
-    "cancelledStemBreak": "SkyblockAddons阻止了你破壞這個梗, 如確實想破壞, 請使用空手",
-    "cancelledProfileOpening": "SkyblockAddons阻止了你拿著弓打開其他玩家的資料。",
-    "cancelledDropping": "SkyblockAddons阻止了你丟出快捷欄中稀有等級以上的物品。",
+    "cancelledStemBreak": "一個功能阻止了你破壞這個梗, 如確實想破壞, 請使用空手",
+    "cancelledProfileOpening": "一個功能阻止了你拿著弓打開其他玩家的資料。",
+    "cancelledDropping": "一個功能阻止了你丟出快捷欄中稀有等級以上的物品。",
     "clickMoreTimes": "如果你真的想這麼做, 請再點擊或按丟出%times%次。",
-    "cancelledDeepCaverns": "一個SkyblockAddons的功能阻止了你挖掘此方塊",
+    "cancelledDeepCaverns": "一個功能阻止了你挖掘此方塊",
     "featureDisabled": "功能已被停用",
     "anvilUses": "鐵砧使用次數: %uses%",
     "specialZealotFound": "特殊Zealot!",
