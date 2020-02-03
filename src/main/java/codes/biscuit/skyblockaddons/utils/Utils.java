@@ -11,14 +11,18 @@ import com.google.common.collect.ObjectArrays;
 import com.google.common.collect.Sets;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import lombok.Getter;
+import lombok.Setter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.event.ClickEvent;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.launchwrapper.Launch;
-import net.minecraft.nbt.*;
-import net.minecraft.scoreboard.*;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.scoreboard.Score;
+import net.minecraft.scoreboard.ScoreObjective;
+import net.minecraft.scoreboard.ScorePlayerTeam;
+import net.minecraft.scoreboard.Scoreboard;
 import net.minecraft.util.ChatComponentText;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.common.MinecraftForge;
@@ -46,19 +50,14 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.zip.ZipEntry;
 
+@Getter @Setter
 public class Utils {
 
+    /** Added to the beginning of messages. */
+    private static final String MESSAGE_PREFIX =
+            ChatFormatting.GRAY + "[" + ChatFormatting.AQUA + SkyblockAddons.MOD_NAME + ChatFormatting.GRAY + "] ";
 
-    // I know this is messy af, but frustration led me to take this dark path - said someone not biscuit
-    public static boolean blockNextClick = false;
-
-    private boolean usingOldSkyBlockTexture = false;
-    private boolean usingDefaultBarTextures = true;
-
-    private final Pattern ITEM_ABILITY_PATTERN = Pattern.compile("§5§o§6Item Ability: ([A-Za-z ]+) §e§l[A-Z ]+");
-
-    private static final String MESSAGE_HEADER = ChatFormatting.WHITE + "[" + ChatFormatting.BLUE + SkyblockAddons.MOD_NAME +
-            ChatFormatting.WHITE + "] ";
+    /** Enchantments listed by how good they are. May or may not be subjective lol. */
     private static final List<String> ORDERED_ENCHANTMENTS = Collections.unmodifiableList(Arrays.asList(
             "smite","bane of arthropods","knockback","fire aspect","venomous", // Sword Bad
             "thorns","growth","protection","depth strider","respiration","aqua affinity", // Armor
@@ -69,18 +68,56 @@ public class Utils {
             "punch","flame", // Bow Others
             "telekinesis"
     ));
+    private static final Pattern SERVER_REGEX = Pattern.compile("([0-9]{2}/[0-9]{2}/[0-9]{2}) (mini[0-9]{1,3}[A-Za-z])");
 
+    /** In English, Chinese Simplified. */
+    private static final Set<String> SKYBLOCK_IN_ALL_LANGUAGES = Sets.newHashSet("SKYBLOCK","\u7A7A\u5C9B\u751F\u5B58");
+
+    /** Used for web requests. */
+    private static final String USER_AGENT = "SkyblockAddons/" + SkyblockAddons.VERSION;
+
+    /**
+     * Items containing these in the name should never be dropped. Helmets a lot of times
+     * in skyblock are weird items and are not damageable so that's why its included.
+     */
+    private static final String[] RARE_ITEM_OVERRIDES = {"Backpack", "Helmet"};
+
+    // I know this is messy af, but frustration led me to take this dark path - said someone not biscuit
+    public static boolean blockNextClick = false;
+
+    /** Get a player's attributes. This includes health, mana, and defence. */
     private Map<Attribute, MutableInt> attributes = new EnumMap<>(Attribute.class);
-    private List<String> enchantmentMatch = new LinkedList<>();
-    private List<String> enchantmentExclusion = new LinkedList<>();
+
+    /** List of enchantments that the player is looking to find. */
+    private List<String> enchantmentMatches = new LinkedList<>();
+
+    /** List of enchantment substrings that the player doesn't want to match. */
+    private List<String> enchantmentExclusions = new LinkedList<>();
+
     private Backpack backpackToRender = null;
-    private static boolean onSkyblock = false;
-    private EnumUtils.Location location = null;
+
+    /** Whether the player is on skyblock. */
+    private boolean onSkyblock = false;
+
+    /** List of enchantments that the player is looking to find. */
+    private Location location = null;
+
+    /** The skyblock profile that the player is currently on. Ex. "Grapefruit" */
     private String profileName = null;
+
+    /** Whether or not a loud sound is being played by the mod. */
     private boolean playingSound = false;
+
+    /** The current serverID that the player is on. */
     private String serverID = "";
     private SkyblockDate currentDate = new SkyblockDate(SkyblockDate.SkyblockMonth.EARLY_WINTER, 1, 1, 1);
     private int lastHoveredSlot = -1;
+
+    /** Whether the player is using the old style of bars packaged into Imperial's Skyblock Pack. */
+    private boolean usingOldSkyBlockTexture = false;
+
+    /** Whether the player is using the default bars packaged into the mod. */
+    private boolean usingDefaultBarTextures = true;
 
     private boolean fadingIn;
 
@@ -97,32 +134,29 @@ public class Utils {
         }
     }
 
-    public void sendMessage(String text) {
-        ClientChatReceivedEvent event = new ClientChatReceivedEvent((byte) 1, new ChatComponentText(MESSAGE_HEADER + text));
+    public void sendMessage(String text, boolean prefix) {
+        ClientChatReceivedEvent event = new ClientChatReceivedEvent((byte) 1, new ChatComponentText((prefix ? MESSAGE_PREFIX : "") + text));
         MinecraftForge.EVENT_BUS.post(event); // Let other mods pick up the new message
         if (!event.isCanceled()) {
             Minecraft.getMinecraft().thePlayer.addChatMessage(event.message); // Just for logs
         }
+    }
+
+    public void sendMessage(String text) {
+        sendMessage(text, true);
     }
 
     private void sendMessage(ChatComponentText text) {
-        ChatComponentText output = new ChatComponentText(MESSAGE_HEADER + text);
-        ClientChatReceivedEvent event = new ClientChatReceivedEvent((byte) 1, output);
-        MinecraftForge.EVENT_BUS.post(event); // Let other mods pick up the new message
-        if (!event.isCanceled()) {
-            Minecraft.getMinecraft().thePlayer.addChatMessage(event.message); // Just for logs
-        }
+        sendMessage(text.getFormattedText());
+    }
+
+    private void sendMessage(ChatComponentText text, boolean prefix) {
+        sendMessage(text.getFormattedText(), prefix);
     }
 
     public void sendErrorMessage(String errorText) {
-        String errorPrefix = ChatFormatting.BOLD + "Error: " + ChatFormatting.WHITE;
-
-        sendMessage(errorPrefix + errorText);
+        sendMessage(ChatFormatting.RED + "Error: " + errorText);
     }
-
-    private static final Pattern SERVER_REGEX = Pattern.compile("([0-9]{2}/[0-9]{2}/[0-9]{2}) (mini[0-9]{1,3}[A-Za-z])");
-    // english, chinese simplified
-    private static final Set<String> SKYBLOCK_IN_ALL_LANGUAGES = Sets.newHashSet("SKYBLOCK","\u7A7A\u5C9B\u751F\u5B58");
 
     public void checkGameLocationDate() {
         boolean foundLocation = false;
@@ -182,10 +216,10 @@ public class Utils {
                             continue; // skip to next line
                         }
                     }
-                    for (EnumUtils.Location loopLocation : EnumUtils.Location.values()) {
+                    for (Location loopLocation : Location.values()) {
                         if (locationString.endsWith(loopLocation.getScoreboardName())) {
-                            if (loopLocation == EnumUtils.Location.BLAZING_FORTRESS &&
-                                    location != EnumUtils.Location.BLAZING_FORTRESS) {
+                            if (loopLocation == Location.BLAZING_FORTRESS &&
+                                    location != Location.BLAZING_FORTRESS) {
                                 sendPostRequest(EnumUtils.MagmaEvent.PING); // going into blazing fortress
                                 fetchEstimateFromServer();
                             }
@@ -212,10 +246,6 @@ public class Utils {
     private String keepLettersAndNumbersOnly(String text) {
         return LETTERS_NUMBERS.matcher(text).replaceAll("");
     }
-
-//    private String keepLettersOnly(String text) {
-//        return LETTERS.matcher(text).replaceAll("");
-//    }
 
     public String getNumbersOnly(String text) {
         return NUMBERS_SLASHES.matcher(text).replaceAll("");
@@ -304,7 +334,7 @@ public class Utils {
                         } finally {
                             main.getRenderListener().getDownloadInfo().setDownloadLink(link);
                             if (i == 2 || i == 3 || outOfBeta) { // 0.0.x or 0.0.0-bx
-                                main.getRenderListener().getDownloadInfo().setPatch();
+                                main.getRenderListener().getDownloadInfo().setPatch(true);
                                 main.getRenderListener().getDownloadInfo().setMessageType(EnumUtils.UpdateMessageType.PATCH_AVAILABLE);
                                 sendUpdateMessage(true,true);
                             } else {
@@ -326,14 +356,13 @@ public class Utils {
 
     void sendUpdateMessage(boolean showDownload, boolean showAutoDownload) {
         String newestVersion = main.getRenderListener().getDownloadInfo().getNewestVersion();
-        sendMessage(ChatFormatting.GRAY.toString() + ChatFormatting.STRIKETHROUGH + "--------" + ChatFormatting.GRAY + '[' +
-                            ChatFormatting.AQUA + ChatFormatting.BOLD + " SkyblockAddons " + ChatFormatting.GRAY + ']' + ChatFormatting.GRAY + ChatFormatting.STRIKETHROUGH + "--------");
+        sendMessage(color("&7&m------------&7[&b&l SkyblockAddons &7]&7&m------------"), false);
         if (main.getRenderListener().getDownloadInfo().getMessageType() == EnumUtils.UpdateMessageType.DOWNLOAD_FINISHED) {
             ChatComponentText deleteOldFile = new ChatComponentText(ChatFormatting.RED+Message.MESSAGE_DELETE_OLD_FILE.getMessage()+"\n");
-            sendMessage(deleteOldFile);
+            sendMessage(deleteOldFile, false);
         } else {
             ChatComponentText newUpdate = new ChatComponentText(ChatFormatting.AQUA+Message.MESSAGE_NEW_UPDATE.getMessage(newestVersion)+"\n");
-            sendMessage(newUpdate);
+            sendMessage(newUpdate, false);
         }
 
         ChatComponentText buttonsMessage = new ChatComponentText("");
@@ -354,14 +383,14 @@ public class Utils {
         openModsFolder.setChatStyle(openModsFolder.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/sba folder")));
         buttonsMessage.appendSibling(openModsFolder);
 
-        sendMessage(buttonsMessage);
+        sendMessage(buttonsMessage, false);
         if (main.getRenderListener().getDownloadInfo().getMessageType() != EnumUtils.UpdateMessageType.DOWNLOAD_FINISHED) {
             ChatComponentText discord = new ChatComponentText(ChatFormatting.AQUA + Message.MESSAGE_VIEW_PATCH_NOTES.getMessage() + " " +
                                                                       ChatFormatting.BLUE.toString() + ChatFormatting.BOLD + '[' + Message.MESSAGE_JOIN_DISCORD.getMessage() + ']');
             discord.setChatStyle(discord.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://discord.gg/PqTAEek")));
             sendMessage(discord);
         }
-        sendMessage(ChatFormatting.GRAY.toString() + ChatFormatting.STRIKETHROUGH + "----------------------------------");
+        sendMessage(color("&7&m----------------------------------------------"), false);
     }
 
     public void checkDisabledFeatures() {
@@ -423,11 +452,11 @@ public class Utils {
 
     public boolean enchantReforgeMatches(String text) {
         text = text.toLowerCase();
-        for (String enchant : enchantmentMatch) {
+        for (String enchant : enchantmentMatches) {
             enchant = enchant.trim().toLowerCase();
             if (StringUtil.notEmpty(enchant) && text.contains(enchant)) {
                 boolean foundExclusion = false;
-                for (String exclusion : enchantmentExclusion) {
+                for (String exclusion : enchantmentExclusions) {
                     exclusion = exclusion.trim().toLowerCase();
                     if (StringUtil.notEmpty(exclusion) && text.contains(exclusion)) {
                         foundExclusion = true;
@@ -441,8 +470,6 @@ public class Utils {
         }
         return false;
     }
-
-    private final static String USER_AGENT = "SkyblockAddons/" + SkyblockAddons.VERSION;
 
     public void fetchEstimateFromServer() {
         new Thread(() -> {
@@ -470,11 +497,10 @@ public class Utils {
                 FMLLog.info("[SkyblockAddons] Query time was " + currentTime +", server time estimate is " +
                         estimate+". Updating magma boss spawn to be in "+magmaSpawnTime+" seconds.");
 
-                main.getPlayerListener().setMagmaTime(magmaSpawnTime, true);
+                main.getPlayerListener().setMagmaTime(magmaSpawnTime);
                 main.getPlayerListener().setMagmaAccuracy(EnumUtils.MagmaTimerAccuracy.ABOUT);
             } catch (IOException ex) {
                 FMLLog.warning("[SkyblockAddons] Failed to get magma boss spawn estimate from server");
-                ex.printStackTrace();
             }
         }).start();
     }
@@ -511,7 +537,6 @@ public class Utils {
                 }
             } catch (IOException ex) {
                 FMLLog.warning("[SkyblockAddons] Failed to post event to server");
-                ex.printStackTrace();
             }
         }).start();
     }
@@ -568,17 +593,10 @@ public class Utils {
         return main.getUtils().removeDuplicateSpaces(newString.toString().trim());
     }
 
-    /**
-     * Items containing these in the name should never be dropped.
-     * Helmets a lot of times in skyblock are weird items and not damageable
-     * so that's why its included.
-     */
-    private static final String[] RARE_EXCLUSIONS = {"Backpack", "Helmet"};
-
     public boolean cantDropItem(ItemStack item, EnumUtils.Rarity rarity, boolean hotbar) {
         if (Items.bow.equals(item.getItem()) && rarity == EnumUtils.Rarity.COMMON) return false; // exclude rare bows lol
         if (item.hasDisplayName()) {
-            for (String exclusion : RARE_EXCLUSIONS) {
+            for (String exclusion : RARE_ITEM_OVERRIDES) {
                 if (item.getDisplayName().contains(exclusion)) return true;
             }
         }
@@ -620,6 +638,10 @@ public class Utils {
                 }
             }).start();
         }
+    }
+
+    public static String color(String text) {
+        return ChatFormatting.translateAlternateColorCodes('&', text);
     }
 
     @SuppressWarnings("unchecked")
@@ -690,18 +712,6 @@ public class Utils {
         return calendar.get(Calendar.MONTH) == Calendar.OCTOBER && calendar.get(Calendar.DAY_OF_MONTH) == 31;
     }
 
-    private String getAbilityName(ItemStack item) {
-        for (String loreLine : item.getTooltip(Minecraft.getMinecraft().thePlayer, false)) {
-            Matcher matcher = ITEM_ABILITY_PATTERN.matcher(loreLine);
-            if (matcher.matches()) {
-                try {
-                    return matcher.group(1);
-                } catch (NumberFormatException ignored) { }
-            }
-        }
-        return null;
-    }
-
     public boolean isPickaxe(Item item) {
         return Items.wooden_pickaxe.equals(item) || Items.stone_pickaxe.equals(item) || Items.golden_pickaxe.equals(item) || Items.iron_pickaxe.equals(item) || Items.diamond_pickaxe.equals(item);
     }
@@ -752,10 +762,6 @@ public class Utils {
         drawTextWithStyle(text,x,y,color.getRGB(),1);
     }
 
-    public void drawTextWithStyle(String text, int x, int y, ChatFormatting color, float textAlpha) {
-        drawTextWithStyle(text,x,y,color.getRGB(),textAlpha);
-    }
-
     public void drawTextWithStyle(String text, int x, int y, int color) {
         drawTextWithStyle(text,x,y,color,1);
     }
@@ -782,76 +788,12 @@ public class Utils {
         }
     }
 
-    public boolean isDevEnviroment() {
-        return (boolean) Launch.blackboard.get("fml.deobfuscatedEnvironment");
-    }
-
     public int getDefaultBlue(int alpha) {
         return new Color(160, 225, 229, alpha).getRGB();
     }
 
     public String stripColor(String text) {
         return RegexUtil.strip(text, RegexUtil.VANILLA_PATTERN);
-    }
-
-    public EnumUtils.Location getLocation() {
-        return location;
-    }
-
-    public boolean isOnSkyblock() {
-        return onSkyblock;
-    }
-
-    public boolean isFadingIn() {
-        return fadingIn;
-    }
-
-    public void setFadingIn(boolean fadingIn) {
-        this.fadingIn = fadingIn;
-    }
-
-    public Backpack getBackpackToRender() {
-        return backpackToRender;
-    }
-
-    public void setBackpackToRender(Backpack backpackToRender) {
-        this.backpackToRender = backpackToRender;
-    }
-
-    public List<String> getEnchantmentExclusion() {
-        return enchantmentExclusion;
-    }
-
-    public List<String> getEnchantmentMatch() {
-        return enchantmentMatch;
-    }
-
-    public void setEnchantmentExclusion(List<String> enchantmentExclusion) {
-        this.enchantmentExclusion = enchantmentExclusion;
-    }
-
-    public void setEnchantmentMatch(List<String> enchantmentMatch) {
-        this.enchantmentMatch = enchantmentMatch;
-    }
-
-    public boolean isPlayingSound() {
-        return playingSound;
-    }
-
-    public Map<Attribute, MutableInt> getAttributes() {
-        return attributes;
-    }
-
-    public SkyblockDate getCurrentDate() {
-        return currentDate;
-    }
-
-    public void setLastHoveredSlot(int lastHoveredSlot) {
-        this.lastHoveredSlot = lastHoveredSlot;
-    }
-
-    public int getLastHoveredSlot() {
-        return lastHoveredSlot;
     }
 
     public void reorderEnchantmentList(List<String> enchantments) {
@@ -867,29 +809,5 @@ public class Utils {
 
         enchantments.clear();
         enchantments.addAll(orderedEnchants.values());
-    }
-
-    public String getProfileName() {
-        return profileName;
-    }
-
-    public void setProfileName(String profileName) {
-        this.profileName = profileName;
-    }
-
-    public boolean isUsingOldSkyBlockTexture() {
-        return usingOldSkyBlockTexture;
-    }
-
-    public void setUsingOldSkyBlockTexture(boolean usingOldSkyBlockTexture) {
-        this.usingOldSkyBlockTexture = usingOldSkyBlockTexture;
-    }
-
-    public void setUsingDefaultBarTextures(boolean usingDefaultBarTextures) {
-        this.usingDefaultBarTextures = usingDefaultBarTextures;
-    }
-
-    public boolean isUsingDefaultBarTextures() {
-        return usingDefaultBarTextures;
     }
 }

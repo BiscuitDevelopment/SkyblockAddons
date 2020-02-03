@@ -2,7 +2,6 @@ package codes.biscuit.skyblockaddons.gui;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.gui.buttons.*;
-import codes.biscuit.skyblockaddons.listeners.PlayerListener;
 import codes.biscuit.skyblockaddons.utils.CoordsPair;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.Feature;
@@ -429,7 +428,7 @@ public class SkyblockAddonsGui extends GuiScreen {
     public void onGuiClosed() {
         if (!cancelClose) {
             if (tab == EnumUtils.GuiTab.GENERAL_SETTINGS) {
-                main.getRenderListener().setGuiToOpen(PlayerListener.GUIType.MAIN, 1, EnumUtils.GuiTab.MAIN, featureSearchBar.getText());
+                main.getRenderListener().setGuiToOpen(EnumUtils.GUIType.MAIN, 1, EnumUtils.GuiTab.MAIN, featureSearchBar.getText());
             }
             main.getConfigValues().saveConfig();
             Keyboard.enableRepeatEvents(false);

@@ -15,7 +15,7 @@
     "hideDurability": "Ascunde Durabilitatea Uneltelor",
     "showEnchantmentsReforges": "Refauriri și enchanturi",
     "minionStopWarning": "\"Minionul nu ajunge\" Avertisment",
-    "hideAuctionHousePlayers": "Ascunde jucătorii din apropierea NPC-urilor importante",
+    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
     "backpackStyle": "Stilul Backpackului: %style%",
     "backpackStyles": {
       "regular": "Obișnuit",
@@ -91,7 +91,12 @@
       "generalSettings": "Setările Generale"
     },
     "tabEffectTimers": "Potion and Powerup Timers",
-    "noArrowsLeftAlert": "No Arrows Left Alert"
+    "noArrowsLeftAlert": "No Arrows Left Alert",
+    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
+    "showCakeBagPreview": "Show Preview for Cake Bags",
+    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
+    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
+    "enableDevFeatures": "Enable Developer Features"
   },
   "messages": {
     "dropConfirmation": "Arunca acest obiect iar ca să confirmi!",
@@ -137,6 +142,9 @@
     "searchFeatures": "Search features",
     "downloadingUpdateFile": "Descărcare actualizare...",
     "onlyFewArrowsLeft": "Only %arrows% arrows left!",
-    "noArrowsLeft": "No Arrows Left!"
+    "noArrowsLeft": "No Arrows Left!",
+    "chooseAColor": "Choose a Color",
+    "selectedColor": "Selected Color",
+    "setHexColor": "Set Hex Color"
   }
 }

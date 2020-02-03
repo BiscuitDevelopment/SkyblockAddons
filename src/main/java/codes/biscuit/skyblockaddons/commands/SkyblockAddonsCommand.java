@@ -1,21 +1,26 @@
 package codes.biscuit.skyblockaddons.commands;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.listeners.PlayerListener;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
-import codes.biscuit.skyblockaddons.utils.Message;
+import codes.biscuit.skyblockaddons.utils.Utils;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
 
-import java.awt.Desktop;
+import java.awt.*;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 
 public class SkyblockAddonsCommand extends CommandBase {
-    private static String[] HELP_MESSAGE = {"Skyblock Addons Command Help", "Usage: /sba <option>", "help — Shows this help message",
-            "edit — Edit the GUI", "dev — Toggles developer mode", "folder — Opens the Minecraft mods folder", "update — Checks for updates"};
+
+    private static String[] HELP_MESSAGE = {
+            Utils.color("&7&m------------&7[&b&l SkyblockAddons &7]&7&m------------"),
+            Utils.color("&b● /sba &7- Open the main menu"),
+            Utils.color("&b● /sba edit &7- Edit GUI locations"),
+            Utils.color("&b● /sba dev &7- Toggle developer mode"),
+            Utils.color("&b● /sba folder &7- Open your mods folder"),
+            Utils.color("&7&m----------------------------------------------")};
 
     private SkyblockAddons main;
 
@@ -54,23 +59,23 @@ public class SkyblockAddonsCommand extends CommandBase {
             switch (args[0]) {
                 case "help":
                     for (String line: HELP_MESSAGE) {
-                        main.getUtils().sendMessage(line);
+                        main.getUtils().sendMessage(line, false);
                     }
                     break;
                 case "edit":
                     main.getUtils().setFadingIn(false);
-                    main.getRenderListener().setGuiToOpen(PlayerListener.GUIType.EDIT_LOCATIONS, 0, null);
+                    main.getRenderListener().setGuiToOpen(EnumUtils.GUIType.EDIT_LOCATIONS, 0, null);
                     break;
                 case "dev":
                     main.setDevMode(!main.isDevMode());
 
                     if (main.isDevMode()) {
-                        main.getUtils().sendMessage(ChatFormatting.GREEN + Message.MESSAGE_DEV_MODE_ENABLED.getMessage());
+                        main.getUtils().sendMessage(ChatFormatting.GREEN + "Developer mode enabled!");
                     } else {
-                        main.getUtils().sendMessage(ChatFormatting.RED + Message.MESSAGE_DEV_MODE_DISABLED.getMessage());
+                        main.getUtils().sendMessage(ChatFormatting.RED + "Developer mode disabled!");
                     }
                     break;
-                case "update":
+                case "update": // Not actually a command.
                     if (main.getRenderListener().getDownloadInfo().isPatch())
                         main.getUtils().downloadPatch(main.getRenderListener().getDownloadInfo().getNewestVersion());
                     break;
@@ -86,8 +91,7 @@ public class SkyblockAddonsCommand extends CommandBase {
         else {
             // If there's no arguments given, open the main GUI
             main.getUtils().setFadingIn(true);
-            main.getRenderListener().setGuiToOpen(PlayerListener.GUIType.MAIN, 1, EnumUtils.GuiTab.MAIN);
+            main.getRenderListener().setGuiToOpen(EnumUtils.GUIType.MAIN, 1, EnumUtils.GuiTab.MAIN);
         }
     }
-
 }

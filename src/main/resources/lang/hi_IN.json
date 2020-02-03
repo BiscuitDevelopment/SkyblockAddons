@@ -15,7 +15,7 @@
     "hideDurability": "उपकरण स्थायित्व छिपाएँ",
     "showEnchantmentsReforges": "एनकाउंटर और सुधार",
     "minionStopWarning": "\"मिनियन कैन रीच\" वार्निंग",
-    "hideAuctionHousePlayers": "महत्वपूर्ण एनपीसी के पास खिलाड़ी छिपाएँ",
+    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
     "backpackStyle": "बैकपैक स्टाइल्स %style%",
     "backpackStyles": {
       "regular": "नियमित",
@@ -91,7 +91,12 @@
       "generalSettings": "सामान्य सेटिंग्स"
     },
     "tabEffectTimers": "Potion and Powerup Timers",
-    "noArrowsLeftAlert": "No Arrows Left Alert"
+    "noArrowsLeftAlert": "No Arrows Left Alert",
+    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
+    "showCakeBagPreview": "Show Preview for Cake Bags",
+    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
+    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
+    "enableDevFeatures": "Enable Developer Features"
   },
   "messages": {
     "dropConfirmation": "संदेशों -> ड्रॉप क चेतावनी",
@@ -137,6 +142,9 @@
     "searchFeatures": "Search features",
     "downloadingUpdateFile": "Downloading update file...",
     "onlyFewArrowsLeft": "Only %arrows% arrows left!",
-    "noArrowsLeft": "No Arrows Left!"
+    "noArrowsLeft": "No Arrows Left!",
+    "chooseAColor": "Choose a Color",
+    "selectedColor": "Selected Color",
+    "setHexColor": "Set Hex Color"
   }
 }

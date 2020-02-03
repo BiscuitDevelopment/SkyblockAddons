@@ -4,6 +4,7 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
+import lombok.Getter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.inventory.*;
@@ -20,14 +21,10 @@ import java.util.regex.Pattern;
  */
 public class InventoryUtils {
 
-    /**
-     * Slot index the SkyBlock menu is at
-     */
+    /** Slot index the SkyBlock menu is at. */
     private static final int SKYBLOCK_MENU_SLOT = 8;
 
-    /**
-     * Display name of the Skeleton Helmet
-     */
+    /** Display name of the Skeleton Helmet. */
     private static final String SKELETON_HELMET_ID = "SKELETON_HELMET";
 
     public static final String MADDOX_BATPHONE_DISPLAYNAME = "\u00A7aMaddox Batphone";
@@ -39,9 +36,18 @@ public class InventoryUtils {
     private List<ItemStack> previousInventory;
     private Multimap<String, ItemDiff> itemPickupLog = ArrayListMultimap.create();
     private boolean inventoryIsFull;
-    private boolean wearingSkeletonHelmet;
 
-    private SlayerArmorProgress[] slayerArmorProgresses = new SlayerArmorProgress[4];
+    /** Whether the player is wearing a Skeleton Helmet. */
+    @Getter private boolean wearingSkeletonHelmet;
+
+    @Getter private SlayerArmorProgress[] slayerArmorProgresses = new SlayerArmorProgress[4];
+
+    /**
+     * These three are used for {@link InventoryUtils#shouldCancelDrop(ItemStack)}.
+     */
+    private String lastItemName = null;
+    private long lastDrop = System.currentTimeMillis();
+    private int dropCount = 1;
 
     private SkyblockAddons main;
 
@@ -193,24 +199,6 @@ public class InventoryUtils {
         wearingSkeletonHelmet = false;
     }
 
-    /**
-     * @return Whether the player is wearing a Skeleton Helmet
-     */
-    public boolean isWearingSkeletonHelmet() {
-        return wearingSkeletonHelmet;
-    }
-
-    /**
-     * @return Log of recent Inventory changes
-     */
-    public Collection<ItemDiff> getItemPickupLog() {
-        return itemPickupLog.values();
-    }
-
-    private String lastItemName = null;
-    private long lastDrop = System.currentTimeMillis();
-    private int dropCount = 1;
-
     public boolean shouldCancelDrop(Slot slot) {
         if (slot != null && slot.getHasStack()) {
             ItemStack stack = slot.getStack();
@@ -302,7 +290,10 @@ public class InventoryUtils {
         }
     }
 
-    public SlayerArmorProgress[] getSlayerArmorProgresses() {
-        return slayerArmorProgresses;
+    /**
+     * @return Log of recent Inventory changes
+     */
+    public Collection<ItemDiff> getItemPickupLog() {
+        return itemPickupLog.values();
     }
 }

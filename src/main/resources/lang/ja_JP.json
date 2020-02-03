@@ -15,7 +15,7 @@
     "hideDurability": "耐久値を非表示",
     "showEnchantmentsReforges": "エンチャントとリフォージの内容を表示",
     "minionStopWarning": "ミニオンが停止している時のアラート",
-    "hideAuctionHousePlayers": "重要なNPCの近くのプレイヤーを隠す",
+    "hidePlayersNearNPCs": "重要なNPCの近くのプレイヤーを隠す",
     "backpackStyle": "バックパックのスタイル: %style%",
     "backpackStyles": {
       "regular": "標準",
@@ -78,7 +78,25 @@
     "specialZealotAlert": "特別なZealotのアラート",
     "enableMessageWhenActionPrevented": "動作を防止したときにメッセージを表示する",
     "hidePetHealthBar": "ペットの体力バーを非表示",
-    "noArrowsLeftAlert": "弓矢切れのアラート"
+    "powerOrbDisplay": "Power Orbのゲージ",
+    "powerOrbDisplayStyle": "Power Orbのゲージのスタイル: %style%",
+    "powerOrbStyle": {
+      "detailed": "詳細",
+      "compact": "コンパクト"
+    },
+    "disableMagicalSoupMessage": "Magical Mushroom Soupのメッセージを非表示",
+    "zealotCounter": "Zealotカウンターを表示",
+    "tickerChargesDisplay": "Tickerとチャージの表示",
+    "tab": {
+      "generalSettings": "一般設定"
+    },
+    "tabEffectTimers": "バフ効果のタイマー",
+    "noArrowsLeftAlert": "弓矢切れのアラート",
+    "hideNightVisionEffectTimer": "暗視効果のタイマーを表示しない",
+    "showCakeBagPreview": "ケーキバッグのプレビューを表示",
+    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
+    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
+    "enableDevFeatures": "Enable Developer Features"
   },
   "messages": {
     "dropConfirmation": "落としてもいいのであれば、このアイテムをもう一度ドロップしてください。",
@@ -123,7 +141,10 @@
     "blockIncompletePatterns": "不完全なパターンでのクラフトを防止する (推奨)",
     "searchFeatures": "機能を検索",
     "downloadingUpdateFile": "更新をダウンロード中...",
-    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
-    "noArrowsLeft": "No Arrows Left!"
+    "onlyFewArrowsLeft": "矢が残り %arrows% 本しかないです！",
+    "noArrowsLeft": "矢がありません！",
+    "chooseAColor": "色を選択",
+    "selectedColor": "選択中の色",
+    "setHexColor": "16進数で色を設定"
   }
 }

@@ -15,7 +15,7 @@
     "hideDurability": "Skrýt výdrž nástrojů",
     "showEnchantmentsReforges": "Očarování a překování",
     "minionStopWarning": "Várování o nedosáhnutí miniona",
-    "hideAuctionHousePlayers": "Skrýt hráče blízko důležitých Vesničanů",
+    "hidePlayersNearNPCs": "Skrýt hráče blízko důležitých NPCček",
     "backpackStyle": "Styl batůžků: %style%",
     "backpackStyles": {
       "regular": "Klasický",
@@ -91,7 +91,12 @@
       "generalSettings": "Obecná nastavení"
     },
     "tabEffectTimers": "Časovače Lektvarů a Powerupů",
-    "noArrowsLeftAlert": "No Arrows Left Alert"
+    "noArrowsLeftAlert": "Upozornění na nedostatek šípů",
+    "hideNightVisionEffectTimer": "Skrýt časovač efektu nočního vidění",
+    "showCakeBagPreview": "Ukázat přehled pro Tašky na Dorty",
+    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
+    "hidePlayersNearHarp": "Skrýt hráče poblíž Melodyho harfy",
+    "enableDevFeatures": "Aktivovat možnosti pro vývojáře"
   },
   "messages": {
     "dropConfirmation": "Vyhoď tento item pro vyhození!",
@@ -136,7 +141,10 @@
     "blockIncompletePatterns": "Blokovat Vyrábění Neúplných Vzorů (doporučeno)",
     "searchFeatures": "Vyhledat vlastnosti",
     "downloadingUpdateFile": "Stahuji aktualizační soubor...",
-    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
-    "noArrowsLeft": "No Arrows Left!"
+    "onlyFewArrowsLeft": "Zbývá %arrows% šíp/ů!",
+    "noArrowsLeft": "Došly šípy!",
+    "chooseAColor": "Zvolit barvu",
+    "selectedColor": "Vybraná barva",
+    "setHexColor": "Nastavit hexadecimální barvu"
   }
 }

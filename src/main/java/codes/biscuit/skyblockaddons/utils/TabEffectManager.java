@@ -3,6 +3,7 @@ package codes.biscuit.skyblockaddons.utils;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.gui.buttons.ButtonLocation;
 import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsTransformer;
+import lombok.Getter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiPlayerTabOverlay;
 import net.minecraft.util.IChatComponent;
@@ -21,34 +22,32 @@ import java.util.regex.Pattern;
  */
 public class TabEffectManager {
 
-    private static final TabEffectManager instance = new TabEffectManager();
+    /** The main TabEffectManager instance. */
+    @Getter private static final TabEffectManager instance = new TabEffectManager();
+
+    /** Used to match potion effects from the footer. */
+    private static final Pattern EFFECT_PATTERN = Pattern.compile("(?:(?<potion>§r§[a-f0-9][a-zA-Z ]+ (?:I[XV]|V?I{0,3}) §r§f\\d{0,2}:?\\d{1,2}:\\d{2}§r)|(?<powerup>§r§[a-f0-9][a-zA-Z ]+ §r§f\\d{0,2}:?\\d{1,2}:\\d{2}§r))");
 
     /**
-     * @return The TabEffectManager instance
+     * The following two fields are accessed by
+     * {@link codes.biscuit.skyblockaddons.listeners.RenderListener#drawPotionEffectTimers(float, ButtonLocation)} to retrieve lists for drawing.
+     *
+     * Both return a list of current Potion or Powerup timers. They can be empty, but are never null.
      */
-    public static TabEffectManager getInstance() {
-        return instance;
-    }
+    @Getter private List<String> potionTimers = new ArrayList<>();
+    @Getter private List<String> powerupTimers = new ArrayList<>();
 
     /**
-     * Used to match potion effects from the footer.
+     * The following two fields are accessed by
+     * {@link codes.biscuit.skyblockaddons.listeners.RenderListener#drawPotionEffectTimers(float, ButtonLocation)}
+     * to retrieve dummy lists for drawing when editing GUI locations while no Effects are active.
+     *
+     * Both return a list of dummy Potion or Powerup timers.
      */
-    private static final Pattern effectPattern = Pattern.compile("(?:(?<potion>§r§[a-f0-9][a-zA-Z ]+ (?:I[XV]|V?I{0,3}) §r§f\\d{0,2}:?\\d{1,2}:\\d{2}§r)|(?<powerup>§r§[a-f0-9][a-zA-Z ]+ §r§f\\d{0,2}:?\\d{1,2}:\\d{2}§r))");
-
-
-    /**
-     * Holds all the current potion & powerup timers after updating them.
-     */
-    private List<String> potionTimers = new ArrayList<>();
-    private List<String> powerupTimers = new ArrayList<>();
-
-    /**
-     * Dummy lists used for display in the editing gui.
-     */
-    private static final List<String> dummyPotionTimers = Arrays.asList(
+    @Getter private static final List<String> dummyPotionTimers = Arrays.asList(
             "§r§ePotion Effect II §r§f12:34§r",
             "§r§aEnchanting XP Boost III §r§f1:23:45§r");
-    private static final List<String> dummyPowerupTimers = Collections.singletonList(
+    @Getter private static final List<String> dummyPowerupTimers = Collections.singletonList(
             "§r§bHoming Snowballs §r§f1:39§r");
 
     /**
@@ -101,7 +100,7 @@ public class TabEffectManager {
         }
 
         // Match the TabFooterString for Effects
-        Matcher m = effectPattern.matcher(tabFooterString.toString());
+        Matcher m = EFFECT_PATTERN.matcher(tabFooterString.toString());
         String effectString;
         while (m.find()) {
             if ((effectString = m.group("potion")) != null) {
@@ -139,33 +138,5 @@ public class TabEffectManager {
             return guiTab.footer;
         }
         return null;
-    }
-
-
-    /**
-     * The following two methods are called by
-     * {@link codes.biscuit.skyblockaddons.listeners.RenderListener#drawPotionEffectTimers(float, ButtonLocation)} to retrieve lists for drawing.
-     *
-     * Both return a list of current Potion or Powerup timers. They can be empty, but are never null.
-     */
-    public List<String> getPotionTimers() {
-        return potionTimers;
-    }
-    public List<String> getPowerupTimers() {
-        return powerupTimers;
-    }
-
-    /**
-     * The following two methods are called by
-     * {@link codes.biscuit.skyblockaddons.listeners.RenderListener#drawPotionEffectTimers(float, ButtonLocation)}
-     * to retrieve dummy lists for drawing when editing GUI locations while no Effects are active.
-     *
-     * Both return a list of dummy Potion or Powerup timers.
-     */
-    public static List<String> getDummyPotions() {
-        return dummyPotionTimers;
-    }
-    public static List<String> getDummyPowerups() {
-        return dummyPowerupTimers;
     }
 }

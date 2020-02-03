@@ -15,7 +15,7 @@
     "hideDurability": "Ocultar Durabilidad de Herramientas",
     "showEnchantmentsReforges": "Ver Encantamientos y Reforjes",
     "minionStopWarning": "Aviso de Detención de Minion",
-    "hideAuctionHousePlayers": "Ocultar Jugadores cerca de NPCs importantes",
+    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
     "backpackStyle": "Estilo de Mochila: %style%",
     "backpackStyles": {
       "regular": "Normal",
@@ -46,7 +46,7 @@
     "lockSlots": "Habilitar Bloquear Slots",
     "lockSlot": "Bloquea el Espacio",
     "dontResetCursorInventory": "No reiniciar el cursor entre los inventarios",
-    "summoningEyeAlert": "Alerta de uso de un ojo de invocación",
+    "summoningEyeAlert": "Alerta de Ojo de Invocación",
     "makeEnderchestsInEndGreen": "Cambiar el color del Enderchest en el End",
     "changeColor": "Cambiar el color",
     "showInOtherGames": "Mostrar en otros juegos",
@@ -66,7 +66,7 @@
     "craftingPatterns": "Elige Patrones De Fabricación",
     "soundIndicatorForFishing": "Indicador de sonido para la Pesca",
     "avoidBlinkingNightVision": "Desactiva el Parpadeo del Poción de Visión Nocturna",
-    "disableMinionLocationWarning": "Deshabilitar Avisos de Ubicación de Minion",
+    "disableMinionLocationWarning": "Desactivar Avisos de Ubicación de Minion",
     "jungleAxeCooldown": "Recarga de la Jungle Axe",
     "organizeLongEnchantmentLists": "Organiza lista de Encantamientos largas",
     "showItemCooldowns": "Mostrar Recarga de Objetos",
@@ -84,14 +84,19 @@
       "detailed": "Detallado",
       "compact": "Compacto"
     },
-    "disableMagicalSoupMessage": "Deshabilitar Mensajes de la Magical Mushroom Soup",
+    "disableMagicalSoupMessage": "Desactivar Mensajes de la Magical Mushroom Soup",
     "zealotCounter": "Mostrar Contador de Zealots",
     "tickerChargesDisplay": "Mostrar Cargas/Ticker",
     "tab": {
       "generalSettings": "Opciones Generales"
     },
     "tabEffectTimers": "Temporizador de Pociones y Powerup",
-    "noArrowsLeftAlert": "Alerta de Quedarse sin Flechas"
+    "noArrowsLeftAlert": "Alerta de Quedarse sin Flechas",
+    "hideNightVisionEffectTimer": "Ocultar el temporizador del efecto de visión nocturna",
+    "showCakeBagPreview": "Mostrar Preview para los Cake Bags",
+    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
+    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
+    "enableDevFeatures": "Enable Developer Features"
   },
   "messages": {
     "dropConfirmation": "¡Dropea el Objeto otra vez para soltar!",
@@ -110,7 +115,7 @@
       "crafting": "Fabricación"
     },
     "newUpdateAvailable": "¡Una nueva actualización (%version%) está disponible!",
-    "deleteOldFile": "La descarga ha terminado, por favor abre la carpeta de mods usando el botón de abajo, cierra tu Minecraft y elimina la versión anterior (o borrala más tarde si lo prefieres).",
+    "deleteOldFile": "La descarga ha terminado, por favor abre la carpeta de mods usando el botón de abajo, cierra tu Minecraft y elimina la versión anterior (o bórrala más tarde si lo prefieres).",
     "wantToViewPatchNotes": "¿Quieres leer los cambios?",
     "downloadLink": "LINK DE LA ACTUALIZACIÓN",
     "downloadAutomatically": "AUTO DESCARGAR",
@@ -118,7 +123,7 @@
     "joinTheDiscord": "UNIRSE A DISCORD",
     "update": {
       "majorAvailable": "¡Una nueva actualización importante (%version%) está disponible! El link para la descarga se puede encontrar en el chat.",
-      "patchAvailable": "¡Una nueva actualización (%version%) está disponible! ¡Busca en el chat para optiones de descargar!",
+      "patchAvailable": "¡Una nueva actualización (%version%) está disponible! ¡Busca en el chat para opciónes de descargar!",
       "downloading": "¡El parche está descargando! Estado: %downloaded%/%total% Por favor, tenga en cuenta que después de que la descarga haya terminado, debe eliminar el archivo antiguo.",
       "failed": "¡La descarga del parche ha fallado! Por favor, descargalo manualmente usando el enlace en el chat.",
       "downloadFinished": "El parche ha terminado de descargar. Se ha guardado como %file%. Por favor, no olvide eliminar el archivo antiguo después de cerrar tu Minecraft. Haga clic en el mensaje en el chat para abrir la carpeta."
@@ -137,6 +142,9 @@
     "searchFeatures": "Buscar características",
     "downloadingUpdateFile": "Descargando archivo de actualización...",
     "onlyFewArrowsLeft": "¡Solo quedan %arrows% flechas restantes!",
-    "noArrowsLeft": "¡No quedan flechas!"
+    "noArrowsLeft": "¡No quedan flechas!",
+    "chooseAColor": "Elije un color",
+    "selectedColor": "Color seleccionado",
+    "setHexColor": "Definir un color hex"
   }
 }

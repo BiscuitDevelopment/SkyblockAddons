@@ -32,7 +32,7 @@ public enum EnchantedItemBlacklist {
         if (itemStack != null && itemStack.isItemEnchanted()) {
             for (EnchantedItemBlacklist blacklistItem : EnchantedItemBlacklist.values()) {
                 if (main.getConfigValues().isEnabled(blacklistItem.feature) && blacklistItem.item.equals(itemStack.getItem()) &&
-                        (!blacklistItem.onlyOnIsland || main.getUtils().getLocation() == EnumUtils.Location.ISLAND) && !main.getUtils().isMaterialForRecipe(itemStack)) {
+                        (!blacklistItem.onlyOnIsland || main.getUtils().getLocation() == Location.ISLAND) && !main.getUtils().isMaterialForRecipe(itemStack)) {
 
                     if (action == PlayerInteractEvent.Action.RIGHT_CLICK_AIR && blacklistItem.onlyBlockPlacement) continue;
 

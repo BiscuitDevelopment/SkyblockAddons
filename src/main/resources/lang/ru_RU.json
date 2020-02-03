@@ -15,7 +15,7 @@
     "hideDurability": "Скрыть прочность инструментов",
     "showEnchantmentsReforges": "Зачарование и Перековка",
     "minionStopWarning": "Предупреждение об остановки миньона",
-    "hideAuctionHousePlayers": "Скрыть игроков у важных НИП'ов",
+    "hidePlayersNearNPCs": "Скрыть игроков рядом с важными NPC",
     "backpackStyle": "Стиль рюкзака: %style%",
     "backpackStyles": {
       "regular": "Обычный",
@@ -79,19 +79,24 @@
     "enableMessageWhenActionPrevented": "Показывать предупреждение, когда действие не выполнено",
     "hidePetHealthBar": "Скрыть здоровье питомцев",
     "powerOrbDisplay": "Отображать Сферу Силы",
-    "powerOrbDisplayStyle": "Стиль Сферы Силы: %style%",
+    "powerOrbDisplayStyle": "Стиль отображения Сферы Силы: %style%",
     "powerOrbStyle": {
       "detailed": "Подробно",
       "compact": "Компактно"
     },
     "disableMagicalSoupMessage": "Отключить уведомления о Магическом Супе",
-    "zealotCounter": "Показывать счетчик Зелотов",
+    "zealotCounter": "Показывать счетчик Zealot'ов",
     "tickerChargesDisplay": "Счетчик зарядов",
     "tab": {
       "generalSettings": "Основные настройки"
     },
-    "tabEffectTimers": "Potion and Powerup Timers",
-    "noArrowsLeftAlert": "No Arrows Left Alert"
+    "tabEffectTimers": "Таймеры зелий и улучшений",
+    "noArrowsLeftAlert": "Предупреждение о законченных стрелах",
+    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
+    "showCakeBagPreview": "Show Preview for Cake Bags",
+    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
+    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
+    "enableDevFeatures": "Включить параметры разработчиков"
   },
   "messages": {
     "dropConfirmation": "Выбросите предмет ещё раз для подтверждения!",
@@ -112,22 +117,22 @@
     "newUpdateAvailable": "Доступно новое обновление (%version%)!",
     "deleteOldFile": "Загрузка завершена. Пожалуйста, откройте папку модов, используя кнопку ниже, закройте Minecraft и удалите старую версию (или удалите её позже).",
     "wantToViewPatchNotes": "Хотите прочесть изменения?",
-    "downloadLink": "ОБНОВИТЬ ССЫЛКУ",
+    "downloadLink": "ССЫЛКА ОБНОВЛЕНИЯ",
     "downloadAutomatically": "АВТОМАТИЧЕСКАЯ ЗАГРУЗКА",
     "openModFolder": "ПАПКА МОДОВ",
     "joinTheDiscord": "ПРИСОЕДИНИТЬСЯ К ДИСКОРДУ",
     "update": {
-      "majorAvailable": "Доступно новое большое обновление (%version%)! Ссылку на загрузку можно найти в чате.",
+      "majorAvailable": "Доступно новое глобальное обновление (%version%)! Ссылку на загрузку можно найти в чате.",
       "patchAvailable": "Новое обновление (%version%) теперь доступно! Посмотри в чат для опций загрузки!",
-      "downloading": "Патч загружается! Статус: %downloaded%/%total% Пожалуйста, учтите, что после завершения загрузки, вам следует удалить старый файл.",
-      "failed": "Ошибка загрузки патча! Пожалуйста, загрузите его вручную, используя ссылку в чате.",
-      "downloadFinished": "Патч закончил загрузку. Он был сохранён как %file%. Пожалуйста, не забудьте удалить старый файл после закрытия Minecraft. Нажмите на сообщение в чате, чтобы открыть папку."
+      "downloading": "Обновление загружается! Статус: %downloaded%/%total% Пожалуйста, учтите, что после завершения загрузки, вам следует удалить старый файл.",
+      "failed": "Ошибка загрузки обновления! Пожалуйста, загрузите его вручную, используя ссылку в чате.",
+      "downloadFinished": "Обновление закончилось загружаться. Оно было сохранено как %file%. Пожалуйста, не забудьте удалить старый файл после закрытия Minecraft. Нажмите на сообщение в чате, чтобы открыть папку."
     },
-    "slotLocked": "Слот заблокирован!",
+    "slotLocked": "Этот слот заблокирован!",
     "summoningEyeFound": "Око Призыва!",
-    "cancelledStemBreak": "SkyBlockAddons предотвратил попытку сломать этот росток. Используйте руку, если хотите его сломать.",
-    "cancelledProfileOpening": "SkyBlockAddons остановил вас от открытия профиля игрока с луком в руках.",
-    "cancelledDropping": "SkyBlockAddons предотвратил попытку выбросить этот предмет из панели быстрого доступа.",
+    "cancelledStemBreak": "SkyBlockAddons остановил вас от ломания этого стебля. Используйте руку, если вы хотите это сделать.",
+    "cancelledProfileOpening": "SkyblockAddons остановил вас от открытия профиля игрока с луком в руках.",
+    "cancelledDropping": "SkyblockAddons предотвратил попытку выбросить этот предмет из панели быстрого доступа.",
     "clickMoreTimes": "Щелкните/выбросьте этот предмет еще %times% раз(а), если вы действительно хотите сделать это.",
     "cancelledDeepCaverns": "Функция SkyblockAddons остановила вас от копания этого блока.",
     "featureDisabled": "Функция отключена",
@@ -136,7 +141,10 @@
     "blockIncompletePatterns": "Блокировать создание незавершённых шаблонов (рекомендуется)",
     "searchFeatures": "Поиск функций",
     "downloadingUpdateFile": "Загрузка файла обновления...",
-    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
-    "noArrowsLeft": "No Arrows Left!"
+    "onlyFewArrowsLeft": "Осталось только %arrows% стрел(-ы/-а)!",
+    "noArrowsLeft": "Стрел не осталось!",
+    "chooseAColor": "Choose a Color",
+    "selectedColor": "Selected Color",
+    "setHexColor": "Set Hex Color"
   }
 }

@@ -2,9 +2,10 @@ package codes.biscuit.skyblockaddons.asm.hooks;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.asm.utils.ReturnValue;
-import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.Feature;
+import codes.biscuit.skyblockaddons.utils.Location;
 import codes.biscuit.skyblockaddons.utils.npc.NPCUtils;
+import codes.biscuit.skyblockaddons.utils.npc.Tag;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.client.particle.EntityFX;
@@ -19,7 +20,7 @@ public class RenderManagerHook {
         SkyblockAddons main = SkyblockAddons.getInstance();
 
         if (main.getUtils().isOnSkyblock()) {
-            EnumUtils.Location currentLocation = main.getUtils().getLocation();
+            Location currentLocation = main.getUtils().getLocation();
 
             if (entityIn instanceof EntityItem &&
                     entityIn.ridingEntity instanceof EntityArmorStand && entityIn.ridingEntity.isInvisible()) { // Conditions for skeleton helmet flying bones
@@ -28,22 +29,17 @@ public class RenderManagerHook {
                 }
             }
             if (main.getConfigValues().isEnabled(Feature.HIDE_PLAYERS_NEAR_NPCS)) {
-                if (entityIn instanceof EntityOtherPlayerMP && NPCUtils.isNearAnyPlayerNPC(entityIn) && !NPCUtils.isNPC(entityIn)) {
+                if (entityIn instanceof EntityOtherPlayerMP && NPCUtils.isNearAnyNPCWithTag(entityIn, Tag.IMPORTANT) && !NPCUtils.isNPC(entityIn)) {
                     returnValue.cancel();
                 }
             }
             if (main.getConfigValues().isEnabled(Feature.HIDE_PLAYERS_IN_LOBBY)) {
-                if (currentLocation == EnumUtils.Location.VILLAGE || currentLocation == EnumUtils.Location.AUCTION_HOUSE ||
-                        currentLocation == EnumUtils.Location.BANK) {
+                if (currentLocation == Location.VILLAGE || currentLocation == Location.AUCTION_HOUSE ||
+                        currentLocation == Location.BANK) {
                     if ((entityIn instanceof EntityOtherPlayerMP || entityIn instanceof EntityFX || entityIn instanceof EntityItemFrame) &&
                             entityIn.getDistanceToEntity(Minecraft.getMinecraft().thePlayer) > 7) {
                         returnValue.cancel();
                     }
-                }
-            }
-            if (main.getConfigValues().isEnabled(Feature.HIDE_PLAYERS_NEAR_HARP)) {
-                if (entityIn instanceof EntityOtherPlayerMP && NPCUtils.isNearNPC(entityIn, "HARP")) {
-                    returnValue.cancel();
                 }
             }
         }

@@ -15,7 +15,7 @@
     "hideDurability": "Esconder a durabilidade das ferramentas",
     "showEnchantmentsReforges": "Encantamentos e Reforges",
     "minionStopWarning": "Aviso \"Minion Cannot Reach\"",
-    "hideAuctionHousePlayers": "Esconder jogadores perto de NPCs importantes",
+    "hidePlayersNearNPCs": "Esconder jogadores perto de NPCs importantes",
     "backpackStyle": "Estilo da Backpack: %style%",
     "backpackStyles": {
       "regular": "Normal",
@@ -91,7 +91,12 @@
       "generalSettings": "Definições gerais"
     },
     "tabEffectTimers": "Potion and Powerup Timers",
-    "noArrowsLeftAlert": "No Arrows Left Alert"
+    "noArrowsLeftAlert": "No Arrows Left Alert",
+    "hideNightVisionEffectTimer": "Esconder o efeito de visão noturna",
+    "showCakeBagPreview": "Mostrar pré-visualização do saco de bolos",
+    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
+    "hidePlayersNearHarp": "Esconder jogadores perto da Harpa da Melody",
+    "enableDevFeatures": "Mostrar funcionalidades de programador"
   },
   "messages": {
     "dropConfirmation": "Dropa este item outra vez para confirmar!",
@@ -136,7 +141,10 @@
     "blockIncompletePatterns": "Bloquear padrões de criação incompletos (recomendado)",
     "searchFeatures": "Procurar funcionalidades",
     "downloadingUpdateFile": "A descarregar o ficheiro da atualização...",
-    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
-    "noArrowsLeft": "No Arrows Left!"
+    "onlyFewArrowsLeft": "Só tens mais %arrows% flechas!",
+    "noArrowsLeft": "Acabaram-se as flechas!",
+    "chooseAColor": "Escolher uma cor",
+    "selectedColor": "Cor selecionada",
+    "setHexColor": "Definir a cor em hex"
   }
 }

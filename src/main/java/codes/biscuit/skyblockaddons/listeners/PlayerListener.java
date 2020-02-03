@@ -4,6 +4,8 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.utils.*;
 import codes.biscuit.skyblockaddons.utils.dev.DevUtils;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
+import lombok.Getter;
+import lombok.Setter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.client.entity.EntityPlayerSP;
@@ -77,11 +79,11 @@ public class PlayerListener {
     private double oldBobberPosY = 0;
 
     private Set<Entity> countedEndermen = new HashSet<>();
-    private Set<CoordsPair> recentlyLoadedChunks = new HashSet<>();
-    private EnumUtils.MagmaTimerAccuracy magmaAccuracy = EnumUtils.MagmaTimerAccuracy.NO_DATA;
-    private int magmaTime = 0;
-    private int recentMagmaCubes = 0;
-    private int recentBlazes = 0;
+    @Getter private Set<CoordsPair> recentlyLoadedChunks = new HashSet<>();
+    @Getter @Setter private EnumUtils.MagmaTimerAccuracy magmaAccuracy = EnumUtils.MagmaTimerAccuracy.NO_DATA;
+    @Getter @Setter private int magmaTime = 0;
+    @Getter @Setter private int recentMagmaCubes = 0;
+    @Getter @Setter private int recentBlazes = 0;
 
     private final SkyblockAddons main;
     private final ActionBarParser actionBarParser;
@@ -336,7 +338,7 @@ public class PlayerListener {
                 }
             }
 
-            if (main.getUtils().getLocation() == EnumUtils.Location.ISLAND) {
+            if (main.getUtils().getLocation() == Location.ISLAND) {
                 int cooldown = main.getConfigValues().getWarningSeconds() * 1000 + 5000;
                 if (main.getConfigValues().isEnabled(Feature.MINION_FULL_WARNING) &&
                         entity.getCustomNameTag().equals("§cMy storage is full! :(")) {
@@ -426,7 +428,7 @@ public class PlayerListener {
                         }
                         if (!foundBoss && magmaAccuracy == EnumUtils.MagmaTimerAccuracy.SPAWNED) {
                             magmaAccuracy = EnumUtils.MagmaTimerAccuracy.ABOUT;
-                            setMagmaTime(7200, true);
+                            magmaTime = 7200;
                             if (currentTime - lastBossDeathPost > 300000) {
                                 lastBossDeathPost = currentTime;
                                 main.getUtils().sendPostRequest(EnumUtils.MagmaEvent.BOSS_DEATH);
@@ -457,7 +459,7 @@ public class PlayerListener {
         // Between these two coordinates is the whole "arena" area where all the magmas and stuff are.
         AxisAlignedBB spawnArea = new AxisAlignedBB(-244, 0, -566, -379, 255, -635);
 
-        if (main.getUtils().getLocation() == EnumUtils.Location.BLAZING_FORTRESS) {
+        if (main.getUtils().getLocation() == Location.BLAZING_FORTRESS) {
             Entity entity = e.entity;
             if (spawnArea.isVecInside(new Vec3(entity.posX, entity.posY, entity.posZ))) { // timers will trigger if 15 magmas/8 blazes spawn in the box within a 4 second time period
                 long currentTime = System.currentTimeMillis();
@@ -466,7 +468,7 @@ public class PlayerListener {
                         recentMagmaCubes++;
                         main.getScheduler().schedule(Scheduler.CommandType.SUBTRACT_MAGMA_COUNT, 4);
                         if (recentMagmaCubes >= 17) {
-                            setMagmaTime(600, true);
+                            magmaTime = 600;
                             magmaAccuracy = EnumUtils.MagmaTimerAccuracy.EXACTLY;
                             if (currentTime - lastMagmaWavePost > 300000) {
                                 lastMagmaWavePost = currentTime;
@@ -479,7 +481,7 @@ public class PlayerListener {
                         recentBlazes++;
                         main.getScheduler().schedule(Scheduler.CommandType.SUBTRACT_BLAZE_COUNT, 4);
                         if (recentBlazes >= 10) {
-                            setMagmaTime(1200, true);
+                            magmaTime = 1200;
                             magmaAccuracy = EnumUtils.MagmaTimerAccuracy.EXACTLY;
                             if (currentTime - lastBlazeWavePost > 300000) {
                                 lastBlazeWavePost = currentTime;
@@ -609,11 +611,11 @@ public class PlayerListener {
     public void onKeyInput(InputEvent.KeyInputEvent e) {
         if (main.getOpenSettingsKey().isPressed()) {
             main.getUtils().setFadingIn(true);
-            main.getRenderListener().setGuiToOpen(PlayerListener.GUIType.MAIN, 1, EnumUtils.GuiTab.MAIN);
+            main.getRenderListener().setGuiToOpen(EnumUtils.GUIType.MAIN, 1, EnumUtils.GuiTab.MAIN);
         }
         else if (main.getOpenEditLocationsKey().isPressed()) {
             main.getUtils().setFadingIn(false);
-            main.getRenderListener().setGuiToOpen(PlayerListener.GUIType.EDIT_LOCATIONS, 0, null);
+            main.getRenderListener().setGuiToOpen(EnumUtils.GUIType.EDIT_LOCATIONS, 0, null);
         }
         else if (main.getDevKey().isPressed()) {
 
@@ -659,11 +661,11 @@ public class PlayerListener {
                         }
                     }
 
-                    DevUtils.copyStringsToClipboard(entityData, ChatFormatting.GREEN + Message.MESSAGE_DEV_ENTITY_DATA_COPIED.getMessage());
+                    DevUtils.copyStringsToClipboard(entityData, ChatFormatting.GREEN + "Entity data was copied to clipboard!");
                 }
             }
             else {
-                main.getUtils().sendMessage(ChatFormatting.RED + Message.MESSAGE_DEV_BUTTON_DISABLED.getMessage());
+                main.getUtils().sendMessage(ChatFormatting.RED + "Developer mode is off. This button does nothing.");
             }
         }
     }
@@ -692,11 +694,6 @@ public class PlayerListener {
         return false;
     }
 
-    public enum GUIType {
-        MAIN,
-        EDIT_LOCATIONS
-    }
-
     public boolean shouldResetMouse() {
         return System.currentTimeMillis() - lastClosedInv > 100;
     }
@@ -706,47 +703,6 @@ public class PlayerListener {
     }
 
     public boolean aboutToJoinSkyblockServer() { return System.currentTimeMillis() - lastSkyblockServerJoinAttempt < 6000; }
-
-    Integer getHealthUpdate() {
-        return actionBarParser.getHealthUpdate();
-    }
-
-    public EnumUtils.MagmaTimerAccuracy getMagmaAccuracy() {
-        return magmaAccuracy;
-    }
-
-    int getMagmaTime() {
-        return magmaTime;
-    }
-
-    public int getRecentBlazes() {
-        return recentBlazes;
-    }
-
-    public int getRecentMagmaCubes() {
-        return recentMagmaCubes;
-    }
-
-    public void setRecentBlazes(int recentBlazes) {
-        this.recentBlazes = recentBlazes;
-    }
-
-    public void setRecentMagmaCubes(int recentMagmaCubes) {
-        this.recentMagmaCubes = recentMagmaCubes;
-    }
-
-    public void setMagmaAccuracy(EnumUtils.MagmaTimerAccuracy magmaAccuracy) {
-        this.magmaAccuracy = magmaAccuracy;
-    }
-
-    @SuppressWarnings("unused")
-    public void setMagmaTime(int magmaTime, boolean save) {
-        this.magmaTime = magmaTime;
-    }
-
-    public Set<CoordsPair> getRecentlyLoadedChunks() {
-        return recentlyLoadedChunks;
-    }
 
     public void setLastSecondHealth(int lastSecondHealth) {
         actionBarParser.setLastSecondHealth(lastSecondHealth);
@@ -758,5 +714,9 @@ public class PlayerListener {
 
     public int getMaxTickers() {
         return actionBarParser.getMaxTickers();
+    }
+
+    Integer getHealthUpdate() {
+        return actionBarParser.getHealthUpdate();
     }
 }

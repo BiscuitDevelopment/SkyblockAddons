@@ -1,6 +1,8 @@
 package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import lombok.Getter;
+import lombok.Setter;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompressedStreamTools;
 import net.minecraft.nbt.NBTTagCompound;
@@ -12,12 +14,13 @@ import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+@Getter
 public class Backpack {
 
     private static final Pattern BACKPACK_ID_PATTERN = Pattern.compile("([A-Z]+)_BACKPACK");
 
-    private int x;
-    private int y;
+    @Setter private int x;
+    @Setter private int y;
     private ItemStack[] items;
     private String backpackName;
     private BackpackColor backpackColor;
@@ -32,34 +35,6 @@ public class Backpack {
         this(items,backpackName,backpackColor);
         this.x = x;
         this.y = y;
-    }
-
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public void setY(int y) {
-        this.y = y;
-    }
-
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public ItemStack[] getItems() {
-        return items;
-    }
-
-    public String getBackpackName() {
-        return backpackName;
-    }
-
-    public BackpackColor getBackpackColor() {
-        return backpackColor;
     }
 
     public static Backpack getFromItem(ItemStack stack) {

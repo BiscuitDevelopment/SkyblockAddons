@@ -15,7 +15,7 @@
     "hideDurability": "Skjul redskabs skader",
     "showEnchantmentsReforges": "Fortryllelser & Reforges",
     "minionStopWarning": "\"minion kan ikke nå\" advarsel",
-    "hideAuctionHousePlayers": "Skjul spillere tæt på vigtige NPC'er",
+    "hidePlayersNearNPCs": "Skjul spillere nær vigtige NPCs",
     "backpackStyle": "Taske design: %style%",
     "backpackStyles": {
       "regular": "Regulær",
@@ -91,7 +91,12 @@
       "generalSettings": "Generelle indstillinger"
     },
     "tabEffectTimers": "Trylledrik og Power-Up Timere",
-    "noArrowsLeftAlert": "No Arrows Left Alert"
+    "noArrowsLeftAlert": "Ingen pile tilbage alarm",
+    "hideNightVisionEffectTimer": "Skjul Nattesyns Effect Timer",
+    "showCakeBagPreview": "Forhåndsvis Kage Rygsæk",
+    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
+    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
+    "enableDevFeatures": "Enable Developer Features"
   },
   "messages": {
     "dropConfirmation": "Slip denne vare igen for at bekræfte!",
@@ -136,7 +141,10 @@
     "blockIncompletePatterns": "Bloker byggelse af ufuldstændige mønstre (anbefalet)",
     "searchFeatures": "Søg funktioner",
     "downloadingUpdateFile": "Henter opdaterings filen...",
-    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
-    "noArrowsLeft": "No Arrows Left!"
+    "onlyFewArrowsLeft": "Kun %arrows% pile tilbage!",
+    "noArrowsLeft": "Ingen pile tilbage!",
+    "chooseAColor": "Vælg en farve",
+    "selectedColor": "Valgte en farve",
+    "setHexColor": "Sæt Hex Farve"
   }
 }

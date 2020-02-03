@@ -15,7 +15,7 @@
     "hideDurability": "Hide How Many Biscuits are Left",
     "showEnchantmentsReforges": "Bischants & Bisforges",
     "minionStopWarning": "\"Biscuits Cannot Bake\" Warning",
-    "hideAuctionHousePlayers": "Hide Biscuits Near Important BAKERs",
+    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
     "backpackStyle": "Biscuit Style: %style%",
     "backpackStyles": {
       "regular": "Biscuitar",
@@ -90,8 +90,13 @@
     "tab": {
       "generalSettings": "General biscuits"
     },
-    "tabEffectTimers": "Potion and Powerup Timers",
-    "noArrowsLeftAlert": "No Arrows Left Alert"
+    "tabEffectTimers": "Biscoots and Biscootup Timers",
+    "noArrowsLeftAlert": "No Biscuits Left Alert",
+    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
+    "showCakeBagPreview": "Show Preview for Cake Bags",
+    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
+    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
+    "enableDevFeatures": "Enable Developer Features"
   },
   "messages": {
     "dropConfirmation": "Throw out this biscuit again to confirm!",
@@ -136,7 +141,10 @@
     "blockIncompletePatterns": "Block eating uncooked biscuits (recommended)",
     "searchFeatures": "Buy dem biscuits",
     "downloadingUpdateFile": "Eating freshest biscuits...",
-    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
-    "noArrowsLeft": "No Arrows Left!"
+    "onlyFewArrowsLeft": "Only %arrows% bicuits left!",
+    "noArrowsLeft": "No Biscuits Left!",
+    "chooseAColor": "Choose a Color",
+    "selectedColor": "Selected Color",
+    "setHexColor": "Set Hex Color"
   }
 }

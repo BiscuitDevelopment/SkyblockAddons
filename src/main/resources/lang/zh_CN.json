@@ -15,7 +15,7 @@
     "hideDurability": "隐藏物品耐久度",
     "showEnchantmentsReforges": "附魔 & 重铸",
     "minionStopWarning": "\"仆从无法触及生物\"警告",
-    "hideAuctionHousePlayers": "隐藏重要 NPC 附近的玩家",
+    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
     "backpackStyle": "背包样式: %style%",
     "backpackStyles": {
       "regular": "常规",
@@ -90,8 +90,13 @@
     "tab": {
       "generalSettings": "常规设置"
     },
-    "tabEffectTimers": "Potion and Powerup Timers",
-    "noArrowsLeftAlert": "No Arrows Left Alert"
+    "tabEffectTimers": "药水及加成效果计时器",
+    "noArrowsLeftAlert": "箭矢不足提醒",
+    "hideNightVisionEffectTimer": "隐藏夜视效果持续时间",
+    "showCakeBagPreview": "显示蛋糕袋预览",
+    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
+    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
+    "enableDevFeatures": "Enable Developer Features"
   },
   "messages": {
     "dropConfirmation": "再次丢弃此物品以确认!",
@@ -136,7 +141,10 @@
     "blockIncompletePatterns": "阻止合成不完整的图案 - 推荐",
     "searchFeatures": "搜索功能",
     "downloadingUpdateFile": "正在下载更新文件……",
-    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
-    "noArrowsLeft": "No Arrows Left!"
+    "onlyFewArrowsLeft": "剩余 %arrows% 支箭！",
+    "noArrowsLeft": "箭矢不足！",
+    "chooseAColor": "选择颜色",
+    "selectedColor": "已选择颜色",
+    "setHexColor": "设置十六进制颜色"
   }
 }

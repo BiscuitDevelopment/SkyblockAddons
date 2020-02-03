@@ -3,12 +3,14 @@ package codes.biscuit.skyblockaddons.utils;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
 import com.google.gson.JsonObject;
+import lombok.Getter;
 
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.regex.Pattern;
 
+@Getter
 @SuppressWarnings("DeprecatedIsStillUsed")
 public enum Message {
     LANGUAGE(MessageObject.ROOT, "language"),
@@ -28,7 +30,7 @@ public enum Message {
     SETTING_SETTINGS(MessageObject.SETTING, "settings"),
     SETTING_ENCHANTS_AND_REFORGES(MessageObject.SETTING, "showEnchantmentsReforges"),
     SETTING_MINION_STOP_WARNING(MessageObject.SETTING, "minionStopWarning"),
-    SETTING_PLAYERS_NEAR_NPCS(MessageObject.SETTING, "hidePlayersNearNPCs"),
+    SETTING_HIDE_PLAYERS_NEAR_NPCS(MessageObject.SETTING, "hidePlayersNearNPCs"),
     SETTING_BACKPACK_STYLE(MessageObject.SETTING, "backpackStyle"),
     SETTING_SHOW_BACKPACK_PREVIEW(MessageObject.SETTING, "showBackpackPreview"),
     SETTING_HIDE_HEALTH_BAR(MessageObject.SETTING, "hideHealthBar"),
@@ -92,7 +94,6 @@ public enum Message {
     SETTING_NO_ARROWS_LEFT_ALERT(MessageObject.SETTING, "noArrowsLeftAlert"),
     SETTING_SHOW_CAKE_BAG_PREVIEW(MessageObject.SETTING, "showCakeBagPreview"),
     SETTING_SHOW_BACKPACK_PREVIEW_AH(MessageObject.SETTING, "showBackpackPreviewInAH"),
-    SETTING_HIDE_PLAYERS_NEAR_HARP(MessageObject.SETTING, "hidePlayersNearHarp"),
     SETTING_ENABLE_DEV_FEATURES(MessageObject.SETTING, "enableDevFeatures"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.BACKPACK_STYLE, "regular"),
@@ -134,11 +135,6 @@ public enum Message {
     MESSAGE_CHOOSE_A_COLOR(MessageObject.MESSAGES, "chooseAColor"),
     MESSAGE_SELECTED_COLOR(MessageObject.MESSAGES, "selectedColor"),
     MESSAGE_SET_HEX_COLOR(MessageObject.MESSAGES, "setHexColor"),
-    MESSAGE_DEV_MODE_ENABLED(MessageObject.MESSAGES, "devModeEnabled"),
-    MESSAGE_DEV_MODE_DISABLED(MessageObject.MESSAGES, "devModeDisabled"),
-    MESSAGE_DEV_BUTTON_DISABLED(MessageObject.MESSAGES, "devButtonDisabled"),
-    MESSAGE_DEV_ITEM_DATA_COPIED(MessageObject.MESSAGES, "devItemDataCopied"),
-    MESSAGE_DEV_ENTITY_DATA_COPIED(MessageObject.MESSAGES, "devEntityDataCopied"),
 
     @Deprecated ANCHOR_POINT_TOP_LEFT(MessageObject.ANCHOR_POINT, "topLeft"),
     @Deprecated ANCHOR_POINT_TOP_RIGHT(MessageObject.ANCHOR_POINT, "topRight"),
@@ -173,14 +169,6 @@ public enum Message {
     Message(MessageObject messageObject, String memberName) {
         this.messageObject = messageObject;
         this.memberName = memberName;
-    }
-
-    public MessageObject getMessageObject() {
-        return messageObject;
-    }
-
-    public String getMemberName() {
-        return memberName;
     }
 
     public String getMessage(String... variables) {
@@ -222,25 +210,18 @@ public enum Message {
                 } else if (this == Message.MESSAGE_ONLY_FEW_ARROWS_LEFT) {
                     text = text.replace("%arrows%", variables[0]);
                 }
-                // else if (this == Message.SETTING_ANCHOR_POINT) { //unused at the moment.
-//                    Feature lastHovered = ButtonLocation.getLastHoveredFeature();
-//                    if (lastHovered == null) {
-//                        lastHovered = Feature.MANA_BAR;
-//                    }
-//                    text = text.replace("%setting%", lastHovered.getMessage());
-//                    text = text.replace("%anchor%", main.getConfigValues().getAnchorPoint(lastHovered).getMessage());
-//                }
             }
             if (text != null && (main.getConfigValues().getLanguage() == Language.HEBREW || main.getConfigValues().getLanguage() == Language.ARABIC)) {
                 text = main.getUtils().reverseText(text);
             }
-        } catch (NullPointerException ex) { // In case I messed up some translation or something.
+        } catch (NullPointerException ex) { // In case I messed up like the arguments of something, woops.
             ex.printStackTrace();
             text = memberName;
         }
         return text;
     }
 
+    @Getter
     enum MessageObject {
         ROOT(""),
         SETTING("settings"),
@@ -257,10 +238,6 @@ public enum Message {
 
         MessageObject(String path) {
             this.path = new LinkedList<>(Arrays.asList(path.split(Pattern.quote("."))));
-        }
-
-        public List<String> getPath() {
-            return path;
         }
     }
 
