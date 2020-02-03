@@ -95,7 +95,7 @@
     "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
     "showCakeBagPreview": "Show Preview for Cake Bags",
     "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
-    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
+    "hidePlayersNearHarp": "Скрывать игроков рядом с арфой Мелоди",
     "enableDevFeatures": "Включить параметры разработчиков"
   },
   "messages": {
@@ -143,8 +143,8 @@
     "downloadingUpdateFile": "Загрузка файла обновления...",
     "onlyFewArrowsLeft": "Осталось только %arrows% стрел(-ы/-а)!",
     "noArrowsLeft": "Стрел не осталось!",
-    "chooseAColor": "Choose a Color",
-    "selectedColor": "Selected Color",
+    "chooseAColor": "Выберите цвет",
+    "selectedColor": "Выбранный цвет",
     "setHexColor": "Set Hex Color"
   }
 }
