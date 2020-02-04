@@ -228,9 +228,10 @@ public class PlayerListener {
     public void onInteract(PlayerInteractEvent e) {
         Minecraft mc = Minecraft.getMinecraft();
         ItemStack heldItem = e.entityPlayer.getHeldItem();
+
         if (main.getUtils().isOnSkyblock() && e.entityPlayer == mc.thePlayer && heldItem != null) {
-            // Prevent using ember rod on personal island
-            if (heldItem.getItem().equals(Items.fishing_rod) // Update fishing status
+            // Update fishing status
+            if (heldItem.getItem().equals(Items.fishing_rod)
                     && (e.action == PlayerInteractEvent.Action.RIGHT_CLICK_BLOCK || e.action == PlayerInteractEvent.Action.RIGHT_CLICK_AIR)) {
                 if (main.getConfigValues().isEnabled(Feature.FISHING_SOUND_INDICATOR)) {
                     oldBobberIsInWater = false;
@@ -240,7 +241,8 @@ public class PlayerListener {
                 if (main.getConfigValues().isEnabled(Feature.SHOW_ITEM_COOLDOWNS) && mc.thePlayer.fishEntity != null) {
                     CooldownManager.put(mc.thePlayer.getHeldItem());
                 }
-            } else if (main.getConfigValues().isEnabled(Feature.AVOID_PLACING_ENCHANTED_ITEMS) && EnchantedItemBlacklist.shouldBlockUsage(heldItem, e.action)) {
+            }
+            else if (main.getConfigValues().isEnabled(Feature.AVOID_PLACING_ENCHANTED_ITEMS) && EnchantedItemBlacklist.shouldBlockUsage(heldItem, e.action)) {
                 e.setCanceled(true);
             }
         }

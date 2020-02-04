@@ -11,7 +11,9 @@ public enum EnchantedItemBlacklist {
 
     LAVA(Items.lava_bucket, false, Feature.AVOID_PLACING_ENCHANTED_ITEMS, true),
     DIAMOND(Item.getItemFromBlock(Blocks.diamond_block), false, Feature.AVOID_PLACING_ENCHANTED_ITEMS,true),
+    SNOW(Item.getItemFromBlock(Blocks.snow), true, Feature.AVOID_PLACING_ENCHANTED_ITEMS, true),
     STRING(Items.string, false, Feature.AVOID_PLACING_ENCHANTED_ITEMS, true),
+    WOOL(Item.getItemFromBlock(Blocks.wool), true, Feature.AVOID_PLACING_ENCHANTED_ITEMS, true),
     BLAZE_ROD(Items.blaze_rod, true, Feature.DISABLE_EMBER_ROD, false);
 
     private Item item;

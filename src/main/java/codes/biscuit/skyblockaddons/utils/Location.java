@@ -10,24 +10,25 @@ public enum Location {
     ISLAND("Your Island"),
 
     // Hub
-    VILLAGE("Village"),
     AUCTION_HOUSE("Auction House"),
     BANK("Bank"),
-    LIBRARY("Library"),
-    COAL_MINE("Coal Mine"),
-    GRAVEYARD("Graveyard"),
-    COLOSSEUM("Colosseum"),
-    WILDERNESS("Wilderness"),
-    MOUNTAIN("Mountain"),
-    WIZARD_TOWER("Wizard Tower"),
-    RUINS("Ruins"),
-    FOREST("Forest"),
-    FARM("Farm"),
-    FISHERMANS_HUT("Fisherman's Hut"),
-    HIGH_LEVEL("High Level"),
-    FLOWER_HOUSE("Flower House"),
     CANVAS_ROOM("Canvas Room"),
+    COAL_MINE("Coal Mine"),
+    COLOSSEUM("Colosseum"),
+    FARM("Farm"),
+    FASHION_SHOP("Fashion Shop"),
+    FISHERMANS_HUT("Fisherman's Hut"),
+    FLOWER_HOUSE("Flower House"),
+    FOREST("Forest"),
+    GRAVEYARD("Graveyard"),
+    HIGH_LEVEL("High Level"),
+    LIBRARY("Library"),
+    MOUNTAIN("Mountain"),
+    RUINS("Ruins"),
     TAVERN("Tavern"),
+    VILLAGE("Village"),
+    WILDERNESS("Wilderness"),
+    WIZARD_TOWER("Wizard Tower"),
 
     // The Park
     BIRCH_PARK("Birch Park"),
@@ -59,7 +60,9 @@ public enum Location {
     THE_END("The End"),
     DRAGONS_NEST("Dragon's Nest"),
 
-    //TODO: Jerry's workshop
+    // Jerry's workshop
+    JERRY_POND("Jerry Pond"),
+    JERRYS_WORKSHOP("Jerry's Workshop"),
 
     NONE("None");
 
