@@ -36,9 +36,7 @@ public class NPCUtils {
         for (NPC npc:
              NPC_LIST) {
             if (npc.hasTag(Tag.MERCHANT)) {
-                if (npc.name().replaceAll(" ", "_").equalsIgnoreCase(npc.name())) {
-                    return true;
-                }
+                return true;
             }
         }
         return false;

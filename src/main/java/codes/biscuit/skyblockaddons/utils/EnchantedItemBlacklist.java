@@ -33,8 +33,10 @@ public enum EnchantedItemBlacklist {
         boolean blockUsage = false;
         if (itemStack != null && itemStack.isItemEnchanted()) {
             for (EnchantedItemBlacklist blacklistItem : EnchantedItemBlacklist.values()) {
-                if (main.getConfigValues().isEnabled(blacklistItem.feature) && blacklistItem.item.equals(itemStack.getItem()) &&
-                        (!blacklistItem.onlyOnIsland || main.getUtils().getLocation() == Location.ISLAND) && !main.getUtils().isMaterialForRecipe(itemStack)) {
+                if (main.getConfigValues().isEnabled(blacklistItem.feature) &&
+                        blacklistItem.item.getRegistryName().contentEquals(itemStack.getItem().getRegistryName()) &&
+                        (!blacklistItem.onlyOnIsland || main.getUtils().getLocation() == Location.ISLAND) &&
+                        !main.getUtils().isMaterialForRecipe(itemStack)) {
 
                     if (action == PlayerInteractEvent.Action.RIGHT_CLICK_AIR && blacklistItem.onlyBlockPlacement) continue;
 
