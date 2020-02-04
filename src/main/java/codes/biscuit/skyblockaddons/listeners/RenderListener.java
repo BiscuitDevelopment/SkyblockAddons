@@ -19,7 +19,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityArmorStand;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.GuiIngameForge;
@@ -38,7 +37,7 @@ import static net.minecraft.client.gui.Gui.icons;
 
 public class RenderListener {
 
-    private final static ItemStack BONE_ITEM = new ItemStack(Item.getItemById(352));
+    private final static ItemStack BONE_ITEM = new ItemStack(Items.bone);
     private final static ResourceLocation BARS = new ResourceLocation("skyblockaddons", "bars.png");
     private final static ResourceLocation DEFENCE_VANILLA = new ResourceLocation("skyblockaddons", "defence.png");
     private final static ResourceLocation TEXT_ICONS = new ResourceLocation("skyblockaddons", "icons.png");
