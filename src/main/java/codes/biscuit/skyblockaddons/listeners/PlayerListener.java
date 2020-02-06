@@ -7,13 +7,11 @@ import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
 import lombok.Getter;
 import lombok.Setter;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.gui.inventory.*;
+import net.minecraft.client.gui.inventory.GuiChest;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityArmorStand;
 import net.minecraft.entity.monster.EntityBlaze;
 import net.minecraft.entity.monster.EntityEnderman;
@@ -26,7 +24,6 @@ import net.minecraft.inventory.ContainerChest;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.BlockPos;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.Vec3;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
@@ -43,8 +40,10 @@ import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
+import org.lwjgl.input.Keyboard;
 
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -619,55 +618,20 @@ public class PlayerListener {
             main.getUtils().setFadingIn(false);
             main.getRenderListener().setGuiToOpen(EnumUtils.GUIType.EDIT_LOCATIONS, 0, null);
         }
-        else if (main.getDevKey().isPressed()) {
+        else if (Keyboard.getEventKey() == DevUtils.DEV_KEY) {
+            long eventTime = TimeUnit.MILLISECONDS.convert(Keyboard.getEventNanoseconds(), TimeUnit.NANOSECONDS);
 
-            // Copy Entity Data
-            if (main.isDevMode()) {
-                EntityPlayerSP playerSP = Minecraft.getMinecraft().thePlayer;
-                List<Entity> entityList = Minecraft.getMinecraft().theWorld.getLoadedEntityList();
-                List<String> entityData = new LinkedList<>();
+            // For some reason four key presses are detected for each actual press so count only the first one.
+            if (eventTime - DevUtils.getLastDevKeyEvent() > 100L) {
+                DevUtils.setLastDevKeyEvent(Minecraft.getSystemTime());
 
-                // We only care about other players and armor stands.
-                entityList.removeIf(entity -> entity.getDistanceToEntity(playerSP) > DevUtils.getEntityCopyRadius() &&
-                        !(entity instanceof EntityOtherPlayerMP || entity instanceof EntityArmorStand));
+                // Copy Entity Data
+                if (main.isDevMode()) {
+                    EntityPlayerSP player = Minecraft.getMinecraft().thePlayer;
+                    List<Entity> entityList = Minecraft.getMinecraft().theWorld.loadedEntityList;
 
-                if (!entityList.isEmpty()) {
-                    ListIterator<Entity> entityListIterator = entityList.listIterator();
-
-                    while (entityListIterator.hasNext()) {
-                        Entity entity = entityListIterator.next();
-
-                        // The client isn't allowed to get the full entity NBT from the server.
-                        if (entity.getDistanceToEntity(playerSP) < DevUtils.getEntityCopyRadius()) {
-                            if (entity instanceof EntityOtherPlayerMP || entity instanceof EntityArmorStand) {
-                                BlockPos entityPosition = entity.getPosition();
-
-                                entityData.add("Name: " + entity.getName());
-                                entityData.add("Type: " + entity.getClass().getSimpleName());
-
-                                // Some may not have a team.
-                                if (((EntityLivingBase) entity).getTeam() != null) {
-                                    entityData.add("Team: " + ((EntityLivingBase) entity).getTeam().getRegisteredName());
-                                }
-                                else {
-                                    entityData.add("Team: None");
-                                }
-                                entityData.add("Position: " + "[" + entityPosition.getX() + ", " +
-                                        entityPosition.getY() + ", " + entityPosition.getZ() + "]");
-
-                                // Add a blank line for spacing.
-                                if (entityListIterator.hasNext()) {
-                                    entityData.add("");
-                                }
-                            }
-                        }
-                    }
-
-                    DevUtils.copyStringsToClipboard(entityData, ChatFormatting.GREEN + "Entity data was copied to clipboard!");
+                    DevUtils.copyEntityData(player, entityList);
                 }
-            }
-            else {
-                main.getUtils().sendMessage(ChatFormatting.RED + "Developer mode is off. This button does nothing.");
             }
         }
     }

@@ -11,6 +11,8 @@ import net.minecraftforge.client.event.GuiScreenEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import org.lwjgl.input.Keyboard;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * This listener listens for events that happen while a {@code GuiScreen} is open.
  *
@@ -19,8 +21,6 @@ import org.lwjgl.input.Keyboard;
  */
 public class GuiScreenListener {
     private final SkyblockAddons main;
-
-    private long lastDevKeyEvent = 0L;
 
     public GuiScreenListener(SkyblockAddons main) {
         this.main = main;
@@ -35,12 +35,13 @@ public class GuiScreenListener {
     public void onKeyInput(GuiScreenEvent.KeyboardInputEvent event) {
         int eventKey = Keyboard.getEventKey();
 
-        // Forge key binding key press detection doesn't work in GUIs
-        if (eventKey != Keyboard.KEY_NONE && eventKey == main.getDevKey().getKeyCode()) {
+        if (eventKey == DevUtils.DEV_KEY) {
+            long eventTime = TimeUnit.MILLISECONDS.convert(Keyboard.getEventNanoseconds(), TimeUnit.NANOSECONDS);
             event.setCanceled(true);
 
             // For some reason four key presses are detected for each actual press so count only the first one.
-            if (Minecraft.getSystemTime() - lastDevKeyEvent > 100L) {
+            if (eventTime - DevUtils.getLastDevKeyEvent() > 100L) {
+                DevUtils.setLastDevKeyEvent(Minecraft.getSystemTime());
 
                 // Copy Item NBT
                 if (main.isDevMode()) {
@@ -56,12 +57,7 @@ public class GuiScreenListener {
                         }
                     }
                 }
-                else {
-                    main.getUtils().sendMessage(ChatFormatting.RED + "Developer mode is off. This button does nothing.");
-                }
             }
-
-            lastDevKeyEvent = Minecraft.getSystemTime();
         }
     }
 }

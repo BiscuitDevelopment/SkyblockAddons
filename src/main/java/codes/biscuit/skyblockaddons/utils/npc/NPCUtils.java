@@ -200,7 +200,7 @@ public class NPCUtils {
     public static boolean isNPC(Entity entity) {
         if (entity instanceof EntityOtherPlayerMP) {
             EntityOtherPlayerMP player = (EntityOtherPlayerMP) entity;
-            Pattern skyblockPlayerTeamPattern = Pattern.compile("(a\\d{7,9})");
+            Pattern skyblockPlayerTeamPattern = Pattern.compile("(a\\d{7,10})");
             Matcher playerTeamMatcher;
 
             // If it doesn't have a team, it's likely not a player.

@@ -1,24 +1,99 @@
 package codes.biscuit.skyblockaddons.utils.dev;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
+import lombok.Getter;
+import lombok.Setter;
+import net.minecraft.client.entity.EntityOtherPlayerMP;
+import net.minecraft.client.entity.EntityPlayerSP;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.nbt.*;
+import net.minecraft.scoreboard.ScorePlayerTeam;
+import net.minecraft.util.BlockPos;
 import net.minecraftforge.common.util.Constants;
+import org.lwjgl.input.Keyboard;
 
 import java.awt.*;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
-import java.util.Iterator;
+import java.util.*;
 import java.util.List;
-import java.util.ListIterator;
 
 /**
  * This is a class of utilities for Skyblock Addons developers.
  *
  * @author ILikePlayingGames
- * @version 1.0
+ * @version 1.5
  */
 public class DevUtils {
-    private static final int ENTITY_COPY_RADIUS = 3;
+    public static final int DEV_KEY = Keyboard.KEY_RCONTROL;
+    public static final int ENTITY_COPY_RADIUS = 3;
+
+    @Getter
+    @Setter
+    private static long lastDevKeyEvent = 0L;
+
+    /**
+     * Copies the data of entities within the entity copy radius of the player
+     *
+     * @param player the player
+     * @param loadedEntities the list of all the entities that are currently loaded in the world
+     */
+    public static void copyEntityData(EntityPlayerSP player, List<Entity> loadedEntities) {
+        List<String> entityData = new LinkedList<>();
+        List<Entity> loadedEntitiesCopy = new LinkedList<>(loadedEntities);
+
+        // We only care about mobs.
+        loadedEntitiesCopy.removeIf(entity -> entity.getDistanceToEntity(player) > ENTITY_COPY_RADIUS ||
+                !(EntityLivingBase.class.isAssignableFrom(entity.getClass())));
+
+        if (!loadedEntitiesCopy.isEmpty()) {
+            ListIterator<Entity> loadedEntitiesCopyIterator = loadedEntitiesCopy.listIterator();
+
+            while (loadedEntitiesCopyIterator.hasNext()) {
+                EntityLivingBase entity = (EntityLivingBase) loadedEntitiesCopyIterator.next();
+
+                /*
+                The client isn't allowed to get the full entity NBT from the server.
+                We have to get the attributes one at a time.
+                */
+                BlockPos entityPosition = entity.getPosition();
+
+                // If the player is in a team, add the team's name formatting.
+                if (entity instanceof EntityOtherPlayerMP && entity.getTeam() != null) {
+                    EntityOtherPlayerMP otherPlayer = (EntityOtherPlayerMP) entity;
+
+                    entityData.add("Name: " + ScorePlayerTeam.formatPlayerName(otherPlayer.getTeam(), otherPlayer.getName()));
+                }
+                else {
+                    entityData.add("Name: " + entity.getName());
+                }
+
+                entityData.add("Type: " + entity.getClass().getSimpleName());
+
+                // Some may not have a team.
+                if (entity.getTeam() != null) {
+                    entityData.add("Team: " + entity.getTeam().getRegisteredName());
+                }
+                else {
+                    entityData.add("Team: None");
+                }
+
+                entityData.add("Health: " + entity.getHealth() + " / " + entity.getMaxHealth() + " ❤");
+
+                entityData.add("Position: " + "[" + entityPosition.getX() + ", " +
+                        entityPosition.getY() + ", " + entityPosition.getZ() + "]");
+
+                // Add a blank line for spacing.
+                if (loadedEntitiesCopyIterator.hasNext()) {
+                    entityData.add("");
+                }
+            }
+
+            copyStringsToClipboard(entityData, ChatFormatting.GREEN + "Entity data was copied to clipboard!");
+        }
+    }
 
     /**
      * Copies the provided NBT tag to the clipboard as a formatted string.
@@ -90,15 +165,6 @@ public class DevUtils {
      */
     public static void copyStringsToClipboard(List<String> strings, String successMessage) {
         writeToClipboard(buildMultiLineStringFromList(strings), successMessage);
-    }
-
-    /**
-     * Returns the radius for copying entity data
-     *
-     * @return the radius for copying entity data
-     */
-    public static int getEntityCopyRadius() {
-        return ENTITY_COPY_RADIUS;
     }
 
     // FIXME add support for TAG_LONG_ARRAY when updating to 1.12

@@ -18,7 +18,6 @@ public class SkyblockAddonsCommand extends CommandBase {
             Utils.color("&7&m------------&7[&b&l SkyblockAddons &7]&7&m------------"),
             Utils.color("&b● /sba &7- Open the main menu"),
             Utils.color("&b● /sba edit &7- Edit GUI locations"),
-            Utils.color("&b● /sba dev &7- Toggle developer mode"),
             Utils.color("&b● /sba folder &7- Open your mods folder"),
             Utils.color("&7&m----------------------------------------------")};
 
@@ -66,7 +65,7 @@ public class SkyblockAddonsCommand extends CommandBase {
                     main.getUtils().setFadingIn(false);
                     main.getRenderListener().setGuiToOpen(EnumUtils.GUIType.EDIT_LOCATIONS, 0, null);
                     break;
-                case "dev":
+                case "devmode":
                     main.setDevMode(!main.isDevMode());
 
                     if (main.isDevMode()) {
