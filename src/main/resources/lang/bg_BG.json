@@ -94,9 +94,9 @@
     "noArrowsLeftAlert": "Нампомняне Че Няма Останали Стрели\n",
     "hideNightVisionEffectTimer": "Скрий таймера за ефекта нощно виждане",
     "showCakeBagPreview": "Показване на какво има в чантata за торти",
-    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
+    "showBackpackPreviewInAH": "Покажи какво има в Чантата за предметите ти докато си отворил Аукционната къща",
     "hidePlayersNearHarp": "Скрий играчи близо до Арфата на Мелъди",
-    "enableDevFeatures": "Developer Mode Key"
+    "enableDevFeatures": "Ключ за девелопър мод"
   },
   "messages": {
     "dropConfirmation": "Хвърлете Този Предмет Отново за да Потвърдите!",
