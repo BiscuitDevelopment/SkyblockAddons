@@ -15,7 +15,7 @@
     "hideDurability": "Скрии Използваността на Инструментите",
     "showEnchantmentsReforges": "Омагьосвания & Модификации",
     "minionStopWarning": "\"Миньонът не Може да Стигне\" Предупреждение",
-    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
+    "hidePlayersNearNPCs": "Скрий играчи около важни NPC-та",
     "backpackStyle": "Стил на Чантата: %style%",
     "backpackStyles": {
       "regular": "Обикновен",
@@ -91,9 +91,9 @@
       "generalSettings": "Общи Настройки"
     },
     "tabEffectTimers": "Potion and Powerup Timers",
-    "noArrowsLeftAlert": "No Arrows Left Alert",
-    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
-    "showCakeBagPreview": "Show Preview for Cake Bags",
+    "noArrowsLeftAlert": "Нампомняне Че Няма Останали Стрели\n",
+    "hideNightVisionEffectTimer": "Скрий таймера за ефекта нощно виждане",
+    "showCakeBagPreview": "Показване на какво има в чантata за торти",
     "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
     "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
     "enableDevFeatures": "Developer Mode Key"
@@ -141,10 +141,10 @@
     "blockIncompletePatterns": "Блокиране на изработване на непълни модели (препоръчително)",
     "searchFeatures": "Търси Свойства",
     "downloadingUpdateFile": "Изтегляне на актуализация...",
-    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
-    "noArrowsLeft": "No Arrows Left!",
-    "chooseAColor": "Choose a Color",
-    "selectedColor": "Selected Color",
+    "onlyFewArrowsLeft": "Има %arrows% оставащи стрели.",
+    "noArrowsLeft": "Стрелите са свършили",
+    "chooseAColor": "Избери един цвят",
+    "selectedColor": "Избран цвят",
     "setHexColor": "Set Hex Color"
   }
 }
