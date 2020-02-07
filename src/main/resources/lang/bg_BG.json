@@ -90,12 +90,12 @@
     "tab": {
       "generalSettings": "Общи Настройки"
     },
-    "tabEffectTimers": "Potion and Powerup Timers",
+    "tabEffectTimers": "Таймер за отвари и ефекти повдигащи силите",
     "noArrowsLeftAlert": "Нампомняне Че Няма Останали Стрели\n",
     "hideNightVisionEffectTimer": "Скрий таймера за ефекта нощно виждане",
     "showCakeBagPreview": "Показване на какво има в чантata за торти",
     "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
-    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
+    "hidePlayersNearHarp": "Скрий играчи близо до Арфата на Мелъди",
     "enableDevFeatures": "Developer Mode Key"
   },
   "messages": {
