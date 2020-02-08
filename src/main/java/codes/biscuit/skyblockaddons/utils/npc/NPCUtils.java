@@ -5,13 +5,11 @@ import codes.biscuit.skyblockaddons.utils.Location;
 import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityArmorStand;
+import net.minecraft.scoreboard.ScorePlayerTeam;
 import net.minecraft.util.Vec3;
 
 import java.util.EnumSet;
 import java.util.Set;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 /**
  * This is a set of utility methods relating to Skyblock NPCs
  *
@@ -200,8 +198,7 @@ public class NPCUtils {
     public static boolean isNPC(Entity entity) {
         if (entity instanceof EntityOtherPlayerMP) {
             EntityOtherPlayerMP player = (EntityOtherPlayerMP) entity;
-            Pattern skyblockPlayerTeamPattern = Pattern.compile("(a\\d{7,10})");
-            Matcher playerTeamMatcher;
+            ScorePlayerTeam playerTeam = (ScorePlayerTeam) player.getTeam();
 
             // If it doesn't have a team, it's likely not a player.
             if (player.getTeam() == null) {
@@ -209,8 +206,7 @@ public class NPCUtils {
             }
 
             // Check if it's not a player because idk how to check if it's a Hypixel NPC
-            playerTeamMatcher = skyblockPlayerTeamPattern.matcher(player.getTeam().getRegisteredName());
-            return !playerTeamMatcher.matches();
+            return !playerTeam.getColorPrefix().equals("");
         }
         else if (entity instanceof EntityArmorStand) {
             return entity.isInvisible();

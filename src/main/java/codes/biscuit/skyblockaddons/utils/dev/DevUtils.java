@@ -235,10 +235,7 @@ public class DevUtils {
             NBTTagCompound nbtTagCompound = (NBTTagCompound) nbt;
 
             stringBuilder.append('{');
-            if (nbtTagCompound.hasNoTags()) {
-                stringBuilder.append('}');
-            }
-            else {
+             if (!nbtTagCompound.hasNoTags()) {
                 Iterator<String> iterator = nbtTagCompound.getKeySet().iterator();
 
                 stringBuilder.append(System.lineSeparator());
@@ -259,9 +256,9 @@ public class DevUtils {
                 // Indent all lines
                 String indentedString = stringBuilder.toString().replaceAll(System.lineSeparator(), System.lineSeparator() + INDENT);
                 stringBuilder = new StringBuilder(indentedString);
-
-                stringBuilder.append(System.lineSeparator()).append('}');
             }
+
+            stringBuilder.append(System.lineSeparator()).append('}');
         }
         // This includes the tags: byte, short, int, long, float, double, and string
         else {

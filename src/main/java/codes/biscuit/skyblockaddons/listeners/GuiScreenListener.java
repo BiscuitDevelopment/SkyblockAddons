@@ -45,7 +45,7 @@ public class GuiScreenListener {
 
                 // Copy Item NBT
                 if (main.isDevMode()) {
-                    GuiScreen currentScreen = Minecraft.getMinecraft().currentScreen;
+                    GuiScreen currentScreen = event.gui;
 
                     // Check if the player is in an inventory.
                     if (GuiContainer.class.isAssignableFrom(currentScreen.getClass())) {
