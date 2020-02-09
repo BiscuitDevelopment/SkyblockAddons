@@ -214,7 +214,7 @@ public class GuiChestHook {
         }
 
         if (main.getConfigValues().isEnabled(Feature.STOP_DROPPING_SELLING_RARE_ITEMS) &&
-                lowerChestInventory.hasCustomName() && NPCUtils.isMerchant(lowerChestInventory.getDisplayName().getUnformattedText())
+                lowerChestInventory.hasCustomName() && NPCUtils.isFullMerchant(lowerChestInventory.getDisplayName().getUnformattedText())
                 && slotIn != null && slotIn.inventory instanceof InventoryPlayer) {
             if (main.getInventoryUtils().shouldCancelDrop(slotIn)) returnValue.cancel();
         }

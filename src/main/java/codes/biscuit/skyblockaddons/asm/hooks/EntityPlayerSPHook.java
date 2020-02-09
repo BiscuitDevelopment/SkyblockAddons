@@ -13,12 +13,13 @@ import net.minecraft.item.ItemStack;
 public class EntityPlayerSPHook {
 
     private static String lastItemName = null;
-    private static long lastDrop = System.currentTimeMillis();
+    private static long lastDrop = Minecraft.getSystemTime();
 
     public static EntityItem dropOneItemConfirmation(ReturnValue returnValue) {
         SkyblockAddons main = SkyblockAddons.getInstance();
         Minecraft mc = Minecraft.getMinecraft();
         ItemStack heldItemStack = mc.thePlayer.getHeldItem();
+
         if (main.getConfigValues().isEnabled(Feature.LOCK_SLOTS) && (main.getUtils().isOnSkyblock() || main.getPlayerListener().aboutToJoinSkyblockServer() || !main.getPlayerListener().didntRecentlyJoinWorld())) {
             int slot = mc.thePlayer.inventory.currentItem + 36;
             if (main.getConfigValues().getLockedSlots().contains(slot)
@@ -32,9 +33,10 @@ public class EntityPlayerSPHook {
         }
         if (heldItemStack != null) {
             EnumUtils.Rarity rarity = EnumUtils.Rarity.getRarity(heldItemStack);
-            if (rarity != null && (main.getUtils().isOnSkyblock() || main.getPlayerListener().aboutToJoinSkyblockServer() || !main.getPlayerListener().didntRecentlyJoinWorld()) && main.getConfigValues().isEnabled(Feature.STOP_DROPPING_SELLING_RARE_ITEMS) &&
+            
+            if (rarity != EnumUtils.Rarity.INVALID && (main.getUtils().isOnSkyblock() || main.getPlayerListener().aboutToJoinSkyblockServer() || !main.getPlayerListener().didntRecentlyJoinWorld()) && main.getConfigValues().isEnabled(Feature.STOP_DROPPING_SELLING_RARE_ITEMS) &&
                     main.getUtils().cantDropItem(heldItemStack, rarity, true)) {
-                SkyblockAddons.getInstance().getUtils().sendMessage(main.getConfigValues().getRestrictedColor(Feature.STOP_DROPPING_SELLING_RARE_ITEMS)
+                main.getUtils().sendMessage(main.getConfigValues().getRestrictedColor(Feature.STOP_DROPPING_SELLING_RARE_ITEMS)
                                                                             + Message.MESSAGE_CANCELLED_DROPPING.getMessage());
                 returnValue.cancel();
                 return null;
@@ -42,11 +44,11 @@ public class EntityPlayerSPHook {
             if (main.getConfigValues().isEnabled(Feature.DROP_CONFIRMATION) && (main.getUtils().isOnSkyblock() ||
                     main.getConfigValues().isEnabled(Feature.DOUBLE_DROP_IN_OTHER_GAMES))) {
 
-                lastDrop = System.currentTimeMillis();
+                lastDrop = Minecraft.getSystemTime();
 
                 String heldItemName = heldItemStack.hasDisplayName() ? heldItemStack.getDisplayName() : heldItemStack.getUnlocalizedName();
 
-                if (lastItemName == null || !lastItemName.equals(heldItemName) || System.currentTimeMillis() - lastDrop >= 3000) {
+                if (lastItemName == null || !lastItemName.equals(heldItemName) || Minecraft.getSystemTime() - lastDrop >= 3000L) {
                     SkyblockAddons.getInstance().getUtils().sendMessage(main.getConfigValues().getRestrictedColor(Feature.DROP_CONFIRMATION) +
                             Message.MESSAGE_DROP_CONFIRMATION.getMessage());
                     lastItemName = heldItemName;

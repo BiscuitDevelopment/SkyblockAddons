@@ -27,13 +27,29 @@ public class NPCUtils {
     /**
      * Checks if the given NPC is a merchant
      *
-     * @param NPCName the NPC's name in {@link NPC}
+     * @param NPCName the NPC's in-game name
      * @return {@code true} if the NPC is a merchant, {@code false} if it's not a merchant
      */
     public static boolean isMerchant(String NPCName) {
         for (NPC npc:
              NPC_LIST) {
-            if (npc.hasTag(Tag.MERCHANT)) {
+            if (NPCName.equals(npc.getName()) && npc.hasTag(Tag.MERCHANT)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Checks if the NPC is a merchant with both buying and selling capabilities
+     *
+     * @param NPCName the NPC's in-game name
+     * @return {@code true} if the NPC is a merchant with buying and selling capabilities, {@code false} otherwise
+     */
+    public static boolean isFullMerchant(String NPCName) {
+        for (NPC npc:
+                NPC_LIST) {
+            if (NPCName.equals(npc.getName()) && npc.hasTag(Tag.MERCHANT) && !npc.hasTag(Tag.BUY_ONLY)) {
                 return true;
             }
         }
@@ -205,8 +221,8 @@ public class NPCUtils {
                 return false;
             }
 
-            // Check if it's not a player because idk how to check if it's a Hypixel NPC
-            return !playerTeam.getColorPrefix().equals("");
+            // If it doesn't have a color prefix, it's not a player.
+            return playerTeam.getColorPrefix().equals("");
         }
         else if (entity instanceof EntityArmorStand) {
             return entity.isInvisible();

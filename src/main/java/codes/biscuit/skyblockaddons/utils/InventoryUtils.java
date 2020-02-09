@@ -209,7 +209,6 @@ public class InventoryUtils {
 
     public boolean shouldCancelDrop(ItemStack stack) {
         if (main.getUtils().cantDropItem(stack, EnumUtils.Rarity.getRarity(stack), false)) {
-
             String heldItemName = stack.hasDisplayName() ? stack.getDisplayName() : stack.getUnlocalizedName();
 
             if (lastItemName != null && lastItemName.equals(heldItemName) && System.currentTimeMillis() - lastDrop < 3000 && dropCount >= 2) {

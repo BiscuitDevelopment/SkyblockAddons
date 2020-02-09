@@ -7,11 +7,15 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.common.util.Constants;
 import org.apache.commons.lang3.text.WordUtils;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.List;
 import java.util.Set;
@@ -327,31 +331,44 @@ public class EnumUtils {
     }
 
     public enum Rarity {
-        COMMON("f§lCOMMON"),
-        UNCOMMON("a§lUNCOMMON"),
-        RARE("9§lRARE"),
-        EPIC("5§lEPIC"),
-        LEGENDARY("6§lLEGENDARY"),
-        SPECIAL("d§lSPECIAL");
+        COMMON("§f§lCOMMON"),
+        UNCOMMON("§a§lUNCOMMON"),
+        RARE("§9§lRARE"),
+        EPIC("§5§lEPIC"),
+        LEGENDARY("§6§lLEGENDARY"),
+        SPECIAL("§d§lSPECIAL"),
+        INVALID("INVALID");
 
         private String tag;
 
         Rarity(String s) {
-            this.tag = "§"+s;
+            this.tag = s;
         }
 
+        /**
+         * Determines the rarity of a given Skyblock item
+         *
+         * @param item the Skyblock item to check
+         * @return the rarity of the item if a valid rarity is found, {@code INVALID} if no rarity is found, {@code null} if item is {@code null}
+         */
         public static Rarity getRarity(ItemStack item) {
-            if (item == null) return null;
+            if (item == null)  {
+                return null;
+            }
 
-            List<String> lore = item.getTooltip(Minecraft.getMinecraft().thePlayer, false);
+            NBTTagList lore = item.getSubCompound("display", false).getTagList("Lore", Constants.NBT.TAG_STRING);
+            String rarityString = lore.getStringTagAt(lore.tagCount() - 1);
 
-            for (String loreLine : lore) {
-                for (Rarity rarity : Rarity.values()) {
-                    if (loreLine.contains(rarity.tag)) return rarity;
+            // Determine the item's rarity
+            for (Rarity rarity :
+                 EnumSet.allOf(Rarity.class)) {
+                if (rarityString.startsWith(rarity.tag)) {
+                    return rarity;
                 }
             }
 
-            return null;
+            // If the item doesn't have a valid rarity, return INVALID
+            return INVALID;
         }
     }
 
