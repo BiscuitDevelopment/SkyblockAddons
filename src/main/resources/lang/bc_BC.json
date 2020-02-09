@@ -143,8 +143,8 @@
     "downloadingUpdateFile": "Eating freshest biscuits...",
     "onlyFewArrowsLeft": "Only %arrows% bicuits left!",
     "noArrowsLeft": "No Biscuits Left!",
-    "chooseAColor": "Choose a Color",
-    "selectedColor": "Selected Color",
-    "setHexColor": "Set Hex Color"
+    "chooseAColor": "Choose a Biscolor",
+    "selectedColor": "Selected Biscolor",
+    "setHexColor": "Set Bex Color"
   }
 }
