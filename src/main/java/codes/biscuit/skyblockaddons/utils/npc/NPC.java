@@ -74,7 +74,7 @@ enum NPC {
     LUCIUS("Lucius", 125, 73, 165, asList(Tag.PLAYER, Tag.QUEST_NPC), singletonList(Location.WILDERNESS)),
     SHIFTY("Shifty", 114.5, 73, 175, asList(Tag.PLAYER, Tag.IMPORTANT, Tag.MERCHANT), singletonList(Location.WILDERNESS)),
     SIRIUS("Sirius", 91.5, 75, 176.5, asList(Tag.PLAYER, Tag.IMPORTANT, Tag.OTHER), singletonList(Location.WILDERNESS)),
-    TIA_THE_FAIRY("Tia The Fairy", 129.5, 66, 137.5, asList(Tag.PLAYER, Tag.IMPORTANT, Tag.QUEST_NPC), singletonList(Location.WILDERNESS)),
+    TIA_THE_FAIRY("Tia the Fairy", 129.5, 66, 137.5, asList(Tag.PLAYER, Tag.IMPORTANT, Tag.QUEST_NPC), singletonList(Location.WILDERNESS)),
 
     // Other (in Hub)
     FISHERMAN("Fisherman", 155.5, 68, 47.5, asList(Tag.PLAYER, Tag.INFO, Tag.QUEST_NPC), singletonList(Location.FISHERMANS_HUT)),
@@ -95,7 +95,7 @@ enum NPC {
     NYKO("Old Shaman Nyko", -379.5, 60, 36.5, asList(Tag.PLAYER, Tag.MERCHANT), singletonList(Location.NONE)),
     RYAN("Ryan", -330.5, 103.5, -103.5, asList(Tag.PLAYER, Tag.QUEST_NPC), singletonList(Location.DARK_THICKET)),
     VANESSA("Vanessa", -312, 83, -70.5, asList(Tag.PLAYER, Tag.UTILITY), singletonList(Location.BIRCH_PARK)),
-    VIKING("Viking", -359.5, 91.5, 76.5, asList(Tag.PLAYER, Tag.MERCHANT, Tag.QUEST_NPC), singletonList(Location.SPRUCE_WOODS)),
+    VIKING("Melancholic Viking", -359.5, 91.5, 76.5, asList(Tag.PLAYER, Tag.MERCHANT, Tag.QUEST_NPC), singletonList(Location.SPRUCE_WOODS)),
 
     // Gold Mine
     BLACKSMITH_2("Blacksmith", -39.5, 77, -299.5, asList(Tag.PLAYER, Tag.IMPORTANT, Tag.UTILITY), singletonList(Location.GOLD_MINE)),
@@ -144,6 +144,7 @@ enum NPC {
     TERRY("Terry", -92.5, 78, 25.5, asList(Tag.PLAYER, Tag.IMPORTANT, Tag.UTILITY), singletonList(Location.JERRY_POND));
 
 
+    /** The NPC's in-game name without formatting codes */
     private String name;
     private double x;
     private double y;
