@@ -15,10 +15,10 @@ import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.GuiIngameForge;
-import scala.actors.threadpool.Arrays;
 
 import java.awt.*;
-import java.util.Set;
+import java.util.Arrays;
+import java.util.Collection;
 
 public class SettingsGui extends GuiScreen {
 
@@ -33,7 +33,7 @@ public class SettingsGui extends GuiScreen {
     private int lastPage;
     private EnumUtils.GuiTab lastTab;
     private boolean closingGui = false;
-    private Set<EnumUtils.FeatureSetting> settings;
+    private Collection<EnumUtils.FeatureSetting> settings;
 
     private long timeOpened = System.currentTimeMillis();
 
@@ -41,7 +41,7 @@ public class SettingsGui extends GuiScreen {
      * The main gui, opened with /sba.
      */
     SettingsGui(SkyblockAddons main, Feature feature, int page,
-                int lastPage, EnumUtils.GuiTab lastTab, Set<EnumUtils.FeatureSetting> settings) {
+                int lastPage, EnumUtils.GuiTab lastTab, Collection<EnumUtils.FeatureSetting> settings) {
         this.main = main;
         this.feature = feature;
         this.page = page;
@@ -302,11 +302,20 @@ public class SettingsGui extends GuiScreen {
         } else if(setting == EnumUtils.FeatureSetting.DISCORD_RP_DETAILS || setting == EnumUtils.FeatureSetting.DISCORD_RP_STATE) {
             boxWidth = 140;
             x = halfWidth-(boxWidth/2);
-            buttonList.add(new ButtonSelect(x, (int)y, boxWidth, 20, Arrays.asList(DiscordStatus.values()), 0, index -> {
+            DiscordStatus currentStatus;
+            if(setting == EnumUtils.FeatureSetting.DISCORD_RP_STATE) {
+                currentStatus = main.getConfigValues().getDiscordStatus();
+            } else {
+                currentStatus = main.getConfigValues().getDiscordDeatils();
+            }
+            buttonList.add(new ButtonSelect(x, (int)y, boxWidth, 20, Arrays.asList(DiscordStatus.values()), currentStatus.ordinal(), index -> {
+                final DiscordStatus selectedStatus = DiscordStatus.values()[index];
                 if(setting == EnumUtils.FeatureSetting.DISCORD_RP_STATE) {
-                    main.getDiscordRPCManager().setStateLine(DiscordStatus.values()[index]);
+                    main.getDiscordRPCManager().setStateLine(selectedStatus);
+                    main.getConfigValues().setDiscordStatus(selectedStatus);
                 } else {
-                    main.getDiscordRPCManager().setDetailsLine(DiscordStatus.values()[index]);
+                    main.getDiscordRPCManager().setDetailsLine(selectedStatus);
+                    main.getConfigValues().setDiscordDeatils(selectedStatus);
                 }
             }));
         }

@@ -18,12 +18,17 @@ public class DiscordRPCManager implements IPCListener {
     private static final long APPLICATION_ID = 653443797182578707L;
     private static final long UPDATE_PERIOD = 3000L;
 
+    private final SkyblockAddons main;
     private IPCClient client;
-    private DiscordStatus detailsLine = DiscordStatus.NONE;
-    private DiscordStatus stateLine = DiscordStatus.NONE;
+    private DiscordStatus detailsLine;
+    private DiscordStatus stateLine;
     private OffsetDateTime startTimestamp;
 
     private Timer updateTimer;
+
+    public DiscordRPCManager(final SkyblockAddons main) {
+        this.main = main;
+    }
 
     public void start() {
         FMLLog.info("Starting Discord RP...");
@@ -31,6 +36,8 @@ public class DiscordRPCManager implements IPCListener {
             return;
         }
 
+        stateLine = main.getConfigValues().getDiscordStatus();
+        detailsLine = main.getConfigValues().getDiscordDeatils();
         startTimestamp = OffsetDateTime.now();
         client = new IPCClient(APPLICATION_ID);
         client.setListener(this);
@@ -49,14 +56,19 @@ public class DiscordRPCManager implements IPCListener {
         return client != null;
     }
 
-    public void updatePresence() {
-        EnumUtils.Location location = SkyblockAddons.getInstance().getUtils().getLocation();
-        SkyblockDate skyblockDate = SkyblockAddons.getInstance().getUtils().getCurrentDate();
+    private void updatePresence() {
+        final EnumUtils.Location location = SkyblockAddons.getInstance().getUtils().getLocation();
+        final SkyblockDate skyblockDate = SkyblockAddons.getInstance().getUtils().getCurrentDate();
+        final String skyblockDateString = skyblockDate != null ? skyblockDate.toString() : "";
+
+        // Early Winter 10th, 12:10am - Village
+        final String largeImageDescription = String.format("%s - %s", skyblockDateString, location.getScoreboardName());
+
         RichPresence presence = new RichPresence.Builder()
                 .setState(stateLine.getDisplayString())
                 .setDetails(detailsLine.getDisplayString())
                 .setStartTimestamp(startTimestamp)
-                .setLargeImage(location.getDiscordIconKey(), skyblockDate.toString())
+                .setLargeImage(location.getDiscordIconKey(), largeImageDescription)
                 .setSmallImage("biscuit", "SkyblockAddons v1.5")
                 .build();
         client.sendRichPresence(presence);

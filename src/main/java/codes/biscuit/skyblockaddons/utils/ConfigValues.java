@@ -1,6 +1,7 @@
 package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.utils.discord.DiscordStatus;
 import com.google.gson.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
@@ -44,6 +45,8 @@ public class ConfigValues {
     @SuppressWarnings("deprecation") private Set<Feature> remoteDisabledFeatures = EnumSet.of(Feature.AVOID_BREAKING_BOTTOM_SUGAR_CANE);
     private Set<Integer> legacyLockedSlots = new HashSet<>();
     private Map<String, Set<Integer>> profileLockedSlots = new HashMap<>();
+    private DiscordStatus discordStatus;
+    private DiscordStatus discordDeatils;
 
     public ConfigValues(SkyblockAddons main, File settingsConfigFile) {
         this.main = main;
@@ -140,6 +143,20 @@ public class ConfigValues {
                     if (feature != null) {
                         guiScales.put(feature, new MutableFloat(element.getValue().getAsFloat()));
                     }
+                }
+            }
+
+            if(settingsConfig.has("discordStatus")) {
+                int ordinal = settingsConfig.get("discordStatus").getAsInt();
+                if (DiscordStatus.values().length > ordinal) {
+                    discordStatus = DiscordStatus.values()[ordinal];
+                }
+            }
+
+            if(settingsConfig.has("discordDetails")) {
+                int ordinal = settingsConfig.get("discordDetails").getAsInt();
+                if (DiscordStatus.values().length > ordinal) {
+                    discordDeatils = DiscordStatus.values()[ordinal];
                 }
             }
 
@@ -477,6 +494,8 @@ public class ConfigValues {
             settingsConfig.addProperty("language", language.getPath());
             settingsConfig.addProperty("backpackStyle", backpackStyle.ordinal());
             settingsConfig.addProperty("powerOrbStyle", powerOrbDisplayStyle.ordinal());
+            settingsConfig.addProperty("discordStatus", getDiscordStatus().ordinal());
+            settingsConfig.addProperty("discordDetails", getDiscordDeatils().ordinal());
 
             settingsConfig.addProperty("configVersion", CONFIG_VERSION);
 
@@ -692,9 +711,23 @@ public class ConfigValues {
         return MathHelper.clamp_float(value, ConfigValues.GUI_SCALE_MINIMUM, ConfigValues.GUI_SCALE_MAXIMUM);
     }
 
+    public DiscordStatus getDiscordStatus() {
+        return discordStatus != null ? discordStatus : DiscordStatus.NONE;
+    }
 
+    public void setDiscordStatus(DiscordStatus discordStatus) {
+        this.discordStatus = discordStatus;
+    }
 
-//    private float getRoundedValue(float value) {
+    public DiscordStatus getDiscordDeatils() {
+        return discordDeatils != null ? discordDeatils : DiscordStatus.NONE;
+    }
+
+    public void setDiscordDeatils(DiscordStatus discordDeatils) {
+        this.discordDeatils = discordDeatils;
+    }
+
+    //    private float getRoundedValue(float value) {
 //        return new BigDecimal(String.valueOf(value)).setScale(2, BigDecimal.ROUND_HALF_UP).floatValue();
 //    }
 }

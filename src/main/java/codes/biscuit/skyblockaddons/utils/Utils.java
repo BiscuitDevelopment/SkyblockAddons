@@ -1,6 +1,8 @@
 package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.utils.events.SkyblockJoinedEvent;
+import codes.biscuit.skyblockaddons.utils.events.SkyblockLeftEvent;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.ObjectArrays;
@@ -21,10 +23,10 @@ import net.minecraft.scoreboard.*;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.FMLLog;
 import net.minecraftforge.fml.common.MetadataCollection;
 import net.minecraftforge.fml.common.ModMetadata;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.CoreModManager;
 import net.minecraftforge.fml.relauncher.FMLInjectionData;
 import net.minecraftforge.fml.relauncher.FileListHelper;
@@ -38,13 +40,15 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.*;
-import java.util.*;
 import java.util.List;
+import java.util.*;
 import java.util.jar.JarFile;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.zip.ZipEntry;
+
+import static net.minecraftforge.common.MinecraftForge.EVENT_BUS;
 
 public class Utils {
 
@@ -88,6 +92,7 @@ public class Utils {
     public Utils(SkyblockAddons main) {
         this.main = main;
         addDefaultStats();
+        EVENT_BUS.register(this);
     }
 
     private void addDefaultStats() {
@@ -98,7 +103,7 @@ public class Utils {
 
     public void sendMessage(String text) {
         ClientChatReceivedEvent event = new ClientChatReceivedEvent((byte) 1, new ChatComponentText(text));
-        MinecraftForge.EVENT_BUS.post(event); // Let other mods pick up the new message
+        EVENT_BUS.post(event); // Let other mods pick up the new message
         if (!event.isCanceled()) {
             Minecraft.getMinecraft().thePlayer.addChatMessage(event.message); // Just for logs
         }
@@ -106,7 +111,7 @@ public class Utils {
 
     private void sendMessage(ChatComponentText text) {
         ClientChatReceivedEvent event = new ClientChatReceivedEvent((byte) 1, text);
-        MinecraftForge.EVENT_BUS.post(event); // Let other mods pick up the new message
+        EVENT_BUS.post(event); // Let other mods pick up the new message
         if (!event.isCanceled()) {
             Minecraft.getMinecraft().thePlayer.addChatMessage(event.message); // Just for logs
         }
@@ -125,11 +130,26 @@ public class Utils {
             ScoreObjective sidebarObjective = mc.theWorld.getScoreboard().getObjectiveInDisplaySlot(1);
             if (sidebarObjective != null) {
                 String objectiveName = TextUtils.stripColor(sidebarObjective.getDisplayName());
-                onSkyblock = false;
+                boolean skyblockScoreboard = false;
                 for (String skyblock : SKYBLOCK_IN_ALL_LANGUAGES) {
                     if (objectiveName.startsWith(skyblock)) {
-                        onSkyblock = true;
+                        skyblockScoreboard = true;
                         break;
+                    }
+                }
+
+                // Copied from SkyblockLib, should be removed when we switch to use that
+                if (skyblockScoreboard) {
+                    // If it's a Skyblock scoreboard and the player has not joined Skyblock yet,
+                    // this indicates that he did so.
+                    if(!this.isOnSkyblock()) {
+                        EVENT_BUS.post(new SkyblockJoinedEvent());
+                    }
+                } else {
+                    // If it's not a Skyblock scoreboard, the player must have left Skyblock and
+                    // be in some other Hypixel lobby or game.
+                    if(this.isOnSkyblock()) {
+                        EVENT_BUS.post(new SkyblockLeftEvent());
                     }
                 }
 
@@ -207,23 +227,10 @@ public class Utils {
                 }
                 currentDate = SkyblockDate.parse(dateString, timeString);
             } else {
-                onSkyblock = false;
+//                onSkyblock = false;
             }
         } else {
-            onSkyblock = false;
-        }
-
-        if(!previouslyOnSkyblock && onSkyblock) {
-            // Joined Skyblock
-            if(main.getConfigValues().isEnabled(Feature.DISCORD_RPC)
-                    && !main.getDiscordRPCManager().isActive()) {
-                main.getDiscordRPCManager().start();
-            }
-        } else if(previouslyOnSkyblock && !onSkyblock) {
-            // Left Skyblock
-            if(main.getDiscordRPCManager().isActive()) {
-                main.getDiscordRPCManager().stop();
-            }
+//            onSkyblock = false;
         }
 
         if (!foundLocation) {
@@ -855,4 +862,21 @@ public class Utils {
         this.usingOldSkyBlockTexture = usingOldSkyBlockTexture;
     }
 
+    @SubscribeEvent
+    public void onSkyblockJoined(SkyblockJoinedEvent event) {
+        FMLLog.info(">> Joined Skyblock");
+        onSkyblock = true;
+        if(main.getConfigValues().isEnabled(Feature.DISCORD_RPC)) {
+            main.getDiscordRPCManager().start();
+        }
+    }
+
+    @SubscribeEvent
+    public void onSkyblockLeft(SkyblockLeftEvent event) {
+        FMLLog.info(">> Left Skyblock");
+        onSkyblock = false;
+        if(main.getDiscordRPCManager().isActive()) {
+            main.getDiscordRPCManager().stop();
+        }
+    }
 }

@@ -117,6 +117,19 @@ public class ButtonSelect extends GuiButton {
 
         minecraft.getTextureManager().bindTexture(ARROW_RIGHT);
         drawModalRectWithCustomSizedTexture(endX - height, yPosition, 0, 0, height, height, height, height);
+
+        if (!name.equals(trimmedName)) {
+            if(isOverText(mouseX, mouseY)) {
+                // draw tooltip next to the cursor showing the full title
+                final int stringWidth = minecraft.fontRendererObj.getStringWidth(name);
+                int rectLeft = mouseX + 3;
+                int rectTop = mouseY + 3;
+                int rectRight = rectLeft + stringWidth + 8;
+                int rectBottom = rectTop + 12;
+                drawRect(rectLeft, rectTop, rectRight, rectBottom, ConfigColor.BLACK.getColor(255));
+                minecraft.fontRendererObj.drawString(name, rectLeft + 4, rectTop+2, ConfigColor.WHITE.getColor(255));
+            }
+        }
     }
 
     @Override
@@ -141,6 +154,13 @@ public class ButtonSelect extends GuiButton {
         if(callback != null) {
             callback.onItemSelected(index);
         }
+    }
+
+    private boolean isOverText(int mouseX, int mouseY) {
+        return mouseX > xPosition + height
+                && mouseX < xPosition + width - height
+                && mouseY > yPosition
+                && mouseY < yPosition + height;
     }
 
     /**

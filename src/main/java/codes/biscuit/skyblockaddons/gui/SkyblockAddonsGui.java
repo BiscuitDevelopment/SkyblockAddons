@@ -18,6 +18,7 @@ import org.lwjgl.input.Keyboard;
 import java.awt.*;
 import java.io.IOException;
 import java.net.URI;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
@@ -186,6 +187,15 @@ public class SkyblockAddonsGui extends GuiScreen {
             Feature feature = ((ButtonFeature)abstractButton).getFeature();
             if (abstractButton instanceof ButtonSettings) {
                 main.getUtils().setFadingIn(false);
+                if(feature == Feature.DISCORD_RPC) {
+                    // Discord needs a special case to convert the FeatureSettings Set to a List because
+                    // the order actually matters. The State selection should be the first line and the
+                    // Details selection should be the second line.
+                    final List<EnumUtils.FeatureSetting> discordSettings =
+                            Arrays.asList(EnumUtils.FeatureSetting.DISCORD_RP_DETAILS, EnumUtils.FeatureSetting.DISCORD_RP_STATE);
+                    Minecraft.getMinecraft().displayGuiScreen(new SettingsGui(main, feature, 1, page, tab, discordSettings));
+                    return;
+                }
                 Minecraft.getMinecraft().displayGuiScreen(new SettingsGui(main, feature, 1, page, tab, feature.getSettings()));
                 return;
             }
