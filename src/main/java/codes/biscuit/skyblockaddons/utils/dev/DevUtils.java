@@ -10,15 +10,16 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.nbt.*;
 import net.minecraft.scoreboard.ScorePlayerTeam;
-import net.minecraft.util.BlockPos;
 import net.minecraftforge.common.util.Constants;
 import org.lwjgl.input.Keyboard;
 
 import java.awt.*;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
-import java.util.*;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.ListIterator;
 
 /**
  * This is a class of utilities for Skyblock Addons developers.
@@ -58,7 +59,6 @@ public class DevUtils {
                 The client isn't allowed to get the full entity NBT from the server.
                 We have to get the attributes one at a time.
                 */
-                BlockPos entityPosition = entity.getPosition();
 
                 // If the player is in a team, add the team's name formatting.
                 if (entity instanceof EntityOtherPlayerMP && entity.getTeam() != null) {
@@ -82,8 +82,8 @@ public class DevUtils {
 
                 entityData.add("Health: " + entity.getHealth() + " / " + entity.getMaxHealth() + " ❤");
 
-                entityData.add("Position: " + "[" + entityPosition.getX() + ", " +
-                        entityPosition.getY() + ", " + entityPosition.getZ() + "]");
+                entityData.add("Position: " + "[" + entity.posX + ", " +
+                        entity.posY + ", " + entity.posZ + "]");
 
                 // Add a blank line for spacing.
                 if (loadedEntitiesCopyIterator.hasNext()) {
