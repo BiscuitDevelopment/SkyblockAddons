@@ -4,8 +4,9 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.gui.buttons.ButtonLocation;
 import codes.biscuit.skyblockaddons.gui.buttons.ButtonResize;
 import codes.biscuit.skyblockaddons.gui.buttons.ButtonSolid;
-import codes.biscuit.skyblockaddons.listeners.PlayerListener;
 import codes.biscuit.skyblockaddons.utils.*;
+import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
+import codes.biscuit.skyblockaddons.utils.nifty.reflection.MinecraftReflection;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiButton;
@@ -31,11 +32,13 @@ public class LocationEditGui extends GuiScreen {
 
     private int lastPage;
     private EnumUtils.GuiTab lastTab;
+    private String lastText;
 
-    public LocationEditGui(SkyblockAddons main, int lastPage, EnumUtils.GuiTab lastTab) {
+    public LocationEditGui(SkyblockAddons main, int lastPage, EnumUtils.GuiTab lastTab, String lastText) {
         this.main = main;
         this.lastPage = lastPage;
         this.lastTab = lastTab;
+        this.lastText = lastText;
     }
 
     @Override
@@ -52,7 +55,7 @@ public class LocationEditGui extends GuiScreen {
 
         ScaledResolution scaledResolution = new ScaledResolution(Minecraft.getMinecraft());
         String text = Message.SETTING_RESET_LOCATIONS.getMessage();
-        int boxWidth = fontRendererObj.getStringWidth(text)+10;
+        int boxWidth = MinecraftReflection.FontRenderer.getStringWidth(text)+10;
         int boxHeight = 20;
         if (boxWidth > BUTTON_MAX_WIDTH) boxWidth = BUTTON_MAX_WIDTH;
         int x = scaledResolution.getScaledWidth()/2-boxWidth/2;
@@ -94,10 +97,10 @@ public class LocationEditGui extends GuiScreen {
             ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
             int x = anchorPoint.getX(sr.getScaledWidth());
             int y = anchorPoint.getY(sr.getScaledHeight());
-            int color = ConfigColor.RED.getColor(127);
+            int color = ChatFormatting.RED.getColor(127).getRGB();
             Feature lastHovered = ButtonLocation.getLastHoveredFeature();
             if (lastHovered != null && main.getConfigValues().getAnchorPoint(lastHovered) == anchorPoint) {
-                color = ConfigColor.YELLOW.getColor(127);
+                color = ChatFormatting.YELLOW.getColor(127).getRGB();
             }
             Gui.drawRect(x-4, y-4, x+4, y+4, color);
         }
@@ -221,7 +224,7 @@ public class LocationEditGui extends GuiScreen {
     public void onGuiClosed() {
         main.getConfigValues().saveConfig();
         if (lastTab != null) {
-            main.getRenderListener().setGuiToOpen(PlayerListener.GUIType.MAIN, lastPage, lastTab);
+            main.getRenderListener().setGuiToOpen(EnumUtils.GUIType.MAIN, lastPage, lastTab, lastText);
         }
     }
 }

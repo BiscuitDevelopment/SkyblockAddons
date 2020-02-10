@@ -1,12 +1,6 @@
 {
   "language": "Türkçe",
   "settings": {
-    "tab": {
-      "features": "Özellikler",
-      "fixes": "Düzeltmeler",
-      "guiFeatures": "Arayüz Özellikleri",
-      "generalSettings": "Genel Ayarlar"
-    },
     "settings": "Ayarlar",
     "magmaBossWarning": "Magma Boss için Uyarı",
     "itemDropConfirmation": "Eşya Atarken Onay",
@@ -21,7 +15,7 @@
     "hideDurability": "Eşyaların Dayanıklılığını Sakla",
     "showEnchantmentsReforges": "Büyü ve Reforge'lar",
     "minionStopWarning": "\"Minyon Erişemiyor\" Uyarısı",
-    "hideAuctionHousePlayers": "Önemli NPC'lerin yakınındaki oyuncuları gizle",
+    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
     "backpackStyle": "Sırt Çantası Tipi: %style%",
     "backpackStyles": {
       "regular": "Sıradan",
@@ -63,13 +57,13 @@
       "two": "Stil 2"
     },
     "warningDuration": "Uyarı Süresi",
-    "dontOpenProfileWithBow": "Yay tutulduğunda ile profil açama",
+    "dontOpenProfileWithBow": "Yay ile Profil Açamama",
     "stopDroppingSellingRareItems": "Nadir Eşyaları Düşürmeyi/Satmayı Önle",
-    "makeBackpackInventoriesColored": "Envanter Renkleri",
+    "makeBackpackInventoriesColored": "Envanter'leri Renklendir",
     "avoidBreakingBottomSugarCane": "Şeker Kamışının Altını Kırmayı Engelle",
     "replaceRomanNumeralsWithNumbers": "Eşyalardaki Romen Rakamlarını Değiştir",
-    "changeBarColorForPotions": "Wither ve Poison efektleri için üstteki barın rengini değiştir",
-    "craftingPatterns": "Crafting Şablonlarını Seçme",
+    "changeBarColorForPotions": "Wither ve Zehir etkileri için üstteki barın rengini değiştir",
+    "craftingPatterns": "Eşya Üretme Şablonlarını Seçme",
     "soundIndicatorForFishing": "Balık Tutarken Sesle Uyar",
     "avoidBlinkingNightVision": "Gece Görüşü Efekti Biterken Olan Yanıp Sönme Efektini Kapat",
     "disableMinionLocationWarning": "Minionların \"Location Not Perfect\" Uyarılarını Kapat",
@@ -83,7 +77,26 @@
     "revenantIndicator": "Zırh ilerleme göstergesi",
     "specialZealotAlert": "Özel zealot alarmı",
     "enableMessageWhenActionPrevented": "Bir şey yapmanız engelendiğinde bir mesaj göster",
-    "hidePetHealthBar": "Evcil Hayvan sağlık göstergesini gizle"
+    "hidePetHealthBar": "Evcil Hayvan sağlık göstergesini gizle",
+    "powerOrbDisplay": "Power Orb Display",
+    "powerOrbDisplayStyle": "Power Orb Style: %style%",
+    "powerOrbStyle": {
+      "detailed": "Detailed",
+      "compact": "Compact"
+    },
+    "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages",
+    "zealotCounter": "Show Zealot Counter",
+    "tickerChargesDisplay": "Ticker/Charges Display",
+    "tab": {
+      "generalSettings": "Genel Ayarlar"
+    },
+    "tabEffectTimers": "Potion and Powerup Timers",
+    "noArrowsLeftAlert": "No Arrows Left Alert",
+    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
+    "showCakeBagPreview": "Show Preview for Cake Bags",
+    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
+    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
+    "enableDevFeatures": "Enable Developer Features"
   },
   "messages": {
     "dropConfirmation": "Eşyayı düşürmeyi onaylamak için düşürme tuşuna bir daha bas!",
@@ -106,7 +119,7 @@
     "wantToViewPatchNotes": "Değişiklikleri okumak ister misin?",
     "downloadLink": "GÜNCELLEME LİNKİ",
     "downloadAutomatically": "OTOMATİK İNDİR",
-    "openModFolder": "MODS KLASÖRÜ",
+    "openModFolder": "MOD'LAR KLASÖRÜ",
     "joinTheDiscord": "DISCORD'A KATILIN",
     "update": {
       "majorAvailable": "Yeni bir sürüm (%version%) mevcut! İndirme linkini sohbette bulabilirsin.",
@@ -117,16 +130,21 @@
     },
     "slotLocked": "Bu slot kilitli!",
     "summoningEyeFound": "Summoning Eye!",
-    "cancelledStemBreak": "SkyblockAddons sizi bu kökü kırmanızı engelledi. Gerçekten kırmak istiyorsanız çıplak elinizi kullanın.",
+    "cancelledStemBreak": "SkyblockAddons bu ekini kırmanı engelledi. Ekinleri kırmak istiyorsan çıplak elini kullanman gerek.",
     "cancelledProfileOpening": "SkyblockAddons elinizde yay olduğundan bu oyuncunun profilini açmanı engelledi.",
     "cancelledDropping": "SkyblockAddons bu değerli eşyanızı yere atmanızı engelledi.",
     "clickMoreTimes": "Eğer gerçekten eşyayı yere atmak istiyorsanız %times% kez eşyaya tıklayın.",
     "cancelledDeepCaverns": "Skyblockaddons kırmaya çalıştığınız bloğu kırmanızı önledi.",
     "featureDisabled": "Özellik Devre Dışı",
-    "anvilUses": "Örs Kullanımı: %uses%",
+    "anvilUses": "Örs Kullanım(lar)ı: %uses%",
     "specialZealotFound": "Özel zealot!",
     "blockIncompletePatterns": "Tam doldurulmamış desenleri engelle (tavsiye edilen)",
-    "searchFeatures": "Özzelikleri ara",
-    "downloadingUpdateFile": "Güncelleme dosyası indiriliyor..."
+    "searchFeatures": "Özellikleri ara",
+    "downloadingUpdateFile": "Güncelleme dosyası indiriliyor...",
+    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
+    "noArrowsLeft": "No Arrows Left!",
+    "chooseAColor": "Choose a Color",
+    "selectedColor": "Selected Color",
+    "setHexColor": "Set Hex Color"
   }
 }

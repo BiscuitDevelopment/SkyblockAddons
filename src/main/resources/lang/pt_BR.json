@@ -1,12 +1,6 @@
 {
   "language": "Português (Brasil)",
   "settings": {
-    "tab": {
-      "features": "Funções",
-      "fixes": "Ajustes",
-      "guiFeatures": "Funções de Interface",
-      "generalSettings": "Configurações Gerais"
-    },
     "settings": "Opções",
     "magmaBossWarning": "Aviso Chefão Magma",
     "itemDropConfirmation": "Confirmação Para Largar Item",
@@ -21,7 +15,7 @@
     "hideDurability": "Esconder Durabilidade de Ferramentas",
     "showEnchantmentsReforges": "Encantamentos e Reforjadas",
     "minionStopWarning": "Aviso de \"Criado Não Alcança\"",
-    "hideAuctionHousePlayers": "Esconder Jogadores Perto de NPCs Importantes",
+    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
     "backpackStyle": "Estilo de Mochila: %style%",
     "backpackStyles": {
       "regular": "Normal",
@@ -83,7 +77,26 @@
     "revenantIndicator": "Indicador de Progresso da Armadura de Slayer",
     "specialZealotAlert": "Alerta Zealot especial",
     "enableMessageWhenActionPrevented": "Mostrar uma Mensagem Quando uma Ação for Impedida",
-    "hidePetHealthBar": "Ocultar barra de vida do Pet"
+    "hidePetHealthBar": "Ocultar barra de vida do Pet",
+    "powerOrbDisplay": "Exibição de Poder da Esfera",
+    "powerOrbDisplayStyle": "Poder da Esfera Estilo: %style%",
+    "powerOrbStyle": {
+      "detailed": "Detalhado",
+      "compact": "Compacto"
+    },
+    "disableMagicalSoupMessage": "Desativar mensagens da Sopa de Cogumelo Mágica",
+    "zealotCounter": "Show Zealot Counter",
+    "tickerChargesDisplay": "Ticker/Charges Display",
+    "tab": {
+      "generalSettings": "Configurações Gerais"
+    },
+    "tabEffectTimers": "Potion and Powerup Timers",
+    "noArrowsLeftAlert": "No Arrows Left Alert",
+    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
+    "showCakeBagPreview": "Show Preview for Cake Bags",
+    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
+    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
+    "enableDevFeatures": "Enable Developer Features"
   },
   "messages": {
     "dropConfirmation": "Large este item de novo para confirmar!",
@@ -127,6 +140,11 @@
     "specialZealotFound": "Zealot especial!",
     "blockIncompletePatterns": "Bloquear padrões de criação incompletos (recomendado)",
     "searchFeatures": "Buscar funcionalidades",
-    "downloadingUpdateFile": "Baixando arquivos da atualização..."
+    "downloadingUpdateFile": "Baixando arquivos da atualização...",
+    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
+    "noArrowsLeft": "No Arrows Left!",
+    "chooseAColor": "Choose a Color",
+    "selectedColor": "Selected Color",
+    "setHexColor": "Set Hex Color"
   }
 }

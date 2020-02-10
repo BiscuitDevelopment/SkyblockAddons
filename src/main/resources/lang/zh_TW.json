@@ -1,12 +1,6 @@
 {
   "language": "繁體中文",
   "settings": {
-    "tab": {
-      "features": "功能",
-      "fixes": "修復",
-      "guiFeatures": "GUI介面設定",
-      "generalSettings": "一般設定"
-    },
     "settings": "設定",
     "magmaBossWarning": "熔岩史萊姆王警報",
     "itemDropConfirmation": "確認丟棄物品",
@@ -21,7 +15,7 @@
     "hideDurability": "隱藏物品耐久度",
     "showEnchantmentsReforges": "於畫面上顯示附魔 & 重鑄",
     "minionStopWarning": "\"機器人無法觸及生物\"警告",
-    "hideAuctionHousePlayers": "隱藏重要NPC旁的玩家",
+    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
     "backpackStyle": "背包樣式: %style%",
     "backpackStyles": {
       "regular": "一般",
@@ -83,7 +77,26 @@
     "revenantIndicator": "Slayer裝備進度指示",
     "specialZealotAlert": "特殊Zealot警報",
     "enableMessageWhenActionPrevented": "當一個動作被預防時顯示訊息",
-    "hidePetHealthBar": "隱藏寵物血條"
+    "hidePetHealthBar": "隱藏寵物血條",
+    "powerOrbDisplay": "顯示Power Orb",
+    "powerOrbDisplayStyle": "Power Orb樣式: %style%",
+    "powerOrbStyle": {
+      "detailed": "詳細",
+      "compact": "精簡"
+    },
+    "disableMagicalSoupMessage": "取消魔法蘑菇湯訊息",
+    "zealotCounter": "顯示Zealot計數器",
+    "tickerChargesDisplay": "刻數/充能 顯示",
+    "tab": {
+      "generalSettings": "一般設定"
+    },
+    "tabEffectTimers": "藥水及充能計時器",
+    "noArrowsLeftAlert": "箭矢不足警報",
+    "hideNightVisionEffectTimer": "隱藏夜視效果持續時間",
+    "showCakeBagPreview": "顯示蛋糕袋預覽",
+    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
+    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
+    "enableDevFeatures": "Enable Developer Features"
   },
   "messages": {
     "dropConfirmation": "再次丟棄此物品以確認!",
@@ -127,6 +140,11 @@
     "specialZealotFound": "特殊Zealot!",
     "blockIncompletePatterns": "阻止合成不正確的格式 (推薦)",
     "searchFeatures": "搜尋功能",
-    "downloadingUpdateFile": "更新檔下載中..."
+    "downloadingUpdateFile": "更新檔下載中...",
+    "onlyFewArrowsLeft": "剩餘%arrows%支箭矢!",
+    "noArrowsLeft": "箭矢不足!",
+    "chooseAColor": "選擇顏色",
+    "selectedColor": "已選取顏色",
+    "setHexColor": "設定十六進制顏色"
   }
 }

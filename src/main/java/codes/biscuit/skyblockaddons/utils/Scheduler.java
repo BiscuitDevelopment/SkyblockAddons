@@ -2,6 +2,7 @@ package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.listeners.PlayerListener;
+import lombok.Getter;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import org.apache.commons.lang3.mutable.MutableInt;
@@ -71,6 +72,7 @@ public class Scheduler {
         }
     }
 
+    @Getter
     private class Command {
         private CommandType commandType;
         private MutableInt count = new MutableInt(1);
@@ -88,14 +90,6 @@ public class Scheduler {
             if (data.length > 0) {
                 countData.put(count.getValue(), data);
             }
-        }
-
-        CommandType getCommandType() {
-            return commandType;
-        }
-
-        MutableInt getCount() {
-            return count;
         }
 
         Object[] getData(int count) {
@@ -124,7 +118,7 @@ public class Scheduler {
             } else if (this == RESET_MAGMA_PREDICTION) {
                 if (playerListener.getMagmaAccuracy() == EnumUtils.MagmaTimerAccuracy.SPAWNED_PREDICTION) {
                     playerListener.setMagmaAccuracy(EnumUtils.MagmaTimerAccuracy.ABOUT);
-                    playerListener.setMagmaTime(7200, true);
+                    playerListener.setMagmaTime(7200);
                 }
             } else if (this == DELETE_RECENT_CHUNK) {
                 int x = (int)commandData[0];

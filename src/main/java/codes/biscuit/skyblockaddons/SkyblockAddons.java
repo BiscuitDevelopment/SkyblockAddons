@@ -1,11 +1,15 @@
 package codes.biscuit.skyblockaddons;
 
 import codes.biscuit.skyblockaddons.commands.SkyblockAddonsCommand;
+import codes.biscuit.skyblockaddons.listeners.GuiScreenListener;
 import codes.biscuit.skyblockaddons.listeners.NetworkListener;
 import codes.biscuit.skyblockaddons.listeners.PlayerListener;
 import codes.biscuit.skyblockaddons.listeners.RenderListener;
 import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsTransformer;
 import codes.biscuit.skyblockaddons.utils.*;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.Setter;
 import codes.biscuit.skyblockaddons.utils.discord.DiscordRPCManager;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
@@ -25,26 +29,33 @@ import java.lang.reflect.Field;
 import java.util.Timer;
 import java.util.TimerTask;
 
+@Getter
 @Mod(modid = SkyblockAddons.MOD_ID, version = SkyblockAddons.VERSION, name = SkyblockAddons.MOD_NAME, clientSideOnly = true, acceptedMinecraftVersions = "[1.8.9]")
 public class SkyblockAddons {
 
     static final String MOD_ID = "skyblockaddons";
-    static final String MOD_NAME = "SkyblockAddons";
-    public static final String VERSION = "1.4.2";
+    public static final String MOD_NAME = "SkyblockAddons";
+    public static final String VERSION = "1.5.0-b4";
 
-    private static SkyblockAddons instance; // for Mixins cause they don't have a constructor
+    /** The main instance of the mod, used mainly my mixins who don't get it passed to them. */
+    @Getter private static SkyblockAddons instance;
+
     private ConfigValues configValues;
     private PersistentValues persistentValues;
     private PlayerListener playerListener = new PlayerListener(this);
+    private GuiScreenListener guiScreenListener = new GuiScreenListener(this);
     private RenderListener renderListener = new RenderListener(this);
     private Utils utils = new Utils(this);
     private InventoryUtils inventoryUtils = new InventoryUtils(this);
+
+    /** Get the scheduler that be can be used to easily execute tasks. */
     private Scheduler scheduler = new Scheduler(this);
     private boolean usingLabymod = false;
     private boolean usingOofModv1 = false;
-    private KeyBinding openSettingsKeyBind;
-    private KeyBinding editGUIKeyBind;
-    private KeyBinding lockSlotKeyBind;
+
+    /** Whether developer mode is enabled. */
+    @Setter private boolean devMode = false;
+    @Setter(AccessLevel.NONE) private KeyBinding[] keyBindings = new KeyBinding[4];
 
     private DiscordRPCManager discordRPCManager;
 
@@ -59,17 +70,20 @@ public class SkyblockAddons {
     public void init(FMLInitializationEvent e) {
         discordRPCManager = new DiscordRPCManager(this);
         MinecraftForge.EVENT_BUS.register(playerListener);
+        MinecraftForge.EVENT_BUS.register(guiScreenListener);
         MinecraftForge.EVENT_BUS.register(renderListener);
         MinecraftForge.EVENT_BUS.register(scheduler);
         MinecraftForge.EVENT_BUS.register(new NetworkListener());
         ClientCommandHandler.instance.registerCommand(new SkyblockAddonsCommand(this));
 
-        openSettingsKeyBind = new KeyBinding("key.skyblockaddons.open_settings", Keyboard.KEY_NONE, MOD_NAME);
-        editGUIKeyBind = new KeyBinding("key.skyblockaddons.edit_gui", Keyboard.KEY_NONE, MOD_NAME);
-        lockSlotKeyBind = new KeyBinding("key.skyblockaddons.lock_slot", Keyboard.KEY_L, MOD_NAME);
-        ClientRegistry.registerKeyBinding(openSettingsKeyBind);
-        ClientRegistry.registerKeyBinding(editGUIKeyBind);
-        ClientRegistry.registerKeyBinding(lockSlotKeyBind);
+        keyBindings[0] = new KeyBinding("key.skyblockaddons.open_settings", Keyboard.KEY_NONE, MOD_NAME);
+        keyBindings[1] = new KeyBinding("key.skyblockaddons.edit_gui", Keyboard.KEY_NONE, MOD_NAME);
+        keyBindings[2] = new KeyBinding("key.skyblockaddons.lock_slot", Keyboard.KEY_L, MOD_NAME);
+        keyBindings[3] = new KeyBinding("key.skyblockaddons.freeze_backpack", Keyboard.KEY_F, MOD_NAME);
+
+        for (KeyBinding keyBinding : keyBindings) {
+            ClientRegistry.registerKeyBinding(keyBinding);
+        }
     }
 
     @Mod.EventHandler
@@ -117,9 +131,10 @@ public class SkyblockAddons {
     }
 
     public void loadKeyBindingDescriptions() {
-        changeKeyBindDescription(openSettingsKeyBind, Message.SETTING_SETTINGS.getMessage());
-        changeKeyBindDescription(editGUIKeyBind, Message.SETTING_EDIT_LOCATIONS.getMessage());
-        changeKeyBindDescription(lockSlotKeyBind, Message.SETTING_LOCK_SLOT.getMessage());
+        changeKeyBindDescription(keyBindings[0], Message.SETTING_SETTINGS.getMessage());
+        changeKeyBindDescription(keyBindings[1], Message.SETTING_EDIT_LOCATIONS.getMessage());
+        changeKeyBindDescription(keyBindings[2], Message.SETTING_LOCK_SLOT.getMessage());
+        changeKeyBindDescription(keyBindings[3], Message.SETTING_SHOW_BACKPACK_PREVIEW.getMessage());
     }
 
     private void scheduleMagmaCheck() {
@@ -135,56 +150,20 @@ public class SkyblockAddons {
         }, 5000);
     }
 
-    public ConfigValues getConfigValues() {
-        return configValues;
-    }
-
-    public PersistentValues getPersistentValues() {
-        return persistentValues;
-    }
-
-    public PlayerListener getPlayerListener() {
-        return playerListener;
-    }
-
-    public RenderListener getRenderListener() {
-        return renderListener;
-    }
-
-    public Utils getUtils() {
-        return utils;
-    }
-
-    public InventoryUtils getInventoryUtils() {
-        return inventoryUtils;
-    }
-
-    public boolean isUsingLabymod() {
-        return usingLabymod;
-    }
-
-    public static SkyblockAddons getInstance() {
-        return instance;
-    }
-
-    public boolean isUsingOofModv1() {
-        return usingOofModv1;
-    }
-
-    public Scheduler getScheduler() {
-        return scheduler;
-    }
-
     public KeyBinding getOpenSettingsKey() {
-        return openSettingsKeyBind;
+        return keyBindings[0];
     }
 
     public KeyBinding getOpenEditLocationsKey() {
-        return editGUIKeyBind;
+        return keyBindings[1];
     }
 
-    public KeyBinding getLockSlot() {
-        return lockSlotKeyBind;
+    public KeyBinding getLockSlotKey() {
+        return keyBindings[2];
+    }
+
+    public KeyBinding getFreezeBackpackKey() {
+        return keyBindings[3];
     }
 
     public DiscordRPCManager getDiscordRPCManager() {

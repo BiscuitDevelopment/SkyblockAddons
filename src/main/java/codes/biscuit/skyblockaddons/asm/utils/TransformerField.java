@@ -17,8 +17,8 @@ public enum TransformerField {
     ySize("ySize", "field_147000_g", "g", "I"),
 
     // GuiInventory
-    oldMouseX("oldMouseX", "field_147048_u", "u", "F"),
-    oldMouseY("oldMouseY", "field_147047_v", "v", "F"),
+//    oldMouseX("oldMouseX", "field_147048_u", "u", "F"),
+//    oldMouseY("oldMouseY", "field_147047_v", "v", "F"),
 
     //Minecraft
     mcResourceManager("mcResourceManager", "field_110451_am", "ay", TransformerClass.IReloadableResourceManager.getName()),

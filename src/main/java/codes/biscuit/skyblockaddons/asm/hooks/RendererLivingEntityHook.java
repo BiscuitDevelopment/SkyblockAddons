@@ -8,9 +8,9 @@ public class RendererLivingEntityHook {
     private static boolean isCoolPerson;
 
     public static boolean equals(String s, Object anObject) {
-        isCoolPerson = s.equals("Biscut") || s.equals("Pinpointed");
+        isCoolPerson = "Biscut".equals(s) || "Pinpointed".equals(s);
         // no don't ask to be added lol
-        return s.equals("Dinnerbone") || isCoolPerson;
+        return "Dinnerbone".equals(s) || isCoolPerson;
     } //cough nothing to see here
 
     public static  boolean isWearing(EntityPlayer entityPlayer, EnumPlayerModelParts p_175148_1_) {

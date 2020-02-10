@@ -6,7 +6,6 @@ import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin;
 import java.util.Map;
 
 @IFMLLoadingPlugin.MCVersion(ForgeVersion.mcVersion)
-@IFMLLoadingPlugin.SortingIndex(-1)
 public class SkyblockAddonsLoadingPlugin implements IFMLLoadingPlugin {
 
     @Override

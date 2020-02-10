@@ -1,12 +1,6 @@
 {
   "language": "עברית",
   "settings": {
-    "tab": {
-      "features": "מאפיינים",
-      "fixes": "תיקונים",
-      "guiFeatures": "מאפייני מסך",
-      "generalSettings": "הגדרות כלליות"
-    },
     "settings": "הגדרות",
     "magmaBossWarning": "אזהרת בוס מגמה",
     "itemDropConfirmation": "אישור זריקת פריט",
@@ -21,7 +15,7 @@
     "hideDurability": "הסתר רמת שימוש",
     "showEnchantmentsReforges": "כישופים ושיפורים",
     "minionStopWarning": "\"המיניון לא יכול להגיע\" אזהרה",
-    "hideAuctionHousePlayers": "הסתר שחקנים ליד NPC מיוחדים",
+    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
     "backpackStyle": "סטייל תרמיל גב: %style%",
     "backpackStyles": {
       "regular": "רגיל",
@@ -83,7 +77,26 @@
     "revenantIndicator": "מד התקדמות עם שריון סלייר",
     "specialZealotAlert": "התראה של זלוט מיוחד",
     "enableMessageWhenActionPrevented": "הצג הודע כאשר נחסמת פעולה",
-    "hidePetHealthBar": "הסתר מד חיים של חיית מחמד"
+    "hidePetHealthBar": "הסתר מד חיים של חיית מחמד",
+    "powerOrbDisplay": "צג כדור עוצמה",
+    "powerOrbDisplayStyle": "סגנון כדור עוצמה: %style%",
+    "powerOrbStyle": {
+      "detailed": "מפורט",
+      "compact": "מרוכז"
+    },
+    "disableMagicalSoupMessage": "בטל הודעה ממרק פטריות קסום",
+    "zealotCounter": "הצג מספר הקנאים",
+    "tickerChargesDisplay": "Ticker/Charges Display",
+    "tab": {
+      "generalSettings": "הגדרות כלליות"
+    },
+    "tabEffectTimers": "Potion and Powerup Timers",
+    "noArrowsLeftAlert": "No Arrows Left Alert",
+    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
+    "showCakeBagPreview": "Show Preview for Cake Bags",
+    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
+    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
+    "enableDevFeatures": "Enable Developer Features"
   },
   "messages": {
     "dropConfirmation": "זרוק פריט זה שוב לאישור!",
@@ -127,6 +140,11 @@
     "specialZealotFound": "זלוט מיוחד!",
     "blockIncompletePatterns": "הרכבת בלוק ללא תבנית גמורה (מומלץ)",
     "searchFeatures": "פיטצ'רים לחיפוש",
-    "downloadingUpdateFile": "מתקין קבצי עדכון..."
+    "downloadingUpdateFile": "מתקין קבצי עדכון...",
+    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
+    "noArrowsLeft": "No Arrows Left!",
+    "chooseAColor": "Choose a Color",
+    "selectedColor": "Selected Color",
+    "setHexColor": "Set Hex Color"
   }
 }

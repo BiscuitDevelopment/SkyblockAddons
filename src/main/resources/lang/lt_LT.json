@@ -1,12 +1,6 @@
 {
   "language": "Lietuvių",
   "settings": {
-    "tab": {
-      "features": "Funkcijos",
-      "fixes": "Pataisymai",
-      "guiFeatures": "GUI Funkcijos",
-      "generalSettings": "Bendrieji nustatymai"
-    },
     "settings": "Nustatymai",
     "magmaBossWarning": "Magmos Boso Įspėjimas",
     "itemDropConfirmation": "Daikto Išmetimo Patvirtinimas",
@@ -21,7 +15,7 @@
     "hideDurability": "Paslėpti Daiktų Patvarumą",
     "showEnchantmentsReforges": "Užkerėjimai Ir Perdirbimai",
     "minionStopWarning": "\"Pakalikas Negali Pasiekti\" Įspėjimas",
-    "hideAuctionHousePlayers": "Nerodyti žaidėjų prie įpatingų NPC (Aukcijonas,Bankas ir tt.)",
+    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
     "backpackStyle": "Kuprinės Stilius %style%",
     "backpackStyles": {
       "regular": "Įprasta",
@@ -83,7 +77,26 @@
     "revenantIndicator": "Žudiko Šarvų Progreso Indikatorius",
     "specialZealotAlert": "Specialaus Zealoto Įspėjimas",
     "enableMessageWhenActionPrevented": "Rodyti žinutę kai uždrausta atlikti veiksmą",
-    "hidePetHealthBar": "Slėpti gyvūno gyvybių liniją"
+    "hidePetHealthBar": "Slėpti gyvūno gyvybių liniją",
+    "powerOrbDisplay": "Power Orb Display",
+    "powerOrbDisplayStyle": "Power Orb Style: %style%",
+    "powerOrbStyle": {
+      "detailed": "Detailed",
+      "compact": "Compact"
+    },
+    "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages",
+    "zealotCounter": "Show Zealot Counter",
+    "tickerChargesDisplay": "Ticker/Charges Display",
+    "tab": {
+      "generalSettings": "Bendrieji nustatymai"
+    },
+    "tabEffectTimers": "Potion and Powerup Timers",
+    "noArrowsLeftAlert": "No Arrows Left Alert",
+    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
+    "showCakeBagPreview": "Show Preview for Cake Bags",
+    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
+    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
+    "enableDevFeatures": "Enable Developer Features"
   },
   "messages": {
     "dropConfirmation": "Meskite Šį Daiktą Dar Kartą, Kad Patvirtintumėte!",
@@ -127,6 +140,11 @@
     "specialZealotFound": "Specialus Zealotas!",
     "blockIncompletePatterns": "Nepilnas blokų modelis (rekomenduojama)",
     "searchFeatures": "Rasti funkciją",
-    "downloadingUpdateFile": "Atsiunčiami naujinimai..."
+    "downloadingUpdateFile": "Atsiunčiami naujinimai...",
+    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
+    "noArrowsLeft": "No Arrows Left!",
+    "chooseAColor": "Choose a Color",
+    "selectedColor": "Selected Color",
+    "setHexColor": "Set Hex Color"
   }
 }

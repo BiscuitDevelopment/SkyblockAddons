@@ -1,6 +1,10 @@
 package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
+import codes.biscuit.skyblockaddons.utils.nifty.RegexUtil;
+import codes.biscuit.skyblockaddons.utils.nifty.StringUtil;
+import codes.biscuit.skyblockaddons.utils.nifty.reflection.MinecraftReflection;
 import codes.biscuit.skyblockaddons.utils.events.SkyblockJoinedEvent;
 import codes.biscuit.skyblockaddons.utils.events.SkyblockLeftEvent;
 import com.google.common.collect.Iterables;
@@ -9,19 +13,19 @@ import com.google.common.collect.ObjectArrays;
 import com.google.common.collect.Sets;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import lombok.Getter;
+import lombok.Setter;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.entity.EntityOtherPlayerMP;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.event.ClickEvent;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.launchwrapper.Launch;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.scoreboard.*;
+import net.minecraft.scoreboard.Score;
+import net.minecraft.scoreboard.ScoreObjective;
+import net.minecraft.scoreboard.ScorePlayerTeam;
+import net.minecraft.scoreboard.Scoreboard;
 import net.minecraft.util.ChatComponentText;
-import net.minecraft.util.EnumChatFormatting;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.fml.common.FMLLog;
 import net.minecraftforge.fml.common.MetadataCollection;
@@ -50,16 +54,14 @@ import java.util.zip.ZipEntry;
 
 import static net.minecraftforge.common.MinecraftForge.EVENT_BUS;
 
+@Getter @Setter
 public class Utils {
 
+    /** Added to the beginning of messages. */
+    private static final String MESSAGE_PREFIX =
+            ChatFormatting.GRAY + "[" + ChatFormatting.AQUA + SkyblockAddons.MOD_NAME + ChatFormatting.GRAY + "] ";
 
-    // I know this is messy af, but frustration led me to take this dark path - said someone not biscuit
-    public static boolean blockNextClick = false;
-
-    private boolean usingOldSkyBlockTexture = false;
-
-    private final Pattern ITEM_ABILITY_PATTERN = Pattern.compile("§5§o§6Item Ability: ([A-Za-z ]+) §e§l[A-Z ]+");
-
+    /** Enchantments listed by how good they are. May or may not be subjective lol. */
     private static final List<String> ORDERED_ENCHANTMENTS = Collections.unmodifiableList(Arrays.asList(
             "smite","bane of arthropods","knockback","fire aspect","venomous", // Sword Bad
             "thorns","growth","protection","depth strider","respiration","aqua affinity", // Armor
@@ -70,20 +72,58 @@ public class Utils {
             "punch","flame", // Bow Others
             "telekinesis"
     ));
+    private static final Pattern SERVER_REGEX = Pattern.compile("([0-9]{2}/[0-9]{2}/[0-9]{2}) (mini[0-9]{1,3}[A-Za-z])");
 
+    /** In English, Chinese Simplified. */
+    private static final Set<String> SKYBLOCK_IN_ALL_LANGUAGES = Sets.newHashSet("SKYBLOCK","\u7A7A\u5C9B\u751F\u5B58");
+
+    /** Used for web requests. */
+    private static final String USER_AGENT = "SkyblockAddons/" + SkyblockAddons.VERSION;
+
+    /**
+     * Items containing these in the name should never be dropped. Helmets a lot of times
+     * in skyblock are weird items and are not damageable so that's why its included.
+     */
+    private static final String[] RARE_ITEM_OVERRIDES = {"Backpack", "Helmet"};
+
+    // I know this is messy af, but frustration led me to take this dark path - said someone not biscuit
+    public static boolean blockNextClick = false;
+
+    /** Get a player's attributes. This includes health, mana, and defence. */
     private Map<Attribute, MutableInt> attributes = new EnumMap<>(Attribute.class);
-    private List<String> enchantmentMatch = new LinkedList<>();
-    private List<String> enchantmentExclusion = new LinkedList<>();
+
+    /** List of enchantments that the player is looking to find. */
+    private List<String> enchantmentMatches = new LinkedList<>();
+
+    /** List of enchantment substrings that the player doesn't want to match. */
+    private List<String> enchantmentExclusions = new LinkedList<>();
+
     private Backpack backpackToRender = null;
-    private static boolean onSkyblock = false;
-    private EnumUtils.Location location = EnumUtils.Location.UNKNOWN;
+
+    /** Whether the player is on skyblock. */
+    private boolean onSkyblock = false;
+
+    /** List of enchantments that the player is looking to find. */
+    private Location location = null;
+
+    /** The skyblock profile that the player is currently on. Ex. "Grapefruit" */
     private String profileName = null;
+
+    /** Whether or not a loud sound is being played by the mod. */
     private boolean playingSound = false;
-    private boolean copyNBT = false;
+
+    /** The current serverID that the player is on. */
     private String serverID = "";
+    private int lastHoveredSlot = -1;
+
+    /** Whether the player is using the old style of bars packaged into Imperial's Skyblock Pack. */
+    private boolean usingOldSkyBlockTexture = false;
+
+    /** Whether the player is using the default bars packaged into the mod. */
+    private boolean usingDefaultBarTextures = true;
+
     private SkyblockDate currentDate = new SkyblockDate(SkyblockDate.SkyblockMonth.EARLY_WINTER, 1, 1, 1, "am");
     private double purse = 0;
-    private int lastHoveredSlot = -1;
 
     private boolean fadingIn;
 
@@ -101,30 +141,34 @@ public class Utils {
         }
     }
 
-    public void sendMessage(String text) {
-        ClientChatReceivedEvent event = new ClientChatReceivedEvent((byte) 1, new ChatComponentText(text));
+    public void sendMessage(String text, boolean prefix) {
+        ClientChatReceivedEvent event = new ClientChatReceivedEvent((byte) 1, new ChatComponentText((prefix ? MESSAGE_PREFIX : "") + text));
         EVENT_BUS.post(event); // Let other mods pick up the new message
         if (!event.isCanceled()) {
             Minecraft.getMinecraft().thePlayer.addChatMessage(event.message); // Just for logs
         }
+    }
+
+    public void sendMessage(String text) {
+        sendMessage(text, true);
     }
 
     private void sendMessage(ChatComponentText text) {
-        ClientChatReceivedEvent event = new ClientChatReceivedEvent((byte) 1, text);
-        EVENT_BUS.post(event); // Let other mods pick up the new message
-        if (!event.isCanceled()) {
-            Minecraft.getMinecraft().thePlayer.addChatMessage(event.message); // Just for logs
-        }
+        sendMessage(text.getFormattedText());
     }
 
-    private static final Pattern SERVER_REGEX = Pattern.compile("([0-9]{2}/[0-9]{2}/[0-9]{2}) (mini[0-9]{1,3}[A-Za-z])");
-    // english, chinese simplified
-    private static final Set<String> SKYBLOCK_IN_ALL_LANGUAGES = Sets.newHashSet("SKYBLOCK","\u7A7A\u5C9B\u751F\u5B58");
+    private void sendMessage(ChatComponentText text, boolean prefix) {
+        sendMessage(text.getFormattedText(), prefix);
+    }
+
+    public void sendErrorMessage(String errorText) {
+        sendMessage(ChatFormatting.RED + "Error: " + errorText);
+    }
 
     public void checkGameLocationDate() {
         boolean foundLocation = false;
         Minecraft mc = Minecraft.getMinecraft();
-        boolean previouslyOnSkyblock = onSkyblock;
+
         if (mc != null && mc.theWorld != null) {
             Scoreboard scoreboard = mc.theWorld.getScoreboard();
             ScoreObjective sidebarObjective = mc.theWorld.getScoreboard().getObjectiveInDisplaySlot(1);
@@ -137,6 +181,7 @@ public class Utils {
                         break;
                     }
                 }
+
 
                 // Copied from SkyblockLib, should be removed when we switch to use that
                 if (skyblockScoreboard) {
@@ -212,12 +257,12 @@ public class Utils {
                             continue; // skip to next line
                         }
                     }
-                    for (EnumUtils.Location loopLocation : EnumUtils.Location.values()) {
+                    for (Location loopLocation : Location.values()) {
                         if (locationString.endsWith(loopLocation.getScoreboardName())) {
-                            if (loopLocation == EnumUtils.Location.BLAZING_FORTRESS &&
-                                    location != EnumUtils.Location.BLAZING_FORTRESS) {
+                            if (loopLocation == Location.BLAZING_FORTRESS &&
+                                    location != Location.BLAZING_FORTRESS) {
                                 sendPostRequest(EnumUtils.MagmaEvent.PING); // going into blazing fortress
-                                main.getUtils().fetchEstimateFromServer();
+                                fetchEstimateFromServer();
                             }
                             location = loopLocation;
                             foundLocation = true;
@@ -291,7 +336,15 @@ public class Utils {
                     if (i >= thisVersionNumbers.size()) {
                         thisVersionNumbers.add(i, 0);
                     }
-                    if (newestVersionNumbers.get(i) > thisVersionNumbers.get(i)) {
+                }
+
+                boolean outOfBeta = newestVersionNumbers.get(1).equals(thisVersionNumbers.get(1)) &&
+                        newestVersionNumbers.get(2).equals(thisVersionNumbers.get(2)) && // Update message when either: the version numbers are the same, but its longer a build.
+                        newestVersionNumbers.get(3).equals(thisVersionNumbers.get(3)) && SkyblockAddons.VERSION.contains("b") && !newestVersion.contains("b");
+
+                for (int i = 0; i < 4; i++) {
+                    if (newestVersionNumbers.get(i) > thisVersionNumbers.get(i) || // OR: one of the version numbers is higher.
+                            outOfBeta) {
                         String link = "https://hypixel.net/threads/forge-1-8-9-skyblockaddons-useful-features-for-skyblock.2109217/";
                         try {
                             url = new URL("https://raw.githubusercontent.com/biscuut/SkyblockAddons/master/updatelink.txt");
@@ -308,8 +361,8 @@ public class Utils {
                             ex.printStackTrace();
                         } finally {
                             main.getRenderListener().getDownloadInfo().setDownloadLink(link);
-                            if (i == 2 || i == 3) { // 0.0.x or 0.0.0-bx
-                                main.getRenderListener().getDownloadInfo().setPatch();
+                            if (i == 2 || i == 3 || outOfBeta) { // 0.0.x or 0.0.0-bx
+                                main.getRenderListener().getDownloadInfo().setPatch(true);
                                 main.getRenderListener().getDownloadInfo().setMessageType(EnumUtils.UpdateMessageType.PATCH_AVAILABLE);
                                 sendUpdateMessage(true,true);
                             } else {
@@ -331,42 +384,41 @@ public class Utils {
 
     void sendUpdateMessage(boolean showDownload, boolean showAutoDownload) {
         String newestVersion = main.getRenderListener().getDownloadInfo().getNewestVersion();
-        sendMessage(EnumChatFormatting.GRAY.toString() + EnumChatFormatting.STRIKETHROUGH + "--------" + EnumChatFormatting.GRAY + "[" +
-                EnumChatFormatting.AQUA + EnumChatFormatting.BOLD + " SkyblockAddons " + EnumChatFormatting.GRAY + "]" + EnumChatFormatting.GRAY + EnumChatFormatting.STRIKETHROUGH + "--------");
+        sendMessage(color("&7&m------------&7[&b&l SkyblockAddons &7]&7&m------------"), false);
         if (main.getRenderListener().getDownloadInfo().getMessageType() == EnumUtils.UpdateMessageType.DOWNLOAD_FINISHED) {
-            ChatComponentText deleteOldFile = new ChatComponentText(EnumChatFormatting.RED+Message.MESSAGE_DELETE_OLD_FILE.getMessage()+"\n");
-            sendMessage(deleteOldFile);
+            ChatComponentText deleteOldFile = new ChatComponentText(ChatFormatting.RED+Message.MESSAGE_DELETE_OLD_FILE.getMessage()+"\n");
+            sendMessage(deleteOldFile, false);
         } else {
-            ChatComponentText newUpdate = new ChatComponentText(EnumChatFormatting.AQUA+Message.MESSAGE_NEW_UPDATE.getMessage(newestVersion)+"\n");
-            sendMessage(newUpdate);
+            ChatComponentText newUpdate = new ChatComponentText(ChatFormatting.AQUA+Message.MESSAGE_NEW_UPDATE.getMessage(newestVersion)+"\n");
+            sendMessage(newUpdate, false);
         }
 
         ChatComponentText buttonsMessage = new ChatComponentText("");
         if (showDownload) {
-            buttonsMessage = new ChatComponentText(EnumChatFormatting.AQUA.toString() + EnumChatFormatting.BOLD + "[" + Message.MESSAGE_DOWNLOAD_LINK.getMessage(newestVersion) + "]");
+            buttonsMessage = new ChatComponentText(ChatFormatting.AQUA.toString() + ChatFormatting.BOLD + '[' + Message.MESSAGE_DOWNLOAD_LINK.getMessage(newestVersion) + ']');
             buttonsMessage.setChatStyle(buttonsMessage.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, main.getRenderListener().getDownloadInfo().getDownloadLink())));
             buttonsMessage.appendSibling(new ChatComponentText(" "));
         }
 
         if (showAutoDownload) {
-            ChatComponentText downloadAutomatically = new ChatComponentText(EnumChatFormatting.GREEN.toString() + EnumChatFormatting.BOLD + "[" + Message.MESSAGE_DOWNLOAD_AUTOMATICALLY.getMessage(newestVersion) + "]");
+            ChatComponentText downloadAutomatically = new ChatComponentText(ChatFormatting.GREEN.toString() + ChatFormatting.BOLD + '[' + Message.MESSAGE_DOWNLOAD_AUTOMATICALLY.getMessage(newestVersion) + ']');
             downloadAutomatically.setChatStyle(downloadAutomatically.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/sba update")));
             buttonsMessage.appendSibling(downloadAutomatically);
             buttonsMessage.appendSibling(new ChatComponentText(" "));
         }
 
-        ChatComponentText openModsFolder = new ChatComponentText(EnumChatFormatting.YELLOW.toString() + EnumChatFormatting.BOLD + "[" + Message.MESSAGE_OPEN_MODS_FOLDER.getMessage(newestVersion) + "]");
+        ChatComponentText openModsFolder = new ChatComponentText(ChatFormatting.YELLOW.toString() + ChatFormatting.BOLD + '[' + Message.MESSAGE_OPEN_MODS_FOLDER.getMessage(newestVersion) + ']');
         openModsFolder.setChatStyle(openModsFolder.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/sba folder")));
         buttonsMessage.appendSibling(openModsFolder);
 
-        sendMessage(buttonsMessage);
+        sendMessage(buttonsMessage, false);
         if (main.getRenderListener().getDownloadInfo().getMessageType() != EnumUtils.UpdateMessageType.DOWNLOAD_FINISHED) {
-            ChatComponentText discord = new ChatComponentText(EnumChatFormatting.AQUA + Message.MESSAGE_VIEW_PATCH_NOTES.getMessage() + " " +
-                    EnumChatFormatting.BLUE.toString() + EnumChatFormatting.BOLD + "[" + Message.MESSAGE_JOIN_DISCORD.getMessage() + "]");
+            ChatComponentText discord = new ChatComponentText(ChatFormatting.AQUA + Message.MESSAGE_VIEW_PATCH_NOTES.getMessage() + " " +
+                                                                      ChatFormatting.BLUE.toString() + ChatFormatting.BOLD + '[' + Message.MESSAGE_JOIN_DISCORD.getMessage() + ']');
             discord.setChatStyle(discord.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://discord.gg/PqTAEek")));
             sendMessage(discord);
         }
-        sendMessage(EnumChatFormatting.GRAY.toString() + EnumChatFormatting.STRIKETHROUGH + "----------------------------------");
+        sendMessage(color("&7&m----------------------------------------------"), false);
     }
 
     public void checkDisabledFeatures() {
@@ -389,7 +441,7 @@ public class Utils {
                     if (splitLine.length > 1) {
                         for (int i = 1; i < splitLine.length; i++) {
                             String part = splitLine[i];
-                            Feature feature = Feature.fromId(Integer.valueOf(part));
+                            Feature feature = Feature.fromId(Integer.parseInt(part));
                             if (feature != null) {
                                 disabledFeatures.add(feature);
                             }
@@ -401,19 +453,6 @@ public class Utils {
                 ex.printStackTrace();
             }
         }).start();
-    }
-
-    public boolean isNotNPC(Entity entity) {
-        if (entity instanceof EntityOtherPlayerMP) {
-            EntityPlayer p = (EntityPlayer)entity;
-            Team team = p.getTeam();
-            if (team instanceof ScorePlayerTeam) {
-                ScorePlayerTeam playerTeam = (ScorePlayerTeam)team;
-                String color = playerTeam.getColorPrefix();
-                return color == null || !color.equals("");
-            }
-        }
-        return true;
     }
 
     public int getDefaultColor(float alphaFloat) {
@@ -441,13 +480,13 @@ public class Utils {
 
     public boolean enchantReforgeMatches(String text) {
         text = text.toLowerCase();
-        for (String enchant : enchantmentMatch) {
+        for (String enchant : enchantmentMatches) {
             enchant = enchant.trim().toLowerCase();
-            if (!enchant.equals("") && text.contains(enchant)) {
+            if (StringUtil.notEmpty(enchant) && text.contains(enchant)) {
                 boolean foundExclusion = false;
-                for (String exclusion : enchantmentExclusion) {
+                for (String exclusion : enchantmentExclusions) {
                     exclusion = exclusion.trim().toLowerCase();
-                    if (!exclusion.equals("") && text.contains(exclusion)) {
+                    if (StringUtil.notEmpty(exclusion) && text.contains(exclusion)) {
                         foundExclusion = true;
                         break;
                     }
@@ -459,8 +498,6 @@ public class Utils {
         }
         return false;
     }
-
-    private final static String USER_AGENT = "SkyblockAddons/" + SkyblockAddons.VERSION;
 
     public void fetchEstimateFromServer() {
         new Thread(() -> {
@@ -488,11 +525,10 @@ public class Utils {
                 FMLLog.info("[SkyblockAddons] Query time was " + currentTime +", server time estimate is " +
                         estimate+". Updating magma boss spawn to be in "+magmaSpawnTime+" seconds.");
 
-                main.getPlayerListener().setMagmaTime(magmaSpawnTime, true);
+                main.getPlayerListener().setMagmaTime(magmaSpawnTime);
                 main.getPlayerListener().setMagmaAccuracy(EnumUtils.MagmaTimerAccuracy.ABOUT);
             } catch (IOException ex) {
                 FMLLog.warning("[SkyblockAddons] Failed to get magma boss spawn estimate from server");
-                ex.printStackTrace();
             }
         }).start();
     }
@@ -529,7 +565,6 @@ public class Utils {
                 }
             } catch (IOException ex) {
                 FMLLog.warning("[SkyblockAddons] Failed to post event to server");
-                ex.printStackTrace();
             }
         }).start();
     }
@@ -537,7 +572,7 @@ public class Utils {
     public boolean isMaterialForRecipe(ItemStack item) {
         final List<String> tooltip = item.getTooltip(null, false);
         for (String s : tooltip) {
-            if (s.equals("§5§o§eRight-click to view recipes!")) {
+            if ("§5§o§eRight-click to view recipes!".equals(s)) {
                 return true;
             }
         }
@@ -564,19 +599,22 @@ public class Utils {
 
     public boolean cantDropItem(ItemStack item, EnumUtils.Rarity rarity, boolean hotbar) {
         if (Items.bow.equals(item.getItem()) && rarity == EnumUtils.Rarity.COMMON) return false; // exclude rare bows lol
-        if (item.hasDisplayName() && item.getDisplayName().contains("Backpack")) return true; // dont drop backpacks ever
-        if (hotbar) {
-            return item.getItem().isDamageable() || (rarity != EnumUtils.Rarity.COMMON && rarity != EnumUtils.Rarity.UNCOMMON);
+        if (item.hasDisplayName()) {
+            for (String exclusion : RARE_ITEM_OVERRIDES) {
+                if (item.getDisplayName().contains(exclusion)) return true;
+            }
+        }
+        if (hotbar) { // Hotbar items also restrict rare rarity.
+            return item.getItem().isDamageable() || rarity != EnumUtils.Rarity.COMMON;
         } else {
-            return item.getItem().isDamageable() || (rarity != EnumUtils.Rarity.COMMON && rarity != EnumUtils.Rarity.UNCOMMON
-                    && rarity != EnumUtils.Rarity.RARE);
+            return item.getItem().isDamageable() || (rarity != EnumUtils.Rarity.COMMON && rarity != EnumUtils.Rarity.UNCOMMON);
         }
     }
 
     public void downloadPatch(String version) {
         File sbaFolder = getSBAFolder(true);
         if (sbaFolder != null) {
-            main.getUtils().sendMessage(EnumChatFormatting.YELLOW+Message.MESSAGE_DOWNLOADING_UPDATE.getMessage());
+            main.getUtils().sendMessage(ChatFormatting.YELLOW+Message.MESSAGE_DOWNLOADING_UPDATE.getMessage());
             new Thread(() -> {
                 try {
                     String fileName = "SkyblockAddons-"+version+"-for-MC-1.8.9.jar";
@@ -604,6 +642,10 @@ public class Utils {
                 }
             }).start();
         }
+    }
+
+    public static String color(String text) {
+        return ChatFormatting.translateAlternateColorCodes('&', text);
     }
 
     @SuppressWarnings("unchecked")
@@ -637,7 +679,7 @@ public class Utils {
                             Field metadatas = metadata.getClass().getDeclaredField("metadatas");
                             metadatas.setAccessible(true);
                             for (String modId : ((Map<String, ModMetadata>)metadatas.get(metadata)).keySet()) {
-                                if (modId.equals("skyblockaddons")) {
+                                if ("skyblockaddons".equals(modId)) {
                                     return coreMod.getParentFile();
                                 }
                             }
@@ -672,31 +714,6 @@ public class Utils {
     public boolean isHalloween() {
         Calendar calendar = Calendar.getInstance();
         return calendar.get(Calendar.MONTH) == Calendar.OCTOBER && calendar.get(Calendar.DAY_OF_MONTH) == 31;
-    }
-
-    private String getAbilityName(ItemStack item) {
-        for (String loreLine : item.getTooltip(Minecraft.getMinecraft().thePlayer, false)) {
-            Matcher matcher = ITEM_ABILITY_PATTERN.matcher(loreLine);
-            if (matcher.matches()) {
-                try {
-                    return matcher.group(1);
-                } catch (NumberFormatException ignored) { }
-            }
-        }
-        return null;
-    }
-
-    public void drawString(Minecraft mc, String text, int x, int y, int color) {
-        if (main.getConfigValues().getTextStyle() == EnumUtils.TextStyle.BLACK_SHADOW) {
-            String strippedText = TextUtils.stripColor(text);
-            mc.fontRendererObj.drawString(strippedText, x + 1, y, 0);
-            mc.fontRendererObj.drawString(strippedText, x - 1, y, 0);
-            mc.fontRendererObj.drawString(strippedText, x, y + 1, 0);
-            mc.fontRendererObj.drawString(strippedText, x, y - 1, 0);
-            mc.fontRendererObj.drawString(text, x, y, color);
-        } else {
-            mc.ingameGUI.drawString(mc.fontRendererObj, text, x, y, color);
-        }
     }
 
     public boolean isPickaxe(Item item) {
@@ -742,6 +759,36 @@ public class Utils {
                 } catch (IOException | URISyntaxException ignored) {
                 }
             }).start();
+        }
+    }
+
+    public void drawTextWithStyle(String text, int x, int y, ChatFormatting color) {
+        drawTextWithStyle(text,x,y,color.getRGB(),1);
+    }
+
+    public void drawTextWithStyle(String text, int x, int y, int color) {
+        drawTextWithStyle(text,x,y,color,1);
+    }
+
+    public void drawTextWithStyle(String text, int x, int y, int color, float textAlpha) {
+        if (main.getConfigValues().getTextStyle() == EnumUtils.TextStyle.STYLE_TWO) {
+            int colorBlack = new Color(0, 0, 0, textAlpha > 0.016 ? textAlpha : 0.016F).getRGB();
+            String strippedText = main.getUtils().stripColor(text);
+            MinecraftReflection.FontRenderer.drawString(strippedText, x + 1, y, colorBlack);
+            MinecraftReflection.FontRenderer.drawString(strippedText, x - 1, y, colorBlack);
+            MinecraftReflection.FontRenderer.drawString(strippedText, x, y + 1, colorBlack);
+            MinecraftReflection.FontRenderer.drawString(strippedText, x, y - 1, colorBlack);
+            MinecraftReflection.FontRenderer.drawString(text, x, y, color);
+        } else {
+            MinecraftReflection.FontRenderer.drawString(text, x, y, color, true);
+        }
+    }
+
+    public static String niceDouble(double value, int decimals) {
+        if(value == (long) value) {
+            return String.format("%d", (long)value);
+        } else {
+            return String.format("%."+decimals+"f", value);
         }
     }
 
@@ -829,6 +876,8 @@ public class Utils {
 
     public int getLastHoveredSlot() {
         return lastHoveredSlot;
+    public String stripColor(String text) {
+        return RegexUtil.strip(text, RegexUtil.VANILLA_PATTERN);
     }
 
     public void reorderEnchantmentList(List<String> enchantments) {

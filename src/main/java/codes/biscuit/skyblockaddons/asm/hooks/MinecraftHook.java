@@ -4,6 +4,7 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.asm.utils.ReturnValue;
 import codes.biscuit.skyblockaddons.utils.Feature;
 import codes.biscuit.skyblockaddons.utils.Message;
+import codes.biscuit.skyblockaddons.utils.npc.NPCUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.client.resources.IReloadableResourceManager;
@@ -26,15 +27,22 @@ public class MinecraftHook {
     private static long lastProfileMessage = -1;
 
     public static void onRefreshResources(IReloadableResourceManager iReloadableResourceManager) {
-        boolean usingOldTexture = false;
+        boolean usingOldPackTexture = false;
+        boolean usingDefaultTexture = true;
         try {
             IResource currentResource = iReloadableResourceManager.getResource(currentLocation);
+            String currentHash = DigestUtils.md5Hex(currentResource.getInputStream());
+
             InputStream oldStream = SkyblockAddons.class.getClassLoader().getResourceAsStream("assets/skyblockaddons/imperialoldbars.png");
             if (oldStream != null) {
-                String currentHash = DigestUtils.md5Hex(currentResource.getInputStream());
                 String oldHash = DigestUtils.md5Hex(oldStream);
+                usingOldPackTexture = currentHash.equals(oldHash);
+            }
 
-                usingOldTexture = currentHash.equals(oldHash);
+            InputStream barsStream = SkyblockAddons.class.getClassLoader().getResourceAsStream("assets/skyblockaddons/bars.png");
+            if (barsStream != null) {
+                String barsHash = DigestUtils.md5Hex(barsStream);
+                usingDefaultTexture = currentHash.equals(barsHash);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -42,7 +50,8 @@ public class MinecraftHook {
 
         SkyblockAddons main = SkyblockAddons.getInstance();
         if (main != null) { // Minecraft reloads textures before and after mods are loaded. So only set the variable if sba was initialized.
-            main.getUtils().setUsingOldSkyBlockTexture(usingOldTexture);
+            main.getUtils().setUsingOldSkyBlockTexture(usingOldPackTexture);
+            main.getUtils().setUsingDefaultBarTextures(usingDefaultTexture);
         }
     }
 
@@ -53,13 +62,13 @@ public class MinecraftHook {
             if (mc.objectMouseOver != null && mc.objectMouseOver.typeOfHit == MovingObjectPosition.MovingObjectType.ENTITY) {
                 Entity entityIn = mc.objectMouseOver.entityHit;
                 if (main.getConfigValues().isEnabled(Feature.DONT_OPEN_PROFILES_WITH_BOW)) {
-                    if (entityIn instanceof EntityOtherPlayerMP && main.getUtils().isNotNPC(entityIn)) {
+                    if (entityIn instanceof EntityOtherPlayerMP && !NPCUtils.isNPC(entityIn)) {
                         ItemStack item = mc.thePlayer.inventory.getCurrentItem();
                         ItemStack itemInUse = mc.thePlayer.getItemInUse();
                         if ((isItemBow(item) || isItemBow(itemInUse))) {
                             if (System.currentTimeMillis() - lastProfileMessage > 20000) {
                                 lastProfileMessage = System.currentTimeMillis();
-                                main.getUtils().sendMessage(main.getConfigValues().getColor(Feature.DONT_OPEN_PROFILES_WITH_BOW).getChatFormatting() +
+                                main.getUtils().sendMessage(main.getConfigValues().getRestrictedColor(Feature.DONT_OPEN_PROFILES_WITH_BOW) +
                                         Message.MESSAGE_STOPPED_OPENING_PROFILE.getMessage());
                             }
                             returnValue.cancel();
@@ -71,7 +80,7 @@ public class MinecraftHook {
                     int slot = mc.thePlayer.inventory.currentItem + 36;
                     if (main.getConfigValues().getLockedSlots().contains(slot) && slot >= 9) {
                         main.getUtils().playLoudSound("note.bass", 0.5);
-                        main.getUtils().sendMessage(main.getConfigValues().getColor(Feature.DROP_CONFIRMATION) + Message.MESSAGE_SLOT_LOCKED.getMessage());
+                        main.getUtils().sendMessage(main.getConfigValues().getRestrictedColor(Feature.DROP_CONFIRMATION) + Message.MESSAGE_SLOT_LOCKED.getMessage());
                         returnValue.cancel();
                     }
                 }

@@ -5,12 +5,18 @@ buildscript {
             name = "forge"
             url = "http://files.minecraftforge.net/maven"
         }
+        maven {
+            name = "franzbecker"
+            url = "https://dl.bintray.com/franzbecker/maven/"
+        }
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.1-SNAPSHOT'
+        classpath 'io.franzbecker:gradle-lombok:3.2.0'
     }
 }
 
+apply plugin: 'io.franzbecker.gradle-lombok'
 apply plugin: 'net.minecraftforge.gradle.forge'
 
 version = "1.4.2" //remember don't update the version until its released
@@ -37,6 +43,10 @@ repositories {
     maven {
         url 'https://jitpack.io'
     }
+
+    flatDir {
+        dirs 'libs'
+    }
 }
 
 dependencies {
@@ -45,9 +55,9 @@ dependencies {
         exclude module: 'log4j'
     }
 }
-
 jar {
-    archiveName = archivesBaseName + "-" + version + "-for-MC-1.8.9.jar"
+//    archiveName = archivesBaseName + "-" + version + "-for-MC-1.8.9.jar"
+    archiveName = archivesBaseName + "-1.5.0-b4-for-MC-1.8.9.jar"
 
     from {
         configurations.provided.collect { it.isDirectory() ? it : zipTree(it) }
@@ -76,11 +86,11 @@ processResources {
     from(sourceSets.main.resources.srcDirs) {
         include 'mcmod.info'
         include 'litemod.json'
-                
+
         // replace version and mcversion
         expand 'version':project.version, 'mcversion':project.minecraft.version
     }
-        
+
     // copy everything else, thats not the mcmod.info
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'

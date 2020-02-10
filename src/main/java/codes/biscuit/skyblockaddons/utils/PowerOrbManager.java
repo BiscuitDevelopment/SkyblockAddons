@@ -1,5 +1,7 @@
 package codes.biscuit.skyblockaddons.utils;
 
+import lombok.Getter;
+
 import java.util.*;
 
 /**
@@ -11,14 +13,8 @@ import java.util.*;
  */
 public class PowerOrbManager {
 
-    private static final PowerOrbManager instance = new PowerOrbManager();
-
-    /**
-     * @return The PowerOrbManager instance
-     */
-    public static PowerOrbManager getInstance() {
-        return instance;
-    }
+    /** The PowerOrbManager instance. */
+    @Getter private static final PowerOrbManager instance = new PowerOrbManager();
 
     /**
      * Entry displaying {@link PowerOrb#RADIANT} at 20 seconds for the edit screen
@@ -48,32 +44,23 @@ public class PowerOrbManager {
                 .filter(powerOrbEntryEntry -> powerOrbEntryEntry.getValue().timestamp + 100 > System.currentTimeMillis())
                 .max(Comparator.comparing(Map.Entry::getKey));
 
-        return max.isPresent() ? max.get().getValue() : null;
+        return max.map(Map.Entry::getValue).orElse(null);
     }
 
+    @Getter
     public static class Entry {
+        /** The PowerOrb type. */
         private final PowerOrb powerOrb;
+
+        /** Seconds the orb has left before running out */
         private final int seconds;
+
         private final long timestamp;
 
         private Entry(PowerOrb powerOrb, int seconds) {
             this.powerOrb = powerOrb;
             this.seconds = seconds;
             this.timestamp = System.currentTimeMillis();
-        }
-
-        /**
-         * @return PowerOrb type
-         */
-        public PowerOrb getPowerOrb() {
-            return powerOrb;
-        }
-
-        /**
-         * @return Seconds the orb has left before running out
-         */
-        public int getSeconds() {
-            return seconds;
         }
     }
 

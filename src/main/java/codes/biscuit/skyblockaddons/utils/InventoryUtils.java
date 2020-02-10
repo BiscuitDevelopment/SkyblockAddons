@@ -1,15 +1,15 @@
 package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
+import lombok.Getter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.inventory.*;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.EnumChatFormatting;
 
 import java.math.BigDecimal;
 import java.util.*;
@@ -21,27 +21,33 @@ import java.util.regex.Pattern;
  */
 public class InventoryUtils {
 
-    /**
-     * Slot index the SkyBlock menu is at
-     */
+    /** Slot index the SkyBlock menu is at. */
     private static final int SKYBLOCK_MENU_SLOT = 8;
 
-    /**
-     * Display name of the Skeleton Helmet
-     */
+    /** Display name of the Skeleton Helmet. */
     private static final String SKELETON_HELMET_ID = "SKELETON_HELMET";
 
     public static final String MADDOX_BATPHONE_DISPLAYNAME = "\u00A7aMaddox Batphone";
     public static final String JUNGLE_AXE_DISPLAYNAME = "\u00A7aJungle Axe";
+    public static final String FAIRY_SOUL_EXCHANGE_DISPLAYNAME = "\u00a7aExchange Fairy Souls";
 
     private static final Pattern REVENANT_UPGRADE_PATTERN = Pattern.compile("§5§o§7Next Upgrade: §a\\+([0-9]+❈) §8\\(§a([0-9,]+)§7/§c([0-9,]+)§8\\)");
 
     private List<ItemStack> previousInventory;
     private Multimap<String, ItemDiff> itemPickupLog = ArrayListMultimap.create();
     private boolean inventoryIsFull;
-    private boolean wearingSkeletonHelmet;
 
-    private SlayerArmorProgress[] slayerArmorProgresses = new SlayerArmorProgress[4];
+    /** Whether the player is wearing a Skeleton Helmet. */
+    @Getter private boolean wearingSkeletonHelmet;
+
+    @Getter private SlayerArmorProgress[] slayerArmorProgresses = new SlayerArmorProgress[4];
+
+    /**
+     * These three are used for {@link InventoryUtils#shouldCancelDrop(ItemStack)}.
+     */
+    private String lastItemName = null;
+    private long lastDrop = System.currentTimeMillis();
+    private int dropCount = 1;
 
     private SkyblockAddons main;
 
@@ -94,7 +100,7 @@ public class InventoryUtils {
                 }
 
                 if(newItem != null) {
-                    if (newItem.getDisplayName().contains(" "+ EnumChatFormatting.DARK_GRAY+"x")) {
+                    if (newItem.getDisplayName().contains(" "+ ChatFormatting.DARK_GRAY+"x")) {
                         String newName = newItem.getDisplayName().substring(0, newItem.getDisplayName().lastIndexOf(" "));
                         newItem.setStackDisplayName(newName); // This is a workaround for merchants, it adds x64 or whatever to the end of the name.
                     }
@@ -193,24 +199,6 @@ public class InventoryUtils {
         wearingSkeletonHelmet = false;
     }
 
-    /**
-     * @return Whether the player is wearing a Skeleton Helmet
-     */
-    public boolean isWearingSkeletonHelmet() {
-        return wearingSkeletonHelmet;
-    }
-
-    /**
-     * @return Log of recent Inventory changes
-     */
-    public Collection<ItemDiff> getItemPickupLog() {
-        return itemPickupLog.values();
-    }
-
-    private Item lastItem = null;
-    private long lastDrop = System.currentTimeMillis();
-    private int dropCount = 1;
-
     public boolean shouldCancelDrop(Slot slot) {
         if (slot != null && slot.getHasStack()) {
             ItemStack stack = slot.getStack();
@@ -221,11 +209,12 @@ public class InventoryUtils {
 
     public boolean shouldCancelDrop(ItemStack stack) {
         if (main.getUtils().cantDropItem(stack, EnumUtils.Rarity.getRarity(stack), false)) {
-            Item item = stack.getItem();
-            if (lastItem != null && lastItem == item && System.currentTimeMillis() - lastDrop < 3000 && dropCount >= 2) {
+            String heldItemName = stack.hasDisplayName() ? stack.getDisplayName() : stack.getUnlocalizedName();
+
+            if (lastItemName != null && lastItemName.equals(heldItemName) && System.currentTimeMillis() - lastDrop < 3000 && dropCount >= 2) {
                 lastDrop = System.currentTimeMillis();
             } else {
-                if (lastItem == item) {
+                if (heldItemName.equals(lastItemName)) {
                     if (System.currentTimeMillis() - lastDrop > 3000) {
                         dropCount = 1;
                     } else {
@@ -234,10 +223,9 @@ public class InventoryUtils {
                 } else {
                     dropCount = 1;
                 }
-                SkyblockAddons.getInstance().getUtils().sendMessage(main.getConfigValues().getColor(
-                        Feature.STOP_DROPPING_SELLING_RARE_ITEMS).getChatFormatting() +
+                SkyblockAddons.getInstance().getUtils().sendMessage(main.getConfigValues().getRestrictedColor(Feature.STOP_DROPPING_SELLING_RARE_ITEMS) +
                         Message.MESSAGE_CLICK_MORE_TIMES.getMessage(String.valueOf(3-dropCount)));
-                lastItem = item;
+                lastItemName = heldItemName;
                 lastDrop = System.currentTimeMillis();
                 main.getUtils().playLoudSound("note.bass", 0.5);
                 return true;
@@ -268,7 +256,7 @@ public class InventoryUtils {
 
     public void checkIfWearingRevenantArmor(EntityPlayerSP p) {
         if (main.getConfigValues().isEnabled(Feature.SLAYER_INDICATOR)) {
-            ConfigColor color = main.getConfigValues().getColor(Feature.SLAYER_INDICATOR);
+            ChatFormatting color = main.getConfigValues().getRestrictedColor(Feature.SLAYER_INDICATOR);
             for (int i = 3; i > -1; i--) {
                 ItemStack item = p.inventory.armorInventory[i];
                 String itemID = getSkyBlockItemID(item);
@@ -282,7 +270,7 @@ public class InventoryUtils {
 //                            progress = color.toString() + matcher.group(2)+"/"+matcher.group(3) + " (" + ConfigColor.GREEN+ matcher.group(1) + color + ")";
                                 float percentage = Float.parseFloat(matcher.group(2).replace(",", "")) / Integer.parseInt(matcher.group(3).replace(",", "")) * 100;
                                 BigDecimal bigDecimal = new BigDecimal(percentage).setScale(0, BigDecimal.ROUND_HALF_UP);
-                                progress = color.toString() + bigDecimal.toString() + "% (" + ConfigColor.GREEN + matcher.group(1) + color + ")";
+                                progress = color.toString() + bigDecimal.toString() + "% (" + ChatFormatting.GREEN + matcher.group(1) + color + ")";
                                 break;
                             } catch (NumberFormatException ignored) {
                             }
@@ -301,7 +289,10 @@ public class InventoryUtils {
         }
     }
 
-    public SlayerArmorProgress[] getSlayerArmorProgresses() {
-        return slayerArmorProgresses;
+    /**
+     * @return Log of recent Inventory changes
+     */
+    public Collection<ItemDiff> getItemPickupLog() {
+        return itemPickupLog.values();
     }
 }

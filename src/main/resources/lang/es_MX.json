@@ -1,12 +1,6 @@
 {
   "language": "Español (México)",
   "settings": {
-    "tab": {
-      "features": "Características",
-      "fixes": "Arreglos",
-      "guiFeatures": "Menú",
-      "generalSettings": "Configuración General"
-    },
     "settings": "Opciones",
     "magmaBossWarning": "Alerta de Boss de Magma",
     "itemDropConfirmation": "Confirmación de Arrojar Objetos",
@@ -21,7 +15,7 @@
     "hideDurability": "Ocultar Durabilidad de Herramientas",
     "showEnchantmentsReforges": "Encantamientos & Reforjados",
     "minionStopWarning": "Alerta de Minion Detenido",
-    "hideAuctionHousePlayers": "Ocultar Jugadores Cerca de NPCs Importantes",
+    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
     "backpackStyle": "Estilo de Backpack: %style%",
     "backpackStyles": {
       "regular": "Normal",
@@ -83,7 +77,26 @@
     "revenantIndicator": "Indicador de Progreso de Slayer Armor",
     "specialZealotAlert": "Alerta de Zealot Especial",
     "enableMessageWhenActionPrevented": "Mostrar un Mensaje al Prevenir una Acción",
-    "hidePetHealthBar": "Esconder Vida de Mascota"
+    "hidePetHealthBar": "Esconder Vida de Mascota",
+    "powerOrbDisplay": "Indicador de Power Orb",
+    "powerOrbDisplayStyle": "Estilo de Power Orb: %style%",
+    "powerOrbStyle": {
+      "detailed": "Detallado",
+      "compact": "Compacto"
+    },
+    "disableMagicalSoupMessage": "Desactivar los Mensajes de Mushroom Soup",
+    "zealotCounter": "Mostrar Contador de Zealot",
+    "tickerChargesDisplay": "Ticker/Charges Display",
+    "tab": {
+      "generalSettings": "Configuración General"
+    },
+    "tabEffectTimers": "Temporizador de Poción y Poderes",
+    "noArrowsLeftAlert": "Alerta de Falta de Flechas",
+    "hideNightVisionEffectTimer": "Esconder el Temporizador del Efecto de Visión Nocturna",
+    "showCakeBagPreview": "Previsualizar Cake Bags",
+    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
+    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
+    "enableDevFeatures": "Enable Developer Features"
   },
   "messages": {
     "dropConfirmation": "Arroja este objeto otra vez para confirmar!",
@@ -127,6 +140,11 @@
     "specialZealotFound": "Zealot Especial!",
     "blockIncompletePatterns": "Bloquear el crafteo de patrones incompletos (recomendado)",
     "searchFeatures": "Buscar características",
-    "downloadingUpdateFile": "Descargando archivo de actualización..."
+    "downloadingUpdateFile": "Descargando archivo de actualización...",
+    "onlyFewArrowsLeft": "Quedan %arrows% flechas!",
+    "noArrowsLeft": "No Hay Flechas!",
+    "chooseAColor": "Selecciona un Color",
+    "selectedColor": "Color Seleccionado",
+    "setHexColor": "Establecer Hex de Color"
   }
 }

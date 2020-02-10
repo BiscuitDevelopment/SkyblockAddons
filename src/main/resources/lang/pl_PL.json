@@ -1,12 +1,6 @@
 {
   "language": "Polski",
   "settings": {
-    "tab": {
-      "features": "Funkcje",
-      "fixes": "Naprawy błędów",
-      "guiFeatures": "Opcje interfejsu",
-      "generalSettings": "Ustawienia ogólne"
-    },
     "settings": "Ustawienia",
     "magmaBossWarning": "Ostrzeżenie o Bossie Magmy",
     "itemDropConfirmation": "Potwierdzenie Wyrzucenia Przedmiotu",
@@ -21,7 +15,7 @@
     "hideDurability": "Wyłącz Pasek Wytrzymałości Narzędzi",
     "showEnchantmentsReforges": "Zaklęcia oraz Reforge",
     "minionStopWarning": "Ostrzeżenie o Przerwaniu Pracy Miniona",
-    "hideAuctionHousePlayers": "Ukryj graczy blisko ważnych NPC-tów",
+    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
     "backpackStyle": "Styl Plecaka: %style%",
     "backpackStyles": {
       "regular": "Zwykłe",
@@ -83,7 +77,26 @@
     "revenantIndicator": "Wskaznik Postępu Zbroi",
     "specialZealotAlert": "Alarmuj o Specjlanym Zealocie",
     "enableMessageWhenActionPrevented": "Pokaż wiadomość, gdy akcja jest blokowana",
-    "hidePetHealthBar": "Ukryj paski zdrowia peta"
+    "hidePetHealthBar": "Ukryj paski zdrowia peta",
+    "powerOrbDisplay": "Ukryj Kulę Mocy",
+    "powerOrbDisplayStyle": "Styl Kuli Mocy: %style%",
+    "powerOrbStyle": {
+      "detailed": "Szczegółowy",
+      "compact": "Prosty"
+    },
+    "disableMagicalSoupMessage": "Ukryj wiadomości z Magicznej Zupy",
+    "zealotCounter": "Pokaż licznik Zealotów",
+    "tickerChargesDisplay": "Ticker/Charges Display",
+    "tab": {
+      "generalSettings": "Ustawienia ogólne"
+    },
+    "tabEffectTimers": "Zegary mikstur i umiejętności",
+    "noArrowsLeftAlert": "Alarm o braku strzał",
+    "hideNightVisionEffectTimer": "Ukryj zegar widzenia w ciemności",
+    "showCakeBagPreview": "Pokaż podgląd dla torb na ciasta",
+    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
+    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
+    "enableDevFeatures": "Enable Developer Features"
   },
   "messages": {
     "dropConfirmation": "Wyrzuć ten przedmiot ponownie, aby potwierdzić!",
@@ -127,6 +140,11 @@
     "specialZealotFound": "Specjalny Zealot!",
     "blockIncompletePatterns": "Blokuj crafting niepełnych patternów (rekomendowane)",
     "searchFeatures": "Szukaj fukncji",
-    "downloadingUpdateFile": "Pobieranie aktualizacji..."
+    "downloadingUpdateFile": "Pobieranie aktualizacji...",
+    "onlyFewArrowsLeft": "Zostało tylko %arrows% strzał!",
+    "noArrowsLeft": "Alarm o braku strzał!",
+    "chooseAColor": "Wybierz kolor",
+    "selectedColor": "Wybrany kolor",
+    "setHexColor": "Ustaw kolor heksalny"
   }
 }

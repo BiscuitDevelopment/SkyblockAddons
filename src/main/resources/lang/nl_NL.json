@@ -1,12 +1,6 @@
 {
   "language": "Nederlands",
   "settings": {
-    "tab": {
-      "features": "Functies",
-      "fixes": "Oplossingen",
-      "guiFeatures": "GUI functies",
-      "generalSettings": "Algemene instellingen"
-    },
     "settings": "Instellingen",
     "magmaBossWarning": "Magma Baas Waarschuwing",
     "itemDropConfirmation": "Object laten vallen Bevestiging",
@@ -21,7 +15,7 @@
     "hideDurability": "Verberg Duurzaamheid Gereedschap",
     "showEnchantmentsReforges": "Betoveringen & Omsmedingen",
     "minionStopWarning": "Minion is gestopt Waarschuwing",
-    "hideAuctionHousePlayers": "Spelers in de buurt van belangrijke NPC's verbergen",
+    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
     "backpackStyle": "Rugzak stijl: %style%",
     "backpackStyles": {
       "regular": "Normaal",
@@ -83,7 +77,26 @@
     "revenantIndicator": "Slayer Pantser Voortgangsindicator",
     "specialZealotAlert": "Speciale Zealot Melding",
     "enableMessageWhenActionPrevented": "Toon een bericht wanneer een actie wordt gestopt",
-    "hidePetHealthBar": "Huisdiergezondheidsbalk verbergen"
+    "hidePetHealthBar": "Huisdiergezondheidsbalk verbergen",
+    "powerOrbDisplay": "Kracht Bol Weergave",
+    "powerOrbDisplayStyle": "Kracht Bol Stijl: %style%",
+    "powerOrbStyle": {
+      "detailed": "Gedetailleerd",
+      "compact": "Compact"
+    },
+    "disableMagicalSoupMessage": "Magische Paddenstoel Soep Berichten uitschakelen",
+    "zealotCounter": "Toon Zealot teller",
+    "tickerChargesDisplay": "Tikker/Lading Weergave",
+    "tab": {
+      "generalSettings": "Algemene instellingen"
+    },
+    "tabEffectTimers": "Drank- en Power-up Timers",
+    "noArrowsLeftAlert": "Geen Pijlen Resterend Waarschuwing",
+    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
+    "showCakeBagPreview": "Show Preview for Cake Bags",
+    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
+    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
+    "enableDevFeatures": "Enable Developer Features"
   },
   "messages": {
     "dropConfirmation": "Laat dit object opnieuw vallen om te Bevestigen!",
@@ -127,6 +140,11 @@
     "specialZealotFound": "Speciale Zealot!",
     "blockIncompletePatterns": "Blokkeer het maken van onvolledige patronen (aanbevolen)",
     "searchFeatures": "Doorzoek functies",
-    "downloadingUpdateFile": "Update bestand downloaden..."
+    "downloadingUpdateFile": "Update bestand downloaden...",
+    "onlyFewArrowsLeft": "Nog maar %arrows% pijlen over!",
+    "noArrowsLeft": "Geen Pijlen Resterend!",
+    "chooseAColor": "Choose a Color",
+    "selectedColor": "Selected Color",
+    "setHexColor": "Set Hex Color"
   }
 }

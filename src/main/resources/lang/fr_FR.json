@@ -1,17 +1,11 @@
 {
   "language": "Français",
   "settings": {
-    "tab": {
-      "features": "Caractéristiques",
-      "fixes": "Corrections",
-      "guiFeatures": "Interface",
-      "generalSettings": "Options"
-    },
     "settings": "Paramètres",
     "magmaBossWarning": "Alerte Magma Boss",
     "itemDropConfirmation": "Confirmer le jet",
-    "hideSkeletonHatBones": "Masquer les os du Skeleton's Helmet",
-    "skeletonHatBonesBar": "Barre du Skeleton's Helmet",
+    "hideSkeletonHatBones": "Masquer les os du casque du Squelette",
+    "skeletonHatBonesBar": "Barre du casque du Squelette",
     "hideFoodAndArmor": "Masquer la nourriture & l'armure",
     "fullInventoryWarning": "Alerte inventaire plein",
     "disableEmberRodAbility": "Désativer l'Ember Rod sur votre île",
@@ -21,7 +15,7 @@
     "hideDurability": "Masquer la durabilité des outils",
     "showEnchantmentsReforges": "Enchantements & Reforges",
     "minionStopWarning": "Alerte minion à l'arrêt",
-    "hideAuctionHousePlayers": "Cacher les joueurs proche des PNJ utiles",
+    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
     "backpackStyle": "Affichage: %style%",
     "backpackStyles": {
       "regular": "Normal",
@@ -50,7 +44,7 @@
     "preventMovementOnDeath": "Empêcher de marcher après la mort",
     "showItemAnvilUses": "Afficher l'utilisation de l'enclume",
     "lockSlots": "Verrouillage d'emplacement",
-    "lockSlot": "Case bloqué",
+    "lockSlot": "Bloquer une case",
     "dontResetCursorInventory": "Rendre le curseur libre dans les menus",
     "summoningEyeAlert": "Alerte Œil d'invocation",
     "makeEnderchestsInEndGreen": "Modifier la couleur de l'Enderchest dans l'End",
@@ -83,7 +77,26 @@
     "revenantIndicator": "Progression de l'armure Revenant",
     "specialZealotAlert": "Alerte Zealot spécial",
     "enableMessageWhenActionPrevented": "Afficher un message lorsqu'une action est annulée",
-    "hidePetHealthBar": "Masquer les PV des compagnons"
+    "hidePetHealthBar": "Masquer les PV des compagnons",
+    "powerOrbDisplay": "Affichage Orbe de puissance",
+    "powerOrbDisplayStyle": "Affichage: %style%",
+    "powerOrbStyle": {
+      "detailed": "Détail",
+      "compact": "Condensé"
+    },
+    "disableMagicalSoupMessage": "Masquer les infos chat de la soupe",
+    "zealotCounter": "Compteur de Zélotes",
+    "tickerChargesDisplay": "Affichage des darts/charges",
+    "tab": {
+      "generalSettings": "Options"
+    },
+    "tabEffectTimers": "Minuteur potions/capacités",
+    "noArrowsLeftAlert": "Alerte aucune flèche",
+    "hideNightVisionEffectTimer": "Masquer le minuteur de la vision nocturne",
+    "showCakeBagPreview": "Aperçu des sacs à gâteau",
+    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
+    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
+    "enableDevFeatures": "Enable Developer Features"
   },
   "messages": {
     "dropConfirmation": "Jetez cet objet une nouvelle fois pour confirmer!",
@@ -126,7 +139,12 @@
     "anvilUses": "Utilisation de l'enclume: %uses%",
     "specialZealotFound": "Zealot spécial!",
     "blockIncompletePatterns": "Ne pas fabriquer les modèles incomplet (recommandé)",
-    "searchFeatures": "Rechercher des fonctionnalités",
-    "downloadingUpdateFile": "Téléchargement de la mise à jour..."
+    "searchFeatures": "Rechercher",
+    "downloadingUpdateFile": "Téléchargement de la mise à jour...",
+    "onlyFewArrowsLeft": "Il ne reste que %arrows% flèches !",
+    "noArrowsLeft": "Pas de flèches restantes!",
+    "chooseAColor": "Choisir une couleur",
+    "selectedColor": "Couleur sélectionnée",
+    "setHexColor": "Définir la couleur hexadécimale"
   }
 }

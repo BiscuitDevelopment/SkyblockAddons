@@ -1,12 +1,6 @@
 {
   "language": "Română",
   "settings": {
-    "tab": {
-      "features": "Funcție",
-      "fixes": "Rezolvări",
-      "guiFeatures": "Funcțiile interfeței",
-      "generalSettings": "Setările Generale"
-    },
     "settings": "Setări",
     "magmaBossWarning": "Avertisment pentru Magma Boss",
     "itemDropConfirmation": "Confirmare aruncare obiecte",
@@ -21,7 +15,7 @@
     "hideDurability": "Ascunde Durabilitatea Uneltelor",
     "showEnchantmentsReforges": "Refauriri și enchanturi",
     "minionStopWarning": "\"Minionul nu ajunge\" Avertisment",
-    "hideAuctionHousePlayers": "Ascunde jucătorii din apropierea NPC-urilor importante",
+    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
     "backpackStyle": "Stilul Backpackului: %style%",
     "backpackStyles": {
       "regular": "Obișnuit",
@@ -83,7 +77,26 @@
     "revenantIndicator": "Slayer Armor Progress Indicator",
     "specialZealotAlert": "Special Zealot Alert",
     "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented",
-    "hidePetHealthBar": "Hide Pet Health Bar"
+    "hidePetHealthBar": "Hide Pet Health Bar",
+    "powerOrbDisplay": "Power Orb Display",
+    "powerOrbDisplayStyle": "Power Orb Style: %style%",
+    "powerOrbStyle": {
+      "detailed": "Detailed",
+      "compact": "Compact"
+    },
+    "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages",
+    "zealotCounter": "Show Zealot Counter",
+    "tickerChargesDisplay": "Ticker/Charges Display",
+    "tab": {
+      "generalSettings": "Setările Generale"
+    },
+    "tabEffectTimers": "Potion and Powerup Timers",
+    "noArrowsLeftAlert": "No Arrows Left Alert",
+    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
+    "showCakeBagPreview": "Show Preview for Cake Bags",
+    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
+    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
+    "enableDevFeatures": "Enable Developer Features"
   },
   "messages": {
     "dropConfirmation": "Arunca acest obiect iar ca să confirmi!",
@@ -127,6 +140,11 @@
     "specialZealotFound": "Special Zealot!",
     "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)",
     "searchFeatures": "Search features",
-    "downloadingUpdateFile": "Downloading update file..."
+    "downloadingUpdateFile": "Descărcare actualizare...",
+    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
+    "noArrowsLeft": "No Arrows Left!",
+    "chooseAColor": "Choose a Color",
+    "selectedColor": "Selected Color",
+    "setHexColor": "Set Hex Color"
   }
 }

@@ -1,12 +1,6 @@
 {
   "language": "Italiano",
   "settings": {
-    "tab": {
-      "features": "Caratteristiche",
-      "fixes": "Correzioni",
-      "guiFeatures": "Funzioni GUI",
-      "generalSettings": "Impostazioni Generali"
-    },
     "settings": "Impostazioni",
     "magmaBossWarning": "Avviso per il Magma Boss",
     "itemDropConfirmation": "Conferma per gettare un oggetto",
@@ -21,7 +15,7 @@
     "hideDurability": "Nascondi la Durabilità degli strumenti",
     "showEnchantmentsReforges": "Incantesimi & Forge",
     "minionStopWarning": "Avviso che \"i Minion non possono raggiungere le risorse\" ",
-    "hideAuctionHousePlayers": "Nascondi i giocatori vicino agli NPC importanti",
+    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
     "backpackStyle": "Stile Zaino: %style%",
     "backpackStyles": {
       "regular": "Regolare",
@@ -83,7 +77,26 @@
     "revenantIndicator": "Indicatore di progresso dell’Armatura Slayer",
     "specialZealotAlert": "Avviso di Zealot Speciale",
     "enableMessageWhenActionPrevented": "Mostra un messaggio quando un’azione viene bloccata",
-    "hidePetHealthBar": "Nascondi la Barra di Vita dell’animale da compagnia"
+    "hidePetHealthBar": "Nascondi la Barra di Vita dell’animale da compagnia",
+    "powerOrbDisplay": "Visualizzazione Power Orb",
+    "powerOrbDisplayStyle": "Stile del Power Orb: %style%",
+    "powerOrbStyle": {
+      "detailed": "Dettagliato",
+      "compact": "Compatto"
+    },
+    "disableMagicalSoupMessage": "Disabilita i messaggi della zuppa magica ai funghi",
+    "zealotCounter": "Mostra il contatore degli Zealot",
+    "tickerChargesDisplay": "Mostra le cariche",
+    "tab": {
+      "generalSettings": "Impostazioni Generali"
+    },
+    "tabEffectTimers": "Timer pozioni e potenziamenti",
+    "noArrowsLeftAlert": "Avviso frecce finite",
+    "hideNightVisionEffectTimer": "Nascondi il timer dell’effetto visione notturna",
+    "showCakeBagPreview": "Mostra anteprima delle Cake Bags",
+    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
+    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
+    "enableDevFeatures": "Enable Developer Features"
   },
   "messages": {
     "dropConfirmation": "Getta questo oggetto nuovamente per confermare!",
@@ -127,6 +140,11 @@
     "specialZealotFound": "Zealot Speciale!",
     "blockIncompletePatterns": "Blocco degli schemi di fabbricazione incompleti (consigliato)",
     "searchFeatures": "Cerca funzioni",
-    "downloadingUpdateFile": "Download del file di aggiornamento in corso..."
+    "downloadingUpdateFile": "Download del file di aggiornamento in corso...",
+    "onlyFewArrowsLeft": "Solo %arrows% frecce rimaste!",
+    "noArrowsLeft": "Frecce finite!",
+    "chooseAColor": "Scegli un colore",
+    "selectedColor": "Colore selezionato",
+    "setHexColor": "Imposta un codice colore hex"
   }
 }

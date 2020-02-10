@@ -1,12 +1,6 @@
 {
   "language": "Tiếng Việt",
   "settings": {
-    "tab": {
-      "features": "Tính năng",
-      "fixes": "Sửa lỗi",
-      "guiFeatures": "Tính Năng GUI",
-      "generalSettings": "Cài đặt chung"
-    },
     "settings": "Cài Đặt",
     "magmaBossWarning": "Nhắc nhở Magma Boss",
     "itemDropConfirmation": "Xác Nhận Vứt Đồ",
@@ -21,7 +15,7 @@
     "hideDurability": "Ẩn Thanh Độ Bền",
     "showEnchantmentsReforges": "Phù phép & Rèn luyện",
     "minionStopWarning": "Cảnh Báo \"Minion Không Thể Với Tới\"",
-    "hideAuctionHousePlayers": "Giấu người chơi gần NPC quan trọng",
+    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
     "backpackStyle": "Kiểu Ba lô: %style%",
     "backpackStyles": {
       "regular": "Thường",
@@ -83,7 +77,26 @@
     "revenantIndicator": "Hiển thị độ phát triển của giáp Slayer",
     "specialZealotAlert": "Cảnh báo Zealot đặc biệt",
     "enableMessageWhenActionPrevented": "Hiện Thông Báo Khi một Hành Động đã được chặn",
-    "hidePetHealthBar": "Ẩn thanh máu Pet"
+    "hidePetHealthBar": "Ẩn thanh máu Pet",
+    "powerOrbDisplay": "Hiển thị cầu năng lượng",
+    "powerOrbDisplayStyle": "Kiểu hình Cầu năng lượng: %style%",
+    "powerOrbStyle": {
+      "detailed": "Chi tiết",
+      "compact": "Gọn"
+    },
+    "disableMagicalSoupMessage": "Tắt thông báo của Súp nấm thần",
+    "zealotCounter": "Hiển thị bộ đếm Zealot",
+    "tickerChargesDisplay": "Ticker/Charges Display",
+    "tab": {
+      "generalSettings": "Cài đặt chung"
+    },
+    "tabEffectTimers": "Potion and Powerup Timers",
+    "noArrowsLeftAlert": "No Arrows Left Alert",
+    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
+    "showCakeBagPreview": "Show Preview for Cake Bags",
+    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
+    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
+    "enableDevFeatures": "Enable Developer Features"
   },
   "messages": {
     "dropConfirmation": "Nhấn \"Q\" Thêm Một Lần Nữa Để Xác Nhận!",
@@ -127,6 +140,11 @@
     "specialZealotFound": "Zealot hiếm!",
     "blockIncompletePatterns": "Chặn chế tạo khuôn chưa hoàn thành (Khuyến nghị)",
     "searchFeatures": "Tìm kiếm chức năng",
-    "downloadingUpdateFile": "Đang tải về tệp tin Cập Nhật..."
+    "downloadingUpdateFile": "Đang tải về tệp tin Cập Nhật...",
+    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
+    "noArrowsLeft": "No Arrows Left!",
+    "chooseAColor": "Choose a Color",
+    "selectedColor": "Selected Color",
+    "setHexColor": "Set Hex Color"
   }
 }

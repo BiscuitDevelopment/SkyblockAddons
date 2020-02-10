@@ -32,8 +32,8 @@ public class PlayerControllerMPHook {
      */
     private static final int CRAFTING_PATTERN_SOUND_COOLDOWN = 400;
 
-    private static final Set<EnumUtils.Location> DEEP_CAVERNS_LOCATIONS = EnumSet.of(EnumUtils.Location.DEEP_CAVERNS, EnumUtils.Location.GUNPOWDER_MINES,
-            EnumUtils.Location.LAPIS_QUARRY, EnumUtils.Location.PIGMAN_DEN, EnumUtils.Location.SLIMEHILL, EnumUtils.Location.DIAMOND_RESERVE, EnumUtils.Location.OBSIDIAN_SANCTUARY);
+    private static final Set<Location> DEEP_CAVERNS_LOCATIONS = EnumSet.of(Location.DEEP_CAVERNS, Location.GUNPOWDER_MINES,
+            Location.LAPIS_QUARRY, Location.PIGMAN_DEN, Location.SLIMEHILL, Location.DIAMOND_RESERVE, Location.OBSIDIAN_SANCTUARY);
 
     private static final Set<Block> DEEP_CAVERNS_MINEABLE_BLOCKS = new HashSet<>(Arrays.asList(Blocks.coal_ore, Blocks.iron_ore, Blocks.gold_ore, Blocks.redstone_ore, Blocks.emerald_ore,
             Blocks.diamond_ore, Blocks.diamond_block, Blocks.obsidian, Blocks.lapis_ore, Blocks.lit_redstone_ore));
@@ -59,21 +59,21 @@ public class PlayerControllerMPHook {
             if (main.getConfigValues().isEnabled(Feature.AVOID_BREAKING_STEMS) && (block.equals(Blocks.melon_stem) || block.equals(Blocks.pumpkin_stem))) {
                 if (main.getConfigValues().isEnabled(Feature.ENABLE_MESSAGE_WHEN_BREAKING_STEMS) && now - lastStemMessage > 20000) {
                     lastStemMessage = now;
-                    main.getUtils().sendMessage(main.getConfigValues().getColor(Feature.AVOID_BREAKING_STEMS).getChatFormatting()+ Message.MESSAGE_CANCELLED_STEM_BREAK.getMessage());
+                    main.getUtils().sendMessage(main.getConfigValues().getRestrictedColor(Feature.AVOID_BREAKING_STEMS)+ Message.MESSAGE_CANCELLED_STEM_BREAK.getMessage());
                 }
                 returnValue.cancel();
             } else if (main.getConfigValues().isEnabled(Feature.ONLY_MINE_ORES_DEEP_CAVERNS) && DEEP_CAVERNS_LOCATIONS.contains(main.getUtils().getLocation())
                     && main.getUtils().isPickaxe(heldItem.getItem()) && !DEEP_CAVERNS_MINEABLE_BLOCKS.contains(block)) {
                 if (main.getConfigValues().isEnabled(Feature.ENABLE_MESSAGE_WHEN_MINING_DEEP_CAVERNS) && now - lastUnmineableMessage > 60000) {
                     lastUnmineableMessage = now;
-                    main.getUtils().sendMessage(main.getConfigValues().getColor(Feature.ONLY_MINE_ORES_DEEP_CAVERNS).getChatFormatting() + Message.MESSAGE_CANCELLED_NON_ORES_BREAK.getMessage());
+                    main.getUtils().sendMessage(main.getConfigValues().getRestrictedColor(Feature.ONLY_MINE_ORES_DEEP_CAVERNS) + Message.MESSAGE_CANCELLED_NON_ORES_BREAK.getMessage());
                 }
                 returnValue.cancel();
-            } else if (main.getConfigValues().isEnabled(Feature.ONLY_MINE_VALUABLES_NETHER) && EnumUtils.Location.BLAZING_FORTRESS.equals(main.getUtils().getLocation()) &&
+            } else if (main.getConfigValues().isEnabled(Feature.ONLY_MINE_VALUABLES_NETHER) && Location.BLAZING_FORTRESS.equals(main.getUtils().getLocation()) &&
                     main.getUtils().isPickaxe(heldItem.getItem()) && !NETHER_MINEABLE_BLOCKS.contains(block)) {
                 if (main.getConfigValues().isEnabled(Feature.ENABLE_MESSAGE_WHEN_MINING_NETHER) && now - lastUnmineableMessage > 60000) {
                     lastUnmineableMessage = now;
-                    main.getUtils().sendMessage(main.getConfigValues().getColor(Feature.ONLY_MINE_VALUABLES_NETHER).getChatFormatting() + Message.MESSAGE_CANCELLED_NON_ORES_BREAK.getMessage());
+                    main.getUtils().sendMessage(main.getConfigValues().getRestrictedColor(Feature.ONLY_MINE_VALUABLES_NETHER) + Message.MESSAGE_CANCELLED_NON_ORES_BREAK.getMessage());
                 }
                 returnValue.cancel();
             } else if (main.getConfigValues().isEnabled(Feature.JUNGLE_AXE_COOLDOWN)) {
@@ -87,8 +87,12 @@ public class PlayerControllerMPHook {
 
     public static void onPlayerDestroyBlock() {
         SkyblockAddons main = SkyblockAddons.getInstance();
-        if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.SHOW_ITEM_COOLDOWNS)) {
-            CooldownManager.put(Minecraft.getMinecraft().thePlayer.getHeldItem());
+        ItemStack heldItem = Minecraft.getMinecraft().thePlayer.getHeldItem();
+        if (main.getUtils().isOnSkyblock()
+                && main.getConfigValues().isEnabled(Feature.SHOW_ITEM_COOLDOWNS)
+                && heldItem != null
+                && InventoryUtils.JUNGLE_AXE_DISPLAYNAME.equals(heldItem.getDisplayName())) {
+            CooldownManager.put(heldItem);
         }
     }
 
@@ -105,7 +109,25 @@ public class PlayerControllerMPHook {
 
         SkyblockAddons main = SkyblockAddons.getInstance();
         final int slotId = slotNum;
-        if (player != null && player.openContainer != null) {
+        ItemStack itemStack = player.inventory.getItemStack();
+
+        // Prevent dropping rare items
+        if (main.getConfigValues().isEnabled(Feature.STOP_DROPPING_SELLING_RARE_ITEMS)) {
+            // Is this a left or right click?
+            if ((clickModifier == 0 || clickModifier == 1)) {
+                // Is the player clicking outside their inventory?
+                if (slotNum == -999) {
+                    // Is the player holding an item stack with their mouse?
+                    if (itemStack != null) {
+                        if (main.getInventoryUtils().shouldCancelDrop(itemStack)) {
+                            returnValue.cancel();
+                        }
+                    }
+                }
+            }
+        }
+
+        if (player.openContainer != null) {
             slotNum += main.getInventoryUtils().getSlotDifference(player.openContainer);
             if (main.getConfigValues().isEnabled(Feature.LOCK_SLOTS) && main.getUtils().isOnSkyblock()
                     && main.getConfigValues().getLockedSlots().contains(slotNum)
@@ -120,7 +142,7 @@ public class PlayerControllerMPHook {
             Slot slotIn;
             try {
                 slotIn = slots.getSlot(slotId);
-            } catch (ArrayIndexOutOfBoundsException e) {
+            } catch (IndexOutOfBoundsException e) {
                 slotIn = null;
             }
 

@@ -1,14 +1,8 @@
 {
   "language": "简体中文",
   "settings": {
-    "tab": {
-      "features": "主要功能",
-      "fixes": "辅助功能",
-      "guiFeatures": "GUI 功能",
-      "generalSettings": "常规设置"
-    },
     "settings": "设定",
-    "magmaBossWarning": "岩浆怪 Boss 警告",
+    "magmaBossWarning": "岩浆怪 Boss 生成警告",
     "itemDropConfirmation": "确认丢弃物品",
     "hideSkeletonHatBones": "隐藏骷髅头盔的骨头",
     "skeletonHatBonesBar": "骷髅头盔可抵挡攻击次数",
@@ -21,7 +15,7 @@
     "hideDurability": "隐藏物品耐久度",
     "showEnchantmentsReforges": "附魔 & 重铸",
     "minionStopWarning": "\"仆从无法触及生物\"警告",
-    "hideAuctionHousePlayers": "隐藏重要 NPC 附近的玩家",
+    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
     "backpackStyle": "背包样式: %style%",
     "backpackStyles": {
       "regular": "常规",
@@ -83,7 +77,26 @@
     "revenantIndicator": "杀手弓进度提示",
     "specialZealotAlert": "末影战士警告",
     "enableMessageWhenActionPrevented": "当操作被阻止时显示提示",
-    "hidePetHealthBar": "隐藏宠物血条"
+    "hidePetHealthBar": "隐藏宠物血条",
+    "powerOrbDisplay": "显示治疗宝珠",
+    "powerOrbDisplayStyle": "治疗类宝珠样式：%style%",
+    "powerOrbStyle": {
+      "detailed": "详细",
+      "compact": "简洁"
+    },
+    "disableMagicalSoupMessage": "不显示神奇蘑菇汤的提示信息",
+    "zealotCounter": "显示末影战士击杀数",
+    "tickerChargesDisplay": "显示刻数/充能",
+    "tab": {
+      "generalSettings": "常规设置"
+    },
+    "tabEffectTimers": "药水及加成效果计时器",
+    "noArrowsLeftAlert": "箭矢不足提醒",
+    "hideNightVisionEffectTimer": "隐藏夜视效果持续时间",
+    "showCakeBagPreview": "显示蛋糕袋预览",
+    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
+    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
+    "enableDevFeatures": "Enable Developer Features"
   },
   "messages": {
     "dropConfirmation": "再次丢弃此物品以确认!",
@@ -127,6 +140,11 @@
     "specialZealotFound": "末影战士！",
     "blockIncompletePatterns": "阻止合成不完整的图案 - 推荐",
     "searchFeatures": "搜索功能",
-    "downloadingUpdateFile": "正在下载更新文件……"
+    "downloadingUpdateFile": "正在下载更新文件……",
+    "onlyFewArrowsLeft": "剩余 %arrows% 支箭！",
+    "noArrowsLeft": "箭矢不足！",
+    "chooseAColor": "选择颜色",
+    "selectedColor": "已选择颜色",
+    "setHexColor": "设置十六进制颜色"
   }
 }

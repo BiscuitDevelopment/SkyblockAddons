@@ -2,7 +2,10 @@ package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.utils.discord.DiscordStatus;
+import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
 import com.google.gson.*;
+import lombok.Getter;
+import lombok.Setter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.util.MathHelper;
@@ -10,6 +13,7 @@ import net.minecraftforge.fml.common.FMLLog;
 import org.apache.commons.lang3.mutable.MutableFloat;
 import org.apache.commons.lang3.text.WordUtils;
 
+import java.awt.*;
 import java.awt.geom.Point2D;
 import java.beans.Introspector;
 import java.io.*;
@@ -26,23 +30,24 @@ public class ConfigValues {
     private final static float GUI_SCALE_STEP = 0.1F;
 
     private SkyblockAddons main;
+
     private File settingsConfigFile;
     private JsonObject settingsConfig = new JsonObject();
+    @Getter private JsonObject languageConfig = new JsonObject();
 
-    private JsonObject languageConfig = new JsonObject();
-
-    private Set<Feature> disabledFeatures = EnumSet.noneOf(Feature.class);
-    private Map<Feature, ConfigColor> featureColors = new EnumMap<>(Feature.class);
+    @Getter private Set<Feature> disabledFeatures = EnumSet.noneOf(Feature.class);
+    @Deprecated private Map<Feature, ChatFormatting> featureColors = new EnumMap<>(Feature.class); // Replaced with colors
+    private Map<Feature, Integer> colors = new HashMap<>();
     private Map<Feature, MutableFloat> guiScales = new EnumMap<>(Feature.class);
     private Map<Feature, CoordsPair> barSizes = new EnumMap<>(Feature.class);
-    private int warningSeconds = 4;
+    @Getter @Setter private int warningSeconds = 4;
     private Map<Feature, CoordsPair> coordinates = new EnumMap<>(Feature.class);
     private Map<Feature, EnumUtils.AnchorPoint> anchorPoints = new EnumMap<>(Feature.class);
-    private Language language = Language.ENGLISH;
-    private EnumUtils.BackpackStyle backpackStyle = EnumUtils.BackpackStyle.GUI;
-    private EnumUtils.PowerOrbDisplayStyle powerOrbDisplayStyle = EnumUtils.PowerOrbDisplayStyle.COMPACT;
-    private EnumUtils.TextStyle textStyle = EnumUtils.TextStyle.REGULAR;
-    @SuppressWarnings("deprecation") private Set<Feature> remoteDisabledFeatures = EnumSet.of(Feature.AVOID_BREAKING_BOTTOM_SUGAR_CANE);
+    @Getter @Setter private Language language = Language.ENGLISH;
+    @Getter @Setter private EnumUtils.BackpackStyle backpackStyle = EnumUtils.BackpackStyle.GUI;
+    @Getter @Setter private EnumUtils.PowerOrbDisplayStyle powerOrbDisplayStyle = EnumUtils.PowerOrbDisplayStyle.COMPACT;
+    @Getter @Setter private EnumUtils.TextStyle textStyle = EnumUtils.TextStyle.STYLE_ONE;
+    @Getter @SuppressWarnings("deprecation") private Set<Feature> remoteDisabledFeatures = EnumSet.of(Feature.AVOID_BREAKING_BOTTOM_SUGAR_CANE);
     private Set<Integer> legacyLockedSlots = new HashSet<>();
     private Map<String, Set<Integer>> profileLockedSlots = new HashMap<>();
     private DiscordStatus discordStatus;
@@ -58,14 +63,8 @@ public class ConfigValues {
         if (settingsConfigFile.exists()) {
             try {
                 FileReader reader = new FileReader(settingsConfigFile);
-                BufferedReader bufferedReader = new BufferedReader(reader);
-                StringBuilder builder = new StringBuilder();
-                String nextLine;
-                while ((nextLine = bufferedReader.readLine()) != null) {
-                    builder.append(nextLine);
-                }
-                String complete = builder.toString();
-                JsonElement fileElement = new JsonParser().parse(complete);
+                JsonElement fileElement = new JsonParser().parse(reader);
+
                 if (fileElement == null || fileElement.isJsonNull()) {
                     throw new JsonParseException("File is null!");
                 }
@@ -129,7 +128,7 @@ public class ConfigValues {
 
             if (settingsConfig.has("anchorPoints")) {
                 for (Map.Entry<String, JsonElement> element : settingsConfig.getAsJsonObject("anchorPoints").entrySet()) {
-                    Feature feature = Feature.fromId(Integer.valueOf(element.getKey()));
+                    Feature feature = Feature.fromId(Integer.parseInt(element.getKey()));
                     EnumUtils.AnchorPoint anchorPoint = EnumUtils.AnchorPoint.fromId(element.getValue().getAsInt());
                     if (feature != null && anchorPoint != null) {
                         anchorPoints.put(feature, anchorPoint);
@@ -170,7 +169,6 @@ public class ConfigValues {
                 }
             }
             loadFeatureArray("guiPositions", coordinates);
-
             loadFeatureArray("barSizes", barSizes);
 
             loadLegacyColor("warningColor", Feature.MAGMA_WARNING);
@@ -189,9 +187,23 @@ public class ConfigValues {
                     Feature feature = Feature.fromId(Integer.parseInt(element.getKey()));
                     if (feature != null) {
                         int ordinal = element.getValue().getAsInt();
-                        if (ConfigColor.values().length > ordinal) {
-                            featureColors.put(feature, ConfigColor.values()[ordinal]);
+                        if (ordinal < 16) {
+                            ChatFormatting chatFormatting = ChatFormatting.values()[ordinal];
+                            featureColors.put(feature, chatFormatting);
+                            if (chatFormatting != ChatFormatting.RED) { // It's default, no need.
+                                colors.put(feature, chatFormatting.getRGB()); // TODO this loads a legacy color.
+                            }
                         }
+                    }
+                }
+            }
+
+            if (settingsConfig.has("colors")) {
+                for (Map.Entry<String, JsonElement> element : settingsConfig.getAsJsonObject("colors").entrySet()) {
+                    Feature feature = Feature.fromId(Integer.parseInt(element.getKey()));
+                    if (feature != null) {
+                        int color = element.getValue().getAsInt();
+                        colors.put(feature, color);
                     }
                 }
             }
@@ -272,8 +284,8 @@ public class ConfigValues {
     private void loadLegacyColor(String memberName, Feature feature) {
         if (settingsConfig.has(memberName)) {
             int ordinal = settingsConfig.get(memberName).getAsInt();
-            if (ConfigColor.values().length > ordinal) {
-                featureColors.put(feature, ConfigColor.values()[ordinal]);
+            if (ordinal < 16) {
+                featureColors.put(feature, ChatFormatting.values()[ordinal]);
             }
         }
     }
@@ -300,9 +312,9 @@ public class ConfigValues {
         }
 
         for (Feature feature : Feature.values()) {
-            ConfigColor color = feature.getDefaultColor();
+            ChatFormatting color = feature.getDefaultColor();
             if (color != null) {
-                featureColors.put(feature, color);
+                colors.put(feature, color.getRGB());
             }
             if (feature.isDefaultDisabled()) {
                 disabledFeatures.add(feature);
@@ -461,14 +473,23 @@ public class ConfigValues {
             }
             settingsConfig.add("guiScales", scalesObject);
 
-            JsonObject colorsObject = new JsonObject();
+            JsonObject oldColorsObject = new JsonObject(); //TODO might not need this in the future.
             for (Feature feature : featureColors.keySet()) {
-                ConfigColor featureColor = featureColors.get(feature);
-                if (featureColor != ConfigColor.RED) { // red is default, no need to save
-                    colorsObject.addProperty(String.valueOf(feature.getId()), featureColor.ordinal());
+                ChatFormatting featureColor = featureColors.get(feature);
+                if (featureColor != ChatFormatting.RED) { // Red is default, no need to save it!
+                    oldColorsObject.addProperty(String.valueOf(feature.getId()), featureColor.ordinal());
                 }
             }
-            settingsConfig.add("featureColors", colorsObject);
+            settingsConfig.add("featureColors", oldColorsObject);
+
+            JsonObject colorsObject = new JsonObject();
+            for (Feature feature : colors.keySet()) {
+                int featureColor = colors.get(feature);
+                if (featureColor != ChatFormatting.RED.getRGB()) { // Red is default, no need to save it!
+                    colorsObject.addProperty(String.valueOf(feature.getId()), colors.get(feature));
+                }
+            }
+            settingsConfig.add("colors", colorsObject);
 
             JsonObject coordinatesObject = new JsonObject();
             for (Feature feature : coordinates.keySet()) {
@@ -532,33 +553,33 @@ public class ConfigValues {
         return !isDisabled(feature);
     }
 
-    public Set<Feature> getDisabledFeatures() {
-        return disabledFeatures;
+    public Color getColor(Feature feature, int alpha) {
+        Color color = getColor(feature);
+
+        return new Color(color.getRed(), color.getGreen(), color.getBlue(), alpha);
     }
 
-    public void setLanguage(Language language) {
-        this.language = language;
+    public Color getColor(Feature feature) {
+        ChatFormatting defaultColor = feature.getDefaultColor();
+        return new Color(colors.getOrDefault(feature, defaultColor != null ? defaultColor.getRGB() : ChatFormatting.RED.getRGB()));
     }
 
-    public Language getLanguage() {
-        return language;
+    public ChatFormatting getRestrictedColor(Feature feature) {
+        Integer featureColor = colors.get(feature);
+
+        if (featureColor != null) {
+            for (ChatFormatting chatFormatting : ChatFormatting.values()) {
+                if (chatFormatting.getRGB() == featureColor) {
+                    return chatFormatting;
+                }
+            }
+        }
+
+        return feature.getDefaultColor();
     }
 
-    public void setNextColor(Feature feature) {
-        featureColors.put(feature, main.getConfigValues().getColor(feature).getNextColor());
-    }
-
-    public ConfigColor getColor(Feature feature) {
-        ConfigColor defaultColor = feature.getDefaultColor();
-        return featureColors.getOrDefault(feature, defaultColor != null ? defaultColor : ConfigColor.RED);
-    }
-
-    public int getWarningSeconds() {
-        return warningSeconds;
-    }
-
-    public void setWarningSeconds(int warningSeconds) {
-        this.warningSeconds = warningSeconds;
+    public void setColor(Feature feature, int color) {
+        colors.put(feature, color);
     }
 
     public int getActualX(Feature feature) {
@@ -633,42 +654,10 @@ public class ConfigValues {
         setCoords(feature, x, y);
     }
 
-    public EnumUtils.BackpackStyle getBackpackStyle() {
-        return backpackStyle;
-    }
-
-    public EnumUtils.PowerOrbDisplayStyle getPowerOrbDisplayStyle() {
-        return powerOrbDisplayStyle;
-    }
-
-    public void setBackpackStyle(EnumUtils.BackpackStyle backpackStyle) {
-        this.backpackStyle = backpackStyle;
-    }
-
-    public void setPowerOrbDisplayStyle(EnumUtils.PowerOrbDisplayStyle powerOrbDisplayStyle) {
-        this.powerOrbDisplayStyle = powerOrbDisplayStyle;
-    }
-
     public EnumUtils.AnchorPoint getAnchorPoint(Feature feature) {
         EnumUtils.AnchorPoint defaultPoint = feature.getAnchorPoint();
 
         return anchorPoints.getOrDefault(feature, defaultPoint != null ? defaultPoint : EnumUtils.AnchorPoint.BOTTOM_MIDDLE);
-    }
-
-    JsonObject getLanguageConfig() {
-        return languageConfig;
-    }
-
-    public EnumUtils.TextStyle getTextStyle() {
-        return textStyle;
-    }
-
-    public void setTextStyle(EnumUtils.TextStyle textStyle) {
-        this.textStyle = textStyle;
-    }
-
-    Set<Feature> getRemoteDisabledFeatures() {
-        return remoteDisabledFeatures;
     }
 
     public Set<Integer> getLockedSlots() {
@@ -701,7 +690,7 @@ public class ConfigValues {
         return value;
     }
 
-    // these are taken from GuiOptionSlider
+    /** These two are taken from GuiOptionSlider. */
     private float denormalizeScale(float value) {
         return snapToStepClamp(ConfigValues.GUI_SCALE_MINIMUM + (ConfigValues.GUI_SCALE_MAXIMUM - ConfigValues.GUI_SCALE_MINIMUM) *
                 MathHelper.clamp_float(value, 0.0F, 1.0F));

@@ -52,6 +52,7 @@ public enum CraftingPattern {
 
     public final int index;
     public final int[] pattern;
+
     CraftingPattern(final int index, final int[] pattern) {
         this.index = index;
         this.pattern = pattern;

@@ -2,6 +2,10 @@ package codes.biscuit.skyblockaddons.listeners;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.utils.*;
+import codes.biscuit.skyblockaddons.utils.dev.DevUtils;
+import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
+import lombok.Getter;
+import lombok.Setter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.gui.GuiScreen;
@@ -21,6 +25,9 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.Vec3;
+import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.Vec3;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
@@ -37,15 +44,10 @@ import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
+import org.lwjgl.input.Keyboard;
 
-import java.awt.*;
-import java.awt.datatransfer.Clipboard;
-import java.awt.datatransfer.DataFlavor;
-import java.awt.datatransfer.StringSelection;
-import java.awt.datatransfer.UnsupportedFlavorException;
-import java.io.IOException;
 import java.util.*;
-import java.util.List;
+import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -60,34 +62,38 @@ public class PlayerListener {
 
 
     private boolean sentUpdate = false;
+
     private long lastWorldJoin = -1;
     private long lastBoss = -1;
     private int magmaTick = 1;
     private int timerTick = 1;
     private long lastMinionSound = -1;
-
-    private int lastSecondHealth = -1;
-    private Integer healthUpdate = null;
-    private long lastHealthUpdate;
+    private long lastBossSpawnPost = -1;
+    private long lastBossDeathPost = -1;
+    private long lastMagmaWavePost = -1;
+    private long lastBlazeWavePost = -1;
+    private Class<?> lastOpenedInventory = null;
+    private long lastClosedInv = -1;
     private long lastFishingAlert = 0;
     private long lastBobberEnteredWater = Long.MAX_VALUE;
+    private long lastSkyblockServerJoinAttempt = 0;
+
     private boolean oldBobberIsInWater = false;
     private double oldBobberPosY = 0;
-    private int tickers = 0;
 
-    private Set<CoordsPair> recentlyLoadedChunks = new HashSet<>();
-    private EnumUtils.MagmaTimerAccuracy magmaAccuracy = EnumUtils.MagmaTimerAccuracy.NO_DATA;
-    private int magmaTime = 0;
-    private int recentMagmaCubes = 0;
-    private int recentBlazes = 0;
-    
-//    private Feature.Accuracy magmaTimerAccuracy = null;
-//    private long magmaTime = 7200;
+    private Set<Entity> countedEndermen = new HashSet<>();
+    @Getter private Set<CoordsPair> recentlyLoadedChunks = new HashSet<>();
+    @Getter @Setter private EnumUtils.MagmaTimerAccuracy magmaAccuracy = EnumUtils.MagmaTimerAccuracy.NO_DATA;
+    @Getter @Setter private int magmaTime = 0;
+    @Getter @Setter private int recentMagmaCubes = 0;
+    @Getter @Setter private int recentBlazes = 0;
 
-    private SkyblockAddons main;
+    private final SkyblockAddons main;
+    private final ActionBarParser actionBarParser;
 
     public PlayerListener(SkyblockAddons main) {
         this.main = main;
+        actionBarParser = new ActionBarParser(main);
     }
 
     /**
@@ -102,6 +108,7 @@ public class PlayerListener {
             timerTick = 1;
             main.getInventoryUtils().resetPreviousInventory();
             recentlyLoadedChunks.clear();
+            countedEndermen.clear();
         }
     }
 
@@ -127,121 +134,14 @@ public class PlayerListener {
     public void onChatReceive(ClientChatReceivedEvent e) {
         String message = e.message.getUnformattedText();
         if (e.type == 2) {
-            if (message.contains("✎ Mana")) {
-                try {
-                    String returnMessage;
-                    if (message.startsWith("§d§lTHE END RACE")) { // Might be doing the end race!
-                        // Example Action Bar: '§d§lTHE END RACE §e00:52.370            §b147/147✎ Mana§r'
-                        String[] messageSplit = message.split(" {12}");
-                        String[] manaSplit = TextUtils.getNumbersOnly(messageSplit[1]).split(Pattern.quote("/"));
-                        setAttribute(Attribute.MANA, Integer.parseInt(manaSplit[0]));
-                        setAttribute(Attribute.MAX_MANA, Integer.parseInt(manaSplit[1].trim()));
-
-                        main.getRenderListener().setPredictMana(false);
-                        main.getRenderListener().setPredictHealth(true);
-                        returnMessage = messageSplit[0];
-                    } else {
-                        // Example Action Bar: '§c586/586❤     §a247§a❈ Defense     §b173/173✎ Mana§r'
-                        // Another Possibility w/ Tickers: `§c1072/1072❤     §a582§a❈ Defense     §b419/419✎ Mana    §e§lⓄⓄⓄⓄ§7§l§r`
-                        String[] splitMessage = message.split(" {5}");
-                        String healthPart = splitMessage[0];
-                        String defencePart = null;
-                        String collectionPart = null;
-                        String manaPart;
-                        if (splitMessage.length > 2) {
-                            if (!splitMessage[1].contains("(")) { // Example Collection Bar: '§c986/986❤     §3+1 Mining (10,714.7/15,000)     §b297/323✎ Mana§r'
-                                defencePart = splitMessage[1];
-                            } else {
-                                collectionPart = splitMessage[1]; // Another Example: §5+§d30 §5Runecrafting (969/1000)
-                                Matcher matcher = COLLECTIONS_CHAT_PATTERN.matcher(collectionPart);
-                                if (matcher.matches()) {
-                                    main.getRenderListener().setSkillText("+"+matcher.group(1)+" "+matcher.group(3));
-                                    main.getRenderListener().setSkill(matcher.group(2));
-                                    main.getRenderListener().setSkillFadeOutTime(System.currentTimeMillis()+4000);
-                                }
-                            }
-                            manaPart = splitMessage[2];
-                        } else {
-                            manaPart = splitMessage[1];
-                        }
-
-                        tickers = -1;
-
-                        String tickerPart = null;
-                        if (manaPart.contains("Ⓞ")) { // Scorpion Foil Tickers
-                            tickers = 0;
-                            String[] parts = manaPart.split(" {4}");
-                            manaPart = parts[0];
-                            tickerPart = parts[1];
-                            System.out.println(tickerPart);
-                            for (char character : tickerPart.toCharArray()) {
-                                if (character == '7') { // If it reaches a grey color code, it means those tickers are used, so stop.
-                                    break;
-                                } else if (character == 'Ⓞ') { // Add the tickers that aren't grey.
-                                    tickers++;
-                                }
-                            }
-                        }
-                        if (healthPart.contains("+")) {
-                            healthPart = healthPart.substring(0, healthPart.indexOf('+'));
-                        }
-                        String[] healthSplit = TextUtils.getNumbersOnly(TextUtils.stripColor(healthPart)).split(Pattern.quote("/"));
-                        int newHealth = Integer.parseInt(healthSplit[0]);
-                        main.getScheduler().schedule(Scheduler.CommandType.SET_LAST_SECOND_HEALTH, 1, newHealth);
-                        if (lastSecondHealth != -1 && lastSecondHealth != newHealth) {
-                            healthUpdate = newHealth - lastSecondHealth;
-                            lastHealthUpdate = System.currentTimeMillis();
-                        }
-                        setAttribute(Attribute.HEALTH, newHealth);
-                        setAttribute(Attribute.MAX_HEALTH, Integer.parseInt(healthSplit[1]));
-                        if (defencePart != null) {
-                            setAttribute(Attribute.DEFENCE, Integer.parseInt(TextUtils.getNumbersOnly(defencePart).trim()));
-                        } else if (collectionPart == null) { // if neither defence nor collection are showed, this indicates they just have no defence.
-                            setAttribute(Attribute.DEFENCE, 0);
-                        }
-                        String[] manaSplit = TextUtils.getNumbersOnly(manaPart).split(Pattern.quote("/"));
-                        setAttribute(Attribute.MANA, Integer.parseInt(manaSplit[0]));
-                        setAttribute(Attribute.MAX_MANA, Integer.parseInt(manaSplit[1].trim()));
-                        main.getRenderListener().setPredictMana(false);
-                        main.getRenderListener().setPredictHealth(false);
-                        StringBuilder newMessage = new StringBuilder();
-                        boolean showHealth = main.getConfigValues().isDisabled(Feature.HEALTH_BAR) && main.getConfigValues().isDisabled(Feature.HEALTH_TEXT);
-                        boolean showCollection = collectionPart != null && main.getConfigValues().isDisabled(Feature.SKILL_DISPLAY);
-                        boolean showDefence = defencePart != null && main.getConfigValues().isDisabled(Feature.DEFENCE_PERCENTAGE) && main.getConfigValues().isDisabled(Feature.DEFENCE_TEXT);
-                        boolean showMana = main.getConfigValues().isDisabled(Feature.MANA_BAR) && main.getConfigValues().isDisabled(Feature.MANA_TEXT);
-                        if (showHealth) {
-                            newMessage.append(healthPart);
-                        }
-                        if (showCollection) {
-                            if (showHealth) newMessage.append("     ");
-                            newMessage.append(collectionPart);
-                        }
-                        if (showDefence) {
-                            if (showHealth) newMessage.append("     ");
-                            newMessage.append(defencePart);
-                        }
-                        if (showMana) {
-                            if (showHealth || showDefence) newMessage.append("     ");
-                            newMessage.append(manaPart);
-                        }
-                        if (tickerPart != null && main.getConfigValues().isDisabled(Feature.SCORPION_FOIL_TICKER_DISPLAY)) {
-                            newMessage.append("    ").append(tickerPart);
-                        }
-                        returnMessage = newMessage.toString();
-                    }
-                    if (main.isUsingOofModv1() && returnMessage.trim().length() == 0) {
-                        e.setCanceled(true);
-                    }
-                    e.message = new ChatComponentText(returnMessage);
-                    return;
-                } catch (Exception ex) {
-                    main.getRenderListener().setPredictMana(true);
-                    main.getRenderListener().setPredictHealth(true);
-                }
+            // action bar message, parse using ActionBarParser and display the rest message instead
+            String restMessage = actionBarParser.parseActionBar(message);
+            if (main.isUsingOofModv1() && restMessage.trim().length() == 0) {
+                e.setCanceled(true);
             }
-            main.getRenderListener().setPredictMana(true);
-            main.getRenderListener().setPredictHealth(true);
+            e.message = new ChatComponentText(restMessage);
         } else {
+            final String formattedText = e.message.getFormattedText();
             if (main.getRenderListener().isPredictMana() && message.startsWith("Used ") && message.endsWith("Mana)")) {
                 int manaLost = Integer.parseInt(message.split(Pattern.quote("! ("))[1].split(Pattern.quote(" Mana)"))[0]);
                 changeMana(-manaLost);
@@ -250,16 +150,15 @@ public class PlayerListener {
             /*  Resets all user input on dead as to not walk backwards or stafe into the portal
                 Might get trigger upon encountering a non named "You" though this chance is so
                 minimal it can be discarded as a bug. */
-            if (main.getConfigValues().isEnabled(Feature.PREVENT_MOVEMENT_ON_DEATH) && e.message.getFormattedText().startsWith("§r§c \u2620 §r§7You ")) {
+            if (main.getConfigValues().isEnabled(Feature.PREVENT_MOVEMENT_ON_DEATH) && formattedText.startsWith("§r§c \u2620 §r§7You ")) {
                 KeyBinding.unPressAllKeys();
             }
             // credits to tomotomo, thanks lol
-            if (main.getConfigValues().isEnabled(Feature.SUMMONING_EYE_ALERT) && e.message.getFormattedText().equals("§r§6§lRARE DROP! §r§5Summoning Eye§r")) {
+            if (main.getConfigValues().isEnabled(Feature.SUMMONING_EYE_ALERT) && formattedText.equals("§r§6§lRARE DROP! §r§5Summoning Eye§r")) {
                 main.getUtils().playLoudSound("random.orb", 0.5);
                 main.getRenderListener().setTitleFeature(Feature.SUMMONING_EYE_ALERT);
                 main.getScheduler().schedule(Scheduler.CommandType.RESET_TITLE_FEATURE, main.getConfigValues().getWarningSeconds());
-
-            } else if (e.message.getFormattedText().equals("§r§aA special §r§5Zealot §r§ahas spawned nearby!§r")) {
+            } else if (formattedText.equals("§r§aA special §r§5Zealot §r§ahas spawned nearby!§r")) {
                 if (main.getConfigValues().isEnabled(Feature.SPECIAL_ZEALOT_ALERT)) {
                     main.getUtils().playLoudSound("random.orb", 0.5);
                     main.getRenderListener().setTitleFeature(Feature.SUMMONING_EYE_ALERT);
@@ -268,13 +167,31 @@ public class PlayerListener {
                 }
                 if (main.getConfigValues().isEnabled(Feature.ZEALOT_COUNTER)) {
                     // Edit the message to include counter.
-                    e.message = new ChatComponentText(e.message.getFormattedText() + EnumChatFormatting.GRAY + " (" + main.getPersistentValues().getKills() + ")");
+                    e.message = new ChatComponentText(e.message.getFormattedText() + ChatFormatting.GRAY + " (" + main.getPersistentValues().getKills() + ")");
                     main.getPersistentValues().setKills(-1); // This is triggered before the death of the killed zealot, so this is set to -1 to account for that.
                 }
             }
 
             if (main.getConfigValues().isEnabled(Feature.DISABLE_MAGICAL_SOUP_MESSAGES) && randomMessages.contains(message)) {
                 e.setCanceled(true);
+            }
+
+            if (main.getConfigValues().isEnabled(Feature.NO_ARROWS_LEFT_ALERT)) {
+                if (formattedText.equals("§r§cYou don't have any more Arrows left in your Quiver!§r")) {
+                    main.getUtils().playLoudSound("random.orb", 0.5);
+                    main.getRenderListener().setSubtitleFeature(Feature.NO_ARROWS_LEFT_ALERT);
+                    main.getScheduler().schedule(Scheduler.CommandType.RESET_SUBTITLE_FEATURE, main.getConfigValues().getWarningSeconds());
+                } else if (formattedText.startsWith("§r§cYou only have") && formattedText.endsWith("Arrows left in your Quiver!§r")) {
+                    int arrowsLeft = Integer.parseInt(main.getUtils().getNumbersOnly(formattedText).trim());
+                    main.getUtils().playLoudSound("random.orb", 0.5);
+                    main.getRenderListener().setSubtitleFeature(Feature.NO_ARROWS_LEFT_ALERT);
+                    main.getRenderListener().setArrowsLeft(arrowsLeft);// THIS IS IMPORTANT
+                    main.getScheduler().schedule(Scheduler.CommandType.RESET_SUBTITLE_FEATURE, main.getConfigValues().getWarningSeconds());
+                }
+            }
+
+            if (formattedText.startsWith("§7Sending to server ")){
+                lastSkyblockServerJoinAttempt = System.currentTimeMillis();
             }
 
             Matcher matcher = ABILITY_CHAT_PATTERN.matcher(e.message.getFormattedText());
@@ -314,9 +231,10 @@ public class PlayerListener {
     public void onInteract(PlayerInteractEvent e) {
         Minecraft mc = Minecraft.getMinecraft();
         ItemStack heldItem = e.entityPlayer.getHeldItem();
+
         if (main.getUtils().isOnSkyblock() && e.entityPlayer == mc.thePlayer && heldItem != null) {
-            // Prevent using ember rod on personal island
-            if (heldItem.getItem().equals(Items.fishing_rod) // Update fishing status
+            // Update fishing status
+            if (heldItem.getItem().equals(Items.fishing_rod)
                     && (e.action == PlayerInteractEvent.Action.RIGHT_CLICK_BLOCK || e.action == PlayerInteractEvent.Action.RIGHT_CLICK_AIR)) {
                 if (main.getConfigValues().isEnabled(Feature.FISHING_SOUND_INDICATOR)) {
                     oldBobberIsInWater = false;
@@ -326,7 +244,8 @@ public class PlayerListener {
                 if (main.getConfigValues().isEnabled(Feature.SHOW_ITEM_COOLDOWNS) && mc.thePlayer.fishEntity != null) {
                     CooldownManager.put(mc.thePlayer.getHeldItem());
                 }
-            } else if (main.getConfigValues().isEnabled(Feature.AVOID_PLACING_ENCHANTED_ITEMS) && EnchantedItemBlacklist.shouldBlockUsage(heldItem, e.action)) {
+            }
+            else if (main.getConfigValues().isEnabled(Feature.AVOID_PLACING_ENCHANTED_ITEMS) && EnchantedItemBlacklist.shouldBlockUsage(heldItem, e.action)) {
                 e.setCanceled(true);
             }
         }
@@ -342,17 +261,17 @@ public class PlayerListener {
             Minecraft mc = Minecraft.getMinecraft();
             if (mc != null) { // Predict health every tick if needed.
 
-                if (healthUpdate != null && System.currentTimeMillis() - lastHealthUpdate > 3000) {
-                    healthUpdate = null;
+                if (actionBarParser.getHealthUpdate() != null && System.currentTimeMillis() - actionBarParser.getLastHealthUpdate() > 3000) {
+                    actionBarParser.setHealthUpdate(null);
                 }
                 if (main.getRenderListener().isPredictHealth()) {
                     EntityPlayerSP p = mc.thePlayer;
                     if (p != null) { //Reverse calculate the player's health by using the player's vanilla hearts. Also calculate the health change for the gui item.
                         int newHealth = Math.round(getAttribute(Attribute.MAX_HEALTH) * (p.getHealth() / p.getMaxHealth()));
                         main.getScheduler().schedule(Scheduler.CommandType.SET_LAST_SECOND_HEALTH, 1, newHealth);
-                        if (lastSecondHealth != -1 && lastSecondHealth != newHealth) {
-                            healthUpdate = newHealth - lastSecondHealth;
-                            lastHealthUpdate = System.currentTimeMillis();
+                        if (actionBarParser.getLastSecondHealth() != -1 && actionBarParser.getLastSecondHealth() != newHealth) {
+                            actionBarParser.setHealthUpdate(newHealth - actionBarParser.getLastSecondHealth());
+                            actionBarParser.setLastHealthUpdate(System.currentTimeMillis());
                         }
                         setAttribute(Attribute.HEALTH, newHealth);
                     }
@@ -381,6 +300,10 @@ public class PlayerListener {
                         if (mc.currentScreen == null && main.getConfigValues().isEnabled(Feature.ITEM_PICKUP_LOG)
                                 && main.getPlayerListener().didntRecentlyJoinWorld()) {
                             main.getInventoryUtils().getInventoryDifference(p.inventory.mainInventory);
+                        }
+
+                        if(main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.TAB_EFFECT_TIMERS)){
+                            TabEffectManager.getInstance().updatePotionEffects();
                         }
                     }
 
@@ -420,7 +343,7 @@ public class PlayerListener {
                 }
             }
 
-            if (main.getUtils().getLocation() == EnumUtils.Location.ISLAND) {
+            if (main.getUtils().getLocation() == Location.ISLAND) {
                 int cooldown = main.getConfigValues().getWarningSeconds() * 1000 + 5000;
                 if (main.getConfigValues().isEnabled(Feature.MINION_FULL_WARNING) &&
                         entity.getCustomNameTag().equals("§cMy storage is full! :(")) {
@@ -432,12 +355,12 @@ public class PlayerListener {
                         main.getScheduler().schedule(Scheduler.CommandType.RESET_SUBTITLE_FEATURE, main.getConfigValues().getWarningSeconds());
                     }
                 } else if (main.getConfigValues().isEnabled(Feature.MINION_STOP_WARNING) &&
-                        entity.getCustomNameTag().startsWith("§cI can\'t reach any ")) {
+                        entity.getCustomNameTag().startsWith("§cI can't reach any ")) {
                     long now = System.currentTimeMillis();
                     if (now - lastMinionSound > cooldown) {
                         lastMinionSound = now;
                         main.getUtils().playLoudSound("random.orb", 1);
-                        String mobName = entity.getCustomNameTag().split(Pattern.quote("§cI can\'t reach any "))[1].toLowerCase();
+                        String mobName = entity.getCustomNameTag().split(Pattern.quote("§cI can't reach any "))[1].toLowerCase();
                         if (mobName.lastIndexOf("s") == mobName.length() - 1) {
                             mobName = mobName.substring(0, mobName.length() - 1);
                         }
@@ -449,9 +372,7 @@ public class PlayerListener {
             }
         }
     }
-    
-    private Set<Entity> countedEndermen = new HashSet<>();
-    
+
     @SubscribeEvent
     public void onAttack(AttackEntityEvent e) {
     	if (main.getConfigValues().isEnabled(Feature.ZEALOT_COUNTER) && e.target instanceof EntityEnderman) {
@@ -465,7 +386,7 @@ public class PlayerListener {
             }
     	}
     }
-    
+
     @SubscribeEvent
     public void onDeath(LivingDeathEvent e) {
     	if (main.getConfigValues().isEnabled(Feature.ZEALOT_COUNTER) && e.entity instanceof EntityEnderman) {
@@ -474,9 +395,6 @@ public class PlayerListener {
             }
     	}
     }
-
-    private long lastBossSpawnPost = -1;
-    private long lastBossDeathPost = -1;
 
     /**
      * The main timer for the magma boss checker.
@@ -515,7 +433,7 @@ public class PlayerListener {
                         }
                         if (!foundBoss && magmaAccuracy == EnumUtils.MagmaTimerAccuracy.SPAWNED) {
                             magmaAccuracy = EnumUtils.MagmaTimerAccuracy.ABOUT;
-                            setMagmaTime(7200, true);
+                            magmaTime = 7200;
                             if (currentTime - lastBossDeathPost > 300000) {
                                 lastBossDeathPost = currentTime;
                                 main.getUtils().sendPostRequest(EnumUtils.MagmaEvent.BOSS_DEATH);
@@ -540,16 +458,13 @@ public class PlayerListener {
         }
     }
 
-    private long lastMagmaWavePost = -1;
-    private long lastBlazeWavePost = -1;
-
     @SubscribeEvent()
     public void onTickMagmaBossChecker(EntityEvent.EnteringChunk e) { // EntityJoinWorldEvent
 
         // Between these two coordinates is the whole "arena" area where all the magmas and stuff are.
         AxisAlignedBB spawnArea = new AxisAlignedBB(-244, 0, -566, -379, 255, -635);
 
-        if (main.getUtils().getLocation() == EnumUtils.Location.BLAZING_FORTRESS) {
+        if (main.getUtils().getLocation() == Location.BLAZING_FORTRESS) {
             Entity entity = e.entity;
             if (spawnArea.isVecInside(new Vec3(entity.posX, entity.posY, entity.posZ))) { // timers will trigger if 15 magmas/8 blazes spawn in the box within a 4 second time period
                 long currentTime = System.currentTimeMillis();
@@ -558,7 +473,7 @@ public class PlayerListener {
                         recentMagmaCubes++;
                         main.getScheduler().schedule(Scheduler.CommandType.SUBTRACT_MAGMA_COUNT, 4);
                         if (recentMagmaCubes >= 17) {
-                            setMagmaTime(600, true);
+                            magmaTime = 600;
                             magmaAccuracy = EnumUtils.MagmaTimerAccuracy.EXACTLY;
                             if (currentTime - lastMagmaWavePost > 300000) {
                                 lastMagmaWavePost = currentTime;
@@ -571,7 +486,7 @@ public class PlayerListener {
                         recentBlazes++;
                         main.getScheduler().schedule(Scheduler.CommandType.SUBTRACT_BLAZE_COUNT, 4);
                         if (recentBlazes >= 10) {
-                            setMagmaTime(1200, true);
+                            magmaTime = 1200;
                             magmaAccuracy = EnumUtils.MagmaTimerAccuracy.EXACTLY;
                             if (currentTime - lastBlazeWavePost > 300000) {
                                 lastBlazeWavePost = currentTime;
@@ -590,24 +505,6 @@ public class PlayerListener {
     @SubscribeEvent()
     public void onItemTooltip(ItemTooltipEvent e) {
         ItemStack hoveredItem = e.itemStack;
-        if (hoveredItem.hasTagCompound() && GuiScreen.isCtrlKeyDown() && main.getUtils().isCopyNBT()) {
-            Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-            String nbt = hoveredItem.getTagCompound().toString();
-            try {
-                if (!clipboard.getData(DataFlavor.stringFlavor).equals(nbt)) {
-                    clipboard.setContents(new StringSelection(nbt), null);
-                    main.getUtils().sendMessage(EnumChatFormatting.GREEN + "Copied this item's NBT to clipboard!");
-                }
-            } catch (UnsupportedFlavorException | IOException ex) {
-                try {
-                    clipboard.setContents(new StringSelection(nbt), null);
-                    main.getUtils().sendMessage(EnumChatFormatting.GREEN + "Copied this item's NBT to clipboard!");
-                } catch (IllegalStateException ex1) {
-                    main.getUtils().sendMessage(EnumChatFormatting.RED + "Error copying item NBT to clipboard!");
-                    ex.printStackTrace();
-                }
-            }
-        }
 
         if (e.toolTip != null && main.getUtils().isOnSkyblock() && !main.getConfigValues().isRemoteDisabled(Feature.HIDE_GREY_ENCHANTS)) {
             for (int i = 1; i <= 3; i++) { // only a max of 2 gray enchants are possible
@@ -651,12 +548,15 @@ public class PlayerListener {
                     }
                 }
             }
-            if (main.getConfigValues().isEnabled(Feature.REPLACE_ROMAN_NUMERALS_WITH_NUMBERS)) {
 
+            if (main.getConfigValues().isEnabled(Feature.REPLACE_ROMAN_NUMERALS_WITH_NUMBERS)
+                    // To avoid "I" as in "me" to be replaced in that specific tooltip
+                    && !InventoryUtils.FAIRY_SOUL_EXCHANGE_DISPLAYNAME.equals(hoveredItem.getDisplayName())) {
                 for (int i = 0; i < e.toolTip.size(); i++) {
                     e.toolTip.set(i, RomanNumeralParser.replaceNumeralsWithIntegers(e.toolTip.get(i)));
                 }
             }
+
             if (main.getConfigValues().isEnabled(Feature.ORGANIZE_ENCHANTMENTS)) {
 
                 List<String> enchantments = new ArrayList<>();
@@ -701,9 +601,6 @@ public class PlayerListener {
         }
     }
 
-    private Class lastOpenedInventory = null;
-    private long lastClosedInv = -1;
-
     @SubscribeEvent
     public void onGuiOpen(GuiOpenEvent e) {
         if (e.gui == null && GuiChest.class.equals(lastOpenedInventory)) {
@@ -719,11 +616,27 @@ public class PlayerListener {
     public void onKeyInput(InputEvent.KeyInputEvent e) {
         if (main.getOpenSettingsKey().isPressed()) {
             main.getUtils().setFadingIn(true);
-            main.getRenderListener().setGuiToOpen(PlayerListener.GUIType.MAIN, 1, EnumUtils.GuiTab.FEATURES);
+            main.getRenderListener().setGuiToOpen(EnumUtils.GUIType.MAIN, 1, EnumUtils.GuiTab.MAIN);
         }
         else if (main.getOpenEditLocationsKey().isPressed()) {
             main.getUtils().setFadingIn(false);
-            main.getRenderListener().setGuiToOpen(PlayerListener.GUIType.EDIT_LOCATIONS, 0, null);
+            main.getRenderListener().setGuiToOpen(EnumUtils.GUIType.EDIT_LOCATIONS, 0, null);
+        }
+        else if (Keyboard.getEventKey() == DevUtils.DEV_KEY) {
+            long eventTime = TimeUnit.MILLISECONDS.convert(Keyboard.getEventNanoseconds(), TimeUnit.NANOSECONDS);
+
+            // For some reason four key presses are detected for each actual press so count only the first one.
+            if (eventTime - DevUtils.getLastDevKeyEvent() > 100L) {
+                DevUtils.setLastDevKeyEvent(Minecraft.getSystemTime());
+
+                // Copy Entity Data
+                if (main.isDevMode()) {
+                    EntityPlayerSP player = Minecraft.getMinecraft().thePlayer;
+                    List<Entity> entityList = Minecraft.getMinecraft().theWorld.loadedEntityList;
+
+                    DevUtils.copyEntityData(player, entityList);
+                }
+            }
         }
     }
 
@@ -751,11 +664,6 @@ public class PlayerListener {
         return false;
     }
 
-    public enum GUIType {
-        MAIN,
-        EDIT_LOCATIONS
-    }
-
     public boolean shouldResetMouse() {
         return System.currentTimeMillis() - lastClosedInv > 100;
     }
@@ -764,52 +672,21 @@ public class PlayerListener {
         return System.currentTimeMillis() - lastWorldJoin > 3000;
     }
 
-    Integer getHealthUpdate() {
-        return healthUpdate;
-    }
-
-    public EnumUtils.MagmaTimerAccuracy getMagmaAccuracy() {
-        return magmaAccuracy;
-    }
-
-    int getMagmaTime() {
-        return magmaTime;
-    }
-
-    public int getRecentBlazes() {
-        return recentBlazes;
-    }
-
-    public int getRecentMagmaCubes() {
-        return recentMagmaCubes;
-    }
-    
-    public void setRecentBlazes(int recentBlazes) {
-        this.recentBlazes = recentBlazes;
-    }
-
-    public void setRecentMagmaCubes(int recentMagmaCubes) {
-        this.recentMagmaCubes = recentMagmaCubes;
-    }
-
-    public void setMagmaAccuracy(EnumUtils.MagmaTimerAccuracy magmaAccuracy) {
-        this.magmaAccuracy = magmaAccuracy;
-    }
-
-    @SuppressWarnings("unused")
-    public void setMagmaTime(int magmaTime, boolean save) {
-        this.magmaTime = magmaTime;
-    }
-
-    public Set<CoordsPair> getRecentlyLoadedChunks() {
-        return recentlyLoadedChunks;
-    }
+    public boolean aboutToJoinSkyblockServer() { return System.currentTimeMillis() - lastSkyblockServerJoinAttempt < 6000; }
 
     public void setLastSecondHealth(int lastSecondHealth) {
-        this.lastSecondHealth = lastSecondHealth;
+        actionBarParser.setLastSecondHealth(lastSecondHealth);
     }
 
     public int getTickers() {
-        return tickers;
+        return actionBarParser.getTickers();
+    }
+
+    public int getMaxTickers() {
+        return actionBarParser.getMaxTickers();
+    }
+
+    Integer getHealthUpdate() {
+        return actionBarParser.getHealthUpdate();
     }
 }

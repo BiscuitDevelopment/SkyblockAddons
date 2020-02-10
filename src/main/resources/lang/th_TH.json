@@ -1,12 +1,6 @@
 {
   "language": "ภาษาไทย",
   "settings": {
-    "tab": {
-      "features": "ฟีเจอร์",
-      "fixes": "การแก้ไข",
-      "guiFeatures": "ตั้งค่าต่างๆของ GUI",
-      "generalSettings": "ตั้งค่าทั่วไป"
-    },
     "settings": "ตั้งค่า",
     "magmaBossWarning": "แจ้งเตือนว่าบอส Magma ได้เกิดแล้ว",
     "itemDropConfirmation": "ยืนยันการทิ้งไอเทม",
@@ -21,7 +15,7 @@
     "hideDurability": "ซ่อนหลอดความทนทานของอุปกรณ์",
     "showEnchantmentsReforges": "การ Enchants และตีบวกของ",
     "minionStopWarning": "แจ้งเตือนมินเนียนไม่สามารถเอื้อมถึง Mob ได้",
-    "hideAuctionHousePlayers": "ซ่อนผู้เล่นที่อยู่ใกล้ NPC สำคัญ",
+    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
     "backpackStyle": "ลักษณะของกระเป๋า: %style%",
     "backpackStyles": {
       "regular": "ปกติ",
@@ -83,7 +77,26 @@
     "revenantIndicator": "ตัวบอกความคืบหน้าของเกราะเควส Slayer",
     "specialZealotAlert": "แจ้งเตือน Special Zealot",
     "enableMessageWhenActionPrevented": "แสดงข้อความเมื่อโดนห้ามทำ",
-    "hidePetHealthBar": "ซ่อนหลอดเลือดสัตว์เลี้ยง"
+    "hidePetHealthBar": "ซ่อนหลอดเลือดสัตว์เลี้ยง",
+    "powerOrbDisplay": "แสดงลูกแก้ววิเศษ",
+    "powerOrbDisplayStyle": "รูปแบบลูกแก้ววิเศษ %style%",
+    "powerOrbStyle": {
+      "detailed": "รายละเอียดสูง",
+      "compact": "กระทัดรัด"
+    },
+    "disableMagicalSoupMessage": "ปิดข้อความการใช้งานของซุปเห็ดบิน",
+    "zealotCounter": "แสดงจำนวนการฆ่า Zealot",
+    "tickerChargesDisplay": "แสดงจำนวนชาร์จ",
+    "tab": {
+      "generalSettings": "ตั้งค่าทั่วไป"
+    },
+    "tabEffectTimers": "ระบะเวลายาและพลังวิเศษ",
+    "noArrowsLeftAlert": "แจ้งเตือนลูกศรหมด",
+    "hideNightVisionEffectTimer": "ซ่อนระยะเวลาเอฟเฟ็ค Night Vision",
+    "showCakeBagPreview": "แสดงไอเท็มในถุงเก็บเค้ก",
+    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
+    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
+    "enableDevFeatures": "Enable Developer Features"
   },
   "messages": {
     "dropConfirmation": "กดทิ้งของอีกที่เพื่อยืนยันทิ้งของสิ่งนี้!",
@@ -127,6 +140,11 @@
     "specialZealotFound": "Special Zealot!",
     "blockIncompletePatterns": "ป้องกันการคราฟที่ไม่เป็นไปตามแบบ (แนะนำให้ใช้)",
     "searchFeatures": "ค้นหาฟีเจอร์",
-    "downloadingUpdateFile": "กำลังดาวน์โหลดไฟล์อัพเดท"
+    "downloadingUpdateFile": "กำลังดาวน์โหลดไฟล์อัพเดท",
+    "onlyFewArrowsLeft": "ลูกศรเหลือ %arrows% ดอก",
+    "noArrowsLeft": "ลูกศรหมดแล้ว",
+    "chooseAColor": "เลือกสี",
+    "selectedColor": "สีที่เลือก",
+    "setHexColor": "ตั้งค่าสี"
   }
 }

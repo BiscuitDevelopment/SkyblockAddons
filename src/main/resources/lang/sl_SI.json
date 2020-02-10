@@ -1,12 +1,6 @@
 {
   "language": "slovenščina",
   "settings": {
-    "tab": {
-      "features": "Funkcije",
-      "fixes": "Popravki",
-      "guiFeatures": "Funkcije GUI-ja",
-      "generalSettings": "Splošne Nastavitve"
-    },
     "settings": "Nastavitve",
     "magmaBossWarning": "Magma Boss Opozorilo",
     "itemDropConfirmation": "Potrditev za Izpust Stvari",
@@ -21,7 +15,7 @@
     "hideDurability": "Skrij Trpežnost Orodja",
     "showEnchantmentsReforges": "Enchanti & Reforgi",
     "minionStopWarning": "\"Minion Ne Doseže\" Opozorilo",
-    "hideAuctionHousePlayers": "Skrij Igralce Blizu Pomembnih NPC-jev",
+    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
     "backpackStyle": "Stil Nahrbtnika: %style%",
     "backpackStyles": {
       "regular": "Navaden",
@@ -53,7 +47,7 @@
     "lockSlot": "Zakleni Prostor",
     "dontResetCursorInventory": "Ne Ponastavljaj Kazalca Med Inventarji",
     "summoningEyeAlert": "Opozorilo Za Summoning Oko",
-    "makeEnderchestsInEndGreen": "Change Enderchest Color in the End",
+    "makeEnderchestsInEndGreen": "Spremeni barvo Enderchest-a v End-u",
     "changeColor": "Spremeni barvo",
     "showInOtherGames": "Pokaži v Drugih Igrah",
     "useVanillaTexture": "Uporabi Vanilla Izgled",
@@ -79,11 +73,30 @@
     "speedPercentage": "Odstotek Hitrosti",
     "collectionDisplay": "Prikaz Skill Napredka",
     "onlyMineOresDeepCaverns": "Uničuj Rude Samo v Deep Caverns-ih",
-    "onlyMineValuablesNether": "Only Mine Valuables in the Nether",
-    "revenantIndicator": "Slayer Armor Progress Indicator",
+    "onlyMineValuablesNether": "Koplji samo dragocenosti v Nether-ju",
+    "revenantIndicator": "Indikator napredka na Slayer oklepu",
     "specialZealotAlert": "Opozorilo za Posebnega Zealota",
-    "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented",
-    "hidePetHealthBar": "Hide Pet Health Bar"
+    "enableMessageWhenActionPrevented": "Prikaži Sporočilo, ko je Dejanje Onemogočeno",
+    "hidePetHealthBar": "Skrij Vrstico Zdravja Ljubljenčka",
+    "powerOrbDisplay": "Prikaz Power Orb-a",
+    "powerOrbDisplayStyle": "Stil Power Orb-a: %style%",
+    "powerOrbStyle": {
+      "detailed": "Podrobno",
+      "compact": "Kompaktno"
+    },
+    "disableMagicalSoupMessage": "Onesposobljenje Sporočil Čarobne Gobje Juhe",
+    "zealotCounter": "Prikaz Števca Zealotov",
+    "tickerChargesDisplay": "Ticker/Charges Display",
+    "tab": {
+      "generalSettings": "Splošne Nastavitve"
+    },
+    "tabEffectTimers": "Časovnik za napoje in učinke",
+    "noArrowsLeftAlert": "Opozorilo za manjko puščic",
+    "hideNightVisionEffectTimer": "Skrij časovnik za Night Vision Potion",
+    "showCakeBagPreview": "Pokaži predogled torb s tortami",
+    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
+    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
+    "enableDevFeatures": "Enable Developer Features"
   },
   "messages": {
     "dropConfirmation": "Ponovno Izpusti To Stvar za Potrditev!",
@@ -125,8 +138,13 @@
     "featureDisabled": "Funkcija izklopljena",
     "anvilUses": "Število Uporab Nakovala: %uses%",
     "specialZealotFound": "Posebni Zealot!",
-    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)",
-    "searchFeatures": "Search features",
-    "downloadingUpdateFile": "Downloading update file..."
+    "blockIncompletePatterns": "Blokiraj izdelovanje nepopolnih oblik (priporočljivo)",
+    "searchFeatures": "Iskanje Funkcij",
+    "downloadingUpdateFile": "Prenašanje posodobitev...",
+    "onlyFewArrowsLeft": "Ostalo še %arrows% puščic!",
+    "noArrowsLeft": "Zmanjkalo puščic!",
+    "chooseAColor": "Izberi barvo",
+    "selectedColor": "Izbrana barva",
+    "setHexColor": "Nastavi Hex barvo"
   }
 }

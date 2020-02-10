@@ -2,7 +2,6 @@ package codes.biscuit.skyblockaddons.gui;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.gui.buttons.*;
-import codes.biscuit.skyblockaddons.listeners.PlayerListener;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.Feature;
 import codes.biscuit.skyblockaddons.utils.Language;
@@ -34,6 +33,7 @@ public class SettingsGui extends GuiScreen {
     private EnumUtils.GuiTab lastTab;
     private boolean closingGui = false;
     private Collection<EnumUtils.FeatureSetting> settings;
+    private String lastText;
 
     private long timeOpened = System.currentTimeMillis();
 
@@ -41,13 +41,14 @@ public class SettingsGui extends GuiScreen {
      * The main gui, opened with /sba.
      */
     SettingsGui(SkyblockAddons main, Feature feature, int page,
-                int lastPage, EnumUtils.GuiTab lastTab, Collection<EnumUtils.FeatureSetting> settings) {
+                int lastPage, EnumUtils.GuiTab lastTab, Collection<EnumUtils.FeatureSetting> settings, String lastText) {
         this.main = main;
         this.feature = feature;
         this.page = page;
         this.lastPage = lastPage;
         this.lastTab = lastTab;
         this.settings = settings;
+        this.lastText = lastText;
     }
 
     @SuppressWarnings("IntegerDivisionInFloatingPointContext")
@@ -118,10 +119,8 @@ public class SettingsGui extends GuiScreen {
         if (alpha < 4) alpha = 4; // Text under 4 alpha appear 100% transparent for some reason o.O
         int defaultBlue = main.getUtils().getDefaultBlue(alpha*2);
 
-        // The text at the top of the GUI
-        drawScaledString("SkyblockAddons", 28, defaultBlue, 2.5F);
-        drawScaledString("v" + SkyblockAddons.VERSION + " by Biscut", 49, defaultBlue, 1.3, 50);
-//        drawScaledString("Features", 0.21, defaultBlue, 1.5, -100, 0);
+        SkyblockAddonsGui.drawDefaultTitleText(this, alpha*2);
+
         if (feature != Feature.LANGUAGE) {
             mc.getTextureManager().bindTexture(FEATURE_BACKGROUND);
             int halfWidth = width/2;
@@ -129,12 +128,12 @@ public class SettingsGui extends GuiScreen {
             int x = halfWidth-90-boxWidth;
             int width = halfWidth+90+boxWidth;
             width -= x;
-            int height = (int)(getRowHeight(6)-getRowHeight(1));
+            int height = (int)(getRowHeightSetting(settings.size())-50);
             int y =(int)getRowHeight(1);
             GlStateManager.enableBlend();
             GlStateManager.color(1,1,1,0.7F);
             drawModalRectWithCustomSizedTexture(x, y,0,0,width,height,width,height);
-            drawScaledString(Message.SETTING_SETTINGS.getMessage(), 110, defaultBlue, 1.5);
+            SkyblockAddonsGui.drawScaledString(this, Message.SETTING_SETTINGS.getMessage(), 110, defaultBlue, 1.5, 0);
         }
         super.drawScreen(mouseX, mouseY, partialTicks); // Draw buttons.
         if (feature == Feature.LANGUAGE) {
@@ -156,11 +155,13 @@ public class SettingsGui extends GuiScreen {
         } else if (abstractButton instanceof ButtonSwitchTab) {
             ButtonSwitchTab tab = (ButtonSwitchTab)abstractButton;
             mc.displayGuiScreen(new SkyblockAddonsGui(main, 1, tab.getTab()));
-        } else if (abstractButton instanceof ButtonColor) {
-            main.getConfigValues().setNextColor(feature);
+        } else if (abstractButton instanceof ButtonOpenColorMenu) {
+            closingGui = true;
+            mc.displayGuiScreen(new ColorSelectionGui(feature, lastTab, lastPage));
         } else if (abstractButton instanceof ButtonToggleTitle) {
             ButtonFeature button = (ButtonFeature)abstractButton;
             Feature feature = button.getFeature();
+            if (feature == null) return;
             if (main.getConfigValues().isDisabled(feature)) {
                 main.getConfigValues().getDisabledFeatures().remove(feature);
             } else {
@@ -174,12 +175,12 @@ public class SettingsGui extends GuiScreen {
         } else if (feature == Feature.SHOW_BACKPACK_PREVIEW) {
             main.getConfigValues().setBackpackStyle(main.getConfigValues().getBackpackStyle().getNextType());
             closingGui = true;
-            Minecraft.getMinecraft().displayGuiScreen(new SettingsGui(main, feature, page, lastPage, lastTab, settings));
+            Minecraft.getMinecraft().displayGuiScreen(new SettingsGui(main, feature, page, lastPage, lastTab, settings, lastText));
             closingGui = false;
         } else if(feature == Feature.POWER_ORB_STATUS_DISPLAY && abstractButton instanceof ButtonSolid) {
             main.getConfigValues().setPowerOrbDisplayStyle(main.getConfigValues().getPowerOrbDisplayStyle().getNextType());
             closingGui = true;
-            Minecraft.getMinecraft().displayGuiScreen(new SettingsGui(main, feature, page, lastPage, lastTab, settings));
+            Minecraft.getMinecraft().displayGuiScreen(new SettingsGui(main, feature, page, lastPage, lastTab, settings, lastText));
             closingGui = false;
         } else if (abstractButton instanceof ButtonArrow) {
             ButtonArrow arrow = (ButtonArrow)abstractButton;
@@ -187,29 +188,13 @@ public class SettingsGui extends GuiScreen {
                 main.getUtils().setFadingIn(false);
                 if (arrow.getArrowType() == ButtonArrow.ArrowType.RIGHT) {
                     closingGui = true;
-                    mc.displayGuiScreen(new SettingsGui(main, feature, ++page, lastPage, lastTab, settings));
+                    mc.displayGuiScreen(new SettingsGui(main, feature, ++page, lastPage, lastTab, settings, lastText));
                 } else {
                     closingGui = true;
-                    mc.displayGuiScreen(new SettingsGui(main, feature, --page, lastPage, lastTab, settings));
+                    mc.displayGuiScreen(new SettingsGui(main, feature, --page, lastPage, lastTab, settings, lastText));
                 }
             }
         }
-    }
-
-    private void drawScaledString(String text, int y, int color, double scale) {
-        drawScaledString(text, y, color, scale, 0);
-    }
-
-    /**
-     * To avoid repeating the code for scaled text, use this instead.
-     */
-    private void drawScaledString(String text, int y, int color, double scale, int xOff) {
-        double x = width/2;
-        GlStateManager.pushMatrix();
-        GlStateManager.scale(scale, scale, 1);
-        drawCenteredString(fontRendererObj, text,
-                (int)(x/scale)+xOff, (int)(y/scale), color);
-        GlStateManager.popMatrix();
     }
 
     private void addLanguageButton(Language language) {
@@ -241,43 +226,20 @@ public class SettingsGui extends GuiScreen {
         int x = halfWidth-(boxWidth/2);
         double y = getRowHeightSetting(row);
         if (setting == EnumUtils.FeatureSetting.COLOR) {
-            buttonList.add(new ButtonColor(x, y, 100, 20, Message.SETTING_CHANGE_COLOR.getMessage(), main, feature));
+            buttonList.add(new ButtonOpenColorMenu(x, y, 100, 20, Message.SETTING_CHANGE_COLOR.getMessage(), main, feature));
         } else if (setting == EnumUtils.FeatureSetting.GUI_SCALE) {
             buttonList.add(new ButtonGuiScale(x, y, 100, 20, main, feature));
         } else if (setting == EnumUtils.FeatureSetting.ENABLED_IN_OTHER_GAMES) {
             boxWidth = 31;
             x = halfWidth-(boxWidth/2);
             y = getRowHeightSetting(row);
+
             Feature settingFeature = null;
-            if (feature == Feature.MAGMA_BOSS_TIMER) {
-                settingFeature = Feature.SHOW_MAGMA_TIMER_IN_OTHER_GAMES;
-            } else if (feature == Feature.DARK_AUCTION_TIMER) {
-                settingFeature = Feature.SHOW_DARK_AUCTION_TIMER_IN_OTHER_GAMES;
-            } else if (feature == Feature.DROP_CONFIRMATION) {
-                settingFeature = Feature.DOUBLE_DROP_IN_OTHER_GAMES;
-            }
+            if (feature == Feature.MAGMA_BOSS_TIMER) { settingFeature = Feature.SHOW_MAGMA_TIMER_IN_OTHER_GAMES;
+            } else if (feature == Feature.DARK_AUCTION_TIMER) { settingFeature = Feature.SHOW_DARK_AUCTION_TIMER_IN_OTHER_GAMES;
+            } else if (feature == Feature.DROP_CONFIRMATION) { settingFeature = Feature.DOUBLE_DROP_IN_OTHER_GAMES; }
+
             buttonList.add(new ButtonToggleTitle(x, y, Message.SETTING_SHOW_IN_OTHER_GAMES.getMessage(), main, settingFeature));
-        } else if (setting == EnumUtils.FeatureSetting.USE_VANILLA_TEXTURE) {
-            row++;
-            boxWidth = 31;
-            x = halfWidth-(boxWidth/2);
-            y = getRowHeightSetting(row);
-            buttonList.add(new ButtonToggleTitle(x, y, Message.SETTING_USE_VANILLA_TEXTURE.getMessage(), main, Feature.USE_VANILLA_TEXTURE_DEFENCE));
-        } else if (setting == EnumUtils.FeatureSetting.SHOW_ONLY_WHEN_HOLDING_SHIFT) {
-            boxWidth = 31;
-            x = halfWidth - (boxWidth / 2);
-            y = getRowHeightSetting(row);
-            buttonList.add(new ButtonToggleTitle(x, y, Message.SETTING_SHOW_ONLY_WHEN_HOLDING_SHIFT.getMessage(), main, Feature.SHOW_BACKPACK_HOLDING_SHIFT));
-        } else if (setting == EnumUtils.FeatureSetting.MAKE_INVENTORY_COLORED) {
-            boxWidth = 31;
-            x = halfWidth - (boxWidth / 2);
-            y = getRowHeightSetting(row);
-            buttonList.add(new ButtonToggleTitle(x, y, Message.SETTING_MAKE_BACKPACK_INVENTORIES_COLORED.getMessage(), main, Feature.MAKE_BACKPACK_INVENTORIES_COLORED));
-        } else if (setting == EnumUtils.FeatureSetting.CHANGE_BAR_COLOR_WITH_POTIONS) {
-            boxWidth = 31;
-            x = halfWidth - (boxWidth / 2);
-            y = getRowHeightSetting(row);
-            buttonList.add(new ButtonToggleTitle(x, y, Message.SETTING_CHANGE_BAR_COLOR_WITH_POTIONS.getMessage(), main, Feature.CHANGE_BAR_COLOR_FOR_POTIONS));
         } else if (setting == EnumUtils.FeatureSetting.BACKPACK_STYLE) {
             boxWidth = 140;
             x = halfWidth-(boxWidth/2);
@@ -286,13 +248,10 @@ public class SettingsGui extends GuiScreen {
             boxWidth = 31;
             x = halfWidth - (boxWidth / 2);
 
-            // Don't forget to add another "else if" when pulling the nether feature
             Feature settingFeature = null;
-            if (feature == Feature.ONLY_MINE_ORES_DEEP_CAVERNS) {
-                settingFeature = Feature.ENABLE_MESSAGE_WHEN_MINING_DEEP_CAVERNS;
-            } else if (feature == Feature.AVOID_BREAKING_STEMS) {
-                settingFeature = Feature.ENABLE_MESSAGE_WHEN_BREAKING_STEMS;
-            }
+            if (feature == Feature.ONLY_MINE_ORES_DEEP_CAVERNS) { settingFeature = Feature.ENABLE_MESSAGE_WHEN_MINING_DEEP_CAVERNS;
+            } else if (feature == Feature.AVOID_BREAKING_STEMS) { settingFeature = Feature.ENABLE_MESSAGE_WHEN_BREAKING_STEMS;
+            } else if (feature == Feature.ONLY_MINE_VALUABLES_NETHER) { settingFeature = Feature.ENABLE_MESSAGE_WHEN_MINING_NETHER; }
 
             buttonList.add(new ButtonToggleTitle(x, y, Message.SETTING_ENABLE_MESSAGE_WHEN_ACTION_PREVENTED.getMessage(), main, settingFeature));
         } else if(setting == EnumUtils.FeatureSetting.POWER_ORB_DISPLAY_STYLE) {
@@ -318,6 +277,15 @@ public class SettingsGui extends GuiScreen {
                     main.getConfigValues().setDiscordDeatils(selectedStatus);
                 }
             }));
+        } else {
+            boxWidth = 31; // Default size and stuff.
+            x = halfWidth-(boxWidth/2);
+            y = getRowHeightSetting(row);
+            System.out.println(setting.name());
+            buttonList.add(new ButtonToggleTitle(x, y, setting.getMessage().getMessage(), main, setting.getFeatureEquivalent()));
+            if (setting.getFeatureEquivalent() == null) {
+                System.out.println(feature.getId());
+            }
         }
         row++;
     }
@@ -342,6 +310,6 @@ public class SettingsGui extends GuiScreen {
 
     private void returnToGui() {
         closingGui = true;
-        main.getRenderListener().setGuiToOpen(PlayerListener.GUIType.MAIN, lastPage, lastTab);
+        main.getRenderListener().setGuiToOpen(EnumUtils.GUIType.MAIN, lastPage, lastTab, lastText);
     }
 }

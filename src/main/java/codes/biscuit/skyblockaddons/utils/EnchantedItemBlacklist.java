@@ -11,7 +11,9 @@ public enum EnchantedItemBlacklist {
 
     LAVA(Items.lava_bucket, false, Feature.AVOID_PLACING_ENCHANTED_ITEMS, true),
     DIAMOND(Item.getItemFromBlock(Blocks.diamond_block), false, Feature.AVOID_PLACING_ENCHANTED_ITEMS,true),
+    SNOW(Item.getItemFromBlock(Blocks.snow), true, Feature.AVOID_PLACING_ENCHANTED_ITEMS, true),
     STRING(Items.string, false, Feature.AVOID_PLACING_ENCHANTED_ITEMS, true),
+    WOOL(Item.getItemFromBlock(Blocks.wool), true, Feature.AVOID_PLACING_ENCHANTED_ITEMS, true),
     BLAZE_ROD(Items.blaze_rod, true, Feature.DISABLE_EMBER_ROD, false);
 
     private Item item;
@@ -31,8 +33,10 @@ public enum EnchantedItemBlacklist {
         boolean blockUsage = false;
         if (itemStack != null && itemStack.isItemEnchanted()) {
             for (EnchantedItemBlacklist blacklistItem : EnchantedItemBlacklist.values()) {
-                if (main.getConfigValues().isEnabled(blacklistItem.feature) && blacklistItem.item.equals(itemStack.getItem()) &&
-                        (!blacklistItem.onlyOnIsland || main.getUtils().getLocation() == EnumUtils.Location.ISLAND) && !main.getUtils().isMaterialForRecipe(itemStack)) {
+                if (main.getConfigValues().isEnabled(blacklistItem.feature) &&
+                        blacklistItem.item.getRegistryName().contentEquals(itemStack.getItem().getRegistryName()) &&
+                        (!blacklistItem.onlyOnIsland || main.getUtils().getLocation() == Location.ISLAND) &&
+                        !main.getUtils().isMaterialForRecipe(itemStack)) {
 
                     if (action == PlayerInteractEvent.Action.RIGHT_CLICK_AIR && blacklistItem.onlyBlockPlacement) continue;
 

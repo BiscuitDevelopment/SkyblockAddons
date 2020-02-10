@@ -1,12 +1,6 @@
 {
   "language": "OwO wanguage uwu",
   "settings": {
-    "tab": {
-      "features": "Fwetuwures",
-      "fixes": "Fwxes",
-      "guiFeatures": "GUI Fwetwues",
-      "generalSettings": "Genewal Settings"
-    },
     "settings": "Settings",
     "magmaBossWarning": "Magmwa Bowoss Wawning",
     "itemDropConfirmation": "Itwem Dwop Comfowmatiwon",
@@ -21,7 +15,7 @@
     "hideDurability": "Hide Toow Duwabiwiwy",
     "showEnchantmentsReforges": "Enchawnts & Wefowoges",
     "minionStopWarning": "\"Minwion Cannwot Weach\" Wawning",
-    "hideAuctionHousePlayers": "Hide Pwayers Nyeaw Auwction Howse",
+    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
     "backpackStyle": "Bwackpack Stywe: %style%",
     "backpackStyles": {
       "regular": "Regurawr",
@@ -83,7 +77,26 @@
     "revenantIndicator": "Swawwer Awmowo Pwogwess Indicator ",
     "specialZealotAlert": "Spwecial Wealots Awert",
     "enableMessageWhenActionPrevented": "Show a Message When an Action is Pwevented",
-    "hidePetHealthBar": "Hwide Pwet Heawth Bawr"
+    "hidePetHealthBar": "Hwide Pwet Heawth Bawr",
+    "powerOrbDisplay": "POwO Owb Dispway",
+    "powerOrbDisplayStyle": "POwO Owb Style",
+    "powerOrbStyle": {
+      "detailed": "Detailed",
+      "compact": "Compact"
+    },
+    "disableMagicalSoupMessage": "Disable Magical Mushwoom Sowop Message",
+    "zealotCounter": "Showo Wealots Counter :3",
+    "tickerChargesDisplay": "Tiwwer/chawwer disway",
+    "tab": {
+      "generalSettings": "Genewal Settings"
+    },
+    "tabEffectTimers": "Powotions and Poworup Timers",
+    "noArrowsLeftAlert": "No Awwows Weft Awewt",
+    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
+    "showCakeBagPreview": "Show Preview for Cake Bags",
+    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
+    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
+    "enableDevFeatures": "Enable Developer Features"
   },
   "messages": {
     "dropConfirmation": "Dwop thwis itwem agwain to confiwm!",
@@ -127,6 +140,11 @@
     "specialZealotFound": "Spwecial Wealots OwO!",
     "blockIncompletePatterns": "Bwock cwafting incompwete pattewns (wecommended)",
     "searchFeatures": "Search Fwetuwures",
-    "downloadingUpdateFile": "Downwoading update fiwe..."
+    "downloadingUpdateFile": "Downwoading update fiwe...",
+    "onlyFewArrowsLeft": "Onwy %arrows% weft!",
+    "noArrowsLeft": "No Awwows Weft!",
+    "chooseAColor": "Choose a Color",
+    "selectedColor": "Selected Color",
+    "setHexColor": "Set Hex Color"
   }
 }
