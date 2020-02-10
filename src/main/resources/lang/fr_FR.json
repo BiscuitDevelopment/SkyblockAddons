@@ -95,7 +95,6 @@
     "hideNightVisionEffectTimer": "Masquer le minuteur de la vision nocturne",
     "showCakeBagPreview": "Aperçu des sacs à gâteau",
     "showBackpackPreviewInAH": "Afficher l'aperçu du sac à dos dans le /AH",
-    "hidePlayersNearHarp": "Masquer les joueurs près de la harpe de Mélodie",
     "enableDevFeatures": "Activer le mode développeur"
   },
   "messages": {
@@ -130,8 +129,8 @@
     },
     "slotLocked": "Cet emplacement est bloqué!",
     "summoningEyeFound": "Œil d'invocation!",
-    "cancelledStemBreak": "SkyblockAddons vous a empêché de détruire cette graine. Si vous souhaitez la détruire, utilisez votre main nu.",
-    "cancelledProfileOpening": "SkyblockAddons vous a empêché d'ouvrir le profil de ce joueur avec votre arc.",
+    "cancelledStemBreak": "SkyblockAddons vous a empêché de casser cette graine. Utilisez votre main si vous souhaitez la casser.",
+    "cancelledProfileOpening": "SkyblockAddons vous a empêché d'ouvrir le profil de ce joueur en utilisant un arc.",
     "cancelledDropping": "SkyblockAddons vous a empêché de jeter cet objet ou outil rare de votre barre d'action.",
     "clickMoreTimes": "Cliquez/jetez cet objet encore %times% fois si vous le souhaitez.",
     "cancelledDeepCaverns": "SkyblockAddons vous a empêché de miner ce bloc.",
