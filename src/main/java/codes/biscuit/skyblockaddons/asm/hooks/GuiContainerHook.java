@@ -346,14 +346,14 @@ public class GuiContainerHook {
     }
 
     public static void handleMouseClick(int guiLeft, int guiTop, int oldMouseX, int oldMouseY, int xSize, int ySize, ReturnValue returnValue) {
-        SkyblockAddons main = SkyblockAddons.getInstance();
+/*        SkyblockAddons main = SkyblockAddons.getInstance();
         if (main.getUtils().isOnSkyblock()) {
             boolean isOutsideGui = oldMouseX < guiLeft || oldMouseY < guiTop || oldMouseX >= guiLeft + xSize || oldMouseY >= guiTop + ySize;
             Minecraft mc = Minecraft.getMinecraft();
             if (main.getConfigValues().isEnabled(Feature.STOP_DROPPING_SELLING_RARE_ITEMS) &&
                     mc.thePlayer.inventory.getItemStack() != null && isOutsideGui &&
                     main.getInventoryUtils().shouldCancelDrop(mc.thePlayer.inventory.getItemStack())) returnValue.cancel();
-        }
+        }*/
     }
 
     private static Field zLevel = null;

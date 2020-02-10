@@ -5,13 +5,11 @@ import codes.biscuit.skyblockaddons.utils.Location;
 import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityArmorStand;
+import net.minecraft.scoreboard.ScorePlayerTeam;
 import net.minecraft.util.Vec3;
 
 import java.util.EnumSet;
 import java.util.Set;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 /**
  * This is a set of utility methods relating to Skyblock NPCs
  *
@@ -29,16 +27,30 @@ public class NPCUtils {
     /**
      * Checks if the given NPC is a merchant
      *
-     * @param NPCName the NPC's name in {@link NPC}
+     * @param NPCName the NPC's in-game name
      * @return {@code true} if the NPC is a merchant, {@code false} if it's not a merchant
      */
     public static boolean isMerchant(String NPCName) {
         for (NPC npc:
              NPC_LIST) {
-            if (npc.hasTag(Tag.MERCHANT)) {
-                if (npc.name().replaceAll(" ", "_").equalsIgnoreCase(npc.name())) {
-                    return true;
-                }
+            if (NPCName.equals(npc.getName()) && npc.hasTag(Tag.MERCHANT)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Checks if the NPC is a merchant with both buying and selling capabilities
+     *
+     * @param NPCName the NPC's in-game name
+     * @return {@code true} if the NPC is a merchant with buying and selling capabilities, {@code false} otherwise
+     */
+    public static boolean isFullMerchant(String NPCName) {
+        for (NPC npc:
+                NPC_LIST) {
+            if (NPCName.equals(npc.getName()) && npc.hasTag(Tag.MERCHANT) && !npc.hasTag(Tag.BUY_ONLY)) {
+                return true;
             }
         }
         return false;
@@ -202,17 +214,15 @@ public class NPCUtils {
     public static boolean isNPC(Entity entity) {
         if (entity instanceof EntityOtherPlayerMP) {
             EntityOtherPlayerMP player = (EntityOtherPlayerMP) entity;
-            Pattern skyblockPlayerTeamPattern = Pattern.compile("(a\\d{9})");
-            Matcher playerTeamMatcher;
+            ScorePlayerTeam playerTeam = (ScorePlayerTeam) player.getTeam();
 
             // If it doesn't have a team, it's likely not a player.
             if (player.getTeam() == null) {
                 return false;
             }
 
-            // Check if it's not a player because idk how to check if it's a Hypixel NPC
-            playerTeamMatcher = skyblockPlayerTeamPattern.matcher(player.getTeam().getRegisteredName());
-            return !playerTeamMatcher.matches();
+            // If it doesn't have a color prefix, it's not a player.
+            return playerTeam.getColorPrefix().equals("");
         }
         else if (entity instanceof EntityArmorStand) {
             return entity.isInvisible();

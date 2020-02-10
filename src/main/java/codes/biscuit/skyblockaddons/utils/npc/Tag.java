@@ -6,14 +6,17 @@ package codes.biscuit.skyblockaddons.utils.npc;
  * @author ILikePlayingGames
  * @version 1.0
  */
-enum Tag {
+public enum Tag {
     BUY_ONLY, // For merchants with only a purchase option
+    COW,
     EVENT,
     FURNITURE, // For public island furniture
     IMPORTANT,
+    INFO,
     MERCHANT,
     PLAYER,
     QUEST_NPC,
     OTHER,
-    UTILITY
+    UTILITY,
+    VILLAGER
 }

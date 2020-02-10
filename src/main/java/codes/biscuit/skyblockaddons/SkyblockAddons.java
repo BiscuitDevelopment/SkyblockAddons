@@ -27,7 +27,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 @Getter
-@Mod(modid = SkyblockAddons.MOD_ID, version = SkyblockAddons.VERSION, name = SkyblockAddons.MOD_NAME, useMetadata = true, clientSideOnly = true, acceptedMinecraftVersions = "[1.8.9]")
+@Mod(modid = SkyblockAddons.MOD_ID, version = SkyblockAddons.VERSION, name = SkyblockAddons.MOD_NAME, clientSideOnly = true, acceptedMinecraftVersions = "[1.8.9]")
 public class SkyblockAddons {
 
     static final String MOD_ID = "skyblockaddons";
@@ -52,7 +52,7 @@ public class SkyblockAddons {
 
     /** Whether developer mode is enabled. */
     @Setter private boolean devMode = false;
-    @Setter(AccessLevel.NONE) private KeyBinding[] keyBindings = new KeyBinding[5];
+    @Setter(AccessLevel.NONE) private KeyBinding[] keyBindings = new KeyBinding[4];
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent e) {
@@ -72,7 +72,6 @@ public class SkyblockAddons {
         keyBindings[1] = new KeyBinding("key.skyblockaddons.edit_gui", Keyboard.KEY_NONE, MOD_NAME);
         keyBindings[2] = new KeyBinding("key.skyblockaddons.lock_slot", Keyboard.KEY_L, MOD_NAME);
         keyBindings[3] = new KeyBinding("key.skyblockaddons.freeze_backpack", Keyboard.KEY_F, MOD_NAME);
-        keyBindings[4] = new KeyBinding("key.skyblockaddons.dev", Keyboard.KEY_NONE, MOD_NAME);
 
         for (KeyBinding keyBinding : keyBindings) {
             ClientRegistry.registerKeyBinding(keyBinding);
@@ -123,7 +122,6 @@ public class SkyblockAddons {
         changeKeyBindDescription(keyBindings[1], Message.SETTING_EDIT_LOCATIONS.getMessage());
         changeKeyBindDescription(keyBindings[2], Message.SETTING_LOCK_SLOT.getMessage());
         changeKeyBindDescription(keyBindings[3], Message.SETTING_SHOW_BACKPACK_PREVIEW.getMessage());
-        changeKeyBindDescription(keyBindings[4], Message.SETTING_ENABLE_DEV_FEATURES.getMessage());
     }
 
     private void scheduleMagmaCheck() {
@@ -153,9 +151,5 @@ public class SkyblockAddons {
 
     public KeyBinding getFreezeBackpackKey() {
         return keyBindings[3];
-    }
-
-    public KeyBinding getDevKey() {
-        return keyBindings[4];
     }
 }

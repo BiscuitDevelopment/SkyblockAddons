@@ -109,7 +109,25 @@ public class PlayerControllerMPHook {
 
         SkyblockAddons main = SkyblockAddons.getInstance();
         final int slotId = slotNum;
-        if (player != null && player.openContainer != null) {
+        ItemStack itemStack = player.inventory.getItemStack();
+
+        // Prevent dropping rare items
+        if (main.getConfigValues().isEnabled(Feature.STOP_DROPPING_SELLING_RARE_ITEMS)) {
+            // Is this a left or right click?
+            if ((clickModifier == 0 || clickModifier == 1)) {
+                // Is the player clicking outside their inventory?
+                if (slotNum == -999) {
+                    // Is the player holding an item stack with their mouse?
+                    if (itemStack != null) {
+                        if (main.getInventoryUtils().shouldCancelDrop(itemStack)) {
+                            returnValue.cancel();
+                        }
+                    }
+                }
+            }
+        }
+
+        if (player.openContainer != null) {
             slotNum += main.getInventoryUtils().getSlotDifference(player.openContainer);
             if (main.getConfigValues().isEnabled(Feature.LOCK_SLOTS) && main.getUtils().isOnSkyblock()
                     && main.getConfigValues().getLockedSlots().contains(slotNum)
