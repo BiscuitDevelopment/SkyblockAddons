@@ -13,6 +13,7 @@ import java.util.function.Supplier;
 
 public enum DiscordStatus implements ButtonSelect.SelectItem {
 
+
     NONE(Message.DISCORD_STATUS_NONE_TITLE, Message.DISCORD_STATUS_NONE_DESCRIPTION, () -> null),
     LOCATION(Message.DISCORD_STATUS_LOCATION_TITLE, Message.DISCORD_STATUS_LOCATION_DESCRIPTION,
             () -> SkyblockAddons.getInstance().getUtils().getLocation().getScoreboardName()),
@@ -25,7 +26,8 @@ public enum DiscordStatus implements ButtonSelect.SelectItem {
                 int health = SkyblockAddons.getInstance().getUtils().getAttributes().get(Attribute.HEALTH).getValue();
                 int defense = SkyblockAddons.getInstance().getUtils().getAttributes().get(Attribute.DEFENCE).getValue();
                 int mana = SkyblockAddons.getInstance().getUtils().getAttributes().get(Attribute.MANA).getValue();
-                return String.format("%d❤ %d❈ %d✎", health, defense, mana);
+//                return String.format("%d\u2764 %d\u2748 %d\u270E", health, defense, mana);
+                return String.format("%d H - %d D - %d M", health, defense, mana);
             }),
 
     ZEALOTS(Message.DISCORD_STATUS_ZEALOTS_TITLE, Message.DISCORD_STATUS_ZEALOTS_DESCRIPTION,
