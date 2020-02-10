@@ -95,8 +95,7 @@
     "hideNightVisionEffectTimer": "Skjul Natt Syn Effekt Timer",
     "showCakeBagPreview": "Vis Forhåndsvisning for Kake Sekker",
     "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
-    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
-    "enableDevFeatures": "Developer Mode Key"
+    "enableDevFeatures": "Enable Developer Features"
   },
   "messages": {
     "dropConfirmation": "Slipp denne gjenstanden igjen for å bekrefte!",
