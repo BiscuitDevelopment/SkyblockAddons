@@ -7,69 +7,66 @@ import lombok.Getter;
  */
 @Getter
 public enum Location {
-    ISLAND("Your Island"),
 
+    UNKNOWN("Unknown", "unknown"), // Used if for some reason the location wasn't found
+
+    ISLAND("Your Island", "private-island"),
     // Hub
-    AUCTION_HOUSE("Auction House"),
-    BANK("Bank"),
-    CANVAS_ROOM("Canvas Room"),
-    COAL_MINE("Coal Mine"),
-    COLOSSEUM("Colosseum"),
-    FARM("Farm"),
-    FASHION_SHOP("Fashion Shop"),
-    FISHERMANS_HUT("Fisherman's Hut"),
-    FLOWER_HOUSE("Flower House"),
-    FOREST("Forest"),
-    GRAVEYARD("Graveyard"),
-    HIGH_LEVEL("High Level"),
-    LIBRARY("Library"),
-    MOUNTAIN("Mountain"),
-    RUINS("Ruins"),
-    TAVERN("Tavern"),
-    VILLAGE("Village"),
-    WILDERNESS("Wilderness"),
-    WIZARD_TOWER("Wizard Tower"),
+    VILLAGE("Village", "village"),
+    AUCTION_HOUSE("Auction House", "auction-house"),
+    BANK("Bank", "bank"),
+    LIBRARY("Library", "library"),
+    COAL_MINE("Coal Mine", "coal-mine"),
+    GRAVEYARD("Graveyard", "graveyard"),
+    COLOSSEUM("Colosseum", "colosseum"),
+    WILDERNESS("Wilderness", "wilderness"),
+    MOUNTAIN("Mountain", "mountain"),
+    WIZARD_TOWER("Wizard Tower", "wizard-tower"),
+    RUINS("Ruins", "ruins"),
+    FOREST("Forest", "forest"),
+    FARM("Farm", "farm"),
+    FISHERMANS_HUT("Fisherman's Hut", "fishermans-hut"),
+    HIGH_LEVEL("High Level", "high-level"),
+    FLOWER_HOUSE("Flower House", "flower-house"),
+    CANVAS_ROOM("Canvas Room", "canvas-room"),
+    TAVERN("Tavern", "tavern"),
+    FASHION_SHOP("Fashion Shop", "fashion-shop"),
+    // Floating Islands
+    BIRCH_PARK("Birch Park", "birch-park"),
+    SPRUCE_WOODS("Spruce Woods", "spruce-woods"),
+    JUNGLE_ISLAND("Jungle Island", "jungle-island"),
+    SAVANNA_WOODLAND("Savanna Woodland", "savanna-woodland"),
+    DARK_THICKET("Dark Thicket", "dark-thicket"),
 
-    // The Park
-    BIRCH_PARK("Birch Park"),
-    SPRUCE_WOODS("Spruce Woods"),
-    SAVANNA_WOODLAND("Savanna Woodland"),
-    DARK_THICKET("Dark Thicket"),
-    JUNGLE_ISLAND("Jungle Island"),
+    GOLD_MINE("Gold Mine", "gold-mine"),
 
-    GOLD_MINE("Gold Mine"),
+    DEEP_CAVERNS("Deep Caverns", "deep-caverns"),
+    GUNPOWDER_MINES("Gunpowder Mines", "gunpowder-mines"),
+    LAPIS_QUARRY("Lapis Quarry", "lapis-quarry"),
+    PIGMAN_DEN("Pigmen's Den", "pigman-den"),
+    SLIMEHILL("Slimehill", "slimehill"),
+    DIAMOND_RESERVE("Diamond Reserve", "diamond-reserve"),
+    OBSIDIAN_SANCTUARY("Obsidian Sanctuary", "obsidian-sanctuary"),
+    THE_BARN("The Barn", "barn"),
 
-    // Deep Caverns
-    DEEP_CAVERNS("Deep Caverns"),
-    GUNPOWDER_MINES("Gunpowder Mines"),
-    LAPIS_QUARRY("Lapis Quarry"),
-    PIGMAN_DEN("Pigmen's Den"),
-    SLIMEHILL("Slimehill"),
-    DIAMOND_RESERVE("Diamond Reserve"),
-    OBSIDIAN_SANCTUARY("Obsidian Sanctuary"),
+    MUSHROOM_DESERT("Mushroom Desert", "mushroom-desert"),
 
-    THE_BARN("The Barn"),
+    SPIDERS_DEN("Spider's Den", "spiders-den"),
 
-    MUSHROOM_DESERT("Mushroom Desert"),
+    BLAZING_FORTRESS("Blazing Fortress", "blazing-fortress"),
 
-    SPIDERS_DEN("Spider's Den"),
-
-    BLAZING_FORTRESS("Blazing Fortress"),
-
-    // The End
-    THE_END("The End"),
-    DRAGONS_NEST("Dragon's Nest"),
+    THE_END("The End", "the-end"),
+    DRAGONS_NEST("Dragon's Nest", "dragons-nest"),
 
     // Jerry's workshop
-    JERRY_POND("Jerry Pond"),
-    JERRYS_WORKSHOP("Jerry's Workshop"),
+    JERRY_POND("Jerry Pond", "jerry-pond"),
+    JERRYS_WORKSHOP("Jerry's Workshop", "jerry-workshop");
 
-    NONE("None");
+    private final String scoreboardName;
+    private final String discordIconKey;
 
-    /** The name of this location as shown on the in-game scoreboard. */
-    private String scoreboardName;
-
-    Location(String scoreboardName) {
+    Location(String scoreboardName, String discordIconKey) {
         this.scoreboardName = scoreboardName;
+        this.discordIconKey = discordIconKey;
     }
 }

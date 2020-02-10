@@ -2,7 +2,7 @@ package codes.biscuit.skyblockaddons.commands;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
-import codes.biscuit.skyblockaddons.utils.Utils;
+import codes.biscuit.skyblockaddons.utils.TextUtils;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
@@ -15,11 +15,11 @@ import java.util.List;
 public class SkyblockAddonsCommand extends CommandBase {
 
     private static String[] HELP_MESSAGE = {
-            Utils.color("&7&m------------&7[&b&l SkyblockAddons &7]&7&m------------"),
-            Utils.color("&b● /sba &7- Open the main menu"),
-            Utils.color("&b● /sba edit &7- Edit GUI locations"),
-            Utils.color("&b● /sba folder &7- Open your mods folder"),
-            Utils.color("&7&m----------------------------------------------")};
+            TextUtils.color("&7&m------------&7[&b&l SkyblockAddons &7]&7&m------------"),
+            TextUtils.color("&b● /sba &7- Open the main menu"),
+            TextUtils.color("&b● /sba edit &7- Edit GUI locations"),
+            TextUtils.color("&b● /sba folder &7- Open your mods folder"),
+            TextUtils.color("&7&m----------------------------------------------")};
 
     private SkyblockAddons main;
 

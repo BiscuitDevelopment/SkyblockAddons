@@ -1,7 +1,7 @@
 package codes.biscuit.skyblockaddons.utils.discord;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.utils.EnumUtils;
+import codes.biscuit.skyblockaddons.utils.Location;
 import codes.biscuit.skyblockaddons.utils.SkyblockDate;
 import com.jagrosh.discordipc.IPCClient;
 import com.jagrosh.discordipc.IPCListener;
@@ -57,19 +57,19 @@ public class DiscordRPCManager implements IPCListener {
     }
 
     private void updatePresence() {
-        final EnumUtils.Location location = SkyblockAddons.getInstance().getUtils().getLocation();
+        final Location location = SkyblockAddons.getInstance().getUtils().getLocation();
         final SkyblockDate skyblockDate = SkyblockAddons.getInstance().getUtils().getCurrentDate();
         final String skyblockDateString = skyblockDate != null ? skyblockDate.toString() : "";
 
         // Early Winter 10th, 12:10am - Village
         final String largeImageDescription = String.format("%s - %s", skyblockDateString, location.getScoreboardName());
-
+        final String smallImageDescription = String.format("%s v%s", SkyblockAddons.MOD_NAME, SkyblockAddons.VERSION);
         RichPresence presence = new RichPresence.Builder()
                 .setState(stateLine.getDisplayString())
                 .setDetails(detailsLine.getDisplayString())
                 .setStartTimestamp(startTimestamp)
                 .setLargeImage(location.getDiscordIconKey(), largeImageDescription)
-                .setSmallImage("biscuit", "SkyblockAddons v1.5")
+                .setSmallImage("biscuit", smallImageDescription)
                 .build();
         client.sendRichPresence(presence);
     }

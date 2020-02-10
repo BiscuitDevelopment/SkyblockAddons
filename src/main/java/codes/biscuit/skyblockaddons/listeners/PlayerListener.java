@@ -26,10 +26,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.Vec3;
-import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.ChatComponentText;
-import net.minecraft.util.EnumChatFormatting;
-import net.minecraft.util.Vec3;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.client.event.GuiOpenEvent;
 import net.minecraftforge.event.entity.EntityEvent;
@@ -182,7 +178,7 @@ public class PlayerListener {
                     main.getRenderListener().setSubtitleFeature(Feature.NO_ARROWS_LEFT_ALERT);
                     main.getScheduler().schedule(Scheduler.CommandType.RESET_SUBTITLE_FEATURE, main.getConfigValues().getWarningSeconds());
                 } else if (formattedText.startsWith("§r§cYou only have") && formattedText.endsWith("Arrows left in your Quiver!§r")) {
-                    int arrowsLeft = Integer.parseInt(main.getUtils().getNumbersOnly(formattedText).trim());
+                    int arrowsLeft = Integer.parseInt(TextUtils.getNumbersOnly(formattedText).trim());
                     main.getUtils().playLoudSound("random.orb", 0.5);
                     main.getRenderListener().setSubtitleFeature(Feature.NO_ARROWS_LEFT_ALERT);
                     main.getRenderListener().setArrowsLeft(arrowsLeft);// THIS IS IMPORTANT

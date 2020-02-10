@@ -1,12 +1,11 @@
 package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
-import codes.biscuit.skyblockaddons.utils.nifty.RegexUtil;
-import codes.biscuit.skyblockaddons.utils.nifty.StringUtil;
-import codes.biscuit.skyblockaddons.utils.nifty.reflection.MinecraftReflection;
 import codes.biscuit.skyblockaddons.utils.events.SkyblockJoinedEvent;
 import codes.biscuit.skyblockaddons.utils.events.SkyblockLeftEvent;
+import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
+import codes.biscuit.skyblockaddons.utils.nifty.StringUtil;
+import codes.biscuit.skyblockaddons.utils.nifty.reflection.MinecraftReflection;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.ObjectArrays;
@@ -20,6 +19,7 @@ import net.minecraft.event.ClickEvent;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.launchwrapper.Launch;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.scoreboard.Score;
 import net.minecraft.scoreboard.ScoreObjective;
@@ -182,7 +182,6 @@ public class Utils {
                     }
                 }
 
-
                 // Copied from SkyblockLib, should be removed when we switch to use that
                 if (skyblockScoreboard) {
                     // If it's a Skyblock scoreboard and the player has not joined Skyblock yet,
@@ -221,26 +220,6 @@ public class Utils {
                             || locationString.endsWith("th")) {
                         dateString = locationString;
                     }
-//                    for (SkyblockDate.SkyblockMonth month : SkyblockDate.SkyblockMonth.values()) {
-//                        if (locationString.contains(month.getScoreboardString())) {
-//                            try {
-//                                currentDate.setMonth(month);
-//                                String numberPart = locationString.substring(locationString.lastIndexOf(" ") + 1);
-//                                int day = Integer.valueOf(TextUtils.getNumbersOnly(numberPart));
-//                                currentDate.setDay(day);
-//                                if (timeString != null) {
-//                                    String[] timeSplit = timeString.split(Pattern.quote(":"));
-//                                    int hour = Integer.valueOf(timeSplit[0]);
-//                                    currentDate.setHour(hour);
-//                                    int minute = Integer.valueOf(timeSplit[1]);
-//                                    currentDate.setMinute(minute);
-//
-//                                    currentDate.setPeriod(period);
-//                                }
-//                            } catch (IndexOutOfBoundsException | NumberFormatException ignored) {}
-//                            break;
-//                        }
-//                    }
 
                     if (strippedLine.startsWith("Purse") || strippedLine.startsWith("Piggy")) {
                         try {
@@ -271,15 +250,11 @@ public class Utils {
                     }
                 }
                 currentDate = SkyblockDate.parse(dateString, timeString);
-            } else {
-//                onSkyblock = false;
             }
-        } else {
-//            onSkyblock = false;
         }
 
         if (!foundLocation) {
-            location = EnumUtils.Location.UNKNOWN;
+            location = Location.UNKNOWN;
         }
     }
 
@@ -384,7 +359,7 @@ public class Utils {
 
     void sendUpdateMessage(boolean showDownload, boolean showAutoDownload) {
         String newestVersion = main.getRenderListener().getDownloadInfo().getNewestVersion();
-        sendMessage(color("&7&m------------&7[&b&l SkyblockAddons &7]&7&m------------"), false);
+        sendMessage(TextUtils.color("&7&m------------&7[&b&l SkyblockAddons &7]&7&m------------"), false);
         if (main.getRenderListener().getDownloadInfo().getMessageType() == EnumUtils.UpdateMessageType.DOWNLOAD_FINISHED) {
             ChatComponentText deleteOldFile = new ChatComponentText(ChatFormatting.RED+Message.MESSAGE_DELETE_OLD_FILE.getMessage()+"\n");
             sendMessage(deleteOldFile, false);
@@ -418,7 +393,7 @@ public class Utils {
             discord.setChatStyle(discord.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://discord.gg/PqTAEek")));
             sendMessage(discord);
         }
-        sendMessage(color("&7&m----------------------------------------------"), false);
+        sendMessage(TextUtils.color("&7&m----------------------------------------------"), false);
     }
 
     public void checkDisabledFeatures() {
@@ -644,10 +619,6 @@ public class Utils {
         }
     }
 
-    public static String color(String text) {
-        return ChatFormatting.translateAlternateColorCodes('&', text);
-    }
-
     @SuppressWarnings("unchecked")
     public File getSBAFolder(boolean changeMessage) {
         try {
@@ -773,7 +744,7 @@ public class Utils {
     public void drawTextWithStyle(String text, int x, int y, int color, float textAlpha) {
         if (main.getConfigValues().getTextStyle() == EnumUtils.TextStyle.STYLE_TWO) {
             int colorBlack = new Color(0, 0, 0, textAlpha > 0.016 ? textAlpha : 0.016F).getRGB();
-            String strippedText = main.getUtils().stripColor(text);
+            String strippedText = TextUtils.stripColor(text);
             MinecraftReflection.FontRenderer.drawString(strippedText, x + 1, y, colorBlack);
             MinecraftReflection.FontRenderer.drawString(strippedText, x - 1, y, colorBlack);
             MinecraftReflection.FontRenderer.drawString(strippedText, x, y + 1, colorBlack);
@@ -781,14 +752,6 @@ public class Utils {
             MinecraftReflection.FontRenderer.drawString(text, x, y, color);
         } else {
             MinecraftReflection.FontRenderer.drawString(text, x, y, color, true);
-        }
-    }
-
-    public static String niceDouble(double value, int decimals) {
-        if(value == (long) value) {
-            return String.format("%d", (long)value);
-        } else {
-            return String.format("%."+decimals+"f", value);
         }
     }
 
@@ -802,11 +765,11 @@ public class Utils {
 
     /**
      * Get the Skyblock location the player is currently at.
-     * Might be {@link EnumUtils.Location#UNKNOWN} if for whatever reason none was found
+     * Might be {@link Location#UNKNOWN} if for whatever reason none was found
      *
      * @return Skyblock Location
      */
-    public EnumUtils.Location getLocation() {
+    public Location getLocation() {
         return location;
     }
 
@@ -834,36 +797,12 @@ public class Utils {
         this.backpackToRender = backpackToRender;
     }
 
-    public List<String> getEnchantmentExclusion() {
-        return enchantmentExclusion;
-    }
-
-    public List<String> getEnchantmentMatch() {
-        return enchantmentMatch;
-    }
-
-    public void setEnchantmentExclusion(List<String> enchantmentExclusion) {
-        this.enchantmentExclusion = enchantmentExclusion;
-    }
-
-    public void setEnchantmentMatch(List<String> enchantmentMatch) {
-        this.enchantmentMatch = enchantmentMatch;
-    }
-
     public boolean isPlayingSound() {
         return playingSound;
     }
 
     public Map<Attribute, MutableInt> getAttributes() {
         return attributes;
-    }
-
-    public boolean isCopyNBT() {
-        return copyNBT;
-    }
-
-    public void setCopyNBT(boolean copyNBT) {
-        this.copyNBT = copyNBT;
     }
 
     public SkyblockDate getCurrentDate() {
@@ -876,8 +815,6 @@ public class Utils {
 
     public int getLastHoveredSlot() {
         return lastHoveredSlot;
-    public String stripColor(String text) {
-        return RegexUtil.strip(text, RegexUtil.VANILLA_PATTERN);
     }
 
     public void reorderEnchantmentList(List<String> enchantments) {
