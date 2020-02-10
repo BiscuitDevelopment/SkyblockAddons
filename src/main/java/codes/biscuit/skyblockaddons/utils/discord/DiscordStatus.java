@@ -6,6 +6,8 @@ import codes.biscuit.skyblockaddons.utils.Attribute;
 import codes.biscuit.skyblockaddons.utils.Message;
 import codes.biscuit.skyblockaddons.utils.SkyblockDate;
 import codes.biscuit.skyblockaddons.utils.TextUtils;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityPlayerSP;
 
 import java.util.function.Supplier;
 
@@ -29,7 +31,14 @@ public enum DiscordStatus implements ButtonSelect.SelectItem {
     ZEALOTS(Message.DISCORD_STATUS_ZEALOTS_TITLE, Message.DISCORD_STATUS_ZEALOTS_DESCRIPTION,
             () -> String.format("%d Zealots killed", SkyblockAddons.getInstance().getPersistentValues().getKills())),
 
-    ITEM(Message.DISCORD_STATUS_ITEM_TITLE, Message.DISCORD_STATUS_ITEM_DESCRIPTION, () -> "Item"),
+    ITEM(Message.DISCORD_STATUS_ITEM_TITLE, Message.DISCORD_STATUS_ITEM_DESCRIPTION,
+            () -> {
+                final EntityPlayerSP player = Minecraft.getMinecraft().thePlayer;
+                if(player != null && player.getHeldItem() != null) {
+                    return String.format("Holding %s", TextUtils.stripColor(player.getHeldItem().getDisplayName()));
+                }
+                return "No item in hand";
+            }),
 
     TIME(Message.DISCORD_STATUS_TIME_TITLE, Message.DISCORD_STATUS_TIME_DESCRIPTION,
             () -> {
