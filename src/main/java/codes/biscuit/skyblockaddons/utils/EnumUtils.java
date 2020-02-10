@@ -6,6 +6,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.util.Constants;
@@ -352,7 +353,14 @@ public class EnumUtils {
                 return null;
             }
 
-            NBTTagList lore = item.getSubCompound("display", false).getTagList("Lore", Constants.NBT.TAG_STRING);
+            NBTTagCompound display = item.getSubCompound("display", false);
+            if(display == null) {
+                return INVALID;
+            }
+            NBTTagList lore = display.getTagList("Lore", Constants.NBT.TAG_STRING);
+            if(lore == null || lore.tagCount() == 0) {
+                return INVALID;
+            }
             String rarityString = lore.getStringTagAt(lore.tagCount() - 1);
 
             // Determine the item's rarity

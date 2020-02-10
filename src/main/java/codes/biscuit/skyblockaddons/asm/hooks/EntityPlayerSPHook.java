@@ -31,16 +31,22 @@ public class EntityPlayerSPHook {
                 return null;
             }
         }
+
         if (heldItemStack != null) {
-            EnumUtils.Rarity rarity = EnumUtils.Rarity.getRarity(heldItemStack);
-            
-            if (rarity != EnumUtils.Rarity.INVALID && (main.getUtils().isOnSkyblock() || main.getPlayerListener().aboutToJoinSkyblockServer() || !main.getPlayerListener().didntRecentlyJoinWorld()) && main.getConfigValues().isEnabled(Feature.STOP_DROPPING_SELLING_RARE_ITEMS) &&
-                    main.getUtils().cantDropItem(heldItemStack, rarity, true)) {
-                main.getUtils().sendMessage(main.getConfigValues().getRestrictedColor(Feature.STOP_DROPPING_SELLING_RARE_ITEMS)
-                                                                            + Message.MESSAGE_CANCELLED_DROPPING.getMessage());
-                returnValue.cancel();
-                return null;
+            if(main.getUtils().isOnSkyblock()
+                    || main.getPlayerListener().aboutToJoinSkyblockServer()
+                    || !main.getPlayerListener().didntRecentlyJoinWorld()) {
+                EnumUtils.Rarity rarity = EnumUtils.Rarity.getRarity(heldItemStack);
+
+                if (rarity != EnumUtils.Rarity.INVALID  && main.getConfigValues().isEnabled(Feature.STOP_DROPPING_SELLING_RARE_ITEMS) &&
+                        main.getUtils().cantDropItem(heldItemStack, rarity, true)) {
+                    main.getUtils().sendMessage(main.getConfigValues().getRestrictedColor(Feature.STOP_DROPPING_SELLING_RARE_ITEMS)
+                            + Message.MESSAGE_CANCELLED_DROPPING.getMessage());
+                    returnValue.cancel();
+                    return null;
+                }
             }
+
             if (main.getConfigValues().isEnabled(Feature.DROP_CONFIRMATION) && (main.getUtils().isOnSkyblock() ||
                     main.getConfigValues().isEnabled(Feature.DOUBLE_DROP_IN_OTHER_GAMES))) {
 

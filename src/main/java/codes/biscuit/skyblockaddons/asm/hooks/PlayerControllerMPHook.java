@@ -142,7 +142,7 @@ public class PlayerControllerMPHook {
             Slot slotIn;
             try {
                 slotIn = slots.getSlot(slotId);
-            } catch (ArrayIndexOutOfBoundsException e) {
+            } catch (IndexOutOfBoundsException e) {
                 slotIn = null;
             }
 
