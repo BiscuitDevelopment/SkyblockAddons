@@ -95,8 +95,7 @@
     "hideNightVisionEffectTimer": "Esconder el Temporizador del Efecto de Visión Nocturna",
     "showCakeBagPreview": "Previsualizar Cake Bags",
     "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
-    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
-    "enableDevFeatures": "Developer Mode Key"
+    "enableDevFeatures": "Enable Developer Features"
   },
   "messages": {
     "dropConfirmation": "Arroja este objeto otra vez para confirmar!",
