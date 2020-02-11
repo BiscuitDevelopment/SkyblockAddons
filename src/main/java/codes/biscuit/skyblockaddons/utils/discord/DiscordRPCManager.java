@@ -25,6 +25,7 @@ public class DiscordRPCManager implements IPCListener {
     private OffsetDateTime startTimestamp;
 
     private Timer updateTimer;
+    private boolean connected;
 
     public DiscordRPCManager(final SkyblockAddons main) {
         this.main = main;
@@ -49,11 +50,13 @@ public class DiscordRPCManager implements IPCListener {
     }
 
     public void stop() {
-        client.close();
+        if(isActive()) {
+            client.close();
+        }
     }
 
     public boolean isActive() {
-        return client != null;
+        return client != null && connected;
     }
 
     private void updatePresence() {
@@ -91,6 +94,7 @@ public class DiscordRPCManager implements IPCListener {
     @Override
     public void onReady(IPCClient client) {
         FMLLog.info("Discord RPC started");
+        connected = true;
         updateTimer = new Timer();
         updateTimer.schedule(new TimerTask() {
             @Override
@@ -104,6 +108,7 @@ public class DiscordRPCManager implements IPCListener {
     public void onClose(IPCClient client, JSONObject json) {
         FMLLog.warning("Discord RPC closed");
         this.client = null;
+        connected = false;
         cancelTimer();
     }
 
@@ -111,6 +116,7 @@ public class DiscordRPCManager implements IPCListener {
     public void onDisconnect(IPCClient client, Throwable t) {
         FMLLog.warning("Discord RPC disconnected");
         this.client = null;
+        connected = false;
         cancelTimer();
     }
 
