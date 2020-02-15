@@ -96,7 +96,7 @@
     "showCakeBagPreview": "Show Preview for Cake Bags",
     "showBackpackPreviewInAH" : "Show Backpack Preview for Your Items While AH is Open",
     "enableDevFeatures": "Enable Developer Features",
-    "showBrokenFragments": "Show Broken Fragments",
+    "showBrokenFragments": "Show Broken Fragments"
   },
   "messages": {
     "dropConfirmation": "Drop this item again to confirm!",
