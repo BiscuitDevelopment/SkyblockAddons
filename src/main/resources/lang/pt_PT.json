@@ -3,7 +3,7 @@
   "settings": {
     "settings": "Definições",
     "magmaBossWarning": "Alerta do Magma Boss",
-    "itemDropConfirmation": "Confirmação para dropar itens",
+    "itemDropConfirmation": "Confirmação para atirar itens",
     "hideSkeletonHatBones": "Esconder os ossos do Skeleton Helmet",
     "skeletonHatBonesBar": "Barra de ossos do Skeleton Helmet",
     "hideFoodAndArmor": "Esconder a barra de comida e armadura",
@@ -58,7 +58,7 @@
     },
     "warningDuration": "Duração do aviso",
     "dontOpenProfileWithBow": "Não abrir perfis com o arco",
-    "stopDroppingSellingRareItems": "Não dropar/vender itens raros",
+    "stopDroppingSellingRareItems": "Não atirar/vender itens raros",
     "makeBackpackInventoriesColored": "Inventários coloridos",
     "avoidBreakingBottomSugarCane": "Evitar partir a cana de açúcar de baixo",
     "replaceRomanNumeralsWithNumbers": "Substituir os números romanos nos itens",
@@ -98,7 +98,7 @@
     "enableDevFeatures": "Mostrar funcionalidades de programador"
   },
   "messages": {
-    "dropConfirmation": "Dropa este item outra vez para confirmar!",
+    "dropConfirmation": "Atira este item outra vez para confirmar!",
     "magmaBossWarning": "Magma Cube Boss!",
     "fullInventory": "Inventário Cheio!",
     "labymod": "Utilizadores do Laby mod: Esconder a Comida, Armadura e Barra de Vida é incompatível.",
@@ -131,8 +131,8 @@
     "summoningEyeFound": "Summoning Eye!",
     "cancelledStemBreak": "O SkyblockAddons preveniu-te de partires esta semente. Usa a tua própria mão se a quiseres mesmo partir.",
     "cancelledProfileOpening": "O SkyblockAddons preveniu-te de abrires o perfil deste jogador enquanto seguras um arco.",
-    "cancelledDropping": "O SkyblockAddons preveniu-te de dropar este item ou ferramenta rara da tua hotbar.",
-    "clickMoreTimes": "Clica/dropa este item mais %times% vezes se quiseres mesmo fazer isto.",
+    "cancelledDropping": "O SkyblockAddons preveniu-te de atirar este item ou ferramenta \"rara\" da tua hotbar.",
+    "clickMoreTimes": "Clica/atira este item mais %times% vezes se quiseres mesmo fazer isto.",
     "cancelledDeepCaverns": "Uma funcionalidade do SkyblockAddons preveniu-te de partires este minério aqui.",
     "featureDisabled": "Função Desativada",
     "anvilUses": "Usos na bigorna: %uses%",
