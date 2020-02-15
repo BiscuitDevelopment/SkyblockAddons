@@ -105,7 +105,7 @@
     },
     "chromaFadeWidth": "Chroma Fade Width",
     "sortTabEffectTimers": "Sort Timers by Duration",
-    "showBrokenFragments": "Show Broken Fragments",
+    "showBrokenFragments": "Show Broken Fragments"
   },
   "messages": {
     "betaTesters": "Thank you for being a beta tester! Please report any bugs you encounter in the Discord channel.",
