@@ -89,7 +89,11 @@ public enum Feature {
     HIDE_NIGHT_VISION_EFFECT_TIMER(70, Message.SETTING_HIDE_NIGHT_VISION_EFFECT_TIMER, true),
     CAKE_BAG_PREVIEW(71, Message.SETTING_SHOW_CAKE_BAG_PREVIEW, true),
     BACKPACK_PREVIEW_AH(72, Message.SETTING_SHOW_BACKPACK_PREVIEW_AH, true),
-
+    
+    //ID is 74 because Discord RP takes ID 73
+    SHOW_BROKEN_FRAGMENTS(74, Message.SETTING_SHOW_BROKEN_FRAGMENTS, new GuiFeatureData(ChatFormatting.RED, true), false),
+    
+    
     HIDE_GREY_ENCHANTS(100, null, false), // This is here just to allow remote disabling this feature- it's caused issues in the past haha.
 
     WARNING_TIME(-1, Message.SETTING_WARNING_DURATION, false),
