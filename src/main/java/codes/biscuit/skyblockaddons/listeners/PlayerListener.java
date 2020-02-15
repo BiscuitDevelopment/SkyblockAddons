@@ -649,6 +649,17 @@ public class PlayerListener {
                 }
             }
         }
+        if (main.getConfigValues().isEnabled(Feature.SHOW_BROKEN_FRAGMENTS)) {
+                if (hoveredItem.getDisplayName().contains("Fragment")) {
+                    NBTTagCompound extraAttributesTag = hoveredItem.getTagCompound();
+                    if (extraAttributesTag.hasKey("ExtraAttributes")) {
+                        extraAttributesTag = extraAttributesTag.getCompoundTag("ExtraAttributes");
+                        if (extraAttributesTag.hasKey("bossId") && extraAttributesTag.hasKey("spawnedFor")) {
+                            e.toolTip.add("§c§lBROKEN FRAGMENT§r");
+                        }
+                    }
+                }
+            }
     }
 
     @SubscribeEvent
