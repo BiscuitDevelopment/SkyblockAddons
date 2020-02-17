@@ -95,7 +95,7 @@
     "hideNightVisionEffectTimer": "Skrýt časovač efektu nočního vidění",
     "showCakeBagPreview": "Ukázat přehled pro Tašky na Dorty",
     "showBackpackPreviewInAH": "Zobrazit náhled do tvého batohu, když je otevřená AH",
-    "enableDevFeatures": "Klávesa Vývojářského módu"
+    "enableDevFeatures": "Povolit Vývojářské funkce"
   },
   "messages": {
     "dropConfirmation": "Vyhoď tento item pro vyhození!",
