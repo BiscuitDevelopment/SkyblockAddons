@@ -94,7 +94,7 @@
     "noArrowsLeftAlert": "Inga pilar kvar",
     "hideNightVisionEffectTimer": "Göm Night vision charm effekt timern",
     "showCakeBagPreview": "Visa förhandsvisning för tårt ryggsäckar",
-    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
+    "showBackpackPreviewInAH": "Visa väskoinnehållsmemu för dina saker när Ah är öppnat",
     "enableDevFeatures": "Aktivera utvecklarfunktioner"
   },
   "messages": {
@@ -133,7 +133,7 @@
     "cancelledProfileOpening": "SkyblockAddons har stoppat dig från att öppna denna spelares profil medan du håller en pilbåge.",
     "cancelledDropping": "SkyblockAddons har stoppat dig från att slänga denna sällsynta sak eller verktyg från ditt inventarie.",
     "clickMoreTimes": "Släng denna sak %times% fler gånger om du verkligen vill göra detta.",
-    "clickOneMoreTime": "Click/drop this item 1 more time if you really want to do this.",
+    "clickOneMoreTime": "Klicka/kasta denna saken en gång till om du verkligen vill göra dehära.",
     "cancelledDeepCaverns": "En skyblockaddons funktion har stoppat dig från att hugga det här blocket.",
     "featureDisabled": "Funktion Inaktiverad",
     "anvilUses": "Städ användningar %uses%",
