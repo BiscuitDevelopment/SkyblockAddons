@@ -95,7 +95,7 @@
     "hideNightVisionEffectTimer": "Nascondi il timer dell’effetto visione notturna",
     "showCakeBagPreview": "Mostra anteprima delle Cake Bags",
     "showBackpackPreviewInAH": "Mostra l’anteprima dello zaino mentre l’Auction House è aperta",
-    "enableDevFeatures": "Abilita la modalità sviluppatore"
+    "enableDevFeatures": "Abilita funzionalità sviluppatore"
   },
   "messages": {
     "dropConfirmation": "Getta questo oggetto nuovamente per confermare!",
@@ -133,7 +133,7 @@
     "cancelledProfileOpening": "Una funzione ti ha impedito di aprire il profilo di questo giocatore mentre avevi l’arco in mano.",
     "cancelledDropping": "Una funzione ti ha impedito di gettare questo oggetto o strumento raro dalla tua hotbar.",
     "clickMoreTimes": "Clicca/getta questo oggetto altre %times% volte se vuoi davvero farlo.",
-    "clickOneMoreTime": "Click/drop this item 1 more time if you really want to do this.",
+    "clickOneMoreTime": "Clicca/butta questo oggetto ancora 1 volta se vuoi veramente farlo.",
     "cancelledDeepCaverns": "Una funzione ti ha impedito di estrarre questo blocco.",
     "featureDisabled": "Funzione disabilitata",
     "anvilUses": "Utilizzi dell’incudine: %uses%",
