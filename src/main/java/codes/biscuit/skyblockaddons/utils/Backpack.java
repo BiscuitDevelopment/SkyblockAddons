@@ -1,6 +1,7 @@
 package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.utils.item.ItemUtils;
 import lombok.Getter;
 import lombok.Setter;
 import net.minecraft.item.ItemStack;
@@ -40,7 +41,7 @@ public class Backpack {
     public static Backpack getFromItem(ItemStack stack) {
         if (stack == null) return null;
         SkyblockAddons main = SkyblockAddons.getInstance();
-        String id = main.getInventoryUtils().getSkyBlockItemID(stack);
+        String id = ItemUtils.getSkyBlockItemID(stack);
         if (id != null) {
             NBTTagCompound extraAttributes = stack.getTagCompound().getCompoundTag("ExtraAttributes");
             Matcher matcher = BACKPACK_ID_PATTERN.matcher(id);

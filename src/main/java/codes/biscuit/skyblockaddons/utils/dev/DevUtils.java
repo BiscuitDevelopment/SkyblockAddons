@@ -102,6 +102,11 @@ public class DevUtils {
      * @param message the message to show in chat when the NBT tag is copied
      */
     public static void copyNBTTagToClipboard(NBTBase nbtTag, String message) {
+        if (nbtTag == null) {
+            SkyblockAddons.getInstance().getUtils().sendMessage("This item has no NBT data.");
+            return;
+        }
+
         writeToClipboard(prettyPrintNBT(nbtTag), message);
     }
 
@@ -115,6 +120,11 @@ public class DevUtils {
         StringBuilder stringBuilder = new StringBuilder();
 
         for (int i = 0; i < nbtTags.size(); i++) {
+            if (nbtTags.get(i) == null) {
+                SkyblockAddons.getInstance().getUtils().sendMessage("This item has no NBT data.");
+                continue;
+            }
+
             stringBuilder.append("Tag ").append(i).append(": ").append(System.lineSeparator());
             stringBuilder.append(prettyPrintNBT(nbtTags.get(i)));
 

@@ -133,6 +133,7 @@
     "cancelledProfileOpening": "A feature has stopped you from opening this player's profile since you were holding a bow.",
     "cancelledDropping": "A feature has stopped you from dropping this \"rare\" item or tool from your hotbar.",
     "clickMoreTimes": "Click/drop this item %times% more times if you really want to do this.",
+    "clickOneMoreTime": "Click/drop this item 1 more time if you really want to do this.",
     "cancelledDeepCaverns": "A feature has stopped you from mining this block here.",
     "featureDisabled": "Feature Disabled",
     "anvilUses": "Anvil Uses: %uses%",

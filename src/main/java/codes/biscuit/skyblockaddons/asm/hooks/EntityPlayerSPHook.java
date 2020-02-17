@@ -2,9 +2,10 @@ package codes.biscuit.skyblockaddons.asm.hooks;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.asm.utils.ReturnValue;
-import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.Feature;
 import codes.biscuit.skyblockaddons.utils.Message;
+import codes.biscuit.skyblockaddons.utils.item.ItemUtils;
+import codes.biscuit.skyblockaddons.constants.game.Rarity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.inventory.ContainerPlayer;
@@ -36,9 +37,9 @@ public class EntityPlayerSPHook {
             if(main.getUtils().isOnSkyblock()
                     || main.getPlayerListener().aboutToJoinSkyblockServer()
                     || !main.getPlayerListener().didntRecentlyJoinWorld()) {
-                EnumUtils.Rarity rarity = EnumUtils.Rarity.getRarity(heldItemStack);
+                Rarity rarity = ItemUtils.getRarity(heldItemStack);
 
-                if (rarity != EnumUtils.Rarity.INVALID  && main.getConfigValues().isEnabled(Feature.STOP_DROPPING_SELLING_RARE_ITEMS) &&
+                if (rarity != null  && main.getConfigValues().isEnabled(Feature.STOP_DROPPING_SELLING_RARE_ITEMS) &&
                         main.getUtils().cantDropItem(heldItemStack, rarity, true)) {
                     main.getUtils().sendMessage(main.getConfigValues().getRestrictedColor(Feature.STOP_DROPPING_SELLING_RARE_ITEMS)
                             + Message.MESSAGE_CANCELLED_DROPPING.getMessage());

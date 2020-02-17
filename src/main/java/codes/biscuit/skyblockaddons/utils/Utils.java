@@ -1,6 +1,7 @@
 package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.constants.game.Rarity;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
 import codes.biscuit.skyblockaddons.utils.nifty.RegexUtil;
 import codes.biscuit.skyblockaddons.utils.nifty.StringUtil;
@@ -593,17 +594,17 @@ public class Utils {
         return main.getUtils().removeDuplicateSpaces(newString.toString().trim());
     }
 
-    public boolean cantDropItem(ItemStack item, EnumUtils.Rarity rarity, boolean hotbar) {
-        if (Items.bow.equals(item.getItem()) && rarity == EnumUtils.Rarity.COMMON) return false; // exclude rare bows lol
+    public boolean cantDropItem(ItemStack item, Rarity rarity, boolean hotbar) {
+        if (Items.bow.equals(item.getItem()) && rarity == Rarity.COMMON || rarity == null) return false; // exclude rare bows lol
         if (item.hasDisplayName()) {
             for (String exclusion : RARE_ITEM_OVERRIDES) {
                 if (item.getDisplayName().contains(exclusion)) return true;
             }
         }
         if (hotbar) { // Hotbar items also restrict rare rarity.
-            return item.getItem().isDamageable() || rarity != EnumUtils.Rarity.COMMON;
+            return item.getItem().isDamageable() || rarity != Rarity.COMMON;
         } else {
-            return item.getItem().isDamageable() || (rarity != EnumUtils.Rarity.COMMON && rarity != EnumUtils.Rarity.UNCOMMON);
+            return item.getItem().isDamageable() || (rarity != Rarity.COMMON && rarity != Rarity.UNCOMMON);
         }
     }
 

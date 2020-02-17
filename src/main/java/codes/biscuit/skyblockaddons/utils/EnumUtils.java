@@ -327,55 +327,6 @@ public class EnumUtils {
         }
     }
 
-    public enum Rarity {
-        COMMON("§f§lCOMMON"),
-        UNCOMMON("§a§lUNCOMMON"),
-        RARE("§9§lRARE"),
-        EPIC("§5§lEPIC"),
-        LEGENDARY("§6§lLEGENDARY"),
-        SPECIAL("§d§lSPECIAL"),
-        INVALID("INVALID");
-
-        private String tag;
-
-        Rarity(String s) {
-            this.tag = s;
-        }
-
-        /**
-         * Determines the rarity of a given Skyblock item
-         *
-         * @param item the Skyblock item to check
-         * @return the rarity of the item if a valid rarity is found, {@code INVALID} if no rarity is found, {@code null} if item is {@code null}
-         */
-        public static Rarity getRarity(ItemStack item) {
-            if (item == null)  {
-                return null;
-            }
-
-            NBTTagCompound display = item.getSubCompound("display", false);
-            if(display == null) {
-                return INVALID;
-            }
-            NBTTagList lore = display.getTagList("Lore", Constants.NBT.TAG_STRING);
-            if(lore == null || lore.tagCount() == 0) {
-                return INVALID;
-            }
-            String rarityString = lore.getStringTagAt(lore.tagCount() - 1);
-
-            // Determine the item's rarity
-            for (Rarity rarity :
-                 EnumSet.allOf(Rarity.class)) {
-                if (rarityString.startsWith(rarity.tag)) {
-                    return rarity;
-                }
-            }
-
-            // If the item doesn't have a valid rarity, return INVALID
-            return INVALID;
-        }
-    }
-
     public enum UpdateMessageType {
         MAJOR_AVAILABLE(UPDATE_MESSAGE_MAJOR),
         PATCH_AVAILABLE(UPDATE_MESSAGE_PATCH),

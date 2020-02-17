@@ -1,6 +1,7 @@
 package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.utils.item.ItemUtils;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
@@ -9,7 +10,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.inventory.*;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 
 import java.math.BigDecimal;
 import java.util.*;
@@ -192,7 +192,7 @@ public class InventoryUtils {
      */
     public void checkIfWearingSkeletonHelmet(EntityPlayerSP p) {
         ItemStack item = p.getEquipmentInSlot(4);
-        if (item != null && SKELETON_HELMET_ID.equals(getSkyBlockItemID(item))) {
+        if (item != null && SKELETON_HELMET_ID.equals(ItemUtils.getSkyBlockItemID(item))) {
             wearingSkeletonHelmet = true;
             return;
         }
@@ -208,7 +208,7 @@ public class InventoryUtils {
     }
 
     public boolean shouldCancelDrop(ItemStack stack) {
-        if (main.getUtils().cantDropItem(stack, EnumUtils.Rarity.getRarity(stack), false)) {
+        if (main.getUtils().cantDropItem(stack, ItemUtils.getRarity(stack), false)) {
             String heldItemName = stack.hasDisplayName() ? stack.getDisplayName() : stack.getUnlocalizedName();
 
             if (lastItemName != null && lastItemName.equals(heldItemName) && System.currentTimeMillis() - lastDrop < 3000 && dropCount >= 2) {
@@ -223,8 +223,17 @@ public class InventoryUtils {
                 } else {
                     dropCount = 1;
                 }
-                SkyblockAddons.getInstance().getUtils().sendMessage(main.getConfigValues().getRestrictedColor(Feature.STOP_DROPPING_SELLING_RARE_ITEMS) +
-                        Message.MESSAGE_CLICK_MORE_TIMES.getMessage(String.valueOf(3-dropCount)));
+
+                // Use a different message if just one more click is needed
+                if (dropCount == 2) {
+                    SkyblockAddons.getInstance().getUtils().sendMessage(main.getConfigValues().getRestrictedColor(Feature.STOP_DROPPING_SELLING_RARE_ITEMS) +
+                            Message.MESSAGE_CLICK_ONE_MORE_TIME.getMessage(String.valueOf(3-dropCount)));
+                }
+                else {
+                    SkyblockAddons.getInstance().getUtils().sendMessage(main.getConfigValues().getRestrictedColor(Feature.STOP_DROPPING_SELLING_RARE_ITEMS) +
+                            Message.MESSAGE_CLICK_MORE_TIMES.getMessage(String.valueOf(3-dropCount)));
+                }
+
                 lastItemName = heldItemName;
                 lastDrop = System.currentTimeMillis();
                 main.getUtils().playLoudSound("note.bass", 0.5);
@@ -245,21 +254,12 @@ public class InventoryUtils {
         else return 0;
     }
 
-    String getSkyBlockItemID(final ItemStack item) {
-        if (item == null) return null;
-        if (item.hasTagCompound()) {
-            NBTTagCompound skyBlockData = item.getTagCompound().getCompoundTag("ExtraAttributes");
-            return skyBlockData.getString("id");
-        }
-        return null;
-    }
-
     public void checkIfWearingRevenantArmor(EntityPlayerSP p) {
         if (main.getConfigValues().isEnabled(Feature.SLAYER_INDICATOR)) {
             ChatFormatting color = main.getConfigValues().getRestrictedColor(Feature.SLAYER_INDICATOR);
             for (int i = 3; i > -1; i--) {
                 ItemStack item = p.inventory.armorInventory[i];
-                String itemID = getSkyBlockItemID(item);
+                String itemID = ItemUtils.getSkyBlockItemID(item);
                 if (itemID != null && (itemID.startsWith("REVENANT") || itemID.startsWith("TARANTULA"))) {
                     String progress = null;
                     List<String> tooltip = item.getTooltip(null, false);

@@ -115,6 +115,7 @@ public enum Message {
     MESSAGE_STOPPED_OPENING_PROFILE(MessageObject.MESSAGES, "cancelledProfileOpening"),
     MESSAGE_CANCELLED_DROPPING(MessageObject.MESSAGES, "cancelledDropping"),
     MESSAGE_CLICK_MORE_TIMES(MessageObject.MESSAGES, "clickMoreTimes"),
+    MESSAGE_CLICK_ONE_MORE_TIME(MessageObject.MESSAGES, "clickOneMoreTime"),
     MESSAGE_CANCELLED_CANE_BREAK(MessageObject.MESSAGES, "cancelledCaneBreak"),
     MESSAGE_NEW_UPDATE(MessageObject.MESSAGES, "newUpdateAvailable"),
     MESSAGE_VIEW_PATCH_NOTES(MessageObject.MESSAGES, "wantToViewPatchNotes"),
