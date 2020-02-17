@@ -133,6 +133,7 @@
     "cancelledProfileOpening": "SkyblockAddons sustabdė jumis nuo šio žaidėjo profilio atidarymo, kai jūs rankoje laikote lanką.",
     "cancelledDropping": "SkyblockAddons sustabdė jumis nuo šio reto daikto išmetimo iš jūsų inventoriaus ar hotbar'o.",
     "clickMoreTimes": "Paspauskite/meskite šį daiktą %times% tiek kartų jeigu iš tikrųjų norite jį išmesti.",
+    "clickOneMoreTime": "Click/drop this item 1 more time if you really want to do this.",
     "cancelledDeepCaverns": "SkyblockAddons funkcija sustabdė jus nuo bloko iškasimo šioje vietoje.",
     "featureDisabled": "Funkcija išjungta",
     "anvilUses": "Priekalo Panaudojimai: %uses%",
