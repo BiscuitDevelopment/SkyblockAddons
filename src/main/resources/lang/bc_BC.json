@@ -133,6 +133,7 @@
     "cancelledProfileOpening": "BiscuitAddons has stopped you from eating this player's biscuit while holding a Bow.",
     "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare biscuit or biscuit2l from your hotbar.",
     "clickMoreTimes": "Click/drop this biscuit %times% more times if you really want to do this poor biscuit lol.",
+    "clickOneMoreTime": "Click/drop this item 1 more time if you really want to do this.",
     "cancelledDeepCaverns": "BiscuitAddons has stopped you from eating your biscuits here.",
     "featureDisabled": "Biscture Disabled",
     "anvilUses": "Biscoots Uses: %uses%",
