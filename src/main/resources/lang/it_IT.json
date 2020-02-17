@@ -133,6 +133,7 @@
     "cancelledProfileOpening": "Una funzione ti ha impedito di aprire il profilo di questo giocatore mentre avevi l’arco in mano.",
     "cancelledDropping": "Una funzione ti ha impedito di gettare questo oggetto o strumento raro dalla tua hotbar.",
     "clickMoreTimes": "Clicca/getta questo oggetto altre %times% volte se vuoi davvero farlo.",
+    "clickOneMoreTime": "Click/drop this item 1 more time if you really want to do this.",
     "cancelledDeepCaverns": "Una funzione ti ha impedito di estrarre questo blocco.",
     "featureDisabled": "Funzione disabilitata",
     "anvilUses": "Utilizzi dell’incudine: %uses%",
