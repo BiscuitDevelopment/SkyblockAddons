@@ -86,7 +86,7 @@
     },
     "disableMagicalSoupMessage": "Vypnout zprávu magické houbové polévky",
     "zealotCounter": "Ukázat Počítadlo Zealotů",
-    "tickerChargesDisplay": "Ticker/Charges Display",
+    "tickerChargesDisplay": "Zobrazení Okamžiků/Nabití",
     "tab": {
       "generalSettings": "Obecná nastavení"
     },
@@ -94,7 +94,7 @@
     "noArrowsLeftAlert": "Upozornění na nedostatek šípů",
     "hideNightVisionEffectTimer": "Skrýt časovač efektu nočního vidění",
     "showCakeBagPreview": "Ukázat přehled pro Tašky na Dorty",
-    "showBackpackPreviewInAH": "Zobrazit náhled do tvého batohu, když je otevřená AH",
+    "showBackpackPreviewInAH": "Zobrazit náhled do tvého batohu, když je otevřená nabídka pro Aukci",
     "enableDevFeatures": "Povolit Vývojářské funkce"
   },
   "messages": {
