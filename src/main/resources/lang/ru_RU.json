@@ -133,6 +133,7 @@
     "cancelledProfileOpening": "SkyblockAddons остановил вас от открытия профиля игрока с луком в руках.",
     "cancelledDropping": "SkyblockAddons предотвратил попытку выбросить этот предмет из панели быстрого доступа.",
     "clickMoreTimes": "Щелкните/выбросьте этот предмет еще %times% раз(а), если вы действительно хотите сделать это.",
+    "clickOneMoreTime": "Click/drop this item 1 more time if you really want to do this.",
     "cancelledDeepCaverns": "Функция SkyblockAddons остановила вас от копания этого блока.",
     "featureDisabled": "Функция отключена",
     "anvilUses": "Использований наковальни: %uses%",
