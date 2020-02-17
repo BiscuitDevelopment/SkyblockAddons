@@ -133,6 +133,7 @@
     "cancelledProfileOpening": "SkyblockAddonsにより、弓を持っているときにこのプレイヤーのプロフィールを開くことが阻止されました。",
     "cancelledDropping": "SkyblockAddonsがこのアイテムを捨てることを阻止しました。",
     "clickMoreTimes": "本当に落としたい場合はもう%times%回クリック/ドロップしてください。",
+    "clickOneMoreTime": "Click/drop this item 1 more time if you really want to do this.",
     "cancelledDeepCaverns": "SkyblockAddonsが鉱石以外のブロックの破壊を阻止しました。",
     "featureDisabled": "この機能は現在無効化されています",
     "anvilUses": "金床の使用回数 : %uses%",
