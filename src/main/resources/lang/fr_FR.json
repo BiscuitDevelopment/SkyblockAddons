@@ -133,7 +133,7 @@
     "cancelledProfileOpening": "SkyblockAddons vous a empêché d'ouvrir le profil de ce joueur en utilisant un arc.",
     "cancelledDropping": "SkyblockAddons vous a empêché de jeter cet objet ou outil rare de votre barre d'action.",
     "clickMoreTimes": "Cliquez/jetez cet objet encore %times% fois si vous le souhaitez.",
-    "clickOneMoreTime": "Click/drop this item 1 more time if you really want to do this.",
+    "clickOneMoreTime": "Cliquez/jetez cet objet encore une fois si vous le souhaitez.",
     "cancelledDeepCaverns": "SkyblockAddons vous a empêché de miner ce bloc.",
     "featureDisabled": "Fonction désactivée",
     "anvilUses": "Utilisation de l'enclume: %uses%",
