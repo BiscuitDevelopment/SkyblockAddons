@@ -133,6 +133,7 @@
     "cancelledProfileOpening": "SkyblockAddons har stoppat dig från att öppna denna spelares profil medan du håller en pilbåge.",
     "cancelledDropping": "SkyblockAddons har stoppat dig från att slänga denna sällsynta sak eller verktyg från ditt inventarie.",
     "clickMoreTimes": "Släng denna sak %times% fler gånger om du verkligen vill göra detta.",
+    "clickOneMoreTime": "Click/drop this item 1 more time if you really want to do this.",
     "cancelledDeepCaverns": "En skyblockaddons funktion har stoppat dig från att hugga det här blocket.",
     "featureDisabled": "Funktion Inaktiverad",
     "anvilUses": "Städ användningar %uses%",
