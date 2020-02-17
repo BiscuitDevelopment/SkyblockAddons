@@ -145,6 +145,6 @@
     "noArrowsLeft": "Стрел не осталось!",
     "chooseAColor": "Выберите цвет",
     "selectedColor": "Выбранный цвет",
-    "setHexColor": "Set Hex Color"
+    "setHexColor": "Выберите цвет \"HEX\""
   }
 }
