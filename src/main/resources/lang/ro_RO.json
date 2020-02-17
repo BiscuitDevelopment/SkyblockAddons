@@ -133,6 +133,7 @@
     "cancelledProfileOpening": "Modul SkyblockAddons te-a oprit sa deschizi profilul jucătorului in timp ce utilizezi un arc.",
     "cancelledDropping": "Modul SkyblockAddons te-a oprit să arunci acest item sau unealtă rară din inventar.",
     "clickMoreTimes": "Aruncă acest item de încă %times% dacă vrei să faci asta.",
+    "clickOneMoreTime": "Click/drop this item 1 more time if you really want to do this.",
     "cancelledDeepCaverns": "O funcție SkyblockAddons te-a oprit din minatul acestui cub.",
     "featureDisabled": "Funcție dezactivată",
     "anvilUses": "Utilizări Nicovală: %uses%",
