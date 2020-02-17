@@ -133,6 +133,7 @@
     "cancelledProfileOpening": "SkyblockAddons te ha impedido abrir el perfil de este jugador mientras mantienes un arco.",
     "cancelledDropping": "SkyblockAddons te ha impedido que soltaras este objeto o herramienta rara de tu hotbar.",
     "clickMoreTimes": "Haga clic/soltar este objeto %times% veces más si realmente quieres hacer esto.",
+    "clickOneMoreTime": "Click/drop this item 1 more time if you really want to do this.",
     "cancelledDeepCaverns": "Una característica de SkyblockAddons te ha detenido de mines este bloque aquí.",
     "featureDisabled": "Función Desactivada",
     "anvilUses": "Usos del yunque %uses%",
