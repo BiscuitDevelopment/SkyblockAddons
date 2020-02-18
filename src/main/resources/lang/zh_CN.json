@@ -133,7 +133,7 @@
     "cancelledProfileOpening": "SkyblockAddons 已阻止你持弓打开玩家信息。",
     "cancelledDropping": "SkyblockAddons 已阻止你将物品栏中的稀有物品或工具丢弃。",
     "clickMoreTimes": "SkyblockAddons 已阻止你售出物品。如果你真的想卖掉它，请再点击 %times% 次。",
-    "clickOneMoreTime": "Click/drop this item 1 more time if you really want to do this.",
+    "clickOneMoreTime": "如果你真的想这么做，请再 点击/丢弃 此物品一次",
     "cancelledDeepCaverns": "SkyblockAddons 已阻止在此开采矿物",
     "featureDisabled": "功能已禁用",
     "anvilUses": "铁砧使用次数: %uses%",
