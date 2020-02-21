@@ -76,7 +76,7 @@
     "onlyMineValuablesNether": "Gräv bara värdefulla Mineraler i Nether",
     "revenantIndicator": "Slayer rustningar utväcklings indicator",
     "specialZealotAlert": "Speciell Zealot Alarm",
-    "enableMessageWhenActionPrevented": "Visa ett meddelande när en åtgärd hindras",
+    "enableMessageWhenActionPrevented": "Visa ett meddelande när en åtgärd förhindras",
     "hidePetHealthBar": "Göm husdjurs hälsometer",
     "powerOrbDisplay": "Visning av Kraftglobsskärm",
     "powerOrbDisplayStyle": "Kraftglobs stil: %style%",
