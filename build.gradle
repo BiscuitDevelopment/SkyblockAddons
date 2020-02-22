@@ -45,7 +45,7 @@ repositories {
 
 jar {
 //    archiveName = archivesBaseName + "-" + version + "-for-MC-1.8.9.jar"
-    archiveName = archivesBaseName + "-1.5.0-b4-for-MC-1.8.9.jar"
+    archiveName = archivesBaseName + "-1.5.0-b5-for-MC-1.8.9.jar"
 
     manifest.attributes(
             'Main-Class': 'OpenErrorMessage',

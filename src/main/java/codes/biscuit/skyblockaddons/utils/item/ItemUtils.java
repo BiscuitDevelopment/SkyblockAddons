@@ -25,7 +25,7 @@ public class ItemUtils {
 
         NBTTagCompound display = item.getSubCompound("display", false);
 
-        if (!display.hasKey("Lore")) {
+        if (display == null || !display.hasKey("Lore")) {
             return null;
         }
 
