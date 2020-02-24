@@ -95,7 +95,7 @@
     "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
     "showCakeBagPreview": "Show Preview for Cake Bags",
     "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
-    "enableDevFeatures": "Enable Developer Features"
+    "enableDevFeatures": "Habilitar Funções de Desenvolvedor"
   },
   "messages": {
     "dropConfirmation": "Large este item de novo para confirmar!",
@@ -141,10 +141,10 @@
     "blockIncompletePatterns": "Bloquear padrões de criação incompletos (recomendado)",
     "searchFeatures": "Buscar funcionalidades",
     "downloadingUpdateFile": "Baixando arquivos da atualização...",
-    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
-    "noArrowsLeft": "No Arrows Left!",
-    "chooseAColor": "Choose a Color",
-    "selectedColor": "Selected Color",
-    "setHexColor": "Set Hex Color"
+    "onlyFewArrowsLeft": "Apenas %arrows% restantes!",
+    "noArrowsLeft": "Sem flechas restantes!",
+    "chooseAColor": "Escolha uma cor",
+    "selectedColor": "Cor selecionada",
+    "setHexColor": "Definir a cor em hex"
   }
 }
