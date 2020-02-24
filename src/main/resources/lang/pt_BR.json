@@ -91,8 +91,8 @@
       "generalSettings": "Configurações Gerais"
     },
     "tabEffectTimers": "Potion and Powerup Timers",
-    "noArrowsLeftAlert": "No Arrows Left Alert",
-    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
+    "noArrowsLeftAlert": "Alerta sem flechas restantes",
+    "hideNightVisionEffectTimer": "Esconder tempo do efeito de visão noturna",
     "showCakeBagPreview": "Show Preview for Cake Bags",
     "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
     "enableDevFeatures": "Habilitar Funções de Desenvolvedor"
