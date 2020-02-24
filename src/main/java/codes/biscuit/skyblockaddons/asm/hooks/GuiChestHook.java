@@ -226,7 +226,7 @@ public class GuiChestHook {
             textFieldExclusions.mouseClicked(mouseX, mouseY, mouseButton);
         }
 
-        if (craftingPatternSelection != null) {
+        if (craftingPatternSelection != null && EnumUtils.InventoryType.getCurrentInventoryType() == EnumUtils.InventoryType.CRAFTING_TABLE) {
             craftingPatternSelection.mouseClicked(mouseX, mouseY, mouseButton);
         }
     }

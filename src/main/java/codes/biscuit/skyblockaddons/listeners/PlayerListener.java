@@ -143,6 +143,11 @@ public class PlayerListener {
                 changeMana(-manaLost);
             }
 
+            // Put the Chicken Head on cooldown for 20 seconds when the player lays an egg.
+            if(message.equals("You laid an egg!")) {
+                CooldownManager.put(InventoryUtils.CHICKEN_HEAD_DISPLAYNAME, 20000);
+            }
+
             /*  Resets all user input on dead as to not walk backwards or stafe into the portal
                 Might get trigger upon encountering a non named "You" though this chance is so
                 minimal it can be discarded as a bug. */
