@@ -1,5 +1,6 @@
 package codes.biscuit.skyblockaddons;
 
+import club.sk1er.modcore.ModCoreInstaller;
 import codes.biscuit.skyblockaddons.commands.SkyblockAddonsCommand;
 import codes.biscuit.skyblockaddons.listeners.GuiScreenListener;
 import codes.biscuit.skyblockaddons.listeners.PlayerListener;
@@ -62,6 +63,8 @@ public class SkyblockAddons {
     }
     @Mod.EventHandler
     public void init(FMLInitializationEvent e) {
+        ModCoreInstaller.initializeModCore(Minecraft.getMinecraft().mcDataDir);
+
         MinecraftForge.EVENT_BUS.register(playerListener);
         MinecraftForge.EVENT_BUS.register(guiScreenListener);
         MinecraftForge.EVENT_BUS.register(renderListener);

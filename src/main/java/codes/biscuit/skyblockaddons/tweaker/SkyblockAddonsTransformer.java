@@ -112,16 +112,19 @@ public class SkyblockAddonsTransformer implements IClassTransformer {
         return writer.toByteArray();
     }
 
+    @SuppressWarnings("ResultOfMethodCallIgnored")
     private void outputBytecode(String transformedName, ClassWriter writer) {
         if (OUTPUT_BYTECODE) {
             try {
-                File file = new File("C:\\Users\\jlroc\\Desktop\\bytecode", transformedName + ".class");
-                if (file.getParentFile().exists()) {
-                    file.createNewFile();
-                    FileOutputStream os = new FileOutputStream(file);
-                    os.write(writer.toByteArray());
-                    os.close();
-                }
+                File bytecodeDirectory = new File("bytecode");
+                File bytecodeOutput = new File(bytecodeDirectory, transformedName + ".class");
+
+                if (!bytecodeDirectory.exists()) bytecodeDirectory.mkdirs();
+                if (!bytecodeOutput.exists()) bytecodeOutput.createNewFile();
+
+                FileOutputStream os = new FileOutputStream(bytecodeOutput);
+                os.write(writer.toByteArray());
+                os.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
