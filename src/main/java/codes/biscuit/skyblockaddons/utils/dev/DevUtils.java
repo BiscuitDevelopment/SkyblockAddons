@@ -4,28 +4,25 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
 import lombok.Getter;
 import lombok.Setter;
-import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.*;
-import net.minecraft.scoreboard.ScorePlayerTeam;
 import net.minecraftforge.common.util.Constants;
 import org.lwjgl.input.Keyboard;
 
 import java.awt.*;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
-import java.util.Iterator;
-import java.util.LinkedList;
+import java.util.*;
 import java.util.List;
-import java.util.ListIterator;
 
 /**
  * This is a class of utilities for Skyblock Addons developers.
  *
  * @author ILikePlayingGames
- * @version 1.5
+ * @version 2.0
  */
 public class DevUtils {
     public static final int DEV_KEY = Keyboard.KEY_RCONTROL;
@@ -42,57 +39,37 @@ public class DevUtils {
      * @param loadedEntities the list of all the entities that are currently loaded in the world
      */
     public static void copyEntityData(EntityPlayerSP player, List<Entity> loadedEntities) {
-        List<String> entityData = new LinkedList<>();
         List<Entity> loadedEntitiesCopy = new LinkedList<>(loadedEntities);
+        ListIterator<Entity> loadedEntitiesCopyIterator;
+        StringBuilder stringBuilder = new StringBuilder();
 
         // We only care about mobs.
         loadedEntitiesCopy.removeIf(entity -> entity.getDistanceToEntity(player) > ENTITY_COPY_RADIUS ||
                 !(EntityLivingBase.class.isAssignableFrom(entity.getClass())));
 
-        if (!loadedEntitiesCopy.isEmpty()) {
-            ListIterator<Entity> loadedEntitiesCopyIterator = loadedEntitiesCopy.listIterator();
+        loadedEntitiesCopyIterator = loadedEntitiesCopy.listIterator();
 
-            while (loadedEntitiesCopyIterator.hasNext()) {
-                EntityLivingBase entity = (EntityLivingBase) loadedEntitiesCopyIterator.next();
+        // Copy the NBT data from the loaded entities.
+        while (loadedEntitiesCopyIterator.hasNext()) {
+            Entity entity = loadedEntitiesCopyIterator.next();
+            NBTTagCompound entityData = new NBTTagCompound();
 
-                /*
-                The client isn't allowed to get the full entity NBT from the server.
-                We have to get the attributes one at a time.
-                */
-
-                // If the player is in a team, add the team's name formatting.
-                if (entity instanceof EntityOtherPlayerMP && entity.getTeam() != null) {
-                    EntityOtherPlayerMP otherPlayer = (EntityOtherPlayerMP) entity;
-
-                    entityData.add("Name: " + ScorePlayerTeam.formatPlayerName(otherPlayer.getTeam(), otherPlayer.getName()));
-                }
-                else {
-                    entityData.add("Name: " + entity.getName());
-                }
-
-                entityData.add("Type: " + entity.getClass().getSimpleName());
-
-                // Some may not have a team.
-                if (entity.getTeam() != null) {
-                    entityData.add("Team: " + entity.getTeam().getRegisteredName());
-                }
-                else {
-                    entityData.add("Team: None");
-                }
-
-                entityData.add("Health: " + entity.getHealth() + " / " + entity.getMaxHealth() + " ❤");
-
-                entityData.add("Position: " + "[" + entity.posX + ", " +
-                        entity.posY + ", " + entity.posZ + "]");
-
-                // Add a blank line for spacing.
-                if (loadedEntitiesCopyIterator.hasNext()) {
-                    entityData.add("");
-                }
+            stringBuilder.append("Class: ").append(entity.getClass().getSimpleName()).append(System.lineSeparator());
+            if (entity.hasCustomName() || EntityPlayer.class.isAssignableFrom(entity.getClass())) {
+                stringBuilder.append("Name: ").append(entity.getName()).append(System.lineSeparator());
             }
 
-            copyStringsToClipboard(entityData, ChatFormatting.GREEN + "Entity data was copied to clipboard!");
+            stringBuilder.append("NBT Data:").append(System.lineSeparator());
+            entity.writeToNBT(entityData);
+            stringBuilder.append(prettyPrintNBT(entityData));
+
+            // Add spacing if necessary.
+            if (loadedEntitiesCopyIterator.hasNext()) {
+                stringBuilder.append(System.lineSeparator()).append(System.lineSeparator());
+            }
         }
+
+        copyStringToClipboard(stringBuilder.toString(), ChatFormatting.GREEN + "Entity data was copied to clipboard!");
     }
 
     /**
@@ -155,26 +132,6 @@ public class DevUtils {
      */
     public static void copyStringToClipboard(String string, String successMessage) {
         writeToClipboard(string, successMessage);
-    }
-
-    /**
-     * Copies a list of strings to the clipboard, each on separate lines.
-     *
-     * @param strings the string to copy
-     */
-    public static void copyStringsToClipboard(List<String> strings) {
-        writeToClipboard(buildMultiLineStringFromList(strings), "Value was copied to clipboard!");
-    }
-
-    /**
-     * <p>Copies a list of strings to the clipboard, each on separate lines.</p>
-     * <p>Also shows the provided message in chat when successful</p>
-     *
-     * @param strings the strings to copy
-     * @param successMessage the custom message to show after successful copy
-     */
-    public static void copyStringsToClipboard(List<String> strings, String successMessage) {
-        writeToClipboard(buildMultiLineStringFromList(strings), successMessage);
     }
 
     // FIXME add support for TAG_LONG_ARRAY when updating to 1.12
@@ -279,26 +236,6 @@ public class DevUtils {
     }
 
     // Internal methods
-
-    // Converts a list of strings to a single multi-line string
-    private static String buildMultiLineStringFromList(List<String> strings) {
-        ListIterator<String> listIterator = strings.listIterator();
-        StringBuilder stringBuilder = new StringBuilder();
-
-        while (listIterator.hasNext()) {
-            String currentString = listIterator.next();
-
-            stringBuilder.append(currentString);
-
-            // Go to the next line.
-            if (listIterator.hasNext()) {
-                stringBuilder.append(System.lineSeparator());
-            }
-        }
-
-        return stringBuilder.toString();
-    }
-
     private static void writeToClipboard(String text, String successMessage) {
         Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
         StringSelection output = new StringSelection(text);
