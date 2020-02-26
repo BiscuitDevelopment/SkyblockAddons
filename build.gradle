@@ -9,8 +9,6 @@ buildscript {
             name = "franzbecker"
             url = "https://dl.bintray.com/franzbecker/maven/"
         }
-
-        flatDir dirs: 'libs'
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.1-SNAPSHOT'
@@ -58,10 +56,6 @@ jar {
             'FMLAT': 'skyblockaddons_at.cfg'
     )
 
-}
-
-dependencies {
-    provided files("libs/modcore.jar")
 }
 
 processResources {
