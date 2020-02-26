@@ -2,8 +2,6 @@ package codes.biscuit.skyblockaddons.utils.dev;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
-import lombok.Getter;
-import lombok.Setter;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -27,10 +25,6 @@ import java.util.List;
 public class DevUtils {
     public static final int DEV_KEY = Keyboard.KEY_RCONTROL;
     public static final int ENTITY_COPY_RADIUS = 3;
-
-    @Getter
-    @Setter
-    private static long lastDevKeyEvent = 0L;
 
     /**
      * Copies the data of entities within the entity copy radius of the player
