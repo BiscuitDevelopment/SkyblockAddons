@@ -43,7 +43,6 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 import org.lwjgl.input.Keyboard;
 
 import java.util.*;
-import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -78,11 +77,20 @@ public class PlayerListener {
     private double oldBobberPosY = 0;
 
     private Set<Entity> countedEndermen = new HashSet<>();
-    @Getter private Set<CoordsPair> recentlyLoadedChunks = new HashSet<>();
-    @Getter @Setter private EnumUtils.MagmaTimerAccuracy magmaAccuracy = EnumUtils.MagmaTimerAccuracy.NO_DATA;
-    @Getter @Setter private int magmaTime = 0;
-    @Getter @Setter private int recentMagmaCubes = 0;
-    @Getter @Setter private int recentBlazes = 0;
+    @Getter
+    private Set<CoordsPair> recentlyLoadedChunks = new HashSet<>();
+    @Getter
+    @Setter
+    private EnumUtils.MagmaTimerAccuracy magmaAccuracy = EnumUtils.MagmaTimerAccuracy.NO_DATA;
+    @Getter
+    @Setter
+    private int magmaTime = 0;
+    @Getter
+    @Setter
+    private int recentMagmaCubes = 0;
+    @Getter
+    @Setter
+    private int recentBlazes = 0;
 
     private final SkyblockAddons main;
     private final ActionBarParser actionBarParser;
@@ -144,7 +152,7 @@ public class PlayerListener {
             }
 
             // Put the Chicken Head on cooldown for 20 seconds when the player lays an egg.
-            if(message.equals("You laid an egg!")) {
+            if (message.equals("You laid an egg!")) {
                 CooldownManager.put(InventoryUtils.CHICKEN_HEAD_DISPLAYNAME, 20000);
             }
 
@@ -191,7 +199,7 @@ public class PlayerListener {
                 }
             }
 
-            if (formattedText.startsWith("§7Sending to server ")){
+            if (formattedText.startsWith("§7Sending to server ")) {
                 lastSkyblockServerJoinAttempt = System.currentTimeMillis();
             }
 
@@ -245,8 +253,7 @@ public class PlayerListener {
                 if (main.getConfigValues().isEnabled(Feature.SHOW_ITEM_COOLDOWNS) && mc.thePlayer.fishEntity != null) {
                     CooldownManager.put(mc.thePlayer.getHeldItem());
                 }
-            }
-            else if (main.getConfigValues().isEnabled(Feature.AVOID_PLACING_ENCHANTED_ITEMS) && EnchantedItemBlacklist.shouldBlockUsage(heldItem, e.action)) {
+            } else if (main.getConfigValues().isEnabled(Feature.AVOID_PLACING_ENCHANTED_ITEMS) && EnchantedItemBlacklist.shouldBlockUsage(heldItem, e.action)) {
                 e.setCanceled(true);
             }
         }
@@ -303,7 +310,7 @@ public class PlayerListener {
                             main.getInventoryUtils().getInventoryDifference(p.inventory.mainInventory);
                         }
 
-                        if(main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.TAB_EFFECT_TIMERS)){
+                        if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.TAB_EFFECT_TIMERS)) {
                             TabEffectManager.getInstance().updatePotionEffects();
                         }
                     }
@@ -376,7 +383,7 @@ public class PlayerListener {
 
     @SubscribeEvent
     public void onAttack(AttackEntityEvent e) {
-    	if (main.getConfigValues().isEnabled(Feature.ZEALOT_COUNTER) && e.target instanceof EntityEnderman) {
+        if (main.getConfigValues().isEnabled(Feature.ZEALOT_COUNTER) && e.target instanceof EntityEnderman) {
             List<EntityArmorStand> stands = Minecraft.getMinecraft().theWorld.getEntitiesWithinAABB(EntityArmorStand.class,
                     new AxisAlignedBB(e.target.posX - 1, e.target.posY, e.target.posZ - 1, e.target.posX + 1, e.target.posY + 5, e.target.posZ + 1));
             if (stands.isEmpty()) return;
@@ -385,16 +392,16 @@ public class PlayerListener {
             if (armorStand.hasCustomName() && armorStand.getCustomNameTag().contains("Zealot")) {
                 countedEndermen.add(e.target);
             }
-    	}
+        }
     }
 
     @SubscribeEvent
     public void onDeath(LivingDeathEvent e) {
-    	if (main.getConfigValues().isEnabled(Feature.ZEALOT_COUNTER) && e.entity instanceof EntityEnderman) {
+        if (main.getConfigValues().isEnabled(Feature.ZEALOT_COUNTER) && e.entity instanceof EntityEnderman) {
             if (countedEndermen.remove(e.entity)) {
                 main.getPersistentValues().addKill();
             }
-    	}
+        }
     }
 
     /**
@@ -513,9 +520,9 @@ public class PlayerListener {
 
                 GuiScreen gui = Minecraft.getMinecraft().currentScreen;
                 if (gui instanceof GuiChest) {
-                    Container chest = ((GuiChest)gui).inventorySlots;
+                    Container chest = ((GuiChest) gui).inventorySlots;
                     if (chest instanceof ContainerChest) {
-                        IInventory inventory = ((ContainerChest)chest).getLowerChestInventory();
+                        IInventory inventory = ((ContainerChest) chest).getLowerChestInventory();
                         if (inventory.hasCustomName() && "Enchant Item".equals(inventory.getDisplayName().getUnformattedText())) {
                             continue; // dont replace enchants when you are enchanting items in an enchantment table
                         }
@@ -618,31 +625,22 @@ public class PlayerListener {
         if (main.getOpenSettingsKey().isPressed()) {
             main.getUtils().setFadingIn(true);
             main.getRenderListener().setGuiToOpen(EnumUtils.GUIType.MAIN, 1, EnumUtils.GuiTab.MAIN);
-        }
-        else if (main.getOpenEditLocationsKey().isPressed()) {
+        } else if (main.getOpenEditLocationsKey().isPressed()) {
             main.getUtils().setFadingIn(false);
             main.getRenderListener().setGuiToOpen(EnumUtils.GUIType.EDIT_LOCATIONS, 0, null);
-        }
-        else if (Keyboard.getEventKey() == DevUtils.DEV_KEY) {
-            long eventTime = TimeUnit.MILLISECONDS.convert(Keyboard.getEventNanoseconds(), TimeUnit.NANOSECONDS);
+        } else if (Keyboard.getEventKey() == DevUtils.DEV_KEY && Keyboard.getEventKeyState()) {
+            // Copy Entity Data
+            if (main.isDevMode()) {
+                EntityPlayerSP player = Minecraft.getMinecraft().thePlayer;
+                List<Entity> entityList = Minecraft.getMinecraft().theWorld.loadedEntityList;
 
-            // For some reason four key presses are detected for each actual press so count only the first one.
-            if (eventTime - DevUtils.getLastDevKeyEvent() > 100L) {
-                DevUtils.setLastDevKeyEvent(Minecraft.getSystemTime());
-
-                // Copy Entity Data
-                if (main.isDevMode()) {
-                    EntityPlayerSP player = Minecraft.getMinecraft().thePlayer;
-                    List<Entity> entityList = Minecraft.getMinecraft().theWorld.loadedEntityList;
-
-                    DevUtils.copyEntityData(player, entityList);
-                }
+                DevUtils.copyEntityData(player, entityList);
             }
         }
     }
 
     private boolean shouldTriggerFishingIndicator() {
-        Minecraft mc =  Minecraft.getMinecraft();
+        Minecraft mc = Minecraft.getMinecraft();
         if (mc.thePlayer != null && mc.thePlayer.fishEntity != null && mc.thePlayer.getHeldItem() != null
                 && mc.thePlayer.getHeldItem().getItem().equals(Items.fishing_rod)
                 && main.getConfigValues().isEnabled(Feature.FISHING_SOUND_INDICATOR)) {
@@ -656,7 +654,7 @@ public class PlayerListener {
                     && currentTime - lastFishingAlert > 1000 && currentTime - lastBobberEnteredWater > 1500) {
                 double movement = bobber.posY - oldBobberPosY; // The Entity#motionY field is inaccurate for this purpose
                 oldBobberPosY = bobber.posY;
-                if (movement < -0.04d){
+                if (movement < -0.04d) {
                     lastFishingAlert = currentTime;
                     return true;
                 }
@@ -673,7 +671,9 @@ public class PlayerListener {
         return System.currentTimeMillis() - lastWorldJoin > 3000;
     }
 
-    public boolean aboutToJoinSkyblockServer() { return System.currentTimeMillis() - lastSkyblockServerJoinAttempt < 6000; }
+    public boolean aboutToJoinSkyblockServer() {
+        return System.currentTimeMillis() - lastSkyblockServerJoinAttempt < 6000;
+    }
 
     public void setLastSecondHealth(int lastSecondHealth) {
         actionBarParser.setLastSecondHealth(lastSecondHealth);
