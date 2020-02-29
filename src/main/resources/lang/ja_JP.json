@@ -94,7 +94,7 @@
     "noArrowsLeftAlert": "弓矢切れのアラート",
     "hideNightVisionEffectTimer": "暗視効果のタイマーを表示しない",
     "showCakeBagPreview": "ケーキバッグのプレビューを表示",
-    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
+    "showBackpackPreviewInAH": "オークションが開いている時にバックパックのプレビューを表示",
     "enableDevFeatures": "開発者機能の有効化"
   },
   "messages": {
