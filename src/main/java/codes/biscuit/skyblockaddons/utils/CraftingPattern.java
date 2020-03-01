@@ -42,7 +42,7 @@ public enum CraftingPattern {
     /**
      * Slot index of the crafting result
      */
-    public static final int CRAFTING_RESULT_INDEX = 24;
+    public static final int CRAFTING_RESULT_INDEX = 23;
 
     public static final List<Integer> CRAFTING_GRID_SLOTS = Arrays.asList(
       10, 11, 12,

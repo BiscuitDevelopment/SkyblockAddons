@@ -85,14 +85,18 @@ public class PlayerControllerMPHook {
         }
     }
 
-    public static void onPlayerDestroyBlock() {
+    public static void onPlayerDestroyBlock(BlockPos loc, ReturnValue<Boolean> returnValue) {
         SkyblockAddons main = SkyblockAddons.getInstance();
+        Minecraft mc = Minecraft.getMinecraft();
         ItemStack heldItem = Minecraft.getMinecraft().thePlayer.getHeldItem();
-        if (main.getUtils().isOnSkyblock()
-                && main.getConfigValues().isEnabled(Feature.SHOW_ITEM_COOLDOWNS)
-                && heldItem != null
-                && InventoryUtils.JUNGLE_AXE_DISPLAYNAME.equals(heldItem.getDisplayName())) {
-            CooldownManager.put(heldItem);
+        if (heldItem != null) {
+            Block block = mc.theWorld.getBlockState(loc).getBlock();
+            if(main.getUtils().isOnSkyblock()
+                    && main.getConfigValues().isEnabled(Feature.SHOW_ITEM_COOLDOWNS)
+                    && InventoryUtils.JUNGLE_AXE_DISPLAYNAME.equals(heldItem.getDisplayName())
+                    && (block.equals(Blocks.log) || block.equals(Blocks.log2))) {
+                CooldownManager.put(InventoryUtils.JUNGLE_AXE_DISPLAYNAME, InventoryUtils.JUNGLE_AXE_COOLDOWN);
+            }
         }
     }
 

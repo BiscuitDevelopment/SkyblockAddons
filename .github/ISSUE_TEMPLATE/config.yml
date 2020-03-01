@@ -1,0 +1,10 @@
+#
+# Issue Template Chooser Configuration
+#
+
+blank_issues_enabled: false
+
+contact_links:
+  - name: Community Discord
+    url: https://discord.gg/PqTAEek
+    about: Please ask and answer questions here.

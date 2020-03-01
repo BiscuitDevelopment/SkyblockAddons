@@ -474,14 +474,19 @@ public class Utils {
 
     public void fetchEstimateFromServer() {
         new Thread(() -> {
-            FMLLog.info("[SkyblockAddons] Getting magma boss spawn estimate from server...");
+            final boolean magmaTimerEnabled = main.getConfigValues().isEnabled(Feature.MAGMA_BOSS_TIMER);
+            if(!magmaTimerEnabled) {
+                FMLLog.info("[SkyblockAddons] Getting magma boss spawn estimate from server...");
+            }
             try {
                 URL url = new URL("https://hypixel-api.inventivetalent.org/api/skyblock/bosstimer/magma/estimatedSpawn");
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                 connection.setRequestMethod("GET");
                 connection.setRequestProperty("User-Agent", USER_AGENT);
 
-                FMLLog.info("[SkyblockAddons] Got response code " + connection.getResponseCode());
+                if(!magmaTimerEnabled) {
+                    FMLLog.info("[SkyblockAddons] Got response code " + connection.getResponseCode());
+                }
 
                 StringBuilder response = new StringBuilder();
                 try (BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
@@ -495,20 +500,28 @@ public class Utils {
                 long estimate = responseJson.get("estimate").getAsLong();
                 long currentTime = responseJson.get("queryTime").getAsLong();
                 int magmaSpawnTime = (int)((estimate-currentTime)/1000);
-                FMLLog.info("[SkyblockAddons] Query time was " + currentTime +", server time estimate is " +
-                        estimate+". Updating magma boss spawn to be in "+magmaSpawnTime+" seconds.");
+
+                if(!magmaTimerEnabled) {
+                    FMLLog.info("[SkyblockAddons] Query time was " + currentTime + ", server time estimate is " +
+                            estimate + ". Updating magma boss spawn to be in " + magmaSpawnTime + " seconds.");
+                }
 
                 main.getPlayerListener().setMagmaTime(magmaSpawnTime);
                 main.getPlayerListener().setMagmaAccuracy(EnumUtils.MagmaTimerAccuracy.ABOUT);
             } catch (IOException ex) {
-                FMLLog.warning("[SkyblockAddons] Failed to get magma boss spawn estimate from server");
+                if(!magmaTimerEnabled) {
+                    FMLLog.warning("[SkyblockAddons] Failed to get magma boss spawn estimate from server");
+                }
             }
         }).start();
     }
 
     public void sendPostRequest(EnumUtils.MagmaEvent event) {
         new Thread(() -> {
-            FMLLog.info("[SkyblockAddons] Posting event " + event.getInventiveTalentEvent() + " to InventiveTalent API");
+            final boolean magmaTimerEnabled = main.getConfigValues().isEnabled(Feature.MAGMA_BOSS_TIMER);
+            if(!magmaTimerEnabled) {
+                FMLLog.info("[SkyblockAddons] Posting event " + event.getInventiveTalentEvent() + " to InventiveTalent API");
+            }
 
             try {
                 String urlString = "https://hypixel-api.inventivetalent.org/api/skyblock/bosstimer/magma/addEvent";
@@ -533,11 +546,16 @@ public class Utils {
                         out.writeBytes(postString);
                         out.flush();
                     }
-                    FMLLog.info("[SkyblockAddons] Got response code " + connection.getResponseCode());
+
+                    if(!magmaTimerEnabled) {
+                        FMLLog.info("[SkyblockAddons] Got response code " + connection.getResponseCode());
+                    }
                     connection.disconnect();
                 }
             } catch (IOException ex) {
-                FMLLog.warning("[SkyblockAddons] Failed to post event to server");
+                if(!magmaTimerEnabled) {
+                    FMLLog.warning("[SkyblockAddons] Failed to post event to server");
+                }
             }
         }).start();
     }

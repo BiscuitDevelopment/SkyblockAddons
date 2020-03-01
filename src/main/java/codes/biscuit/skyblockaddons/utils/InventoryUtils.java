@@ -30,6 +30,9 @@ public class InventoryUtils {
     public static final String MADDOX_BATPHONE_DISPLAYNAME = "\u00A7aMaddox Batphone";
     public static final String JUNGLE_AXE_DISPLAYNAME = "\u00A7aJungle Axe";
     public static final String FAIRY_SOUL_EXCHANGE_DISPLAYNAME = "\u00a7aExchange Fairy Souls";
+    public static final String CHICKEN_HEAD_DISPLAYNAME = "\u00a7fChicken Head";
+
+    public static final long JUNGLE_AXE_COOLDOWN = 1500;
 
     private static final Pattern REVENANT_UPGRADE_PATTERN = Pattern.compile("§5§o§7Next Upgrade: §a\\+([0-9]+❈) §8\\(§a([0-9,]+)§7/§c([0-9,]+)§8\\)");
 
