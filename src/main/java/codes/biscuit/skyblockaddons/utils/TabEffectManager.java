@@ -26,7 +26,7 @@ public class TabEffectManager {
     @Getter private static final TabEffectManager instance = new TabEffectManager();
 
     /** Used to match potion effects from the footer. */
-    private static final Pattern EFFECT_PATTERN = Pattern.compile("(?:(?<potion>§r§[a-f0-9][a-zA-Z ]+ (?:I[XV]|V?I{0,3}) §r§f\\d{0,2}:?\\d{1,2}:\\d{2}§r)|(?<powerup>§r§[a-f0-9][a-zA-Z ]+ §r§f\\d{0,2}:?\\d{1,2}:\\d{2}§r))");
+    private static final Pattern EFFECT_PATTERN = Pattern.compile("(?:(?<potion>§r§[a-f0-9][a-zA-Z ]+ (?:I[XV]|V?I{0,3}) )|(?<powerup>§r§[a-f0-9][a-zA-Z ]+ ))§r§f(?<timer>\\d{0,2}:?\\d{1,2}:\\d{2})");
 
     /**
      * The following two fields are accessed by
@@ -34,8 +34,8 @@ public class TabEffectManager {
      *
      * Both return a list of current Potion or Powerup timers. They can be empty, but are never null.
      */
-    @Getter private List<String> potionTimers = new ArrayList<>();
-    @Getter private List<String> powerupTimers = new ArrayList<>();
+    @Getter private List<TabEffect> potionTimers = new ArrayList<>();
+    @Getter private List<TabEffect> powerupTimers = new ArrayList<>();
 
     /**
      * The following two fields are accessed by
@@ -44,20 +44,20 @@ public class TabEffectManager {
      *
      * Both return a list of dummy Potion or Powerup timers.
      */
-    @Getter private static final List<String> dummyPotionTimers = Arrays.asList(
-            "§r§ePotion Effect II §r§f12:34§r",
-            "§r§aEnchanting XP Boost III §r§f1:23:45§r");
-    @Getter private static final List<String> dummyPowerupTimers = Collections.singletonList(
-            "§r§bHoming Snowballs §r§f1:39§r");
+    @Getter private static final List<TabEffect> dummyPotionTimers = Arrays.asList(
+            new TabEffect("§r§ePotion Effect II ", "12:34"),
+            new TabEffect("§r§aEnchanting XP Boost III ", "1:23:45"));
+    @Getter private static final List<TabEffect> dummyPowerupTimers = Collections.singletonList(
+            new TabEffect("§r§bHoming Snowballs ", "1:39"));
 
     /**
      * Adds a potion effect to the ones currently being displayed.
      *
      * @param potionEffect The potion effect text to be added.
      */
-    public void putPotionEffect(String potionEffect) {
+    public void putPotionEffect(String potionEffect, String timer) {
         if(SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.HIDE_NIGHT_VISION_EFFECT_TIMER) && potionEffect.startsWith("§r§5Night Vision")) return;
-        putEffect(potionEffect, potionTimers);
+        putEffect(new TabEffect(potionEffect, timer), potionTimers);
     }
 
     /**
@@ -65,8 +65,8 @@ public class TabEffectManager {
      *
      * @param powerup The powerup text to be added.
      */
-    public void putPowerup(String powerup) {
-        putEffect(powerup, powerupTimers);
+    public void putPowerup(String powerup, String timer) {
+        putEffect(new TabEffect(powerup, timer), powerupTimers);
     }
 
     /**
@@ -75,9 +75,9 @@ public class TabEffectManager {
      * @param effect The potion effect/powerup text to be added.
      * @param list The list to add it to (either potionTimers or powerupTimers).
      */
-    private void putEffect(String effect, List<String> list) {
+    private void putEffect(TabEffect effect, List<TabEffect> list) {
         if (SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.REPLACE_ROMAN_NUMERALS_WITH_NUMBERS)) {
-            effect = RomanNumeralParser.replaceNumeralsWithIntegers(effect);
+            effect.setEffect(RomanNumeralParser.replaceNumeralsWithIntegers(effect.getEffect()));
         }
         list.add(effect);
     }
@@ -104,10 +104,14 @@ public class TabEffectManager {
         String effectString;
         while (m.find()) {
             if ((effectString = m.group("potion")) != null) {
-                putPotionEffect(effectString);
+                putPotionEffect(effectString, m.group("timer"));
             } else if ((effectString = m.group("powerup")) != null) {
-                putPowerup(effectString);
+                putPowerup(effectString, m.group("timer"));
             }
+        }
+        if(SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.SORT_TAB_EFFECT_TIMERS)) {
+            Collections.sort(potionTimers);
+            Collections.sort(powerupTimers);
         }
     }
 
