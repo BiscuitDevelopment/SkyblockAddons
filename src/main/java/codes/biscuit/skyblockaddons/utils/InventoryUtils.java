@@ -171,8 +171,9 @@ public class InventoryUtils {
      */
     public void checkIfInventoryIsFull(Minecraft mc, EntityPlayerSP p) {
         if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.FULL_INVENTORY_WARNING)) {
-            for (ItemStack item : p.inventory.mainInventory) {
-                if (item == null) {
+            // Don't check the last slot since it's reserved for Skyblock.
+            for (int i = 0; i < p.inventory.getSizeInventory() - 1; i++) {
+                if (p.inventory.getStackInSlot(i) == null) {
                     inventoryIsFull = false;
                     return;
                 }
