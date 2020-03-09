@@ -549,8 +549,13 @@ public class ConfigValues {
 
         if (featureColor != null) {
             for (ChatFormatting chatFormatting : ChatFormatting.values()) {
-                if (chatFormatting.getRGB() == featureColor) {
-                    return chatFormatting;
+                try {
+                    if (chatFormatting.getRGB() == featureColor) {
+                        return chatFormatting;
+                    }
+                }
+                catch (IllegalArgumentException ignored) {
+                    // This chat formatting has no color, let's ignore it.
                 }
             }
         }
