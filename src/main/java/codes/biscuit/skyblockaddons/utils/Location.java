@@ -12,6 +12,7 @@ public enum Location {
     // Hub
     AUCTION_HOUSE("Auction House"),
     BANK("Bank"),
+    BAZAAR("Bazaar Alley"),
     CANVAS_ROOM("Canvas Room"),
     COAL_MINE("Coal Mine"),
     COLOSSEUM("Colosseum"),
