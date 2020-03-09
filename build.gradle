@@ -38,7 +38,7 @@ minecraft {
 
 jar {
 //    archiveName = archivesBaseName + "-" + version + "-for-MC-1.8.9.jar"
-    archiveName = archivesBaseName + "-1.5.0-b6-for-MC-1.8.9.jar"
+    archiveName = archivesBaseName + "-1.5.0-b7-for-MC-1.8.9.jar"
 
     manifest.attributes(
             'Main-Class': 'OpenErrorMessage',
