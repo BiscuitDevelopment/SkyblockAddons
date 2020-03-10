@@ -78,8 +78,8 @@
     "specialZealotAlert": "Specialaus Zealoto Įspėjimas",
     "enableMessageWhenActionPrevented": "Rodyti žinutę kai uždrausta atlikti veiksmą",
     "hidePetHealthBar": "Slėpti gyvūno gyvybių liniją",
-    "powerOrbDisplay": "Power Orb Display",
-    "powerOrbDisplayStyle": "Power Orb Style: %style%",
+    "powerOrbDisplay": "Galios Orb Rodymas",
+    "powerOrbDisplayStyle": "Galios Orb Stilius %style%",
     "powerOrbStyle": {
       "detailed": "Detailed",
       "compact": "Compact"
