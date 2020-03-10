@@ -64,6 +64,7 @@ enum NPC {
     TAYLOR("Taylor", -28.5, 71, -107, asList(Tag.PLAYER, Tag.OTHER), asList(Location.VILLAGE, Location.FASHION_SHOP)),
     TOM("Tom", -15, 70, -84, asList(Tag.VILLAGER, Tag.INFO, Tag.QUEST_NPC), singletonList(Location.VILLAGE)),
     VEX("Vex",12, 70, -86, asList(Tag.VILLAGER, Tag.INFO, Tag.QUEST_NPC), singletonList(Location.VILLAGE)),
+    WARREN("Warren", 37,71,-85, asList(Tag.PLAYER, Tag.IMPORTANT, Tag.MERCHANT), asList(Location.VILLAGE, Location.BAZAAR)),
     WEAPONSMITH("Weaponsmith", -19,70, -41.5, asList(Tag.PLAYER, Tag.IMPORTANT, Tag.MERCHANT), singletonList(Location.VILLAGE)),
 
     // Farm (in Hub)
