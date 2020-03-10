@@ -95,7 +95,6 @@
     "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
     "showCakeBagPreview": "Show Preview for Cake Bags",
     "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
-    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
     "enableDevFeatures": "Enable Developer Features"
   },
   "messages": {
@@ -134,6 +133,7 @@
     "cancelledProfileOpening": "SkyblockAddons te je zaustavio od otvaranja inventara ovog igrača dok držiš luk i strelu.",
     "cancelledDropping": "SkyblockAddons te je zaustavio od bacanja ovog vrednog predmeta ili oruđa iz tvog hotbara.",
     "clickMoreTimes": "Klikni/Baci ovaj predmet još %times% puta ako stvarno želiš ovo da uradiš.",
+    "clickOneMoreTime": "Click/drop this item 1 more time if you really want to do this.",
     "cancelledDeepCaverns": "SkyblockAddons značajka te zaustavila da iskopaš ovaj blok ovdje.",
     "featureDisabled": "Funkcija Isključena",
     "anvilUses": "Korištenje Nakovnja %uses%",

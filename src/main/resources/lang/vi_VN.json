@@ -95,7 +95,6 @@
     "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
     "showCakeBagPreview": "Show Preview for Cake Bags",
     "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
-    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
     "enableDevFeatures": "Enable Developer Features"
   },
   "messages": {
@@ -134,6 +133,7 @@
     "cancelledProfileOpening": "SkyblockAddons Đã Ngăn Bạn Xem Thông Về Người Chơi Này Khi Bạn Đang Cầm Cung.",
     "cancelledDropping": "SkyblockAddons đã ngăn bạn làm rơi đồ hiếm từ thanh vật phẩm.",
     "clickMoreTimes": "Bấm/Thả Đồ Vật Này Thêm %times% Lần Nữa Nếu Bạn Muốn Thực Hiện Điều Này.",
+    "clickOneMoreTime": "Click/drop this item 1 more time if you really want to do this.",
     "cancelledDeepCaverns": "SkyblockAddon đã ngăn bạn đào khối này.",
     "featureDisabled": "Vô hiệu hóa tính năng",
     "anvilUses": "Số lần sử dụng đe: %uses%",

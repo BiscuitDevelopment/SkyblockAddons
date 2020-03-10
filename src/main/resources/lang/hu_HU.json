@@ -95,7 +95,6 @@
     "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
     "showCakeBagPreview": "Show Preview for Cake Bags",
     "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
-    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
     "enableDevFeatures": "Enable Developer Features"
   },
   "messages": {
@@ -134,6 +133,7 @@
     "cancelledProfileOpening": "A SkyblockAddons megállította, hogy megnyisd ennek a játékosnak a profilját, amíg íj van a kezedben.",
     "cancelledDropping": "A SkyblockAddons megállította, hogy eldobd ezt a rare tárgyat vagy eszközt.",
     "clickMoreTimes": "Kattints/dobd el ezt a tárgyat még %times% alkalommal, ha tényleg ezt szeretnéd.",
+    "clickOneMoreTime": "Click/drop this item 1 more time if you really want to do this.",
     "cancelledDeepCaverns": "SkyblockAddons megállított ennek a blokknak a kiütésében.",
     "featureDisabled": "Funkció kikapcsolva",
     "anvilUses": "Üllő használat: %uses%",

@@ -95,7 +95,6 @@
     "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
     "showCakeBagPreview": "Show Preview for Cake Bags",
     "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
-    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
     "enableDevFeatures": "Enable Developer Features"
   },
   "messages": {
@@ -134,6 +133,7 @@
     "cancelledProfileOpening": "SkyblockAddons elinizde yay olduğundan bu oyuncunun profilini açmanı engelledi.",
     "cancelledDropping": "SkyblockAddons bu değerli eşyanızı yere atmanızı engelledi.",
     "clickMoreTimes": "Eğer gerçekten eşyayı yere atmak istiyorsanız %times% kez eşyaya tıklayın.",
+    "clickOneMoreTime": "Click/drop this item 1 more time if you really want to do this.",
     "cancelledDeepCaverns": "Skyblockaddons kırmaya çalıştığınız bloğu kırmanızı önledi.",
     "featureDisabled": "Özellik Devre Dışı",
     "anvilUses": "Örs Kullanım(lar)ı: %uses%",

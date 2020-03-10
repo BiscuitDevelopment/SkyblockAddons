@@ -95,7 +95,6 @@
     "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
     "showCakeBagPreview": "Show Preview for Cake Bags",
     "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
-    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
     "enableDevFeatures": "Enable Developer Features"
   },
   "messages": {
@@ -134,6 +133,7 @@
     "cancelledProfileOpening": "SkyblockAddons on pysäyttänyt sinua avaamasta tämän pelaajan profiilia, kun sinulla on jousi kädessä.",
     "cancelledDropping": "SkyblockAddons on pysäyttänyt sinua pudottamasta tämän arvokkaan esineen tai työkalun hotbaristasi.",
     "clickMoreTimes": "Klikkaa/pudota tämä esine %times% kertaa jos haluat tehdä tämän.",
+    "clickOneMoreTime": "Click/drop this item 1 more time if you really want to do this.",
     "cancelledDeepCaverns": "SkyblockAddons -ominaisuus on estänyt sinut kaivamasta tämän kuution.",
     "featureDisabled": "Toiminto pois käytöstä",
     "anvilUses": "Alasimen käytöt: %uses%",

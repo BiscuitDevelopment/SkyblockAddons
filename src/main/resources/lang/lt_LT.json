@@ -15,7 +15,7 @@
     "hideDurability": "Paslėpti Daiktų Patvarumą",
     "showEnchantmentsReforges": "Užkerėjimai Ir Perdirbimai",
     "minionStopWarning": "\"Pakalikas Negali Pasiekti\" Įspėjimas",
-    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
+    "hidePlayersNearNPCs": "Slėpti žaidėjus šalia ypatingų NPC",
     "backpackStyle": "Kuprinės Stilius %style%",
     "backpackStyles": {
       "regular": "Įprasta",
@@ -78,8 +78,8 @@
     "specialZealotAlert": "Specialaus Zealoto Įspėjimas",
     "enableMessageWhenActionPrevented": "Rodyti žinutę kai uždrausta atlikti veiksmą",
     "hidePetHealthBar": "Slėpti gyvūno gyvybių liniją",
-    "powerOrbDisplay": "Power Orb Display",
-    "powerOrbDisplayStyle": "Power Orb Style: %style%",
+    "powerOrbDisplay": "Galios Orb Rodymas",
+    "powerOrbDisplayStyle": "Galios Orb Stilius %style%",
     "powerOrbStyle": {
       "detailed": "Detailed",
       "compact": "Compact"
@@ -95,7 +95,6 @@
     "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
     "showCakeBagPreview": "Show Preview for Cake Bags",
     "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
-    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
     "enableDevFeatures": "Enable Developer Features"
   },
   "messages": {
@@ -134,6 +133,7 @@
     "cancelledProfileOpening": "SkyblockAddons sustabdė jumis nuo šio žaidėjo profilio atidarymo, kai jūs rankoje laikote lanką.",
     "cancelledDropping": "SkyblockAddons sustabdė jumis nuo šio reto daikto išmetimo iš jūsų inventoriaus ar hotbar'o.",
     "clickMoreTimes": "Paspauskite/meskite šį daiktą %times% tiek kartų jeigu iš tikrųjų norite jį išmesti.",
+    "clickOneMoreTime": "Click/drop this item 1 more time if you really want to do this.",
     "cancelledDeepCaverns": "SkyblockAddons funkcija sustabdė jus nuo bloko iškasimo šioje vietoje.",
     "featureDisabled": "Funkcija išjungta",
     "anvilUses": "Priekalo Panaudojimai: %uses%",

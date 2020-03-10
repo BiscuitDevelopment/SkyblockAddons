@@ -86,7 +86,7 @@
     },
     "disableMagicalSoupMessage": "Vypnout zprávu magické houbové polévky",
     "zealotCounter": "Ukázat Počítadlo Zealotů",
-    "tickerChargesDisplay": "Ticker/Charges Display",
+    "tickerChargesDisplay": "Zobrazení Okamžiků/Nabití",
     "tab": {
       "generalSettings": "Obecná nastavení"
     },
@@ -94,9 +94,8 @@
     "noArrowsLeftAlert": "Upozornění na nedostatek šípů",
     "hideNightVisionEffectTimer": "Skrýt časovač efektu nočního vidění",
     "showCakeBagPreview": "Ukázat přehled pro Tašky na Dorty",
-    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
-    "hidePlayersNearHarp": "Skrýt hráče poblíž Melodyho harfy",
-    "enableDevFeatures": "Aktivovat možnosti pro vývojáře"
+    "showBackpackPreviewInAH": "Zobrazit náhled do tvého batohu, když je otevřená nabídka pro Aukci",
+    "enableDevFeatures": "Povolit Vývojářské funkce"
   },
   "messages": {
     "dropConfirmation": "Vyhoď tento item pro vyhození!",
@@ -134,6 +133,7 @@
     "cancelledProfileOpening": "SkyblockAddons vám zabránil otevřít profil hráče při držení luku.",
     "cancelledDropping": "SkyblockAddons vám zabránil vyhodit tento vzácný předmět nebo nástroj z vašeho hotbaru.",
     "clickMoreTimes": "Klikněte/vyhoďte tento předmět %times%-krát, pokud to chcete opravdu udělat.",
+    "clickOneMoreTime": "Klikněte/vyhoďte tento předmět ještě jednou, pokud to chcete opravdu udělat.",
     "cancelledDeepCaverns": "Funkce SkyblockAddons vás zastavila před zničením tohoto bloku.",
     "featureDisabled": "Vlastnost je vypnuta",
     "anvilUses": "Použití kovadliny: %uses%",

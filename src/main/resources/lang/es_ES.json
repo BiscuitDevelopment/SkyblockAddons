@@ -15,7 +15,7 @@
     "hideDurability": "Ocultar Durabilidad de Herramientas",
     "showEnchantmentsReforges": "Ver Encantamientos y Reforjes",
     "minionStopWarning": "Aviso de Detención de Minion",
-    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
+    "hidePlayersNearNPCs": "Ocultar Jugadores cerca de NPCs importantes",
     "backpackStyle": "Estilo de Mochila: %style%",
     "backpackStyles": {
       "regular": "Normal",
@@ -94,9 +94,8 @@
     "noArrowsLeftAlert": "Alerta de Quedarse sin Flechas",
     "hideNightVisionEffectTimer": "Ocultar el temporizador del efecto de visión nocturna",
     "showCakeBagPreview": "Mostrar Preview para los Cake Bags",
-    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
-    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
-    "enableDevFeatures": "Enable Developer Features"
+    "showBackpackPreviewInAH": "Mostrar Preview de la Mochila mientras Auction House esta abierto",
+    "enableDevFeatures": "Modo De Desarrollador"
   },
   "messages": {
     "dropConfirmation": "¡Dropea el Objeto otra vez para soltar!",
@@ -134,6 +133,7 @@
     "cancelledProfileOpening": "SkyblockAddons te ha impedido abrir el perfil de este jugador mientras mantienes un arco.",
     "cancelledDropping": "SkyblockAddons te ha impedido que soltaras este objeto o herramienta rara de tu hotbar.",
     "clickMoreTimes": "Haga clic/soltar este objeto %times% veces más si realmente quieres hacer esto.",
+    "clickOneMoreTime": "Haga click/suelte este objeto 1 vez más si realmente quieres hacer esto.",
     "cancelledDeepCaverns": "Una característica de SkyblockAddons te ha detenido de mines este bloque aquí.",
     "featureDisabled": "Función Desactivada",
     "anvilUses": "Usos del yunque %uses%",

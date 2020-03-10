@@ -94,8 +94,7 @@
     "noArrowsLeftAlert": "\"Keine Pfeile übrig\" Warnung",
     "hideNightVisionEffectTimer": "Verstecke Nachtsicht Effekt Timer",
     "showCakeBagPreview": "Show Preview for Cake Bags",
-    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
-    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
+    "showBackpackPreviewInAH": "Rucksack-Vorschau für deine Items anzeigen, während das Auktionshaus geöffnet ist",
     "enableDevFeatures": "Enable Developer Features"
   },
   "messages": {
@@ -132,8 +131,9 @@
     "summoningEyeFound": "Summoning Eye!",
     "cancelledStemBreak": "SkyblockAddons hat dich davon abgehalten, diesen Stamm zu zerstören. Nutze deine Hand um ihn trotzdem zu zerstören.",
     "cancelledProfileOpening": "SkyblockAddons hat dich davon abgehalten, das Profil dieses Spielers zu öffnen, während du einen Bogen hältst.",
-    "cancelledDropping": "SkyblockAddons hat dich davon abgehalten, dieses seltene Item oder Werkzeug aus deiner Hotbar zu droppen.",
+    "cancelledDropping": "SkyblockAddons hat dich davon abgehalten, dieses seltene Item oder Werkzeug aus deiner Inventarleiste zu droppen.",
     "clickMoreTimes": "Klicke/droppe dieses Item %times% mal mehr, wenn du das wirklich tun möchtest.",
+    "clickOneMoreTime": "Klicke/Droppe dieses Item nocheinmal wenn du das wirklich tun möchtest.",
     "cancelledDeepCaverns": "SkyblockAddons hat dich davon abgehalten diesen Block abbzubauen.",
     "featureDisabled": "Funktion deaktiviert",
     "anvilUses": "Ambossnutzungen: %uses%",

@@ -15,7 +15,7 @@
     "hideDurability": "ซ่อนหลอดความทนทานของอุปกรณ์",
     "showEnchantmentsReforges": "การ Enchants และตีบวกของ",
     "minionStopWarning": "แจ้งเตือนมินเนียนไม่สามารถเอื้อมถึง Mob ได้",
-    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
+    "hidePlayersNearNPCs": "ซ่อนผู้เล่นที่อยู่ใกล้ NPC",
     "backpackStyle": "ลักษณะของกระเป๋า: %style%",
     "backpackStyles": {
       "regular": "ปกติ",
@@ -94,9 +94,8 @@
     "noArrowsLeftAlert": "แจ้งเตือนลูกศรหมด",
     "hideNightVisionEffectTimer": "ซ่อนระยะเวลาเอฟเฟ็ค Night Vision",
     "showCakeBagPreview": "แสดงไอเท็มในถุงเก็บเค้ก",
-    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
-    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
-    "enableDevFeatures": "Enable Developer Features"
+    "showBackpackPreviewInAH": "โชว์แบบกระเป๋าในขณะที่ใช้ร้านประมูล",
+    "enableDevFeatures": "เปิดใช้ฟีเจอร์สำหรับผู้พัฒนา"
   },
   "messages": {
     "dropConfirmation": "กดทิ้งของอีกที่เพื่อยืนยันทิ้งของสิ่งนี้!",
@@ -134,6 +133,7 @@
     "cancelledProfileOpening": "ม็อด SkyblockAddons ได้หยุดคุณจากการเปิดดูโปรไฟล์ผู้เล่นเมื่อคุณถือธนูไว้",
     "cancelledDropping": "ม็อด SkyblockAddons ได้หยุดคุณจากการทิ้งไอเทม Rare หรืออุปกรณ์จากช่อง Hotbar ของคุณ",
     "clickMoreTimes": "คลิกหรือทิ้งไอเทมนี้อีก %times% ครั้งเพื่อยืนยัน",
+    "clickOneMoreTime": "คลิกหรือทิ้งไอเทมนี้อีก  1 ครั้งเพื่อยืนยัน",
     "cancelledDeepCaverns": "SkyblockAddons ได้หยุดคุณจากการขุดบล็อคนี้",
     "featureDisabled": "ปิดใช้งานฟีเจอร์นี้แล้ว",
     "anvilUses": "ใช้ Anvil: %uses%",

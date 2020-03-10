@@ -15,7 +15,7 @@
     "hideDurability": "Nascondi la Durabilità degli strumenti",
     "showEnchantmentsReforges": "Incantesimi & Forge",
     "minionStopWarning": "Avviso che \"i Minion non possono raggiungere le risorse\" ",
-    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
+    "hidePlayersNearNPCs": "Nascondi i giocatori vicino agli NPC importanti",
     "backpackStyle": "Stile Zaino: %style%",
     "backpackStyles": {
       "regular": "Regolare",
@@ -94,9 +94,8 @@
     "noArrowsLeftAlert": "Avviso frecce finite",
     "hideNightVisionEffectTimer": "Nascondi il timer dell’effetto visione notturna",
     "showCakeBagPreview": "Mostra anteprima delle Cake Bags",
-    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
-    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
-    "enableDevFeatures": "Enable Developer Features"
+    "showBackpackPreviewInAH": "Mostra l’anteprima dello zaino mentre l’Auction House è aperta",
+    "enableDevFeatures": "Abilita la modalità sviluppatore"
   },
   "messages": {
     "dropConfirmation": "Getta questo oggetto nuovamente per confermare!",
@@ -130,11 +129,12 @@
     },
     "slotLocked": "Questo slot è bloccato!",
     "summoningEyeFound": "Occhio dell'evocazione!",
-    "cancelledStemBreak": "SkyblockAddons ti ha impedito di rompere questo stelo. Usa la tua mano se lo vuoi rompere.",
-    "cancelledProfileOpening": "SkyblockAddons ti ha impedito di aprire il profilo di questo giocatore mentre avevi l’arco in mano.",
-    "cancelledDropping": "SkyblockAddons ti ha impedito di gettare questo oggetto o strumento raro dalla tua hotbar.",
+    "cancelledStemBreak": "Una funzione ti ha impedito di rompere questo stelo. Usa la tua mano se lo vuoi rompere.",
+    "cancelledProfileOpening": "Una funzione ti ha impedito di aprire il profilo di questo giocatore mentre avevi l’arco in mano.",
+    "cancelledDropping": "Una funzione ti ha impedito di gettare questo oggetto o strumento raro dalla tua hotbar.",
     "clickMoreTimes": "Clicca/getta questo oggetto altre %times% volte se vuoi davvero farlo.",
-    "cancelledDeepCaverns": "Una funzione di SkyBlockAddons ti ha impedito di estrarre questo blocco.",
+    "clickOneMoreTime": "Clicca/getta questo oggetto ancora 1 volta se vuoi veramente farlo.",
+    "cancelledDeepCaverns": "Una funzione ti ha impedito di estrarre questo blocco.",
     "featureDisabled": "Funzione disabilitata",
     "anvilUses": "Utilizzi dell’incudine: %uses%",
     "specialZealotFound": "Zealot Speciale!",

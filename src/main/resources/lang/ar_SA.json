@@ -15,7 +15,7 @@
     "hideDurability": "إخفاء متانة الأداة",
     "showEnchantmentsReforges": "تطوير و إعادة تشكيل",
     "minionStopWarning": "تحذير إيقاف التابع",
-    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
+    "hidePlayersNearNPCs": "اخفاء اللاعبين عند الشخصيات/الدمى المهمه",
     "backpackStyle": "%style% :نمط حقيبة الظهر",
     "backpackStyles": {
       "regular": "المظهر العادي",
@@ -92,11 +92,10 @@
     },
     "tabEffectTimers": "مؤقتي الجرعات و مقويات الطاقة",
     "noArrowsLeftAlert": "تنبيه النفاذ من السهوم",
-    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
-    "showCakeBagPreview": "Show Preview for Cake Bags",
-    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
-    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
-    "enableDevFeatures": "Enable Developer Features"
+    "hideNightVisionEffectTimer": "اخفاء مؤقت جرعة الرؤية الليلية",
+    "showCakeBagPreview": "إظهار معاينة لحقائب الكعك",
+    "showBackpackPreviewInAH": "إظهار معاينة حقيبة الظهر للاشياء الخاصة بك أثناء فتح المزاد",
+    "enableDevFeatures": "تشغيل ميزة المطور"
   },
   "messages": {
     "dropConfirmation": "!إرمي هذا العنصر مرة أخرى للتأكيد",
@@ -134,6 +133,7 @@
     "cancelledProfileOpening": "إضافات سكاي بلوك منعك من فتح شخصية هذا اللاعب وانت تحمل القوس.",
     "cancelledDropping": "إضافات سكاي بلوك منعك من إلقاء هذه الأداة أو الشيء النادر من قائمة أدواتك.",
     "clickMoreTimes": "أضغط أو اسقط هذا الشيء %times% مرات أخرى إن كنت حقيقا تريد فعل هذا.",
+    "clickOneMoreTime": "انقر/ اسقط هذا الغرض مرة اخرى إذا كنت تريد حقا أن تفعل هذا.",
     "cancelledDeepCaverns": "إضافات سكاي بلوك منعك من كسر هذا المعدن.",
     "featureDisabled": "تعطل الميزة",
     "anvilUses": "استخدامات السندان: %uses%",
@@ -143,8 +143,8 @@
     "downloadingUpdateFile": "يتم تنزيل ملف التحديث...",
     "onlyFewArrowsLeft": "مبقي %arrows% من السهوم فقط!",
     "noArrowsLeft": "نفذت من السهوم!",
-    "chooseAColor": "Choose a Color",
-    "selectedColor": "Selected Color",
-    "setHexColor": "Set Hex Color"
+    "chooseAColor": "اختر لون",
+    "selectedColor": "اللون المحدد",
+    "setHexColor": "تعيين لون الهيكس"
   }
 }

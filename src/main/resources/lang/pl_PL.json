@@ -15,7 +15,7 @@
     "hideDurability": "Wyłącz Pasek Wytrzymałości Narzędzi",
     "showEnchantmentsReforges": "Zaklęcia oraz Reforge",
     "minionStopWarning": "Ostrzeżenie o Przerwaniu Pracy Miniona",
-    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
+    "hidePlayersNearNPCs": "Ukryj graczy blisko ważnych NPC-tów",
     "backpackStyle": "Styl Plecaka: %style%",
     "backpackStyles": {
       "regular": "Zwykłe",
@@ -95,7 +95,6 @@
     "hideNightVisionEffectTimer": "Ukryj zegar widzenia w ciemności",
     "showCakeBagPreview": "Pokaż podgląd dla torb na ciasta",
     "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
-    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
     "enableDevFeatures": "Enable Developer Features"
   },
   "messages": {
@@ -134,6 +133,7 @@
     "cancelledProfileOpening": "SkyblockAddons powstrzymał otwieranie profilu tej osoby podczas trzymania łuku.",
     "cancelledDropping": "SkyblockAddons anulował upuszczenie tego rzadkiego przedmiotu lub narzędzia z twojego paska narzędzi.",
     "clickMoreTimes": "Naciśnij/upuść ten przedmiot %times% razy więcej, jeśli naprawdę chcesz to zrobić.",
+    "clickOneMoreTime": "Click/drop this item 1 more time if you really want to do this.",
     "cancelledDeepCaverns": "Funkcja Skyblock Addons powstrzymała cię od kopania tego bloku.",
     "featureDisabled": "Funkcja wyłączona",
     "anvilUses": "Użycia kowadła: %uses%",

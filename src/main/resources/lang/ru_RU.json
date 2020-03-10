@@ -92,10 +92,9 @@
     },
     "tabEffectTimers": "Таймеры зелий и улучшений",
     "noArrowsLeftAlert": "Предупреждение о законченных стрелах",
-    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
-    "showCakeBagPreview": "Show Preview for Cake Bags",
-    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
-    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
+    "hideNightVisionEffectTimer": "Скрыть таймер эффекта Ночного Зрения",
+    "showCakeBagPreview": "Показывать превью Мешка для Тортов",
+    "showBackpackPreviewInAH": "Показывать превью рюкзака во время использования Аукциона",
     "enableDevFeatures": "Включить параметры разработчиков"
   },
   "messages": {
@@ -134,6 +133,7 @@
     "cancelledProfileOpening": "SkyblockAddons остановил вас от открытия профиля игрока с луком в руках.",
     "cancelledDropping": "SkyblockAddons предотвратил попытку выбросить этот предмет из панели быстрого доступа.",
     "clickMoreTimes": "Щелкните/выбросьте этот предмет еще %times% раз(а), если вы действительно хотите сделать это.",
+    "clickOneMoreTime": "Нажмите/выбросьте этот предмет еще 1 раз, чтобы подтвердить свое действие.",
     "cancelledDeepCaverns": "Функция SkyblockAddons остановила вас от копания этого блока.",
     "featureDisabled": "Функция отключена",
     "anvilUses": "Использований наковальни: %uses%",
@@ -143,8 +143,8 @@
     "downloadingUpdateFile": "Загрузка файла обновления...",
     "onlyFewArrowsLeft": "Осталось только %arrows% стрел(-ы/-а)!",
     "noArrowsLeft": "Стрел не осталось!",
-    "chooseAColor": "Choose a Color",
-    "selectedColor": "Selected Color",
-    "setHexColor": "Set Hex Color"
+    "chooseAColor": "Выберите цвет",
+    "selectedColor": "Выбранный цвет",
+    "setHexColor": "Выберите цвет \"HEX\""
   }
 }

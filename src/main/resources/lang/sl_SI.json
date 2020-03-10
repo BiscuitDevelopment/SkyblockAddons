@@ -15,7 +15,7 @@
     "hideDurability": "Skrij Trpežnost Orodja",
     "showEnchantmentsReforges": "Enchanti & Reforgi",
     "minionStopWarning": "\"Minion Ne Doseže\" Opozorilo",
-    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
+    "hidePlayersNearNPCs": "Skrij Igralce blizu pomembnih NPC-jev",
     "backpackStyle": "Stil Nahrbtnika: %style%",
     "backpackStyles": {
       "regular": "Navaden",
@@ -93,9 +93,8 @@
     "tabEffectTimers": "Časovnik za napoje in učinke",
     "noArrowsLeftAlert": "Opozorilo za manjko puščic",
     "hideNightVisionEffectTimer": "Skrij časovnik za Night Vision Potion",
-    "showCakeBagPreview": "Pokaži predogled torb s tortami",
+    "showCakeBagPreview": "Pokaži Predogled Torb s Tortami",
     "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
-    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
     "enableDevFeatures": "Enable Developer Features"
   },
   "messages": {
@@ -134,6 +133,7 @@
     "cancelledProfileOpening": "SkyblockAddons vam je preprečil odpiranje profila tega igralca medtem, ko držite lok.",
     "cancelledDropping": "SkyblockAddons vam je preprečil izpust te redke stvari iz svojega hotbarja.",
     "clickMoreTimes": "Kliknite/izpustite to stvar še %times% -krat, če to res želite storiti.",
+    "clickOneMoreTime": "Click/drop this item 1 more time if you really want to do this.",
     "cancelledDeepCaverns": "Funkcija SkyblockAddons ti je preprečila uničiti to kocko.",
     "featureDisabled": "Funkcija izklopljena",
     "anvilUses": "Število Uporab Nakovala: %uses%",

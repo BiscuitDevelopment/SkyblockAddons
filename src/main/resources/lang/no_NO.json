@@ -95,7 +95,6 @@
     "hideNightVisionEffectTimer": "Skjul Natt Syn Effekt Timer",
     "showCakeBagPreview": "Vis Forhåndsvisning for Kake Sekker",
     "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
-    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
     "enableDevFeatures": "Enable Developer Features"
   },
   "messages": {
@@ -134,6 +133,7 @@
     "cancelledProfileOpening": "SkyblockAddons har stoppet deg fra å åpne denne spillerens profil siden du holder en bue.",
     "cancelledDropping": "SkyblockAddons har stoppet deg fra å slippe denne sjeldne gjenstanden/redskap fra din hotbar.",
     "clickMoreTimes": "Klikk/slipp denne gjenstanden %times% flere ganger hvis du virkelig vil gjøre dette.",
+    "clickOneMoreTime": "Click/drop this item 1 more time if you really want to do this.",
     "cancelledDeepCaverns": "En SkyblockAddons egenskap har stoppet deg fra å ødelegge denne blokken her.",
     "featureDisabled": "Funksjon Deaktivert",
     "anvilUses": "Ambolt Bruk: %uses%",
