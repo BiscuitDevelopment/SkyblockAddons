@@ -11,7 +11,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import org.lwjgl.input.Keyboard;
 
 /**
- * This listener listens for events that happen while a {@code GuiScreen} is open.
+ * This listener listens for events that happen while a {@link GuiScreen} is open.
  *
  * @author ILikePlayingGames
  * @version 1.0

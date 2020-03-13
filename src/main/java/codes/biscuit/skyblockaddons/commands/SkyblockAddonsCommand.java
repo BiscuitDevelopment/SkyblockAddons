@@ -6,6 +6,7 @@ import codes.biscuit.skyblockaddons.utils.Utils;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
+import net.minecraft.command.WrongUsageException;
 
 import java.awt.*;
 import java.io.IOException;
@@ -13,13 +14,6 @@ import java.util.Collections;
 import java.util.List;
 
 public class SkyblockAddonsCommand extends CommandBase {
-
-    private static String[] HELP_MESSAGE = {
-            Utils.color("&7&m------------&7[&b&l SkyblockAddons &7]&7&m------------"),
-            Utils.color("&b● /sba &7- Open the main menu"),
-            Utils.color("&b● /sba edit &7- Edit GUI locations"),
-            Utils.color("&b● /sba folder &7- Open your mods folder"),
-            Utils.color("&7&m----------------------------------------------")};
 
     private SkyblockAddons main;
 
@@ -39,8 +33,12 @@ public class SkyblockAddonsCommand extends CommandBase {
     }
 
     @Override
-    public String getCommandUsage(ICommandSender sender) {
-        return null;
+    public String getCommandUsage(ICommandSender sender) { return
+        Utils.color("&7&m------------&7[&b&l SkyblockAddons &7]&7&m------------") + System.lineSeparator() +
+        Utils.color("&b● /sba &7- Open the main menu") + System.lineSeparator() +
+        Utils.color("&b● /sba edit &7- Edit GUI locations") + System.lineSeparator() +
+        Utils.color("&b● /sba folder &7- Open your mods folder") + System.lineSeparator() +
+        Utils.color("&7&m----------------------------------------------");
     }
 
     @Override
@@ -56,11 +54,6 @@ public class SkyblockAddonsCommand extends CommandBase {
     public void processCommand(ICommandSender sender, String[] args) {
         if (args.length > 0) {
             switch (args[0]) {
-                case "help":
-                    for (String line: HELP_MESSAGE) {
-                        main.getUtils().sendMessage(line, false);
-                    }
-                    break;
                 case "edit":
                     main.getUtils().setFadingIn(false);
                     main.getRenderListener().setGuiToOpen(EnumUtils.GUIType.EDIT_LOCATIONS, 0, null);
@@ -85,6 +78,8 @@ public class SkyblockAddonsCommand extends CommandBase {
                         e.printStackTrace();
                     }
                     break;
+                default:
+                    main.getUtils().sendMessage(getCommandUsage(sender));
             }
         }
         else {
