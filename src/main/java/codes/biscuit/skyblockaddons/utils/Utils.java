@@ -28,6 +28,7 @@ import net.minecraft.util.ChatComponentText;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.FMLLog;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.MetadataCollection;
 import net.minecraftforge.fml.common.ModMetadata;
 import net.minecraftforge.fml.relauncher.CoreModManager;
@@ -663,58 +664,15 @@ public class Utils {
         return ChatFormatting.translateAlternateColorCodes('&', text);
     }
 
-    @SuppressWarnings("unchecked")
     public File getSBAFolder(boolean changeMessage) {
-        try {
-            Method setupCoreModDir = CoreModManager.class.getDeclaredMethod("setupCoreModDir", File.class);
-            setupCoreModDir.setAccessible(true);
-            File coreModFolder = (File) setupCoreModDir.invoke(null, Minecraft.getMinecraft().mcDataDir);
-            setupCoreModDir.setAccessible(false);
-            if (coreModFolder.isDirectory()) {
-                FilenameFilter fileFilter = (dir, name) -> name.endsWith(".jar");
-                File[] coreModList = coreModFolder.listFiles(fileFilter);
-                if (coreModList != null) {
-                    Field mccversion = FMLInjectionData.class.getDeclaredField("mccversion");
-                    mccversion.setAccessible(true);
-                    File versionedModDir = new File(coreModFolder, (String)mccversion.get(null));
-                    mccversion.setAccessible(false);
-                    if (versionedModDir.isDirectory()) {
-                        File[] versionedCoreMods = versionedModDir.listFiles(fileFilter);
-                        if (versionedCoreMods != null) {
-                            coreModList = ObjectArrays.concat(coreModList, versionedCoreMods, File.class);
-                        }
-                    }
-                    coreModList = ObjectArrays.concat(coreModList, ModListHelper.additionalMods.values().toArray(new File[0]), File.class);
-                    FileListHelper.sortFileList(coreModList);
-                    for (File coreMod : coreModList) {
-                        JarFile jar = new JarFile(coreMod);
-                        ZipEntry modInfo = jar.getEntry("mcmod.info");
-                        if (modInfo != null) {
-                            MetadataCollection metadata = MetadataCollection.from(jar.getInputStream(modInfo), coreMod.getName());
-                            Field metadatas = metadata.getClass().getDeclaredField("metadatas");
-                            metadatas.setAccessible(true);
-                            for (String modId : ((Map<String, ModMetadata>)metadatas.get(metadata)).keySet()) {
-                                if ("skyblockaddons".equals(modId)) {
-                                    return coreMod.getParentFile();
-                                }
-                            }
-                            metadatas.setAccessible(false);
-                        }
-                    }
-                }
-            }
-        } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException | NoSuchFieldException | IOException e) {
-            e.printStackTrace();
-            if (changeMessage) main.getRenderListener().getDownloadInfo().setMessageType(EnumUtils.UpdateMessageType.FAILED);
-        }
-        return null;
+        return Loader.instance().activeModContainer().getSource().getParentFile();
     }
 
     public int getNBTInteger(ItemStack item, String... path) {
         if (item != null && item.hasTagCompound()) {
             NBTTagCompound tag = item.getTagCompound();
             for (String tagName : path) {
-                if (path[path.length-1] == tagName) continue;
+                if (path[path.length-1].equals(tagName)) continue;
                 if (tag.hasKey(tagName)) {
                     tag = tag.getCompoundTag(tagName);
                 } else {
