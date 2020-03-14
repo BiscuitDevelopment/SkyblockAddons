@@ -56,11 +56,13 @@ For Contributors
 1. Make sure to add this VM argument to your debug configuration or your IDE's equivalent, so all the transformers
 are applied properly in your dev environment!
 ```-Dfml.coreMods.load=codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsLoadingPlugin```
-2. This project uses Lombok, which helps with things such as not having to manually create Getters and 
+2. Set the Gradle task ```processResourcesDev``` to run every time before launching the Minecraft client from
+ your dev environment. This is required for the mod assets to load properly in the dev environment.
+3. This project uses Lombok, which helps with things such as not having to manually create Getters and 
 Setters. If you are using IntelliJ, please download the plugin called Lombok either in your IDE or by 
 [visiting this link](https://plugins.jetbrains.com/plugin/6317-lombok) so that everything works correctly. 
 If you are using Eclipse, [you can read this page here.](https://projectlombok.org/setup/eclipse)
-3. After installing the plugin in IntelliJ, go to `File` → `Settings` → `Build` → 
+4. After installing the plugin in IntelliJ, go to `File` → `Settings` → `Build` → 
 `Execution, Deployment, Compiler` → `Annotation Processors`, and check ☑ 
 `Enable annotation processing` on the top right. This will allow you to debug properly.
 
