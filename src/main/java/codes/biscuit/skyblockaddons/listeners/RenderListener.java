@@ -16,6 +16,7 @@ import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityArmorStand;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.init.Items;
@@ -110,7 +111,7 @@ public class RenderListener {
     }
 
     @SubscribeEvent()
-    public void onRenderLiving(RenderLivingEvent.Specials.Pre e) {
+    public void onRenderLiving(RenderLivingEvent.Specials.Pre<EntityLivingBase> e) {
         Entity entity = e.entity;
         if (main.getConfigValues().isEnabled(Feature.MINION_DISABLE_LOCATION_WARNING) && entity.hasCustomName()) {
             if (entity.getCustomNameTag().startsWith("§cThis location isn\'t perfect! :(")) {
