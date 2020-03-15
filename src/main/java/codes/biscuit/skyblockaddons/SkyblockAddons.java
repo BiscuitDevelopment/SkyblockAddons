@@ -25,6 +25,8 @@ import org.lwjgl.input.Keyboard;
 import java.lang.reflect.Field;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
 
 @Getter
 @Mod(modid = SkyblockAddons.MOD_ID, version = SkyblockAddons.VERSION, name = SkyblockAddons.MOD_NAME, clientSideOnly = true, acceptedMinecraftVersions = "[1.8.9]")
@@ -47,6 +49,7 @@ public class SkyblockAddons {
 
     /** Get the scheduler that be can be used to easily execute tasks. */
     private Scheduler scheduler = new Scheduler(this);
+    private ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
     private boolean usingLabymod = false;
     private boolean usingOofModv1 = false;
 

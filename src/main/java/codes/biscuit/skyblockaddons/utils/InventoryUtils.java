@@ -3,6 +3,8 @@ package codes.biscuit.skyblockaddons.utils;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.utils.item.ItemUtils;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
+import codes.biscuit.skyblockaddons.utils.tasks.ResetTitleFeature;
+import codes.biscuit.skyblockaddons.utils.tasks.ShowInventoryFullWarning;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
 import lombok.Getter;
@@ -13,6 +15,8 @@ import net.minecraft.item.ItemStack;
 
 import java.math.BigDecimal;
 import java.util.*;
+import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -38,7 +42,10 @@ public class InventoryUtils {
 
     private List<ItemStack> previousInventory;
     private Multimap<String, ItemDiff> itemPickupLog = ArrayListMultimap.create();
-    private boolean inventoryIsFull;
+
+    private boolean inventoryWarningShown;
+    private ScheduledFuture<?> inventoryWarningHandle;
+    private ScheduledFuture<?> resetTitleFeatureHandle;
 
     /** Whether the player is wearing a Skeleton Helmet. */
     @Getter private boolean wearingSkeletonHelmet;
@@ -171,19 +178,25 @@ public class InventoryUtils {
      */
     public void checkIfInventoryIsFull(Minecraft mc, EntityPlayerSP p) {
         if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.FULL_INVENTORY_WARNING)) {
-            // Don't check the last slot since it's reserved for Skyblock.
-            for (int i = 0; i < p.inventory.getSizeInventory() - 1; i++) {
-                if (p.inventory.getStackInSlot(i) == null) {
-                    inventoryIsFull = false;
-                    return;
+            int firstEmptyStack = p.inventory.getFirstEmptyStack();
+
+            /*
+            If the inventory is full, show the full inventory warning.
+            Slot 8 is the Skyblock menu/quiver arrow slot. It's ignored so shooting with a full inventory
+            doesn't spam the full inventory warning.
+             */
+            if (firstEmptyStack == -1 || firstEmptyStack == 8) {
+                if (mc.currentScreen == null && main.getPlayerListener().didntRecentlyJoinWorld() && !inventoryWarningShown) {
+                    inventoryWarningHandle = main.getExecutorService().scheduleWithFixedDelay(new ShowInventoryFullWarning(main), 0, 10, TimeUnit.SECONDS);
+                    resetTitleFeatureHandle = main.getExecutorService().scheduleWithFixedDelay(new ResetTitleFeature(main), main.getConfigValues().getWarningSeconds(), 10, TimeUnit.SECONDS);
+                    inventoryWarningShown = true;
                 }
             }
-            if (!inventoryIsFull) {
-                inventoryIsFull = true;
-                if (mc.currentScreen == null && main.getPlayerListener().didntRecentlyJoinWorld()) {
-                    main.getUtils().playLoudSound("random.orb", 0.5);
-                    main.getRenderListener().setTitleFeature(Feature.FULL_INVENTORY_WARNING);
-                    main.getScheduler().schedule(Scheduler.CommandType.RESET_TITLE_FEATURE, main.getConfigValues().getWarningSeconds());
+            else {
+                inventoryWarningShown = false;
+                if (inventoryWarningHandle != null && resetTitleFeatureHandle != null) {
+                    inventoryWarningHandle.cancel(false);
+                    resetTitleFeatureHandle.cancel(false);
                 }
             }
         }
