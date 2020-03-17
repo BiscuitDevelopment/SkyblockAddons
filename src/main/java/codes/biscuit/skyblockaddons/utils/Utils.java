@@ -452,6 +452,10 @@ public class Utils {
         Minecraft.getMinecraft().thePlayer.playSound(sound, 1, (float) pitch);
     }
 
+    public void playSound(String sound, double volume, double pitch) {
+        Minecraft.getMinecraft().thePlayer.playSound(sound, (float)volume, (float) pitch);
+    }
+
     public boolean enchantReforgeMatches(String text) {
         text = text.toLowerCase();
         for (String enchant : enchantmentMatches) {

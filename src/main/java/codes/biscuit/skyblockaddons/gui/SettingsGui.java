@@ -260,11 +260,7 @@ public class SettingsGui extends GuiScreen {
             boxWidth = 31; // Default size and stuff.
             x = halfWidth-(boxWidth/2);
             y = getRowHeightSetting(row);
-            System.out.println(setting.name());
             buttonList.add(new ButtonToggleTitle(x, y, setting.getMessage().getMessage(), main, setting.getFeatureEquivalent()));
-            if (setting.getFeatureEquivalent() == null) {
-                System.out.println(feature.getId());
-            }
         }
         row++;
     }

@@ -6,6 +6,14 @@ import org.objectweb.asm.tree.FieldInsnNode;
 
 public enum TransformerField {
 
+    // GuiScreen
+    width("width", "field_146294_l", "l", "I"),
+    height("height", "field_146295_m", "m", "I"),
+    buttonList("buttonList", "field_146292_n", "n", "Ljava/util/List;"),
+
+    // GuiButton
+    id("id", "field_146127_k", "k", "I"),
+
     // GuiContainer
     lowerChestInventory("lowerChestInventory","field_147015_w", "w", TransformerClass.IInventory.getName()),
     guiLeft("guiLeft", "field_147003_i", "i", "I"),

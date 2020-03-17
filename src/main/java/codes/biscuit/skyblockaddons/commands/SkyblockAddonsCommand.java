@@ -67,10 +67,6 @@ public class SkyblockAddonsCommand extends CommandBase {
                         main.getUtils().sendMessage(ChatFormatting.RED + "Developer mode disabled!");
                     }
                     break;
-                case "update": // Not actually a command.
-                    if (main.getRenderListener().getDownloadInfo().isPatch())
-                        main.getUtils().downloadPatch(main.getRenderListener().getDownloadInfo().getNewestVersion());
-                    break;
                 case "folder":
                     try {
                         Desktop.getDesktop().open(main.getUtils().getSBAFolder(false));
@@ -78,11 +74,14 @@ public class SkyblockAddonsCommand extends CommandBase {
                         e.printStackTrace();
                     }
                     break;
+                case "update": // Not actually a command.
+                    if (main.getRenderListener().getDownloadInfo().isPatch())
+                        main.getUtils().downloadPatch(main.getRenderListener().getDownloadInfo().getNewestVersion());
+                    break;
                 default:
                     main.getUtils().sendMessage(getCommandUsage(sender));
             }
-        }
-        else {
+        } else {
             // If there's no arguments given, open the main GUI
             main.getUtils().setFadingIn(true);
             main.getRenderListener().setGuiToOpen(EnumUtils.GUIType.MAIN, 1, EnumUtils.GuiTab.MAIN);

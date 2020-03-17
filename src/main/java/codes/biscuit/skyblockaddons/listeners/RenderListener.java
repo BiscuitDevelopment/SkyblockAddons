@@ -667,13 +667,9 @@ public class RenderListener {
             int boxXTwo = intX + width + 4;
             int boxYOne = intY - 4;
             int boxYTwo = intY + height + 4;
-            if (feature == Feature.MAGMA_BOSS_TIMER || feature == Feature.DARK_AUCTION_TIMER || feature == Feature.SKILL_DISPLAY) {
+            if (feature == Feature.MAGMA_BOSS_TIMER || feature == Feature.DARK_AUCTION_TIMER || feature == Feature.ZEALOT_COUNTER || feature == Feature.SKILL_DISPLAY) {
                 boxXOne -= 18;
                 boxYOne -= 2;
-            } else if (feature == Feature.ZEALOT_COUNTER) {
-                boxXOne -= 14;
-                boxYOne -= 3;
-                boxYTwo += 4;
             }
             buttonLocation.checkHoveredAndDrawBox(boxXOne, boxXTwo, boxYOne, boxYTwo, scale);
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
@@ -691,7 +687,7 @@ public class RenderListener {
             Gui.drawModalRectWithCustomSizedTexture(intX - 18, intY - 5, 0, 0, 16, 16, 32, 32);
         } else if (feature == Feature.ZEALOT_COUNTER) {
             mc.getTextureManager().bindTexture(TEXT_ICONS);
-            Gui.drawModalRectWithCustomSizedTexture(intX - 18, intY - 6, 0, 20, 20, 20, 40, 40);
+            Gui.drawModalRectWithCustomSizedTexture(intX - 18, intY - 5, 0, 16, 16, 16, 32, 32);
         } else if (feature == Feature.SKILL_DISPLAY && ((skill != null && skill.getItem() != null) || buttonLocation != null)) {
             GlStateManager.enableRescaleNormal();
             RenderHelper.enableGUIStandardItemLighting();
