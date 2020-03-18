@@ -100,8 +100,9 @@
     "chromaMode": "Chroma Color Mode",
     "chromaModes": {
       "allTheSame": "All the Same Color",
-      "flowsAcrossScreen": "Flows Across Screen"
-    }
+      "fade": "Color Fade"
+    },
+    "chromaFadeWidth": "Chroma Fade Width"
   },
   "messages": {
     "dropConfirmation": "Dwop thwis itwem agwain to confiwm!",
