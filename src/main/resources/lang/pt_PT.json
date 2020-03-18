@@ -95,7 +95,8 @@
     "hideNightVisionEffectTimer": "Esconder tempo do efeito de visão noturna",
     "showCakeBagPreview": "Mostrar pré-visualização do saco de bolos",
     "showBackpackPreviewInAH": "Mostrar uma previsualização da Backpack para os teus itens enquanto estás na AH",
-    "enableDevFeatures": "Mostrar funcionalidades de programador"
+    "enableDevFeatures": "Mostrar funcionalidades de programador",
+    "chromaSpeed": "Chroma Speed"
   },
   "messages": {
     "dropConfirmation": "Atira este item outra vez para confirmar!",
