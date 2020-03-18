@@ -64,7 +64,7 @@ public class Utils {
     private static final Set<String> SKYBLOCK_IN_ALL_LANGUAGES = Sets.newHashSet("SKYBLOCK","\u7A7A\u5C9B\u751F\u5B58");
 
     /** Used for web requests. */
-    private static final String USER_AGENT = "SkyblockAddons/" + SkyblockAddons.VERSION;
+    public static final String USER_AGENT = "SkyblockAddons/" + SkyblockAddons.VERSION;
 
     /**
      * Items containing these in the name should never be dropped. Helmets a lot of times

@@ -42,7 +42,7 @@ public class ItemUtils {
             }
         }
 
-        // If the item doesn't have a valid rarity, return INVALID
+        // If the item doesn't have a valid rarity, return null
         return null;
     }
 

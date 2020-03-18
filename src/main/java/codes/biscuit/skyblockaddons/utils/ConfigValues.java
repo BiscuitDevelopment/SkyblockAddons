@@ -382,28 +382,30 @@ public class ConfigValues {
 
     private void tryPullingLanguageOnline(Language language) {
         FMLLog.info("[SkyblockAddons] Attempting to pull updated language files from online.");
-        try {
-            URL url = new URL("https://raw.githubusercontent.com/biscuut/SkyblockAddons/master/src/main/resources/lang/" + language.getPath() + ".json");
-            HttpURLConnection connection = (HttpURLConnection)url.openConnection();
-            connection.setRequestMethod("GET");
-            connection.setRequestProperty("User-Agent", "SkyblockAddons");
+        new Thread(() -> {
+            try {
+                URL url = new URL("https://raw.githubusercontent.com/biscuut/SkyblockAddons/master/src/main/resources/lang/" + language.getPath() + ".json");
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                connection.setRequestMethod("GET");
+                connection.setRequestProperty("User-Agent", Utils.USER_AGENT);
 
-            FMLLog.info("[SkyblockAddons] Got response code " + connection.getResponseCode());
+                FMLLog.info("[SkyblockAddons] Got response code " + connection.getResponseCode());
 
-            StringBuilder response = new StringBuilder();
-            try (BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
-                String line;
-                while ((line = in.readLine()) != null) {
-                    response.append(line);
+                StringBuilder response = new StringBuilder();
+                try (BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
+                    String line;
+                    while ((line = in.readLine()) != null) {
+                        response.append(line);
+                    }
                 }
+                connection.disconnect();
+                JsonObject onlineMessages = new Gson().fromJson(response.toString(), JsonObject.class);
+                mergeLanguageJsonObject(onlineMessages, languageConfig);
+            } catch (JsonParseException | IllegalStateException | IOException ex) {
+                ex.printStackTrace();
+                System.out.println("SkyblockAddons: There was an error loading the language file online");
             }
-            connection.disconnect();
-            JsonObject onlineMessages = new Gson().fromJson(response.toString(), JsonObject.class);
-            mergeLanguageJsonObject(onlineMessages, languageConfig);
-        } catch (JsonParseException | IllegalStateException | IOException ex) {
-            ex.printStackTrace();
-            System.out.println("SkyblockAddons: There was an error loading the language file online");
-        }
+        }).start();
     }
 
     /**
