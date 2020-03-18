@@ -95,7 +95,8 @@
     "hideNightVisionEffectTimer": "اخفاء مؤقت جرعة الرؤية الليلية",
     "showCakeBagPreview": "إظهار معاينة لحقائب الكعك",
     "showBackpackPreviewInAH": "إظهار معاينة حقيبة الظهر للاشياء الخاصة بك أثناء فتح المزاد",
-    "enableDevFeatures": "تشغيل ميزة المطور"
+    "enableDevFeatures": "تشغيل ميزة المطور",
+    "chromaSpeed": "Chroma Speed"
   },
   "messages": {
     "dropConfirmation": "!إرمي هذا العنصر مرة أخرى للتأكيد",
