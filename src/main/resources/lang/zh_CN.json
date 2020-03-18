@@ -67,7 +67,7 @@
     "soundIndicatorForFishing": "钓鱼声音指示",
     "avoidBlinkingNightVision": "禁用夜视耗尽闪烁",
     "disableMinionLocationWarning": "禁用仆从“位置不是很好”警告",
-    "jungleAxeCooldown": "防止丛林斧冷却重置",
+    "jungleAxeCooldown": "丛林斧冷却时间",
     "organizeLongEnchantmentLists": "整理长版附魔列表",
     "showItemCooldowns": "显示物品冷却时间",
     "speedPercentage": "速度百分比",
