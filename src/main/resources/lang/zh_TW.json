@@ -100,8 +100,9 @@
     "chromaMode": "變色模式",
     "chromaModes": {
       "allTheSame": "全顏色相同",
-      "flowsAcrossScreen": "失焦時持續變色"
-    }
+      "fade": "Color Fade"
+    },
+    "chromaFadeWidth": "Chroma Fade Width"
   },
   "messages": {
     "dropConfirmation": "再次丟棄此物品以確認!",
