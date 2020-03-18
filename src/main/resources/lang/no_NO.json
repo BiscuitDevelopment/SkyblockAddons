@@ -9,13 +9,13 @@
     "hideFoodAndArmor": "Skjul Mat & Rustning Bar",
     "fullInventoryWarning": "Full Inventar Varsel",
     "disableEmberRodAbility": "Deaktiver Ember Rod På Private Øyer",
-    "editLocations": "Omplasser GUI",
+    "editLocations": "Endre GUI Plasseringer",
     "guiScale": "GUI Skala: %scale%",
     "resetLocations": "Tilbakestill GUI",
     "hideDurability": "Skjul Redskaps Varighet",
-    "showEnchantmentsReforges": "Fortryllinger og reforges",
+    "showEnchantmentsReforges": "Fortryllinger og Omsmiinger",
     "minionStopWarning": "\"Lakei Kan Ikke Nå\" Advarsel",
-    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
+    "hidePlayersNearNPCs": "Skjul Spillere Nærme Viktige NPCer",
     "backpackStyle": "Ryggsekk Stil: %style%",
     "backpackStyles": {
       "regular": "Vanlig",
@@ -23,7 +23,7 @@
     },
     "showBackpackPreview": "Vis Forhåndsvisning for Ryggsekk",
     "hideHealthBar": "Skjul Vanilla helse bar",
-    "fullMinionWarning": "Full lakei advarsel",
+    "fullMinionWarning": "Full Lakei Advarsel",
     "ignoreItemFrameClicks": "Ignorer Trykk På Gjenstands Rammer",
     "showOnlyWhenHoldingShift": "Vis Kun Mens Du Holder Shift",
     "manaBar": "Mana Bar",
@@ -94,15 +94,15 @@
     "noArrowsLeftAlert": "Ingen Piler Igjen Varsel",
     "hideNightVisionEffectTimer": "Skjul Natt Syn Effekt Timer",
     "showCakeBagPreview": "Vis Forhåndsvisning for Kake Sekker",
-    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
-    "enableDevFeatures": "Enable Developer Features",
-    "chromaSpeed": "Chroma Speed",
-    "chromaMode": "Chroma Color Mode",
+    "showBackpackPreviewInAH": "Vis Ryggsekk Forhåndsvisning for Tingene Dine Mens Auksjons Huset er Åpnet",
+    "enableDevFeatures": "Skru på Skaper Funksjoner",
+    "chromaSpeed": "Chroma Hastighet",
+    "chromaMode": "Chroma Farge Modus",
     "chromaModes": {
-      "allTheSame": "All the Same Color",
-      "fade": "Color Fade"
+      "allTheSame": "Lik Farge på Alle",
+      "fade": "Farge Fade"
     },
-    "chromaFadeWidth": "Chroma Fade Width"
+    "chromaFadeWidth": "Chroma Fade Bredde"
   },
   "messages": {
     "dropConfirmation": "Slipp denne gjenstanden igjen for å bekrefte!",
@@ -140,7 +140,7 @@
     "cancelledProfileOpening": "SkyblockAddons har stoppet deg fra å åpne denne spillerens profil siden du holder en bue.",
     "cancelledDropping": "SkyblockAddons har stoppet deg fra å slippe denne sjeldne gjenstanden/redskap fra din hotbar.",
     "clickMoreTimes": "Klikk/slipp denne gjenstanden %times% flere ganger hvis du virkelig vil gjøre dette.",
-    "clickOneMoreTime": "Click/drop this item 1 more time if you really want to do this.",
+    "clickOneMoreTime": "Klikk/slipp denne gjenstanden 1 flere ganger hvis du faktisk ønsker gjøre dette.",
     "cancelledDeepCaverns": "En SkyblockAddons egenskap har stoppet deg fra å ødelegge denne blokken her.",
     "featureDisabled": "Funksjon Deaktivert",
     "anvilUses": "Ambolt Bruk: %uses%",
