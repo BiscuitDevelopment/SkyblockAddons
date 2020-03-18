@@ -100,8 +100,9 @@
     "chromaMode": "Modalità cromatica del colore",
     "chromaModes": {
       "allTheSame": "Tutti dello stesso colore",
-      "flowsAcrossScreen": "Flussi attraverso lo schermo"
-    }
+      "fade": "Color Fade"
+    },
+    "chromaFadeWidth": "Chroma Fade Width"
   },
   "messages": {
     "dropConfirmation": "Getta questo oggetto nuovamente per confermare!",
