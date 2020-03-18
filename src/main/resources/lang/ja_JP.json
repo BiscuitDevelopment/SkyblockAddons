@@ -96,7 +96,12 @@
     "showCakeBagPreview": "ケーキバッグのプレビューを表示",
     "showBackpackPreviewInAH": "オークションが開いている時にバックパックのプレビューを表示",
     "enableDevFeatures": "開発者機能の有効化",
-    "chromaSpeed": "Chroma Speed"
+    "chromaSpeed": "Chroma Speed",
+    "chromaMode": "Chroma Color Mode",
+    "chromaModes": {
+      "allTheSame": "All the Same Color",
+      "flowsAcrossScreen": "Flows Across Screen"
+    }
   },
   "messages": {
     "dropConfirmation": "落としてもいいのであれば、このアイテムをもう一度ドロップしてください。",
