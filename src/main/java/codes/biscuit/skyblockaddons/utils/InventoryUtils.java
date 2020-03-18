@@ -186,17 +186,21 @@ public class InventoryUtils {
              */
             if (firstEmptyStack == -1 || firstEmptyStack == 8) {
                 if (mc.currentScreen == null && main.getPlayerListener().didntRecentlyJoinWorld() && !inventoryWarningShown) {
-                    inventoryWarningHandle = main.getExecutorService().schedule(new ShowInventoryFullWarning(main), 0, TimeUnit.SECONDS);
-                    resetTitleFeatureHandle = main.getExecutorService().schedule(new ResetTitleFeature(main), main.getConfigValues().getWarningSeconds(), TimeUnit.SECONDS);
+                    inventoryWarningHandle = main.getExecutorService().scheduleWithFixedDelay(new ShowInventoryFullWarning(), 0, 10, TimeUnit.SECONDS);
+                    resetTitleFeatureHandle = main.getExecutorService().scheduleWithFixedDelay(new ResetTitleFeature(), main.getConfigValues().getWarningSeconds(), 10, TimeUnit.SECONDS);
                     inventoryWarningShown = true;
                 }
             } else {
                 inventoryWarningShown = false;
                 if (inventoryWarningHandle != null && resetTitleFeatureHandle != null) {
+                    // If the inventory warning's currently on the screen, schedule it to disappear.
+                    if (resetTitleFeatureHandle.getDelay(TimeUnit.SECONDS) > 0) {
+                        main.getExecutorService().schedule(new ResetTitleFeature(), resetTitleFeatureHandle.getDelay(TimeUnit.SECONDS), TimeUnit.SECONDS);
+                    }
+
+                    // Stop the full inventory warning from repeating.
                     inventoryWarningHandle.cancel(false);
                     resetTitleFeatureHandle.cancel(false);
-
-                    new ResetTitleFeature(main).run();
                 }
             }
         }
