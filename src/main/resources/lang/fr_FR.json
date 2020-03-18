@@ -96,13 +96,13 @@
     "showCakeBagPreview": "Aperçu des sacs à gâteau",
     "showBackpackPreviewInAH": "Afficher l'aperçu du sac à dos dans le /AH",
     "enableDevFeatures": "Activer le mode développeur",
-    "chromaSpeed": "Chroma Speed",
-    "chromaMode": "Chroma Color Mode",
+    "chromaSpeed": "Vitesse Chroma",
+    "chromaMode": "Mode de couleur Chroma",
     "chromaModes": {
-      "allTheSame": "All the Same Color",
-      "fade": "Color Fade"
+      "allTheSame": "Toute la même couleur",
+      "fade": "Dégradé de couleur"
     },
-    "chromaFadeWidth": "Chroma Fade Width"
+    "chromaFadeWidth": "Largeur de fondu Chroma"
   },
   "messages": {
     "dropConfirmation": "Jetez cet objet une nouvelle fois pour confirmer!",
