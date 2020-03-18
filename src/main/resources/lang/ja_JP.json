@@ -100,8 +100,9 @@
     "chromaMode": "Chroma Color Mode",
     "chromaModes": {
       "allTheSame": "全て同じ色",
-      "flowsAcrossScreen": "Flows Across Screen"
-    }
+      "fade": "Color Fade"
+    },
+    "chromaFadeWidth": "Chroma Fade Width"
   },
   "messages": {
     "dropConfirmation": "落としてもいいのであれば、このアイテムをもう一度ドロップしてください。",
