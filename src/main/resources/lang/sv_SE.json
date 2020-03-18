@@ -95,7 +95,8 @@
     "hideNightVisionEffectTimer": "Göm Night vision charm effekt timern",
     "showCakeBagPreview": "Visa förhandsvisning för tårt ryggsäckar",
     "showBackpackPreviewInAH": "Visa väskoinnehållsmemu för dina saker när Ah är öppnat",
-    "enableDevFeatures": "Aktivera utvecklarfunktioner"
+    "enableDevFeatures": "Aktivera utvecklarfunktioner",
+    "chromaSpeed": "Chroma Speed"
   },
   "messages": {
     "dropConfirmation": "Släpp Det Här Igen För Att Bekräfta!",
