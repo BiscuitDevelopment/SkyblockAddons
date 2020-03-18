@@ -95,7 +95,8 @@
     "hideNightVisionEffectTimer": "暗視効果のタイマーを表示しない",
     "showCakeBagPreview": "ケーキバッグのプレビューを表示",
     "showBackpackPreviewInAH": "オークションが開いている時にバックパックのプレビューを表示",
-    "enableDevFeatures": "開発者機能の有効化"
+    "enableDevFeatures": "開発者機能の有効化",
+    "chromaSpeed": "Chroma Speed"
   },
   "messages": {
     "dropConfirmation": "落としてもいいのであれば、このアイテムをもう一度ドロップしてください。",
