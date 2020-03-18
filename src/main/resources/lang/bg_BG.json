@@ -95,7 +95,8 @@
     "hideNightVisionEffectTimer": "Скрий таймера за ефекта нощно виждане",
     "showCakeBagPreview": "Показване на какво има в чантata за торти",
     "showBackpackPreviewInAH": "Покажи какво има в Чантата за предметите ти докато си отворил Аукционната къща",
-    "enableDevFeatures": "Ключ за девелопър мод"
+    "enableDevFeatures": "Ключ за девелопър мод",
+    "chromaSpeed": "Chroma Speed"
   },
   "messages": {
     "dropConfirmation": "Хвърлете Този Предмет Отново за да Потвърдите!",
