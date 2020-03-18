@@ -100,8 +100,9 @@
     "chromaMode": "Chroma Kleurmodus",
     "chromaModes": {
       "allTheSame": "Allemaal dezelfde kleur",
-      "flowsAcrossScreen": "Flows Across Screen"
-    }
+      "fade": "Color Fade"
+    },
+    "chromaFadeWidth": "Chroma Fade Width"
   },
   "messages": {
     "dropConfirmation": "Laat dit object opnieuw vallen om te Bevestigen!",
