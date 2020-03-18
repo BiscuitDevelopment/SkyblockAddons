@@ -187,16 +187,17 @@ public class InventoryUtils {
              */
             if (firstEmptyStack == -1 || firstEmptyStack == 8) {
                 if (mc.currentScreen == null && main.getPlayerListener().didntRecentlyJoinWorld() && !inventoryWarningShown) {
-                    inventoryWarningHandle = main.getExecutorService().scheduleWithFixedDelay(new ShowInventoryFullWarning(main), 0, 10, TimeUnit.SECONDS);
-                    resetTitleFeatureHandle = main.getExecutorService().scheduleWithFixedDelay(new ResetTitleFeature(main), main.getConfigValues().getWarningSeconds(), 10, TimeUnit.SECONDS);
+                    inventoryWarningHandle = main.getExecutorService().schedule(new ShowInventoryFullWarning(main), 0, TimeUnit.SECONDS);
+                    resetTitleFeatureHandle = main.getExecutorService().schedule(new ResetTitleFeature(main), main.getConfigValues().getWarningSeconds(), TimeUnit.SECONDS);
                     inventoryWarningShown = true;
                 }
-            }
-            else {
+            } else {
                 inventoryWarningShown = false;
                 if (inventoryWarningHandle != null && resetTitleFeatureHandle != null) {
                     inventoryWarningHandle.cancel(false);
                     resetTitleFeatureHandle.cancel(false);
+
+                    new ResetTitleFeature(main).run();
                 }
             }
         }
