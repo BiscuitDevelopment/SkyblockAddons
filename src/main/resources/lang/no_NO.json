@@ -95,7 +95,8 @@
     "hideNightVisionEffectTimer": "Skjul Natt Syn Effekt Timer",
     "showCakeBagPreview": "Vis Forhåndsvisning for Kake Sekker",
     "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
-    "enableDevFeatures": "Enable Developer Features"
+    "enableDevFeatures": "Enable Developer Features",
+    "chromaSpeed": "Chroma Speed"
   },
   "messages": {
     "dropConfirmation": "Slipp denne gjenstanden igjen for å bekrefte!",
