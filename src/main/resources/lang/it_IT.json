@@ -96,11 +96,11 @@
     "showCakeBagPreview": "Mostra anteprima delle Cake Bags",
     "showBackpackPreviewInAH": "Mostra l’anteprima dello zaino mentre l’Auction House è aperta",
     "enableDevFeatures": "Abilita la modalità sviluppatore",
-    "chromaSpeed": "Chroma Speed",
-    "chromaMode": "Chroma Color Mode",
+    "chromaSpeed": "Velocità cromatica",
+    "chromaMode": "Modalità cromatica del colore",
     "chromaModes": {
-      "allTheSame": "All the Same Color",
-      "flowsAcrossScreen": "Flows Across Screen"
+      "allTheSame": "Tutti dello stesso colore",
+      "flowsAcrossScreen": "Flussi attraverso lo schermo"
     }
   },
   "messages": {
