@@ -95,7 +95,8 @@
     "hideNightVisionEffectTimer": "Ocultar el temporizador del efecto de visión nocturna",
     "showCakeBagPreview": "Mostrar Preview para los Cake Bags",
     "showBackpackPreviewInAH": "Mostrar Preview de la Mochila mientras Auction House esta abierto",
-    "enableDevFeatures": "Modo De Desarrollador"
+    "enableDevFeatures": "Modo De Desarrollador",
+    "chromaSpeed": "Chroma Speed"
   },
   "messages": {
     "dropConfirmation": "¡Dropea el Objeto otra vez para soltar!",
