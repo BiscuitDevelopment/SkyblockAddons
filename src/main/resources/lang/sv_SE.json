@@ -96,13 +96,13 @@
     "showCakeBagPreview": "Visa förhandsvisning för tårt ryggsäckar",
     "showBackpackPreviewInAH": "Visa väskoinnehållsmemu för dina saker när Ah är öppnat",
     "enableDevFeatures": "Aktivera utvecklarfunktioner",
-    "chromaSpeed": "Chroma Speed",
-    "chromaMode": "Chroma Color Mode",
+    "chromaSpeed": "Chroma Hastighet",
+    "chromaMode": "Chroma färgläge",
     "chromaModes": {
-      "allTheSame": "All the Same Color",
-      "fade": "Color Fade"
+      "allTheSame": "Alla samma färg",
+      "fade": "Färg toning"
     },
-    "chromaFadeWidth": "Chroma Fade Width"
+    "chromaFadeWidth": "Chroma Fade Bredd"
   },
   "messages": {
     "dropConfirmation": "Släpp Det Här Igen För Att Bekräfta!",
