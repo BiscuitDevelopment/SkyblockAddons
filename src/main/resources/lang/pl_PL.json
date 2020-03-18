@@ -94,8 +94,8 @@
     "noArrowsLeftAlert": "Alarm o braku strzał",
     "hideNightVisionEffectTimer": "Ukryj zegar widzenia w ciemności",
     "showCakeBagPreview": "Pokaż podgląd dla torb na ciasta",
-    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
-    "enableDevFeatures": "Enable Developer Features",
+    "showBackpackPreviewInAH": "Pogląd plecaków z otwartym Domem Aukcyjnym",
+    "enableDevFeatures": "Zezwól na funkcje developerskie",
     "chromaSpeed": "Chroma Speed",
     "chromaMode": "Chroma Color Mode",
     "chromaModes": {
