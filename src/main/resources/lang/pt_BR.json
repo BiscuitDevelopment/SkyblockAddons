@@ -95,7 +95,8 @@
     "hideNightVisionEffectTimer": "Esconder tempo do efeito de visão noturna",
     "showCakeBagPreview": "Show Preview for Cake Bags",
     "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
-    "enableDevFeatures": "Habilitar Funções de Desenvolvedor"
+    "enableDevFeatures": "Habilitar Funções de Desenvolvedor",
+    "chromaSpeed": "Chroma Speed"
   },
   "messages": {
     "dropConfirmation": "Large este item de novo para confirmar!",
