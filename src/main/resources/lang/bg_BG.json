@@ -96,7 +96,12 @@
     "showCakeBagPreview": "Показване на какво има в чантata за торти",
     "showBackpackPreviewInAH": "Покажи какво има в Чантата за предметите ти докато си отворил Аукционната къща",
     "enableDevFeatures": "Ключ за девелопър мод",
-    "chromaSpeed": "Chroma Speed"
+    "chromaSpeed": "Chroma Speed",
+    "chromaMode": "Chroma Color Mode",
+    "chromaModes": {
+      "allTheSame": "All the Same Color",
+      "flowsAcrossScreen": "Flows Across Screen"
+    }
   },
   "messages": {
     "dropConfirmation": "Хвърлете Този Предмет Отново за да Потвърдите!",
