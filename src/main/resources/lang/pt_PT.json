@@ -90,17 +90,17 @@
     "tab": {
       "generalSettings": "Definições gerais"
     },
-    "tabEffectTimers": "Potion and Powerup Timers",
-    "noArrowsLeftAlert": "No Arrows Left Alert",
+    "tabEffectTimers": "Temporizadores de poções e powerups",
+    "noArrowsLeftAlert": "Alerta \"Acabaram-se as flechas!\"",
     "hideNightVisionEffectTimer": "Esconder tempo do efeito de visão noturna",
-    "showCakeBagPreview": "Mostrar pré-visualização do saco de bolos",
+    "showCakeBagPreview": "Mostrar pré-visualização das Cake Bags",
     "showBackpackPreviewInAH": "Mostrar uma previsualização da Backpack para os teus itens enquanto estás na AH",
-    "enableDevFeatures": "Mostrar funcionalidades de programador",
-    "chromaSpeed": "Velocidade do Efeito Chroma",
-    "chromaMode": "Chroma Color Mode",
+    "enableDevFeatures": "Mostrar opções de programador",
+    "chromaSpeed": "Velocidade do Chroma",
+    "chromaMode": "Modo da cor do chroma",
     "chromaModes": {
-      "allTheSame": "All the Same Color",
-      "flowsAcrossScreen": "Flows Across Screen"
+      "allTheSame": "Tudo na mesma cor",
+      "flowsAcrossScreen": "Passar pelo ecrã"
     }
   },
   "messages": {
@@ -135,12 +135,12 @@
     },
     "slotLocked": "Este slot está bloqueado!",
     "summoningEyeFound": "Summoning Eye!",
-    "cancelledStemBreak": "O SkyblockAddons preveniu-te de partires esta semente. Usa a tua própria mão se a quiseres mesmo partir.",
-    "cancelledProfileOpening": "O SkyblockAddons preveniu-te de abrires o perfil deste jogador enquanto seguras um arco.",
-    "cancelledDropping": "O SkyblockAddons preveniu-te de atirar este item ou ferramenta \"rara\" da tua hotbar.",
+    "cancelledStemBreak": "Uma opção preveniu-te de partires esta semente. Usa a tua própria mão se a quiseres mesmo partir.",
+    "cancelledProfileOpening": "Uma opção preveniu-te de abrires o perfil deste jogador enquanto seguras um arco.",
+    "cancelledDropping": "Uma opção preveniu-te de atirar este item ou ferramenta \"rara\" da tua hotbar.",
     "clickMoreTimes": "Clica/atira este item mais %times% vezes se quiseres mesmo fazer isto.",
     "clickOneMoreTime": "Clica/atira este item mais 1 vez se quiseres mesmo fazer isto.",
-    "cancelledDeepCaverns": "Uma funcionalidade do SkyblockAddons preveniu-te de partires este minério aqui.",
+    "cancelledDeepCaverns": "Uma opção preveniu-te de partires este minério aqui.",
     "featureDisabled": "Função Desativada",
     "anvilUses": "Usos na bigorna: %uses%",
     "specialZealotFound": "Zealot especial!",
