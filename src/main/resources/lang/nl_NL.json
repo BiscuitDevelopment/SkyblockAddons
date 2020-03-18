@@ -96,7 +96,12 @@
     "showCakeBagPreview": "Show Preview for Cake Bags",
     "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
     "enableDevFeatures": "Enable Developer Features",
-    "chromaSpeed": "Chroma Speed"
+    "chromaSpeed": "Chroma Speed",
+    "chromaMode": "Chroma Color Mode",
+    "chromaModes": {
+      "allTheSame": "All the Same Color",
+      "flowsAcrossScreen": "Flows Across Screen"
+    }
   },
   "messages": {
     "dropConfirmation": "Laat dit object opnieuw vallen om te Bevestigen!",
