@@ -69,6 +69,7 @@ public class Scheduler {
                     }
                 }
             }
+            ChromaManager.increment(); // Run every tick
         }
     }
 

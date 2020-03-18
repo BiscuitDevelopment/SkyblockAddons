@@ -2,6 +2,7 @@ package codes.biscuit.skyblockaddons.listeners;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.gui.LocationEditGui;
+import codes.biscuit.skyblockaddons.gui.SettingsGui;
 import codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui;
 import codes.biscuit.skyblockaddons.gui.buttons.ButtonLocation;
 import codes.biscuit.skyblockaddons.utils.*;
@@ -66,7 +67,7 @@ public class RenderListener {
     private EnumUtils.GUIType guiToOpen = null;
     private int guiPageToOpen = 1;
     private EnumUtils.GuiTab guiTabToOpen = EnumUtils.GuiTab.MAIN;
-    private String textToOpen = null;
+    private Feature guiFeatureToOpen = null;
 
 
     public RenderListener(SkyblockAddons main) {
@@ -1035,14 +1036,11 @@ public class RenderListener {
     @SubscribeEvent()
     public void onRender(TickEvent.RenderTickEvent e) {
         if (guiToOpen == EnumUtils.GUIType.MAIN) {
-            if (textToOpen == null) {
-                Minecraft.getMinecraft().displayGuiScreen(new SkyblockAddonsGui(main, guiPageToOpen, guiTabToOpen));
-            } else {
-                Minecraft.getMinecraft().displayGuiScreen(new SkyblockAddonsGui(main, guiPageToOpen, guiTabToOpen, textToOpen));
-                textToOpen = null;
-            }
+            Minecraft.getMinecraft().displayGuiScreen(new SkyblockAddonsGui(main, guiPageToOpen, guiTabToOpen));
         } else if (guiToOpen == EnumUtils.GUIType.EDIT_LOCATIONS) {
-            Minecraft.getMinecraft().displayGuiScreen(new LocationEditGui(main, guiPageToOpen, guiTabToOpen, textToOpen));
+            Minecraft.getMinecraft().displayGuiScreen(new LocationEditGui(main, guiPageToOpen, guiTabToOpen));
+        } else if (guiToOpen == EnumUtils.GUIType.SETTINGS) {
+            Minecraft.getMinecraft().displayGuiScreen(new SettingsGui(main, guiFeatureToOpen, 1, guiPageToOpen, guiTabToOpen, guiFeatureToOpen.getSettings()));
         }
         guiToOpen = null;
     }
@@ -1053,9 +1051,9 @@ public class RenderListener {
         guiTabToOpen = tab;
     }
 
-    public void setGuiToOpen(EnumUtils.GUIType guiToOpen, int page, EnumUtils.GuiTab tab, String text) {
+    public void setGuiToOpen(EnumUtils.GUIType guiToOpen, int page, EnumUtils.GuiTab tab, Feature feature) {
         setGuiToOpen(guiToOpen,page,tab);
-        textToOpen = text;
+        guiFeatureToOpen = feature;
     }
 
     public void setSubtitleFeature(Feature subtitleFeature) {

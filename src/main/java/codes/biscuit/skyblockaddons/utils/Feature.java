@@ -101,7 +101,8 @@ public enum Feature {
     EDIT_LOCATIONS(-1, Message.SETTING_EDIT_LOCATIONS, false),
     RESET_LOCATION(-1, Message.SETTING_RESET_LOCATIONS, false),
     GENERAL_SETTINGS(-1, Message.TAB_GENERAL_SETTINGS, false),
-    TEXT_STYLE(-1, Message.SETTING_TEXT_STYLE, false);
+    TEXT_STYLE(-1, Message.SETTING_TEXT_STYLE, false),
+    CHROMA_SPEED(-1, Message.SETTING_CHROMA_SPEED, false);
 
     /**
      * These are "features" that are not actually features, but just hold the place of a setting. If you are adding any new settings and create
@@ -124,7 +125,7 @@ public enum Feature {
     /**
      * These are features that are displayed separate, on the general tab.
      */
-    @Getter private static Set<Feature> generalTabFeatures = new LinkedHashSet<>(Arrays.asList(TEXT_STYLE, WARNING_TIME));
+    @Getter private static Set<Feature> generalTabFeatures = new LinkedHashSet<>(Arrays.asList(TEXT_STYLE, WARNING_TIME, CHROMA_SPEED));
 
     private int id;
     private Message message;

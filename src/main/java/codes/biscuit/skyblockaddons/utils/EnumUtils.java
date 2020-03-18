@@ -6,10 +6,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.common.util.Constants;
 import org.apache.commons.lang3.text.WordUtils;
 
 import java.net.URI;
@@ -83,8 +80,8 @@ public class EnumUtils {
 
     public enum ButtonType {
         TOGGLE,
-//        COLOR,
-        SOLID
+        SOLID,
+        CHROMA_SLIDER
     }
 
     public enum InventoryType {
@@ -417,6 +414,7 @@ public class EnumUtils {
 
     public enum GUIType {
         MAIN,
-        EDIT_LOCATIONS
+        EDIT_LOCATIONS,
+        SETTINGS
     }
 }

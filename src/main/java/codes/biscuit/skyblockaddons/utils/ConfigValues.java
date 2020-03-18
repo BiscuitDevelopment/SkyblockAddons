@@ -35,7 +35,7 @@ public class ConfigValues {
     @Getter private JsonObject languageConfig = new JsonObject();
 
     @Getter private Set<Feature> disabledFeatures = EnumSet.noneOf(Feature.class);
-    @Deprecated private Map<Feature, ChatFormatting> featureColors = new EnumMap<>(Feature.class); // Replaced with colors
+//    @Deprecated private Map<Feature, ChatFormatting> featureColors = new EnumMap<>(Feature.class); // Replaced with colors
     private Map<Feature, Integer> colors = new HashMap<>();
     private Map<Feature, MutableFloat> guiScales = new EnumMap<>(Feature.class);
     private Map<Feature, CoordsPair> barSizes = new EnumMap<>(Feature.class);
@@ -49,6 +49,8 @@ public class ConfigValues {
     @Getter @SuppressWarnings("deprecation") private Set<Feature> remoteDisabledFeatures = EnumSet.of(Feature.AVOID_BREAKING_BOTTOM_SUGAR_CANE);
     private Set<Integer> legacyLockedSlots = new HashSet<>();
     private Map<String, Set<Integer>> profileLockedSlots = new HashMap<>();
+    private Set<Feature> chromaFeatures = new HashSet<>();
+    private float chromaSpeed = 1F/5;
 
     public ConfigValues(SkyblockAddons main, File settingsConfigFile) {
         this.main = main;
@@ -171,9 +173,9 @@ public class ConfigValues {
                         int ordinal = element.getValue().getAsInt();
                         if (ordinal < 16) {
                             ChatFormatting chatFormatting = ChatFormatting.values()[ordinal];
-                            featureColors.put(feature, chatFormatting);
+//                            featureColors.put(feature, chatFormatting);
                             if (chatFormatting != ChatFormatting.RED) { // It's default, no need.
-                                colors.put(feature, chatFormatting.getRGB()); // TODO this loads a legacy color.
+                                colors.put(feature, chatFormatting.getRGB());
                             }
                         }
                     }
@@ -195,6 +197,17 @@ public class ConfigValues {
                 if (EnumUtils.TextStyle.values().length > ordinal) {
                     textStyle = EnumUtils.TextStyle.values()[ordinal];
                 }
+            }
+
+            if (settingsConfig.has("chromaFeatures")) {
+                JsonArray chromaFeaturesArray = settingsConfig.get("chromaFeatures").getAsJsonArray();
+                for (JsonElement element : chromaFeaturesArray) {
+                    chromaFeatures.add(Feature.fromId(element.getAsInt()));
+                }
+            }
+
+            if (settingsConfig.has("chromaSpeed")) {
+                chromaSpeed = settingsConfig.get("chromaSpeed").getAsFloat();
             }
 
             int configVersion;
@@ -267,7 +280,8 @@ public class ConfigValues {
         if (settingsConfig.has(memberName)) {
             int ordinal = settingsConfig.get(memberName).getAsInt();
             if (ordinal < 16) {
-                featureColors.put(feature, ChatFormatting.values()[ordinal]);
+//                featureColors.put(feature, ChatFormatting.values()[ordinal]);
+                colors.put(feature, ChatFormatting.values()[ordinal].getRGB());
             }
         }
     }
@@ -455,14 +469,14 @@ public class ConfigValues {
             }
             settingsConfig.add("guiScales", scalesObject);
 
-            JsonObject oldColorsObject = new JsonObject(); //TODO might not need this in the future.
-            for (Feature feature : featureColors.keySet()) {
-                ChatFormatting featureColor = featureColors.get(feature);
-                if (featureColor != ChatFormatting.RED) { // Red is default, no need to save it!
-                    oldColorsObject.addProperty(String.valueOf(feature.getId()), featureColor.ordinal());
-                }
-            }
-            settingsConfig.add("featureColors", oldColorsObject);
+//            JsonObject oldColorsObject = new JsonObject();
+//            for (Feature feature : featureColors.keySet()) {
+//                ChatFormatting featureColor = featureColors.get(feature);
+//                if (featureColor != ChatFormatting.RED) { // Red is default, no need to save it!
+//                    oldColorsObject.addProperty(String.valueOf(feature.getId()), featureColor.ordinal());
+//                }
+//            }
+//            settingsConfig.add("featureColors", oldColorsObject);
 
             JsonObject colorsObject = new JsonObject();
             for (Feature feature : colors.keySet()) {
@@ -497,6 +511,14 @@ public class ConfigValues {
             settingsConfig.addProperty("language", language.getPath());
             settingsConfig.addProperty("backpackStyle", backpackStyle.ordinal());
             settingsConfig.addProperty("powerOrbStyle", powerOrbDisplayStyle.ordinal());
+
+            JsonArray chromaFeaturesArray = new JsonArray();
+            for (Feature feature : chromaFeatures) {
+                chromaFeaturesArray.add(new GsonBuilder().create().toJsonTree(feature.getId()));
+            }
+            settingsConfig.add("chromaFeatures", chromaFeaturesArray);
+
+            settingsConfig.addProperty("chromaSpeed", chromaSpeed);
 
             settingsConfig.addProperty("configVersion", CONFIG_VERSION);
 
@@ -534,12 +556,20 @@ public class ConfigValues {
     }
 
     public Color getColor(Feature feature, int alpha) {
+        if (chromaFeatures.contains(feature)) {
+            return ChromaManager.getCurrentColor(getActualX(feature), getActualY(feature));
+        }
+
         Color color = getColor(feature);
 
         return new Color(color.getRed(), color.getGreen(), color.getBlue(), alpha);
     }
 
     public Color getColor(Feature feature) {
+        if (chromaFeatures.contains(feature)) {
+            return ChromaManager.getCurrentColor(getActualX(feature), getActualY(feature));
+        }
+
         ChatFormatting defaultColor = feature.getDefaultColor();
         return new Color(colors.getOrDefault(feature, defaultColor != null ? defaultColor.getRGB() : ChatFormatting.RED.getRGB()));
     }
@@ -676,12 +706,24 @@ public class ConfigValues {
     }
 
     /** These two are taken from GuiOptionSlider. */
-    private float denormalizeScale(float value) {
+    public float denormalizeScale(float value) {
         return snapToStepClamp(ConfigValues.GUI_SCALE_MINIMUM + (ConfigValues.GUI_SCALE_MAXIMUM - ConfigValues.GUI_SCALE_MINIMUM) *
                 MathHelper.clamp_float(value, 0.0F, 1.0F));
     }
-    private float snapToStepClamp(float value) {
+    public float snapToStepClamp(float value) {
         value = ConfigValues.GUI_SCALE_STEP * (float) Math.round(value / ConfigValues.GUI_SCALE_STEP);
         return MathHelper.clamp_float(value, ConfigValues.GUI_SCALE_MINIMUM, ConfigValues.GUI_SCALE_MAXIMUM);
+    }
+
+    public Set<Feature> getChromaFeatures() {
+        return chromaFeatures;
+    }
+
+    public float getChromaSpeed() {
+        return chromaSpeed;
+    }
+
+    public void setChromaSpeed(float chromaSpeed) {
+        this.chromaSpeed = chromaSpeed;
     }
 }

@@ -38,15 +38,14 @@ public class SettingsGui extends GuiScreen {
     /**
      * The main gui, opened with /sba.
      */
-    SettingsGui(SkyblockAddons main, Feature feature, int page,
-                int lastPage, EnumUtils.GuiTab lastTab, Set<EnumUtils.FeatureSetting> settings, String lastText) {
+    public SettingsGui(SkyblockAddons main, Feature feature, int page,
+                       int lastPage, EnumUtils.GuiTab lastTab, Set<EnumUtils.FeatureSetting> settings) {
         this.main = main;
         this.feature = feature;
         this.page = page;
         this.lastPage = lastPage;
         this.lastTab = lastTab;
         this.settings = settings;
-        this.lastText = lastText;
     }
 
     @SuppressWarnings("IntegerDivisionInFloatingPointContext")
@@ -173,12 +172,12 @@ public class SettingsGui extends GuiScreen {
         } else if (feature == Feature.SHOW_BACKPACK_PREVIEW) {
             main.getConfigValues().setBackpackStyle(main.getConfigValues().getBackpackStyle().getNextType());
             closingGui = true;
-            Minecraft.getMinecraft().displayGuiScreen(new SettingsGui(main, feature, page, lastPage, lastTab, settings, lastText));
+            Minecraft.getMinecraft().displayGuiScreen(new SettingsGui(main, feature, page, lastPage, lastTab, settings));
             closingGui = false;
         } else if(feature == Feature.POWER_ORB_STATUS_DISPLAY && abstractButton instanceof ButtonSolid) {
             main.getConfigValues().setPowerOrbDisplayStyle(main.getConfigValues().getPowerOrbDisplayStyle().getNextType());
             closingGui = true;
-            Minecraft.getMinecraft().displayGuiScreen(new SettingsGui(main, feature, page, lastPage, lastTab, settings, lastText));
+            Minecraft.getMinecraft().displayGuiScreen(new SettingsGui(main, feature, page, lastPage, lastTab, settings));
             closingGui = false;
         } else if (abstractButton instanceof ButtonArrow) {
             ButtonArrow arrow = (ButtonArrow)abstractButton;
@@ -186,10 +185,10 @@ public class SettingsGui extends GuiScreen {
                 main.getUtils().setFadingIn(false);
                 if (arrow.getArrowType() == ButtonArrow.ArrowType.RIGHT) {
                     closingGui = true;
-                    mc.displayGuiScreen(new SettingsGui(main, feature, ++page, lastPage, lastTab, settings, lastText));
+                    mc.displayGuiScreen(new SettingsGui(main, feature, ++page, lastPage, lastTab, settings));
                 } else {
                     closingGui = true;
-                    mc.displayGuiScreen(new SettingsGui(main, feature, --page, lastPage, lastTab, settings, lastText));
+                    mc.displayGuiScreen(new SettingsGui(main, feature, --page, lastPage, lastTab, settings));
                 }
             }
         }
@@ -285,6 +284,6 @@ public class SettingsGui extends GuiScreen {
 
     private void returnToGui() {
         closingGui = true;
-        main.getRenderListener().setGuiToOpen(EnumUtils.GUIType.MAIN, lastPage, lastTab, lastText);
+        main.getRenderListener().setGuiToOpen(EnumUtils.GUIType.MAIN, lastPage, lastTab);
     }
 }

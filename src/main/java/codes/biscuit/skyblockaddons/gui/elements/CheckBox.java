@@ -45,7 +45,7 @@ public class CheckBox {
      * @param text Displayed text
      * @param value Default value
      */
-    CheckBox(Minecraft mc, int x, int y, int size, String text, boolean value) {
+    public CheckBox(Minecraft mc, int x, int y, int size, String text, boolean value) {
         this(mc, x, y, size, text);
         this.value = value;
     }
@@ -92,12 +92,12 @@ public class CheckBox {
         GlStateManager.popMatrix();
     }
 
-    void onMouseClick(int mouseX, int mouseY, int mouseButton) {
+    public void onMouseClick(int mouseX, int mouseY, int mouseButton) {
         if (mouseButton == 0
                 && mouseX > this.x && mouseX < this.x + this.size + this.textWidth
                 && mouseY > this.y && mouseY < this.y + this.size) {
             value = !value;
-            SkyblockAddons.getInstance().getUtils().playSound("gui.button.press", 1F);
+            SkyblockAddons.getInstance().getUtils().playSound("gui.button.press", 0.25, 1);
             if (onToggleListener != null) {
                 onToggleListener.onToggle(value);
             }
@@ -119,7 +119,7 @@ public class CheckBox {
      *
      * @param listener Listener to attach
      */
-    void setOnToggleListener(OnToggleListener listener) {
+    public void setOnToggleListener(OnToggleListener listener) {
         onToggleListener = listener;
     }
 }
