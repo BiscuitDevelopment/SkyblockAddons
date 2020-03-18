@@ -15,7 +15,7 @@
     "hideDurability": "Haltbarkeitsleiste verstecken",
     "showEnchantmentsReforges": "Verzauberungen & Verbesserungen",
     "minionStopWarning": "\"Minion kann ein Mob nicht erreichen\"-Warnung",
-    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
+    "hidePlayersNearNPCs": "Verstecke Spieler in der Nähe wichtiger NPCs",
     "backpackStyle": "Rucksack-Stil: %style%",
     "backpackStyles": {
       "regular": "Normal",
@@ -84,22 +84,22 @@
       "detailed": "Detailliert",
       "compact": "Kompakt"
     },
-    "disableMagicalSoupMessage": "Deaktiviere Magie-Pilz-Suppen Nachricht",
-    "zealotCounter": "Zeige Zealot-Counter",
+    "disableMagicalSoupMessage": "Deaktiviere Magische-Pilz-Suppen Nachricht",
+    "zealotCounter": "Zeige Zealot-Zähler",
     "tickerChargesDisplay": "Ticker/Ladungs Anzeige",
     "tab": {
       "generalSettings": "Allgemeine Einstellungen"
     },
-    "tabEffectTimers": "Trank und Powerup Timer",
+    "tabEffectTimers": "Effekt und Powerup Timer",
     "noArrowsLeftAlert": "\"Keine Pfeile übrig\" Warnung",
     "hideNightVisionEffectTimer": "Verstecke Nachtsicht Effekt Timer",
-    "showCakeBagPreview": "Show Preview for Cake Bags",
+    "showCakeBagPreview": "Vorschau für Cake-Bag-Talisman anzeigen",
     "showBackpackPreviewInAH": "Rucksack-Vorschau für deine Items anzeigen, während das Auktionshaus geöffnet ist",
-    "enableDevFeatures": "Enable Developer Features",
-    "chromaSpeed": "Chroma Speed",
-    "chromaMode": "Chroma Color Mode",
+    "enableDevFeatures": "Aktiviere Entwickleroptionen",
+    "chromaSpeed": "Chroma Geschwindigkeit",
+    "chromaMode": "Chroma Farbmodus",
     "chromaModes": {
-      "allTheSame": "All the Same Color",
+      "allTheSame": "Alle Elemente einer Farbe zuordnen",
       "flowsAcrossScreen": "Flows Across Screen"
     }
   },
@@ -139,18 +139,18 @@
     "cancelledProfileOpening": "SkyblockAddons hat dich davon abgehalten, das Profil dieses Spielers zu öffnen, während du einen Bogen hältst.",
     "cancelledDropping": "SkyblockAddons hat dich davon abgehalten, dieses seltene Item oder Werkzeug aus deiner Inventarleiste zu droppen.",
     "clickMoreTimes": "Klicke/droppe dieses Item %times% mal mehr, wenn du das wirklich tun möchtest.",
-    "clickOneMoreTime": "Klicke/Droppe dieses Item nocheinmal wenn du das wirklich tun möchtest.",
+    "clickOneMoreTime": "Lasse dieses Item nocheinmal fallen wenn du es wirklich fallenlassen willst.",
     "cancelledDeepCaverns": "SkyblockAddons hat dich davon abgehalten diesen Block abbzubauen.",
     "featureDisabled": "Funktion deaktiviert",
     "anvilUses": "Ambossnutzungen: %uses%",
     "specialZealotFound": "Spezieller Zealot!",
-    "blockIncompletePatterns": "Block craften, unvollständige Muster (empfohlen)",
+    "blockIncompletePatterns": "Unvollständige Crafting-Muster blockieren (empfohlen)",
     "searchFeatures": "Suche Funktionen",
     "downloadingUpdateFile": "Update-Datei wird heruntergeladen...",
     "onlyFewArrowsLeft": "Nur noch %arrows% Pfeile übrig!",
     "noArrowsLeft": "Keine Pfeile mehr übrig!",
-    "chooseAColor": "Choose a Color",
-    "selectedColor": "Selected Color",
-    "setHexColor": "Set Hex Color"
+    "chooseAColor": "Wähle eine Farbe",
+    "selectedColor": "Ausgewählte Farbe",
+    "setHexColor": "Lege Hex Farbe fest"
   }
 }
