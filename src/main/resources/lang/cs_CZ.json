@@ -100,8 +100,9 @@
     "chromaMode": "Barevný režim měnění barev",
     "chromaModes": {
       "allTheSame": "Všechny stejné barvy",
-      "flowsAcrossScreen": "Plyne po celé obrazovce"
-    }
+      "fade": "Color Fade"
+    },
+    "chromaFadeWidth": "Chroma Fade Width"
   },
   "messages": {
     "dropConfirmation": "Vyhoď tento item pro vyhození!",
