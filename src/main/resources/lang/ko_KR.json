@@ -100,8 +100,9 @@
     "chromaMode": "Chroma Color Mode",
     "chromaModes": {
       "allTheSame": "All the Same Color",
-      "flowsAcrossScreen": "Flows Across Screen"
-    }
+      "fade": "Color Fade"
+    },
+    "chromaFadeWidth": "Chroma Fade Width"
   },
   "messages": {
     "dropConfirmation": "아이템을 정말로 버리려면 다시 버리세요!",
