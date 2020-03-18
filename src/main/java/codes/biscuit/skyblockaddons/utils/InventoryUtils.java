@@ -202,8 +202,8 @@ public class InventoryUtils {
                     }
 
                     // Stop the full inventory warning from repeating.
-                    inventoryWarningHandle.cancel(false);
-                    resetTitleFeatureHandle.cancel(false);
+                    // inventoryWarningHandle.cancel(false);
+                    // resetTitleFeatureHandle.cancel(false);
                 }
             }
         }
