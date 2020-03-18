@@ -95,7 +95,8 @@
     "hideNightVisionEffectTimer": "Skrij časovnik za Night Vision Potion",
     "showCakeBagPreview": "Pokaži Predogled Torb s Tortami",
     "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
-    "enableDevFeatures": "Enable Developer Features"
+    "enableDevFeatures": "Enable Developer Features",
+    "chromaSpeed": "Chroma Speed"
   },
   "messages": {
     "dropConfirmation": "Ponovno Izpusti To Stvar za Potrditev!",
