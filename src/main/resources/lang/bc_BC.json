@@ -96,7 +96,12 @@
     "showCakeBagPreview": "Show Preview for Biscuit Bags",
     "showBackpackPreviewInAH": "Show Biscutpack Preview for Your Biscuits While AH is Open",
     "enableDevFeatures": "Enable Biscuiter Features",
-    "chromaSpeed": "Chroma Speed"
+    "chromaSpeed": "Chroma Speed",
+    "chromaMode": "Chroma Color Mode",
+    "chromaModes": {
+      "allTheSame": "All the Same Color",
+      "flowsAcrossScreen": "Flows Across Screen"
+    }
   },
   "messages": {
     "dropConfirmation": "Throw out this biscuit again to confirm!",
