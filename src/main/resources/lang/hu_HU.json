@@ -95,7 +95,8 @@
     "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
     "showCakeBagPreview": "Show Preview for Cake Bags",
     "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
-    "enableDevFeatures": "Enable Developer Features"
+    "enableDevFeatures": "Enable Developer Features",
+    "chromaSpeed": "Chroma Speed"
   },
   "messages": {
     "dropConfirmation": "Dobd el ezt a tárgyat újra, hogy megerősítsd!",
