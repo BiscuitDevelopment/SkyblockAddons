@@ -417,4 +417,27 @@ public class EnumUtils {
         EDIT_LOCATIONS,
         SETTINGS
     }
+
+    public enum ChromaMode {
+        ALL_SAME_COLOR(CHROMA_MODE_ALL_THE_SAME),
+        CHANGE_ACROSS_SCREEN(CHROMA_MODE_FLOWS_ACROSS_SCREEN);
+
+        private Message message;
+
+        ChromaMode(Message message) {
+            this.message = message;
+        }
+
+        public String getMessage() {
+            return message.getMessage();
+        }
+
+        public ChromaMode getNextType() {
+            int nextType = ordinal()+1;
+            if (nextType > values().length-1) {
+                nextType = 0;
+            }
+            return values()[nextType];
+        }
+    }
 }

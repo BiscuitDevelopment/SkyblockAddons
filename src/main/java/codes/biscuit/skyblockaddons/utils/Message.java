@@ -96,6 +96,7 @@ public enum Message {
     SETTING_SHOW_BACKPACK_PREVIEW_AH(MessageObject.SETTING, "showBackpackPreviewInAH"),
     SETTING_ENABLE_DEV_FEATURES(MessageObject.SETTING, "enableDevFeatures"),
     SETTING_CHROMA_SPEED(MessageObject.SETTING, "chromaSpeed"),
+    SETTING_CHROMA_MODE(MessageObject.SETTING, "chromaMode"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.BACKPACK_STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.BACKPACK_STYLE, "compact"),
@@ -163,7 +164,10 @@ public enum Message {
     INVENTORY_TYPE_CRAFTING(MessageObject.INVENTORY_TYPE, "crafting"),
 
     POWER_ORB_DISPLAY_STYLE_DETAILED(MessageObject.POWER_ORB_STYLE, "detailed"),
-    POWER_ORB_DISPLAY_STYLE_COMPACT(MessageObject.POWER_ORB_STYLE, "compact");
+    POWER_ORB_DISPLAY_STYLE_COMPACT(MessageObject.POWER_ORB_STYLE, "compact"),
+
+    CHROMA_MODE_ALL_THE_SAME(MessageObject.CHROMA_MODE, "allTheSame"),
+    CHROMA_MODE_FLOWS_ACROSS_SCREEN(MessageObject.CHROMA_MODE, "flowsAcrossScreen");
 
     private MessageObject messageObject;
     private String memberName;
@@ -234,7 +238,8 @@ public enum Message {
         TEXT_STYLE("settings.textStyles"),
         TAB("settings.tab"),
         UPDATE_MESSAGES("messages.update"),
-        ANCHOR_POINT("settings.anchorPoints");
+        ANCHOR_POINT("settings.anchorPoints"),
+        CHROMA_MODE("settings.chromaModes");
 
         private List<String> path;
 

@@ -50,7 +50,8 @@ public class ConfigValues {
     private Set<Integer> legacyLockedSlots = new HashSet<>();
     private Map<String, Set<Integer>> profileLockedSlots = new HashMap<>();
     private Set<Feature> chromaFeatures = new HashSet<>();
-    private float chromaSpeed = 1F/5;
+    private float chromaSpeed = 0.19354838F; // 2.0
+    private EnumUtils.ChromaMode chromaMode = EnumUtils.ChromaMode.ALL_SAME_COLOR;
 
     public ConfigValues(SkyblockAddons main, File settingsConfigFile) {
         this.main = main;
@@ -208,6 +209,13 @@ public class ConfigValues {
 
             if (settingsConfig.has("chromaSpeed")) {
                 chromaSpeed = settingsConfig.get("chromaSpeed").getAsFloat();
+            }
+
+            if (settingsConfig.has("chromaMode")) {
+                int ordinal = settingsConfig.get("chromaMode").getAsInt();
+                if (EnumUtils.ChromaMode.values().length > ordinal) {
+                    chromaMode = EnumUtils.ChromaMode.values()[ordinal];
+                }
             }
 
             int configVersion;
@@ -519,8 +527,8 @@ public class ConfigValues {
                 chromaFeaturesArray.add(new GsonBuilder().create().toJsonTree(feature.getId()));
             }
             settingsConfig.add("chromaFeatures", chromaFeaturesArray);
-
             settingsConfig.addProperty("chromaSpeed", chromaSpeed);
+            settingsConfig.addProperty("chromaMode", chromaMode.ordinal());
 
             settingsConfig.addProperty("configVersion", CONFIG_VERSION);
 
@@ -727,5 +735,13 @@ public class ConfigValues {
 
     public void setChromaSpeed(float chromaSpeed) {
         this.chromaSpeed = chromaSpeed;
+    }
+
+    public EnumUtils.ChromaMode getChromaMode() {
+        return chromaMode;
+    }
+
+    public void setChromaMode(EnumUtils.ChromaMode chromaMode) {
+        this.chromaMode = chromaMode;
     }
 }
