@@ -96,7 +96,12 @@
     "showCakeBagPreview": "Показывать превью Мешка для Тортов",
     "showBackpackPreviewInAH": "Показывать превью рюкзака во время использования Аукциона",
     "enableDevFeatures": "Включить параметры разработчиков",
-    "chromaSpeed": "Chroma Speed"
+    "chromaSpeed": "Chroma Speed",
+    "chromaMode": "Chroma Color Mode",
+    "chromaModes": {
+      "allTheSame": "All the Same Color",
+      "flowsAcrossScreen": "Flows Across Screen"
+    }
   },
   "messages": {
     "dropConfirmation": "Выбросите предмет ещё раз для подтверждения!",
