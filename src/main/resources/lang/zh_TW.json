@@ -96,11 +96,11 @@
     "showCakeBagPreview": "顯示蛋糕袋預覽",
     "showBackpackPreviewInAH": "在競標開啟時顯示你背包物品的預覽",
     "enableDevFeatures": "開發者模式按鈕",
-    "chromaSpeed": "Chroma Speed",
-    "chromaMode": "Chroma Color Mode",
+    "chromaSpeed": "變色速度",
+    "chromaMode": "變色模式",
     "chromaModes": {
-      "allTheSame": "All the Same Color",
-      "flowsAcrossScreen": "Flows Across Screen"
+      "allTheSame": "全顏色相同",
+      "flowsAcrossScreen": "失焦時持續變色"
     }
   },
   "messages": {
