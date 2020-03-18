@@ -67,7 +67,7 @@
     "soundIndicatorForFishing": "Indicateur sonore pour la pêche",
     "avoidBlinkingNightVision": "Empêcher le clignotement de la vision nocturne",
     "disableMinionLocationWarning": "Désativer l'alerte “Location not perfect”",
-    "jungleAxeCooldown": "Recharge de la Jungle Axe",
+    "jungleAxeCooldown": "Bloquer la Jungle Axe/Treecapitator en rechargeant",
     "organizeLongEnchantmentLists": "Organiser & lister les enchantements",
     "showItemCooldowns": "Recharge des objets",
     "speedPercentage": "Pourcentage de vitesse",
