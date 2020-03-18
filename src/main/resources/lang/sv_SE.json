@@ -96,7 +96,12 @@
     "showCakeBagPreview": "Visa förhandsvisning för tårt ryggsäckar",
     "showBackpackPreviewInAH": "Visa väskoinnehållsmemu för dina saker när Ah är öppnat",
     "enableDevFeatures": "Aktivera utvecklarfunktioner",
-    "chromaSpeed": "Chroma Speed"
+    "chromaSpeed": "Chroma Speed",
+    "chromaMode": "Chroma Color Mode",
+    "chromaModes": {
+      "allTheSame": "All the Same Color",
+      "flowsAcrossScreen": "Flows Across Screen"
+    }
   },
   "messages": {
     "dropConfirmation": "Släpp Det Här Igen För Att Bekräfta!",
