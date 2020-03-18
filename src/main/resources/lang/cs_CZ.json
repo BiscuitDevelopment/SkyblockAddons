@@ -96,11 +96,11 @@
     "showCakeBagPreview": "Ukázat přehled pro Tašky na Dorty",
     "showBackpackPreviewInAH": "Zobrazit náhled do tvého batohu, když je otevřená nabídka pro Aukci",
     "enableDevFeatures": "Povolit Vývojářské funkce",
-    "chromaSpeed": "Chroma Speed",
-    "chromaMode": "Chroma Color Mode",
+    "chromaSpeed": "Rychlost Chromy",
+    "chromaMode": "Barevný režim měnění barev",
     "chromaModes": {
-      "allTheSame": "All the Same Color",
-      "flowsAcrossScreen": "Flows Across Screen"
+      "allTheSame": "Všechny stejné barvy",
+      "flowsAcrossScreen": "Plyne po celé obrazovce"
     }
   },
   "messages": {
