@@ -95,7 +95,8 @@
     "hideNightVisionEffectTimer": "Скрыть таймер эффекта Ночного Зрения",
     "showCakeBagPreview": "Показывать превью Мешка для Тортов",
     "showBackpackPreviewInAH": "Показывать превью рюкзака во время использования Аукциона",
-    "enableDevFeatures": "Включить параметры разработчиков"
+    "enableDevFeatures": "Включить параметры разработчиков",
+    "chromaSpeed": "Chroma Speed"
   },
   "messages": {
     "dropConfirmation": "Выбросите предмет ещё раз для подтверждения!",
