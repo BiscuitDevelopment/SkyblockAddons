@@ -95,7 +95,8 @@
     "hideNightVisionEffectTimer": "Verstecke Nachtsicht Effekt Timer",
     "showCakeBagPreview": "Show Preview for Cake Bags",
     "showBackpackPreviewInAH": "Rucksack-Vorschau für deine Items anzeigen, während das Auktionshaus geöffnet ist",
-    "enableDevFeatures": "Enable Developer Features"
+    "enableDevFeatures": "Enable Developer Features",
+    "chromaSpeed": "Chroma Speed"
   },
   "messages": {
     "dropConfirmation": "Werfe diesen Gegenstand nochmal, um zu bestätigen!",
