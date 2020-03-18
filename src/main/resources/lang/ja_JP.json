@@ -96,10 +96,10 @@
     "showCakeBagPreview": "ケーキバッグのプレビューを表示",
     "showBackpackPreviewInAH": "オークションが開いている時にバックパックのプレビューを表示",
     "enableDevFeatures": "開発者機能の有効化",
-    "chromaSpeed": "Chroma Speed",
+    "chromaSpeed": "Chromaのスピード",
     "chromaMode": "Chroma Color Mode",
     "chromaModes": {
-      "allTheSame": "All the Same Color",
+      "allTheSame": "全て同じ色",
       "flowsAcrossScreen": "Flows Across Screen"
     }
   },
