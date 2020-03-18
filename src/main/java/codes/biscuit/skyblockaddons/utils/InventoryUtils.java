@@ -186,8 +186,11 @@ public class InventoryUtils {
              */
             if (firstEmptyStack == -1 || firstEmptyStack == 8) {
                 if (mc.currentScreen == null && main.getPlayerListener().didntRecentlyJoinWorld() && !inventoryWarningShown) {
-                    inventoryWarningHandle = main.getExecutorService().scheduleWithFixedDelay(new ShowInventoryFullWarning(), 0, 10, TimeUnit.SECONDS);
-                    resetTitleFeatureHandle = main.getExecutorService().scheduleWithFixedDelay(new ResetTitleFeature(), main.getConfigValues().getWarningSeconds(), 10, TimeUnit.SECONDS);
+                    // TODO: Add a toggle for repeating the warning every 10 seconds
+                    // inventoryWarningHandle = main.getExecutorService().scheduleWithFixedDelay(new ShowInventoryFullWarning(), 0, 10, TimeUnit.SECONDS);
+                    // resetTitleFeatureHandle = main.getExecutorService().scheduleWithFixedDelay(new ResetTitleFeature(), main.getConfigValues().getWarningSeconds(), 10, TimeUnit.SECONDS);
+                    inventoryWarningHandle = main.getExecutorService().schedule(new ShowInventoryFullWarning(), 0, TimeUnit.SECONDS);
+                    resetTitleFeatureHandle = main.getExecutorService().schedule(new ResetTitleFeature(), main.getConfigValues().getWarningSeconds(), TimeUnit.SECONDS);
                     inventoryWarningShown = true;
                 }
             } else {
