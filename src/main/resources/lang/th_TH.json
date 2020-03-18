@@ -95,7 +95,8 @@
     "hideNightVisionEffectTimer": "ซ่อนระยะเวลาเอฟเฟ็ค Night Vision",
     "showCakeBagPreview": "แสดงไอเท็มในถุงเก็บเค้ก",
     "showBackpackPreviewInAH": "โชว์แบบกระเป๋าในขณะที่ใช้ร้านประมูล",
-    "enableDevFeatures": "เปิดใช้ฟีเจอร์สำหรับผู้พัฒนา"
+    "enableDevFeatures": "เปิดใช้ฟีเจอร์สำหรับผู้พัฒนา",
+    "chromaSpeed": "Chroma Speed"
   },
   "messages": {
     "dropConfirmation": "กดทิ้งของอีกที่เพื่อยืนยันทิ้งของสิ่งนี้!",
