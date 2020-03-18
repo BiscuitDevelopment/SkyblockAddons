@@ -95,7 +95,8 @@
     "hideNightVisionEffectTimer": "Hide the Biscuitish Vision Effect Timer",
     "showCakeBagPreview": "Show Preview for Biscuit Bags",
     "showBackpackPreviewInAH": "Show Biscutpack Preview for Your Biscuits While AH is Open",
-    "enableDevFeatures": "Enable Biscuiter Features"
+    "enableDevFeatures": "Enable Biscuiter Features",
+    "chromaSpeed": "Chroma Speed"
   },
   "messages": {
     "dropConfirmation": "Throw out this biscuit again to confirm!",
