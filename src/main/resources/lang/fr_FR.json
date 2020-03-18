@@ -96,7 +96,12 @@
     "showCakeBagPreview": "Aperçu des sacs à gâteau",
     "showBackpackPreviewInAH": "Afficher l'aperçu du sac à dos dans le /AH",
     "enableDevFeatures": "Activer le mode développeur",
-    "chromaSpeed": "Chroma Speed"
+    "chromaSpeed": "Chroma Speed",
+    "chromaMode": "Chroma Color Mode",
+    "chromaModes": {
+      "allTheSame": "All the Same Color",
+      "flowsAcrossScreen": "Flows Across Screen"
+    }
   },
   "messages": {
     "dropConfirmation": "Jetez cet objet une nouvelle fois pour confirmer!",
