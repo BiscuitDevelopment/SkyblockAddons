@@ -96,7 +96,12 @@
     "showCakeBagPreview": "Show Preview for Cake Bags",
     "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
     "enableDevFeatures": "Enable Developer Features",
-    "chromaSpeed": "Chroma Speed"
+    "chromaSpeed": "Chroma Speed",
+    "chromaMode": "Chroma Color Mode",
+    "chromaModes": {
+      "allTheSame": "All the Same Color",
+      "flowsAcrossScreen": "Flows Across Screen"
+    }
   },
   "messages": {
     "dropConfirmation": "아이템을 정말로 버리려면 다시 버리세요!",
