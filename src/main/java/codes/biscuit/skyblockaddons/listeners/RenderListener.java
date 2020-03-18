@@ -187,8 +187,10 @@ public class RenderListener {
             }
             if (message != null) {
                 String text = message.getMessage();
+                ChromaManager.renderingText(titleFeature);
                 MinecraftReflection.FontRenderer.drawString(text, (float) (-MinecraftReflection.FontRenderer.getStringWidth(text) / 2), -20.0F,
                         main.getConfigValues().getColor(titleFeature).getRGB(), true);
+                ChromaManager.doneRenderingText();
             }
             GlStateManager.popMatrix();
             GlStateManager.popMatrix();
@@ -220,8 +222,10 @@ public class RenderListener {
                 } else {
                     text = message.getMessage();
                 }
+                ChromaManager.renderingText(titleFeature);
                 MinecraftReflection.FontRenderer.drawString(text, (float) (-MinecraftReflection.FontRenderer.getStringWidth(text) / 2), -23.0F,
                         main.getConfigValues().getColor(subtitleFeature).getRGB(), true);
+                ChromaManager.doneRenderingText();
             }
             GlStateManager.popMatrix();
             GlStateManager.popMatrix();
@@ -677,7 +681,9 @@ public class RenderListener {
         }
 
         GlStateManager.enableBlend();
+        ChromaManager.renderingText(feature);
         main.getUtils().drawTextWithStyle(text, intX, intY, color, textAlpha);
+        ChromaManager.doneRenderingText();
 
         GlStateManager.color(1, 1, 1, 1);
         if (feature == Feature.DARK_AUCTION_TIMER) {

@@ -131,7 +131,7 @@ public class SkyblockAddonsGui extends GuiScreen {
             if (skip == 0) {
                 if (feature == Feature.TEXT_STYLE || feature == Feature.WARNING_TIME || feature == Feature.CHROMA_MODE) {
                     addButton(feature, EnumUtils.ButtonType.SOLID);
-                } else if (feature == Feature.CHROMA_SPEED) {
+                } else if (feature == Feature.CHROMA_SPEED || feature == Feature.CHROMA_FADE_WIDTH) {
                     addButton(feature, EnumUtils.ButtonType.CHROMA_SLIDER);
                 } else {
                     addButton(feature, EnumUtils.ButtonType.TOGGLE);
@@ -368,7 +368,21 @@ public class SkyblockAddonsGui extends GuiScreen {
             buttonList.add(new ButtonNormal(x, y, text, main, feature));
 
             if (feature == Feature.CHROMA_SPEED) {
-                buttonList.add(new ButtonChromaSlider(x + 35, y + boxHeight - 23, 70, 15, main, feature));
+                buttonList.add(new ButtonChromaSlider(x + 35, y + boxHeight - 23, 70, 15, main, main.getConfigValues().getChromaSpeed(),
+                        0.1F, 10, 0.5F, new ButtonChromaSlider.OnSliderChangeCallback() {
+                    @Override
+                    public void sliderUpdated(float value) {
+                        main.getConfigValues().setChromaSpeed(value);
+                    }
+                }));
+            } else if (feature == Feature.CHROMA_FADE_WIDTH) {
+                buttonList.add(new ButtonChromaSlider(x + 35, y + boxHeight - 23, 70, 15, main, main.getConfigValues().getChromaFadeWidth(),
+                        1, 42, 1, new ButtonChromaSlider.OnSliderChangeCallback() {
+                    @Override
+                    public void sliderUpdated(float value) {
+                        main.getConfigValues().setChromaFadeWidth(value);
+                    }
+                }));
             }
         }
 

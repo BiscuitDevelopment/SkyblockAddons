@@ -28,8 +28,15 @@ public enum TransformerField {
 //    oldMouseX("oldMouseX", "field_147048_u", "u", "F"),
 //    oldMouseY("oldMouseY", "field_147047_v", "v", "F"),
 
-    //Minecraft
+    // Minecraft
     mcResourceManager("mcResourceManager", "field_110451_am", "ay", TransformerClass.IReloadableResourceManager.getName()),
+
+    // FontRenderer
+//    textColor("textColor", "field_78304_r", "q", "I"),
+    red("red", "field_78291_n", "m", "F"),
+    green("green", "field_179186_b", "b", "F"),
+    blue("blue", "field_78292_o", "n", "F"),
+    alpha("alpha", "field_78305_q", "p", "F"),
 
     NULL(null,null,null,null);
 
@@ -52,5 +59,9 @@ public enum TransformerField {
 
     public FieldInsnNode getField(TransformerClass currentClass) {
         return new FieldInsnNode(Opcodes.GETFIELD, currentClass.getNameRaw(), name, type);
+    }
+
+    public FieldInsnNode putField(TransformerClass currentClass) {
+        return new FieldInsnNode(Opcodes.PUTFIELD, currentClass.getNameRaw(), name, type);
     }
 }

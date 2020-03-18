@@ -51,7 +51,8 @@ public class ConfigValues {
     private Map<String, Set<Integer>> profileLockedSlots = new HashMap<>();
     private Set<Feature> chromaFeatures = new HashSet<>();
     private float chromaSpeed = 0.19354838F; // 2.0
-    private EnumUtils.ChromaMode chromaMode = EnumUtils.ChromaMode.ALL_SAME_COLOR;
+    private EnumUtils.ChromaMode chromaMode = EnumUtils.ChromaMode.FADE;
+    private float chromaFadeWidth = 0.22580644F; // 10° Hue
 
     public ConfigValues(SkyblockAddons main, File settingsConfigFile) {
         this.main = main;
@@ -216,6 +217,10 @@ public class ConfigValues {
                 if (EnumUtils.ChromaMode.values().length > ordinal) {
                     chromaMode = EnumUtils.ChromaMode.values()[ordinal];
                 }
+            }
+
+            if (settingsConfig.has("chromaFadeWidth")) {
+                chromaFadeWidth = settingsConfig.get("chromaFadeWidth").getAsFloat();
             }
 
             int configVersion;
@@ -529,6 +534,7 @@ public class ConfigValues {
             settingsConfig.add("chromaFeatures", chromaFeaturesArray);
             settingsConfig.addProperty("chromaSpeed", chromaSpeed);
             settingsConfig.addProperty("chromaMode", chromaMode.ordinal());
+            settingsConfig.addProperty("chromaFadeWidth", chromaFadeWidth);
 
             settingsConfig.addProperty("configVersion", CONFIG_VERSION);
 
@@ -567,7 +573,7 @@ public class ConfigValues {
 
     public Color getColor(Feature feature, int alpha) {
         if (chromaFeatures.contains(feature)) {
-            return ChromaManager.getCurrentColor(getActualX(feature), getActualY(feature));
+            return ChromaManager.getCurrentColor();
         }
 
         Color color = getColor(feature);
@@ -577,7 +583,7 @@ public class ConfigValues {
 
     public Color getColor(Feature feature) {
         if (chromaFeatures.contains(feature)) {
-            return ChromaManager.getCurrentColor(getActualX(feature), getActualY(feature));
+            return ChromaManager.getCurrentColor();
         }
 
         ChatFormatting defaultColor = feature.getDefaultColor();
@@ -743,5 +749,13 @@ public class ConfigValues {
 
     public void setChromaMode(EnumUtils.ChromaMode chromaMode) {
         this.chromaMode = chromaMode;
+    }
+
+    public float getChromaFadeWidth() {
+        return chromaFadeWidth;
+    }
+
+    public void setChromaFadeWidth(float chromaFadeWidth) {
+        this.chromaFadeWidth = chromaFadeWidth;
     }
 }

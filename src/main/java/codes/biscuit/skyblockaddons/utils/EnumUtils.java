@@ -420,7 +420,7 @@ public class EnumUtils {
 
     public enum ChromaMode {
         ALL_SAME_COLOR(CHROMA_MODE_ALL_THE_SAME),
-        CHANGE_ACROSS_SCREEN(CHROMA_MODE_FLOWS_ACROSS_SCREEN);
+        FADE(CHROME_MODE_FADE);
 
         private Message message;
 

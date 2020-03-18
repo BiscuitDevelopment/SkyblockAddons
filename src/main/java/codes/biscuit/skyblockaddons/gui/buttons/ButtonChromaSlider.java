@@ -1,7 +1,6 @@
 package codes.biscuit.skyblockaddons.gui.buttons;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.utils.Feature;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
 import codes.biscuit.skyblockaddons.utils.nifty.reflection.MinecraftReflection;
 import net.minecraft.client.Minecraft;
@@ -13,30 +12,31 @@ import java.math.BigDecimal;
 
 public class ButtonChromaSlider extends GuiButton {
 
-    private static final float MIN_VALUE = 0.1F;
-    private static final float MAX_VALUE = 10F;
-    private static final float STEP = 0.5F;
+    private float min;
+    private float max;
+    private float step;
 
     private float sliderValue;
     private boolean dragging;
 
     private SkyblockAddons main;
-    private Feature feature;
 
-    public ButtonChromaSlider(double x, double y, int width, int height, SkyblockAddons main, Feature feature) {
+    private OnSliderChangeCallback sliderCallback;
+
+    public ButtonChromaSlider(double x, double y, int width, int height, SkyblockAddons main, float initialValue,
+                              float min, float max, float step, OnSliderChangeCallback sliderCallback) {
         super(0, (int)x, (int)y, "");
         this.sliderValue = 0;
         this.displayString = "";
-
-        if (feature == Feature.CHROMA_SPEED) {
-            this.sliderValue = main.getConfigValues().getChromaSpeed();
-            this.displayString = String.valueOf(getRoundedValue(denormalizeScale(sliderValue)));
-        }
-
+        this.sliderValue = initialValue;
         this.main = main;
         this.width = width;
         this.height = height;
-        this.feature = feature;
+        this.sliderCallback = sliderCallback;
+        this.min = min;
+        this.max = max;
+        this.step = step;
+        this.displayString = String.valueOf(getRoundedValue(denormalizeScale(sliderValue)));
     }
 
     @Override
@@ -73,11 +73,7 @@ public class ButtonChromaSlider extends GuiButton {
             if (this.dragging) {
                 this.sliderValue = (float) (mouseX - (this.xPosition + 4)) / (float) (this.width - 8);
                 this.sliderValue = MathHelper.clamp_float(sliderValue, 0.0F, 1.0F);
-
-                if (feature == Feature.CHROMA_SPEED) {
-                    main.getConfigValues().setChromaSpeed(sliderValue);
-                    this.displayString = String.valueOf(getRoundedValue(denormalizeScale(sliderValue)));
-                }
+                valueUpdated();
             }
 
             mc.getTextureManager().bindTexture(buttonTextures);
@@ -90,11 +86,7 @@ public class ButtonChromaSlider extends GuiButton {
         if (super.mousePressed(mc, mouseX, mouseY)) {
             this.sliderValue = (float) (mouseX - (this.xPosition + 4)) / (float) (this.width - 8);
             this.sliderValue = MathHelper.clamp_float(this.sliderValue, 0.0F, 1.0F);
-
-            if (feature == Feature.CHROMA_SPEED) {
-                main.getConfigValues().setChromaSpeed(sliderValue);
-                this.displayString = String.valueOf(getRoundedValue(denormalizeScale(sliderValue)));
-            }
+            valueUpdated();
             this.dragging = true;
             return true;
         } else {
@@ -110,15 +102,18 @@ public class ButtonChromaSlider extends GuiButton {
         return new BigDecimal(String.valueOf(value)).setScale(2, BigDecimal.ROUND_HALF_UP).floatValue();
     }
 
-    public static float denormalizeScale(float value) {
-        return snapToStepClamp(ButtonChromaSlider.MIN_VALUE + (ButtonChromaSlider.MAX_VALUE - ButtonChromaSlider.MIN_VALUE) *
-                MathHelper.clamp_float(value, 0.0F, 1.0F));
+    public float denormalizeScale(float value) {
+        return SkyblockAddons.getInstance().getUtils().denormalizeScale(value, min, max, step);
     }
 
-    private static float snapToStepClamp(float value) {
-        value = ButtonChromaSlider.STEP * (float) Math.round(value / ButtonChromaSlider.STEP);
-        return MathHelper.clamp_float(value, ButtonChromaSlider.MIN_VALUE, ButtonChromaSlider.MAX_VALUE);
+    public void valueUpdated() {
+        sliderCallback.sliderUpdated(sliderValue);
+        this.displayString = String.valueOf(getRoundedValue(denormalizeScale(sliderValue)));
     }
 
+    public abstract static class OnSliderChangeCallback {
+
+        public abstract void sliderUpdated(float value);
+    }
 }
 

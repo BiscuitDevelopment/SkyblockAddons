@@ -106,7 +106,7 @@ public class CheckBox {
         }
     }
 
-    void setValue(boolean value) {
+    public void setValue(boolean value) {
         this.value = value;
     }
 

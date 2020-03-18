@@ -97,6 +97,7 @@ public enum Message {
     SETTING_ENABLE_DEV_FEATURES(MessageObject.SETTING, "enableDevFeatures"),
     SETTING_CHROMA_SPEED(MessageObject.SETTING, "chromaSpeed"),
     SETTING_CHROMA_MODE(MessageObject.SETTING, "chromaMode"),
+    SETTING_CHROMA_FADE_WIDTH(MessageObject.SETTING, "chromaFadeWidth"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.BACKPACK_STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.BACKPACK_STYLE, "compact"),
@@ -167,7 +168,7 @@ public enum Message {
     POWER_ORB_DISPLAY_STYLE_COMPACT(MessageObject.POWER_ORB_STYLE, "compact"),
 
     CHROMA_MODE_ALL_THE_SAME(MessageObject.CHROMA_MODE, "allTheSame"),
-    CHROMA_MODE_FLOWS_ACROSS_SCREEN(MessageObject.CHROMA_MODE, "flowsAcrossScreen");
+    CHROME_MODE_FADE(MessageObject.CHROMA_MODE, "fade");
 
     private MessageObject messageObject;
     private String memberName;

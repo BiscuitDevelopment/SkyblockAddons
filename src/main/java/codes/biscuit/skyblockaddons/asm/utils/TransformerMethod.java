@@ -90,6 +90,9 @@ public enum TransformerMethod {
     // TileEntityEnderChestRenderer
     renderTileEntityAt("renderTileEntityAt", "func_180535_a", "a", "(Lnet/minecraft/tileentity/TileEntity;DDDFI)V", "("+TransformerClass.TileEntity.getName()+"DDDFI)V"),
 
+    // FontRenderer
+    renderChar("renderChar", "func_181559_a", "a", "(CZ)F"),
+
     // Constructor
     init("<init>", "<init>", "<init>", "()V"),
 

@@ -24,6 +24,7 @@ import net.minecraft.scoreboard.ScoreObjective;
 import net.minecraft.scoreboard.ScorePlayerTeam;
 import net.minecraft.scoreboard.Scoreboard;
 import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.MathHelper;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.FMLLog;
@@ -778,5 +779,15 @@ public class Utils {
 
         enchantments.clear();
         enchantments.addAll(orderedEnchants.values());
+    }
+
+    public float denormalizeScale(float value, float min, float max, float step) {
+        return snapToStepClamp(min + (max - min) *
+                MathHelper.clamp_float(value, 0.0F, 1.0F), min, max, step);
+    }
+
+    private float snapToStepClamp(float value, float min, float max, float step) {
+        value = step * (float) Math.round(value / step);
+        return MathHelper.clamp_float(value, min, max);
     }
 }

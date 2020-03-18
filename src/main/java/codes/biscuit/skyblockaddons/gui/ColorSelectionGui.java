@@ -61,6 +61,7 @@ public class ColorSelectionGui extends GuiScreen {
     @Override
     public void initGui() {
         chromaCheckbox = new CheckBox(mc, width / 2 + 88, 170, 12, "Chroma", false);
+        chromaCheckbox.setValue(SkyblockAddons.getInstance().getConfigValues().getChromaFeatures().contains(feature));
 
         chromaCheckbox.setOnToggleListener(value -> {
             ChromaManager.setFeature(feature, value);
