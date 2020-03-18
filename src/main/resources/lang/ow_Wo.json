@@ -96,7 +96,12 @@
     "showCakeBagPreview": "Show Pweview fow Cake Bags",
     "showBackpackPreviewInAH": "Show Backpack Pweview fow Youw Items Whiwe AH is Open",
     "enableDevFeatures": "Enabwe Devewopew Featuwes",
-    "chromaSpeed": "Chroma Speed"
+    "chromaSpeed": "Chroma Speed",
+    "chromaMode": "Chroma Color Mode",
+    "chromaModes": {
+      "allTheSame": "All the Same Color",
+      "flowsAcrossScreen": "Flows Across Screen"
+    }
   },
   "messages": {
     "dropConfirmation": "Dwop thwis itwem agwain to confiwm!",
