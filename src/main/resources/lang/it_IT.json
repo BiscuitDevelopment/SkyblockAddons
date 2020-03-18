@@ -95,7 +95,8 @@
     "hideNightVisionEffectTimer": "Nascondi il timer dell’effetto visione notturna",
     "showCakeBagPreview": "Mostra anteprima delle Cake Bags",
     "showBackpackPreviewInAH": "Mostra l’anteprima dello zaino mentre l’Auction House è aperta",
-    "enableDevFeatures": "Abilita la modalità sviluppatore"
+    "enableDevFeatures": "Abilita la modalità sviluppatore",
+    "chromaSpeed": "Chroma Speed"
   },
   "messages": {
     "dropConfirmation": "Getta questo oggetto nuovamente per confermare!",
