@@ -96,7 +96,12 @@
     "showCakeBagPreview": "显示蛋糕袋预览",
     "showBackpackPreviewInAH": "当拍卖界面打开时显示背包预览",
     "enableDevFeatures": "开发者模式按钮",
-    "chromaSpeed": "Chroma Speed"
+    "chromaSpeed": "Chroma Speed",
+    "chromaMode": "Chroma Color Mode",
+    "chromaModes": {
+      "allTheSame": "All the Same Color",
+      "flowsAcrossScreen": "Flows Across Screen"
+    }
   },
   "messages": {
     "dropConfirmation": "再次丢弃此物品以确认!",
