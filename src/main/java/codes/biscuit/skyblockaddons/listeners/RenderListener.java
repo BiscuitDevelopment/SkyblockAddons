@@ -642,7 +642,9 @@ public class RenderListener {
             if (buttonLocation == null) {
                 int remainingTime = (int) (skillFadeOutTime - System.currentTimeMillis());
                 if (remainingTime < 0) {
-                    if (remainingTime < -2000) remainingTime = -2000;
+                    if (remainingTime < -2000) {
+                        return; // Will be invisible, no need to render.
+                    }
 
                     textAlpha = (float) 1 - ((float) -remainingTime / 2000);
                     color = main.getConfigValues().getColor(feature, Math.round(textAlpha * 255 >= 4 ? textAlpha * 255 : 4)).getRGB(); // so it fades out, 0.016 is the minimum alpha

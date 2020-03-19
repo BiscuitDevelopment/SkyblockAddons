@@ -49,10 +49,10 @@ public class ConfigValues {
     @Getter @SuppressWarnings("deprecation") private Set<Feature> remoteDisabledFeatures = EnumSet.of(Feature.AVOID_BREAKING_BOTTOM_SUGAR_CANE);
     private Set<Integer> legacyLockedSlots = new HashSet<>();
     private Map<String, Set<Integer>> profileLockedSlots = new HashMap<>();
-    private Set<Feature> chromaFeatures = new HashSet<>();
-    private float chromaSpeed = 0.19354838F; // 2.0
-    private EnumUtils.ChromaMode chromaMode = EnumUtils.ChromaMode.FADE;
-    private float chromaFadeWidth = 0.22580644F; // 10° Hue
+    @Getter private Set<Feature> chromaFeatures = new HashSet<>();
+    @Getter @Setter private float chromaSpeed = 0.19354838F; // 2.0
+    @Getter @Setter private EnumUtils.ChromaMode chromaMode = EnumUtils.ChromaMode.FADE;
+    @Getter @Setter private float chromaFadeWidth = 0.22580644F; // 10° Hue
 
     public ConfigValues(SkyblockAddons main, File settingsConfigFile) {
         this.main = main;
@@ -572,8 +572,14 @@ public class ConfigValues {
     }
 
     public Color getColor(Feature feature, int alpha) {
+        if (alpha == 255) {
+            return getColor(feature);
+        }
+
         if (chromaFeatures.contains(feature)) {
-            return ChromaManager.getCurrentColor();
+            Color color = ChromaManager.getCurrentColor();
+
+            return new Color(color.getRed(), color.getGreen(), color.getBlue(), alpha);
         }
 
         Color color = getColor(feature);
@@ -729,33 +735,5 @@ public class ConfigValues {
     public float snapToStepClamp(float value) {
         value = ConfigValues.GUI_SCALE_STEP * (float) Math.round(value / ConfigValues.GUI_SCALE_STEP);
         return MathHelper.clamp_float(value, ConfigValues.GUI_SCALE_MINIMUM, ConfigValues.GUI_SCALE_MAXIMUM);
-    }
-
-    public Set<Feature> getChromaFeatures() {
-        return chromaFeatures;
-    }
-
-    public float getChromaSpeed() {
-        return chromaSpeed;
-    }
-
-    public void setChromaSpeed(float chromaSpeed) {
-        this.chromaSpeed = chromaSpeed;
-    }
-
-    public EnumUtils.ChromaMode getChromaMode() {
-        return chromaMode;
-    }
-
-    public void setChromaMode(EnumUtils.ChromaMode chromaMode) {
-        this.chromaMode = chromaMode;
-    }
-
-    public float getChromaFadeWidth() {
-        return chromaFadeWidth;
-    }
-
-    public void setChromaFadeWidth(float chromaFadeWidth) {
-        this.chromaFadeWidth = chromaFadeWidth;
     }
 }
