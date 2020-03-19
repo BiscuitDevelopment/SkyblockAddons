@@ -67,7 +67,7 @@
     "soundIndicatorForFishing": "釣魚聲音提示",
     "avoidBlinkingNightVision": "取消夜視藥水閃爍",
     "disableMinionLocationWarning": "取消Minion位置不完美警告",
-    "jungleAxeCooldown": "叢林之斧冷卻",
+    "jungleAxeCooldown": "禁止在Jungle Axe/Treecapitator冷卻期間使用",
     "organizeLongEnchantmentLists": "整理長附魔名稱列表",
     "showItemCooldowns": "顯示物品冷卻",
     "speedPercentage": "速度百分比",
@@ -100,7 +100,7 @@
     "chromaMode": "變色模式",
     "chromaModes": {
       "allTheSame": "全顏色相同",
-      "fade": "Color Fade"
+      "fade": "淡入色彩"
     },
     "chromaFadeWidth": "Chroma Fade Width"
   },
