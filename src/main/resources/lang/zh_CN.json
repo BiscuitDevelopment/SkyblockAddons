@@ -67,7 +67,7 @@
     "soundIndicatorForFishing": "钓鱼声音指示",
     "avoidBlinkingNightVision": "禁用夜视耗尽闪烁",
     "disableMinionLocationWarning": "禁用仆从“位置不是很好”警告",
-    "jungleAxeCooldown": "丛林斧冷却时间",
+    "jungleAxeCooldown": "丛林斧冷却",
     "organizeLongEnchantmentLists": "整理长版附魔列表",
     "showItemCooldowns": "显示物品冷却时间",
     "speedPercentage": "速度百分比",
@@ -96,13 +96,13 @@
     "showCakeBagPreview": "显示蛋糕袋预览",
     "showBackpackPreviewInAH": "当拍卖界面打开时显示背包预览",
     "enableDevFeatures": "开发者模式按钮",
-    "chromaSpeed": "Chroma Speed",
-    "chromaMode": "Chroma Color Mode",
+    "chromaSpeed": "变色速度",
+    "chromaMode": "变色模式",
     "chromaModes": {
-      "allTheSame": "All the Same Color",
-      "fade": "Color Fade"
+      "allTheSame": "全部相同颜色",
+      "fade": "颜色淡入淡出"
     },
-    "chromaFadeWidth": "Chroma Fade Width"
+    "chromaFadeWidth": "颜色淡入淡出幅度"
   },
   "messages": {
     "dropConfirmation": "再次丢弃此物品以确认!",
