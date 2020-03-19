@@ -100,9 +100,9 @@
     "chromaMode": "變色模式",
     "chromaModes": {
       "allTheSame": "全顏色相同",
-      "fade": "淡入色彩"
+      "fade": "顏色淡入淡出"
     },
-    "chromaFadeWidth": "Chroma Fade Width"
+    "chromaFadeWidth": "彩色淡入淡出幅度"
   },
   "messages": {
     "dropConfirmation": "再次丟棄此物品以確認!",
