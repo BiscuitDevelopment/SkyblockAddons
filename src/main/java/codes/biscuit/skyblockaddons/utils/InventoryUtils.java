@@ -195,16 +195,16 @@ public class InventoryUtils {
                 }
             } else {
                 inventoryWarningShown = false;
-                if (inventoryWarningHandle != null && resetTitleFeatureHandle != null) {
+/*                if (inventoryWarningHandle != null && resetTitleFeatureHandle != null) {
                     // If the inventory warning's currently on the screen, schedule it to disappear.
                     if (resetTitleFeatureHandle.getDelay(TimeUnit.SECONDS) > 0) {
                         main.getExecutorService().schedule(new ResetTitleFeature(), resetTitleFeatureHandle.getDelay(TimeUnit.SECONDS), TimeUnit.SECONDS);
                     }
 
                     // Stop the full inventory warning from repeating.
-                    // inventoryWarningHandle.cancel(false);
-                    // resetTitleFeatureHandle.cancel(false);
-                }
+                    inventoryWarningHandle.cancel(false);
+                    resetTitleFeatureHandle.cancel(false);
+                }*/
             }
         }
     }
