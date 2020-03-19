@@ -96,13 +96,13 @@
     "showCakeBagPreview": "Show Pweview fow Cake Bags",
     "showBackpackPreviewInAH": "Show Backpack Pweview fow Youw Items Whiwe AH is Open",
     "enableDevFeatures": "Enabwe Devewopew Featuwes",
-    "chromaSpeed": "Chroma Speed",
-    "chromaMode": "Chroma Color Mode",
+    "chromaSpeed": "Chwoma Speed",
+    "chromaMode": "Chwoma Cowow Mode",
     "chromaModes": {
-      "allTheSame": "All the Same Color",
-      "fade": "Color Fade"
+      "allTheSame": "Aww the Same Cowow",
+      "fade": "Cowow Fade"
     },
-    "chromaFadeWidth": "Chroma Fade Width"
+    "chromaFadeWidth": "Chwoma Fade Width"
   },
   "messages": {
     "dropConfirmation": "Dwop thwis itwem agwain to confiwm!",
