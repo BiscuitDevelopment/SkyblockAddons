@@ -100,9 +100,9 @@
     "chromaMode": "Chroma Farbmodus",
     "chromaModes": {
       "allTheSame": "Alle Elemente einer Farbe zuordnen",
-      "fade": "Color Fade"
+      "fade": "Farb Überblendung"
     },
-    "chromaFadeWidth": "Chroma Fade Width"
+    "chromaFadeWidth": "Chroma Überblendung Breite"
   },
   "messages": {
     "dropConfirmation": "Werfe diesen Gegenstand nochmal, um zu bestätigen!",
