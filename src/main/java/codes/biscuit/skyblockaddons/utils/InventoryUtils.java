@@ -181,8 +181,10 @@ public class InventoryUtils {
             for (int i = 0; i < p.inventory.mainInventory.length; i++) {
                 // If we find an empty slot that isn't slot 8, remove any queued warnings and stop checking.
                 if (p.inventory.mainInventory[i] == null && i != 8) {
+                    if (inventoryWarningShown) {
+                        main.getScheduler().removeQueuedFullInventoryWarnings();
+                    }
                     inventoryWarningShown = false;
-                    main.getScheduler().removeQueuedFullInventoryWarnings();
                     return;
                 }
             }
