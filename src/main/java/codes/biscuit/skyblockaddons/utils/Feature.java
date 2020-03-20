@@ -23,7 +23,7 @@ public enum Feature {
     HIDE_BONES(4, Message.SETTING_HIDE_SKELETON_HAT_BONES, false),
     SKELETON_BAR(5, Message.SETTING_SKELETON_HAT_BONES_BAR, new GuiFeatureData(EnumUtils.DrawType.SKELETON_BAR, EnumUtils.AnchorPoint.BOTTOM_MIDDLE, 159, -11), false),
     HIDE_FOOD_ARMOR_BAR(6, Message.SETTING_HIDE_FOOD_AND_ARMOR, false),
-    FULL_INVENTORY_WARNING(7, Message.SETTING_FULL_INVENTORY_WARNING, new GuiFeatureData(ChatFormatting.RED), false),
+    FULL_INVENTORY_WARNING(7, Message.SETTING_FULL_INVENTORY_WARNING, new GuiFeatureData(ChatFormatting.RED), false, EnumUtils.FeatureSetting.REPEATING),
     MAGMA_BOSS_TIMER(8, Message.SETTING_MAGMA_BOSS_TIMER, new GuiFeatureData(EnumUtils.DrawType.TEXT, ChatFormatting.GOLD, EnumUtils.AnchorPoint.TOP_RIGHT, false, -21, 11), false, EnumUtils.FeatureSetting.ENABLED_IN_OTHER_GAMES),
 //    HIDE_DURABILITY(9, Message.SETTING_HIDE_DURABILITY), // Removed, added to Skyblock.
     SHOW_ENCHANTMENTS_REFORGES(10, Message.SETTING_ENCHANTS_AND_REFORGES, false),
@@ -89,6 +89,7 @@ public enum Feature {
     HIDE_NIGHT_VISION_EFFECT_TIMER(70, Message.SETTING_HIDE_NIGHT_VISION_EFFECT_TIMER, true),
     CAKE_BAG_PREVIEW(71, Message.SETTING_SHOW_CAKE_BAG_PREVIEW, true),
     BACKPACK_PREVIEW_AH(72, Message.SETTING_SHOW_BACKPACK_PREVIEW_AH, true),
+    REPEAT_FULL_INVENTORY_WARNING(73, null, true),
 
     HIDE_GREY_ENCHANTS(100, null, false), // This is here just to allow remote disabling this feature- it's caused issues in the past haha.
 
@@ -114,7 +115,7 @@ public enum Feature {
             USE_VANILLA_TEXTURE_DEFENCE, SHOW_BACKPACK_HOLDING_SHIFT, SHOW_MAGMA_TIMER_IN_OTHER_GAMES,
             MAKE_BACKPACK_INVENTORIES_COLORED, CHANGE_BAR_COLOR_FOR_POTIONS, ENABLE_MESSAGE_WHEN_BREAKING_STEMS,
             ENABLE_MESSAGE_WHEN_MINING_DEEP_CAVERNS, ENABLE_MESSAGE_WHEN_MINING_NETHER, HIDE_NIGHT_VISION_EFFECT_TIMER,
-            CAKE_BAG_PREVIEW, BACKPACK_PREVIEW_AH);
+            CAKE_BAG_PREVIEW, BACKPACK_PREVIEW_AH, REPEAT_FULL_INVENTORY_WARNING);
 
     /**
      * Features that are considered gui ones. This is used for examnple when saving the config to ensure that these features'

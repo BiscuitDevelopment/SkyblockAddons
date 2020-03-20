@@ -26,8 +26,6 @@ import org.lwjgl.input.Keyboard;
 import java.lang.reflect.Field;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
 
 @Getter
 @Mod(modid = SkyblockAddons.MOD_ID, version = SkyblockAddons.VERSION, name = SkyblockAddons.MOD_NAME, clientSideOnly = true, acceptedMinecraftVersions = "[1.8.9]")
@@ -35,7 +33,7 @@ public class SkyblockAddons {
 
     static final String MOD_ID = "skyblockaddons";
     public static final String MOD_NAME = "SkyblockAddons";
-    public static final String VERSION = "1.5.0-b9";
+    public static final String VERSION = "1.5.0-b11";
 
     /** The main instance of the mod, used mainly my mixins who don't get it passed to them. */
     @Getter private static SkyblockAddons instance;
@@ -51,7 +49,6 @@ public class SkyblockAddons {
 
     /** Get the scheduler that be can be used to easily execute tasks. */
     private Scheduler scheduler = new Scheduler(this);
-    private ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
     private boolean usingLabymod = false;
     private boolean usingOofModv1 = false;
 
@@ -64,7 +61,7 @@ public class SkyblockAddons {
         instance = this;
         configValues = new ConfigValues(this, e.getSuggestedConfigurationFile());
         logger = e.getModLog();
-        persistentValues = new PersistentValues(e.getSuggestedConfigurationFile());
+        persistentValues = new PersistentValues(e.getModConfigurationDirectory());
     }
     @Mod.EventHandler
     public void init(FMLInitializationEvent e) {

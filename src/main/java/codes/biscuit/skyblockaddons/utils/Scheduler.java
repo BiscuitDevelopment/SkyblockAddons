@@ -24,9 +24,14 @@ public class Scheduler {
      * by client ticks reliably.
      *
      * @param commandType What you want to schedule
-     * @param delaySeconds The delay in ticks (20 ticks = 1second)
+     * @param delaySeconds The delay in seconds (must be greater than 0)
      */
     public void schedule(CommandType commandType, int delaySeconds, Object... data) {
+        // If the delay isn't greater than zero, the command never gets executed.
+        if (!(delaySeconds > 0)) {
+            throw new IllegalArgumentException("Delay must be greater than zero!");
+        }
+
         long ticks = totalTicks+(delaySeconds*20);
         Set<Command> commands = queue.get(ticks);
         if (commands != null) {
@@ -41,6 +46,36 @@ public class Scheduler {
             Set<Command> commandSet = new HashSet<>();
             commandSet.add(new Command(commandType, data));
             queue.put(ticks, commandSet);
+        }
+    }
+
+    /**
+     * Removes all queued full inventory warnings.
+     */
+    public void removeFullInventoryWarnings() {
+        Iterator<Map.Entry<Long, Set<Command>>> queueIterator = queue.entrySet().iterator();
+        List<Long> resetTitleFeatureTicks = new LinkedList<>();
+
+        while (queueIterator.hasNext()) {
+            Map.Entry<Long, Set<Command>> entry = queueIterator.next();
+
+            if (entry.getValue().removeIf(command -> CommandType.SHOW_FULL_INVENTORY_WARNING.equals(command.commandType))) {
+                resetTitleFeatureTicks.add(entry.getKey() + main.getConfigValues().getWarningSeconds() * 20);
+            }
+
+            // Remove the corresponding reset title feature command.
+            if (resetTitleFeatureTicks.contains(entry.getKey())) {
+                Set<Command> commands = entry.getValue();
+                Iterator<Command> commandIterator = commands.iterator();
+
+                while (commandIterator.hasNext()) {
+                    Command command = commandIterator.next();
+                    if (command.commandType.equals(CommandType.RESET_TITLE_FEATURE)) {
+                        commandIterator.remove();
+                        break;
+                    }
+                }
+            }
         }
     }
 
@@ -106,7 +141,8 @@ public class Scheduler {
         RESET_SUBTITLE_FEATURE,
         RESET_UPDATE_MESSAGE,
         SET_LAST_SECOND_HEALTH,
-        DELETE_RECENT_CHUNK;
+        DELETE_RECENT_CHUNK,
+        SHOW_FULL_INVENTORY_WARNING;
 
         public void execute(Command command, int count) {
             SkyblockAddons main = SkyblockAddons.getInstance();
@@ -126,6 +162,14 @@ public class Scheduler {
                 int z = (int)commandData[1];
                 CoordsPair coordsPair = new CoordsPair(x,z);
                 playerListener.getRecentlyLoadedChunks().remove(coordsPair);
+            } else if (this == SHOW_FULL_INVENTORY_WARNING) {
+                main.getInventoryUtils().showFullInventoryWarning();
+
+                // Schedule a repeat if needed.
+                if (main.getConfigValues().isEnabled(Feature.REPEAT_FULL_INVENTORY_WARNING)) {
+                    main.getScheduler().schedule(Scheduler.CommandType.SHOW_FULL_INVENTORY_WARNING, 10);
+                    main.getScheduler().schedule(Scheduler.CommandType.RESET_TITLE_FEATURE, 10 + main.getConfigValues().getWarningSeconds());
+                }
             } else if (this == RESET_TITLE_FEATURE) {
                 main.getRenderListener().setTitleFeature(null);
             } else if (this == RESET_SUBTITLE_FEATURE) {

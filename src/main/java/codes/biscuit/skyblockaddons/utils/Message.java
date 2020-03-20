@@ -22,6 +22,7 @@ public enum Message {
     SETTING_SKELETON_HAT_BONES_BAR(MessageObject.SETTING, "skeletonHatBonesBar"),
     SETTING_HIDE_FOOD_AND_ARMOR(MessageObject.SETTING, "hideFoodAndArmor"),
     SETTING_FULL_INVENTORY_WARNING(MessageObject.SETTING, "fullInventoryWarning"),
+    SETTING_REPEATING(MessageObject.SETTING, "repeating"),
     SETTING_MAGMA_BOSS_TIMER(MessageObject.SETTING, "magmaBossTimer"),
     SETTING_DISABLE_EMBER_ROD_ABILITY(MessageObject.SETTING, "disableEmberRodAbility"),
     SETTING_EDIT_LOCATIONS(MessageObject.SETTING, "editLocations"),

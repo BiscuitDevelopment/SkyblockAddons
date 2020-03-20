@@ -167,6 +167,9 @@ public class SettingsGui extends GuiScreen {
                     GuiIngameForge.renderArmor = true; // The food gets automatically enabled, no need to include it.
                 } else if (feature == Feature.HIDE_HEALTH_BAR) {
                     GuiIngameForge.renderHealth = true;
+                } else if (feature == Feature.REPEAT_FULL_INVENTORY_WARNING) {
+                    // Remove queued warnings when the repeat setting is turned off.
+                    main.getScheduler().removeFullInventoryWarnings();
                 }
             }
         } else if (feature == Feature.SHOW_BACKPACK_PREVIEW) {
@@ -226,6 +229,17 @@ public class SettingsGui extends GuiScreen {
             buttonList.add(new ButtonOpenColorMenu(x, y, 100, 20, Message.SETTING_CHANGE_COLOR.getMessage(), main, feature));
         } else if (setting == EnumUtils.FeatureSetting.GUI_SCALE) {
             buttonList.add(new ButtonGuiScale(x, y, 100, 20, main, feature));
+        } else if (setting == EnumUtils.FeatureSetting.REPEATING) {
+            boxWidth = 31;
+            x = halfWidth-(boxWidth/2);
+            y = getRowHeightSetting(row);
+
+            Feature settingFeature = null;
+            if (feature == Feature.FULL_INVENTORY_WARNING) {
+                settingFeature = Feature.REPEAT_FULL_INVENTORY_WARNING;
+            }
+
+            buttonList.add(new ButtonToggleTitle(x, y, Message.SETTING_REPEATING.getMessage(), main, settingFeature));
         } else if (setting == EnumUtils.FeatureSetting.ENABLED_IN_OTHER_GAMES) {
             boxWidth = 31;
             x = halfWidth-(boxWidth/2);
