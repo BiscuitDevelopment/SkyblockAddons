@@ -8,6 +8,7 @@
     "skeletonHatBonesBar": "スケルトンヘルメットの骨のゲージ",
     "hideFoodAndArmor": "食料とアーマーのゲージを非表示",
     "fullInventoryWarning": "インベントリが満タンの時のアラート",
+    "repeating": "Repeating",
     "disableEmberRodAbility": "個人の島でエンバーロッドのアビリティを無効化",
     "editLocations": "位置を変更",
     "guiScale": "GUIの大きさ: %scale%",
