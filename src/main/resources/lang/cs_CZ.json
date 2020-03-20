@@ -8,7 +8,7 @@
     "skeletonHatBonesBar": "Ukazatel kostí pro Skeleton Helmet",
     "hideFoodAndArmor": "Skrýt ukazatel jídla a armoru",
     "fullInventoryWarning": "Varování o plném inventáři",
-    "repeating": "Repeating",
+    "repeating": "Opakování",
     "disableEmberRodAbility": "Zakázat schopnost Ember Rodu na ostrově",
     "editLocations": "Upravit lokace",
     "guiScale": "Velikost ukazetelů: %scale%",
@@ -87,7 +87,7 @@
     },
     "disableMagicalSoupMessage": "Vypnout zprávu magické houbové polévky",
     "zealotCounter": "Ukázat Počítadlo Zealotů",
-    "tickerChargesDisplay": "Zobrazení Okamžiků/Nabití",
+    "tickerChargesDisplay": "Zobrazení Tickerů/Nabití",
     "tab": {
       "generalSettings": "Obecná nastavení"
     },
@@ -97,13 +97,13 @@
     "showCakeBagPreview": "Ukázat přehled pro Tašky na Dorty",
     "showBackpackPreviewInAH": "Zobrazit náhled do tvého batohu, když je otevřená nabídka pro Aukci",
     "enableDevFeatures": "Povolit Vývojářské funkce",
-    "chromaSpeed": "Rychlost Chromy",
+    "chromaSpeed": "Rychlost měnění barev",
     "chromaMode": "Barevný režim měnění barev",
     "chromaModes": {
       "allTheSame": "Všechny stejné barvy",
       "fade": "Barevné vyblednutí"
     },
-    "chromaFadeWidth": "Šířka vyblednutí Chromy"
+    "chromaFadeWidth": "Šířka vyblednutí měnění barev"
   },
   "messages": {
     "dropConfirmation": "Vyhoď tento item pro vyhození!",
