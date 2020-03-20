@@ -8,7 +8,7 @@
     "skeletonHatBonesBar": "Barra delle ossa dello Skeleton Hat",
     "hideFoodAndArmor": "Nascondi la Barra della Fame e dell’Armatura",
     "fullInventoryWarning": "Avviso di inventario pieno",
-    "repeating": "Repeating",
+    "repeating": "Ripetizione",
     "disableEmberRodAbility": "Disabilita l’Ember Rod sull’isola",
     "editLocations": "Modifica Posizioni",
     "guiScale": "Dimensione GUI: %scale%",
@@ -100,8 +100,8 @@
     "chromaSpeed": "Velocità cromatica",
     "chromaMode": "Modalità cromatica del colore",
     "chromaModes": {
-      "allTheSame": "Tutti dello stesso colore",
-      "fade": "Color Fade"
+      "allTheSame": "Tutto dello stesso colore",
+      "fade": "Dissolvenza del colore"
     },
     "chromaFadeWidth": "Chroma Fade Width"
   },
