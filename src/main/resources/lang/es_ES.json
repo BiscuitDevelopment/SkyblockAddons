@@ -99,7 +99,7 @@
     "chromaSpeed": "Chroma Speed",
     "chromaMode": "Chroma Color Mode",
     "chromaModes": {
-      "allTheSame": "All the Same Color",
+      "allTheSame": "Todo el Mismo Color",
       "fade": "Color Fade"
     },
     "chromaFadeWidth": "Chroma Fade Width"
