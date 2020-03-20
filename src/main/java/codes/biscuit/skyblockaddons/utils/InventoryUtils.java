@@ -6,6 +6,7 @@ import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
 import lombok.Getter;
+import lombok.Setter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.inventory.*;
@@ -38,6 +39,7 @@ public class InventoryUtils {
     private List<ItemStack> previousInventory;
     private Multimap<String, ItemDiff> itemPickupLog = ArrayListMultimap.create();
 
+    @Setter
     private boolean inventoryWarningShown;
 
     /** Whether the player is wearing a Skeleton Helmet. */
@@ -180,7 +182,7 @@ public class InventoryUtils {
                 // If we find an empty slot that isn't slot 8, remove any queued warnings and stop checking.
                 if (p.inventory.mainInventory[i] == null && i != 8) {
                     inventoryWarningShown = false;
-                    main.getScheduler().removeFullInventoryWarnings();
+                    main.getScheduler().removeQueuedFullInventoryWarnings();
                     return;
                 }
             }

@@ -52,7 +52,7 @@ public class Scheduler {
     /**
      * Removes all queued full inventory warnings.
      */
-    public void removeFullInventoryWarnings() {
+    public void removeQueuedFullInventoryWarnings() {
         Iterator<Map.Entry<Long, Set<Command>>> queueIterator = queue.entrySet().iterator();
         List<Long> resetTitleFeatureTicks = new LinkedList<>();
 
