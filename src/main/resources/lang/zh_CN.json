@@ -100,7 +100,7 @@
     "chromaSpeed": "变色速度",
     "chromaMode": "变色模式",
     "chromaModes": {
-      "allTheSame": "全部相同颜色",
+      "allTheSame": "全颜色相同",
       "fade": "颜色淡入淡出"
     },
     "chromaFadeWidth": "颜色淡入淡出幅度"
