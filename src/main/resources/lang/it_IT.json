@@ -103,7 +103,7 @@
       "allTheSame": "Tutto dello stesso colore",
       "fade": "Dissolvenza del colore"
     },
-    "chromaFadeWidth": "Chroma Fade Width"
+    "chromaFadeWidth": "Larghezza della dissolvenza cromatica"
   },
   "messages": {
     "dropConfirmation": "Getta questo oggetto nuovamente per confermare!",
