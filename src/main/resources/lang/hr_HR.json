@@ -8,6 +8,7 @@
     "skeletonHatBonesBar": "Bar Kosti Skeleton Kacige",
     "hideFoodAndArmor": "Sakrij Hranu i Armor Bar",
     "fullInventoryWarning": "Upozorenje Za Full Inventar",
+    "repeating": "Repeating",
     "disableEmberRodAbility": "Onemogući Sposobnost Ember Rod-a na Vlastitom Otoku",
     "editLocations": "Uredi Lokacije",
     "guiScale": "Velièina GUI-a: %scale%",
@@ -67,7 +68,7 @@
     "soundIndicatorForFishing": "Zvučni Indikator za Ribolov",
     "avoidBlinkingNightVision": "Isključi Treptanje Napitka Noćne Vizije",
     "disableMinionLocationWarning": "Isključi Lokacija Nije Odlična Upozorenja",
-    "jungleAxeCooldown": "Hlađenje Sjekire Đungle",
+    "jungleAxeCooldown": "Cooldown Jungle Sjekire",
     "organizeLongEnchantmentLists": "Organiziraj Duge Liste Enchantanja",
     "showItemCooldowns": "Pokaži Hlađenje Stvari",
     "speedPercentage": "Postotak Brzine",
@@ -95,7 +96,14 @@
     "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
     "showCakeBagPreview": "Show Preview for Cake Bags",
     "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
-    "enableDevFeatures": "Enable Developer Features"
+    "enableDevFeatures": "Enable Developer Features",
+    "chromaSpeed": "Chroma Speed",
+    "chromaMode": "Chroma Color Mode",
+    "chromaModes": {
+      "allTheSame": "All the Same Color",
+      "fade": "Color Fade"
+    },
+    "chromaFadeWidth": "Chroma Fade Width"
   },
   "messages": {
     "dropConfirmation": "Opet baci ovu stvar za konfirmaciju!",

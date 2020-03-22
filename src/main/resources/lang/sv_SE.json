@@ -8,6 +8,7 @@
     "skeletonHatBonesBar": "Skeletthjälms Benfält",
     "hideFoodAndArmor": "Göm Mat & Rustning Bar",
     "fullInventoryWarning": "Full Lager Varning",
+    "repeating": "Repeating",
     "disableEmberRodAbility": "Inaktivera Ember Roden På Din Ö",
     "editLocations": "Redigera GUI Platser",
     "guiScale": "Gui Skala: %scale%",
@@ -74,8 +75,8 @@
     "collectionDisplay": "Visning av Skillutveckling",
     "onlyMineOresDeepCaverns": "Hugg Bara Mineraler I Djupa Grottorna",
     "onlyMineValuablesNether": "Gräv bara värdefulla Mineraler i Nether",
-    "revenantIndicator": "Slayer rustningar utväcklings indicator",
-    "specialZealotAlert": "Speciell Zealot Alarm",
+    "revenantIndicator": "Slayer rustningar utvecklings indikator",
+    "specialZealotAlert": "Speciell Zealot Varning",
     "enableMessageWhenActionPrevented": "Visa ett meddelande när en åtgärd förhindras",
     "hidePetHealthBar": "Göm husdjurs hälsometer",
     "powerOrbDisplay": "Visning av Kraftglobsskärm",
@@ -95,7 +96,14 @@
     "hideNightVisionEffectTimer": "Göm Night vision charm effekt timern",
     "showCakeBagPreview": "Visa förhandsvisning för tårt ryggsäckar",
     "showBackpackPreviewInAH": "Visa väskoinnehållsmemu för dina saker när Ah är öppnat",
-    "enableDevFeatures": "Aktivera utvecklarfunktioner"
+    "enableDevFeatures": "Aktivera utvecklarfunktioner",
+    "chromaSpeed": "Chroma Hastighet",
+    "chromaMode": "Chroma färgläge",
+    "chromaModes": {
+      "allTheSame": "Alla samma färg",
+      "fade": "Färg toning"
+    },
+    "chromaFadeWidth": "Chroma Fade Bredd"
   },
   "messages": {
     "dropConfirmation": "Släpp Det Här Igen För Att Bekräfta!",

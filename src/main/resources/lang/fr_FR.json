@@ -8,6 +8,7 @@
     "skeletonHatBonesBar": "Barre du casque du Squelette",
     "hideFoodAndArmor": "Masquer la nourriture & l'armure",
     "fullInventoryWarning": "Alerte inventaire plein",
+    "repeating": "Repeating",
     "disableEmberRodAbility": "Désativer l'Ember Rod sur votre île",
     "editLocations": "Modifier l'interface",
     "guiScale": "Taille: %scale%",
@@ -67,7 +68,7 @@
     "soundIndicatorForFishing": "Indicateur sonore pour la pêche",
     "avoidBlinkingNightVision": "Empêcher le clignotement de la vision nocturne",
     "disableMinionLocationWarning": "Désativer l'alerte “Location not perfect”",
-    "jungleAxeCooldown": "Recharge de la Jungle Axe",
+    "jungleAxeCooldown": "Bloquer la Jungle Axe/Treecapitator en rechargeant",
     "organizeLongEnchantmentLists": "Organiser & lister les enchantements",
     "showItemCooldowns": "Recharge des objets",
     "speedPercentage": "Pourcentage de vitesse",
@@ -95,7 +96,14 @@
     "hideNightVisionEffectTimer": "Masquer le minuteur de la vision nocturne",
     "showCakeBagPreview": "Aperçu des sacs à gâteau",
     "showBackpackPreviewInAH": "Afficher l'aperçu du sac à dos dans le /AH",
-    "enableDevFeatures": "Activer le mode développeur"
+    "enableDevFeatures": "Activer le mode développeur",
+    "chromaSpeed": "Vitesse Chroma",
+    "chromaMode": "Mode de couleur Chroma",
+    "chromaModes": {
+      "allTheSame": "Toute la même couleur",
+      "fade": "Dégradé de couleur"
+    },
+    "chromaFadeWidth": "Largeur de fondu Chroma"
   },
   "messages": {
     "dropConfirmation": "Jetez cet objet une nouvelle fois pour confirmer!",

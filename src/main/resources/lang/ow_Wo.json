@@ -8,6 +8,7 @@
     "skeletonHatBonesBar": "Skeweton Hewmet Bowones Baw",
     "hideFoodAndArmor": "Hide Fuwud & Awmow Baw",
     "fullInventoryWarning": "Fuww Inwentowy Wawning",
+    "repeating": "Repeating",
     "disableEmberRodAbility": "Disabwal Iswand Embew Wod",
     "editLocations": "Edit GUWU Wowocations",
     "guiScale": "Guwui scawe: %scale%",
@@ -95,7 +96,14 @@
     "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timew",
     "showCakeBagPreview": "Show Pweview fow Cake Bags",
     "showBackpackPreviewInAH": "Show Backpack Pweview fow Youw Items Whiwe AH is Open",
-    "enableDevFeatures": "Enabwe Devewopew Featuwes"
+    "enableDevFeatures": "Enabwe Devewopew Featuwes",
+    "chromaSpeed": "Chwoma Speed",
+    "chromaMode": "Chwoma Cowow Mode",
+    "chromaModes": {
+      "allTheSame": "Aww the Same Cowow",
+      "fade": "Cowow Fade"
+    },
+    "chromaFadeWidth": "Chwoma Fade Width"
   },
   "messages": {
     "dropConfirmation": "Dwop thwis itwem agwain to confiwm!",

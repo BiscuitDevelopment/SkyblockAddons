@@ -8,6 +8,7 @@
     "skeletonHatBonesBar": "Skeleton Helmet knogle bar",
     "hideFoodAndArmor": "Skjul Mad & Rustnings Bar",
     "fullInventoryWarning": "Fuld Inventar Advarsel",
+    "repeating": "Repeating",
     "disableEmberRodAbility": "Deaktiver Ember Rod på privat ø",
     "editLocations": "Ændre placeringer",
     "guiScale": "Skærmstørrelse: %scale%",
@@ -95,7 +96,14 @@
     "hideNightVisionEffectTimer": "Skjul Nattesyns Effect Timer",
     "showCakeBagPreview": "Forhåndsvis Kage Rygsæk",
     "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
-    "enableDevFeatures": "Enable Developer Features"
+    "enableDevFeatures": "Enable Developer Features",
+    "chromaSpeed": "Chroma Speed",
+    "chromaMode": "Chroma Color Mode",
+    "chromaModes": {
+      "allTheSame": "All the Same Color",
+      "fade": "Color Fade"
+    },
+    "chromaFadeWidth": "Chroma Fade Width"
   },
   "messages": {
     "dropConfirmation": "Slip denne vare igen for at bekræfte!",

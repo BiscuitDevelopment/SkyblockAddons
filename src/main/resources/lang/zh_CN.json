@@ -8,6 +8,7 @@
     "skeletonHatBonesBar": "骷髅头盔可抵挡攻击次数",
     "hideFoodAndArmor": "隐藏饱食度 & 盔甲值",
     "fullInventoryWarning": "背包空间不足警报",
+    "repeating": "重复中",
     "disableEmberRodAbility": "在私人岛屿上关闭余烬之杖技能",
     "editLocations": "编辑 Gui 位置",
     "guiScale": "Gui 大小: %scale%",
@@ -67,7 +68,7 @@
     "soundIndicatorForFishing": "钓鱼声音指示",
     "avoidBlinkingNightVision": "禁用夜视耗尽闪烁",
     "disableMinionLocationWarning": "禁用仆从“位置不是很好”警告",
-    "jungleAxeCooldown": "防止丛林斧冷却重置",
+    "jungleAxeCooldown": "丛林斧冷却",
     "organizeLongEnchantmentLists": "整理长版附魔列表",
     "showItemCooldowns": "显示物品冷却时间",
     "speedPercentage": "速度百分比",
@@ -95,7 +96,14 @@
     "hideNightVisionEffectTimer": "隐藏夜视效果持续时间",
     "showCakeBagPreview": "显示蛋糕袋预览",
     "showBackpackPreviewInAH": "当拍卖界面打开时显示背包预览",
-    "enableDevFeatures": "开发者模式按钮"
+    "enableDevFeatures": "开发者模式按钮",
+    "chromaSpeed": "变色速度",
+    "chromaMode": "变色模式",
+    "chromaModes": {
+      "allTheSame": "全颜色相同",
+      "fade": "颜色淡入淡出"
+    },
+    "chromaFadeWidth": "颜色淡入淡出幅度"
   },
   "messages": {
     "dropConfirmation": "再次丢弃此物品以确认!",

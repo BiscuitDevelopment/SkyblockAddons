@@ -8,6 +8,7 @@
     "skeletonHatBonesBar": "Vrstica Kosti Skeleton Čelade",
     "hideFoodAndArmor": "Skrij Vrstici Hrane & Oklepa",
     "fullInventoryWarning": "Opozorilo Za Poln Inventar",
+    "repeating": "Repeating",
     "disableEmberRodAbility": "Onemogoči Sposobnost Ember Roda na Otoku",
     "editLocations": "Uredi GUI Lokacije",
     "guiScale": "Velikost GUI-ja: %scale%",
@@ -95,7 +96,14 @@
     "hideNightVisionEffectTimer": "Skrij časovnik za Night Vision Potion",
     "showCakeBagPreview": "Pokaži Predogled Torb s Tortami",
     "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
-    "enableDevFeatures": "Enable Developer Features"
+    "enableDevFeatures": "Enable Developer Features",
+    "chromaSpeed": "Chroma Speed",
+    "chromaMode": "Chroma Color Mode",
+    "chromaModes": {
+      "allTheSame": "All the Same Color",
+      "fade": "Color Fade"
+    },
+    "chromaFadeWidth": "Chroma Fade Width"
   },
   "messages": {
     "dropConfirmation": "Ponovno Izpusti To Stvar za Potrditev!",

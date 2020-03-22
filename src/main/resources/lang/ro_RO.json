@@ -8,6 +8,7 @@
     "skeletonHatBonesBar": "Bară pentru oasele Skeleton Hat-ului",
     "hideFoodAndArmor": "Ascunde bara de Mancare și Armură",
     "fullInventoryWarning": "Avertisment pentru inventar plin",
+    "repeating": "Repeating",
     "disableEmberRodAbility": "Oprește abilitatea Ember Rod-ului",
     "editLocations": "Editează Locațiile",
     "guiScale": "Marime gui: %scale%",
@@ -95,7 +96,14 @@
     "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
     "showCakeBagPreview": "Show Preview for Cake Bags",
     "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
-    "enableDevFeatures": "Enable Developer Features"
+    "enableDevFeatures": "Enable Developer Features",
+    "chromaSpeed": "Chroma Speed",
+    "chromaMode": "Chroma Color Mode",
+    "chromaModes": {
+      "allTheSame": "All the Same Color",
+      "fade": "Color Fade"
+    },
+    "chromaFadeWidth": "Chroma Fade Width"
   },
   "messages": {
     "dropConfirmation": "Arunca acest obiect iar ca să confirmi!",

@@ -8,6 +8,7 @@
     "skeletonHatBonesBar": "Pasek Kości z Hełmu Szkieleta",
     "hideFoodAndArmor": "Ukryj Pasek Głodu i Zbroi",
     "fullInventoryWarning": "Ostrzeżenie o Pełnym Ekwipunku",
+    "repeating": "Repeating",
     "disableEmberRodAbility": "Wyłącz Umiejętność Ember Rod'a na Wyspie",
     "editLocations": "Edytuj Lokalizacje",
     "guiScale": "Skala GUI: %scale%",
@@ -94,8 +95,15 @@
     "noArrowsLeftAlert": "Alarm o braku strzał",
     "hideNightVisionEffectTimer": "Ukryj zegar widzenia w ciemności",
     "showCakeBagPreview": "Pokaż podgląd dla torb na ciasta",
-    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
-    "enableDevFeatures": "Enable Developer Features"
+    "showBackpackPreviewInAH": "Pogląd plecaków z otwartym Domem Aukcyjnym",
+    "enableDevFeatures": "Zezwól na funkcje developerskie",
+    "chromaSpeed": "Chroma Speed",
+    "chromaMode": "Chroma Color Mode",
+    "chromaModes": {
+      "allTheSame": "All the Same Color",
+      "fade": "Color Fade"
+    },
+    "chromaFadeWidth": "Chroma Fade Width"
   },
   "messages": {
     "dropConfirmation": "Wyrzuć ten przedmiot ponownie, aby potwierdzić!",

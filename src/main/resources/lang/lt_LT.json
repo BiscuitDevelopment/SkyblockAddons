@@ -8,6 +8,7 @@
     "skeletonHatBonesBar": "Skeleto Šalmo Kaulų Rodiklis",
     "hideFoodAndArmor": "Paslėpti Maisto Ir Šarvų Rodiklį",
     "fullInventoryWarning": "Pilno Inventorius Įspėjimas",
+    "repeating": "Repeating",
     "disableEmberRodAbility": "Išjungti Ember Rod'o Naudojimą Saloje",
     "editLocations": "Redaguoti GUI vietas",
     "guiScale": "Gui Skalė %scale%",
@@ -95,7 +96,14 @@
     "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
     "showCakeBagPreview": "Show Preview for Cake Bags",
     "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
-    "enableDevFeatures": "Enable Developer Features"
+    "enableDevFeatures": "Enable Developer Features",
+    "chromaSpeed": "Chroma Speed",
+    "chromaMode": "Chroma Color Mode",
+    "chromaModes": {
+      "allTheSame": "All the Same Color",
+      "fade": "Color Fade"
+    },
+    "chromaFadeWidth": "Chroma Fade Width"
   },
   "messages": {
     "dropConfirmation": "Meskite Šį Daiktą Dar Kartą, Kad Patvirtintumėte!",

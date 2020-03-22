@@ -8,6 +8,7 @@
     "skeletonHatBonesBar": "شريط خوذة الهيكل العظمي",
     "hideFoodAndArmor": "إخفاء شريط الطعام و شريط الدرع",
     "fullInventoryWarning": "تحذير جرد كامل",
+    "repeating": "Repeating",
     "disableEmberRodAbility": "تعطيل عود الجمرة في الجزيرة",
     "editLocations": "تغيير مواقع الخانات",
     "guiScale": "%scale% :مقياس واجهة المستخدم الرسومية",
@@ -95,7 +96,14 @@
     "hideNightVisionEffectTimer": "اخفاء مؤقت جرعة الرؤية الليلية",
     "showCakeBagPreview": "إظهار معاينة لحقائب الكعك",
     "showBackpackPreviewInAH": "إظهار معاينة حقيبة الظهر للاشياء الخاصة بك أثناء فتح المزاد",
-    "enableDevFeatures": "تشغيل ميزة المطور"
+    "enableDevFeatures": "تشغيل ميزة المطور",
+    "chromaSpeed": "Chroma Speed",
+    "chromaMode": "Chroma Color Mode",
+    "chromaModes": {
+      "allTheSame": "All the Same Color",
+      "fade": "Color Fade"
+    },
+    "chromaFadeWidth": "Chroma Fade Width"
   },
   "messages": {
     "dropConfirmation": "!إرمي هذا العنصر مرة أخرى للتأكيد",

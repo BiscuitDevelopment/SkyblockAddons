@@ -8,6 +8,7 @@
     "skeletonHatBonesBar": "หลอดเกราะของหมวกกระดูก",
     "hideFoodAndArmor": "ซ่อนหลอดอาหารและเกราะ",
     "fullInventoryWarning": "เตือนของในตัวกำลังเต็ม",
+    "repeating": "Repeating",
     "disableEmberRodAbility": "ปิดการใช้สกิลของ Ember Rod ในเกาะตนเอง",
     "editLocations": "การเคลื่อนย้าย GUI",
     "guiScale": "ขยาย GUI %scale%",
@@ -95,7 +96,14 @@
     "hideNightVisionEffectTimer": "ซ่อนระยะเวลาเอฟเฟ็ค Night Vision",
     "showCakeBagPreview": "แสดงไอเท็มในถุงเก็บเค้ก",
     "showBackpackPreviewInAH": "โชว์แบบกระเป๋าในขณะที่ใช้ร้านประมูล",
-    "enableDevFeatures": "เปิดใช้ฟีเจอร์สำหรับผู้พัฒนา"
+    "enableDevFeatures": "เปิดใช้ฟีเจอร์สำหรับผู้พัฒนา",
+    "chromaSpeed": "Chroma Speed",
+    "chromaMode": "Chroma Color Mode",
+    "chromaModes": {
+      "allTheSame": "All the Same Color",
+      "fade": "Color Fade"
+    },
+    "chromaFadeWidth": "Chroma Fade Width"
   },
   "messages": {
     "dropConfirmation": "กดทิ้งของอีกที่เพื่อยืนยันทิ้งของสิ่งนี้!",
