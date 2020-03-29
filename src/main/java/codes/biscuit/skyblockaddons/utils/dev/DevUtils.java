@@ -27,12 +27,12 @@ public class DevUtils {
     public static final int ENTITY_COPY_RADIUS = 3;
 
     /**
-     * Copies the data of entities within the entity copy radius of the player
+     * Copies the data of all mobs within the entity copy radius of the player
      *
      * @param player the player
      * @param loadedEntities the list of all the entities that are currently loaded in the world
      */
-    public static void copyEntityData(EntityPlayerSP player, List<Entity> loadedEntities) {
+    public static void copyMobData(EntityPlayerSP player, List<Entity> loadedEntities) {
         List<Entity> loadedEntitiesCopy = new LinkedList<>(loadedEntities);
         ListIterator<Entity> loadedEntitiesCopyIterator;
         StringBuilder stringBuilder = new StringBuilder();

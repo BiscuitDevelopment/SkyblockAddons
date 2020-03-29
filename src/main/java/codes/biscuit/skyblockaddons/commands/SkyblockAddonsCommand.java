@@ -33,10 +33,10 @@ public class SkyblockAddonsCommand extends CommandBase {
 
     @Override
     public String getCommandUsage(ICommandSender sender) { return
-        Utils.color("&7&m------------&7[&b&l SkyblockAddons &7]&7&m------------") + System.lineSeparator() +
-        Utils.color("&b● /sba &7- Open the main menu") + System.lineSeparator() +
-        Utils.color("&b● /sba edit &7- Edit GUI locations") + System.lineSeparator() +
-        Utils.color("&b● /sba folder &7- Open your mods folder") + System.lineSeparator() +
+        Utils.color("&7&m------------&7[&b&l SkyblockAddons &7]&7&m------------") + "\n" +
+        Utils.color("&b● /sba &7- Open the main menu") + "\n" +
+        Utils.color("&b● /sba edit &7- Edit GUI locations") + "\n" +
+        Utils.color("&b● /sba folder &7- Open your mods folder") + "\n" +
         Utils.color("&7&m----------------------------------------------");
     }
 
@@ -78,7 +78,7 @@ public class SkyblockAddonsCommand extends CommandBase {
                         main.getUtils().downloadPatch(main.getRenderListener().getDownloadInfo().getNewestVersion());
                     break;
                 default:
-                    main.getUtils().sendMessage(getCommandUsage(sender));
+                    main.getUtils().sendMessage(getCommandUsage(sender), false);
             }
         } else {
             // If there's no arguments given, open the main GUI
