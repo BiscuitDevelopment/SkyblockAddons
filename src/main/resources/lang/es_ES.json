@@ -104,7 +104,7 @@
       "fade": "Atenuación de Color"
     },
     "chromaFadeWidth": "Ancho de Atenuación de Croma",
-    "sortTabEffectTimers": "Sort Timers by Duration"
+    "sortTabEffectTimers": "Ordenar Temporizadores por Duración"
   },
   "messages": {
     "dropConfirmation": "¡Dropea el Objeto otra vez para soltar!",
