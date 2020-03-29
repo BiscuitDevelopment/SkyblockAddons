@@ -103,7 +103,8 @@
       "allTheSame": "Alla samma färg",
       "fade": "Färg toning"
     },
-    "chromaFadeWidth": "Chroma Fade Bredd"
+    "chromaFadeWidth": "Chroma Fade Bredd",
+    "sortTabEffectTimers": "Sort Timers by Duration"
   },
   "messages": {
     "dropConfirmation": "Släpp Det Här Igen För Att Bekräfta!",
