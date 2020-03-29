@@ -104,7 +104,7 @@
       "fade": "Farb Überblendung"
     },
     "chromaFadeWidth": "Chroma Überblendung Breite",
-    "sortTabEffectTimers": "Sort Timers by Duration"
+    "sortTabEffectTimers": "Timer nach Dauer sortieren"
   },
   "messages": {
     "dropConfirmation": "Werfe diesen Gegenstand nochmal, um zu bestätigen!",
