@@ -99,6 +99,7 @@ public enum Message {
     SETTING_CHROMA_SPEED(MessageObject.SETTING, "chromaSpeed"),
     SETTING_CHROMA_MODE(MessageObject.SETTING, "chromaMode"),
     SETTING_CHROMA_FADE_WIDTH(MessageObject.SETTING, "chromaFadeWidth"),
+    SETTING_SORT_TAB_EFFECT_TIMERS(MessageObject.SETTING, "sortTabEffectTimers"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.BACKPACK_STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.BACKPACK_STYLE, "compact"),

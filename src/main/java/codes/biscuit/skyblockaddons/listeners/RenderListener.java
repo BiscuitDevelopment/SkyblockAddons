@@ -773,8 +773,8 @@ public class RenderListener {
 
         TabEffectManager tabEffect = TabEffectManager.getInstance();
 
-        List<String> potionTimers = tabEffect.getPotionTimers();
-        List<String> powerupTimers = tabEffect.getPowerupTimers();
+        List<TabEffect> potionTimers = tabEffect.getPotionTimers();
+        List<TabEffect> powerupTimers = tabEffect.getPowerupTimers();
 
         if(potionTimers.isEmpty() && powerupTimers.isEmpty()) {
             if (buttonLocation == null) {
@@ -810,14 +810,14 @@ public class RenderListener {
         }
 
         int drawnCount = 0;
-        for(String potion : potionTimers){
+        for(TabEffect potion : potionTimers){
             int fixedY = intY + (topDown ? 0 : spacer) + (drawnCount * 9);
-            main.getUtils().drawTextWithStyle(potion, intX, fixedY, ChatFormatting.WHITE);
+            main.getUtils().drawTextWithStyle(potion.toString(), intX, fixedY, ChatFormatting.WHITE);
             drawnCount += topDown ? 1 : -1;
         }
-        for(String powerUp : powerupTimers){
+        for(TabEffect powerUp : powerupTimers){
             int fixedY = intY + (topDown ? spacer : 0) + (drawnCount * 9);
-            main.getUtils().drawTextWithStyle(powerUp, intX, fixedY, ChatFormatting.WHITE);
+            main.getUtils().drawTextWithStyle(powerUp.toString(), intX, fixedY, ChatFormatting.WHITE);
             drawnCount += topDown ? 1 : -1;
         }
     }

@@ -90,6 +90,7 @@ public enum Feature {
     CAKE_BAG_PREVIEW(71, Message.SETTING_SHOW_CAKE_BAG_PREVIEW, true),
     BACKPACK_PREVIEW_AH(72, Message.SETTING_SHOW_BACKPACK_PREVIEW_AH, true),
     REPEAT_FULL_INVENTORY_WARNING(73, null, true),
+    SORT_TAB_EFFECT_TIMERS(74, Message.SETTING_SORT_TAB_EFFECT_TIMERS, false),
 
     HIDE_GREY_ENCHANTS(100, null, false), // This is here just to allow remote disabling this feature- it's caused issues in the past haha.
 
@@ -115,7 +116,7 @@ public enum Feature {
             USE_VANILLA_TEXTURE_DEFENCE, SHOW_BACKPACK_HOLDING_SHIFT, SHOW_MAGMA_TIMER_IN_OTHER_GAMES,
             MAKE_BACKPACK_INVENTORIES_COLORED, CHANGE_BAR_COLOR_FOR_POTIONS, ENABLE_MESSAGE_WHEN_BREAKING_STEMS,
             ENABLE_MESSAGE_WHEN_MINING_DEEP_CAVERNS, ENABLE_MESSAGE_WHEN_MINING_NETHER, HIDE_NIGHT_VISION_EFFECT_TIMER,
-            CAKE_BAG_PREVIEW, BACKPACK_PREVIEW_AH, REPEAT_FULL_INVENTORY_WARNING);
+            CAKE_BAG_PREVIEW, BACKPACK_PREVIEW_AH, REPEAT_FULL_INVENTORY_WARNING, SORT_TAB_EFFECT_TIMERS);
 
     /**
      * Features that are considered gui ones. This is used for examnple when saving the config to ensure that these features'
