@@ -103,7 +103,8 @@
       "allTheSame": "Alle Elemente einer Farbe zuordnen",
       "fade": "Farb Überblendung"
     },
-    "chromaFadeWidth": "Chroma Überblendung Breite"
+    "chromaFadeWidth": "Chroma Überblendung Breite",
+    "sortTabEffectTimers": "Sort Timers by Duration"
   },
   "messages": {
     "dropConfirmation": "Werfe diesen Gegenstand nochmal, um zu bestätigen!",
