@@ -8,6 +8,7 @@
     "skeletonHatBonesBar": "Buto ng Skeleton Helmet Bar",
     "hideFoodAndArmor": "Huwag I-pakita ang Pagkain & Sandata Bar",
     "fullInventoryWarning": "Babala ng Punong Imbentaryo",
+    "repeating": "Repeating",
     "disableEmberRodAbility": "Huwag Paganahin sa Isla ang Ember Rod",
     "editLocations": "Baguhin ang lokasyon ng GUI",
     "guiScale": "Kalakihan ng GUI",
@@ -95,8 +96,14 @@
     "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
     "showCakeBagPreview": "Show Preview for Cake Bags",
     "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
-    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
-    "enableDevFeatures": "Enable Developer Features"
+    "enableDevFeatures": "Enable Developer Features",
+    "chromaSpeed": "Chroma Speed",
+    "chromaMode": "Chroma Color Mode",
+    "chromaModes": {
+      "allTheSame": "All the Same Color",
+      "fade": "Color Fade"
+    },
+    "chromaFadeWidth": "Chroma Fade Width"
   },
   "messages": {
     "dropConfirmation": "Ihulog ang item muli para kumpirmado!",
@@ -134,7 +141,8 @@
     "cancelledProfileOpening": "Itinigil ng SkyblockAddons sa pag bukas ng profile habang may hawak na pana.",
     "cancelledDropping": "Itinigil ng SkyblockAddons sa pag hulog ng mahalagang gamit sa iyong imbentaryo.",
     "clickMoreTimes": "I-click/hulog ang gamit %times% na ito maraming beses kung gusto mo talaga gawin to.",
-    "cancelledDeepCaverns": "A SkyblockAddons feature has stopped you from mining this block here.",
+    "clickOneMoreTime": "Click/drop this item 1 more time if you really want to do this.",
+    "cancelledDeepCaverns": "A feature has stopped you from mining this block here.",
     "featureDisabled": "Mga Disabled na Feature",
     "anvilUses": "Anvil Uses: %uses%",
     "specialZealotFound": "Special Zealot!",

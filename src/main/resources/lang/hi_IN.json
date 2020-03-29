@@ -8,6 +8,7 @@
     "skeletonHatBonesBar": "कंकाल हेलमेट हड्डियों बार",
     "hideFoodAndArmor": "भोजन और कवच बार छिपाएँ",
     "fullInventoryWarning": "पूर्ण सूची चेतावनी",
+    "repeating": "Repeating",
     "disableEmberRodAbility": "द्वीप एम्बर रॉड को अक्षम करें",
     "editLocations": "GUI स्थान संपादित करें",
     "guiScale": "GUI स्केल %scale%",
@@ -67,7 +68,7 @@
     "soundIndicatorForFishing": "Sound Indicator for Fishing",
     "avoidBlinkingNightVision": "Disable Night Vision Potion Blinking",
     "disableMinionLocationWarning": "Disable Location Not Perfect Warnings",
-    "jungleAxeCooldown": "Jungle Axe Cooldown",
+    "jungleAxeCooldown": "Block Jungle Axe/Treecapitator on Cooldown",
     "organizeLongEnchantmentLists": "Organize Long Enchantment Lists",
     "showItemCooldowns": "Show Item Cooldowns",
     "speedPercentage": "Speed Percentage",
@@ -95,8 +96,14 @@
     "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
     "showCakeBagPreview": "Show Preview for Cake Bags",
     "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
-    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
-    "enableDevFeatures": "Enable Developer Features"
+    "enableDevFeatures": "Enable Developer Features",
+    "chromaSpeed": "Chroma Speed",
+    "chromaMode": "Chroma Color Mode",
+    "chromaModes": {
+      "allTheSame": "All the Same Color",
+      "fade": "Color Fade"
+    },
+    "chromaFadeWidth": "Chroma Fade Width"
   },
   "messages": {
     "dropConfirmation": "संदेशों -> ड्रॉप क चेतावनी",
@@ -131,10 +138,11 @@
     "slotLocked": "यह स्लॉट बंद है",
     "summoningEyeFound": "सुमोइंग आई!",
     "cancelledStemBreak": "SkyblockAddons ने आपको इस स्टेम को तोड़ने से रोक दिया है।यदि आप वास्तव में इसे तोड़ना चाहते हैं तो अपने हाथ का उपयोग करें।",
-    "cancelledProfileOpening": "SkyblockAddons has stopped you from opening this player's profile while holding a bow.",
-    "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare item or tool from your hotbar.",
+    "cancelledProfileOpening": "A feature has stopped you from opening this player's profile since you were holding a bow.",
+    "cancelledDropping": "A feature has stopped you from dropping this \"rare\" item or tool from your hotbar.",
     "clickMoreTimes": "इस आइटम को %times% बार क्लिक / ड्रॉप करें यदि आप वास्तव में ऐसा करना चाहते हैं।",
-    "cancelledDeepCaverns": "A SkyblockAddons feature has stopped you from mining this block here.",
+    "clickOneMoreTime": "Click/drop this item 1 more time if you really want to do this.",
+    "cancelledDeepCaverns": "A feature has stopped you from mining this block here.",
     "featureDisabled": "Feature Disabled",
     "anvilUses": "Anvil Uses: %uses%",
     "specialZealotFound": "Special Zealot!",

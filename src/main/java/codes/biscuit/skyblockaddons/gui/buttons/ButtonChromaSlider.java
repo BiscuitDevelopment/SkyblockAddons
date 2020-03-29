@@ -1,30 +1,42 @@
 package codes.biscuit.skyblockaddons.gui.buttons;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.utils.Feature;
-import codes.biscuit.skyblockaddons.utils.Message;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
 import codes.biscuit.skyblockaddons.utils.nifty.reflection.MinecraftReflection;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.MathHelper;
 
 import java.math.BigDecimal;
 
-public class ButtonGuiScale extends ButtonFeature {
+public class ButtonChromaSlider extends GuiButton {
+
+    private float min;
+    private float max;
+    private float step;
 
     private float sliderValue;
     private boolean dragging;
 
     private SkyblockAddons main;
 
-    public ButtonGuiScale(double x, double y, int width, int height, SkyblockAddons main, Feature feature) {
-        super(0, (int)x, (int)y, "", feature);
-        this.sliderValue = main.getConfigValues().getGuiScale(feature, false);
-        this.displayString = Message.SETTING_GUI_SCALE.getMessage(String.valueOf(getRoundedValue(main.getConfigValues().getGuiScale(feature))));
+    private OnSliderChangeCallback sliderCallback;
+
+    public ButtonChromaSlider(double x, double y, int width, int height, SkyblockAddons main, float initialValue,
+                              float min, float max, float step, OnSliderChangeCallback sliderCallback) {
+        super(0, (int)x, (int)y, "");
+        this.sliderValue = 0;
+        this.displayString = "";
+        this.sliderValue = initialValue;
         this.main = main;
         this.width = width;
         this.height = height;
+        this.sliderCallback = sliderCallback;
+        this.min = min;
+        this.max = max;
+        this.step = step;
+        this.displayString = String.valueOf(getRoundedValue(denormalizeScale(sliderValue)));
     }
 
     @Override
@@ -61,8 +73,7 @@ public class ButtonGuiScale extends ButtonFeature {
             if (this.dragging) {
                 this.sliderValue = (float) (mouseX - (this.xPosition + 4)) / (float) (this.width - 8);
                 this.sliderValue = MathHelper.clamp_float(sliderValue, 0.0F, 1.0F);
-                main.getConfigValues().setGuiScale(feature, sliderValue);
-                this.displayString = Message.SETTING_GUI_SCALE.getMessage(String.valueOf(getRoundedValue(main.getConfigValues().getGuiScale(feature))));
+                valueUpdated();
             }
 
             mc.getTextureManager().bindTexture(buttonTextures);
@@ -75,8 +86,7 @@ public class ButtonGuiScale extends ButtonFeature {
         if (super.mousePressed(mc, mouseX, mouseY)) {
             this.sliderValue = (float) (mouseX - (this.xPosition + 4)) / (float) (this.width - 8);
             this.sliderValue = MathHelper.clamp_float(this.sliderValue, 0.0F, 1.0F);
-            main.getConfigValues().setGuiScale(feature, sliderValue);
-            this.displayString =Message.SETTING_GUI_SCALE.getMessage(String.valueOf(getRoundedValue(main.getConfigValues().getGuiScale(feature))));
+            valueUpdated();
             this.dragging = true;
             return true;
         } else {
@@ -90,6 +100,20 @@ public class ButtonGuiScale extends ButtonFeature {
 
     private float getRoundedValue(float value) {
         return new BigDecimal(String.valueOf(value)).setScale(2, BigDecimal.ROUND_HALF_UP).floatValue();
+    }
+
+    public float denormalizeScale(float value) {
+        return SkyblockAddons.getInstance().getUtils().denormalizeScale(value, min, max, step);
+    }
+
+    public void valueUpdated() {
+        sliderCallback.sliderUpdated(sliderValue);
+        this.displayString = String.valueOf(getRoundedValue(denormalizeScale(sliderValue)));
+    }
+
+    public abstract static class OnSliderChangeCallback {
+
+        public abstract void sliderUpdated(float value);
     }
 }
 

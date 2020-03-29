@@ -8,6 +8,7 @@
     "skeletonHatBonesBar": "Barra de Huesos de Skeleton Hat",
     "hideFoodAndArmor": "Esconder Barra de Comida y Armadura",
     "fullInventoryWarning": "Alerta de Inventario Lleno",
+    "repeating": "Repeating",
     "disableEmberRodAbility": "Desactivar Ember Rod en Isla",
     "editLocations": "Modificar Posiciones",
     "guiScale": "Escala de Menú: %scale%",
@@ -95,8 +96,14 @@
     "hideNightVisionEffectTimer": "Esconder el Temporizador del Efecto de Visión Nocturna",
     "showCakeBagPreview": "Previsualizar Cake Bags",
     "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
-    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
-    "enableDevFeatures": "Enable Developer Features"
+    "enableDevFeatures": "Enable Developer Features",
+    "chromaSpeed": "Chroma Speed",
+    "chromaMode": "Chroma Color Mode",
+    "chromaModes": {
+      "allTheSame": "All the Same Color",
+      "fade": "Color Fade"
+    },
+    "chromaFadeWidth": "Chroma Fade Width"
   },
   "messages": {
     "dropConfirmation": "Arroja este objeto otra vez para confirmar!",
@@ -134,6 +141,7 @@
     "cancelledProfileOpening": "SkyblockAddons ha evitado que abras el perfil de este jugador con tu arco en la mano.",
     "cancelledDropping": "SkyblockAddons ha evitado que arrojes este objeto o herramienta rara.",
     "clickMoreTimes": "Haz clic/arroja el objeto %times% veces más si en realidad quieres hacerlo.",
+    "clickOneMoreTime": "Click/drop this item 1 more time if you really want to do this.",
     "cancelledDeepCaverns": "Una característica especial de SkyblockAddons ha impedido que mines ese bloque aquí.",
     "featureDisabled": "Característica Desactivada",
     "anvilUses": "Usos en Anvil/Yunque: %uses%",

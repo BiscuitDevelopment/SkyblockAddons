@@ -8,6 +8,7 @@
     "skeletonHatBonesBar": "Barra de Ossos para Capacete Esqueleto",
     "hideFoodAndArmor": "Esconder Barra de Fome e Armadura",
     "fullInventoryWarning": "Aviso de Inventário Cheio",
+    "repeating": "Repeating",
     "disableEmberRodAbility": "Desativar Bastão de Brasa em Sua Ilha",
     "editLocations": "Editar Posições",
     "guiScale": "Interface: %scale%",
@@ -15,7 +16,7 @@
     "hideDurability": "Esconder Durabilidade de Ferramentas",
     "showEnchantmentsReforges": "Encantamentos e Reforjadas",
     "minionStopWarning": "Aviso de \"Criado Não Alcança\"",
-    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
+    "hidePlayersNearNPCs": "Esconder Players próximos a NPCs Importantes",
     "backpackStyle": "Estilo de Mochila: %style%",
     "backpackStyles": {
       "regular": "Normal",
@@ -85,18 +86,24 @@
       "compact": "Compacto"
     },
     "disableMagicalSoupMessage": "Desativar mensagens da Sopa de Cogumelo Mágica",
-    "zealotCounter": "Show Zealot Counter",
+    "zealotCounter": "Mostrar contador de Zealots",
     "tickerChargesDisplay": "Ticker/Charges Display",
     "tab": {
       "generalSettings": "Configurações Gerais"
     },
     "tabEffectTimers": "Potion and Powerup Timers",
-    "noArrowsLeftAlert": "No Arrows Left Alert",
-    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
+    "noArrowsLeftAlert": "Alerta sem flechas restantes",
+    "hideNightVisionEffectTimer": "Esconder tempo do efeito de visão noturna",
     "showCakeBagPreview": "Show Preview for Cake Bags",
     "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
-    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
-    "enableDevFeatures": "Enable Developer Features"
+    "enableDevFeatures": "Habilitar Funções de Desenvolvedor",
+    "chromaSpeed": "Chroma Speed",
+    "chromaMode": "Chroma Color Mode",
+    "chromaModes": {
+      "allTheSame": "All the Same Color",
+      "fade": "Color Fade"
+    },
+    "chromaFadeWidth": "Chroma Fade Width"
   },
   "messages": {
     "dropConfirmation": "Large este item de novo para confirmar!",
@@ -134,6 +141,7 @@
     "cancelledProfileOpening": "O SkyblockAddons impediu você de abrir o perfil deste jogador enquanto segura um arco.",
     "cancelledDropping": "O SkyblockAddons impediu você de largar este item ou ferramenta rara da sua hotbar.",
     "clickMoreTimes": "Clique/Largue este item mais %times% vezes caso realmente queira fazer isso.",
+    "clickOneMoreTime": "Click/drop this item 1 more time if you really want to do this.",
     "cancelledDeepCaverns": "Uma função do SkyblockAddons impediu você de minerar este bloco aqui.",
     "featureDisabled": "Função desabilitada",
     "anvilUses": "Usos na Bigorna: %uses%",
@@ -141,10 +149,10 @@
     "blockIncompletePatterns": "Bloquear padrões de criação incompletos (recomendado)",
     "searchFeatures": "Buscar funcionalidades",
     "downloadingUpdateFile": "Baixando arquivos da atualização...",
-    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
-    "noArrowsLeft": "No Arrows Left!",
-    "chooseAColor": "Choose a Color",
-    "selectedColor": "Selected Color",
-    "setHexColor": "Set Hex Color"
+    "onlyFewArrowsLeft": "Apenas %arrows% restantes!",
+    "noArrowsLeft": "Sem flechas restantes!",
+    "chooseAColor": "Escolha uma cor",
+    "selectedColor": "Cor selecionada",
+    "setHexColor": "Definir a cor em hex"
   }
 }

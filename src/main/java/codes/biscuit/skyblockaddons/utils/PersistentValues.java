@@ -19,7 +19,7 @@ public class PersistentValues {
     private int kills;
 
     public PersistentValues(File configDir) {
-        this.persistentValuesFile = new File(configDir.getParentFile().getAbsolutePath() + "/skyblockaddons_persistent.cfg");
+        this.persistentValuesFile = new File(configDir.getAbsolutePath() + "/skyblockaddons_persistent.cfg");
     }
 
     public void loadValues() {

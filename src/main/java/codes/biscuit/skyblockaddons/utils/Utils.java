@@ -8,7 +8,6 @@ import codes.biscuit.skyblockaddons.utils.nifty.StringUtil;
 import codes.biscuit.skyblockaddons.utils.nifty.reflection.MinecraftReflection;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-import com.google.common.collect.ObjectArrays;
 import com.google.common.collect.Sets;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -25,31 +24,22 @@ import net.minecraft.scoreboard.ScoreObjective;
 import net.minecraft.scoreboard.ScorePlayerTeam;
 import net.minecraft.scoreboard.Scoreboard;
 import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.MathHelper;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.FMLLog;
-import net.minecraftforge.fml.common.MetadataCollection;
-import net.minecraftforge.fml.common.ModMetadata;
-import net.minecraftforge.fml.relauncher.CoreModManager;
-import net.minecraftforge.fml.relauncher.FMLInjectionData;
-import net.minecraftforge.fml.relauncher.FileListHelper;
-import net.minecraftforge.fml.relauncher.ModListHelper;
+import net.minecraftforge.fml.common.Loader;
 import org.apache.commons.lang3.mutable.MutableInt;
 import org.apache.commons.lang3.text.WordUtils;
 
 import java.awt.*;
 import java.io.*;
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.net.*;
 import java.util.List;
 import java.util.*;
-import java.util.jar.JarFile;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
-import java.util.zip.ZipEntry;
 
 @Getter @Setter
 public class Utils {
@@ -75,7 +65,7 @@ public class Utils {
     private static final Set<String> SKYBLOCK_IN_ALL_LANGUAGES = Sets.newHashSet("SKYBLOCK","\u7A7A\u5C9B\u751F\u5B58");
 
     /** Used for web requests. */
-    private static final String USER_AGENT = "SkyblockAddons/" + SkyblockAddons.VERSION;
+    public static final String USER_AGENT = "SkyblockAddons/" + SkyblockAddons.VERSION;
 
     /**
      * Items containing these in the name should never be dropped. Helmets a lot of times
@@ -451,6 +441,10 @@ public class Utils {
         Minecraft.getMinecraft().thePlayer.playSound(sound, 1, (float) pitch);
     }
 
+    public void playSound(String sound, double volume, double pitch) {
+        Minecraft.getMinecraft().thePlayer.playSound(sound, (float)volume, (float) pitch);
+    }
+
     public boolean enchantReforgeMatches(String text) {
         text = text.toLowerCase();
         for (String enchant : enchantmentMatches) {
@@ -663,58 +657,15 @@ public class Utils {
         return ChatFormatting.translateAlternateColorCodes('&', text);
     }
 
-    @SuppressWarnings("unchecked")
     public File getSBAFolder(boolean changeMessage) {
-        try {
-            Method setupCoreModDir = CoreModManager.class.getDeclaredMethod("setupCoreModDir", File.class);
-            setupCoreModDir.setAccessible(true);
-            File coreModFolder = (File) setupCoreModDir.invoke(null, Minecraft.getMinecraft().mcDataDir);
-            setupCoreModDir.setAccessible(false);
-            if (coreModFolder.isDirectory()) {
-                FilenameFilter fileFilter = (dir, name) -> name.endsWith(".jar");
-                File[] coreModList = coreModFolder.listFiles(fileFilter);
-                if (coreModList != null) {
-                    Field mccversion = FMLInjectionData.class.getDeclaredField("mccversion");
-                    mccversion.setAccessible(true);
-                    File versionedModDir = new File(coreModFolder, (String)mccversion.get(null));
-                    mccversion.setAccessible(false);
-                    if (versionedModDir.isDirectory()) {
-                        File[] versionedCoreMods = versionedModDir.listFiles(fileFilter);
-                        if (versionedCoreMods != null) {
-                            coreModList = ObjectArrays.concat(coreModList, versionedCoreMods, File.class);
-                        }
-                    }
-                    coreModList = ObjectArrays.concat(coreModList, ModListHelper.additionalMods.values().toArray(new File[0]), File.class);
-                    FileListHelper.sortFileList(coreModList);
-                    for (File coreMod : coreModList) {
-                        JarFile jar = new JarFile(coreMod);
-                        ZipEntry modInfo = jar.getEntry("mcmod.info");
-                        if (modInfo != null) {
-                            MetadataCollection metadata = MetadataCollection.from(jar.getInputStream(modInfo), coreMod.getName());
-                            Field metadatas = metadata.getClass().getDeclaredField("metadatas");
-                            metadatas.setAccessible(true);
-                            for (String modId : ((Map<String, ModMetadata>)metadatas.get(metadata)).keySet()) {
-                                if ("skyblockaddons".equals(modId)) {
-                                    return coreMod.getParentFile();
-                                }
-                            }
-                            metadatas.setAccessible(false);
-                        }
-                    }
-                }
-            }
-        } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException | NoSuchFieldException | IOException e) {
-            e.printStackTrace();
-            if (changeMessage) main.getRenderListener().getDownloadInfo().setMessageType(EnumUtils.UpdateMessageType.FAILED);
-        }
-        return null;
+        return Loader.instance().activeModContainer().getSource().getParentFile();
     }
 
     public int getNBTInteger(ItemStack item, String... path) {
         if (item != null && item.hasTagCompound()) {
             NBTTagCompound tag = item.getTagCompound();
             for (String tagName : path) {
-                if (path[path.length-1] == tagName) continue;
+                if (path[path.length-1].equals(tagName)) continue;
                 if (tag.hasKey(tagName)) {
                     tag = tag.getCompoundTag(tagName);
                 } else {
@@ -828,5 +779,15 @@ public class Utils {
 
         enchantments.clear();
         enchantments.addAll(orderedEnchants.values());
+    }
+
+    public float denormalizeScale(float value, float min, float max, float step) {
+        return snapToStepClamp(min + (max - min) *
+                MathHelper.clamp_float(value, 0.0F, 1.0F), min, max, step);
+    }
+
+    private float snapToStepClamp(float value, float min, float max, float step) {
+        value = step * (float) Math.round(value / step);
+        return MathHelper.clamp_float(value, min, max);
     }
 }

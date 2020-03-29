@@ -634,7 +634,7 @@ public class PlayerListener {
                 EntityPlayerSP player = Minecraft.getMinecraft().thePlayer;
                 List<Entity> entityList = Minecraft.getMinecraft().theWorld.loadedEntityList;
 
-                DevUtils.copyEntityData(player, entityList);
+                DevUtils.copyMobData(player, entityList);
             }
         }
     }

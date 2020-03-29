@@ -8,6 +8,7 @@
     "skeletonHatBonesBar": "Show Dem Biscuits in a Bar",
     "hideFoodAndArmor": "Quick, Hide Those Biscuits!",
     "fullInventoryWarning": "Warning When Your Biscuits are Full",
+    "repeating": "Repeating",
     "disableEmberRodAbility": "Disable Biscuit Rod on Your Island",
     "editLocations": "Edit Biscuit Positions omg",
     "guiScale": "Biscuit Size: %scale%",
@@ -15,7 +16,7 @@
     "hideDurability": "Hide How Many Biscuits are Left",
     "showEnchantmentsReforges": "Bischants & Bisforges",
     "minionStopWarning": "\"Biscuits Cannot Bake\" Warning",
-    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
+    "hidePlayersNearNPCs": "Hide Biscuts Near Important NPCs",
     "backpackStyle": "Biscuit Style: %style%",
     "backpackStyles": {
       "regular": "Biscuitar",
@@ -86,17 +87,23 @@
     },
     "disableMagicalSoupMessage": "Disable Biscuit Soup Messages",
     "zealotCounter": "Show Biscuit Counter",
-    "tickerChargesDisplay": "Ticker/Charges Display",
+    "tickerChargesDisplay": "Ticker/Biscooot Display",
     "tab": {
       "generalSettings": "General biscuits"
     },
     "tabEffectTimers": "Biscoots and Biscootup Timers",
     "noArrowsLeftAlert": "No Biscuits Left Alert",
-    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
-    "showCakeBagPreview": "Show Preview for Cake Bags",
-    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
-    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
-    "enableDevFeatures": "Enable Developer Features"
+    "hideNightVisionEffectTimer": "Hide the Biscuitish Vision Effect Timer",
+    "showCakeBagPreview": "Show Preview for Biscuit Bags",
+    "showBackpackPreviewInAH": "Show Biscutpack Preview for Your Biscuits While AH is Open",
+    "enableDevFeatures": "Enable Biscuiter Features",
+    "chromaSpeed": "Chroma Speed",
+    "chromaMode": "Chroma Color Mode",
+    "chromaModes": {
+      "allTheSame": "All the Same Color",
+      "fade": "Color Fade"
+    },
+    "chromaFadeWidth": "Chroma Fade Width"
   },
   "messages": {
     "dropConfirmation": "Throw out this biscuit again to confirm!",
@@ -134,6 +141,7 @@
     "cancelledProfileOpening": "BiscuitAddons has stopped you from eating this player's biscuit while holding a Bow.",
     "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare biscuit or biscuit2l from your hotbar.",
     "clickMoreTimes": "Click/drop this biscuit %times% more times if you really want to do this poor biscuit lol.",
+    "clickOneMoreTime": "Click/drop this biscuit 1 more time if you really want to bis this.",
     "cancelledDeepCaverns": "BiscuitAddons has stopped you from eating your biscuits here.",
     "featureDisabled": "Biscture Disabled",
     "anvilUses": "Biscoots Uses: %uses%",
@@ -143,8 +151,8 @@
     "downloadingUpdateFile": "Eating freshest biscuits...",
     "onlyFewArrowsLeft": "Only %arrows% bicuits left!",
     "noArrowsLeft": "No Biscuits Left!",
-    "chooseAColor": "Choose a Color",
-    "selectedColor": "Selected Color",
-    "setHexColor": "Set Hex Color"
+    "chooseAColor": "Choose a Biscolor",
+    "selectedColor": "Selected Biscolor",
+    "setHexColor": "Set Bex Color"
   }
 }

@@ -8,6 +8,7 @@
     "skeletonHatBonesBar": "Skelet Helm Botten Balk",
     "hideFoodAndArmor": "Verberg Voedsel & Harnas Balk",
     "fullInventoryWarning": "Volle Inventaris Waarschuwing",
+    "repeating": "Repeating",
     "disableEmberRodAbility": "Ember Rod Uitschakelen op Eiland",
     "editLocations": "GUI Locaties Bewerken",
     "guiScale": "GUI Grootte: %scale%",
@@ -15,7 +16,7 @@
     "hideDurability": "Verberg Duurzaamheid Gereedschap",
     "showEnchantmentsReforges": "Betoveringen & Omsmedingen",
     "minionStopWarning": "Minion is gestopt Waarschuwing",
-    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
+    "hidePlayersNearNPCs": "Verberg spelers dichtbij belangrijke NPC's",
     "backpackStyle": "Rugzak stijl: %style%",
     "backpackStyles": {
       "regular": "Normaal",
@@ -92,11 +93,17 @@
     },
     "tabEffectTimers": "Drank- en Power-up Timers",
     "noArrowsLeftAlert": "Geen Pijlen Resterend Waarschuwing",
-    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
-    "showCakeBagPreview": "Show Preview for Cake Bags",
-    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
-    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
-    "enableDevFeatures": "Enable Developer Features"
+    "hideNightVisionEffectTimer": "Verberg de Nachtzicht Effect Timer",
+    "showCakeBagPreview": "Toon Inhoud voor Cake Rugzak",
+    "showBackpackPreviewInAH": "Toon Rugzak inhoud voor jouw items terwijl het veilinghuis open is",
+    "enableDevFeatures": "Ontwikkelaarsfuncties inschakelen",
+    "chromaSpeed": "Chroma Snelheid",
+    "chromaMode": "Chroma Kleurmodus",
+    "chromaModes": {
+      "allTheSame": "Allemaal dezelfde kleur",
+      "fade": "Color Fade"
+    },
+    "chromaFadeWidth": "Chroma Fade Width"
   },
   "messages": {
     "dropConfirmation": "Laat dit object opnieuw vallen om te Bevestigen!",
@@ -134,6 +141,7 @@
     "cancelledProfileOpening": "SkyblockAddons heeft je ervan weerhouden het profiel van deze speler te openen terwijl je een boog vast hebt.",
     "cancelledDropping": "SkyblockAddons heeft je ervan weerhouden dit zeldzame item of gereedschap uit je hotbar te gooien.",
     "clickMoreTimes": "Klik/gooi dit item %times% keer als je dit echt wilt doen.",
+    "clickOneMoreTime": "Klik/laat dit item nog 1 keer vallen als je dit echt wilt doen.",
     "cancelledDeepCaverns": "Een SkyblockAddons functie heeft u ervan weerhouden om deze blok te breken.",
     "featureDisabled": "Functie uitgeschakeld",
     "anvilUses": "Aambeeld Gebruikt: %uses%",
@@ -143,8 +151,8 @@
     "downloadingUpdateFile": "Update bestand downloaden...",
     "onlyFewArrowsLeft": "Nog maar %arrows% pijlen over!",
     "noArrowsLeft": "Geen Pijlen Resterend!",
-    "chooseAColor": "Choose a Color",
-    "selectedColor": "Selected Color",
-    "setHexColor": "Set Hex Color"
+    "chooseAColor": "Kies een kleur",
+    "selectedColor": "Geselecteerde kleur",
+    "setHexColor": "Hex kleur instellen"
   }
 }

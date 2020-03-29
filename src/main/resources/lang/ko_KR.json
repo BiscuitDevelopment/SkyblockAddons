@@ -8,6 +8,7 @@
     "skeletonHatBonesBar": "스켈레톤 헬멧 뼈 바",
     "hideFoodAndArmor": "배고픔 & 갑옷 바 숨기기",
     "fullInventoryWarning": "인벤토리 꽉 참 경고",
+    "repeating": "Repeating",
     "disableEmberRodAbility": "섬에서의 엠버 로드 우클릭 비활성화",
     "editLocations": "GUI 위치 편집",
     "guiScale": "GUI 크기: %scale%",
@@ -95,8 +96,14 @@
     "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
     "showCakeBagPreview": "Show Preview for Cake Bags",
     "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
-    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
-    "enableDevFeatures": "Enable Developer Features"
+    "enableDevFeatures": "Enable Developer Features",
+    "chromaSpeed": "Chroma Speed",
+    "chromaMode": "Chroma Color Mode",
+    "chromaModes": {
+      "allTheSame": "All the Same Color",
+      "fade": "Color Fade"
+    },
+    "chromaFadeWidth": "Chroma Fade Width"
   },
   "messages": {
     "dropConfirmation": "아이템을 정말로 버리려면 다시 버리세요!",
@@ -134,6 +141,7 @@
     "cancelledProfileOpening": "SkyblockAddons이 활을 든 채 이 플레이어의 프로필을 여는 것을 방지했습니다.",
     "cancelledDropping": "SkyblockAddons이 이 희귀한 아이템 또는 도구를 핫바에서 떨어뜨리는 것을 방지했습니다.",
     "clickMoreTimes": "정말 이 아이템을 떨어뜨리려면 %times%번 더 떨어뜨리세요.",
+    "clickOneMoreTime": "Click/drop this item 1 more time if you really want to do this.",
     "cancelledDeepCaverns": "SkyblockAddons 기능으로 인해이 블록을 채굴하지 못했습니다.",
     "featureDisabled": "기능 비활성화",
     "anvilUses": "모루 사용:% uses %",

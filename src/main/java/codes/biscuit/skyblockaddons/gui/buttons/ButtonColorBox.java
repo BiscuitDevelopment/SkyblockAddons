@@ -17,17 +17,20 @@ public class ButtonColorBox extends GuiButton {
     public ButtonColorBox(int x, int y, ChatFormatting color) {
         super(0, x, y, null);
 
+        this.width = 40;
+        this.height = 20;
+
         this.color = color;
     }
 
     @Override
     public void drawButton(Minecraft mc, int mouseX, int mouseY) {
-        hovered = mouseX > xPosition && mouseX < xPosition+WIDTH && mouseY > yPosition && mouseY < yPosition+HEIGHT;
+        hovered = mouseX > xPosition && mouseX < xPosition+width && mouseY > yPosition && mouseY < yPosition+height;
 
         if (hovered) {
-            drawRect(xPosition, yPosition, xPosition + WIDTH, yPosition + HEIGHT, color.getRGB());
+            drawRect(xPosition, yPosition, xPosition + width, yPosition + height, color.getRGB());
         } else {
-            drawRect(xPosition, yPosition, xPosition + WIDTH, yPosition + HEIGHT, color.getColor(127).getRGB());
+            drawRect(xPosition, yPosition, xPosition + width, yPosition + height, color.getColor(127).getRGB());
         }
     }
 

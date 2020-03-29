@@ -6,10 +6,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.common.util.Constants;
 import org.apache.commons.lang3.text.WordUtils;
 
 import java.net.URI;
@@ -83,8 +80,8 @@ public class EnumUtils {
 
     public enum ButtonType {
         TOGGLE,
-//        COLOR,
-        SOLID
+        SOLID,
+        CHROMA_SLIDER
     }
 
     public enum InventoryType {
@@ -250,6 +247,7 @@ public class EnumUtils {
         COLOR(SETTING_CHANGE_COLOR, -1),
         GUI_SCALE(SETTING_GUI_SCALE, -1),
         ENABLED_IN_OTHER_GAMES(SETTING_SHOW_IN_OTHER_GAMES, -1),
+        REPEATING(SETTING_REPEATING, -1),
         USE_VANILLA_TEXTURE(SETTING_USE_VANILLA_TEXTURE, 17),
         BACKPACK_STYLE(SETTING_BACKPACK_STYLE, -1),
         SHOW_ONLY_WHEN_HOLDING_SHIFT(SETTING_SHOW_ONLY_WHEN_HOLDING_SHIFT, 18),
@@ -418,6 +416,30 @@ public class EnumUtils {
 
     public enum GUIType {
         MAIN,
-        EDIT_LOCATIONS
+        EDIT_LOCATIONS,
+        SETTINGS
+    }
+
+    public enum ChromaMode {
+        ALL_SAME_COLOR(CHROMA_MODE_ALL_THE_SAME),
+        FADE(CHROME_MODE_FADE);
+
+        private Message message;
+
+        ChromaMode(Message message) {
+            this.message = message;
+        }
+
+        public String getMessage() {
+            return message.getMessage();
+        }
+
+        public ChromaMode getNextType() {
+            int nextType = ordinal()+1;
+            if (nextType > values().length-1) {
+                nextType = 0;
+            }
+            return values()[nextType];
+        }
     }
 }

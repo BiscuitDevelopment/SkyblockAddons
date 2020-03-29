@@ -8,6 +8,7 @@
     "skeletonHatBonesBar": "Barre du casque du Squelette",
     "hideFoodAndArmor": "Masquer la nourriture & l'armure",
     "fullInventoryWarning": "Alerte inventaire plein",
+    "repeating": "Répétition",
     "disableEmberRodAbility": "Désativer l'Ember Rod sur votre île",
     "editLocations": "Modifier l'interface",
     "guiScale": "Taille: %scale%",
@@ -15,7 +16,7 @@
     "hideDurability": "Masquer la durabilité des outils",
     "showEnchantmentsReforges": "Enchantements & Reforges",
     "minionStopWarning": "Alerte minion à l'arrêt",
-    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
+    "hidePlayersNearNPCs": "Masquer les joueurs proche des PNJ utiles",
     "backpackStyle": "Affichage: %style%",
     "backpackStyles": {
       "regular": "Normal",
@@ -67,7 +68,7 @@
     "soundIndicatorForFishing": "Indicateur sonore pour la pêche",
     "avoidBlinkingNightVision": "Empêcher le clignotement de la vision nocturne",
     "disableMinionLocationWarning": "Désativer l'alerte “Location not perfect”",
-    "jungleAxeCooldown": "Recharge de la Jungle Axe",
+    "jungleAxeCooldown": "Bloquer la Jungle Axe/Treecapitator en rechargeant",
     "organizeLongEnchantmentLists": "Organiser & lister les enchantements",
     "showItemCooldowns": "Recharge des objets",
     "speedPercentage": "Pourcentage de vitesse",
@@ -94,9 +95,15 @@
     "noArrowsLeftAlert": "Alerte aucune flèche",
     "hideNightVisionEffectTimer": "Masquer le minuteur de la vision nocturne",
     "showCakeBagPreview": "Aperçu des sacs à gâteau",
-    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
-    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
-    "enableDevFeatures": "Enable Developer Features"
+    "showBackpackPreviewInAH": "Afficher l'aperçu du sac à dos dans le /AH",
+    "enableDevFeatures": "Activer le mode développeur",
+    "chromaSpeed": "Vitesse Chroma",
+    "chromaMode": "Mode de couleur Chroma",
+    "chromaModes": {
+      "allTheSame": "Toute la même couleur",
+      "fade": "Dégradé de couleur"
+    },
+    "chromaFadeWidth": "Largeur de fondu Chroma"
   },
   "messages": {
     "dropConfirmation": "Jetez cet objet une nouvelle fois pour confirmer!",
@@ -130,10 +137,11 @@
     },
     "slotLocked": "Cet emplacement est bloqué!",
     "summoningEyeFound": "Œil d'invocation!",
-    "cancelledStemBreak": "SkyblockAddons vous a empêché de détruire cette graine. Si vous souhaitez la détruire, utilisez votre main nu.",
-    "cancelledProfileOpening": "SkyblockAddons vous a empêché d'ouvrir le profil de ce joueur avec votre arc.",
+    "cancelledStemBreak": "SkyblockAddons vous a empêché de casser cette graine. Utilisez votre main si vous souhaitez la casser.",
+    "cancelledProfileOpening": "SkyblockAddons vous a empêché d'ouvrir le profil de ce joueur en utilisant un arc.",
     "cancelledDropping": "SkyblockAddons vous a empêché de jeter cet objet ou outil rare de votre barre d'action.",
     "clickMoreTimes": "Cliquez/jetez cet objet encore %times% fois si vous le souhaitez.",
+    "clickOneMoreTime": "Cliquez/jetez cet objet encore une fois si vous le souhaitez.",
     "cancelledDeepCaverns": "SkyblockAddons vous a empêché de miner ce bloc.",
     "featureDisabled": "Fonction désactivée",
     "anvilUses": "Utilisation de l'enclume: %uses%",

@@ -8,6 +8,7 @@
     "skeletonHatBonesBar": "Bar Kosti Skeleton Kacige",
     "hideFoodAndArmor": "Sakrij Hranu i Armor Bar",
     "fullInventoryWarning": "Upozorenje Za Full Inventar",
+    "repeating": "Repeating",
     "disableEmberRodAbility": "Onemogući Sposobnost Ember Rod-a na Vlastitom Otoku",
     "editLocations": "Uredi Lokacije",
     "guiScale": "Velièina GUI-a: %scale%",
@@ -67,7 +68,7 @@
     "soundIndicatorForFishing": "Zvučni Indikator za Ribolov",
     "avoidBlinkingNightVision": "Isključi Treptanje Napitka Noćne Vizije",
     "disableMinionLocationWarning": "Isključi Lokacija Nije Odlična Upozorenja",
-    "jungleAxeCooldown": "Hlađenje Sjekire Đungle",
+    "jungleAxeCooldown": "Cooldown Jungle Sjekire",
     "organizeLongEnchantmentLists": "Organiziraj Duge Liste Enchantanja",
     "showItemCooldowns": "Pokaži Hlađenje Stvari",
     "speedPercentage": "Postotak Brzine",
@@ -95,8 +96,14 @@
     "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
     "showCakeBagPreview": "Show Preview for Cake Bags",
     "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
-    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
-    "enableDevFeatures": "Enable Developer Features"
+    "enableDevFeatures": "Enable Developer Features",
+    "chromaSpeed": "Chroma Speed",
+    "chromaMode": "Chroma Color Mode",
+    "chromaModes": {
+      "allTheSame": "All the Same Color",
+      "fade": "Color Fade"
+    },
+    "chromaFadeWidth": "Chroma Fade Width"
   },
   "messages": {
     "dropConfirmation": "Opet baci ovu stvar za konfirmaciju!",
@@ -134,6 +141,7 @@
     "cancelledProfileOpening": "SkyblockAddons te zaustavio od otvaranja profila ovog igrača dok držiš bow.",
     "cancelledDropping": "SkyblockAddons te zaustavio od bacanje ove vrijedne stvari ili alata od tvojeg hotbara.",
     "clickMoreTimes": "Klikni/dropaj ovu stvar %times% više puta ako zapravo želiš ovo napraviti.",
+    "clickOneMoreTime": "Click/drop this item 1 more time if you really want to do this.",
     "cancelledDeepCaverns": "SkyblockAddons značajka te zaustavila od kopanja ovog bloka ovdje.",
     "featureDisabled": "Opcija Onemogućena",
     "anvilUses": "Korištenja u Anvilu: %uses%",

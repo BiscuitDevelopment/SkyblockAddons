@@ -19,7 +19,7 @@ import org.lwjgl.input.Keyboard;
 
 public class GuiScreenHook {
 
-    private static final int MADDOX_BATPHONE_COOLDOWN = 60 * 1000;
+    private static final int MADDOX_BATPHONE_COOLDOWN = 20 * 1000;
 
     /**
      * The last time the backpack preview freeze key was pressed.

@@ -8,6 +8,7 @@
     "skeletonHatBonesBar": "מד העצמות מקסדת עצמות",
     "hideFoodAndArmor": "הסתר אוכל ומד שריון",
     "fullInventoryWarning": "אזהרת תיק מלא",
+    "repeating": "Repeating",
     "disableEmberRodAbility": "כיבוי אמבר רוד באי הפרטי",
     "editLocations": "עריכת מיקומים",
     "guiScale": "גודל הפריטים: %scale%",
@@ -15,7 +16,7 @@
     "hideDurability": "הסתר רמת שימוש",
     "showEnchantmentsReforges": "כישופים ושיפורים",
     "minionStopWarning": "\"המיניון לא יכול להגיע\" אזהרה",
-    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
+    "hidePlayersNearNPCs": "הסתר שחקנים ליד NPC חשובים",
     "backpackStyle": "סטייל תרמיל גב: %style%",
     "backpackStyles": {
       "regular": "רגיל",
@@ -95,8 +96,14 @@
     "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
     "showCakeBagPreview": "Show Preview for Cake Bags",
     "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
-    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
-    "enableDevFeatures": "Enable Developer Features"
+    "enableDevFeatures": "Enable Developer Features",
+    "chromaSpeed": "Chroma Speed",
+    "chromaMode": "Chroma Color Mode",
+    "chromaModes": {
+      "allTheSame": "All the Same Color",
+      "fade": "Color Fade"
+    },
+    "chromaFadeWidth": "Chroma Fade Width"
   },
   "messages": {
     "dropConfirmation": "זרוק פריט זה שוב לאישור!",
@@ -134,6 +141,7 @@
     "cancelledProfileOpening": "SkyBlockAddons עצר אותך מלפתוח את הפרופיל של האדם בזמן שהחזקתה קשת.",
     "cancelledDropping": "SkyBlockAddons עצר אותך מלהפיל את החפץ או הכלי הנדיר הזה.",
     "clickMoreTimes": "תלחץ/תזרוק את החפץ %times% פעמים נוספות אם אתה בטוח רוצה לעשות את זה.",
+    "clickOneMoreTime": "Click/drop this item 1 more time if you really want to do this.",
     "cancelledDeepCaverns": "פיטצ'ר של SkyblockAddons מנע ממך לחצוב את הבלוק כאן.",
     "featureDisabled": "פיטצ'ר מבוטל",
     "anvilUses": "שימוים בסדן: %uses%",

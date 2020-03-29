@@ -2,6 +2,7 @@ package codes.biscuit.skyblockaddons.listeners;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.gui.LocationEditGui;
+import codes.biscuit.skyblockaddons.gui.SettingsGui;
 import codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui;
 import codes.biscuit.skyblockaddons.gui.buttons.ButtonLocation;
 import codes.biscuit.skyblockaddons.utils.*;
@@ -16,6 +17,7 @@ import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityArmorStand;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.init.Items;
@@ -65,7 +67,7 @@ public class RenderListener {
     private EnumUtils.GUIType guiToOpen = null;
     private int guiPageToOpen = 1;
     private EnumUtils.GuiTab guiTabToOpen = EnumUtils.GuiTab.MAIN;
-    private String textToOpen = null;
+    private Feature guiFeatureToOpen = null;
 
 
     public RenderListener(SkyblockAddons main) {
@@ -110,7 +112,7 @@ public class RenderListener {
     }
 
     @SubscribeEvent()
-    public void onRenderLiving(RenderLivingEvent.Specials.Pre e) {
+    public void onRenderLiving(RenderLivingEvent.Specials.Pre<EntityLivingBase> e) {
         Entity entity = e.entity;
         if (main.getConfigValues().isEnabled(Feature.MINION_DISABLE_LOCATION_WARNING) && entity.hasCustomName()) {
             if (entity.getCustomNameTag().startsWith("§cThis location isn\'t perfect! :(")) {
@@ -185,8 +187,10 @@ public class RenderListener {
             }
             if (message != null) {
                 String text = message.getMessage();
+                ChromaManager.renderingText(titleFeature);
                 MinecraftReflection.FontRenderer.drawString(text, (float) (-MinecraftReflection.FontRenderer.getStringWidth(text) / 2), -20.0F,
                         main.getConfigValues().getColor(titleFeature).getRGB(), true);
+                ChromaManager.doneRenderingText();
             }
             GlStateManager.popMatrix();
             GlStateManager.popMatrix();
@@ -218,8 +222,10 @@ public class RenderListener {
                 } else {
                     text = message.getMessage();
                 }
+                ChromaManager.renderingText(titleFeature);
                 MinecraftReflection.FontRenderer.drawString(text, (float) (-MinecraftReflection.FontRenderer.getStringWidth(text) / 2), -23.0F,
                         main.getConfigValues().getColor(subtitleFeature).getRGB(), true);
+                ChromaManager.doneRenderingText();
             }
             GlStateManager.popMatrix();
             GlStateManager.popMatrix();
@@ -636,7 +642,9 @@ public class RenderListener {
             if (buttonLocation == null) {
                 int remainingTime = (int) (skillFadeOutTime - System.currentTimeMillis());
                 if (remainingTime < 0) {
-                    if (remainingTime < -2000) remainingTime = -2000;
+                    if (remainingTime < -2000) {
+                        return; // Will be invisible, no need to render.
+                    }
 
                     textAlpha = (float) 1 - ((float) -remainingTime / 2000);
                     color = main.getConfigValues().getColor(feature, Math.round(textAlpha * 255 >= 4 ? textAlpha * 255 : 4)).getRGB(); // so it fades out, 0.016 is the minimum alpha
@@ -666,20 +674,18 @@ public class RenderListener {
             int boxXTwo = intX + width + 4;
             int boxYOne = intY - 4;
             int boxYTwo = intY + height + 4;
-            if (feature == Feature.MAGMA_BOSS_TIMER || feature == Feature.DARK_AUCTION_TIMER || feature == Feature.SKILL_DISPLAY) {
+            if (feature == Feature.MAGMA_BOSS_TIMER || feature == Feature.DARK_AUCTION_TIMER || feature == Feature.ZEALOT_COUNTER || feature == Feature.SKILL_DISPLAY) {
                 boxXOne -= 18;
                 boxYOne -= 2;
-            } else if (feature == Feature.ZEALOT_COUNTER) {
-                boxXOne -= 14;
-                boxYOne -= 3;
-                boxYTwo += 4;
             }
             buttonLocation.checkHoveredAndDrawBox(boxXOne, boxXTwo, boxYOne, boxYTwo, scale);
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         }
 
         GlStateManager.enableBlend();
+        ChromaManager.renderingText(feature);
         main.getUtils().drawTextWithStyle(text, intX, intY, color, textAlpha);
+        ChromaManager.doneRenderingText();
 
         GlStateManager.color(1, 1, 1, 1);
         if (feature == Feature.DARK_AUCTION_TIMER) {
@@ -690,7 +696,7 @@ public class RenderListener {
             Gui.drawModalRectWithCustomSizedTexture(intX - 18, intY - 5, 0, 0, 16, 16, 32, 32);
         } else if (feature == Feature.ZEALOT_COUNTER) {
             mc.getTextureManager().bindTexture(TEXT_ICONS);
-            Gui.drawModalRectWithCustomSizedTexture(intX - 18, intY - 6, 0, 20, 20, 20, 40, 40);
+            Gui.drawModalRectWithCustomSizedTexture(intX - 18, intY - 5, 0, 16, 16, 16, 32, 32);
         } else if (feature == Feature.SKILL_DISPLAY && ((skill != null && skill.getItem() != null) || buttonLocation != null)) {
             GlStateManager.enableRescaleNormal();
             RenderHelper.enableGUIStandardItemLighting();
@@ -1038,14 +1044,11 @@ public class RenderListener {
     @SubscribeEvent()
     public void onRender(TickEvent.RenderTickEvent e) {
         if (guiToOpen == EnumUtils.GUIType.MAIN) {
-            if (textToOpen == null) {
-                Minecraft.getMinecraft().displayGuiScreen(new SkyblockAddonsGui(main, guiPageToOpen, guiTabToOpen));
-            } else {
-                Minecraft.getMinecraft().displayGuiScreen(new SkyblockAddonsGui(main, guiPageToOpen, guiTabToOpen, textToOpen));
-                textToOpen = null;
-            }
+            Minecraft.getMinecraft().displayGuiScreen(new SkyblockAddonsGui(main, guiPageToOpen, guiTabToOpen));
         } else if (guiToOpen == EnumUtils.GUIType.EDIT_LOCATIONS) {
-            Minecraft.getMinecraft().displayGuiScreen(new LocationEditGui(main, guiPageToOpen, guiTabToOpen, textToOpen));
+            Minecraft.getMinecraft().displayGuiScreen(new LocationEditGui(main, guiPageToOpen, guiTabToOpen));
+        } else if (guiToOpen == EnumUtils.GUIType.SETTINGS) {
+            Minecraft.getMinecraft().displayGuiScreen(new SettingsGui(main, guiFeatureToOpen, 1, guiPageToOpen, guiTabToOpen, guiFeatureToOpen.getSettings()));
         }
         guiToOpen = null;
     }
@@ -1056,9 +1059,9 @@ public class RenderListener {
         guiTabToOpen = tab;
     }
 
-    public void setGuiToOpen(EnumUtils.GUIType guiToOpen, int page, EnumUtils.GuiTab tab, String text) {
+    public void setGuiToOpen(EnumUtils.GUIType guiToOpen, int page, EnumUtils.GuiTab tab, Feature feature) {
         setGuiToOpen(guiToOpen,page,tab);
-        textToOpen = text;
+        guiFeatureToOpen = feature;
     }
 
     public void setSubtitleFeature(Feature subtitleFeature) {

@@ -22,6 +22,7 @@ public enum Message {
     SETTING_SKELETON_HAT_BONES_BAR(MessageObject.SETTING, "skeletonHatBonesBar"),
     SETTING_HIDE_FOOD_AND_ARMOR(MessageObject.SETTING, "hideFoodAndArmor"),
     SETTING_FULL_INVENTORY_WARNING(MessageObject.SETTING, "fullInventoryWarning"),
+    SETTING_REPEATING(MessageObject.SETTING, "repeating"),
     SETTING_MAGMA_BOSS_TIMER(MessageObject.SETTING, "magmaBossTimer"),
     SETTING_DISABLE_EMBER_ROD_ABILITY(MessageObject.SETTING, "disableEmberRodAbility"),
     SETTING_EDIT_LOCATIONS(MessageObject.SETTING, "editLocations"),
@@ -95,6 +96,9 @@ public enum Message {
     SETTING_SHOW_CAKE_BAG_PREVIEW(MessageObject.SETTING, "showCakeBagPreview"),
     SETTING_SHOW_BACKPACK_PREVIEW_AH(MessageObject.SETTING, "showBackpackPreviewInAH"),
     SETTING_ENABLE_DEV_FEATURES(MessageObject.SETTING, "enableDevFeatures"),
+    SETTING_CHROMA_SPEED(MessageObject.SETTING, "chromaSpeed"),
+    SETTING_CHROMA_MODE(MessageObject.SETTING, "chromaMode"),
+    SETTING_CHROMA_FADE_WIDTH(MessageObject.SETTING, "chromaFadeWidth"),
     SETTING_SORT_TAB_EFFECT_TIMERS(MessageObject.SETTING, "sortTabEffectTimers"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.BACKPACK_STYLE, "regular"),
@@ -163,7 +167,10 @@ public enum Message {
     INVENTORY_TYPE_CRAFTING(MessageObject.INVENTORY_TYPE, "crafting"),
 
     POWER_ORB_DISPLAY_STYLE_DETAILED(MessageObject.POWER_ORB_STYLE, "detailed"),
-    POWER_ORB_DISPLAY_STYLE_COMPACT(MessageObject.POWER_ORB_STYLE, "compact");
+    POWER_ORB_DISPLAY_STYLE_COMPACT(MessageObject.POWER_ORB_STYLE, "compact"),
+
+    CHROMA_MODE_ALL_THE_SAME(MessageObject.CHROMA_MODE, "allTheSame"),
+    CHROME_MODE_FADE(MessageObject.CHROMA_MODE, "fade");
 
     private MessageObject messageObject;
     private String memberName;
@@ -234,7 +241,8 @@ public enum Message {
         TEXT_STYLE("settings.textStyles"),
         TAB("settings.tab"),
         UPDATE_MESSAGES("messages.update"),
-        ANCHOR_POINT("settings.anchorPoints");
+        ANCHOR_POINT("settings.anchorPoints"),
+        CHROMA_MODE("settings.chromaModes");
 
         private List<String> path;
 

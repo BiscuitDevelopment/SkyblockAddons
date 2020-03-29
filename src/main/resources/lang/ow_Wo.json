@@ -8,6 +8,7 @@
     "skeletonHatBonesBar": "Skeweton Hewmet Bowones Baw",
     "hideFoodAndArmor": "Hide Fuwud & Awmow Baw",
     "fullInventoryWarning": "Fuww Inwentowy Wawning",
+    "repeating": "Repeating",
     "disableEmberRodAbility": "Disabwal Iswand Embew Wod",
     "editLocations": "Edit GUWU Wowocations",
     "guiScale": "Guwui scawe: %scale%",
@@ -15,7 +16,7 @@
     "hideDurability": "Hide Toow Duwabiwiwy",
     "showEnchantmentsReforges": "Enchawnts & Wefowoges",
     "minionStopWarning": "\"Minwion Cannwot Weach\" Wawning",
-    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
+    "hidePlayersNearNPCs": "Hide Pwayers Nyeaw Auwction Howse",
     "backpackStyle": "Bwackpack Stywe: %style%",
     "backpackStyles": {
       "regular": "Regurawr",
@@ -92,11 +93,17 @@
     },
     "tabEffectTimers": "Powotions and Poworup Timers",
     "noArrowsLeftAlert": "No Awwows Weft Awewt",
-    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
-    "showCakeBagPreview": "Show Preview for Cake Bags",
-    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
-    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
-    "enableDevFeatures": "Enable Developer Features"
+    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timew",
+    "showCakeBagPreview": "Show Pweview fow Cake Bags",
+    "showBackpackPreviewInAH": "Show Backpack Pweview fow Youw Items Whiwe AH is Open",
+    "enableDevFeatures": "Enabwe Devewopew Featuwes",
+    "chromaSpeed": "Chwoma Speed",
+    "chromaMode": "Chwoma Cowow Mode",
+    "chromaModes": {
+      "allTheSame": "Aww the Same Cowow",
+      "fade": "Cowow Fade"
+    },
+    "chromaFadeWidth": "Chwoma Fade Width"
   },
   "messages": {
     "dropConfirmation": "Dwop thwis itwem agwain to confiwm!",
@@ -134,6 +141,7 @@
     "cancelledProfileOpening": "SkybwockAwwons has stwopped A1m from opwening this plawer's pwofile whowo holdowoing a bowo.",
     "cancelledDropping": "SkybwockAwwons has owoed you from dwopping dis rawr itwem or twool from your hawtbar.",
     "clickMoreTimes": "Cwick/dwop this item %times% mwore twimes if you weally want to do whis.",
+    "clickOneMoreTime": "Cwick/dwop this item 1 mowe time if you weawwy want to do this.",
     "cancelledDeepCaverns": "A SkwyBwlockAddowons fweature hwas stowopped ywou from mining thwis blowock hwere.",
     "featureDisabled": "Fweature Diswabled",
     "anvilUses": "Anviw Uses: %uses%",
@@ -143,8 +151,8 @@
     "downloadingUpdateFile": "Downwoading update fiwe...",
     "onlyFewArrowsLeft": "Onwy %arrows% weft!",
     "noArrowsLeft": "No Awwows Weft!",
-    "chooseAColor": "Choose a Color",
-    "selectedColor": "Selected Color",
-    "setHexColor": "Set Hex Color"
+    "chooseAColor": "Choose a Colow",
+    "selectedColor": "Sewected Colow",
+    "setHexColor": "Set Hex Colow"
   }
 }

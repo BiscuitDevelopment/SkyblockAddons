@@ -8,6 +8,7 @@
     "skeletonHatBonesBar": "Bar o' Bones",
     "hideFoodAndArmor": "Swab Grub n' Booty Bar",
     "fullInventoryWarning": "Full Barrel Warnin'",
+    "repeating": "Repeating",
     "disableEmberRodAbility": "Swab Ember Rod on Island",
     "editLocations": "Move Yer' GUI",
     "guiScale": "Gui Scale: %scale%",
@@ -95,8 +96,14 @@
     "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
     "showCakeBagPreview": "Show Preview for Cake Bags",
     "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
-    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
-    "enableDevFeatures": "Enable Developer Features"
+    "enableDevFeatures": "Enable Developer Features",
+    "chromaSpeed": "Chroma Speed",
+    "chromaMode": "Chroma Color Mode",
+    "chromaModes": {
+      "allTheSame": "All the Same Color",
+      "fade": "Color Fade"
+    },
+    "chromaFadeWidth": "Chroma Fade Width"
   },
   "messages": {
     "dropConfirmation": "'ay lad, drop this here item again to confirm!",
@@ -134,6 +141,7 @@
     "cancelledProfileOpening": "'ay there lad! SkyblockAddons 'as stopped ye from openin' this here player's profile while oldin' a bow.",
     "cancelledDropping": "'ay mate! SkyblockAddons 'as stopped ye from droppin' this here Rare Item or Tool from yer 'otbarrr.",
     "clickMoreTimes": "'ay lad, Click/Drop this here item %times% more times if ye really wants t' do this.",
+    "clickOneMoreTime": "Click/drop this item 1 more time if you really want to do this.",
     "cancelledDeepCaverns": "Aye boomer, a SkyblockAddons feat're 'as stopped ye from minin' this here block 'ere.",
     "featureDisabled": "Yer feature be Disabled",
     "anvilUses": "Anvil Uses: %uses%",

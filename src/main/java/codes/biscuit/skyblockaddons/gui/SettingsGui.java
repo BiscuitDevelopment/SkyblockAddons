@@ -38,15 +38,14 @@ public class SettingsGui extends GuiScreen {
     /**
      * The main gui, opened with /sba.
      */
-    SettingsGui(SkyblockAddons main, Feature feature, int page,
-                int lastPage, EnumUtils.GuiTab lastTab, Set<EnumUtils.FeatureSetting> settings, String lastText) {
+    public SettingsGui(SkyblockAddons main, Feature feature, int page,
+                       int lastPage, EnumUtils.GuiTab lastTab, Set<EnumUtils.FeatureSetting> settings) {
         this.main = main;
         this.feature = feature;
         this.page = page;
         this.lastPage = lastPage;
         this.lastTab = lastTab;
         this.settings = settings;
-        this.lastText = lastText;
     }
 
     @SuppressWarnings("IntegerDivisionInFloatingPointContext")
@@ -168,17 +167,20 @@ public class SettingsGui extends GuiScreen {
                     GuiIngameForge.renderArmor = true; // The food gets automatically enabled, no need to include it.
                 } else if (feature == Feature.HIDE_HEALTH_BAR) {
                     GuiIngameForge.renderHealth = true;
+                } else if (feature == Feature.REPEAT_FULL_INVENTORY_WARNING) {
+                    // Remove queued warnings when the repeat setting is turned off.
+                    main.getScheduler().removeQueuedFullInventoryWarnings();
                 }
             }
         } else if (feature == Feature.SHOW_BACKPACK_PREVIEW) {
             main.getConfigValues().setBackpackStyle(main.getConfigValues().getBackpackStyle().getNextType());
             closingGui = true;
-            Minecraft.getMinecraft().displayGuiScreen(new SettingsGui(main, feature, page, lastPage, lastTab, settings, lastText));
+            Minecraft.getMinecraft().displayGuiScreen(new SettingsGui(main, feature, page, lastPage, lastTab, settings));
             closingGui = false;
         } else if(feature == Feature.POWER_ORB_STATUS_DISPLAY && abstractButton instanceof ButtonSolid) {
             main.getConfigValues().setPowerOrbDisplayStyle(main.getConfigValues().getPowerOrbDisplayStyle().getNextType());
             closingGui = true;
-            Minecraft.getMinecraft().displayGuiScreen(new SettingsGui(main, feature, page, lastPage, lastTab, settings, lastText));
+            Minecraft.getMinecraft().displayGuiScreen(new SettingsGui(main, feature, page, lastPage, lastTab, settings));
             closingGui = false;
         } else if (abstractButton instanceof ButtonArrow) {
             ButtonArrow arrow = (ButtonArrow)abstractButton;
@@ -186,10 +188,10 @@ public class SettingsGui extends GuiScreen {
                 main.getUtils().setFadingIn(false);
                 if (arrow.getArrowType() == ButtonArrow.ArrowType.RIGHT) {
                     closingGui = true;
-                    mc.displayGuiScreen(new SettingsGui(main, feature, ++page, lastPage, lastTab, settings, lastText));
+                    mc.displayGuiScreen(new SettingsGui(main, feature, ++page, lastPage, lastTab, settings));
                 } else {
                     closingGui = true;
-                    mc.displayGuiScreen(new SettingsGui(main, feature, --page, lastPage, lastTab, settings, lastText));
+                    mc.displayGuiScreen(new SettingsGui(main, feature, --page, lastPage, lastTab, settings));
                 }
             }
         }
@@ -227,6 +229,17 @@ public class SettingsGui extends GuiScreen {
             buttonList.add(new ButtonOpenColorMenu(x, y, 100, 20, Message.SETTING_CHANGE_COLOR.getMessage(), main, feature));
         } else if (setting == EnumUtils.FeatureSetting.GUI_SCALE) {
             buttonList.add(new ButtonGuiScale(x, y, 100, 20, main, feature));
+        } else if (setting == EnumUtils.FeatureSetting.REPEATING) {
+            boxWidth = 31;
+            x = halfWidth-(boxWidth/2);
+            y = getRowHeightSetting(row);
+
+            Feature settingFeature = null;
+            if (feature == Feature.FULL_INVENTORY_WARNING) {
+                settingFeature = Feature.REPEAT_FULL_INVENTORY_WARNING;
+            }
+
+            buttonList.add(new ButtonToggleTitle(x, y, Message.SETTING_REPEATING.getMessage(), main, settingFeature));
         } else if (setting == EnumUtils.FeatureSetting.ENABLED_IN_OTHER_GAMES) {
             boxWidth = 31;
             x = halfWidth-(boxWidth/2);
@@ -260,11 +273,7 @@ public class SettingsGui extends GuiScreen {
             boxWidth = 31; // Default size and stuff.
             x = halfWidth-(boxWidth/2);
             y = getRowHeightSetting(row);
-            System.out.println(setting.name());
             buttonList.add(new ButtonToggleTitle(x, y, setting.getMessage().getMessage(), main, setting.getFeatureEquivalent()));
-            if (setting.getFeatureEquivalent() == null) {
-                System.out.println(feature.getId());
-            }
         }
         row++;
     }
@@ -289,6 +298,6 @@ public class SettingsGui extends GuiScreen {
 
     private void returnToGui() {
         closingGui = true;
-        main.getRenderListener().setGuiToOpen(EnumUtils.GUIType.MAIN, lastPage, lastTab, lastText);
+        main.getRenderListener().setGuiToOpen(EnumUtils.GUIType.MAIN, lastPage, lastTab);
     }
 }

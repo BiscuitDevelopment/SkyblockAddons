@@ -20,6 +20,7 @@ import net.minecraftforge.fml.common.ModContainer;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import org.apache.logging.log4j.Logger;
 import org.lwjgl.input.Keyboard;
 
 import java.lang.reflect.Field;
@@ -32,12 +33,13 @@ public class SkyblockAddons {
 
     static final String MOD_ID = "skyblockaddons";
     public static final String MOD_NAME = "SkyblockAddons";
-    public static final String VERSION = "1.5.0-b5";
+    public static final String VERSION = "1.5.0-b11.2";
 
     /** The main instance of the mod, used mainly my mixins who don't get it passed to them. */
     @Getter private static SkyblockAddons instance;
 
     private ConfigValues configValues;
+    private Logger logger;
     private PersistentValues persistentValues;
     private PlayerListener playerListener = new PlayerListener(this);
     private GuiScreenListener guiScreenListener = new GuiScreenListener(this);
@@ -58,7 +60,8 @@ public class SkyblockAddons {
     public void preInit(FMLPreInitializationEvent e) {
         instance = this;
         configValues = new ConfigValues(this, e.getSuggestedConfigurationFile());
-        persistentValues = new PersistentValues(e.getSuggestedConfigurationFile());
+        logger = e.getModLog();
+        persistentValues = new PersistentValues(e.getModConfigurationDirectory());
     }
     @Mod.EventHandler
     public void init(FMLInitializationEvent e) {

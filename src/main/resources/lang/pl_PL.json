@@ -8,6 +8,7 @@
     "skeletonHatBonesBar": "Pasek Kości z Hełmu Szkieleta",
     "hideFoodAndArmor": "Ukryj Pasek Głodu i Zbroi",
     "fullInventoryWarning": "Ostrzeżenie o Pełnym Ekwipunku",
+    "repeating": "Repeating",
     "disableEmberRodAbility": "Wyłącz Umiejętność Ember Rod'a na Wyspie",
     "editLocations": "Edytuj Lokalizacje",
     "guiScale": "Skala GUI: %scale%",
@@ -15,7 +16,7 @@
     "hideDurability": "Wyłącz Pasek Wytrzymałości Narzędzi",
     "showEnchantmentsReforges": "Zaklęcia oraz Reforge",
     "minionStopWarning": "Ostrzeżenie o Przerwaniu Pracy Miniona",
-    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
+    "hidePlayersNearNPCs": "Ukryj graczy blisko ważnych NPC-tów",
     "backpackStyle": "Styl Plecaka: %style%",
     "backpackStyles": {
       "regular": "Zwykłe",
@@ -94,9 +95,15 @@
     "noArrowsLeftAlert": "Alarm o braku strzał",
     "hideNightVisionEffectTimer": "Ukryj zegar widzenia w ciemności",
     "showCakeBagPreview": "Pokaż podgląd dla torb na ciasta",
-    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
-    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
-    "enableDevFeatures": "Enable Developer Features"
+    "showBackpackPreviewInAH": "Pogląd plecaków z otwartym Domem Aukcyjnym",
+    "enableDevFeatures": "Zezwól na funkcje developerskie",
+    "chromaSpeed": "Chroma Speed",
+    "chromaMode": "Chroma Color Mode",
+    "chromaModes": {
+      "allTheSame": "All the Same Color",
+      "fade": "Color Fade"
+    },
+    "chromaFadeWidth": "Chroma Fade Width"
   },
   "messages": {
     "dropConfirmation": "Wyrzuć ten przedmiot ponownie, aby potwierdzić!",
@@ -134,6 +141,7 @@
     "cancelledProfileOpening": "SkyblockAddons powstrzymał otwieranie profilu tej osoby podczas trzymania łuku.",
     "cancelledDropping": "SkyblockAddons anulował upuszczenie tego rzadkiego przedmiotu lub narzędzia z twojego paska narzędzi.",
     "clickMoreTimes": "Naciśnij/upuść ten przedmiot %times% razy więcej, jeśli naprawdę chcesz to zrobić.",
+    "clickOneMoreTime": "Click/drop this item 1 more time if you really want to do this.",
     "cancelledDeepCaverns": "Funkcja Skyblock Addons powstrzymała cię od kopania tego bloku.",
     "featureDisabled": "Funkcja wyłączona",
     "anvilUses": "Użycia kowadła: %uses%",

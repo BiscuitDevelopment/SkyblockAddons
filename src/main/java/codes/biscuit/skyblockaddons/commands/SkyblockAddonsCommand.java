@@ -14,13 +14,6 @@ import java.util.List;
 
 public class SkyblockAddonsCommand extends CommandBase {
 
-    private static String[] HELP_MESSAGE = {
-            Utils.color("&7&m------------&7[&b&l SkyblockAddons &7]&7&m------------"),
-            Utils.color("&b● /sba &7- Open the main menu"),
-            Utils.color("&b● /sba edit &7- Edit GUI locations"),
-            Utils.color("&b● /sba folder &7- Open your mods folder"),
-            Utils.color("&7&m----------------------------------------------")};
-
     private SkyblockAddons main;
 
     public SkyblockAddonsCommand(SkyblockAddons main) {
@@ -39,8 +32,12 @@ public class SkyblockAddonsCommand extends CommandBase {
     }
 
     @Override
-    public String getCommandUsage(ICommandSender sender) {
-        return null;
+    public String getCommandUsage(ICommandSender sender) { return
+        Utils.color("&7&m------------&7[&b&l SkyblockAddons &7]&7&m------------") + "\n" +
+        Utils.color("&b● /sba &7- Open the main menu") + "\n" +
+        Utils.color("&b● /sba edit &7- Edit GUI locations") + "\n" +
+        Utils.color("&b● /sba folder &7- Open your mods folder") + "\n" +
+        Utils.color("&7&m----------------------------------------------");
     }
 
     @Override
@@ -56,11 +53,6 @@ public class SkyblockAddonsCommand extends CommandBase {
     public void processCommand(ICommandSender sender, String[] args) {
         if (args.length > 0) {
             switch (args[0]) {
-                case "help":
-                    for (String line: HELP_MESSAGE) {
-                        main.getUtils().sendMessage(line, false);
-                    }
-                    break;
                 case "edit":
                     main.getUtils().setFadingIn(false);
                     main.getRenderListener().setGuiToOpen(EnumUtils.GUIType.EDIT_LOCATIONS, 0, null);
@@ -74,10 +66,6 @@ public class SkyblockAddonsCommand extends CommandBase {
                         main.getUtils().sendMessage(ChatFormatting.RED + "Developer mode disabled!");
                     }
                     break;
-                case "update": // Not actually a command.
-                    if (main.getRenderListener().getDownloadInfo().isPatch())
-                        main.getUtils().downloadPatch(main.getRenderListener().getDownloadInfo().getNewestVersion());
-                    break;
                 case "folder":
                     try {
                         Desktop.getDesktop().open(main.getUtils().getSBAFolder(false));
@@ -85,9 +73,14 @@ public class SkyblockAddonsCommand extends CommandBase {
                         e.printStackTrace();
                     }
                     break;
+                case "update": // Not actually a command.
+                    if (main.getRenderListener().getDownloadInfo().isPatch())
+                        main.getUtils().downloadPatch(main.getRenderListener().getDownloadInfo().getNewestVersion());
+                    break;
+                default:
+                    main.getUtils().sendMessage(getCommandUsage(sender), false);
             }
-        }
-        else {
+        } else {
             // If there's no arguments given, open the main GUI
             main.getUtils().setFadingIn(true);
             main.getRenderListener().setGuiToOpen(EnumUtils.GUIType.MAIN, 1, EnumUtils.GuiTab.MAIN);

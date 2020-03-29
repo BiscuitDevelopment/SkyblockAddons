@@ -6,6 +6,7 @@ import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
 import lombok.Getter;
+import lombok.Setter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.inventory.*;
@@ -29,16 +30,17 @@ public class InventoryUtils {
 
     public static final String MADDOX_BATPHONE_DISPLAYNAME = "\u00A7aMaddox Batphone";
     public static final String JUNGLE_AXE_DISPLAYNAME = "\u00A7aJungle Axe";
+    public static final String TREECAPITATOR_DISPLAYNAME = "\u00A75Treecapitator";
     public static final String FAIRY_SOUL_EXCHANGE_DISPLAYNAME = "\u00a7aExchange Fairy Souls";
     public static final String CHICKEN_HEAD_DISPLAYNAME = "\u00a7fChicken Head";
-
-    public static final long JUNGLE_AXE_COOLDOWN = 1500;
 
     private static final Pattern REVENANT_UPGRADE_PATTERN = Pattern.compile("§5§o§7Next Upgrade: §a\\+([0-9]+❈) §8\\(§a([0-9,]+)§7/§c([0-9,]+)§8\\)");
 
     private List<ItemStack> previousInventory;
     private Multimap<String, ItemDiff> itemPickupLog = ArrayListMultimap.create();
-    private boolean inventoryIsFull;
+
+    @Setter
+    private boolean inventoryWarningShown;
 
     /** Whether the player is wearing a Skeleton Helmet. */
     @Getter private boolean wearingSkeletonHelmet;
@@ -171,21 +173,44 @@ public class InventoryUtils {
      */
     public void checkIfInventoryIsFull(Minecraft mc, EntityPlayerSP p) {
         if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.FULL_INVENTORY_WARNING)) {
-            for (ItemStack item : p.inventory.mainInventory) {
-                if (item == null) {
-                    inventoryIsFull = false;
+            /*
+            If the inventory is full, show the full inventory warning.
+            Slot 8 is the Skyblock menu/quiver arrow slot. It's ignored so shooting with a full inventory
+            doesn't spam the full inventory warning.
+             */
+            for (int i = 0; i < p.inventory.mainInventory.length; i++) {
+                // If we find an empty slot that isn't slot 8, remove any queued warnings and stop checking.
+                if (p.inventory.mainInventory[i] == null && i != 8) {
+                    if (inventoryWarningShown) {
+                        main.getScheduler().removeQueuedFullInventoryWarnings();
+                    }
+                    inventoryWarningShown = false;
                     return;
                 }
             }
-            if (!inventoryIsFull) {
-                inventoryIsFull = true;
-                if (mc.currentScreen == null && main.getPlayerListener().didntRecentlyJoinWorld()) {
-                    main.getUtils().playLoudSound("random.orb", 0.5);
-                    main.getRenderListener().setTitleFeature(Feature.FULL_INVENTORY_WARNING);
-                    main.getScheduler().schedule(Scheduler.CommandType.RESET_TITLE_FEATURE, main.getConfigValues().getWarningSeconds());
+
+            // If we make it here, the inventory is full. Show the warning.
+            if (mc.currentScreen == null && main.getPlayerListener().didntRecentlyJoinWorld() && !inventoryWarningShown) {
+                showFullInventoryWarning();
+                main.getScheduler().schedule(Scheduler.CommandType.RESET_TITLE_FEATURE, main.getConfigValues().getWarningSeconds());
+
+                // Schedule a repeat if needed.
+                if (main.getConfigValues().isEnabled(Feature.REPEAT_FULL_INVENTORY_WARNING)) {
+                    main.getScheduler().schedule(Scheduler.CommandType.SHOW_FULL_INVENTORY_WARNING, 10);
+                    main.getScheduler().schedule(Scheduler.CommandType.RESET_TITLE_FEATURE, 10 + main.getConfigValues().getWarningSeconds());
                 }
+
+                inventoryWarningShown = true;
             }
         }
+    }
+
+    /**
+     * Shows the full inventory warning.
+     */
+    public void showFullInventoryWarning() {
+        main.getUtils().playLoudSound("random.orb", 0.5);
+        main.getRenderListener().setTitleFeature(Feature.FULL_INVENTORY_WARNING);
     }
 
     /**

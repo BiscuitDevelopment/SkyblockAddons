@@ -34,7 +34,9 @@ public class ButtonSolid extends ButtonText {
     public void drawButton(Minecraft mc, int mouseX, int mouseY) {
         if (feature == Feature.TEXT_STYLE) {
             displayString = main.getConfigValues().getTextStyle().getMessage();
-        } if (feature == Feature.WARNING_TIME) {
+        } else if (feature == Feature.CHROMA_MODE) {
+            displayString = main.getConfigValues().getChromaMode().getMessage();
+        } else if (feature == Feature.WARNING_TIME) {
             displayString = main.getConfigValues().getWarningSeconds()+"s";
         }
         int alpha;

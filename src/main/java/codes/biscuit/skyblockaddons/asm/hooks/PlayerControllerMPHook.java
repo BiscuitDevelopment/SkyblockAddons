@@ -59,7 +59,7 @@ public class PlayerControllerMPHook {
             if (main.getConfigValues().isEnabled(Feature.AVOID_BREAKING_STEMS) && (block.equals(Blocks.melon_stem) || block.equals(Blocks.pumpkin_stem))) {
                 if (main.getConfigValues().isEnabled(Feature.ENABLE_MESSAGE_WHEN_BREAKING_STEMS) && now - lastStemMessage > 20000) {
                     lastStemMessage = now;
-                    main.getUtils().sendMessage(main.getConfigValues().getRestrictedColor(Feature.AVOID_BREAKING_STEMS)+ Message.MESSAGE_CANCELLED_STEM_BREAK.getMessage());
+                    main.getUtils().sendMessage(main.getConfigValues().getRestrictedColor(Feature.AVOID_BREAKING_STEMS) + Message.MESSAGE_CANCELLED_STEM_BREAK.getMessage());
                 }
                 returnValue.cancel();
             } else if (main.getConfigValues().isEnabled(Feature.ONLY_MINE_ORES_DEEP_CAVERNS) && DEEP_CAVERNS_LOCATIONS.contains(main.getUtils().getLocation())
@@ -77,9 +77,15 @@ public class PlayerControllerMPHook {
                 }
                 returnValue.cancel();
             } else if (main.getConfigValues().isEnabled(Feature.JUNGLE_AXE_COOLDOWN)) {
-                if ((block.equals(Blocks.log)|| block.equals(Blocks.log2))
-                        && CooldownManager.isOnCooldown(InventoryUtils.JUNGLE_AXE_DISPLAYNAME)) {
-                    returnValue.cancel();
+                if ((block.equals(Blocks.log) || block.equals(Blocks.log2))
+                        && p.getHeldItem() != null) {
+
+                    final boolean holdingJungleAxeOnCooldown = InventoryUtils.JUNGLE_AXE_DISPLAYNAME.equals(p.getHeldItem().getDisplayName()) && CooldownManager.isOnCooldown(InventoryUtils.JUNGLE_AXE_DISPLAYNAME);
+                    final boolean holdingTreecapitatorOnCooldown = InventoryUtils.TREECAPITATOR_DISPLAYNAME.equals(p.getHeldItem().getDisplayName()) && CooldownManager.isOnCooldown(InventoryUtils.TREECAPITATOR_DISPLAYNAME);
+
+                    if (holdingJungleAxeOnCooldown || holdingTreecapitatorOnCooldown) {
+                        returnValue.cancel();
+                    }
                 }
             }
         }
@@ -91,11 +97,13 @@ public class PlayerControllerMPHook {
         ItemStack heldItem = Minecraft.getMinecraft().thePlayer.getHeldItem();
         if (heldItem != null) {
             Block block = mc.theWorld.getBlockState(loc).getBlock();
-            if(main.getUtils().isOnSkyblock()
+            if (main.getUtils().isOnSkyblock()
                     && main.getConfigValues().isEnabled(Feature.SHOW_ITEM_COOLDOWNS)
-                    && InventoryUtils.JUNGLE_AXE_DISPLAYNAME.equals(heldItem.getDisplayName())
                     && (block.equals(Blocks.log) || block.equals(Blocks.log2))) {
-                CooldownManager.put(InventoryUtils.JUNGLE_AXE_DISPLAYNAME, InventoryUtils.JUNGLE_AXE_COOLDOWN);
+                if(InventoryUtils.JUNGLE_AXE_DISPLAYNAME.equals(heldItem.getDisplayName())
+                    || InventoryUtils.TREECAPITATOR_DISPLAYNAME.equals(heldItem.getDisplayName())) {
+                    CooldownManager.put(heldItem);
+                }
             }
         }
     }
@@ -135,7 +143,7 @@ public class PlayerControllerMPHook {
             slotNum += main.getInventoryUtils().getSlotDifference(player.openContainer);
             if (main.getConfigValues().isEnabled(Feature.LOCK_SLOTS) && main.getUtils().isOnSkyblock()
                     && main.getConfigValues().getLockedSlots().contains(slotNum)
-                    && (slotNum >= 9 || player.openContainer instanceof ContainerPlayer && slotNum >= 5)){
+                    && (slotNum >= 9 || player.openContainer instanceof ContainerPlayer && slotNum >= 5)) {
                 main.getUtils().playLoudSound("note.bass", 0.5);
                 returnValue.cancel();
             }
@@ -150,12 +158,12 @@ public class PlayerControllerMPHook {
                 slotIn = null;
             }
 
-            if(slotIn != null && EnumUtils.InventoryType.getCurrentInventoryType() == EnumUtils.InventoryType.CRAFTING_TABLE
+            if (slotIn != null && EnumUtils.InventoryType.getCurrentInventoryType() == EnumUtils.InventoryType.CRAFTING_TABLE
                     && main.getConfigValues().isEnabled(Feature.CRAFTING_PATTERNS)) {
 
                 final CraftingPattern selectedPattern = CraftingPatternSelection.selectedPattern;
                 final ItemStack clickedItem = slotIn.getStack();
-                if(selectedPattern != CraftingPattern.FREE && clickedItem != null) {
+                if (selectedPattern != CraftingPattern.FREE && clickedItem != null) {
                     final ItemStack[] craftingGrid = new ItemStack[9];
                     for (int i = 0; i < CraftingPattern.CRAFTING_GRID_SLOTS.size(); i++) {
                         int slotIndex = CraftingPattern.CRAFTING_GRID_SLOTS.get(i);
@@ -164,21 +172,21 @@ public class PlayerControllerMPHook {
 
                     final CraftingPatternResult result = selectedPattern.checkAgainstGrid(craftingGrid);
 
-                    if(slotIn.inventory.equals(Minecraft.getMinecraft().thePlayer.inventory)) {
-                        if(result.isFilled() && !result.fitsItem(clickedItem) && clickModifier == SHIFTCLICK_CLICK_TYPE) {
+                    if (slotIn.inventory.equals(Minecraft.getMinecraft().thePlayer.inventory)) {
+                        if (result.isFilled() && !result.fitsItem(clickedItem) && clickModifier == SHIFTCLICK_CLICK_TYPE) {
                             // cancel shift-clicking items from the inventory if the pattern is already filled
-                            if(System.currentTimeMillis() > lastCraftingSoundPlayed+CRAFTING_PATTERN_SOUND_COOLDOWN) {
+                            if (System.currentTimeMillis() > lastCraftingSoundPlayed + CRAFTING_PATTERN_SOUND_COOLDOWN) {
                                 main.getUtils().playSound("note.bass", 0.5);
                                 lastCraftingSoundPlayed = System.currentTimeMillis();
                             }
                             returnValue.cancel();
                         }
                     } else {
-                        if(slotIn.getSlotIndex() == CraftingPattern.CRAFTING_RESULT_INDEX
+                        if (slotIn.getSlotIndex() == CraftingPattern.CRAFTING_RESULT_INDEX
                                 && !result.isSatisfied()
                                 && CraftingPatternSelection.blockCraftingIncomplete) {
                             // cancel clicking the result if the pattern isn't satisfied
-                            if(System.currentTimeMillis() > lastCraftingSoundPlayed+CRAFTING_PATTERN_SOUND_COOLDOWN) {
+                            if (System.currentTimeMillis() > lastCraftingSoundPlayed + CRAFTING_PATTERN_SOUND_COOLDOWN) {
                                 main.getUtils().playSound("note.bass", 0.5);
                                 lastCraftingSoundPlayed = System.currentTimeMillis();
                             }

@@ -8,6 +8,7 @@
     "skeletonHatBonesBar": "Лента за Костите на Скелетната Каска",
     "hideFoodAndArmor": "Скрий Лентите за Храна и Броня",
     "fullInventoryWarning": "Предупреждение за Пълен Инвентар",
+    "repeating": "Repeating",
     "disableEmberRodAbility": "Изклюване на Използването на Ember Rod на Острова",
     "editLocations": "Редактиране на Местоположенията в GUI",
     "guiScale": "Gui Мащаб: %scale%",
@@ -15,7 +16,7 @@
     "hideDurability": "Скрии Използваността на Инструментите",
     "showEnchantmentsReforges": "Омагьосвания & Модификации",
     "minionStopWarning": "\"Миньонът не Може да Стигне\" Предупреждение",
-    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
+    "hidePlayersNearNPCs": "Скрий играчи около важни NPC-та",
     "backpackStyle": "Стил на Чантата: %style%",
     "backpackStyles": {
       "regular": "Обикновен",
@@ -90,13 +91,19 @@
     "tab": {
       "generalSettings": "Общи Настройки"
     },
-    "tabEffectTimers": "Potion and Powerup Timers",
-    "noArrowsLeftAlert": "No Arrows Left Alert",
-    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
-    "showCakeBagPreview": "Show Preview for Cake Bags",
-    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
-    "hidePlayersNearHarp": "Hide Players Near Melody's Harp",
-    "enableDevFeatures": "Enable Developer Features"
+    "tabEffectTimers": "Таймер за отвари и ефекти повдигащи силите",
+    "noArrowsLeftAlert": "Нампомняне Че Няма Останали Стрели\n",
+    "hideNightVisionEffectTimer": "Скрий таймера за ефекта нощно виждане",
+    "showCakeBagPreview": "Показване на какво има в чантata за торти",
+    "showBackpackPreviewInAH": "Покажи какво има в Чантата за предметите ти докато си отворил Аукционната къща",
+    "enableDevFeatures": "Ключ за девелопър мод",
+    "chromaSpeed": "Chroma Speed",
+    "chromaMode": "Chroma Color Mode",
+    "chromaModes": {
+      "allTheSame": "All the Same Color",
+      "fade": "Color Fade"
+    },
+    "chromaFadeWidth": "Chroma Fade Width"
   },
   "messages": {
     "dropConfirmation": "Хвърлете Този Предмет Отново за да Потвърдите!",
@@ -134,6 +141,7 @@
     "cancelledProfileOpening": "SkyblockAddons Ви спря да отворите профилът на този играч докато държите лък.",
     "cancelledDropping": "SkyblockAddons ви спря да изхвърлите този рядък предмет или инструмент от вашият хотбар.",
     "clickMoreTimes": "Натиснете Копчето Ви За Хвърляне На Предмети Още %times% Път/Пъти Ако Найстина Искате Да Го Изхвърлитен",
+    "clickOneMoreTime": "Click/drop this item 1 more time if you really want to do this.",
     "cancelledDeepCaverns": "Свойство в SkyblockAddons Ви спря от това да разрушите този блок тук.",
     "featureDisabled": "Свойство Изключено",
     "anvilUses": "Използване на наковалня: %uses%",
@@ -141,10 +149,10 @@
     "blockIncompletePatterns": "Блокиране на изработване на непълни модели (препоръчително)",
     "searchFeatures": "Търси Свойства",
     "downloadingUpdateFile": "Изтегляне на актуализация...",
-    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
-    "noArrowsLeft": "No Arrows Left!",
-    "chooseAColor": "Choose a Color",
-    "selectedColor": "Selected Color",
+    "onlyFewArrowsLeft": "Има %arrows% оставащи стрели.",
+    "noArrowsLeft": "Стрелите са свършили",
+    "chooseAColor": "Избери един цвят",
+    "selectedColor": "Избран цвят",
     "setHexColor": "Set Hex Color"
   }
 }

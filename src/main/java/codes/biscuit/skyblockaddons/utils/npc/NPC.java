@@ -33,6 +33,7 @@ enum NPC {
     BAKER("Baker",34.5, 71, -44.5, asList(Tag.PLAYER, Tag.IMPORTANT, Tag.EVENT), singletonList(Location.VILLAGE)),
     BANKER("Banker",20.5,71, -40.5, asList(Tag.PLAYER, Tag.IMPORTANT, Tag.OTHER), asList(Location.VILLAGE, Location.BANK)),
     BARTENDER("Bartender", -85.5, 70, -69.5, asList(Tag.PLAYER, Tag.IMPORTANT, Tag.MERCHANT), asList(Location.VILLAGE, Location.TAVERN)),
+    BAZAAR("Bazaar", 32, 71, -79, asList(Tag.PLAYER, Tag.IMPORTANT, Tag.MERCHANT), asList(Location.VILLAGE, Location.BAZAAR)),
     BLACKSMITH("Blacksmith", -19.5,71, -124.5, asList(Tag.PLAYER, Tag.IMPORTANT, Tag.UTILITY), singletonList(Location.VILLAGE)),
     BUILDER("Builder", -7,70, -41.5, asList(Tag.PLAYER, Tag.IMPORTANT, Tag.MERCHANT), singletonList(Location.VILLAGE)),
     CARPENTER("Carpenter", -54.5, 69, -81.5, asList(Tag.PLAYER, Tag.INFO, Tag.QUEST_NPC), singletonList(Location.VILLAGE)),
@@ -63,6 +64,7 @@ enum NPC {
     TAYLOR("Taylor", -28.5, 71, -107, asList(Tag.PLAYER, Tag.OTHER), asList(Location.VILLAGE, Location.FASHION_SHOP)),
     TOM("Tom", -15, 70, -84, asList(Tag.VILLAGER, Tag.INFO, Tag.QUEST_NPC), singletonList(Location.VILLAGE)),
     VEX("Vex",12, 70, -86, asList(Tag.VILLAGER, Tag.INFO, Tag.QUEST_NPC), singletonList(Location.VILLAGE)),
+    WARREN("Warren", 37,71,-85, asList(Tag.PLAYER, Tag.IMPORTANT, Tag.MERCHANT), asList(Location.VILLAGE, Location.BAZAAR)),
     WEAPONSMITH("Weaponsmith", -19,70, -41.5, asList(Tag.PLAYER, Tag.IMPORTANT, Tag.MERCHANT), singletonList(Location.VILLAGE)),
 
     // Farm (in Hub)
