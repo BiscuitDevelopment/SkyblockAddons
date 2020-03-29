@@ -8,7 +8,7 @@
     "skeletonHatBonesBar": "หลอดเกราะของหมวกกระดูก",
     "hideFoodAndArmor": "ซ่อนหลอดอาหารและเกราะ",
     "fullInventoryWarning": "เตือนของในตัวกำลังเต็ม",
-    "repeating": "Repeating",
+    "repeating": "การทำซ้ำ",
     "disableEmberRodAbility": "ปิดการใช้สกิลของ Ember Rod ในเกาะตนเอง",
     "editLocations": "การเคลื่อนย้าย GUI",
     "guiScale": "ขยาย GUI %scale%",
@@ -68,7 +68,7 @@
     "soundIndicatorForFishing": "เสียงแจ้งเตือนเมื่อตกปลาได้",
     "avoidBlinkingNightVision": "ปิด Effect Night Vision ตอนกำลังหมด",
     "disableMinionLocationWarning": "ปิดคำเตือน Location not perfect",
-    "jungleAxeCooldown": "คูลดาวน์ Jungle Axe",
+    "jungleAxeCooldown": "คูลดาวน์ Jungle Axe และ Treecapitator",
     "organizeLongEnchantmentLists": "จัดรายชื่อ Enchantment ที่ยาวๆ",
     "showItemCooldowns": "แสดงคูลดาวน์ไอเทม",
     "speedPercentage": "เปอร์เซ็นต์ความเร็ว",
@@ -98,12 +98,12 @@
     "showBackpackPreviewInAH": "โชว์แบบกระเป๋าในขณะที่ใช้ร้านประมูล",
     "enableDevFeatures": "เปิดใช้ฟีเจอร์สำหรับผู้พัฒนา",
     "chromaSpeed": "Chroma Speed",
-    "chromaMode": "Chroma Color Mode",
+    "chromaMode": "โหมดสีรุ้ง",
     "chromaModes": {
-      "allTheSame": "All the Same Color",
-      "fade": "Color Fade"
+      "allTheSame": "สีเหมือนกันทั้งหมด",
+      "fade": "เรียงสี"
     },
-    "chromaFadeWidth": "Chroma Fade Width"
+    "chromaFadeWidth": "เรียงสีด้วยความกว้าง"
   },
   "messages": {
     "dropConfirmation": "กดทิ้งของอีกที่เพื่อยืนยันทิ้งของสิ่งนี้!",
