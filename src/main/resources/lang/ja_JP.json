@@ -103,7 +103,8 @@
       "allTheSame": "全て同じ色",
       "fade": "Color Fade"
     },
-    "chromaFadeWidth": "Chroma Fade Width"
+    "chromaFadeWidth": "Chroma Fade Width",
+    "sortTabEffectTimers": "Sort Timers by Duration"
   },
   "messages": {
     "dropConfirmation": "落としてもいいのであれば、このアイテムをもう一度ドロップしてください。",
