@@ -103,7 +103,8 @@
       "allTheSame": "Toute la même couleur",
       "fade": "Dégradé de couleur"
     },
-    "chromaFadeWidth": "Largeur de fondu Chroma"
+    "chromaFadeWidth": "Largeur de fondu Chroma",
+    "sortTabEffectTimers": "Sort Timers by Duration"
   },
   "messages": {
     "dropConfirmation": "Jetez cet objet une nouvelle fois pour confirmer!",
