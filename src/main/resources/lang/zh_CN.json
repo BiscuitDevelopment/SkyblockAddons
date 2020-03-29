@@ -104,7 +104,7 @@
       "fade": "颜色淡入淡出"
     },
     "chromaFadeWidth": "颜色淡入淡出幅度",
-    "sortTabEffectTimers": "Sort Timers by Duration"
+    "sortTabEffectTimers": "按时长排序计时器"
   },
   "messages": {
     "dropConfirmation": "再次丢弃此物品以确认!",
