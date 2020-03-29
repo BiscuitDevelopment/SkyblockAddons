@@ -103,7 +103,8 @@
       "allTheSame": "Tudo na mesma cor",
       "fade": "Desvanecer da Cor"
     },
-    "chromaFadeWidth": "Largura do Desvanecimento do Efeito Chroma"
+    "chromaFadeWidth": "Largura do Desvanecimento do Efeito Chroma",
+    "sortTabEffectTimers": "Sort Timers by Duration"
   },
   "messages": {
     "dropConfirmation": "Atira este item outra vez para confirmar!",
