@@ -9,7 +9,7 @@
     "hideFoodAndArmor": "Masquer la nourriture & l'armure",
     "fullInventoryWarning": "Alerte inventaire plein",
     "repeating": "Répétition",
-    "disableEmberRodAbility": "Désativer l'Ember Rod sur votre île",
+    "disableEmberRodAbility": "Désactiver l'Ember Rod sur votre île",
     "editLocations": "Modifier l'interface",
     "guiScale": "Taille: %scale%",
     "resetLocations": "Réinitialiser",
@@ -104,7 +104,7 @@
       "fade": "Dégradé de couleur"
     },
     "chromaFadeWidth": "Largeur de fondu Chroma",
-    "sortTabEffectTimers": "Sort Timers by Duration"
+    "sortTabEffectTimers": "Trier les minuteurs par durée"
   },
   "messages": {
     "dropConfirmation": "Jetez cet objet une nouvelle fois pour confirmer!",
