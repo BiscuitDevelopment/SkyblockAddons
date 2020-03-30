@@ -1,3 +1,5 @@
+import groovy.json.*
+
 buildscript {
     repositories {
         jcenter()
@@ -99,6 +101,28 @@ task processResourcesDev(type: Copy) {
     }
     into sourceSets.main.java.outputDir
 }
+
+// Updates the version JSON file automatically when the version changes
+// Don't forget to write the changelog! Those aren't automatic.
+task updateVersionsFile {
+    def versionsFile = new File("resources/versions/dev-versions.json")
+
+    def jsonBuilder = new JsonBuilder(new JsonSlurper().parse(versionsFile))
+    def versionsMap = jsonBuilder.content."1.8.9"
+
+    jsonBuilder.content.promos."1.8.9-latest" = version.toString()
+
+    // Update the versions list if it doesn't have the current version.
+    if (!versionsMap.containsKey(version)) {
+        versionsMap.put(version, "<Insert Changelog Here>")
+        versionsMap = versionsMap.sort(Comparator.reverseOrder())
+        jsonBuilder.content."1.8.9" = versionsMap
+    }
+
+    versionsFile.write(jsonBuilder.toPrettyString())
+}
+
+tasks.build.dependsOn(updateVersionsFile)
 
 //reobf { // Only for labymod client.
 //    jar {
