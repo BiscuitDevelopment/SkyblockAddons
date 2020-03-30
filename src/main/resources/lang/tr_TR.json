@@ -16,7 +16,7 @@
     "hideDurability": "Eşyaların Dayanıklılığını Sakla",
     "showEnchantmentsReforges": "Büyü ve Reforge'lar",
     "minionStopWarning": "\"Minyon Erişemiyor\" Uyarısı",
-    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
+    "hidePlayersNearNPCs": "Önemli NPC'lerin yakınındaki oyuncuları gizle",
     "backpackStyle": "Sırt Çantası Tipi: %style%",
     "backpackStyles": {
       "regular": "Sıradan",
@@ -82,21 +82,21 @@
     "powerOrbDisplay": "Power Orb Display",
     "powerOrbDisplayStyle": "Power Orb Style: %style%",
     "powerOrbStyle": {
-      "detailed": "Detailed",
+      "detailed": "Ayrıntılı",
       "compact": "Compact"
     },
-    "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages",
-    "zealotCounter": "Show Zealot Counter",
+    "disableMagicalSoupMessage": "Sihirli Çorba Mesajları Çıkmasın",
+    "zealotCounter": "Zealot Sayacını Göster",
     "tickerChargesDisplay": "Ticker/Charges Display",
     "tab": {
       "generalSettings": "Genel Ayarlar"
     },
     "tabEffectTimers": "Potion and Powerup Timers",
-    "noArrowsLeftAlert": "No Arrows Left Alert",
-    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
+    "noArrowsLeftAlert": "Okun Kalmadı Uyarısı",
+    "hideNightVisionEffectTimer": "Gece Görüşü Etkisinin Sayacını Sakla",
     "showCakeBagPreview": "Show Preview for Cake Bags",
-    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
-    "enableDevFeatures": "Enable Developer Features",
+    "showBackpackPreviewInAH": "AH Açıkken Eşyalarında Sırt Çantası Ön İzlemesini Göster",
+    "enableDevFeatures": "Geliştirici Seçeneklerini Etkinleştir",
     "chromaSpeed": "Chroma Speed",
     "chromaMode": "Chroma Color Mode",
     "chromaModes": {
@@ -151,9 +151,9 @@
     "searchFeatures": "Özellikleri ara",
     "downloadingUpdateFile": "Güncelleme dosyası indiriliyor...",
     "onlyFewArrowsLeft": "Only %arrows% arrows left!",
-    "noArrowsLeft": "No Arrows Left!",
-    "chooseAColor": "Choose a Color",
+    "noArrowsLeft": "Hiç Okun Kalmadı!",
+    "chooseAColor": "Bir renk seçin",
     "selectedColor": "Selected Color",
-    "setHexColor": "Set Hex Color"
+    "setHexColor": "Hex Rengini Ayarla"
   }
 }
