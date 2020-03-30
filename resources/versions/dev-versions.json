@@ -1,0 +1,9 @@
+{
+  "homepage": "https://github.com/BiscuitDevelopment/SkyblockAddons",
+  "promos": {
+    "1.8.9-latest": "1.5.0-b12"
+  },
+  "1.8.9": {
+    "1.5.0-b12": "Changed to new versioning system"
+  }
+}
