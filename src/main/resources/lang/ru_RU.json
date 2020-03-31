@@ -103,7 +103,8 @@
       "allTheSame": "All the Same Color",
       "fade": "Color Fade"
     },
-    "chromaFadeWidth": "Chroma Fade Width"
+    "chromaFadeWidth": "Chroma Fade Width",
+    "sortTabEffectTimers": "Sort Timers by Duration"
   },
   "messages": {
     "dropConfirmation": "Выбросите предмет ещё раз для подтверждения!",

@@ -8,7 +8,7 @@
     "skeletonHatBonesBar": "Skeletthjälms Benfält",
     "hideFoodAndArmor": "Göm Mat & Rustning Bar",
     "fullInventoryWarning": "Full Lager Varning",
-    "repeating": "Repeating",
+    "repeating": "Upprepning",
     "disableEmberRodAbility": "Inaktivera Ember Roden På Din Ö",
     "editLocations": "Redigera GUI Platser",
     "guiScale": "Gui Skala: %scale%",
@@ -103,7 +103,8 @@
       "allTheSame": "Alla samma färg",
       "fade": "Färg toning"
     },
-    "chromaFadeWidth": "Chroma Fade Bredd"
+    "chromaFadeWidth": "Chroma Fade Bredd",
+    "sortTabEffectTimers": "Sortera tidtagare efter längd"
   },
   "messages": {
     "dropConfirmation": "Släpp Det Här Igen För Att Bekräfta!",

@@ -8,7 +8,7 @@
     "skeletonHatBonesBar": "Skeleto Šalmo Kaulų Rodiklis",
     "hideFoodAndArmor": "Paslėpti Maisto Ir Šarvų Rodiklį",
     "fullInventoryWarning": "Pilno Inventorius Įspėjimas",
-    "repeating": "Repeating",
+    "repeating": "Kartojimas",
     "disableEmberRodAbility": "Išjungti Ember Rod'o Naudojimą Saloje",
     "editLocations": "Redaguoti GUI vietas",
     "guiScale": "Gui Skalė %scale%",
@@ -82,28 +82,29 @@
     "powerOrbDisplay": "Galios Orb Rodymas",
     "powerOrbDisplayStyle": "Galios Orb Stilius %style%",
     "powerOrbStyle": {
-      "detailed": "Detailed",
-      "compact": "Compact"
+      "detailed": "Detalizuotai",
+      "compact": "Glaustai"
     },
-    "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages",
-    "zealotCounter": "Show Zealot Counter",
-    "tickerChargesDisplay": "Ticker/Charges Display",
+    "disableMagicalSoupMessage": "Panaikinti stebuklingosios grybų sriubos žinutes",
+    "zealotCounter": "Rodyti ''Zealot\" Skaičiuoklę",
+    "tickerChargesDisplay": "Tickerio/Krovimosi Rodymas",
     "tab": {
       "generalSettings": "Bendrieji nustatymai"
     },
-    "tabEffectTimers": "Potion and Powerup Timers",
-    "noArrowsLeftAlert": "No Arrows Left Alert",
-    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
-    "showCakeBagPreview": "Show Preview for Cake Bags",
-    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
-    "enableDevFeatures": "Enable Developer Features",
-    "chromaSpeed": "Chroma Speed",
-    "chromaMode": "Chroma Color Mode",
+    "tabEffectTimers": "Potionu Ir Powerup'u Laikmačiai",
+    "noArrowsLeftAlert": "Nebeturite Strėlių Alertas",
+    "hideNightVisionEffectTimer": "Paslėpti Naktinio Matymo Efekto Laimati",
+    "showCakeBagPreview": "Rodyti apžvalgą tortų kuprinėms",
+    "showBackpackPreviewInAH": "Rodyti daiktus jūsų kuprinėse kai AH atidarytas",
+    "enableDevFeatures": "Ijungti kūrėjų nustatymus",
+    "chromaSpeed": "Chromos greitis",
+    "chromaMode": "Chromos splavos nustatymas",
     "chromaModes": {
-      "allTheSame": "All the Same Color",
-      "fade": "Color Fade"
+      "allTheSame": "Visi tokios pat spalvos",
+      "fade": "Spalvų keitimasis"
     },
-    "chromaFadeWidth": "Chroma Fade Width"
+    "chromaFadeWidth": "Spalvų keitimosi plotis",
+    "sortTabEffectTimers": "Skirstyti laikmačius pagal trukme"
   },
   "messages": {
     "dropConfirmation": "Meskite Šį Daiktą Dar Kartą, Kad Patvirtintumėte!",
@@ -141,7 +142,7 @@
     "cancelledProfileOpening": "SkyblockAddons sustabdė jumis nuo šio žaidėjo profilio atidarymo, kai jūs rankoje laikote lanką.",
     "cancelledDropping": "SkyblockAddons sustabdė jumis nuo šio reto daikto išmetimo iš jūsų inventoriaus ar hotbar'o.",
     "clickMoreTimes": "Paspauskite/meskite šį daiktą %times% tiek kartų jeigu iš tikrųjų norite jį išmesti.",
-    "clickOneMoreTime": "Click/drop this item 1 more time if you really want to do this.",
+    "clickOneMoreTime": "Paspauskite/Išmeskite šį daiktą dar vieną kartą jei tikrai norite tai padaryti.",
     "cancelledDeepCaverns": "SkyblockAddons funkcija sustabdė jus nuo bloko iškasimo šioje vietoje.",
     "featureDisabled": "Funkcija išjungta",
     "anvilUses": "Priekalo Panaudojimai: %uses%",
@@ -149,10 +150,10 @@
     "blockIncompletePatterns": "Nepilnas blokų modelis (rekomenduojama)",
     "searchFeatures": "Rasti funkciją",
     "downloadingUpdateFile": "Atsiunčiami naujinimai...",
-    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
-    "noArrowsLeft": "No Arrows Left!",
-    "chooseAColor": "Choose a Color",
-    "selectedColor": "Selected Color",
-    "setHexColor": "Set Hex Color"
+    "onlyFewArrowsLeft": "Tik %arrows% likusių strėlių!",
+    "noArrowsLeft": "Nebeliko strėlių!",
+    "chooseAColor": "Pasirinkte spalvą",
+    "selectedColor": "Pasirinkita spalva",
+    "setHexColor": "Nustatyti Hex Spalva"
   }
 }

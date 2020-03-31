@@ -103,7 +103,8 @@
       "allTheSame": "Lik Farge på Alle",
       "fade": "Farge Fade"
     },
-    "chromaFadeWidth": "Chroma Fade Bredde"
+    "chromaFadeWidth": "Chroma Fade Bredde",
+    "sortTabEffectTimers": "Sorter Timere etter Lengde"
   },
   "messages": {
     "dropConfirmation": "Slipp denne gjenstanden igjen for å bekrefte!",

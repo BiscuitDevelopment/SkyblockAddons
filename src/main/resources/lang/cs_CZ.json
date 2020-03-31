@@ -103,7 +103,8 @@
       "allTheSame": "Všechny stejné barvy",
       "fade": "Barevné vyblednutí"
     },
-    "chromaFadeWidth": "Šířka vyblednutí měnění barev"
+    "chromaFadeWidth": "Šířka vyblednutí měnění barev",
+    "sortTabEffectTimers": "Seřadit Časovače podle délky"
   },
   "messages": {
     "dropConfirmation": "Vyhoď tento item pro vyhození!",

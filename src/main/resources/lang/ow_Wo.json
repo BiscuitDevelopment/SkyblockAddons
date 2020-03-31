@@ -103,7 +103,8 @@
       "allTheSame": "Aww the Same Cowow",
       "fade": "Cowow Fade"
     },
-    "chromaFadeWidth": "Chwoma Fade Width"
+    "chromaFadeWidth": "Chwoma Fade Width",
+    "sortTabEffectTimers": "Sort Timers by Duration"
   },
   "messages": {
     "dropConfirmation": "Dwop thwis itwem agwain to confiwm!",

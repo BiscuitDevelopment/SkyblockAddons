@@ -103,7 +103,8 @@
       "allTheSame": "Allemaal dezelfde kleur",
       "fade": "Color Fade"
     },
-    "chromaFadeWidth": "Chroma Fade Width"
+    "chromaFadeWidth": "Chroma Fade Width",
+    "sortTabEffectTimers": "Sort Timers by Duration"
   },
   "messages": {
     "dropConfirmation": "Laat dit object opnieuw vallen om te Bevestigen!",

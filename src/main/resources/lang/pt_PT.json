@@ -36,7 +36,7 @@
     "defencePercentage": "Percentagem de Defesa",
     "healthUpdates": "Número da Diferença de Vida",
     "hidePlayersInLobby": "Esconder jogadores longe no Lobby",
-    "darkAuctionTimer": "Tempo da Dark Auction",
+    "darkAuctionTimer": "Tempo até à Dark Auction",
     "magmaBossTimer": "Tempo até ao Magma Boss",
     "itemPickupLog": "Registo de recolha de itens",
     "avoidPlacingEnchantedItems": "Evitar colocar itens encantados",
@@ -103,7 +103,8 @@
       "allTheSame": "Tudo na mesma cor",
       "fade": "Desvanecer da Cor"
     },
-    "chromaFadeWidth": "Largura do Desvanecimento do Efeito Chroma"
+    "chromaFadeWidth": "Largura do Desvanecimento do Efeito Chroma",
+    "sortTabEffectTimers": "Ordenar temporizadores por duração"
   },
   "messages": {
     "dropConfirmation": "Atira este item outra vez para confirmar!",

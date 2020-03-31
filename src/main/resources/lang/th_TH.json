@@ -103,7 +103,8 @@
       "allTheSame": "สีเหมือนกันทั้งหมด",
       "fade": "เรียงสี"
     },
-    "chromaFadeWidth": "เรียงสีด้วยความกว้าง"
+    "chromaFadeWidth": "เรียงสีด้วยความกว้าง",
+    "sortTabEffectTimers": "Sort Timers by Duration"
   },
   "messages": {
     "dropConfirmation": "กดทิ้งของอีกที่เพื่อยืนยันทิ้งของสิ่งนี้!",
