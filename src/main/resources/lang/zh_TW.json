@@ -103,7 +103,8 @@
       "allTheSame": "全顏色相同",
       "fade": "顏色淡入淡出"
     },
-    "chromaFadeWidth": "彩色淡入淡出幅度"
+    "chromaFadeWidth": "彩色淡入淡出幅度",
+    "sortTabEffectTimers": "按時長排序計時器"
   },
   "messages": {
     "dropConfirmation": "再次丟棄此物品以確認!",

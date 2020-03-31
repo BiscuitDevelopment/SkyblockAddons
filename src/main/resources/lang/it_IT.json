@@ -103,7 +103,8 @@
       "allTheSame": "Tutto dello stesso colore",
       "fade": "Dissolvenza del colore"
     },
-    "chromaFadeWidth": "Larghezza della dissolvenza cromatica"
+    "chromaFadeWidth": "Larghezza della dissolvenza cromatica",
+    "sortTabEffectTimers": "Ordina i timer per durata"
   },
   "messages": {
     "dropConfirmation": "Getta questo oggetto nuovamente per confermare!",
