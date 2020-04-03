@@ -50,14 +50,24 @@ public class ItemUtils {
      * Returns the Skyblock Item ID of a given Skyblock item
      *
      * @param item the Skyblock item to check
-     * @return the Skyblock Item ID of this item
+     * @return the Skyblock Item ID of this item or {@code null} if this isn't a valid Skyblock item
      */
     public static String getSkyBlockItemID(final ItemStack item) {
-        if (item == null) return null;
-        if (item.hasTagCompound()) {
+        if (item != null) {
             NBTTagCompound skyBlockData = item.getTagCompound().getCompoundTag("ExtraAttributes");
-            return skyBlockData.getString("id");
+
+            if (skyBlockData != null) {
+                String itemId = skyBlockData.getString("id");
+
+                if (!itemId.equals("")) {
+                    return itemId;
+                }
+            }
         }
+        else {
+            throw new NullPointerException("Item cannot be null.");
+        }
+
         return null;
     }
 }

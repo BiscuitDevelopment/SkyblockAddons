@@ -3,6 +3,7 @@ package codes.biscuit.skyblockaddons.listeners;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.utils.*;
 import codes.biscuit.skyblockaddons.utils.dev.DevUtils;
+import codes.biscuit.skyblockaddons.utils.item.ItemUtils;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,6 +18,7 @@ import net.minecraft.entity.monster.EntityBlaze;
 import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.monster.EntityMagmaCube;
 import net.minecraft.entity.monster.EntitySlime;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityFishHook;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.Container;
@@ -25,14 +27,17 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.Vec3;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.client.event.GuiOpenEvent;
+import net.minecraftforge.client.event.GuiScreenEvent;
 import net.minecraftforge.event.entity.EntityEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
+import net.minecraftforge.event.entity.player.FillBucketEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.ChunkEvent;
@@ -234,7 +239,7 @@ public class PlayerListener {
 
     /**
      * This blocks interaction with Ember Rods on your island, to avoid blowing up chests, and placing enchanted items
-     * such as enchanted lava buckets.
+     * such as enchanted gold blocks.
      */
     @SubscribeEvent()
     public void onInteract(PlayerInteractEvent e) {
@@ -253,8 +258,31 @@ public class PlayerListener {
                 if (main.getConfigValues().isEnabled(Feature.SHOW_ITEM_COOLDOWNS) && mc.thePlayer.fishEntity != null) {
                     CooldownManager.put(mc.thePlayer.getHeldItem());
                 }
-            } else if (main.getConfigValues().isEnabled(Feature.AVOID_PLACING_ENCHANTED_ITEMS) && EnchantedItemBlacklist.shouldBlockUsage(heldItem, e.action)) {
+            } else if (EnchantedItemBlacklist.shouldBlockUsage(heldItem, e.action)) {
                 e.setCanceled(true);
+            }
+        }
+    }
+
+    /**
+     * Block emptying of buckets separately because they aren't handled like blocks.
+     * The event name {@code FillBucketEvent} is misleading. The event is fired when buckets are emptied also so
+     * it should really be called {@code BucketEvent}.
+     *
+     * @param bucketEvent the event
+     */
+    @SubscribeEvent
+    public void onBucketEvent(FillBucketEvent bucketEvent) {
+        ItemStack bucket = bucketEvent.current;
+        EntityPlayer player = bucketEvent.entityPlayer;
+
+        if (main.getUtils().isOnSkyblock() && player instanceof EntityPlayerSP) {
+            if (main.getConfigValues().isEnabled(Feature.AVOID_PLACING_ENCHANTED_ITEMS)) {
+                String skyblockItemId = ItemUtils.getSkyBlockItemID(bucket);
+
+                if (skyblockItemId != null && skyblockItemId.equals("ENCHANTED_LAVA_BUCKET")) {
+                    bucketEvent.setCanceled(true);
+                }
             }
         }
     }
@@ -514,27 +542,30 @@ public class PlayerListener {
     public void onItemTooltip(ItemTooltipEvent e) {
         ItemStack hoveredItem = e.itemStack;
 
-        if (e.toolTip != null && main.getUtils().isOnSkyblock() && !main.getConfigValues().isRemoteDisabled(Feature.HIDE_GREY_ENCHANTS)) {
-            for (int i = 1; i <= 3; i++) { // only a max of 2 gray enchants are possible
-                if (i >= e.toolTip.size()) continue; // out of bounds
+        if (e.toolTip != null && main.getUtils().isOnSkyblock()) {
+            if (!main.getConfigValues().isRemoteDisabled(Feature.HIDE_GREY_ENCHANTS)) {
+                for (int i = 1; i <= 3; i++) { // only a max of 2 gray enchants are possible
+                    if (i >= e.toolTip.size()) continue; // out of bounds
 
-                GuiScreen gui = Minecraft.getMinecraft().currentScreen;
-                if (gui instanceof GuiChest) {
-                    Container chest = ((GuiChest) gui).inventorySlots;
-                    if (chest instanceof ContainerChest) {
-                        IInventory inventory = ((ContainerChest) chest).getLowerChestInventory();
-                        if (inventory.hasCustomName() && "Enchant Item".equals(inventory.getDisplayName().getUnformattedText())) {
-                            continue; // dont replace enchants when you are enchanting items in an enchantment table
+                    GuiScreen gui = Minecraft.getMinecraft().currentScreen;
+                    if (gui instanceof GuiChest) {
+                        Container chest = ((GuiChest) gui).inventorySlots;
+                        if (chest instanceof ContainerChest) {
+                            IInventory inventory = ((ContainerChest) chest).getLowerChestInventory();
+                            if (inventory.hasCustomName() && "Enchant Item".equals(inventory.getDisplayName().getUnformattedText())) {
+                                continue; // dont replace enchants when you are enchanting items in an enchantment table
+                            }
                         }
                     }
-                }
-                String line = e.toolTip.get(i);
-                if (!line.startsWith("§5§o§9") && (line.contains("Respiration") || line.contains("Aqua Affinity")
-                        || line.contains("Depth Strider") || line.contains("Efficiency"))) {
-                    e.toolTip.remove(line);
-                    i--;
+                    String line = e.toolTip.get(i);
+                    if (!line.startsWith("§5§o§9") && (line.contains("Respiration") || line.contains("Aqua Affinity")
+                            || line.contains("Depth Strider") || line.contains("Efficiency"))) {
+                        e.toolTip.remove(line);
+                        i--;
+                    }
                 }
             }
+
             if (main.getConfigValues().isEnabled(Feature.SHOW_ITEM_ANVIL_USES)) {
                 // Anvil Uses ~ original done by Dahn#6036
                 int anvilUses = main.getUtils().getNBTInteger(hoveredItem, "ExtraAttributes", "anvil_uses");
@@ -557,9 +588,7 @@ public class PlayerListener {
                 }
             }
 
-            if (main.getConfigValues().isEnabled(Feature.REPLACE_ROMAN_NUMERALS_WITH_NUMBERS)
-                    // To avoid "I" as in "me" to be replaced in that specific tooltip
-                    && !InventoryUtils.FAIRY_SOUL_EXCHANGE_DISPLAYNAME.equals(hoveredItem.getDisplayName())) {
+            if (main.getConfigValues().isEnabled(Feature.REPLACE_ROMAN_NUMERALS_WITH_NUMBERS)) {
                 for (int i = 0; i < e.toolTip.size(); i++) {
                     e.toolTip.set(i, RomanNumeralParser.replaceNumeralsWithIntegers(e.toolTip.get(i)));
                 }
@@ -606,6 +635,15 @@ public class PlayerListener {
                     }
                 }
             }
+
+            // Append Skyblock Item ID to end of tooltip if in developer mode
+            if (main.isDevMode() && e.showAdvancedItemTooltips) {
+                String itemId = ItemUtils.getSkyBlockItemID(e.itemStack);
+
+                if (itemId != null) {
+                    e.toolTip.add(EnumChatFormatting.DARK_GRAY + "Skyblock ID: " + itemId);
+                }
+            }
         }
     }
 
@@ -620,6 +658,13 @@ public class PlayerListener {
         }
     }
 
+    /**
+     * This method handles key presses while the player is in-game.
+     * For handling of key presses while a GUI (e.g. chat, pause menu, F3) is open,
+     * see {@link GuiScreenListener#onKeyInput(GuiScreenEvent.KeyboardInputEvent)}
+     *
+     * @param e the {@code KeyInputEvent}
+     */
     @SubscribeEvent(receiveCanceled = true)
     public void onKeyInput(InputEvent.KeyInputEvent e) {
         if (main.getOpenSettingsKey().isPressed()) {
