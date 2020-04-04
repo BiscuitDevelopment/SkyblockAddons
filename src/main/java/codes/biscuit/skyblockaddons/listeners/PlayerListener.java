@@ -326,8 +326,12 @@ public class PlayerListener {
                     if (p != null) {
                         main.getUtils().checkGameLocationDate();
                         main.getInventoryUtils().checkIfInventoryIsFull(mc, p);
-                        main.getInventoryUtils().checkIfWearingSkeletonHelmet(p);
-                        main.getInventoryUtils().checkIfWearingRevenantArmor(p);
+
+                        if (main.getUtils().isOnSkyblock()) {
+                            main.getInventoryUtils().checkIfWearingSkeletonHelmet(p);
+                            main.getInventoryUtils().checkIfWearingRevenantArmor(p);
+                        }
+
                         if (!sentUpdate) {
                             main.getUtils().checkUpdates();
                             sentUpdate = true;
@@ -674,7 +678,7 @@ public class PlayerListener {
             main.getUtils().setFadingIn(false);
             main.getRenderListener().setGuiToOpen(EnumUtils.GUIType.EDIT_LOCATIONS, 0, null);
         } else if (Keyboard.getEventKey() == DevUtils.DEV_KEY && Keyboard.getEventKeyState()) {
-            // Copy Entity Data
+            // Copy Mob Data
             if (main.isDevMode()) {
                 EntityPlayerSP player = Minecraft.getMinecraft().thePlayer;
                 List<Entity> entityList = Minecraft.getMinecraft().theWorld.loadedEntityList;

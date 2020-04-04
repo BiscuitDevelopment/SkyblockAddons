@@ -28,11 +28,11 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 @Getter
-@Mod(modid = SkyblockAddons.MOD_ID, version = SkyblockAddons.VERSION, name = SkyblockAddons.MOD_NAME, clientSideOnly = true, acceptedMinecraftVersions = "[1.8.9]", updateJSON = "@UPDATE_JSON@")
+@Mod(modid = "@MOD_ID@", name = "@MOD_NAME@", version = "@VERSION@", clientSideOnly = true, acceptedMinecraftVersions = "@MOD_ACCEPTED@", updateJSON = "@UPDATE_JSON@")
 public class SkyblockAddons {
 
-    static final String MOD_ID = "skyblockaddons";
-    public static final String MOD_NAME = "SkyblockAddons";
+    static final String MOD_ID = "@MOD_ID@";
+    public static final String MOD_NAME = "@MOD_NAME@";
     public static final String VERSION = "@VERSION@";
 
     /** The main instance of the mod, used mainly my mixins who don't get it passed to them. */

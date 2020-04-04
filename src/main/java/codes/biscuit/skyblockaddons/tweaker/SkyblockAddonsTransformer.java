@@ -18,6 +18,7 @@ import java.lang.reflect.Field;
 import java.util.Collection;
 import java.util.Map;
 
+@SuppressWarnings("unchecked")
 public class SkyblockAddonsTransformer implements IClassTransformer {
 
     private static boolean LABYMOD_CLIENT;
@@ -28,9 +29,9 @@ public class SkyblockAddonsTransformer implements IClassTransformer {
         boolean foundLaunchClass = false;
         try {
             // DEOBFUSCATED = (boolean)Launch.blackboard.get("fml.deobfuscatedEnvironment");
-            Class launch = Class.forName("net.minecraft.launchwrapper.Launch");
+            Class<?> launch = Class.forName("net.minecraft.launchwrapper.Launch");
             Field blackboardField = launch.getField("blackboard");
-            Map<String,Object> blackboard = (Map<String,Object>)blackboardField.get(null);
+            Map<String,Object> blackboard = (Map<String, Object>) blackboardField.get(null);
             DEOBFUSCATED = (boolean) blackboard.get("fml.deobfuscatedEnvironment");
             foundLaunchClass = true;
         } catch (ClassNotFoundException | NoSuchFieldException | IllegalAccessException ex) {

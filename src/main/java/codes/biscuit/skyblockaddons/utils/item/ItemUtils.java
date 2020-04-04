@@ -53,19 +53,21 @@ public class ItemUtils {
      * @return the Skyblock Item ID of this item or {@code null} if this isn't a valid Skyblock item
      */
     public static String getSkyBlockItemID(final ItemStack item) {
-        if (item != null) {
-            NBTTagCompound skyBlockData = item.getTagCompound().getCompoundTag("ExtraAttributes");
-
-            if (skyBlockData != null) {
-                String itemId = skyBlockData.getString("id");
-
-                if (!itemId.equals("")) {
-                    return itemId;
-                }
-            }
-        }
-        else {
+        if (item == null) {
             throw new NullPointerException("Item cannot be null.");
+        }
+        else if (!item.hasTagCompound()) {
+            return null;
+        }
+
+        NBTTagCompound skyBlockData = item.getSubCompound("ExtraAttributes", false);
+
+        if (skyBlockData != null) {
+            String itemId = skyBlockData.getString("id");
+
+            if (!itemId.equals("")) {
+                return itemId;
+            }
         }
 
         return null;

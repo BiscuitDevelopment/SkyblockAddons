@@ -20,37 +20,36 @@ buildscript {
 apply plugin: 'io.franzbecker.gradle-lombok'
 apply plugin: 'net.minecraftforge.gradle.forge'
 
-group= "codes.biscuit.skyblockaddons"
-archivesBaseName = "SkyblockAddons"
+group= "codes.biscuit"
 compileJava.options.encoding = 'UTF-8'
-
-tasks.withType(JavaCompile) {
-    options.encoding = 'UTF-8'
-}
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 minecraft {
-    version = "1.8.9-11.15.1.2318-1.8.9"
+    version = "${project.minecraftVersion}-${project.forgeVersion}"
     runDir = "run"
 
-    mappings = "stable_22"
+    mappings = "${project.mappings}"
 
     // Replace placeholders in source code
-    replace("@VERSION@": project.version, "@UPDATE_JSON@": updateJSON)
-    replaceIn("SkyblockAddons.java")
+    replace("@MOD_ID@": project.modId,
+            "@MOD_NAME@": project.modName,
+            "@VERSION@": project.version,
+            "@MOD_ACCEPTED@": project.acceptedMinecraftVersions,
+            "@UPDATE_JSON@": project.updateJSON)
+    replaceIn("${project.modName}.java")
 }
 
 jar {
-    archiveName = archivesBaseName + "-" + minecraft.version + "-" + version + ".jar"
+    archiveName = project.modName + "-" + minecraft.version + "-" + version + ".jar"
 
     manifest.attributes(
             'Main-Class': 'OpenErrorMessage',
-            'FMLCorePlugin': 'codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsLoadingPlugin',
-            "ForceLoadAsMod": true,
+            'FMLCorePlugin': "${project.group}.${project.modId}.tweaker.${project.modName}LoadingPlugin",
+            'ForceLoadAsMod': true,
             'FMLCorePluginContainsFMLMod': true,
             'ModSide': 'CLIENT',
-            'FMLAT': 'skyblockaddons_at.cfg'
+            'FMLAT': "${project.modId}_at.cfg"
     )
 
 }
@@ -67,7 +66,6 @@ processResources {
     // replace stuff in mcmod.info, nothing else
     from(sourceSets.main.resources.srcDirs) {
         include 'mcmod.info'
-        include 'litemod.json'
 
         // replace version and mcversion
         expand 'version':project.version, 'mcversion':project.minecraft.version
@@ -76,7 +74,6 @@ processResources {
     // copy everything else, thats not the mcmod.info
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'
-        exclude 'litemod.json'
     }
 }
 
@@ -88,7 +85,6 @@ task processResourcesDev(type: Copy) {
     // replace stuff in mcmod.info, nothing else
     from(sourceSets.main.resources.srcDirs) {
         include 'mcmod.info'
-        include 'litemod.json'
 
         // replace version and mcversion
         expand 'version':project.version, 'mcversion':project.minecraft.version
@@ -97,7 +93,6 @@ task processResourcesDev(type: Copy) {
     // copy everything else, thats not the mcmod.info
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'
-        exclude 'litemod.json'
     }
     into sourceSets.main.java.outputDir
 }
