@@ -100,7 +100,7 @@ task processResourcesDev(type: Copy) {
 // Updates the version JSON file automatically when the version changes
 // Don't forget to write the changelog! Those aren't automatic.
 task updateVersionsFile {
-    def versionsFile = new File("resources/versions/dev-versions.json")
+    def versionsFile = new File(".github/versions/dev-versions.json")
 
     def jsonBuilder = new JsonBuilder(new JsonSlurper().parse(versionsFile))
     def versionsMap = jsonBuilder.content."1.8.9"

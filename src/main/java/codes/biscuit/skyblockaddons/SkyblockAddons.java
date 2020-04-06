@@ -31,7 +31,7 @@ import java.util.TimerTask;
 @Mod(modid = "@MOD_ID@", name = "@MOD_NAME@", version = "@VERSION@", clientSideOnly = true, acceptedMinecraftVersions = "@MOD_ACCEPTED@", updateJSON = "@UPDATE_JSON@")
 public class SkyblockAddons {
 
-    static final String MOD_ID = "@MOD_ID@";
+    public static final String MOD_ID = "@MOD_ID@";
     public static final String MOD_NAME = "@MOD_NAME@";
     public static final String VERSION = "@VERSION@";
 
@@ -41,11 +41,11 @@ public class SkyblockAddons {
     private ConfigValues configValues;
     private Logger logger;
     private PersistentValues persistentValues;
-    private PlayerListener playerListener = new PlayerListener(this);
-    private GuiScreenListener guiScreenListener = new GuiScreenListener(this);
-    private RenderListener renderListener = new RenderListener(this);
-    private Utils utils = new Utils(this);
-    private InventoryUtils inventoryUtils = new InventoryUtils(this);
+    private PlayerListener playerListener;
+    private GuiScreenListener guiScreenListener;
+    private RenderListener renderListener;
+    private InventoryUtils inventoryUtils;
+    private Utils utils;
 
     /** Get the scheduler that be can be used to easily execute tasks. */
     private Scheduler scheduler = new Scheduler(this);
@@ -65,10 +65,20 @@ public class SkyblockAddons {
     }
     @Mod.EventHandler
     public void init(FMLInitializationEvent e) {
+        // Initialize event listeners
+        playerListener = new PlayerListener(this);
+        guiScreenListener = new GuiScreenListener(this);
+        renderListener = new RenderListener(this);
+
         MinecraftForge.EVENT_BUS.register(playerListener);
         MinecraftForge.EVENT_BUS.register(guiScreenListener);
         MinecraftForge.EVENT_BUS.register(renderListener);
         MinecraftForge.EVENT_BUS.register(scheduler);
+
+        // Initialize utilities
+        inventoryUtils = new InventoryUtils(this);
+        utils = new Utils(this);
+
         ClientCommandHandler.instance.registerCommand(new SkyblockAddonsCommand(this));
 
         keyBindings[0] = new KeyBinding("key.skyblockaddons.open_settings", Keyboard.KEY_NONE, MOD_NAME);
