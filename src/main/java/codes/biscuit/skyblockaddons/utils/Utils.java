@@ -14,7 +14,6 @@ import com.google.gson.JsonObject;
 import lombok.Getter;
 import lombok.Setter;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.resources.IResourceManager;
 import net.minecraft.event.ClickEvent;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -26,7 +25,6 @@ import net.minecraft.scoreboard.ScorePlayerTeam;
 import net.minecraft.scoreboard.Scoreboard;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.MathHelper;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.FMLLog;
@@ -63,7 +61,7 @@ public class Utils {
             "telekinesis"
     ));
 
-    private static final String HYPIXEL_IP_REGEX = "([\\w\\d]*)\\.?((?:hypixel.net)|(?:hypixel.io))";
+    private static final String HYPIXEL_IP_REGEX = "(.*)(?:hypixel)(?:\\.io|\\.net)";
 
     private static final Pattern SERVER_REGEX = Pattern.compile("([0-9]{2}/[0-9]{2}/[0-9]{2}) (mini[0-9]{1,3}[A-Za-z])");
 
@@ -698,15 +696,22 @@ public class Utils {
         return Items.wooden_pickaxe.equals(item) || Items.stone_pickaxe.equals(item) || Items.golden_pickaxe.equals(item) || Items.iron_pickaxe.equals(item) || Items.diamond_pickaxe.equals(item);
     }
 
+    /**
+     * This retrieves the featured link for the banner in the top left of the GUI.
+     *
+     * @return the featured link or {@code null} if the link could not be read
+     */
     public URI getFeaturedURL() {
-        IResourceManager resourceManager = Minecraft.getMinecraft().getResourceManager();
-        ResourceLocation featuredLinkLocation = new ResourceLocation(SkyblockAddons.MOD_ID, "texts/featuredlink.txt");
-        
+        String featuredLinkFilePath = "featuredlink.txt";
+
         if (featuredLink != null) return featuredLink;
 
+        InputStream featuredLinkStream;
         BufferedReader reader;
-        try {
-            reader = new BufferedReader(new InputStreamReader(resourceManager.getResource(featuredLinkLocation).getInputStream()));
+        featuredLinkStream = getClass().getClassLoader().getResourceAsStream(featuredLinkFilePath);
+
+        if (featuredLinkStream != null) {
+            reader = new BufferedReader(new InputStreamReader(featuredLinkStream));
 
             try {
                 String currentLine;
@@ -714,14 +719,16 @@ public class Utils {
                     featuredLink = new URI(currentLine);
                 }
                 reader.close();
-            } catch (IOException | URISyntaxException ignored) {
+            } catch (IOException | URISyntaxException e) {
+                logger.error("Failed to read featured link!");
+                logger.catching(e);
             }
-            
-        } catch (IOException e) {
-            logger.error("Resource not found: " + featuredLinkLocation.toString());
         }
-        
-        return featuredLink;
+        else {
+            logger.warn("Resource not found: " + featuredLinkFilePath);
+        }
+
+        return logger.exit(featuredLink);
     }
 
     public void getFeaturedURLOnline() {
@@ -729,7 +736,7 @@ public class Utils {
             lookedOnline = true;
             new Thread(() -> {
                 try {
-                    URL url = new URL("https://raw.githubusercontent.com/BiscuitDevelopment/SkyblockAddons/master/src/main/resources/assets/skyblockaddons/texts/featuredlink.txt");
+                    URL url = new URL("https://raw.githubusercontent.com/BiscuitDevelopment/SkyblockAddons/master/src/main/resources/featuredlink.txt");
                     URLConnection connection = url.openConnection(); // try looking online
                     connection.setReadTimeout(5000);
                     connection.addRequestProperty("User-Agent", "SkyblockAddons");
