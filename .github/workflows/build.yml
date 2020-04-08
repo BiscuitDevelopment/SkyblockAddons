@@ -1,8 +1,11 @@
 name: Build
 
 on:
-  - push
-  - pull_request
+  push:
+    tags-ignore:
+      # Beta has it's own workflow.
+      - Beta
+  pull_request:
   
 jobs:
   build:
