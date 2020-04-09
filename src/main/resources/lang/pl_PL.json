@@ -77,7 +77,7 @@
     "onlyMineValuablesNether": "Kop wartościowe rudy tylko w Netherze",
     "revenantIndicator": "Wskaznik Postępu Zbroi Slayera",
     "specialZealotAlert": "Alarmuj o Specjlanym Zealocie",
-    "enableMessageWhenActionPrevented": "Pokaż wiadomość, gdy akcja jest blokowana",
+    "enableMessageWhenActionPrevented": "Pokaż wiadomość, gdy akcja jest zablokowana",
     "hidePetHealthBar": "Ukryj paski zdrowia zwierzaka",
     "powerOrbDisplay": "Ukryj Kulę Mocy",
     "powerOrbDisplayStyle": "Styl Kuli Mocy: %style%",
