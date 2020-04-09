@@ -8,7 +8,7 @@
     "skeletonHatBonesBar": "Pasek Kości z Hełmu Szkieleta",
     "hideFoodAndArmor": "Ukryj Pasek Głodu i Zbroi",
     "fullInventoryWarning": "Ostrzeżenie o Pełnym Ekwipunku",
-    "repeating": "Repeating",
+    "repeating": "Powtarzanie",
     "disableEmberRodAbility": "Wyłącz Umiejętność Ember Rod'a na Wyspie",
     "editLocations": "Edytuj Lokalizacje",
     "guiScale": "Skala GUI: %scale%",
@@ -35,7 +35,7 @@
     "defenceText": "Wielkość Obrony",
     "defencePercentage": "Procent Obrony",
     "healthUpdates": "Liczba Różnicy Zdrowia",
-    "hidePlayersInLobby": "Ukryj widoczność obiektów z daleka",
+    "hidePlayersInLobby": "Ukryj widoczność graczy z daleka",
     "darkAuctionTimer": "Zegar Dark Auction",
     "magmaBossTimer": "Zegar Magma Bossa",
     "itemPickupLog": "Rejestr Podnoszonych Przedmiotów",
@@ -59,7 +59,7 @@
     },
     "warningDuration": "Długość trwania Ostrzeżenia",
     "dontOpenProfileWithBow": "Nie otwieraj profilu podczas trzymania łuku",
-    "stopDroppingSellingRareItems": "Nie upuszczaj/sprzedawaj Rzadkich przedmiotów",
+    "stopDroppingSellingRareItems": "Nie upuszczaj/sprzedawaj rzadkich przedmiotów",
     "makeBackpackInventoriesColored": "Zmień kolor plecaka",
     "avoidBreakingBottomSugarCane": "Unikaj niszczenia dolnej części trzciny cukrowej",
     "replaceRomanNumeralsWithNumbers": "Zamień cyfry rzymskie na arabskie",
@@ -87,7 +87,7 @@
     },
     "disableMagicalSoupMessage": "Ukryj wiadomości z Magicznej Zupy",
     "zealotCounter": "Pokaż licznik Zealotów",
-    "tickerChargesDisplay": "Ticker/Charges Display",
+    "tickerChargesDisplay": "Wyświetl tickery/naładowania",
     "tab": {
       "generalSettings": "Ustawienia ogólne"
     },
@@ -103,7 +103,7 @@
       "allTheSame": "Ten sam kolor",
       "fade": "Zmiana koloru"
     },
-    "chromaFadeWidth": "Chroma Fade Width",
+    "chromaFadeWidth": "Długość mieszania kolorów",
     "sortTabEffectTimers": "Sortuj zegary według trwania"
   },
   "messages": {
