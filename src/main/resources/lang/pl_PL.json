@@ -74,8 +74,8 @@
     "speedPercentage": "Procent szybkości",
     "collectionDisplay": "Wyświetlaj postęp umiejętności",
     "onlyMineOresDeepCaverns": "Rudy kop tylko w Deep Caverns",
-    "onlyMineValuablesNether": "Kop tylko wartościowe rudy w piekle",
-    "revenantIndicator": "Wskaznik Postępu Zbroi",
+    "onlyMineValuablesNether": "Kop tylko wartościowe rudy w Netherze",
+    "revenantIndicator": "Wskaznik Postępu Zbroi Slayera",
     "specialZealotAlert": "Alarmuj o Specjlanym Zealocie",
     "enableMessageWhenActionPrevented": "Pokaż wiadomość, gdy akcja jest blokowana",
     "hidePetHealthBar": "Ukryj paski zdrowia peta",
@@ -97,14 +97,14 @@
     "showCakeBagPreview": "Pokaż podgląd dla torb na ciasta",
     "showBackpackPreviewInAH": "Pogląd plecaków z otwartym Domem Aukcyjnym",
     "enableDevFeatures": "Zezwól na funkcje developerskie",
-    "chromaSpeed": "Chroma Speed",
-    "chromaMode": "Chroma Color Mode",
+    "chromaSpeed": "Prędkość zmiany kolorów",
+    "chromaMode": "Tryb zmiany kolorów",
     "chromaModes": {
-      "allTheSame": "All the Same Color",
-      "fade": "Color Fade"
+      "allTheSame": "Ten sam kolor",
+      "fade": "Zmiana koloru"
     },
     "chromaFadeWidth": "Chroma Fade Width",
-    "sortTabEffectTimers": "Sort Timers by Duration"
+    "sortTabEffectTimers": "Sortuj zegary według trwania"
   },
   "messages": {
     "dropConfirmation": "Wyrzuć ten przedmiot ponownie, aby potwierdzić!",
@@ -138,11 +138,11 @@
     },
     "slotLocked": "Ten slot jest zablokowany!",
     "summoningEyeFound": "Oko przywołujące!",
-    "cancelledStemBreak": "SkyblockAddons zatrzyman cię przed zniszczeniem tej łodygi. Użyj pustej ręki, jeśli chcesz ją zniszczyć.",
+    "cancelledStemBreak": "SkyblockAddons zatrzymał cię przed zniszczeniem tej łodygi. Użyj gołej ręki, jeśli chcesz ją zniszczyć.",
     "cancelledProfileOpening": "SkyblockAddons powstrzymał otwieranie profilu tej osoby podczas trzymania łuku.",
     "cancelledDropping": "SkyblockAddons anulował upuszczenie tego rzadkiego przedmiotu lub narzędzia z twojego paska narzędzi.",
     "clickMoreTimes": "Naciśnij/upuść ten przedmiot %times% razy więcej, jeśli naprawdę chcesz to zrobić.",
-    "clickOneMoreTime": "Click/drop this item 1 more time if you really want to do this.",
+    "clickOneMoreTime": "Naciśnij/upuść ten przedmiot jeszcze jeden raz, jeśli naprawdę chcesz to zrobić.",
     "cancelledDeepCaverns": "Funkcja Skyblock Addons powstrzymała cię od kopania tego bloku.",
     "featureDisabled": "Funkcja wyłączona",
     "anvilUses": "Użycia kowadła: %uses%",
