@@ -126,7 +126,7 @@
     "deleteOldFile": "Pobieranie zostało zakończone, otwórz folder z modami używając przycisku poniżej, zamknij klienta Minecraft, oraz usuń starą wersję (albo usuń to teraz, jeżeli preferujesz).",
     "wantToViewPatchNotes": "Czy chciałbyś przeczytać zmiany?",
     "downloadLink": "LINK AKTUALIZACJI",
-    "downloadAutomatically": "AUTOMATYCZNE POBIERANIE",
+    "downloadAutomatically": "AUTO-POBIERANIE",
     "openModFolder": "FOLDER Z MODAMI",
     "joinTheDiscord": "DOŁĄCZ NA DISCORDA",
     "update": {
