@@ -163,7 +163,7 @@ public class Utils {
         boolean foundLocation = false;
         Minecraft mc = Minecraft.getMinecraft();
 
-        if (mc != null && mc.theWorld != null && !mc.isSingleplayer() && mc.getCurrentServerData().serverIP.matches(HYPIXEL_IP_REGEX)) {
+        if (mc != null && mc.theWorld != null && !mc.isSingleplayer()) {
             Scoreboard scoreboard = mc.theWorld.getScoreboard();
             ScoreObjective sidebarObjective = mc.theWorld.getScoreboard().getObjectiveInDisplaySlot(1);
             if (sidebarObjective != null) {
