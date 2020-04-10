@@ -8,7 +8,7 @@
     "skeletonHatBonesBar": "Bar Kosti Skeleton Kacige",
     "hideFoodAndArmor": "Sakrij Hranu i Armor Bar",
     "fullInventoryWarning": "Upozorenje Za Full Inventar",
-    "repeating": "Repeating",
+    "repeating": "Ponavlja",
     "disableEmberRodAbility": "Onemogući Sposobnost Ember Rod-a na Vlastitom Otoku",
     "editLocations": "Uredi Lokacije",
     "guiScale": "Velièina GUI-a: %scale%",
@@ -16,7 +16,7 @@
     "hideDurability": "Sakrij Trajnost Alata",
     "showEnchantmentsReforges": "Èarolije i Reforge-ovi",
     "minionStopWarning": "\"Minion Ne Može Dohvatiti\" Upozorenje",
-    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
+    "hidePlayersNearNPCs": "Sakrij Igrače Blizu Bitnih NPC-a",
     "backpackStyle": "Stil Ruksaka: %style%",
     "backpackStyles": {
       "regular": "Regularne",
@@ -154,6 +154,6 @@
     "noArrowsLeft": "No Arrows Left!",
     "chooseAColor": "Choose a Color",
     "selectedColor": "Selected Color",
-    "setHexColor": "Set Hex Color"
+    "setHexColor": "Postavi Hex Boju"
   }
 }
