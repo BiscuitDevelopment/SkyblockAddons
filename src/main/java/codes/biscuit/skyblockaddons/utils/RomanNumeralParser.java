@@ -1,5 +1,7 @@
 package codes.biscuit.skyblockaddons.utils;
 
+import codes.biscuit.skyblockaddons.SkyblockAddons;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -67,7 +69,7 @@ public class RomanNumeralParser {
             parsedInteger = parseNumeral(matcher.group(1));
 
             // Don't replace the word "I".
-            if (parsedInteger != 1 || matcher.group(2).equals("")) {
+            if (parsedInteger != 1 || matcher.group(2).equals("§") ||matcher.group(2).equals("")) {
                 matcher.appendReplacement(result, " " + parsedInteger + "$2");
             }
         }

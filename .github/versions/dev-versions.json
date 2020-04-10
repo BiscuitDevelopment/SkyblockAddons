@@ -1,10 +1,10 @@
 {
     "homepage": "https://github.com/BiscuitDevelopment/SkyblockAddons",
     "promos": {
-        "1.8.9-latest": "1.5.0-b14.1"
+        "1.8.9-latest": "1.5.0-b14.2"
     },
     "1.8.9": {
-        "1.5.0-b14.2": "Changes: \n- Remove Hypixel IP check due to issues with different IPs",
+        "1.5.0-b14.2": "Changes: \n- Remove Hypixel IP check due to issues with different IPs \nFixes: \n- Fix Roman numeral replacement not working for level 1 runes",
         "1.5.0-b14.1": "Changes: \n- Sort tab effect timers is disabled as default until the rapid movement is fixed \nFixes: \n- Fixed sort tab effect timers toggle",
         "1.5.0-b14": "Fixes: \n- All Hypixel IPs should be detected now\n- Add setting to toggle the sort tab effect timers feature (Sorry I forgot it when the feature was added)",
         "1.5.0-b13.2": "Fixes: \n-Fixed crash when entering a single player world (Thanks MagnetiteMC!) \n-Added hypixel.io to the list of Hypixel server domains (Thanks Neuroses!)",

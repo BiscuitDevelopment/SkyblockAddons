@@ -94,7 +94,7 @@ public class Utils {
     /** Whether the player is on skyblock. */
     private boolean onSkyblock = false;
 
-    /** List of enchantments that the player is looking to find. */
+    /** The player's current location in Skyblock */
     private Location location = null;
 
     /** The skyblock profile that the player is currently on. Ex. "Grapefruit" */
