@@ -13,6 +13,11 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
+    env:
+      # Placeholders will be replaced by build script
+      MOD_JAR_PATH: <path>
+      $SOURCES_PATH: <path>
+      MOD_VERSION: <version>
 
     steps:
     - uses: actions/checkout@v2
@@ -26,10 +31,15 @@ jobs:
       run: ./gradlew setupCIWorkspace
     - name: Build with Gradle
       run: ./gradlew build
-    - name: Upload artifacts
+    - name: Upload mod
       uses: actions/upload-artifact@v1.0.0
       with:
-        # Artifact name
+#        name: SkyblockAddons-$MOD_VERSION
         name: SkyblockAddons
-        # Directory containing files to upload
         path: build/libs
+#        path: $MOD_JAR_PATH
+#    - name: Upload source code
+#      uses: actions/upload-artifact@v1.0.0
+#      with:
+#        name: Source Code jar
+#        path: $SOURCES_PATH
