@@ -14,10 +14,7 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     env:
-      # Placeholders will be replaced by build script
-      MOD_JAR_PATH: <path>
-      $SOURCES_PATH: <path>
-      MOD_VERSION: <version>
+      PROPERTIES_PATH: gradle.properties
 
     steps:
     - uses: actions/checkout@v2
@@ -29,17 +26,35 @@ jobs:
       run: chmod +x gradlew
     - name: Setup ForgeGradle
       run: ./gradlew setupCIWorkspace
+    - name: Read mod name
+      id: read_mod_name
+      uses: christian-draeger/read-properties@1.0.1
+      with:
+        path: $PROPERTIES_PATH
+        property: modName
+    - name: Read Minecraft version
+      id: read_mc_version
+      uses: christian-draeger/read-properties@1.0.1
+      with:
+        path: $PROPERTIES_PATH
+        property: minecraftVersion
+    - name: Read mod version
+      id: read_mod_version
+      uses: christian-draeger/read-properties@1.0.1
+      with:
+        path: $PROPERTIES_PATH
+        property: version      
+    - name: Set environment variables
+      env:
+        mod_name: ${{ steps.read_mod_name.outputs.value }}
+        minecraft_version: ${{ steps.read_mc_version.outputs.value }}
+        mod_version: ${{ steps.read_mod_version.outputs.value }}
+        mod_jar_name: $mod_name-$minecraft_version-$mod_version
+        mod_jar_path: build/libs/$mod_jar_name.jar
     - name: Build with Gradle
       run: ./gradlew build
-    - name: Upload mod
+    - name: Upload mod jar
       uses: actions/upload-artifact@v1.0.0
       with:
-#        name: SkyblockAddons-$MOD_VERSION
-        name: SkyblockAddons
-        path: build/libs
-#        path: $MOD_JAR_PATH
-#    - name: Upload source code
-#      uses: actions/upload-artifact@v1.0.0
-#      with:
-#        name: Source Code jar
-#        path: $SOURCES_PATH
+        name: $mod_jar_name
+        path: $mod_jar_path
