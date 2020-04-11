@@ -46,11 +46,6 @@ jobs:
       with:
         path: ${{ env.PROPERTIES_PATH }}
         property: version
-    - name: Set environment variables
-      run: echo Setting environment variables...
-      env:
-        mod_jar_name: ${{ steps.read_mod_name.outputs.value }}-${{ steps.read_mc_version.outputs.value }}-${{ steps.read_mod_version.outputs.value }}
-        mod_jar_path: build/libs/${{ env.mod_jar_name }}.jar
     - name: Build with Gradle
       run: ./gradlew build
     - name: Upload mod jar
@@ -58,3 +53,6 @@ jobs:
       with:
         name: ${{ env.mod_jar_name }}
         path: ${{ env.mod_jar_path }}
+      env:
+        mod_jar_name: ${{ steps.read_mod_name.outputs.value }}-${{ steps.read_mc_version.outputs.value }}-${{ steps.read_mod_version.outputs.value }}
+        mod_jar_path: build/libs/${{ env.mod_jar_name }}.jar
