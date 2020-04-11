@@ -45,6 +45,7 @@ jobs:
         path: $PROPERTIES_PATH
         property: version      
     - name: Set environment variables
+      run: echo Setting environment variables...
       env:
         mod_name: ${{ steps.read_mod_name.outputs.value }}
         minecraft_version: ${{ steps.read_mc_version.outputs.value }}
