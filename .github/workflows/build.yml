@@ -50,11 +50,11 @@ jobs:
       run: echo Setting environment variables...
       env:
         mod_jar_name: ${{ steps.read_mod_name.outputs.value }}-${{ steps.read_mc_version.outputs.value }}-${{ steps.read_mod_version.outputs.value }}
-        mod_jar_path: build/libs/${{ mod_jar_name }}.jar
+        mod_jar_path: build/libs/${{ env.mod_jar_name }}.jar
     - name: Build with Gradle
       run: ./gradlew build
     - name: Upload mod jar
       uses: actions/upload-artifact@v1.0.0
       with:
-        name: ${{ mod_jar_name }}
-        path: ${{ mod_jar_path }}
+        name: ${{ env.mod_jar_name }}
+        path: ${{ env.mod_jar_path }}
