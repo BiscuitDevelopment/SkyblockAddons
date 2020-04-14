@@ -8,7 +8,7 @@
     "skeletonHatBonesBar": "Show Dem Biscuits in a Bar",
     "hideFoodAndArmor": "Quick, Hide Those Biscuits!",
     "fullInventoryWarning": "Warning When Your Biscuits are Full",
-    "repeating": "Repeating",
+    "repeating": "Reapting Da Biscuit",
     "disableEmberRodAbility": "Disable Biscuit Rod on Your Island",
     "editLocations": "Edit Biscuit Positions omg",
     "guiScale": "Biscuit Size: %scale%",
@@ -97,14 +97,14 @@
     "showCakeBagPreview": "Show Preview for Biscuit Bags",
     "showBackpackPreviewInAH": "Show Biscutpack Preview for Your Biscuits While AH is Open",
     "enableDevFeatures": "Enable Biscuiter Features",
-    "chromaSpeed": "Chroma Speed",
-    "chromaMode": "Chroma Color Mode",
+    "chromaSpeed": "Rainbow Biscuit Speed",
+    "chromaMode": "Rainbow Biscuit Color Mode",
     "chromaModes": {
-      "allTheSame": "All the Same Color",
-      "fade": "Color Fade"
+      "allTheSame": "All the Same Bis Color",
+      "fade": "Bis Color Fade"
     },
-    "chromaFadeWidth": "Chroma Fade Width",
-    "sortTabEffectTimers": "Sort Timers by Duration"
+    "chromaFadeWidth": "Rainbow Biscuit Fade Width",
+    "sortTabEffectTimers": "Sort Timers by Biscuration"
   },
   "messages": {
     "dropConfirmation": "Throw out this biscuit again to confirm!",
