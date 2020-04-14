@@ -1,10 +1,10 @@
 {
     "homepage": "https://github.com/BiscuitDevelopment/SkyblockAddons/releases",
     "promos": {
-        "1.8.9-latest": "1.5.0-beta.14.3"
+        "1.8.9-latest": "1.5.0-beta.15"
     },
     "1.8.9": {
-        "1.5.0-beta.14.3": "- Changed to Forge Update Checker for mod update checking",
+        "1.5.0-beta.15": "- Changed to Forge Update Checker for mod update checking",
         "1.5.0-b14.2": "Changes: \n- Remove Hypixel IP check due to issues with different IPs \nFixes: \n- Fix Roman numeral replacement not working for level 1 runes",
         "1.5.0-b14.1": "Changes: \n- Sort tab effect timers is disabled as default until the rapid movement is fixed \nFixes: \n- Fixed sort tab effect timers toggle",
         "1.5.0-b14": "Fixes: \n- All Hypixel IPs should be detected now\n- Add setting to toggle the sort tab effect timers feature (Sorry I forgot it when the feature was added)",
