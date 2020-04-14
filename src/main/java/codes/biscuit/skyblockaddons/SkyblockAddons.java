@@ -46,6 +46,7 @@ public class SkyblockAddons {
     private RenderListener renderListener;
     private InventoryUtils inventoryUtils;
     private Utils utils;
+    private Updater updater;
 
     /** Get the scheduler that be can be used to easily execute tasks. */
     private Scheduler scheduler = new Scheduler(this);
@@ -78,6 +79,7 @@ public class SkyblockAddons {
         // Initialize utilities
         inventoryUtils = new InventoryUtils(this);
         utils = new Utils(this);
+        updater = new Updater(this);
 
         ClientCommandHandler.instance.registerCommand(new SkyblockAddonsCommand(this));
 
@@ -107,6 +109,7 @@ public class SkyblockAddons {
         }
         utils.checkDisabledFeatures();
         utils.getFeaturedURLOnline();
+        updater.processUpdateCheckResult();
         scheduleMagmaCheck();
 
         for (Feature feature : Feature.values()) {

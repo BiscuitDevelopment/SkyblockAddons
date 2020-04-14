@@ -73,10 +73,10 @@ public class SkyblockAddonsCommand extends CommandBase {
                         e.printStackTrace();
                     }
                     break;
-                case "update": // Not actually a command.
+/*                case "update": // Not actually a command.
                     if (main.getRenderListener().getDownloadInfo().isPatch())
                         main.getUtils().downloadPatch(main.getRenderListener().getDownloadInfo().getNewestVersion());
-                    break;
+                    break;*/
                 default:
                     main.getUtils().sendMessage(getCommandUsage(sender), false);
             }

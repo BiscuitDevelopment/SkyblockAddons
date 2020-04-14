@@ -29,11 +29,13 @@ import net.minecraftforge.client.event.RenderLivingEvent;
 import net.minecraftforge.fml.client.GuiNotification;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
+import org.apache.commons.lang3.text.WordUtils;
 
 import java.awt.*;
 import java.math.BigDecimal;
 import java.util.*;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import static net.minecraft.client.gui.Gui.icons;
 
@@ -52,6 +54,7 @@ public class RenderListener {
     @Getter @Setter private boolean predictMana = false;
 
     @Getter private DownloadInfo downloadInfo;
+    @Setter private boolean updateMessageDisplayed = false;
 
     private Feature subtitleFeature = null;
     @Getter @Setter private Feature titleFeature = null;
@@ -399,33 +402,32 @@ public class RenderListener {
         }
     }
 
+    /**
+     * Renders the messages from the SkyblockAddons Updater
+     */
     private void drawUpdateMessage() {
-        EnumUtils.UpdateMessageType messageType = downloadInfo.getMessageType();
-        if (messageType != null) {
+        Updater updater = main.getUpdater();
+        String message = updater.getMessage();
+
+        if (!updateMessageDisplayed && message != null) {
             Minecraft mc = Minecraft.getMinecraft();
-            String[] textList;
-            if (messageType == EnumUtils.UpdateMessageType.PATCH_AVAILABLE || messageType == EnumUtils.UpdateMessageType.MAJOR_AVAILABLE) {
-                textList = downloadInfo.getMessageType().getMessages(downloadInfo.getNewestVersion());
-            } else if (messageType == EnumUtils.UpdateMessageType.DOWNLOADING) {
-                textList = downloadInfo.getMessageType().getMessages(String.valueOf(downloadInfo.getDownloadedBytes()), String.valueOf(downloadInfo.getTotalBytes()));
-            } else if (messageType == EnumUtils.UpdateMessageType.DOWNLOAD_FINISHED) {
-                textList = downloadInfo.getMessageType().getMessages(downloadInfo.getOutputFileName());
-            } else {
-                textList = downloadInfo.getMessageType().getMessages();
-            }
+            String[] textList = WordUtils.wrap(message, 36).replace("\r", "").split(Pattern.quote("\n"));
+
             int halfWidth = new ScaledResolution(mc).getScaledWidth() / 2;
             Gui.drawRect(halfWidth - 110, 20, halfWidth + 110, 53 + textList.length * 10, main.getUtils().getDefaultBlue(140));
-            String text = "SkyblockAddons";
+            String title = "SkyblockAddons";
             GlStateManager.pushMatrix();
             float scale = 1.5F;
             GlStateManager.scale(scale, scale, 1);
-            MinecraftReflection.FontRenderer.drawString(text, (int) (halfWidth / scale) - MinecraftReflection.FontRenderer.getStringWidth(text) / 2, (int) (30 / scale), ChatFormatting.WHITE);
+            MinecraftReflection.FontRenderer.drawString(title, (int) (halfWidth / scale) - MinecraftReflection.FontRenderer.getStringWidth(title) / 2, (int) (30 / scale), ChatFormatting.WHITE);
             GlStateManager.popMatrix();
             int y = 45;
             for (String line : textList) {
                 MinecraftReflection.FontRenderer.drawString(line, halfWidth - MinecraftReflection.FontRenderer.getStringWidth(line) / 2, y, ChatFormatting.WHITE);
                 y += 10;
             }
+
+            main.getScheduler().schedule(Scheduler.CommandType.ERASE_UPDATE_MESSAGE, 10);
         }
     }
 

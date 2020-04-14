@@ -177,7 +177,7 @@ public class Utils {
                 }
 
                 Collection<Score> scores = scoreboard.getSortedScores(sidebarObjective);
-                List<Score> list = Lists.newArrayList(scores.stream().filter(p_apply_1_ -> p_apply_1_.getPlayerName() != null && !p_apply_1_.getPlayerName().startsWith("#")).collect(Collectors.toList()));
+                List<Score> list = scores.stream().filter(p_apply_1_ -> p_apply_1_.getPlayerName() != null && !p_apply_1_.getPlayerName().startsWith("#")).collect(Collectors.toList());
                 if (list.size() > 15) {
                     scores = Lists.newArrayList(Iterables.skip(list, scores.size() - 15));
                 } else {
@@ -256,6 +256,7 @@ public class Utils {
         return text.replaceAll("\\s+", " ");
     }
 
+    @Deprecated
     public void checkUpdates() {
         new Thread(() -> {
             try {
@@ -362,7 +363,7 @@ public class Utils {
             ChatComponentText deleteOldFile = new ChatComponentText(ChatFormatting.RED+Message.MESSAGE_DELETE_OLD_FILE.getMessage()+"\n");
             sendMessage(deleteOldFile, false);
         } else {
-            ChatComponentText newUpdate = new ChatComponentText(ChatFormatting.AQUA+Message.MESSAGE_NEW_UPDATE.getMessage(newestVersion)+"\n");
+            ChatComponentText newUpdate = new ChatComponentText(ChatFormatting.AQUA+Message.UPDATE_MESSAGE_NEW_UPDATE.getMessage(newestVersion)+"\n");
             sendMessage(newUpdate, false);
         }
 

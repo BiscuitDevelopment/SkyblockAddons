@@ -141,10 +141,11 @@ public class Scheduler {
         SUBTRACT_BLAZE_COUNT,
         RESET_TITLE_FEATURE,
         RESET_SUBTITLE_FEATURE,
-        RESET_UPDATE_MESSAGE,
+        ERASE_UPDATE_MESSAGE,
         SET_LAST_SECOND_HEALTH,
         DELETE_RECENT_CHUNK,
-        SHOW_FULL_INVENTORY_WARNING;
+        SHOW_FULL_INVENTORY_WARNING,
+        PROCESS_UPDATE_CHECK_RESULT;
 
         public void execute(Command command, int count) {
             SkyblockAddons main = SkyblockAddons.getInstance();
@@ -176,11 +177,12 @@ public class Scheduler {
                 main.getRenderListener().setTitleFeature(null);
             } else if (this == RESET_SUBTITLE_FEATURE) {
                 main.getRenderListener().setSubtitleFeature(null);
-            } else if (this == RESET_UPDATE_MESSAGE) {
-                if (main.getRenderListener().getDownloadInfo().getMessageType() == commandData[0])
-                main.getRenderListener().getDownloadInfo().setMessageType(null);
+            } else if (this == ERASE_UPDATE_MESSAGE) {
+                main.getRenderListener().setUpdateMessageDisplayed(true);
             } else if (this == SET_LAST_SECOND_HEALTH) {
-                main.getPlayerListener().setLastSecondHealth((int)commandData[0]);
+                main.getPlayerListener().setLastSecondHealth((int) commandData[0]);
+            } else if (this == PROCESS_UPDATE_CHECK_RESULT) {
+                main.getUpdater().processUpdateCheckResult();
             }
         }
     }

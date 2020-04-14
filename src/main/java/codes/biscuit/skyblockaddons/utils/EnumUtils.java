@@ -326,6 +326,7 @@ public class EnumUtils {
         }
     }
 
+    @Deprecated
     public enum UpdateMessageType {
         MAJOR_AVAILABLE(UPDATE_MESSAGE_MAJOR),
         PATCH_AVAILABLE(UPDATE_MESSAGE_PATCH),

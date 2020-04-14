@@ -104,6 +104,7 @@ public enum Message {
     BACKPACK_STYLE_REGULAR(MessageObject.BACKPACK_STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.BACKPACK_STYLE, "compact"),
 
+    MESSAGE_BETA_TESTERS(MessageObject.MESSAGES, "betaTesters"),
     MESSAGE_DROP_CONFIRMATION(MessageObject.MESSAGES, "dropConfirmation"),
     MESSAGE_MAGMA_BOSS_WARNING(MessageObject.MESSAGES, "magmaBossWarning"),
     MESSAGE_FULL_INVENTORY(MessageObject.MESSAGES, "fullInventory"),
@@ -122,7 +123,6 @@ public enum Message {
     MESSAGE_CLICK_MORE_TIMES(MessageObject.MESSAGES, "clickMoreTimes"),
     MESSAGE_CLICK_ONE_MORE_TIME(MessageObject.MESSAGES, "clickOneMoreTime"),
     MESSAGE_CANCELLED_CANE_BREAK(MessageObject.MESSAGES, "cancelledCaneBreak"),
-    MESSAGE_NEW_UPDATE(MessageObject.MESSAGES, "newUpdateAvailable"),
     MESSAGE_VIEW_PATCH_NOTES(MessageObject.MESSAGES, "wantToViewPatchNotes"),
     MESSAGE_DOWNLOAD_LINK(MessageObject.MESSAGES, "downloadLink"),
     MESSAGE_DOWNLOAD_AUTOMATICALLY(MessageObject.MESSAGES, "downloadAutomatically"),
@@ -153,6 +153,8 @@ public enum Message {
     UPDATE_MESSAGE_DOWNLOAD(MessageObject.UPDATE_MESSAGES, "downloading"),
     UPDATE_MESSAGE_FAILED(MessageObject.UPDATE_MESSAGES, "failed"),
     UPDATE_MESSAGE_DOWNLOAD_FINISHED(MessageObject.UPDATE_MESSAGES, "downloadFinished"),
+    UPDATE_MESSAGE_NEW_BETA(MessageObject.UPDATE_MESSAGES, "newBeta"),
+    UPDATE_MESSAGE_NEW_UPDATE(MessageObject.UPDATE_MESSAGES, "newUpdate"),
 
     TEXT_STYLE_ONE(MessageObject.TEXT_STYLE, "one"),
     TEXT_STYLE_TWO(MessageObject.TEXT_STYLE, "two"),
@@ -199,7 +201,7 @@ public enum Message {
                     text = text.replace("%style%", main.getConfigValues().getPowerOrbDisplayStyle().getMessage());
                 } else if (this == Message.SETTING_GUI_SCALE) {
                     text = text.replace("%scale%", variables[0]);
-                } else if (this == Message.MESSAGE_NEW_UPDATE || this == UPDATE_MESSAGE_MAJOR || this == UPDATE_MESSAGE_PATCH) {
+                } else if (this == Message.UPDATE_MESSAGE_NEW_UPDATE || this == UPDATE_MESSAGE_MAJOR || this == UPDATE_MESSAGE_PATCH) {
                     text = text.replace("%version%", variables[0]);
                 //} else if (this == Message.SETTING_BACKPACK_STYLE) {
                 //    text = text.replace("%style%", main.getConfigValues().getBackpackStyle().getMessage());

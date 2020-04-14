@@ -60,7 +60,7 @@ public class PlayerListener {
     private final Pattern COLLECTIONS_CHAT_PATTERN = Pattern.compile("§.\\+(?:§[0-9a-f])?([0-9.]+) §?[0-9a-f]?([A-Za-z]+) (\\([0-9.,]+/[0-9.,]+\\))");
     private final Set<String> randomMessages = new HashSet<>(Arrays.asList("I feel like I can fly!", "What was in that soup?", "Hmm… tasty!", "Hmm... tasty!", "You can now fly for 2 minutes.", "Your Magical Mushroom Soup flight has been extended for 2 extra minutes."));
 
-
+    @Deprecated
     private boolean sentUpdate = false;
 
     private long lastWorldJoin = -1;
@@ -332,10 +332,10 @@ public class PlayerListener {
                             main.getInventoryUtils().checkIfWearingRevenantArmor(p);
                         }
 
-                        if (!sentUpdate) {
+/*                        if (!sentUpdate) {
                             main.getUtils().checkUpdates();
                             sentUpdate = true;
-                        }
+                        }*/
 
                         if (mc.currentScreen == null && main.getConfigValues().isEnabled(Feature.ITEM_PICKUP_LOG)
                                 && main.getPlayerListener().didntRecentlyJoinWorld()) {
