@@ -104,7 +104,7 @@
       "fade": "Color Fade"
     },
     "chromaFadeWidth": "Chroma Fade Width",
-    "sortTabEffectTimers": "Sort Timers by Duration"
+    "sortTabEffectTimers": "ترتيب المؤقت حسب المدة"
   },
   "messages": {
     "dropConfirmation": "!إرمي هذا العنصر مرة أخرى للتأكيد",
