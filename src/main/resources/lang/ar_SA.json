@@ -97,13 +97,13 @@
     "showCakeBagPreview": "إظهار معاينة لحقائب الكعك",
     "showBackpackPreviewInAH": "إظهار معاينة حقيبة الظهر للاشياء الخاصة بك أثناء فتح المزاد",
     "enableDevFeatures": "تشغيل ميزة المطور",
-    "chromaSpeed": "Chroma Speed",
-    "chromaMode": "Chroma Color Mode",
+    "chromaSpeed": "سرعة كروما \"Chroma\"",
+    "chromaMode": "وضعية لون الكروما \"Chroma\"",
     "chromaModes": {
-      "allTheSame": "All the Same Color",
-      "fade": "Color Fade"
+      "allTheSame": "جعل الكل نفس اللون",
+      "fade": "تلاشي الألوان"
     },
-    "chromaFadeWidth": "Chroma Fade Width",
+    "chromaFadeWidth": "عرض تلاشي الكروما \"Chroma\"",
     "sortTabEffectTimers": "ترتيب المؤقت حسب المدة"
   },
   "messages": {
