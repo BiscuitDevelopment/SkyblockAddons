@@ -88,7 +88,7 @@ public enum TransformerMethod {
     playSound("playSound", "func_148611_c", "c", "(Lnet/minecraft/client/audio/ISound;)V", "("+TransformerClass.ISound.getName()+")V"),
 
     // TileEntityEnderChestRenderer
-    renderTileEntityAt("renderTileEntityAt", "func_180535_a", "a", "(Lnet/minecraft/tileentity/TileEntity;DDDFI)V", "("+TransformerClass.TileEntity.getName()+"DDDFI)V"),
+    renderTileEntityAt("renderTileEntityAt", "func_180535_a", "a", "(Lnet/minecraft/tileentity/TileEntityEnderChest;DDDFI)V", "("+TransformerClass.TileEntityEnderChest.getName()+"DDDFI)V"),
 
     // FontRenderer
     renderChar("renderChar", "func_181559_a", "a", "(CZ)F"),

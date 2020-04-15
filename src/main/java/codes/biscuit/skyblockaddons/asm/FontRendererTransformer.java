@@ -10,6 +10,9 @@ import java.util.Iterator;
 
 public class FontRendererTransformer implements ITransformer {
 
+    /**
+     * {@link net.minecraft.client.gui.FontRenderer}
+     */
     @Override
     public String[] getClassName() {
         return new String[]{TransformerClass.FontRenderer.getTransformerName()};
