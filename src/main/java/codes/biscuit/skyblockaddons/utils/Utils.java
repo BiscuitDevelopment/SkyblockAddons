@@ -14,6 +14,7 @@ import com.google.gson.JsonObject;
 import lombok.Getter;
 import lombok.Setter;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.event.ClickEvent;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -816,4 +817,17 @@ public class Utils {
         value = step * (float) Math.round(value / step);
         return MathHelper.clamp_float(value, min, max);
     }
+
+    public void bindRGBColor(int color) {
+        float red = (float) (color >> 16 & 255) / 255.0F;
+        float green = (float) (color >> 8 & 255) / 255.0F;
+        float blue = (float) (color & 255) / 255.0F;
+        float alpha = (float) (color >> 24 & 255) / 255.0F;
+
+        GlStateManager.color(red, green, blue, alpha);
+    }
+
+    public void bindColorInts(int r, int g, int b, int a) {
+        GlStateManager.color(r/255F, g/255F, b/255F, a/255F);
+}
 }

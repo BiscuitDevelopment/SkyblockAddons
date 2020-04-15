@@ -234,6 +234,7 @@ public class SkyblockAddonsGui extends GuiScreen {
                         main.getScheduler().removeQueuedFullInventoryWarnings();
                     }
                 }
+                ((ButtonToggle)abstractButton).onClick();
             } else if (abstractButton instanceof ButtonSolid) {
                 if (feature == Feature.TEXT_STYLE) {
                     main.getConfigValues().setTextStyle(main.getConfigValues().getTextStyle().getNextType());

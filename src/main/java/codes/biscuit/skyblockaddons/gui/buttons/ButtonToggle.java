@@ -8,13 +8,20 @@ import net.minecraft.util.ResourceLocation;
 
 public class ButtonToggle extends ButtonFeature {
 
-    private static ResourceLocation TOGGLE_ON = new ResourceLocation("skyblockaddons", "toggleon.png");
-    private static ResourceLocation TOGGLE_OFF = new ResourceLocation("skyblockaddons", "toggleoff.png");
+    private static ResourceLocation TOGGLE_INSIDE_CIRCLE = new ResourceLocation("skyblockaddons", "toggleinsidecircle.png");
+    private static ResourceLocation TOGGLE_BORDER = new ResourceLocation("skyblockaddons", "toggleborder.png");
+    private static ResourceLocation TOGGLE_INSIDE_BACKGROUND = new ResourceLocation("skyblockaddons", "toggleinsidebackground.png");
+
+    private static final int CIRCLE_PADDING_LEFT = 5;
+    private static final int ANIMATION_SLIDE_DISTANCE = 12;
+    private static final int ANIMATION_SLIDE_TIME = 200;
 
     private SkyblockAddons main;
 
     // Used to calculate the transparency when fading in.
     private long timeOpened = System.currentTimeMillis();
+
+    private long animationButtonClicked = -1;
 
     /**
      * Create a button for toggling a feature on or off. This includes all the {@link Feature}s that have a proper ID.
@@ -43,14 +50,54 @@ public class ButtonToggle extends ButtonFeature {
         if (hovered) {
             GlStateManager.color(1,1,1,1);
         }
-        if (main.getConfigValues().isRemoteDisabled(feature)) {
-            GlStateManager.color(0.3F,0.3F,0.3F,0.7F);
-        }
-        if (main.getConfigValues().isEnabled(feature)) {
-            mc.getTextureManager().bindTexture(TOGGLE_ON);
-        } else {
-            mc.getTextureManager().bindTexture(TOGGLE_OFF);
-        }
+
+        main.getUtils().bindRGBColor(0xFF1e252e);
+        mc.getTextureManager().bindTexture(TOGGLE_BORDER);
         drawModalRectWithCustomSizedTexture(xPosition, yPosition,0,0,width,height,width,height);
+
+        boolean enabled = main.getConfigValues().isEnabled(feature);
+        boolean remoteDisabled = main.getConfigValues().isRemoteDisabled(feature);
+
+        if (enabled) {
+            main.getUtils().bindColorInts(36, 255, 98, remoteDisabled ? 25 : 255); // Green
+        } else {
+            main.getUtils().bindColorInts(222, 68, 76, remoteDisabled ? 25 : 255); // Red
+        }
+
+        mc.getTextureManager().bindTexture(TOGGLE_INSIDE_BACKGROUND);
+        drawModalRectWithCustomSizedTexture(xPosition, yPosition,0,0,width,height,width,height);
+
+        int startingX = getStartingPosition(enabled);
+        int slideAnimationOffset = 0;
+
+        if (animationButtonClicked != -1) {
+            startingX = getStartingPosition(!enabled); // They toggled so start from the opposite side.
+
+            int timeSinceOpen = (int)(System.currentTimeMillis() - animationButtonClicked);
+            int animationTime = ANIMATION_SLIDE_TIME;
+            if (timeSinceOpen > animationTime) {
+                timeSinceOpen = animationTime;
+            }
+
+            slideAnimationOffset = ANIMATION_SLIDE_DISTANCE * timeSinceOpen/animationTime;
+        }
+
+        startingX += enabled ? slideAnimationOffset : -slideAnimationOffset;
+
+        GlStateManager.color(1,1,1,1);
+        mc.getTextureManager().bindTexture(TOGGLE_INSIDE_CIRCLE);
+        drawModalRectWithCustomSizedTexture(startingX, yPosition+3,0,0,9,9,9,9);
+    }
+
+    private int getStartingPosition(boolean enabled) {
+        if (!enabled)  {
+            return xPosition+CIRCLE_PADDING_LEFT;
+        } else {
+            return getStartingPosition(false)+ANIMATION_SLIDE_DISTANCE;
+        }
+    }
+
+    public void onClick() {
+        this.animationButtonClicked = System.currentTimeMillis();
     }
 }
