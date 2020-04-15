@@ -25,6 +25,7 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ContainerChest;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
@@ -648,18 +649,21 @@ public class PlayerListener {
                     e.toolTip.add(EnumChatFormatting.DARK_GRAY + "Skyblock ID: " + itemId);
                 }
             }
-        }
-        if (main.getConfigValues().isEnabled(Feature.SHOW_BROKEN_FRAGMENTS)) {
-                if (hoveredItem.getDisplayName().contains("Fragment")) {
-                    NBTTagCompound extraAttributesTag = hoveredItem.getTagCompound();
-                    if (extraAttributesTag.hasKey("ExtraAttributes")) {
-                        extraAttributesTag = extraAttributesTag.getCompoundTag("ExtraAttributes");
-                        if (extraAttributesTag.hasKey("bossId") && extraAttributesTag.hasKey("spawnedFor")) {
-                            e.toolTip.add("§c§lBROKEN FRAGMENT§r");
+
+            if (main.getConfigValues().isEnabled(Feature.SHOW_BROKEN_FRAGMENTS)) {
+                if (hoveredItem.getDisplayName().contains("Dragon Fragment")) {
+                    if (hoveredItem.hasTagCompound()) {
+                        NBTTagCompound extraAttributesTag = hoveredItem.getSubCompound("ExtraAttributes", false);
+
+                        if (extraAttributesTag != null) {
+                            if (extraAttributesTag.hasKey("bossId") && extraAttributesTag.hasKey("spawnedFor")) {
+                                e.toolTip.add("§c§lBROKEN FRAGMENT§r");
+                            }
                         }
                     }
                 }
             }
+        }
     }
 
     @SubscribeEvent
