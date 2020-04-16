@@ -282,39 +282,37 @@ public class InventoryUtils {
         else return 0;
     }
 
-    public void checkIfWearingRevenantArmor(EntityPlayerSP p) {
+    public void checkIfWearingSlayerArmor(EntityPlayerSP p) {
         if (main.getConfigValues().isEnabled(Feature.SLAYER_INDICATOR)) {
             ChatFormatting color = main.getConfigValues().getRestrictedColor(Feature.SLAYER_INDICATOR);
             for (int i = 3; i > -1; i--) {
                 ItemStack item = p.inventory.armorInventory[i];
+                String itemID = item != null ? ItemUtils.getSkyBlockItemID(item) : null;
 
-                if (item != null) {
-                    String itemID = ItemUtils.getSkyBlockItemID(item);
-                    if (itemID != null && (itemID.startsWith("REVENANT") || itemID.startsWith("TARANTULA"))) {
-                        String progress = null;
-                        List<String> tooltip = item.getTooltip(null, false);
-                        for (String line : tooltip) {
-                            Matcher matcher = REVENANT_UPGRADE_PATTERN.matcher(line);
-                            if (matcher.matches()) { // Example: line§5§o§7Next Upgrade: §a+240❈ §8(§a14,418§7/§c15,000§8)
-                                try {
+                if (itemID != null && (itemID.startsWith("REVENANT") || itemID.startsWith("TARANTULA"))) {
+                    String progress = null;
+                    List<String> tooltip = item.getTooltip(null, false);
+                    for (String line : tooltip) {
+                        Matcher matcher = REVENANT_UPGRADE_PATTERN.matcher(line);
+                        if (matcher.matches()) { // Example: line§5§o§7Next Upgrade: §a+240❈ §8(§a14,418§7/§c15,000§8)
+                            try {
 //                            progress = color.toString() + matcher.group(2)+"/"+matcher.group(3) + " (" + ConfigColor.GREEN+ matcher.group(1) + color + ")";
-                                    float percentage = Float.parseFloat(matcher.group(2).replace(",", "")) / Integer.parseInt(matcher.group(3).replace(",", "")) * 100;
-                                    BigDecimal bigDecimal = new BigDecimal(percentage).setScale(0, BigDecimal.ROUND_HALF_UP);
-                                    progress = color.toString() + bigDecimal.toString() + "% (" + ChatFormatting.GREEN + matcher.group(1) + color + ")";
-                                    break;
-                                } catch (NumberFormatException ignored) {
-                                }
+                                float percentage = Float.parseFloat(matcher.group(2).replace(",", "")) / Integer.parseInt(matcher.group(3).replace(",", "")) * 100;
+                                BigDecimal bigDecimal = new BigDecimal(percentage).setScale(0, BigDecimal.ROUND_HALF_UP);
+                                progress = color.toString() + bigDecimal.toString() + "% (" + ChatFormatting.GREEN + matcher.group(1) + color + ")";
+                                break;
+                            } catch (NumberFormatException ignored) {
                             }
                         }
-                        if (progress != null) {
-                            if (slayerArmorProgresses[i] == null) {
-                                slayerArmorProgresses[i] = new SlayerArmorProgress(item, progress);
-                            }
-                            slayerArmorProgresses[i].setProgressText(progress);
-                        }
-                    } else {
-                        slayerArmorProgresses[i] = null;
                     }
+                    if (progress != null) {
+                        if (slayerArmorProgresses[i] == null) {
+                            slayerArmorProgresses[i] = new SlayerArmorProgress(item, progress);
+                        }
+                        slayerArmorProgresses[i].setProgressText(progress);
+                    }
+                } else {
+                    slayerArmorProgresses[i] = null;
                 }
             }
         }

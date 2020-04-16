@@ -1,10 +1,12 @@
 package codes.biscuit.skyblockaddons.utils;
 
+import codes.biscuit.skyblockaddons.SkyblockAddons;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.JsonParser;
 import lombok.Getter;
+import org.apache.logging.log4j.Logger;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -15,11 +17,13 @@ import java.io.FileWriter;
 public class PersistentValues {
 
     private final File persistentValuesFile;
+    private final Logger logger;
 
     private int kills;
 
     public PersistentValues(File configDir) {
         this.persistentValuesFile = new File(configDir.getAbsolutePath() + "/skyblockaddons_persistent.cfg");
+        logger = SkyblockAddons.getInstance().getLogger();
     }
 
     public void loadValues() {
@@ -35,8 +39,8 @@ public class PersistentValues {
                 this.kills = valuesObject.has("kills") ? valuesObject.get("kills").getAsInt() : 0;
 
             } catch (Exception ex) {
-                ex.printStackTrace();
-                System.out.println("SkyblockAddons: There was an error loading saved values.");
+                logger.error("SkyblockAddons: There was an error loading persistent values.");
+                logger.error(ex.getMessage());
                 this.saveCounter();
             }
 
@@ -56,8 +60,8 @@ public class PersistentValues {
             bufferedWriter.write(valuesObject.toString());
 
         } catch (Exception ex) {
-            ex.printStackTrace();
-            System.out.println("SkyblockAddons: An error occurred while attempted to save values!");
+            logger.error("SkyblockAddons: An error occurred while attempted to save values!");
+            logger.error(ex.getMessage());
         }
     }
 
