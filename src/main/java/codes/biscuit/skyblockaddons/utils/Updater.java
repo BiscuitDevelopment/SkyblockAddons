@@ -45,10 +45,7 @@ public class Updater {
         ForgeVersion.Status status = result.status;
         ComparableVersion target = result.target;
 
-        if (status == ForgeVersion.Status.BETA) {
-            message = Message.MESSAGE_BETA_TESTERS.getMessage();
-        }
-        else if (status == ForgeVersion.Status.OUTDATED || status == ForgeVersion.Status.BETA_OUTDATED) {
+        if (status == ForgeVersion.Status.OUTDATED || status == ForgeVersion.Status.BETA_OUTDATED) {
             hasUpdate = true;
             latest = target;
 
