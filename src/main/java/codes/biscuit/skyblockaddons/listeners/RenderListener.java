@@ -29,13 +29,11 @@ import net.minecraftforge.client.event.RenderLivingEvent;
 import net.minecraftforge.fml.client.GuiNotification;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
-import org.apache.commons.lang3.text.WordUtils;
 
 import java.awt.*;
 import java.math.BigDecimal;
-import java.util.*;
 import java.util.List;
-import java.util.regex.Pattern;
+import java.util.*;
 
 import static net.minecraft.client.gui.Gui.icons;
 
@@ -411,7 +409,7 @@ public class RenderListener {
 
         if (!updateMessageDisplayed && message != null) {
             Minecraft mc = Minecraft.getMinecraft();
-            String[] textList = WordUtils.wrap(message, 36).replace("\r", "").split(Pattern.quote("\n"));
+            String[] textList = main.getUtils().wrapSplitText(message, 36);
 
             int halfWidth = new ScaledResolution(mc).getScaledWidth() / 2;
             Gui.drawRect(halfWidth - 110, 20, halfWidth + 110, 53 + textList.length * 10, main.getUtils().getDefaultBlue(140));

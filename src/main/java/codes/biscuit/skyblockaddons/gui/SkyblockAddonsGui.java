@@ -349,13 +349,13 @@ public class SkyblockAddonsGui extends GuiScreen {
             EnumUtils.FeatureCredit credit = EnumUtils.FeatureCredit.fromFeature(feature);
             if (credit != null) {
                 CoordsPair coords = button.getCreditsCoords(credit);
-                buttonList.add(new ButtonCredit(coords.getX(), coords.getY(), text, main, credit, feature));
+                buttonList.add(new ButtonCredit(coords.getX(), coords.getY(), text, main, credit, feature, button.isMultilineButton()));
             }
 
             if (feature.getSettings().size() > 0) {
-                buttonList.add(new ButtonSettings(x + boxWidth - 33, y + boxHeight - 23, text, main, feature));
+                buttonList.add(new ButtonSettings(x + boxWidth - 33, y + boxHeight - 20, text, main, feature));
             }
-            buttonList.add(new ButtonToggle(x+40, y+boxHeight-23, main, feature));
+            buttonList.add(new ButtonToggle(x+40, y+boxHeight-18, main, feature));
         } else if (buttonType == EnumUtils.ButtonType.SOLID) {
             buttonList.add(new ButtonNormal(x, y, text, main, feature));
 

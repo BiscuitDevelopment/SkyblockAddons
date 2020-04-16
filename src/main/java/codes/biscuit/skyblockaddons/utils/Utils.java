@@ -830,4 +830,8 @@ public class Utils {
     public void bindColorInts(int r, int g, int b, int a) {
         GlStateManager.color(r/255F, g/255F, b/255F, a/255F);
 }
+
+    public String[] wrapSplitText(String text, int wrapLength) {
+        return WordUtils.wrap(text, wrapLength).replace("\r", "").split(Pattern.quote("\n"));
+    }
 }

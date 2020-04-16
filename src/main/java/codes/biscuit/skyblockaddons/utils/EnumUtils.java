@@ -7,13 +7,11 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import org.apache.commons.lang3.text.WordUtils;
 
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.EnumSet;
 import java.util.Set;
-import java.util.regex.Pattern;
 
 import static codes.biscuit.skyblockaddons.utils.Message.*;
 
@@ -351,7 +349,7 @@ public class EnumUtils {
             }
 
             // Wrap around the text, replace the carriage returns, and split at the new lines.
-            return WordUtils.wrap(messageText, 36).replace("\r", "").split(Pattern.quote("\n"));
+            return SkyblockAddons.getInstance().getUtils().wrapSplitText(messageText, 36);
         }
     }
 
