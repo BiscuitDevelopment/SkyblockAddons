@@ -101,6 +101,7 @@ public enum Message {
     SETTING_CHROMA_FADE_WIDTH(MessageObject.SETTING, "chromaFadeWidth"),
     SETTING_SORT_TAB_EFFECT_TIMERS(MessageObject.SETTING, "sortTabEffectTimers"),
     SETTING_SHOW_BROKEN_FRAGMENTS(MessageObject.SETTING, "showBrokenFragments"),
+    SETTING_SKYBLOCK_ADDONS_BUTTON_IN_PAUSE_MENU(MessageObject.SETTING, "skyblockAddonsButtonInPauseMenu"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.BACKPACK_STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.BACKPACK_STYLE, "compact"),

@@ -330,7 +330,7 @@ public class PlayerListener {
 
                         if (main.getUtils().isOnSkyblock()) {
                             main.getInventoryUtils().checkIfWearingSkeletonHelmet(p);
-                            main.getInventoryUtils().checkIfWearingRevenantArmor(p);
+                            main.getInventoryUtils().checkIfWearingSlayerArmor(p);
                         }
 
 /*                        if (!sentUpdate) {
