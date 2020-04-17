@@ -68,7 +68,7 @@
     "soundIndicatorForFishing": "Zvočni Indikator za Ribolov",
     "avoidBlinkingNightVision": "Izključi Utripanje Night Vision Potion-a",
     "disableMinionLocationWarning": "Izključi Opozorila o Neugodni Lokaciji",
-    "jungleAxeCooldown": "Cooldown Sekire Džungle",
+    "jungleAxeCooldown": "Blokiraj uporabo Jungle Axe-a in Treecapitatorja",
     "organizeLongEnchantmentLists": "Organiziraj Dolge Sezname Enchantanja",
     "showItemCooldowns": "Prikaži Cooldown za Stvari",
     "speedPercentage": "Odstotek Hitrosti",
@@ -137,7 +137,7 @@
       "downloadFinished": "Popravek se je prenesel. Shranjen je kot %file%. Prosim da ne pozabite izbrisati stare datoteke po zaprtju Minecrafta. Klikni na sporočilo v chatu da odpreš mapo."
     },
     "slotLocked": "Ta prostor je zaklenjen!",
-    "summoningEyeFound": "Summoning oko!",
+    "summoningEyeFound": "Summoning eye!",
     "cancelledStemBreak": "SkyblockAddons vam je preprečil uničiti to sadiko. Uporabite gole roke, če jo želite uničiti.",
     "cancelledProfileOpening": "SkyblockAddons vam je preprečil odpiranje profila tega igralca medtem, ko držite lok.",
     "cancelledDropping": "SkyblockAddons vam je preprečil izpust te redke stvari iz svojega hotbarja.",
