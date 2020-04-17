@@ -3,9 +3,12 @@ package codes.biscuit.skyblockaddons.commands;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.Utils;
+import codes.biscuit.skyblockaddons.utils.dev.DevUtils;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
-import net.minecraft.command.CommandBase;
-import net.minecraft.command.ICommandSender;
+import net.minecraft.client.Minecraft;
+import net.minecraft.command.*;
+import net.minecraft.util.BlockPos;
+import org.apache.logging.log4j.Logger;
 
 import java.awt.*;
 import java.io.IOException;
@@ -15,23 +18,38 @@ import java.util.List;
 public class SkyblockAddonsCommand extends CommandBase {
 
     private SkyblockAddons main;
-
+    private Logger logger;
     public SkyblockAddonsCommand(SkyblockAddons main) {
         this.main = main;
+        logger = main.getLogger();
     }
 
-    @Override
+    /**
+     * Gets the name of the command
+     */
     public String getCommandName() {
         return "skyblockaddons";
     }
 
-    @Override
+    /**
+     * Return the required permission level for this command.
+     */
+    public int getRequiredPermissionLevel()
+    {
+        return 0;
+    }
+
+    /**
+     * Returns the aliases of this command
+     */
     public List<String> getCommandAliases()
     {
         return Collections.singletonList("sba");
     }
 
-    @Override
+    /**
+     * Gets the usage string for the command.
+     */
     public String getCommandUsage(ICommandSender sender) { return
         Utils.color("&7&m------------&7[&b&l SkyblockAddons &7]&7&m------------") + "\n" +
         Utils.color("&b● /sba &7- Open the main menu") + "\n" +
@@ -50,7 +68,7 @@ public class SkyblockAddonsCommand extends CommandBase {
      * Opens the main gui, or locations gui if they type /sba edit
      */
     @Override
-    public void processCommand(ICommandSender sender, String[] args) {
+    public void processCommand(ICommandSender sender, String[] args) throws CommandException {
         if (args.length > 0) {
             switch (args[0]) {
                 case "edit":
