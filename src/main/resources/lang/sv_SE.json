@@ -104,9 +104,16 @@
       "fade": "Färg toning"
     },
     "chromaFadeWidth": "Chroma Fade Bredd",
-    "sortTabEffectTimers": "Sortera tidtagare efter längd"
+    "sortTabEffectTimers": "Sortera tidtagare efter längd",
+    "showBrokenFragments": "Show Broken Fragments",
+    "skyblockAddonsButtonInPauseMenu": "SBA Button in Pause Menu",
+    "showTotalZealotCount": "Zealot Counter - Total Zealot Count",
+    "showSummoningEyeCount": "Zealot Counter - Total Eye Count",
+    "showZealotsPerEye": "Zealot Counter - Show Zealots Per Eye",
+    "turnBowGreenWhenUsingToxicArrowPoison": "Color Bow Green When Using Toxic Arrow Poison"
   },
   "messages": {
+    "betaTesters": "Thank you for being a beta tester! Please report any bugs you encounter in the Discord channel.",
     "dropConfirmation": "Släpp Det Här Igen För Att Bekräfta!",
     "magmaBossWarning": "MagmaKub Boss!",
     "fullInventory": "Full Lager!",
@@ -122,7 +129,6 @@
       "reforges": "Reforges",
       "crafting": "Tillverkning"
     },
-    "newUpdateAvailable": "En ny updatering (%version%) är tillgänlig!",
     "deleteOldFile": "Updateringen är klar, använd knappen nedan för att öppna mods mappen, stäng Minecraft, och ta bort den gamla versionen (eller kan du radera den senare om du vill).",
     "wantToViewPatchNotes": "Vill du läsa ändringarna?",
     "downloadLink": "UPPDATERINGS LÄNK",
@@ -134,7 +140,9 @@
       "patchAvailable": "En ny programfix (%version%) är tillgänlig! Nedladnings länken finns i chatten!",
       "downloading": "Programfix uppdateringen är redo! Status: %downloaded%/%total% Notera att du måste ta bort den gamla filen när uppdateringen blir klar.",
       "failed": "Patch updateringen misslyckades! Ladda ner den manuellt genom länken i chatten,.",
-      "downloadFinished": "Nedladningen av Programfix uppdateringen är klar. Den har sparats som %file%. Glöm inte att ta bort den gamla filen när du stänger av Minecraft. Tryck på meddelandet i chatten för att öppna mods mappen."
+      "downloadFinished": "Nedladningen av Programfix uppdateringen är klar. Den har sparats som %file%. Glöm inte att ta bort den gamla filen när du stänger av Minecraft. Tryck på meddelandet i chatten för att öppna mods mappen.",
+      "newBeta": "A new beta (%version%) is available! Please update using the \"Mods\" menu.",
+      "newUpdate": "A new update (%version%) is available! Please update using the \"Mods\" menu."
     },
     "slotLocked": "Denna ruta är låst!",
     "summoningEyeFound": "Tillkallande Öga!",
