@@ -104,9 +104,17 @@
       "fade": "Atenuación de Color"
     },
     "chromaFadeWidth": "Ancho de Atenuación de Croma",
-    "sortTabEffectTimers": "Ordenar Temporizadores por Duración"
+    "sortTabEffectTimers": "Ordenar Temporizadores por Duración",
+    "showBrokenFragments": "Show Broken Fragments",
+    "skyblockAddonsButtonInPauseMenu": "SBA Button in Pause Menu",
+    "showTotalZealotCount": "Zealot Counter - Total Zealot Count",
+    "showSummoningEyeCount": "Zealot Counter - Total Eye Count",
+    "showZealotsPerEye": "Zealot Counter - Show Zealots Per Eye",
+    "turnBowGreenWhenUsingToxicArrowPoison": "Color Bow Green When Using Toxic Arrow Poison",
+    "birchParkRainmakerTimer": "Birch Park Rainmaker Timer"
   },
   "messages": {
+    "betaTesters": "Thank you for being a beta tester! Please report any bugs you encounter in the Discord channel.",
     "dropConfirmation": "¡Dropea el Objeto otra vez para soltar!",
     "magmaBossWarning": "¡Magma Boss!",
     "fullInventory": "¡Inventario Lleno!",
@@ -122,7 +130,6 @@
       "reforges": "Reforjar",
       "crafting": "Fabricación"
     },
-    "newUpdateAvailable": "¡Una nueva actualización (%version%) está disponible!",
     "deleteOldFile": "La descarga ha terminado, por favor abre la carpeta de mods usando el botón de abajo, cierra tu Minecraft y elimina la versión anterior (o bórrala más tarde si lo prefieres).",
     "wantToViewPatchNotes": "¿Quieres leer los cambios?",
     "downloadLink": "LINK DE LA ACTUALIZACIÓN",
@@ -134,7 +141,9 @@
       "patchAvailable": "¡Una nueva actualización (%version%) está disponible! ¡Busca en el chat para opciónes de descargar!",
       "downloading": "¡El parche está descargando! Estado: %downloaded%/%total% Por favor, tenga en cuenta que después de que la descarga haya terminado, debe eliminar el archivo antiguo.",
       "failed": "¡La descarga del parche ha fallado! Por favor, descargalo manualmente usando el enlace en el chat.",
-      "downloadFinished": "El parche ha terminado de descargar. Se ha guardado como %file%. Por favor, no olvide eliminar el archivo antiguo después de cerrar tu Minecraft. Haga clic en el mensaje en el chat para abrir la carpeta."
+      "downloadFinished": "El parche ha terminado de descargar. Se ha guardado como %file%. Por favor, no olvide eliminar el archivo antiguo después de cerrar tu Minecraft. Haga clic en el mensaje en el chat para abrir la carpeta.",
+      "newBeta": "A new beta (%version%) is available! Please update using the \"Mods\" menu.",
+      "newUpdate": "A new update (%version%) is available! Please update using the \"Mods\" menu."
     },
     "slotLocked": "¡Esta ranura está bloqueada!",
     "summoningEyeFound": "¡Ojo de Invocación!",
