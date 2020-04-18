@@ -7,8 +7,8 @@
     "hideSkeletonHatBones": "Hide Your Biscuity Bones",
     "skeletonHatBonesBar": "Show Dem Biscuits in a Bar",
     "hideFoodAndArmor": "Quick, Hide Those Biscuits!",
-    "fullInventoryWarning": "Warning When Pockets full of Biscuits",
-    "repeating": "Reapting Da Biscuit",
+    "fullInventoryWarning": "Warning When Your Biscuits are Full",
+    "repeating": "Repeating",
     "disableEmberRodAbility": "Disable Biscuit Rod on Your Island",
     "editLocations": "Edit Biscuit Positions omg",
     "guiScale": "Biscuit Size: %scale%",
@@ -97,16 +97,23 @@
     "showCakeBagPreview": "Show Preview for Biscuit Bags",
     "showBackpackPreviewInAH": "Show Biscutpack Preview for Your Biscuits While AH is Open",
     "enableDevFeatures": "Enable Biscuiter Features",
-    "chromaSpeed": "Rainbow Biscuit Speed",
-    "chromaMode": "Rainbow Biscuit Color Mode",
+    "chromaSpeed": "Chroma Speed",
+    "chromaMode": "Chroma Color Mode",
     "chromaModes": {
-      "allTheSame": "All the Same Bis Color",
-      "fade": "Bis Color Fade"
+      "allTheSame": "All the Same Color",
+      "fade": "Color Fade"
     },
-    "chromaFadeWidth": "Rainbow Biscuit Fade Width",
-    "sortTabEffectTimers": "Sort Timers by Biscuration"
+    "chromaFadeWidth": "Chroma Fade Width",
+    "sortTabEffectTimers": "Sort Timers by Duration",
+    "showBrokenFragments": "Show Broken Fragments",
+    "skyblockAddonsButtonInPauseMenu": "SBA Button in Pause Menu",
+    "showTotalZealotCount": "Zealot Counter - Total Zealot Count",
+    "showSummoningEyeCount": "Zealot Counter - Total Eye Count",
+    "showZealotsPerEye": "Zealot Counter - Show Zealots Per Eye",
+    "turnBowGreenWhenUsingToxicArrowPoison": "Color Bow Green When Using Toxic Arrow Poison"
   },
   "messages": {
+    "betaTesters": "Thank you for being a beta tester! Please report any bugs you encounter in the Discord channel.",
     "dropConfirmation": "Throw out this biscuit again to confirm!",
     "magmaBossWarning": "Biscuit Boss!",
     "fullInventory": "No Room For Biscuits!",
@@ -122,7 +129,6 @@
       "reforges": "Bisforges",
       "crafting": "Biscuuting"
     },
-    "newUpdateAvailable": "A new update (%version%) is out of the oven!",
     "deleteOldFile": "Fresh Biscuits is here! Please open your mods folder using the button below, close your Minecraft, and delete the old biscuit (or delete it later if you prefer).",
     "wantToViewPatchNotes": "Want to taste the new biscuits?",
     "downloadLink": "BISCUIT UPDATE LINK",
@@ -134,7 +140,9 @@
       "patchAvailable": "A new small biscuit update (%version%) is available! Look in chat for download options!",
       "downloading": "The biscuit is baking! Status: %downloaded%/%total% Please note that after the download has finished, you must throw the old biscuit out.",
       "failed": "The biscuit mission has failed! Please download it manually using the link in chat.",
-      "downloadFinished": "The small biscuit has finished downloading. It has been saved as %file%. Please don't forget to throw out the old biscuit after closing your Minecraft. Click the message in chat to open up the folder."
+      "downloadFinished": "The small biscuit has finished downloading. It has been saved as %file%. Please don't forget to throw out the old biscuit after closing your Minecraft. Click the message in chat to open up the folder.",
+      "newBeta": "A new beta (%version%) is available! Please update using the \"Mods\" menu.",
+      "newUpdate": "A new update (%version%) is available! Please update using the \"Mods\" menu."
     },
     "slotLocked": "This biscuit is locked!",
     "summoningEyeFound": "Biscuit Eye!",
