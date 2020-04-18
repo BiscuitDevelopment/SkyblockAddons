@@ -107,14 +107,14 @@
     "sortTabEffectTimers": "Sorter Timere etter Lengde",
     "showBrokenFragments": "Vis Knuste Drage Fragmenter",
     "skyblockAddonsButtonInPauseMenu": "Vis SBA Knapp i Pause Meny",
-    "showTotalZealotCount": "Zealot Teller - Total Zealot Antall",
-    "showSummoningEyeCount": "Zealot Counter - Total Eye Count",
-    "showZealotsPerEye": "Zealot Counter - Show Zealots Per Eye",
-    "turnBowGreenWhenUsingToxicArrowPoison": "Color Bow Green When Using Toxic Arrow Poison",
-    "birchParkRainmakerTimer": "Birch Park Rainmaker Timer"
+    "showTotalZealotCount": "Zealot Teller - Totalt Antall Zealot",
+    "showSummoningEyeCount": "Zealot Teller - Totalt Antall Øyne",
+    "showZealotsPerEye": "Zealot Teller - Vis Antall Zealots Per Øye",
+    "turnBowGreenWhenUsingToxicArrowPoison": "Farge Bue Grønn Når Giftig Piller Brukes",
+    "birchParkRainmakerTimer": "Bjørke Park Regnlager Nedtelling"
   },
   "messages": {
-    "betaTesters": "Thank you for being a beta tester! Please report any bugs you encounter in the Discord channel.",
+    "betaTesters": "Takk for at du er en beta tester! Hvis du finner noen Bugs vennligst rapporter de på Discord'en.",
     "dropConfirmation": "Slipp denne gjenstanden igjen for å bekrefte!",
     "magmaBossWarning": "Magma Cube Boss!",
     "fullInventory": "Full inventar!",
@@ -142,8 +142,8 @@
       "downloading": "nedlasting",
       "failed": "grunnstøting",
       "downloadFinished": "nedlastingen fullført",
-      "newBeta": "A new beta (%version%) is available! Please update using the \"Mods\" menu.",
-      "newUpdate": "A new update (%version%) is available! Please update using the \"Mods\" menu."
+      "newBeta": "En ny beta (%version%) er tilgjengelig! Vennligst oppdater via \"Mod'er\" menyen.",
+      "newUpdate": "En ny oppdatering (%version%) er tilgjengelig! Vennligst oppdater via \"Mod'er\" menyen."
     },
     "slotLocked": "Denne ruten er låst!",
     "summoningEyeFound": "Summoning Eye!",
