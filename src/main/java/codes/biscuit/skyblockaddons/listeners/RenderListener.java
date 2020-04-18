@@ -54,6 +54,8 @@ public class RenderListener {
     private final static ResourceLocation ZEALOTS_PER_EYE_ICON = new ResourceLocation("skyblockaddons", "icons/zealotspereye.png");
     private final static ResourceLocation SLASH_ICON = new ResourceLocation("skyblockaddons", "icons/slash.png");
 
+    private final static ItemStack WATER_BUCKET = new ItemStack(Items.water_bucket);
+
     private SkyblockAddons main;
 
     @Getter @Setter private boolean predictHealth = false;
@@ -666,7 +668,7 @@ public class RenderListener {
             if (main.getPersistentValues().getTotalKills() <= 0) {
                 text = String.valueOf(main.getPersistentValues().getKills());
             } else {
-                text = String.valueOf(main.getPersistentValues().getTotalKills());
+                text = String.valueOf(main.getPersistentValues().getTotalKills()+main.getPersistentValues().getKills());
             }
         } else if(feature == Feature.SHOW_SUMMONING_EYE_COUNT) {
             if(main.getUtils().getLocation() != Location.DRAGONS_NEST && buttonLocation == null) return;
@@ -679,6 +681,41 @@ public class RenderListener {
                 text = String.valueOf(main.getPersistentValues().getTotalKills() / main.getPersistentValues().getSummoningEyeCount());
             } else {
                 text = "0"; // Avoid zero division.
+            }
+        } else if (feature == Feature.BIRCH_PARK_RAINMAKER_TIMER) {
+            long rainmakerTime = main.getPlayerListener().getRainmakerTimeEnd();
+
+            if ((main.getUtils().getLocation() != Location.BIRCH_PARK || rainmakerTime == -1) && buttonLocation == null) {
+                return;
+            }
+
+            int totalSeconds = (int)(rainmakerTime-System.currentTimeMillis())/1000;
+            if (rainmakerTime != -1 && totalSeconds > 0) {
+                StringBuilder timerBuilder = new StringBuilder();
+
+                int hours = totalSeconds / 3600;
+                int minutes = totalSeconds / 60 % 60;
+                int seconds = totalSeconds % 60;
+
+                if (hours > 0) {
+                    timerBuilder.append(hours).append(":");
+                }
+                if (minutes < 10 && hours > 0) {
+                    timerBuilder.append("0");
+                }
+                timerBuilder.append(minutes).append(":");
+                if (seconds < 10) {
+                    timerBuilder.append("0");
+                }
+                timerBuilder.append(seconds);
+
+                text = timerBuilder.toString();
+            } else {
+                if (buttonLocation == null) {
+                    return;
+                }
+
+                text = "1:23";
             }
         } else {
             return;
@@ -700,7 +737,8 @@ public class RenderListener {
             int boxYOne = intY - 4;
             int boxYTwo = intY + height + 4;
             if (feature == Feature.MAGMA_BOSS_TIMER || feature == Feature.DARK_AUCTION_TIMER || feature == Feature.ZEALOT_COUNTER || feature == Feature.SKILL_DISPLAY
-            || feature == Feature.SHOW_TOTAL_ZEALOT_COUNT || feature == Feature.SHOW_SUMMONING_EYE_COUNT || feature == Feature.SHOW_AVERAGE_ZEALOTS_PER_EYE) {
+            || feature == Feature.SHOW_TOTAL_ZEALOT_COUNT || feature == Feature.SHOW_SUMMONING_EYE_COUNT || feature == Feature.SHOW_AVERAGE_ZEALOTS_PER_EYE ||
+            feature == Feature.BIRCH_PARK_RAINMAKER_TIMER) {
                 boxXOne -= 18;
                 boxYOne -= 2;
             }
@@ -735,7 +773,7 @@ public class RenderListener {
             mc.getTextureManager().bindTexture(SLASH_ICON);
             main.getUtils().bindRGBColor(color);
             Gui.drawModalRectWithCustomSizedTexture(intX - 18, intY - 5, 0, 0, 16, 16, 16, 16);
-        }else if (feature == Feature.SKILL_DISPLAY && ((skill != null && skill.getItem() != null) || buttonLocation != null)) {
+        } else if (feature == Feature.SKILL_DISPLAY && ((skill != null && skill.getItem() != null) || buttonLocation != null)) {
             GlStateManager.enableRescaleNormal();
             RenderHelper.enableGUIStandardItemLighting();
             if (!(mc.currentScreen instanceof GuiChat)) {
@@ -743,6 +781,14 @@ public class RenderListener {
                     mc.getRenderItem().renderItemIntoGUI(buttonLocation == null ? skill.getItem() : EnumUtils.SkillType.FARMING.getItem(), intX - 18, intY - 5);
                 }
             }
+            RenderHelper.disableStandardItemLighting();
+            GlStateManager.disableRescaleNormal();
+        } else if (feature == Feature.BIRCH_PARK_RAINMAKER_TIMER) {
+            GlStateManager.enableRescaleNormal();
+            RenderHelper.enableGUIStandardItemLighting();
+
+            mc.getRenderItem().renderItemIntoGUI(WATER_BUCKET, intX - 18, intY - 5);
+
             RenderHelper.disableStandardItemLighting();
             GlStateManager.disableRescaleNormal();
         }
@@ -847,15 +893,37 @@ public class RenderListener {
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         }
 
+        boolean alignLeft = (anchorPoint == EnumUtils.AnchorPoint.TOP_RIGHT || anchorPoint == EnumUtils.AnchorPoint.BOTTOM_RIGHT);
+
         int drawnCount = 0;
         for(TabEffect potion : potionTimers){
             int fixedY = intY + (topDown ? 0 : spacer) + (drawnCount * 9);
-            main.getUtils().drawTextWithStyle(potion.toString(), intX, fixedY, ChatFormatting.WHITE);
+
+            StringBuilder lineBuilder = new StringBuilder();
+            if (!alignLeft) {
+                lineBuilder.append(potion.getEffect()).append(potion.getDurationForDisplay());
+            } else {
+                lineBuilder.append(potion.getDurationForDisplay().trim()).append(" ").append(potion.getEffect());
+            }
+
+            String line = lineBuilder.toString();
+
+            main.getUtils().drawTextWithStyle(line, alignLeft ? intX + width - MinecraftReflection.FontRenderer.getStringWidth(line) : intX, fixedY, ChatFormatting.WHITE);
             drawnCount += topDown ? 1 : -1;
         }
         for(TabEffect powerUp : powerupTimers){
             int fixedY = intY + (topDown ? spacer : 0) + (drawnCount * 9);
-            main.getUtils().drawTextWithStyle(powerUp.toString(), intX, fixedY, ChatFormatting.WHITE);
+
+            StringBuilder lineBuilder = new StringBuilder();
+            if (!alignLeft) {
+                lineBuilder.append(powerUp.getEffect()).append(powerUp.getDurationForDisplay());
+            } else {
+                lineBuilder.append(powerUp.getDurationForDisplay().trim()).append(" ").append(powerUp.getEffect());
+            }
+
+            String line = lineBuilder.toString();
+
+            main.getUtils().drawTextWithStyle(line, alignLeft ? intX + width - MinecraftReflection.FontRenderer.getStringWidth(line) : intX, fixedY, ChatFormatting.WHITE);
             drawnCount += topDown ? 1 : -1;
         }
     }

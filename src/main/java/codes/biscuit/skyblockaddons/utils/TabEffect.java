@@ -27,6 +27,10 @@ public class TabEffect implements Comparable<TabEffect> {
         return effect+"§r§f"+duration;
     }
 
+    public String getDurationForDisplay(){
+        return "§r§f"+duration;
+    }
+
     /**
      * @return the duration in seconds.
      */

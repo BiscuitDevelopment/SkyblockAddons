@@ -5,6 +5,7 @@ import codes.biscuit.skyblockaddons.asm.utils.ReturnValue;
 import codes.biscuit.skyblockaddons.utils.Feature;
 import codes.biscuit.skyblockaddons.utils.npc.NPCUtils;
 import codes.biscuit.skyblockaddons.utils.npc.Tag;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.Entity;
@@ -19,7 +20,8 @@ public class EntityRendererHook {
 
         if (main.getUtils().isOnSkyblock()) {
             if (!GuiScreen.isCtrlKeyDown() && main.getConfigValues().isEnabled(Feature.IGNORE_ITEM_FRAME_CLICKS)) {
-                list.removeIf(listEntity -> listEntity instanceof EntityItemFrame);
+                list.removeIf(listEntity -> listEntity instanceof EntityItemFrame &&
+                        (((EntityItemFrame)listEntity).getDisplayedItem() != null || Minecraft.getMinecraft().thePlayer.getHeldItem() == null));
             }
             if (main.getConfigValues().isEnabled(Feature.HIDE_PLAYERS_NEAR_NPCS)) {
                 list.removeIf(entity -> entity instanceof EntityOtherPlayerMP && NPCUtils.isNearAnyNPCWithTag(entity, Tag.IMPORTANT) && !NPCUtils.isNPC(entity));

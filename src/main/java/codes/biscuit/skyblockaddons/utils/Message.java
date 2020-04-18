@@ -106,6 +106,7 @@ public enum Message {
     SETTING_SHOW_SUMMONING_EYE_COUNT(MessageObject.SETTING, "showSummoningEyeCount"),
     SETTING_SHOW_AVERAGE_ZEALOTS_PER_EYE(MessageObject.SETTING, "showZealotsPerEye"),
     SETTING_TURN_BOW_GREEN_WHEN_USING_TOXIC_ARROW_POISON(MessageObject.SETTING, "turnBowGreenWhenUsingToxicArrowPoison"),
+    SETTING_BIRCH_PARK_RAINMAKER_TIMER(MessageObject.SETTING, "birchParkRainmakerTimer"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.BACKPACK_STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.BACKPACK_STYLE, "compact"),
