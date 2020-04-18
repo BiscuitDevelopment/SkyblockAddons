@@ -104,9 +104,17 @@
       "fade": "تلاشي الألوان"
     },
     "chromaFadeWidth": "عرض تلاشي Chroma",
-    "sortTabEffectTimers": "ترتيب المؤقت حسب المدة"
+    "sortTabEffectTimers": "ترتيب المؤقت حسب المدة",
+    "showBrokenFragments": "Show Broken Fragments",
+    "skyblockAddonsButtonInPauseMenu": "SBA Button in Pause Menu",
+    "showTotalZealotCount": "Zealot Counter - Total Zealot Count",
+    "showSummoningEyeCount": "Zealot Counter - Total Eye Count",
+    "showZealotsPerEye": "Zealot Counter - Show Zealots Per Eye",
+    "turnBowGreenWhenUsingToxicArrowPoison": "Color Bow Green When Using Toxic Arrow Poison",
+    "birchParkRainmakerTimer": "Birch Park Rainmaker Timer"
   },
   "messages": {
+    "betaTesters": "Thank you for being a beta tester! Please report any bugs you encounter in the Discord channel.",
     "dropConfirmation": "!إرمي هذا العنصر مرة أخرى للتأكيد",
     "magmaBossWarning": "!زعيم مكعب الصهارة",
     "fullInventory": "!جرد كامل",
@@ -122,7 +130,6 @@
       "reforges": "إعادة تشكيل",
       "crafting": "صناعة"
     },
-    "newUpdateAvailable": "تحديث جديد (%version%) متاح!",
     "deleteOldFile": "تم التنزيل، الرجاء فتح ملف المودات مستعملا الزر ادناه، اغلق ماينكرافت، قم بإلغاء النسخة القديمه (أو الغيها لاحقا اذا اردت).",
     "wantToViewPatchNotes": "هل تريد قراءة التغييرات؟",
     "downloadLink": "رابط التحديث",
@@ -134,7 +141,9 @@
       "patchAvailable": "تحديث تصحيحات (%version%) الآن متاح!\nانظر في الشات لتنزيل الخيارات!",
       "downloading": "يتم تنزيل التصحيح! الحاله: %downloaded%/%total% ملحوظه الرجاء بعد انهاء التحميل، يجب عليك الغاء الملفات القديمة.",
       "failed": "تنزيل التصحيح قد فشل! الرجاء تنزيله يدويا بإستعمال الرابط في الشات.",
-      "downloadFinished": "لقد انتهى تنزيل التصحيح. تم حفظه على شكل %file%. الرجاء عدم نسيان الغاء الملفات القديمة بعد إغلاق ماينكرافت. اضغط على الرسالة في الشات لفتح الملف."
+      "downloadFinished": "لقد انتهى تنزيل التصحيح. تم حفظه على شكل %file%. الرجاء عدم نسيان الغاء الملفات القديمة بعد إغلاق ماينكرافت. اضغط على الرسالة في الشات لفتح الملف.",
+      "newBeta": "A new beta (%version%) is available! Please update using the \"Mods\" menu.",
+      "newUpdate": "A new update (%version%) is available! Please update using the \"Mods\" menu."
     },
     "slotLocked": "الخانة مقفله!",
     "summoningEyeFound": "عين الاستدعاء!",
