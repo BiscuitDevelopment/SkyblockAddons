@@ -8,7 +8,7 @@
     "skeletonHatBonesBar": "Barra delle ossa dello Skeleton Hat",
     "hideFoodAndArmor": "Nascondi la Barra della Fame e dell’Armatura",
     "fullInventoryWarning": "Avviso di inventario pieno",
-    "repeating": "Ripetizione",
+    "repeating": "Ripeti avviso",
     "disableEmberRodAbility": "Disabilita l’Ember Rod sull’isola",
     "editLocations": "Modifica Posizioni",
     "guiScale": "Dimensione GUI: %scale%",
@@ -106,15 +106,15 @@
     "chromaFadeWidth": "Larghezza della dissolvenza cromatica",
     "sortTabEffectTimers": "Ordina i timer per durata",
     "showBrokenFragments": "Show Broken Dragon Fragments",
-    "skyblockAddonsButtonInPauseMenu": "Show SBA Button in Pause Menu",
+    "skyblockAddonsButtonInPauseMenu": "Mostra il pulsante SBA nel menu in pausa",
     "showTotalZealotCount": "Zealot Counter - Total Zealot Count",
     "showSummoningEyeCount": "Zealot Counter - Total Eye Count",
     "showZealotsPerEye": "Zealot Counter - Show Zealots Per Eye",
-    "turnBowGreenWhenUsingToxicArrowPoison": "Color Bow Green When Using Toxic Arrow Poison",
+    "turnBowGreenWhenUsingToxicArrowPoison": "Colora di verde l’arco mentre scagli una Poison Arrow",
     "birchParkRainmakerTimer": "Birch Park Rainmaker Timer"
   },
   "messages": {
-    "betaTesters": "Thank you for being a beta tester! Please report any bugs you encounter in the Discord channel.",
+    "betaTesters": "Grazie per essere stato un beta tester! Per favore segnala tutti i bug riscontrati nel canale di Discord.",
     "dropConfirmation": "Getta questo oggetto nuovamente per confermare!",
     "magmaBossWarning": "Magma Boss!",
     "fullInventory": "Inventario pieno!",
@@ -142,8 +142,8 @@
       "downloading": "Download delle correzioni! Status: %downloaded%/%total% Ricorda che al termine del download dovrai eliminare il file vecchio.",
       "failed": "Il download delle correzioni non è riuscito! Scaricalo manualmente utilizzando il link in chat.",
       "downloadFinished": "L’aggiornamento con le correzioni è stato scaricato. È stato salvato come %file%. Non dimenticarti di eliminare il vecchio file dopo aver chiuso Minecraft. Clicca sul messaggio in chat per aprire la cartella.",
-      "newBeta": "A new beta (%version%) is available! Please update using the \"Mods\" menu.",
-      "newUpdate": "A new update (%version%) is available! Please update using the \"Mods\" menu."
+      "newBeta": "È disponibile una nuova versione beta (%version%)! Scaricala usando il menu “Mods”.",
+      "newUpdate": "È disponibile un nuovo aggiornamento (%version%)! Scaricalo usando il menu “Mods”."
     },
     "slotLocked": "Questo slot è bloccato!",
     "summoningEyeFound": "Occhio dell'evocazione!",
