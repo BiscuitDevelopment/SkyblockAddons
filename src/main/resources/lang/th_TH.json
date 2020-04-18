@@ -104,9 +104,16 @@
       "fade": "เรียงสี"
     },
     "chromaFadeWidth": "เรียงสีด้วยความกว้าง",
-    "sortTabEffectTimers": "Sort Timers by Duration"
+    "sortTabEffectTimers": "Sort Timers by Duration",
+    "showBrokenFragments": "Show Broken Fragments",
+    "skyblockAddonsButtonInPauseMenu": "SBA Button in Pause Menu",
+    "showTotalZealotCount": "Zealot Counter - Total Zealot Count",
+    "showSummoningEyeCount": "Zealot Counter - Total Eye Count",
+    "showZealotsPerEye": "Zealot Counter - Show Zealots Per Eye",
+    "turnBowGreenWhenUsingToxicArrowPoison": "Color Bow Green When Using Toxic Arrow Poison"
   },
   "messages": {
+    "betaTesters": "Thank you for being a beta tester! Please report any bugs you encounter in the Discord channel.",
     "dropConfirmation": "กดทิ้งของอีกที่เพื่อยืนยันทิ้งของสิ่งนี้!",
     "magmaBossWarning": "บอส Magma เกิดแล้ว!",
     "fullInventory": "ช่องเก็บของเต็มแล้ว!",
@@ -122,7 +129,6 @@
       "reforges": "ตีบวกของ",
       "crafting": "คราฟของ"
     },
-    "newUpdateAvailable": "มีอัพเดทใหม่ (%version%) พร้อมให้ดาวน์โหลดแล้ว!",
     "deleteOldFile": "การดาวน์โหลดเสร็จสมบูรณ์ กรุณาเปิดโฟลเดอร์มอดโดยใช้ปุ่มข้างล่างนี้ จากนั้นปิด Minecraft และลบมอดเวอร์ชั่นเก่า (หรือจะลบทีหลังก็ได้ถ้าต้องการ)",
     "wantToViewPatchNotes": "ต้องการอ่านการเปลี่ยนแปลงหรือไม่?",
     "downloadLink": "ลิงค์อัพเดท",
@@ -134,7 +140,9 @@
       "patchAvailable": "มี Patch ใหม่ (%version%) พร้อมให้ดาวน์โหลดแล้ว! หาลิงค์ดาวน์โหลดได้ในช่องแชท",
       "downloading": "กำลังดาวน์โหลด Patch ใหม่! สถานะ: %downloaded%/%total% โปรดจำไว้ว่าหลังดาวน์โหลดเสร็จแล้ว คุณต้องลบไฟล์เวอร์ชั่นเก่าออก",
       "failed": "ดาวน์โหลด Patch ไม่สำเร็จ! กรุณาดาวน์โหลดโดยใช้ลิงค์ในช่องแชท",
-      "downloadFinished": "ดาวน์โหลด Patch สำเร็จ ไฟล์ได้ถูกบักทึกเป็น %file% กรุณาอย่าลืมลบไฟล์เก่าหลังจากปิด Minecraft คลิกที่ข้อความในช่องแชทเพื่อเปิดโฟลเดอร์"
+      "downloadFinished": "ดาวน์โหลด Patch สำเร็จ ไฟล์ได้ถูกบักทึกเป็น %file% กรุณาอย่าลืมลบไฟล์เก่าหลังจากปิด Minecraft คลิกที่ข้อความในช่องแชทเพื่อเปิดโฟลเดอร์",
+      "newBeta": "A new beta (%version%) is available! Please update using the \"Mods\" menu.",
+      "newUpdate": "A new update (%version%) is available! Please update using the \"Mods\" menu."
     },
     "slotLocked": "ช่องนี้ถูกล็อคไว้!",
     "summoningEyeFound": "ดวงตาอัญเชิญ!",
