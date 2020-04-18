@@ -105,13 +105,13 @@
     },
     "chromaFadeWidth": "Chroma Fade Bredd",
     "sortTabEffectTimers": "Sortera tidtagare efter längd",
-    "showBrokenFragments": "Show Broken Dragon Fragments",
-    "skyblockAddonsButtonInPauseMenu": "Show SBA Button in Pause Menu",
-    "showTotalZealotCount": "Zealot Counter - Total Zealot Count",
-    "showSummoningEyeCount": "Zealot Counter - Total Eye Count",
-    "showZealotsPerEye": "Zealot Counter - Show Zealots Per Eye",
-    "turnBowGreenWhenUsingToxicArrowPoison": "Color Bow Green When Using Toxic Arrow Poison",
-    "birchParkRainmakerTimer": "Birch Park Rainmaker Timer"
+    "showBrokenFragments": "Visa Förstörda Drak Fragment",
+    "skyblockAddonsButtonInPauseMenu": "Visa SBA Knapp i Paus Menyn",
+    "showTotalZealotCount": "Zealot räknare - Totala Zealot Räknare",
+    "showSummoningEyeCount": "Zealot räknare - Totala Ögon Räknare",
+    "showZealotsPerEye": "Zealot Räknare - Visa Zealots Per Öga",
+    "turnBowGreenWhenUsingToxicArrowPoison": "Färga Pilbåge Grön När Du Använder Gift Pilar",
+    "birchParkRainmakerTimer": "Björk Park Regngörar Timer"
   },
   "messages": {
     "betaTesters": "Thank you for being a beta tester! Please report any bugs you encounter in the Discord channel.",
