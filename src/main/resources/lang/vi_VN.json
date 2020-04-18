@@ -104,9 +104,16 @@
       "fade": "Color Fade"
     },
     "chromaFadeWidth": "Chroma Fade Width",
-    "sortTabEffectTimers": "Sort Timers by Duration"
+    "sortTabEffectTimers": "Sort Timers by Duration",
+    "showBrokenFragments": "Show Broken Fragments",
+    "skyblockAddonsButtonInPauseMenu": "SBA Button in Pause Menu",
+    "showTotalZealotCount": "Zealot Counter - Total Zealot Count",
+    "showSummoningEyeCount": "Zealot Counter - Total Eye Count",
+    "showZealotsPerEye": "Zealot Counter - Show Zealots Per Eye",
+    "turnBowGreenWhenUsingToxicArrowPoison": "Color Bow Green When Using Toxic Arrow Poison"
   },
   "messages": {
+    "betaTesters": "Thank you for being a beta tester! Please report any bugs you encounter in the Discord channel.",
     "dropConfirmation": "Nhấn \"Q\" Thêm Một Lần Nữa Để Xác Nhận!",
     "magmaBossWarning": "Trùm Dung Nham!",
     "fullInventory": "Túi Đồ Đã Đầy!",
@@ -122,7 +129,6 @@
       "reforges": "Rèn luyện",
       "crafting": "Chế tạo"
     },
-    "newUpdateAvailable": "Cập nhật mới (%version%) có sẵn!",
     "deleteOldFile": "Tải về hoàn tất, hãy mở thư mục mod bằng nút dưới đây, tắt Minecraft đi và xoá phiên bản cũ đi (hoặc có thể xoá sau tùy bạn).",
     "wantToViewPatchNotes": "Muốn đọc những thay đổi không?",
     "downloadLink": "LIÊN KẾT CẬP NHẬT",
@@ -134,7 +140,9 @@
       "patchAvailable": "Bản vá mới (%version%) có sẵn! Các lựa chọn tải về ở trong chat!",
       "downloading": "Bản vá đang được tải về! Quá trình: %downloaded%/%total% Vui lòng nhớ rằng sau khi tải xong, bạn phải xoá bản cũ.",
       "failed": "Tải về bản vá thất bại! Vui lòng tự tải về bằng liên kết trong chat.",
-      "downloadFinished": "Bản vá đã tải về hoàn tất. Nó đã được lưu như %file%. Vui lòng xoá bản cũ sau khi đóng Minecraft. Nhấn vào tin nhắn ở chất để mở thư mục."
+      "downloadFinished": "Bản vá đã tải về hoàn tất. Nó đã được lưu như %file%. Vui lòng xoá bản cũ sau khi đóng Minecraft. Nhấn vào tin nhắn ở chất để mở thư mục.",
+      "newBeta": "A new beta (%version%) is available! Please update using the \"Mods\" menu.",
+      "newUpdate": "A new update (%version%) is available! Please update using the \"Mods\" menu."
     },
     "slotLocked": "Ô này đã bị khoá!",
     "summoningEyeFound": "Mắt Triệu Hồi!",
