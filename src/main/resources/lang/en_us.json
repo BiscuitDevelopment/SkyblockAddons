@@ -86,7 +86,7 @@
       "compact": "Compact"
     },
     "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages",
-    "zealotCounter": "Show Zealot Counter",
+    "zealotCounter": "Zealot Counter - Count Since Last Eye",
     "tickerChargesDisplay": "Ticker/Charges Display",
     "tab": {
       "generalSettings": "General Settings"
@@ -106,7 +106,11 @@
     "chromaFadeWidth": "Chroma Fade Width",
     "sortTabEffectTimers": "Sort Timers by Duration",
     "showBrokenFragments": "Show Broken Fragments",
-    "skyblockAddonsButtonInPauseMenu": "SBA Button in Pause Menu"
+    "skyblockAddonsButtonInPauseMenu": "SBA Button in Pause Menu",
+    "showTotalZealotCount": "Zealot Counter - Total Zealot Count",
+    "showSummoningEyeCount": "Zealot Counter - Total Eye Count",
+    "showZealotsPerEye": "Zealot Counter - Show Zealots Per Eye",
+    "turnBowGreenWhenUsingToxicArrowPoison": "Color Bow Green When Using Toxic Arrow Poison"
   },
   "messages": {
     "betaTesters": "Thank you for being a beta tester! Please report any bugs you encounter in the Discord channel.",

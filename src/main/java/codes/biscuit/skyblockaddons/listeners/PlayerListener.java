@@ -82,7 +82,7 @@ public class PlayerListener {
     private boolean oldBobberIsInWater = false;
     private double oldBobberPosY = 0;
 
-    private Set<Entity> countedEndermen = new HashSet<>();
+    private Set<UUID> countedEndermen = new HashSet<>();
     @Getter
     private Set<CoordsPair> recentlyLoadedChunks = new HashSet<>();
     @Getter
@@ -183,8 +183,9 @@ public class PlayerListener {
                 if (main.getConfigValues().isEnabled(Feature.ZEALOT_COUNTER)) {
                     // Edit the message to include counter.
                     e.message = new ChatComponentText(e.message.getFormattedText() + ChatFormatting.GRAY + " (" + main.getPersistentValues().getKills() + ")");
-                    main.getPersistentValues().setKills(-1); // This is triggered before the death of the killed zealot, so this is set to -1 to account for that.
                 }
+
+                main.getPersistentValues().addEyeResetKills();
             }
 
             if (main.getConfigValues().isEnabled(Feature.DISABLE_MAGICAL_SOUP_MESSAGES) && randomMessages.contains(message)) {
@@ -330,6 +331,7 @@ public class PlayerListener {
 
                         if (main.getUtils().isOnSkyblock()) {
                             main.getInventoryUtils().checkIfWearingSkeletonHelmet(p);
+                            main.getInventoryUtils().checkIfUsingToxicArrowPoison(p);
                             main.getInventoryUtils().checkIfWearingSlayerArmor(p);
                         }
 
@@ -416,22 +418,22 @@ public class PlayerListener {
 
     @SubscribeEvent
     public void onAttack(AttackEntityEvent e) {
-        if (main.getConfigValues().isEnabled(Feature.ZEALOT_COUNTER) && e.target instanceof EntityEnderman) {
+        if (e.target instanceof EntityEnderman) {
             List<EntityArmorStand> stands = Minecraft.getMinecraft().theWorld.getEntitiesWithinAABB(EntityArmorStand.class,
                     new AxisAlignedBB(e.target.posX - 1, e.target.posY, e.target.posZ - 1, e.target.posX + 1, e.target.posY + 5, e.target.posZ + 1));
             if (stands.isEmpty()) return;
 
             EntityArmorStand armorStand = stands.get(0);
             if (armorStand.hasCustomName() && armorStand.getCustomNameTag().contains("Zealot")) {
-                countedEndermen.add(e.target);
+                countedEndermen.add(e.target.getUniqueID());
             }
         }
     }
 
     @SubscribeEvent
     public void onDeath(LivingDeathEvent e) {
-        if (main.getConfigValues().isEnabled(Feature.ZEALOT_COUNTER) && e.entity instanceof EntityEnderman) {
-            if (countedEndermen.remove(e.entity)) {
+        if (e.entity instanceof EntityEnderman) {
+            if (countedEndermen.remove(e.entity.getUniqueID())) {
                 main.getPersistentValues().addKill();
             }
         }

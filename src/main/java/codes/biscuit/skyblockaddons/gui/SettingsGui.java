@@ -15,7 +15,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.GuiIngameForge;
 
 import java.awt.*;
-import java.util.Set;
+import java.util.List;
 
 public class SettingsGui extends GuiScreen {
 
@@ -30,7 +30,7 @@ public class SettingsGui extends GuiScreen {
     private int lastPage;
     private EnumUtils.GuiTab lastTab;
     private boolean closingGui = false;
-    private Set<EnumUtils.FeatureSetting> settings;
+    private List<EnumUtils.FeatureSetting> settings;
     private String lastText;
 
     private long timeOpened = System.currentTimeMillis();
@@ -39,7 +39,7 @@ public class SettingsGui extends GuiScreen {
      * The main gui, opened with /sba.
      */
     public SettingsGui(SkyblockAddons main, Feature feature, int page,
-                       int lastPage, EnumUtils.GuiTab lastTab, Set<EnumUtils.FeatureSetting> settings) {
+                       int lastPage, EnumUtils.GuiTab lastTab, List<EnumUtils.FeatureSetting> settings) {
         this.main = main;
         this.feature = feature;
         this.page = page;

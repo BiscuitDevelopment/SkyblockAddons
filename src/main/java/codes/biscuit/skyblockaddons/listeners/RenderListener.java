@@ -42,9 +42,17 @@ public class RenderListener {
     private final static ItemStack BONE_ITEM = new ItemStack(Items.bone);
     private final static ResourceLocation BARS = new ResourceLocation("skyblockaddons", "bars.png");
     private final static ResourceLocation DEFENCE_VANILLA = new ResourceLocation("skyblockaddons", "defence.png");
-    private final static ResourceLocation TEXT_ICONS = new ResourceLocation("skyblockaddons", "icons.png");
+//    private final static ResourceLocation TEXT_ICONS = new ResourceLocation("skyblockaddons", "icons.png");
     private final static ResourceLocation IMPERIAL_BARS_FIX = new ResourceLocation("skyblockaddons", "imperialbarsfix.png");
     private final static ResourceLocation TICKER_SYMBOL = new ResourceLocation("skyblockaddons", "ticker.png");
+
+    private final static ResourceLocation ENDERMAN_ICON = new ResourceLocation("skyblockaddons", "icons/enderman.png");
+    private final static ResourceLocation ENDERMAN_GROUP_ICON = new ResourceLocation("skyblockaddons", "icons/endermangroup.png");
+    private final static ResourceLocation MAGMA_BOSS_ICON = new ResourceLocation("skyblockaddons", "icons/magmaboss.png");
+    private final static ResourceLocation SIRIUS_ICON = new ResourceLocation("skyblockaddons", "icons/sirius.png");
+    private final static ResourceLocation SUMMONING_EYE_ICON = new ResourceLocation("skyblockaddons", "icons/summoningeye.png");
+    private final static ResourceLocation ZEALOTS_PER_EYE_ICON = new ResourceLocation("skyblockaddons", "icons/zealotspereye.png");
+    private final static ResourceLocation SLASH_ICON = new ResourceLocation("skyblockaddons", "icons/slash.png");
 
     private SkyblockAddons main;
 
@@ -562,13 +570,13 @@ public class RenderListener {
         } else if (feature == Feature.DEFENCE_TEXT) {
             text = String.valueOf(getAttribute(Attribute.DEFENCE));
         } else if (feature == Feature.DEFENCE_PERCENTAGE) {
-            double doubleDefence = (double) getAttribute(Attribute.DEFENCE);
+            double doubleDefence = getAttribute(Attribute.DEFENCE);
             double percentage = ((doubleDefence / 100) / ((doubleDefence / 100) + 1)) * 100; //Taken from https://hypixel.net/threads/how-armor-works-and-the-diminishing-return-of-higher-defence.2178928/
             BigDecimal bigDecimal = new BigDecimal(percentage).setScale(1, BigDecimal.ROUND_HALF_UP);
             text = bigDecimal.toString() + "%";
         } else if (feature == Feature.SPEED_PERCENTAGE) {
             String walkSpeed = String.valueOf(Minecraft.getMinecraft().thePlayer.capabilities.getWalkSpeed() * 1000);
-            text = walkSpeed.substring(0, walkSpeed.length() >= 3 ? 3 : walkSpeed.length());
+            text = walkSpeed.substring(0, Math.min(walkSpeed.length(), 3));
 
             if (text.endsWith(".")) text = text.substring(0, text.indexOf('.')); //remove trailing periods
 
@@ -653,8 +661,25 @@ public class RenderListener {
         } else if(feature == Feature.ZEALOT_COUNTER) {
         	if(main.getUtils().getLocation() != Location.DRAGONS_NEST && buttonLocation == null) return;
         	text = String.valueOf(main.getPersistentValues().getKills());
+        } else if(feature == Feature.SHOW_TOTAL_ZEALOT_COUNT) {
+            if(main.getUtils().getLocation() != Location.DRAGONS_NEST && buttonLocation == null) return;
+            if (main.getPersistentValues().getTotalKills() <= 0) {
+                text = String.valueOf(main.getPersistentValues().getKills());
+            } else {
+                text = String.valueOf(main.getPersistentValues().getTotalKills());
+            }
+        } else if(feature == Feature.SHOW_SUMMONING_EYE_COUNT) {
+            if(main.getUtils().getLocation() != Location.DRAGONS_NEST && buttonLocation == null) return;
+            text = String.valueOf(main.getPersistentValues().getSummoningEyeCount());
+        } else if(feature == Feature.SHOW_AVERAGE_ZEALOTS_PER_EYE) {
+            if(main.getUtils().getLocation() != Location.DRAGONS_NEST && buttonLocation == null) return;
+            int summoningEyeCount = main.getPersistentValues().getSummoningEyeCount();
 
-            if (buttonLocation != null) text = "123";
+            if (summoningEyeCount > 0) {
+                text = String.valueOf(main.getPersistentValues().getTotalKills() / main.getPersistentValues().getSummoningEyeCount());
+            } else {
+                text = "0"; // Avoid zero division.
+            }
         } else {
             return;
         }
@@ -674,7 +699,8 @@ public class RenderListener {
             int boxXTwo = intX + width + 4;
             int boxYOne = intY - 4;
             int boxYTwo = intY + height + 4;
-            if (feature == Feature.MAGMA_BOSS_TIMER || feature == Feature.DARK_AUCTION_TIMER || feature == Feature.ZEALOT_COUNTER || feature == Feature.SKILL_DISPLAY) {
+            if (feature == Feature.MAGMA_BOSS_TIMER || feature == Feature.DARK_AUCTION_TIMER || feature == Feature.ZEALOT_COUNTER || feature == Feature.SKILL_DISPLAY
+            || feature == Feature.SHOW_TOTAL_ZEALOT_COUNT || feature == Feature.SHOW_SUMMONING_EYE_COUNT || feature == Feature.SHOW_AVERAGE_ZEALOTS_PER_EYE) {
                 boxXOne -= 18;
                 boxYOne -= 2;
             }
@@ -689,15 +715,27 @@ public class RenderListener {
 
         GlStateManager.color(1, 1, 1, 1);
         if (feature == Feature.DARK_AUCTION_TIMER) {
-            mc.getTextureManager().bindTexture(TEXT_ICONS);
-            Gui.drawModalRectWithCustomSizedTexture(intX - 18, intY - 5, 16, 0, 16, 16, 32, 32);
+            mc.getTextureManager().bindTexture(SIRIUS_ICON);
+            Gui.drawModalRectWithCustomSizedTexture(intX - 18, intY - 5, 0, 0, 16, 16, 16, 16);
         } else if (feature == Feature.MAGMA_BOSS_TIMER) {
-            mc.getTextureManager().bindTexture(TEXT_ICONS);
-            Gui.drawModalRectWithCustomSizedTexture(intX - 18, intY - 5, 0, 0, 16, 16, 32, 32);
+            mc.getTextureManager().bindTexture(MAGMA_BOSS_ICON);
+            Gui.drawModalRectWithCustomSizedTexture(intX - 18, intY - 5, 0, 0, 16, 16, 16, 16);
         } else if (feature == Feature.ZEALOT_COUNTER) {
-            mc.getTextureManager().bindTexture(TEXT_ICONS);
-            Gui.drawModalRectWithCustomSizedTexture(intX - 18, intY - 5, 0, 16, 16, 16, 32, 32);
-        } else if (feature == Feature.SKILL_DISPLAY && ((skill != null && skill.getItem() != null) || buttonLocation != null)) {
+            mc.getTextureManager().bindTexture(ENDERMAN_ICON);
+            Gui.drawModalRectWithCustomSizedTexture(intX - 18, intY - 5, 0, 0, 16, 16, 16, 16);
+        } else if (feature == Feature.SHOW_TOTAL_ZEALOT_COUNT) {
+            mc.getTextureManager().bindTexture(ENDERMAN_GROUP_ICON);
+            Gui.drawModalRectWithCustomSizedTexture(intX - 18, intY - 5, 0, 0, 16, 16, 16, 16);
+        } else if (feature == Feature.SHOW_SUMMONING_EYE_COUNT) {
+            mc.getTextureManager().bindTexture(SUMMONING_EYE_ICON);
+            Gui.drawModalRectWithCustomSizedTexture(intX - 18, intY - 5, 0, 0, 16, 16, 16, 16);
+        } else if (feature == Feature.SHOW_AVERAGE_ZEALOTS_PER_EYE) {
+            mc.getTextureManager().bindTexture(ZEALOTS_PER_EYE_ICON);
+            Gui.drawModalRectWithCustomSizedTexture(intX - 18, intY - 5, 0, 0, 16, 16, 16, 16);
+            mc.getTextureManager().bindTexture(SLASH_ICON);
+            main.getUtils().bindRGBColor(color);
+            Gui.drawModalRectWithCustomSizedTexture(intX - 18, intY - 5, 0, 0, 16, 16, 16, 16);
+        }else if (feature == Feature.SKILL_DISPLAY && ((skill != null && skill.getItem() != null) || buttonLocation != null)) {
             GlStateManager.enableRescaleNormal();
             RenderHelper.enableGUIStandardItemLighting();
             if (!(mc.currentScreen instanceof GuiChat)) {

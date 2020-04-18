@@ -49,6 +49,8 @@ public enum TransformerClass {
     GuiDisconnected("net/minecraft/client/gui/GuiDisconnected", "axh"),
     GuiButton("net/minecraft/client/gui/GuiButton", "avs"),
     GuiIngameMenu("net/minecraft/client/gui/GuiIngameMenu", "axp"),
+    ItemCameraTransforms$TransformType("net/minecraft/client/renderer/block/model/ItemCameraTransforms$TransformType", "bgr$b"),
+    IBakedModel("net/minecraft/client/resources/model/IBakedModel", "boq"),
 
     NULL(null,null);
 

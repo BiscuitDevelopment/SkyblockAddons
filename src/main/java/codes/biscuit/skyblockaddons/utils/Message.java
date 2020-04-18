@@ -102,6 +102,10 @@ public enum Message {
     SETTING_SORT_TAB_EFFECT_TIMERS(MessageObject.SETTING, "sortTabEffectTimers"),
     SETTING_SHOW_BROKEN_FRAGMENTS(MessageObject.SETTING, "showBrokenFragments"),
     SETTING_SKYBLOCK_ADDONS_BUTTON_IN_PAUSE_MENU(MessageObject.SETTING, "skyblockAddonsButtonInPauseMenu"),
+    SETTING_SHOW_TOTAL_ZEALOT_COUNT(MessageObject.SETTING, "showTotalZealotCount"),
+    SETTING_SHOW_SUMMONING_EYE_COUNT(MessageObject.SETTING, "showSummoningEyeCount"),
+    SETTING_SHOW_AVERAGE_ZEALOTS_PER_EYE(MessageObject.SETTING, "showZealotsPerEye"),
+    SETTING_TURN_BOW_GREEN_WHEN_USING_TOXIC_ARROW_POISON(MessageObject.SETTING, "turnBowGreenWhenUsingToxicArrowPoison"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.BACKPACK_STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.BACKPACK_STYLE, "compact"),

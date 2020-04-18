@@ -28,11 +28,12 @@ public class InventoryUtils {
     /** Display name of the Skeleton Helmet. */
     private static final String SKELETON_HELMET_ID = "SKELETON_HELMET";
 
-    public static final String MADDOX_BATPHONE_DISPLAYNAME = "\u00A7aMaddox Batphone";
-    public static final String JUNGLE_AXE_DISPLAYNAME = "\u00A7aJungle Axe";
-    public static final String TREECAPITATOR_DISPLAYNAME = "\u00A75Treecapitator";
-    public static final String FAIRY_SOUL_EXCHANGE_DISPLAYNAME = "\u00a7aExchange Fairy Souls";
-    public static final String CHICKEN_HEAD_DISPLAYNAME = "\u00a7fChicken Head";
+    public static final String MADDOX_BATPHONE_DISPLAYNAME = "§aMaddox Batphone";
+    public static final String JUNGLE_AXE_DISPLAYNAME = "§aJungle Axe";
+    public static final String TREECAPITATOR_DISPLAYNAME = "§5Treecapitator";
+    public static final String FAIRY_SOUL_EXCHANGE_DISPLAYNAME = "§aExchange Fairy Souls";
+    public static final String CHICKEN_HEAD_DISPLAYNAME = "§fChicken Head";
+    public static final String TOXIC_ARROW_POISON_DISPLAYNAME = "§aToxic Arrow Poison";
 
     private static final Pattern REVENANT_UPGRADE_PATTERN = Pattern.compile("§5§o§7Next Upgrade: §a\\+([0-9]+❈) §8\\(§a([0-9,]+)§7/§c([0-9,]+)§8\\)");
 
@@ -44,6 +45,8 @@ public class InventoryUtils {
 
     /** Whether the player is wearing a Skeleton Helmet. */
     @Getter private boolean wearingSkeletonHelmet;
+
+    @Getter private boolean usingToxicArrowPoison;
 
     @Getter private SlayerArmorProgress[] slayerArmorProgresses = new SlayerArmorProgress[4];
 
@@ -219,12 +222,26 @@ public class InventoryUtils {
      * @param p Player to check
      */
     public void checkIfWearingSkeletonHelmet(EntityPlayerSP p) {
-        ItemStack item = p.getEquipmentInSlot(4);
-        if (item != null && SKELETON_HELMET_ID.equals(ItemUtils.getSkyBlockItemID(item))) {
-            wearingSkeletonHelmet = true;
-            return;
+        if (main.getConfigValues().isEnabled(Feature.SKELETON_BAR)) {
+            ItemStack item = p.getEquipmentInSlot(4);
+            if (item != null && SKELETON_HELMET_ID.equals(ItemUtils.getSkyBlockItemID(item))) {
+                wearingSkeletonHelmet = true;
+                return;
+            }
+            wearingSkeletonHelmet = false;
         }
-        wearingSkeletonHelmet = false;
+    }
+
+    public void checkIfUsingToxicArrowPoison(EntityPlayerSP p) {
+        if (main.getConfigValues().isEnabled(Feature.TURN_BOW_GREEN_WHEN_USING_TOXIC_ARROW_POISON)) {
+            for (ItemStack item : p.inventory.mainInventory) {
+                if (item != null && TOXIC_ARROW_POISON_DISPLAYNAME.equals(item.getDisplayName())) {
+                    this.usingToxicArrowPoison = true;
+                    return;
+                }
+            }
+            this.usingToxicArrowPoison = false;
+        }
     }
 
     public boolean shouldCancelDrop(Slot slot) {

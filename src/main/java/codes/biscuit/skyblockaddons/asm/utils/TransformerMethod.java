@@ -30,6 +30,16 @@ public enum TransformerMethod {
     // RenderItem
     renderItemAndEffectIntoGUI("renderItemAndEffectIntoGUI", "func_180450_b", "b", "(Lnet/minecraft/item/ItemStack;II)V", "("+TransformerClass.ItemStack.getName()+"II)V"),
     drawGuiContainerForegroundLayer("drawGuiContainerForegroundLayer", "func_146979_b", "b", "(II)V"),
+//    renderItemModelForEntity("renderItemModelForEntity", "func_175049_a", "a", "(Lnet/minecraft/item/ItemStack;Lnet/minecraft/entity/EntityLivingBase;Lnet/minecraft/client/renderer/block/model/ItemCameraTransforms$TransformType;)V",
+//            "("+TransformerClass.ItemStack.getName()+TransformerClass.EntityLivingBase.getName()+TransformerClass.ItemCameraTransforms$TransformType.getName()+")V"),
+    renderItemModelTransform("renderItemModelTransform", "func_175040_a", "a", "(Lnet/minecraft/item/ItemStack;Lnet/minecraft/client/resources/model/IBakedModel;Lnet/minecraft/client/renderer/block/model/ItemCameraTransforms$TransformType;)V",
+        "("+TransformerClass.ItemStack.getName()+TransformerClass.IBakedModel.getName()+TransformerClass.ItemCameraTransforms$TransformType.getName()+")V"),
+//    renderItem("renderItem", "func_178099_a", "a", "(Lnet/minecraft/entity/EntityLivingBase;Lnet/minecraft/item/ItemStack;Lnet/minecraft/client/renderer/block/model/ItemCameraTransforms$TransformType;)V",
+//            "("+TransformerClass.EntityLivingBase.getName()+TransformerClass.ItemStack.getName()+TransformerClass.ItemCameraTransforms$TransformType.getName()+")V"),
+    renderItem("renderItem", "func_180454_a", "a", "(Lnet/minecraft/item/ItemStack;Lnet/minecraft/client/resources/model/IBakedModel;)V",
+        "("+TransformerClass.ItemStack.getName()+TransformerClass.IBakedModel.getName()+")V"),
+    renderModel("renderModel", "func_175036_a", "a", "(Lnet/minecraft/client/resources/model/IBakedModel;Lnet/minecraft/item/ItemStack;)V",
+            "("+TransformerClass.IBakedModel.getName()+TransformerClass.ItemStack.getName()+")V"),
 
     // GlStateManager
     color("color", "func_179131_c", "c", "(FFFF)V"),

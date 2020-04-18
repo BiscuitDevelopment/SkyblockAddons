@@ -834,4 +834,15 @@ public class Utils {
     public String[] wrapSplitText(String text, int wrapLength) {
         return WordUtils.wrap(text, wrapLength).replace("\r", "").split(Pattern.quote("\n"));
     }
+
+    public boolean itemIsInHotbar(ItemStack itemStack) {
+        ItemStack[] inventory = Minecraft.getMinecraft().thePlayer.inventory.mainInventory;
+
+        for (int slot = 0; slot < 9; slot ++) {
+            if (inventory[slot] == itemStack) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

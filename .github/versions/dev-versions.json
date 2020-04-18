@@ -1,9 +1,10 @@
 {
     "homepage": "https://github.com/BiscuitDevelopment/SkyblockAddons/releases",
     "promos": {
-        "1.8.9-latest": "1.5.0-beta.15"
+        "1.8.9-latest": "1.5.0-beta.16"
     },
     "1.8.9": {
+        "1.5.0-beta.16": "New Features: \n - Turn bow green when using toxic arrow poison\n - Zealot Counter: More stats!\n    - Total Zealot Count Feature\n\t- Total Summoning Eye Count Feature\n\t- Average Zealots Per Eye Feature\n  - Show broken dragon fragments feature\n\nChanges:\n  - Names of features in the menu now can wrap up to 2 lines. This helps with super long feature names being scaled down!\n  - Removed beta tester pop up message\n  - Added animation to the feature toggle in the gui (why? idk)\n  \nFixes:\n  - Fixed ender chest coloring feature not working\n  - Fixed chroma coloring not working when only 1 chorma feature was enabled\n  ",
         "1.5.0-beta.15": "- Changed to Forge Update Checker for mod update checking",
         "1.5.0-b14.2": "Changes: \n- Remove Hypixel IP check due to issues with different IPs \nFixes: \n- Fix Roman numeral replacement not working for level 1 runes",
         "1.5.0-b14.1": "Changes: \n- Sort tab effect timers is disabled as default until the rapid movement is fixed \nFixes: \n- Fixed sort tab effect timers toggle",

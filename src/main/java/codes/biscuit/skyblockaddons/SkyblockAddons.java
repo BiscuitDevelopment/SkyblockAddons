@@ -28,7 +28,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 @Getter
-@Mod(modid = "@MOD_ID@", name = "@MOD_NAME@", version = "@VERSION@", clientSideOnly = true, acceptedMinecraftVersions = "@MOD_ACCEPTED@", updateJSON = "@UPDATE_JSON@")
+@Mod(modid = "skyblockaddons", name = "SkyblockAddons", version = "@VERSION@", clientSideOnly = true, acceptedMinecraftVersions = "@MOD_ACCEPTED@", updateJSON = "@UPDATE_JSON@")
 public class SkyblockAddons {
 
     public static final String MOD_ID = "@MOD_ID@";
