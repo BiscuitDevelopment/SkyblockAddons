@@ -104,9 +104,16 @@
       "fade": "Farb Überblendung"
     },
     "chromaFadeWidth": "Chroma Überblendung Breite",
-    "sortTabEffectTimers": "Timer nach Dauer sortieren"
+    "sortTabEffectTimers": "Timer nach Dauer sortieren",
+    "showBrokenFragments": "Show Broken Fragments",
+    "skyblockAddonsButtonInPauseMenu": "SBA Button in Pause Menu",
+    "showTotalZealotCount": "Zealot Counter - Total Zealot Count",
+    "showSummoningEyeCount": "Zealot Counter - Total Eye Count",
+    "showZealotsPerEye": "Zealot Counter - Show Zealots Per Eye",
+    "turnBowGreenWhenUsingToxicArrowPoison": "Color Bow Green When Using Toxic Arrow Poison"
   },
   "messages": {
+    "betaTesters": "Thank you for being a beta tester! Please report any bugs you encounter in the Discord channel.",
     "dropConfirmation": "Werfe diesen Gegenstand nochmal, um zu bestätigen!",
     "magmaBossWarning": "Der Magma Boss ist erschienen!",
     "fullInventory": "Volles Inventar!",
@@ -122,7 +129,6 @@
       "reforges": "Verbesserungen",
       "crafting": "Crafting"
     },
-    "newUpdateAvailable": "Ein neues Update (%version%) ist verfügbar!",
     "deleteOldFile": "Der Download ist beendet, benutze den Knopf unten, um den mods Ordner zu öffnen, schließe dein Minecraft und lösche die alte Version (oder lösche es später).",
     "wantToViewPatchNotes": "Möchtest du die Änderungen lesen?",
     "downloadLink": "UPDATE LINK",
@@ -134,7 +140,9 @@
       "patchAvailable": "Ein Neuer Patch (%version%) ist verfügbar!\nSchau im Chat für die Download Möglichkeiten!",
       "downloading": "Der Patch wird heruntergeladen! Status: %downloaded%/%total% Beachte, dass du nach dem Download die alte Datei löschen musst.",
       "failed": "Der Patch-Download ist fehlgeschlagen! Bitte lade es manuell mit dem Link im Chat herunter.",
-      "downloadFinished": "Der Patch-Download wurde heruntergeladen. Er wurde als %file% gespeichert. Bitte vergesse nicht die alte Datei nach dem Schließen von Minecraft, zu löschen. Klicke auf die Nachricht im Chat um den Ordner zu öffnen."
+      "downloadFinished": "Der Patch-Download wurde heruntergeladen. Er wurde als %file% gespeichert. Bitte vergesse nicht die alte Datei nach dem Schließen von Minecraft, zu löschen. Klicke auf die Nachricht im Chat um den Ordner zu öffnen.",
+      "newBeta": "A new beta (%version%) is available! Please update using the \"Mods\" menu.",
+      "newUpdate": "A new update (%version%) is available! Please update using the \"Mods\" menu."
     },
     "slotLocked": "Dieser Slot ist gesperrt!",
     "summoningEyeFound": "Summoning Eye!",
