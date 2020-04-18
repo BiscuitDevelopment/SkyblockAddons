@@ -104,16 +104,9 @@
       "fade": "Color Fade"
     },
     "chromaFadeWidth": "Chroma Fade Width",
-    "sortTabEffectTimers": "Sort Timers by Duration",
-    "showBrokenFragments": "Show Broken Fragments",
-    "skyblockAddonsButtonInPauseMenu": "SBA Button in Pause Menu",
-    "showTotalZealotCount": "Zealot Counter - Total Zealot Count",
-    "showSummoningEyeCount": "Zealot Counter - Total Eye Count",
-    "showZealotsPerEye": "Zealot Counter - Show Zealots Per Eye",
-    "turnBowGreenWhenUsingToxicArrowPoison": "Color Bow Green When Using Toxic Arrow Poison"
+    "sortTabEffectTimers": "Sort Timers by Duration"
   },
   "messages": {
-    "betaTesters": "Thank you for being a beta tester! Please report any bugs you encounter in the Discord channel.",
     "dropConfirmation": "Large este item de novo para confirmar!",
     "magmaBossWarning": "Cubo de Magma Chefão!",
     "fullInventory": "Inventário Cheio!",
@@ -129,6 +122,7 @@
       "reforges": "Reforjadas",
       "crafting": "Criação"
     },
+    "newUpdateAvailable": "Uma nova atualização (%version%) está disponível!",
     "deleteOldFile": "O download terminou, por favor, abra sua pasta de mods utilizando o botão abaixo, feche seu Minecraft e delete a versão antiga (ou delete mais tarde se você preferir).",
     "wantToViewPatchNotes": "Quer ler as alterações?",
     "downloadLink": "Link da Atualização",
@@ -140,9 +134,7 @@
       "patchAvailable": "Uma nova atualização para correção de erros (%version%) está disponível! O link para as opções de download está no chat!",
       "downloading": "O download da atualização está sendo efetuado! Status: %downloaded%/%total%. Por favor, quando o download terminar, delete a versão antiga.",
       "failed": "O download da atualização falhou! Por favor faça o download manualmente utilizando o link do chat.",
-      "downloadFinished": "A atualização terminou de baixar. Foi salvo como %file%. Por favor, não se esqueça de excluir o arquivo antigo após fechar seu Minecraft. Clique na mensagem que está no chat para abrir a pasta.",
-      "newBeta": "A new beta (%version%) is available! Please update using the \"Mods\" menu.",
-      "newUpdate": "A new update (%version%) is available! Please update using the \"Mods\" menu."
+      "downloadFinished": "A atualização terminou de baixar. Foi salvo como %file%. Por favor, não se esqueça de excluir o arquivo antigo após fechar seu Minecraft. Clique na mensagem que está no chat para abrir a pasta."
     },
     "slotLocked": "Este slot está trancado!",
     "summoningEyeFound": "Olho de Invocação!",
