@@ -104,9 +104,16 @@
       "fade": "Color Fade"
     },
     "chromaFadeWidth": "Chroma Fade Width",
-    "sortTabEffectTimers": "Sort Timers by Duration"
+    "sortTabEffectTimers": "Sort Timers by Duration",
+    "showBrokenFragments": "Show Broken Fragments",
+    "skyblockAddonsButtonInPauseMenu": "SBA Button in Pause Menu",
+    "showTotalZealotCount": "Zealot Counter - Total Zealot Count",
+    "showSummoningEyeCount": "Zealot Counter - Total Eye Count",
+    "showZealotsPerEye": "Zealot Counter - Show Zealots Per Eye",
+    "turnBowGreenWhenUsingToxicArrowPoison": "Color Bow Green When Using Toxic Arrow Poison"
   },
   "messages": {
+    "betaTesters": "Thank you for being a beta tester! Please report any bugs you encounter in the Discord channel.",
     "dropConfirmation": "Arunca acest obiect iar ca să confirmi!",
     "magmaBossWarning": "Magma Boss!",
     "fullInventory": "Inventar Plin!",
@@ -122,7 +129,6 @@
       "reforges": "Refăuriri",
       "crafting": "Fabricație"
     },
-    "newUpdateAvailable": "O nouă versiune (%version%) este disponibilă!",
     "deleteOldFile": "Instalarea s-a terminat, vă rugam sa deschideți folder-ul cu modurile apăsând butonul de mai jos, închideți Minecraft-ul și ștergeți versiunea cea veche (sau puteți să o ștergeți mai târziu).",
     "wantToViewPatchNotes": "Dorești să citești schimbările?",
     "downloadLink": "UPDATE LINK",
@@ -134,7 +140,9 @@
       "patchAvailable": "O nouă actualizare (%version%) este disponibilă! Uitați-vă in chat pentru opțiunile de descărcare!",
       "downloading": "Patch-ul se descarca acum! Status: %downloaded%/%total% Va rugam sa retineti ca dupa ce sa sa descarcat, trebuie sa stergeti fisierul vechi.",
       "failed": "Descarcarea patch-ului a esuat! Va rugam sa il descarcati manual folosind linkul din chat.",
-      "downloadFinished": "Patch-ul a terminat descarcarea. A fost salvat ca %file%. Va rugam sa nu uitati sa stergeți fișierul vechi după ce ati inchis Minecraft. Faceți click pe mesajul din chat pentru a deschide dosarul."
+      "downloadFinished": "Patch-ul a terminat descarcarea. A fost salvat ca %file%. Va rugam sa nu uitati sa stergeți fișierul vechi după ce ati inchis Minecraft. Faceți click pe mesajul din chat pentru a deschide dosarul.",
+      "newBeta": "A new beta (%version%) is available! Please update using the \"Mods\" menu.",
+      "newUpdate": "A new update (%version%) is available! Please update using the \"Mods\" menu."
     },
     "slotLocked": "Acest slot este blocat!",
     "summoningEyeFound": "Summoning Eye!",
