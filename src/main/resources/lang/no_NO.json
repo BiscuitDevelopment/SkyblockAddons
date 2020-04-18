@@ -104,16 +104,9 @@
       "fade": "Farge Fade"
     },
     "chromaFadeWidth": "Chroma Fade Bredde",
-    "sortTabEffectTimers": "Sorter Timere etter Lengde",
-    "showBrokenFragments": "Show Broken Fragments",
-    "skyblockAddonsButtonInPauseMenu": "SBA Button in Pause Menu",
-    "showTotalZealotCount": "Zealot Counter - Total Zealot Count",
-    "showSummoningEyeCount": "Zealot Counter - Total Eye Count",
-    "showZealotsPerEye": "Zealot Counter - Show Zealots Per Eye",
-    "turnBowGreenWhenUsingToxicArrowPoison": "Color Bow Green When Using Toxic Arrow Poison"
+    "sortTabEffectTimers": "Sorter Timere etter Lengde"
   },
   "messages": {
-    "betaTesters": "Thank you for being a beta tester! Please report any bugs you encounter in the Discord channel.",
     "dropConfirmation": "Slipp denne gjenstanden igjen for å bekrefte!",
     "magmaBossWarning": "Magma Cube Boss!",
     "fullInventory": "Full inventar!",
@@ -129,6 +122,7 @@
       "reforges": "Reforges",
       "crafting": "Utforming"
     },
+    "newUpdateAvailable": "En ny oppdatering (%version%) er ute!",
     "deleteOldFile": "Nedlastningen er ferdig, åpne opp modifikasjonsmappen ved bruk av knappen nedenfor, lukk igjen Minecraft, og slett den gamle versjonen (eller slett den senere hvis du vil).",
     "wantToViewPatchNotes": "Vil du lese endringene?",
     "downloadLink": "OPPDATERINGSLENKE",
@@ -140,9 +134,7 @@
       "patchAvailable": "En ny oppdatering (%version%) er ute! Se i chattten for alternativer for nedlastninger!",
       "downloading": "nedlasting",
       "failed": "grunnstøting",
-      "downloadFinished": "nedlastingen fullført",
-      "newBeta": "A new beta (%version%) is available! Please update using the \"Mods\" menu.",
-      "newUpdate": "A new update (%version%) is available! Please update using the \"Mods\" menu."
+      "downloadFinished": "nedlastingen fullført"
     },
     "slotLocked": "Denne ruten er låst!",
     "summoningEyeFound": "Summoning Eye!",
