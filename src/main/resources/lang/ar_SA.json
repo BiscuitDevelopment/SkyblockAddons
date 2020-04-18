@@ -86,7 +86,7 @@
       "compact": "مدمج"
     },
     "disableMagicalSoupMessage": "تعطيل رسائل حساء الفطر السحري",
-    "zealotCounter": "أظهار عداد Zealot",
+    "zealotCounter": "أظهار عداد زيلوت",
     "tickerChargesDisplay": "عرض شريط المؤشرات/الشحنات",
     "tab": {
       "generalSettings": "الإعدادات العامة"
@@ -105,13 +105,13 @@
     },
     "chromaFadeWidth": "عرض تلاشي Chroma",
     "sortTabEffectTimers": "ترتيب المؤقت حسب المدة",
-    "showBrokenFragments": "Show Broken Dragon Fragments",
-    "skyblockAddonsButtonInPauseMenu": "Show SBA Button in Pause Menu",
-    "showTotalZealotCount": "Zealot Counter - Total Zealot Count",
-    "showSummoningEyeCount": "Zealot Counter - Total Eye Count",
-    "showZealotsPerEye": "Zealot Counter - Show Zealots Per Eye",
-    "turnBowGreenWhenUsingToxicArrowPoison": "Color Bow Green When Using Toxic Arrow Poison",
-    "birchParkRainmakerTimer": "Birch Park Rainmaker Timer"
+    "showBrokenFragments": "إظهار شظايا التنين المكسورة",
+    "skyblockAddonsButtonInPauseMenu": "إظهار زر SBA في قائمة الإيقاف المؤقت",
+    "showTotalZealotCount": "عداد زيلوت - مجموع عدد زيلوت",
+    "showSummoningEyeCount": "عداد زيلوت - مجموع عدد العيون",
+    "showZealotsPerEye": "عداد زيلوت - إظهار زيلوت لكل عين",
+    "turnBowGreenWhenUsingToxicArrowPoison": "لون القوس بالاخضر عند استخدام السهم السام",
+    "birchParkRainmakerTimer": "مؤقت صانع المطر في حديقة البيرش"
   },
   "messages": {
     "betaTesters": "Thank you for being a beta tester! Please report any bugs you encounter in the Discord channel.",
