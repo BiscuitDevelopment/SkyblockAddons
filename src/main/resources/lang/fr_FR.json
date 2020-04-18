@@ -104,16 +104,9 @@
       "fade": "Dégradé de couleur"
     },
     "chromaFadeWidth": "Largeur de fondu Chroma",
-    "sortTabEffectTimers": "Trier les minuteurs par durée",
-    "showBrokenFragments": "Show Broken Fragments",
-    "skyblockAddonsButtonInPauseMenu": "SBA Button in Pause Menu",
-    "showTotalZealotCount": "Zealot Counter - Total Zealot Count",
-    "showSummoningEyeCount": "Zealot Counter - Total Eye Count",
-    "showZealotsPerEye": "Zealot Counter - Show Zealots Per Eye",
-    "turnBowGreenWhenUsingToxicArrowPoison": "Color Bow Green When Using Toxic Arrow Poison"
+    "sortTabEffectTimers": "Trier les minuteurs par durée"
   },
   "messages": {
-    "betaTesters": "Thank you for being a beta tester! Please report any bugs you encounter in the Discord channel.",
     "dropConfirmation": "Jetez cet objet une nouvelle fois pour confirmer!",
     "magmaBossWarning": "Magma Boss!",
     "fullInventory": "Inventaire plein!",
@@ -129,6 +122,7 @@
       "reforges": "Reforges",
       "crafting": "Assemblage"
     },
+    "newUpdateAvailable": "La mise à jour %version% est disponible!",
     "deleteOldFile": "Le téléchargement s'est terminé, veuillez ouvrir votre dossier mods en utilisant le bouton ci-dessous, fermer Minecraft et supprimer l'ancienne version (ou la supprimer plus tard si vous le préférez).",
     "wantToViewPatchNotes": "Voulez vous lire les changements ?",
     "downloadLink": "LIEN DE MISE A JOUR",
@@ -140,9 +134,7 @@
       "patchAvailable": "Le nouveau patch %version% est disponible! Regardez dans le chat pour le télécharger!",
       "downloading": "Le patch est en cours de téléchargement! Statut : %downloaded%/%total% Veuillez noter qu'après la fin du téléchargement, vous devez supprimer l'ancien fichier.",
       "failed": "Le téléchargement du patch a échoué! Veuillez le télécharger manuellement en utilisant le lien dans le chat.",
-      "downloadFinished": "Le téléchargement du patch est fini. Il a été enregistré comme %file%. N'oubliez pas de supprimer l'ancien fichier après avoir fermé votre Minecraft. Cliquez sur le message dans le chat pour ouvrir le dossier.",
-      "newBeta": "A new beta (%version%) is available! Please update using the \"Mods\" menu.",
-      "newUpdate": "A new update (%version%) is available! Please update using the \"Mods\" menu."
+      "downloadFinished": "Le téléchargement du patch est fini. Il a été enregistré comme %file%. N'oubliez pas de supprimer l'ancien fichier après avoir fermé votre Minecraft. Cliquez sur le message dans le chat pour ouvrir le dossier."
     },
     "slotLocked": "Cet emplacement est bloqué!",
     "summoningEyeFound": "Œil d'invocation!",
