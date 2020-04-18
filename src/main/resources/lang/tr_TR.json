@@ -104,9 +104,17 @@
       "fade": "Renk Kararması"
     },
     "chromaFadeWidth": "Chroma Kararma Genişliği",
-    "sortTabEffectTimers": "Timerları süresine göre sırala"
+    "sortTabEffectTimers": "Timerları süresine göre sırala",
+    "showBrokenFragments": "Show Broken Fragments",
+    "skyblockAddonsButtonInPauseMenu": "SBA Button in Pause Menu",
+    "showTotalZealotCount": "Zealot Counter - Total Zealot Count",
+    "showSummoningEyeCount": "Zealot Counter - Total Eye Count",
+    "showZealotsPerEye": "Zealot Counter - Show Zealots Per Eye",
+    "turnBowGreenWhenUsingToxicArrowPoison": "Color Bow Green When Using Toxic Arrow Poison",
+    "birchParkRainmakerTimer": "Birch Park Rainmaker Timer"
   },
   "messages": {
+    "betaTesters": "Thank you for being a beta tester! Please report any bugs you encounter in the Discord channel.",
     "dropConfirmation": "Eşyayı düşürmeyi onaylamak için düşürme tuşuna bir daha bas!",
     "magmaBossWarning": "Magma Kübü Boss!",
     "fullInventory": "Envanter Dolu!",
@@ -122,7 +130,6 @@
       "reforges": "Reforge'lar",
       "crafting": "Crafting"
     },
-    "newUpdateAvailable": "Yeni bir sürüm (%version%) mevcut!",
     "deleteOldFile": "İndirme bitirildi, lütfen aşağıdaki düğmeye basarak mods klasörünü açtıktan sonra Minecraft'ı kapatıp eksi sürümü silin(veya sonradan silebilirsiniz).",
     "wantToViewPatchNotes": "Değişiklikleri okumak ister misin?",
     "downloadLink": "GÜNCELLEME LİNKİ",
@@ -134,7 +141,9 @@
       "patchAvailable": "Yeni bir versiyon (%version%) mevcut! İndirme seçenekleri için sohbet'e bak!",
       "downloading": "Güncelleştirme iniyor! Durun: %downloaded%/%total% Lütfen indirme bittikten sonra eski dosyayı silmeyi unutmayın.",
       "failed": "Güncellemeyi indirmek başarısız oldu! Lütfen sohbetteki linki kullanarak kendiniz indirin.",
-      "downloadFinished": "Güncelleme başarıyla indirildi. Güncelleme %file% olarak kaydedildi. Lütfen Minecraft'ınızı kapattıktan sonra eski dosyayı silmeyi unutmayın. \nSohbetteki mesaja tıklayıp dosyayı açabilirsiniz."
+      "downloadFinished": "Güncelleme başarıyla indirildi. Güncelleme %file% olarak kaydedildi. Lütfen Minecraft'ınızı kapattıktan sonra eski dosyayı silmeyi unutmayın. \nSohbetteki mesaja tıklayıp dosyayı açabilirsiniz.",
+      "newBeta": "A new beta (%version%) is available! Please update using the \"Mods\" menu.",
+      "newUpdate": "A new update (%version%) is available! Please update using the \"Mods\" menu."
     },
     "slotLocked": "Bu slot kilitli!",
     "summoningEyeFound": "Summoning Eye!",
