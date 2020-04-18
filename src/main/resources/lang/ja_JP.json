@@ -104,9 +104,16 @@
       "fade": "Color Fade"
     },
     "chromaFadeWidth": "Chroma Fade Width",
-    "sortTabEffectTimers": "Sort Timers by Duration"
+    "sortTabEffectTimers": "Sort Timers by Duration",
+    "showBrokenFragments": "Show Broken Fragments",
+    "skyblockAddonsButtonInPauseMenu": "SBA Button in Pause Menu",
+    "showTotalZealotCount": "Zealot Counter - Total Zealot Count",
+    "showSummoningEyeCount": "Zealot Counter - Total Eye Count",
+    "showZealotsPerEye": "Zealot Counter - Show Zealots Per Eye",
+    "turnBowGreenWhenUsingToxicArrowPoison": "Color Bow Green When Using Toxic Arrow Poison"
   },
   "messages": {
+    "betaTesters": "Thank you for being a beta tester! Please report any bugs you encounter in the Discord channel.",
     "dropConfirmation": "落としてもいいのであれば、このアイテムをもう一度ドロップしてください。",
     "magmaBossWarning": "マグマボスが出現しました!",
     "fullInventory": "インベントリが満タンです！",
@@ -122,7 +129,6 @@
       "reforges": "リフォージ",
       "crafting": "クラフト"
     },
-    "newUpdateAvailable": "新しいバージョン(%version%)が利用可能です!",
     "deleteOldFile": "新しいバージョンのダウンロードが完了しました。Minecraftを閉じてからあなたのmodsフォルダにある旧バージョンを削除してください。(必要に応じて後で削除しても構いません)",
     "wantToViewPatchNotes": "変更点を知りたいですか?",
     "downloadLink": "アップデートのダウンロードリンク",
@@ -134,7 +140,9 @@
       "patchAvailable": "新しいパッチアップデート (%version%) が利用可能です！チャットからダウンロードオプションを確認してください。",
       "downloading": "パッチをダウンロードしています! 進捗 : %downloaded%/%total% ダウンロードが終わったら、旧バージョンを削除する事を忘れないでください。",
       "failed": "パッチダウンロードに失敗しました! ダウンロードリンクから手動でダウンロードしてください。",
-      "downloadFinished": "パッチのダウンロードが終了しました。ファイルは %file% に保存されました。旧バージョンの削除を忘れないでください。メッセージをクリックするとフォルダが開きます。"
+      "downloadFinished": "パッチのダウンロードが終了しました。ファイルは %file% に保存されました。旧バージョンの削除を忘れないでください。メッセージをクリックするとフォルダが開きます。",
+      "newBeta": "A new beta (%version%) is available! Please update using the \"Mods\" menu.",
+      "newUpdate": "A new update (%version%) is available! Please update using the \"Mods\" menu."
     },
     "slotLocked": "このスロットはロックされています。",
     "summoningEyeFound": "サモニングアイ！",
