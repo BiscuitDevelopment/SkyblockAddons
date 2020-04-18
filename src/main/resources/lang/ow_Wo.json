@@ -87,7 +87,7 @@
     },
     "disableMagicalSoupMessage": "Disable Magical Mushwoom Sowop Message",
     "zealotCounter": "Showo Wealots Counter :3",
-    "tickerChargesDisplay": "Tiwwer/chawwer disway",
+    "tickerChargesDisplay": "Tickew/Chawges Display",
     "tab": {
       "generalSettings": "Genewal Settings"
     },
@@ -110,12 +110,12 @@
     "dropConfirmation": "Dwop thwis itwem agwain to confiwm!",
     "magmaBossWarning": "Magmwa Cube Bowoss! （・□・；）",
     "fullInventory": "Fuww Inwentowy! >w<",
-    "labymod": "Wabymod Usews: Hide Fuwud, Awmow, and Heawth Baw, is incompatibwal.",
+    "labymod": "Wabymod Usews: Hide Fuwud, Awmow, and Heawth Baw, is incompatibwe.",
     "minionCannotReach": "A %type% minwion cannwot weach and has stwopped spawning!",
     "minionIsFull": "A minwion on uwu iswand is fuww!",
     "typeEnchantmentsHere": "Type %type% Hewe!",
-    "separateMultiple": "Sepuwuate Multipwal With Cowommas.",
-    "enchantsToMatch": "OwO %type% to OwO:",
+    "separateMultiple": "Sepeawate Multipwe With Cowommas.",
+    "enchantsToMatch": "%type% To Match >-<:",
     "enchantsToExclude": "%type% To Excwude:",
     "inventoryTypes": {
       "enchants": "Enchawnts",
@@ -123,7 +123,7 @@
       "crafting": "Cwafting"
     },
     "newUpdateAvailable": "A nuwu OwO Updowoe (%version%) is avaiwable!",
-    "deleteOldFile": "The downwoad has fiwinished, pwease open ywour mods fowdew using the button bewow, cwose youw minecwaft, and dewete the owd vewsion (ow dewete it latew if you pwefew).",
+    "deleteOldFile": "The downwoad has finished, pwease open youw mods fowdew using the button bewow, cwose youw minecwaft, and dewete the owd vewsion (ow dewete it watew if you pwefew).",
     "wantToViewPatchNotes": "Want to wead the changes?",
     "downloadLink": "UPDATE WINK",
     "downloadAutomatically": "AUTO DOWNWOAD",
@@ -133,10 +133,10 @@
       "majorAvailable": "A new majow update (%version%) is avaiwabwe! the wink fow the downwoad can be found in chat.",
       "patchAvailable": "A new patch update (%version%) is avaiwabwe! look in chat fow downwoad options!",
       "downloading": "The patch is downwoading! status: %downloaded%/%total% pwease note that aftew the downwoad has finished, you must dewete the owd fiwe.",
-      "failed": "The patch downwoad has faiwed! pwease downwoad it manuawwy uwsing the wink in chat.",
+      "failed": "The patch downwoad has faiwed! pwease downwoad it manuawwy using the wink in chat.",
       "downloadFinished": "The pwatch has fiwinished downwoading. It has been saved as %file%. Pwease don't fowget to dewete the owd fiwe aftew cwosing youw minecwaft. Cwick the message in chat to opewn uwup the fowdew."
     },
-    "slotLocked": "Thwis swot is secwure!",
+    "slotLocked": "This swot is wocked!",
     "summoningEyeFound": "Summonuwuing Eye!",
     "cancelledStemBreak": "SkybwockAddons has stwopped uwu fwom bweaking this stwem. Use uwur bear hands if uwu'd wike to bweak it owo.",
     "cancelledProfileOpening": "SkybwockAwwons has stwopped you from opwening this plawer's pwofile whowo holdowoing a bowo.",
