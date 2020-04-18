@@ -86,7 +86,7 @@
       "compact": "Compact"
     },
     "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages",
-    "zealotCounter": "Show Zealot Counter",
+    "zealotCounter": "Zealot Counter - Count Since Last Eye",
     "tickerChargesDisplay": "Ticker/Charges Display",
     "tab": {
       "generalSettings": "Socruithe Ginearálta"
@@ -104,9 +104,17 @@
       "fade": "Color Fade"
     },
     "chromaFadeWidth": "Chroma Fade Width",
-    "sortTabEffectTimers": "Sort Timers by Duration"
+    "sortTabEffectTimers": "Sort Timers by Duration",
+    "showBrokenFragments": "Show Broken Fragments",
+    "skyblockAddonsButtonInPauseMenu": "SBA Button in Pause Menu",
+    "showTotalZealotCount": "Zealot Counter - Total Zealot Count",
+    "showSummoningEyeCount": "Zealot Counter - Total Eye Count",
+    "showZealotsPerEye": "Zealot Counter - Show Zealots Per Eye",
+    "turnBowGreenWhenUsingToxicArrowPoison": "Color Bow Green When Using Toxic Arrow Poison",
+    "birchParkRainmakerTimer": "Birch Park Rainmaker Timer"
   },
   "messages": {
+    "betaTesters": "Thank you for being a beta tester! Please report any bugs you encounter in the Discord channel.",
     "dropConfirmation": "Leag síos an mír seo arís le cinntiú!",
     "magmaBossWarning": "Saoiste Ciúb Magma!",
     "fullInventory": "Fardal Lán!",
@@ -122,7 +130,6 @@
       "reforges": "Ré-Cruthach",
       "crafting": "Crafting"
     },
-    "newUpdateAvailable": "A new update (%version%) is available!",
     "deleteOldFile": "The download has finished, please open your mods folder using the button below, close your Minecraft, and delete the old version (or delete it later if you prefer).",
     "wantToViewPatchNotes": "Want to read the changes?",
     "downloadLink": "Nuashonraigh Nasc",
@@ -134,7 +141,9 @@
       "patchAvailable": "A new patch update (%version%) is available! Look in chat for download options!",
       "downloading": "The patch is downloading! Status: %downloaded%/%total% Please note that after the download has finished, you must delete the old file.",
       "failed": "The patch download has failed! Please download it manually using the link in chat.",
-      "downloadFinished": "The patch has finished downloading. It has been saved as %file%. Please don't forget to delete the old file after closing your Minecraft. Click the message in chat to open up the folder."
+      "downloadFinished": "The patch has finished downloading. It has been saved as %file%. Please don't forget to delete the old file after closing your Minecraft. Click the message in chat to open up the folder.",
+      "newBeta": "A new beta (%version%) is available! Please update using the \"Mods\" menu.",
+      "newUpdate": "A new update (%version%) is available! Please update using the \"Mods\" menu."
     },
     "slotLocked": "Tá an Sliotán seo faoi ghlas!",
     "summoningEyeFound": "Súil Seirbheáil!",
