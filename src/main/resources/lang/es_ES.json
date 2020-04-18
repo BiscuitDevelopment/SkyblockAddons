@@ -86,7 +86,7 @@
       "compact": "Compacto"
     },
     "disableMagicalSoupMessage": "Desactivar Mensajes de la Sopa de Champiñon Mágica",
-    "zealotCounter": "Mostrar Contador de Zealotes",
+    "zealotCounter": "Contador de Zealotes - Recuento Desde el Último Ojo",
     "tickerChargesDisplay": "Mostrar Cargas/Ticker",
     "tab": {
       "generalSettings": "Opciones Generales"
@@ -106,11 +106,11 @@
     "chromaFadeWidth": "Ancho de Atenuación de Croma",
     "sortTabEffectTimers": "Ordenar Temporizadores por Duración",
     "showBrokenFragments": "Show Broken Dragon Fragments",
-    "skyblockAddonsButtonInPauseMenu": "Show SBA Button in Pause Menu",
-    "showTotalZealotCount": "Zealot Counter - Total Zealot Count",
-    "showSummoningEyeCount": "Zealot Counter - Total Eye Count",
-    "showZealotsPerEye": "Zealot Counter - Show Zealots Per Eye",
-    "turnBowGreenWhenUsingToxicArrowPoison": "Color Bow Green When Using Toxic Arrow Poison",
+    "skyblockAddonsButtonInPauseMenu": "Muestra Botón SBA en el Menú de Pausa",
+    "showTotalZealotCount": "Contador de Zealotes - Número Total de Zealotes",
+    "showSummoningEyeCount": "Contador de Zealotes - Número Total de Ojos",
+    "showZealotsPerEye": "Contador de Zealotes - Mostrar Zealotes Por Ojo",
+    "turnBowGreenWhenUsingToxicArrowPoison": "Colora el Arco Verde Cuando Usando Veneno de Flecha Tóxia",
     "birchParkRainmakerTimer": "Birch Park Rainmaker Timer"
   },
   "messages": {
