@@ -22,7 +22,7 @@
       "regular": "Normal",
       "compact": "Compacto"
     },
-    "showBackpackPreview": "Mostrar Preview de la Mochila",
+    "showBackpackPreview": "Mostrar Previsualización de la Mochila",
     "hideHealthBar": "Ocultar Barra de Vida",
     "fullMinionWarning": "Aviso de Minion Lleno",
     "ignoreItemFrameClicks": "Ignorar Clicks en Item Frames",
@@ -85,7 +85,7 @@
       "detailed": "Detallado",
       "compact": "Compacto"
     },
-    "disableMagicalSoupMessage": "Desactivar Mensajes de la Magical Mushroom Soup",
+    "disableMagicalSoupMessage": "Desactivar Mensajes de la Sopa de Champiñon Mágica",
     "zealotCounter": "Mostrar Contador de Zealots",
     "tickerChargesDisplay": "Mostrar Cargas/Ticker",
     "tab": {
@@ -93,10 +93,10 @@
     },
     "tabEffectTimers": "Temporizador de Pociones y Powerup",
     "noArrowsLeftAlert": "Alerta de Quedarse sin Flechas",
-    "hideNightVisionEffectTimer": "Ocultar el temporizador del efecto de visión nocturna",
-    "showCakeBagPreview": "Mostrar Preview para los Cake Bags",
-    "showBackpackPreviewInAH": "Mostrar Preview de la Mochila mientras Auction House esta abierto",
-    "enableDevFeatures": "Modo De Desarrollador",
+    "hideNightVisionEffectTimer": "Ocultar el Temporizador del Efecto de Visión Nocturna",
+    "showCakeBagPreview": "Mostrar Previsualización para las Bolsas de Pastel",
+    "showBackpackPreviewInAH": "Mostrar Previsualización de la Mochila mientras la Casa de Subastas esta abierto",
+    "enableDevFeatures": "Modo de Desarrollador",
     "chromaSpeed": "Velocidad de Croma",
     "chromaMode": "Modo de Color de Croma",
     "chromaModes": {
@@ -130,14 +130,14 @@
       "reforges": "Reforjar",
       "crafting": "Fabricación"
     },
-    "deleteOldFile": "La descarga ha terminado, por favor abre la carpeta de mods usando el botón de abajo, cierra tu Minecraft y elimina la versión anterior (o bórrala más tarde si lo prefieres).",
+    "deleteOldFile": "La descarga ha terminado, por favor abre la carpeta de mods usando el botón de abajo, cierra tu Minecraft y elimina la versión anterior (o borrala más tarde si lo prefieres).",
     "wantToViewPatchNotes": "¿Quieres leer los cambios?",
-    "downloadLink": "LINK DE LA ACTUALIZACIÓN",
+    "downloadLink": "ENLACE DE LA ACTUALIZACIÓN",
     "downloadAutomatically": "AUTO DESCARGAR",
     "openModFolder": "CARPETA DE MODS",
-    "joinTheDiscord": "UNIRSE A DISCORD",
+    "joinTheDiscord": "UNIRSE AL DISCORD",
     "update": {
-      "majorAvailable": "¡Una nueva actualización importante (%version%) está disponible! El link para la descarga se puede encontrar en el chat.",
+      "majorAvailable": "¡Una nueva actualización importante (%version%) está disponible! El enlace para la descarga se puede encontrar en el chat.",
       "patchAvailable": "¡Una nueva actualización (%version%) está disponible! ¡Busca en el chat para opciónes de descargar!",
       "downloading": "¡El parche está descargando! Estado: %downloaded%/%total% Por favor, tenga en cuenta que después de que la descarga haya terminado, debe eliminar el archivo antiguo.",
       "failed": "¡La descarga del parche ha fallado! Por favor, descargalo manualmente usando el enlace en el chat.",
