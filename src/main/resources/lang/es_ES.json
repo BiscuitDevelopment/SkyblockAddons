@@ -105,16 +105,16 @@
     },
     "chromaFadeWidth": "Ancho de Atenuación de Croma",
     "sortTabEffectTimers": "Ordenar Temporizadores por Duración",
-    "showBrokenFragments": "Show Broken Dragon Fragments",
+    "showBrokenFragments": "Muestra Fragmentos de Dragón Rotos",
     "skyblockAddonsButtonInPauseMenu": "Muestra Botón SBA en el Menú de Pausa",
     "showTotalZealotCount": "Contador de Zealotes - Número Total de Zealotes",
     "showSummoningEyeCount": "Contador de Zealotes - Número Total de Ojos",
     "showZealotsPerEye": "Contador de Zealotes - Mostrar Zealotes Por Ojo",
     "turnBowGreenWhenUsingToxicArrowPoison": "Colora el Arco Verde Cuando Usando Veneno de Flecha Tóxia",
-    "birchParkRainmakerTimer": "Birch Park Rainmaker Timer"
+    "birchParkRainmakerTimer": "Temporizador de Rainmaker del Parque de Abedul"
   },
   "messages": {
-    "betaTesters": "Thank you for being a beta tester! Please report any bugs you encounter in the Discord channel.",
+    "betaTesters": "¡Gracias por ser un probador beta! Por favor reporta cualquier problema que encuentres en el canal de Discord.",
     "dropConfirmation": "¡Dropea el Objeto otra vez para soltar!",
     "magmaBossWarning": "¡Jefe Magma!",
     "fullInventory": "¡Inventario Lleno!",
