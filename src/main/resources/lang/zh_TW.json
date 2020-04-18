@@ -8,7 +8,7 @@
     "skeletonHatBonesBar": "骷髏頭盔可抵擋攻擊次數",
     "hideFoodAndArmor": "隱藏飽食度 & 裝甲值",
     "fullInventoryWarning": "背包空間不足警報",
-    "repeating": "重複中",
+    "repeating": "重複警告",
     "disableEmberRodAbility": "在你的島上關閉灰燼之杖的技能",
     "editLocations": "編輯Gui位置",
     "guiScale": "Gui 大小: %scale%",
@@ -86,7 +86,7 @@
       "compact": "精簡"
     },
     "disableMagicalSoupMessage": "取消魔法蘑菇湯訊息",
-    "zealotCounter": "顯示Zealot計數器",
+    "zealotCounter": "Zealot計數器 - 自上顆眼睛開始計算",
     "tickerChargesDisplay": "刻數/充能 顯示",
     "tab": {
       "generalSettings": "一般設定"
@@ -105,13 +105,13 @@
     },
     "chromaFadeWidth": "彩色淡入淡出幅度",
     "sortTabEffectTimers": "按時長排序計時器",
-    "showBrokenFragments": "Show Broken Dragon Fragments",
-    "skyblockAddonsButtonInPauseMenu": "Show SBA Button in Pause Menu",
-    "showTotalZealotCount": "Zealot Counter - Total Zealot Count",
-    "showSummoningEyeCount": "Zealot Counter - Total Eye Count",
-    "showZealotsPerEye": "Zealot Counter - Show Zealots Per Eye",
-    "turnBowGreenWhenUsingToxicArrowPoison": "Color Bow Green When Using Toxic Arrow Poison",
-    "birchParkRainmakerTimer": "Birch Park Rainmaker Timer"
+    "showBrokenFragments": "顯示無法使用的龍裝碎片",
+    "skyblockAddonsButtonInPauseMenu": "在暫停畫面中顯示SBA按鈕",
+    "showTotalZealotCount": "Zealot計數器 - 總Zealot擊殺數",
+    "showSummoningEyeCount": "Zealot計數器 - 總眼睛數",
+    "showZealotsPerEye": "Zealot計數器 - 每眼睛所需Zealot數",
+    "turnBowGreenWhenUsingToxicArrowPoison": "使用Toxic Arrow Poison時將弓染成綠色",
+    "birchParkRainmakerTimer": "樺木公園下雨計時"
   },
   "messages": {
     "betaTesters": "Thank you for being a beta tester! Please report any bugs you encounter in the Discord channel.",
