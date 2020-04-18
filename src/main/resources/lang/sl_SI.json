@@ -68,7 +68,7 @@
     "soundIndicatorForFishing": "Zvočni Indikator za Ribolov",
     "avoidBlinkingNightVision": "Izključi Utripanje Night Vision Potion-a",
     "disableMinionLocationWarning": "Izključi Opozorila o Neugodni Lokaciji",
-    "jungleAxeCooldown": "Cooldown Sekire Džungle",
+    "jungleAxeCooldown": "Blokiraj uporabo Jungle Axe-a in Treecapitatorja",
     "organizeLongEnchantmentLists": "Organiziraj Dolge Sezname Enchantanja",
     "showItemCooldowns": "Prikaži Cooldown za Stvari",
     "speedPercentage": "Odstotek Hitrosti",
@@ -100,20 +100,13 @@
     "chromaSpeed": "Chroma Speed",
     "chromaMode": "Chroma Color Mode",
     "chromaModes": {
-      "allTheSame": "All the Same Color",
+      "allTheSame": "Vse iste barve",
       "fade": "Color Fade"
     },
     "chromaFadeWidth": "Chroma Fade Width",
-    "sortTabEffectTimers": "Sort Timers by Duration",
-    "showBrokenFragments": "Show Broken Fragments",
-    "skyblockAddonsButtonInPauseMenu": "SBA Button in Pause Menu",
-    "showTotalZealotCount": "Zealot Counter - Total Zealot Count",
-    "showSummoningEyeCount": "Zealot Counter - Total Eye Count",
-    "showZealotsPerEye": "Zealot Counter - Show Zealots Per Eye",
-    "turnBowGreenWhenUsingToxicArrowPoison": "Color Bow Green When Using Toxic Arrow Poison"
+    "sortTabEffectTimers": "Sort Timers by Duration"
   },
   "messages": {
-    "betaTesters": "Thank you for being a beta tester! Please report any bugs you encounter in the Discord channel.",
     "dropConfirmation": "Ponovno Izpusti To Stvar za Potrditev!",
     "magmaBossWarning": "Magma Cube Boss!",
     "fullInventory": "Poln Inventar!",
@@ -129,6 +122,7 @@
       "reforges": "Reforgi",
       "crafting": "Izdelovanje"
     },
+    "newUpdateAvailable": "Na voljo je nova različica (%version%)!",
     "deleteOldFile": "Prenos je končan, prosim da odprete mapo za mode preko gumba nižje, zaprete veš Minecraft, in izbrišete staro različico (ali pa jo izbrišete kasneje, če želite).",
     "wantToViewPatchNotes": "Želiš prebrati spremembe?",
     "downloadLink": "LINK ZA POSODOBITEV",
@@ -140,12 +134,10 @@
       "patchAvailable": "Nova posodobitev (%version%) je na voljo! Poglej v chat za možnosti prenosa!",
       "downloading": "Popravek se prenaša! Status: %downloaded%/%total% Prosim, da se spomnite izbrisati staro verzijo, ko se prenos zaključi.",
       "failed": "Popravek se ni uspel prenesti! Prosim, da ga prenesete ročno preko linka v chatu.",
-      "downloadFinished": "Popravek se je prenesel. Shranjen je kot %file%. Prosim da ne pozabite izbrisati stare datoteke po zaprtju Minecrafta. Klikni na sporočilo v chatu da odpreš mapo.",
-      "newBeta": "A new beta (%version%) is available! Please update using the \"Mods\" menu.",
-      "newUpdate": "A new update (%version%) is available! Please update using the \"Mods\" menu."
+      "downloadFinished": "Popravek se je prenesel. Shranjen je kot %file%. Prosim da ne pozabite izbrisati stare datoteke po zaprtju Minecrafta. Klikni na sporočilo v chatu da odpreš mapo."
     },
     "slotLocked": "Ta prostor je zaklenjen!",
-    "summoningEyeFound": "Summoning oko!",
+    "summoningEyeFound": "Summoning eye!",
     "cancelledStemBreak": "SkyblockAddons vam je preprečil uničiti to sadiko. Uporabite gole roke, če jo želite uničiti.",
     "cancelledProfileOpening": "SkyblockAddons vam je preprečil odpiranje profila tega igralca medtem, ko držite lok.",
     "cancelledDropping": "SkyblockAddons vam je preprečil izpust te redke stvari iz svojega hotbarja.",
