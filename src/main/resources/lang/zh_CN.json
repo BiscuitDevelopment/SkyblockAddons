@@ -104,9 +104,16 @@
       "fade": "颜色淡入淡出"
     },
     "chromaFadeWidth": "颜色淡入淡出幅度",
-    "sortTabEffectTimers": "按时长排序计时器"
+    "sortTabEffectTimers": "按时长排序计时器",
+    "showBrokenFragments": "Show Broken Fragments",
+    "skyblockAddonsButtonInPauseMenu": "SBA Button in Pause Menu",
+    "showTotalZealotCount": "Zealot Counter - Total Zealot Count",
+    "showSummoningEyeCount": "Zealot Counter - Total Eye Count",
+    "showZealotsPerEye": "Zealot Counter - Show Zealots Per Eye",
+    "turnBowGreenWhenUsingToxicArrowPoison": "Color Bow Green When Using Toxic Arrow Poison"
   },
   "messages": {
+    "betaTesters": "Thank you for being a beta tester! Please report any bugs you encounter in the Discord channel.",
     "dropConfirmation": "再次丢弃此物品以确认!",
     "magmaBossWarning": "⚠ 岩浆怪 Boss 已生成 ⚠",
     "fullInventory": "背包已满!",
@@ -122,7 +129,6 @@
       "reforges": "重铸",
       "crafting": "合成"
     },
-    "newUpdateAvailable": "新版本 %version% 现已上线！\n\n翻译项目：https://crowdin.com/project/skyblockaddons/",
     "deleteOldFile": "下载完成，使用下方按钮打开 mods 文件夹，关闭 Minecraft，删除旧文件。",
     "wantToViewPatchNotes": "查看更新内容",
     "downloadLink": "更新链接",
@@ -134,7 +140,9 @@
       "patchAvailable": "%version% 补丁更新！下载链接可以在聊天中找到。",
       "downloading": "补丁正在下载（%downloaded%/%total%）\n请注意，下载完成后，请您务必删除旧文件。",
       "failed": "补丁下载失败！请在聊天中寻找下载链接。",
-      "downloadFinished": "补丁下载完成，它被保存为 %file%。\n请不要忘记在关闭 Minecraft 后删除旧文件，点击此处打开文件夹。"
+      "downloadFinished": "补丁下载完成，它被保存为 %file%。\n请不要忘记在关闭 Minecraft 后删除旧文件，点击此处打开文件夹。",
+      "newBeta": "A new beta (%version%) is available! Please update using the \"Mods\" menu.",
+      "newUpdate": "A new update (%version%) is available! Please update using the \"Mods\" menu."
     },
     "slotLocked": "该栏已锁！",
     "summoningEyeFound": "召唤之眼！",
