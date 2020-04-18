@@ -22,6 +22,7 @@ public class RenderItemTransformer implements ITransformer {
     public void transform(ClassNode classNode, String name) {
         for (MethodNode methodNode : classNode.methods) {
 
+
             // Objective:
             //
             // Find:
