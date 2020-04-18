@@ -2,19 +2,27 @@ package codes.biscuit.skyblockaddons.utils.dev;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.*;
+import net.minecraft.scoreboard.Score;
+import net.minecraft.scoreboard.ScoreObjective;
+import net.minecraft.scoreboard.ScorePlayerTeam;
+import net.minecraft.scoreboard.Scoreboard;
 import net.minecraftforge.common.util.Constants;
 import org.lwjgl.input.Keyboard;
 
 import java.awt.*;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
-import java.util.*;
 import java.util.List;
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 /**
  * This is a class of utilities for Skyblock Addons developers.
@@ -25,6 +33,65 @@ import java.util.List;
 public class DevUtils {
     public static final int DEV_KEY = Keyboard.KEY_RCONTROL;
     public static final int ENTITY_COPY_RADIUS = 3;
+
+    /**
+     * Copies the objective and scores that are being displayed on a scoreboard's side bar.
+     *
+     * @param scoreboard the {@link Scoreboard} to copy the side bar from
+     */
+    public static void copyScoreboardSideBar(Scoreboard scoreboard) {
+        //TODO This needs more work, Hypixel's scoreboards have a complex, strange format.
+
+        if (scoreboard == null) {
+            return;
+        }
+
+        ScoreObjective sideBarObjective = scoreboard.getObjectiveInDisplaySlot(1);
+        if (sideBarObjective == null) {
+            return;
+        }
+
+        StringBuilder sb = new StringBuilder();
+        Formatter formatter = new Formatter(sb, Locale.CANADA);
+
+        String objectiveName = sideBarObjective.getDisplayName();
+
+        formatter.format("%s%n", objectiveName);
+
+        List<Score> scores = (List<Score>) scoreboard.getSortedScores(sideBarObjective);
+        if (scores == null || scores.isEmpty()) {
+            formatter.format("%s", "No scores were found.");
+        }
+        else {
+            int width = objectiveName.length();
+
+            // TODO limit to 15 rows per scoreboard rendering
+            // Fix emojis being written
+
+            // Remove scores that aren't rendered.
+            scores = scores.stream().filter(input -> input.getPlayerName() != null && !input.getPlayerName().startsWith("#")).collect(Collectors.toList());
+
+
+            /*
+            Minecraft renders the scoreboard from bottom to top so to keep the same order when writing it from top
+            to bottom, we need to reverse the scores' order.
+            */
+            Collections.reverse(scores);
+
+            for (Score score:
+                    scores) {
+                ScorePlayerTeam scoreplayerteam = scoreboard.getPlayersTeam(score.getPlayerName());
+                String playerName = ScorePlayerTeam.formatPlayerName(scoreplayerteam, score.getPlayerName());
+                int points = score.getScorePoints();
+
+                width = Math.max(width, (playerName + " " + points).length());
+                formatter.format("%-" + width + "." +
+                        (width - Integer.toString(points).length() - 1) + "s %d%n", playerName, points);
+            }
+        }
+
+        copyStringToClipboard(sb.toString(), "Scoreboard copied to clipboard!");
+    }
 
     /**
      * Copies the data of all mobs within the entity copy radius of the player
@@ -77,7 +144,6 @@ public class DevUtils {
             SkyblockAddons.getInstance().getUtils().sendMessage("This item has no NBT data.");
             return;
         }
-
         writeToClipboard(prettyPrintNBT(nbtTag), message);
     }
 
@@ -126,6 +192,31 @@ public class DevUtils {
      */
     public static void copyStringToClipboard(String string, String successMessage) {
         writeToClipboard(string, successMessage);
+    }
+
+    /**
+     * Retrieves the server brand from the Minecraft client.
+     *
+     * @param mc the Minecraft client
+     * @return the server brand if the client is connected to a server, {@code null} otherwise
+     */
+    public static String getServerBrand(Minecraft mc) {
+        final Pattern SERVER_BRAND_PATTERN = Pattern.compile("(.+) <- (?:.+)");
+
+        if (!mc.isSingleplayer()) {
+            Matcher matcher = SERVER_BRAND_PATTERN.matcher(mc.thePlayer.getClientBrand());
+
+            if (matcher.find()) {
+                // Group 1 is the server brand.
+                return matcher.group(1);
+            }
+            else {
+                return null;
+            }
+        }
+        else {
+            return null;
+        }
     }
 
     // FIXME add support for TAG_LONG_ARRAY when updating to 1.12
