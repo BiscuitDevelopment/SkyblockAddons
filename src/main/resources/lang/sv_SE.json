@@ -114,7 +114,7 @@
     "birchParkRainmakerTimer": "Björk Park Regngörar Timer"
   },
   "messages": {
-    "betaTesters": "Thank you for being a beta tester! Please report any bugs you encounter in the Discord channel.",
+    "betaTesters": "Tack för att du är en betatestare! Vänligen rapportera eventuella buggar du stöter på i Discord-kanalen.",
     "dropConfirmation": "Släpp Det Här Igen För Att Bekräfta!",
     "magmaBossWarning": "MagmaKub Boss!",
     "fullInventory": "Full Lager!",
@@ -142,8 +142,8 @@
       "downloading": "Programfix uppdateringen är redo! Status: %downloaded%/%total% Notera att du måste ta bort den gamla filen när uppdateringen blir klar.",
       "failed": "Patch updateringen misslyckades! Ladda ner den manuellt genom länken i chatten,.",
       "downloadFinished": "Nedladningen av Programfix uppdateringen är klar. Den har sparats som %file%. Glöm inte att ta bort den gamla filen när du stänger av Minecraft. Tryck på meddelandet i chatten för att öppna mods mappen.",
-      "newBeta": "A new beta (%version%) is available! Please update using the \"Mods\" menu.",
-      "newUpdate": "A new update (%version%) is available! Please update using the \"Mods\" menu."
+      "newBeta": "En ny beta (%version%) är tillgänglig! Vänligen uppdatera med hjälp av \"Mods\"-menyn.",
+      "newUpdate": "En ny uppdatering (%version%) är tillgänglig! Vänligen uppdatera med hjälp av \"Mods\"-menyn."
     },
     "slotLocked": "Denna ruta är låst!",
     "summoningEyeFound": "Tillkallande Öga!",
