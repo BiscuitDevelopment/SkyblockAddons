@@ -8,7 +8,7 @@
     "skeletonHatBonesBar": "Bar Kosti Skeleton Kacige",
     "hideFoodAndArmor": "Sakrij Hranu i Armor Bar",
     "fullInventoryWarning": "Upozorenje Za Full Inventar",
-    "repeating": "Repeating",
+    "repeating": "Ponavlja",
     "disableEmberRodAbility": "Onemogući Sposobnost Ember Rod-a na Vlastitom Otoku",
     "editLocations": "Uredi Lokacije",
     "guiScale": "Velièina GUI-a: %scale%",
@@ -16,7 +16,7 @@
     "hideDurability": "Sakrij Trajnost Alata",
     "showEnchantmentsReforges": "Èarolije i Reforge-ovi",
     "minionStopWarning": "\"Minion Ne Može Dohvatiti\" Upozorenje",
-    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
+    "hidePlayersNearNPCs": "Sakrij Igrače Blizu Bitnih NPC-a",
     "backpackStyle": "Stil Ruksaka: %style%",
     "backpackStyles": {
       "regular": "Regularne",
@@ -91,20 +91,20 @@
     "tab": {
       "generalSettings": "Opće Postavke"
     },
-    "tabEffectTimers": "Potion and Powerup Timers",
-    "noArrowsLeftAlert": "No Arrows Left Alert",
-    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
-    "showCakeBagPreview": "Show Preview for Cake Bags",
-    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
-    "enableDevFeatures": "Enable Developer Features",
-    "chromaSpeed": "Chroma Speed",
-    "chromaMode": "Chroma Color Mode",
+    "tabEffectTimers": "Brojači Napitaka i Otrova",
+    "noArrowsLeftAlert": "Upozorenje za Nedostatak Strijela",
+    "hideNightVisionEffectTimer": "Sakrij Brojač Nočne Vizije",
+    "showCakeBagPreview": "Pokaži Pregled za Torbu od Torte",
+    "showBackpackPreviewInAH": "Pokaži Prikaz Ruksaka za Tvoje Stvari dok je AH otvoren",
+    "enableDevFeatures": "Omogući Razvijačke Znajačke",
+    "chromaSpeed": "Brzina Chroma",
+    "chromaMode": "Način Chroma Boje",
     "chromaModes": {
-      "allTheSame": "All the Same Color",
-      "fade": "Color Fade"
+      "allTheSame": "Sve je Ista Boja",
+      "fade": "Bljeđenje Boje"
     },
-    "chromaFadeWidth": "Chroma Fade Width",
-    "sortTabEffectTimers": "Sort Timers by Duration"
+    "chromaFadeWidth": "Veličina Bljeđivanja Chroma",
+    "sortTabEffectTimers": "Sortiraj Brojače po Trajanju"
   },
   "messages": {
     "dropConfirmation": "Opet baci ovu stvar za konfirmaciju!",
@@ -142,7 +142,7 @@
     "cancelledProfileOpening": "SkyblockAddons te zaustavio od otvaranja profila ovog igrača dok držiš bow.",
     "cancelledDropping": "SkyblockAddons te zaustavio od bacanje ove vrijedne stvari ili alata od tvojeg hotbara.",
     "clickMoreTimes": "Klikni/dropaj ovu stvar %times% više puta ako zapravo želiš ovo napraviti.",
-    "clickOneMoreTime": "Click/drop this item 1 more time if you really want to do this.",
+    "clickOneMoreTime": "Klikni/dropaj ovu stvar više puta ako zapravo želiš ovo napraviti.",
     "cancelledDeepCaverns": "SkyblockAddons značajka te zaustavila od kopanja ovog bloka ovdje.",
     "featureDisabled": "Opcija Onemogućena",
     "anvilUses": "Korištenja u Anvilu: %uses%",
@@ -150,10 +150,10 @@
     "blockIncompletePatterns": "Blokiraj pravljenje neispunjenih oblika (preporučeno)",
     "searchFeatures": "Opcije pretraživanja",
     "downloadingUpdateFile": "Preuzimanje datoteke ažuriranja...",
-    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
-    "noArrowsLeft": "No Arrows Left!",
-    "chooseAColor": "Choose a Color",
-    "selectedColor": "Selected Color",
-    "setHexColor": "Set Hex Color"
+    "onlyFewArrowsLeft": "Samo je %arrows% strijela ostalo!",
+    "noArrowsLeft": "Nema više strijela!",
+    "chooseAColor": "Izaberi Boju",
+    "selectedColor": "Odabrana Boja",
+    "setHexColor": "Postavi Hex Boju"
   }
 }
