@@ -105,13 +105,13 @@
     },
     "chromaFadeWidth": "Długość mieszania kolorów",
     "sortTabEffectTimers": "Sortuj zegary według trwania",
-    "showBrokenFragments": "Show Broken Dragon Fragments",
-    "skyblockAddonsButtonInPauseMenu": "Show SBA Button in Pause Menu",
-    "showTotalZealotCount": "Zealot Counter - Total Zealot Count",
-    "showSummoningEyeCount": "Zealot Counter - Total Eye Count",
-    "showZealotsPerEye": "Zealot Counter - Show Zealots Per Eye",
-    "turnBowGreenWhenUsingToxicArrowPoison": "Color Bow Green When Using Toxic Arrow Poison",
-    "birchParkRainmakerTimer": "Birch Park Rainmaker Timer"
+    "showBrokenFragments": "Pokaż zepsute fragmenty",
+    "skyblockAddonsButtonInPauseMenu": "Pokaż przycisk SBA w menu pauzy",
+    "showTotalZealotCount": "Licznik Zealotów - Łączna ilość Zealotów",
+    "showSummoningEyeCount": "Licznik Zealotów - Łączna ilość oczu",
+    "showZealotsPerEye": "Licznik Zealotów - Pokaż ilość zealotów na jedno oko",
+    "turnBowGreenWhenUsingToxicArrowPoison": "Pokaż łuk na zielono podczas używania toksycznej strzały",
+    "birchParkRainmakerTimer": "Pozostały czas deszcu w parku"
   },
   "messages": {
     "betaTesters": "Thank you for being a beta tester! Please report any bugs you encounter in the Discord channel.",
