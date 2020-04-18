@@ -104,16 +104,9 @@
       "fade": "Color Fade"
     },
     "chromaFadeWidth": "Chroma Fade Width",
-    "sortTabEffectTimers": "Sort Timers by Duration",
-    "showBrokenFragments": "Show Broken Fragments",
-    "skyblockAddonsButtonInPauseMenu": "SBA Button in Pause Menu",
-    "showTotalZealotCount": "Zealot Counter - Total Zealot Count",
-    "showSummoningEyeCount": "Zealot Counter - Total Eye Count",
-    "showZealotsPerEye": "Zealot Counter - Show Zealots Per Eye",
-    "turnBowGreenWhenUsingToxicArrowPoison": "Color Bow Green When Using Toxic Arrow Poison"
+    "sortTabEffectTimers": "Sort Timers by Duration"
   },
   "messages": {
-    "betaTesters": "Thank you for being a beta tester! Please report any bugs you encounter in the Discord channel.",
     "dropConfirmation": "'ay lad, drop this here item again to confirm!",
     "magmaBossWarning": "Yer Magma Boss Spawned!",
     "fullInventory": "Ahoy mate, yer pouch there be full!",
@@ -129,6 +122,7 @@
       "reforges": "Reforgery",
       "crafting": "Craftin'"
     },
+    "newUpdateAvailable": "'ay there mate! An update (%version%) be available!",
     "deleteOldFile": "The download be finished, please open yer mods folder usin' the button below, close yer Minecraft, an' delete the old version (or delete it later if ye want).",
     "wantToViewPatchNotes": "Want to read the changes?",
     "downloadLink": "Yer update link",
@@ -140,9 +134,7 @@
       "patchAvailable": "A new patch update (%version%) be available! Look in chat fer download options!",
       "downloading": "The patch be downloading! Status: %downloaded%/%total% Please note that there after the download 'as finished, ye must delete the old file.",
       "failed": "The patch download failed! Please download it manually usin' the link in chat.",
-      "downloadFinished": "The patch finished downloadin'. It been saved as %file%. Please don't forget to delete the old file after closin' yer Minecraft. Click the message in yer chat to open up the folder.",
-      "newBeta": "A new beta (%version%) is available! Please update using the \"Mods\" menu.",
-      "newUpdate": "A new update (%version%) is available! Please update using the \"Mods\" menu."
+      "downloadFinished": "The patch finished downloadin'. It been saved as %file%. Please don't forget to delete the old file after closin' yer Minecraft. Click the message in yer chat to open up the folder."
     },
     "slotLocked": "Ahoy, matey! This here slot be locked!",
     "summoningEyeFound": "Summinin' Aye!",
