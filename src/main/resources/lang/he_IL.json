@@ -100,10 +100,10 @@
     "chromaSpeed": "Chroma Speed",
     "chromaMode": "Chroma Color Mode",
     "chromaModes": {
-      "allTheSame": "All the Same Color",
-      "fade": "Color Fade"
+      "allTheSame": "הכל אותו הצבע",
+      "fade": "צבע דוהה"
     },
-    "chromaFadeWidth": "Chroma Fade Width",
+    "chromaFadeWidth": "רוחב צבע הדהייה",
     "sortTabEffectTimers": "Sort Timers by Duration",
     "showBrokenFragments": "Show Broken Dragon Fragments",
     "skyblockAddonsButtonInPauseMenu": "Show SBA Button in Pause Menu",
@@ -114,7 +114,7 @@
     "birchParkRainmakerTimer": "Birch Park Rainmaker Timer"
   },
   "messages": {
-    "betaTesters": "Thank you for being a beta tester! Please report any bugs you encounter in the Discord channel.",
+    "betaTesters": "תודה לך שאתה בוחן בטא! בבקשה דווח על באגים שאתה מוצא בשרת דיסקורד שלנו.",
     "dropConfirmation": "זרוק פריט זה שוב לאישור!",
     "magmaBossWarning": "בוס המגמה!",
     "fullInventory": "תיק מלא!",
