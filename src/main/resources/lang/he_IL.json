@@ -91,9 +91,9 @@
     "tab": {
       "generalSettings": "הגדרות כלליות"
     },
-    "tabEffectTimers": "Potion and Powerup Timers",
-    "noArrowsLeftAlert": "No Arrows Left Alert",
-    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
+    "tabEffectTimers": "טיימרים לשיקויים וחיזוקים",
+    "noArrowsLeftAlert": "אזהרה שאזלו החצים",
+    "hideNightVisionEffectTimer": "הסתר את טיימר השפעת רעיית הלילה",
     "showCakeBagPreview": "Show Preview for Cake Bags",
     "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
     "enableDevFeatures": "Enable Developer Features",
@@ -142,8 +142,8 @@
       "downloading": "התיקון בהורדה! כרגע:\n%downloaded%/%total% לאחר ההורדה תצתרך למחוק את הקובץ הישן.",
       "failed": "הורדת התיקון נכשלה! בבקשה הורד אותו בעצמך בעמצאות הלינק שנמצא בצ'אט.",
       "downloadFinished": "הורדת התיקון הסתיימה. הקובץ נשמר בשם %file%. בבקשה אל תשכח למחוק את הקובץ הישן אחרי שאתה סוגר את מיינקראפט. תלחץ על ההודעה בצאט כדי לפתוח את ההודעה.",
-      "newBeta": "A new beta (%version%) is available! Please update using the \"Mods\" menu.",
-      "newUpdate": "A new update (%version%) is available! Please update using the \"Mods\" menu."
+      "newBeta": "עדכון ביטא חדש (%version%) זמין! אנא עדכן בעזרת תפריט ה\"Mods\".",
+      "newUpdate": "עדכון חדש (%version%) זמין! אנא עדכן בעזרת תפריט ה\"Mods\"."
     },
     "slotLocked": "משבצת זו נעולה!",
     "summoningEyeFound": "עין לזימון דרקון!",
@@ -151,7 +151,7 @@
     "cancelledProfileOpening": "SkyBlockAddons עצר אותך מלפתוח את הפרופיל של האדם בזמן שהחזקתה קשת.",
     "cancelledDropping": "SkyBlockAddons עצר אותך מלהפיל את החפץ או הכלי הנדיר הזה.",
     "clickMoreTimes": "תלחץ/תזרוק את החפץ %times% פעמים נוספות אם אתה בטוח רוצה לעשות את זה.",
-    "clickOneMoreTime": "Click/drop this item 1 more time if you really want to do this.",
+    "clickOneMoreTime": "לחץ/זרוק את פריט זה עוד פעם 1 אם אתה באמת רוצה לעשות זאת.",
     "cancelledDeepCaverns": "פיטצ'ר של SkyblockAddons מנע ממך לחצוב את הבלוק כאן.",
     "featureDisabled": "פיטצ'ר מבוטל",
     "anvilUses": "שימוים בסדן: %uses%",
@@ -159,10 +159,10 @@
     "blockIncompletePatterns": "הרכבת בלוק ללא תבנית גמורה (מומלץ)",
     "searchFeatures": "פיטצ'רים לחיפוש",
     "downloadingUpdateFile": "מתקין קבצי עדכון...",
-    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
-    "noArrowsLeft": "No Arrows Left!",
-    "chooseAColor": "Choose a Color",
-    "selectedColor": "Selected Color",
-    "setHexColor": "Set Hex Color"
+    "onlyFewArrowsLeft": "רק %arrows% חצים נשארו!",
+    "noArrowsLeft": "אזלו החצים!",
+    "chooseAColor": "בחר צבע",
+    "selectedColor": "בחר צבע",
+    "setHexColor": "קבע צבע הקסדצימלי"
   }
 }
