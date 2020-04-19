@@ -68,7 +68,7 @@
     "soundIndicatorForFishing": "Powiadomienia dźwiękowe podczas łowienia",
     "avoidBlinkingNightVision": "Wyłącz miganie mikstury widzenia w ciemności",
     "disableMinionLocationWarning": "Wyłącz ostrzeżenia \"Location Not Perfect\"",
-    "jungleAxeCooldown": "Czas odnowienia Jungle Axe",
+    "jungleAxeCooldown": "Zablokuj używania Jungle Axe/Treecapitatora podczas odnawiania",
     "organizeLongEnchantmentLists": "Uporządkuj długie listy enchantów",
     "showItemCooldowns": "Pokazuj cooldown itemów",
     "speedPercentage": "Procent szybkości",
@@ -86,7 +86,7 @@
       "compact": "Prosty"
     },
     "disableMagicalSoupMessage": "Ukryj wiadomości z Magicznej Zupy",
-    "zealotCounter": "Pokaż licznik Zealotów",
+    "zealotCounter": "Pokaż licznik Zealotów od ostaniego oka",
     "tickerChargesDisplay": "Wyświetl tickery/naładowania",
     "tab": {
       "generalSettings": "Ustawienia ogólne"
