@@ -86,7 +86,7 @@
       "compact": "Compatto"
     },
     "disableMagicalSoupMessage": "Disabilita i messaggi della zuppa magica ai funghi",
-    "zealotCounter": "Mostra il contatore degli Zealot",
+    "zealotCounter": "Contatore di Zealot - Conteggio dall’ultimo occhio",
     "tickerChargesDisplay": "Mostra le cariche",
     "tab": {
       "generalSettings": "Impostazioni Generali"
@@ -108,10 +108,10 @@
     "showBrokenFragments": "Mostra i frammenti rotti di drago",
     "skyblockAddonsButtonInPauseMenu": "Mostra il pulsante SBA nel menu in pausa",
     "showTotalZealotCount": "Contatore di Zealot - Numero totale di Zealot",
-    "showSummoningEyeCount": "Zealot Counter - Total Eye Count",
-    "showZealotsPerEye": "Zealot Counter - Show Zealots Per Eye",
+    "showSummoningEyeCount": "Contatore di Zealot - Numero totale di occhi",
+    "showZealotsPerEye": "Contatore di Zealot - Mostra rapporto Zealots per occhio",
     "turnBowGreenWhenUsingToxicArrowPoison": "Colora di verde l’arco mentre scagli una Poison Arrow",
-    "birchParkRainmakerTimer": "Birch Park Rainmaker Timer"
+    "birchParkRainmakerTimer": "Timer del Rainmaker nel parco di betulle"
   },
   "messages": {
     "betaTesters": "Grazie per essere stato un beta tester! Per favore segnala tutti i bug riscontrati nel canale di Discord.",
