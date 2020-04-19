@@ -107,10 +107,10 @@
     "sortTabEffectTimers": "Sort Timers by Duration",
     "showBrokenFragments": "Hiển thị Dragon Fragments bị hỏng",
     "skyblockAddonsButtonInPauseMenu": "Hiển thị nút cài đặt SBA trong Pause menu",
-    "showTotalZealotCount": "Zealot Counter - Total Zealot Count",
-    "showSummoningEyeCount": "Zealot Counter - Total Eye Count",
-    "showZealotsPerEye": "Zealot Counter - Show Zealots Per Eye",
-    "turnBowGreenWhenUsingToxicArrowPoison": "Color Bow Green When Using Toxic Arrow Poison",
+    "showTotalZealotCount": "Bộ đếm Zealot - Tổng số Zealot",
+    "showSummoningEyeCount": "Bộ đếm Zealot - Tổng số Eye",
+    "showZealotsPerEye": "Bộ đếm Zealot - Hiển thị số Zlots/1 Eye",
+    "turnBowGreenWhenUsingToxicArrowPoison": "Cung màu xanh khi dùng mũi tên độc",
     "birchParkRainmakerTimer": "Birch Park Rainmaker Timer"
   },
   "messages": {
@@ -159,10 +159,10 @@
     "blockIncompletePatterns": "Chặn chế tạo khuôn chưa hoàn thành (Khuyến nghị)",
     "searchFeatures": "Tìm kiếm chức năng",
     "downloadingUpdateFile": "Đang tải về tệp tin Cập Nhật...",
-    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
-    "noArrowsLeft": "No Arrows Left!",
-    "chooseAColor": "Choose a Color",
-    "selectedColor": "Selected Color",
+    "onlyFewArrowsLeft": "Chỉ còn %arrows% mũi tên!",
+    "noArrowsLeft": "Hết mũi tên!",
+    "chooseAColor": "Chọn màu",
+    "selectedColor": "Màu đã chọn",
     "setHexColor": "Set Hex Color"
   }
 }
