@@ -807,7 +807,7 @@ public class RenderListener {
         for (SlayerArmorProgress progress : progresses) {
             if (progress == null) continue;
 
-            int textWidth = MinecraftReflection.FontRenderer.getStringWidth(progress.getProgressText());
+            int textWidth = MinecraftReflection.FontRenderer.getStringWidth(progress.getPercent()+"% ("+progress.getDefence()+")");
             if (textWidth > longest) {
                 longest = textWidth;
             }
@@ -834,6 +834,8 @@ public class RenderListener {
         EnumUtils.AnchorPoint anchorPoint = main.getConfigValues().getAnchorPoint(Feature.SLAYER_INDICATOR);
         boolean downwards = (anchorPoint == EnumUtils.AnchorPoint.TOP_LEFT || anchorPoint == EnumUtils.AnchorPoint.TOP_RIGHT);
 
+        int color = main.getConfigValues().getColor(Feature.SLAYER_INDICATOR).getRGB();
+
         int drawnCount = 0;
         for (int armorPiece = 3; armorPiece >= 0; armorPiece--) {
             SlayerArmorProgress progress = progresses[downwards ? armorPiece : 3 - armorPiece];
@@ -846,7 +848,20 @@ public class RenderListener {
                 fixedY = (intY + 45) - drawnCount * 15;
             }
             drawItemStack(mc, progress.getItemStack(), intX - 2, fixedY);
-            main.getUtils().drawTextWithStyle(progress.getProgressText(), intX + 17, fixedY + 5, 0xFFFFFFFF);
+
+            int currentX = intX + 17;
+            ChromaManager.renderingText(Feature.SLAYER_INDICATOR);
+            main.getUtils().drawTextWithStyle(progress.getPercent()+"% (", currentX, fixedY + 5, color);
+            ChromaManager.doneRenderingText();
+
+            currentX += MinecraftReflection.FontRenderer.getStringWidth(progress.getPercent()+"% (");
+            main.getUtils().drawTextWithStyle(progress.getDefence(), currentX, fixedY + 5, 0xFFFFFFFF);
+
+            currentX += MinecraftReflection.FontRenderer.getStringWidth(progress.getDefence());
+            ChromaManager.renderingText(Feature.SLAYER_INDICATOR);
+            main.getUtils().drawTextWithStyle(")", currentX, fixedY + 5, color);
+            ChromaManager.doneRenderingText();
+
             drawnCount++;
         }
     }
@@ -893,37 +908,49 @@ public class RenderListener {
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         }
 
-        boolean alignLeft = (anchorPoint == EnumUtils.AnchorPoint.TOP_RIGHT || anchorPoint == EnumUtils.AnchorPoint.BOTTOM_RIGHT);
+        boolean alignRight = (anchorPoint == EnumUtils.AnchorPoint.TOP_RIGHT || anchorPoint == EnumUtils.AnchorPoint.BOTTOM_RIGHT);
+
+        Color color = main.getConfigValues().getColor(Feature.TAB_EFFECT_TIMERS);
 
         int drawnCount = 0;
         for(TabEffect potion : potionTimers){
             int fixedY = intY + (topDown ? 0 : spacer) + (drawnCount * 9);
 
-            StringBuilder lineBuilder = new StringBuilder();
-            if (!alignLeft) {
-                lineBuilder.append(potion.getEffect()).append(potion.getDurationForDisplay());
+            String effect = potion.getEffect();
+            String duration = potion.getDurationForDisplay();
+
+            if (alignRight) {
+                ChromaManager.renderingText(Feature.TAB_EFFECT_TIMERS);
+                main.getUtils().drawTextWithStyle(duration.trim()+" ", intX + width - MinecraftReflection.FontRenderer.getStringWidth(duration.trim()+" ")
+                        - MinecraftReflection.FontRenderer.getStringWidth(effect), fixedY, color.getRGB());
+                ChromaManager.doneRenderingText();
+                main.getUtils().drawTextWithStyle(effect, intX + width - MinecraftReflection.FontRenderer.getStringWidth(effect), fixedY, color.getRGB());
             } else {
-                lineBuilder.append(potion.getDurationForDisplay().trim()).append(" ").append(potion.getEffect());
+                main.getUtils().drawTextWithStyle(effect, intX, fixedY, color.getRGB());
+                ChromaManager.renderingText(Feature.TAB_EFFECT_TIMERS);
+                main.getUtils().drawTextWithStyle(duration, intX+MinecraftReflection.FontRenderer.getStringWidth(effect), fixedY, color.getRGB());
+                ChromaManager.doneRenderingText();
             }
-
-            String line = lineBuilder.toString();
-
-            main.getUtils().drawTextWithStyle(line, alignLeft ? intX + width - MinecraftReflection.FontRenderer.getStringWidth(line) : intX, fixedY, ChatFormatting.WHITE);
             drawnCount += topDown ? 1 : -1;
         }
         for(TabEffect powerUp : powerupTimers){
             int fixedY = intY + (topDown ? spacer : 0) + (drawnCount * 9);
 
-            StringBuilder lineBuilder = new StringBuilder();
-            if (!alignLeft) {
-                lineBuilder.append(powerUp.getEffect()).append(powerUp.getDurationForDisplay());
+            String effect = powerUp.getEffect();
+            String duration = powerUp.getDurationForDisplay();
+
+            if (alignRight) {
+                ChromaManager.renderingText(Feature.TAB_EFFECT_TIMERS);
+                main.getUtils().drawTextWithStyle(duration.trim()+" ", intX + width - MinecraftReflection.FontRenderer.getStringWidth(duration.trim()+" ")
+                        - MinecraftReflection.FontRenderer.getStringWidth(effect), fixedY, color.getRGB());
+                ChromaManager.doneRenderingText();
+                main.getUtils().drawTextWithStyle(effect, intX + width - MinecraftReflection.FontRenderer.getStringWidth(effect), fixedY, color.getRGB());
             } else {
-                lineBuilder.append(powerUp.getDurationForDisplay().trim()).append(" ").append(powerUp.getEffect());
+                main.getUtils().drawTextWithStyle(effect, intX, fixedY, color.getRGB());
+                ChromaManager.renderingText(Feature.TAB_EFFECT_TIMERS);
+                main.getUtils().drawTextWithStyle(duration, intX+MinecraftReflection.FontRenderer.getStringWidth(effect), fixedY, color.getRGB());
+                ChromaManager.doneRenderingText();
             }
-
-            String line = lineBuilder.toString();
-
-            main.getUtils().drawTextWithStyle(line, alignLeft ? intX + width - MinecraftReflection.FontRenderer.getStringWidth(line) : intX, fixedY, ChatFormatting.WHITE);
             drawnCount += topDown ? 1 : -1;
         }
     }

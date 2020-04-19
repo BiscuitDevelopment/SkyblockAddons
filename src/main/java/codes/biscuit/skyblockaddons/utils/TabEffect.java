@@ -1,17 +1,20 @@
 package codes.biscuit.skyblockaddons.utils;
 
 public class TabEffect implements Comparable<TabEffect> {
+
     private String duration; //Duration String, eg. "01:20"
+
     private String effect; //Effect Name, eg. "Critical"
-    private int durationI; //Duration in seconds, eg. 80
+
+    private int durationSeconds; //Duration in seconds, eg. 80
 
     public TabEffect(String effect, String duration){
         this.effect = effect;
         this.duration = duration;
         String[] s = duration.split(":");
-        durationI = 0;
+        durationSeconds = 0;
         for(int i=s.length; i>0; i--){
-            durationI += Integer.parseInt(s[i-1]) * (Math.pow(60, (s.length - i)));
+            durationSeconds += Integer.parseInt(s[i-1]) * (Math.pow(60, (s.length - i)));
         }
     }
 
@@ -23,24 +26,20 @@ public class TabEffect implements Comparable<TabEffect> {
         return effect;
     }
 
-    public String toString(){
-        return effect+"§r§f"+duration;
-    }
-
     public String getDurationForDisplay(){
-        return "§r§f"+duration;
+        return "§r"+duration;
     }
 
     /**
      * @return the duration in seconds.
      */
-    public int getDurationI(){
-        return durationI;
+    public int getDurationSeconds(){
+        return durationSeconds;
     }
 
     @Override
     public int compareTo(TabEffect o) {
-        int difference = o.getDurationI() - getDurationI();
+        int difference = o.getDurationSeconds() - getDurationSeconds();
         if(difference == -1){
             return 0;   // Treat as equal if only 1 second off = Don't reorder.
                         // TODO: Technically not sorted. Possible without large workarounds?

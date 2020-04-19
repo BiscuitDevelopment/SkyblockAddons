@@ -301,32 +301,38 @@ public class InventoryUtils {
 
     public void checkIfWearingSlayerArmor(EntityPlayerSP p) {
         if (main.getConfigValues().isEnabled(Feature.SLAYER_INDICATOR)) {
-            ChatFormatting color = main.getConfigValues().getRestrictedColor(Feature.SLAYER_INDICATOR);
             for (int i = 3; i > -1; i--) {
                 ItemStack item = p.inventory.armorInventory[i];
                 String itemID = item != null ? ItemUtils.getSkyBlockItemID(item) : null;
 
                 if (itemID != null && (itemID.startsWith("REVENANT") || itemID.startsWith("TARANTULA"))) {
-                    String progress = null;
+                    String percent = null;
+                    String defence = null;
                     List<String> tooltip = item.getTooltip(null, false);
                     for (String line : tooltip) {
                         Matcher matcher = REVENANT_UPGRADE_PATTERN.matcher(line);
                         if (matcher.matches()) { // Example: line§5§o§7Next Upgrade: §a+240❈ §8(§a14,418§7/§c15,000§8)
                             try {
-//                            progress = color.toString() + matcher.group(2)+"/"+matcher.group(3) + " (" + ConfigColor.GREEN+ matcher.group(1) + color + ")";
                                 float percentage = Float.parseFloat(matcher.group(2).replace(",", "")) / Integer.parseInt(matcher.group(3).replace(",", "")) * 100;
                                 BigDecimal bigDecimal = new BigDecimal(percentage).setScale(0, BigDecimal.ROUND_HALF_UP);
-                                progress = color.toString() + bigDecimal.toString() + "% (" + ChatFormatting.GREEN + matcher.group(1) + color + ")";
+                                percent = bigDecimal.toString();
+                                defence = ChatFormatting.GREEN + matcher.group(1);
                                 break;
                             } catch (NumberFormatException ignored) {
                             }
                         }
                     }
-                    if (progress != null) {
-                        if (slayerArmorProgresses[i] == null) {
-                            slayerArmorProgresses[i] = new SlayerArmorProgress(item, progress);
+                    if (percent != null && defence != null) {
+                        SlayerArmorProgress currentProgress = slayerArmorProgresses[i];
+
+                        if (currentProgress == null || item != currentProgress.getItemStack()) {
+                            // The item has changed or didn't exist. Create new object.
+                            slayerArmorProgresses[i] = new SlayerArmorProgress(item, percent, defence);
+                        } else {
+                            // The item has remained the same. Just update the stats.
+                            currentProgress.setPercent(percent);
+                            currentProgress.setDefence(defence);
                         }
-                        slayerArmorProgresses[i].setProgressText(progress);
                     }
                 } else {
                     slayerArmorProgresses[i] = null;
