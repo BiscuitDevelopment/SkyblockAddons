@@ -109,12 +109,12 @@
     "skyblockAddonsButtonInPauseMenu": "ポーズメニューにSBAボタンを表示する",
     "showTotalZealotCount": "Zealotカウンター - Zealotの合計",
     "showSummoningEyeCount": "Zealotカウンター - アイの合計",
-    "showZealotsPerEye": "Zealot Counter - Show Zealots Per Eye",
-    "turnBowGreenWhenUsingToxicArrowPoison": "Color Bow Green When Using Toxic Arrow Poison",
-    "birchParkRainmakerTimer": "Birch Park Rainmaker Timer"
+    "showZealotsPerEye": "Zealotカウンター - アイ1つあたりのZealotキル数を表示する",
+    "turnBowGreenWhenUsingToxicArrowPoison": "毒矢の使用時に弓を緑色にする",
+    "birchParkRainmakerTimer": "Birch Parkの雨降りタイマー"
   },
   "messages": {
-    "betaTesters": "Thank you for being a beta tester! Please report any bugs you encounter in the Discord channel.",
+    "betaTesters": "ベータテストに参加してくれてありがとう！バグに遭遇した時はDiscordで報告してください。",
     "dropConfirmation": "落としてもいいのであれば、このアイテムをもう一度ドロップしてください。",
     "magmaBossWarning": "マグマボスが出現しました!",
     "fullInventory": "インベントリが満タンです！",
