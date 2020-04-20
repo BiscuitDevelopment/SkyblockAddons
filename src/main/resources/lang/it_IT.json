@@ -111,7 +111,8 @@
     "showSummoningEyeCount": "Contatore di Zealot - Numero totale di occhi",
     "showZealotsPerEye": "Contatore di Zealot - Mostra rapporto Zealots per occhio",
     "turnBowGreenWhenUsingToxicArrowPoison": "Colora di verde l’arco mentre scagli una Poison Arrow",
-    "birchParkRainmakerTimer": "Timer del Rainmaker nel parco di betulle"
+    "birchParkRainmakerTimer": "Timer del Rainmaker nel parco di betulle",
+    "combatTimerDisplay": "Combat Timer Display"
   },
   "messages": {
     "betaTesters": "Grazie per essere stato un beta tester! Per favore segnala tutti i bug riscontrati nel canale di Discord.",
