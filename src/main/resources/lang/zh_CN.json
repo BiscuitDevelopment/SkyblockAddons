@@ -8,7 +8,7 @@
     "skeletonHatBonesBar": "骷髅头盔可抵挡攻击次数",
     "hideFoodAndArmor": "隐藏饱食度 & 盔甲值",
     "fullInventoryWarning": "背包空间不足警报",
-    "repeating": "重复中",
+    "repeating": "再次警告",
     "disableEmberRodAbility": "在私人岛屿上关闭余烬之杖技能",
     "editLocations": "编辑 Gui 位置",
     "guiScale": "Gui 大小: %scale%",
@@ -86,7 +86,7 @@
       "compact": "简洁"
     },
     "disableMagicalSoupMessage": "不显示神奇蘑菇汤的提示信息",
-    "zealotCounter": "末影战士计数器",
+    "zealotCounter": "显示末影战士击杀数",
     "tickerChargesDisplay": "显示刻数/充能",
     "tab": {
       "generalSettings": "常规设置"
@@ -143,8 +143,8 @@
       "downloading": "补丁正在下载（%downloaded%/%total%）\n请注意，下载完成后，请您务必删除旧文件。",
       "failed": "补丁下载失败！请在聊天中寻找下载链接。",
       "downloadFinished": "补丁下载完成，它被保存为 %file%。\n请不要忘记在关闭 Minecraft 后删除旧文件，点击此处打开文件夹。",
-      "newBeta": "有新的测试版本 (%version%) 现已上线! 请使用 ''Mods'' 页面更新",
-      "newUpdate": "A new update (%version%) is available! Please update using the \"Mods\" menu."
+      "newBeta": "有新的测试版本 (%version%) 现已上线! 请使用 ''Mods'' 页面进行更新",
+      "newUpdate": "一个新的更新 (%version%) 现已上线! 请使用 ''Mods'' 页面进行更新"
     },
     "slotLocked": "该栏已锁！",
     "summoningEyeFound": "召唤之眼！",
