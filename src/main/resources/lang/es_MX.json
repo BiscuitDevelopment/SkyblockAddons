@@ -8,7 +8,7 @@
     "skeletonHatBonesBar": "Barra de Huesos de Skeleton Hat",
     "hideFoodAndArmor": "Esconder Barra de Comida y Armadura",
     "fullInventoryWarning": "Alerta de Inventario Lleno",
-    "repeating": "Repeat Warning",
+    "repeating": "Repita Advertencia",
     "disableEmberRodAbility": "Desactivar Ember Rod en Isla",
     "editLocations": "Modificar Posiciones",
     "guiScale": "Escala de Menú: %scale%",
@@ -16,7 +16,7 @@
     "hideDurability": "Ocultar Durabilidad de Herramientas",
     "showEnchantmentsReforges": "Encantamientos & Reforjados",
     "minionStopWarning": "Alerta de Minion Detenido",
-    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
+    "hidePlayersNearNPCs": "Oculta Jugadores Cercanos a los PNJs Importantes",
     "backpackStyle": "Estilo de Backpack: %style%",
     "backpackStyles": {
       "regular": "Normal",
@@ -95,8 +95,8 @@
     "noArrowsLeftAlert": "Alerta de Falta de Flechas",
     "hideNightVisionEffectTimer": "Esconder el Temporizador del Efecto de Visión Nocturna",
     "showCakeBagPreview": "Previsualizar Cake Bags",
-    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
-    "enableDevFeatures": "Enable Developer Features",
+    "showBackpackPreviewInAH": "Mostrar Preview de Mochila mientras la Casa de Subastas esta abierto",
+    "enableDevFeatures": "Modo Desarrollador",
     "chromaSpeed": "Chroma Speed",
     "chromaMode": "Chroma Color Mode",
     "chromaModes": {
