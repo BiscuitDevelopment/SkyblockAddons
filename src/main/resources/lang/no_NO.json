@@ -112,7 +112,7 @@
     "showZealotsPerEye": "Zealot Teller - Vis Antall Zealots Per Øye",
     "turnBowGreenWhenUsingToxicArrowPoison": "Farge Bue Grønn Når Giftig Piller Brukes",
     "birchParkRainmakerTimer": "Bjørke Park Regnlager Nedtelling",
-    "combatTimerDisplay": "Combat Timer Display"
+    "combatTimerDisplay": "Vis Kamp Nedtelling"
   },
   "messages": {
     "betaTesters": "Takk for at du er en beta tester! Hvis du finner noen Bugs vennligst rapporter de på Discord'en.",
