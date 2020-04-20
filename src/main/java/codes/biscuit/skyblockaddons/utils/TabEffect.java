@@ -1,5 +1,7 @@
 package codes.biscuit.skyblockaddons.utils;
 
+import codes.biscuit.skyblockaddons.SkyblockAddons;
+
 public class TabEffect implements Comparable<TabEffect> {
 
     private String duration; //Duration String, eg. "01:20"
@@ -40,10 +42,12 @@ public class TabEffect implements Comparable<TabEffect> {
     @Override
     public int compareTo(TabEffect o) {
         int difference = o.getDurationSeconds() - getDurationSeconds();
-        if(difference == -1){
-            return 0;   // Treat as equal if only 1 second off = Don't reorder.
-                        // TODO: Technically not sorted. Possible without large workarounds?
+
+        if (Math.abs(difference) <= 1) {
+            Utils utils = SkyblockAddons.getInstance().getUtils();
+            return utils.stripColor(o.getEffect()).compareTo(utils.stripColor(getEffect()));
         }
+
         return difference;
     }
 }

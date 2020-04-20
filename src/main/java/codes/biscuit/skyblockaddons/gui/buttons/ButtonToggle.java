@@ -14,7 +14,7 @@ public class ButtonToggle extends ButtonFeature {
 
     private static final int CIRCLE_PADDING_LEFT = 5;
     private static final int ANIMATION_SLIDE_DISTANCE = 12;
-    private static final int ANIMATION_SLIDE_TIME = 200;
+    private static final int ANIMATION_SLIDE_TIME = 150;
 
     private SkyblockAddons main;
 

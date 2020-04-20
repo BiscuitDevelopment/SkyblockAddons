@@ -22,6 +22,8 @@ import net.minecraft.entity.item.EntityArmorStand;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.GuiIngameForge;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
@@ -55,6 +57,24 @@ public class RenderListener {
     private final static ResourceLocation SLASH_ICON = new ResourceLocation("skyblockaddons", "icons/slash.png");
 
     private final static ItemStack WATER_BUCKET = new ItemStack(Items.water_bucket);
+    private final static ItemStack IRON_SWORD = new ItemStack(Items.iron_sword);
+    private final static ItemStack NETHER_STAR = new ItemStack(Items.nether_star);
+    private final static ItemStack WARP_SKULL = new ItemStack(Items.skull, 1, 3);
+
+    static {
+        NBTTagCompound texture = new NBTTagCompound();
+        texture.setString("Value", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYzljODg4MWU0MjkxNWE5ZDI5YmI2MWExNmZiMjZkMDU5OTEzMjA0ZDI2NWRmNWI0MzliM2Q3OTJhY2Q1NiJ9fX0=");
+        NBTTagList textures = new NBTTagList();
+        textures.appendTag(texture);
+        NBTTagCompound properties = new NBTTagCompound();
+        properties.setTag("textures", textures);
+        NBTTagCompound skullOwner = new NBTTagCompound();
+        skullOwner.setString("Id", "9ae837fc-19da-3841-af06-7db55d51c815");
+        skullOwner.setTag("Properties", properties);
+        NBTTagCompound tag = new NBTTagCompound();
+        tag.setTag("SkullOwner", skullOwner);
+        WARP_SKULL.setTagCompound(tag);
+    }
 
     private SkyblockAddons main;
 
@@ -717,6 +737,15 @@ public class RenderListener {
 
                 text = "1:23";
             }
+        } else if (feature == Feature.COMBAT_TIMER_DISPLAY) {
+            long lastDamaged = main.getUtils().getLastDamaged()+5000;
+            int combatSeconds = (int)Math.ceil((lastDamaged-System.currentTimeMillis())/1000D);
+
+            if (combatSeconds <= 0 && buttonLocation == null) {
+                return;
+            }
+
+            text = "IN COMBAT";
         } else {
             return;
         }
@@ -725,6 +754,16 @@ public class RenderListener {
 
         int height = 7;
         int width = MinecraftReflection.FontRenderer.getStringWidth(text);
+
+        // Constant width ovverrides for some features.
+        if (feature == Feature.ZEALOT_COUNTER || feature == Feature.SHOW_AVERAGE_ZEALOTS_PER_EYE) {
+            width = MinecraftReflection.FontRenderer.getStringWidth("500");
+        } else if (feature == Feature.SHOW_TOTAL_ZEALOT_COUNT) {
+            width = MinecraftReflection.FontRenderer.getStringWidth("30000");
+        } else if (feature == Feature.SHOW_SUMMONING_EYE_COUNT) {
+            width = MinecraftReflection.FontRenderer.getStringWidth("100");
+        }
+
         x -= Math.round(width * scale / 2);
         y -= Math.round(height * scale / 2);
         x /= scale;
@@ -738,9 +777,13 @@ public class RenderListener {
             int boxYTwo = intY + height + 4;
             if (feature == Feature.MAGMA_BOSS_TIMER || feature == Feature.DARK_AUCTION_TIMER || feature == Feature.ZEALOT_COUNTER || feature == Feature.SKILL_DISPLAY
             || feature == Feature.SHOW_TOTAL_ZEALOT_COUNT || feature == Feature.SHOW_SUMMONING_EYE_COUNT || feature == Feature.SHOW_AVERAGE_ZEALOTS_PER_EYE ||
-            feature == Feature.BIRCH_PARK_RAINMAKER_TIMER) {
+            feature == Feature.BIRCH_PARK_RAINMAKER_TIMER || feature == Feature.COMBAT_TIMER_DISPLAY) {
                 boxXOne -= 18;
                 boxYOne -= 2;
+            }
+
+            if (feature == Feature.COMBAT_TIMER_DISPLAY) {
+                boxYTwo += 15;
             }
             buttonLocation.checkHoveredAndDrawBox(boxXOne, boxXTwo, boxYOne, boxYTwo, scale);
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
@@ -788,6 +831,45 @@ public class RenderListener {
             RenderHelper.enableGUIStandardItemLighting();
 
             mc.getRenderItem().renderItemIntoGUI(WATER_BUCKET, intX - 18, intY - 5);
+
+            RenderHelper.disableStandardItemLighting();
+            GlStateManager.disableRescaleNormal();
+        } else if (feature == Feature.COMBAT_TIMER_DISPLAY) {
+            GlStateManager.enableRescaleNormal();
+            RenderHelper.enableGUIStandardItemLighting();
+
+            long lastDamaged = main.getUtils().getLastDamaged()+5000;
+            int combatSeconds = (int)Math.ceil((lastDamaged-System.currentTimeMillis())/1000D);
+
+            if (buttonLocation != null) {
+                combatSeconds = 5;
+            }
+
+            int iconX = intX - 18;
+
+            mc.getRenderItem().renderItemIntoGUI(IRON_SWORD, iconX, intY - 5);
+            intY += 15;
+            int totalWidth = width + 16 + 2; // 2 spacer and 16 sword icon.
+
+            String warpTimeRemaining = combatSeconds+"s";
+            String menuTimeRemaining = (combatSeconds-2)+"s";
+            if (combatSeconds <= 2) {
+                menuTimeRemaining = "✔";
+            }
+            int menuTimeRemainingWidth = MinecraftReflection.FontRenderer.getStringWidth(menuTimeRemaining);
+
+            int spacerBetweenBothItems = 4;
+            int spacerBetweenItemsAndText = 2;
+
+            mc.getRenderItem().renderItemIntoGUI(NETHER_STAR, iconX + totalWidth/2 - 16-menuTimeRemainingWidth - spacerBetweenItemsAndText - spacerBetweenBothItems/2, intY - 5);
+            ChromaManager.renderingText(feature);
+            main.getUtils().drawTextWithStyle(menuTimeRemaining, iconX + totalWidth/2-menuTimeRemainingWidth - spacerBetweenBothItems/2, intY, color, textAlpha);
+            ChromaManager.doneRenderingText();
+
+            mc.getRenderItem().renderItemIntoGUI(WARP_SKULL, iconX + totalWidth/2 + spacerBetweenBothItems/2, intY - 5);
+            ChromaManager.renderingText(feature);
+            main.getUtils().drawTextWithStyle(warpTimeRemaining, iconX + totalWidth/2 + spacerBetweenBothItems/2+16+spacerBetweenItemsAndText, intY, color, textAlpha);
+            ChromaManager.doneRenderingText();
 
             RenderHelper.disableStandardItemLighting();
             GlStateManager.disableRescaleNormal();
@@ -921,10 +1003,10 @@ public class RenderListener {
 
             if (alignRight) {
                 ChromaManager.renderingText(Feature.TAB_EFFECT_TIMERS);
-                main.getUtils().drawTextWithStyle(duration.trim()+" ", intX + width - MinecraftReflection.FontRenderer.getStringWidth(duration.trim()+" ")
-                        - MinecraftReflection.FontRenderer.getStringWidth(effect), fixedY, color.getRGB());
+                main.getUtils().drawTextWithStyle(duration+" ", intX + width - MinecraftReflection.FontRenderer.getStringWidth(duration+" ")
+                        - MinecraftReflection.FontRenderer.getStringWidth(effect.trim()), fixedY, color.getRGB());
                 ChromaManager.doneRenderingText();
-                main.getUtils().drawTextWithStyle(effect, intX + width - MinecraftReflection.FontRenderer.getStringWidth(effect), fixedY, color.getRGB());
+                main.getUtils().drawTextWithStyle(effect.trim(), intX + width - MinecraftReflection.FontRenderer.getStringWidth(effect.trim()), fixedY, color.getRGB());
             } else {
                 main.getUtils().drawTextWithStyle(effect, intX, fixedY, color.getRGB());
                 ChromaManager.renderingText(Feature.TAB_EFFECT_TIMERS);
@@ -941,10 +1023,10 @@ public class RenderListener {
 
             if (alignRight) {
                 ChromaManager.renderingText(Feature.TAB_EFFECT_TIMERS);
-                main.getUtils().drawTextWithStyle(duration.trim()+" ", intX + width - MinecraftReflection.FontRenderer.getStringWidth(duration.trim()+" ")
-                        - MinecraftReflection.FontRenderer.getStringWidth(effect), fixedY, color.getRGB());
+                main.getUtils().drawTextWithStyle(duration+" ", intX + width - MinecraftReflection.FontRenderer.getStringWidth(duration+" ")
+                        - MinecraftReflection.FontRenderer.getStringWidth(effect.trim()), fixedY, color.getRGB());
                 ChromaManager.doneRenderingText();
-                main.getUtils().drawTextWithStyle(effect, intX + width - MinecraftReflection.FontRenderer.getStringWidth(effect), fixedY, color.getRGB());
+                main.getUtils().drawTextWithStyle(effect, intX + width - MinecraftReflection.FontRenderer.getStringWidth(effect.trim()), fixedY, color.getRGB());
             } else {
                 main.getUtils().drawTextWithStyle(effect, intX, fixedY, color.getRGB());
                 ChromaManager.renderingText(Feature.TAB_EFFECT_TIMERS);

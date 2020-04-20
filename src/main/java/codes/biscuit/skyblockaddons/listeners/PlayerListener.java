@@ -320,6 +320,10 @@ public class PlayerListener {
                         if (getAttribute(Attribute.MANA) > getAttribute(Attribute.MAX_MANA))
                             setAttribute(Attribute.MANA, getAttribute(Attribute.MAX_MANA));
                     }
+
+                    if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.TAB_EFFECT_TIMERS)) {
+                        TabEffectManager.getInstance().updatePotionEffects();
+                    }
                 } else if (timerTick % 5 == 0) { // Check inventory, location, updates, and skeleton helmet every 1/4 second.
                     EntityPlayerSP p = mc.thePlayer;
                     if (p != null) {
@@ -340,10 +344,6 @@ public class PlayerListener {
                         if (mc.currentScreen == null && main.getConfigValues().isEnabled(Feature.ITEM_PICKUP_LOG)
                                 && main.getPlayerListener().didntRecentlyJoinWorld()) {
                             main.getInventoryUtils().getInventoryDifference(p.inventory.mainInventory);
-                        }
-
-                        if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.TAB_EFFECT_TIMERS)) {
-                            TabEffectManager.getInstance().updatePotionEffects();
                         }
                     }
 

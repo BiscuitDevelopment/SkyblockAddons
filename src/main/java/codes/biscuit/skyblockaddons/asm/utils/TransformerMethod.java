@@ -62,6 +62,7 @@ public enum TransformerMethod {
 
     // EntityPlayerSP
     dropOneItem("dropOneItem", "func_71040_bB", "a", "(Z)Lnet/minecraft/entity/item/EntityItem;", "(Z)"+TransformerClass.EntityItem.getName()),
+    setPlayerSPHealth("setPlayerSPHealth", "func_71150_b", "n", "(F)V"),
 
     // EntityRenderer
     getMouseOver("getMouseOver", "func_78473_a", "a", "(F)V"),
@@ -102,6 +103,9 @@ public enum TransformerMethod {
 
     // FontRenderer
     renderChar("renderChar", "func_181559_a", "a", "(CZ)F"),
+
+    // EntityLivingBase
+    handleStatusUpdate("handleStatusUpdate", "func_70103_a", "a", "(B)V"),
 
     // Constructor
     init("<init>", "<init>", "<init>", "()V"),

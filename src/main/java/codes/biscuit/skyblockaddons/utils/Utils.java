@@ -119,6 +119,8 @@ public class Utils {
     private boolean lookedOnline = false;
     private URI featuredLink = null;
 
+    private long lastDamaged = -1;
+
     private SkyblockAddons main;
     private Logger logger;
 

@@ -38,6 +38,9 @@ public enum TransformerField {
     blue("blue", "field_78292_o", "n", "F"),
     alpha("alpha", "field_78305_q", "p", "F"),
 
+    // EntityLivingBase
+    hurtTime("hurtTime", "field_70737_aN ", "au", "I"),
+
     NULL(null,null,null,null);
 
     private String name;
@@ -63,5 +66,9 @@ public enum TransformerField {
 
     public FieldInsnNode putField(TransformerClass currentClass) {
         return new FieldInsnNode(Opcodes.PUTFIELD, currentClass.getNameRaw(), name, type);
+    }
+
+    public boolean matches(FieldInsnNode fieldInsnNode) {
+        return this.name.equals(fieldInsnNode.name) && this.type.equals(fieldInsnNode.desc);
     }
 }

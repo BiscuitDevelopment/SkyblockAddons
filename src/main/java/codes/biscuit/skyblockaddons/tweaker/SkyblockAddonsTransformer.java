@@ -73,6 +73,7 @@ public class SkyblockAddonsTransformer implements IClassTransformer {
         registerTransformer(new GuiIngameMenuTransformer());
         registerTransformer(new FontRendererTransformer());
         registerTransformer(new RenderItemTransformer());
+        registerTransformer(new EntityLivingBaseTransformer());
     }
 
     private void registerTransformer(ITransformer transformer) {
