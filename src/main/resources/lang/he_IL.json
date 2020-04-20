@@ -86,7 +86,7 @@
       "compact": "מרוכז"
     },
     "disableMagicalSoupMessage": "בטל הודעה ממרק פטריות קסום",
-    "zealotCounter": "הצג מספר הקנאים",
+    "zealotCounter": "מד הזלוטים - ספור מאז העין האחרונה",
     "tickerChargesDisplay": "תצוגת טעינה/תקתוק",
     "tab": {
       "generalSettings": "הגדרות כלליות"
@@ -107,7 +107,7 @@
     "sortTabEffectTimers": "מיין טיימרים לפי משך זמן",
     "showBrokenFragments": "הראה פרגמנטים שלא עובדים",
     "skyblockAddonsButtonInPauseMenu": "הצג כפתור SBA בתפריט ההשהייה",
-    "showTotalZealotCount": "Zealot Counter - Total Zealot Count",
+    "showTotalZealotCount": "מד הזלוטים - סך הכל כמות הזלוטים",
     "showSummoningEyeCount": "Zealot Counter - Total Eye Count",
     "showZealotsPerEye": "Zealot Counter - Show Zealots Per Eye",
     "turnBowGreenWhenUsingToxicArrowPoison": "קשת בצבע ירוק כאשר משתמשים ברעל חץ רעיל",
