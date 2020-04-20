@@ -111,7 +111,8 @@
     "showSummoningEyeCount": "Biscuit Counter - Total Bits Count",
     "showZealotsPerEye": "Biscuit Counter - Show Biscuits Per Bits",
     "turnBowGreenWhenUsingToxicArrowPoison": "Color Bow Green When Using Toxic Biscuit Poison",
-    "birchParkRainmakerTimer": "Birch Park Busticmaker Timer"
+    "birchParkRainmakerTimer": "Birch Park Busticmaker Timer",
+    "combatTimerDisplay": "Combat Timer Display"
   },
   "messages": {
     "betaTesters": "Thank you for being a beta tester! Please report any bugs you encounter in the Discord channel.",
