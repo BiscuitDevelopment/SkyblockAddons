@@ -111,7 +111,8 @@
     "showSummoningEyeCount": "Počítadlo Zealotů - Celkový počet očí",
     "showZealotsPerEye": "Počítadlo Zealotů - Zobrazit Zealoty/Oko",
     "turnBowGreenWhenUsingToxicArrowPoison": "Obarvi luk zeleně při použití Toxického jedu na šíp",
-    "birchParkRainmakerTimer": "Časovač Dešťotvůrce v Birch Parku"
+    "birchParkRainmakerTimer": "Časovač Dešťotvůrce v Birch Parku",
+    "combatTimerDisplay": "Combat Timer Display"
   },
   "messages": {
     "betaTesters": "Děkujeme, že jsi betatester! Prosím, nahlaš všechny bugy na které naražíš v kanálu na Discordu.",
