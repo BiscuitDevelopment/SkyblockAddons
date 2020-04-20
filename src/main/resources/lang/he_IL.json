@@ -96,23 +96,23 @@
     "hideNightVisionEffectTimer": "הסתר את טיימר השפעת רעיית הלילה",
     "showCakeBagPreview": "Show Preview for Cake Bags",
     "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
-    "enableDevFeatures": "Enable Developer Features",
-    "chromaSpeed": "Chroma Speed",
-    "chromaMode": "Chroma Color Mode",
+    "enableDevFeatures": "אפשר מאפייני פיתוח",
+    "chromaSpeed": "מהירות כרומה",
+    "chromaMode": "מצב צבע כרומה",
     "chromaModes": {
       "allTheSame": "הכל אותו הצבע",
       "fade": "צבע דוהה"
     },
-    "chromaFadeWidth": "רוחב צבע הדהייה",
+    "chromaFadeWidth": "רוחב הכרומה",
     "sortTabEffectTimers": "Sort Timers by Duration",
     "showBrokenFragments": "Show Broken Dragon Fragments",
     "skyblockAddonsButtonInPauseMenu": "Show SBA Button in Pause Menu",
     "showTotalZealotCount": "Zealot Counter - Total Zealot Count",
     "showSummoningEyeCount": "Zealot Counter - Total Eye Count",
     "showZealotsPerEye": "Zealot Counter - Show Zealots Per Eye",
-    "turnBowGreenWhenUsingToxicArrowPoison": "Color Bow Green When Using Toxic Arrow Poison",
-    "birchParkRainmakerTimer": "Birch Park Rainmaker Timer",
-    "combatTimerDisplay": "Combat Timer Display"
+    "turnBowGreenWhenUsingToxicArrowPoison": "קשת בצבע ירוק כאשר משתמשים ברעל חץ רעיל",
+    "birchParkRainmakerTimer": "טיימר של מורידת הגשם ב Birch Park",
+    "combatTimerDisplay": "תצוגת טיימר הלחימה"
   },
   "messages": {
     "betaTesters": "תודה לך שאתה בוחן בטא! בבקשה דווח על באגים שאתה מוצא בשרת דיסקורד שלנו.",
