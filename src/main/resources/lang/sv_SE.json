@@ -111,7 +111,8 @@
     "showSummoningEyeCount": "Zealot räknare - Totala Ögon Räknare",
     "showZealotsPerEye": "Zealot Räknare - Visa Zealots Per Öga",
     "turnBowGreenWhenUsingToxicArrowPoison": "Färga Pilbåge Grön När Du Använder Gift Pilar",
-    "birchParkRainmakerTimer": "Björk Park Regngörar Timer"
+    "birchParkRainmakerTimer": "Björk Park Regngörar Timer",
+    "combatTimerDisplay": "Combat Timer Display"
   },
   "messages": {
     "betaTesters": "Tack för att du är en betatestare! Vänligen rapportera eventuella buggar du stöter på i Discord-kanalen.",
