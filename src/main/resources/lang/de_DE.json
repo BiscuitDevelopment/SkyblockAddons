@@ -8,7 +8,7 @@
     "skeletonHatBonesBar": "Skelett-Helm Knochen Leiste",
     "hideFoodAndArmor": "Hunger- und Rüstungsleiste verstecken",
     "fullInventoryWarning": "Warnung bei vollem Inventar",
-    "repeating": "Wiederholung",
+    "repeating": "Wiederhole Warnung",
     "disableEmberRodAbility": "Ember Rod auf der Insel deaktivieren",
     "editLocations": "Lage der GUIs-Teile bearbeiten",
     "guiScale": "GUI Größe: %scale%",
@@ -86,7 +86,7 @@
       "compact": "Kompakt"
     },
     "disableMagicalSoupMessage": "Deaktiviere Magische-Pilz-Suppen Nachricht",
-    "zealotCounter": "Zeige Zealot-Zähler",
+    "zealotCounter": "Zealot-Zähler - Anzahl seit letztem Auge",
     "tickerChargesDisplay": "Ticker/Ladungs Anzeige",
     "tab": {
       "generalSettings": "Allgemeine Einstellungen"
@@ -105,12 +105,12 @@
     },
     "chromaFadeWidth": "Chroma Überblendung Breite",
     "sortTabEffectTimers": "Timer nach Dauer sortieren",
-    "showBrokenFragments": "Show Broken Dragon Fragments",
-    "skyblockAddonsButtonInPauseMenu": "Show SBA Button in Pause Menu",
-    "showTotalZealotCount": "Zealot Counter - Total Zealot Count",
-    "showSummoningEyeCount": "Zealot Counter - Total Eye Count",
-    "showZealotsPerEye": "Zealot Counter - Show Zealots Per Eye",
-    "turnBowGreenWhenUsingToxicArrowPoison": "Color Bow Green When Using Toxic Arrow Poison",
+    "showBrokenFragments": "Zeige kaputte Drachenfragmente",
+    "skyblockAddonsButtonInPauseMenu": "Zeige SBA-Knopf, wenn das Spiel pausiert ist",
+    "showTotalZealotCount": "Zealot-Zähler - Anzahl aller Zealots",
+    "showSummoningEyeCount": "Zealot-Zähler - Anzahl aller Augen",
+    "showZealotsPerEye": "Zealot-Zähler - Zeige Zealots pro Auge",
+    "turnBowGreenWhenUsingToxicArrowPoison": "Färbe den Bogen grün, wenn du Pfeilgift benutzt",
     "birchParkRainmakerTimer": "Birch Park Rainmaker Timer",
     "combatTimerDisplay": "Combat Timer Display"
   },
