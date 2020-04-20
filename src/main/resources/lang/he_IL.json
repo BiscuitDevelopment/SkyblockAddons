@@ -79,13 +79,13 @@
     "specialZealotAlert": "התראה של זלוט מיוחד",
     "enableMessageWhenActionPrevented": "הצג הודע כאשר נחסמת פעולה",
     "hidePetHealthBar": "הסתר מד חיים של חיית מחמד",
-    "powerOrbDisplay": "תצוגת כדור עוצמה",
+    "powerOrbDisplay": "צג כדור עוצמה",
     "powerOrbDisplayStyle": "סגנון כדור עוצמה: %style%",
     "powerOrbStyle": {
       "detailed": "מפורט",
-      "compact": "מרוכז"
+      "compact": "דחוס"
     },
-    "disableMagicalSoupMessage": "בטל הודעה ממרק פטריות קסום",
+    "disableMagicalSoupMessage": "בטל הודעות ממרק פטריות קסום",
     "zealotCounter": "מד הזלוטים - ספור מאז העין האחרונה",
     "tickerChargesDisplay": "תצוגת טעינה/תקתוק",
     "tab": {
@@ -107,9 +107,9 @@
     "sortTabEffectTimers": "מיין טיימרים לפי משך זמן",
     "showBrokenFragments": "הראה פרגמנטים שלא עובדים",
     "skyblockAddonsButtonInPauseMenu": "הצג כפתור SBA בתפריט ההשהייה",
-    "showTotalZealotCount": "מד הזלוטים - סך הכל כמות הזלוטים",
-    "showSummoningEyeCount": "Zealot Counter - Total Eye Count",
-    "showZealotsPerEye": "Zealot Counter - Show Zealots Per Eye",
+    "showTotalZealotCount": "מד הזלוטים - כמות הזלוטים בסך הכל",
+    "showSummoningEyeCount": "מד הזלוטים - כמות עיניים בסך הכל",
+    "showZealotsPerEye": "מד הזלוטים - הראה כמות זלוטים על כל עין",
     "turnBowGreenWhenUsingToxicArrowPoison": "קשת בצבע ירוק כאשר משתמשים ברעל חץ רעיל",
     "birchParkRainmakerTimer": "טיימר של מורידת הגשם ב Birch Park",
     "combatTimerDisplay": "תצוגת טיימר הלחימה"
