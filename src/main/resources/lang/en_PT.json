@@ -8,7 +8,7 @@
     "skeletonHatBonesBar": "Bar o' Bones",
     "hideFoodAndArmor": "Swab Grub n' Booty Bar",
     "fullInventoryWarning": "Full Barrel Warnin'",
-    "repeating": "Repeat Warning",
+    "repeating": "Repeat yer warnin'",
     "disableEmberRodAbility": "Swab Ember Rod on Island",
     "editLocations": "Move Yer' GUI",
     "guiScale": "Gui Scale: %scale%",
@@ -16,7 +16,7 @@
     "hideDurability": "'ide Item Durability",
     "showEnchantmentsReforges": "Magic n' Reforgery",
     "minionStopWarning": "\"Minion Cannot Reach\" Warnin'",
-    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
+    "hidePlayersNearNPCs": "'ide mateys nearrr important NPCs",
     "backpackStyle": "Style o' Yer Booty: %style%",
     "backpackStyles": {
       "regular": "Regularrr",
@@ -79,20 +79,20 @@
     "specialZealotAlert": "ye Good Zealot Alert",
     "enableMessageWhenActionPrevented": "Show a message when actions be prevented",
     "hidePetHealthBar": "'ide Pet Health Bar",
-    "powerOrbDisplay": "Power Orb Display",
-    "powerOrbDisplayStyle": "Power Orb Style: %style%",
+    "powerOrbDisplay": "Display yer Power Orb",
+    "powerOrbDisplayStyle": "Powarr Orb Style: %style%",
     "powerOrbStyle": {
-      "detailed": "Detailed",
+      "detailed": "De'aild",
       "compact": "Compact"
     },
-    "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages",
-    "zealotCounter": "Zealot Counter - Count Since Last Eye",
-    "tickerChargesDisplay": "Ticker/Charges Display",
+    "disableMagicalSoupMessage": "Disable yer Soup Messages",
+    "zealotCounter": "Zealot Counter - Count since yer last eye",
+    "tickerChargesDisplay": "Tick'r/Charges Display",
     "tab": {
       "generalSettings": "General Settin's"
     },
-    "tabEffectTimers": "Potion and Powerup Timers",
-    "noArrowsLeftAlert": "No Arrows Left Alert",
+    "tabEffectTimers": "Yer potion n' Powerup Timers",
+    "noArrowsLeftAlert": "Yer Arrows Gone Alert",
     "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
     "showCakeBagPreview": "Show Preview for Cake Bags",
     "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
@@ -164,6 +164,6 @@
     "noArrowsLeft": "No Arrows Left!",
     "chooseAColor": "Choose a Color",
     "selectedColor": "Selected Color",
-    "setHexColor": "Set Hex Color"
+    "setHexColor": "Set yer Hex Col'r"
   }
 }
