@@ -111,7 +111,8 @@
     "showSummoningEyeCount": "Contador de Zealotes - Número Total de Ojos",
     "showZealotsPerEye": "Contador de Zealotes - Mostrar Zealotes Por Ojo",
     "turnBowGreenWhenUsingToxicArrowPoison": "Colora el Arco Verde Mientras Usando Veneno de Flecha Tóxia",
-    "birchParkRainmakerTimer": "Temporizador de Rainmaker del Parque de Abedul"
+    "birchParkRainmakerTimer": "Temporizador de Rainmaker del Parque de Abedul",
+    "combatTimerDisplay": "Combat Timer Display"
   },
   "messages": {
     "betaTesters": "¡Gracias por ser un probador beta! Por favor reporta cualquier problema que encuentres en el canal de Discord.",
