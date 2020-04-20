@@ -111,7 +111,8 @@
     "showSummoningEyeCount": "Zealot Counter - Total Eye Count",
     "showZealotsPerEye": "Zealot Counter - Show Zealots Per Eye",
     "turnBowGreenWhenUsingToxicArrowPoison": "Color Bow Green When Using Toxic Arrow Poison",
-    "birchParkRainmakerTimer": "Birch Park Rainmaker Timer"
+    "birchParkRainmakerTimer": "Birch Park Rainmaker Timer",
+    "combatTimerDisplay": "Combat Timer Display"
   },
   "messages": {
     "betaTesters": "תודה לך שאתה בוחן בטא! בבקשה דווח על באגים שאתה מוצא בשרת דיסקורד שלנו.",
