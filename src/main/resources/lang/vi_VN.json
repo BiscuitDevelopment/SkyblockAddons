@@ -111,7 +111,8 @@
     "showSummoningEyeCount": "Bộ đếm Zealot - Tổng số Eye",
     "showZealotsPerEye": "Bộ đếm Zealot - Hiển thị số Zlots/1 Eye",
     "turnBowGreenWhenUsingToxicArrowPoison": "Cung màu xanh khi dùng mũi tên độc",
-    "birchParkRainmakerTimer": "Birch Park Rainmaker Timer"
+    "birchParkRainmakerTimer": "Birch Park Rainmaker Timer",
+    "combatTimerDisplay": "Combat Timer Display"
   },
   "messages": {
     "betaTesters": "Thank you for being a beta tester! Please report any bugs you encounter in the Discord channel.",
