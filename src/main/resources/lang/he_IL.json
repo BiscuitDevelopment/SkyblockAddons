@@ -79,7 +79,7 @@
     "specialZealotAlert": "התראה של זלוט מיוחד",
     "enableMessageWhenActionPrevented": "הצג הודע כאשר נחסמת פעולה",
     "hidePetHealthBar": "הסתר מד חיים של חיית מחמד",
-    "powerOrbDisplay": "צג כדור עוצמה",
+    "powerOrbDisplay": "תצוגת כדור עוצמה",
     "powerOrbDisplayStyle": "סגנון כדור עוצמה: %style%",
     "powerOrbStyle": {
       "detailed": "מפורט",
