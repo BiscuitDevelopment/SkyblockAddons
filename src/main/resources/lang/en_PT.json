@@ -106,16 +106,16 @@
     "chromaFadeWidth": "Chroma Fade Width",
     "sortTabEffectTimers": "Sort Timers by Duration",
     "showBrokenFragments": "Show Brok'n Dragon Fragm'nts",
-    "skyblockAddonsButtonInPauseMenu": "Show SBA Button in Pause Menu",
-    "showTotalZealotCount": "Zealot Counter - Total Zealot Count",
-    "showSummoningEyeCount": "Zealot Counter - Total Eye Count",
+    "skyblockAddonsButtonInPauseMenu": "Show SBA Button in yer Pause Menu",
+    "showTotalZealotCount": "Zealot Counter - Tot'l Zealot Count",
+    "showSummoningEyeCount": "Zealot Counter - Tot'l Eye Count",
     "showZealotsPerEye": "Zealot Counter - Show Zealots Per Eye",
-    "turnBowGreenWhenUsingToxicArrowPoison": "Color Bow Green When Using Toxic Arrow Poison",
+    "turnBowGreenWhenUsingToxicArrowPoison": "Color Bow Green When Usin' Toxic Arrow Poison",
     "birchParkRainmakerTimer": "Birch Park Rainmaker Timer",
-    "combatTimerDisplay": "Combat Timer Display"
+    "combatTimerDisplay": "Yer Combat Tim'r Display"
   },
   "messages": {
-    "betaTesters": "Thank you for being a beta tester! Please report any bugs you encounter in the Discord channel.",
+    "betaTesters": "aight thanks biscoot",
     "dropConfirmation": "'ay lad, drop this here item again to confirm!",
     "magmaBossWarning": "Yer Magma Boss Spawned!",
     "fullInventory": "Ahoy mate, yer pouch there be full!",
@@ -152,7 +152,7 @@
     "cancelledProfileOpening": "'ay there lad! SkyblockAddons 'as stopped ye from openin' this here player's profile while oldin' a bow.",
     "cancelledDropping": "'ay mate! SkyblockAddons 'as stopped ye from droppin' this here Rare Item or Tool from yer 'otbarrr.",
     "clickMoreTimes": "'ay lad, Click/Drop this here item %times% more times if ye really wants t' do this.",
-    "clickOneMoreTime": "Click/drop this item 1 more time if you really want to do this.",
+    "clickOneMoreTime": "'ay lad, Click/Drop this here item 1 more time if ye really wants t' do this.",
     "cancelledDeepCaverns": "Aye boomer, a SkyblockAddons feat're 'as stopped ye from minin' this here block 'ere.",
     "featureDisabled": "Yer feature be Disabled",
     "anvilUses": "Anvil Uses: %uses%",
@@ -160,10 +160,10 @@
     "blockIncompletePatterns": "Swab craftin' incomplete patt'rns (recommended)",
     "searchFeatures": "Search feat'rs",
     "downloadingUpdateFile": "Downloading yer updates...",
-    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
-    "noArrowsLeft": "No Arrows Left!",
-    "chooseAColor": "Choose a Color",
-    "selectedColor": "Selected Color",
+    "onlyFewArrowsLeft": "Mate, ye only got %arrows% arrows left!",
+    "noArrowsLeft": "Mate, yer arrows be gone!",
+    "chooseAColor": "Choose a Col'r",
+    "selectedColor": "Selected Col'r",
     "setHexColor": "Set yer Hex Col'r"
   }
 }
