@@ -8,7 +8,7 @@
     "skeletonHatBonesBar": "Шкала костей Шлема Скелета",
     "hideFoodAndArmor": "Скрыть полосы еды и брони",
     "fullInventoryWarning": "Предупреждения о полном инвентаре",
-    "repeating": "Repeat Warning",
+    "repeating": "Повторять Предупреждение",
     "disableEmberRodAbility": "Отключить Ember Rod на острове",
     "editLocations": "Изменить расположения интерфейса",
     "guiScale": "Масштаб интерфейса: %scale%",
@@ -97,13 +97,13 @@
     "showCakeBagPreview": "Показывать превью Мешка для Тортов",
     "showBackpackPreviewInAH": "Показывать превью рюкзака во время использования Аукциона",
     "enableDevFeatures": "Включить параметры разработчиков",
-    "chromaSpeed": "Chroma Speed",
-    "chromaMode": "Chroma Color Mode",
+    "chromaSpeed": "Скорость Переливания",
+    "chromaMode": "Режим переливания цвета",
     "chromaModes": {
-      "allTheSame": "All the Same Color",
-      "fade": "Color Fade"
+      "allTheSame": "Всё Одного Цвета",
+      "fade": "Затухание Цвета"
     },
-    "chromaFadeWidth": "Chroma Fade Width",
+    "chromaFadeWidth": "Ширина затухания переливания",
     "sortTabEffectTimers": "Sort Timers by Duration",
     "showBrokenFragments": "Show Broken Dragon Fragments",
     "skyblockAddonsButtonInPauseMenu": "Show SBA Button in Pause Menu",
