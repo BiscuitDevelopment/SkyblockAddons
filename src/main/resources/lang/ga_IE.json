@@ -8,7 +8,7 @@
     "skeletonHatBonesBar": "Barra Cnámha an Clogad Cnámharlaigh",
     "hideFoodAndArmor": "Folaigh na Barraí Bia & Cathéide",
     "fullInventoryWarning": "Rabhadh Lán Fardal",
-    "repeating": "Repeat Warning",
+    "repeating": "Repeating",
     "disableEmberRodAbility": "Díchumasaigh Slat Aibhleog ar Oileán",
     "editLocations": "Cur in Eagar Áiteanna GUI",
     "guiScale": "Scála Gui: %scale%",
@@ -86,7 +86,7 @@
       "compact": "Compact"
     },
     "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages",
-    "zealotCounter": "Zealot Counter - Count Since Last Eye",
+    "zealotCounter": "Show Zealot Counter",
     "tickerChargesDisplay": "Ticker/Charges Display",
     "tab": {
       "generalSettings": "Socruithe Ginearálta"
