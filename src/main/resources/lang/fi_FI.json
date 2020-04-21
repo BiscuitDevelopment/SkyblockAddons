@@ -8,7 +8,7 @@
     "skeletonHatBonesBar": "Luurankohatun Luupalkki",
     "hideFoodAndArmor": "Piilota Ruoka & Panssaripalkki",
     "fullInventoryWarning": "Täysi Inventaario Varoitus",
-    "repeating": "Repeat Warning",
+    "repeating": "Repeating",
     "disableEmberRodAbility": "Poista käytöstä Ember Rod Saarella",
     "editLocations": "Muokkaa Sijainteja",
     "guiScale": "Gui Mittakaava: %scale%",
@@ -86,7 +86,7 @@
       "compact": "Compact"
     },
     "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages",
-    "zealotCounter": "Zealot Counter - Count Since Last Eye",
+    "zealotCounter": "Show Zealot Counter",
     "tickerChargesDisplay": "Ticker/Charges Display",
     "tab": {
       "generalSettings": "Yleiset Asetukset"
