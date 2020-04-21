@@ -8,7 +8,7 @@
     "skeletonHatBonesBar": "Buto ng Skeleton Helmet Bar",
     "hideFoodAndArmor": "Huwag I-pakita ang Pagkain & Sandata Bar",
     "fullInventoryWarning": "Babala ng Punong Imbentaryo",
-    "repeating": "Repeat Warning",
+    "repeating": "Repeating",
     "disableEmberRodAbility": "Huwag Paganahin sa Isla ang Ember Rod",
     "editLocations": "Baguhin ang lokasyon ng GUI",
     "guiScale": "Kalakihan ng GUI",
@@ -86,7 +86,7 @@
       "compact": "Compact"
     },
     "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages",
-    "zealotCounter": "Zealot Counter - Count Since Last Eye",
+    "zealotCounter": "Show Zealot Counter",
     "tickerChargesDisplay": "Ticker/Charges Display",
     "tab": {
       "generalSettings": "Mga pangkalahatan na settings"
