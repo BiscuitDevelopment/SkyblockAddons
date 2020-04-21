@@ -8,7 +8,7 @@
     "skeletonHatBonesBar": "스켈레톤 헬멧 뼈 바",
     "hideFoodAndArmor": "배고픔 & 갑옷 바 숨기기",
     "fullInventoryWarning": "인벤토리 꽉 참 경고",
-    "repeating": "Repeat Warning",
+    "repeating": "Repeating",
     "disableEmberRodAbility": "섬에서의 엠버 로드 우클릭 비활성화",
     "editLocations": "GUI 위치 편집",
     "guiScale": "GUI 크기: %scale%",
@@ -86,7 +86,7 @@
       "compact": "Compact"
     },
     "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages",
-    "zealotCounter": "Zealot Counter - Count Since Last Eye",
+    "zealotCounter": "Show Zealot Counter",
     "tickerChargesDisplay": "Ticker/Charges Display",
     "tab": {
       "generalSettings": "일반 설정"
