@@ -8,7 +8,7 @@
     "skeletonHatBonesBar": "कंकाल हेलमेट हड्डियों बार",
     "hideFoodAndArmor": "भोजन और कवच बार छिपाएँ",
     "fullInventoryWarning": "पूर्ण सूची चेतावनी",
-    "repeating": "Repeat Warning",
+    "repeating": "Repeating",
     "disableEmberRodAbility": "द्वीप एम्बर रॉड को अक्षम करें",
     "editLocations": "GUI स्थान संपादित करें",
     "guiScale": "GUI स्केल %scale%",
@@ -86,7 +86,7 @@
       "compact": "Compact"
     },
     "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages",
-    "zealotCounter": "Zealot Counter - Count Since Last Eye",
+    "zealotCounter": "Show Zealot Counter",
     "tickerChargesDisplay": "Ticker/Charges Display",
     "tab": {
       "generalSettings": "सामान्य सेटिंग्स"
