@@ -8,7 +8,7 @@
     "skeletonHatBonesBar": "Bar o' Bones",
     "hideFoodAndArmor": "Swab Grub n' Booty Bar",
     "fullInventoryWarning": "Full Barrel Warnin'",
-    "repeating": "Repeat yer warnin'",
+    "repeating": "Repeating",
     "disableEmberRodAbility": "Swab Ember Rod on Island",
     "editLocations": "Move Yer' GUI",
     "guiScale": "Gui Scale: %scale%",
@@ -86,7 +86,7 @@
       "compact": "Compact"
     },
     "disableMagicalSoupMessage": "Disable yer Soup Messages",
-    "zealotCounter": "Zealot Counter - Count since yer last eye",
+    "zealotCounter": "Show Zealot Counter",
     "tickerChargesDisplay": "Tick'r/Charges Display",
     "tab": {
       "generalSettings": "General Settin's"
