@@ -8,7 +8,7 @@
     "skeletonHatBonesBar": "Шкала костей Шлема Скелета",
     "hideFoodAndArmor": "Скрыть полосы еды и брони",
     "fullInventoryWarning": "Предупреждения о полном инвентаре",
-    "repeating": "Повторять Предупреждение",
+    "repeating": "Repeating",
     "disableEmberRodAbility": "Отключить Ember Rod на острове",
     "editLocations": "Изменить расположения интерфейса",
     "guiScale": "Масштаб интерфейса: %scale%",
@@ -86,7 +86,7 @@
       "compact": "Компактно"
     },
     "disableMagicalSoupMessage": "Отключить уведомления о Магическом Супе",
-    "zealotCounter": "Показывать счетчик Зеалотов",
+    "zealotCounter": "Показывать счетчик Zealot'ов",
     "tickerChargesDisplay": "Счетчик зарядов",
     "tab": {
       "generalSettings": "Основные настройки"
