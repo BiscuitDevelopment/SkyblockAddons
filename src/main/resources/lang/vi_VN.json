@@ -8,7 +8,7 @@
     "skeletonHatBonesBar": "Thanh Mũ Xương",
     "hideFoodAndArmor": "Ẩn Thanh Thức Ăn Và Giáp",
     "fullInventoryWarning": "Cảnh Báo Túi Đồ Đầy",
-    "repeating": "Repeating",
+    "repeating": "Cảnh báo lặp lại",
     "disableEmberRodAbility": "Vô Hiệu Hoá Ember Rod trong đảo",
     "editLocations": "Chỉnh Sửa Vị Trí GUI",
     "guiScale": "Tỉ Lệ GUI: %scale%",
@@ -16,7 +16,7 @@
     "hideDurability": "Ẩn Thanh Độ Bền",
     "showEnchantmentsReforges": "Phù phép & Rèn luyện",
     "minionStopWarning": "Cảnh Báo \"Minion Không Thể Với Tới\"",
-    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
+    "hidePlayersNearNPCs": "Ẩn người chơi gần NPC quan trọng",
     "backpackStyle": "Kiểu Ba lô: %style%",
     "backpackStyles": {
       "regular": "Thường",
@@ -65,15 +65,15 @@
     "replaceRomanNumeralsWithNumbers": "Thay thế chữ số La Mã trên vật phẩm",
     "changeBarColorForPotions": "Thay đổi màu thanh cho Khô Héo & Độc",
     "craftingPatterns": "Lựa chọn hướng chế tạo",
-    "soundIndicatorForFishing": "Biểu thị âm thanh dành cho câu cá",
+    "soundIndicatorForFishing": "Tạo âm thanh khi cá cắn câu",
     "avoidBlinkingNightVision": "Tắt hiệu ứng nháy thuốc nhìn đêm",
     "disableMinionLocationWarning": "Tắt cảnh báo Vị trí không phù hợp",
     "jungleAxeCooldown": "Thời gian Hồi Jungle Axe",
-    "organizeLongEnchantmentLists": "Sắp xếp Danh Sách Enchantment dài",
+    "organizeLongEnchantmentLists": "Sắp xếp danh sách phù phép dài",
     "showItemCooldowns": "Hiển thị thời gian hồi vật phẩm",
     "speedPercentage": "Phần trăm tốc độ",
     "collectionDisplay": "Hiển thị kĩ năng",
-    "onlyMineOresDeepCaverns": "Chỉ đào quặng trong Hang Sâu",
+    "onlyMineOresDeepCaverns": "Chỉ đào quặng trong Deep Caverns",
     "onlyMineValuablesNether": "Chỉ Đào Đồ có Giá Trị trong Nether",
     "revenantIndicator": "Hiển thị độ phát triển của giáp Slayer",
     "specialZealotAlert": "Cảnh báo Zealot đặc biệt",
@@ -85,18 +85,18 @@
       "detailed": "Chi tiết",
       "compact": "Gọn"
     },
-    "disableMagicalSoupMessage": "Tắt thông báo của Súp nấm thần",
+    "disableMagicalSoupMessage": "Tắt thông báo của Magical Mushroom Soup",
     "zealotCounter": "Hiển thị bộ đếm Zealot",
     "tickerChargesDisplay": "Ticker/Charges Display",
     "tab": {
       "generalSettings": "Cài đặt chung"
     },
-    "tabEffectTimers": "Potion and Powerup Timers",
-    "noArrowsLeftAlert": "No Arrows Left Alert",
-    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
-    "showCakeBagPreview": "Show Preview for Cake Bags",
-    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
-    "enableDevFeatures": "Enable Developer Features",
+    "tabEffectTimers": "Thời gian của thuốc",
+    "noArrowsLeftAlert": "Cảnh báo hết mũi tên",
+    "hideNightVisionEffectTimer": "Ẩn thời gian thuốc nhìn đêm",
+    "showCakeBagPreview": "Hiển thị xem trước cho Cake Bags",
+    "showBackpackPreviewInAH": "Hiển thị xem trước vật phẩm trong Backpack khi đang mở AH",
+    "enableDevFeatures": "Bật chể độ dành cho nhà phát triển",
     "chromaSpeed": "Chroma Speed",
     "chromaMode": "Chroma Color Mode",
     "chromaModes": {
@@ -104,9 +104,18 @@
       "fade": "Color Fade"
     },
     "chromaFadeWidth": "Chroma Fade Width",
-    "sortTabEffectTimers": "Sort Timers by Duration"
+    "sortTabEffectTimers": "Sort Timers by Duration",
+    "showBrokenFragments": "Hiển thị Dragon Fragments bị hỏng",
+    "skyblockAddonsButtonInPauseMenu": "Hiển thị nút cài đặt SBA trong Pause menu",
+    "showTotalZealotCount": "Bộ đếm Zealot - Tổng số Zealot",
+    "showSummoningEyeCount": "Bộ đếm Zealot - Tổng số Eye",
+    "showZealotsPerEye": "Bộ đếm Zealot - Hiển thị số Zlots/1 Eye",
+    "turnBowGreenWhenUsingToxicArrowPoison": "Cung màu xanh khi dùng mũi tên độc",
+    "birchParkRainmakerTimer": "Birch Park Rainmaker Timer",
+    "combatTimerDisplay": "Combat Timer Display"
   },
   "messages": {
+    "betaTesters": "Thank you for being a beta tester! Please report any bugs you encounter in the Discord channel.",
     "dropConfirmation": "Nhấn \"Q\" Thêm Một Lần Nữa Để Xác Nhận!",
     "magmaBossWarning": "Trùm Dung Nham!",
     "fullInventory": "Túi Đồ Đã Đầy!",
@@ -122,7 +131,6 @@
       "reforges": "Rèn luyện",
       "crafting": "Chế tạo"
     },
-    "newUpdateAvailable": "Cập nhật mới (%version%) có sẵn!",
     "deleteOldFile": "Tải về hoàn tất, hãy mở thư mục mod bằng nút dưới đây, tắt Minecraft đi và xoá phiên bản cũ đi (hoặc có thể xoá sau tùy bạn).",
     "wantToViewPatchNotes": "Muốn đọc những thay đổi không?",
     "downloadLink": "LIÊN KẾT CẬP NHẬT",
@@ -134,7 +142,9 @@
       "patchAvailable": "Bản vá mới (%version%) có sẵn! Các lựa chọn tải về ở trong chat!",
       "downloading": "Bản vá đang được tải về! Quá trình: %downloaded%/%total% Vui lòng nhớ rằng sau khi tải xong, bạn phải xoá bản cũ.",
       "failed": "Tải về bản vá thất bại! Vui lòng tự tải về bằng liên kết trong chat.",
-      "downloadFinished": "Bản vá đã tải về hoàn tất. Nó đã được lưu như %file%. Vui lòng xoá bản cũ sau khi đóng Minecraft. Nhấn vào tin nhắn ở chất để mở thư mục."
+      "downloadFinished": "Bản vá đã tải về hoàn tất. Nó đã được lưu như %file%. Vui lòng xoá bản cũ sau khi đóng Minecraft. Nhấn vào tin nhắn ở chất để mở thư mục.",
+      "newBeta": "A new beta (%version%) is available! Please update using the \"Mods\" menu.",
+      "newUpdate": "A new update (%version%) is available! Please update using the \"Mods\" menu."
     },
     "slotLocked": "Ô này đã bị khoá!",
     "summoningEyeFound": "Mắt Triệu Hồi!",
@@ -150,10 +160,10 @@
     "blockIncompletePatterns": "Chặn chế tạo khuôn chưa hoàn thành (Khuyến nghị)",
     "searchFeatures": "Tìm kiếm chức năng",
     "downloadingUpdateFile": "Đang tải về tệp tin Cập Nhật...",
-    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
-    "noArrowsLeft": "No Arrows Left!",
-    "chooseAColor": "Choose a Color",
-    "selectedColor": "Selected Color",
+    "onlyFewArrowsLeft": "Chỉ còn %arrows% mũi tên!",
+    "noArrowsLeft": "Hết mũi tên!",
+    "chooseAColor": "Chọn màu",
+    "selectedColor": "Màu đã chọn",
     "setHexColor": "Set Hex Color"
   }
 }

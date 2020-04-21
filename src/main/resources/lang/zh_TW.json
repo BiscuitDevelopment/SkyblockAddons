@@ -8,7 +8,7 @@
     "skeletonHatBonesBar": "骷髏頭盔可抵擋攻擊次數",
     "hideFoodAndArmor": "隱藏飽食度 & 裝甲值",
     "fullInventoryWarning": "背包空間不足警報",
-    "repeating": "重複中",
+    "repeating": "重複警告",
     "disableEmberRodAbility": "在你的島上關閉灰燼之杖的技能",
     "editLocations": "編輯Gui位置",
     "guiScale": "Gui 大小: %scale%",
@@ -86,7 +86,7 @@
       "compact": "精簡"
     },
     "disableMagicalSoupMessage": "取消魔法蘑菇湯訊息",
-    "zealotCounter": "顯示Zealot計數器",
+    "zealotCounter": "Zealot計數器 - 自上顆眼睛開始計算",
     "tickerChargesDisplay": "刻數/充能 顯示",
     "tab": {
       "generalSettings": "一般設定"
@@ -104,9 +104,18 @@
       "fade": "顏色淡入淡出"
     },
     "chromaFadeWidth": "彩色淡入淡出幅度",
-    "sortTabEffectTimers": "按時長排序計時器"
+    "sortTabEffectTimers": "按時長排序計時器",
+    "showBrokenFragments": "顯示無法使用的龍裝碎片",
+    "skyblockAddonsButtonInPauseMenu": "在暫停畫面中顯示SBA按鈕",
+    "showTotalZealotCount": "Zealot計數器 - 總Zealot擊殺數",
+    "showSummoningEyeCount": "Zealot計數器 - 總眼睛數",
+    "showZealotsPerEye": "Zealot計數器 - 每眼睛所需Zealot數",
+    "turnBowGreenWhenUsingToxicArrowPoison": "使用Toxic Arrow Poison時將弓染成綠色",
+    "birchParkRainmakerTimer": "樺木公園下雨計時",
+    "combatTimerDisplay": "Combat Timer Display"
   },
   "messages": {
+    "betaTesters": "感謝你成為一個Beta測試者! 請在Discord中回報你遭遇的任何錯誤",
     "dropConfirmation": "再次丟棄此物品以確認!",
     "magmaBossWarning": "!!!熔岩史萊姆王已出生!!!",
     "fullInventory": "背包已滿!",
@@ -122,7 +131,6 @@
       "reforges": "重鑄",
       "crafting": "合成"
     },
-    "newUpdateAvailable": "一個新的版本 (%version%) 現已上線!",
     "deleteOldFile": "下載已完成, 請使用下方的按鈕打開你的模組資料夾, 關閉你的Minecraft, 並刪除舊的版本(依個人也可稍後刪除)",
     "wantToViewPatchNotes": "想要查看更新內容?",
     "downloadLink": "更新連結",
@@ -134,7 +142,9 @@
       "patchAvailable": "一個新的補丁更新 (%version%) 現已上線! 見聊天室中下載選項!",
       "downloading": "正在下載補丁! 進度: %downloaded%/%total% 請注意下載完成後你必須刪除舊的檔案",
       "failed": "補丁下載失敗! 請使用聊天室中的連結手動下載",
-      "downloadFinished": "補丁以安裝完成。它已被保存為 %file%。關閉你的Minecraft後請不要忘記刪除舊的版本"
+      "downloadFinished": "補丁以安裝完成。它已被保存為 %file%。關閉你的Minecraft後請不要忘記刪除舊的版本",
+      "newBeta": "一個新的測試版本 (%version%) 現已上線! 請使用''Mods''頁面更新",
+      "newUpdate": "一個新的更新 (%version%) 現已上線! 請使用''Mods''頁面更新"
     },
     "slotLocked": "此欄位已被鎖定!",
     "summoningEyeFound": "召喚之眼!",
