@@ -8,7 +8,7 @@
     "skeletonHatBonesBar": "Bară pentru oasele Skeleton Hat-ului",
     "hideFoodAndArmor": "Ascunde bara de Mancare și Armură",
     "fullInventoryWarning": "Avertisment pentru inventar plin",
-    "repeating": "Repeat Warning",
+    "repeating": "Repeating",
     "disableEmberRodAbility": "Oprește abilitatea Ember Rod-ului",
     "editLocations": "Editează Locațiile",
     "guiScale": "Marime gui: %scale%",
@@ -86,7 +86,7 @@
       "compact": "Compact"
     },
     "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages",
-    "zealotCounter": "Zealot Counter - Count Since Last Eye",
+    "zealotCounter": "Show Zealot Counter",
     "tickerChargesDisplay": "Ticker/Charges Display",
     "tab": {
       "generalSettings": "Setările Generale"
