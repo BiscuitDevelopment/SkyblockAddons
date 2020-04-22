@@ -104,9 +104,18 @@
       "fade": "Farge Fade"
     },
     "chromaFadeWidth": "Chroma Fade Bredde",
-    "sortTabEffectTimers": "Sorter Timere etter Lengde"
+    "sortTabEffectTimers": "Sorter Timere etter Lengde",
+    "showBrokenFragments": "Vis Knuste Drage Fragmenter",
+    "skyblockAddonsButtonInPauseMenu": "Vis SBA Knapp i Pause Meny",
+    "showTotalZealotCount": "Zealot Teller - Totalt Antall Zealot",
+    "showSummoningEyeCount": "Zealot Teller - Totalt Antall Øyne",
+    "showZealotsPerEye": "Zealot Teller - Vis Antall Zealots Per Øye",
+    "turnBowGreenWhenUsingToxicArrowPoison": "Farge Bue Grønn Når Giftig Piller Brukes",
+    "birchParkRainmakerTimer": "Bjørke Park Regnlager Nedtelling",
+    "combatTimerDisplay": "Vis Kamp Nedtelling"
   },
   "messages": {
+    "betaTesters": "Takk for at du er en beta tester! Hvis du finner noen Bugs vennligst rapporter de på Discord'en.",
     "dropConfirmation": "Slipp denne gjenstanden igjen for å bekrefte!",
     "magmaBossWarning": "Magma Cube Boss!",
     "fullInventory": "Full inventar!",
@@ -122,7 +131,6 @@
       "reforges": "Reforges",
       "crafting": "Utforming"
     },
-    "newUpdateAvailable": "En ny oppdatering (%version%) er ute!",
     "deleteOldFile": "Nedlastningen er ferdig, åpne opp modifikasjonsmappen ved bruk av knappen nedenfor, lukk igjen Minecraft, og slett den gamle versjonen (eller slett den senere hvis du vil).",
     "wantToViewPatchNotes": "Vil du lese endringene?",
     "downloadLink": "OPPDATERINGSLENKE",
@@ -134,7 +142,9 @@
       "patchAvailable": "En ny oppdatering (%version%) er ute! Se i chattten for alternativer for nedlastninger!",
       "downloading": "nedlasting",
       "failed": "grunnstøting",
-      "downloadFinished": "nedlastingen fullført"
+      "downloadFinished": "nedlastingen fullført",
+      "newBeta": "En ny beta (%version%) er tilgjengelig! Vennligst oppdater via \"Mod'er\" menyen.",
+      "newUpdate": "En ny oppdatering (%version%) er tilgjengelig! Vennligst oppdater via \"Mod'er\" menyen."
     },
     "slotLocked": "Denne ruten er låst!",
     "summoningEyeFound": "Summoning Eye!",

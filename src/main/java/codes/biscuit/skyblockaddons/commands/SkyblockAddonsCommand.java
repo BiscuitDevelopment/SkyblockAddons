@@ -63,8 +63,8 @@ public class SkyblockAddonsCommand extends CommandBase {
             return getListOfStringsMatchingLastWord(args, "edit", "folder");
         }
         else if (args.length == 2) {
-            if (args[1].equalsIgnoreCase("dev")) {
-                return getListOfStringsMatchingLastWord(args, "copyscores", "brand");
+            if (args[0].equalsIgnoreCase("dev")) {
+                return getListOfStringsMatchingLastWord(args, "copySidebar", "serverBrand");
             }
         }
 
@@ -93,10 +93,10 @@ public class SkyblockAddonsCommand extends CommandBase {
                 }
                 else {
                     if (main.isDevMode()) {
-                        if (args[1].equalsIgnoreCase("copysidebar")) {
+                        if (args[1].equalsIgnoreCase("copySidebar")) {
                             DevUtils.copyScoreboardSideBar(Minecraft.getMinecraft().theWorld.getScoreboard());
                         }
-                        else if (args[1].equalsIgnoreCase("brand")) {
+                        else if (args[1].equalsIgnoreCase("serverBrand")) {
                             main.getUtils().sendMessage(DevUtils.getServerBrand(Minecraft.getMinecraft()));
                         }
                         else {

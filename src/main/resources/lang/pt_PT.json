@@ -8,7 +8,7 @@
     "skeletonHatBonesBar": "Barra de ossos do Skeleton Helmet",
     "hideFoodAndArmor": "Esconder a barra de comida e armadura",
     "fullInventoryWarning": "Aviso de inventário cheio",
-    "repeating": "Repeating",
+    "repeating": "Repetir o aviso",
     "disableEmberRodAbility": "Desativar a Ember Rod na ilha",
     "editLocations": "Editar localizações",
     "guiScale": "Escala da interface: %scale%",
@@ -104,9 +104,18 @@
       "fade": "Desvanecer da Cor"
     },
     "chromaFadeWidth": "Largura do Desvanecimento do Efeito Chroma",
-    "sortTabEffectTimers": "Ordenar temporizadores por duração"
+    "sortTabEffectTimers": "Ordenar temporizadores por duração",
+    "showBrokenFragments": "Mostrar fragmentos partidos de Dragão",
+    "skyblockAddonsButtonInPauseMenu": "Mostrar botão SBA no menu de pausa",
+    "showTotalZealotCount": "Contador de Zealots - Número total de Zealots",
+    "showSummoningEyeCount": "Contador de Zealots - Número total de eyes",
+    "showZealotsPerEye": "Contador de Zealots - Mostrar Zealots por cada Eye",
+    "turnBowGreenWhenUsingToxicArrowPoison": "Color Bow Green When Using Toxic Arrow Poison",
+    "birchParkRainmakerTimer": "Birch Park Rainmaker Timer",
+    "combatTimerDisplay": "Combat Timer Display"
   },
   "messages": {
+    "betaTesters": "Thank you for being a beta tester! Please report any bugs you encounter in the Discord channel.",
     "dropConfirmation": "Atira este item outra vez para confirmar!",
     "magmaBossWarning": "Magma Cube Boss!",
     "fullInventory": "Inventário Cheio!",
@@ -122,7 +131,6 @@
       "reforges": "Reforges",
       "crafting": "Criação"
     },
-    "newUpdateAvailable": "Está disponível uma nova atualização (%version%)!",
     "deleteOldFile": "O download terminou. Abre a tua pasta mods usando os botões abaixo, fecha o Minecraft e apaga a versão antiga (ou apaga-a mais tarde se preferires).",
     "wantToViewPatchNotes": "Queres ler as alterações?",
     "downloadLink": "LINK DA ATUALIZAÇÃO",
@@ -134,7 +142,9 @@
       "patchAvailable": "Uma nova atualização (%version%) está disponível! Procura pelas opções de download no chat!",
       "downloading": "A atualização está a descarregar! Estado: %downloaded%/%total% Assim que o download terminar terás de apagar o ficheiro antigo.",
       "failed": "O download da atualização falhou! Descarrega-o manualmente usando o link no chat.",
-      "downloadFinished": "A atualização terminou de ser descarregada e foi guardada como %file%. Não te esqueças de apagar o ficheiro antigo depois de fechares o Minecraft. Clica a mensagem no chat para abrires a pasta."
+      "downloadFinished": "A atualização terminou de ser descarregada e foi guardada como %file%. Não te esqueças de apagar o ficheiro antigo depois de fechares o Minecraft. Clica a mensagem no chat para abrires a pasta.",
+      "newBeta": "A new beta (%version%) is available! Please update using the \"Mods\" menu.",
+      "newUpdate": "A new update (%version%) is available! Please update using the \"Mods\" menu."
     },
     "slotLocked": "Este slot está bloqueado!",
     "summoningEyeFound": "Summoning Eye!",

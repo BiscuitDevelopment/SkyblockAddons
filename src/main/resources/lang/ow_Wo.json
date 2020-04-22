@@ -104,9 +104,18 @@
       "fade": "Cowow Fade"
     },
     "chromaFadeWidth": "Chwoma Fade Width",
-    "sortTabEffectTimers": "Sowt Timews by Duwation"
+    "sortTabEffectTimers": "Sowt Timews by Duwation",
+    "showBrokenFragments": "Show Bwoken Dwagon Fwagments",
+    "skyblockAddonsButtonInPauseMenu": "Showo SBA Button in Pause Menu >-<",
+    "showTotalZealotCount": "Zeawot Countew - Totaw Zeawot Count",
+    "showSummoningEyeCount": "Zeawot Countew - Totaw Eye Count",
+    "showZealotsPerEye": "Zeawot Countew - Totaw Zeawots Pew Eye",
+    "turnBowGreenWhenUsingToxicArrowPoison": "Cowow Bow Gween When Using Toxic Awwow Poison",
+    "birchParkRainmakerTimer": "Biwch Pawk Wainmakew Timew",
+    "combatTimerDisplay": "Combat Timew Dispway"
   },
   "messages": {
+    "betaTesters": "Thank you fow being a beta testew! Pwease wepowt any bugs you encoutew in the Discord channew >-<.",
     "dropConfirmation": "Dwop thwis itwem agwain to confiwm!",
     "magmaBossWarning": "Magmwa Cube Bowoss! （・□・；）",
     "fullInventory": "Fuww Inwentowy! >w<",
@@ -122,7 +131,6 @@
       "reforges": "Wefowges",
       "crafting": "Cwafting"
     },
-    "newUpdateAvailable": "A nuwu OwO Updowoe (%version%) is avaiwable!",
     "deleteOldFile": "The downwoad has finished, pwease open youw mods fowdew using the button bewow, cwose youw minecwaft, and dewete the owd vewsion (ow dewete it watew if you pwefew).",
     "wantToViewPatchNotes": "Want to wead the changes?",
     "downloadLink": "UPDATE WINK",
@@ -134,7 +142,9 @@
       "patchAvailable": "A new patch update (%version%) is avaiwabwe! look in chat fow downwoad options!",
       "downloading": "The patch is downwoading! status: %downloaded%/%total% pwease note that aftew the downwoad has finished, you must dewete the owd fiwe.",
       "failed": "The patch downwoad has faiwed! pwease downwoad it manuawwy using the wink in chat.",
-      "downloadFinished": "The pwatch has fiwinished downwoading. It has been saved as %file%. Pwease don't fowget to dewete the owd fiwe aftew cwosing youw minecwaft. Cwick the message in chat to opewn uwup the fowdew."
+      "downloadFinished": "The pwatch has fiwinished downwoading. It has been saved as %file%. Pwease don't fowget to dewete the owd fiwe aftew cwosing youw minecwaft. Cwick the message in chat to opewn uwup the fowdew.",
+      "newBeta": "A new beta (%version%) is avaiwabwe! Pwease update using the \"Mods\" uwu menu.",
+      "newUpdate": "A new update (%version%) is avaiwabwe! Pwease update using the \"Mods\" uwu menu."
     },
     "slotLocked": "This swot is wocked!",
     "summoningEyeFound": "Summonuwuing Eye!",

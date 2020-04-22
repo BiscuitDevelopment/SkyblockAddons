@@ -90,7 +90,7 @@ public class DevUtils {
             }
         }
 
-        copyStringToClipboard(sb.toString(), "Scoreboard copied to clipboard!");
+        copyStringToClipboard(sb.toString(), "Sidebar copied to clipboard!");
     }
 
     /**

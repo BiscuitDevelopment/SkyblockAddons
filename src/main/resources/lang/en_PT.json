@@ -16,7 +16,7 @@
     "hideDurability": "'ide Item Durability",
     "showEnchantmentsReforges": "Magic n' Reforgery",
     "minionStopWarning": "\"Minion Cannot Reach\" Warnin'",
-    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
+    "hidePlayersNearNPCs": "'ide mateys nearrr important NPCs",
     "backpackStyle": "Style o' Yer Booty: %style%",
     "backpackStyles": {
       "regular": "Regularrr",
@@ -79,34 +79,43 @@
     "specialZealotAlert": "ye Good Zealot Alert",
     "enableMessageWhenActionPrevented": "Show a message when actions be prevented",
     "hidePetHealthBar": "'ide Pet Health Bar",
-    "powerOrbDisplay": "Power Orb Display",
-    "powerOrbDisplayStyle": "Power Orb Style: %style%",
+    "powerOrbDisplay": "Display yer Power Orb",
+    "powerOrbDisplayStyle": "Powarr Orb Style: %style%",
     "powerOrbStyle": {
-      "detailed": "Detailed",
+      "detailed": "De'aild",
       "compact": "Compact"
     },
-    "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages",
+    "disableMagicalSoupMessage": "Disable yer Soup Messages",
     "zealotCounter": "Show Zealot Counter",
-    "tickerChargesDisplay": "Ticker/Charges Display",
+    "tickerChargesDisplay": "Tick'r/Charges Display",
     "tab": {
       "generalSettings": "General Settin's"
     },
-    "tabEffectTimers": "Potion and Powerup Timers",
-    "noArrowsLeftAlert": "No Arrows Left Alert",
-    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
-    "showCakeBagPreview": "Show Preview for Cake Bags",
-    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
-    "enableDevFeatures": "Enable Developer Features",
+    "tabEffectTimers": "Yer potion n' Powerup Timers",
+    "noArrowsLeftAlert": "Yer Arrows Gone Alert",
+    "hideNightVisionEffectTimer": "'ide ye ol' Night Vision Effect Timer",
+    "showCakeBagPreview": "Show yer Preview fer Cake Bags",
+    "showBackpackPreviewInAH": "Show Backpack Preview fer yer Items While AH be Open",
+    "enableDevFeatures": "'nable yer special Developer Features",
     "chromaSpeed": "Chroma Speed",
-    "chromaMode": "Chroma Color Mode",
+    "chromaMode": "Chroma Col'r Mode",
     "chromaModes": {
-      "allTheSame": "All the Same Color",
-      "fade": "Color Fade"
+      "allTheSame": "All the Same Col'r",
+      "fade": "Col'r Fade"
     },
     "chromaFadeWidth": "Chroma Fade Width",
-    "sortTabEffectTimers": "Sort Timers by Duration"
+    "sortTabEffectTimers": "Sort Timers by Duration",
+    "showBrokenFragments": "Show Brok'n Dragon Fragm'nts",
+    "skyblockAddonsButtonInPauseMenu": "Show SBA Button in yer Pause Menu",
+    "showTotalZealotCount": "Zealot Counter - Tot'l Zealot Count",
+    "showSummoningEyeCount": "Zealot Counter - Tot'l Eye Count",
+    "showZealotsPerEye": "Zealot Counter - Show Zealots Per Eye",
+    "turnBowGreenWhenUsingToxicArrowPoison": "Color Bow Green When Usin' Toxic Arrow Poison",
+    "birchParkRainmakerTimer": "Birch Park Rainmaker Timer",
+    "combatTimerDisplay": "Yer Combat Tim'r Display"
   },
   "messages": {
+    "betaTesters": "aight thanks biscoot",
     "dropConfirmation": "'ay lad, drop this here item again to confirm!",
     "magmaBossWarning": "Yer Magma Boss Spawned!",
     "fullInventory": "Ahoy mate, yer pouch there be full!",
@@ -122,7 +131,6 @@
       "reforges": "Reforgery",
       "crafting": "Craftin'"
     },
-    "newUpdateAvailable": "'ay there mate! An update (%version%) be available!",
     "deleteOldFile": "The download be finished, please open yer mods folder usin' the button below, close yer Minecraft, an' delete the old version (or delete it later if ye want).",
     "wantToViewPatchNotes": "Want to read the changes?",
     "downloadLink": "Yer update link",
@@ -134,7 +142,9 @@
       "patchAvailable": "A new patch update (%version%) be available! Look in chat fer download options!",
       "downloading": "The patch be downloading! Status: %downloaded%/%total% Please note that there after the download 'as finished, ye must delete the old file.",
       "failed": "The patch download failed! Please download it manually usin' the link in chat.",
-      "downloadFinished": "The patch finished downloadin'. It been saved as %file%. Please don't forget to delete the old file after closin' yer Minecraft. Click the message in yer chat to open up the folder."
+      "downloadFinished": "The patch finished downloadin'. It been saved as %file%. Please don't forget to delete the old file after closin' yer Minecraft. Click the message in yer chat to open up the folder.",
+      "newBeta": "A new beta (%version%) is available! Please update using the \"Mods\" menu.",
+      "newUpdate": "A new update (%version%) is available! Please update using the \"Mods\" menu."
     },
     "slotLocked": "Ahoy, matey! This here slot be locked!",
     "summoningEyeFound": "Summinin' Aye!",
@@ -142,7 +152,7 @@
     "cancelledProfileOpening": "'ay there lad! SkyblockAddons 'as stopped ye from openin' this here player's profile while oldin' a bow.",
     "cancelledDropping": "'ay mate! SkyblockAddons 'as stopped ye from droppin' this here Rare Item or Tool from yer 'otbarrr.",
     "clickMoreTimes": "'ay lad, Click/Drop this here item %times% more times if ye really wants t' do this.",
-    "clickOneMoreTime": "Click/drop this item 1 more time if you really want to do this.",
+    "clickOneMoreTime": "'ay lad, Click/Drop this here item 1 more time if ye really wants t' do this.",
     "cancelledDeepCaverns": "Aye boomer, a SkyblockAddons feat're 'as stopped ye from minin' this here block 'ere.",
     "featureDisabled": "Yer feature be Disabled",
     "anvilUses": "Anvil Uses: %uses%",
@@ -150,10 +160,10 @@
     "blockIncompletePatterns": "Swab craftin' incomplete patt'rns (recommended)",
     "searchFeatures": "Search feat'rs",
     "downloadingUpdateFile": "Downloading yer updates...",
-    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
-    "noArrowsLeft": "No Arrows Left!",
-    "chooseAColor": "Choose a Color",
-    "selectedColor": "Selected Color",
-    "setHexColor": "Set Hex Color"
+    "onlyFewArrowsLeft": "Mate, ye only got %arrows% arrows left!",
+    "noArrowsLeft": "Mate, yer arrows be gone!",
+    "chooseAColor": "Choose a Col'r",
+    "selectedColor": "Selected Col'r",
+    "setHexColor": "Set yer Hex Col'r"
   }
 }

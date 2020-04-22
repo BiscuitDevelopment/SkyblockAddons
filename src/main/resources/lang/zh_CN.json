@@ -8,7 +8,7 @@
     "skeletonHatBonesBar": "骷髅头盔可抵挡攻击次数",
     "hideFoodAndArmor": "隐藏饱食度 & 盔甲值",
     "fullInventoryWarning": "背包空间不足警报",
-    "repeating": "重复中",
+    "repeating": "再次警告",
     "disableEmberRodAbility": "在私人岛屿上关闭余烬之杖技能",
     "editLocations": "编辑 Gui 位置",
     "guiScale": "Gui 大小: %scale%",
@@ -104,9 +104,18 @@
       "fade": "颜色淡入淡出"
     },
     "chromaFadeWidth": "颜色淡入淡出幅度",
-    "sortTabEffectTimers": "按时长排序计时器"
+    "sortTabEffectTimers": "按时长排序计时器",
+    "showBrokenFragments": "显示无法使用的龙装碎片",
+    "skyblockAddonsButtonInPauseMenu": "在暂停画面中显示 SBA 按钮",
+    "showTotalZealotCount": "Zealot 计数器 - 总 Zealot 击杀数",
+    "showSummoningEyeCount": "Zealot 计数器 - 总眼睛数",
+    "showZealotsPerEye": "Zealot 计数器 - 显示每只眼睛的 Zealots",
+    "turnBowGreenWhenUsingToxicArrowPoison": "使用 Toxic Arrow Poison 时将弓染成绿色",
+    "birchParkRainmakerTimer": "桦木公园下雨计时",
+    "combatTimerDisplay": "显示战斗计时器"
   },
   "messages": {
+    "betaTesters": "感谢你成为一个 Beta 版测试者, 请在 Discord 中反馈你遇到的漏洞",
     "dropConfirmation": "再次丢弃此物品以确认!",
     "magmaBossWarning": "⚠ 岩浆怪 Boss 已生成 ⚠",
     "fullInventory": "背包已满!",
@@ -122,7 +131,6 @@
       "reforges": "重铸",
       "crafting": "合成"
     },
-    "newUpdateAvailable": "新版本 %version% 现已上线！\n\n翻译项目：https://crowdin.com/project/skyblockaddons/",
     "deleteOldFile": "下载完成，使用下方按钮打开 mods 文件夹，关闭 Minecraft，删除旧文件。",
     "wantToViewPatchNotes": "查看更新内容",
     "downloadLink": "更新链接",
@@ -134,7 +142,9 @@
       "patchAvailable": "%version% 补丁更新！下载链接可以在聊天中找到。",
       "downloading": "补丁正在下载（%downloaded%/%total%）\n请注意，下载完成后，请您务必删除旧文件。",
       "failed": "补丁下载失败！请在聊天中寻找下载链接。",
-      "downloadFinished": "补丁下载完成，它被保存为 %file%。\n请不要忘记在关闭 Minecraft 后删除旧文件，点击此处打开文件夹。"
+      "downloadFinished": "补丁下载完成，它被保存为 %file%。\n请不要忘记在关闭 Minecraft 后删除旧文件，点击此处打开文件夹。",
+      "newBeta": "有新的测试版本 (%version%) 现已上线! 请使用 ''Mods'' 页面进行更新",
+      "newUpdate": "一个新的更新 (%version%) 现已上线! 请使用 ''Mods'' 页面进行更新"
     },
     "slotLocked": "该栏已锁！",
     "summoningEyeFound": "召唤之眼！",
