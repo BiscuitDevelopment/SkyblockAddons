@@ -51,9 +51,9 @@ public class SettingsGui extends GuiScreen {
     @SuppressWarnings("IntegerDivisionInFloatingPointContext")
     @Override
     public void initGui() {
+        row = 1;
+        collumn = 1;
         if (feature == Feature.LANGUAGE) {
-            row = 1;
-            collumn = 1;
             displayCount = findDisplayCount();
             // Add the buttons for each page.
             int skip = (page-1)*displayCount;
