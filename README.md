@@ -21,11 +21,11 @@
   </a>
 </p>
 
-A Minecraft Forge mod with many features to make your Hypixel skyblock experience better. Always looking for more features to add!
+A Minecraft Forge mod with many features to make your Hypixel Skyblock experience better. Always looking for more features to add!
 
 Special Credits
 -----
-InventiveTalent for  allowing us to use her magma boss API in our project, please check out her magma boss timer website at https://hypixel.inventivetalent.org/skyblock-magma-timer/ .
+InventiveTalent for  allowing us to use her magma boss API in our project, please check out her magma boss timer website at https://hypixel.inventivetalent.org/skyblock-magma-timer/
 
 Thanks to YourKit
 ------
@@ -48,12 +48,12 @@ Big thanks to Crowdin for supporting this project with their
 localization management platform to help us serve the mod in many languages!
 [Check out their website here](https://crowdin.com/)!
 
-Also thanks for our countless translators who help translate this mod!
+Also thanks for our countless translators who help us translate this mod!
 
 For Contributors
 ------
 
-1. Make sure to add this VM argument to your debug configuration or your IDE's equivalent, so all the transformers
+1. Make sure to add this VM argument to your debug configuration or your IDE's equivalent, so that all the transformers
 are applied properly in your dev environment!
 ```-Dfml.coreMods.load=codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsLoadingPlugin```
 2. Set the Gradle task ```processResourcesDev``` to run every time before launching the Minecraft client from
@@ -67,6 +67,6 @@ If you are using Eclipse, [you can read this page here.](https://projectlombok.o
 `Enable annotation processing` on the top right. This will allow you to debug properly.
 
 Note: If your jar build is failing because the code is trying to access private methods or fields,
-this way be because someone added some access transformers. 
+this may be because someone added some access transformers. 
 You may want to re-run the gradle tasks `setupDecompWorkspace` and `setupDevWorkspace` so 
 the access transformers are applied to the source code!
