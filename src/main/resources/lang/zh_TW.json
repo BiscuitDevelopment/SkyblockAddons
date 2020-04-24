@@ -112,7 +112,7 @@
     "showZealotsPerEye": "Zealot計數器 - 每眼睛所需Zealot數",
     "turnBowGreenWhenUsingToxicArrowPoison": "使用Toxic Arrow Poison時將弓染成綠色",
     "birchParkRainmakerTimer": "樺木公園下雨計時",
-    "combatTimerDisplay": "Combat Timer Display"
+    "combatTimerDisplay": "顯示脫離戰鬥計時器"
   },
   "messages": {
     "betaTesters": "感謝你成為一個Beta測試者! 請在Discord中回報你遭遇的任何錯誤",
