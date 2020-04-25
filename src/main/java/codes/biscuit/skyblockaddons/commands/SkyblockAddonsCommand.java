@@ -20,6 +20,7 @@ public class SkyblockAddonsCommand extends CommandBase {
 
     private SkyblockAddons main;
     private Logger logger;
+
     public SkyblockAddonsCommand(SkyblockAddons main) {
         this.main = main;
         logger = main.getLogger();
@@ -52,26 +53,26 @@ public class SkyblockAddonsCommand extends CommandBase {
      * Gets the usage string for the command.
      */
     public String getCommandUsage(ICommandSender sender) { return
-        Utils.color("&7&m------------&7[&b&l SkyblockAddons &7]&7&m------------") + "\n" +
-        Utils.color("&b● /sba &7- Open the main menu") + "\n" +
-        Utils.color("&b● /sba edit &7- Edit GUI locations") + "\n" +
-        Utils.color("&b● /sba folder &7- Open your mods folder") + "\n" +
-        Utils.color("&7&m------------------------------------------");
+        "§7§m------------§7[§b§l SkyblockAddons §7]§7§m------------" + "\n" +
+        "§b● /sba §7- Open the main menu" + "\n" +
+        "§b● /sba edit §7- Edit GUI locations" + "\n" +
+        "§b● /sba folder §7- Open your mods folder" + "\n" +
+        "§7§m------------------------------------------";
     }
 
     /**
      * Gets the usage string for the developer mode sub-command.
      */
     public String getDevCommandUsage() { return
-        Utils.color("&7&m----&7[&b&l SkyblockAddons Developer Mode &7]&7&m----") + "\n" +
-        Utils.color("&b● /sba dev &7- Toggle developer mode") + "\n" +
-        Utils.color("") + "\n" +
-        Utils.color("&7Options (&b/sba dev [option])&7:") + "\n" +
-        Utils.color("&b● copySidebar [keepControlCodes] &7- Copy the") + "\n" +
-        Utils.color("    &7scoreboard sidebar. \"keepControlCodes\"") + "\n" +
-        Utils.color("    &7keeps the formatting codes when copying.") + "\n" +
-        Utils.color("&b● brand &7- Show the server brand") + "\n" +
-        Utils.color("&7&m-------------------------------------------");
+        "§7§m----§7[§b§l SkyblockAddons Developer Mode §7]§7§m----" + "\n" +
+        "§b● /sba dev §7- Toggle developer mode" + "\n" +
+        "\n" +
+        "§7Options (§b/sba dev [option])§7:" + "\n" +
+        "§b● copySidebar [keepControlCodes] §7- Copy the" + "\n" +
+        "    §7scoreboard sidebar. \"keepControlCodes\"" + "\n" +
+        "    §7keeps the formatting codes when copying." + "\n" +
+        "§b● brand §7- Show the server brand" + "\n" +
+        "§7§m-------------------------------------------";
     }
 
     public List<String> addTabCompletionOptions(ICommandSender sender, String[] args, BlockPos pos) {
