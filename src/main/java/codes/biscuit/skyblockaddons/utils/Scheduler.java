@@ -3,6 +3,7 @@ package codes.biscuit.skyblockaddons.utils;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.listeners.PlayerListener;
 import lombok.Getter;
+import net.minecraft.client.Minecraft;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import org.apache.commons.lang3.mutable.MutableInt;
@@ -166,6 +167,11 @@ public class Scheduler {
                 CoordsPair coordsPair = new CoordsPair(x,z);
                 playerListener.getRecentlyLoadedChunks().remove(coordsPair);
             } else if (this == SHOW_FULL_INVENTORY_WARNING) {
+                Minecraft mc = Minecraft.getMinecraft();
+                if (mc.theWorld == null || mc.thePlayer == null || !main.getUtils().isOnSkyblock()) {
+                    return;
+                }
+
                 main.getInventoryUtils().showFullInventoryWarning();
 
                 // Schedule a repeat if needed.

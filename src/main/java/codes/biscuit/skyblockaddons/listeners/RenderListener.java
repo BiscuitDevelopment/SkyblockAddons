@@ -192,6 +192,10 @@ public class RenderListener {
      */
     private void renderWarnings(ScaledResolution scaledResolution) {
         Minecraft mc = Minecraft.getMinecraft();
+        if (mc.theWorld == null || mc.thePlayer == null || !main.getUtils().isOnSkyblock()) {
+            return;
+        }
+
         int i = scaledResolution.getScaledWidth();
         if (titleFeature != null) {
             int j = scaledResolution.getScaledHeight();
