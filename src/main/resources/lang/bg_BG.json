@@ -164,6 +164,9 @@
     "noArrowsLeft": "Стрелите са свършили",
     "chooseAColor": "Избери един цвят",
     "selectedColor": "Избран цвят",
-    "setHexColor": "Set Hex Color"
+    "setHexColor": "Set Hex Color",
+    "rescaleFeatures": "Rescale Features",
+    "resizeBars": "Resize Bars",
+    "showColorIcons": "Show Color Icons"
   }
 }
