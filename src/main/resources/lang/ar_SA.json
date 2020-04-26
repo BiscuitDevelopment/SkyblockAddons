@@ -164,6 +164,9 @@
     "noArrowsLeft": "نفذت الاسهم!",
     "chooseAColor": "اختر لون",
     "selectedColor": "اللون المحدد",
-    "setHexColor": "تعيين لون الهيكس"
+    "setHexColor": "تعيين لون الهيكس",
+    "rescaleFeatures": "Rescale Features",
+    "resizeBars": "Resize Bars",
+    "showColorIcons": "Show Color Icons"
   }
 }
