@@ -164,6 +164,9 @@
     "noArrowsLeft": "Стрел не осталось!",
     "chooseAColor": "Выберите цвет",
     "selectedColor": "Выбранный цвет",
-    "setHexColor": "Выберите цвет \"HEX\""
+    "setHexColor": "Выберите цвет \"HEX\"",
+    "rescaleFeatures": "Rescale Features",
+    "resizeBars": "Resize Bars",
+    "showColorIcons": "Show Color Icons"
   }
 }
