@@ -164,6 +164,9 @@
     "noArrowsLeft": "Alarm o braku strzał!",
     "chooseAColor": "Wybierz kolor",
     "selectedColor": "Wybrany kolor",
-    "setHexColor": "Ustaw kolor heksalny"
+    "setHexColor": "Ustaw kolor heksalny",
+    "rescaleFeatures": "Rescale Features",
+    "resizeBars": "Resize Bars",
+    "showColorIcons": "Show Color Icons"
   }
 }
