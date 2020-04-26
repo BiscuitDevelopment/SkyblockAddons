@@ -3,17 +3,24 @@ package codes.biscuit.skyblockaddons.gui.buttons;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.utils.Feature;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
+import lombok.Getter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 
+@Getter
 public class ButtonLocation extends ButtonFeature {
 
     // So we know the latest hovered feature (used for arrow key movement).
-    private static Feature lastHoveredFeature = null;
+    @Getter private static Feature lastHoveredFeature = null;
 
     private SkyblockAddons main;
     private int lastMouseX;
     private int lastMouseY;
+
+    private int boxXOne;
+    private int boxXTwo;
+    private int boxYOne;
+    private int boxYTwo;
 
     /**
      * Create a button that allows you to change the location of a GUI element.
@@ -60,6 +67,18 @@ public class ButtonLocation extends ButtonFeature {
         int boxColor = ChatFormatting.GRAY.getColor(boxAlpha).getRGB();
         drawRect(boxXOne, boxYOne,
                 boxXTwo, boxYTwo, boxColor);
+
+        this.boxXOne = boxXOne;
+        this.boxXTwo = boxXTwo;
+        this.boxYOne = boxYOne;
+        this.boxYTwo = boxYTwo;
+
+        if (this.feature == Feature.DEFENCE_ICON) {
+            this.boxXOne *= scale;
+            this.boxXTwo *= scale;
+            this.boxYOne *= scale;
+            this.boxYTwo *= scale;
+        }
     }
 
     /**
@@ -69,17 +88,5 @@ public class ButtonLocation extends ButtonFeature {
     public boolean mousePressed(Minecraft mc, int mouseX, int mouseY)
     {
         return this.enabled && this.visible && hovered;
-    }
-
-    public static Feature getLastHoveredFeature() {
-        return lastHoveredFeature;
-    }
-
-    public int getLastMouseY() {
-        return lastMouseY;
-    }
-
-    public int getLastMouseX() {
-        return lastMouseX;
     }
 }

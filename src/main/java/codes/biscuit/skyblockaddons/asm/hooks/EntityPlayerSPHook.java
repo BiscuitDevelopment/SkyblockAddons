@@ -11,6 +11,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.IProjectile;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityMob;
+import net.minecraft.entity.passive.EntityWolf;
 import net.minecraft.inventory.ContainerPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
@@ -90,7 +91,7 @@ public class EntityPlayerSPHook {
             boolean foundPossibleAttacker = false;
 
             for (Entity entity : nearEntities) {
-                if (entity instanceof EntityMob || entity instanceof IProjectile) {
+                if (entity instanceof EntityMob || entity instanceof EntityWolf || entity instanceof IProjectile) {
                     foundPossibleAttacker = true;
                     break;
                 }

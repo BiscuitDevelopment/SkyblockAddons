@@ -149,6 +149,9 @@ public enum Message {
     MESSAGE_CHOOSE_A_COLOR(MessageObject.MESSAGES, "chooseAColor"),
     MESSAGE_SELECTED_COLOR(MessageObject.MESSAGES, "selectedColor"),
     MESSAGE_SET_HEX_COLOR(MessageObject.MESSAGES, "setHexColor"),
+    MESSAGE_RESCALE_FEATURES(MessageObject.MESSAGES, "rescaleFeatures"),
+    MESSAGE_RESIZE_BARS(MessageObject.MESSAGES, "resizeBars"),
+    MESSAGE_SHOW_COLOR_ICONS(MessageObject.MESSAGES, "showColorIcons"),
 
     @Deprecated ANCHOR_POINT_TOP_LEFT(MessageObject.ANCHOR_POINT, "topLeft"),
     @Deprecated ANCHOR_POINT_TOP_RIGHT(MessageObject.ANCHOR_POINT, "topRight"),

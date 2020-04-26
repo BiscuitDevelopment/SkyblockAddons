@@ -10,7 +10,7 @@ import net.minecraft.util.MathHelper;
 
 import java.math.BigDecimal;
 
-public class ButtonChromaSlider extends GuiButton {
+public class ButtonSlider extends GuiButton {
 
     private float min;
     private float max;
@@ -23,8 +23,8 @@ public class ButtonChromaSlider extends GuiButton {
 
     private OnSliderChangeCallback sliderCallback;
 
-    public ButtonChromaSlider(double x, double y, int width, int height, SkyblockAddons main, float initialValue,
-                              float min, float max, float step, OnSliderChangeCallback sliderCallback) {
+    public ButtonSlider(double x, double y, int width, int height, SkyblockAddons main, float initialValue,
+                        float min, float max, float step, OnSliderChangeCallback sliderCallback) {
         super(0, (int)x, (int)y, "");
         this.sliderValue = 0;
         this.displayString = "";

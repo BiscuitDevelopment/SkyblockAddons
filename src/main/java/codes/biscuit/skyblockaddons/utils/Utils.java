@@ -819,12 +819,12 @@ public class Utils {
     }
 
     public void bindRGBColor(int color) {
-        float red = (float) (color >> 16 & 255) / 255.0F;
-        float green = (float) (color >> 8 & 255) / 255.0F;
-        float blue = (float) (color & 255) / 255.0F;
-        float alpha = (float) (color >> 24 & 255) / 255.0F;
+        float r = (float) (color >> 16 & 255) / 255.0F;
+        float g = (float) (color >> 8 & 255) / 255.0F;
+        float b = (float) (color & 255) / 255.0F;
+        float a = (float) (color >> 24 & 255) / 255.0F;
 
-        GlStateManager.color(red, green, blue, alpha);
+        GlStateManager.color(r, g, b, a);
     }
 
     public void bindColorInts(int r, int g, int b, int a) {
@@ -844,5 +844,9 @@ public class Utils {
             }
         }
         return false;
+    }
+
+    public int getColorWithAlpha(int color, int alpha) {
+        return color += (alpha << 24) & 0xFF000000;
     }
 }

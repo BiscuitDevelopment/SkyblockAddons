@@ -31,7 +31,6 @@ public class SettingsGui extends GuiScreen {
     private EnumUtils.GuiTab lastTab;
     private boolean closingGui = false;
     private List<EnumUtils.FeatureSetting> settings;
-    private String lastText;
 
     private long timeOpened = System.currentTimeMillis();
 
@@ -154,7 +153,7 @@ public class SettingsGui extends GuiScreen {
             mc.displayGuiScreen(new SkyblockAddonsGui(main, 1, tab.getTab()));
         } else if (abstractButton instanceof ButtonOpenColorMenu) {
             closingGui = true;
-            mc.displayGuiScreen(new ColorSelectionGui(feature, lastTab, lastPage));
+            mc.displayGuiScreen(new ColorSelectionGui(feature, EnumUtils.GUIType.SETTINGS, lastTab, lastPage));
         } else if (abstractButton instanceof ButtonToggleTitle) {
             ButtonFeature button = (ButtonFeature)abstractButton;
             Feature feature = button.getFeature();

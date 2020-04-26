@@ -6,6 +6,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.IProjectile;
 import net.minecraft.entity.monster.EntityMob;
+import net.minecraft.entity.passive.EntityWolf;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.AxisAlignedBB;
 
@@ -27,7 +28,7 @@ public class EntityLivingBaseHook {
             boolean foundPossibleAttacker = false;
 
             for (Entity entity : nearEntities) {
-                if (entity instanceof EntityMob || entity instanceof IProjectile) {
+                if (entity instanceof EntityMob || entity instanceof EntityWolf || entity instanceof IProjectile) {
                     foundPossibleAttacker = true;
                     break;
                 }

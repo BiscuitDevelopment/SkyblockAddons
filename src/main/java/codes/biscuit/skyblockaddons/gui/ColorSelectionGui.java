@@ -2,6 +2,7 @@ package codes.biscuit.skyblockaddons.gui;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.gui.buttons.ButtonColorBox;
+import codes.biscuit.skyblockaddons.gui.buttons.ButtonSlider;
 import codes.biscuit.skyblockaddons.gui.elements.CheckBox;
 import codes.biscuit.skyblockaddons.utils.ChromaManager;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
@@ -29,6 +30,7 @@ public class ColorSelectionGui extends GuiScreen {
     private Feature feature;
 
     // Previous pages for when they return.
+    private EnumUtils.GUIType lastGUI;
     private EnumUtils.GuiTab lastTab;
     private int lastPage;
 
@@ -46,9 +48,10 @@ public class ColorSelectionGui extends GuiScreen {
      * @param lastTab The previous tab that you came from.
      * @param lastPage The previous page.
      */
-    ColorSelectionGui(Feature feature, EnumUtils.GuiTab lastTab, int lastPage) {
+    ColorSelectionGui(Feature feature, EnumUtils.GUIType lastGUI, EnumUtils.GuiTab lastTab, int lastPage) {
         this.feature = feature;
         this.lastTab = lastTab;
+        this.lastGUI = lastGUI;
         this.lastPage = lastPage;
 
         try {
@@ -65,6 +68,10 @@ public class ColorSelectionGui extends GuiScreen {
 
         chromaCheckbox.setOnToggleListener(value -> {
             ChromaManager.setFeature(feature, value);
+            ColorSelectionGui.this.removeChromaButtons();
+            if (value) {
+                ColorSelectionGui.this.addChromaButtons();
+            }
         });
 
         hexColorField = new GuiTextField(0, (FontRenderer)MinecraftReflection.FontRenderer.getFontRenderer(),
@@ -99,6 +106,10 @@ public class ColorSelectionGui extends GuiScreen {
             }
         }
 
+        if (SkyblockAddons.getInstance().getConfigValues().getChromaFeatures().contains(feature)) {
+            ColorSelectionGui.this.addChromaButtons();
+        }
+
         Keyboard.enableRepeatEvents(true);
 
         super.initGui();
@@ -113,10 +124,12 @@ public class ColorSelectionGui extends GuiScreen {
         drawGradientRect(0, 0, width, height, startColor, endColor);
         SkyblockAddonsGui.drawDefaultTitleText(this, 255);
 
+        int defaultBlue = SkyblockAddons.getInstance().getUtils().getDefaultBlue(255);
+
         if (feature.getGuiFeatureData() != null) {
             if (feature.getGuiFeatureData().isColorsRestricted()) {
                 SkyblockAddonsGui.drawScaledString(this, Message.MESSAGE_CHOOSE_A_COLOR.getMessage(), 90,
-                        SkyblockAddons.getInstance().getUtils().getDefaultBlue(255), 1.5, 0);
+                        defaultBlue, 1.5, 0);
 
             } else {
                 int pickerWidth = COLOR_PICKER_IMAGE.getWidth();
@@ -134,16 +147,20 @@ public class ColorSelectionGui extends GuiScreen {
                 mc.getTextureManager().bindTexture(COLOR_PICKER);
                 Gui.drawModalRectWithCustomSizedTexture(imageX, imageY, 0, 0, pickerWidth, pickerHeight, pickerWidth, pickerHeight);
 
-                SkyblockAddonsGui.drawScaledString(this, Message.MESSAGE_SELECTED_COLOR.getMessage(), 120,
-                        SkyblockAddons.getInstance().getUtils().getDefaultBlue(255), 1.5, 75);
+                SkyblockAddonsGui.drawScaledString(this, Message.MESSAGE_SELECTED_COLOR.getMessage(), 120, defaultBlue, 1.5, 75);
                 drawRect(width / 2 + 90, 140, width / 2 + 130, 160, SkyblockAddons.getInstance().getConfigValues().getColor(feature).getRGB());
 
                 if (chromaCheckbox != null) chromaCheckbox.draw();
 
                 if (!SkyblockAddons.getInstance().getConfigValues().getChromaFeatures().contains(feature)) { // Disabled cause chroma is enabled
-                    SkyblockAddonsGui.drawScaledString(this, Message.MESSAGE_SET_HEX_COLOR.getMessage(), 200,
-                            SkyblockAddons.getInstance().getUtils().getDefaultBlue(255), 1.5, 75);
+                    SkyblockAddonsGui.drawScaledString(this, Message.MESSAGE_SET_HEX_COLOR.getMessage(), 200, defaultBlue, 1.5, 75);
                     hexColorField.drawTextBox();
+                }
+
+                if (SkyblockAddons.getInstance().getConfigValues().getChromaFeatures().contains(feature)) {
+                    SkyblockAddonsGui.drawScaledString(this, Message.SETTING_CHROMA_SPEED.getMessage(), 170 + 25, defaultBlue, 1, 110);
+
+                    SkyblockAddonsGui.drawScaledString(this, Message.SETTING_CHROMA_FADE_WIDTH.getMessage(), 170 + 35 + 25, defaultBlue, 1, 110);
                 }
             }
         }
@@ -233,6 +250,29 @@ public class ColorSelectionGui extends GuiScreen {
     public void onGuiClosed() {
         Keyboard.enableRepeatEvents(false);
 
-        SkyblockAddons.getInstance().getRenderListener().setGuiToOpen(EnumUtils.GUIType.SETTINGS, lastPage, lastTab, feature);
+        SkyblockAddons.getInstance().getRenderListener().setGuiToOpen(lastGUI, lastPage, lastTab, feature);
+    }
+
+    private void removeChromaButtons() {
+        this.buttonList.removeIf(button -> button instanceof ButtonSlider);
+    }
+
+    private void addChromaButtons() {
+        SkyblockAddons main = SkyblockAddons.getInstance();
+        buttonList.add(new ButtonSlider(width / 2 + 76, 170+35, 70, 15, main, main.getConfigValues().getChromaSpeed(),
+                0.1F, 10, 0.5F, new ButtonSlider.OnSliderChangeCallback() {
+            @Override
+            public void sliderUpdated(float value) {
+                main.getConfigValues().setChromaSpeed(value);
+            }
+        }));
+
+        buttonList.add(new ButtonSlider(width / 2 + 76, 170+35+35, 70, 15, main, main.getConfigValues().getChromaFadeWidth(),
+                1, 42, 1, new ButtonSlider.OnSliderChangeCallback() {
+            @Override
+            public void sliderUpdated(float value) {
+                main.getConfigValues().setChromaFadeWidth(value);
+            }
+        }));
     }
 }

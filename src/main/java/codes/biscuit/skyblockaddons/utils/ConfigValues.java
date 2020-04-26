@@ -24,9 +24,9 @@ public class ConfigValues {
 
     private static final int CONFIG_VERSION = 7;
 
+    private final static float DEFAULT_GUI_SCALE = normalizeValueNoStep(1);
     private final static float GUI_SCALE_MINIMUM = 0.5F;
     private final static float GUI_SCALE_MAXIMUM = 5;
-    private final static float GUI_SCALE_STEP = 0.1F;
 
     private SkyblockAddons main;
 
@@ -338,6 +338,7 @@ public class ConfigValues {
     public void setAllCoordinatesToDefault() {
         setAnchorPointsToDefault();
         putDefaultBarSizes();
+        guiScales.clear();
         for (Feature feature : Feature.getGuiFeatures()) {
             putDefaultCoordinates(feature);
         }
@@ -397,7 +398,7 @@ public class ConfigValues {
         FMLLog.info("[SkyblockAddons] Attempting to pull updated language files from online.");
         new Thread(() -> {
             try {
-                URL url = new URL("https://raw.githubusercontent.com/biscuut/SkyblockAddons/master/src/main/resources/lang/" + language.getPath() + ".json");
+                URL url = new URL("https://raw.githubusercontent.com/biscuut/SkyblockAddons/development/src/main/resources/lang/" + language.getPath() + ".json");
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                 connection.setRequestMethod("GET");
                 connection.setRequestProperty("User-Agent", Utils.USER_AGENT);
@@ -719,21 +720,31 @@ public class ConfigValues {
     }
 
     public float getGuiScale(Feature feature, boolean denormalized) {
-        float value = 0.11F; //default scale (1.0)
+        float value = ConfigValues.DEFAULT_GUI_SCALE;
         if (guiScales.containsKey(feature)) {
             value = guiScales.get(feature).getValue();
         }
-        if (denormalized) value = denormalizeScale(value);
+        if (denormalized) {
+            value = denormalizeScale(value);
+        }
         return value;
     }
 
+    public static float normalizeValueNoStep(float value) {
+        return MathHelper.clamp_float((snapNearDefaultValue(value) - ConfigValues.GUI_SCALE_MINIMUM) /
+                (ConfigValues.GUI_SCALE_MAXIMUM - ConfigValues.GUI_SCALE_MINIMUM), 0.0F, 1.0F);
+    }
+
     /** These two are taken from GuiOptionSlider. */
-    public float denormalizeScale(float value) {
-        return snapToStepClamp(ConfigValues.GUI_SCALE_MINIMUM + (ConfigValues.GUI_SCALE_MAXIMUM - ConfigValues.GUI_SCALE_MINIMUM) *
+    public static float denormalizeScale(float value) {
+        return snapNearDefaultValue(ConfigValues.GUI_SCALE_MINIMUM + (ConfigValues.GUI_SCALE_MAXIMUM - ConfigValues.GUI_SCALE_MINIMUM) *
                 MathHelper.clamp_float(value, 0.0F, 1.0F));
     }
-    public float snapToStepClamp(float value) {
-        value = ConfigValues.GUI_SCALE_STEP * (float) Math.round(value / ConfigValues.GUI_SCALE_STEP);
-        return MathHelper.clamp_float(value, ConfigValues.GUI_SCALE_MINIMUM, ConfigValues.GUI_SCALE_MAXIMUM);
+    public static float snapNearDefaultValue(float value) {
+        if (value != 1 && value > 1-0.05 && value < 1+0.05) {
+            return 1;
+        }
+
+        return value;
     }
 }

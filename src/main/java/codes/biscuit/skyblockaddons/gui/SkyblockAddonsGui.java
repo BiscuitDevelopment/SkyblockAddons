@@ -207,7 +207,7 @@ public class SkyblockAddonsGui extends GuiScreen {
             }
             if (feature == Feature.LANGUAGE) {
                 main.getUtils().setFadingIn(false);
-                Minecraft.getMinecraft().displayGuiScreen(new SettingsGui(main, Feature.LANGUAGE, 1, page,tab, null));
+                Minecraft.getMinecraft().displayGuiScreen(new SettingsGui(main, Feature.LANGUAGE,1, page,tab, null));
             }  else if (feature == Feature.EDIT_LOCATIONS) {
                 main.getUtils().setFadingIn(false);
                 Minecraft.getMinecraft().displayGuiScreen(new LocationEditGui(main, page, tab));
@@ -372,16 +372,16 @@ public class SkyblockAddonsGui extends GuiScreen {
             buttonList.add(new ButtonNormal(x, y, text, main, feature));
 
             if (feature == Feature.CHROMA_SPEED) {
-                buttonList.add(new ButtonChromaSlider(x + 35, y + boxHeight - 23, 70, 15, main, main.getConfigValues().getChromaSpeed(),
-                        0.1F, 10, 0.5F, new ButtonChromaSlider.OnSliderChangeCallback() {
+                buttonList.add(new ButtonSlider(x + 35, y + boxHeight - 23, 70, 15, main, main.getConfigValues().getChromaSpeed(),
+                        0.1F, 10, 0.5F, new ButtonSlider.OnSliderChangeCallback() {
                     @Override
                     public void sliderUpdated(float value) {
                         main.getConfigValues().setChromaSpeed(value);
                     }
                 }));
             } else if (feature == Feature.CHROMA_FADE_WIDTH) {
-                buttonList.add(new ButtonChromaSlider(x + 35, y + boxHeight - 23, 70, 15, main, main.getConfigValues().getChromaFadeWidth(),
-                        1, 42, 1, new ButtonChromaSlider.OnSliderChangeCallback() {
+                buttonList.add(new ButtonSlider(x + 35, y + boxHeight - 23, 70, 15, main, main.getConfigValues().getChromaFadeWidth(),
+                        1, 42, 1, new ButtonSlider.OnSliderChangeCallback() {
                     @Override
                     public void sliderUpdated(float value) {
                         main.getConfigValues().setChromaFadeWidth(value);
