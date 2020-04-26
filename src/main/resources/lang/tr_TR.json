@@ -164,6 +164,9 @@
     "noArrowsLeft": "Hiç Okun Kalmadı!",
     "chooseAColor": "Bir renk seçin",
     "selectedColor": "Seçili Renk",
-    "setHexColor": "Hex Rengini Ayarla"
+    "setHexColor": "Hex Rengini Ayarla",
+    "rescaleFeatures": "Rescale Features",
+    "resizeBars": "Resize Bars",
+    "showColorIcons": "Show Color Icons"
   }
 }
