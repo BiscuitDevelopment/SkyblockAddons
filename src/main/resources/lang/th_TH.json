@@ -164,6 +164,9 @@
     "noArrowsLeft": "ลูกศรหมดแล้ว",
     "chooseAColor": "เลือกสี",
     "selectedColor": "สีที่เลือก",
-    "setHexColor": "ตั้งค่าสี"
+    "setHexColor": "ตั้งค่าสี",
+    "rescaleFeatures": "Rescale Features",
+    "resizeBars": "Resize Bars",
+    "showColorIcons": "Show Color Icons"
   }
 }
