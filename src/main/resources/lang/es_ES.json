@@ -164,6 +164,9 @@
     "noArrowsLeft": "¡No quedan flechas!",
     "chooseAColor": "Elije un color",
     "selectedColor": "Color Seleccionado",
-    "setHexColor": "Definir un Color Hex"
+    "setHexColor": "Definir un Color Hex",
+    "rescaleFeatures": "Rescale Features",
+    "resizeBars": "Resize Bars",
+    "showColorIcons": "Show Color Icons"
   }
 }
