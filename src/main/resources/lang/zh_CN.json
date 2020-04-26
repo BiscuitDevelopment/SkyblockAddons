@@ -164,6 +164,9 @@
     "noArrowsLeft": "箭矢不足！",
     "chooseAColor": "选择颜色",
     "selectedColor": "已选择颜色",
-    "setHexColor": "设置十六进制颜色"
+    "setHexColor": "设置十六进制颜色",
+    "rescaleFeatures": "Rescale Features",
+    "resizeBars": "Resize Bars",
+    "showColorIcons": "Show Color Icons"
   }
 }
