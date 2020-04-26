@@ -164,6 +164,9 @@
     "noArrowsLeft": "אזלו החצים!",
     "chooseAColor": "בחר צבע",
     "selectedColor": "בחר צבע",
-    "setHexColor": "קבע צבע הקסדצימלי"
+    "setHexColor": "קבע צבע הקסדצימלי",
+    "rescaleFeatures": "Rescale Features",
+    "resizeBars": "Resize Bars",
+    "showColorIcons": "Show Color Icons"
   }
 }
