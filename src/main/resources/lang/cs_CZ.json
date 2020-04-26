@@ -164,6 +164,9 @@
     "noArrowsLeft": "Došly šípy!",
     "chooseAColor": "Zvolit barvu",
     "selectedColor": "Vybraná barva",
-    "setHexColor": "Nastavit hexadecimální barvu"
+    "setHexColor": "Nastavit hexadecimální barvu",
+    "rescaleFeatures": "Rescale Features",
+    "resizeBars": "Resize Bars",
+    "showColorIcons": "Show Color Icons"
   }
 }
