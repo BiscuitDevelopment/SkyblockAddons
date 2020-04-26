@@ -1,7 +1,9 @@
 package codes.biscuit.skyblockaddons.utils.dev;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.utils.Utils;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
+import codes.biscuit.skyblockaddons.utils.nifty.RegexUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.Entity;
@@ -12,6 +14,7 @@ import net.minecraft.scoreboard.Score;
 import net.minecraft.scoreboard.ScoreObjective;
 import net.minecraft.scoreboard.ScorePlayerTeam;
 import net.minecraft.scoreboard.Scoreboard;
+import net.minecraft.util.StringUtils;
 import net.minecraftforge.common.util.Constants;
 import org.lwjgl.input.Keyboard;
 
@@ -25,29 +28,43 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 /**
- * This is a class of utilities for Skyblock Addons developers.
+ * This is a class of utilities for SkyblockAddons developers.
  *
  * @author ILikePlayingGames
- * @version 2.0
+ * @version 2.1
  */
 public class DevUtils {
     public static final int DEV_KEY = Keyboard.KEY_RCONTROL;
     public static final int ENTITY_COPY_RADIUS = 3;
+    public static final int SIDEBAR_COPY_WIDTH = 30;
 
     /**
-     * Copies the objective and scores that are being displayed on a scoreboard's side bar.
+     * Copies the objective and scores that are being displayed on a scoreboard's sidebar.
+     * When copying the sidebar, the control codes (e.g. §a) are removed.
      *
-     * @param scoreboard the {@link Scoreboard} to copy the side bar from
+     * @param scoreboard the {@link Scoreboard} to copy the sidebar from
      */
     public static void copyScoreboardSideBar(Scoreboard scoreboard) {
-        //TODO This needs more work, Hypixel's scoreboards have a complex, strange format.
+        copyScoreboardSidebar(scoreboard, true);
+    }
+
+    /**
+     * Copies the objective and scores that are being displayed on a scoreboard's sidebar.
+     *
+     * @param scoreboard the {@link Scoreboard} to copy the sidebar from
+     * @param stripControlCodes if {@code true}, the control codes will be removed, otherwise they will be copied
+     */
+    public static void copyScoreboardSidebar(Scoreboard scoreboard, boolean stripControlCodes) {
+        Utils utils = SkyblockAddons.getInstance().getUtils();
 
         if (scoreboard == null) {
+            utils.sendErrorMessage("No scoreboard found!");
             return;
         }
 
         ScoreObjective sideBarObjective = scoreboard.getObjectiveInDisplaySlot(1);
         if (sideBarObjective == null) {
+            utils.sendErrorMessage("Nothing is being displayed in the sidebar!");
             return;
         }
 
@@ -55,22 +72,21 @@ public class DevUtils {
         Formatter formatter = new Formatter(sb, Locale.CANADA);
 
         String objectiveName = sideBarObjective.getDisplayName();
-
-        formatter.format("%s%n", objectiveName);
-
         List<Score> scores = (List<Score>) scoreboard.getSortedScores(sideBarObjective);
+
         if (scores == null || scores.isEmpty()) {
-            formatter.format("%s", "No scores were found.");
+            SkyblockAddons.getInstance().getUtils().sendErrorMessage("No scores were found!");
         }
         else {
-            int width = objectiveName.length();
+            int width = SIDEBAR_COPY_WIDTH;
 
-            // TODO limit to 15 rows per scoreboard rendering
-            // Fix emojis being written
+            if (stripControlCodes) {
+                objectiveName = StringUtils.stripControlCodes(objectiveName);
+            }
 
             // Remove scores that aren't rendered.
-            scores = scores.stream().filter(input -> input.getPlayerName() != null && !input.getPlayerName().startsWith("#")).collect(Collectors.toList());
-
+            scores = scores.stream().filter(input -> input.getPlayerName() != null && !input.getPlayerName().startsWith("#"))
+                    .skip(Math.max(scores.size() - 15, 0)).collect(Collectors.toList());
 
             /*
             Minecraft renders the scoreboard from bottom to top so to keep the same order when writing it from top
@@ -82,15 +98,26 @@ public class DevUtils {
                     scores) {
                 ScorePlayerTeam scoreplayerteam = scoreboard.getPlayersTeam(score.getPlayerName());
                 String playerName = ScorePlayerTeam.formatPlayerName(scoreplayerteam, score.getPlayerName());
+
+                // Strip colours and emoji player names.
+                playerName = RegexUtil.strip(playerName, RegexUtil.SIDEBAR_PLAYER_NAME_PATTERN);
+
+                if (stripControlCodes) {
+                    playerName = StringUtils.stripControlCodes(playerName);
+                }
+
                 int points = score.getScorePoints();
 
                 width = Math.max(width, (playerName + " " + points).length());
                 formatter.format("%-" + width + "." +
-                        (width - Integer.toString(points).length() - 1) + "s %d%n", playerName, points);
+                        width + "s %d%n", playerName, points);
             }
-        }
 
-        copyStringToClipboard(sb.toString(), "Sidebar copied to clipboard!");
+            // Insert the objective name at the top of the sidebar string.
+            sb.insert(0, "\n").insert(0, org.apache.commons.lang3.StringUtils.center(objectiveName, width));
+
+            copyStringToClipboard(sb.toString(), "Sidebar copied to clipboard!");
+        }
     }
 
     /**
