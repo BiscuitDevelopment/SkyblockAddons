@@ -68,7 +68,7 @@
     "soundIndicatorForFishing": "釣り用のサウンドインジケーター",
     "avoidBlinkingNightVision": "暗視のポーションの点滅を無くす",
     "disableMinionLocationWarning": "Location Not Perfectのアラートを無効化",
-    "jungleAxeCooldown": "Jungle Axeのクールタイムを表示",
+    "jungleAxeCooldown": "クールダウンの間のJungle AxeとTreecapitatorでのブロックの破壊を阻止",
     "organizeLongEnchantmentLists": "長いエンチャントのリストを整理",
     "showItemCooldowns": "アイテムのクールタイムを表示",
     "speedPercentage": "スピード",
@@ -164,6 +164,9 @@
     "noArrowsLeft": "矢がありません！",
     "chooseAColor": "色を選択",
     "selectedColor": "選択中の色",
-    "setHexColor": "16進数で色を設定"
+    "setHexColor": "16進数で色を設定",
+    "rescaleFeatures": "Rescale Features",
+    "resizeBars": "Resize Bars",
+    "showColorIcons": "Show Color Icons"
   }
 }
