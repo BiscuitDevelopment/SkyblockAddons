@@ -164,6 +164,9 @@
     "noArrowsLeft": "Ingen Piler Igjen!",
     "chooseAColor": "Velg en Farge",
     "selectedColor": "Valgt Farge",
-    "setHexColor": "Endre Hex Farge"
+    "setHexColor": "Endre Hex Farge",
+    "rescaleFeatures": "Rescale Features",
+    "resizeBars": "Resize Bars",
+    "showColorIcons": "Show Color Icons"
   }
 }
