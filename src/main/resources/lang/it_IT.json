@@ -164,6 +164,9 @@
     "noArrowsLeft": "Frecce finite!",
     "chooseAColor": "Scegli un colore",
     "selectedColor": "Colore selezionato",
-    "setHexColor": "Imposta un codice colore hex"
+    "setHexColor": "Imposta un codice colore hex",
+    "rescaleFeatures": "Rescale Features",
+    "resizeBars": "Resize Bars",
+    "showColorIcons": "Show Color Icons"
   }
 }
