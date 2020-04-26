@@ -164,6 +164,9 @@
     "noArrowsLeft": "Hết mũi tên!",
     "chooseAColor": "Chọn màu",
     "selectedColor": "Màu đã chọn",
-    "setHexColor": "Set Hex Color"
+    "setHexColor": "Set Hex Color",
+    "rescaleFeatures": "Rescale Features",
+    "resizeBars": "Resize Bars",
+    "showColorIcons": "Show Color Icons"
   }
 }
