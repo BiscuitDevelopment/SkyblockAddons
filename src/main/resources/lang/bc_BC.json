@@ -164,6 +164,9 @@
     "noArrowsLeft": "No Biscuits Left!",
     "chooseAColor": "Choose a Biscolor",
     "selectedColor": "Selected Biscolor",
-    "setHexColor": "Set Bex Color"
+    "setHexColor": "Set Bex Color",
+    "rescaleFeatures": "Rescale Features",
+    "resizeBars": "Resize Bars",
+    "showColorIcons": "Show Color Icons"
   }
 }
