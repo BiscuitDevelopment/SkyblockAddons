@@ -164,6 +164,9 @@
     "noArrowsLeft": "Ingen pile tilbage!",
     "chooseAColor": "Vælg en farve",
     "selectedColor": "Valgte en farve",
-    "setHexColor": "Sæt Hex Farve"
+    "setHexColor": "Sæt Hex Farve",
+    "rescaleFeatures": "Rescale Features",
+    "resizeBars": "Resize Bars",
+    "showColorIcons": "Show Color Icons"
   }
 }
