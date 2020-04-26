@@ -164,6 +164,9 @@
     "noArrowsLeft": "Zmanjkalo puščic!",
     "chooseAColor": "Izberi barvo",
     "selectedColor": "Izbrana barva",
-    "setHexColor": "Nastavi Hex barvo"
+    "setHexColor": "Nastavi Hex barvo",
+    "rescaleFeatures": "Rescale Features",
+    "resizeBars": "Resize Bars",
+    "showColorIcons": "Show Color Icons"
   }
 }
