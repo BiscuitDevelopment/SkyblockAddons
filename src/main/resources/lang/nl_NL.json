@@ -164,6 +164,9 @@
     "noArrowsLeft": "Geen Pijlen Resterend!",
     "chooseAColor": "Kies een kleur",
     "selectedColor": "Geselecteerde kleur",
-    "setHexColor": "Hex kleur instellen"
+    "setHexColor": "Hex kleur instellen",
+    "rescaleFeatures": "Rescale Features",
+    "resizeBars": "Resize Bars",
+    "showColorIcons": "Show Color Icons"
   }
 }
