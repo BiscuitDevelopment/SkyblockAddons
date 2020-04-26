@@ -164,6 +164,9 @@
     "noArrowsLeft": "Nebeliko strėlių!",
     "chooseAColor": "Pasirinkte spalvą",
     "selectedColor": "Pasirinkita spalva",
-    "setHexColor": "Nustatyti Hex Spalva"
+    "setHexColor": "Nustatyti Hex Spalva",
+    "rescaleFeatures": "Rescale Features",
+    "resizeBars": "Resize Bars",
+    "showColorIcons": "Show Color Icons"
   }
 }
