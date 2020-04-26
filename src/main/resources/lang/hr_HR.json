@@ -164,6 +164,9 @@
     "noArrowsLeft": "Nema više strijela!",
     "chooseAColor": "Izaberi Boju",
     "selectedColor": "Odabrana Boja",
-    "setHexColor": "Postavi Hex Boju"
+    "setHexColor": "Postavi Hex Boju",
+    "rescaleFeatures": "Rescale Features",
+    "resizeBars": "Resize Bars",
+    "showColorIcons": "Show Color Icons"
   }
 }
