@@ -164,6 +164,9 @@
     "noArrowsLeft": "Inga pilar kvar!",
     "chooseAColor": "Välj en färg",
     "selectedColor": "Välj färg",
-    "setHexColor": "Sett en hex färg"
+    "setHexColor": "Sett en hex färg",
+    "rescaleFeatures": "Rescale Features",
+    "resizeBars": "Resize Bars",
+    "showColorIcons": "Show Color Icons"
   }
 }
