@@ -164,6 +164,9 @@
     "noArrowsLeft": "Mate, yer arrows be gone!",
     "chooseAColor": "Choose a Col'r",
     "selectedColor": "Selected Col'r",
-    "setHexColor": "Set yer Hex Col'r"
+    "setHexColor": "Set yer Hex Col'r",
+    "rescaleFeatures": "Rescale Features",
+    "resizeBars": "Resize Bars",
+    "showColorIcons": "Show Color Icons"
   }
 }
