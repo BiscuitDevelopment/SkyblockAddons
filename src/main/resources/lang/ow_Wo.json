@@ -164,6 +164,9 @@
     "noArrowsLeft": "No Awwows Weft!",
     "chooseAColor": "Choose a Colow",
     "selectedColor": "Sewected Colow",
-    "setHexColor": "Set Hex Colow"
+    "setHexColor": "Set Hex Colow",
+    "rescaleFeatures": "Rescale Features",
+    "resizeBars": "Resize Bars",
+    "showColorIcons": "Show Color Icons"
   }
 }
