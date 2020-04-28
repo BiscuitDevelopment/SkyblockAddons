@@ -112,7 +112,8 @@
     "showZealotsPerEye": "Bộ đếm Zealot - Hiển thị số Zlots/1 Eye",
     "turnBowGreenWhenUsingToxicArrowPoison": "Cung màu xanh khi dùng mũi tên độc",
     "birchParkRainmakerTimer": "Birch Park Rainmaker Timer",
-    "combatTimerDisplay": "Combat Timer Display"
+    "combatTimerDisplay": "Combat Timer Display",
+    "discordRP": "Discord Rich Presence"
   },
   "messages": {
     "betaTesters": "Thank you for being a beta tester! Please report any bugs you encounter in the Discord channel.",
@@ -168,5 +169,8 @@
     "rescaleFeatures": "Rescale Features",
     "resizeBars": "Resize Bars",
     "showColorIcons": "Show Color Icons"
+  },
+  "discord": {
+    "status": {}
   }
 }
