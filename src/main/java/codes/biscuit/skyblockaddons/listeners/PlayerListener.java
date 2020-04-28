@@ -199,7 +199,7 @@ public class PlayerListener {
                     main.getRenderListener().setSubtitleFeature(Feature.NO_ARROWS_LEFT_ALERT);
                     main.getScheduler().schedule(Scheduler.CommandType.RESET_SUBTITLE_FEATURE, main.getConfigValues().getWarningSeconds());
                 } else if (formattedText.startsWith("§r§cYou only have") && formattedText.endsWith("Arrows left in your Quiver!§r")) {
-                    int arrowsLeft = Integer.parseInt(main.getUtils().getNumbersOnly(formattedText).trim());
+                    int arrowsLeft = Integer.parseInt(TextUtils.getNumbersOnly(formattedText).trim());
                     main.getUtils().playLoudSound("random.orb", 0.5);
                     main.getRenderListener().setSubtitleFeature(Feature.NO_ARROWS_LEFT_ALERT);
                     main.getRenderListener().setArrowsLeft(arrowsLeft);// THIS IS IMPORTANT
@@ -606,7 +606,7 @@ public class PlayerListener {
 
                 for (int i = 0; i < e.toolTip.size(); i++) {
                     if (ENCHANTMENT_TOOLTIP_PATTERN.matcher(e.toolTip.get(i)).matches()) {
-                        String line = main.getUtils().stripColor(e.toolTip.get(i));
+                        String line = TextUtils.stripColor(e.toolTip.get(i));
                         int comma = line.indexOf(',');
                         if (comma < 0 || line.length() <= comma + 2) {
                             enchantments.add(line);

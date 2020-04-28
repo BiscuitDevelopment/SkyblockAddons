@@ -1,7 +1,5 @@
 package codes.biscuit.skyblockaddons.utils;
 
-import codes.biscuit.skyblockaddons.SkyblockAddons;
-
 public class TabEffect implements Comparable<TabEffect> {
 
     private String duration; //Duration String, eg. "01:20"
@@ -44,8 +42,7 @@ public class TabEffect implements Comparable<TabEffect> {
         int difference = o.getDurationSeconds() - getDurationSeconds();
 
         if (Math.abs(difference) <= 1) {
-            Utils utils = SkyblockAddons.getInstance().getUtils();
-            return utils.stripColor(o.getEffect()).compareTo(utils.stripColor(getEffect()));
+            return TextUtils.stripColor(o.getEffect()).compareTo(TextUtils.stripColor(getEffect()));
         }
 
         return difference;

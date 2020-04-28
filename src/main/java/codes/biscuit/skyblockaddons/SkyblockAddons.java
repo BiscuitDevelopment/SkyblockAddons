@@ -2,10 +2,12 @@ package codes.biscuit.skyblockaddons;
 
 import codes.biscuit.skyblockaddons.commands.SkyblockAddonsCommand;
 import codes.biscuit.skyblockaddons.listeners.GuiScreenListener;
+import codes.biscuit.skyblockaddons.listeners.NetworkListener;
 import codes.biscuit.skyblockaddons.listeners.PlayerListener;
 import codes.biscuit.skyblockaddons.listeners.RenderListener;
 import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsTransformer;
 import codes.biscuit.skyblockaddons.utils.*;
+import codes.biscuit.skyblockaddons.utils.discord.DiscordRPCManager;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,6 +20,7 @@ import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.ModContainer;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLModDisabledEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import org.apache.logging.log4j.Logger;
@@ -56,6 +59,7 @@ public class SkyblockAddons {
     /** Whether developer mode is enabled. */
     @Setter private boolean devMode = false;
     @Setter(AccessLevel.NONE) private KeyBinding[] keyBindings = new KeyBinding[4];
+    private DiscordRPCManager discordRPCManager;
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent e) {
@@ -64,12 +68,15 @@ public class SkyblockAddons {
         logger = e.getModLog();
         persistentValues = new PersistentValues(e.getModConfigurationDirectory());
     }
+
     @Mod.EventHandler
     public void init(FMLInitializationEvent e) {
         // Initialize event listeners
         playerListener = new PlayerListener(this);
         guiScreenListener = new GuiScreenListener(this);
         renderListener = new RenderListener(this);
+        discordRPCManager = new DiscordRPCManager(this);
+        MinecraftForge.EVENT_BUS.register(new NetworkListener());
 
         MinecraftForge.EVENT_BUS.register(playerListener);
         MinecraftForge.EVENT_BUS.register(guiScreenListener);
@@ -121,6 +128,12 @@ public class SkyblockAddons {
             }
         }
     }
+
+    @Mod.EventHandler
+    public void stop(FMLModDisabledEvent e) {
+        discordRPCManager.stop();
+    }
+
 
     private void changeKeyBindDescription(KeyBinding bind, String desc) {
         try {

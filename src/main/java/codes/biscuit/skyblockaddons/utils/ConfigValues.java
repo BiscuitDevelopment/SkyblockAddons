@@ -1,6 +1,7 @@
 package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.utils.discord.DiscordStatus;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
 import com.google.gson.*;
 import lombok.Getter;
@@ -53,6 +54,9 @@ public class ConfigValues {
     @Getter @Setter private float chromaSpeed = 0.19354838F; // 2.0
     @Getter @Setter private EnumUtils.ChromaMode chromaMode = EnumUtils.ChromaMode.FADE;
     @Getter @Setter private float chromaFadeWidth = 0.22580644F; // 10° Hue
+    @Setter private DiscordStatus discordStatus = DiscordStatus.NONE;
+    @Setter private DiscordStatus discordDetails = DiscordStatus.NONE;
+
 
     public ConfigValues(SkyblockAddons main, File settingsConfigFile) {
         this.main = main;
@@ -221,6 +225,20 @@ public class ConfigValues {
 
             if (settingsConfig.has("chromaFadeWidth")) {
                 chromaFadeWidth = settingsConfig.get("chromaFadeWidth").getAsFloat();
+            }
+
+            if(settingsConfig.has("discordStatus")) {
+                int ordinal = settingsConfig.get("discordStatus").getAsInt();
+                if (DiscordStatus.values().length > ordinal) {
+                    discordStatus = DiscordStatus.values()[ordinal];
+                }
+            }
+
+            if(settingsConfig.has("discordDetails")) {
+                int ordinal = settingsConfig.get("discordDetails").getAsInt();
+                if (DiscordStatus.values().length > ordinal) {
+                    discordDetails = DiscordStatus.values()[ordinal];
+                }
             }
 
             int configVersion;
@@ -537,6 +555,9 @@ public class ConfigValues {
             settingsConfig.addProperty("chromaMode", chromaMode.ordinal());
             settingsConfig.addProperty("chromaFadeWidth", chromaFadeWidth);
 
+            settingsConfig.addProperty("discordStatus", discordStatus.ordinal());
+            settingsConfig.addProperty("discordDetails", discordDetails.ordinal());
+
             settingsConfig.addProperty("configVersion", CONFIG_VERSION);
 
             bufferedWriter.write(settingsConfig.toString());
@@ -746,5 +767,13 @@ public class ConfigValues {
         }
 
         return value;
+    }
+
+    public DiscordStatus getDiscordStatus() {
+        return discordStatus != null ? discordStatus : DiscordStatus.NONE;
+    }
+
+    public DiscordStatus getDiscordDetails() {
+        return discordDetails != null ? discordDetails : DiscordStatus.NONE;
     }
 }

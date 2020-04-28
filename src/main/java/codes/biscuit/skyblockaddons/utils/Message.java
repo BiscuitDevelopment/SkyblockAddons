@@ -108,6 +108,7 @@ public enum Message {
     SETTING_TURN_BOW_GREEN_WHEN_USING_TOXIC_ARROW_POISON(MessageObject.SETTING, "turnBowGreenWhenUsingToxicArrowPoison"),
     SETTING_BIRCH_PARK_RAINMAKER_TIMER(MessageObject.SETTING, "birchParkRainmakerTimer"),
     SETTING_COMBAT_TIMER_DISPLAY(MessageObject.SETTING, "combatTimerDisplay"),
+    SETTING_DISCORD_RP(MessageObject.SETTING, "discordRP"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.BACKPACK_STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.BACKPACK_STYLE, "compact"),
@@ -183,7 +184,56 @@ public enum Message {
     POWER_ORB_DISPLAY_STYLE_COMPACT(MessageObject.POWER_ORB_STYLE, "compact"),
 
     CHROMA_MODE_ALL_THE_SAME(MessageObject.CHROMA_MODE, "allTheSame"),
-    CHROME_MODE_FADE(MessageObject.CHROMA_MODE, "fade");
+    CHROME_MODE_FADE(MessageObject.CHROMA_MODE, "fade"),
+
+    DISCORD_STATUS_NONE_TITLE(MessageObject.DISCORD_STATUS, "titleNone"),
+    DISCORD_STATUS_NONE_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionNone"),
+    DISCORD_STATUS_LOCATION_TITLE(MessageObject.DISCORD_STATUS, "titleLocation"),
+    DISCORD_STATUS_LOCATION_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionLocation"),
+    DISCORD_STATUS_PURSE_TITLE(MessageObject.DISCORD_STATUS, "titlePurse"),
+    DISCORD_STATUS_PURSE_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionPurse"),
+    DISCORD_STATUS_STATS_TITLE(MessageObject.DISCORD_STATUS, "titleStats"),
+    DISCORD_STATUS_STATS_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionStats"),
+    DISCORD_STATUS_ZEALOTS_TITLE(MessageObject.DISCORD_STATUS, "titleZealots"),
+    DISCORD_STATUS_ZEALOTS_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionZealots"),
+    DISCORD_STATUS_ITEM_TITLE(MessageObject.DISCORD_STATUS, "titleItem"),
+    DISCORD_STATUS_ITEM_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionItem"),
+    DISCORD_STATUS_TIME_TITLE(MessageObject.DISCORD_STATUS, "titleTime"),
+    DISCORD_STATUS_TIME_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionTime"),
+    DISCORD_STATUS_PROFILE_TITLE(MessageObject.DISCORD_STATUS, "titleProfile"),
+    DISCORD_STATUS_PROFILE_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionProfile"),
+    DISCORD_STATUS_GENERIC_IN_GAME_TITLE(MessageObject.DISCORD_STATUS, "titleInGame"),
+    DISCORD_STATUS_GENERIC_IN_GAME_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionInGame"),
+    DISCORD_STATUS_GENERIC_MINING_TITLE(MessageObject.DISCORD_STATUS, "titleMining"),
+    DISCORD_STATUS_GENERIC_MINING_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionMining"),
+    DISCORD_STATUS_GENERIC_GRINDING_TITLE(MessageObject.DISCORD_STATUS, "titleGrinding"),
+    DISCORD_STATUS_GENERIC_GRINDING_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionGrinding"),
+    DISCORD_STATUS_GENERIC_FARMING_TITLE(MessageObject.DISCORD_STATUS, "titleFarming"),
+    DISCORD_STATUS_GENERIC_FARMING_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionFarming"),
+    DISCORD_STATUS_GENERIC_FISHING_TITLE(MessageObject.DISCORD_STATUS, "titleFishing"),
+    DISCORD_STATUS_GENERIC_FISHING_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionFishing"),
+    DISCORD_STATUS_GENERIC_BREWING_TITLE(MessageObject.DISCORD_STATUS, "titleBrewing"),
+    DISCORD_STATUS_GENERIC_BREWING_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionBrewing"),
+    DISCORD_STATUS_GENERIC_ENCHANTING_TITLE(MessageObject.DISCORD_STATUS, "titleEnchanting"),
+    DISCORD_STATUS_GENERIC_ENCHANTING_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionEnchanting"),
+    DISCORD_STATUS_GENERIC_COMBAT_TITLE(MessageObject.DISCORD_STATUS, "titleCombat"),
+    DISCORD_STATUS_GENERIC_COMBAT_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionCombat"),
+    DISCORD_STATUS_GENERIC_RUNECRAFTING_TITLE(MessageObject.DISCORD_STATUS, "titleRunecrafting"),
+    DISCORD_STATUS_GENERIC_RUNECRAFTING_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionRunecrafting"),
+    DISCORD_STATUS_GENERIC_FORAGING_TITLE(MessageObject.DISCORD_STATUS, "titleForaging"),
+    DISCORD_STATUS_GENERIC_FORAGING_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionForaging"),
+    DISCORD_STATUS_GENERIC_WOLF_SLAYER_TITLE(MessageObject.DISCORD_STATUS, "titleWolfSlayer"),
+    DISCORD_STATUS_GENERIC_WOLF_SLAYER_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionWolfSlayer"),
+    DISCORD_STATUS_GENERIC_SPIDER_SLAYER_TITLE(MessageObject.DISCORD_STATUS, "titleSpiderSlayer"),
+    DISCORD_STATUS_GENERIC_SPIDER_SLAYER_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionSpiderSlayer"),
+    DISCORD_STATUS_GENERIC_ZOMBIE_SLAYER_TITLE(MessageObject.DISCORD_STATUS, "titleZombieSlayer"),
+    DISCORD_STATUS_GENERIC_ZOMBIE_SLAYER_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionZombieSlayer"),
+    DISCORD_STATUS_GENERIC_GRINDING_ZEALOTS_TITLE(MessageObject.DISCORD_STATUS, "titleGrindingZealots"),
+    DISCORD_STATUS_GENERIC_GRINDING_ZEALOTS_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionGrindingZealots"),
+    DISCORD_STATUS_GENERIC_AFK_TITLE(MessageObject.DISCORD_STATUS, "titleAfk"),
+    DISCORD_STATUS_GENERIC_AFK_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionAfk"),
+    DISCORD_STATUS_GENERIC_STONKS_TITLE(MessageObject.DISCORD_STATUS, "titleStonks"),
+    DISCORD_STATUS_GENERIC_STONKS_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionStonks");
 
     private MessageObject messageObject;
     private String memberName;
@@ -234,10 +284,9 @@ public enum Message {
                 }
             }
             if (text != null && (main.getConfigValues().getLanguage() == Language.HEBREW || main.getConfigValues().getLanguage() == Language.ARABIC)) {
-                text = main.getUtils().reverseText(text);
+                text = TextUtils.reverseText(text);
             }
         } catch (NullPointerException ex) { // In case I messed up like the arguments of something, woops.
-            ex.printStackTrace();
             text = memberName;
         }
         return text;
@@ -255,7 +304,8 @@ public enum Message {
         TAB("settings.tab"),
         UPDATE_MESSAGES("messages.update"),
         ANCHOR_POINT("settings.anchorPoints"),
-        CHROMA_MODE("settings.chromaModes");
+        CHROMA_MODE("settings.chromaModes"),
+        DISCORD_STATUS("discord.status");
 
         private List<String> path;
 

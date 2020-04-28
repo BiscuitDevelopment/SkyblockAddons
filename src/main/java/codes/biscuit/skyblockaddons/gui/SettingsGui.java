@@ -6,6 +6,7 @@ import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.Feature;
 import codes.biscuit.skyblockaddons.utils.Language;
 import codes.biscuit.skyblockaddons.utils.Message;
+import codes.biscuit.skyblockaddons.utils.discord.DiscordStatus;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
@@ -15,6 +16,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.GuiIngameForge;
 
 import java.awt.*;
+import java.util.Arrays;
 import java.util.List;
 
 public class SettingsGui extends GuiScreen {
@@ -268,6 +270,25 @@ public class SettingsGui extends GuiScreen {
             boxWidth = 140;
             x = halfWidth-(boxWidth/2);
             buttonList.add(new ButtonSolid(x, y, 140, 20, Message.SETTING_POWER_ORB_DISPLAY_STYLE.getMessage(), main, feature));
+        } else if(setting == EnumUtils.FeatureSetting.DISCORD_RP_DETAILS || setting == EnumUtils.FeatureSetting.DISCORD_RP_STATE) {
+            boxWidth = 140;
+            x = halfWidth-(boxWidth/2);
+            DiscordStatus currentStatus;
+            if(setting == EnumUtils.FeatureSetting.DISCORD_RP_STATE) {
+                currentStatus = main.getConfigValues().getDiscordStatus();
+            } else {
+                currentStatus = main.getConfigValues().getDiscordDetails();
+            }
+            buttonList.add(new ButtonSelect(x, (int)y, boxWidth, 20, Arrays.asList(DiscordStatus.values()), currentStatus.ordinal(), index -> {
+                final DiscordStatus selectedStatus = DiscordStatus.values()[index];
+                if(setting == EnumUtils.FeatureSetting.DISCORD_RP_STATE) {
+                    main.getDiscordRPCManager().setStateLine(selectedStatus);
+                    main.getConfigValues().setDiscordStatus(selectedStatus);
+                } else {
+                    main.getDiscordRPCManager().setDetailsLine(selectedStatus);
+                    main.getConfigValues().setDiscordDetails(selectedStatus);
+                }
+            }));
         } else {
             boxWidth = 31; // Default size and stuff.
             x = halfWidth-(boxWidth/2);

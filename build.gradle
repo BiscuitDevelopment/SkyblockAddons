@@ -40,6 +40,21 @@ minecraft {
     replaceIn("${project.modName}.java")
 }
 
+repositories {
+    jcenter()
+
+    maven {
+        url 'https://jitpack.io'
+    }
+}
+
+dependencies {
+    // Discord RPC for Java https://github.com/jagrosh/DiscordIPC
+    provided('com.github.jagrosh:DiscordIPC:e29d6d8') {
+        exclude module: 'log4j'
+    }
+}
+
 jar {
     archiveName = project.modName + "-" + minecraft.version + "-" + version + ".jar"
 

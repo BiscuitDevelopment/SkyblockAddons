@@ -223,6 +223,9 @@ public class SkyblockAddonsGui extends GuiScreen {
                 if (main.getConfigValues().isRemoteDisabled(feature)) return;
                 if (main.getConfigValues().isDisabled(feature)) {
                     main.getConfigValues().getDisabledFeatures().remove(feature);
+                    if(feature == Feature.DISCORD_RPC) {
+                        main.getDiscordRPCManager().start();
+                    }
                 } else {
                     main.getConfigValues().getDisabledFeatures().add(feature);
                     if (feature == Feature.HIDE_FOOD_ARMOR_BAR) { // Reset the vanilla bars when disabling these two features.
@@ -232,6 +235,8 @@ public class SkyblockAddonsGui extends GuiScreen {
                     } else if (feature == Feature.FULL_INVENTORY_WARNING) {
                         main.getInventoryUtils().setInventoryWarningShown(false);
                         main.getScheduler().removeQueuedFullInventoryWarnings();
+                    } else if(feature == Feature.DISCORD_RPC) {
+                        main.getDiscordRPCManager().stop();
                     }
                 }
                 ((ButtonToggle)abstractButton).onClick();

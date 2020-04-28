@@ -97,7 +97,7 @@ public class Backpack {
                             color = BackpackColor.valueOf(extraAttributes.getString("backpack_color"));
                         } catch (IllegalArgumentException ignored) {}
                     }
-                    return new Backpack(items, main.getUtils().stripColor(stack.getDisplayName()), color);
+                    return new Backpack(items, TextUtils.stripColor(stack.getDisplayName()), color);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

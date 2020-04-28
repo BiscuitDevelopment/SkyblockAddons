@@ -257,7 +257,7 @@ public class RenderListener {
                 } else {
                     text = message.getMessage();
                 }
-                ChromaManager.renderingText(titleFeature);
+                ChromaManager.renderingText(subtitleFeature);
                 MinecraftReflection.FontRenderer.drawString(text, (float) (-MinecraftReflection.FontRenderer.getStringWidth(text) / 2), -23.0F,
                         main.getConfigValues().getColor(subtitleFeature).getRGB(), true);
                 ChromaManager.doneRenderingText();
@@ -1176,18 +1176,18 @@ public class RenderListener {
         double healIncrease = powerOrb.healIncrease * 100;
 
         List<String> display = new LinkedList<>();
-        display.add(String.format("§c+%s ❤/s", Utils.niceDouble(healthRegen, 2)));
+        display.add(String.format("§c+%s ❤/s", TextUtils.formatDouble(healthRegen)));
         if(powerOrb.manaRegen > 0) {
             int maxMana = main.getUtils().getAttributes().get(Attribute.MAX_MANA).getValue();
             double manaRegen = maxMana / 50;
             manaRegen = manaRegen + manaRegen * powerOrb.manaRegen;
-            display.add(String.format("§b+%s ✎/s", Utils.niceDouble(manaRegen, 2)));
+            display.add(String.format("§b+%s ✎/s", TextUtils.formatDouble(manaRegen)));
         }
         if (powerOrb.strength > 0) {
             display.add(String.format("§4+%d ❁", powerOrb.strength));
         }
         if (healIncrease > 0) {
-            display.add(String.format("§2+%s%% Healing", Utils.niceDouble(healIncrease, 2)));
+            display.add(String.format("§2+%s%% Healing", TextUtils.formatDouble(healIncrease)));
         }
 
         Optional<String> longestLine = display.stream().max(Comparator.comparingInt(String::length));
