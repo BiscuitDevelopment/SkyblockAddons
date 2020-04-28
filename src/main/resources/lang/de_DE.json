@@ -112,7 +112,8 @@
     "showZealotsPerEye": "Zealot-Zähler - Zeige Zealots pro Auge",
     "turnBowGreenWhenUsingToxicArrowPoison": "Färbe den Bogen grün, wenn du Pfeilgift benutzt",
     "birchParkRainmakerTimer": "Birchpark verbleibender Regentimer",
-    "combatTimerDisplay": "Combat Timer Anzeige"
+    "combatTimerDisplay": "Combat Timer Anzeige",
+    "discordRP": "Discord Rich Presence"
   },
   "messages": {
     "betaTesters": "Danke, dass du ein Betatester bist! Bitte melde alle auftretenden Fehler in dem Discordchannel.",
@@ -165,8 +166,11 @@
     "chooseAColor": "Wähle eine Farbe",
     "selectedColor": "Ausgewählte Farbe",
     "setHexColor": "Lege Hex Farbe fest",
-    "rescaleFeatures": "Rescale Features",
-    "resizeBars": "Resize Bars",
-    "showColorIcons": "Show Color Icons"
+    "rescaleFeatures": "Funktionen umskalieren",
+    "resizeBars": "Balken skalieren",
+    "showColorIcons": "Zeige Farbsymbole"
+  },
+  "discord": {
+    "status": {}
   }
 }
