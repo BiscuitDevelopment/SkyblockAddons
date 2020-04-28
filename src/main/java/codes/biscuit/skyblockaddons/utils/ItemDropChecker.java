@@ -13,9 +13,13 @@ import net.minecraft.item.ItemStack;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.net.URISyntaxException;
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
@@ -34,6 +38,7 @@ import java.util.Objects;
 public class ItemDropChecker {
     private final SkyblockAddons MAIN;
     private final Logger LOGGER;
+    private final Gson GSON;
 
     /** The list that is checked to determine if an item is allowed to be dropped */
     private ItemDropList itemDropList;
@@ -49,13 +54,13 @@ public class ItemDropChecker {
      * @param main the SkyblockAddons instance
      */
     public ItemDropChecker(SkyblockAddons main) {
-        Gson GSON = new GsonBuilder().setPrettyPrinting().create();
+        this.GSON = new GsonBuilder().setPrettyPrinting().create();
         this.MAIN = main;
         this.LOGGER = LogManager.getLogger("SBA Item Drop Checker");
 
         // Try to get the lists from the file.
         try {
-            String ITEM_DROP_LIST_FILE_PATH = "Stop dropping or selling rare items/itemDropList.json";
+            String ITEM_DROP_LIST_FILE_PATH = "itemDropList.json";
             JsonReader jsonFileReader = new JsonReader(Files.newBufferedReader(Paths.get(Objects.requireNonNull(this.getClass().getClassLoader().getResource(ITEM_DROP_LIST_FILE_PATH)).toURI())));
             itemDropList = GSON.fromJson(jsonFileReader, ItemDropList.class);
         } catch (FileNotFoundException | URISyntaxException e) {
@@ -65,6 +70,36 @@ public class ItemDropChecker {
             LOGGER.error("Error reading from item drop list!");
             LOGGER.catching(e);
         }
+
+        grabItemListFromOnline();
+    }
+
+    private void grabItemListFromOnline() {
+        LOGGER.info("Attempting to pull item drop list from online...");
+        new Thread(() -> {
+            try {
+                URL url = new URL("https://raw.githubusercontent.com/biscuut/SkyblockAddons/development/src/main/resources/itemDropList.json");
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                connection.setRequestMethod("GET");
+                connection.setRequestProperty("User-Agent", Utils.USER_AGENT);
+
+                LOGGER.info("Got response code " + connection.getResponseCode());
+
+                StringBuilder response = new StringBuilder();
+                try (BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
+                    String line;
+                    while ((line = in.readLine()) != null) {
+                        response.append(line);
+                    }
+                }
+                connection.disconnect();
+
+                this.itemDropList = GSON.fromJson(response.toString(), ItemDropList.class);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                LOGGER.warn("SkyblockAddons: There was an error pulling the item drop list from online...");
+            }
+        }).start();
     }
 
     /**
@@ -122,8 +157,8 @@ public class ItemDropChecker {
 
             String itemID = ItemUtils.getSkyBlockItemID(item);
             Rarity rarity = ItemUtils.getRarity(item);
-            List<String> blacklist = itemDropList.getBlacklist();
-            List<String> whitelist = itemDropList.getWhitelist();
+            List<String> blacklist = itemDropList.getDontDropTheseItems();
+            List<String> whitelist = itemDropList.getAllowDroppingTheseItems();
 
             if (itemIsInHotbar) {
                 if (rarity.compareTo(itemDropList.getMinimumHotbarRarity()) < 0 && !blacklist.contains(itemID)) {
