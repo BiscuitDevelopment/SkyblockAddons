@@ -112,7 +112,8 @@
     "showZealotsPerEye": "Zeawot Countew - Totaw Zeawots Pew Eye",
     "turnBowGreenWhenUsingToxicArrowPoison": "Cowow Bow Gween When Using Toxic Awwow Poison",
     "birchParkRainmakerTimer": "Biwch Pawk Wainmakew Timew",
-    "combatTimerDisplay": "Combat Timew Dispway"
+    "combatTimerDisplay": "Combat Timew Dispway",
+    "discordRP": "Discord Rich Presence"
   },
   "messages": {
     "betaTesters": "Thank you fow being a beta testew! Pwease wepowt any bugs you encoutew in the Discord channew >-<.",
@@ -165,8 +166,11 @@
     "chooseAColor": "Choose a Colow",
     "selectedColor": "Sewected Colow",
     "setHexColor": "Set Hex Colow",
-    "rescaleFeatures": "Rescale Features",
-    "resizeBars": "Resize Bars",
-    "showColorIcons": "Show Color Icons"
+    "rescaleFeatures": "Wescawe Featuwes",
+    "resizeBars": "Wesize Baws",
+    "showColorIcons": "Show Cowow Icons"
+  },
+  "discord": {
+    "status": {}
   }
 }
