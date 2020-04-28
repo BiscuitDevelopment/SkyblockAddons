@@ -112,7 +112,8 @@
     "showZealotsPerEye": "Contatore di Zealot - Mostra rapporto Zealots per occhio",
     "turnBowGreenWhenUsingToxicArrowPoison": "Colora di verde l’arco mentre scagli una Poison Arrow",
     "birchParkRainmakerTimer": "Timer del Rainmaker nel parco di betulle",
-    "combatTimerDisplay": "Combat Timer Display"
+    "combatTimerDisplay": "Mostra timer del combattimento",
+    "discordRP": "Discord Rich Presence"
   },
   "messages": {
     "betaTesters": "Grazie per essere stato un beta tester! Per favore segnala tutti i bug riscontrati nel canale di Discord.",
@@ -165,8 +166,11 @@
     "chooseAColor": "Scegli un colore",
     "selectedColor": "Colore selezionato",
     "setHexColor": "Imposta un codice colore hex",
-    "rescaleFeatures": "Rescale Features",
-    "resizeBars": "Resize Bars",
-    "showColorIcons": "Show Color Icons"
+    "rescaleFeatures": "Ridimensiona le funzioni",
+    "resizeBars": "Ridimensiona le barre",
+    "showColorIcons": "Mostra icone di colore"
+  },
+  "discord": {
+    "status": {}
   }
 }
