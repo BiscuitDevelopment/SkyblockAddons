@@ -112,7 +112,8 @@
     "showZealotsPerEye": "Zealot Counter - Show Zealots Per Eye",
     "turnBowGreenWhenUsingToxicArrowPoison": "Color Bow Green When Usin' Toxic Arrow Poison",
     "birchParkRainmakerTimer": "Birch Park Rainmaker Timer",
-    "combatTimerDisplay": "Yer Combat Tim'r Display"
+    "combatTimerDisplay": "Yer Combat Tim'r Display",
+    "discordRP": "Discord Rich Presence"
   },
   "messages": {
     "betaTesters": "aight thanks biscoot",
@@ -168,5 +169,8 @@
     "rescaleFeatures": "Rescale Features",
     "resizeBars": "Resize Bars",
     "showColorIcons": "Show Color Icons"
+  },
+  "discord": {
+    "status": {}
   }
 }
