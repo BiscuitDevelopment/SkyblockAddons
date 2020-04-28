@@ -8,7 +8,7 @@
     "skeletonHatBonesBar": "หลอดเกราะของหมวกกระดูก",
     "hideFoodAndArmor": "ซ่อนหลอดอาหารและเกราะ",
     "fullInventoryWarning": "เตือนของในตัวกำลังเต็ม",
-    "repeating": "การทำซ้ำ",
+    "repeating": "การเตือนซ้ำ",
     "disableEmberRodAbility": "ปิดการใช้สกิลของ Ember Rod ในเกาะตนเอง",
     "editLocations": "การเคลื่อนย้าย GUI",
     "guiScale": "ขยาย GUI %scale%",
@@ -97,26 +97,26 @@
     "showCakeBagPreview": "แสดงไอเท็มในถุงเก็บเค้ก",
     "showBackpackPreviewInAH": "โชว์แบบกระเป๋าในขณะที่ใช้ร้านประมูล",
     "enableDevFeatures": "เปิดใช้ฟีเจอร์สำหรับผู้พัฒนา",
-    "chromaSpeed": "Chroma Speed",
+    "chromaSpeed": "ความเร็วสีรุ้งกระพริบ",
     "chromaMode": "โหมดสีรุ้ง",
     "chromaModes": {
       "allTheSame": "สีเหมือนกันทั้งหมด",
       "fade": "เรียงสี"
     },
     "chromaFadeWidth": "เรียงสีด้วยความกว้าง",
-    "sortTabEffectTimers": "Sort Timers by Duration",
-    "showBrokenFragments": "Show Broken Dragon Fragments",
-    "skyblockAddonsButtonInPauseMenu": "Show SBA Button in Pause Menu",
-    "showTotalZealotCount": "Zealot Counter - Total Zealot Count",
-    "showSummoningEyeCount": "Zealot Counter - Total Eye Count",
-    "showZealotsPerEye": "Zealot Counter - Show Zealots Per Eye",
-    "turnBowGreenWhenUsingToxicArrowPoison": "Color Bow Green When Using Toxic Arrow Poison",
-    "birchParkRainmakerTimer": "Birch Park Rainmaker Timer",
-    "combatTimerDisplay": "Combat Timer Display",
-    "discordRP": "Discord Rich Presence"
+    "sortTabEffectTimers": "เรียงตามระยะเวลา",
+    "showBrokenFragments": "แสดงชิ้นส่วนมังกรที่พัง",
+    "skyblockAddonsButtonInPauseMenu": "แสดงปุ่ม SBA ในหน้าต่างเมนู",
+    "showTotalZealotCount": "จำนวน Zealot",
+    "showSummoningEyeCount": "แสดงจำนวน ดวงตาที่ได้จาก Zealot",
+    "showZealotsPerEye": "แสดงจำนวน Zealot ต่อดวงตา",
+    "turnBowGreenWhenUsingToxicArrowPoison": "แสดงธนูสีเขียวเมื่อใช้ ลูกธนูพิษ",
+    "birchParkRainmakerTimer": "แสดงเวลาฝนตกใน ฺBirch Park",
+    "combatTimerDisplay": "แสดงเวลา Combat",
+    "discordRP": "สถานะของดิสคอร์ด"
   },
   "messages": {
-    "betaTesters": "Thank you for being a beta tester! Please report any bugs you encounter in the Discord channel.",
+    "betaTesters": "ขอบคุณสำหรับการทดสอบ โปรดแจ้งบัคที่เจอใน Discord Channel",
     "dropConfirmation": "กดทิ้งของอีกที่เพื่อยืนยันทิ้งของสิ่งนี้!",
     "magmaBossWarning": "บอส Magma เกิดแล้ว!",
     "fullInventory": "ช่องเก็บของเต็มแล้ว!",
@@ -144,8 +144,8 @@
       "downloading": "กำลังดาวน์โหลด Patch ใหม่! สถานะ: %downloaded%/%total% โปรดจำไว้ว่าหลังดาวน์โหลดเสร็จแล้ว คุณต้องลบไฟล์เวอร์ชั่นเก่าออก",
       "failed": "ดาวน์โหลด Patch ไม่สำเร็จ! กรุณาดาวน์โหลดโดยใช้ลิงค์ในช่องแชท",
       "downloadFinished": "ดาวน์โหลด Patch สำเร็จ ไฟล์ได้ถูกบักทึกเป็น %file% กรุณาอย่าลืมลบไฟล์เก่าหลังจากปิด Minecraft คลิกที่ข้อความในช่องแชทเพื่อเปิดโฟลเดอร์",
-      "newBeta": "A new beta (%version%) is available! Please update using the \"Mods\" menu.",
-      "newUpdate": "A new update (%version%) is available! Please update using the \"Mods\" menu."
+      "newBeta": "เบต้าเวอร์ชั่น (%version%) พร้อมแล้ว โปรดอัพเดทโดยใช้เมนู มอด",
+      "newUpdate": "เวอร์ชั่นใหม่ (%version%) พร้อมแล้ว โปรดอัพเดทโดยใช้เมนู มอด"
     },
     "slotLocked": "ช่องนี้ถูกล็อคไว้!",
     "summoningEyeFound": "ดวงตาอัญเชิญ!",
@@ -166,9 +166,9 @@
     "chooseAColor": "เลือกสี",
     "selectedColor": "สีที่เลือก",
     "setHexColor": "ตั้งค่าสี",
-    "rescaleFeatures": "Rescale Features",
-    "resizeBars": "Resize Bars",
-    "showColorIcons": "Show Color Icons"
+    "rescaleFeatures": "ปรับขนาดรูปแบบ",
+    "resizeBars": "ปรับขนาดแถบ",
+    "showColorIcons": "แสดงปุ่มสี"
   },
   "discord": {
     "status": {}
