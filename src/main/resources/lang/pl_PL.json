@@ -113,7 +113,7 @@
     "turnBowGreenWhenUsingToxicArrowPoison": "Pokaż łuk na zielono podczas używania toksycznej strzały",
     "birchParkRainmakerTimer": "Pozostały czas deszcu w parku",
     "combatTimerDisplay": "Pozostały czas combat taga",
-    "discordRP": "Discord Rich Presence"
+    "discordRP": "Status Discord"
   },
   "messages": {
     "betaTesters": "Thank you for being a beta tester! Please report any bugs you encounter in the Discord channel.",
@@ -166,7 +166,7 @@
     "chooseAColor": "Wybierz kolor",
     "selectedColor": "Wybrany kolor",
     "setHexColor": "Ustaw kolor heksalny",
-    "rescaleFeatures": "Rescale Features",
+    "rescaleFeatures": "Reskaluj Funkcje Moda",
     "resizeBars": "Zmień rozmiar pasków",
     "showColorIcons": "Pokaż ikony kolorów"
   },
