@@ -112,7 +112,8 @@
     "showZealotsPerEye": "Contador de Zealotes - Mostrar Zealotes Por Ojo",
     "turnBowGreenWhenUsingToxicArrowPoison": "Colora el Arco Verde Mientras Usando Veneno de Flecha Tóxia",
     "birchParkRainmakerTimer": "Temporizador de Rainmaker del Parque de Abedul",
-    "combatTimerDisplay": "Temporizador de Combate"
+    "combatTimerDisplay": "Temporizador de Combate",
+    "discordRP": "Discord Rich Presence"
   },
   "messages": {
     "betaTesters": "¡Gracias por ser un probador beta! Por favor reporta cualquier problema que encuentres en el canal de Discord.",
@@ -168,5 +169,8 @@
     "rescaleFeatures": "Rescale Features",
     "resizeBars": "Resize Bars",
     "showColorIcons": "Show Color Icons"
+  },
+  "discord": {
+    "status": {}
   }
 }
