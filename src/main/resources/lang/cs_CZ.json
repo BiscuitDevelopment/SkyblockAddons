@@ -112,7 +112,8 @@
     "showZealotsPerEye": "Počítadlo Zealotů - Zobrazit Zealoty/Oko",
     "turnBowGreenWhenUsingToxicArrowPoison": "Obarvi luk zeleně při použití Toxického jedu na šíp",
     "birchParkRainmakerTimer": "Časovač Dešťotvůrce v Birch Parku",
-    "combatTimerDisplay": "Combat Timer Display"
+    "combatTimerDisplay": "Combat Timer Display",
+    "discordRP": "Discord Rich Presence"
   },
   "messages": {
     "betaTesters": "Děkujeme, že jsi betatester! Prosím, nahlaš všechny bugy na které naražíš v kanálu na Discordu.",
@@ -167,6 +168,9 @@
     "setHexColor": "Nastavit hexadecimální barvu",
     "rescaleFeatures": "Rescale Features",
     "resizeBars": "Resize Bars",
-    "showColorIcons": "Show Color Icons"
+    "showColorIcons": "Zobrazit barevné ikony"
+  },
+  "discord": {
+    "status": {}
   }
 }
