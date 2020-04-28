@@ -86,7 +86,7 @@
       "compact": "简洁"
     },
     "disableMagicalSoupMessage": "不显示神奇蘑菇汤的提示信息",
-    "zealotCounter": "显示末影战士击杀数",
+    "zealotCounter": "末影战士击杀计数 - 自上次召唤之眼掉落",
     "tickerChargesDisplay": "显示刻数/充能",
     "tab": {
       "generalSettings": "常规设置"
@@ -112,7 +112,8 @@
     "showZealotsPerEye": "Zealot 计数器 - 每眼睛所需 Zealots 数",
     "turnBowGreenWhenUsingToxicArrowPoison": "使用 Toxic Arrow Poison 时将弓染成绿色",
     "birchParkRainmakerTimer": "桦木公园下雨计时",
-    "combatTimerDisplay": "显示战斗计时器"
+    "combatTimerDisplay": "显示战斗计时器",
+    "discordRP": "Discord Rich Presence"
   },
   "messages": {
     "betaTesters": "感谢你成为一个 Beta 版测试者, 请在 Discord 中反馈你遇到的漏洞",
@@ -165,8 +166,11 @@
     "chooseAColor": "选择颜色",
     "selectedColor": "已选择颜色",
     "setHexColor": "设置十六进制颜色",
-    "rescaleFeatures": "Rescale Features",
-    "resizeBars": "Resize Bars",
-    "showColorIcons": "Show Color Icons"
+    "rescaleFeatures": "重置缩放大小",
+    "resizeBars": "重置计量条大小",
+    "showColorIcons": "显示颜色图标"
+  },
+  "discord": {
+    "status": {}
   }
 }
