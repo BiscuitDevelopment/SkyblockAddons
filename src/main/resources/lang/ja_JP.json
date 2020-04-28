@@ -112,7 +112,8 @@
     "showZealotsPerEye": "Zealotカウンター - アイ1つあたりのZealotキル数を表示する",
     "turnBowGreenWhenUsingToxicArrowPoison": "毒矢の使用時に弓を緑色にする",
     "birchParkRainmakerTimer": "Birch Parkの雨降りタイマー",
-    "combatTimerDisplay": "Combat Timer Display"
+    "combatTimerDisplay": "Combat Timer Display",
+    "discordRP": "Discord Rich Presence"
   },
   "messages": {
     "betaTesters": "ベータテストに参加してくれてありがとう！バグに遭遇した時はDiscordで報告してください。",
@@ -168,5 +169,8 @@
     "rescaleFeatures": "Rescale Features",
     "resizeBars": "Resize Bars",
     "showColorIcons": "Show Color Icons"
+  },
+  "discord": {
+    "status": {}
   }
 }
