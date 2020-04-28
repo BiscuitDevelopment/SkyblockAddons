@@ -112,7 +112,8 @@
     "showZealotsPerEye": "Licznik Zealotów - Pokaż ilość zealotów na jedno oko",
     "turnBowGreenWhenUsingToxicArrowPoison": "Pokaż łuk na zielono podczas używania toksycznej strzały",
     "birchParkRainmakerTimer": "Pozostały czas deszcu w parku",
-    "combatTimerDisplay": "Pozostały czas combat taga"
+    "combatTimerDisplay": "Pozostały czas combat taga",
+    "discordRP": "Discord Rich Presence"
   },
   "messages": {
     "betaTesters": "Thank you for being a beta tester! Please report any bugs you encounter in the Discord channel.",
@@ -166,7 +167,10 @@
     "selectedColor": "Wybrany kolor",
     "setHexColor": "Ustaw kolor heksalny",
     "rescaleFeatures": "Rescale Features",
-    "resizeBars": "Resize Bars",
-    "showColorIcons": "Show Color Icons"
+    "resizeBars": "Zmień rozmiar pasków",
+    "showColorIcons": "Pokaż ikony kolorów"
+  },
+  "discord": {
+    "status": {}
   }
 }
