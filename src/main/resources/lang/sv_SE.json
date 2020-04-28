@@ -112,7 +112,8 @@
     "showZealotsPerEye": "Zealot Räknare - Visa Zealots Per Öga",
     "turnBowGreenWhenUsingToxicArrowPoison": "Färga Pilbåge Grön När Du Använder Gift Pilar",
     "birchParkRainmakerTimer": "Björk Park Regngörar Timer",
-    "combatTimerDisplay": "Combat Timer Display"
+    "combatTimerDisplay": "Visa Stridstimer",
+    "discordRP": "Discord Rich Presence"
   },
   "messages": {
     "betaTesters": "Tack för att du är en betatestare! Vänligen rapportera eventuella buggar du stöter på i Discord-kanalen.",
@@ -165,8 +166,11 @@
     "chooseAColor": "Välj en färg",
     "selectedColor": "Välj färg",
     "setHexColor": "Sett en hex färg",
-    "rescaleFeatures": "Rescale Features",
-    "resizeBars": "Resize Bars",
-    "showColorIcons": "Show Color Icons"
+    "rescaleFeatures": "Omskala Funktioner",
+    "resizeBars": "Omskala Barer",
+    "showColorIcons": "Visa Färgikoner"
+  },
+  "discord": {
+    "status": {}
   }
 }
