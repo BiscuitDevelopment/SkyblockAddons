@@ -112,7 +112,8 @@
     "showZealotsPerEye": "Compteur de Zealot - Afficher le nombre de Zealot par œil",
     "turnBowGreenWhenUsingToxicArrowPoison": "Afficher l'arc en vert lors de l'utilisation des flèches toxiques",
     "birchParkRainmakerTimer": "Minuteur de pluie du parc de bouleau",
-    "combatTimerDisplay": "Affichage du minuteur de combat"
+    "combatTimerDisplay": "Affichage du minuteur de combat",
+    "discordRP": "Discord Rich Presence"
   },
   "messages": {
     "betaTesters": "Merci d'être un bêta-testeur ! Veuillez signaler tous les bugs que vous rencontrez sur Discord.",
@@ -165,8 +166,11 @@
     "chooseAColor": "Choisir une couleur",
     "selectedColor": "Couleur sélectionnée",
     "setHexColor": "Définir la couleur hexadécimale",
-    "rescaleFeatures": "Rescale Features",
-    "resizeBars": "Resize Bars",
-    "showColorIcons": "Show Color Icons"
+    "rescaleFeatures": "Redimensionner les fonctionnalités",
+    "resizeBars": "Redimensionner les barres",
+    "showColorIcons": "Afficher les icônes de couleur"
+  },
+  "discord": {
+    "status": {}
   }
 }
