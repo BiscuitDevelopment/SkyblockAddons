@@ -8,7 +8,7 @@
     "skeletonHatBonesBar": "İskelet Kaskı Kemikleri Göstergesi",
     "hideFoodAndArmor": "Açlık ve Defans Göstergelerini Sakla",
     "fullInventoryWarning": "Envanter Dolunca Uyarı",
-    "repeating": "Repeating",
+    "repeating": "Uyarıyı Tekrarla",
     "disableEmberRodAbility": "Adada Ember Rod Özelliğini Kapat",
     "editLocations": "Arayüzü Düzenle",
     "guiScale": "Arayüz Ölçeği: %scale%",
@@ -51,7 +51,7 @@
     "makeEnderchestsInEndGreen": "Sonda ki Ender Sandıklarının rengini değiştir",
     "changeColor": "Rengi değiştir",
     "showInOtherGames": "Diğer Oyunlarda da Göster",
-    "useVanillaTexture": "Sade Dokuları kullan",
+    "useVanillaTexture": "Vanilla Texture kullan",
     "textStyle": "Metin Tarzı",
     "textStyles": {
       "one": "Stil 1",
@@ -112,7 +112,8 @@
     "showZealotsPerEye": "Zealot Counter - Show Zealots Per Eye",
     "turnBowGreenWhenUsingToxicArrowPoison": "Color Bow Green When Using Toxic Arrow Poison",
     "birchParkRainmakerTimer": "Birch Park Rainmaker Timer",
-    "combatTimerDisplay": "Combat Timer Display"
+    "combatTimerDisplay": "Savaş zamanlayıcısı görüntüleme",
+    "discordRP": "Discord Rich Presence"
   },
   "messages": {
     "betaTesters": "Thank you for being a beta tester! Please report any bugs you encounter in the Discord channel.",
@@ -165,8 +166,11 @@
     "chooseAColor": "Bir renk seçin",
     "selectedColor": "Seçili Renk",
     "setHexColor": "Hex Rengini Ayarla",
-    "rescaleFeatures": "Rescale Features",
+    "rescaleFeatures": "Yeniden ölçülendirme özellikleri",
     "resizeBars": "Resize Bars",
     "showColorIcons": "Show Color Icons"
+  },
+  "discord": {
+    "status": {}
   }
 }
