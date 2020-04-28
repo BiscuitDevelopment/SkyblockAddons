@@ -1,0 +1,12 @@
+{
+  "minimumInventoryRarity": "RARE",
+  "minimumHotbarRarity": "RARE",
+  "blacklist": [
+    "PIGGY_BANK",
+    "SMALL_BACKPACK",
+    "SULPHUR"
+  ],
+  "whitelist": [
+    "RUNE"
+  ]
+}

@@ -1,7 +1,6 @@
 package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.constants.game.Rarity;
 import codes.biscuit.skyblockaddons.utils.events.SkyblockJoinedEvent;
 import codes.biscuit.skyblockaddons.utils.events.SkyblockLeftEvent;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
@@ -72,17 +71,14 @@ public class Utils {
     /** Used for web requests. */
     public static final String USER_AGENT = "SkyblockAddons/" + SkyblockAddons.VERSION;
 
-    /**
-     * Items containing these in the name should never be dropped. Helmets a lot of times
-     * in skyblock are weird items and are not damageable so that's why its included.
-     */
-    private static final String[] RARE_ITEM_OVERRIDES = {"Backpack", "Helmet"};
-
     // I know this is messy af, but frustration led me to take this dark path - said someone not biscuit
     public static boolean blockNextClick = false;
 
     /** Get a player's attributes. This includes health, mana, and defence. */
     private Map<Attribute, MutableInt> attributes = new EnumMap<>(Attribute.class);
+
+    /** This is the item checker that makes sure items being dropped or sold are allowed to be dropped or sold. */
+    private final ItemDropChecker itemDropChecker;
 
     /** List of enchantments that the player is looking to find. */
     private List<String> enchantmentMatches = new LinkedList<>();
@@ -133,6 +129,7 @@ public class Utils {
         this.main = main;
         logger = SkyblockAddons.getInstance().getLogger();
         addDefaultStats();
+        itemDropChecker = new ItemDropChecker(main);
         MinecraftForge.EVENT_BUS.register(this);
     }
 
@@ -617,20 +614,6 @@ public class Utils {
             }
         }
         return null;
-    }
-
-    public boolean cantDropItem(ItemStack item, Rarity rarity, boolean hotbar) {
-        if (Items.bow.equals(item.getItem()) && rarity == Rarity.COMMON || rarity == null) return false; // exclude rare bows lol
-        if (item.hasDisplayName()) {
-            for (String exclusion : RARE_ITEM_OVERRIDES) {
-                if (item.getDisplayName().contains(exclusion)) return true;
-            }
-        }
-        if (hotbar) { // Hotbar items also restrict rare rarity.
-            return item.getItem().isDamageable() || rarity != Rarity.COMMON;
-        } else {
-            return item.getItem().isDamageable() || (rarity != Rarity.COMMON && rarity != Rarity.UNCOMMON);
-        }
     }
 
     public void downloadPatch(String version) {

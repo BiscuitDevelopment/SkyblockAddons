@@ -50,13 +50,6 @@ public class InventoryUtils {
 
     @Getter private SlayerArmorProgress[] slayerArmorProgresses = new SlayerArmorProgress[4];
 
-    /**
-     * These three are used for {@link InventoryUtils#shouldCancelDrop(ItemStack)}.
-     */
-    private String lastItemName = null;
-    private long lastDrop = System.currentTimeMillis();
-    private int dropCount = 1;
-
     private SkyblockAddons main;
 
     public InventoryUtils(SkyblockAddons main) {
@@ -232,6 +225,11 @@ public class InventoryUtils {
         }
     }
 
+    /**
+     * Determines if the player is using Toxic Arrow Poison by detecting if it is present in their inventory.
+     *
+     * @param p the player to check
+     */
     public void checkIfUsingToxicArrowPoison(EntityPlayerSP p) {
         if (main.getConfigValues().isEnabled(Feature.TURN_BOW_GREEN_WHEN_USING_TOXIC_ARROW_POISON)) {
             for (ItemStack item : p.inventory.mainInventory) {
@@ -242,50 +240,6 @@ public class InventoryUtils {
             }
             this.usingToxicArrowPoison = false;
         }
-    }
-
-    public boolean shouldCancelDrop(Slot slot) {
-        if (slot != null && slot.getHasStack()) {
-            ItemStack stack = slot.getStack();
-            return shouldCancelDrop(stack);
-        }
-        return false;
-    }
-
-    public boolean shouldCancelDrop(ItemStack stack) {
-        if (main.getUtils().cantDropItem(stack, ItemUtils.getRarity(stack), false)) {
-            String heldItemName = stack.hasDisplayName() ? stack.getDisplayName() : stack.getUnlocalizedName();
-
-            if (lastItemName != null && lastItemName.equals(heldItemName) && System.currentTimeMillis() - lastDrop < 3000 && dropCount >= 2) {
-                lastDrop = System.currentTimeMillis();
-            } else {
-                if (heldItemName.equals(lastItemName)) {
-                    if (System.currentTimeMillis() - lastDrop > 3000) {
-                        dropCount = 1;
-                    } else {
-                        dropCount++;
-                    }
-                } else {
-                    dropCount = 1;
-                }
-
-                // Use a different message if just one more click is needed
-                if (dropCount == 2) {
-                    SkyblockAddons.getInstance().getUtils().sendMessage(main.getConfigValues().getRestrictedColor(Feature.STOP_DROPPING_SELLING_RARE_ITEMS) +
-                            Message.MESSAGE_CLICK_ONE_MORE_TIME.getMessage(String.valueOf(3-dropCount)));
-                }
-                else {
-                    SkyblockAddons.getInstance().getUtils().sendMessage(main.getConfigValues().getRestrictedColor(Feature.STOP_DROPPING_SELLING_RARE_ITEMS) +
-                            Message.MESSAGE_CLICK_MORE_TIMES.getMessage(String.valueOf(3-dropCount)));
-                }
-
-                lastItemName = heldItemName;
-                lastDrop = System.currentTimeMillis();
-                main.getUtils().playLoudSound("note.bass", 0.5);
-                return true;
-            }
-        }
-        return false;
     }
 
     /**
@@ -299,6 +253,12 @@ public class InventoryUtils {
         else return 0;
     }
 
+    /**
+     * Checks if the player is wearing any Revenant or Tarantula armor.
+     * If the armor is detected, the armor's levelling progress is retrieved to be displayed on the HUD.
+     *
+     * @param p the player to check
+     */
     public void checkIfWearingSlayerArmor(EntityPlayerSP p) {
         if (main.getConfigValues().isEnabled(Feature.SLAYER_INDICATOR)) {
             for (int i = 3; i > -1; i--) {

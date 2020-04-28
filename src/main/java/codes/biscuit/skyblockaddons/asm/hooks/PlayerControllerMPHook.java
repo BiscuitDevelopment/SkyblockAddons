@@ -45,6 +45,31 @@ public class PlayerControllerMPHook {
     private static long lastUnmineableMessage = -1;
 
     /**
+     * Checks if an item is being dropped and if an item is being dropped, whether it is allowed to be dropped.
+     * This check works only for mouse clicks, not presses of the "Drop Item" key.
+     *
+     * @param clickModifier the click modifier
+     * @param slotNum the number of the slot that was clicked on
+     * @param heldStack the item stack the player is holding with their mouse
+     * @return {@code true} if the action should be cancelled, {@code false} otherwise
+     */
+    public static boolean checkItemDrop(int clickModifier, int slotNum, ItemStack heldStack) {
+        // Is this a left or right click?
+        if ((clickModifier == 0 || clickModifier == 1)) {
+            // Is the player clicking outside their inventory?
+            if (slotNum == -999) {
+                // Is the player holding an item stack with their mouse?
+                if (heldStack != null) {
+                    return !SkyblockAddons.getInstance().getUtils().getItemDropChecker().canDropItem(heldStack);
+                }
+            }
+        }
+
+        // The player is not dropping an item. Don't cancel this action.
+        return false;
+    }
+
+    /**
      * Cancels stem breaks if holding an item, to avoid accidental breaking.
      */
     public static void onPlayerDamageBlock(BlockPos loc, ReturnValue<Boolean> returnValue) {
@@ -123,77 +148,77 @@ public class PlayerControllerMPHook {
         final int slotId = slotNum;
         ItemStack itemStack = player.inventory.getItemStack();
 
-        // Prevent dropping rare items
-        if (main.getConfigValues().isEnabled(Feature.STOP_DROPPING_SELLING_RARE_ITEMS)) {
-            // Is this a left or right click?
-            if ((clickModifier == 0 || clickModifier == 1)) {
-                // Is the player clicking outside their inventory?
-                if (slotNum == -999) {
-                    // Is the player holding an item stack with their mouse?
-                    if (itemStack != null) {
-                        if (main.getInventoryUtils().shouldCancelDrop(itemStack)) {
-                            returnValue.cancel();
+        if (main.getUtils().isOnSkyblock()) {
+            // Prevent dropping rare items
+            if (main.getConfigValues().isEnabled(Feature.STOP_DROPPING_SELLING_RARE_ITEMS)) {
+                if (checkItemDrop(clickModifier, slotNum, itemStack)) {
+                    returnValue.cancel();
+                }
+            }
+
+            if (player.openContainer != null) {
+                slotNum += main.getInventoryUtils().getSlotDifference(player.openContainer);
+
+                // Prevent clicking on locked slots.
+                if (main.getConfigValues().isEnabled(Feature.LOCK_SLOTS)
+                        && main.getConfigValues().getLockedSlots().contains(slotNum)
+                        && (slotNum >= 9 || player.openContainer instanceof ContainerPlayer && slotNum >= 5)) {
+                    main.getUtils().playLoudSound("note.bass", 0.5);
+                    returnValue.cancel();
+                }
+
+                // Crafting patterns
+                final Container slots = player.openContainer;
+
+                Slot slotIn;
+                try {
+                    slotIn = slots.getSlot(slotId);
+                } catch (IndexOutOfBoundsException e) {
+                    slotIn = null;
+                }
+
+                if (slotIn != null && EnumUtils.InventoryType.getCurrentInventoryType() == EnumUtils.InventoryType.CRAFTING_TABLE
+                        && main.getConfigValues().isEnabled(Feature.CRAFTING_PATTERNS)) {
+
+                    final CraftingPattern selectedPattern = CraftingPatternSelection.selectedPattern;
+                    final ItemStack clickedItem = slotIn.getStack();
+                    if (selectedPattern != CraftingPattern.FREE && clickedItem != null) {
+                        final ItemStack[] craftingGrid = new ItemStack[9];
+                        for (int i = 0; i < CraftingPattern.CRAFTING_GRID_SLOTS.size(); i++) {
+                            int slotIndex = CraftingPattern.CRAFTING_GRID_SLOTS.get(i);
+                            craftingGrid[i] = slots.getSlot(slotIndex).getStack();
+                        }
+
+                        final CraftingPatternResult result = selectedPattern.checkAgainstGrid(craftingGrid);
+
+                        if (slotIn.inventory.equals(Minecraft.getMinecraft().thePlayer.inventory)) {
+                            if (result.isFilled() && !result.fitsItem(clickedItem) && clickModifier == SHIFTCLICK_CLICK_TYPE) {
+                                // cancel shift-clicking items from the inventory if the pattern is already filled
+                                if (System.currentTimeMillis() > lastCraftingSoundPlayed + CRAFTING_PATTERN_SOUND_COOLDOWN) {
+                                    main.getUtils().playSound("note.bass", 0.5);
+                                    lastCraftingSoundPlayed = System.currentTimeMillis();
+                                }
+                                returnValue.cancel();
+                            }
+                        } else {
+                            if (slotIn.getSlotIndex() == CraftingPattern.CRAFTING_RESULT_INDEX
+                                    && !result.isSatisfied()
+                                    && CraftingPatternSelection.blockCraftingIncomplete) {
+                                // cancel clicking the result if the pattern isn't satisfied
+                                if (System.currentTimeMillis() > lastCraftingSoundPlayed + CRAFTING_PATTERN_SOUND_COOLDOWN) {
+                                    main.getUtils().playSound("note.bass", 0.5);
+                                    lastCraftingSoundPlayed = System.currentTimeMillis();
+                                }
+                                returnValue.cancel();
+                            }
                         }
                     }
                 }
             }
         }
-
-        if (player.openContainer != null) {
-            slotNum += main.getInventoryUtils().getSlotDifference(player.openContainer);
-            if (main.getConfigValues().isEnabled(Feature.LOCK_SLOTS) && main.getUtils().isOnSkyblock()
-                    && main.getConfigValues().getLockedSlots().contains(slotNum)
-                    && (slotNum >= 9 || player.openContainer instanceof ContainerPlayer && slotNum >= 5)) {
-                main.getUtils().playLoudSound("note.bass", 0.5);
+        else {
+            if (checkItemDrop(clickModifier, slotNum, itemStack)) {
                 returnValue.cancel();
-            }
-
-            // Crafting patterns
-            final Container slots = player.openContainer;
-
-            Slot slotIn;
-            try {
-                slotIn = slots.getSlot(slotId);
-            } catch (IndexOutOfBoundsException e) {
-                slotIn = null;
-            }
-
-            if (slotIn != null && EnumUtils.InventoryType.getCurrentInventoryType() == EnumUtils.InventoryType.CRAFTING_TABLE
-                    && main.getConfigValues().isEnabled(Feature.CRAFTING_PATTERNS)) {
-
-                final CraftingPattern selectedPattern = CraftingPatternSelection.selectedPattern;
-                final ItemStack clickedItem = slotIn.getStack();
-                if (selectedPattern != CraftingPattern.FREE && clickedItem != null) {
-                    final ItemStack[] craftingGrid = new ItemStack[9];
-                    for (int i = 0; i < CraftingPattern.CRAFTING_GRID_SLOTS.size(); i++) {
-                        int slotIndex = CraftingPattern.CRAFTING_GRID_SLOTS.get(i);
-                        craftingGrid[i] = slots.getSlot(slotIndex).getStack();
-                    }
-
-                    final CraftingPatternResult result = selectedPattern.checkAgainstGrid(craftingGrid);
-
-                    if (slotIn.inventory.equals(Minecraft.getMinecraft().thePlayer.inventory)) {
-                        if (result.isFilled() && !result.fitsItem(clickedItem) && clickModifier == SHIFTCLICK_CLICK_TYPE) {
-                            // cancel shift-clicking items from the inventory if the pattern is already filled
-                            if (System.currentTimeMillis() > lastCraftingSoundPlayed + CRAFTING_PATTERN_SOUND_COOLDOWN) {
-                                main.getUtils().playSound("note.bass", 0.5);
-                                lastCraftingSoundPlayed = System.currentTimeMillis();
-                            }
-                            returnValue.cancel();
-                        }
-                    } else {
-                        if (slotIn.getSlotIndex() == CraftingPattern.CRAFTING_RESULT_INDEX
-                                && !result.isSatisfied()
-                                && CraftingPatternSelection.blockCraftingIncomplete) {
-                            // cancel clicking the result if the pattern isn't satisfied
-                            if (System.currentTimeMillis() > lastCraftingSoundPlayed + CRAFTING_PATTERN_SOUND_COOLDOWN) {
-                                main.getUtils().playSound("note.bass", 0.5);
-                                lastCraftingSoundPlayed = System.currentTimeMillis();
-                            }
-                            returnValue.cancel();
-                        }
-                    }
-                }
             }
         }
     }

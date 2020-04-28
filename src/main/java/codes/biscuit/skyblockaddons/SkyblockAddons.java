@@ -23,6 +23,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLModDisabledEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.lwjgl.input.Keyboard;
 
@@ -65,7 +66,7 @@ public class SkyblockAddons {
     public void preInit(FMLPreInitializationEvent e) {
         instance = this;
         configValues = new ConfigValues(this, e.getSuggestedConfigurationFile());
-        logger = e.getModLog();
+        logger = LogManager.getLogger();
         persistentValues = new PersistentValues(e.getModConfigurationDirectory());
     }
 
@@ -141,8 +142,8 @@ public class SkyblockAddons {
             field.setAccessible(true);
             field.set(bind, desc);
         } catch(NoSuchFieldException | IllegalAccessException e) {
-            System.out.println("Could not change key description: " + bind.toString());
-            e.printStackTrace();
+            logger.error("Could not change key description: " + bind.toString());
+            logger.catching(e);
         }
     }
 
