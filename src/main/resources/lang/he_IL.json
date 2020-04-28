@@ -112,7 +112,8 @@
     "showZealotsPerEye": "מד הזלוטים - הראה כמות זלוטים על כל עין",
     "turnBowGreenWhenUsingToxicArrowPoison": "קשת בצבע ירוק כאשר משתמשים ברעל חץ רעיל",
     "birchParkRainmakerTimer": "טיימר של מורידת הגשם ב Birch Park",
-    "combatTimerDisplay": "תצוגת טיימר הלחימה"
+    "combatTimerDisplay": "תצוגת טיימר הלחימה",
+    "discordRP": "Discord Rich Presence"
   },
   "messages": {
     "betaTesters": "תודה לך שאתה בוחן בטא! בבקשה דווח על באגים שאתה מוצא בשרת דיסקורד שלנו.",
@@ -168,5 +169,8 @@
     "rescaleFeatures": "Rescale Features",
     "resizeBars": "Resize Bars",
     "showColorIcons": "Show Color Icons"
+  },
+  "discord": {
+    "status": {}
   }
 }
