@@ -5,7 +5,8 @@
     "PIGGY_BANK",
     "SMALL_BACKPACK",
     "SULPHUR",
-    "GRAPPLING_HOOK"
+    "GRAPPLING_HOOK",
+    "AATROX_BATPHONE"
   ],
   "allowDroppingTheseItems": [
     "RUNE",
