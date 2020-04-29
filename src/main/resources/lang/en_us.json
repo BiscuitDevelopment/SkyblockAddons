@@ -96,6 +96,7 @@
     "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
     "showCakeBagPreview": "Show Preview for Cake Bags",
     "showBackpackPreviewInAH" : "Show Backpack Preview for Your Items While AH is Open",
+    "disableTeleportPadMessage": "Disable Teleport Pad Messages",
     "enableDevFeatures": "Enable Developer Features",
     "chromaSpeed": "Chroma Speed",
     "chromaMode": "Chroma Color Mode",

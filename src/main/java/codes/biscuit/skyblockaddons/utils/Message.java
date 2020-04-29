@@ -85,6 +85,7 @@ public enum Message {
     SETTING_SPECIAL_ZEALOT_ALERT(MessageObject.SETTING, "specialZealotAlert"),
     SETTING_ONLY_MINE_VALUABLES_NETHER(MessageObject.SETTING, "onlyMineValuablesNether"),
     SETTING_DISABLE_MAGICAL_SOUP_MESSAGE(MessageObject.SETTING, "disableMagicalSoupMessage"),
+    SETTING_DISABLE_TELEPORT_PAD_MESSAGE(MessageObject.SETTING, "disableTeleportPadMessage"),
     SETTING_HIDE_PET_HEALTH_BAR(MessageObject.SETTING, "hidePetHealthBar"),
     SETTING_POWER_ORB_DISPLAY(MessageObject.SETTING, "powerOrbDisplay"),
     SETTING_POWER_ORB_DISPLAY_STYLE(MessageObject.SETTING, "powerOrbDisplayStyle"),
