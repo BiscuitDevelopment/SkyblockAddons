@@ -326,6 +326,30 @@ public class PlayerListener {
         }
     }
 
+    private ArrayList<ItemStack> previousInventory = null;
+
+    @SubscribeEvent
+    public void onPlayerTick(TickEvent.PlayerTickEvent e) {
+
+        if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.BAIT_LIST)) {
+            if (previousInventory == null)
+                previousInventory = new ArrayList<ItemStack>(Arrays.asList(e.player.inventory.mainInventory));
+
+            if (BaitListManager.getInstance().holdingRod()) {
+
+                ArrayList<ItemStack> currentInventory = new ArrayList<ItemStack>(Arrays.asList(e.player.inventory.mainInventory));
+
+                if (!currentInventory.equals(previousInventory)) {
+                    BaitListManager.getInstance().refreshBaits();
+                }
+
+                previousInventory = currentInventory;
+            }
+
+            BaitListManager.getInstance().compareHeldItems(e.player.getHeldItem());
+        }
+    }
+
     /**
      * Checks for minion holograms.
      * Original contribution by Michael#3549.

@@ -86,6 +86,7 @@
       "compact": "Compact"
     },
     "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages",
+    "baitListDisplay" : "Show Bait List When Holding a Rod",
     "zealotCounter": "Show Zealot Counter",
     "tickerChargesDisplay": "Ticker/Charges Display",
     "tab": {

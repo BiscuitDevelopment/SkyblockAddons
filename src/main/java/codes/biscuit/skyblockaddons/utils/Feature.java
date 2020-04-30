@@ -92,6 +92,7 @@ public enum Feature {
     REPEAT_FULL_INVENTORY_WARNING(73, null, true),
     SORT_TAB_EFFECT_TIMERS(74, Message.SETTING_SORT_TAB_EFFECT_TIMERS, false),
     DISABLE_TELEPORT_PAD_MESSAGES(75, Message.SETTING_DISABLE_TELEPORT_PAD_MESSAGE, true),
+    BAIT_LIST(76, Message.SETTING_BAIT_LIST, new GuiFeatureData(EnumUtils.DrawType.BAIT_LIST_DISPLAY, null, EnumUtils.AnchorPoint.TOP_LEFT, 36, 100), false),
 
     HIDE_GREY_ENCHANTS(100, null, false), // This is here just to allow remote disabling this feature- it's caused issues in the past haha.
 
@@ -125,7 +126,7 @@ public enum Feature {
      */
     @Getter private static Set<Feature> guiFeatures = new LinkedHashSet<>(Arrays.asList(MAGMA_BOSS_TIMER, MANA_BAR, MANA_TEXT, DEFENCE_ICON, DEFENCE_TEXT,
             DEFENCE_PERCENTAGE, HEALTH_BAR, HEALTH_TEXT, SKELETON_BAR, HEALTH_UPDATES, ITEM_PICKUP_LOG, DARK_AUCTION_TIMER, SKILL_DISPLAY, SPEED_PERCENTAGE, SLAYER_INDICATOR,
-            POWER_ORB_STATUS_DISPLAY, ZEALOT_COUNTER, TICKER_CHARGES_DISPLAY, TAB_EFFECT_TIMERS));
+            POWER_ORB_STATUS_DISPLAY, ZEALOT_COUNTER, TICKER_CHARGES_DISPLAY, TAB_EFFECT_TIMERS, BAIT_LIST));
 
     private static final int ID_AT_PREVIOUS_UPDATE = 63;
 
@@ -194,6 +195,8 @@ public enum Feature {
                 main.getRenderListener().drawRevenantIndicator(scale, mc, buttonLocation);
             } else if(guiFeatureData.getDrawType() == EnumUtils.DrawType.POWER_ORB_DISPLAY) {
                 main.getRenderListener().drawPowerOrbStatus(mc, scale, buttonLocation);
+            } else if(guiFeatureData.getDrawType() == EnumUtils.DrawType.BAIT_LIST_DISPLAY) {
+                main.getRenderListener().drawBaitList(mc, scale, buttonLocation);
             } else if(guiFeatureData.getDrawType() == EnumUtils.DrawType.TICKER) {
                 main.getRenderListener().drawScorpionFoilTicker(mc, scale, buttonLocation);
             } else if (guiFeatureData.getDrawType() == EnumUtils.DrawType.TAB_EFFECT_TIMERS){
