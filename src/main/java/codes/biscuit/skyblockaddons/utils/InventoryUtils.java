@@ -28,11 +28,12 @@ public class InventoryUtils {
     /** Display name of the Skeleton Helmet. */
     private static final String SKELETON_HELMET_ID = "SKELETON_HELMET";
 
-    public static final String MADDOX_BATPHONE_DISPLAYNAME = "\u00A7aMaddox Batphone";
-    public static final String JUNGLE_AXE_DISPLAYNAME = "\u00A7aJungle Axe";
-    public static final String TREECAPITATOR_DISPLAYNAME = "\u00A75Treecapitator";
-    public static final String FAIRY_SOUL_EXCHANGE_DISPLAYNAME = "\u00a7aExchange Fairy Souls";
-    public static final String CHICKEN_HEAD_DISPLAYNAME = "\u00a7fChicken Head";
+    public static final String MADDOX_BATPHONE_DISPLAYNAME = "§aMaddox Batphone";
+    public static final String JUNGLE_AXE_DISPLAYNAME = "§aJungle Axe";
+    public static final String TREECAPITATOR_DISPLAYNAME = "§5Treecapitator";
+    public static final String FAIRY_SOUL_EXCHANGE_DISPLAYNAME = "§aExchange Fairy Souls";
+    public static final String CHICKEN_HEAD_DISPLAYNAME = "§fChicken Head";
+    public static final String TOXIC_ARROW_POISON_DISPLAYNAME = "§aToxic Arrow Poison";
 
     private static final Pattern REVENANT_UPGRADE_PATTERN = Pattern.compile("§5§o§7Next Upgrade: §a\\+([0-9]+❈) §8\\(§a([0-9,]+)§7/§c([0-9,]+)§8\\)");
 
@@ -45,14 +46,9 @@ public class InventoryUtils {
     /** Whether the player is wearing a Skeleton Helmet. */
     @Getter private boolean wearingSkeletonHelmet;
 
-    @Getter private SlayerArmorProgress[] slayerArmorProgresses = new SlayerArmorProgress[4];
+    @Getter private boolean usingToxicArrowPoison;
 
-    /**
-     * These three are used for {@link InventoryUtils#shouldCancelDrop(ItemStack)}.
-     */
-    private String lastItemName = null;
-    private long lastDrop = System.currentTimeMillis();
-    private int dropCount = 1;
+    @Getter private SlayerArmorProgress[] slayerArmorProgresses = new SlayerArmorProgress[4];
 
     private SkyblockAddons main;
 
@@ -219,56 +215,31 @@ public class InventoryUtils {
      * @param p Player to check
      */
     public void checkIfWearingSkeletonHelmet(EntityPlayerSP p) {
-        ItemStack item = p.getEquipmentInSlot(4);
-        if (item != null && SKELETON_HELMET_ID.equals(ItemUtils.getSkyBlockItemID(item))) {
-            wearingSkeletonHelmet = true;
-            return;
-        }
-        wearingSkeletonHelmet = false;
-    }
-
-    public boolean shouldCancelDrop(Slot slot) {
-        if (slot != null && slot.getHasStack()) {
-            ItemStack stack = slot.getStack();
-            return shouldCancelDrop(stack);
-        }
-        return false;
-    }
-
-    public boolean shouldCancelDrop(ItemStack stack) {
-        if (main.getUtils().cantDropItem(stack, ItemUtils.getRarity(stack), false)) {
-            String heldItemName = stack.hasDisplayName() ? stack.getDisplayName() : stack.getUnlocalizedName();
-
-            if (lastItemName != null && lastItemName.equals(heldItemName) && System.currentTimeMillis() - lastDrop < 3000 && dropCount >= 2) {
-                lastDrop = System.currentTimeMillis();
-            } else {
-                if (heldItemName.equals(lastItemName)) {
-                    if (System.currentTimeMillis() - lastDrop > 3000) {
-                        dropCount = 1;
-                    } else {
-                        dropCount++;
-                    }
-                } else {
-                    dropCount = 1;
-                }
-
-                // Use a different message if just one more click is needed
-                if (dropCount == 2) {
-                    SkyblockAddons.getInstance().getUtils().sendMessage(main.getConfigValues().getRestrictedColor(Feature.STOP_DROPPING_SELLING_RARE_ITEMS) +
-                            Message.MESSAGE_CLICK_ONE_MORE_TIME.getMessage(String.valueOf(3-dropCount)));
-                }
-                else {
-                    SkyblockAddons.getInstance().getUtils().sendMessage(main.getConfigValues().getRestrictedColor(Feature.STOP_DROPPING_SELLING_RARE_ITEMS) +
-                            Message.MESSAGE_CLICK_MORE_TIMES.getMessage(String.valueOf(3-dropCount)));
-                }
-
-                lastItemName = heldItemName;
-                lastDrop = System.currentTimeMillis();
-                main.getUtils().playLoudSound("note.bass", 0.5);
-                return true;
+        if (main.getConfigValues().isEnabled(Feature.SKELETON_BAR)) {
+            ItemStack item = p.getEquipmentInSlot(4);
+            if (item != null && SKELETON_HELMET_ID.equals(ItemUtils.getSkyBlockItemID(item))) {
+                wearingSkeletonHelmet = true;
+                return;
             }
+            wearingSkeletonHelmet = false;
         }
-        return false;
+    }
+
+    /**
+     * Determines if the player is using Toxic Arrow Poison by detecting if it is present in their inventory.
+     *
+     * @param p the player to check
+     */
+    public void checkIfUsingToxicArrowPoison(EntityPlayerSP p) {
+        if (main.getConfigValues().isEnabled(Feature.TURN_BOW_GREEN_WHEN_USING_TOXIC_ARROW_POISON)) {
+            for (ItemStack item : p.inventory.mainInventory) {
+                if (item != null && TOXIC_ARROW_POISON_DISPLAYNAME.equals(item.getDisplayName())) {
+                    this.usingToxicArrowPoison = true;
+                    return;
+                }
+            }
+            this.usingToxicArrowPoison = false;
+        }
     }
 
     /**
@@ -282,33 +253,46 @@ public class InventoryUtils {
         else return 0;
     }
 
-    public void checkIfWearingRevenantArmor(EntityPlayerSP p) {
+    /**
+     * Checks if the player is wearing any Revenant or Tarantula armor.
+     * If the armor is detected, the armor's levelling progress is retrieved to be displayed on the HUD.
+     *
+     * @param p the player to check
+     */
+    public void checkIfWearingSlayerArmor(EntityPlayerSP p) {
         if (main.getConfigValues().isEnabled(Feature.SLAYER_INDICATOR)) {
-            ChatFormatting color = main.getConfigValues().getRestrictedColor(Feature.SLAYER_INDICATOR);
             for (int i = 3; i > -1; i--) {
                 ItemStack item = p.inventory.armorInventory[i];
-                String itemID = ItemUtils.getSkyBlockItemID(item);
+                String itemID = item != null ? ItemUtils.getSkyBlockItemID(item) : null;
+
                 if (itemID != null && (itemID.startsWith("REVENANT") || itemID.startsWith("TARANTULA"))) {
-                    String progress = null;
+                    String percent = null;
+                    String defence = null;
                     List<String> tooltip = item.getTooltip(null, false);
                     for (String line : tooltip) {
                         Matcher matcher = REVENANT_UPGRADE_PATTERN.matcher(line);
                         if (matcher.matches()) { // Example: line§5§o§7Next Upgrade: §a+240❈ §8(§a14,418§7/§c15,000§8)
                             try {
-//                            progress = color.toString() + matcher.group(2)+"/"+matcher.group(3) + " (" + ConfigColor.GREEN+ matcher.group(1) + color + ")";
                                 float percentage = Float.parseFloat(matcher.group(2).replace(",", "")) / Integer.parseInt(matcher.group(3).replace(",", "")) * 100;
                                 BigDecimal bigDecimal = new BigDecimal(percentage).setScale(0, BigDecimal.ROUND_HALF_UP);
-                                progress = color.toString() + bigDecimal.toString() + "% (" + ChatFormatting.GREEN + matcher.group(1) + color + ")";
+                                percent = bigDecimal.toString();
+                                defence = ChatFormatting.GREEN + matcher.group(1);
                                 break;
                             } catch (NumberFormatException ignored) {
                             }
                         }
                     }
-                    if (progress != null) {
-                        if (slayerArmorProgresses[i] == null) {
-                            slayerArmorProgresses[i] = new SlayerArmorProgress(item, progress);
+                    if (percent != null && defence != null) {
+                        SlayerArmorProgress currentProgress = slayerArmorProgresses[i];
+
+                        if (currentProgress == null || item != currentProgress.getItemStack()) {
+                            // The item has changed or didn't exist. Create new object.
+                            slayerArmorProgresses[i] = new SlayerArmorProgress(item, percent, defence);
+                        } else {
+                            // The item has remained the same. Just update the stats.
+                            currentProgress.setPercent(percent);
+                            currentProgress.setDefence(defence);
                         }
-                        slayerArmorProgresses[i].setProgressText(progress);
                     }
                 } else {
                     slayerArmorProgresses[i] = null;

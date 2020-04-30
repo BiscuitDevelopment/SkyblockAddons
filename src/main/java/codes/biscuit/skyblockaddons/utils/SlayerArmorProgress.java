@@ -1,9 +1,7 @@
 package codes.biscuit.skyblockaddons.utils;
 
-import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
 import lombok.Getter;
-import lombok.Setter;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
@@ -14,18 +12,24 @@ public class SlayerArmorProgress {
     /** The itemstack that this progress is representing. */
     private final ItemStack itemStack;
 
-    /** The current slayer progress of the item. */
-    @Setter private String progressText = null;
+    /** The current slayer progress % of the item. */
+    @Getter private String percent;
+
+    /** The current slayer defence reward of the item. */
+    @Getter private String defence;
 
     public SlayerArmorProgress(ItemStack itemStack) {
         this.itemStack = new ItemStack(itemStack.getItem()); // Cloned because we change the helmet color later.
+        this.percent = "55";
+        this.defence = "§a40❈";
 
         setHelmetColor();
     }
 
-    SlayerArmorProgress(ItemStack itemStack, String progress) {
+    SlayerArmorProgress(ItemStack itemStack, String percent, String defence) {
         this.itemStack = itemStack;
-        this.progressText = progress;
+        this.percent = percent;
+        this.defence = defence;
     }
 
     private void setHelmetColor() {
@@ -34,12 +38,11 @@ public class SlayerArmorProgress {
         }
     }
 
-    public String getProgressText() {
-        if (progressText == null) { // Cannot create in constructor, so create it here instead.
-            ChatFormatting color = SkyblockAddons.getInstance().getConfigValues().getRestrictedColor(Feature.SLAYER_INDICATOR);
-            progressText = color + "55% (§a40❈" + color + ")";
-        }
+    public void setDefence(String defence) {
+        this.defence = defence;
+    }
 
-        return progressText;
+    public void setPercent(String percent) {
+        this.percent = percent;
     }
 }

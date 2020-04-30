@@ -7,13 +7,11 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import org.apache.commons.lang3.text.WordUtils;
 
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.EnumSet;
 import java.util.Set;
-import java.util.regex.Pattern;
 
 import static codes.biscuit.skyblockaddons.utils.Message.*;
 
@@ -258,7 +256,10 @@ public class EnumUtils {
         HIDE_NIGHT_VISION_EFFECT(SETTING_HIDE_NIGHT_VISION_EFFECT_TIMER, 70),
         ENABLE_CAKE_BAG_PREVIEW(SETTING_SHOW_CAKE_BAG_PREVIEW, 71),
         ENABLE_BACKPACK_PREVIEW_AH(SETTING_SHOW_BACKPACK_PREVIEW_AH, 72),
-        SORT_TAB_EFFECT_TIMERS(SETTING_SORT_TAB_EFFECT_TIMERS, 73);
+        SORT_TAB_EFFECT_TIMERS(SETTING_SORT_TAB_EFFECT_TIMERS, 74),
+
+        DISCORD_RP_STATE(null, 0),
+        DISCORD_RP_DETAILS(null, 0);
 
         @Getter private Message message;
         private int featureEquivalent;
@@ -299,6 +300,7 @@ public class EnumUtils {
         GARY("GARY_", "github.com/occanowey", Feature.ONLY_MINE_VALUABLES_NETHER),
         P0KE("P0ke", "p0ke.dev", Feature.ZEALOT_COUNTER),
         BERISAN("Berisan", "github.com/Berisan", Feature.TAB_EFFECT_TIMERS),
+        MYNAMEISJEFF("MyNameIsJeff", "github.com/My-Name-Is-Jeff", Feature.SHOW_BROKEN_FRAGMENTS),
         CHARZARD("Charzard4261", "github.com/Charzard4261", Feature.DISABLE_TELEPORT_PAD_MESSAGES, Feature.BAIT_LIST);
 
         private Set<Feature> features;
@@ -327,6 +329,7 @@ public class EnumUtils {
         }
     }
 
+    @Deprecated
     public enum UpdateMessageType {
         MAJOR_AVAILABLE(UPDATE_MESSAGE_MAJOR),
         PATCH_AVAILABLE(UPDATE_MESSAGE_PATCH),
@@ -350,7 +353,7 @@ public class EnumUtils {
             }
 
             // Wrap around the text, replace the carriage returns, and split at the new lines.
-            return WordUtils.wrap(messageText, 36).replace("\r", "").split(Pattern.quote("\n"));
+            return SkyblockAddons.getInstance().getUtils().wrapSplitText(messageText, 36);
         }
     }
 

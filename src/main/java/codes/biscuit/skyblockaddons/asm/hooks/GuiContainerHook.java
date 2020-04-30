@@ -20,6 +20,7 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
+import javax.lang.model.type.NullType;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -340,12 +341,12 @@ public class GuiContainerHook {
                 }
             }
             if (mc.gameSettings.keyBindDrop.getKeyCode() == keyCode && main.getConfigValues().isEnabled(Feature.STOP_DROPPING_SELLING_RARE_ITEMS)) {
-                if (main.getInventoryUtils().shouldCancelDrop(theSlot)) returnValue.cancel();
+                if (!main.getUtils().getItemDropChecker().canDropItem(theSlot)) returnValue.cancel();
             }
         }
     }
 
-    public static void handleMouseClick(int guiLeft, int guiTop, int oldMouseX, int oldMouseY, int xSize, int ySize, ReturnValue returnValue) {
+    public static void handleMouseClick(int guiLeft, int guiTop, int oldMouseX, int oldMouseY, int xSize, int ySize, ReturnValue<NullType> returnValue) {
 /*        SkyblockAddons main = SkyblockAddons.getInstance();
         if (main.getUtils().isOnSkyblock()) {
             boolean isOutsideGui = oldMouseX < guiLeft || oldMouseY < guiTop || oldMouseX >= guiLeft + xSize || oldMouseY >= guiTop + ySize;

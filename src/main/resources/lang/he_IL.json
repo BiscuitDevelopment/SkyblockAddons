@@ -83,30 +83,39 @@
     "powerOrbDisplayStyle": "סגנון כדור עוצמה: %style%",
     "powerOrbStyle": {
       "detailed": "מפורט",
-      "compact": "מרוכז"
+      "compact": "דחוס"
     },
-    "disableMagicalSoupMessage": "בטל הודעה ממרק פטריות קסום",
-    "zealotCounter": "הצג מספר הקנאים",
-    "tickerChargesDisplay": "Ticker/Charges Display",
+    "disableMagicalSoupMessage": "בטל הודעות ממרק פטריות קסום",
+    "zealotCounter": "מד הזלוטים - ספור מאז העין האחרונה",
+    "tickerChargesDisplay": "תצוגת טעינה/תקתוק",
     "tab": {
       "generalSettings": "הגדרות כלליות"
     },
-    "tabEffectTimers": "Potion and Powerup Timers",
-    "noArrowsLeftAlert": "No Arrows Left Alert",
-    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
-    "showCakeBagPreview": "Show Preview for Cake Bags",
-    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
-    "enableDevFeatures": "Enable Developer Features",
-    "chromaSpeed": "Chroma Speed",
-    "chromaMode": "Chroma Color Mode",
+    "tabEffectTimers": "טיימרים לשיקויים וחיזוקים",
+    "noArrowsLeftAlert": "אזהרה שאזלו החצים",
+    "hideNightVisionEffectTimer": "הסתר את טיימר השפעת רעיית הלילה",
+    "showCakeBagPreview": "הצגת תכולה של תיקי עוגות",
+    "showBackpackPreviewInAH": "הצגת תכולה לתרמיל שלך כאשר ה-AH פתוח",
+    "enableDevFeatures": "אפשר מאפייני פיתוח",
+    "chromaSpeed": "מהירות כרומה",
+    "chromaMode": "מצב צבע כרומה",
     "chromaModes": {
-      "allTheSame": "All the Same Color",
-      "fade": "Color Fade"
+      "allTheSame": "הכל אותו הצבע",
+      "fade": "צבע דוהה"
     },
-    "chromaFadeWidth": "Chroma Fade Width",
-    "sortTabEffectTimers": "Sort Timers by Duration"
+    "chromaFadeWidth": "רוחב הכרומה",
+    "sortTabEffectTimers": "מיין טיימרים לפי משך זמן",
+    "showBrokenFragments": "הראה פרגמנטים שלא עובדים",
+    "skyblockAddonsButtonInPauseMenu": "הצג כפתור SBA בתפריט ההשהייה",
+    "showTotalZealotCount": "מד הזלוטים - כמות הזלוטים בסך הכל",
+    "showSummoningEyeCount": "מד הזלוטים - כמות עיניים בסך הכל",
+    "showZealotsPerEye": "מד הזלוטים - הראה כמות זלוטים על כל עין",
+    "turnBowGreenWhenUsingToxicArrowPoison": "קשת בצבע ירוק כאשר משתמשים ברעל חץ רעיל",
+    "birchParkRainmakerTimer": "טיימר של מורידת הגשם ב Birch Park",
+    "combatTimerDisplay": "תצוגת טיימר הלחימה"
   },
   "messages": {
+    "betaTesters": "תודה לך שאתה בוחן בטא! בבקשה דווח על באגים שאתה מוצא בשרת דיסקורד שלנו.",
     "dropConfirmation": "זרוק פריט זה שוב לאישור!",
     "magmaBossWarning": "בוס המגמה!",
     "fullInventory": "תיק מלא!",
@@ -122,7 +131,6 @@
       "reforges": "שדרוגים",
       "crafting": "הרכבה"
     },
-    "newUpdateAvailable": "גירסה חדשה (%version%) ניתנת להורדה!",
     "deleteOldFile": "ההורדה הושלמה, בבקשה תפתח את תקיית המודים שלך בעזרת הכפתור למטה, תסגור את מיינקראפט, ומחק את הגרסה הישנה(או שתמחק אחר כך אם אתה מעדיף).",
     "wantToViewPatchNotes": "רוצה לקרוא את השינויים?",
     "downloadLink": "קישור לעידכון",
@@ -134,7 +142,9 @@
       "patchAvailable": "עידכון חדש לתיקון (%version%)!\nהסתכל בצ'אט לאפשרויות הורדה!",
       "downloading": "התיקון בהורדה! כרגע:\n%downloaded%/%total% לאחר ההורדה תצתרך למחוק את הקובץ הישן.",
       "failed": "הורדת התיקון נכשלה! בבקשה הורד אותו בעצמך בעמצאות הלינק שנמצא בצ'אט.",
-      "downloadFinished": "הורדת התיקון הסתיימה. הקובץ נשמר בשם %file%. בבקשה אל תשכח למחוק את הקובץ הישן אחרי שאתה סוגר את מיינקראפט. תלחץ על ההודעה בצאט כדי לפתוח את ההודעה."
+      "downloadFinished": "הורדת התיקון הסתיימה. הקובץ נשמר בשם %file%. בבקשה אל תשכח למחוק את הקובץ הישן אחרי שאתה סוגר את מיינקראפט. תלחץ על ההודעה בצאט כדי לפתוח את ההודעה.",
+      "newBeta": "עדכון ביטא חדש (%version%) זמין! אנא עדכן בעזרת תפריט ה\"Mods\".",
+      "newUpdate": "עדכון חדש (%version%) זמין! אנא עדכן בעזרת תפריט ה\"Mods\"."
     },
     "slotLocked": "משבצת זו נעולה!",
     "summoningEyeFound": "עין לזימון דרקון!",
@@ -142,7 +152,7 @@
     "cancelledProfileOpening": "SkyBlockAddons עצר אותך מלפתוח את הפרופיל של האדם בזמן שהחזקתה קשת.",
     "cancelledDropping": "SkyBlockAddons עצר אותך מלהפיל את החפץ או הכלי הנדיר הזה.",
     "clickMoreTimes": "תלחץ/תזרוק את החפץ %times% פעמים נוספות אם אתה בטוח רוצה לעשות את זה.",
-    "clickOneMoreTime": "Click/drop this item 1 more time if you really want to do this.",
+    "clickOneMoreTime": "לחץ/זרוק את פריט זה עוד פעם 1 אם אתה באמת רוצה לעשות זאת.",
     "cancelledDeepCaverns": "פיטצ'ר של SkyblockAddons מנע ממך לחצוב את הבלוק כאן.",
     "featureDisabled": "פיטצ'ר מבוטל",
     "anvilUses": "שימוים בסדן: %uses%",
@@ -150,10 +160,10 @@
     "blockIncompletePatterns": "הרכבת בלוק ללא תבנית גמורה (מומלץ)",
     "searchFeatures": "פיטצ'רים לחיפוש",
     "downloadingUpdateFile": "מתקין קבצי עדכון...",
-    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
-    "noArrowsLeft": "No Arrows Left!",
-    "chooseAColor": "Choose a Color",
-    "selectedColor": "Selected Color",
-    "setHexColor": "Set Hex Color"
+    "onlyFewArrowsLeft": "רק %arrows% חצים נשארו!",
+    "noArrowsLeft": "אזלו החצים!",
+    "chooseAColor": "בחר צבע",
+    "selectedColor": "בחר צבע",
+    "setHexColor": "קבע צבע הקסדצימלי"
   }
 }

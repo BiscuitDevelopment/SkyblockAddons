@@ -8,7 +8,7 @@
     "skeletonHatBonesBar": "Ukazatel kostí pro Skeleton Helmet",
     "hideFoodAndArmor": "Skrýt ukazatel jídla a armoru",
     "fullInventoryWarning": "Varování o plném inventáři",
-    "repeating": "Opakování",
+    "repeating": "Opakuji",
     "disableEmberRodAbility": "Zakázat schopnost Ember Rodu na ostrově",
     "editLocations": "Upravit lokace",
     "guiScale": "Velikost ukazetelů: %scale%",
@@ -86,7 +86,7 @@
       "compact": "Kompaktní"
     },
     "disableMagicalSoupMessage": "Vypnout zprávu magické houbové polévky",
-    "zealotCounter": "Ukázat Počítadlo Zealotů",
+    "zealotCounter": "Počítadlo Zealotů - Počet od posledního oka",
     "tickerChargesDisplay": "Zobrazení Tickerů/Nabití",
     "tab": {
       "generalSettings": "Obecná nastavení"
@@ -104,9 +104,18 @@
       "fade": "Barevné vyblednutí"
     },
     "chromaFadeWidth": "Šířka vyblednutí měnění barev",
-    "sortTabEffectTimers": "Seřadit Časovače podle délky"
+    "sortTabEffectTimers": "Seřadit Časovače podle délky",
+    "showBrokenFragments": "Zobrazit rozbité Dragon Fragmenty",
+    "skyblockAddonsButtonInPauseMenu": "Zobrazit SBA Tlačítko v Pauznutém menu",
+    "showTotalZealotCount": "Počítadlo Zealotů - Celkový počet Zealotů",
+    "showSummoningEyeCount": "Počítadlo Zealotů - Celkový počet očí",
+    "showZealotsPerEye": "Počítadlo Zealotů - Zobrazit Zealoty/Oko",
+    "turnBowGreenWhenUsingToxicArrowPoison": "Obarvi luk zeleně při použití Toxického jedu na šíp",
+    "birchParkRainmakerTimer": "Časovač Dešťotvůrce v Birch Parku",
+    "combatTimerDisplay": "Combat Timer Display"
   },
   "messages": {
+    "betaTesters": "Děkujeme, že jsi betatester! Prosím, nahlaš všechny bugy na které naražíš v kanálu na Discordu.",
     "dropConfirmation": "Vyhoď tento item pro vyhození!",
     "magmaBossWarning": "Objevil se Magma Boss!",
     "fullInventory": "Plný inventář!",
@@ -122,7 +131,6 @@
       "reforges": "překování",
       "crafting": "Výroba"
     },
-    "newUpdateAvailable": "Nová aktualizace (%version%) je připravena!",
     "deleteOldFile": "Stahování skočilo, prosím otevři svoji složku mods pomocí tlačítka dole, zavři minecraft, a smaž starou verzi(nebo ji smaž potom pokud chceš).",
     "wantToViewPatchNotes": "Chceš si přečíst změny?",
     "downloadLink": "Odkaz pro aktualizaci",
@@ -134,7 +142,9 @@
       "patchAvailable": "Nový opravující update (verze %version%) je nyní dostupný! Koukněte do chatu pro možnosti stahování!",
       "downloading": "Aktualizace se stahuje! Status: %downloaded%/%total% Prosím berte na vědomí že potom co se aktualizace dokončí, musíte smazat starou složku.",
       "failed": "Stáhnutí aktualizace selhalo! Prosím stáhněte ho manuálně pomocí linku v chatu.",
-      "downloadFinished": "Aktualizace dokončila stažení. Byla uložena jako %file%. Prosím nezapomeň smazat starou složku potom co zavřeš minecraft."
+      "downloadFinished": "Aktualizace dokončila stažení. Byla uložena jako %file%. Prosím nezapomeň smazat starou složku potom co zavřeš minecraft.",
+      "newBeta": "Nová beta (%version%) je dostupná! Prosím aktualizujte pomocí menu \"Módy\".",
+      "newUpdate": "Nová aktualizace (%version%) je dostupná! Prosím aktualizujte pomocí menu \"Módy\"."
     },
     "slotLocked": "Tento slot je uzamčen!",
     "summoningEyeFound": "Vyvolávací oko!",

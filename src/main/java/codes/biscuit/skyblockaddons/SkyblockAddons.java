@@ -2,10 +2,12 @@ package codes.biscuit.skyblockaddons;
 
 import codes.biscuit.skyblockaddons.commands.SkyblockAddonsCommand;
 import codes.biscuit.skyblockaddons.listeners.GuiScreenListener;
+import codes.biscuit.skyblockaddons.listeners.NetworkListener;
 import codes.biscuit.skyblockaddons.listeners.PlayerListener;
 import codes.biscuit.skyblockaddons.listeners.RenderListener;
 import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsTransformer;
 import codes.biscuit.skyblockaddons.utils.*;
+import codes.biscuit.skyblockaddons.utils.discord.DiscordRPCManager;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,8 +20,10 @@ import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.ModContainer;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLModDisabledEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.lwjgl.input.Keyboard;
 
@@ -28,12 +32,12 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 @Getter
-@Mod(modid = SkyblockAddons.MOD_ID, version = SkyblockAddons.VERSION, name = SkyblockAddons.MOD_NAME, clientSideOnly = true, acceptedMinecraftVersions = "[1.8.9]")
+@Mod(modid = "skyblockaddons", name = "SkyblockAddons", version = "@VERSION@", clientSideOnly = true, acceptedMinecraftVersions = "@MOD_ACCEPTED@", updateJSON = "@UPDATE_JSON@")
 public class SkyblockAddons {
 
-    static final String MOD_ID = "skyblockaddons";
-    public static final String MOD_NAME = "SkyblockAddons";
-    public static final String VERSION = "1.5.0-b11.2";
+    public static final String MOD_ID = "@MOD_ID@";
+    public static final String MOD_NAME = "@MOD_NAME@";
+    public static final String VERSION = "@VERSION@";
 
     /** The main instance of the mod, used mainly my mixins who don't get it passed to them. */
     @Getter private static SkyblockAddons instance;
@@ -41,11 +45,12 @@ public class SkyblockAddons {
     private ConfigValues configValues;
     private Logger logger;
     private PersistentValues persistentValues;
-    private PlayerListener playerListener = new PlayerListener(this);
-    private GuiScreenListener guiScreenListener = new GuiScreenListener(this);
-    private RenderListener renderListener = new RenderListener(this);
-    private Utils utils = new Utils(this);
-    private InventoryUtils inventoryUtils = new InventoryUtils(this);
+    private PlayerListener playerListener;
+    private GuiScreenListener guiScreenListener;
+    private RenderListener renderListener;
+    private InventoryUtils inventoryUtils;
+    private Utils utils;
+    private Updater updater;
 
     /** Get the scheduler that be can be used to easily execute tasks. */
     private Scheduler scheduler = new Scheduler(this);
@@ -55,20 +60,35 @@ public class SkyblockAddons {
     /** Whether developer mode is enabled. */
     @Setter private boolean devMode = false;
     @Setter(AccessLevel.NONE) private KeyBinding[] keyBindings = new KeyBinding[4];
+    private DiscordRPCManager discordRPCManager;
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent e) {
         instance = this;
         configValues = new ConfigValues(this, e.getSuggestedConfigurationFile());
-        logger = e.getModLog();
+        logger = LogManager.getLogger();
         persistentValues = new PersistentValues(e.getModConfigurationDirectory());
     }
+
     @Mod.EventHandler
     public void init(FMLInitializationEvent e) {
+        // Initialize event listeners
+        playerListener = new PlayerListener(this);
+        guiScreenListener = new GuiScreenListener(this);
+        renderListener = new RenderListener(this);
+        discordRPCManager = new DiscordRPCManager(this);
+        MinecraftForge.EVENT_BUS.register(new NetworkListener());
+
         MinecraftForge.EVENT_BUS.register(playerListener);
         MinecraftForge.EVENT_BUS.register(guiScreenListener);
         MinecraftForge.EVENT_BUS.register(renderListener);
         MinecraftForge.EVENT_BUS.register(scheduler);
+
+        // Initialize utilities
+        inventoryUtils = new InventoryUtils(this);
+        utils = new Utils(this);
+        updater = new Updater(this);
+
         ClientCommandHandler.instance.registerCommand(new SkyblockAddonsCommand(this));
 
         keyBindings[0] = new KeyBinding("key.skyblockaddons.open_settings", Keyboard.KEY_NONE, MOD_NAME);
@@ -97,6 +117,7 @@ public class SkyblockAddons {
         }
         utils.checkDisabledFeatures();
         utils.getFeaturedURLOnline();
+        updater.processUpdateCheckResult();
         scheduleMagmaCheck();
 
         for (Feature feature : Feature.values()) {
@@ -109,14 +130,20 @@ public class SkyblockAddons {
         }
     }
 
+    @Mod.EventHandler
+    public void stop(FMLModDisabledEvent e) {
+        discordRPCManager.stop();
+    }
+
+
     private void changeKeyBindDescription(KeyBinding bind, String desc) {
         try {
             Field field = bind.getClass().getDeclaredField(SkyblockAddonsTransformer.isDeobfuscated() ? "keyDescription" : "field_74515_c");
             field.setAccessible(true);
             field.set(bind, desc);
         } catch(NoSuchFieldException | IllegalAccessException e) {
-            System.out.println("Could not change key description: " + bind.toString());
-            e.printStackTrace();
+            logger.error("Could not change key description: " + bind.toString());
+            logger.catching(e);
         }
     }
 

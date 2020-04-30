@@ -23,6 +23,7 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import org.lwjgl.input.Keyboard;
 
+import javax.lang.model.type.NullType;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -167,7 +168,7 @@ public class GuiChestHook {
         }
     }
 
-    public static void handleMouseClick(Slot slotIn, Container slots, IInventory lowerChestInventory, ReturnValue returnValue) {
+    public static void handleMouseClick(Slot slotIn, Container slots, IInventory lowerChestInventory, ReturnValue<NullType> returnValue) {
         SkyblockAddons main = SkyblockAddons.getInstance();
         if (main.getUtils().getEnchantmentMatches().size() > 0) {
             if (slotIn != null && !slotIn.inventory.equals(Minecraft.getMinecraft().thePlayer.inventory) && slotIn.getHasStack()) {
@@ -216,7 +217,9 @@ public class GuiChestHook {
         if (main.getConfigValues().isEnabled(Feature.STOP_DROPPING_SELLING_RARE_ITEMS) &&
                 lowerChestInventory.hasCustomName() && NPCUtils.isFullMerchant(lowerChestInventory.getDisplayName().getUnformattedText())
                 && slotIn != null && slotIn.inventory instanceof InventoryPlayer) {
-            if (main.getInventoryUtils().shouldCancelDrop(slotIn)) returnValue.cancel();
+            if (!main.getUtils().getItemDropChecker().canDropItem(slotIn)) {
+                returnValue.cancel();
+            }
         }
     }
 

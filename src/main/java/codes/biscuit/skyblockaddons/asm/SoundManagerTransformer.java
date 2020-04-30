@@ -33,7 +33,7 @@ public class SoundManagerTransformer implements ITransformer {
                 Iterator<AbstractInsnNode> iterator = methodNode.instructions.iterator();
                 while (iterator.hasNext()) {
                     AbstractInsnNode abstractNode = iterator.next();
-                    if (abstractNode instanceof MethodInsnNode && abstractNode.getOpcode() == Opcodes.INVOKESPECIAL) {
+                    if (abstractNode instanceof MethodInsnNode) {
                         MethodInsnNode methodInsnNode = (MethodInsnNode)abstractNode;
                         if (nameMatches(methodInsnNode.owner, TransformerClass.SoundManager.getNameRaw()) && TransformerMethod.getNormalizedVolume.matches(methodInsnNode)) {
                             methodNode.instructions.insertBefore(abstractNode, new MethodInsnNode(Opcodes.INVOKESTATIC, "codes/biscuit/skyblockaddons/asm/hooks/SoundManagerHook", "getNormalizedVolume",

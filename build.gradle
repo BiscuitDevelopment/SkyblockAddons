@@ -1,3 +1,5 @@
+import groovy.json.*
+
 buildscript {
     repositories {
         jcenter()
@@ -18,35 +20,51 @@ buildscript {
 apply plugin: 'io.franzbecker.gradle-lombok'
 apply plugin: 'net.minecraftforge.gradle.forge'
 
-version = "1.4.2" //remember don't update the version until its released
-group= "codes.biscuit.skyblockaddons"
-archivesBaseName = "SkyblockAddons"
+group= "codes.biscuit"
 compileJava.options.encoding = 'UTF-8'
-
-tasks.withType(JavaCompile) {
-    options.encoding = 'UTF-8'
-}
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 minecraft {
-    version = "1.8.9-11.15.1.2318-1.8.9"
+    version = "${project.minecraftVersion}-${project.forgeVersion}"
     runDir = "run"
 
-    mappings = "stable_22"
+    mappings = "${project.mappings}"
+
+    // Replace placeholders in source code
+    replace("@MOD_ID@": project.modId,
+            "@MOD_NAME@": project.modName,
+            "@VERSION@": project.version,
+            "@MOD_ACCEPTED@": project.acceptedMinecraftVersions,
+            "@UPDATE_JSON@": project.updateJSON)
+    replaceIn("${project.modName}.java")
+}
+
+repositories {
+    jcenter()
+
+    maven {
+        url 'https://jitpack.io'
+    }
+}
+
+dependencies {
+    // Discord RPC for Java https://github.com/jagrosh/DiscordIPC
+    provided('com.github.jagrosh:DiscordIPC:e29d6d8') {
+        exclude module: 'log4j'
+    }
 }
 
 jar {
-//    archiveName = archivesBaseName + "-" + version + "-for-MC-1.8.9.jar"
-    archiveName = archivesBaseName + "-1.5.0-b11.2-for-MC-1.8.9.jar"
+    archiveName = project.modName + "-" + minecraft.version + "-" + version + ".jar"
 
     manifest.attributes(
             'Main-Class': 'OpenErrorMessage',
-            'FMLCorePlugin': 'codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsLoadingPlugin',
-            "ForceLoadAsMod": true,
+            'FMLCorePlugin': "${project.group}.${project.modId}.tweaker.${project.modName}LoadingPlugin",
+            'ForceLoadAsMod': true,
             'FMLCorePluginContainsFMLMod': true,
             'ModSide': 'CLIENT',
-            'FMLAT': 'skyblockaddons_at.cfg'
+            'FMLAT': "${project.modId}_at.cfg"
     )
 
 }
@@ -63,7 +81,6 @@ processResources {
     // replace stuff in mcmod.info, nothing else
     from(sourceSets.main.resources.srcDirs) {
         include 'mcmod.info'
-        include 'litemod.json'
 
         // replace version and mcversion
         expand 'version':project.version, 'mcversion':project.minecraft.version
@@ -72,16 +89,17 @@ processResources {
     // copy everything else, thats not the mcmod.info
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'
-        exclude 'litemod.json'
     }
 }
 
-// Copies mod resources to the development environment
+// If you're in a dev environment, you need to run this task before running Minecraft.
 task processResourcesDev(type: Copy) {
+    inputs.property "version", project.version
+    inputs.property "mcversion", project.minecraft.version
+
     // replace stuff in mcmod.info, nothing else
     from(sourceSets.main.resources.srcDirs) {
         include 'mcmod.info'
-        include 'litemod.json'
 
         // replace version and mcversion
         expand 'version':project.version, 'mcversion':project.minecraft.version
@@ -90,10 +108,31 @@ task processResourcesDev(type: Copy) {
     // copy everything else, thats not the mcmod.info
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'
-        exclude 'litemod.json'
     }
-    into(sourceSets.main.java.outputDir)
+    into sourceSets.main.java.outputDir
 }
+
+// Updates the version JSON file automatically when the version changes
+// Don't forget to write the changelog! Those aren't automatic.
+task updateVersionsFile {
+    def versionsFile = new File(".github/versions/dev-versions.json")
+
+    def jsonBuilder = new JsonBuilder(new JsonSlurper().parse(versionsFile))
+    def versionsMap = jsonBuilder.content."1.8.9"
+
+    jsonBuilder.content.promos."1.8.9-latest" = version.toString()
+
+    // Update the versions list if it doesn't have the current version.
+    if (!versionsMap.containsKey(version)) {
+        versionsMap.put(version, "<Insert Changelog Here>")
+        versionsMap = versionsMap.sort(Comparator.reverseOrder())
+        jsonBuilder.content."1.8.9" = versionsMap
+    }
+
+    versionsFile.write(jsonBuilder.toPrettyString())
+}
+
+tasks.build.dependsOn(updateVersionsFile)
 
 //reobf { // Only for labymod client.
 //    jar {

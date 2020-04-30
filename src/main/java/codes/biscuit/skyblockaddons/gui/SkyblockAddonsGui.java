@@ -207,7 +207,7 @@ public class SkyblockAddonsGui extends GuiScreen {
             }
             if (feature == Feature.LANGUAGE) {
                 main.getUtils().setFadingIn(false);
-                Minecraft.getMinecraft().displayGuiScreen(new SettingsGui(main, Feature.LANGUAGE, 1, page,tab, null));
+                Minecraft.getMinecraft().displayGuiScreen(new SettingsGui(main, Feature.LANGUAGE,1, page,tab, null));
             }  else if (feature == Feature.EDIT_LOCATIONS) {
                 main.getUtils().setFadingIn(false);
                 Minecraft.getMinecraft().displayGuiScreen(new LocationEditGui(main, page, tab));
@@ -223,6 +223,9 @@ public class SkyblockAddonsGui extends GuiScreen {
                 if (main.getConfigValues().isRemoteDisabled(feature)) return;
                 if (main.getConfigValues().isDisabled(feature)) {
                     main.getConfigValues().getDisabledFeatures().remove(feature);
+                    if(feature == Feature.DISCORD_RPC) {
+                        main.getDiscordRPCManager().start();
+                    }
                 } else {
                     main.getConfigValues().getDisabledFeatures().add(feature);
                     if (feature == Feature.HIDE_FOOD_ARMOR_BAR) { // Reset the vanilla bars when disabling these two features.
@@ -232,8 +235,11 @@ public class SkyblockAddonsGui extends GuiScreen {
                     } else if (feature == Feature.FULL_INVENTORY_WARNING) {
                         main.getInventoryUtils().setInventoryWarningShown(false);
                         main.getScheduler().removeQueuedFullInventoryWarnings();
+                    } else if(feature == Feature.DISCORD_RPC) {
+                        main.getDiscordRPCManager().stop();
                     }
                 }
+                ((ButtonToggle)abstractButton).onClick();
             } else if (abstractButton instanceof ButtonSolid) {
                 if (feature == Feature.TEXT_STYLE) {
                     main.getConfigValues().setTextStyle(main.getConfigValues().getTextStyle().getNextType());
@@ -348,13 +354,13 @@ public class SkyblockAddonsGui extends GuiScreen {
             EnumUtils.FeatureCredit credit = EnumUtils.FeatureCredit.fromFeature(feature);
             if (credit != null) {
                 CoordsPair coords = button.getCreditsCoords(credit);
-                buttonList.add(new ButtonCredit(coords.getX(), coords.getY(), text, main, credit, feature));
+                buttonList.add(new ButtonCredit(coords.getX(), coords.getY(), text, main, credit, feature, button.isMultilineButton()));
             }
 
             if (feature.getSettings().size() > 0) {
-                buttonList.add(new ButtonSettings(x + boxWidth - 33, y + boxHeight - 23, text, main, feature));
+                buttonList.add(new ButtonSettings(x + boxWidth - 33, y + boxHeight - 20, text, main, feature));
             }
-            buttonList.add(new ButtonToggle(x+40, y+boxHeight-23, main, feature));
+            buttonList.add(new ButtonToggle(x+40, y+boxHeight-18, main, feature));
         } else if (buttonType == EnumUtils.ButtonType.SOLID) {
             buttonList.add(new ButtonNormal(x, y, text, main, feature));
 
@@ -371,16 +377,16 @@ public class SkyblockAddonsGui extends GuiScreen {
             buttonList.add(new ButtonNormal(x, y, text, main, feature));
 
             if (feature == Feature.CHROMA_SPEED) {
-                buttonList.add(new ButtonChromaSlider(x + 35, y + boxHeight - 23, 70, 15, main, main.getConfigValues().getChromaSpeed(),
-                        0.1F, 10, 0.5F, new ButtonChromaSlider.OnSliderChangeCallback() {
+                buttonList.add(new ButtonSlider(x + 35, y + boxHeight - 23, 70, 15, main, main.getConfigValues().getChromaSpeed(),
+                        0.1F, 10, 0.5F, new ButtonSlider.OnSliderChangeCallback() {
                     @Override
                     public void sliderUpdated(float value) {
                         main.getConfigValues().setChromaSpeed(value);
                     }
                 }));
             } else if (feature == Feature.CHROMA_FADE_WIDTH) {
-                buttonList.add(new ButtonChromaSlider(x + 35, y + boxHeight - 23, 70, 15, main, main.getConfigValues().getChromaFadeWidth(),
-                        1, 42, 1, new ButtonChromaSlider.OnSliderChangeCallback() {
+                buttonList.add(new ButtonSlider(x + 35, y + boxHeight - 23, 70, 15, main, main.getConfigValues().getChromaFadeWidth(),
+                        1, 42, 1, new ButtonSlider.OnSliderChangeCallback() {
                     @Override
                     public void sliderUpdated(float value) {
                         main.getConfigValues().setChromaFadeWidth(value);

@@ -1,0 +1,15 @@
+{
+  "minimumInventoryRarity": "RARE",
+  "minimumHotbarRarity": "RARE",
+  "dontDropTheseItems": [
+    "PIGGY_BANK",
+    "SMALL_BACKPACK",
+    "RADIANT_POWER_ORB",
+    "GRAPPLING_HOOK",
+    "WAND_OF_HEALING"
+  ],
+  "allowDroppingTheseItems": [
+    "RUNE",
+    "REMNANT_OF_THE_EYE"
+  ]
+}

@@ -9,9 +9,9 @@ import net.minecraft.util.ResourceLocation;
  */
 public enum PowerOrb {
 
-    RADIANT(0, "§aRadiant", 0.01, 0, 0, 0, 18*18, new ResourceLocation("skyblockaddons", "powerorbs/radiant.png")),
-    MANA_FLUX(1, "§9Mana Flux", 0.02, 0.5, 10, 0, 18*18, new ResourceLocation("skyblockaddons", "powerorbs/mana_flux.png")),
-    OVERFLUX(2, "§5Overflux", 0.025, 1, 25, 0.05, 18*18, new ResourceLocation("skyblockaddons", "powerorbs/overflux.png"));
+    RADIANT(0, "§aRadiant", 0.01, 0, 0, 0, 18*18,"radiant"),
+    MANA_FLUX(1, "§9Mana Flux", 0.02, 0.5, 10, 0, 18*18, "mana_flux"),
+    OVERFLUX(2, "§5Overflux", 0.025, 1, 25, 0.05, 18*18, "overflux");
 
     /**
      * Higher priority takes effect over lower priority
@@ -46,7 +46,7 @@ public enum PowerOrb {
      */
     public final ResourceLocation resourceLocation;
 
-    PowerOrb(int priority, String display, double healthRegen, double manaRegen, int strength, double healIncrease, int radiusSquared, ResourceLocation resourceLocation) {
+    PowerOrb(int priority, String display, double healthRegen, double manaRegen, int strength, double healIncrease, int radiusSquared, String resourcePath) {
         this.priority = priority;
         this.display = display;
         this.healthRegen = healthRegen;
@@ -54,7 +54,7 @@ public enum PowerOrb {
         this.strength = strength;
         this.healIncrease = healIncrease;
         this.radiusSquared = radiusSquared;
-        this.resourceLocation = resourceLocation;
+        this.resourceLocation = new ResourceLocation("skyblockaddons", "powerorbs/"+resourcePath+".png");
     }
 
     /**

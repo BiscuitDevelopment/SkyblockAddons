@@ -1,6 +1,7 @@
 package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.utils.discord.DiscordStatus;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
 import com.google.gson.*;
 import lombok.Getter;
@@ -24,9 +25,9 @@ public class ConfigValues {
 
     private static final int CONFIG_VERSION = 7;
 
+    private final static float DEFAULT_GUI_SCALE = normalizeValueNoStep(1);
     private final static float GUI_SCALE_MINIMUM = 0.5F;
     private final static float GUI_SCALE_MAXIMUM = 5;
-    private final static float GUI_SCALE_STEP = 0.1F;
 
     private SkyblockAddons main;
 
@@ -53,6 +54,9 @@ public class ConfigValues {
     @Getter @Setter private float chromaSpeed = 0.19354838F; // 2.0
     @Getter @Setter private EnumUtils.ChromaMode chromaMode = EnumUtils.ChromaMode.FADE;
     @Getter @Setter private float chromaFadeWidth = 0.22580644F; // 10° Hue
+    @Setter private DiscordStatus discordStatus = DiscordStatus.NONE;
+    @Setter private DiscordStatus discordDetails = DiscordStatus.NONE;
+
 
     public ConfigValues(SkyblockAddons main, File settingsConfigFile) {
         this.main = main;
@@ -223,6 +227,20 @@ public class ConfigValues {
                 chromaFadeWidth = settingsConfig.get("chromaFadeWidth").getAsFloat();
             }
 
+            if(settingsConfig.has("discordStatus")) {
+                int ordinal = settingsConfig.get("discordStatus").getAsInt();
+                if (DiscordStatus.values().length > ordinal) {
+                    discordStatus = DiscordStatus.values()[ordinal];
+                }
+            }
+
+            if(settingsConfig.has("discordDetails")) {
+                int ordinal = settingsConfig.get("discordDetails").getAsInt();
+                if (DiscordStatus.values().length > ordinal) {
+                    discordDetails = DiscordStatus.values()[ordinal];
+                }
+            }
+
             int configVersion;
             if (settingsConfig.has("configVersion")) {
                 configVersion = settingsConfig.get("configVersion").getAsInt();
@@ -338,6 +356,7 @@ public class ConfigValues {
     public void setAllCoordinatesToDefault() {
         setAnchorPointsToDefault();
         putDefaultBarSizes();
+        guiScales.clear();
         for (Feature feature : Feature.getGuiFeatures()) {
             putDefaultCoordinates(feature);
         }
@@ -397,7 +416,7 @@ public class ConfigValues {
         FMLLog.info("[SkyblockAddons] Attempting to pull updated language files from online.");
         new Thread(() -> {
             try {
-                URL url = new URL("https://raw.githubusercontent.com/biscuut/SkyblockAddons/master/src/main/resources/lang/" + language.getPath() + ".json");
+                URL url = new URL("https://raw.githubusercontent.com/biscuut/SkyblockAddons/development/src/main/resources/lang/" + language.getPath() + ".json");
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                 connection.setRequestMethod("GET");
                 connection.setRequestProperty("User-Agent", Utils.USER_AGENT);
@@ -535,6 +554,9 @@ public class ConfigValues {
             settingsConfig.addProperty("chromaSpeed", chromaSpeed);
             settingsConfig.addProperty("chromaMode", chromaMode.ordinal());
             settingsConfig.addProperty("chromaFadeWidth", chromaFadeWidth);
+
+            settingsConfig.addProperty("discordStatus", discordStatus.ordinal());
+            settingsConfig.addProperty("discordDetails", discordDetails.ordinal());
 
             settingsConfig.addProperty("configVersion", CONFIG_VERSION);
 
@@ -719,21 +741,39 @@ public class ConfigValues {
     }
 
     public float getGuiScale(Feature feature, boolean denormalized) {
-        float value = 0.11F; //default scale (1.0)
+        float value = ConfigValues.DEFAULT_GUI_SCALE;
         if (guiScales.containsKey(feature)) {
             value = guiScales.get(feature).getValue();
         }
-        if (denormalized) value = denormalizeScale(value);
+        if (denormalized) {
+            value = denormalizeScale(value);
+        }
         return value;
     }
 
+    public static float normalizeValueNoStep(float value) {
+        return MathHelper.clamp_float((snapNearDefaultValue(value) - ConfigValues.GUI_SCALE_MINIMUM) /
+                (ConfigValues.GUI_SCALE_MAXIMUM - ConfigValues.GUI_SCALE_MINIMUM), 0.0F, 1.0F);
+    }
+
     /** These two are taken from GuiOptionSlider. */
-    public float denormalizeScale(float value) {
-        return snapToStepClamp(ConfigValues.GUI_SCALE_MINIMUM + (ConfigValues.GUI_SCALE_MAXIMUM - ConfigValues.GUI_SCALE_MINIMUM) *
+    public static float denormalizeScale(float value) {
+        return snapNearDefaultValue(ConfigValues.GUI_SCALE_MINIMUM + (ConfigValues.GUI_SCALE_MAXIMUM - ConfigValues.GUI_SCALE_MINIMUM) *
                 MathHelper.clamp_float(value, 0.0F, 1.0F));
     }
-    public float snapToStepClamp(float value) {
-        value = ConfigValues.GUI_SCALE_STEP * (float) Math.round(value / ConfigValues.GUI_SCALE_STEP);
-        return MathHelper.clamp_float(value, ConfigValues.GUI_SCALE_MINIMUM, ConfigValues.GUI_SCALE_MAXIMUM);
+    public static float snapNearDefaultValue(float value) {
+        if (value != 1 && value > 1-0.05 && value < 1+0.05) {
+            return 1;
+        }
+
+        return value;
+    }
+
+    public DiscordStatus getDiscordStatus() {
+        return discordStatus != null ? discordStatus : DiscordStatus.NONE;
+    }
+
+    public DiscordStatus getDiscordDetails() {
+        return discordDetails != null ? discordDetails : DiscordStatus.NONE;
     }
 }

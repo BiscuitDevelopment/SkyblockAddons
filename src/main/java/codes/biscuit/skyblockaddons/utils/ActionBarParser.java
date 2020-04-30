@@ -101,7 +101,7 @@ public class ActionBarParser {
      * @return Text to keep displaying or null
      */
     private String parseSection(String section) {
-        String numbersOnly = main.getUtils().getNumbersOnly(section).trim(); // keeps numbers and slashes
+        String numbersOnly = TextUtils.getNumbersOnly(section).trim(); // keeps numbers and slashes
         String[] splitStats = numbersOnly.split("/");
 
         if (section.contains("❤")) {
@@ -143,7 +143,7 @@ public class ActionBarParser {
         if (healthSection.contains("+")) {
             // Contains the Wand indicator so it has to be split differently
             String[] splitHealthAndWand = healthSection.split("\\+");
-            String[] healthSplit = main.getUtils().getNumbersOnly(splitHealthAndWand[0]).split("/");
+            String[] healthSplit = TextUtils.getNumbersOnly(splitHealthAndWand[0]).split("/");
             newHealth = Integer.parseInt(healthSplit[0]);
             maxHealth = Integer.parseInt(healthSplit[1]);
             if (separateDisplay) {

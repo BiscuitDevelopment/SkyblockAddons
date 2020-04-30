@@ -4,6 +4,7 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import lombok.Getter;
 import lombok.Setter;
 
+@Deprecated
 @Getter @Setter
 public class DownloadInfo {
 
@@ -23,9 +24,9 @@ public class DownloadInfo {
 
     void setMessageType(EnumUtils.UpdateMessageType messageType) {
         this.messageType = messageType;
-        if (messageType != EnumUtils.UpdateMessageType.DOWNLOADING) {
+/*        if (messageType != EnumUtils.UpdateMessageType.DOWNLOADING) {
             main.getScheduler().schedule(Scheduler.CommandType.RESET_UPDATE_MESSAGE, 10, messageType);
-        }
+        }*/
         if (messageType == EnumUtils.UpdateMessageType.FAILED) {
             main.getUtils().sendUpdateMessage(true,false);
         } else if (messageType == EnumUtils.UpdateMessageType.DOWNLOAD_FINISHED) {

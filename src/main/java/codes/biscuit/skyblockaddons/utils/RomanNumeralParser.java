@@ -1,5 +1,7 @@
 package codes.biscuit.skyblockaddons.utils;
 
+import codes.biscuit.skyblockaddons.SkyblockAddons;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -16,7 +18,7 @@ public class RomanNumeralParser {
     /**
      * Pattern that finds words that begin with a Roman numeral
      */
-    private static final Pattern NUMERAL_FINDING_PATTERN = Pattern.compile(" ((?=[MDCLXVI])M*(C[MD]|D?C{0,3})(X[CL]|L?X{0,3})(I[XV]|V?I{0,3}))\\w*");
+    private static final Pattern NUMERAL_FINDING_PATTERN = Pattern.compile(" (?=[MDCLXVI])(M*(?:C[MD]|D?C{0,3})(?:X[CL]|L?X{0,3})(?:I[XV]|V?I{0,3}))(.?)");
 
     private enum Numeral {
 
@@ -38,7 +40,7 @@ public class RomanNumeralParser {
             try {
                 return Numeral.valueOf(Character.toString(c));
             } catch (IllegalArgumentException ex) {
-                throw new IllegalArgumentException("Expected valid Roman numeral, received " + c);
+                throw new IllegalArgumentException("Expected valid Roman numeral, received '" + c + "'.");
             }
         }
     }
@@ -51,23 +53,28 @@ public class RomanNumeralParser {
      * @return The input string with all numerals replaced by integers
      */
     public static String replaceNumeralsWithIntegers(String input) {
-        StringBuilder result = new StringBuilder(input);
-        int offsetByReplacement = 0; // Because integers and numerals can be of different lengths, keep track of the produced offset from replacing
+        StringBuffer result = new StringBuffer();
         Matcher matcher = NUMERAL_FINDING_PATTERN.matcher(input);
+
+        // The matcher finds all words after a space that begin with a Roman numeral.
         while (matcher.find()) {
-            // The matcher finds all words that begin with a Roman numeral as groups
-            String group = matcher.group().trim(); // trim to remove the required leading space
-            if (isNumeralValid(group)) { // check if that word is actually a valid numeral in itself (to catch things like Vampirism)
-                // capturing group 1 matches the actual numeral
-                int startIndex = matcher.start(1);
-                int endIndex = matcher.end(1);
-                int parsedInteger = parseNumeral(group);
-                String parsedIntegerString = String.valueOf(parsedInteger);
-                int lengthDiff = group.length() - parsedIntegerString.length();
-                result.replace(startIndex + offsetByReplacement, endIndex + offsetByReplacement, parsedIntegerString);
-                offsetByReplacement -= lengthDiff;
+            int parsedInteger;
+            Matcher wordPartMatcher = Pattern.compile("^[\\w-']").matcher(matcher.group(2));
+
+            // Ignore this match if it is a capital letter that is part of a word or if the first capture group matches an empty String.
+            if (wordPartMatcher.matches() || matcher.group(1).equals("")) {
+                continue;
+            }
+
+            parsedInteger = parseNumeral(matcher.group(1));
+
+            // Don't replace the word "I".
+            if (parsedInteger != 1 || matcher.group(2).equals("§") ||matcher.group(2).equals("")) {
+                matcher.appendReplacement(result, " " + parsedInteger + "$2");
             }
         }
+        matcher.appendTail(result);
+
         return result.toString();
     }
 
@@ -92,6 +99,11 @@ public class RomanNumeralParser {
      * @throws IllegalArgumentException If the input is malformed
      */
     private static int parseNumeral(String numeralString) {
+        // Make sure this is a valid Roman numeral before trying to parse it.
+        if (!isNumeralValid(numeralString)) {
+            throw new IllegalArgumentException("\"" + numeralString + "\" is not a valid Roman numeral.");
+        }
+
         int value = 0; // parsed value
         char[] charArray = numeralString.toCharArray();
         for (int i = 0; i < charArray.length; i++) {
