@@ -8,9 +8,4 @@ public interface ITransformer {
 
     void transform(ClassNode classNode, String name);
 
-    default boolean nameMatches(String method, String... names) {
-        for (String name : names) if (method.equals(name)) return true;
-
-        return false;
-    }
 }

@@ -21,9 +21,7 @@ public class ItemTransformer implements ITransformer {
     @Override
     public void transform(ClassNode classNode, String name) {
         for (MethodNode methodNode : classNode.methods) { // Loop through all methods inside of the class.
-
-            String methodName = methodNode.name;
-            if (nameMatches(methodName, "showDurabilityBar")) { // always deobfuscated
+            if (methodNode.name.equals("showDurabilityBar")) { // always deobfuscated
 
                 // Objective:
                 // Find: return stack.isItemDamaged();
@@ -44,7 +42,7 @@ public class ItemTransformer implements ITransformer {
                     }
                 }
             }
-            if (nameMatches(methodName, "getDurabilityForDisplay")) { // always deobfuscated
+            if (methodNode.name.equals("getDurabilityForDisplay")) { // always deobfuscated
 
                 // Objective:
                 // Find: Method head.
