@@ -4,8 +4,9 @@
   "dontDropTheseItems": [
     "PIGGY_BANK",
     "SMALL_BACKPACK",
-    "SULPHUR",
-    "GRAPPLING_HOOK"
+    "RADIANT_POWER_ORB",
+    "GRAPPLING_HOOK",
+    "WAND_OF_HEALING"
   ],
   "allowDroppingTheseItems": [
     "RUNE",

@@ -60,7 +60,7 @@ public class ItemDropChecker {
 
         // Try to get the lists from the file.
         try {
-            String ITEM_DROP_LIST_FILE_PATH = "itemDropList.json";
+            String ITEM_DROP_LIST_FILE_PATH = "lists/itemDropList.json";
             JsonReader jsonFileReader = new JsonReader(Files.newBufferedReader(Paths.get(Objects.requireNonNull(this.getClass().getClassLoader().getResource(ITEM_DROP_LIST_FILE_PATH)).toURI())));
             itemDropList = GSON.fromJson(jsonFileReader, ItemDropList.class);
         } catch (FileNotFoundException | URISyntaxException e) {
@@ -78,7 +78,7 @@ public class ItemDropChecker {
         LOGGER.info("Attempting to pull item drop list from online...");
         new Thread(() -> {
             try {
-                URL url = new URL("https://raw.githubusercontent.com/biscuut/SkyblockAddons/development/src/main/resources/itemDropList.json");
+                URL url = new URL("https://raw.githubusercontent.com/biscuut/SkyblockAddons/development/src/main/resources/lists/itemDropList.json");
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                 connection.setRequestMethod("GET");
                 connection.setRequestProperty("User-Agent", Utils.USER_AGENT);
@@ -95,9 +95,9 @@ public class ItemDropChecker {
                 connection.disconnect();
 
                 this.itemDropList = GSON.fromJson(response.toString(), ItemDropList.class);
-            } catch (Exception ex) {
-                ex.printStackTrace();
-                LOGGER.warn("SkyblockAddons: There was an error pulling the item drop list from online...");
+            } catch (Exception e) {
+                LOGGER.warn("There was an error pulling the item drop list from online...");
+                LOGGER.catching(e);
             }
         }).start();
     }
