@@ -6,6 +6,8 @@ import codes.biscuit.skyblockaddons.utils.Utils;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
+import net.minecraft.util.ChatComponentText;
+import net.minecraftforge.fml.common.FMLLog;
 
 import java.awt.*;
 import java.io.IOException;
@@ -70,6 +72,11 @@ public class SkyblockAddonsCommand extends CommandBase {
                     try {
                         Desktop.getDesktop().open(main.getUtils().getSBAFolder(false));
                     } catch (IOException e) {
+                        main.getUtils().sendMessage(
+                                ChatFormatting.RED + "Couldn't open folder. Post a GitHub issue if this persists."
+                        );
+
+                        FMLLog.warning("Exception thrown while attempting to open folder");
                         e.printStackTrace();
                     }
                     break;
