@@ -58,6 +58,10 @@ dependencies {
 jar {
     archiveName = project.modName + "-" + minecraft.version + "-" + version + ".jar"
 
+    from {
+        configurations.provided.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+
     manifest.attributes(
             'Main-Class': 'OpenErrorMessage',
             'FMLCorePlugin': "${project.group}.${project.modId}.tweaker.${project.modName}LoadingPlugin",
