@@ -98,14 +98,14 @@
     "showBackpackPreviewInAH": "Pogląd plecaków z otwartym Domem Aukcyjnym",
     "enableDevFeatures": "Zezwól na funkcje developerskie",
     "chromaSpeed": "Prędkość zmiany kolorów",
-    "chromaMode": "Tryb zmiany kolorów",
+    "chromaMode": "Tryb koloru Chroma",
     "chromaModes": {
       "allTheSame": "Ten sam kolor",
       "fade": "Zmiana koloru"
     },
     "chromaFadeWidth": "Długość mieszania kolorów",
     "sortTabEffectTimers": "Sortuj zegary według trwania",
-    "showBrokenFragments": "Pokaż zepsute fragmenty",
+    "showBrokenFragments": "Pokaż zepsute fragmenty smoka",
     "skyblockAddonsButtonInPauseMenu": "Pokaż przycisk SBA w menu pauzy",
     "showTotalZealotCount": "Licznik Zealotów - Łączna ilość Zealotów",
     "showSummoningEyeCount": "Licznik Zealotów - Łączna ilość oczu",
@@ -113,7 +113,7 @@
     "turnBowGreenWhenUsingToxicArrowPoison": "Pokaż łuk na zielono podczas używania toksycznej strzały",
     "birchParkRainmakerTimer": "Pozostały czas deszcu w parku",
     "combatTimerDisplay": "Pozostały czas combat taga",
-    "discordRP": "Status Discord"
+    "discordRP": "Pokazywanie statusu na Discordzie"
   },
   "messages": {
     "betaTesters": "Thank you for being a beta tester! Please report any bugs you encounter in the Discord channel.",
