@@ -43,7 +43,7 @@ public class GuiContainerHook {
      * This controls whether or not the backpack preview is frozen- allowing you
      * to hover over a backpack's contents in full detail!
      */
-    private static boolean freezeBackpack = false;
+    private static boolean freezeBackpack;
 
     public static void showEnchantments(Slot slotIn, int x, int y, ItemStack item) {
         SkyblockAddons main = SkyblockAddons.getInstance();

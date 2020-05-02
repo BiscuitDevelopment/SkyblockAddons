@@ -56,7 +56,7 @@ public class PlayerListener {
     private final Set<String> randomMessages = new HashSet<>(Arrays.asList("I feel like I can fly!", "What was in that soup?", "Hmm… tasty!", "Hmm... tasty!", "You can now fly for 2 minutes.", "Your Magical Mushroom Soup flight has been extended for 2 extra minutes."));
 
 
-    private boolean sentUpdate = false;
+    private boolean sentUpdate;
 
     private long lastWorldJoin = -1;
     private long lastBoss = -1;
@@ -73,7 +73,7 @@ public class PlayerListener {
     private long lastBobberEnteredWater = Long.MAX_VALUE;
     private long lastSkyblockServerJoinAttempt = 0;
 
-    private boolean oldBobberIsInWater = false;
+    private boolean oldBobberIsInWater;
     private double oldBobberPosY = 0;
 
     private Set<Entity> countedEndermen = new HashSet<>();

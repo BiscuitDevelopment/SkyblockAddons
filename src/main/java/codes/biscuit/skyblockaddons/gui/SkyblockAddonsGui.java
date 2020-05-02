@@ -44,7 +44,7 @@ public class SkyblockAddonsGui extends GuiScreen {
 
     private long timeOpened = System.currentTimeMillis();
 
-    private boolean cancelClose = false;
+    private boolean cancelClose;
 
     /**
      * The main gui, opened with /sba.

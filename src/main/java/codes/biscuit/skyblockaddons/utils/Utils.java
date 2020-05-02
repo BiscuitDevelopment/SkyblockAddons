@@ -74,7 +74,7 @@ public class Utils {
     private static final String[] RARE_ITEM_OVERRIDES = {"Backpack", "Helmet"};
 
     // I know this is messy af, but frustration led me to take this dark path - said someone not biscuit
-    public static boolean blockNextClick = false;
+    public static boolean blockNextClick;
 
     /** Get a player's attributes. This includes health, mana, and defence. */
     private Map<Attribute, MutableInt> attributes = new EnumMap<>(Attribute.class);
@@ -88,7 +88,7 @@ public class Utils {
     private Backpack backpackToRender = null;
 
     /** Whether the player is on skyblock. */
-    private boolean onSkyblock = false;
+    private boolean onSkyblock;
 
     /** List of enchantments that the player is looking to find. */
     private Location location = null;
@@ -97,7 +97,7 @@ public class Utils {
     private String profileName = null;
 
     /** Whether or not a loud sound is being played by the mod. */
-    private boolean playingSound = false;
+    private boolean playingSound;
 
     /** The current serverID that the player is on. */
     private String serverID = "";
@@ -105,7 +105,7 @@ public class Utils {
     private int lastHoveredSlot = -1;
 
     /** Whether the player is using the old style of bars packaged into Imperial's Skyblock Pack. */
-    private boolean usingOldSkyBlockTexture = false;
+    private boolean usingOldSkyBlockTexture;
 
     /** Whether the player is using the default bars packaged into the mod. */
     private boolean usingDefaultBarTextures = true;

@@ -23,7 +23,7 @@ public class LocationEditGui extends GuiScreen {
 
     private SkyblockAddons main;
     // The feature that is currently being dragged, or null for nothing.
-    private boolean resizing = false;
+    private boolean resizing;
     private int barOriginalHeight = 0;
     private int barOriginalWidth = 0;
     private Feature dragging = null;

@@ -49,11 +49,11 @@ public class SkyblockAddons {
 
     /** Get the scheduler that be can be used to easily execute tasks. */
     private Scheduler scheduler = new Scheduler(this);
-    private boolean usingLabymod = false;
-    private boolean usingOofModv1 = false;
+    private boolean usingLabymod;
+    private boolean usingOofModv1;
 
     /** Whether developer mode is enabled. */
-    @Setter private boolean devMode = false;
+    @Setter private boolean devMode;
     @Setter(AccessLevel.NONE) private KeyBinding[] keyBindings = new KeyBinding[4];
 
     @Mod.EventHandler

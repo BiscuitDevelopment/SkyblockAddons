@@ -29,7 +29,7 @@ public class SettingsGui extends GuiScreen {
     private Feature feature;
     private int lastPage;
     private EnumUtils.GuiTab lastTab;
-    private boolean closingGui = false;
+    private boolean closingGui;
     private Set<EnumUtils.FeatureSetting> settings;
     private String lastText;
 

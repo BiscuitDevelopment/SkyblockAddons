@@ -23,7 +23,7 @@ public class ButtonBanner extends GuiButton {
     private static ResourceLocation banner = null;
     private static BufferedImage bannerImage = null;
 
-    private static boolean grabbedBanner = false;
+    private static boolean grabbedBanner;
 
     // Used to calculate the transparency when fading in.
     private long timeOpened = System.currentTimeMillis();

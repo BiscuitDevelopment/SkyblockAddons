@@ -48,8 +48,8 @@ public class RenderListener {
 
     private SkyblockAddons main;
 
-    @Getter @Setter private boolean predictHealth = false;
-    @Getter @Setter private boolean predictMana = false;
+    @Getter @Setter private boolean predictHealth;
+    @Getter @Setter private boolean predictMana;
 
     @Getter private DownloadInfo downloadInfo;
 

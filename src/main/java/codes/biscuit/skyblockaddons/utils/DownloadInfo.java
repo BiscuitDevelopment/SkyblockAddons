@@ -9,7 +9,7 @@ public class DownloadInfo {
 
     private SkyblockAddons main;
 
-    private boolean patch = false;
+    private boolean patch;
     private EnumUtils.UpdateMessageType messageType = null;
     private long downloadedBytes = 0;
     private long totalBytes = 0;
