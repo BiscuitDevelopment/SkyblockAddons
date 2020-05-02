@@ -1,6 +1,7 @@
 package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.utils.item.ItemUtils;
 import lombok.Getter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
@@ -20,40 +21,51 @@ import java.util.HashMap;
  */
 public class BaitListManager {
 
-    //TODO Fix Move GUI Box to extend across all current baits (or make a dummy, PowerOrb has that?)
-
     /**
      * The BaitListManager instance.
      */
     @Getter
     private static final BaitListManager instance = new BaitListManager();
 
+    /**
+     * A map of all baits in the inventory and their count
+     */
     public HashMap<BaitType, Integer> baitsInInventory = new HashMap<BaitType, Integer>(BaitType.values().length);
 
-    private ItemStack previousHeldItem = null;
+    private String previousHeldItem = null;
 
+    /**
+     * Check if the ItemStack passed is different to the stored item, and if so refresh the Bait List
+     *
+     * @param heldItem
+     */
     public void compareHeldItems(ItemStack heldItem) {
-        if (previousHeldItem != heldItem && holdingRod())
+        if (holdingRod() && (previousHeldItem == null || !previousHeldItem.equals(ItemUtils.getSkyBlockItemID(heldItem))))
             refreshBaits();
-
-        previousHeldItem = heldItem;
+        previousHeldItem = heldItem == null ? null : ItemUtils.getSkyBlockItemID(heldItem);
     }
 
+    /**
+     * Check if our Player is holding a Fishing Rod, and filters out the Grapple Hook (If any more items are made that
+     * are Items.fishing_rods but aren't used for fishing, add them here)
+     *
+     * @return True if it can be used for fishing
+     */
     public boolean holdingRod() {
         EntityPlayerSP p = Minecraft.getMinecraft().thePlayer;
         SkyblockAddons main = SkyblockAddons.getInstance();
         if (p != null && main.getUtils().isOnSkyblock()) {
-            //if (main.getConfigValues().isEnabled(Feature.BAIT_LIST)) {
             ItemStack item = p.getHeldItem();
             if (item == null || item.getItem() != Items.fishing_rod) return false;
             if (!item.hasDisplayName()) return true;
             if (!item.getDisplayName().equals("§aGrappling Hook")) return true;
-
-            //}
         }
         return false;
     }
 
+    /**
+     * Re-count all baits in the inventory
+     */
     public void refreshBaits() {
         baitsInInventory.clear();
         EntityPlayerSP player = Minecraft.getMinecraft().thePlayer;
@@ -99,7 +111,7 @@ public class BaitListManager {
         /**
          * Check to see if the given name matches a bait's name.
          *
-         * @param name Name of the item to check
+         * @param name Display Name of the Item to check
          * @return The matching BaitType or null
          */
         public static BaitType getByDisplayName(String name) {

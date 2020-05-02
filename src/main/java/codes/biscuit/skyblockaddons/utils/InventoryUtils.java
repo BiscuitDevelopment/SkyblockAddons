@@ -62,8 +62,8 @@ public class InventoryUtils {
      * @param inventory Inventory to copy
      * @return List of copied ItemStacks
      */
-    private List<ItemStack> copyInventory(ItemStack[] inventory) {
-        List<ItemStack> copy = new ArrayList<>(inventory.length);
+    private ArrayList<ItemStack> copyInventory(ItemStack[] inventory) {
+        /*List<ItemStack> copy = new ArrayList<>(inventory.length);
         for (ItemStack item : inventory) {
             if (item != null) {
                 copy.add(ItemStack.copyItemStack(item));
@@ -71,7 +71,23 @@ public class InventoryUtils {
                 copy.add(null);
             }
         }
-        return copy;
+        return copy;*/
+        return new ArrayList<ItemStack>(Arrays.asList(inventory));
+    }
+
+    public boolean isPreviousInventoryNull()
+    {
+        return previousInventory == null;
+    }
+
+    public boolean hasInventoryChanged(ItemStack[] inventory)
+    {
+        return !previousInventory.equals(copyInventory(inventory));
+    }
+
+    public void setCurrentInventory(ItemStack[] inventory)
+    {
+        previousInventory = copyInventory(inventory);
     }
 
     /**
@@ -144,7 +160,7 @@ public class InventoryUtils {
 
         }
 
-        previousInventory = newInventory;
+        //previousInventory = newInventory;
     }
 
     /**

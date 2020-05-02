@@ -8,6 +8,7 @@ import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
 import lombok.Getter;
 import lombok.Setter;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.inventory.GuiChest;
@@ -46,6 +47,7 @@ import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
+import net.minecraftforge.fml.relauncher.Side;
 import org.lwjgl.input.Keyboard;
 
 import java.util.*;
@@ -342,10 +344,11 @@ public class PlayerListener {
                             sentUpdate = true;
                         }*/
 
+                        /* Moved to PlayerTickEvent
                         if (mc.currentScreen == null && main.getConfigValues().isEnabled(Feature.ITEM_PICKUP_LOG)
                                 && main.getPlayerListener().didntRecentlyJoinWorld()) {
                             main.getInventoryUtils().getInventoryDifference(p.inventory.mainInventory);
-                        }
+                        }*/
                     }
 
                     main.getInventoryUtils().cleanUpPickupLog();
@@ -357,28 +360,43 @@ public class PlayerListener {
         }
     }
 
-    private ArrayList<ItemStack> previousInventory = null;
-
+    /**
+     * Called for every player (including multiplayer and vanished players)
+     * @param e The PlayerTickEvent
+     */
     @SubscribeEvent
     public void onPlayerTick(TickEvent.PlayerTickEvent e) {
+        // Ignore if the tick phase isn't Start or the Player isn't our Player
+        if (e.phase != TickEvent.Phase.START || e.player instanceof EntityOtherPlayerMP) return;
 
-        if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.BAIT_LIST)) {
-            if (previousInventory == null)
-                previousInventory = new ArrayList<ItemStack>(Arrays.asList(e.player.inventory.mainInventory));
+        if (main.getUtils().isOnSkyblock()) {
 
-            if (BaitListManager.getInstance().holdingRod()) {
+            InventoryUtils iu = main.getInventoryUtils();
+            // If inventory hasn't been stored before, store it (ie just joined Skyblock)
+            if (iu.isPreviousInventoryNull())
+                iu.setCurrentInventory(e.player.inventory.mainInventory);
 
-                ArrayList<ItemStack> currentInventory = new ArrayList<ItemStack>(Arrays.asList(e.player.inventory.mainInventory));
+            // Check if the inventory has changed, but keep in mind that this will also be be true when opening another
+            // inventory, and only opening, and I have no idea why
+            if (iu.hasInventoryChanged(e.player.inventory.mainInventory)) {
 
-                if (!currentInventory.equals(previousInventory)) {
+                if (main.getConfigValues().isEnabled(Feature.ITEM_PICKUP_LOG)
+                        && Minecraft.getMinecraft().currentScreen == null
+                        && main.getPlayerListener().didntRecentlyJoinWorld())
+                    main.getInventoryUtils().getInventoryDifference(e.player.inventory.mainInventory);
+
+                if (main.getConfigValues().isEnabled(Feature.BAIT_LIST) && BaitListManager.getInstance().holdingRod())
                     BaitListManager.getInstance().refreshBaits();
-                }
 
-                previousInventory = currentInventory;
+                // Set the inventory for next check
+                iu.setCurrentInventory(e.player.inventory.mainInventory);
             }
 
-            BaitListManager.getInstance().compareHeldItems(e.player.getHeldItem());
+            // Do other things such as check for held item changes
+            if (main.getConfigValues().isEnabled(Feature.BAIT_LIST))
+                BaitListManager.getInstance().compareHeldItems(e.player.getHeldItem());
         }
+
     }
 
     /**
