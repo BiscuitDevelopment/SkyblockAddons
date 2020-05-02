@@ -17,8 +17,8 @@ public class DownloadInfo {
     private String newestVersion = "";
     private String downloadLink = "";
 
-    public DownloadInfo(SkyblockAddons main) {
-        this.main = main;
+    public DownloadInfo() {
+        this.main = SkyblockAddons.getInstance();
     }
 
     void setMessageType(EnumUtils.UpdateMessageType messageType) {

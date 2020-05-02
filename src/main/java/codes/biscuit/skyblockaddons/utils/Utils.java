@@ -114,8 +114,8 @@ public class Utils {
 
     private SkyblockAddons main;
 
-    public Utils(SkyblockAddons main) {
-        this.main = main;
+    public Utils() {
+        this.main = SkyblockAddons.getInstance();
         addDefaultStats();
     }
 

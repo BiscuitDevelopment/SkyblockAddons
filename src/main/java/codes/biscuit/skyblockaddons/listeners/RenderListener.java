@@ -70,9 +70,9 @@ public class RenderListener {
     private Feature guiFeatureToOpen = null;
 
 
-    public RenderListener(SkyblockAddons main) {
-        this.main = main;
-        downloadInfo = new DownloadInfo(main);
+    public RenderListener() {
+        this.main = SkyblockAddons.getInstance();
+        downloadInfo = new DownloadInfo();
     }
 
     /**

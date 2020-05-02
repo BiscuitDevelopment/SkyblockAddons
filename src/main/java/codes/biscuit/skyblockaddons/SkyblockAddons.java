@@ -41,14 +41,14 @@ public class SkyblockAddons {
     private ConfigValues configValues;
     private Logger logger;
     private PersistentValues persistentValues;
-    private PlayerListener playerListener = new PlayerListener(this);
-    private GuiScreenListener guiScreenListener = new GuiScreenListener(this);
-    private RenderListener renderListener = new RenderListener(this);
-    private Utils utils = new Utils(this);
-    private InventoryUtils inventoryUtils = new InventoryUtils(this);
+    private PlayerListener playerListener = new PlayerListener();
+    private GuiScreenListener guiScreenListener = new GuiScreenListener();
+    private RenderListener renderListener = new RenderListener();
+    private Utils utils = new Utils();
+    private InventoryUtils inventoryUtils = new InventoryUtils();
 
     /** Get the scheduler that be can be used to easily execute tasks. */
-    private Scheduler scheduler = new Scheduler(this);
+    private Scheduler scheduler = new Scheduler();
     private boolean usingLabymod;
     private boolean usingOofModv1;
 
@@ -69,7 +69,7 @@ public class SkyblockAddons {
         MinecraftForge.EVENT_BUS.register(guiScreenListener);
         MinecraftForge.EVENT_BUS.register(renderListener);
         MinecraftForge.EVENT_BUS.register(scheduler);
-        ClientCommandHandler.instance.registerCommand(new SkyblockAddonsCommand(this));
+        ClientCommandHandler.instance.registerCommand(new SkyblockAddonsCommand());
 
         keyBindings[0] = new KeyBinding("key.skyblockaddons.open_settings", Keyboard.KEY_NONE, MOD_NAME);
         keyBindings[1] = new KeyBinding("key.skyblockaddons.edit_gui", Keyboard.KEY_NONE, MOD_NAME);

@@ -432,7 +432,7 @@ public class SkyblockAddonsGui extends GuiScreen {
     private void addFeaturedBanner() {
         if (main.getUtils().getFeaturedURL() != null) {
             int halfWidth = width / 2;
-            buttonList.add(new ButtonBanner(halfWidth - 170, 15, main));
+            buttonList.add(new ButtonBanner(halfWidth - 170, 15));
         }
     }
 

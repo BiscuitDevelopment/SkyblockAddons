@@ -19,8 +19,8 @@ import org.lwjgl.input.Keyboard;
 public class GuiScreenListener {
     private final SkyblockAddons main;
 
-    public GuiScreenListener(SkyblockAddons main) {
-        this.main = main;
+    public GuiScreenListener() {
+        this.main = SkyblockAddons.getInstance();
     }
 
     /**

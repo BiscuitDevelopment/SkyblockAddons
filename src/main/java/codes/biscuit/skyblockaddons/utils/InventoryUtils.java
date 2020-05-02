@@ -56,8 +56,8 @@ public class InventoryUtils {
 
     private SkyblockAddons main;
 
-    public InventoryUtils(SkyblockAddons main) {
-        this.main = main;
+    public InventoryUtils() {
+        this.main = SkyblockAddons.getInstance();
     }
 
     /**

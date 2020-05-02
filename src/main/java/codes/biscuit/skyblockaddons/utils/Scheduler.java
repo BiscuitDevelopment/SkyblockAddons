@@ -15,8 +15,8 @@ public class Scheduler {
     private long totalTicks = 0;
     private Map<Long, Set<Command>> queue = new HashMap<>();
 
-    public Scheduler(SkyblockAddons main) {
-        this.main = main;
+    public Scheduler() {
+        this.main = SkyblockAddons.getInstance();
     }
 
     /**

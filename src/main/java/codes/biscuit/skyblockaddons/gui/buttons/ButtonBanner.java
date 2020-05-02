@@ -33,9 +33,9 @@ public class ButtonBanner extends GuiButton {
     /**
      * Create a button for toggling a feature on or off. This includes all the {@link Feature}s that have a proper ID.
      */
-    public ButtonBanner(double x, double y, SkyblockAddons main) {
+    public ButtonBanner(double x, double y) {
         super(0, (int)x, (int)y, "");
-        this.main = main;
+        this.main = SkyblockAddons.getInstance();
 
         if (!grabbedBanner) {
             grabbedBanner = true;

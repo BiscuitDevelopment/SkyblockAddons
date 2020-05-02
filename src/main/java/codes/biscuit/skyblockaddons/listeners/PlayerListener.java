@@ -95,9 +95,9 @@ public class PlayerListener {
     private final SkyblockAddons main;
     private final ActionBarParser actionBarParser;
 
-    public PlayerListener(SkyblockAddons main) {
-        this.main = main;
-        actionBarParser = new ActionBarParser(main);
+    public PlayerListener() {
+        this.main = SkyblockAddons.getInstance();
+        actionBarParser = new ActionBarParser();
     }
 
     /**

@@ -16,8 +16,8 @@ public class SkyblockAddonsCommand extends CommandBase {
 
     private SkyblockAddons main;
 
-    public SkyblockAddonsCommand(SkyblockAddons main) {
-        this.main = main;
+    public SkyblockAddonsCommand() {
+        this.main = SkyblockAddons.getInstance();
     }
 
     @Override

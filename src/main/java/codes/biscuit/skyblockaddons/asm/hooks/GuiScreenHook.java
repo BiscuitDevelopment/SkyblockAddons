@@ -64,7 +64,7 @@ public class GuiScreenHook {
             if (backpack != null) {
                 backpack.setX(x);
                 backpack.setY(y);
-                if (isFreezeKeyDown(main) && System.currentTimeMillis() - lastBackpackFreezeKey > 500) {
+                if (isFreezeKeyDown() && System.currentTimeMillis() - lastBackpackFreezeKey > 500) {
                     lastBackpackFreezeKey = System.currentTimeMillis();
                     GuiContainerHook.setFreezeBackpack(!GuiContainerHook.isFreezeBackpack());
                     main.getUtils().setBackpackToRender(backpack);
@@ -81,7 +81,9 @@ public class GuiScreenHook {
         }
     }
 
-    private static boolean isFreezeKeyDown(SkyblockAddons main) {
+    private static boolean isFreezeKeyDown() {
+        SkyblockAddons main = SkyblockAddons.getInstance();
+
         if (main.getFreezeBackpackKey().isKeyDown()) return true;
         if (main.getFreezeBackpackKey().isPressed()) return true;
         try {

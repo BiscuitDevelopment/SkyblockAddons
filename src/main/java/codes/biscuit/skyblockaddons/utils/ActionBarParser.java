@@ -50,8 +50,8 @@ public class ActionBarParser {
     @Setter private Integer healthUpdate = null;
     @Setter private long lastHealthUpdate;
 
-    public ActionBarParser(SkyblockAddons main) {
-        this.main = main;
+    public ActionBarParser() {
+        this.main = SkyblockAddons.getInstance();
     }
 
     /**
