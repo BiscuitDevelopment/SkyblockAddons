@@ -14,14 +14,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.URISyntaxException;
 import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.List;
 import java.util.Objects;
 
@@ -59,17 +54,11 @@ public class ItemDropChecker {
         this.LOGGER = LogManager.getLogger("SBA Item Drop Checker");
 
         // Try to get the lists from the file.
-        try {
-            String ITEM_DROP_LIST_FILE_PATH = "lists/itemDropList.json";
-            JsonReader jsonFileReader = new JsonReader(Files.newBufferedReader(Paths.get(Objects.requireNonNull(this.getClass().getClassLoader().getResource(ITEM_DROP_LIST_FILE_PATH)).toURI())));
-            itemDropList = GSON.fromJson(jsonFileReader, ItemDropList.class);
-        } catch (FileNotFoundException | URISyntaxException e) {
-            LOGGER.error("The item drop list doesn't exist or the path is incorrect. The developer did something wrong.");
-            LOGGER.catching(e);
-        } catch (IOException e) {
-            LOGGER.error("Error reading from item drop list!");
-            LOGGER.catching(e);
-        }
+        String ITEM_DROP_LIST_FILE_PATH = "lists/itemDrop.json";
+        JsonReader jsonFileReader = new JsonReader(new BufferedReader(new InputStreamReader(Objects.requireNonNull(
+                getClass().getClassLoader().getResourceAsStream(ITEM_DROP_LIST_FILE_PATH),
+                "Item drop list not found!"))));
+        itemDropList = GSON.fromJson(jsonFileReader, ItemDropList.class);
 
         grabItemListFromOnline();
     }
