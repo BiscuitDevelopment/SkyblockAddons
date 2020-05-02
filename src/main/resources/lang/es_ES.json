@@ -166,9 +166,9 @@
     "chooseAColor": "Elije un color",
     "selectedColor": "Color Seleccionado",
     "setHexColor": "Definir un Color Hex",
-    "rescaleFeatures": "Rescale Features",
-    "resizeBars": "Resize Bars",
-    "showColorIcons": "Show Color Icons"
+    "rescaleFeatures": "Redimensionar Características",
+    "resizeBars": "Redimensionar Barras",
+    "showColorIcons": "Mostrar Iconos de Color"
   },
   "discord": {
     "status": {}
