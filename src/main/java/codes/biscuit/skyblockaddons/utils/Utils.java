@@ -555,13 +555,7 @@ public class Utils {
     }
 
     public boolean isMaterialForRecipe(ItemStack item) {
-        final List<String> tooltip = item.getTooltip(null, false);
-        for (String s : tooltip) {
-            if ("§5§o§eRight-click to view recipes!".equals(s)) {
-                return true;
-            }
-        }
-        return false;
+        return item.getTooltip(null, false).contains("§5§o§eRight-click to view recipes!");
     }
 
     public String getReforgeFromItem(ItemStack item) {
@@ -686,7 +680,7 @@ public class Utils {
         return Items.wooden_pickaxe.equals(item) || Items.stone_pickaxe.equals(item) || Items.golden_pickaxe.equals(item) || Items.iron_pickaxe.equals(item) || Items.diamond_pickaxe.equals(item);
     }
 
-    private boolean lookedOnline = false;
+    private boolean lookedOnline;
     private URI featuredLink = null;
 
     public URI getFeaturedURL() {
