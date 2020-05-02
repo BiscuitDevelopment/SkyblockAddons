@@ -167,8 +167,8 @@
     "selectedColor": "اللون المحدد",
     "setHexColor": "تعيين لون الهيكس",
     "rescaleFeatures": "Rescale Features",
-    "resizeBars": "Resize Bars",
-    "showColorIcons": "Show Color Icons"
+    "resizeBars": "تغيير حجم الأشرطة",
+    "showColorIcons": "إظهار أيقونات الألوان"
   },
   "discord": {
     "status": {}
