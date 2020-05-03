@@ -300,7 +300,8 @@ public class EnumUtils {
         GARY("GARY_", "github.com/occanowey", Feature.ONLY_MINE_VALUABLES_NETHER),
         P0KE("P0ke", "p0ke.dev", Feature.ZEALOT_COUNTER),
         BERISAN("Berisan", "github.com/Berisan", Feature.TAB_EFFECT_TIMERS),
-        MYNAMEISJEFF("MyNameIsJeff", "github.com/My-Name-Is-Jeff", Feature.SHOW_BROKEN_FRAGMENTS);
+        MYNAMEISJEFF("MyNameIsJeff", "github.com/My-Name-Is-Jeff", Feature.SHOW_BROKEN_FRAGMENTS),
+        DJTHEREDSTONER("DJtheRedstoner", "github.com/DJtheRedstoner", Feature.LEGENDARY_SEA_CREATURE_WARNING);
 
         private Set<Feature> features;
         private String author;
