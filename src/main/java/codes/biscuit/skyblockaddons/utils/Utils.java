@@ -92,7 +92,7 @@ public class Utils {
     private boolean onSkyblock = false;
 
     /** The player's current location in Skyblock */
-    private Location location = null;
+    private Location location = Location.UNKNOWN;
 
     /** The skyblock profile that the player is currently on. Ex. "Grapefruit" */
     private String profileName = null;
@@ -272,7 +272,7 @@ public class Utils {
             }
         }
         if (!foundLocation) {
-            location = null;
+            location = Location.UNKNOWN;
         }
         if (!foundJerryWave) {
             jerryWave = -1;
