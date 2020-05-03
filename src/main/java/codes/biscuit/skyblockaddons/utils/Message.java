@@ -100,6 +100,7 @@ public enum Message {
     SETTING_CHROMA_MODE(MessageObject.SETTING, "chromaMode"),
     SETTING_CHROMA_FADE_WIDTH(MessageObject.SETTING, "chromaFadeWidth"),
     SETTING_SORT_TAB_EFFECT_TIMERS(MessageObject.SETTING, "sortTabEffectTimers"),
+    SETTING_LEGENDARY_SEA_CREATURE_WARNING(MessageObject.SETTING, "legendarySeaCreatureWarning"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.BACKPACK_STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.BACKPACK_STYLE, "compact"),
@@ -141,6 +142,7 @@ public enum Message {
     MESSAGE_CHOOSE_A_COLOR(MessageObject.MESSAGES, "chooseAColor"),
     MESSAGE_SELECTED_COLOR(MessageObject.MESSAGES, "selectedColor"),
     MESSAGE_SET_HEX_COLOR(MessageObject.MESSAGES, "setHexColor"),
+    MESSAGE_LEGENDARY_SEA_CREATURE_WARNING(MessageObject.MESSAGES, "legendarySeaCreatureWarning"),
 
     @Deprecated ANCHOR_POINT_TOP_LEFT(MessageObject.ANCHOR_POINT, "topLeft"),
     @Deprecated ANCHOR_POINT_TOP_RIGHT(MessageObject.ANCHOR_POINT, "topRight"),

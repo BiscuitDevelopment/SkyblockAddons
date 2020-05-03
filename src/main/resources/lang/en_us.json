@@ -104,7 +104,8 @@
       "fade": "Color Fade"
     },
     "chromaFadeWidth": "Chroma Fade Width",
-    "sortTabEffectTimers": "Sort Timers by Duration"
+    "sortTabEffectTimers": "Sort Timers by Duration",
+    "legendarySeaCreatureWarning": "Legendary Sea Creature Warning"
   },
   "messages": {
     "dropConfirmation": "Drop this item again to confirm!",
@@ -154,6 +155,7 @@
     "noArrowsLeft": "No Arrows Left!",
     "chooseAColor": "Choose a Color",
     "selectedColor": "Selected Color",
-    "setHexColor": "Set Hex Color"
+    "setHexColor": "Set Hex Color",
+    "legendarySeaCreatureWarning": "Legendary Catch!"
   }
 }
