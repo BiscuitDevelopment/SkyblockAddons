@@ -54,7 +54,7 @@ public class ItemDropChecker {
         this.LOGGER = LogManager.getLogger("SBA Item Drop Checker");
 
         // Try to get the lists from the file.
-        String ITEM_DROP_LIST_FILE_PATH = "lists/itemDrop.json";
+        String ITEM_DROP_LIST_FILE_PATH = "lists/itemDropList.json";
         JsonReader jsonFileReader = new JsonReader(new BufferedReader(new InputStreamReader(Objects.requireNonNull(
                 getClass().getClassLoader().getResourceAsStream(ITEM_DROP_LIST_FILE_PATH),
                 "Item drop list not found!"))));
@@ -84,6 +84,7 @@ public class ItemDropChecker {
                 connection.disconnect();
 
                 this.itemDropList = GSON.fromJson(response.toString(), ItemDropList.class);
+                LOGGER.info("Successfully downloaded item drop list.");
             } catch (Exception e) {
                 LOGGER.warn("There was an error pulling the item drop list from online...");
                 LOGGER.catching(e);
