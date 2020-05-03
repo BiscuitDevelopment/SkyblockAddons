@@ -3,13 +3,17 @@ package codes.biscuit.skyblockaddons.utils;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.utils.item.ItemUtils;
 import lombok.Getter;
+import lombok.Setter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * Keeps track of bait in the Player's Inventory.
@@ -30,7 +34,7 @@ public class BaitListManager {
     /**
      * A map of all baits in the inventory and their count
      */
-    public HashMap<BaitType, Integer> baitsInInventory = new HashMap<BaitType, Integer>(BaitType.values().length);
+    public HashMap<BaitType, Set<Integer,Integer>> baitsInInventory = new HashMap<BaitType, Set<Integer,Integer>>(BaitType.values().length);
 
     private String previousHeldItem = null;
 
@@ -69,15 +73,18 @@ public class BaitListManager {
     public void refreshBaits() {
         baitsInInventory.clear();
         EntityPlayerSP player = Minecraft.getMinecraft().thePlayer;
+        int untilUse = 0;
         for (ItemStack is : player.inventory.mainInventory) {
             if (is == null) continue;
             if (!is.hasDisplayName()) continue;
             BaitType bait = BaitType.getByDisplayName(is.getDisplayName());
             if (bait == null) continue;
             if (baitsInInventory.containsKey(bait))
-                baitsInInventory.replace(bait, baitsInInventory.get(bait) + is.stackSize);
-            else
-                baitsInInventory.put(bait, is.stackSize);
+                baitsInInventory.get(bait).setO2(baitsInInventory.get(bait).getO2() + is.stackSize);
+            else {
+                baitsInInventory.put(bait, new Set<Integer, Integer>(untilUse, is.stackSize));
+                untilUse++;
+            }
         }
 
     }
@@ -123,4 +130,16 @@ public class BaitListManager {
             return null;
         }
     }
+
+    public class Set<T, U>
+    {
+        @Getter @Setter private T o1;
+        @Getter @Setter private U o2;
+        public Set(T o1, U o2)
+        {
+            this.o1 = o1;
+            this.o2 = o2;
+        }
+    }
+
 }
