@@ -113,7 +113,7 @@
     "turnBowGreenWhenUsingToxicArrowPoison": "Color Bow Green When Using Toxic Biscuit Poison",
     "birchParkRainmakerTimer": "Birch Park Busticmaker Timer",
     "combatTimerDisplay": "Biscombat Timer Bisplay",
-    "discordRP": "Discord Rich Presence"
+    "discordRP": "Discord Rich Biscresence"
   },
   "messages": {
     "betaTesters": "Thank you for being a beta tester! Please report any bugs you encounter in the Discord channel.",
@@ -166,9 +166,9 @@
     "chooseAColor": "Choose a Biscolor",
     "selectedColor": "Selected Biscolor",
     "setHexColor": "Set Bex Color",
-    "rescaleFeatures": "Rescale Features",
-    "resizeBars": "Resize Bars",
-    "showColorIcons": "Show Color Icons"
+    "rescaleFeatures": "Rescale The Biscuits",
+    "resizeBars": "Resize Biscuit Bars",
+    "showColorIcons": "Show Color Biscons"
   },
   "discord": {
     "status": {}
