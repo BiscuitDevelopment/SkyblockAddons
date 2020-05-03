@@ -94,7 +94,7 @@ public class BaitListManager {
         FISH("§fFish Bait", new ResourceLocation("skyblockaddons", "baits/fish.png")),
         LIGHT("§fLight Bait", new ResourceLocation("skyblockaddons", "baits/light.png")),
         DARK("§fDark Bait", new ResourceLocation("skyblockaddons", "baits/dark.png")),
-        SPIKED("S§fpiked Bait", new ResourceLocation("skyblockaddons", "baits/spiked.png")),
+        SPIKED("§fSpiked Bait", new ResourceLocation("skyblockaddons", "baits/spiked.png")),
         SPOOKY("§fSpooky Bait", new ResourceLocation("skyblockaddons", "baits/spooky.png")),
         CARROT("§fCarrot Bait", new ResourceLocation("skyblockaddons", "baits/carrot.png")),
         BLESSED("§fBlessed Bait", new ResourceLocation("skyblockaddons", "baits/blessed.png")),
