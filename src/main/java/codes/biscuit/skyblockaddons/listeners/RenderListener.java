@@ -219,6 +219,9 @@ public class RenderListener {
                 case SPECIAL_ZEALOT_ALERT:
                     message = Message.MESSAGE_SPECIAL_ZEALOT_FOUND;
                     break;
+                case LEGENDARY_SEA_CREATURE_WARNING:
+                    message = Message.MESSAGE_LEGENDARY_SEA_CREATURE_WARNING;
+                    break;
             }
             if (message != null) {
                 String text = message.getMessage();

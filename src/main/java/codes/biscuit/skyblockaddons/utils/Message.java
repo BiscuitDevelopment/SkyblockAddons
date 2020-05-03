@@ -109,6 +109,7 @@ public enum Message {
     SETTING_BIRCH_PARK_RAINMAKER_TIMER(MessageObject.SETTING, "birchParkRainmakerTimer"),
     SETTING_COMBAT_TIMER_DISPLAY(MessageObject.SETTING, "combatTimerDisplay"),
     SETTING_DISCORD_RP(MessageObject.SETTING, "discordRP"),
+    SETTING_LEGENDARY_SEA_CREATURE_WARNING(MessageObject.SETTING, "legendarySeaCreatureWarning"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.BACKPACK_STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.BACKPACK_STYLE, "compact"),
@@ -153,6 +154,7 @@ public enum Message {
     MESSAGE_RESCALE_FEATURES(MessageObject.MESSAGES, "rescaleFeatures"),
     MESSAGE_RESIZE_BARS(MessageObject.MESSAGES, "resizeBars"),
     MESSAGE_SHOW_COLOR_ICONS(MessageObject.MESSAGES, "showColorIcons"),
+    MESSAGE_LEGENDARY_SEA_CREATURE_WARNING(MessageObject.MESSAGES, "legendarySeaCreatureWarning"),
 
     @Deprecated ANCHOR_POINT_TOP_LEFT(MessageObject.ANCHOR_POINT, "topLeft"),
     @Deprecated ANCHOR_POINT_TOP_RIGHT(MessageObject.ANCHOR_POINT, "topRight"),
@@ -234,6 +236,7 @@ public enum Message {
     DISCORD_STATUS_GENERIC_AFK_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionAfk"),
     DISCORD_STATUS_GENERIC_STONKS_TITLE(MessageObject.DISCORD_STATUS, "titleStonks"),
     DISCORD_STATUS_GENERIC_STONKS_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionStonks");
+
 
     private MessageObject messageObject;
     private String memberName;
