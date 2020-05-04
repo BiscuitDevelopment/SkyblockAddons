@@ -122,7 +122,6 @@ public class PlayerControllerMPHook {
                     lastUnmineableMessage = now;
                     main.getUtils().sendMessage(main.getConfigValues().getRestrictedColor(Feature.ONLY_BREAK_LOGS_PARK) + Message.MESSAGE_CANCELLED_NON_LOGS_BREAK.getMessage());
                 }
-                lastUnmineableMessage = now;
                 returnValue.cancel();
             } else if (main.getConfigValues().isEnabled(Feature.JUNGLE_AXE_COOLDOWN)) {
                 if ((block.equals(Blocks.log) || block.equals(Blocks.log2))
