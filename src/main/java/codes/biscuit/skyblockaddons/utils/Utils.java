@@ -411,7 +411,7 @@ public class Utils {
         sendMessage(buttonsMessage, false);
         if (main.getRenderListener().getDownloadInfo().getMessageType() != EnumUtils.UpdateMessageType.DOWNLOAD_FINISHED) {
             ChatComponentText discord = new ChatComponentText(ChatFormatting.AQUA + Message.MESSAGE_VIEW_PATCH_NOTES.getMessage() + " " +
-                                                                      ChatFormatting.BLUE.toString() + ChatFormatting.BOLD + '[' + Message.MESSAGE_JOIN_DISCORD.getMessage() + ']');
+                    ChatFormatting.BLUE.toString() + ChatFormatting.BOLD + '[' + Message.MESSAGE_JOIN_DISCORD.getMessage() + ']');
             discord.setChatStyle(discord.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://discord.gg/PqTAEek")));
             sendMessage(discord);
         }
@@ -678,6 +678,14 @@ public class Utils {
         return Items.wooden_pickaxe.equals(item) || Items.stone_pickaxe.equals(item) || Items.golden_pickaxe.equals(item) || Items.iron_pickaxe.equals(item) || Items.diamond_pickaxe.equals(item);
     }
 
+    public boolean isAxe(Item item) {
+        return Items.wooden_axe.equals(item) ||
+                Items.stone_axe.equals(item) ||
+                Items.golden_axe.equals(item) ||
+                Items.iron_axe.equals(item) ||
+                Items.diamond_axe.equals(item);
+    }
+
     /**
      * This retrieves the featured link for the banner in the top left of the GUI.
      *
@@ -796,7 +804,7 @@ public class Utils {
 
     public void bindColorInts(int r, int g, int b, int a) {
         GlStateManager.color(r/255F, g/255F, b/255F, a/255F);
-}
+    }
 
     public String[] wrapSplitText(String text, int wrapLength) {
         return WordUtils.wrap(text, wrapLength).replace("\r", "").split(Pattern.quote("\n"));
