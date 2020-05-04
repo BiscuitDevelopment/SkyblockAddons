@@ -25,7 +25,7 @@ A Minecraft Forge mod with many features to make your Hypixel skyblock experienc
 
 Special Credits
 -----
-InventiveTalent for  allowing us to use her magma boss API in our project, please check out her magma boss timer website at https://hypixel.inventivetalent.org/skyblock-magma-timer/ .
+InventiveTalent for allowing us to use her magma boss API in our project, please check out her magma boss timer website at https://hypixel.inventivetalent.org/skyblock-magma-timer/ .
 
 Thanks to YourKit
 ------

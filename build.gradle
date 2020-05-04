@@ -1,30 +1,20 @@
+import com.github.jengelman.gradle.plugins.shadow.tasks.ConfigureShadowRelocation
 import groovy.json.*
 
-buildscript {
-    repositories {
-        jcenter()
-        maven {
-            name = "forge"
-            url = "http://files.minecraftforge.net/maven"
-        }
-        maven {
-            url "https://plugins.gradle.org/m2/"
-        }
-    }
-    dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:2.1-SNAPSHOT'
-        classpath 'io.franzbecker:gradle-lombok:3.3.0'
-    }
+plugins {
+    id 'java'
+    id 'net.minecraftforge.gradle.forge' version '2.1-SNAPSHOT'
+    id 'io.franzbecker.gradle-lombok' version '3.3.0'
+    id 'com.github.johnrengelman.shadow' version '4.0.4'
 }
 
-apply plugin: 'io.franzbecker.gradle-lombok'
-apply plugin: 'net.minecraftforge.gradle.forge'
+group= 'codes.biscuit'
 
-group= "codes.biscuit"
+// Java plugin settings
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
 compileJava.options.encoding = 'UTF-8'
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
 minecraft {
     version = "${project.minecraftVersion}-${project.forgeVersion}"
     runDir = "run"
@@ -42,25 +32,25 @@ minecraft {
 
 repositories {
     jcenter()
-
-    maven {
-        url 'https://jitpack.io'
-    }
 }
 
 dependencies {
     // Discord RPC for Java https://github.com/jagrosh/DiscordIPC
-    provided('com.github.jagrosh:DiscordIPC:e29d6d8') {
+    implementation('com.jagrosh:DiscordIPC:0.4') {
         exclude module: 'log4j'
     }
 }
 
 jar {
+    // Set the archive name here instead of in shadowJar because ForgeGradle needs it when re-obfuscating the jar.
     archiveName = project.modName + "-" + minecraft.version + "-" + version + ".jar"
+    // Disable the default jar task and use shadowJar instead to shade the libraries into the jar.
+    enabled = false
+}
 
-    from {
-        configurations.provided.collect { it.isDirectory() ? it : zipTree(it) }
-    }
+shadowJar {
+    archiveName = tasks.jar.archiveName
+    classifier = ''
 
     manifest.attributes(
             'Main-Class': 'OpenErrorMessage',
@@ -71,11 +61,11 @@ jar {
             'FMLAT': "${project.modId}_at.cfg"
     )
 
-}
+    exclude('dummyThing')
+    exclude('META-INF/maven/')
+    exclude('META-INF/nar/')
 
-configurations {
-    provided
-    compile.extendsFrom(provided)
+    minimize()
 }
 
 processResources {
@@ -109,12 +99,19 @@ task processResourcesDev(type: Copy) {
         expand 'version':project.version, 'mcversion':project.minecraft.version
     }
 
-    // copy everything else, thats not the mcmod.info
+    // copy everything else that's not the mcmod.info
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'
     }
     into sourceSets.main.java.outputDir
 }
+
+task relocateShadowJar(type: ConfigureShadowRelocation) {
+    target = tasks.shadowJar
+    prefix = project.group + '.' + modId + '.shadow'
+}
+
+shadowJar.dependsOn tasks.relocateShadowJar
 
 // Updates the version JSON file automatically when the version changes
 // Don't forget to write the changelog! Those aren't automatic.
@@ -137,6 +134,7 @@ task updateVersionsFile {
 }
 
 tasks.build.dependsOn(updateVersionsFile)
+tasks.reobfJar.dependsOn(tasks.shadowJar)
 
 //reobf { // Only for labymod client.
 //    jar {
