@@ -1,23 +1,35 @@
-<h1 align="center">SkyblockAddons</h1>
+<head>
+<title>SkyblockAddons</title>
+<style>
+#shields {
+    text-align: center;
+}
+#title {
+    text-align: center;
+}
+</style>
+</head>
 
-<p align="center">
-  <a href="https://github.com/BiscuitDevelopment/SkyblockAddons/releases">
-    <img alt="downloads" src="https://img.shields.io/github/v/release/BiscuitDevelopment/SkyblockAddons?color=56bcd3" target="_blank" />
+<h1 id="title">SkyblockAddons</h1>
+
+<p id="shields">
+  <a href="https://github.com/BiscuitDevelopment/SkyblockAddons/releases" target="_blank">
+    <img alt="downloads" src="https://img.shields.io/github/v/release/BiscuitDevelopment/SkyblockAddons?color=56bcd3" />
   </a>
-  <a href="https://github.com/BiscuitDevelopment/SkyblockAddons/releases">
-    <img alt="downloads" src="https://img.shields.io/github/downloads/BiscuitDevelopment/SkyblockAddons/total?color=56bcd3" target="_blank" />
+  <a href="https://github.com/BiscuitDevelopment/SkyblockAddons/releases" target="_blank">
+    <img alt="downloads" src="https://img.shields.io/github/downloads/BiscuitDevelopment/SkyblockAddons/total?color=56bcd3" />
   </a>
-  <a href="https://github.com/BiscuitDevelopment/SkyblockAddons/blob/master/LICENSE">
-    <img alt="license" src="https://img.shields.io/github/license/BiscuitDevelopment/SkyblockAddons?color=56bcd3" target="_blank" />
+  <a href="https://github.com/BiscuitDevelopment/SkyblockAddons/blob/master/LICENSE" target="_blank">
+    <img alt="license" src="https://img.shields.io/github/license/BiscuitDevelopment/SkyblockAddons?color=56bcd3" />
   </a>
-  <a href="https://discord.gg/PqTAEek">
-    <img alt="discord" src="https://img.shields.io/discord/450878205294018560?color=56bcd3&label=discord" target="_blank" />
+  <a href="https://discord.gg/PqTAEek" target="_blank">
+    <img alt="discord" src="https://img.shields.io/discord/450878205294018560?color=56bcd3&label=discord" />
   </a>
-  <a href="https://twitter.com/bisccut">
-    <img alt="twitter" src="https://img.shields.io/twitter/follow/bisccut?style=social" target="_blank" />
+  <a href="https://twitter.com/bisccut" target="_blank">
+    <img alt="twitter" src="https://img.shields.io/twitter/follow/bisccut?style=social" />
   </a>
-  <a href="https://translate.biscuit.codes">
-    <img alt="discord" src="https://badges.crowdin.net/skyblockaddons/localized.svg" target="_blank" />
+  <a href="https://translate.biscuit.codes" target="_blank">
+    <img alt="discord" src="https://badges.crowdin.net/skyblockaddons/localized.svg" />
   </a>
 </p>
 
@@ -49,6 +61,11 @@ localization management platform to help us serve the mod in many languages!
 [Check out their website here](https://crowdin.com/)!
 
 Also thanks for our countless translators who help us translate this mod!
+
+Thanks to Open Source Software
+------
+Big thanks to all the open source software we use in this project! They are all listed [here](/.github/docs/OPEN_SOURCE_SOFTWARE.md).
+
 
 For Contributors
 ------
