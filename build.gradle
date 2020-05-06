@@ -31,13 +31,16 @@ minecraft {
 }
 
 repositories {
-    jcenter()
+    maven {
+        name 'JitPack'
+        url 'https://jitpack.io'
+    }
 }
 
 dependencies {
-    // Discord RPC for Java https://github.com/jagrosh/DiscordIPC
-    implementation('com.jagrosh:DiscordIPC:0.4') {
-        exclude module: 'log4j'
+    // Fork of Discord RPC for Java https://github.com/BiscuitDevelopment/DiscordIPC
+    implementation('com.github.BiscuitDevelopment:DiscordIPC:139c9d6') {
+        exclude module: 'gson'
     }
 }
 
@@ -64,6 +67,8 @@ shadowJar {
     exclude('dummyThing')
     exclude('META-INF/maven/')
     exclude('META-INF/nar/')
+    exclude('module-info.class')
+    exclude('META-INF/versions/')
 
     minimize()
 }

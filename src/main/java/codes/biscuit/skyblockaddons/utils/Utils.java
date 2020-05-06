@@ -244,7 +244,6 @@ public class Utils {
 
                             if (location != loopLocation) {
                                 location = loopLocation;
-                                main.getDiscordRPCManager().updatePresence();
                             }
 
                             foundLocation = true;
@@ -263,7 +262,6 @@ public class Utils {
                             }
                             if (jerryWave != newJerryWave) {
                                 jerryWave = newJerryWave;
-                                main.getDiscordRPCManager().updatePresence();
                             }
                         }
                     }
