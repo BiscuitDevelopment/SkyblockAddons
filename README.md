@@ -1,18 +1,6 @@
-<head>
-<title>SkyblockAddons</title>
-<style>
-#shields {
-    text-align: center;
-}
-#title {
-    text-align: center;
-}
-</style>
-</head>
+<h1 align="center">SkyblockAddons</h1>
 
-<h1 id="title">SkyblockAddons</h1>
-
-<p id="shields">
+<p align="center">
   <a href="https://github.com/BiscuitDevelopment/SkyblockAddons/releases" target="_blank">
     <img alt="downloads" src="https://img.shields.io/github/v/release/BiscuitDevelopment/SkyblockAddons?color=56bcd3" />
   </a>
