@@ -86,7 +86,7 @@
       "compact": "Kompaktno"
     },
     "disableMagicalSoupMessage": "Onesposobljenje Sporočil Čarobne Gobje Juhe",
-    "zealotCounter": "Prikaz Števca Zealotov",
+    "zealotCounter": "Števec zealotov - štetje od zadnjega očesa",
     "tickerChargesDisplay": "Ticker/Charges Display",
     "tab": {
       "generalSettings": "Splošne Nastavitve"
@@ -95,24 +95,24 @@
     "noArrowsLeftAlert": "Opozorilo za manjko puščic",
     "hideNightVisionEffectTimer": "Skrij časovnik za Night Vision Potion",
     "showCakeBagPreview": "Pokaži Predogled Torb s Tortami",
-    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
-    "enableDevFeatures": "Enable Developer Features",
-    "chromaSpeed": "Chroma Speed",
-    "chromaMode": "Chroma Color Mode",
+    "showBackpackPreviewInAH": "Pokaži predogled nahrbtnika za predmete ko je AH odprta",
+    "enableDevFeatures": "Omogočite nastavitve razvijalcev",
+    "chromaSpeed": "Hitrost chrome",
+    "chromaMode": "Način barve chroma",
     "chromaModes": {
       "allTheSame": "Vse iste barve",
-      "fade": "Color Fade"
+      "fade": "Bledenje barve"
     },
-    "chromaFadeWidth": "Chroma Fade Width",
-    "sortTabEffectTimers": "Sort Timers by Duration",
-    "showBrokenFragments": "Show Broken Dragon Fragments",
-    "skyblockAddonsButtonInPauseMenu": "Show SBA Button in Pause Menu",
-    "showTotalZealotCount": "Zealot Counter - Total Zealot Count",
-    "showSummoningEyeCount": "Zealot Counter - Total Eye Count",
-    "showZealotsPerEye": "Zealot Counter - Show Zealots Per Eye",
+    "chromaFadeWidth": "Dolžina bledenja chrome",
+    "sortTabEffectTimers": "Razvrsti časovnike po trajanju",
+    "showBrokenFragments": "Pokaži uničene Zmajeve drobce",
+    "skyblockAddonsButtonInPauseMenu": "Pokaži SBA gumb v meniju za ustavitev",
+    "showTotalZealotCount": "Števec zealotov - skupno število zealotov",
+    "showSummoningEyeCount": "Števec zealotov - skupno število očes",
+    "showZealotsPerEye": "Števec zealotov - pokaži zealote na oko",
     "turnBowGreenWhenUsingToxicArrowPoison": "Obarvaj lok zeleno, ko je uporabljen strup puščic",
     "birchParkRainmakerTimer": "Časovnik dežja v birch park",
-    "combatTimerDisplay": "Combat Timer Display",
+    "combatTimerDisplay": "Prikaz bojnega časovnika",
     "discordRP": "Discord Rich Presence"
   },
   "messages": {
