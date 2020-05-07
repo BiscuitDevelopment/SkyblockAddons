@@ -8,7 +8,7 @@
     "skeletonHatBonesBar": "Vrstica Kosti Skeleton Čelade",
     "hideFoodAndArmor": "Skrij Vrstici Hrane & Oklepa",
     "fullInventoryWarning": "Opozorilo Za Poln Inventar",
-    "repeating": "Repeating",
+    "repeating": "Ponovi opozorilo",
     "disableEmberRodAbility": "Onemogoči Sposobnost Ember Roda na Otoku",
     "editLocations": "Uredi GUI Lokacije",
     "guiScale": "Velikost GUI-ja: %scale%",
@@ -110,8 +110,8 @@
     "showTotalZealotCount": "Zealot Counter - Total Zealot Count",
     "showSummoningEyeCount": "Zealot Counter - Total Eye Count",
     "showZealotsPerEye": "Zealot Counter - Show Zealots Per Eye",
-    "turnBowGreenWhenUsingToxicArrowPoison": "Color Bow Green When Using Toxic Arrow Poison",
-    "birchParkRainmakerTimer": "Birch Park Rainmaker Timer",
+    "turnBowGreenWhenUsingToxicArrowPoison": "Obarvaj lok zeleno, ko je uporabljen strup puščic",
+    "birchParkRainmakerTimer": "Časovnik dežja v birch park",
     "combatTimerDisplay": "Combat Timer Display",
     "discordRP": "Discord Rich Presence"
   },
@@ -153,7 +153,7 @@
     "cancelledProfileOpening": "SkyblockAddons vam je preprečil odpiranje profila tega igralca medtem, ko držite lok.",
     "cancelledDropping": "SkyblockAddons vam je preprečil izpust te redke stvari iz svojega hotbarja.",
     "clickMoreTimes": "Kliknite/izpustite to stvar še %times% -krat, če to res želite storiti.",
-    "clickOneMoreTime": "Click/drop this item 1 more time if you really want to do this.",
+    "clickOneMoreTime": "Kliknite/izpustite to stvar še -krat, če to res želite storiti.",
     "cancelledDeepCaverns": "Funkcija SkyblockAddons ti je preprečila uničiti to kocko.",
     "featureDisabled": "Funkcija izklopljena",
     "anvilUses": "Število Uporab Nakovala: %uses%",
@@ -166,9 +166,9 @@
     "chooseAColor": "Izberi barvo",
     "selectedColor": "Izbrana barva",
     "setHexColor": "Nastavi Hex barvo",
-    "rescaleFeatures": "Rescale Features",
-    "resizeBars": "Resize Bars",
-    "showColorIcons": "Show Color Icons"
+    "rescaleFeatures": "Spremeni velikost funkcij",
+    "resizeBars": "Spremeni velikost barov",
+    "showColorIcons": "Pokaži barvne ikone"
   },
   "discord": {
     "status": {}
