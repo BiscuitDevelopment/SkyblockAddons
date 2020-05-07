@@ -7,7 +7,8 @@
     "RADIANT_POWER_ORB",
     "GRAPPLING_HOOK",
     "WAND_OF_HEALING",
-    "ENCHANTED_GLOWSTONE"
+    "ENCHANTED_GLOWSTONE",
+    "AATROX_BATPHONE"
   ],
   "allowDroppingTheseItems": [
     "RUNE",
