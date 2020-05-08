@@ -160,12 +160,39 @@ public class Utils {
         sendMessage(ChatFormatting.RED + "Error: " + errorText);
     }
 
+    /**
+     * Checks if the player is on the Hypixel Network
+     *
+     * @return {@code true} if the player is on Hypixel, {@code false} otherwise
+     */
+    public boolean isOnHypixel() {
+        final Pattern SERVER_BRAND_PATTERN = Pattern.compile("(.+) <- (?:.+)");
+        final String HYPIXEL_SERVER_BRAND = "BungeeCord (Hypixel)";
+
+        Minecraft mc = Minecraft.getMinecraft();
+
+        if (!mc.isSingleplayer()) {
+            Matcher matcher = SERVER_BRAND_PATTERN.matcher(mc.thePlayer.getClientBrand());
+
+            if (matcher.find()) {
+                // Group 1 is the server brand.
+                return matcher.group(1).equals(HYPIXEL_SERVER_BRAND);
+            }
+            else {
+                return false;
+            }
+        }
+        else {
+            return false;
+        }
+    }
+
     public void checkGameLocationDate() {
         boolean foundLocation = false;
         boolean foundJerryWave = false;
         Minecraft mc = Minecraft.getMinecraft();
 
-        if (mc != null && mc.theWorld != null && !mc.isSingleplayer()) {
+        if (mc != null && mc.theWorld != null && !mc.isSingleplayer() && isOnHypixel()) {
             Scoreboard scoreboard = mc.theWorld.getScoreboard();
             ScoreObjective sidebarObjective = mc.theWorld.getScoreboard().getObjectiveInDisplaySlot(1);
 
