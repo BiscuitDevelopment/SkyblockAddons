@@ -2,7 +2,6 @@ package codes.biscuit.skyblockaddons.commands;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
-import codes.biscuit.skyblockaddons.utils.Utils;
 import codes.biscuit.skyblockaddons.utils.dev.DevUtils;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
 import net.minecraft.client.Minecraft;
@@ -142,7 +141,7 @@ public class SkyblockAddonsCommand extends CommandBase {
             }
             else if (args[0].equalsIgnoreCase("folder")) {
                 try {
-                    Desktop.getDesktop().open(main.getUtils().getSBAFolder(false));
+                    Desktop.getDesktop().open(main.getUtils().getSBAFolder());
                 } catch (IOException e) {
                     logger.catching(e);
                     main.getUtils().sendErrorMessage("Failed to open mods folder.");
