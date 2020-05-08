@@ -104,7 +104,7 @@
       "fade": "Color Fade"
     },
     "chromaFadeWidth": "Chroma Fade Width",
-    "sortTabEffectTimers": "Sort Timers by Duration",
+    "sortTabEffectTimers": "タイマーの残り時間で並び替え",
     "showBrokenFragments": "壊れたドラゴンフラグメントを表示する",
     "skyblockAddonsButtonInPauseMenu": "ポーズメニューにSBAボタンを表示する",
     "showTotalZealotCount": "Zealotカウンター - Zealotの合計",
@@ -168,9 +168,9 @@
     "selectedColor": "選択中の色",
     "setHexColor": "16進数で色を設定",
     "rescaleFeatures": "Rescale Features",
-    "resizeBars": "Resize Bars",
-    "showColorIcons": "Show Color Icons",
-    "stage": "Stage %stage%",
+    "resizeBars": "バーをリサイズ",
+    "showColorIcons": "カラーアイコンを表示する",
+    "stage": "ステージ%stage%",
     "switchedSlots": "You have just switched from a locked slot or rare item. Please wait a bit before dropping!"
   },
   "discord": {
