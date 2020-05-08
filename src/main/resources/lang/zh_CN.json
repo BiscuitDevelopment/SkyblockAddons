@@ -113,7 +113,8 @@
     "turnBowGreenWhenUsingToxicArrowPoison": "使用 Toxic Arrow Poison 时将弓染成绿色",
     "birchParkRainmakerTimer": "桦木公园下雨计时",
     "combatTimerDisplay": "显示战斗计时器",
-    "discordRP": "丰富 Discord 状态"
+    "discordRP": "丰富 Discord 状态",
+    "endstoneProtectorDisplay": "Endstone Protector Display"
   },
   "messages": {
     "betaTesters": "感谢你成为一个 Beta 版测试者, 请在 Discord 中反馈你遇到的漏洞",
@@ -168,7 +169,9 @@
     "setHexColor": "设置十六进制颜色",
     "rescaleFeatures": "重置缩放大小",
     "resizeBars": "重置计量条大小",
-    "showColorIcons": "显示颜色图标"
+    "showColorIcons": "显示颜色图标",
+    "stage": "Stage %stage%",
+    "switchedSlots": "You have just switched from a locked slot or rare item. Please wait a bit before dropping!"
   },
   "discord": {
     "status": {}
