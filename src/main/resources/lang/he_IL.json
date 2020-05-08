@@ -113,7 +113,8 @@
     "turnBowGreenWhenUsingToxicArrowPoison": "קשת בצבע ירוק כאשר משתמשים ברעל חץ רעיל",
     "birchParkRainmakerTimer": "טיימר של מורידת הגשם ב Birch Park",
     "combatTimerDisplay": "תצוגת טיימר הלחימה",
-    "discordRP": "Discord Rich Presence"
+    "discordRP": "Discord Rich Presence",
+    "endstoneProtectorDisplay": "Endstone Protector Display"
   },
   "messages": {
     "betaTesters": "תודה לך שאתה בוחן בטא! בבקשה דווח על באגים שאתה מוצא בשרת דיסקורד שלנו.",
@@ -168,7 +169,9 @@
     "setHexColor": "קבע צבע הקסדצימלי",
     "rescaleFeatures": "Rescale Features",
     "resizeBars": "Resize Bars",
-    "showColorIcons": "Show Color Icons"
+    "showColorIcons": "Show Color Icons",
+    "stage": "Stage %stage%",
+    "switchedSlots": "You have just switched from a locked slot or rare item. Please wait a bit before dropping!"
   },
   "discord": {
     "status": {}
