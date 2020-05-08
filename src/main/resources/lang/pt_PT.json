@@ -114,7 +114,7 @@
     "birchParkRainmakerTimer": "Duração da chuva no Birch Park",
     "combatTimerDisplay": "Mostrar o temporizador de combate",
     "discordRP": "Discord Rich Presence",
-    "endstoneProtectorDisplay": "Endstone Protector Display"
+    "endstoneProtectorDisplay": "Mostrador do Endstone Protector"
   },
   "messages": {
     "betaTesters": "Obrigado por usares a versão beta! Reporta quaisquer erros que encontrares no canal do Discord.",
@@ -170,8 +170,8 @@
     "rescaleFeatures": "Redimensionar funções",
     "resizeBars": "Redimensionar barras",
     "showColorIcons": "Mostrar a cor dos ícones",
-    "stage": "Stage %stage%",
-    "switchedSlots": "You have just switched from a locked slot or rare item. Please wait a bit before dropping!"
+    "stage": "Fase %stage%",
+    "switchedSlots": "Estiveste a segurar um espaço bloqueado ou um item raro recentemente. Espera um pouco antes de deitares este item fora!"
   },
   "discord": {
     "status": {}
