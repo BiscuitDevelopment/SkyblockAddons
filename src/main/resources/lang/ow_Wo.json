@@ -113,7 +113,8 @@
     "turnBowGreenWhenUsingToxicArrowPoison": "Cowow Bow Gween When Using Toxic Awwow Poison",
     "birchParkRainmakerTimer": "Biwch Pawk Wainmakew Timew",
     "combatTimerDisplay": "Combat Timew Dispway",
-    "discordRP": "Discawd Rich Pwesence"
+    "discordRP": "Discawd Rich Pwesence",
+    "endstoneProtectorDisplay": "Endstone Protector Display"
   },
   "messages": {
     "betaTesters": "Thank you fow being a beta testew! Pwease wepowt any bugs you encoutew in the Discord channew >-<.",
@@ -168,7 +169,9 @@
     "setHexColor": "Set Hex Colow",
     "rescaleFeatures": "Wescawe Featuwes",
     "resizeBars": "Wesize Baws",
-    "showColorIcons": "Show Cowow Icons"
+    "showColorIcons": "Show Cowow Icons",
+    "stage": "Stage %stage%",
+    "switchedSlots": "You have just switched from a locked slot or rare item. Please wait a bit before dropping!"
   },
   "discord": {
     "status": {}
