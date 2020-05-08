@@ -721,7 +721,15 @@ public class ConfigValues {
 
     public Set<Integer> getLockedSlots() {
         String profile = main.getUtils().getProfileName();
-        if (profile == null) return legacyLockedSlots;
+        if (profile == null) {
+            Set<Integer> combineAllProfileLockedSlots = new HashSet<>();
+            for (Set<Integer> profileLockedSlots : this.profileLockedSlots.values()) {
+                combineAllProfileLockedSlots.addAll(profileLockedSlots);
+            }
+//            main.getUtils().sendErrorMessage("Failed to detect your profile for locked slots! Please try rejoining.");
+            return combineAllProfileLockedSlots;
+        }
+
         if (!profileLockedSlots.containsKey(profile)) {
             profileLockedSlots.put(profile, new HashSet<>(legacyLockedSlots));
         }

@@ -118,6 +118,10 @@ public class ItemDropChecker {
         }
     }
 
+    public boolean canDropItem(ItemStack item, boolean itemIsInHotbar) {
+        return canDropItem(item, itemIsInHotbar, true);
+    }
+
     /**
      * Checks if this item can be dropped or sold.
      *
@@ -125,7 +129,7 @@ public class ItemDropChecker {
      * @param itemIsInHotbar whether this item is in the player's hotbar
      * @return {@code true} if this item can be dropped or sold, {@code false} otherwise
      */
-    public boolean canDropItem(ItemStack item, boolean itemIsInHotbar) {
+    public boolean canDropItem(ItemStack item, boolean itemIsInHotbar, boolean playAlert) {
         LOGGER.entry(item, itemIsInHotbar);
 
         if (item == null) {
@@ -136,8 +140,7 @@ public class ItemDropChecker {
             if (ItemUtils.getSkyBlockItemID(item) == null) {
                 // Allow dropping of Skyblock items without IDs
                 return LOGGER.exit(true);
-            }
-            else if (ItemUtils.getRarity(item) == null) {
+            } else if (ItemUtils.getRarity(item) == null) {
             /*
              If this Skyblock item has an ID but no rarity, allow dropping it.
              This really shouldn't happen but just in case it does, this condition is here.
@@ -153,38 +156,33 @@ public class ItemDropChecker {
             if (itemIsInHotbar) {
                 if (rarity.compareTo(itemDropList.getMinimumHotbarRarity()) < 0 && !blacklist.contains(itemID)) {
                     return LOGGER.exit(true);
-                }
-                else {
+                } else {
                     // Dropping rare non-whitelisted items from the hotbar is not allowed.
                     if (whitelist.contains(itemID)) {
                         return LOGGER.exit(true);
-                    }
-                    else {
-                        playAlert();
+                    } else {
+                        if (playAlert) {
+                            playAlert();
+                        }
                         return LOGGER.exit(false);
                     }
                 }
-            }
-            else {
+            } else {
                 if (rarity.compareTo(itemDropList.getMinimumInventoryRarity()) < 0 && !blacklist.contains(itemID)) {
                     return LOGGER.exit(true);
-                }
-                else {
+                } else {
                     /*
                      If the item is above the minimum rarity and not whitelisted, require the player to attempt
                      to drop it three times to confirm they want to drop it.
                     */
                     if (whitelist.contains(itemID)) {
                         return LOGGER.exit(true);
-                    }
-                    else {
+                    } else {
                         return LOGGER.exit(dropConfirmed(item, 3));
                     }
                 }
             }
-        }
-        else if (MAIN.getConfigValues().isEnabled(Feature.DROP_CONFIRMATION) &&
-                MAIN.getConfigValues().isEnabled(Feature.DOUBLE_DROP_IN_OTHER_GAMES)) {
+        } else if (MAIN.getConfigValues().isEnabled(Feature.DROP_CONFIRMATION) && MAIN.getConfigValues().isEnabled(Feature.DOUBLE_DROP_IN_OTHER_GAMES)) {
             return dropConfirmed(item, 2);
         }
         else {

@@ -49,7 +49,6 @@ public class SkyblockAddonsTransformer implements IClassTransformer {
 
     private static boolean USING_NOTCH_MAPPINGS = !DEOBFUSCATED;
 
-    private final static boolean OUTPUT_BYTECODE = true;
     private Logger logger = LogManager.getLogger("SkyblockAddons Transformer");
     private final Multimap<String, ITransformer> transformerMap = ArrayListMultimap.create();
 
@@ -73,6 +72,7 @@ public class SkyblockAddonsTransformer implements IClassTransformer {
         registerTransformer(new FontRendererTransformer());
         registerTransformer(new RenderItemTransformer());
         registerTransformer(new EntityLivingBaseTransformer());
+        registerTransformer(new InventoryPlayerTransformer());
     }
 
     private void registerTransformer(ITransformer transformer) {

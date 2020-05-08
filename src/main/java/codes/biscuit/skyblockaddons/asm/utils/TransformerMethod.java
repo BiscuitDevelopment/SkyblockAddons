@@ -75,6 +75,7 @@ public enum TransformerMethod {
     refreshResources("refreshResources", "func_110436_a", "e", "()V"),
     rightClickMouse("rightClickMouse", "func_147121_ag", "ax", "()V"),
     isIntegratedServerRunning("isIntegratedServerRunning", "func_71387_A", "E", "()Z"),
+    runTick("runTick", "func_71407_l", "s", "()V"),
 
     // MouseHelper
     ungrabMouseCursor("ungrabMouseCursor", "func_74373_b", "b", "()V"),
@@ -109,6 +110,9 @@ public enum TransformerMethod {
 
     // Constructor
     init("<init>", "<init>", "<init>", "()V"),
+
+    // InventoryPlayer
+    changeCurrentItem("changeCurrentItem", "func_70453_c", "d", "(I)V"),
 
     NULL(null,null,null,null,false);
 

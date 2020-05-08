@@ -56,6 +56,26 @@ public class MinecraftTransformer implements ITransformer {
                     }
                 }
             }
+            if (TransformerMethod.runTick.matches(methodNode)) {
+
+                // Objective:
+                // Insert Before:
+                //    this.thePlayer.inventory.currentItem = l;
+                //
+                // Put:   MinecraftHook.updatedCurrentItem();
+
+                Iterator<AbstractInsnNode> iterator = methodNode.instructions.iterator();
+                while (iterator.hasNext()) {
+                    AbstractInsnNode abstractNode = iterator.next();
+                    if (abstractNode instanceof FieldInsnNode && abstractNode.getOpcode() == Opcodes.PUTFIELD
+                            && TransformerField.currentItem.matches((FieldInsnNode)abstractNode)) {
+                        methodNode.instructions.insertBefore(abstractNode.getPrevious().getPrevious().getPrevious().getPrevious(),
+                                new MethodInsnNode(Opcodes.INVOKESTATIC, "codes/biscuit/skyblockaddons/asm/hooks/MinecraftHook",
+                                "updatedCurrentItem", "()V", false)); // MinecraftHook.updatedCurrentItem();
+                        break;
+                    }
+                }
+            }
         }
     }
 

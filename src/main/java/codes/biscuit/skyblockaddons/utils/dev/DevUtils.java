@@ -21,6 +21,8 @@ import org.lwjgl.input.Keyboard;
 import java.awt.*;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.util.List;
 import java.util.*;
 import java.util.regex.Matcher;
@@ -263,8 +265,8 @@ public class DevUtils {
         // Determine which type of tag it is.
         if (tagID == Constants.NBT.TAG_END) {
             stringBuilder.append('}');
-        }
-        else if (tagID == Constants.NBT.TAG_BYTE_ARRAY || tagID == Constants.NBT.TAG_INT_ARRAY) {
+
+        } else if (tagID == Constants.NBT.TAG_BYTE_ARRAY || tagID == Constants.NBT.TAG_INT_ARRAY) {
             stringBuilder.append('[');
             if (tagID == Constants.NBT.TAG_BYTE_ARRAY) {
                 NBTTagByteArray nbtByteArray = (NBTTagByteArray) nbt;
@@ -278,8 +280,7 @@ public class DevUtils {
                         stringBuilder.append(", ");
                     }
                 }
-            }
-            else {
+            } else {
                 NBTTagIntArray nbtIntArray = (NBTTagIntArray) nbt;
                 int[] ints = nbtIntArray.getIntArray();
 
@@ -293,8 +294,8 @@ public class DevUtils {
                 }
             }
             stringBuilder.append(']');
-        }
-        else if (tagID == Constants.NBT.TAG_LIST) {
+
+        } else if (tagID == Constants.NBT.TAG_LIST) {
             NBTTagList nbtTagList = (NBTTagList) nbt;
 
             stringBuilder.append('[');
@@ -309,8 +310,8 @@ public class DevUtils {
                 }
             }
             stringBuilder.append(']');
-        }
-        else if (tagID == Constants.NBT.TAG_COMPOUND) {
+
+        } else if (tagID == Constants.NBT.TAG_COMPOUND) {
             NBTTagCompound nbtTagCompound = (NBTTagCompound) nbt;
 
             stringBuilder.append('{');
@@ -325,6 +326,18 @@ public class DevUtils {
 
                     stringBuilder.append(key).append(": ").append(
                             prettyPrintNBT(currentCompoundTagElement));
+
+                    if (key.contains("backpack_data") && currentCompoundTagElement instanceof NBTTagByteArray) {
+                        try {
+                            NBTTagCompound backpackData = CompressedStreamTools.readCompressed(new ByteArrayInputStream(((NBTTagByteArray)currentCompoundTagElement).getByteArray()));
+
+                            stringBuilder.append(",").append(System.lineSeparator());
+                            stringBuilder.append(key).append("(decoded): ").append(
+                                    prettyPrintNBT(backpackData));
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
 
                     // Don't add a comma after the last element.
                     if (iterator.hasNext()) {

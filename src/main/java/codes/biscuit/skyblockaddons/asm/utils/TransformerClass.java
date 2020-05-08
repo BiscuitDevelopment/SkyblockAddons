@@ -51,6 +51,7 @@ public enum TransformerClass {
     GuiIngameMenu("net/minecraft/client/gui/GuiIngameMenu", "axp"),
     ItemCameraTransforms$TransformType("net/minecraft/client/renderer/block/model/ItemCameraTransforms$TransformType", "bgr$b"),
     IBakedModel("net/minecraft/client/resources/model/IBakedModel", "boq"),
+    InventoryPlayer("net/minecraft/entity/player/InventoryPlayer", "wm"),
 
     NULL(null,null);
 

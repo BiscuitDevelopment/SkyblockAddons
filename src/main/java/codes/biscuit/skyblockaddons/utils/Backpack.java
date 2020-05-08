@@ -78,14 +78,10 @@ public class Backpack {
                             NBTTagCompound item = list.getCompoundTagAt(i);
                             // This fixes an issue in Hypixel where enchanted potatoes have the wrong id (potato block instead of item).
                             short itemID = item.getShort("id");
-                            if (itemID == 142 && item.hasKey("tag")) {
-                                nbtTagCompound = item.getCompoundTag("tag");
-                                if (nbtTagCompound.hasKey("ExtraAttributes")) {
-                                    id = nbtTagCompound.getCompoundTag("ExtraAttributes").getString("id");
-                                    if (id.equals("ENCHANTED_POTATO")) {
-                                        item.setShort("id", (short) 392);
-                                    }
-                                }
+                            if (itemID == 142) { // Potato Block -> Potato Item
+                                item.setShort("id", (short) 392);
+                            } else if (itemID == 141) { // Carrot Block -> Carrot Item
+                                item.setShort("id", (short) 391);
                             }
                             ItemStack itemStack = ItemStack.loadItemStackFromNBT(item);
                             items[i] = itemStack;
