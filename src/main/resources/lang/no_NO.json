@@ -113,7 +113,8 @@
     "turnBowGreenWhenUsingToxicArrowPoison": "Farge Bue Grønn Når Giftig Piller Brukes",
     "birchParkRainmakerTimer": "Bjørke Park Regnlager Nedtelling",
     "combatTimerDisplay": "Vis Kamp Nedtelling",
-    "discordRP": "Discord Rik Tilværelse"
+    "discordRP": "Discord Rik Tilværelse",
+    "endstoneProtectorDisplay": "Endstone Protector Display"
   },
   "messages": {
     "betaTesters": "Takk for at du er en beta tester! Hvis du finner noen Bugs vennligst rapporter de på Discord'en.",
@@ -168,7 +169,9 @@
     "setHexColor": "Endre Hex Farge",
     "rescaleFeatures": "Omskaler Funksjoner",
     "resizeBars": "Omskaler Barer",
-    "showColorIcons": "Vis Farge Ikoner"
+    "showColorIcons": "Vis Farge Ikoner",
+    "stage": "Stage %stage%",
+    "switchedSlots": "You have just switched from a locked slot or rare item. Please wait a bit before dropping!"
   },
   "discord": {
     "status": {}
