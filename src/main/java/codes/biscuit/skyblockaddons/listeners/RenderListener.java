@@ -441,13 +441,13 @@ public class RenderListener {
         Updater updater = main.getUpdater();
         String message = updater.getMessage();
 
-        if (!updateMessageDisplayed && message != null) {
+        if (updater.hasUpdate() && message != null && !updateMessageDisplayed ) {
             Minecraft mc = Minecraft.getMinecraft();
             String[] textList = main.getUtils().wrapSplitText(message, 36);
 
             int halfWidth = new ScaledResolution(mc).getScaledWidth() / 2;
             Gui.drawRect(halfWidth - 110, 20, halfWidth + 110, 53 + textList.length * 10, main.getUtils().getDefaultBlue(140));
-            String title = "SkyblockAddons";
+            String title = SkyblockAddons.MOD_NAME;
             GlStateManager.pushMatrix();
             float scale = 1.5F;
             GlStateManager.scale(scale, scale, 1);

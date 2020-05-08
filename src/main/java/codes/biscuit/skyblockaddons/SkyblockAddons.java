@@ -77,8 +77,8 @@ public class SkyblockAddons {
         guiScreenListener = new GuiScreenListener(this);
         renderListener = new RenderListener(this);
         discordRPCManager = new DiscordRPCManager(this);
-        MinecraftForge.EVENT_BUS.register(new NetworkListener());
 
+        MinecraftForge.EVENT_BUS.register(new NetworkListener());
         MinecraftForge.EVENT_BUS.register(playerListener);
         MinecraftForge.EVENT_BUS.register(guiScreenListener);
         MinecraftForge.EVENT_BUS.register(renderListener);

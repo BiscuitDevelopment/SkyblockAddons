@@ -28,9 +28,7 @@ import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.MathHelper;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.common.FMLLog;
 import net.minecraftforge.fml.common.Loader;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import org.apache.commons.lang3.mutable.MutableInt;
 import org.apache.commons.lang3.text.WordUtils;
 import org.apache.logging.log4j.Logger;
@@ -130,7 +128,6 @@ public class Utils {
         logger = SkyblockAddons.getInstance().getLogger();
         addDefaultStats();
         itemDropChecker = new ItemDropChecker(main);
-        MinecraftForge.EVENT_BUS.register(this);
     }
 
     private void addDefaultStats() {
@@ -171,18 +168,20 @@ public class Utils {
         if (mc != null && mc.theWorld != null && !mc.isSingleplayer()) {
             Scoreboard scoreboard = mc.theWorld.getScoreboard();
             ScoreObjective sidebarObjective = mc.theWorld.getScoreboard().getObjectiveInDisplaySlot(1);
+
             if (sidebarObjective != null) {
                 String objectiveName = TextUtils.stripColor(sidebarObjective.getDisplayName());
-                boolean skyblockScoreboard = false;
+                boolean isSkyblockScoreboard = false;
+
                 for (String skyblock : SKYBLOCK_IN_ALL_LANGUAGES) {
                     if (objectiveName.startsWith(skyblock)) {
-                        skyblockScoreboard = true;
+                        isSkyblockScoreboard = true;
                         break;
                     }
                 }
 
                 // Copied from SkyblockLib, should be removed when we switch to use that
-                if (skyblockScoreboard) {
+                if (isSkyblockScoreboard) {
                     // If it's a Skyblock scoreboard and the player has not joined Skyblock yet,
                     // this indicates that he did so.
                     if(!this.isOnSkyblock()) {
@@ -502,7 +501,7 @@ public class Utils {
         new Thread(() -> {
             final boolean magmaTimerEnabled = main.getConfigValues().isEnabled(Feature.MAGMA_BOSS_TIMER);
             if(!magmaTimerEnabled) {
-                FMLLog.info("[SkyblockAddons] Getting magma boss spawn estimate from server...");
+                logger.info("Getting magma boss spawn estimate from server...");
             }
             try {
                 URL url = new URL("https://hypixel-api.inventivetalent.org/api/skyblock/bosstimer/magma/estimatedSpawn");
@@ -511,7 +510,7 @@ public class Utils {
                 connection.setRequestProperty("User-Agent", USER_AGENT);
 
                 if(!magmaTimerEnabled) {
-                    FMLLog.info("[SkyblockAddons] Got response code " + connection.getResponseCode());
+                    logger.info("Got response code " + connection.getResponseCode());
                 }
 
                 StringBuilder response = new StringBuilder();
@@ -528,7 +527,7 @@ public class Utils {
                 int magmaSpawnTime = (int)((estimate-currentTime)/1000);
 
                 if(!magmaTimerEnabled) {
-                    FMLLog.info("[SkyblockAddons] Query time was " + currentTime + ", server time estimate is " +
+                    logger.info("Query time was " + currentTime + ", server time estimate is " +
                             estimate + ". Updating magma boss spawn to be in " + magmaSpawnTime + " seconds.");
                 }
 
@@ -536,7 +535,7 @@ public class Utils {
                 main.getPlayerListener().setMagmaAccuracy(EnumUtils.MagmaTimerAccuracy.ABOUT);
             } catch (IOException ex) {
                 if(!magmaTimerEnabled) {
-                    FMLLog.warning("[SkyblockAddons] Failed to get magma boss spawn estimate from server");
+                    logger.warn("Failed to get magma boss spawn estimate from server");
                 }
             }
         }).start();
@@ -546,7 +545,7 @@ public class Utils {
         new Thread(() -> {
             final boolean magmaTimerEnabled = main.getConfigValues().isEnabled(Feature.MAGMA_BOSS_TIMER);
             if(!magmaTimerEnabled) {
-                FMLLog.info("[SkyblockAddons] Posting event " + event.getInventiveTalentEvent() + " to InventiveTalent API");
+                logger.info("Posting event " + event.getInventiveTalentEvent() + " to InventiveTalent API");
             }
 
             try {
@@ -574,13 +573,13 @@ public class Utils {
                     }
 
                     if(!magmaTimerEnabled) {
-                        FMLLog.info("[SkyblockAddons] Got response code " + connection.getResponseCode());
+                        logger.info("Got response code " + connection.getResponseCode());
                     }
                     connection.disconnect();
                 }
             } catch (IOException ex) {
                 if(!magmaTimerEnabled) {
-                    FMLLog.warning("[SkyblockAddons] Failed to post event to server");
+                    logger.warn("Failed to post event to server");
                 }
             }
         }).start();
@@ -614,8 +613,10 @@ public class Utils {
         return null;
     }
 
+    // TODO: Replace this in new update checker implementation
+    @Deprecated
     public void downloadPatch(String version) {
-        File sbaFolder = getSBAFolder(true);
+        File sbaFolder = getSBAFolder();
         if (sbaFolder != null) {
             main.getUtils().sendMessage(ChatFormatting.YELLOW+Message.MESSAGE_DOWNLOADING_UPDATE.getMessage());
             new Thread(() -> {
@@ -647,7 +648,12 @@ public class Utils {
         }
     }
 
-    public File getSBAFolder(boolean changeMessage) {
+    /**
+     * Returns the folder that SkyblockAddons is located in.
+     *
+     * @return the folder the SkyblockAddons jar is located in
+     */
+    public File getSBAFolder() {
         return Loader.instance().activeModContainer().getSource().getParentFile();
     }
 
@@ -667,11 +673,22 @@ public class Utils {
         return -1;
     }
 
+    /**
+     * Checks if it is currently Halloween according to the system calendar.
+     *
+     * @return {@code true} if it is Halloween, {@code false} otherwise
+     */
     public boolean isHalloween() {
         Calendar calendar = Calendar.getInstance();
         return calendar.get(Calendar.MONTH) == Calendar.OCTOBER && calendar.get(Calendar.DAY_OF_MONTH) == 31;
     }
 
+    /**
+     * Checks if the given item is a pickaxe.
+     *
+     * @param item the item to check
+     * @return {@code true} if this item is a pickaxe, {@code false} otherwise
+     */
     public boolean isPickaxe(Item item) {
         return Items.wooden_pickaxe.equals(item) || Items.stone_pickaxe.equals(item) || Items.golden_pickaxe.equals(item) || Items.iron_pickaxe.equals(item) || Items.diamond_pickaxe.equals(item);
     }
@@ -813,23 +830,5 @@ public class Utils {
 
     public int getColorWithAlpha(int color, int alpha) {
         return color + ((alpha << 24) & 0xFF000000);
-    }
-
-    @SubscribeEvent
-    public void onSkyblockJoined(SkyblockJoinedEvent event) {
-        FMLLog.info(">> Joined Skyblock");
-        onSkyblock = true;
-        if(main.getConfigValues().isEnabled(Feature.DISCORD_RPC)) {
-            main.getDiscordRPCManager().start();
-        }
-    }
-
-    @SubscribeEvent
-    public void onSkyblockLeft(SkyblockLeftEvent event) {
-        FMLLog.info(">> Left Skyblock");
-        onSkyblock = false;
-        if(main.getDiscordRPCManager().isActive()) {
-            main.getDiscordRPCManager().stop();
-        }
     }
 }
