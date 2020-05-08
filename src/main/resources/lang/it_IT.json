@@ -114,7 +114,7 @@
     "birchParkRainmakerTimer": "Timer del Rainmaker nel parco di betulle",
     "combatTimerDisplay": "Mostra timer del combattimento",
     "discordRP": "Discord Rich Presence",
-    "endstoneProtectorDisplay": "Endstone Protector Display"
+    "endstoneProtectorDisplay": "Mostra Endstone Protector"
   },
   "messages": {
     "betaTesters": "Grazie per essere stato un beta tester! Per favore segnala tutti i bug riscontrati nel canale di Discord.",
@@ -170,8 +170,8 @@
     "rescaleFeatures": "Ridimensiona le funzioni",
     "resizeBars": "Ridimensiona le barre",
     "showColorIcons": "Mostra icone di colore",
-    "stage": "Stage %stage%",
-    "switchedSlots": "You have just switched from a locked slot or rare item. Please wait a bit before dropping!"
+    "stage": "Fase %stage%",
+    "switchedSlots": "Sei appena passato da uno slot bloccato o da un oggetto raro. Attendi un po' prima di gettare a terra!"
   },
   "discord": {
     "status": {}
