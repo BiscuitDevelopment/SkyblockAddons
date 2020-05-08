@@ -114,7 +114,7 @@
     "birchParkRainmakerTimer": "樺木公園下雨計時",
     "combatTimerDisplay": "顯示脫離戰鬥計時器",
     "discordRP": "豐富Discord狀態",
-    "endstoneProtectorDisplay": "Endstone Protector Display"
+    "endstoneProtectorDisplay": "顯示終界石守護者"
   },
   "messages": {
     "betaTesters": "感謝你成為一個Beta測試者! 請在Discord中回報你遭遇的任何錯誤",
@@ -170,8 +170,8 @@
     "rescaleFeatures": "重置縮放大小功能",
     "resizeBars": "調整計量條大小",
     "showColorIcons": "顯示顏色圖標",
-    "stage": "Stage %stage%",
-    "switchedSlots": "You have just switched from a locked slot or rare item. Please wait a bit before dropping!"
+    "stage": "階段 %stage%",
+    "switchedSlots": "你剛從一個鎖住的欄位或稀有物品切換 丟棄前請稍等片刻!"
   },
   "discord": {
     "status": {}
