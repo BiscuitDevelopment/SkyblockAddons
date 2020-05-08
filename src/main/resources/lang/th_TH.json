@@ -113,7 +113,8 @@
     "turnBowGreenWhenUsingToxicArrowPoison": "แสดงธนูสีเขียวเมื่อใช้ ลูกธนูพิษ",
     "birchParkRainmakerTimer": "แสดงเวลาฝนตกใน ฺBirch Park",
     "combatTimerDisplay": "แสดงเวลา Combat",
-    "discordRP": "สถานะของดิสคอร์ด"
+    "discordRP": "สถานะของดิสคอร์ด",
+    "endstoneProtectorDisplay": "แสดง Endstone Protector"
   },
   "messages": {
     "betaTesters": "ขอบคุณสำหรับการทดสอบ โปรดแจ้งบัคที่เจอใน Discord Channel",
@@ -168,7 +169,9 @@
     "setHexColor": "ตั้งค่าสี",
     "rescaleFeatures": "ปรับขนาดรูปแบบ",
     "resizeBars": "ปรับขนาดแถบ",
-    "showColorIcons": "แสดงปุ่มสี"
+    "showColorIcons": "แสดงปุ่มสี",
+    "stage": "ด่าน %stage%",
+    "switchedSlots": "คุณพึ่งเปลี่ยนจากการลอคช่อง โปรดรอสักครู่​ก่อนทำการโยน"
   },
   "discord": {
     "status": {}
