@@ -68,12 +68,20 @@ public enum Location {
     JERRY_POND("Jerry Pond"), // TODO RPC
     JERRYS_WORKSHOP("Jerry's Workshop"), // TODO RPC
 
-    UNKNOWN("None");
+    /*
+    Out of Bounds
+    This is a valid location in Skyblock, it isn't a placeholder or a made up location.
+    It actually displays when the player is out of bounds.
+     */
+    NONE("None"),
+
+    // This is used when the mod is unable to retrieve the player's location from the sidebar.
+    UNKNOWN("Unknown");
 
     private static final Set<Location> NO_DISCORD_RPC = Sets.newHashSet(ISLAND, BAZAAR, DEEP_CAVERNS, GUNPOWDER_MINES, LAPIS_QUARRY, PIGMAN_DEN, JERRYS_WORKSHOP, JERRY_POND);
 
     /** The name of this location as shown on the in-game scoreboard. */
-    private String scoreboardName;
+    private final String scoreboardName;
 
     Location(String scoreboardName) {
         this.scoreboardName = scoreboardName;

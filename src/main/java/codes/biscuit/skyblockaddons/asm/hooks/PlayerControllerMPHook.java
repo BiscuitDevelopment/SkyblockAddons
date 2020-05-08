@@ -2,7 +2,6 @@ package codes.biscuit.skyblockaddons.asm.hooks;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.asm.utils.ReturnValue;
-import codes.biscuit.skyblockaddons.gui.elements.CraftingPatternSelection;
 import codes.biscuit.skyblockaddons.utils.*;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
@@ -180,7 +179,7 @@ public class PlayerControllerMPHook {
                 if (slotIn != null && EnumUtils.InventoryType.getCurrentInventoryType() == EnumUtils.InventoryType.CRAFTING_TABLE
                         && main.getConfigValues().isEnabled(Feature.CRAFTING_PATTERNS)) {
 
-                    final CraftingPattern selectedPattern = CraftingPatternSelection.selectedPattern;
+                    final CraftingPattern selectedPattern = main.getPersistentValues().getSelectedCraftingPattern();
                     final ItemStack clickedItem = slotIn.getStack();
                     if (selectedPattern != CraftingPattern.FREE && clickedItem != null) {
                         final ItemStack[] craftingGrid = new ItemStack[9];
@@ -203,7 +202,7 @@ public class PlayerControllerMPHook {
                         } else {
                             if (slotIn.getSlotIndex() == CraftingPattern.CRAFTING_RESULT_INDEX
                                     && !result.isSatisfied()
-                                    && CraftingPatternSelection.blockCraftingIncomplete) {
+                                    && main.getPersistentValues().isBlockCraftingIncompletePatterns()) {
                                 // cancel clicking the result if the pattern isn't satisfied
                                 if (System.currentTimeMillis() > lastCraftingSoundPlayed + CRAFTING_PATTERN_SOUND_COOLDOWN) {
                                     main.getUtils().playSound("note.bass", 0.5);

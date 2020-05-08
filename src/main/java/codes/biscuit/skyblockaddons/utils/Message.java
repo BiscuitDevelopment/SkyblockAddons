@@ -111,6 +111,7 @@ public enum Message {
     SETTING_BIRCH_PARK_RAINMAKER_TIMER(MessageObject.SETTING, "birchParkRainmakerTimer"),
     SETTING_COMBAT_TIMER_DISPLAY(MessageObject.SETTING, "combatTimerDisplay"),
     SETTING_DISCORD_RP(MessageObject.SETTING, "discordRP"),
+    SETTING_ENDSTONE_PROTECTOR_DISPLAY(MessageObject.SETTING, "endstoneProtectorDisplay"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.BACKPACK_STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.BACKPACK_STYLE, "compact"),
@@ -155,6 +156,8 @@ public enum Message {
     MESSAGE_RESCALE_FEATURES(MessageObject.MESSAGES, "rescaleFeatures"),
     MESSAGE_RESIZE_BARS(MessageObject.MESSAGES, "resizeBars"),
     MESSAGE_SHOW_COLOR_ICONS(MessageObject.MESSAGES, "showColorIcons"),
+    MESSAGE_STAGE(MessageObject.MESSAGES, "stage"),
+    MESSAGE_SWITCHED_SLOTS(MessageObject.MESSAGES, "switchedSlots"),
 
     @Deprecated ANCHOR_POINT_TOP_LEFT(MessageObject.ANCHOR_POINT, "topLeft"),
     @Deprecated ANCHOR_POINT_TOP_RIGHT(MessageObject.ANCHOR_POINT, "topRight"),
@@ -266,8 +269,6 @@ public enum Message {
                     text = text.replace("%scale%", variables[0]);
                 } else if (this == Message.UPDATE_MESSAGE_NEW_UPDATE || this == UPDATE_MESSAGE_MAJOR || this == UPDATE_MESSAGE_PATCH) {
                     text = text.replace("%version%", variables[0]);
-                //} else if (this == Message.SETTING_BACKPACK_STYLE) {
-                //    text = text.replace("%style%", main.getConfigValues().getBackpackStyle().getMessage());
                 } else if (this == Message.SETTING_TEXT_STYLE) {
                     text = text.replace("%style%", main.getConfigValues().getTextStyle().getMessage());
                 } else if (this == Message.MESSAGE_MINION_CANNOT_REACH || this == Message.MESSAGE_TYPE_ENCHANTMENTS
@@ -283,13 +284,15 @@ public enum Message {
                     text = text.replace("%uses%", main.getConfigValues().getRestrictedColor(Feature.SHOW_ITEM_ANVIL_USES)+variables[0]+ChatFormatting.GRAY.toString());
                 } else if (this == Message.MESSAGE_ONLY_FEW_ARROWS_LEFT) {
                     text = text.replace("%arrows%", variables[0]);
+                } else if (this == Message.MESSAGE_STAGE) {
+                    text = text.replace("%stage%", variables[0]);
                 }
             }
             if (text != null && (main.getConfigValues().getLanguage() == Language.HEBREW || main.getConfigValues().getLanguage() == Language.ARABIC)) {
                 text = TextUtils.reverseText(text);
             }
-        } catch (NullPointerException ex) { // In case I messed up like the arguments of something, woops.
-            text = memberName;
+        } catch (NullPointerException ex) {
+            text = memberName; // In case of fire...
         }
         return text;
     }

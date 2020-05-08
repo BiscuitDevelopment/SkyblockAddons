@@ -116,6 +116,7 @@ public class PlayerListener {
             main.getInventoryUtils().resetPreviousInventory();
             recentlyLoadedChunks.clear();
             countedEndermen.clear();
+            EndstoneProtectorManager.reset();
         }
     }
 
@@ -330,6 +331,7 @@ public class PlayerListener {
                 } else if (timerTick % 5 == 0) { // Check inventory, location, updates, and skeleton helmet every 1/4 second.
                     EntityPlayerSP p = mc.thePlayer;
                     if (p != null) {
+                        EndstoneProtectorManager.tick();
                         main.getUtils().checkGameLocationDate();
                         main.getInventoryUtils().checkIfInventoryIsFull(mc, p);
 
@@ -459,12 +461,7 @@ public class PlayerListener {
     @SubscribeEvent
     public void onAttack(AttackEntityEvent e) {
         if (e.target instanceof EntityEnderman) {
-            List<EntityArmorStand> stands = Minecraft.getMinecraft().theWorld.getEntitiesWithinAABB(EntityArmorStand.class,
-                    new AxisAlignedBB(e.target.posX - 1, e.target.posY, e.target.posZ - 1, e.target.posX + 1, e.target.posY + 5, e.target.posZ + 1));
-            if (stands.isEmpty()) return;
-
-            EntityArmorStand armorStand = stands.get(0);
-            if (armorStand.hasCustomName() && armorStand.getCustomNameTag().contains("Zealot")) {
+            if (isZealot(e.target)) {
                 countedEndermen.add(e.target.getUniqueID());
             }
         }
@@ -476,7 +473,19 @@ public class PlayerListener {
             if (countedEndermen.remove(e.entity.getUniqueID())) {
                 main.getPersistentValues().addKill();
             }
+            if (isZealot(e.entity)) {
+                EndstoneProtectorManager.onKill();
+            }
         }
+    }
+
+    private boolean isZealot(Entity enderman) {
+        List<EntityArmorStand> stands = Minecraft.getMinecraft().theWorld.getEntitiesWithinAABB(EntityArmorStand.class,
+                new AxisAlignedBB(enderman.posX - 1, enderman.posY, enderman.posZ - 1, enderman.posX + 1, enderman.posY + 5, enderman.posZ + 1));
+        if (stands.isEmpty()) return false;
+
+        EntityArmorStand armorStand = stands.get(0);
+        return armorStand.hasCustomName() && armorStand.getCustomNameTag().contains("Zealot");
     }
 
     /**
@@ -716,6 +725,16 @@ public class PlayerListener {
         }
         if (e.gui != null) {
             lastOpenedInventory = e.gui.getClass();
+
+            if (e.gui instanceof GuiChest) {
+                Minecraft mc = Minecraft.getMinecraft();
+                IInventory chestInventory = ((GuiChest)e.gui).lowerChestInventory;
+                if (chestInventory.hasCustomName()) {
+                    if (chestInventory.getDisplayName().getUnformattedText().contains("Backpack")) {
+                        mc.thePlayer.playSound("mob.horse.armor", 0.5F, 1);
+                    }
+                }
+            }
         }
     }
 

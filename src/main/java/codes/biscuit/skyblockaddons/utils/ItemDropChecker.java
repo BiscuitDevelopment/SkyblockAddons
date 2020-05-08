@@ -14,14 +14,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.URISyntaxException;
 import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.List;
 import java.util.Objects;
 
@@ -59,17 +54,11 @@ public class ItemDropChecker {
         this.LOGGER = LogManager.getLogger("SBA Item Drop Checker");
 
         // Try to get the lists from the file.
-        try {
-            String ITEM_DROP_LIST_FILE_PATH = "lists/itemDropList.json";
-            JsonReader jsonFileReader = new JsonReader(Files.newBufferedReader(Paths.get(Objects.requireNonNull(this.getClass().getClassLoader().getResource(ITEM_DROP_LIST_FILE_PATH)).toURI())));
-            itemDropList = GSON.fromJson(jsonFileReader, ItemDropList.class);
-        } catch (FileNotFoundException | URISyntaxException e) {
-            LOGGER.error("The item drop list doesn't exist or the path is incorrect. The developer did something wrong.");
-            LOGGER.catching(e);
-        } catch (IOException e) {
-            LOGGER.error("Error reading from item drop list!");
-            LOGGER.catching(e);
-        }
+        String ITEM_DROP_LIST_FILE_PATH = "lists/itemDropList.json";
+        JsonReader jsonFileReader = new JsonReader(new BufferedReader(new InputStreamReader(Objects.requireNonNull(
+                getClass().getClassLoader().getResourceAsStream(ITEM_DROP_LIST_FILE_PATH),
+                "Item drop list not found!"))));
+        itemDropList = GSON.fromJson(jsonFileReader, ItemDropList.class);
 
         grabItemListFromOnline();
     }
@@ -95,6 +84,7 @@ public class ItemDropChecker {
                 connection.disconnect();
 
                 this.itemDropList = GSON.fromJson(response.toString(), ItemDropList.class);
+                LOGGER.info("Successfully downloaded item drop list.");
             } catch (Exception e) {
                 LOGGER.warn("There was an error pulling the item drop list from online...");
                 LOGGER.catching(e);
@@ -128,6 +118,10 @@ public class ItemDropChecker {
         }
     }
 
+    public boolean canDropItem(ItemStack item, boolean itemIsInHotbar) {
+        return canDropItem(item, itemIsInHotbar, true);
+    }
+
     /**
      * Checks if this item can be dropped or sold.
      *
@@ -135,7 +129,7 @@ public class ItemDropChecker {
      * @param itemIsInHotbar whether this item is in the player's hotbar
      * @return {@code true} if this item can be dropped or sold, {@code false} otherwise
      */
-    public boolean canDropItem(ItemStack item, boolean itemIsInHotbar) {
+    public boolean canDropItem(ItemStack item, boolean itemIsInHotbar, boolean playAlert) {
         LOGGER.entry(item, itemIsInHotbar);
 
         if (item == null) {
@@ -146,8 +140,7 @@ public class ItemDropChecker {
             if (ItemUtils.getSkyBlockItemID(item) == null) {
                 // Allow dropping of Skyblock items without IDs
                 return LOGGER.exit(true);
-            }
-            else if (ItemUtils.getRarity(item) == null) {
+            } else if (ItemUtils.getRarity(item) == null) {
             /*
              If this Skyblock item has an ID but no rarity, allow dropping it.
              This really shouldn't happen but just in case it does, this condition is here.
@@ -163,38 +156,33 @@ public class ItemDropChecker {
             if (itemIsInHotbar) {
                 if (rarity.compareTo(itemDropList.getMinimumHotbarRarity()) < 0 && !blacklist.contains(itemID)) {
                     return LOGGER.exit(true);
-                }
-                else {
+                } else {
                     // Dropping rare non-whitelisted items from the hotbar is not allowed.
                     if (whitelist.contains(itemID)) {
                         return LOGGER.exit(true);
-                    }
-                    else {
-                        playAlert();
+                    } else {
+                        if (playAlert) {
+                            playAlert();
+                        }
                         return LOGGER.exit(false);
                     }
                 }
-            }
-            else {
+            } else {
                 if (rarity.compareTo(itemDropList.getMinimumInventoryRarity()) < 0 && !blacklist.contains(itemID)) {
                     return LOGGER.exit(true);
-                }
-                else {
+                } else {
                     /*
                      If the item is above the minimum rarity and not whitelisted, require the player to attempt
                      to drop it three times to confirm they want to drop it.
                     */
                     if (whitelist.contains(itemID)) {
                         return LOGGER.exit(true);
-                    }
-                    else {
+                    } else {
                         return LOGGER.exit(dropConfirmed(item, 3));
                     }
                 }
             }
-        }
-        else if (MAIN.getConfigValues().isEnabled(Feature.DROP_CONFIRMATION) &&
-                MAIN.getConfigValues().isEnabled(Feature.DOUBLE_DROP_IN_OTHER_GAMES)) {
+        } else if (MAIN.getConfigValues().isEnabled(Feature.DROP_CONFIRMATION) && MAIN.getConfigValues().isEnabled(Feature.DOUBLE_DROP_IN_OTHER_GAMES)) {
             return dropConfirmed(item, 2);
         }
         else {

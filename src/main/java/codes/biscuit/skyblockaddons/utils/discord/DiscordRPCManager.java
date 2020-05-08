@@ -3,11 +3,11 @@ package codes.biscuit.skyblockaddons.utils.discord;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.utils.Location;
 import codes.biscuit.skyblockaddons.utils.SkyblockDate;
+import com.google.gson.JsonObject;
 import com.jagrosh.discordipc.IPCClient;
 import com.jagrosh.discordipc.IPCListener;
 import com.jagrosh.discordipc.entities.RichPresence;
 import net.minecraftforge.fml.common.FMLLog;
-import org.json.JSONObject;
 
 import java.time.OffsetDateTime;
 import java.util.Timer;
@@ -33,7 +33,7 @@ public class DiscordRPCManager implements IPCListener {
 
     public void start() {
         FMLLog.info("Starting Discord RP...");
-        if(isActive()) {
+        if (isActive()) {
             return;
         }
 
@@ -50,7 +50,7 @@ public class DiscordRPCManager implements IPCListener {
     }
 
     public void stop() {
-        if(isActive()) {
+        if (isActive()) {
             client.close();
         }
     }
@@ -60,33 +60,33 @@ public class DiscordRPCManager implements IPCListener {
     }
 
     public void updatePresence() {
-        final Location location = SkyblockAddons.getInstance().getUtils().getLocation();
-        final SkyblockDate skyblockDate = SkyblockAddons.getInstance().getUtils().getCurrentDate();
-        final String skyblockDateString = skyblockDate != null ? skyblockDate.toString() : "";
+        Location location = SkyblockAddons.getInstance().getUtils().getLocation();
+        SkyblockDate skyblockDate = SkyblockAddons.getInstance().getUtils().getCurrentDate();
+        String skyblockDateString = skyblockDate != null ? skyblockDate.toString() : "";
 
         // Early Winter 10th, 12:10am - Village
-        final String largeImageDescription = String.format("%s - %s", skyblockDateString, location.getScoreboardName());
-        final String smallImageDescription = String.format("%s v%s", SkyblockAddons.MOD_NAME, SkyblockAddons.VERSION);
+        String largeImageDescription = String.format("%s - %s", skyblockDateString, location.getScoreboardName());
+        String smallImageDescription = String.format("Hypixel Skyblock - Using SkyblockAddons v%s", SkyblockAddons.VERSION);
         RichPresence presence = new RichPresence.Builder()
                 .setState(stateLine.getDisplayString())
                 .setDetails(detailsLine.getDisplayString())
-                .setStartTimestamp(startTimestamp)
+                .setStartTimestamp(startTimestamp.toEpochSecond())
                 .setLargeImage(location.getDiscordIconKey(), largeImageDescription)
-                .setSmallImage("biscuit", smallImageDescription)
+                .setSmallImage("skyblockicon", smallImageDescription)
                 .build();
         client.sendRichPresence(presence);
     }
 
     public void setStateLine(DiscordStatus status) {
         this.stateLine = status;
-        if(isActive()) {
+        if (isActive()) {
             updatePresence();
         }
     }
 
     public void setDetailsLine(DiscordStatus status) {
         this.detailsLine = status;
-        if(isActive()) {
+        if (isActive()) {
             updatePresence();
         }
     }
@@ -105,7 +105,7 @@ public class DiscordRPCManager implements IPCListener {
     }
 
     @Override
-    public void onClose(IPCClient client, JSONObject json) {
+    public void onClose(IPCClient client, JsonObject json) {
         FMLLog.warning("Discord RPC closed");
         this.client = null;
         connected = false;

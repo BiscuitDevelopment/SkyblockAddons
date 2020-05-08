@@ -67,7 +67,7 @@ public class SkyblockDate {
         FALL("Fall"),
         LATE_FALL("Late Fall");
 
-        private String scoreboardString;
+        private final String scoreboardString;
 
         SkyblockMonth(String scoreboardString) {
             this.scoreboardString = scoreboardString;

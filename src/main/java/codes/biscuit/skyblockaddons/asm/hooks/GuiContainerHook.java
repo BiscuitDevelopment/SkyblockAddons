@@ -2,7 +2,6 @@ package codes.biscuit.skyblockaddons.asm.hooks;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.asm.utils.ReturnValue;
-import codes.biscuit.skyblockaddons.gui.elements.CraftingPatternSelection;
 import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsTransformer;
 import codes.biscuit.skyblockaddons.utils.*;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
@@ -249,7 +248,7 @@ public class GuiContainerHook {
             // Draw crafting pattern overlays inside the crafting grid.
             if (main.getConfigValues().isEnabled(Feature.CRAFTING_PATTERNS) && main.getUtils().isOnSkyblock()
                     && slot.inventory.getDisplayName().getUnformattedText().equals(CraftingPattern.CRAFTING_TABLE_DISPLAYNAME)
-                    && CraftingPatternSelection.selectedPattern != CraftingPattern.FREE) {
+                    && main.getPersistentValues().getSelectedCraftingPattern() != CraftingPattern.FREE) {
 
                 int craftingGridIndex = CraftingPattern.slotToCraftingGridIndex(slot.getSlotIndex());
                 if (craftingGridIndex >= 0) {
@@ -257,7 +256,7 @@ public class GuiContainerHook {
                     int slotTop = slot.yDisplayPosition;
                     int slotRight = slotLeft + 16;
                     int slotBottom = slotTop + 16;
-                    if (CraftingPatternSelection.selectedPattern.isSlotInPattern(craftingGridIndex)) {
+                    if (main.getPersistentValues().getSelectedCraftingPattern().isSlotInPattern(craftingGridIndex)) {
                         if (!slot.getHasStack()) {
                             drawRightGradientRect(guiContainer, slotLeft, slotTop, slotRight, slotBottom, OVERLAY_GREEN, OVERLAY_GREEN);
                         }

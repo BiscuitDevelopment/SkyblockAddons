@@ -48,7 +48,6 @@ public class ButtonBanner extends GuiButton {
                     HttpURLConnection connection = (HttpURLConnection)url.openConnection();
                     connection.setReadTimeout(5000);
                     connection.addRequestProperty("User-Agent", Utils.USER_AGENT);
-                    connection.setDoOutput(true);
 
                     bannerImage = TextureUtil.readBufferedImage(connection.getInputStream());
 

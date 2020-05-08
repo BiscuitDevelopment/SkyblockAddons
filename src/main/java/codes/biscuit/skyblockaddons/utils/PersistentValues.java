@@ -23,6 +23,9 @@ public class PersistentValues {
     private int totalKills;
     private int summoningEyeCount;
 
+    private boolean blockCraftingIncompletePatterns = true;
+    private CraftingPattern selectedCraftingPattern = CraftingPattern.FREE;
+
     public PersistentValues(File configDir) {
         this.persistentValuesFile = new File(configDir.getAbsolutePath() + "/skyblockaddons_persistent.cfg");
         logger = SkyblockAddons.getInstance().getLogger();
@@ -83,6 +86,16 @@ public class PersistentValues {
         this.summoningEyeCount++;
         this.totalKills += this.kills;
         this.kills = -1; // This is triggered before the death of the killed zealot, so the kills are set to -1 to account for that.
+        this.saveValues();
+    }
+
+    public void setBlockCraftingIncompletePatterns(boolean blockCraftingIncompletePatterns) {
+        this.blockCraftingIncompletePatterns = blockCraftingIncompletePatterns;
+        this.saveValues();
+    }
+
+    public void setSelectedCraftingPattern(CraftingPattern selectedCraftingPattern) {
+        this.selectedCraftingPattern = selectedCraftingPattern;
         this.saveValues();
     }
 }

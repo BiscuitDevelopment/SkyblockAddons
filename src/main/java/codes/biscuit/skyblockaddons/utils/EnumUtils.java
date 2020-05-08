@@ -367,6 +367,7 @@ public class EnumUtils {
         ALCHEMY("Alchemy", Items.brewing_stand),
         CARPENTRY("Carpentry", Item.getItemFromBlock(Blocks.crafting_table)),
         RUNECRAFTING("Runecrafting", Items.magma_cream),
+        TAMING("Taming", Items.spawn_egg),
         OTHER(null, null);
 
         private String skillName;

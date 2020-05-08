@@ -55,6 +55,7 @@ public class RenderListener {
     private final static ResourceLocation SUMMONING_EYE_ICON = new ResourceLocation("skyblockaddons", "icons/summoningeye.png");
     private final static ResourceLocation ZEALOTS_PER_EYE_ICON = new ResourceLocation("skyblockaddons", "icons/zealotspereye.png");
     private final static ResourceLocation SLASH_ICON = new ResourceLocation("skyblockaddons", "icons/slash.png");
+    private final static ResourceLocation IRON_GOLEM_ICON = new ResourceLocation("skyblockaddons", "icons/irongolem.png");
 
     private final static ItemStack WATER_BUCKET = new ItemStack(Items.water_bucket);
     private final static ItemStack IRON_SWORD = new ItemStack(Items.iron_sword);
@@ -441,13 +442,13 @@ public class RenderListener {
         Updater updater = main.getUpdater();
         String message = updater.getMessage();
 
-        if (!updateMessageDisplayed && message != null) {
+        if (updater.hasUpdate() && message != null && !updateMessageDisplayed ) {
             Minecraft mc = Minecraft.getMinecraft();
             String[] textList = main.getUtils().wrapSplitText(message, 36);
 
             int halfWidth = new ScaledResolution(mc).getScaledWidth() / 2;
             Gui.drawRect(halfWidth - 110, 20, halfWidth + 110, 53 + textList.length * 10, main.getUtils().getDefaultBlue(140));
-            String title = "SkyblockAddons";
+            String title = SkyblockAddons.MOD_NAME;
             GlStateManager.pushMatrix();
             float scale = 1.5F;
             GlStateManager.scale(scale, scale, 1);
@@ -750,6 +751,20 @@ public class RenderListener {
             }
 
             text = "IN COMBAT";
+        } else if (feature == Feature.ENDSTONE_PROTECTOR_DISPLAY) {
+            if (((main.getUtils().getLocation() != Location.THE_END && main.getUtils().getLocation() != Location.DRAGONS_NEST)
+                    || EndstoneProtectorManager.getMinibossStage() == null || !EndstoneProtectorManager.isCanDetectSkull()) && buttonLocation == null) {
+                return;
+            }
+
+            EndstoneProtectorManager.Stage stage = EndstoneProtectorManager.getMinibossStage();
+
+            if (buttonLocation != null && stage == null) {
+                stage = EndstoneProtectorManager.Stage.STAGE_3;
+            }
+
+            int stageNum = Math.min(stage.ordinal(), 5);
+            text = Message.MESSAGE_STAGE.getMessage(String.valueOf(stageNum));
         } else {
             return;
         }
@@ -781,7 +796,7 @@ public class RenderListener {
             int boxYTwo = intY + height + 4;
             if (feature == Feature.MAGMA_BOSS_TIMER || feature == Feature.DARK_AUCTION_TIMER || feature == Feature.ZEALOT_COUNTER || feature == Feature.SKILL_DISPLAY
             || feature == Feature.SHOW_TOTAL_ZEALOT_COUNT || feature == Feature.SHOW_SUMMONING_EYE_COUNT || feature == Feature.SHOW_AVERAGE_ZEALOTS_PER_EYE ||
-            feature == Feature.BIRCH_PARK_RAINMAKER_TIMER || feature == Feature.COMBAT_TIMER_DISPLAY) {
+            feature == Feature.BIRCH_PARK_RAINMAKER_TIMER || feature == Feature.COMBAT_TIMER_DISPLAY || feature == Feature.ENDSTONE_PROTECTOR_DISPLAY) {
                 boxXOne -= 18;
                 boxYOne -= 2;
             }
@@ -877,6 +892,24 @@ public class RenderListener {
 
             RenderHelper.disableStandardItemLighting();
             GlStateManager.disableRescaleNormal();
+        } else if (feature == Feature.ENDSTONE_PROTECTOR_DISPLAY) {
+            mc.getTextureManager().bindTexture(IRON_GOLEM_ICON);
+            Gui.drawModalRectWithCustomSizedTexture(intX - 18, intY - 5, 0, 0, 16, 16, 16, 16);
+
+            intX += mc.fontRendererObj.getStringWidth(text)+2;
+
+            mc.getTextureManager().bindTexture(ENDERMAN_GROUP_ICON);
+            Gui.drawModalRectWithCustomSizedTexture(intX, intY - 5, 0, 0, 16, 16, 16, 16);
+
+            int count = EndstoneProtectorManager.getZealotCount();
+
+            if (buttonLocation != null && count == -1) {
+                count = EndstoneProtectorManager.Stage.STAGE_3.getZealotsRemaining();
+            }
+
+            ChromaManager.renderingText(feature);
+            main.getUtils().drawTextWithStyle("< " + count, intX+16+2, intY, color, textAlpha);
+            ChromaManager.doneRenderingText();
         }
     }
 

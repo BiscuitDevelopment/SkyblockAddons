@@ -3,6 +3,7 @@ package codes.biscuit.skyblockaddons.gui.elements;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.utils.CraftingPattern;
 import codes.biscuit.skyblockaddons.utils.Message;
+import codes.biscuit.skyblockaddons.utils.PersistentValues;
 import codes.biscuit.skyblockaddons.utils.Utils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
@@ -24,16 +25,6 @@ public class CraftingPatternSelection {
      */
     private static final int MARGIN = 2;
 
-    /**
-     * Currently selected crafting pattern
-     */
-    public static CraftingPattern selectedPattern = CraftingPattern.FREE;
-
-    /**
-     * Whether crafting incomplete patterns should be blocked
-     */
-    public static boolean blockCraftingIncomplete = true;
-
     private final Minecraft mc;
     private final int x;
     private final int y;
@@ -45,12 +36,10 @@ public class CraftingPatternSelection {
         this.y = y;
         int checkBoxY = (y - MARGIN - 8);
         String checkBoxText = Message.MESSAGE_BLOCK_INCOMPLETE_PATTERNS.getMessage();
-        blockIncompleteCheckBox = new CheckBox(mc, x, checkBoxY, 8, checkBoxText, blockCraftingIncomplete);
-        blockIncompleteCheckBox.setOnToggleListener(value -> blockCraftingIncomplete = value);
-    }
 
-    public void onGuiClosed() {
-        blockCraftingIncomplete = true;
+        PersistentValues persistentValues = SkyblockAddons.getInstance().getPersistentValues();
+        blockIncompleteCheckBox = new CheckBox(mc, x, checkBoxY, 8, checkBoxText, persistentValues.isBlockCraftingIncompletePatterns());
+        blockIncompleteCheckBox.setOnToggleListener(persistentValues::setBlockCraftingIncompletePatterns);
     }
 
     public void draw() {
@@ -62,7 +51,7 @@ public class CraftingPatternSelection {
             int offset = getYOffsetByIndex(craftingPattern.index);
             GlStateManager.color(1,1,1, 1F);
             mc.ingameGUI.drawTexturedModalRect(x, y+ offset, 0, offset, ICON_SIZE, ICON_SIZE);
-            if(craftingPattern != selectedPattern) {
+            if(craftingPattern != SkyblockAddons.getInstance().getPersistentValues().getSelectedCraftingPattern()) {
                 GlStateManager.color(1,1,1, .5F);
                 mc.ingameGUI.drawTexturedModalRect(x, y+ offset, 33, 0, ICON_SIZE, ICON_SIZE);
             }
@@ -81,12 +70,14 @@ public class CraftingPatternSelection {
             return; // cannot hit
         }
 
+        PersistentValues persistentValues =  SkyblockAddons.getInstance().getPersistentValues();
+
         for (CraftingPattern craftingPattern : CraftingPattern.values()) {
             int offset = getYOffsetByIndex(craftingPattern.index);
             if(mouseY > this.y + offset && mouseY < this.y + offset + ICON_SIZE) {
-                if(selectedPattern != craftingPattern) {
+                if(persistentValues.getSelectedCraftingPattern() != craftingPattern) {
                     SkyblockAddons.getInstance().getUtils().playLoudSound("gui.button.press", 1F);
-                    selectedPattern = craftingPattern;
+                    persistentValues.setSelectedCraftingPattern(craftingPattern);
                 }
             }
         }

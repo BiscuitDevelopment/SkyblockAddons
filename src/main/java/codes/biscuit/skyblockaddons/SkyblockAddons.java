@@ -35,9 +35,9 @@ import java.util.TimerTask;
 @Mod(modid = "skyblockaddons", name = "SkyblockAddons", version = "@VERSION@", clientSideOnly = true, acceptedMinecraftVersions = "@MOD_ACCEPTED@", updateJSON = "@UPDATE_JSON@")
 public class SkyblockAddons {
 
-    public static final String MOD_ID = "@MOD_ID@";
-    public static final String MOD_NAME = "@MOD_NAME@";
-    public static final String VERSION = "@VERSION@";
+    public static final String MOD_ID = "skyblockaddons";
+    public static final String MOD_NAME = "SkyblockAddons";
+    public static String VERSION = "@VERSION@";
 
     /** The main instance of the mod, used mainly my mixins who don't get it passed to them. */
     @Getter private static SkyblockAddons instance;
@@ -62,6 +62,13 @@ public class SkyblockAddons {
     @Setter(AccessLevel.NONE) private KeyBinding[] keyBindings = new KeyBinding[4];
     private DiscordRPCManager discordRPCManager;
 
+    static {
+        //noinspection ConstantConditions
+        if (VERSION.equals("@VERSION@")) {
+            VERSION = "1.2.3";
+        }
+    }
+
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent e) {
         instance = this;
@@ -77,8 +84,8 @@ public class SkyblockAddons {
         guiScreenListener = new GuiScreenListener(this);
         renderListener = new RenderListener(this);
         discordRPCManager = new DiscordRPCManager(this);
-        MinecraftForge.EVENT_BUS.register(new NetworkListener());
 
+        MinecraftForge.EVENT_BUS.register(new NetworkListener());
         MinecraftForge.EVENT_BUS.register(playerListener);
         MinecraftForge.EVENT_BUS.register(guiScreenListener);
         MinecraftForge.EVENT_BUS.register(renderListener);

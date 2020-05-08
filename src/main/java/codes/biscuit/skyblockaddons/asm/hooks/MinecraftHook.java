@@ -5,6 +5,7 @@ import codes.biscuit.skyblockaddons.asm.utils.ReturnValue;
 import codes.biscuit.skyblockaddons.utils.Feature;
 import codes.biscuit.skyblockaddons.utils.Message;
 import codes.biscuit.skyblockaddons.utils.npc.NPCUtils;
+import lombok.Getter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.client.resources.IReloadableResourceManager;
@@ -12,6 +13,7 @@ import net.minecraft.client.resources.IResource;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItemFrame;
 import net.minecraft.init.Items;
+import net.minecraft.inventory.ContainerPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.ResourceLocation;
@@ -26,11 +28,13 @@ public class MinecraftHook {
 
     private static long lastProfileMessage = -1;
 
-    public static void onRefreshResources(IReloadableResourceManager iReloadableResourceManager) {
+    @Getter private static long lastLockedSlotItemChange = -1;
+
+    public static void onRefreshResources(IReloadableResourceManager resourceManager) {
         boolean usingOldPackTexture = false;
         boolean usingDefaultTexture = true;
         try {
-            IResource currentResource = iReloadableResourceManager.getResource(currentLocation);
+            IResource currentResource = resourceManager.getResource(currentLocation);
             String currentHash = DigestUtils.md5Hex(currentResource.getInputStream());
 
             InputStream oldStream = SkyblockAddons.class.getClassLoader().getResourceAsStream("assets/skyblockaddons/imperialoldbars.png");
@@ -55,7 +59,7 @@ public class MinecraftHook {
         }
     }
 
-    public static void rightClickMouse(ReturnValue returnValue) {
+    public static void rightClickMouse(ReturnValue<?> returnValue) {
         SkyblockAddons main = SkyblockAddons.getInstance();
         if (main.getUtils().isOnSkyblock()) {
             Minecraft mc = Minecraft.getMinecraft();
@@ -90,5 +94,26 @@ public class MinecraftHook {
 
     private static boolean isItemBow(ItemStack item) {
         return item != null && item.getItem() != null && item.getItem().equals(Items.bow);
+    }
+
+    public static void updatedCurrentItem() {
+        Minecraft mc = Minecraft.getMinecraft();
+        SkyblockAddons main = SkyblockAddons.getInstance();
+
+        if (main.getConfigValues().isEnabled(Feature.LOCK_SLOTS) && (main.getUtils().isOnSkyblock() || main.getPlayerListener().aboutToJoinSkyblockServer())) {
+            int slot = mc.thePlayer.inventory.currentItem + 36;
+            if (main.getConfigValues().isEnabled(Feature.LOCK_SLOTS) && main.getConfigValues().getLockedSlots().contains(slot)
+                    && (slot >= 9 || mc.thePlayer.openContainer instanceof ContainerPlayer && slot >= 5)) {
+
+                MinecraftHook.lastLockedSlotItemChange = System.currentTimeMillis();
+            }
+
+            ItemStack heldItemStack = mc.thePlayer.getHeldItem();
+            if (heldItemStack != null && main.getConfigValues().isEnabled(Feature.STOP_DROPPING_SELLING_RARE_ITEMS)
+                    && !main.getUtils().getItemDropChecker().canDropItem(heldItemStack, true, false)) {
+
+                MinecraftHook.lastLockedSlotItemChange = System.currentTimeMillis();
+            }
+        }
     }
 }
