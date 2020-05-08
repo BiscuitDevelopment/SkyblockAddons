@@ -45,9 +45,6 @@ public class GuiChestHook {
 
     public static void onGuiClosed() {
         EnumUtils.InventoryType.resetCurrentInventoryType();
-        if (craftingPatternSelection != null) {
-            craftingPatternSelection.onGuiClosed();
-        }
         if (textFieldMatch != null && textFieldExclusions != null) {
             Keyboard.enableRepeatEvents(false);
         }
