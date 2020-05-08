@@ -113,7 +113,8 @@
     "turnBowGreenWhenUsingToxicArrowPoison": "Color Bow Green When Using Toxic Arrow Poison",
     "birchParkRainmakerTimer": "Birch Park Rainmaker Timer",
     "combatTimerDisplay": "Combat Timer Display",
-    "discordRP": "Discord Rich Presence"
+    "discordRP": "Discord Rich Presence",
+    "endstoneProtectorDisplay": "Endstone Protector Display"
   },
   "messages": {
     "betaTesters": "Thank you for being a beta tester! Please report any bugs you encounter in the Discord channel.",
@@ -168,7 +169,9 @@
     "setHexColor": "Postavi Hex Boju",
     "rescaleFeatures": "Rescale Features",
     "resizeBars": "Resize Bars",
-    "showColorIcons": "Show Color Icons"
+    "showColorIcons": "Show Color Icons",
+    "stage": "Stage %stage%",
+    "switchedSlots": "You have just switched from a locked slot or rare item. Please wait a bit before dropping!"
   },
   "discord": {
     "status": {}
