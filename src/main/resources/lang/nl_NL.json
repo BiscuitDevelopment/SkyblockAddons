@@ -101,12 +101,12 @@
     "chromaMode": "Chroma Kleurmodus",
     "chromaModes": {
       "allTheSame": "Allemaal dezelfde kleur",
-      "fade": "Color Fade"
+      "fade": "Kleur Vervagen"
     },
-    "chromaFadeWidth": "Chroma Fade Width",
-    "sortTabEffectTimers": "Sort Timers by Duration",
-    "showBrokenFragments": "Show Broken Dragon Fragments",
-    "skyblockAddonsButtonInPauseMenu": "Show SBA Button in Pause Menu",
+    "chromaFadeWidth": "Breedte Kleur Vervaging",
+    "sortTabEffectTimers": "Sorteer Timers op Duur",
+    "showBrokenFragments": "Toon Kapotte Draakfragmenten",
+    "skyblockAddonsButtonInPauseMenu": "Toon SBA Knop in Pauze Menu",
     "showTotalZealotCount": "Zealot Counter - Total Zealot Count",
     "showSummoningEyeCount": "Zealot Counter - Total Eye Count",
     "showZealotsPerEye": "Zealot Counter - Show Zealots Per Eye",
