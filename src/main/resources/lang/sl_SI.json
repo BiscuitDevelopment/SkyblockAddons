@@ -87,7 +87,7 @@
     },
     "disableMagicalSoupMessage": "Onesposobljenje Sporočil Čarobne Gobje Juhe",
     "zealotCounter": "Števec zealotov - štetje od zadnjega očesa",
-    "tickerChargesDisplay": "Ticker/Charges Display",
+    "tickerChargesDisplay": "Prikaz števca/napolnitve",
     "tab": {
       "generalSettings": "Splošne Nastavitve"
     },
@@ -114,7 +114,7 @@
     "birchParkRainmakerTimer": "Časovnik dežja v birch park",
     "combatTimerDisplay": "Prikaz bojnega časovnika",
     "discordRP": "Discord Rich Presence",
-    "endstoneProtectorDisplay": "Endstone Protector Display"
+    "endstoneProtectorDisplay": "Prikaz endstone zaščitnika"
   },
   "messages": {
     "betaTesters": "Thank you for being a beta tester! Please report any bugs you encounter in the Discord channel.",
@@ -145,8 +145,8 @@
       "downloading": "Popravek se prenaša! Status: %downloaded%/%total% Prosim, da se spomnite izbrisati staro verzijo, ko se prenos zaključi.",
       "failed": "Popravek se ni uspel prenesti! Prosim, da ga prenesete ročno preko linka v chatu.",
       "downloadFinished": "Popravek se je prenesel. Shranjen je kot %file%. Prosim da ne pozabite izbrisati stare datoteke po zaprtju Minecrafta. Klikni na sporočilo v chatu da odpreš mapo.",
-      "newBeta": "A new beta (%version%) is available! Please update using the \"Mods\" menu.",
-      "newUpdate": "A new update (%version%) is available! Please update using the \"Mods\" menu."
+      "newBeta": "Nova preizkusna verzija (%version%) je na voljo! Prosim posodobite preko \"mods\" menuja.",
+      "newUpdate": "Nova posodobitev (%version%) je na voljo! Prosim posodobite preko \"mods\" menuja."
     },
     "slotLocked": "Ta prostor je zaklenjen!",
     "summoningEyeFound": "Summoning eye!",
@@ -170,7 +170,7 @@
     "rescaleFeatures": "Spremeni velikost funkcij",
     "resizeBars": "Spremeni velikost barov",
     "showColorIcons": "Pokaži barvne ikone",
-    "stage": "Stage %stage%",
+    "stage": "Stopnja %stage%",
     "switchedSlots": "You have just switched from a locked slot or rare item. Please wait a bit before dropping!"
   },
   "discord": {
