@@ -114,7 +114,7 @@
     "birchParkRainmakerTimer": "Björk Park Regngörar Timer",
     "combatTimerDisplay": "Visa Stridstimer",
     "discordRP": "Discord Rich Presence",
-    "endstoneProtectorDisplay": "Endstone Protector Display"
+    "endstoneProtectorDisplay": "Visning av ändstensskyddare"
   },
   "messages": {
     "betaTesters": "Tack för att du är en betatestare! Vänligen rapportera eventuella buggar du stöter på i Discord-kanalen.",
@@ -170,8 +170,8 @@
     "rescaleFeatures": "Omskala Funktioner",
     "resizeBars": "Omskala Barer",
     "showColorIcons": "Visa Färgikoner",
-    "stage": "Stage %stage%",
-    "switchedSlots": "You have just switched from a locked slot or rare item. Please wait a bit before dropping!"
+    "stage": "Stadie %stage%",
+    "switchedSlots": "Du har precis bytt från en låst plats eller sällsynt föremål. Vänta lite innan du släpper!"
   },
   "discord": {
     "status": {}
