@@ -171,7 +171,7 @@
     "resizeBars": "重置计量条大小",
     "showColorIcons": "显示颜色图标",
     "stage": "阶段 %stage%",
-    "switchedSlots": "You have just switched from a locked slot or rare item. Please wait a bit before dropping!"
+    "switchedSlots": "你刚刚从锁定槽位切换或者手持稀有物品。请稍后再丢弃！"
   },
   "discord": {
     "status": {}
