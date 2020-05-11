@@ -64,7 +64,6 @@ public class ActionBarParser {
      * @return New action bar without parsed stats.
      */
     public String parseActionBar(String actionBar) {
-//        FMLLog.info(actionBar);
         // First split the action bar into sections
         String[] splitMessage = actionBar.split(" {3,}");
         // This list holds the text of unused sections that aren't displayed anywhere else in SBA
@@ -76,6 +75,11 @@ public class ActionBarParser {
         main.getRenderListener().setPredictHealth(true);
         // set ticker to -1 so the GUI element doesn't get displayed while they're not displayed in the action bar
         tickers = -1;
+
+        // If the action bar is displaying player stats and the defense section is absent, the player's defense is zero.
+        if (actionBar.contains("❤") && !actionBar.contains("❈")) {
+            setAttribute(Attribute.DEFENCE, 0);
+        }
 
         for (String section : splitMessage) {
             try {
@@ -194,7 +198,7 @@ public class ActionBarParser {
      *
      * @param defenseSection Defense section of the action bar
      * @param numbersOnly Pre-split stat string
-     * @return null or {@code defenseSection} if neither defense text nor
+     * @return null or {@code defenseSection} if neither defense text nor defense percentage are enabled
      */
     private String parseDefense(String defenseSection, String numbersOnly) {
         // §a720§a❈ Defense

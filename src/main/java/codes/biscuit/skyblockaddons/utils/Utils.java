@@ -403,6 +403,7 @@ public class Utils {
         }).start();
     }
 
+    @Deprecated
     void sendUpdateMessage(boolean showDownload, boolean showAutoDownload) {
         String newestVersion = main.getRenderListener().getDownloadInfo().getNewestVersion();
         sendMessage(TextUtils.color("&7&m------------&7[&b&l SkyblockAddons &7]&7&m------------"), false);
