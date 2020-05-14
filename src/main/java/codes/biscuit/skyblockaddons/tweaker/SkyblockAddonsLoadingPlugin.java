@@ -20,7 +20,7 @@ public class SkyblockAddonsLoadingPlugin implements IFMLLoadingPlugin {
 
     @Override
     public String getSetupClass() {
-        return null;
+        return SkyblockAddonsSetup.class.getName();
     }
 
     @Override

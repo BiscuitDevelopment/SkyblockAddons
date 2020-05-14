@@ -1,5 +1,6 @@
 package codes.biscuit.skyblockaddons.asm.utils;
 
+import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsSetup;
 import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsTransformer;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.tree.FieldInsnNode;
@@ -52,10 +53,10 @@ public enum TransformerField {
     TransformerField(String deobfName, String seargeName, String notchName18, String type) {
         this.type = type;
 
-        if (SkyblockAddonsTransformer.isDeobfuscated()) {
+        if (SkyblockAddonsSetup.isDeobfuscatedEnvironment()) {
             name = deobfName;
         } else {
-            if (SkyblockAddonsTransformer.isUsingNotchMappings()) {
+            if (SkyblockAddonsSetup.isRuntimeDeobfuscationEnabled()) {
                 name = notchName18;
             } else {
                 name = seargeName;
