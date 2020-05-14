@@ -5,6 +5,7 @@ import codes.biscuit.skyblockaddons.listeners.GuiScreenListener;
 import codes.biscuit.skyblockaddons.listeners.NetworkListener;
 import codes.biscuit.skyblockaddons.listeners.PlayerListener;
 import codes.biscuit.skyblockaddons.listeners.RenderListener;
+import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsSetup;
 import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsTransformer;
 import codes.biscuit.skyblockaddons.utils.*;
 import codes.biscuit.skyblockaddons.utils.discord.DiscordRPCManager;
@@ -145,7 +146,7 @@ public class SkyblockAddons {
 
     private void changeKeyBindDescription(KeyBinding bind, String desc) {
         try {
-            Field field = bind.getClass().getDeclaredField(SkyblockAddonsTransformer.isDeobfuscated() ? "keyDescription" : "field_74515_c");
+            Field field = bind.getClass().getDeclaredField(SkyblockAddonsSetup.isDeobfuscatedEnvironment() ? "keyDescription" : "field_74515_c");
             field.setAccessible(true);
             field.set(bind, desc);
         } catch(NoSuchFieldException | IllegalAccessException e) {
