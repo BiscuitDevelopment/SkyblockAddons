@@ -1,6 +1,7 @@
 package codes.biscuit.skyblockaddons.asm.hooks;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsSetup;
 import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsTransformer;
 import net.minecraft.client.audio.ISound;
 import net.minecraft.client.audio.SoundCategory;
@@ -19,7 +20,7 @@ public class SoundManagerHook {
         if (main != null && main.getUtils() != null && main.getUtils().isPlayingSound()) {
             return 1;
         } else {
-            if (SkyblockAddonsTransformer.isLabymodClient()) { // There are no access transformers in labymod.
+            if (SkyblockAddonsSetup.isUsingLabyModClient()) { // There are no access transformers in LabyMod.
                 try {
                     if (getNormalizedVolume == null) {
                         getNormalizedVolume = soundManager.getClass().getDeclaredMethod("a", ISound.class, SoundPoolEntry.class, SoundCategory.class);
