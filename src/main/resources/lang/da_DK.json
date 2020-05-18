@@ -95,15 +95,15 @@
     "noArrowsLeftAlert": "Ingen pile tilbage alarm",
     "hideNightVisionEffectTimer": "Skjul Nattesyns Effect Timer",
     "showCakeBagPreview": "Forhåndsvis Kage Rygsæk",
-    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
-    "enableDevFeatures": "Enable Developer Features",
-    "chromaSpeed": "Chroma Speed",
-    "chromaMode": "Chroma Color Mode",
+    "showBackpackPreviewInAH": "Indstillinger -> Vis Taskers Indhold i Auktions-Huset",
+    "enableDevFeatures": "Indstillinger -> Brug Programmørernes ikke færdige muligheder",
+    "chromaSpeed": "Indstillinger -> Regnbue farvens Hastighed",
+    "chromaMode": "Indstillinger -> Regnbue Farve",
     "chromaModes": {
-      "allTheSame": "All the Same Color",
-      "fade": "Color Fade"
+      "allTheSame": "Indstillinger -> Regnbue Farver -> Alle det samme",
+      "fade": "Indstillinger -> Regnbue Farver -> Falme"
     },
-    "chromaFadeWidth": "Chroma Fade Width",
+    "chromaFadeWidth": "Indstillinger -> Regnbue Farve Falme Styrke",
     "sortTabEffectTimers": "Sort Timers by Duration",
     "showBrokenFragments": "Show Broken Dragon Fragments",
     "skyblockAddonsButtonInPauseMenu": "Show SBA Button in Pause Menu",
