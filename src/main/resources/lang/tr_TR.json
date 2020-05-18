@@ -168,10 +168,10 @@
     "selectedColor": "Seçili Renk",
     "setHexColor": "Hex Rengini Ayarla",
     "rescaleFeatures": "Yeniden ölçülendirme özellikleri",
-    "resizeBars": "Resize Bars",
+    "resizeBars": "Çubukları yeniden boyutlandır",
     "showColorIcons": "Show Color Icons",
-    "stage": "Stage %stage%",
-    "switchedSlots": "You have just switched from a locked slot or rare item. Please wait a bit before dropping!"
+    "stage": "Safha %stage%",
+    "switchedSlots": "Yerine kilitlediğin bir eşyadaan hızlıca geçiş yaptın. Droplamak için biraz bekle!"
   },
   "discord": {
     "status": {}
