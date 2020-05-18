@@ -170,7 +170,7 @@
     "rescaleFeatures": "Возможности масштабирования",
     "resizeBars": "Изменить размер полос",
     "showColorIcons": "Показать цветные значки",
-    "stage": "Stage %stage%",
+    "stage": "Этап %stage%",
     "switchedSlots": "You have just switched from a locked slot or rare item. Please wait a bit before dropping!"
   },
   "discord": {
