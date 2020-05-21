@@ -168,8 +168,8 @@
     "selectedColor": "Seçili Renk",
     "setHexColor": "Hex Rengini Ayarla",
     "rescaleFeatures": "Yeniden ölçülendirme özellikleri",
-    "resizeBars": "Çubukları yeniden boyutlandır",
-    "showColorIcons": "Show Color Icons",
+    "resizeBars": "Çubukları yeniden boyutlandır\n\n",
+    "showColorIcons": "Renk ikonunu göster",
     "stage": "Safha %stage%",
     "switchedSlots": "Yerine kilitlediğin bir eşyadaan hızlıca geçiş yaptın. Droplamak için biraz bekle!"
   },
