@@ -114,7 +114,7 @@
     "birchParkRainmakerTimer": "Bjørke Park Regnlager Nedtelling",
     "combatTimerDisplay": "Vis Kamp Nedtelling",
     "discordRP": "Discord Rik Tilværelse",
-    "endstoneProtectorDisplay": "Endstone Protector Display"
+    "endstoneProtectorDisplay": "Endestein Beskytter Panel"
   },
   "messages": {
     "betaTesters": "Takk for at du er en beta tester! Hvis du finner noen Bugs vennligst rapporter de på Discord'en.",
@@ -170,8 +170,8 @@
     "rescaleFeatures": "Omskaler Funksjoner",
     "resizeBars": "Omskaler Barer",
     "showColorIcons": "Vis Farge Ikoner",
-    "stage": "Stage %stage%",
-    "switchedSlots": "You have just switched from a locked slot or rare item. Please wait a bit before dropping!"
+    "stage": "Nivå %stage%",
+    "switchedSlots": "Du har nettopp byttet fra en låst plass eller sjelden ting. Vennligst vent litt før du slipper!"
   },
   "discord": {
     "status": {}
