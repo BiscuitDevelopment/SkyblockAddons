@@ -171,7 +171,7 @@
     "resizeBars": "Zmień rozmiar pasków",
     "showColorIcons": "Pokaż ikony kolorów",
     "stage": "Etap %stage%",
-    "switchedSlots": "You have just switched from a locked slot or rare item. Please wait a bit before dropping!"
+    "switchedSlots": "Właśnie przełączyłeś się z zamkniętego slotu lub rzadkiego przedmiotu. Poczekaj chwilę przed upuszczeniem!"
   },
   "discord": {
     "status": {}
