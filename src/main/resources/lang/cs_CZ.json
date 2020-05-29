@@ -112,7 +112,7 @@
     "showZealotsPerEye": "Počítadlo Zealotů - Zobrazit Zealoty/Oko",
     "turnBowGreenWhenUsingToxicArrowPoison": "Obarvi luk zeleně při použití Toxického jedu na šíp",
     "birchParkRainmakerTimer": "Časovač Dešťotvůrce v Birch Parku",
-    "combatTimerDisplay": "Combat Timer Display",
+    "combatTimerDisplay": "Zobrazení času v boji",
     "discordRP": "Discord Rich Presence",
     "endstoneProtectorDisplay": "Ukazatel Endstone Protectora"
   },
@@ -167,8 +167,8 @@
     "chooseAColor": "Zvolit barvu",
     "selectedColor": "Vybraná barva",
     "setHexColor": "Nastavit hexadecimální barvu",
-    "rescaleFeatures": "Rescale Features",
-    "resizeBars": "Resize Bars",
+    "rescaleFeatures": "Přeškálovat funkce",
+    "resizeBars": "Změnit rozměry ukazatele",
     "showColorIcons": "Zobrazit barevné ikony",
     "stage": "Fáze %stage%",
     "switchedSlots": "Právě jsi přepnul z uzamknutého slotu nebo vzácného předmětu. Chvilku počkej před vyhozením!"
