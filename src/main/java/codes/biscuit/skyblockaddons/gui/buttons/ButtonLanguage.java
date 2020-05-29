@@ -50,7 +50,7 @@ public class ButtonLanguage extends GuiButton {
             if (hovered) {
                 fontColor = new Color(255, 255, 160, 255).getRGB();
             }
-            main.getConfigValues().loadLanguageFile(language);
+            main.getUtils().loadLanguageFile(language);
             MinecraftReflection.FontRenderer.drawCenteredString(Message.LANGUAGE.getMessage(), xPosition+width/2, yPosition+10, fontColor);
         }
     }

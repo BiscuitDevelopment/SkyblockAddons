@@ -1,6 +1,7 @@
 package codes.biscuit.skyblockaddons.listeners;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.gui.IslandWarpGui;
 import codes.biscuit.skyblockaddons.gui.LocationEditGui;
 import codes.biscuit.skyblockaddons.gui.SettingsGui;
 import codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui;
@@ -82,7 +83,6 @@ public class RenderListener {
     @Getter @Setter private boolean predictHealth = false;
     @Getter @Setter private boolean predictMana = false;
 
-    @Getter private DownloadInfo downloadInfo;
     @Setter private boolean updateMessageDisplayed = false;
 
     private Feature subtitleFeature = null;
@@ -104,7 +104,6 @@ public class RenderListener {
 
     public RenderListener(SkyblockAddons main) {
         this.main = main;
-        downloadInfo = new DownloadInfo(main);
     }
 
     /**
@@ -440,9 +439,9 @@ public class RenderListener {
      */
     private void drawUpdateMessage() {
         Updater updater = main.getUpdater();
-        String message = updater.getMessage();
+        String message = updater.getMessageToRender();
 
-        if (updater.hasUpdate() && message != null && !updateMessageDisplayed ) {
+        if (updater.hasUpdate() && message != null && !updateMessageDisplayed) {
             Minecraft mc = Minecraft.getMinecraft();
             String[] textList = main.getUtils().wrapSplitText(message, 36);
 
@@ -461,6 +460,8 @@ public class RenderListener {
             }
 
             main.getScheduler().schedule(Scheduler.CommandType.ERASE_UPDATE_MESSAGE, 10);
+
+            main.getUpdater().sendUpdateMessage();
         }
     }
 
@@ -801,6 +802,10 @@ public class RenderListener {
                 boxYOne -= 2;
             }
 
+            if (feature == Feature.ENDSTONE_PROTECTOR_DISPLAY) {
+                boxXTwo += 16+2+mc.fontRendererObj.getStringWidth(String.valueOf(EndstoneProtectorManager.getZealotCount()));
+            }
+
             if (feature == Feature.COMBAT_TIMER_DISPLAY) {
                 boxYTwo += 15;
             }
@@ -903,12 +908,8 @@ public class RenderListener {
 
             int count = EndstoneProtectorManager.getZealotCount();
 
-            if (buttonLocation != null && count == -1) {
-                count = EndstoneProtectorManager.Stage.STAGE_3.getZealotsRemaining();
-            }
-
             ChromaManager.renderingText(feature);
-            main.getUtils().drawTextWithStyle("< " + count, intX+16+2, intY, color, textAlpha);
+            main.getUtils().drawTextWithStyle(String.valueOf(count), intX+16+2, intY, color, textAlpha);
             ChromaManager.doneRenderingText();
         }
     }
@@ -1301,8 +1302,15 @@ public class RenderListener {
             Minecraft.getMinecraft().displayGuiScreen(new LocationEditGui(main, guiPageToOpen, guiTabToOpen));
         } else if (guiToOpen == EnumUtils.GUIType.SETTINGS) {
             Minecraft.getMinecraft().displayGuiScreen(new SettingsGui(main, guiFeatureToOpen, 1, guiPageToOpen, guiTabToOpen, guiFeatureToOpen.getSettings()));
+        } else if (guiToOpen == EnumUtils.GUIType.WARP) {
+            Minecraft.getMinecraft().displayGuiScreen(new IslandWarpGui());
         }
         guiToOpen = null;
+    }
+
+
+    public void setGuiToOpen(EnumUtils.GUIType guiToOpen) {
+        this.guiToOpen = guiToOpen;
     }
 
     public void setGuiToOpen(EnumUtils.GUIType guiToOpen, int page, EnumUtils.GuiTab tab) {

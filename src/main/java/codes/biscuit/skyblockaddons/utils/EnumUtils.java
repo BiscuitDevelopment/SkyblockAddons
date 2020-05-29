@@ -85,6 +85,7 @@ public class EnumUtils {
     public enum InventoryType {
         ENCHANTMENT_TABLE(INVENTORY_TYPE_ENCHANTS, "Enchant Item"),
         REFORGE_ANVIL(INVENTORY_TYPE_REFORGES, "Reforge Item"),
+        BAKER(null, "Baker"),
         CRAFTING_TABLE(INVENTORY_TYPE_CRAFTING, CraftingPattern.CRAFTING_TABLE_DISPLAYNAME);
 
         /** The current inventory type. Can be null. */
@@ -421,7 +422,8 @@ public class EnumUtils {
     public enum GUIType {
         MAIN,
         EDIT_LOCATIONS,
-        SETTINGS
+        SETTINGS,
+        WARP
     }
 
     public enum ChromaMode {

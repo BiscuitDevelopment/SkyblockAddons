@@ -87,7 +87,7 @@ public class GuiChestTransformer implements ITransformer {
         // public void handleMouseClick(Slot slotIn, int slotId, int clickedButton, int clickType) {
         //     ReturnValue returnValue = new ReturnValue();
         //     GuiChestHook.initGui(this.lowerChestInventory, this.guiLeft, this.guiTop, this.fontRendererObj, returnValue);
-        //     if (returnValue.isCancelled) {
+        //     if (returnValue.isCancelled()) {
         //         return;
         //     }
         //     super.handleMouseClick(slotIn, slotId, clickedButton, clickType);
@@ -101,13 +101,49 @@ public class GuiChestTransformer implements ITransformer {
         //
         // @Override
         // public void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {
-        //     GuiChestHook.mouseClicked(mouseX, mouseY, mouseButton);
+        //     ReturnValue returnValue = new ReturnValue();
+        //     GuiChestHook.mouseClicked(mouseX, mouseY, mouseButton, returnValue);
+        //     if (returnValue.isCancelled()) {
+        //         return;
+        //     }
         //     super.mouseClicked(mouseX, mouseY, mouseButton);
         // }
 
         MethodNode mouseClicked = TransformerMethod.mouseClicked.createMethodNode();
         mouseClicked.instructions.add(mouseClicked());
         classNode.methods.add(mouseClicked);
+
+        // Objective: Add:
+        //
+        // @Override
+        // public void mouseReleased(int mouseX, int mouseY, int state) {
+        //     ReturnValue returnValue = new ReturnValue();
+        //     GuiChestHook.mouseReleased(mouseX, mouseY, state, returnValue);
+        //     if (returnValue.isCancelled()) {
+        //         return;
+        //     }
+        //     super.mouseReleased(mouseX, mouseY, state);
+        // }
+
+        MethodNode mouseReleased = TransformerMethod.mouseReleased.createMethodNode();
+        mouseReleased.instructions.add(mouseReleased());
+        classNode.methods.add(mouseReleased);
+
+        // Objective: Add:
+        //
+        // @Override
+        // public void mouseClickMove(int mouseX, int mouseY, int clickedMouseButton, long timeSinceLastClick) {
+        //     ReturnValue returnValue = new ReturnValue();
+        //     GuiChestHook.mouseClickMove(mouseX, mouseY, clickedMouseButton, timeSinceLastClick, returnValue);
+        //     if (returnValue.isCancelled()) {
+        //         return;
+        //     }
+        //     super.mouseClickMove(mouseX, mouseY, clickedMouseButton, timeSinceLastClick);
+        // }
+
+        MethodNode mouseClickMove = TransformerMethod.mouseClickMove.createMethodNode();
+        mouseClickMove.instructions.add(mouseClickMove());
+        classNode.methods.add(mouseClickMove);
 
         for (MethodNode methodNode : classNode.methods) { // Loop through all methods inside of the class.
             if (TransformerMethod.drawGuiContainerBackgroundLayer.matches(methodNode)) {
@@ -194,10 +230,30 @@ public class GuiChestTransformer implements ITransformer {
     private InsnList drawScreen() {
         InsnList list = new InsnList();
 
+        list.add(new TypeInsnNode(Opcodes.NEW, "codes/biscuit/skyblockaddons/asm/utils/ReturnValue"));
+        list.add(new InsnNode(Opcodes.DUP)); // ReturnValue returnValue = new ReturnValue();
+        list.add(new MethodInsnNode(Opcodes.INVOKESPECIAL, "codes/biscuit/skyblockaddons/asm/utils/ReturnValue", "<init>", "()V", false));
+        list.add(new VarInsnNode(Opcodes.ASTORE, 4));
+
+        list.add(new VarInsnNode(Opcodes.ILOAD, 1)); // mouseX
+        list.add(new VarInsnNode(Opcodes.ILOAD, 2)); // mouseY
+        list.add(new VarInsnNode(Opcodes.ALOAD, 4)); // returnValue
+        list.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "codes/biscuit/skyblockaddons/asm/hooks/GuiChestHook", "drawScreenIslands",
+                "(IILcodes/biscuit/skyblockaddons/asm/utils/ReturnValue;)V", false)); // GuiChestHook.drawScreenIslands(returnValue);
+
+        list.add(new VarInsnNode(Opcodes.ALOAD, 4)); // returnValue
+        list.add(new MethodInsnNode(Opcodes.INVOKEVIRTUAL, "codes/biscuit/skyblockaddons/asm/utils/ReturnValue", "isCancelled", "()Z", false));
+        LabelNode notCancelled = new LabelNode(); // if (returnValue.isCancelled())
+        list.add(new JumpInsnNode(Opcodes.IFEQ, notCancelled));
+        list.add(new InsnNode(Opcodes.RETURN));
+        list.add(notCancelled);
+
+        list.add(new FrameNode(Opcodes.F_APPEND, 1, new Object[]{"codes/biscuit/skyblockaddons/asm/utils/ReturnValue"}, 0, null));
+
         list.add(new VarInsnNode(Opcodes.ALOAD, 0)); // this
         list.add(new VarInsnNode(Opcodes.ILOAD, 1)); // mouseX
         list.add(new VarInsnNode(Opcodes.ILOAD, 2)); // mouseY
-        list.add(new VarInsnNode(Opcodes.FLOAD, 3)); // super.drawScreen(mouseX, mouseY, partialTicks);
+        list.add(new VarInsnNode(Opcodes.FLOAD, 3)); // partialTicks // super.drawScreen(mouseX, mouseY, partialTicks);
         list.add(new MethodInsnNode(Opcodes.INVOKESPECIAL, TransformerClass.GuiContainer.getNameRaw(), TransformerMethod.drawScreen.getName(), "(IIF)V", false));
 
         list.add(new VarInsnNode(Opcodes.ALOAD, 0)); // this.guiLeft
@@ -256,6 +312,7 @@ public class GuiChestTransformer implements ITransformer {
         list.add(new MethodInsnNode(Opcodes.INVOKESPECIAL, TransformerClass.GuiContainer.getNameRaw(), TransformerMethod.keyTyped.getName(), "(CI)V", false));
 
         list.add(notCancelled);
+        list.add(new FrameNode(Opcodes.F_SAME, 0, null, 0, null));
         list.add(new InsnNode(Opcodes.RETURN));
         return list;
     }
@@ -289,6 +346,8 @@ public class GuiChestTransformer implements ITransformer {
         list.add(new InsnNode(Opcodes.RETURN)); // return;
         list.add(notCancelled);
 
+        list.add(new FrameNode(Opcodes.F_APPEND, 1, new Object[]{"codes/biscuit/skyblockaddons/asm/utils/ReturnValue"}, 0, null));
+
         list.add(new VarInsnNode(Opcodes.ALOAD, 0));
         list.add(new VarInsnNode(Opcodes.ALOAD, 1)); // slotIn
         list.add(new VarInsnNode(Opcodes.ILOAD, 2)); // slotId
@@ -303,17 +362,100 @@ public class GuiChestTransformer implements ITransformer {
     private InsnList mouseClicked() {
         InsnList list = new InsnList();
 
+        list.add(new TypeInsnNode(Opcodes.NEW, "codes/biscuit/skyblockaddons/asm/utils/ReturnValue"));
+        list.add(new InsnNode(Opcodes.DUP)); // ReturnValue returnValue = new ReturnValue();
+        list.add(new MethodInsnNode(Opcodes.INVOKESPECIAL, "codes/biscuit/skyblockaddons/asm/utils/ReturnValue", "<init>", "()V", false));
+        list.add(new VarInsnNode(Opcodes.ASTORE, 4));
+
         list.add(new VarInsnNode(Opcodes.ILOAD, 1)); // mouseX
         list.add(new VarInsnNode(Opcodes.ILOAD, 2)); // mouseY
         list.add(new VarInsnNode(Opcodes.ILOAD, 3)); // mouseButton
+        list.add(new VarInsnNode(Opcodes.ALOAD, 4)); // returnValue
         list.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "codes/biscuit/skyblockaddons/asm/hooks/GuiChestHook", "mouseClicked",
-                "(III)V", false)); // GuiChestHook.mouseClicked(mouseX, mouseY, mouseButton);
+                "(IIILcodes/biscuit/skyblockaddons/asm/utils/ReturnValue;)V", false)); // GuiChestHook.mouseClicked(mouseX, mouseY, mouseButton);
+
+        list.add(new VarInsnNode(Opcodes.ALOAD, 4));
+        list.add(new MethodInsnNode(Opcodes.INVOKEVIRTUAL, "codes/biscuit/skyblockaddons/asm/utils/ReturnValue", "isCancelled",
+                "()Z", false));
+        LabelNode notCancelled = new LabelNode(); // if (returnValue.isCancelled())
+        list.add(new JumpInsnNode(Opcodes.IFEQ, notCancelled));
+
+        list.add(new InsnNode(Opcodes.RETURN)); // return;
+        list.add(notCancelled);
+
+        list.add(new FrameNode(Opcodes.F_APPEND, 1, new Object[]{"codes/biscuit/skyblockaddons/asm/utils/ReturnValue"}, 0, null));
 
         list.add(new VarInsnNode(Opcodes.ALOAD, 0));
         list.add(new VarInsnNode(Opcodes.ILOAD, 1)); // mouseX
         list.add(new VarInsnNode(Opcodes.ILOAD, 2)); // mouseY
-        list.add(new VarInsnNode(Opcodes.ILOAD, 3)); // mouseButton // super.mouseClicked(mouseX, mouseY, mouseButton);
+        list.add(new VarInsnNode(Opcodes.ILOAD, 3)); // mouseButton // super.mouseClicked(mouseX, mouseY, mouseButton, returnValue);
         list.add(new MethodInsnNode(Opcodes.INVOKESPECIAL, TransformerClass.GuiContainer.getNameRaw(), TransformerMethod.mouseClicked.getName(), "(III)V", false));
+
+        list.add(new InsnNode(Opcodes.RETURN));
+        return list;
+    }
+
+    private InsnList mouseReleased() {
+        InsnList list = new InsnList();
+
+        list.add(new TypeInsnNode(Opcodes.NEW, "codes/biscuit/skyblockaddons/asm/utils/ReturnValue"));
+        list.add(new InsnNode(Opcodes.DUP)); // ReturnValue returnValue = new ReturnValue();
+        list.add(new MethodInsnNode(Opcodes.INVOKESPECIAL, "codes/biscuit/skyblockaddons/asm/utils/ReturnValue", "<init>", "()V", false));
+        list.add(new VarInsnNode(Opcodes.ASTORE, 4));
+
+        list.add(new VarInsnNode(Opcodes.ALOAD, 4)); // returnValue
+        list.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "codes/biscuit/skyblockaddons/asm/hooks/GuiChestHook", "mouseReleased",
+                "(Lcodes/biscuit/skyblockaddons/asm/utils/ReturnValue;)V", false)); // GuiChestHook.mouseReleased(returnValue);
+
+        list.add(new VarInsnNode(Opcodes.ALOAD, 4));
+        list.add(new MethodInsnNode(Opcodes.INVOKEVIRTUAL, "codes/biscuit/skyblockaddons/asm/utils/ReturnValue", "isCancelled",
+                "()Z", false));
+        LabelNode notCancelled = new LabelNode(); // if (returnValue.isCancelled())
+        list.add(new JumpInsnNode(Opcodes.IFEQ, notCancelled));
+
+        list.add(new InsnNode(Opcodes.RETURN)); // return;
+        list.add(notCancelled);
+
+        list.add(new FrameNode(Opcodes.F_APPEND, 1, new Object[]{"codes/biscuit/skyblockaddons/asm/utils/ReturnValue"}, 0, null));
+
+        list.add(new VarInsnNode(Opcodes.ALOAD, 0));
+        list.add(new VarInsnNode(Opcodes.ILOAD, 1)); // mouseX
+        list.add(new VarInsnNode(Opcodes.ILOAD, 2)); // mouseY
+        list.add(new VarInsnNode(Opcodes.ILOAD, 3)); // state // super.mouseReleased(mouseX, mouseY, state);
+        list.add(new MethodInsnNode(Opcodes.INVOKESPECIAL, TransformerClass.GuiContainer.getNameRaw(), TransformerMethod.mouseReleased.getName(), "(III)V", false));
+
+        list.add(new InsnNode(Opcodes.RETURN));
+        return list;
+    }
+
+    private InsnList mouseClickMove() {
+        InsnList list = new InsnList();
+
+        list.add(new TypeInsnNode(Opcodes.NEW, "codes/biscuit/skyblockaddons/asm/utils/ReturnValue"));
+        list.add(new InsnNode(Opcodes.DUP)); // ReturnValue returnValue = new ReturnValue();
+        list.add(new MethodInsnNode(Opcodes.INVOKESPECIAL, "codes/biscuit/skyblockaddons/asm/utils/ReturnValue", "<init>", "()V", false));
+        list.add(new VarInsnNode(Opcodes.ASTORE, 6));
+
+        list.add(new VarInsnNode(Opcodes.ALOAD, 6)); // returnValue
+        list.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "codes/biscuit/skyblockaddons/asm/hooks/GuiChestHook", "mouseClickMove",
+                "(Lcodes/biscuit/skyblockaddons/asm/utils/ReturnValue;)V", false)); // GuiChestHook.mouseClickMove(returnValue);
+
+        list.add(new VarInsnNode(Opcodes.ALOAD, 6));
+        list.add(new MethodInsnNode(Opcodes.INVOKEVIRTUAL, "codes/biscuit/skyblockaddons/asm/utils/ReturnValue", "isCancelled",
+                "()Z", false));
+        LabelNode notCancelled = new LabelNode(); // if (returnValue.isCancelled())
+        list.add(new JumpInsnNode(Opcodes.IFEQ, notCancelled));
+
+        list.add(new InsnNode(Opcodes.RETURN)); // return;
+        list.add(notCancelled);
+
+        list.add(new VarInsnNode(Opcodes.ALOAD, 0));
+        list.add(new VarInsnNode(Opcodes.ILOAD, 1)); // mouseX
+        list.add(new VarInsnNode(Opcodes.ILOAD, 2)); // mouseY
+        list.add(new VarInsnNode(Opcodes.ILOAD, 3)); // clickedMouseButton
+        list.add(new VarInsnNode(Opcodes.LLOAD, 4)); // timeSinceLastClick // super.mouseClickMove(mouseX, mouseY, clickedMouseButton, timeSinceLastClick);
+        list.add(new MethodInsnNode(Opcodes.INVOKESPECIAL, TransformerClass.GuiContainer.getNameRaw(), TransformerMethod.mouseClickMove.getName(), "(IIIJ)V", false));
+
 
         list.add(new InsnNode(Opcodes.RETURN));
         return list;

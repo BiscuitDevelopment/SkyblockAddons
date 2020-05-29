@@ -5,17 +5,9 @@ import codes.biscuit.skyblockaddons.asm.utils.ReturnValue;
 import codes.biscuit.skyblockaddons.utils.Feature;
 import codes.biscuit.skyblockaddons.utils.Message;
 import net.minecraft.client.Minecraft;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.IProjectile;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.monster.EntityMob;
-import net.minecraft.entity.passive.EntityWolf;
 import net.minecraft.inventory.ContainerPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.Potion;
-import net.minecraft.util.AxisAlignedBB;
-
-import java.util.List;
 
 public class EntityPlayerSPHook {
 
@@ -45,7 +37,7 @@ public class EntityPlayerSPHook {
                 }
             }
 
-            if (heldItemStack != null && main.getConfigValues().isEnabled(Feature.STOP_DROPPING_SELLING_RARE_ITEMS)) {
+            if (heldItemStack != null && main.getConfigValues().isEnabled(Feature.STOP_DROPPING_SELLING_RARE_ITEMS) && !main.getUtils().isInDungeon()) {
                 if (!main.getUtils().getItemDropChecker().canDropItem(heldItemStack, true)) {
                     main.getUtils().sendMessage(main.getConfigValues().getRestrictedColor(Feature.STOP_DROPPING_SELLING_RARE_ITEMS) + Message.MESSAGE_CANCELLED_DROPPING.getMessage());
                     returnValue.cancel();
@@ -61,7 +53,7 @@ public class EntityPlayerSPHook {
             }
         }
 
-        if (heldItemStack != null && main.getConfigValues().isEnabled(Feature.DROP_CONFIRMATION) && (main.getUtils().isOnSkyblock() || main.getPlayerListener().aboutToJoinSkyblockServer()
+        if (heldItemStack != null && main.getConfigValues().isEnabled(Feature.DROP_CONFIRMATION) && !main.getUtils().isInDungeon() && (main.getUtils().isOnSkyblock() || main.getPlayerListener().aboutToJoinSkyblockServer()
                 || main.getConfigValues().isEnabled(Feature.DOUBLE_DROP_IN_OTHER_GAMES))) {
             lastDrop = Minecraft.getSystemTime();
 
@@ -75,34 +67,5 @@ public class EntityPlayerSPHook {
         }
 
         return null;
-    }
-
-    private static float lastUpdate = -1;
-
-    public static void healthPlayerUpdate(float health) {
-        SkyblockAddons main = SkyblockAddons.getInstance();
-        if (!main.getUtils().isOnSkyblock() || !main.getConfigValues().isEnabled(Feature.COMBAT_TIMER_DISPLAY)) {
-            return;
-        }
-
-        Minecraft mc = Minecraft.getMinecraft();
-        if (health < lastUpdate || health == lastUpdate && mc.thePlayer.isPotionActive(Potion.absorption)) {
-
-            List<Entity> nearEntities = mc.theWorld.getEntitiesWithinAABB(Entity.class,
-                    new AxisAlignedBB(mc.thePlayer.posX - 2, mc.thePlayer.posY-2, mc.thePlayer.posZ - 2, mc.thePlayer.posX + 2, mc.thePlayer.posY + 2, mc.thePlayer.posZ + 2));
-            boolean foundPossibleAttacker = false;
-
-            for (Entity entity : nearEntities) {
-                if (entity instanceof EntityMob || entity instanceof EntityWolf || entity instanceof IProjectile) {
-                    foundPossibleAttacker = true;
-                    break;
-                }
-            }
-
-            if (foundPossibleAttacker) {
-                SkyblockAddons.getInstance().getUtils().setLastDamaged(System.currentTimeMillis());
-            }
-        }
-        lastUpdate = health;
     }
 }

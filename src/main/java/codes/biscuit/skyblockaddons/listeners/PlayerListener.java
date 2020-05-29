@@ -1,6 +1,7 @@
 package codes.biscuit.skyblockaddons.listeners;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.gui.IslandWarpGui;
 import codes.biscuit.skyblockaddons.utils.*;
 import codes.biscuit.skyblockaddons.utils.dev.DevUtils;
 import codes.biscuit.skyblockaddons.utils.item.ItemUtils;
@@ -49,6 +50,7 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 import org.lwjgl.input.Keyboard;
 
 import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -115,6 +117,12 @@ public class PlayerListener {
             recentlyLoadedChunks.clear();
             countedEndermen.clear();
             EndstoneProtectorManager.reset();
+
+            IslandWarpGui.Marker doubleWarpMarker = IslandWarpGui.getDoubleWarpMarker();
+            if (doubleWarpMarker != null) {
+                IslandWarpGui.setDoubleWarpMarker(null);
+                Minecraft.getMinecraft().thePlayer.sendChatMessage("/warp "+doubleWarpMarker.getWarpName());
+            }
         }
     }
 
@@ -429,13 +437,10 @@ public class PlayerListener {
         if (e.entity instanceof EntityEnderman) {
             if (countedEndermen.remove(e.entity.getUniqueID())) {
                 main.getPersistentValues().addKill();
-            }
-            if (isZealot(e.entity)) {
                 EndstoneProtectorManager.onKill();
             }
         }
     }
-
     private boolean isZealot(Entity enderman) {
         List<EntityArmorStand> stands = Minecraft.getMinecraft().theWorld.getEntitiesWithinAABB(EntityArmorStand.class,
                 new AxisAlignedBB(enderman.posX - 1, enderman.posY, enderman.posZ - 1, enderman.posX + 1, enderman.posY + 5, enderman.posZ + 1));
@@ -472,7 +477,7 @@ public class PlayerListener {
                                     magmaAccuracy = EnumUtils.MagmaTimerAccuracy.SPAWNED;
                                     if (currentTime - lastBossSpawnPost > 300000) {
                                         lastBossSpawnPost = currentTime;
-                                        main.getUtils().sendPostRequest(EnumUtils.MagmaEvent.BOSS_SPAWN);
+                                        main.getUtils().sendInventiveTalentPingRequest(EnumUtils.MagmaEvent.BOSS_SPAWN);
                                     }
                                 }
                             }
@@ -485,7 +490,7 @@ public class PlayerListener {
                             magmaTime = 7200;
                             if (currentTime - lastBossDeathPost > 300000) {
                                 lastBossDeathPost = currentTime;
-                                main.getUtils().sendPostRequest(EnumUtils.MagmaEvent.BOSS_DEATH);
+                                main.getUtils().sendInventiveTalentPingRequest(EnumUtils.MagmaEvent.BOSS_DEATH);
                             }
                         }
                     }
@@ -526,7 +531,7 @@ public class PlayerListener {
                             magmaAccuracy = EnumUtils.MagmaTimerAccuracy.EXACTLY;
                             if (currentTime - lastMagmaWavePost > 300000) {
                                 lastMagmaWavePost = currentTime;
-                                main.getUtils().sendPostRequest(EnumUtils.MagmaEvent.MAGMA_WAVE);
+                                main.getUtils().sendInventiveTalentPingRequest(EnumUtils.MagmaEvent.MAGMA_WAVE);
                             }
                         }
                     }
@@ -539,7 +544,7 @@ public class PlayerListener {
                             magmaAccuracy = EnumUtils.MagmaTimerAccuracy.EXACTLY;
                             if (currentTime - lastBlazeWavePost > 300000) {
                                 lastBlazeWavePost = currentTime;
-                                main.getUtils().sendPostRequest(EnumUtils.MagmaEvent.BLAZE_WAVE);
+                                main.getUtils().sendInventiveTalentPingRequest(EnumUtils.MagmaEvent.BLAZE_WAVE);
                             }
                         }
                     }
@@ -688,7 +693,11 @@ public class PlayerListener {
                 IInventory chestInventory = ((GuiChest)e.gui).lowerChestInventory;
                 if (chestInventory.hasCustomName()) {
                     if (chestInventory.getDisplayName().getUnformattedText().contains("Backpack")) {
-                        mc.thePlayer.playSound("mob.horse.armor", 0.5F, 1);
+                        if (ThreadLocalRandom.current().nextInt(0, 2) == 0) {
+                            mc.thePlayer.playSound("mob.horse.armor", 0.5F, 1);
+                        } else {
+                            mc.thePlayer.playSound("mob.horse.leather", 0.5F, 1);
+                        }
                     }
                 }
             }

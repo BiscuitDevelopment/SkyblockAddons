@@ -104,12 +104,16 @@ public enum Feature {
     TURN_BOW_GREEN_WHEN_USING_TOXIC_ARROW_POISON(80, Message.SETTING_TURN_BOW_GREEN_WHEN_USING_TOXIC_ARROW_POISON, false),
     BIRCH_PARK_RAINMAKER_TIMER(81, Message.SETTING_BIRCH_PARK_RAINMAKER_TIMER, new GuiFeatureData(EnumUtils.DrawType.TEXT, ChatFormatting.DARK_AQUA, EnumUtils.AnchorPoint.TOP_RIGHT, -107, 11), false),
     COMBAT_TIMER_DISPLAY(82, Message.SETTING_COMBAT_TIMER_DISPLAY, new GuiFeatureData(EnumUtils.DrawType.TEXT, ChatFormatting.RED, EnumUtils.AnchorPoint.TOP_RIGHT, -168, 11), false),
-    DISCORD_RPC(83, Message.SETTING_DISCORD_RP, true, EnumUtils.FeatureSetting.DISCORD_RP_STATE, EnumUtils.FeatureSetting.DISCORD_RP_DETAILS),
+    DISCORD_RPC(83, Message.SETTING_DISCORD_RP, true, EnumUtils.FeatureSetting.DISCORD_RP_DETAILS, EnumUtils.FeatureSetting.DISCORD_RP_STATE),
     ENDSTONE_PROTECTOR_DISPLAY(84, Message.SETTING_ENDSTONE_PROTECTOR_DISPLAY, new GuiFeatureData(EnumUtils.DrawType.TEXT, ChatFormatting.WHITE, EnumUtils.AnchorPoint.TOP_RIGHT, -168, 11), false),
+    FANCY_WARP_MENU(85, Message.SETTING_FANCY_WARP_MENU, false),
+    DOUBLE_WARP(86, Message.SETTING_DOUBLE_WARP, true),
 
     HIDE_GREY_ENCHANTS(100, null, false), // This is here just to allow remote disabling this feature- it's caused issues in the past haha.
 
     WARNING_TIME(-1, Message.SETTING_WARNING_DURATION, false),
+
+    WARP_ADVANCED_MODE(-1, Message.SETTING_ADVANCED_MODE, true),
 
     ADD(-1, null, false),
     SUBTRACT(-1, null, false),

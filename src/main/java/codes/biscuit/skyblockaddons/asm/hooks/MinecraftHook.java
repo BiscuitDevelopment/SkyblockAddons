@@ -109,7 +109,7 @@ public class MinecraftHook {
             }
 
             ItemStack heldItemStack = mc.thePlayer.getHeldItem();
-            if (heldItemStack != null && main.getConfigValues().isEnabled(Feature.STOP_DROPPING_SELLING_RARE_ITEMS)
+            if (heldItemStack != null && main.getConfigValues().isEnabled(Feature.STOP_DROPPING_SELLING_RARE_ITEMS) && !main.getUtils().isInDungeon()
                     && !main.getUtils().getItemDropChecker().canDropItem(heldItemStack, true, false)) {
 
                 MinecraftHook.lastLockedSlotItemChange = System.currentTimeMillis();

@@ -110,11 +110,14 @@ public enum Message {
     SETTING_COMBAT_TIMER_DISPLAY(MessageObject.SETTING, "combatTimerDisplay"),
     SETTING_DISCORD_RP(MessageObject.SETTING, "discordRP"),
     SETTING_ENDSTONE_PROTECTOR_DISPLAY(MessageObject.SETTING, "endstoneProtectorDisplay"),
+    SETTING_FANCY_WARP_MENU(MessageObject.SETTING, "fancyWarpMenu"),
+    SETTING_DOUBLE_WARP(MessageObject.SETTING, "doubleWarp"),
+    SETTING_ADVANCED_MODE(MessageObject.SETTING, "advancedMode"),
+    SETTING_FREEZE_BACKPACK_PREVIEW(MessageObject.SETTING, "freezeBackpackPreview"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.BACKPACK_STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.BACKPACK_STYLE, "compact"),
 
-    MESSAGE_BETA_TESTERS(MessageObject.MESSAGES, "betaTesters"),
     MESSAGE_DROP_CONFIRMATION(MessageObject.MESSAGES, "dropConfirmation"),
     MESSAGE_MAGMA_BOSS_WARNING(MessageObject.MESSAGES, "magmaBossWarning"),
     MESSAGE_FULL_INVENTORY(MessageObject.MESSAGES, "fullInventory"),
@@ -135,10 +138,10 @@ public enum Message {
     MESSAGE_CANCELLED_CANE_BREAK(MessageObject.MESSAGES, "cancelledCaneBreak"),
     MESSAGE_VIEW_PATCH_NOTES(MessageObject.MESSAGES, "wantToViewPatchNotes"),
     MESSAGE_DOWNLOAD_LINK(MessageObject.MESSAGES, "downloadLink"),
+    MESSAGE_DIRECT_DOWNLOAD(MessageObject.MESSAGES, "directDownload"),
     MESSAGE_DOWNLOAD_AUTOMATICALLY(MessageObject.MESSAGES, "downloadAutomatically"),
     MESSAGE_OPEN_MODS_FOLDER(MessageObject.MESSAGES, "openModFolder"),
     MESSAGE_JOIN_DISCORD(MessageObject.MESSAGES, "joinTheDiscord"),
-    MESSAGE_DELETE_OLD_FILE(MessageObject.MESSAGES, "deleteOldFile"),
     MESSAGE_FEATURE_DISABLED(MessageObject.MESSAGES, "featureDisabled"),
     MESSAGE_ANVIL_USES(MessageObject.MESSAGES, "anvilUses"),
     MESSAGE_CANCELLED_NON_ORES_BREAK(MessageObject.MESSAGES, "cancelledDeepCaverns"),
@@ -156,6 +159,9 @@ public enum Message {
     MESSAGE_SHOW_COLOR_ICONS(MessageObject.MESSAGES, "showColorIcons"),
     MESSAGE_STAGE(MessageObject.MESSAGES, "stage"),
     MESSAGE_SWITCHED_SLOTS(MessageObject.MESSAGES, "switchedSlots"),
+    MESSAGE_NEW_UPDATE(MessageObject.MESSAGES, "newUpdateAvailable"),
+    MESSAGE_CLICK_TO_OPEN_LINK(MessageObject.MESSAGES, "clickToOpenLink"),
+    MESSAGE_CLICK_TO_OPEN_FOLDER(MessageObject.MESSAGES, "clickToOpenFolder"),
 
     @Deprecated ANCHOR_POINT_TOP_LEFT(MessageObject.ANCHOR_POINT, "topLeft"),
     @Deprecated ANCHOR_POINT_TOP_RIGHT(MessageObject.ANCHOR_POINT, "topRight"),
@@ -168,8 +174,6 @@ public enum Message {
     UPDATE_MESSAGE_DOWNLOAD(MessageObject.UPDATE_MESSAGES, "downloading"),
     UPDATE_MESSAGE_FAILED(MessageObject.UPDATE_MESSAGES, "failed"),
     UPDATE_MESSAGE_DOWNLOAD_FINISHED(MessageObject.UPDATE_MESSAGES, "downloadFinished"),
-    UPDATE_MESSAGE_NEW_BETA(MessageObject.UPDATE_MESSAGES, "newBeta"),
-    UPDATE_MESSAGE_NEW_UPDATE(MessageObject.UPDATE_MESSAGES, "newUpdate"),
 
     TEXT_STYLE_ONE(MessageObject.TEXT_STYLE, "one"),
     TEXT_STYLE_TWO(MessageObject.TEXT_STYLE, "two"),
@@ -205,38 +209,11 @@ public enum Message {
     DISCORD_STATUS_TIME_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionTime"),
     DISCORD_STATUS_PROFILE_TITLE(MessageObject.DISCORD_STATUS, "titleProfile"),
     DISCORD_STATUS_PROFILE_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionProfile"),
-    DISCORD_STATUS_GENERIC_IN_GAME_TITLE(MessageObject.DISCORD_STATUS, "titleInGame"),
-    DISCORD_STATUS_GENERIC_IN_GAME_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionInGame"),
-    DISCORD_STATUS_GENERIC_MINING_TITLE(MessageObject.DISCORD_STATUS, "titleMining"),
-    DISCORD_STATUS_GENERIC_MINING_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionMining"),
-    DISCORD_STATUS_GENERIC_GRINDING_TITLE(MessageObject.DISCORD_STATUS, "titleGrinding"),
-    DISCORD_STATUS_GENERIC_GRINDING_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionGrinding"),
-    DISCORD_STATUS_GENERIC_FARMING_TITLE(MessageObject.DISCORD_STATUS, "titleFarming"),
-    DISCORD_STATUS_GENERIC_FARMING_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionFarming"),
-    DISCORD_STATUS_GENERIC_FISHING_TITLE(MessageObject.DISCORD_STATUS, "titleFishing"),
-    DISCORD_STATUS_GENERIC_FISHING_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionFishing"),
-    DISCORD_STATUS_GENERIC_BREWING_TITLE(MessageObject.DISCORD_STATUS, "titleBrewing"),
-    DISCORD_STATUS_GENERIC_BREWING_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionBrewing"),
-    DISCORD_STATUS_GENERIC_ENCHANTING_TITLE(MessageObject.DISCORD_STATUS, "titleEnchanting"),
-    DISCORD_STATUS_GENERIC_ENCHANTING_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionEnchanting"),
-    DISCORD_STATUS_GENERIC_COMBAT_TITLE(MessageObject.DISCORD_STATUS, "titleCombat"),
-    DISCORD_STATUS_GENERIC_COMBAT_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionCombat"),
-    DISCORD_STATUS_GENERIC_RUNECRAFTING_TITLE(MessageObject.DISCORD_STATUS, "titleRunecrafting"),
-    DISCORD_STATUS_GENERIC_RUNECRAFTING_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionRunecrafting"),
-    DISCORD_STATUS_GENERIC_FORAGING_TITLE(MessageObject.DISCORD_STATUS, "titleForaging"),
-    DISCORD_STATUS_GENERIC_FORAGING_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionForaging"),
-    DISCORD_STATUS_GENERIC_WOLF_SLAYER_TITLE(MessageObject.DISCORD_STATUS, "titleWolfSlayer"),
-    DISCORD_STATUS_GENERIC_WOLF_SLAYER_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionWolfSlayer"),
-    DISCORD_STATUS_GENERIC_SPIDER_SLAYER_TITLE(MessageObject.DISCORD_STATUS, "titleSpiderSlayer"),
-    DISCORD_STATUS_GENERIC_SPIDER_SLAYER_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionSpiderSlayer"),
-    DISCORD_STATUS_GENERIC_ZOMBIE_SLAYER_TITLE(MessageObject.DISCORD_STATUS, "titleZombieSlayer"),
-    DISCORD_STATUS_GENERIC_ZOMBIE_SLAYER_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionZombieSlayer"),
-    DISCORD_STATUS_GENERIC_GRINDING_ZEALOTS_TITLE(MessageObject.DISCORD_STATUS, "titleGrindingZealots"),
-    DISCORD_STATUS_GENERIC_GRINDING_ZEALOTS_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionGrindingZealots"),
-    DISCORD_STATUS_GENERIC_AFK_TITLE(MessageObject.DISCORD_STATUS, "titleAfk"),
-    DISCORD_STATUS_GENERIC_AFK_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionAfk"),
-    DISCORD_STATUS_GENERIC_STONKS_TITLE(MessageObject.DISCORD_STATUS, "titleStonks"),
-    DISCORD_STATUS_GENERIC_STONKS_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionStonks");
+    DISCORD_STATUS_CUSTOM(MessageObject.DISCORD_STATUS, "titleCustom"),
+    DISCORD_STATUS_CUSTOM_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionCustom"),
+    DISCORD_STATUS_AUTO(MessageObject.DISCORD_STATUS, "titleAuto"),
+    DISCORD_STATUS_AUTO_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionAuto"),
+    ;
 
     private MessageObject messageObject;
     private String memberName;
@@ -265,7 +242,7 @@ public enum Message {
                     text = text.replace("%style%", main.getConfigValues().getPowerOrbDisplayStyle().getMessage());
                 } else if (this == Message.SETTING_GUI_SCALE) {
                     text = text.replace("%scale%", variables[0]);
-                } else if (this == Message.UPDATE_MESSAGE_NEW_UPDATE || this == UPDATE_MESSAGE_MAJOR || this == UPDATE_MESSAGE_PATCH) {
+                } else if (this == MESSAGE_NEW_UPDATE || this == UPDATE_MESSAGE_MAJOR || this == UPDATE_MESSAGE_PATCH) {
                     text = text.replace("%version%", variables[0]);
                 } else if (this == Message.SETTING_TEXT_STYLE) {
                     text = text.replace("%style%", main.getConfigValues().getTextStyle().getMessage());
@@ -308,7 +285,7 @@ public enum Message {
         UPDATE_MESSAGES("messages.update"),
         ANCHOR_POINT("settings.anchorPoints"),
         CHROMA_MODE("settings.chromaModes"),
-        DISCORD_STATUS("discord.status");
+        DISCORD_STATUS("discordStatus");
 
         private List<String> path;
 

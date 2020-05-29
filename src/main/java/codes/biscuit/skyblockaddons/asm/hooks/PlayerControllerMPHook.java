@@ -149,7 +149,7 @@ public class PlayerControllerMPHook {
 
         if (main.getUtils().isOnSkyblock()) {
             // Prevent dropping rare items
-            if (main.getConfigValues().isEnabled(Feature.STOP_DROPPING_SELLING_RARE_ITEMS)) {
+            if (main.getConfigValues().isEnabled(Feature.STOP_DROPPING_SELLING_RARE_ITEMS) && !main.getUtils().isInDungeon()) {
                 if (checkItemDrop(clickModifier, slotNum, itemStack)) {
                     returnValue.cancel();
                 }

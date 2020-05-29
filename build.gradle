@@ -8,7 +8,9 @@ plugins {
     id 'com.github.johnrengelman.shadow' version '4.0.4'
 }
 
-group= 'codes.biscuit'
+group = 'codes.biscuit'
+// The below line is for version checkers <= 1.4.2
+//version = "1.5.0"
 
 // Java plugin settings
 sourceCompatibility = JavaVersion.VERSION_1_8

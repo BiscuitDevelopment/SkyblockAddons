@@ -30,8 +30,6 @@ public class EntityPlayerSPTransformer implements ITransformer {
 
             if (TransformerMethod.dropOneItem.matches(methodNode)) {
                 methodNode.instructions.insertBefore(methodNode.instructions.getFirst(), insertConfirmation());
-            } else if (TransformerMethod.setPlayerSPHealth.matches(methodNode)) {
-                methodNode.instructions.insertBefore(methodNode.instructions.getFirst(), insertHealthChange());
             }
         }
     }
@@ -57,15 +55,6 @@ public class EntityPlayerSPTransformer implements ITransformer {
         list.add(new InsnNode(Opcodes.ACONST_NULL)); // return null;
         list.add(new InsnNode(Opcodes.ARETURN));
         list.add(notCancelled);
-
-        return list;
-    }
-
-    private InsnList insertHealthChange() {
-        InsnList list = new InsnList();
-
-        list.add(new VarInsnNode(Opcodes.FLOAD, 1));
-        list.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "codes/biscuit/skyblockaddons/asm/hooks/EntityPlayerSPHook", "healthPlayerUpdate", "(F)V", false));
 
         return list;
     }

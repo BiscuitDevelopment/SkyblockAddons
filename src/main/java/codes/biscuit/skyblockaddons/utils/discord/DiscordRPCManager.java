@@ -52,6 +52,7 @@ public class DiscordRPCManager implements IPCListener {
     public void stop() {
         if (isActive()) {
             client.close();
+            connected = false;
         }
     }
 

@@ -14,7 +14,9 @@ public class EndstoneProtectorManager {
 
     @Getter private static boolean canDetectSkull = false;
     @Getter private static Stage minibossStage = null;
-    @Getter private static int zealotCount = -1;
+    @Getter private static int zealotCount = 0;
+
+    private static long lastWaveStart = -1;
 
     public static void tick() {
         Minecraft mc = Minecraft.getMinecraft();
@@ -24,7 +26,7 @@ public class EndstoneProtectorManager {
                 main.getConfigValues().isEnabled(Feature.ENDSTONE_PROTECTOR_DISPLAY)) {
             WorldClient worldClient = mc.theWorld;
 
-            Chunk chunk = worldClient.getChunkFromBlockCoords(new BlockPos(-689, 5, -273));
+            Chunk chunk = worldClient.getChunkFromBlockCoords(new BlockPos(-689, 5, -273)); // This is the original spawn.
             if (chunk == null || !chunk.isLoaded()) {
                 canDetectSkull = false;
                 return;
@@ -46,8 +48,28 @@ public class EndstoneProtectorManager {
             canDetectSkull = true;
 
             if (minibossStage != stage) {
+                int timeTaken = (int) (System.currentTimeMillis()-lastWaveStart);
+                String previousStage = (minibossStage == null ? "null" : minibossStage.name());
+                String newStage = stage.name();
+
+                String zealotsKilled = "N/A";
+                if (minibossStage != null) {
+                    zealotsKilled = String.valueOf(zealotCount);
+                }
+
+                int totalSeconds = timeTaken/1000;
+                int minutes = totalSeconds/60;
+                int seconds = totalSeconds%60;
+
+                main.getLogger().info("Endstone Protector stage updated from "+previousStage+" to "+newStage+". " +
+                        "Your zealot kill count was "+zealotsKilled+". This took "+minutes+"m "+seconds+"s.");
+
+                if (minibossStage == Stage.GOLEM_ALIVE && stage == Stage.NO_HEAD) {
+                    zealotCount = 0;
+                }
+
                 minibossStage = stage;
-                zealotCount = minibossStage.getZealotsRemaining();
+                lastWaveStart = System.currentTimeMillis();
             }
         } else {
             canDetectSkull = false;
@@ -55,47 +77,57 @@ public class EndstoneProtectorManager {
     }
 
     public static void onKill() {
-        zealotCount--;
-
-        if (zealotCount < minibossStage.getZealotsRemaining()-1000) zealotCount = minibossStage.getZealotsRemaining()-1000;
-
-        if (zealotCount < 0) zealotCount = 0;
+        zealotCount++;
     }
 
     public static void reset() {
         minibossStage = null;
-        zealotCount = -1;
+        zealotCount = 0;
         canDetectSkull = false;
     }
 
     public enum Stage {
-        NO_HEAD(-1, 5000),
-        STAGE_1(0, 4000),
-        STAGE_2(1, 3000),
-        STAGE_3(2, 2000),
-        STAGE_4(3, 1000),
-        STAGE_5(4, 0),
-        GOLEM_ALIVE(-1, 0);
+        NO_HEAD(-1),
+        STAGE_1(0),
+        STAGE_2(1),
+        STAGE_3(2),
+        STAGE_4(3),
+        STAGE_5(4),
+        GOLEM_ALIVE(-1);
+        private int blocksUp;
 
-        private BlockPos blockPos = null;
-        @Getter private int zealotsRemaining;
-
-        Stage(int blocksUp, int zealotsRemaining) {
-            if (blocksUp != -1) {
-                this.blockPos = new BlockPos(-689, 5 + blocksUp, -273);
-            }
-            this.zealotsRemaining = zealotsRemaining;
+        Stage(int blocksUp) {
+            this.blocksUp = blocksUp;
         }
 
+        private static Stage lastStage = null;
+        private static BlockPos lastPos = null;
+
         public static Stage detectStage(WorldClient worldClient) {
-            for (Stage stage : values()) {
-                if (stage.blockPos != null) {
-                    if (Blocks.skull.equals(worldClient.getBlockState(stage.blockPos).getBlock())) {
-                        return stage;
-                    }
+            if (lastStage != null && lastPos != null) {
+                if (Blocks.skull.equals(worldClient.getBlockState(lastPos).getBlock())) {
+                    return lastStage;
                 }
             }
 
+            for (Stage stage : values()) {
+                if (stage.blocksUp != -1) {
+                    // These 4 coordinates are the bounds of the dragon's nest.
+                    for (int x = -749; x < -602; x++) {
+                        for (int z = -353; z < -202; z++) {
+                            BlockPos blockPos = new BlockPos(x, 5+stage.blocksUp, z);
+                            if (Blocks.skull.equals(worldClient.getBlockState(blockPos).getBlock())) {
+                                lastStage = stage;
+                                lastPos = blockPos;
+
+                                return stage;
+                            }
+                        }
+                    }
+                }
+            }
+            lastStage = null;
+            lastPos = null;
             return Stage.NO_HEAD;
         }
     }

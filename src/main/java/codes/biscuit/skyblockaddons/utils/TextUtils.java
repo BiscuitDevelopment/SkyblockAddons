@@ -12,7 +12,7 @@ public class TextUtils {
 
     private static final Pattern STRIP_COLOR_PATTERN = Pattern.compile("(?i)§[0-9A-FK-OR]");
     private static final Pattern NUMBERS_SLASHES = Pattern.compile("[^0-9 /]");
-    private static final Pattern LETTERS_NUMBERS = Pattern.compile("[^a-z A-Z:0-9/']");
+    private static final Pattern SCOREBOARD_CHARACTERS = Pattern.compile("[^a-z A-Z:0-9/'.]");
     private static final Pattern FLOAT_CHARACTERS = Pattern.compile("[^.0-9\\-]");
     private static final Pattern INTEGER_CHARACTERS = Pattern.compile("[^0-9]");
 
@@ -41,13 +41,13 @@ public class TextUtils {
     }
 
     /**
-     * Removes any character that isn't a number or letter from a given text.
+     * Removes any character that isn't a number, letter, or common symbol from a given text.
      *
      * @param text Input text
      * @return Input text with only letters and numbers
      */
-    public static String keepLettersAndNumbersOnly(String text) {
-        return LETTERS_NUMBERS.matcher(text).replaceAll("");
+    public static String keepScoreboardCharacters(String text) {
+        return SCOREBOARD_CHARACTERS.matcher(text).replaceAll("");
     }
 
     /**

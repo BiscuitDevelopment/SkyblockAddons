@@ -10,6 +10,7 @@ import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItemFrame;
+import org.lwjgl.input.Mouse;
 
 import java.util.List;
 
@@ -19,7 +20,8 @@ public class EntityRendererHook {
         SkyblockAddons main = SkyblockAddons.getInstance();
 
         if (main.getUtils().isOnSkyblock()) {
-            if (!GuiScreen.isCtrlKeyDown() && main.getConfigValues().isEnabled(Feature.IGNORE_ITEM_FRAME_CLICKS)) {
+
+            if (!GuiScreen.isCtrlKeyDown() && Mouse.isButtonDown(1) && main.getConfigValues().isEnabled(Feature.IGNORE_ITEM_FRAME_CLICKS)) {
                 list.removeIf(listEntity -> listEntity instanceof EntityItemFrame &&
                         (((EntityItemFrame)listEntity).getDisplayedItem() != null || Minecraft.getMinecraft().thePlayer.getHeldItem() == null));
             }

@@ -339,7 +339,7 @@ public class GuiContainerHook {
                     }
                 }
             }
-            if (mc.gameSettings.keyBindDrop.getKeyCode() == keyCode && main.getConfigValues().isEnabled(Feature.STOP_DROPPING_SELLING_RARE_ITEMS)) {
+            if (mc.gameSettings.keyBindDrop.getKeyCode() == keyCode && main.getConfigValues().isEnabled(Feature.STOP_DROPPING_SELLING_RARE_ITEMS) && !main.getUtils().isInDungeon()) {
                 if (!main.getUtils().getItemDropChecker().canDropItem(theSlot)) returnValue.cancel();
             }
         }

@@ -46,8 +46,12 @@ public class Backpack {
             NBTTagCompound extraAttributes = stack.getTagCompound().getCompoundTag("ExtraAttributes");
             Matcher matcher = BACKPACK_ID_PATTERN.matcher(id);
             boolean matches = matcher.matches();
-            if (matches || (main.getConfigValues().isEnabled(Feature.CAKE_BAG_PREVIEW) // If it's a backpack OR it's a cake
-                    && "NEW_YEAR_CAKE_BAG".equals(id))) { //                              bag and they have the setting enabled.
+
+            boolean isCakeBag = main.getConfigValues().isEnabled(Feature.CAKE_BAG_PREVIEW) &&
+                    "NEW_YEAR_CAKE_BAG".equals(id) && EnumUtils.InventoryType.getCurrentInventoryType() != EnumUtils.InventoryType.BAKER;
+
+            // If it's a backpack OR it's a cake bag and they have the setting enabled.
+            if (matches || isCakeBag) {
                 byte[] bytes = null;
                 for (String key : extraAttributes.getKeySet()) {
                     if (key.endsWith("backpack_data") || key.equals("new_year_cake_bag_data")) {

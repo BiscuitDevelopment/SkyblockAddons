@@ -6,6 +6,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.JsonParser;
 import lombok.Getter;
+import lombok.Setter;
 import org.apache.logging.log4j.Logger;
 
 import java.io.BufferedWriter;
@@ -13,6 +14,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 
+@Setter
 @Getter
 public class PersistentValues {
 

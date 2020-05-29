@@ -1,0 +1,29 @@
+{
+  "bannerImageURL": null,
+  "bannerLink": null,
+  "videoLink": "https://www.youtube.com/watch?v=PTF6rf8uviA",
+  "directDownload": null,
+
+  "disabledFeatures": {
+    "all": [44],
+    "1.5.0": []
+  },
+
+  "dropSettings": {
+    "minimumInventoryRarity": "RARE",
+    "minimumHotbarRarity": "RARE",
+    "dontDropTheseItems": [
+      "PIGGY_BANK",
+      "SMALL_BACKPACK",
+      "RADIANT_POWER_ORB",
+      "GRAPPLING_HOOK",
+      "WAND_OF_HEALING",
+      "ENCHANTED_GLOWSTONE",
+      "AATROX_BATPHONE"
+    ],
+    "allowDroppingTheseItems": [
+      "RUNE",
+      "REMNANT_OF_THE_EYE"
+    ]
+  }
+}

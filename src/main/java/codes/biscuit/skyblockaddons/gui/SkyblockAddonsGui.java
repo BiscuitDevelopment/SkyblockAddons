@@ -292,7 +292,7 @@ public class SkyblockAddonsGui extends GuiScreen {
             } catch (Exception ignored) {}
         } else if (abstractButton instanceof ButtonBanner) {
             try {
-                Desktop.getDesktop().browse(main.getUtils().getFeaturedURL());
+                Desktop.getDesktop().browse(new URI(main.getOnlineData().getBannerLink()));
             } catch (Exception ignored) {}
         }
     }
@@ -436,7 +436,7 @@ public class SkyblockAddonsGui extends GuiScreen {
 
 
     private void addFeaturedBanner() {
-        if (main.getUtils().getFeaturedURL() != null) {
+        if (main.getOnlineData().getBannerImageURL() != null) {
             int halfWidth = width / 2;
             buttonList.add(new ButtonBanner(halfWidth - 170, 15, main));
         }
