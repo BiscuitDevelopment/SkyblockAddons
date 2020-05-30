@@ -86,7 +86,7 @@
       "compact": "コンパクト"
     },
     "disableMagicalSoupMessage": "Magical Mushroom Soupのメッセージを非表示",
-    "zealotCounter": "Zealotカウンターを表示",
+    "zealotCounter": "Zealotカウンター - 最後のアイからの合計",
     "tickerChargesDisplay": "Tickerとチャージの表示",
     "tab": {
       "generalSettings": "一般設定"
@@ -98,10 +98,10 @@
     "showBackpackPreviewInAH": "オークションが開いている時にバックパックのプレビューを表示",
     "enableDevFeatures": "開発者機能の有効化",
     "chromaSpeed": "Chromaのスピード",
-    "chromaMode": "Chroma Color Mode",
+    "chromaMode": "クロマカラーモード",
     "chromaModes": {
       "allTheSame": "全て同じ色",
-      "fade": "Color Fade"
+      "fade": "カラーフェード"
     },
     "chromaFadeWidth": "Chroma Fade Width",
     "sortTabEffectTimers": "タイマーの残り時間で並び替え",
@@ -113,8 +113,8 @@
     "turnBowGreenWhenUsingToxicArrowPoison": "毒矢の使用時に弓を緑色にする",
     "birchParkRainmakerTimer": "Birch Parkの雨降りタイマー",
     "combatTimerDisplay": "Combat Timer Display",
-    "discordRP": "Discord Rich Presence",
-    "endstoneProtectorDisplay": "Endstone Protector Display"
+    "discordRP": "Discordでのゲームステータス表示",
+    "endstoneProtectorDisplay": "エンドストーンプロテクターがスポーンしたときに画面上に表示する"
   },
   "messages": {
     "betaTesters": "ベータテストに参加してくれてありがとう！バグに遭遇した時はDiscordで報告してください。",
