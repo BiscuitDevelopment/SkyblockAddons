@@ -96,7 +96,7 @@
     "hideNightVisionEffectTimer": "Ukryj zegar widzenia w ciemności",
     "showCakeBagPreview": "Pokaż podgląd dla torb na ciasta",
     "showBackpackPreviewInAH": "Pogląd plecaków z otwartym Domem Aukcyjnym",
-    "enableDevFeatures": "Zezwól na funkcje developerskie",
+    "enableDevFeatures": "Włącz funckje dla programistów",
     "chromaSpeed": "Prędkość zmiany kolorów",
     "chromaMode": "Tryb koloru Chroma",
     "chromaModes": {
