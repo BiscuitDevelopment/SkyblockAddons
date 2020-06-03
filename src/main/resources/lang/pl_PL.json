@@ -70,12 +70,12 @@
     "disableMinionLocationWarning": "Wyłącz ostrzeżenia \"Location Not Perfect\"",
     "jungleAxeCooldown": "Zablokuj używania Jungle Axe/Treecapitatora podczas odnawiania",
     "organizeLongEnchantmentLists": "Uporządkuj długie listy enchantów",
-    "showItemCooldowns": "Pokazuj cooldown itemów",
+    "showItemCooldowns": "Pokazuj czas odnowienia przedmiotów",
     "speedPercentage": "Procent szybkości",
     "collectionDisplay": "Wyświetlaj postęp umiejętności",
     "onlyMineOresDeepCaverns": "Kop rudy tylko w Deep Cavernsach",
     "onlyMineValuablesNether": "Kop wartościowe rudy tylko w Netherze",
-    "revenantIndicator": "Wskaznik Postępu Zbroi Slayera",
+    "revenantIndicator": "Wskaznik postępu Zbroi pogromcy",
     "specialZealotAlert": "Alarmuj o Specjlanym Zealocie",
     "enableMessageWhenActionPrevented": "Pokaż wiadomość, gdy akcja jest zablokowana",
     "hidePetHealthBar": "Ukryj paski zdrowia zwierzaka",
@@ -143,7 +143,7 @@
       "majorAvailable": "Nowa ważna aktualizacja (%version%) jest dostępna. Link do pobrania może być znaleziony na czacie.",
       "patchAvailable": "Nowa łatka (%version%) jest dostępna. Zobacz czat, aby uzyskać informacje na temat pobierania!",
       "downloading": "Łatka jest pobierana! Status: %downloaded%/%total%. Pamiętaj, że po zakończonym pobieraniu, musisz usunąć stary plik.",
-      "failed": "Pobierania łatki nie powiodło się! Pobierz ją manualnie korzystając z linka na czacie.",
+      "failed": "Pobieranie łatki nie powiodło się! Pobierz ją ręcznie korzystając z odnośnika na czacie.",
       "downloadFinished": "Pobierania łatki zostało zakończone. Zapisana została jako %file%. Nie zapomnij usunąć starego pliku po zamknięciu Minecrafta. Kliknij wiadomość na czacie, aby otworzyć folder.",
       "newBeta": "A new beta (%version%) is available! Please update using the \"Mods\" menu.",
       "newUpdate": "A new update (%version%) is available! Please update using the \"Mods\" menu."
@@ -171,7 +171,7 @@
     "resizeBars": "Zmień rozmiar pasków",
     "showColorIcons": "Pokaż ikony kolorów",
     "stage": "Etap %stage%",
-    "switchedSlots": "Właśnie przełączyłeś się z zamkniętego slotu lub rzadkiego przedmiotu. Poczekaj chwilę przed upuszczeniem!"
+    "switchedSlots": "Właśnie przełączyłeś się z zablokowanego okienka lub rzadkiego przedmiotu. Poczekaj chwilę przed upuszczeniem!"
   },
   "discord": {
     "status": {}
