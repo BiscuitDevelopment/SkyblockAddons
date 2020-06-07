@@ -114,10 +114,12 @@
     "birchParkRainmakerTimer": "Timer del Rainmaker nel parco di betulle",
     "combatTimerDisplay": "Mostra timer del combattimento",
     "discordRP": "Discord Rich Presence",
-    "endstoneProtectorDisplay": "Mostra Endstone Protector"
+    "endstoneProtectorDisplay": "Mostra Endstone Protector",
+    "fancyWarpMenu": "Fancy Warp Menu",
+    "doubleWarp": "Double Warp",
+    "advancedMode": "Advanced Mode"
   },
   "messages": {
-    "betaTesters": "Grazie per essere stato un beta tester! Per favore segnala tutti i bug riscontrati nel canale di Discord.",
     "dropConfirmation": "Getta questo oggetto nuovamente per confermare!",
     "magmaBossWarning": "Magma Boss!",
     "fullInventory": "Inventario pieno!",
@@ -133,20 +135,15 @@
       "reforges": "Forge",
       "crafting": "Fabbricazione"
     },
-    "deleteOldFile": "Il download è terminato. Apri la cartella mods utilizzando il tasto sottostante, chiudi Minecraft, ed elimina la versione vecchia (oppure eliminala più tardi se preferisci).",
     "wantToViewPatchNotes": "Vuoi leggere le modifiche?",
     "downloadLink": "LINK AGGIORNAMENTO",
-    "downloadAutomatically": "DOWNLOAD AUTOMATICO",
+    "directDownload": "DIRECT DOWNLOAD LINK",
     "openModFolder": "CARTELLA MODS",
     "joinTheDiscord": "ENTRA NEL SERVER DI DISCORD",
+    "newUpdateAvailable": "A new update (%version%) is available!",
     "update": {
       "majorAvailable": "Un nuovo aggiornamento importante (%version%) è disponibile! Il link per il download si trova in chat.",
-      "patchAvailable": "Un nuovo aggiornamento con correzioni di errori (%version%) è disponibile! Cerca le opzioni di download in chat!",
-      "downloading": "Download delle correzioni! Status: %downloaded%/%total% Ricorda che al termine del download dovrai eliminare il file vecchio.",
-      "failed": "Il download delle correzioni non è riuscito! Scaricalo manualmente utilizzando il link in chat.",
-      "downloadFinished": "L’aggiornamento con le correzioni è stato scaricato. È stato salvato come %file%. Non dimenticarti di eliminare il vecchio file dopo aver chiuso Minecraft. Clicca sul messaggio in chat per aprire la cartella.",
-      "newBeta": "È disponibile una nuova versione beta (%version%)! Scaricala usando il menu “Mods”.",
-      "newUpdate": "È disponibile un nuovo aggiornamento (%version%)! Scaricalo usando il menu “Mods”."
+      "patchAvailable": "Un nuovo aggiornamento con correzioni di errori (%version%) è disponibile! Cerca le opzioni di download in chat!"
     },
     "slotLocked": "Questo slot è bloccato!",
     "summoningEyeFound": "Occhio dell'evocazione!",
@@ -171,9 +168,31 @@
     "resizeBars": "Ridimensiona le barre",
     "showColorIcons": "Mostra icone di colore",
     "stage": "Fase %stage%",
-    "switchedSlots": "Sei appena passato da uno slot bloccato o da un oggetto raro. Attendi un po' prima di gettare a terra!"
+    "switchedSlots": "Sei appena passato da uno slot bloccato o da un oggetto raro. Attendi un po' prima di gettare a terra!",
+    "clickToOpenLink": "Click to open this link!",
+    "clickToOpenFolder": "Click to open your mods folder!",
+    "freezeBackpackPreview": "Freeze Backpack Preview"
   },
-  "discord": {
-    "status": {}
+  "discordStatus": {
+    "titleNone": "None",
+    "descriptionNone": "No text is displayed",
+    "titleLocation": "Location",
+    "descriptionLocation": "Shows your current location",
+    "titlePurse": "Purse",
+    "descriptionPurse": "Shows the amount of coins in your purse",
+    "titleStats": "Stats",
+    "descriptionStats": "Shows your HP, Defense and Mana stats",
+    "titleZealots": "Zealots",
+    "descriptionZealots": "Shows your Zealot counter",
+    "titleItem": "Held Item",
+    "descriptionItem": "Shows the name of the item you're holding",
+    "titleProfile": "Profile",
+    "descriptionProfile": "Shows your Profile name",
+    "titleTime": "Skyblock Time",
+    "descriptionTime": "Shows the current Skyblock time. E.g. 12:00am 1st Early Winter",
+    "titleCustom": "Custom Status",
+    "descriptionCustom": "Enter a custom status",
+    "titleAuto": "Auto Status",
+    "descriptionAuto": "Automatically displays a status. E.g. your zealot count while in the end."
   }
 }
