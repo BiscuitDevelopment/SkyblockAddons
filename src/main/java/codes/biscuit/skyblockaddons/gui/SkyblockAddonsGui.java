@@ -4,8 +4,8 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.gui.buttons.*;
 import codes.biscuit.skyblockaddons.utils.CoordsPair;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
-import codes.biscuit.skyblockaddons.utils.Feature;
-import codes.biscuit.skyblockaddons.utils.Message;
+import codes.biscuit.skyblockaddons.core.Feature;
+import codes.biscuit.skyblockaddons.core.Message;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
 import codes.biscuit.skyblockaddons.utils.nifty.StringUtil;
 import codes.biscuit.skyblockaddons.utils.nifty.reflection.MinecraftReflection;
@@ -292,7 +292,7 @@ public class SkyblockAddonsGui extends GuiScreen {
             } catch (Exception ignored) {}
         } else if (abstractButton instanceof ButtonBanner) {
             try {
-                Desktop.getDesktop().browse(main.getUtils().getFeaturedURL());
+                Desktop.getDesktop().browse(new URI(main.getOnlineData().getBannerLink()));
             } catch (Exception ignored) {}
         }
     }
@@ -436,7 +436,7 @@ public class SkyblockAddonsGui extends GuiScreen {
 
 
     private void addFeaturedBanner() {
-        if (main.getUtils().getFeaturedURL() != null) {
+        if (main.getOnlineData().getBannerImageURL() != null) {
             int halfWidth = width / 2;
             buttonList.add(new ButtonBanner(halfWidth - 170, 15, main));
         }

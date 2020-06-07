@@ -119,11 +119,12 @@ public class PlayerControllerMPTransformer implements ITransformer {
         list.add(new VarInsnNode(Opcodes.ASTORE, 8));
 
         list.add(new VarInsnNode(Opcodes.ILOAD, 2)); // slotId
+        list.add(new VarInsnNode(Opcodes.ILOAD, 3)); // mouseButtonClicked
         list.add(new VarInsnNode(Opcodes.ILOAD, 4)); // mode
         list.add(new VarInsnNode(Opcodes.ALOAD, 5)); // playerIn
-        list.add(new VarInsnNode(Opcodes.ALOAD, 8)); // PlayerControllerMPHook.onWindowClick(slotId, mode, playerIn, returnValue);
+        list.add(new VarInsnNode(Opcodes.ALOAD, 8)); // PlayerControllerMPHook.onWindowClick(slotId, mouseButtonClicked, mode, playerIn, returnValue);
         list.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "codes/biscuit/skyblockaddons/asm/hooks/PlayerControllerMPHook", "onWindowClick",
-               "(II"+TransformerClass.EntityPlayer.getName()+"Lcodes/biscuit/skyblockaddons/asm/utils/ReturnValue;)V", false));
+               "(III"+TransformerClass.EntityPlayer.getName()+"Lcodes/biscuit/skyblockaddons/asm/utils/ReturnValue;)V", false));
 
         list.add(new VarInsnNode(Opcodes.ALOAD, 8));
         list.add(new MethodInsnNode(Opcodes.INVOKEVIRTUAL, "codes/biscuit/skyblockaddons/asm/utils/ReturnValue", "isCancelled",

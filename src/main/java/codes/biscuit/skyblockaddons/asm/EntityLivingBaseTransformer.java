@@ -36,7 +36,8 @@ public class EntityLivingBaseTransformer implements ITransformer {
                         if (fieldInsnNode.owner.equals(TransformerClass.EntityLivingBase.getNameRaw()) &&
                                 TransformerField.hurtTime.matches(fieldInsnNode)) {
                             methodNode.instructions.insert(abstractNode, new MethodInsnNode(Opcodes.INVOKESTATIC, "codes/biscuit/skyblockaddons/asm/hooks/EntityLivingBaseHook",
-                                    "onResetHurtTime", "()V", false));
+                                    "onResetHurtTime", "("+TransformerClass.EntityLivingBase.getName()+")V", false));
+                            methodNode.instructions.insert(abstractNode, new VarInsnNode(Opcodes.ALOAD, 0));
                         }
                     }
                 }

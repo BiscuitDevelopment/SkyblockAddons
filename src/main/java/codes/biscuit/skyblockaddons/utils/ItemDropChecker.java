@@ -2,28 +2,17 @@ package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.constants.game.Rarity;
+import codes.biscuit.skyblockaddons.core.Feature;
+import codes.biscuit.skyblockaddons.core.Message;
 import codes.biscuit.skyblockaddons.utils.item.ItemUtils;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.stream.JsonReader;
 import net.minecraft.client.Minecraft;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.List;
-import java.util.Objects;
 
 /**
  * This class handles the item checking for the Stop Dropping/Selling Rare Items feature.
@@ -36,12 +25,8 @@ import java.util.Objects;
  * @see ItemDropList
  */
 public class ItemDropChecker {
-    private final SkyblockAddons MAIN;
-    private final Logger LOGGER;
-    private final Gson GSON;
-
-    /** The list that is checked to determine if an item is allowed to be dropped */
-    private ItemDropList itemDropList;
+    private final SkyblockAddons main;
+    private final Logger logger;
 
     // Variables used for checking drop confirmations
     private ItemStack itemOfLastDropAttempt;
@@ -54,52 +39,8 @@ public class ItemDropChecker {
      * @param main the SkyblockAddons instance
      */
     public ItemDropChecker(SkyblockAddons main) {
-        this.GSON = new GsonBuilder().setPrettyPrinting().create();
-        this.MAIN = main;
-        this.LOGGER = LogManager.getLogger("SBA Item Drop Checker");
-
-        // Try to get the lists from the file.
-        try {
-            String ITEM_DROP_LIST_FILE_PATH = "itemDropList.json";
-            JsonReader jsonFileReader = new JsonReader(Files.newBufferedReader(Paths.get(Objects.requireNonNull(this.getClass().getClassLoader().getResource(ITEM_DROP_LIST_FILE_PATH)).toURI())));
-            itemDropList = GSON.fromJson(jsonFileReader, ItemDropList.class);
-        } catch (FileNotFoundException | URISyntaxException e) {
-            LOGGER.error("The item drop list doesn't exist or the path is incorrect. The developer did something wrong.");
-            LOGGER.catching(e);
-        } catch (IOException e) {
-            LOGGER.error("Error reading from item drop list!");
-            LOGGER.catching(e);
-        }
-
-        grabItemListFromOnline();
-    }
-
-    private void grabItemListFromOnline() {
-        LOGGER.info("Attempting to pull item drop list from online...");
-        new Thread(() -> {
-            try {
-                URL url = new URL("https://raw.githubusercontent.com/biscuut/SkyblockAddons/development/src/main/resources/itemDropList.json");
-                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                connection.setRequestMethod("GET");
-                connection.setRequestProperty("User-Agent", Utils.USER_AGENT);
-
-                LOGGER.info("Got response code " + connection.getResponseCode());
-
-                StringBuilder response = new StringBuilder();
-                try (BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
-                    String line;
-                    while ((line = in.readLine()) != null) {
-                        response.append(line);
-                    }
-                }
-                connection.disconnect();
-
-                this.itemDropList = GSON.fromJson(response.toString(), ItemDropList.class);
-            } catch (Exception ex) {
-                ex.printStackTrace();
-                LOGGER.warn("SkyblockAddons: There was an error pulling the item drop list from online...");
-            }
-        }).start();
+        this.main = main;
+        this.logger = LogManager.getLogger("SBA Item Drop Checker");
     }
 
     /**
@@ -128,6 +69,10 @@ public class ItemDropChecker {
         }
     }
 
+    public boolean canDropItem(ItemStack item, boolean itemIsInHotbar) {
+        return canDropItem(item, itemIsInHotbar, true);
+    }
+
     /**
      * Checks if this item can be dropped or sold.
      *
@@ -135,70 +80,64 @@ public class ItemDropChecker {
      * @param itemIsInHotbar whether this item is in the player's hotbar
      * @return {@code true} if this item can be dropped or sold, {@code false} otherwise
      */
-    public boolean canDropItem(ItemStack item, boolean itemIsInHotbar) {
-        LOGGER.entry(item, itemIsInHotbar);
+    public boolean canDropItem(ItemStack item, boolean itemIsInHotbar, boolean playAlert) {
+        logger.entry(item, itemIsInHotbar);
 
         if (item == null) {
-            LOGGER.throwing(new NullPointerException("Item cannot be null!"));
+            logger.throwing(new NullPointerException("Item cannot be null!"));
         }
 
-        if (MAIN.getUtils().isOnSkyblock()) {
+        if (main.getUtils().isOnSkyblock()) {
             if (ItemUtils.getSkyBlockItemID(item) == null) {
                 // Allow dropping of Skyblock items without IDs
-                return LOGGER.exit(true);
-            }
-            else if (ItemUtils.getRarity(item) == null) {
+                return logger.exit(true);
+            } else if (ItemUtils.getRarity(item) == null) {
             /*
              If this Skyblock item has an ID but no rarity, allow dropping it.
              This really shouldn't happen but just in case it does, this condition is here.
              */
-                return LOGGER.exit(true);
+                return logger.exit(true);
             }
 
             String itemID = ItemUtils.getSkyBlockItemID(item);
             Rarity rarity = ItemUtils.getRarity(item);
-            List<String> blacklist = itemDropList.getDontDropTheseItems();
-            List<String> whitelist = itemDropList.getAllowDroppingTheseItems();
+            List<String> blacklist = main.getOnlineData().getDropSettings().getDontDropTheseItems();
+            List<String> whitelist = main.getOnlineData().getDropSettings().getAllowDroppingTheseItems();
 
             if (itemIsInHotbar) {
-                if (rarity.compareTo(itemDropList.getMinimumHotbarRarity()) < 0 && !blacklist.contains(itemID)) {
-                    return LOGGER.exit(true);
-                }
-                else {
+                if (rarity.compareTo(main.getOnlineData().getDropSettings().getMinimumHotbarRarity()) < 0 && !blacklist.contains(itemID)) {
+                    return logger.exit(true);
+                } else {
                     // Dropping rare non-whitelisted items from the hotbar is not allowed.
                     if (whitelist.contains(itemID)) {
-                        return LOGGER.exit(true);
-                    }
-                    else {
-                        playAlert();
-                        return LOGGER.exit(false);
+                        return logger.exit(true);
+                    } else {
+                        if (playAlert) {
+                            playAlert();
+                        }
+                        return logger.exit(false);
                     }
                 }
-            }
-            else {
-                if (rarity.compareTo(itemDropList.getMinimumInventoryRarity()) < 0 && !blacklist.contains(itemID)) {
-                    return LOGGER.exit(true);
-                }
-                else {
+            } else {
+                if (rarity.compareTo(main.getOnlineData().getDropSettings().getMinimumInventoryRarity()) < 0 && !blacklist.contains(itemID)) {
+                    return logger.exit(true);
+                } else {
                     /*
                      If the item is above the minimum rarity and not whitelisted, require the player to attempt
                      to drop it three times to confirm they want to drop it.
                     */
                     if (whitelist.contains(itemID)) {
-                        return LOGGER.exit(true);
-                    }
-                    else {
-                        return LOGGER.exit(dropConfirmed(item, 3));
+                        return logger.exit(true);
+                    } else {
+                        return logger.exit(dropConfirmed(item, 3));
                     }
                 }
             }
-        }
-        else if (MAIN.getConfigValues().isEnabled(Feature.DROP_CONFIRMATION) &&
-                MAIN.getConfigValues().isEnabled(Feature.DOUBLE_DROP_IN_OTHER_GAMES)) {
+        } else if (main.getConfigValues().isEnabled(Feature.DROP_CONFIRMATION) && main.getConfigValues().isEnabled(Feature.DOUBLE_DROP_IN_OTHER_GAMES)) {
             return dropConfirmed(item, 2);
         }
         else {
-            return LOGGER.exit(true);
+            return logger.exit(true);
         }
     }
 
@@ -212,13 +151,13 @@ public class ItemDropChecker {
      * @return {@code true} if the player has dropped the item enough
      */
     public boolean dropConfirmed(ItemStack item, int numberOfActions) {
-        LOGGER.entry(item, numberOfActions);
+        logger.entry(item, numberOfActions);
 
         if (item == null) {
-            LOGGER.throwing(new NullPointerException("Item cannot be null!"));
+            logger.throwing(new NullPointerException("Item cannot be null!"));
         }
         else if (numberOfActions < 2) {
-            LOGGER.throwing(new IllegalArgumentException("At least two attempts are required."));
+            logger.throwing(new IllegalArgumentException("At least two attempts are required."));
         }
 
         // If there's no drop confirmation active, set up a new one.
@@ -227,7 +166,7 @@ public class ItemDropChecker {
             timeOfLastDropAttempt = Minecraft.getSystemTime();
             attemptsRequiredToConfirm = numberOfActions - 1;
             onDropConfirmationFail();
-            return LOGGER.exit(false);
+            return logger.exit(false);
         }
         else {
             long DROP_CONFIRMATION_TIMEOUT = 3000L;
@@ -241,11 +180,11 @@ public class ItemDropChecker {
             else {
                 if (attemptsRequiredToConfirm >= 1) {
                     onDropConfirmationFail();
-                    return LOGGER.exit(false);
+                    return logger.exit(false);
                 }
                 else {
                     resetDropConfirmation();
-                    return LOGGER.exit(true);
+                    return logger.exit(true);
                 }
             }
         }
@@ -256,10 +195,10 @@ public class ItemDropChecker {
      * A message is sent and a sound is played notifying the player how many more times they need to drop the item.
      */
     public void onDropConfirmationFail() {
-        LOGGER.entry();
+        logger.entry();
 
-        Utils utils = MAIN.getUtils();
-        ChatFormatting colourCode = MAIN.getConfigValues().getRestrictedColor(Feature.DROP_CONFIRMATION);
+        Utils utils = main.getUtils();
+        ChatFormatting colourCode = main.getConfigValues().getRestrictedColor(Feature.DROP_CONFIRMATION);
 
         if (attemptsRequiredToConfirm >= 2) {
             String multipleAttemptsRequiredMessage = Message.MESSAGE_CLICK_MORE_TIMES.getMessage(Integer.toString(attemptsRequiredToConfirm));
@@ -273,26 +212,26 @@ public class ItemDropChecker {
         }
         playAlert();
         attemptsRequiredToConfirm--;
-        LOGGER.exit();
+        logger.exit();
     }
 
     /**
      * Plays an alert sound when a drop attempt is denied.
      */
     public void playAlert() {
-        LOGGER.entry();
-        MAIN.getUtils().playLoudSound("note.bass", 0.5);
-        LOGGER.exit();
+        logger.entry();
+        main.getUtils().playLoudSound("note.bass", 0.5);
+        logger.exit();
     }
 
     /**
      * Reset the drop confirmation settings.
      */
     public void resetDropConfirmation() {
-        LOGGER.entry();
+        logger.entry();
         itemOfLastDropAttempt = null;
         timeOfLastDropAttempt = 0L;
         attemptsRequiredToConfirm = 0;
-        LOGGER.exit();
+        logger.exit();
     }
 }

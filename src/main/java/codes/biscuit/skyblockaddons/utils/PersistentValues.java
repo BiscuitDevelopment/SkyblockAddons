@@ -6,6 +6,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.JsonParser;
 import lombok.Getter;
+import lombok.Setter;
 import org.apache.logging.log4j.Logger;
 
 import java.io.BufferedWriter;
@@ -13,6 +14,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 
+@Setter
 @Getter
 public class PersistentValues {
 
@@ -22,6 +24,9 @@ public class PersistentValues {
     private int kills;
     private int totalKills;
     private int summoningEyeCount;
+
+    private boolean blockCraftingIncompletePatterns = true;
+    private CraftingPattern selectedCraftingPattern = CraftingPattern.FREE;
 
     public PersistentValues(File configDir) {
         this.persistentValuesFile = new File(configDir.getAbsolutePath() + "/skyblockaddons_persistent.cfg");
@@ -83,6 +88,16 @@ public class PersistentValues {
         this.summoningEyeCount++;
         this.totalKills += this.kills;
         this.kills = -1; // This is triggered before the death of the killed zealot, so the kills are set to -1 to account for that.
+        this.saveValues();
+    }
+
+    public void setBlockCraftingIncompletePatterns(boolean blockCraftingIncompletePatterns) {
+        this.blockCraftingIncompletePatterns = blockCraftingIncompletePatterns;
+        this.saveValues();
+    }
+
+    public void setSelectedCraftingPattern(CraftingPattern selectedCraftingPattern) {
+        this.selectedCraftingPattern = selectedCraftingPattern;
         this.saveValues();
     }
 }

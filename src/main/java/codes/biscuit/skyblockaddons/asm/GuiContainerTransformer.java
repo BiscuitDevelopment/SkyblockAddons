@@ -22,8 +22,8 @@ public class GuiContainerTransformer implements ITransformer {
     @Override
     public void transform(ClassNode classNode, String name) {
 
-        classNode.fields.add(new FieldNode(Opcodes.ACC_PRIVATE, "oldMouseX", "I", null, null));
-        classNode.fields.add(new FieldNode(Opcodes.ACC_PRIVATE, "oldMouseY", "I", null, null));
+//        classNode.fields.add(new FieldNode(Opcodes.ACC_PRIVATE, "oldMouseX", "I", null, null));
+//        classNode.fields.add(new FieldNode(Opcodes.ACC_PRIVATE, "oldMouseY", "I", null, null));
 
         for (MethodNode methodNode : classNode.methods) {
             if (TransformerMethod.drawSlot.matches(methodNode)) {
@@ -98,7 +98,7 @@ public class GuiContainerTransformer implements ITransformer {
                         }
                     } else if (abstractNode instanceof InsnNode && abstractNode.getOpcode() == Opcodes.RETURN) {
                         methodNode.instructions.insertBefore(abstractNode, insertDrawBackpacks());
-                        methodNode.instructions.insertBefore(abstractNode, insertSetOldMousePosition());
+//                        methodNode.instructions.insertBefore(abstractNode, insertSetOldMousePosition());
                     }
                 }
             } else if (TransformerMethod.keyTyped.matches(methodNode)) {
@@ -147,19 +147,19 @@ public class GuiContainerTransformer implements ITransformer {
         }
     }
 
-    private InsnList insertSetOldMousePosition() {
-        InsnList list = new InsnList();
-
-        list.add(new VarInsnNode(Opcodes.ALOAD, 0)); // this.oldMouseX =
-        list.add(new VarInsnNode(Opcodes.ILOAD, 1)); // mouseX
-        list.add(new FieldInsnNode(Opcodes.PUTFIELD, TransformerClass.GuiContainer.getNameRaw(), "oldMouseX", "I"));
-
-        list.add(new VarInsnNode(Opcodes.ALOAD, 0)); // this.oldMouseY =
-        list.add(new VarInsnNode(Opcodes.ILOAD, 2)); // mouseX
-        list.add(new FieldInsnNode(Opcodes.PUTFIELD, TransformerClass.GuiContainer.getNameRaw(), "oldMouseY", "I"));
-
-        return list;
-    }
+//    private InsnList insertSetOldMousePosition() {
+//        InsnList list = new InsnList();
+//
+//        list.add(new VarInsnNode(Opcodes.ALOAD, 0)); // this.oldMouseX =
+//        list.add(new VarInsnNode(Opcodes.ILOAD, 1)); // mouseX
+//        list.add(new FieldInsnNode(Opcodes.PUTFIELD, TransformerClass.GuiContainer.getNameRaw(), "oldMouseX", "I"));
+//
+//        list.add(new VarInsnNode(Opcodes.ALOAD, 0)); // this.oldMouseY =
+//        list.add(new VarInsnNode(Opcodes.ILOAD, 2)); // mouseX
+//        list.add(new FieldInsnNode(Opcodes.PUTFIELD, TransformerClass.GuiContainer.getNameRaw(), "oldMouseY", "I"));
+//
+//        return list;
+//    }
 
     private InsnList insertKeyTypedTwo() {
         InsnList list = new InsnList();
@@ -238,27 +238,15 @@ public class GuiContainerTransformer implements ITransformer {
         list.add(new MethodInsnNode(Opcodes.INVOKESPECIAL, "codes/biscuit/skyblockaddons/asm/utils/ReturnValue", "<init>", "()V", false));
         list.add(new VarInsnNode(Opcodes.ASTORE, 5));
 
-        list.add(new VarInsnNode(Opcodes.ALOAD, 0)); // this.guiLeft
-        list.add(TransformerField.guiLeft.getField(TransformerClass.GuiContainer));
+        list.add(new VarInsnNode(Opcodes.ALOAD, 1)); // slotIn
+        list.add(new VarInsnNode(Opcodes.ILOAD, 2)); // slotId
+        list.add(new VarInsnNode(Opcodes.ILOAD, 3)); // clickedButton
+        list.add(new VarInsnNode(Opcodes.ILOAD, 4)); // clickType
+        list.add(new VarInsnNode(Opcodes.ALOAD, 5)); // returnValue
 
-        list.add(new VarInsnNode(Opcodes.ALOAD, 0)); // this.guiTop
-        list.add(TransformerField.guiTop.getField(TransformerClass.GuiContainer));
-
-        list.add(new VarInsnNode(Opcodes.ALOAD, 0)); // this.oldMouseX
-        list.add(new FieldInsnNode(Opcodes.GETFIELD, TransformerClass.GuiContainer.getNameRaw(), "oldMouseX", "I"));
-
-        list.add(new VarInsnNode(Opcodes.ALOAD, 0)); // this.oldMouseY
-        list.add(new FieldInsnNode(Opcodes.GETFIELD, TransformerClass.GuiContainer.getNameRaw(), "oldMouseY", "I"));
-
-        list.add(new VarInsnNode(Opcodes.ALOAD, 0)); // this.xSize
-        list.add(TransformerField.xSize.getField(TransformerClass.GuiContainer));
-
-        list.add(new VarInsnNode(Opcodes.ALOAD, 0)); // this.ySize
-        list.add(TransformerField.ySize.getField(TransformerClass.GuiContainer));
-
-        list.add(new VarInsnNode(Opcodes.ALOAD, 5)); // GuiContainerHook.handleMouseClick(this.guiLeft, this.guiTop, this.oldMouseX, this.oldMouseY, this.xSize, this.ySize, returnValue);
+        // GuiContainerHook.handleMouseClick(slotIn, slotId, clickedButton, clickType, returnValue);
         list.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "codes/biscuit/skyblockaddons/asm/hooks/GuiContainerHook", "handleMouseClick",
-                "(IIIIIILcodes/biscuit/skyblockaddons/asm/utils/ReturnValue;)V", false));
+                "("+TransformerClass.Slot.getName()+"IIILcodes/biscuit/skyblockaddons/asm/utils/ReturnValue;)V", false));
 
         list.add(new VarInsnNode(Opcodes.ALOAD, 5));
         list.add(new MethodInsnNode(Opcodes.INVOKEVIRTUAL, "codes/biscuit/skyblockaddons/asm/utils/ReturnValue", "isCancelled",

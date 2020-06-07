@@ -1,6 +1,7 @@
 package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.listeners.PlayerListener;
 import lombok.Getter;
 import net.minecraft.client.Minecraft;
@@ -101,7 +102,7 @@ public class Scheduler {
                 if (main.getPlayerListener().getMagmaAccuracy() != EnumUtils.MagmaTimerAccuracy.EXACTLY) {
                     if (main.getUtils().isOnSkyblock()) {
                         delayingMagmaCall = false;
-                        main.getUtils().fetchEstimateFromServer();
+                        main.getUtils().fetchMagmaBossEstimate();
                     } else if (!delayingMagmaCall) {
                         delayingMagmaCall = true;
                     }

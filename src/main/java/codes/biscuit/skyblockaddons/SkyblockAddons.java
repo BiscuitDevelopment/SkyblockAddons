@@ -1,13 +1,19 @@
 package codes.biscuit.skyblockaddons;
 
 import codes.biscuit.skyblockaddons.commands.SkyblockAddonsCommand;
+import codes.biscuit.skyblockaddons.core.Feature;
+import codes.biscuit.skyblockaddons.core.Message;
+import codes.biscuit.skyblockaddons.gui.IslandWarpGui;
 import codes.biscuit.skyblockaddons.listeners.GuiScreenListener;
 import codes.biscuit.skyblockaddons.listeners.NetworkListener;
 import codes.biscuit.skyblockaddons.listeners.PlayerListener;
 import codes.biscuit.skyblockaddons.listeners.RenderListener;
+import codes.biscuit.skyblockaddons.scheduler.NewScheduler;
 import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsTransformer;
 import codes.biscuit.skyblockaddons.utils.*;
 import codes.biscuit.skyblockaddons.utils.discord.DiscordRPCManager;
+import com.google.gson.Gson;
+import com.google.gson.stream.JsonReader;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -35,9 +41,9 @@ import java.util.TimerTask;
 @Mod(modid = "skyblockaddons", name = "SkyblockAddons", version = "@VERSION@", clientSideOnly = true, acceptedMinecraftVersions = "@MOD_ACCEPTED@", updateJSON = "@UPDATE_JSON@")
 public class SkyblockAddons {
 
-    public static final String MOD_ID = "@MOD_ID@";
-    public static final String MOD_NAME = "@MOD_NAME@";
-    public static final String VERSION = "@VERSION@";
+    public static final String MOD_ID = "skyblockaddons";
+    public static final String MOD_NAME = "SkyblockAddons";
+    public static String VERSION = "@VERSION@";
 
     /** The main instance of the mod, used mainly my mixins who don't get it passed to them. */
     @Getter private static SkyblockAddons instance;
@@ -51,9 +57,11 @@ public class SkyblockAddons {
     private InventoryUtils inventoryUtils;
     private Utils utils;
     private Updater updater;
+    @Setter private OnlineData onlineData;
 
     /** Get the scheduler that be can be used to easily execute tasks. */
     private Scheduler scheduler = new Scheduler(this);
+    private NewScheduler newScheduler = new NewScheduler();
     private boolean usingLabymod = false;
     private boolean usingOofModv1 = false;
 
@@ -61,6 +69,13 @@ public class SkyblockAddons {
     @Setter private boolean devMode = false;
     @Setter(AccessLevel.NONE) private KeyBinding[] keyBindings = new KeyBinding[4];
     private DiscordRPCManager discordRPCManager;
+
+    static {
+        //noinspection ConstantConditions
+        if (VERSION.equals("@VERSION@")) {
+            VERSION = "1.2.3";
+        }
+    }
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent e) {
@@ -77,12 +92,13 @@ public class SkyblockAddons {
         guiScreenListener = new GuiScreenListener(this);
         renderListener = new RenderListener(this);
         discordRPCManager = new DiscordRPCManager(this);
-        MinecraftForge.EVENT_BUS.register(new NetworkListener());
 
+        MinecraftForge.EVENT_BUS.register(new NetworkListener());
         MinecraftForge.EVENT_BUS.register(playerListener);
         MinecraftForge.EVENT_BUS.register(guiScreenListener);
         MinecraftForge.EVENT_BUS.register(renderListener);
         MinecraftForge.EVENT_BUS.register(scheduler);
+        MinecraftForge.EVENT_BUS.register(newScheduler);
 
         // Initialize utilities
         inventoryUtils = new InventoryUtils(this);
@@ -115,18 +131,19 @@ public class SkyblockAddons {
                 }
             }
         }
-        utils.checkDisabledFeatures();
-        utils.getFeaturedURLOnline();
+
         updater.processUpdateCheckResult();
-        scheduleMagmaCheck();
+        onlineData = new Gson().fromJson(new JsonReader(utils.getBufferedReader("data.json")), OnlineData.class);
+        utils.pullOnlineData();
+        scheduleMagmaBossCheck();
 
         for (Feature feature : Feature.values()) {
-            if (feature.isGuiFeature()) {
-                feature.getSettings().add(EnumUtils.FeatureSetting.GUI_SCALE);
-            }
-            if (feature.isColorFeature()) {
-                feature.getSettings().add(EnumUtils.FeatureSetting.COLOR);
-            }
+            if (feature.isGuiFeature()) feature.getSettings().add(EnumUtils.FeatureSetting.GUI_SCALE);
+            if (feature.isColorFeature()) feature.getSettings().add(EnumUtils.FeatureSetting.COLOR);
+        }
+
+        for (IslandWarpGui.Island island : IslandWarpGui.Island.values()) {
+            Minecraft.getMinecraft().getTextureManager().bindTexture(island.getResourceLocation());
         }
     }
 
@@ -151,20 +168,20 @@ public class SkyblockAddons {
         changeKeyBindDescription(keyBindings[0], Message.SETTING_SETTINGS.getMessage());
         changeKeyBindDescription(keyBindings[1], Message.SETTING_EDIT_LOCATIONS.getMessage());
         changeKeyBindDescription(keyBindings[2], Message.SETTING_LOCK_SLOT.getMessage());
-        changeKeyBindDescription(keyBindings[3], Message.SETTING_SHOW_BACKPACK_PREVIEW.getMessage());
+        changeKeyBindDescription(keyBindings[3], Message.SETTING_FREEZE_BACKPACK_PREVIEW.getMessage());
     }
 
-    private void scheduleMagmaCheck() {
-        new Timer().schedule(new TimerTask() {
+    private void scheduleMagmaBossCheck() {
+        // Loop every 5s until the player is in game, where it will pull once.
+        new Timer().scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
-                if (Minecraft.getMinecraft() != null) {
-                    utils.fetchEstimateFromServer();
-                } else {
-                    scheduleMagmaCheck();
+                if (Minecraft.getMinecraft() != null && Minecraft.getMinecraft().thePlayer != null) {
+                    utils.fetchMagmaBossEstimate();
+                    cancel();
                 }
             }
-        }, 5000);
+        }, 5000, 5000);
     }
 
     public KeyBinding getOpenSettingsKey() {

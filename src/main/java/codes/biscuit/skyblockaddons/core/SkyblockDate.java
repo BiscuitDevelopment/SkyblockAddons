@@ -1,14 +1,16 @@
-package codes.biscuit.skyblockaddons.utils;
+package codes.biscuit.skyblockaddons.core;
 
-import lombok.Getter;
-import lombok.Setter;
+import codes.biscuit.skyblockaddons.utils.TextUtils;
 
 import java.text.DecimalFormat;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-@Getter @Setter
-@SuppressWarnings("unused")
+/**
+ * This class represents a date (excluding the year) and time in Skyblock.
+ *
+ * E.g. "Late Autumn 19th 4:00am"
+ */
 public class SkyblockDate {
 
     private static final Pattern DATE_PATTERN = Pattern.compile("(?<month>[\\w ]+) (?<day>\\d{1,2})(th|st|nd|rd)");
@@ -44,7 +46,7 @@ public class SkyblockDate {
     private int minute;
     private String period;
 
-    SkyblockDate(SkyblockMonth month, int day, int hour, int minute, String period) {
+    public SkyblockDate(SkyblockMonth month, int day, int hour, int minute, String period) {
         this.month = month;
         this.day = day;
         this.hour = hour;
@@ -52,7 +54,9 @@ public class SkyblockDate {
         this.period = period;
     }
 
-    @Getter @SuppressWarnings("unused")
+    /**
+     * All the months of the Skyblock calendar
+     */
     public enum SkyblockMonth {
         EARLY_WINTER("Early Winter"),
         WINTER("Winter"),
@@ -63,16 +67,23 @@ public class SkyblockDate {
         EARLY_SUMMER("Early Summer"),
         SUMMER("Summer"),
         LATE_SUMMER("Late Summer"),
-        EARLY_FALL("Early Fall"),
-        FALL("Fall"),
-        LATE_FALL("Late Fall");
+        EARLY_AUTUMN("Early Autumn"),
+        AUTUMN("Autumn"),
+        LATE_AUTUMN("Late Autumn");
 
-        private String scoreboardString;
+        final String scoreboardString;
 
         SkyblockMonth(String scoreboardString) {
             this.scoreboardString = scoreboardString;
         }
 
+        /**
+         * Returns the {@code SkyblockMonth} value with the given name.
+         *
+         * @param scoreboardName the name of the month as it appears on the scoreboard
+         * @return the {@code SkyblockMonth} value with the given name or {@code null} if a value with the given name
+         * isn't found
+         */
         public static SkyblockMonth fromName(String scoreboardName) {
             for (SkyblockMonth skyblockMonth : values()) {
                 if(skyblockMonth.scoreboardString.equals(scoreboardName)) {
@@ -83,12 +94,27 @@ public class SkyblockDate {
         }
     }
 
+    /**
+     * Returns this Skyblock date as a String in the format:
+     * Month Day, Time
+     *
+     * @return this Skyblock date as a formatted String
+     */
     @Override
     public String toString() {
         // Month Day, hh:mm
         DecimalFormat decimalFormat = new DecimalFormat("00");
+        String monthName;
+
+        if (month != null) {
+            monthName =month.scoreboardString;
+        }
+        else {
+            monthName = null;
+        }
+
         return String.format("%s %s, %d:%s%s",
-                month.scoreboardString,
+                monthName,
                 day + TextUtils.getOrdinalSuffix(day),
                 hour,
                 decimalFormat.format(minute),

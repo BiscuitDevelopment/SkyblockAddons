@@ -41,6 +41,9 @@ public enum TransformerField {
     // EntityLivingBase
     hurtTime("hurtTime", "field_70737_aN ", "au", "I"),
 
+    // InventoryPlayer
+    currentItem("currentItem", "field_70461_c", "c", "I"),
+
     NULL(null,null,null,null);
 
     private String name;

@@ -20,20 +20,20 @@ public class GuiFeatureData {
      */
     private boolean colorsRestricted;
 
-    GuiFeatureData(ChatFormatting defaultColor) {
+    public GuiFeatureData(ChatFormatting defaultColor) {
         this(defaultColor, false);
     }
 
-    GuiFeatureData(ChatFormatting defaultColor, boolean colorsRestricted) {
+    public GuiFeatureData(ChatFormatting defaultColor, boolean colorsRestricted) {
         this.defaultColor = defaultColor;
         this.colorsRestricted = colorsRestricted;
     }
 
-    GuiFeatureData(EnumUtils.DrawType drawType, ChatFormatting defaultColor, EnumUtils.AnchorPoint defaultAnchor, int... positionThenSizes) {
+    public GuiFeatureData(EnumUtils.DrawType drawType, ChatFormatting defaultColor, EnumUtils.AnchorPoint defaultAnchor, int... positionThenSizes) {
         this(drawType, defaultColor, defaultAnchor, false, positionThenSizes);
     }
 
-    GuiFeatureData(EnumUtils.DrawType drawType, ChatFormatting defaultColor, EnumUtils.AnchorPoint defaultAnchor, boolean colorsRestricted, int... positionThenSizes) {
+    public GuiFeatureData(EnumUtils.DrawType drawType, ChatFormatting defaultColor, EnumUtils.AnchorPoint defaultAnchor, boolean colorsRestricted, int... positionThenSizes) {
         this.drawType = drawType;
         this.defaultColor = defaultColor;
         this.colorsRestricted = colorsRestricted;
@@ -44,7 +44,7 @@ public class GuiFeatureData {
         this.defaultAnchor = defaultAnchor;
     }
 
-    GuiFeatureData(EnumUtils.DrawType drawType, EnumUtils.AnchorPoint defaultAnchor, int... position) {
+    public GuiFeatureData(EnumUtils.DrawType drawType, EnumUtils.AnchorPoint defaultAnchor, int... position) {
         this(drawType, defaultAnchor, false, position);
     }
 

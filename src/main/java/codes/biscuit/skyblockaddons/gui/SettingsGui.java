@@ -1,11 +1,10 @@
 package codes.biscuit.skyblockaddons.gui;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.core.Feature;
+import codes.biscuit.skyblockaddons.core.Message;
 import codes.biscuit.skyblockaddons.gui.buttons.*;
-import codes.biscuit.skyblockaddons.utils.EnumUtils;
-import codes.biscuit.skyblockaddons.utils.Feature;
-import codes.biscuit.skyblockaddons.utils.Language;
-import codes.biscuit.skyblockaddons.utils.Message;
+import codes.biscuit.skyblockaddons.utils.*;
 import codes.biscuit.skyblockaddons.utils.discord.DiscordStatus;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
@@ -16,6 +15,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.GuiIngameForge;
 
 import java.awt.*;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -33,6 +33,7 @@ public class SettingsGui extends GuiScreen {
     private EnumUtils.GuiTab lastTab;
     private boolean closingGui = false;
     private List<EnumUtils.FeatureSetting> settings;
+    private boolean reInit = false;
 
     private long timeOpened = System.currentTimeMillis();
 
@@ -54,6 +55,7 @@ public class SettingsGui extends GuiScreen {
     public void initGui() {
         row = 1;
         collumn = 1;
+        buttonList.clear();
         if (feature == Feature.LANGUAGE) {
             displayCount = findDisplayCount();
             // Add the buttons for each page.
@@ -98,6 +100,10 @@ public class SettingsGui extends GuiScreen {
 
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
+        if (this.reInit) {
+            this.initGui();
+        }
+
         long timeSinceOpen = System.currentTimeMillis() - timeOpened;
         float alphaMultiplier; // This all calculates the alpha for the fade-in effect.
         alphaMultiplier = 0.5F;
@@ -126,7 +132,26 @@ public class SettingsGui extends GuiScreen {
             int x = halfWidth-90-boxWidth;
             int width = halfWidth+90+boxWidth;
             width -= x;
-            int height = (int)(getRowHeightSetting(settings.size())-50);
+            int numSettings = settings.size();
+            if (settings.contains(EnumUtils.FeatureSetting.DISCORD_RP_STATE)) {
+                if (main.getConfigValues().getDiscordStatus() == DiscordStatus.CUSTOM) numSettings++;
+                if (main.getConfigValues().getDiscordStatus() == DiscordStatus.AUTO_STATUS) {
+                    numSettings++;
+                    if (main.getConfigValues().getDiscordAutoDefault() == DiscordStatus.CUSTOM) {
+                        numSettings++;
+                    }
+                }
+            }
+            if (settings.contains(EnumUtils.FeatureSetting.DISCORD_RP_DETAILS)) {
+                if (main.getConfigValues().getDiscordDetails() == DiscordStatus.CUSTOM) numSettings++;
+                if (main.getConfigValues().getDiscordDetails() == DiscordStatus.AUTO_STATUS) {
+                    numSettings++;
+                    if (main.getConfigValues().getDiscordAutoDefault() == DiscordStatus.CUSTOM) {
+                        numSettings++;
+                    }
+                }
+            }
+            int height = (int)(getRowHeightSetting(numSettings)-50);
             int y =(int)getRowHeight(1);
             GlStateManager.enableBlend();
             GlStateManager.color(1,1,1,0.7F);
@@ -135,7 +160,7 @@ public class SettingsGui extends GuiScreen {
         }
         super.drawScreen(mouseX, mouseY, partialTicks); // Draw buttons.
         if (feature == Feature.LANGUAGE) {
-            main.getConfigValues().loadLanguageFile(false);
+            main.getUtils().loadLanguageFile(false);
         }
     }
 
@@ -147,7 +172,7 @@ public class SettingsGui extends GuiScreen {
         if (abstractButton instanceof ButtonLanguage) {
             Language language = ((ButtonLanguage)abstractButton).getLanguage();
             main.getConfigValues().setLanguage(language);
-            main.getConfigValues().loadLanguageFile(true);
+            main.getUtils().loadLanguageFile(true);
             main.loadKeyBindingDescriptions();
             returnToGui();
         } else if (abstractButton instanceof ButtonSwitchTab) {
@@ -288,7 +313,45 @@ public class SettingsGui extends GuiScreen {
                     main.getDiscordRPCManager().setDetailsLine(selectedStatus);
                     main.getConfigValues().setDiscordDetails(selectedStatus);
                 }
+                SettingsGui.this.reInit = true;
             }));
+
+            if (currentStatus == DiscordStatus.AUTO_STATUS) {
+                row++;
+                boxWidth = 140;
+                x = halfWidth-(boxWidth/2);
+                y = getRowHeightSetting(row);
+
+                currentStatus = main.getConfigValues().getDiscordAutoDefault();
+                buttonList.add(new ButtonSelect(x, (int)y, boxWidth, 20, Arrays.asList(DiscordStatus.values()), currentStatus.ordinal(), index -> {
+                    final DiscordStatus selectedStatus = DiscordStatus.values()[index];
+                    main.getConfigValues().setDiscordAutoDefault(selectedStatus);
+                    SettingsGui.this.reInit = true;
+                }));
+            }
+
+            if (currentStatus == DiscordStatus.CUSTOM) {
+                row++;
+                halfWidth = width/2;
+                boxWidth = 200;
+                x = halfWidth-(boxWidth/2);
+                y = getRowHeightSetting(row);
+
+                ButtonInputFieldWrapper inputField = new ButtonInputFieldWrapper(x, (int) y, 200, 20, "", null, 500, false, new UpdateCallback<String>() {
+                    @Override
+                    public void onUpdate(String updatedValue) {
+                        int stringID = 0;
+                        if (setting == EnumUtils.FeatureSetting.DISCORD_RP_STATE) {
+                            stringID = 1;
+                        }
+                        while (main.getConfigValues().getDiscordCustomStatuses().size() < 2) {
+                            main.getConfigValues().getDiscordCustomStatuses().add("");
+                        }
+                        main.getConfigValues().getDiscordCustomStatuses().set(stringID, updatedValue);
+                    }
+                });
+                buttonList.add(inputField);
+            }
         } else {
             boxWidth = 31; // Default size and stuff.
             x = halfWidth-(boxWidth/2);
@@ -319,5 +382,23 @@ public class SettingsGui extends GuiScreen {
     private void returnToGui() {
         closingGui = true;
         main.getRenderListener().setGuiToOpen(EnumUtils.GUIType.MAIN, lastPage, lastTab);
+    }
+
+    @Override
+    protected void keyTyped(char typedChar, int keyCode) throws IOException {
+        super.keyTyped(typedChar, keyCode);
+        ButtonInputFieldWrapper.callKeyTyped(buttonList, typedChar, keyCode);
+    }
+
+    @Override
+    protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {
+        super.mouseClicked(mouseX, mouseY, mouseButton);
+        ButtonInputFieldWrapper.callMouseClicked(buttonList, mouseX, mouseY, mouseButton);
+    }
+
+    @Override
+    public void updateScreen() {
+        super.updateScreen();
+        ButtonInputFieldWrapper.callUpdateScreen(buttonList);
     }
 }

@@ -1,6 +1,7 @@
 package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.utils.item.ItemUtils;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
 import com.google.common.collect.ArrayListMultimap;
@@ -27,13 +28,12 @@ public class InventoryUtils {
 
     /** Display name of the Skeleton Helmet. */
     private static final String SKELETON_HELMET_ID = "SKELETON_HELMET";
+    private static final String TOXIC_ARROW_POISON_ID = "TOXIC_ARROW_POISON";
 
-    public static final String MADDOX_BATPHONE_DISPLAYNAME = "§aMaddox Batphone";
+    public static final String MADDOX_BATPHONE_DISPLAYNAME = "§aMaddox Batphone"; // TODO Change these to all use IDs...
     public static final String JUNGLE_AXE_DISPLAYNAME = "§aJungle Axe";
     public static final String TREECAPITATOR_DISPLAYNAME = "§5Treecapitator";
-    public static final String FAIRY_SOUL_EXCHANGE_DISPLAYNAME = "§aExchange Fairy Souls";
     public static final String CHICKEN_HEAD_DISPLAYNAME = "§fChicken Head";
-    public static final String TOXIC_ARROW_POISON_DISPLAYNAME = "§aToxic Arrow Poison";
 
     private static final Pattern REVENANT_UPGRADE_PATTERN = Pattern.compile("§5§o§7Next Upgrade: §a\\+([0-9]+❈) §8\\(§a([0-9,]+)§7/§c([0-9,]+)§8\\)");
 
@@ -233,7 +233,7 @@ public class InventoryUtils {
     public void checkIfUsingToxicArrowPoison(EntityPlayerSP p) {
         if (main.getConfigValues().isEnabled(Feature.TURN_BOW_GREEN_WHEN_USING_TOXIC_ARROW_POISON)) {
             for (ItemStack item : p.inventory.mainInventory) {
-                if (item != null && TOXIC_ARROW_POISON_DISPLAYNAME.equals(item.getDisplayName())) {
+                if (item != null && TOXIC_ARROW_POISON_ID.equals(ItemUtils.getSkyBlockItemID(item))) {
                     this.usingToxicArrowPoison = true;
                     return;
                 }

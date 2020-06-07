@@ -1,6 +1,6 @@
 package codes.biscuit.skyblockaddons.gui.buttons;
 
-import codes.biscuit.skyblockaddons.utils.Feature;
+import codes.biscuit.skyblockaddons.core.Feature;
 import net.minecraft.client.gui.GuiButton;
 
 public class ButtonFeature extends GuiButton {

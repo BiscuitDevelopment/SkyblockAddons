@@ -1,6 +1,6 @@
 package codes.biscuit.skyblockaddons.utils.npc;
 
-import codes.biscuit.skyblockaddons.utils.Location;
+import codes.biscuit.skyblockaddons.core.Location;
 import lombok.Getter;
 
 import java.util.List;
@@ -42,7 +42,7 @@ enum NPC {
     FARM_MERCHANT("Farm Merchant", -7,70, -48.5, asList(Tag.PLAYER, Tag.IMPORTANT, Tag.MERCHANT), singletonList(Location.VILLAGE)),
     FELIX("Felix", -14, 70, -98, asList(Tag.VILLAGER, Tag.INFO, Tag.QUEST_NPC), singletonList(Location.VILLAGE)),
     FISH_MERCHANT("Fish Merchant", -25.5,70, -77, asList(Tag.PLAYER, Tag.IMPORTANT, Tag.MERCHANT), singletonList(Location.VILLAGE)),
-    GLADIATOR("Gladiator", -61.5,71, -54.5, asList(Tag.PLAYER, Tag.IMPORTANT, Tag.OTHER), asList(Location.COLOSSEUM, Location.VILLAGE)),
+    GLADIATOR("Gladiator", 61.5,71, -54.5, asList(Tag.PLAYER, Tag.IMPORTANT, Tag.OTHER), asList(Location.COLOSSEUM, Location.VILLAGE)),
     GUY("Guy",51.5, 79, -13.5, asList(Tag.PLAYER, Tag.IMPORTANT, Tag.UTILITY), singletonList(Location.VILLAGE)),
     HUB_SELECTOR("Hub Selector", -9,70, -79, asList(Tag.PLAYER, Tag.IMPORTANT, Tag.OTHER), singletonList(Location.VILLAGE)),
     JACK("Jack",1, 70, -67, asList(Tag.VILLAGER, Tag.INFO, Tag.QUEST_NPC), singletonList(Location.VILLAGE)),

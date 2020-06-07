@@ -19,6 +19,9 @@ public enum TransformerMethod {
     drawSlot("drawSlot", "func_146977_a", "a", "(Lnet/minecraft/inventory/Slot;)V", "("+TransformerClass.Slot.getName()+")V"),
     checkHotbarKeys("checkHotbarKeys", "func_146983_a", "b", "(I)Z"),
     actionPerformed("actionPerformed", "func_146284_a", "a", "(Lnet/minecraft/client/gui/GuiButton;)V", "("+TransformerClass.GuiButton.getName()+")V"),
+    handleMouseInput("handleMouseInput", "func_178039_p", "p", "()V", true),
+    mouseClickMove("mouseClickMove", "func_146273_a", "a", "(IIIJ)V"),
+    mouseReleased("mouseReleased", "func_146286_b", "b", "(III)V"),
 
     // GuiChest
     drawGuiContainerBackgroundLayer("drawGuiContainerBackgroundLayer", "func_146976_a", "a", "(FII)V"),
@@ -75,6 +78,7 @@ public enum TransformerMethod {
     refreshResources("refreshResources", "func_110436_a", "e", "()V"),
     rightClickMouse("rightClickMouse", "func_147121_ag", "ax", "()V"),
     isIntegratedServerRunning("isIntegratedServerRunning", "func_71387_A", "E", "()Z"),
+    runTick("runTick", "func_71407_l", "s", "()V"),
 
     // MouseHelper
     ungrabMouseCursor("ungrabMouseCursor", "func_74373_b", "b", "()V"),
@@ -109,6 +113,9 @@ public enum TransformerMethod {
 
     // Constructor
     init("<init>", "<init>", "<init>", "()V"),
+
+    // InventoryPlayer
+    changeCurrentItem("changeCurrentItem", "func_70453_c", "d", "(I)V"),
 
     NULL(null,null,null,null,false);
 

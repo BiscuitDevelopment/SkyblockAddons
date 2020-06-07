@@ -7,7 +7,7 @@ public class GuiDisconnectedHook {
 
     public static void onDisconnect() {
         DiscordRPCManager discordRPCManager = SkyblockAddons.getInstance().getDiscordRPCManager();
-        if(discordRPCManager.isActive()) {
+        if (discordRPCManager.isActive()) {
             discordRPCManager.stop();
         }
     }

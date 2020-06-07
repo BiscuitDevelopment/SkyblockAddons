@@ -1,7 +1,7 @@
 package codes.biscuit.skyblockaddons.gui.buttons;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.utils.Feature;
+import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.utils.Utils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
@@ -44,11 +44,10 @@ public class ButtonBanner extends GuiButton {
 
             new Thread(() -> {
                 try {
-                    URL url = new URL("https://github.com/BiscuitDevelopment/SkyblockAddons/blob/master/src/main/resources/assets/skyblockaddons/featuredbanner.png?raw=true");
+                    URL url = new URL(main.getOnlineData().getBannerImageURL());
                     HttpURLConnection connection = (HttpURLConnection)url.openConnection();
                     connection.setReadTimeout(5000);
                     connection.addRequestProperty("User-Agent", Utils.USER_AGENT);
-                    connection.setDoOutput(true);
 
                     bannerImage = TextureUtil.readBufferedImage(connection.getInputStream());
 

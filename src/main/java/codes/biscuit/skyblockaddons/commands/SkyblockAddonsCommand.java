@@ -2,11 +2,11 @@ package codes.biscuit.skyblockaddons.commands;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
-import codes.biscuit.skyblockaddons.utils.Utils;
 import codes.biscuit.skyblockaddons.utils.dev.DevUtils;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
 import net.minecraft.client.Minecraft;
-import net.minecraft.command.*;
+import net.minecraft.command.CommandBase;
+import net.minecraft.command.ICommandSender;
 import net.minecraft.scoreboard.Scoreboard;
 import net.minecraft.util.BlockPos;
 import org.apache.logging.log4j.Logger;
@@ -52,10 +52,13 @@ public class SkyblockAddonsCommand extends CommandBase {
     /**
      * Gets the usage string for the command.
      */
-    public String getCommandUsage(ICommandSender sender) { return
-        "§7§m------------§7[§b§l SkyblockAddons §7]§7§m------------" + "\n" +
+    public String getCommandUsage(ICommandSender sender) {
+        if (main.isDevMode()) return getDevCommandUsage();
+
+        return "§7§m------------§7[§b§l SkyblockAddons §7]§7§m------------" + "\n" +
         "§b● /sba §7- Open the main menu" + "\n" +
         "§b● /sba edit §7- Edit GUI locations" + "\n" +
+        "§b● /sba set <zealots|eyes|totalzealots §eor§b total> <number> §7- Manually set your zealot counts" + "\n" +
         "§b● /sba folder §7- Open your mods folder" + "\n" +
         "§7§m------------------------------------------";
     }
@@ -64,29 +67,30 @@ public class SkyblockAddonsCommand extends CommandBase {
      * Gets the usage string for the developer mode sub-command.
      */
     public String getDevCommandUsage() { return
-        "§7§m----§7[§b§l SkyblockAddons Developer Mode §7]§7§m----" + "\n" +
+        "§7§m------------§7[§b§l SkyblockAddons §7]§7§m------------" + "\n" +
+        "§b● /sba §7- Open the main menu" + "\n" +
+        "§b● /sba edit §7- Edit GUI locations" + "\n" +
+        "§b● /sba set <zealots | eyes | totalzealots §7or§b total> <number> §7- Manually set your zealot counts" + "\n" +
+        "§b● /sba folder §7- Open your mods folder" + "\n" +
         "§b● /sba dev §7- Toggle developer mode" + "\n" +
-        "\n" +
-        "§7Options (§b/sba dev [option])§7:" + "\n" +
-        "§b● copySidebar [keepControlCodes] §7- Copy the" + "\n" +
-        "    §7scoreboard sidebar. \"keepControlCodes\"" + "\n" +
-        "    §7keeps the formatting codes when copying." + "\n" +
-        "§b● brand §7- Show the server brand" + "\n" +
-        "§7§m-------------------------------------------";
+        "§b● /sba sidebar [formatted] §7- §e(Dev) §7Copy the scoreboard text. \"formatted\" §7keeps the color codes when copying" + "\n" +
+        "§b● /sba brand §7- §e(Dev) §7Show the server brand" + "\n" +
+        "§7§m------------------------------------------";
     }
 
     public List<String> addTabCompletionOptions(ICommandSender sender, String[] args, BlockPos pos) {
         if (args.length == 1) {
-            return getListOfStringsMatchingLastWord(args, "edit", "folder");
-        }
-        else if (args.length == 2) {
-            if (args[0].equalsIgnoreCase("dev")) {
-                return getListOfStringsMatchingLastWord(args, "copySidebar", "serverBrand");
+            if (main.isDevMode()) {
+                return getListOfStringsMatchingLastWord(args, "set", "edit", "folder", "dev", "sidebar", "brand");
+            } else {
+                return getListOfStringsMatchingLastWord(args, "set", "edit", "folder", "dev");
             }
-        }
-        else if (args.length == 3) {
-            if (args[1].equalsIgnoreCase("copySidebar")) {
-                return getListOfStringsMatchingLastWord(args, "keepControlCodes");
+
+        } else if (args.length == 2) {
+            if (main.isDevMode() && args[1].equalsIgnoreCase("sidebar")) {
+                return getListOfStringsMatchingLastWord(args, "formatted");
+            } else if (args[1].equalsIgnoreCase("set")) {
+                return getListOfStringsMatchingLastWord(args, "total", "zealots", "eyes");
             }
         }
 
@@ -102,57 +106,71 @@ public class SkyblockAddonsCommand extends CommandBase {
             if (args[0].equalsIgnoreCase("edit")) {
                 main.getUtils().setFadingIn(false);
                 main.getRenderListener().setGuiToOpen(EnumUtils.GUIType.EDIT_LOCATIONS, 0, null);
-            }
-            else if (args[0].equalsIgnoreCase("dev")) {
-                if (args.length == 1) {
-                    main.setDevMode(!main.isDevMode());
 
-                    if (main.isDevMode()) {
-                        main.getUtils().sendMessage(ChatFormatting.GREEN + "Developer mode enabled!");
-                    } else {
-                        main.getUtils().sendMessage(ChatFormatting.RED + "Developer mode disabled!");
+            } else if (args[0].equalsIgnoreCase("dev")) {
+                main.setDevMode(!main.isDevMode());
+
+                if (main.isDevMode()) {
+                    main.getUtils().sendMessage(ChatFormatting.GREEN + "Developer mode enabled! TIP: Press right ctrl to copy nbt!");
+                } else {
+                    main.getUtils().sendMessage(ChatFormatting.RED + "Developer mode disabled!");
+                }
+            } else if (args[0].equalsIgnoreCase("set")) {
+                Integer number = null;
+                if (args.length >= 3) {
+                    try {
+                        number = Integer.parseInt(args[2]);
+                    } catch (NumberFormatException ex) {
+                        main.getUtils().sendErrorMessage("Invalid number to set!");
+                        return;
                     }
                 }
-                else {
-                    if (main.isDevMode()) {
-                        if (args[1].equalsIgnoreCase("help")) {
-                            main.getUtils().sendMessage(getDevCommandUsage(), false);
-                        }
-                        else if (args[1].equalsIgnoreCase("copySidebar")) {
-                            Scoreboard scoreboard = Minecraft.getMinecraft().theWorld.getScoreboard();
-
-                            if (args.length < 3) {
-                                DevUtils.copyScoreboardSideBar(scoreboard);
-                            }
-                            else if (args.length == 3 && args[2].equalsIgnoreCase("keepControlCodes")) {
-                                DevUtils.copyScoreboardSidebar(scoreboard, false);
-                            }
-                            else {
-                                main.getUtils().sendErrorMessage("Wrong usage!");
-                            }
-                        }
-                        else if (args[1].equalsIgnoreCase("serverBrand")) {
-                            main.getUtils().sendMessage(DevUtils.getServerBrand(Minecraft.getMinecraft()));
-                        }
-                        else {
-                            main.getUtils().sendErrorMessage("Wrong usage!");
-                        }
-                    }
+                if (number == null) {
+                    main.getUtils().sendErrorMessage("Invalid number to set!");
+                    return;
                 }
-            }
-            else if (args[0].equalsIgnoreCase("folder")) {
+
+                if (args[1].equalsIgnoreCase("totalzealots") || args[1].equalsIgnoreCase("total")) {
+                    main.getPersistentValues().setTotalKills(number);
+                    main.getUtils().sendMessage("Set total zealot count to: "+number+"!");
+                } else if (args[1].equalsIgnoreCase("zealots")) {
+                    main.getPersistentValues().setKills(number);
+                    main.getUtils().sendMessage("Set current zealot count to: "+number+"!");
+                } else if (args[1].equalsIgnoreCase("eyes")) {
+                    main.getPersistentValues().setSummoningEyeCount(number);
+                    main.getUtils().sendMessage("Set total summoning eye count to: "+number+"!");
+                } else {
+                    main.getUtils().sendErrorMessage("Invalid selection! Please choose 'zealots', 'totalzealots/total', 'eyes'");
+                }
+            }  else if (args[0].equalsIgnoreCase("folder")) {
                 try {
-                    Desktop.getDesktop().open(main.getUtils().getSBAFolder(false));
+                    Desktop.getDesktop().open(main.getUtils().getSBAFolder());
                 } catch (IOException e) {
                     logger.catching(e);
                     main.getUtils().sendErrorMessage("Failed to open mods folder.");
                 }
-            }
-/*            else if (args[0].equalsIgnoreCase("update")) {
-                if (main.getRenderListener().getDownloadInfo().isPatch())
-                    main.getUtils().downloadPatch(main.getRenderListener().getDownloadInfo().getNewestVersion());
-            }*/
-            else {
+            }  else if (args[0].equalsIgnoreCase("warp")) {
+                main.getRenderListener().setGuiToOpen(EnumUtils.GUIType.WARP);
+            } else if (main.isDevMode()) {
+                if (args[0].equalsIgnoreCase("sidebar")) {
+                    Scoreboard scoreboard = Minecraft.getMinecraft().theWorld.getScoreboard();
+
+                    if (args.length < 2) {
+                        DevUtils.copyScoreboardSideBar(scoreboard);
+
+                    } else if (args.length == 2 && args[1].equalsIgnoreCase("formatted")) {
+                        DevUtils.copyScoreboardSidebar(scoreboard, false);
+
+                    } else {
+                        main.getUtils().sendMessage(getCommandUsage(sender), false);
+                    }
+                } else if (args[0].equalsIgnoreCase("brand")) {
+                    main.getUtils().sendMessage(DevUtils.getServerBrand(Minecraft.getMinecraft()));
+
+                } else {
+                    main.getUtils().sendMessage(getCommandUsage(sender), false);
+                }
+            } else {
                 main.getUtils().sendMessage(getCommandUsage(sender), false);
             }
         } else {

@@ -1,9 +1,9 @@
 package codes.biscuit.skyblockaddons.gui.buttons;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.utils.Feature;
+import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.utils.Language;
-import codes.biscuit.skyblockaddons.utils.Message;
+import codes.biscuit.skyblockaddons.core.Message;
 import codes.biscuit.skyblockaddons.utils.nifty.reflection.MinecraftReflection;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
@@ -50,7 +50,7 @@ public class ButtonLanguage extends GuiButton {
             if (hovered) {
                 fontColor = new Color(255, 255, 160, 255).getRGB();
             }
-            main.getConfigValues().loadLanguageFile(language);
+            main.getUtils().loadLanguageFile(language);
             MinecraftReflection.FontRenderer.drawCenteredString(Message.LANGUAGE.getMessage(), xPosition+width/2, yPosition+10, fontColor);
         }
     }
