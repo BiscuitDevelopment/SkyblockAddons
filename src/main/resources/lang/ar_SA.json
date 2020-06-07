@@ -116,7 +116,7 @@
     "discordRP": "Discord Rich Presence",
     "endstoneProtectorDisplay": "عرض حامي حجر النهاية",
     "fancyWarpMenu": "Fancy Warp Menu",
-    "doubleWarp": "Double Warp",
+    "doubleWarp": "Warp Twice",
     "advancedMode": "Advanced Mode"
   },
   "messages": {
@@ -171,7 +171,8 @@
     "switchedSlots": "لقد قمت للتو بالتبديل من خانة مقفلة أو عنصر نادر. الرجاء الانتظار قليلاً قبل الإسقاط!",
     "clickToOpenLink": "Click to open this link!",
     "clickToOpenFolder": "Click to open your mods folder!",
-    "freezeBackpackPreview": "Freeze Backpack Preview"
+    "freezeBackpackPreview": "Freeze Backpack Preview",
+    "hideGreyEnchants": "Hide Regular Grey Enchants"
   },
   "discordStatus": {
     "titleNone": "None",
