@@ -114,10 +114,12 @@
     "birchParkRainmakerTimer": "Duração da chuva no Birch Park",
     "combatTimerDisplay": "Mostrar o temporizador de combate",
     "discordRP": "Discord Rich Presence",
-    "endstoneProtectorDisplay": "Mostrador do Endstone Protector"
+    "endstoneProtectorDisplay": "Mostrador do Endstone Protector",
+    "fancyWarpMenu": "Fancy Warp Menu",
+    "doubleWarp": "Double Warp",
+    "advancedMode": "Advanced Mode"
   },
   "messages": {
-    "betaTesters": "Obrigado por usares a versão beta! Reporta quaisquer erros que encontrares no canal do Discord.",
     "dropConfirmation": "Atira este item outra vez para confirmar!",
     "magmaBossWarning": "Magma Cube Boss!",
     "fullInventory": "Inventário Cheio!",
@@ -133,20 +135,15 @@
       "reforges": "Reforges",
       "crafting": "Criação"
     },
-    "deleteOldFile": "O download terminou. Abre a tua pasta mods usando os botões abaixo, fecha o Minecraft e apaga a versão antiga (ou apaga-a mais tarde se preferires).",
     "wantToViewPatchNotes": "Queres ler as alterações?",
     "downloadLink": "LINK DA ATUALIZAÇÃO",
-    "downloadAutomatically": "DOWNLOAD AUTOMÁTICO",
+    "directDownload": "DIRECT DOWNLOAD LINK",
     "openModFolder": "PASTA MODS",
     "joinTheDiscord": "ENTRA NO DISCORD",
+    "newUpdateAvailable": "A new update (%version%) is available!",
     "update": {
       "majorAvailable": "Está disponível uma nova atualização importante (%version%)! O link para o download pode ser encontrado no chat.",
-      "patchAvailable": "Uma nova atualização (%version%) está disponível! Procura pelas opções de download no chat!",
-      "downloading": "A atualização está a descarregar! Estado: %downloaded%/%total% Assim que o download terminar terás de apagar o ficheiro antigo.",
-      "failed": "O download da atualização falhou! Descarrega-o manualmente usando o link no chat.",
-      "downloadFinished": "A atualização terminou de ser descarregada e foi guardada como %file%. Não te esqueças de apagar o ficheiro antigo depois de fechares o Minecraft. Clica a mensagem no chat para abrires a pasta.",
-      "newBeta": "Está disponível uma nova beta (%version%)! Atualiza usando o menu “Mods”.",
-      "newUpdate": "Está disponível uma nova atualização (%version%)! Atualiza usando o menu “Mods”."
+      "patchAvailable": "Uma nova atualização (%version%) está disponível! Procura pelas opções de download no chat!"
     },
     "slotLocked": "Este slot está bloqueado!",
     "summoningEyeFound": "Summoning Eye!",
@@ -171,9 +168,31 @@
     "resizeBars": "Redimensionar barras",
     "showColorIcons": "Mostrar a cor dos ícones",
     "stage": "Fase %stage%",
-    "switchedSlots": "Estiveste a segurar um espaço bloqueado ou um item raro recentemente. Espera um pouco antes de deitares este item fora!"
+    "switchedSlots": "Estiveste a segurar um espaço bloqueado ou um item raro recentemente. Espera um pouco antes de deitares este item fora!",
+    "clickToOpenLink": "Click to open this link!",
+    "clickToOpenFolder": "Click to open your mods folder!",
+    "freezeBackpackPreview": "Freeze Backpack Preview"
   },
-  "discord": {
-    "status": {}
+  "discordStatus": {
+    "titleNone": "None",
+    "descriptionNone": "No text is displayed",
+    "titleLocation": "Location",
+    "descriptionLocation": "Shows your current location",
+    "titlePurse": "Purse",
+    "descriptionPurse": "Shows the amount of coins in your purse",
+    "titleStats": "Stats",
+    "descriptionStats": "Shows your HP, Defense and Mana stats",
+    "titleZealots": "Zealots",
+    "descriptionZealots": "Shows your Zealot counter",
+    "titleItem": "Held Item",
+    "descriptionItem": "Shows the name of the item you're holding",
+    "titleProfile": "Profile",
+    "descriptionProfile": "Shows your Profile name",
+    "titleTime": "Skyblock Time",
+    "descriptionTime": "Shows the current Skyblock time. E.g. 12:00am 1st Early Winter",
+    "titleCustom": "Custom Status",
+    "descriptionCustom": "Enter a custom status",
+    "titleAuto": "Auto Status",
+    "descriptionAuto": "Automatically displays a status. E.g. your zealot count while in the end."
   }
 }
