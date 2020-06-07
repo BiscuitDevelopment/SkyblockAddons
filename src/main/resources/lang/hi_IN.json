@@ -114,10 +114,12 @@
     "birchParkRainmakerTimer": "Birch Park Rainmaker Timer",
     "combatTimerDisplay": "Combat Timer Display",
     "discordRP": "Discord Rich Presence",
-    "endstoneProtectorDisplay": "Endstone Protector Display"
+    "endstoneProtectorDisplay": "Endstone Protector Display",
+    "fancyWarpMenu": "Fancy Warp Menu",
+    "doubleWarp": "Double Warp",
+    "advancedMode": "Advanced Mode"
   },
   "messages": {
-    "betaTesters": "Thank you for being a beta tester! Please report any bugs you encounter in the Discord channel.",
     "dropConfirmation": "संदेशों -> ड्रॉप क चेतावनी",
     "magmaBossWarning": "मैग्मा क्यूब बॉस!",
     "fullInventory": "पूरी इन्वेंटरी",
@@ -133,20 +135,15 @@
       "reforges": "रीफोर्गे",
       "crafting": "Crafting"
     },
-    "deleteOldFile": "डाउनलोड समाप्त हो गया है, कृपया नीचे दिए गए बटन का उपयोग करके अपने मॉड फ़ोल्डर को खोलें, अपने Minecraft को बंद करें, और पुराने वर्शन को हटा दें (या यदि आप चाहें तो इसे बाद में हटा दें)।",
     "wantToViewPatchNotes": "परिवर्तनों को पढ़ना चाहते हैं?",
     "downloadLink": "अपडेट लिंक",
-    "downloadAutomatically": "ऑटो डाउनलोड",
+    "directDownload": "DIRECT DOWNLOAD LINK",
     "openModFolder": "मॉड फ़ोल्डर",
     "joinTheDiscord": "Discord में शामिल हो",
+    "newUpdateAvailable": "A new update (%version%) is available!",
     "update": {
       "majorAvailable": "एक नया प्रमुख अपडेट (%version%) उपलब्ध है! डाउनलोड के लिए लिंक चैट में पाया जा सकता है।",
-      "patchAvailable": "एक नया पैच अपडेट (%version%) उपलब्ध है! डाउनलोड के लिए लिंक चैट में पाया जा सकता है।",
-      "downloading": "The patch is downloading! Status: %downloaded%/%total% Please note that after the download has finished, you must delete the old file.",
-      "failed": "The patch download has failed! Please download it manually using the link in chat.",
-      "downloadFinished": "The patch has finished downloading. It has been saved as %file%. Please don't forget to delete the old file after closing your Minecraft. Click the message in chat to open up the folder.",
-      "newBeta": "A new beta (%version%) is available! Please update using the \"Mods\" menu.",
-      "newUpdate": "A new update (%version%) is available! Please update using the \"Mods\" menu."
+      "patchAvailable": "एक नया पैच अपडेट (%version%) उपलब्ध है! डाउनलोड के लिए लिंक चैट में पाया जा सकता है।"
     },
     "slotLocked": "यह स्लॉट बंद है",
     "summoningEyeFound": "सुमोइंग आई!",
@@ -171,9 +168,31 @@
     "resizeBars": "Resize Bars",
     "showColorIcons": "Show Color Icons",
     "stage": "Stage %stage%",
-    "switchedSlots": "You have just switched from a locked slot or rare item. Please wait a bit before dropping!"
+    "switchedSlots": "You have just switched from a locked slot or rare item. Please wait a bit before dropping!",
+    "clickToOpenLink": "Click to open this link!",
+    "clickToOpenFolder": "Click to open your mods folder!",
+    "freezeBackpackPreview": "Freeze Backpack Preview"
   },
-  "discord": {
-    "status": {}
+  "discordStatus": {
+    "titleNone": "None",
+    "descriptionNone": "No text is displayed",
+    "titleLocation": "Location",
+    "descriptionLocation": "Shows your current location",
+    "titlePurse": "Purse",
+    "descriptionPurse": "Shows the amount of coins in your purse",
+    "titleStats": "Stats",
+    "descriptionStats": "Shows your HP, Defense and Mana stats",
+    "titleZealots": "Zealots",
+    "descriptionZealots": "Shows your Zealot counter",
+    "titleItem": "Held Item",
+    "descriptionItem": "Shows the name of the item you're holding",
+    "titleProfile": "Profile",
+    "descriptionProfile": "Shows your Profile name",
+    "titleTime": "Skyblock Time",
+    "descriptionTime": "Shows the current Skyblock time. E.g. 12:00am 1st Early Winter",
+    "titleCustom": "Custom Status",
+    "descriptionCustom": "Enter a custom status",
+    "titleAuto": "Auto Status",
+    "descriptionAuto": "Automatically displays a status. E.g. your zealot count while in the end."
   }
 }
