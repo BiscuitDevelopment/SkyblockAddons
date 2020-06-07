@@ -114,10 +114,12 @@
     "birchParkRainmakerTimer": "Birch Parkの雨降りタイマー",
     "combatTimerDisplay": "Combat状態のタイマーを表示",
     "discordRP": "Discordでのゲームステータス表示",
-    "endstoneProtectorDisplay": "エンドストーンプロテクターがスポーンしたときに画面上に表示する"
+    "endstoneProtectorDisplay": "エンドストーンプロテクターがスポーンしたときに画面上に表示する",
+    "fancyWarpMenu": "Fancy Warp Menu",
+    "doubleWarp": "Double Warp",
+    "advancedMode": "Advanced Mode"
   },
   "messages": {
-    "betaTesters": "ベータテストに参加してくれてありがとう！バグに遭遇した時はDiscordで報告してください。",
     "dropConfirmation": "落としてもいいのであれば、このアイテムをもう一度ドロップしてください。",
     "magmaBossWarning": "マグマボスが出現しました!",
     "fullInventory": "インベントリが満タンです！",
@@ -133,20 +135,15 @@
       "reforges": "リフォージ",
       "crafting": "クラフト"
     },
-    "deleteOldFile": "新しいバージョンのダウンロードが完了しました。Minecraftを閉じてからあなたのmodsフォルダにある旧バージョンを削除してください。(必要に応じて後で削除しても構いません)",
     "wantToViewPatchNotes": "変更点を知りたいですか?",
     "downloadLink": "アップデートのダウンロードリンク",
-    "downloadAutomatically": "自動でダウンロード",
+    "directDownload": "DIRECT DOWNLOAD LINK",
     "openModFolder": "modsフォルダを開く",
     "joinTheDiscord": "Discordに参加する",
+    "newUpdateAvailable": "A new update (%version%) is available!",
     "update": {
       "majorAvailable": "新しいメジャーアップデート (%version%) が利用可能です！チャットからダウンロードリンクを探してください。",
-      "patchAvailable": "新しいパッチアップデート (%version%) が利用可能です！チャットからダウンロードオプションを確認してください。",
-      "downloading": "パッチをダウンロードしています! 進捗 : %downloaded%/%total% ダウンロードが終わったら、旧バージョンを削除する事を忘れないでください。",
-      "failed": "パッチダウンロードに失敗しました! ダウンロードリンクから手動でダウンロードしてください。",
-      "downloadFinished": "パッチのダウンロードが終了しました。ファイルは %file% に保存されました。旧バージョンの削除を忘れないでください。メッセージをクリックするとフォルダが開きます。",
-      "newBeta": "新しいベータバージョン (%version%) が利用可能です！モッドメニューからアップデートしてください。",
-      "newUpdate": "新しいバージョン (%version%) が利用可能です！モッドメニューからアップデートしてください。"
+      "patchAvailable": "新しいパッチアップデート (%version%) が利用可能です！チャットからダウンロードオプションを確認してください。"
     },
     "slotLocked": "このスロットはロックされています。",
     "summoningEyeFound": "サモニングアイ！",
@@ -171,9 +168,31 @@
     "resizeBars": "バーをリサイズ",
     "showColorIcons": "カラーアイコンを表示する",
     "stage": "ステージ%stage%",
-    "switchedSlots": "あなたはロックされたスロットまたはレアなアイテムから切り替えました。ドロップする前に少々お待ち下さい！"
+    "switchedSlots": "あなたはロックされたスロットまたはレアなアイテムから切り替えました。ドロップする前に少々お待ち下さい！",
+    "clickToOpenLink": "Click to open this link!",
+    "clickToOpenFolder": "Click to open your mods folder!",
+    "freezeBackpackPreview": "Freeze Backpack Preview"
   },
-  "discord": {
-    "status": {}
+  "discordStatus": {
+    "titleNone": "None",
+    "descriptionNone": "No text is displayed",
+    "titleLocation": "Location",
+    "descriptionLocation": "Shows your current location",
+    "titlePurse": "Purse",
+    "descriptionPurse": "Shows the amount of coins in your purse",
+    "titleStats": "Stats",
+    "descriptionStats": "Shows your HP, Defense and Mana stats",
+    "titleZealots": "Zealots",
+    "descriptionZealots": "Shows your Zealot counter",
+    "titleItem": "Held Item",
+    "descriptionItem": "Shows the name of the item you're holding",
+    "titleProfile": "Profile",
+    "descriptionProfile": "Shows your Profile name",
+    "titleTime": "Skyblock Time",
+    "descriptionTime": "Shows the current Skyblock time. E.g. 12:00am 1st Early Winter",
+    "titleCustom": "Custom Status",
+    "descriptionCustom": "Enter a custom status",
+    "titleAuto": "Auto Status",
+    "descriptionAuto": "Automatically displays a status. E.g. your zealot count while in the end."
   }
 }
