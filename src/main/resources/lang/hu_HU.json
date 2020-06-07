@@ -116,7 +116,7 @@
     "discordRP": "Discord Játék Tevékenység mutatása",
     "endstoneProtectorDisplay": "Végzetkő Védelmező mutató",
     "fancyWarpMenu": "Fancy Warp Menu",
-    "doubleWarp": "Double Warp",
+    "doubleWarp": "Warp Twice",
     "advancedMode": "Advanced Mode"
   },
   "messages": {
@@ -171,7 +171,8 @@
     "switchedSlots": "Épp most váltottál át egy itemről, ami zárolt volt, vagy értékes. Várj egy kicsit mielőtt eldobod!",
     "clickToOpenLink": "Click to open this link!",
     "clickToOpenFolder": "Click to open your mods folder!",
-    "freezeBackpackPreview": "Freeze Backpack Preview"
+    "freezeBackpackPreview": "Freeze Backpack Preview",
+    "hideGreyEnchants": "Hide Regular Grey Enchants"
   },
   "discordStatus": {
     "titleNone": "None",
