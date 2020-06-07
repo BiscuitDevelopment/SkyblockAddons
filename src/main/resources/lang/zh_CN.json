@@ -114,10 +114,12 @@
     "birchParkRainmakerTimer": "桦木公园下雨计时",
     "combatTimerDisplay": "显示战斗计时器",
     "discordRP": "丰富 Discord 状态",
-    "endstoneProtectorDisplay": "显示末影石保护者"
+    "endstoneProtectorDisplay": "显示末影石保护者",
+    "fancyWarpMenu": "Fancy Warp Menu",
+    "doubleWarp": "Double Warp",
+    "advancedMode": "Advanced Mode"
   },
   "messages": {
-    "betaTesters": "感谢你成为一个 Beta 版测试者, 请在 Discord 中反馈你遇到的漏洞",
     "dropConfirmation": "再次丢弃此物品以确认!",
     "magmaBossWarning": "⚠ 岩浆怪 Boss 已生成 ⚠",
     "fullInventory": "背包已满!",
@@ -133,20 +135,15 @@
       "reforges": "重铸",
       "crafting": "合成"
     },
-    "deleteOldFile": "下载完成，使用下方按钮打开 mods 文件夹，关闭 Minecraft，删除旧文件。",
     "wantToViewPatchNotes": "查看更新内容",
     "downloadLink": "更新链接",
-    "downloadAutomatically": "自动下载",
+    "directDownload": "DIRECT DOWNLOAD LINK",
     "openModFolder": "Mods 文件夹",
     "joinTheDiscord": "加入 Discord",
+    "newUpdateAvailable": "A new update (%version%) is available!",
     "update": {
       "majorAvailable": "%version% 重要更新！下载链接可以在聊天中找到。",
-      "patchAvailable": "%version% 补丁更新！下载链接可以在聊天中找到。",
-      "downloading": "补丁正在下载（%downloaded%/%total%）\n请注意，下载完成后，请您务必删除旧文件。",
-      "failed": "补丁下载失败！请在聊天中寻找下载链接。",
-      "downloadFinished": "补丁下载完成，它被保存为 %file%。\n请不要忘记在关闭 Minecraft 后删除旧文件，点击此处打开文件夹。",
-      "newBeta": "新的测试版本 (%version%) 现已上线! 请使用 ''Mods'' 页面进行更新\n\n本地化翻译项目：https://crowdin.com/project/skyblockaddons",
-      "newUpdate": "新的更新 (%version%) 现已上线! 请使用 ''Mods'' 页面进行更新\n\n本地化翻译项目：https://crowdin.com/project/skyblockaddons"
+      "patchAvailable": "%version% 补丁更新！下载链接可以在聊天中找到。"
     },
     "slotLocked": "该栏已锁！",
     "summoningEyeFound": "召唤之眼！",
@@ -171,9 +168,31 @@
     "resizeBars": "重置计量条大小",
     "showColorIcons": "显示颜色图标",
     "stage": "阶段 %stage%",
-    "switchedSlots": "你刚刚从锁定槽位切换或者手持稀有物品。请稍后再丢弃！"
+    "switchedSlots": "你刚刚从锁定槽位切换或者手持稀有物品。请稍后再丢弃！",
+    "clickToOpenLink": "Click to open this link!",
+    "clickToOpenFolder": "Click to open your mods folder!",
+    "freezeBackpackPreview": "Freeze Backpack Preview"
   },
-  "discord": {
-    "status": {}
+  "discordStatus": {
+    "titleNone": "None",
+    "descriptionNone": "No text is displayed",
+    "titleLocation": "Location",
+    "descriptionLocation": "Shows your current location",
+    "titlePurse": "Purse",
+    "descriptionPurse": "Shows the amount of coins in your purse",
+    "titleStats": "Stats",
+    "descriptionStats": "Shows your HP, Defense and Mana stats",
+    "titleZealots": "Zealots",
+    "descriptionZealots": "Shows your Zealot counter",
+    "titleItem": "Held Item",
+    "descriptionItem": "Shows the name of the item you're holding",
+    "titleProfile": "Profile",
+    "descriptionProfile": "Shows your Profile name",
+    "titleTime": "Skyblock Time",
+    "descriptionTime": "Shows the current Skyblock time. E.g. 12:00am 1st Early Winter",
+    "titleCustom": "Custom Status",
+    "descriptionCustom": "Enter a custom status",
+    "titleAuto": "Auto Status",
+    "descriptionAuto": "Automatically displays a status. E.g. your zealot count while in the end."
   }
 }
