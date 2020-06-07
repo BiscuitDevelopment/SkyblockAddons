@@ -116,7 +116,7 @@
     "discordRP": "Discord Rik Tilværelse",
     "endstoneProtectorDisplay": "Endestein Beskytter Panel",
     "fancyWarpMenu": "Fancy Warp Menu",
-    "doubleWarp": "Double Warp",
+    "doubleWarp": "Warp Twice",
     "advancedMode": "Advanced Mode"
   },
   "messages": {
@@ -171,7 +171,8 @@
     "switchedSlots": "Du har nettopp byttet fra en låst plass eller sjelden ting. Vennligst vent litt før du slipper!",
     "clickToOpenLink": "Click to open this link!",
     "clickToOpenFolder": "Click to open your mods folder!",
-    "freezeBackpackPreview": "Freeze Backpack Preview"
+    "freezeBackpackPreview": "Freeze Backpack Preview",
+    "hideGreyEnchants": "Hide Regular Grey Enchants"
   },
   "discordStatus": {
     "titleNone": "None",
