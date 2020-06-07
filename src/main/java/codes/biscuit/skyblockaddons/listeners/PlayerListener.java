@@ -13,6 +13,7 @@ import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
 import lombok.Getter;
 import lombok.Setter;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.inventory.GuiChest;
@@ -194,6 +195,9 @@ public class PlayerListener {
             } else if (main.getConfigValues().isEnabled(Feature.DISABLE_MAGICAL_SOUP_MESSAGES) && SOUP_RANDOM_MESSAGES.contains(unformattedText)) {
                 e.setCanceled(true);
 
+            } else if (main.getConfigValues().isEnabled(Feature.DISABLE_TELEPORT_PAD_MESSAGES) && (formattedText.startsWith("§r§aWarped from ") || formattedText.equals("§r§cThis Teleport Pad does not have a destination set!§r"))) {
+                e.setCanceled(true);
+
             } else if (formattedText.startsWith("§7Sending to server ")) {
                 lastSkyblockServerJoinAttempt = System.currentTimeMillis();
             } else if (unformattedText.equals("You laid an egg!")) { // Put the Chicken Head on cooldown for 20 seconds when the player lays an egg.
@@ -361,10 +365,11 @@ public class PlayerListener {
                             main.getInventoryUtils().checkIfWearingSlayerArmor(p);
                         }
 
+                        /* Moved to onPlayerTick
                         if (mc.currentScreen == null && main.getConfigValues().isEnabled(Feature.ITEM_PICKUP_LOG)
                                 && main.getPlayerListener().didntRecentlyJoinWorld()) {
                             main.getInventoryUtils().getInventoryDifference(p.inventory.mainInventory);
-                        }
+                        }*/
                     }
 
                     main.getInventoryUtils().cleanUpPickupLog();
@@ -374,6 +379,46 @@ public class PlayerListener {
                 }
             }
         }
+    }
+
+    /**
+     * Called for every player (including vanished players) loaded (In render distance? In the world?)
+     * @param e The PlayerTickEvent
+     */
+    @SubscribeEvent
+    public void onPlayerTick(TickEvent.PlayerTickEvent e) {
+        // Ignore if the tick phase isn't Start or the Player isn't our Player
+        if (e.phase != TickEvent.Phase.START || e.player instanceof EntityOtherPlayerMP) return;
+
+        if (main.getUtils().isOnSkyblock()) {
+
+            InventoryUtils iu = main.getInventoryUtils();
+            // If inventory hasn't been stored before, store it (ie just joined Skyblock)
+            if (iu.isPreviousInventoryNull())
+                iu.setCurrentInventory(e.player.inventory.mainInventory);
+
+            // Check if the inventory has changed, but keep in mind that this will also be be true when opening another
+            // inventory, and only opening, and I have no idea why
+            if (iu.hasInventoryChanged(e.player.inventory.mainInventory)) {
+
+                if (main.getConfigValues().isEnabled(Feature.ITEM_PICKUP_LOG)
+                        && Minecraft.getMinecraft().currentScreen == null
+                        && main.getPlayerListener().didntRecentlyJoinWorld())
+                    main.getInventoryUtils().getInventoryDifference(e.player.inventory.mainInventory);
+
+                if (main.getConfigValues().isEnabled(Feature.BAIT_LIST) && BaitListManager.getInstance().holdingRod())
+                    BaitListManager.getInstance().refreshBaits();
+
+                // Set the inventory for next check
+                iu.setCurrentInventory(e.player.inventory.mainInventory);
+            }
+
+            // Do other things such as check for held item changes
+
+            if (main.getConfigValues().isEnabled(Feature.BAIT_LIST))
+                BaitListManager.getInstance().compareHeldItems(e.player.getHeldItem());
+        }
+
     }
 
     /**

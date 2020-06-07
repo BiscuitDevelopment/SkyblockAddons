@@ -296,7 +296,8 @@ public class EnumUtils {
         GARY("GARY_", "github.com/occanowey", Feature.ONLY_MINE_VALUABLES_NETHER),
         P0KE("P0ke", "p0ke.dev", Feature.ZEALOT_COUNTER),
         BERISAN("Berisan", "github.com/Berisan", Feature.TAB_EFFECT_TIMERS),
-        MYNAMEISJEFF("MyNameIsJeff", "github.com/My-Name-Is-Jeff", Feature.SHOW_BROKEN_FRAGMENTS);
+        MYNAMEISJEFF("MyNameIsJeff", "github.com/My-Name-Is-Jeff", Feature.SHOW_BROKEN_FRAGMENTS),
+        CHARZARD("Charzard4261", "github.com/Charzard4261", Feature.DISABLE_TELEPORT_PAD_MESSAGES, Feature.BAIT_LIST);
 
         private Set<Feature> features;
         private String author;
@@ -363,6 +364,7 @@ public class EnumUtils {
         DEFENCE_ICON,
         REVENANT_PROGRESS,
         POWER_ORB_DISPLAY,
+        BAIT_LIST_DISPLAY,
         TICKER,
         TAB_EFFECT_TIMERS
     }

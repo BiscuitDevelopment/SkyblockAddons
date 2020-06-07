@@ -63,6 +63,7 @@ public class InventoryUtils {
      * @return List of copied ItemStacks
      */
     private List<ItemStack> copyInventory(ItemStack[] inventory) {
+        /*
         List<ItemStack> copy = new ArrayList<>(inventory.length);
         for (ItemStack item : inventory) {
             if (item != null) {
@@ -71,7 +72,21 @@ public class InventoryUtils {
                 copy.add(null);
             }
         }
-        return copy;
+        return copy;*/
+        return new ArrayList<ItemStack>(Arrays.asList(inventory));
+    }
+
+    public boolean isPreviousInventoryNull()
+    {
+        return previousInventory == null;
+    }
+    public boolean hasInventoryChanged(ItemStack[] inventory)
+    {
+        return !previousInventory.equals(copyInventory(inventory));
+    }
+    public void setCurrentInventory(ItemStack[] inventory)
+    {
+        previousInventory = copyInventory(inventory);
     }
 
     /**
@@ -144,7 +159,8 @@ public class InventoryUtils {
 
         }
 
-        previousInventory = newInventory;
+        // Now set from  PlayerListener#onPlayerTick for use if the Item Pickup Log is disabled
+        //previousInventory = newInventory;
     }
 
     /**

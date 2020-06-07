@@ -1248,6 +1248,99 @@ public class RenderListener {
     }
 
     /**
+     * Displays the bait list. Only shows bait with count > 0. Copied and modified from <code>drawCompactPowerOrbStatus</code>
+     *  ---
+     * |min| count
+     *  ---
+     *  ---
+     * |fis| count
+     *  ---
+     *  etc
+     */
+    public void drawBaitList(Minecraft mc, float scale, ButtonLocation buttonLocation) {
+
+        int boxXOne = -4261;
+        int boxXTwo = -4261;
+        int boxYOne = -4261;
+        int boxYTwo = -4261;
+
+        if (BaitListManager.getInstance().holdingRod())
+            for (Map.Entry<BaitListManager.BaitType, BaitListManager.Set<Integer, Integer>> entry : BaitListManager.getInstance().baitsInInventory.entrySet())
+            {
+                float x = main.getConfigValues().getActualX(Feature.BAIT_LIST);
+                float y = main.getConfigValues().getActualY(Feature.BAIT_LIST);
+
+                String count = "§e" + entry.getValue().getO2();
+                int spacing = 1;
+                int iconSize = MinecraftReflection.FontRenderer.getFontHeight() * 2;
+                int width = iconSize;// + spacing + MinecraftReflection.FontRenderer.getStringWidth(count);
+
+                x -= Math.round(width * scale / 2);
+                y -= Math.round(iconSize * scale / 2);
+                x /= scale;
+                y /= scale;
+                int intX = Math.round(x);
+                int intY = Math.round(y) + entry.getValue().getO1() * 20;
+
+                if (boxXOne == -4261 || boxXOne > intX - 4)
+                    boxXOne = intX - 4;
+                if (boxXTwo == -4261 || boxXTwo < intX + width + 4)
+                    boxXTwo = intX + width + 4;
+                if (boxYOne == -4261 || boxYOne > intY - 4)
+                    boxYOne = intY - 4;
+                if (boxYTwo == -4261 || boxYTwo < intY + iconSize + 4)
+                    boxYTwo = intY + iconSize + 4;
+
+                GlStateManager.disableDepth();
+                GlStateManager.enableBlend();
+                mc.getTextureManager().bindTexture(entry.getKey().resourceLocation);
+                GlStateManager.color(1, 1, 1, 1F);
+                Gui.drawModalRectWithCustomSizedTexture(intX, intY, 0, 0, iconSize, iconSize, iconSize, iconSize);
+                GlStateManager.disableBlend();
+                GlStateManager.enableDepth();
+
+                main.getUtils().drawTextWithStyle(count, intX + spacing + iconSize + 4, intY + (iconSize / 2) - (MinecraftReflection.FontRenderer.getFontHeight() / 2), ChatFormatting.WHITE.getColor(255).getRGB());
+            }
+
+        if (buttonLocation != null) {
+            if (!BaitListManager.getInstance().holdingRod() || BaitListManager.getInstance().baitsInInventory.isEmpty()) {
+                float x = main.getConfigValues().getActualX(Feature.BAIT_LIST);
+                float y = main.getConfigValues().getActualY(Feature.BAIT_LIST);
+
+                String count = "§e4261";
+                int spacing = 1;
+                int iconSize = MinecraftReflection.FontRenderer.getFontHeight() * 2;
+                int width = iconSize + spacing + MinecraftReflection.FontRenderer.getStringWidth(count);
+
+                x -= Math.round(width * scale / 2);
+                y -= Math.round(iconSize * scale / 2);
+                x /= scale;
+                y /= scale;
+                int intX = Math.round(x);
+                int intY = Math.round(y) + 20;
+
+                boxXOne = intX - 4;
+                boxXTwo = intX + width + 4;
+                boxYOne = intY - 4;
+                boxYTwo = intY + iconSize + 4;
+
+                GlStateManager.disableDepth();
+                GlStateManager.enableBlend();
+                mc.getTextureManager().bindTexture(BaitListManager.BaitType.BLESSED.resourceLocation);
+                GlStateManager.color(1, 1, 1, 1F);
+                Gui.drawModalRectWithCustomSizedTexture(intX, intY, 0, 0, iconSize, iconSize, iconSize, iconSize);
+                GlStateManager.disableBlend();
+                GlStateManager.enableDepth();
+
+                main.getUtils().drawTextWithStyle(count, intX + iconSize + 4, intY + (iconSize / 2) - (MinecraftReflection.FontRenderer.getFontHeight() / 2), ChatFormatting.WHITE.getColor(255).getRGB());
+            }
+
+            buttonLocation.checkHoveredAndDrawBox(boxXOne, boxXTwo, boxYOne, boxYTwo, scale);
+            GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+        }
+    }
+
+    /**
      * Easily grab an attribute from utils.
      */
     private int getAttribute(Attribute attribute) {

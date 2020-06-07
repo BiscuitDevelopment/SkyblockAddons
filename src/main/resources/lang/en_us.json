@@ -117,7 +117,9 @@
     "endstoneProtectorDisplay": "Endstone Protector Display",
     "fancyWarpMenu": "Fancy Warp Menu",
     "doubleWarp": "Warp Twice",
-    "advancedMode": "Advanced Mode"
+    "advancedMode": "Advanced Mode",
+    "disableTeleportPadMessage": "Disable Teleport Pad Messages",
+    "baitListDisplay" : "Show Bait List When Holding a Rod"
   },
   "messages": {
     "dropConfirmation": "Drop this item again to confirm!",
