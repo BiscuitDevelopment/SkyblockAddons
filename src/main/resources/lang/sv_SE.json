@@ -114,10 +114,12 @@
     "birchParkRainmakerTimer": "Björk Park Regngörar Timer",
     "combatTimerDisplay": "Visa Stridstimer",
     "discordRP": "Discord Rich Presence",
-    "endstoneProtectorDisplay": "Visning av ändstensskyddare"
+    "endstoneProtectorDisplay": "Visning av ändstensskyddare",
+    "fancyWarpMenu": "Fancy Warp Menu",
+    "doubleWarp": "Double Warp",
+    "advancedMode": "Advanced Mode"
   },
   "messages": {
-    "betaTesters": "Tack för att du är en betatestare! Vänligen rapportera eventuella buggar du stöter på i Discord-kanalen.",
     "dropConfirmation": "Släpp Det Här Igen För Att Bekräfta!",
     "magmaBossWarning": "MagmaKub Boss!",
     "fullInventory": "Full Lager!",
@@ -133,20 +135,15 @@
       "reforges": "Reforges",
       "crafting": "Tillverkning"
     },
-    "deleteOldFile": "Updateringen är klar, använd knappen nedan för att öppna mods mappen, stäng Minecraft, och ta bort den gamla versionen (eller kan du radera den senare om du vill).",
     "wantToViewPatchNotes": "Vill du läsa ändringarna?",
     "downloadLink": "UPPDATERINGS LÄNK",
-    "downloadAutomatically": "AUTO NEDLADNING",
+    "directDownload": "DIRECT DOWNLOAD LINK",
     "openModFolder": "MODS MAPPEN",
     "joinTheDiscord": "Gå med I discord servern",
+    "newUpdateAvailable": "A new update (%version%) is available!",
     "update": {
       "majorAvailable": "En ny stor updatering (%version%) är tillgänlig! Du hittar nedladningslänken i chatten.",
-      "patchAvailable": "En ny programfix (%version%) är tillgänlig! Nedladnings länken finns i chatten!",
-      "downloading": "Programfix uppdateringen är redo! Status: %downloaded%/%total% Notera att du måste ta bort den gamla filen när uppdateringen blir klar.",
-      "failed": "Patch updateringen misslyckades! Ladda ner den manuellt genom länken i chatten,.",
-      "downloadFinished": "Nedladningen av Programfix uppdateringen är klar. Den har sparats som %file%. Glöm inte att ta bort den gamla filen när du stänger av Minecraft. Tryck på meddelandet i chatten för att öppna mods mappen.",
-      "newBeta": "En ny beta (%version%) är tillgänglig! Vänligen uppdatera med hjälp av \"Mods\"-menyn.",
-      "newUpdate": "En ny uppdatering (%version%) är tillgänglig! Vänligen uppdatera med hjälp av \"Mods\"-menyn."
+      "patchAvailable": "En ny programfix (%version%) är tillgänlig! Nedladnings länken finns i chatten!"
     },
     "slotLocked": "Denna ruta är låst!",
     "summoningEyeFound": "Tillkallande Öga!",
@@ -171,9 +168,31 @@
     "resizeBars": "Omskala Barer",
     "showColorIcons": "Visa Färgikoner",
     "stage": "Stadie %stage%",
-    "switchedSlots": "Du har precis bytt från en låst plats eller sällsynt föremål. Vänta lite innan du släpper!"
+    "switchedSlots": "Du har precis bytt från en låst plats eller sällsynt föremål. Vänta lite innan du släpper!",
+    "clickToOpenLink": "Click to open this link!",
+    "clickToOpenFolder": "Click to open your mods folder!",
+    "freezeBackpackPreview": "Freeze Backpack Preview"
   },
-  "discord": {
-    "status": {}
+  "discordStatus": {
+    "titleNone": "None",
+    "descriptionNone": "No text is displayed",
+    "titleLocation": "Location",
+    "descriptionLocation": "Shows your current location",
+    "titlePurse": "Purse",
+    "descriptionPurse": "Shows the amount of coins in your purse",
+    "titleStats": "Stats",
+    "descriptionStats": "Shows your HP, Defense and Mana stats",
+    "titleZealots": "Zealots",
+    "descriptionZealots": "Shows your Zealot counter",
+    "titleItem": "Held Item",
+    "descriptionItem": "Shows the name of the item you're holding",
+    "titleProfile": "Profile",
+    "descriptionProfile": "Shows your Profile name",
+    "titleTime": "Skyblock Time",
+    "descriptionTime": "Shows the current Skyblock time. E.g. 12:00am 1st Early Winter",
+    "titleCustom": "Custom Status",
+    "descriptionCustom": "Enter a custom status",
+    "titleAuto": "Auto Status",
+    "descriptionAuto": "Automatically displays a status. E.g. your zealot count while in the end."
   }
 }
