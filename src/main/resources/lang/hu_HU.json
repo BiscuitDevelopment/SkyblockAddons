@@ -114,10 +114,12 @@
     "birchParkRainmakerTimer": "Nyírfa Park esőkészítő időzítő",
     "combatTimerDisplay": "Harc időzítő mutató",
     "discordRP": "Discord Játék Tevékenység mutatása",
-    "endstoneProtectorDisplay": "Végzetkő Védelmező mutató"
+    "endstoneProtectorDisplay": "Végzetkő Védelmező mutató",
+    "fancyWarpMenu": "Fancy Warp Menu",
+    "doubleWarp": "Double Warp",
+    "advancedMode": "Advanced Mode"
   },
   "messages": {
-    "betaTesters": "Nagyon köszönjük, hogy béta teszter vagy! Légyszíves jelezz minden egyes hibát, ezt Discord szerverünkön teheted meg.",
     "dropConfirmation": "Dobd el ezt a tárgyat újra, hogy megerősítsd!",
     "magmaBossWarning": "Magmakocka Boss!",
     "fullInventory": "Megtelt a felszerelésed!",
@@ -133,20 +135,15 @@
       "reforges": "Reforgeok",
       "crafting": "Barkácsolás"
     },
-    "deleteOldFile": "A letöltés befejeződött, nyisd meg a mods mappádat az alsó gomb segítségével, zárd be a Minecraft-ot és töröld a régi verzióját a mod-nak \n(ezt később is megteheted).",
     "wantToViewPatchNotes": "Meg szeretnéd nézni a változásokat?",
     "downloadLink": "FRISSITÉSI LINK",
-    "downloadAutomatically": "AUTOMATIKUS LETÖLTÉS",
+    "directDownload": "DIRECT DOWNLOAD LINK",
     "openModFolder": "MODS MAPPA",
     "joinTheDiscord": "CSATLALKOZZ A DISCORDUNKHOZ",
+    "newUpdateAvailable": "A new update (%version%) is available!",
     "update": {
       "majorAvailable": "Egy új nagy frissítés (%version%) elérhető! A linket a letöltéshez a chatben találod.",
-      "patchAvailable": "Egy új hibajavító frissítés (%version%) elérhető! Nyisd meg a chatet a letöltésekért!",
-      "downloading": "A frissítés éppen letöltődik! Letöltve: %downloaded%/%total% Viszont a letöltés végeztével törölnöd kell az előző verziót.",
-      "failed": "A frissítés letöltése hibába ütközött, használd a letöltési linket a chatből.",
-      "downloadFinished": "A frissítés letöltés sikeresen befejeződött. %file% néven lett elmentve. Ne felejtsd törölni a régi verziót miután bezártad a Minecraft-ot. Kattints az üzenetre hogy megnyisd a mappát.",
-      "newBeta": "Egy új Béta verzió (%version%) elréhető! Frissités a mod menü használatával.",
-      "newUpdate": "Egy új frissített verzió (%version%) elérhető! Frissítés a mod menü használatával."
+      "patchAvailable": "Egy új hibajavító frissítés (%version%) elérhető! Nyisd meg a chatet a letöltésekért!"
     },
     "slotLocked": "Ez a gyorstár le van zárva!",
     "summoningEyeFound": "Summoning Eye!",
@@ -171,9 +168,31 @@
     "resizeBars": "Sávok átméretezése",
     "showColorIcons": "Színes ikonok mutatása",
     "stage": "Fázis %stage%",
-    "switchedSlots": "Épp most váltottál át egy itemről, ami zárolt volt, vagy értékes. Várj egy kicsit mielőtt eldobod!"
+    "switchedSlots": "Épp most váltottál át egy itemről, ami zárolt volt, vagy értékes. Várj egy kicsit mielőtt eldobod!",
+    "clickToOpenLink": "Click to open this link!",
+    "clickToOpenFolder": "Click to open your mods folder!",
+    "freezeBackpackPreview": "Freeze Backpack Preview"
   },
-  "discord": {
-    "status": {}
+  "discordStatus": {
+    "titleNone": "None",
+    "descriptionNone": "No text is displayed",
+    "titleLocation": "Location",
+    "descriptionLocation": "Shows your current location",
+    "titlePurse": "Purse",
+    "descriptionPurse": "Shows the amount of coins in your purse",
+    "titleStats": "Stats",
+    "descriptionStats": "Shows your HP, Defense and Mana stats",
+    "titleZealots": "Zealots",
+    "descriptionZealots": "Shows your Zealot counter",
+    "titleItem": "Held Item",
+    "descriptionItem": "Shows the name of the item you're holding",
+    "titleProfile": "Profile",
+    "descriptionProfile": "Shows your Profile name",
+    "titleTime": "Skyblock Time",
+    "descriptionTime": "Shows the current Skyblock time. E.g. 12:00am 1st Early Winter",
+    "titleCustom": "Custom Status",
+    "descriptionCustom": "Enter a custom status",
+    "titleAuto": "Auto Status",
+    "descriptionAuto": "Automatically displays a status. E.g. your zealot count while in the end."
   }
 }
