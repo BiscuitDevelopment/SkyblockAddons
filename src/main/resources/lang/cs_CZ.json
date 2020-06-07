@@ -114,10 +114,12 @@
     "birchParkRainmakerTimer": "Časovač Dešťotvůrce v Birch Parku",
     "combatTimerDisplay": "Zobrazení času v boji",
     "discordRP": "Discord Rich Presence",
-    "endstoneProtectorDisplay": "Ukazatel Endstone Protectora"
+    "endstoneProtectorDisplay": "Ukazatel Endstone Protectora",
+    "fancyWarpMenu": "Fancy Warp Menu",
+    "doubleWarp": "Double Warp",
+    "advancedMode": "Advanced Mode"
   },
   "messages": {
-    "betaTesters": "Děkujeme, že jsi betatester! Prosím, nahlaš všechny bugy na které naražíš v kanálu na Discordu.",
     "dropConfirmation": "Vyhoď tento item pro vyhození!",
     "magmaBossWarning": "Objevil se Magma Boss!",
     "fullInventory": "Plný inventář!",
@@ -133,20 +135,15 @@
       "reforges": "překování",
       "crafting": "Výroba"
     },
-    "deleteOldFile": "Stahování skočilo, prosím otevři svoji složku mods pomocí tlačítka dole, zavři minecraft, a smaž starou verzi(nebo ji smaž potom pokud chceš).",
     "wantToViewPatchNotes": "Chceš si přečíst změny?",
     "downloadLink": "Odkaz pro aktualizaci",
-    "downloadAutomatically": "Automatické stahování",
+    "directDownload": "DIRECT DOWNLOAD LINK",
     "openModFolder": "SLOŽKA S MODY",
     "joinTheDiscord": "Připojit se na discord",
+    "newUpdateAvailable": "A new update (%version%) is available!",
     "update": {
       "majorAvailable": "Nová hlavní aktualizace (%version%) je připravena! Link na stažení je v chatu.",
-      "patchAvailable": "Nový opravující update (verze %version%) je nyní dostupný! Koukněte do chatu pro možnosti stahování!",
-      "downloading": "Aktualizace se stahuje! Status: %downloaded%/%total% Prosím berte na vědomí že potom co se aktualizace dokončí, musíte smazat starou složku.",
-      "failed": "Stáhnutí aktualizace selhalo! Prosím stáhněte ho manuálně pomocí linku v chatu.",
-      "downloadFinished": "Aktualizace dokončila stažení. Byla uložena jako %file%. Prosím nezapomeň smazat starou složku potom co zavřeš minecraft.",
-      "newBeta": "Nová beta (%version%) je dostupná! Prosím aktualizujte pomocí menu \"Módy\".",
-      "newUpdate": "Nová aktualizace (%version%) je dostupná! Prosím aktualizujte pomocí menu \"Módy\"."
+      "patchAvailable": "Nový opravující update (verze %version%) je nyní dostupný! Koukněte do chatu pro možnosti stahování!"
     },
     "slotLocked": "Tento slot je uzamčen!",
     "summoningEyeFound": "Vyvolávací oko!",
@@ -171,9 +168,31 @@
     "resizeBars": "Změnit rozměry ukazatele",
     "showColorIcons": "Zobrazit barevné ikony",
     "stage": "Fáze %stage%",
-    "switchedSlots": "Právě jsi přepnul z uzamknutého slotu nebo vzácného předmětu. Chvilku počkej před vyhozením!"
+    "switchedSlots": "Právě jsi přepnul z uzamknutého slotu nebo vzácného předmětu. Chvilku počkej před vyhozením!",
+    "clickToOpenLink": "Click to open this link!",
+    "clickToOpenFolder": "Click to open your mods folder!",
+    "freezeBackpackPreview": "Freeze Backpack Preview"
   },
-  "discord": {
-    "status": {}
+  "discordStatus": {
+    "titleNone": "None",
+    "descriptionNone": "No text is displayed",
+    "titleLocation": "Location",
+    "descriptionLocation": "Shows your current location",
+    "titlePurse": "Purse",
+    "descriptionPurse": "Shows the amount of coins in your purse",
+    "titleStats": "Stats",
+    "descriptionStats": "Shows your HP, Defense and Mana stats",
+    "titleZealots": "Zealots",
+    "descriptionZealots": "Shows your Zealot counter",
+    "titleItem": "Held Item",
+    "descriptionItem": "Shows the name of the item you're holding",
+    "titleProfile": "Profile",
+    "descriptionProfile": "Shows your Profile name",
+    "titleTime": "Skyblock Time",
+    "descriptionTime": "Shows the current Skyblock time. E.g. 12:00am 1st Early Winter",
+    "titleCustom": "Custom Status",
+    "descriptionCustom": "Enter a custom status",
+    "titleAuto": "Auto Status",
+    "descriptionAuto": "Automatically displays a status. E.g. your zealot count while in the end."
   }
 }
