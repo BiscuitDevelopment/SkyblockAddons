@@ -114,10 +114,12 @@
     "birchParkRainmakerTimer": "Birchpark verbleibender Regentimer",
     "combatTimerDisplay": "Combat Timer Anzeige",
     "discordRP": "Discord Rich Presence",
-    "endstoneProtectorDisplay": "Endstone Protector Display"
+    "endstoneProtectorDisplay": "Endstone Protector Display",
+    "fancyWarpMenu": "Fancy Warp Menu",
+    "doubleWarp": "Double Warp",
+    "advancedMode": "Advanced Mode"
   },
   "messages": {
-    "betaTesters": "Danke, dass du ein Betatester bist! Bitte melde alle auftretenden Fehler in dem Discordchannel.",
     "dropConfirmation": "Werfe diesen Gegenstand nochmal, um zu bestätigen!",
     "magmaBossWarning": "Der Magma Boss ist erschienen!",
     "fullInventory": "Volles Inventar!",
@@ -133,20 +135,15 @@
       "reforges": "Verbesserungen",
       "crafting": "Crafting"
     },
-    "deleteOldFile": "Der Download ist beendet, benutze den Knopf unten, um den mods Ordner zu öffnen, schließe dein Minecraft und lösche die alte Version (oder lösche es später).",
     "wantToViewPatchNotes": "Möchtest du die Änderungen lesen?",
     "downloadLink": "UPDATE LINK",
-    "downloadAutomatically": "AUTO DOWNLOAD",
+    "directDownload": "DIRECT DOWNLOAD LINK",
     "openModFolder": "MODS ORDNER",
     "joinTheDiscord": "TRITT DISCORD BEI",
+    "newUpdateAvailable": "A new update (%version%) is available!",
     "update": {
       "majorAvailable": "Ein neues wichtiges Update (%version%) ist verfügbar! Den Link für den Download findest du im Chat.",
-      "patchAvailable": "Ein Neuer Patch (%version%) ist verfügbar!\nSchau im Chat für die Download Möglichkeiten!",
-      "downloading": "Der Patch wird heruntergeladen! Status: %downloaded%/%total% Beachte, dass du nach dem Download die alte Datei löschen musst.",
-      "failed": "Der Patch-Download ist fehlgeschlagen! Bitte lade es manuell mit dem Link im Chat herunter.",
-      "downloadFinished": "Der Patch-Download wurde heruntergeladen. Er wurde als %file% gespeichert. Bitte vergesse nicht die alte Datei nach dem Schließen von Minecraft, zu löschen. Klicke auf die Nachricht im Chat um den Ordner zu öffnen.",
-      "newBeta": "Eine neue Beta (%version%) ist verfügbar! Bitte aktualisiere mit dem \"Mods\"-Menü.",
-      "newUpdate": "Ein neues Update (%version%) ist verfügbar! Bitte aktualisiere mit dem \"Mods\"-Menü."
+      "patchAvailable": "Ein Neuer Patch (%version%) ist verfügbar!\nSchau im Chat für die Download Möglichkeiten!"
     },
     "slotLocked": "Dieser Slot ist gesperrt!",
     "summoningEyeFound": "Summoning Eye!",
@@ -171,9 +168,31 @@
     "resizeBars": "Balken skalieren",
     "showColorIcons": "Zeige Farbsymbole",
     "stage": "Stage %stage%",
-    "switchedSlots": "You have just switched from a locked slot or rare item. Please wait a bit before dropping!"
+    "switchedSlots": "You have just switched from a locked slot or rare item. Please wait a bit before dropping!",
+    "clickToOpenLink": "Click to open this link!",
+    "clickToOpenFolder": "Click to open your mods folder!",
+    "freezeBackpackPreview": "Freeze Backpack Preview"
   },
-  "discord": {
-    "status": {}
+  "discordStatus": {
+    "titleNone": "None",
+    "descriptionNone": "No text is displayed",
+    "titleLocation": "Location",
+    "descriptionLocation": "Shows your current location",
+    "titlePurse": "Purse",
+    "descriptionPurse": "Shows the amount of coins in your purse",
+    "titleStats": "Stats",
+    "descriptionStats": "Shows your HP, Defense and Mana stats",
+    "titleZealots": "Zealots",
+    "descriptionZealots": "Shows your Zealot counter",
+    "titleItem": "Held Item",
+    "descriptionItem": "Shows the name of the item you're holding",
+    "titleProfile": "Profile",
+    "descriptionProfile": "Shows your Profile name",
+    "titleTime": "Skyblock Time",
+    "descriptionTime": "Shows the current Skyblock time. E.g. 12:00am 1st Early Winter",
+    "titleCustom": "Custom Status",
+    "descriptionCustom": "Enter a custom status",
+    "titleAuto": "Auto Status",
+    "descriptionAuto": "Automatically displays a status. E.g. your zealot count while in the end."
   }
 }
