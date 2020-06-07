@@ -116,7 +116,7 @@
     "discordRP": "Discord Rich Presence",
     "endstoneProtectorDisplay": "Affichage du Protecteur de l'Endstone",
     "fancyWarpMenu": "Fancy Warp Menu",
-    "doubleWarp": "Double Warp",
+    "doubleWarp": "Warp Twice",
     "advancedMode": "Advanced Mode"
   },
   "messages": {
@@ -171,7 +171,8 @@
     "switchedSlots": "Vous venez de basculer d'un emplacement verrouillé ou d'un objet rare. Veuillez patienter un peu avant de jeter !",
     "clickToOpenLink": "Click to open this link!",
     "clickToOpenFolder": "Click to open your mods folder!",
-    "freezeBackpackPreview": "Freeze Backpack Preview"
+    "freezeBackpackPreview": "Freeze Backpack Preview",
+    "hideGreyEnchants": "Hide Regular Grey Enchants"
   },
   "discordStatus": {
     "titleNone": "None",
