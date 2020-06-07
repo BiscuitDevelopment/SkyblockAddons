@@ -114,10 +114,12 @@
     "birchParkRainmakerTimer": "Časovnik dežja v birch park",
     "combatTimerDisplay": "Prikaz bojnega časovnika",
     "discordRP": "Discord Rich Presence",
-    "endstoneProtectorDisplay": "Prikaz endstone zaščitnika"
+    "endstoneProtectorDisplay": "Prikaz endstone zaščitnika",
+    "fancyWarpMenu": "Fancy Warp Menu",
+    "doubleWarp": "Double Warp",
+    "advancedMode": "Advanced Mode"
   },
   "messages": {
-    "betaTesters": "Thank you for being a beta tester! Please report any bugs you encounter in the Discord channel.",
     "dropConfirmation": "Ponovno Izpusti To Stvar za Potrditev!",
     "magmaBossWarning": "Magma Cube Boss!",
     "fullInventory": "Poln Inventar!",
@@ -133,20 +135,15 @@
       "reforges": "Reforgi",
       "crafting": "Izdelovanje"
     },
-    "deleteOldFile": "Prenos je končan, prosim da odprete mapo za mode preko gumba nižje, zaprete veš Minecraft, in izbrišete staro različico (ali pa jo izbrišete kasneje, če želite).",
     "wantToViewPatchNotes": "Želiš prebrati spremembe?",
     "downloadLink": "LINK ZA POSODOBITEV",
-    "downloadAutomatically": "Automatsko prenesi",
+    "directDownload": "DIRECT DOWNLOAD LINK",
     "openModFolder": "MAPA ZA MODE",
     "joinTheDiscord": "Pridruži se Discordu",
+    "newUpdateAvailable": "A new update (%version%) is available!",
     "update": {
       "majorAvailable": "Nova večja posodobitev (%version%) je na voljo! Link za prenos je v chatu.",
-      "patchAvailable": "Nova posodobitev (%version%) je na voljo! Poglej v chat za možnosti prenosa!",
-      "downloading": "Popravek se prenaša! Status: %downloaded%/%total% Prosim, da se spomnite izbrisati staro verzijo, ko se prenos zaključi.",
-      "failed": "Popravek se ni uspel prenesti! Prosim, da ga prenesete ročno preko linka v chatu.",
-      "downloadFinished": "Popravek se je prenesel. Shranjen je kot %file%. Prosim da ne pozabite izbrisati stare datoteke po zaprtju Minecrafta. Klikni na sporočilo v chatu da odpreš mapo.",
-      "newBeta": "Nova preizkusna verzija (%version%) je na voljo! Prosim posodobite preko \"mods\" menuja.",
-      "newUpdate": "Nova posodobitev (%version%) je na voljo! Prosim posodobite preko \"mods\" menuja."
+      "patchAvailable": "Nova posodobitev (%version%) je na voljo! Poglej v chat za možnosti prenosa!"
     },
     "slotLocked": "Ta prostor je zaklenjen!",
     "summoningEyeFound": "Summoning eye!",
@@ -171,9 +168,31 @@
     "resizeBars": "Spremeni velikost barov",
     "showColorIcons": "Pokaži barvne ikone",
     "stage": "Stopnja %stage%",
-    "switchedSlots": "You have just switched from a locked slot or rare item. Please wait a bit before dropping!"
+    "switchedSlots": "You have just switched from a locked slot or rare item. Please wait a bit before dropping!",
+    "clickToOpenLink": "Click to open this link!",
+    "clickToOpenFolder": "Click to open your mods folder!",
+    "freezeBackpackPreview": "Freeze Backpack Preview"
   },
-  "discord": {
-    "status": {}
+  "discordStatus": {
+    "titleNone": "None",
+    "descriptionNone": "No text is displayed",
+    "titleLocation": "Location",
+    "descriptionLocation": "Shows your current location",
+    "titlePurse": "Purse",
+    "descriptionPurse": "Shows the amount of coins in your purse",
+    "titleStats": "Stats",
+    "descriptionStats": "Shows your HP, Defense and Mana stats",
+    "titleZealots": "Zealots",
+    "descriptionZealots": "Shows your Zealot counter",
+    "titleItem": "Held Item",
+    "descriptionItem": "Shows the name of the item you're holding",
+    "titleProfile": "Profile",
+    "descriptionProfile": "Shows your Profile name",
+    "titleTime": "Skyblock Time",
+    "descriptionTime": "Shows the current Skyblock time. E.g. 12:00am 1st Early Winter",
+    "titleCustom": "Custom Status",
+    "descriptionCustom": "Enter a custom status",
+    "titleAuto": "Auto Status",
+    "descriptionAuto": "Automatically displays a status. E.g. your zealot count while in the end."
   }
 }
