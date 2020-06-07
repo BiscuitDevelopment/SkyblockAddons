@@ -114,10 +114,12 @@
     "birchParkRainmakerTimer": "Bộ đếm Thời gian Mưa ở C.V. Rừng Bạch Dương",
     "combatTimerDisplay": "Hiện thời gian bị dính Combat",
     "discordRP": "Discord Rich Presence",
-    "endstoneProtectorDisplay": "Hiển thị bao lâu Người Bảo vệ Đá mới xuất hiện"
+    "endstoneProtectorDisplay": "Hiển thị bao lâu Người Bảo vệ Đá mới xuất hiện",
+    "fancyWarpMenu": "Fancy Warp Menu",
+    "doubleWarp": "Double Warp",
+    "advancedMode": "Advanced Mode"
   },
   "messages": {
-    "betaTesters": "Cảm ơn bạn vì đã trở thành 1 trong những người thử nghiệm bản vá beta của chúng tôi! Hãy báo lại bất kỳ lỗi nào bạn gặp phải khi đang sử dụng (các) bản vá beta này.",
     "dropConfirmation": "Nhấn \"Q\" Thêm Một Lần Nữa Để Xác Nhận!",
     "magmaBossWarning": "Trùm Dung Nham!",
     "fullInventory": "Túi Đồ Đã Đầy!",
@@ -133,20 +135,15 @@
       "reforges": "Rèn luyện",
       "crafting": "Chế tạo"
     },
-    "deleteOldFile": "Tải về hoàn tất, hãy mở thư mục mod bằng nút dưới đây, tắt Minecraft đi và xoá phiên bản cũ đi (hoặc có thể xoá sau tùy bạn).",
     "wantToViewPatchNotes": "Muốn đọc những thay đổi không?",
     "downloadLink": "LIÊN KẾT CẬP NHẬT",
-    "downloadAutomatically": "TỰ ĐỘNG TẢI VỀ",
+    "directDownload": "DIRECT DOWNLOAD LINK",
     "openModFolder": "THƯ MỤC MOD",
     "joinTheDiscord": "THAM GIA DISCORD",
+    "newUpdateAvailable": "A new update (%version%) is available!",
     "update": {
       "majorAvailable": "Bản cập nhật quan trọng (%version%) có sẵn! Liên kết tải về có thể tìm thấy trong chat.",
-      "patchAvailable": "Bản vá mới (%version%) có sẵn! Các lựa chọn tải về ở trong chat!",
-      "downloading": "Bản vá đang được tải về! Quá trình: %downloaded%/%total% Vui lòng nhớ rằng sau khi tải xong, bạn phải xoá bản cũ.",
-      "failed": "Tải về bản vá thất bại! Vui lòng tự tải về bằng liên kết trong chat.",
-      "downloadFinished": "Bản vá đã tải về hoàn tất. Nó đã được lưu như %file%. Vui lòng xoá bản cũ sau khi đóng Minecraft. Nhấn vào tin nhắn ở chất để mở thư mục.",
-      "newBeta": "Cập nhật beta mới (%version%) đã ra mắt! Hãy cập nhật qua thư mục \"mods\".",
-      "newUpdate": "Cập nhật mới (%version%) đã ra mắt! Hãy cập nhật qua thư mục \"mods\"."
+      "patchAvailable": "Bản vá mới (%version%) có sẵn! Các lựa chọn tải về ở trong chat!"
     },
     "slotLocked": "Ô này đã bị khoá!",
     "summoningEyeFound": "Mắt Triệu Hồi!",
@@ -171,9 +168,31 @@
     "resizeBars": "Phóng to/nhỏ Thanh",
     "showColorIcons": "Hiện Icon Màu",
     "stage": "Giai đoạn %stage%",
-    "switchedSlots": "Bạn đã vừa chuyển ô để đồ từ ô đang bị khóa hoặc một vật phẩm hiếm. Hãy đợi một chút trước khi thả (hoặc vứt) đồ vật đó nhé!"
+    "switchedSlots": "Bạn đã vừa chuyển ô để đồ từ ô đang bị khóa hoặc một vật phẩm hiếm. Hãy đợi một chút trước khi thả (hoặc vứt) đồ vật đó nhé!",
+    "clickToOpenLink": "Click to open this link!",
+    "clickToOpenFolder": "Click to open your mods folder!",
+    "freezeBackpackPreview": "Freeze Backpack Preview"
   },
-  "discord": {
-    "status": {}
+  "discordStatus": {
+    "titleNone": "None",
+    "descriptionNone": "No text is displayed",
+    "titleLocation": "Location",
+    "descriptionLocation": "Shows your current location",
+    "titlePurse": "Purse",
+    "descriptionPurse": "Shows the amount of coins in your purse",
+    "titleStats": "Stats",
+    "descriptionStats": "Shows your HP, Defense and Mana stats",
+    "titleZealots": "Zealots",
+    "descriptionZealots": "Shows your Zealot counter",
+    "titleItem": "Held Item",
+    "descriptionItem": "Shows the name of the item you're holding",
+    "titleProfile": "Profile",
+    "descriptionProfile": "Shows your Profile name",
+    "titleTime": "Skyblock Time",
+    "descriptionTime": "Shows the current Skyblock time. E.g. 12:00am 1st Early Winter",
+    "titleCustom": "Custom Status",
+    "descriptionCustom": "Enter a custom status",
+    "titleAuto": "Auto Status",
+    "descriptionAuto": "Automatically displays a status. E.g. your zealot count while in the end."
   }
 }
