@@ -116,7 +116,7 @@
     "discordRP": "Discord zengin içerik",
     "endstoneProtectorDisplay": "Endstone koruyucu görüntüleme",
     "fancyWarpMenu": "Fancy Warp Menu",
-    "doubleWarp": "Double Warp",
+    "doubleWarp": "Warp Twice",
     "advancedMode": "Advanced Mode"
   },
   "messages": {
@@ -171,7 +171,8 @@
     "switchedSlots": "Yerine kilitlediğin bir eşyadaan hızlıca geçiş yaptın. Droplamak için biraz bekle!",
     "clickToOpenLink": "Click to open this link!",
     "clickToOpenFolder": "Click to open your mods folder!",
-    "freezeBackpackPreview": "Freeze Backpack Preview"
+    "freezeBackpackPreview": "Freeze Backpack Preview",
+    "hideGreyEnchants": "Hide Regular Grey Enchants"
   },
   "discordStatus": {
     "titleNone": "None",
