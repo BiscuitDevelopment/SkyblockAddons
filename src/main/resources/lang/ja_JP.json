@@ -112,7 +112,7 @@
     "showZealotsPerEye": "Zealotカウンター - アイ1つあたりのZealotキル数を表示する",
     "turnBowGreenWhenUsingToxicArrowPoison": "毒矢の使用時に弓を緑色にする",
     "birchParkRainmakerTimer": "Birch Parkの雨降りタイマー",
-    "combatTimerDisplay": "Combat Timer Display",
+    "combatTimerDisplay": "Combat状態のタイマーを表示",
     "discordRP": "Discordでのゲームステータス表示",
     "endstoneProtectorDisplay": "エンドストーンプロテクターがスポーンしたときに画面上に表示する"
   },
