@@ -114,10 +114,12 @@
     "birchParkRainmakerTimer": "樺木公園下雨計時",
     "combatTimerDisplay": "顯示脫離戰鬥計時器",
     "discordRP": "豐富Discord狀態",
-    "endstoneProtectorDisplay": "顯示終界石守護者"
+    "endstoneProtectorDisplay": "顯示終界石守護者",
+    "fancyWarpMenu": "Fancy Warp Menu",
+    "doubleWarp": "Double Warp",
+    "advancedMode": "Advanced Mode"
   },
   "messages": {
-    "betaTesters": "感謝你成為一個Beta測試者! 請在Discord中回報你遭遇的任何錯誤",
     "dropConfirmation": "再次丟棄此物品以確認!",
     "magmaBossWarning": "!!!熔岩史萊姆王已出生!!!",
     "fullInventory": "背包已滿!",
@@ -133,20 +135,15 @@
       "reforges": "重鑄",
       "crafting": "合成"
     },
-    "deleteOldFile": "下載已完成, 請使用下方的按鈕打開你的模組資料夾, 關閉你的Minecraft, 並刪除舊的版本(依個人也可稍後刪除)",
     "wantToViewPatchNotes": "想要查看更新內容?",
     "downloadLink": "更新連結",
-    "downloadAutomatically": "自動下載",
+    "directDownload": "DIRECT DOWNLOAD LINK",
     "openModFolder": "模組資料夾",
     "joinTheDiscord": "加入Discord",
+    "newUpdateAvailable": "A new update (%version%) is available!",
     "update": {
       "majorAvailable": "一個新的大型改版 (%version%) 現已上線! 聊天室中可見下載連結",
-      "patchAvailable": "一個新的補丁更新 (%version%) 現已上線! 見聊天室中下載選項!",
-      "downloading": "正在下載補丁! 進度: %downloaded%/%total% 請注意下載完成後你必須刪除舊的檔案",
-      "failed": "補丁下載失敗! 請使用聊天室中的連結手動下載",
-      "downloadFinished": "補丁以安裝完成。它已被保存為 %file%。關閉你的Minecraft後請不要忘記刪除舊的版本",
-      "newBeta": "一個新的測試版本 (%version%) 現已上線! 請使用''Mods''頁面更新",
-      "newUpdate": "一個新的更新 (%version%) 現已上線! 請使用''Mods''頁面更新"
+      "patchAvailable": "一個新的補丁更新 (%version%) 現已上線! 見聊天室中下載選項!"
     },
     "slotLocked": "此欄位已被鎖定!",
     "summoningEyeFound": "召喚之眼!",
@@ -171,9 +168,31 @@
     "resizeBars": "調整計量條大小",
     "showColorIcons": "顯示顏色圖標",
     "stage": "階段 %stage%",
-    "switchedSlots": "你剛從一個鎖住的欄位或稀有物品切換 丟棄前請稍等片刻!"
+    "switchedSlots": "你剛從一個鎖住的欄位或稀有物品切換 丟棄前請稍等片刻!",
+    "clickToOpenLink": "Click to open this link!",
+    "clickToOpenFolder": "Click to open your mods folder!",
+    "freezeBackpackPreview": "Freeze Backpack Preview"
   },
-  "discord": {
-    "status": {}
+  "discordStatus": {
+    "titleNone": "None",
+    "descriptionNone": "No text is displayed",
+    "titleLocation": "Location",
+    "descriptionLocation": "Shows your current location",
+    "titlePurse": "Purse",
+    "descriptionPurse": "Shows the amount of coins in your purse",
+    "titleStats": "Stats",
+    "descriptionStats": "Shows your HP, Defense and Mana stats",
+    "titleZealots": "Zealots",
+    "descriptionZealots": "Shows your Zealot counter",
+    "titleItem": "Held Item",
+    "descriptionItem": "Shows the name of the item you're holding",
+    "titleProfile": "Profile",
+    "descriptionProfile": "Shows your Profile name",
+    "titleTime": "Skyblock Time",
+    "descriptionTime": "Shows the current Skyblock time. E.g. 12:00am 1st Early Winter",
+    "titleCustom": "Custom Status",
+    "descriptionCustom": "Enter a custom status",
+    "titleAuto": "Auto Status",
+    "descriptionAuto": "Automatically displays a status. E.g. your zealot count while in the end."
   }
 }
