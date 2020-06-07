@@ -114,10 +114,12 @@
     "birchParkRainmakerTimer": "แสดงเวลาฝนตกใน ฺBirch Park",
     "combatTimerDisplay": "แสดงเวลา Combat",
     "discordRP": "สถานะของดิสคอร์ด",
-    "endstoneProtectorDisplay": "แสดง Endstone Protector"
+    "endstoneProtectorDisplay": "แสดง Endstone Protector",
+    "fancyWarpMenu": "Fancy Warp Menu",
+    "doubleWarp": "Double Warp",
+    "advancedMode": "Advanced Mode"
   },
   "messages": {
-    "betaTesters": "ขอบคุณสำหรับการทดสอบ โปรดแจ้งบัคที่เจอใน Discord Channel",
     "dropConfirmation": "กดทิ้งของอีกที่เพื่อยืนยันทิ้งของสิ่งนี้!",
     "magmaBossWarning": "บอส Magma เกิดแล้ว!",
     "fullInventory": "ช่องเก็บของเต็มแล้ว!",
@@ -133,20 +135,15 @@
       "reforges": "ตีบวกของ",
       "crafting": "คราฟของ"
     },
-    "deleteOldFile": "การดาวน์โหลดเสร็จสมบูรณ์ กรุณาเปิดโฟลเดอร์มอดโดยใช้ปุ่มข้างล่างนี้ จากนั้นปิด Minecraft และลบมอดเวอร์ชั่นเก่า (หรือจะลบทีหลังก็ได้ถ้าต้องการ)",
     "wantToViewPatchNotes": "ต้องการอ่านการเปลี่ยนแปลงหรือไม่?",
     "downloadLink": "ลิงค์อัพเดท",
-    "downloadAutomatically": "ดาวน์โหลดอัตโนมัติ",
+    "directDownload": "DIRECT DOWNLOAD LINK",
     "openModFolder": "โฟลเดอร์มอด",
     "joinTheDiscord": "เข้าร่วม Discord",
+    "newUpdateAvailable": "A new update (%version%) is available!",
     "update": {
       "majorAvailable": "มีอัพเดทใหญ่ (%version%) พร้อมให้ดาวน์โหลดแล้ว! หาลิงค์ดาวน์โหลดได้ในช่องแชท",
-      "patchAvailable": "มี Patch ใหม่ (%version%) พร้อมให้ดาวน์โหลดแล้ว! หาลิงค์ดาวน์โหลดได้ในช่องแชท",
-      "downloading": "กำลังดาวน์โหลด Patch ใหม่! สถานะ: %downloaded%/%total% โปรดจำไว้ว่าหลังดาวน์โหลดเสร็จแล้ว คุณต้องลบไฟล์เวอร์ชั่นเก่าออก",
-      "failed": "ดาวน์โหลด Patch ไม่สำเร็จ! กรุณาดาวน์โหลดโดยใช้ลิงค์ในช่องแชท",
-      "downloadFinished": "ดาวน์โหลด Patch สำเร็จ ไฟล์ได้ถูกบักทึกเป็น %file% กรุณาอย่าลืมลบไฟล์เก่าหลังจากปิด Minecraft คลิกที่ข้อความในช่องแชทเพื่อเปิดโฟลเดอร์",
-      "newBeta": "เบต้าเวอร์ชั่น (%version%) พร้อมแล้ว โปรดอัพเดทโดยใช้เมนู มอด",
-      "newUpdate": "เวอร์ชั่นใหม่ (%version%) พร้อมแล้ว โปรดอัพเดทโดยใช้เมนู มอด"
+      "patchAvailable": "มี Patch ใหม่ (%version%) พร้อมให้ดาวน์โหลดแล้ว! หาลิงค์ดาวน์โหลดได้ในช่องแชท"
     },
     "slotLocked": "ช่องนี้ถูกล็อคไว้!",
     "summoningEyeFound": "ดวงตาอัญเชิญ!",
@@ -171,9 +168,31 @@
     "resizeBars": "ปรับขนาดแถบ",
     "showColorIcons": "แสดงปุ่มสี",
     "stage": "ด่าน %stage%",
-    "switchedSlots": "คุณพึ่งเปลี่ยนจากการลอคช่อง โปรดรอสักครู่​ก่อนทำการโยน"
+    "switchedSlots": "คุณพึ่งเปลี่ยนจากการลอคช่อง โปรดรอสักครู่​ก่อนทำการโยน",
+    "clickToOpenLink": "Click to open this link!",
+    "clickToOpenFolder": "Click to open your mods folder!",
+    "freezeBackpackPreview": "Freeze Backpack Preview"
   },
-  "discord": {
-    "status": {}
+  "discordStatus": {
+    "titleNone": "None",
+    "descriptionNone": "No text is displayed",
+    "titleLocation": "Location",
+    "descriptionLocation": "Shows your current location",
+    "titlePurse": "Purse",
+    "descriptionPurse": "Shows the amount of coins in your purse",
+    "titleStats": "Stats",
+    "descriptionStats": "Shows your HP, Defense and Mana stats",
+    "titleZealots": "Zealots",
+    "descriptionZealots": "Shows your Zealot counter",
+    "titleItem": "Held Item",
+    "descriptionItem": "Shows the name of the item you're holding",
+    "titleProfile": "Profile",
+    "descriptionProfile": "Shows your Profile name",
+    "titleTime": "Skyblock Time",
+    "descriptionTime": "Shows the current Skyblock time. E.g. 12:00am 1st Early Winter",
+    "titleCustom": "Custom Status",
+    "descriptionCustom": "Enter a custom status",
+    "titleAuto": "Auto Status",
+    "descriptionAuto": "Automatically displays a status. E.g. your zealot count while in the end."
   }
 }
