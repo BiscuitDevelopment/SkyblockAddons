@@ -116,8 +116,8 @@
     "discordRP": "Discord Rich Presence",
     "endstoneProtectorDisplay": "Mostra Endstone Protector",
     "fancyWarpMenu": "Fancy Warp Menu",
-    "doubleWarp": "Double Warp",
-    "advancedMode": "Advanced Mode"
+    "doubleWarp": "Warp Twice",
+    "advancedMode": "Modalità avanzata"
   },
   "messages": {
     "dropConfirmation": "Getta questo oggetto nuovamente per confermare!",
@@ -135,12 +135,12 @@
       "reforges": "Forge",
       "crafting": "Fabbricazione"
     },
-    "wantToViewPatchNotes": "Vuoi leggere le modifiche?",
-    "downloadLink": "LINK AGGIORNAMENTO",
-    "directDownload": "DIRECT DOWNLOAD LINK",
-    "openModFolder": "CARTELLA MODS",
-    "joinTheDiscord": "ENTRA NEL SERVER DI DISCORD",
-    "newUpdateAvailable": "A new update (%version%) is available!",
+    "wantToViewPatchNotes": "Hai bisogno di aiuto o vuoi leggere la lista dei cambiamenti?",
+    "downloadLink": "VIDEO/LINK DELL’AGGIORNAMENTO",
+    "directDownload": "LINK DIRETTO AL DOWNLOAD",
+    "openModFolder": "APRI LA CARTELLA DEI MODS",
+    "joinTheDiscord": "LINK DI DISCORD",
+    "newUpdateAvailable": "Un nuovo aggiornamento (%version%) è disponibile!",
     "update": {
       "majorAvailable": "Un nuovo aggiornamento importante (%version%) è disponibile! Il link per il download si trova in chat.",
       "patchAvailable": "Un nuovo aggiornamento con correzioni di errori (%version%) è disponibile! Cerca le opzioni di download in chat!"
@@ -169,30 +169,31 @@
     "showColorIcons": "Mostra icone di colore",
     "stage": "Fase %stage%",
     "switchedSlots": "Sei appena passato da uno slot bloccato o da un oggetto raro. Attendi un po' prima di gettare a terra!",
-    "clickToOpenLink": "Click to open this link!",
-    "clickToOpenFolder": "Click to open your mods folder!",
-    "freezeBackpackPreview": "Freeze Backpack Preview"
+    "clickToOpenLink": "Clicca per aprire questo link!",
+    "clickToOpenFolder": "Clicca per aprire la tua cartella dei mods!",
+    "freezeBackpackPreview": "Freeze Backpack Preview",
+    "hideGreyEnchants": "Nascondi gli incantesimi grigi regolari"
   },
   "discordStatus": {
-    "titleNone": "None",
-    "descriptionNone": "No text is displayed",
-    "titleLocation": "Location",
-    "descriptionLocation": "Shows your current location",
-    "titlePurse": "Purse",
-    "descriptionPurse": "Shows the amount of coins in your purse",
-    "titleStats": "Stats",
-    "descriptionStats": "Shows your HP, Defense and Mana stats",
+    "titleNone": "Nessuno",
+    "descriptionNone": "Nessun testo mostrato",
+    "titleLocation": "Posizione",
+    "descriptionLocation": "Mostra la tua posizione attuale",
+    "titlePurse": "Portafoglio",
+    "descriptionPurse": "Mostra la quantità di monete nel tuo portafoglio",
+    "titleStats": "Stati",
+    "descriptionStats": "Mostra lo stato della tua vita, difesa e mana",
     "titleZealots": "Zealots",
-    "descriptionZealots": "Shows your Zealot counter",
-    "titleItem": "Held Item",
-    "descriptionItem": "Shows the name of the item you're holding",
-    "titleProfile": "Profile",
-    "descriptionProfile": "Shows your Profile name",
-    "titleTime": "Skyblock Time",
+    "descriptionZealots": "Mostra il tuo conteggio degli zealots",
+    "titleItem": "Oggetto in mano",
+    "descriptionItem": "Mostra il nome dell’oggetto che stai tenendo in mano",
+    "titleProfile": "Profilo",
+    "descriptionProfile": "Mostra il nome del tuo profilo",
+    "titleTime": "Orario di Skyblock",
     "descriptionTime": "Shows the current Skyblock time. E.g. 12:00am 1st Early Winter",
-    "titleCustom": "Custom Status",
-    "descriptionCustom": "Enter a custom status",
-    "titleAuto": "Auto Status",
-    "descriptionAuto": "Automatically displays a status. E.g. your zealot count while in the end."
+    "titleCustom": "Stato personalizzato",
+    "descriptionCustom": "Inserisci uno stato personalizzato",
+    "titleAuto": "Stato automatico",
+    "descriptionAuto": "Mostra automaticamente uno stato. Ad esempio: il tuo conteggio di zealots mentre sei nell’end."
   }
 }
