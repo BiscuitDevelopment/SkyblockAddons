@@ -1,6 +1,7 @@
 package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.core.Message;
 import lombok.Getter;
 import net.minecraft.event.ClickEvent;
 import net.minecraft.event.HoverEvent;

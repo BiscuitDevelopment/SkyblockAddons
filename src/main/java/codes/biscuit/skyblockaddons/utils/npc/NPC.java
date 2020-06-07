@@ -1,6 +1,6 @@
 package codes.biscuit.skyblockaddons.utils.npc;
 
-import codes.biscuit.skyblockaddons.utils.Location;
+import codes.biscuit.skyblockaddons.core.Location;
 import lombok.Getter;
 
 import java.util.List;

@@ -1,9 +1,9 @@
 package codes.biscuit.skyblockaddons.listeners;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.utils.Feature;
-import codes.biscuit.skyblockaddons.utils.events.SkyblockJoinedEvent;
-import codes.biscuit.skyblockaddons.utils.events.SkyblockLeftEvent;
+import codes.biscuit.skyblockaddons.core.Feature;
+import codes.biscuit.skyblockaddons.events.SkyblockJoinedEvent;
+import codes.biscuit.skyblockaddons.events.SkyblockLeftEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.FMLNetworkEvent;
 import org.apache.logging.log4j.Logger;

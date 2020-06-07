@@ -1,4 +1,4 @@
-package codes.biscuit.skyblockaddons.utils.events;
+package codes.biscuit.skyblockaddons.events;
 
 import codes.biscuit.skyblockaddons.utils.Utils;
 import net.minecraftforge.fml.common.eventhandler.Event;

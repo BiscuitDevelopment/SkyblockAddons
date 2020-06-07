@@ -58,7 +58,7 @@ shadowJar {
     classifier = ''
 
     manifest.attributes(
-            'Main-Class': 'OpenErrorMessage',
+            'Main-Class': 'SkyblockAddonsInstallerFrame',
             'FMLCorePlugin': "${project.group}.${project.modId}.tweaker.${project.modName}LoadingPlugin",
             'ForceLoadAsMod': true,
             'FMLCorePluginContainsFMLMod': true,

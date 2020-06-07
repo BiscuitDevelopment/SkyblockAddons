@@ -14,8 +14,8 @@ import java.util.List;
  */
 public class ButtonSelect extends GuiButton {
 
-    private static ResourceLocation ARROW_LEFT = new ResourceLocation("skyblockaddons", "flat_arrow_left.png");
-    private static ResourceLocation ARROW_RIGHT = new ResourceLocation("skyblockaddons", "flat_arrow_right.png");
+    private static ResourceLocation ARROW_LEFT = new ResourceLocation("skyblockaddons", "flatarrowleft.png");
+    private static ResourceLocation ARROW_RIGHT = new ResourceLocation("skyblockaddons", "flatarrowright.png");
 
     /**
      * Item that can be used in this Select button

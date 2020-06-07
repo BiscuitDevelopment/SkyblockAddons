@@ -1,4 +1,6 @@
-package codes.biscuit.skyblockaddons.utils;
+package codes.biscuit.skyblockaddons.core;
+
+import codes.biscuit.skyblockaddons.utils.TextUtils;
 
 import java.text.DecimalFormat;
 import java.util.regex.Matcher;
@@ -44,7 +46,7 @@ public class SkyblockDate {
     private int minute;
     private String period;
 
-    SkyblockDate(SkyblockMonth month, int day, int hour, int minute, String period) {
+    public SkyblockDate(SkyblockMonth month, int day, int hour, int minute, String period) {
         this.month = month;
         this.day = day;
         this.hour = hour;

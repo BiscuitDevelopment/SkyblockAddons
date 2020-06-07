@@ -1,7 +1,10 @@
-package codes.biscuit.skyblockaddons.utils;
+package codes.biscuit.skyblockaddons.core;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.gui.buttons.ButtonLocation;
+import codes.biscuit.skyblockaddons.utils.CoordsPair;
+import codes.biscuit.skyblockaddons.utils.EnumUtils;
+import codes.biscuit.skyblockaddons.utils.GuiFeatureData;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
 import com.google.common.collect.Sets;
 import lombok.Getter;
@@ -108,8 +111,7 @@ public enum Feature {
     ENDSTONE_PROTECTOR_DISPLAY(84, Message.SETTING_ENDSTONE_PROTECTOR_DISPLAY, new GuiFeatureData(EnumUtils.DrawType.TEXT, ChatFormatting.WHITE, EnumUtils.AnchorPoint.TOP_RIGHT, -168, 11), false),
     FANCY_WARP_MENU(85, Message.SETTING_FANCY_WARP_MENU, false),
     DOUBLE_WARP(86, Message.SETTING_DOUBLE_WARP, true),
-
-    HIDE_GREY_ENCHANTS(100, null, false), // This is here just to allow remote disabling this feature- it's caused issues in the past haha.
+    HIDE_GREY_ENCHANTS(87, Message.SETTING_HIDE_GREY_ENCHANTS, false),
 
     WARNING_TIME(-1, Message.SETTING_WARNING_DURATION, false),
 
@@ -255,6 +257,6 @@ public enum Feature {
     }
 
     public boolean isNew() {
-        return id > ID_AT_PREVIOUS_UPDATE;
+        return id > ID_AT_PREVIOUS_UPDATE && this != HIDE_GREY_ENCHANTS;
     }
 }

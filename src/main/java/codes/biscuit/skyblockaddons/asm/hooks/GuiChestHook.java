@@ -2,6 +2,8 @@ package codes.biscuit.skyblockaddons.asm.hooks;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.asm.utils.ReturnValue;
+import codes.biscuit.skyblockaddons.core.Feature;
+import codes.biscuit.skyblockaddons.core.Message;
 import codes.biscuit.skyblockaddons.gui.IslandWarpGui;
 import codes.biscuit.skyblockaddons.gui.elements.CraftingPatternSelection;
 import codes.biscuit.skyblockaddons.utils.*;
@@ -33,7 +35,6 @@ public class GuiChestHook {
     private static GuiTextField textFieldMatch = null;
     private static GuiTextField textFieldExclusions = null;
     private static CraftingPatternSelection craftingPatternSelection = null;
-    private static Backpack backpack = null;
 
     private static Pattern warpPattern = Pattern.compile("(?:§5§o)?§8/warp ([a-z]*)");
     private static Pattern unlockedPattern = Pattern.compile("(?:§5§o)?§eClick to warp!");
@@ -348,9 +349,8 @@ public class GuiChestHook {
                 main.getConfigValues().isEnabled(Feature.MAKE_BACKPACK_INVENTORIES_COLORED)
                 && lowerChestInventory.hasCustomName()) {
             if (lowerChestInventory.getDisplayName().getUnformattedText().contains("Backpack")) {
-                backpack = Backpack.getFromItem(mc.thePlayer.getHeldItem());
-                if (backpack != null) {
-                    BackpackColor color = backpack.getBackpackColor();
+                if (BackpackManager.getOpenedBackpackColor() != null) {
+                    BackpackColor color = BackpackManager.getOpenedBackpackColor();
                     GlStateManager.color(color.getR(), color.getG(), color.getB(), 1);
                     return;
                 }
@@ -363,13 +363,12 @@ public class GuiChestHook {
                 return;
             }
         }
-        backpack = null;
         GlStateManager.color(colorRed,colorGreen,colorBlue,colorAlpha);
     }
 
     public static int drawString(FontRenderer fontRenderer, String text, int x, int y, int color) {
-        if (backpack != null) {
-            return fontRenderer.drawString(text, x,y, backpack.getBackpackColor().getInventoryTextColor());
+        if (BackpackManager.getOpenedBackpackColor() != null) {
+            return fontRenderer.drawString(text, x,y, BackpackManager.getOpenedBackpackColor().getInventoryTextColor());
         }
         return fontRenderer.drawString(text,x,y,color);
     }

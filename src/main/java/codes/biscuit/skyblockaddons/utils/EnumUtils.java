@@ -1,6 +1,7 @@
 package codes.biscuit.skyblockaddons.utils;
 
-import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.core.Feature;
+import codes.biscuit.skyblockaddons.core.Message;
 import lombok.Getter;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -13,30 +14,24 @@ import java.net.URISyntaxException;
 import java.util.EnumSet;
 import java.util.Set;
 
-import static codes.biscuit.skyblockaddons.utils.Message.*;
+import static codes.biscuit.skyblockaddons.core.Message.*;
 
 public class EnumUtils {
 
-    @SuppressWarnings("deprecation")
     public enum AnchorPoint {
-        TOP_LEFT(0, ANCHOR_POINT_TOP_LEFT),
-        TOP_RIGHT(1, ANCHOR_POINT_TOP_RIGHT),
-        BOTTOM_LEFT(2, ANCHOR_POINT_BOTTOM_LEFT),
-        BOTTOM_RIGHT(3, ANCHOR_POINT_BOTTOM_RIGHT),
-        BOTTOM_MIDDLE(4, ANCHOR_POINT_HEALTH_BAR);
+        TOP_LEFT(0),
+        TOP_RIGHT(1),
+        BOTTOM_LEFT(2),
+        BOTTOM_RIGHT(3),
+        BOTTOM_MIDDLE(4);
 
-        private Message message;
         @Getter private int id;
 
-        AnchorPoint(int id, Message message) {
-            this.message = message;
+        AnchorPoint(int id) {
             this.id = id;
         }
 
-        public String getMessage() {
-            return message.getMessage();
-        }
-
+        @SuppressWarnings("unused") // Accessed by reflection...
         public static AnchorPoint fromId(int id) {
             for (AnchorPoint feature : values()) {
                 if (feature.getId() == id) {
@@ -326,34 +321,6 @@ public class EnumUtils {
 
         public String getUrl() {
             return "https://"+url;
-        }
-    }
-
-    @Deprecated
-    public enum UpdateMessageType {
-        MAJOR_AVAILABLE(UPDATE_MESSAGE_MAJOR),
-        PATCH_AVAILABLE(UPDATE_MESSAGE_PATCH),
-        DOWNLOADING(UPDATE_MESSAGE_DOWNLOAD),
-        FAILED(UPDATE_MESSAGE_FAILED),
-        DOWNLOAD_FINISHED(UPDATE_MESSAGE_DOWNLOAD_FINISHED),
-        DEVELOPMENT(null);
-
-        private Message message;
-
-        UpdateMessageType(Message message) {
-            this.message = message;
-        }
-
-        public String[] getMessages(String... variables) {
-            String messageText;
-            if (this == DEVELOPMENT) {
-                messageText = "You are running a development version: " + SkyblockAddons.VERSION + ". Please report any bugs that haven't been found yet. Thank you.";
-            } else {
-                messageText = message.getMessage(variables);
-            }
-
-            // Wrap around the text, replace the carriage returns, and split at the new lines.
-            return SkyblockAddons.getInstance().getUtils().wrapSplitText(messageText, 36);
         }
     }
 

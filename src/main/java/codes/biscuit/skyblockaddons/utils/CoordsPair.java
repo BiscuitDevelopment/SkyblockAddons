@@ -51,7 +51,7 @@ public class CoordsPair {
         return getX()+"|"+getY();
     }
 
-    protected CoordsPair cloneCoords() {
+    public CoordsPair cloneCoords() {
         return new CoordsPair(getX(), getY());
     }
 }

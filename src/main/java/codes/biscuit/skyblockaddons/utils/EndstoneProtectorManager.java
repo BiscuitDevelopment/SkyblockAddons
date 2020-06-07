@@ -1,6 +1,8 @@
 package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.core.Feature;
+import codes.biscuit.skyblockaddons.core.Location;
 import lombok.Getter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.WorldClient;
@@ -18,7 +20,7 @@ public class EndstoneProtectorManager {
 
     private static long lastWaveStart = -1;
 
-    public static void tick() {
+    public static void checkGolemStatus() {
         Minecraft mc = Minecraft.getMinecraft();
         SkyblockAddons main = SkyblockAddons.getInstance();
 

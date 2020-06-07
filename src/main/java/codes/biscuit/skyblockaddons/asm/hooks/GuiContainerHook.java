@@ -2,6 +2,7 @@ package codes.biscuit.skyblockaddons.asm.hooks;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.asm.utils.ReturnValue;
+import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsTransformer;
 import codes.biscuit.skyblockaddons.utils.*;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
@@ -121,7 +122,7 @@ public class GuiContainerHook {
         SkyblockAddons main = SkyblockAddons.getInstance();
         if (keyCode == 1 || keyCode == Minecraft.getMinecraft().gameSettings.keyBindInventory.getKeyCode()) {
             freezeBackpack = false;
-            main.getUtils().setBackpackToRender(null);
+            main.getUtils().setBackpackToPreview(null);
         }
         if (keyCode == main.getFreezeBackpackKey().getKeyCode() && freezeBackpack &&
                 System.currentTimeMillis() - GuiScreenHook.getLastBackpackFreezeKey() > 500) {
@@ -132,7 +133,7 @@ public class GuiContainerHook {
 
     public static void drawBackpacks(GuiContainer guiContainer, int mouseX, int mouseY, FontRenderer fontRendererObj) {
         SkyblockAddons main = SkyblockAddons.getInstance();
-        Backpack backpack = main.getUtils().getBackpackToRender();
+        Backpack backpack = main.getUtils().getBackpackToPreview();
         Minecraft mc = Minecraft.getMinecraft();
         if (backpack != null) {
             int x = backpack.getX();
@@ -210,7 +211,7 @@ public class GuiContainerHook {
                 }
             }
             if (!freezeBackpack) {
-                main.getUtils().setBackpackToRender(null);
+                main.getUtils().setBackpackToPreview(null);
             }
             GlStateManager.enableLighting();
             GlStateManager.enableDepth();
@@ -345,7 +346,7 @@ public class GuiContainerHook {
         }
     }
 
-    public static void handleMouseClick(int guiLeft, int guiTop, int oldMouseX, int oldMouseY, int xSize, int ySize, ReturnValue<NullType> returnValue) {
+    public static void handleMouseClick(Slot slotIn, int slotId, int clickedButton, int clickType, ReturnValue<NullType> returnValue) {
 /*        SkyblockAddons main = SkyblockAddons.getInstance();
         if (main.getUtils().isOnSkyblock()) {
             boolean isOutsideGui = oldMouseX < guiLeft || oldMouseY < guiTop || oldMouseX >= guiLeft + xSize || oldMouseY >= guiTop + ySize;

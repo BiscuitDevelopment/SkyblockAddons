@@ -1,8 +1,12 @@
 package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.utils.events.SkyblockJoinedEvent;
-import codes.biscuit.skyblockaddons.utils.events.SkyblockLeftEvent;
+import codes.biscuit.skyblockaddons.core.Attribute;
+import codes.biscuit.skyblockaddons.core.Feature;
+import codes.biscuit.skyblockaddons.core.Location;
+import codes.biscuit.skyblockaddons.core.SkyblockDate;
+import codes.biscuit.skyblockaddons.events.SkyblockJoinedEvent;
+import codes.biscuit.skyblockaddons.events.SkyblockLeftEvent;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
 import codes.biscuit.skyblockaddons.utils.nifty.StringUtil;
 import codes.biscuit.skyblockaddons.utils.nifty.reflection.MinecraftReflection;
@@ -86,7 +90,7 @@ public class Utils {
     /** List of enchantment substrings that the player doesn't want to match. */
     private List<String> enchantmentExclusions = new LinkedList<>();
 
-    private Backpack backpackToRender = null;
+    private Backpack backpackToPreview = null;
 
     /** Whether the player is on skyblock. */
     private boolean onSkyblock = false;
@@ -95,7 +99,7 @@ public class Utils {
     private Location location = Location.UNKNOWN;
 
     /** The skyblock profile that the player is currently on. Ex. "Grapefruit" */
-    private String profileName = null;
+    private String profileName = "Unknown";
 
     /** Whether or not a loud sound is being played by the mod. */
     private boolean playingSound = false;

@@ -1,6 +1,8 @@
 package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.core.Feature;
+import codes.biscuit.skyblockaddons.core.Location;
 import codes.biscuit.skyblockaddons.utils.item.ItemUtils;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.entity.player.FillBucketEvent;

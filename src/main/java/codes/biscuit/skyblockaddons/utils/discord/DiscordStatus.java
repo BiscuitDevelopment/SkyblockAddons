@@ -1,6 +1,10 @@
 package codes.biscuit.skyblockaddons.utils.discord;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.core.Attribute;
+import codes.biscuit.skyblockaddons.core.Location;
+import codes.biscuit.skyblockaddons.core.Message;
+import codes.biscuit.skyblockaddons.core.SkyblockDate;
 import codes.biscuit.skyblockaddons.gui.buttons.ButtonSelect;
 import codes.biscuit.skyblockaddons.utils.*;
 import net.minecraft.client.Minecraft;

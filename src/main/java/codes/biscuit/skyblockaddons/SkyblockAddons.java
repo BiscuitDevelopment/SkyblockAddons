@@ -1,11 +1,14 @@
 package codes.biscuit.skyblockaddons;
 
 import codes.biscuit.skyblockaddons.commands.SkyblockAddonsCommand;
+import codes.biscuit.skyblockaddons.core.Feature;
+import codes.biscuit.skyblockaddons.core.Message;
 import codes.biscuit.skyblockaddons.gui.IslandWarpGui;
 import codes.biscuit.skyblockaddons.listeners.GuiScreenListener;
 import codes.biscuit.skyblockaddons.listeners.NetworkListener;
 import codes.biscuit.skyblockaddons.listeners.PlayerListener;
 import codes.biscuit.skyblockaddons.listeners.RenderListener;
+import codes.biscuit.skyblockaddons.scheduler.NewScheduler;
 import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsTransformer;
 import codes.biscuit.skyblockaddons.utils.*;
 import codes.biscuit.skyblockaddons.utils.discord.DiscordRPCManager;
@@ -35,7 +38,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 @Getter
-@Mod(modid = "skyblockaddons", name = "SkyblockAddons", version = "@VERSION@", clientSideOnly = true, acceptedMinecraftVersions = "@MOD_ACCEPTED@", updateJSON = "https://pastebin.com/raw/fYVAPgaF")
+@Mod(modid = "skyblockaddons", name = "SkyblockAddons", version = "@VERSION@", clientSideOnly = true, acceptedMinecraftVersions = "@MOD_ACCEPTED@", updateJSON = "@UPDATE_JSON@")
 public class SkyblockAddons {
 
     public static final String MOD_ID = "skyblockaddons";
@@ -58,6 +61,7 @@ public class SkyblockAddons {
 
     /** Get the scheduler that be can be used to easily execute tasks. */
     private Scheduler scheduler = new Scheduler(this);
+    private NewScheduler newScheduler = new NewScheduler();
     private boolean usingLabymod = false;
     private boolean usingOofModv1 = false;
 
@@ -94,6 +98,7 @@ public class SkyblockAddons {
         MinecraftForge.EVENT_BUS.register(guiScreenListener);
         MinecraftForge.EVENT_BUS.register(renderListener);
         MinecraftForge.EVENT_BUS.register(scheduler);
+        MinecraftForge.EVENT_BUS.register(newScheduler);
 
         // Initialize utilities
         inventoryUtils = new InventoryUtils(this);

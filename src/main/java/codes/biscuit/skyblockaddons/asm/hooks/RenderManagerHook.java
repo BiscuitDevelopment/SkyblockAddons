@@ -2,8 +2,8 @@ package codes.biscuit.skyblockaddons.asm.hooks;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.asm.utils.ReturnValue;
-import codes.biscuit.skyblockaddons.utils.Feature;
-import codes.biscuit.skyblockaddons.utils.Location;
+import codes.biscuit.skyblockaddons.core.Feature;
+import codes.biscuit.skyblockaddons.core.Location;
 import codes.biscuit.skyblockaddons.utils.npc.NPCUtils;
 import codes.biscuit.skyblockaddons.utils.npc.Tag;
 import net.minecraft.client.Minecraft;

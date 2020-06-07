@@ -3,8 +3,9 @@ package codes.biscuit.skyblockaddons.asm.hooks;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.asm.utils.ReturnValue;
 import codes.biscuit.skyblockaddons.utils.Backpack;
+import codes.biscuit.skyblockaddons.utils.BackpackManager;
 import codes.biscuit.skyblockaddons.utils.CooldownManager;
-import codes.biscuit.skyblockaddons.utils.Feature;
+import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.utils.InventoryUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
@@ -60,17 +61,17 @@ public class GuiScreenHook {
                 }
             }
 
-            Backpack backpack = Backpack.getFromItem(stack);
+            Backpack backpack = BackpackManager.getFromItem(stack);
             if (backpack != null) {
                 backpack.setX(x);
                 backpack.setY(y);
                 if (isFreezeKeyDown(main) && System.currentTimeMillis() - lastBackpackFreezeKey > 500) {
                     lastBackpackFreezeKey = System.currentTimeMillis();
                     GuiContainerHook.setFreezeBackpack(!GuiContainerHook.isFreezeBackpack());
-                    main.getUtils().setBackpackToRender(backpack);
+                    main.getUtils().setBackpackToPreview(backpack);
                 }
                 if (!GuiContainerHook.isFreezeBackpack()) {
-                    main.getUtils().setBackpackToRender(backpack);
+                    main.getUtils().setBackpackToPreview(backpack);
                 }
                 main.getPlayerListener().onItemTooltip(new ItemTooltipEvent(stack, null, null, false));
                 returnValue.cancel();

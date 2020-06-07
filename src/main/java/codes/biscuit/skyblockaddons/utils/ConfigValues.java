@@ -1,6 +1,7 @@
 package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.utils.discord.DiscordStatus;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
 import com.google.gson.*;
@@ -166,6 +167,21 @@ public class ConfigValues {
                     }
                 }
             }
+
+            int lastFeatureID;
+            if (settingsConfig.has("lastFeatureID")) {
+                lastFeatureID = settingsConfig.get("lastFeatureID").getAsInt();
+            } else {
+                // This system was added after this feature.
+                lastFeatureID = Feature.SKYBLOCK_ADDONS_BUTTON_IN_PAUSE_MENU.getId();
+            }
+            // This will go through every feature, and if they are new features that didn't exist before
+            // that should be disabled by default, and their coordinates are default, this will disable those features.
+            for (Feature feature : Feature.values()) {
+                if (feature.getId() > lastFeatureID && feature.isDefaultDisabled() && featureCoordinatesAreDefault(feature)) {
+                    this.getDisabledFeatures().add(feature);
+                }
+            }
         } else {
             addDefaultsAndSave();
         }
@@ -298,6 +314,11 @@ public class ConfigValues {
             settingsConfig.add("discordCustomStatuses", discordCustomStatusesArray);
 
             settingsConfig.addProperty("configVersion", CONFIG_VERSION);
+            int largestFeatureID = 0;
+            for (Feature feature : Feature.values()) {
+                if (feature.getId() > largestFeatureID) largestFeatureID = feature.getId();
+            }
+            settingsConfig.addProperty("lastFeatureID", largestFeatureID);
 
             bufferedWriter.write(settingsConfig.toString());
             bufferedWriter.close();
@@ -596,6 +617,13 @@ public class ConfigValues {
         return feature.getDefaultColor();
     }
 
+    private boolean featureCoordinatesAreDefault(Feature feature) {
+        if (feature.getDefaultCoordinates() == null) return true;
+        if (!coordinates.containsKey(feature)) return true;
+
+        return coordinates.get(feature).equals(feature.getDefaultCoordinates());
+    }
+
     public void setColor(Feature feature, int color) {
         colors.put(feature, color);
     }
@@ -680,15 +708,11 @@ public class ConfigValues {
 
     public Set<Integer> getLockedSlots() {
         String profile = main.getUtils().getProfileName();
-        if (profile == null) {
-            Set<Integer> combineAllProfileLockedSlots = new HashSet<>();
-            for (Set<Integer> profileLockedSlots : this.profileLockedSlots.values()) {
-                combineAllProfileLockedSlots.addAll(profileLockedSlots);
-            }
-            return combineAllProfileLockedSlots;
+        if (!profileLockedSlots.containsKey(profile)) {
+            profileLockedSlots.put(profile, new HashSet<>());
         }
 
-        return profileLockedSlots.getOrDefault(profile, new HashSet<>());
+        return profileLockedSlots.get(profile);
     }
 
     public void setGuiScale(Feature feature, float scale) {

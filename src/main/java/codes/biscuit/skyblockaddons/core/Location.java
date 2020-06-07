@@ -1,4 +1,4 @@
-package codes.biscuit.skyblockaddons.utils;
+package codes.biscuit.skyblockaddons.core;
 
 import com.google.common.collect.Sets;
 import lombok.Getter;

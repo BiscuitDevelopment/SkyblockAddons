@@ -1,6 +1,8 @@
-package codes.biscuit.skyblockaddons.utils;
+package codes.biscuit.skyblockaddons.core;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.utils.Language;
+import codes.biscuit.skyblockaddons.utils.TextUtils;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
 import com.google.gson.JsonObject;
 import lombok.Getter;
@@ -114,6 +116,7 @@ public enum Message {
     SETTING_DOUBLE_WARP(MessageObject.SETTING, "doubleWarp"),
     SETTING_ADVANCED_MODE(MessageObject.SETTING, "advancedMode"),
     SETTING_FREEZE_BACKPACK_PREVIEW(MessageObject.SETTING, "freezeBackpackPreview"),
+    SETTING_HIDE_GREY_ENCHANTS(MessageObject.SETTING, "hideGreyEnchants"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.BACKPACK_STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.BACKPACK_STYLE, "compact"),

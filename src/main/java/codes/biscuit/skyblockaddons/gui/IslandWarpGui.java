@@ -1,11 +1,11 @@
 package codes.biscuit.skyblockaddons.gui;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.gui.buttons.ButtonToggleNew;
 import codes.biscuit.skyblockaddons.gui.buttons.IslandButton;
 import codes.biscuit.skyblockaddons.gui.buttons.IslandMarkerButton;
 import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsTransformer;
-import codes.biscuit.skyblockaddons.utils.Feature;
 import lombok.Getter;
 import lombok.Setter;
 import net.minecraft.client.Minecraft;
@@ -20,7 +20,6 @@ import net.minecraft.init.Items;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import org.lwjgl.input.Mouse;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -123,7 +122,7 @@ public class IslandWarpGui extends GuiScreen {
                         return false;
                     },
                     () -> {
-                        if (!this.foundAdvancedWarpToggle) return;
+                        if (!foundAdvancedWarpToggle) return;
 
                         // This will click the advanced mode button for you.
                         GuiScreen guiScreen = Minecraft.getMinecraft().currentScreen;
@@ -221,24 +220,24 @@ public class IslandWarpGui extends GuiScreen {
 
         GlStateManager.popMatrix();
 
-        detectClosestMarker();
+        detectClosestMarker(mouseX, mouseY);
     }
 
     @Getter
     public enum Island {
-        THE_END("The End", 100, 30, 573, 506),
-        BLAZING_FORTRESS("Blazing Fortress", 809, 0, 644, 580),
-        THE_PARK("The Park", 113, 380, 378, 409),
-        SPIDERS_DEN("Spider's Den", 500, 361, 533, 412),
-        DEEP_CAVERNS("Deep Caverns", 1406, 334, 323, 416),
-        GOLD_MINE("Gold Mine", 1080, 606, 279, 297),
-        THE_BARN("The Barn", 1223, 782, 274, 263),
-        HUB("Hub", 215, 724, 937, 585),
-        MUSHROOM_DESERT("Mushroom Desert", 1503, 778, 252, 205),
-        PRIVATE_ISLAND("Private Island", 216, 1122, 105, 125)
+        THE_END("The End", 100, 30),
+        BLAZING_FORTRESS("Blazing Fortress", 809, 0),
+        THE_PARK("The Park", 113, 380),
+        SPIDERS_DEN("Spider's Den", 500, 361),
+        DEEP_CAVERNS("Deep Caverns", 1406, 334),
+        GOLD_MINE("Gold Mine", 1080, 606),
+        THE_BARN("The Barn", 1223, 782),
+        HUB("Hub", 215, 724),
+        MUSHROOM_DESERT("Mushroom Desert", 1503, 778),
+        PRIVATE_ISLAND("Private Island", 216, 1122)
         ;
 
-        public static final float SCALE_FACTOR = 0.75F;
+        public static final float IMAGE_SCALED_DOWN_FACTOR = 0.75F;
 
         private String label;
         private int x;
@@ -249,12 +248,10 @@ public class IslandWarpGui extends GuiScreen {
         private ResourceLocation resourceLocation;
         private BufferedImage bufferedImage;
 
-        Island(String label, int x, int y, int w, int h) {
+        Island(String label, int x, int y) {
             this.label = label;
             this.x = x;
             this.y = y;
-//            this.w = w;
-//            this.h = h;
 
             this.resourceLocation = new ResourceLocation("skyblockaddons", "islands/"+this.name().toLowerCase().replace("_", "")+".png");
             try {
@@ -265,23 +262,25 @@ public class IslandWarpGui extends GuiScreen {
                 ex.printStackTrace();
             }
 
-            this.w /= SCALE_FACTOR;
-            this.h /= SCALE_FACTOR;
+            this.w /= IMAGE_SCALED_DOWN_FACTOR;
+            this.h /= IMAGE_SCALED_DOWN_FACTOR;
 
-            if (y+h > TOTAL_HEIGHT) {
-                TOTAL_HEIGHT = y+h;
+            if (this.y + this.h > TOTAL_HEIGHT) {
+                TOTAL_HEIGHT = this.y + this.h;
             }
-            if (x+w > TOTAL_WIDTH) {
-                TOTAL_WIDTH = x+w;
+            if (this.x + this.w > TOTAL_WIDTH) {
+                TOTAL_WIDTH = this. x+ this.w;
             }
         }
     }
 
 
-    public void detectClosestMarker() {
-        int mouseX = Mouse.getX();
-        int mouseY = Minecraft.getMinecraft().displayHeight-Mouse.getY();
+    public void detectClosestMarker(int mouseX, int mouseY) {
+        int minecraftScale = new ScaledResolution(mc).getScaleFactor();
         float islandGuiScale = 0.7F;
+
+        mouseX *= minecraftScale;
+        mouseY *= minecraftScale;
 
         mouseX /= islandGuiScale;
         mouseY /= islandGuiScale;
@@ -322,18 +321,6 @@ public class IslandWarpGui extends GuiScreen {
             }
             Minecraft.getMinecraft().thePlayer.sendChatMessage("/warp "+selectedMarker.getWarpName());
         }
-
-        int minecraftScale = Minecraft.getMinecraft().gameSettings.guiScale;
-        float islandGuiScale = 0.7F;
-
-        mouseX *= minecraftScale;
-        mouseY *= minecraftScale;
-
-        mouseX /= islandGuiScale;
-        mouseY /= islandGuiScale;
-
-        mouseX -= IslandWarpGui.SHIFT_LEFT;
-        mouseY -= IslandWarpGui.SHIFT_TOP;
 
         super.mouseClicked(mouseX, mouseY, mouseButton);
     }
@@ -398,6 +385,7 @@ public class IslandWarpGui extends GuiScreen {
         }
     }
 
+    @Getter
     public enum UnlockedStatus {
         UNKNOWN("Haven't Visited"),
         NOT_UNLOCKED("Not Unlocked"),
@@ -409,10 +397,6 @@ public class IslandWarpGui extends GuiScreen {
 
         UnlockedStatus(String message) {
             this.message = message;
-        }
-
-        public String getMessage() {
-            return message;
         }
     }
 }

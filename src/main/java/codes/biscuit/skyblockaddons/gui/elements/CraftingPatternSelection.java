@@ -2,7 +2,7 @@ package codes.biscuit.skyblockaddons.gui.elements;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.utils.CraftingPattern;
-import codes.biscuit.skyblockaddons.utils.Message;
+import codes.biscuit.skyblockaddons.core.Message;
 import codes.biscuit.skyblockaddons.utils.PersistentValues;
 import codes.biscuit.skyblockaddons.utils.Utils;
 import net.minecraft.client.Minecraft;
