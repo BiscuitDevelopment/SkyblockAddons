@@ -106,7 +106,7 @@
     "chromaFadeWidth": "Šířka vyblednutí měnění barev",
     "sortTabEffectTimers": "Seřadit Časovače podle délky",
     "showBrokenFragments": "Zobrazit rozbité Dragon Fragmenty",
-    "skyblockAddonsButtonInPauseMenu": "Zobrazit SBA Tlačítko v Pauznutém menu",
+    "skyblockAddonsButtonInPauseMenu": "Zobrazit Tlačítko SBA v Pauznutém menu",
     "showTotalZealotCount": "Počítadlo Zealotů - Celkový počet Zealotů",
     "showSummoningEyeCount": "Počítadlo Zealotů - Celkový počet očí",
     "showZealotsPerEye": "Počítadlo Zealotů - Zobrazit Zealoty/Oko",
@@ -126,7 +126,7 @@
     "labymod": "Uživatelé Labymodu: Skrytí jídla, armoru a ukazatel zdraví je nekompatabilní.",
     "minionCannotReach": "%type% minion Nemůže dosáhnout a přestal pracovat!",
     "minionIsFull": "Minion na tvém ostrově je plný!",
-    "typeEnchantmentsHere": "Typ %type% je tady!",
+    "typeEnchantmentsHere": "Vypište %type% zde!",
     "separateMultiple": "Oddělte více čárkami.",
     "enchantsToMatch": "Shodující se %type%:",
     "enchantsToExclude": "Vyloučené %type%:",
@@ -139,7 +139,7 @@
     "downloadLink": "Odkaz pro aktualizaci",
     "directDownload": "PŘÍMÝ ODKAZ NA STAŽENÍ",
     "openModFolder": "SLOŽKA S MODY",
-    "joinTheDiscord": "Připojit se na discord",
+    "joinTheDiscord": "ODKAZ NA DISCORD",
     "newUpdateAvailable": "Nová aktualizace (%version%) je dostupná!",
     "update": {
       "majorAvailable": "Nová hlavní aktualizace (%version%) je připravena! Link na stažení je v chatu.",
@@ -172,7 +172,7 @@
     "clickToOpenLink": "Klikni pro otevření odkazu!",
     "clickToOpenFolder": "Klikni pro otevření tvé složky pro módy!",
     "freezeBackpackPreview": "Zmrazit náhled batohu",
-    "hideGreyEnchants": "Hide Regular Grey Enchants"
+    "hideGreyEnchants": "Skrýt regulérní šedé očarování"
   },
   "discordStatus": {
     "titleNone": "Žádné",
