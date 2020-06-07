@@ -116,7 +116,7 @@
     "discordRP": "Discordでのゲームステータス表示",
     "endstoneProtectorDisplay": "エンドストーンプロテクターがスポーンしたときに画面上に表示する",
     "fancyWarpMenu": "Fancy Warp Menu",
-    "doubleWarp": "Double Warp",
+    "doubleWarp": "Warp Twice",
     "advancedMode": "Advanced Mode"
   },
   "messages": {
@@ -171,7 +171,8 @@
     "switchedSlots": "あなたはロックされたスロットまたはレアなアイテムから切り替えました。ドロップする前に少々お待ち下さい！",
     "clickToOpenLink": "Click to open this link!",
     "clickToOpenFolder": "Click to open your mods folder!",
-    "freezeBackpackPreview": "Freeze Backpack Preview"
+    "freezeBackpackPreview": "Freeze Backpack Preview",
+    "hideGreyEnchants": "Hide Regular Grey Enchants"
   },
   "discordStatus": {
     "titleNone": "None",
