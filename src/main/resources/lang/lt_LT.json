@@ -114,10 +114,12 @@
     "birchParkRainmakerTimer": "Birch Park Rainmaker Timer",
     "combatTimerDisplay": "Combat Timer Display",
     "discordRP": "Discord Rich Presence",
-    "endstoneProtectorDisplay": "Endstone Protector Display"
+    "endstoneProtectorDisplay": "Endstone Protector Display",
+    "fancyWarpMenu": "Fancy Warp Menu",
+    "doubleWarp": "Double Warp",
+    "advancedMode": "Advanced Mode"
   },
   "messages": {
-    "betaTesters": "Thank you for being a beta tester! Please report any bugs you encounter in the Discord channel.",
     "dropConfirmation": "Meskite Šį Daiktą Dar Kartą, Kad Patvirtintumėte!",
     "magmaBossWarning": "Atsispawnino Magma Bosas!!!",
     "fullInventory": "Jūsų Inventorius Pilnas!",
@@ -133,20 +135,15 @@
       "reforges": "Perdarimai",
       "crafting": "Gaminimas"
     },
-    "deleteOldFile": "Atsisiūntimas pasibaigė, prašome atidaryti mod'ų aplankalą naudojantis mygtuku žemiau, uždaryti Minecraft'ą, ir ištrinti senąją versiją (arba jeigu norite ištrinkite vėliau).",
     "wantToViewPatchNotes": "Norite perskaityti pakeitimus?",
     "downloadLink": "ATNAUJINIMO SAITAS",
-    "downloadAutomatically": "AUTOMATINIS ATSISIŪNTIMAS",
+    "directDownload": "DIRECT DOWNLOAD LINK",
     "openModFolder": "MOD'Ų APLANKALAS",
     "joinTheDiscord": "PRISIJUNGTI Į DISCORD'Ą",
+    "newUpdateAvailable": "A new update (%version%) is available!",
     "update": {
       "majorAvailable": "Naujas pagrindinis atnaujinimas (%version%) yra galimas atsisiūsti. Atsisiūntimo saitas galimas rasti pokalbyje.",
-      "patchAvailable": "Naujas pataisymas (%version%) yra galimas atsisiūsti! Atsisiūntimo ieškokite pokalbyje!",
-      "downloading": "Pataisymas atsisiunčiamas! Statusas: %downloaded%/%total% Prašome prisiminti, kad ištrintumėte senąjį failą.",
-      "failed": "Pataisymo atsisiuntimas nepavyko! Prašome atsisiusti jį patiems naudojant saitą pokalbyje.",
-      "downloadFinished": "Pataisymas pabaigė siustis. Jis buvo išsaugotas pavadinimu %file%. Prašome nepamiršti ištrinti senąjį failą kai uždarėte Minecraft. Paspauskite ant žinutės pokalbyje kad atidarytumėte aplankalą.",
-      "newBeta": "A new beta (%version%) is available! Please update using the \"Mods\" menu.",
-      "newUpdate": "A new update (%version%) is available! Please update using the \"Mods\" menu."
+      "patchAvailable": "Naujas pataisymas (%version%) yra galimas atsisiūsti! Atsisiūntimo ieškokite pokalbyje!"
     },
     "slotLocked": "Šitas langelis yra užrakintas!",
     "summoningEyeFound": "Sušaukimo Akis!",
@@ -171,9 +168,31 @@
     "resizeBars": "Resize Bars",
     "showColorIcons": "Show Color Icons",
     "stage": "Stage %stage%",
-    "switchedSlots": "You have just switched from a locked slot or rare item. Please wait a bit before dropping!"
+    "switchedSlots": "You have just switched from a locked slot or rare item. Please wait a bit before dropping!",
+    "clickToOpenLink": "Click to open this link!",
+    "clickToOpenFolder": "Click to open your mods folder!",
+    "freezeBackpackPreview": "Freeze Backpack Preview"
   },
-  "discord": {
-    "status": {}
+  "discordStatus": {
+    "titleNone": "None",
+    "descriptionNone": "No text is displayed",
+    "titleLocation": "Location",
+    "descriptionLocation": "Shows your current location",
+    "titlePurse": "Purse",
+    "descriptionPurse": "Shows the amount of coins in your purse",
+    "titleStats": "Stats",
+    "descriptionStats": "Shows your HP, Defense and Mana stats",
+    "titleZealots": "Zealots",
+    "descriptionZealots": "Shows your Zealot counter",
+    "titleItem": "Held Item",
+    "descriptionItem": "Shows the name of the item you're holding",
+    "titleProfile": "Profile",
+    "descriptionProfile": "Shows your Profile name",
+    "titleTime": "Skyblock Time",
+    "descriptionTime": "Shows the current Skyblock time. E.g. 12:00am 1st Early Winter",
+    "titleCustom": "Custom Status",
+    "descriptionCustom": "Enter a custom status",
+    "titleAuto": "Auto Status",
+    "descriptionAuto": "Automatically displays a status. E.g. your zealot count while in the end."
   }
 }
