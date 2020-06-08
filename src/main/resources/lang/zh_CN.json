@@ -192,7 +192,7 @@
     "titleTime": "Skyblock Time",
     "descriptionTime": "Shows the current Skyblock time. E.g. 12:00am 1st Early Winter",
     "titleCustom": "Custom Status",
-    "descriptionCustom": "Enter a custom status",
+    "descriptionCustom": "输入自定义状态",
     "titleAuto": "Auto Status",
     "descriptionAuto": "Automatically displays a status. E.g. your zealot count while in the end."
   }
