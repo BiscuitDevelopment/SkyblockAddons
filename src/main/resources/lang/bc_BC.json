@@ -115,9 +115,9 @@
     "combatTimerDisplay": "Biscombat Timer Bisplay",
     "discordRP": "Discord Rich Biscresence",
     "endstoneProtectorDisplay": "Biscuit Protector Display",
-    "fancyWarpMenu": "Fancy Warp Menu",
+    "fancyWarpMenu": "Crunchy Warp Menu",
     "doubleWarp": "Warp Twice",
-    "advancedMode": "Advanced Mode"
+    "advancedMode": "Big Brain Mode"
   },
   "messages": {
     "dropConfirmation": "Throw out this biscuit again to confirm!",
@@ -170,8 +170,8 @@
     "stage": "Stage %stage%",
     "switchedSlots": "You have switched from a locked biscuish or rare item. Please wait a bit before dropping!",
     "clickToOpenLink": "Click to open this link!",
-    "clickToOpenFolder": "Click to open your mods folder!",
-    "freezeBackpackPreview": "Freeze Backpack Preview",
+    "clickToOpenFolder": "Click to open your biscuits folder!",
+    "freezeBackpackPreview": "Freeze Biscuit Sneak Peak",
     "hideGreyEnchants": "Hide Regular Grey Enchants"
   },
   "discordStatus": {
