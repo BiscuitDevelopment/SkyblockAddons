@@ -117,7 +117,7 @@
     "endstoneProtectorDisplay": "エンドストーンプロテクターがスポーンしたときに画面上に表示する",
     "fancyWarpMenu": "Fancy Warp Menu",
     "doubleWarp": "Warp Twice",
-    "advancedMode": "Advanced Mode"
+    "advancedMode": "アドバンスドモード"
   },
   "messages": {
     "dropConfirmation": "落としてもいいのであれば、このアイテムをもう一度ドロップしてください。",
@@ -137,10 +137,10 @@
     },
     "wantToViewPatchNotes": "変更点を知りたいですか?",
     "downloadLink": "アップデートのダウンロードリンク",
-    "directDownload": "DIRECT DOWNLOAD LINK",
+    "directDownload": "直接ダウンロードするリンク",
     "openModFolder": "modsフォルダを開く",
     "joinTheDiscord": "Discordに参加する",
-    "newUpdateAvailable": "A new update (%version%) is available!",
+    "newUpdateAvailable": "新しいバージョン(%version%) が利用可能です!",
     "update": {
       "majorAvailable": "新しいメジャーアップデート (%version%) が利用可能です！チャットからダウンロードリンクを探してください。",
       "patchAvailable": "新しいパッチアップデート (%version%) が利用可能です！チャットからダウンロードオプションを確認してください。"
@@ -169,31 +169,31 @@
     "showColorIcons": "カラーアイコンを表示する",
     "stage": "ステージ%stage%",
     "switchedSlots": "あなたはロックされたスロットまたはレアなアイテムから切り替えました。ドロップする前に少々お待ち下さい！",
-    "clickToOpenLink": "Click to open this link!",
-    "clickToOpenFolder": "Click to open your mods folder!",
+    "clickToOpenLink": "クリックしてリンクを開く",
+    "clickToOpenFolder": "クリックしてmodフォルダを開く",
     "freezeBackpackPreview": "Freeze Backpack Preview",
     "hideGreyEnchants": "Hide Regular Grey Enchants"
   },
   "discordStatus": {
-    "titleNone": "None",
-    "descriptionNone": "No text is displayed",
-    "titleLocation": "Location",
-    "descriptionLocation": "Shows your current location",
-    "titlePurse": "Purse",
-    "descriptionPurse": "Shows the amount of coins in your purse",
-    "titleStats": "Stats",
-    "descriptionStats": "Shows your HP, Defense and Mana stats",
-    "titleZealots": "Zealots",
-    "descriptionZealots": "Shows your Zealot counter",
-    "titleItem": "Held Item",
-    "descriptionItem": "Shows the name of the item you're holding",
+    "titleNone": "無し",
+    "descriptionNone": "テキストが表示されていません",
+    "titleLocation": "場所",
+    "descriptionLocation": "現在地を表示する",
+    "titlePurse": "所持金",
+    "descriptionPurse": "財布の所持金を表示",
+    "titleStats": "ステータス",
+    "descriptionStats": "HP、ディフェンス、マナを表示",
+    "titleZealots": "Zealot",
+    "descriptionZealots": "Zealotカウンターを表示",
+    "titleItem": "持っているアイテム",
+    "descriptionItem": "持っているアイテムの名前を表示",
     "titleProfile": "プロフィール",
     "descriptionProfile": "プロフィール名を表示",
-    "titleTime": "Skyblock Time",
-    "descriptionTime": "Shows the current Skyblock time. E.g. 12:00am 1st Early Winter",
-    "titleCustom": "Custom Status",
-    "descriptionCustom": "Enter a custom status",
-    "titleAuto": "Auto Status",
-    "descriptionAuto": "Automatically displays a status. E.g. your zealot count while in the end."
+    "titleTime": "Skyblock内時刻",
+    "descriptionTime": "現在のSkyblock内の時刻を表示する (例: 12:00am 1st Early Winter)",
+    "titleCustom": "カスタムステータス",
+    "descriptionCustom": "カスタムステータスを入力",
+    "titleAuto": "自動ステータス",
+    "descriptionAuto": "ステータスを自動表示する (例: エンドにいる間はゼアロットの討伐数)"
   }
 }
