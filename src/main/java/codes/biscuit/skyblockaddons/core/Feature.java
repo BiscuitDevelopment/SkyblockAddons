@@ -4,6 +4,7 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.gui.buttons.ButtonLocation;
 import codes.biscuit.skyblockaddons.utils.CoordsPair;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
+import codes.biscuit.skyblockaddons.utils.FloatPair;
 import codes.biscuit.skyblockaddons.utils.GuiFeatureData;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
 import com.google.common.collect.Sets;
@@ -140,7 +141,7 @@ public enum Feature {
             USE_VANILLA_TEXTURE_DEFENCE, SHOW_BACKPACK_HOLDING_SHIFT, SHOW_MAGMA_TIMER_IN_OTHER_GAMES,
             MAKE_BACKPACK_INVENTORIES_COLORED, CHANGE_BAR_COLOR_FOR_POTIONS, ENABLE_MESSAGE_WHEN_BREAKING_STEMS,
             ENABLE_MESSAGE_WHEN_MINING_DEEP_CAVERNS, ENABLE_MESSAGE_WHEN_MINING_NETHER, HIDE_NIGHT_VISION_EFFECT_TIMER,
-            CAKE_BAG_PREVIEW, BACKPACK_PREVIEW_AH, REPEAT_FULL_INVENTORY_WARNING, SORT_TAB_EFFECT_TIMERS);
+            CAKE_BAG_PREVIEW, BACKPACK_PREVIEW_AH, REPEAT_FULL_INVENTORY_WARNING, SORT_TAB_EFFECT_TIMERS, DOUBLE_WARP);
 
     /**
      * Features that are considered gui ones. This is used for examnple when saving the config to ensure that these features'
@@ -226,9 +227,9 @@ public enum Feature {
         }
     }
 
-    public CoordsPair getDefaultCoordinates() {
+    public FloatPair getDefaultCoordinates() {
         if (guiFeatureData != null) {
-            CoordsPair coords = guiFeatureData.getDefaultPos();
+            FloatPair coords = guiFeatureData.getDefaultPos();
             if (coords != null) return coords.cloneCoords();
         }
         return null;

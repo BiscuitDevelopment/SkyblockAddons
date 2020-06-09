@@ -13,11 +13,18 @@ public class ButtonResize extends ButtonFeature {
     private int lastMouseX;
     private int lastMouseY;
 
+    private int size = 2;
+
     private Corner corner;
 
-    public ButtonResize(int x, int y, Feature feature, Corner corner) {
-        super(0, x, y, "", feature);
+    public float x;
+    public float y;
+
+    public ButtonResize(float x, float y, Feature feature, Corner corner) {
+        super(0, 0, 0, "", feature);
         this.corner = corner;
+        this.x = x;
+        this.y = y;
     }
 
     @Override
@@ -28,9 +35,9 @@ public class ButtonResize extends ButtonFeature {
         float scale = SkyblockAddons.getInstance().getConfigValues().getGuiScale(feature);
         GlStateManager.pushMatrix();
         GlStateManager.scale(scale,scale,1);
-        hovered = mouseX >= (xPosition-3)*scale && mouseY >= (yPosition-3)*scale && mouseX < (xPosition+3)*scale && mouseY < (yPosition+3)* scale;
-        int color = hovered ? ChatFormatting.WHITE.getRGB() : ChatFormatting.WHITE.getColor(127).getRGB();
-        drawRect(xPosition-3,yPosition-3, xPosition+3, yPosition+3, color);
+        hovered = mouseX >= (x-size)*scale && mouseY >= (y-size)*scale && mouseX < (x+size)*scale && mouseY < (y+size)* scale;
+        int color = hovered ? ChatFormatting.WHITE.getRGB() : ChatFormatting.WHITE.getColor(70).getRGB();
+        SkyblockAddons.getInstance().getUtils().drawRect(x-size,y-size, x+size, y+size, color);
         GlStateManager.popMatrix();
     }
 

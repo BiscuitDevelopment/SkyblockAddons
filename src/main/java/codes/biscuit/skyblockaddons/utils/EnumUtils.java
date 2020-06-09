@@ -369,15 +369,15 @@ public class EnumUtils {
 
     @Getter
     public enum Social {
-        YOUTUBE(new ResourceLocation("skyblockaddons", "youtube.png"), "https://www.youtube.com/channel/UCYmE9-052frn0wQwqa6i8_Q"),
-        DISCORD(new ResourceLocation("skyblockaddons", "discord.png"), "https://biscuit.codes/discord"),
-        GITHUB(new ResourceLocation("skyblockaddons", "github.png"), "https://github.com/BiscuitDevelopment/SkyblockAddons");
+        YOUTUBE("youtube", "https://www.youtube.com/channel/UCYmE9-052frn0wQwqa6i8_Q"),
+        DISCORD("discord", "https://biscuit.codes/discord"),
+        GITHUB("github", "https://github.com/BiscuitDevelopment/SkyblockAddons");
 
         private ResourceLocation resourceLocation;
         private URI url;
 
-        Social(ResourceLocation resourceLocation, String url) {
-            this.resourceLocation = resourceLocation;
+        Social(String resourcePath, String url) {
+            this.resourceLocation = new ResourceLocation("skyblockaddons", "gui/"+resourcePath+".png");
             try {
                 this.url = new URI(url);
             } catch (URISyntaxException e) {

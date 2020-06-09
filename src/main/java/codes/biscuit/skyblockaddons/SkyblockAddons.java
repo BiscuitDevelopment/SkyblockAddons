@@ -4,6 +4,7 @@ import codes.biscuit.skyblockaddons.commands.SkyblockAddonsCommand;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.Message;
 import codes.biscuit.skyblockaddons.gui.IslandWarpGui;
+import codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui;
 import codes.biscuit.skyblockaddons.listeners.GuiScreenListener;
 import codes.biscuit.skyblockaddons.listeners.NetworkListener;
 import codes.biscuit.skyblockaddons.listeners.PlayerListener;
@@ -145,6 +146,8 @@ public class SkyblockAddons {
         for (IslandWarpGui.Island island : IslandWarpGui.Island.values()) {
             Minecraft.getMinecraft().getTextureManager().bindTexture(island.getResourceLocation());
         }
+        Minecraft.getMinecraft().getTextureManager().getTexture(SkyblockAddonsGui.LOGO);
+        Minecraft.getMinecraft().getTextureManager().getTexture(SkyblockAddonsGui.LOGO_GLOW);
     }
 
     @Mod.EventHandler

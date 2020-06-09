@@ -79,7 +79,7 @@ public class ActionBarParser {
         tickers = -1;
 
         // If the action bar is displaying player stats and the defense section is absent, the player's defense is zero.
-        if (actionBar.contains("❤") && !actionBar.contains("❈")) {
+        if (actionBar.contains("❤") && !actionBar.contains("❈") && splitMessage.length == 2) {
             setAttribute(Attribute.DEFENCE, 0);
         }
 

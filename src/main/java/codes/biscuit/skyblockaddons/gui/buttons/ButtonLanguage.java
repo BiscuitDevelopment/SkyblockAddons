@@ -14,7 +14,7 @@ import java.awt.*;
 
 public class ButtonLanguage extends GuiButton {
 
-    private static ResourceLocation FEATURE_BACKGROUND = new ResourceLocation("skyblockaddons", "featurebackground.png");
+    private static ResourceLocation FEATURE_BACKGROUND = new ResourceLocation("skyblockaddons", "gui/featurebackground.png");
 
     private Language language;
     private SkyblockAddons main;

@@ -16,7 +16,7 @@ import java.awt.*;
 
 public class ButtonNormal extends ButtonFeature {
 
-    private static ResourceLocation FEATURE_BACKGROUND = new ResourceLocation("skyblockaddons", "featurebackground.png");
+    private static ResourceLocation FEATURE_BACKGROUND = new ResourceLocation("skyblockaddons", "gui/featurebackground.png");
 
     private SkyblockAddons main;
 
@@ -147,7 +147,7 @@ public class ButtonNormal extends ButtonFeature {
             } else if (feature == Feature.EDIT_LOCATIONS) {
                 GlStateManager.color(1,1,1,1F);
                 try {
-                    mc.getTextureManager().bindTexture(new ResourceLocation("skyblockaddons", "move.png"));
+                    mc.getTextureManager().bindTexture(new ResourceLocation("skyblockaddons", "gui/move.png"));
                     drawModalRectWithCustomSizedTexture(xPosition + width / 2 - 12, yPosition + 22, 0, 0, 25, 25, 25, 25);
                 } catch (Exception ex) {
                     ex.printStackTrace();

@@ -21,7 +21,7 @@ import java.util.List;
 
 public class SettingsGui extends GuiScreen {
 
-    private static ResourceLocation FEATURE_BACKGROUND = new ResourceLocation("skyblockaddons", "featurebackground.png");
+    private static ResourceLocation FEATURE_BACKGROUND = new ResourceLocation("skyblockaddons", "gui/featurebackground.png");
 
     private SkyblockAddons main;
     private int page;

@@ -2,10 +2,13 @@ package codes.biscuit.skyblockaddons.core;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.utils.Language;
-import codes.biscuit.skyblockaddons.utils.TextUtils;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
 import com.google.gson.JsonObject;
+import com.ibm.icu.text.ArabicShaping;
+import com.ibm.icu.text.ArabicShapingException;
+import com.ibm.icu.text.Bidi;
 import lombok.Getter;
+import net.minecraft.client.Minecraft;
 
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -266,13 +269,23 @@ public enum Message {
                     text = text.replace("%stage%", variables[0]);
                 }
             }
-            if (text != null && (main.getConfigValues().getLanguage() == Language.HEBREW || main.getConfigValues().getLanguage() == Language.ARABIC)) {
-                text = TextUtils.reverseText(text);
+            if (text != null && (main.getConfigValues().getLanguage() == Language.HEBREW || main.getConfigValues().getLanguage() == Language.ARABIC) && !Minecraft.getMinecraft().fontRendererObj.getBidiFlag()) {
+                text = bidiReorder(text);
             }
         } catch (NullPointerException ex) {
             text = memberName; // In case of fire...
         }
         return text;
+    }
+
+    private String bidiReorder(String text) {
+        try {
+            Bidi bidi = new Bidi((new ArabicShaping(ArabicShaping.LETTERS_SHAPE)).shape(text), Bidi.DIRECTION_DEFAULT_RIGHT_TO_LEFT);
+            bidi.setReorderingMode(Bidi.REORDER_DEFAULT);
+            return bidi.writeReordered(Bidi.DO_MIRRORING);
+        } catch (ArabicShapingException var3) {
+            return text;
+        }
     }
 
     @Getter

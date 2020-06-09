@@ -223,6 +223,8 @@ public class IslandWarpGui extends GuiScreen {
         detectClosestMarker(mouseX, mouseY);
     }
 
+    public static float IMAGE_SCALED_DOWN_FACTOR = 0.75F;
+
     @Getter
     public enum Island {
         THE_END("The End", 100, 30),
@@ -236,8 +238,6 @@ public class IslandWarpGui extends GuiScreen {
         MUSHROOM_DESERT("Mushroom Desert", 1503, 778),
         PRIVATE_ISLAND("Private Island", 216, 1122)
         ;
-
-        public static final float IMAGE_SCALED_DOWN_FACTOR = 0.75F;
 
         private String label;
         private int x;
@@ -258,6 +258,11 @@ public class IslandWarpGui extends GuiScreen {
                 bufferedImage = TextureUtil.readBufferedImage(Minecraft.getMinecraft().getResourceManager().getResource(this.resourceLocation).getInputStream());
                 this.w = bufferedImage.getWidth();
                 this.h = bufferedImage.getHeight();
+
+                if (label.equals("The End")) {
+                    IslandWarpGui.IMAGE_SCALED_DOWN_FACTOR = this.w/573F; // The original end HD texture is 573 pixels wide.
+
+                }
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
@@ -321,6 +326,18 @@ public class IslandWarpGui extends GuiScreen {
             }
             Minecraft.getMinecraft().thePlayer.sendChatMessage("/warp "+selectedMarker.getWarpName());
         }
+
+        int minecraftScale = new ScaledResolution(mc).getScaleFactor();
+        float islandGuiScale = 0.7F;
+
+        mouseX *= minecraftScale;
+        mouseY *= minecraftScale;
+
+        mouseX /= islandGuiScale;
+        mouseY /= islandGuiScale;
+
+        mouseX -= IslandWarpGui.SHIFT_LEFT;
+        mouseY -= IslandWarpGui.SHIFT_TOP;
 
         super.mouseClicked(mouseX, mouseY, mouseButton);
     }

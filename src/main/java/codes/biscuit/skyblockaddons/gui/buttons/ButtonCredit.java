@@ -9,7 +9,7 @@ import net.minecraft.util.ResourceLocation;
 
 public class ButtonCredit extends ButtonFeature {
 
-    private static ResourceLocation WEB = new ResourceLocation("skyblockaddons", "web.png");
+    private static ResourceLocation WEB = new ResourceLocation("skyblockaddons", "gui/web.png");
 
     private SkyblockAddons main;
     private EnumUtils.FeatureCredit credit;

@@ -58,11 +58,9 @@ public class IslandMarkerButton extends GuiButton {
             }
         }
 
-//        drawRect(x+(iconSize/2)-70, y+(iconSize/2)-70,
-//                x+(iconSize/2)+70, y+(iconSize/2)+70, 0xFFFF0000);
-
+        int height = Math.round(iconSize*1.23F);
         mc.getTextureManager().bindTexture(PORTAL_ICON);
-        main.getUtils().drawModalRectWithCustomSizedTexture(x, y, 0, 0, iconSize, Math.round(iconSize*1.23F), iconSize, Math.round(iconSize*1.23F));
+        main.getUtils().drawModalRectWithCustomSizedTexture(x, y, 0, 0, iconSize, height, iconSize, height);
 
         if (hovered) {
             GlStateManager.pushMatrix();

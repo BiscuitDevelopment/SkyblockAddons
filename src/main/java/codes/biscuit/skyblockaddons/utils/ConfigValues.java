@@ -43,7 +43,7 @@ public class ConfigValues {
     private Map<Feature, Float> guiScales = new EnumMap<>(Feature.class);
     private Map<Feature, CoordsPair> barSizes = new EnumMap<>(Feature.class);
     private MutableInt warningSeconds = new MutableInt(4);
-    private Map<Feature, CoordsPair> coordinates = new EnumMap<>(Feature.class);
+    private Map<Feature, FloatPair> coordinates = new EnumMap<>(Feature.class);
     private Map<Feature, EnumUtils.AnchorPoint> anchorPoints = new EnumMap<>(Feature.class);
     private MutableObject<Language> language = new MutableObject<>(Language.ENGLISH);
     private MutableObject<EnumUtils.BackpackStyle> backpackStyle = new MutableObject<>(EnumUtils.BackpackStyle.GUI);
@@ -90,7 +90,8 @@ public class ConfigValues {
                     String languageKey = settingsConfig.get("language").getAsString();
                     Language configLanguage = Language.getFromPath(languageKey);
                     if (configLanguage != null) {
-                        language.setValue(configLanguage);
+                        setLanguage(configLanguage); // TODO Will this crash?
+//                        language.setValue(configLanguage);
                     }
                 }
             } catch (Exception ex) {
@@ -109,7 +110,7 @@ public class ConfigValues {
                     String x = property+"X";
                     String y = property+"Y";
                     if (settingsConfig.has(x)) {
-                        coordinates.put(feature, new CoordsPair(settingsConfig.get(x).getAsInt(), settingsConfig.get(y).getAsInt()));
+                        coordinates.put(feature, new FloatPair(settingsConfig.get(x).getAsFloat(), settingsConfig.get(y).getAsFloat()));
                     }
                 }
             } catch (Exception ex) {
@@ -117,8 +118,8 @@ public class ConfigValues {
                 ex.printStackTrace();
             }
 
-            deserializeFeatureCoordsMapFromID(coordinates, "guiPositions");
-            deserializeFeatureCoordsMapFromID(barSizes, "barSizes");
+            deserializeFeatureFloatCoordsMapFromID(coordinates, "guiPositions");
+            deserializeFeatureIntCoordsMapFromID(barSizes, "barSizes");
 
             if (settingsConfig.has("featureColors")) { // TODO Legacy format from 1.3.4, remove in the future.
                 try {
@@ -159,9 +160,9 @@ public class ConfigValues {
                 disabledFeatures.add(Feature.REPLACE_ROMAN_NUMERALS_WITH_NUMBERS);
             } else if (configVersion <= 6) {
                 putDefaultBarSizes();
-                for (Map.Entry<Feature, CoordsPair> entry : coordinates.entrySet()) {
+                for (Map.Entry<Feature, FloatPair> entry : coordinates.entrySet()) {
                     if (getAnchorPoint(entry.getKey()) == EnumUtils.AnchorPoint.BOTTOM_MIDDLE) {
-                        CoordsPair coords = entry.getValue();
+                        FloatPair coords = entry.getValue();
                         coords.setX(coords.getX()-91);
                         coords.setY(coords.getY()-39);
                     }
@@ -466,7 +467,24 @@ public class ConfigValues {
         }
     }
 
-    private void deserializeFeatureCoordsMapFromID(Map<Feature, CoordsPair> map, String path) {
+    private void deserializeFeatureFloatCoordsMapFromID(Map<Feature, FloatPair> map, String path) {
+        try {
+            if (settingsConfig.has(path)) {
+                for (Map.Entry<String, JsonElement> element : settingsConfig.getAsJsonObject(path).entrySet()) {
+                    Feature feature = Feature.fromId(Integer.parseInt(element.getKey()));
+                    if (feature != null) {
+                        JsonArray coords = element.getValue().getAsJsonArray();
+                        map.put(feature, new FloatPair(coords.get(0).getAsFloat(), coords.get(1).getAsFloat()));
+                    }
+                }
+            }
+        } catch (Exception ex) {
+            SkyblockAddons.getInstance().getLogger().error("Failed to deserialize path: "+ path);
+            ex.printStackTrace();
+        }
+    }
+
+    private void deserializeFeatureIntCoordsMapFromID(Map<Feature, CoordsPair> map, String path) {
         try {
             if (settingsConfig.has(path)) {
                 for (Map.Entry<String, JsonElement> element : settingsConfig.getAsJsonObject(path).entrySet()) {
@@ -502,7 +520,7 @@ public class ConfigValues {
     }
 
     private void putDefaultCoordinates(Feature feature) {
-        CoordsPair coords = feature.getDefaultCoordinates();
+        FloatPair coords = feature.getDefaultCoordinates();
         if (coords != null) {
             coordinates.put(feature, coords);
         }
@@ -628,12 +646,12 @@ public class ConfigValues {
         colors.put(feature, color);
     }
 
-    public int getActualX(Feature feature) {
+    public float getActualX(Feature feature) {
         int maxX = new ScaledResolution(Minecraft.getMinecraft()).getScaledWidth();
-        return getAnchorPoint(feature).getX(maxX)+ getRelativeCoords(feature).getX();
+        return getAnchorPoint(feature).getX(maxX) + getRelativeCoords(feature).getX();
     }
 
-    public int getActualY(Feature feature) {
+    public float getActualY(Feature feature) {
         int maxY = new ScaledResolution(Minecraft.getMinecraft()).getScaledHeight();
         return getAnchorPoint(feature).getY(maxY)+ getRelativeCoords(feature).getY();
     }
@@ -655,7 +673,7 @@ public class ConfigValues {
         barSizes.put(feature, coords);
     }
 
-    public CoordsPair getRelativeCoords(Feature feature) {
+    public FloatPair getRelativeCoords(Feature feature) {
         if (coordinates.containsKey(feature)) {
             return coordinates.get(feature);
         } else {
@@ -663,23 +681,39 @@ public class ConfigValues {
             if (coordinates.containsKey(feature)) {
                 return coordinates.get(feature);
             } else {
-                return new CoordsPair(0,0);
+                return new FloatPair(0,0);
             }
         }
     }
 
-    public void setCoords(Feature feature, int x, int y) {
+    public void setCoords(Feature feature, float x, float y) {
         if (coordinates.containsKey(feature)) {
             coordinates.get(feature).setX(x);
             coordinates.get(feature).setY(y);
         } else {
-            coordinates.put(feature, new CoordsPair(x, y));
+            coordinates.put(feature, new FloatPair(x, y));
         }
     }
 
+    public EnumUtils.AnchorPoint getClosestAnchorPoint(float x, float y) {
+        ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
+        int maxX = sr.getScaledWidth();
+        int maxY = sr.getScaledHeight();
+        double shortestDistance = -1;
+        EnumUtils.AnchorPoint closestAnchorPoint = EnumUtils.AnchorPoint.BOTTOM_MIDDLE; // default
+        for (EnumUtils.AnchorPoint point : EnumUtils.AnchorPoint.values()) {
+            double distance = Point2D.distance(x, y, point.getX(maxX), point.getY(maxY));
+            if (shortestDistance == -1 || distance < shortestDistance) {
+                closestAnchorPoint = point;
+                shortestDistance = distance;
+            }
+        }
+        return closestAnchorPoint;
+    }
+
     public void setClosestAnchorPoint(Feature feature) {
-        int x1 = getActualX(feature);
-        int y1 = getActualY(feature);
+        float x1 = getActualX(feature);
+        float y1 = getActualY(feature);
         ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
         int maxX = sr.getScaledWidth();
         int maxY = sr.getScaledHeight();
@@ -692,10 +726,13 @@ public class ConfigValues {
                 shortestDistance = distance;
             }
         }
-        int targetX = getActualX(feature);
-        int targetY = getActualY(feature);
-        int x = targetX-closestAnchorPoint.getX(sr.getScaledWidth());
-        int y = targetY-closestAnchorPoint.getY(sr.getScaledHeight());
+        if (this.getAnchorPoint(feature) == closestAnchorPoint) {
+            return;
+        }
+        float targetX = getActualX(feature);
+        float targetY = getActualY(feature);
+        float x = targetX-closestAnchorPoint.getX(maxX);
+        float y = targetY-closestAnchorPoint.getY(maxY);
         anchorPoints.put(feature, closestAnchorPoint);
         setCoords(feature, x, y);
     }
@@ -748,6 +785,12 @@ public class ConfigValues {
 
     public void setLanguage(Language language) {
         this.language.setValue(language);
+
+//        if (language == Language.ARABIC || language == Language.HEBREW) {
+//            Minecraft.getMinecraft().fontRendererObj.setBidiFlag(true);
+//        } else if (!Minecraft.getMinecraft().getLanguageManager().isCurrentLanguageBidirectional()) {
+//            Minecraft.getMinecraft().fontRendererObj.setBidiFlag(false);
+//        }
     }
 
     public EnumUtils.BackpackStyle getBackpackStyle() {

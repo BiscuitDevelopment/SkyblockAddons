@@ -23,7 +23,7 @@ import java.io.IOException;
 
 public class ColorSelectionGui extends GuiScreen {
 
-    private static final ResourceLocation COLOR_PICKER = new ResourceLocation("skyblockaddons", "colorpicker.png");
+    private static final ResourceLocation COLOR_PICKER = new ResourceLocation("skyblockaddons", "gui/colorpicker.png");
     private BufferedImage COLOR_PICKER_IMAGE;
 
     // The feature that this color is for.
@@ -141,6 +141,8 @@ public class ColorSelectionGui extends GuiScreen {
                 if (SkyblockAddons.getInstance().getConfigValues().getChromaFeatures().contains(feature)) { // Fade out color picker if chroma enabled
                     GlStateManager.color(0.5F, 0.5F, 0.5F, 0.7F);
                     GlStateManager.enableBlend();
+                } else {
+                    GlStateManager.color(1, 1, 1, 1);
                 }
 
                 // Draw the color picker with no scaling so the size is the exact same.

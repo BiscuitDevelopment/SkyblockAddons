@@ -8,9 +8,9 @@ import net.minecraft.util.ResourceLocation;
 
 public class ButtonToggle extends ButtonFeature {
 
-    private static ResourceLocation TOGGLE_INSIDE_CIRCLE = new ResourceLocation("skyblockaddons", "toggleinsidecircle.png");
-    private static ResourceLocation TOGGLE_BORDER = new ResourceLocation("skyblockaddons", "toggleborder.png");
-    private static ResourceLocation TOGGLE_INSIDE_BACKGROUND = new ResourceLocation("skyblockaddons", "toggleinsidebackground.png");
+    private static ResourceLocation TOGGLE_INSIDE_CIRCLE = new ResourceLocation("skyblockaddons", "gui/toggleinsidecircle.png");
+    private static ResourceLocation TOGGLE_BORDER = new ResourceLocation("skyblockaddons", "gui/toggleborder.png");
+    private static ResourceLocation TOGGLE_INSIDE_BACKGROUND = new ResourceLocation("skyblockaddons", "gui/toggleinsidebackground.png");
 
     private static final int CIRCLE_PADDING_LEFT = 5;
     private static final int ANIMATION_SLIDE_DISTANCE = 12;

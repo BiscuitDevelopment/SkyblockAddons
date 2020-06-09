@@ -1,11 +1,11 @@
 package codes.biscuit.skyblockaddons.gui;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.core.Feature;
+import codes.biscuit.skyblockaddons.core.Message;
 import codes.biscuit.skyblockaddons.gui.buttons.*;
 import codes.biscuit.skyblockaddons.utils.CoordsPair;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
-import codes.biscuit.skyblockaddons.core.Feature;
-import codes.biscuit.skyblockaddons.core.Message;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
 import codes.biscuit.skyblockaddons.utils.nifty.StringUtil;
 import codes.biscuit.skyblockaddons.utils.nifty.reflection.MinecraftReflection;
@@ -16,10 +16,15 @@ import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.texture.DynamicTexture;
+import net.minecraft.client.renderer.texture.TextureManager;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.GuiIngameForge;
 import org.lwjgl.input.Keyboard;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URI;
 import java.util.Comparator;
@@ -28,8 +33,10 @@ import java.util.List;
 
 public class SkyblockAddonsGui extends GuiScreen {
 
+    public static final ResourceLocation LOGO = new ResourceLocation("skyblockaddons", "logo.png");
+    public static final ResourceLocation LOGO_GLOW = new ResourceLocation("skyblockaddons", "logoglow.png");
+
     public static final int BUTTON_MAX_WIDTH = 140;
-//    private static Feature tooltipFeature;
 
     private static String searchString = null;
 
@@ -37,7 +44,6 @@ public class SkyblockAddonsGui extends GuiScreen {
     private EnumUtils.GuiTab tab;
     private SkyblockAddons main;
     private int page;
-//    private GuiTextField magmaTextField = null;
     private int row = 1;
     private int collumn = 1;
     private int displayCount;
@@ -55,11 +61,6 @@ public class SkyblockAddonsGui extends GuiScreen {
         this.page = page;
     }
 
-    public SkyblockAddonsGui(SkyblockAddons main, int page, EnumUtils.GuiTab tab, String text) {
-        this(main,page,tab);
-    }
-
-
     @SuppressWarnings({"IntegerDivisionInFloatingPointContext"})
     @Override
     public void initGui() {
@@ -72,7 +73,7 @@ public class SkyblockAddonsGui extends GuiScreen {
         addGeneralSettingsButton();
 
         if (featureSearchBar == null) {
-            featureSearchBar = new GuiTextField(2, this.fontRendererObj, width / 2 - 60, 69, 120, 15);
+            featureSearchBar = new GuiTextField(2, this.fontRendererObj, width / 2 - 220, 69, 120, 15);
             featureSearchBar.setMaxStringLength(500);
             featureSearchBar.setFocused(true);
         }
@@ -174,7 +175,7 @@ public class SkyblockAddonsGui extends GuiScreen {
                 alphaMultiplier = (float) timeSinceOpen / (fadeMilis * 2);
             }
         }
-        int alpha = (int)(255*alphaMultiplier); // Alpha of the text will increase from 0 to 127 over 500ms.
+        int alpha = (int)(200*alphaMultiplier); // Alpha of the text will increase from 0 to 127 over 500ms.
 
         int startColor = new Color(0,0, 0, alpha).getRGB();
         int endColor = new Color(0,0, 0, (int)(alpha*1.5)).getRGB();
@@ -187,7 +188,7 @@ public class SkyblockAddonsGui extends GuiScreen {
 
         featureSearchBar.drawTextBox();
         if (StringUtil.isEmpty(featureSearchBar.getText())) {
-            MinecraftReflection.FontRenderer.drawString(Message.MESSAGE_SEARCH_FEATURES.getMessage(), width/2-60+4, 72, ChatFormatting.DARK_GRAY);
+            MinecraftReflection.FontRenderer.drawString(Message.MESSAGE_SEARCH_FEATURES.getMessage(), featureSearchBar.xPosition+4, featureSearchBar.yPosition+3, ChatFormatting.DARK_GRAY);
         }
 
         super.drawScreen(mouseX, mouseY, partialTicks); // Draw buttons.
@@ -214,10 +215,10 @@ public class SkyblockAddonsGui extends GuiScreen {
             }  else if (feature == Feature.GENERAL_SETTINGS) {
                 if (tab == EnumUtils.GuiTab.GENERAL_SETTINGS) {
                     main.getUtils().setFadingIn(false);
-                    Minecraft.getMinecraft().displayGuiScreen(new SkyblockAddonsGui(main, 1, EnumUtils.GuiTab.MAIN, featureSearchBar.getText()));
+                    Minecraft.getMinecraft().displayGuiScreen(new SkyblockAddonsGui(main, 1, EnumUtils.GuiTab.MAIN));
                 } else {
                     main.getUtils().setFadingIn(false);
-                    Minecraft.getMinecraft().displayGuiScreen(new SkyblockAddonsGui(main, 1, EnumUtils.GuiTab.GENERAL_SETTINGS, featureSearchBar.getText()));
+                    Minecraft.getMinecraft().displayGuiScreen(new SkyblockAddonsGui(main, 1, EnumUtils.GuiTab.GENERAL_SETTINGS));
                 }
             } else if (abstractButton instanceof ButtonToggle) {
                 if (main.getConfigValues().isRemoteDisabled(feature)) return;
@@ -244,12 +245,12 @@ public class SkyblockAddonsGui extends GuiScreen {
                 if (feature == Feature.TEXT_STYLE) {
                     main.getConfigValues().setTextStyle(main.getConfigValues().getTextStyle().getNextType());
                     cancelClose = true;
-                    Minecraft.getMinecraft().displayGuiScreen(new SkyblockAddonsGui(main, page, tab, featureSearchBar.getText()));
+                    Minecraft.getMinecraft().displayGuiScreen(new SkyblockAddonsGui(main, page, tab));
                     cancelClose = false;
                 } else if (feature == Feature.CHROMA_MODE) {
                     main.getConfigValues().setChromaMode(main.getConfigValues().getChromaMode().getNextType());
                     cancelClose = true;
-                    Minecraft.getMinecraft().displayGuiScreen(new SkyblockAddonsGui(main, page, tab, featureSearchBar.getText()));
+                    Minecraft.getMinecraft().displayGuiScreen(new SkyblockAddonsGui(main, page, tab));
                     cancelClose = false;
                 }
             } else if (abstractButton instanceof ButtonModify) {
@@ -274,16 +275,16 @@ public class SkyblockAddonsGui extends GuiScreen {
             if (arrow.isNotMax()) {
                 main.getUtils().setFadingIn(false);
                 if (arrow.getArrowType() == ButtonArrow.ArrowType.RIGHT) {
-                    mc.displayGuiScreen(new SkyblockAddonsGui(main, ++page, tab, featureSearchBar.getText()));
+                    mc.displayGuiScreen(new SkyblockAddonsGui(main, ++page, tab));
                 } else {
-                    mc.displayGuiScreen(new SkyblockAddonsGui(main, --page, tab, featureSearchBar.getText()));
+                    mc.displayGuiScreen(new SkyblockAddonsGui(main, --page, tab));
                 }
             }
         } else if (abstractButton instanceof ButtonSwitchTab) {
             ButtonSwitchTab tab = (ButtonSwitchTab)abstractButton;
             if (tab.getTab() != this.tab) {
                 main.getUtils().setFadingIn(false);
-                mc.displayGuiScreen(new SkyblockAddonsGui(main, 1, tab.getTab(), featureSearchBar.getText()));
+                mc.displayGuiScreen(new SkyblockAddonsGui(main, 1, tab.getTab()));
             }
         } else if (abstractButton instanceof ButtonSocial) {
             EnumUtils.Social social = ((ButtonSocial)abstractButton).getSocial();
@@ -297,6 +298,13 @@ public class SkyblockAddonsGui extends GuiScreen {
         }
     }
 
+    private static ResourceLocation LOGO_SCALED = null;
+    private static ResourceLocation GLOW_SCALED = null;
+    private static BufferedImage LOGO_SCALED_IMAGE = null;
+    private static BufferedImage GLOW_SCALED_IMAGE = null;
+    private static int logoScale = -1;
+    private static boolean scaling = false;
+
     /**
      * Draws the default text at the top at bottoms of the GUI.
      * @param gui The gui to draw the text on.
@@ -304,12 +312,93 @@ public class SkyblockAddonsGui extends GuiScreen {
     static void drawDefaultTitleText(GuiScreen gui, int alpha) {
         int defaultBlue = SkyblockAddons.getInstance().getUtils().getDefaultBlue(alpha);
 
-        drawScaledString(gui, "SkyblockAddons", 28, defaultBlue, 2.5F, 0);
-        drawScaledString(gui,"v" + SkyblockAddons.VERSION + " by Biscut", 49, defaultBlue, 1.3, 50);
+        int height = 90;
+        int width = height*2;
+        ScaledResolution scaledResolution = new ScaledResolution(Minecraft.getMinecraft());
+
+        TextureManager textureManager = Minecraft.getMinecraft().getTextureManager();
+
+        int minecraftScale = scaledResolution.getScaleFactor();
+        if (logoScale != minecraftScale) {
+            if (LOGO_SCALED != null) {
+                textureManager.deleteTexture(LOGO_SCALED);
+                textureManager.deleteTexture(GLOW_SCALED);
+            }
+
+            LOGO_SCALED = null;
+            GLOW_SCALED = null;
+        }
+
+        if (LOGO_SCALED == null && !scaling) {
+            scaling = true;
+            new Thread(() -> {
+                try {
+                    // Logo
+                    BufferedImage myPicture = ImageIO.read(SkyblockAddonsGui.class.getClassLoader().getResourceAsStream("assets/skyblockaddons/logo.png"));
+                    Image scaled = myPicture.getScaledInstance(width*minecraftScale, height*minecraftScale, Image.SCALE_SMOOTH);
+
+                    BufferedImage newImage = new BufferedImage(width*minecraftScale, height*minecraftScale, BufferedImage.TYPE_INT_ARGB);
+                    Graphics g = newImage.getGraphics();
+                    g.drawImage(scaled, 0, 0, null);
+                    g.dispose();
+
+                    LOGO_SCALED_IMAGE = newImage;
+
+                    myPicture = ImageIO.read(SkyblockAddonsGui.class.getClassLoader().getResourceAsStream("assets/skyblockaddons/logoglow.png"));
+                    scaled = myPicture.getScaledInstance(width*minecraftScale, height*minecraftScale, Image.SCALE_SMOOTH);
+
+                    newImage = new BufferedImage(width*minecraftScale, height*minecraftScale, BufferedImage.TYPE_INT_ARGB);
+                    g = newImage.getGraphics();
+                    g.drawImage(scaled, 0, 0, null);
+                    g.dispose();
+
+                    GLOW_SCALED_IMAGE = newImage;
+
+                    logoScale = minecraftScale;
+                    scaling = false;
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+            }).start();
+        }
+
+        if (LOGO_SCALED_IMAGE != null) {
+            LOGO_SCALED = textureManager.getDynamicTextureLocation("logo", new DynamicTexture(LOGO_SCALED_IMAGE));
+            LOGO_SCALED_IMAGE = null;
+        }
+
+        if (GLOW_SCALED_IMAGE != null) {
+            GLOW_SCALED = textureManager.getDynamicTextureLocation("logoglow", new DynamicTexture(GLOW_SCALED_IMAGE));
+            GLOW_SCALED_IMAGE = null;
+        }
+
+        textureManager.bindTexture(LOGO_SCALED != null ? LOGO_SCALED : LOGO);
+        SkyblockAddons.getInstance().getUtils().drawModalRectWithCustomSizedTexture(scaledResolution.getScaledWidth()/2F-width/2F, 3, 0, 0, width, height, width, height);
+
+        int animationMillis = 4000;
+        float glowAlpha;
+        glowAlpha = System.currentTimeMillis()%animationMillis;
+        if (glowAlpha > animationMillis/2F) {
+            glowAlpha = (animationMillis-glowAlpha)/(animationMillis/2F);
+        } else {
+            glowAlpha = glowAlpha/(animationMillis/2F);
+        }
+
+        GlStateManager.enableAlpha();
+        GlStateManager.enableBlend();
+        GlStateManager.color(1,1,1, glowAlpha);
+        textureManager.bindTexture(GLOW_SCALED != null ? GLOW_SCALED : LOGO_GLOW);
+        SkyblockAddons.getInstance().getUtils().drawModalRectWithCustomSizedTexture(scaledResolution.getScaledWidth()/2F-width/2F, 3, 0, 0, width, height, width, height);
+        String version = "v" + SkyblockAddons.VERSION + " by Biscut";
+        drawScaledString(gui, version, 55, defaultBlue, 1.3, 170 - Minecraft.getMinecraft().fontRendererObj.getStringWidth(version), false);
 
         if (gui instanceof SkyblockAddonsGui) {
             drawScaledString(gui, "Special Credits: InventiveTalent - Magma Boss Timer API", gui.height - 22, defaultBlue, 1, 0);
         }
+    }
+
+    static void drawScaledString(GuiScreen guiScreen, String text, int y, int color, double scale, int xOffset) {
+        drawScaledString(guiScreen, text, y, color, scale, xOffset, true);
     }
 
     /**
@@ -321,11 +410,16 @@ public class SkyblockAddonsGui extends GuiScreen {
      * @param scale The scale to draw the text.
      * @param xOffset The offset from the center x that the text should be drawn at.
      */
-    static void drawScaledString(GuiScreen guiScreen, String text, int y, int color, double scale, int xOffset) {
+    static void drawScaledString(GuiScreen guiScreen, String text, int y, int color, double scale, int xOffset, boolean centered) {
         GlStateManager.pushMatrix();
         GlStateManager.scale(scale, scale, 1);
-        MinecraftReflection.FontRenderer.drawCenteredString(text, Math.round((float)guiScreen.width/2/scale)+xOffset,
-                Math.round((float)y/scale), color);
+        if (centered) {
+            MinecraftReflection.FontRenderer.drawCenteredString(text, Math.round((float) guiScreen.width / 2 / scale) + xOffset,
+                    Math.round((float) y / scale), color);
+        } else {
+            MinecraftReflection.FontRenderer.drawString(text, Math.round((float) guiScreen.width / 2 / scale) + xOffset,
+                    Math.round((float) y / scale), color, true);
+        }
         GlStateManager.popMatrix();
     }
 
