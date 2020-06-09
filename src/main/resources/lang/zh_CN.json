@@ -115,8 +115,8 @@
     "combatTimerDisplay": "显示战斗计时器",
     "discordRP": "丰富 Discord 状态",
     "endstoneProtectorDisplay": "显示末影石保护者",
-    "fancyWarpMenu": "Fancy Warp Menu",
-    "doubleWarp": "Warp Twice",
+    "fancyWarpMenu": "精致传送菜单",
+    "doubleWarp": "双重传送",
     "advancedMode": "高级模式"
   },
   "messages": {
@@ -194,6 +194,6 @@
     "titleCustom": "自定义状态",
     "descriptionCustom": "输入自定义状态",
     "titleAuto": "随机状态",
-    "descriptionAuto": "随机显示某一状态， 如在末地岛时显示末影战士击杀数。"
+    "descriptionAuto": "随机显示某一状态， 如在末地时显示末影战士击杀数。"
   }
 }
