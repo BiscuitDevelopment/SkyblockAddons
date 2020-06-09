@@ -115,9 +115,9 @@
     "combatTimerDisplay": "Affichage du minuteur de combat",
     "discordRP": "Discord Rich Presence",
     "endstoneProtectorDisplay": "Affichage du Protecteur de l'Endstone",
-    "fancyWarpMenu": "Fancy Warp Menu",
-    "doubleWarp": "Warp Twice",
-    "advancedMode": "Advanced Mode"
+    "fancyWarpMenu": "Menu de téléportation",
+    "doubleWarp": "Double téléportation",
+    "advancedMode": "Mode avancé"
   },
   "messages": {
     "dropConfirmation": "Jetez cet objet une nouvelle fois pour confirmer!",
@@ -137,10 +137,10 @@
     },
     "wantToViewPatchNotes": "Voulez vous lire les changements ?",
     "downloadLink": "LIEN DE MISE A JOUR",
-    "directDownload": "DIRECT DOWNLOAD LINK",
+    "directDownload": "LIEN DE TÉLÉCHARGEMENT DIRECT",
     "openModFolder": "DOSSIER MODS",
     "joinTheDiscord": "REJOINDRE LE DISCORD",
-    "newUpdateAvailable": "A new update (%version%) is available!",
+    "newUpdateAvailable": "La mise à jour (%version%) est disponible!",
     "update": {
       "majorAvailable": "Une nouvelle mise à jour majeure, %version% est disponible ! Le lien pour le télécharger est disponible dans le chat.",
       "patchAvailable": "Le nouveau patch %version% est disponible! Regardez dans le chat pour le télécharger!"
@@ -169,9 +169,9 @@
     "showColorIcons": "Afficher les icônes de couleur",
     "stage": "Étape %stage%",
     "switchedSlots": "Vous venez de basculer d'un emplacement verrouillé ou d'un objet rare. Veuillez patienter un peu avant de jeter !",
-    "clickToOpenLink": "Click to open this link!",
-    "clickToOpenFolder": "Click to open your mods folder!",
-    "freezeBackpackPreview": "Freeze Backpack Preview",
+    "clickToOpenLink": "Cliquez ici pour ouvrir le lien!",
+    "clickToOpenFolder": "Cliquez pour ouvrir le dossier des mods !",
+    "freezeBackpackPreview": "Geler l'aperçu du sac à dos",
     "hideGreyEnchants": "Hide Regular Grey Enchants"
   },
   "discordStatus": {
