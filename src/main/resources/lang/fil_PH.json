@@ -112,10 +112,14 @@
     "showZealotsPerEye": "Zealot Counter - Show Zealots Per Eye",
     "turnBowGreenWhenUsingToxicArrowPoison": "Color Bow Green When Using Toxic Arrow Poison",
     "birchParkRainmakerTimer": "Orasan ng Natitirang Oras ng Ulan sa Birch Park",
-    "combatTimerDisplay": "Combat Timer Display"
+    "combatTimerDisplay": "Combat Timer Display",
+    "discordRP": "Discord Rich Presence",
+    "endstoneProtectorDisplay": "Endstone Protector Display",
+    "fancyWarpMenu": "Fancy Warp Menu",
+    "doubleWarp": "Warp Twice",
+    "advancedMode": "Advanced Mode"
   },
   "messages": {
-    "betaTesters": "Thank you for being a beta tester! Please report any bugs you encounter in the Discord channel.",
     "dropConfirmation": "Ihulog ang item muli para kumpirmado!",
     "magmaBossWarning": "Babala! Magma Cube Boss",
     "fullInventory": "Punong Imbentaryo!",
@@ -131,20 +135,15 @@
       "reforges": "Pandayan",
       "crafting": "Crafting"
     },
-    "deleteOldFile": "Tapos na ang pagdodownload, pakibukas ng iyong mods folder gamit ang button sa baba, pakisara ng Minecraft, at paki-delete ng lumang bersyon (pwede naman i-delete mamaya kung gusto mo).",
     "wantToViewPatchNotes": "Gusto mo ba basahin ang mga pagbabago?",
     "downloadLink": "LINK NG BERSYON",
-    "downloadAutomatically": "AWTOMATIKONG DOWNLOAD",
+    "directDownload": "DIRECT DOWNLOAD LINK",
     "openModFolder": "MODS FOLDER",
     "joinTheDiscord": "SUMALI SA DISCORD",
+    "newUpdateAvailable": "A new update (%version%) is available!",
     "update": {
       "majorAvailable": "Ang pangunahing bersyon (%version%) ay pwede na! Ang link para sa pag-download ay pwede makita sa chat.",
-      "patchAvailable": "Ang pangunahing bersyon (%version%) ay pwede na! Tumingin sa chat para sa pagpipilian sa pag-download!",
-      "downloading": "Ang patch ay nagdodownload! Status: %downloaded%/%total% Paalala na pagkatapos ng pagka-download, paki-delete ng lumang file.",
-      "failed": "Ang pagdodownload sa patch ay nabigo! Makiki-download nalamang nang manual gamit ang link sa chat.",
-      "downloadFinished": "Tapos na ang pagdodownload sa patch. Nai-save ito bilang %file%. Paalala, huwag kalimutan i-delete ang lumang patch pagkatapos mo i-close ang Minecraft. Pindutin mo ang message sa chat para buksan ang folder.",
-      "newBeta": "A new beta (%version%) is available! Please update using the \"Mods\" menu.",
-      "newUpdate": "A new update (%version%) is available! Please update using the \"Mods\" menu."
+      "patchAvailable": "Ang pangunahing bersyon (%version%) ay pwede na! Tumingin sa chat para sa pagpipilian sa pag-download!"
     },
     "slotLocked": "Ang slot na ito ay nakakandado!",
     "summoningEyeFound": "Pangsummon na Mata!",
@@ -164,6 +163,37 @@
     "noArrowsLeft": "No Arrows Left!",
     "chooseAColor": "Choose a Color",
     "selectedColor": "Selected Color",
-    "setHexColor": "Set Hex Color"
+    "setHexColor": "Set Hex Color",
+    "rescaleFeatures": "Rescale Features",
+    "resizeBars": "Resize Bars",
+    "showColorIcons": "Show Color Icons",
+    "stage": "Stage %stage%",
+    "switchedSlots": "You have just switched from a locked slot or rare item. Please wait a bit before dropping!",
+    "clickToOpenLink": "Click to open this link!",
+    "clickToOpenFolder": "Click to open your mods folder!",
+    "freezeBackpackPreview": "Freeze Backpack Preview",
+    "hideGreyEnchants": "Hide Regular Grey Enchants"
+  },
+  "discordStatus": {
+    "titleNone": "None",
+    "descriptionNone": "No text is displayed",
+    "titleLocation": "Location",
+    "descriptionLocation": "Shows your current location",
+    "titlePurse": "Purse",
+    "descriptionPurse": "Shows the amount of coins in your purse",
+    "titleStats": "Stats",
+    "descriptionStats": "Shows your HP, Defense and Mana stats",
+    "titleZealots": "Zealots",
+    "descriptionZealots": "Shows your Zealot counter",
+    "titleItem": "Held Item",
+    "descriptionItem": "Shows the name of the item you're holding",
+    "titleProfile": "Profile",
+    "descriptionProfile": "Shows your Profile name",
+    "titleTime": "Skyblock Time",
+    "descriptionTime": "Shows the current Skyblock time. E.g. 12:00am 1st Early Winter",
+    "titleCustom": "Custom Status",
+    "descriptionCustom": "Enter a custom status",
+    "titleAuto": "Auto Status",
+    "descriptionAuto": "Automatically displays a status. E.g. your zealot count while in the end."
   }
 }

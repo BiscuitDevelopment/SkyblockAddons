@@ -112,10 +112,14 @@
     "showZealotsPerEye": "Zealot Teller - Vis Antall Zealots Per Øye",
     "turnBowGreenWhenUsingToxicArrowPoison": "Farge Bue Grønn Når Giftig Piller Brukes",
     "birchParkRainmakerTimer": "Bjørke Park Regnlager Nedtelling",
-    "combatTimerDisplay": "Vis Kamp Nedtelling"
+    "combatTimerDisplay": "Vis Kamp Nedtelling",
+    "discordRP": "Discord Rik Tilværelse",
+    "endstoneProtectorDisplay": "Endestein Beskytter Panel",
+    "fancyWarpMenu": "Fancy Warp Menu",
+    "doubleWarp": "Warp Twice",
+    "advancedMode": "Advanced Mode"
   },
   "messages": {
-    "betaTesters": "Takk for at du er en beta tester! Hvis du finner noen Bugs vennligst rapporter de på Discord'en.",
     "dropConfirmation": "Slipp denne gjenstanden igjen for å bekrefte!",
     "magmaBossWarning": "Magma Cube Boss!",
     "fullInventory": "Full inventar!",
@@ -131,20 +135,15 @@
       "reforges": "Reforges",
       "crafting": "Utforming"
     },
-    "deleteOldFile": "Nedlastningen er ferdig, åpne opp modifikasjonsmappen ved bruk av knappen nedenfor, lukk igjen Minecraft, og slett den gamle versjonen (eller slett den senere hvis du vil).",
     "wantToViewPatchNotes": "Vil du lese endringene?",
     "downloadLink": "OPPDATERINGSLENKE",
-    "downloadAutomatically": "AUTOMATISK NEDLASTING",
+    "directDownload": "DIRECT DOWNLOAD LINK",
     "openModFolder": "MODIFIKASJONS MAPPE",
     "joinTheDiscord": "bli med Discord",
+    "newUpdateAvailable": "A new update (%version%) is available!",
     "update": {
       "majorAvailable": "En ny stor oppdatering (%version%) er ute! Du kan finne nedlastingslenken under i chatten.",
-      "patchAvailable": "En ny oppdatering (%version%) er ute! Se i chattten for alternativer for nedlastninger!",
-      "downloading": "nedlasting",
-      "failed": "grunnstøting",
-      "downloadFinished": "nedlastingen fullført",
-      "newBeta": "En ny beta (%version%) er tilgjengelig! Vennligst oppdater via \"Mod'er\" menyen.",
-      "newUpdate": "En ny oppdatering (%version%) er tilgjengelig! Vennligst oppdater via \"Mod'er\" menyen."
+      "patchAvailable": "En ny oppdatering (%version%) er ute! Se i chattten for alternativer for nedlastninger!"
     },
     "slotLocked": "Denne ruten er låst!",
     "summoningEyeFound": "Summoning Eye!",
@@ -164,6 +163,37 @@
     "noArrowsLeft": "Ingen Piler Igjen!",
     "chooseAColor": "Velg en Farge",
     "selectedColor": "Valgt Farge",
-    "setHexColor": "Endre Hex Farge"
+    "setHexColor": "Endre Hex Farge",
+    "rescaleFeatures": "Omskaler Funksjoner",
+    "resizeBars": "Omskaler Barer",
+    "showColorIcons": "Vis Farge Ikoner",
+    "stage": "Nivå %stage%",
+    "switchedSlots": "Du har nettopp byttet fra en låst plass eller sjelden ting. Vennligst vent litt før du slipper!",
+    "clickToOpenLink": "Click to open this link!",
+    "clickToOpenFolder": "Click to open your mods folder!",
+    "freezeBackpackPreview": "Freeze Backpack Preview",
+    "hideGreyEnchants": "Hide Regular Grey Enchants"
+  },
+  "discordStatus": {
+    "titleNone": "None",
+    "descriptionNone": "No text is displayed",
+    "titleLocation": "Location",
+    "descriptionLocation": "Shows your current location",
+    "titlePurse": "Purse",
+    "descriptionPurse": "Shows the amount of coins in your purse",
+    "titleStats": "Stats",
+    "descriptionStats": "Shows your HP, Defense and Mana stats",
+    "titleZealots": "Zealots",
+    "descriptionZealots": "Shows your Zealot counter",
+    "titleItem": "Held Item",
+    "descriptionItem": "Shows the name of the item you're holding",
+    "titleProfile": "Profile",
+    "descriptionProfile": "Shows your Profile name",
+    "titleTime": "Skyblock Time",
+    "descriptionTime": "Shows the current Skyblock time. E.g. 12:00am 1st Early Winter",
+    "titleCustom": "Custom Status",
+    "descriptionCustom": "Enter a custom status",
+    "titleAuto": "Auto Status",
+    "descriptionAuto": "Automatically displays a status. E.g. your zealot count while in the end."
   }
 }

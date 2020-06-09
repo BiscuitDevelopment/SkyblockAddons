@@ -112,10 +112,14 @@
     "showZealotsPerEye": "Zealot Counter - Show Zealots Per Eye",
     "turnBowGreenWhenUsingToxicArrowPoison": "Color Bow Green When Usin' Toxic Arrow Poison",
     "birchParkRainmakerTimer": "Birch Park Rainmaker Timer",
-    "combatTimerDisplay": "Yer Combat Tim'r Display"
+    "combatTimerDisplay": "Yer Combat Tim'r Display",
+    "discordRP": "Discord Rich Presence",
+    "endstoneProtectorDisplay": "Endstone Protector Display",
+    "fancyWarpMenu": "Fancy Warp Menu",
+    "doubleWarp": "Warp Twice",
+    "advancedMode": "Advanced Mode"
   },
   "messages": {
-    "betaTesters": "aight thanks biscoot",
     "dropConfirmation": "'ay lad, drop this here item again to confirm!",
     "magmaBossWarning": "Yer Magma Boss Spawned!",
     "fullInventory": "Ahoy mate, yer pouch there be full!",
@@ -131,20 +135,15 @@
       "reforges": "Reforgery",
       "crafting": "Craftin'"
     },
-    "deleteOldFile": "The download be finished, please open yer mods folder usin' the button below, close yer Minecraft, an' delete the old version (or delete it later if ye want).",
     "wantToViewPatchNotes": "Want to read the changes?",
     "downloadLink": "Yer update link",
-    "downloadAutomatically": "Yer Automatic Download",
+    "directDownload": "DIRECT DOWNLOAD LINK",
     "openModFolder": "Mods Foldarr",
     "joinTheDiscord": "Join arr Discord",
+    "newUpdateAvailable": "A new update (%version%) is available!",
     "update": {
       "majorAvailable": "A new major update (%version%) be available! The download link can be found in yer chat.",
-      "patchAvailable": "A new patch update (%version%) be available! Look in chat fer download options!",
-      "downloading": "The patch be downloading! Status: %downloaded%/%total% Please note that there after the download 'as finished, ye must delete the old file.",
-      "failed": "The patch download failed! Please download it manually usin' the link in chat.",
-      "downloadFinished": "The patch finished downloadin'. It been saved as %file%. Please don't forget to delete the old file after closin' yer Minecraft. Click the message in yer chat to open up the folder.",
-      "newBeta": "A new beta (%version%) is available! Please update using the \"Mods\" menu.",
-      "newUpdate": "A new update (%version%) is available! Please update using the \"Mods\" menu."
+      "patchAvailable": "A new patch update (%version%) be available! Look in chat fer download options!"
     },
     "slotLocked": "Ahoy, matey! This here slot be locked!",
     "summoningEyeFound": "Summinin' Aye!",
@@ -164,6 +163,37 @@
     "noArrowsLeft": "Mate, yer arrows be gone!",
     "chooseAColor": "Choose a Col'r",
     "selectedColor": "Selected Col'r",
-    "setHexColor": "Set yer Hex Col'r"
+    "setHexColor": "Set yer Hex Col'r",
+    "rescaleFeatures": "Rescale Features",
+    "resizeBars": "Resize Bars",
+    "showColorIcons": "Show Color Icons",
+    "stage": "Stage %stage%",
+    "switchedSlots": "You have just switched from a locked slot or rare item. Please wait a bit before dropping!",
+    "clickToOpenLink": "Click to open this link!",
+    "clickToOpenFolder": "Click to open your mods folder!",
+    "freezeBackpackPreview": "Freeze Backpack Preview",
+    "hideGreyEnchants": "Hide Regular Grey Enchants"
+  },
+  "discordStatus": {
+    "titleNone": "None",
+    "descriptionNone": "No text is displayed",
+    "titleLocation": "Location",
+    "descriptionLocation": "Shows your current location",
+    "titlePurse": "Purse",
+    "descriptionPurse": "Shows the amount of coins in your purse",
+    "titleStats": "Stats",
+    "descriptionStats": "Shows your HP, Defense and Mana stats",
+    "titleZealots": "Zealots",
+    "descriptionZealots": "Shows your Zealot counter",
+    "titleItem": "Held Item",
+    "descriptionItem": "Shows the name of the item you're holding",
+    "titleProfile": "Profile",
+    "descriptionProfile": "Shows your Profile name",
+    "titleTime": "Skyblock Time",
+    "descriptionTime": "Shows the current Skyblock time. E.g. 12:00am 1st Early Winter",
+    "titleCustom": "Custom Status",
+    "descriptionCustom": "Enter a custom status",
+    "titleAuto": "Auto Status",
+    "descriptionAuto": "Automatically displays a status. E.g. your zealot count while in the end."
   }
 }

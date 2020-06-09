@@ -112,10 +112,14 @@
     "showZealotsPerEye": "Zeawot Countew - Totaw Zeawots Pew Eye",
     "turnBowGreenWhenUsingToxicArrowPoison": "Cowow Bow Gween When Using Toxic Awwow Poison",
     "birchParkRainmakerTimer": "Biwch Pawk Wainmakew Timew",
-    "combatTimerDisplay": "Combat Timew Dispway"
+    "combatTimerDisplay": "Combat Timew Dispway",
+    "discordRP": "Discawd Rich Pwesence",
+    "endstoneProtectorDisplay": "Endstone Pwotectow Dispway",
+    "fancyWarpMenu": "Fancy Warp Menu",
+    "doubleWarp": "Warp Twice",
+    "advancedMode": "Advanced Mode"
   },
   "messages": {
-    "betaTesters": "Thank you fow being a beta testew! Pwease wepowt any bugs you encoutew in the Discord channew >-<.",
     "dropConfirmation": "Dwop thwis itwem agwain to confiwm!",
     "magmaBossWarning": "Magmwa Cube Bowoss! （・□・；）",
     "fullInventory": "Fuww Inwentowy! >w<",
@@ -131,20 +135,15 @@
       "reforges": "Wefowges",
       "crafting": "Cwafting"
     },
-    "deleteOldFile": "The downwoad has finished, pwease open youw mods fowdew using the button bewow, cwose youw minecwaft, and dewete the owd vewsion (ow dewete it watew if you pwefew).",
     "wantToViewPatchNotes": "Want to wead the changes?",
     "downloadLink": "UPDATE WINK",
-    "downloadAutomatically": "AUTO DOWNWOAD",
+    "directDownload": "DIRECT DOWNLOAD LINK",
     "openModFolder": "MOOWODS FOWOLDER",
     "joinTheDiscord": "JOIN DISCOWD",
+    "newUpdateAvailable": "A new update (%version%) is available!",
     "update": {
       "majorAvailable": "A new majow update (%version%) is avaiwabwe! the wink fow the downwoad can be found in chat.",
-      "patchAvailable": "A new patch update (%version%) is avaiwabwe! look in chat fow downwoad options!",
-      "downloading": "The patch is downwoading! status: %downloaded%/%total% pwease note that aftew the downwoad has finished, you must dewete the owd fiwe.",
-      "failed": "The patch downwoad has faiwed! pwease downwoad it manuawwy using the wink in chat.",
-      "downloadFinished": "The pwatch has fiwinished downwoading. It has been saved as %file%. Pwease don't fowget to dewete the owd fiwe aftew cwosing youw minecwaft. Cwick the message in chat to opewn uwup the fowdew.",
-      "newBeta": "A new beta (%version%) is avaiwabwe! Pwease update using the \"Mods\" uwu menu.",
-      "newUpdate": "A new update (%version%) is avaiwabwe! Pwease update using the \"Mods\" uwu menu."
+      "patchAvailable": "A new patch update (%version%) is avaiwabwe! look in chat fow downwoad options!"
     },
     "slotLocked": "This swot is wocked!",
     "summoningEyeFound": "Summonuwuing Eye!",
@@ -164,6 +163,37 @@
     "noArrowsLeft": "No Awwows Weft!",
     "chooseAColor": "Choose a Colow",
     "selectedColor": "Sewected Colow",
-    "setHexColor": "Set Hex Colow"
+    "setHexColor": "Set Hex Colow",
+    "rescaleFeatures": "Wescawe Featuwes",
+    "resizeBars": "Wesize Baws",
+    "showColorIcons": "Show Cowow Icons",
+    "stage": "Stage %stage%",
+    "switchedSlots": "You have just switched fwom a wocked swot ow wawe item. Pwease wait a bit befowe dwopping!",
+    "clickToOpenLink": "Click to open this link!",
+    "clickToOpenFolder": "Click to open your mods folder!",
+    "freezeBackpackPreview": "Freeze Backpack Preview",
+    "hideGreyEnchants": "Hide Regular Grey Enchants"
+  },
+  "discordStatus": {
+    "titleNone": "None",
+    "descriptionNone": "No text is displayed",
+    "titleLocation": "Location",
+    "descriptionLocation": "Shows your current location",
+    "titlePurse": "Purse",
+    "descriptionPurse": "Shows the amount of coins in your purse",
+    "titleStats": "Stats",
+    "descriptionStats": "Shows your HP, Defense and Mana stats",
+    "titleZealots": "Zealots",
+    "descriptionZealots": "Shows your Zealot counter",
+    "titleItem": "Held Item",
+    "descriptionItem": "Shows the name of the item you're holding",
+    "titleProfile": "Profile",
+    "descriptionProfile": "Shows your Profile name",
+    "titleTime": "Skyblock Time",
+    "descriptionTime": "Shows the current Skyblock time. E.g. 12:00am 1st Early Winter",
+    "titleCustom": "Custom Status",
+    "descriptionCustom": "Enter a custom status",
+    "titleAuto": "Auto Status",
+    "descriptionAuto": "Automatically displays a status. E.g. your zealot count while in the end."
   }
 }

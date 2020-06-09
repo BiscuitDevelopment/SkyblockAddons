@@ -68,7 +68,7 @@
     "soundIndicatorForFishing": "釣り用のサウンドインジケーター",
     "avoidBlinkingNightVision": "暗視のポーションの点滅を無くす",
     "disableMinionLocationWarning": "Location Not Perfectのアラートを無効化",
-    "jungleAxeCooldown": "Jungle Axeのクールタイムを表示",
+    "jungleAxeCooldown": "クールダウンの間のJungle AxeとTreecapitatorでのブロックの破壊を阻止",
     "organizeLongEnchantmentLists": "長いエンチャントのリストを整理",
     "showItemCooldowns": "アイテムのクールタイムを表示",
     "speedPercentage": "スピード",
@@ -86,7 +86,7 @@
       "compact": "コンパクト"
     },
     "disableMagicalSoupMessage": "Magical Mushroom Soupのメッセージを非表示",
-    "zealotCounter": "Zealotカウンターを表示",
+    "zealotCounter": "Zealotカウンター - 最後のアイからの合計",
     "tickerChargesDisplay": "Tickerとチャージの表示",
     "tab": {
       "generalSettings": "一般設定"
@@ -98,13 +98,13 @@
     "showBackpackPreviewInAH": "オークションが開いている時にバックパックのプレビューを表示",
     "enableDevFeatures": "開発者機能の有効化",
     "chromaSpeed": "Chromaのスピード",
-    "chromaMode": "Chroma Color Mode",
+    "chromaMode": "クロマカラーモード",
     "chromaModes": {
       "allTheSame": "全て同じ色",
-      "fade": "Color Fade"
+      "fade": "カラーフェード"
     },
     "chromaFadeWidth": "Chroma Fade Width",
-    "sortTabEffectTimers": "Sort Timers by Duration",
+    "sortTabEffectTimers": "タイマーの残り時間で並び替え",
     "showBrokenFragments": "壊れたドラゴンフラグメントを表示する",
     "skyblockAddonsButtonInPauseMenu": "ポーズメニューにSBAボタンを表示する",
     "showTotalZealotCount": "Zealotカウンター - Zealotの合計",
@@ -112,10 +112,14 @@
     "showZealotsPerEye": "Zealotカウンター - アイ1つあたりのZealotキル数を表示する",
     "turnBowGreenWhenUsingToxicArrowPoison": "毒矢の使用時に弓を緑色にする",
     "birchParkRainmakerTimer": "Birch Parkの雨降りタイマー",
-    "combatTimerDisplay": "Combat Timer Display"
+    "combatTimerDisplay": "Combat状態のタイマーを表示",
+    "discordRP": "Discordでのゲームステータス表示",
+    "endstoneProtectorDisplay": "エンドストーンプロテクターがスポーンしたときに画面上に表示する",
+    "fancyWarpMenu": "Fancy Warp Menu",
+    "doubleWarp": "Warp Twice",
+    "advancedMode": "アドバンスドモード"
   },
   "messages": {
-    "betaTesters": "ベータテストに参加してくれてありがとう！バグに遭遇した時はDiscordで報告してください。",
     "dropConfirmation": "落としてもいいのであれば、このアイテムをもう一度ドロップしてください。",
     "magmaBossWarning": "マグマボスが出現しました!",
     "fullInventory": "インベントリが満タンです！",
@@ -131,20 +135,15 @@
       "reforges": "リフォージ",
       "crafting": "クラフト"
     },
-    "deleteOldFile": "新しいバージョンのダウンロードが完了しました。Minecraftを閉じてからあなたのmodsフォルダにある旧バージョンを削除してください。(必要に応じて後で削除しても構いません)",
     "wantToViewPatchNotes": "変更点を知りたいですか?",
     "downloadLink": "アップデートのダウンロードリンク",
-    "downloadAutomatically": "自動でダウンロード",
+    "directDownload": "直接ダウンロードするリンク",
     "openModFolder": "modsフォルダを開く",
     "joinTheDiscord": "Discordに参加する",
+    "newUpdateAvailable": "新しいバージョン(%version%) が利用可能です!",
     "update": {
       "majorAvailable": "新しいメジャーアップデート (%version%) が利用可能です！チャットからダウンロードリンクを探してください。",
-      "patchAvailable": "新しいパッチアップデート (%version%) が利用可能です！チャットからダウンロードオプションを確認してください。",
-      "downloading": "パッチをダウンロードしています! 進捗 : %downloaded%/%total% ダウンロードが終わったら、旧バージョンを削除する事を忘れないでください。",
-      "failed": "パッチダウンロードに失敗しました! ダウンロードリンクから手動でダウンロードしてください。",
-      "downloadFinished": "パッチのダウンロードが終了しました。ファイルは %file% に保存されました。旧バージョンの削除を忘れないでください。メッセージをクリックするとフォルダが開きます。",
-      "newBeta": "新しいベータバージョン (%version%) が利用可能です！モッドメニューからアップデートしてください。",
-      "newUpdate": "新しいバージョン (%version%) が利用可能です！モッドメニューからアップデートしてください。"
+      "patchAvailable": "新しいパッチアップデート (%version%) が利用可能です！チャットからダウンロードオプションを確認してください。"
     },
     "slotLocked": "このスロットはロックされています。",
     "summoningEyeFound": "サモニングアイ！",
@@ -164,6 +163,37 @@
     "noArrowsLeft": "矢がありません！",
     "chooseAColor": "色を選択",
     "selectedColor": "選択中の色",
-    "setHexColor": "16進数で色を設定"
+    "setHexColor": "16進数で色を設定",
+    "rescaleFeatures": "Rescale Features",
+    "resizeBars": "バーをリサイズ",
+    "showColorIcons": "カラーアイコンを表示する",
+    "stage": "ステージ%stage%",
+    "switchedSlots": "あなたはロックされたスロットまたはレアなアイテムから切り替えました。ドロップする前に少々お待ち下さい！",
+    "clickToOpenLink": "クリックしてリンクを開く",
+    "clickToOpenFolder": "クリックしてmodフォルダを開く",
+    "freezeBackpackPreview": "Freeze Backpack Preview",
+    "hideGreyEnchants": "Hide Regular Grey Enchants"
+  },
+  "discordStatus": {
+    "titleNone": "無し",
+    "descriptionNone": "テキストが表示されていません",
+    "titleLocation": "場所",
+    "descriptionLocation": "現在地を表示する",
+    "titlePurse": "所持金",
+    "descriptionPurse": "財布の所持金を表示",
+    "titleStats": "ステータス",
+    "descriptionStats": "HP、ディフェンス、マナを表示",
+    "titleZealots": "Zealot",
+    "descriptionZealots": "Zealotカウンターを表示",
+    "titleItem": "持っているアイテム",
+    "descriptionItem": "持っているアイテムの名前を表示",
+    "titleProfile": "プロフィール",
+    "descriptionProfile": "プロフィール名を表示",
+    "titleTime": "Skyblock内時刻",
+    "descriptionTime": "現在のSkyblock内の時刻を表示する (例: 12:00am 1st Early Winter)",
+    "titleCustom": "カスタムステータス",
+    "descriptionCustom": "カスタムステータスを入力",
+    "titleAuto": "自動ステータス",
+    "descriptionAuto": "ステータスを自動表示する (例: エンドにいる間はゼアロットの討伐数)"
   }
 }
