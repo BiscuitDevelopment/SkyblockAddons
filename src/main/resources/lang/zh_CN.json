@@ -135,7 +135,7 @@
       "reforges": "重铸",
       "crafting": "合成"
     },
-    "wantToViewPatchNotes": "查看更新内容",
+    "wantToViewPatchNotes": "需要帮助或查看更新内容？",
     "downloadLink": "更新链接",
     "directDownload": "直接下载链接",
     "openModFolder": "Mods 文件夹",
@@ -172,7 +172,7 @@
     "clickToOpenLink": "点击打开链接！",
     "clickToOpenFolder": "打开 mods 文件夹",
     "freezeBackpackPreview": "冻结背包预览",
-    "hideGreyEnchants": "隐藏灰色附魔名称"
+    "hideGreyEnchants": "隐藏原版灰色附魔名"
   },
   "discordStatus": {
     "titleNone": "无",
@@ -190,10 +190,10 @@
     "titleProfile": "账户",
     "descriptionProfile": "显示你的账户名称",
     "titleTime": "空岛时间",
-    "descriptionTime": "显示当前空岛的时间，例：早冬1日正午12：00",
+    "descriptionTime": "显示当前空岛的时间，例：初冬1日正午12：00",
     "titleCustom": "自定义状态",
     "descriptionCustom": "输入自定义状态",
     "titleAuto": "随机状态",
-    "descriptionAuto": "随机显示某一状态。 如在末地岛时显示末影战士击杀数。"
+    "descriptionAuto": "随机显示某一状态， 如在末地岛时显示末影战士击杀数。"
   }
 }
