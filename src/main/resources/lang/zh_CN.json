@@ -75,7 +75,7 @@
     "collectionDisplay": "显示技能进度",
     "onlyMineOresDeepCaverns": "在深层矿洞中只挖掘矿物",
     "onlyMineValuablesNether": "仅在地狱开采有价值的矿物",
-    "revenantIndicator": "杀手弓进度提示",
+    "revenantIndicator": "猎杀相关装备进度提示",
     "specialZealotAlert": "末影战士警告",
     "enableMessageWhenActionPrevented": "当操作被阻止时显示提示",
     "hidePetHealthBar": "隐藏宠物血条",
@@ -140,7 +140,7 @@
     "directDownload": "直接下载链接",
     "openModFolder": "Mods 文件夹",
     "joinTheDiscord": "加入 Discord",
-    "newUpdateAvailable": "新版本(%version%)现已发布！",
+    "newUpdateAvailable": "新版本 (%version%) 现已发布！",
     "update": {
       "majorAvailable": "%version% 重要更新！下载链接可以在聊天中找到。",
       "patchAvailable": "%version% 补丁更新！下载链接可以在聊天中找到。"
