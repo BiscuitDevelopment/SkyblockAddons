@@ -117,7 +117,8 @@
     "endstoneProtectorDisplay": "Endstone Protector Display",
     "fancyWarpMenu": "Fancy Warp Menu",
     "doubleWarp": "Warp Twice",
-    "advancedMode": "Advanced Mode"
+    "advancedMode": "Advanced Mode",
+    "legendarySeaCreatureWarning": "Legendary Sea Creature Warning"
   },
   "messages": {
     "dropConfirmation": "Drop this item again to confirm!",
@@ -176,7 +177,8 @@
     "hideGreyEnchants": "Hide Regular Grey Enchants",
     "firstStatus": "This status will appear at the top",
     "secondStatus": "This status will appear under your first status",
-    "fallbackStatus": "This status will appear when your automatic status has nothing to show"
+    "fallbackStatus": "This status will appear when your automatic status has nothing to show",
+    "legendarySeaCreatureWarning": "Legendary Catch!"
   },
   "discordStatus": {
     "titleNone": "None",

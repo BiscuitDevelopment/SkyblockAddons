@@ -120,6 +120,7 @@ public enum Message {
     SETTING_ADVANCED_MODE(MessageObject.SETTING, "advancedMode"),
     SETTING_FREEZE_BACKPACK_PREVIEW(MessageObject.SETTING, "freezeBackpackPreview"),
     SETTING_HIDE_GREY_ENCHANTS(MessageObject.SETTING, "hideGreyEnchants"),
+    SETTING_LEGENDARY_SEA_CREATURE_WARNING(MessageObject.SETTING, "legendarySeaCreatureWarning"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.BACKPACK_STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.BACKPACK_STYLE, "compact"),
@@ -172,6 +173,7 @@ public enum Message {
     MESSAGE_FIRST_STATUS(MessageObject.MESSAGES, "firstStatus"),
     MESSAGE_SECOND_STATUS(MessageObject.MESSAGES, "secondStatus"),
     MESSAGE_FALLBACK_STATUS(MessageObject.MESSAGES, "fallbackStatus"),
+    MESSAGE_LEGENDARY_SEA_CREATURE_WARNING(MessageObject.MESSAGES, "legendarySeaCreatureWarning"),
 
     @Deprecated ANCHOR_POINT_TOP_LEFT(MessageObject.ANCHOR_POINT, "topLeft"),
     @Deprecated ANCHOR_POINT_TOP_RIGHT(MessageObject.ANCHOR_POINT, "topRight"),

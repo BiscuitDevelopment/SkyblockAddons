@@ -71,6 +71,8 @@ public class PlayerListener {
     private final static Set<String> SOUP_RANDOM_MESSAGES = new HashSet<>(Arrays.asList("I feel like I can fly!", "What was in that soup?",
             "Hmm… tasty!", "Hmm... tasty!", "You can now fly for 2 minutes.", "Your Magical Mushroom Soup flight has been extended for 2 extra minutes."));
 
+    private final Set<String> LEGENDARY_SEA_CREATURE_MESSAGES = new HashSet<>(Arrays.asList("The Water Hydra has come to test your strength.", "The Sea Emperor arises from the depths...", "What is this creature!?"));
+
     private long lastWorldJoin = -1;
     private long lastBoss = -1;
     private int magmaTick = 1;
@@ -191,7 +193,12 @@ public class PlayerListener {
                 }
                 main.getPersistentValues().addEyeResetKills();
 
-            } else if (main.getConfigValues().isEnabled(Feature.DISABLE_MAGICAL_SOUP_MESSAGES) && SOUP_RANDOM_MESSAGES.contains(unformattedText)) {
+            } else if (main.getConfigValues().isEnabled(Feature.LEGENDARY_SEA_CREATURE_WARNING) && LEGENDARY_SEA_CREATURE_MESSAGES.contains(e.message)) {
+                main.getUtils().playLoudSound("random.orb", 0.5);
+                main.getRenderListener().setTitleFeature(Feature.LEGENDARY_SEA_CREATURE_WARNING);
+                main.getScheduler().schedule(Scheduler.CommandType.RESET_TITLE_FEATURE, main.getConfigValues().getWarningSeconds());
+
+            }  else if (main.getConfigValues().isEnabled(Feature.DISABLE_MAGICAL_SOUP_MESSAGES) && SOUP_RANDOM_MESSAGES.contains(unformattedText)) {
                 e.setCanceled(true);
 
             } else if (formattedText.startsWith("§7Sending to server ")) {
