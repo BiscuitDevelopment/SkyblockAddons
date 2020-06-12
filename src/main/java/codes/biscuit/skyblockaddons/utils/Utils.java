@@ -871,4 +871,12 @@ public class Utils {
 
         return resourceLocation; // Processing has started in another thread, but not done yet.
     }
+
+    public boolean isAxe(Item item) {
+        return Items.wooden_axe.equals(item) ||
+                Items.stone_axe.equals(item) ||
+                Items.golden_axe.equals(item) ||
+                Items.iron_axe.equals(item) ||
+                Items.diamond_axe.equals(item);
+    }
 }

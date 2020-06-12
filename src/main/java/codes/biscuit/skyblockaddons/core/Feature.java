@@ -114,6 +114,8 @@ public enum Feature {
     DOUBLE_WARP(86, Message.SETTING_DOUBLE_WARP, true),
     HIDE_GREY_ENCHANTS(87, Message.SETTING_HIDE_GREY_ENCHANTS, false),
     LEGENDARY_SEA_CREATURE_WARNING(88, Message.SETTING_LEGENDARY_SEA_CREATURE_WARNING, new GuiFeatureData(ChatFormatting.RED), false),
+    ONLY_BREAK_LOGS_PARK(84, Message.SETTING_ONLY_BREAK_LOGS_PARK, new GuiFeatureData(ChatFormatting.RED, true), false, EnumUtils.FeatureSetting.ENABLE_MESSAGE_WHEN_ACTION_PREVENTED),
+    ENABLE_MESSAGE_WHEN_BREAKING_PARK(85, null, false),
 
     WARNING_TIME(-1, Message.SETTING_WARNING_DURATION, false),
 

@@ -118,7 +118,8 @@
     "fancyWarpMenu": "Fancy Warp Menu",
     "doubleWarp": "Warp Twice",
     "advancedMode": "Advanced Mode",
-    "legendarySeaCreatureWarning": "Legendary Sea Creature Warning"
+    "legendarySeaCreatureWarning": "Legendary Sea Creature Warning",
+    "onlyBreakLogsPark": "Only Break Logs in the Park"
   },
   "messages": {
     "dropConfirmation": "Drop this item again to confirm!",
@@ -178,7 +179,8 @@
     "firstStatus": "This status will appear at the top",
     "secondStatus": "This status will appear under your first status",
     "fallbackStatus": "This status will appear when your automatic status has nothing to show",
-    "legendarySeaCreatureWarning": "Legendary Catch!"
+    "legendarySeaCreatureWarning": "Legendary Catch!",
+    "cancelledPark": "A feature has stopped you from breaking this block here."
   },
   "discordStatus": {
     "titleNone": "None",

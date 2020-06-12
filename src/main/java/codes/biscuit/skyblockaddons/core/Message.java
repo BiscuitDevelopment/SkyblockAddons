@@ -121,6 +121,7 @@ public enum Message {
     SETTING_FREEZE_BACKPACK_PREVIEW(MessageObject.SETTING, "freezeBackpackPreview"),
     SETTING_HIDE_GREY_ENCHANTS(MessageObject.SETTING, "hideGreyEnchants"),
     SETTING_LEGENDARY_SEA_CREATURE_WARNING(MessageObject.SETTING, "legendarySeaCreatureWarning"),
+    SETTING_ONLY_BREAK_LOGS_PARK(MessageObject.SETTING, "onlyBreakLogsPark"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.BACKPACK_STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.BACKPACK_STYLE, "compact"),
@@ -174,6 +175,7 @@ public enum Message {
     MESSAGE_SECOND_STATUS(MessageObject.MESSAGES, "secondStatus"),
     MESSAGE_FALLBACK_STATUS(MessageObject.MESSAGES, "fallbackStatus"),
     MESSAGE_LEGENDARY_SEA_CREATURE_WARNING(MessageObject.MESSAGES, "legendarySeaCreatureWarning"),
+    MESSAGE_CANCELLED_NON_LOGS_BREAK(MessageObject.MESSAGES, "cancelledPark"),
 
     @Deprecated ANCHOR_POINT_TOP_LEFT(MessageObject.ANCHOR_POINT, "topLeft"),
     @Deprecated ANCHOR_POINT_TOP_RIGHT(MessageObject.ANCHOR_POINT, "topRight"),
