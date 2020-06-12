@@ -11,9 +11,9 @@ import java.util.function.Supplier;
 
 public class ButtonToggleNew extends GuiButton {
 
-    private static ResourceLocation TOGGLE_INSIDE_CIRCLE = new ResourceLocation("skyblockaddons", "toggleinsidecircle.png");
-    private static ResourceLocation TOGGLE_BORDER = new ResourceLocation("skyblockaddons", "toggleborder.png");
-    private static ResourceLocation TOGGLE_INSIDE_BACKGROUND = new ResourceLocation("skyblockaddons", "toggleinsidebackground.png");
+    private static ResourceLocation TOGGLE_INSIDE_CIRCLE = new ResourceLocation("skyblockaddons", "gui/toggleinsidecircle.png");
+    private static ResourceLocation TOGGLE_BORDER = new ResourceLocation("skyblockaddons", "gui/toggleborder.png");
+    private static ResourceLocation TOGGLE_INSIDE_BACKGROUND = new ResourceLocation("skyblockaddons", "gui/toggleinsidebackground.png");
 
     private int circlePaddingLeft;
     private int animationSlideDistance;

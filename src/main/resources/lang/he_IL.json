@@ -112,10 +112,14 @@
     "showZealotsPerEye": "מד הזלוטים - הראה כמות זלוטים על כל עין",
     "turnBowGreenWhenUsingToxicArrowPoison": "קשת בצבע ירוק כאשר משתמשים ברעל חץ רעיל",
     "birchParkRainmakerTimer": "טיימר של מורידת הגשם ב Birch Park",
-    "combatTimerDisplay": "תצוגת טיימר הלחימה"
+    "combatTimerDisplay": "תצוגת טיימר הלחימה",
+    "discordRP": "Discord Rich Presence",
+    "endstoneProtectorDisplay": "Endstone Protector Display",
+    "fancyWarpMenu": "Fancy Warp Menu",
+    "doubleWarp": "Warp Twice",
+    "advancedMode": "Advanced Mode"
   },
   "messages": {
-    "betaTesters": "תודה לך שאתה בוחן בטא! בבקשה דווח על באגים שאתה מוצא בשרת דיסקורד שלנו.",
     "dropConfirmation": "זרוק פריט זה שוב לאישור!",
     "magmaBossWarning": "בוס המגמה!",
     "fullInventory": "תיק מלא!",
@@ -131,20 +135,15 @@
       "reforges": "שדרוגים",
       "crafting": "הרכבה"
     },
-    "deleteOldFile": "ההורדה הושלמה, בבקשה תפתח את תקיית המודים שלך בעזרת הכפתור למטה, תסגור את מיינקראפט, ומחק את הגרסה הישנה(או שתמחק אחר כך אם אתה מעדיף).",
     "wantToViewPatchNotes": "רוצה לקרוא את השינויים?",
     "downloadLink": "קישור לעידכון",
-    "downloadAutomatically": "הורדה אוטומתית",
+    "directDownload": "DIRECT DOWNLOAD LINK",
     "openModFolder": "תקיית מודים",
     "joinTheDiscord": "כניסה לדיסקורד",
+    "newUpdateAvailable": "A new update (%version%) is available!",
     "update": {
       "majorAvailable": "עידכון חדש קטן (%version%) ניתן להורדה! הקישור להורדה נמצא בצ'אט.",
-      "patchAvailable": "עידכון חדש לתיקון (%version%)!\nהסתכל בצ'אט לאפשרויות הורדה!",
-      "downloading": "התיקון בהורדה! כרגע:\n%downloaded%/%total% לאחר ההורדה תצתרך למחוק את הקובץ הישן.",
-      "failed": "הורדת התיקון נכשלה! בבקשה הורד אותו בעצמך בעמצאות הלינק שנמצא בצ'אט.",
-      "downloadFinished": "הורדת התיקון הסתיימה. הקובץ נשמר בשם %file%. בבקשה אל תשכח למחוק את הקובץ הישן אחרי שאתה סוגר את מיינקראפט. תלחץ על ההודעה בצאט כדי לפתוח את ההודעה.",
-      "newBeta": "עדכון ביטא חדש (%version%) זמין! אנא עדכן בעזרת תפריט ה\"Mods\".",
-      "newUpdate": "עדכון חדש (%version%) זמין! אנא עדכן בעזרת תפריט ה\"Mods\"."
+      "patchAvailable": "עידכון חדש לתיקון (%version%)!\nהסתכל בצ'אט לאפשרויות הורדה!"
     },
     "slotLocked": "משבצת זו נעולה!",
     "summoningEyeFound": "עין לזימון דרקון!",
@@ -164,6 +163,37 @@
     "noArrowsLeft": "אזלו החצים!",
     "chooseAColor": "בחר צבע",
     "selectedColor": "בחר צבע",
-    "setHexColor": "קבע צבע הקסדצימלי"
+    "setHexColor": "קבע צבע הקסדצימלי",
+    "rescaleFeatures": "Rescale Features",
+    "resizeBars": "Resize Bars",
+    "showColorIcons": "Show Color Icons",
+    "stage": "Stage %stage%",
+    "switchedSlots": "You have just switched from a locked slot or rare item. Please wait a bit before dropping!",
+    "clickToOpenLink": "Click to open this link!",
+    "clickToOpenFolder": "Click to open your mods folder!",
+    "freezeBackpackPreview": "Freeze Backpack Preview",
+    "hideGreyEnchants": "Hide Regular Grey Enchants"
+  },
+  "discordStatus": {
+    "titleNone": "None",
+    "descriptionNone": "No text is displayed",
+    "titleLocation": "Location",
+    "descriptionLocation": "Shows your current location",
+    "titlePurse": "Purse",
+    "descriptionPurse": "Shows the amount of coins in your purse",
+    "titleStats": "Stats",
+    "descriptionStats": "Shows your HP, Defense and Mana stats",
+    "titleZealots": "Zealots",
+    "descriptionZealots": "Shows your Zealot counter",
+    "titleItem": "Held Item",
+    "descriptionItem": "Shows the name of the item you're holding",
+    "titleProfile": "Profile",
+    "descriptionProfile": "Shows your Profile name",
+    "titleTime": "Skyblock Time",
+    "descriptionTime": "Shows the current Skyblock time. E.g. 12:00am 1st Early Winter",
+    "titleCustom": "Custom Status",
+    "descriptionCustom": "Enter a custom status",
+    "titleAuto": "Auto Status",
+    "descriptionAuto": "Automatically displays a status. E.g. your zealot count while in the end."
   }
 }

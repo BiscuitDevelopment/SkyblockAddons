@@ -2,7 +2,7 @@ package codes.biscuit.skyblockaddons.gui.buttons;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui;
-import codes.biscuit.skyblockaddons.utils.CoordsPair;
+import codes.biscuit.skyblockaddons.utils.IntPair;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.Message;
@@ -16,7 +16,7 @@ import java.awt.*;
 
 public class ButtonNormal extends ButtonFeature {
 
-    private static ResourceLocation FEATURE_BACKGROUND = new ResourceLocation("skyblockaddons", "featurebackground.png");
+    private static ResourceLocation FEATURE_BACKGROUND = new ResourceLocation("skyblockaddons", "gui/featurebackground.png");
 
     private SkyblockAddons main;
 
@@ -136,7 +136,7 @@ public class ButtonNormal extends ButtonFeature {
             if (feature == Feature.LANGUAGE) {
                 GlStateManager.color(1,1,1,1F);
                 try {
-                    mc.getTextureManager().bindTexture(new ResourceLocation("skyblockaddons", "flags/"+main.getConfigValues().getLanguage().getFlagPath()+".png"));
+                    mc.getTextureManager().bindTexture(main.getConfigValues().getLanguage().getResourceLocation());
                     if (main.getUtils().isHalloween()) {
                         mc.getTextureManager().bindTexture(new ResourceLocation("skyblockaddons", "flags/halloween.png"));
                     }
@@ -147,7 +147,7 @@ public class ButtonNormal extends ButtonFeature {
             } else if (feature == Feature.EDIT_LOCATIONS) {
                 GlStateManager.color(1,1,1,1F);
                 try {
-                    mc.getTextureManager().bindTexture(new ResourceLocation("skyblockaddons", "move.png"));
+                    mc.getTextureManager().bindTexture(new ResourceLocation("skyblockaddons", "gui/move.png"));
                     drawModalRectWithCustomSizedTexture(xPosition + width / 2 - 12, yPosition + 22, 0, 0, 25, 25, 25, 25);
                 } catch (Exception ex) {
                     ex.printStackTrace();
@@ -160,7 +160,7 @@ public class ButtonNormal extends ButtonFeature {
         }
     }
 
-    public CoordsPair getCreditsCoords(EnumUtils.FeatureCredit credit) {
+    public IntPair getCreditsCoords(EnumUtils.FeatureCredit credit) {
         String[] wrappedString = main.getUtils().wrapSplitText(displayString, 28);
         boolean multiLine = wrappedString.length > 1;
 
@@ -176,7 +176,7 @@ public class ButtonNormal extends ButtonFeature {
         }
 
         int x = (int)((xPosition+width/2)/scale) - MinecraftReflection.FontRenderer.getStringWidth(credit.getAuthor()) / 2 - 17;
-        return new CoordsPair(x, y);
+        return new IntPair(x, y);
     }
 
     public boolean isMultilineButton() {

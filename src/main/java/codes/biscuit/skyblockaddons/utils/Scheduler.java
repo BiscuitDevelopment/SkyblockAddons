@@ -165,8 +165,8 @@ public class Scheduler {
             } else if (this == DELETE_RECENT_CHUNK) {
                 int x = (int)commandData[0];
                 int z = (int)commandData[1];
-                CoordsPair coordsPair = new CoordsPair(x,z);
-                playerListener.getRecentlyLoadedChunks().remove(coordsPair);
+                IntPair intPair = new IntPair(x,z);
+                playerListener.getRecentlyLoadedChunks().remove(intPair);
             } else if (this == SHOW_FULL_INVENTORY_WARNING) {
                 Minecraft mc = Minecraft.getMinecraft();
                 if (mc.theWorld == null || mc.thePlayer == null || !main.getUtils().isOnSkyblock()) {

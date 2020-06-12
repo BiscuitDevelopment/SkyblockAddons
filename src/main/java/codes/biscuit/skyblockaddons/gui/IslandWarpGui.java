@@ -44,6 +44,8 @@ public class IslandWarpGui extends GuiScreen {
     private boolean guiIsActualWarpMenu = false;
     private boolean foundAdvancedWarpToggle = false;
 
+    public static float ISLAND_SCALE;
+
     public IslandWarpGui() {
         super();
 
@@ -52,6 +54,8 @@ public class IslandWarpGui extends GuiScreen {
             markers.put(marker, UnlockedStatus.UNLOCKED);
         }
         this.markers = markers;
+
+        ISLAND_SCALE = 0.7F/1080*Minecraft.getMinecraft().displayHeight;
     }
 
     public IslandWarpGui(Map<Marker, UnlockedStatus> markers) {
@@ -59,6 +63,8 @@ public class IslandWarpGui extends GuiScreen {
 
         this.markers = markers;
         this.guiIsActualWarpMenu = true;
+
+        ISLAND_SCALE = 0.7F/1080*Minecraft.getMinecraft().displayHeight;
     }
 
     @Override
@@ -83,15 +89,15 @@ public class IslandWarpGui extends GuiScreen {
 
         int screenWidth = mc.displayWidth;
         int screenHeight = mc.displayHeight;
-        float scale = 0.7F;
+        float scale = ISLAND_SCALE;
         float totalWidth = TOTAL_WIDTH*scale;
         float totalHeight = TOTAL_HEIGHT*scale;
         SHIFT_LEFT = (screenWidth/2F-totalWidth/2F)/scale;
         SHIFT_TOP = (screenHeight/2F-totalHeight/2F)/scale;
 
 
-        int x = Math.round(screenWidth/0.7F-SHIFT_LEFT-475);
-        int y = Math.round(screenHeight/0.7F-SHIFT_TOP);
+        int x = Math.round(screenWidth/ISLAND_SCALE-SHIFT_LEFT-475);
+        int y = Math.round(screenHeight/ISLAND_SCALE-SHIFT_TOP);
 
         if (guiIsActualWarpMenu) {
             this.buttonList.add(new ButtonToggleNew(x, y - 30 - 60 * 3, 50,
@@ -169,7 +175,7 @@ public class IslandWarpGui extends GuiScreen {
         int guiScale = new ScaledResolution(mc).getScaleFactor();
 
         GlStateManager.pushMatrix();
-        float scale = 0.7F;
+        float scale = ISLAND_SCALE;
         GlStateManager.scale(1F/guiScale, 1F/guiScale, 1);
         GlStateManager.scale(scale, scale, 1);
 
@@ -206,8 +212,8 @@ public class IslandWarpGui extends GuiScreen {
         }
 
 
-        int x = Math.round(mc.displayWidth/0.7F-SHIFT_LEFT-500);
-        int y = Math.round(mc.displayHeight/0.7F-SHIFT_TOP);
+        int x = Math.round(mc.displayWidth/ISLAND_SCALE-SHIFT_LEFT-500);
+        int y = Math.round(mc.displayHeight/ISLAND_SCALE-SHIFT_TOP);
         GlStateManager.pushMatrix();
         float textScale = 3F;
         GlStateManager.scale(textScale, textScale, 1);
@@ -223,6 +229,8 @@ public class IslandWarpGui extends GuiScreen {
         detectClosestMarker(mouseX, mouseY);
     }
 
+    public static float IMAGE_SCALED_DOWN_FACTOR = 0.75F;
+
     @Getter
     public enum Island {
         THE_END("The End", 100, 30),
@@ -236,8 +244,6 @@ public class IslandWarpGui extends GuiScreen {
         MUSHROOM_DESERT("Mushroom Desert", 1503, 778),
         PRIVATE_ISLAND("Private Island", 216, 1122)
         ;
-
-        public static final float IMAGE_SCALED_DOWN_FACTOR = 0.75F;
 
         private String label;
         private int x;
@@ -258,6 +264,11 @@ public class IslandWarpGui extends GuiScreen {
                 bufferedImage = TextureUtil.readBufferedImage(Minecraft.getMinecraft().getResourceManager().getResource(this.resourceLocation).getInputStream());
                 this.w = bufferedImage.getWidth();
                 this.h = bufferedImage.getHeight();
+
+                if (label.equals("The End")) {
+                    IslandWarpGui.IMAGE_SCALED_DOWN_FACTOR = this.w/573F; // The original end HD texture is 573 pixels wide.
+
+                }
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
@@ -277,7 +288,7 @@ public class IslandWarpGui extends GuiScreen {
 
     public void detectClosestMarker(int mouseX, int mouseY) {
         int minecraftScale = new ScaledResolution(mc).getScaleFactor();
-        float islandGuiScale = 0.7F;
+        float islandGuiScale = ISLAND_SCALE;
 
         mouseX *= minecraftScale;
         mouseY *= minecraftScale;
@@ -321,6 +332,18 @@ public class IslandWarpGui extends GuiScreen {
             }
             Minecraft.getMinecraft().thePlayer.sendChatMessage("/warp "+selectedMarker.getWarpName());
         }
+
+        int minecraftScale = new ScaledResolution(mc).getScaleFactor();
+        float islandGuiScale = ISLAND_SCALE;
+
+        mouseX *= minecraftScale;
+        mouseY *= minecraftScale;
+
+        mouseX /= islandGuiScale;
+        mouseY /= islandGuiScale;
+
+        mouseX -= IslandWarpGui.SHIFT_LEFT;
+        mouseY -= IslandWarpGui.SHIFT_TOP;
 
         super.mouseClicked(mouseX, mouseY, mouseButton);
     }

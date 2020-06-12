@@ -3,10 +3,13 @@ package codes.biscuit.skyblockaddons.utils.discord;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Location;
 import codes.biscuit.skyblockaddons.core.SkyblockDate;
+import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import com.google.gson.JsonObject;
 import com.jagrosh.discordipc.IPCClient;
 import com.jagrosh.discordipc.IPCListener;
 import com.jagrosh.discordipc.entities.RichPresence;
+import lombok.Getter;
+import lombok.Setter;
 import net.minecraftforge.fml.common.FMLLog;
 
 import java.time.OffsetDateTime;
@@ -15,8 +18,10 @@ import java.util.TimerTask;
 
 public class DiscordRPCManager implements IPCListener {
 
+    @Getter @Setter private EnumUtils.DiscordStatusEntry currentEntry;
+
     private static final long APPLICATION_ID = 653443797182578707L;
-    private static final long UPDATE_PERIOD = 3000L;
+    private static final long UPDATE_PERIOD = 4200L;
 
     private final SkyblockAddons main;
     private IPCClient client;
@@ -69,8 +74,8 @@ public class DiscordRPCManager implements IPCListener {
         String largeImageDescription = String.format("%s - %s", skyblockDateString, location.getScoreboardName());
         String smallImageDescription = String.format("Hypixel Skyblock - Using SkyblockAddons v%s", SkyblockAddons.VERSION);
         RichPresence presence = new RichPresence.Builder()
-                .setState(stateLine.getDisplayString())
-                .setDetails(detailsLine.getDisplayString())
+                .setState(stateLine.getDisplayString(EnumUtils.DiscordStatusEntry.STATE))
+                .setDetails(detailsLine.getDisplayString(EnumUtils.DiscordStatusEntry.DETAILS))
                 .setStartTimestamp(startTimestamp.toEpochSecond())
                 .setLargeImage(location.getDiscordIconKey(), largeImageDescription)
                 .setSmallImage("skyblockicon", smallImageDescription)

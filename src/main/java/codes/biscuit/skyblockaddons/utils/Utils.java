@@ -7,9 +7,9 @@ import codes.biscuit.skyblockaddons.core.Location;
 import codes.biscuit.skyblockaddons.core.SkyblockDate;
 import codes.biscuit.skyblockaddons.events.SkyblockJoinedEvent;
 import codes.biscuit.skyblockaddons.events.SkyblockLeftEvent;
+import codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
 import codes.biscuit.skyblockaddons.utils.nifty.StringUtil;
-import codes.biscuit.skyblockaddons.utils.nifty.reflection.MinecraftReflection;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
@@ -20,6 +20,8 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.WorldRenderer;
+import net.minecraft.client.renderer.texture.DynamicTexture;
+import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -31,6 +33,7 @@ import net.minecraft.scoreboard.ScorePlayerTeam;
 import net.minecraft.scoreboard.Scoreboard;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.MathHelper;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.FMLLog;
@@ -39,9 +42,13 @@ import org.apache.commons.lang3.mutable.MutableInt;
 import org.apache.commons.lang3.text.WordUtils;
 import org.apache.logging.log4j.Logger;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.*;
-import java.net.*;
+import java.net.HttpURLConnection;
+import java.net.URI;
+import java.net.URL;
 import java.util.List;
 import java.util.*;
 import java.util.regex.Matcher;
@@ -128,6 +135,12 @@ public class Utils {
     private URI featuredLink = null;
 
     private long lastDamaged = -1;
+
+    // Slayer Quest
+    private int currentKills = 0;
+    private int targetKills = 0;
+    private int currentExp = 0;
+    private int targetExp = 0;
 
     private SkyblockAddons main;
     private Logger logger;
@@ -278,6 +291,11 @@ public class Utils {
                         }
                     }
 
+                    if (strippedLine.endsWith("Combat XP") || strippedLine.endsWith("Kills")) {
+                        parseSlayerXPProgress(strippedLine);
+                    }
+
+
                     for (Location loopLocation : Location.values()) {
                         if (strippedLine.endsWith(loopLocation.getScoreboardName())) {
                             if (loopLocation == Location.BLAZING_FORTRESS && location != Location.BLAZING_FORTRESS) {
@@ -335,6 +353,39 @@ public class Utils {
         }
         if (!foundInDungeon) {
             inDungeon = false;
+        }
+    }
+
+    private void parseSlayerXPProgress(final String line) {
+        String[] format = line.trim().split(" ")[0].split("/");
+
+        boolean doAlert = false;
+
+        if (line.endsWith("Kills")) {
+            int oldCurrentKills = this.currentKills;
+            this.currentKills = Integer.parseInt(format[0]);
+
+            this.targetKills = Integer.parseInt(format[1]);
+
+            doAlert = oldCurrentKills != this.currentKills && (float) this.currentKills / this.targetKills > 0.9; // If boss percentage to spawn boss over 90%
+        } else if (line.endsWith("Combat XP")) {
+            int oldCurrentExp = this.currentExp;
+            this.currentExp = Integer.parseInt(format[0]);
+
+            if (format[1].endsWith("k")) {
+                float f = Float.parseFloat(format[1].substring(0, format[1].length() - 1));
+                this.targetExp = (int) (f * 1000);
+            } else {
+                this.targetExp = Integer.parseInt(format[1]);
+            }
+
+            doAlert = oldCurrentExp != this.currentExp && (float) this.currentExp / this.targetExp > 0.9;
+        }
+
+        if (main.getConfigValues().isEnabled(Feature.BOSS_APPROACH_ALERT) && doAlert) {
+            main.getUtils().playLoudSound("random.orb", 0.5);
+            main.getRenderListener().setTitleFeature(Feature.BOSS_APPROACH_ALERT);
+            main.getScheduler().schedule(Scheduler.CommandType.RESET_TITLE_FEATURE, main.getConfigValues().getWarningSeconds());
         }
     }
 
@@ -547,25 +598,18 @@ public class Utils {
         return Items.wooden_pickaxe.equals(item) || Items.stone_pickaxe.equals(item) || Items.golden_pickaxe.equals(item) || Items.iron_pickaxe.equals(item) || Items.diamond_pickaxe.equals(item);
     }
 
-    public void drawTextWithStyle(String text, int x, int y, ChatFormatting color) {
-        drawTextWithStyle(text,x,y,color.getRGB(),1);
-    }
-
-    public void drawTextWithStyle(String text, int x, int y, int color) {
-        drawTextWithStyle(text,x,y,color,1);
-    }
-
-    public void drawTextWithStyle(String text, int x, int y, int color, float textAlpha) {
+    public void drawTextWithStyle(String text, float x, float y, int color) {
         if (main.getConfigValues().getTextStyle() == EnumUtils.TextStyle.STYLE_TWO) {
-            int colorBlack = new Color(0, 0, 0, textAlpha > 0.016 ? textAlpha : 0.016F).getRGB();
+            int colorAlpha = Math.max(getAlpha(color), 4);
+            int colorBlack = new Color(0, 0, 0, colorAlpha/255F).getRGB();
             String strippedText = TextUtils.stripColor(text);
-            MinecraftReflection.FontRenderer.drawString(strippedText, x + 1, y, colorBlack);
-            MinecraftReflection.FontRenderer.drawString(strippedText, x - 1, y, colorBlack);
-            MinecraftReflection.FontRenderer.drawString(strippedText, x, y + 1, colorBlack);
-            MinecraftReflection.FontRenderer.drawString(strippedText, x, y - 1, colorBlack);
-            MinecraftReflection.FontRenderer.drawString(text, x, y, color);
+            Minecraft.getMinecraft().fontRendererObj.drawString(strippedText, x + 1, y, colorBlack, false);
+            Minecraft.getMinecraft().fontRendererObj.drawString(strippedText, x - 1, y, colorBlack, false);
+            Minecraft.getMinecraft().fontRendererObj.drawString(strippedText, x, y + 1, colorBlack, false);
+            Minecraft.getMinecraft().fontRendererObj.drawString(strippedText, x, y - 1, colorBlack, false);
+            Minecraft.getMinecraft().fontRendererObj.drawString(text, x, y, color, false);
         } else {
-            MinecraftReflection.FontRenderer.drawString(text, x, y, color, true);
+            Minecraft.getMinecraft().fontRendererObj.drawString(text, x, y, color, true);
         }
     }
     public int getDefaultBlue(int alpha) {
@@ -585,6 +629,10 @@ public class Utils {
 
         enchantments.clear();
         enchantments.addAll(orderedEnchants.values());
+    }
+
+    public int getAlpha(int color) {
+        return (color >> 24 & 255);
     }
 
     public float denormalizeScale(float value, float min, float max, float step) {
@@ -646,6 +694,43 @@ public class Utils {
         tessellator.draw();
     }
 
+    /**
+     * Draws a solid color rectangle with the specified coordinates and color (ARGB format). Args: x1, y1, x2, y2, color
+     */
+    public void drawRect(double left, double top, double right, double bottom, int color)
+    {
+        if (left < right) {
+            double i = left;
+            left = right;
+            right = i;
+        }
+
+        if (top < bottom) {
+            double j = top;
+            top = bottom;
+            bottom = j;
+        }
+
+        float f3 = (float)(color >> 24 & 255) / 255.0F;
+        float f = (float)(color >> 16 & 255) / 255.0F;
+        float f1 = (float)(color >> 8 & 255) / 255.0F;
+        float f2 = (float)(color & 255) / 255.0F;
+        Tessellator tessellator = Tessellator.getInstance();
+        WorldRenderer worldrenderer = tessellator.getWorldRenderer();
+        GlStateManager.enableBlend();
+        GlStateManager.disableTexture2D();
+        GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
+        GlStateManager.color(f, f1, f2, f3);
+        worldrenderer.begin(7, DefaultVertexFormats.POSITION);
+        worldrenderer.pos(left, bottom, 0.0D).endVertex();
+        worldrenderer.pos(right, bottom, 0.0D).endVertex();
+        worldrenderer.pos(right, top, 0.0D).endVertex();
+        worldrenderer.pos(left, top, 0.0D).endVertex();
+        tessellator.draw();
+        GlStateManager.enableTexture2D();
+        GlStateManager.disableBlend();
+    }
+
     public void loadLanguageFile(boolean pullOnline) {
         loadLanguageFile(main.getConfigValues().getLanguage());
         if (pullOnline) main.getUtils().tryPullingLanguageOnline(main.getConfigValues().getLanguage()); // Try getting an updated version online after loading the local one.
@@ -675,7 +760,7 @@ public class Utils {
         FMLLog.info("[SkyblockAddons] Attempting to pull updated language files from online.");
         new Thread(() -> {
             try {
-                URL url = new URL("https://raw.githubusercontent.com/biscuut/SkyblockAddons/development/src/main/resources/lang/" + language.getPath() + ".json");
+                URL url = new URL(String.format(main.getOnlineData().getLanguageJSONFormat(), language.getPath()));
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                 connection.setRequestMethod("GET");
                 connection.setRequestProperty("User-Agent", Utils.USER_AGENT);
@@ -756,5 +841,86 @@ public class Utils {
                 logger.catching(ex);
             }
         }).start();
+    }
+
+    private Set<ResourceLocation> rescaling = new HashSet<>();
+    private Map<ResourceLocation, Object> rescaled = new HashMap<>();
+
+    /**
+     *
+     * Enter a resource location, width, and height and this will
+     * rescale that image in a new thread, and return a new dynamic
+     * texture.
+     *
+     * While the image is processing in the other thread, it will
+     * return the original image, but *at most* it should take a few
+     * seconds.
+     *
+     * Once the image is processed the result is cached in the map,
+     * and will not be re-done. If you need this resource location
+     * to be scaled again, set the redo flag to true.
+     *
+     * @param resourceLocation The original image to scale.
+     * @param width The width to scale to.
+     * @param height The Height to scale to.
+     * @param redo Whether to redo the scaling if it is already complete.
+     * @return Either the scaled resource if it is complete, or the original resource if not.
+     */
+    public ResourceLocation getScaledResource(ResourceLocation resourceLocation, int width, int height, boolean redo) {
+        TextureManager textureManager = Minecraft.getMinecraft().getTextureManager();
+
+        if (!redo && rescaled.containsKey(resourceLocation)) {
+            Object object = rescaled.get(resourceLocation);
+            if (object instanceof ResourceLocation) {
+                return (ResourceLocation) object;
+            } else if (object instanceof BufferedImage) {
+                String name = "sba_scaled_"+resourceLocation.getResourcePath().replace("/", "_").replace(".", "_");
+                ResourceLocation scaledResourceLocation = textureManager.getDynamicTextureLocation(name, new DynamicTexture((BufferedImage) object));
+                rescaled.put(resourceLocation, scaledResourceLocation);
+                return scaledResourceLocation;
+            }
+        }
+
+        if (rescaling.contains(resourceLocation)) return resourceLocation; // Not done yet.
+
+        if (redo) {
+            if (rescaled.containsKey(resourceLocation)) {
+                Object removed = rescaled.remove(resourceLocation);
+                if (removed instanceof ResourceLocation) {
+                    textureManager.deleteTexture((ResourceLocation)removed);
+                }
+            }
+        }
+
+        rescaling.add(resourceLocation);
+
+        new Thread(() -> {
+            try {
+                BufferedImage originalImage = ImageIO.read(SkyblockAddonsGui.class.getClassLoader().getResourceAsStream("assets/"+resourceLocation.getResourceDomain()+"/"+resourceLocation.getResourcePath()));
+                Image scaledImageAbstract = originalImage.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+                BufferedImage scaledImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+
+                Graphics graphics = scaledImage.getGraphics();
+                graphics.drawImage(scaledImageAbstract, 0, 0, null);
+                graphics.dispose();
+
+                rescaled.put(resourceLocation, scaledImage);
+                rescaling.remove(resourceLocation);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                rescaled.put(resourceLocation, resourceLocation);
+                rescaling.remove(resourceLocation);
+            }
+        }).start();
+
+        return resourceLocation; // Processing has started in another thread, but not done yet.
+    }
+
+    public boolean isAxe(Item item) {
+        return Items.wooden_axe.equals(item) ||
+                Items.stone_axe.equals(item) ||
+                Items.golden_axe.equals(item) ||
+                Items.iron_axe.equals(item) ||
+                Items.diamond_axe.equals(item);
     }
 }

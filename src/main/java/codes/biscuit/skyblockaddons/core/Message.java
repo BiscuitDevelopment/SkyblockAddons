@@ -2,10 +2,13 @@ package codes.biscuit.skyblockaddons.core;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.utils.Language;
-import codes.biscuit.skyblockaddons.utils.TextUtils;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
 import com.google.gson.JsonObject;
+import com.ibm.icu.text.ArabicShaping;
+import com.ibm.icu.text.ArabicShapingException;
+import com.ibm.icu.text.Bidi;
 import lombok.Getter;
+import net.minecraft.client.Minecraft;
 
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -117,6 +120,9 @@ public enum Message {
     SETTING_ADVANCED_MODE(MessageObject.SETTING, "advancedMode"),
     SETTING_FREEZE_BACKPACK_PREVIEW(MessageObject.SETTING, "freezeBackpackPreview"),
     SETTING_HIDE_GREY_ENCHANTS(MessageObject.SETTING, "hideGreyEnchants"),
+    SETTING_LEGENDARY_SEA_CREATURE_WARNING(MessageObject.SETTING, "legendarySeaCreatureWarning"),
+    SETTING_ONLY_BREAK_LOGS_PARK(MessageObject.SETTING, "onlyBreakLogsPark"),
+    SETTING_BOSS_APPROACH_ALERT(MessageObject.SETTING, "bossApproachAlert"),
     SETTING_DISABLE_TELEPORT_PAD_MESSAGES(MessageObject.SETTING, "disableTeleportPadMessages"),
     SETTING_BAIT_LIST(MessageObject.SETTING, "baitListDisplay"),
 
@@ -162,11 +168,19 @@ public enum Message {
     MESSAGE_RESCALE_FEATURES(MessageObject.MESSAGES, "rescaleFeatures"),
     MESSAGE_RESIZE_BARS(MessageObject.MESSAGES, "resizeBars"),
     MESSAGE_SHOW_COLOR_ICONS(MessageObject.MESSAGES, "showColorIcons"),
+    MESSAGE_ENABLE_FEATURE_SNAPPING(MessageObject.MESSAGES, "enableFeatureSnapping"),
     MESSAGE_STAGE(MessageObject.MESSAGES, "stage"),
     MESSAGE_SWITCHED_SLOTS(MessageObject.MESSAGES, "switchedSlots"),
     MESSAGE_NEW_UPDATE(MessageObject.MESSAGES, "newUpdateAvailable"),
     MESSAGE_CLICK_TO_OPEN_LINK(MessageObject.MESSAGES, "clickToOpenLink"),
     MESSAGE_CLICK_TO_OPEN_FOLDER(MessageObject.MESSAGES, "clickToOpenFolder"),
+    MESSAGE_FIRST_STATUS(MessageObject.MESSAGES, "firstStatus"),
+    MESSAGE_SECOND_STATUS(MessageObject.MESSAGES, "secondStatus"),
+    MESSAGE_FALLBACK_STATUS(MessageObject.MESSAGES, "fallbackStatus"),
+    MESSAGE_LEGENDARY_SEA_CREATURE_WARNING(MessageObject.MESSAGES, "legendarySeaCreatureWarning"),
+    MESSAGE_CANCELLED_NON_LOGS_BREAK(MessageObject.MESSAGES, "cancelledPark"),
+    MESSAGE_BOSS_APPROACH_ALERT(MessageObject.MESSAGES, "bossApproaching"),
+
 
     @Deprecated ANCHOR_POINT_TOP_LEFT(MessageObject.ANCHOR_POINT, "topLeft"),
     @Deprecated ANCHOR_POINT_TOP_RIGHT(MessageObject.ANCHOR_POINT, "topRight"),
@@ -268,13 +282,23 @@ public enum Message {
                     text = text.replace("%stage%", variables[0]);
                 }
             }
-            if (text != null && (main.getConfigValues().getLanguage() == Language.HEBREW || main.getConfigValues().getLanguage() == Language.ARABIC)) {
-                text = TextUtils.reverseText(text);
+            if (text != null && (main.getConfigValues().getLanguage() == Language.HEBREW || main.getConfigValues().getLanguage() == Language.ARABIC) && !Minecraft.getMinecraft().fontRendererObj.getBidiFlag()) {
+                text = bidiReorder(text);
             }
         } catch (NullPointerException ex) {
             text = memberName; // In case of fire...
         }
         return text;
+    }
+
+    private String bidiReorder(String text) {
+        try {
+            Bidi bidi = new Bidi((new ArabicShaping(ArabicShaping.LETTERS_SHAPE)).shape(text), Bidi.DIRECTION_DEFAULT_RIGHT_TO_LEFT);
+            bidi.setReorderingMode(Bidi.REORDER_DEFAULT);
+            return bidi.writeReordered(Bidi.DO_MIRRORING);
+        } catch (ArabicShapingException var3) {
+            return text;
+        }
     }
 
     @Getter

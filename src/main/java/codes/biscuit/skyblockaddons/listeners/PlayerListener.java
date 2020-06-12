@@ -72,6 +72,8 @@ public class PlayerListener {
     private final static Set<String> SOUP_RANDOM_MESSAGES = new HashSet<>(Arrays.asList("I feel like I can fly!", "What was in that soup?",
             "Hmm… tasty!", "Hmm... tasty!", "You can now fly for 2 minutes.", "Your Magical Mushroom Soup flight has been extended for 2 extra minutes."));
 
+    private final Set<String> LEGENDARY_SEA_CREATURE_MESSAGES = new HashSet<>(Arrays.asList("The Water Hydra has come to test your strength.", "The Sea Emperor arises from the depths...", "What is this creature!?"));
+
     private long lastWorldJoin = -1;
     private long lastBoss = -1;
     private int magmaTick = 1;
@@ -94,7 +96,7 @@ public class PlayerListener {
 
     private Set<UUID> countedEndermen = new HashSet<>();
 
-    @Getter private Set<CoordsPair> recentlyLoadedChunks = new HashSet<>();
+    @Getter private Set<IntPair> recentlyLoadedChunks = new HashSet<>();
 
     @Getter @Setter private EnumUtils.MagmaTimerAccuracy magmaAccuracy = EnumUtils.MagmaTimerAccuracy.NO_DATA;
     @Getter @Setter private int magmaTime = 0;
@@ -140,7 +142,7 @@ public class PlayerListener {
         if (main.getUtils().isOnSkyblock()) {
             int x = e.getChunk().xPosition;
             int z = e.getChunk().zPosition;
-            CoordsPair coords = new CoordsPair(x, z);
+            IntPair coords = new IntPair(x, z);
             recentlyLoadedChunks.add(coords);
             main.getScheduler().schedule(Scheduler.CommandType.DELETE_RECENT_CHUNK, 20, x, z);
         }
@@ -192,7 +194,12 @@ public class PlayerListener {
                 }
                 main.getPersistentValues().addEyeResetKills();
 
-            } else if (main.getConfigValues().isEnabled(Feature.DISABLE_MAGICAL_SOUP_MESSAGES) && SOUP_RANDOM_MESSAGES.contains(unformattedText)) {
+            } else if (main.getConfigValues().isEnabled(Feature.LEGENDARY_SEA_CREATURE_WARNING) && LEGENDARY_SEA_CREATURE_MESSAGES.contains(e.message)) {
+                main.getUtils().playLoudSound("random.orb", 0.5);
+                main.getRenderListener().setTitleFeature(Feature.LEGENDARY_SEA_CREATURE_WARNING);
+                main.getScheduler().schedule(Scheduler.CommandType.RESET_TITLE_FEATURE, main.getConfigValues().getWarningSeconds());
+
+            }  else if (main.getConfigValues().isEnabled(Feature.DISABLE_MAGICAL_SOUP_MESSAGES) && SOUP_RANDOM_MESSAGES.contains(unformattedText)) {
                 e.setCanceled(true);
 
             } else if (main.getConfigValues().isEnabled(Feature.DISABLE_TELEPORT_PAD_MESSAGES) && (formattedText.startsWith("§r§aWarped from ") || formattedText.equals("§r§cThis Teleport Pad does not have a destination set!§r"))) {
@@ -563,7 +570,7 @@ public class PlayerListener {
             if (spawnArea.isVecInside(new Vec3(entity.posX, entity.posY, entity.posZ))) { // timers will trigger if 15 magmas/8 blazes spawn in the box within a 4 second time period
                 long currentTime = System.currentTimeMillis();
                 if (e.entity instanceof EntityMagmaCube) {
-                    if (!recentlyLoadedChunks.contains(new CoordsPair(e.newChunkX, e.newChunkZ)) && entity.ticksExisted == 0) {
+                    if (!recentlyLoadedChunks.contains(new IntPair(e.newChunkX, e.newChunkZ)) && entity.ticksExisted == 0) {
                         recentMagmaCubes++;
                         main.getScheduler().schedule(Scheduler.CommandType.SUBTRACT_MAGMA_COUNT, 4);
                         if (recentMagmaCubes >= 17) {
@@ -576,7 +583,7 @@ public class PlayerListener {
                         }
                     }
                 } else if (e.entity instanceof EntityBlaze) {
-                    if (!recentlyLoadedChunks.contains(new CoordsPair(e.newChunkX, e.newChunkZ)) && entity.ticksExisted == 0) {
+                    if (!recentlyLoadedChunks.contains(new IntPair(e.newChunkX, e.newChunkZ)) && entity.ticksExisted == 0) {
                         recentBlazes++;
                         main.getScheduler().schedule(Scheduler.CommandType.SUBTRACT_BLAZE_COUNT, 4);
                         if (recentBlazes >= 10) {

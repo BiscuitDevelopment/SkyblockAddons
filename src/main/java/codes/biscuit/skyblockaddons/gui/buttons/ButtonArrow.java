@@ -10,8 +10,8 @@ import net.minecraft.util.ResourceLocation;
 
 public class ButtonArrow extends GuiButton {
 
-    private static ResourceLocation ARROW_RIGHT = new ResourceLocation("skyblockaddons", "arrowright.png");
-    private static ResourceLocation ARROW_LEFT = new ResourceLocation("skyblockaddons", "arrowleft.png");
+    private static ResourceLocation ARROW_RIGHT = new ResourceLocation("skyblockaddons", "gui/arrowright.png");
+    private static ResourceLocation ARROW_LEFT = new ResourceLocation("skyblockaddons", "gui/arrowleft.png");
 
     private SkyblockAddons main;
 

@@ -110,12 +110,16 @@
     "showTotalZealotCount": "Contador de Zealots - Número total de Zealots",
     "showSummoningEyeCount": "Contador de Zealots - Número total de eyes",
     "showZealotsPerEye": "Contador de Zealots - Mostrar Zealots por cada Eye",
-    "turnBowGreenWhenUsingToxicArrowPoison": "Color Bow Green When Using Toxic Arrow Poison",
-    "birchParkRainmakerTimer": "Birch Park Rainmaker Timer",
-    "combatTimerDisplay": "Combat Timer Display"
+    "turnBowGreenWhenUsingToxicArrowPoison": "Pintar o arco de verde ao usar Toxic Arrow Poison",
+    "birchParkRainmakerTimer": "Duração da chuva no Birch Park",
+    "combatTimerDisplay": "Mostrar o temporizador de combate",
+    "discordRP": "Discord Rich Presence",
+    "endstoneProtectorDisplay": "Mostrador do Endstone Protector",
+    "fancyWarpMenu": "Menu de warps chique",
+    "doubleWarp": "Viajar duas vezes",
+    "advancedMode": "Modo avançado"
   },
   "messages": {
-    "betaTesters": "Thank you for being a beta tester! Please report any bugs you encounter in the Discord channel.",
     "dropConfirmation": "Atira este item outra vez para confirmar!",
     "magmaBossWarning": "Magma Cube Boss!",
     "fullInventory": "Inventário Cheio!",
@@ -131,20 +135,15 @@
       "reforges": "Reforges",
       "crafting": "Criação"
     },
-    "deleteOldFile": "O download terminou. Abre a tua pasta mods usando os botões abaixo, fecha o Minecraft e apaga a versão antiga (ou apaga-a mais tarde se preferires).",
     "wantToViewPatchNotes": "Queres ler as alterações?",
     "downloadLink": "LINK DA ATUALIZAÇÃO",
-    "downloadAutomatically": "DOWNLOAD AUTOMÁTICO",
+    "directDownload": "LINK DO DOWNLOAD DIRETO",
     "openModFolder": "PASTA MODS",
     "joinTheDiscord": "ENTRA NO DISCORD",
+    "newUpdateAvailable": "Está disponível uma nova atualização (%version%)!",
     "update": {
       "majorAvailable": "Está disponível uma nova atualização importante (%version%)! O link para o download pode ser encontrado no chat.",
-      "patchAvailable": "Uma nova atualização (%version%) está disponível! Procura pelas opções de download no chat!",
-      "downloading": "A atualização está a descarregar! Estado: %downloaded%/%total% Assim que o download terminar terás de apagar o ficheiro antigo.",
-      "failed": "O download da atualização falhou! Descarrega-o manualmente usando o link no chat.",
-      "downloadFinished": "A atualização terminou de ser descarregada e foi guardada como %file%. Não te esqueças de apagar o ficheiro antigo depois de fechares o Minecraft. Clica a mensagem no chat para abrires a pasta.",
-      "newBeta": "A new beta (%version%) is available! Please update using the \"Mods\" menu.",
-      "newUpdate": "A new update (%version%) is available! Please update using the \"Mods\" menu."
+      "patchAvailable": "Uma nova atualização (%version%) está disponível! Procura pelas opções de download no chat!"
     },
     "slotLocked": "Este slot está bloqueado!",
     "summoningEyeFound": "Summoning Eye!",
@@ -164,6 +163,37 @@
     "noArrowsLeft": "Acabaram-se as flechas!",
     "chooseAColor": "Escolher uma cor",
     "selectedColor": "Cor selecionada",
-    "setHexColor": "Definir a cor em hex"
+    "setHexColor": "Definir a cor em hex",
+    "rescaleFeatures": "Redimensionar funções",
+    "resizeBars": "Redimensionar barras",
+    "showColorIcons": "Mostrar a cor dos ícones",
+    "stage": "Fase %stage%",
+    "switchedSlots": "Estiveste a segurar um espaço bloqueado ou um item raro recentemente. Espera um pouco antes de deitares este item fora!",
+    "clickToOpenLink": "Clica para abrires este link!",
+    "clickToOpenFolder": "Clica para abrires a tua pasta mods!",
+    "freezeBackpackPreview": "Congelar a pre-visualização da backpack",
+    "hideGreyEnchants": "Hide Regular Grey Enchants"
+  },
+  "discordStatus": {
+    "titleNone": "Nenhum",
+    "descriptionNone": "Sem texto",
+    "titleLocation": "Localização",
+    "descriptionLocation": "Mostra a tua localização atual",
+    "titlePurse": "Carteira",
+    "descriptionPurse": "Mostra as moedas na tua carteira",
+    "titleStats": "Estatíticas",
+    "descriptionStats": "Mostra as tuas estatísticas de Vida, Defesa e Mana",
+    "titleZealots": "Zealots",
+    "descriptionZealots": "Mostra o teu contador de Zealots",
+    "titleItem": "Item segurado",
+    "descriptionItem": "Mostra o nome do item que estás a segurar",
+    "titleProfile": "Perfil",
+    "descriptionProfile": "Mostra o nome do teu perfil",
+    "titleTime": "Horas no SkyBlock",
+    "descriptionTime": "Mostra as horas no Skyblock. Ex.: 12am 1st Early Winter",
+    "titleCustom": "Estado customizado",
+    "descriptionCustom": "Customiza o teu estado",
+    "titleAuto": "Estado automático",
+    "descriptionAuto": "Mostra um estado automaticamente. Ex.: o teu contador de zealots quando estás no The End."
   }
 }

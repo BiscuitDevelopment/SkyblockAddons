@@ -286,7 +286,7 @@ public class EnumUtils {
         ORCHID_ALLOY("orchidalloy", "github.com/orchidalloy", Feature.SUMMONING_EYE_ALERT, Feature.FISHING_SOUND_INDICATOR, Feature.ORGANIZE_ENCHANTMENTS),
         HIGH_CRIT("HighCrit", "github.com/HighCrit", Feature.PREVENT_MOVEMENT_ON_DEATH),
         MOULBERRY("Moulberry", "github.com/Moulberry", Feature.DONT_RESET_CURSOR_INVENTORY),
-        TOMOCRAFTER("tomocrafter","github.com/tomocrafter", Feature.AVOID_BLINKING_NIGHT_VISION, Feature.SLAYER_INDICATOR, Feature.NO_ARROWS_LEFT_ALERT),
+        TOMOCRAFTER("tomocrafter","github.com/tomocrafter", Feature.AVOID_BLINKING_NIGHT_VISION, Feature.SLAYER_INDICATOR, Feature.NO_ARROWS_LEFT_ALERT, Feature.BOSS_APPROACH_ALERT),
         DAPIGGUY("DaPigGuy", "github.com/DaPigGuy", Feature.MINION_DISABLE_LOCATION_WARNING),
         COMNIEMEER("comniemeer","github.com/comniemeer", Feature.JUNGLE_AXE_COOLDOWN),
         KEAGEL("Keagel", "github.com/Keagel", Feature.ONLY_MINE_ORES_DEEP_CAVERNS, Feature.DISABLE_MAGICAL_SOUP_MESSAGES),
@@ -297,6 +297,8 @@ public class EnumUtils {
         P0KE("P0ke", "p0ke.dev", Feature.ZEALOT_COUNTER),
         BERISAN("Berisan", "github.com/Berisan", Feature.TAB_EFFECT_TIMERS),
         MYNAMEISJEFF("MyNameIsJeff", "github.com/My-Name-Is-Jeff", Feature.SHOW_BROKEN_FRAGMENTS),
+        DJTHEREDSTONER("DJtheRedstoner", "github.com/DJtheRedstoner", Feature.LEGENDARY_SEA_CREATURE_WARNING),
+        ANTONIO32A("Antonio32A", "github.com/Antonio32A", Feature.ONLY_BREAK_LOGS_PARK),
         CHARZARD("Charzard4261", "github.com/Charzard4261", Feature.DISABLE_TELEPORT_PAD_MESSAGES, Feature.BAIT_LIST);
 
         private Set<Feature> features;
@@ -371,15 +373,15 @@ public class EnumUtils {
 
     @Getter
     public enum Social {
-        YOUTUBE(new ResourceLocation("skyblockaddons", "youtube.png"), "https://www.youtube.com/channel/UCYmE9-052frn0wQwqa6i8_Q"),
-        DISCORD(new ResourceLocation("skyblockaddons", "discord.png"), "https://biscuit.codes/discord"),
-        GITHUB(new ResourceLocation("skyblockaddons", "github.png"), "https://github.com/BiscuitDevelopment/SkyblockAddons");
+        YOUTUBE("youtube", "https://www.youtube.com/channel/UCYmE9-052frn0wQwqa6i8_Q"),
+        DISCORD("discord", "https://biscuit.codes/discord"),
+        GITHUB("github", "https://github.com/BiscuitDevelopment/SkyblockAddons");
 
         private ResourceLocation resourceLocation;
         private URI url;
 
-        Social(ResourceLocation resourceLocation, String url) {
-            this.resourceLocation = resourceLocation;
+        Social(String resourcePath, String url) {
+            this.resourceLocation = new ResourceLocation("skyblockaddons", "gui/"+resourcePath+".png");
             try {
                 this.url = new URI(url);
             } catch (URISyntaxException e) {
@@ -415,6 +417,18 @@ public class EnumUtils {
                 nextType = 0;
             }
             return values()[nextType];
+        }
+    }
+
+    @Getter
+    public enum DiscordStatusEntry {
+        DETAILS(0),
+        STATE(1);
+
+        private int id;
+
+        DiscordStatusEntry(int id) {
+            this.id = id;
         }
     }
 }

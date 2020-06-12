@@ -30,7 +30,7 @@ public class InventoryUtils {
     private static final String SKELETON_HELMET_ID = "SKELETON_HELMET";
     private static final String TOXIC_ARROW_POISON_ID = "TOXIC_ARROW_POISON";
 
-    public static final String MADDOX_BATPHONE_DISPLAYNAME = "§aMaddox Batphone"; // TODO Change these to all use IDs...
+    public static final String MADDOX_BATPHONE_DISPLAYNAME = "§aMaddox Batphone";
     public static final String JUNGLE_AXE_DISPLAYNAME = "§aJungle Axe";
     public static final String TREECAPITATOR_DISPLAYNAME = "§5Treecapitator";
     public static final String CHICKEN_HEAD_DISPLAYNAME = "§fChicken Head";

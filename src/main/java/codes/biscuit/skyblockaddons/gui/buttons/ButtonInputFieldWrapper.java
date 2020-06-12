@@ -46,8 +46,11 @@ public class ButtonInputFieldWrapper extends GuiButton {
         textUpdated.onUpdate(textField.getText());
     }
 
-    protected void mouseClicked(int mouseX, int mouseY, int mouseButton){
-        textField.mouseClicked(mouseX, mouseY, mouseButton);
+    @Override
+    public boolean mousePressed(Minecraft mc, int mouseX, int mouseY) {
+        textField.mouseClicked(mouseX, mouseY, 0);
+
+        return textField.isFocused();
     }
 
     public void updateScreen() {
@@ -58,14 +61,6 @@ public class ButtonInputFieldWrapper extends GuiButton {
         for (GuiButton button : buttonList) {
             if (button instanceof ButtonInputFieldWrapper) {
                 ((ButtonInputFieldWrapper)button).keyTyped(typedChar, keyCode);
-            }
-        }
-    }
-
-    public static void callMouseClicked(List<GuiButton> buttonList, int mouseX, int mouseY, int mouseButton) {
-        for (GuiButton button : buttonList) {
-            if (button instanceof ButtonInputFieldWrapper) {
-                ((ButtonInputFieldWrapper)button).mouseClicked(mouseX, mouseY, mouseButton);
             }
         }
     }

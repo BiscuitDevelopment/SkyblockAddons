@@ -7,6 +7,7 @@ import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsTransformer;
 import codes.biscuit.skyblockaddons.utils.*;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
 import codes.biscuit.skyblockaddons.utils.nifty.reflection.MinecraftReflection;
+import lombok.Getter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.Gui;
@@ -44,7 +45,7 @@ public class GuiContainerHook {
      * This controls whether or not the backpack preview is frozen- allowing you
      * to hover over a backpack's contents in full detail!
      */
-    private static boolean freezeBackpack = false;
+    @Getter private static boolean freezeBackpack = false;
 
     public static void showEnchantments(Slot slotIn, int x, int y, ItemStack item) {
         SkyblockAddons main = SkyblockAddons.getInstance();
@@ -400,9 +401,5 @@ public class GuiContainerHook {
 
     public static void setFreezeBackpack(boolean freezeBackpack) {
         GuiContainerHook.freezeBackpack = freezeBackpack;
-    }
-
-    public static boolean isFreezeBackpack() {
-        return freezeBackpack;
     }
 }

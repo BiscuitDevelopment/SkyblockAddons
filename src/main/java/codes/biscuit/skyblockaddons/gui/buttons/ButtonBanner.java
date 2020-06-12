@@ -57,16 +57,6 @@ public class ButtonBanner extends GuiButton {
                     this.height = bannerImage.getHeight();
                 } catch (IOException ex) {
                     FMLLog.info("[SkyblockAddons] Couldn't grab main menu banner image from URL, falling back to local banner.");
-
-                    banner = new ResourceLocation("skyblockaddons", "featuredbanner.png");
-                    try {
-                        bannerImage = TextureUtil.readBufferedImage(Minecraft.getMinecraft().getResourceManager().getResource(banner).getInputStream());
-
-                        this.width = bannerImage.getWidth();
-                        this.height = bannerImage.getHeight();
-                    } catch (IOException ex1) {
-                        ex1.printStackTrace();
-                    }
                 }
             }).start();
         }

@@ -7,8 +7,8 @@ import lombok.Getter;
 public class GuiFeatureData {
 
     private ChatFormatting defaultColor = null;
-    private CoordsPair defaultPos = null;
-    private CoordsPair defaultBarSize = null;
+    private FloatPair defaultPos = null;
+    private IntPair defaultBarSize = null;
     private EnumUtils.AnchorPoint defaultAnchor = null;
     private EnumUtils.DrawType drawType = null;
 
@@ -37,9 +37,9 @@ public class GuiFeatureData {
         this.drawType = drawType;
         this.defaultColor = defaultColor;
         this.colorsRestricted = colorsRestricted;
-        this.defaultPos = new CoordsPair(positionThenSizes[0], positionThenSizes[1]);
+        this.defaultPos = new FloatPair(positionThenSizes[0], positionThenSizes[1]);
         if (positionThenSizes.length > 2) {
-            this.defaultBarSize = new CoordsPair(positionThenSizes[2], positionThenSizes[3]);
+            this.defaultBarSize = new IntPair(positionThenSizes[2], positionThenSizes[3]);
         }
         this.defaultAnchor = defaultAnchor;
     }
@@ -52,6 +52,6 @@ public class GuiFeatureData {
         this.drawType = drawType;
         this.defaultAnchor = defaultAnchor;
         this.colorsRestricted = colorsRestricted;
-        this.defaultPos = new CoordsPair(position[0], position[1]);
+        this.defaultPos = new FloatPair(position[0], position[1]);
     }
 }

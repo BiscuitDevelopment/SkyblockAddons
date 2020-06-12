@@ -4,6 +4,7 @@ import codes.biscuit.skyblockaddons.commands.SkyblockAddonsCommand;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.Message;
 import codes.biscuit.skyblockaddons.gui.IslandWarpGui;
+import codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui;
 import codes.biscuit.skyblockaddons.listeners.GuiScreenListener;
 import codes.biscuit.skyblockaddons.listeners.NetworkListener;
 import codes.biscuit.skyblockaddons.listeners.PlayerListener;
@@ -72,8 +73,8 @@ public class SkyblockAddons {
 
     static {
         //noinspection ConstantConditions
-        if (VERSION.equals("@VERSION@")) {
-            VERSION = "1.2.3";
+        if (VERSION.contains("@")) { // Debug environment...
+            VERSION = "1.5.0";
         }
     }
 
@@ -142,9 +143,15 @@ public class SkyblockAddons {
             if (feature.isColorFeature()) feature.getSettings().add(EnumUtils.FeatureSetting.COLOR);
         }
 
+        // Load in these textures so they don't lag the user loading them in later...
         for (IslandWarpGui.Island island : IslandWarpGui.Island.values()) {
             Minecraft.getMinecraft().getTextureManager().bindTexture(island.getResourceLocation());
         }
+        for (Language language : Language.values()) {
+            Minecraft.getMinecraft().getTextureManager().bindTexture(language.getResourceLocation());
+        }
+        Minecraft.getMinecraft().getTextureManager().bindTexture(SkyblockAddonsGui.LOGO);
+        Minecraft.getMinecraft().getTextureManager().bindTexture(SkyblockAddonsGui.LOGO_GLOW);
     }
 
     @Mod.EventHandler

@@ -269,7 +269,7 @@ public class SkyblockAddonsInstallerFrame extends JFrame implements ActionListen
             x += 10; // Padding
 
             try {
-                BufferedImage myPicture = ImageIO.read(getClass().getClassLoader().getResourceAsStream("assets/skyblockaddons/folder.png"));
+                BufferedImage myPicture = ImageIO.read(getClass().getClassLoader().getResourceAsStream("assets/skyblockaddons/gui/folder.png"));
                 Image scaled = myPicture.getScaledInstance(w-8, h-6, Image.SCALE_SMOOTH);
                 buttonChooseFolder = new JButton(new ImageIcon(scaled));
                 buttonChooseFolder.setName("ButtonFolder");

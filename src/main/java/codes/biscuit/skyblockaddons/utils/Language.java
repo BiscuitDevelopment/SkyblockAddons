@@ -1,6 +1,7 @@
 package codes.biscuit.skyblockaddons.utils;
 
 import lombok.Getter;
+import net.minecraft.util.ResourceLocation;
 
 @Getter
 public enum Language {
@@ -46,15 +47,12 @@ public enum Language {
     BISCUITISH("bc_BC"),
     OWO("ow_Wo");
 
+    private ResourceLocation resourceLocation;
     private String path;
 
     Language(String path) {
         this.path = path;
-    }
-
-    /** Resources in later Minecraft versions can only use lowercase paths, so all of the flags are lowercase. */
-    public String getFlagPath() {
-        return path.toLowerCase();
+        this.resourceLocation = new ResourceLocation("skyblockaddons", "flags/"+path.toLowerCase()+".png");
     }
 
     /**
@@ -66,7 +64,7 @@ public enum Language {
      */
     public static Language getFromPath(String languageKey) {
         for (Language language : values()) {
-            String path = language.getPath();
+            String path = language.path;
             if (path != null && path.equalsIgnoreCase(languageKey)) {
                 return language;
             }

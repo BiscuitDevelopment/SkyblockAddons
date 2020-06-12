@@ -4,12 +4,12 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.mutable.MutableInt;
 
-public class CoordsPair {
+public class IntPair {
 
     private MutableInt x;
     private MutableInt y;
 
-    public CoordsPair(int x, int y) {
+    public IntPair(int x, int y) {
         this.x = new MutableInt(x);
         this.y = new MutableInt(y);
     }
@@ -37,7 +37,7 @@ public class CoordsPair {
         if (obj.getClass() != getClass()) {
             return false;
         }
-        CoordsPair chunkCoords = (CoordsPair)obj;
+        IntPair chunkCoords = (IntPair)obj;
         return new EqualsBuilder().append(getX(), chunkCoords.getX()).append(getY(), chunkCoords.getY()).isEquals();
     }
 
@@ -51,7 +51,7 @@ public class CoordsPair {
         return getX()+"|"+getY();
     }
 
-    public CoordsPair cloneCoords() {
-        return new CoordsPair(getX(), getY());
+    public IntPair cloneCoords() {
+        return new IntPair(getX(), getY());
     }
 }

@@ -50,7 +50,7 @@ public class IslandButton extends GuiButton {
 
     public void drawButton(Minecraft mc, int mouseX, int mouseY, boolean actuallyDraw) {
         int minecraftScale = new ScaledResolution(mc).getScaleFactor();
-        float islandGuiScale = 0.7F;
+        float islandGuiScale = IslandWarpGui.ISLAND_SCALE;
 
         mouseX *= minecraftScale;
         mouseY *= minecraftScale;
@@ -114,8 +114,8 @@ public class IslandButton extends GuiButton {
 
         if (mouseX > x && mouseY > y && mouseX < x+w && mouseY < y+h) {
             if (island.getBufferedImage() != null) {
-                int xPixel = Math.round(((mouseX - x) * IslandWarpGui.Island.IMAGE_SCALED_DOWN_FACTOR) / expansion);
-                int yPixel = Math.round(((mouseY - y) * IslandWarpGui.Island.IMAGE_SCALED_DOWN_FACTOR) / expansion);
+                int xPixel = Math.round(((mouseX - x) * IslandWarpGui.IMAGE_SCALED_DOWN_FACTOR) / expansion);
+                int yPixel = Math.round(((mouseY - y) * IslandWarpGui.IMAGE_SCALED_DOWN_FACTOR) / expansion);
 
                 try {
                     int rgb = island.getBufferedImage().getRGB(xPixel, yPixel);
@@ -213,7 +213,7 @@ public class IslandButton extends GuiButton {
     @Override
     public boolean mousePressed(Minecraft mc, int mouseX, int mouseY) {
 //        int minecraftScale = Minecraft.getMinecraft().gameSettings.guiScale;
-//        float islandGuiScale = 0.7F;
+//        float islandGuiScale = ISLAND_SCALE;
 //
 //        mouseX *= minecraftScale;
 //        mouseY *= minecraftScale;
