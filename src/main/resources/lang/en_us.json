@@ -121,7 +121,7 @@
     "legendarySeaCreatureWarning": "Legendary Sea Creature Warning",
     "onlyBreakLogsPark": "Only Break Logs in the Park",
     "bossApproachAlert": "Boss Approach Alert",
-    "disableTeleportPadMessage": "Disable Teleport Pad Messages",
+    "disableTeleportPadMessages": "Disable Teleport Pad Messages",
     "baitListDisplay" : "Show Bait List When Holding a Rod"
   },
   "messages": {
