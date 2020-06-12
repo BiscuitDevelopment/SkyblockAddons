@@ -117,7 +117,12 @@
     "endstoneProtectorDisplay": "エンドストーンプロテクターがスポーンしたときに画面上に表示する",
     "fancyWarpMenu": "Fancy Warp Menu",
     "doubleWarp": "Warp Twice",
-    "advancedMode": "アドバンスドモード"
+    "advancedMode": "アドバンスドモード",
+    "legendarySeaCreatureWarning": "Legendary Sea Creature Warning",
+    "onlyBreakLogsPark": "Only Break Logs in the Park",
+    "bossApproachAlert": "Slayer Boss Approach Alert",
+    "disableTeleportPadMessages": "Disable Teleport Pad Messages",
+    "baitListDisplay": "Show Bait List While Holding a Rod"
   },
   "messages": {
     "dropConfirmation": "落としてもいいのであれば、このアイテムをもう一度ドロップしてください。",
@@ -167,12 +172,19 @@
     "rescaleFeatures": "Rescale Features",
     "resizeBars": "バーをリサイズ",
     "showColorIcons": "カラーアイコンを表示する",
+    "enableFeatureSnapping": "Enable Feature Snapping",
     "stage": "ステージ%stage%",
     "switchedSlots": "あなたはロックされたスロットまたはレアなアイテムから切り替えました。ドロップする前に少々お待ち下さい！",
     "clickToOpenLink": "クリックしてリンクを開く",
     "clickToOpenFolder": "クリックしてmodフォルダを開く",
     "freezeBackpackPreview": "Freeze Backpack Preview",
-    "hideGreyEnchants": "Hide Regular Grey Enchants"
+    "hideGreyEnchants": "Hide Regular Grey Enchants",
+    "firstStatus": "This status will appear at the top",
+    "secondStatus": "This status will appear under your first status",
+    "fallbackStatus": "This status will appear when your automatic status has nothing to show",
+    "legendarySeaCreatureWarning": "Legendary Catch!",
+    "cancelledPark": "A feature has stopped you from breaking this block here.",
+    "bossApproaching": "You are close to spawning a boss!"
   },
   "discordStatus": {
     "titleNone": "無し",
