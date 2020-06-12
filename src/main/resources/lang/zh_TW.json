@@ -117,7 +117,12 @@
     "endstoneProtectorDisplay": "顯示終界石守護者",
     "fancyWarpMenu": "精緻傳送介面",
     "doubleWarp": "雙重傳送",
-    "advancedMode": "進階模式"
+    "advancedMode": "進階模式",
+    "legendarySeaCreatureWarning": "Legendary Sea Creature Warning",
+    "onlyBreakLogsPark": "Only Break Logs in the Park",
+    "bossApproachAlert": "Slayer Boss Approach Alert",
+    "disableTeleportPadMessages": "Disable Teleport Pad Messages",
+    "baitListDisplay": "Show Bait List While Holding a Rod"
   },
   "messages": {
     "dropConfirmation": "再次丟棄此物品以確認!",
@@ -167,12 +172,19 @@
     "rescaleFeatures": "重置縮放大小功能",
     "resizeBars": "調整計量條大小",
     "showColorIcons": "顯示顏色圖標",
+    "enableFeatureSnapping": "Enable Feature Snapping",
     "stage": "階段 %stage%",
     "switchedSlots": "你剛從一個鎖住的欄位或稀有物品切換 丟棄前請稍等片刻!",
     "clickToOpenLink": "點擊以開啟此連結!",
     "clickToOpenFolder": "點擊以開啟你的模組資料夾!",
     "freezeBackpackPreview": "維持背包預覽",
-    "hideGreyEnchants": "隱藏原版說明欄灰色附魔"
+    "hideGreyEnchants": "隱藏原版說明欄灰色附魔",
+    "firstStatus": "This status will appear at the top",
+    "secondStatus": "This status will appear under your first status",
+    "fallbackStatus": "This status will appear when your automatic status has nothing to show",
+    "legendarySeaCreatureWarning": "Legendary Catch!",
+    "cancelledPark": "A feature has stopped you from breaking this block here.",
+    "bossApproaching": "You are close to spawning a boss!"
   },
   "discordStatus": {
     "titleNone": "無",
