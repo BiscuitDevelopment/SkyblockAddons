@@ -298,7 +298,8 @@ public class EnumUtils {
         BERISAN("Berisan", "github.com/Berisan", Feature.TAB_EFFECT_TIMERS),
         MYNAMEISJEFF("MyNameIsJeff", "github.com/My-Name-Is-Jeff", Feature.SHOW_BROKEN_FRAGMENTS),
         DJTHEREDSTONER("DJtheRedstoner", "github.com/DJtheRedstoner", Feature.LEGENDARY_SEA_CREATURE_WARNING),
-        ANTONIO32A("Antonio32A", "github.com/Antonio32A", Feature.ONLY_BREAK_LOGS_PARK);
+        ANTONIO32A("Antonio32A", "github.com/Antonio32A", Feature.ONLY_BREAK_LOGS_PARK),
+        CHARZARD("Charzard4261", "github.com/Charzard4261", Feature.DISABLE_TELEPORT_PAD_MESSAGES, Feature.BAIT_LIST);
 
         private Set<Feature> features;
         private String author;
@@ -366,6 +367,7 @@ public class EnumUtils {
         REVENANT_PROGRESS,
         POWER_ORB_DISPLAY,
         TICKER,
+        BAIT_LIST_DISPLAY,
         TAB_EFFECT_TIMERS
     }
 
