@@ -136,6 +136,12 @@ public class Utils {
 
     private long lastDamaged = -1;
 
+    // Slayer Quest
+    private int currentKills = 0;
+    private int targetKills = 0;
+    private int currentExp = 0;
+    private int targetExp = 0;
+
     private SkyblockAddons main;
     private Logger logger;
 
@@ -285,6 +291,11 @@ public class Utils {
                         }
                     }
 
+                    if (strippedLine.endsWith("Combat XP") || strippedLine.endsWith("Kills")) {
+                        parseSlayerXPProgress(strippedLine);
+                    }
+
+
                     for (Location loopLocation : Location.values()) {
                         if (strippedLine.endsWith(loopLocation.getScoreboardName())) {
                             if (loopLocation == Location.BLAZING_FORTRESS && location != Location.BLAZING_FORTRESS) {
@@ -342,6 +353,39 @@ public class Utils {
         }
         if (!foundInDungeon) {
             inDungeon = false;
+        }
+    }
+
+    private void parseSlayerXPProgress(final String line) {
+        String[] format = line.trim().split(" ")[0].split("/");
+
+        boolean doAlert = false;
+
+        if (line.endsWith("Kills")) {
+            int oldCurrentKills = this.currentKills;
+            this.currentKills = Integer.parseInt(format[0]);
+
+            this.targetKills = Integer.parseInt(format[1]);
+
+            doAlert = oldCurrentKills != this.currentKills && (float) this.currentKills / this.targetKills > 0.9; // If boss percentage to spawn boss over 90%
+        } else if (line.endsWith("Combat XP")) {
+            int oldCurrentExp = this.currentExp;
+            this.currentExp = Integer.parseInt(format[0]);
+
+            if (format[1].endsWith("k")) {
+                float f = Float.parseFloat(format[1].substring(0, format[1].length() - 1));
+                this.targetExp = (int) (f * 1000);
+            } else {
+                this.targetExp = Integer.parseInt(format[1]);
+            }
+
+            doAlert = oldCurrentExp != this.currentExp && (float) this.currentExp / this.targetExp > 0.9;
+        }
+
+        if (main.getConfigValues().isEnabled(Feature.BOSS_APPROACH_ALERT) && doAlert) {
+            main.getUtils().playLoudSound("random.orb", 0.5);
+            main.getRenderListener().setTitleFeature(Feature.BOSS_APPROACH_ALERT);
+            main.getScheduler().schedule(Scheduler.CommandType.RESET_TITLE_FEATURE, main.getConfigValues().getWarningSeconds());
         }
     }
 

@@ -207,6 +207,9 @@ public class RenderListener {
                 case LEGENDARY_SEA_CREATURE_WARNING:
                     message = Message.MESSAGE_LEGENDARY_SEA_CREATURE_WARNING;
                     break;
+                case BOSS_APPROACH_ALERT:
+                    message = Message.MESSAGE_BOSS_APPROACH_ALERT;
+                    break;
             }
             if (message != null) {
                 String text = message.getMessage();
