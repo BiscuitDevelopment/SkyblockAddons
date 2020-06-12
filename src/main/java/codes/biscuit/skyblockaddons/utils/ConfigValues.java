@@ -26,7 +26,7 @@ import java.util.*;
 
 public class ConfigValues {
 
-    private static final int CONFIG_VERSION = 7;
+    private static final int CONFIG_VERSION = 8;
 
     private final static float DEFAULT_GUI_SCALE = normalizeValueNoStep(1);
     private final static float GUI_SCALE_MINIMUM = 0.5F;
@@ -41,7 +41,7 @@ public class ConfigValues {
     @Getter private Set<Feature> disabledFeatures = EnumSet.noneOf(Feature.class);
     private Map<Feature, Integer> colors = new HashMap<>();
     private Map<Feature, Float> guiScales = new EnumMap<>(Feature.class);
-    private Map<Feature, CoordsPair> barSizes = new EnumMap<>(Feature.class);
+    private Map<Feature, IntPair> barSizes = new EnumMap<>(Feature.class);
     private MutableInt warningSeconds = new MutableInt(4);
     private Map<Feature, FloatPair> coordinates = new EnumMap<>(Feature.class);
     private Map<Feature, EnumUtils.AnchorPoint> anchorPoints = new EnumMap<>(Feature.class);
@@ -118,7 +118,11 @@ public class ConfigValues {
                 ex.printStackTrace();
             }
 
-            deserializeFeatureFloatCoordsMapFromID(coordinates, "guiPositions");
+            if (settingsConfig.has("coordinates")) {
+                deserializeFeatureFloatCoordsMapFromID(coordinates, "coordinates");
+            } else {
+                deserializeFeatureFloatCoordsMapFromID(coordinates, "guiPositions"); // TODO Legacy format from 1.4.2/1.5-betas, remove in the future.
+            }
             deserializeFeatureIntCoordsMapFromID(barSizes, "barSizes");
 
             if (settingsConfig.has("featureColors")) { // TODO Legacy format from 1.3.4, remove in the future.
@@ -165,6 +169,27 @@ public class ConfigValues {
                         FloatPair coords = entry.getValue();
                         coords.setX(coords.getX()-91);
                         coords.setY(coords.getY()-39);
+                    }
+                }
+            } else if (configVersion <= 7) {
+                for (Map.Entry<Feature, FloatPair> entry : coordinates.entrySet()) {
+                    Feature feature = entry.getKey();
+                    FloatPair coords = entry.getValue();
+
+                    if (feature == Feature.MAGMA_BOSS_TIMER || feature == Feature.DARK_AUCTION_TIMER || feature == Feature.ZEALOT_COUNTER || feature == Feature.SKILL_DISPLAY
+                            || feature == Feature.SHOW_TOTAL_ZEALOT_COUNT || feature == Feature.SHOW_SUMMONING_EYE_COUNT || feature == Feature.SHOW_AVERAGE_ZEALOTS_PER_EYE ||
+                            feature == Feature.BIRCH_PARK_RAINMAKER_TIMER || feature == Feature.COMBAT_TIMER_DISPLAY || feature == Feature.ENDSTONE_PROTECTOR_DISPLAY) {
+                        coords.setY(coords.getY() + 2/2F);
+                        coords.setX(coords.getX() - 18/2F);
+                        coords.setY(coords.getY() - 9/2F);
+
+                        if (feature == Feature.COMBAT_TIMER_DISPLAY) {
+                            coords.setY(coords.getY() + 15/2F);
+                        }
+                    }
+
+                    if (feature.getGuiFeatureData() != null && feature.getGuiFeatureData().getDrawType() == EnumUtils.DrawType.BAR) {
+                        coords.setY(coords.getY() + 1);
                     }
                 }
             }
@@ -270,14 +295,24 @@ public class ConfigValues {
             }
             settingsConfig.add("colors", colorsObject);
 
+            // Old gui coordinates, for backwards compatibility...
             JsonObject coordinatesObject = new JsonObject();
+            for (Feature feature : coordinates.keySet()) {
+                JsonArray coordinatesArray = new JsonArray();
+                coordinatesArray.add(new GsonBuilder().create().toJsonTree(Math.round(coordinates.get(feature).getX())));
+                coordinatesArray.add(new GsonBuilder().create().toJsonTree(Math.round(coordinates.get(feature).getY())));
+                coordinatesObject.add(String.valueOf(feature.getId()), coordinatesArray);
+            }
+            settingsConfig.add("guiPositions", coordinatesObject);
+            // New gui coordinates
+            coordinatesObject = new JsonObject();
             for (Feature feature : coordinates.keySet()) {
                 JsonArray coordinatesArray = new JsonArray();
                 coordinatesArray.add(new GsonBuilder().create().toJsonTree(coordinates.get(feature).getX()));
                 coordinatesArray.add(new GsonBuilder().create().toJsonTree(coordinates.get(feature).getY()));
                 coordinatesObject.add(String.valueOf(feature.getId()), coordinatesArray);
             }
-            settingsConfig.add("guiPositions", coordinatesObject);
+            settingsConfig.add("coordinates", coordinatesObject);
 
             JsonObject barSizesObject = new JsonObject();
             for (Feature feature : barSizes.keySet()) {
@@ -484,14 +519,14 @@ public class ConfigValues {
         }
     }
 
-    private void deserializeFeatureIntCoordsMapFromID(Map<Feature, CoordsPair> map, String path) {
+    private void deserializeFeatureIntCoordsMapFromID(Map<Feature, IntPair> map, String path) {
         try {
             if (settingsConfig.has(path)) {
                 for (Map.Entry<String, JsonElement> element : settingsConfig.getAsJsonObject(path).entrySet()) {
                     Feature feature = Feature.fromId(Integer.parseInt(element.getKey()));
                     if (feature != null) {
                         JsonArray coords = element.getValue().getAsJsonArray();
-                        map.put(feature, new CoordsPair(coords.get(0).getAsInt(), coords.get(1).getAsInt()));
+                        map.put(feature, new IntPair(coords.get(0).getAsInt(), coords.get(1).getAsInt()));
                     }
                 }
             }
@@ -528,7 +563,7 @@ public class ConfigValues {
 
     private void putDefaultBarSizes() {
         for (Feature feature : Feature.getGuiFeatures()) {
-            CoordsPair size = feature.getDefaultBarSize();
+            IntPair size = feature.getDefaultBarSize();
             if (size != null) {
                 barSizes.put(feature, size);
             }
@@ -656,19 +691,19 @@ public class ConfigValues {
         return getAnchorPoint(feature).getY(maxY)+ getRelativeCoords(feature).getY();
     }
 
-    public CoordsPair getSizes(Feature feature) {
-        CoordsPair defaultSize = feature.getDefaultBarSize();
-        return barSizes.getOrDefault(feature, defaultSize != null ? defaultSize : new CoordsPair(7,1));
+    public IntPair getSizes(Feature feature) {
+        IntPair defaultSize = feature.getDefaultBarSize();
+        return barSizes.getOrDefault(feature, defaultSize != null ? defaultSize : new IntPair(7,1));
     }
 
     public void setSizeX(Feature feature, int x) {
-        CoordsPair coords = getSizes(feature);
+        IntPair coords = getSizes(feature);
         coords.setX(x);
         barSizes.put(feature, coords);
     }
 
     public void setSizeY(Feature feature, int y) {
-        CoordsPair coords = getSizes(feature);
+        IntPair coords = getSizes(feature);
         coords.setY(y);
         barSizes.put(feature, coords);
     }
@@ -863,5 +898,21 @@ public class ConfigValues {
 
     public void setDiscordAutoDefault(DiscordStatus discordAutoDefault) {
         this.discordAutoDefault.setValue(discordAutoDefault);
+    }
+
+    public String getCustomStatus(EnumUtils.DiscordStatusEntry statusEntry) {
+        while (main.getConfigValues().getDiscordCustomStatuses().size() < 2) {
+            main.getConfigValues().getDiscordCustomStatuses().add("");
+        }
+
+        return discordCustomStatuses.get(statusEntry.getId());
+    }
+
+    public String setCustomStatus(EnumUtils.DiscordStatusEntry statusEntry, String text) {
+        while (main.getConfigValues().getDiscordCustomStatuses().size() < 2) {
+            main.getConfigValues().getDiscordCustomStatuses().add("");
+        }
+
+        return discordCustomStatuses.set(statusEntry.getId(), text);
     }
 }

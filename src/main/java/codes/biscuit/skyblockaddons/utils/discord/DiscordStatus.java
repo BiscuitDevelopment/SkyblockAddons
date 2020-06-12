@@ -6,14 +6,14 @@ import codes.biscuit.skyblockaddons.core.Location;
 import codes.biscuit.skyblockaddons.core.Message;
 import codes.biscuit.skyblockaddons.core.SkyblockDate;
 import codes.biscuit.skyblockaddons.gui.buttons.ButtonSelect;
-import codes.biscuit.skyblockaddons.utils.*;
+import codes.biscuit.skyblockaddons.utils.EnumUtils;
+import codes.biscuit.skyblockaddons.utils.TextUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 
 import java.util.function.Supplier;
 
 public enum DiscordStatus implements ButtonSelect.SelectItem {
-
 
     NONE(Message.DISCORD_STATUS_NONE_TITLE, Message.DISCORD_STATUS_NONE_DESCRIPTION, () -> null),
     LOCATION(Message.DISCORD_STATUS_LOCATION_TITLE, Message.DISCORD_STATUS_LOCATION_DESCRIPTION,
@@ -55,7 +55,13 @@ public enum DiscordStatus implements ButtonSelect.SelectItem {
                 return String.format("Profile: %s", profile == null ? "None" : profile);
             }),
 
-    CUSTOM(Message.DISCORD_STATUS_CUSTOM, Message.DISCORD_STATUS_CUSTOM_DESCRIPTION, () -> ""),
+    CUSTOM(Message.DISCORD_STATUS_CUSTOM, Message.DISCORD_STATUS_CUSTOM_DESCRIPTION,
+            () -> {
+                SkyblockAddons main = SkyblockAddons.getInstance();
+
+                String text = main.getConfigValues().getCustomStatus(main.getDiscordRPCManager().getCurrentEntry());
+                return text.substring(0, Math.min(text.length(), 100));
+            }),
 
     AUTO_STATUS(Message.DISCORD_STATUS_AUTO, Message.DISCORD_STATUS_AUTO_DESCRIPTION, () -> {
                 SkyblockAddons main = SkyblockAddons.getInstance();
@@ -82,7 +88,8 @@ public enum DiscordStatus implements ButtonSelect.SelectItem {
         this.displayMessageSupplier = displayMessageSupplier;
     }
 
-    public String getDisplayString() {
+    public String getDisplayString(EnumUtils.DiscordStatusEntry currentEntry) {
+        SkyblockAddons.getInstance().getDiscordRPCManager().setCurrentEntry(currentEntry);
         return displayMessageSupplier.get();
     }
 

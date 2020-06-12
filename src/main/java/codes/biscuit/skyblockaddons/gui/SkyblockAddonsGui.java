@@ -4,7 +4,7 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.Message;
 import codes.biscuit.skyblockaddons.gui.buttons.*;
-import codes.biscuit.skyblockaddons.utils.CoordsPair;
+import codes.biscuit.skyblockaddons.utils.IntPair;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
 import codes.biscuit.skyblockaddons.utils.nifty.StringUtil;
@@ -16,15 +16,12 @@ import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.texture.DynamicTexture;
 import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.GuiIngameForge;
 import org.lwjgl.input.Keyboard;
 
-import javax.imageio.ImageIO;
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URI;
 import java.util.Comparator;
@@ -175,10 +172,10 @@ public class SkyblockAddonsGui extends GuiScreen {
                 alphaMultiplier = (float) timeSinceOpen / (fadeMilis * 2);
             }
         }
-        int alpha = (int)(200*alphaMultiplier); // Alpha of the text will increase from 0 to 127 over 500ms.
+        int alpha = (int)(255*alphaMultiplier); // Alpha of the text will increase from 0 to 127 over 500ms.
 
-        int startColor = new Color(0,0, 0, alpha).getRGB();
-        int endColor = new Color(0,0, 0, (int)(alpha*1.5)).getRGB();
+        int startColor = new Color(0,0, 0, (int)(alpha*0.5)).getRGB();
+        int endColor = new Color(0,0, 0, alpha).getRGB();
         drawGradientRect(0, 0, width, height, startColor, endColor);
         GlStateManager.enableBlend();
 
@@ -298,12 +295,7 @@ public class SkyblockAddonsGui extends GuiScreen {
         }
     }
 
-    private static ResourceLocation LOGO_SCALED = null;
-    private static ResourceLocation GLOW_SCALED = null;
-    private static BufferedImage LOGO_SCALED_IMAGE = null;
-    private static BufferedImage GLOW_SCALED_IMAGE = null;
     private static int logoScale = -1;
-    private static boolean scaling = false;
 
     /**
      * Draws the default text at the top at bottoms of the GUI.
@@ -319,60 +311,16 @@ public class SkyblockAddonsGui extends GuiScreen {
         TextureManager textureManager = Minecraft.getMinecraft().getTextureManager();
 
         int minecraftScale = scaledResolution.getScaleFactor();
-        if (logoScale != minecraftScale) {
-            if (LOGO_SCALED != null) {
-                textureManager.deleteTexture(LOGO_SCALED);
-                textureManager.deleteTexture(GLOW_SCALED);
-            }
-
-            LOGO_SCALED = null;
-            GLOW_SCALED = null;
+        boolean redo = false;
+        if (logoScale != -1 && minecraftScale != logoScale) {
+            redo = true;
         }
+        logoScale = minecraftScale;
 
-        if (LOGO_SCALED == null && !scaling) {
-            scaling = true;
-            new Thread(() -> {
-                try {
-                    // Logo
-                    BufferedImage myPicture = ImageIO.read(SkyblockAddonsGui.class.getClassLoader().getResourceAsStream("assets/skyblockaddons/logo.png"));
-                    Image scaled = myPicture.getScaledInstance(width*minecraftScale, height*minecraftScale, Image.SCALE_SMOOTH);
+        ResourceLocation logoScaled = SkyblockAddons.getInstance().getUtils().getScaledResource(LOGO, width*minecraftScale, height*minecraftScale, redo);
+        ResourceLocation glowScaled = SkyblockAddons.getInstance().getUtils().getScaledResource(LOGO_GLOW, width*minecraftScale, height*minecraftScale, redo);
 
-                    BufferedImage newImage = new BufferedImage(width*minecraftScale, height*minecraftScale, BufferedImage.TYPE_INT_ARGB);
-                    Graphics g = newImage.getGraphics();
-                    g.drawImage(scaled, 0, 0, null);
-                    g.dispose();
-
-                    LOGO_SCALED_IMAGE = newImage;
-
-                    myPicture = ImageIO.read(SkyblockAddonsGui.class.getClassLoader().getResourceAsStream("assets/skyblockaddons/logoglow.png"));
-                    scaled = myPicture.getScaledInstance(width*minecraftScale, height*minecraftScale, Image.SCALE_SMOOTH);
-
-                    newImage = new BufferedImage(width*minecraftScale, height*minecraftScale, BufferedImage.TYPE_INT_ARGB);
-                    g = newImage.getGraphics();
-                    g.drawImage(scaled, 0, 0, null);
-                    g.dispose();
-
-                    GLOW_SCALED_IMAGE = newImage;
-
-                    logoScale = minecraftScale;
-                    scaling = false;
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                }
-            }).start();
-        }
-
-        if (LOGO_SCALED_IMAGE != null) {
-            LOGO_SCALED = textureManager.getDynamicTextureLocation("logo", new DynamicTexture(LOGO_SCALED_IMAGE));
-            LOGO_SCALED_IMAGE = null;
-        }
-
-        if (GLOW_SCALED_IMAGE != null) {
-            GLOW_SCALED = textureManager.getDynamicTextureLocation("logoglow", new DynamicTexture(GLOW_SCALED_IMAGE));
-            GLOW_SCALED_IMAGE = null;
-        }
-
-        textureManager.bindTexture(LOGO_SCALED != null ? LOGO_SCALED : LOGO);
+        textureManager.bindTexture(logoScaled);
         SkyblockAddons.getInstance().getUtils().drawModalRectWithCustomSizedTexture(scaledResolution.getScaledWidth()/2F-width/2F, 3, 0, 0, width, height, width, height);
 
         int animationMillis = 4000;
@@ -384,12 +332,12 @@ public class SkyblockAddonsGui extends GuiScreen {
             glowAlpha = glowAlpha/(animationMillis/2F);
         }
 
-        GlStateManager.enableAlpha();
-        GlStateManager.enableBlend();
         GlStateManager.color(1,1,1, glowAlpha);
-        textureManager.bindTexture(GLOW_SCALED != null ? GLOW_SCALED : LOGO_GLOW);
+        textureManager.bindTexture(glowScaled);
         SkyblockAddons.getInstance().getUtils().drawModalRectWithCustomSizedTexture(scaledResolution.getScaledWidth()/2F-width/2F, 3, 0, 0, width, height, width, height);
-        String version = "v" + SkyblockAddons.VERSION + " by Biscut";
+
+        GlStateManager.color(1,1,1, 1);
+        String version = "v" + SkyblockAddons.VERSION.replace("beta", "b") + " by Biscut";
         drawScaledString(gui, version, 55, defaultBlue, 1.3, 170 - Minecraft.getMinecraft().fontRendererObj.getStringWidth(version), false);
 
         if (gui instanceof SkyblockAddonsGui) {
@@ -447,7 +395,7 @@ public class SkyblockAddonsGui extends GuiScreen {
 
             EnumUtils.FeatureCredit credit = EnumUtils.FeatureCredit.fromFeature(feature);
             if (credit != null) {
-                CoordsPair coords = button.getCreditsCoords(credit);
+                IntPair coords = button.getCreditsCoords(credit);
                 buttonList.add(new ButtonCredit(coords.getX(), coords.getY(), text, main, credit, feature, button.isMultilineButton()));
             }
 

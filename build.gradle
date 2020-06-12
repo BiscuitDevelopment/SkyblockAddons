@@ -101,9 +101,10 @@ task processResourcesDev(type: Copy) {
     // replace stuff in mcmod.info, nothing else
     from(sourceSets.main.resources.srcDirs) {
         include 'mcmod.info'
+        include 'data.json'
 
         // replace version and mcversion
-        expand 'version':project.version, 'mcversion':project.minecraft.version
+        expand 'version':project.version, 'mcversion':project.minecraft.version, 'updatePullLink':project.updateJSON
     }
 
     // copy everything else that's not the mcmod.info

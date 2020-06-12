@@ -8,7 +8,7 @@ public class GuiFeatureData {
 
     private ChatFormatting defaultColor = null;
     private FloatPair defaultPos = null;
-    private CoordsPair defaultBarSize = null;
+    private IntPair defaultBarSize = null;
     private EnumUtils.AnchorPoint defaultAnchor = null;
     private EnumUtils.DrawType drawType = null;
 
@@ -39,7 +39,7 @@ public class GuiFeatureData {
         this.colorsRestricted = colorsRestricted;
         this.defaultPos = new FloatPair(positionThenSizes[0], positionThenSizes[1]);
         if (positionThenSizes.length > 2) {
-            this.defaultBarSize = new CoordsPair(positionThenSizes[2], positionThenSizes[3]);
+            this.defaultBarSize = new IntPair(positionThenSizes[2], positionThenSizes[3]);
         }
         this.defaultAnchor = defaultAnchor;
     }

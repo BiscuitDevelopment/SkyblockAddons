@@ -5,13 +5,12 @@ import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
 import lombok.Getter;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
+import org.lwjgl.input.Mouse;
 
 @Getter
 public class ButtonResize extends ButtonFeature {
-
-    private int lastMouseX;
-    private int lastMouseY;
 
     private int size = 2;
 
@@ -19,6 +18,9 @@ public class ButtonResize extends ButtonFeature {
 
     public float x;
     public float y;
+
+    private float cornerOffsetX;
+    private float cornerOffsetY;
 
     public ButtonResize(float x, float y, Feature feature, Corner corner) {
         super(0, 0, 0, "", feature);
@@ -29,8 +31,6 @@ public class ButtonResize extends ButtonFeature {
 
     @Override
     public void drawButton(Minecraft mc, int mouseX, int mouseY) {
-        lastMouseX = mouseX;
-        lastMouseY = mouseY;
 
         float scale = SkyblockAddons.getInstance().getConfigValues().getGuiScale(feature);
         GlStateManager.pushMatrix();
@@ -43,6 +43,14 @@ public class ButtonResize extends ButtonFeature {
 
     @Override
     public boolean mousePressed(Minecraft mc, int mouseX, int mouseY) {
+        ScaledResolution sr = new ScaledResolution(mc);
+        float minecraftScale = sr.getScaleFactor();
+        float floatMouseX = Mouse.getX() / minecraftScale;
+        float floatMouseY = (mc.displayHeight - Mouse.getY()) / minecraftScale;
+
+        cornerOffsetX = floatMouseX;
+        cornerOffsetY = floatMouseY;
+
         return hovered;
     }
 

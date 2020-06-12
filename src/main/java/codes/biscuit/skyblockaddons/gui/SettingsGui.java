@@ -13,6 +13,7 @@ import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.GuiIngameForge;
+import org.lwjgl.input.Keyboard;
 
 import java.awt.*;
 import java.io.IOException;
@@ -25,7 +26,7 @@ public class SettingsGui extends GuiScreen {
 
     private SkyblockAddons main;
     private int page;
-    private int row = 1;
+    private float row = 1;
     private int collumn = 1;
     private int displayCount;
     private Feature feature;
@@ -53,6 +54,7 @@ public class SettingsGui extends GuiScreen {
     @SuppressWarnings("IntegerDivisionInFloatingPointContext")
     @Override
     public void initGui() {
+        Keyboard.enableRepeatEvents(true);
         row = 1;
         collumn = 1;
         buttonList.clear();
@@ -101,6 +103,7 @@ public class SettingsGui extends GuiScreen {
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
         if (this.reInit) {
+            this.reInit = false;
             this.initGui();
         }
 
@@ -115,8 +118,8 @@ public class SettingsGui extends GuiScreen {
         }
         int alpha = (int)(255*alphaMultiplier); // Alpha of the text will increase from 0 to 127 over 500ms.
 
-        int startColor = new Color(0,0, 0, alpha).getRGB();
-        int endColor = new Color(0,0, 0, (int)(alpha*1.5)).getRGB();
+        int startColor = new Color(0,0, 0, (int)(alpha*0.5)).getRGB();
+        int endColor = new Color(0,0, 0, alpha).getRGB();
         drawGradientRect(0, 0, width, height, startColor, endColor);
         GlStateManager.enableBlend();
 
@@ -132,24 +135,26 @@ public class SettingsGui extends GuiScreen {
             int x = halfWidth-90-boxWidth;
             int width = halfWidth+90+boxWidth;
             width -= x;
-            int numSettings = settings.size();
+            float numSettings = settings.size();
             if (settings.contains(EnumUtils.FeatureSetting.DISCORD_RP_STATE)) {
                 if (main.getConfigValues().getDiscordStatus() == DiscordStatus.CUSTOM) numSettings++;
                 if (main.getConfigValues().getDiscordStatus() == DiscordStatus.AUTO_STATUS) {
-                    numSettings++;
+                    numSettings ++;
                     if (main.getConfigValues().getDiscordAutoDefault() == DiscordStatus.CUSTOM) {
-                        numSettings++;
+                        numSettings ++;
                     }
                 }
+                numSettings += 0.4;
             }
             if (settings.contains(EnumUtils.FeatureSetting.DISCORD_RP_DETAILS)) {
                 if (main.getConfigValues().getDiscordDetails() == DiscordStatus.CUSTOM) numSettings++;
                 if (main.getConfigValues().getDiscordDetails() == DiscordStatus.AUTO_STATUS) {
-                    numSettings++;
+                    numSettings ++;
                     if (main.getConfigValues().getDiscordAutoDefault() == DiscordStatus.CUSTOM) {
-                        numSettings++;
+                        numSettings ++;
                     }
                 }
+                numSettings += 0.4;
             }
             int height = (int)(getRowHeightSetting(numSettings)-50);
             int y =(int)getRowHeight(1);
@@ -304,6 +309,9 @@ public class SettingsGui extends GuiScreen {
             } else {
                 currentStatus = main.getConfigValues().getDiscordDetails();
             }
+
+            buttonList.add(new ButtonTextNew(halfWidth, (int)y-10, setting == EnumUtils.FeatureSetting.DISCORD_RP_DETAILS ? Message.MESSAGE_FIRST_STATUS.getMessage() :
+                    Message.MESSAGE_SECOND_STATUS.getMessage(), true, 0xFFFFFFFF));
             buttonList.add(new ButtonSelect(x, (int)y, boxWidth, 20, Arrays.asList(DiscordStatus.values()), currentStatus.ordinal(), index -> {
                 final DiscordStatus selectedStatus = DiscordStatus.values()[index];
                 if(setting == EnumUtils.FeatureSetting.DISCORD_RP_STATE) {
@@ -318,10 +326,12 @@ public class SettingsGui extends GuiScreen {
 
             if (currentStatus == DiscordStatus.AUTO_STATUS) {
                 row++;
+                row += 0.4;
                 boxWidth = 140;
                 x = halfWidth-(boxWidth/2);
                 y = getRowHeightSetting(row);
 
+                buttonList.add(new ButtonTextNew(halfWidth, (int)y-10, Message.MESSAGE_FALLBACK_STATUS.getMessage(), true, 0xFFFFFFFF));
                 currentStatus = main.getConfigValues().getDiscordAutoDefault();
                 buttonList.add(new ButtonSelect(x, (int)y, boxWidth, 20, Arrays.asList(DiscordStatus.values()), currentStatus.ordinal(), index -> {
                     final DiscordStatus selectedStatus = DiscordStatus.values()[index];
@@ -337,21 +347,17 @@ public class SettingsGui extends GuiScreen {
                 x = halfWidth-(boxWidth/2);
                 y = getRowHeightSetting(row);
 
-                ButtonInputFieldWrapper inputField = new ButtonInputFieldWrapper(x, (int) y, 200, 20, "", null, 500, false, new UpdateCallback<String>() {
-                    @Override
-                    public void onUpdate(String updatedValue) {
-                        int stringID = 0;
-                        if (setting == EnumUtils.FeatureSetting.DISCORD_RP_STATE) {
-                            stringID = 1;
-                        }
-                        while (main.getConfigValues().getDiscordCustomStatuses().size() < 2) {
-                            main.getConfigValues().getDiscordCustomStatuses().add("");
-                        }
-                        main.getConfigValues().getDiscordCustomStatuses().set(stringID, updatedValue);
-                    }
-                });
+                EnumUtils.DiscordStatusEntry discordStatusEntry = EnumUtils.DiscordStatusEntry.DETAILS;
+                if (setting == EnumUtils.FeatureSetting.DISCORD_RP_STATE) {
+                    discordStatusEntry = EnumUtils.DiscordStatusEntry.STATE;
+                }
+                final EnumUtils.DiscordStatusEntry finalDiscordStatusEntry = discordStatusEntry;
+                ButtonInputFieldWrapper inputField = new ButtonInputFieldWrapper(x, (int) y, 200, 20, main.getConfigValues().getCustomStatus(discordStatusEntry),
+                        null, 100, false, updatedValue -> main.getConfigValues().setCustomStatus(finalDiscordStatusEntry, updatedValue));
                 buttonList.add(inputField);
             }
+
+            row += 0.4;
         } else {
             boxWidth = 31; // Default size and stuff.
             x = halfWidth-(boxWidth/2);
@@ -377,6 +383,7 @@ public class SettingsGui extends GuiScreen {
         if (!closingGui) {
             returnToGui();
         }
+        Keyboard.enableRepeatEvents(false);
     }
 
     private void returnToGui() {
@@ -393,7 +400,6 @@ public class SettingsGui extends GuiScreen {
     @Override
     protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {
         super.mouseClicked(mouseX, mouseY, mouseButton);
-        ButtonInputFieldWrapper.callMouseClicked(buttonList, mouseX, mouseY, mouseButton);
     }
 
     @Override

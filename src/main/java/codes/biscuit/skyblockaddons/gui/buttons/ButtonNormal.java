@@ -2,7 +2,7 @@ package codes.biscuit.skyblockaddons.gui.buttons;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui;
-import codes.biscuit.skyblockaddons.utils.CoordsPair;
+import codes.biscuit.skyblockaddons.utils.IntPair;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.Message;
@@ -136,7 +136,7 @@ public class ButtonNormal extends ButtonFeature {
             if (feature == Feature.LANGUAGE) {
                 GlStateManager.color(1,1,1,1F);
                 try {
-                    mc.getTextureManager().bindTexture(new ResourceLocation("skyblockaddons", "flags/"+main.getConfigValues().getLanguage().getFlagPath()+".png"));
+                    mc.getTextureManager().bindTexture(main.getConfigValues().getLanguage().getResourceLocation());
                     if (main.getUtils().isHalloween()) {
                         mc.getTextureManager().bindTexture(new ResourceLocation("skyblockaddons", "flags/halloween.png"));
                     }
@@ -160,7 +160,7 @@ public class ButtonNormal extends ButtonFeature {
         }
     }
 
-    public CoordsPair getCreditsCoords(EnumUtils.FeatureCredit credit) {
+    public IntPair getCreditsCoords(EnumUtils.FeatureCredit credit) {
         String[] wrappedString = main.getUtils().wrapSplitText(displayString, 28);
         boolean multiLine = wrappedString.length > 1;
 
@@ -176,7 +176,7 @@ public class ButtonNormal extends ButtonFeature {
         }
 
         int x = (int)((xPosition+width/2)/scale) - MinecraftReflection.FontRenderer.getStringWidth(credit.getAuthor()) / 2 - 17;
-        return new CoordsPair(x, y);
+        return new IntPair(x, y);
     }
 
     public boolean isMultilineButton() {

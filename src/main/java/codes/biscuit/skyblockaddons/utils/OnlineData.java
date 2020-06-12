@@ -14,6 +14,9 @@ public class OnlineData {
     private String videoLink;
     private String directDownload;
 
+    private String updateJSON;
+    private String languageJSONFormat;
+
     private Map<String, List<Integer>> disabledFeatures;
 
     private DropSettings dropSettings;

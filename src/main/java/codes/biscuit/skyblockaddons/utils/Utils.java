@@ -716,7 +716,7 @@ public class Utils {
         FMLLog.info("[SkyblockAddons] Attempting to pull updated language files from online.");
         new Thread(() -> {
             try {
-                URL url = new URL("https://raw.githubusercontent.com/biscuut/SkyblockAddons/development/src/main/resources/lang/" + language.getPath() + ".json");
+                URL url = new URL(String.format(main.getOnlineData().getLanguageJSONFormat(), language.getPath()));
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                 connection.setRequestMethod("GET");
                 connection.setRequestProperty("User-Agent", Utils.USER_AGENT);
@@ -822,7 +822,7 @@ public class Utils {
      * @param redo Whether to redo the scaling if it is already complete.
      * @return Either the scaled resource if it is complete, or the original resource if not.
      */
-    public ResourceLocation getScaledResource(ResourceLocation resourceLocation, int width, int height, String filePath, boolean redo) {
+    public ResourceLocation getScaledResource(ResourceLocation resourceLocation, int width, int height, boolean redo) {
         TextureManager textureManager = Minecraft.getMinecraft().getTextureManager();
 
         if (!redo && rescaled.containsKey(resourceLocation)) {
@@ -852,7 +852,7 @@ public class Utils {
 
         new Thread(() -> {
             try {
-                BufferedImage originalImage = ImageIO.read(SkyblockAddonsGui.class.getClassLoader().getResourceAsStream("assets/skyblockaddons/"+filePath+".png"));
+                BufferedImage originalImage = ImageIO.read(SkyblockAddonsGui.class.getClassLoader().getResourceAsStream("assets/"+resourceLocation.getResourceDomain()+"/"+resourceLocation.getResourcePath()));
                 Image scaledImageAbstract = originalImage.getScaledInstance(width, height, Image.SCALE_SMOOTH);
                 BufferedImage scaledImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
 

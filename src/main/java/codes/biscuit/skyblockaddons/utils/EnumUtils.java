@@ -415,4 +415,16 @@ public class EnumUtils {
             return values()[nextType];
         }
     }
+
+    @Getter
+    public enum DiscordStatusEntry {
+        DETAILS(0),
+        STATE(1);
+
+        private int id;
+
+        DiscordStatusEntry(int id) {
+            this.id = id;
+        }
+    }
 }

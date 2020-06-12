@@ -167,12 +167,16 @@
     "rescaleFeatures": "Rescale Features",
     "resizeBars": "Resize Bars",
     "showColorIcons": "Show Color Icons",
+    "enableFeatureSnapping": "Enable Feature Snapping",
     "stage": "Stage %stage%",
     "switchedSlots": "You have just switched from a locked slot or rare item. Please wait a bit before dropping!",
     "clickToOpenLink": "Click to open this link!",
     "clickToOpenFolder": "Click to open your mods folder!",
     "freezeBackpackPreview": "Freeze Backpack Preview",
-    "hideGreyEnchants": "Hide Regular Grey Enchants"
+    "hideGreyEnchants": "Hide Regular Grey Enchants",
+    "firstStatus": "This status will appear at the top",
+    "secondStatus": "This status will appear under your first status",
+    "fallbackStatus": "This status will appear when your automatic status has nothing to show"
   },
   "discordStatus": {
     "titleNone": "None",

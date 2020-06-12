@@ -73,8 +73,8 @@ public class SkyblockAddons {
 
     static {
         //noinspection ConstantConditions
-        if (VERSION.equals("@VERSION@")) {
-            VERSION = "1.2.3";
+        if (VERSION.contains("@")) { // Debug environment...
+            VERSION = "1.5.0";
         }
     }
 
@@ -143,11 +143,15 @@ public class SkyblockAddons {
             if (feature.isColorFeature()) feature.getSettings().add(EnumUtils.FeatureSetting.COLOR);
         }
 
+        // Load in these textures so they don't lag the user loading them in later...
         for (IslandWarpGui.Island island : IslandWarpGui.Island.values()) {
             Minecraft.getMinecraft().getTextureManager().bindTexture(island.getResourceLocation());
         }
-        Minecraft.getMinecraft().getTextureManager().getTexture(SkyblockAddonsGui.LOGO);
-        Minecraft.getMinecraft().getTextureManager().getTexture(SkyblockAddonsGui.LOGO_GLOW);
+        for (Language language : Language.values()) {
+            Minecraft.getMinecraft().getTextureManager().bindTexture(language.getResourceLocation());
+        }
+        Minecraft.getMinecraft().getTextureManager().bindTexture(SkyblockAddonsGui.LOGO);
+        Minecraft.getMinecraft().getTextureManager().bindTexture(SkyblockAddonsGui.LOGO_GLOW);
     }
 
     @Mod.EventHandler

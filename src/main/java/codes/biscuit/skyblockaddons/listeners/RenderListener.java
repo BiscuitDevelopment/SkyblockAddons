@@ -345,7 +345,7 @@ public class RenderListener {
         } else { // a little darker for contrast
             GlStateManager.color(((float) color.getRed() / 255) * 0.9F, ((float) color.getGreen() / 255) * 0.9F, ((float) color.getBlue() / 255) * 0.9F);
         }
-        CoordsPair sizes = main.getConfigValues().getSizes(feature);
+        IntPair sizes = main.getConfigValues().getSizes(feature);
         if (!filled) fillWidth = maxWidth;
         drawBarStart(gui, x, y, filled, sizes.getX(), sizes.getY(), fillWidth, color, maxWidth);
     }
@@ -466,7 +466,7 @@ public class RenderListener {
         int height = 16;
         int width = 3 * 16;
         x -= width * scale / 2F;
-        y -=height * scale / 2F;
+        y -= height * scale / 2F;
         x /= scale;
         y /= scale;
         if (buttonLocation != null) {
@@ -769,8 +769,6 @@ public class RenderListener {
         y -= height * scale / 2F;
         x /= scale;
         y /= scale;
-//        int intX = Math.round(x);
-//        int intY = Math.round(y);
         if (buttonLocation != null) {
             buttonLocation.checkHoveredAndDrawBox(x, x + width, y, y + height, scale);
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);

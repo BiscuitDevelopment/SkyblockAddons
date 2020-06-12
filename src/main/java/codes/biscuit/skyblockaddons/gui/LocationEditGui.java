@@ -8,7 +8,7 @@ import codes.biscuit.skyblockaddons.gui.buttons.ButtonLocation;
 import codes.biscuit.skyblockaddons.gui.buttons.ButtonResize;
 import codes.biscuit.skyblockaddons.gui.buttons.ButtonSolid;
 import codes.biscuit.skyblockaddons.utils.ConfigValues;
-import codes.biscuit.skyblockaddons.utils.CoordsPair;
+import codes.biscuit.skyblockaddons.utils.IntPair;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
 import codes.biscuit.skyblockaddons.utils.nifty.reflection.MinecraftReflection;
@@ -34,12 +34,14 @@ public class LocationEditGui extends GuiScreen {
 
     private EditMode editMode = EditMode.RESCALE;
     private boolean showColorIcons = true;
+    private boolean enableSnapping = true;
 
     private SkyblockAddons main;
     // The feature that is currently being dragged, or null for nothing.
     private Feature dragging = null;
 
     private boolean resizing = false;
+    private ButtonResize.Corner resizingCorner = null;
 
     private int originalHeight;
     private int originalWidth;
@@ -83,37 +85,48 @@ public class LocationEditGui extends GuiScreen {
         addColorWheelsToAllFeatures();
 
         ScaledResolution scaledResolution = new ScaledResolution(Minecraft.getMinecraft());
+        int boxHeight = 20;
+        int numButtons = 5;
+        int y = scaledResolution.getScaledHeight()/2;
+        if (numButtons % 2 == 0) {
+            y -= Math.round((numButtons/2F) * (boxHeight+5)) - 2.5;
+        } else {
+            y -= Math.round(((numButtons-1)/2F) * (boxHeight+5)) + 10;
+        }
+
         String text = Message.SETTING_RESET_LOCATIONS.getMessage();
         int boxWidth = MinecraftReflection.FontRenderer.getStringWidth(text)+10;
-        int boxHeight = 20;
         if (boxWidth > BUTTON_MAX_WIDTH) boxWidth = BUTTON_MAX_WIDTH;
         int x = scaledResolution.getScaledWidth()/2-boxWidth/2;
-        int y = scaledResolution.getScaledHeight()/2-2-boxHeight-5-boxHeight;
         buttonList.add(new ButtonSolid(x, y, boxWidth, boxHeight, text, main, Feature.RESET_LOCATION));
 
         text = Feature.RESCALE_FEATURES.getMessage();
         boxWidth = MinecraftReflection.FontRenderer.getStringWidth(text)+10;
-        boxHeight = 20;
         if (boxWidth > BUTTON_MAX_WIDTH) boxWidth = BUTTON_MAX_WIDTH;
         x = scaledResolution.getScaledWidth()/2-boxWidth/2;
-        y = scaledResolution.getScaledHeight()/2-boxHeight;
+        y += boxHeight + 5;
         buttonList.add(new ButtonSolid(x, y, boxWidth, boxHeight, text, main, Feature.RESCALE_FEATURES));
 
         text = Feature.RESIZE_BARS.getMessage();
         boxWidth = MinecraftReflection.FontRenderer.getStringWidth(text)+10;
-        boxHeight = 20;
         if (boxWidth > BUTTON_MAX_WIDTH) boxWidth = BUTTON_MAX_WIDTH;
         x = scaledResolution.getScaledWidth()/2-boxWidth/2;
-        y = scaledResolution.getScaledHeight()/2+5;
+        y += boxHeight + 5;
         buttonList.add(new ButtonSolid(x, y, boxWidth, boxHeight, text, main, Feature.RESIZE_BARS));
 
         text = Feature.SHOW_COLOR_ICONS.getMessage();
         boxWidth = MinecraftReflection.FontRenderer.getStringWidth(text)+10;
-        boxHeight = 20;
         if (boxWidth > BUTTON_MAX_WIDTH) boxWidth = BUTTON_MAX_WIDTH;
         x = scaledResolution.getScaledWidth()/2-boxWidth/2;
-        y = scaledResolution.getScaledHeight()/2+5+boxHeight+5;
+        y += boxHeight + 5;
         buttonList.add(new ButtonSolid(x, y, boxWidth, boxHeight, text, main, Feature.SHOW_COLOR_ICONS));
+
+        text = Feature.ENABLE_FEATURE_SNAPPING.getMessage();
+        boxWidth = MinecraftReflection.FontRenderer.getStringWidth(text)+10;
+        if (boxWidth > BUTTON_MAX_WIDTH) boxWidth = BUTTON_MAX_WIDTH;
+        x = scaledResolution.getScaledWidth()/2-boxWidth/2;
+        y += boxHeight + 5;
+        buttonList.add(new ButtonSolid(x, y, boxWidth, boxHeight, text, main, Feature.ENABLE_FEATURE_SNAPPING));
     }
 
     private void clearAllResizeButtons() {
@@ -264,8 +277,8 @@ public class LocationEditGui extends GuiScreen {
         }
         recalculateColorWheels();
 
-        int startColor = new Color(0,0, 0, 127).getRGB();
-        int endColor = new Color(0,0, 0, 180).getRGB();
+        int startColor = new Color(0,0, 0, 64).getRGB();
+        int endColor = new Color(0,0, 0, 128).getRGB();
         drawGradientRect(0, 0, width, height, startColor, endColor);
         for (EnumUtils.AnchorPoint anchorPoint : EnumUtils.AnchorPoint.values()) {
             ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
@@ -288,20 +301,15 @@ public class LocationEditGui extends GuiScreen {
                     float right = snap.getRectangle().get(Edge.RIGHT);
                     float bottom = snap.getRectangle().get(Edge.BOTTOM);
 
-                    if (Edge.getHorizontalEdges().contains(snap.getCoordinateEdge()) && (right-left) < 0.5) {
-                        if (snap.getCoordinateEdge() == Edge.LEFT) {
-                            right = left+0.5F;
-                        } else {
-                            left = right-0.5F;
-                        }
+                    if (snap.getWidth() < 0.5) {
+                        float averageX = (left+right)/2;
+                        left = averageX-0.25F;
+                        right = averageX+0.25F;
                     }
-
-                    if (Edge.getVerticalEdges().contains(snap.getCoordinateEdge()) && (bottom-top) < 0.5) {
-                        if (snap.getCoordinateEdge() == Edge.TOP) {
-                            bottom = top+0.5F;
-                        } else {
-                            top = bottom-0.5F;
-                        }
+                    if (snap.getHeight() < 0.5) {
+                        float averageY = (top+bottom)/2;
+                        top = averageY-0.25F;
+                        bottom = averageY+0.25F;
                     }
 
                     if ((right-left) == 0.5 || (bottom-top) == 0.5) {
@@ -315,6 +323,8 @@ public class LocationEditGui extends GuiScreen {
     }
 
     public Snap[] checkSnapping() {
+        if (!enableSnapping) return null;
+
         if (dragging != null) {
             ButtonLocation thisButton = buttonLocations.get(dragging);
             if (thisButton == null) {
@@ -347,19 +357,13 @@ public class LocationEditGui extends GuiScreen {
                                 bottomY = Edge.TOP.getCoordinate(thisButton);
                             }
 
-                            Edge coordinateEdge;
-                            if (deltaX <= 0) {
-                                coordinateEdge = Edge.LEFT;
-                            } else {
-                                coordinateEdge = Edge.RIGHT;
-                            }
-
-                            Snap thisSnap = new Snap(otherEdge.getCoordinate(otherButton), topY, thisEdge.getCoordinate(thisButton), bottomY, thisEdge, otherEdge, coordinateEdge);
+                            float snapX = otherEdge.getCoordinate(otherButton);
+                            Snap thisSnap = new Snap(otherEdge.getCoordinate(otherButton), topY, thisEdge.getCoordinate(thisButton), bottomY, thisEdge, otherEdge, snapX);
 
                             if (thisSnap.getHeight() < SNAPPING_RADIUS) {
                                 if (horizontalSnap == null || thisSnap.getHeight() < horizontalSnap.getHeight()) {
                                     if (main.isDevMode()) {
-                                        main.getUtils().drawRect(thisSnap.getRectangle().get(coordinateEdge) - 0.5, 0, thisSnap.getRectangle().get(coordinateEdge) + 0.5, mc.displayHeight, 0xFF0000FF);
+                                        main.getUtils().drawRect(snapX - 0.5, 0, snapX + 0.5, mc.displayHeight, 0xFF0000FF);
                                     }
                                     horizontalSnap = thisSnap;
                                 }
@@ -385,21 +389,13 @@ public class LocationEditGui extends GuiScreen {
                                 leftX = Edge.RIGHT.getCoordinate(otherButton);
                                 rightX = Edge.LEFT.getCoordinate(thisButton);
                             }
-
-                            Edge coordinateEdge;
-                            if (deltaY <= 0) {
-                                coordinateEdge = Edge.TOP;
-                            } else {
-                                coordinateEdge = Edge.BOTTOM;
-                            }
-
-                            Snap thisSnap = new Snap(leftX, otherEdge.getCoordinate(otherButton), rightX, thisEdge.getCoordinate(thisButton),
-                                    thisEdge, otherEdge, coordinateEdge);
+                            float snapY = otherEdge.getCoordinate(otherButton);
+                            Snap thisSnap = new Snap(leftX, otherEdge.getCoordinate(otherButton), rightX, thisEdge.getCoordinate(thisButton), thisEdge, otherEdge, snapY);
 
                             if (thisSnap.getWidth() < SNAPPING_RADIUS) {
                                 if (verticalSnap == null || thisSnap.getWidth() < verticalSnap.getWidth()) {
                                     if (main.isDevMode()) {
-                                        main.getUtils().drawRect(0, thisSnap.getRectangle().get(coordinateEdge) - 0.5, mc.displayWidth, thisSnap.getRectangle().get(coordinateEdge) + 0.5, 0xFF0000FF);
+                                        main.getUtils().drawRect(0, snapY - 0.5, mc.displayWidth, snapY + 0.5, 0xFF0000FF);
                                     }
                                     verticalSnap = thisSnap;
                                 }
@@ -453,10 +449,11 @@ public class LocationEditGui extends GuiScreen {
 
         private Edge thisSnapEdge;
         private Edge otherSnapEdge;
-        private Edge coordinateEdge;
+//        private Edge coordinateEdge;
+        private float snapValue;
         private Map<Edge, Float> rectangle = new EnumMap<>(Edge.class);
 
-        public Snap(float left, float top, float right, float bottom, Edge thisSnapEdge, Edge otherSnapEdge, Edge coordinateEdge) {
+        public Snap(float left, float top, float right, float bottom, Edge thisSnapEdge, Edge otherSnapEdge, float snapValue) {//Edge coordinateEdge) {
             rectangle.put(Edge.LEFT, left);
             rectangle.put(Edge.TOP, top);
             rectangle.put(Edge.RIGHT, right);
@@ -467,7 +464,8 @@ public class LocationEditGui extends GuiScreen {
 
             this.otherSnapEdge = otherSnapEdge;
             this.thisSnapEdge = thisSnapEdge;
-            this.coordinateEdge = coordinateEdge;
+//            this.coordinateEdge = coordinateEdge;
+            this.snapValue = snapValue;
         }
 
         public float getHeight() {
@@ -533,16 +531,32 @@ public class LocationEditGui extends GuiScreen {
                     showColorIcons = true;
                     addColorWheelsToAllFeatures();
                 }
+            } else if (feature == Feature.ENABLE_FEATURE_SNAPPING) {
+                enableSnapping = !enableSnapping;
             }
         } else if (abstractButton instanceof ButtonResize) {
             ButtonResize buttonResize = (ButtonResize)abstractButton;
             dragging = buttonResize.getFeature();
             resizing = true;
-            xOffset = buttonResize.getLastMouseX();
-            yOffset = buttonResize.getLastMouseY();
+
+            ScaledResolution sr = new ScaledResolution(mc);
+            float minecraftScale = sr.getScaleFactor();
+            float floatMouseX = Mouse.getX() / minecraftScale;
+            float floatMouseY = (mc.displayHeight - Mouse.getY()) / minecraftScale;
+
+            float scale = SkyblockAddons.getInstance().getConfigValues().getGuiScale(buttonResize.getFeature());
+            if (editMode == EditMode.RESCALE) {
+                xOffset = (floatMouseX-buttonResize.getX()*scale)/scale;
+                yOffset = (floatMouseY-buttonResize.getY()*scale)/scale;
+            } else {
+                xOffset = floatMouseX;
+                yOffset = floatMouseY;
+            }
+
+            resizingCorner = buttonResize.getCorner();
 
             if (this.editMode == EditMode.RESIZE_BARS) {
-                CoordsPair sizes = main.getConfigValues().getSizes(dragging);
+                IntPair sizes = main.getConfigValues().getSizes(dragging);
                 originalWidth = sizes.getX();
                 originalHeight = sizes.getY();
             }
@@ -584,6 +598,7 @@ public class LocationEditGui extends GuiScreen {
                     return;
                 }
 
+                float scale = buttonLocation.getScale();
                 float scaledX1 = buttonLocation.getBoxXOne()*buttonLocation.getScale();
                 float scaledY1 = buttonLocation.getBoxYOne()*buttonLocation.getScale();
                 float scaledX2 = buttonLocation.getBoxXTwo()*buttonLocation.getScale();
@@ -597,8 +612,17 @@ public class LocationEditGui extends GuiScreen {
                 float middleX = scaledX1+scaledWidth/2F;
                 float middleY = scaledY1+scaledHeight/2F;
 
-                float xOffset = floatMouseX-middleX;
-                float yOffset = floatMouseY-middleY;
+                float xOffset = floatMouseX-this.xOffset*scale-middleX;
+                float yOffset = floatMouseY-this.yOffset*scale-middleY;
+
+                if (resizingCorner == ButtonResize.Corner.TOP_LEFT) {
+                    xOffset *= -1;
+                    yOffset *= -1;
+                } else if (resizingCorner == ButtonResize.Corner.TOP_RIGHT) {
+                    yOffset *= -1;
+                } else if (resizingCorner == ButtonResize.Corner.BOTTOM_LEFT) {
+                    xOffset *= -1;
+                }
 
                 float newWidth = xOffset * 2F;
                 float newHeight = yOffset * 2F;
@@ -640,7 +664,7 @@ public class LocationEditGui extends GuiScreen {
             boolean ySnapped = false;
 
             if (horizontalSnap != null) {
-                float snapX = horizontalSnap.getRectangle().get(horizontalSnap.getCoordinateEdge());
+                float snapX = horizontalSnap.getSnapValue();
 
                 if (horizontalSnap.getThisSnapEdge() == Edge.LEFT) {
                     float snapOffset = Math.abs((floatMouseX-this.xOffset) - (snapX + scaledWidth/2F));
@@ -666,7 +690,7 @@ public class LocationEditGui extends GuiScreen {
             }
 
             if (verticalSnap != null) {
-                float snapY = verticalSnap.getRectangle().get(verticalSnap.getCoordinateEdge());
+                float snapY = verticalSnap.getSnapValue();
 
                 if (verticalSnap.getThisSnapEdge() == Edge.TOP) {
                     float snapOffset = Math.abs((floatMouseY-this.yOffset) - (snapY + scaledHeight/2F));
