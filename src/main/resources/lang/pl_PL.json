@@ -117,7 +117,12 @@
     "endstoneProtectorDisplay": "Licznik Endstone Protectora",
     "fancyWarpMenu": "Wymyślne menu przenoszenia",
     "doubleWarp": "Przenieś podwójnie",
-    "advancedMode": "Tryb zaawansowany"
+    "advancedMode": "Tryb zaawansowany",
+    "legendarySeaCreatureWarning": "Legendary Sea Creature Warning",
+    "onlyBreakLogsPark": "Only Break Logs in the Park",
+    "bossApproachAlert": "Slayer Boss Approach Alert",
+    "disableTeleportPadMessages": "Disable Teleport Pad Messages",
+    "baitListDisplay": "Show Bait List While Holding a Rod"
   },
   "messages": {
     "dropConfirmation": "Wyrzuć ten przedmiot ponownie, aby potwierdzić!",
@@ -167,12 +172,19 @@
     "rescaleFeatures": "Reskaluj Funkcje Moda",
     "resizeBars": "Zmień rozmiar pasków",
     "showColorIcons": "Pokaż ikony kolorów",
+    "enableFeatureSnapping": "Enable Feature Snapping",
     "stage": "Etap %stage%",
     "switchedSlots": "Właśnie przełączyłeś się z zablokowanego okienka lub rzadkiego przedmiotu. Poczekaj chwilę przed upuszczeniem!",
     "clickToOpenLink": "Kliknij, aby otworzyć ten odnośnik!",
     "clickToOpenFolder": "Naciśnij, aby otworzyć swój folder z modyfikacjami!",
     "freezeBackpackPreview": "Zamróź podgląd plecaka",
-    "hideGreyEnchants": "Ukryj zwykłe szare zaklęcia"
+    "hideGreyEnchants": "Ukryj zwykłe szare zaklęcia",
+    "firstStatus": "This status will appear at the top",
+    "secondStatus": "This status will appear under your first status",
+    "fallbackStatus": "This status will appear when your automatic status has nothing to show",
+    "legendarySeaCreatureWarning": "Legendary Catch!",
+    "cancelledPark": "A feature has stopped you from breaking this block here.",
+    "bossApproaching": "You are close to spawning a boss!"
   },
   "discordStatus": {
     "titleNone": "Brak",
