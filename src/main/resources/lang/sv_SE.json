@@ -117,7 +117,12 @@
     "endstoneProtectorDisplay": "Visning av ändstensskyddare",
     "fancyWarpMenu": "Snygg Warp Meny",
     "doubleWarp": "Warpa Två gånger",
-    "advancedMode": "Avancerat läge"
+    "advancedMode": "Avancerat läge",
+    "legendarySeaCreatureWarning": "Legendary Sea Creature Warning",
+    "onlyBreakLogsPark": "Only Break Logs in the Park",
+    "bossApproachAlert": "Slayer Boss Approach Alert",
+    "disableTeleportPadMessages": "Disable Teleport Pad Messages",
+    "baitListDisplay": "Show Bait List While Holding a Rod"
   },
   "messages": {
     "dropConfirmation": "Släpp Det Här Igen För Att Bekräfta!",
@@ -167,12 +172,19 @@
     "rescaleFeatures": "Omskala Funktioner",
     "resizeBars": "Omskala Barer",
     "showColorIcons": "Visa Färgikoner",
+    "enableFeatureSnapping": "Enable Feature Snapping",
     "stage": "Stadie %stage%",
     "switchedSlots": "Du har precis bytt från en låst plats eller sällsynt föremål. Vänta lite innan du släpper!",
     "clickToOpenLink": "Klicka för att öppna länken!",
     "clickToOpenFolder": "Klicka för att öppna din mods mapp!",
     "freezeBackpackPreview": "Freeze Backpack Preview",
-    "hideGreyEnchants": "Dölj vanliga gråa förtrollningar"
+    "hideGreyEnchants": "Dölj vanliga gråa förtrollningar",
+    "firstStatus": "This status will appear at the top",
+    "secondStatus": "This status will appear under your first status",
+    "fallbackStatus": "This status will appear when your automatic status has nothing to show",
+    "legendarySeaCreatureWarning": "Legendary Catch!",
+    "cancelledPark": "A feature has stopped you from breaking this block here.",
+    "bossApproaching": "You are close to spawning a boss!"
   },
   "discordStatus": {
     "titleNone": "Ingen",
