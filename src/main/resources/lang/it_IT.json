@@ -117,7 +117,12 @@
     "endstoneProtectorDisplay": "Mostra Endstone Protector",
     "fancyWarpMenu": "Menu elegante del teletrasporto",
     "doubleWarp": "Teletrasporta due volte",
-    "advancedMode": "Modalità avanzata"
+    "advancedMode": "Modalità avanzata",
+    "legendarySeaCreatureWarning": "Avviso per creature marine leggendarie",
+    "onlyBreakLogsPark": "Rompi Legna Solo Al Parco",
+    "bossApproachAlert": "Avviso Avvicinamento Boss Assassino",
+    "disableTeleportPadMessages": "Disabilita Messaggi Pedane Teletrasporto",
+    "baitListDisplay": "Mostra Lista Esche Tenendo Una Canna"
   },
   "messages": {
     "dropConfirmation": "Getta questo oggetto nuovamente per confermare!",
@@ -167,12 +172,19 @@
     "rescaleFeatures": "Ridimensiona le funzioni",
     "resizeBars": "Ridimensiona le barre",
     "showColorIcons": "Mostra icone di colore",
+    "enableFeatureSnapping": "Enable Feature Snapping",
     "stage": "Fase %stage%",
     "switchedSlots": "Sei appena passato da uno slot bloccato o da un oggetto raro. Attendi un po' prima di gettare a terra!",
     "clickToOpenLink": "Clicca per aprire questo link!",
     "clickToOpenFolder": "Clicca per aprire la tua cartella dei mods!",
     "freezeBackpackPreview": "Congela l’anteprima degli zaini",
-    "hideGreyEnchants": "Nascondi gli incantesimi grigi regolari"
+    "hideGreyEnchants": "Nascondi gli incantesimi grigi regolari",
+    "firstStatus": "This status will appear at the top",
+    "secondStatus": "This status will appear under your first status",
+    "fallbackStatus": "This status will appear when your automatic status has nothing to show",
+    "legendarySeaCreatureWarning": "Pesca Leggendaria!",
+    "cancelledPark": "A feature has stopped you from breaking this block here.",
+    "bossApproaching": "You are close to spawning a boss!"
   },
   "discordStatus": {
     "titleNone": "Nessuno",
