@@ -119,10 +119,10 @@
     "doubleWarp": "Warpnout dvakrát",
     "advancedMode": "Pokročílý mód",
     "legendarySeaCreatureWarning": "Upozornění na legendární mořské stvoření",
-    "onlyBreakLogsPark": "Only Break Logs in the Park",
-    "bossApproachAlert": "Slayer Boss Approach Alert",
-    "disableTeleportPadMessages": "Disable Teleport Pad Messages",
-    "baitListDisplay": "Show Bait List While Holding a Rod"
+    "onlyBreakLogsPark": "Pouze ničit kmeny v Parku",
+    "bossApproachAlert": "Upozornění na Slayer Bosse",
+    "disableTeleportPadMessages": "Zakázat zprávy Teleportačního padu",
+    "baitListDisplay": "Zobrazit seznam návnad během držení prutu"
   },
   "messages": {
     "dropConfirmation": "Vyhoď tento item pro vyhození!",
@@ -183,8 +183,8 @@
     "secondStatus": "Tento status se bude zobrazovat pod tvým prvním statusem",
     "fallbackStatus": "Tento status se bude zobrazovat, když tvůj automatický status nemá nic k zobrazení",
     "legendarySeaCreatureWarning": "Legendární úlovek!",
-    "cancelledPark": "A feature has stopped you from breaking this block here.",
-    "bossApproaching": "You are close to spawning a boss!"
+    "cancelledPark": "Funkce SkyblockAddons tě zastavila před zničením tohoto bloku.",
+    "bossApproaching": "Jsi blízko k vyvolání bosse!"
   },
   "discordStatus": {
     "titleNone": "Žádné",
