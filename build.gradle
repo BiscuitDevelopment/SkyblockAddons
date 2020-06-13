@@ -1,5 +1,4 @@
 import com.github.jengelman.gradle.plugins.shadow.tasks.ConfigureShadowRelocation
-import groovy.json.*
 
 plugins {
     id 'java'
@@ -10,7 +9,7 @@ plugins {
 
 group = 'codes.biscuit'
 // The below line is for version checkers <= 1.4.2
-//version = "1.4.2"
+//version = "1.5.0"
 
 // Java plugin settings
 sourceCompatibility = JavaVersion.VERSION_1_8
@@ -48,7 +47,7 @@ dependencies {
 
 jar {
     // Set the archive name here instead of in shadowJar because ForgeGradle needs it when re-obfuscating the jar.
-    archiveName = project.modName + "-" + minecraft.version + "-" + version + ".jar"
+    archiveName = project.modName + "-" + version + "-for-MC-1.8.9.jar"
     // Disable the default jar task and use shadowJar instead to shade the libraries into the jar.
     enabled = false
 }
@@ -124,21 +123,21 @@ shadowJar.dependsOn tasks.relocateShadowJar
 // Updates the version JSON file automatically when the version changes
 // Don't forget to write the changelog! Those aren't automatic.
 task updateVersionsFile {
-    def versionsFile = new File(".github/versions/dev-versions.json")
+//    def versionsFile = new File(".github/versions/dev-versions.json")
 
-    def jsonBuilder = new JsonBuilder(new JsonSlurper().parse(versionsFile))
-    def versionsMap = jsonBuilder.content."1.8.9"
+//    def jsonBuilder = new JsonBuilder(new JsonSlurper().parse(versionsFile))
+//    def versionsMap = jsonBuilder.content."1.8.9"
 
-    jsonBuilder.content.promos."1.8.9-latest" = version.toString()
+//    jsonBuilder.content.promos."1.8.9-latest" = version.toString()
 
     // Update the versions list if it doesn't have the current version.
-    if (!versionsMap.containsKey(version)) {
-        versionsMap.put(version, "<Insert Changelog Here>")
-        versionsMap = versionsMap.sort(Comparator.reverseOrder())
-        jsonBuilder.content."1.8.9" = versionsMap
-    }
+//    if (!versionsMap.containsKey(version)) {
+//        versionsMap.put(version, "<Insert Changelog Here>")
+//        versionsMap = versionsMap.sort(Comparator.reverseOrder())
+//        jsonBuilder.content."1.8.9" = versionsMap
+//    }
 
-    versionsFile.write(jsonBuilder.toPrettyString())
+//    versionsFile.write(jsonBuilder.toPrettyString())
 }
 
 tasks.build.dependsOn(updateVersionsFile)

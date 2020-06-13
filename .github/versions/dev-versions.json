@@ -1,9 +1,10 @@
 {
-    "homepage": "https://github.com/BiscuitDevelopment/SkyblockAddons/releases",
+    "homepage": "https://biscuit.codes/mods/skyblockaddons/downloadversion/?v=latest",
     "promos": {
-        "1.8.9-latest": "1.5.0-beta.17"
+        "1.8.9-latest": "1.5.0"
     },
     "1.8.9": {
+        "1.5.0": "New Features:\n- Disable Magical Soup Messages\n- Power Orb Display\n- Zealot Counters\n- Ticker/Charges Display\n- Tab Potion Timers Display\n- No Arrows Left Alert\n- Show \"Broken\" Dragon Fragments\n- Turn Bow Green When Using Toxic Arrow Poison\n- Birch Park Rainmaker Timer\n- Combat Timer Display\n- Discord Rich Presence\n- Endstone Protector Display\n- Fancy Warp Menu\n- Legendary Sea Creature Warning\n- Only Break Logs in the Park\n- Slayer Boss Approach Alert\n- Disable Teleport Pad Messages\n- Bait List\n\nThe remainder of the changelog on the discord.",
         "1.5.0-beta.17": "New: \n- Added combat timer display!\n- Added simple rainmaker timer feature for the birch park \n\nChanges: \n- Add Chroma to more features \n- You can now use an empty item frame if it is empty while having the item frame feature enabled \n- Potion Timer improvements \n\nFixes: \n- Fixed possible crash if a warning message shows while disconnected \n- Fixed feature settings moving down after toggling full screen \n- Fixed revenant armor indicator not updating sometimes \n- Fixed command help formatting and command error messages \n\nPlease see #beta-tester-releases in the Discord for the full changelog.",
         "1.5.0-beta.16": "New Features: \n - Turn bow green when using toxic arrow poison\n - Zealot Counter: More stats!\n    - Total Zealot Count Feature\n\t- Total Summoning Eye Count Feature\n\t- Average Zealots Per Eye Feature\n  - Show broken dragon fragments feature\n\nChanges:\n  - Names of features in the menu now can wrap up to 2 lines. This helps with super long feature names being scaled down!\n  - Removed beta tester pop up message\n  - Added animation to the feature toggle in the gui (why? idk)\n  - Added autocomplete to /sba command\n  - Added toggle to the skyblockaddons button in the pause menu\n  \nFixes:\n  - Fixed ender chest coloring feature not working\n  - Fixed chroma coloring not working when only 1 chorma feature was enabled\n  - Fixed zealot kills not saving",
         "1.5.0-beta.15": "- Changed to Forge Update Checker for mod update checking",
