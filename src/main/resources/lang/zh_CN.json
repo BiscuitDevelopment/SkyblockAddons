@@ -120,9 +120,9 @@
     "advancedMode": "高级模式",
     "legendarySeaCreatureWarning": "Legendary Sea Creature Warning",
     "onlyBreakLogsPark": "Only Break Logs in the Park",
-    "bossApproachAlert": "Slayer Boss Approach Alert",
+    "bossApproachAlert": "猎手 Boss 生成警告",
     "disableTeleportPadMessages": "禁用传送平台消息",
-    "baitListDisplay": "Show Bait List While Holding a Rod"
+    "baitListDisplay": "手持钓竿时显示鱼饵列表"
   },
   "messages": {
     "dropConfirmation": "再次丢弃此物品以确认!",
@@ -179,12 +179,12 @@
     "clickToOpenFolder": "打开 mods 文件夹",
     "freezeBackpackPreview": "冻结背包预览",
     "hideGreyEnchants": "隐藏原版灰色附魔名",
-    "firstStatus": "This status will appear at the top",
+    "firstStatus": "此状态将显示在顶部",
     "secondStatus": "This status will appear under your first status",
     "fallbackStatus": "This status will appear when your automatic status has nothing to show",
     "legendarySeaCreatureWarning": "Legendary Catch!",
     "cancelledPark": "SkyblockAddons 已阻止在此破坏方块",
-    "bossApproaching": "You are close to spawning a boss!"
+    "bossApproaching": "猎手 Boss 即将生成!"
   },
   "discordStatus": {
     "titleNone": "无",
