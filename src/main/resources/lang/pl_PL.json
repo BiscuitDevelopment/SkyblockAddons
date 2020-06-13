@@ -119,10 +119,10 @@
     "doubleWarp": "Przenieś podwójnie",
     "advancedMode": "Tryb zaawansowany",
     "legendarySeaCreatureWarning": "Legendary Sea Creature Warning",
-    "onlyBreakLogsPark": "Only Break Logs in the Park",
-    "bossApproachAlert": "Slayer Boss Approach Alert",
-    "disableTeleportPadMessages": "Disable Teleport Pad Messages",
-    "baitListDisplay": "Show Bait List While Holding a Rod"
+    "onlyBreakLogsPark": "Niszcz kłody tylko w Parku",
+    "bossApproachAlert": "Powiadomienie o zbliżaniu się do bossa pogromcy",
+    "disableTeleportPadMessages": "Wyłącz komunikaty płytek teleportujących",
+    "baitListDisplay": "Pokazuj listę przynęt podczas trzymania wędki"
   },
   "messages": {
     "dropConfirmation": "Wyrzuć ten przedmiot ponownie, aby potwierdzić!",
@@ -179,12 +179,12 @@
     "clickToOpenFolder": "Naciśnij, aby otworzyć swój folder z modyfikacjami!",
     "freezeBackpackPreview": "Zamróź podgląd plecaka",
     "hideGreyEnchants": "Ukryj zwykłe szare zaklęcia",
-    "firstStatus": "This status will appear at the top",
+    "firstStatus": "Ten status będzie się wyświetlać na górze",
     "secondStatus": "This status will appear under your first status",
     "fallbackStatus": "This status will appear when your automatic status has nothing to show",
-    "legendarySeaCreatureWarning": "Legendary Catch!",
+    "legendarySeaCreatureWarning": "Legendarne złapanie!",
     "cancelledPark": "A feature has stopped you from breaking this block here.",
-    "bossApproaching": "You are close to spawning a boss!"
+    "bossApproaching": "Jesteś bliski przywołania bossa!"
   },
   "discordStatus": {
     "titleNone": "Brak",
