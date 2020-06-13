@@ -120,7 +120,8 @@
     "advancedMode": "Advanced Mode",
     "legendarySeaCreatureWarning": "Legendary Sea Creature Warning",
     "onlyBreakLogsPark": "Only Break Logs in the Park",
-    "bossApproachAlert": "Boss Approach Alert"
+    "bossApproachAlert": "Boss Approach Alert",
+    "hideSvenPupNametags": "Hide Sven Pup Nametags"
   },
   "messages": {
     "dropConfirmation": "Drop this item again to confirm!",
