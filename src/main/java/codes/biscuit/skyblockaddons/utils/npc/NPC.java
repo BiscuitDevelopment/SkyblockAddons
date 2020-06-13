@@ -1,6 +1,6 @@
 package codes.biscuit.skyblockaddons.utils.npc;
 
-import codes.biscuit.skyblockaddons.utils.Location;
+import codes.biscuit.skyblockaddons.core.Location;
 import lombok.Getter;
 
 import java.util.List;
@@ -42,7 +42,7 @@ enum NPC {
     FARM_MERCHANT("Farm Merchant", -7,70, -48.5, asList(Tag.PLAYER, Tag.IMPORTANT, Tag.MERCHANT), singletonList(Location.VILLAGE)),
     FELIX("Felix", -14, 70, -98, asList(Tag.VILLAGER, Tag.INFO, Tag.QUEST_NPC), singletonList(Location.VILLAGE)),
     FISH_MERCHANT("Fish Merchant", -25.5,70, -77, asList(Tag.PLAYER, Tag.IMPORTANT, Tag.MERCHANT), singletonList(Location.VILLAGE)),
-    GLADIATOR("Gladiator", -61.5,71, -54.5, asList(Tag.PLAYER, Tag.IMPORTANT, Tag.OTHER), asList(Location.COLOSSEUM, Location.VILLAGE)),
+    GLADIATOR("Gladiator", 61.5,71, -54.5, asList(Tag.PLAYER, Tag.IMPORTANT, Tag.OTHER), asList(Location.COLOSSEUM, Location.VILLAGE)),
     GUY("Guy",51.5, 79, -13.5, asList(Tag.PLAYER, Tag.IMPORTANT, Tag.UTILITY), singletonList(Location.VILLAGE)),
     HUB_SELECTOR("Hub Selector", -9,70, -79, asList(Tag.PLAYER, Tag.IMPORTANT, Tag.OTHER), singletonList(Location.VILLAGE)),
     JACK("Jack",1, 70, -67, asList(Tag.VILLAGER, Tag.INFO, Tag.QUEST_NPC), singletonList(Location.VILLAGE)),
@@ -94,7 +94,7 @@ enum NPC {
     HARP("Melody's Harp", -394.5, 110.5, 33.5, asList(Tag.FURNITURE, Tag.IMPORTANT, Tag.QUEST_NPC), singletonList(Location.SAVANNA_WOODLAND)),
     JULIETTE("Juliette", -476.5, 134, -117, asList(Tag.PLAYER, Tag.QUEST_NPC), singletonList(Location.JUNGLE_ISLAND)),
     MELODY("Melody", -398.5, 110, 34.5, asList(Tag.PLAYER, Tag.IMPORTANT, Tag.MERCHANT, Tag.BUY_ONLY, Tag.QUEST_NPC), singletonList(Location.SAVANNA_WOODLAND)),
-    NYKO("Old Shaman Nyko", -379.5, 60, 36.5, asList(Tag.PLAYER, Tag.MERCHANT), singletonList(Location.NONE)),
+    NYKO("Old Shaman Nyko", -379.5, 60, 36.5, asList(Tag.PLAYER, Tag.MERCHANT), singletonList(Location.UNKNOWN)),
     RYAN("Ryan", -330.5, 103.5, -103.5, asList(Tag.PLAYER, Tag.QUEST_NPC), singletonList(Location.DARK_THICKET)),
     VANESSA("Vanessa", -312, 83, -70.5, asList(Tag.PLAYER, Tag.UTILITY), singletonList(Location.BIRCH_PARK)),
     VIKING("Melancholic Viking", -359.5, 91.5, 76.5, asList(Tag.PLAYER, Tag.MERCHANT, Tag.QUEST_NPC), singletonList(Location.SPRUCE_WOODS)),

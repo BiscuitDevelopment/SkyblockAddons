@@ -1,19 +1,29 @@
 package codes.biscuit.skyblockaddons.gui.buttons;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.utils.Feature;
+import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
+import lombok.Getter;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.audio.SoundHandler;
+import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
+import org.lwjgl.input.Mouse;
 
+@Getter
 public class ButtonLocation extends ButtonFeature {
 
     // So we know the latest hovered feature (used for arrow key movement).
-    private static Feature lastHoveredFeature = null;
+    @Getter private static Feature lastHoveredFeature = null;
 
     private SkyblockAddons main;
-    private int lastMouseX;
-    private int lastMouseY;
+
+    private float boxXOne;
+    private float boxXTwo;
+    private float boxYOne;
+    private float boxYTwo;
+
+    private float scale;
 
     /**
      * Create a button that allows you to change the location of a GUI element.
@@ -25,9 +35,6 @@ public class ButtonLocation extends ButtonFeature {
 
     @Override
     public void drawButton(Minecraft mc, int mouseX, int mouseY) {
-        lastMouseX = mouseX;
-        lastMouseY = mouseY;
-
         float scale = main.getConfigValues().getGuiScale(feature);
         GlStateManager.pushMatrix();
         GlStateManager.scale(scale, scale, 1);
@@ -51,15 +58,33 @@ public class ButtonLocation extends ButtonFeature {
     /**
      * This just updates the hovered status and draws the box around each feature. To avoid repetitive code.
      */
-    public void checkHoveredAndDrawBox(int boxXOne, int boxXTwo, int boxYOne, int boxYTwo, float scale) {
-        hovered = lastMouseX >= boxXOne * scale && lastMouseY >= boxYOne * scale && lastMouseX < boxXTwo * scale && lastMouseY < boxYTwo * scale;
-        int boxAlpha = 100;
+    public void checkHoveredAndDrawBox(float boxXOne, float boxXTwo, float boxYOne, float boxYTwo, float scale) {
+        ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
+        float minecraftScale = sr.getScaleFactor();
+        float floatMouseX = Mouse.getX() / minecraftScale;
+        float floatMouseY = (Minecraft.getMinecraft().displayHeight - Mouse.getY()) / minecraftScale;
+
+        hovered = floatMouseX >= boxXOne * scale && floatMouseY >= boxYOne * scale && floatMouseX < boxXTwo * scale && floatMouseY < boxYTwo * scale;
+        int boxAlpha = 70;
         if (hovered) {
-            boxAlpha = 170;
+            boxAlpha = 120;
         }
         int boxColor = ChatFormatting.GRAY.getColor(boxAlpha).getRGB();
-        drawRect(boxXOne, boxYOne,
-                boxXTwo, boxYTwo, boxColor);
+        main.getUtils().drawRect(boxXOne, boxYOne, boxXTwo, boxYTwo, boxColor);
+
+        this.boxXOne = boxXOne;
+        this.boxXTwo = boxXTwo;
+        this.boxYOne = boxYOne;
+        this.boxYTwo = boxYTwo;
+
+        if (this.feature == Feature.DEFENCE_ICON) {
+            this.boxXOne *= scale;
+            this.boxXTwo *= scale;
+            this.boxYOne *= scale;
+            this.boxYTwo *= scale;
+        }
+
+        this.scale = scale;
     }
 
     /**
@@ -71,15 +96,6 @@ public class ButtonLocation extends ButtonFeature {
         return this.enabled && this.visible && hovered;
     }
 
-    public static Feature getLastHoveredFeature() {
-        return lastHoveredFeature;
-    }
-
-    public int getLastMouseY() {
-        return lastMouseY;
-    }
-
-    public int getLastMouseX() {
-        return lastMouseX;
-    }
+    @Override
+    public void playPressSound(SoundHandler soundHandlerIn) {}
 }

@@ -18,6 +18,7 @@ import java.lang.reflect.Field;
 import java.util.Collection;
 import java.util.Map;
 
+@SuppressWarnings("unchecked")
 public class SkyblockAddonsTransformer implements IClassTransformer {
 
     private static boolean LABYMOD_CLIENT;
@@ -28,9 +29,9 @@ public class SkyblockAddonsTransformer implements IClassTransformer {
         boolean foundLaunchClass = false;
         try {
             // DEOBFUSCATED = (boolean)Launch.blackboard.get("fml.deobfuscatedEnvironment");
-            Class launch = Class.forName("net.minecraft.launchwrapper.Launch");
+            Class<?> launch = Class.forName("net.minecraft.launchwrapper.Launch");
             Field blackboardField = launch.getField("blackboard");
-            Map<String,Object> blackboard = (Map<String,Object>)blackboardField.get(null);
+            Map<String,Object> blackboard = (Map<String, Object>) blackboardField.get(null);
             DEOBFUSCATED = (boolean) blackboard.get("fml.deobfuscatedEnvironment");
             foundLaunchClass = true;
         } catch (ClassNotFoundException | NoSuchFieldException | IllegalAccessException ex) {
@@ -48,7 +49,6 @@ public class SkyblockAddonsTransformer implements IClassTransformer {
 
     private static boolean USING_NOTCH_MAPPINGS = !DEOBFUSCATED;
 
-    private final static boolean OUTPUT_BYTECODE = true;
     private Logger logger = LogManager.getLogger("SkyblockAddons Transformer");
     private final Multimap<String, ITransformer> transformerMap = ArrayListMultimap.create();
 
@@ -60,17 +60,22 @@ public class SkyblockAddonsTransformer implements IClassTransformer {
         registerTransformer(new SoundManagerTransformer());
         registerTransformer(new RenderManagerTransformer());
         registerTransformer(new PlayerControllerMPTransformer());
-        registerTransformer(new NetHandlerPlayClientTransformer());
         registerTransformer(new MinecraftTransformer());
         registerTransformer(new ItemTransformer());
         registerTransformer(new GuiScreenTransformer());
+
         registerTransformer(new GuiContainerTransformer());
         registerTransformer(new GuiChestTransformer());
         registerTransformer(new GuiNewChatTransformer());
         registerTransformer(new RendererLivingEntityTransformer());
         registerTransformer(new GuiDisconnectedTransformer());
+
         registerTransformer(new GuiIngameMenuTransformer());
+
         registerTransformer(new FontRendererTransformer());
+        registerTransformer(new RenderItemTransformer());
+        registerTransformer(new EntityLivingBaseTransformer());
+        registerTransformer(new InventoryPlayerTransformer());
     }
 
     private void registerTransformer(ITransformer transformer) {
@@ -113,16 +118,19 @@ public class SkyblockAddonsTransformer implements IClassTransformer {
         return writer.toByteArray();
     }
 
+    @SuppressWarnings("ResultOfMethodCallIgnored")
     private void outputBytecode(String transformedName, ClassWriter writer) {
-        if (OUTPUT_BYTECODE) {
+        if (SkyblockAddonsTransformer.isDeobfuscated()) {
             try {
-                File file = new File("C:\\Users\\jlroc\\Desktop\\bytecode", transformedName + ".class");
-                if (file.getParentFile().exists()) {
-                    file.createNewFile();
-                    FileOutputStream os = new FileOutputStream(file);
-                    os.write(writer.toByteArray());
-                    os.close();
-                }
+                File bytecodeDirectory = new File("bytecode");
+                File bytecodeOutput = new File(bytecodeDirectory, transformedName + ".class");
+
+                if (!bytecodeDirectory.exists()) bytecodeDirectory.mkdirs();
+                if (!bytecodeOutput.exists()) bytecodeOutput.createNewFile();
+
+                FileOutputStream os = new FileOutputStream(bytecodeOutput);
+                os.write(writer.toByteArray());
+                os.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }

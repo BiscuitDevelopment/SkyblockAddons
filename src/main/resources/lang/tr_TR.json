@@ -8,7 +8,7 @@
     "skeletonHatBonesBar": "İskelet Kaskı Kemikleri Göstergesi",
     "hideFoodAndArmor": "Açlık ve Defans Göstergelerini Sakla",
     "fullInventoryWarning": "Envanter Dolunca Uyarı",
-    "repeating": "Repeating",
+    "repeating": "Uyarıyı Tekrarla",
     "disableEmberRodAbility": "Adada Ember Rod Özelliğini Kapat",
     "editLocations": "Arayüzü Düzenle",
     "guiScale": "Arayüz Ölçeği: %scale%",
@@ -51,7 +51,7 @@
     "makeEnderchestsInEndGreen": "Sonda ki Ender Sandıklarının rengini değiştir",
     "changeColor": "Rengi değiştir",
     "showInOtherGames": "Diğer Oyunlarda da Göster",
-    "useVanillaTexture": "Sade Dokuları kullan",
+    "useVanillaTexture": "Vanilla Texture kullan",
     "textStyle": "Metin Tarzı",
     "textStyles": {
       "one": "Stil 1",
@@ -104,7 +104,20 @@
       "fade": "Renk Kararması"
     },
     "chromaFadeWidth": "Chroma Kararma Genişliği",
-    "sortTabEffectTimers": "Timerları süresine göre sırala"
+    "sortTabEffectTimers": "Timerları süresine göre sırala",
+    "showBrokenFragments": "Show Broken Dragon Fragments",
+    "skyblockAddonsButtonInPauseMenu": "Show SBA Button in Pause Menu",
+    "showTotalZealotCount": "Zealot Counter - Total Zealot Count",
+    "showSummoningEyeCount": "Zealot Counter - Total Eye Count",
+    "showZealotsPerEye": "Zealot Counter - Show Zealots Per Eye",
+    "turnBowGreenWhenUsingToxicArrowPoison": "Color Bow Green When Using Toxic Arrow Poison",
+    "birchParkRainmakerTimer": "Birch Park Rainmaker Timer",
+    "combatTimerDisplay": "Savaş zamanlayıcısı görüntüleme",
+    "discordRP": "Discord zengin içerik",
+    "endstoneProtectorDisplay": "Endstone koruyucu görüntüleme",
+    "fancyWarpMenu": "Fancy Warp Menu",
+    "doubleWarp": "Warp Twice",
+    "advancedMode": "Advanced Mode"
   },
   "messages": {
     "dropConfirmation": "Eşyayı düşürmeyi onaylamak için düşürme tuşuna bir daha bas!",
@@ -122,19 +135,15 @@
       "reforges": "Reforge'lar",
       "crafting": "Crafting"
     },
-    "newUpdateAvailable": "Yeni bir sürüm (%version%) mevcut!",
-    "deleteOldFile": "İndirme bitirildi, lütfen aşağıdaki düğmeye basarak mods klasörünü açtıktan sonra Minecraft'ı kapatıp eksi sürümü silin(veya sonradan silebilirsiniz).",
     "wantToViewPatchNotes": "Değişiklikleri okumak ister misin?",
     "downloadLink": "GÜNCELLEME LİNKİ",
-    "downloadAutomatically": "OTOMATİK İNDİR",
+    "directDownload": "DIRECT DOWNLOAD LINK",
     "openModFolder": "MOD'LAR KLASÖRÜ",
     "joinTheDiscord": "DISCORD'A KATILIN",
+    "newUpdateAvailable": "A new update (%version%) is available!",
     "update": {
       "majorAvailable": "Yeni bir sürüm (%version%) mevcut! İndirme linkini sohbette bulabilirsin.",
-      "patchAvailable": "Yeni bir versiyon (%version%) mevcut! İndirme seçenekleri için sohbet'e bak!",
-      "downloading": "Güncelleştirme iniyor! Durun: %downloaded%/%total% Lütfen indirme bittikten sonra eski dosyayı silmeyi unutmayın.",
-      "failed": "Güncellemeyi indirmek başarısız oldu! Lütfen sohbetteki linki kullanarak kendiniz indirin.",
-      "downloadFinished": "Güncelleme başarıyla indirildi. Güncelleme %file% olarak kaydedildi. Lütfen Minecraft'ınızı kapattıktan sonra eski dosyayı silmeyi unutmayın. \nSohbetteki mesaja tıklayıp dosyayı açabilirsiniz."
+      "patchAvailable": "Yeni bir versiyon (%version%) mevcut! İndirme seçenekleri için sohbet'e bak!"
     },
     "slotLocked": "Bu slot kilitli!",
     "summoningEyeFound": "Summoning Eye!",
@@ -154,6 +163,37 @@
     "noArrowsLeft": "Hiç Okun Kalmadı!",
     "chooseAColor": "Bir renk seçin",
     "selectedColor": "Seçili Renk",
-    "setHexColor": "Hex Rengini Ayarla"
+    "setHexColor": "Hex Rengini Ayarla",
+    "rescaleFeatures": "Yeniden ölçülendirme özellikleri",
+    "resizeBars": "Çubukları yeniden boyutlandır\n\n",
+    "showColorIcons": "Renk ikonunu göster",
+    "stage": "Safha %stage%",
+    "switchedSlots": "Yerine kilitlediğin bir eşyadaan hızlıca geçiş yaptın. Droplamak için biraz bekle!",
+    "clickToOpenLink": "Click to open this link!",
+    "clickToOpenFolder": "Click to open your mods folder!",
+    "freezeBackpackPreview": "Freeze Backpack Preview",
+    "hideGreyEnchants": "Hide Regular Grey Enchants"
+  },
+  "discordStatus": {
+    "titleNone": "None",
+    "descriptionNone": "No text is displayed",
+    "titleLocation": "Location",
+    "descriptionLocation": "Shows your current location",
+    "titlePurse": "Purse",
+    "descriptionPurse": "Shows the amount of coins in your purse",
+    "titleStats": "Stats",
+    "descriptionStats": "Shows your HP, Defense and Mana stats",
+    "titleZealots": "Zealots",
+    "descriptionZealots": "Shows your Zealot counter",
+    "titleItem": "Held Item",
+    "descriptionItem": "Shows the name of the item you're holding",
+    "titleProfile": "Profile",
+    "descriptionProfile": "Shows your Profile name",
+    "titleTime": "Skyblock Time",
+    "descriptionTime": "Shows the current Skyblock time. E.g. 12:00am 1st Early Winter",
+    "titleCustom": "Custom Status",
+    "descriptionCustom": "Enter a custom status",
+    "titleAuto": "Auto Status",
+    "descriptionAuto": "Automatically displays a status. E.g. your zealot count while in the end."
   }
 }

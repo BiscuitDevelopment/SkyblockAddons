@@ -14,7 +14,7 @@ public enum Rarity {
     LEGENDARY("§6§lLEGENDARY"),
     SPECIAL("§d§lSPECIAL");
 
-    private String tag;
+    private final String tag;
 
     Rarity(String s) {
         this.tag = s;

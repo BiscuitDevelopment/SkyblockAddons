@@ -1,9 +1,9 @@
 package codes.biscuit.skyblockaddons.gui.buttons;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.utils.Feature;
+import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.utils.Language;
-import codes.biscuit.skyblockaddons.utils.Message;
+import codes.biscuit.skyblockaddons.core.Message;
 import codes.biscuit.skyblockaddons.utils.nifty.reflection.MinecraftReflection;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
@@ -14,7 +14,7 @@ import java.awt.*;
 
 public class ButtonLanguage extends GuiButton {
 
-    private static ResourceLocation FEATURE_BACKGROUND = new ResourceLocation("skyblockaddons", "featurebackground.png");
+    private static ResourceLocation FEATURE_BACKGROUND = new ResourceLocation("skyblockaddons", "gui/featurebackground.png");
 
     private Language language;
     private SkyblockAddons main;
@@ -38,7 +38,7 @@ public class ButtonLanguage extends GuiButton {
             drawModalRectWithCustomSizedTexture(xPosition, yPosition,0,0,width,height,width,height);
             GlStateManager.color(1,1,1,1F);
             try {
-                mc.getTextureManager().bindTexture(new ResourceLocation("skyblockaddons", "flags/"+language.getFlagPath()+".png"));
+                mc.getTextureManager().bindTexture(language.getResourceLocation());
                 drawModalRectWithCustomSizedTexture(xPosition+width-32, yPosition, 0, 0, 30, 26, 30, 26);
             } catch (Exception ex) {
                 ex.printStackTrace();
@@ -50,7 +50,7 @@ public class ButtonLanguage extends GuiButton {
             if (hovered) {
                 fontColor = new Color(255, 255, 160, 255).getRGB();
             }
-            main.getConfigValues().loadLanguageFile(language);
+            main.getUtils().loadLanguageFile(language);
             MinecraftReflection.FontRenderer.drawCenteredString(Message.LANGUAGE.getMessage(), xPosition+width/2, yPosition+10, fontColor);
         }
     }

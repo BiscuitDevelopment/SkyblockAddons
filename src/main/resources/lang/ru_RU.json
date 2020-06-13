@@ -97,14 +97,27 @@
     "showCakeBagPreview": "Показывать превью Мешка для Тортов",
     "showBackpackPreviewInAH": "Показывать превью рюкзака во время использования Аукциона",
     "enableDevFeatures": "Включить параметры разработчиков",
-    "chromaSpeed": "Chroma Speed",
-    "chromaMode": "Chroma Color Mode",
+    "chromaSpeed": "Скорость Переливания",
+    "chromaMode": "Режим переливания цвета",
     "chromaModes": {
-      "allTheSame": "All the Same Color",
-      "fade": "Color Fade"
+      "allTheSame": "Всё Одного Цвета",
+      "fade": "Затухание Цвета"
     },
-    "chromaFadeWidth": "Chroma Fade Width",
-    "sortTabEffectTimers": "Sort Timers by Duration"
+    "chromaFadeWidth": "Ширина затухания переливания",
+    "sortTabEffectTimers": "Сортировать Таймеры по Продолжительности",
+    "showBrokenFragments": "Показывать \"сломанные\" фрагменты драконов",
+    "skyblockAddonsButtonInPauseMenu": "Показать Кнопку SBA в Меню Паузы",
+    "showTotalZealotCount": "Счётчик Зеалотов - Общий счёт Зеалотов",
+    "showSummoningEyeCount": "Счётчик Зеалотов - Общий Счёт Глаз",
+    "showZealotsPerEye": "Счётчик Зеалотов - Показывать Зеалотов за Глаз (з/г)",
+    "turnBowGreenWhenUsingToxicArrowPoison": "Красить Лук в Зелёный при Использовании Токсичного Яда для Стрел",
+    "birchParkRainmakerTimer": "Таймер Дождя в Берёзовом Парке",
+    "combatTimerDisplay": "Таймер боевого состояния",
+    "discordRP": "Discord Rich Presence",
+    "endstoneProtectorDisplay": "Endstone Protector Display",
+    "fancyWarpMenu": "Fancy Warp Menu",
+    "doubleWarp": "Warp Twice",
+    "advancedMode": "Advanced Mode"
   },
   "messages": {
     "dropConfirmation": "Выбросите предмет ещё раз для подтверждения!",
@@ -122,19 +135,15 @@
       "reforges": "Перековки",
       "crafting": "Создание"
     },
-    "newUpdateAvailable": "Доступно новое обновление (%version%)!",
-    "deleteOldFile": "Загрузка завершена. Пожалуйста, откройте папку модов, используя кнопку ниже, закройте Minecraft и удалите старую версию (или удалите её позже).",
     "wantToViewPatchNotes": "Хотите прочесть изменения?",
     "downloadLink": "ССЫЛКА ОБНОВЛЕНИЯ",
-    "downloadAutomatically": "АВТОМАТИЧЕСКАЯ ЗАГРУЗКА",
+    "directDownload": "DIRECT DOWNLOAD LINK",
     "openModFolder": "ПАПКА МОДОВ",
     "joinTheDiscord": "ПРИСОЕДИНИТЬСЯ К ДИСКОРДУ",
+    "newUpdateAvailable": "A new update (%version%) is available!",
     "update": {
       "majorAvailable": "Доступно новое глобальное обновление (%version%)! Ссылку на загрузку можно найти в чате.",
-      "patchAvailable": "Новое обновление (%version%) теперь доступно! Посмотри в чат для опций загрузки!",
-      "downloading": "Обновление загружается! Статус: %downloaded%/%total% Пожалуйста, учтите, что после завершения загрузки, вам следует удалить старый файл.",
-      "failed": "Ошибка загрузки обновления! Пожалуйста, загрузите его вручную, используя ссылку в чате.",
-      "downloadFinished": "Обновление закончилось загружаться. Оно было сохранено как %file%. Пожалуйста, не забудьте удалить старый файл после закрытия Minecraft. Нажмите на сообщение в чате, чтобы открыть папку."
+      "patchAvailable": "Новое обновление (%version%) теперь доступно! Посмотри в чат для опций загрузки!"
     },
     "slotLocked": "Этот слот заблокирован!",
     "summoningEyeFound": "Око Призыва!",
@@ -154,6 +163,37 @@
     "noArrowsLeft": "Стрел не осталось!",
     "chooseAColor": "Выберите цвет",
     "selectedColor": "Выбранный цвет",
-    "setHexColor": "Выберите цвет \"HEX\""
+    "setHexColor": "Выберите цвет \"HEX\"",
+    "rescaleFeatures": "Возможности масштабирования",
+    "resizeBars": "Изменить размер полос",
+    "showColorIcons": "Показать цветные значки",
+    "stage": "Этап %stage%",
+    "switchedSlots": "Вы только что переключились с заблокированной ячейки или редкого предмета. Пожалуйста, подождите немного перед выкидыванием!",
+    "clickToOpenLink": "Click to open this link!",
+    "clickToOpenFolder": "Click to open your mods folder!",
+    "freezeBackpackPreview": "Freeze Backpack Preview",
+    "hideGreyEnchants": "Hide Regular Grey Enchants"
+  },
+  "discordStatus": {
+    "titleNone": "None",
+    "descriptionNone": "No text is displayed",
+    "titleLocation": "Location",
+    "descriptionLocation": "Shows your current location",
+    "titlePurse": "Purse",
+    "descriptionPurse": "Shows the amount of coins in your purse",
+    "titleStats": "Stats",
+    "descriptionStats": "Shows your HP, Defense and Mana stats",
+    "titleZealots": "Zealots",
+    "descriptionZealots": "Shows your Zealot counter",
+    "titleItem": "Предмет в руках",
+    "descriptionItem": "Shows the name of the item you're holding",
+    "titleProfile": "Профиль",
+    "descriptionProfile": "Shows your Profile name",
+    "titleTime": "Skyblock Time",
+    "descriptionTime": "Shows the current Skyblock time. E.g. 12:00am 1st Early Winter",
+    "titleCustom": "Custom Status",
+    "descriptionCustom": "Enter a custom status",
+    "titleAuto": "Auto Status",
+    "descriptionAuto": "Automatically displays a status. E.g. your zealot count while in the end."
   }
 }

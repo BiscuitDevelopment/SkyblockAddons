@@ -1,7 +1,7 @@
 package codes.biscuit.skyblockaddons.gui.buttons;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.utils.Feature;
+import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.utils.nifty.reflection.MinecraftReflection;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.SoundHandler;
@@ -57,6 +57,9 @@ public class ButtonSolid extends ButtonText {
         // Alpha multiplier is from 0 to 1, multiplying it creates the fade effect.
         boxAlpha *= alphaMultiplier;
         int boxColor = main.getUtils().getDefaultColor(boxAlpha);
+        if (this.feature == Feature.RESET_LOCATION) {
+            boxColor = main.getUtils().getColorWithAlpha(0xFF7878, boxAlpha);
+        }
         GlStateManager.enableBlend();
         if (alpha < 4) alpha = 4;
         int fontColor = new Color(224, 224, 224, alpha).getRGB();

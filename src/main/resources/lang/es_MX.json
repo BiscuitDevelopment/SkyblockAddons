@@ -16,7 +16,7 @@
     "hideDurability": "Ocultar Durabilidad de Herramientas",
     "showEnchantmentsReforges": "Encantamientos & Reforjados",
     "minionStopWarning": "Alerta de Minion Detenido",
-    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
+    "hidePlayersNearNPCs": "Oculta Jugadores Cercanos a los PNJs Importantes",
     "backpackStyle": "Estilo de Backpack: %style%",
     "backpackStyles": {
       "regular": "Normal",
@@ -95,8 +95,8 @@
     "noArrowsLeftAlert": "Alerta de Falta de Flechas",
     "hideNightVisionEffectTimer": "Esconder el Temporizador del Efecto de Visión Nocturna",
     "showCakeBagPreview": "Previsualizar Cake Bags",
-    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
-    "enableDevFeatures": "Enable Developer Features",
+    "showBackpackPreviewInAH": "Mostrar Preview de Mochila mientras la Casa de Subastas esta abierto",
+    "enableDevFeatures": "Modo Desarrollador",
     "chromaSpeed": "Chroma Speed",
     "chromaMode": "Chroma Color Mode",
     "chromaModes": {
@@ -104,7 +104,20 @@
       "fade": "Color Fade"
     },
     "chromaFadeWidth": "Chroma Fade Width",
-    "sortTabEffectTimers": "Sort Timers by Duration"
+    "sortTabEffectTimers": "Sort Timers by Duration",
+    "showBrokenFragments": "Show Broken Dragon Fragments",
+    "skyblockAddonsButtonInPauseMenu": "Show SBA Button in Pause Menu",
+    "showTotalZealotCount": "Zealot Counter - Total Zealot Count",
+    "showSummoningEyeCount": "Zealot Counter - Total Eye Count",
+    "showZealotsPerEye": "Zealot Counter - Show Zealots Per Eye",
+    "turnBowGreenWhenUsingToxicArrowPoison": "Color Bow Green When Using Toxic Arrow Poison",
+    "birchParkRainmakerTimer": "Birch Park Rainmaker Timer",
+    "combatTimerDisplay": "Combat Timer Display",
+    "discordRP": "Discord Rich Presence",
+    "endstoneProtectorDisplay": "Endstone Protector Display",
+    "fancyWarpMenu": "Fancy Warp Menu",
+    "doubleWarp": "Warp Twice",
+    "advancedMode": "Advanced Mode"
   },
   "messages": {
     "dropConfirmation": "Arroja este objeto otra vez para confirmar!",
@@ -122,19 +135,15 @@
       "reforges": "Reforjas",
       "crafting": "Crafteo"
     },
-    "newUpdateAvailable": "Una nueva actualización (%version%) está disponible!",
-    "deleteOldFile": "La descarga ha finalizado, por favor abre tu carpeta de mods usando el botón inferior, cierra Minecraft y elimina la versión antigua (o hazlo mas tarde si lo prefieres).",
     "wantToViewPatchNotes": "Quieres leer los cambios?",
     "downloadLink": "LINK DE ACTUALIZACION",
-    "downloadAutomatically": "AUTO DESCARGAR",
+    "directDownload": "DIRECT DOWNLOAD LINK",
     "openModFolder": "CARPETA DE MODS",
     "joinTheDiscord": "UNIRSE A DISCORD",
+    "newUpdateAvailable": "A new update (%version%) is available!",
     "update": {
       "majorAvailable": "Una nueva actualización importante (%version%) se encuentra disponible! El link de descarga puede encontrarse en el chat.",
-      "patchAvailable": "Un nuevo parche de actualización (%version%) se encuentra disponible! Las opciones de descarga están en el chat!",
-      "downloading": "El parche se está descargando! Estado: %downloaded%/%total% Por favor, ten en cuenta que después de que la descarga haya finalizado, debes eliminar el archivo antiguo.",
-      "failed": "La descarga del parche ha fallado! Por favor, descárgalo manualmente usando el link en el chat.",
-      "downloadFinished": "El parche ha sido descargado. Se guardó como %file%. Por favor, no te olvides de eliminar el archivo antiguo después de cerrar Minecraft. Haz clic en el mensaje del chat para abrir la carpeta."
+      "patchAvailable": "Un nuevo parche de actualización (%version%) se encuentra disponible! Las opciones de descarga están en el chat!"
     },
     "slotLocked": "Esta ranura está bloqueada!",
     "summoningEyeFound": "Summoning Eye!",
@@ -154,6 +163,37 @@
     "noArrowsLeft": "No Hay Flechas!",
     "chooseAColor": "Selecciona un Color",
     "selectedColor": "Color Seleccionado",
-    "setHexColor": "Establecer Hex de Color"
+    "setHexColor": "Establecer Hex de Color",
+    "rescaleFeatures": "Rescale Features",
+    "resizeBars": "Resize Bars",
+    "showColorIcons": "Show Color Icons",
+    "stage": "Stage %stage%",
+    "switchedSlots": "You have just switched from a locked slot or rare item. Please wait a bit before dropping!",
+    "clickToOpenLink": "Click to open this link!",
+    "clickToOpenFolder": "Click to open your mods folder!",
+    "freezeBackpackPreview": "Freeze Backpack Preview",
+    "hideGreyEnchants": "Hide Regular Grey Enchants"
+  },
+  "discordStatus": {
+    "titleNone": "None",
+    "descriptionNone": "No text is displayed",
+    "titleLocation": "Location",
+    "descriptionLocation": "Shows your current location",
+    "titlePurse": "Purse",
+    "descriptionPurse": "Shows the amount of coins in your purse",
+    "titleStats": "Stats",
+    "descriptionStats": "Shows your HP, Defense and Mana stats",
+    "titleZealots": "Zealots",
+    "descriptionZealots": "Shows your Zealot counter",
+    "titleItem": "Held Item",
+    "descriptionItem": "Shows the name of the item you're holding",
+    "titleProfile": "Profile",
+    "descriptionProfile": "Shows your Profile name",
+    "titleTime": "Skyblock Time",
+    "descriptionTime": "Shows the current Skyblock time. E.g. 12:00am 1st Early Winter",
+    "titleCustom": "Custom Status",
+    "descriptionCustom": "Enter a custom status",
+    "titleAuto": "Auto Status",
+    "descriptionAuto": "Automatically displays a status. E.g. your zealot count while in the end."
   }
 }

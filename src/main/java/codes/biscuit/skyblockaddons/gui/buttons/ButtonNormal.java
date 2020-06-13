@@ -1,23 +1,22 @@
 package codes.biscuit.skyblockaddons.gui.buttons;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.utils.CoordsPair;
+import codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui;
+import codes.biscuit.skyblockaddons.utils.IntPair;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
-import codes.biscuit.skyblockaddons.utils.Feature;
-import codes.biscuit.skyblockaddons.utils.Message;
+import codes.biscuit.skyblockaddons.core.Feature;
+import codes.biscuit.skyblockaddons.core.Message;
 import codes.biscuit.skyblockaddons.utils.nifty.reflection.MinecraftReflection;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.SoundHandler;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
 
-import java.awt.Color;
-
-import static codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui.BUTTON_MAX_WIDTH;
+import java.awt.*;
 
 public class ButtonNormal extends ButtonFeature {
 
-    private static ResourceLocation FEATURE_BACKGROUND = new ResourceLocation("skyblockaddons", "featurebackground.png");
+    private static ResourceLocation FEATURE_BACKGROUND = new ResourceLocation("skyblockaddons", "gui/featurebackground.png");
 
     private SkyblockAddons main;
 
@@ -61,15 +60,6 @@ public class ButtonNormal extends ButtonFeature {
                 fontColor = new Color(60,60,60).getRGB();
             }
             GlStateManager.enableBlend();
-            float scale = 1;
-            int stringWidth = MinecraftReflection.FontRenderer.getStringWidth(displayString);
-            float widthLimit = BUTTON_MAX_WIDTH -10;
-            if (feature == Feature.WARNING_TIME) {
-                widthLimit = 90;
-            }
-            if (stringWidth > widthLimit) {
-                scale = 1/(stringWidth/widthLimit);
-            }
             GlStateManager.color(1,1,1,0.7F);
             if (main.getConfigValues().isRemoteDisabled(feature)) {
                 GlStateManager.color(0.3F,0.3F,0.3F,0.7F);
@@ -77,23 +67,68 @@ public class ButtonNormal extends ButtonFeature {
             mc.getTextureManager().bindTexture(FEATURE_BACKGROUND);
             drawModalRectWithCustomSizedTexture(xPosition, yPosition,0,0,width,height,width,height);
 
-            int textX = xPosition+width/2;
-            int textY = yPosition;
-            if (feature == Feature.GENERAL_SETTINGS) textY -= 5;
-
-            GlStateManager.pushMatrix();
-            GlStateManager.scale(scale, scale, 1);
-            int offset = 9;
             EnumUtils.FeatureCredit creditFeature = EnumUtils.FeatureCredit.fromFeature(feature);
-            if (creditFeature != null) offset-=4;
-            MinecraftReflection.FontRenderer.drawCenteredString(displayString, (textX/scale), (textY/scale)+offset, fontColor);
-            GlStateManager.popMatrix();
 
-            if (creditFeature != null) {
-                scale = 0.8F;
+            // Wrap the feature name into 2 lines.
+            String[] wrappedString = main.getUtils().wrapSplitText(displayString, 28);
+            if (wrappedString.length > 2) { // If it makes more than 2 lines,
+                StringBuilder lastLineString = new StringBuilder(); // combine all the last
+                for (int i = 1; i < wrappedString.length; i++) { // lines and combine them
+                    lastLineString.append(wrappedString[i]); // back into the second line.
+                    if (i != wrappedString.length-1) {
+                        lastLineString.append(" ");
+                    }
+                }
+
+                wrappedString = new String[]{wrappedString[0], lastLineString.toString()};
+            }
+
+            int textX = xPosition + width / 2;
+            int textY = yPosition;
+
+            boolean multiline = wrappedString.length > 1;
+
+            for (int i = 0; i < wrappedString.length; i++) {
+                String line = wrappedString[i];
+
+                float scale = 1;
+                int stringWidth = MinecraftReflection.FontRenderer.getStringWidth(line);
+                float widthLimit = SkyblockAddonsGui.BUTTON_MAX_WIDTH - 10;
+                if (feature == Feature.WARNING_TIME) {
+                    widthLimit = 90;
+                }
+                if (stringWidth > widthLimit) {
+                    scale = 1 / (stringWidth / widthLimit);
+                }
+                if (feature == Feature.GENERAL_SETTINGS) textY -= 5;
+
                 GlStateManager.pushMatrix();
                 GlStateManager.scale(scale, scale, 1);
-                MinecraftReflection.FontRenderer.drawCenteredString(creditFeature.getAuthor(), (textX / scale), (textY / scale) + 23, fontColor);
+                int offset = 9;
+                if (creditFeature != null) offset -= 4;
+                offset += (10 - 10*scale); // If the scale is small gotta move it down a bit or else its too mushed with the above line.
+                MinecraftReflection.FontRenderer.drawCenteredString(line, (textX / scale), (textY / scale) + offset, fontColor);
+                GlStateManager.popMatrix();
+
+                // If its not the last line, add to the Y.
+                if (multiline && i == 0) {
+                    textY += 10;
+                }
+            }
+
+            if (creditFeature != null) {
+                float scale = 0.8F;
+                if (multiline) { // If its 2 lines the credits have to be smaller.
+                    scale = 0.6F;
+                }
+                float creditsY = (textY / scale) + 23;
+                if (multiline) {
+                    creditsY += 3; // Since its smaller the scale is wierd to move it down a tiny bit.
+                }
+
+                GlStateManager.pushMatrix();
+                GlStateManager.scale(scale, scale, 1);
+                MinecraftReflection.FontRenderer.drawCenteredString(creditFeature.getAuthor(), (textX / scale), creditsY, fontColor);
                 GlStateManager.disableBlend();
                 GlStateManager.popMatrix();
             }
@@ -101,7 +136,7 @@ public class ButtonNormal extends ButtonFeature {
             if (feature == Feature.LANGUAGE) {
                 GlStateManager.color(1,1,1,1F);
                 try {
-                    mc.getTextureManager().bindTexture(new ResourceLocation("skyblockaddons", "flags/"+main.getConfigValues().getLanguage().getFlagPath()+".png"));
+                    mc.getTextureManager().bindTexture(main.getConfigValues().getLanguage().getResourceLocation());
                     if (main.getUtils().isHalloween()) {
                         mc.getTextureManager().bindTexture(new ResourceLocation("skyblockaddons", "flags/halloween.png"));
                     }
@@ -112,7 +147,7 @@ public class ButtonNormal extends ButtonFeature {
             } else if (feature == Feature.EDIT_LOCATIONS) {
                 GlStateManager.color(1,1,1,1F);
                 try {
-                    mc.getTextureManager().bindTexture(new ResourceLocation("skyblockaddons", "move.png"));
+                    mc.getTextureManager().bindTexture(new ResourceLocation("skyblockaddons", "gui/move.png"));
                     drawModalRectWithCustomSizedTexture(xPosition + width / 2 - 12, yPosition + 22, 0, 0, 25, 25, 25, 25);
                 } catch (Exception ex) {
                     ex.printStackTrace();
@@ -125,11 +160,28 @@ public class ButtonNormal extends ButtonFeature {
         }
     }
 
-    public CoordsPair getCreditsCoords(EnumUtils.FeatureCredit credit) {
+    public IntPair getCreditsCoords(EnumUtils.FeatureCredit credit) {
+        String[] wrappedString = main.getUtils().wrapSplitText(displayString, 28);
+        boolean multiLine = wrappedString.length > 1;
+
         float scale = 0.8F;
+        if (multiLine) { // If its 2 lines the credits have to be smaller.
+            scale = 0.6F;
+        }
+
+        int y = (int)((yPosition/scale) + (multiLine ? 30 : 21)); // If its a smaller scale, you gotta move it down more.
+
+        if (multiLine) { // When there's multiple lines the second line is moved 10px down.
+            y += 10;
+        }
+
         int x = (int)((xPosition+width/2)/scale) - MinecraftReflection.FontRenderer.getStringWidth(credit.getAuthor()) / 2 - 17;
-        int y = (int) (yPosition/scale) + 21;
-        return new CoordsPair(x,y);
+        return new IntPair(x, y);
+    }
+
+    public boolean isMultilineButton() {
+        String[] wrappedString = main.getUtils().wrapSplitText(displayString, 28);
+        return wrappedString.length > 1;
     }
 
     @Override

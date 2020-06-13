@@ -1,6 +1,8 @@
 package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.core.Attribute;
+import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.utils.nifty.StringUtil;
 import lombok.Getter;
 import lombok.Setter;
@@ -64,7 +66,6 @@ public class ActionBarParser {
      * @return New action bar without parsed stats.
      */
     public String parseActionBar(String actionBar) {
-//        FMLLog.info(actionBar);
         // First split the action bar into sections
         String[] splitMessage = actionBar.split(" {3,}");
         // This list holds the text of unused sections that aren't displayed anywhere else in SBA
@@ -76,6 +77,11 @@ public class ActionBarParser {
         main.getRenderListener().setPredictHealth(true);
         // set ticker to -1 so the GUI element doesn't get displayed while they're not displayed in the action bar
         tickers = -1;
+
+        // If the action bar is displaying player stats and the defense section is absent, the player's defense is zero.
+        if (actionBar.contains("❤") && !actionBar.contains("❈") && splitMessage.length == 2) {
+            setAttribute(Attribute.DEFENCE, 0);
+        }
 
         for (String section : splitMessage) {
             try {
@@ -101,7 +107,7 @@ public class ActionBarParser {
      * @return Text to keep displaying or null
      */
     private String parseSection(String section) {
-        String numbersOnly = main.getUtils().getNumbersOnly(section).trim(); // keeps numbers and slashes
+        String numbersOnly = TextUtils.getNumbersOnly(section).trim(); // keeps numbers and slashes
         String[] splitStats = numbersOnly.split("/");
 
         if (section.contains("❤")) {
@@ -143,7 +149,7 @@ public class ActionBarParser {
         if (healthSection.contains("+")) {
             // Contains the Wand indicator so it has to be split differently
             String[] splitHealthAndWand = healthSection.split("\\+");
-            String[] healthSplit = main.getUtils().getNumbersOnly(splitHealthAndWand[0]).split("/");
+            String[] healthSplit = TextUtils.getNumbersOnly(splitHealthAndWand[0]).split("/");
             newHealth = Integer.parseInt(healthSplit[0]);
             maxHealth = Integer.parseInt(healthSplit[1]);
             if (separateDisplay) {
@@ -194,7 +200,7 @@ public class ActionBarParser {
      *
      * @param defenseSection Defense section of the action bar
      * @param numbersOnly Pre-split stat string
-     * @return null or {@code defenseSection} if neither defense text nor
+     * @return null or {@code defenseSection} if neither defense text nor defense percentage are enabled
      */
     private String parseDefense(String defenseSection, String numbersOnly) {
         // §a720§a❈ Defense

@@ -1,44 +1,37 @@
 package codes.biscuit.skyblockaddons.utils;
 
-import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.core.Feature;
+import codes.biscuit.skyblockaddons.core.Message;
 import lombok.Getter;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import org.apache.commons.lang3.text.WordUtils;
 
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.EnumSet;
 import java.util.Set;
-import java.util.regex.Pattern;
 
-import static codes.biscuit.skyblockaddons.utils.Message.*;
+import static codes.biscuit.skyblockaddons.core.Message.*;
 
 public class EnumUtils {
 
-    @SuppressWarnings("deprecation")
     public enum AnchorPoint {
-        TOP_LEFT(0, ANCHOR_POINT_TOP_LEFT),
-        TOP_RIGHT(1, ANCHOR_POINT_TOP_RIGHT),
-        BOTTOM_LEFT(2, ANCHOR_POINT_BOTTOM_LEFT),
-        BOTTOM_RIGHT(3, ANCHOR_POINT_BOTTOM_RIGHT),
-        BOTTOM_MIDDLE(4, ANCHOR_POINT_HEALTH_BAR);
+        TOP_LEFT(0),
+        TOP_RIGHT(1),
+        BOTTOM_LEFT(2),
+        BOTTOM_RIGHT(3),
+        BOTTOM_MIDDLE(4);
 
-        private Message message;
         @Getter private int id;
 
-        AnchorPoint(int id, Message message) {
-            this.message = message;
+        AnchorPoint(int id) {
             this.id = id;
         }
 
-        public String getMessage() {
-            return message.getMessage();
-        }
-
+        @SuppressWarnings("unused") // Accessed by reflection...
         public static AnchorPoint fromId(int id) {
             for (AnchorPoint feature : values()) {
                 if (feature.getId() == id) {
@@ -87,6 +80,7 @@ public class EnumUtils {
     public enum InventoryType {
         ENCHANTMENT_TABLE(INVENTORY_TYPE_ENCHANTS, "Enchant Item"),
         REFORGE_ANVIL(INVENTORY_TYPE_REFORGES, "Reforge Item"),
+        BAKER(null, "Baker"),
         CRAFTING_TABLE(INVENTORY_TYPE_CRAFTING, CraftingPattern.CRAFTING_TABLE_DISPLAYNAME);
 
         /** The current inventory type. Can be null. */
@@ -258,7 +252,10 @@ public class EnumUtils {
         HIDE_NIGHT_VISION_EFFECT(SETTING_HIDE_NIGHT_VISION_EFFECT_TIMER, 70),
         ENABLE_CAKE_BAG_PREVIEW(SETTING_SHOW_CAKE_BAG_PREVIEW, 71),
         ENABLE_BACKPACK_PREVIEW_AH(SETTING_SHOW_BACKPACK_PREVIEW_AH, 72),
-        SORT_TAB_EFFECT_TIMERS(SETTING_SORT_TAB_EFFECT_TIMERS, 73);
+        SORT_TAB_EFFECT_TIMERS(SETTING_SORT_TAB_EFFECT_TIMERS, 74),
+
+        DISCORD_RP_STATE(null, 0),
+        DISCORD_RP_DETAILS(null, 0);
 
         @Getter private Message message;
         private int featureEquivalent;
@@ -289,7 +286,7 @@ public class EnumUtils {
         ORCHID_ALLOY("orchidalloy", "github.com/orchidalloy", Feature.SUMMONING_EYE_ALERT, Feature.FISHING_SOUND_INDICATOR, Feature.ORGANIZE_ENCHANTMENTS),
         HIGH_CRIT("HighCrit", "github.com/HighCrit", Feature.PREVENT_MOVEMENT_ON_DEATH),
         MOULBERRY("Moulberry", "github.com/Moulberry", Feature.DONT_RESET_CURSOR_INVENTORY),
-        TOMOCRAFTER("tomocrafter","github.com/tomocrafter", Feature.AVOID_BLINKING_NIGHT_VISION, Feature.SLAYER_INDICATOR, Feature.NO_ARROWS_LEFT_ALERT),
+        TOMOCRAFTER("tomocrafter","github.com/tomocrafter", Feature.AVOID_BLINKING_NIGHT_VISION, Feature.SLAYER_INDICATOR, Feature.NO_ARROWS_LEFT_ALERT, Feature.BOSS_APPROACH_ALERT),
         DAPIGGUY("DaPigGuy", "github.com/DaPigGuy", Feature.MINION_DISABLE_LOCATION_WARNING),
         COMNIEMEER("comniemeer","github.com/comniemeer", Feature.JUNGLE_AXE_COOLDOWN),
         KEAGEL("Keagel", "github.com/Keagel", Feature.ONLY_MINE_ORES_DEEP_CAVERNS, Feature.DISABLE_MAGICAL_SOUP_MESSAGES),
@@ -298,7 +295,11 @@ public class EnumUtils {
                 Feature.CRAFTING_PATTERNS, Feature.POWER_ORB_STATUS_DISPLAY),
         GARY("GARY_", "github.com/occanowey", Feature.ONLY_MINE_VALUABLES_NETHER),
         P0KE("P0ke", "p0ke.dev", Feature.ZEALOT_COUNTER),
-        BERISAN("Berisan", "github.com/Berisan", Feature.TAB_EFFECT_TIMERS);
+        BERISAN("Berisan", "github.com/Berisan", Feature.TAB_EFFECT_TIMERS),
+        MYNAMEISJEFF("MyNameIsJeff", "github.com/My-Name-Is-Jeff", Feature.SHOW_BROKEN_FRAGMENTS),
+        DJTHEREDSTONER("DJtheRedstoner", "github.com/DJtheRedstoner", Feature.LEGENDARY_SEA_CREATURE_WARNING),
+        ANTONIO32A("Antonio32A", "github.com/Antonio32A", Feature.ONLY_BREAK_LOGS_PARK),
+        CHARZARD("Charzard4261", "github.com/Charzard4261", Feature.DISABLE_TELEPORT_PAD_MESSAGES, Feature.BAIT_LIST);
 
         private Set<Feature> features;
         private String author;
@@ -326,33 +327,6 @@ public class EnumUtils {
         }
     }
 
-    public enum UpdateMessageType {
-        MAJOR_AVAILABLE(UPDATE_MESSAGE_MAJOR),
-        PATCH_AVAILABLE(UPDATE_MESSAGE_PATCH),
-        DOWNLOADING(UPDATE_MESSAGE_DOWNLOAD),
-        FAILED(UPDATE_MESSAGE_FAILED),
-        DOWNLOAD_FINISHED(UPDATE_MESSAGE_DOWNLOAD_FINISHED),
-        DEVELOPMENT(null);
-
-        private Message message;
-
-        UpdateMessageType(Message message) {
-            this.message = message;
-        }
-
-        public String[] getMessages(String... variables) {
-            String messageText;
-            if (this == DEVELOPMENT) {
-                messageText = "You are running a development version: " + SkyblockAddons.VERSION + ". Please report any bugs that haven't been found yet. Thank you.";
-            } else {
-                messageText = message.getMessage(variables);
-            }
-
-            // Wrap around the text, replace the carriage returns, and split at the new lines.
-            return WordUtils.wrap(messageText, 36).replace("\r", "").split(Pattern.quote("\n"));
-        }
-    }
-
     public enum SkillType {
         FARMING("Farming", Items.golden_hoe),
         MINING("Mining", Items.diamond_pickaxe),
@@ -363,6 +337,7 @@ public class EnumUtils {
         ALCHEMY("Alchemy", Items.brewing_stand),
         CARPENTRY("Carpentry", Item.getItemFromBlock(Blocks.crafting_table)),
         RUNECRAFTING("Runecrafting", Items.magma_cream),
+        TAMING("Taming", Items.spawn_egg),
         OTHER(null, null);
 
         private String skillName;
@@ -392,20 +367,21 @@ public class EnumUtils {
         REVENANT_PROGRESS,
         POWER_ORB_DISPLAY,
         TICKER,
+        BAIT_LIST_DISPLAY,
         TAB_EFFECT_TIMERS
     }
 
     @Getter
     public enum Social {
-        YOUTUBE(new ResourceLocation("skyblockaddons", "youtube.png"), "https://www.youtube.com/channel/UCYmE9-052frn0wQwqa6i8_Q"),
-        DISCORD(new ResourceLocation("skyblockaddons", "discord.png"), "https://biscuit.codes/discord"),
-        GITHUB(new ResourceLocation("skyblockaddons", "github.png"), "https://github.com/BiscuitDevelopment/SkyblockAddons");
+        YOUTUBE("youtube", "https://www.youtube.com/channel/UCYmE9-052frn0wQwqa6i8_Q"),
+        DISCORD("discord", "https://biscuit.codes/discord"),
+        GITHUB("github", "https://github.com/BiscuitDevelopment/SkyblockAddons");
 
         private ResourceLocation resourceLocation;
         private URI url;
 
-        Social(ResourceLocation resourceLocation, String url) {
-            this.resourceLocation = resourceLocation;
+        Social(String resourcePath, String url) {
+            this.resourceLocation = new ResourceLocation("skyblockaddons", "gui/"+resourcePath+".png");
             try {
                 this.url = new URI(url);
             } catch (URISyntaxException e) {
@@ -417,7 +393,8 @@ public class EnumUtils {
     public enum GUIType {
         MAIN,
         EDIT_LOCATIONS,
-        SETTINGS
+        SETTINGS,
+        WARP
     }
 
     public enum ChromaMode {
@@ -440,6 +417,18 @@ public class EnumUtils {
                 nextType = 0;
             }
             return values()[nextType];
+        }
+    }
+
+    @Getter
+    public enum DiscordStatusEntry {
+        DETAILS(0),
+        STATE(1);
+
+        private int id;
+
+        DiscordStatusEntry(int id) {
+            this.id = id;
         }
     }
 }

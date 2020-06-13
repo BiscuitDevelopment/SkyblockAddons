@@ -30,7 +30,6 @@ public class EntityPlayerSPTransformer implements ITransformer {
 
             if (TransformerMethod.dropOneItem.matches(methodNode)) {
                 methodNode.instructions.insertBefore(methodNode.instructions.getFirst(), insertConfirmation());
-                break;
             }
         }
     }

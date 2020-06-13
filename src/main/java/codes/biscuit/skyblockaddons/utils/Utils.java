@@ -1,20 +1,28 @@
 package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.constants.game.Rarity;
+import codes.biscuit.skyblockaddons.core.Attribute;
+import codes.biscuit.skyblockaddons.core.Feature;
+import codes.biscuit.skyblockaddons.core.Location;
+import codes.biscuit.skyblockaddons.core.SkyblockDate;
+import codes.biscuit.skyblockaddons.events.SkyblockJoinedEvent;
+import codes.biscuit.skyblockaddons.events.SkyblockLeftEvent;
+import codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
-import codes.biscuit.skyblockaddons.utils.nifty.RegexUtil;
 import codes.biscuit.skyblockaddons.utils.nifty.StringUtil;
-import codes.biscuit.skyblockaddons.utils.nifty.reflection.MinecraftReflection;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
+import com.google.gson.*;
 import lombok.Getter;
 import lombok.Setter;
 import net.minecraft.client.Minecraft;
-import net.minecraft.event.ClickEvent;
+import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.WorldRenderer;
+import net.minecraft.client.renderer.texture.DynamicTexture;
+import net.minecraft.client.renderer.texture.TextureManager;
+import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -25,16 +33,22 @@ import net.minecraft.scoreboard.ScorePlayerTeam;
 import net.minecraft.scoreboard.Scoreboard;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.MathHelper;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.FMLLog;
 import net.minecraftforge.fml.common.Loader;
 import org.apache.commons.lang3.mutable.MutableInt;
 import org.apache.commons.lang3.text.WordUtils;
+import org.apache.logging.log4j.Logger;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.*;
-import java.net.*;
+import java.net.HttpURLConnection;
+import java.net.URI;
+import java.net.URL;
 import java.util.List;
 import java.util.*;
 import java.util.regex.Matcher;
@@ -59,6 +73,7 @@ public class Utils {
             "punch","flame", // Bow Others
             "telekinesis"
     ));
+
     private static final Pattern SERVER_REGEX = Pattern.compile("([0-9]{2}/[0-9]{2}/[0-9]{2}) (mini[0-9]{1,3}[A-Za-z])");
 
     /** In English, Chinese Simplified. */
@@ -67,17 +82,14 @@ public class Utils {
     /** Used for web requests. */
     public static final String USER_AGENT = "SkyblockAddons/" + SkyblockAddons.VERSION;
 
-    /**
-     * Items containing these in the name should never be dropped. Helmets a lot of times
-     * in skyblock are weird items and are not damageable so that's why its included.
-     */
-    private static final String[] RARE_ITEM_OVERRIDES = {"Backpack", "Helmet"};
-
     // I know this is messy af, but frustration led me to take this dark path - said someone not biscuit
     public static boolean blockNextClick = false;
 
     /** Get a player's attributes. This includes health, mana, and defence. */
     private Map<Attribute, MutableInt> attributes = new EnumMap<>(Attribute.class);
+
+    /** This is the item checker that makes sure items being dropped or sold are allowed to be dropped or sold. */
+    private final ItemDropChecker itemDropChecker;
 
     /** List of enchantments that the player is looking to find. */
     private List<String> enchantmentMatches = new LinkedList<>();
@@ -85,23 +97,22 @@ public class Utils {
     /** List of enchantment substrings that the player doesn't want to match. */
     private List<String> enchantmentExclusions = new LinkedList<>();
 
-    private Backpack backpackToRender = null;
+    private Backpack backpackToPreview = null;
 
     /** Whether the player is on skyblock. */
     private boolean onSkyblock = false;
 
-    /** List of enchantments that the player is looking to find. */
-    private Location location = null;
+    /** The player's current location in Skyblock */
+    private Location location = Location.UNKNOWN;
 
     /** The skyblock profile that the player is currently on. Ex. "Grapefruit" */
-    private String profileName = null;
+    private String profileName = "Unknown";
 
     /** Whether or not a loud sound is being played by the mod. */
     private boolean playingSound = false;
 
     /** The current serverID that the player is on. */
     private String serverID = "";
-    private SkyblockDate currentDate = new SkyblockDate(SkyblockDate.SkyblockMonth.EARLY_WINTER, 1, 1, 1);
     private int lastHoveredSlot = -1;
 
     /** Whether the player is using the old style of bars packaged into Imperial's Skyblock Pack. */
@@ -110,13 +121,35 @@ public class Utils {
     /** Whether the player is using the default bars packaged into the mod. */
     private boolean usingDefaultBarTextures = true;
 
+    private SkyblockDate currentDate = new SkyblockDate(SkyblockDate.SkyblockMonth.EARLY_WINTER, 1, 1, 1, "am");
+    private double purse = 0;
+    private int jerryWave = -1;
+
+    private boolean alpha = false;
+    private boolean inDungeon = false;
+
     private boolean fadingIn;
 
+    // Featured link
+    private boolean lookedOnline = false;
+    private URI featuredLink = null;
+
+    private long lastDamaged = -1;
+
+    // Slayer Quest
+    private int currentKills = 0;
+    private int targetKills = 0;
+    private int currentExp = 0;
+    private int targetExp = 0;
+
     private SkyblockAddons main;
+    private Logger logger;
 
     public Utils(SkyblockAddons main) {
         this.main = main;
+        logger = SkyblockAddons.getInstance().getLogger();
         addDefaultStats();
+        itemDropChecker = new ItemDropChecker(main);
     }
 
     private void addDefaultStats() {
@@ -137,285 +170,223 @@ public class Utils {
         sendMessage(text, true);
     }
 
-    private void sendMessage(ChatComponentText text) {
-        sendMessage(text.getFormattedText());
-    }
+    public void sendMessage(ChatComponentText text, boolean prefix) {
+        if (prefix) { // Add the prefix in front.
+            ChatComponentText newText = new ChatComponentText(MESSAGE_PREFIX);
+            newText.appendSibling(text);
+            text = newText;
+        }
 
-    private void sendMessage(ChatComponentText text, boolean prefix) {
-        sendMessage(text.getFormattedText(), prefix);
+        ClientChatReceivedEvent event = new ClientChatReceivedEvent((byte) 1, text);
+        MinecraftForge.EVENT_BUS.post(event); // Let other mods pick up the new message
+        if (!event.isCanceled()) {
+            Minecraft.getMinecraft().thePlayer.addChatMessage(event.message); // Just for logs
+        }
     }
 
     public void sendErrorMessage(String errorText) {
         sendMessage(ChatFormatting.RED + "Error: " + errorText);
     }
 
-    public void checkGameLocationDate() {
-        boolean foundLocation = false;
+    /**
+     * Checks if the player is on the Hypixel Network
+     *
+     * @return {@code true} if the player is on Hypixel, {@code false} otherwise
+     */
+    public boolean isOnHypixel() {
+        final Pattern SERVER_BRAND_PATTERN = Pattern.compile("(.+) <- (?:.+)");
+        final String HYPIXEL_SERVER_BRAND = "BungeeCord (Hypixel)";
+
         Minecraft mc = Minecraft.getMinecraft();
 
-        if (mc != null && mc.theWorld != null) {
+        if (!mc.isSingleplayer() && mc.thePlayer.getClientBrand() != null) {
+            Matcher matcher = SERVER_BRAND_PATTERN.matcher(mc.thePlayer.getClientBrand());
+
+            if (matcher.find()) {
+                // Group 1 is the server brand.
+                return matcher.group(1).equals(HYPIXEL_SERVER_BRAND);
+            }
+            else {
+                return false;
+            }
+        }
+        else {
+            return false;
+        }
+    }
+
+    public void checkGameLocationDate() {
+        boolean foundLocation = false;
+        boolean foundJerryWave = false;
+        boolean foundAlphaIP = false;
+        boolean foundInDungeon = false;
+        Minecraft mc = Minecraft.getMinecraft();
+
+        if (mc != null && mc.theWorld != null && !mc.isSingleplayer() && isOnHypixel()) {
             Scoreboard scoreboard = mc.theWorld.getScoreboard();
             ScoreObjective sidebarObjective = mc.theWorld.getScoreboard().getObjectiveInDisplaySlot(1);
+
             if (sidebarObjective != null) {
-                String objectiveName = stripColor(sidebarObjective.getDisplayName());
-                onSkyblock = false;
+                String objectiveName = TextUtils.stripColor(sidebarObjective.getDisplayName());
+                boolean isSkyblockScoreboard = false;
+
                 for (String skyblock : SKYBLOCK_IN_ALL_LANGUAGES) {
                     if (objectiveName.startsWith(skyblock)) {
-                        onSkyblock = true;
+                        isSkyblockScoreboard = true;
                         break;
                     }
                 }
 
-                Collection<Score> scores = scoreboard.getSortedScores(sidebarObjective);
-                List<Score> list = Lists.newArrayList(scores.stream().filter(p_apply_1_ -> p_apply_1_.getPlayerName() != null && !p_apply_1_.getPlayerName().startsWith("#")).collect(Collectors.toList()));
-                if (list.size() > 15) {
-                    scores = Lists.newArrayList(Iterables.skip(list, scores.size() - 15));
-                } else {
-                    scores = list;
-                }
-                String timeString = null;
-                for (Score score1 : scores) {
-                    ScorePlayerTeam scorePlayerTeam = scoreboard.getPlayersTeam(score1.getPlayerName());
-                    String locationString = keepLettersAndNumbersOnly(
-                            stripColor(ScorePlayerTeam.formatPlayerName(scorePlayerTeam, score1.getPlayerName())));
-                    if (locationString.endsWith("am") || locationString.endsWith("pm")) {
-                        timeString = locationString.trim();
-                        timeString = timeString.substring(0, timeString.length()-2);
+                // Copied from SkyblockLib, should be removed when we switch to use that
+                if (isSkyblockScoreboard) {
+                    // If it's a Skyblock scoreboard and the player has not joined Skyblock yet,
+                    // this indicates that he did so.
+                    if(!this.isOnSkyblock()) {
+                        MinecraftForge.EVENT_BUS.post(new SkyblockJoinedEvent());
                     }
-                    for (SkyblockDate.SkyblockMonth month : SkyblockDate.SkyblockMonth.values()) {
-                        if (locationString.contains(month.getScoreboardString())) {
-                            try {
-                                currentDate.setMonth(month);
-                                String numberPart = locationString.substring(locationString.lastIndexOf(" ") + 1);
-                                int day = Integer.parseInt(getNumbersOnly(numberPart));
-                                currentDate.setDay(day);
-                                if (timeString != null) {
-                                    String[] timeSplit = timeString.split(Pattern.quote(":"));
-                                    int hour = Integer.parseInt(timeSplit[0]);
-                                    currentDate.setHour(hour);
-                                    int minute = Integer.parseInt(timeSplit[1]);
-                                    currentDate.setMinute(minute);
-                                }
-                            } catch (IndexOutOfBoundsException | NumberFormatException ignored) {}
-                            break;
+                } else {
+                    // If it's not a Skyblock scoreboard, the player must have left Skyblock and
+                    // be in some other Hypixel lobby or game.
+                    if(this.isOnSkyblock()) {
+                        MinecraftForge.EVENT_BUS.post(new SkyblockLeftEvent());
+                    }
+                }
+
+                Collection<Score> scoreboardLines = scoreboard.getSortedScores(sidebarObjective);
+                List<Score> list = scoreboardLines.stream().filter(p_apply_1_ -> p_apply_1_.getPlayerName() != null && !p_apply_1_.getPlayerName().startsWith("#")).collect(Collectors.toList());
+                if (list.size() > 15) {
+                    scoreboardLines = Lists.newArrayList(Iterables.skip(list, scoreboardLines.size() - 15));
+                } else {
+                    scoreboardLines = list;
+                }
+
+                String timeString = null;
+                String dateString = null;
+
+                for (Score line : scoreboardLines) {
+
+                    ScorePlayerTeam scorePlayerTeam = scoreboard.getPlayersTeam(line.getPlayerName());
+                    String strippedLine = TextUtils.keepScoreboardCharacters(TextUtils.stripColor(ScorePlayerTeam.formatPlayerName(scorePlayerTeam, line.getPlayerName()))).trim();
+
+                    if (strippedLine.endsWith("am") || strippedLine.endsWith("pm")) {
+                        timeString = strippedLine;
+                    }
+
+                    if (strippedLine.endsWith("st") || strippedLine.endsWith("nd") || strippedLine.endsWith("rd") || strippedLine.endsWith("th")) {
+                        dateString = strippedLine;
+                    }
+
+                    if (strippedLine.startsWith("Purse") || strippedLine.startsWith("Piggy")) {
+                        try {
+                            purse = Double.parseDouble(TextUtils.keepFloatCharactersOnly(strippedLine));
+                        } catch(NumberFormatException ignored) {
+                            purse = 0;
                         }
                     }
-                    if (locationString.contains("mini")) {
-                        Matcher matcher = SERVER_REGEX.matcher(locationString);
+
+                    if (strippedLine.contains("mini")) {
+                        Matcher matcher = SERVER_REGEX.matcher(strippedLine);
                         if (matcher.matches()) {
                             serverID = matcher.group(2);
-                            continue; // skip to next line
                         }
                     }
+
+                    if (strippedLine.endsWith("Combat XP") || strippedLine.endsWith("Kills")) {
+                        parseSlayerXPProgress(strippedLine);
+                    }
+
+
                     for (Location loopLocation : Location.values()) {
-                        if (locationString.endsWith(loopLocation.getScoreboardName())) {
-                            if (loopLocation == Location.BLAZING_FORTRESS &&
-                                    location != Location.BLAZING_FORTRESS) {
-                                sendPostRequest(EnumUtils.MagmaEvent.PING); // going into blazing fortress
-                                fetchEstimateFromServer();
+                        if (strippedLine.endsWith(loopLocation.getScoreboardName())) {
+                            if (loopLocation == Location.BLAZING_FORTRESS && location != Location.BLAZING_FORTRESS) {
+                                sendInventiveTalentPingRequest(EnumUtils.MagmaEvent.PING); // going into blazing fortress
+                                fetchMagmaBossEstimate();
                             }
-                            location = loopLocation;
+
+                            if (location != loopLocation) {
+                                location = loopLocation;
+                            }
+
                             foundLocation = true;
                             break;
                         }
                     }
+
+                    if (location == Location.JERRYS_WORKSHOP || location == Location.JERRY_POND) {
+                        if (strippedLine.startsWith("Wave")) {
+                            foundJerryWave = true;
+
+                            int newJerryWave;
+                            try {
+                                newJerryWave = Integer.parseInt(TextUtils.keepIntegerCharactersOnly(strippedLine));
+                            } catch (NumberFormatException ignored) {
+                                newJerryWave = 0;
+                            }
+                            if (jerryWave != newJerryWave) {
+                                jerryWave = newJerryWave;
+                            }
+                        }
+                    }
+
+                    if (strippedLine.contains("alpha.hypixel.net")) {
+                        foundAlphaIP = true;
+                        alpha = true;
+                        profileName = "Alpha";
+                    }
+
+                    if (strippedLine.contains("Dungeon Cleared: ")) {
+                        foundInDungeon = true;
+                        inDungeon = true;
+                    }
                 }
-            } else {
-                onSkyblock = false;
+                currentDate = SkyblockDate.parse(dateString, timeString);
             }
-        } else {
-            onSkyblock = false;
         }
         if (!foundLocation) {
-            location = null;
+            location = Location.UNKNOWN;
+        }
+        if (!foundJerryWave) {
+            jerryWave = -1;
+        }
+        if (!foundAlphaIP) {
+            alpha = false;
+        }
+        if (!foundInDungeon) {
+            inDungeon = false;
         }
     }
 
-    private static final Pattern NUMBERS_SLASHES = Pattern.compile("[^0-9 /]");
-    private static final Pattern LETTERS_NUMBERS = Pattern.compile("[^a-z A-Z:0-9/']");
+    private void parseSlayerXPProgress(final String line) {
+        String[] format = line.trim().split(" ")[0].split("/");
 
-    private String keepLettersAndNumbersOnly(String text) {
-        return LETTERS_NUMBERS.matcher(text).replaceAll("");
-    }
+        boolean doAlert = false;
 
-    public String getNumbersOnly(String text) {
-        return NUMBERS_SLASHES.matcher(text).replaceAll("");
-    }
+        if (line.endsWith("Kills")) {
+            int oldCurrentKills = this.currentKills;
+            this.currentKills = Integer.parseInt(format[0]);
 
-    public String removeDuplicateSpaces(String text) {
-        return text.replaceAll("\\s+", " ");
-    }
+            this.targetKills = Integer.parseInt(format[1]);
 
-    public void checkUpdates() {
-        new Thread(() -> {
-            try {
-                URL url = new URL("https://raw.githubusercontent.com/biscuut/SkyblockAddons/master/build.gradle");
-                URLConnection connection = url.openConnection();
-                connection.setReadTimeout(5000);
-                connection.addRequestProperty("User-Agent", "SkyblockAddons update checker");
-                connection.setDoOutput(true);
-                BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-                String currentLine;
-                String newestVersion = "";
-                while ((currentLine = reader.readLine()) != null) {
-                    if (currentLine.contains("version = \"")) {
-                        String[] newestVersionSplit = currentLine.split(Pattern.quote("version = \""));
-                        newestVersionSplit = newestVersionSplit[1].split(Pattern.quote("\""));
-                        newestVersion = newestVersionSplit[0];
-                        break;
-                    }
-                }
-                main.getRenderListener().getDownloadInfo().setNewestVersion(newestVersion);
-                reader.close();
-                List<Integer> newestVersionNumbers = new ArrayList<>();
-                List<Integer> thisVersionNumbers = new ArrayList<>();
-                try {
-                    for (String s : newestVersion.split(Pattern.quote("."))) {
-                        if (s.contains("-b")) {
-                            String[] splitBuild = s.split(Pattern.quote("-b"));
-                            newestVersionNumbers.add(Integer.parseInt(splitBuild[0]));
-                            newestVersionNumbers.add(Integer.parseInt(splitBuild[1]));
-                        } else {
-                            newestVersionNumbers.add(Integer.parseInt(s));
-                        }
-                    }
-                    for (String s : SkyblockAddons.VERSION.split(Pattern.quote("."))) {
-                        if (s.contains("-b")) {
-                            String[] splitBuild = s.split(Pattern.quote("-b"));
-                            thisVersionNumbers.add(Integer.parseInt(splitBuild[0]));
-                            thisVersionNumbers.add(Integer.parseInt(splitBuild[1]));
-                        } else {
-                            thisVersionNumbers.add(Integer.parseInt(s));
-                        }
-                    }
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                    return;
-                }
-                for (int i = 0; i < 4; i++) {
-                    if (i >= newestVersionNumbers.size()) {
-                        newestVersionNumbers.add(i, 0);
-                    }
-                    if (i >= thisVersionNumbers.size()) {
-                        thisVersionNumbers.add(i, 0);
-                    }
-                }
+            doAlert = oldCurrentKills != this.currentKills && (float) this.currentKills / this.targetKills > 0.9; // If boss percentage to spawn boss over 90%
+        } else if (line.endsWith("Combat XP")) {
+            int oldCurrentExp = this.currentExp;
+            this.currentExp = Integer.parseInt(format[0]);
 
-                boolean outOfBeta = newestVersionNumbers.get(1).equals(thisVersionNumbers.get(1)) &&
-                        newestVersionNumbers.get(2).equals(thisVersionNumbers.get(2)) && // Update message when either: the version numbers are the same, but its longer a build.
-                        newestVersionNumbers.get(3).equals(thisVersionNumbers.get(3)) && SkyblockAddons.VERSION.contains("b") && !newestVersion.contains("b");
-
-                for (int i = 0; i < 4; i++) {
-                    if (newestVersionNumbers.get(i) > thisVersionNumbers.get(i) || // OR: one of the version numbers is higher.
-                            outOfBeta) {
-                        String link = "https://hypixel.net/threads/forge-1-8-9-skyblockaddons-useful-features-for-skyblock.2109217/";
-                        try {
-                            url = new URL("https://raw.githubusercontent.com/biscuut/SkyblockAddons/master/updatelink.txt");
-                            connection = url.openConnection();
-                            connection.setReadTimeout(5000);
-                            connection.addRequestProperty("User-Agent", "SkyblockAddons");
-                            connection.setDoOutput(true);
-                            reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-                            while ((currentLine = reader.readLine()) != null) {
-                                link = currentLine;
-                            }
-                            reader.close();
-                        } catch (Exception ex) {
-                            ex.printStackTrace();
-                        } finally {
-                            main.getRenderListener().getDownloadInfo().setDownloadLink(link);
-                            if (i == 2 || i == 3 || outOfBeta) { // 0.0.x or 0.0.0-bx
-                                main.getRenderListener().getDownloadInfo().setPatch(true);
-                                main.getRenderListener().getDownloadInfo().setMessageType(EnumUtils.UpdateMessageType.PATCH_AVAILABLE);
-                                sendUpdateMessage(true,true);
-                            } else {
-                                main.getRenderListener().getDownloadInfo().setMessageType(EnumUtils.UpdateMessageType.MAJOR_AVAILABLE);
-                                sendUpdateMessage(true,false);
-                            }
-                        }
-                        break;
-                    } else if (thisVersionNumbers.get(i) > newestVersionNumbers.get(i)) {
-                        main.getRenderListener().getDownloadInfo().setMessageType(EnumUtils.UpdateMessageType.DEVELOPMENT);
-                        break;
-                    }
-                }
-            } catch (Exception ex) {
-                ex.printStackTrace();
+            if (format[1].endsWith("k")) {
+                float f = Float.parseFloat(format[1].substring(0, format[1].length() - 1));
+                this.targetExp = (int) (f * 1000);
+            } else {
+                this.targetExp = Integer.parseInt(format[1]);
             }
-        }).start();
-    }
 
-    void sendUpdateMessage(boolean showDownload, boolean showAutoDownload) {
-        String newestVersion = main.getRenderListener().getDownloadInfo().getNewestVersion();
-        sendMessage(color("&7&m------------&7[&b&l SkyblockAddons &7]&7&m------------"), false);
-        if (main.getRenderListener().getDownloadInfo().getMessageType() == EnumUtils.UpdateMessageType.DOWNLOAD_FINISHED) {
-            ChatComponentText deleteOldFile = new ChatComponentText(ChatFormatting.RED+Message.MESSAGE_DELETE_OLD_FILE.getMessage()+"\n");
-            sendMessage(deleteOldFile, false);
-        } else {
-            ChatComponentText newUpdate = new ChatComponentText(ChatFormatting.AQUA+Message.MESSAGE_NEW_UPDATE.getMessage(newestVersion)+"\n");
-            sendMessage(newUpdate, false);
+            doAlert = oldCurrentExp != this.currentExp && (float) this.currentExp / this.targetExp > 0.9;
         }
 
-        ChatComponentText buttonsMessage = new ChatComponentText("");
-        if (showDownload) {
-            buttonsMessage = new ChatComponentText(ChatFormatting.AQUA.toString() + ChatFormatting.BOLD + '[' + Message.MESSAGE_DOWNLOAD_LINK.getMessage(newestVersion) + ']');
-            buttonsMessage.setChatStyle(buttonsMessage.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, main.getRenderListener().getDownloadInfo().getDownloadLink())));
-            buttonsMessage.appendSibling(new ChatComponentText(" "));
+        if (main.getConfigValues().isEnabled(Feature.BOSS_APPROACH_ALERT) && doAlert) {
+            main.getUtils().playLoudSound("random.orb", 0.5);
+            main.getRenderListener().setTitleFeature(Feature.BOSS_APPROACH_ALERT);
+            main.getScheduler().schedule(Scheduler.CommandType.RESET_TITLE_FEATURE, main.getConfigValues().getWarningSeconds());
         }
-
-        if (showAutoDownload) {
-            ChatComponentText downloadAutomatically = new ChatComponentText(ChatFormatting.GREEN.toString() + ChatFormatting.BOLD + '[' + Message.MESSAGE_DOWNLOAD_AUTOMATICALLY.getMessage(newestVersion) + ']');
-            downloadAutomatically.setChatStyle(downloadAutomatically.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/sba update")));
-            buttonsMessage.appendSibling(downloadAutomatically);
-            buttonsMessage.appendSibling(new ChatComponentText(" "));
-        }
-
-        ChatComponentText openModsFolder = new ChatComponentText(ChatFormatting.YELLOW.toString() + ChatFormatting.BOLD + '[' + Message.MESSAGE_OPEN_MODS_FOLDER.getMessage(newestVersion) + ']');
-        openModsFolder.setChatStyle(openModsFolder.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/sba folder")));
-        buttonsMessage.appendSibling(openModsFolder);
-
-        sendMessage(buttonsMessage, false);
-        if (main.getRenderListener().getDownloadInfo().getMessageType() != EnumUtils.UpdateMessageType.DOWNLOAD_FINISHED) {
-            ChatComponentText discord = new ChatComponentText(ChatFormatting.AQUA + Message.MESSAGE_VIEW_PATCH_NOTES.getMessage() + " " +
-                                                                      ChatFormatting.BLUE.toString() + ChatFormatting.BOLD + '[' + Message.MESSAGE_JOIN_DISCORD.getMessage() + ']');
-            discord.setChatStyle(discord.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://discord.gg/PqTAEek")));
-            sendMessage(discord);
-        }
-        sendMessage(color("&7&m----------------------------------------------"), false);
-    }
-
-    public void checkDisabledFeatures() {
-        new Thread(() -> {
-            try {
-                URL url = new URL("https://raw.githubusercontent.com/biscuut/SkyblockAddons/master/disabledFeatures.txt");
-                URLConnection connection = url.openConnection();
-                connection.setReadTimeout(5000);
-                connection.addRequestProperty("User-Agent", "SkyblockAddons");
-                BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-                String currentLine;
-                Set<Feature> disabledFeatures = main.getConfigValues().getRemoteDisabledFeatures();
-                while ((currentLine = reader.readLine()) != null) {
-                    String[] splitLine = currentLine.split(Pattern.quote("|"));
-                    if (!currentLine.startsWith("all|")) {
-                        if (!SkyblockAddons.VERSION.equals(splitLine[0])) {
-                            continue;
-                        }
-                    }
-                    if (splitLine.length > 1) {
-                        for (int i = 1; i < splitLine.length; i++) {
-                            String part = splitLine[i];
-                            Feature feature = Feature.fromId(Integer.parseInt(part));
-                            if (feature != null) {
-                                disabledFeatures.add(feature);
-                            }
-                        }
-                    }
-                }
-                reader.close();
-            } catch (Exception ex) {
-                ex.printStackTrace();
-            }
-        }).start();
     }
 
     public int getDefaultColor(float alphaFloat) {
@@ -466,11 +437,11 @@ public class Utils {
         return false;
     }
 
-    public void fetchEstimateFromServer() {
+    public void fetchMagmaBossEstimate() {
         new Thread(() -> {
             final boolean magmaTimerEnabled = main.getConfigValues().isEnabled(Feature.MAGMA_BOSS_TIMER);
             if(!magmaTimerEnabled) {
-                FMLLog.info("[SkyblockAddons] Getting magma boss spawn estimate from server...");
+                logger.info("Getting magma boss spawn estimate from server...");
             }
             try {
                 URL url = new URL("https://hypixel-api.inventivetalent.org/api/skyblock/bosstimer/magma/estimatedSpawn");
@@ -479,7 +450,7 @@ public class Utils {
                 connection.setRequestProperty("User-Agent", USER_AGENT);
 
                 if(!magmaTimerEnabled) {
-                    FMLLog.info("[SkyblockAddons] Got response code " + connection.getResponseCode());
+                    logger.info("Got response code " + connection.getResponseCode());
                 }
 
                 StringBuilder response = new StringBuilder();
@@ -496,7 +467,7 @@ public class Utils {
                 int magmaSpawnTime = (int)((estimate-currentTime)/1000);
 
                 if(!magmaTimerEnabled) {
-                    FMLLog.info("[SkyblockAddons] Query time was " + currentTime + ", server time estimate is " +
+                    logger.info("Query time was " + currentTime + ", server time estimate is " +
                             estimate + ". Updating magma boss spawn to be in " + magmaSpawnTime + " seconds.");
                 }
 
@@ -504,17 +475,17 @@ public class Utils {
                 main.getPlayerListener().setMagmaAccuracy(EnumUtils.MagmaTimerAccuracy.ABOUT);
             } catch (IOException ex) {
                 if(!magmaTimerEnabled) {
-                    FMLLog.warning("[SkyblockAddons] Failed to get magma boss spawn estimate from server");
+                    logger.warn("Failed to get magma boss spawn estimate from server");
                 }
             }
         }).start();
     }
 
-    public void sendPostRequest(EnumUtils.MagmaEvent event) {
+    public void sendInventiveTalentPingRequest(EnumUtils.MagmaEvent event) {
         new Thread(() -> {
             final boolean magmaTimerEnabled = main.getConfigValues().isEnabled(Feature.MAGMA_BOSS_TIMER);
             if(!magmaTimerEnabled) {
-                FMLLog.info("[SkyblockAddons] Posting event " + event.getInventiveTalentEvent() + " to InventiveTalent API");
+                logger.info("Posting event " + event.getInventiveTalentEvent() + " to InventiveTalent API");
             }
 
             try {
@@ -531,7 +502,7 @@ public class Utils {
                 if (mc != null && mc.thePlayer != null) {
                     String postString;
                     if (event == EnumUtils.MagmaEvent.PING) {
-                        postString = "minecraftUser=" + mc.thePlayer.getName() + "&lastFocused=" + System.currentTimeMillis() / 1000 + "&serverId=" + serverID;
+                        postString = "isModRequest=true&minecraftUser=" + mc.thePlayer.getName() + "&lastFocused=" + System.currentTimeMillis() / 1000 + "&serverId=" + serverID;
                     } else {
                         postString = "type=" + event.getInventiveTalentEvent() + "&isModRequest=true&minecraftUser=" + mc.thePlayer.getName() + "&serverId=" + serverID;
                     }
@@ -542,13 +513,13 @@ public class Utils {
                     }
 
                     if(!magmaTimerEnabled) {
-                        FMLLog.info("[SkyblockAddons] Got response code " + connection.getResponseCode());
+                        logger.info("Got response code " + connection.getResponseCode());
                     }
                     connection.disconnect();
                 }
             } catch (IOException ex) {
                 if(!magmaTimerEnabled) {
-                    FMLLog.warning("[SkyblockAddons] Failed to post event to server");
+                    logger.warn("Failed to post event to server");
                 }
             }
         }).start();
@@ -582,82 +553,12 @@ public class Utils {
         return null;
     }
 
-    // This reverses the text while leaving the english parts intact and in order.
-    // (Maybe its more complicated than it has to be, but it gets the job done.
-    String reverseText(String originalText) {
-        StringBuilder newString = new StringBuilder();
-        String[] parts = originalText.split(" ");
-        for (int i = parts.length; i > 0; i--) {
-            String textPart = parts[i-1];
-            boolean foundCharacter = false;
-            for (char letter : textPart.toCharArray()) {
-                if (letter > 191) { // Found special character
-                    foundCharacter = true;
-                    newString.append(new StringBuilder(textPart).reverse().toString());
-                    break;
-                }
-            }
-            newString.append(" ");
-            if (!foundCharacter) {
-                newString.insert(0, textPart);
-            }
-            newString.insert(0, " ");
-        }
-        return main.getUtils().removeDuplicateSpaces(newString.toString().trim());
-    }
-
-    public boolean cantDropItem(ItemStack item, Rarity rarity, boolean hotbar) {
-        if (Items.bow.equals(item.getItem()) && rarity == Rarity.COMMON || rarity == null) return false; // exclude rare bows lol
-        if (item.hasDisplayName()) {
-            for (String exclusion : RARE_ITEM_OVERRIDES) {
-                if (item.getDisplayName().contains(exclusion)) return true;
-            }
-        }
-        if (hotbar) { // Hotbar items also restrict rare rarity.
-            return item.getItem().isDamageable() || rarity != Rarity.COMMON;
-        } else {
-            return item.getItem().isDamageable() || (rarity != Rarity.COMMON && rarity != Rarity.UNCOMMON);
-        }
-    }
-
-    public void downloadPatch(String version) {
-        File sbaFolder = getSBAFolder(true);
-        if (sbaFolder != null) {
-            main.getUtils().sendMessage(ChatFormatting.YELLOW+Message.MESSAGE_DOWNLOADING_UPDATE.getMessage());
-            new Thread(() -> {
-                try {
-                    String fileName = "SkyblockAddons-"+version+"-for-MC-1.8.9.jar";
-                    URL url = new URL("https://github.com/biscuut/SkyblockAddons/releases/download/v"+version+"/"+fileName);
-                    File outputFile = new File(sbaFolder.toString()+File.separator+fileName);
-                    URLConnection connection = url.openConnection();
-                    long totalFileSize = connection.getContentLengthLong();
-                    main.getRenderListener().getDownloadInfo().setTotalBytes(totalFileSize);
-                    main.getRenderListener().getDownloadInfo().setOutputFileName(fileName);
-                    main.getRenderListener().getDownloadInfo().setMessageType(EnumUtils.UpdateMessageType.DOWNLOADING);
-                    connection.setConnectTimeout(5000);
-                    connection.setReadTimeout(5000);
-                    BufferedInputStream inputStream = new BufferedInputStream(connection.getInputStream());
-                    FileOutputStream fileOutputStream = new FileOutputStream(outputFile);
-                    byte[] dataBuffer = new byte[1024];
-                    int bytesRead;
-                    while ((bytesRead = inputStream.read(dataBuffer, 0, 1024)) != -1) {
-                        fileOutputStream.write(dataBuffer, 0, bytesRead);
-                        main.getRenderListener().getDownloadInfo().setDownloadedBytes(main.getRenderListener().getDownloadInfo().getDownloadedBytes()+bytesRead);
-                    }
-                    main.getRenderListener().getDownloadInfo().setMessageType(EnumUtils.UpdateMessageType.DOWNLOAD_FINISHED);
-                } catch (IOException e) {
-                    main.getRenderListener().getDownloadInfo().setMessageType(EnumUtils.UpdateMessageType.FAILED);
-                    e.printStackTrace();
-                }
-            }).start();
-        }
-    }
-
-    public static String color(String text) {
-        return ChatFormatting.translateAlternateColorCodes('&', text);
-    }
-
-    public File getSBAFolder(boolean changeMessage) {
+    /**
+     * Returns the folder that SkyblockAddons is located in.
+     *
+     * @return the folder the SkyblockAddons jar is located in
+     */
+    public File getSBAFolder() {
         return Loader.instance().activeModContainer().getSource().getParentFile();
     }
 
@@ -677,93 +578,42 @@ public class Utils {
         return -1;
     }
 
+    /**
+     * Checks if it is currently Halloween according to the system calendar.
+     *
+     * @return {@code true} if it is Halloween, {@code false} otherwise
+     */
     public boolean isHalloween() {
         Calendar calendar = Calendar.getInstance();
         return calendar.get(Calendar.MONTH) == Calendar.OCTOBER && calendar.get(Calendar.DAY_OF_MONTH) == 31;
     }
 
+    /**
+     * Checks if the given item is a pickaxe.
+     *
+     * @param item the item to check
+     * @return {@code true} if this item is a pickaxe, {@code false} otherwise
+     */
     public boolean isPickaxe(Item item) {
         return Items.wooden_pickaxe.equals(item) || Items.stone_pickaxe.equals(item) || Items.golden_pickaxe.equals(item) || Items.iron_pickaxe.equals(item) || Items.diamond_pickaxe.equals(item);
     }
 
-    private boolean lookedOnline = false;
-    private URI featuredLink = null;
-
-    public URI getFeaturedURL() {
-        if (featuredLink != null) return featuredLink;
-
-        BufferedReader reader;
-        reader = new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream("assets/skyblockaddons/featuredlink.txt")));
-        try {
-            String currentLine;
-            while ((currentLine = reader.readLine()) != null) {
-                featuredLink = new URI(currentLine);
-            }
-            reader.close();
-        } catch (IOException | URISyntaxException ignored) {
-        }
-
-        return featuredLink;
-    }
-
-    public void getFeaturedURLOnline() {
-        if (!lookedOnline) {
-            lookedOnline = true;
-            new Thread(() -> {
-                try {
-                    URL url = new URL("https://raw.githubusercontent.com/BiscuitDevelopment/SkyblockAddons/master/src/main/resources/assets/skyblockaddons/featuredlink.txt");
-                    URLConnection connection = url.openConnection(); // try looking online
-                    connection.setReadTimeout(5000);
-                    connection.addRequestProperty("User-Agent", "SkyblockAddons");
-                    connection.setDoOutput(true);
-                    BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-                    String currentLine;
-                    while ((currentLine = reader.readLine()) != null) {
-                        featuredLink = new URI(currentLine);
-                    }
-                    reader.close();
-                } catch (IOException | URISyntaxException ignored) {
-                }
-            }).start();
-        }
-    }
-
-    public void drawTextWithStyle(String text, int x, int y, ChatFormatting color) {
-        drawTextWithStyle(text,x,y,color.getRGB(),1);
-    }
-
-    public void drawTextWithStyle(String text, int x, int y, int color) {
-        drawTextWithStyle(text,x,y,color,1);
-    }
-
-    public void drawTextWithStyle(String text, int x, int y, int color, float textAlpha) {
+    public void drawTextWithStyle(String text, float x, float y, int color) {
         if (main.getConfigValues().getTextStyle() == EnumUtils.TextStyle.STYLE_TWO) {
-            int colorBlack = new Color(0, 0, 0, textAlpha > 0.016 ? textAlpha : 0.016F).getRGB();
-            String strippedText = main.getUtils().stripColor(text);
-            MinecraftReflection.FontRenderer.drawString(strippedText, x + 1, y, colorBlack);
-            MinecraftReflection.FontRenderer.drawString(strippedText, x - 1, y, colorBlack);
-            MinecraftReflection.FontRenderer.drawString(strippedText, x, y + 1, colorBlack);
-            MinecraftReflection.FontRenderer.drawString(strippedText, x, y - 1, colorBlack);
-            MinecraftReflection.FontRenderer.drawString(text, x, y, color);
+            int colorAlpha = Math.max(getAlpha(color), 4);
+            int colorBlack = new Color(0, 0, 0, colorAlpha/255F).getRGB();
+            String strippedText = TextUtils.stripColor(text);
+            Minecraft.getMinecraft().fontRendererObj.drawString(strippedText, x + 1, y, colorBlack, false);
+            Minecraft.getMinecraft().fontRendererObj.drawString(strippedText, x - 1, y, colorBlack, false);
+            Minecraft.getMinecraft().fontRendererObj.drawString(strippedText, x, y + 1, colorBlack, false);
+            Minecraft.getMinecraft().fontRendererObj.drawString(strippedText, x, y - 1, colorBlack, false);
+            Minecraft.getMinecraft().fontRendererObj.drawString(text, x, y, color, false);
         } else {
-            MinecraftReflection.FontRenderer.drawString(text, x, y, color, true);
+            Minecraft.getMinecraft().fontRendererObj.drawString(text, x, y, color, true);
         }
     }
-
-    public static String niceDouble(double value, int decimals) {
-        if(value == (long) value) {
-            return String.format("%d", (long)value);
-        } else {
-            return String.format("%."+decimals+"f", value);
-        }
-    }
-
     public int getDefaultBlue(int alpha) {
         return new Color(160, 225, 229, alpha).getRGB();
-    }
-
-    public String stripColor(String text) {
-        return RegexUtil.strip(text, RegexUtil.VANILLA_PATTERN);
     }
 
     public void reorderEnchantmentList(List<String> enchantments) {
@@ -781,6 +631,10 @@ public class Utils {
         enchantments.addAll(orderedEnchants.values());
     }
 
+    public int getAlpha(int color) {
+        return (color >> 24 & 255);
+    }
+
     public float denormalizeScale(float value, float min, float max, float step) {
         return snapToStepClamp(min + (max - min) *
                 MathHelper.clamp_float(value, 0.0F, 1.0F), min, max, step);
@@ -789,5 +643,284 @@ public class Utils {
     private float snapToStepClamp(float value, float min, float max, float step) {
         value = step * (float) Math.round(value / step);
         return MathHelper.clamp_float(value, min, max);
+    }
+
+    public void bindRGBColor(int color) {
+        float r = (float) (color >> 16 & 255) / 255.0F;
+        float g = (float) (color >> 8 & 255) / 255.0F;
+        float b = (float) (color & 255) / 255.0F;
+        float a = (float) (color >> 24 & 255) / 255.0F;
+
+        GlStateManager.color(r, g, b, a);
+    }
+
+    public void bindColorInts(int r, int g, int b, int a) {
+        GlStateManager.color(r/255F, g/255F, b/255F, a/255F);
+}
+
+    public String[] wrapSplitText(String text, int wrapLength) {
+        return WordUtils.wrap(text, wrapLength).replace("\r", "").split(Pattern.quote("\n"));
+    }
+
+    public boolean itemIsInHotbar(ItemStack itemStack) {
+        ItemStack[] inventory = Minecraft.getMinecraft().thePlayer.inventory.mainInventory;
+
+        for (int slot = 0; slot < 9; slot ++) {
+            if (inventory[slot] == itemStack) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public int getColorWithAlpha(int color, int alpha) {
+        return color + ((alpha << 24) & 0xFF000000);
+    }
+
+    /**
+     * Draws a textured rectangle at z = 0. Args: x, y, u, v, width, height, textureWidth, textureHeight
+     */
+    public void drawModalRectWithCustomSizedTexture(float x, float y, float u, float v, float width, float height, float textureWidth, float textureHeight)
+    {
+        float f = 1.0F / textureWidth;
+        float f1 = 1.0F / textureHeight;
+        Tessellator tessellator = Tessellator.getInstance();
+        WorldRenderer worldrenderer = tessellator.getWorldRenderer();
+        worldrenderer.begin(7, DefaultVertexFormats.POSITION_TEX);
+        worldrenderer.pos(x, y + height, 0.0D).tex(u * f, (v + height) * f1).endVertex();
+        worldrenderer.pos(x + width, y + height, 0.0D).tex((u + width) * f, (v + height) * f1).endVertex();
+        worldrenderer.pos(x + width, y, 0.0D).tex((u + width) * f, v * f1).endVertex();
+        worldrenderer.pos(x, y, 0.0D).tex(u * f, v * f1).endVertex();
+        tessellator.draw();
+    }
+
+    /**
+     * Draws a solid color rectangle with the specified coordinates and color (ARGB format). Args: x1, y1, x2, y2, color
+     */
+    public void drawRect(double left, double top, double right, double bottom, int color)
+    {
+        if (left < right) {
+            double i = left;
+            left = right;
+            right = i;
+        }
+
+        if (top < bottom) {
+            double j = top;
+            top = bottom;
+            bottom = j;
+        }
+
+        float f3 = (float)(color >> 24 & 255) / 255.0F;
+        float f = (float)(color >> 16 & 255) / 255.0F;
+        float f1 = (float)(color >> 8 & 255) / 255.0F;
+        float f2 = (float)(color & 255) / 255.0F;
+        Tessellator tessellator = Tessellator.getInstance();
+        WorldRenderer worldrenderer = tessellator.getWorldRenderer();
+        GlStateManager.enableBlend();
+        GlStateManager.disableTexture2D();
+        GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
+        GlStateManager.color(f, f1, f2, f3);
+        worldrenderer.begin(7, DefaultVertexFormats.POSITION);
+        worldrenderer.pos(left, bottom, 0.0D).endVertex();
+        worldrenderer.pos(right, bottom, 0.0D).endVertex();
+        worldrenderer.pos(right, top, 0.0D).endVertex();
+        worldrenderer.pos(left, top, 0.0D).endVertex();
+        tessellator.draw();
+        GlStateManager.enableTexture2D();
+        GlStateManager.disableBlend();
+    }
+
+    public void loadLanguageFile(boolean pullOnline) {
+        loadLanguageFile(main.getConfigValues().getLanguage());
+        if (pullOnline) main.getUtils().tryPullingLanguageOnline(main.getConfigValues().getLanguage()); // Try getting an updated version online after loading the local one.
+    }
+
+    public void loadLanguageFile(Language language) {
+        try {
+            InputStream fileStream = getClass().getClassLoader().getResourceAsStream("lang/" + language.getPath() + ".json");
+            if (fileStream != null) {
+                ByteArrayOutputStream result = new ByteArrayOutputStream();
+                byte[] buffer = new byte[1024];
+                int length;
+                while ((length = fileStream.read(buffer)) != -1) {
+                    result.write(buffer, 0, length);
+                }
+                String dataString = result.toString("UTF-8");
+                main.getConfigValues().setLanguageConfig(new JsonParser().parse(dataString).getAsJsonObject());
+                fileStream.close();
+            }
+        } catch (JsonParseException | IllegalStateException | IOException ex) {
+            ex.printStackTrace();
+            System.out.println("SkyblockAddons: There was an error loading the language file.");
+        }
+    }
+
+    public void tryPullingLanguageOnline(Language language) {
+        FMLLog.info("[SkyblockAddons] Attempting to pull updated language files from online.");
+        new Thread(() -> {
+            try {
+                URL url = new URL(String.format(main.getOnlineData().getLanguageJSONFormat(), language.getPath()));
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                connection.setRequestMethod("GET");
+                connection.setRequestProperty("User-Agent", Utils.USER_AGENT);
+
+                FMLLog.info("[SkyblockAddons] Got response code " + connection.getResponseCode());
+
+                StringBuilder response = new StringBuilder();
+                try (BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
+                    String line;
+                    while ((line = in.readLine()) != null) {
+                        response.append(line);
+                    }
+                }
+                connection.disconnect();
+                JsonObject onlineMessages = new Gson().fromJson(response.toString(), JsonObject.class);
+                mergeLanguageJsonObject(onlineMessages, main.getConfigValues().getLanguageConfig());
+            } catch (JsonParseException | IllegalStateException | IOException ex) {
+                ex.printStackTrace();
+                System.out.println("SkyblockAddons: There was an error loading the language file online");
+            }
+        }).start();
+    }
+
+    /**
+     * This is used to merge in the online language entries into the existing ones.
+     * Using this method rather than an overwrite allows new entries in development to still exist.
+     *
+     * @param jsonObject The object to be merged (online entries).
+     * @param targetObject The object to me merged in to (local entries).
+     */
+    private void mergeLanguageJsonObject(JsonObject jsonObject, JsonObject targetObject) {
+        for (Map.Entry<String, JsonElement> entry : targetObject.entrySet()) {
+            String memberName = entry.getKey();
+            JsonElement value = entry.getValue();
+            if (jsonObject.has(memberName)) {
+                if (value instanceof JsonObject) {
+                    mergeLanguageJsonObject(jsonObject.getAsJsonObject(memberName), (JsonObject)value);
+                } else {
+                    targetObject.add(memberName, value);
+                }
+            }
+        }
+    }
+
+    public BufferedReader getBufferedReader(String localPath) {
+        try {
+            return new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream(localPath)));
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return null;
+        }
+    }
+
+    public void pullOnlineData() {
+        logger.info("Attempting to grab data from online.");
+        new Thread(() -> {
+            try {
+                URL url = new URL("https://raw.githubusercontent.com/biscuut/SkyblockAddons/master/src/main/resources/data.json");
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                connection.setRequestMethod("GET");
+                connection.setRequestProperty("User-Agent", Utils.USER_AGENT);
+
+                logger.info("Online data - Got response code " + connection.getResponseCode());
+
+                StringBuilder response = new StringBuilder();
+                try (BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
+                    String line;
+                    while ((line = in.readLine()) != null) {
+                        response.append(line);
+                    }
+                }
+                connection.disconnect();
+
+                main.setOnlineData(new Gson().fromJson(response.toString(), OnlineData.class));
+                logger.info("Successfully grabbed online data.");
+            } catch (Exception ex) {
+                logger.warn("There was an error while trying to pull the online data...");
+                logger.catching(ex);
+            }
+        }).start();
+    }
+
+    private Set<ResourceLocation> rescaling = new HashSet<>();
+    private Map<ResourceLocation, Object> rescaled = new HashMap<>();
+
+    /**
+     *
+     * Enter a resource location, width, and height and this will
+     * rescale that image in a new thread, and return a new dynamic
+     * texture.
+     *
+     * While the image is processing in the other thread, it will
+     * return the original image, but *at most* it should take a few
+     * seconds.
+     *
+     * Once the image is processed the result is cached in the map,
+     * and will not be re-done. If you need this resource location
+     * to be scaled again, set the redo flag to true.
+     *
+     * @param resourceLocation The original image to scale.
+     * @param width The width to scale to.
+     * @param height The Height to scale to.
+     * @param redo Whether to redo the scaling if it is already complete.
+     * @return Either the scaled resource if it is complete, or the original resource if not.
+     */
+    public ResourceLocation getScaledResource(ResourceLocation resourceLocation, int width, int height, boolean redo) {
+        TextureManager textureManager = Minecraft.getMinecraft().getTextureManager();
+
+        if (!redo && rescaled.containsKey(resourceLocation)) {
+            Object object = rescaled.get(resourceLocation);
+            if (object instanceof ResourceLocation) {
+                return (ResourceLocation) object;
+            } else if (object instanceof BufferedImage) {
+                String name = "sba_scaled_"+resourceLocation.getResourcePath().replace("/", "_").replace(".", "_");
+                ResourceLocation scaledResourceLocation = textureManager.getDynamicTextureLocation(name, new DynamicTexture((BufferedImage) object));
+                rescaled.put(resourceLocation, scaledResourceLocation);
+                return scaledResourceLocation;
+            }
+        }
+
+        if (rescaling.contains(resourceLocation)) return resourceLocation; // Not done yet.
+
+        if (redo) {
+            if (rescaled.containsKey(resourceLocation)) {
+                Object removed = rescaled.remove(resourceLocation);
+                if (removed instanceof ResourceLocation) {
+                    textureManager.deleteTexture((ResourceLocation)removed);
+                }
+            }
+        }
+
+        rescaling.add(resourceLocation);
+
+        new Thread(() -> {
+            try {
+                BufferedImage originalImage = ImageIO.read(SkyblockAddonsGui.class.getClassLoader().getResourceAsStream("assets/"+resourceLocation.getResourceDomain()+"/"+resourceLocation.getResourcePath()));
+                Image scaledImageAbstract = originalImage.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+                BufferedImage scaledImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+
+                Graphics graphics = scaledImage.getGraphics();
+                graphics.drawImage(scaledImageAbstract, 0, 0, null);
+                graphics.dispose();
+
+                rescaled.put(resourceLocation, scaledImage);
+                rescaling.remove(resourceLocation);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                rescaled.put(resourceLocation, resourceLocation);
+                rescaling.remove(resourceLocation);
+            }
+        }).start();
+
+        return resourceLocation; // Processing has started in another thread, but not done yet.
+    }
+
+    public boolean isAxe(Item item) {
+        return Items.wooden_axe.equals(item) ||
+                Items.stone_axe.equals(item) ||
+                Items.golden_axe.equals(item) ||
+                Items.iron_axe.equals(item) ||
+                Items.diamond_axe.equals(item);
     }
 }

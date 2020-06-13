@@ -104,7 +104,20 @@
       "fade": "Color Fade"
     },
     "chromaFadeWidth": "Chroma Fade Width",
-    "sortTabEffectTimers": "Sort Timers by Duration"
+    "sortTabEffectTimers": "Sort Timers by Duration",
+    "showBrokenFragments": "Show Broken Dragon Fragments",
+    "skyblockAddonsButtonInPauseMenu": "Show SBA Button in Pause Menu",
+    "showTotalZealotCount": "Zealot Counter - Total Zealot Count",
+    "showSummoningEyeCount": "Zealot Counter - Total Eye Count",
+    "showZealotsPerEye": "Zealot Counter - Show Zealots Per Eye",
+    "turnBowGreenWhenUsingToxicArrowPoison": "Color Bow Green When Using Toxic Arrow Poison",
+    "birchParkRainmakerTimer": "Birch Park Rainmaker Timer",
+    "combatTimerDisplay": "Combat Timer Display",
+    "discordRP": "Discord Rich Presence",
+    "endstoneProtectorDisplay": "Endstone Protector Display",
+    "fancyWarpMenu": "Fancy Warp Menu",
+    "doubleWarp": "Warp Twice",
+    "advancedMode": "Advanced Mode"
   },
   "messages": {
     "dropConfirmation": "아이템을 정말로 버리려면 다시 버리세요!",
@@ -122,19 +135,15 @@
       "reforges": "리포지",
       "crafting": "제작"
     },
-    "newUpdateAvailable": "새로운 버전을 (%version%) 를 사용할수있습니다",
-    "deleteOldFile": "다운로드가 완료되었습니다. 아래 버튼을 사용하여 mods 폴더를 열고 마인크래프트를 종료 후 이전 버전을 삭제하십시오 (원하는경우 나중에 삭제하십시오).",
     "wantToViewPatchNotes": "변경 사항을 확인하시겠습니까?",
     "downloadLink": "업데이트 링크",
-    "downloadAutomatically": "자동 다운로드",
+    "directDownload": "DIRECT DOWNLOAD LINK",
     "openModFolder": "모드 폴더",
     "joinTheDiscord": "디스코드 가입",
+    "newUpdateAvailable": "A new update (%version%) is available!",
     "update": {
       "majorAvailable": "새로운 업데이트 ( % version %) 가 제공됩니다! 다운로드 링크는 채팅에서 찾을수 있습니다.",
-      "patchAvailable": "새로운 패치 업데이트 ( % version %) 가 제공됩니다! 채팅에서 다운로드 옵션을 찾으십시오!",
-      "downloading": "패치가 다운로드 중입니다! 상태:%downloaded%/%total% 다운로드가 완료되면 이전 파일을 삭제해야합니다.",
-      "failed": "패치 다운로드에 실패했습니다! 채팅 링크를 사용하여 수동으로 다운로드하십시오.",
-      "downloadFinished": "모드 다운로드가 %file%로 저장되었습니다. 마인크래프트를 닫은 후 이전파일을 삭제하는 것을 잊지 마십시오. 채팅에서 메세지를 클릭하여 폴더를 엽니다."
+      "patchAvailable": "새로운 패치 업데이트 ( % version %) 가 제공됩니다! 채팅에서 다운로드 옵션을 찾으십시오!"
     },
     "slotLocked": "이 슬롯은 잠겨있습니다!",
     "summoningEyeFound": "소환의 눈!",
@@ -154,6 +163,37 @@
     "noArrowsLeft": "No Arrows Left!",
     "chooseAColor": "Choose a Color",
     "selectedColor": "Selected Color",
-    "setHexColor": "Set Hex Color"
+    "setHexColor": "Set Hex Color",
+    "rescaleFeatures": "Rescale Features",
+    "resizeBars": "Resize Bars",
+    "showColorIcons": "Show Color Icons",
+    "stage": "Stage %stage%",
+    "switchedSlots": "You have just switched from a locked slot or rare item. Please wait a bit before dropping!",
+    "clickToOpenLink": "Click to open this link!",
+    "clickToOpenFolder": "Click to open your mods folder!",
+    "freezeBackpackPreview": "Freeze Backpack Preview",
+    "hideGreyEnchants": "Hide Regular Grey Enchants"
+  },
+  "discordStatus": {
+    "titleNone": "None",
+    "descriptionNone": "No text is displayed",
+    "titleLocation": "Location",
+    "descriptionLocation": "Shows your current location",
+    "titlePurse": "Purse",
+    "descriptionPurse": "Shows the amount of coins in your purse",
+    "titleStats": "Stats",
+    "descriptionStats": "Shows your HP, Defense and Mana stats",
+    "titleZealots": "Zealots",
+    "descriptionZealots": "Shows your Zealot counter",
+    "titleItem": "Held Item",
+    "descriptionItem": "Shows the name of the item you're holding",
+    "titleProfile": "Profile",
+    "descriptionProfile": "Shows your Profile name",
+    "titleTime": "Skyblock Time",
+    "descriptionTime": "Shows the current Skyblock time. E.g. 12:00am 1st Early Winter",
+    "titleCustom": "Custom Status",
+    "descriptionCustom": "Enter a custom status",
+    "titleAuto": "Auto Status",
+    "descriptionAuto": "Automatically displays a status. E.g. your zealot count while in the end."
   }
 }

@@ -8,7 +8,7 @@
     "skeletonHatBonesBar": "Ukazatel kostí pro Skeleton Helmet",
     "hideFoodAndArmor": "Skrýt ukazatel jídla a armoru",
     "fullInventoryWarning": "Varování o plném inventáři",
-    "repeating": "Opakování",
+    "repeating": "Opakovat Varování",
     "disableEmberRodAbility": "Zakázat schopnost Ember Rodu na ostrově",
     "editLocations": "Upravit lokace",
     "guiScale": "Velikost ukazetelů: %scale%",
@@ -86,7 +86,7 @@
       "compact": "Kompaktní"
     },
     "disableMagicalSoupMessage": "Vypnout zprávu magické houbové polévky",
-    "zealotCounter": "Ukázat Počítadlo Zealotů",
+    "zealotCounter": "Počítadlo Zealotů - Počet od posledního oka",
     "tickerChargesDisplay": "Zobrazení Tickerů/Nabití",
     "tab": {
       "generalSettings": "Obecná nastavení"
@@ -104,7 +104,20 @@
       "fade": "Barevné vyblednutí"
     },
     "chromaFadeWidth": "Šířka vyblednutí měnění barev",
-    "sortTabEffectTimers": "Seřadit Časovače podle délky"
+    "sortTabEffectTimers": "Seřadit Časovače podle délky",
+    "showBrokenFragments": "Zobrazit rozbité Dragon Fragmenty",
+    "skyblockAddonsButtonInPauseMenu": "Zobrazit Tlačítko SBA v Pauznutém menu",
+    "showTotalZealotCount": "Počítadlo Zealotů - Celkový počet Zealotů",
+    "showSummoningEyeCount": "Počítadlo Zealotů - Celkový počet očí",
+    "showZealotsPerEye": "Počítadlo Zealotů - Zobrazit Zealoty/Oko",
+    "turnBowGreenWhenUsingToxicArrowPoison": "Obarvit luk zeleně při použití Toxického jedu na šíp",
+    "birchParkRainmakerTimer": "Časovač Dešťotvůrce v Birch Parku",
+    "combatTimerDisplay": "Zobrazení času v boji",
+    "discordRP": "Discord Rich Presence",
+    "endstoneProtectorDisplay": "Ukazatel Endstone Protectora",
+    "fancyWarpMenu": "Krásnější Warp Menu",
+    "doubleWarp": "Warpnout dvakrát",
+    "advancedMode": "Pokročílý mód"
   },
   "messages": {
     "dropConfirmation": "Vyhoď tento item pro vyhození!",
@@ -113,7 +126,7 @@
     "labymod": "Uživatelé Labymodu: Skrytí jídla, armoru a ukazatel zdraví je nekompatabilní.",
     "minionCannotReach": "%type% minion Nemůže dosáhnout a přestal pracovat!",
     "minionIsFull": "Minion na tvém ostrově je plný!",
-    "typeEnchantmentsHere": "Typ %type% je tady!",
+    "typeEnchantmentsHere": "Vypište %type% zde!",
     "separateMultiple": "Oddělte více čárkami.",
     "enchantsToMatch": "Shodující se %type%:",
     "enchantsToExclude": "Vyloučené %type%:",
@@ -122,19 +135,15 @@
       "reforges": "překování",
       "crafting": "Výroba"
     },
-    "newUpdateAvailable": "Nová aktualizace (%version%) je připravena!",
-    "deleteOldFile": "Stahování skočilo, prosím otevři svoji složku mods pomocí tlačítka dole, zavři minecraft, a smaž starou verzi(nebo ji smaž potom pokud chceš).",
     "wantToViewPatchNotes": "Chceš si přečíst změny?",
     "downloadLink": "Odkaz pro aktualizaci",
-    "downloadAutomatically": "Automatické stahování",
+    "directDownload": "PŘÍMÝ ODKAZ NA STAŽENÍ",
     "openModFolder": "SLOŽKA S MODY",
-    "joinTheDiscord": "Připojit se na discord",
+    "joinTheDiscord": "ODKAZ NA DISCORD",
+    "newUpdateAvailable": "Nová aktualizace (%version%) je dostupná!",
     "update": {
       "majorAvailable": "Nová hlavní aktualizace (%version%) je připravena! Link na stažení je v chatu.",
-      "patchAvailable": "Nový opravující update (verze %version%) je nyní dostupný! Koukněte do chatu pro možnosti stahování!",
-      "downloading": "Aktualizace se stahuje! Status: %downloaded%/%total% Prosím berte na vědomí že potom co se aktualizace dokončí, musíte smazat starou složku.",
-      "failed": "Stáhnutí aktualizace selhalo! Prosím stáhněte ho manuálně pomocí linku v chatu.",
-      "downloadFinished": "Aktualizace dokončila stažení. Byla uložena jako %file%. Prosím nezapomeň smazat starou složku potom co zavřeš minecraft."
+      "patchAvailable": "Nový opravující update (verze %version%) je nyní dostupný! Koukněte do chatu pro možnosti stahování!"
     },
     "slotLocked": "Tento slot je uzamčen!",
     "summoningEyeFound": "Vyvolávací oko!",
@@ -154,6 +163,37 @@
     "noArrowsLeft": "Došly šípy!",
     "chooseAColor": "Zvolit barvu",
     "selectedColor": "Vybraná barva",
-    "setHexColor": "Nastavit hexadecimální barvu"
+    "setHexColor": "Nastavit hexadecimální barvu",
+    "rescaleFeatures": "Přeškálovat funkce",
+    "resizeBars": "Změnit rozměry ukazatele",
+    "showColorIcons": "Zobrazit barevné ikony",
+    "stage": "Fáze %stage%",
+    "switchedSlots": "Právě jsi přepnul z uzamknutého slotu nebo vzácného předmětu. Chvilku počkej před vyhozením!",
+    "clickToOpenLink": "Klikni pro otevření odkazu!",
+    "clickToOpenFolder": "Klikni pro otevření tvé složky pro módy!",
+    "freezeBackpackPreview": "Zmrazit náhled batohu",
+    "hideGreyEnchants": "Skrýt regulérní šedé očarování"
+  },
+  "discordStatus": {
+    "titleNone": "Žádné",
+    "descriptionNone": "Není zobrazen text",
+    "titleLocation": "Lokace",
+    "descriptionLocation": "Zobrazuje tvoji současnou lokaci",
+    "titlePurse": "Peněženka",
+    "descriptionPurse": "Zobrazuje počet mincí v tvé peněžence",
+    "titleStats": "Statistiky",
+    "descriptionStats": "Zobrazí tvoje HP, Obranu a Manu",
+    "titleZealots": "Zealoti",
+    "descriptionZealots": "Zobrazuje tvoje počítadlo zealotů",
+    "titleItem": "Držený item",
+    "descriptionItem": "Zobrazuje název předmětu v tvé ruce",
+    "titleProfile": "Profil",
+    "descriptionProfile": "Zobrazí tvoje jméno profilu",
+    "titleTime": "Skyblock Čas",
+    "descriptionTime": "Zobrazí současný čas na Skyblocku. Např. 12:00am 1st Early Winter",
+    "titleCustom": "Vlastní status",
+    "descriptionCustom": "Vložte vlastní status",
+    "titleAuto": "Automatický status",
+    "descriptionAuto": "Automaticky zobrazí status. Např. tvoje počítadlo zealotů v endu."
   }
 }

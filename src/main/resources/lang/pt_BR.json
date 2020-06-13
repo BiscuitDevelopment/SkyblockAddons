@@ -104,7 +104,20 @@
       "fade": "Color Fade"
     },
     "chromaFadeWidth": "Chroma Fade Width",
-    "sortTabEffectTimers": "Sort Timers by Duration"
+    "sortTabEffectTimers": "Sort Timers by Duration",
+    "showBrokenFragments": "Show Broken Dragon Fragments",
+    "skyblockAddonsButtonInPauseMenu": "Show SBA Button in Pause Menu",
+    "showTotalZealotCount": "Zealot Counter - Total Zealot Count",
+    "showSummoningEyeCount": "Zealot Counter - Total Eye Count",
+    "showZealotsPerEye": "Zealot Counter - Show Zealots Per Eye",
+    "turnBowGreenWhenUsingToxicArrowPoison": "Color Bow Green When Using Toxic Arrow Poison",
+    "birchParkRainmakerTimer": "Birch Park Rainmaker Timer",
+    "combatTimerDisplay": "Combat Timer Display",
+    "discordRP": "Discord Rich Presence",
+    "endstoneProtectorDisplay": "Endstone Protector Display",
+    "fancyWarpMenu": "Fancy Warp Menu",
+    "doubleWarp": "Warp Twice",
+    "advancedMode": "Advanced Mode"
   },
   "messages": {
     "dropConfirmation": "Large este item de novo para confirmar!",
@@ -122,19 +135,15 @@
       "reforges": "Reforjadas",
       "crafting": "Criação"
     },
-    "newUpdateAvailable": "Uma nova atualização (%version%) está disponível!",
-    "deleteOldFile": "O download terminou, por favor, abra sua pasta de mods utilizando o botão abaixo, feche seu Minecraft e delete a versão antiga (ou delete mais tarde se você preferir).",
     "wantToViewPatchNotes": "Quer ler as alterações?",
     "downloadLink": "Link da Atualização",
-    "downloadAutomatically": "Download Automático",
+    "directDownload": "DIRECT DOWNLOAD LINK",
     "openModFolder": "Pasta mods",
     "joinTheDiscord": "Entre no discord",
+    "newUpdateAvailable": "A new update (%version%) is available!",
     "update": {
       "majorAvailable": "Uma nova atualização importante (%version%) está disponível! O link para o download pode ser encontrado no chat.",
-      "patchAvailable": "Uma nova atualização para correção de erros (%version%) está disponível! O link para as opções de download está no chat!",
-      "downloading": "O download da atualização está sendo efetuado! Status: %downloaded%/%total%. Por favor, quando o download terminar, delete a versão antiga.",
-      "failed": "O download da atualização falhou! Por favor faça o download manualmente utilizando o link do chat.",
-      "downloadFinished": "A atualização terminou de baixar. Foi salvo como %file%. Por favor, não se esqueça de excluir o arquivo antigo após fechar seu Minecraft. Clique na mensagem que está no chat para abrir a pasta."
+      "patchAvailable": "Uma nova atualização para correção de erros (%version%) está disponível! O link para as opções de download está no chat!"
     },
     "slotLocked": "Este slot está trancado!",
     "summoningEyeFound": "Olho de Invocação!",
@@ -154,6 +163,37 @@
     "noArrowsLeft": "Sem flechas restantes!",
     "chooseAColor": "Escolha uma cor",
     "selectedColor": "Cor selecionada",
-    "setHexColor": "Definir a cor em hex"
+    "setHexColor": "Definir a cor em hex",
+    "rescaleFeatures": "Rescale Features",
+    "resizeBars": "Resize Bars",
+    "showColorIcons": "Show Color Icons",
+    "stage": "Stage %stage%",
+    "switchedSlots": "You have just switched from a locked slot or rare item. Please wait a bit before dropping!",
+    "clickToOpenLink": "Click to open this link!",
+    "clickToOpenFolder": "Click to open your mods folder!",
+    "freezeBackpackPreview": "Freeze Backpack Preview",
+    "hideGreyEnchants": "Hide Regular Grey Enchants"
+  },
+  "discordStatus": {
+    "titleNone": "None",
+    "descriptionNone": "No text is displayed",
+    "titleLocation": "Location",
+    "descriptionLocation": "Shows your current location",
+    "titlePurse": "Purse",
+    "descriptionPurse": "Shows the amount of coins in your purse",
+    "titleStats": "Stats",
+    "descriptionStats": "Shows your HP, Defense and Mana stats",
+    "titleZealots": "Zealots",
+    "descriptionZealots": "Shows your Zealot counter",
+    "titleItem": "Held Item",
+    "descriptionItem": "Shows the name of the item you're holding",
+    "titleProfile": "Profile",
+    "descriptionProfile": "Shows your Profile name",
+    "titleTime": "Skyblock Time",
+    "descriptionTime": "Shows the current Skyblock time. E.g. 12:00am 1st Early Winter",
+    "titleCustom": "Custom Status",
+    "descriptionCustom": "Enter a custom status",
+    "titleAuto": "Auto Status",
+    "descriptionAuto": "Automatically displays a status. E.g. your zealot count while in the end."
   }
 }

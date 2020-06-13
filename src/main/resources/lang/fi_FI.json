@@ -104,7 +104,20 @@
       "fade": "Color Fade"
     },
     "chromaFadeWidth": "Chroma Fade Width",
-    "sortTabEffectTimers": "Sort Timers by Duration"
+    "sortTabEffectTimers": "Sort Timers by Duration",
+    "showBrokenFragments": "Show Broken Dragon Fragments",
+    "skyblockAddonsButtonInPauseMenu": "Show SBA Button in Pause Menu",
+    "showTotalZealotCount": "Zealot Counter - Total Zealot Count",
+    "showSummoningEyeCount": "Zealot Counter - Total Eye Count",
+    "showZealotsPerEye": "Zealot Counter - Show Zealots Per Eye",
+    "turnBowGreenWhenUsingToxicArrowPoison": "Color Bow Green When Using Toxic Arrow Poison",
+    "birchParkRainmakerTimer": "Birch Park Rainmaker Timer",
+    "combatTimerDisplay": "Combat Timer Display",
+    "discordRP": "Discord Rich Presence",
+    "endstoneProtectorDisplay": "Endstone Protector Display",
+    "fancyWarpMenu": "Fancy Warp Menu",
+    "doubleWarp": "Warp Twice",
+    "advancedMode": "Advanced Mode"
   },
   "messages": {
     "dropConfirmation": "Pudota tämä esine uudelleen vahvistaaksesi!",
@@ -122,19 +135,15 @@
       "reforges": "Reforget",
       "crafting": "Craftaus"
     },
-    "newUpdateAvailable": "Uusi päivitys (%version%) on saatavilla!",
-    "deleteOldFile": "Lataus on päättynyt, avaa mods kansiosi käyttämällä alla olevaa nappia, sulje Minecraft, ja poista vanha versio (tai poista se myöhemmin jos niin haluat).",
     "wantToViewPatchNotes": "Haluatko lukeat muutokset?",
     "downloadLink": "PÄIVITYSLINKKI",
-    "downloadAutomatically": "AUTOMAATTINEN LATAUS",
+    "directDownload": "DIRECT DOWNLOAD LINK",
     "openModFolder": "MODS KANSIO",
     "joinTheDiscord": "LIITY DISCORDIIN",
+    "newUpdateAvailable": "A new update (%version%) is available!",
     "update": {
       "majorAvailable": "Uusi iso päivitys (%version%) on saatavilla! Linkki löytyy chatistä.",
-      "patchAvailable": "Uusi patch päivitys (%version%) on saatavilla! Katso chattiin nähdäksesi latausvaihtoehdot!",
-      "downloading": "Patchi lataa! Status: %downloaded%/%total% Huomioi, että kun lataus on valmis, sinun on poistettava vanha tiedosto.",
-      "failed": "Patchin lataaminen epäonnistui! Lataa se manuaalisesti käyttämällä linkkiä chatissä.",
-      "downloadFinished": "Patch on ladannut. Se on tallennettuna nimellä %file%. Älä unohda poistaa vanhaa tiedostoa suljettuasi Minecraftin. Paina viestiä chatissä avataksesi kansion."
+      "patchAvailable": "Uusi patch päivitys (%version%) on saatavilla! Katso chattiin nähdäksesi latausvaihtoehdot!"
     },
     "slotLocked": "Tämä paikka on lukittu!",
     "summoningEyeFound": "Kutsumissilmä!",
@@ -154,6 +163,37 @@
     "noArrowsLeft": "No Arrows Left!",
     "chooseAColor": "Choose a Color",
     "selectedColor": "Selected Color",
-    "setHexColor": "Set Hex Color"
+    "setHexColor": "Set Hex Color",
+    "rescaleFeatures": "Rescale Features",
+    "resizeBars": "Resize Bars",
+    "showColorIcons": "Show Color Icons",
+    "stage": "Stage %stage%",
+    "switchedSlots": "You have just switched from a locked slot or rare item. Please wait a bit before dropping!",
+    "clickToOpenLink": "Click to open this link!",
+    "clickToOpenFolder": "Click to open your mods folder!",
+    "freezeBackpackPreview": "Freeze Backpack Preview",
+    "hideGreyEnchants": "Hide Regular Grey Enchants"
+  },
+  "discordStatus": {
+    "titleNone": "None",
+    "descriptionNone": "No text is displayed",
+    "titleLocation": "Location",
+    "descriptionLocation": "Shows your current location",
+    "titlePurse": "Purse",
+    "descriptionPurse": "Shows the amount of coins in your purse",
+    "titleStats": "Stats",
+    "descriptionStats": "Shows your HP, Defense and Mana stats",
+    "titleZealots": "Zealots",
+    "descriptionZealots": "Shows your Zealot counter",
+    "titleItem": "Held Item",
+    "descriptionItem": "Shows the name of the item you're holding",
+    "titleProfile": "Profile",
+    "descriptionProfile": "Shows your Profile name",
+    "titleTime": "Skyblock Time",
+    "descriptionTime": "Shows the current Skyblock time. E.g. 12:00am 1st Early Winter",
+    "titleCustom": "Custom Status",
+    "descriptionCustom": "Enter a custom status",
+    "titleAuto": "Auto Status",
+    "descriptionAuto": "Automatically displays a status. E.g. your zealot count while in the end."
   }
 }

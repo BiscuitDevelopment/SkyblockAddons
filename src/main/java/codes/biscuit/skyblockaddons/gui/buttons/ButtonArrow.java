@@ -1,7 +1,7 @@
 package codes.biscuit.skyblockaddons.gui.buttons;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.utils.Feature;
+import codes.biscuit.skyblockaddons.core.Feature;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.SoundHandler;
 import net.minecraft.client.gui.GuiButton;
@@ -10,8 +10,8 @@ import net.minecraft.util.ResourceLocation;
 
 public class ButtonArrow extends GuiButton {
 
-    private static ResourceLocation ARROW_RIGHT = new ResourceLocation("skyblockaddons", "arrowright.png");
-    private static ResourceLocation ARROW_LEFT = new ResourceLocation("skyblockaddons", "arrowleft.png");
+    private static ResourceLocation ARROW_RIGHT = new ResourceLocation("skyblockaddons", "gui/arrowright.png");
+    private static ResourceLocation ARROW_LEFT = new ResourceLocation("skyblockaddons", "gui/arrowleft.png");
 
     private SkyblockAddons main;
 

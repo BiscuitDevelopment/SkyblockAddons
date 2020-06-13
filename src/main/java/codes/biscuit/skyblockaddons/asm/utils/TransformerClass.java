@@ -44,10 +44,14 @@ public enum TransformerClass {
     EntityLivingBase("net/minecraft/entity/EntityLivingBase", "pr"),
     EnumFacing("net/minecraft/util/EnumFacing", "cq"),
     ICamera("net/minecraft/client/renderer/culling/ICamera", "bia"),
-    TileEntity("net/minecraft/tileentity/TileEntity", "akw"),
+//    TileEntity("net/minecraft/tileentity/TileEntity", "akw"),
+    TileEntityEnderChest("net/minecraft/tileentity/TileEntityEnderChest", "alf"),
     GuiDisconnected("net/minecraft/client/gui/GuiDisconnected", "axh"),
     GuiButton("net/minecraft/client/gui/GuiButton", "avs"),
     GuiIngameMenu("net/minecraft/client/gui/GuiIngameMenu", "axp"),
+    ItemCameraTransforms$TransformType("net/minecraft/client/renderer/block/model/ItemCameraTransforms$TransformType", "bgr$b"),
+    IBakedModel("net/minecraft/client/resources/model/IBakedModel", "boq"),
+    InventoryPlayer("net/minecraft/entity/player/InventoryPlayer", "wm"),
 
     NULL(null,null);
 

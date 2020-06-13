@@ -101,10 +101,23 @@
     "chromaMode": "Chroma Kleurmodus",
     "chromaModes": {
       "allTheSame": "Allemaal dezelfde kleur",
-      "fade": "Color Fade"
+      "fade": "Kleur Vervagen"
     },
-    "chromaFadeWidth": "Chroma Fade Width",
-    "sortTabEffectTimers": "Sort Timers by Duration"
+    "chromaFadeWidth": "Breedte Kleur Vervaging",
+    "sortTabEffectTimers": "Sorteer Timers op Duur",
+    "showBrokenFragments": "Toon Kapotte Draakfragmenten",
+    "skyblockAddonsButtonInPauseMenu": "Toon SBA Knop in Pauze Menu",
+    "showTotalZealotCount": "Zealot Counter - Total Zealot Count",
+    "showSummoningEyeCount": "Zealot Counter - Total Eye Count",
+    "showZealotsPerEye": "Zealot Counter - Show Zealots Per Eye",
+    "turnBowGreenWhenUsingToxicArrowPoison": "Color Bow Green When Using Toxic Arrow Poison",
+    "birchParkRainmakerTimer": "Birch Park Rainmaker Timer",
+    "combatTimerDisplay": "Combat Timer Display",
+    "discordRP": "Discord Rich Presence",
+    "endstoneProtectorDisplay": "Endstone Protector Display",
+    "fancyWarpMenu": "Fancy Warp Menu",
+    "doubleWarp": "Warp Twice",
+    "advancedMode": "Advanced Mode"
   },
   "messages": {
     "dropConfirmation": "Laat dit object opnieuw vallen om te Bevestigen!",
@@ -122,19 +135,15 @@
       "reforges": "Omsmedingen",
       "crafting": "Fabricatie"
     },
-    "newUpdateAvailable": "Een nieuwe update (%version%) is beschikbaar!",
-    "deleteOldFile": "De download is voltooid, open uw mods map met behulp van de onderstaande knop, sluit uw Minecraft en verwijder de oude versie (of verwijder het later als u wilt).",
     "wantToViewPatchNotes": "Wil je de wijzigingen lezen?",
     "downloadLink": "UPDATE LINK",
-    "downloadAutomatically": "AUTOMATISCHE DOWNLOAD",
+    "directDownload": "DIRECT DOWNLOAD LINK",
     "openModFolder": "MODS MAP",
     "joinTheDiscord": "JOIN DISCORD",
+    "newUpdateAvailable": "A new update (%version%) is available!",
     "update": {
       "majorAvailable": "Een nieuwe grote update (%version%) is beschikbaar! De link voor de download kan worden gevonden in de chat.",
-      "patchAvailable": "Een nieuwe patch update (%version%) is beschikbaar! Kijk in de chat voor download opties!",
-      "downloading": "De patch is aan het downloaden! Status: %downloaded%/%total% Let op dat u het oude bestand moet verwijderen nadat de download is voltooid.",
-      "failed": "De patch download is mislukt! Download het handmatig met behulp van de link in de chat.",
-      "downloadFinished": "De patch is klaar met downloaden. Het is opgeslagen als %file%. Vergeet niet het oude bestand te verwijderen nadat je Minecraft hebt gesloten. Klik op het bericht in de chat om de map te openen."
+      "patchAvailable": "Een nieuwe patch update (%version%) is beschikbaar! Kijk in de chat voor download opties!"
     },
     "slotLocked": "Deze Slot is vergrendeld!",
     "summoningEyeFound": "Oproepend oog!",
@@ -154,6 +163,37 @@
     "noArrowsLeft": "Geen Pijlen Resterend!",
     "chooseAColor": "Kies een kleur",
     "selectedColor": "Geselecteerde kleur",
-    "setHexColor": "Hex kleur instellen"
+    "setHexColor": "Hex kleur instellen",
+    "rescaleFeatures": "Rescale Features",
+    "resizeBars": "Resize Bars",
+    "showColorIcons": "Show Color Icons",
+    "stage": "Stage %stage%",
+    "switchedSlots": "You have just switched from a locked slot or rare item. Please wait a bit before dropping!",
+    "clickToOpenLink": "Click to open this link!",
+    "clickToOpenFolder": "Click to open your mods folder!",
+    "freezeBackpackPreview": "Freeze Backpack Preview",
+    "hideGreyEnchants": "Hide Regular Grey Enchants"
+  },
+  "discordStatus": {
+    "titleNone": "None",
+    "descriptionNone": "No text is displayed",
+    "titleLocation": "Location",
+    "descriptionLocation": "Shows your current location",
+    "titlePurse": "Purse",
+    "descriptionPurse": "Shows the amount of coins in your purse",
+    "titleStats": "Stats",
+    "descriptionStats": "Shows your HP, Defense and Mana stats",
+    "titleZealots": "Zealots",
+    "descriptionZealots": "Shows your Zealot counter",
+    "titleItem": "Held Item",
+    "descriptionItem": "Shows the name of the item you're holding",
+    "titleProfile": "Profile",
+    "descriptionProfile": "Shows your Profile name",
+    "titleTime": "Skyblock Time",
+    "descriptionTime": "Shows the current Skyblock time. E.g. 12:00am 1st Early Winter",
+    "titleCustom": "Custom Status",
+    "descriptionCustom": "Enter a custom status",
+    "titleAuto": "Auto Status",
+    "descriptionAuto": "Automatically displays a status. E.g. your zealot count while in the end."
   }
 }

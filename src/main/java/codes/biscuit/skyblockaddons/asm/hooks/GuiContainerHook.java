@@ -2,11 +2,12 @@ package codes.biscuit.skyblockaddons.asm.hooks;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.asm.utils.ReturnValue;
-import codes.biscuit.skyblockaddons.gui.elements.CraftingPatternSelection;
+import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsTransformer;
 import codes.biscuit.skyblockaddons.utils.*;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
 import codes.biscuit.skyblockaddons.utils.nifty.reflection.MinecraftReflection;
+import lombok.Getter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.Gui;
@@ -20,6 +21,7 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
+import javax.lang.model.type.NullType;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -43,7 +45,7 @@ public class GuiContainerHook {
      * This controls whether or not the backpack preview is frozen- allowing you
      * to hover over a backpack's contents in full detail!
      */
-    private static boolean freezeBackpack = false;
+    @Getter private static boolean freezeBackpack = false;
 
     public static void showEnchantments(Slot slotIn, int x, int y, ItemStack item) {
         SkyblockAddons main = SkyblockAddons.getInstance();
@@ -121,7 +123,7 @@ public class GuiContainerHook {
         SkyblockAddons main = SkyblockAddons.getInstance();
         if (keyCode == 1 || keyCode == Minecraft.getMinecraft().gameSettings.keyBindInventory.getKeyCode()) {
             freezeBackpack = false;
-            main.getUtils().setBackpackToRender(null);
+            main.getUtils().setBackpackToPreview(null);
         }
         if (keyCode == main.getFreezeBackpackKey().getKeyCode() && freezeBackpack &&
                 System.currentTimeMillis() - GuiScreenHook.getLastBackpackFreezeKey() > 500) {
@@ -132,7 +134,7 @@ public class GuiContainerHook {
 
     public static void drawBackpacks(GuiContainer guiContainer, int mouseX, int mouseY, FontRenderer fontRendererObj) {
         SkyblockAddons main = SkyblockAddons.getInstance();
-        Backpack backpack = main.getUtils().getBackpackToRender();
+        Backpack backpack = main.getUtils().getBackpackToPreview();
         Minecraft mc = Minecraft.getMinecraft();
         if (backpack != null) {
             int x = backpack.getX();
@@ -210,7 +212,7 @@ public class GuiContainerHook {
                 }
             }
             if (!freezeBackpack) {
-                main.getUtils().setBackpackToRender(null);
+                main.getUtils().setBackpackToPreview(null);
             }
             GlStateManager.enableLighting();
             GlStateManager.enableDepth();
@@ -248,7 +250,7 @@ public class GuiContainerHook {
             // Draw crafting pattern overlays inside the crafting grid.
             if (main.getConfigValues().isEnabled(Feature.CRAFTING_PATTERNS) && main.getUtils().isOnSkyblock()
                     && slot.inventory.getDisplayName().getUnformattedText().equals(CraftingPattern.CRAFTING_TABLE_DISPLAYNAME)
-                    && CraftingPatternSelection.selectedPattern != CraftingPattern.FREE) {
+                    && main.getPersistentValues().getSelectedCraftingPattern() != CraftingPattern.FREE) {
 
                 int craftingGridIndex = CraftingPattern.slotToCraftingGridIndex(slot.getSlotIndex());
                 if (craftingGridIndex >= 0) {
@@ -256,7 +258,7 @@ public class GuiContainerHook {
                     int slotTop = slot.yDisplayPosition;
                     int slotRight = slotLeft + 16;
                     int slotBottom = slotTop + 16;
-                    if (CraftingPatternSelection.selectedPattern.isSlotInPattern(craftingGridIndex)) {
+                    if (main.getPersistentValues().getSelectedCraftingPattern().isSlotInPattern(craftingGridIndex)) {
                         if (!slot.getHasStack()) {
                             drawRightGradientRect(guiContainer, slotLeft, slotTop, slotRight, slotBottom, OVERLAY_GREEN, OVERLAY_GREEN);
                         }
@@ -339,13 +341,13 @@ public class GuiContainerHook {
                     }
                 }
             }
-            if (mc.gameSettings.keyBindDrop.getKeyCode() == keyCode && main.getConfigValues().isEnabled(Feature.STOP_DROPPING_SELLING_RARE_ITEMS)) {
-                if (main.getInventoryUtils().shouldCancelDrop(theSlot)) returnValue.cancel();
+            if (mc.gameSettings.keyBindDrop.getKeyCode() == keyCode && main.getConfigValues().isEnabled(Feature.STOP_DROPPING_SELLING_RARE_ITEMS) && !main.getUtils().isInDungeon()) {
+                if (!main.getUtils().getItemDropChecker().canDropItem(theSlot)) returnValue.cancel();
             }
         }
     }
 
-    public static void handleMouseClick(int guiLeft, int guiTop, int oldMouseX, int oldMouseY, int xSize, int ySize, ReturnValue returnValue) {
+    public static void handleMouseClick(Slot slotIn, int slotId, int clickedButton, int clickType, ReturnValue<NullType> returnValue) {
 /*        SkyblockAddons main = SkyblockAddons.getInstance();
         if (main.getUtils().isOnSkyblock()) {
             boolean isOutsideGui = oldMouseX < guiLeft || oldMouseY < guiTop || oldMouseX >= guiLeft + xSize || oldMouseY >= guiTop + ySize;
@@ -399,9 +401,5 @@ public class GuiContainerHook {
 
     public static void setFreezeBackpack(boolean freezeBackpack) {
         GuiContainerHook.freezeBackpack = freezeBackpack;
-    }
-
-    public static boolean isFreezeBackpack() {
-        return freezeBackpack;
     }
 }

@@ -1,30 +1,126 @@
 package codes.biscuit.skyblockaddons.utils.dev;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.utils.Utils;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
+import codes.biscuit.skyblockaddons.utils.nifty.RegexUtil;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.*;
+import net.minecraft.scoreboard.Score;
+import net.minecraft.scoreboard.ScoreObjective;
+import net.minecraft.scoreboard.ScorePlayerTeam;
+import net.minecraft.scoreboard.Scoreboard;
+import net.minecraft.util.StringUtils;
 import net.minecraftforge.common.util.Constants;
 import org.lwjgl.input.Keyboard;
 
 import java.awt.*;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
-import java.util.*;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.util.List;
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 /**
- * This is a class of utilities for Skyblock Addons developers.
+ * This is a class of utilities for SkyblockAddons developers.
  *
  * @author ILikePlayingGames
- * @version 2.0
+ * @version 2.1
  */
 public class DevUtils {
     public static final int DEV_KEY = Keyboard.KEY_RCONTROL;
     public static final int ENTITY_COPY_RADIUS = 3;
+    public static final int SIDEBAR_COPY_WIDTH = 30;
+
+    /**
+     * Copies the objective and scores that are being displayed on a scoreboard's sidebar.
+     * When copying the sidebar, the control codes (e.g. §a) are removed.
+     *
+     * @param scoreboard the {@link Scoreboard} to copy the sidebar from
+     */
+    public static void copyScoreboardSideBar(Scoreboard scoreboard) {
+        copyScoreboardSidebar(scoreboard, true);
+    }
+
+    /**
+     * Copies the objective and scores that are being displayed on a scoreboard's sidebar.
+     *
+     * @param scoreboard the {@link Scoreboard} to copy the sidebar from
+     * @param stripControlCodes if {@code true}, the control codes will be removed, otherwise they will be copied
+     */
+    public static void copyScoreboardSidebar(Scoreboard scoreboard, boolean stripControlCodes) {
+        Utils utils = SkyblockAddons.getInstance().getUtils();
+
+        if (scoreboard == null) {
+            utils.sendErrorMessage("No scoreboard found!");
+            return;
+        }
+
+        ScoreObjective sideBarObjective = scoreboard.getObjectiveInDisplaySlot(1);
+        if (sideBarObjective == null) {
+            utils.sendErrorMessage("Nothing is being displayed in the sidebar!");
+            return;
+        }
+
+        StringBuilder sb = new StringBuilder();
+        Formatter formatter = new Formatter(sb, Locale.CANADA);
+
+        String objectiveName = sideBarObjective.getDisplayName();
+        List<Score> scores = (List<Score>) scoreboard.getSortedScores(sideBarObjective);
+
+        if (scores == null || scores.isEmpty()) {
+            SkyblockAddons.getInstance().getUtils().sendErrorMessage("No scores were found!");
+        }
+        else {
+            int width = SIDEBAR_COPY_WIDTH;
+
+            if (stripControlCodes) {
+                objectiveName = StringUtils.stripControlCodes(objectiveName);
+            }
+
+            // Remove scores that aren't rendered.
+            scores = scores.stream().filter(input -> input.getPlayerName() != null && !input.getPlayerName().startsWith("#"))
+                    .skip(Math.max(scores.size() - 15, 0)).collect(Collectors.toList());
+
+            /*
+            Minecraft renders the scoreboard from bottom to top so to keep the same order when writing it from top
+            to bottom, we need to reverse the scores' order.
+            */
+            Collections.reverse(scores);
+
+            for (Score score:
+                    scores) {
+                ScorePlayerTeam scoreplayerteam = scoreboard.getPlayersTeam(score.getPlayerName());
+                String playerName = ScorePlayerTeam.formatPlayerName(scoreplayerteam, score.getPlayerName());
+
+                // Strip colours and emoji player names.
+                playerName = RegexUtil.strip(playerName, RegexUtil.SIDEBAR_PLAYER_NAME_PATTERN);
+
+                if (stripControlCodes) {
+                    playerName = StringUtils.stripControlCodes(playerName);
+                }
+
+                int points = score.getScorePoints();
+
+                width = Math.max(width, (playerName + " " + points).length());
+                formatter.format("%-" + width + "." +
+                        width + "s %d%n", playerName, points);
+            }
+
+            // Insert the objective name at the top of the sidebar string.
+            sb.insert(0, "\n").insert(0, org.apache.commons.lang3.StringUtils.center(objectiveName, width));
+
+            copyStringToClipboard(sb.toString(), "Sidebar copied to clipboard!");
+        }
+    }
 
     /**
      * Copies the data of all mobs within the entity copy radius of the player
@@ -77,7 +173,6 @@ public class DevUtils {
             SkyblockAddons.getInstance().getUtils().sendMessage("This item has no NBT data.");
             return;
         }
-
         writeToClipboard(prettyPrintNBT(nbtTag), message);
     }
 
@@ -128,6 +223,31 @@ public class DevUtils {
         writeToClipboard(string, successMessage);
     }
 
+    /**
+     * Retrieves the server brand from the Minecraft client.
+     *
+     * @param mc the Minecraft client
+     * @return the server brand if the client is connected to a server, {@code null} otherwise
+     */
+    public static String getServerBrand(Minecraft mc) {
+        final Pattern SERVER_BRAND_PATTERN = Pattern.compile("(.+) <- (?:.+)");
+
+        if (!mc.isSingleplayer()) {
+            Matcher matcher = SERVER_BRAND_PATTERN.matcher(mc.thePlayer.getClientBrand());
+
+            if (matcher.find()) {
+                // Group 1 is the server brand.
+                return matcher.group(1);
+            }
+            else {
+                return null;
+            }
+        }
+        else {
+            return null;
+        }
+    }
+
     // FIXME add support for TAG_LONG_ARRAY when updating to 1.12
     /**
      * <p>Converts an NBT tag into a pretty-printed string.</p>
@@ -145,8 +265,8 @@ public class DevUtils {
         // Determine which type of tag it is.
         if (tagID == Constants.NBT.TAG_END) {
             stringBuilder.append('}');
-        }
-        else if (tagID == Constants.NBT.TAG_BYTE_ARRAY || tagID == Constants.NBT.TAG_INT_ARRAY) {
+
+        } else if (tagID == Constants.NBT.TAG_BYTE_ARRAY || tagID == Constants.NBT.TAG_INT_ARRAY) {
             stringBuilder.append('[');
             if (tagID == Constants.NBT.TAG_BYTE_ARRAY) {
                 NBTTagByteArray nbtByteArray = (NBTTagByteArray) nbt;
@@ -160,8 +280,7 @@ public class DevUtils {
                         stringBuilder.append(", ");
                     }
                 }
-            }
-            else {
+            } else {
                 NBTTagIntArray nbtIntArray = (NBTTagIntArray) nbt;
                 int[] ints = nbtIntArray.getIntArray();
 
@@ -175,8 +294,8 @@ public class DevUtils {
                 }
             }
             stringBuilder.append(']');
-        }
-        else if (tagID == Constants.NBT.TAG_LIST) {
+
+        } else if (tagID == Constants.NBT.TAG_LIST) {
             NBTTagList nbtTagList = (NBTTagList) nbt;
 
             stringBuilder.append('[');
@@ -191,8 +310,8 @@ public class DevUtils {
                 }
             }
             stringBuilder.append(']');
-        }
-        else if (tagID == Constants.NBT.TAG_COMPOUND) {
+
+        } else if (tagID == Constants.NBT.TAG_COMPOUND) {
             NBTTagCompound nbtTagCompound = (NBTTagCompound) nbt;
 
             stringBuilder.append('{');
@@ -207,6 +326,18 @@ public class DevUtils {
 
                     stringBuilder.append(key).append(": ").append(
                             prettyPrintNBT(currentCompoundTagElement));
+
+                    if (key.contains("backpack_data") && currentCompoundTagElement instanceof NBTTagByteArray) {
+                        try {
+                            NBTTagCompound backpackData = CompressedStreamTools.readCompressed(new ByteArrayInputStream(((NBTTagByteArray)currentCompoundTagElement).getByteArray()));
+
+                            stringBuilder.append(",").append(System.lineSeparator());
+                            stringBuilder.append(key).append("(decoded): ").append(
+                                    prettyPrintNBT(backpackData));
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
 
                     // Don't add a comma after the last element.
                     if (iterator.hasNext()) {

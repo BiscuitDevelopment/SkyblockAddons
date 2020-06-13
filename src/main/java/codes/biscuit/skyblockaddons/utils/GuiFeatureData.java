@@ -7,8 +7,8 @@ import lombok.Getter;
 public class GuiFeatureData {
 
     private ChatFormatting defaultColor = null;
-    private CoordsPair defaultPos = null;
-    private CoordsPair defaultBarSize = null;
+    private FloatPair defaultPos = null;
+    private IntPair defaultBarSize = null;
     private EnumUtils.AnchorPoint defaultAnchor = null;
     private EnumUtils.DrawType drawType = null;
 
@@ -20,31 +20,31 @@ public class GuiFeatureData {
      */
     private boolean colorsRestricted;
 
-    GuiFeatureData(ChatFormatting defaultColor) {
+    public GuiFeatureData(ChatFormatting defaultColor) {
         this(defaultColor, false);
     }
 
-    GuiFeatureData(ChatFormatting defaultColor, boolean colorsRestricted) {
+    public GuiFeatureData(ChatFormatting defaultColor, boolean colorsRestricted) {
         this.defaultColor = defaultColor;
         this.colorsRestricted = colorsRestricted;
     }
 
-    GuiFeatureData(EnumUtils.DrawType drawType, ChatFormatting defaultColor, EnumUtils.AnchorPoint defaultAnchor, int... positionThenSizes) {
+    public GuiFeatureData(EnumUtils.DrawType drawType, ChatFormatting defaultColor, EnumUtils.AnchorPoint defaultAnchor, int... positionThenSizes) {
         this(drawType, defaultColor, defaultAnchor, false, positionThenSizes);
     }
 
-    GuiFeatureData(EnumUtils.DrawType drawType, ChatFormatting defaultColor, EnumUtils.AnchorPoint defaultAnchor, boolean colorsRestricted, int... positionThenSizes) {
+    public GuiFeatureData(EnumUtils.DrawType drawType, ChatFormatting defaultColor, EnumUtils.AnchorPoint defaultAnchor, boolean colorsRestricted, int... positionThenSizes) {
         this.drawType = drawType;
         this.defaultColor = defaultColor;
         this.colorsRestricted = colorsRestricted;
-        this.defaultPos = new CoordsPair(positionThenSizes[0], positionThenSizes[1]);
+        this.defaultPos = new FloatPair(positionThenSizes[0], positionThenSizes[1]);
         if (positionThenSizes.length > 2) {
-            this.defaultBarSize = new CoordsPair(positionThenSizes[2], positionThenSizes[3]);
+            this.defaultBarSize = new IntPair(positionThenSizes[2], positionThenSizes[3]);
         }
         this.defaultAnchor = defaultAnchor;
     }
 
-    GuiFeatureData(EnumUtils.DrawType drawType, EnumUtils.AnchorPoint defaultAnchor, int... position) {
+    public GuiFeatureData(EnumUtils.DrawType drawType, EnumUtils.AnchorPoint defaultAnchor, int... position) {
         this(drawType, defaultAnchor, false, position);
     }
 
@@ -52,6 +52,6 @@ public class GuiFeatureData {
         this.drawType = drawType;
         this.defaultAnchor = defaultAnchor;
         this.colorsRestricted = colorsRestricted;
-        this.defaultPos = new CoordsPair(position[0], position[1]);
+        this.defaultPos = new FloatPair(position[0], position[1]);
     }
 }

@@ -104,7 +104,20 @@
       "fade": "Färg toning"
     },
     "chromaFadeWidth": "Chroma Fade Bredd",
-    "sortTabEffectTimers": "Sortera tidtagare efter längd"
+    "sortTabEffectTimers": "Sortera tidtagare efter längd",
+    "showBrokenFragments": "Visa Förstörda Drak Fragment",
+    "skyblockAddonsButtonInPauseMenu": "Visa SBA Knapp i Paus Menyn",
+    "showTotalZealotCount": "Zealot räknare - Totala Zealot Räknare",
+    "showSummoningEyeCount": "Zealot räknare - Totala Ögon Räknare",
+    "showZealotsPerEye": "Zealot Räknare - Visa Zealots Per Öga",
+    "turnBowGreenWhenUsingToxicArrowPoison": "Färga Pilbåge Grön När Du Använder Gift Pilar",
+    "birchParkRainmakerTimer": "Björk Park Regngörar Timer",
+    "combatTimerDisplay": "Visa Stridstimer",
+    "discordRP": "Discord Rich Presence",
+    "endstoneProtectorDisplay": "Visning av ändstensskyddare",
+    "fancyWarpMenu": "Snygg Warp Meny",
+    "doubleWarp": "Warpa Två gånger",
+    "advancedMode": "Avancerat läge"
   },
   "messages": {
     "dropConfirmation": "Släpp Det Här Igen För Att Bekräfta!",
@@ -122,19 +135,15 @@
       "reforges": "Reforges",
       "crafting": "Tillverkning"
     },
-    "newUpdateAvailable": "En ny updatering (%version%) är tillgänlig!",
-    "deleteOldFile": "Updateringen är klar, använd knappen nedan för att öppna mods mappen, stäng Minecraft, och ta bort den gamla versionen (eller kan du radera den senare om du vill).",
     "wantToViewPatchNotes": "Vill du läsa ändringarna?",
     "downloadLink": "UPPDATERINGS LÄNK",
-    "downloadAutomatically": "AUTO NEDLADNING",
+    "directDownload": "DIREKT NEDLADDNINGSLÄNK",
     "openModFolder": "MODS MAPPEN",
     "joinTheDiscord": "Gå med I discord servern",
+    "newUpdateAvailable": "En ny uppdatering (%version%) är tillgänglig!",
     "update": {
       "majorAvailable": "En ny stor updatering (%version%) är tillgänlig! Du hittar nedladningslänken i chatten.",
-      "patchAvailable": "En ny programfix (%version%) är tillgänlig! Nedladnings länken finns i chatten!",
-      "downloading": "Programfix uppdateringen är redo! Status: %downloaded%/%total% Notera att du måste ta bort den gamla filen när uppdateringen blir klar.",
-      "failed": "Patch updateringen misslyckades! Ladda ner den manuellt genom länken i chatten,.",
-      "downloadFinished": "Nedladningen av Programfix uppdateringen är klar. Den har sparats som %file%. Glöm inte att ta bort den gamla filen när du stänger av Minecraft. Tryck på meddelandet i chatten för att öppna mods mappen."
+      "patchAvailable": "En ny programfix (%version%) är tillgänlig! Nedladnings länken finns i chatten!"
     },
     "slotLocked": "Denna ruta är låst!",
     "summoningEyeFound": "Tillkallande Öga!",
@@ -154,6 +163,37 @@
     "noArrowsLeft": "Inga pilar kvar!",
     "chooseAColor": "Välj en färg",
     "selectedColor": "Välj färg",
-    "setHexColor": "Sett en hex färg"
+    "setHexColor": "Sett en hex färg",
+    "rescaleFeatures": "Omskala Funktioner",
+    "resizeBars": "Omskala Barer",
+    "showColorIcons": "Visa Färgikoner",
+    "stage": "Stadie %stage%",
+    "switchedSlots": "Du har precis bytt från en låst plats eller sällsynt föremål. Vänta lite innan du släpper!",
+    "clickToOpenLink": "Klicka för att öppna länken!",
+    "clickToOpenFolder": "Klicka för att öppna din mods mapp!",
+    "freezeBackpackPreview": "Freeze Backpack Preview",
+    "hideGreyEnchants": "Dölj vanliga gråa förtrollningar"
+  },
+  "discordStatus": {
+    "titleNone": "Ingen",
+    "descriptionNone": "Ingen text visas",
+    "titleLocation": "Position",
+    "descriptionLocation": "Visar din nuvarande position",
+    "titlePurse": "Plånbok",
+    "descriptionPurse": "Visar antalet mynt i din plånbok",
+    "titleStats": "Statistik",
+    "descriptionStats": "Visar ditt HP, Försvar och Mana statistik",
+    "titleZealots": "Zealots",
+    "descriptionZealots": "Shows your Zealot counter",
+    "titleItem": "Held Item",
+    "descriptionItem": "Visar namnet på föremålet du håller i",
+    "titleProfile": "Profil",
+    "descriptionProfile": "Visar ditt profilnamn",
+    "titleTime": "Skyblock Tid",
+    "descriptionTime": "Visar den nuvarande tiden för Skyblock. T.ex. 12:00am 1st Early Winter",
+    "titleCustom": "Anpassad status",
+    "descriptionCustom": "Ange en anpassad status",
+    "titleAuto": "Automatisk status",
+    "descriptionAuto": "Automatically displays a status. E.g. your zealot count while in the end."
   }
 }

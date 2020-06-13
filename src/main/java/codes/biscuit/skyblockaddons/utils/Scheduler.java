@@ -1,8 +1,10 @@
 package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.listeners.PlayerListener;
 import lombok.Getter;
+import net.minecraft.client.Minecraft;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import org.apache.commons.lang3.mutable.MutableInt;
@@ -100,7 +102,7 @@ public class Scheduler {
                 if (main.getPlayerListener().getMagmaAccuracy() != EnumUtils.MagmaTimerAccuracy.EXACTLY) {
                     if (main.getUtils().isOnSkyblock()) {
                         delayingMagmaCall = false;
-                        main.getUtils().fetchEstimateFromServer();
+                        main.getUtils().fetchMagmaBossEstimate();
                     } else if (!delayingMagmaCall) {
                         delayingMagmaCall = true;
                     }
@@ -141,10 +143,11 @@ public class Scheduler {
         SUBTRACT_BLAZE_COUNT,
         RESET_TITLE_FEATURE,
         RESET_SUBTITLE_FEATURE,
-        RESET_UPDATE_MESSAGE,
+        ERASE_UPDATE_MESSAGE,
         SET_LAST_SECOND_HEALTH,
         DELETE_RECENT_CHUNK,
-        SHOW_FULL_INVENTORY_WARNING;
+        SHOW_FULL_INVENTORY_WARNING,
+        PROCESS_UPDATE_CHECK_RESULT;
 
         public void execute(Command command, int count) {
             SkyblockAddons main = SkyblockAddons.getInstance();
@@ -162,9 +165,14 @@ public class Scheduler {
             } else if (this == DELETE_RECENT_CHUNK) {
                 int x = (int)commandData[0];
                 int z = (int)commandData[1];
-                CoordsPair coordsPair = new CoordsPair(x,z);
-                playerListener.getRecentlyLoadedChunks().remove(coordsPair);
+                IntPair intPair = new IntPair(x,z);
+                playerListener.getRecentlyLoadedChunks().remove(intPair);
             } else if (this == SHOW_FULL_INVENTORY_WARNING) {
+                Minecraft mc = Minecraft.getMinecraft();
+                if (mc.theWorld == null || mc.thePlayer == null || !main.getUtils().isOnSkyblock()) {
+                    return;
+                }
+
                 main.getInventoryUtils().showFullInventoryWarning();
 
                 // Schedule a repeat if needed.
@@ -176,11 +184,12 @@ public class Scheduler {
                 main.getRenderListener().setTitleFeature(null);
             } else if (this == RESET_SUBTITLE_FEATURE) {
                 main.getRenderListener().setSubtitleFeature(null);
-            } else if (this == RESET_UPDATE_MESSAGE) {
-                if (main.getRenderListener().getDownloadInfo().getMessageType() == commandData[0])
-                main.getRenderListener().getDownloadInfo().setMessageType(null);
+            } else if (this == ERASE_UPDATE_MESSAGE) {
+                main.getRenderListener().setUpdateMessageDisplayed(true);
             } else if (this == SET_LAST_SECOND_HEALTH) {
-                main.getPlayerListener().setLastSecondHealth((int)commandData[0]);
+                main.getPlayerListener().setLastSecondHealth((int) commandData[0]);
+            } else if (this == PROCESS_UPDATE_CHECK_RESULT) {
+                main.getUpdater().processUpdateCheckResult();
             }
         }
     }

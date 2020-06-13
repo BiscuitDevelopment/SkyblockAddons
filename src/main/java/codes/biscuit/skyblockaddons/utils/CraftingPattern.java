@@ -1,5 +1,6 @@
 package codes.biscuit.skyblockaddons.utils;
 
+import codes.biscuit.skyblockaddons.core.Feature;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 

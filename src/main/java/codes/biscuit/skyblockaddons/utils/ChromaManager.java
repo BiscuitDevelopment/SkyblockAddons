@@ -1,6 +1,7 @@
 package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.core.Feature;
 import lombok.Getter;
 
 import java.awt.*;
@@ -14,7 +15,7 @@ public class ChromaManager {
     private static Color currentColor = new Color(Color.HSBtoRGB(0, 0.72F, 0.90F));
 
     public static void increment() {
-        if (SkyblockAddons.getInstance().getConfigValues().getChromaFeatures().size() > 1) {
+        if (SkyblockAddons.getInstance().getConfigValues().getChromaFeatures().size() > 0) {
             currentHue += SkyblockAddons.getInstance().getUtils().denormalizeScale(SkyblockAddons.getInstance().getConfigValues().getChromaSpeed(), 0.1F, 10, 0.5F);
             if (currentHue > 360) {
                 currentHue = 0;

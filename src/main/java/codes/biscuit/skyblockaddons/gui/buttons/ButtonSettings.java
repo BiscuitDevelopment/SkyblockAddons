@@ -1,14 +1,14 @@
 package codes.biscuit.skyblockaddons.gui.buttons;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.utils.Feature;
+import codes.biscuit.skyblockaddons.core.Feature;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
 
 public class ButtonSettings extends ButtonFeature {
 
-    private static ResourceLocation GEAR = new ResourceLocation("skyblockaddons", "gear.png");
+    private static ResourceLocation GEAR = new ResourceLocation("skyblockaddons", "gui/gear.png");
 
     private SkyblockAddons main;
 

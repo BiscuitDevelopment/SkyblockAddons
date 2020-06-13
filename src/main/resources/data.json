@@ -1,0 +1,30 @@
+{
+  "bannerImageURL": null,
+  "bannerLink": null,
+  "videoLink": "https://youtu.be/_BZMJm6JD4Q",
+  "directDownload": null,
+  "updateJSON": "${updateJSON}",
+  "languageJSONFormat": "https://raw.githubusercontent.com/BiscuitDevelopment/SkyblockAddons/development/src/main/resources/lang/%s.json",
+  "disabledFeatures": {
+    "all": [44],
+    "1.5.0": []
+  },
+
+  "dropSettings": {
+    "minimumInventoryRarity": "RARE",
+    "minimumHotbarRarity": "RARE",
+    "dontDropTheseItems": [
+      "PIGGY_BANK",
+      "SMALL_BACKPACK",
+      "RADIANT_POWER_ORB",
+      "GRAPPLING_HOOK",
+      "WAND_OF_HEALING",
+      "ENCHANTED_GLOWSTONE",
+      "AATROX_BATPHONE"
+    ],
+    "allowDroppingTheseItems": [
+      "RUNE",
+      "REMNANT_OF_THE_EYE"
+    ]
+  }
+}

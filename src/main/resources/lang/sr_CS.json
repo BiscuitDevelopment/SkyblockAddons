@@ -104,7 +104,20 @@
       "fade": "Color Fade"
     },
     "chromaFadeWidth": "Chroma Fade Width",
-    "sortTabEffectTimers": "Sort Timers by Duration"
+    "sortTabEffectTimers": "Sort Timers by Duration",
+    "showBrokenFragments": "Show Broken Dragon Fragments",
+    "skyblockAddonsButtonInPauseMenu": "Show SBA Button in Pause Menu",
+    "showTotalZealotCount": "Zealot Counter - Total Zealot Count",
+    "showSummoningEyeCount": "Zealot Counter - Total Eye Count",
+    "showZealotsPerEye": "Zealot Counter - Show Zealots Per Eye",
+    "turnBowGreenWhenUsingToxicArrowPoison": "Color Bow Green When Using Toxic Arrow Poison",
+    "birchParkRainmakerTimer": "Birch Park Rainmaker Timer",
+    "combatTimerDisplay": "Combat Timer Display",
+    "discordRP": "Discord Rich Presence",
+    "endstoneProtectorDisplay": "Endstone Protector Display",
+    "fancyWarpMenu": "Fancy Warp Menu",
+    "doubleWarp": "Warp Twice",
+    "advancedMode": "Advanced Mode"
   },
   "messages": {
     "dropConfirmation": "Opet baci ovu stvar za potvrdu!",
@@ -122,19 +135,15 @@
       "reforges": "Reforge-ovi",
       "crafting": "Pravljenje"
     },
-    "newUpdateAvailable": "Dostupna je nova (%version%) verzija!",
-    "deleteOldFile": "Skidanje je zavrseno, molimo was otvorite \"mods\" folder koristeci Minecraft dugme ispod, zatvorite vas minecraft, i izbrisite staru verziju (ili izbrisite kasnije ako zelite).",
     "wantToViewPatchNotes": "Zalite li da procitate izmene?",
     "downloadLink": "LINK ZA AZURIRANjE",
-    "downloadAutomatically": "AUTOMATSKO AZURIRANJE",
+    "directDownload": "DIRECT DOWNLOAD LINK",
     "openModFolder": "MODS Fascikla",
     "joinTheDiscord": "UDjITE U DISCORD SERVER",
+    "newUpdateAvailable": "A new update (%version%) is available!",
     "update": {
       "majorAvailable": "Dostupno je novo veliko ažuriranje (%version%)! Link za preuzimanje može se naći u chatu.",
-      "patchAvailable": "Nova verzija %version% za popravljanje greski je dostupna, pogledajte u chat za opcije za skidanje!",
-      "downloading": "Patch-Update se preuzima! Status: %downloaded%/%total% Imajte na umu da nakon preuzimanja obrišete staru datoteku.",
-      "failed": "Preuzimanje Patch-Update nije uspelo! Preuzmite ga ručno koristeći link u chatu.",
-      "downloadFinished": "Patch-Update je preuzet. Sačuvan je u %file%. Nemojte zaboraviti da obrišete staru datoteku nakon što zatvorite minecraft. Kliknite na poruku u chatu da otvorite folder."
+      "patchAvailable": "Nova verzija %version% za popravljanje greski je dostupna, pogledajte u chat za opcije za skidanje!"
     },
     "slotLocked": "Ovaj nalog je zaključan!",
     "summoningEyeFound": "Summoning Eye!",
@@ -154,6 +163,37 @@
     "noArrowsLeft": "No Arrows Left!",
     "chooseAColor": "Choose a Color",
     "selectedColor": "Selected Color",
-    "setHexColor": "Set Hex Color"
+    "setHexColor": "Set Hex Color",
+    "rescaleFeatures": "Rescale Features",
+    "resizeBars": "Resize Bars",
+    "showColorIcons": "Show Color Icons",
+    "stage": "Stage %stage%",
+    "switchedSlots": "You have just switched from a locked slot or rare item. Please wait a bit before dropping!",
+    "clickToOpenLink": "Click to open this link!",
+    "clickToOpenFolder": "Click to open your mods folder!",
+    "freezeBackpackPreview": "Freeze Backpack Preview",
+    "hideGreyEnchants": "Hide Regular Grey Enchants"
+  },
+  "discordStatus": {
+    "titleNone": "None",
+    "descriptionNone": "No text is displayed",
+    "titleLocation": "Location",
+    "descriptionLocation": "Shows your current location",
+    "titlePurse": "Purse",
+    "descriptionPurse": "Shows the amount of coins in your purse",
+    "titleStats": "Stats",
+    "descriptionStats": "Shows your HP, Defense and Mana stats",
+    "titleZealots": "Zealots",
+    "descriptionZealots": "Shows your Zealot counter",
+    "titleItem": "Held Item",
+    "descriptionItem": "Shows the name of the item you're holding",
+    "titleProfile": "Profile",
+    "descriptionProfile": "Shows your Profile name",
+    "titleTime": "Skyblock Time",
+    "descriptionTime": "Shows the current Skyblock time. E.g. 12:00am 1st Early Winter",
+    "titleCustom": "Custom Status",
+    "descriptionCustom": "Enter a custom status",
+    "titleAuto": "Auto Status",
+    "descriptionAuto": "Automatically displays a status. E.g. your zealot count while in the end."
   }
 }

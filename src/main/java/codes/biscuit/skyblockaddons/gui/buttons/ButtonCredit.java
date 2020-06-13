@@ -2,28 +2,30 @@ package codes.biscuit.skyblockaddons.gui.buttons;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
-import codes.biscuit.skyblockaddons.utils.Feature;
+import codes.biscuit.skyblockaddons.core.Feature;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
 
 public class ButtonCredit extends ButtonFeature {
 
-    private static ResourceLocation WEB = new ResourceLocation("skyblockaddons", "web.png");
+    private static ResourceLocation WEB = new ResourceLocation("skyblockaddons", "gui/web.png");
 
     private SkyblockAddons main;
     private EnumUtils.FeatureCredit credit;
+    private boolean smaller;
 
     // Used to calculate the transparency when fading in.
     private long timeOpened = System.currentTimeMillis();
 
-    public ButtonCredit(double x, double y, String buttonText, SkyblockAddons main, EnumUtils.FeatureCredit credit, Feature feature) {
+    public ButtonCredit(double x, double y, String buttonText, SkyblockAddons main, EnumUtils.FeatureCredit credit, Feature feature, boolean smaller) {
         super(0, (int)x, (int)y, buttonText, feature);
         this.main = main;
         this.feature = feature;
         this.width = 12;
         this.height = 12;
         this.credit = credit;
+        this.smaller = smaller;
     }
 
     @Override
@@ -38,6 +40,10 @@ public class ButtonCredit extends ButtonFeature {
                 }
             }
             float scale = 0.8F;
+            if (smaller) {
+                scale = 0.6F;
+            }
+
             hovered = mouseX >= this.xPosition*scale && mouseY >= this.yPosition*scale && mouseX < this.xPosition*scale +
                     this.width*scale && mouseY < this.yPosition*scale + this.height*scale;
             GlStateManager.enableBlend();
