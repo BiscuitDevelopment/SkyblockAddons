@@ -121,7 +121,7 @@
     "legendarySeaCreatureWarning": "Legendary Sea Creature Warning",
     "onlyBreakLogsPark": "Only Break Logs in the Park",
     "bossApproachAlert": "Slayer Boss Approach Alert",
-    "disableTeleportPadMessages": "Disable Teleport Pad Messages",
+    "disableTeleportPadMessages": "禁用传送平台消息",
     "baitListDisplay": "Show Bait List While Holding a Rod"
   },
   "messages": {
@@ -183,7 +183,7 @@
     "secondStatus": "This status will appear under your first status",
     "fallbackStatus": "This status will appear when your automatic status has nothing to show",
     "legendarySeaCreatureWarning": "Legendary Catch!",
-    "cancelledPark": "A feature has stopped you from breaking this block here.",
+    "cancelledPark": "SkyblockAddons 已阻止在此破坏方块",
     "bossApproaching": "You are close to spawning a boss!"
   },
   "discordStatus": {
