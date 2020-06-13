@@ -121,8 +121,8 @@
     "legendarySeaCreatureWarning": "Avviso per creature marine leggendarie",
     "onlyBreakLogsPark": "Rompi Legna Solo Al Parco",
     "bossApproachAlert": "Avviso Avvicinamento Boss Assassino",
-    "disableTeleportPadMessages": "Disabilita Messaggi Pedane Teletrasporto",
-    "baitListDisplay": "Mostra Lista Esche Tenendo Una Canna"
+    "disableTeleportPadMessages": "Disabilita i messaggi delle pedane di teletrasporto",
+    "baitListDisplay": "Mostra la lista delle esche tenendo in mano una canna"
   },
   "messages": {
     "dropConfirmation": "Getta questo oggetto nuovamente per confermare!",
@@ -179,12 +179,12 @@
     "clickToOpenFolder": "Clicca per aprire la tua cartella dei mods!",
     "freezeBackpackPreview": "Congela l’anteprima degli zaini",
     "hideGreyEnchants": "Nascondi gli incantesimi grigi regolari",
-    "firstStatus": "This status will appear at the top",
-    "secondStatus": "This status will appear under your first status",
-    "fallbackStatus": "This status will appear when your automatic status has nothing to show",
+    "firstStatus": "Questo stato apparirà in alto",
+    "secondStatus": "Questo stato apparirà sotto il tuo primo stato",
+    "fallbackStatus": "Questo stato apparirà quando il tuo stato automatico non avrà nulla da mostrare",
     "legendarySeaCreatureWarning": "Pesca Leggendaria!",
-    "cancelledPark": "A feature has stopped you from breaking this block here.",
-    "bossApproaching": "You are close to spawning a boss!"
+    "cancelledPark": "Una funzione ti ha impedito di rompere questo blocco.",
+    "bossApproaching": "Stai per dare vita ad un boss!"
   },
   "discordStatus": {
     "titleNone": "Nessuno",
