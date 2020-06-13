@@ -118,11 +118,11 @@
     "fancyWarpMenu": "Fancy Warp Menu",
     "doubleWarp": "Warp Twice",
     "advancedMode": "アドバンスドモード",
-    "legendarySeaCreatureWarning": "Legendary Sea Creature Warning",
-    "onlyBreakLogsPark": "Only Break Logs in the Park",
-    "bossApproachAlert": "Slayer Boss Approach Alert",
-    "disableTeleportPadMessages": "Disable Teleport Pad Messages",
-    "baitListDisplay": "Show Bait List While Holding a Rod"
+    "legendarySeaCreatureWarning": "レジェンダリー釣りモンスターの警告",
+    "onlyBreakLogsPark": "Parkで木以外を破壊できなくする",
+    "bossApproachAlert": "スレイヤーボスの接近アラート",
+    "disableTeleportPadMessages": "テレポートパッドのメッセージを無効にする",
+    "baitListDisplay": "釣り竿を持っている間は餌リストを表示する"
   },
   "messages": {
     "dropConfirmation": "落としてもいいのであれば、このアイテムをもう一度ドロップしてください。",
@@ -182,9 +182,9 @@
     "firstStatus": "This status will appear at the top",
     "secondStatus": "This status will appear under your first status",
     "fallbackStatus": "This status will appear when your automatic status has nothing to show",
-    "legendarySeaCreatureWarning": "Legendary Catch!",
-    "cancelledPark": "A feature has stopped you from breaking this block here.",
-    "bossApproaching": "You are close to spawning a boss!"
+    "legendarySeaCreatureWarning": "レジェンダリー キャッチ!",
+    "cancelledPark": "SkyblockAddonsがこのブロックの破壊を阻止しました。",
+    "bossApproaching": "ボスのスポーンが近いです！"
   },
   "discordStatus": {
     "titleNone": "無し",
