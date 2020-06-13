@@ -117,7 +117,9 @@ public enum Feature {
     ONLY_BREAK_LOGS_PARK(84, Message.SETTING_ONLY_BREAK_LOGS_PARK, new GuiFeatureData(ChatFormatting.RED, true), false, EnumUtils.FeatureSetting.ENABLE_MESSAGE_WHEN_ACTION_PREVENTED),
     ENABLE_MESSAGE_WHEN_BREAKING_PARK(85, null, false),
     BOSS_APPROACH_ALERT(86, Message.SETTING_BOSS_APPROACH_ALERT, false),
-    HIDE_SVEN_PUP_NAMETAGS(87, Message.SETTING_HIDE_SVEN_PUP_NAMETAGS, true),
+    DISABLE_TELEPORT_PAD_MESSAGES(87, Message.SETTING_DISABLE_TELEPORT_PAD_MESSAGES, false),
+    BAIT_LIST(88, Message.SETTING_BAIT_LIST, new GuiFeatureData(EnumUtils.DrawType.BAIT_LIST_DISPLAY, ChatFormatting.AQUA, EnumUtils.AnchorPoint.TOP_LEFT, 36, 100), true),
+    HIDE_SVEN_PUP_NAMETAGS(89, Message.SETTING_HIDE_SVEN_PUP_NAMETAGS, true),
 
     WARNING_TIME(-1, Message.SETTING_WARNING_DURATION, false),
 
@@ -156,7 +158,7 @@ public enum Feature {
     @Getter private static Set<Feature> guiFeatures = new LinkedHashSet<>(Arrays.asList(MAGMA_BOSS_TIMER, MANA_BAR, MANA_TEXT, DEFENCE_ICON, DEFENCE_TEXT,
             DEFENCE_PERCENTAGE, HEALTH_BAR, HEALTH_TEXT, SKELETON_BAR, HEALTH_UPDATES, ITEM_PICKUP_LOG, DARK_AUCTION_TIMER, SKILL_DISPLAY, SPEED_PERCENTAGE, SLAYER_INDICATOR,
             POWER_ORB_STATUS_DISPLAY, ZEALOT_COUNTER, TICKER_CHARGES_DISPLAY, TAB_EFFECT_TIMERS, SHOW_TOTAL_ZEALOT_COUNT, SHOW_SUMMONING_EYE_COUNT,
-            SHOW_AVERAGE_ZEALOTS_PER_EYE, BIRCH_PARK_RAINMAKER_TIMER, COMBAT_TIMER_DISPLAY, ENDSTONE_PROTECTOR_DISPLAY));
+            SHOW_AVERAGE_ZEALOTS_PER_EYE, BIRCH_PARK_RAINMAKER_TIMER, COMBAT_TIMER_DISPLAY, ENDSTONE_PROTECTOR_DISPLAY, BAIT_LIST));
 
     private static final int ID_AT_PREVIOUS_UPDATE = 63;
 
@@ -229,6 +231,8 @@ public enum Feature {
                 main.getRenderListener().drawScorpionFoilTicker(mc, scale, buttonLocation);
             } else if (guiFeatureData.getDrawType() == EnumUtils.DrawType.TAB_EFFECT_TIMERS){
                 main.getRenderListener().drawPotionEffectTimers(scale, buttonLocation);
+            } else if(guiFeatureData.getDrawType() == EnumUtils.DrawType.BAIT_LIST_DISPLAY) {
+                main.getRenderListener().drawBaitList(mc, scale, buttonLocation);
             }
         }
     }

@@ -915,6 +915,60 @@ public class RenderListener {
         }
     }
 
+    /**
+     * Displays the bait list. Only shows bait with count > 0.
+     */
+    public void drawBaitList(Minecraft mc, float scale, ButtonLocation buttonLocation) {
+        if (!BaitListManager.getInstance().holdingRod() && buttonLocation == null) return;
+
+        Map<BaitListManager.BaitType, Integer> baits = BaitListManager.getInstance().baitsInInventory;
+        if (buttonLocation != null) {
+            baits = BaitListManager.DUMMY_BAITS;
+        }
+
+        int longestLineWidth = 0;
+        for (Map.Entry<BaitListManager.BaitType, Integer> entry : baits.entrySet()) {
+            longestLineWidth = Math.max(longestLineWidth, Minecraft.getMinecraft().fontRendererObj.getStringWidth(String.valueOf(entry.getValue())));
+        }
+
+        float x = main.getConfigValues().getActualX(Feature.BAIT_LIST);
+        float y = main.getConfigValues().getActualY(Feature.BAIT_LIST);
+
+        int spacing = 1;
+        int iconSize = 16;
+        int width = iconSize + spacing + longestLineWidth;
+        int height = iconSize * baits.size();
+
+        x -= width * scale / 2F;
+        y -= iconSize * scale / 2F;
+        x /= scale;
+        y /= scale;
+
+        if (buttonLocation != null) {
+            buttonLocation.checkHoveredAndDrawBox(x, x + width, y, y + height, scale);
+        }
+
+        for (Map.Entry<BaitListManager.BaitType, Integer> entry : baits.entrySet()) {
+            if (entry.getValue() == 0) continue;
+
+            GlStateManager.disableDepth();
+            GlStateManager.enableBlend();
+            mc.getTextureManager().bindTexture(entry.getKey().getResourceLocation());
+            GlStateManager.color(1, 1, 1, 1F);
+            main.getUtils().drawModalRectWithCustomSizedTexture(x, y, 0, 0, iconSize, iconSize, iconSize, iconSize);
+            GlStateManager.disableBlend();
+            GlStateManager.enableDepth();
+
+            int color = main.getConfigValues().getColor(Feature.BAIT_LIST).getRGB();
+            ChromaManager.renderingText(Feature.BAIT_LIST);
+            main.getUtils().drawTextWithStyle(String.valueOf(entry.getValue()), x + iconSize + spacing, y + (iconSize / 2F) - (8 / 2F), color);
+            ChromaManager.doneRenderingText();
+
+            y += iconSize;
+        }
+    }
+
+
     private static final SlayerArmorProgress[] DUMMY_PROGRESSES = new SlayerArmorProgress[]{new SlayerArmorProgress(new ItemStack(Items.diamond_boots)),
             new SlayerArmorProgress(new ItemStack(Items.chainmail_leggings)), new SlayerArmorProgress(new ItemStack(Items.diamond_chestplate)), new SlayerArmorProgress(new ItemStack(Items.leather_helmet))};
 
@@ -937,8 +991,8 @@ public class RenderListener {
 
         int height = 15 * 4;
         int width = 16 + 2 + longest;
-        x -= width * scale / 2;
-        y -= height * scale / 2;
+        x -= width * scale / 2F;
+        y -= height * scale / 2F;
         x /= scale;
         y /= scale;
         if (buttonLocation != null) {

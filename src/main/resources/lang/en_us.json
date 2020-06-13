@@ -121,6 +121,8 @@
     "legendarySeaCreatureWarning": "Legendary Sea Creature Warning",
     "onlyBreakLogsPark": "Only Break Logs in the Park",
     "bossApproachAlert": "Boss Approach Alert",
+    "disableTeleportPadMessages": "Disable Teleport Pad Messages",
+    "baitListDisplay" : "Show Bait List While Holding a Rod",
     "hideSvenPupNametags": "Hide Sven Pup Nametags"
   },
   "messages": {
