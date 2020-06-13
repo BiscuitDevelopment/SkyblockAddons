@@ -2,7 +2,6 @@ package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import lombok.Getter;
-import lombok.Setter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.init.Items;
@@ -25,8 +24,7 @@ public class BaitListManager {
     /**
      * The BaitListManager instance.
      */
-    @Getter
-    private static final BaitListManager instance = new BaitListManager();
+    @Getter private static final BaitListManager instance = new BaitListManager();
 
     /**
      * A map of all baits in the inventory and their count
@@ -121,16 +119,4 @@ public class BaitListManager {
             return null;
         }
     }
-
-    @Getter @Setter
-    public static class Pair<T, U> {
-        private T first;
-        private U second;
-        public Pair(T first, U second)
-        {
-            this.first = first;
-            this.second = second;
-        }
-    }
-
 }
