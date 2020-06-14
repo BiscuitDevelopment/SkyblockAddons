@@ -123,8 +123,8 @@
     "bossApproachAlert": "Boss Appwoached Awert",
     "disableTeleportPadMessages": "Disabwe Tewepowt Pad Messages",
     "baitListDisplay": "Show Bait Wist Whiwe Howding a Wod",
-    "freezeBackpackPreview": "Fweeze Bwackpack Pweview",
-    "hideGreyEnchants": "Hoide Weguwaw Gwey Enchents"
+    "freezeBackpackPreview": "Freeze Backpack Preview",
+    "hideGreyEnchants": "Hide Regular Grey Enchants"
   },
   "messages": {
     "dropConfirmation": "Dwop thwis itwem agwain to confiwm!",
@@ -147,7 +147,7 @@
     "directDownload": "DIWECT DOWNWOAD WINK",
     "openModFolder": "MOOWODS FOWOLDER",
     "joinTheDiscord": "JOIN DISCOWD",
-    "newUpdateAvailable": "A nuwu OwO Updowoe (%version%) is avaiwable!",
+    "newUpdateAvailable": "A new update (%version%) is available!",
     "update": {
       "majorAvailable": "A new majow update (%version%) is avaiwabwe! the wink fow the downwoad can be found in chat.",
       "patchAvailable": "A new patch update (%version%) is avaiwabwe! look in chat fow downwoad options!"

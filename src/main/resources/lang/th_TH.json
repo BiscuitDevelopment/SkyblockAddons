@@ -174,7 +174,7 @@
     "rescaleFeatures": "ปรับขนาดรูปแบบ",
     "resizeBars": "ปรับขนาดแถบ",
     "showColorIcons": "แสดงปุ่มสี",
-    "enableFeatureSnapping": "เปิดฟังชั่นการเคลื่อนย้าย",
+    "enableFeatureSnapping": "Enable Feature Snapping",
     "stage": "ด่าน %stage%",
     "switchedSlots": "คุณพึ่งเปลี่ยนจากการล็อคช่อง โปรดรอสักครู่​ก่อนทิ้งของ",
     "clickToOpenLink": "กดเพื่อเปิดลิงค์",

@@ -123,8 +123,8 @@
     "bossApproachAlert": "Alerta para a aproximação do boss",
     "disableTeleportPadMessages": "Desativar mensagens dos Teleport Pads",
     "baitListDisplay": "Mostrar uma lista de baits ao segurar numa vara",
-    "freezeBackpackPreview": "Congelar pré-visualização da backpack",
-    "hideGreyEnchants": "Esconder encantamentos normais a cinzento"
+    "freezeBackpackPreview": "Freeze Backpack Preview",
+    "hideGreyEnchants": "Hide Regular Grey Enchants"
   },
   "messages": {
     "dropConfirmation": "Atira este item outra vez para confirmar!",

@@ -123,8 +123,8 @@
     "bossApproachAlert": "تنبيه اقتراب استدعاء رئيس القتال",
     "disableTeleportPadMessages": "ايقاف رسائل حجر التنقل",
     "baitListDisplay": "إظهار قائمة طعم الاسماك أثناء حمل الصنارة",
-    "freezeBackpackPreview": "تجميد محتوى حقيبة الظهر",
-    "hideGreyEnchants": "اخفاء التطويرات الرمادية العادية"
+    "freezeBackpackPreview": "Freeze Backpack Preview",
+    "hideGreyEnchants": "Hide Regular Grey Enchants"
   },
   "messages": {
     "dropConfirmation": "!إرمي هذا العنصر مرة أخرى للتأكيد",

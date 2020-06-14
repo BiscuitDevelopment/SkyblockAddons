@@ -120,11 +120,11 @@
     "advancedMode": "Mod avansat",
     "legendarySeaCreatureWarning": "Avertisment pentru creaturii de apa legendare",
     "onlyBreakLogsPark": "Sparge doar lemnul in parc",
-    "bossApproachAlert": "Slayer Boss Se Apropie Alerta",
-    "disableTeleportPadMessages": "Dezactiveaza Mesaje De Teleportare De La Pad",
-    "baitListDisplay": "Arata Lista Bait in timp ce folositi un Rod",
-    "freezeBackpackPreview": "Îngheață Previzualizarea Backpack",
-    "hideGreyEnchants": "Ascunde enchantele gri obișnuite"
+    "bossApproachAlert": "Slayer Boss Approach Alert",
+    "disableTeleportPadMessages": "Disable Teleport Pad Messages",
+    "baitListDisplay": "Show Bait List While Holding a Rod",
+    "freezeBackpackPreview": "Freeze Backpack Preview",
+    "hideGreyEnchants": "Hide Regular Grey Enchants"
   },
   "messages": {
     "dropConfirmation": "Arunca acest obiect iar ca să confirmi!",
@@ -179,16 +179,16 @@
     "switchedSlots": "Tocmai ce ai trecut de la un slot blocat sau item rar. Te rugam sa aștepți puțin înainte să arunci!",
     "clickToOpenLink": "Apasă din nou că sa deschizi link-ul!",
     "clickToOpenFolder": "Click pentru a deschide folderul de moduri!",
-    "firstStatus": "Acest status va apărea sus",
-    "secondStatus": "Acest statut va apărea sub primul tău statut",
-    "fallbackStatus": "Acest status va apărea atunci când starea automată nu are nimic de afișat",
-    "legendarySeaCreatureWarning": "Captură Legendară!",
-    "cancelledPark": "O caracteristică te-a oprit din spargerea acestui bloc aici.",
-    "bossApproaching": "Ești aproape să spaunezi un boss!"
+    "firstStatus": "This status will appear at the top",
+    "secondStatus": "This status will appear under your first status",
+    "fallbackStatus": "This status will appear when your automatic status has nothing to show",
+    "legendarySeaCreatureWarning": "Legendary Catch!",
+    "cancelledPark": "A feature has stopped you from breaking this block here.",
+    "bossApproaching": "You are close to spawning a boss!"
   },
   "discordStatus": {
     "titleNone": "Nimic",
-    "descriptionNone": "Nu este afișat niciun text",
+    "descriptionNone": "No text is displayed",
     "titleLocation": "Locatie",
     "descriptionLocation": "Arata locatia curenta",
     "titlePurse": "Portofel",
@@ -198,14 +198,14 @@
     "titleZealots": "Zealots",
     "descriptionZealots": "Arata contorul de Zealots",
     "titleItem": "Item-ul tinut",
-    "descriptionItem": "Arată numele obiectului pe care îl țineți",
-    "titleProfile": "Profil",
-    "descriptionProfile": "Arată numele profilului tău",
-    "titleTime": "Timp Skyblock",
-    "descriptionTime": "Afișează timpul Skyblock curent. De ex. 12:00am 1 Iarnă",
-    "titleCustom": "Stare personalizată",
-    "descriptionCustom": "Introduceți un status personalizat",
-    "titleAuto": "Status automat",
-    "descriptionAuto": "Afiseaza automat un statut. De ex. numarul de zealot in timp ce se termina."
+    "descriptionItem": "Shows the name of the item you're holding",
+    "titleProfile": "Profile",
+    "descriptionProfile": "Shows your Profile name",
+    "titleTime": "Skyblock Time",
+    "descriptionTime": "Shows the current Skyblock time. E.g. 12:00am 1st Early Winter",
+    "titleCustom": "Custom Status",
+    "descriptionCustom": "Enter a custom status",
+    "titleAuto": "Auto Status",
+    "descriptionAuto": "Automatically displays a status. E.g. your zealot count while in the end."
   }
 }
