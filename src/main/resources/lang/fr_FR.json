@@ -118,11 +118,13 @@
     "fancyWarpMenu": "Menu de téléportation",
     "doubleWarp": "Double téléportation",
     "advancedMode": "Mode avancé",
-    "legendarySeaCreatureWarning": "Legendary Sea Creature Warning",
-    "onlyBreakLogsPark": "Only Break Logs in the Park",
-    "bossApproachAlert": "Slayer Boss Approach Alert",
-    "disableTeleportPadMessages": "Disable Teleport Pad Messages",
-    "baitListDisplay": "Show Bait List While Holding a Rod"
+    "legendarySeaCreatureWarning": "Créature legendaire pêché",
+    "onlyBreakLogsPark": "Casser uniquement les bûches dans le parc",
+    "bossApproachAlert": "Spawn du boss imminent",
+    "disableTeleportPadMessages": "Désactiver les messages des teleporteurs",
+    "baitListDisplay": "Afficher la liste d'appâts en tenant une canne à \npêche",
+    "freezeBackpackPreview": "Maintenir l'aperçu du sac à dos ouvert",
+    "hideGreyEnchants": "Masquer les enchantements gris"
   },
   "messages": {
     "dropConfirmation": "Jetez cet objet une nouvelle fois pour confirmer!",
@@ -177,14 +179,12 @@
     "switchedSlots": "Vous venez de basculer d'un emplacement verrouillé ou d'un objet rare. Veuillez patienter un peu avant de jeter !",
     "clickToOpenLink": "Cliquez ici pour ouvrir le lien!",
     "clickToOpenFolder": "Cliquez pour ouvrir le dossier des mods !",
-    "freezeBackpackPreview": "Geler l'aperçu du sac à dos",
-    "hideGreyEnchants": "Masquer les enchantements gris",
-    "firstStatus": "This status will appear at the top",
-    "secondStatus": "This status will appear under your first status",
-    "fallbackStatus": "This status will appear when your automatic status has nothing to show",
-    "legendarySeaCreatureWarning": "Legendary Catch!",
-    "cancelledPark": "A feature has stopped you from breaking this block here.",
-    "bossApproaching": "You are close to spawning a boss!"
+    "firstStatus": "Ce statut discord apparaîtra en haut",
+    "secondStatus": "Ce statut apparaîtra sous votre premier statut",
+    "fallbackStatus": "Ce statut apparaîtra quand votre statut automatique n'a rien à afficher",
+    "legendarySeaCreatureWarning": "Prise legendaire!",
+    "cancelledPark": "SkyblockAddons vous a empêché de miner ce bloc ici.",
+    "bossApproaching": "Vous êtes sur le point de faire apparaître un boss!"
   },
   "discordStatus": {
     "titleNone": "Aucun",
