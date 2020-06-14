@@ -122,7 +122,9 @@
     "onlyBreakLogsPark": "Onwy Bweak Wogs in the Pawk",
     "bossApproachAlert": "Boss Appwoached Awert",
     "disableTeleportPadMessages": "Disabwe Tewepowt Pad Messages",
-    "baitListDisplay": "Show Bait Wist Whiwe Howding a Wod"
+    "baitListDisplay": "Show Bait Wist Whiwe Howding a Wod",
+    "freezeBackpackPreview": "Freeze Backpack Preview",
+    "hideGreyEnchants": "Hide Regular Grey Enchants"
   },
   "messages": {
     "dropConfirmation": "Dwop thwis itwem agwain to confiwm!",
@@ -177,8 +179,6 @@
     "switchedSlots": "You have just switched fwom a wocked swot ow wawe item. Pwease wait a bit befowe dwopping!",
     "clickToOpenLink": "Cwick to open this wink!",
     "clickToOpenFolder": "Cwick to open youw mods fowdew!",
-    "freezeBackpackPreview": "Fweeze Backpack Pweview",
-    "hideGreyEnchants": "Hide Weguwaw Gwey Enchants",
     "firstStatus": "This status wiww appeaw at the top",
     "secondStatus": "This status wiww appeaw undew youw fiwst status",
     "fallbackStatus": "This status wiww appeaw when youw automatic status has nothing to show",
