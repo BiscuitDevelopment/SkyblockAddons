@@ -122,7 +122,9 @@
     "onlyBreakLogsPark": "Sparge doar lemnul in parc",
     "bossApproachAlert": "Slayer Boss Approach Alert",
     "disableTeleportPadMessages": "Disable Teleport Pad Messages",
-    "baitListDisplay": "Show Bait List While Holding a Rod"
+    "baitListDisplay": "Show Bait List While Holding a Rod",
+    "freezeBackpackPreview": "Freeze Backpack Preview",
+    "hideGreyEnchants": "Hide Regular Grey Enchants"
   },
   "messages": {
     "dropConfirmation": "Arunca acest obiect iar ca să confirmi!",
@@ -177,8 +179,6 @@
     "switchedSlots": "Tocmai ce ai trecut de la un slot blocat sau item rar. Te rugam sa aștepți puțin înainte să arunci!",
     "clickToOpenLink": "Apasă din nou că sa deschizi link-ul!",
     "clickToOpenFolder": "Click pentru a deschide folderul de moduri!",
-    "freezeBackpackPreview": "Freeze Backpack Preview",
-    "hideGreyEnchants": "Hide Regular Grey Enchants",
     "firstStatus": "This status will appear at the top",
     "secondStatus": "This status will appear under your first status",
     "fallbackStatus": "This status will appear when your automatic status has nothing to show",
