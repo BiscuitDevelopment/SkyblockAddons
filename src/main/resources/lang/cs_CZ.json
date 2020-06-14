@@ -122,7 +122,9 @@
     "onlyBreakLogsPark": "Pouze ničit kmeny v Parku",
     "bossApproachAlert": "Upozornění na Slayer Bosse",
     "disableTeleportPadMessages": "Zakázat zprávy Teleportačního padu",
-    "baitListDisplay": "Zobrazit seznam návnad během držení prutu"
+    "baitListDisplay": "Zobrazit seznam návnad během držení prutu",
+    "freezeBackpackPreview": "Zmrazit náhled batohu",
+    "hideGreyEnchants": "Hide Regular Grey Enchants"
   },
   "messages": {
     "dropConfirmation": "Vyhoď tento item pro vyhození!",
@@ -177,8 +179,6 @@
     "switchedSlots": "Právě jsi přepnul z uzamknutého slotu nebo vzácného předmětu. Chvilku počkej před vyhozením!",
     "clickToOpenLink": "Klikni pro otevření odkazu!",
     "clickToOpenFolder": "Klikni pro otevření tvé složky pro módy!",
-    "freezeBackpackPreview": "Zmrazit náhled batohu",
-    "hideGreyEnchants": "Skrýt regulérní šedé očarování",
     "firstStatus": "Tento status se bude zobrazovat nahoře",
     "secondStatus": "Tento status se bude zobrazovat pod tvým prvním statusem",
     "fallbackStatus": "Tento status se bude zobrazovat, když tvůj automatický status nemá nic k zobrazení",
