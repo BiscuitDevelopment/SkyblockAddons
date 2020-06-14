@@ -123,8 +123,8 @@
     "bossApproachAlert": "猎手 Boss 接近警告",
     "disableTeleportPadMessages": "禁用传送平台消息",
     "baitListDisplay": "手持钓竿时显示鱼饵列表",
-    "freezeBackpackPreview": "Freeze Backpack Preview",
-    "hideGreyEnchants": "Hide Regular Grey Enchants"
+    "freezeBackpackPreview": "冻结背包预览",
+    "hideGreyEnchants": "隐藏原版灰色附魔名"
   },
   "messages": {
     "dropConfirmation": "再次丢弃此物品以确认!",
@@ -174,7 +174,7 @@
     "rescaleFeatures": "重置缩放大小",
     "resizeBars": "重置计量条大小",
     "showColorIcons": "显示颜色图标",
-    "enableFeatureSnapping": "Enable Feature Snapping",
+    "enableFeatureSnapping": "启用功能捕捉",
     "stage": "阶段 %stage%",
     "switchedSlots": "你刚刚从锁定槽位切换或者手持稀有物品。请稍后再丢弃！",
     "clickToOpenLink": "点击打开链接！",
