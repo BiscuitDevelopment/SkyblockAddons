@@ -122,7 +122,9 @@
     "onlyBreakLogsPark": "Only Break Logs in the Park",
     "bossApproachAlert": "Slayer Boss Approach Alert",
     "disableTeleportPadMessages": "Disable Teleport Pad Messages",
-    "baitListDisplay": "Show Bait List While Holding a Rod"
+    "baitListDisplay": "Show Bait List While Holding a Rod",
+    "freezeBackpackPreview": "Freeze Backpack Preview",
+    "hideGreyEnchants": "Dölj Vanliga Gråa Förtrollningar"
   },
   "messages": {
     "dropConfirmation": "Släpp Det Här Igen För Att Bekräfta!",
@@ -177,8 +179,6 @@
     "switchedSlots": "Du har precis bytt från en låst plats eller sällsynt föremål. Vänta lite innan du släpper!",
     "clickToOpenLink": "Klicka för att öppna länken!",
     "clickToOpenFolder": "Klicka för att öppna din mods mapp!",
-    "freezeBackpackPreview": "Freeze Backpack Preview",
-    "hideGreyEnchants": "Dölj vanliga gråa förtrollningar",
     "firstStatus": "This status will appear at the top",
     "secondStatus": "This status will appear under your first status",
     "fallbackStatus": "This status will appear when your automatic status has nothing to show",
