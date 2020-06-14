@@ -122,7 +122,9 @@
     "onlyBreakLogsPark": "فقط كسر الخشب في الحديقة",
     "bossApproachAlert": "تنبيه اقتراب استدعاء رئيس القتال",
     "disableTeleportPadMessages": "ايقاف رسائل حجر التنقل",
-    "baitListDisplay": "إظهار قائمة طعم الاسماك أثناء حمل الصنارة"
+    "baitListDisplay": "إظهار قائمة طعم الاسماك أثناء حمل الصنارة",
+    "freezeBackpackPreview": "Freeze Backpack Preview",
+    "hideGreyEnchants": "Hide Regular Grey Enchants"
   },
   "messages": {
     "dropConfirmation": "!إرمي هذا العنصر مرة أخرى للتأكيد",
@@ -177,8 +179,6 @@
     "switchedSlots": "لقد قمت للتو بالتبديل من خانة مقفلة أو عنصر نادر. الرجاء الانتظار قليلاً قبل الإسقاط!",
     "clickToOpenLink": "انقر لفتح هذا الرابط!",
     "clickToOpenFolder": "انقر لفتح مجلد المودات الخاص بك!",
-    "freezeBackpackPreview": "تجميد محتوى حقيبة الظهر",
-    "hideGreyEnchants": "اخفاء السحر الرمادي العادي",
     "firstStatus": "ستظهر هذه الحالة في الجزء العلوي",
     "secondStatus": "ستظهر هذه الحالة تحت حالتك الأولى",
     "fallbackStatus": "ستظهر هذه الحالة عندما لا توفر حالتك التلقائية على أي شيء لإظهاره",
