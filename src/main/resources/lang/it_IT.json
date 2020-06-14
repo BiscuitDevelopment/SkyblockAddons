@@ -123,8 +123,8 @@
     "bossApproachAlert": "Avviso Avvicinamento Boss Assassino",
     "disableTeleportPadMessages": "Disabilita i messaggi delle pedane di teletrasporto",
     "baitListDisplay": "Mostra la lista delle esche tenendo in mano una canna",
-    "freezeBackpackPreview": "Freeze Backpack Preview",
-    "hideGreyEnchants": "Hide Regular Grey Enchants"
+    "freezeBackpackPreview": "Congela l’anteprima degli zaini",
+    "hideGreyEnchants": "Nascondi gli incantesimi grigi regolari"
   },
   "messages": {
     "dropConfirmation": "Getta questo oggetto nuovamente per confermare!",
