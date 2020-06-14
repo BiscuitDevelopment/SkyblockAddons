@@ -122,7 +122,9 @@
     "onlyBreakLogsPark": "Only Break Logs in the Park",
     "bossApproachAlert": "Slayer Boss Approach Alert",
     "disableTeleportPadMessages": "Disable Teleport Pad Messages",
-    "baitListDisplay": "Show Bait List While Holding a Rod"
+    "baitListDisplay": "Show Bait List While Holding a Rod",
+    "freezeBackpackPreview": "Freeze Backpack Preview",
+    "hideGreyEnchants": "Hide Regular Grey Enchants"
   },
   "messages": {
     "dropConfirmation": "再次丟棄此物品以確認!",
@@ -177,8 +179,6 @@
     "switchedSlots": "你剛從一個鎖住的欄位或稀有物品切換 丟棄前請稍等片刻!",
     "clickToOpenLink": "點擊以開啟此連結!",
     "clickToOpenFolder": "點擊以開啟你的模組資料夾!",
-    "freezeBackpackPreview": "維持背包預覽",
-    "hideGreyEnchants": "隱藏原版說明欄灰色附魔",
     "firstStatus": "This status will appear at the top",
     "secondStatus": "This status will appear under your first status",
     "fallbackStatus": "This status will appear when your automatic status has nothing to show",
