@@ -122,7 +122,9 @@
     "onlyBreakLogsPark": "Partir apensar troncos no The Park",
     "bossApproachAlert": "Alerta para a aproximação do boss",
     "disableTeleportPadMessages": "Desativar mensagens dos Teleport Pads",
-    "baitListDisplay": "Mostrar uma lista de baits ao segurar numa vara"
+    "baitListDisplay": "Mostrar uma lista de baits ao segurar numa vara",
+    "freezeBackpackPreview": "Freeze Backpack Preview",
+    "hideGreyEnchants": "Hide Regular Grey Enchants"
   },
   "messages": {
     "dropConfirmation": "Atira este item outra vez para confirmar!",
@@ -177,8 +179,6 @@
     "switchedSlots": "Estiveste a segurar um espaço bloqueado ou um item raro recentemente. Espera um pouco antes de deitares este item fora!",
     "clickToOpenLink": "Clica para abrires este link!",
     "clickToOpenFolder": "Clica para abrires a tua pasta mods!",
-    "freezeBackpackPreview": "Congelar a pre-visualização da backpack",
-    "hideGreyEnchants": "Esconder encantamentos cinzentos normais",
     "firstStatus": "O estado vai aparecer no topo",
     "secondStatus": "O estado vai aparecer debaixo do teu primeiro estado",
     "fallbackStatus": "O estado vai aparecer quando o teu estado automático não tem nada para mostrar",
