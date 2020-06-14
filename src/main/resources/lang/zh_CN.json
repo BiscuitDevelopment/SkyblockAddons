@@ -122,7 +122,9 @@
     "onlyBreakLogsPark": "Only Break Logs in the Park",
     "bossApproachAlert": "猎手 Boss 接近警告",
     "disableTeleportPadMessages": "禁用传送平台消息",
-    "baitListDisplay": "手持钓竿时显示鱼饵列表"
+    "baitListDisplay": "手持钓竿时显示鱼饵列表",
+    "freezeBackpackPreview": "Freeze Backpack Preview",
+    "hideGreyEnchants": "Hide Regular Grey Enchants"
   },
   "messages": {
     "dropConfirmation": "再次丢弃此物品以确认!",
@@ -177,8 +179,6 @@
     "switchedSlots": "你刚刚从锁定槽位切换或者手持稀有物品。请稍后再丢弃！",
     "clickToOpenLink": "点击打开链接！",
     "clickToOpenFolder": "打开 mods 文件夹",
-    "freezeBackpackPreview": "冻结背包预览",
-    "hideGreyEnchants": "隐藏原版灰色附魔名",
     "firstStatus": "此状态将显示在顶部",
     "secondStatus": "This status will appear under your first status",
     "fallbackStatus": "This status will appear when your automatic status has nothing to show",
