@@ -117,7 +117,14 @@
     "endstoneProtectorDisplay": "Ukazatel Endstone Protectora",
     "fancyWarpMenu": "Krásnější Warp Menu",
     "doubleWarp": "Warpnout dvakrát",
-    "advancedMode": "Pokročílý mód"
+    "advancedMode": "Pokročílý mód",
+    "legendarySeaCreatureWarning": "Upozornění na legendární mořské stvoření",
+    "onlyBreakLogsPark": "Pouze ničit kmeny v Parku",
+    "bossApproachAlert": "Upozornění na příchod Slayer Bosse",
+    "disableTeleportPadMessages": "Zakázat zprávy Teleportačního padu",
+    "baitListDisplay": "Zobrazit seznam návnad během držení prutu",
+    "freezeBackpackPreview": "Zmrazit náhled batohu",
+    "hideGreyEnchants": "Skrýt obvyklé šedé očarování"
   },
   "messages": {
     "dropConfirmation": "Vyhoď tento item pro vyhození!",
@@ -167,12 +174,17 @@
     "rescaleFeatures": "Přeškálovat funkce",
     "resizeBars": "Změnit rozměry ukazatele",
     "showColorIcons": "Zobrazit barevné ikony",
+    "enableFeatureSnapping": "Povolit přichycení funkcí",
     "stage": "Fáze %stage%",
     "switchedSlots": "Právě jsi přepnul z uzamknutého slotu nebo vzácného předmětu. Chvilku počkej před vyhozením!",
     "clickToOpenLink": "Klikni pro otevření odkazu!",
     "clickToOpenFolder": "Klikni pro otevření tvé složky pro módy!",
-    "freezeBackpackPreview": "Zmrazit náhled batohu",
-    "hideGreyEnchants": "Skrýt regulérní šedé očarování"
+    "firstStatus": "Tento status se bude zobrazovat nahoře",
+    "secondStatus": "Tento status se bude zobrazovat pod tvým prvním statusem",
+    "fallbackStatus": "Tento status se bude zobrazovat, když tvůj automatický status nemá nic k zobrazení",
+    "legendarySeaCreatureWarning": "Legendární úlovek!",
+    "cancelledPark": "Funkce SkyblockAddons tě zastavila před zničením tohoto bloku.",
+    "bossApproaching": "Jsi blízko k vyvolání bosse!"
   },
   "discordStatus": {
     "titleNone": "Žádné",

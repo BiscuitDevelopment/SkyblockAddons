@@ -117,7 +117,14 @@
     "endstoneProtectorDisplay": "Biscuit Protector Display",
     "fancyWarpMenu": "Crunchy Warp Menu",
     "doubleWarp": "Warp Twice",
-    "advancedMode": "Big Brain Mode"
+    "advancedMode": "Big Brain Mode",
+    "legendarySeaCreatureWarning": "Exquisite Sea Biscuit Warning",
+    "onlyBreakLogsPark": "Only Break Logs in the Biscuit Lands",
+    "bossApproachAlert": "Slayer Boss Approach Alert",
+    "disableTeleportPadMessages": "Disable Teleport Pad Messages",
+    "baitListDisplay": "Show Bait List While Holding a Rod",
+    "freezeBackpackPreview": "Freeze Backpack Preview",
+    "hideGreyEnchants": "Hide Regular Grey Enchants"
   },
   "messages": {
     "dropConfirmation": "Throw out this biscuit again to confirm!",
@@ -167,12 +174,17 @@
     "rescaleFeatures": "Rescale The Biscuits",
     "resizeBars": "Resize Biscuit Bars",
     "showColorIcons": "Show Color Biscons",
+    "enableFeatureSnapping": "Enable Feature Snapping",
     "stage": "Stage %stage%",
     "switchedSlots": "You have switched from a locked biscuish or rare item. Please wait a bit before dropping!",
     "clickToOpenLink": "Click to open this link!",
     "clickToOpenFolder": "Click to open your biscuits folder!",
-    "freezeBackpackPreview": "Freeze Biscuit Sneak Peak",
-    "hideGreyEnchants": "Hide Regular Grey Enchants"
+    "firstStatus": "This status will appear at the top",
+    "secondStatus": "This status will appear under your first status",
+    "fallbackStatus": "This status will appear when your automatic status has nothing to show",
+    "legendarySeaCreatureWarning": "Legendary Catch!",
+    "cancelledPark": "A feature has stopped you from breaking this block here.",
+    "bossApproaching": "You are close to spawning a boss!"
   },
   "discordStatus": {
     "titleNone": "None",

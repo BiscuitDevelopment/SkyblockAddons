@@ -117,7 +117,14 @@
     "endstoneProtectorDisplay": "Mostrador do Endstone Protector",
     "fancyWarpMenu": "Menu de warps chique",
     "doubleWarp": "Viajar duas vezes",
-    "advancedMode": "Modo avançado"
+    "advancedMode": "Modo avançado",
+    "legendarySeaCreatureWarning": "Alerta para sea creatures lendárias",
+    "onlyBreakLogsPark": "Partir apensar troncos no The Park",
+    "bossApproachAlert": "Alerta para a aproximação do boss",
+    "disableTeleportPadMessages": "Desativar mensagens dos Teleport Pads",
+    "baitListDisplay": "Mostrar uma lista de baits ao segurar numa vara",
+    "freezeBackpackPreview": "Freeze Backpack Preview",
+    "hideGreyEnchants": "Hide Regular Grey Enchants"
   },
   "messages": {
     "dropConfirmation": "Atira este item outra vez para confirmar!",
@@ -167,12 +174,17 @@
     "rescaleFeatures": "Redimensionar funções",
     "resizeBars": "Redimensionar barras",
     "showColorIcons": "Mostrar a cor dos ícones",
+    "enableFeatureSnapping": "Enable Feature Snapping",
     "stage": "Fase %stage%",
     "switchedSlots": "Estiveste a segurar um espaço bloqueado ou um item raro recentemente. Espera um pouco antes de deitares este item fora!",
     "clickToOpenLink": "Clica para abrires este link!",
     "clickToOpenFolder": "Clica para abrires a tua pasta mods!",
-    "freezeBackpackPreview": "Congelar a pre-visualização da backpack",
-    "hideGreyEnchants": "Hide Regular Grey Enchants"
+    "firstStatus": "O estado vai aparecer no topo",
+    "secondStatus": "O estado vai aparecer debaixo do teu primeiro estado",
+    "fallbackStatus": "O estado vai aparecer quando o teu estado automático não tem nada para mostrar",
+    "legendarySeaCreatureWarning": "Apanhaste uma lendária!",
+    "cancelledPark": "Uma funcionalidade preveniu-te de partir este bloco aqui.",
+    "bossApproaching": "Estás perto de invocar o boss!"
   },
   "discordStatus": {
     "titleNone": "Nenhum",
