@@ -122,7 +122,9 @@
     "onlyBreakLogsPark": "Parkで木以外を破壊できなくする",
     "bossApproachAlert": "スレイヤーボスの接近アラート",
     "disableTeleportPadMessages": "テレポートパッドのメッセージを無効にする",
-    "baitListDisplay": "釣り竿を持っている間は餌リストを表示する"
+    "baitListDisplay": "釣り竿を持っている間は餌リストを表示する",
+    "freezeBackpackPreview": "Freeze Backpack Preview",
+    "hideGreyEnchants": "Hide Regular Grey Enchants"
   },
   "messages": {
     "dropConfirmation": "落としてもいいのであれば、このアイテムをもう一度ドロップしてください。",
@@ -177,8 +179,6 @@
     "switchedSlots": "あなたはロックされたスロットまたはレアなアイテムから切り替えました。ドロップする前に少々お待ち下さい！",
     "clickToOpenLink": "クリックしてリンクを開く",
     "clickToOpenFolder": "クリックしてmodフォルダを開く",
-    "freezeBackpackPreview": "Freeze Backpack Preview",
-    "hideGreyEnchants": "Hide Regular Grey Enchants",
     "firstStatus": "This status will appear at the top",
     "secondStatus": "This status will appear under your first status",
     "fallbackStatus": "This status will appear when your automatic status has nothing to show",
