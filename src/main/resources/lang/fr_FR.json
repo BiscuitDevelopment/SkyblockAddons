@@ -117,7 +117,14 @@
     "endstoneProtectorDisplay": "Affichage du Protecteur de l'Endstone",
     "fancyWarpMenu": "Menu de téléportation",
     "doubleWarp": "Double téléportation",
-    "advancedMode": "Mode avancé"
+    "advancedMode": "Mode avancé",
+    "legendarySeaCreatureWarning": "Créature legendaire pêché",
+    "onlyBreakLogsPark": "Casser uniquement les bûches dans le parc",
+    "bossApproachAlert": "Spawn du boss imminent",
+    "disableTeleportPadMessages": "Désactiver les messages des teleporteurs",
+    "baitListDisplay": "Afficher la liste d'appâts en tenant une canne à \npêche",
+    "freezeBackpackPreview": "Maintenir l'aperçu du sac à dos ouvert",
+    "hideGreyEnchants": "Masquer les enchantements gris"
   },
   "messages": {
     "dropConfirmation": "Jetez cet objet une nouvelle fois pour confirmer!",
@@ -167,12 +174,17 @@
     "rescaleFeatures": "Redimensionner les fonctionnalités",
     "resizeBars": "Redimensionner les barres",
     "showColorIcons": "Afficher les icônes de couleur",
+    "enableFeatureSnapping": "Enable Feature Snapping",
     "stage": "Étape %stage%",
     "switchedSlots": "Vous venez de basculer d'un emplacement verrouillé ou d'un objet rare. Veuillez patienter un peu avant de jeter !",
     "clickToOpenLink": "Cliquez ici pour ouvrir le lien!",
     "clickToOpenFolder": "Cliquez pour ouvrir le dossier des mods !",
-    "freezeBackpackPreview": "Geler l'aperçu du sac à dos",
-    "hideGreyEnchants": "Masquer les enchantements gris"
+    "firstStatus": "Ce statut discord apparaîtra en haut",
+    "secondStatus": "Ce statut apparaîtra sous votre premier statut",
+    "fallbackStatus": "Ce statut apparaîtra quand votre statut automatique n'a rien à afficher",
+    "legendarySeaCreatureWarning": "Prise legendaire!",
+    "cancelledPark": "SkyblockAddons vous a empêché de miner ce bloc ici.",
+    "bossApproaching": "Vous êtes sur le point de faire apparaître un boss!"
   },
   "discordStatus": {
     "titleNone": "Aucun",

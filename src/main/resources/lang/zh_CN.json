@@ -14,7 +14,7 @@
     "guiScale": "Gui 大小: %scale%",
     "resetLocations": "重置 Gui 位置",
     "hideDurability": "隐藏物品耐久度",
-    "showEnchantmentsReforges": "附魔 & 重铸",
+    "showEnchantmentsReforges": "附魔 & 洗炼",
     "minionStopWarning": "\"仆从无法触及生物\"警告",
     "hidePlayersNearNPCs": "隐藏重要 NPC 附近的玩家",
     "backpackStyle": "背包样式: %style%",
@@ -117,7 +117,14 @@
     "endstoneProtectorDisplay": "显示末影石保护者",
     "fancyWarpMenu": "精致传送菜单",
     "doubleWarp": "双重传送",
-    "advancedMode": "高级模式"
+    "advancedMode": "高级模式",
+    "legendarySeaCreatureWarning": "传奇海怪警告",
+    "onlyBreakLogsPark": "只在公园中破坏树木",
+    "bossApproachAlert": "猎手 Boss 接近警告",
+    "disableTeleportPadMessages": "禁用传送平台消息",
+    "baitListDisplay": "手持钓竿时显示鱼饵列表",
+    "freezeBackpackPreview": "冻结背包预览",
+    "hideGreyEnchants": "隐藏原版灰色附魔名"
   },
   "messages": {
     "dropConfirmation": "再次丢弃此物品以确认!",
@@ -167,12 +174,17 @@
     "rescaleFeatures": "重置缩放大小",
     "resizeBars": "重置计量条大小",
     "showColorIcons": "显示颜色图标",
+    "enableFeatureSnapping": "启用功能捕捉",
     "stage": "阶段 %stage%",
     "switchedSlots": "你刚刚从锁定槽位切换或者手持稀有物品。请稍后再丢弃！",
     "clickToOpenLink": "点击打开链接！",
     "clickToOpenFolder": "打开 mods 文件夹",
-    "freezeBackpackPreview": "冻结背包预览",
-    "hideGreyEnchants": "隐藏原版灰色附魔名"
+    "firstStatus": "此状态将显示在顶部",
+    "secondStatus": "此状态将显示在第一个状态下",
+    "fallbackStatus": "当自动状态没有显示时，此状态将会显示",
+    "legendarySeaCreatureWarning": "传奇钓落!",
+    "cancelledPark": "SkyblockAddons 已阻止在此破坏方块",
+    "bossApproaching": "猎手 Boss 即将生成!"
   },
   "discordStatus": {
     "titleNone": "无",

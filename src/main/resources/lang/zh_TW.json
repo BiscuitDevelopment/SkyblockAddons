@@ -117,7 +117,14 @@
     "endstoneProtectorDisplay": "顯示終界石守護者",
     "fancyWarpMenu": "精緻傳送介面",
     "doubleWarp": "雙重傳送",
-    "advancedMode": "進階模式"
+    "advancedMode": "進階模式",
+    "legendarySeaCreatureWarning": "傳說釣魚怪物警報",
+    "onlyBreakLogsPark": "只在Park破壞樹木",
+    "bossApproachAlert": "Slayer Boss 逼近警報",
+    "disableTeleportPadMessages": "消除傳送平台訊息",
+    "baitListDisplay": "手持釣竿時顯示魚餌列表",
+    "freezeBackpackPreview": "維持背包預覽",
+    "hideGreyEnchants": "隱藏原版說明欄灰色附魔"
   },
   "messages": {
     "dropConfirmation": "再次丟棄此物品以確認!",
@@ -167,12 +174,17 @@
     "rescaleFeatures": "重置縮放大小功能",
     "resizeBars": "調整計量條大小",
     "showColorIcons": "顯示顏色圖標",
+    "enableFeatureSnapping": "啟用功能結合",
     "stage": "階段 %stage%",
     "switchedSlots": "你剛從一個鎖住的欄位或稀有物品切換 丟棄前請稍等片刻!",
     "clickToOpenLink": "點擊以開啟此連結!",
     "clickToOpenFolder": "點擊以開啟你的模組資料夾!",
-    "freezeBackpackPreview": "維持背包預覽",
-    "hideGreyEnchants": "隱藏原版說明欄灰色附魔"
+    "firstStatus": "這個狀態將會顯示在最上方",
+    "secondStatus": "這個狀態將會顯示在第一個狀態下",
+    "fallbackStatus": "這個狀態將會在自動狀態沒有東西顯示時出現",
+    "legendarySeaCreatureWarning": "傳說一釣!",
+    "cancelledPark": "一個功能阻止了你破壞此方塊",
+    "bossApproaching": "你正在逼近Boss的生成!"
   },
   "discordStatus": {
     "titleNone": "無",
