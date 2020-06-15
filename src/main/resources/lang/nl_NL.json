@@ -114,7 +114,7 @@
     "birchParkRainmakerTimer": "Berkenpark Regenmaker Timer",
     "combatTimerDisplay": "Gevechts Timer Weergave",
     "discordRP": "Discord Rich Presence",
-    "endstoneProtectorDisplay": "Endstone Protector Display",
+    "endstoneProtectorDisplay": "Endstone Beschermer Weergave",
     "fancyWarpMenu": "Mooie teleporteer Menu",
     "doubleWarp": "Warp twee keer",
     "advancedMode": "Geavanceerde modus",
@@ -171,17 +171,17 @@
     "chooseAColor": "Kies een kleur",
     "selectedColor": "Geselecteerde kleur",
     "setHexColor": "Hex kleur instellen",
-    "rescaleFeatures": "Rescale Features",
+    "rescaleFeatures": "Herschaal Functies",
     "resizeBars": "Formaat wijzigen balken",
     "showColorIcons": "Toon kleurenpictogrammen",
-    "enableFeatureSnapping": "Enable Feature Snapping",
+    "enableFeatureSnapping": "Functie-uitlijning inschakelen",
     "stage": "Fase %stage%",
     "switchedSlots": "Je bent net gewisseld van een vergrendeld slot of zeldzaam item. Wacht alsjeblieft een beetje voordat je het laat vallen!",
     "clickToOpenLink": "Klik om deze link te openen!",
     "clickToOpenFolder": "Klik om je mods map te openen!",
     "firstStatus": "Deze status verschijnt bovenaan",
     "secondStatus": "Deze status verschijnt onder je eerste status",
-    "fallbackStatus": "This status will appear when your automatic status has nothing to show",
+    "fallbackStatus": "Deze status wordt weergegeven als je automatische status niets weer te geven heeft",
     "legendarySeaCreatureWarning": "Legendarische vangst!",
     "cancelledPark": "Een functie heeft u ervan weerhouden om dit blok te breken.",
     "bossApproaching": "Je bent dicht bij het spawnen van een baas!"
@@ -206,6 +206,6 @@
     "titleCustom": "Aangepaste Status",
     "descriptionCustom": "Voer een aangepaste status in",
     "titleAuto": "Automatische status",
-    "descriptionAuto": "Automatically displays a status. E.g. your zealot count while in the end."
+    "descriptionAuto": "Geeft automatisch een status weer. Bijvoorbeeld je zealot aantal terwijl in the end."
   }
 }
