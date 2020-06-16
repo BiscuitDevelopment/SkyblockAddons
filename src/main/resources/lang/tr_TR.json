@@ -58,7 +58,7 @@
       "two": "Stil 2"
     },
     "warningDuration": "Uyarı Süresi",
-    "dontOpenProfileWithBow": "Yay ile Profil Açamama",
+    "dontOpenProfileWithBow": "Yay tutarken profil görüntülemeyi engelle",
     "stopDroppingSellingRareItems": "Nadir Eşyaları Düşürmeyi/Satmayı Önle",
     "makeBackpackInventoriesColored": "Envanter'leri Renklendir",
     "avoidBreakingBottomSugarCane": "Şeker Kamışının Altını Kırmayı Engelle",
@@ -200,7 +200,7 @@
     "titleItem": "Elinizdeki Eşya",
     "descriptionItem": "Elinizdeki Eşyayı Gösterir",
     "titleProfile": "Profil",
-    "descriptionProfile": "Sizin Profil Adınızı Gösterir",
+    "descriptionProfile": "Shows your Profile name",
     "titleTime": "Skyblock Zamanı",
     "descriptionTime": "Şu anki Skyblock Zamanını Gösterir Örn. 12:00am 1st Early Winter",
     "titleCustom": "Özel Durum",
