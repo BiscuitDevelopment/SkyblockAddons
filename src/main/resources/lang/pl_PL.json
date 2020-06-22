@@ -51,7 +51,7 @@
     "makeEnderchestsInEndGreen": "Zmień kolor Skrzyni Kresu w Endzie",
     "changeColor": "Zmień kolor",
     "showInOtherGames": "Pokaż w innych grach",
-    "useVanillaTexture": "Użyj Klasycznych tekstur",
+    "useVanillaTexture": "Używaj domyślnej tekstury",
     "textStyle": "Styl tekstu",
     "textStyles": {
       "one": "Styl pierwszy",
@@ -85,7 +85,7 @@
       "detailed": "Szczegółowy",
       "compact": "Prosty"
     },
-    "disableMagicalSoupMessage": "Ukryj wiadomości z Magicznej Zupy",
+    "disableMagicalSoupMessage": "Ukryj wiadomości magicznej zupy grzybowej",
     "zealotCounter": "Pokaż licznik Zealotów od ostaniego oka",
     "tickerChargesDisplay": "Wyświetl tickery/naładowania",
     "tab": {
