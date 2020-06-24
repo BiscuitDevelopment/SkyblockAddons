@@ -40,7 +40,7 @@ public class RenderItemTransformer implements ITransformer {
                         MethodInsnNode methodInsnNode = (MethodInsnNode)abstractNode;
 
                         if (methodInsnNode.owner.equals(TransformerClass.RenderItem.getNameRaw()) &&
-                                TransformerMethod.renderModel.matches(methodInsnNode)) {
+                                TransformerMethod.renderModel_RenderItem.matches(methodInsnNode)) {
                             methodNode.instructions.insert(abstractNode, new MethodInsnNode(Opcodes.INVOKESTATIC, "codes/biscuit/skyblockaddons/asm/hooks/RenderItemHook",
                                     "renderToxicArrowPoisonEffect", "("+TransformerClass.IBakedModel.getName()+TransformerClass.ItemStack.getName()+")V", false));
                             methodNode.instructions.insert(abstractNode, new VarInsnNode(Opcodes.ALOAD, 1));

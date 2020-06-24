@@ -223,6 +223,8 @@ public class SkyblockAddonsGui extends GuiScreen {
                     main.getConfigValues().getDisabledFeatures().remove(feature);
                     if(feature == Feature.DISCORD_RPC) {
                         main.getDiscordRPCManager().start();
+                    } else if (feature == Feature.ZEALOT_COUNTER_EXPLOSIVE_BOW_SUPPORT) {
+                        main.getConfigValues().getDisabledFeatures().remove(Feature.DISABLE_ENDERMAN_TELEPORTATION_EFFECT);
                     }
                 } else {
                     main.getConfigValues().getDisabledFeatures().add(feature);
@@ -235,6 +237,8 @@ public class SkyblockAddonsGui extends GuiScreen {
                         main.getScheduler().removeQueuedFullInventoryWarnings();
                     } else if(feature == Feature.DISCORD_RPC) {
                         main.getDiscordRPCManager().stop();
+                    } else if (feature == Feature.DISABLE_ENDERMAN_TELEPORTATION_EFFECT) {
+                        main.getConfigValues().getDisabledFeatures().remove(Feature.ZEALOT_COUNTER_EXPLOSIVE_BOW_SUPPORT);
                     }
                 }
                 ((ButtonToggle)abstractButton).onClick();
@@ -295,8 +299,6 @@ public class SkyblockAddonsGui extends GuiScreen {
         }
     }
 
-    private static int logoScale = -1;
-
     /**
      * Draws the default text at the top at bottoms of the GUI.
      * @param gui The gui to draw the text on.
@@ -310,18 +312,9 @@ public class SkyblockAddonsGui extends GuiScreen {
 
         TextureManager textureManager = Minecraft.getMinecraft().getTextureManager();
 
-        int minecraftScale = scaledResolution.getScaleFactor();
-        boolean redo = false;
-        if (logoScale != -1 && minecraftScale != logoScale) {
-            redo = true;
-        }
-        logoScale = minecraftScale;
-
-        ResourceLocation logoScaled = SkyblockAddons.getInstance().getUtils().getScaledResource(LOGO, width*minecraftScale, height*minecraftScale, redo);
-        ResourceLocation glowScaled = SkyblockAddons.getInstance().getUtils().getScaledResource(LOGO_GLOW, width*minecraftScale, height*minecraftScale, redo);
-
-        textureManager.bindTexture(logoScaled);
-        SkyblockAddons.getInstance().getUtils().drawModalRectWithCustomSizedTexture(scaledResolution.getScaledWidth()/2F-width/2F, 3, 0, 0, width, height, width, height);
+        SkyblockAddons.getInstance().getUtils().enableStandardGLOptions();
+        textureManager.bindTexture(LOGO);
+        SkyblockAddons.getInstance().getUtils().drawModalRectWithCustomSizedTexture(scaledResolution.getScaledWidth()/2F-width/2F, 3, 0, 0, width, height, width, height, true);
 
         int animationMillis = 4000;
         float glowAlpha;
@@ -333,8 +326,8 @@ public class SkyblockAddonsGui extends GuiScreen {
         }
 
         GlStateManager.color(1,1,1, glowAlpha);
-        textureManager.bindTexture(glowScaled);
-        SkyblockAddons.getInstance().getUtils().drawModalRectWithCustomSizedTexture(scaledResolution.getScaledWidth()/2F-width/2F, 3, 0, 0, width, height, width, height);
+        textureManager.bindTexture(LOGO_GLOW);
+        SkyblockAddons.getInstance().getUtils().drawModalRectWithCustomSizedTexture(scaledResolution.getScaledWidth()/2F-width/2F, 3, 0, 0, width, height, width, height, true);
 
         GlStateManager.color(1,1,1, 1);
         String version = "v" + SkyblockAddons.VERSION.replace("beta", "b") + " by Biscut";
@@ -343,6 +336,7 @@ public class SkyblockAddonsGui extends GuiScreen {
         if (gui instanceof SkyblockAddonsGui) {
             drawScaledString(gui, "Special Credits: InventiveTalent - Magma Boss Timer API", gui.height - 22, defaultBlue, 1, 0);
         }
+        SkyblockAddons.getInstance().getUtils().restoreGLOptions();
     }
 
     static void drawScaledString(GuiScreen guiScreen, String text, int y, int color, double scale, int xOffset) {

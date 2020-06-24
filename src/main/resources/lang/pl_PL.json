@@ -117,7 +117,14 @@
     "endstoneProtectorDisplay": "Licznik Endstone Protectora",
     "fancyWarpMenu": "Wymyślne menu przenoszenia",
     "doubleWarp": "Przenieś podwójnie",
-    "advancedMode": "Tryb zaawansowany"
+    "advancedMode": "Tryb zaawansowany",
+    "legendarySeaCreatureWarning": "Ostrzeżenie o Legendarnym Morskim Potworem",
+    "onlyBreakLogsPark": "Niszcz kłody tylko w Parku",
+    "bossApproachAlert": "Powiadomienie o zbliżaniu się do bossa pogromcy",
+    "disableTeleportPadMessages": "Wyłącz komunikaty płytek teleportujących",
+    "baitListDisplay": "Pokazuj listę przynęt podczas trzymania wędki",
+    "freezeBackpackPreview": "Zamróź podgląd plecaka",
+    "hideGreyEnchants": "Ukryj zwyczajne szare zaklęcia"
   },
   "messages": {
     "dropConfirmation": "Wyrzuć ten przedmiot ponownie, aby potwierdzić!",
@@ -167,12 +174,17 @@
     "rescaleFeatures": "Reskaluj Funkcje Moda",
     "resizeBars": "Zmień rozmiar pasków",
     "showColorIcons": "Pokaż ikony kolorów",
+    "enableFeatureSnapping": "Włącz przyciąganie się funkcji",
     "stage": "Etap %stage%",
     "switchedSlots": "Właśnie przełączyłeś się z zablokowanego okienka lub rzadkiego przedmiotu. Poczekaj chwilę przed upuszczeniem!",
     "clickToOpenLink": "Kliknij, aby otworzyć ten odnośnik!",
     "clickToOpenFolder": "Naciśnij, aby otworzyć swój folder z modyfikacjami!",
-    "freezeBackpackPreview": "Zamróź podgląd plecaka",
-    "hideGreyEnchants": "Ukryj zwykłe szare zaklęcia"
+    "firstStatus": "Ten status będzie się wyświetlać na górze",
+    "secondStatus": "Druga Linia Statusu",
+    "fallbackStatus": "Ten status pojawi się, jak twój automatyczny status nie pojawi się",
+    "legendarySeaCreatureWarning": "Legendarne złapanie!",
+    "cancelledPark": "Funkcja Skyblock Addons powstrzymała cię od wykopania tego bloku.",
+    "bossApproaching": "Jesteś bliski przywołania bossa!"
   },
   "discordStatus": {
     "titleNone": "Brak",

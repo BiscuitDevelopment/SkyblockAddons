@@ -69,7 +69,16 @@ public class LocationEditGui extends GuiScreen {
     public void initGui() {
         // Add all gui elements that can be edited to the gui.
         for (Feature feature : Feature.getGuiFeatures()) {
-            if (!main.getConfigValues().isDisabled(feature)) { // Don't display features that have been disabled
+            if ((feature.getGuiFeatureData() == null || feature.getGuiFeatureData().getDrawType() != EnumUtils.DrawType.TEXT) &&
+                    !main.getConfigValues().isDisabled(feature)) { // Don't display features that have been disabled
+                ButtonLocation buttonLocation = new ButtonLocation(main, feature);
+                buttonList.add(buttonLocation);
+                buttonLocations.put(feature, buttonLocation);
+            }
+        }
+        for (Feature feature : Feature.getGuiFeatures()) {
+            if (feature.getGuiFeatureData() != null && feature.getGuiFeatureData().getDrawType() == EnumUtils.DrawType.TEXT &&
+                    !main.getConfigValues().isDisabled(feature)) { // Don't display features that have been disabled
                 ButtonLocation buttonLocation = new ButtonLocation(main, feature);
                 buttonList.add(buttonLocation);
                 buttonLocations.put(feature, buttonLocation);
@@ -449,11 +458,10 @@ public class LocationEditGui extends GuiScreen {
 
         private Edge thisSnapEdge;
         private Edge otherSnapEdge;
-//        private Edge coordinateEdge;
         private float snapValue;
         private Map<Edge, Float> rectangle = new EnumMap<>(Edge.class);
 
-        public Snap(float left, float top, float right, float bottom, Edge thisSnapEdge, Edge otherSnapEdge, float snapValue) {//Edge coordinateEdge) {
+        public Snap(float left, float top, float right, float bottom, Edge thisSnapEdge, Edge otherSnapEdge, float snapValue) {
             rectangle.put(Edge.LEFT, left);
             rectangle.put(Edge.TOP, top);
             rectangle.put(Edge.RIGHT, right);
@@ -464,7 +472,6 @@ public class LocationEditGui extends GuiScreen {
 
             this.otherSnapEdge = otherSnapEdge;
             this.thisSnapEdge = thisSnapEdge;
-//            this.coordinateEdge = coordinateEdge;
             this.snapValue = snapValue;
         }
 

@@ -9,25 +9,11 @@ import java.util.List;
 
 public class NewScheduler {
 
-    private static final NewScheduler INSTANCE = new NewScheduler();
-    private final List<ScheduledTask> activeTasks = new ArrayList<>();
+    private final List<ScheduledTask> queuedTasks = new ArrayList<>();
     private final List<ScheduledTask> pendingTasks = new ArrayList<>();
     private final Object anchor = new Object();
-    private final Thread taskCleaner;
     private volatile long currentTicks = 0;
     private volatile long totalTicks = 0;
-
-    public NewScheduler() {
-        this.taskCleaner = new Thread(() -> {
-            this.pendingTasks.removeIf(ScheduledTask::isCompleted);
-            this.activeTasks.removeIf(ScheduledTask::isCompleted);
-
-            try {
-                Thread.sleep(1);
-            } catch (InterruptedException ignored) { }
-        });
-        this.taskCleaner.start();
-    }
 
     public synchronized long getCurrentTicks() {
         return this.currentTicks;
@@ -46,23 +32,26 @@ public class NewScheduler {
             }
 
             if (Minecraft.getMinecraft() != null) {
-                List<ScheduledTask> removeTasks = new ArrayList<>();
-                for (ScheduledTask scheduledTask : this.pendingTasks) {
-                    if (this.getTotalTicks() >= (scheduledTask.getAddedTicks() + scheduledTask.getDelay())) {
-                        if (!scheduledTask.isCanceled()) {
-                            this.activeTasks.add(scheduledTask);
-                            scheduledTask.start();
+                this.pendingTasks.removeIf(ScheduledTask::isCompleted);
 
-                            if (!scheduledTask.isCompleted() && scheduledTask.getPeriod() > 0) {
-                                scheduledTask.setDelay(scheduledTask.getPeriod());
-                                this.pendingTasks.add(scheduledTask);
-                            } else
-                                removeTasks.add(scheduledTask);
+                this.pendingTasks.addAll(queuedTasks);
+                queuedTasks.clear();
+
+                try {
+                    for (ScheduledTask scheduledTask : this.pendingTasks) {
+                        if (this.getTotalTicks() >= (scheduledTask.getAddedTicks() + scheduledTask.getDelay())) {
+                            if (!scheduledTask.isCanceled()) {
+                                scheduledTask.start();
+
+                                if (!scheduledTask.isCompleted() && scheduledTask.getPeriod() > 0) {
+                                    scheduledTask.setDelay(scheduledTask.getPeriod());
+                                }
+                            }
                         }
                     }
+                } catch (Throwable ex) {
+                    ex.printStackTrace();
                 }
-
-                this.pendingTasks.removeIf(removeTasks::contains);
             }
         }
     }
@@ -72,21 +61,11 @@ public class NewScheduler {
             if (scheduledTask.getId() == id)
                 scheduledTask.cancel();
         });
-
-        activeTasks.forEach(scheduledTask -> {
-            if (scheduledTask.getId() == id)
-                scheduledTask.cancel();
-        });
     }
 
     public void cancel(ScheduledTask task) {
         task.cancel();
     }
-
-    public static NewScheduler getInstance() {
-        return INSTANCE;
-    }
-
     /**
      * Repeats a task (synchronously) every tick.<br><br>
      *
@@ -94,8 +73,8 @@ public class NewScheduler {
      * @param task The task to run.
      * @return The scheduled task.
      */
-    public ScheduledTask repeat(Runnable task) {
-        return this.schedule(task, 0, 1);
+    public ScheduledTask repeat(SkyblockRunnable task) {
+        return this.scheduleRepeatingTask(task, 0, 1);
     }
 
     /**
@@ -104,7 +83,7 @@ public class NewScheduler {
      * @param task The task to run.
      * @return The scheduled task.
      */
-    public ScheduledTask repeatAsync(Runnable task) {
+    public ScheduledTask repeatAsync(SkyblockRunnable task) {
         return this.runAsync(task, 0, 1);
     }
 
@@ -114,7 +93,7 @@ public class NewScheduler {
      * @param task The task to run.
      * @return The scheduled task.
      */
-    public ScheduledTask runAsync(Runnable task) {
+    public ScheduledTask runAsync(SkyblockRunnable task) {
         return this.runAsync(task, 0);
     }
 
@@ -125,7 +104,7 @@ public class NewScheduler {
      * @param delay The delay (in ticks) to wait before the task is ran.
      * @return The scheduled task.
      */
-    public ScheduledTask runAsync(Runnable task, int delay) {
+    public ScheduledTask runAsync(SkyblockRunnable task, int delay) {
         return this.runAsync(task, delay, 0);
     }
 
@@ -137,7 +116,7 @@ public class NewScheduler {
      * @param period The delay (in ticks) to wait before calling the task again.
      * @return The scheduled task.
      */
-    public ScheduledTask runAsync(Runnable task, int delay, int period) {
+    public ScheduledTask runAsync(SkyblockRunnable task, int delay, int period) {
         ScheduledTask scheduledTask = new ScheduledTask(task, delay, period, true);
         this.pendingTasks.add(scheduledTask);
         return scheduledTask;
@@ -149,8 +128,8 @@ public class NewScheduler {
      * @param task The task to run.
      * @return The scheduled task.
      */
-    public ScheduledTask schedule(Runnable task) {
-        return this.schedule(task, 0);
+    public ScheduledTask scheduleTask(SkyblockRunnable task) {
+        return this.scheduleDelayedTask(task, 0);
     }
 
     /**
@@ -160,8 +139,8 @@ public class NewScheduler {
      * @param delay The delay (in ticks) to wait before the task is ran.
      * @return The scheduled task.
      */
-    public ScheduledTask schedule(Runnable task, int delay) {
-        return this.schedule(task, delay, 0);
+    public ScheduledTask scheduleDelayedTask(SkyblockRunnable task, int delay) {
+        return this.scheduleRepeatingTask(task, delay, 0);
     }
 
     /**
@@ -172,10 +151,37 @@ public class NewScheduler {
      * @param period The delay (in ticks) to wait before calling the task again.
      * @return The scheduled task.
      */
-    public ScheduledTask schedule(Runnable task, int delay, int period) {
+    public ScheduledTask scheduleRepeatingTask(SkyblockRunnable task, int delay, int period) {
+        return this.scheduleRepeatingTask(task, delay, period, false);
+    }
+
+    /**
+     * Runs a task (synchronously) on the next tick.
+     *
+     * @param task The task to run.
+     * @param delay The delay (in ticks) to wait before the task is ran.
+     * @param period The delay (in ticks) to wait before calling the task again.
+     * @param queued Whether or not to queue this task to be run next loop
+     *               (to be used for scheduling tasks directly from a synchronous task.
+     * @return The scheduled task.
+     */
+    public ScheduledTask scheduleRepeatingTask(SkyblockRunnable task, int delay, int period, boolean queued) {
         ScheduledTask scheduledTask = new ScheduledTask(task, delay, period, false);
-        this.pendingTasks.add(scheduledTask);
+        if (queued) {
+            this.queuedTasks.add(scheduledTask);
+        } else {
+            this.pendingTasks.add(scheduledTask);
+        }
         return scheduledTask;
+    }
+
+    /**
+     * Runs a task  on the next tick.
+     *
+     * @param scheduledTask The ScheduledTask to run.
+     */
+    public void schedule(ScheduledTask scheduledTask) {
+        this.pendingTasks.add(scheduledTask);
     }
 
     /**

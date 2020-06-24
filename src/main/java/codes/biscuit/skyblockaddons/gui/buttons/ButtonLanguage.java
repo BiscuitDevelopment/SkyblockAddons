@@ -35,11 +35,11 @@ public class ButtonLanguage extends GuiButton {
         if (visible) {
             GlStateManager.color(1,1,1,0.7F);
             mc.getTextureManager().bindTexture(FEATURE_BACKGROUND);
-            drawModalRectWithCustomSizedTexture(xPosition, yPosition,0,0,width,height,width,height);
+            main.getUtils().drawModalRectWithCustomSizedTexture(xPosition, yPosition,0,0,width,height,width,height, true);
             GlStateManager.color(1,1,1,1F);
             try {
                 mc.getTextureManager().bindTexture(language.getResourceLocation());
-                drawModalRectWithCustomSizedTexture(xPosition+width-32, yPosition, 0, 0, 30, 26, 30, 26);
+                main.getUtils().drawModalRectWithCustomSizedTexture(xPosition+width-32, yPosition, 0, 0, 30, 26, 30, 26, true);
             } catch (Exception ex) {
                 ex.printStackTrace();
             }

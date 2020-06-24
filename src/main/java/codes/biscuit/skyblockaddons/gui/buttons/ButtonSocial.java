@@ -49,8 +49,7 @@ public class ButtonSocial extends GuiButton {
         }
 
         mc.getTextureManager().bindTexture(social.getResourceLocation());
-        drawModalRectWithCustomSizedTexture(xPosition,
-                yPosition, 0, 0, width, height, width, height);
+        main.getUtils().drawModalRectWithCustomSizedTexture(xPosition, yPosition, 0, 0, width, height, width, height, true);
     }
 
 

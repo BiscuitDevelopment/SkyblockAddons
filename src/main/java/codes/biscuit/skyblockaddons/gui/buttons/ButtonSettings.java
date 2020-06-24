@@ -46,7 +46,7 @@ public class ButtonSettings extends ButtonFeature {
                 GlStateManager.color(1,1,1,1);
             }
             mc.getTextureManager().bindTexture(GEAR);
-            drawModalRectWithCustomSizedTexture(xPosition, yPosition,0,0,width,height,width,height);
+            main.getUtils().drawModalRectWithCustomSizedTexture(xPosition, yPosition,0,0,width,height,width,height, true);
         }
     }
 

@@ -26,6 +26,8 @@ import net.minecraft.entity.item.EntityArmorStand;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.GuiIngameForge;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
@@ -57,11 +59,11 @@ public class RenderListener {
     private final static ResourceLocation ZEALOTS_PER_EYE_ICON = new ResourceLocation("skyblockaddons", "icons/zealotspereye.png");
     private final static ResourceLocation SLASH_ICON = new ResourceLocation("skyblockaddons", "icons/slash.png");
     private final static ResourceLocation IRON_GOLEM_ICON = new ResourceLocation("skyblockaddons", "icons/irongolem.png");
-    private final static ResourceLocation WARP_ICON = new ResourceLocation("skyblockaddons", "icons/warp.png");
 
     private final static ItemStack WATER_BUCKET = new ItemStack(Items.water_bucket);
     private final static ItemStack IRON_SWORD = new ItemStack(Items.iron_sword);
-    private final static ItemStack NETHER_STAR = new ItemStack(Items.nether_star);
+    private static ItemStack NETHER_STAR;
+    private static ItemStack WARP_SKULL;
 
     private SkyblockAddons main;
 
@@ -181,15 +183,10 @@ public class RenderListener {
             return;
         }
 
-        int i = scaledResolution.getScaledWidth();
+        int scaledWidth = scaledResolution.getScaledWidth();
+        int scaledHeight = scaledResolution.getScaledHeight();
         if (titleFeature != null) {
-            int j = scaledResolution.getScaledHeight();
-            GlStateManager.pushMatrix();
-            GlStateManager.translate((float) (i / 2), (float) (j / 2), 0.0F);
-//            GlStateManager.enableBlend();
-//            GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
-            GlStateManager.pushMatrix();
-            GlStateManager.scale(4.0F, 4.0F, 4.0F);
+
             Message message = null;
             switch (titleFeature) {
                 case MAGMA_WARNING:
@@ -213,20 +210,30 @@ public class RenderListener {
             }
             if (message != null) {
                 String text = message.getMessage();
+                int stringWidth = MinecraftReflection.FontRenderer.getStringWidth(text);
+
+                float scale = 4; // Scale is normally 4, but if its larger than the screen, scale it down...
+                if (stringWidth*scale > (scaledWidth*0.9F)) {
+                    scale = scaledWidth/(float)stringWidth;
+                }
+
+                GlStateManager.pushMatrix();
+                GlStateManager.translate((float) (scaledWidth / 2), (float) (scaledHeight / 2), 0.0F);
+                GlStateManager.enableBlend();
+                GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
+                GlStateManager.pushMatrix();
+                GlStateManager.scale(scale, scale, scale); // TODO Check if changing this scale breaks anything...
+
                 ChromaManager.renderingText(titleFeature);
                 MinecraftReflection.FontRenderer.drawString(text, (float) (-MinecraftReflection.FontRenderer.getStringWidth(text) / 2), -20.0F,
                         main.getConfigValues().getColor(titleFeature).getRGB(), true);
                 ChromaManager.doneRenderingText();
+
+                GlStateManager.popMatrix();
+                GlStateManager.popMatrix();
             }
-            GlStateManager.popMatrix();
-            GlStateManager.popMatrix();
         }
         if (subtitleFeature != null) {
-            int j = scaledResolution.getScaledHeight();
-            GlStateManager.pushMatrix();
-            GlStateManager.translate((float) (i / 2), (float) (j / 2), 0.0F);
-            GlStateManager.pushMatrix();
-            GlStateManager.scale(2.0F, 2.0F, 2.0F);
             Message message = null;
             switch (subtitleFeature) {
                 case MINION_STOP_WARNING:
@@ -248,13 +255,28 @@ public class RenderListener {
                 } else {
                     text = message.getMessage();
                 }
+                int stringWidth = MinecraftReflection.FontRenderer.getStringWidth(text);
+
+                float scale = 2; // Scale is normally 2, but if its larger than the screen, scale it down...
+                if (stringWidth*scale > (scaledWidth*0.9F)) {
+                    scale = scaledWidth/(float)stringWidth;
+                }
+
+                GlStateManager.pushMatrix();
+                GlStateManager.translate((float) (scaledWidth / 2), (float) (scaledHeight / 2), 0.0F);
+                GlStateManager.enableBlend();
+                GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
+                GlStateManager.pushMatrix();
+                GlStateManager.scale(scale, scale, scale);  // TODO Check if changing this scale breaks anything...
+
                 ChromaManager.renderingText(subtitleFeature);
                 MinecraftReflection.FontRenderer.drawString(text, -MinecraftReflection.FontRenderer.getStringWidth(text) / 2F, -23.0F,
                         main.getConfigValues().getColor(subtitleFeature).getRGB(), true);
                 ChromaManager.doneRenderingText();
+
+                GlStateManager.popMatrix();
+                GlStateManager.popMatrix();
             }
-            GlStateManager.popMatrix();
-            GlStateManager.popMatrix();
         }
     }
 
@@ -327,6 +349,9 @@ public class RenderListener {
         y /= scale;
         x -= width / 2F;
         y -= height / 2F;
+
+        main.getUtils().enableStandardGLOptions();
+
         if (buttonLocation == null) {
             drawModularBar(mc, color, false, x, y + barHeightExpansion / 2F, null, feature, filled, width);
             if (filled > 0) {
@@ -339,6 +364,8 @@ public class RenderListener {
                 drawModularBar(mc, color, true, x, y + barHeightExpansion / 2F, buttonLocation, feature, filled, width);
             }
         }
+
+        main.getUtils().restoreGLOptions();
     }
 
     private void drawModularBar(Minecraft mc, Color color, boolean filled, float x, float y, ButtonLocation buttonLocation, Feature feature, int fillWidth, int maxWidth) {
@@ -480,9 +507,13 @@ public class RenderListener {
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         }
 
+        main.getUtils().enableStandardGLOptions();
+
         for (int boneCounter = 0; boneCounter < bones; boneCounter++) {
             renderItem(BONE_ITEM, x + boneCounter * 16, y);
         }
+
+        main.getUtils().restoreGLOptions();
     }
 
     /**
@@ -502,19 +533,22 @@ public class RenderListener {
 
             if (buttonLocation != null) {
                 buttonLocation.checkHoveredAndDrawBox(x, x+width, y, y+height, scale);
-                GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
             }
+
+            main.getUtils().enableStandardGLOptions();
 
             int maxTickers = (buttonLocation == null) ? main.getPlayerListener().getMaxTickers() : 4;
             for (int tickers = 0; tickers < maxTickers; tickers++) {
                 mc.getTextureManager().bindTexture(TICKER_SYMBOL);
                 GlStateManager.enableAlpha();
                 if (tickers < (buttonLocation == null ? main.getPlayerListener().getTickers() : 3)) {
-                    main.getUtils().drawModalRectWithCustomSizedTexture(x + tickers * 11, y, 0, 0, 9, 9, 18, 9);
+                    main.getUtils().drawModalRectWithCustomSizedTexture(x + tickers * 11, y, 0, 0, 9, 9, 18, 9, false);
                 } else {
-                    main.getUtils().drawModalRectWithCustomSizedTexture(x + tickers * 11, y, 9, 0, 9, 9, 18, 9);
+                    main.getUtils().drawModalRectWithCustomSizedTexture(x + tickers * 11, y, 9, 0, 9, 9, 18, 9, false);
                 }
             }
+
+            main.getUtils().restoreGLOptions();
         }
     }
 
@@ -534,6 +568,9 @@ public class RenderListener {
         int width = 9;
         float x = main.getConfigValues().getActualX(Feature.DEFENCE_ICON);
         float y = main.getConfigValues().getActualY(Feature.DEFENCE_ICON);
+
+        main.getUtils().enableStandardGLOptions();
+
         if (buttonLocation == null) {
             float newScale = scale * 1.5F;
             GlStateManager.pushMatrix();
@@ -553,6 +590,8 @@ public class RenderListener {
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
             buttonLocation.drawTexturedModalRect(x, y, 34, 9, width, height);
         }
+
+        main.getUtils().restoreGLOptions();
     }
 
     /**
@@ -780,8 +819,8 @@ public class RenderListener {
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         }
 
-        GlStateManager.enableBlend();
-        GlStateManager.color(1, 1, 1, 1);
+        main.getUtils().enableStandardGLOptions();
+
         if (feature == Feature.DARK_AUCTION_TIMER) {
             mc.getTextureManager().bindTexture(SIRIUS_ICON);
             main.getUtils().drawModalRectWithCustomSizedTexture(x, y, 0, 0, 16, 16, 16, 16);
@@ -827,7 +866,7 @@ public class RenderListener {
             main.getUtils().drawModalRectWithCustomSizedTexture(x, y, 0, 0, 16, 16, 16, 16);
             mc.getTextureManager().bindTexture(SLASH_ICON);
             main.getUtils().bindRGBColor(color);
-            main.getUtils().drawModalRectWithCustomSizedTexture(x, y, 0, 0, 16, 16, 16, 16);
+            main.getUtils().drawModalRectWithCustomSizedTexture(x, y, 0, 0, 16, 16, 16, 16, true);
 
             ChromaManager.renderingText(feature);
             main.getUtils().drawTextWithStyle(text, x + 18, y + 4, color);
@@ -848,9 +887,6 @@ public class RenderListener {
             ChromaManager.doneRenderingText();
 
         } else if (feature == Feature.COMBAT_TIMER_DISPLAY) {
-            GlStateManager.enableRescaleNormal();
-            RenderHelper.enableGUIStandardItemLighting();
-
             long lastDamaged = main.getUtils().getLastDamaged()+5000;
             int combatSeconds = (int)Math.ceil((lastDamaged-System.currentTimeMillis())/1000D);
 
@@ -876,15 +912,14 @@ public class RenderListener {
             int spacerBetweenBothItems = 4;
             int spacerBetweenItemsAndText = 2;
 
-            renderItem(NETHER_STAR, x + width/2F - 16-menuTimeRemainingWidth - spacerBetweenItemsAndText - spacerBetweenBothItems/2F, y-5);
+            renderItem(getNetherStar(), x + width/2F - 16-menuTimeRemainingWidth - spacerBetweenItemsAndText - spacerBetweenBothItems/2F, y-5);
 
             ChromaManager.renderingText(feature);
             main.getUtils().drawTextWithStyle(menuTimeRemaining, x + width/2F -menuTimeRemainingWidth - spacerBetweenBothItems/2F, y, color);
             ChromaManager.doneRenderingText();
 
             GlStateManager.color(1,1,1,1);
-            mc.getTextureManager().bindTexture(WARP_ICON);
-            main.getUtils().drawModalRectWithCustomSizedTexture(x + width/2F + spacerBetweenBothItems/2F, y - 3, 0, 0, 13, 13, 13, 13);
+            renderItem(getWarpSkull(), x + width/2F + spacerBetweenBothItems/2F, y - 5);
             ChromaManager.renderingText(feature);
             main.getUtils().drawTextWithStyle(warpTimeRemaining, x + width/2F + spacerBetweenBothItems/2F+13+spacerBetweenItemsAndText, y, color);
             ChromaManager.doneRenderingText();
@@ -913,21 +948,23 @@ public class RenderListener {
             main.getUtils().drawTextWithStyle(text, x, y, color);
             ChromaManager.doneRenderingText();
         }
+
+        main.getUtils().restoreGLOptions();
     }
 
     /**
      * Displays the bait list. Only shows bait with count > 0.
      */
     public void drawBaitList(Minecraft mc, float scale, ButtonLocation buttonLocation) {
-        if (!BaitListManager.getInstance().holdingRod() && buttonLocation == null) return;
+        if (!BaitManager.getInstance().isHoldingRod() && buttonLocation == null) return;
 
-        Map<BaitListManager.BaitType, Integer> baits = BaitListManager.getInstance().baitsInInventory;
+        Map<BaitManager.BaitType, Integer> baits = BaitManager.getInstance().getBaitsInInventory();
         if (buttonLocation != null) {
-            baits = BaitListManager.DUMMY_BAITS;
+            baits = BaitManager.DUMMY_BAITS;
         }
 
         int longestLineWidth = 0;
-        for (Map.Entry<BaitListManager.BaitType, Integer> entry : baits.entrySet()) {
+        for (Map.Entry<BaitManager.BaitType, Integer> entry : baits.entrySet()) {
             longestLineWidth = Math.max(longestLineWidth, Minecraft.getMinecraft().fontRendererObj.getStringWidth(String.valueOf(entry.getValue())));
         }
 
@@ -948,16 +985,14 @@ public class RenderListener {
             buttonLocation.checkHoveredAndDrawBox(x, x + width, y, y + height, scale);
         }
 
-        for (Map.Entry<BaitListManager.BaitType, Integer> entry : baits.entrySet()) {
+        main.getUtils().enableStandardGLOptions();
+
+        for (Map.Entry<BaitManager.BaitType, Integer> entry : baits.entrySet()) {
             if (entry.getValue() == 0) continue;
 
-            GlStateManager.disableDepth();
-            GlStateManager.enableBlend();
-            mc.getTextureManager().bindTexture(entry.getKey().getResourceLocation());
             GlStateManager.color(1, 1, 1, 1F);
+            mc.getTextureManager().bindTexture(entry.getKey().getResourceLocation());
             main.getUtils().drawModalRectWithCustomSizedTexture(x, y, 0, 0, iconSize, iconSize, iconSize, iconSize);
-            GlStateManager.disableBlend();
-            GlStateManager.enableDepth();
 
             int color = main.getConfigValues().getColor(Feature.BAIT_LIST).getRGB();
             ChromaManager.renderingText(Feature.BAIT_LIST);
@@ -966,6 +1001,8 @@ public class RenderListener {
 
             y += iconSize;
         }
+
+        main.getUtils().restoreGLOptions();
     }
 
 
@@ -1000,6 +1037,8 @@ public class RenderListener {
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         }
 
+        main.getUtils().enableStandardGLOptions();
+
         EnumUtils.AnchorPoint anchorPoint = main.getConfigValues().getAnchorPoint(Feature.SLAYER_INDICATOR);
         boolean downwards = (anchorPoint == EnumUtils.AnchorPoint.TOP_LEFT || anchorPoint == EnumUtils.AnchorPoint.TOP_RIGHT);
 
@@ -1033,6 +1072,8 @@ public class RenderListener {
 
             drawnCount++;
         }
+
+        main.getUtils().restoreGLOptions();
     }
 
     public void drawPotionEffectTimers(float scale, ButtonLocation buttonLocation){
@@ -1044,20 +1085,20 @@ public class RenderListener {
         List<TabEffect> potionTimers = tabEffect.getPotionTimers();
         List<TabEffect> powerupTimers = tabEffect.getPowerupTimers();
 
-        if(potionTimers.isEmpty() && powerupTimers.isEmpty()) {
-            if (buttonLocation == null) {
+        if (buttonLocation == null) {
+            if (potionTimers.isEmpty() && powerupTimers.isEmpty()) {
                 return;
-            } else { // When editing GUI draw dummy timers.
-                potionTimers = TabEffectManager.getDummyPotionTimers();
-                powerupTimers = TabEffectManager.getDummyPowerupTimers();
             }
+        } else { // When editing GUI draw dummy timers.
+            potionTimers = TabEffectManager.getDummyPotionTimers();
+            powerupTimers = TabEffectManager.getDummyPowerupTimers();
         }
 
         EnumUtils.AnchorPoint anchorPoint = main.getConfigValues().getAnchorPoint(Feature.TAB_EFFECT_TIMERS);
         boolean topDown = (anchorPoint == EnumUtils.AnchorPoint.TOP_LEFT || anchorPoint == EnumUtils.AnchorPoint.TOP_RIGHT);
 
-        int totalEffects = potionTimers.size() + powerupTimers.size();
-        int spacer = (!potionTimers.isEmpty() && !powerupTimers.isEmpty()) ? 3 : 0;
+        int totalEffects = TabEffectManager.getDummyPotionTimers().size() + TabEffectManager.getDummyPowerupTimers().size();
+        int spacer = (!TabEffectManager.getDummyPotionTimers().isEmpty() && !TabEffectManager.getDummyPowerupTimers().isEmpty()) ? 3 : 0;
 
         int lineHeight = 8 + 1; // 1 pixel between each line.
 
@@ -1072,6 +1113,8 @@ public class RenderListener {
             buttonLocation.checkHoveredAndDrawBox(x, x+width, y, y+height, scale);
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         }
+
+        main.getUtils().enableStandardGLOptions();
 
         boolean alignRight = (anchorPoint == EnumUtils.AnchorPoint.TOP_RIGHT || anchorPoint == EnumUtils.AnchorPoint.BOTTOM_RIGHT);
 
@@ -1128,17 +1171,21 @@ public class RenderListener {
             }
             drawnCount += topDown ? 1 : -1;
         }
+
+        main.getUtils().restoreGLOptions();
     }
 
     private void renderItem(ItemStack item, float x, float y) {
         GlStateManager.enableRescaleNormal();
         RenderHelper.enableGUIStandardItemLighting();
-        int floorX = (int)Math.floor(x);
-        int floorY = (int)Math.floor(y);
+        GlStateManager.enableDepth();
+
         GlStateManager.pushMatrix();
-        GlStateManager.translate(x-floorX, y-floorY, 0);
-        Minecraft.getMinecraft().getRenderItem().renderItemIntoGUI(item, floorX, floorY);
+        GlStateManager.translate(x, y, 0);
+        Minecraft.getMinecraft().getRenderItem().renderItemIntoGUI(item, 0, 0);
         GlStateManager.popMatrix();
+
+        GlStateManager.disableDepth();
         RenderHelper.disableStandardItemLighting();
         GlStateManager.disableRescaleNormal();
     }
@@ -1164,6 +1211,9 @@ public class RenderListener {
             buttonLocation.checkHoveredAndDrawBox(x, x+width, y, y+height, scale);
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         }
+
+        main.getUtils().enableStandardGLOptions();
+
         int i = 0;
         Collection<ItemDiff> log = main.getInventoryUtils().getItemPickupLog();
         if (buttonLocation != null) {
@@ -1177,10 +1227,11 @@ public class RenderListener {
                 stringY = y + height - (i * lineHeight) - 8;
             }
 
-            GlStateManager.enableBlend();
             main.getUtils().drawTextWithStyle(text, x, stringY, 0xFFFFFFFF);
             i++;
         }
+
+        main.getUtils().restoreGLOptions();
     }
 
     public void drawPowerOrbStatus(Minecraft mc, float scale, ButtonLocation buttonLocation) {
@@ -1226,15 +1277,14 @@ public class RenderListener {
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         }
 
-        GlStateManager.disableDepth();
-        GlStateManager.enableBlend();
+        main.getUtils().enableStandardGLOptions();
+
         mc.getTextureManager().bindTexture(powerOrb.getResourceLocation());
-        GlStateManager.color(1, 1, 1, 1F);
-        main.getUtils().drawModalRectWithCustomSizedTexture(x, y, 0, 0, iconSize, iconSize, iconSize, iconSize);
-        GlStateManager.disableBlend();
-        GlStateManager.enableDepth();
+        main.getUtils().drawModalRectWithCustomSizedTexture(x, y, 0, 0, iconSize, iconSize, iconSize, iconSize, false);
 
         main.getUtils().drawTextWithStyle(secondsString, x + spacing + iconSize, y + (iconSize / 2F) - (8 / 2F), ChatFormatting.WHITE.getColor(255).getRGB());
+
+        main.getUtils().restoreGLOptions();
     }
 
     /**
@@ -1288,13 +1338,10 @@ public class RenderListener {
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         }
 
-        GlStateManager.disableDepth();
-        GlStateManager.enableBlend();
+        main.getUtils().enableStandardGLOptions();
+
         mc.getTextureManager().bindTexture(powerOrb.getResourceLocation());
-        GlStateManager.color(1, 1, 1, 1F);
-        main.getUtils().drawModalRectWithCustomSizedTexture(x, y, 0, 0, iconSize, iconSize, iconSize, iconSize);
-        GlStateManager.disableBlend();
-        GlStateManager.enableDepth();
+        main.getUtils().drawModalRectWithCustomSizedTexture(x, y, 0, 0, iconSize, iconSize, iconSize, iconSize, false);
 
         String secondsString = String.format("§e%ss", seconds);
         main.getUtils().drawTextWithStyle(secondsString, Math.round(x + (iconSize / 2F) - (MinecraftReflection.FontRenderer.getStringWidth(secondsString) / 2F)), y + iconSize, ChatFormatting.WHITE.getColor(255).getRGB());
@@ -1303,6 +1350,8 @@ public class RenderListener {
         for (int i = 0; i < display.size(); i++) {
             main.getUtils().drawTextWithStyle(display.get(i), x + iconSize + 2, startY + (i * (MinecraftReflection.FontRenderer.getFontHeight() + spacingBetweenLines)), ChatFormatting.WHITE.getColor(255).getRGB());
         }
+
+        main.getUtils().restoreGLOptions();
     }
 
     /**
@@ -1369,5 +1418,47 @@ public class RenderListener {
 
     public void setSubtitleFeature(Feature subtitleFeature) {
         this.subtitleFeature = subtitleFeature; // TODO: check, does this break anything? (arrow)
+    }
+
+    private ItemStack getNetherStar() {
+        if (NETHER_STAR != null) return NETHER_STAR;
+
+        NETHER_STAR = new ItemStack(Items.nether_star);
+
+        NBTTagCompound extraAttributes = new NBTTagCompound();
+        extraAttributes.setString("id", "SKYBLOCK_MENU");
+
+        NBTTagCompound nbtTag = new NBTTagCompound();
+        nbtTag.setTag("ExtraAttributes", extraAttributes);
+
+        NETHER_STAR.setTagCompound(nbtTag);
+
+        return NETHER_STAR;
+    }
+
+    private ItemStack getWarpSkull() {
+        if (WARP_SKULL != null) return WARP_SKULL;
+
+        WARP_SKULL = new ItemStack(Items.skull, 1, 3);
+
+        NBTTagCompound texture = new NBTTagCompound();
+        texture.setString("Value", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYzljODg4MWU0MjkxNWE5ZDI5YmI2MWExNmZiMjZkMDU5OTEzMjA0ZDI2NWRmNWI0MzliM2Q3OTJhY2Q1NiJ9fX0=");
+
+        NBTTagList textures = new NBTTagList();
+        textures.appendTag(texture);
+
+        NBTTagCompound properties = new NBTTagCompound();
+        properties.setTag("textures", textures);
+
+        NBTTagCompound skullOwner = new NBTTagCompound();
+        skullOwner.setString("Id", "9ae837fc-19da-3841-af06-7db55d51c815");
+        skullOwner.setTag("Properties", properties);
+
+        NBTTagCompound nbtTag = new NBTTagCompound();
+        nbtTag.setTag("SkullOwner", skullOwner);
+
+        WARP_SKULL.setTagCompound(nbtTag);
+
+        return WARP_SKULL;
     }
 }

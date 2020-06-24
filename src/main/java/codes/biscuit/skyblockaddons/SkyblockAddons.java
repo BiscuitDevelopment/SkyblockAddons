@@ -35,6 +35,8 @@ import org.apache.logging.log4j.Logger;
 import org.lwjgl.input.Keyboard;
 
 import java.lang.reflect.Field;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -71,12 +73,7 @@ public class SkyblockAddons {
     @Setter(AccessLevel.NONE) private KeyBinding[] keyBindings = new KeyBinding[4];
     private DiscordRPCManager discordRPCManager;
 
-    static {
-        //noinspection ConstantConditions
-        if (VERSION.contains("@")) { // Debug environment...
-            VERSION = "1.5.0";
-        }
-    }
+    @Getter private final Set<Integer> registeredFeatureIDs = new HashSet<>();
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent e) {
@@ -120,6 +117,7 @@ public class SkyblockAddons {
 
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent e) {
+        onlineData = new Gson().fromJson(new JsonReader(utils.getBufferedReader("data.json")), OnlineData.class);
         configValues.loadConfig();
         persistentValues.loadValues();
         loadKeyBindingDescriptions();
@@ -134,7 +132,6 @@ public class SkyblockAddons {
         }
 
         updater.processUpdateCheckResult();
-        onlineData = new Gson().fromJson(new JsonReader(utils.getBufferedReader("data.json")), OnlineData.class);
         utils.pullOnlineData();
         scheduleMagmaBossCheck();
 
@@ -143,12 +140,11 @@ public class SkyblockAddons {
             if (feature.isColorFeature()) feature.getSettings().add(EnumUtils.FeatureSetting.COLOR);
         }
 
-        // Load in these textures so they don't lag the user loading them in later...
-        for (IslandWarpGui.Island island : IslandWarpGui.Island.values()) {
-            Minecraft.getMinecraft().getTextureManager().bindTexture(island.getResourceLocation());
-        }
-        for (Language language : Language.values()) {
-            Minecraft.getMinecraft().getTextureManager().bindTexture(language.getResourceLocation());
+        if (configValues.isEnabled(Feature.FANCY_WARP_MENU)) {
+            // Load in these textures so they don't lag the user loading them in later...
+            for (IslandWarpGui.Island island : IslandWarpGui.Island.values()) {
+                Minecraft.getMinecraft().getTextureManager().bindTexture(island.getResourceLocation());
+            }
         }
         Minecraft.getMinecraft().getTextureManager().bindTexture(SkyblockAddonsGui.LOGO);
         Minecraft.getMinecraft().getTextureManager().bindTexture(SkyblockAddonsGui.LOGO_GLOW);
@@ -205,5 +201,12 @@ public class SkyblockAddons {
 
     public KeyBinding getFreezeBackpackKey() {
         return keyBindings[3];
+    }
+
+    static {
+        //noinspection ConstantConditions
+        if (VERSION.contains("@")) { // Debug environment...
+            VERSION = "1.5.0";
+        }
     }
 }
