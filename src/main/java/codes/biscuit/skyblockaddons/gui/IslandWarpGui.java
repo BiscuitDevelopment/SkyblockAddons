@@ -5,7 +5,7 @@ import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.gui.buttons.ButtonToggleNew;
 import codes.biscuit.skyblockaddons.gui.buttons.IslandButton;
 import codes.biscuit.skyblockaddons.gui.buttons.IslandMarkerButton;
-import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsTransformer;
+import codes.biscuit.skyblockaddons.scheduler.SkyblockRunnable;
 import lombok.Getter;
 import lombok.Setter;
 import net.minecraft.client.Minecraft;
@@ -13,7 +13,6 @@ import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.gui.inventory.GuiChest;
-import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.texture.TextureUtil;
 import net.minecraft.init.Items;
@@ -21,10 +20,9 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.EnumMap;
 import java.util.Map;
 
@@ -54,8 +52,6 @@ public class IslandWarpGui extends GuiScreen {
             markers.put(marker, UnlockedStatus.UNLOCKED);
         }
         this.markers = markers;
-
-        ISLAND_SCALE = 0.7F/1080*Minecraft.getMinecraft().displayHeight;
     }
 
     public IslandWarpGui(Map<Marker, UnlockedStatus> markers) {
@@ -63,8 +59,6 @@ public class IslandWarpGui extends GuiScreen {
 
         this.markers = markers;
         this.guiIsActualWarpMenu = true;
-
-        ISLAND_SCALE = 0.7F/1080*Minecraft.getMinecraft().displayHeight;
     }
 
     @Override
@@ -89,12 +83,14 @@ public class IslandWarpGui extends GuiScreen {
 
         int screenWidth = mc.displayWidth;
         int screenHeight = mc.displayHeight;
+
+        ISLAND_SCALE = 0.7F/1080*screenHeight;
+
         float scale = ISLAND_SCALE;
         float totalWidth = TOTAL_WIDTH*scale;
         float totalHeight = TOTAL_HEIGHT*scale;
         SHIFT_LEFT = (screenWidth/2F-totalWidth/2F)/scale;
         SHIFT_TOP = (screenHeight/2F-totalHeight/2F)/scale;
-
 
         int x = Math.round(screenWidth/ISLAND_SCALE-SHIFT_LEFT-475);
         int y = Math.round(screenHeight/ISLAND_SCALE-SHIFT_TOP);
@@ -111,7 +107,7 @@ public class IslandWarpGui extends GuiScreen {
                             if (toggleAdvancedModeSlot != null && toggleAdvancedModeSlot.getHasStack()) {
                                 ItemStack toggleAdvancedModeItem = toggleAdvancedModeSlot.getStack();
 
-                                if (Items.dye.equals(toggleAdvancedModeItem.getItem())) {
+                                if (Items.dye == toggleAdvancedModeItem.getItem()) {
                                     int damage = toggleAdvancedModeItem.getItemDamage();
                                     if (damage == 10) { // Lime Dye
                                         foundAdvancedWarpToggle = true;
@@ -134,14 +130,7 @@ public class IslandWarpGui extends GuiScreen {
                         GuiScreen guiScreen = Minecraft.getMinecraft().currentScreen;
                         if (guiScreen instanceof GuiChest) {
                             GuiChest gui = (GuiChest) guiScreen;
-                            try {
-                                Method handleMouseClick = GuiContainer.class.getDeclaredMethod(SkyblockAddonsTransformer.isDeobfuscated() ? "handleMouseClick" :
-                                                SkyblockAddonsTransformer.isUsingNotchMappings() ? "a" : "func_146984_a", Slot.class, int.class, int.class, int.class);
-                                handleMouseClick.setAccessible(true);
-                                handleMouseClick.invoke(gui, gui.inventorySlots.getSlot(51), 51, 0, 0);
-                            } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException  ex) {
-                                ex.printStackTrace();
-                            }
+                            this.mc.playerController.windowClick(gui.inventorySlots.windowId, 51, 0, 0, this.mc.thePlayer);
                         }
                     }));
             this.buttonList.add(new ButtonToggleNew(x, y - 30 - 60 * 2, 50,
@@ -167,14 +156,18 @@ public class IslandWarpGui extends GuiScreen {
 
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
-        drawDefaultBackground();
+        ScaledResolution sr = new ScaledResolution(mc);
+        int guiScale = sr.getScaleFactor();
 
-        drawCenteredString(mc.fontRendererObj, "Click a warp point to travel there!", width/2, 10, 0xFFFFFFFF);
-        drawCenteredString(mc.fontRendererObj, "Must have the specific scroll unlocked.", width/2, 20, 0xFFFFFFFF);
+        int startColor = new Color(0,0, 0, Math.round(255/3F)).getRGB();
+        int endColor = new Color(0,0, 0, Math.round(255/2F)).getRGB();
+        drawGradientRect(0, 0, sr.getScaledWidth(), sr.getScaledHeight(), startColor, endColor);
 
-        int guiScale = new ScaledResolution(mc).getScaleFactor();
+        drawCenteredString(mc.fontRendererObj, "Click a warp point to travel there!", sr.getScaledWidth()/2, 10, 0xFFFFFFFF);
+        drawCenteredString(mc.fontRendererObj, "Must have the specific scroll unlocked.", sr.getScaledWidth()/2, 20, 0xFFFFFFFF);
 
         GlStateManager.pushMatrix();
+        ISLAND_SCALE = 0.7F/1080*mc.displayHeight;
         float scale = ISLAND_SCALE;
         GlStateManager.scale(1F/guiScale, 1F/guiScale, 1);
         GlStateManager.scale(scale, scale, 1);
@@ -329,6 +322,16 @@ public class IslandWarpGui extends GuiScreen {
 
             if (SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.DOUBLE_WARP)) {
                 doubleWarpMarker = selectedMarker;
+
+                // Remove the marker if it didn't trigger for some reason...
+                SkyblockAddons.getInstance().getNewScheduler().scheduleDelayedTask(new SkyblockRunnable() {
+                    @Override
+                    public void run() {
+                        if (doubleWarpMarker != null) {
+                            doubleWarpMarker = null;
+                        }
+                    }
+                }, 20);
             }
             Minecraft.getMinecraft().thePlayer.sendChatMessage("/warp "+selectedMarker.getWarpName());
         }

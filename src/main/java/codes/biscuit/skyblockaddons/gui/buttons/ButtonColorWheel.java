@@ -33,7 +33,7 @@ public class ButtonColorWheel extends ButtonFeature {
         GlStateManager.scale(scale,scale,1);
         GlStateManager.enableBlend();
         mc.getTextureManager().bindTexture(COLOR_WHEEL);
-        SkyblockAddons.getInstance().getUtils().drawModalRectWithCustomSizedTexture(x, y, 0, 0, 10, 10, 10, 10);
+        SkyblockAddons.getInstance().getUtils().drawModalRectWithCustomSizedTexture(x, y, 0, 0, 10, 10, 10, 10, true);
         GlStateManager.popMatrix();
     }
 

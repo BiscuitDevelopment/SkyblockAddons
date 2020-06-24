@@ -107,7 +107,7 @@ public class SkyblockAddonsCommand extends CommandBase {
                 main.getUtils().setFadingIn(false);
                 main.getRenderListener().setGuiToOpen(EnumUtils.GUIType.EDIT_LOCATIONS, 0, null);
 
-            } else if (args[0].equalsIgnoreCase("dev")) {
+            } else if (args[0].equalsIgnoreCase("dev") || args[0].equalsIgnoreCase("nbt")) {
                 main.setDevMode(!main.isDevMode());
 
                 if (main.isDevMode()) {

@@ -41,6 +41,7 @@ import net.minecraftforge.fml.common.Loader;
 import org.apache.commons.lang3.mutable.MutableInt;
 import org.apache.commons.lang3.text.WordUtils;
 import org.apache.logging.log4j.Logger;
+import org.lwjgl.opengl.GL11;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -75,6 +76,7 @@ public class Utils {
     ));
 
     private static final Pattern SERVER_REGEX = Pattern.compile("([0-9]{2}/[0-9]{2}/[0-9]{2}) (mini[0-9]{1,3}[A-Za-z])");
+    private static final Pattern PURSE_REGEX = Pattern.compile("(?:Purse|Piggy): (?<coins>[0-9.]*)(?: .*)?");
 
     /** In English, Chinese Simplified. */
     private static final Set<String> SKYBLOCK_IN_ALL_LANGUAGES = Sets.newHashSet("SKYBLOCK","\u7A7A\u5C9B\u751F\u5B58");
@@ -135,12 +137,6 @@ public class Utils {
     private URI featuredLink = null;
 
     private long lastDamaged = -1;
-
-    // Slayer Quest
-    private int currentKills = 0;
-    private int targetKills = 0;
-    private int currentExp = 0;
-    private int targetExp = 0;
 
     private SkyblockAddons main;
     private Logger logger;
@@ -276,25 +272,30 @@ public class Utils {
                         dateString = strippedLine;
                     }
 
-                    if (strippedLine.startsWith("Purse") || strippedLine.startsWith("Piggy")) {
+                    Matcher matcher = PURSE_REGEX.matcher(strippedLine);
+                    if (matcher.matches()) {
                         try {
-                            purse = Double.parseDouble(TextUtils.keepFloatCharactersOnly(strippedLine));
+                            double oldCoins = purse;
+                            purse = Double.parseDouble(matcher.group("coins"));
+
+                            if (oldCoins != purse) {
+                                onCoinsChange(purse-oldCoins);
+                            }
                         } catch(NumberFormatException ignored) {
                             purse = 0;
                         }
                     }
 
                     if (strippedLine.contains("mini")) {
-                        Matcher matcher = SERVER_REGEX.matcher(strippedLine);
+                        matcher = SERVER_REGEX.matcher(strippedLine);
                         if (matcher.matches()) {
                             serverID = matcher.group(2);
                         }
                     }
 
                     if (strippedLine.endsWith("Combat XP") || strippedLine.endsWith("Kills")) {
-                        parseSlayerXPProgress(strippedLine);
+                        parseSlayerProgress(strippedLine);
                     }
-
 
                     for (Location loopLocation : Location.values()) {
                         if (strippedLine.endsWith(loopLocation.getScoreboardName())) {
@@ -356,37 +357,77 @@ public class Utils {
         }
     }
 
-    private void parseSlayerXPProgress(final String line) {
-        String[] format = line.trim().split(" ")[0].split("/");
+    private static final Pattern SLAYER_SCOREBOARD_PATTERN = Pattern.compile("(?<progress>[0-9.k]*)/(?<total>[0-9.k]*) (?:Kills|Combat XP)$");
+    private float lastSlayerCompletion;
 
-        boolean doAlert = false;
+    private void parseSlayerProgress(String line) {
+        if (!main.getConfigValues().isEnabled(Feature.BOSS_APPROACH_ALERT)) return;
 
-        if (line.endsWith("Kills")) {
-            int oldCurrentKills = this.currentKills;
-            this.currentKills = Integer.parseInt(format[0]);
+        Matcher matcher = SLAYER_SCOREBOARD_PATTERN.matcher(line);
+        if (matcher.find()) {
+            String progressString = matcher.group("progress");
+            String totalString = matcher.group("total");
 
-            this.targetKills = Integer.parseInt(format[1]);
+            float progress = Float.parseFloat(TextUtils.keepFloatCharactersOnly(progressString));
+            float total = Float.parseFloat(TextUtils.keepFloatCharactersOnly(totalString));
 
-            doAlert = oldCurrentKills != this.currentKills && (float) this.currentKills / this.targetKills > 0.9; // If boss percentage to spawn boss over 90%
-        } else if (line.endsWith("Combat XP")) {
-            int oldCurrentExp = this.currentExp;
-            this.currentExp = Integer.parseInt(format[0]);
+            if (progressString.contains("k")) progress *= 1000;
+            if (totalString.contains("k")) total *= 1000;
 
-            if (format[1].endsWith("k")) {
-                float f = Float.parseFloat(format[1].substring(0, format[1].length() - 1));
-                this.targetExp = (int) (f * 1000);
-            } else {
-                this.targetExp = Integer.parseInt(format[1]);
+            float completion = progress/total;
+
+            // They progressed farther on the same quest, let's not show the same warning.
+            if (completion > lastSlayerCompletion) {
+                return;
             }
+            lastSlayerCompletion = completion;
 
-            doAlert = oldCurrentExp != this.currentExp && (float) this.currentExp / this.targetExp > 0.9;
+            if (completion > 0.85) {
+                main.getUtils().playLoudSound("random.orb", 0.5);
+                main.getRenderListener().setTitleFeature(Feature.BOSS_APPROACH_ALERT);
+                main.getScheduler().schedule(Scheduler.CommandType.RESET_TITLE_FEATURE, main.getConfigValues().getWarningSeconds());
+            }
         }
+    }
 
-        if (main.getConfigValues().isEnabled(Feature.BOSS_APPROACH_ALERT) && doAlert) {
-            main.getUtils().playLoudSound("random.orb", 0.5);
-            main.getRenderListener().setTitleFeature(Feature.BOSS_APPROACH_ALERT);
-            main.getScheduler().schedule(Scheduler.CommandType.RESET_TITLE_FEATURE, main.getConfigValues().getWarningSeconds());
-        }
+    private void onCoinsChange(double coinsChange) {
+        if (true) return;
+
+//        main.getPlayerListener().getExplosiveBowExplosions().keySet().removeIf((explosionTime) -> System.currentTimeMillis() - explosionTime > 1500);
+//        Map.Entry<Long, Vec3> latestExplosion = main.getPlayerListener().getExplosiveBowExplosions().lastEntry();
+//        if (latestExplosion == null) return;
+//
+//        Vec3 explosionLocation = latestExplosion.getValue();
+//        int lastExplosion = (int) (System.currentTimeMillis() - latestExplosion.getKey());
+//        System.out.println("Detected coins change of "+coinsChange+". Last explosion was "+lastExplosion+"ms ago...");
+//
+//        int possibleZealotsKilled = (int)(coinsChange/42); // 42.5 coins per zealot kill...S
+//
+//        System.out.println("This means "+possibleZealotsKilled+" may have been killed...");
+//
+//        main.getPlayerListener().getRecentlyKilledZealots().keySet().removeIf((zealotSpawnTime) -> System.currentTimeMillis() - zealotSpawnTime > lastExplosion+200);
+//
+//        int originalPossibleZealotsKilled = possibleZealotsKilled;
+//
+//        Iterator<Map.Entry<Long, Vec3>> recentZealotsIterator = main.getPlayerListener().getRecentlyKilledZealots().entries().iterator();
+//        while (possibleZealotsKilled > 0) {
+//            if (recentZealotsIterator.hasNext()) {
+//                Map.Entry<Long, Vec3> recentZealotEntry = recentZealotsIterator.next();
+//                Vec3 deathLocation = recentZealotEntry.getValue();
+//
+//                if (explosionLocation.distanceTo(deathLocation) < 4.6) {
+//                    possibleZealotsKilled--;
+//                    recentZealotsIterator.remove();
+//
+//                    main.getPersistentValues().addKill();
+//                    EndstoneProtectorManager.onKill();
+//                }
+//            } else {
+//                break; // No more possible zealots...
+//            }
+//        }
+//
+//        System.out.println((originalPossibleZealotsKilled-possibleZealotsKilled)+" zealots were actually killed...");
     }
 
     public int getDefaultColor(float alphaFloat) {
@@ -599,18 +640,23 @@ public class Utils {
     }
 
     public void drawTextWithStyle(String text, float x, float y, int color) {
+        GlStateManager.pushMatrix();
+        GlStateManager.translate(x, y, 0);
+
         if (main.getConfigValues().getTextStyle() == EnumUtils.TextStyle.STYLE_TWO) {
             int colorAlpha = Math.max(getAlpha(color), 4);
             int colorBlack = new Color(0, 0, 0, colorAlpha/255F).getRGB();
             String strippedText = TextUtils.stripColor(text);
-            Minecraft.getMinecraft().fontRendererObj.drawString(strippedText, x + 1, y, colorBlack, false);
-            Minecraft.getMinecraft().fontRendererObj.drawString(strippedText, x - 1, y, colorBlack, false);
-            Minecraft.getMinecraft().fontRendererObj.drawString(strippedText, x, y + 1, colorBlack, false);
-            Minecraft.getMinecraft().fontRendererObj.drawString(strippedText, x, y - 1, colorBlack, false);
-            Minecraft.getMinecraft().fontRendererObj.drawString(text, x, y, color, false);
+            Minecraft.getMinecraft().fontRendererObj.drawString(strippedText,1, 0, colorBlack, false);
+            Minecraft.getMinecraft().fontRendererObj.drawString(strippedText, -1, 0, colorBlack, false);
+            Minecraft.getMinecraft().fontRendererObj.drawString(strippedText, 0, 1, colorBlack, false);
+            Minecraft.getMinecraft().fontRendererObj.drawString(strippedText, 0, -1, colorBlack, false);
+            Minecraft.getMinecraft().fontRendererObj.drawString(text, 0, 0, color, false);
         } else {
-            Minecraft.getMinecraft().fontRendererObj.drawString(text, x, y, color, true);
+            Minecraft.getMinecraft().fontRendererObj.drawString(text, 0, 0, color, true);
         }
+
+        GlStateManager.popMatrix();
     }
     public int getDefaultBlue(int alpha) {
         return new Color(160, 225, 229, alpha).getRGB();
@@ -677,11 +723,19 @@ public class Utils {
         return color + ((alpha << 24) & 0xFF000000);
     }
 
+    public void drawModalRectWithCustomSizedTexture(float x, float y, float u, float v, float width, float height, float textureWidth, float textureHeight) {
+        drawModalRectWithCustomSizedTexture(x, y, u, v, width, height, textureWidth, textureHeight, false);
+    }
+
     /**
      * Draws a textured rectangle at z = 0. Args: x, y, u, v, width, height, textureWidth, textureHeight
      */
-    public void drawModalRectWithCustomSizedTexture(float x, float y, float u, float v, float width, float height, float textureWidth, float textureHeight)
-    {
+    public void drawModalRectWithCustomSizedTexture(float x, float y, float u, float v, float width, float height, float textureWidth, float textureHeight, boolean linearTexture) {
+        if (linearTexture) {
+            GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MIN_FILTER, GL11.GL_LINEAR);
+            GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MAG_FILTER, GL11.GL_LINEAR);
+        }
+
         float f = 1.0F / textureWidth;
         float f1 = 1.0F / textureHeight;
         Tessellator tessellator = Tessellator.getInstance();
@@ -692,13 +746,17 @@ public class Utils {
         worldrenderer.pos(x + width, y, 0.0D).tex((u + width) * f, v * f1).endVertex();
         worldrenderer.pos(x, y, 0.0D).tex(u * f, v * f1).endVertex();
         tessellator.draw();
+
+        if (linearTexture) {
+            GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MIN_FILTER, GL11.GL_NEAREST);
+            GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MAG_FILTER, GL11.GL_NEAREST);
+        }
     }
 
     /**
      * Draws a solid color rectangle with the specified coordinates and color (ARGB format). Args: x1, y1, x2, y2, color
      */
-    public void drawRect(double left, double top, double right, double bottom, int color)
-    {
+    public void drawRect(double left, double top, double right, double bottom, int color) {
         if (left < right) {
             double i = left;
             left = right;
@@ -922,5 +980,38 @@ public class Utils {
                 Items.golden_axe.equals(item) ||
                 Items.iron_axe.equals(item) ||
                 Items.diamond_axe.equals(item);
+    }
+
+    private boolean depthEnabled;
+    private boolean blendEnabled;
+    private boolean alphaEnabled;
+    private int blendFunctionSrcFactor;
+    private int blendFunctionDstFactor;
+
+    public void enableStandardGLOptions() {
+        depthEnabled = GL11.glIsEnabled(GL11.GL_DEPTH_TEST);
+        blendEnabled = GL11.glIsEnabled(GL11.GL_BLEND);
+        alphaEnabled = GL11.glIsEnabled(GL11.GL_ALPHA_TEST);
+        blendFunctionSrcFactor = GL11.glGetInteger(GL11.GL_BLEND_SRC);
+        blendFunctionDstFactor = GL11.glGetInteger(GL11.GL_BLEND_DST);
+
+        GlStateManager.disableDepth();
+        GlStateManager.enableBlend();
+        GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+        GlStateManager.enableAlpha();
+        GlStateManager.color(1, 1, 1, 1);
+    }
+
+    public void restoreGLOptions() {
+        if (depthEnabled) {
+            GlStateManager.enableDepth();
+        }
+        if (!alphaEnabled) {
+            GlStateManager.disableAlpha();
+        }
+        if (!blendEnabled) {
+            GlStateManager.disableBlend();
+        }
+        GlStateManager.blendFunc(blendFunctionSrcFactor, blendFunctionDstFactor);
     }
 }

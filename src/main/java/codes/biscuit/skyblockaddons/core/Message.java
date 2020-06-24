@@ -125,6 +125,9 @@ public enum Message {
     SETTING_BOSS_APPROACH_ALERT(MessageObject.SETTING, "bossApproachAlert"),
     SETTING_DISABLE_TELEPORT_PAD_MESSAGES(MessageObject.SETTING, "disableTeleportPadMessages"),
     SETTING_BAIT_LIST(MessageObject.SETTING, "baitListDisplay"),
+    SETTING_ZEALOT_COUNTER_EXPLOSIVE_BOW_SUPPORT(MessageObject.SETTING, "zealotCounterExplosiveBow"),
+    SETTING_DISABLE_ENDERMAN_TELEPORTATION_EFFECT(MessageObject.SETTING, "disableEndermanTeleportation"),
+    SETTING_CHANGE_ZEALOT_COLOR(MessageObject.SETTING, "changeZealotColor"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.BACKPACK_STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.BACKPACK_STYLE, "compact"),

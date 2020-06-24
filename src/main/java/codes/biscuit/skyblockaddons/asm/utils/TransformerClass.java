@@ -52,6 +52,12 @@ public enum TransformerClass {
     ItemCameraTransforms$TransformType("net/minecraft/client/renderer/block/model/ItemCameraTransforms$TransformType", "bgr$b"),
     IBakedModel("net/minecraft/client/resources/model/IBakedModel", "boq"),
     InventoryPlayer("net/minecraft/entity/player/InventoryPlayer", "wm"),
+    Potion("net/minecraft/potion/Potion", "pe"),
+    RenderEnderman("net/minecraft/client/renderer/entity/RenderEnderman", "bis"),
+    EntityEnderman("net/minecraft/entity/monster/EntityEnderman", "vo"),
+    ModelBase("net/minecraft/client/model/ModelBase", "bbo"),
+    ModelBiped("net/minecraft/client/model/ModelBiped", "bbj"),
+    ModelEnderman("net/minecraft/client/model/ModelEnderman", "bbd"),
 
     NULL(null,null);
 

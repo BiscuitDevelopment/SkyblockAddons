@@ -18,8 +18,8 @@ public class RenderItemHook {
     public static void renderToxicArrowPoisonEffect(IBakedModel model, ItemStack stack) {
         SkyblockAddons main = SkyblockAddons.getInstance();
 
-        if (main.getConfigValues().isEnabled(Feature.TURN_BOW_GREEN_WHEN_USING_TOXIC_ARROW_POISON) && main.getInventoryUtils().isUsingToxicArrowPoison()
-                && Items.bow.equals(stack.getItem()) && main.getUtils().itemIsInHotbar(stack)) {
+        if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.TURN_BOW_GREEN_WHEN_USING_TOXIC_ARROW_POISON)
+                && main.getInventoryUtils().isUsingToxicArrowPoison() && Items.bow.equals(stack.getItem()) && main.getUtils().itemIsInHotbar(stack)) {
             TextureManager textureManager = Minecraft.getMinecraft().getTextureManager();
 
             GlStateManager.depthMask(false);

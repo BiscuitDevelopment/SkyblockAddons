@@ -1,6 +1,6 @@
 package codes.biscuit.skyblockaddons.utils;
 
-import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.utils.item.ItemUtils;
 import lombok.Getter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
@@ -13,23 +13,15 @@ import java.util.Map;
 
 /**
  * Keeps track of bait in the Player's Inventory.
- * Also provides a list of bait and resource locations for relevant images.
- * Images taken from the <a href="https://hypixel-skyblock.fandom.com/wiki/Fishing_Bait">Skyblock Fandom Wiki</a>
- * {@link PowerOrbManager} code by DidiSkywalker used as a reference.
  *
  * @author Charzard4261
  */
-public class BaitListManager {
+public class BaitManager {
 
     /**
      * The BaitListManager instance.
      */
-    @Getter private static final BaitListManager instance = new BaitListManager();
-
-    /**
-     * A map of all baits in the inventory and their count
-     */
-    public Map<BaitType, Integer> baitsInInventory = new HashMap<>();
+    @Getter private static final BaitManager instance = new BaitManager();
 
     public static final Map<BaitType, Integer> DUMMY_BAITS = new HashMap<>();
 
@@ -40,22 +32,24 @@ public class BaitListManager {
     }
 
     /**
+     * A map of all baits in the inventory and their count
+     */
+    @Getter private Map<BaitType, Integer> baitsInInventory = new HashMap<>();
+
+    /**
      * Check if our Player is holding a Fishing Rod, and filters out the Grapple Hook (If any more items are made that
      * are Items.fishing_rods but aren't used for fishing, add them here)
      *
      * @return True if it can be used for fishing
      */
-    public boolean holdingRod() {
-        EntityPlayerSP p = Minecraft.getMinecraft().thePlayer;
-        SkyblockAddons main = SkyblockAddons.getInstance();
+    public boolean isHoldingRod() {
+        EntityPlayerSP player = Minecraft.getMinecraft().thePlayer;
 
-        if (p != null && main.getUtils().isOnSkyblock()) {
-            ItemStack item = p.getHeldItem();
+        if (player != null) {
+            ItemStack item = player.getHeldItem();
             if (item == null || item.getItem() != Items.fishing_rod) return false;
 
-            if (!item.hasDisplayName()) return true;
-
-            return !item.getDisplayName().equals("§aGrappling Hook");
+            return !"GRAPPLING_HOOK".equals(ItemUtils.getSkyBlockItemID(item));
         }
         return false;
     }
@@ -65,8 +59,10 @@ public class BaitListManager {
      */
     public void refreshBaits() {
         baitsInInventory.clear();
+
         EntityPlayerSP player = Minecraft.getMinecraft().thePlayer;
         for (ItemStack itemStack : player.inventory.mainInventory) {
+
             if (itemStack == null || !itemStack.hasDisplayName()) continue;
 
             BaitType bait = BaitType.getByDisplayName(itemStack.getDisplayName());
@@ -78,17 +74,17 @@ public class BaitListManager {
     }
 
     @Getter
-    public enum BaitType {
-        MINNOW("§fMinnow Bait", new ResourceLocation("skyblockaddons", "baits/minnow.png")),
-        FISH("§fFish Bait", new ResourceLocation("skyblockaddons", "baits/fish.png")),
-        LIGHT("§fLight Bait", new ResourceLocation("skyblockaddons", "baits/light.png")),
-        DARK("§fDark Bait", new ResourceLocation("skyblockaddons", "baits/dark.png")),
-        SPIKED("§fSpiked Bait", new ResourceLocation("skyblockaddons", "baits/spiked.png")),
-        SPOOKY("§fSpooky Bait", new ResourceLocation("skyblockaddons", "baits/spooky.png")),
-        CARROT("§fCarrot Bait", new ResourceLocation("skyblockaddons", "baits/carrot.png")),
-        BLESSED("§aBlessed Bait", new ResourceLocation("skyblockaddons", "baits/blessed.png")),
-        WHALE("§9Whale Bait", new ResourceLocation("skyblockaddons", "baits/whale.png")),
-        ICE("§aIce Bait", new ResourceLocation("skyblockaddons", "baits/ice.png"));
+    public enum BaitType { // TODO Convert to using item IDs...
+        MINNOW("§fMinnow Bait"),
+        FISH("§fFish Bait"),
+        LIGHT("§fLight Bait"),
+        DARK("§fDark Bait"),
+        SPIKED("§fSpiked Bait"),
+        SPOOKY("§fSpooky Bait"),
+        CARROT("§fCarrot Bait"),
+        BLESSED("§aBlessed Bait"),
+        WHALE("§9Whale Bait"),
+        ICE("§aIce Bait");
 
         /*
          * Display Name of the bait.
@@ -99,9 +95,9 @@ public class BaitListManager {
          */
         private ResourceLocation resourceLocation;
 
-        BaitType(String displayName, ResourceLocation resourceLocation) {
+        BaitType(String displayName) {
             this.displayName = displayName;
-            this.resourceLocation = resourceLocation;
+            this.resourceLocation = new ResourceLocation("skyblockaddons", "baits/"+this.name().toLowerCase()+".png");
         }
 
         /**

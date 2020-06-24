@@ -43,7 +43,7 @@ public class PlayerControllerMPHook {
 
     private static final Set<Block> NETHER_MINEABLE_BLOCKS = new HashSet<>(Arrays.asList(Blocks.glowstone, Blocks.quartz_ore, Blocks.nether_wart));
 
-    private static final Set<Location> PARK = EnumSet.of(Location.BIRCH_PARK, Location.SPRUCE_WOODS, Location.SAVANNA_WOODLAND, Location.DARK_THICKET, Location.JUNGLE_ISLAND);
+    private static final Set<Location> PARK_LOCATIONS = EnumSet.of(Location.BIRCH_PARK, Location.SPRUCE_WOODS, Location.SAVANNA_WOODLAND, Location.DARK_THICKET, Location.JUNGLE_ISLAND);
 
     private static final Set<Block> LOGS = new HashSet<>(Arrays.asList(Blocks.log, Blocks.log2));
 
@@ -108,7 +108,7 @@ public class PlayerControllerMPHook {
                     main.getUtils().sendMessage(main.getConfigValues().getRestrictedColor(Feature.ONLY_MINE_VALUABLES_NETHER) + Message.MESSAGE_CANCELLED_NON_ORES_BREAK.getMessage());
                 }
                 returnValue.cancel();
-            } else if (main.getConfigValues().isEnabled(Feature.ONLY_BREAK_LOGS_PARK) && PARK.contains(main.getUtils().getLocation())
+            } else if (main.getConfigValues().isEnabled(Feature.ONLY_BREAK_LOGS_PARK) && PARK_LOCATIONS.contains(main.getUtils().getLocation())
                     && main.getUtils().isAxe(heldItem.getItem()) && !LOGS.contains(block)) {
                 if (main.getConfigValues().isEnabled(Feature.ENABLE_MESSAGE_WHEN_BREAKING_PARK) && now - lastUnmineableMessage > 60000) {
                     lastUnmineableMessage = now;
@@ -193,7 +193,7 @@ public class PlayerControllerMPHook {
                 if (main.getConfigValues().isEnabled(Feature.LOCK_SLOTS)
                         && main.getConfigValues().getLockedSlots().contains(slotNum)
                         && (slotNum >= 9 || player.openContainer instanceof ContainerPlayer && slotNum >= 5)) {
-                    if (mouseButtonClicked == 1 && slotIn != null && slotIn.getHasStack() &&
+                    if (mouseButtonClicked == 1 && mode == 0 && slotIn != null && slotIn.getHasStack() &&
                             slotIn.getStack().getItem() == Items.skull && BackpackManager.isBackpack(slotIn.getStack())) {
                         return;
                     }

@@ -11,6 +11,7 @@ import java.util.Set;
 @Getter
 public enum Location {
     ISLAND("Your Island"), // TODO RPC
+    GUEST_ISLAND("'s Island", "island"), // TODO RPC
 
     // Hub
     AUCTION_HOUSE("Auction House"),
@@ -19,6 +20,8 @@ public enum Location {
     CANVAS_ROOM("Canvas Room"),
     COAL_MINE("Coal Mine"),
     COLOSSEUM("Colosseum"),
+    COLOSSEUM_ARENA("Colosseum Arena", "colosseum"),
+    DUEL_ZONE("Duel Zone", "colosseum"),
     FARM("Farm"),
     FASHION_SHOP("Fashion Shop"),
     FISHERMANS_HUT("Fisherman's Hut"),
@@ -78,20 +81,25 @@ public enum Location {
     // This is used when the mod is unable to retrieve the player's location from the sidebar.
     UNKNOWN("Unknown");
 
-    private static final Set<Location> NO_DISCORD_RPC = Sets.newHashSet(ISLAND, BAZAAR, DEEP_CAVERNS, GUNPOWDER_MINES, LAPIS_QUARRY, PIGMAN_DEN, JERRYS_WORKSHOP, JERRY_POND);
-
     /** The name of this location as shown on the in-game scoreboard. */
-    private final String scoreboardName;
+    private String scoreboardName;
+
+    private String discordIconKey;
+
+    Location(String scoreboardName, String discordIconKey) {
+        this.scoreboardName = scoreboardName;
+        this.discordIconKey = discordIconKey;
+    }
 
     Location(String scoreboardName) {
         this.scoreboardName = scoreboardName;
-    }
 
-    public String getDiscordIconKey() {
-        if (NO_DISCORD_RPC.contains(this) || this == UNKNOWN) {
-            return "skyblock";
+        Set<String> NO_DISCORD_RPC = Sets.newHashSet("ISLAND", "BAZAAR", "DEEP_CAVERNS", "GUNPOWDER_MINES", "LAPIS_QUARRY", "PIGMAN_DEN", "JERRYS_WORKSHOP", "JERRY_POND");
+
+        if (NO_DISCORD_RPC.contains(name())) {
+            discordIconKey = "skyblock";
+        } else {
+            discordIconKey = name().toLowerCase().replace("_", "-");
         }
-
-        return name().toLowerCase().replace("_", "-");
     }
 }

@@ -6,10 +6,12 @@ import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.Location;
 import codes.biscuit.skyblockaddons.core.Message;
 import codes.biscuit.skyblockaddons.gui.IslandWarpGui;
+import codes.biscuit.skyblockaddons.scheduler.SkyblockRunnable;
 import codes.biscuit.skyblockaddons.utils.*;
 import codes.biscuit.skyblockaddons.utils.dev.DevUtils;
 import codes.biscuit.skyblockaddons.utils.item.ItemUtils;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
+import com.google.common.collect.Sets;
 import lombok.Getter;
 import lombok.Setter;
 import net.minecraft.client.Minecraft;
@@ -24,6 +26,7 @@ import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.monster.EntityMagmaCube;
 import net.minecraft.entity.monster.EntitySlime;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.entity.projectile.EntityFishHook;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.Container;
@@ -40,6 +43,7 @@ import net.minecraftforge.client.event.GuiOpenEvent;
 import net.minecraftforge.client.event.GuiScreenEvent;
 import net.minecraftforge.event.entity.EntityEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
+import net.minecraftforge.event.entity.living.EnderTeleportEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
@@ -72,7 +76,8 @@ public class PlayerListener {
             "Hmm… tasty!", "Hmm... tasty!", "You can now fly for 2 minutes.", "Your Magical Mushroom Soup flight has been extended for 2 extra minutes.",
             "Your flight has been extended for 2 extra minutes."));
 
-    private final Set<String> LEGENDARY_SEA_CREATURE_MESSAGES = new HashSet<>(Arrays.asList("The Water Hydra has come to test your strength.", "The Sea Emperor arises from the depths...", "What is this creature!?"));
+    private static final Set<String> LEGENDARY_SEA_CREATURE_MESSAGES = new HashSet<>(Arrays.asList("The Water Hydra has come to test your strength.",
+            "The Sea Emperor arises from the depths...", "What is this creature!?"));
 
     private long lastWorldJoin = -1;
     private long lastBoss = -1;
@@ -94,7 +99,7 @@ public class PlayerListener {
     private boolean oldBobberIsInWater = false;
     private double oldBobberPosY = 0;
 
-    private Set<UUID> countedEndermen = new HashSet<>();
+    @Getter private Set<UUID> countedEndermen = new HashSet<>();
 
     @Getter private Set<IntPair> recentlyLoadedChunks = new HashSet<>();
 
@@ -376,8 +381,8 @@ public class PlayerListener {
                                 && main.getPlayerListener().didntRecentlyJoinWorld()) {
                             main.getInventoryUtils().getInventoryDifference(p.inventory.mainInventory);
                         }
-                        if (main.getConfigValues().isEnabled(Feature.BAIT_LIST) && BaitListManager.getInstance().holdingRod()) {
-                            BaitListManager.getInstance().refreshBaits();
+                        if (main.getConfigValues().isEnabled(Feature.BAIT_LIST) && BaitManager.getInstance().isHoldingRod()) {
+                            BaitManager.getInstance().refreshBaits();
                         }
                     }
 
@@ -441,16 +446,51 @@ public class PlayerListener {
         }
     }
 
+    @Getter private TreeMap<Long, Set<Vec3>> recentlyKilledZealots = new TreeMap<>();
+
     @SubscribeEvent
     public void onDeath(LivingDeathEvent e) {
         if (e.entity instanceof EntityEnderman) {
             if (countedEndermen.remove(e.entity.getUniqueID())) {
                 main.getPersistentValues().addKill();
                 EndstoneProtectorManager.onKill();
+            } else if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.ZEALOT_COUNTER_EXPLOSIVE_BOW_SUPPORT)) {
+                if (isZealot(e.entity)) {
+                    long now = System.currentTimeMillis();
+                    if (recentlyKilledZealots.containsKey(now)) {
+                        recentlyKilledZealots.get(now).add(e.entity.getPositionVector());
+                    } else {
+                        recentlyKilledZealots.put(now, Sets.newHashSet(e.entity.getPositionVector()));
+                    }
+
+                    explosiveBowExplosions.keySet().removeIf((explosionTime) -> now - explosionTime > 150);
+                    Map.Entry<Long, Vec3> latestExplosion = explosiveBowExplosions.lastEntry();
+                    if (latestExplosion == null) return;
+
+                    Vec3 explosionLocation = latestExplosion.getValue();
+
+//                    int possibleZealotsKilled = 1;
+//                    System.out.println("This means "+possibleZealotsKilled+" may have been killed...");
+//                    int originalPossibleZealotsKilled = possibleZealotsKilled;
+
+                    Vec3 deathLocation = e.entity.getPositionVector();
+
+                    double distance = explosionLocation.distanceTo(deathLocation);
+//                    System.out.println("Distance was "+distance+"!");
+                    if (explosionLocation.distanceTo(deathLocation) < 4.6) {
+//                        possibleZealotsKilled--;
+
+                        main.getPersistentValues().addKill();
+                        EndstoneProtectorManager.onKill();
+                    }
+
+//                    System.out.println((originalPossibleZealotsKilled-possibleZealotsKilled)+" zealots were actually killed...");
+                }
             }
         }
     }
-    private boolean isZealot(Entity enderman) {
+
+    public boolean isZealot(Entity enderman) {
         List<EntityArmorStand> stands = Minecraft.getMinecraft().theWorld.getEntitiesWithinAABB(EntityArmorStand.class,
                 new AxisAlignedBB(enderman.posX - 1, enderman.posY, enderman.posZ - 1, enderman.posX + 1, enderman.posY + 5, enderman.posZ + 1));
         if (stands.isEmpty()) return false;
@@ -521,15 +561,67 @@ public class PlayerListener {
         }
     }
 
-    @SubscribeEvent()
-    public void onTickMagmaBossChecker(EntityEvent.EnteringChunk e) { // EntityJoinWorldEvent
+    // Between these two coordinates is the whole "arena" area where all the magmas and stuff are.
+    private static AxisAlignedBB magmaBossSpawnArea = new AxisAlignedBB(-244, 0, -566, -379, 255, -635);
+    @Getter private TreeMap<Long, Vec3> explosiveBowExplosions = new TreeMap<>();
 
-        // Between these two coordinates is the whole "arena" area where all the magmas and stuff are.
-        AxisAlignedBB spawnArea = new AxisAlignedBB(-244, 0, -566, -379, 255, -635);
+    @SubscribeEvent()
+    public void onTickMagmaBossChecker(EntityEvent.EnteringChunk e) {
+        Entity entity = e.entity;
+
+        if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.ZEALOT_COUNTER_EXPLOSIVE_BOW_SUPPORT) && entity instanceof EntityArrow) {
+            EntityArrow arrow = (EntityArrow)entity;
+
+            EntityPlayerSP p = Minecraft.getMinecraft().thePlayer;
+            ItemStack heldItem = p.getHeldItem();
+            if (heldItem != null && "EXPLOSIVE_BOW".equals(ItemUtils.getSkyBlockItemID(heldItem))) {
+
+                AxisAlignedBB playerRadius = new AxisAlignedBB(p.posX - 3, p.posY - 3, p.posZ - 3, p.posX + 3, p.posY + 3, p.posZ + 3);
+                if (playerRadius.isVecInside(arrow.getPositionVector())) {
+
+//                    System.out.println("Spawned explosive arrow!");
+                    main.getNewScheduler().scheduleRepeatingTask(new SkyblockRunnable() {
+                        @Override
+                        public void run() {
+                            if (arrow.isDead || arrow.isCollided || arrow.inGround) {
+                                cancel();
+
+//                                System.out.println("Arrow is done, added an explosion!");
+                                Vec3 explosionLocation = new Vec3(arrow.posX, arrow.posY, arrow.posZ);
+                                explosiveBowExplosions.put(System.currentTimeMillis(), explosionLocation);
+
+                                recentlyKilledZealots.keySet().removeIf((killedTime) -> System.currentTimeMillis() - killedTime > 150);
+                                Set<Vec3> filteredRecentlyKilledZealots = new HashSet<>();
+                                for (Map.Entry<Long, Set<Vec3>> recentlyKilledZealotEntry : recentlyKilledZealots.entrySet()) {
+                                    filteredRecentlyKilledZealots.addAll(recentlyKilledZealotEntry.getValue());
+                                }
+                                if (filteredRecentlyKilledZealots.isEmpty()) return;
+
+//                                int possibleZealotsKilled = filteredRecentlyKilledZealots.size();
+//                                System.out.println("This means "+possibleZealotsKilled+" may have been killed...");
+//                                int originalPossibleZealotsKilled = possibleZealotsKilled;
+
+                                for (Vec3 zealotDeathLocation : filteredRecentlyKilledZealots) {
+                                    double distance = explosionLocation.distanceTo(zealotDeathLocation);
+                                    System.out.println("Distance was "+distance+"!");
+                                    if (distance < 4.6) {
+//                                        possibleZealotsKilled--;
+
+                                        main.getPersistentValues().addKill();
+                                        EndstoneProtectorManager.onKill();
+                                    }
+                                }
+
+//                                System.out.println((originalPossibleZealotsKilled-possibleZealotsKilled)+" zealots were actually killed...");
+                            }
+                        }
+                    }, 0, 1);
+                }
+            }
+        }
 
         if (main.getUtils().getLocation() == Location.BLAZING_FORTRESS) {
-            Entity entity = e.entity;
-            if (spawnArea.isVecInside(new Vec3(entity.posX, entity.posY, entity.posZ))) { // timers will trigger if 15 magmas/8 blazes spawn in the box within a 4 second time period
+            if (magmaBossSpawnArea.isVecInside(new Vec3(entity.posX, entity.posY, entity.posZ))) { // timers will trigger if 15 magmas/8 blazes spawn in the box within a 4 second time period
                 long currentTime = System.currentTimeMillis();
                 if (e.entity instanceof EntityMagmaCube) {
                     if (!recentlyLoadedChunks.contains(new IntPair(e.newChunkX, e.newChunkZ)) && entity.ticksExisted == 0) {
@@ -562,13 +654,19 @@ public class PlayerListener {
         }
     }
 
+    @SubscribeEvent()
+    public void onEnderTeleport(EnderTeleportEvent e) {
+        if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.DISABLE_ENDERMAN_TELEPORTATION_EFFECT)) {
+            e.setCanceled(true);
+        }
+    }
+
     /**
      * Modifies item tooltips and activates the copy item nbt feature
      */
     @SubscribeEvent()
     public void onItemTooltip(ItemTooltipEvent e) {
         ItemStack hoveredItem = e.itemStack;
-
         if (e.toolTip != null && main.getUtils().isOnSkyblock()) {
             if (main.getConfigValues().isEnabled(Feature.HIDE_GREY_ENCHANTS)) {
                 for (int i = 1; i <= 3; i++) { // only a max of 2 gray enchants are possible
