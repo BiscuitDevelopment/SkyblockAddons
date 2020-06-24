@@ -120,14 +120,15 @@
     "advancedMode": "Advanced Mode",
     "legendarySeaCreatureWarning": "Legendary Sea Creature Warning",
     "onlyBreakLogsPark": "Only Break Logs in the Park",
-    "bossApproachAlert": "Slayer Boss Approach Alert",
+    "bossApproachAlert": "Boss Approach Alert",
     "disableTeleportPadMessages": "Disable Teleport Pad Messages",
     "baitListDisplay" : "Show Bait List While Holding a Rod",
     "freezeBackpackPreview": "Freeze Backpack Preview",
     "hideGreyEnchants": "Hide Regular Grey Enchants",
     "zealotCounterExplosiveBow": "Zealot Counter Explosive Bow Support",
     "disableEndermanTeleportation": "Disable Enderman Teleportation",
-    "changeZealotColor": "Change Zealot Color"
+    "changeZealotColor": "Change Zealot Color",
+    "hideSvenPupNametags": "Hide Sven Pup Nametags"
   },
   "messages": {
     "dropConfirmation": "Drop this item again to confirm!",

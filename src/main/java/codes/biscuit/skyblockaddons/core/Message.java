@@ -128,6 +128,7 @@ public enum Message {
     SETTING_ZEALOT_COUNTER_EXPLOSIVE_BOW_SUPPORT(MessageObject.SETTING, "zealotCounterExplosiveBow"),
     SETTING_DISABLE_ENDERMAN_TELEPORTATION_EFFECT(MessageObject.SETTING, "disableEndermanTeleportation"),
     SETTING_CHANGE_ZEALOT_COLOR(MessageObject.SETTING, "changeZealotColor"),
+    SETTING_HIDE_SVEN_PUP_NAMETAGS(MessageObject.SETTING, "hideSvenPupNametags"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.BACKPACK_STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.BACKPACK_STYLE, "compact"),
