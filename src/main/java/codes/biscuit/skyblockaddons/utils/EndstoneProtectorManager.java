@@ -37,25 +37,18 @@ public class EndstoneProtectorManager {
                 return;
             }
 
-            Stage stage = null;
-
+            Stage newStage = Stage.detectStage();
             for (Entity entity : world.loadedEntityList) {
                 if (entity instanceof EntityIronGolem) {
-                    stage = Stage.GOLEM_ALIVE;
+                    newStage = Stage.GOLEM_ALIVE;
                     break;
                 }
             }
 
-            if (stage == null) {
-                stage = Stage.detectStage();
-            }
-
             canDetectSkull = true;
-
-            if (minibossStage != stage) {
+            if (minibossStage != newStage) {
                 int timeTaken = (int) (System.currentTimeMillis()-lastWaveStart);
                 String previousStage = (minibossStage == null ? "null" : minibossStage.name());
-                String newStage = stage.name();
 
                 String zealotsKilled = "N/A";
                 if (minibossStage != null) {
@@ -66,14 +59,14 @@ public class EndstoneProtectorManager {
                 int minutes = totalSeconds/60;
                 int seconds = totalSeconds%60;
 
-                main.getLogger().info("Endstone Protector stage updated from "+previousStage+" to "+newStage+". " +
+                main.getLogger().info("Endstone Protector stage updated from "+previousStage+" to "+newStage.name()+". " +
                         "Your zealot kill count was "+zealotsKilled+". This took "+minutes+"m "+seconds+"s.");
 
-                if (minibossStage == Stage.GOLEM_ALIVE && stage == Stage.NO_HEAD) {
+                if (minibossStage == Stage.GOLEM_ALIVE && newStage == Stage.NO_HEAD) {
                     zealotCount = 0;
                 }
 
-                minibossStage = stage;
+                minibossStage = newStage;
                 lastWaveStart = System.currentTimeMillis();
             }
         } else {

@@ -590,10 +590,11 @@ public class ConfigValues {
 
     /**
      * @param feature The feature to check.
-     * @return Whether the feature is remotely disabled.
+     * @return Whether the feature is remotely disabled.d
      */
     public boolean isRemoteDisabled(Feature feature) {
-        // Check all versions.
+        if (feature == null) return false;
+
         if (main.getOnlineData().getDisabledFeatures().containsKey("all")) {
             return main.getOnlineData().getDisabledFeatures().get("all").contains(feature.getId());
         }

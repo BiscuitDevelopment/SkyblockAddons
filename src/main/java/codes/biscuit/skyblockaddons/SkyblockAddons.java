@@ -41,7 +41,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 @Getter
-@Mod(modid = "skyblockaddons", name = "SkyblockAddons", version = "@VERSION@", clientSideOnly = true, acceptedMinecraftVersions = "@MOD_ACCEPTED@", updateJSON = "@UPDATE_JSON@")
+@Mod(modid = "skyblockaddons", name = "SkyblockAddons", version = "@VERSION@", clientSideOnly = true, acceptedMinecraftVersions = "@MOD_ACCEPTED@")
 public class SkyblockAddons {
 
     public static final String MOD_ID = "skyblockaddons";
@@ -131,7 +131,6 @@ public class SkyblockAddons {
             }
         }
 
-        updater.processUpdateCheckResult();
         utils.pullOnlineData();
         scheduleMagmaBossCheck();
 

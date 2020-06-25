@@ -268,6 +268,8 @@ public class SettingsGui extends GuiScreen {
             Feature settingFeature = null;
             if (feature == Feature.FULL_INVENTORY_WARNING) {
                 settingFeature = Feature.REPEAT_FULL_INVENTORY_WARNING;
+            } else if (feature == Feature.BOSS_APPROACH_ALERT) {
+                settingFeature = Feature.REPEAT_SLAYER_BOSS_WARNING;
             }
 
             buttonList.add(new ButtonToggleTitle(x, y, Message.SETTING_REPEATING.getMessage(), main, settingFeature));

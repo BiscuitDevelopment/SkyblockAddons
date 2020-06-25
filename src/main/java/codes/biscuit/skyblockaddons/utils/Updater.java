@@ -7,11 +7,12 @@ import net.minecraft.event.ClickEvent;
 import net.minecraft.event.HoverEvent;
 import net.minecraft.util.ChatComponentText;
 import net.minecraftforge.common.ForgeVersion;
-import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.versioning.ComparableVersion;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import static net.minecraftforge.common.ForgeVersion.Status.*;
 
 /**
  * This class is the SkyblockAddons updater. It reads the Forge Update Checker results for SkyblockAddons.
@@ -22,9 +23,6 @@ public class Updater {
 
     private SkyblockAddons main;
 
-    private ComparableVersion current;
-    private ComparableVersion latest;
-
     private boolean hasUpdate = false;
     @Getter private String messageToRender;
 
@@ -33,7 +31,6 @@ public class Updater {
 
     public Updater(SkyblockAddons main) {
         this.main = main;
-        current = new ComparableVersion(SkyblockAddons.VERSION);
     }
 
     /**
@@ -49,16 +46,32 @@ public class Updater {
      * Processes the update checker result from the Forge Update Checker and sets the correct message to be displayed.
      */
     public void processUpdateCheckResult() {
-        ForgeVersion.CheckResult result = ForgeVersion.getResult(Loader.instance().activeModContainer());
-        ForgeVersion.Status status = result.status;
-        ComparableVersion target = result.target;
+        SkyblockAddons main = SkyblockAddons.getInstance();
 
-        if (status == ForgeVersion.Status.OUTDATED || status == ForgeVersion.Status.BETA_OUTDATED) {
+        ComparableVersion current = new ComparableVersion(SkyblockAddons.VERSION);
+        boolean isCurrentBeta = SkyblockAddons.VERSION.contains("b");
+        ComparableVersion latest = new ComparableVersion(isCurrentBeta ? main.getOnlineData().getLatestBeta() : main.getOnlineData().getLatestVersion());
+        main.getLogger().info("Checking to see if an update is available. Current version is "+current.toString()+". Latest version is "+latest.toString());
+
+        ForgeVersion.Status status;
+
+        int versionDifference = latest.compareTo(current);
+
+        if (versionDifference == 0) {
+            status = UP_TO_DATE;
+        } else if (versionDifference < 0) {
+            status = AHEAD;
+        } else {
+            status = OUTDATED;
+        }
+
+        if (status == ForgeVersion.Status.OUTDATED) {
             hasUpdate = true;
-            latest = target;
 
             String currentVersion = current.toString();
             String latestVersion = latest.toString();
+
+            main.getLogger().info("Found an update: "+latestVersion);
 
             try {
                 Matcher currentMatcher = VERSION_PATTERN.matcher(currentVersion);
@@ -73,7 +86,7 @@ public class Updater {
                 }
             } catch (Exception ex) {
                 ex.printStackTrace();
-                main.getLogger().error("Couldn't parse update version numbers... This shouldn't affect too much.");
+                main.getLogger().warn("Couldn't parse update version numbers... This shouldn't affect too much.");
             }
 
             if (isPatch) {
@@ -81,19 +94,16 @@ public class Updater {
             } else {
                 messageToRender = Message.UPDATE_MESSAGE_MAJOR.getMessage(latestVersion);
             }
-        } else if (status == ForgeVersion.Status.PENDING) {
-            // The update checker hasn't finished yet. Check back later.
-            main.getScheduler().schedule(Scheduler.CommandType.PROCESS_UPDATE_CHECK_RESULT, 5);
         }
     }
 
     public void sendUpdateMessage() {
         if (sentUpdateMessage) return;
         if (main.getOnlineData().getVideoLink() == null) return;
-        if (latest == null) return;
+        String newestVersion = main.getOnlineData().getLatestVersion();
+        if (newestVersion == null) return;
 
         sentUpdateMessage = true;
-        String newestVersion = latest.toString();
 
         main.getUtils().sendMessage(TextUtils.color("&7&m------------&7[&b&l SkyblockAddons &7]&7&m------------"), false);
 

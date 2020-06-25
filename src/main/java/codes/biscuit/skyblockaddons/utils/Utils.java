@@ -359,6 +359,7 @@ public class Utils {
 
     private static final Pattern SLAYER_SCOREBOARD_PATTERN = Pattern.compile("(?<progress>[0-9.k]*)/(?<total>[0-9.k]*) (?:Kills|Combat XP)$");
     private boolean triggeredSlayerWarning = false;
+    private float lastCompletion;
 
     private void parseSlayerProgress(String line) {
         if (!main.getConfigValues().isEnabled(Feature.BOSS_APPROACH_ALERT)) return;
@@ -377,7 +378,7 @@ public class Utils {
             float completion = progress/total;
 
             if (completion > 0.85) {
-                if (!triggeredSlayerWarning) {
+                if (!triggeredSlayerWarning || (main.getConfigValues().isEnabled(Feature.REPEAT_SLAYER_BOSS_WARNING) && completion != lastCompletion)) {
                     triggeredSlayerWarning = true;
                     main.getUtils().playLoudSound("random.orb", 0.5);
                     main.getRenderListener().setTitleFeature(Feature.BOSS_APPROACH_ALERT);
@@ -386,6 +387,8 @@ public class Utils {
             } else {
                 triggeredSlayerWarning = false; // Reset warning flag when completion is below 85%, meaning they started a new quest.
             }
+
+            lastCompletion = completion;
         }
     }
 
@@ -856,6 +859,8 @@ public class Utils {
 
                 main.setOnlineData(new Gson().fromJson(response.toString(), OnlineData.class));
                 logger.info("Successfully grabbed online data.");
+
+                main.getUpdater().processUpdateCheckResult();
             } catch (Exception ex) {
                 logger.warn("There was an error while trying to pull the online data...");
                 logger.catching(ex);
