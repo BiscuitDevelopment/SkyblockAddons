@@ -1,10 +1,11 @@
 {
   "homepage": "https://biscuit.codes/mods/skyblockaddons/downloadversion/?v=latest",
   "promos": {
-    "1.8.9-recommended": "1.5.0",
-    "1.8.9-latest": "1.5.0"
+    "1.8.9-recommended": "1.5.1",
+    "1.8.9-latest": "1.5.1"
   },
   "1.8.9": {
+    "1.5.1": "New Features:\n- Change Zealot Color (yes, chroma zealots are possible)\n- Hide Sven Pup Nametags\n- Zealot counter now has support for explosive bow (its not 100% accurate yet though, sorry!)\n- Disable Enderman Teleportation Effect (required atm for the explosive bow feature)\n\nBug Fixes:\n- Discord RPC should now hopefully work for everyone\n- Fixed a lot of the new settings not saving after a restart\n- Fixed long warnings going outside of your screen\n- The fancy warp menu should now rescale a bit better if you resize your window while in the menu\n- Fixed location not detecting Colosseum Arena & Duel Zone\n- Fixed tickers display turning green while in the dragon's nest\n\nAnd much more, full changelog on the discord...",
     "1.5.0": "New Features:\n- Disable Magical Soup Messages\n- Power Orb Display\n- Zealot Counters\n- Ticker/Charges Display\n- Tab Potion Timers Display\n- No Arrows Left Alert\n- Show \"Broken\" Dragon Fragments\n- Turn Bow Green When Using Toxic Arrow Poison\n- Birch Park Rainmaker Timer\n- Combat Timer Display\n- Discord Rich Presence\n- Endstone Protector Display\n- Fancy Warp Menu\n- Legendary Sea Creature Warning\n- Only Break Logs in the Park\n- Slayer Boss Approach Alert\n- Disable Teleport Pad Messages\n- Bait List\n\nThe remainder of the changelog on the discord.",
     "1.4.2": "Changes/Fixes:\n* Fixed big lag issue that had to do with the mana and health bars.\n* New setting to disable the message shown when using the stems/deep caverns ores features.\n* Added Maddox Batphone to the item cooldowns feature.\n* Remove tabs for the gui, add search bar to the gui. Ordered features alphabetically.\n* Fixed bars not rendering while riding a horse.\n* Fixed kick bug when taking off tarantula helmet in skyblock.\n* Fixed language reverting to english after restarting the game sometimes.\n\n* Added new feature that only allows you to mine value ores in the nether.\n* Added feature to hide pet hearts while riding an animal or using the skyblock launchpads."
   }
