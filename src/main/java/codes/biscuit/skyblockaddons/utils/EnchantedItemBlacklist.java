@@ -15,6 +15,7 @@ public enum EnchantedItemBlacklist {
     ENCHANTED_SNOW("ENCHANTED_SNOW_BLOCK", false, Feature.AVOID_PLACING_ENCHANTED_ITEMS, true),
     ENCHANTED_STRING("ENCHANTED_STRING", false, Feature.AVOID_PLACING_ENCHANTED_ITEMS, true),
     ENCHANTED_WOOL("ENCHANTED_WOOL", true, Feature.AVOID_PLACING_ENCHANTED_ITEMS, true),
+    WEIRD_TUBA("WEIRD_TUBA", false, Feature.AVOID_PLACING_ENCHANTED_ITEMS, true),
     EMBER_ROD("EMBER_ROD", true, Feature.DISABLE_EMBER_ROD, false);
 
     private String itemId;

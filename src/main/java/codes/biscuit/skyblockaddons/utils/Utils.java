@@ -358,7 +358,7 @@ public class Utils {
     }
 
     private static final Pattern SLAYER_SCOREBOARD_PATTERN = Pattern.compile("(?<progress>[0-9.k]*)/(?<total>[0-9.k]*) (?:Kills|Combat XP)$");
-    private float lastSlayerCompletion;
+    private boolean triggeredSlayerWarning = false;
 
     private void parseSlayerProgress(String line) {
         if (!main.getConfigValues().isEnabled(Feature.BOSS_APPROACH_ALERT)) return;
@@ -376,58 +376,20 @@ public class Utils {
 
             float completion = progress/total;
 
-            // They progressed farther on the same quest, let's not show the same warning.
-            if (completion > lastSlayerCompletion) {
-                return;
-            }
-            lastSlayerCompletion = completion;
-
             if (completion > 0.85) {
-                main.getUtils().playLoudSound("random.orb", 0.5);
-                main.getRenderListener().setTitleFeature(Feature.BOSS_APPROACH_ALERT);
-                main.getScheduler().schedule(Scheduler.CommandType.RESET_TITLE_FEATURE, main.getConfigValues().getWarningSeconds());
+                if (!triggeredSlayerWarning) {
+                    triggeredSlayerWarning = true;
+                    main.getUtils().playLoudSound("random.orb", 0.5);
+                    main.getRenderListener().setTitleFeature(Feature.BOSS_APPROACH_ALERT);
+                    main.getScheduler().schedule(Scheduler.CommandType.RESET_TITLE_FEATURE, main.getConfigValues().getWarningSeconds());
+                }
+            } else {
+                triggeredSlayerWarning = false; // Reset warning flag when completion is below 85%, meaning they started a new quest.
             }
         }
     }
 
     private void onCoinsChange(double coinsChange) {
-        if (true) return;
-
-//        main.getPlayerListener().getExplosiveBowExplosions().keySet().removeIf((explosionTime) -> System.currentTimeMillis() - explosionTime > 1500);
-//        Map.Entry<Long, Vec3> latestExplosion = main.getPlayerListener().getExplosiveBowExplosions().lastEntry();
-//        if (latestExplosion == null) return;
-//
-//        Vec3 explosionLocation = latestExplosion.getValue();
-//        int lastExplosion = (int) (System.currentTimeMillis() - latestExplosion.getKey());
-//        System.out.println("Detected coins change of "+coinsChange+". Last explosion was "+lastExplosion+"ms ago...");
-//
-//        int possibleZealotsKilled = (int)(coinsChange/42); // 42.5 coins per zealot kill...S
-//
-//        System.out.println("This means "+possibleZealotsKilled+" may have been killed...");
-//
-//        main.getPlayerListener().getRecentlyKilledZealots().keySet().removeIf((zealotSpawnTime) -> System.currentTimeMillis() - zealotSpawnTime > lastExplosion+200);
-//
-//        int originalPossibleZealotsKilled = possibleZealotsKilled;
-//
-//        Iterator<Map.Entry<Long, Vec3>> recentZealotsIterator = main.getPlayerListener().getRecentlyKilledZealots().entries().iterator();
-//        while (possibleZealotsKilled > 0) {
-//            if (recentZealotsIterator.hasNext()) {
-//                Map.Entry<Long, Vec3> recentZealotEntry = recentZealotsIterator.next();
-//                Vec3 deathLocation = recentZealotEntry.getValue();
-//
-//                if (explosionLocation.distanceTo(deathLocation) < 4.6) {
-//                    possibleZealotsKilled--;
-//                    recentZealotsIterator.remove();
-//
-//                    main.getPersistentValues().addKill();
-//                    EndstoneProtectorManager.onKill();
-//                }
-//            } else {
-//                break; // No more possible zealots...
-//            }
-//        }
-//
-//        System.out.println((originalPossibleZealotsKilled-possibleZealotsKilled)+" zealots were actually killed...");
     }
 
     public int getDefaultColor(float alphaFloat) {

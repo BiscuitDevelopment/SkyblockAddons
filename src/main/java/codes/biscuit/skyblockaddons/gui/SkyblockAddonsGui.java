@@ -127,7 +127,7 @@ public class SkyblockAddonsGui extends GuiScreen {
 
         for (Feature feature : features) {
             if (skip == 0) {
-                if (feature == Feature.TEXT_STYLE || feature == Feature.WARNING_TIME || feature == Feature.CHROMA_MODE) {
+                if (feature == Feature.TEXT_STYLE || feature == Feature.WARNING_TIME || feature == Feature.CHROMA_MODE || feature == Feature.TURN_ALL_FEATURES_CHROMA) {
                     addButton(feature, EnumUtils.ButtonType.SOLID);
                 } else if (feature == Feature.CHROMA_SPEED || feature == Feature.CHROMA_FADE_WIDTH) {
                     addButton(feature, EnumUtils.ButtonType.CHROMA_SLIDER);
@@ -253,6 +253,27 @@ public class SkyblockAddonsGui extends GuiScreen {
                     cancelClose = true;
                     Minecraft.getMinecraft().displayGuiScreen(new SkyblockAddonsGui(main, page, tab));
                     cancelClose = false;
+                } else if (feature == Feature.TURN_ALL_FEATURES_CHROMA) {
+                    boolean enable = false;
+
+                    for (Feature loopFeature : Feature.values()) {
+                        if (loopFeature.getGuiFeatureData() != null && loopFeature.getGuiFeatureData().getDefaultColor() != null) {
+                            if (!main.getConfigValues().getChromaFeatures().contains(loopFeature)) {
+                                enable = true;
+                                break;
+                            }
+                        }
+                    }
+
+                    for (Feature loopFeature : Feature.values()) {
+                        if (loopFeature.getGuiFeatureData() != null && loopFeature.getGuiFeatureData().getDefaultColor() != null) {
+                            if (enable) {
+                                main.getConfigValues().getChromaFeatures().add(loopFeature);
+                            } else {
+                                main.getConfigValues().getChromaFeatures().remove(loopFeature);
+                            }
+                        }
+                    }
                 }
             } else if (abstractButton instanceof ButtonModify) {
                 if (feature == Feature.ADD) {
@@ -400,7 +421,7 @@ public class SkyblockAddonsGui extends GuiScreen {
         } else if (buttonType == EnumUtils.ButtonType.SOLID) {
             buttonList.add(new ButtonNormal(x, y, text, main, feature));
 
-            if (feature == Feature.TEXT_STYLE || feature == Feature.CHROMA_MODE) {
+            if (feature == Feature.TEXT_STYLE || feature == Feature.CHROMA_MODE || feature == Feature.TURN_ALL_FEATURES_CHROMA) {
                 buttonList.add(new ButtonSolid(x+10, y + boxHeight - 23, 120, 15, "", main, feature));
             } else if (feature == Feature.WARNING_TIME) {
                 int solidButtonX = x+(boxWidth/2)-17;

@@ -178,7 +178,7 @@ public class IslandButton extends GuiButton {
             }
 
             mc.getTextureManager().bindTexture(island.getResourceLocation());
-            SkyblockAddons.getInstance().getUtils().drawModalRectWithCustomSizedTexture(x, y, 0, 0, w, h, w, h, true);
+            SkyblockAddons.getInstance().getUtils().drawModalRectWithCustomSizedTexture(x, y, 0, 0, w, h, w, h);
 
             for (IslandMarkerButton marker : markerButtons) {
                 marker.drawButton(x, y, expansion, hovered, unlocked, this.markers.get(marker.getMarker()));

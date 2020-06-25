@@ -6,6 +6,7 @@ import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.Location;
 import codes.biscuit.skyblockaddons.core.Message;
 import codes.biscuit.skyblockaddons.utils.*;
+import codes.biscuit.skyblockaddons.utils.item.ItemUtils;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
@@ -193,9 +194,14 @@ public class PlayerControllerMPHook {
                 if (main.getConfigValues().isEnabled(Feature.LOCK_SLOTS)
                         && main.getConfigValues().getLockedSlots().contains(slotNum)
                         && (slotNum >= 9 || player.openContainer instanceof ContainerPlayer && slotNum >= 5)) {
-                    if (mouseButtonClicked == 1 && mode == 0 && slotIn != null && slotIn.getHasStack() &&
-                            slotIn.getStack().getItem() == Items.skull && BackpackManager.isBackpack(slotIn.getStack())) {
-                        return;
+                    if (mouseButtonClicked == 1 && mode == 0 && slotIn != null && slotIn.getHasStack() && slotIn.getStack().getItem() == Items.skull) {
+
+                        String itemID = ItemUtils.getSkyBlockItemID(slotIn.getStack());
+                        if (itemID == null) itemID = "";
+
+                        if (BackpackManager.isBackpack(slotIn.getStack()) || itemID.contains("SACK")) {
+                            return;
+                        }
                     }
 
                     main.getUtils().playLoudSound("note.bass", 0.5);

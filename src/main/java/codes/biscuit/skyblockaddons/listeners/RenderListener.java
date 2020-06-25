@@ -214,7 +214,7 @@ public class RenderListener {
 
                 float scale = 4; // Scale is normally 4, but if its larger than the screen, scale it down...
                 if (stringWidth*scale > (scaledWidth*0.9F)) {
-                    scale = scaledWidth/(float)stringWidth;
+                    scale = (scaledWidth*0.9F)/(float)stringWidth;
                 }
 
                 GlStateManager.pushMatrix();
@@ -259,7 +259,7 @@ public class RenderListener {
 
                 float scale = 2; // Scale is normally 2, but if its larger than the screen, scale it down...
                 if (stringWidth*scale > (scaledWidth*0.9F)) {
-                    scale = scaledWidth/(float)stringWidth;
+                    scale = (scaledWidth*0.9F)/(float)stringWidth;
                 }
 
                 GlStateManager.pushMatrix();
@@ -1280,7 +1280,7 @@ public class RenderListener {
         main.getUtils().enableStandardGLOptions();
 
         mc.getTextureManager().bindTexture(powerOrb.getResourceLocation());
-        main.getUtils().drawModalRectWithCustomSizedTexture(x, y, 0, 0, iconSize, iconSize, iconSize, iconSize, false);
+        main.getUtils().drawModalRectWithCustomSizedTexture(x, y, 0, 0, iconSize, iconSize, iconSize, iconSize);
 
         main.getUtils().drawTextWithStyle(secondsString, x + spacing + iconSize, y + (iconSize / 2F) - (8 / 2F), ChatFormatting.WHITE.getColor(255).getRGB());
 
@@ -1341,7 +1341,7 @@ public class RenderListener {
         main.getUtils().enableStandardGLOptions();
 
         mc.getTextureManager().bindTexture(powerOrb.getResourceLocation());
-        main.getUtils().drawModalRectWithCustomSizedTexture(x, y, 0, 0, iconSize, iconSize, iconSize, iconSize, false);
+        main.getUtils().drawModalRectWithCustomSizedTexture(x, y, 0, 0, iconSize, iconSize, iconSize, iconSize);
 
         String secondsString = String.format("§e%ss", seconds);
         main.getUtils().drawTextWithStyle(secondsString, Math.round(x + (iconSize / 2F) - (MinecraftReflection.FontRenderer.getStringWidth(secondsString) / 2F)), y + iconSize, ChatFormatting.WHITE.getColor(255).getRGB());

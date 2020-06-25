@@ -129,6 +129,7 @@ public enum Message {
     SETTING_DISABLE_ENDERMAN_TELEPORTATION_EFFECT(MessageObject.SETTING, "disableEndermanTeleportation"),
     SETTING_CHANGE_ZEALOT_COLOR(MessageObject.SETTING, "changeZealotColor"),
     SETTING_HIDE_SVEN_PUP_NAMETAGS(MessageObject.SETTING, "hideSvenPupNametags"),
+    SETTING_TURN_ALL_FEATURES_CHROMA(MessageObject.SETTING, "turnAllFeaturesChroma"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.BACKPACK_STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.BACKPACK_STYLE, "compact"),
@@ -184,7 +185,8 @@ public enum Message {
     MESSAGE_LEGENDARY_SEA_CREATURE_WARNING(MessageObject.MESSAGES, "legendarySeaCreatureWarning"),
     MESSAGE_CANCELLED_NON_LOGS_BREAK(MessageObject.MESSAGES, "cancelledPark"),
     MESSAGE_BOSS_APPROACH_ALERT(MessageObject.MESSAGES, "bossApproaching"),
-
+    MESSAGE_ENABLE_ALL(MessageObject.MESSAGES, "enableAll"),
+    MESSAGE_DISABLE_ALL(MessageObject.MESSAGES, "disableAll"),
 
     @Deprecated ANCHOR_POINT_TOP_LEFT(MessageObject.ANCHOR_POINT, "topLeft"),
     @Deprecated ANCHOR_POINT_TOP_RIGHT(MessageObject.ANCHOR_POINT, "topRight"),

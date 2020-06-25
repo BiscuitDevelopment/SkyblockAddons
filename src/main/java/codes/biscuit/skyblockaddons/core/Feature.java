@@ -142,7 +142,8 @@ public enum Feature {
     TEXT_STYLE(-1, Message.SETTING_TEXT_STYLE, false),
     CHROMA_SPEED(-1, Message.SETTING_CHROMA_SPEED, false),
     CHROMA_MODE(-1, Message.SETTING_CHROMA_MODE, false),
-    CHROMA_FADE_WIDTH(-1, Message.SETTING_CHROMA_FADE_WIDTH, false);
+    CHROMA_FADE_WIDTH(-1, Message.SETTING_CHROMA_FADE_WIDTH, false),
+    TURN_ALL_FEATURES_CHROMA(-1, Message.SETTING_TURN_ALL_FEATURES_CHROMA, false);
 
     /**
      * These are "features" that are not actually features, but just hold the place of a setting. If you are adding any new settings and create
@@ -168,7 +169,7 @@ public enum Feature {
     /**
      * These are features that are displayed separate, on the general tab.
      */
-    @Getter private static final Set<Feature> generalTabFeatures = new LinkedHashSet<>(Arrays.asList(TEXT_STYLE, WARNING_TIME, CHROMA_SPEED, CHROMA_MODE, CHROMA_FADE_WIDTH));
+    @Getter private static final Set<Feature> generalTabFeatures = new LinkedHashSet<>(Arrays.asList(TEXT_STYLE, WARNING_TIME, CHROMA_SPEED, CHROMA_MODE, CHROMA_FADE_WIDTH, TURN_ALL_FEATURES_CHROMA));
 
     private int id;
     private Message message;

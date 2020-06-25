@@ -261,7 +261,7 @@ public class InventoryUtils {
      */
     public void checkIfWearingSlayerArmor(EntityPlayerSP p) {
         if (main.getConfigValues().isEnabled(Feature.SLAYER_INDICATOR)) {
-            for (int i = 3; i > -1; i--) {
+            for (int i = 3; i >= 0; i--) {
                 ItemStack item = p.inventory.armorInventory[i];
                 String itemID = item != null ? ItemUtils.getSkyBlockItemID(item) : null;
 
