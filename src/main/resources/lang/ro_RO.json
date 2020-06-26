@@ -213,6 +213,12 @@
     "titleCustom": "Stare personalizată",
     "descriptionCustom": "Introduceți un status personalizat",
     "titleAuto": "Status automat",
-    "descriptionAuto": "Afiseaza automat un statut. De ex. numarul de zealot in timp ce se termina."
+    "descriptionAuto": "Afiseaza automat un statut. De ex. numarul de zealot in timp ce se termina.",
+    "titleRevenants": "Revenant Quest",
+    "descriptionRevenants": "Shows that you are doing a Revenant quest.",
+    "titleSvens": "Sven Quest",
+    "descriptionSvens": "Shows that you are doing a Sven quest.",
+    "titleTarantula": "Tarantula Quest",
+    "descriptionTarantula": "Shows that you are doing a Tarantula quest."
   }
 }
