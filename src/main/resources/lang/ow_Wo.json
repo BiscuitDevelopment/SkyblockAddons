@@ -124,7 +124,12 @@
     "disableTeleportPadMessages": "Disabwe Tewepowt Pad Messages",
     "baitListDisplay": "Show Bait Wist Whiwe Howding a Wod",
     "freezeBackpackPreview": "Fweeze Bwackpack Pweview",
-    "hideGreyEnchants": "Hoide Weguwaw Gwey Enchents"
+    "hideGreyEnchants": "Hoide Weguwaw Gwey Enchents",
+    "zealotCounterExplosiveBow": "Zealot Counter Explosive Bow Support",
+    "disableEndermanTeleportation": "Disable Enderman Teleportation",
+    "changeZealotColor": "Change Zealot Color",
+    "hideSvenPupNametags": "Hide Sven Pup Nametags",
+    "turnAllFeaturesChroma": "Turn All Features Chroma"
   },
   "messages": {
     "dropConfirmation": "Dwop thwis itwem agwain to confiwm!",
@@ -184,7 +189,9 @@
     "fallbackStatus": "This status wiww appeaw when youw automatic status has nothing to show",
     "legendarySeaCreatureWarning": "Wegendawy Catch!",
     "cancelledPark": "A featuwe has stopped you fwom bweaking this bwock hewe.",
-    "bossApproaching": "You awe cwose to spawning a boss!"
+    "bossApproaching": "You awe cwose to spawning a boss!",
+    "enableAll": "Enable All",
+    "disableAll": "Disable All"
   },
   "discordStatus": {
     "titleNone": "None",
