@@ -213,6 +213,12 @@
     "titleCustom": "حالة مخصصة",
     "descriptionCustom": "أدخل حالة مخصصة",
     "titleAuto": "حالة تلقائية",
-    "descriptionAuto": "يعرض تلقائياً حالة. على سبيل المثال عداد الزيلوتس أثناء وجودك في النهاية."
+    "descriptionAuto": "يعرض تلقائياً حالة. على سبيل المثال عداد الزيلوتس أثناء وجودك في النهاية.",
+    "titleRevenants": "Revenant Quest",
+    "descriptionRevenants": "Shows that you are doing a Revenant quest.",
+    "titleSvens": "Sven Quest",
+    "descriptionSvens": "Shows that you are doing a Sven quest.",
+    "titleTarantula": "Tarantula Quest",
+    "descriptionTarantula": "Shows that you are doing a Tarantula quest."
   }
 }
