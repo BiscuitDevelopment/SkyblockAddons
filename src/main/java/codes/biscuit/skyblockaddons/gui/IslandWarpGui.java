@@ -24,6 +24,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.EnumMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class IslandWarpGui extends GuiScreen {
@@ -252,7 +253,7 @@ public class IslandWarpGui extends GuiScreen {
             this.x = x;
             this.y = y;
 
-            this.resourceLocation = new ResourceLocation("skyblockaddons", "islands/"+this.name().toLowerCase().replace("_", "")+".png");
+            this.resourceLocation = new ResourceLocation("skyblockaddons", "islands/"+this.name().toLowerCase(Locale.US).replace("_", "")+".png");
             try {
                 bufferedImage = TextureUtil.readBufferedImage(Minecraft.getMinecraft().getResourceManager().getResource(this.resourceLocation).getInputStream());
                 this.w = bufferedImage.getWidth();

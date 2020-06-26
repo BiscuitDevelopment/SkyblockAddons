@@ -16,7 +16,7 @@ import java.lang.reflect.Method;
 
 public class TileEntityEnderChestRendererHook {
 
-    private static final ResourceLocation BLANK_ENDERCHEST = new ResourceLocation("skyblockaddons", "enderchest.png");
+    private static final ResourceLocation BLANK_ENDERCHEST = new ResourceLocation("skyblockaddons", "blankenderchest.png");
 
     private static Method bindTexture = null;
 

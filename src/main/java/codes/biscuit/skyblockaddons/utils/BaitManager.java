@@ -9,6 +9,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 /**
@@ -97,7 +98,7 @@ public class BaitManager {
 
         BaitType(String displayName) {
             this.displayName = displayName;
-            this.resourceLocation = new ResourceLocation("skyblockaddons", "baits/"+this.name().toLowerCase()+".png");
+            this.resourceLocation = new ResourceLocation("skyblockaddons", "baits/"+this.name().toLowerCase(Locale.US)+".png");
         }
 
         /**

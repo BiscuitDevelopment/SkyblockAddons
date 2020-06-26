@@ -10,6 +10,7 @@ import java.io.*;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
+import java.util.Locale;
 import java.util.jar.JarFile;
 import java.util.regex.Pattern;
 import java.util.zip.ZipEntry;
@@ -548,7 +549,7 @@ public class SkyblockAddonsInstallerFrame extends JFrame implements ActionListen
     }
 
     public OperatingSystem getOperatingSystem() {
-        String osName = System.getProperty("os.name").toLowerCase();
+        String osName = System.getProperty("os.name").toLowerCase(Locale.US);
         if (osName.contains("win")) {
             return OperatingSystem.WINDOWS;
 

@@ -54,9 +54,7 @@ public class Updater {
         main.getLogger().info("Checking to see if an update is available. Current version is "+current.toString()+". Latest version is "+latest.toString());
 
         ForgeVersion.Status status;
-
         int versionDifference = latest.compareTo(current);
-
         if (versionDifference == 0) {
             status = UP_TO_DATE;
         } else if (versionDifference < 0) {

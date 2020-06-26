@@ -218,7 +218,7 @@ public class ConfigValues {
         Minecraft mc = Minecraft.getMinecraft();
         if (mc != null) {
             if (mc.getLanguageManager() != null && mc.getLanguageManager().getCurrentLanguage().getLanguageCode() != null) {
-                String minecraftLanguage = Minecraft.getMinecraft().getLanguageManager().getCurrentLanguage().getLanguageCode().toLowerCase();
+                String minecraftLanguage = Minecraft.getMinecraft().getLanguageManager().getCurrentLanguage().getLanguageCode().toLowerCase(Locale.US);
                 Language configLanguage = Language.getFromPath(minecraftLanguage);
                 if (configLanguage != null) { // Check if we have the exact locale they are using for Minecraft
                     language.setValue(configLanguage);

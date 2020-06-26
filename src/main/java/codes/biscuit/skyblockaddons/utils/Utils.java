@@ -423,13 +423,13 @@ public class Utils {
     }
 
     public boolean enchantReforgeMatches(String text) {
-        text = text.toLowerCase();
+        text = text.toLowerCase(Locale.US);
         for (String enchant : enchantmentMatches) {
-            enchant = enchant.trim().toLowerCase();
+            enchant = enchant.trim().toLowerCase(Locale.US);
             if (StringUtil.notEmpty(enchant) && text.contains(enchant)) {
                 boolean foundExclusion = false;
                 for (String exclusion : enchantmentExclusions) {
-                    exclusion = exclusion.trim().toLowerCase();
+                    exclusion = exclusion.trim().toLowerCase(Locale.US);
                     if (StringUtil.notEmpty(exclusion) && text.contains(exclusion)) {
                         foundExclusion = true;
                         break;
@@ -633,7 +633,7 @@ public class Utils {
             int nameEnd = enchantments.get(i).lastIndexOf(' ');
             if (nameEnd < 0) nameEnd = enchantments.get(i).length();
 
-            int key = ORDERED_ENCHANTMENTS.indexOf(enchantments.get(i).substring(0, nameEnd).toLowerCase());
+            int key = ORDERED_ENCHANTMENTS.indexOf(enchantments.get(i).substring(0, nameEnd).toLowerCase(Locale.US));
             if (key < 0) key = 100 + i;
             orderedEnchants.put(key, enchantments.get(i));
         }
