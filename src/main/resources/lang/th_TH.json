@@ -213,6 +213,12 @@
     "titleCustom": "สถานะกำหนดเอง",
     "descriptionCustom": "ใส่สถานะกำหนดเอง",
     "titleAuto": "สถานะอัตโนมัติ",
-    "descriptionAuto": "แสดงสถานะบางอย่างอัตโนมัติ เช่น แสดงจำนวนการฆ่า Zealot ใน The End"
+    "descriptionAuto": "แสดงสถานะบางอย่างอัตโนมัติ เช่น แสดงจำนวนการฆ่า Zealot ใน The End",
+    "titleRevenants": "Revenant Quest",
+    "descriptionRevenants": "Shows that you are doing a Revenant quest.",
+    "titleSvens": "Sven Quest",
+    "descriptionSvens": "Shows that you are doing a Sven quest.",
+    "titleTarantula": "Tarantula Quest",
+    "descriptionTarantula": "Shows that you are doing a Tarantula quest."
   }
 }
