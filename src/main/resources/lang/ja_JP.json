@@ -213,6 +213,12 @@
     "titleCustom": "カスタムステータス",
     "descriptionCustom": "カスタムステータスを入力",
     "titleAuto": "自動ステータス",
-    "descriptionAuto": "ステータスを自動表示する (例: エンドにいる間はゼアロットの討伐数)"
+    "descriptionAuto": "ステータスを自動表示する (例: エンドにいる間はゼアロットの討伐数)",
+    "titleRevenants": "Revenant Quest",
+    "descriptionRevenants": "Shows that you are doing a Revenant quest.",
+    "titleSvens": "Sven Quest",
+    "descriptionSvens": "Shows that you are doing a Sven quest.",
+    "titleTarantula": "Tarantula Quest",
+    "descriptionTarantula": "Shows that you are doing a Tarantula quest."
   }
 }
