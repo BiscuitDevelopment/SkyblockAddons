@@ -124,7 +124,12 @@
     "disableTeleportPadMessages": "Désactiver les messages des téléporteurs",
     "baitListDisplay": "Afficher la liste d'appâts en tenant une canne à pêche",
     "freezeBackpackPreview": "Maintenir l'aperçu du sac à dos ouvert",
-    "hideGreyEnchants": "Masquer les enchantements gris"
+    "hideGreyEnchants": "Masquer les enchantements gris",
+    "zealotCounterExplosiveBow": "Zealot Counter Explosive Bow Support",
+    "disableEndermanTeleportation": "Disable Enderman Teleportation",
+    "changeZealotColor": "Change Zealot Color",
+    "hideSvenPupNametags": "Hide Sven Pup Nametags",
+    "turnAllFeaturesChroma": "Turn All Features Chroma"
   },
   "messages": {
     "dropConfirmation": "Jetez cet objet une nouvelle fois pour confirmer!",
@@ -184,7 +189,9 @@
     "fallbackStatus": "Ce statut apparaîtra quand votre statut automatique n'a rien à afficher",
     "legendarySeaCreatureWarning": "Prise légendaire!",
     "cancelledPark": "Une fonctionnalité vous a empêché de casser ce bloc ici.",
-    "bossApproaching": "Vous êtes sur le point de faire apparaître un boss!"
+    "bossApproaching": "Vous êtes sur le point de faire apparaître un boss!",
+    "enableAll": "Enable All",
+    "disableAll": "Disable All"
   },
   "discordStatus": {
     "titleNone": "Aucun",
