@@ -124,7 +124,12 @@
     "disableTeleportPadMessages": "テレポートパッドのメッセージを無効にする",
     "baitListDisplay": "釣り竿を持っている間は餌リストを表示する",
     "freezeBackpackPreview": "バックパックプレビューを一時停止する",
-    "hideGreyEnchants": "灰色のエンチャント情報を非表示にする"
+    "hideGreyEnchants": "灰色のエンチャント情報を非表示にする",
+    "zealotCounterExplosiveBow": "Zealot Counter Explosive Bow Support",
+    "disableEndermanTeleportation": "Disable Enderman Teleportation",
+    "changeZealotColor": "Change Zealot Color",
+    "hideSvenPupNametags": "Hide Sven Pup Nametags",
+    "turnAllFeaturesChroma": "Turn All Features Chroma"
   },
   "messages": {
     "dropConfirmation": "落としてもいいのであれば、このアイテムをもう一度ドロップしてください。",
@@ -184,7 +189,9 @@
     "fallbackStatus": "自動ステータスが何も表示されない場合に表示されるステータス",
     "legendarySeaCreatureWarning": "レジェンダリー キャッチ!",
     "cancelledPark": "SkyblockAddonsがこのブロックの破壊を阻止しました。",
-    "bossApproaching": "ボスのスポーンが近いです！"
+    "bossApproaching": "ボスのスポーンが近いです！",
+    "enableAll": "Enable All",
+    "disableAll": "Disable All"
   },
   "discordStatus": {
     "titleNone": "無し",
