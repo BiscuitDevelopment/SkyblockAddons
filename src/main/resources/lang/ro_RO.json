@@ -124,7 +124,12 @@
     "disableTeleportPadMessages": "Dezactiveaza Mesaje De Teleportare De La Pad",
     "baitListDisplay": "Arata Lista Bait in timp ce folositi un Rod",
     "freezeBackpackPreview": "Îngheață Previzualizarea Backpack",
-    "hideGreyEnchants": "Ascunde enchantele gri obișnuite"
+    "hideGreyEnchants": "Ascunde enchantele gri obișnuite",
+    "zealotCounterExplosiveBow": "Zealot Counter Explosive Bow Support",
+    "disableEndermanTeleportation": "Disable Enderman Teleportation",
+    "changeZealotColor": "Change Zealot Color",
+    "hideSvenPupNametags": "Hide Sven Pup Nametags",
+    "turnAllFeaturesChroma": "Turn All Features Chroma"
   },
   "messages": {
     "dropConfirmation": "Arunca acest obiect iar ca să confirmi!",
@@ -184,7 +189,9 @@
     "fallbackStatus": "Acest status va apărea atunci când starea automată nu are nimic de afișat",
     "legendarySeaCreatureWarning": "Captură Legendară!",
     "cancelledPark": "O caracteristică te-a oprit din spargerea acestui bloc aici.",
-    "bossApproaching": "Ești aproape să spaunezi un boss!"
+    "bossApproaching": "Ești aproape să spaunezi un boss!",
+    "enableAll": "Enable All",
+    "disableAll": "Disable All"
   },
   "discordStatus": {
     "titleNone": "Nimic",
