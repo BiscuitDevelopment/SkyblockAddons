@@ -125,11 +125,11 @@
     "baitListDisplay": "Mostrar uma lista de baits ao segurar numa vara",
     "freezeBackpackPreview": "Congelar pré-visualização da backpack",
     "hideGreyEnchants": "Esconder encantamentos normais a cinzento",
-    "zealotCounterExplosiveBow": "Zealot Counter Explosive Bow Support",
-    "disableEndermanTeleportation": "Disable Enderman Teleportation",
-    "changeZealotColor": "Change Zealot Color",
-    "hideSvenPupNametags": "Hide Sven Pup Nametags",
-    "turnAllFeaturesChroma": "Turn All Features Chroma"
+    "zealotCounterExplosiveBow": "Suporte para o contador de Zealots com o Explosive Bow",
+    "disableEndermanTeleportation": "Desativar o teleporte dos Endermans",
+    "changeZealotColor": "Mudar a cor dos Zealots",
+    "hideSvenPupNametags": "Esconder o nome dos Sven Pups",
+    "turnAllFeaturesChroma": "Colocar todas as funcionalidades em chroma"
   },
   "messages": {
     "dropConfirmation": "Atira este item outra vez para confirmar!",
@@ -190,8 +190,8 @@
     "legendarySeaCreatureWarning": "Apanhaste uma lendária!",
     "cancelledPark": "Uma funcionalidade preveniu-te de partir este bloco aqui.",
     "bossApproaching": "Estás perto de invocar o boss!",
-    "enableAll": "Enable All",
-    "disableAll": "Disable All"
+    "enableAll": "Ativar todas",
+    "disableAll": "Desativar todas"
   },
   "discordStatus": {
     "titleNone": "Nenhum",
