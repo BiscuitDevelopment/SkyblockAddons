@@ -124,7 +124,12 @@
     "disableTeleportPadMessages": "Zakázat zprávy Teleportačního padu",
     "baitListDisplay": "Zobrazit seznam návnad během držení prutu",
     "freezeBackpackPreview": "Zmrazit náhled batohu",
-    "hideGreyEnchants": "Skrýt obvyklé šedé očarování"
+    "hideGreyEnchants": "Skrýt obvyklé šedé očarování",
+    "zealotCounterExplosiveBow": "Zealot Counter Explosive Bow Support",
+    "disableEndermanTeleportation": "Disable Enderman Teleportation",
+    "changeZealotColor": "Change Zealot Color",
+    "hideSvenPupNametags": "Hide Sven Pup Nametags",
+    "turnAllFeaturesChroma": "Turn All Features Chroma"
   },
   "messages": {
     "dropConfirmation": "Vyhoď tento item pro vyhození!",
@@ -184,7 +189,9 @@
     "fallbackStatus": "Tento status se bude zobrazovat, když tvůj automatický status nemá nic k zobrazení",
     "legendarySeaCreatureWarning": "Legendární úlovek!",
     "cancelledPark": "Funkce SkyblockAddons tě zastavila před zničením tohoto bloku.",
-    "bossApproaching": "Jsi blízko k vyvolání bosse!"
+    "bossApproaching": "Jsi blízko k vyvolání bosse!",
+    "enableAll": "Enable All",
+    "disableAll": "Disable All"
   },
   "discordStatus": {
     "titleNone": "Žádné",
