@@ -128,7 +128,7 @@
     "zealotCounterExplosiveBow": "Zealot Counter Explosive Bow Support",
     "disableEndermanTeleportation": "Disable Enderman Teleportation",
     "changeZealotColor": "Change Zealot Color",
-    "hideSvenPupNametags": "Hide Sven Pup Nametags",
+    "hideSvenPupNametags": "Nascondi i nomi dei cuccioli Sven",
     "turnAllFeaturesChroma": "Turn All Features Chroma"
   },
   "messages": {
@@ -190,8 +190,8 @@
     "legendarySeaCreatureWarning": "Pesca Leggendaria!",
     "cancelledPark": "Una funzione ti ha impedito di rompere questo blocco.",
     "bossApproaching": "Stai per dare vita ad un boss!",
-    "enableAll": "Enable All",
-    "disableAll": "Disable All"
+    "enableAll": "Attiva tutto",
+    "disableAll": "Disabilita tutto"
   },
   "discordStatus": {
     "titleNone": "Nessuno",
@@ -213,6 +213,12 @@
     "titleCustom": "Stato personalizzato",
     "descriptionCustom": "Inserisci uno stato personalizzato",
     "titleAuto": "Stato automatico",
-    "descriptionAuto": "Mostra automaticamente uno stato. Ad esempio: il tuo conteggio di zealots mentre sei nell’end."
+    "descriptionAuto": "Mostra automaticamente uno stato. Ad esempio: il tuo conteggio di zealots mentre sei nell’end.",
+    "titleRevenants": "Revenant Quest",
+    "descriptionRevenants": "Shows that you are doing a Revenant quest.",
+    "titleSvens": "Sven Quest",
+    "descriptionSvens": "Shows that you are doing a Sven quest.",
+    "titleTarantula": "Tarantula Quest",
+    "descriptionTarantula": "Shows that you are doing a Tarantula quest."
   }
 }
