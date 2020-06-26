@@ -124,7 +124,12 @@
     "disableTeleportPadMessages": "Teleport Pad Mesajlarını Devre Dışı Bırak",
     "baitListDisplay": "Olta Tutarken Yem Listesi Göster",
     "freezeBackpackPreview": "Çanta önizlemesini dondur",
-    "hideGreyEnchants": "Normal gri büyüleri gizle"
+    "hideGreyEnchants": "Normal gri büyüleri gizle",
+    "zealotCounterExplosiveBow": "Zealot Counter Explosive Bow Support",
+    "disableEndermanTeleportation": "Disable Enderman Teleportation",
+    "changeZealotColor": "Change Zealot Color",
+    "hideSvenPupNametags": "Hide Sven Pup Nametags",
+    "turnAllFeaturesChroma": "Turn All Features Chroma"
   },
   "messages": {
     "dropConfirmation": "Eşyayı düşürmeyi onaylamak için düşürme tuşuna bir daha bas!",
@@ -184,7 +189,9 @@
     "fallbackStatus": "Bu durum otomatik durumunuzun gösterecek bir şeyi olmadığında gözükecek",
     "legendarySeaCreatureWarning": "Efsanevi Yakaladın!",
     "cancelledPark": "Bir özellik bu bloğu kırmanızı engelledi.",
-    "bossApproaching": "Boss spawnlamak üzeresiniz!"
+    "bossApproaching": "Boss spawnlamak üzeresiniz!",
+    "enableAll": "Enable All",
+    "disableAll": "Disable All"
   },
   "discordStatus": {
     "titleNone": "Hiçbiri",
