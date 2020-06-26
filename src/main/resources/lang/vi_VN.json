@@ -213,6 +213,12 @@
     "titleCustom": "Tùy chỉnh Trạng thái",
     "descriptionCustom": "Viết trạng thái bạn muốn!",
     "titleAuto": "Trạng thái tự động",
-    "descriptionAuto": "Tự viết trạng thái. (Ví dụ: Nó sẽ hiện Bộ đếm Zealot của bạn khi bạn ở The End.)"
+    "descriptionAuto": "Tự viết trạng thái. (Ví dụ: Nó sẽ hiện Bộ đếm Zealot của bạn khi bạn ở The End.)",
+    "titleRevenants": "Revenant Quest",
+    "descriptionRevenants": "Shows that you are doing a Revenant quest.",
+    "titleSvens": "Sven Quest",
+    "descriptionSvens": "Shows that you are doing a Sven quest.",
+    "titleTarantula": "Tarantula Quest",
+    "descriptionTarantula": "Shows that you are doing a Tarantula quest."
   }
 }
