@@ -124,7 +124,12 @@
     "disableTeleportPadMessages": "ปิดข้อความของ Teleport Pad",
     "baitListDisplay": "แสดงเหยื่อตกปลาเมื่อถือเบ็ตตกปลา",
     "freezeBackpackPreview": "แสดงของข้างในกระเป๋าเมื่อกดดู",
-    "hideGreyEnchants": "ลบ Enchants สีเทาปกติ"
+    "hideGreyEnchants": "ลบ Enchants สีเทาปกติ",
+    "zealotCounterExplosiveBow": "Zealot Counter Explosive Bow Support",
+    "disableEndermanTeleportation": "Disable Enderman Teleportation",
+    "changeZealotColor": "Change Zealot Color",
+    "hideSvenPupNametags": "Hide Sven Pup Nametags",
+    "turnAllFeaturesChroma": "Turn All Features Chroma"
   },
   "messages": {
     "dropConfirmation": "กดทิ้งของอีกที่เพื่อยืนยันทิ้งของสิ่งนี้!",
@@ -184,7 +189,9 @@
     "fallbackStatus": "สถานะนี้จะแสดงโดยอัตโนมัติเมื่อไม่มีอะไรให้แสดง",
     "legendarySeaCreatureWarning": "จับตำนานได้",
     "cancelledPark": "SkyblockAddons ได้หยุดคุณจากการขุดบล็อคตรงนี้",
-    "bossApproaching": "บอสของคุณใกล้จะเกิดแล้ว"
+    "bossApproaching": "บอสของคุณใกล้จะเกิดแล้ว",
+    "enableAll": "Enable All",
+    "disableAll": "Disable All"
   },
   "discordStatus": {
     "titleNone": "ไม่มี",
