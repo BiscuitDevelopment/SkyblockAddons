@@ -124,7 +124,12 @@
     "disableTeleportPadMessages": "Disable Teleport Pad Messages",
     "baitListDisplay": "Show Bait List While Holding a Rod",
     "freezeBackpackPreview": "הקפא תכולת תרמיל גב",
-    "hideGreyEnchants": "הסתר כישופים אפורים רגילים"
+    "hideGreyEnchants": "הסתר כישופים אפורים רגילים",
+    "zealotCounterExplosiveBow": "Zealot Counter Explosive Bow Support",
+    "disableEndermanTeleportation": "Disable Enderman Teleportation",
+    "changeZealotColor": "Change Zealot Color",
+    "hideSvenPupNametags": "Hide Sven Pup Nametags",
+    "turnAllFeaturesChroma": "Turn All Features Chroma"
   },
   "messages": {
     "dropConfirmation": "זרוק פריט זה שוב לאישור!",
@@ -184,7 +189,9 @@
     "fallbackStatus": "This status will appear when your automatic status has nothing to show",
     "legendarySeaCreatureWarning": "תפיסה אגדית!",
     "cancelledPark": "פיטצ'ר מנע ממך לשבור את הבלוק הזה כאן.",
-    "bossApproaching": "אתה קרוב לזימון הבוס!"
+    "bossApproaching": "אתה קרוב לזימון הבוס!",
+    "enableAll": "Enable All",
+    "disableAll": "Disable All"
   },
   "discordStatus": {
     "titleNone": "ללא",
