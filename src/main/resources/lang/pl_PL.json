@@ -125,11 +125,11 @@
     "baitListDisplay": "Pokazuj listę przynęt podczas trzymania wędki",
     "freezeBackpackPreview": "Zamróź podgląd plecaka",
     "hideGreyEnchants": "Ukryj zwyczajne szare zaklęcia",
-    "zealotCounterExplosiveBow": "Zealot Counter Explosive Bow Support",
-    "disableEndermanTeleportation": "Disable Enderman Teleportation",
-    "changeZealotColor": "Change Zealot Color",
-    "hideSvenPupNametags": "Hide Sven Pup Nametags",
-    "turnAllFeaturesChroma": "Turn All Features Chroma"
+    "zealotCounterExplosiveBow": "Wsparcie Licznika Zealotów Dla Wybuchowego Łuku",
+    "disableEndermanTeleportation": "Wyłącz Teleportację Endermanów",
+    "changeZealotColor": "Zmień Kolor Zealotów",
+    "hideSvenPupNametags": "Ukryj Nazwy Szczeniaków Svena",
+    "turnAllFeaturesChroma": "Ustaw Wszystkie Funkcje Na Tryb Chroma"
   },
   "messages": {
     "dropConfirmation": "Wyrzuć ten przedmiot ponownie, aby potwierdzić!",
@@ -190,8 +190,8 @@
     "legendarySeaCreatureWarning": "Legendarne złapanie!",
     "cancelledPark": "Funkcja Skyblock Addons powstrzymała cię od wykopania tego bloku.",
     "bossApproaching": "Jesteś bliski przywołania bossa!",
-    "enableAll": "Enable All",
-    "disableAll": "Disable All"
+    "enableAll": "Włącz Wszystko",
+    "disableAll": "Wyłącz Wszystko"
   },
   "discordStatus": {
     "titleNone": "Brak",
@@ -213,6 +213,12 @@
     "titleCustom": "Własny status",
     "descriptionCustom": "Wprowadź własny status",
     "titleAuto": "Domyślny status",
-    "descriptionAuto": "Automatycznie wyświetla status. Np. liczba zealotów, gdy jesteś w Kresie."
+    "descriptionAuto": "Automatycznie wyświetla status. Np. liczba zealotów, gdy jesteś w Kresie.",
+    "titleRevenants": "Revenant Quest",
+    "descriptionRevenants": "Shows that you are doing a Revenant quest.",
+    "titleSvens": "Sven Quest",
+    "descriptionSvens": "Shows that you are doing a Sven quest.",
+    "titleTarantula": "Tarantula Quest",
+    "descriptionTarantula": "Shows that you are doing a Tarantula quest."
   }
 }
