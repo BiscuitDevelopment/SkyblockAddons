@@ -124,7 +124,12 @@
     "disableTeleportPadMessages": "Teleporteer Pad Berichten Uitschakelen",
     "baitListDisplay": "Toon de Aas Lijst Terwijl een Vishengel Word Vastgehouden",
     "freezeBackpackPreview": "Bevries Rugzak Voorbeeld",
-    "hideGreyEnchants": "Verberg Normale Grijze Betoveringen"
+    "hideGreyEnchants": "Verberg Normale Grijze Betoveringen",
+    "zealotCounterExplosiveBow": "Zealot Counter Explosive Bow Support",
+    "disableEndermanTeleportation": "Disable Enderman Teleportation",
+    "changeZealotColor": "Change Zealot Color",
+    "hideSvenPupNametags": "Hide Sven Pup Nametags",
+    "turnAllFeaturesChroma": "Turn All Features Chroma"
   },
   "messages": {
     "dropConfirmation": "Laat dit object opnieuw vallen om te Bevestigen!",
@@ -184,7 +189,9 @@
     "fallbackStatus": "Deze status wordt weergegeven als je automatische status niets weer te geven heeft",
     "legendarySeaCreatureWarning": "Legendarische Vangst!",
     "cancelledPark": "Een functie heeft u ervan weerhouden om dit blok te breken.",
-    "bossApproaching": "Je bent dicht bij het spawnen van een baas!"
+    "bossApproaching": "Je bent dicht bij het spawnen van een baas!",
+    "enableAll": "Enable All",
+    "disableAll": "Disable All"
   },
   "discordStatus": {
     "titleNone": "Geen",
