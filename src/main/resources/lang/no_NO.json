@@ -214,11 +214,11 @@
     "descriptionCustom": "Enter a custom status",
     "titleAuto": "Auto Status",
     "descriptionAuto": "Automatically displays a status. E.g. your zealot count while in the end.",
-    "titleRevenants": "Revenant Quest",
-    "descriptionRevenants": "Shows that you are doing a Revenant quest.",
-    "titleSvens": "Sven Quest",
-    "descriptionSvens": "Shows that you are doing a Sven quest.",
-    "titleTarantula": "Tarantula Quest",
-    "descriptionTarantula": "Shows that you are doing a Tarantula quest."
+    "titleRevenants": "Revenant Oppdrag",
+    "descriptionRevenants": "Viser at du gjør et Revenant oppdrag.",
+    "titleSvens": "Sven Oppdrag",
+    "descriptionSvens": "Viser at du gjør et Sven oppdrag.",
+    "titleTarantula": "Tarantula Oppdrag",
+    "descriptionTarantula": "Viser at du gjør et Tarantula oppdrag."
   }
 }
