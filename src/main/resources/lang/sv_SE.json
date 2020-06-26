@@ -213,6 +213,12 @@
     "titleCustom": "Anpassad status",
     "descriptionCustom": "Ange en anpassad status",
     "titleAuto": "Automatisk status",
-    "descriptionAuto": "Automatically displays a status. E.g. your zealot count while in the end."
+    "descriptionAuto": "Automatically displays a status. E.g. your zealot count while in the end.",
+    "titleRevenants": "Revenant Quest",
+    "descriptionRevenants": "Shows that you are doing a Revenant quest.",
+    "titleSvens": "Sven Quest",
+    "descriptionSvens": "Shows that you are doing a Sven quest.",
+    "titleTarantula": "Tarantula Quest",
+    "descriptionTarantula": "Shows that you are doing a Tarantula quest."
   }
 }
