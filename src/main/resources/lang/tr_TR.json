@@ -125,9 +125,9 @@
     "baitListDisplay": "Olta Tutarken Yem Listesi Göster",
     "freezeBackpackPreview": "Çanta önizlemesini dondur",
     "hideGreyEnchants": "Normal gri büyüleri gizle",
-    "zealotCounterExplosiveBow": "Zealot Counter Explosive Bow Support",
-    "disableEndermanTeleportation": "Disable Enderman Teleportation",
-    "changeZealotColor": "Change Zealot Color",
+    "zealotCounterExplosiveBow": "Zealot sayacı patlayıcı yay desteği",
+    "disableEndermanTeleportation": "Enderman ışınlanması engelle",
+    "changeZealotColor": "Zealot rengini değiştir",
     "hideSvenPupNametags": "Hide Sven Pup Nametags",
     "turnAllFeaturesChroma": "Turn All Features Chroma"
   },
@@ -213,6 +213,12 @@
     "titleCustom": "Özel Durum",
     "descriptionCustom": "Özel Durum Girin",
     "titleAuto": "Oto Durum",
-    "descriptionAuto": "Otomatik olarak bir durum gösterir. Örn. Enddeyken öldürdüğünüz zealot sayısı."
+    "descriptionAuto": "Otomatik olarak bir durum gösterir. Örn. Enddeyken öldürdüğünüz zealot sayısı.",
+    "titleRevenants": "Revenant Quest",
+    "descriptionRevenants": "Shows that you are doing a Revenant quest.",
+    "titleSvens": "Sven Quest",
+    "descriptionSvens": "Shows that you are doing a Sven quest.",
+    "titleTarantula": "Tarantula Quest",
+    "descriptionTarantula": "Shows that you are doing a Tarantula quest."
   }
 }
