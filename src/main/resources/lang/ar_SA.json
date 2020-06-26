@@ -125,11 +125,11 @@
     "baitListDisplay": "إظهار قائمة طعم الاسماك أثناء حمل الصنارة",
     "freezeBackpackPreview": "تجميد محتوى حقيبة الظهر",
     "hideGreyEnchants": "اخفاء التطويرات الرمادية العادية",
-    "zealotCounterExplosiveBow": "Zealot Counter Explosive Bow Support",
-    "disableEndermanTeleportation": "Disable Enderman Teleportation",
-    "changeZealotColor": "Change Zealot Color",
-    "hideSvenPupNametags": "Hide Sven Pup Nametags",
-    "turnAllFeaturesChroma": "Turn All Features Chroma"
+    "zealotCounterExplosiveBow": "عداد الزيلوت يدعم القوس المتفجر",
+    "disableEndermanTeleportation": "ايقاف انتقال الاندرمان",
+    "changeZealotColor": "تغيير لون الزيلوت",
+    "hideSvenPupNametags": "اخفاء اسماء جراء سفين",
+    "turnAllFeaturesChroma": "تشغيل جميع الميزات Chroma"
   },
   "messages": {
     "dropConfirmation": "!إرمي هذا العنصر مرة أخرى للتأكيد",
@@ -190,8 +190,8 @@
     "legendarySeaCreatureWarning": "التقاط اسطوري!",
     "cancelledPark": "لقد منعتك ميزة من كسر هذا المعدن هنا.",
     "bossApproaching": "أنت قريبة من توليد رئيس!",
-    "enableAll": "Enable All",
-    "disableAll": "Disable All"
+    "enableAll": "تشغيل الكل",
+    "disableAll": "تعطيل الكل"
   },
   "discordStatus": {
     "titleNone": "لا شيء",
@@ -214,11 +214,11 @@
     "descriptionCustom": "أدخل حالة مخصصة",
     "titleAuto": "حالة تلقائية",
     "descriptionAuto": "يعرض تلقائياً حالة. على سبيل المثال عداد الزيلوتس أثناء وجودك في النهاية.",
-    "titleRevenants": "Revenant Quest",
-    "descriptionRevenants": "Shows that you are doing a Revenant quest.",
-    "titleSvens": "Sven Quest",
-    "descriptionSvens": "Shows that you are doing a Sven quest.",
-    "titleTarantula": "Tarantula Quest",
-    "descriptionTarantula": "Shows that you are doing a Tarantula quest."
+    "titleRevenants": "مهمة الريفينانت",
+    "descriptionRevenants": "تظهر انك تقوم بمهمة الريفينانت.",
+    "titleSvens": "مهمة سفين",
+    "descriptionSvens": "تظهر انك تقوم بمهمة سفين.",
+    "titleTarantula": "مهمة الترانتشولا",
+    "descriptionTarantula": "تظهر انك تقوم بمهمة الترانتشولا."
   }
 }
