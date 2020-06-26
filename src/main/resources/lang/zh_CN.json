@@ -125,11 +125,11 @@
     "baitListDisplay": "手持钓竿时显示鱼饵列表",
     "freezeBackpackPreview": "冻结背包预览",
     "hideGreyEnchants": "隐藏原版灰色附魔名",
-    "zealotCounterExplosiveBow": "Zealot Counter Explosive Bow Support",
-    "disableEndermanTeleportation": "Disable Enderman Teleportation",
-    "changeZealotColor": "Change Zealot Color",
-    "hideSvenPupNametags": "Hide Sven Pup Nametags",
-    "turnAllFeaturesChroma": "Turn All Features Chroma"
+    "zealotCounterExplosiveBow": "末影战士击杀计数 - 爆炸弓击杀",
+    "disableEndermanTeleportation": "禁用末影人传送",
+    "changeZealotColor": "更改末影战士的颜色",
+    "hideSvenPupNametags": "隐藏 Sven Pup 的名称标签",
+    "turnAllFeaturesChroma": "为所有功能启用渐变色"
   },
   "messages": {
     "dropConfirmation": "再次丢弃此物品以确认!",
@@ -190,8 +190,8 @@
     "legendarySeaCreatureWarning": "传奇钓落!",
     "cancelledPark": "SkyblockAddons 已阻止在此破坏方块",
     "bossApproaching": "猎手 Boss 即将生成!",
-    "enableAll": "Enable All",
-    "disableAll": "Disable All"
+    "enableAll": "全部启用",
+    "disableAll": "全部禁用"
   },
   "discordStatus": {
     "titleNone": "无",
@@ -213,6 +213,12 @@
     "titleCustom": "自定义状态",
     "descriptionCustom": "输入自定义状态",
     "titleAuto": "随机状态",
-    "descriptionAuto": "随机显示某一状态， 如在末地时显示末影战士击杀数。"
+    "descriptionAuto": "随机显示某一状态， 如在末地时显示末影战士击杀数。",
+    "titleRevenants": "Revenant Quest",
+    "descriptionRevenants": "Shows that you are doing a Revenant quest.",
+    "titleSvens": "Sven Quest",
+    "descriptionSvens": "Shows that you are doing a Sven quest.",
+    "titleTarantula": "Tarantula Quest",
+    "descriptionTarantula": "Shows that you are doing a Tarantula quest."
   }
 }
