@@ -124,7 +124,12 @@
     "disableTeleportPadMessages": "禁用传送平台消息",
     "baitListDisplay": "手持钓竿时显示鱼饵列表",
     "freezeBackpackPreview": "冻结背包预览",
-    "hideGreyEnchants": "隐藏原版灰色附魔名"
+    "hideGreyEnchants": "隐藏原版灰色附魔名",
+    "zealotCounterExplosiveBow": "Zealot Counter Explosive Bow Support",
+    "disableEndermanTeleportation": "Disable Enderman Teleportation",
+    "changeZealotColor": "Change Zealot Color",
+    "hideSvenPupNametags": "Hide Sven Pup Nametags",
+    "turnAllFeaturesChroma": "Turn All Features Chroma"
   },
   "messages": {
     "dropConfirmation": "再次丢弃此物品以确认!",
@@ -184,7 +189,9 @@
     "fallbackStatus": "当自动状态没有显示时，此状态将会显示",
     "legendarySeaCreatureWarning": "传奇钓落!",
     "cancelledPark": "SkyblockAddons 已阻止在此破坏方块",
-    "bossApproaching": "猎手 Boss 即将生成!"
+    "bossApproaching": "猎手 Boss 即将生成!",
+    "enableAll": "Enable All",
+    "disableAll": "Disable All"
   },
   "discordStatus": {
     "titleNone": "无",
