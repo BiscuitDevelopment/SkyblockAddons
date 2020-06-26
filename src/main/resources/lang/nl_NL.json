@@ -213,6 +213,12 @@
     "titleCustom": "Aangepaste Status",
     "descriptionCustom": "Voer een aangepaste status in",
     "titleAuto": "Automatische Status",
-    "descriptionAuto": "Geeft automatisch een status weer. Bijvoorbeeld je zealot aantal terwijl in the end."
+    "descriptionAuto": "Geeft automatisch een status weer. Bijvoorbeeld je zealot aantal terwijl in the end.",
+    "titleRevenants": "Revenant Quest",
+    "descriptionRevenants": "Shows that you are doing a Revenant quest.",
+    "titleSvens": "Sven Quest",
+    "descriptionSvens": "Shows that you are doing a Sven quest.",
+    "titleTarantula": "Tarantula Quest",
+    "descriptionTarantula": "Shows that you are doing a Tarantula quest."
   }
 }
