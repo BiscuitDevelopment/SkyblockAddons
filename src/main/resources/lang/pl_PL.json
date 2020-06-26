@@ -124,7 +124,12 @@
     "disableTeleportPadMessages": "Wyłącz komunikaty płytek teleportujących",
     "baitListDisplay": "Pokazuj listę przynęt podczas trzymania wędki",
     "freezeBackpackPreview": "Zamróź podgląd plecaka",
-    "hideGreyEnchants": "Ukryj zwyczajne szare zaklęcia"
+    "hideGreyEnchants": "Ukryj zwyczajne szare zaklęcia",
+    "zealotCounterExplosiveBow": "Zealot Counter Explosive Bow Support",
+    "disableEndermanTeleportation": "Disable Enderman Teleportation",
+    "changeZealotColor": "Change Zealot Color",
+    "hideSvenPupNametags": "Hide Sven Pup Nametags",
+    "turnAllFeaturesChroma": "Turn All Features Chroma"
   },
   "messages": {
     "dropConfirmation": "Wyrzuć ten przedmiot ponownie, aby potwierdzić!",
@@ -184,7 +189,9 @@
     "fallbackStatus": "Ten status pojawi się, jak twój automatyczny status nie pojawi się",
     "legendarySeaCreatureWarning": "Legendarne złapanie!",
     "cancelledPark": "Funkcja Skyblock Addons powstrzymała cię od wykopania tego bloku.",
-    "bossApproaching": "Jesteś bliski przywołania bossa!"
+    "bossApproaching": "Jesteś bliski przywołania bossa!",
+    "enableAll": "Enable All",
+    "disableAll": "Disable All"
   },
   "discordStatus": {
     "titleNone": "Brak",
