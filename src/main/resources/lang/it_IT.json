@@ -124,7 +124,12 @@
     "disableTeleportPadMessages": "Disabilita i messaggi delle pedane di teletrasporto",
     "baitListDisplay": "Mostra la lista delle esche tenendo in mano una canna",
     "freezeBackpackPreview": "Congela l’anteprima degli zaini",
-    "hideGreyEnchants": "Nascondi gli incantesimi grigi regolari"
+    "hideGreyEnchants": "Nascondi gli incantesimi grigi regolari",
+    "zealotCounterExplosiveBow": "Zealot Counter Explosive Bow Support",
+    "disableEndermanTeleportation": "Disable Enderman Teleportation",
+    "changeZealotColor": "Change Zealot Color",
+    "hideSvenPupNametags": "Hide Sven Pup Nametags",
+    "turnAllFeaturesChroma": "Turn All Features Chroma"
   },
   "messages": {
     "dropConfirmation": "Getta questo oggetto nuovamente per confermare!",
@@ -184,7 +189,9 @@
     "fallbackStatus": "Questo stato apparirà quando il tuo stato automatico non avrà nulla da mostrare",
     "legendarySeaCreatureWarning": "Pesca Leggendaria!",
     "cancelledPark": "Una funzione ti ha impedito di rompere questo blocco.",
-    "bossApproaching": "Stai per dare vita ad un boss!"
+    "bossApproaching": "Stai per dare vita ad un boss!",
+    "enableAll": "Enable All",
+    "disableAll": "Disable All"
   },
   "discordStatus": {
     "titleNone": "Nessuno",
