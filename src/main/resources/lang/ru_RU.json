@@ -213,6 +213,12 @@
     "titleCustom": "Пользовательский Статус",
     "descriptionCustom": "Введите Пользовательский Статус",
     "titleAuto": "Автостатус",
-    "descriptionAuto": "Автоматически отображает статус, например количество зеалотов в Энде."
+    "descriptionAuto": "Автоматически отображает статус, например количество зеалотов в Энде.",
+    "titleRevenants": "Revenant Quest",
+    "descriptionRevenants": "Shows that you are doing a Revenant quest.",
+    "titleSvens": "Sven Quest",
+    "descriptionSvens": "Shows that you are doing a Sven quest.",
+    "titleTarantula": "Tarantula Quest",
+    "descriptionTarantula": "Shows that you are doing a Tarantula quest."
   }
 }
