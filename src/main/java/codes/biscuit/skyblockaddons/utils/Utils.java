@@ -216,6 +216,7 @@ public class Utils {
         boolean foundJerryWave = false;
         boolean foundAlphaIP = false;
         boolean foundInDungeon = false;
+        boolean foundSkyblockTitle = false;
         Minecraft mc = Minecraft.getMinecraft();
 
         if (mc != null && mc.theWorld != null && !mc.isSingleplayer() && isOnHypixel()) {
@@ -224,28 +225,18 @@ public class Utils {
 
             if (sidebarObjective != null) {
                 String objectiveName = TextUtils.stripColor(sidebarObjective.getDisplayName());
-                boolean isSkyblockScoreboard = false;
 
                 for (String skyblock : SKYBLOCK_IN_ALL_LANGUAGES) {
                     if (objectiveName.startsWith(skyblock)) {
-                        isSkyblockScoreboard = true;
+                        foundSkyblockTitle = true;
                         break;
                     }
                 }
 
-                // Copied from SkyblockLib, should be removed when we switch to use that
-                if (isSkyblockScoreboard) {
-                    // If it's a Skyblock scoreboard and the player has not joined Skyblock yet,
-                    // this indicates that he did so.
-                    if(!this.isOnSkyblock()) {
-                        MinecraftForge.EVENT_BUS.post(new SkyblockJoinedEvent());
-                    }
-                } else {
-                    // If it's not a Skyblock scoreboard, the player must have left Skyblock and
-                    // be in some other Hypixel lobby or game.
-                    if(this.isOnSkyblock()) {
-                        MinecraftForge.EVENT_BUS.post(new SkyblockLeftEvent());
-                    }
+                // If it's a Skyblock scoreboard and the player has not joined Skyblock yet,
+                // this indicates that he did so.
+                if (foundSkyblockTitle && !this.isOnSkyblock()) {
+                    MinecraftForge.EVENT_BUS.post(new SkyblockJoinedEvent());
                 }
 
                 Collection<Score> scoreboardLines = scoreboard.getSortedScores(sidebarObjective);
@@ -354,6 +345,11 @@ public class Utils {
         }
         if (!foundInDungeon) {
             inDungeon = false;
+        }
+        if (!foundSkyblockTitle && this.isOnSkyblock()) {
+            // If it's not a Skyblock scoreboard, the player must have left Skyblock and
+            // be in some other Hypixel lobby or game.
+            MinecraftForge.EVENT_BUS.post(new SkyblockLeftEvent());
         }
     }
 
