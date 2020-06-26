@@ -125,11 +125,11 @@
     "baitListDisplay": "Zobrazit seznam návnad během držení prutu",
     "freezeBackpackPreview": "Zmrazit náhled batohu",
     "hideGreyEnchants": "Skrýt obvyklé šedé očarování",
-    "zealotCounterExplosiveBow": "Zealot Counter Explosive Bow Support",
-    "disableEndermanTeleportation": "Disable Enderman Teleportation",
-    "changeZealotColor": "Change Zealot Color",
-    "hideSvenPupNametags": "Hide Sven Pup Nametags",
-    "turnAllFeaturesChroma": "Turn All Features Chroma"
+    "zealotCounterExplosiveBow": "Podpora pro počítadlo Zealotů zabitých pomocí Výbušného luku",
+    "disableEndermanTeleportation": "Zakázat teleportaci Endermanů",
+    "changeZealotColor": "Změnit barvu Zealotů",
+    "hideSvenPupNametags": "Skrýt jmenovky Svenových štěňat",
+    "turnAllFeaturesChroma": "Nastavit všechny funkce na styl měnění barev"
   },
   "messages": {
     "dropConfirmation": "Vyhoď tento item pro vyhození!",
@@ -190,8 +190,8 @@
     "legendarySeaCreatureWarning": "Legendární úlovek!",
     "cancelledPark": "Funkce SkyblockAddons tě zastavila před zničením tohoto bloku.",
     "bossApproaching": "Jsi blízko k vyvolání bosse!",
-    "enableAll": "Enable All",
-    "disableAll": "Disable All"
+    "enableAll": "Povolit vše",
+    "disableAll": "Zakázat vše"
   },
   "discordStatus": {
     "titleNone": "Žádné",
@@ -213,6 +213,12 @@
     "titleCustom": "Vlastní status",
     "descriptionCustom": "Zadej vlastní status",
     "titleAuto": "Automatický status",
-    "descriptionAuto": "Automaticky zobrazí status. Např. tvoje počítadlo zealotů v endu."
+    "descriptionAuto": "Automaticky zobrazí status. Např. tvoje počítadlo zealotů v endu.",
+    "titleRevenants": "Revenant Quest",
+    "descriptionRevenants": "Shows that you are doing a Revenant quest.",
+    "titleSvens": "Sven Quest",
+    "descriptionSvens": "Shows that you are doing a Sven quest.",
+    "titleTarantula": "Tarantula Quest",
+    "descriptionTarantula": "Shows that you are doing a Tarantula quest."
   }
 }
