@@ -124,7 +124,12 @@
     "disableTeleportPadMessages": "Disable Teleport Pad Messages",
     "baitListDisplay": "Show Bait List While Holding a Rod",
     "freezeBackpackPreview": "Freeze Backpack Preview",
-    "hideGreyEnchants": "Hide Regular Grey Enchants"
+    "hideGreyEnchants": "Hide Regular Grey Enchants",
+    "zealotCounterExplosiveBow": "Zealot Counter Explosive Bow Support",
+    "disableEndermanTeleportation": "Disable Enderman Teleportation",
+    "changeZealotColor": "Change Zealot Color",
+    "hideSvenPupNametags": "Hide Sven Pup Nametags",
+    "turnAllFeaturesChroma": "Turn All Features Chroma"
   },
   "messages": {
     "dropConfirmation": "Slipp denne gjenstanden igjen for å bekrefte!",
@@ -184,7 +189,9 @@
     "fallbackStatus": "This status will appear when your automatic status has nothing to show",
     "legendarySeaCreatureWarning": "Legendary Catch!",
     "cancelledPark": "A feature has stopped you from breaking this block here.",
-    "bossApproaching": "You are close to spawning a boss!"
+    "bossApproaching": "You are close to spawning a boss!",
+    "enableAll": "Enable All",
+    "disableAll": "Disable All"
   },
   "discordStatus": {
     "titleNone": "None",
