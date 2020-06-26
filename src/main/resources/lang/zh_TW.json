@@ -124,7 +124,12 @@
     "disableTeleportPadMessages": "消除傳送平台訊息",
     "baitListDisplay": "手持釣竿時顯示魚餌列表",
     "freezeBackpackPreview": "維持背包預覽",
-    "hideGreyEnchants": "隱藏原版說明欄灰色附魔"
+    "hideGreyEnchants": "隱藏原版說明欄灰色附魔",
+    "zealotCounterExplosiveBow": "Zealot Counter Explosive Bow Support",
+    "disableEndermanTeleportation": "Disable Enderman Teleportation",
+    "changeZealotColor": "Change Zealot Color",
+    "hideSvenPupNametags": "Hide Sven Pup Nametags",
+    "turnAllFeaturesChroma": "Turn All Features Chroma"
   },
   "messages": {
     "dropConfirmation": "再次丟棄此物品以確認!",
@@ -184,7 +189,9 @@
     "fallbackStatus": "這個狀態將會在自動狀態沒有東西顯示時出現",
     "legendarySeaCreatureWarning": "傳說一釣!",
     "cancelledPark": "一個功能阻止了你破壞此方塊",
-    "bossApproaching": "你正在逼近Boss的生成!"
+    "bossApproaching": "你正在逼近Boss的生成!",
+    "enableAll": "Enable All",
+    "disableAll": "Disable All"
   },
   "discordStatus": {
     "titleNone": "無",
