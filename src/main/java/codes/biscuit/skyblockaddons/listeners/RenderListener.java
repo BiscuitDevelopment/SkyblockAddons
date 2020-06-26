@@ -1301,6 +1301,9 @@ public class RenderListener {
 
         int maxHealth = main.getUtils().getAttributes().get(Attribute.MAX_HEALTH).getValue();
         double healthRegen = maxHealth * powerOrb.getHealthRegen();
+        if (main.getUtils().getSlayerQuest() == EnumUtils.SlayerQuest.TARANTULA_BROODFATHER && main.getUtils().getSlayerQuestLevel() >= 2) {
+            healthRegen *= 0.5; // Tarantula boss 2+ reduces healing by 50%.
+        }
         double healIncrease = powerOrb.getHealIncrease() * 100;
 
         List<String> display = new LinkedList<>();

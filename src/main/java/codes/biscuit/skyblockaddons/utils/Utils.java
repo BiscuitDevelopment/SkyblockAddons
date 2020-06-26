@@ -77,6 +77,8 @@ public class Utils {
 
     private static final Pattern SERVER_REGEX = Pattern.compile("([0-9]{2}/[0-9]{2}/[0-9]{2}) (mini[0-9]{1,3}[A-Za-z])");
     private static final Pattern PURSE_REGEX = Pattern.compile("(?:Purse|Piggy): (?<coins>[0-9.]*)(?: .*)?");
+    private static final Pattern SLAYER_TYPE_REGEX = Pattern.compile("(?<type>Tarantula Broodfather|Revenant Horror|Sven Packmaster) (?<level>[IV]+)");
+    private static final Pattern SLAYER_PROGRESS_REGEX = Pattern.compile("(?<progress>[0-9.k]*)/(?<total>[0-9.k]*) (?:Kills|Combat XP)$");
 
     /** In English, Chinese Simplified. */
     private static final Set<String> SKYBLOCK_IN_ALL_LANGUAGES = Sets.newHashSet("SKYBLOCK","\u7A7A\u5C9B\u751F\u5B58");
@@ -137,6 +139,10 @@ public class Utils {
     private URI featuredLink = null;
 
     private long lastDamaged = -1;
+
+    private EnumUtils.SlayerQuest slayerQuest = null;
+    private int slayerQuestLevel = 1;
+    private boolean slayerBossAlive = false ;
 
     private SkyblockAddons main;
     private Logger logger;
@@ -216,6 +222,8 @@ public class Utils {
         boolean foundJerryWave = false;
         boolean foundAlphaIP = false;
         boolean foundInDungeon = false;
+        boolean foundSlayerQuest = false;
+        boolean foundBossAlive = false;
         boolean foundSkyblockTitle = false;
         Minecraft mc = Minecraft.getMinecraft();
 
@@ -330,6 +338,30 @@ public class Utils {
                         foundInDungeon = true;
                         inDungeon = true;
                     }
+
+                    matcher = SLAYER_TYPE_REGEX.matcher(strippedLine);
+                    if (matcher.matches()) {
+                        String type = matcher.group("type");
+                        String levelRomanNumeral = matcher.group("level");
+
+                        EnumUtils.SlayerQuest detectedSlayerQuest = EnumUtils.SlayerQuest.fromName(type);
+                        if (detectedSlayerQuest != null) {
+                            try {
+                                int level = RomanNumeralParser.parseNumeral(levelRomanNumeral);
+                                slayerQuest = detectedSlayerQuest;
+                                slayerQuestLevel = level;
+                                foundSlayerQuest = true;
+
+                            } catch (IllegalArgumentException ex) {
+                                ex.printStackTrace();
+                            }
+                        }
+                    }
+
+                    if (strippedLine.equals("Slay the boss!")) {
+                        foundBossAlive = true;
+                        slayerBossAlive = true;
+                    }
                 }
                 currentDate = SkyblockDate.parse(dateString, timeString);
             }
@@ -346,6 +378,13 @@ public class Utils {
         if (!foundInDungeon) {
             inDungeon = false;
         }
+        if (!foundSlayerQuest) {
+            slayerQuestLevel = 1;
+            slayerQuest = null;
+        }
+        if (!foundBossAlive) {
+            slayerBossAlive = false;
+        }
         if (!foundSkyblockTitle && this.isOnSkyblock()) {
             // If it's not a Skyblock scoreboard, the player must have left Skyblock and
             // be in some other Hypixel lobby or game.
@@ -353,14 +392,13 @@ public class Utils {
         }
     }
 
-    private static final Pattern SLAYER_SCOREBOARD_PATTERN = Pattern.compile("(?<progress>[0-9.k]*)/(?<total>[0-9.k]*) (?:Kills|Combat XP)$");
     private boolean triggeredSlayerWarning = false;
     private float lastCompletion;
 
     private void parseSlayerProgress(String line) {
         if (!main.getConfigValues().isEnabled(Feature.BOSS_APPROACH_ALERT)) return;
 
-        Matcher matcher = SLAYER_SCOREBOARD_PATTERN.matcher(line);
+        Matcher matcher = SLAYER_PROGRESS_REGEX.matcher(line);
         if (matcher.find()) {
             String progressString = matcher.group("progress");
             String totalString = matcher.group("total");

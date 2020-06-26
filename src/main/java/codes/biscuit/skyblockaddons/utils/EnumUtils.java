@@ -431,4 +431,26 @@ public class EnumUtils {
             this.id = id;
         }
     }
+
+    public enum SlayerQuest {
+        REVENANT_HORROR("Revenant Horror"),
+        TARANTULA_BROODFATHER("Tarantula Broodfather"),
+        SVEN_PACKMASTER("Sven Packmaster");
+
+        private String scoreboardName;
+
+        SlayerQuest(String scoreboardName) {
+            this.scoreboardName = scoreboardName;
+        }
+
+        public static SlayerQuest fromName(String scoreboardName) {
+            for (SlayerQuest slayerQuest : SlayerQuest.values()) {
+                if (slayerQuest.scoreboardName.equals(scoreboardName)) {
+                    return slayerQuest;
+                }
+            }
+
+            return null;
+        }
+    }
 }

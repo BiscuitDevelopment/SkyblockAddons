@@ -70,12 +70,51 @@ public enum DiscordStatus implements ButtonSelect.SelectItem {
                 if (location == Location.THE_END || location == Location.DRAGONS_NEST) {
                     return DiscordStatus.ZEALOTS.displayMessageSupplier.get();
                 }
+                EnumUtils.SlayerQuest slayerQuest = main.getUtils().getSlayerQuest();
+                if (slayerQuest != null) {
+                    if (slayerQuest == EnumUtils.SlayerQuest.REVENANT_HORROR) return DiscordStatus.valueOf("REVENANT").displayMessageSupplier.get();
+                    if (slayerQuest == EnumUtils.SlayerQuest.SVEN_PACKMASTER) return DiscordStatus.valueOf("SVEN").displayMessageSupplier.get();
+                    if (slayerQuest == EnumUtils.SlayerQuest.TARANTULA_BROODFATHER) return DiscordStatus.valueOf("TARANTULA").displayMessageSupplier.get();
+                }
 
                 if ("AUTO_STATUS".equals(main.getConfigValues().getDiscordAutoDefault().name())) { // Avoid self reference.
                     main.getConfigValues().setDiscordAutoDefault(DiscordStatus.NONE);
                 }
                 return main.getConfigValues().getDiscordAutoDefault().displayMessageSupplier.get();
-            })
+            }),
+    REVENANT(Message.DISCORD_STATUS_REVENANT, Message.DISCORD_STATUS_REVENANT_DESCRIPTION,
+            () -> {
+                SkyblockAddons main = SkyblockAddons.getInstance();
+                boolean bossAlive = main.getUtils().isSlayerBossAlive();
+
+                if (bossAlive) {
+                    return "Slaying a Revenant Horror "+main.getUtils().getSlayerQuestLevel()+" boss.";
+                } else {
+                    return "Doing a Revenant Horror "+main.getUtils().getSlayerQuestLevel()+" quest.";
+                }
+            }),
+    SVEN(Message.DISCORD_STATUS_SVEN, Message.DISCORD_STATUS_SVEN_DESCRIPTION,
+            () -> {
+                SkyblockAddons main = SkyblockAddons.getInstance();
+                boolean bossAlive = main.getUtils().isSlayerBossAlive();
+
+                if (bossAlive) {
+                    return "Slaying a Sven Packpaster "+main.getUtils().getSlayerQuestLevel()+" boss.";
+                } else {
+                    return "Doing a Sven Packpaster "+main.getUtils().getSlayerQuestLevel()+" quest.";
+                }
+            }),
+    TARANTULA(Message.DISCORD_STATUS_TARANTULA, Message.DISCORD_STATUS_TARANTULA_DESCRIPTION,
+            () -> {
+                SkyblockAddons main = SkyblockAddons.getInstance();
+                boolean bossAlive = main.getUtils().isSlayerBossAlive();
+
+                if (bossAlive) {
+                    return "Slaying a Tarantula Broodfather  "+main.getUtils().getSlayerQuestLevel()+" boss.";
+                } else {
+                    return "Doing a Tarantula Broodfather "+main.getUtils().getSlayerQuestLevel()+" quest.";
+                }
+            }),
     ;
 
     private final Message title;

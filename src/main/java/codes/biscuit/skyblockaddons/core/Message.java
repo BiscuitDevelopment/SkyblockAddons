@@ -238,6 +238,12 @@ public enum Message {
     DISCORD_STATUS_CUSTOM_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionCustom"),
     DISCORD_STATUS_AUTO(MessageObject.DISCORD_STATUS, "titleAuto"),
     DISCORD_STATUS_AUTO_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionAuto"),
+    DISCORD_STATUS_REVENANT(MessageObject.DISCORD_STATUS, "titleRevenants"),
+    DISCORD_STATUS_REVENANT_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionRevenants"),
+    DISCORD_STATUS_SVEN(MessageObject.DISCORD_STATUS, "titleSvens"),
+    DISCORD_STATUS_SVEN_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionSvens"),
+    DISCORD_STATUS_TARANTULA(MessageObject.DISCORD_STATUS, "titleTarantula"),
+    DISCORD_STATUS_TARANTULA_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionTarantular"),
     ;
 
     private MessageObject messageObject;
