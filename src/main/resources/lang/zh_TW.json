@@ -213,6 +213,12 @@
     "titleCustom": "自訂狀態",
     "descriptionCustom": "輸入一個自訂狀態",
     "titleAuto": "自動狀態",
-    "descriptionAuto": "自動顯示一個狀態 例: 在終界時的Zealot擊殺數"
+    "descriptionAuto": "自動顯示一個狀態 例: 在終界時的Zealot擊殺數",
+    "titleRevenants": "Revenant Quest",
+    "descriptionRevenants": "Shows that you are doing a Revenant quest.",
+    "titleSvens": "Sven Quest",
+    "descriptionSvens": "Shows that you are doing a Sven quest.",
+    "titleTarantula": "Tarantula Quest",
+    "descriptionTarantula": "Shows that you are doing a Tarantula quest."
   }
 }
