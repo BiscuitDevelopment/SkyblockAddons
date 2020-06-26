@@ -124,7 +124,12 @@
     "disableTeleportPadMessages": "ايقاف رسائل حجر التنقل",
     "baitListDisplay": "إظهار قائمة طعم الاسماك أثناء حمل الصنارة",
     "freezeBackpackPreview": "تجميد محتوى حقيبة الظهر",
-    "hideGreyEnchants": "اخفاء التطويرات الرمادية العادية"
+    "hideGreyEnchants": "اخفاء التطويرات الرمادية العادية",
+    "zealotCounterExplosiveBow": "Zealot Counter Explosive Bow Support",
+    "disableEndermanTeleportation": "Disable Enderman Teleportation",
+    "changeZealotColor": "Change Zealot Color",
+    "hideSvenPupNametags": "Hide Sven Pup Nametags",
+    "turnAllFeaturesChroma": "Turn All Features Chroma"
   },
   "messages": {
     "dropConfirmation": "!إرمي هذا العنصر مرة أخرى للتأكيد",
@@ -184,7 +189,9 @@
     "fallbackStatus": "ستظهر هذه الحالة عندما لا توفر حالتك التلقائية على أي شيء لإظهاره",
     "legendarySeaCreatureWarning": "التقاط اسطوري!",
     "cancelledPark": "لقد منعتك ميزة من كسر هذا المعدن هنا.",
-    "bossApproaching": "أنت قريبة من توليد رئيس!"
+    "bossApproaching": "أنت قريبة من توليد رئيس!",
+    "enableAll": "Enable All",
+    "disableAll": "Disable All"
   },
   "discordStatus": {
     "titleNone": "لا شيء",
