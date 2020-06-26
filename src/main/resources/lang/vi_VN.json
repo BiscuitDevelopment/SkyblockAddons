@@ -124,7 +124,12 @@
     "disableTeleportPadMessages": "Tắt Thông Báo của Tấm Dịch Chuyển",
     "baitListDisplay": "Hiện Danh Sách Số Mồi Câu Khi Cầm Cần Câu Cá",
     "freezeBackpackPreview": "\"Đông Cứng\" Hiển Thị Ba Lô",
-    "hideGreyEnchants": "Giấu Những Phù Phép Được Bôi Xám"
+    "hideGreyEnchants": "Giấu Những Phù Phép Được Bôi Xám",
+    "zealotCounterExplosiveBow": "Zealot Counter Explosive Bow Support",
+    "disableEndermanTeleportation": "Disable Enderman Teleportation",
+    "changeZealotColor": "Change Zealot Color",
+    "hideSvenPupNametags": "Hide Sven Pup Nametags",
+    "turnAllFeaturesChroma": "Turn All Features Chroma"
   },
   "messages": {
     "dropConfirmation": "Nhấn \"Q\" Thêm Một Lần Nữa Để Xác Nhận!",
@@ -184,7 +189,9 @@
     "fallbackStatus": "Trạng thái này sẽ hiện ở chỗ này nếu trạng thái hiện tại của bạn không có gì để hiện (vì nó chán)",
     "legendarySeaCreatureWarning": "Đã Câu Được Quái Biển Huyền Thoại!",
     "cancelledPark": "Một chức năng đã chặn bạn khỏi việc phá khối này ở đây.",
-    "bossApproaching": "Bạn sắp sửa triệu hồi Trùm rồi!!"
+    "bossApproaching": "Bạn sắp sửa triệu hồi Trùm rồi!!",
+    "enableAll": "Enable All",
+    "disableAll": "Disable All"
   },
   "discordStatus": {
     "titleNone": "Không có",
