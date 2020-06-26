@@ -124,7 +124,12 @@
     "disableTeleportPadMessages": "Desativar mensagens dos Teleport Pads",
     "baitListDisplay": "Mostrar uma lista de baits ao segurar numa vara",
     "freezeBackpackPreview": "Congelar pré-visualização da backpack",
-    "hideGreyEnchants": "Esconder encantamentos normais a cinzento"
+    "hideGreyEnchants": "Esconder encantamentos normais a cinzento",
+    "zealotCounterExplosiveBow": "Zealot Counter Explosive Bow Support",
+    "disableEndermanTeleportation": "Disable Enderman Teleportation",
+    "changeZealotColor": "Change Zealot Color",
+    "hideSvenPupNametags": "Hide Sven Pup Nametags",
+    "turnAllFeaturesChroma": "Turn All Features Chroma"
   },
   "messages": {
     "dropConfirmation": "Atira este item outra vez para confirmar!",
@@ -184,7 +189,9 @@
     "fallbackStatus": "O estado vai aparecer quando o teu estado automático não tem nada para mostrar",
     "legendarySeaCreatureWarning": "Apanhaste uma lendária!",
     "cancelledPark": "Uma funcionalidade preveniu-te de partir este bloco aqui.",
-    "bossApproaching": "Estás perto de invocar o boss!"
+    "bossApproaching": "Estás perto de invocar o boss!",
+    "enableAll": "Enable All",
+    "disableAll": "Disable All"
   },
   "discordStatus": {
     "titleNone": "Nenhum",
