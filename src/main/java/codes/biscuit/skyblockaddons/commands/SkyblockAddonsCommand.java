@@ -21,8 +21,8 @@ public class SkyblockAddonsCommand extends CommandBase {
     private SkyblockAddons main;
     private Logger logger;
 
-    public SkyblockAddonsCommand(SkyblockAddons main) {
-        this.main = main;
+    public SkyblockAddonsCommand() {
+        this.main = SkyblockAddons.getInstance();
         logger = main.getLogger();
     }
 

@@ -65,33 +65,28 @@ public class RenderListener {
     private static ItemStack NETHER_STAR;
     private static ItemStack WARP_SKULL;
 
-    private SkyblockAddons main;
+    private SkyblockAddons main = SkyblockAddons.getInstance();
 
-    @Getter @Setter private boolean predictHealth = false;
-    @Getter @Setter private boolean predictMana = false;
+    @Getter @Setter private boolean predictHealth;
+    @Getter @Setter private boolean predictMana;
 
-    @Setter private boolean updateMessageDisplayed = false;
+    @Setter private boolean updateMessageDisplayed;
 
-    private Feature subtitleFeature = null;
-    @Getter @Setter private Feature titleFeature = null;
+    private Feature subtitleFeature;
+    @Getter @Setter private Feature titleFeature;
 
     @Setter private int arrowsLeft;
 
-    @Setter private String cannotReachMobName = null;
+    @Setter private String cannotReachMobName;
 
     @Setter private long skillFadeOutTime = -1;
-    @Setter private EnumUtils.SkillType skill = null;
-    @Setter private String skillText = null;
+    @Setter private EnumUtils.SkillType skill;
+    @Setter private String skillText;
 
-    private EnumUtils.GUIType guiToOpen = null;
+    private EnumUtils.GUIType guiToOpen;
     private int guiPageToOpen = 1;
     private EnumUtils.GuiTab guiTabToOpen = EnumUtils.GuiTab.MAIN;
-    private Feature guiFeatureToOpen = null;
-
-
-    public RenderListener(SkyblockAddons main) {
-        this.main = main;
-    }
+    private Feature guiFeatureToOpen;
 
     /**
      * Render overlays and warnings for clients without labymod.
@@ -1389,11 +1384,11 @@ public class RenderListener {
     @SubscribeEvent()
     public void onRender(TickEvent.RenderTickEvent e) {
         if (guiToOpen == EnumUtils.GUIType.MAIN) {
-            Minecraft.getMinecraft().displayGuiScreen(new SkyblockAddonsGui(main, guiPageToOpen, guiTabToOpen));
+            Minecraft.getMinecraft().displayGuiScreen(new SkyblockAddonsGui(guiPageToOpen, guiTabToOpen));
         } else if (guiToOpen == EnumUtils.GUIType.EDIT_LOCATIONS) {
             Minecraft.getMinecraft().displayGuiScreen(new LocationEditGui(main, guiPageToOpen, guiTabToOpen));
         } else if (guiToOpen == EnumUtils.GUIType.SETTINGS) {
-            Minecraft.getMinecraft().displayGuiScreen(new SettingsGui(main, guiFeatureToOpen, 1, guiPageToOpen, guiTabToOpen, guiFeatureToOpen.getSettings()));
+            Minecraft.getMinecraft().displayGuiScreen(new SettingsGui(guiFeatureToOpen, 1, guiPageToOpen, guiTabToOpen, guiFeatureToOpen.getSettings()));
         } else if (guiToOpen == EnumUtils.GUIType.WARP) {
             Minecraft.getMinecraft().displayGuiScreen(new IslandWarpGui());
         }

@@ -10,12 +10,11 @@ import codes.biscuit.skyblockaddons.listeners.NetworkListener;
 import codes.biscuit.skyblockaddons.listeners.PlayerListener;
 import codes.biscuit.skyblockaddons.listeners.RenderListener;
 import codes.biscuit.skyblockaddons.scheduler.NewScheduler;
-import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsTransformer;
+import codes.biscuit.skyblockaddons.scheduler.SkyblockRunnable;
 import codes.biscuit.skyblockaddons.utils.*;
 import codes.biscuit.skyblockaddons.utils.discord.DiscordRPCManager;
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
-import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import net.minecraft.client.Minecraft;
@@ -23,9 +22,7 @@ import net.minecraft.client.settings.KeyBinding;
 import net.minecraftforge.client.ClientCommandHandler;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
-import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.ModContainer;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLModDisabledEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -34,11 +31,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.lwjgl.input.Keyboard;
 
-import java.lang.reflect.Field;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.*;
 
 @Getter
 @Mod(modid = "skyblockaddons", name = "SkyblockAddons", version = "@VERSION@", clientSideOnly = true, acceptedMinecraftVersions = "@MOD_ACCEPTED@")
@@ -48,11 +41,10 @@ public class SkyblockAddons {
     public static final String MOD_NAME = "SkyblockAddons";
     public static String VERSION = "@VERSION@";
 
-    /** The main instance of the mod, used mainly my mixins who don't get it passed to them. */
     @Getter private static SkyblockAddons instance;
+    private Logger logger;
 
     private ConfigValues configValues;
-    private Logger logger;
     private PersistentValues persistentValues;
     private PlayerListener playerListener;
     private GuiScreenListener guiScreenListener;
@@ -61,36 +53,40 @@ public class SkyblockAddons {
     private Utils utils;
     private Updater updater;
     @Setter private OnlineData onlineData;
-
-    /** Get the scheduler that be can be used to easily execute tasks. */
-    private Scheduler scheduler = new Scheduler(this);
-    private NewScheduler newScheduler = new NewScheduler();
-    private boolean usingLabymod = false;
-    private boolean usingOofModv1 = false;
-
-    /** Whether developer mode is enabled. */
-    @Setter private boolean devMode = false;
-    @Setter(AccessLevel.NONE) private KeyBinding[] keyBindings = new KeyBinding[4];
     private DiscordRPCManager discordRPCManager;
+    private Scheduler scheduler;
+    private NewScheduler newScheduler;
+
+    private boolean usingLabymod;
+    private boolean usingOofModv1;
+    @Setter private boolean devMode;
+    private List<SkyblockKeyBinding> keyBindings = new LinkedList<>();
 
     @Getter private final Set<Integer> registeredFeatureIDs = new HashSet<>();
 
+    public SkyblockAddons() {
+        instance = this;
+        logger = LogManager.getLogger();
+
+        playerListener = new PlayerListener();
+        guiScreenListener = new GuiScreenListener();
+        renderListener = new RenderListener();
+        inventoryUtils = new InventoryUtils();
+        utils = new Utils();
+        updater = new Updater();
+        scheduler = new Scheduler();
+        newScheduler = new NewScheduler();
+        discordRPCManager = new DiscordRPCManager();
+    }
+
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent e) {
-        instance = this;
         configValues = new ConfigValues(this, e.getSuggestedConfigurationFile());
-        logger = LogManager.getLogger();
         persistentValues = new PersistentValues(e.getModConfigurationDirectory());
     }
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent e) {
-        // Initialize event listeners
-        playerListener = new PlayerListener(this);
-        guiScreenListener = new GuiScreenListener(this);
-        renderListener = new RenderListener(this);
-        discordRPCManager = new DiscordRPCManager(this);
-
         MinecraftForge.EVENT_BUS.register(new NetworkListener());
         MinecraftForge.EVENT_BUS.register(playerListener);
         MinecraftForge.EVENT_BUS.register(guiScreenListener);
@@ -98,38 +94,24 @@ public class SkyblockAddons {
         MinecraftForge.EVENT_BUS.register(scheduler);
         MinecraftForge.EVENT_BUS.register(newScheduler);
 
-        // Initialize utilities
-        inventoryUtils = new InventoryUtils(this);
-        utils = new Utils(this);
-        updater = new Updater(this);
+        ClientCommandHandler.instance.registerCommand(new SkyblockAddonsCommand());
 
-        ClientCommandHandler.instance.registerCommand(new SkyblockAddonsCommand(this));
-
-        keyBindings[0] = new KeyBinding("key.skyblockaddons.open_settings", Keyboard.KEY_NONE, MOD_NAME);
-        keyBindings[1] = new KeyBinding("key.skyblockaddons.edit_gui", Keyboard.KEY_NONE, MOD_NAME);
-        keyBindings[2] = new KeyBinding("key.skyblockaddons.lock_slot", Keyboard.KEY_L, MOD_NAME);
-        keyBindings[3] = new KeyBinding("key.skyblockaddons.freeze_backpack", Keyboard.KEY_F, MOD_NAME);
-
-        for (KeyBinding keyBinding : keyBindings) {
-            ClientRegistry.registerKeyBinding(keyBinding);
-        }
+        addKeybinds(new SkyblockKeyBinding("open_settings", Keyboard.KEY_NONE, Message.SETTING_SETTINGS),
+                new SkyblockKeyBinding( "edit_gui", Keyboard.KEY_NONE, Message.SETTING_EDIT_LOCATIONS),
+                new SkyblockKeyBinding( "lock_slot", Keyboard.KEY_L, Message.SETTING_LOCK_SLOT),
+                new SkyblockKeyBinding( "freeze_backpack", Keyboard.KEY_F, Message.SETTING_FREEZE_BACKPACK_PREVIEW));
     }
 
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent e) {
         onlineData = new Gson().fromJson(new JsonReader(utils.getBufferedReader("data.json")), OnlineData.class);
-        configValues.loadConfig();
+        configValues.loadValues();
         persistentValues.loadValues();
-        loadKeyBindingDescriptions();
 
-        usingLabymod = Loader.isModLoaded("labymod");
-        if (Loader.isModLoaded("refractionoof")) {
-            for (ModContainer modContainer : Loader.instance().getModList()) {
-                if (modContainer.getModId().equals("refractionoof") && modContainer.getVersion().equals("1.0")) {
-                    usingOofModv1 = true;
-                }
-            }
-        }
+        setKeyBindingDescriptions();
+
+        usingLabymod = utils.isModLoaded("labymod");
+        usingOofModv1 = utils.isModLoaded("refractionoof", "1.0");
 
         utils.pullOnlineData();
         scheduleMagmaBossCheck();
@@ -154,28 +136,9 @@ public class SkyblockAddons {
         discordRPCManager.stop();
     }
 
-
-    private void changeKeyBindDescription(KeyBinding bind, String desc) {
-        try {
-            Field field = bind.getClass().getDeclaredField(SkyblockAddonsTransformer.isDeobfuscated() ? "keyDescription" : "field_74515_c");
-            field.setAccessible(true);
-            field.set(bind, desc);
-        } catch(NoSuchFieldException | IllegalAccessException e) {
-            logger.error("Could not change key description: " + bind.toString());
-            logger.catching(e);
-        }
-    }
-
-    public void loadKeyBindingDescriptions() {
-        changeKeyBindDescription(keyBindings[0], Message.SETTING_SETTINGS.getMessage());
-        changeKeyBindDescription(keyBindings[1], Message.SETTING_EDIT_LOCATIONS.getMessage());
-        changeKeyBindDescription(keyBindings[2], Message.SETTING_LOCK_SLOT.getMessage());
-        changeKeyBindDescription(keyBindings[3], Message.SETTING_FREEZE_BACKPACK_PREVIEW.getMessage());
-    }
-
     private void scheduleMagmaBossCheck() {
         // Loop every 5s until the player is in game, where it will pull once.
-        new Timer().scheduleAtFixedRate(new TimerTask() {
+        newScheduler.scheduleRepeatingTask(new SkyblockRunnable() {
             @Override
             public void run() {
                 if (Minecraft.getMinecraft() != null && Minecraft.getMinecraft().thePlayer != null) {
@@ -183,23 +146,39 @@ public class SkyblockAddons {
                     cancel();
                 }
             }
-        }, 5000, 5000);
+        }, 20*5, 20*5);
     }
 
     public KeyBinding getOpenSettingsKey() {
-        return keyBindings[0];
+        return keyBindings.get(0).getKeyBinding();
     }
 
     public KeyBinding getOpenEditLocationsKey() {
-        return keyBindings[1];
+        return keyBindings.get(1).getKeyBinding();
     }
 
     public KeyBinding getLockSlotKey() {
-        return keyBindings[2];
+        return keyBindings.get(2).getKeyBinding();
     }
 
     public KeyBinding getFreezeBackpackKey() {
-        return keyBindings[3];
+        return keyBindings.get(3).getKeyBinding();
+    }
+
+    public void addKeybinds(SkyblockKeyBinding... keybinds) {
+        for (SkyblockKeyBinding skyblockKeyBinding : keybinds) {
+            KeyBinding keyBinding = new KeyBinding("key.skyblockaddons."+ skyblockKeyBinding.getName(), skyblockKeyBinding.getDefaultKey(), MOD_NAME);
+            ClientRegistry.registerKeyBinding(keyBinding);
+            skyblockKeyBinding.setKeyBinding(keyBinding);
+
+            keyBindings.add(skyblockKeyBinding);
+        }
+    }
+
+    public void setKeyBindingDescriptions() {
+        for (SkyblockKeyBinding skyblockKeyBinding : keyBindings) {
+            skyblockKeyBinding.getKeyBinding().keyDescription = skyblockKeyBinding.getMessage().getMessage();
+        }
     }
 
     static {

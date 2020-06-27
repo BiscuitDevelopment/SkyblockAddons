@@ -20,10 +20,10 @@ public class ButtonBanner extends GuiButton {
 
     private SkyblockAddons main;
 
-    private static ResourceLocation banner = null;
-    private static BufferedImage bannerImage = null;
+    private static ResourceLocation banner;
+    private static BufferedImage bannerImage;
 
-    private static boolean grabbedBanner = false;
+    private static boolean grabbedBanner;
 
     // Used to calculate the transparency when fading in.
     private long timeOpened = System.currentTimeMillis();
@@ -33,9 +33,9 @@ public class ButtonBanner extends GuiButton {
     /**
      * Create a button for toggling a feature on or off. This includes all the {@link Feature}s that have a proper ID.
      */
-    public ButtonBanner(double x, double y, SkyblockAddons main) {
+    public ButtonBanner(double x, double y) {
         super(0, (int)x, (int)y, "");
-        this.main = main;
+        this.main = SkyblockAddons.getInstance();
 
         if (!grabbedBanner) {
             grabbedBanner = true;
@@ -44,7 +44,7 @@ public class ButtonBanner extends GuiButton {
 
             new Thread(() -> {
                 try {
-                    URL url = new URL(main.getOnlineData().getBannerImageURL());
+                    URL url = new URL(this.main.getOnlineData().getBannerImageURL());
                     HttpURLConnection connection = (HttpURLConnection)url.openConnection();
                     connection.setReadTimeout(5000);
                     connection.addRequestProperty("User-Agent", Utils.USER_AGENT);

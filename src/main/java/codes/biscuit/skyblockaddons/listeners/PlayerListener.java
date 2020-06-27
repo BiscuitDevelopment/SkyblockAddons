@@ -88,7 +88,7 @@ public class PlayerListener {
     private long lastBossDeathPost = -1;
     private long lastMagmaWavePost = -1;
     private long lastBlazeWavePost = -1;
-    private Class<?> lastOpenedInventory = null;
+    private Class<?> lastOpenedInventory;
     private long lastClosedInv = -1;
     private long lastFishingAlert = 0;
     private long lastBobberEnteredWater = Long.MAX_VALUE;
@@ -96,7 +96,7 @@ public class PlayerListener {
 
     @Getter private long rainmakerTimeEnd = -1;
 
-    private boolean oldBobberIsInWater = false;
+    private boolean oldBobberIsInWater;
     private double oldBobberPosY = 0;
 
     @Getter private Set<UUID> countedEndermen = new HashSet<>();
@@ -108,13 +108,8 @@ public class PlayerListener {
     @Getter @Setter private int recentMagmaCubes = 0;
     @Getter @Setter private int recentBlazes = 0;
 
-    private final SkyblockAddons main;
-    private final ActionBarParser actionBarParser;
-
-    public PlayerListener(SkyblockAddons main) {
-        this.main = main;
-        actionBarParser = new ActionBarParser(main);
-    }
+    private final SkyblockAddons main = SkyblockAddons.getInstance();
+    private final ActionBarParser actionBarParser = new ActionBarParser();
 
     /**
      * Reset all the timers and stuff when joining a new world.

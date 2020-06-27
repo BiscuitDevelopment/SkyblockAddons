@@ -49,11 +49,11 @@ public class ActionBarParser {
     /** The total amount of possible tickers or 0 if none are in the action bar. */
     private int maxTickers = 0;
     @Setter private int lastSecondHealth = -1;
-    @Setter private Integer healthUpdate = null;
+    @Setter private Integer healthUpdate;
     @Setter private long lastHealthUpdate;
 
-    public ActionBarParser(SkyblockAddons main) {
-        this.main = main;
+    public ActionBarParser() {
+        this.main = SkyblockAddons.getInstance();
     }
 
     /**

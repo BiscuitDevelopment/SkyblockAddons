@@ -25,23 +25,14 @@ import java.util.List;
  * @see ItemDropList
  */
 public class ItemDropChecker {
-    private final SkyblockAddons main;
-    private final Logger logger;
+
+    private SkyblockAddons main = SkyblockAddons.getInstance();
+    private Logger logger = LogManager.getLogger("SBA Item Drop Checker");;
 
     // Variables used for checking drop confirmations
     private ItemStack itemOfLastDropAttempt;
     private long timeOfLastDropAttempt;
     private int attemptsRequiredToConfirm;
-
-    /**
-     * Creates a new instance of the item checker for the Stop Dropping/Selling Rare Items feature.
-     *
-     * @param main the SkyblockAddons instance
-     */
-    public ItemDropChecker(SkyblockAddons main) {
-        this.main = main;
-        this.logger = LogManager.getLogger("SBA Item Drop Checker");
-    }
 
     /**
      * Checks if this item can be dropped or sold.

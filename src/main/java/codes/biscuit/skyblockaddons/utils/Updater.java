@@ -21,17 +21,13 @@ public class Updater {
 
     private static final Pattern VERSION_PATTERN = Pattern.compile("(?<major>[0-9])\\.(?<minor>[0-9])\\.(?<patch>[0-9]).*");
 
-    private SkyblockAddons main;
+    private SkyblockAddons main = SkyblockAddons.getInstance();
 
     private boolean hasUpdate = false;
     @Getter private String messageToRender;
 
     private boolean isPatch = false;
     private boolean sentUpdateMessage = false;
-
-    public Updater(SkyblockAddons main) {
-        this.main = main;
-    }
 
     /**
      * Returns whether there is an update available
