@@ -4,13 +4,13 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Location;
 import codes.biscuit.skyblockaddons.core.SkyblockDate;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
-import com.google.gson.JsonObject;
 import com.jagrosh.discordipc.IPCClient;
 import com.jagrosh.discordipc.IPCListener;
 import com.jagrosh.discordipc.entities.RichPresence;
 import lombok.Getter;
 import lombok.Setter;
-import net.minecraftforge.fml.common.FMLLog;
+import org.apache.logging.log4j.Logger;
+import org.json.JSONObject;
 
 import java.time.OffsetDateTime;
 import java.util.Timer;
@@ -23,7 +23,8 @@ public class DiscordRPCManager implements IPCListener {
     private static final long APPLICATION_ID = 653443797182578707L;
     private static final long UPDATE_PERIOD = 4200L;
 
-    private final SkyblockAddons main;
+    private SkyblockAddons main = SkyblockAddons.getInstance();
+    private Logger logger = main.getLogger();
     private IPCClient client;
     private DiscordStatus detailsLine;
     private DiscordStatus stateLine;
@@ -32,25 +33,26 @@ public class DiscordRPCManager implements IPCListener {
     private Timer updateTimer;
     private boolean connected;
 
-    public DiscordRPCManager(final SkyblockAddons main) {
-        this.main = main;
-    }
-
     public void start() {
-        FMLLog.info("Starting Discord RP...");
-        if (isActive()) {
-            return;
-        }
-
-        stateLine = main.getConfigValues().getDiscordStatus();
-        detailsLine = main.getConfigValues().getDiscordDetails();
-        startTimestamp = OffsetDateTime.now();
-        client = new IPCClient(APPLICATION_ID);
-        client.setListener(this);
         try {
-            client.connect();
-        } catch (Exception e) {
-            FMLLog.warning("Failed to connect to Discord RPC: %s", e.getMessage());
+            logger.info("Starting Discord RP...");
+            if (isActive()) {
+                return;
+            }
+
+            stateLine = main.getConfigValues().getDiscordStatus();
+            detailsLine = main.getConfigValues().getDiscordDetails();
+            startTimestamp = OffsetDateTime.now();
+            client = new IPCClient(APPLICATION_ID);
+            client.setListener(this);
+            try {
+                client.connect();
+            } catch (Exception e) {
+                logger.warn("Failed to connect to Discord RPC: " + e.getMessage());
+            }
+        } catch (Throwable ex) {
+            logger.error("DiscordRP has thrown an unexpected error while trying to start...");
+            ex.printStackTrace();
         }
     }
 
@@ -72,11 +74,11 @@ public class DiscordRPCManager implements IPCListener {
 
         // Early Winter 10th, 12:10am - Village
         String largeImageDescription = String.format("%s - %s", skyblockDateString, location.getScoreboardName());
-        String smallImageDescription = String.format("Hypixel Skyblock - Using SkyblockAddons v%s", SkyblockAddons.VERSION);
+        String smallImageDescription = String.format("Using SkyblockAddons v%s", SkyblockAddons.VERSION+" by Biscuit | Icons by Hypixel Packs HQ");
         RichPresence presence = new RichPresence.Builder()
                 .setState(stateLine.getDisplayString(EnumUtils.DiscordStatusEntry.STATE))
                 .setDetails(detailsLine.getDisplayString(EnumUtils.DiscordStatusEntry.DETAILS))
-                .setStartTimestamp(startTimestamp.toEpochSecond())
+                .setStartTimestamp(startTimestamp)
                 .setLargeImage(location.getDiscordIconKey(), largeImageDescription)
                 .setSmallImage("skyblockicon", smallImageDescription)
                 .build();
@@ -99,7 +101,7 @@ public class DiscordRPCManager implements IPCListener {
 
     @Override
     public void onReady(IPCClient client) {
-        FMLLog.info("Discord RPC started");
+        logger.info("Discord RPC started");
         connected = true;
         updateTimer = new Timer();
         updateTimer.schedule(new TimerTask() {
@@ -111,8 +113,8 @@ public class DiscordRPCManager implements IPCListener {
     }
 
     @Override
-    public void onClose(IPCClient client, JsonObject json) {
-        FMLLog.warning("Discord RPC closed");
+    public void onClose(IPCClient client, JSONObject json) {
+        logger.info("Discord RPC closed");
         this.client = null;
         connected = false;
         cancelTimer();
@@ -120,7 +122,7 @@ public class DiscordRPCManager implements IPCListener {
 
     @Override
     public void onDisconnect(IPCClient client, Throwable t) {
-        FMLLog.warning("Discord RPC disconnected");
+        logger.warn("Discord RPC disconnected");
         this.client = null;
         connected = false;
         cancelTimer();

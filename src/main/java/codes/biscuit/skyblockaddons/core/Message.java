@@ -125,6 +125,11 @@ public enum Message {
     SETTING_BOSS_APPROACH_ALERT(MessageObject.SETTING, "bossApproachAlert"),
     SETTING_DISABLE_TELEPORT_PAD_MESSAGES(MessageObject.SETTING, "disableTeleportPadMessages"),
     SETTING_BAIT_LIST(MessageObject.SETTING, "baitListDisplay"),
+    SETTING_ZEALOT_COUNTER_EXPLOSIVE_BOW_SUPPORT(MessageObject.SETTING, "zealotCounterExplosiveBow"),
+    SETTING_DISABLE_ENDERMAN_TELEPORTATION_EFFECT(MessageObject.SETTING, "disableEndermanTeleportation"),
+    SETTING_CHANGE_ZEALOT_COLOR(MessageObject.SETTING, "changeZealotColor"),
+    SETTING_HIDE_SVEN_PUP_NAMETAGS(MessageObject.SETTING, "hideSvenPupNametags"),
+    SETTING_TURN_ALL_FEATURES_CHROMA(MessageObject.SETTING, "turnAllFeaturesChroma"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.BACKPACK_STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.BACKPACK_STYLE, "compact"),
@@ -180,7 +185,8 @@ public enum Message {
     MESSAGE_LEGENDARY_SEA_CREATURE_WARNING(MessageObject.MESSAGES, "legendarySeaCreatureWarning"),
     MESSAGE_CANCELLED_NON_LOGS_BREAK(MessageObject.MESSAGES, "cancelledPark"),
     MESSAGE_BOSS_APPROACH_ALERT(MessageObject.MESSAGES, "bossApproaching"),
-
+    MESSAGE_ENABLE_ALL(MessageObject.MESSAGES, "enableAll"),
+    MESSAGE_DISABLE_ALL(MessageObject.MESSAGES, "disableAll"),
 
     @Deprecated ANCHOR_POINT_TOP_LEFT(MessageObject.ANCHOR_POINT, "topLeft"),
     @Deprecated ANCHOR_POINT_TOP_RIGHT(MessageObject.ANCHOR_POINT, "topRight"),
@@ -232,6 +238,12 @@ public enum Message {
     DISCORD_STATUS_CUSTOM_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionCustom"),
     DISCORD_STATUS_AUTO(MessageObject.DISCORD_STATUS, "titleAuto"),
     DISCORD_STATUS_AUTO_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionAuto"),
+    DISCORD_STATUS_REVENANT(MessageObject.DISCORD_STATUS, "titleRevenants"),
+    DISCORD_STATUS_REVENANT_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionRevenants"),
+    DISCORD_STATUS_SVEN(MessageObject.DISCORD_STATUS, "titleSvens"),
+    DISCORD_STATUS_SVEN_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionSvens"),
+    DISCORD_STATUS_TARANTULA(MessageObject.DISCORD_STATUS, "titleTarantula"),
+    DISCORD_STATUS_TARANTULA_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionTarantular"),
     ;
 
     private MessageObject messageObject;

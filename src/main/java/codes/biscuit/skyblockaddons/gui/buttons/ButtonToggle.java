@@ -53,7 +53,7 @@ public class ButtonToggle extends ButtonFeature {
 
         main.getUtils().bindRGBColor(0xFF1e252e);
         mc.getTextureManager().bindTexture(TOGGLE_BORDER);
-        drawModalRectWithCustomSizedTexture(xPosition, yPosition,0,0,width,height,width,height);
+        main.getUtils().drawModalRectWithCustomSizedTexture(xPosition, yPosition,0,0,width,height,width,height, true);
 
         boolean enabled = main.getConfigValues().isEnabled(feature);
         boolean remoteDisabled = main.getConfigValues().isRemoteDisabled(feature);
@@ -65,7 +65,7 @@ public class ButtonToggle extends ButtonFeature {
         }
 
         mc.getTextureManager().bindTexture(TOGGLE_INSIDE_BACKGROUND);
-        drawModalRectWithCustomSizedTexture(xPosition, yPosition,0,0,width,height,width,height);
+        main.getUtils().drawModalRectWithCustomSizedTexture(xPosition, yPosition,0,0,width,height,width,height, true);
 
         int startingX = getStartingPosition(enabled);
         int slideAnimationOffset = 0;
@@ -86,7 +86,7 @@ public class ButtonToggle extends ButtonFeature {
 
         GlStateManager.color(1,1,1,1);
         mc.getTextureManager().bindTexture(TOGGLE_INSIDE_CIRCLE);
-        drawModalRectWithCustomSizedTexture(startingX, yPosition+3,0,0,9,9,9,9);
+        main.getUtils().drawModalRectWithCustomSizedTexture(startingX, yPosition+3,0,0,9,9,9,9, true);
     }
 
     private int getStartingPosition(boolean enabled) {

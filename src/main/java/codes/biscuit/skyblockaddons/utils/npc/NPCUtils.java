@@ -223,11 +223,9 @@ public class NPCUtils {
 
             // If it doesn't have a color prefix, it's not a player.
             return playerTeam.getColorPrefix().equals("");
-        }
-        else if (entity instanceof EntityArmorStand) {
+        } else if (entity instanceof EntityArmorStand) {
             return entity.isInvisible();
-        }
-        else {
+        } else {
             return false;
         }
     }

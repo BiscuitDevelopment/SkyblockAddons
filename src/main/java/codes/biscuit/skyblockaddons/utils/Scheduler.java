@@ -13,13 +13,9 @@ import java.util.*;
 
 public class Scheduler {
 
-    private SkyblockAddons main;
+    private SkyblockAddons main = SkyblockAddons.getInstance();
     private long totalTicks = 0;
     private Map<Long, Set<Command>> queue = new HashMap<>();
-
-    public Scheduler(SkyblockAddons main) {
-        this.main = main;
-    }
 
     /**
      * This class is a little something I came up with in order to schedule things

@@ -50,11 +50,7 @@ public class InventoryUtils {
 
     @Getter private SlayerArmorProgress[] slayerArmorProgresses = new SlayerArmorProgress[4];
 
-    private SkyblockAddons main;
-
-    public InventoryUtils(SkyblockAddons main) {
-        this.main = main;
-    }
+    private SkyblockAddons main = SkyblockAddons.getInstance();
 
     /**
      * Copies an inventory into a List of copied ItemStacks
@@ -261,7 +257,7 @@ public class InventoryUtils {
      */
     public void checkIfWearingSlayerArmor(EntityPlayerSP p) {
         if (main.getConfigValues().isEnabled(Feature.SLAYER_INDICATOR)) {
-            for (int i = 3; i > -1; i--) {
+            for (int i = 3; i >= 0; i--) {
                 ItemStack item = p.inventory.armorInventory[i];
                 String itemID = item != null ? ItemUtils.getSkyBlockItemID(item) : null;
 

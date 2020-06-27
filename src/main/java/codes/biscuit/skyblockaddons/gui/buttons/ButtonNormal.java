@@ -65,7 +65,7 @@ public class ButtonNormal extends ButtonFeature {
                 GlStateManager.color(0.3F,0.3F,0.3F,0.7F);
             }
             mc.getTextureManager().bindTexture(FEATURE_BACKGROUND);
-            drawModalRectWithCustomSizedTexture(xPosition, yPosition,0,0,width,height,width,height);
+            main.getUtils().drawModalRectWithCustomSizedTexture(xPosition, yPosition,0,0,width,height,width,height, true);
 
             EnumUtils.FeatureCredit creditFeature = EnumUtils.FeatureCredit.fromFeature(feature);
 
@@ -140,7 +140,7 @@ public class ButtonNormal extends ButtonFeature {
                     if (main.getUtils().isHalloween()) {
                         mc.getTextureManager().bindTexture(new ResourceLocation("skyblockaddons", "flags/halloween.png"));
                     }
-                    drawModalRectWithCustomSizedTexture(xPosition + width / 2 - 20, yPosition + 20, 0, 0, 38, 30, 38, 30);
+                    main.getUtils().drawModalRectWithCustomSizedTexture(xPosition + width / 2F - 20, yPosition + 20, 0, 0, 38, 30, 38, 30, true);
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
@@ -148,7 +148,7 @@ public class ButtonNormal extends ButtonFeature {
                 GlStateManager.color(1,1,1,1F);
                 try {
                     mc.getTextureManager().bindTexture(new ResourceLocation("skyblockaddons", "gui/move.png"));
-                    drawModalRectWithCustomSizedTexture(xPosition + width / 2 - 12, yPosition + 22, 0, 0, 25, 25, 25, 25);
+                    main.getUtils().drawModalRectWithCustomSizedTexture(xPosition + width / 2F - 12, yPosition + 22, 0, 0, 25, 25, 25, 25, true);
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }

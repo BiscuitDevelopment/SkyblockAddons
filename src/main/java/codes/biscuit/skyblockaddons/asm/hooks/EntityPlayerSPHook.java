@@ -20,7 +20,7 @@ public class EntityPlayerSPHook {
         ItemStack heldItemStack = mc.thePlayer.getHeldItem();
 
         if ((main.getUtils().isOnSkyblock() || main.getPlayerListener().aboutToJoinSkyblockServer())) {
-            if (main.getConfigValues().isEnabled(Feature.LOCK_SLOTS)) {
+            if (main.getConfigValues().isEnabled(Feature.LOCK_SLOTS) && !main.getUtils().isInDungeon()) {
                 int slot = mc.thePlayer.inventory.currentItem + 36;
                 if (main.getConfigValues().getLockedSlots().contains(slot) && (slot >= 9 || mc.thePlayer.openContainer instanceof ContainerPlayer && slot >= 5)) {
                     main.getUtils().playLoudSound("note.bass", 0.5);

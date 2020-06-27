@@ -41,7 +41,7 @@ public enum TransformerMethod {
 //            "("+TransformerClass.EntityLivingBase.getName()+TransformerClass.ItemStack.getName()+TransformerClass.ItemCameraTransforms$TransformType.getName()+")V"),
     renderItem("renderItem", "func_180454_a", "a", "(Lnet/minecraft/item/ItemStack;Lnet/minecraft/client/resources/model/IBakedModel;)V",
         "("+TransformerClass.ItemStack.getName()+TransformerClass.IBakedModel.getName()+")V"),
-    renderModel("renderModel", "func_175036_a", "a", "(Lnet/minecraft/client/resources/model/IBakedModel;Lnet/minecraft/item/ItemStack;)V",
+    renderModel_RenderItem("renderModel", "func_175036_a", "a", "(Lnet/minecraft/client/resources/model/IBakedModel;Lnet/minecraft/item/ItemStack;)V",
             "("+TransformerClass.IBakedModel.getName()+TransformerClass.ItemStack.getName()+")V"),
 
     // GlStateManager
@@ -63,6 +63,9 @@ public enum TransformerMethod {
     // ModelChest
     renderAll("renderAll", "func_78231_a", "a", "()V"),
 
+    // EntityPlayer
+    isPotionActive("isPotionActive", "func_70644_a", "a", "(Lnet/minecraft/potion/Potion;)Z","("+TransformerClass.Potion.getName()+")Z"),
+
     // EntityPlayerSP
     dropOneItem("dropOneItem", "func_71040_bB", "a", "(Z)Lnet/minecraft/entity/item/EntityItem;", "(Z)"+TransformerClass.EntityItem.getName()),
     setPlayerSPHealth("setPlayerSPHealth", "func_71150_b", "n", "(F)V"),
@@ -79,6 +82,8 @@ public enum TransformerMethod {
     rightClickMouse("rightClickMouse", "func_147121_ag", "ax", "()V"),
     isIntegratedServerRunning("isIntegratedServerRunning", "func_71387_A", "E", "()Z"),
     runTick("runTick", "func_71407_l", "s", "()V"),
+    clickMouse("clickMouse", "func_147116_af", "aw", "()V"),
+    sendClickBlockToController("sendClickBlockToController", "func_147115_a", "b", "(Z)V"),
 
     // MouseHelper
     ungrabMouseCursor("ungrabMouseCursor", "func_74373_b", "b", "()V"),
@@ -95,6 +100,7 @@ public enum TransformerMethod {
     // RendererLivingEntity
     rotateCorpse("rotateCorpse", "func_77043_a", "a", "(Lnet/minecraft/entity/EntityLivingBase;FFF)V", "("+TransformerClass.EntityLivingBase.getName()+"FFF)V"),
     isWearing("isWearing", "func_175148_a", "a", "(Lnet/minecraft/entity/player/EnumPlayerModelParts;)Z", "("+TransformerClass.EnumPlayerModelParts.getName()+")Z"),
+    renderModel_RendererLivingEntity("renderModel", "func_77036_a", "a", "(Lnet/minecraft/entity/EntityLivingBase;FFFFFF)V", "("+TransformerClass.EntityLivingBase.getName()+"FFFFFF)V"),
 
     // RenderManager
     shouldRender("shouldRender", "func_178635_a", "a", "(Lnet/minecraft/entity/Entity;Lnet/minecraft/client/renderer/culling/ICamera;DDD)Z", "("+TransformerClass.Entity.getName()+TransformerClass.ICamera.getName()+"DDD)Z"),
@@ -116,6 +122,12 @@ public enum TransformerMethod {
 
     // InventoryPlayer
     changeCurrentItem("changeCurrentItem", "func_70453_c", "d", "(I)V"),
+
+    // Render
+    getEntityTexture_RenderEnderman("getEntityTexture", "func_110775_a", "a", "(Lnet/minecraft/entity/monster/EntityEnderman;)Lnet/minecraft/util/ResourceLocation;", "("+TransformerClass.EntityEnderman.getName()+")"+TransformerClass.ResourceLocation.getName()),
+
+    // ModelBase
+    render("render", "func_78088_a", "a", "(Lnet/minecraft/entity/Entity;FFFFFF)V", "("+TransformerClass.Entity.getName()+"FFFFFF)V"),
 
     NULL(null,null,null,null,false);
 
@@ -153,6 +165,10 @@ public enum TransformerMethod {
 
     public String getName() {
         return name;
+    }
+
+    public String getDescription() {
+        return description;
     }
 
     public MethodNode createMethodNode() {
