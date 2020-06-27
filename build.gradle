@@ -17,7 +17,7 @@ compileJava.options.encoding = 'UTF-8'
 
 sourceSets {
     main {
-        output.resourcesDir = "$buildDir/classes/java/$name"
+        output.resourcesDir = java.outputDir
     }
 }
 
@@ -94,27 +94,6 @@ processResources {
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'
     }
-}
-
-// If you're in a dev environment, you need to run this task before running Minecraft.
-task processResourcesDev(type: Copy) {
-    inputs.property "version", project.version
-    inputs.property "mcversion", project.minecraft.version
-
-    // replace stuff in mcmod.info, nothing else
-    from(sourceSets.main.resources.srcDirs) {
-        include 'mcmod.info'
-        include 'data.json'
-
-        // replace version and mcversion
-        expand 'version':project.version, 'mcversion':project.minecraft.version, 'updatePullLink':project.updateJSON
-    }
-
-    // copy everything else that's not the mcmod.info
-    from(sourceSets.main.resources.srcDirs) {
-        exclude 'mcmod.info'
-    }
-    into sourceSets.main.java.outputDir
 }
 
 tasks.reobfJar.dependsOn(tasks.shadowJar)
