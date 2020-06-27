@@ -125,11 +125,11 @@
     "baitListDisplay": "Afficher la liste d'appâts en tenant une canne à pêche",
     "freezeBackpackPreview": "Maintenir l'aperçu du sac à dos ouvert",
     "hideGreyEnchants": "Masquer les enchantements gris",
-    "zealotCounterExplosiveBow": "Counteur de zealots avec l'arc explosif",
+    "zealotCounterExplosiveBow": "Compter les zealots avec l'arc explosif",
     "disableEndermanTeleportation": "Desactiver la téléportation des enderman",
     "changeZealotColor": "Changer la couleur des zealots",
-    "hideSvenPupNametags": "Cacher le nom des chiots de sven",
-    "turnAllFeaturesChroma": "Activer tous les chromas"
+    "hideSvenPupNametags": "Cacher les noms des chiots de Sven",
+    "turnAllFeaturesChroma": "Activer toutes les fonctionnalités Chroma"
   },
   "messages": {
     "dropConfirmation": "Jetez cet objet une nouvelle fois pour confirmer!",
@@ -215,10 +215,10 @@
     "titleAuto": "Statut automatique",
     "descriptionAuto": "Affiche automatiquement un statut. Par exemple, votre nombre de zealot dans l'end.",
     "titleRevenants": "Quête de Revenant",
-    "descriptionRevenants": "Montre que vous accomplissez une quête de revenants.",
-    "titleSvens": "Quete sven",
-    "descriptionSvens": "Montre que vous accomplissez une quête de sven.",
-    "titleTarantula": "Quete tarantula",
+    "descriptionRevenants": "Montre que vous accomplissez une quête de Revenant.",
+    "titleSvens": "Quête sven",
+    "descriptionSvens": "Montre que vous accomplissez une quête de Sven.",
+    "titleTarantula": "Quête tarantula",
     "descriptionTarantula": "Montre que vous accomplissez une quête de tarantula."
   }
 }
