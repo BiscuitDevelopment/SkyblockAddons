@@ -215,10 +215,10 @@
     "titleAuto": "随机状态",
     "descriptionAuto": "随机显示某一状态， 如在末地时显示末影战士击杀数。",
     "titleRevenants": "Revenant Quest",
-    "descriptionRevenants": "Shows that you are doing a Revenant quest.",
+    "descriptionRevenants": "显示你正在进行的 Revenant quest",
     "titleSvens": "Sven Quest",
-    "descriptionSvens": "Shows that you are doing a Sven quest.",
+    "descriptionSvens": "显示你正在进行的 Sven quest",
     "titleTarantula": "Tarantula Quest",
-    "descriptionTarantula": "Shows that you are doing a Tarantula quest."
+    "descriptionTarantula": "显示你正在进行的  Tarantula quest"
   }
 }
