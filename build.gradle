@@ -1,7 +1,7 @@
 plugins {
     id 'java'
     id 'net.minecraftforge.gradle.forge' version '2.1-SNAPSHOT'
-    id 'io.franzbecker.gradle-lombok' version '3.3.0'
+    id 'io.franzbecker.gradle-lombok' version '4.0.0'
     id 'com.github.johnrengelman.shadow' version '4.0.4'
 }
 
@@ -14,6 +14,12 @@ group = 'codes.biscuit'
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 compileJava.options.encoding = 'UTF-8'
+
+sourceSets {
+    main {
+        output.resourcesDir = "$buildDir/classes/java/$name"
+    }
+}
 
 minecraft {
     version = "${project.minecraftVersion}-${project.forgeVersion}"
@@ -54,6 +60,7 @@ jar {
 shadowJar {
     archiveName = tasks.jar.archiveName
     classifier = ''
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 
     manifest.attributes(
             'Main-Class': 'SkyblockAddonsInstallerFrame',

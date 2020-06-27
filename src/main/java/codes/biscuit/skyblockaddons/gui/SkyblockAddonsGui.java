@@ -35,7 +35,7 @@ public class SkyblockAddonsGui extends GuiScreen {
 
     public static final int BUTTON_MAX_WIDTH = 140;
 
-    private static String searchString = null;
+    private static String searchString;
 
     private GuiTextField featureSearchBar;
     private EnumUtils.GuiTab tab;
@@ -47,14 +47,14 @@ public class SkyblockAddonsGui extends GuiScreen {
 
     private long timeOpened = System.currentTimeMillis();
 
-    private boolean cancelClose = false;
+    private boolean cancelClose;
 
     /**
      * The main gui, opened with /sba.
      */
-    public SkyblockAddonsGui(SkyblockAddons main, int page, EnumUtils.GuiTab tab) {
+    public SkyblockAddonsGui(int page, EnumUtils.GuiTab tab) {
         this.tab = tab;
-        this.main = main;
+        this.main = SkyblockAddons.getInstance();
         this.page = page;
     }
 
@@ -200,22 +200,22 @@ public class SkyblockAddonsGui extends GuiScreen {
             Feature feature = ((ButtonFeature)abstractButton).getFeature();
             if (abstractButton instanceof ButtonSettings) {
                 main.getUtils().setFadingIn(false);
-                Minecraft.getMinecraft().displayGuiScreen(new SettingsGui(main, feature, 1, page, tab, feature.getSettings()));
+                Minecraft.getMinecraft().displayGuiScreen(new SettingsGui(feature, 1, page, tab, feature.getSettings()));
                 return;
             }
             if (feature == Feature.LANGUAGE) {
                 main.getUtils().setFadingIn(false);
-                Minecraft.getMinecraft().displayGuiScreen(new SettingsGui(main, Feature.LANGUAGE,1, page,tab, null));
+                Minecraft.getMinecraft().displayGuiScreen(new SettingsGui(Feature.LANGUAGE,1, page,tab, null));
             }  else if (feature == Feature.EDIT_LOCATIONS) {
                 main.getUtils().setFadingIn(false);
                 Minecraft.getMinecraft().displayGuiScreen(new LocationEditGui(main, page, tab));
             }  else if (feature == Feature.GENERAL_SETTINGS) {
                 if (tab == EnumUtils.GuiTab.GENERAL_SETTINGS) {
                     main.getUtils().setFadingIn(false);
-                    Minecraft.getMinecraft().displayGuiScreen(new SkyblockAddonsGui(main, 1, EnumUtils.GuiTab.MAIN));
+                    Minecraft.getMinecraft().displayGuiScreen(new SkyblockAddonsGui(1, EnumUtils.GuiTab.MAIN));
                 } else {
                     main.getUtils().setFadingIn(false);
-                    Minecraft.getMinecraft().displayGuiScreen(new SkyblockAddonsGui(main, 1, EnumUtils.GuiTab.GENERAL_SETTINGS));
+                    Minecraft.getMinecraft().displayGuiScreen(new SkyblockAddonsGui(1, EnumUtils.GuiTab.GENERAL_SETTINGS));
                 }
             } else if (abstractButton instanceof ButtonToggle) {
                 if (main.getConfigValues().isRemoteDisabled(feature)) return;
@@ -246,12 +246,12 @@ public class SkyblockAddonsGui extends GuiScreen {
                 if (feature == Feature.TEXT_STYLE) {
                     main.getConfigValues().setTextStyle(main.getConfigValues().getTextStyle().getNextType());
                     cancelClose = true;
-                    Minecraft.getMinecraft().displayGuiScreen(new SkyblockAddonsGui(main, page, tab));
+                    Minecraft.getMinecraft().displayGuiScreen(new SkyblockAddonsGui(page, tab));
                     cancelClose = false;
                 } else if (feature == Feature.CHROMA_MODE) {
                     main.getConfigValues().setChromaMode(main.getConfigValues().getChromaMode().getNextType());
                     cancelClose = true;
-                    Minecraft.getMinecraft().displayGuiScreen(new SkyblockAddonsGui(main, page, tab));
+                    Minecraft.getMinecraft().displayGuiScreen(new SkyblockAddonsGui(page, tab));
                     cancelClose = false;
                 } else if (feature == Feature.TURN_ALL_FEATURES_CHROMA) {
                     boolean enable = false;
@@ -297,16 +297,16 @@ public class SkyblockAddonsGui extends GuiScreen {
             if (arrow.isNotMax()) {
                 main.getUtils().setFadingIn(false);
                 if (arrow.getArrowType() == ButtonArrow.ArrowType.RIGHT) {
-                    mc.displayGuiScreen(new SkyblockAddonsGui(main, ++page, tab));
+                    mc.displayGuiScreen(new SkyblockAddonsGui(++page, tab));
                 } else {
-                    mc.displayGuiScreen(new SkyblockAddonsGui(main, --page, tab));
+                    mc.displayGuiScreen(new SkyblockAddonsGui(--page, tab));
                 }
             }
         } else if (abstractButton instanceof ButtonSwitchTab) {
             ButtonSwitchTab tab = (ButtonSwitchTab)abstractButton;
             if (tab.getTab() != this.tab) {
                 main.getUtils().setFadingIn(false);
-                mc.displayGuiScreen(new SkyblockAddonsGui(main, 1, tab.getTab()));
+                mc.displayGuiScreen(new SkyblockAddonsGui(1, tab.getTab()));
             }
         } else if (abstractButton instanceof ButtonSocial) {
             EnumUtils.Social social = ((ButtonSocial)abstractButton).getSocial();
@@ -495,7 +495,7 @@ public class SkyblockAddonsGui extends GuiScreen {
     private void addFeaturedBanner() {
         if (main.getOnlineData().getBannerImageURL() != null) {
             int halfWidth = width / 2;
-            buttonList.add(new ButtonBanner(halfWidth - 170, 15, main));
+            buttonList.add(new ButtonBanner(halfWidth - 170, 15));
         }
     }
 

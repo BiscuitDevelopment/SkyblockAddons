@@ -23,7 +23,7 @@ public class DiscordRPCManager implements IPCListener {
     private static final long APPLICATION_ID = 653443797182578707L;
     private static final long UPDATE_PERIOD = 4200L;
 
-    private final SkyblockAddons main;
+    private SkyblockAddons main = SkyblockAddons.getInstance();
     private IPCClient client;
     private DiscordStatus detailsLine;
     private DiscordStatus stateLine;
@@ -31,10 +31,6 @@ public class DiscordRPCManager implements IPCListener {
 
     private Timer updateTimer;
     private boolean connected;
-
-    public DiscordRPCManager(final SkyblockAddons main) {
-        this.main = main;
-    }
 
     public void start() {
         try {

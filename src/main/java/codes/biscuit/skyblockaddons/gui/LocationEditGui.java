@@ -38,10 +38,10 @@ public class LocationEditGui extends GuiScreen {
 
     private SkyblockAddons main;
     // The feature that is currently being dragged, or null for nothing.
-    private Feature dragging = null;
+    private Feature dragging;
 
-    private boolean resizing = false;
-    private ButtonResize.Corner resizingCorner = null;
+    private boolean resizing;
+    private ButtonResize.Corner resizingCorner;
 
     private int originalHeight;
     private int originalWidth;

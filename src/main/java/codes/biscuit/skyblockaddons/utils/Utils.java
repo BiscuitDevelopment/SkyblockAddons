@@ -38,6 +38,7 @@ import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.FMLLog;
 import net.minecraftforge.fml.common.Loader;
+import net.minecraftforge.fml.common.ModContainer;
 import org.apache.commons.lang3.mutable.MutableInt;
 import org.apache.commons.lang3.text.WordUtils;
 import org.apache.logging.log4j.Logger;
@@ -87,13 +88,13 @@ public class Utils {
     public static final String USER_AGENT = "SkyblockAddons/" + SkyblockAddons.VERSION;
 
     // I know this is messy af, but frustration led me to take this dark path - said someone not biscuit
-    public static boolean blockNextClick = false;
+    public static boolean blockNextClick;
 
     /** Get a player's attributes. This includes health, mana, and defence. */
     private Map<Attribute, MutableInt> attributes = new EnumMap<>(Attribute.class);
 
     /** This is the item checker that makes sure items being dropped or sold are allowed to be dropped or sold. */
-    private final ItemDropChecker itemDropChecker;
+    private final ItemDropChecker itemDropChecker = new ItemDropChecker();
 
     /** List of enchantments that the player is looking to find. */
     private List<String> enchantmentMatches = new LinkedList<>();
@@ -101,10 +102,10 @@ public class Utils {
     /** List of enchantment substrings that the player doesn't want to match. */
     private List<String> enchantmentExclusions = new LinkedList<>();
 
-    private Backpack backpackToPreview = null;
+    private Backpack backpackToPreview;
 
     /** Whether the player is on skyblock. */
-    private boolean onSkyblock = false;
+    private boolean onSkyblock;
 
     /** The player's current location in Skyblock */
     private Location location = Location.UNKNOWN;
@@ -113,14 +114,14 @@ public class Utils {
     private String profileName = "Unknown";
 
     /** Whether or not a loud sound is being played by the mod. */
-    private boolean playingSound = false;
+    private boolean playingSound;
 
     /** The current serverID that the player is on. */
     private String serverID = "";
     private int lastHoveredSlot = -1;
 
     /** Whether the player is using the old style of bars packaged into Imperial's Skyblock Pack. */
-    private boolean usingOldSkyBlockTexture = false;
+    private boolean usingOldSkyBlockTexture;
 
     /** Whether the player is using the default bars packaged into the mod. */
     private boolean usingDefaultBarTextures = true;
@@ -129,29 +130,26 @@ public class Utils {
     private double purse = 0;
     private int jerryWave = -1;
 
-    private boolean alpha = false;
-    private boolean inDungeon = false;
+    private boolean alpha;
+    private boolean inDungeon;
 
     private boolean fadingIn;
 
     // Featured link
-    private boolean lookedOnline = false;
-    private URI featuredLink = null;
+    private boolean lookedOnline;
+    private URI featuredLink;
 
     private long lastDamaged = -1;
 
-    private EnumUtils.SlayerQuest slayerQuest = null;
+    private EnumUtils.SlayerQuest slayerQuest;
     private int slayerQuestLevel = 1;
-    private boolean slayerBossAlive = false ;
+    private boolean slayerBossAlive;
 
-    private SkyblockAddons main;
-    private Logger logger;
+    private SkyblockAddons main = SkyblockAddons.getInstance();
+    private Logger logger = SkyblockAddons.getInstance().getLogger();
 
-    public Utils(SkyblockAddons main) {
-        this.main = main;
-        logger = SkyblockAddons.getInstance().getLogger();
+    public Utils() {
         addDefaultStats();
-        itemDropChecker = new ItemDropChecker(main);
     }
 
     private void addDefaultStats() {
@@ -1014,5 +1012,31 @@ public class Utils {
             GlStateManager.disableBlend();
         }
         GlStateManager.blendFunc(blendFunctionSrcFactor, blendFunctionDstFactor);
+    }
+
+    public boolean isModLoaded(String modId) {
+        return isModLoaded(modId, null);
+    }
+
+    /**
+     * Check if another mod is loaded.
+     *
+     * @param modId The modid to check.
+     * @param version The version of the mod to match (optional).
+     */
+    public boolean isModLoaded(String modId, String version) {
+        boolean isLoaded = Loader.isModLoaded(modId); // Check for the modid...
+
+        if (isLoaded && version != null) { // Check for the specific version...
+            for (ModContainer modContainer : Loader.instance().getModList()) {
+                if (modContainer.getModId().equals(modId) && modContainer.getVersion().equals(version)) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        return isLoaded;
     }
 }

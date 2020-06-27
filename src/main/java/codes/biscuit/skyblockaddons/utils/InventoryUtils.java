@@ -50,11 +50,7 @@ public class InventoryUtils {
 
     @Getter private SlayerArmorProgress[] slayerArmorProgresses = new SlayerArmorProgress[4];
 
-    private SkyblockAddons main;
-
-    public InventoryUtils(SkyblockAddons main) {
-        this.main = main;
-    }
+    private SkyblockAddons main = SkyblockAddons.getInstance();
 
     /**
      * Copies an inventory into a List of copied ItemStacks

@@ -64,7 +64,7 @@ public class ConfigValues {
         this.settingsConfigFile = settingsConfigFile;
     }
 
-    public void loadConfig() {
+    public void loadValues() {
         if (settingsConfigFile.exists()) {
             try {
                 FileReader reader = new FileReader(settingsConfigFile);
