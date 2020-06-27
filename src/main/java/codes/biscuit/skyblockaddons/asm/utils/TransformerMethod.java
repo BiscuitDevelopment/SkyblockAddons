@@ -82,6 +82,8 @@ public enum TransformerMethod {
     rightClickMouse("rightClickMouse", "func_147121_ag", "ax", "()V"),
     isIntegratedServerRunning("isIntegratedServerRunning", "func_71387_A", "E", "()Z"),
     runTick("runTick", "func_71407_l", "s", "()V"),
+    clickMouse("clickMouse", "func_147116_af", "aw", "()V"),
+    sendClickBlockToController("sendClickBlockToController", "func_147115_a", "b", "(Z)V"),
 
     // MouseHelper
     ungrabMouseCursor("ungrabMouseCursor", "func_74373_b", "b", "()V"),
