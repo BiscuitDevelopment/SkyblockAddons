@@ -36,7 +36,6 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.common.FMLLog;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.ModContainer;
 import org.apache.commons.lang3.mutable.MutableInt;
@@ -774,7 +773,7 @@ public class Utils {
     }
 
     public void tryPullingLanguageOnline(Language language) {
-        FMLLog.info("[SkyblockAddons] Attempting to pull updated language files from online.");
+        logger.info("Attempting to pull updated language files from online.");
         new Thread(() -> {
             try {
                 URL url = new URL(String.format(main.getOnlineData().getLanguageJSONFormat(), language.getPath()));
@@ -782,7 +781,7 @@ public class Utils {
                 connection.setRequestMethod("GET");
                 connection.setRequestProperty("User-Agent", Utils.USER_AGENT);
 
-                FMLLog.info("[SkyblockAddons] Got response code " + connection.getResponseCode());
+                logger.info("Got response code " + connection.getResponseCode());
 
                 StringBuilder response = new StringBuilder();
                 try (BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
