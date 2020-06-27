@@ -216,9 +216,9 @@
     "descriptionAuto": "Automatycznie wyświetla status. Np. liczba zealotów, gdy jesteś w Kresie.",
     "titleRevenants": "Revenant Quest",
     "descriptionRevenants": "Shows that you are doing a Revenant quest.",
-    "titleSvens": "Sven Quest",
-    "descriptionSvens": "Shows that you are doing a Sven quest.",
-    "titleTarantula": "Tarantula Quest",
-    "descriptionTarantula": "Shows that you are doing a Tarantula quest."
+    "titleSvens": "Zadanie Svena",
+    "descriptionSvens": "Pokazuje że robisz Zadanie Svena",
+    "titleTarantula": "Zadanie Tarantuli",
+    "descriptionTarantula": "Pokazuje że robisz Zadanie Tarantuli"
   }
 }
