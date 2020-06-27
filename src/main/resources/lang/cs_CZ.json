@@ -214,11 +214,11 @@
     "descriptionCustom": "Zadej vlastní status",
     "titleAuto": "Automatický status",
     "descriptionAuto": "Automaticky zobrazí status. Např. tvoje počítadlo zealotů v endu.",
-    "titleRevenants": "Revenant Quest",
-    "descriptionRevenants": "Shows that you are doing a Revenant quest.",
-    "titleSvens": "Sven Quest",
-    "descriptionSvens": "Shows that you are doing a Sven quest.",
-    "titleTarantula": "Tarantula Quest",
-    "descriptionTarantula": "Shows that you are doing a Tarantula quest."
+    "titleRevenants": "Úkol - Přízrak",
+    "descriptionRevenants": "Ukáže, že děláš úkol s Revenanty.",
+    "titleSvens": "Úkol - Sven",
+    "descriptionSvens": "Ukáže, že děláš úkol se Sveny.",
+    "titleTarantula": "Úkol - Tarantula",
+    "descriptionTarantula": "Ukáže, že děláš úkol s Tarantulami."
   }
 }
