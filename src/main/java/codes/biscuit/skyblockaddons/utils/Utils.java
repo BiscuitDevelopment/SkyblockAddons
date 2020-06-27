@@ -209,7 +209,11 @@ public class Utils {
         }
     }
 
+    private long lastFoundScoreboard = -1;
+
     public void checkGameLocationDate() {
+        boolean foundScoreboard = false;
+
         boolean foundLocation = false;
         boolean foundJerryWave = false;
         boolean foundAlphaIP = false;
@@ -222,6 +226,9 @@ public class Utils {
             ScoreObjective sidebarObjective = mc.theWorld.getScoreboard().getObjectiveInDisplaySlot(1);
 
             if (sidebarObjective != null) {
+                foundScoreboard = true;
+                lastFoundScoreboard = System.currentTimeMillis();
+
                 String objectiveName = TextUtils.stripColor(sidebarObjective.getDisplayName());
 
                 for (String skyblock : SKYBLOCK_IN_ALL_LANGUAGES) {
@@ -344,10 +351,16 @@ public class Utils {
         if (!foundInDungeon) {
             inDungeon = false;
         }
+
+        // If it's not a Skyblock scoreboard, the player must have left Skyblock and
+        // be in some other Hypixel lobby or game.
         if (!foundSkyblockTitle && this.isOnSkyblock()) {
-            // If it's not a Skyblock scoreboard, the player must have left Skyblock and
-            // be in some other Hypixel lobby or game.
-            MinecraftForge.EVENT_BUS.post(new SkyblockLeftEvent());
+
+            // Check if we found a scoreboard in general. If not, its possible they are switching worlds.
+            // If we don't find a scoreboard for 10s, then we know they actually left the server.
+            if (foundScoreboard || System.currentTimeMillis() - lastFoundScoreboard > 10000) {
+                MinecraftForge.EVENT_BUS.post(new SkyblockLeftEvent());
+            }
         }
     }
 
