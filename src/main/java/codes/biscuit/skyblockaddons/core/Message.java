@@ -125,6 +125,9 @@ public enum Message {
     SETTING_BOSS_APPROACH_ALERT(MessageObject.SETTING, "bossApproachAlert"),
     SETTING_DISABLE_TELEPORT_PAD_MESSAGES(MessageObject.SETTING, "disableTeleportPadMessages"),
     SETTING_BAIT_LIST(MessageObject.SETTING, "baitListDisplay"),
+    SETTING_EXPANDED(MessageObject.SETTING, "expanded"),
+    SETTING_SLAYER_TRACKER(MessageObject.SETTING, "slayerTracker"),
+    SETTING_COLOUR_BY_RARITY(MessageObject.SETTING, "colourByRarity"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.BACKPACK_STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.BACKPACK_STYLE, "compact"),

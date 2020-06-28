@@ -25,7 +25,8 @@ public class EnumUtils {
         BOTTOM_RIGHT(3),
         BOTTOM_MIDDLE(4);
 
-        @Getter private int id;
+        @Getter
+        private int id;
 
         AnchorPoint(int id) {
             this.id = id;
@@ -44,7 +45,8 @@ public class EnumUtils {
         public int getX(int maxX) {
             int x;
             switch (this) {
-                case TOP_RIGHT: case BOTTOM_RIGHT:
+                case TOP_RIGHT:
+                case BOTTOM_RIGHT:
                     x = maxX;
                     break;
                 case BOTTOM_MIDDLE:
@@ -60,7 +62,9 @@ public class EnumUtils {
         public int getY(int maxY) {
             int y;
             switch (this) {
-                case BOTTOM_LEFT: case BOTTOM_RIGHT: case BOTTOM_MIDDLE:
+                case BOTTOM_LEFT:
+                case BOTTOM_RIGHT:
+                case BOTTOM_MIDDLE:
                     y = maxY;
                     break;
                 default: // or case TOP_LEFT: case TOP_RIGHT:
@@ -83,8 +87,18 @@ public class EnumUtils {
         BAKER(null, "Baker"),
         CRAFTING_TABLE(INVENTORY_TYPE_CRAFTING, CraftingPattern.CRAFTING_TABLE_DISPLAYNAME);
 
-        /** The current inventory type. Can be null. */
-        @Getter private static InventoryType currentInventoryType;
+        /**
+         * The current inventory type. Can be null.
+         */
+        @Getter
+        private static InventoryType currentInventoryType;
+        private final Message message;
+        private final String inventoryName;
+
+        InventoryType(Message message, String inventoryName) {
+            this.message = message;
+            this.inventoryName = inventoryName;
+        }
 
         /**
          * Resets the current inventory type
@@ -102,20 +116,12 @@ public class EnumUtils {
          */
         public static InventoryType getCurrentInventoryType(String inventoryName) {
             for (InventoryType inventoryType : values()) {
-                if(inventoryType.inventoryName.equals(inventoryName)) {
+                if (inventoryType.inventoryName.equals(inventoryName)) {
                     currentInventoryType = inventoryType;
                     return inventoryType;
                 }
             }
             return null;
-        }
-
-        private final Message message;
-        private final String inventoryName;
-
-        InventoryType(Message message, String inventoryName) {
-            this.message = message;
-            this.inventoryName = inventoryName;
         }
 
         public String getMessage() {
@@ -138,8 +144,8 @@ public class EnumUtils {
         }
 
         public BackpackStyle getNextType() {
-            int nextType = ordinal()+1;
-            if (nextType > values().length-1) {
+            int nextType = ordinal() + 1;
+            if (nextType > values().length - 1) {
                 nextType = 0;
             }
             return values()[nextType];
@@ -161,8 +167,8 @@ public class EnumUtils {
         }
 
         public PowerOrbDisplayStyle getNextType() {
-            int nextType = ordinal()+1;
-            if (nextType > values().length-1) {
+            int nextType = ordinal() + 1;
+            if (nextType > values().length - 1) {
                 nextType = 0;
             }
             return values()[nextType];
@@ -184,15 +190,17 @@ public class EnumUtils {
         }
 
         public TextStyle getNextType() {
-            int nextType = ordinal()+1;
-            if (nextType > values().length-1) {
+            int nextType = ordinal() + 1;
+            if (nextType > values().length - 1) {
                 nextType = 0;
             }
             return values()[nextType];
         }
     }
 
-    /** Different detection methods of the magma boss are more accurate than others, display how accurate the time is. */
+    /**
+     * Different detection methods of the magma boss are more accurate than others, display how accurate the time is.
+     */
     @Getter
     public enum MagmaTimerAccuracy {
         NO_DATA("N/A"),
@@ -233,7 +241,7 @@ public class EnumUtils {
     /**
      * Settings that modify the behavior of features- without technically being
      * a feature itself.
-     *
+     * <p>
      * For the equivalent feature (that holds the state) use the ids instead of the enum directly
      * because the enum Feature depends on FeatureSetting, so FeatureSetting can't depend on Feature on creation.
      */
@@ -242,6 +250,8 @@ public class EnumUtils {
         GUI_SCALE(SETTING_GUI_SCALE, -1),
         ENABLED_IN_OTHER_GAMES(SETTING_SHOW_IN_OTHER_GAMES, -1),
         REPEATING(SETTING_REPEATING, -1),
+        EXPANDED(SETTING_EXPANDED, -1),
+        COLOUR_BY_RARITY(SETTING_COLOUR_BY_RARITY, -1),
         USE_VANILLA_TEXTURE(SETTING_USE_VANILLA_TEXTURE, 17),
         BACKPACK_STYLE(SETTING_BACKPACK_STYLE, -1),
         SHOW_ONLY_WHEN_HOLDING_SHIFT(SETTING_SHOW_ONLY_WHEN_HOLDING_SHIFT, 18),
@@ -253,11 +263,15 @@ public class EnumUtils {
         ENABLE_CAKE_BAG_PREVIEW(SETTING_SHOW_CAKE_BAG_PREVIEW, 71),
         ENABLE_BACKPACK_PREVIEW_AH(SETTING_SHOW_BACKPACK_PREVIEW_AH, 72),
         SORT_TAB_EFFECT_TIMERS(SETTING_SORT_TAB_EFFECT_TIMERS, 74),
+        SLAYER_ZOMBIE(SETTING_SLAYER_TRACKER, 100),
+        SLAYER_SPIDER(SETTING_SLAYER_TRACKER, 100),
+        SLAYER_WOLF(SETTING_SLAYER_TRACKER, 100),
 
         DISCORD_RP_STATE(null, 0),
         DISCORD_RP_DETAILS(null, 0);
 
-        @Getter private Message message;
+        @Getter
+        private Message message;
         private int featureEquivalent;
 
         FeatureSetting(Message message, int featureEquivalent) {
@@ -286,9 +300,9 @@ public class EnumUtils {
         ORCHID_ALLOY("orchidalloy", "github.com/orchidalloy", Feature.SUMMONING_EYE_ALERT, Feature.FISHING_SOUND_INDICATOR, Feature.ORGANIZE_ENCHANTMENTS),
         HIGH_CRIT("HighCrit", "github.com/HighCrit", Feature.PREVENT_MOVEMENT_ON_DEATH),
         MOULBERRY("Moulberry", "github.com/Moulberry", Feature.DONT_RESET_CURSOR_INVENTORY),
-        TOMOCRAFTER("tomocrafter","github.com/tomocrafter", Feature.AVOID_BLINKING_NIGHT_VISION, Feature.SLAYER_INDICATOR, Feature.NO_ARROWS_LEFT_ALERT, Feature.BOSS_APPROACH_ALERT),
+        TOMOCRAFTER("tomocrafter", "github.com/tomocrafter", Feature.AVOID_BLINKING_NIGHT_VISION, Feature.SLAYER_INDICATOR, Feature.NO_ARROWS_LEFT_ALERT, Feature.BOSS_APPROACH_ALERT),
         DAPIGGUY("DaPigGuy", "github.com/DaPigGuy", Feature.MINION_DISABLE_LOCATION_WARNING),
-        COMNIEMEER("comniemeer","github.com/comniemeer", Feature.JUNGLE_AXE_COOLDOWN),
+        COMNIEMEER("comniemeer", "github.com/comniemeer", Feature.JUNGLE_AXE_COOLDOWN),
         KEAGEL("Keagel", "github.com/Keagel", Feature.ONLY_MINE_ORES_DEEP_CAVERNS, Feature.DISABLE_MAGICAL_SOUP_MESSAGES),
         SUPERHIZE("SuperHiZe", "github.com/superhize", Feature.SPECIAL_ZEALOT_ALERT),
         DIDI_SKYWALKER("DidiSkywalker", "twitter.com/didiskywalker", Feature.ITEM_PICKUP_LOG, Feature.HEALTH_UPDATES, Feature.REPLACE_ROMAN_NUMERALS_WITH_NUMBERS,
@@ -299,7 +313,7 @@ public class EnumUtils {
         MYNAMEISJEFF("MyNameIsJeff", "github.com/My-Name-Is-Jeff", Feature.SHOW_BROKEN_FRAGMENTS),
         DJTHEREDSTONER("DJtheRedstoner", "github.com/DJtheRedstoner", Feature.LEGENDARY_SEA_CREATURE_WARNING),
         ANTONIO32A("Antonio32A", "github.com/Antonio32A", Feature.ONLY_BREAK_LOGS_PARK),
-        CHARZARD("Charzard4261", "github.com/Charzard4261", Feature.DISABLE_TELEPORT_PAD_MESSAGES, Feature.BAIT_LIST);
+        CHARZARD("Charzard4261", "github.com/Charzard4261", Feature.DISABLE_TELEPORT_PAD_MESSAGES, Feature.BAIT_LIST, Feature.ACTIONS_UNTIL_NEXT_LEVEL, Feature.SLAYER_TRACKERS);
 
         private Set<Feature> features;
         private String author;
@@ -323,7 +337,7 @@ public class EnumUtils {
         }
 
         public String getUrl() {
-            return "https://"+url;
+            return "https://" + url;
         }
     }
 
@@ -341,7 +355,8 @@ public class EnumUtils {
         OTHER(null, null);
 
         private String skillName;
-        @Getter private ItemStack item;
+        @Getter
+        private ItemStack item;
 
         SkillType(String skillName, Item item) {
             this.skillName = skillName;
@@ -368,7 +383,8 @@ public class EnumUtils {
         POWER_ORB_DISPLAY,
         TICKER,
         BAIT_LIST_DISPLAY,
-        TAB_EFFECT_TIMERS
+        TAB_EFFECT_TIMERS,
+        SLAYER_TRACKERS
     }
 
     @Getter
@@ -381,7 +397,7 @@ public class EnumUtils {
         private URI url;
 
         Social(String resourcePath, String url) {
-            this.resourceLocation = new ResourceLocation("skyblockaddons", "gui/"+resourcePath+".png");
+            this.resourceLocation = new ResourceLocation("skyblockaddons", "gui/" + resourcePath + ".png");
             try {
                 this.url = new URI(url);
             } catch (URISyntaxException e) {
@@ -412,8 +428,8 @@ public class EnumUtils {
         }
 
         public ChromaMode getNextType() {
-            int nextType = ordinal()+1;
-            if (nextType > values().length-1) {
+            int nextType = ordinal() + 1;
+            if (nextType > values().length - 1) {
                 nextType = 0;
             }
             return values()[nextType];

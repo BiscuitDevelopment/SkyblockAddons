@@ -75,15 +75,16 @@ public class InventoryUtils {
     }
 
     /**
-     * Compares previously recorded Inventory state with current Inventory state to determine changes and
-     * stores them in {@link #itemPickupLog}
+     * Compares previously recorded Inventory state with current Inventory state to determine changes
      *
      * @param currentInventory Current Inventory state
      */
-    public void getInventoryDifference(ItemStack[] currentInventory) {
+    public List<ItemDiff> getInventoryDifference(ItemStack[] currentInventory) {
         List<ItemStack> newInventory = copyInventory(currentInventory);
         Map<String, Integer> previousInventoryMap = new HashMap<>();
         Map<String, Integer> newInventoryMap = new HashMap<>();
+
+        List<ItemDiff> inventoryDifference = new LinkedList<>();
 
         if (previousInventory != null) {
 
@@ -110,7 +111,6 @@ public class InventoryUtils {
                 }
             }
 
-            List<ItemDiff> inventoryDifference = new LinkedList<>();
             Set<String> keySet = new HashSet<>(previousInventoryMap.keySet());
             keySet.addAll(newInventoryMap.keySet());
 
@@ -122,29 +122,35 @@ public class InventoryUtils {
                     inventoryDifference.add(new ItemDiff(key, diff));
                 }
             });
-
-            // Add changes to already logged changes of the same item, so it will increase/decrease the amount
-            // instead of displaying the same item twice
-            for (ItemDiff diff : inventoryDifference) {
-                Collection<ItemDiff> itemDiffs = itemPickupLog.get(diff.getDisplayName());
-                if (itemDiffs.size() <= 0) {
-                    itemPickupLog.put(diff.getDisplayName(), diff);
-                } else {
-                    boolean added = false;
-                    for (ItemDiff loopDiff : itemDiffs) {
-                        if ((diff.getAmount() < 0 && loopDiff.getAmount() < 0) ||
-                                (diff.getAmount() > 0 && loopDiff.getAmount() > 0)) {
-                            loopDiff.add(diff.getAmount());
-                            added = true;
-                        }
-                    }
-                    if (!added) itemPickupLog.put(diff.getDisplayName(), diff);
-                }
-            }
-
         }
 
         previousInventory = newInventory;
+        return inventoryDifference;
+    }
+
+    /**
+     * Stores provided list in {@link #itemPickupLog}
+     */
+    public void updatePickupLog(List<ItemDiff> inventoryDifference)
+    {
+        // Add changes to already logged changes of the same item, so it will increase/decrease the amount
+        // instead of displaying the same item twice
+        for (ItemDiff diff : inventoryDifference) {
+            Collection<ItemDiff> itemDiffs = itemPickupLog.get(diff.getDisplayName());
+            if (itemDiffs.size() <= 0) {
+                itemPickupLog.put(diff.getDisplayName(), diff);
+            } else {
+                boolean added = false;
+                for (ItemDiff loopDiff : itemDiffs) {
+                    if ((diff.getAmount() < 0 && loopDiff.getAmount() < 0) ||
+                            (diff.getAmount() > 0 && loopDiff.getAmount() > 0)) {
+                        loopDiff.add(diff.getAmount());
+                        added = true;
+                    }
+                }
+                if (!added) itemPickupLog.put(diff.getDisplayName(), diff);
+            }
+        }
     }
 
     /**

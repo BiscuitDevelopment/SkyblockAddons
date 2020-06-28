@@ -1,7 +1,7 @@
 {
     "homepage": "https://github.com/BiscuitDevelopment/SkyblockAddons/releases",
     "promos": {
-        "1.8.9-latest": "1.5.0-beta.17"
+        "1.8.9-latest": "1.5.0"
     },
     "1.8.9": {
         "1.5.0-beta.17": "New: \n- Added combat timer display!\n- Added simple rainmaker timer feature for the birch park \n\nChanges: \n- Add Chroma to more features \n- You can now use an empty item frame if it is empty while having the item frame feature enabled \n- Potion Timer improvements \n\nFixes: \n- Fixed possible crash if a warning message shows while disconnected \n- Fixed feature settings moving down after toggling full screen \n- Fixed revenant armor indicator not updating sometimes \n- Fixed command help formatting and command error messages \n\nPlease see #beta-tester-releases in the Discord for the full changelog.",
@@ -13,6 +13,7 @@
         "1.5.0-b13.2": "Fixes: \n-Fixed crash when entering a single player world (Thanks MagnetiteMC!) \n-Added hypixel.io to the list of Hypixel server domains (Thanks Neuroses!)",
         "1.5.0-b13.1": "Fixes: \n-Fixed crashes due to trying to get Skyblock item ID for non-Skyblock items, \n-Fixed checking for revenant armor and skeleton helmet when not on Skyblock",
         "1.5.0-b13": "New: \n-Skyblock Item IDs are now shown in advanced tooltips when in developer mode \n\nChanges: \n-Changed Enchanted Item Blacklist to use Skyblock Item IDs \n-Improved detection for whether player is on Skyblock \n\nFixes: \n-Fixed the Roman numeral replacement feature replacing the word \"I\" \n-Fixed the avoid placing enchanted items feature for enchanted lava buckets",
-        "1.5.0-b12": "New: \n-Changed to new versioning system \n-Add sub-setting to sort tab effect timers by duration \n-Add link to installation instructions when mod is opened directly instead of in Forge \n-Translations for new features (thank you to our awesome translators!) \n\nFixes: \n-Fix detection of tab effects when there are two in one line \n-Fix command usage formatting"
+        "1.5.0-b12": "New: \n-Changed to new versioning system \n-Add sub-setting to sort tab effect timers by duration \n-Add link to installation instructions when mod is opened directly instead of in Forge \n-Translations for new features (thank you to our awesome translators!) \n\nFixes: \n-Fix detection of tab effects when there are two in one line \n-Fix command usage formatting",
+        "1.5.0": "<Insert Changelog Here>"
     }
 }

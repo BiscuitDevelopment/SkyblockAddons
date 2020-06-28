@@ -3,7 +3,6 @@
   "bannerLink": null,
   "videoLink": "https://youtu.be/_BZMJm6JD4Q",
   "directDownload": null,
-  "updateJSON": "${updateJSON}",
   "languageJSONFormat": "https://raw.githubusercontent.com/BiscuitDevelopment/SkyblockAddons/development/src/main/resources/lang/%s.json",
   "disabledFeatures": {
     "all": [44],

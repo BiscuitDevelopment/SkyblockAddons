@@ -224,6 +224,18 @@ public class ActionBarParser {
         // Another Example: §5+§d30 §5Runecrafting (969/1000)
         Matcher matcher = COLLECTIONS_CHAT_PATTERN.matcher(skillSection);
         if (matcher.matches() && main.getConfigValues().isEnabled(Feature.SKILL_DISPLAY)) {
+            if (main.getConfigValues().isEnabled(Feature.ACTIONS_UNTIL_NEXT_LEVEL))
+            {
+                String numbers = matcher.group(3).substring(1,matcher.group(3).length()-1).replaceAll(",", "");
+                double current = Double.parseDouble(numbers.split("\\/")[0]);
+                int needed = Integer.parseInt(numbers.split("\\/")[1]);
+                double recent = Double.parseDouble(matcher.group(1));
+                main.getRenderListener().setSkillText("+" + matcher.group(1) + " " + matcher.group(3) + " " +
+                        (int)((needed-current)/recent) + " left");
+                main.getRenderListener().setSkill(EnumUtils.SkillType.getFromString(matcher.group(2)));
+                main.getRenderListener().setSkillFadeOutTime(System.currentTimeMillis() + 4000);
+                return null;
+            }
             main.getRenderListener().setSkillText("+" + matcher.group(1) + " " + matcher.group(3));
             main.getRenderListener().setSkill(EnumUtils.SkillType.getFromString(matcher.group(2)));
             main.getRenderListener().setSkillFadeOutTime(System.currentTimeMillis() + 4000);

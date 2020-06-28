@@ -124,7 +124,56 @@
     "disableTeleportPadMessages": "Disable Teleport Pad Messages",
     "baitListDisplay" : "Show Bait List While Holding a Rod",
     "freezeBackpackPreview": "Freeze Backpack Preview",
-    "hideGreyEnchants": "Hide Regular Grey Enchants"
+    "hideGreyEnchants": "Hide Regular Grey Enchants",
+    "expanded": "Expanded Display",
+    "slayerTracker" :  "Slayer Trackers",
+    "slayerKills" :  "Killed",
+    "slayerBosses": {
+      "zombie": {
+        "name": "Revenant Horror",
+        "killedName": "Revenants Killed",
+        "drops": {
+          "slayerDropRevenantFlesh": "Revenant Flesh",
+          "slayerDropFoulFlesh": "Foul Flesh",
+          "slayerDropPestilenceRunes": "Pestilence Runes",
+          "slayerDropUndeadCatalysts": "Undead Catalysts",
+          "slayerDropSmite6Books": "Smite VI Books",
+          "slayerDropBeheadedHorrors": "Beheaded Horrors",
+          "slayerDropRevenantCatalysts": "Revenant Catalysts",
+          "slayerDropSnakeRunes": "Snake Runes",
+          "slayerDropScytheBlades": "Scythe Blades"
+        }
+      },
+      "spider": {
+        "name": "Tarantula Broodfather",
+        "killedName": "Tarantulas Killed",
+        "drops": {
+          "slayerDropTarantulaWebs": "Tarantula Webs",
+          "slayerDropToxicArrowPoisons": "Toxic Arrow Poisons",
+          "slayerDropBiteRunes": "Bite Runes",
+          "slayerDropSpiderCatalysts": "Spider Catalysts",
+          "slayerDropBaneOfArthropod6Books": "Bane of Arthropod VI Books",
+          "slayerDropFlySwatters": "Fly Swatters",
+          "slayerDropTarantulaTalismans": "Tarantula Talismans",
+          "slayerDropDigestedMosquitoes": "Digested Mosquitoes"
+        }
+      },
+      "wolf": {
+        "name": "Sven Packmaster",
+        "killedName": "Svens Killed",
+        "drops": {
+          "slayerDropWolfTeeth": "Wolf Teeth",
+          "slayerDropHamsterWheels": "Hamster Wheels",
+          "slayerDropSpiritRunes": "Spirit Runes",
+          "slayerDropCrit6Books": "Critical VI Books",
+          "slayerDropGrizzlyBaits": "Grizzly Baits",
+          "slayerDropRedClawEggs": "Red Claw Eggs",
+          "slayerDropOverfluxes": "Overfluxes",
+          "slayerDropCoutureRunes": "Couture Runes"
+        }
+      }
+    },
+    "colourByRarity": "Colour By Rarity"
   },
   "messages": {
     "dropConfirmation": "Drop this item again to confirm!",

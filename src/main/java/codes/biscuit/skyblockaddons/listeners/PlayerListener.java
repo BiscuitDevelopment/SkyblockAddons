@@ -10,6 +10,7 @@ import codes.biscuit.skyblockaddons.utils.*;
 import codes.biscuit.skyblockaddons.utils.dev.DevUtils;
 import codes.biscuit.skyblockaddons.utils.item.ItemUtils;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
+import codes.biscuit.skyblockaddons.utils.slayertracker.SlayerTracker;
 import lombok.Getter;
 import lombok.Setter;
 import net.minecraft.client.Minecraft;
@@ -73,7 +74,8 @@ public class PlayerListener {
             "Your flight has been extended for 2 extra minutes."));
 
     private final Set<String> LEGENDARY_SEA_CREATURE_MESSAGES = new HashSet<>(Arrays.asList("The Water Hydra has come to test your strength.", "The Sea Emperor arises from the depths...", "What is this creature!?"));
-
+    private final SkyblockAddons main;
+    private final ActionBarParser actionBarParser;
     private long lastWorldJoin = -1;
     private long lastBoss = -1;
     private int magmaTick = 1;
@@ -88,23 +90,25 @@ public class PlayerListener {
     private long lastFishingAlert = 0;
     private long lastBobberEnteredWater = Long.MAX_VALUE;
     private long lastSkyblockServerJoinAttempt = 0;
-
-    @Getter private long rainmakerTimeEnd = -1;
-
+    @Getter
+    private long rainmakerTimeEnd = -1;
     private boolean oldBobberIsInWater = false;
     private double oldBobberPosY = 0;
-
     private Set<UUID> countedEndermen = new HashSet<>();
-
-    @Getter private Set<IntPair> recentlyLoadedChunks = new HashSet<>();
-
-    @Getter @Setter private EnumUtils.MagmaTimerAccuracy magmaAccuracy = EnumUtils.MagmaTimerAccuracy.NO_DATA;
-    @Getter @Setter private int magmaTime = 0;
-    @Getter @Setter private int recentMagmaCubes = 0;
-    @Getter @Setter private int recentBlazes = 0;
-
-    private final SkyblockAddons main;
-    private final ActionBarParser actionBarParser;
+    @Getter
+    private Set<IntPair> recentlyLoadedChunks = new HashSet<>();
+    @Getter
+    @Setter
+    private EnumUtils.MagmaTimerAccuracy magmaAccuracy = EnumUtils.MagmaTimerAccuracy.NO_DATA;
+    @Getter
+    @Setter
+    private int magmaTime = 0;
+    @Getter
+    @Setter
+    private int recentMagmaCubes = 0;
+    @Getter
+    @Setter
+    private int recentBlazes = 0;
 
     public PlayerListener(SkyblockAddons main) {
         this.main = main;
@@ -129,7 +133,7 @@ public class PlayerListener {
             IslandWarpGui.Marker doubleWarpMarker = IslandWarpGui.getDoubleWarpMarker();
             if (doubleWarpMarker != null) {
                 IslandWarpGui.setDoubleWarpMarker(null);
-                Minecraft.getMinecraft().thePlayer.sendChatMessage("/warp "+doubleWarpMarker.getWarpName());
+                Minecraft.getMinecraft().thePlayer.sendChatMessage("/warp " + doubleWarpMarker.getWarpName());
             }
         }
     }
@@ -199,12 +203,22 @@ public class PlayerListener {
                 main.getRenderListener().setTitleFeature(Feature.LEGENDARY_SEA_CREATURE_WARNING);
                 main.getScheduler().schedule(Scheduler.CommandType.RESET_TITLE_FEATURE, main.getConfigValues().getWarningSeconds());
 
-            }  else if (main.getConfigValues().isEnabled(Feature.DISABLE_MAGICAL_SOUP_MESSAGES) && SOUP_RANDOM_MESSAGES.contains(unformattedText)) {
+            } else if (main.getConfigValues().isEnabled(Feature.DISABLE_MAGICAL_SOUP_MESSAGES) && SOUP_RANDOM_MESSAGES.contains(unformattedText)) {
                 e.setCanceled(true);
 
             } else if (main.getConfigValues().isEnabled(Feature.DISABLE_TELEPORT_PAD_MESSAGES) && (formattedText.startsWith("§r§aWarped from ") || formattedText.equals("§r§cThis Teleport Pad does not have a destination set!§r"))) {
                 e.setCanceled(true);
 
+            } else if (formattedText.equalsIgnoreCase("§r  §r§6§lNICE! SLAYER BOSS SLAIN!§r")) {//§r§6§lRARE DROP! §r§9§lVERY RARE DROP! §r§c§ldCRAZY RARE DROP!
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTime(new Date());
+                calendar.add(Calendar.SECOND, -1);
+                SlayerTracker.getInstance().secondPriorTimestamp = calendar.getTime();
+                calendar.add(Calendar.SECOND, 11);
+                SlayerTracker.getInstance().stopAcceptingTimestamp = calendar.getTime();
+                SlayerTracker.getInstance().useCache();
+            } else if (formattedText.startsWith("§r   §r§5§l» §r§7Talk to Maddox to claim your ")) {
+                SlayerTracker.getInstance().addSlayerKill(unformattedText);
             } else if (formattedText.startsWith("§7Sending to server ")) {
                 lastSkyblockServerJoinAttempt = System.currentTimeMillis();
             } else if (unformattedText.equals("You laid an egg!")) { // Put the Chicken Head on cooldown for 20 seconds when the player lays an egg.
@@ -212,9 +226,9 @@ public class PlayerListener {
 
             } else if (formattedText.startsWith("§r§eYou added a minute of rain!")) {
                 if (this.rainmakerTimeEnd == -1 || this.rainmakerTimeEnd < System.currentTimeMillis()) {
-                    this.rainmakerTimeEnd = System.currentTimeMillis() + (1000*60); // Set the timer to a minute from now.
+                    this.rainmakerTimeEnd = System.currentTimeMillis() + (1000 * 60); // Set the timer to a minute from now.
                 } else {
-                    this.rainmakerTimeEnd += (1000*60); // Extend the timer one minute.
+                    this.rainmakerTimeEnd += (1000 * 60); // Extend the timer one minute.
                 }
             }
 
@@ -359,6 +373,7 @@ public class PlayerListener {
                     if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.TAB_EFFECT_TIMERS)) {
                         TabEffectManager.getInstance().updatePotionEffects();
                     }
+                    SlayerTracker.getInstance().cleanCache();
                 } else if (timerTick % 5 == 0) { // Check inventory, location, updates, and skeleton helmet every 1/4 second.
                     EntityPlayerSP p = mc.thePlayer;
                     if (p != null) {
@@ -372,9 +387,15 @@ public class PlayerListener {
                             main.getInventoryUtils().checkIfWearingSlayerArmor(p);
                         }
 
-                        if (mc.currentScreen == null && main.getConfigValues().isEnabled(Feature.ITEM_PICKUP_LOG)
-                                && main.getPlayerListener().didntRecentlyJoinWorld()) {
-                            main.getInventoryUtils().getInventoryDifference(p.inventory.mainInventory);
+                        if (mc.currentScreen == null && main.getPlayerListener().didntRecentlyJoinWorld()) {
+                            List<ItemDiff> invDifference = main.getInventoryUtils().getInventoryDifference(p.inventory.mainInventory);
+                            if (main.getConfigValues().isEnabled(Feature.ITEM_PICKUP_LOG))
+                                main.getInventoryUtils().updatePickupLog(invDifference);
+
+                            if (SlayerTracker.getInstance().stopAcceptingTimestamp != null && SlayerTracker.getInstance().stopAcceptingTimestamp.after(new Date()))
+                                SlayerTracker.getInstance().updateDrops(invDifference);
+                            else
+                                SlayerTracker.getInstance().cache.put(new Date(), invDifference);
                         }
                         if (main.getConfigValues().isEnabled(Feature.BAIT_LIST) && BaitListManager.getInstance().holdingRod()) {
                             BaitListManager.getInstance().refreshBaits();
@@ -450,6 +471,7 @@ public class PlayerListener {
             }
         }
     }
+
     private boolean isZealot(Entity enderman) {
         List<EntityArmorStand> stands = Minecraft.getMinecraft().theWorld.getEntitiesWithinAABB(EntityArmorStand.class,
                 new AxisAlignedBB(enderman.posX - 1, enderman.posY, enderman.posZ - 1, enderman.posX + 1, enderman.posY + 5, enderman.posZ + 1));
@@ -699,7 +721,7 @@ public class PlayerListener {
 
             if (e.gui instanceof GuiChest) {
                 Minecraft mc = Minecraft.getMinecraft();
-                IInventory chestInventory = ((GuiChest)e.gui).lowerChestInventory;
+                IInventory chestInventory = ((GuiChest) e.gui).lowerChestInventory;
                 if (chestInventory.hasCustomName()) {
                     if (chestInventory.getDisplayName().getUnformattedText().contains("Backpack")) {
                         if (ThreadLocalRandom.current().nextInt(0, 2) == 0) {

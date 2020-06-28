@@ -75,7 +75,7 @@ public enum Feature {
     JUNGLE_AXE_COOLDOWN(51, Message.SETTING_JUNGLE_AXE_COOLDOWN, true),
     ORGANIZE_ENCHANTMENTS(52, Message.SETTING_ORGANIZE_ENCHANTMENTS, false),
     SHOW_ITEM_COOLDOWNS(53, Message.SETTING_SHOW_ITEM_COOLDOWNS, false),
-    SKILL_DISPLAY(54, Message.SETTING_COLLECTION_DISPLAY, new GuiFeatureData(EnumUtils.DrawType.TEXT, ChatFormatting.AQUA, EnumUtils.AnchorPoint.BOTTOM_MIDDLE, 0, -66), false),
+    SKILL_DISPLAY(54, Message.SETTING_COLLECTION_DISPLAY, new GuiFeatureData(EnumUtils.DrawType.TEXT, ChatFormatting.AQUA, EnumUtils.AnchorPoint.BOTTOM_MIDDLE, 0, -66), false, EnumUtils.FeatureSetting.EXPANDED),
     SPEED_PERCENTAGE(55, Message.SETTING_SPEED_PERCENTAGE, new GuiFeatureData(EnumUtils.DrawType.TEXT, ChatFormatting.WHITE, EnumUtils.AnchorPoint.BOTTOM_MIDDLE, -110, -11), false),
     ONLY_MINE_ORES_DEEP_CAVERNS(56, Message.SETTING_ONLY_MINE_ORES_DEEP_CAVERNS, new GuiFeatureData(ChatFormatting.RED, true),true, EnumUtils.FeatureSetting.ENABLE_MESSAGE_WHEN_ACTION_PREVENTED),
     SLAYER_INDICATOR(57, Message.SETTING_SLAYER_INDICATOR, new GuiFeatureData(EnumUtils.DrawType.REVENANT_PROGRESS, ChatFormatting.AQUA, EnumUtils.AnchorPoint.BOTTOM_RIGHT, -84, -29), true),
@@ -119,6 +119,12 @@ public enum Feature {
     BOSS_APPROACH_ALERT(86, Message.SETTING_BOSS_APPROACH_ALERT, false),
     DISABLE_TELEPORT_PAD_MESSAGES(87, Message.SETTING_DISABLE_TELEPORT_PAD_MESSAGES, false),
     BAIT_LIST(88, Message.SETTING_BAIT_LIST, new GuiFeatureData(EnumUtils.DrawType.BAIT_LIST_DISPLAY, ChatFormatting.AQUA, EnumUtils.AnchorPoint.TOP_LEFT, 36, 100), true),
+    ACTIONS_UNTIL_NEXT_LEVEL(99, null, true),
+    SLAYER_TRACKERS(100, Message.SETTING_SLAYER_TRACKER, new GuiFeatureData(EnumUtils.DrawType.SLAYER_TRACKERS, ChatFormatting.DARK_GREEN, EnumUtils.AnchorPoint.BOTTOM_LEFT, 20, -10), false, EnumUtils.FeatureSetting.SLAYER_ZOMBIE, EnumUtils.FeatureSetting.SLAYER_SPIDER, EnumUtils.FeatureSetting.SLAYER_WOLF, EnumUtils.FeatureSetting.COLOUR_BY_RARITY),
+    SLAYER_ZOMBIE(101, null, true),
+    SLAYER_SPIDER(102, null, true),
+    SLAYER_WOLF(103, null, true),
+    SLAYER_COLOUR_BY_RARITY(104, null, true),
 
     WARNING_TIME(-1, Message.SETTING_WARNING_DURATION, false),
 
@@ -148,7 +154,8 @@ public enum Feature {
             USE_VANILLA_TEXTURE_DEFENCE, SHOW_BACKPACK_HOLDING_SHIFT, SHOW_MAGMA_TIMER_IN_OTHER_GAMES,
             MAKE_BACKPACK_INVENTORIES_COLORED, CHANGE_BAR_COLOR_FOR_POTIONS, ENABLE_MESSAGE_WHEN_BREAKING_STEMS,
             ENABLE_MESSAGE_WHEN_MINING_DEEP_CAVERNS, ENABLE_MESSAGE_WHEN_MINING_NETHER, HIDE_NIGHT_VISION_EFFECT_TIMER,
-            CAKE_BAG_PREVIEW, BACKPACK_PREVIEW_AH, REPEAT_FULL_INVENTORY_WARNING, SORT_TAB_EFFECT_TIMERS, DOUBLE_WARP);
+            CAKE_BAG_PREVIEW, BACKPACK_PREVIEW_AH, REPEAT_FULL_INVENTORY_WARNING, SORT_TAB_EFFECT_TIMERS, DOUBLE_WARP,
+            ACTIONS_UNTIL_NEXT_LEVEL, SLAYER_ZOMBIE, SLAYER_SPIDER, SLAYER_WOLF, SLAYER_COLOUR_BY_RARITY);
 
     /**
      * Features that are considered gui ones. This is used for examnple when saving the config to ensure that these features'
@@ -157,7 +164,7 @@ public enum Feature {
     @Getter private static Set<Feature> guiFeatures = new LinkedHashSet<>(Arrays.asList(MAGMA_BOSS_TIMER, MANA_BAR, MANA_TEXT, DEFENCE_ICON, DEFENCE_TEXT,
             DEFENCE_PERCENTAGE, HEALTH_BAR, HEALTH_TEXT, SKELETON_BAR, HEALTH_UPDATES, ITEM_PICKUP_LOG, DARK_AUCTION_TIMER, SKILL_DISPLAY, SPEED_PERCENTAGE, SLAYER_INDICATOR,
             POWER_ORB_STATUS_DISPLAY, ZEALOT_COUNTER, TICKER_CHARGES_DISPLAY, TAB_EFFECT_TIMERS, SHOW_TOTAL_ZEALOT_COUNT, SHOW_SUMMONING_EYE_COUNT,
-            SHOW_AVERAGE_ZEALOTS_PER_EYE, BIRCH_PARK_RAINMAKER_TIMER, COMBAT_TIMER_DISPLAY, ENDSTONE_PROTECTOR_DISPLAY, BAIT_LIST));
+            SHOW_AVERAGE_ZEALOTS_PER_EYE, BIRCH_PARK_RAINMAKER_TIMER, COMBAT_TIMER_DISPLAY, ENDSTONE_PROTECTOR_DISPLAY, BAIT_LIST, SLAYER_TRACKERS));
 
     private static final int ID_AT_PREVIOUS_UPDATE = 63;
 
@@ -232,6 +239,8 @@ public enum Feature {
                 main.getRenderListener().drawPotionEffectTimers(scale, buttonLocation);
             } else if(guiFeatureData.getDrawType() == EnumUtils.DrawType.BAIT_LIST_DISPLAY) {
                 main.getRenderListener().drawBaitList(mc, scale, buttonLocation);
+            } else if(guiFeatureData.getDrawType() == EnumUtils.DrawType.SLAYER_TRACKERS) {
+                main.getRenderListener().drawSlayerTrackers(mc, scale, buttonLocation);
             }
         }
     }
