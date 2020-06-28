@@ -9,7 +9,7 @@ import java.awt.*;
 public class ChromaManager {
 
 
-    @Getter private static boolean coloringTextChroma = false;
+    @Getter private static boolean coloringTextChroma;
 
     private static float currentHue = 0;
     private static Color currentColor = new Color(Color.HSBtoRGB(0, 0.72F, 0.90F));

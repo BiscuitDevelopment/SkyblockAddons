@@ -62,7 +62,7 @@ public class ButtonToggleNew extends GuiButton {
 
         main.getUtils().bindRGBColor(0xFF1e252e);
         mc.getTextureManager().bindTexture(TOGGLE_BORDER);
-        drawModalRectWithCustomSizedTexture(xPosition, yPosition,0,0,width,height,width,height);
+        main.getUtils().drawModalRectWithCustomSizedTexture(xPosition, yPosition,0,0,width,height,width,height, true);
 
         boolean enabled = enabledSupplier.get();
         if (enabled) {
@@ -72,7 +72,7 @@ public class ButtonToggleNew extends GuiButton {
         }
 
         mc.getTextureManager().bindTexture(TOGGLE_INSIDE_BACKGROUND);
-        drawModalRectWithCustomSizedTexture(xPosition, yPosition,0,0,width,height,width,height);
+        main.getUtils().drawModalRectWithCustomSizedTexture(xPosition, yPosition,0,0,width,height,width,height, true);
 
         int startingX = getButtonStartingX(enabled);
         int slideAnimationOffset = 0;
@@ -95,7 +95,7 @@ public class ButtonToggleNew extends GuiButton {
         mc.getTextureManager().bindTexture(TOGGLE_INSIDE_CIRCLE);
         int circleSize = Math.round(height*0.6F); // 60% of the height.
         int y = Math.round(yPosition+(this.height*0.2F)); // 20% OF the height.
-        drawModalRectWithCustomSizedTexture(startingX, y,0,0, circleSize, circleSize, circleSize, circleSize);
+        main.getUtils().drawModalRectWithCustomSizedTexture(startingX, y,0,0, circleSize, circleSize, circleSize, circleSize, true);
     }
 
     /**

@@ -15,7 +15,7 @@ public class FontRendererTransformer implements ITransformer {
      */
     @Override
     public String[] getClassName() {
-        return new String[]{TransformerClass.FontRenderer.getTransformerName()};
+        return new String[]{TransformerClass.FontRenderer.getTransformerName(), "club.sk1er.patcher.hooks.FontRendererHook"};
     }
 
     @Override
@@ -30,7 +30,7 @@ public class FontRendererTransformer implements ITransformer {
             //   FontRendererHook.changeTextColor(); <- insert the call right before the return
             //   return f4;
 
-            if (TransformerMethod.renderChar.matches(methodNode)) {
+            if (TransformerMethod.renderChar.matches(methodNode) || methodNode.name.equals("renderChar")) {
                 Iterator<AbstractInsnNode> iterator = methodNode.instructions.iterator();
                 while (iterator.hasNext()) {
                     AbstractInsnNode abstractNode = iterator.next();

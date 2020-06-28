@@ -57,6 +57,7 @@ public class GuiChestHook {
         }
 
         islandWarpGui = null;
+        BackpackManager.setOpenedBackpackColor(null);
     }
 
     public static void drawScreenIslands(int mouseX, int mouseY, ReturnValue<?> returnValue) {
@@ -346,8 +347,7 @@ public class GuiChestHook {
         Minecraft mc = Minecraft.getMinecraft();
 
         if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.SHOW_BACKPACK_PREVIEW) &&
-                main.getConfigValues().isEnabled(Feature.MAKE_BACKPACK_INVENTORIES_COLORED)
-                && lowerChestInventory.hasCustomName()) {
+                main.getConfigValues().isEnabled(Feature.MAKE_BACKPACK_INVENTORIES_COLORED) && lowerChestInventory.hasCustomName()) {
             if (lowerChestInventory.getDisplayName().getUnformattedText().contains("Backpack")) {
                 if (BackpackManager.getOpenedBackpackColor() != null) {
                     BackpackColor color = BackpackManager.getOpenedBackpackColor();
@@ -367,7 +367,10 @@ public class GuiChestHook {
     }
 
     public static int drawString(FontRenderer fontRenderer, String text, int x, int y, int color) {
-        if (BackpackManager.getOpenedBackpackColor() != null) {
+        SkyblockAddons main = SkyblockAddons.getInstance();
+
+        if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.SHOW_BACKPACK_PREVIEW) &&
+                main.getConfigValues().isEnabled(Feature.MAKE_BACKPACK_INVENTORIES_COLORED) && BackpackManager.getOpenedBackpackColor() != null) {
             return fontRenderer.drawString(text, x,y, BackpackManager.getOpenedBackpackColor().getInventoryTextColor());
         }
         return fontRenderer.drawString(text,x,y,color);

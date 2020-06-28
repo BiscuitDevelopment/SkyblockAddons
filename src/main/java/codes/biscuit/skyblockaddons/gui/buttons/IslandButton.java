@@ -4,7 +4,6 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.gui.IslandWarpGui;
 import lombok.Getter;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
@@ -61,13 +60,13 @@ public class IslandButton extends GuiButton {
         mouseX -= IslandWarpGui.SHIFT_LEFT;
         mouseY -= IslandWarpGui.SHIFT_TOP;
 
-        int x = island.getX();
-        int y = island.getY();
-        int h = island.getH();
-        int w = island.getW();
+        float x = island.getX();
+        float y = island.getY();
+        float h = island.getH();
+        float w = island.getW();
 
-        int centerX = x+(w/2);
-        int centerY = y+(h/2);
+        float centerX = x+(w/2F);
+        float centerY = y+(h/2F);
         float expansion = 1;
         boolean hovered = false;
 
@@ -80,10 +79,10 @@ public class IslandButton extends GuiButton {
             expansion *= 0.10;
             expansion += 1;
 
-            h = Math.round(h*expansion);
-            w = Math.round(w*expansion);
-            x = centerX-(w/2);
-            y = centerY-(h/2);
+            h = h*expansion;
+            w = w*expansion;
+            x = centerX-(w/2F);
+            y = centerY-(h/2F);
         } else if (isStoppingHovering()) {
             int hoverTime = (int)(System.currentTimeMillis() - stoppedHover);
 
@@ -93,10 +92,10 @@ public class IslandButton extends GuiButton {
                 expansion *= 0.10;
                 expansion += 1;
 
-                h = Math.round(h*expansion);
-                w = Math.round(w*expansion);
-                x = centerX-(w/2);
-                y = centerY-(h/2);
+                h = h*expansion;
+                w = w*expansion;
+                x = centerX-(w/2F);
+                y = centerY-(h/2F);
             } else {
                 stoppedHover = -1;
             }
@@ -179,7 +178,7 @@ public class IslandButton extends GuiButton {
             }
 
             mc.getTextureManager().bindTexture(island.getResourceLocation());
-            Gui.drawModalRectWithCustomSizedTexture(x, y, 0, 0, w, h, w, h);
+            SkyblockAddons.getInstance().getUtils().drawModalRectWithCustomSizedTexture(x, y, 0, 0, w, h, w, h);
 
             for (IslandMarkerButton marker : markerButtons) {
                 marker.drawButton(x, y, expansion, hovered, unlocked, this.markers.get(marker.getMarker()));

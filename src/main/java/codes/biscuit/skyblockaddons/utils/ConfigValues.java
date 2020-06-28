@@ -64,7 +64,7 @@ public class ConfigValues {
         this.settingsConfigFile = settingsConfigFile;
     }
 
-    public void loadConfig() {
+    public void loadValues() {
         if (settingsConfigFile.exists()) {
             try {
                 FileReader reader = new FileReader(settingsConfigFile);
@@ -218,7 +218,7 @@ public class ConfigValues {
         Minecraft mc = Minecraft.getMinecraft();
         if (mc != null) {
             if (mc.getLanguageManager() != null && mc.getLanguageManager().getCurrentLanguage().getLanguageCode() != null) {
-                String minecraftLanguage = Minecraft.getMinecraft().getLanguageManager().getCurrentLanguage().getLanguageCode().toLowerCase();
+                String minecraftLanguage = Minecraft.getMinecraft().getLanguageManager().getCurrentLanguage().getLanguageCode().toLowerCase(Locale.US);
                 Language configLanguage = Language.getFromPath(minecraftLanguage);
                 if (configLanguage != null) { // Check if we have the exact locale they are using for Minecraft
                     language.setValue(configLanguage);
@@ -590,10 +590,11 @@ public class ConfigValues {
 
     /**
      * @param feature The feature to check.
-     * @return Whether the feature is remotely disabled.
+     * @return Whether the feature is remotely disabled.d
      */
     public boolean isRemoteDisabled(Feature feature) {
-        // Check all versions.
+        if (feature == null) return false;
+
         if (main.getOnlineData().getDisabledFeatures().containsKey("all")) {
             return main.getOnlineData().getDisabledFeatures().get("all").contains(feature.getId());
         }

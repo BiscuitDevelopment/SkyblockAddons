@@ -36,11 +36,12 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.common.FMLLog;
 import net.minecraftforge.fml.common.Loader;
+import net.minecraftforge.fml.common.ModContainer;
 import org.apache.commons.lang3.mutable.MutableInt;
 import org.apache.commons.lang3.text.WordUtils;
 import org.apache.logging.log4j.Logger;
+import org.lwjgl.opengl.GL11;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -75,6 +76,9 @@ public class Utils {
     ));
 
     private static final Pattern SERVER_REGEX = Pattern.compile("([0-9]{2}/[0-9]{2}/[0-9]{2}) (mini[0-9]{1,3}[A-Za-z])");
+    private static final Pattern PURSE_REGEX = Pattern.compile("(?:Purse|Piggy): (?<coins>[0-9.]*)(?: .*)?");
+    private static final Pattern SLAYER_TYPE_REGEX = Pattern.compile("(?<type>Tarantula Broodfather|Revenant Horror|Sven Packmaster) (?<level>[IV]+)");
+    private static final Pattern SLAYER_PROGRESS_REGEX = Pattern.compile("(?<progress>[0-9.k]*)/(?<total>[0-9.k]*) (?:Kills|Combat XP)$");
 
     /** In English, Chinese Simplified. */
     private static final Set<String> SKYBLOCK_IN_ALL_LANGUAGES = Sets.newHashSet("SKYBLOCK","\u7A7A\u5C9B\u751F\u5B58");
@@ -83,13 +87,13 @@ public class Utils {
     public static final String USER_AGENT = "SkyblockAddons/" + SkyblockAddons.VERSION;
 
     // I know this is messy af, but frustration led me to take this dark path - said someone not biscuit
-    public static boolean blockNextClick = false;
+    public static boolean blockNextClick;
 
     /** Get a player's attributes. This includes health, mana, and defence. */
     private Map<Attribute, MutableInt> attributes = new EnumMap<>(Attribute.class);
 
     /** This is the item checker that makes sure items being dropped or sold are allowed to be dropped or sold. */
-    private final ItemDropChecker itemDropChecker;
+    private final ItemDropChecker itemDropChecker = new ItemDropChecker();
 
     /** List of enchantments that the player is looking to find. */
     private List<String> enchantmentMatches = new LinkedList<>();
@@ -97,10 +101,10 @@ public class Utils {
     /** List of enchantment substrings that the player doesn't want to match. */
     private List<String> enchantmentExclusions = new LinkedList<>();
 
-    private Backpack backpackToPreview = null;
+    private Backpack backpackToPreview;
 
     /** Whether the player is on skyblock. */
-    private boolean onSkyblock = false;
+    private boolean onSkyblock;
 
     /** The player's current location in Skyblock */
     private Location location = Location.UNKNOWN;
@@ -109,14 +113,14 @@ public class Utils {
     private String profileName = "Unknown";
 
     /** Whether or not a loud sound is being played by the mod. */
-    private boolean playingSound = false;
+    private boolean playingSound;
 
     /** The current serverID that the player is on. */
     private String serverID = "";
     private int lastHoveredSlot = -1;
 
     /** Whether the player is using the old style of bars packaged into Imperial's Skyblock Pack. */
-    private boolean usingOldSkyBlockTexture = false;
+    private boolean usingOldSkyBlockTexture;
 
     /** Whether the player is using the default bars packaged into the mod. */
     private boolean usingDefaultBarTextures = true;
@@ -125,31 +129,26 @@ public class Utils {
     private double purse = 0;
     private int jerryWave = -1;
 
-    private boolean alpha = false;
-    private boolean inDungeon = false;
+    private boolean alpha;
+    private boolean inDungeon;
 
     private boolean fadingIn;
 
     // Featured link
-    private boolean lookedOnline = false;
-    private URI featuredLink = null;
+    private boolean lookedOnline;
+    private URI featuredLink;
 
     private long lastDamaged = -1;
 
-    // Slayer Quest
-    private int currentKills = 0;
-    private int targetKills = 0;
-    private int currentExp = 0;
-    private int targetExp = 0;
+    private EnumUtils.SlayerQuest slayerQuest;
+    private int slayerQuestLevel = 1;
+    private boolean slayerBossAlive;
 
-    private SkyblockAddons main;
-    private Logger logger;
+    private SkyblockAddons main = SkyblockAddons.getInstance();
+    private Logger logger = SkyblockAddons.getInstance().getLogger();
 
-    public Utils(SkyblockAddons main) {
-        this.main = main;
-        logger = SkyblockAddons.getInstance().getLogger();
+    public Utils() {
         addDefaultStats();
-        itemDropChecker = new ItemDropChecker(main);
     }
 
     private void addDefaultStats() {
@@ -215,11 +214,18 @@ public class Utils {
         }
     }
 
+    private long lastFoundScoreboard = -1;
+
     public void checkGameLocationDate() {
+        boolean foundScoreboard = false;
+
         boolean foundLocation = false;
         boolean foundJerryWave = false;
         boolean foundAlphaIP = false;
         boolean foundInDungeon = false;
+        boolean foundSlayerQuest = false;
+        boolean foundBossAlive = false;
+        boolean foundSkyblockTitle = false;
         Minecraft mc = Minecraft.getMinecraft();
 
         if (mc != null && mc.theWorld != null && !mc.isSingleplayer() && isOnHypixel()) {
@@ -227,29 +233,22 @@ public class Utils {
             ScoreObjective sidebarObjective = mc.theWorld.getScoreboard().getObjectiveInDisplaySlot(1);
 
             if (sidebarObjective != null) {
+                foundScoreboard = true;
+                lastFoundScoreboard = System.currentTimeMillis();
+
                 String objectiveName = TextUtils.stripColor(sidebarObjective.getDisplayName());
-                boolean isSkyblockScoreboard = false;
 
                 for (String skyblock : SKYBLOCK_IN_ALL_LANGUAGES) {
                     if (objectiveName.startsWith(skyblock)) {
-                        isSkyblockScoreboard = true;
+                        foundSkyblockTitle = true;
                         break;
                     }
                 }
 
-                // Copied from SkyblockLib, should be removed when we switch to use that
-                if (isSkyblockScoreboard) {
-                    // If it's a Skyblock scoreboard and the player has not joined Skyblock yet,
-                    // this indicates that he did so.
-                    if(!this.isOnSkyblock()) {
-                        MinecraftForge.EVENT_BUS.post(new SkyblockJoinedEvent());
-                    }
-                } else {
-                    // If it's not a Skyblock scoreboard, the player must have left Skyblock and
-                    // be in some other Hypixel lobby or game.
-                    if(this.isOnSkyblock()) {
-                        MinecraftForge.EVENT_BUS.post(new SkyblockLeftEvent());
-                    }
+                // If it's a Skyblock scoreboard and the player has not joined Skyblock yet,
+                // this indicates that he did so.
+                if (foundSkyblockTitle && !this.isOnSkyblock()) {
+                    MinecraftForge.EVENT_BUS.post(new SkyblockJoinedEvent());
                 }
 
                 Collection<Score> scoreboardLines = scoreboard.getSortedScores(sidebarObjective);
@@ -276,25 +275,30 @@ public class Utils {
                         dateString = strippedLine;
                     }
 
-                    if (strippedLine.startsWith("Purse") || strippedLine.startsWith("Piggy")) {
+                    Matcher matcher = PURSE_REGEX.matcher(strippedLine);
+                    if (matcher.matches()) {
                         try {
-                            purse = Double.parseDouble(TextUtils.keepFloatCharactersOnly(strippedLine));
+                            double oldCoins = purse;
+                            purse = Double.parseDouble(matcher.group("coins"));
+
+                            if (oldCoins != purse) {
+                                onCoinsChange(purse-oldCoins);
+                            }
                         } catch(NumberFormatException ignored) {
                             purse = 0;
                         }
                     }
 
                     if (strippedLine.contains("mini")) {
-                        Matcher matcher = SERVER_REGEX.matcher(strippedLine);
+                        matcher = SERVER_REGEX.matcher(strippedLine);
                         if (matcher.matches()) {
                             serverID = matcher.group(2);
                         }
                     }
 
                     if (strippedLine.endsWith("Combat XP") || strippedLine.endsWith("Kills")) {
-                        parseSlayerXPProgress(strippedLine);
+                        parseSlayerProgress(strippedLine);
                     }
-
 
                     for (Location loopLocation : Location.values()) {
                         if (strippedLine.endsWith(loopLocation.getScoreboardName())) {
@@ -338,6 +342,30 @@ public class Utils {
                         foundInDungeon = true;
                         inDungeon = true;
                     }
+
+                    matcher = SLAYER_TYPE_REGEX.matcher(strippedLine);
+                    if (matcher.matches()) {
+                        String type = matcher.group("type");
+                        String levelRomanNumeral = matcher.group("level");
+
+                        EnumUtils.SlayerQuest detectedSlayerQuest = EnumUtils.SlayerQuest.fromName(type);
+                        if (detectedSlayerQuest != null) {
+                            try {
+                                int level = RomanNumeralParser.parseNumeral(levelRomanNumeral);
+                                slayerQuest = detectedSlayerQuest;
+                                slayerQuestLevel = level;
+                                foundSlayerQuest = true;
+
+                            } catch (IllegalArgumentException ex) {
+                                ex.printStackTrace();
+                            }
+                        }
+                    }
+
+                    if (strippedLine.equals("Slay the boss!")) {
+                        foundBossAlive = true;
+                        slayerBossAlive = true;
+                    }
                 }
                 currentDate = SkyblockDate.parse(dateString, timeString);
             }
@@ -354,39 +382,61 @@ public class Utils {
         if (!foundInDungeon) {
             inDungeon = false;
         }
+        if (!foundSlayerQuest) {
+            slayerQuestLevel = 1;
+            slayerQuest = null;
+        }
+        if (!foundBossAlive) {
+            slayerBossAlive = false;
+        }
+
+        // If it's not a Skyblock scoreboard, the player must have left Skyblock and
+        // be in some other Hypixel lobby or game.
+        if (!foundSkyblockTitle && this.isOnSkyblock()) {
+
+            // Check if we found a scoreboard in general. If not, its possible they are switching worlds.
+            // If we don't find a scoreboard for 10s, then we know they actually left the server.
+            if (foundScoreboard || System.currentTimeMillis() - lastFoundScoreboard > 10000) {
+                MinecraftForge.EVENT_BUS.post(new SkyblockLeftEvent());
+            }
+        }
     }
 
-    private void parseSlayerXPProgress(final String line) {
-        String[] format = line.trim().split(" ")[0].split("/");
+    private boolean triggeredSlayerWarning = false;
+    private float lastCompletion;
 
-        boolean doAlert = false;
+    private void parseSlayerProgress(String line) {
+        if (!main.getConfigValues().isEnabled(Feature.BOSS_APPROACH_ALERT)) return;
 
-        if (line.endsWith("Kills")) {
-            int oldCurrentKills = this.currentKills;
-            this.currentKills = Integer.parseInt(format[0]);
+        Matcher matcher = SLAYER_PROGRESS_REGEX.matcher(line);
+        if (matcher.find()) {
+            String progressString = matcher.group("progress");
+            String totalString = matcher.group("total");
 
-            this.targetKills = Integer.parseInt(format[1]);
+            float progress = Float.parseFloat(TextUtils.keepFloatCharactersOnly(progressString));
+            float total = Float.parseFloat(TextUtils.keepFloatCharactersOnly(totalString));
 
-            doAlert = oldCurrentKills != this.currentKills && (float) this.currentKills / this.targetKills > 0.9; // If boss percentage to spawn boss over 90%
-        } else if (line.endsWith("Combat XP")) {
-            int oldCurrentExp = this.currentExp;
-            this.currentExp = Integer.parseInt(format[0]);
+            if (progressString.contains("k")) progress *= 1000;
+            if (totalString.contains("k")) total *= 1000;
 
-            if (format[1].endsWith("k")) {
-                float f = Float.parseFloat(format[1].substring(0, format[1].length() - 1));
-                this.targetExp = (int) (f * 1000);
+            float completion = progress/total;
+
+            if (completion > 0.85) {
+                if (!triggeredSlayerWarning || (main.getConfigValues().isEnabled(Feature.REPEAT_SLAYER_BOSS_WARNING) && completion != lastCompletion)) {
+                    triggeredSlayerWarning = true;
+                    main.getUtils().playLoudSound("random.orb", 0.5);
+                    main.getRenderListener().setTitleFeature(Feature.BOSS_APPROACH_ALERT);
+                    main.getScheduler().schedule(Scheduler.CommandType.RESET_TITLE_FEATURE, main.getConfigValues().getWarningSeconds());
+                }
             } else {
-                this.targetExp = Integer.parseInt(format[1]);
+                triggeredSlayerWarning = false; // Reset warning flag when completion is below 85%, meaning they started a new quest.
             }
 
-            doAlert = oldCurrentExp != this.currentExp && (float) this.currentExp / this.targetExp > 0.9;
+            lastCompletion = completion;
         }
+    }
 
-        if (main.getConfigValues().isEnabled(Feature.BOSS_APPROACH_ALERT) && doAlert) {
-            main.getUtils().playLoudSound("random.orb", 0.5);
-            main.getRenderListener().setTitleFeature(Feature.BOSS_APPROACH_ALERT);
-            main.getScheduler().schedule(Scheduler.CommandType.RESET_TITLE_FEATURE, main.getConfigValues().getWarningSeconds());
-        }
+    private void onCoinsChange(double coinsChange) {
     }
 
     public int getDefaultColor(float alphaFloat) {
@@ -417,13 +467,13 @@ public class Utils {
     }
 
     public boolean enchantReforgeMatches(String text) {
-        text = text.toLowerCase();
+        text = text.toLowerCase(Locale.US);
         for (String enchant : enchantmentMatches) {
-            enchant = enchant.trim().toLowerCase();
+            enchant = enchant.trim().toLowerCase(Locale.US);
             if (StringUtil.notEmpty(enchant) && text.contains(enchant)) {
                 boolean foundExclusion = false;
                 for (String exclusion : enchantmentExclusions) {
-                    exclusion = exclusion.trim().toLowerCase();
+                    exclusion = exclusion.trim().toLowerCase(Locale.US);
                     if (StringUtil.notEmpty(exclusion) && text.contains(exclusion)) {
                         foundExclusion = true;
                         break;
@@ -599,18 +649,23 @@ public class Utils {
     }
 
     public void drawTextWithStyle(String text, float x, float y, int color) {
+        GlStateManager.pushMatrix();
+        GlStateManager.translate(x, y, 0);
+
         if (main.getConfigValues().getTextStyle() == EnumUtils.TextStyle.STYLE_TWO) {
             int colorAlpha = Math.max(getAlpha(color), 4);
             int colorBlack = new Color(0, 0, 0, colorAlpha/255F).getRGB();
             String strippedText = TextUtils.stripColor(text);
-            Minecraft.getMinecraft().fontRendererObj.drawString(strippedText, x + 1, y, colorBlack, false);
-            Minecraft.getMinecraft().fontRendererObj.drawString(strippedText, x - 1, y, colorBlack, false);
-            Minecraft.getMinecraft().fontRendererObj.drawString(strippedText, x, y + 1, colorBlack, false);
-            Minecraft.getMinecraft().fontRendererObj.drawString(strippedText, x, y - 1, colorBlack, false);
-            Minecraft.getMinecraft().fontRendererObj.drawString(text, x, y, color, false);
+            Minecraft.getMinecraft().fontRendererObj.drawString(strippedText,1, 0, colorBlack, false);
+            Minecraft.getMinecraft().fontRendererObj.drawString(strippedText, -1, 0, colorBlack, false);
+            Minecraft.getMinecraft().fontRendererObj.drawString(strippedText, 0, 1, colorBlack, false);
+            Minecraft.getMinecraft().fontRendererObj.drawString(strippedText, 0, -1, colorBlack, false);
+            Minecraft.getMinecraft().fontRendererObj.drawString(text, 0, 0, color, false);
         } else {
-            Minecraft.getMinecraft().fontRendererObj.drawString(text, x, y, color, true);
+            Minecraft.getMinecraft().fontRendererObj.drawString(text, 0, 0, color, true);
         }
+
+        GlStateManager.popMatrix();
     }
     public int getDefaultBlue(int alpha) {
         return new Color(160, 225, 229, alpha).getRGB();
@@ -622,7 +677,7 @@ public class Utils {
             int nameEnd = enchantments.get(i).lastIndexOf(' ');
             if (nameEnd < 0) nameEnd = enchantments.get(i).length();
 
-            int key = ORDERED_ENCHANTMENTS.indexOf(enchantments.get(i).substring(0, nameEnd).toLowerCase());
+            int key = ORDERED_ENCHANTMENTS.indexOf(enchantments.get(i).substring(0, nameEnd).toLowerCase(Locale.US));
             if (key < 0) key = 100 + i;
             orderedEnchants.put(key, enchantments.get(i));
         }
@@ -677,11 +732,19 @@ public class Utils {
         return color + ((alpha << 24) & 0xFF000000);
     }
 
+    public void drawModalRectWithCustomSizedTexture(float x, float y, float u, float v, float width, float height, float textureWidth, float textureHeight) {
+        drawModalRectWithCustomSizedTexture(x, y, u, v, width, height, textureWidth, textureHeight, false);
+    }
+
     /**
      * Draws a textured rectangle at z = 0. Args: x, y, u, v, width, height, textureWidth, textureHeight
      */
-    public void drawModalRectWithCustomSizedTexture(float x, float y, float u, float v, float width, float height, float textureWidth, float textureHeight)
-    {
+    public void drawModalRectWithCustomSizedTexture(float x, float y, float u, float v, float width, float height, float textureWidth, float textureHeight, boolean linearTexture) {
+        if (linearTexture) {
+            GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MIN_FILTER, GL11.GL_LINEAR);
+            GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MAG_FILTER, GL11.GL_LINEAR);
+        }
+
         float f = 1.0F / textureWidth;
         float f1 = 1.0F / textureHeight;
         Tessellator tessellator = Tessellator.getInstance();
@@ -692,13 +755,17 @@ public class Utils {
         worldrenderer.pos(x + width, y, 0.0D).tex((u + width) * f, v * f1).endVertex();
         worldrenderer.pos(x, y, 0.0D).tex(u * f, v * f1).endVertex();
         tessellator.draw();
+
+        if (linearTexture) {
+            GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MIN_FILTER, GL11.GL_NEAREST);
+            GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MAG_FILTER, GL11.GL_NEAREST);
+        }
     }
 
     /**
      * Draws a solid color rectangle with the specified coordinates and color (ARGB format). Args: x1, y1, x2, y2, color
      */
-    public void drawRect(double left, double top, double right, double bottom, int color)
-    {
+    public void drawRect(double left, double top, double right, double bottom, int color) {
         if (left < right) {
             double i = left;
             left = right;
@@ -757,7 +824,7 @@ public class Utils {
     }
 
     public void tryPullingLanguageOnline(Language language) {
-        FMLLog.info("[SkyblockAddons] Attempting to pull updated language files from online.");
+        logger.info("Attempting to pull updated language files from online.");
         new Thread(() -> {
             try {
                 URL url = new URL(String.format(main.getOnlineData().getLanguageJSONFormat(), language.getPath()));
@@ -765,7 +832,7 @@ public class Utils {
                 connection.setRequestMethod("GET");
                 connection.setRequestProperty("User-Agent", Utils.USER_AGENT);
 
-                FMLLog.info("[SkyblockAddons] Got response code " + connection.getResponseCode());
+                logger.info("Got response code " + connection.getResponseCode());
 
                 StringBuilder response = new StringBuilder();
                 try (BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
@@ -836,6 +903,8 @@ public class Utils {
 
                 main.setOnlineData(new Gson().fromJson(response.toString(), OnlineData.class));
                 logger.info("Successfully grabbed online data.");
+
+                main.getUpdater().processUpdateCheckResult();
             } catch (Exception ex) {
                 logger.warn("There was an error while trying to pull the online data...");
                 logger.catching(ex);
@@ -922,5 +991,64 @@ public class Utils {
                 Items.golden_axe.equals(item) ||
                 Items.iron_axe.equals(item) ||
                 Items.diamond_axe.equals(item);
+    }
+
+    private boolean depthEnabled;
+    private boolean blendEnabled;
+    private boolean alphaEnabled;
+    private int blendFunctionSrcFactor;
+    private int blendFunctionDstFactor;
+
+    public void enableStandardGLOptions() {
+        depthEnabled = GL11.glIsEnabled(GL11.GL_DEPTH_TEST);
+        blendEnabled = GL11.glIsEnabled(GL11.GL_BLEND);
+        alphaEnabled = GL11.glIsEnabled(GL11.GL_ALPHA_TEST);
+        blendFunctionSrcFactor = GL11.glGetInteger(GL11.GL_BLEND_SRC);
+        blendFunctionDstFactor = GL11.glGetInteger(GL11.GL_BLEND_DST);
+
+        GlStateManager.disableDepth();
+        GlStateManager.enableBlend();
+        GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+        GlStateManager.enableAlpha();
+        GlStateManager.color(1, 1, 1, 1);
+    }
+
+    public void restoreGLOptions() {
+        if (depthEnabled) {
+            GlStateManager.enableDepth();
+        }
+        if (!alphaEnabled) {
+            GlStateManager.disableAlpha();
+        }
+        if (!blendEnabled) {
+            GlStateManager.disableBlend();
+        }
+        GlStateManager.blendFunc(blendFunctionSrcFactor, blendFunctionDstFactor);
+    }
+
+    public boolean isModLoaded(String modId) {
+        return isModLoaded(modId, null);
+    }
+
+    /**
+     * Check if another mod is loaded.
+     *
+     * @param modId The modid to check.
+     * @param version The version of the mod to match (optional).
+     */
+    public boolean isModLoaded(String modId, String version) {
+        boolean isLoaded = Loader.isModLoaded(modId); // Check for the modid...
+
+        if (isLoaded && version != null) { // Check for the specific version...
+            for (ModContainer modContainer : Loader.instance().getModList()) {
+                if (modContainer.getModId().equals(modId) && modContainer.getVersion().equals(version)) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        return isLoaded;
     }
 }

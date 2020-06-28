@@ -2,6 +2,7 @@ package codes.biscuit.skyblockaddons.gui.buttons;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
+import codes.biscuit.skyblockaddons.core.Message;
 import codes.biscuit.skyblockaddons.utils.nifty.reflection.MinecraftReflection;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.SoundHandler;
@@ -38,6 +39,17 @@ public class ButtonSolid extends ButtonText {
             displayString = main.getConfigValues().getChromaMode().getMessage();
         } else if (feature == Feature.WARNING_TIME) {
             displayString = main.getConfigValues().getWarningSeconds()+"s";
+        } else if (feature == Feature.TURN_ALL_FEATURES_CHROMA) {
+            boolean enable = false;
+            for (Feature loopFeature : Feature.values()) {
+                if (loopFeature.getGuiFeatureData() != null && loopFeature.getGuiFeatureData().getDefaultColor() != null) {
+                    if (!main.getConfigValues().getChromaFeatures().contains(loopFeature)) {
+                        enable = true;
+                        break;
+                    }
+                }
+            }
+            displayString = (enable ? Message.MESSAGE_ENABLE_ALL : Message.MESSAGE_DISABLE_ALL).getMessage();
         }
         int alpha;
         float alphaMultiplier = 1F;

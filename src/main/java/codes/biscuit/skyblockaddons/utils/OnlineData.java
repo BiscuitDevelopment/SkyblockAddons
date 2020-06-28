@@ -12,9 +12,11 @@ public class OnlineData {
     private String bannerImageURL;
     private String bannerLink;
     private String videoLink;
+
+    private String latestVersion;
+    private String latestBeta;
     private String directDownload;
 
-    private String updateJSON;
     private String languageJSONFormat;
 
     private Map<String, List<Integer>> disabledFeatures;

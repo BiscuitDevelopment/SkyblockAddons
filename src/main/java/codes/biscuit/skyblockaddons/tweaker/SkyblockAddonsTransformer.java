@@ -5,6 +5,7 @@ import codes.biscuit.skyblockaddons.tweaker.transformer.ITransformer;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.launchwrapper.IClassTransformer;
+import org.apache.commons.lang3.mutable.MutableInt;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.objectweb.asm.ClassReader;
@@ -76,6 +77,9 @@ public class SkyblockAddonsTransformer implements IClassTransformer {
         registerTransformer(new RenderItemTransformer());
         registerTransformer(new EntityLivingBaseTransformer());
         registerTransformer(new InventoryPlayerTransformer());
+        registerTransformer(new GuiIngameCustomTransformer());
+        registerTransformer(new RenderEndermanTransformer());
+        registerTransformer(new ModelEndermanTransformer());
     }
 
     private void registerTransformer(ITransformer transformer) {
@@ -97,12 +101,18 @@ public class SkyblockAddonsTransformer implements IClassTransformer {
         ClassNode node = new ClassNode();
         reader.accept(node, ClassReader.EXPAND_FRAMES);
 
+        MutableInt classWriterFlags = new MutableInt(ClassWriter.COMPUTE_FRAMES | ClassWriter.COMPUTE_MAXS);
+
         transformers.forEach(transformer -> {
             logger.info("Applying transformer {} on {}...", transformer.getClass().getName(), transformedName);
             transformer.transform(node, transformedName);
+
+            if (transformer instanceof FontRendererTransformer) {
+                classWriterFlags.setValue(0);
+            }
         });
 
-        ClassWriter writer = new ClassWriter(ClassWriter.COMPUTE_FRAMES | ClassWriter.COMPUTE_MAXS);
+        ClassWriter writer = new ClassWriter(classWriterFlags.getValue());
 
         try {
             node.accept(writer);
@@ -125,7 +135,7 @@ public class SkyblockAddonsTransformer implements IClassTransformer {
                 File bytecodeDirectory = new File("bytecode");
                 File bytecodeOutput = new File(bytecodeDirectory, transformedName + ".class");
 
-                if (!bytecodeDirectory.exists()) bytecodeDirectory.mkdirs();
+                if (!bytecodeDirectory.exists()) return;
                 if (!bytecodeOutput.exists()) bytecodeOutput.createNewFile();
 
                 FileOutputStream os = new FileOutputStream(bytecodeOutput);

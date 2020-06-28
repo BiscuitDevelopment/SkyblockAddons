@@ -17,11 +17,8 @@ import org.lwjgl.input.Keyboard;
  * @version 1.0
  */
 public class GuiScreenListener {
-    private final SkyblockAddons main;
 
-    public GuiScreenListener(SkyblockAddons main) {
-        this.main = main;
-    }
+    private SkyblockAddons main = SkyblockAddons.getInstance();
 
     /**
      * Listens for key presses while a GUI is open

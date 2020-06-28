@@ -14,8 +14,8 @@ import java.util.List;
 
 public class EntityLivingBaseHook {
 
-    public static void onResetHurtTime(EntityLivingBase player) {
-        if (player == Minecraft.getMinecraft().thePlayer) {
+    public static void onResetHurtTime(EntityLivingBase entity) {
+        if (entity == Minecraft.getMinecraft().thePlayer) {
             SkyblockAddons main = SkyblockAddons.getInstance();
             if (!main.getUtils().isOnSkyblock() || !main.getConfigValues().isEnabled(Feature.COMBAT_TIMER_DISPLAY)) {
                 return;
@@ -26,8 +26,8 @@ public class EntityLivingBaseHook {
                     new AxisAlignedBB(mc.thePlayer.posX - 3, mc.thePlayer.posY - 2, mc.thePlayer.posZ - 3, mc.thePlayer.posX + 3, mc.thePlayer.posY + 2, mc.thePlayer.posZ + 3));
             boolean foundPossibleAttacker = false;
 
-            for (Entity entity : nearEntities) {
-                if (entity instanceof EntityMob || entity instanceof EntityWolf || entity instanceof IProjectile) {
+            for (Entity nearEntity : nearEntities) {
+                if (nearEntity instanceof EntityMob || nearEntity instanceof EntityWolf || nearEntity instanceof IProjectile) {
                     foundPossibleAttacker = true;
                     break;
                 }

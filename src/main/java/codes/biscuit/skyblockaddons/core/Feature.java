@@ -50,7 +50,7 @@ public enum Feature {
     DARK_AUCTION_TIMER(28, Message.SETTING_DARK_AUCTION_TIMER, new GuiFeatureData(EnumUtils.DrawType.TEXT, ChatFormatting.GOLD, EnumUtils.AnchorPoint.TOP_RIGHT, -26, 28), false, EnumUtils.FeatureSetting.ENABLED_IN_OTHER_GAMES),
     ITEM_PICKUP_LOG(29, Message.SETTING_ITEM_PICKUP_LOG, new GuiFeatureData(EnumUtils.DrawType.PICKUP_LOG, EnumUtils.AnchorPoint.TOP_LEFT, 86, 17), false),
     AVOID_PLACING_ENCHANTED_ITEMS(30, Message.SETTING_AVOID_PLACING_ENCHANTED_ITEMS, false),
-    STOP_BOW_CHARGE_FROM_RESETTING(31, Message.SETTING_STOP_BOW_CHARGE_FROM_RESETTING, false),
+    @Deprecated STOP_BOW_CHARGE_FROM_RESETTING(31, Message.SETTING_STOP_BOW_CHARGE_FROM_RESETTING, false), // Removed on request by Hypixel admins.
     AVOID_BREAKING_STEMS(32, Message.SETTING_AVOID_BREAKING_STEMS, new GuiFeatureData(ChatFormatting.RED, true), false, EnumUtils.FeatureSetting.ENABLE_MESSAGE_WHEN_ACTION_PREVENTED),
     SHOW_DARK_AUCTION_TIMER_IN_OTHER_GAMES(33, null, false),
     SHOW_ITEM_ANVIL_USES(34, Message.SETTING_SHOW_ITEM_ANVIL_USES, new GuiFeatureData(ChatFormatting.RED, true), false),
@@ -65,7 +65,7 @@ public enum Feature {
     DONT_OPEN_PROFILES_WITH_BOW(41, Message.SETTING_DONT_OPEN_PROFILES_WITH_BOW, new GuiFeatureData(ChatFormatting.RED, true), false),
     STOP_DROPPING_SELLING_RARE_ITEMS(42, Message.SETTING_STOP_DROPPING_SELLING_RARE_ITEMS, new GuiFeatureData(ChatFormatting.RED, true), false),
     MAKE_BACKPACK_INVENTORIES_COLORED(43, Message.SETTING_MAKE_BACKPACK_INVENTORIES_COLORED, false),
-    @Deprecated AVOID_BREAKING_BOTTOM_SUGAR_CANE(44, Message.SETTING_AVOID_BREAKING_BOTTOM_SUGAR_CANE, false), // Disallowed by the Hypixel admins.
+    @Deprecated AVOID_BREAKING_BOTTOM_SUGAR_CANE(44, Message.SETTING_AVOID_BREAKING_BOTTOM_SUGAR_CANE, false), // Removed on request by Hypixel admins.
     REPLACE_ROMAN_NUMERALS_WITH_NUMBERS(45, Message.SETTING_REPLACE_ROMAN_NUMERALS_WITH_NUMBERS, true),
     CHANGE_BAR_COLOR_FOR_POTIONS(46, Message.SETTING_CHANGE_BAR_COLOR_WITH_POTIONS, false),
     CRAFTING_PATTERNS(47, Message.SETTING_CRAFTING_PATTERNS, false),
@@ -114,11 +114,16 @@ public enum Feature {
     DOUBLE_WARP(86, Message.SETTING_DOUBLE_WARP, true),
     HIDE_GREY_ENCHANTS(87, Message.SETTING_HIDE_GREY_ENCHANTS, false),
     LEGENDARY_SEA_CREATURE_WARNING(88, Message.SETTING_LEGENDARY_SEA_CREATURE_WARNING, new GuiFeatureData(ChatFormatting.RED), false),
-    ONLY_BREAK_LOGS_PARK(84, Message.SETTING_ONLY_BREAK_LOGS_PARK, new GuiFeatureData(ChatFormatting.RED, true), false, EnumUtils.FeatureSetting.ENABLE_MESSAGE_WHEN_ACTION_PREVENTED),
-    ENABLE_MESSAGE_WHEN_BREAKING_PARK(85, null, false),
-    BOSS_APPROACH_ALERT(86, Message.SETTING_BOSS_APPROACH_ALERT, false),
-    DISABLE_TELEPORT_PAD_MESSAGES(87, Message.SETTING_DISABLE_TELEPORT_PAD_MESSAGES, false),
-    BAIT_LIST(88, Message.SETTING_BAIT_LIST, new GuiFeatureData(EnumUtils.DrawType.BAIT_LIST_DISPLAY, ChatFormatting.AQUA, EnumUtils.AnchorPoint.TOP_LEFT, 36, 100), true),
+    ONLY_BREAK_LOGS_PARK(89, Message.SETTING_ONLY_BREAK_LOGS_PARK, new GuiFeatureData(ChatFormatting.RED, true), false, EnumUtils.FeatureSetting.ENABLE_MESSAGE_WHEN_ACTION_PREVENTED),
+    ENABLE_MESSAGE_WHEN_BREAKING_PARK(90, null, false),
+    BOSS_APPROACH_ALERT(91, Message.SETTING_BOSS_APPROACH_ALERT, false, EnumUtils.FeatureSetting.REPEATING),
+    DISABLE_TELEPORT_PAD_MESSAGES(92, Message.SETTING_DISABLE_TELEPORT_PAD_MESSAGES, false),
+    BAIT_LIST(93, Message.SETTING_BAIT_LIST, new GuiFeatureData(EnumUtils.DrawType.BAIT_LIST_DISPLAY, ChatFormatting.AQUA, EnumUtils.AnchorPoint.TOP_LEFT, 36, 100), true),
+    ZEALOT_COUNTER_EXPLOSIVE_BOW_SUPPORT(94, Message.SETTING_ZEALOT_COUNTER_EXPLOSIVE_BOW_SUPPORT, true),
+    DISABLE_ENDERMAN_TELEPORTATION_EFFECT(95, Message.SETTING_DISABLE_ENDERMAN_TELEPORTATION_EFFECT, true),
+    CHANGE_ZEALOT_COLOR(96, Message.SETTING_CHANGE_ZEALOT_COLOR, new GuiFeatureData(ChatFormatting.LIGHT_PURPLE), true),
+    HIDE_SVEN_PUP_NAMETAGS(97, Message.SETTING_HIDE_SVEN_PUP_NAMETAGS, true),
+    REPEAT_SLAYER_BOSS_WARNING(98, null, true),
     ACTIONS_UNTIL_NEXT_LEVEL(99, null, true),
     SLAYER_TRACKERS(100, Message.SETTING_SLAYER_TRACKER, new GuiFeatureData(EnumUtils.DrawType.SLAYER_TRACKERS, ChatFormatting.DARK_GREEN, EnumUtils.AnchorPoint.BOTTOM_LEFT, 20, -10), false, EnumUtils.FeatureSetting.SLAYER_ZOMBIE, EnumUtils.FeatureSetting.SLAYER_SPIDER, EnumUtils.FeatureSetting.SLAYER_WOLF, EnumUtils.FeatureSetting.COLOUR_BY_RARITY),
     SLAYER_ZOMBIE(101, null, true),
@@ -144,7 +149,8 @@ public enum Feature {
     TEXT_STYLE(-1, Message.SETTING_TEXT_STYLE, false),
     CHROMA_SPEED(-1, Message.SETTING_CHROMA_SPEED, false),
     CHROMA_MODE(-1, Message.SETTING_CHROMA_MODE, false),
-    CHROMA_FADE_WIDTH(-1, Message.SETTING_CHROMA_FADE_WIDTH, false);
+    CHROMA_FADE_WIDTH(-1, Message.SETTING_CHROMA_FADE_WIDTH, false),
+    TURN_ALL_FEATURES_CHROMA(-1, Message.SETTING_TURN_ALL_FEATURES_CHROMA, false);
 
     /**
      * These are "features" that are not actually features, but just hold the place of a setting. If you are adding any new settings and create
@@ -155,13 +161,13 @@ public enum Feature {
             MAKE_BACKPACK_INVENTORIES_COLORED, CHANGE_BAR_COLOR_FOR_POTIONS, ENABLE_MESSAGE_WHEN_BREAKING_STEMS,
             ENABLE_MESSAGE_WHEN_MINING_DEEP_CAVERNS, ENABLE_MESSAGE_WHEN_MINING_NETHER, HIDE_NIGHT_VISION_EFFECT_TIMER,
             CAKE_BAG_PREVIEW, BACKPACK_PREVIEW_AH, REPEAT_FULL_INVENTORY_WARNING, SORT_TAB_EFFECT_TIMERS, DOUBLE_WARP,
-            ACTIONS_UNTIL_NEXT_LEVEL, SLAYER_ZOMBIE, SLAYER_SPIDER, SLAYER_WOLF, SLAYER_COLOUR_BY_RARITY);
+            REPEAT_SLAYER_BOSS_WARNING, ACTIONS_UNTIL_NEXT_LEVEL, SLAYER_ZOMBIE, SLAYER_SPIDER, SLAYER_WOLF, SLAYER_COLOUR_BY_RARITY);
 
     /**
      * Features that are considered gui ones. This is used for examnple when saving the config to ensure that these features'
      * coordinates and colors are handled properly.
      */
-    @Getter private static Set<Feature> guiFeatures = new LinkedHashSet<>(Arrays.asList(MAGMA_BOSS_TIMER, MANA_BAR, MANA_TEXT, DEFENCE_ICON, DEFENCE_TEXT,
+    @Getter private static final Set<Feature> guiFeatures = new LinkedHashSet<>(Arrays.asList(MAGMA_BOSS_TIMER, MANA_BAR, MANA_TEXT, DEFENCE_ICON, DEFENCE_TEXT,
             DEFENCE_PERCENTAGE, HEALTH_BAR, HEALTH_TEXT, SKELETON_BAR, HEALTH_UPDATES, ITEM_PICKUP_LOG, DARK_AUCTION_TIMER, SKILL_DISPLAY, SPEED_PERCENTAGE, SLAYER_INDICATOR,
             POWER_ORB_STATUS_DISPLAY, ZEALOT_COUNTER, TICKER_CHARGES_DISPLAY, TAB_EFFECT_TIMERS, SHOW_TOTAL_ZEALOT_COUNT, SHOW_SUMMONING_EYE_COUNT,
             SHOW_AVERAGE_ZEALOTS_PER_EYE, BIRCH_PARK_RAINMAKER_TIMER, COMBAT_TIMER_DISPLAY, ENDSTONE_PROTECTOR_DISPLAY, BAIT_LIST, SLAYER_TRACKERS));
@@ -171,7 +177,7 @@ public enum Feature {
     /**
      * These are features that are displayed separate, on the general tab.
      */
-    @Getter private static Set<Feature> generalTabFeatures = new LinkedHashSet<>(Arrays.asList(TEXT_STYLE, WARNING_TIME, CHROMA_SPEED, CHROMA_MODE, CHROMA_FADE_WIDTH));
+    @Getter private static final Set<Feature> generalTabFeatures = new LinkedHashSet<>(Arrays.asList(TEXT_STYLE, WARNING_TIME, CHROMA_SPEED, CHROMA_MODE, CHROMA_FADE_WIDTH, TURN_ALL_FEATURES_CHROMA));
 
     private int id;
     private Message message;
@@ -179,12 +185,21 @@ public enum Feature {
     private GuiFeatureData guiFeatureData;
     private boolean defaultDisabled;
 
+    private static final Set<Integer> ALREADY_REGISTERED_IDS = new HashSet<>();
+
     Feature(int id, Message settingMessage, GuiFeatureData guiFeatureData, boolean defaultDisabled, EnumUtils.FeatureSetting... settings) { // color & gui scale settings added automatically
         this.id = id;
         this.message = settingMessage;
         this.settings = new ArrayList<>(Arrays.asList(settings));
         this.guiFeatureData = guiFeatureData;
         this.defaultDisabled = defaultDisabled;
+
+        Set<Integer> registeredFeatureIDs = SkyblockAddons.getInstance().getRegisteredFeatureIDs();
+        if (id != -1 && registeredFeatureIDs.contains(id)) {
+            throw new RuntimeException("Multiple features have the same IDs!");
+        } else {
+            registeredFeatureIDs.add(id);
+        }
     }
 
     Feature(int id, Message settingMessage, boolean defaultDisabled, EnumUtils.FeatureSetting... settings) {

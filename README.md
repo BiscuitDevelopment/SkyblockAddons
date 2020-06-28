@@ -62,20 +62,26 @@ Big thanks to all the open source software we use in this project! They are all 
 For Contributors
 ------
 
+Please make sure to make your pull requests off the development branch if you're adding new features. If there's
+an important bug fix, still make your PR on development, but put it in a separate commit so I can cherry-pick it
+into master branch. Thank you!
+
 1. Make sure to add this VM argument to your debug configuration or your IDE's equivalent, so that all the transformers
 are applied properly in your dev environment!
 ```-Dfml.coreMods.load=codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsLoadingPlugin```
-2. Set the Gradle task ```processResourcesDev``` to run every time before launching the Minecraft client from
- your dev environment. This is required for the mod assets to load properly in the dev environment.
-3. This project uses Lombok, which helps with things such as not having to manually create Getters and 
+2. This project uses Lombok, which helps with things such as not having to manually create Getters and 
 Setters. If you are using IntelliJ, please download the plugin called Lombok either in your IDE or by 
 [visiting this link](https://plugins.jetbrains.com/plugin/6317-lombok) so that everything works correctly. 
 If you are using Eclipse, [you can read this page here.](https://projectlombok.org/setup/eclipse)
-4. After installing the plugin in IntelliJ, go to `File` → `Settings` → `Build` → 
+3. After installing the plugin in IntelliJ, go to `File` → `Settings` → `Build` → 
 `Execution, Deployment, Compiler` → `Annotation Processors`, and check ☑ 
 `Enable annotation processing` on the top right. This will allow you to debug properly.
+4. If you are using the Gradle builder (you can check in `File` → `Settings` → `Build, Execution, Deployment`
+ → `Gradle` → `Build and run using`), set the Gradle task ```processResourcesDev``` to run every time before 
+ launching the Minecraft client from your dev environment. This is required for the mod assets to load properly
+ in the dev environment.
 
 Note: If your jar build is failing because the code is trying to access private methods or fields,
-this may be because someone added some access transformers. 
+this may be because someone added some new access transformers. 
 You may want to re-run the gradle tasks `setupDecompWorkspace` and `setupDevWorkspace` so 
 the access transformers are applied to the source code!

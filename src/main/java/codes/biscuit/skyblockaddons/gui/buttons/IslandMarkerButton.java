@@ -28,11 +28,12 @@ public class IslandMarkerButton extends GuiButton {
         this.marker = marker;
     }
 
-    public void drawButton(int islandX, int islandY, float expansion, boolean hovered, boolean islandUnlocked, IslandWarpGui.UnlockedStatus status) {
+    public void drawButton(float islandX, float islandY, float expansion, boolean hovered, boolean islandUnlocked, IslandWarpGui.UnlockedStatus status) {
         Minecraft mc = Minecraft.getMinecraft();
         SkyblockAddons main =  SkyblockAddons.getInstance();
 
-        int iconSize = (int) (50*expansion);
+        float width = 50*expansion;
+        float height = width*(100/81F); // Ratio is 81w : 100h
 
         float centerX = islandX+(marker.getX())*expansion;
         float centerY = islandY+(marker.getY())*expansion;
@@ -41,8 +42,8 @@ public class IslandMarkerButton extends GuiButton {
         this.centerY = centerY;
         this.unlocked = status == IslandWarpGui.UnlockedStatus.UNLOCKED || status == IslandWarpGui.UnlockedStatus.IN_COMBAT;
 
-        int x = (int) (centerX-(iconSize/2));
-        int y = (int) (centerY-(iconSize/2));
+        float x = centerX-(width/2);
+        float y = centerY-(height/2);
 
         if (this.unlocked) {
             if (hovered) {
@@ -58,9 +59,8 @@ public class IslandMarkerButton extends GuiButton {
             }
         }
 
-        int height = Math.round(iconSize*1.23F);
         mc.getTextureManager().bindTexture(PORTAL_ICON);
-        main.getUtils().drawModalRectWithCustomSizedTexture(x, y, 0, 0, iconSize, height, iconSize, height);
+        main.getUtils().drawModalRectWithCustomSizedTexture(x, y, 0, 0, width, height, width, height, true);
 
         if (hovered) {
             GlStateManager.pushMatrix();
@@ -76,7 +76,7 @@ public class IslandMarkerButton extends GuiButton {
                 color = main.getUtils().getColorWithAlpha(0x999999, alpha);
             }
 
-            mc.fontRendererObj.drawStringWithShadow(displayString, (x+(iconSize/2))/textScale - mc.fontRendererObj.getStringWidth(displayString)/2F, (y-20)/textScale, color);
+            mc.fontRendererObj.drawStringWithShadow(displayString, (x+(width/2))/textScale - mc.fontRendererObj.getStringWidth(displayString)/2F, (y-20)/textScale, color);
             GlStateManager.color(1,1,1,1);
 
             GlStateManager.popMatrix();

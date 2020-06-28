@@ -2,7 +2,7 @@ package codes.biscuit.skyblockaddons.asm.utils;
 
 public class ReturnValue<R> {
 
-    private boolean cancelled = false;
+    private boolean cancelled;
 
     private R returnValue;
 
