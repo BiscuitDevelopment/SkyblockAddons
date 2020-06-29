@@ -1,6 +1,7 @@
 package codes.biscuit.skyblockaddons.utils.slayertracker;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.ItemDiff;
 import com.google.gson.JsonObject;
 import lombok.Getter;
@@ -8,8 +9,6 @@ import lombok.Getter;
 import java.util.*;
 
 public class SlayerTracker {
-
-    // TODO Make sure Books work
 
     @Getter
     private static final SlayerTracker instance = new SlayerTracker();
@@ -20,18 +19,31 @@ public class SlayerTracker {
     public HashMap<Date, List<ItemDiff>> cache = new HashMap<>();
     @Getter
     private ArrayList<SlayerBoss> bosses = new ArrayList<>();
+    @Getter
+    private SlayerBoss lastKilledBoss;
 
+    /**
+     * Add new bosses here, a "feature" setting to the Slayer_Trackers feature,
+     * and to the {@link codes.biscuit.skyblockaddons.gui.SettingsGui#addButton(EnumUtils.FeatureSetting)}
+     */
     public SlayerTracker() {
         bosses.add(new SlayerZombie());
         bosses.add(new SlayerSpider());
         bosses.add(new SlayerWolf());
     }
 
-    public void addSlayerKill(String s) {
+    /**
+     * Add a kill to the slayer type which is determined by the "Talk to Maddox to claim your <boss> xp message"
+     *
+     * @param slayerEXPString
+     */
+    public void addSlayerKill(String slayerEXPString) {
         for (SlayerBoss boss : bosses)
-            if (s.toLowerCase().contains(boss.getLangName())) {
+            if (slayerEXPString.toLowerCase().contains(boss.getBossName())) {
                 boss.setKills(boss.getKills() + 1);
                 SkyblockAddons.getInstance().getPersistentValues().saveValues();
+                lastKilledBoss = boss;
+                useCache();
                 return;
             }
     }
@@ -41,18 +53,12 @@ public class SlayerTracker {
         for (ItemDiff diff : toCheck) {
             if (diff.getAmount() < 0) continue;
 
-            boolean found = false;
-            System.out.println(diff.getDisplayName().replaceAll("(§([0-9a-fk-or]))", ""));
-            for (SlayerBoss boss : bosses) {
-                if (found) break;
-                for (SlayerBoss.SlayerDrop drop : boss.getDrops())
-                    if (diff.getDisplayName().replaceAll("(§([0-9a-fk-or]))", "").equalsIgnoreCase(drop.getActualName())) {
-                        changed = true;
-                        found = true;
-                        drop.setCount(drop.getCount() + diff.getAmount());
-                        break;
-                    }
-            }
+            for (SlayerBoss.SlayerDrop drop : lastKilledBoss.getDrops())
+                if (diff.getDisplayName().replaceAll("(§([0-9a-fk-or]))", "").equalsIgnoreCase(drop.getActualName())) {
+                    changed = true;
+                    drop.setCount(drop.getCount() + diff.getAmount());
+                    break;
+                }
 
         }
         if (changed)
@@ -89,10 +95,10 @@ public class SlayerTracker {
         JsonObject slayerDrops = SkyblockAddons.getInstance().getPersistentValues().getSlayerDrops();
         for (SlayerBoss boss : bosses) {
             JsonObject thisBoss;
-            if (!slayerDrops.has(boss.getLangName())) {
+            if (!slayerDrops.has(boss.getBossName())) {
                 thisBoss = new JsonObject();
-                slayerDrops.add(boss.getLangName(), thisBoss);
-            } else thisBoss = slayerDrops.getAsJsonObject(boss.getLangName());
+                slayerDrops.add(boss.getBossName(), thisBoss);
+            } else thisBoss = slayerDrops.getAsJsonObject(boss.getBossName());
 
             if (!thisBoss.has("kills"))
                 thisBoss.addProperty("kills", 0);
@@ -110,7 +116,7 @@ public class SlayerTracker {
         JsonObject returnObj = new JsonObject();
         for (SlayerBoss boss : bosses) {
             JsonObject thisBoss = new JsonObject();
-            returnObj.add(boss.getLangName(), thisBoss);
+            returnObj.add(boss.getBossName(), thisBoss);
 
             thisBoss.addProperty("kills", boss.getKills());
 

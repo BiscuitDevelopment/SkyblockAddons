@@ -16,40 +16,45 @@ import java.util.*;
 import java.util.regex.Pattern;
 
 public abstract class SlayerBoss {
-    /*
-    SVEN(Feature.SLAYER_WOLF, "slayerWolf",
-            new Pair<>("slayerDropWolfTeeth", Rarity.COMMON),
-            new Pair<>("slayerDropHamsterWheels", Rarity.COMMON),
-            new Pair<>("slayerDropSpiritRunes", Rarity.COMMON),
-            new Pair<>("slayerDropCrit6Books", Rarity.COMMON),
-            new Pair<>("slayerDropRedClawEggs", Rarity.COMMON),
-            new Pair<>("slayerDropCoutureRunes", Rarity.COMMON),
-            new Pair<>("slayerDropOverfluxes", Rarity.COMMON),
-            new Pair<>("slayerDropGrizzlyBaits", Rarity.COMMON));*/
-
+    /**
+     * The "feature" setting that determines if this boss' stats should be rendered
+     */
     @Getter
     private Feature feature;
+    /**
+     * The name used in storing/loading the boss stats, MUST BE THE NAME SHOWN WHEN "Talk to Maddox to claim your <boss> xp"
+     */
     @Getter
-    private String langName;
+    private String bossName;
     @Getter
     private int kills = 0;
 
-    public SlayerBoss(Feature feature, String langName) {
+    public SlayerBoss(Feature feature, String bossName) {
         this.feature = feature;
-        this.langName = langName;
+        this.bossName = bossName;
     }
 
     public void setKills(int kills) {
         this.kills = kills;
     }
 
+    /**
+     * Get all of the tracked Drops for this boss
+     *
+     * @return An ArrayList of {@link SlayerDrop}s
+     */
     public abstract ArrayList<SlayerDrop> getDrops();
 
+    /**
+     * Get the I18N name
+     *
+     * @return The Translated Name
+     */
     public String getDisplayName() {
         String text;
         try {
             SkyblockAddons main = SkyblockAddons.getInstance();
-            List<String> path = new LinkedList<String>(Arrays.asList(("settings.slayerBosses." + langName).split(Pattern.quote("."))));
+            List<String> path = new LinkedList<String>(Arrays.asList(("settings.slayerBosses." + bossName).split(Pattern.quote("."))));
             JsonObject jsonObject = main.getConfigValues().getLanguageConfig();
             for (String part : path) {
                 if (!part.equals("")) {
@@ -61,16 +66,21 @@ public abstract class SlayerBoss {
                 text = bidiReorder(text);
             }
         } catch (NullPointerException ex) {
-            text = langName; // In case of fire...
+            text = bossName; // In case of fire...
         }
         return text;
     }
 
+    /**
+     * Get the plural name "<boss>s killed"
+     *
+     * @return The plural name
+     */
     public String getKilledName() {
         String text;
         try {
             SkyblockAddons main = SkyblockAddons.getInstance();
-            List<String> path = new LinkedList<String>(Arrays.asList(("settings.slayerBosses." + langName).split(Pattern.quote("."))));
+            List<String> path = new LinkedList<String>(Arrays.asList(("settings.slayerBosses." + bossName).split(Pattern.quote("."))));
             JsonObject jsonObject = main.getConfigValues().getLanguageConfig();
             for (String part : path) {
                 if (!part.equals("")) {
@@ -82,7 +92,7 @@ public abstract class SlayerBoss {
                 text = bidiReorder(text);
             }
         } catch (NullPointerException ex) {
-            text = langName; // In case of fire...
+            text = bossName; // In case of fire...
         }
         return text + ": ";
     }
@@ -115,14 +125,19 @@ public abstract class SlayerBoss {
             this.actualName = actualName;
             this.langName = langName;
             this.rarity = rarity;
-            //this.resourceLocation = new ResourceLocation("slayer/<bossname>/<dropname>");
+            //this.resourceLocation = new ResourceLocation("slayer/<bossname>/<dropname>"); TODO
         }
 
+        /**
+         * Get the I18N name
+         *
+         * @return The Translated Name
+         */
         public String getDisplayName() {
             String text;
             try {
                 SkyblockAddons main = SkyblockAddons.getInstance();
-                List<String> path = new LinkedList<String>(Arrays.asList(("settings.slayerBosses." + boss.getLangName() + ".drops").split(Pattern.quote("."))));
+                List<String> path = new LinkedList<String>(Arrays.asList(("settings.slayerBosses." + boss.getBossName() + ".drops").split(Pattern.quote("."))));
                 JsonObject jsonObject = main.getConfigValues().getLanguageConfig();
                 for (String part : path) {
                     if (!part.equals("")) {

@@ -16,7 +16,7 @@ public class SlayerWolf extends SlayerBoss {
         drops.add(new SlayerDrop(this, "Wolf Tooth", "slayerDropWolfTeeth", Rarity.UNCOMMON));
         drops.add(new SlayerDrop(this, "Hamster Wheel", "slayerDropHamsterWheels", Rarity.RARE));
         drops.add(new SlayerDrop(this, "Spirit Rune", "slayerDropSpiritRunes", Rarity.RARE));
-        drops.add(new SlayerDrop(this, "Critical VI Book", "slayerDropCrit6Books", Rarity.RARE));
+        drops.add(new SlayerDrop(this, "Enchanted Book", "slayerDropCrit6Books", Rarity.RARE));
         drops.add(new SlayerDrop(this, "Grizzly Bait", "slayerDropGrizzlyBaits", Rarity.RARE));
         drops.add(new SlayerDrop(this, "Red Claw Egg", "slayerDropRedClawEggs", Rarity.EPIC));
         drops.add(new SlayerDrop(this, "Overflux Capacitor", "slayerDropOverfluxes", Rarity.EPIC));

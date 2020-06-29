@@ -16,7 +16,7 @@ public class SlayerSpider extends SlayerBoss {
         drops.add(new SlayerDrop(this, "Tarantula Web", "slayerDropTarantulaWebs", Rarity.UNCOMMON));
         drops.add(new SlayerDrop(this, "Toxic Arrow Poison", "slayerDropToxicArrowPoisons", Rarity.UNCOMMON));
         drops.add(new SlayerDrop(this, "Spider Catalyst", "slayerDropSpiderCatalysts", Rarity.RARE));
-        drops.add(new SlayerDrop(this, "Bane Of Arthropod VI Book", "slayerDropBaneOfArthropod6Books", Rarity.RARE));
+        drops.add(new SlayerDrop(this, "Enchanted Book", "slayerDropBaneOfArthropod6Books", Rarity.RARE));
         drops.add(new SlayerDrop(this, "Bite Rune", "slayerDropBiteRunes", Rarity.EPIC));
         drops.add(new SlayerDrop(this, "Fly Swatter", "slayerDropFlySwatters", Rarity.EPIC));
         drops.add(new SlayerDrop(this, "Tarantula Talisman", "slayerDropTarantulaTalismans", Rarity.EPIC));

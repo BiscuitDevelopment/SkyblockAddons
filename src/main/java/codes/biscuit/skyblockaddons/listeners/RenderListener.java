@@ -210,8 +210,8 @@ public class RenderListener {
                 int stringWidth = MinecraftReflection.FontRenderer.getStringWidth(text);
 
                 float scale = 4; // Scale is normally 4, but if its larger than the screen, scale it down...
-                if (stringWidth*scale > (scaledWidth*0.9F)) {
-                    scale = (scaledWidth*0.9F)/(float)stringWidth;
+                if (stringWidth * scale > (scaledWidth * 0.9F)) {
+                    scale = (scaledWidth * 0.9F) / (float) stringWidth;
                 }
 
                 GlStateManager.pushMatrix();
@@ -255,8 +255,8 @@ public class RenderListener {
                 int stringWidth = MinecraftReflection.FontRenderer.getStringWidth(text);
 
                 float scale = 2; // Scale is normally 2, but if its larger than the screen, scale it down...
-                if (stringWidth*scale > (scaledWidth*0.9F)) {
-                    scale = (scaledWidth*0.9F)/(float)stringWidth;
+                if (stringWidth * scale > (scaledWidth * 0.9F)) {
+                    scale = (scaledWidth * 0.9F) / (float) stringWidth;
                 }
 
                 GlStateManager.pushMatrix();
@@ -529,7 +529,7 @@ public class RenderListener {
             y /= scale;
 
             if (buttonLocation != null) {
-                buttonLocation.checkHoveredAndDrawBox(x, x+width, y, y+height, scale);
+                buttonLocation.checkHoveredAndDrawBox(x, x + width, y, y + height, scale);
             }
 
             main.getUtils().enableStandardGLOptions();
@@ -883,8 +883,8 @@ public class RenderListener {
             ChromaManager.doneRenderingText();
 
         } else if (feature == Feature.COMBAT_TIMER_DISPLAY) {
-            long lastDamaged = main.getUtils().getLastDamaged()+5000;
-            int combatSeconds = (int)Math.ceil((lastDamaged-System.currentTimeMillis())/1000D);
+            long lastDamaged = main.getUtils().getLastDamaged() + 5000;
+            int combatSeconds = (int) Math.ceil((lastDamaged - System.currentTimeMillis()) / 1000D);
 
             if (buttonLocation != null) {
                 combatSeconds = 5;
@@ -908,14 +908,14 @@ public class RenderListener {
             int spacerBetweenBothItems = 4;
             int spacerBetweenItemsAndText = 2;
 
-            renderItem(getNetherStar(), x + width/2F - 16-menuTimeRemainingWidth - spacerBetweenItemsAndText - spacerBetweenBothItems/2F, y-5);
+            renderItem(getNetherStar(), x + width / 2F - 16 - menuTimeRemainingWidth - spacerBetweenItemsAndText - spacerBetweenBothItems / 2F, y - 5);
 
             ChromaManager.renderingText(feature);
             main.getUtils().drawTextWithStyle(menuTimeRemaining, x + width / 2F - menuTimeRemainingWidth - spacerBetweenBothItems / 2F, y, color);
             ChromaManager.doneRenderingText();
 
-            GlStateManager.color(1,1,1,1);
-            renderItem(getWarpSkull(), x + width/2F + spacerBetweenBothItems/2F, y - 5);
+            GlStateManager.color(1, 1, 1, 1);
+            renderItem(getWarpSkull(), x + width / 2F + spacerBetweenBothItems / 2F, y - 5);
             ChromaManager.renderingText(feature);
             main.getUtils().drawTextWithStyle(warpTimeRemaining, x + width / 2F + spacerBetweenBothItems / 2F + 13 + spacerBetweenItemsAndText, y, color);
             ChromaManager.doneRenderingText();
@@ -1053,7 +1053,7 @@ public class RenderListener {
                 }
                 y += Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT;
             }
-            buttonLocation.checkHoveredAndDrawBox(x, x + longestLineWidth, y - (lines * Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT), y , scale);
+            buttonLocation.checkHoveredAndDrawBox(x, x + longestLineWidth, y - (lines * Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT), y, scale);
             return;
         }
 
@@ -1123,6 +1123,9 @@ public class RenderListener {
             y += Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT;
         }
     }
+
+    private static final SlayerArmorProgress[] DUMMY_PROGRESSES = new SlayerArmorProgress[]{new SlayerArmorProgress(new ItemStack(Items.diamond_boots)), new SlayerArmorProgress(new ItemStack(Items.chainmail_leggings)), new SlayerArmorProgress(new ItemStack(Items.diamond_chestplate)), new SlayerArmorProgress(new ItemStack(Items.leather_helmet))};
+    private static ItemStack NETHER_STAR;
 
     public void drawRevenantIndicator(float scale, Minecraft mc, ButtonLocation buttonLocation) {
         float x = main.getConfigValues().getActualX(Feature.SLAYER_INDICATOR);
@@ -1304,6 +1307,8 @@ public class RenderListener {
         RenderHelper.disableStandardItemLighting();
         GlStateManager.disableRescaleNormal();
     }
+
+    private static List<ItemDiff> DUMMY_PICKUP_LOG = new ArrayList<>(Arrays.asList(new ItemDiff(ChatFormatting.DARK_PURPLE + "Forceful Ember Chestplate", 1), new ItemDiff("Boat", -1), new ItemDiff(ChatFormatting.BLUE + "Aspect of the End", 1)));
 
     public void drawItemPickupLog(float scale, ButtonLocation buttonLocation) {
         float x = main.getConfigValues().getActualX(Feature.ITEM_PICKUP_LOG);

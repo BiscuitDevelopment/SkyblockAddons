@@ -213,7 +213,6 @@ public class PlayerListener {
                 SlayerTracker.getInstance().secondPriorTimestamp = calendar.getTime();
                 calendar.add(Calendar.SECOND, 11);
                 SlayerTracker.getInstance().stopAcceptingTimestamp = calendar.getTime();
-                SlayerTracker.getInstance().useCache();
             } else if (formattedText.startsWith("§r   §r§5§l» §r§7Talk to Maddox to claim your ")) {
                 SlayerTracker.getInstance().addSlayerKill(unformattedText);
             } else if (formattedText.startsWith("§7Sending to server ")) {
