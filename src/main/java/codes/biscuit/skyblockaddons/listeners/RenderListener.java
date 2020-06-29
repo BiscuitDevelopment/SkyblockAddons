@@ -64,7 +64,6 @@ public class RenderListener {
 
     private final static ItemStack WATER_BUCKET = new ItemStack(Items.water_bucket);
     private final static ItemStack IRON_SWORD = new ItemStack(Items.iron_sword);
-    private static ItemStack NETHER_STAR;
     private static ItemStack WARP_SKULL;
 
     private SkyblockAddons main = SkyblockAddons.getInstance();

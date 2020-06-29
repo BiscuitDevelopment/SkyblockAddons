@@ -24,7 +24,7 @@ public class SlayerTracker {
 
     /**
      * Add new bosses here, a "feature" setting to the Slayer_Trackers feature,
-     * and to the {@link codes.biscuit.skyblockaddons.gui.SettingsGui#addButton(EnumUtils.FeatureSetting)}
+     * and to the {@link codes.biscuit.skyblockaddons.gui.SettingsGui}#addButton(EnumUtils.FeatureSetting)
      */
     public SlayerTracker() {
         bosses.add(new SlayerZombie());
@@ -125,5 +125,80 @@ public class SlayerTracker {
             }
         }
         return returnObj;
+    }
+
+    public String[] getTabComplete() {
+        ArrayList<String> complete = new ArrayList<>();
+
+        for (SlayerBoss boss : bosses)
+            complete.add(boss.getBossName());
+
+        return complete.toArray(new String[complete.size()]);
+    }
+
+    public String[] getTabCompleteDrops(String s) {
+        ArrayList<String> complete = new ArrayList<>();
+
+        for (SlayerBoss boss : bosses)
+        {
+            if (!boss.getBossName().equalsIgnoreCase(s)) continue;
+
+            complete.add("kills");
+            for (SlayerBoss.SlayerDrop drop : boss.getDrops())
+                complete.add(drop.getLangName());
+
+            break;
+        }
+
+        return complete.toArray(new String[complete.size()]);
+    }
+
+    /**
+     * slayer <boss> <stat> <count>
+     * @param args
+     */
+    public void setManual(String[] args)
+    {
+        for (SlayerBoss boss : bosses)
+        {
+            if (!boss.getBossName().equalsIgnoreCase(args[1])) continue;
+
+            if (args[2].equalsIgnoreCase("kills"))
+            {
+                try {
+                    int count = Integer.valueOf(args[3]);
+                    boss.setKills(count);
+                    SkyblockAddons.getInstance().getUtils().sendMessage("Kills for " + args[1] + " set to " + args[3] + ".");
+                    SkyblockAddons.getInstance().getPersistentValues().saveValues();
+                    return;
+                } catch(NumberFormatException ex)
+                {
+                    SkyblockAddons.getInstance().getUtils().sendErrorMessage("Invalid number " + args[3] + ".");
+                    return;
+                }
+            }
+
+            for (SlayerBoss.SlayerDrop drop : boss.getDrops())
+            {
+                if (!drop.getLangName().equalsIgnoreCase(args[2])) continue;
+
+                try {
+                    int count = Integer.valueOf(args[3]);
+                    drop.setCount(count);
+                    SkyblockAddons.getInstance().getUtils().sendMessage("Stat " + args[2] + " for " + args[1] + " set to " + args[3] + ".");
+                    SkyblockAddons.getInstance().getPersistentValues().saveValues();
+                    return;
+                } catch(NumberFormatException ex)
+                {
+                    SkyblockAddons.getInstance().getUtils().sendErrorMessage("Invalid number " + args[3] + ".");
+                    return;
+                }
+            }
+
+            SkyblockAddons.getInstance().getUtils().sendErrorMessage("Stat " + args[2] + " not found.");
+            return;
+        }
+
+        SkyblockAddons.getInstance().getUtils().sendErrorMessage("Boss " + args[1] + " not found.");
     }
 }

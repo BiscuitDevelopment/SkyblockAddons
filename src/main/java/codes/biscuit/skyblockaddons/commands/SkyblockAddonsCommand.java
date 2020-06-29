@@ -4,6 +4,7 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.dev.DevUtils;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
+import codes.biscuit.skyblockaddons.utils.slayertracker.SlayerTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
@@ -36,16 +37,14 @@ public class SkyblockAddonsCommand extends CommandBase {
     /**
      * Return the required permission level for this command.
      */
-    public int getRequiredPermissionLevel()
-    {
+    public int getRequiredPermissionLevel() {
         return 0;
     }
 
     /**
      * Returns the aliases of this command
      */
-    public List<String> getCommandAliases()
-    {
+    public List<String> getCommandAliases() {
         return Collections.singletonList("sba");
     }
 
@@ -56,42 +55,49 @@ public class SkyblockAddonsCommand extends CommandBase {
         if (main.isDevMode()) return getDevCommandUsage();
 
         return "§7§m------------§7[§b§l SkyblockAddons §7]§7§m------------" + "\n" +
-        "§b● /sba §7- Open the main menu" + "\n" +
-        "§b● /sba edit §7- Edit GUI locations" + "\n" +
-        "§b● /sba set <zealots|eyes|totalzealots §eor§b total> <number> §7- Manually set your zealot counts" + "\n" +
-        "§b● /sba folder §7- Open your mods folder" + "\n" +
-        "§7§m------------------------------------------";
+                "§b● /sba §7- Open the main menu" + "\n" +
+                "§b● /sba edit §7- Edit GUI locations" + "\n" +
+                "§b● /sba set <zealots|eyes|totalzealots §eor§b total> <number> §7- Manually set your zealot counts" + "\n" +
+                "§b● /sba slayer <boss> <stat> <number> §7- Manually set slayer stats, press tab for arguments" + "\n" +
+                "§b● /sba folder §7- Open your mods folder" + "\n" +
+                "§7§m------------------------------------------";
     }
 
     /**
      * Gets the usage string for the developer mode sub-command.
      */
-    public String getDevCommandUsage() { return
-        "§7§m------------§7[§b§l SkyblockAddons §7]§7§m------------" + "\n" +
-        "§b● /sba §7- Open the main menu" + "\n" +
-        "§b● /sba edit §7- Edit GUI locations" + "\n" +
-        "§b● /sba set <zealots | eyes | totalzealots §7or§b total> <number> §7- Manually set your zealot counts" + "\n" +
-        "§b● /sba folder §7- Open your mods folder" + "\n" +
-        "§b● /sba dev §7- Toggle developer mode" + "\n" +
-        "§b● /sba sidebar [formatted] §7- §e(Dev) §7Copy the scoreboard text. \"formatted\" §7keeps the color codes when copying" + "\n" +
-        "§b● /sba brand §7- §e(Dev) §7Show the server brand" + "\n" +
-        "§7§m------------------------------------------";
+    public String getDevCommandUsage() {
+        return
+                "§7§m------------§7[§b§l SkyblockAddons §7]§7§m------------" + "\n" +
+                        "§b● /sba §7- Open the main menu" + "\n" +
+                        "§b● /sba edit §7- Edit GUI locations" + "\n" +
+                        "§b● /sba set <zealots | eyes | totalzealots §7or§b total> <number> §7- Manually set your zealot counts" + "\n" +
+                        "§b● /sba slayer <boss> <stat> <number> §7- Manually set slayer stats, press tab for arguments" + "\n" +
+                        "§b● /sba folder §7- Open your mods folder" + "\n" +
+                        "§b● /sba dev §7- Toggle developer mode" + "\n" +
+                        "§b● /sba sidebar [formatted] §7- §e(Dev) §7Copy the scoreboard text. \"formatted\" §7keeps the color codes when copying" + "\n" +
+                        "§b● /sba brand §7- §e(Dev) §7Show the server brand" + "\n" +
+                        "§7§m------------------------------------------";
     }
 
     public List<String> addTabCompletionOptions(ICommandSender sender, String[] args, BlockPos pos) {
         if (args.length == 1) {
             if (main.isDevMode()) {
-                return getListOfStringsMatchingLastWord(args, "set", "edit", "folder", "dev", "sidebar", "brand");
+                return getListOfStringsMatchingLastWord(args, "set", "slayer", "edit", "folder", "dev", "sidebar", "brand");
             } else {
-                return getListOfStringsMatchingLastWord(args, "set", "edit", "folder", "dev");
+                return getListOfStringsMatchingLastWord(args, "set", "slayer", "edit", "folder", "dev");
             }
 
         } else if (args.length == 2) {
-            if (main.isDevMode() && args[1].equalsIgnoreCase("sidebar")) {
+            if (main.isDevMode() && args[0].equalsIgnoreCase("sidebar")) {
                 return getListOfStringsMatchingLastWord(args, "formatted");
-            } else if (args[1].equalsIgnoreCase("set")) {
+            } else if (args[0].equalsIgnoreCase("set")) {
                 return getListOfStringsMatchingLastWord(args, "total", "zealots", "eyes");
-            }
+            } else if (args[0].equalsIgnoreCase("slayer"))
+                return getListOfStringsMatchingLastWord(args, SlayerTracker.getInstance().getTabComplete());
+        } else if (args.length == 3) {
+            if (args[0].equalsIgnoreCase("slayer"))
+                return getListOfStringsMatchingLastWord(args, SlayerTracker.getInstance().getTabCompleteDrops(args[1]));
         }
 
         return null;
@@ -132,25 +138,40 @@ public class SkyblockAddonsCommand extends CommandBase {
 
                 if (args[1].equalsIgnoreCase("totalzealots") || args[1].equalsIgnoreCase("total")) {
                     main.getPersistentValues().setTotalKills(number);
-                    main.getUtils().sendMessage("Set total zealot count to: "+number+"!");
+                    main.getUtils().sendMessage("Set total zealot count to: " + number + "!");
                 } else if (args[1].equalsIgnoreCase("zealots")) {
                     main.getPersistentValues().setKills(number);
-                    main.getUtils().sendMessage("Set current zealot count to: "+number+"!");
+                    main.getUtils().sendMessage("Set current zealot count to: " + number + "!");
                 } else if (args[1].equalsIgnoreCase("eyes")) {
                     main.getPersistentValues().setSummoningEyeCount(number);
-                    main.getUtils().sendMessage("Set total summoning eye count to: "+number+"!");
+                    main.getUtils().sendMessage("Set total summoning eye count to: " + number + "!");
                 } else {
                     main.getUtils().sendErrorMessage("Invalid selection! Please choose 'zealots', 'totalzealots/total', 'eyes'");
                 }
-            }  else if (args[0].equalsIgnoreCase("folder")) {
+            } else if (args[0].equalsIgnoreCase("folder")) {
                 try {
                     Desktop.getDesktop().open(main.getUtils().getSBAFolder());
                 } catch (IOException e) {
                     logger.catching(e);
                     main.getUtils().sendErrorMessage("Failed to open mods folder.");
                 }
-            }  else if (args[0].equalsIgnoreCase("warp")) {
+            } else if (args[0].equalsIgnoreCase("warp")) {
                 main.getRenderListener().setGuiToOpen(EnumUtils.GUIType.WARP);
+            } else if (args[0].equalsIgnoreCase("slayer")) {
+                if (args.length == 1) {
+                    String bosses = "";
+                    for (String s : SlayerTracker.getInstance().getTabComplete())
+                        bosses += s + "|";
+                    main.getUtils().sendErrorMessage("You need to select the boss you want. <"
+                            + bosses.substring(0, bosses.length() - 1) + ">");
+                } else if (args.length == 2)
+                    main.getUtils().sendErrorMessage("You need to add the stat you want. Press tab to choose.");
+                else if (args.length == 3)
+                    main.getUtils().sendErrorMessage("You need to add the number you want.");
+                else if (args.length == 4)
+                {
+                    SlayerTracker.getInstance().setManual(args);
+                }
             } else if (main.isDevMode()) {
                 if (args[0].equalsIgnoreCase("sidebar")) {
                     Scoreboard scoreboard = Minecraft.getMinecraft().theWorld.getScoreboard();
