@@ -125,11 +125,11 @@
     "baitListDisplay": "Toon de Aas Lijst Terwijl een Vishengel Word Vastgehouden",
     "freezeBackpackPreview": "Bevries Rugzak Voorbeeld",
     "hideGreyEnchants": "Verberg Normale Grijze Betoveringen",
-    "zealotCounterExplosiveBow": "Zealot Counter Explosive Bow Support",
-    "disableEndermanTeleportation": "Disable Enderman Teleportation",
-    "changeZealotColor": "Change Zealot Color",
-    "hideSvenPupNametags": "Hide Sven Pup Nametags",
-    "turnAllFeaturesChroma": "Turn All Features Chroma"
+    "zealotCounterExplosiveBow": "Zealot Teller Explosieve Boog Ondersteuning",
+    "disableEndermanTeleportation": "Schakel Enderman Teleportatie Uit",
+    "changeZealotColor": "Verander Zealot Kleur",
+    "hideSvenPupNametags": "Verberg Sven Pups Naamkaarten",
+    "turnAllFeaturesChroma": "Draai Alle Functies Chroma"
   },
   "messages": {
     "dropConfirmation": "Laat dit object opnieuw vallen om te Bevestigen!",
@@ -190,8 +190,8 @@
     "legendarySeaCreatureWarning": "Legendarische Vangst!",
     "cancelledPark": "Een functie heeft u ervan weerhouden om dit blok te breken.",
     "bossApproaching": "Je bent dicht bij het spawnen van een baas!",
-    "enableAll": "Enable All",
-    "disableAll": "Disable All"
+    "enableAll": "Alles inschakelen",
+    "disableAll": "Alles Uitschakelen"
   },
   "discordStatus": {
     "titleNone": "Geen",
@@ -214,11 +214,11 @@
     "descriptionCustom": "Voer een aangepaste status in",
     "titleAuto": "Automatische Status",
     "descriptionAuto": "Geeft automatisch een status weer. Bijvoorbeeld je zealot aantal terwijl in the end.",
-    "titleRevenants": "Revenant Quest",
-    "descriptionRevenants": "Shows that you are doing a Revenant quest.",
-    "titleSvens": "Sven Quest",
-    "descriptionSvens": "Shows that you are doing a Sven quest.",
-    "titleTarantula": "Tarantula Quest",
-    "descriptionTarantula": "Shows that you are doing a Tarantula quest."
+    "titleRevenants": "Revenant Opdracht",
+    "descriptionRevenants": "Laat zien dat je een Revenant opdracht aan het doen bent.",
+    "titleSvens": "Sven Opdracht",
+    "descriptionSvens": "Laat zien dat je een Sven opdracht aan het doen bent.",
+    "titleTarantula": "Tarantula Opdracht",
+    "descriptionTarantula": "Laat zien dat je een Tarantula opdracht aan het doen bent."
   }
 }
