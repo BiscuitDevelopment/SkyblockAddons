@@ -75,7 +75,7 @@
     "collectionDisplay": "Wyświetlaj postęp umiejętności",
     "onlyMineOresDeepCaverns": "Kop rudy tylko w Deep Cavernsach",
     "onlyMineValuablesNether": "Kop wartościowe rudy tylko w Netherze",
-    "revenantIndicator": "Wskaznik Postępu Zbroi Slayera",
+    "revenantIndicator": "Wskaźnik postępu zbroi pogromcy",
     "specialZealotAlert": "Alarmuj o Specjlanym Zealocie",
     "enableMessageWhenActionPrevented": "Pokaż wiadomość, gdy akcja jest zablokowana",
     "hidePetHealthBar": "Ukryj paski zdrowia zwierzaków",
@@ -127,7 +127,7 @@
     "hideGreyEnchants": "Ukryj zwyczajne szare zaklęcia",
     "zealotCounterExplosiveBow": "Wsparcie Licznika Zealotów Dla Wybuchowego Łuku",
     "disableEndermanTeleportation": "Wyłącz Teleportację Endermanów",
-    "changeZealotColor": "Zmień Kolor Zealotów",
+    "changeZealotColor": "Zmień kolor zealotów",
     "hideSvenPupNametags": "Ukryj Nazwy Szczeniaków Svena",
     "turnAllFeaturesChroma": "Ustaw Wszystkie Funkcje Na Tryb Chroma"
   },
