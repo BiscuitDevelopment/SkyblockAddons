@@ -216,9 +216,9 @@
     "descriptionAuto": "Mostra um estado automaticamente. Ex.: o teu contador de zealots quando estás no The End.",
     "titleRevenants": "Missão do Revenant",
     "descriptionRevenants": "Mostra que estás a fazer uma missão do Revenant.",
-    "titleSvens": "Sven Quest",
-    "descriptionSvens": "Shows that you are doing a Sven quest.",
-    "titleTarantula": "Tarantula Quest",
-    "descriptionTarantula": "Shows that you are doing a Tarantula quest."
+    "titleSvens": "Missão do Sven",
+    "descriptionSvens": "Mostra que estás a fazer uma missão do Sven.",
+    "titleTarantula": "Missão da Tarantula",
+    "descriptionTarantula": "Mostra que estás a fazer uma missão da tarantula."
   }
 }
