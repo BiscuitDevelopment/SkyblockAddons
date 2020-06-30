@@ -125,11 +125,11 @@
     "baitListDisplay": "Hiện Danh Sách Số Mồi Câu Khi Cầm Cần Câu Cá",
     "freezeBackpackPreview": "\"Đông Cứng\" Hiển Thị Ba Lô",
     "hideGreyEnchants": "Giấu Những Phù Phép Được Bôi Xám",
-    "zealotCounterExplosiveBow": "Zealot Counter Explosive Bow Support",
-    "disableEndermanTeleportation": "Disable Enderman Teleportation",
-    "changeZealotColor": "Change Zealot Color",
-    "hideSvenPupNametags": "Hide Sven Pup Nametags",
-    "turnAllFeaturesChroma": "Turn All Features Chroma"
+    "zealotCounterExplosiveBow": "Hỗ Trợ Bộ Đếm Zealot Bằng Cung Nổ",
+    "disableEndermanTeleportation": "Không Cho Enderman Dịch Chuyển",
+    "changeZealotColor": "Đổi Màu Zealot",
+    "hideSvenPupNametags": "Ẩn Thẻ Tên Sói Đàn Bé",
+    "turnAllFeaturesChroma": "BẬT MÀU CHROMA CHO TẤT CẢ CÁC CHỨC NĂNG"
   },
   "messages": {
     "dropConfirmation": "Nhấn \"Q\" Thêm Một Lần Nữa Để Xác Nhận!",
@@ -190,8 +190,8 @@
     "legendarySeaCreatureWarning": "Đã Câu Được Quái Biển Huyền Thoại!",
     "cancelledPark": "Một chức năng đã chặn bạn khỏi việc phá khối này ở đây.",
     "bossApproaching": "Bạn sắp sửa triệu hồi Trùm rồi!!",
-    "enableAll": "Enable All",
-    "disableAll": "Disable All"
+    "enableAll": "Bật Hết",
+    "disableAll": "Tắt Hết"
   },
   "discordStatus": {
     "titleNone": "Không có",
@@ -214,9 +214,9 @@
     "descriptionCustom": "Viết trạng thái bạn muốn!",
     "titleAuto": "Trạng thái tự động",
     "descriptionAuto": "Tự viết trạng thái. (Ví dụ: Nó sẽ hiện Bộ đếm Zealot của bạn khi bạn ở The End.)",
-    "titleRevenants": "Revenant Quest",
-    "descriptionRevenants": "Shows that you are doing a Revenant quest.",
-    "titleSvens": "Sven Quest",
+    "titleRevenants": "Nhiệm Vụ Xác Chết",
+    "descriptionRevenants": "Hiện rằng bạn đang làm một nhiệm vụ đánh Xác Chết.",
+    "titleSvens": "Nhiệm Vụ Sói Đàn",
     "descriptionSvens": "Shows that you are doing a Sven quest.",
     "titleTarantula": "Tarantula Quest",
     "descriptionTarantula": "Shows that you are doing a Tarantula quest."
