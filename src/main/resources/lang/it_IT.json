@@ -125,11 +125,11 @@
     "baitListDisplay": "Mostra la lista delle esche tenendo in mano una canna",
     "freezeBackpackPreview": "Congela l’anteprima degli zaini",
     "hideGreyEnchants": "Nascondi gli incantesimi grigi regolari",
-    "zealotCounterExplosiveBow": "Zealot Counter Explosive Bow Support",
-    "disableEndermanTeleportation": "Disable Enderman Teleportation",
-    "changeZealotColor": "Change Zealot Color",
+    "zealotCounterExplosiveBow": "Conteggio degli zealots con l'arco esplosivo",
+    "disableEndermanTeleportation": "Disabilita teletrasporto degli enderman",
+    "changeZealotColor": "Cambia il colore degli zealots",
     "hideSvenPupNametags": "Nascondi i nomi dei cuccioli Sven",
-    "turnAllFeaturesChroma": "Turn All Features Chroma"
+    "turnAllFeaturesChroma": "Attiva tutte le funzionalità Chroma"
   },
   "messages": {
     "dropConfirmation": "Getta questo oggetto nuovamente per confermare!",
@@ -214,11 +214,11 @@
     "descriptionCustom": "Inserisci uno stato personalizzato",
     "titleAuto": "Stato automatico",
     "descriptionAuto": "Mostra automaticamente uno stato. Ad esempio: il tuo conteggio di zealots mentre sei nell’end.",
-    "titleRevenants": "Revenant Quest",
-    "descriptionRevenants": "Shows that you are doing a Revenant quest.",
-    "titleSvens": "Sven Quest",
-    "descriptionSvens": "Shows that you are doing a Sven quest.",
-    "titleTarantula": "Tarantula Quest",
-    "descriptionTarantula": "Shows that you are doing a Tarantula quest."
+    "titleRevenants": "Missione - Revenant",
+    "descriptionRevenants": "Mostra che stai facendo una missione di Revenant.",
+    "titleSvens": "Missione - Sven",
+    "descriptionSvens": "Mostra che stai facendo una missione di Sven.",
+    "titleTarantula": "Missione - Tarantola",
+    "descriptionTarantula": "Mostra che stai facendo una missione di Tarantola."
   }
 }
