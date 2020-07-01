@@ -86,7 +86,7 @@
       "compact": "Prosty"
     },
     "disableMagicalSoupMessage": "Ukryj wiadomości magicznej zupy grzybowej",
-    "zealotCounter": "Pokaż licznik Zealotów od ostaniego oka",
+    "zealotCounter": "Licznik Zealotów od ostatniego oka",
     "tickerChargesDisplay": "Wyświetl tickery/naładowania",
     "tab": {
       "generalSettings": "Ustawienia ogólne"
@@ -151,7 +151,7 @@
     "downloadLink": "LINK AKTUALIZACJI",
     "directDownload": "LINK DO BEZPOŚREDNIEGO POBIERANIA",
     "openModFolder": "FOLDER Z MODAMI",
-    "joinTheDiscord": "DOŁĄCZ NA DISCORDA",
+    "joinTheDiscord": "ODNOŚNIK DO DISCORDA",
     "newUpdateAvailable": "Dostępna jest nowa aktualizacja (%version%)!",
     "update": {
       "majorAvailable": "Nowa ważna aktualizacja (%version%) jest dostępna. Link do pobrania może być znaleziony na czacie.",
@@ -190,8 +190,8 @@
     "legendarySeaCreatureWarning": "Legendarne złapanie!",
     "cancelledPark": "Funkcja Skyblock Addons powstrzymała cię od wykopania tego bloku.",
     "bossApproaching": "Jesteś blisko przywołania bossa!",
-    "enableAll": "Włącz Wszystko",
-    "disableAll": "Wyłącz Wszystko"
+    "enableAll": "Włącz wszystko",
+    "disableAll": "Wyłącz wszystko"
   },
   "discordStatus": {
     "titleNone": "Brak",
@@ -210,8 +210,8 @@
     "descriptionProfile": "Pokazuje nazwę twojego profilu",
     "titleTime": "Czas Skyblock",
     "descriptionTime": "Pokazuje bieżący czas SkyBlock. Np. 12:00, pierwszego wczesnej zimy",
-    "titleCustom": "Własny status",
-    "descriptionCustom": "Wprowadź własny status",
+    "titleCustom": "Spersonalizowany status",
+    "descriptionCustom": "Wprowadź spersonalizowany status",
     "titleAuto": "Automatyczny status",
     "descriptionAuto": "Automatycznie wyświetla status. Np. liczba zealotów, gdy jesteś w Kresie.",
     "titleRevenants": "Zadanie nieumarłego",
