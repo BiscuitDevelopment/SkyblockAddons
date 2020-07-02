@@ -13,14 +13,14 @@ public class SlayerWolf extends SlayerBoss {
         super(Feature.SLAYER_WOLF, "wolf");
 
         drops = new ArrayList<SlayerDrop>();
-        drops.add(new SlayerDrop(this, "Wolf Tooth", "slayerDropWolfTeeth", Rarity.UNCOMMON));
-        drops.add(new SlayerDrop(this, "Hamster Wheel", "slayerDropHamsterWheels", Rarity.RARE));
-        drops.add(new SlayerDrop(this, "Spirit Rune", "slayerDropSpiritRunes", Rarity.RARE));
-        drops.add(new SlayerDrop(this, "Enchanted Book", "slayerDropCrit6Books", Rarity.RARE));
-        drops.add(new SlayerDrop(this, "Grizzly Bait", "slayerDropGrizzlyBaits", Rarity.RARE));
-        drops.add(new SlayerDrop(this, "Red Claw Egg", "slayerDropRedClawEggs", Rarity.EPIC));
-        drops.add(new SlayerDrop(this, "Overflux Capacitor", "slayerDropOverfluxes", Rarity.EPIC));
-        drops.add(new SlayerDrop(this, "Couture Rune", "slayerDropCoutureRunes", Rarity.LEGENDARY));
+        drops.add(new SlayerDrop(this, "WOLF_TOOTH", "WolfTeeth", Rarity.UNCOMMON));
+        drops.add(new SlayerDrop(this, "HAMSTER_WHEEL", "HamsterWheels", Rarity.RARE));
+        drops.add(new SlayerDrop(this, "RUNE:SPIRIT", "SpiritRunes", Rarity.RARE));
+        drops.add(new SlayerDrop(this, "ENCHANTED_BOOK", "Crit6Books", Rarity.RARE));
+        drops.add(new SlayerDrop(this, "GRIZZLY_BAIT", "GrizzlyBaits", Rarity.RARE));
+        drops.add(new SlayerDrop(this, "RED_CLAW_EGG", "RedClawEggs", Rarity.EPIC));
+        drops.add(new SlayerDrop(this, "OVERFLUX_CAPACITOR", "Overfluxes", Rarity.EPIC));
+        drops.add(new SlayerDrop(this, "RUNE:COUTURE", "CoutureRunes", Rarity.LEGENDARY));
     }
 
     @Override

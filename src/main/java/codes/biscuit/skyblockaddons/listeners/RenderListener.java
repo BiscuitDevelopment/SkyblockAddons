@@ -11,6 +11,9 @@ import codes.biscuit.skyblockaddons.gui.SettingsGui;
 import codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui;
 import codes.biscuit.skyblockaddons.gui.buttons.ButtonLocation;
 import codes.biscuit.skyblockaddons.utils.*;
+import codes.biscuit.skyblockaddons.utils.bosstracker.BossTracker;
+import codes.biscuit.skyblockaddons.utils.bosstracker.BossTrackerManager;
+import codes.biscuit.skyblockaddons.utils.bosstracker.DragonBossTracker;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
 import codes.biscuit.skyblockaddons.utils.nifty.reflection.MinecraftReflection;
 import codes.biscuit.skyblockaddons.utils.slayertracker.SlayerBoss;
@@ -1042,7 +1045,7 @@ public class RenderListener {
                 GlStateManager.disableBlend();
                 GlStateManager.enableDepth();
 
-                if (main.getConfigValues().isEnabled(Feature.SLAYER_COLOUR_BY_RARITY)) {
+                if (main.getConfigValues().isEnabled(Feature.SLAYER_TRACKERS_COLOUR_BY_RARITY)) {
                     main.getUtils().drawTextWithStyle(drop.getRarity().getTag().substring(0, 2) + drop.getDisplayName() + drop.getCount(), x, y, color);
                 } else {
                     color = main.getConfigValues().getColor(Feature.SLAYER_TRACKERS).getRGB();
@@ -1087,6 +1090,7 @@ public class RenderListener {
             int longestLineWidth = Minecraft.getMinecraft().fontRendererObj.getStringWidth(boss.getKilledName());
             for (SlayerBoss.SlayerDrop drop : boss.getDrops())
                 longestLineWidth = Math.max(longestLineWidth, Minecraft.getMinecraft().fontRendererObj.getStringWidth(drop.getDisplayName()));
+            longestLineWidth += 10;
 
             int color;
             {
@@ -1094,7 +1098,8 @@ public class RenderListener {
                 ChromaManager.renderingText(Feature.SLAYER_TRACKERS);
                 main.getUtils().drawTextWithStyle(boss.getDisplayName(), x, y, color);
                 y += Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT;
-                main.getUtils().drawTextWithStyle(boss.getKilledName() + boss.getKills(), x, y, color);
+                main.getUtils().drawTextWithStyle(boss.getKilledName(), x, y, color);
+                main.getUtils().drawTextWithStyle(boss.getKills() + "", x + longestLineWidth, y, color);
                 ChromaManager.doneRenderingText();
             }
             y += Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT;//iconSize;
@@ -1108,16 +1113,74 @@ public class RenderListener {
                 GlStateManager.disableBlend();
                 GlStateManager.enableDepth();
 
-                if (main.getConfigValues().isEnabled(Feature.SLAYER_COLOUR_BY_RARITY)) {
-                    main.getUtils().drawTextWithStyle(drop.getRarity().getTag().substring(0, 2) + drop.getDisplayName() + drop.getCount(), x, y, color);
+                if (main.getConfigValues().isEnabled(Feature.SLAYER_TRACKERS_COLOUR_BY_RARITY)) {
+                    main.getUtils().drawTextWithStyle(drop.getRarity().getTag().substring(0, 2) + drop.getDisplayName(), x, y, color);
+                    main.getUtils().drawTextWithStyle(drop.getRarity().getTag().substring(0, 2) + drop.getCount(), x + longestLineWidth, y, color);
                 } else {
                     color = main.getConfigValues().getColor(Feature.SLAYER_TRACKERS).getRGB();
                     ChromaManager.renderingText(Feature.SLAYER_TRACKERS);
-                    main.getUtils().drawTextWithStyle(drop.getDisplayName()
-                            + drop.getCount(), x, y, color);
+                    main.getUtils().drawTextWithStyle(drop.getDisplayName(), x, y, color);
+                    main.getUtils().drawTextWithStyle(drop.getCount() + "", x + longestLineWidth, y, color);
                     ChromaManager.doneRenderingText();
                 }
                 y += Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT;
+            }
+            y += Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT;
+        }
+    }
+
+    public void drawDragonTrackers(Minecraft mc, float scale, ButtonLocation buttonLocation) {
+        DragonBossTracker boss = BossTrackerManager.getInstance().getDragon();
+
+        if (main.getConfigValues().isDisabled(boss.getFeature()) && buttonLocation == null)
+            return;
+
+        int longestLineWidth = 0;
+        for (BossTracker.Stat stat : boss.getStats())
+            longestLineWidth = Math.max(longestLineWidth, Minecraft.getMinecraft().fontRendererObj.getStringWidth(boss.getTranslatedStat(stat.getName())));
+        longestLineWidth += 10;
+
+        float x = main.getConfigValues().getActualX(Feature.DRAGON_STATS_TRACKER);
+        float y = main.getConfigValues().getActualY(Feature.DRAGON_STATS_TRACKER);
+
+        int spacing = 1;
+        int iconSize = 16;
+        int width = iconSize + spacing;
+
+        x /= scale;
+        y /= scale;
+        x -= longestLineWidth;
+
+        if (buttonLocation != null) {
+            buttonLocation.checkHoveredAndDrawBox(x, x + longestLineWidth, y + (11 * Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT), y, scale);
+        }
+
+        /*for (int i = 0; i < 300; i++)
+            main.getUtils().drawTextWithStyle(i + "",
+                    x, i * 9, Color.blue.getRGB());*/
+        int color;
+        color = main.getConfigValues().getColor(Feature.DRAGON_STATS_TRACKER).getRGB();
+        ChromaManager.renderingText(Feature.DRAGON_STATS_TRACKER);
+        main.getUtils().drawTextWithStyle(boss.getTranslatedStat(DragonBossTracker.dragsSince), x, y, color);
+        ChromaManager.doneRenderingText();
+        y += Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT;//iconSize;
+
+        for (BossTracker.Stat stat : boss.getStats()) {
+            GlStateManager.disableDepth();
+            GlStateManager.enableBlend();
+            GlStateManager.color(1, 1, 1, 1F);
+            GlStateManager.disableBlend();
+            GlStateManager.enableDepth();
+
+            if (main.getConfigValues().isEnabled(Feature.DRAGON_STATS_TRACKER_COLOUR_BY_RARITY)) {
+                main.getUtils().drawTextWithStyle(stat.getRarity().getTag().substring(0, 2) + boss.getTranslatedStat(stat.getName()) + ": ", x, y, color);
+                main.getUtils().drawTextWithStyle(stat.getRarity().getTag().substring(0, 2) + (stat.getCount() == -1 ? "Never" : stat.getCount()), x + longestLineWidth, y, color);
+            } else {
+                color = main.getConfigValues().getColor(Feature.DRAGON_STATS_TRACKER).getRGB();
+                ChromaManager.renderingText(Feature.DRAGON_STATS_TRACKER);
+                main.getUtils().drawTextWithStyle(boss.getTranslatedStat(stat.getName()) + ": ", x, y, color);
+                main.getUtils().drawTextWithStyle((stat.getCount() == -1 ? "Never" : stat.getCount() + ""), x + longestLineWidth, y, color);
+                ChromaManager.doneRenderingText();
             }
             y += Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT;
         }

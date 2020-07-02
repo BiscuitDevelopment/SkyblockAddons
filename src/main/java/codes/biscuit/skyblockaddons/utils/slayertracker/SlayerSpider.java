@@ -13,14 +13,14 @@ public class SlayerSpider extends SlayerBoss {
         super(Feature.SLAYER_SPIDER, "spider");
 
         drops = new ArrayList<SlayerDrop>();
-        drops.add(new SlayerDrop(this, "Tarantula Web", "slayerDropTarantulaWebs", Rarity.UNCOMMON));
-        drops.add(new SlayerDrop(this, "Toxic Arrow Poison", "slayerDropToxicArrowPoisons", Rarity.UNCOMMON));
-        drops.add(new SlayerDrop(this, "Spider Catalyst", "slayerDropSpiderCatalysts", Rarity.RARE));
-        drops.add(new SlayerDrop(this, "Enchanted Book", "slayerDropBaneOfArthropod6Books", Rarity.RARE));
-        drops.add(new SlayerDrop(this, "Bite Rune", "slayerDropBiteRunes", Rarity.EPIC));
-        drops.add(new SlayerDrop(this, "Fly Swatter", "slayerDropFlySwatters", Rarity.EPIC));
-        drops.add(new SlayerDrop(this, "Tarantula Talisman", "slayerDropTarantulaTalismans", Rarity.EPIC));
-        drops.add(new SlayerDrop(this, "Digested Mosquito", "slayerDropDigestedMosquitoes", Rarity.LEGENDARY));
+        drops.add(new SlayerDrop(this, "TARANTULA_WEB", "TarantulaWebs", Rarity.UNCOMMON));
+        drops.add(new SlayerDrop(this, "TOXIC_ARROW_POISON", "ToxicArrowPoisons", Rarity.UNCOMMON));
+        drops.add(new SlayerDrop(this, "SPIDER_CATALYST", "SpiderCatalysts", Rarity.RARE));
+        drops.add(new SlayerDrop(this, "ENCHANTED_BOOK", "BaneOfArthropod6Books", Rarity.RARE));
+        drops.add(new SlayerDrop(this, "RUNE:BITE", "BiteRunes", Rarity.EPIC));
+        drops.add(new SlayerDrop(this, "FLY_SWATTER", "FlySwatters", Rarity.EPIC));
+        drops.add(new SlayerDrop(this, "TARANTULA_TALISMAN", "TarantulaTalismans", Rarity.EPIC));
+        drops.add(new SlayerDrop(this, "DIGESTED_MOSQUITO", "DigestedMosquitoes", Rarity.LEGENDARY));
     }
 
     @Override

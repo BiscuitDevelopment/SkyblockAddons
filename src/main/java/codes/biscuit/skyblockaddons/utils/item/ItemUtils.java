@@ -1,12 +1,15 @@
 package codes.biscuit.skyblockaddons.utils.item;
 
 import codes.biscuit.skyblockaddons.constants.game.Rarity;
+import javafx.util.Pair;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraftforge.common.util.Constants;
 
 import java.util.EnumSet;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Utility methods for Skyblock Items
@@ -19,7 +22,7 @@ public class ItemUtils {
      * @return the rarity of the item if a valid rarity is found, {@code INVALID} if no rarity is found, {@code null} if item is {@code null}
      */
     public static Rarity getRarity(ItemStack item) {
-        if (item == null || !item.hasTagCompound())  {
+        if (item == null || !item.hasTagCompound()) {
             return null;
         }
 
@@ -55,8 +58,7 @@ public class ItemUtils {
     public static String getSkyBlockItemID(final ItemStack item) {
         if (item == null) {
             throw new NullPointerException("Item cannot be null.");
-        }
-        else if (!item.hasTagCompound()) {
+        } else if (!item.hasTagCompound()) {
             return null;
         }
 
@@ -68,6 +70,61 @@ public class ItemUtils {
             if (!itemId.equals("")) {
                 return itemId;
             }
+        }
+
+        return null;
+    }
+
+    public static NBTTagCompound getSkyblockData(final ItemStack item) {
+        if (item == null) {
+            throw new NullPointerException("Item cannot be null.");
+        } else if (!item.hasTagCompound()) {
+            return null;
+        }
+
+        NBTTagCompound skyBlockData = item.getSubCompound("ExtraAttributes", false);
+
+        return skyBlockData;
+    }
+
+    /**
+     * Returns the Skyblock Item ID of a given Skyblock Extra Attributes NBT Compound
+     *
+     * @param extraAttributes the NBT to check
+     * @return the Skyblock Item ID of this item or {@code null} if this isn't a valid Skyblock NBT
+     */
+    public static String getSkyBlockItemID(NBTTagCompound extraAttributes) {
+
+        if (extraAttributes != null) {
+            String itemId = extraAttributes.getString("id");
+
+            if (!itemId.equals("")) {
+                return itemId;
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * Returns a pair of the Rune:Tier value from the ExtraAttributes Skyblock data
+     *
+     * @param extraAttributes the Skyblock Data to check
+     * @return A Pair with the Name and Tier of the Rune or {@code null} if it isn't a Rune
+     */
+    public static Pair<String, Integer> getRuneData(NBTTagCompound extraAttributes) {
+        if (extraAttributes != null) {
+            String itemId = extraAttributes.getString("id");
+            NBTTagCompound runeData = extraAttributes.getCompoundTag("runes");
+
+            if (!itemId.equals("RUNE")) {
+                return null;
+            }
+
+            String runeName = runeData.getKeySet().toString();
+            runeName = runeName.substring(1, runeName.length() - 1);
+
+            return new Pair<String, Integer>(runeName, runeData.getInteger(runeName));
         }
 
         return null;

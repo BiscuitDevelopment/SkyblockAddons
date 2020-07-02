@@ -313,7 +313,7 @@ public class EnumUtils {
         MYNAMEISJEFF("MyNameIsJeff", "github.com/My-Name-Is-Jeff", Feature.SHOW_BROKEN_FRAGMENTS),
         DJTHEREDSTONER("DJtheRedstoner", "github.com/DJtheRedstoner", Feature.LEGENDARY_SEA_CREATURE_WARNING, Feature.HIDE_SVEN_PUP_NAMETAGS),
         ANTONIO32A("Antonio32A", "github.com/Antonio32A", Feature.ONLY_BREAK_LOGS_PARK),
-        CHARZARD("Charzard4261", "github.com/Charzard4261", Feature.DISABLE_TELEPORT_PAD_MESSAGES, Feature.BAIT_LIST, Feature.ACTIONS_UNTIL_NEXT_LEVEL, Feature.SLAYER_TRACKERS);
+        CHARZARD("Charzard4261", "github.com/Charzard4261", Feature.DISABLE_TELEPORT_PAD_MESSAGES, Feature.BAIT_LIST, Feature.ACTIONS_UNTIL_NEXT_LEVEL, Feature.SLAYER_TRACKERS, Feature.DRAGON_STATS_TRACKER);
 
         private Set<Feature> features;
         private String author;
@@ -384,7 +384,8 @@ public class EnumUtils {
         TICKER,
         BAIT_LIST_DISPLAY,
         TAB_EFFECT_TIMERS,
-        SLAYER_TRACKERS
+        SLAYER_TRACKERS,
+        DRAGON_STATS_TRACKER
     }
 
     @Getter

@@ -133,6 +133,7 @@ public enum Message {
     SETTING_EXPANDED(MessageObject.SETTING, "expanded"),
     SETTING_SLAYER_TRACKER(MessageObject.SETTING, "slayerTracker"),
     SETTING_COLOUR_BY_RARITY(MessageObject.SETTING, "colourByRarity"),
+    SETTING_DRAGON_STATS_TRACKER(MessageObject.SETTING, "dragonStatsTracker"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.BACKPACK_STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.BACKPACK_STYLE, "compact"),

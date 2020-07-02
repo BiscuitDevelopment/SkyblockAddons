@@ -125,11 +125,13 @@ public enum Feature {
     HIDE_SVEN_PUP_NAMETAGS(97, Message.SETTING_HIDE_SVEN_PUP_NAMETAGS, true),
     REPEAT_SLAYER_BOSS_WARNING(98, null, true),
     ACTIONS_UNTIL_NEXT_LEVEL(99, null, true),
-    SLAYER_TRACKERS(100, Message.SETTING_SLAYER_TRACKER, new GuiFeatureData(EnumUtils.DrawType.SLAYER_TRACKERS, ChatFormatting.DARK_GREEN, EnumUtils.AnchorPoint.BOTTOM_LEFT, 20, -10), false, EnumUtils.FeatureSetting.SLAYER_ZOMBIE, EnumUtils.FeatureSetting.SLAYER_SPIDER, EnumUtils.FeatureSetting.SLAYER_WOLF, EnumUtils.FeatureSetting.COLOUR_BY_RARITY),
+    SLAYER_TRACKERS(100, Message.SETTING_SLAYER_TRACKER, new GuiFeatureData(EnumUtils.DrawType.SLAYER_TRACKERS, ChatFormatting.WHITE, EnumUtils.AnchorPoint.BOTTOM_LEFT, 20, -10), false, EnumUtils.FeatureSetting.SLAYER_ZOMBIE, EnumUtils.FeatureSetting.SLAYER_SPIDER, EnumUtils.FeatureSetting.SLAYER_WOLF, EnumUtils.FeatureSetting.COLOUR_BY_RARITY),
     SLAYER_ZOMBIE(101, null, true),
     SLAYER_SPIDER(102, null, true),
     SLAYER_WOLF(103, null, true),
-    SLAYER_COLOUR_BY_RARITY(104, null, true),
+    SLAYER_TRACKERS_COLOUR_BY_RARITY(104, null, true),
+    DRAGON_STATS_TRACKER(105, Message.SETTING_DRAGON_STATS_TRACKER, new GuiFeatureData(EnumUtils.DrawType.DRAGON_STATS_TRACKER, ChatFormatting.WHITE, EnumUtils.AnchorPoint.TOP_RIGHT, -150, 50), true, EnumUtils.FeatureSetting.COLOUR_BY_RARITY),
+    DRAGON_STATS_TRACKER_COLOUR_BY_RARITY(106, null, true),
 
     WARNING_TIME(-1, Message.SETTING_WARNING_DURATION, false),
 
@@ -161,7 +163,7 @@ public enum Feature {
             MAKE_BACKPACK_INVENTORIES_COLORED, CHANGE_BAR_COLOR_FOR_POTIONS, ENABLE_MESSAGE_WHEN_BREAKING_STEMS,
             ENABLE_MESSAGE_WHEN_MINING_DEEP_CAVERNS, ENABLE_MESSAGE_WHEN_MINING_NETHER, HIDE_NIGHT_VISION_EFFECT_TIMER,
             CAKE_BAG_PREVIEW, BACKPACK_PREVIEW_AH, REPEAT_FULL_INVENTORY_WARNING, SORT_TAB_EFFECT_TIMERS, DOUBLE_WARP,
-            REPEAT_SLAYER_BOSS_WARNING, ACTIONS_UNTIL_NEXT_LEVEL, SLAYER_ZOMBIE, SLAYER_SPIDER, SLAYER_WOLF, SLAYER_COLOUR_BY_RARITY);
+            REPEAT_SLAYER_BOSS_WARNING, ACTIONS_UNTIL_NEXT_LEVEL, SLAYER_ZOMBIE, SLAYER_SPIDER, SLAYER_WOLF, SLAYER_TRACKERS_COLOUR_BY_RARITY, DRAGON_STATS_TRACKER_COLOUR_BY_RARITY);
 
     /**
      * Features that are considered gui ones. This is used for examnple when saving the config to ensure that these features'
@@ -170,7 +172,7 @@ public enum Feature {
     @Getter private static final Set<Feature> guiFeatures = new LinkedHashSet<>(Arrays.asList(MAGMA_BOSS_TIMER, MANA_BAR, MANA_TEXT, DEFENCE_ICON, DEFENCE_TEXT,
             DEFENCE_PERCENTAGE, HEALTH_BAR, HEALTH_TEXT, SKELETON_BAR, HEALTH_UPDATES, ITEM_PICKUP_LOG, DARK_AUCTION_TIMER, SKILL_DISPLAY, SPEED_PERCENTAGE, SLAYER_INDICATOR,
             POWER_ORB_STATUS_DISPLAY, ZEALOT_COUNTER, TICKER_CHARGES_DISPLAY, TAB_EFFECT_TIMERS, SHOW_TOTAL_ZEALOT_COUNT, SHOW_SUMMONING_EYE_COUNT,
-            SHOW_AVERAGE_ZEALOTS_PER_EYE, BIRCH_PARK_RAINMAKER_TIMER, COMBAT_TIMER_DISPLAY, ENDSTONE_PROTECTOR_DISPLAY, BAIT_LIST, SLAYER_TRACKERS));
+            SHOW_AVERAGE_ZEALOTS_PER_EYE, BIRCH_PARK_RAINMAKER_TIMER, COMBAT_TIMER_DISPLAY, ENDSTONE_PROTECTOR_DISPLAY, BAIT_LIST, SLAYER_TRACKERS, DRAGON_STATS_TRACKER));
 
     private static final int ID_AT_PREVIOUS_UPDATE = 63;
 
@@ -256,6 +258,8 @@ public enum Feature {
                 main.getRenderListener().drawBaitList(mc, scale, buttonLocation);
             } else if(guiFeatureData.getDrawType() == EnumUtils.DrawType.SLAYER_TRACKERS) {
                 main.getRenderListener().drawSlayerTrackers(mc, scale, buttonLocation);
+            } else if(guiFeatureData.getDrawType() == EnumUtils.DrawType.DRAGON_STATS_TRACKER) {
+                main.getRenderListener().drawDragonTrackers(mc, scale, buttonLocation);
             }
         }
     }

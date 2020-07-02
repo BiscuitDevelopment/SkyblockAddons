@@ -6,7 +6,6 @@ import codes.biscuit.skyblockaddons.core.Message;
 import codes.biscuit.skyblockaddons.gui.buttons.*;
 import codes.biscuit.skyblockaddons.utils.*;
 import codes.biscuit.skyblockaddons.utils.discord.DiscordStatus;
-import codes.biscuit.skyblockaddons.utils.slayertracker.SlayerBoss;
 import codes.biscuit.skyblockaddons.utils.slayertracker.SlayerTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
@@ -407,10 +406,10 @@ public class SettingsGui extends GuiScreen {
 
             Feature settingFeature = null;
             if (feature == Feature.SLAYER_TRACKERS) {
-                settingFeature = Feature.SLAYER_COLOUR_BY_RARITY;
-            }/* else if (feature == Feature.) {
-                settingFeature = Feature.;
-            }*/
+                settingFeature = Feature.SLAYER_TRACKERS_COLOUR_BY_RARITY;
+            } else if (feature == Feature.DRAGON_STATS_TRACKER) {
+                settingFeature = Feature.DRAGON_STATS_TRACKER_COLOUR_BY_RARITY;
+            }
 
             buttonList.add(new ButtonToggleTitle(x, y, Message.SETTING_COLOUR_BY_RARITY.getMessage(), main, settingFeature));
         } else {

@@ -6,12 +6,14 @@ import codes.biscuit.skyblockaddons.utils.item.ItemUtils;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
+import javafx.util.Pair;
 import lombok.Getter;
 import lombok.Setter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.inventory.*;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 
 import java.math.BigDecimal;
 import java.util.*;
@@ -77,8 +79,8 @@ public class InventoryUtils {
      */
     public List<ItemDiff> getInventoryDifference(ItemStack[] currentInventory) {
         List<ItemStack> newInventory = copyInventory(currentInventory);
-        Map<String, Integer> previousInventoryMap = new HashMap<>();
-        Map<String, Integer> newInventoryMap = new HashMap<>();
+        Map<String, Pair<NBTTagCompound, Integer>> previousInventoryMap = new HashMap<>();
+        Map<String, Pair<NBTTagCompound, Integer>> newInventoryMap = new HashMap<>();
 
         List<ItemDiff> inventoryDifference = new LinkedList<>();
 
@@ -93,7 +95,7 @@ public class InventoryUtils {
                 ItemStack newItem = newInventory.get(i);
 
                 if(previousItem != null) {
-                    int amount = previousInventoryMap.getOrDefault(previousItem.getDisplayName(), 0) + previousItem.stackSize;
+                    Pair<NBTTagCompound, Integer> amount = previousInventoryMap.getOrDefault(previousItem.getDisplayName(), new Pair<>(ItemUtils.getSkyblockData(previousItem),0 + previousItem.stackSize));
                     previousInventoryMap.put(previousItem.getDisplayName(), amount);
                 }
 
@@ -102,7 +104,7 @@ public class InventoryUtils {
                         String newName = newItem.getDisplayName().substring(0, newItem.getDisplayName().lastIndexOf(" "));
                         newItem.setStackDisplayName(newName); // This is a workaround for merchants, it adds x64 or whatever to the end of the name.
                     }
-                    int amount = newInventoryMap.getOrDefault(newItem.getDisplayName(), 0) + newItem.stackSize;
+                    Pair<NBTTagCompound, Integer> amount = newInventoryMap.getOrDefault(newItem.getDisplayName(), new Pair<>(ItemUtils.getSkyblockData(newItem), 0 + newItem.stackSize));
                     newInventoryMap.put(newItem.getDisplayName(), amount);
                 }
             }
@@ -111,11 +113,11 @@ public class InventoryUtils {
             keySet.addAll(newInventoryMap.keySet());
 
             keySet.forEach(key -> {
-                int previousAmount = previousInventoryMap.getOrDefault(key, 0);
-                int newAmount = newInventoryMap.getOrDefault(key, 0);
+                int previousAmount = previousInventoryMap.get(key) == null ? 0 : previousInventoryMap.get(key).getValue();//previousInventoryMap.getOrDefault(key, 0);
+                int newAmount = newInventoryMap.get(key) == null ? 0 : newInventoryMap.get(key).getValue();//newInventoryMap.getOrDefault(key, 0);
                 int diff = newAmount - previousAmount;
                 if (diff != 0) {
-                    inventoryDifference.add(new ItemDiff(key, diff));
+                    inventoryDifference.add(new ItemDiff(key, diff, diff < 1 ? previousInventoryMap.get(key).getKey() : newInventoryMap.get(key).getKey()));
                 }
             });
         }

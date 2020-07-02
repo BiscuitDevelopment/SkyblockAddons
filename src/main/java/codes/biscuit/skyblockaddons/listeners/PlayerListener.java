@@ -8,6 +8,7 @@ import codes.biscuit.skyblockaddons.core.Message;
 import codes.biscuit.skyblockaddons.gui.IslandWarpGui;
 import codes.biscuit.skyblockaddons.scheduler.SkyblockRunnable;
 import codes.biscuit.skyblockaddons.utils.*;
+import codes.biscuit.skyblockaddons.utils.bosstracker.BossTrackerManager;
 import codes.biscuit.skyblockaddons.utils.dev.DevUtils;
 import codes.biscuit.skyblockaddons.utils.item.ItemUtils;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
@@ -215,8 +216,13 @@ public class PlayerListener {
                 SlayerTracker.getInstance().stopAcceptingTimestamp = calendar.getTime();
             } else if (formattedText.startsWith("§r   §r§5§l» §r§7Talk to Maddox to claim your ")) {
                 SlayerTracker.getInstance().addSlayerKill(unformattedText);
+            } else if (formattedText.startsWith("§r§5☬ §r§dYou placed a Summoning Eye!")) {
+                BossTrackerManager.getInstance().getDragon().eyePool++;
+            } else if (formattedText.equalsIgnoreCase("§r§5You recovered a Summoning Eye!§r")) {
+                BossTrackerManager.getInstance().getDragon().eyePool--;
             } else if (formattedText.startsWith("§7Sending to server ")) {
                 lastSkyblockServerJoinAttempt = System.currentTimeMillis();
+                BossTrackerManager.getInstance().getDragon().eyePool = 0;
             } else if (unformattedText.equals("You laid an egg!")) { // Put the Chicken Head on cooldown for 20 seconds when the player lays an egg.
                 CooldownManager.put(InventoryUtils.CHICKEN_HEAD_DISPLAYNAME, 20000);
 

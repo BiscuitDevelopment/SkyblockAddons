@@ -138,47 +138,55 @@
         "name": "Revenant Horror",
         "killedName": "Revenants Killed",
         "drops": {
-          "slayerDropRevenantFlesh": "Revenant Flesh",
-          "slayerDropFoulFlesh": "Foul Flesh",
-          "slayerDropPestilenceRunes": "Pestilence Runes",
-          "slayerDropUndeadCatalysts": "Undead Catalysts",
-          "slayerDropSmite6Books": "Smite VI Books",
-          "slayerDropBeheadedHorrors": "Beheaded Horrors",
-          "slayerDropRevenantCatalysts": "Revenant Catalysts",
-          "slayerDropSnakeRunes": "Snake Runes",
-          "slayerDropScytheBlades": "Scythe Blades"
+          "RevenantFlesh": "Revenant Flesh",
+          "FoulFlesh": "Foul Flesh",
+          "PestilenceRunes": "Pestilence Runes",
+          "UndeadCatalysts": "Undead Catalysts",
+          "Smite6Books": "Smite VI Books",
+          "BeheadedHorrors": "Beheaded Horrors",
+          "RevenantCatalysts": "Revenant Catalysts",
+          "SnakeRunes": "Snake Runes",
+          "ScytheBlades": "Scythe Blades"
         }
       },
       "spider": {
         "name": "Tarantula Broodfather",
         "killedName": "Tarantulas Killed",
         "drops": {
-          "slayerDropTarantulaWebs": "Tarantula Webs",
-          "slayerDropToxicArrowPoisons": "Toxic Arrow Poisons",
-          "slayerDropBiteRunes": "Bite Runes",
-          "slayerDropSpiderCatalysts": "Spider Catalysts",
-          "slayerDropBaneOfArthropod6Books": "Bane of Arthropod VI Books",
-          "slayerDropFlySwatters": "Fly Swatters",
-          "slayerDropTarantulaTalismans": "Tarantula Talismans",
-          "slayerDropDigestedMosquitoes": "Digested Mosquitoes"
+          "TarantulaWebs": "Tarantula Webs",
+          "ToxicArrowPoisons": "Toxic Arrow Poisons",
+          "BiteRunes": "Bite Runes",
+          "SpiderCatalysts": "Spider Catalysts",
+          "BaneOfArthropod6Books": "Bane of Arthropod VI Books",
+          "FlySwatters": "Fly Swatters",
+          "TarantulaTalismans": "Tarantula Talismans",
+          "DigestedMosquitoes": "Digested Mosquitoes"
         }
       },
       "wolf": {
         "name": "Sven Packmaster",
         "killedName": "Svens Killed",
         "drops": {
-          "slayerDropWolfTeeth": "Wolf Teeth",
-          "slayerDropHamsterWheels": "Hamster Wheels",
-          "slayerDropSpiritRunes": "Spirit Runes",
-          "slayerDropCrit6Books": "Critical VI Books",
-          "slayerDropGrizzlyBaits": "Grizzly Baits",
-          "slayerDropRedClawEggs": "Red Claw Eggs",
-          "slayerDropOverfluxes": "Overfluxes",
-          "slayerDropCoutureRunes": "Couture Runes"
+          "WolfTeeth": "Wolf Teeth",
+          "HamsterWheels": "Hamster Wheels",
+          "SpiritRunes": "Spirit Runes",
+          "Crit6Books": "Critical VI Books",
+          "GrizzlyBaits": "Grizzly Baits",
+          "RedClawEggs": "Red Claw Eggs",
+          "Overfluxes": "Overfluxes",
+          "CoutureRunes": "Couture Runes"
         }
       }
     },
-    "colourByRarity": "Colour By Rarity"
+    "colourByRarity": "Colour By Rarity",
+    "dragonStatsTracker": "Dragon Stats Tracker",
+    "dragonStats" : {
+      "dragonsSince": "Dragons Since",
+      "dragonsSinceSuperior": "Superior",
+      "dragonsSinceAOTD": "Aspect",
+      "dragonsSincePet": "Pet",
+      "eyesPlaced": "Eyes Placed"
+    }
   },
   "messages": {
     "dropConfirmation": "Drop this item again to confirm!",

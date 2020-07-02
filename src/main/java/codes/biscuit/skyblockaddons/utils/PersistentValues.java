@@ -1,6 +1,8 @@
 package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.utils.bosstracker.BossTracker;
+import codes.biscuit.skyblockaddons.utils.bosstracker.BossTrackerManager;
 import codes.biscuit.skyblockaddons.utils.slayertracker.SlayerTracker;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -26,7 +28,7 @@ public class PersistentValues {
     private int totalKills;
     private int summoningEyeCount;
     @Getter
-    private JsonObject slayerDrops;
+    private JsonObject slayerDrops, dragonStats;
 
     private boolean blockCraftingIncompletePatterns = true;
     private CraftingPattern selectedCraftingPattern = CraftingPattern.FREE;
@@ -55,6 +57,8 @@ public class PersistentValues {
 
                 this.slayerDrops = valuesObject.has("slayerDrops") ? valuesObject.getAsJsonObject("slayerDrops") : new JsonObject();
                 SlayerTracker.getInstance().LoadPersistentValues();
+                this.dragonStats = valuesObject.has("dragonStats") ? valuesObject.getAsJsonObject("dragonStats") : new JsonObject();
+                BossTrackerManager.getInstance().LoadPersistentValues();
 
             } catch (Exception ex) {
                 logger.error("SkyblockAddons: There was an error while trying to load persistent values.");
@@ -77,6 +81,7 @@ public class PersistentValues {
             valuesObject.addProperty("totalKills", this.totalKills);
             valuesObject.addProperty("summoningEyeCount", this.summoningEyeCount);
             valuesObject.add("slayerDrops", SlayerTracker.getInstance().SavePersistentValues());
+            valuesObject.add("dragonStats", BossTrackerManager.getInstance().getDragon().SavePersistentValues());
 
             bufferedWriter.write(valuesObject.toString());
             bufferedWriter.close();
