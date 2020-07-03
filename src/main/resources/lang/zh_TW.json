@@ -125,11 +125,11 @@
     "baitListDisplay": "手持釣竿時顯示魚餌列表",
     "freezeBackpackPreview": "維持背包預覽",
     "hideGreyEnchants": "隱藏原版說明欄灰色附魔",
-    "zealotCounterExplosiveBow": "Zealot Counter Explosive Bow Support",
-    "disableEndermanTeleportation": "Disable Enderman Teleportation",
-    "changeZealotColor": "Change Zealot Color",
-    "hideSvenPupNametags": "Hide Sven Pup Nametags",
-    "turnAllFeaturesChroma": "Turn All Features Chroma"
+    "zealotCounterExplosiveBow": "Zealot計數器 支援Explosive Bow",
+    "disableEndermanTeleportation": "取消終界使者傳送",
+    "changeZealotColor": "變更Zealot顏色",
+    "hideSvenPupNametags": "隱藏Sven Pup 名稱",
+    "turnAllFeaturesChroma": "套用淡出淡入於所有功能"
   },
   "messages": {
     "dropConfirmation": "再次丟棄此物品以確認!",
@@ -190,8 +190,8 @@
     "legendarySeaCreatureWarning": "傳說一釣!",
     "cancelledPark": "一個功能阻止了你破壞此方塊",
     "bossApproaching": "你正在逼近Boss的生成!",
-    "enableAll": "Enable All",
-    "disableAll": "Disable All"
+    "enableAll": "啟用全部",
+    "disableAll": "停用全部"
   },
   "discordStatus": {
     "titleNone": "無",
@@ -214,11 +214,11 @@
     "descriptionCustom": "輸入一個自訂狀態",
     "titleAuto": "自動狀態",
     "descriptionAuto": "自動顯示一個狀態 例: 在終界時的Zealot擊殺數",
-    "titleRevenants": "Revenant Quest",
-    "descriptionRevenants": "Shows that you are doing a Revenant quest.",
-    "titleSvens": "Sven Quest",
-    "descriptionSvens": "Shows that you are doing a Sven quest.",
-    "titleTarantula": "Tarantula Quest",
-    "descriptionTarantula": "Shows that you are doing a Tarantula quest."
+    "titleRevenants": "Revenant 任務",
+    "descriptionRevenants": "顯示你正在進行一個Revenant 任務",
+    "titleSvens": "Sven 任務",
+    "descriptionSvens": "顯示你正在進行一個Sven 任務",
+    "titleTarantula": "Tarantula 任務",
+    "descriptionTarantula": "顯示你正在進行一個Tarantula 任務"
   }
 }
