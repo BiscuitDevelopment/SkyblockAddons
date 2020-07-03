@@ -214,11 +214,11 @@
     "descriptionCustom": "输入自定义状态",
     "titleAuto": "随机状态",
     "descriptionAuto": "随机显示某一状态， 如在末地时显示末影战士击杀数。",
-    "titleRevenants": "Revenant Quest",
-    "descriptionRevenants": "显示你正在进行的 Revenant quest",
-    "titleSvens": "Sven Quest",
-    "descriptionSvens": "显示你正在进行的 Sven quest",
-    "titleTarantula": "Tarantula Quest",
-    "descriptionTarantula": "显示你正在进行的  Tarantula quest"
+    "titleRevenants": "亡灵猎杀任务",
+    "descriptionRevenants": "显示你当前正在进行亡灵猎杀任务",
+    "titleSvens": "狼王猎杀任务",
+    "descriptionSvens": "显示你当前正在进行狼王猎杀任务",
+    "titleTarantula": "狼蛛猎杀任务",
+    "descriptionTarantula": "显示你当前正在进行狼蛛猎杀任务"
   }
 }
