@@ -109,6 +109,9 @@ public class Utils {
     /** The player's current location in Skyblock */
     private Location location = Location.UNKNOWN;
 
+    /** The name of visited island owner */
+    private String visitedIslandOwner = "";
+
     /** The skyblock profile that the player is currently on. Ex. "Grapefruit" */
     private String profileName = "Unknown";
 
@@ -314,6 +317,13 @@ public class Utils {
                             foundLocation = true;
                             break;
                         }
+                    }
+
+                    if (location == Location.GUEST_ISLAND && strippedLine
+                            .endsWith(Location.GUEST_ISLAND.getScoreboardName())) {
+                        String[] splitted = strippedLine.split("'");
+
+                        visitedIslandOwner = splitted.length != 0 ? splitted[0] : "test";
                     }
 
                     if (location == Location.JERRYS_WORKSHOP || location == Location.JERRY_POND) {

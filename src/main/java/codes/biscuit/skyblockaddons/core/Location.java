@@ -11,7 +11,7 @@ import java.util.Set;
 @Getter
 public enum Location {
     ISLAND("Your Island"), // TODO RPC
-    GUEST_ISLAND("'s Island", "island"), // TODO RPC
+    GUEST_ISLAND("'s Island"), // TODO RPC
 
     // Hub
     AUCTION_HOUSE("Auction House"),
@@ -94,7 +94,8 @@ public enum Location {
     Location(String scoreboardName) {
         this.scoreboardName = scoreboardName;
 
-        Set<String> NO_DISCORD_RPC = Sets.newHashSet("ISLAND", "BAZAAR", "DEEP_CAVERNS", "GUNPOWDER_MINES", "LAPIS_QUARRY", "PIGMAN_DEN", "JERRYS_WORKSHOP", "JERRY_POND");
+        Set<String> NO_DISCORD_RPC = Sets.newHashSet("ISLAND", "GUEST_ISLAND", "BAZAAR", "DEEP_CAVERNS",
+                "GUNPOWDER_MINES", "LAPIS_QUARRY", "PIGMAN_DEN", "JERRYS_WORKSHOP", "JERRY_POND");
 
         if (NO_DISCORD_RPC.contains(name())) {
             discordIconKey = "skyblock";

@@ -8,6 +8,7 @@ import codes.biscuit.skyblockaddons.core.SkyblockDate;
 import codes.biscuit.skyblockaddons.gui.buttons.ButtonSelect;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.TextUtils;
+import codes.biscuit.skyblockaddons.utils.Utils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 
@@ -17,7 +18,15 @@ public enum DiscordStatus implements ButtonSelect.SelectItem {
 
     NONE(Message.DISCORD_STATUS_NONE_TITLE, Message.DISCORD_STATUS_NONE_DESCRIPTION, () -> null),
     LOCATION(Message.DISCORD_STATUS_LOCATION_TITLE, Message.DISCORD_STATUS_LOCATION_DESCRIPTION,
-            () -> SkyblockAddons.getInstance().getUtils().getLocation().getScoreboardName()),
+            () -> {
+                Utils utils = SkyblockAddons.getInstance().getUtils();
+                Location location = utils.getLocation();
+
+                if (Location.ISLAND.equals(location)) return "Private Island";
+                if (Location.GUEST_ISLAND.equals(location)) return utils.getVisitedIslandOwner() + location.getScoreboardName();
+
+                return location.getScoreboardName();
+            }),
 
     PURSE(Message.DISCORD_STATUS_PURSE_TITLE, Message.DISCORD_STATUS_PURSE_DESCRIPTION,
             () -> String.format("%s Coins", TextUtils.formatDouble(SkyblockAddons.getInstance().getUtils().getPurse()))),

@@ -129,7 +129,9 @@
     "disableEndermanTeleportation": "Disable Enderman Teleportation",
     "changeZealotColor": "Change Zealot Color",
     "hideSvenPupNametags": "Hide Sven Pup Nametags",
-    "turnAllFeaturesChroma": "Turn All Features Chroma"
+    "turnAllFeaturesChroma": "Turn All Features Chroma",
+    "disableAbilityUsedMessages": "Disable Ability Used Messages",
+    "disablePickupStashMessages": "Disable Pickup Stash Messages"
   },
   "messages": {
     "dropConfirmation": "Drop this item again to confirm!",

@@ -130,6 +130,8 @@ public enum Message {
     SETTING_CHANGE_ZEALOT_COLOR(MessageObject.SETTING, "changeZealotColor"),
     SETTING_HIDE_SVEN_PUP_NAMETAGS(MessageObject.SETTING, "hideSvenPupNametags"),
     SETTING_TURN_ALL_FEATURES_CHROMA(MessageObject.SETTING, "turnAllFeaturesChroma"),
+    SETTING_DISABLE_ABILITY_USED_MESSAGES(MessageObject.SETTING, "disableAbilityUsedMessages"),
+    SETTING_DISABLE_PICKUP_STASH_MESSAGES(MessageObject.SETTING, "disablePickupStashMessages"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.BACKPACK_STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.BACKPACK_STYLE, "compact"),

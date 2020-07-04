@@ -205,6 +205,9 @@ public class PlayerListener {
             } else if (main.getConfigValues().isEnabled(Feature.DISABLE_TELEPORT_PAD_MESSAGES) && (formattedText.startsWith("§r§aWarped from ") || formattedText.equals("§r§cThis Teleport Pad does not have a destination set!§r"))) {
                 e.setCanceled(true);
 
+            } else if (main.getConfigValues().isEnabled(Feature.DISABLE_PICKUP_STASH_MESSAGES) && (formattedText.contains("Use /pickupstash to get it back!"))) {
+                e.setCanceled(true);
+
             } else if (formattedText.startsWith("§7Sending to server ")) {
                 lastSkyblockServerJoinAttempt = System.currentTimeMillis();
             } else if (unformattedText.equals("You laid an egg!")) { // Put the Chicken Head on cooldown for 20 seconds when the player lays an egg.
@@ -238,6 +241,10 @@ public class PlayerListener {
             Matcher matcher = ABILITY_CHAT_PATTERN.matcher(formattedText);
             if (matcher.matches()) {
                 CooldownManager.put(Minecraft.getMinecraft().thePlayer.getHeldItem());
+
+                if (main.getConfigValues().isEnabled(Feature.DISABLE_ABILITY_USED_MESSAGES)) {
+                    e.setCanceled(true);
+                }
             } else {
                 matcher = PROFILE_CHAT_PATTERN.matcher(formattedText);
                 if (matcher.matches()) {
