@@ -1155,15 +1155,32 @@ public class RenderListener {
             buttonLocation.checkHoveredAndDrawBox(x, x + longestLineWidth, y + (11 * Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT), y, scale);
         }
 
-        /*for (int i = 0; i < 300; i++)
-            main.getUtils().drawTextWithStyle(i + "",
-                    x, i * 9, Color.blue.getRGB());*/
-        int color;
-        color = main.getConfigValues().getColor(Feature.DRAGON_STATS_TRACKER).getRGB();
+        int color = main.getConfigValues().getColor(Feature.DRAGON_STATS_TRACKER).getRGB();
+
+        ChromaManager.renderingText(Feature.DRAGON_STATS_TRACKER);
+        main.getUtils().drawTextWithStyle(boss.getTranslatedStat(DragonBossTracker.dragsRecent), x, y, color);
+        ChromaManager.doneRenderingText();
+        y += Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT;
+
+        for (DragonBossTracker.DragonType dragon : boss.getRecent())
+        {
+            if (main.getConfigValues().isEnabled(Feature.DRAGON_STATS_TRACKER_COLOUR_BY_RARITY)) {
+                main.getUtils().drawTextWithStyle(dragon.getDisplayName(), x, y, dragon.getColour().getRGB());
+            } else {
+                ChromaManager.renderingText(Feature.DRAGON_STATS_TRACKER);
+                main.getUtils().drawTextWithStyle(dragon.getDisplayName(), x, y, color);
+                ChromaManager.doneRenderingText();
+            }
+            y += Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT;
+        }
+        y += Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT;
+
         ChromaManager.renderingText(Feature.DRAGON_STATS_TRACKER);
         main.getUtils().drawTextWithStyle(boss.getTranslatedStat(DragonBossTracker.dragsSince), x, y, color);
         ChromaManager.doneRenderingText();
-        y += Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT;//iconSize;
+        y += Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT;
+
+        String never = Utils.getTranslatedString("settings", "never");
 
         for (BossTracker.Stat stat : boss.getStats()) {
             GlStateManager.disableDepth();
@@ -1174,12 +1191,11 @@ public class RenderListener {
 
             if (main.getConfigValues().isEnabled(Feature.DRAGON_STATS_TRACKER_COLOUR_BY_RARITY)) {
                 main.getUtils().drawTextWithStyle(stat.getRarity().getTag().substring(0, 2) + boss.getTranslatedStat(stat.getName()) + ": ", x, y, color);
-                main.getUtils().drawTextWithStyle(stat.getRarity().getTag().substring(0, 2) + (stat.getCount() == -1 ? "Never" : stat.getCount()), x + longestLineWidth, y, color);
+                main.getUtils().drawTextWithStyle(stat.getRarity().getTag().substring(0, 2) + (stat.getCount() == -1 ? never : stat.getCount()), x + longestLineWidth, y, color);
             } else {
-                color = main.getConfigValues().getColor(Feature.DRAGON_STATS_TRACKER).getRGB();
                 ChromaManager.renderingText(Feature.DRAGON_STATS_TRACKER);
                 main.getUtils().drawTextWithStyle(boss.getTranslatedStat(stat.getName()) + ": ", x, y, color);
-                main.getUtils().drawTextWithStyle((stat.getCount() == -1 ? "Never" : stat.getCount() + ""), x + longestLineWidth, y, color);
+                main.getUtils().drawTextWithStyle((stat.getCount() == -1 ? never : stat.getCount() + ""), x + longestLineWidth, y, color);
                 ChromaManager.doneRenderingText();
             }
             y += Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT;

@@ -58,7 +58,7 @@ public class SlayerTracker {
                 //if (diff.getDisplayName().replaceAll("(§([0-9a-fk-or]))", "").equalsIgnoreCase(drop.getActualName())) {
                 if (drop.getSkyblockID().split(":")[0].equals(ItemUtils.getSkyBlockItemID(diff.getExtraAttributes()))) {
                     if (drop.getSkyblockID().split(":")[0].equals("RUNE")) {
-                        if (ItemUtils.getRuneData(diff.getExtraAttributes()).getKey().equals(drop.getSkyblockID().split(":")[1]))
+                        if (ItemUtils.getRuneData(diff.getExtraAttributes()).getType().equals(drop.getSkyblockID().split(":")[1]))
                         {
                             changed = true;
                             drop.setCount(drop.getCount() + diff.getAmount());

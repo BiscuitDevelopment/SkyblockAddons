@@ -1,6 +1,8 @@
 package codes.biscuit.skyblockaddons.utils.item;
 
 import codes.biscuit.skyblockaddons.constants.game.Rarity;
+import codes.biscuit.skyblockaddons.utils.skyblockdata.PetInfo;
+import codes.biscuit.skyblockaddons.utils.skyblockdata.Rune;
 import javafx.util.Pair;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -107,24 +109,41 @@ public class ItemUtils {
     }
 
     /**
-     * Returns a pair of the Rune:Tier value from the ExtraAttributes Skyblock data
+     * Returns a {@link Rune} from the ExtraAttributes Skyblock data
+     * This can ge retrieved from a rune itself or an infused item
      *
      * @param extraAttributes the Skyblock Data to check
-     * @return A Pair with the Name and Tier of the Rune or {@code null} if it isn't a Rune
+     * @return A {@link Rune} or {@code null} if it doesn't have it
      */
-    public static Pair<String, Integer> getRuneData(NBTTagCompound extraAttributes) {
+    public static Rune getRuneData(NBTTagCompound extraAttributes) {
         if (extraAttributes != null) {
             String itemId = extraAttributes.getString("id");
-            NBTTagCompound runeData = extraAttributes.getCompoundTag("runes");
 
-            if (!itemId.equals("RUNE")) {
+            if (!extraAttributes.hasKey("runes"))
+                return null;
+
+            return new Rune(extraAttributes.getCompoundTag("runes"));
+            //return new Pair<String, Integer>(runeName, runeData.getInteger(runeName));
+        }
+
+        return null;
+    }
+
+    /**
+     * Returns a {@link PetInfo} from the ExtraAttributes Skyblock data
+     *
+     * @param extraAttributes the Skyblock Data to check
+     * @return A {@link PetInfo} or {@code null} if it isn't a pet
+     */
+    public static PetInfo getPetInfo(NBTTagCompound extraAttributes) {
+        if (extraAttributes != null) {
+            String itemId = extraAttributes.getString("id");
+
+            if (!itemId.equals("PET")) {
                 return null;
             }
 
-            String runeName = runeData.getKeySet().toString();
-            runeName = runeName.substring(1, runeName.length() - 1);
-
-            return new Pair<String, Integer>(runeName, runeData.getInteger(runeName));
+            return new PetInfo(extraAttributes.getString("petInfo"));
         }
 
         return null;

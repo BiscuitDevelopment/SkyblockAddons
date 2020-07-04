@@ -73,6 +73,7 @@ public class PlayerListener {
     private final static Pattern PROFILE_CHAT_PATTERN = Pattern.compile("§aYou are playing on profile: §e([A-Za-z]+).*");
     private final static Pattern SWITCH_PROFILE_CHAT_PATTERN = Pattern.compile("§aYour profile was changed to: §e([A-Za-z]+).*");
     private final static Pattern MINION_CANT_REACH_PATTERN = Pattern.compile("§cI can't reach any (?<mobName>[A-Za-z]*)(?:s)");
+    private final static Pattern DRAGON_KILLED_PATTERN = Pattern.compile("§r( *)[A-Z]* DRAGON DOWN!§r");
 
     private final static Set<String> SOUP_RANDOM_MESSAGES = new HashSet<>(Arrays.asList("I feel like I can fly!", "What was in that soup?",
             "Hmm… tasty!", "Hmm... tasty!", "You can now fly for 2 minutes.", "Your flight has been extended for 2 extra minutes.",
@@ -220,9 +221,11 @@ public class PlayerListener {
                 BossTrackerManager.getInstance().getDragon().eyePool++;
             } else if (formattedText.equalsIgnoreCase("§r§5You recovered a Summoning Eye!§r")) {
                 BossTrackerManager.getInstance().getDragon().eyePool--;
+            } else if (formattedText.startsWith("§5☬ §r§d§lThe §r§5§c§l") && formattedText.endsWith(" Dragon§r§d§l has spawned!§r")) {
+                BossTrackerManager.getInstance().getDragon().dragonSpawned(unformattedText);
             } else if (formattedText.startsWith("§7Sending to server ")) {
                 lastSkyblockServerJoinAttempt = System.currentTimeMillis();
-                BossTrackerManager.getInstance().getDragon().eyePool = 0;
+                BossTrackerManager.getInstance().getDragon().reset();
             } else if (unformattedText.equals("You laid an egg!")) { // Put the Chicken Head on cooldown for 20 seconds when the player lays an egg.
                 CooldownManager.put(InventoryUtils.CHICKEN_HEAD_DISPLAYNAME, 20000);
 
@@ -262,6 +265,12 @@ public class PlayerListener {
                     matcher = SWITCH_PROFILE_CHAT_PATTERN.matcher(formattedText);
                     if (matcher.matches()) {
                         main.getUtils().setProfileName(matcher.group(1));
+                    } else {
+                        matcher = DRAGON_KILLED_PATTERN.matcher(formattedText);
+                        if (matcher.matches())
+                        {
+                            BossTrackerManager.getInstance().getDragon().dragonKilled();
+                        }
                     }
                 }
             }
@@ -398,6 +407,10 @@ public class PlayerListener {
                                 SlayerTracker.getInstance().updateDrops(invDifference);
                             else
                                 SlayerTracker.getInstance().cache.put(new Date(), invDifference);
+
+                            if (BossTrackerManager.getInstance().getDragon().stopAcceptingTimestamp != null
+                                    && BossTrackerManager.getInstance().getDragon().stopAcceptingTimestamp.after(new Date()))
+                                BossTrackerManager.getInstance().getDragon().checkForDrops(invDifference);
                         }
                         if (main.getConfigValues().isEnabled(Feature.BAIT_LIST) && BaitManager.getInstance().isHoldingRod()) {
                             BaitManager.getInstance().refreshBaits();
