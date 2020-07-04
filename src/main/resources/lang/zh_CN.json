@@ -114,7 +114,7 @@
     "birchParkRainmakerTimer": "桦木公园下雨计时",
     "combatTimerDisplay": "显示战斗计时器",
     "discordRP": "丰富 Discord 状态",
-    "endstoneProtectorDisplay": "显示末影石保护者",
+    "endstoneProtectorDisplay": "末地石护卫生成阶段显示",
     "fancyWarpMenu": "精致传送菜单",
     "doubleWarp": "双重传送",
     "advancedMode": "高级模式",
@@ -148,13 +148,13 @@
       "crafting": "合成"
     },
     "wantToViewPatchNotes": "需要帮助或查看更新内容？",
-    "downloadLink": "更新链接",
+    "downloadLink": "更新视频介绍",
     "directDownload": "直接下载链接",
     "openModFolder": "Mods 文件夹",
     "joinTheDiscord": "加入 Discord",
     "newUpdateAvailable": "新版本 (%version%) 现已发布！",
     "update": {
-      "majorAvailable": "%version% 重要更新！下载链接可以在聊天中找到。",
+      "majorAvailable": "%version% 重要更新！下载链接可以在聊天栏中找到。",
       "patchAvailable": "%version% 补丁更新！下载链接可以在聊天栏中找到。"
     },
     "slotLocked": "该栏已锁！",
@@ -209,7 +209,7 @@
     "titleProfile": "账户",
     "descriptionProfile": "显示你的账户名称",
     "titleTime": "空岛时间",
-    "descriptionTime": "显示当前空岛的时间，例：初冬1日正午12：00",
+    "descriptionTime": "显示当前空岛的时间，例：初冬1日12：00am",
     "titleCustom": "自定义状态",
     "descriptionCustom": "输入自定义状态",
     "titleAuto": "随机状态",
