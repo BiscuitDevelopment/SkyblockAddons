@@ -23,7 +23,7 @@ public class DragonBossTracker extends BossTracker {
     public static final String dragsSinceAOTDStr = "dragonsSinceAOTD";
     public static final String dragsSincePetStr = "dragonsSincePet";
     public static final String eyesPlacedStr = "eyesPlaced";
-    public int eyePool = 0;
+    public int eyePool = 0, eyesPlaced = 0;
     public boolean myDrag = false;
 
     @Getter
@@ -38,7 +38,6 @@ public class DragonBossTracker extends BossTracker {
         dragsSinceStatList.add(new Stat(dragsSinceSupStr, Rarity.LEGENDARY));
         dragsSinceStatList.add(new Stat(dragsSinceAOTDStr, Rarity.LEGENDARY));
         dragsSinceStatList.add(new Stat(dragsSincePetStr, Rarity.LEGENDARY));
-        dragsSinceStatList.add(new Stat(eyesPlacedStr, Rarity.EPIC));
         recent = new ArrayList<>();
     }
 
@@ -60,10 +59,18 @@ public class DragonBossTracker extends BossTracker {
                     break;
                 }
 
+
+            for (Stat stat : dragsSinceStatList) {
+                if (stat.getCount() < 0)
+                    stat.setCount(1);
+                else
+                    stat.setCount(stat.getCount() + 1);
+            }
+
             if (message.toLowerCase().contains("superior"))
                 getDragsSinceStat(dragsSinceSupStr).setCount(0);
 
-            getDragsSinceStat(eyesPlacedStr).setCount(getDragsSinceStat(eyesPlacedStr).getCount() + eyePool);
+            eyesPlaced += eyePool;
             eyePool = 0;
         }
     }
@@ -75,15 +82,6 @@ public class DragonBossTracker extends BossTracker {
         calendar.setTime(new Date());
         calendar.add(Calendar.SECOND, 30);
         stopAcceptingTimestamp = calendar.getTime();
-        for (Stat stat : dragsSinceStatList) {
-            if (stat == getDragsSinceStat(dragsSinceSupStr))
-                continue;
-
-            if (stat.getCount() < 0)
-                stat.setCount(1);
-            else
-                stat.setCount(stat.getCount() + 1);
-        }
 
         myDrag = false;
     }
@@ -109,6 +107,7 @@ public class DragonBossTracker extends BossTracker {
     public void reset() {
         eyePool = 0;
         myDrag = false;
+        stopAcceptingTimestamp = null;
     }
 
     @Override
@@ -133,7 +132,7 @@ public class DragonBossTracker extends BossTracker {
 
         if (!thisBoss.has(eyesPlacedStr))
             thisBoss.addProperty(eyesPlacedStr, 0);
-        getDragsSinceStat(eyesPlacedStr).setCount(thisBoss.get(eyesPlacedStr).getAsInt());
+        eyesPlaced = thisBoss.get(eyesPlacedStr).getAsInt();
 
         for (int i = 1; i < 5; i++) {
             if (!thisBoss.has("recent" + i))
@@ -151,7 +150,7 @@ public class DragonBossTracker extends BossTracker {
         returnObj.addProperty(dragsSinceSupStr, getDragsSinceStat(dragsSinceSupStr).getCount());
         returnObj.addProperty(dragsSinceAOTDStr, getDragsSinceStat(dragsSinceAOTDStr).getCount());
         returnObj.addProperty(dragsSincePetStr, getDragsSinceStat(dragsSincePetStr).getCount());
-        returnObj.addProperty(eyesPlacedStr, getDragsSinceStat(eyesPlacedStr).getCount());
+        returnObj.addProperty(eyesPlacedStr, eyesPlaced);
         for (int i = 1; i < 5; i++)
             returnObj.addProperty("recent" + i, recent.get(i - 1).toString());
         return returnObj;
