@@ -6,7 +6,6 @@ import codes.biscuit.skyblockaddons.utils.Utils;
 import com.google.gson.JsonObject;
 import lombok.Getter;
 import lombok.Setter;
-import net.minecraft.nbt.NBTTagCompound;
 
 import java.util.ArrayList;
 import java.util.Date;

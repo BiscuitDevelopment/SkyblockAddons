@@ -1,7 +1,6 @@
 package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.utils.bosstracker.BossTracker;
 import codes.biscuit.skyblockaddons.utils.bosstracker.BossTrackerManager;
 import codes.biscuit.skyblockaddons.utils.slayertracker.SlayerTracker;
 import com.google.gson.JsonElement;

@@ -1,7 +1,6 @@
 package codes.biscuit.skyblockaddons.utils.slayertracker;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.ItemDiff;
 import codes.biscuit.skyblockaddons.utils.item.ItemUtils;
 import com.google.gson.JsonObject;

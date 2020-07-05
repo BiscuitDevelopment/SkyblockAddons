@@ -1,11 +1,9 @@
 package codes.biscuit.skyblockaddons.utils.skyblockdata;
 
 import codes.biscuit.skyblockaddons.constants.game.Rarity;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import lombok.Getter;
-import net.minecraft.nbt.NBTTagCompound;
 
 @Getter
 public class PetInfo {

@@ -6,7 +6,6 @@ import codes.biscuit.skyblockaddons.utils.item.ItemUtils;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
-import javafx.util.Pair;
 import lombok.Getter;
 import lombok.Setter;
 import net.minecraft.client.Minecraft;
