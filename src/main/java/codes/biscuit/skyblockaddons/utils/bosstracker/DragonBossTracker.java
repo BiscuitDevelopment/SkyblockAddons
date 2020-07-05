@@ -7,7 +7,6 @@ import codes.biscuit.skyblockaddons.utils.ItemDiff;
 import codes.biscuit.skyblockaddons.utils.Utils;
 import codes.biscuit.skyblockaddons.utils.item.ItemUtils;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
-import codes.biscuit.skyblockaddons.utils.slayertracker.SlayerTracker;
 import com.google.gson.JsonObject;
 import lombok.Getter;
 
