@@ -8,7 +8,7 @@
     "skeletonHatBonesBar": "Barra de Huesos de Skeleton Hat",
     "hideFoodAndArmor": "Esconder Barra de Comida y Armadura",
     "fullInventoryWarning": "Alerta de Inventario Lleno",
-    "repeating": "Repeating",
+    "repeating": "Repetir Advertencia",
     "disableEmberRodAbility": "Desactivar Ember Rod en Isla",
     "editLocations": "Modificar Posiciones",
     "guiScale": "Escala de Menú: %scale%",
@@ -16,7 +16,7 @@
     "hideDurability": "Ocultar Durabilidad de Herramientas",
     "showEnchantmentsReforges": "Encantamientos & Reforjados",
     "minionStopWarning": "Alerta de Minion Detenido",
-    "hidePlayersNearNPCs": "Oculta Jugadores Cercanos a los PNJs Importantes",
+    "hidePlayersNearNPCs": "Ocultar Jugadores Cercanos a los NPCs Importantes",
     "backpackStyle": "Estilo de Backpack: %style%",
     "backpackStyles": {
       "regular": "Normal",
