@@ -31,8 +31,7 @@ minecraft {
     replace("@MOD_ID@": project.modId,
             "@MOD_NAME@": project.modName,
             "@VERSION@": project.version,
-            "@MOD_ACCEPTED@": project.acceptedMinecraftVersions,
-            "@UPDATE_JSON@": project.updateJSON)
+            "@MOD_ACCEPTED@": project.acceptedMinecraftVersions)
     replaceIn("${project.modName}.java")
 }
 

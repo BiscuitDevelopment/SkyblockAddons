@@ -46,7 +46,7 @@ public class ItemDropChecker {
     }
 
     /**
-     * Checks if this item can be dropped or sold.
+     * Checks if the item in this slot can be dropped or sold.
      *
      * @param slot the inventory slot to check
      * @return {@code true} if this item can be dropped or sold, {@code false} otherwise
