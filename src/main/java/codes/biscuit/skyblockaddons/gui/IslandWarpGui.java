@@ -236,7 +236,8 @@ public class IslandWarpGui extends GuiScreen {
         THE_BARN("The Barn", 1223, 782),
         HUB("Hub", 215, 724),
         MUSHROOM_DESERT("Mushroom Desert", 1503, 778),
-        PRIVATE_ISLAND("Private Island", 216, 1122)
+        PRIVATE_ISLAND("Private Island", 216, 1122),
+        DUNGEON_HUB("Dungeon Hub", 1200, 1100),
         ;
 
         private String label;
@@ -379,6 +380,8 @@ public class IslandWarpGui extends GuiScreen {
 
         GOLD_MINE("gold", "Spawn", Island.GOLD_MINE, true, 106, 159),
         DEEP_CAVERNS("deep", "Spawn", Island.DEEP_CAVERNS, true, 97, 213),
+
+        DUNGEON_HUB("dungeon_hub", "Spawn", Island.DUNGEON_HUB, false, 35, 80),
         ;
 
         private String warpName;
