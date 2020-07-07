@@ -11,5 +11,6 @@ Software | License
 [junixsocket](https://github.com/kohlschutter/junixsocket) | [Apache 2.0](licenses/APACHE_2.0.txt)
 [Log4j](https://logging.apache.org/log4j/2.x/) | [Apache 2.0](licenses/APACHE_2.0.txt)
 [Minecraft Forge](https://github.com/MinecraftForge/MinecraftForge/tree/1.8.9) | [Minecraft Forge License](https://github.com/MinecraftForge/MinecraftForge/blob/1.8.9/MinecraftForge-License.txt)
+[Project Lombok](https://projectlombok.org/) | [MIT License](https://opensource.org/licenses/mit-license.php)
 
 [Attribution Notices](NOTICES.md)

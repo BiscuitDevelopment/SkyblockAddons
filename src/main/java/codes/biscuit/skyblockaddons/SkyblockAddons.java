@@ -31,7 +31,10 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.lwjgl.input.Keyboard;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
 
 @Getter
 @Mod(modid = "skyblockaddons", name = "SkyblockAddons", version = "@VERSION@", clientSideOnly = true, acceptedMinecraftVersions = "@MOD_ACCEPTED@")
@@ -42,7 +45,7 @@ public class SkyblockAddons {
     public static String VERSION = "@VERSION@";
 
     @Getter private static SkyblockAddons instance;
-    private Logger logger;
+    private final Logger logger;
 
     private ConfigValues configValues;
     private PersistentValues persistentValues;
@@ -66,7 +69,7 @@ public class SkyblockAddons {
 
     public SkyblockAddons() {
         instance = this;
-        logger = LogManager.getLogger();
+        logger = LogManager.getLogger(MOD_NAME);
 
         playerListener = new PlayerListener();
         guiScreenListener = new GuiScreenListener();
@@ -79,6 +82,7 @@ public class SkyblockAddons {
         discordRPCManager = new DiscordRPCManager();
     }
 
+    @SuppressWarnings("unused")
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent e) {
         configValues = new ConfigValues(this, e.getSuggestedConfigurationFile());
@@ -102,6 +106,7 @@ public class SkyblockAddons {
                 new SkyblockKeyBinding( "freeze_backpack", Keyboard.KEY_F, Message.SETTING_FREEZE_BACKPACK_PREVIEW));
     }
 
+    @SuppressWarnings("unused")
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent e) {
         onlineData = new Gson().fromJson(new JsonReader(utils.getBufferedReader("data.json")), OnlineData.class);
@@ -184,7 +189,7 @@ public class SkyblockAddons {
     static {
         //noinspection ConstantConditions
         if (VERSION.contains("@")) { // Debug environment...
-            VERSION = "1.5.1";
+            VERSION = "1.5.2";
         }
     }
 }

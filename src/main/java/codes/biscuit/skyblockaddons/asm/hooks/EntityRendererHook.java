@@ -19,28 +19,29 @@ public class EntityRendererHook {
 
     public static void removeEntities(List<Entity> list) {
         SkyblockAddons main = SkyblockAddons.getInstance();
-        if (main.getUtils().isOnSkyblock()) {
+        if (!main.getUtils().isOnSkyblock()) {
+            return;
+        }
 
-            int keyCode = Minecraft.getMinecraft().gameSettings.keyBindUseItem.getKeyCode();
-            boolean isUseKeyDown = false;
-            try {
-                if (keyCode < 0) {
-                    isUseKeyDown = Mouse.isButtonDown(Minecraft.getMinecraft().gameSettings.keyBindUseItem.getKeyCode() + 100);
-                } else {
-                    isUseKeyDown = Keyboard.isKeyDown(Minecraft.getMinecraft().gameSettings.keyBindUseItem.getKeyCode());
-                }
-            } catch (Throwable ex) {
-                ex.printStackTrace();
-                // Uhh I messed up something with the key detection... fix?
+        int keyCode = Minecraft.getMinecraft().gameSettings.keyBindUseItem.getKeyCode();
+        boolean isUseKeyDown = false;
+        try {
+            if (keyCode < 0) {
+                isUseKeyDown = Mouse.isButtonDown(Minecraft.getMinecraft().gameSettings.keyBindUseItem.getKeyCode() + 100);
+            } else {
+                isUseKeyDown = Keyboard.isKeyDown(Minecraft.getMinecraft().gameSettings.keyBindUseItem.getKeyCode());
             }
+        } catch (Throwable ex) {
+            ex.printStackTrace();
+            // Uhh I messed up something with the key detection... fix?
+        }
 
-            if (!GuiScreen.isCtrlKeyDown() && isUseKeyDown && main.getConfigValues().isEnabled(Feature.IGNORE_ITEM_FRAME_CLICKS)) {
-                list.removeIf(listEntity -> listEntity instanceof EntityItemFrame &&
-                        (((EntityItemFrame)listEntity).getDisplayedItem() != null || Minecraft.getMinecraft().thePlayer.getHeldItem() == null));
-            }
-            if (main.getConfigValues().isEnabled(Feature.HIDE_PLAYERS_NEAR_NPCS)) {
-                list.removeIf(entity -> entity instanceof EntityOtherPlayerMP && NPCUtils.isNearAnyNPCWithTag(entity, Tag.IMPORTANT) && !NPCUtils.isNPC(entity));
-            }
+        if (!GuiScreen.isCtrlKeyDown() && isUseKeyDown && main.getConfigValues().isEnabled(Feature.IGNORE_ITEM_FRAME_CLICKS)) {
+            list.removeIf(listEntity -> listEntity instanceof EntityItemFrame &&
+                    (((EntityItemFrame)listEntity).getDisplayedItem() != null || Minecraft.getMinecraft().thePlayer.getHeldItem() == null));
+        }
+        if (main.getConfigValues().isEnabled(Feature.HIDE_PLAYERS_NEAR_NPCS)) {
+            list.removeIf(entity -> entity instanceof EntityOtherPlayerMP && NPCUtils.isNearAnyNPCWithTag(entity, Tag.IMPORTANT) && !NPCUtils.isNPC(entity));
         }
     }
 

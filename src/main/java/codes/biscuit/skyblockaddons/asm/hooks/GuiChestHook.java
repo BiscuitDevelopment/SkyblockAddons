@@ -36,7 +36,7 @@ public class GuiChestHook {
     private static GuiTextField textFieldExclusions = null;
     private static CraftingPatternSelection craftingPatternSelection = null;
 
-    private static Pattern warpPattern = Pattern.compile("(?:§5§o)?§8/warp ([a-z]*)");
+    private static Pattern warpPattern = Pattern.compile("(?:§5§o)?§8/warp ([a-z_]*)");
     private static Pattern unlockedPattern = Pattern.compile("(?:§5§o)?§eClick to warp!");
     private static Pattern notUnlockedPattern = Pattern.compile("(?:§5§o)?§cWarp not unlocked!");
     private static Pattern inCombatPattern = Pattern.compile("(?:§5§o)?§cYou're in combat!");
@@ -115,20 +115,12 @@ public class GuiChestHook {
                         }
                     }
 
-                    if (islandWarpGui == null) {
+                    if (islandWarpGui == null || !islandWarpGui.getMarkers().equals(markers)) {
                         islandWarpGui = new IslandWarpGui(markers);
                         ScaledResolution scaledresolution = new ScaledResolution(mc);
                         int i = scaledresolution.getScaledWidth();
                         int j = scaledresolution.getScaledHeight();
                         islandWarpGui.setWorldAndResolution(mc, i, j);
-                    } else {
-                        if (!islandWarpGui.getMarkers().equals(markers)) {
-                            islandWarpGui = new IslandWarpGui(markers);
-                            ScaledResolution scaledresolution = new ScaledResolution(mc);
-                            int i = scaledresolution.getScaledWidth();
-                            int j = scaledresolution.getScaledHeight();
-                            islandWarpGui.setWorldAndResolution(mc, i, j);
-                        }
                     }
 
                     try {
