@@ -191,7 +191,7 @@
     "cancelledPark": "A featuwe has stopped you fwom bweaking this bwock hewe.",
     "bossApproaching": "You awe cwose to spawning a boss!",
     "enableAll": "Enabwe Aww",
-    "disableAll": "Disable All"
+    "disableAll": "Disabwe Aww"
   },
   "discordStatus": {
     "titleNone": "None",
@@ -214,9 +214,9 @@
     "descriptionCustom": "Entew a custom status",
     "titleAuto": "Auto Status",
     "descriptionAuto": "Automaticawwy dispways a status. E. g. youw zeawot count whiwe in the end.",
-    "titleRevenants": "Revenant Quest",
+    "titleRevenants": "Revewawt Qwest",
     "descriptionRevenants": "Shows that you are doing a Revenant quest.",
-    "titleSvens": "Sven Quest",
+    "titleSvens": "Swen Qwest",
     "descriptionSvens": "Shows that you are doing a Sven quest.",
     "titleTarantula": "Tarantula Quest",
     "descriptionTarantula": "Shows that you are doing a Tarantula quest."
