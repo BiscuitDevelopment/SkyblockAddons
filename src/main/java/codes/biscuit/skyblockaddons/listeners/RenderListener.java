@@ -1151,10 +1151,6 @@ public class RenderListener {
         y /= scale;
         x -= longestLineWidth;
 
-        if (buttonLocation != null) {
-            buttonLocation.checkHoveredAndDrawBox(x, x + longestLineWidth, y + (11 * Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT), y, scale);
-        }
-
         int color = main.getConfigValues().getColor(Feature.DRAGON_STATS_TRACKER).getRGB();
 
         ChromaManager.renderingText(Feature.DRAGON_STATS_TRACKER);
@@ -1199,6 +1195,10 @@ public class RenderListener {
                 ChromaManager.doneRenderingText();
             }
             y += Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT;
+        }
+
+        if (buttonLocation != null) {
+            buttonLocation.checkHoveredAndDrawBox(x, x + longestLineWidth + 30, y - (10 * Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT), y, scale);
         }
     }
 
