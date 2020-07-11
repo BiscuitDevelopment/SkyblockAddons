@@ -625,7 +625,7 @@ public class SkyblockAddonsInstallerFrame extends JFrame implements ActionListen
                     version = version.split(Pattern.quote("\"version\": \""))[1];
                     version = version.substring(0, version.length() - 2);
                     break;
-                }e
+                }
             }
         } catch (Exception ex) {
             // It's okay, I guess just don't use the version lol.
