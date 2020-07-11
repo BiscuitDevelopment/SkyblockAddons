@@ -2,8 +2,8 @@ package codes.biscuit.skyblockaddons.commands;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
-import codes.biscuit.skyblockaddons.utils.dev.DevUtils;
-import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
+import codes.biscuit.skyblockaddons.utils.DevUtils;
+import codes.biscuit.skyblockaddons.utils.ColorCode;
 import net.minecraft.client.Minecraft;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
@@ -111,9 +111,9 @@ public class SkyblockAddonsCommand extends CommandBase {
                 main.setDevMode(!main.isDevMode());
 
                 if (main.isDevMode()) {
-                    main.getUtils().sendMessage(ChatFormatting.GREEN + "Developer mode enabled! TIP: Press right ctrl to copy nbt!");
+                    main.getUtils().sendMessage(ColorCode.GREEN + "Developer mode enabled! TIP: Press right ctrl to copy nbt!");
                 } else {
-                    main.getUtils().sendMessage(ChatFormatting.RED + "Developer mode disabled!");
+                    main.getUtils().sendMessage(ColorCode.RED + "Developer mode disabled!");
                 }
             } else if (args[0].equalsIgnoreCase("set")) {
                 Integer number = null;

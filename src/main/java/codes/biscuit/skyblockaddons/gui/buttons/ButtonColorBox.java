@@ -1,6 +1,6 @@
 package codes.biscuit.skyblockaddons.gui.buttons;
 
-import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
+import codes.biscuit.skyblockaddons.utils.ColorCode;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 
@@ -12,9 +12,9 @@ public class ButtonColorBox extends GuiButton {
     public static final int WIDTH = 40;
     public static final int HEIGHT = 20;
 
-    private ChatFormatting color;
+    private ColorCode color;
 
-    public ButtonColorBox(int x, int y, ChatFormatting color) {
+    public ButtonColorBox(int x, int y, ColorCode color) {
         super(0, x, y, null);
 
         this.width = 40;
@@ -34,7 +34,7 @@ public class ButtonColorBox extends GuiButton {
         }
     }
 
-    public ChatFormatting getColor() {
+    public ColorCode getColor() {
         return color;
     }
 }

@@ -1,10 +1,9 @@
 package codes.biscuit.skyblockaddons.gui.elements;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.utils.CraftingPattern;
+import codes.biscuit.skyblockaddons.features.craftingpatterns.CraftingPattern;
 import codes.biscuit.skyblockaddons.utils.Utils;
-import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
-import codes.biscuit.skyblockaddons.utils.nifty.reflection.MinecraftReflection;
+import codes.biscuit.skyblockaddons.utils.ColorCode;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 
@@ -63,7 +62,7 @@ public class CheckBox {
         this.y = y;
         this.scale = (float) size / (float) ICON_SIZE;
         this.text = text;
-        this.textWidth = MinecraftReflection.FontRenderer.getStringWidth(text);
+        this.textWidth = mc.fontRendererObj.getStringWidth(text);
         this.size = size;
     }
 
@@ -74,7 +73,7 @@ public class CheckBox {
         GlStateManager.pushMatrix();
         GlStateManager.scale(scale, scale, 1);
 
-        int color = value ? ChatFormatting.WHITE.getRGB() : ChatFormatting.GRAY.getRGB();
+        int color = value ? ColorCode.WHITE.getRGB() : ColorCode.GRAY.getRGB();
         SkyblockAddons.getInstance().getUtils().drawTextWithStyle(text, scaledX + Math.round(size * 1.5f / scale), scaledY + (size / 2), color);
 
         GlStateManager.disableDepth();

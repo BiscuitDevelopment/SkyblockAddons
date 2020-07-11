@@ -1,8 +1,8 @@
 package codes.biscuit.skyblockaddons.asm.hooks;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.utils.ChromaManager;
-import codes.biscuit.skyblockaddons.utils.nifty.reflection.MinecraftReflection;
+import codes.biscuit.skyblockaddons.misc.ChromaManager;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.renderer.GlStateManager;
 
@@ -12,7 +12,7 @@ public class FontRendererHook {
 
     public static void changeTextColor() {
         if (ChromaManager.isColoringTextChroma()) {
-            FontRenderer fontRenderer = ((FontRenderer) MinecraftReflection.FontRenderer.getFontRenderer());
+            FontRenderer fontRenderer = Minecraft.getMinecraft().fontRendererObj;
 
             float[] HSB = Color.RGBtoHSB((int)(fontRenderer.red * 255), (int)(fontRenderer.green * 255), (int)(fontRenderer.blue * 255), null);
 

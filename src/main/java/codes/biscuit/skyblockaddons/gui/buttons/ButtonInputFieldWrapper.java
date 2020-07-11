@@ -1,12 +1,11 @@
 package codes.biscuit.skyblockaddons.gui.buttons;
 
-import codes.biscuit.skyblockaddons.utils.UpdateCallback;
-import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
-import codes.biscuit.skyblockaddons.utils.nifty.StringUtil;
-import codes.biscuit.skyblockaddons.utils.nifty.reflection.MinecraftReflection;
+import codes.biscuit.skyblockaddons.utils.ColorCode;
+import codes.biscuit.skyblockaddons.utils.objects.UpdateCallback;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiTextField;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.List;
 
@@ -34,8 +33,8 @@ public class ButtonInputFieldWrapper extends GuiButton {
     @Override
     public void drawButton(Minecraft mc, int mouseX, int mouseY) {
         textField.drawTextBox();
-        if (placeholderText != null && StringUtil.isEmpty(textField.getText())) {
-            MinecraftReflection.FontRenderer.drawString(placeholderText, xPosition+4, yPosition+3, ChatFormatting.DARK_GRAY);
+        if (placeholderText != null && StringUtils.isEmpty(textField.getText())) {
+            mc.fontRendererObj.drawString(placeholderText, xPosition+4, yPosition+3, ColorCode.DARK_GRAY.getRGB());
         }
     }
 

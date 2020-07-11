@@ -4,11 +4,9 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.Message;
 import codes.biscuit.skyblockaddons.gui.buttons.*;
-import codes.biscuit.skyblockaddons.utils.IntPair;
+import codes.biscuit.skyblockaddons.utils.ColorCode;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
-import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
-import codes.biscuit.skyblockaddons.utils.nifty.StringUtil;
-import codes.biscuit.skyblockaddons.utils.nifty.reflection.MinecraftReflection;
+import codes.biscuit.skyblockaddons.utils.objects.IntPair;
 import com.google.common.collect.Sets;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
@@ -19,6 +17,7 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.GuiIngameForge;
+import org.apache.commons.lang3.StringUtils;
 import org.lwjgl.input.Keyboard;
 
 import java.awt.*;
@@ -39,7 +38,7 @@ public class SkyblockAddonsGui extends GuiScreen {
 
     private GuiTextField featureSearchBar;
     private EnumUtils.GuiTab tab;
-    private SkyblockAddons main;
+    private SkyblockAddons main = SkyblockAddons.getInstance();
     private int page;
     private int row = 1;
     private int collumn = 1;
@@ -54,7 +53,6 @@ public class SkyblockAddonsGui extends GuiScreen {
      */
     public SkyblockAddonsGui(int page, EnumUtils.GuiTab tab) {
         this.tab = tab;
-        this.main = SkyblockAddons.getInstance();
         this.page = page;
     }
 
@@ -142,7 +140,7 @@ public class SkyblockAddonsGui extends GuiScreen {
     }
 
     private boolean matchesSearch(String text) {
-        if (StringUtil.isEmpty(featureSearchBar.getText())) return true;
+        if (StringUtils.isEmpty(featureSearchBar.getText())) return true;
 
         return text.toLowerCase().contains(featureSearchBar.getText().toLowerCase());
     }
@@ -184,8 +182,8 @@ public class SkyblockAddonsGui extends GuiScreen {
         drawDefaultTitleText(this, alpha*2);
 
         featureSearchBar.drawTextBox();
-        if (StringUtil.isEmpty(featureSearchBar.getText())) {
-            MinecraftReflection.FontRenderer.drawString(Message.MESSAGE_SEARCH_FEATURES.getMessage(), featureSearchBar.xPosition+4, featureSearchBar.yPosition+3, ChatFormatting.DARK_GRAY);
+        if (StringUtils.isEmpty(featureSearchBar.getText())) {
+            Minecraft.getMinecraft().fontRendererObj.drawString(Message.MESSAGE_SEARCH_FEATURES.getMessage(), featureSearchBar.xPosition+4, featureSearchBar.yPosition+3, ColorCode.DARK_GRAY.getRGB());
         }
 
         super.drawScreen(mouseX, mouseY, partialTicks); // Draw buttons.
@@ -208,7 +206,7 @@ public class SkyblockAddonsGui extends GuiScreen {
                 Minecraft.getMinecraft().displayGuiScreen(new SettingsGui(Feature.LANGUAGE,1, page,tab, null));
             }  else if (feature == Feature.EDIT_LOCATIONS) {
                 main.getUtils().setFadingIn(false);
-                Minecraft.getMinecraft().displayGuiScreen(new LocationEditGui(main, page, tab));
+                Minecraft.getMinecraft().displayGuiScreen(new LocationEditGui(page, tab));
             }  else if (feature == Feature.GENERAL_SETTINGS) {
                 if (tab == EnumUtils.GuiTab.GENERAL_SETTINGS) {
                     main.getUtils().setFadingIn(false);
@@ -377,10 +375,10 @@ public class SkyblockAddonsGui extends GuiScreen {
         GlStateManager.pushMatrix();
         GlStateManager.scale(scale, scale, 1);
         if (centered) {
-            MinecraftReflection.FontRenderer.drawCenteredString(text, Math.round((float) guiScreen.width / 2 / scale) + xOffset,
+            SkyblockAddons.getInstance().getUtils().drawCenteredString(text, Math.round((float) guiScreen.width / 2 / scale) + xOffset,
                     Math.round((float) y / scale), color);
         } else {
-            MinecraftReflection.FontRenderer.drawString(text, Math.round((float) guiScreen.width / 2 / scale) + xOffset,
+            Minecraft.getMinecraft().fontRendererObj.drawString(text, Math.round((float) guiScreen.width / 2 / scale) + xOffset,
                     Math.round((float) y / scale), color, true);
         }
         GlStateManager.popMatrix();

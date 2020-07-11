@@ -5,14 +5,26 @@ import codes.biscuit.skyblockaddons.core.Attribute;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.Location;
 import codes.biscuit.skyblockaddons.core.Message;
+import codes.biscuit.skyblockaddons.features.BaitManager;
+import codes.biscuit.skyblockaddons.features.EndstoneProtectorManager;
+import codes.biscuit.skyblockaddons.features.ItemDiff;
+import codes.biscuit.skyblockaddons.features.SlayerArmorProgress;
+import codes.biscuit.skyblockaddons.features.powerorbs.PowerOrb;
+import codes.biscuit.skyblockaddons.features.powerorbs.PowerOrbManager;
+import codes.biscuit.skyblockaddons.features.tabtimers.TabEffect;
+import codes.biscuit.skyblockaddons.features.tabtimers.TabEffectManager;
 import codes.biscuit.skyblockaddons.gui.IslandWarpGui;
 import codes.biscuit.skyblockaddons.gui.LocationEditGui;
 import codes.biscuit.skyblockaddons.gui.SettingsGui;
 import codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui;
 import codes.biscuit.skyblockaddons.gui.buttons.ButtonLocation;
-import codes.biscuit.skyblockaddons.utils.*;
-import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
-import codes.biscuit.skyblockaddons.utils.nifty.reflection.MinecraftReflection;
+import codes.biscuit.skyblockaddons.misc.ChromaManager;
+import codes.biscuit.skyblockaddons.misc.Updater;
+import codes.biscuit.skyblockaddons.misc.scheduler.Scheduler;
+import codes.biscuit.skyblockaddons.utils.EnumUtils;
+import codes.biscuit.skyblockaddons.utils.TextUtils;
+import codes.biscuit.skyblockaddons.utils.ColorCode;
+import codes.biscuit.skyblockaddons.utils.objects.IntPair;
 import lombok.Getter;
 import lombok.Setter;
 import net.minecraft.client.Minecraft;
@@ -205,7 +217,7 @@ public class RenderListener {
             }
             if (message != null) {
                 String text = message.getMessage();
-                int stringWidth = MinecraftReflection.FontRenderer.getStringWidth(text);
+                int stringWidth = mc.fontRendererObj.getStringWidth(text);
 
                 float scale = 4; // Scale is normally 4, but if its larger than the screen, scale it down...
                 if (stringWidth*scale > (scaledWidth*0.9F)) {
@@ -220,8 +232,7 @@ public class RenderListener {
                 GlStateManager.scale(scale, scale, scale); // TODO Check if changing this scale breaks anything...
 
                 ChromaManager.renderingText(titleFeature);
-                MinecraftReflection.FontRenderer.drawString(text, (float) (-MinecraftReflection.FontRenderer.getStringWidth(text) / 2), -20.0F,
-                        main.getConfigValues().getColor(titleFeature).getRGB(), true);
+                mc.fontRendererObj.drawString(text, (float) (-mc.fontRendererObj.getStringWidth(text) / 2), -20.0F, main.getConfigValues().getColor(titleFeature).getRGB(), true);
                 ChromaManager.doneRenderingText();
 
                 GlStateManager.popMatrix();
@@ -250,7 +261,7 @@ public class RenderListener {
                 } else {
                     text = message.getMessage();
                 }
-                int stringWidth = MinecraftReflection.FontRenderer.getStringWidth(text);
+                int stringWidth = mc.fontRendererObj.getStringWidth(text);
 
                 float scale = 2; // Scale is normally 2, but if its larger than the screen, scale it down...
                 if (stringWidth*scale > (scaledWidth*0.9F)) {
@@ -265,7 +276,7 @@ public class RenderListener {
                 GlStateManager.scale(scale, scale, scale);  // TODO Check if changing this scale breaks anything...
 
                 ChromaManager.renderingText(subtitleFeature);
-                MinecraftReflection.FontRenderer.drawString(text, -MinecraftReflection.FontRenderer.getStringWidth(text) / 2F, -23.0F,
+                mc.fontRendererObj.drawString(text, -mc.fontRendererObj.getStringWidth(text) / 2F, -23.0F,
                         main.getConfigValues().getColor(subtitleFeature).getRGB(), true);
                 ChromaManager.doneRenderingText();
 
@@ -333,9 +344,9 @@ public class RenderListener {
 
         if (feature == Feature.HEALTH_BAR && main.getConfigValues().isEnabled(Feature.CHANGE_BAR_COLOR_FOR_POTIONS)) {
             if (mc.thePlayer.isPotionActive(19/* Poison */)) {
-                color = ChatFormatting.DARK_GREEN.getColor();
+                color = ColorCode.DARK_GREEN.getColor();
             } else if (mc.thePlayer.isPotionActive(20/* Wither */)) {
-                color = ChatFormatting.DARK_GRAY.getColor();
+                color = ColorCode.DARK_GRAY.getColor();
             }
         }
 
@@ -368,7 +379,7 @@ public class RenderListener {
         if (buttonLocation != null) {
             gui = buttonLocation;
         }
-        if (color.getRGB() == ChatFormatting.BLACK.getRGB()) {
+        if (color.getRGB() == ColorCode.BLACK.getRGB()) {
             GlStateManager.color(0.25F, 0.25F, 0.25F); // too dark normally
         } else { // a little darker for contrast
             GlStateManager.color(((float) color.getRed() / 255) * 0.9F, ((float) color.getGreen() / 255) * 0.9F, ((float) color.getBlue() / 255) * 0.9F);
@@ -458,11 +469,11 @@ public class RenderListener {
             GlStateManager.pushMatrix();
             float scale = 1.5F;
             GlStateManager.scale(scale, scale, 1);
-            MinecraftReflection.FontRenderer.drawString(title, (int) (halfWidth / scale) - MinecraftReflection.FontRenderer.getStringWidth(title) / 2, (int) (30 / scale), ChatFormatting.WHITE);
+            main.getUtils().drawCenteredString(title, (int) (halfWidth / scale), (int) (30 / scale), ColorCode.WHITE.getRGB());
             GlStateManager.popMatrix();
             int y = 45;
             for (String line : textList) {
-                MinecraftReflection.FontRenderer.drawString(line, halfWidth - MinecraftReflection.FontRenderer.getStringWidth(line) / 2, y, ChatFormatting.WHITE);
+                main.getUtils().drawCenteredString(line, halfWidth, y, ColorCode.WHITE.getRGB());
                 y += 10;
             }
 
@@ -619,14 +630,14 @@ public class RenderListener {
             Integer healthUpdate = main.getPlayerListener().getHealthUpdate();
             if (buttonLocation == null) {
                 if (healthUpdate != null) {
-                    color = healthUpdate > 0 ? ChatFormatting.GREEN.getRGB() : ChatFormatting.RED.getRGB();
+                    color = healthUpdate > 0 ? ColorCode.GREEN.getRGB() : ColorCode.RED.getRGB();
                     text = (healthUpdate > 0 ? "+" : "-") + Math.abs(healthUpdate);
                 } else {
                     return;
                 }
             } else {
                 text = "+123";
-                color = ChatFormatting.GREEN.getRGB();
+                color = ColorCode.GREEN.getRGB();
             }
         } else if (feature == Feature.DARK_AUCTION_TIMER) { // The timezone of the server, to avoid problems with like timezones that are 30 minutes ahead or whatnot.
             Calendar nextDarkAuction = Calendar.getInstance(TimeZone.getTimeZone("EST"));
@@ -779,15 +790,15 @@ public class RenderListener {
         float y = main.getConfigValues().getActualY(feature);
 
         int height = 7;
-        int width = MinecraftReflection.FontRenderer.getStringWidth(text);
+        int width = mc.fontRendererObj.getStringWidth(text);
 
         // Constant width ovverrides for some features.
         if (feature == Feature.ZEALOT_COUNTER || feature == Feature.SHOW_AVERAGE_ZEALOTS_PER_EYE) {
-            width = MinecraftReflection.FontRenderer.getStringWidth("500");
+            width = mc.fontRendererObj.getStringWidth("500");
         } else if (feature == Feature.SHOW_TOTAL_ZEALOT_COUNT) {
-            width = MinecraftReflection.FontRenderer.getStringWidth("30000");
+            width = mc.fontRendererObj.getStringWidth("30000");
         } else if (feature == Feature.SHOW_SUMMONING_EYE_COUNT) {
-            width = MinecraftReflection.FontRenderer.getStringWidth("100");
+            width = mc.fontRendererObj.getStringWidth("100");
         }
 
         if (feature == Feature.MAGMA_BOSS_TIMER || feature == Feature.DARK_AUCTION_TIMER || feature == Feature.ZEALOT_COUNTER || feature == Feature.SKILL_DISPLAY
@@ -902,7 +913,7 @@ public class RenderListener {
             if (combatSeconds <= 2) {
                 menuTimeRemaining = "✔";
             }
-            int menuTimeRemainingWidth = MinecraftReflection.FontRenderer.getStringWidth(menuTimeRemaining);
+            int menuTimeRemainingWidth = mc.fontRendererObj.getStringWidth(menuTimeRemaining);
 
             int spacerBetweenBothItems = 4;
             int spacerBetweenItemsAndText = 2;
@@ -1014,7 +1025,7 @@ public class RenderListener {
         for (SlayerArmorProgress progress : progresses) {
             if (progress == null) continue;
 
-            int textWidth = MinecraftReflection.FontRenderer.getStringWidth(progress.getPercent()+"% ("+progress.getDefence()+")");
+            int textWidth = mc.fontRendererObj.getStringWidth(progress.getPercent()+"% ("+progress.getDefence()+")");
             if (textWidth > longest) {
                 longest = textWidth;
             }
@@ -1057,10 +1068,10 @@ public class RenderListener {
             main.getUtils().drawTextWithStyle(progress.getPercent()+"% (", currentX, fixedY + 5, color);
             ChromaManager.doneRenderingText();
 
-            currentX += MinecraftReflection.FontRenderer.getStringWidth(progress.getPercent()+"% (");
+            currentX += mc.fontRendererObj.getStringWidth(progress.getPercent()+"% (");
             main.getUtils().drawTextWithStyle(progress.getDefence(), currentX, fixedY + 5, 0xFFFFFFFF);
 
-            currentX += MinecraftReflection.FontRenderer.getStringWidth(progress.getDefence());
+            currentX += mc.fontRendererObj.getStringWidth(progress.getDefence());
             ChromaManager.renderingText(Feature.SLAYER_INDICATOR);
             main.getUtils().drawTextWithStyle(")", currentX, fixedY + 5, color);
             ChromaManager.doneRenderingText();
@@ -1115,6 +1126,8 @@ public class RenderListener {
 
         Color color = main.getConfigValues().getColor(Feature.TAB_EFFECT_TIMERS);
 
+        Minecraft mc = Minecraft.getMinecraft();
+
         int drawnCount = 0;
         for(TabEffect potion : potionTimers){
             float lineY;
@@ -1129,14 +1142,14 @@ public class RenderListener {
 
             if (alignRight) {
                 ChromaManager.renderingText(Feature.TAB_EFFECT_TIMERS);
-                main.getUtils().drawTextWithStyle(duration+" ", x + width - MinecraftReflection.FontRenderer.getStringWidth(duration+" ")
-                        - MinecraftReflection.FontRenderer.getStringWidth(effect.trim()), lineY, color.getRGB());
+                main.getUtils().drawTextWithStyle(duration+" ", x + width - mc.fontRendererObj.getStringWidth(duration+" ")
+                        - mc.fontRendererObj.getStringWidth(effect.trim()), lineY, color.getRGB());
                 ChromaManager.doneRenderingText();
-                main.getUtils().drawTextWithStyle(effect.trim(), x + width - MinecraftReflection.FontRenderer.getStringWidth(effect.trim()), lineY, color.getRGB());
+                main.getUtils().drawTextWithStyle(effect.trim(), x + width - mc.fontRendererObj.getStringWidth(effect.trim()), lineY, color.getRGB());
             } else {
                 main.getUtils().drawTextWithStyle(effect, x, lineY, color.getRGB());
                 ChromaManager.renderingText(Feature.TAB_EFFECT_TIMERS);
-                main.getUtils().drawTextWithStyle(duration, x+MinecraftReflection.FontRenderer.getStringWidth(effect), lineY, color.getRGB());
+                main.getUtils().drawTextWithStyle(duration, x+mc.fontRendererObj.getStringWidth(effect), lineY, color.getRGB());
                 ChromaManager.doneRenderingText();
             }
             drawnCount += topDown ? 1 : -1;
@@ -1154,14 +1167,14 @@ public class RenderListener {
 
             if (alignRight) {
                 ChromaManager.renderingText(Feature.TAB_EFFECT_TIMERS);
-                main.getUtils().drawTextWithStyle(duration+" ", x + width - MinecraftReflection.FontRenderer.getStringWidth(duration+" ")
-                        - MinecraftReflection.FontRenderer.getStringWidth(effect.trim()), lineY, color.getRGB());
+                main.getUtils().drawTextWithStyle(duration+" ", x + width - mc.fontRendererObj.getStringWidth(duration+" ")
+                        - mc.fontRendererObj.getStringWidth(effect.trim()), lineY, color.getRGB());
                 ChromaManager.doneRenderingText();
-                main.getUtils().drawTextWithStyle(effect, x + width - MinecraftReflection.FontRenderer.getStringWidth(effect.trim()), lineY, color.getRGB());
+                main.getUtils().drawTextWithStyle(effect, x + width - mc.fontRendererObj.getStringWidth(effect.trim()), lineY, color.getRGB());
             } else {
                 main.getUtils().drawTextWithStyle(effect, x, lineY, color.getRGB());
                 ChromaManager.renderingText(Feature.TAB_EFFECT_TIMERS);
-                main.getUtils().drawTextWithStyle(duration, x+MinecraftReflection.FontRenderer.getStringWidth(effect), lineY, color.getRGB());
+                main.getUtils().drawTextWithStyle(duration, x+mc.fontRendererObj.getStringWidth(effect), lineY, color.getRGB());
                 ChromaManager.doneRenderingText();
             }
             drawnCount += topDown ? 1 : -1;
@@ -1185,8 +1198,8 @@ public class RenderListener {
         GlStateManager.disableRescaleNormal();
     }
 
-    private static List<ItemDiff> DUMMY_PICKUP_LOG = new ArrayList<>(Arrays.asList(new ItemDiff(ChatFormatting.DARK_PURPLE + "Forceful Ember Chestplate", 1),
-            new ItemDiff("Boat", -1), new ItemDiff(ChatFormatting.BLUE + "Aspect of the End", 1)));
+    private static List<ItemDiff> DUMMY_PICKUP_LOG = new ArrayList<>(Arrays.asList(new ItemDiff(ColorCode.DARK_PURPLE + "Forceful Ember Chestplate", 1),
+            new ItemDiff("Boat", -1), new ItemDiff(ColorCode.BLUE + "Aspect of the End", 1)));
 
     public void drawItemPickupLog(float scale, ButtonLocation buttonLocation) {
         float x = main.getConfigValues().getActualX(Feature.ITEM_PICKUP_LOG);
@@ -1197,7 +1210,7 @@ public class RenderListener {
 
         int lineHeight = 8 + 1; // 1 pixel spacer
         int height = lineHeight * 3 - 1;
-        int width = MinecraftReflection.FontRenderer.getStringWidth("+ 1x Forceful Ember Chestplate");
+        int width = Minecraft.getMinecraft().fontRendererObj.getStringWidth("+ 1x Forceful Ember Chestplate");
         x -= width * scale / 2F;
         y -= height * scale / 2F;
         x /= scale;
@@ -1260,8 +1273,8 @@ public class RenderListener {
 
         String secondsString = String.format("§e%ss", seconds);
         int spacing = 1;
-        int iconSize = MinecraftReflection.FontRenderer.getFontHeight() * 3; // 3 because it looked the best
-        int width = iconSize + spacing + MinecraftReflection.FontRenderer.getStringWidth(secondsString);
+        int iconSize = mc.fontRendererObj.FONT_HEIGHT * 3; // 3 because it looked the best
+        int width = iconSize + spacing + mc.fontRendererObj.getStringWidth(secondsString);
         // iconSize also acts as height
         x -= width * scale / 2F;
         y -= iconSize * scale / 2F;
@@ -1277,7 +1290,7 @@ public class RenderListener {
         mc.getTextureManager().bindTexture(powerOrb.getResourceLocation());
         main.getUtils().drawModalRectWithCustomSizedTexture(x, y, 0, 0, iconSize, iconSize, iconSize, iconSize);
 
-        main.getUtils().drawTextWithStyle(secondsString, x + spacing + iconSize, y + (iconSize / 2F) - (8 / 2F), ChatFormatting.WHITE.getColor(255).getRGB());
+        main.getUtils().drawTextWithStyle(secondsString, x + spacing + iconSize, y + (iconSize / 2F) - (8 / 2F), ColorCode.WHITE.getColor(255).getRGB());
 
         main.getUtils().restoreGLOptions();
     }
@@ -1319,12 +1332,12 @@ public class RenderListener {
         Optional<String> longestLine = display.stream().max(Comparator.comparingInt(String::length));
 
         int spacingBetweenLines = 1;
-        int iconSize = MinecraftReflection.FontRenderer.getFontHeight() * 3; // 3 because it looked the best
-        int iconAndSecondsHeight = iconSize + MinecraftReflection.FontRenderer.getFontHeight();
+        int iconSize = mc.fontRendererObj.FONT_HEIGHT * 3; // 3 because it looked the best
+        int iconAndSecondsHeight = iconSize + mc.fontRendererObj.FONT_HEIGHT;
 
-        int effectsHeight = (MinecraftReflection.FontRenderer.getFontHeight() + spacingBetweenLines) * display.size();
-        int width = iconSize + 2 + longestLine.map(MinecraftReflection.FontRenderer::getStringWidth)
-                .orElseGet(() -> MinecraftReflection.FontRenderer.getStringWidth(display.get(0)));
+        int effectsHeight = (mc.fontRendererObj.FONT_HEIGHT + spacingBetweenLines) * display.size();
+        int width = iconSize + 2 + longestLine.map(mc.fontRendererObj::getStringWidth)
+                .orElseGet(() -> mc.fontRendererObj.getStringWidth(display.get(0)));
         int height = Math.max(effectsHeight, iconAndSecondsHeight);
         x -= width * scale / 2F;
         y -= height * scale / 2F;
@@ -1342,11 +1355,11 @@ public class RenderListener {
         main.getUtils().drawModalRectWithCustomSizedTexture(x, y, 0, 0, iconSize, iconSize, iconSize, iconSize);
 
         String secondsString = String.format("§e%ss", seconds);
-        main.getUtils().drawTextWithStyle(secondsString, Math.round(x + (iconSize / 2F) - (MinecraftReflection.FontRenderer.getStringWidth(secondsString) / 2F)), y + iconSize, ChatFormatting.WHITE.getColor(255).getRGB());
+        main.getUtils().drawTextWithStyle(secondsString, Math.round(x + (iconSize / 2F) - (mc.fontRendererObj.getStringWidth(secondsString) / 2F)), y + iconSize, ColorCode.WHITE.getColor(255).getRGB());
 
         float startY = Math.round(y + (iconAndSecondsHeight / 2f) - (effectsHeight / 2f));
         for (int i = 0; i < display.size(); i++) {
-            main.getUtils().drawTextWithStyle(display.get(i), x + iconSize + 2, startY + (i * (MinecraftReflection.FontRenderer.getFontHeight() + spacingBetweenLines)), ChatFormatting.WHITE.getColor(255).getRGB());
+            main.getUtils().drawTextWithStyle(display.get(i), x + iconSize + 2, startY + (i * (mc.fontRendererObj.FONT_HEIGHT + spacingBetweenLines)), ColorCode.WHITE.getColor(255).getRGB());
         }
 
         main.getUtils().restoreGLOptions();
@@ -1389,7 +1402,7 @@ public class RenderListener {
         if (guiToOpen == EnumUtils.GUIType.MAIN) {
             Minecraft.getMinecraft().displayGuiScreen(new SkyblockAddonsGui(guiPageToOpen, guiTabToOpen));
         } else if (guiToOpen == EnumUtils.GUIType.EDIT_LOCATIONS) {
-            Minecraft.getMinecraft().displayGuiScreen(new LocationEditGui(main, guiPageToOpen, guiTabToOpen));
+            Minecraft.getMinecraft().displayGuiScreen(new LocationEditGui(guiPageToOpen, guiTabToOpen));
         } else if (guiToOpen == EnumUtils.GUIType.SETTINGS) {
             Minecraft.getMinecraft().displayGuiScreen(new SettingsGui(guiFeatureToOpen, 1, guiPageToOpen, guiTabToOpen, guiFeatureToOpen.getSettings()));
         } else if (guiToOpen == EnumUtils.GUIType.WARP) {

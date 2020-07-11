@@ -2,6 +2,7 @@ package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.Message;
+import codes.biscuit.skyblockaddons.features.craftingpatterns.CraftingPattern;
 import lombok.Getter;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -19,6 +20,7 @@ import static codes.biscuit.skyblockaddons.core.Message.*;
 public class EnumUtils {
 
     public enum AnchorPoint {
+
         TOP_LEFT(0),
         TOP_RIGHT(1),
         BOTTOM_LEFT(2),
@@ -42,29 +44,25 @@ public class EnumUtils {
         }
 
         public int getX(int maxX) {
-            int x;
+            int x = 0;
             switch (this) {
                 case TOP_RIGHT: case BOTTOM_RIGHT:
                     x = maxX;
                     break;
                 case BOTTOM_MIDDLE:
-                    x = maxX / 2;// - 91;
+                    x = maxX / 2;
                     break;
-                default: // or case TOP_LEFT: case BOTTOM_LEFT:
-                    x = 0;
 
             }
             return x;
         }
 
         public int getY(int maxY) {
-            int y;
+            int y = 0;
             switch (this) {
                 case BOTTOM_LEFT: case BOTTOM_RIGHT: case BOTTOM_MIDDLE:
                     y = maxY;
                     break;
-                default: // or case TOP_LEFT: case TOP_RIGHT:
-                    y = 0;
 
             }
             return y;

@@ -1,7 +1,5 @@
 package codes.biscuit.skyblockaddons.utils;
 
-import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
-
 import java.text.DecimalFormat;
 import java.util.regex.Pattern;
 
@@ -127,8 +125,6 @@ public class TextUtils {
      *     <li>rd - if n ends with 3 but isn't 13</li>
      *     <li>th - in all other cases</li>
      * </ul>
-     * @param n
-     * @return
      */
     public static String getOrdinalSuffix(final int n) {
         if (n >= 11 && n <= 13) {
@@ -141,15 +137,4 @@ public class TextUtils {
             default: return "th";
         }
     }
-
-    /**
-     * Colors a string by translating & color codes with the correct character.
-     *
-     * @param text Text to color
-     * @return Text with correct color formatting
-     */
-    public static String color(String text) {
-        return ChatFormatting.translateAlternateColorCodes('&', text);
-    }
-
 }

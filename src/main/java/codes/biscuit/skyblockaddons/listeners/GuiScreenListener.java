@@ -1,8 +1,8 @@
 package codes.biscuit.skyblockaddons.listeners;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.utils.dev.DevUtils;
-import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
+import codes.biscuit.skyblockaddons.utils.DevUtils;
+import codes.biscuit.skyblockaddons.utils.ColorCode;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.inventory.Slot;
@@ -42,7 +42,7 @@ public class GuiScreenListener {
 
                     if (currentSlot != null && currentSlot.getHasStack()) {
                         DevUtils.copyNBTTagToClipboard(currentSlot.getStack().serializeNBT(),
-                                ChatFormatting.GREEN + "Item data was copied to clipboard!");
+                                ColorCode.GREEN + "Item data was copied to clipboard!");
                     }
                 }
             }

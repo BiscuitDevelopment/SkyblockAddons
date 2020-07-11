@@ -5,7 +5,7 @@ import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.gui.buttons.ButtonToggleNew;
 import codes.biscuit.skyblockaddons.gui.buttons.IslandButton;
 import codes.biscuit.skyblockaddons.gui.buttons.IslandMarkerButton;
-import codes.biscuit.skyblockaddons.scheduler.SkyblockRunnable;
+import codes.biscuit.skyblockaddons.misc.scheduler.SkyblockRunnable;
 import lombok.Getter;
 import lombok.Setter;
 import net.minecraft.client.Minecraft;

@@ -1,15 +1,13 @@
 package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.core.Attribute;
-import codes.biscuit.skyblockaddons.core.Feature;
-import codes.biscuit.skyblockaddons.core.Location;
-import codes.biscuit.skyblockaddons.core.SkyblockDate;
+import codes.biscuit.skyblockaddons.core.*;
 import codes.biscuit.skyblockaddons.events.SkyblockJoinedEvent;
 import codes.biscuit.skyblockaddons.events.SkyblockLeftEvent;
+import codes.biscuit.skyblockaddons.features.backpacks.Backpack;
+import codes.biscuit.skyblockaddons.features.itemdrops.ItemDropChecker;
 import codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui;
-import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
-import codes.biscuit.skyblockaddons.utils.nifty.StringUtil;
+import codes.biscuit.skyblockaddons.misc.scheduler.Scheduler;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
@@ -38,6 +36,7 @@ import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.ModContainer;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.mutable.MutableInt;
 import org.apache.commons.lang3.text.WordUtils;
 import org.apache.logging.log4j.Logger;
@@ -61,7 +60,7 @@ public class Utils {
 
     /** Added to the beginning of messages. */
     private static final String MESSAGE_PREFIX =
-            ChatFormatting.GRAY + "[" + ChatFormatting.AQUA + SkyblockAddons.MOD_NAME + ChatFormatting.GRAY + "] ";
+            ColorCode.GRAY + "[" + ColorCode.AQUA + SkyblockAddons.MOD_NAME + ColorCode.GRAY + "] ";
 
     /** Enchantments listed by how good they are. May or may not be subjective lol. */
     private static final List<String> ORDERED_ENCHANTMENTS = Collections.unmodifiableList(Arrays.asList(
@@ -184,7 +183,7 @@ public class Utils {
     }
 
     public void sendErrorMessage(String errorText) {
-        sendMessage(ChatFormatting.RED + "Error: " + errorText);
+        sendMessage(ColorCode.RED + "Error: " + errorText);
     }
 
     /**
@@ -470,11 +469,11 @@ public class Utils {
         text = text.toLowerCase(Locale.US);
         for (String enchant : enchantmentMatches) {
             enchant = enchant.trim().toLowerCase(Locale.US);
-            if (StringUtil.notEmpty(enchant) && text.contains(enchant)) {
+            if (StringUtils.isNotEmpty(enchant) && text.contains(enchant)) {
                 boolean foundExclusion = false;
                 for (String exclusion : enchantmentExclusions) {
                     exclusion = exclusion.trim().toLowerCase(Locale.US);
-                    if (StringUtil.notEmpty(exclusion) && text.contains(exclusion)) {
+                    if (StringUtils.isNotEmpty(exclusion) && text.contains(exclusion)) {
                         foundExclusion = true;
                         break;
                     }
@@ -667,6 +666,7 @@ public class Utils {
 
         GlStateManager.popMatrix();
     }
+
     public int getDefaultBlue(int alpha) {
         return new Color(160, 225, 229, alpha).getRGB();
     }
@@ -1050,5 +1050,9 @@ public class Utils {
         }
 
         return isLoaded;
+    }
+
+    public void drawCenteredString(String text, float x, float y, int color) {
+        Minecraft.getMinecraft().fontRendererObj.drawString(text, x - Minecraft.getMinecraft().fontRendererObj.getStringWidth(text) / 2F, y, color, true);
     }
 }

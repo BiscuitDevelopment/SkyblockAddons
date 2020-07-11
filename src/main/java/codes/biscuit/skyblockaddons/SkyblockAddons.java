@@ -1,18 +1,24 @@
 package codes.biscuit.skyblockaddons;
 
 import codes.biscuit.skyblockaddons.commands.SkyblockAddonsCommand;
+import codes.biscuit.skyblockaddons.config.ConfigValues;
+import codes.biscuit.skyblockaddons.config.PersistentValues;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.Message;
+import codes.biscuit.skyblockaddons.core.OnlineData;
 import codes.biscuit.skyblockaddons.gui.IslandWarpGui;
 import codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui;
 import codes.biscuit.skyblockaddons.listeners.GuiScreenListener;
 import codes.biscuit.skyblockaddons.listeners.NetworkListener;
 import codes.biscuit.skyblockaddons.listeners.PlayerListener;
 import codes.biscuit.skyblockaddons.listeners.RenderListener;
-import codes.biscuit.skyblockaddons.scheduler.NewScheduler;
-import codes.biscuit.skyblockaddons.scheduler.SkyblockRunnable;
+import codes.biscuit.skyblockaddons.misc.scheduler.Scheduler;
+import codes.biscuit.skyblockaddons.misc.SkyblockKeyBinding;
+import codes.biscuit.skyblockaddons.misc.Updater;
+import codes.biscuit.skyblockaddons.misc.scheduler.NewScheduler;
+import codes.biscuit.skyblockaddons.misc.scheduler.SkyblockRunnable;
 import codes.biscuit.skyblockaddons.utils.*;
-import codes.biscuit.skyblockaddons.utils.discord.DiscordRPCManager;
+import codes.biscuit.skyblockaddons.features.discordrpc.DiscordRPCManager;
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 import lombok.Getter;
@@ -82,10 +88,9 @@ public class SkyblockAddons {
         discordRPCManager = new DiscordRPCManager();
     }
 
-    @SuppressWarnings("unused")
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent e) {
-        configValues = new ConfigValues(this, e.getSuggestedConfigurationFile());
+        configValues = new ConfigValues(e.getSuggestedConfigurationFile());
         persistentValues = new PersistentValues(e.getModConfigurationDirectory());
     }
 
@@ -106,7 +111,6 @@ public class SkyblockAddons {
                 new SkyblockKeyBinding( "freeze_backpack", Keyboard.KEY_F, Message.SETTING_FREEZE_BACKPACK_PREVIEW));
     }
 
-    @SuppressWarnings("unused")
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent e) {
         onlineData = new Gson().fromJson(new JsonReader(utils.getBufferedReader("data.json")), OnlineData.class);
