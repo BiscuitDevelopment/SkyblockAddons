@@ -7,7 +7,7 @@
     "hideSkeletonHatBones": "隐藏骷髅头盔的骨头",
     "skeletonHatBonesBar": "骷髅头盔可抵挡攻击次数",
     "hideFoodAndArmor": "隐藏饱食度 & 盔甲值",
-    "fullInventoryWarning": "背包空间不足警报",
+    "fullInventoryWarning": "物品栏空间不足警告",
     "repeating": "再次警告",
     "disableEmberRodAbility": "在私人岛屿上关闭余烬之杖技能",
     "editLocations": "编辑 GUI 位置",
@@ -35,7 +35,7 @@
     "defenceText": "防御值",
     "defencePercentage": "防御百分比",
     "healthUpdates": "生命值波动",
-    "hidePlayersInLobby": "在大厅隐藏远处的实体",
+    "hidePlayersInLobby": "隐藏大厅远处的实体",
     "darkAuctionTimer": "暗黑拍卖会倒计时",
     "magmaBossTimer": "岩浆怪 Boss 倒计时",
     "itemPickupLog": "物品拾取记录",
@@ -134,7 +134,7 @@
   "messages": {
     "dropConfirmation": "再次丢弃此物品以确认!",
     "magmaBossWarning": "⚠ 岩浆怪 Boss 已生成 ⚠",
-    "fullInventory": "背包已满!",
+    "fullInventory": "物品栏已满!",
     "labymod": "Labymod 使用者: 不兼容隐藏饱食度、装甲值和生命值 。",
     "minionCannotReach": "有%type%仆从因无法触及生物而停止运作了!",
     "minionIsFull": "有仆从因背包已满而停止运作了!",
@@ -226,8 +226,8 @@
       "header": "§7§m------------§7[§b§l SkyblockAddons §7]§7§m------------",
       "footer": "§7§m------------------------------------------",
       "usage": {
-        "normal": "§b● /sba §7- 打开主菜单\n§b● /sba edit §7- 编辑 GUI 位置\n§b● /sba set <zealots|eyes|totalzealots §eor§b total> <number> §7- 手动设置末影战士击杀计数器\n§b● /sba folder §7- 打开 mods 文件夹",
-        "developer": "§b● /sba dev §7- Toggle developer mode\n§b● /sba sidebar [formatted] §7- §e(Dev) §7Copy the scoreboard text. \"formatted\" §7keeps the color codes when copying\n§b● /sba brand §7- §e(Dev) §7Show the server brand"
+        "normal": "§b● /sba §7- 打开主菜单\n§b● /sba edit §7- 编辑 GUI 位置\n§b● /sba set <zealots|eyes|totalzealots §e或§b total> <数值> §7- 手动设置末影战士击杀计数器\n§b● /sba folder §7- 打开 mods 文件夹",
+        "developer": "§b● /sba dev §7- 启用／关闭开发者模式\n§b● /sba sidebar [formatted] §7- §e(Dev) §7复制记分板的文字，格式化字符§7将在复制时保留原來的样式代码\n§b● /sba brand §7- §e(Dev) §7显示服务器服务端名称"
       }
     }
   },
