@@ -128,7 +128,7 @@
     "zealotCounterExplosiveBow": "סופר זילוט - תמיכה בקשת מתפוצצת",
     "disableEndermanTeleportation": "השבת את השיגור של האנדרמנים",
     "changeZealotColor": "שנה את צבע ה- Zealot",
-    "hideSvenPupNametags": "Hide Sven Pup Nametags",
+    "hideSvenPupNametags": "הסתר את תג השם של ה- Sven Pup",
     "turnAllFeaturesChroma": "Turn All Features Chroma"
   },
   "messages": {
@@ -199,7 +199,7 @@
     "titleLocation": "מיקום",
     "descriptionLocation": "מראה את המיקום הנוכחי שלך",
     "titlePurse": "ארנק",
-    "descriptionPurse": "Shows the amount of coins in your purse",
+    "descriptionPurse": "הצג את כמות הכסף בארנק שלך",
     "titleStats": "נתונים",
     "descriptionStats": "Shows your HP, Defense and Mana stats",
     "titleZealots": "זלוטים",
