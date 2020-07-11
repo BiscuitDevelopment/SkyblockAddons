@@ -196,7 +196,8 @@
       "dragonsSinceAOTD": "Aspect",
       "dragonsSincePet": "Pet",
       "eyesPlaced": "Eyes Placed"
-    }
+    },
+    "showPersonalCompactorPreview": "Show Personal Compactor Preview"
   },
   "messages": {
     "dropConfirmation": "Drop this item again to confirm!",

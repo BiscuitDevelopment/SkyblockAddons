@@ -103,8 +103,6 @@ public class GenericInventoryDisplay {
 
         int extend = (name.equals("") ? 0 : 10);
 
-        System.out.println(name + " " + extend);
-
         int bottomY = y + topLeft.getHeight() + height * sideLeft.getHeight() + extend;
         int rightX = x + topLeft.getWidth() + width * topMiddle.getWidth();
 
