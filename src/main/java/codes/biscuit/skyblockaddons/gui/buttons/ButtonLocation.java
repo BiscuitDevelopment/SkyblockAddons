@@ -2,7 +2,7 @@ package codes.biscuit.skyblockaddons.gui.buttons;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
-import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
+import codes.biscuit.skyblockaddons.utils.ColorCode;
 import lombok.Getter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.SoundHandler;
@@ -16,7 +16,7 @@ public class ButtonLocation extends ButtonFeature {
     // So we know the latest hovered feature (used for arrow key movement).
     @Getter private static Feature lastHoveredFeature = null;
 
-    private SkyblockAddons main;
+    private SkyblockAddons main = SkyblockAddons.getInstance();
 
     private float boxXOne;
     private float boxXTwo;
@@ -28,9 +28,8 @@ public class ButtonLocation extends ButtonFeature {
     /**
      * Create a button that allows you to change the location of a GUI element.
      */
-    public ButtonLocation(SkyblockAddons main, Feature feature) {
+    public ButtonLocation(Feature feature) {
         super(-1, 0, 0, null, feature);
-        this.main = main;
     }
 
     @Override
@@ -69,7 +68,7 @@ public class ButtonLocation extends ButtonFeature {
         if (hovered) {
             boxAlpha = 120;
         }
-        int boxColor = ChatFormatting.GRAY.getColor(boxAlpha).getRGB();
+        int boxColor = ColorCode.GRAY.getColor(boxAlpha).getRGB();
         main.getUtils().drawRect(boxXOne, boxYOne, boxXTwo, boxYTwo, boxColor);
 
         this.boxXOne = boxXOne;
@@ -91,8 +90,7 @@ public class ButtonLocation extends ButtonFeature {
      * Because the box changes with the scale, have to override this.
      */
     @Override
-    public boolean mousePressed(Minecraft mc, int mouseX, int mouseY)
-    {
+    public boolean mousePressed(Minecraft mc, int mouseX, int mouseY) {
         return this.enabled && this.visible && hovered;
     }
 

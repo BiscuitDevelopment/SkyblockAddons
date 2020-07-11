@@ -5,12 +5,22 @@ import codes.biscuit.skyblockaddons.core.Attribute;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.Location;
 import codes.biscuit.skyblockaddons.core.Message;
+import codes.biscuit.skyblockaddons.features.EnchantedItemBlacklist;
+import codes.biscuit.skyblockaddons.features.EndstoneProtectorManager;
+import codes.biscuit.skyblockaddons.features.backpacks.Backpack;
+import codes.biscuit.skyblockaddons.features.backpacks.BackpackManager;
+import codes.biscuit.skyblockaddons.features.BaitManager;
+import codes.biscuit.skyblockaddons.features.cooldowns.CooldownManager;
+import codes.biscuit.skyblockaddons.features.powerorbs.PowerOrbManager;
+import codes.biscuit.skyblockaddons.features.tabtimers.TabEffectManager;
 import codes.biscuit.skyblockaddons.gui.IslandWarpGui;
-import codes.biscuit.skyblockaddons.scheduler.SkyblockRunnable;
+import codes.biscuit.skyblockaddons.misc.scheduler.Scheduler;
+import codes.biscuit.skyblockaddons.misc.scheduler.SkyblockRunnable;
 import codes.biscuit.skyblockaddons.utils.*;
-import codes.biscuit.skyblockaddons.utils.dev.DevUtils;
-import codes.biscuit.skyblockaddons.utils.item.ItemUtils;
-import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
+import codes.biscuit.skyblockaddons.utils.DevUtils;
+import codes.biscuit.skyblockaddons.utils.ItemUtils;
+import codes.biscuit.skyblockaddons.utils.ColorCode;
+import codes.biscuit.skyblockaddons.utils.objects.IntPair;
 import com.google.common.collect.Sets;
 import lombok.Getter;
 import lombok.Setter;
@@ -190,7 +200,7 @@ public class PlayerListener {
                 }
                 if (main.getConfigValues().isEnabled(Feature.ZEALOT_COUNTER)) {
                     // Edit the message to include counter.
-                    e.message = new ChatComponentText(formattedText + ChatFormatting.GRAY + " (" + main.getPersistentValues().getKills() + ")");
+                    e.message = new ChatComponentText(formattedText + ColorCode.GRAY + " (" + main.getPersistentValues().getKills() + ")");
                 }
                 main.getPersistentValues().addEyeResetKills();
 

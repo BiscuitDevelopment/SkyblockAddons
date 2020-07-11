@@ -1,7 +1,7 @@
 package codes.biscuit.skyblockaddons.asm.hooks;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.utils.discord.DiscordRPCManager;
+import codes.biscuit.skyblockaddons.features.discordrpc.DiscordRPCManager;
 
 public class GuiDisconnectedHook {
 

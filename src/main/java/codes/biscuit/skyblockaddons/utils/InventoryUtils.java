@@ -2,8 +2,9 @@ package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
-import codes.biscuit.skyblockaddons.utils.item.ItemUtils;
-import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
+import codes.biscuit.skyblockaddons.features.ItemDiff;
+import codes.biscuit.skyblockaddons.features.SlayerArmorProgress;
+import codes.biscuit.skyblockaddons.misc.scheduler.Scheduler;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
 import lombok.Getter;
@@ -97,7 +98,7 @@ public class InventoryUtils {
                 }
 
                 if(newItem != null) {
-                    if (newItem.getDisplayName().contains(" "+ ChatFormatting.DARK_GRAY+"x")) {
+                    if (newItem.getDisplayName().contains(" "+ ColorCode.DARK_GRAY+"x")) {
                         String newName = newItem.getDisplayName().substring(0, newItem.getDisplayName().lastIndexOf(" "));
                         newItem.setStackDisplayName(newName); // This is a workaround for merchants, it adds x64 or whatever to the end of the name.
                     }
@@ -272,7 +273,7 @@ public class InventoryUtils {
                                 float percentage = Float.parseFloat(matcher.group(2).replace(",", "")) / Integer.parseInt(matcher.group(3).replace(",", "")) * 100;
                                 BigDecimal bigDecimal = new BigDecimal(percentage).setScale(0, BigDecimal.ROUND_HALF_UP);
                                 percent = bigDecimal.toString();
-                                defence = ChatFormatting.GREEN + matcher.group(1);
+                                defence = ColorCode.GREEN + matcher.group(1);
                                 break;
                             } catch (NumberFormatException ignored) {
                             }

@@ -3,9 +3,10 @@ package codes.biscuit.skyblockaddons.utils;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Attribute;
 import codes.biscuit.skyblockaddons.core.Feature;
-import codes.biscuit.skyblockaddons.utils.nifty.StringUtil;
+import codes.biscuit.skyblockaddons.misc.scheduler.Scheduler;
 import lombok.Getter;
 import lombok.Setter;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -97,7 +98,7 @@ public class ActionBarParser {
         }
 
         // Finally display all unused sections separated by 5 spaces again
-        return String.join(StringUtil.repeat(" ", 5), unusedSections);
+        return String.join(StringUtils.repeat(" ", 5), unusedSections);
     }
 
     /**

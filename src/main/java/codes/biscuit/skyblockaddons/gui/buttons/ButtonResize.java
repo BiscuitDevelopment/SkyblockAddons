@@ -2,7 +2,7 @@ package codes.biscuit.skyblockaddons.gui.buttons;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
-import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
+import codes.biscuit.skyblockaddons.utils.ColorCode;
 import lombok.Getter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
@@ -12,7 +12,9 @@ import org.lwjgl.input.Mouse;
 @Getter
 public class ButtonResize extends ButtonFeature {
 
-    private int size = 2;
+    private static final int SIZE = 2;
+
+    private SkyblockAddons main = SkyblockAddons.getInstance();
 
     private Corner corner;
 
@@ -32,12 +34,14 @@ public class ButtonResize extends ButtonFeature {
     @Override
     public void drawButton(Minecraft mc, int mouseX, int mouseY) {
 
-        float scale = SkyblockAddons.getInstance().getConfigValues().getGuiScale(feature);
+        float scale = main.getConfigValues().getGuiScale(feature);
         GlStateManager.pushMatrix();
         GlStateManager.scale(scale,scale,1);
-        hovered = mouseX >= (x-size)*scale && mouseY >= (y-size)*scale && mouseX < (x+size)*scale && mouseY < (y+size)* scale;
-        int color = hovered ? ChatFormatting.WHITE.getRGB() : ChatFormatting.WHITE.getColor(70).getRGB();
-        SkyblockAddons.getInstance().getUtils().drawRect(x-size,y-size, x+size, y+size, color);
+
+        hovered = mouseX >= (x- SIZE)*scale && mouseY >= (y- SIZE)*scale && mouseX < (x+ SIZE)*scale && mouseY < (y+ SIZE)* scale;
+        int color = hovered ? ColorCode.WHITE.getRGB() : ColorCode.WHITE.getColor(70).getRGB();
+        main.getUtils().drawRect(x- SIZE,y- SIZE, x+ SIZE, y+ SIZE, color);
+
         GlStateManager.popMatrix();
     }
 
