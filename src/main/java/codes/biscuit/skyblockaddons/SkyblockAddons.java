@@ -27,7 +27,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraftforge.client.ClientCommandHandler;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLModDisabledEvent;
@@ -37,10 +36,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.lwjgl.input.Keyboard;
 
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Getter
 @Mod(modid = "skyblockaddons", name = "SkyblockAddons", version = "@VERSION@", clientSideOnly = true, acceptedMinecraftVersions = "@MOD_ACCEPTED@")
@@ -105,10 +101,14 @@ public class SkyblockAddons {
 
         ClientCommandHandler.instance.registerCommand(new SkyblockAddonsCommand());
 
-        addKeybinds(new SkyblockKeyBinding("open_settings", Keyboard.KEY_NONE, Message.SETTING_SETTINGS),
+        addKeybindings(new SkyblockKeyBinding("open_settings", Keyboard.KEY_NONE, Message.SETTING_SETTINGS),
                 new SkyblockKeyBinding( "edit_gui", Keyboard.KEY_NONE, Message.SETTING_EDIT_LOCATIONS),
                 new SkyblockKeyBinding( "lock_slot", Keyboard.KEY_L, Message.SETTING_LOCK_SLOT),
-                new SkyblockKeyBinding( "freeze_backpack", Keyboard.KEY_F, Message.SETTING_FREEZE_BACKPACK_PREVIEW));
+                new SkyblockKeyBinding( "freeze_backpack", Keyboard.KEY_F, Message.SETTING_FREEZE_BACKPACK_PREVIEW),
+                new SkyblockKeyBinding("copy_NBT", Keyboard.KEY_RCONTROL, Message.KEY_DEVELOPER_COPY_NBT));
+
+        // Don't register the developer mode key on startup.
+        registerKeyBindings(keyBindings.subList(0, 3));
     }
 
     @Mod.EventHandler
@@ -174,13 +174,18 @@ public class SkyblockAddons {
         return keyBindings.get(3).getKeyBinding();
     }
 
-    public void addKeybinds(SkyblockKeyBinding... keybinds) {
-        for (SkyblockKeyBinding skyblockKeyBinding : keybinds) {
-            KeyBinding keyBinding = new KeyBinding("key.skyblockaddons."+ skyblockKeyBinding.getName(), skyblockKeyBinding.getDefaultKey(), MOD_NAME);
-            ClientRegistry.registerKeyBinding(keyBinding);
-            skyblockKeyBinding.setKeyBinding(keyBinding);
+    public SkyblockKeyBinding getDeveloperCopyNBTKey() {
+        return keyBindings.get(4);
+    }
 
-            keyBindings.add(skyblockKeyBinding);
+    public void addKeybindings(SkyblockKeyBinding... keybindings) {
+        keyBindings.addAll(Arrays.asList(keybindings));
+    }
+
+    public void registerKeyBindings(List<SkyblockKeyBinding> keyBindings) {
+        for (SkyblockKeyBinding keybinding:
+             keyBindings) {
+            keybinding.register();
         }
     }
 

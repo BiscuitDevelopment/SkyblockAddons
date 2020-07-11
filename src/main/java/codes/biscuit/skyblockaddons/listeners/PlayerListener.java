@@ -819,11 +819,11 @@ public class PlayerListener {
     /**
      * This method handles key presses while the player is in-game.
      * For handling of key presses while a GUI (e.g. chat, pause menu, F3) is open,
-     * see {@link GuiScreenListener#onKeyInput(GuiScreenEvent.KeyboardInputEvent)}
+     * see {@link GuiScreenListener#onKeyInput(GuiScreenEvent.KeyboardInputEvent.Pre)}
      *
-     * @param e the {@code KeyInputEvent}
+     * @param e the {@code KeyInputEvent} that occurred
      */
-    @SubscribeEvent(receiveCanceled = true)
+    @SubscribeEvent
     public void onKeyInput(InputEvent.KeyInputEvent e) {
         if (main.getOpenSettingsKey().isPressed()) {
             main.getUtils().setFadingIn(true);
@@ -831,7 +831,7 @@ public class PlayerListener {
         } else if (main.getOpenEditLocationsKey().isPressed()) {
             main.getUtils().setFadingIn(false);
             main.getRenderListener().setGuiToOpen(EnumUtils.GUIType.EDIT_LOCATIONS, 0, null);
-        } else if (Keyboard.getEventKey() == DevUtils.DEV_KEY && Keyboard.getEventKeyState()) {
+        } else if (main.getDeveloperCopyNBTKey().isPressed()) {
             // Copy Mob Data
             if (main.isDevMode()) {
                 EntityPlayerSP player = Minecraft.getMinecraft().thePlayer;
