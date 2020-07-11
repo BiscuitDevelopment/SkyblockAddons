@@ -226,12 +226,12 @@
       "header": "§7§m------------§7[§b§l SkyblockAddons §7]§7§m------------",
       "footer": "§7§m------------------------------------------",
       "usage": {
-        "normal": "§b● /sba §7- Open the main menu\n§b● /sba edit §7- Edit GUI locations\n§b● /sba set <zealots|eyes|totalzealots §eor§b total> <number> §7- Manually set your zealot counts\n§b● /sba folder §7- Open your mods folder",
-        "developer": "§b● /sba dev §7- Toggle developer mode\n§b● /sba sidebar [formatted] §7- §e(Dev) §7Copy the scoreboard text. \"formatted\" §7keeps the color codes when copying\n§b● /sba brand §7- §e(Dev) §7Show the server brand"
+        "normal": "§b● /sba §7- 打開主選單\n§b● /sba edit §7- 編輯 GUI 位置\n§b● /sba set <zealots|eyes|totalzealots §eor§b total> <number> §7- 手動設定你的 Zealot 擊殺數\n§b● /sba folder §7- 打開模組資料夾",
+        "developer": "§b● /sba dev §7- 開啟／關閉開發者模式\n§b● /sba sidebar [formatted] §7- §e(Dev) §7複製記分板的文字。輸入 \"formatted\" §7可在複製時保留原來的顏色代碼\n§b● /sba brand §7- §e(Dev) §7顯示伺服器軟件名稱"
       }
     }
   },
   "keyBindings": {
-    "developerCopyNBT": "Copy NBT"
+    "developerCopyNBT": "複製 NBT"
   }
 }
