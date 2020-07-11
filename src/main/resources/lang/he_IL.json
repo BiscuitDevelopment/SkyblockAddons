@@ -122,12 +122,12 @@
     "onlyBreakLogsPark": "שבור רק בולי עץ בפארק",
     "bossApproachAlert": "אזהרת התקרבות של בוס סלייר",
     "disableTeleportPadMessages": "Disable Teleport Pad Messages",
-    "baitListDisplay": "Show Bait List While Holding a Rod",
+    "baitListDisplay": "הצג את רשימת הפיתיונות בזמן שחכה מוחזקת",
     "freezeBackpackPreview": "הקפא תכולת תרמיל גב",
     "hideGreyEnchants": "הסתר כישופים אפורים רגילים",
-    "zealotCounterExplosiveBow": "Zealot Counter Explosive Bow Support",
-    "disableEndermanTeleportation": "Disable Enderman Teleportation",
-    "changeZealotColor": "Change Zealot Color",
+    "zealotCounterExplosiveBow": "סופר זילוט - תמיכה בקשת מתפוצצת",
+    "disableEndermanTeleportation": "השבת את השיגור של האנדרמנים",
+    "changeZealotColor": "שנה את צבע ה- Zealot",
     "hideSvenPupNametags": "Hide Sven Pup Nametags",
     "turnAllFeaturesChroma": "Turn All Features Chroma"
   },
@@ -147,7 +147,7 @@
       "reforges": "שדרוגים",
       "crafting": "הרכבה"
     },
-    "wantToViewPatchNotes": "רוצה לקרוא את השינויים?",
+    "wantToViewPatchNotes": "צריך עזרה או רוצה לקרוא את רשימת השינויים המלאה?",
     "downloadLink": "קישור לעידכון",
     "directDownload": "לינק להורדה ישירה",
     "openModFolder": "תקיית מודים",
@@ -190,8 +190,8 @@
     "legendarySeaCreatureWarning": "תפיסה אגדית!",
     "cancelledPark": "פיטצ'ר מנע ממך לשבור את הבלוק הזה כאן.",
     "bossApproaching": "אתה קרוב לזימון הבוס!",
-    "enableAll": "Enable All",
-    "disableAll": "Disable All"
+    "enableAll": "הפעל הכול",
+    "disableAll": "השבת הכול"
   },
   "discordStatus": {
     "titleNone": "ללא",
