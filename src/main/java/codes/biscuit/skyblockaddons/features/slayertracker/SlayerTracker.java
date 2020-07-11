@@ -1,4 +1,4 @@
-package codes.biscuit.skyblockaddons.utils.slayertracker;
+package codes.biscuit.skyblockaddons.features.slayertracker;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.features.ItemDiff;

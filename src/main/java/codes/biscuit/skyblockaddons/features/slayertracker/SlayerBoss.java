@@ -1,4 +1,4 @@
-package codes.biscuit.skyblockaddons.utils.slayertracker;
+package codes.biscuit.skyblockaddons.features.slayertracker;
 
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.ItemRarity;

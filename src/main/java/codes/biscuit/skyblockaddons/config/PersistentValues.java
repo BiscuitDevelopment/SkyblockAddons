@@ -1,8 +1,8 @@
 package codes.biscuit.skyblockaddons.config;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.utils.bosstracker.BossTrackerManager;
-import codes.biscuit.skyblockaddons.utils.slayertracker.SlayerTracker;
+import codes.biscuit.skyblockaddons.features.bosstracker.BossTrackerManager;
+import codes.biscuit.skyblockaddons.features.slayertracker.SlayerTracker;
 import codes.biscuit.skyblockaddons.features.craftingpatterns.CraftingPattern;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;

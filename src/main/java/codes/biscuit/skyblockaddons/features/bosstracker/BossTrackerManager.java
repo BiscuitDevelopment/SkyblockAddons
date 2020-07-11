@@ -1,4 +1,4 @@
-package codes.biscuit.skyblockaddons.utils.bosstracker;
+package codes.biscuit.skyblockaddons.features.bosstracker;
 
 import lombok.Getter;
 

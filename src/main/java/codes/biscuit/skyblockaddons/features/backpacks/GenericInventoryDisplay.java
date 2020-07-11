@@ -1,4 +1,4 @@
-package codes.biscuit.skyblockaddons.utils.backpack;
+package codes.biscuit.skyblockaddons.features.backpacks;
 
 import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsTransformer;
 import lombok.Getter;
