@@ -114,22 +114,22 @@
     "birchParkRainmakerTimer": "Birchpark verbleibender Regentimer",
     "combatTimerDisplay": "Combat Timer Anzeige",
     "discordRP": "Discord Rich Presence",
-    "endstoneProtectorDisplay": "Endstone Protector Display",
-    "fancyWarpMenu": "Fancy Warp Menu",
-    "doubleWarp": "Warp Twice",
-    "advancedMode": "Advanced Mode",
-    "legendarySeaCreatureWarning": "Legendary Sea Creature Warning",
-    "onlyBreakLogsPark": "Only Break Logs in the Park",
-    "bossApproachAlert": "Slayer Boss Approach Alert",
-    "disableTeleportPadMessages": "Disable Teleport Pad Messages",
-    "baitListDisplay": "Show Bait List While Holding a Rod",
-    "freezeBackpackPreview": "Freeze Backpack Preview",
-    "hideGreyEnchants": "Hide Regular Grey Enchants",
-    "zealotCounterExplosiveBow": "Zealot Counter Explosive Bow Support",
-    "disableEndermanTeleportation": "Disable Enderman Teleportation",
-    "changeZealotColor": "Change Zealot Color",
-    "hideSvenPupNametags": "Hide Sven Pup Nametags",
-    "turnAllFeaturesChroma": "Turn All Features Chroma"
+    "endstoneProtectorDisplay": "Endstone-Protector-Anzeige",
+    "fancyWarpMenu": "Schönes Warp-Menü",
+    "doubleWarp": "Zwei Mal warpen",
+    "advancedMode": "Erweiterter Modus",
+    "legendarySeaCreatureWarning": "Warnung für Legendäre Sea-Creatures",
+    "onlyBreakLogsPark": "Nur Holz in The Park abbauen",
+    "bossApproachAlert": "Slayer-Boss-Warnung",
+    "disableTeleportPadMessages": "Deaktiviere Teleport-Pad Nachrichten",
+    "baitListDisplay": "Zeige Bait-Liste während du eine Angel hältst",
+    "freezeBackpackPreview": "Backpack-Vorschau fixieren",
+    "hideGreyEnchants": "Verstecke Graue Verzauberungen",
+    "zealotCounterExplosiveBow": "Explosive-Bow-Unterstützung für den Zealot-Counter",
+    "disableEndermanTeleportation": "Deaktiviere Teleportation von Endermen",
+    "changeZealotColor": "Verändere die Farbe von Zealots",
+    "hideSvenPupNametags": "Verstecke die Nametags von Sven Pups",
+    "turnAllFeaturesChroma": "Zeige alle Features in Chroma"
   },
   "messages": {
     "dropConfirmation": "Werfe diesen Gegenstand nochmal, um zu bestätigen!",
@@ -149,10 +149,10 @@
     },
     "wantToViewPatchNotes": "Möchtest du die Änderungen lesen?",
     "downloadLink": "UPDATE LINK",
-    "directDownload": "DIRECT DOWNLOAD LINK",
+    "directDownload": "Direkter Download-Link",
     "openModFolder": "MODS ORDNER",
     "joinTheDiscord": "TRITT DISCORD BEI",
-    "newUpdateAvailable": "A new update (%version%) is available!",
+    "newUpdateAvailable": "Ein neues Update (%version%) ist nun verfügbar!",
     "update": {
       "majorAvailable": "Ein neues wichtiges Update (%version%) ist verfügbar! Den Link für den Download findest du im Chat.",
       "patchAvailable": "Ein Neuer Patch (%version%) ist verfügbar!\nSchau im Chat für die Download Möglichkeiten!"
@@ -179,25 +179,25 @@
     "rescaleFeatures": "Funktionen umskalieren",
     "resizeBars": "Balken skalieren",
     "showColorIcons": "Zeige Farbsymbole",
-    "enableFeatureSnapping": "Enable Feature Snapping",
-    "stage": "Stage %stage%",
-    "switchedSlots": "You have just switched from a locked slot or rare item. Please wait a bit before dropping!",
-    "clickToOpenLink": "Click to open this link!",
-    "clickToOpenFolder": "Click to open your mods folder!",
+    "enableFeatureSnapping": "Erlaube Feature-Snapping",
+    "stage": "Stufe %stage%",
+    "switchedSlots": "Du hast gerade von einem gelocktem Slot oder seltenem Item gewechselt. Bitte warte etwas, bevor du etwas droppst!",
+    "clickToOpenLink": "Klicke, um diesen Link zu öffnen!",
+    "clickToOpenFolder": "Klicke, um deinen mods-Ordner zu öffnen!",
     "firstStatus": "Dieser Status wird oben angezeigt",
     "secondStatus": "Dieser Status wird unter Ihrem ersten Status angezeigt",
-    "fallbackStatus": "This status will appear when your automatic status has nothing to show",
-    "legendarySeaCreatureWarning": "Legendary Catch!",
-    "cancelledPark": "A feature has stopped you from breaking this block here.",
-    "bossApproaching": "You are close to spawning a boss!",
-    "enableAll": "Enable All",
-    "disableAll": "Disable All"
+    "fallbackStatus": "Dieser Status wird angezeigt, wenn dein automatischer Status nicht angezeigt werden kann",
+    "legendarySeaCreatureWarning": "Legendärer Fang!",
+    "cancelledPark": "Ein Feature hat dich davon abgehalten, diesen Block abzubauen.",
+    "bossApproaching": "Du bist kurz davor, einen Boss zu spawnen!",
+    "enableAll": "Aktiviere alle",
+    "disableAll": "Deaktiviere alle"
   },
   "discordStatus": {
-    "titleNone": "None",
-    "descriptionNone": "No text is displayed",
-    "titleLocation": "Location",
-    "descriptionLocation": "Shows your current location",
+    "titleNone": "Keine",
+    "descriptionNone": "Kein Text wird angezeigt",
+    "titleLocation": "Ort",
+    "descriptionLocation": "Zeigt deine derzeitige Position",
     "titlePurse": "Purse",
     "descriptionPurse": "Shows the amount of coins in your purse",
     "titleStats": "Stats",
@@ -226,12 +226,12 @@
       "header": "§7§m------------§7[§b§l SkyblockAddons §7]§7§m------------",
       "footer": "§7§m------------------------------------------",
       "usage": {
-        "normal": "§b● /sba §7- Open the main menu\n§b● /sba edit §7- Edit GUI locations\n§b● /sba set <zealots|eyes|totalzealots §eor§b total> <number> §7- Manually set your zealot counts\n§b● /sba folder §7- Open your mods folder",
+        "normal": "§b● /sba §7- Öffne das Hauptmenü\n§b● /sba edit §7- Bearbeite die GUI-Positionen\n§b● /sba set <zealots|eyes|totalzealots §eor§b total> <number> §7- Setzt deine Zealot-Counts manuell\n§b● /sba folder §7- Öffne deinen mods-Ordner",
         "developer": "§b● /sba dev §7- Toggle developer mode\n§b● /sba sidebar [formatted] §7- §e(Dev) §7Copy the scoreboard text. \"formatted\" §7keeps the color codes when copying\n§b● /sba brand §7- §e(Dev) §7Show the server brand"
       }
     }
   },
   "keyBindings": {
-    "developerCopyNBT": "Copy NBT"
+    "developerCopyNBT": "NBT-Daten kopieren"
   }
 }
