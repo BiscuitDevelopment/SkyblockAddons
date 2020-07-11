@@ -226,8 +226,8 @@
       "header": "§7§m------------§7[§b§l SkyblockAddons §7]§7§m------------",
       "footer": "§7§m------------------------------------------",
       "usage": {
-        "normal": "§b● /sba §7- Abrir o menu principal\n§b● /sba edit §7- Editar as posições da GUI\n§b● /sba set <zealots|eyes|totalzealots §eor§b total> <number> §7- Definir automaticamente a contagem de zealots\n§b● /sba folder §7- Abrir a pasta de mods",
-        "developer": "§b● /sba dev §7- Ativar o modo de programador\n§b● /sba sidebar [formatted] §7- §e(Dev) §7Copiar o texto do quadro de pontuações \"formatado\" §7mantém a cor do código quando copiada\n§b● /sba brand §7- §e(Dev) §7Mostrar a marca do servidor"
+        "normal": "§b● /sba §7- Abrir o menu principal\n§b● /sba edit §7- Editar as posições da GUI\n§b● /sba set <zealots|eyes|totalzealots §eou§b total> <número> §7- Definir automaticamente a contagem de zealots\n§b● /sba folder §7- Abrir a pasta de mods",
+        "developer": "§b● /sba dev §7- Ativar o modo de programador\n§b● /sba sidebar [formatted] §7- §e(Dev) §7Copiar o texto do quadro de pontuações \"formatted” §7mantém os códigos de cor ao copiar\n§b● /sba brand §7- §e(Dev) §7Mostrar a marca do servidor"
       }
     }
   },
