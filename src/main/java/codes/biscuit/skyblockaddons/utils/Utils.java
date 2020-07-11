@@ -8,6 +8,8 @@ import codes.biscuit.skyblockaddons.core.SkyblockDate;
 import codes.biscuit.skyblockaddons.events.SkyblockJoinedEvent;
 import codes.biscuit.skyblockaddons.events.SkyblockLeftEvent;
 import codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui;
+import codes.biscuit.skyblockaddons.utils.backpack.Backpack;
+import codes.biscuit.skyblockaddons.utils.backpack.GenericInventoryDisplay;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
 import codes.biscuit.skyblockaddons.utils.nifty.StringUtil;
 import com.google.common.collect.Iterables;
@@ -105,6 +107,9 @@ public class Utils {
     private List<String> enchantmentExclusions = new LinkedList<>();
 
     private Backpack backpackToPreview;
+
+    @Getter @Setter
+    private GenericInventoryDisplay genericInventoryDisplay;
 
     /** Whether the player is on skyblock. */
     private boolean onSkyblock;

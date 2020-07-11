@@ -5,6 +5,8 @@ import codes.biscuit.skyblockaddons.asm.utils.ReturnValue;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsTransformer;
 import codes.biscuit.skyblockaddons.utils.*;
+import codes.biscuit.skyblockaddons.utils.backpack.Backpack;
+import codes.biscuit.skyblockaddons.utils.backpack.BackpackColor;
 import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
 import codes.biscuit.skyblockaddons.utils.nifty.reflection.MinecraftReflection;
 import lombok.Getter;
@@ -217,6 +219,10 @@ public class GuiContainerHook {
             GlStateManager.enableLighting();
             GlStateManager.enableDepth();
             RenderHelper.enableStandardItemLighting();
+        } else if (main.getUtils().getGenericInventoryDisplay() != null)
+        {
+            main.getUtils().getGenericInventoryDisplay().draw(guiContainer, mouseX, mouseY, fontRendererObj);
+            main.getUtils().setGenericInventoryDisplay(null);
         }
     }
 

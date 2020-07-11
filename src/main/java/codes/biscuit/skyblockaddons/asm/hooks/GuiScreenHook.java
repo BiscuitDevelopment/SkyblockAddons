@@ -2,21 +2,29 @@ package codes.biscuit.skyblockaddons.asm.hooks;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.asm.utils.ReturnValue;
-import codes.biscuit.skyblockaddons.utils.Backpack;
-import codes.biscuit.skyblockaddons.utils.BackpackManager;
+import codes.biscuit.skyblockaddons.utils.backpack.Backpack;
+import codes.biscuit.skyblockaddons.utils.backpack.BackpackManager;
 import codes.biscuit.skyblockaddons.utils.CooldownManager;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.utils.InventoryUtils;
+import codes.biscuit.skyblockaddons.utils.backpack.GenericInventoryDisplay;
+import codes.biscuit.skyblockaddons.utils.item.ItemUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ContainerChest;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.IChatComponent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import org.lwjgl.input.Keyboard;
+
+import java.util.ArrayList;
 
 public class GuiScreenHook {
 
@@ -75,6 +83,15 @@ public class GuiScreenHook {
                 }
                 main.getPlayerListener().onItemTooltip(new ItemTooltipEvent(stack, null, null, false));
                 returnValue.cancel();
+            }
+        } else if (stack.getItem().equals(Item.getItemFromBlock(Blocks.dropper)) && main.getConfigValues().isEnabled(Feature.SHOW_PERSONAL_COMPACTOR_PREVIEW)) {
+            NBTTagCompound data = ItemUtils.getSkyblockData(stack);
+            if (ItemUtils.getSkyBlockItemID(data).startsWith("PERSONAL_COMPACTOR"))
+            {
+                main.getPlayerListener().onItemTooltip(new ItemTooltipEvent(stack, null, null, false));
+                returnValue.cancel();
+                ItemStack[] items = ItemUtils.getPersonalCompactorContents(data);
+                main.getUtils().setGenericInventoryDisplay(new GenericInventoryDisplay(items.length, 1, items));
             }
         }
         if (GuiContainerHook.isFreezeBackpack()) {

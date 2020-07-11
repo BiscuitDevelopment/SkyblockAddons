@@ -8,6 +8,8 @@ import codes.biscuit.skyblockaddons.core.Message;
 import codes.biscuit.skyblockaddons.gui.IslandWarpGui;
 import codes.biscuit.skyblockaddons.scheduler.SkyblockRunnable;
 import codes.biscuit.skyblockaddons.utils.*;
+import codes.biscuit.skyblockaddons.utils.backpack.Backpack;
+import codes.biscuit.skyblockaddons.utils.backpack.BackpackManager;
 import codes.biscuit.skyblockaddons.utils.bosstracker.BossTrackerManager;
 import codes.biscuit.skyblockaddons.utils.dev.DevUtils;
 import codes.biscuit.skyblockaddons.utils.item.ItemUtils;

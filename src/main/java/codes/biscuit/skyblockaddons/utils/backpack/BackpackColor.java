@@ -1,4 +1,4 @@
-package codes.biscuit.skyblockaddons.utils;
+package codes.biscuit.skyblockaddons.utils.backpack;
 
 import java.awt.*;
 import java.util.EnumSet;

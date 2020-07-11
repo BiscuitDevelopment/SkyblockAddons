@@ -134,6 +134,7 @@ public enum Message {
     SETTING_SLAYER_TRACKER(MessageObject.SETTING, "slayerTracker"),
     SETTING_COLOUR_BY_RARITY(MessageObject.SETTING, "colourByRarity"),
     SETTING_DRAGON_STATS_TRACKER(MessageObject.SETTING, "dragonStatsTracker"),
+    SETTING_SHOW_PERSONAL_COMPACTOR_PREVIEW(MessageObject.SETTING, "showPersonalCompactorPreview"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.BACKPACK_STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.BACKPACK_STYLE, "compact"),

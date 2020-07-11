@@ -4,6 +4,8 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.asm.utils.ReturnValue;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.utils.*;
+import codes.biscuit.skyblockaddons.utils.backpack.Backpack;
+import codes.biscuit.skyblockaddons.utils.backpack.BackpackManager;
 import codes.biscuit.skyblockaddons.utils.item.ItemUtils;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;

@@ -1,7 +1,9 @@
-package codes.biscuit.skyblockaddons.utils;
+package codes.biscuit.skyblockaddons.utils.backpack;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
+import codes.biscuit.skyblockaddons.utils.EnumUtils;
+import codes.biscuit.skyblockaddons.utils.TextUtils;
 import codes.biscuit.skyblockaddons.utils.item.ItemUtils;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompressedStreamTools;
