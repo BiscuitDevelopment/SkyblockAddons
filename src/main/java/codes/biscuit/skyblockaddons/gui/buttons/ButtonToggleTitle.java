@@ -2,7 +2,6 @@ package codes.biscuit.skyblockaddons.gui.buttons;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
-import codes.biscuit.skyblockaddons.utils.nifty.reflection.MinecraftReflection;
 import net.minecraft.client.Minecraft;
 
 public class ButtonToggleTitle extends ButtonToggle {
@@ -19,6 +18,6 @@ public class ButtonToggleTitle extends ButtonToggle {
     public void drawButton(Minecraft mc, int mouseX, int mouseY) {
         super.drawButton(mc, mouseX, mouseY);
         int fontColor = main.getUtils().getDefaultBlue(255);
-        MinecraftReflection.FontRenderer.drawCenteredString(displayString, xPosition+width/2, yPosition-10, fontColor);
+        drawCenteredString(mc.fontRendererObj, displayString, xPosition+width/2, yPosition-10, fontColor);
     }
 }

@@ -1,7 +1,7 @@
 package codes.biscuit.skyblockaddons.utils.slayertracker;
 
-import codes.biscuit.skyblockaddons.constants.game.Rarity;
 import codes.biscuit.skyblockaddons.core.Feature;
+import codes.biscuit.skyblockaddons.core.ItemRarity;
 import codes.biscuit.skyblockaddons.utils.Utils;
 import lombok.Getter;
 import lombok.Setter;
@@ -94,13 +94,13 @@ public abstract class SlayerBoss {
         @Getter
         private String langName, skyblockID;
         @Getter
-        private Rarity rarity;
+        private ItemRarity rarity;
         @Getter
         private ResourceLocation resourceLocation;
         @Getter
         private int count = 0;
 
-        public SlayerDrop(SlayerBoss boss, String skyblockID, String langName, Rarity rarity) {
+        public SlayerDrop(SlayerBoss boss, String skyblockID, String langName, ItemRarity rarity) {
             this.boss = boss;
             this.skyblockID = skyblockID;
             this.langName = langName;

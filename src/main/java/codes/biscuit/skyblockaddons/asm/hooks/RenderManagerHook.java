@@ -4,8 +4,8 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.asm.utils.ReturnValue;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.Location;
-import codes.biscuit.skyblockaddons.utils.npc.NPCUtils;
-import codes.biscuit.skyblockaddons.utils.npc.Tag;
+import codes.biscuit.skyblockaddons.core.npc.NPCType;
+import codes.biscuit.skyblockaddons.core.npc.NPCUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.client.particle.EntityFX;
@@ -29,7 +29,7 @@ public class RenderManagerHook {
                 }
             }
             if (main.getConfigValues().isEnabled(Feature.HIDE_PLAYERS_NEAR_NPCS)) {
-                if (entityIn instanceof EntityOtherPlayerMP && NPCUtils.isNearAnyNPCWithTag(entityIn, Tag.IMPORTANT) && !NPCUtils.isNPC(entityIn)) {
+                if (entityIn instanceof EntityOtherPlayerMP && NPCUtils.isNearAnyNPCWithType(entityIn, NPCType.IMPORTANT) && !NPCUtils.isNPC(entityIn)) {
                     returnValue.cancel();
                 }
             }

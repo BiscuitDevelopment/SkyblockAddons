@@ -1,7 +1,7 @@
 package codes.biscuit.skyblockaddons.utils.bosstracker;
 
-import codes.biscuit.skyblockaddons.constants.game.Rarity;
 import codes.biscuit.skyblockaddons.core.Feature;
+import codes.biscuit.skyblockaddons.core.ItemRarity;
 import codes.biscuit.skyblockaddons.utils.Utils;
 import com.google.gson.JsonObject;
 import lombok.Getter;
@@ -47,9 +47,9 @@ public abstract class BossTracker {
         @Getter @Setter
         private int count = 0;
         @Getter
-        private Rarity rarity;
+        private ItemRarity rarity;
 
-        public Stat(String name, Rarity rarity) {
+        public Stat(String name, ItemRarity rarity) {
             this.name = name;
             this.rarity = rarity;
         }

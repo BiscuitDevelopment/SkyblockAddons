@@ -1,18 +1,24 @@
 package codes.biscuit.skyblockaddons;
 
 import codes.biscuit.skyblockaddons.commands.SkyblockAddonsCommand;
+import codes.biscuit.skyblockaddons.config.ConfigValues;
+import codes.biscuit.skyblockaddons.config.PersistentValues;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.Message;
+import codes.biscuit.skyblockaddons.core.OnlineData;
 import codes.biscuit.skyblockaddons.gui.IslandWarpGui;
 import codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui;
 import codes.biscuit.skyblockaddons.listeners.GuiScreenListener;
 import codes.biscuit.skyblockaddons.listeners.NetworkListener;
 import codes.biscuit.skyblockaddons.listeners.PlayerListener;
 import codes.biscuit.skyblockaddons.listeners.RenderListener;
-import codes.biscuit.skyblockaddons.scheduler.NewScheduler;
-import codes.biscuit.skyblockaddons.scheduler.SkyblockRunnable;
+import codes.biscuit.skyblockaddons.misc.scheduler.Scheduler;
+import codes.biscuit.skyblockaddons.misc.SkyblockKeyBinding;
+import codes.biscuit.skyblockaddons.misc.Updater;
+import codes.biscuit.skyblockaddons.misc.scheduler.NewScheduler;
+import codes.biscuit.skyblockaddons.misc.scheduler.SkyblockRunnable;
 import codes.biscuit.skyblockaddons.utils.*;
-import codes.biscuit.skyblockaddons.utils.discord.DiscordRPCManager;
+import codes.biscuit.skyblockaddons.features.discordrpc.DiscordRPCManager;
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 import lombok.Getter;
@@ -21,7 +27,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraftforge.client.ClientCommandHandler;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLModDisabledEvent;
@@ -31,10 +36,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.lwjgl.input.Keyboard;
 
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Getter
 @Mod(modid = "skyblockaddons", name = "SkyblockAddons", version = "@VERSION@", clientSideOnly = true, acceptedMinecraftVersions = "@MOD_ACCEPTED@")
@@ -82,10 +84,9 @@ public class SkyblockAddons {
         discordRPCManager = new DiscordRPCManager();
     }
 
-    @SuppressWarnings("unused")
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent e) {
-        configValues = new ConfigValues(this, e.getSuggestedConfigurationFile());
+        configValues = new ConfigValues(e.getSuggestedConfigurationFile());
         persistentValues = new PersistentValues(e.getModConfigurationDirectory());
     }
 
@@ -100,13 +101,16 @@ public class SkyblockAddons {
 
         ClientCommandHandler.instance.registerCommand(new SkyblockAddonsCommand());
 
-        addKeybinds(new SkyblockKeyBinding("open_settings", Keyboard.KEY_NONE, Message.SETTING_SETTINGS),
+        addKeybindings(new SkyblockKeyBinding("open_settings", Keyboard.KEY_NONE, Message.SETTING_SETTINGS),
                 new SkyblockKeyBinding( "edit_gui", Keyboard.KEY_NONE, Message.SETTING_EDIT_LOCATIONS),
                 new SkyblockKeyBinding( "lock_slot", Keyboard.KEY_L, Message.SETTING_LOCK_SLOT),
-                new SkyblockKeyBinding( "freeze_backpack", Keyboard.KEY_F, Message.SETTING_FREEZE_BACKPACK_PREVIEW));
+                new SkyblockKeyBinding( "freeze_backpack", Keyboard.KEY_F, Message.SETTING_FREEZE_BACKPACK_PREVIEW),
+                new SkyblockKeyBinding("copy_NBT", Keyboard.KEY_RCONTROL, Message.KEY_DEVELOPER_COPY_NBT));
+
+        // Don't register the developer mode key on startup.
+        registerKeyBindings(keyBindings.subList(0, 3));
     }
 
-    @SuppressWarnings("unused")
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent e) {
         onlineData = new Gson().fromJson(new JsonReader(utils.getBufferedReader("data.json")), OnlineData.class);
@@ -170,13 +174,18 @@ public class SkyblockAddons {
         return keyBindings.get(3).getKeyBinding();
     }
 
-    public void addKeybinds(SkyblockKeyBinding... keybinds) {
-        for (SkyblockKeyBinding skyblockKeyBinding : keybinds) {
-            KeyBinding keyBinding = new KeyBinding("key.skyblockaddons."+ skyblockKeyBinding.getName(), skyblockKeyBinding.getDefaultKey(), MOD_NAME);
-            ClientRegistry.registerKeyBinding(keyBinding);
-            skyblockKeyBinding.setKeyBinding(keyBinding);
+    public SkyblockKeyBinding getDeveloperCopyNBTKey() {
+        return keyBindings.get(4);
+    }
 
-            keyBindings.add(skyblockKeyBinding);
+    public void addKeybindings(SkyblockKeyBinding... keybindings) {
+        keyBindings.addAll(Arrays.asList(keybindings));
+    }
+
+    public void registerKeyBindings(List<SkyblockKeyBinding> keyBindings) {
+        for (SkyblockKeyBinding keybinding:
+             keyBindings) {
+            keybinding.register();
         }
     }
 

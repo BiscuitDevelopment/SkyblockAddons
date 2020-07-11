@@ -1,8 +1,8 @@
 package codes.biscuit.skyblockaddons.utils.slayertracker;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.utils.ItemDiff;
-import codes.biscuit.skyblockaddons.utils.item.ItemUtils;
+import codes.biscuit.skyblockaddons.features.ItemDiff;
+import codes.biscuit.skyblockaddons.utils.ItemUtils;
 import com.google.gson.JsonObject;
 import lombok.Getter;
 

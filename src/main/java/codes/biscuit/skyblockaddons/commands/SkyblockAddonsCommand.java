@@ -1,10 +1,11 @@
 package codes.biscuit.skyblockaddons.commands;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.core.Message;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
-import codes.biscuit.skyblockaddons.utils.dev.DevUtils;
-import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
 import codes.biscuit.skyblockaddons.utils.slayertracker.SlayerTracker;
+import codes.biscuit.skyblockaddons.utils.DevUtils;
+import codes.biscuit.skyblockaddons.utils.ColorCode;
 import net.minecraft.client.Minecraft;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
@@ -49,35 +50,20 @@ public class SkyblockAddonsCommand extends CommandBase {
     }
 
     /**
-     * Gets the usage string for the command.
+     * Gets the usage string for the command. If developer mode is enabled, the developer mode usage string is added to
+     * the main usage string.
      */
     public String getCommandUsage(ICommandSender sender) {
-        if (main.isDevMode()) return getDevCommandUsage();
+        String HEADER = Message.COMMAND_SBA_HEADER.getMessage();
+        String FOOTER = Message.COMMAND_SBA_FOOTER.getMessage();
 
-        return "§7§m------------§7[§b§l SkyblockAddons §7]§7§m------------" + "\n" +
-                "§b● /sba §7- Open the main menu" + "\n" +
-                "§b● /sba edit §7- Edit GUI locations" + "\n" +
-                "§b● /sba set <zealots|eyes|totalzealots §eor§b total> <number> §7- Manually set your zealot counts" + "\n" +
-                "§b● /sba slayer <boss> <stat> <number> §7- Manually set slayer stats, press tab for arguments" + "\n" +
-                "§b● /sba folder §7- Open your mods folder" + "\n" +
-                "§7§m------------------------------------------";
-    }
-
-    /**
-     * Gets the usage string for the developer mode sub-command.
-     */
-    public String getDevCommandUsage() {
-        return
-                "§7§m------------§7[§b§l SkyblockAddons §7]§7§m------------" + "\n" +
-                        "§b● /sba §7- Open the main menu" + "\n" +
-                        "§b● /sba edit §7- Edit GUI locations" + "\n" +
-                        "§b● /sba set <zealots | eyes | totalzealots §7or§b total> <number> §7- Manually set your zealot counts" + "\n" +
-                        "§b● /sba slayer <boss> <stat> <number> §7- Manually set slayer stats, press tab for arguments" + "\n" +
-                        "§b● /sba folder §7- Open your mods folder" + "\n" +
-                        "§b● /sba dev §7- Toggle developer mode" + "\n" +
-                        "§b● /sba sidebar [formatted] §7- §e(Dev) §7Copy the scoreboard text. \"formatted\" §7keeps the color codes when copying" + "\n" +
-                        "§b● /sba brand §7- §e(Dev) §7Show the server brand" + "\n" +
-                        "§7§m------------------------------------------";
+        if (main.isDevMode()) {
+            return HEADER + "\n" + Message.COMMAND_SBA_USAGE_NORMAL.getMessage() + "\n"
+                    + Message.COMMAND_SBA_USAGE_DEVELOPER.getMessage() + "\n" + FOOTER;
+        }
+        else {
+            return HEADER + "\n" + Message.COMMAND_SBA_USAGE_NORMAL.getMessage() + "\n" + FOOTER;
+        }
     }
 
     public List<String> addTabCompletionOptions(ICommandSender sender, String[] args, BlockPos pos) {
@@ -117,9 +103,11 @@ public class SkyblockAddonsCommand extends CommandBase {
                 main.setDevMode(!main.isDevMode());
 
                 if (main.isDevMode()) {
-                    main.getUtils().sendMessage(ChatFormatting.GREEN + "Developer mode enabled! TIP: Press right ctrl to copy nbt!");
+                    main.getDeveloperCopyNBTKey().register();
+                    main.getUtils().sendMessage(ColorCode.GREEN + "Developer mode enabled! TIP: Press right ctrl to copy nbt!");
                 } else {
-                    main.getUtils().sendMessage(ChatFormatting.RED + "Developer mode disabled!");
+                    main.getDeveloperCopyNBTKey().deRegister();
+                    main.getUtils().sendMessage(ColorCode.RED + "Developer mode disabled!");
                 }
             } else if (args[0].equalsIgnoreCase("set")) {
                 Integer number = null;

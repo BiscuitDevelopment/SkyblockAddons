@@ -5,16 +5,25 @@ import codes.biscuit.skyblockaddons.core.Attribute;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.Location;
 import codes.biscuit.skyblockaddons.core.Message;
+import codes.biscuit.skyblockaddons.features.EnchantedItemBlacklist;
+import codes.biscuit.skyblockaddons.features.EndstoneProtectorManager;
+import codes.biscuit.skyblockaddons.features.ItemDiff;
+import codes.biscuit.skyblockaddons.features.backpacks.Backpack;
+import codes.biscuit.skyblockaddons.features.backpacks.BackpackManager;
+import codes.biscuit.skyblockaddons.features.BaitManager;
+import codes.biscuit.skyblockaddons.features.cooldowns.CooldownManager;
+import codes.biscuit.skyblockaddons.features.powerorbs.PowerOrbManager;
+import codes.biscuit.skyblockaddons.features.tabtimers.TabEffectManager;
 import codes.biscuit.skyblockaddons.gui.IslandWarpGui;
-import codes.biscuit.skyblockaddons.scheduler.SkyblockRunnable;
+import codes.biscuit.skyblockaddons.misc.scheduler.Scheduler;
+import codes.biscuit.skyblockaddons.misc.scheduler.SkyblockRunnable;
 import codes.biscuit.skyblockaddons.utils.*;
-import codes.biscuit.skyblockaddons.utils.backpack.Backpack;
-import codes.biscuit.skyblockaddons.utils.backpack.BackpackManager;
 import codes.biscuit.skyblockaddons.utils.bosstracker.BossTrackerManager;
-import codes.biscuit.skyblockaddons.utils.dev.DevUtils;
-import codes.biscuit.skyblockaddons.utils.item.ItemUtils;
-import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
 import codes.biscuit.skyblockaddons.utils.slayertracker.SlayerTracker;
+import codes.biscuit.skyblockaddons.utils.DevUtils;
+import codes.biscuit.skyblockaddons.utils.ItemUtils;
+import codes.biscuit.skyblockaddons.utils.ColorCode;
+import codes.biscuit.skyblockaddons.utils.objects.IntPair;
 import com.google.common.collect.Sets;
 import lombok.Getter;
 import lombok.Setter;
@@ -195,7 +204,7 @@ public class PlayerListener {
                 }
                 if (main.getConfigValues().isEnabled(Feature.ZEALOT_COUNTER)) {
                     // Edit the message to include counter.
-                    e.message = new ChatComponentText(formattedText + ChatFormatting.GRAY + " (" + main.getPersistentValues().getKills() + ")");
+                    e.message = new ChatComponentText(formattedText + ColorCode.GRAY + " (" + main.getPersistentValues().getKills() + ")");
                 }
                 main.getPersistentValues().addEyeResetKills();
 
@@ -847,11 +856,11 @@ public class PlayerListener {
     /**
      * This method handles key presses while the player is in-game.
      * For handling of key presses while a GUI (e.g. chat, pause menu, F3) is open,
-     * see {@link GuiScreenListener#onKeyInput(GuiScreenEvent.KeyboardInputEvent)}
+     * see {@link GuiScreenListener#onKeyInput(GuiScreenEvent.KeyboardInputEvent.Pre)}
      *
-     * @param e the {@code KeyInputEvent}
+     * @param e the {@code KeyInputEvent} that occurred
      */
-    @SubscribeEvent(receiveCanceled = true)
+    @SubscribeEvent
     public void onKeyInput(InputEvent.KeyInputEvent e) {
         if (main.getOpenSettingsKey().isPressed()) {
             main.getUtils().setFadingIn(true);
@@ -859,7 +868,7 @@ public class PlayerListener {
         } else if (main.getOpenEditLocationsKey().isPressed()) {
             main.getUtils().setFadingIn(false);
             main.getRenderListener().setGuiToOpen(EnumUtils.GUIType.EDIT_LOCATIONS, 0, null);
-        } else if (Keyboard.getEventKey() == DevUtils.DEV_KEY && Keyboard.getEventKeyState()) {
+        } else if (main.getDeveloperCopyNBTKey().isPressed()) {
             // Copy Mob Data
             if (main.isDevMode()) {
                 EntityPlayerSP player = Minecraft.getMinecraft().thePlayer;

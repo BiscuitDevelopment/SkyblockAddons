@@ -1,7 +1,7 @@
 package codes.biscuit.skyblockaddons.utils.slayertracker;
 
-import codes.biscuit.skyblockaddons.constants.game.Rarity;
 import codes.biscuit.skyblockaddons.core.Feature;
+import codes.biscuit.skyblockaddons.core.ItemRarity;
 
 import java.util.ArrayList;
 
@@ -13,14 +13,14 @@ public class SlayerSpider extends SlayerBoss {
         super(Feature.SLAYER_SPIDER, "spider");
 
         drops = new ArrayList<SlayerDrop>();
-        drops.add(new SlayerDrop(this, "TARANTULA_WEB", "TarantulaWebs", Rarity.UNCOMMON));
-        drops.add(new SlayerDrop(this, "TOXIC_ARROW_POISON", "ToxicArrowPoisons", Rarity.UNCOMMON));
-        drops.add(new SlayerDrop(this, "SPIDER_CATALYST", "SpiderCatalysts", Rarity.RARE));
-        drops.add(new SlayerDrop(this, "ENCHANTED_BOOK", "BaneOfArthropod6Books", Rarity.RARE));
-        drops.add(new SlayerDrop(this, "RUNE:BITE", "BiteRunes", Rarity.EPIC));
-        drops.add(new SlayerDrop(this, "FLY_SWATTER", "FlySwatters", Rarity.EPIC));
-        drops.add(new SlayerDrop(this, "TARANTULA_TALISMAN", "TarantulaTalismans", Rarity.EPIC));
-        drops.add(new SlayerDrop(this, "DIGESTED_MOSQUITO", "DigestedMosquitoes", Rarity.LEGENDARY));
+        drops.add(new SlayerDrop(this, "TARANTULA_WEB", "TarantulaWebs", ItemRarity.UNCOMMON));
+        drops.add(new SlayerDrop(this, "TOXIC_ARROW_POISON", "ToxicArrowPoisons", ItemRarity.UNCOMMON));
+        drops.add(new SlayerDrop(this, "SPIDER_CATALYST", "SpiderCatalysts", ItemRarity.RARE));
+        drops.add(new SlayerDrop(this, "ENCHANTED_BOOK", "BaneOfArthropod6Books", ItemRarity.RARE));
+        drops.add(new SlayerDrop(this, "RUNE:BITE", "BiteRunes", ItemRarity.EPIC));
+        drops.add(new SlayerDrop(this, "FLY_SWATTER", "FlySwatters", ItemRarity.EPIC));
+        drops.add(new SlayerDrop(this, "TARANTULA_TALISMAN", "TarantulaTalismans", ItemRarity.EPIC));
+        drops.add(new SlayerDrop(this, "DIGESTED_MOSQUITO", "DigestedMosquitoes", ItemRarity.LEGENDARY));
     }
 
     @Override

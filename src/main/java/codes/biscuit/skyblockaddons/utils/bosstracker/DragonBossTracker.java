@@ -1,12 +1,12 @@
 package codes.biscuit.skyblockaddons.utils.bosstracker;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.constants.game.Rarity;
 import codes.biscuit.skyblockaddons.core.Feature;
-import codes.biscuit.skyblockaddons.utils.ItemDiff;
+import codes.biscuit.skyblockaddons.core.ItemRarity;
+import codes.biscuit.skyblockaddons.features.ItemDiff;
+import codes.biscuit.skyblockaddons.utils.ColorCode;
+import codes.biscuit.skyblockaddons.utils.ItemUtils;
 import codes.biscuit.skyblockaddons.utils.Utils;
-import codes.biscuit.skyblockaddons.utils.item.ItemUtils;
-import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
 import com.google.gson.JsonObject;
 import lombok.Getter;
 
@@ -34,9 +34,9 @@ public class DragonBossTracker extends BossTracker {
     public DragonBossTracker() {
         super(Feature.DRAGON_STATS_TRACKER, "dragonStats");
         dragsSinceStatList = new ArrayList<>();
-        dragsSinceStatList.add(new Stat(dragsSinceSupStr, Rarity.LEGENDARY));
-        dragsSinceStatList.add(new Stat(dragsSinceAOTDStr, Rarity.LEGENDARY));
-        dragsSinceStatList.add(new Stat(dragsSincePetStr, Rarity.LEGENDARY));
+        dragsSinceStatList.add(new Stat(dragsSinceSupStr, ItemRarity.LEGENDARY));
+        dragsSinceStatList.add(new Stat(dragsSinceAOTDStr, ItemRarity.LEGENDARY));
+        dragsSinceStatList.add(new Stat(dragsSincePetStr, ItemRarity.LEGENDARY));
         recent = new ArrayList<>();
     }
 
@@ -156,18 +156,18 @@ public class DragonBossTracker extends BossTracker {
     }
 
     public enum DragonType {
-        NONE("none", ChatFormatting.DARK_GRAY),
-        PROTECTOR("dragonProtector", ChatFormatting.DARK_BLUE), OLD("dragonOld", ChatFormatting.GRAY),
-        WISE("dragonWise", ChatFormatting.BLUE), UNSTABLE("dragonUnstable", ChatFormatting.BLACK),
-        YOUNG("dragonYoung", ChatFormatting.WHITE), STRONG("dragonStrong", ChatFormatting.RED),
-        SUPERIOR("dragonSuperior", ChatFormatting.GOLD);
+        NONE("none", ColorCode.DARK_GRAY),
+        PROTECTOR("dragonProtector", ColorCode.DARK_BLUE), OLD("dragonOld", ColorCode.GRAY),
+        WISE("dragonWise", ColorCode.BLUE), UNSTABLE("dragonUnstable", ColorCode.BLACK),
+        YOUNG("dragonYoung", ColorCode.WHITE), STRONG("dragonStrong", ColorCode.RED),
+        SUPERIOR("dragonSuperior", ColorCode.GOLD);
 
         @Getter
         String name;
         @Getter
-        ChatFormatting colour;
+        ColorCode colour;
 
-        DragonType(String name, ChatFormatting colour) {
+        DragonType(String name, ColorCode colour) {
             this.name = name;
             this.colour = colour;
         }

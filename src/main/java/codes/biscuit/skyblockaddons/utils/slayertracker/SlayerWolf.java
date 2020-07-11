@@ -1,7 +1,7 @@
 package codes.biscuit.skyblockaddons.utils.slayertracker;
 
-import codes.biscuit.skyblockaddons.constants.game.Rarity;
 import codes.biscuit.skyblockaddons.core.Feature;
+import codes.biscuit.skyblockaddons.core.ItemRarity;
 
 import java.util.ArrayList;
 
@@ -13,14 +13,14 @@ public class SlayerWolf extends SlayerBoss {
         super(Feature.SLAYER_WOLF, "wolf");
 
         drops = new ArrayList<SlayerDrop>();
-        drops.add(new SlayerDrop(this, "WOLF_TOOTH", "WolfTeeth", Rarity.UNCOMMON));
-        drops.add(new SlayerDrop(this, "HAMSTER_WHEEL", "HamsterWheels", Rarity.RARE));
-        drops.add(new SlayerDrop(this, "RUNE:SPIRIT", "SpiritRunes", Rarity.RARE));
-        drops.add(new SlayerDrop(this, "ENCHANTED_BOOK", "Crit6Books", Rarity.RARE));
-        drops.add(new SlayerDrop(this, "GRIZZLY_BAIT", "GrizzlyBaits", Rarity.RARE));
-        drops.add(new SlayerDrop(this, "RED_CLAW_EGG", "RedClawEggs", Rarity.EPIC));
-        drops.add(new SlayerDrop(this, "OVERFLUX_CAPACITOR", "Overfluxes", Rarity.EPIC));
-        drops.add(new SlayerDrop(this, "RUNE:COUTURE", "CoutureRunes", Rarity.LEGENDARY));
+        drops.add(new SlayerDrop(this, "WOLF_TOOTH", "WolfTeeth", ItemRarity.UNCOMMON));
+        drops.add(new SlayerDrop(this, "HAMSTER_WHEEL", "HamsterWheels", ItemRarity.RARE));
+        drops.add(new SlayerDrop(this, "RUNE:SPIRIT", "SpiritRunes", ItemRarity.RARE));
+        drops.add(new SlayerDrop(this, "ENCHANTED_BOOK", "Crit6Books", ItemRarity.RARE));
+        drops.add(new SlayerDrop(this, "GRIZZLY_BAIT", "GrizzlyBaits", ItemRarity.RARE));
+        drops.add(new SlayerDrop(this, "RED_CLAW_EGG", "RedClawEggs", ItemRarity.EPIC));
+        drops.add(new SlayerDrop(this, "OVERFLUX_CAPACITOR", "Overfluxes", ItemRarity.EPIC));
+        drops.add(new SlayerDrop(this, "RUNE:COUTURE", "CoutureRunes", ItemRarity.LEGENDARY));
     }
 
     @Override

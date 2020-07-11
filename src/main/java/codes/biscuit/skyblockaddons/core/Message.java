@@ -1,8 +1,7 @@
 package codes.biscuit.skyblockaddons.core;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.utils.Language;
-import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
+import codes.biscuit.skyblockaddons.utils.ColorCode;
 import com.google.gson.JsonObject;
 import com.ibm.icu.text.ArabicShaping;
 import com.ibm.icu.text.ArabicShapingException;
@@ -16,7 +15,6 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 @Getter
-@SuppressWarnings("DeprecatedIsStillUsed")
 public enum Message {
     LANGUAGE(MessageObject.ROOT, "language"),
 
@@ -249,6 +247,13 @@ public enum Message {
     DISCORD_STATUS_SVEN_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionSvens"),
     DISCORD_STATUS_TARANTULA(MessageObject.DISCORD_STATUS, "titleTarantula"),
     DISCORD_STATUS_TARANTULA_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionTarantular"),
+
+    COMMAND_SBA_HEADER(MessageObject.COMMANDS_SBA, "header"),
+    COMMAND_SBA_FOOTER(MessageObject.COMMANDS_SBA, "footer"),
+    COMMAND_SBA_USAGE_NORMAL(MessageObject.COMMANDS_SBA_USAGE, "normal"),
+    COMMAND_SBA_USAGE_DEVELOPER(MessageObject.COMMANDS_SBA_USAGE, "developer"),
+
+    KEY_DEVELOPER_COPY_NBT(MessageObject.KEYBINDINGS, "developerCopyNBT")
     ;
 
     private MessageObject messageObject;
@@ -292,7 +297,7 @@ public enum Message {
                 } else if (this == Message.UPDATE_MESSAGE_DOWNLOAD_FINISHED) {
                     text = text.replace("%file%", variables[0]);
                 } else if (this == Message.MESSAGE_ANVIL_USES) {
-                    text = text.replace("%uses%", main.getConfigValues().getRestrictedColor(Feature.SHOW_ITEM_ANVIL_USES)+variables[0]+ChatFormatting.GRAY.toString());
+                    text = text.replace("%uses%", main.getConfigValues().getRestrictedColor(Feature.SHOW_ITEM_ANVIL_USES)+variables[0]+ ColorCode.GRAY.toString());
                 } else if (this == Message.MESSAGE_ONLY_FEW_ARROWS_LEFT) {
                     text = text.replace("%arrows%", variables[0]);
                 } else if (this == Message.MESSAGE_STAGE) {
@@ -331,7 +336,11 @@ public enum Message {
         UPDATE_MESSAGES("messages.update"),
         ANCHOR_POINT("settings.anchorPoints"),
         CHROMA_MODE("settings.chromaModes"),
-        DISCORD_STATUS("discordStatus");
+        DISCORD_STATUS("discordStatus"),
+        COMMANDS("commands"),
+        KEYBINDINGS("keyBindings"),
+        COMMANDS_SBA("commands.sba"),
+        COMMANDS_SBA_USAGE("commands.sba.usage");
 
         private List<String> path;
 

@@ -1,11 +1,6 @@
 package codes.biscuit.skyblockaddons.utils.backpack;
 
-import codes.biscuit.skyblockaddons.asm.hooks.GuiContainerHook;
-import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsTransformer;
-import codes.biscuit.skyblockaddons.utils.EnumUtils;
-import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
-import codes.biscuit.skyblockaddons.utils.nifty.reflection.MinecraftReflection;
 import lombok.Getter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
@@ -17,7 +12,6 @@ import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
-import java.awt.*;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -135,7 +129,7 @@ public class GenericInventoryDisplay {
                         y + topLeft.getHeight() + yPos * slot.getHeight() + extend,
                         slot.x1, slot.y1, slot.getWidth(), slot.getHeight());
 
-        MinecraftReflection.FontRenderer.drawString(name, x+8, y+6, 4210752);
+        mc.fontRendererObj.drawString(name, x+8, y+6, 4210752);
 
         GlStateManager.popMatrix();
         GlStateManager.enableLighting();

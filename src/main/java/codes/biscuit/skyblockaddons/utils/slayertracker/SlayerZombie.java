@@ -1,7 +1,7 @@
 package codes.biscuit.skyblockaddons.utils.slayertracker;
 
-import codes.biscuit.skyblockaddons.constants.game.Rarity;
 import codes.biscuit.skyblockaddons.core.Feature;
+import codes.biscuit.skyblockaddons.core.ItemRarity;
 
 import java.util.ArrayList;
 
@@ -13,15 +13,15 @@ public class SlayerZombie extends SlayerBoss {
         super(Feature.SLAYER_ZOMBIE, "zombie");
 
         drops = new ArrayList<SlayerDrop>();
-        drops.add(new SlayerDrop(this, "REVENANT_FLESH", "RevenantFlesh", Rarity.UNCOMMON));
-        drops.add(new SlayerDrop(this, "FOUL_FLESH", "FoulFlesh", Rarity.RARE));
-        drops.add(new SlayerDrop(this, "RUNE:ZOMBIE_SLAYER", "PestilenceRunes", Rarity.RARE));
-        drops.add(new SlayerDrop(this, "UNDEAD_CATALYST", "UndeadCatalysts", Rarity.RARE));
-        drops.add(new SlayerDrop(this, "ENCHANTED_BOOK", "Smite6Books", Rarity.RARE));
-        drops.add(new SlayerDrop(this, "BEHEADED_HORROR", "BeheadedHorrors", Rarity.EPIC));
-        drops.add(new SlayerDrop(this, "REVENANT_CATALYST", "RevenantCatalysts", Rarity.EPIC));
-        drops.add(new SlayerDrop(this, "RUNE:SNAKE", "SnakeRunes", Rarity.LEGENDARY));
-        drops.add(new SlayerDrop(this, "SCYTHE_BLADE", "ScytheBlades", Rarity.LEGENDARY));
+        drops.add(new SlayerDrop(this, "REVENANT_FLESH", "RevenantFlesh", ItemRarity.UNCOMMON));
+        drops.add(new SlayerDrop(this, "FOUL_FLESH", "FoulFlesh", ItemRarity.RARE));
+        drops.add(new SlayerDrop(this, "RUNE:ZOMBIE_SLAYER", "PestilenceRunes", ItemRarity.RARE));
+        drops.add(new SlayerDrop(this, "UNDEAD_CATALYST", "UndeadCatalysts", ItemRarity.RARE));
+        drops.add(new SlayerDrop(this, "ENCHANTED_BOOK", "Smite6Books", ItemRarity.RARE));
+        drops.add(new SlayerDrop(this, "BEHEADED_HORROR", "BeheadedHorrors", ItemRarity.EPIC));
+        drops.add(new SlayerDrop(this, "REVENANT_CATALYST", "RevenantCatalysts", ItemRarity.EPIC));
+        drops.add(new SlayerDrop(this, "RUNE:SNAKE", "SnakeRunes", ItemRarity.LEGENDARY));
+        drops.add(new SlayerDrop(this, "SCYTHE_BLADE", "ScytheBlades", ItemRarity.LEGENDARY));
     }
 
     @Override

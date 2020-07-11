@@ -1,6 +1,6 @@
 package codes.biscuit.skyblockaddons.utils.skyblockdata;
 
-import codes.biscuit.skyblockaddons.constants.game.Rarity;
+import codes.biscuit.skyblockaddons.core.ItemRarity;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import lombok.Getter;
@@ -10,7 +10,7 @@ public class PetInfo {
     String type;
     boolean active;
     double exp;
-    Rarity tier;
+    ItemRarity tier;
     boolean hideInfo;
     String heldItem;
     int candyUsed;
@@ -22,7 +22,7 @@ public class PetInfo {
         type = pet.get("type").getAsString();
         active = pet.get("active").getAsBoolean();
         exp = pet.get("exp").getAsDouble();
-        tier = Rarity.valueOf(pet.get("tier").getAsString());
+        tier = ItemRarity.valueOf(pet.get("tier").getAsString());
         hideInfo = pet.get("hideInfo").getAsBoolean();
         heldItem = pet.get("heldItem").getAsString();
         candyUsed = pet.get("candyUsed").getAsInt();
