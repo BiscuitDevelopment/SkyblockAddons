@@ -198,28 +198,28 @@
     "descriptionNone": "Kein Text wird angezeigt",
     "titleLocation": "Ort",
     "descriptionLocation": "Zeigt deine derzeitige Position",
-    "titlePurse": "Purse",
-    "descriptionPurse": "Shows the amount of coins in your purse",
-    "titleStats": "Stats",
-    "descriptionStats": "Shows your HP, Defense and Mana stats",
+    "titlePurse": "Geldbörse",
+    "descriptionPurse": "Zeigt die derzeitigen Coins in deiner Geldbörse",
+    "titleStats": "Statuswerte",
+    "descriptionStats": "Zeigt deine Lebenspunkte, Verteidigungspunkte und Mana-Werte",
     "titleZealots": "Zealots",
-    "descriptionZealots": "Shows your Zealot counter",
-    "titleItem": "Held Item",
-    "descriptionItem": "Shows the name of the item you're holding",
-    "titleProfile": "Profile",
-    "descriptionProfile": "Shows your Profile name",
-    "titleTime": "Skyblock Time",
-    "descriptionTime": "Shows the current Skyblock time. E.g. 12:00am 1st Early Winter",
-    "titleCustom": "Custom Status",
-    "descriptionCustom": "Enter a custom status",
-    "titleAuto": "Auto Status",
-    "descriptionAuto": "Automatically displays a status. E.g. your zealot count while in the end.",
-    "titleRevenants": "Revenant Quest",
-    "descriptionRevenants": "Shows that you are doing a Revenant quest.",
+    "descriptionZealots": "Zeigt deinen Zealot-Counter",
+    "titleItem": "Gehaltenes Item",
+    "descriptionItem": "Zeigt den Namen des Items, das du in der Hand hältst",
+    "titleProfile": "Profil",
+    "descriptionProfile": "Zeigt deinen Profil-Namen",
+    "titleTime": "Skyblock-Zeit",
+    "descriptionTime": "Zeigt die derzeitige Skyblock-Zeit. Als Beispiel: 12:00am 1st Early Winter",
+    "titleCustom": "Individueller Status",
+    "descriptionCustom": "Gib einen individuellen Status ein",
+    "titleAuto": "Automatischer Status",
+    "descriptionAuto": "Zeigt einen Status automatisch an. Als Beispiel deinen Zealot Count während du im End bist.",
+    "titleRevenants": "Revenant-Quest",
+    "descriptionRevenants": "Zeigt, ob du eine Revenant-Quest machst.",
     "titleSvens": "Sven Quest",
-    "descriptionSvens": "Shows that you are doing a Sven quest.",
-    "titleTarantula": "Tarantula Quest",
-    "descriptionTarantula": "Shows that you are doing a Tarantula quest."
+    "descriptionSvens": "Zeigt, ob du eine Sven-Quest machst.",
+    "titleTarantula": "Tarantula-Quest",
+    "descriptionTarantula": "Zeigt, ob du eine Tarantula-Quest machst."
   },
   "commands": {
     "sba": {
@@ -227,7 +227,7 @@
       "footer": "§7§m------------------------------------------",
       "usage": {
         "normal": "§b● /sba §7- Öffne das Hauptmenü\n§b● /sba edit §7- Bearbeite die GUI-Positionen\n§b● /sba set <zealots|eyes|totalzealots §eor§b total> <number> §7- Setzt deine Zealot-Counts manuell\n§b● /sba folder §7- Öffne deinen mods-Ordner",
-        "developer": "§b● /sba dev §7- Toggle developer mode\n§b● /sba sidebar [formatted] §7- §e(Dev) §7Copy the scoreboard text. \"formatted\" §7keeps the color codes when copying\n§b● /sba brand §7- §e(Dev) §7Show the server brand"
+        "developer": "§b● /sba dev §7- Schalte Developer-Modus um\n§b● /sba sidebar [formatted] §7- §e(Dev) §7Kopiert den Text des Screenshots. \"formatted\" §7behält alle Farbcodes beim kopieren.\n§b● /sba brand §7- §e(Dev) §7Zeigt die Server-Marke"
       }
     }
   },
