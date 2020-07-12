@@ -222,13 +222,13 @@
     "descriptionTarantula": "Showos thwat uwu awe dowing a Tawantuwah qwest."
   },
   "commandUsage": {
-    "sba": "Open the main menu",
-    "sba.edit": "Edit GUI locations",
-    "sba.set.zealotCounter": "Manually set your zealot counts",
-    "sba.folder": "Open your mods folder",
-    "sba.dev": "Toggle developer mode",
-    "sba.sidebar": "§e(Dev) §7Copy the scoreboard text. \"formatted\" §7keeps the color codes when copying.",
-    "sba.brand": "§e(Dev) §7Show the server brand"
+    "sba": "Owpen the main menu",
+    "sba.edit": "Edit GUWU wowocations",
+    "sba.set.zealotCounter": "Manuawwy set youw zeawot counts",
+    "sba.folder": "Owpen youw mods fowder",
+    "sba.dev": "Togguwu dewewopew mode",
+    "sba.sidebar": "§e(Dev) §7Cowopy the scowoboawd text. \"fowmatted\" §7keeps the cowow codes when cowopying.",
+    "sba.brand": "§e(Dev) §7Showo the sewvew bwand"
   },
   "keyBindings": {
     "developerCopyNBT": "Cowopy NBT"
