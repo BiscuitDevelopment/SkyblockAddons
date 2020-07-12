@@ -248,10 +248,13 @@ public enum Message {
     DISCORD_STATUS_TARANTULA(MessageObject.DISCORD_STATUS, "titleTarantula"),
     DISCORD_STATUS_TARANTULA_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionTarantular"),
 
-    COMMAND_SBA_HEADER(MessageObject.COMMANDS_SBA, "header"),
-    COMMAND_SBA_FOOTER(MessageObject.COMMANDS_SBA, "footer"),
-    COMMAND_SBA_USAGE_NORMAL(MessageObject.COMMANDS_SBA_USAGE, "normal"),
-    COMMAND_SBA_USAGE_DEVELOPER(MessageObject.COMMANDS_SBA_USAGE, "developer"),
+    COMMAND_USAGE_SBA(MessageObject.COMMAND_USAGE, "sba"),
+    COMMAND_USAGE_SBA_EDIT(MessageObject.COMMAND_USAGE, "sba.edit"),
+    COMMAND_USAGE_SBA_SET_ZEALOT_COUNTER(MessageObject.COMMAND_USAGE, "sba.set.zealotCounter"),
+    COMMAND_USAGE_SBA_FOLDER(MessageObject.COMMAND_USAGE, "sba.folder"),
+    COMMAND_USAGE_SBA_DEV(MessageObject.COMMAND_USAGE, "sba.dev"),
+    COMMAND_USAGE_SBA_SIDEBAR(MessageObject.COMMAND_USAGE, "sba.sidebar"),
+    COMMAND_USAGE_SBA_BRAND(MessageObject.COMMAND_USAGE, "sba.brand"),
 
     KEY_DEVELOPER_COPY_NBT(MessageObject.KEYBINDINGS, "developerCopyNBT")
     ;
@@ -337,10 +340,8 @@ public enum Message {
         ANCHOR_POINT("settings.anchorPoints"),
         CHROMA_MODE("settings.chromaModes"),
         DISCORD_STATUS("discordStatus"),
-        COMMANDS("commands"),
         KEYBINDINGS("keyBindings"),
-        COMMANDS_SBA("commands.sba"),
-        COMMANDS_SBA_USAGE("commands.sba.usage");
+        COMMAND_USAGE("commandUsage");
 
         private List<String> path;
 
