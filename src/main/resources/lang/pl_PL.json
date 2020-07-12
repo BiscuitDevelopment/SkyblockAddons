@@ -224,10 +224,10 @@
   "commandUsage": {
     "sba": "Otwórz menu główne",
     "sba.edit": "Edytuj położenie GUI",
-    "sba.set.zealotCounter": "Manually set your zealot counts",
+    "sba.set.zealotCounter": "Ręcznie ustaw liczniki zealotów",
     "sba.folder": "Otwórz folder z modyfikacjami",
     "sba.dev": "Włącz tryb programisty",
-    "sba.sidebar": "§e(Dev) §7Copy the scoreboard text. \"formatted\" §7keeps the color codes when copying.",
+    "sba.sidebar": "§e(Dev) §7Skopiuj tekst tablicy wyników. \"sformatowane\" §7zachowuje kody kolorów podczas kopiowania.",
     "sba.brand": "§e(Dev) §7Pokaż markę serwera"
   },
   "keyBindings": {
