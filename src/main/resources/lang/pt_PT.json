@@ -221,15 +221,14 @@
     "titleTarantula": "Missão da Tarantula",
     "descriptionTarantula": "Mostra que estás a fazer uma missão da tarantula."
   },
-  "commands": {
-    "sba": {
-      "header": "§7§m------------§7[§b§l SkyblockAddons §7]§7§m------------",
-      "footer": "§7§m------------------------------------------",
-      "usage": {
-        "normal": "§b● /sba §7- Abrir o menu principal\n§b● /sba edit §7- Editar as posições da GUI\n§b● /sba set <zealots|eyes|totalzealots §eou§b total> <número> §7- Definir automaticamente a contagem de zealots\n§b● /sba folder §7- Abrir a pasta de mods",
-        "developer": "§b● /sba dev §7- Ativar o modo de programador\n§b● /sba sidebar [formatted] §7- §e(Dev) §7Copiar o texto do quadro de pontuações \"formatted” §7mantém os códigos de cor ao copiar\n§b● /sba brand §7- §e(Dev) §7Mostrar a marca do servidor"
-      }
-    }
+  "commandUsage": {
+    "sba": "Open the main menu",
+    "sba.edit": "Edit GUI locations",
+    "sba.set.zealotCounter": "Manually set your zealot counts",
+    "sba.folder": "Open your mods folder",
+    "sba.dev": "Toggle developer mode",
+    "sba.sidebar": "§e(Dev) §7Copy the scoreboard text. \"formatted\" §7keeps the color codes when copying.",
+    "sba.brand": "§e(Dev) §7Show the server brand"
   },
   "keyBindings": {
     "developerCopyNBT": "Copiar NBT"
