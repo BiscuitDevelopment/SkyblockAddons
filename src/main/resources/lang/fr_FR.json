@@ -221,15 +221,14 @@
     "titleTarantula": "Quête tarantula",
     "descriptionTarantula": "Montre que vous accomplissez une quête de tarantula."
   },
-  "commands": {
-    "sba": {
-      "header": "§7§m------------§7[§b§l SkyblockAddons §7]§7§m------------",
-      "footer": "§7§m------------------------------------------",
-      "usage": {
-        "normal": "§b● /sba §7- Ouvrir le menu principal\n§b● /sba edit §7- Modifier les emplacements de l'interface\n§b● /sba set <zealots|eyes|totalzealots §eor§b total> <number> §7- Régler manuellement le nombre de zélotes\n§b● /sba folder §7- Ouvrir le dossier des mods",
-        "developer": "§b● /sba dev §7- Activer/Désactiver le mode développeur\n§b● /sba sidebar [formatted] §7- §e(Dev) §7Copier le texte du tableau des scores. \"formaté\" §7conserve les codes de couleur lors de la copie\n§b● /sba brand §7- §e(Dev) §7Afficher le status du serveur"
-      }
-    }
+  "commandUsage": {
+    "sba": "Open the main menu",
+    "sba.edit": "Edit GUI locations",
+    "sba.set.zealotCounter": "Manually set your zealot counts",
+    "sba.folder": "Open your mods folder",
+    "sba.dev": "Toggle developer mode",
+    "sba.sidebar": "§e(Dev) §7Copy the scoreboard text. \"formatted\" §7keeps the color codes when copying.",
+    "sba.brand": "§e(Dev) §7Show the server brand"
   },
   "keyBindings": {
     "developerCopyNBT": "Copier le NBT"
