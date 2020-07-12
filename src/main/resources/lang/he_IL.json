@@ -222,8 +222,8 @@
     "descriptionTarantula": "Shows that you are doing a Tarantula quest."
   },
   "commandUsage": {
-    "sba": "Open the main menu",
-    "sba.edit": "Edit GUI locations",
+    "sba": "פותח את התפריט הראשי",
+    "sba.edit": "עריכת מיקומים ב- GUI",
     "sba.set.zealotCounter": "Manually set your zealot counts",
     "sba.folder": "Open your mods folder",
     "sba.dev": "Toggle developer mode",
