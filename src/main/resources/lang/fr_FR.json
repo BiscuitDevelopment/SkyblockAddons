@@ -222,13 +222,13 @@
     "descriptionTarantula": "Montre que vous accomplissez une quête de tarantula."
   },
   "commandUsage": {
-    "sba": "Open the main menu",
-    "sba.edit": "Edit GUI locations",
-    "sba.set.zealotCounter": "Manually set your zealot counts",
-    "sba.folder": "Open your mods folder",
-    "sba.dev": "Toggle developer mode",
-    "sba.sidebar": "§e(Dev) §7Copy the scoreboard text. \"formatted\" §7keeps the color codes when copying.",
-    "sba.brand": "§e(Dev) §7Show the server brand"
+    "sba": "Ouvrir le menu principal",
+    "sba.edit": "Modifier l'interface",
+    "sba.set.zealotCounter": "Définir manuellement le nombre de zealot",
+    "sba.folder": "Ouvrir le dossier des mods",
+    "sba.dev": "Activer les outils développeur",
+    "sba.sidebar": "§e(Dev) §7Copiez le texte du tableau de bord. \"formaté\" §7conserve les codes de couleur lors de la copie.",
+    "sba.brand": "§e(Dev) §7Afficher le status du serveur"
   },
   "keyBindings": {
     "developerCopyNBT": "Copier le NBT"
