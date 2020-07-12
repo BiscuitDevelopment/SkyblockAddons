@@ -125,11 +125,11 @@
     "baitListDisplay": "แสดงเหยื่อตกปลาเมื่อถือเบ็ตตกปลา",
     "freezeBackpackPreview": "แสดงของข้างในกระเป๋าเมื่อกดดู",
     "hideGreyEnchants": "ลบ Enchants สีเทาปกติ",
-    "zealotCounterExplosiveBow": "Zealot Counter Explosive Bow Support",
-    "disableEndermanTeleportation": "Disable Enderman Teleportation",
-    "changeZealotColor": "Change Zealot Color",
-    "hideSvenPupNametags": "Hide Sven Pup Nametags",
-    "turnAllFeaturesChroma": "Turn All Features Chroma"
+    "zealotCounterExplosiveBow": "รองรับการนับ Zealot ด้วยธนูระเบิด",
+    "disableEndermanTeleportation": "ปิดการเคลื่อนที่ของ Enderman",
+    "changeZealotColor": "เปลี่ยนสี Zealot",
+    "hideSvenPupNametags": "ปิดชื่อลูกสุนัข",
+    "turnAllFeaturesChroma": "เปิดทุกอย่างเป็นสีรุ้ง"
   },
   "messages": {
     "dropConfirmation": "กดทิ้งของอีกที่เพื่อยืนยันทิ้งของสิ่งนี้!",
@@ -190,8 +190,8 @@
     "legendarySeaCreatureWarning": "จับตำนานได้",
     "cancelledPark": "SkyblockAddons ได้หยุดคุณจากการขุดบล็อคตรงนี้",
     "bossApproaching": "บอสของคุณใกล้จะเกิดแล้ว",
-    "enableAll": "Enable All",
-    "disableAll": "Disable All"
+    "enableAll": "เปิดทั้งหมด",
+    "disableAll": "ปิดทั้งหมด"
   },
   "discordStatus": {
     "titleNone": "ไม่มี",
@@ -214,24 +214,24 @@
     "descriptionCustom": "ใส่สถานะกำหนดเอง",
     "titleAuto": "สถานะอัตโนมัติ",
     "descriptionAuto": "แสดงสถานะบางอย่างอัตโนมัติ เช่น แสดงจำนวนการฆ่า Zealot ใน The End",
-    "titleRevenants": "Revenant Quest",
-    "descriptionRevenants": "Shows that you are doing a Revenant quest.",
-    "titleSvens": "Sven Quest",
-    "descriptionSvens": "Shows that you are doing a Sven quest.",
-    "titleTarantula": "Tarantula Quest",
-    "descriptionTarantula": "Shows that you are doing a Tarantula quest."
+    "titleRevenants": "ภารกิจซอมบี้",
+    "descriptionRevenants": "แสดงว่ากำลังทำภารกิจซอมบี้",
+    "titleSvens": "ภารกิจหมา",
+    "descriptionSvens": "แสดงว่ากำลังทำภารกิจหมา",
+    "titleTarantula": "ภารกิจแมงมุม",
+    "descriptionTarantula": "แสดงว่ากำลังทำภารกิจแมงมุม"
   },
   "commands": {
     "sba": {
       "header": "§7§m------------§7[§b§l SkyblockAddons §7]§7§m------------",
       "footer": "§7§m------------------------------------------",
       "usage": {
-        "normal": "§b● /sba §7- Open the main menu\n§b● /sba edit §7- Edit GUI locations\n§b● /sba set <zealots|eyes|totalzealots §eor§b total> <number> §7- Manually set your zealot counts\n§b● /sba folder §7- Open your mods folder",
-        "developer": "§b● /sba dev §7- Toggle developer mode\n§b● /sba sidebar [formatted] §7- §e(Dev) §7Copy the scoreboard text. \"formatted\" §7keeps the color codes when copying\n§b● /sba brand §7- §e(Dev) §7Show the server brand"
+        "normal": "§b● /sba §7- เปิดเมนูหลัก\n§b● /sba edit §7- แก้ไขตำแหน่งของ GUI\n§b● /sba set <zealots|eyes|totalzealots §eor§b total> <number> §7- ตั้งค่าการนับ zealot ด้วยตนเอง\n§b● /sba folder §7- เปิดแฟ้ม mods",
+        "developer": "§b● /sba dev §7- เปิด/ปิด โหมดสำหรับผู้พัฒนา\n§b● /sba sidebar [formatted] §7- §e(Dev) §7ลอกคำจาก Scoreboard. \"formatted\" §7เก็บ code สีขณะที่กำลังลอก\n§b● /sba brand §7- §e(Dev) §7แสดง server brand"
       }
     }
   },
   "keyBindings": {
-    "developerCopyNBT": "Copy NBT"
+    "developerCopyNBT": "ลอก NBT"
   }
 }
