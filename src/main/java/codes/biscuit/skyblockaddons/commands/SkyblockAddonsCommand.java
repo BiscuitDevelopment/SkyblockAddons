@@ -18,9 +18,11 @@ import java.util.Collections;
 import java.util.List;
 
 public class SkyblockAddonsCommand extends CommandBase {
+    private static final String HEADER = "§7§m------------§7[§b§l SkyblockAddons §7]§7§m------------";
+    private static final String FOOTER = "§7§m------------------------------------------";
 
-    private SkyblockAddons main;
-    private Logger logger;
+    private final SkyblockAddons main;
+    private final Logger logger;
 
     public SkyblockAddonsCommand() {
         this.main = SkyblockAddons.getInstance();
@@ -55,16 +57,23 @@ public class SkyblockAddonsCommand extends CommandBase {
      * the main usage string.
      */
     public String getCommandUsage(ICommandSender sender) {
-        String HEADER = Message.COMMAND_SBA_HEADER.getMessage();
-        String FOOTER = Message.COMMAND_SBA_FOOTER.getMessage();
+        String usage =
+                HEADER + "\n" +
+                "§b● /sba §7- " + Message.COMMAND_USAGE_SBA.getMessage() + "\n" +
+                "§b● /sba edit §7- " + Message.COMMAND_USAGE_SBA_EDIT.getMessage() + "\n" +
+                "§b● /sba set <zealots|eyes|totalzealots §eor§b total> <number> §7- " + Message.COMMAND_USAGE_SBA_SET_ZEALOT_COUNTER.getMessage() + "\n" +
+                "§b● /sba folder §7- " + Message.COMMAND_USAGE_SBA_FOLDER.getMessage();
 
         if (main.isDevMode()) {
-            return HEADER + "\n" + Message.COMMAND_SBA_USAGE_NORMAL.getMessage() + "\n"
-                    + Message.COMMAND_SBA_USAGE_DEVELOPER.getMessage() + "\n" + FOOTER;
+            usage = usage + "\n" +
+                    "§b● /sba dev §7- " + Message.COMMAND_USAGE_SBA_DEV.getMessage() + "\n" +
+                    "§b● /sba sidebar [formatted] §7- " + Message.COMMAND_USAGE_SBA_SIDEBAR.getMessage() + "\n" +
+                    "§b● /sba brand §7- " + Message.COMMAND_USAGE_SBA_BRAND.getMessage();
         }
-        else {
-            return HEADER + "\n" + Message.COMMAND_SBA_USAGE_NORMAL.getMessage() + "\n" + FOOTER;
-        }
+
+        usage = usage + "\n" + FOOTER;
+
+        return usage;
     }
 
     public List<String> addTabCompletionOptions(ICommandSender sender, String[] args, BlockPos pos) {
