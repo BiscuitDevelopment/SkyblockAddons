@@ -125,11 +125,11 @@
     "baitListDisplay": "Arata Lista Bait in timp ce folositi un Rod",
     "freezeBackpackPreview": "Îngheață Previzualizarea Backpack",
     "hideGreyEnchants": "Ascunde enchantele gri obișnuite",
-    "zealotCounterExplosiveBow": "Zealot Counter Explosive Bow Support",
-    "disableEndermanTeleportation": "Disable Enderman Teleportation",
-    "changeZealotColor": "Change Zealot Color",
-    "hideSvenPupNametags": "Hide Sven Pup Nametags",
-    "turnAllFeaturesChroma": "Turn All Features Chroma"
+    "zealotCounterExplosiveBow": "Support pentru Explosive Bow la Zealot Counter",
+    "disableEndermanTeleportation": "Dezactivează Teleportarea Enderman",
+    "changeZealotColor": "Schimba Culoarea Zealot",
+    "hideSvenPupNametags": "Ascunde nametagurile Sven Pup",
+    "turnAllFeaturesChroma": "Schimba toate Featurile in Chroma"
   },
   "messages": {
     "dropConfirmation": "Arunca acest obiect iar ca să confirmi!",
@@ -190,8 +190,8 @@
     "legendarySeaCreatureWarning": "Captură Legendară!",
     "cancelledPark": "O caracteristică te-a oprit din spargerea acestui bloc aici.",
     "bossApproaching": "Ești aproape să spaunezi un boss!",
-    "enableAll": "Enable All",
-    "disableAll": "Disable All"
+    "enableAll": "Activeaza tot",
+    "disableAll": "Dezactiveaza tot"
   },
   "discordStatus": {
     "titleNone": "Nimic",
@@ -214,24 +214,23 @@
     "descriptionCustom": "Introduceți un status personalizat",
     "titleAuto": "Status automat",
     "descriptionAuto": "Afiseaza automat un statut. De ex. numarul de zealot in timp ce se termina.",
-    "titleRevenants": "Revenant Quest",
-    "descriptionRevenants": "Shows that you are doing a Revenant quest.",
-    "titleSvens": "Sven Quest",
-    "descriptionSvens": "Shows that you are doing a Sven quest.",
-    "titleTarantula": "Tarantula Quest",
-    "descriptionTarantula": "Shows that you are doing a Tarantula quest."
+    "titleRevenants": "Misiune Revenant",
+    "descriptionRevenants": "Arata ca faci o misiune Revenant.",
+    "titleSvens": "Misiune Sven",
+    "descriptionSvens": "Arata ca faci o misiune Sven.",
+    "titleTarantula": "Misiune Tarantula",
+    "descriptionTarantula": "Arata ca faci o misiune Tarantula."
   },
-  "commands": {
-    "sba": {
-      "header": "§7§m------------§7[§b§l SkyblockAddons §7]§7§m------------",
-      "footer": "§7§m------------------------------------------",
-      "usage": {
-        "normal": "§b● /sba §7- Open the main menu\n§b● /sba edit §7- Edit GUI locations\n§b● /sba set <zealots|eyes|totalzealots §eor§b total> <number> §7- Manually set your zealot counts\n§b● /sba folder §7- Open your mods folder",
-        "developer": "§b● /sba dev §7- Toggle developer mode\n§b● /sba sidebar [formatted] §7- §e(Dev) §7Copy the scoreboard text. \"formatted\" §7keeps the color codes when copying\n§b● /sba brand §7- §e(Dev) §7Show the server brand"
-      }
-    }
+  "commandUsage": {
+    "sba": "Deschide meniul principal",
+    "sba.edit": "Editeaza locatiile GUI",
+    "sba.set.zealotCounter": "Setează manual numărul de zealot",
+    "sba.folder": "Deschide folderul de mod-uri",
+    "sba.dev": "Comută modul dezvoltator",
+    "sba.sidebar": "§e(Dev) §7Copiaza textul tabloului de bord. \"formatat\" §7tine codurile de culori la copiere.",
+    "sba.brand": "§e(Dev) §7Arata marca serverului"
   },
   "keyBindings": {
-    "developerCopyNBT": "Copy NBT"
+    "developerCopyNBT": "Copiază NBT"
   }
 }
