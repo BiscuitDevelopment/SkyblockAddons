@@ -10,7 +10,7 @@
     "fullInventoryWarning": "Varování o plném inventáři",
     "repeating": "Opakovat Varování",
     "disableEmberRodAbility": "Zakázat schopnost Ember Rodu na ostrově",
-    "editLocations": "Upravit lokace",
+    "editLocations": "Upravit lokace GUI",
     "guiScale": "Velikost ukazetelů: %scale%",
     "resetLocations": "Resetovat lokace",
     "hideDurability": "Skrýt výdrž nástrojů",
@@ -222,11 +222,11 @@
     "descriptionTarantula": "Ukáže, že děláš úkol s Tarantulami."
   },
   "commandUsage": {
-    "sba": "Open the main menu",
-    "sba.edit": "Edit GUI locations",
-    "sba.set.zealotCounter": "Manually set your zealot counts",
-    "sba.folder": "Open your mods folder",
-    "sba.dev": "Toggle developer mode",
+    "sba": "Otevřít hlavní menu",
+    "sba.edit": "Upravit lokace GUI",
+    "sba.set.zealotCounter": "Ručně nastavit počet zealotů",
+    "sba.folder": "Otevřít složku modifikací",
+    "sba.dev": "Přepnout vývojářský režim",
     "sba.sidebar": "§e(Dev) §7Copy the scoreboard text. \"formatted\" §7keeps the color codes when copying.",
     "sba.brand": "§e(Dev) §7Show the server brand"
   },
