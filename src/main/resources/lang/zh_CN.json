@@ -221,15 +221,14 @@
     "titleTarantula": "狼蛛猎杀任务",
     "descriptionTarantula": "显示你当前正在进行狼蛛猎杀任务"
   },
-  "commands": {
-    "sba": {
-      "header": "§7§m------------§7[§b§l SkyblockAddons §7]§7§m------------",
-      "footer": "§7§m------------------------------------------",
-      "usage": {
-        "normal": "§b● /sba §7- 打开主菜单\n§b● /sba edit §7- 编辑 GUI 位置\n§b● /sba set <zealots|eyes|totalzealots §e或§b total> <数值> §7- 手动设置末影战士击杀计数器\n§b● /sba folder §7- 打开 mods 文件夹",
-        "developer": "§b● /sba dev §7- 启用／关闭开发者模式\n§b● /sba sidebar [formatted] §7- §e(Dev) §7复制记分板的文字，格式化字符§7将在复制时保留原來的样式代码\n§b● /sba brand §7- §e(Dev) §7显示服务器服务端名称"
-      }
-    }
+  "commandUsage": {
+    "sba": "Open the main menu",
+    "sba.edit": "Edit GUI locations",
+    "sba.set.zealotCounter": "Manually set your zealot counts",
+    "sba.folder": "Open your mods folder",
+    "sba.dev": "Toggle developer mode",
+    "sba.sidebar": "§e(Dev) §7Copy the scoreboard text. \"formatted\" §7keeps the color codes when copying.",
+    "sba.brand": "§e(Dev) §7Show the server brand"
   },
   "keyBindings": {
     "developerCopyNBT": "复制 NBT"
