@@ -222,11 +222,11 @@
     "descriptionTarantula": "Shows that you are doing a Tarantula quest."
   },
   "commandUsage": {
-    "sba": "Open the main menu",
-    "sba.edit": "Edit GUI locations",
+    "sba": "メインメニューを開く",
+    "sba.edit": "GUIを編集",
     "sba.set.zealotCounter": "Manually set your zealot counts",
-    "sba.folder": "Open your mods folder",
-    "sba.dev": "Toggle developer mode",
+    "sba.folder": "Mod フォルダーを開く",
+    "sba.dev": "開発者ツールの切り替え",
     "sba.sidebar": "§e(Dev) §7Copy the scoreboard text. \"formatted\" §7keeps the color codes when copying.",
     "sba.brand": "§e(Dev) §7Show the server brand"
   },
