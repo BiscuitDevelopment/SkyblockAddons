@@ -224,9 +224,9 @@
   "commandUsage": {
     "sba": "Abrir o menu principal",
     "sba.edit": "Editar localizações da GUI",
-    "sba.set.zealotCounter": "Manually set your zealot counts",
-    "sba.folder": "Open your mods folder",
-    "sba.dev": "Toggle developer mode",
+    "sba.set.zealotCounter": "Define manualmente a tua contagem de zealots",
+    "sba.folder": "Abre a tua pasta mods",
+    "sba.dev": "Ativar o modo de programador",
     "sba.sidebar": "§e(Dev) §7Copy the scoreboard text. \"formatted\" §7keeps the color codes when copying.",
     "sba.brand": "§e(Dev) §7Show the server brand"
   },
