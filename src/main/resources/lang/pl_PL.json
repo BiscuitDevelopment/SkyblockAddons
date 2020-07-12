@@ -222,13 +222,13 @@
     "descriptionTarantula": "Pokazuje że robisz Zadanie Tarantuli"
   },
   "commandUsage": {
-    "sba": "Open the main menu",
-    "sba.edit": "Edit GUI locations",
+    "sba": "Otwórz menu główne",
+    "sba.edit": "Edytuj położenie GUI",
     "sba.set.zealotCounter": "Manually set your zealot counts",
-    "sba.folder": "Open your mods folder",
-    "sba.dev": "Toggle developer mode",
+    "sba.folder": "Otwórz folder z modyfikacjami",
+    "sba.dev": "Włącz tryb programisty",
     "sba.sidebar": "§e(Dev) §7Copy the scoreboard text. \"formatted\" §7keeps the color codes when copying.",
-    "sba.brand": "§e(Dev) §7Show the server brand"
+    "sba.brand": "§e(Dev) §7Pokaż markę serwera"
   },
   "keyBindings": {
     "developerCopyNBT": "Skopiuj NBT"
