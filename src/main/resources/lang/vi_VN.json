@@ -222,13 +222,13 @@
     "descriptionTarantula": "Hiện rằng bạn đang làm một nhiệm vụ đánh Nhện Dại (đánh Tarantula)."
   },
   "commandUsage": {
-    "sba": "Open the main menu",
-    "sba.edit": "Edit GUI locations",
-    "sba.set.zealotCounter": "Manually set your zealot counts",
-    "sba.folder": "Open your mods folder",
-    "sba.dev": "Toggle developer mode",
-    "sba.sidebar": "§e(Dev) §7Copy the scoreboard text. \"formatted\" §7keeps the color codes when copying.",
-    "sba.brand": "§e(Dev) §7Show the server brand"
+    "sba": "Mở menu chính",
+    "sba.edit": "Điều chỉnh vị trí GUI",
+    "sba.set.zealotCounter": "Chỉnh Bộ Đếm Zealot theo cách thủ công",
+    "sba.folder": "Mở thư mục 'mods'",
+    "sba.dev": "Bật/Tắt chế độ dành cho Nhà Phát Triển (NPT)",
+    "sba.sidebar": "§e(Chế độ NPT) §7Sao chép hết bảng chữ trên bảng điểm. Đuôi \"formatted\" §7sẽ giữ nguyên mã màu sau khi sao chép.",
+    "sba.brand": "§e(Chế độ NPT) §7Hiện nhãn hiệu của máy chủ"
   },
   "keyBindings": {
     "developerCopyNBT": "Sao chép giá trị NBT"
