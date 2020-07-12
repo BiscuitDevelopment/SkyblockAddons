@@ -221,15 +221,14 @@
     "titleTarantula": "Nhiệm Vụ Nhện Dại",
     "descriptionTarantula": "Hiện rằng bạn đang làm một nhiệm vụ đánh Nhện Dại (đánh Tarantula)."
   },
-  "commands": {
-    "sba": {
-      "header": "§7§m------------§7[§b§l SkyblockAddons §7]§7§m------------",
-      "footer": "§7§m------------------------------------------",
-      "usage": {
-        "normal": "§b● /sba §7- Mở menu chính\n§b● /sba edit §7- Chỉnh sửa vị trí tính năng\n§b● /sba set <zealots|eyes|totalzealots §eor§b total> <number> §7- Tự cài đặt thủ công Bộ Đếm Zealot\n§b● /sba folder §7- Mở thư mục 'mods'",
-        "developer": "§b● /sba dev §7- Bật/Tắt chế độ dành cho các nhà phát triển (NPT)\n§b● /sba sidebar [formatted] §7- §e(Chế độ NPT) §7Sao chép tất cả chữ trên bảng điểm. \"formatted\" §7cái này sẽ giữ cả mã màu khi sao chép.\n§b● /sba brand §7- §e(Dev) §7Hiện \"nhãn hiệu\" của máy chủ"
-      }
-    }
+  "commandUsage": {
+    "sba": "Open the main menu",
+    "sba.edit": "Edit GUI locations",
+    "sba.set.zealotCounter": "Manually set your zealot counts",
+    "sba.folder": "Open your mods folder",
+    "sba.dev": "Toggle developer mode",
+    "sba.sidebar": "§e(Dev) §7Copy the scoreboard text. \"formatted\" §7keeps the color codes when copying.",
+    "sba.brand": "§e(Dev) §7Show the server brand"
   },
   "keyBindings": {
     "developerCopyNBT": "Sao chép giá trị NBT"
