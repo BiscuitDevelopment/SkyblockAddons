@@ -221,15 +221,14 @@
     "titleTarantula": "Tarantula 任務",
     "descriptionTarantula": "顯示你正在進行一個Tarantula 任務"
   },
-  "commands": {
-    "sba": {
-      "header": "§7§m------------§7[§b§l SkyblockAddons §7]§7§m------------",
-      "footer": "§7§m------------------------------------------",
-      "usage": {
-        "normal": "§b● /sba §7- 打開主選單\n§b● /sba edit §7- 編輯 GUI 位置\n§b● /sba set <zealots|eyes|totalzealots §eor§b total> <number> §7- 手動設定 Zealot 計數器\n§b● /sba folder §7- 打開模組資料夾",
-        "developer": "§b● /sba dev §7- 開啟／關閉開發者模式\n§b● /sba sidebar [formatted] §7- §e(Dev) §7複製記分板的文字。輸入 \"formatted\" §7可在複製時保留原來的顏色代碼\n§b● /sba brand §7- §e(Dev) §7顯示伺服器軟件名稱"
-      }
-    }
+  "commandUsage": {
+    "sba": "開啟主選單",
+    "sba.edit": "編輯 GUI 位置",
+    "sba.set.zealotCounter": "手動設定 Zealot 計數器",
+    "sba.folder": "開啟模組資料夾",
+    "sba.dev": "切換開發者模式",
+    "sba.sidebar": "§e(Dev) §7複製記分板的文字。輸入 \"formatted\" §7將在複製時保留原文的顏色代碼",
+    "sba.brand": "§e(Dev) §7顯示伺服器軟件名稱"
   },
   "keyBindings": {
     "developerCopyNBT": "複製 NBT"
