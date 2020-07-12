@@ -255,6 +255,7 @@ public enum Message {
     COMMAND_USAGE_SBA_DEV(MessageObject.COMMAND_USAGE, "sba.dev"),
     COMMAND_USAGE_SBA_SIDEBAR(MessageObject.COMMAND_USAGE, "sba.sidebar"),
     COMMAND_USAGE_SBA_BRAND(MessageObject.COMMAND_USAGE, "sba.brand"),
+    COMMAND_USAGE_SBA_SLAYER(MessageObject.COMMAND_USAGE, "sba.slayer"),
 
     KEY_DEVELOPER_COPY_NBT(MessageObject.KEYBINDINGS, "developerCopyNBT")
     ;

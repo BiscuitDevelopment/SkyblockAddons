@@ -61,6 +61,7 @@ public class SkyblockAddonsCommand extends CommandBase {
                 "§b● /sba §7- " + Message.COMMAND_USAGE_SBA.getMessage() + "\n" +
                 "§b● /sba edit §7- " + Message.COMMAND_USAGE_SBA_EDIT.getMessage() + "\n" +
                 "§b● /sba set <zealots|eyes|totalzealots §eor§b total> <number> §7- " + Message.COMMAND_USAGE_SBA_SET_ZEALOT_COUNTER.getMessage() + "\n" +
+                "§b● /sba slayer <boss> <stat> <number> §7- " + Message.COMMAND_USAGE_SBA_SLAYER.getMessage() + "\n" +
                 "§b● /sba folder §7- " + Message.COMMAND_USAGE_SBA_FOLDER.getMessage();
 
         if (main.isDevMode()) {
