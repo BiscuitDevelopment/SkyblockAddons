@@ -222,13 +222,13 @@
     "descriptionTarantula": "显示你当前正在进行狼蛛猎杀任务"
   },
   "commandUsage": {
-    "sba": "打开主菜单",
+    "sba": "打开SBA设定菜单",
     "sba.edit": "编辑 GUI 位置",
     "sba.set.zealotCounter": "手动设置末影战士计数器",
     "sba.folder": "打开 mods 文件夹",
     "sba.dev": "启用/禁用 开发者模式",
-    "sba.sidebar": "§e(Dev) §7Copy the scoreboard text. \"formatted\" §7keeps the color codes when copying.",
-    "sba.brand": "§e(Dev) §7Show the server brand"
+    "sba.sidebar": "§e(Dev) §7复制记分板文本，输入\"formatted\"参数 §7将在复制时保留文本中的样式代码",
+    "sba.brand": "§e(开发者) §7显示服务端名称"
   },
   "keyBindings": {
     "developerCopyNBT": "复制 NBT"
