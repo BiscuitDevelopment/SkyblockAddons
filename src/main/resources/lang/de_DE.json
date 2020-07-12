@@ -221,15 +221,14 @@
     "titleTarantula": "Tarantula-Quest",
     "descriptionTarantula": "Zeigt, ob du eine Tarantula-Quest machst."
   },
-  "commands": {
-    "sba": {
-      "header": "§7§m------------§7[§b§l SkyblockAddons §7]§7§m------------",
-      "footer": "§7§m------------------------------------------",
-      "usage": {
-        "normal": "§b● /sba §7- Öffne das Hauptmenü\n§b● /sba edit §7- Bearbeite die GUI-Positionen\n§b● /sba set <zealots|eyes|totalzealots §eor§b total> <number> §7- Setzt deine Zealot-Counts manuell\n§b● /sba folder §7- Öffne deinen mods-Ordner",
-        "developer": "§b● /sba dev §7- Schalte Developer-Modus um\n§b● /sba sidebar [formatted] §7- §e(Dev) §7Kopiert den Text des Screenshots. \"formatted\" §7behält alle Farbcodes beim kopieren.\n§b● /sba brand §7- §e(Dev) §7Zeigt die Server-Marke"
-      }
-    }
+  "commandUsage": {
+    "sba": "Hauptmenü öffnen",
+    "sba.edit": "GUI Locations bearbeiten",
+    "sba.set.zealotCounter": "Zealot count manuell festlegen",
+    "sba.folder": "Mods-Ordner öffnen",
+    "sba.dev": "Entwickler-Modus ein/aus",
+    "sba.sidebar": "§e(Dev) §7Kopiere den Scoreboard-Text. \"formatiert\" §7behält die Farbcodes beim Kopieren.",
+    "sba.brand": "§e(Dev) §7Show the server brand"
   },
   "keyBindings": {
     "developerCopyNBT": "NBT-Daten kopieren"
