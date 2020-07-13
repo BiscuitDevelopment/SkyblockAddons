@@ -207,7 +207,7 @@
     "titleItem": "所持物品",
     "descriptionItem": "显示当前所持物品名称",
     "titleProfile": "账户",
-    "descriptionProfile": "显示你的账户名称",
+    "descriptionProfile": "显示当前你的存档名称",
     "titleTime": "空岛时间",
     "descriptionTime": "显示当前空岛的时间，例：初冬1日12：00am",
     "titleCustom": "自定义状态",
