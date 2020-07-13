@@ -25,8 +25,8 @@ public class OnlineData {
     @Getter
     public static class DropSettings {
 
-        private ItemRarity minimumInventoryItemRarity;
-        private ItemRarity minimumHotbarItemRarity;
+        private ItemRarity minimumInventoryRarity;
+        private ItemRarity minimumHotbarRarity;
 
         private List<String> dontDropTheseItems;
 

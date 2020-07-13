@@ -18,14 +18,15 @@ import java.util.Collections;
 import java.util.List;
 
 public class SkyblockAddonsCommand extends CommandBase {
+
     private static final String HEADER = "§7§m------------§7[§b§l SkyblockAddons §7]§7§m------------";
     private static final String FOOTER = "§7§m------------------------------------------";
 
-    private final SkyblockAddons main;
-    private final Logger logger;
+    private SkyblockAddons main;
+    private Logger logger;
 
     public SkyblockAddonsCommand() {
-        this.main = SkyblockAddons.getInstance();
+        main = SkyblockAddons.getInstance();
         logger = main.getLogger();
     }
 
