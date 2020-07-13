@@ -22,7 +22,7 @@ public class SkyblockAddonsCommand extends CommandBase {
     private Logger logger;
 
     public SkyblockAddonsCommand() {
-        this.main = SkyblockAddons.getInstance();
+        main = SkyblockAddons.getInstance();
         logger = main.getLogger();
     }
 
