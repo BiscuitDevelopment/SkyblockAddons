@@ -126,7 +126,7 @@
     "freezeBackpackPreview": "Замораживать Предпросмотр Рюкзака",
     "hideGreyEnchants": "Убирать Обычные Серые Зачарования",
     "zealotCounterExplosiveBow": "Zealot Counter Explosive Bow Support",
-    "disableEndermanTeleportation": "Disable Enderman Teleportation",
+    "disableEndermanTeleportation": "Выключить телепортацию эндерменов",
     "changeZealotColor": "Change Zealot Color",
     "hideSvenPupNametags": "Hide Sven Pup Nametags",
     "turnAllFeaturesChroma": "Turn All Features Chroma"
@@ -190,7 +190,7 @@
     "legendarySeaCreatureWarning": "Легендарная Поимка!",
     "cancelledPark": "Функция SBA остановила вас от разрушения этого блока.",
     "bossApproaching": "Вы близки к призыву босса!",
-    "enableAll": "Enable All",
+    "enableAll": "Включить всё",
     "disableAll": "Disable All"
   },
   "discordStatus": {
