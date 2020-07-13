@@ -1,5 +1,6 @@
 package codes.biscuit.skyblockaddons.features.backpacks;
 
+import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsTransformer;
 import lombok.Getter;
 import net.minecraft.client.Minecraft;
@@ -25,37 +26,29 @@ import java.util.List;
  */
 public class GenericInventoryDisplay {
 
-    private final static ResourceLocation CHEST_GUI_TEXTURE = new ResourceLocation("textures/gui/container/generic_54.png");
+    protected final static ResourceLocation TEXTURE = new ResourceLocation(SkyblockAddons.MOD_ID, "genericguicomponents.png");
     private static Field zLevel = null;
     private static Method drawHoveringText = null;
-    private final Rectangle topLeft = new Rectangle(0, 0, 7, 7);
-    private final Rectangle topMiddle = new Rectangle(7, 0, 25, 7);
-    private final Rectangle topRight = new Rectangle(169, 0, 176, 7);
-    private final Rectangle bottomLeft = new Rectangle(0, 215, 7, 222);
-    private final Rectangle bottomMiddle = new Rectangle(7, 215, 25, 222);
-    private final Rectangle bottomRight = new Rectangle(169, 215, 176, 222);
-    private final Rectangle sideLeft = new Rectangle(0, 17, 7, 35);
-    private final Rectangle sideRight = new Rectangle(169, 17, 176, 35);
-    private final Rectangle slot = new Rectangle(7, 17, 25, 35);
-    @Getter
-    private int width, height;
-    private ItemStack[] items;
+    protected final Rectangle topLeft = new Rectangle(0, 0, 7, 7);
+    protected final Rectangle topMiddle = new Rectangle(8, 0, 26, 7);
+    protected final Rectangle topRight = new Rectangle(27, 0, 34, 7);
+    protected final Rectangle bottomLeft = new Rectangle(0, 27, 7, 34);
+    protected final Rectangle bottomMiddle = new Rectangle(8, 27, 26, 34);
+    protected final Rectangle bottomRight = new Rectangle(27, 27, 34, 34);
+    protected final Rectangle sideLeft = new Rectangle(0, 8, 7, 26);
+    protected final Rectangle sideRight = new Rectangle(27, 8, 34, 26);
+    protected final Rectangle slot = new Rectangle(35, 8, 53, 26);
+    protected final Rectangle blank = new Rectangle(8, 8, 26, 26);
+    protected ItemStack[] items;
     @Getter
     private String name = "";
 
-
-    public GenericInventoryDisplay(int width, int height, ItemStack[] items) {
-        this.width = width;
-        this.height = height;
+    public GenericInventoryDisplay(String containerName, ItemStack[] items) {
+        this.name = containerName;
         this.items = items;
     }
 
-    public GenericInventoryDisplay(String containerName, int width, int height, ItemStack[] items) {
-        this(width, height, items);
-        this.name = containerName;
-    }
-
-    private static void setZLevel(Gui gui, int zLevelToSet) {
+    protected static void setZLevel(Gui gui, int zLevelToSet) {
         if (SkyblockAddonsTransformer.isLabymodClient()) { // There are no access transformers in labymod.
             try {
                 if (zLevel == null) {
@@ -73,7 +66,7 @@ public class GenericInventoryDisplay {
         }
     }
 
-    private static void drawHoveringText(GuiContainer guiContainer, java.util.List<String> text, int x, int y) {
+    protected static void drawHoveringText(GuiContainer guiContainer, java.util.List<String> text, int x, int y) {
         if (SkyblockAddonsTransformer.isLabymodClient()) { // There are no access transformers in labymod.
             try {
                 if (drawHoveringText == null) {
@@ -96,11 +89,13 @@ public class GenericInventoryDisplay {
         Minecraft mc = Minecraft.getMinecraft();
         int x = mouseX, y = mouseY;
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-        mc.getTextureManager().bindTexture(CHEST_GUI_TEXTURE);
+        mc.getTextureManager().bindTexture(TEXTURE);
         GlStateManager.disableLighting();
         GlStateManager.pushMatrix();
         GlStateManager.translate(0, 0, 300);
 
+        int width = 9;
+        int height = items.length / 9 + 1;
         int extend = (name.equals("") ? 0 : 10);
 
         int bottomY = y + topLeft.getHeight() + height * sideLeft.getHeight() + extend;
@@ -120,14 +115,22 @@ public class GenericInventoryDisplay {
             guiContainer.drawTexturedModalRect(x, y + topLeft.getHeight() + i * sideLeft.getHeight() + extend, sideLeft.x1, sideLeft.y1, sideLeft.getWidth(), sideLeft.getHeight());
             guiContainer.drawTexturedModalRect(rightX, y + topLeft.getHeight() + i * sideRight.getHeight() + extend, sideRight.x1, sideRight.y1, sideRight.getWidth(), sideRight.getHeight());
         }
-
-        for (int xPos = 0; xPos < width; xPos++)
-            for (int yPos = 0; yPos < height; yPos++)
+        int slotCount = 0;
+        for (int yPos = 0; yPos < height; yPos++)
+            for (int xPos = 0; xPos < width; xPos++) {
+                if (slotCount >= items.length) {
+                    guiContainer.drawTexturedModalRect(x + topLeft.getWidth() + xPos * blank.getWidth(),
+                            y + topLeft.getHeight() + yPos * blank.getHeight() + extend,
+                            blank.x1, blank.y1, blank.getWidth(), blank.getHeight());
+                    continue;
+                }
                 guiContainer.drawTexturedModalRect(x + topLeft.getWidth() + xPos * slot.getWidth(),
                         y + topLeft.getHeight() + yPos * slot.getHeight() + extend,
                         slot.x1, slot.y1, slot.getWidth(), slot.getHeight());
+                slotCount++;
+            }
 
-        mc.fontRendererObj.drawString(name, x+8, y+6, 4210752);
+        mc.fontRendererObj.drawString(name, x + 8, y + 6, 4210752);
 
         GlStateManager.popMatrix();
         GlStateManager.enableLighting();
@@ -160,7 +163,8 @@ public class GenericInventoryDisplay {
         RenderHelper.enableStandardItemLighting();
     }
 
-    private class Rectangle {
+    protected class Rectangle {
+        @Getter
         private int x1, x2, y1, y2;
 
         public Rectangle(int x1, int y1, int x2, int y2) {

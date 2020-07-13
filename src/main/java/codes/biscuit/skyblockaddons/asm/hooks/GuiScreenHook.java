@@ -88,7 +88,7 @@ public class GuiScreenHook {
                 main.getPlayerListener().onItemTooltip(new ItemTooltipEvent(stack, null, null, false));
                 returnValue.cancel();
                 ItemStack[] items = ItemUtils.getPersonalCompactorContents(data);
-                main.getUtils().setGenericInventoryDisplay(new GenericInventoryDisplay(items.length, 1, items));
+                main.getUtils().setGenericInventoryDisplay(new GenericInventoryDisplay(stack.getDisplayName(), items));
             }
         }
         if (GuiContainerHook.isFreezeBackpack()) {
