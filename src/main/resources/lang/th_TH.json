@@ -222,11 +222,11 @@
     "descriptionTarantula": "แสดงว่ากำลังทำภารกิจแมงมุม"
   },
   "commandUsage": {
-    "sba": "Open the main menu",
-    "sba.edit": "Edit GUI locations",
-    "sba.set.zealotCounter": "Manually set your zealot counts",
-    "sba.folder": "Open your mods folder",
-    "sba.dev": "Toggle developer mode",
+    "sba": "เปิดเมนูหลัก",
+    "sba.edit": "แก้ไขตำแหน่ง GUI",
+    "sba.set.zealotCounter": "ตั้งจำนวน Zealot ด้วยตนเอง",
+    "sba.folder": "เปิดโฟลเดอร์ mods",
+    "sba.dev": "เปิด/ปิดโหมดผู้พัฒนา",
     "sba.sidebar": "§e(Dev) §7Copy the scoreboard text. \"formatted\" §7keeps the color codes when copying.",
     "sba.brand": "§e(Dev) §7Show the server brand"
   },
