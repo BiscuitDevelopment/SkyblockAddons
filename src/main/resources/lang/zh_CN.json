@@ -96,7 +96,7 @@
     "hideNightVisionEffectTimer": "隐藏夜视效果持续时间",
     "showCakeBagPreview": "显示蛋糕袋预览",
     "showBackpackPreviewInAH": "当拍卖界面打开时显示背包预览",
-    "enableDevFeatures": "开发者模式按钮",
+    "enableDevFeatures": "启用开发者模式",
     "chromaSpeed": "变色速度",
     "chromaMode": "变色模式",
     "chromaModes": {
@@ -167,7 +167,7 @@
     "cancelledDeepCaverns": "SkyblockAddons 已阻止在此开采矿物",
     "featureDisabled": "功能已禁用",
     "anvilUses": "铁砧使用次数: %uses%",
-    "specialZealotFound": "末影战士！",
+    "specialZealotFound": "特殊末影战士！",
     "blockIncompletePatterns": "阻止合成不完整的图案 - 推荐",
     "searchFeatures": "搜索功能",
     "downloadingUpdateFile": "正在下载更新文件……",
@@ -206,7 +206,7 @@
     "descriptionZealots": "显示末影战士击杀数",
     "titleItem": "所持物品",
     "descriptionItem": "显示当前所持物品名称",
-    "titleProfile": "账户",
+    "titleProfile": "存档",
     "descriptionProfile": "显示当前你的存档名称",
     "titleTime": "空岛时间",
     "descriptionTime": "显示当前空岛的时间，例：初冬1日12：00am",
@@ -222,13 +222,13 @@
     "descriptionTarantula": "显示你当前正在进行狼蛛猎杀任务"
   },
   "commandUsage": {
-    "sba": "打开SBA设定菜单",
+    "sba": "打开主菜单",
     "sba.edit": "编辑 GUI 位置",
     "sba.set.zealotCounter": "手动设置末影战士计数器",
     "sba.folder": "打开 mods 文件夹",
     "sba.dev": "启用/禁用 开发者模式",
-    "sba.sidebar": "§e(开发者) §7复制记分板文本，输入 \"formatted\" 参数§7将在复制时保留文本中的样式代码",
-    "sba.brand": "§e(Dev) §7显示服务端名称"
+    "sba.sidebar": "§e(开发者) §7复制记分板文本，输入\"formatted\"参数 §7将在复制时保留文本中的样式代码",
+    "sba.brand": "§e(开发者) §7显示服务器服务端名称"
   },
   "keyBindings": {
     "developerCopyNBT": "复制 NBT"
