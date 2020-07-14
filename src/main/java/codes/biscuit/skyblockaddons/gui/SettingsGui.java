@@ -413,6 +413,20 @@ public class SettingsGui extends GuiScreen {
             }
 
             buttonList.add(new ButtonToggleTitle(x, y, Message.SETTING_COLOUR_BY_RARITY.getMessage(), main, settingFeature));
+        } else if (setting == EnumUtils.FeatureSetting.DRAGONS_NEST_ONLY) {
+            boxWidth = 31;
+            x = halfWidth - (boxWidth / 2);
+            y = getRowHeightSetting(row);
+
+            Feature settingFeature = null;
+            if (feature == Feature.ZEALOT_COUNTER || feature == Feature.SHOW_AVERAGE_ZEALOTS_PER_EYE
+                    || feature == Feature.SHOW_TOTAL_ZEALOT_COUNT || feature == Feature.SHOW_SUMMONING_EYE_COUNT) {
+                settingFeature = Feature.ZEALOTS_NEST_ONLY;
+            } else if (feature == Feature.DRAGON_STATS_TRACKER) {
+                settingFeature = Feature.DRAGON_STATS_TRACKER_NEST_ONLY;
+            }
+
+            buttonList.add(new ButtonToggleTitle(x, y, Message.SETTING_DRAGONS_NEST_ONLY.getMessage(), main, settingFeature));
         } else {
             boxWidth = 31; // Default size and stuff.
             x = halfWidth - (boxWidth / 2);

@@ -88,7 +88,7 @@ public enum Feature {
     HIDE_PET_HEALTH_BAR(63, Message.SETTING_HIDE_PET_HEALTH_BAR, false),
     DISABLE_MAGICAL_SOUP_MESSAGES(64, Message.SETTING_DISABLE_MAGICAL_SOUP_MESSAGE, true),
     POWER_ORB_STATUS_DISPLAY(65, Message.SETTING_POWER_ORB_DISPLAY, new GuiFeatureData(EnumUtils.DrawType.POWER_ORB_DISPLAY, null, EnumUtils.AnchorPoint.TOP_LEFT, 36, 49), false, EnumUtils.FeatureSetting.POWER_ORB_DISPLAY_STYLE),
-    ZEALOT_COUNTER(66, Message.SETTING_ZEALOT_COUNTER, new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.DARK_AQUA, EnumUtils.AnchorPoint.TOP_RIGHT, -28, 45), false),
+    ZEALOT_COUNTER(66, Message.SETTING_ZEALOT_COUNTER, new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.DARK_AQUA, EnumUtils.AnchorPoint.TOP_RIGHT, -28, 45), false, EnumUtils.FeatureSetting.DRAGONS_NEST_ONLY),
     TICKER_CHARGES_DISPLAY(67, Message.SETTING_TICKER_CHARGES_DISPLAY, new GuiFeatureData(EnumUtils.DrawType.TICKER, null, EnumUtils.AnchorPoint.BOTTOM_MIDDLE, 158, -27), false),
     TAB_EFFECT_TIMERS(68, Message.SETTING_TAB_EFFECT_TIMERS, new GuiFeatureData(EnumUtils.DrawType.TAB_EFFECT_TIMERS, ColorCode.WHITE, EnumUtils.AnchorPoint.TOP_LEFT, 81, 83), false, EnumUtils.FeatureSetting.HIDE_NIGHT_VISION_EFFECT, EnumUtils.FeatureSetting.SORT_TAB_EFFECT_TIMERS),
     NO_ARROWS_LEFT_ALERT(69, Message.SETTING_NO_ARROWS_LEFT_ALERT, new GuiFeatureData(ColorCode.RED), false),
@@ -101,9 +101,9 @@ public enum Feature {
     SORT_TAB_EFFECT_TIMERS(74, Message.SETTING_SORT_TAB_EFFECT_TIMERS, false),
     SHOW_BROKEN_FRAGMENTS(75, Message.SETTING_SHOW_BROKEN_FRAGMENTS, new GuiFeatureData(ColorCode.RED, true), false),
     SKYBLOCK_ADDONS_BUTTON_IN_PAUSE_MENU(76, Message.SETTING_SKYBLOCK_ADDONS_BUTTON_IN_PAUSE_MENU, false),
-    SHOW_TOTAL_ZEALOT_COUNT(77, Message.SETTING_SHOW_TOTAL_ZEALOT_COUNT, new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.DARK_AQUA, EnumUtils.AnchorPoint.TOP_RIGHT, -22, 62), true),
-    SHOW_SUMMONING_EYE_COUNT(78, Message.SETTING_SHOW_SUMMONING_EYE_COUNT, new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.DARK_AQUA, EnumUtils.AnchorPoint.TOP_RIGHT, -28, 79), true),
-    SHOW_AVERAGE_ZEALOTS_PER_EYE(79, Message.SETTING_SHOW_AVERAGE_ZEALOTS_PER_EYE, new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.DARK_AQUA, EnumUtils.AnchorPoint.TOP_RIGHT, -28, 96), true),
+    SHOW_TOTAL_ZEALOT_COUNT(77, Message.SETTING_SHOW_TOTAL_ZEALOT_COUNT, new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.DARK_AQUA, EnumUtils.AnchorPoint.TOP_RIGHT, -22, 62), true, EnumUtils.FeatureSetting.DRAGONS_NEST_ONLY),
+    SHOW_SUMMONING_EYE_COUNT(78, Message.SETTING_SHOW_SUMMONING_EYE_COUNT, new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.DARK_AQUA, EnumUtils.AnchorPoint.TOP_RIGHT, -28, 79), true, EnumUtils.FeatureSetting.DRAGONS_NEST_ONLY),
+    SHOW_AVERAGE_ZEALOTS_PER_EYE(79, Message.SETTING_SHOW_AVERAGE_ZEALOTS_PER_EYE, new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.DARK_AQUA, EnumUtils.AnchorPoint.TOP_RIGHT, -28, 96), true, EnumUtils.FeatureSetting.DRAGONS_NEST_ONLY),
     TURN_BOW_GREEN_WHEN_USING_TOXIC_ARROW_POISON(80, Message.SETTING_TURN_BOW_GREEN_WHEN_USING_TOXIC_ARROW_POISON, false),
     BIRCH_PARK_RAINMAKER_TIMER(81, Message.SETTING_BIRCH_PARK_RAINMAKER_TIMER, new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.DARK_AQUA, EnumUtils.AnchorPoint.TOP_RIGHT, -118 , 11), false),
     COMBAT_TIMER_DISPLAY(82, Message.SETTING_COMBAT_TIMER_DISPLAY, new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.RED, EnumUtils.AnchorPoint.TOP_RIGHT, -261, 18), false),
@@ -129,9 +129,11 @@ public enum Feature {
     SLAYER_SPIDER(102, null, true),
     SLAYER_WOLF(103, null, true),
     SLAYER_TRACKERS_COLOUR_BY_RARITY(104, null, true),
-    DRAGON_STATS_TRACKER(105, Message.SETTING_DRAGON_STATS_TRACKER, new GuiFeatureData(EnumUtils.DrawType.DRAGON_STATS_TRACKER, ColorCode.WHITE, EnumUtils.AnchorPoint.TOP_RIGHT, -150, 50), true, EnumUtils.FeatureSetting.COLOUR_BY_RARITY),
+    DRAGON_STATS_TRACKER(105, Message.SETTING_DRAGON_STATS_TRACKER, new GuiFeatureData(EnumUtils.DrawType.DRAGON_STATS_TRACKER, ColorCode.WHITE, EnumUtils.AnchorPoint.TOP_RIGHT, -150, 50), true, EnumUtils.FeatureSetting.COLOUR_BY_RARITY, EnumUtils.FeatureSetting.DRAGONS_NEST_ONLY),
     DRAGON_STATS_TRACKER_COLOUR_BY_RARITY(106, null, true),
-    SHOW_PERSONAL_COMPACTOR_PREVIEW(107, null, false),
+    DRAGON_STATS_TRACKER_NEST_ONLY(107, null, false),
+    ZEALOTS_NEST_ONLY(108, null, false),
+    SHOW_PERSONAL_COMPACTOR_PREVIEW(109, null, false),
 
     WARNING_TIME(-1, Message.SETTING_WARNING_DURATION, false),
 
@@ -164,7 +166,8 @@ public enum Feature {
             ENABLE_MESSAGE_WHEN_MINING_DEEP_CAVERNS, ENABLE_MESSAGE_WHEN_MINING_NETHER, HIDE_NIGHT_VISION_EFFECT_TIMER,
             CAKE_BAG_PREVIEW, BACKPACK_PREVIEW_AH, REPEAT_FULL_INVENTORY_WARNING, SORT_TAB_EFFECT_TIMERS, DOUBLE_WARP,
             REPEAT_SLAYER_BOSS_WARNING, ACTIONS_UNTIL_NEXT_LEVEL, SLAYER_ZOMBIE, SLAYER_SPIDER, SLAYER_WOLF,
-            SLAYER_TRACKERS_COLOUR_BY_RARITY, DRAGON_STATS_TRACKER_COLOUR_BY_RARITY, SHOW_PERSONAL_COMPACTOR_PREVIEW);
+            SLAYER_TRACKERS_COLOUR_BY_RARITY, DRAGON_STATS_TRACKER_COLOUR_BY_RARITY, DRAGON_STATS_TRACKER_NEST_ONLY,
+            ZEALOTS_NEST_ONLY, SHOW_PERSONAL_COMPACTOR_PREVIEW);
 
     /**
      * Features that are considered gui ones. This is used for examnple when saving the config to ensure that these features'

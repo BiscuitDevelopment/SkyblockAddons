@@ -708,20 +708,20 @@ public class RenderListener {
                 }
             }
         } else if (feature == Feature.ZEALOT_COUNTER) {
-            if (main.getUtils().getLocation() != Location.DRAGONS_NEST && buttonLocation == null) return;
+            if (main.getConfigValues().isEnabled(Feature.ZEALOTS_NEST_ONLY) && main.getUtils().getLocation() != Location.DRAGONS_NEST && buttonLocation == null) return;
             text = String.valueOf(main.getPersistentValues().getKills());
         } else if (feature == Feature.SHOW_TOTAL_ZEALOT_COUNT) {
-            if (main.getUtils().getLocation() != Location.DRAGONS_NEST && buttonLocation == null) return;
+            if (main.getConfigValues().isEnabled(Feature.ZEALOTS_NEST_ONLY) && main.getUtils().getLocation() != Location.DRAGONS_NEST && buttonLocation == null) return;
             if (main.getPersistentValues().getTotalKills() <= 0) {
                 text = String.valueOf(main.getPersistentValues().getKills());
             } else {
                 text = String.valueOf(main.getPersistentValues().getTotalKills() + main.getPersistentValues().getKills());
             }
         } else if (feature == Feature.SHOW_SUMMONING_EYE_COUNT) {
-            if (main.getUtils().getLocation() != Location.DRAGONS_NEST && buttonLocation == null) return;
+            if (main.getConfigValues().isEnabled(Feature.ZEALOTS_NEST_ONLY) && main.getUtils().getLocation() != Location.DRAGONS_NEST && buttonLocation == null) return;
             text = String.valueOf(main.getPersistentValues().getSummoningEyeCount());
         } else if (feature == Feature.SHOW_AVERAGE_ZEALOTS_PER_EYE) {
-            if (main.getUtils().getLocation() != Location.DRAGONS_NEST && buttonLocation == null) return;
+            if (main.getConfigValues().isEnabled(Feature.ZEALOTS_NEST_ONLY) && main.getUtils().getLocation() != Location.DRAGONS_NEST && buttonLocation == null) return;
             int summoningEyeCount = main.getPersistentValues().getSummoningEyeCount();
 
             if (summoningEyeCount > 0) {
@@ -1144,7 +1144,7 @@ public class RenderListener {
     public void drawDragonTrackers(Minecraft mc, float scale, ButtonLocation buttonLocation) {
         DragonBossTracker boss = BossTrackerManager.getInstance().getDragon();
 
-        if (main.getConfigValues().isDisabled(boss.getFeature()) && buttonLocation == null)
+        if (main.getConfigValues().isEnabled(Feature.DRAGON_STATS_TRACKER_NEST_ONLY) && main.getUtils().getLocation() != Location.DRAGONS_NEST && buttonLocation == null)
             return;
 
         int longestLineWidth = 0;
