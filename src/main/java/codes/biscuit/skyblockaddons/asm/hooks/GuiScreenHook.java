@@ -83,6 +83,7 @@ public class GuiScreenHook {
             }
         } else if (stack.getItem().equals(Item.getItemFromBlock(Blocks.dropper)) && main.getConfigValues().isEnabled(Feature.SHOW_PERSONAL_COMPACTOR_PREVIEW)) {
             NBTTagCompound data = ItemUtils.getSkyblockData(stack);
+            if (data == null) return;
             if (ItemUtils.getSkyBlockItemID(data).startsWith("PERSONAL_COMPACTOR"))
             {
                 main.getPlayerListener().onItemTooltip(new ItemTooltipEvent(stack, null, null, false));
