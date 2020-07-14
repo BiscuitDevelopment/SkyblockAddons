@@ -134,6 +134,7 @@ public enum Message {
     SETTING_DRAGONS_NEST_ONLY(MessageObject.SETTING, "dragonsNestOnly"),
     SETTING_DRAGON_STATS_TRACKER(MessageObject.SETTING, "dragonStatsTracker"),
     SETTING_SHOW_PERSONAL_COMPACTOR_PREVIEW(MessageObject.SETTING, "showPersonalCompactorPreview"),
+    SETTING_SHOW_RARITY_UPGRADED(MessageObject.SETTING, "showRarityUpgraded"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.BACKPACK_STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.BACKPACK_STYLE, "compact"),

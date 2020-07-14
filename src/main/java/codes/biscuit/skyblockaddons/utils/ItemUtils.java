@@ -249,4 +249,81 @@ public class ItemUtils {
         return null;
     }
 
+    /**
+     * Returns a boolean relating to if the rarity of a given Skyblock Extra Attributes NBT Compound has been upgraded
+     *
+     * @param extraAttributes the NBT to check
+     * @return {@code true} if its rarity has been upgraded or {@code false} if it hasn't or this isn't a valid Skyblock NBT
+     */
+    public static boolean rarityUpgraded(NBTTagCompound extraAttributes) {
+        if (extraAttributes != null) {
+            String itemId = extraAttributes.getString("id");
+
+            if (!extraAttributes.hasKey("rarity_upgrades")) {
+                return false;
+            }
+
+            return extraAttributes.getInteger("rarity_upgrades") == 1;
+        }
+
+        return false;
+    }
+
+    /**
+     * Returns the winning bid of a Midas Sword from a given Skyblock Extra Attributes NBT Compound
+     * @param extraAttributes the NBT to check
+     * @return the winning bid or {@code -1} if it isn't a Midas Sword
+     */
+    public static int getMidasBid(NBTTagCompound extraAttributes) {
+        if (extraAttributes != null) {
+            String itemId = extraAttributes.getString("id");
+
+            if (!itemId.equals("MIDAS_SWORD")) {
+                return -1;
+            }
+
+            return extraAttributes.getInteger("winning_bid");
+        }
+
+        return -1;
+    }
+
+    /**
+     * Returns the number of anvil uses from a given Skyblock Extra Attributes NBT Compound
+     * WARNING: Cannot differentiate between an item that can or cannot have anvil uses
+     * @param extraAttributes the NBT to check
+     * @return the number of anvil uses or {@code -1} if it isn't a valid Skyblock NBT
+     */
+    public static int getAnvilUses(NBTTagCompound extraAttributes) {
+        if (extraAttributes != null) {
+
+            if (!extraAttributes.hasKey("anvil_uses")) {
+                return 0;
+            }
+
+            return extraAttributes.getInteger("anvil_uses");
+        }
+
+        return -1;
+    }
+
+    /**
+     * Returns the number of Hot Potato Books from a given Skyblock Extra Attributes NBT Compound
+     * MAX 15 because of Fuming Potato Books
+     * @param extraAttributes the NBT to check
+     * @return the number of Hot Potato Books or {@code -1} if it isn't a valid Skyblock NBT
+     */
+    public static int getHotPotatoBookCount(NBTTagCompound extraAttributes) {
+        if (extraAttributes != null) {
+
+            if (!extraAttributes.hasKey("hot_potato_count")) {
+                return 0;
+            }
+
+            return extraAttributes.getInteger("hot_potato_count");
+        }
+
+        return -1;
+    }
+
 }
