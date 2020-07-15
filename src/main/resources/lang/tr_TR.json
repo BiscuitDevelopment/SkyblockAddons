@@ -128,8 +128,8 @@
     "zealotCounterExplosiveBow": "Zealot sayacı patlayıcı yay desteği",
     "disableEndermanTeleportation": "Enderman ışınlanması engelle",
     "changeZealotColor": "Zealot rengini değiştir",
-    "hideSvenPupNametags": "Hide Sven Pup Nametags",
-    "turnAllFeaturesChroma": "Turn All Features Chroma"
+    "hideSvenPupNametags": "Sven yavrularının isimlerini gizle",
+    "turnAllFeaturesChroma": "Tüm Chroma özelliklerini aç"
   },
   "messages": {
     "dropConfirmation": "Eşyayı düşürmeyi onaylamak için düşürme tuşuna bir daha bas!",
@@ -190,8 +190,8 @@
     "legendarySeaCreatureWarning": "Efsanevi Yakaladın!",
     "cancelledPark": "Bir özellik bu bloğu kırmanızı engelledi.",
     "bossApproaching": "Boss spawnlamak üzeresiniz!",
-    "enableAll": "Enable All",
-    "disableAll": "Disable All"
+    "enableAll": "Hepsini Aç",
+    "disableAll": "Hepsini Kapat"
   },
   "discordStatus": {
     "titleNone": "Hiçbiri",
@@ -214,21 +214,21 @@
     "descriptionCustom": "Özel Durum Girin",
     "titleAuto": "Oto Durum",
     "descriptionAuto": "Otomatik olarak bir durum gösterir. Örn. Enddeyken öldürdüğünüz zealot sayısı.",
-    "titleRevenants": "Revenant Quest",
-    "descriptionRevenants": "Shows that you are doing a Revenant quest.",
-    "titleSvens": "Sven Quest",
-    "descriptionSvens": "Shows that you are doing a Sven quest.",
-    "titleTarantula": "Tarantula Quest",
-    "descriptionTarantula": "Shows that you are doing a Tarantula quest."
+    "titleRevenants": "Revenant Görevleri",
+    "descriptionRevenants": "Revenant görevi yaptığını gösterir.",
+    "titleSvens": "Sven Görevleri",
+    "descriptionSvens": "Sven görevleri yaptığını gösterir.",
+    "titleTarantula": "Tarantula Görevleri",
+    "descriptionTarantula": "Tarantula görevleri yaptığını gösterir."
   },
   "commandUsage": {
-    "sba": "Open the main menu",
-    "sba.edit": "Edit GUI locations",
-    "sba.set.zealotCounter": "Manually set your zealot counts",
-    "sba.folder": "Open your mods folder",
-    "sba.dev": "Toggle developer mode",
-    "sba.sidebar": "§e(Dev) §7Copy the scoreboard text. \"formatted\" §7keeps the color codes when copying.",
-    "sba.brand": "§e(Dev) §7Show the server brand"
+    "sba": "Ana menüyü aç",
+    "sba.edit": "GUI tasarımını düzenle",
+    "sba.set.zealotCounter": "Zealot sayılarını el ile gir",
+    "sba.folder": "Mod klasörünü aç",
+    "sba.dev": "Geliştirici modunu aç",
+    "sba.sidebar": "§e(Dev) §7Scoreboard yazısını kopyala. \"formatted\" §7kopyalarken renk kodlarını tutar.",
+    "sba.brand": "§e(Dev) §7Sunucu damgasını göster"
   },
   "keyBindings": {
     "developerCopyNBT": "Copy NBT"
