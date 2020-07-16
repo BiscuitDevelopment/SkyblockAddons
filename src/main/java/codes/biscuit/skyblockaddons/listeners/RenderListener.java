@@ -1354,7 +1354,7 @@ public class RenderListener {
 
         /*mc.getTextureManager().bindTexture(powerOrb.getResourceLocation());
         main.getUtils().drawModalRectWithCustomSizedTexture(x, y, 0, 0, iconSize, iconSize, iconSize, iconSize);*/
-        drawOrb(x, y);
+        drawOrb(powerOrb, x, y);
 
         main.getUtils().enableStandardGLOptions();
 
@@ -1369,7 +1369,7 @@ public class RenderListener {
         main.getUtils().restoreGLOptions();
     }
 
-    private void drawOrb(float posX, float posY) {
+    private void drawOrb(PowerOrb powerOrb, float posX, float posY) {
         Entity orb = null;
 
         for (Entity e : Minecraft.getMinecraft().theWorld.loadedEntityList) {
@@ -1384,15 +1384,15 @@ public class RenderListener {
                     String ManaFlux = "http://textures.minecraft.net/texture/82ada1c7fcc8cf35defeb944a4f8ffa9a9d260560fc7f5f5826de8085435967c";
                     String Radiant = "http://textures.minecraft.net/texture/7ab4c4d6ee69bc24bba2b8faf67b9f704a06b01aa93f3efa6aef7a9696c4feef";
 
-                    if(id.equals(OverFlux)) {
+                    if(id.equals(OverFlux) && powerOrb.equals(PowerOrb.OVERFLUX)) {
                         orb = e;
                         break;
                     }
-                    if(id.equals(ManaFlux)) {
+                    if(id.equals(ManaFlux) && powerOrb.equals(PowerOrb.MANA_FLUX)) {
                         orb = e;
                         break;
                     }
-                    if(id.equals(Radiant)) {
+                    if(id.equals(Radiant) && powerOrb.equals(PowerOrb.RADIANT)) {
                         orb = e;
                         break;
                     }
