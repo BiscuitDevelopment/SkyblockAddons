@@ -97,7 +97,7 @@ public class ItemDropChecker {
             List<String> whitelist = main.getOnlineData().getDropSettings().getAllowDroppingTheseItems();
 
             if (itemIsInHotbar) {
-                if (itemRarity.compareTo(main.getOnlineData().getDropSettings().getMinimumHotbarItemRarity()) < 0 && !blacklist.contains(itemID)) {
+                if (itemRarity.compareTo(main.getOnlineData().getDropSettings().getMinimumHotbarRarity()) < 0 && !blacklist.contains(itemID)) {
                     return logger.exit(true);
                 } else {
                     // Dropping rare non-whitelisted items from the hotbar is not allowed.
@@ -111,7 +111,7 @@ public class ItemDropChecker {
                     }
                 }
             } else {
-                if (itemRarity.compareTo(main.getOnlineData().getDropSettings().getMinimumInventoryItemRarity()) < 0 && !blacklist.contains(itemID)) {
+                if (itemRarity.compareTo(main.getOnlineData().getDropSettings().getMinimumInventoryRarity()) < 0 && !blacklist.contains(itemID)) {
                     return logger.exit(true);
                 } else {
                     /*

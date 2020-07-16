@@ -25,13 +25,18 @@ import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.TextUtils;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
 import codes.biscuit.skyblockaddons.utils.objects.IntPair;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 import lombok.Getter;
 import lombok.Setter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
+import net.minecraft.client.gui.inventory.GuiInventory;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.RenderHelper;
+import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityArmorStand;
@@ -1346,10 +1351,12 @@ public class RenderListener {
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         }
 
-        main.getUtils().enableStandardGLOptions();
 
-        mc.getTextureManager().bindTexture(powerOrb.getResourceLocation());
-        main.getUtils().drawModalRectWithCustomSizedTexture(x, y, 0, 0, iconSize, iconSize, iconSize, iconSize);
+        /*mc.getTextureManager().bindTexture(powerOrb.getResourceLocation());
+        main.getUtils().drawModalRectWithCustomSizedTexture(x, y, 0, 0, iconSize, iconSize, iconSize, iconSize);*/
+        drawOrb(x, y);
+
+        main.getUtils().enableStandardGLOptions();
 
         String secondsString = String.format("§e%ss", seconds);
         main.getUtils().drawTextWithStyle(secondsString, Math.round(x + (iconSize / 2F) - (mc.fontRendererObj.getStringWidth(secondsString) / 2F)), y + iconSize, ColorCode.WHITE.getColor(255).getRGB());
@@ -1360,6 +1367,62 @@ public class RenderListener {
         }
 
         main.getUtils().restoreGLOptions();
+    }
+
+    private void drawOrb(float posX, float posY) {
+        Entity orb = null;
+
+        for (Entity e : Minecraft.getMinecraft().theWorld.loadedEntityList) {
+            if(e instanceof EntityArmorStand) {
+                if (((EntityArmorStand) e).getCurrentArmor(3) != null) {
+                    NBTTagCompound nbtTagCompound = ((EntityArmorStand) e).getCurrentArmor(3).serializeNBT();
+                    if(!nbtTagCompound.hasKey("tag")) continue;
+                    JsonElement parsed = new JsonParser().parse(new String(Base64.getDecoder().decode(nbtTagCompound.getCompoundTag("tag").getCompoundTag("SkullOwner").getCompoundTag("Properties").getTagList("textures", 10).getCompoundTagAt(0).getString("Value"))));
+                    String id = parsed.getAsJsonObject().getAsJsonObject("textures").getAsJsonObject("SKIN").get("url").getAsString();
+
+                    String OverFlux = "http://textures.minecraft.net/texture/b561595d9c7457796c719fae463a22271cbc01cf10809f5a64ccb3d6ae7f8f6";
+                    String ManaFlux = "http://textures.minecraft.net/texture/82ada1c7fcc8cf35defeb944a4f8ffa9a9d260560fc7f5f5826de8085435967c";
+                    String Radiant = "http://textures.minecraft.net/texture/7ab4c4d6ee69bc24bba2b8faf67b9f704a06b01aa93f3efa6aef7a9696c4feef";
+
+                    if(id.equals(OverFlux)) {
+                        orb = e;
+                        break;
+                    }
+                    if(id.equals(ManaFlux)) {
+                        orb = e;
+                        break;
+                    }
+                    if(id.equals(Radiant)) {
+                        orb = e;
+                        break;
+                    }
+                }
+            }
+        }
+
+        if(orb == null) return;
+
+        GlStateManager.enableColorMaterial();
+        GlStateManager.pushMatrix();
+        GlStateManager.translate(posX+12.5, posY+50, 50.0F);
+        GlStateManager.scale((float)(-25), (float)25, (float)25);
+        GlStateManager.rotate(180.0F, 0.0F, 0.0F, 1.0F);
+        GlStateManager.rotate(135.0F, 0.0F, 1.0F, 0.0F);
+        RenderHelper.enableStandardItemLighting();
+        GlStateManager.rotate(-135.0F, 0.0F, 1.0F, 0.0F);
+        GlStateManager.rotate(22.0F, 1.0F, 0.0F, 0.0F);
+        GlStateManager.translate(0.0F, 0.0F, 0.0F);
+        RenderManager rendermanager = Minecraft.getMinecraft().getRenderManager();
+        rendermanager.setPlayerViewY(180.0F);
+        rendermanager.setRenderShadow(false);
+        rendermanager.renderEntityWithPosYaw(orb, 0.0D, 0.0D, 0.0D, 0.0F, 1.0F);
+        rendermanager.setRenderShadow(true);
+        GlStateManager.popMatrix();
+        RenderHelper.disableStandardItemLighting();
+        GlStateManager.disableRescaleNormal();
+        GlStateManager.setActiveTexture(OpenGlHelper.lightmapTexUnit);
+        GlStateManager.disableTexture2D();
+        GlStateManager.setActiveTexture(OpenGlHelper.defaultTexUnit);
     }
 
     /**
