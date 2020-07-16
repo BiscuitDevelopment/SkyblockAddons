@@ -223,7 +223,7 @@
   },
   "commandUsage": {
     "sba": "Ana menüyü aç",
-    "sba.edit": "GUI tasarımını düzenle",
+    "sba.edit": "Arayüz tasarımını düzenle",
     "sba.set.zealotCounter": "Zealot sayılarını el ile gir",
     "sba.folder": "Mod klasörünü aç",
     "sba.dev": "Geliştirici modunu aç",
@@ -231,6 +231,6 @@
     "sba.brand": "§e(Dev) §7Sunucu damgasını göster"
   },
   "keyBindings": {
-    "developerCopyNBT": "Copy NBT"
+    "developerCopyNBT": "NBT Kopyala"
   }
 }
