@@ -7,11 +7,17 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraftforge.common.util.Constants;
 
 import java.util.EnumSet;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Utility methods for Skyblock Items
  */
 public class ItemUtils {
+
+    // Group 0 -> Recombobulator 3000 & Group 1 -> Color Codes
+    private static final Pattern RARITY_PATTERN = Pattern.compile("(§[0-9a-f]§l§ka§r )?([§0-9a-fk-or]+)(?<rarity>[A-Z]+)");
+
     /**
      * Returns the rarity of a given Skyblock item
      *
@@ -35,9 +41,14 @@ public class ItemUtils {
         for (int i = 0; i < lore.tagCount(); i++) {
             String currentLine = lore.getStringTagAt(i);
 
-            for (ItemRarity itemRarity : EnumSet.allOf(ItemRarity.class)) {
-                if (currentLine.startsWith(itemRarity.getTag())) {
-                    return itemRarity;
+            Matcher rarityMatcher = RARITY_PATTERN.matcher(currentLine);
+            if (rarityMatcher.find()) {
+                String rarity = rarityMatcher.group("rarity");
+
+                for (ItemRarity itemRarity : EnumSet.allOf(ItemRarity.class)) {
+                    if (rarity.startsWith(itemRarity.getTag())) {
+                        return itemRarity;
+                    }
                 }
             }
         }
