@@ -222,13 +222,13 @@
     "descriptionTarantula": "Mostra che stai facendo una missione di Tarantola."
   },
   "commandUsage": {
-    "sba": "Open the main menu",
-    "sba.edit": "Edit GUI locations",
-    "sba.set.zealotCounter": "Manually set your zealot counts",
-    "sba.folder": "Open your mods folder",
-    "sba.dev": "Toggle developer mode",
-    "sba.sidebar": "§e(Dev) §7Copy the scoreboard text. \"formatted\" §7keeps the color codes when copying.",
-    "sba.brand": "§e(Dev) §7Show the server brand"
+    "sba": "Apri il menu principale",
+    "sba.edit": "Modifica posizioni GUI",
+    "sba.set.zealotCounter": "Imposta manualmente il conteggio zealot",
+    "sba.folder": "Apri cartella mods",
+    "sba.dev": "Attiva/Disattiva modalità sviluppatore",
+    "sba.sidebar": "§e(Dev) §7Copia il testo del tabellone. \"formattato\" §7mantiene i codici colore durante la copia.",
+    "sba.brand": "§e(Dev) §7Mostra il simbolo del server"
   },
   "keyBindings": {
     "developerCopyNBT": "Copia NBT"
