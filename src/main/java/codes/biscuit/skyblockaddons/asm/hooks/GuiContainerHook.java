@@ -362,7 +362,7 @@ public class GuiContainerHook {
 
                     // Replace the Left Click (0) with a Middle Click (2) if the inventory's Left Click is replaceable
                     // And if the clicked item isn't an arrow so that we don't alter the next page/previous page's functionality
-                    if (clickedButton == 0 && inventoryType != null && inventoryType.isLeftClickReplaceable() && !clickedItem.getItem().equals(Items.arrow)) {
+                    if (clickedButton == 0 && inventoryType != null && inventoryType.isLeftClickReplaceable() && clickedItem != null && !clickedItem.getItem().equals(Items.arrow)) {
                         // clickedButton
                         // 0 = Left Click
                         // 1 = Right Click
