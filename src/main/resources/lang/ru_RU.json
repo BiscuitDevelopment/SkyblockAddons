@@ -125,11 +125,11 @@
     "baitListDisplay": "Показывать Список Наживки при Держании Удочки",
     "freezeBackpackPreview": "Замораживать Предпросмотр Рюкзака",
     "hideGreyEnchants": "Убирать Обычные Серые Зачарования",
-    "zealotCounterExplosiveBow": "Zealot Counter Explosive Bow Support",
+    "zealotCounterExplosiveBow": "Помочь с обстрелом Зеалотов с помощью Explosive Bow",
     "disableEndermanTeleportation": "Выключить телепортацию эндерменов",
-    "changeZealotColor": "Change Zealot Color",
-    "hideSvenPupNametags": "Hide Sven Pup Nametags",
-    "turnAllFeaturesChroma": "Turn All Features Chroma"
+    "changeZealotColor": "Изменить цвет Зеалота",
+    "hideSvenPupNametags": "Спрятать теги щенка Свена",
+    "turnAllFeaturesChroma": "Включить Chroma-подсветку"
   },
   "messages": {
     "dropConfirmation": "Выбросите предмет ещё раз для подтверждения!",
@@ -191,7 +191,7 @@
     "cancelledPark": "Функция SBA остановила вас от разрушения этого блока.",
     "bossApproaching": "Вы близки к призыву босса!",
     "enableAll": "Включить всё",
-    "disableAll": "Disable All"
+    "disableAll": "Выключить всё"
   },
   "discordStatus": {
     "titleNone": "Нет",
@@ -214,23 +214,23 @@
     "descriptionCustom": "Введите Пользовательский Статус",
     "titleAuto": "Автостатус",
     "descriptionAuto": "Автоматически отображает статус, например количество зеалотов в Энде.",
-    "titleRevenants": "Revenant Quest",
-    "descriptionRevenants": "Shows that you are doing a Revenant quest.",
-    "titleSvens": "Sven Quest",
-    "descriptionSvens": "Shows that you are doing a Sven quest.",
-    "titleTarantula": "Tarantula Quest",
-    "descriptionTarantula": "Shows that you are doing a Tarantula quest."
+    "titleRevenants": "Revenant Квест",
+    "descriptionRevenants": "Показать, что вы выполнили Revenant квест.",
+    "titleSvens": "Свен Квест",
+    "descriptionSvens": "Показать, что вы выполнили Sven квест.",
+    "titleTarantula": "Tarantula Квест",
+    "descriptionTarantula": "Показать, что вы выполнили Tarantula квест."
   },
   "commandUsage": {
-    "sba": "Open the main menu",
-    "sba.edit": "Edit GUI locations",
-    "sba.set.zealotCounter": "Manually set your zealot counts",
-    "sba.folder": "Open your mods folder",
-    "sba.dev": "Toggle developer mode",
-    "sba.sidebar": "§e(Dev) §7Copy the scoreboard text. \"formatted\" §7keeps the color codes when copying.",
-    "sba.brand": "§e(Dev) §7Show the server brand"
+    "sba": "Открыть главное меню",
+    "sba.edit": "Изменить расположение интерфейса",
+    "sba.set.zealotCounter": "Вручную установить количество убитых Зеалотов",
+    "sba.folder": "Открыть папку с модами",
+    "sba.dev": "Включить режим разработчика",
+    "sba.sidebar": "§e(Dev) §7Копировать текст скорборда. \"отформатировано\" §7Хранить коды цветов при копировании.",
+    "sba.brand": "§e(Dev) §7Показывать логотип сервера"
   },
   "keyBindings": {
-    "developerCopyNBT": "Copy NBT"
+    "developerCopyNBT": "Копировать NBT"
   }
 }
