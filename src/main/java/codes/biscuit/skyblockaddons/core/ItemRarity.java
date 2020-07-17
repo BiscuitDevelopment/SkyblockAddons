@@ -1,5 +1,6 @@
 package codes.biscuit.skyblockaddons.core;
 
+import codes.biscuit.skyblockaddons.utils.ColorCode;
 import lombok.Getter;
 
 /**
@@ -8,16 +9,20 @@ import lombok.Getter;
 @Getter
 public enum ItemRarity {
 
-    COMMON("§f§lCOMMON"),
-    UNCOMMON("§a§lUNCOMMON"),
-    RARE("§9§lRARE"),
-    EPIC("§5§lEPIC"),
-    LEGENDARY("§6§lLEGENDARY"),
-    SPECIAL("§d§lSPECIAL");
+    COMMON("COMMON", ColorCode.WHITE),
+    UNCOMMON("UNCOMMON", ColorCode.GREEN),
+    RARE("RARE", ColorCode.BLUE),
+    EPIC("EPIC", ColorCode.DARK_PURPLE),
+    LEGENDARY("LEGENDARY", ColorCode.GOLD),
+    MYTHIC("MYTHIC", ColorCode.LIGHT_PURPLE),
+    SPECIAL("SPECIAL", ColorCode.RED),
+    VERY_SPECIAL("VERY SPECIAL", ColorCode.RED);
 
-    private final String tag;
+    private String tag;
+    private ColorCode colorCode;
 
-    ItemRarity(String s) {
-        this.tag = s;
+    ItemRarity(String loreName, ColorCode colorCode) {
+        this.tag = loreName;
+        this.colorCode = colorCode;
     }
 }
