@@ -79,7 +79,41 @@ public class EnumUtils {
         ENCHANTMENT_TABLE(INVENTORY_TYPE_ENCHANTS, "Enchant Item"),
         REFORGE_ANVIL(INVENTORY_TYPE_REFORGES, "Reforge Item"),
         BAKER(null, "Baker"),
-        CRAFTING_TABLE(INVENTORY_TYPE_CRAFTING, CraftingPattern.CRAFTING_TABLE_DISPLAYNAME);
+        CRAFTING_TABLE(INVENTORY_TYPE_CRAFTING, CraftingPattern.CRAFTING_TABLE_DISPLAYNAME),
+        SKYBLOCK_MENU(null, "SkyBlock Menu", true),
+        YOUR_SKYBLOCK_PROFILE(null, "Your SkyBlock Profile"),
+        YOUR_SKILLS(null, "Your Skills", true),
+        COLLECTIONS(null, "Collection", true),
+        TYPE_COLLECTION(null, ".* Collection", true, true),
+        RECIPE_BOOK(null, "Recipe Book", true),
+        TYPE_RECIPE(null, "(?:\\([0-9]+/[0-9]+\\) )?.* Recipes?", true, true),
+        TRADES(null, "Trades", true),
+        QUEST_LOG(null, "Quest Log.*", true, true),
+        DUNGEON_JOURNALS(null, "Dungeon Journals", true),
+        PETS(null, "Pets", true),
+        BANK(null, "Bank ?(?:Deposit|Withdrawal)?", true, true),
+        // Middle Click doesn't select sets in the Wardrobe, can't replace it
+        WARDROBE(null, "Wardrobe \\([0-9]+/[0-9]+\\)", false, true),
+        SETTINGS(null, "Settings(?: - .*)?", true, true),
+        PROFILES_MANAGEMENT(null, "Profiles?(?: Management|(?:: .*))", true, true),
+        // Matches: Auction House, Auctions Browser, Auction View, BIN Auction View, Create Auction, Confirm Auction, Manage Auctions, Your Bids, Confirm Bid
+        AUCTION_HOUSE(null, "(?:.*Auctions? (?:Browser|House|View))|(?:(?:Create|Manage|Confirm) Auctions?)|(?:(?:Your|Confirm) Bids?)", true, true),
+        // Matches: [anything] ➜ [anything], Your Bazaar Orders, Are you sure?, How many do you want?, How much do you want to pay?, At what price are you selling?, Confirm Sell Offer, Confirm Buy Order, Order options
+        BAZAAR(null, "(?:.* ➜ .*)|(?:Your Bazaar Orders)|(?:Are you sure\\?)|(?:How many do you want\\?)|(?:How much do you want to pay\\?)|(?:At what price are you selling\\?)|(?:Confirm (?:Sell Offer|Buy Order))|(?:Order options)", true, true),
+        ARMORSMITH(null, "Armorsmith", true),
+        WEAPONSMITH(null, "Weaponsmith", true),
+        ADVENTURER(null, "Adventurer", true),
+        FARM_MERCHANT(null, "Farm Merchant", true),
+        MINE_MERCHANT(null, "Mine Merchant", true),
+        LUMBER_MERCHANT(null, "Lumber Merchant", true),
+        FISH_MERCHANT(null, "Fish Merchant", true),
+        BUILDER(null, "Builder", true),
+        BARTENDER(null, "Bartender", true),
+        LIBRARIAN(null, "Librarian", true),
+        SHOP_TRADING_OPTIONS(null, "Shop Trading Options", true),
+        // Matches: Slayer, Sven Packmaster, Tarantula Broodfather, Revenant Horror, Zombie Slayer LVL Rewards, Spider Slayer LVL Rewards, Wolf Slayer LVL Rewards, Revenant Horror Drops, Sven Packmaster Drops, Tarantula Broodfather Drops
+        SLAYER(null, "(?:.*Slayer ?(?:LVL Rewards)?)|(?:(?:Sven Packmaster|Tarantula Broodfather|Revenant Horror)(?: Drops)?)", true, true),
+        MELODY(null, "(?:Melody)|(?:Harp \\- .*)", true, true);
 
         /** The current inventory type. Can be null. */
         @Getter private static InventoryType currentInventoryType;
@@ -299,7 +333,7 @@ public class EnumUtils {
         TOMOCRAFTER("tomocrafter","github.com/tomocrafter", Feature.AVOID_BLINKING_NIGHT_VISION, Feature.SLAYER_INDICATOR, Feature.NO_ARROWS_LEFT_ALERT, Feature.BOSS_APPROACH_ALERT),
         DAPIGGUY("DaPigGuy", "github.com/DaPigGuy", Feature.MINION_DISABLE_LOCATION_WARNING),
         COMNIEMEER("comniemeer","github.com/comniemeer", Feature.JUNGLE_AXE_COOLDOWN),
-        KEAGEL("Keagel", "github.com/Keagel", Feature.ONLY_MINE_ORES_DEEP_CAVERNS, Feature.DISABLE_MAGICAL_SOUP_MESSAGES),
+        KEAGEL("Keagel", "github.com/Keagel", Feature.ONLY_MINE_ORES_DEEP_CAVERNS, Feature.DISABLE_MAGICAL_SOUP_MESSAGES, Feature.REPLACE_LEFT_CLICK_MIDDLE_CLICK),
         SUPERHIZE("SuperHiZe", "github.com/superhize", Feature.SPECIAL_ZEALOT_ALERT),
         DIDI_SKYWALKER("DidiSkywalker", "twitter.com/didiskywalker", Feature.ITEM_PICKUP_LOG, Feature.HEALTH_UPDATES, Feature.REPLACE_ROMAN_NUMERALS_WITH_NUMBERS,
                 Feature.CRAFTING_PATTERNS, Feature.POWER_ORB_STATUS_DISPLAY),
