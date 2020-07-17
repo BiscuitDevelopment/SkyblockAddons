@@ -100,7 +100,7 @@ public class EnumUtils {
          */
         public static InventoryType getCurrentInventoryType(String inventoryName) {
             for (InventoryType inventoryType : values()) {
-                if(inventoryType.inventoryName.equals(inventoryName)) {
+                if(inventoryType.inventoryName.equals(inventoryName) || inventoryType.isRegex && inventoryName.matches(inventoryType.inventoryName)) {
                     currentInventoryType = inventoryType;
                     return inventoryType;
                 }
@@ -110,10 +110,22 @@ public class EnumUtils {
 
         private final Message message;
         private final String inventoryName;
+        @Getter private final boolean isLeftClickReplaceable;
+        private final boolean isRegex;
 
         InventoryType(Message message, String inventoryName) {
+            this(message, inventoryName, false, false);
+        }
+
+        InventoryType(Message message, String inventoryName, boolean isLeftClickReplaceable) {
+            this(message, inventoryName, isLeftClickReplaceable, false);
+        }
+
+        InventoryType(Message message, String inventoryName, boolean isLeftClickReplaceable, boolean isRegex) {
             this.message = message;
             this.inventoryName = inventoryName;
+            this.isLeftClickReplaceable = isLeftClickReplaceable;
+            this.isRegex = isRegex;
         }
 
         public String getMessage() {
