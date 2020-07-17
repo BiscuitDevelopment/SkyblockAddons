@@ -18,6 +18,7 @@ import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.entity.RenderItem;
+import net.minecraft.init.Items;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ContainerPlayer;
 import net.minecraft.inventory.Slot;
@@ -350,7 +351,28 @@ public class GuiContainerHook {
         }
     }
 
-    public static void handleMouseClick(Slot slotIn, int slotId, int clickedButton, int clickType, ReturnValue<NullType> returnValue) {
+    public static void handleMouseClick(Slot slotIn, int slotId, int clickedButton, int clickType, ReturnValue<Integer> returnValue) {
+        SkyblockAddons main = SkyblockAddons.getInstance();
+
+        if (main.getUtils().isOnSkyblock()) {
+            if (main.getConfigValues().isEnabled(Feature.REPLACE_LEFT_CLICK_MIDDLE_CLICK)) {
+                if (slotIn != null) {
+                    final ItemStack clickedItem = slotIn.getStack();
+                    EnumUtils.InventoryType inventoryType = EnumUtils.InventoryType.getCurrentInventoryType();
+
+                    // Replace the Left Click (0) with a Middle Click (2) if the inventory's Left Click is replaceable
+                    // And if the clicked item isn't an arrow so that we don't alter the next page/previous page's functionality
+                    if (clickedButton == 0 && inventoryType != null && inventoryType.isLeftClickReplaceable() && !clickedItem.getItem().equals(Items.arrow)) {
+                        // clickedButton
+                        // 0 = Left Click
+                        // 1 = Right Click
+                        // 2 = Middle Click
+                        returnValue.cancel(2);
+                    }
+                }
+            }
+        }
+
 /*        SkyblockAddons main = SkyblockAddons.getInstance();
         if (main.getUtils().isOnSkyblock()) {
             boolean isOutsideGui = oldMouseX < guiLeft || oldMouseY < guiTop || oldMouseX >= guiLeft + xSize || oldMouseY >= guiTop + ySize;
