@@ -1071,14 +1071,15 @@ public class RenderListener {
             return;
         }
 
-        int lines = 0, bossCount = 0;
+        int bossCount = 0, yOffset = 0;//lines = 0
         for (SlayerBoss boss : SlayerTracker.getInstance().getBosses()) {
             if (main.getConfigValues().isDisabled(boss.getFeature()))
                 continue;
-            lines += 2 + boss.getDrops().size();
+            yOffset += 2 * Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT;
+            yOffset += boss.getDrops().size() * (Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT + (main.getConfigValues().isEnabled(Feature.SLAYER_TRACKERS_SHOW_ICONS) ? 5 : 0));
             bossCount++;
         }
-        if (bossCount > 1) lines += bossCount - 1;
+        if (bossCount > 1) yOffset += (bossCount - 1) * Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT;
 
         float x = main.getConfigValues().getActualX(Feature.SLAYER_TRACKERS);
         float y = main.getConfigValues().getActualY(Feature.SLAYER_TRACKERS);
@@ -1090,7 +1091,7 @@ public class RenderListener {
         x /= scale;
         y /= scale;
         x -= width * scale / 2F;
-        y -= lines * Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT;
+        y -= yOffset;//lines * Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT;
         /*for (int i = 0; i < 300; i++)
             main.getUtils().drawTextWithStyle(i + "",
                     x, i * 9, Color.blue.getRGB());*/
@@ -1124,6 +1125,14 @@ public class RenderListener {
                 //main.getUtils().drawModalRectWithCustomSizedTexture(x, y, 0, 0, iconSize, iconSize, iconSize, iconSize);
                 GlStateManager.disableBlend();
                 GlStateManager.enableDepth();
+
+                if (main.getConfigValues().isEnabled(Feature.SLAYER_TRACKERS_SHOW_ICONS) && drop.getItemStack() != null)
+                {
+                    y+=5;
+                    RenderHelper.enableGUIStandardItemLighting();
+                    mc.getRenderItem().renderItemIntoGUI(drop.getItemStack(), (int)x-20, (int)y-4);
+                    RenderHelper.disableStandardItemLighting();
+                }
 
                 if (main.getConfigValues().isEnabled(Feature.SLAYER_TRACKERS_COLOUR_BY_RARITY)) {
                     main.getUtils().drawTextWithStyle(drop.getRarity().getTag().substring(0, 2) + drop.getDisplayName(), x, y, color);

@@ -413,6 +413,17 @@ public class SettingsGui extends GuiScreen {
             }
 
             buttonList.add(new ButtonToggleTitle(x, y, Message.SETTING_COLOUR_BY_RARITY.getMessage(), main, settingFeature));
+        } else if (setting == EnumUtils.FeatureSetting.SHOW_ICONS) {
+            boxWidth = 31;
+            x = halfWidth - (boxWidth / 2);
+            y = getRowHeightSetting(row);
+
+            Feature settingFeature = null;
+            if (feature == Feature.SLAYER_TRACKERS) {
+                settingFeature = Feature.SLAYER_TRACKERS_SHOW_ICONS;
+            }
+
+            buttonList.add(new ButtonToggleTitle(x, y, Message.SETTING_SHOW_ICONS.getMessage(), main, settingFeature));
         } else if (setting == EnumUtils.FeatureSetting.DRAGONS_NEST_ONLY) {
             boxWidth = 31;
             x = halfWidth - (boxWidth / 2);

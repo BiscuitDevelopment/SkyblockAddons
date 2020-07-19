@@ -131,6 +131,7 @@ public enum Message {
     SETTING_EXPANDED(MessageObject.SETTING, "expanded"),
     SETTING_SLAYER_TRACKER(MessageObject.SETTING, "slayerTracker"),
     SETTING_COLOUR_BY_RARITY(MessageObject.SETTING, "colourByRarity"),
+    SETTING_SHOW_ICONS(MessageObject.SETTING, "showIcons"),
     SETTING_DRAGONS_NEST_ONLY(MessageObject.SETTING, "dragonsNestOnly"),
     SETTING_DRAGON_STATS_TRACKER(MessageObject.SETTING, "dragonStatsTracker"),
     SETTING_SHOW_PERSONAL_COMPACTOR_PREVIEW(MessageObject.SETTING, "showPersonalCompactorPreview"),

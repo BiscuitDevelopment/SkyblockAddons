@@ -5,6 +5,8 @@ import codes.biscuit.skyblockaddons.core.ItemRarity;
 import codes.biscuit.skyblockaddons.utils.Utils;
 import lombok.Getter;
 import lombok.Setter;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 
 import java.util.*;
@@ -97,15 +99,20 @@ public abstract class SlayerBoss {
         private ItemRarity rarity;
         @Getter
         private ResourceLocation resourceLocation;
-        @Getter
+        @Getter @Setter
         private int count = 0;
+        @Getter
+        private ItemStack itemStack;
 
-        public SlayerDrop(SlayerBoss boss, String skyblockID, String langName, ItemRarity rarity) {
+        public SlayerDrop(SlayerBoss boss, String skyblockID, String langName, ItemRarity rarity, ItemStack itemStack) {
             this.boss = boss;
             this.skyblockID = skyblockID;
             this.langName = langName;
             this.rarity = rarity;
-            //this.resourceLocation = new ResourceLocation("slayer/<bossname>/<dropname>"); TODO
+            this.itemStack = itemStack;
+            NBTTagCompound extraAttributes = new NBTTagCompound();
+            extraAttributes.setString("id", skyblockID);
+            itemStack.setTagInfo("ExtraAttributes", extraAttributes);
         }
 
         /**
@@ -114,28 +121,7 @@ public abstract class SlayerBoss {
          * @return The Translated Name
          */
         public String getDisplayName() {
-            String text = Utils.getTranslatedString("settings.slayerBosses." + boss.getBossName() + ".drops", langName);;
-            /*try {
-                SkyblockAddons main = SkyblockAddons.getInstance();
-                List<String> path = new LinkedList<String>(Arrays.asList(("settings.slayerBosses." + boss.getBossName() + ".drops").split(Pattern.quote("."))));
-                JsonObject jsonObject = main.getConfigValues().getLanguageConfig();
-                for (String part : path) {
-                    if (!part.equals("")) {
-                        jsonObject = jsonObject.getAsJsonObject(part);
-                    }
-                }
-                text = jsonObject.get(langName).getAsString();
-                if (text != null && (main.getConfigValues().getLanguage() == Language.HEBREW || main.getConfigValues().getLanguage() == Language.ARABIC) && !Minecraft.getMinecraft().fontRendererObj.getBidiFlag()) {
-                    text = bidiReorder(text);
-                }
-            } catch (NullPointerException ex) {
-                text = langName; // In case of fire...
-            }*/
-            return text + ": ";
-        }
-
-        public void setCount(int count) {
-            this.count = count;
+            return Utils.getTranslatedString("settings.slayerBosses." + boss.getBossName() + ".drops", langName) + ": ";
         }
 
     }
