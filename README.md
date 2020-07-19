@@ -62,26 +62,75 @@ Big thanks to all the open source software we use in this project! They are all 
 For Contributors
 ------
 
-Please make sure to make your pull requests off the development branch if you're adding new features. If there's
+Please make sure to make your pull requests off the `development` branch if you're adding new features. If there's
 an important bug fix, still make your PR on development, but put it in a separate commit so I can cherry-pick it
-into master branch. Thank you!
+into `master` branch. Thank you!
 
-1. Make sure to add this VM argument to your debug configuration or your IDE's equivalent, so that all the transformers
-are applied properly in your dev environment!
-```-Dfml.coreMods.load=codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsLoadingPlugin```
-2. This project uses Lombok, which helps with things such as not having to manually create Getters and 
-Setters. If you are using IntelliJ, please download the plugin called Lombok either in your IDE or by 
-[visiting this link](https://plugins.jetbrains.com/plugin/6317-lombok) so that everything works correctly. 
-If you are using Eclipse, [you can read this page here.](https://projectlombok.org/setup/eclipse)
-3. After installing the plugin in IntelliJ, go to `File` → `Settings` → `Build` → 
-`Execution, Deployment, Compiler` → `Annotation Processors`, and check ☑ 
-`Enable annotation processing` on the top right. This will allow you to debug properly.
-4. If you are using the Gradle builder (you can check in `File` → `Settings` → `Build, Execution, Deployment`
- → `Gradle` → `Build and run using`), set the Gradle task ```processResourcesDev``` to run every time before 
- launching the Minecraft client from your dev environment. This is required for the mod assets to load properly
- in the dev environment.
+### Requirements
+- **IDE** (One of them)
+  - [IntelliJ IDEA](https://www.jetbrains.com/idea/) **(Recommended)**
+  - [Eclipse](https://www.eclipse.org/)
+- **(Plugin) Lombok** to help with things such as not having to manually create Getters and Setters.
+  - [IntelliJ IDEA](https://plugins.jetbrains.com/plugin/6317-lombok)
+    - **After installing the plugin**
+      - Go to `Preferences`
+      - Go to `Build, Execution, Deployment`
+      - Go to `Compiler`
+      - Go to `Annotation Processors`
+      - Check ☑ `Enable annotation processing`.
+  - [Eclipse](https://projectlombok.org/setup/eclipse)
 
-Note: If your jar build is failing because the code is trying to access private methods or fields,
-this may be because someone added some new access transformers. 
-You may want to re-run the gradle tasks `setupDecompWorkspace` and `setupDevWorkspace` so 
-the access transformers are applied to the source code!
+### Getting started
+**Note:** You can use `gradle` instead using gradle wrapper `./gradlew`.
+
+1. Clone the repository
+2. Switch to branch `development` and stay up to date!
+    ```shell script
+    git checkout -b development --track origin/development
+    ```
+3. Setup the development environment
+    ```shell script
+    ./gradlew setupDevWorkspace setupDecompWorkspace
+    ```
+4. Integrate the development environment with your IDE
+    - IntelliJ IDEA
+    ```shell script
+    ./gradlew idea genIntellijRuns
+    ```
+    - Eclipse **(doesn't generate debug configuration)**
+    ```shell script
+    ./gradlew eclipse
+    ```
+5. Make sure to add the **VM** argument to your debug configuration.
+    ```text
+    -Dfml.coreMods.load=codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsLoadingPlugin
+    ```
+6. Include your **Minecraft** username and password as arguments in the **debug configuration**.
+   In order, to login into [Hypixel](https://hypixel.net) by your account.
+    ```text
+    --username "<username>" --password "<password>"
+    ```
+   > **Note:** Don't share your password with **anyone**.
+   > **We aren't going to ask you about your password!**
+7. **You are now ready to build the mod!**
+
+### How to build
+1. Build the mod
+    ```shell script
+    ./gradlew build
+    ```
+    > **Note**
+    > 
+    > If your jar **build** is **failing** because the code is trying to access private methods or fields,
+    > this may be because someone added some new access transformers.
+    >
+    > You may want to re-run the gradle task
+    > ```shell script
+    > ./gradlew setupDevWorkspace setupDecompWorkspace
+    > ```
+    > so the access transformers are applied to the source code!
+    > 
+2. (Optional) Run **Minecraft Forge** client
+    ```shell script
+    ./gradlew runClient
+    ```
