@@ -135,7 +135,7 @@ public enum Feature {
     DRAGON_STATS_TRACKER_NEST_ONLY(108, null, false),
     ZEALOTS_NEST_ONLY(109, null, false),
     SHOW_PERSONAL_COMPACTOR_PREVIEW(110, null, false),
-    SHOW_RARITY_UPGRADED(111, Message.SETTING_SHOW_RARITY_UPGRADED, new GuiFeatureData(ColorCode.RED, true), false),
+    SHOW_RARITY_UPGRADED(111, Message.SETTING_SHOW_RARITY_UPGRADED, null, false),
 
     WARNING_TIME(-1, Message.SETTING_WARNING_DURATION, false),
 
