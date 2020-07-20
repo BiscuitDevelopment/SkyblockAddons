@@ -101,7 +101,11 @@ git checkout -b development --track origin/development
     ```shell script
     ./gradlew eclipse
     ```
-4. Make sure to add the **VM** argument to your debug configuration.
+    - (Eclipse) Change **Text File Encoding** from `Default` to `UTF-8`
+      - Go to `Window` -> `Preferences` -> `General` -> `Workspace`
+      - Change `Text File Encoding` from `Default` to `UTF-8`
+
+4. Make sure to add the **VM** argument to your debug configuration
     ```text
     -Dfml.coreMods.load=codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsLoadingPlugin
     ```
