@@ -65,6 +65,10 @@ For Contributors
 Please make sure to make your pull requests off the `development` branch if you're adding new features. If there's
 an important bug fix, still make your PR on development, but put it in a separate commit so I can cherry-pick it
 into `master` branch. Thank you!
+```shell script
+# Not recommended
+git checkout -b development --track origin/development
+```
 
 ### Requirements
 - **IDE** (One of them)
@@ -84,15 +88,11 @@ into `master` branch. Thank you!
 **Note:** You can use `gradle` instead using gradle wrapper `./gradlew`.
 
 1. Clone the repository
-2. Switch to branch `development` and stay up to date!
-    ```shell script
-    git checkout -b development --track origin/development
-    ```
-3. Setup the development environment
+2. Setup the development environment
     ```shell script
     ./gradlew setupDevWorkspace setupDecompWorkspace
     ```
-4. Integrate the development environment with your IDE
+3. Integrate the development environment with your IDE
     - IntelliJ IDEA
     ```shell script
     ./gradlew idea genIntellijRuns
@@ -101,18 +101,18 @@ into `master` branch. Thank you!
     ```shell script
     ./gradlew eclipse
     ```
-5. Make sure to add the **VM** argument to your debug configuration.
+4. Make sure to add the **VM** argument to your debug configuration.
     ```text
     -Dfml.coreMods.load=codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsLoadingPlugin
     ```
-6. Include your **Minecraft** username and password as arguments in the **debug configuration**.
+5. Include your **Minecraft** username and password as arguments in the **debug configuration**.
    In order, to login into [Hypixel](https://hypixel.net) by your account.
     ```text
     --username "<username>" --password "<password>"
     ```
    > **Note:** Don't share your password with **anyone**.
    > **We aren't going to ask you about your password!**
-7. **You are now ready to build the mod!**
+6. **You are now ready to build the mod!**
 
 ### How to build
 1. Build the mod
