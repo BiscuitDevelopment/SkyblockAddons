@@ -15,9 +15,7 @@ import org.objectweb.asm.tree.ClassNode;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.lang.reflect.Field;
 import java.util.Collection;
-import java.util.Map;
 
 public class SkyblockAddonsTransformer implements IClassTransformer {
     private final Logger logger = LogManager.getLogger("SkyblockAddons Transformer");
@@ -98,7 +96,6 @@ public class SkyblockAddonsTransformer implements IClassTransformer {
         return writer.toByteArray();
     }
 
-    @SuppressWarnings("ResultOfMethodCallIgnored")
     private void outputBytecode(String transformedName, ClassWriter writer) {
         if (SkyblockAddonsSetup.isDeobfuscatedEnvironment()) {
             try {

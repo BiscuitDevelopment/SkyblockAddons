@@ -1,7 +1,6 @@
 package codes.biscuit.skyblockaddons.asm.utils;
 
 import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsSetup;
-import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsTransformer;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.tree.FieldInsnNode;
 
