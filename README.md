@@ -90,7 +90,7 @@ git checkout -b development --track origin/development
 1. Clone the repository
 2. Setup the development environment
     ```shell script
-    ./gradlew setupDevWorkspace setupDecompWorkspace
+    ./gradlew setupDecompWorkspace
     ```
 3. Integrate the development environment with your IDE
     - IntelliJ IDEA
