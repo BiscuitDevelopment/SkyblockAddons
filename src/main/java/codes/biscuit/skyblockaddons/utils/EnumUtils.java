@@ -251,6 +251,7 @@ public class EnumUtils {
         ENABLE_CAKE_BAG_PREVIEW(SETTING_SHOW_CAKE_BAG_PREVIEW, 71),
         ENABLE_BACKPACK_PREVIEW_AH(SETTING_SHOW_BACKPACK_PREVIEW_AH, 72),
         SORT_TAB_EFFECT_TIMERS(SETTING_SORT_TAB_EFFECT_TIMERS, 74),
+        COLOUR_BY_RARITY(Message.SETTING_COLOUR_BY_RARITY, -1),
 
         DISCORD_RP_STATE(null, 0),
         DISCORD_RP_DETAILS(null, 0);
@@ -297,7 +298,7 @@ public class EnumUtils {
         MYNAMEISJEFF("MyNameIsJeff", "github.com/My-Name-Is-Jeff", Feature.SHOW_BROKEN_FRAGMENTS),
         DJTHEREDSTONER("DJtheRedstoner", "github.com/DJtheRedstoner", Feature.LEGENDARY_SEA_CREATURE_WARNING, Feature.HIDE_SVEN_PUP_NAMETAGS),
         ANTONIO32A("Antonio32A", "github.com/Antonio32A", Feature.ONLY_BREAK_LOGS_PARK),
-        CHARZARD("Charzard4261", "github.com/Charzard4261", Feature.DISABLE_TELEPORT_PAD_MESSAGES, Feature.BAIT_LIST);
+        CHARZARD("Charzard4261", "github.com/Charzard4261", Feature.DISABLE_TELEPORT_PAD_MESSAGES, Feature.BAIT_LIST, Feature.SHOW_BASE_STAT_BOOST_PERCENTAGE);
 
         private Set<Feature> features;
         private String author;

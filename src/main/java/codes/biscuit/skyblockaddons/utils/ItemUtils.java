@@ -83,4 +83,22 @@ public class ItemUtils {
 
         return null;
     }
+
+    public static NBTTagCompound getSkyblockData(final ItemStack item) {
+        if (item == null) {
+            throw new NullPointerException("Item cannot be null.");
+        } else if (!item.hasTagCompound()) {
+            return null;
+        }
+
+        return item.getSubCompound("ExtraAttributes", false);
+    }
+
+    public static int getBaseStatBoostPercentage(final NBTTagCompound extraAttributes) {
+        if (extraAttributes == null || !extraAttributes.hasKey("baseStatBoostPercentage")) {
+            return -1;
+        }
+
+        return extraAttributes.getInteger("baseStatBoostPercentage");
+    }
 }

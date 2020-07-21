@@ -788,6 +788,35 @@ public class PlayerListener {
                     }
                 }
             }
+
+
+            if (this.main.getConfigValues().isEnabled(Feature.SHOW_BASE_STAT_BOOST_PERCENTAGE) && hoveredItem.hasTagCompound()) {
+                final NBTTagCompound extraAttributesTag = ItemUtils.getSkyblockData(hoveredItem);
+                final int bsbp = ItemUtils.getBaseStatBoostPercentage(extraAttributesTag);
+                if (extraAttributesTag != null && bsbp > -1) {
+                    final boolean cbr = SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.SHOW_BASE_STAT_BOOST_PERCENTAGE_COLOUR_BY_RARITY);
+                    char colour;
+                    if (bsbp <= 10) {
+                        colour = (cbr ? 'f' : '4');
+                    }
+                    else if (bsbp <= 20) {
+                        colour = (cbr ? 'a' : 'c');
+                    }
+                    else if (bsbp <= 30) {
+                        colour = (cbr ? '9' : 'e');
+                    }
+                    else if (bsbp <= 40) {
+                        colour = (cbr ? '5' : 'a');
+                    }
+                    else if (bsbp < 50) {
+                        colour = (cbr ? '6' : '2');
+                    }
+                    else {
+                        colour = (cbr ? 'd' : '6');
+                    }
+                    e.toolTip.add("§7Base Stat Boost Percentage: §" + colour + "+" + bsbp + "%");
+                }
+            }
         }
     }
 

@@ -129,7 +129,9 @@
     "disableEndermanTeleportation": "Disable Enderman Teleportation",
     "changeZealotColor": "Change Zealot Color",
     "hideSvenPupNametags": "Hide Sven Pup Nametags",
-    "turnAllFeaturesChroma": "Turn All Features Chroma"
+    "turnAllFeaturesChroma": "Turn All Features Chroma",
+    "colourByRarity": "Colour By Rarity",
+    "baseStatBoostPercentage": "Show Dungeon Item's Base Stat Boost Percentage"
   },
   "messages": {
     "dropConfirmation": "Drop this item again to confirm!",
