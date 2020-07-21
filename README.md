@@ -85,7 +85,7 @@ git checkout -b development --track origin/development
   - [Eclipse](https://projectlombok.org/setup/eclipse)
 
 ### Getting started
-**Note:** You can use `gradle` instead using gradle wrapper `./gradlew`.
+**Note:** You can use `gradle` instead of using gradle wrapper `./gradlew`.
 
 1. Clone the repository
 2. Setup the development environment
