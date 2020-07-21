@@ -130,7 +130,7 @@ git checkout -b development --track origin/development
     >
     > You may want to re-run the gradle task
     > ```shell script
-    > ./gradlew setupDevWorkspace setupDecompWorkspace
+    > ./gradlew setupDecompWorkspace
     > ```
     > so the access transformers are applied to the source code!
     > 
