@@ -2,7 +2,6 @@ package codes.biscuit.skyblockaddons.asm.hooks;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsSetup;
-import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsTransformer;
 import net.minecraft.client.audio.ISound;
 import net.minecraft.client.audio.SoundCategory;
 import net.minecraft.client.audio.SoundManager;

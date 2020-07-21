@@ -15,10 +15,10 @@ import java.util.Map;
  */
 public class SkyblockAddonsSetup implements IFMLCallHook {
     @Getter private static SkyblockAddonsSetup instance;
+    private static Logger logger;
 
     // Data injected from FML
     private static HashMap<String, Object> callData;
-    private static Logger logger;
 
     // Variables for storing the injected data for easy access
     private static LaunchClassLoader classLoader;
@@ -61,11 +61,11 @@ public class SkyblockAddonsSetup implements IFMLCallHook {
      */
     @Override
     public Void call() {
-        logger.debug("SBA Setup Called");
+        logger.entry();
         loadData();
         checkIfUsingLabyModClient();
 
-        return null;
+        return logger.exit(null);
     }
 
     /**
