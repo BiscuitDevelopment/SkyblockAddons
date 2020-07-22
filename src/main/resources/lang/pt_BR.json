@@ -8,7 +8,7 @@
     "skeletonHatBonesBar": "Barra de Ossos para Capacete Esqueleto",
     "hideFoodAndArmor": "Esconder Barra de Fome e Armadura",
     "fullInventoryWarning": "Aviso de Inventário Cheio",
-    "repeating": "Repeating",
+    "repeating": "Alerta de Repetição",
     "disableEmberRodAbility": "Desativar Bastão de Brasa em Sua Ilha",
     "editLocations": "Editar Posições",
     "guiScale": "Interface: %scale%",
@@ -68,7 +68,7 @@
     "soundIndicatorForFishing": "Indicador de som para pesca",
     "avoidBlinkingNightVision": "Evite a poção de Visão Noturna piscar",
     "disableMinionLocationWarning": "Desativar avisos de localização não perfeita",
-    "jungleAxeCooldown": "Recarga do Machado da Selva",
+    "jungleAxeCooldown": "Recarga do Machado da Selva/Treecapitator em recarga",
     "organizeLongEnchantmentLists": "Organizar lista de encantamentos longos",
     "showItemCooldowns": "Mostrar tempo de recarga dos itens",
     "speedPercentage": "Porcentagem de velocidade",
@@ -86,7 +86,7 @@
       "compact": "Compacto"
     },
     "disableMagicalSoupMessage": "Desativar mensagens da Sopa de Cogumelo Mágica",
-    "zealotCounter": "Mostrar contador de Zealots",
+    "zealotCounter": "Contador de Zealots - Conta desde o último olho",
     "tickerChargesDisplay": "Exibição de Tickers/Cargas",
     "tab": {
       "generalSettings": "Configurações Gerais"
@@ -100,7 +100,7 @@
     "chromaSpeed": "Velocidade do Chroma",
     "chromaMode": "Modo de Cor do Chroma",
     "chromaModes": {
-      "allTheSame": "Todos de Mesma Cor",
+      "allTheSame": "Todos da Mesma Cor",
       "fade": "Desvanecer da Cor"
     },
     "chromaFadeWidth": "Largura de Desvanecimento do Chroma",
