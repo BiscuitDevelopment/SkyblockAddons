@@ -1,6 +1,6 @@
 package codes.biscuit.skyblockaddons.asm.utils;
 
-import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsTransformer;
+import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsSetup;
 
 public enum TransformerClass {
 
@@ -70,7 +70,7 @@ public enum TransformerClass {
         this.seargeClass = seargeClass;
         this.notchClass18 = notchClass18;
 
-        if (SkyblockAddonsTransformer.isDeobfuscated() || !SkyblockAddonsTransformer.isUsingNotchMappings()) {
+        if (SkyblockAddonsSetup.isDeobfuscatedEnvironment() || !SkyblockAddonsSetup.isRuntimeDeobfuscationEnabled()) {
             name = seargeClass;
         } else {
             name = notchClass18;
@@ -92,7 +92,7 @@ public enum TransformerClass {
     }
 
     public String getTransformerName() {
-        if (SkyblockAddonsTransformer.isLabymodClient()) return notchClass18;
+        if (SkyblockAddonsSetup.isUsingLabyModClient()) return notchClass18;
 
         return seargeClass.replaceAll("/", ".");
     }

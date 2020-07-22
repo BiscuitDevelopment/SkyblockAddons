@@ -122,6 +122,7 @@ public class SkyblockAddonsGui extends GuiScreen {
         buttonList.add(new ButtonSocial(width / 2 + 200, 30, main, EnumUtils.Social.YOUTUBE));
         buttonList.add(new ButtonSocial(width / 2 + 175, 30, main, EnumUtils.Social.DISCORD));
         buttonList.add(new ButtonSocial(width / 2 + 150, 30, main, EnumUtils.Social.GITHUB));
+        buttonList.add(new ButtonSocial(width / 2 + 125, 30, main, EnumUtils.Social.PATREON));
 
         for (Feature feature : features) {
             if (skip == 0) {

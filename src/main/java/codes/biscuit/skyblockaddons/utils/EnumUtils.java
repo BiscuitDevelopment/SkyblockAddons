@@ -394,7 +394,8 @@ public class EnumUtils {
     public enum Social {
         YOUTUBE("youtube", "https://www.youtube.com/channel/UCYmE9-052frn0wQwqa6i8_Q"),
         DISCORD("discord", "https://biscuit.codes/discord"),
-        GITHUB("github", "https://github.com/BiscuitDevelopment/SkyblockAddons");
+        GITHUB("github", "https://github.com/BiscuitDevelopment/SkyblockAddons"),
+        PATREON("patreon", "https://www.patreon.com/biscuitdev");
 
         private ResourceLocation resourceLocation;
         private URI url;
