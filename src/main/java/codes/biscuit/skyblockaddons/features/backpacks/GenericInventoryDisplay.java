@@ -1,6 +1,7 @@
 package codes.biscuit.skyblockaddons.features.backpacks;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsSetup;
 import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsTransformer;
 import lombok.Getter;
 import net.minecraft.client.Minecraft;
@@ -49,7 +50,7 @@ public class GenericInventoryDisplay {
     }
 
     protected static void setZLevel(Gui gui, int zLevelToSet) {
-        if (SkyblockAddonsTransformer.isLabymodClient()) { // There are no access transformers in labymod.
+        if (SkyblockAddonsSetup.isUsingLabyModClient()) { // There are no access transformers in labymod.
             try {
                 if (zLevel == null) {
                     zLevel = gui.getClass().getDeclaredField("e");
@@ -67,7 +68,7 @@ public class GenericInventoryDisplay {
     }
 
     protected static void drawHoveringText(GuiContainer guiContainer, java.util.List<String> text, int x, int y) {
-        if (SkyblockAddonsTransformer.isLabymodClient()) { // There are no access transformers in labymod.
+        if (SkyblockAddonsSetup.isUsingLabyModClient()) { // There are no access transformers in labymod.
             try {
                 if (drawHoveringText == null) {
                     drawHoveringText = guiContainer.getClass().getSuperclass().getDeclaredMethod("a",
