@@ -84,7 +84,7 @@ public class ItemUtils {
         return null;
     }
 
-    public static NBTTagCompound getSkyblockData(final ItemStack item) {
+    public static NBTTagCompound getSkyblockData(ItemStack item) {
         if (item == null) {
             throw new NullPointerException("Item cannot be null.");
         } else if (!item.hasTagCompound()) {
@@ -94,7 +94,12 @@ public class ItemUtils {
         return item.getSubCompound("ExtraAttributes", false);
     }
 
-    public static int getBaseStatBoostPercentage(final NBTTagCompound extraAttributes) {
+    /**
+     * Returns the Base Stat Boost Percentage from a given Skyblock Extra Attributes NBT Compound
+     * @param extraAttributes the NBT to check
+     * @return the BSPB or {@code -1} if it isn't a Dungeons Item or this isn't a valid Skyblock NBT
+     */
+    public static int getBaseStatBoostPercentage(NBTTagCompound extraAttributes) {
         if (extraAttributes == null || !extraAttributes.hasKey("baseStatBoostPercentage")) {
             return -1;
         }
