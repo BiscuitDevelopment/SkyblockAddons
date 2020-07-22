@@ -137,6 +137,11 @@ public class GuiContainerTransformer implements ITransformer {
                 //     ReturnValue returnValue = new ReturnValue();
                 //     GuiInventoryHook.handleMouseClick(this.guiLeft, this.guiTop, this.oldMouseX, this.oldMouseY, this.xSize, this.ySize, returnValue);
                 //     if (returnValue.isCancelled()) {
+                //         int v = returnValue.getValue();
+                //         if (v == -1) {
+                //             return;
+                //         }
+                //         super.handleMouseClick(slotIn, slotId, v, clickType);
                 //         return;
                 //     }
                 //     super.handleMouseClick(slotIn, slotId, clickedButton, clickType);
@@ -254,8 +259,32 @@ public class GuiContainerTransformer implements ITransformer {
         LabelNode notCancelled = new LabelNode(); // if (returnValue.isCancelled())
         list.add(new JumpInsnNode(Opcodes.IFEQ, notCancelled));
 
+        list.add(new VarInsnNode(Opcodes.ALOAD, 5));
+        list.add(new MethodInsnNode(Opcodes.INVOKEVIRTUAL, "codes/biscuit/skyblockaddons/asm/utils/ReturnValue", "getReturnValue", "()Ljava/lang/Object;", false));
+        list.add(new TypeInsnNode(Opcodes.CHECKCAST, "java/lang/Integer"));
+        list.add(new MethodInsnNode(Opcodes.INVOKEVIRTUAL, "java/lang/Integer", "intValue", "()I", false));
+        list.add(new InsnNode(Opcodes.DUP));
+        list.add(new VarInsnNode(Opcodes.ISTORE, 6)); // int v = returnValue.getValue();
+
+        list.add(new InsnNode(Opcodes.ICONST_M1));
+        LabelNode notMinusOne = new LabelNode();
+        list.add(new JumpInsnNode(Opcodes.IF_ICMPNE, notMinusOne)); // if (v == -1)
         list.add(new InsnNode(Opcodes.RETURN)); // return;
+
+        list.add(notMinusOne);
+
+        list.add(new VarInsnNode(Opcodes.ALOAD, 0));
+        list.add(new VarInsnNode(Opcodes.ALOAD, 1)); // slotIn
+        list.add(new VarInsnNode(Opcodes.ILOAD, 2)); // slotId
+        list.add(new VarInsnNode(Opcodes.ILOAD, 6)); // v (returnValue.getValue())
+        list.add(new VarInsnNode(Opcodes.ILOAD, 4)); // clickType
+        // super.handleMouseClick(slotIn, slotId, v, clickType);
+        list.add(new MethodInsnNode(Opcodes.INVOKESPECIAL, TransformerClass.GuiContainer.getNameRaw(), TransformerMethod.handleMouseClick.getName(), "("+TransformerClass.Slot.getName()+"III)V", false));
+
+        list.add(new InsnNode(Opcodes.RETURN)); // return;
+
         list.add(notCancelled);
+
         return list;
     }
 }

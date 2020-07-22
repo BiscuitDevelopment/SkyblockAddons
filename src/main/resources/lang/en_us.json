@@ -129,7 +129,8 @@
     "disableEndermanTeleportation": "Disable Enderman Teleportation",
     "changeZealotColor": "Change Zealot Color",
     "hideSvenPupNametags": "Hide Sven Pup Nametags",
-    "turnAllFeaturesChroma": "Turn All Features Chroma"
+    "turnAllFeaturesChroma": "Turn All Features Chroma",
+    "replaceLeftClickMiddleClick": "Replace Left Click with Middle Click in Inventories"
   },
   "messages": {
     "dropConfirmation": "Drop this item again to confirm!",
