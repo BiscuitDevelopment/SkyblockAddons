@@ -83,4 +83,25 @@ public class ItemUtils {
 
         return null;
     }
+
+    public static NBTTagCompound getExtraAttributes(ItemStack item) {
+        if (item == null || !item.hasTagCompound()) {
+            return null;
+        }
+
+        return item.getSubCompound("ExtraAttributes", false);
+    }
+
+    /**
+     * Returns the Base Stat Boost Percentage from a given Skyblock Extra Attributes NBT Compound
+     * @param extraAttributes the NBT to check
+     * @return the BSPB or {@code -1} if it isn't a Dungeons Item or this isn't a valid Skyblock NBT
+     */
+    public static int getBaseStatBoostPercentage(NBTTagCompound extraAttributes) {
+        if (extraAttributes == null || !extraAttributes.hasKey("baseStatBoostPercentage")) {
+            return -1;
+        }
+
+        return extraAttributes.getInteger("baseStatBoostPercentage");
+    }
 }

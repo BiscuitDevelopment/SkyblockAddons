@@ -134,6 +134,8 @@ public enum Message {
     SETTING_MAP_ZOOM(MessageObject.SETTING, "mapZoom"),
     SETTING_GLOWING_DROPPED_ITEMS(MessageObject.SETTING, "glowingDroppedItems"),
     SETTING_GLOWING_DUNGEON_TEAMMATES(MessageObject.SETTING, "glowingDungeonTeammates"),
+    SETTING_SHOW_BASE_STAT_BOOST_PERCENTAGE(MessageObject.SETTING, "baseStatBoostPercentage"),
+    SETTING_COLOR_BY_RARITY(MessageObject.SETTING, "colorByRarity"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.BACKPACK_STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.BACKPACK_STYLE, "compact"),

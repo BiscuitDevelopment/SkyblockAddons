@@ -372,6 +372,15 @@ public class SettingsGui extends GuiScreen {
                     main.getConfigValues().getMapZoom().setValue(value);
                 }
             }).setPrefix("Map Zoom: "));
+        } else if (setting == EnumUtils.FeatureSetting.COLOUR_BY_RARITY) {
+            boxWidth = 31;
+            x = halfWidth - boxWidth / 2;
+            y = this.getRowHeightSetting(this.row);
+            Feature settingFeature = null;
+            if (this.feature == Feature.SHOW_BASE_STAT_BOOST_PERCENTAGE) {
+                settingFeature = Feature.SHOW_BASE_STAT_BOOST_PERCENTAGE_COLOUR_BY_RARITY;
+            }
+            buttonList.add(new ButtonToggleTitle(x, y, Message.SETTING_COLOR_BY_RARITY.getMessage(), this.main, settingFeature));
         } else {
             boxWidth = 31; // Default size and stuff.
             x = halfWidth-(boxWidth/2);

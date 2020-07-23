@@ -1,15 +1,12 @@
 package codes.biscuit.skyblockaddons.listeners;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.core.Attribute;
-import codes.biscuit.skyblockaddons.core.Feature;
-import codes.biscuit.skyblockaddons.core.Location;
-import codes.biscuit.skyblockaddons.core.Message;
+import codes.biscuit.skyblockaddons.core.*;
+import codes.biscuit.skyblockaddons.features.BaitManager;
 import codes.biscuit.skyblockaddons.features.EnchantedItemBlacklist;
 import codes.biscuit.skyblockaddons.features.EndstoneProtectorManager;
 import codes.biscuit.skyblockaddons.features.backpacks.Backpack;
 import codes.biscuit.skyblockaddons.features.backpacks.BackpackManager;
-import codes.biscuit.skyblockaddons.features.BaitManager;
 import codes.biscuit.skyblockaddons.features.cooldowns.CooldownManager;
 import codes.biscuit.skyblockaddons.features.powerorbs.PowerOrbManager;
 import codes.biscuit.skyblockaddons.features.tabtimers.TabEffectManager;
@@ -692,28 +689,6 @@ public class PlayerListener {
                 }
             }
 
-            if (main.getConfigValues().isEnabled(Feature.SHOW_ITEM_ANVIL_USES)) {
-                // Anvil Uses ~ original done by Dahn#6036
-                int anvilUses = main.getUtils().getNBTInteger(hoveredItem, "ExtraAttributes", "anvil_uses");
-                if (anvilUses != -1) {
-                    int insertAt = e.toolTip.size();
-                    insertAt--; // 1 line for the rarity
-                    if (Minecraft.getMinecraft().gameSettings.advancedItemTooltips) {
-                        insertAt -= 2; // 1 line for the item name, and 1 line for the nbt
-                        if (e.itemStack.isItemDamaged()) {
-                            insertAt--; // 1 line for damage
-                        }
-                    }
-                    int hotPotatoCount = main.getUtils().getNBTInteger(hoveredItem, "ExtraAttributes", "hot_potato_count");
-                    if (hotPotatoCount != -1) {
-                        anvilUses -= hotPotatoCount;
-                    }
-                    if (anvilUses > 0) {
-                        e.toolTip.add(insertAt, Message.MESSAGE_ANVIL_USES.getMessage(String.valueOf(anvilUses)));
-                    }
-                }
-            }
-
             if (main.getConfigValues().isEnabled(Feature.REPLACE_ROMAN_NUMERALS_WITH_NUMBERS)) {
                 for (int i = 0; i < e.toolTip.size(); i++) {
                     e.toolTip.set(i, RomanNumeralParser.replaceNumeralsWithIntegers(e.toolTip.get(i)));
@@ -762,12 +737,26 @@ public class PlayerListener {
                 }
             }
 
-            // Append Skyblock Item ID to end of tooltip if in developer mode
-            if (main.isDevMode() && e.showAdvancedItemTooltips) {
-                String itemId = ItemUtils.getSkyBlockItemID(e.itemStack);
+            int insertAt = e.toolTip.size();
+            insertAt--; // 1 line for the rarity
+            if (Minecraft.getMinecraft().gameSettings.advancedItemTooltips) {
+                insertAt -= 2; // 1 line for the item name, and 1 line for the nbt
+                if (e.itemStack.isItemDamaged()) {
+                    insertAt--; // 1 line for damage
+                }
+            }
 
-                if (itemId != null) {
-                    e.toolTip.add(EnumChatFormatting.DARK_GRAY + "Skyblock ID: " + itemId);
+            if (main.getConfigValues().isEnabled(Feature.SHOW_ITEM_ANVIL_USES)) {
+                // Anvil Uses ~ original done by Dahn#6036
+                int anvilUses = main.getUtils().getNBTInteger(hoveredItem, "ExtraAttributes", "anvil_uses");
+                if (anvilUses != -1) {
+                    int hotPotatoCount = main.getUtils().getNBTInteger(hoveredItem, "ExtraAttributes", "hot_potato_count");
+                    if (hotPotatoCount != -1) {
+                        anvilUses -= hotPotatoCount;
+                    }
+                    if (anvilUses > 0) {
+                        e.toolTip.add(insertAt++, Message.MESSAGE_ANVIL_USES.getMessage(String.valueOf(anvilUses)));
+                    }
                 }
             }
 
@@ -778,10 +767,39 @@ public class PlayerListener {
 
                         if (extraAttributesTag != null) {
                             if (extraAttributesTag.hasKey("bossId") && extraAttributesTag.hasKey("spawnedFor")) {
-                                e.toolTip.add("§c§lBROKEN FRAGMENT§r");
+                                e.toolTip.add(insertAt++, "§c§lBROKEN FRAGMENT§r");
                             }
                         }
                     }
+                }
+            }
+
+            if (main.getConfigValues().isEnabled(Feature.SHOW_BASE_STAT_BOOST_PERCENTAGE) && hoveredItem.hasTagCompound()) {
+                NBTTagCompound extraAttributes = ItemUtils.getExtraAttributes(hoveredItem);
+                if (extraAttributes != null) {
+                    int baseStatBoost = ItemUtils.getBaseStatBoostPercentage(extraAttributes);
+                    if (baseStatBoost != -1) {
+
+                        ColorCode colorCode = main.getConfigValues().getRestrictedColor(Feature.SHOW_BASE_STAT_BOOST_PERCENTAGE);
+                        if (main.getConfigValues().isEnabled(Feature.SHOW_BASE_STAT_BOOST_PERCENTAGE_COLOUR_BY_RARITY)) {
+
+                            int rarityIndex = baseStatBoost/10;
+                            if (rarityIndex < 0) rarityIndex = 0;
+                            if (rarityIndex >= ItemRarity.values().length) rarityIndex = ItemRarity.values().length - 1;
+
+                            colorCode = ItemRarity.values()[rarityIndex].getColorCode();
+                        }
+                        e.toolTip.add(insertAt, "§7Base Stat Boost: " + colorCode + "+" + baseStatBoost + "%");
+                    }
+                }
+            }
+
+            // Append Skyblock Item ID to end of tooltip if in developer mode
+            if (main.isDevMode() && e.showAdvancedItemTooltips) {
+                String itemId = ItemUtils.getSkyBlockItemID(e.itemStack);
+
+                if (itemId != null) {
+                    e.toolTip.add(insertAt++, EnumChatFormatting.DARK_GRAY + "Skyblock ID: " + itemId);
                 }
             }
         }
