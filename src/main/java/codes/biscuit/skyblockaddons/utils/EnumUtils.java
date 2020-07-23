@@ -251,9 +251,14 @@ public class EnumUtils {
         ENABLE_CAKE_BAG_PREVIEW(SETTING_SHOW_CAKE_BAG_PREVIEW, 71),
         ENABLE_BACKPACK_PREVIEW_AH(SETTING_SHOW_BACKPACK_PREVIEW_AH, 72),
         SORT_TAB_EFFECT_TIMERS(SETTING_SORT_TAB_EFFECT_TIMERS, 74),
+        ROTATE_MAP(SETTING_ROTATE_MAP, 100),
+        CENTER_ROTATION_ON_PLAYER(SETTING_CENTER_ROTATION_ON_PLAYER, 101),
+        MAP_ZOOM(SETTING_MAP_ZOOM, -1),
 
         DISCORD_RP_STATE(null, 0),
-        DISCORD_RP_DETAILS(null, 0);
+        DISCORD_RP_DETAILS(null, 0)
+
+        ;
 
         @Getter private Message message;
         private int featureEquivalent;

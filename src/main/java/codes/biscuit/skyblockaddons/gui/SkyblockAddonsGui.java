@@ -441,7 +441,7 @@ public class SkyblockAddonsGui extends GuiScreen {
             buttonList.add(new ButtonNormal(x, y, text, main, feature));
 
             if (feature == Feature.CHROMA_SPEED) {
-                buttonList.add(new ButtonSlider(x + 35, y + boxHeight - 23, 70, 15, main, main.getConfigValues().getChromaSpeed(),
+                buttonList.add(new ButtonSlider(x + 35, y + boxHeight - 23, 70, 15, main.getConfigValues().getChromaSpeed(),
                         0.1F, 10, 0.5F, new ButtonSlider.OnSliderChangeCallback() {
                     @Override
                     public void sliderUpdated(float value) {
@@ -449,7 +449,7 @@ public class SkyblockAddonsGui extends GuiScreen {
                     }
                 }));
             } else if (feature == Feature.CHROMA_FADE_WIDTH) {
-                buttonList.add(new ButtonSlider(x + 35, y + boxHeight - 23, 70, 15, main, main.getConfigValues().getChromaFadeWidth(),
+                buttonList.add(new ButtonSlider(x + 35, y + boxHeight - 23, 70, 15, main.getConfigValues().getChromaFadeWidth(),
                         1, 42, 1, new ButtonSlider.OnSliderChangeCallback() {
                     @Override
                     public void sliderUpdated(float value) {

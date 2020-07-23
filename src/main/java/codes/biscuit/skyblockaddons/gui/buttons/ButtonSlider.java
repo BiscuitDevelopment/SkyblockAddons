@@ -18,17 +18,18 @@ public class ButtonSlider extends GuiButton {
     private float sliderValue;
     private boolean dragging;
 
-    private SkyblockAddons main;
+    private SkyblockAddons main = SkyblockAddons.getInstance();
 
     private OnSliderChangeCallback sliderCallback;
 
-    public ButtonSlider(double x, double y, int width, int height, SkyblockAddons main, float initialValue,
+    private String prefix = null;
+
+    public ButtonSlider(double x, double y, int width, int height, float initialValue,
                         float min, float max, float step, OnSliderChangeCallback sliderCallback) {
         super(0, (int)x, (int)y, "");
         this.sliderValue = 0;
         this.displayString = "";
         this.sliderValue = initialValue;
-        this.main = main;
         this.width = width;
         this.height = height;
         this.sliderCallback = sliderCallback;
@@ -107,12 +108,18 @@ public class ButtonSlider extends GuiButton {
 
     public void valueUpdated() {
         sliderCallback.sliderUpdated(sliderValue);
-        this.displayString = String.valueOf(getRoundedValue(denormalizeScale(sliderValue)));
+        this.displayString = (prefix != null ? prefix : "") + getRoundedValue(denormalizeScale(sliderValue));
     }
 
     public abstract static class OnSliderChangeCallback {
 
         public abstract void sliderUpdated(float value);
+    }
+
+    public ButtonSlider setPrefix(String text) {
+        prefix = text;
+        this.displayString = prefix + getRoundedValue(denormalizeScale(sliderValue));
+        return this;
     }
 }
 

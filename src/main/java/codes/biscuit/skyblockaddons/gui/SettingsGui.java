@@ -362,6 +362,16 @@ public class SettingsGui extends GuiScreen {
             }
 
             row += 0.4;
+        } else if (setting == EnumUtils.FeatureSetting.MAP_ZOOM) {
+            boxWidth = 100; // Default size and stuff.
+            x = halfWidth-(boxWidth/2);
+            y = getRowHeightSetting(row);
+            buttonList.add(new ButtonSlider(x, y, 100, 20, main.getConfigValues().getMapZoom().getValue(), 0.5F, 5F, 0.1F, new ButtonSlider.OnSliderChangeCallback() {
+                @Override
+                public void sliderUpdated(float value) {
+                    main.getConfigValues().getMapZoom().setValue(value);
+                }
+            }).setPrefix("Map Zoom: "));
         } else {
             boxWidth = 31; // Default size and stuff.
             x = halfWidth-(boxWidth/2);
