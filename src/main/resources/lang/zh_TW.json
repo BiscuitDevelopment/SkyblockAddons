@@ -129,7 +129,13 @@
     "disableEndermanTeleportation": "取消終界使者傳送",
     "changeZealotColor": "變更Zealot顏色",
     "hideSvenPupNametags": "隱藏Sven Pup 名稱",
-    "turnAllFeaturesChroma": "套用淡出淡入於所有功能"
+    "turnAllFeaturesChroma": "套用淡出淡入於所有功能",
+    "dungeonsMapDisplay": "Dungeons Map Display",
+    "rotateMap": "Rotate Map to Your Player's Rotation",
+    "centerRotationOnYourPlayer": "Center the Rotation Around Your Player",
+    "mapZoom": "Map Zoom",
+    "glowingDroppedItems": "Glowing Dropped Items",
+    "glowingDungeonTeammates": "Glowing Dungeon Teammates"
   },
   "messages": {
     "dropConfirmation": "再次丟棄此物品以確認!",
