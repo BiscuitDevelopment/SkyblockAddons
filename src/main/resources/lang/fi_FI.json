@@ -129,7 +129,13 @@
     "disableEndermanTeleportation": "Poista Käytöstä Endermanin Teleporttaaminen",
     "changeZealotColor": "Vaihda Zealotin Väriä",
     "hideSvenPupNametags": "Piilota Svenin poikasten Nimet",
-    "turnAllFeaturesChroma": "Vaihda Kaikki Ominaisuudet Chromaksi"
+    "turnAllFeaturesChroma": "Vaihda Kaikki Ominaisuudet Chromaksi",
+    "dungeonsMapDisplay": "Dungeons Map Display",
+    "rotateMap": "Rotate Map to Your Player's Rotation",
+    "centerRotationOnYourPlayer": "Center the Rotation Around Your Player",
+    "mapZoom": "Map Zoom",
+    "glowingDroppedItems": "Glowing Dropped Items",
+    "glowingDungeonTeammates": "Glowing Dungeon Teammates"
   },
   "messages": {
     "dropConfirmation": "Pudota tämä esine uudelleen vahvistaaksesi!",
