@@ -366,7 +366,8 @@ public class EnumUtils {
         POWER_ORB_DISPLAY,
         TICKER,
         BAIT_LIST_DISPLAY,
-        TAB_EFFECT_TIMERS
+        TAB_EFFECT_TIMERS,
+        DUNGEONS_MAP
     }
 
     @Getter

@@ -6,8 +6,6 @@ import codes.biscuit.skyblockaddons.tweaker.transformer.ITransformer;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.tree.*;
 
-import java.util.Iterator;
-
 public class FontRendererTransformer implements ITransformer {
 
     /**
@@ -23,33 +21,14 @@ public class FontRendererTransformer implements ITransformer {
         for (MethodNode methodNode : classNode.methods) {
 
             // Objective:
-            // Find:
-            //   return (float value)
-            // Change to:
-            //   float f4 = (float value)
+            // Find Method Head: Add:
             //   FontRendererHook.changeTextColor(); <- insert the call right before the return
-            //   return f4;
 
+            // TODO Test with patcher...
             if (TransformerMethod.renderChar.matches(methodNode) || methodNode.name.equals("renderChar")) {
-                Iterator<AbstractInsnNode> iterator = methodNode.instructions.iterator();
-                while (iterator.hasNext()) {
-                    AbstractInsnNode abstractNode = iterator.next();
-
-                    if (abstractNode.getOpcode() == Opcodes.FRETURN) {
-                        methodNode.instructions.insertBefore(abstractNode, insertChangeTextColor());
-                    }
-                }
+                methodNode.instructions.insertBefore(methodNode.instructions.getFirst(),
+                        new MethodInsnNode(Opcodes.INVOKESTATIC, "codes/biscuit/skyblockaddons/asm/hooks/FontRendererHook", "changeTextColor", "()V", false));
             }
         }
-    }
-
-    private InsnList insertChangeTextColor() {
-        InsnList list = new InsnList();
-
-        list.add(new VarInsnNode(Opcodes.FSTORE, 4)); // Store it in a variable for now.
-        list.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "codes/biscuit/skyblockaddons/asm/hooks/FontRendererHook", "changeTextColor", "()V", false));
-        list.add(new VarInsnNode(Opcodes.FLOAD, 4)); // Call back the stored variable to return it.
-
-        return list;
     }
 }

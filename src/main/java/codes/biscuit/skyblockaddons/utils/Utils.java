@@ -7,6 +7,7 @@ import codes.biscuit.skyblockaddons.events.SkyblockLeftEvent;
 import codes.biscuit.skyblockaddons.features.backpacks.Backpack;
 import codes.biscuit.skyblockaddons.features.itemdrops.ItemDropChecker;
 import codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui;
+import codes.biscuit.skyblockaddons.misc.ChromaManager;
 import codes.biscuit.skyblockaddons.misc.scheduler.Scheduler;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
@@ -15,6 +16,7 @@ import com.google.gson.*;
 import lombok.Getter;
 import lombok.Setter;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.MapItemRenderer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.WorldRenderer;
@@ -32,6 +34,7 @@ import net.minecraft.scoreboard.Scoreboard;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.Vec4b;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Loader;
@@ -47,7 +50,6 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.net.HttpURLConnection;
-import java.net.URI;
 import java.net.URL;
 import java.util.List;
 import java.util.*;
@@ -132,10 +134,6 @@ public class Utils {
     private boolean inDungeon;
 
     private boolean fadingIn;
-
-    // Featured link
-    private boolean lookedOnline;
-    private URI featuredLink;
 
     private long lastDamaged = -1;
 
@@ -648,23 +646,18 @@ public class Utils {
     }
 
     public void drawTextWithStyle(String text, float x, float y, int color) {
-        GlStateManager.pushMatrix();
-        GlStateManager.translate(x, y, 0);
-
         if (main.getConfigValues().getTextStyle() == EnumUtils.TextStyle.STYLE_TWO) {
             int colorAlpha = Math.max(getAlpha(color), 4);
             int colorBlack = new Color(0, 0, 0, colorAlpha/255F).getRGB();
             String strippedText = TextUtils.stripColor(text);
-            Minecraft.getMinecraft().fontRendererObj.drawString(strippedText,1, 0, colorBlack, false);
-            Minecraft.getMinecraft().fontRendererObj.drawString(strippedText, -1, 0, colorBlack, false);
-            Minecraft.getMinecraft().fontRendererObj.drawString(strippedText, 0, 1, colorBlack, false);
-            Minecraft.getMinecraft().fontRendererObj.drawString(strippedText, 0, -1, colorBlack, false);
-            Minecraft.getMinecraft().fontRendererObj.drawString(text, 0, 0, color, false);
+            Minecraft.getMinecraft().fontRendererObj.drawString(strippedText,x+1, y+0, colorBlack, false);
+            Minecraft.getMinecraft().fontRendererObj.drawString(strippedText, x+-1, y+0, colorBlack, false);
+            Minecraft.getMinecraft().fontRendererObj.drawString(strippedText, x+0, y+1, colorBlack, false);
+            Minecraft.getMinecraft().fontRendererObj.drawString(strippedText, x+0, y+-1, colorBlack, false);
+            Minecraft.getMinecraft().fontRendererObj.drawString(text, x+0, y+0, color, false);
         } else {
-            Minecraft.getMinecraft().fontRendererObj.drawString(text, 0, 0, color, true);
+            Minecraft.getMinecraft().fontRendererObj.drawString(text, x+0, y+0, color, true);
         }
-
-        GlStateManager.popMatrix();
     }
 
     public int getDefaultBlue(int alpha) {
@@ -762,10 +755,14 @@ public class Utils {
         }
     }
 
+    public void drawRect(double left, double top, double right, double bottom, int color) {
+        drawRect(left, top, right, bottom, color, false);
+    }
+
     /**
      * Draws a solid color rectangle with the specified coordinates and color (ARGB format). Args: x1, y1, x2, y2, color
      */
-    public void drawRect(double left, double top, double right, double bottom, int color) {
+    public void drawRect(double left, double top, double right, double bottom, int color, boolean chroma) {
         if (left < right) {
             double i = left;
             left = right;
@@ -778,24 +775,75 @@ public class Utils {
             bottom = j;
         }
 
-        float f3 = (float)(color >> 24 & 255) / 255.0F;
-        float f = (float)(color >> 16 & 255) / 255.0F;
-        float f1 = (float)(color >> 8 & 255) / 255.0F;
-        float f2 = (float)(color & 255) / 255.0F;
+        if (!chroma) {
+            float f3 = (float) (color >> 24 & 255) / 255.0F;
+            float f = (float) (color >> 16 & 255) / 255.0F;
+            float f1 = (float) (color >> 8 & 255) / 255.0F;
+            float f2 = (float) (color & 255) / 255.0F;
+            GlStateManager.color(f, f1, f2, f3);
+        }
         Tessellator tessellator = Tessellator.getInstance();
         WorldRenderer worldrenderer = tessellator.getWorldRenderer();
         GlStateManager.enableBlend();
         GlStateManager.disableTexture2D();
         GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
-        GlStateManager.color(f, f1, f2, f3);
-        worldrenderer.begin(7, DefaultVertexFormats.POSITION);
-        worldrenderer.pos(left, bottom, 0.0D).endVertex();
-        worldrenderer.pos(right, bottom, 0.0D).endVertex();
-        worldrenderer.pos(right, top, 0.0D).endVertex();
-        worldrenderer.pos(left, top, 0.0D).endVertex();
-        tessellator.draw();
+        if (chroma) {
+            GlStateManager.shadeModel(GL11.GL_SMOOTH);
+            worldrenderer.begin(7, DefaultVertexFormats.POSITION_COLOR);
+            posChromaColor(worldrenderer, left, bottom);
+            posChromaColor(worldrenderer, right, bottom);
+            posChromaColor(worldrenderer, right, top);
+            posChromaColor(worldrenderer, left, top);
+            tessellator.draw();
+        } else {
+            worldrenderer.begin(7, DefaultVertexFormats.POSITION);
+            worldrenderer.pos(left, bottom, 0.0D).endVertex();
+            worldrenderer.pos(right, bottom, 0.0D).endVertex();
+            worldrenderer.pos(right, top, 0.0D).endVertex();
+            worldrenderer.pos(left, top, 0.0D).endVertex();
+            tessellator.draw();
+        }
         GlStateManager.enableTexture2D();
         GlStateManager.disableBlend();
+    }
+
+    public void posChromaColor(WorldRenderer worldRenderer, double x, double y) {
+        int color = ChromaManager.getChromaColor((float) x, (float) y);
+        float f3 = (float) (color >> 24 & 255) / 255.0F;
+        float f = (float) (color >> 16 & 255) / 255.0F;
+        float f1 = (float) (color >> 8 & 255) / 255.0F;
+        float f2 = (float) (color & 255) / 255.0F;
+        worldRenderer.pos(x, y, 0.0D).color(f, f1, f2, f3).endVertex();
+    }
+
+    /**
+     * Draws a solid color rectangle with the specified coordinates and color (ARGB format). Args: x1, y1, x2, y2, color
+     */
+    public void drawRectOutline(float x, float y, int w, int h, int thickness, int color, boolean chroma) {
+        drawSegmentedLineVertical(x-thickness, y, thickness, h, color, chroma);
+        drawSegmentedLineHorizontal(x-thickness, y-thickness, w+thickness*2, thickness, color, chroma);
+        drawSegmentedLineVertical(x+w, y, thickness, h, color, chroma);
+        drawSegmentedLineHorizontal(x-thickness, y+h, w+thickness*2, thickness, color, chroma);
+    }
+
+    public void drawSegmentedLineHorizontal(float x, float y, float w, float h, int color, boolean chroma) {
+        int segments = (int) (w / 10);
+        float length = w / segments;
+
+        for (int segment = 0; segment < segments; segment++) {
+            float start = x + length * segment;
+            drawRect(start, y, start + length, y+h, color, chroma);
+        }
+    }
+
+    public void drawSegmentedLineVertical(float x, float y, float w, float h, int color, boolean chroma) {
+        int segments = (int) (h / 10);
+        float length = h / segments;
+
+        for (int segment = 0; segment < segments; segment++) {
+            float start = y + length * segment;
+            drawRect(x, start, x+w, start + length, color, chroma);
+        }
     }
 
     public void loadLanguageFile(boolean pullOnline) {
@@ -1050,6 +1098,88 @@ public class Utils {
         }
 
         return isLoaded;
+    }
+
+    public void drawMapEdited(MapItemRenderer.Instance instance, float centerX, float centerZ, float angle, boolean drawCustomMarker) {
+        int startX = 0;
+        int startY = 0;
+        Tessellator tessellator = Tessellator.getInstance();
+        WorldRenderer worldrenderer = tessellator.getWorldRenderer();
+        float f = 0.0F;
+        Minecraft.getMinecraft().getTextureManager().bindTexture(instance.location);
+        GlStateManager.enableBlend();
+        GlStateManager.tryBlendFuncSeparate(1, 771, 0, 1);
+        worldrenderer.begin(7, DefaultVertexFormats.POSITION_TEX);
+        worldrenderer.pos((float)(startX) + f, (float)(startY + 128) - f, -0.009999999776482582D).tex(0.0D, 1.0D).endVertex();
+        worldrenderer.pos((float)(startX + 128) - f, (float)(startY + 128) - f, -0.009999999776482582D).tex(1.0D, 1.0D).endVertex();
+        worldrenderer.pos((float)(startX + 128) - f, (float)(startY) + f, -0.009999999776482582D).tex(1.0D, 0.0D).endVertex();
+        worldrenderer.pos((float)(startX) + f, (float)(startY) + f, -0.009999999776482582D).tex(0.0D, 0.0D).endVertex();
+        tessellator.draw();
+        GlStateManager.enableAlpha();
+        GlStateManager.disableBlend();
+        Minecraft.getMinecraft().getTextureManager().bindTexture(MapItemRenderer.mapIcons);
+        int decorationCount = 0;
+
+        centerX = (centerX - 64)*2;
+        centerZ = (centerZ - 64)*2;
+
+        if (drawCustomMarker) {
+            GlStateManager.pushMatrix();
+            GlStateManager.translate((float) startX + centerX / 2.0F + 64.0F, (float) startY + centerZ / 2.0F + 64.0F, -0.02F);
+            GlStateManager.rotate(angle, 0.0F, 0.0F, 1.0F);
+            GlStateManager.scale(4.0F, 4.0F, 3.0F);
+            GlStateManager.translate(-0.125F, 0.125F, 0.0F);
+            byte iconType = 1;
+            float f1 = (float) (iconType % 4) / 4.0F;
+            float f2 = (float) (iconType / 4) / 4.0F;
+            float f3 = (float) (iconType % 4 + 1) / 4.0F;
+            float f4 = (float) (iconType / 4 + 1) / 4.0F;
+            worldrenderer.begin(7, DefaultVertexFormats.POSITION_TEX);
+            float eachDecorationZOffset = -0.001F;
+            worldrenderer.pos(-1.0D, 1.0D, (float) decorationCount * eachDecorationZOffset).tex(f1, f2).endVertex();
+            worldrenderer.pos(1.0D, 1.0D, (float) decorationCount * eachDecorationZOffset).tex(f3, f2).endVertex();
+            worldrenderer.pos(1.0D, -1.0D, (float) decorationCount * eachDecorationZOffset).tex(f3, f4).endVertex();
+            worldrenderer.pos(-1.0D, -1.0D, (float) decorationCount * eachDecorationZOffset).tex(f1, f4).endVertex();
+            tessellator.draw();
+            GlStateManager.popMatrix();
+            ++decorationCount;
+        }
+
+        // Vec4b
+        // a -> Icon Type
+        // b -> X
+        // c -> Z
+        // d -> Icon Direction
+        for (Vec4b vec4b : instance.mapData.mapDecorations.values()) {
+            if (drawCustomMarker) {
+                if (vec4b.func_176110_a() == 1) continue;
+            }
+
+            GlStateManager.pushMatrix();
+            GlStateManager.translate((float)startX + (float)vec4b.func_176112_b() / 2.0F + 64.0F, (float)startY + (float)vec4b.func_176113_c() / 2.0F + 64.0F, -0.02F);
+            GlStateManager.rotate((float)(vec4b.func_176111_d() * 360) / 16.0F, 0.0F, 0.0F, 1.0F);
+            GlStateManager.scale(4.0F, 4.0F, 3.0F);
+            GlStateManager.translate(-0.125F, 0.125F, 0.0F);
+            byte iconType = vec4b.func_176110_a();
+            float f1 = (float)(iconType % 4) / 4.0F;
+            float f2 = (float)(iconType / 4) / 4.0F;
+            float f3 = (float)(iconType % 4 + 1) / 4.0F;
+            float f4 = (float)(iconType / 4 + 1) / 4.0F;
+            worldrenderer.begin(7, DefaultVertexFormats.POSITION_TEX);
+            float eachDecorationZOffset = -0.001F;
+            worldrenderer.pos(-1.0D, 1.0D, (float)decorationCount * eachDecorationZOffset).tex(f1, f2).endVertex();
+            worldrenderer.pos(1.0D, 1.0D, (float)decorationCount * eachDecorationZOffset).tex(f3, f2).endVertex();
+            worldrenderer.pos(1.0D, -1.0D, (float)decorationCount * eachDecorationZOffset).tex(f3, f4).endVertex();
+            worldrenderer.pos(-1.0D, -1.0D, (float)decorationCount * eachDecorationZOffset).tex(f1, f4).endVertex();
+            tessellator.draw();
+            GlStateManager.popMatrix();
+            ++decorationCount;
+        }
+
+        GlStateManager.pushMatrix();
+        GlStateManager.translate(0.0F, 0.0F, -0.04F);
+        GlStateManager.scale(1.0F, 1.0F, 1.0F);
+        GlStateManager.popMatrix();
     }
 
     public void drawCenteredString(String text, float x, float y, int color) {

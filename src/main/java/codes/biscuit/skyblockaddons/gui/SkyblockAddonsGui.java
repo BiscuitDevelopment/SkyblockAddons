@@ -140,10 +140,18 @@ public class SkyblockAddonsGui extends GuiScreen {
         Keyboard.enableRepeatEvents(true);
     }
 
-    private boolean matchesSearch(String text) {
-        if (StringUtils.isEmpty(featureSearchBar.getText())) return true;
+    private boolean matchesSearch(String textToSearch) {
+        String searchBarText = featureSearchBar.getText();
+        if (searchBarText == null || searchBarText.isEmpty()) return true;
 
-        return text.toLowerCase().contains(featureSearchBar.getText().toLowerCase());
+        String[] searchTerms = searchBarText.toLowerCase().split(" ");
+        textToSearch = textToSearch.toLowerCase();
+
+        for (String searchTerm : searchTerms) {
+            if (textToSearch.contains(searchTerm)) return true;
+        }
+
+        return false;
     }
 
     private int findDisplayCount() {

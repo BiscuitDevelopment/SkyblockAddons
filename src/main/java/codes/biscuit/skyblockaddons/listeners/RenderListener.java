@@ -47,6 +47,7 @@ import net.minecraftforge.client.event.RenderLivingEvent;
 import net.minecraftforge.fml.client.GuiNotification;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
+import org.lwjgl.opengl.GL11;
 
 import java.awt.*;
 import java.math.BigDecimal;
@@ -71,6 +72,8 @@ public class RenderListener {
     private final static ResourceLocation ZEALOTS_PER_EYE_ICON = new ResourceLocation("skyblockaddons", "icons/zealotspereye.png");
     private final static ResourceLocation SLASH_ICON = new ResourceLocation("skyblockaddons", "icons/slash.png");
     private final static ResourceLocation IRON_GOLEM_ICON = new ResourceLocation("skyblockaddons", "icons/irongolem.png");
+
+    private final static ResourceLocation DUNGEON_MAP = new ResourceLocation("skyblockaddons", "dungeonsmap.png");
 
     private final static ItemStack WATER_BUCKET = new ItemStack(Items.water_bucket);
     private final static ItemStack IRON_SWORD = new ItemStack(Items.iron_sword);
@@ -1352,6 +1355,162 @@ public class RenderListener {
         for (int i = 0; i < display.size(); i++) {
             main.getUtils().drawTextWithStyle(display.get(i), x + iconSize + 2, startY + (i * (mc.fontRendererObj.FONT_HEIGHT + spacingBetweenLines)), ColorCode.WHITE.getColor(255).getRGB());
         }
+
+        main.getUtils().restoreGLOptions();
+    }
+
+    float originalPlayerX = Integer.MIN_VALUE;
+    float originalPlayerZ = -1;
+    float originalMapX = -1;
+    float originalMapZ = -1;
+
+    public void drawDungeonsMap(Minecraft mc, float scale, ButtonLocation buttonLocation) {
+        ItemStack possibleMapItemStack = mc.thePlayer.inventory.getStackInSlot(8);
+        if (buttonLocation == null && (possibleMapItemStack == null || possibleMapItemStack.getItem() != Items.filled_map ||
+                !possibleMapItemStack.hasDisplayName())) {
+            return;
+        }
+        boolean isScoreSummary = false;
+        if (buttonLocation == null) {
+            isScoreSummary = possibleMapItemStack.getDisplayName().contains("Your Score Summary");
+
+            if (!possibleMapItemStack.getDisplayName().contains("Magical Map") && !isScoreSummary) {
+                return;
+            }
+        }
+
+        float x = main.getConfigValues().getActualX(Feature.DUNGEONS_MAP_DISPLAY);
+        float y = main.getConfigValues().getActualY(Feature.DUNGEONS_MAP_DISPLAY);
+
+        GlStateManager.pushMatrix();
+
+        int originalSize = 128;
+        float initialScaleFactor = 0.5F;
+
+        int size = (int) (originalSize * initialScaleFactor);
+
+        int minecraftScale = new ScaledResolution(mc).getScaleFactor();
+        GL11.glEnable(GL11.GL_SCISSOR_TEST);
+        GL11.glScissor(Math.round((x - size * scale / 2F)*minecraftScale),
+                mc.displayHeight-Math.round((y + size * scale / 2F)*minecraftScale), Math.round(size * minecraftScale * scale), Math.round(size * minecraftScale * scale));
+
+        x = transformXY(x, size, scale);
+        y = transformXY(y, size, scale);
+
+        if (buttonLocation != null) {
+            buttonLocation.checkHoveredAndDrawBox(x, x+size, y, y+size, scale);
+        }
+
+        GL11.glDisable(GL11.GL_SCISSOR_TEST);
+        Color color = main.getConfigValues().getColor(Feature.DUNGEONS_MAP_DISPLAY);
+        main.getUtils().drawRect(x, y, x+size, y+size, 0x55000000);
+        main.getUtils().drawRectOutline(x, y, size, size, 1, color.getRGB(), main.getConfigValues().getChromaFeatures().contains(Feature.DUNGEONS_MAP_DISPLAY));
+        GlStateManager.color(1,1,1,1);
+        GL11.glEnable(GL11.GL_SCISSOR_TEST);
+
+        main.getUtils().enableStandardGLOptions();
+
+        GlStateManager.color(1,1,1,1);
+
+        float rotation = 180 - MathHelper.wrapAngleTo180_float(mc.thePlayer.rotationYaw);
+
+        float zoomScaleFactor = main.getUtils().denormalizeScale(main.getConfigValues().getMapZoom().getValue(), 0.5F, 5, 0.1F);
+        if (isScoreSummary) {
+            zoomScaleFactor = 1;
+        }
+
+        float totalScaleFactor = initialScaleFactor * zoomScaleFactor;
+
+        float mapSize = (originalSize * totalScaleFactor);
+
+//        float mapCenterX = x + size/2F;
+//        float mapCenterY = y + size/2F;
+
+        GlStateManager.scale(totalScaleFactor, totalScaleFactor, 1);
+        x /= totalScaleFactor;
+        y /= totalScaleFactor;
+        GlStateManager.translate(x, y, 0);
+
+        float rotationCenterX = originalSize * initialScaleFactor;
+        float rotationCenterY = originalSize * initialScaleFactor;
+
+        float centerOffset = -((mapSize-size)/zoomScaleFactor);
+        GlStateManager.translate(centerOffset, centerOffset, 0);
+
+        boolean rotate = main.getConfigValues().isEnabled(Feature.ROTATE_MAP);
+        boolean rotateOnPlayer = main.getConfigValues().isEnabled(Feature.CENTER_ROTATION_ON_PLAYER);
+
+        if (isScoreSummary) {
+            rotate = false;
+        }
+
+        if (buttonLocation == null) {
+            try {
+                MapData mapData = Items.filled_map.getMapData(possibleMapItemStack, mc.theWorld);
+
+                if (mapData != null) {
+                    if (mapData.mapDecorations != null) {
+                        for (Map.Entry<String, Vec4b> entry : mapData.mapDecorations.entrySet()) {
+                            if (entry.getValue().func_176110_a() == 1) {
+                                if (originalPlayerX == Integer.MIN_VALUE) {
+                                    originalPlayerX = (float) mc.thePlayer.posX;
+                                    originalPlayerZ = (float) mc.thePlayer.posZ;
+                                    originalMapX = entry.getValue().func_176112_b() / 2.0F + 64.0F;
+                                    originalMapZ = entry.getValue().func_176113_c() / 2.0F + 64.0F;
+                                }
+                            }
+                        }
+                    }
+
+                    float xMovement = (float) mc.thePlayer.posX - originalPlayerX;
+                    float zMovement = (float) mc.thePlayer.posZ - originalPlayerZ;
+
+                    float playerMarkerX = originalMapX + xMovement / 1.5F;
+                    float playerMarkerY = originalMapZ + zMovement / 1.5F;
+
+                    if (rotate && rotateOnPlayer && originalPlayerX != Integer.MIN_VALUE) {
+                        rotationCenterX = playerMarkerX;
+                        rotationCenterY = playerMarkerY;
+                    }
+
+                    if (rotate) {
+                        if (rotateOnPlayer) {
+                            GlStateManager.translate(size - rotationCenterX, size - rotationCenterY, 0);
+                        }
+
+                        GlStateManager.translate(rotationCenterX, rotationCenterY, 0);
+                        GlStateManager.rotate(rotation, 0, 0, 1);
+                        GlStateManager.translate(-rotationCenterX, -rotationCenterY, 0);
+                    }
+
+                    MapItemRenderer.Instance instance = mc.entityRenderer.getMapItemRenderer().getMapRendererInstance(mapData);
+                    main.getUtils().drawMapEdited(instance, playerMarkerX, playerMarkerY, 180-rotation, !isScoreSummary);
+                } else {
+                    originalPlayerX = Integer.MIN_VALUE;
+                    originalPlayerZ = -1;
+                    originalMapX = -1;
+                    originalMapZ = -1;
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        } else {
+            if (rotate) {
+                long ticks = System.currentTimeMillis() % 18000 / 50;
+
+                GlStateManager.translate(rotationCenterX, rotationCenterY, 0);
+                GlStateManager.rotate(ticks, 0, 0, 1);
+                GlStateManager.translate(-rotationCenterX, -rotationCenterY, 0);
+            }
+
+            mc.getTextureManager().bindTexture(DUNGEON_MAP);
+            main.getUtils().drawModalRectWithCustomSizedTexture(0, 0, 0, 0, 128,128, 128, 128);
+        }
+//        main.getUtils().drawRect(rotationCenterX-2, rotationCenterY-2, rotationCenterX+2, rotationCenterY+2, 0xFFFF0000);
+        GL11.glDisable(GL11.GL_SCISSOR_TEST);
+
+        GlStateManager.popMatrix();
+//        main.getUtils().drawRect(mapCenterX-2, mapCenterY-2, mapCenterX+2, mapCenterY+2, 0xFF00FF00);
 
         main.getUtils().restoreGLOptions();
     }
