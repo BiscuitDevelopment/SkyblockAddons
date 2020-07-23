@@ -129,7 +129,13 @@
     "disableEndermanTeleportation": "Schakel Enderman Teleportatie Uit",
     "changeZealotColor": "Verander Zealot Kleur",
     "hideSvenPupNametags": "Verberg Sven Pups Naamkaarten",
-    "turnAllFeaturesChroma": "Draai Alle Functies Chroma"
+    "turnAllFeaturesChroma": "Draai Alle Functies Chroma",
+    "dungeonsMapDisplay": "Dungeons Map Display",
+    "rotateMap": "Rotate Map to Your Player's Rotation",
+    "centerRotationOnYourPlayer": "Center the Rotation Around Your Player",
+    "mapZoom": "Map Zoom",
+    "glowingDroppedItems": "Glowing Dropped Items",
+    "glowingDungeonTeammates": "Glowing Dungeon Teammates"
   },
   "messages": {
     "dropConfirmation": "Laat dit object opnieuw vallen om te Bevestigen!",
