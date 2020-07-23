@@ -129,7 +129,13 @@
     "disableEndermanTeleportation": "Deaktiver Enderman Teleportering",
     "changeZealotColor": "Endre Zealot Farge",
     "hideSvenPupNametags": "Skjul Sven Valp Navn-skilt",
-    "turnAllFeaturesChroma": "Gjør Alle Funksjoner Chroma"
+    "turnAllFeaturesChroma": "Gjør Alle Funksjoner Chroma",
+    "dungeonsMapDisplay": "Dungeons Map Display",
+    "rotateMap": "Rotate Map to Your Player's Rotation",
+    "centerRotationOnYourPlayer": "Center the Rotation Around Your Player",
+    "mapZoom": "Map Zoom",
+    "glowingDroppedItems": "Glowing Dropped Items",
+    "glowingDungeonTeammates": "Glowing Dungeon Teammates"
   },
   "messages": {
     "dropConfirmation": "Slipp denne gjenstanden igjen for å bekrefte!",
