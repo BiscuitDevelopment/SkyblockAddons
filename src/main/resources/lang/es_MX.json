@@ -129,7 +129,13 @@
     "disableEndermanTeleportation": "Desactivar la Teletransportación de Endermans",
     "changeZealotColor": "Cambiar color de Zealots",
     "hideSvenPupNametags": "Ocultar el nombre de los Sven Pup",
-    "turnAllFeaturesChroma": "Covertir todo en croma"
+    "turnAllFeaturesChroma": "Covertir todo en croma",
+    "dungeonsMapDisplay": "Dungeons Map Display",
+    "rotateMap": "Rotate Map to Your Player's Rotation",
+    "centerRotationOnYourPlayer": "Center the Rotation Around Your Player",
+    "mapZoom": "Map Zoom",
+    "glowingDroppedItems": "Glowing Dropped Items",
+    "glowingDungeonTeammates": "Glowing Dungeon Teammates"
   },
   "messages": {
     "dropConfirmation": "Arroja este objeto otra vez para confirmar!",
