@@ -350,11 +350,8 @@ public class RenderListener {
             }
         }
 
-        // Put the x & y to scale, remove half the width and height to center this element.
-        x /= scale;
-        y /= scale;
-        x -= width / 2F;
-        y -= height / 2F;
+        x = transformXY(x, width, scale);
+        y = transformXY(y, height, scale);
 
         main.getUtils().enableStandardGLOptions();
 
@@ -504,10 +501,10 @@ public class RenderListener {
 
         int height = 16;
         int width = 3 * 16;
-        x -= width * scale / 2F;
-        y -= height * scale / 2F;
-        x /= scale;
-        y /= scale;
+
+        x = transformXY(x, width, scale);
+        y = transformXY(y, height, scale);
+
         if (buttonLocation != null) {
             buttonLocation.checkHoveredAndDrawBox(x, x+width, y, y+height, scale);
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
@@ -532,10 +529,9 @@ public class RenderListener {
 
             int height = 9;
             int width = 3 * 11 + 9;
-            x -= width * scale / 2F;
-            y -= height * scale / 2F;
-            x /= scale;
-            y /= scale;
+
+            x = transformXY(x, width, scale);
+            y = transformXY(y, height, scale);
 
             if (buttonLocation != null) {
                 buttonLocation.checkHoveredAndDrawBox(x, x+width, y, y+height, scale);
@@ -816,10 +812,9 @@ public class RenderListener {
             height += 15;
         }
 
-        x -= width * scale / 2F;
-        y -= height * scale / 2F;
-        x /= scale;
-        y /= scale;
+        x = transformXY(x, width, scale);
+        y = transformXY(y, height, scale);
+
         if (buttonLocation != null) {
             buttonLocation.checkHoveredAndDrawBox(x, x + width, y, y + height, scale);
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
@@ -982,10 +977,8 @@ public class RenderListener {
         int width = iconSize + spacing + longestLineWidth;
         int height = iconSize * baits.size();
 
-        x -= width * scale / 2F;
-        y -= iconSize * scale / 2F;
-        x /= scale;
-        y /= scale;
+        x = transformXY(x, width, scale);
+        y = transformXY(y, height, scale);
 
         if (buttonLocation != null) {
             buttonLocation.checkHoveredAndDrawBox(x, x + width, y, y + height, scale);
@@ -1034,10 +1027,10 @@ public class RenderListener {
 
         int height = 15 * 4;
         int width = 16 + 2 + longest;
-        x -= width * scale / 2F;
-        y -= height * scale / 2F;
-        x /= scale;
-        y /= scale;
+
+        x = transformXY(x, width, scale);
+        y = transformXY(y, height, scale);
+
         if (buttonLocation != null) {
             buttonLocation.checkHoveredAndDrawBox(x, x+width, y, y+height, scale);
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
@@ -1111,10 +1104,10 @@ public class RenderListener {
         //9 px per effect + 3px spacer between Potions and Powerups if both exist.
         int height = (totalEffects * lineHeight) + spacer - 1; // -1 Because last line doesn't need a pixel under.
         int width = 156; //String width of "Enchanting XP Boost III 1:23:45"
-        x -= width * scale / 2F;
-        y -= height * scale / 2F;
-        x /= scale;
-        y /= scale;
+
+        x = transformXY(x, width, scale);
+        y = transformXY(y, height, scale);
+
         if (buttonLocation != null) {
             buttonLocation.checkHoveredAndDrawBox(x, x+width, y, y+height, scale);
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
@@ -1211,10 +1204,10 @@ public class RenderListener {
         int lineHeight = 8 + 1; // 1 pixel spacer
         int height = lineHeight * 3 - 1;
         int width = Minecraft.getMinecraft().fontRendererObj.getStringWidth("+ 1x Forceful Ember Chestplate");
-        x -= width * scale / 2F;
-        y -= height * scale / 2F;
-        x /= scale;
-        y /= scale;
+
+        x = transformXY(x, width, scale);
+        y = transformXY(y, height, scale);
+
         if (buttonLocation != null) {
             buttonLocation.checkHoveredAndDrawBox(x, x+width, y, y+height, scale);
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
@@ -1275,11 +1268,10 @@ public class RenderListener {
         int spacing = 1;
         int iconSize = mc.fontRendererObj.FONT_HEIGHT * 3; // 3 because it looked the best
         int width = iconSize + spacing + mc.fontRendererObj.getStringWidth(secondsString);
-        // iconSize also acts as height
-        x -= width * scale / 2F;
-        y -= iconSize * scale / 2F;
-        x /= scale;
-        y /= scale;
+
+        x = transformXY(x, width, scale);
+        y = transformXY(y, iconSize, scale);
+
         if (buttonLocation != null) {
             buttonLocation.checkHoveredAndDrawBox(x, x+width, y, y+iconSize, scale);
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
@@ -1339,10 +1331,9 @@ public class RenderListener {
         int width = iconSize + 2 + longestLine.map(mc.fontRendererObj::getStringWidth)
                 .orElseGet(() -> mc.fontRendererObj.getStringWidth(display.get(0)));
         int height = Math.max(effectsHeight, iconAndSecondsHeight);
-        x -= width * scale / 2F;
-        y -= height * scale / 2F;
-        x /= scale;
-        y /= scale;
+
+        x = transformXY(x, width, scale);
+        y = transformXY(y, height, scale);
 
         if (buttonLocation != null) {
             buttonLocation.checkHoveredAndDrawBox(x, x+width, y, y+height, scale);
@@ -1471,5 +1462,17 @@ public class RenderListener {
         WARP_SKULL.setTagCompound(nbtTag);
 
         return WARP_SKULL;
+    }
+
+    public float transformXY(float xy, int widthHeight, float scale) {
+        float minecraftScale = new ScaledResolution(Minecraft.getMinecraft()).getScaleFactor();
+        xy -= widthHeight * scale / 2F;
+        xy = Math.round(xy * minecraftScale) / minecraftScale;
+        return xy / scale;
+    }
+
+    @SubscribeEvent()
+    public void onRenderRemoveBars(RenderWorldLastEvent e) {
+
     }
 }

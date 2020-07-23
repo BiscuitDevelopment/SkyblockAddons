@@ -41,8 +41,10 @@ public enum TransformerMethod {
 //            "("+TransformerClass.EntityLivingBase.getName()+TransformerClass.ItemStack.getName()+TransformerClass.ItemCameraTransforms$TransformType.getName()+")V"),
     renderItem("renderItem", "func_180454_a", "a", "(Lnet/minecraft/item/ItemStack;Lnet/minecraft/client/resources/model/IBakedModel;)V",
         "("+TransformerClass.ItemStack.getName()+TransformerClass.IBakedModel.getName()+")V"),
-    renderModel_RenderItem("renderModel", "func_175036_a", "a", "(Lnet/minecraft/client/resources/model/IBakedModel;Lnet/minecraft/item/ItemStack;)V",
+    renderModel_IBakedModel_ItemStack("renderModel", "func_175036_a", "a", "(Lnet/minecraft/client/resources/model/IBakedModel;Lnet/minecraft/item/ItemStack;)V",
             "("+TransformerClass.IBakedModel.getName()+TransformerClass.ItemStack.getName()+")V"),
+    renderModel_IBakedModel_I_ItemStack("renderModel", "func_175045_a", "a", "(Lnet/minecraft/client/resources/model/IBakedModel;ILnet/minecraft/item/ItemStack;)V",
+            "("+TransformerClass.IBakedModel.getName()+"I"+TransformerClass.ItemStack.getName()+")V"),
 
     // GlStateManager
     color("color", "func_179131_c", "c", "(FFFF)V"),
@@ -101,6 +103,7 @@ public enum TransformerMethod {
     rotateCorpse("rotateCorpse", "func_77043_a", "a", "(Lnet/minecraft/entity/EntityLivingBase;FFF)V", "("+TransformerClass.EntityLivingBase.getName()+"FFF)V"),
     isWearing("isWearing", "func_175148_a", "a", "(Lnet/minecraft/entity/player/EnumPlayerModelParts;)Z", "("+TransformerClass.EnumPlayerModelParts.getName()+")Z"),
     renderModel_RendererLivingEntity("renderModel", "func_77036_a", "a", "(Lnet/minecraft/entity/EntityLivingBase;FFFFFF)V", "("+TransformerClass.EntityLivingBase.getName()+"FFFFFF)V"),
+    setScoreTeamColor("setScoreTeamColor", "func_177088_c", "c", "(Lnet/minecraft/entity/EntityLivingBase;)Z", "("+TransformerClass.EntityLivingBase.getName()+")Z"),
 
     // RenderManager
     shouldRender("shouldRender", "func_178635_a", "a", "(Lnet/minecraft/entity/Entity;Lnet/minecraft/client/renderer/culling/ICamera;DDD)Z", "("+TransformerClass.Entity.getName()+TransformerClass.ICamera.getName()+"DDD)Z"),
@@ -129,7 +132,14 @@ public enum TransformerMethod {
     // ModelBase
     render("render", "func_78088_a", "a", "(Lnet/minecraft/entity/Entity;FFFFFF)V", "("+TransformerClass.Entity.getName()+"FFFFFF)V"),
 
-    NULL(null,null,null,null,false);
+    // RenderGlobal
+    isRenderEntityOutlines("isRenderEntityOutlines", "func_174985_d", "d", "()Z"),
+    renderEntities("renderEntities", "func_180446_a", "a", "(Lnet/minecraft/entity/Entity;Lnet/minecraft/client/renderer/culling/ICamera;F)V", "("+TransformerClass.Entity.getName()+TransformerClass.ICamera.getName()+"F)V"),
+
+    // TileEntityItemStackRenderer
+    renderByItem("renderByItem", "func_179022_a", "a", "(Lnet/minecraft/item/ItemStack;)V", "("+TransformerClass.ItemStack.getName()+")V"),
+
+    ;
 
     private String name;
     private String description;

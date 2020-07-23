@@ -80,6 +80,7 @@ public class SkyblockAddonsTransformer implements IClassTransformer {
         registerTransformer(new GuiIngameCustomTransformer());
         registerTransformer(new RenderEndermanTransformer());
         registerTransformer(new ModelEndermanTransformer());
+        registerTransformer(new RenderGlobalTransformer());
     }
 
     private void registerTransformer(ITransformer transformer) {
@@ -130,20 +131,18 @@ public class SkyblockAddonsTransformer implements IClassTransformer {
 
     @SuppressWarnings("ResultOfMethodCallIgnored")
     private void outputBytecode(String transformedName, ClassWriter writer) {
-        if (SkyblockAddonsTransformer.isDeobfuscated()) {
-            try {
-                File bytecodeDirectory = new File("bytecode");
-                File bytecodeOutput = new File(bytecodeDirectory, transformedName + ".class");
+        try {
+            File bytecodeDirectory = new File("bytecode");
+            if (!bytecodeDirectory.exists()) return;
 
-                if (!bytecodeDirectory.exists()) return;
-                if (!bytecodeOutput.exists()) bytecodeOutput.createNewFile();
+            File bytecodeOutput = new File(bytecodeDirectory, transformedName + ".class");
+            if (!bytecodeOutput.exists()) bytecodeOutput.createNewFile();
 
-                FileOutputStream os = new FileOutputStream(bytecodeOutput);
-                os.write(writer.toByteArray());
-                os.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            FileOutputStream os = new FileOutputStream(bytecodeOutput);
+            os.write(writer.toByteArray());
+            os.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

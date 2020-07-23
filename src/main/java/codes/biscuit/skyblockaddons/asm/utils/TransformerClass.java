@@ -58,8 +58,9 @@ public enum TransformerClass {
     ModelBase("net/minecraft/client/model/ModelBase", "bbo"),
     ModelBiped("net/minecraft/client/model/ModelBiped", "bbj"),
     ModelEnderman("net/minecraft/client/model/ModelEnderman", "bbd"),
+    RenderGlobal("net/minecraft/client/renderer/RenderGlobal", "bfr"),
 
-    NULL(null,null);
+    ;
 
     private String name;
 
