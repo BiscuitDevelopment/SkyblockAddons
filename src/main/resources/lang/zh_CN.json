@@ -129,7 +129,13 @@
     "disableEndermanTeleportation": "禁用末影人传送",
     "changeZealotColor": "更改末影战士的颜色",
     "hideSvenPupNametags": "隐藏 Sven Pup 的名称标签",
-    "turnAllFeaturesChroma": "为所有功能启用渐变色"
+    "turnAllFeaturesChroma": "为所有功能启用渐变色",
+    "dungeonsMapDisplay": "Dungeons Map Display",
+    "rotateMap": "Rotate Map to Your Player's Rotation",
+    "centerRotationOnYourPlayer": "Center the Rotation Around Your Player",
+    "mapZoom": "Map Zoom",
+    "glowingDroppedItems": "Glowing Dropped Items",
+    "glowingDungeonTeammates": "Glowing Dungeon Teammates"
   },
   "messages": {
     "dropConfirmation": "再次丢弃此物品以确认!",
