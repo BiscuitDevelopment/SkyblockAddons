@@ -130,12 +130,14 @@
     "changeZealotColor": "Changer la couleur des zealots",
     "hideSvenPupNametags": "Cacher les noms des chiots de Sven",
     "turnAllFeaturesChroma": "Activer toutes les fonctionnalités Chroma",
-    "dungeonsMapDisplay": "Dungeons Map Display",
-    "rotateMap": "Rotate Map to Your Player's Rotation",
-    "centerRotationOnYourPlayer": "Center the Rotation Around Your Player",
-    "mapZoom": "Map Zoom",
-    "glowingDroppedItems": "Glowing Dropped Items",
-    "glowingDungeonTeammates": "Glowing Dungeon Teammates"
+    "dungeonsMapDisplay": "Affichage de la carte du donjon",
+    "rotateMap": "Suivre la position de la carte avec le joueur",
+    "centerRotationOnYourPlayer": "Centrer la rotation autour de votre joueur",
+    "mapZoom": "Zoom de carte",
+    "glowingDroppedItems": "Rendre en surbrillance les items au sol",
+    "glowingDungeonTeammates": "Rendre en surbrillance les coéquipiers",
+    "baseStatBoostPercentage": "Afficher le Boost des statistiques de base pour les objets du donjon",
+    "colorByRarity": "Colorer par rareté"
   },
   "messages": {
     "dropConfirmation": "Jetez cet objet une nouvelle fois pour confirmer!",
