@@ -1199,7 +1199,7 @@ public class RenderListener {
         GlStateManager.disableRescaleNormal();
     }
 
-    private static List<ItemDiff> DUMMY_PICKUP_LOG = new ArrayList<>(Arrays.asList(new ItemDiff(ColorCode.DARK_PURPLE + "Forceful Ember Chestplate", 1),
+    private static final List<ItemDiff> DUMMY_PICKUP_LOG = new ArrayList<>(Arrays.asList(new ItemDiff(ColorCode.DARK_PURPLE + "Forceful Ember Chestplate", 1),
             new ItemDiff("Boat", -1), new ItemDiff(ColorCode.BLUE + "Aspect of the End", 1)));
 
     public void drawItemPickupLog(float scale, ButtonLocation buttonLocation) {
@@ -1318,7 +1318,7 @@ public class RenderListener {
         display.add(String.format("§c+%s ❤/s", TextUtils.formatDouble(healthRegen)));
         if(powerOrb.getManaRegen() > 0) {
             int maxMana = main.getUtils().getAttributes().get(Attribute.MAX_MANA).getValue();
-            double manaRegen = maxMana / 50;
+            double manaRegen = maxMana / 50f;
             manaRegen = manaRegen + manaRegen * powerOrb.getManaRegen();
             display.add(String.format("§b+%s ✎/s", TextUtils.formatDouble(manaRegen)));
         }

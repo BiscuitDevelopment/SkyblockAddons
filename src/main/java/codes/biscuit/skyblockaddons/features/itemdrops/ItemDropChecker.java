@@ -28,7 +28,7 @@ import java.util.List;
 public class ItemDropChecker {
 
     private SkyblockAddons main = SkyblockAddons.getInstance();
-    private Logger logger = LogManager.getLogger("SBA Item Drop Checker");;
+    private Logger logger = LogManager.getLogger("SBA Item Drop Checker");
 
     // Variables used for checking drop confirmations
     private ItemStack itemOfLastDropAttempt;

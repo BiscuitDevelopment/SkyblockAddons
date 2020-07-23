@@ -3,7 +3,7 @@ package codes.biscuit.skyblockaddons.features.tabtimers;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.gui.buttons.ButtonLocation;
-import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsTransformer;
+import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsSetup;
 import codes.biscuit.skyblockaddons.utils.RomanNumeralParser;
 import lombok.Getter;
 import net.minecraft.client.Minecraft;
@@ -128,7 +128,7 @@ public class TabEffectManager {
     private static IChatComponent getFooter() {
         GuiPlayerTabOverlay guiTab = Minecraft.getMinecraft().ingameGUI.getTabList();
 
-        if (SkyblockAddonsTransformer.isLabymodClient()) { // There are no access transformers in labymod.
+        if (SkyblockAddonsSetup.isUsingLabyModClient()) { // There are no access transformers in LabyMod.
             try {
                 if (footer == null) {
                     footer = guiTab.getClass().getDeclaredField("h");

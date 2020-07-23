@@ -77,7 +77,7 @@ public class SkyblockAddonsInstallerFrame extends JFrame implements ActionListen
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
             SkyblockAddonsInstallerFrame frame = new SkyblockAddonsInstallerFrame();
             frame.centerFrame(frame);
-            frame.show();
+            frame.setVisible(true);
 
         } catch (Exception ex) {
             showErrorPopup(ex);
