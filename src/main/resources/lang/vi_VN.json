@@ -129,7 +129,13 @@
     "disableEndermanTeleportation": "Không Cho Enderman Dịch Chuyển",
     "changeZealotColor": "Đổi Màu Zealot",
     "hideSvenPupNametags": "Ẩn Thẻ Tên Sói Đàn Bé",
-    "turnAllFeaturesChroma": "BẬT MÀU CHROMA CHO TẤT CẢ CÁC CHỨC NĂNG"
+    "turnAllFeaturesChroma": "BẬT MÀU CHROMA CHO TẤT CẢ CÁC CHỨC NĂNG",
+    "dungeonsMapDisplay": "Dungeons Map Display",
+    "rotateMap": "Rotate Map to Your Player's Rotation",
+    "centerRotationOnYourPlayer": "Center the Rotation Around Your Player",
+    "mapZoom": "Map Zoom",
+    "glowingDroppedItems": "Glowing Dropped Items",
+    "glowingDungeonTeammates": "Glowing Dungeon Teammates"
   },
   "messages": {
     "dropConfirmation": "Nhấn \"Q\" Thêm Một Lần Nữa Để Xác Nhận!",
