@@ -129,7 +129,13 @@
     "disableEndermanTeleportation": "ايقاف انتقال الاندرمان",
     "changeZealotColor": "تغيير لون الزيلوت",
     "hideSvenPupNametags": "اخفاء اسماء جراء سفين",
-    "turnAllFeaturesChroma": "تشغيل جميع الميزات Chroma"
+    "turnAllFeaturesChroma": "تشغيل جميع الميزات Chroma",
+    "dungeonsMapDisplay": "Dungeons Map Display",
+    "rotateMap": "Rotate Map to Your Player's Rotation",
+    "centerRotationOnYourPlayer": "Center the Rotation Around Your Player",
+    "mapZoom": "Map Zoom",
+    "glowingDroppedItems": "Glowing Dropped Items",
+    "glowingDungeonTeammates": "Glowing Dungeon Teammates"
   },
   "messages": {
     "dropConfirmation": "!إرمي هذا العنصر مرة أخرى للتأكيد",
