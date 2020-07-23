@@ -129,7 +129,13 @@
     "disableEndermanTeleportation": "Выключить телепортацию эндерменов",
     "changeZealotColor": "Изменить цвет Зеалота",
     "hideSvenPupNametags": "Спрятать теги щенка Свена",
-    "turnAllFeaturesChroma": "Включить Chroma-подсветку"
+    "turnAllFeaturesChroma": "Включить Chroma-подсветку",
+    "dungeonsMapDisplay": "Dungeons Map Display",
+    "rotateMap": "Rotate Map to Your Player's Rotation",
+    "centerRotationOnYourPlayer": "Center the Rotation Around Your Player",
+    "mapZoom": "Map Zoom",
+    "glowingDroppedItems": "Glowing Dropped Items",
+    "glowingDungeonTeammates": "Glowing Dungeon Teammates"
   },
   "messages": {
     "dropConfirmation": "Выбросите предмет ещё раз для подтверждения!",
