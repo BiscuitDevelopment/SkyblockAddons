@@ -135,7 +135,9 @@
     "centerRotationOnYourPlayer": "Center the Rotation Around Your Player",
     "mapZoom": "Map Zoom",
     "glowingDroppedItems": "Glowing Dropped Items",
-    "glowingDungeonTeammates": "Glowing Dungeon Teammates"
+    "glowingDungeonTeammates": "Glowing Dungeon Teammates",
+    "baseStatBoostPercentage": "Show Base Stat Boost for Dungeon Items",
+    "colorByRarity": "Color By Rarity"
   },
   "messages": {
     "dropConfirmation": "Arunca acest obiect iar ca să confirmi!",
