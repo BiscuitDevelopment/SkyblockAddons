@@ -129,7 +129,13 @@
     "disableEndermanTeleportation": "Zakázat teleportaci Endermanů",
     "changeZealotColor": "Změnit barvu Zealotů",
     "hideSvenPupNametags": "Skrýt jmenovky Svenových štěňat",
-    "turnAllFeaturesChroma": "Nastavit všechny funkce na styl měnění barev"
+    "turnAllFeaturesChroma": "Nastavit všechny funkce na styl měnění barev",
+    "dungeonsMapDisplay": "Dungeons Map Display",
+    "rotateMap": "Rotate Map to Your Player's Rotation",
+    "centerRotationOnYourPlayer": "Center the Rotation Around Your Player",
+    "mapZoom": "Map Zoom",
+    "glowingDroppedItems": "Glowing Dropped Items",
+    "glowingDungeonTeammates": "Glowing Dungeon Teammates"
   },
   "messages": {
     "dropConfirmation": "Vyhoď tento item pro vyhození!",
