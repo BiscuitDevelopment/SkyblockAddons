@@ -130,12 +130,14 @@
     "changeZealotColor": "變更Zealot顏色",
     "hideSvenPupNametags": "隱藏Sven Pup 名稱",
     "turnAllFeaturesChroma": "套用淡出淡入於所有功能",
-    "dungeonsMapDisplay": "Dungeons Map Display",
-    "rotateMap": "Rotate Map to Your Player's Rotation",
+    "dungeonsMapDisplay": "地下城地圖顯示",
+    "rotateMap": "旋轉地圖至玩家方向",
     "centerRotationOnYourPlayer": "Center the Rotation Around Your Player",
-    "mapZoom": "Map Zoom",
-    "glowingDroppedItems": "Glowing Dropped Items",
-    "glowingDungeonTeammates": "Glowing Dungeon Teammates"
+    "mapZoom": "放大地圖",
+    "glowingDroppedItems": "螢光掉落物",
+    "glowingDungeonTeammates": "地下城隊友發光",
+    "baseStatBoostPercentage": "Show Base Stat Boost for Dungeon Items",
+    "colorByRarity": "Color By Rarity"
   },
   "messages": {
     "dropConfirmation": "再次丟棄此物品以確認!",
