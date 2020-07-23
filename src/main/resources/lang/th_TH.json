@@ -129,7 +129,13 @@
     "disableEndermanTeleportation": "ปิดการเคลื่อนที่ของ Enderman",
     "changeZealotColor": "เปลี่ยนสี Zealot",
     "hideSvenPupNametags": "ปิดชื่อลูกสุนัข",
-    "turnAllFeaturesChroma": "เปิดทุกอย่างเป็นสีรุ้ง"
+    "turnAllFeaturesChroma": "เปิดทุกอย่างเป็นสีรุ้ง",
+    "dungeonsMapDisplay": "Dungeons Map Display",
+    "rotateMap": "Rotate Map to Your Player's Rotation",
+    "centerRotationOnYourPlayer": "Center the Rotation Around Your Player",
+    "mapZoom": "Map Zoom",
+    "glowingDroppedItems": "Glowing Dropped Items",
+    "glowingDungeonTeammates": "Glowing Dungeon Teammates"
   },
   "messages": {
     "dropConfirmation": "กดทิ้งของอีกที่เพื่อยืนยันทิ้งของสิ่งนี้!",
