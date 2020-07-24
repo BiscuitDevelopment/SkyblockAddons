@@ -130,14 +130,14 @@
     "changeZealotColor": "Đổi Màu Zealot",
     "hideSvenPupNametags": "Ẩn Thẻ Tên Sói Đàn Bé",
     "turnAllFeaturesChroma": "BẬT MÀU CHROMA CHO TẤT CẢ CÁC CHỨC NĂNG",
-    "dungeonsMapDisplay": "Dungeons Map Display",
-    "rotateMap": "Rotate Map to Your Player's Rotation",
-    "centerRotationOnYourPlayer": "Center the Rotation Around Your Player",
-    "mapZoom": "Map Zoom",
-    "glowingDroppedItems": "Glowing Dropped Items",
-    "glowingDungeonTeammates": "Glowing Dungeon Teammates",
-    "baseStatBoostPercentage": "Show Base Stat Boost for Dungeon Items",
-    "colorByRarity": "Color By Rarity"
+    "dungeonsMapDisplay": "Hiện bản đồ Dungeon",
+    "rotateMap": "Xoay bản đồ theo hướng nhân vật của bạn",
+    "centerRotationOnYourPlayer": "Đặt nhân vật của bạn ở chính giữa bản đồ",
+    "mapZoom": "Phóng to/Thu nhỏ Bản đồ",
+    "glowingDroppedItems": "Nổi viền vật phẩm bị đánh rơi",
+    "glowingDungeonTeammates": "Nổi viền Đồng đội trong Dungeon",
+    "baseStatBoostPercentage": "Hiện chỉ số cơ sở đã tăng cho vật phẩm Dungeon",
+    "colorByRarity": "Tô màu vật phẩm theo Độ hiếm"
   },
   "messages": {
     "dropConfirmation": "Nhấn \"Q\" Thêm Một Lần Nữa Để Xác Nhận!",
