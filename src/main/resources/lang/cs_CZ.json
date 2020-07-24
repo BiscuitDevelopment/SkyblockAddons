@@ -121,7 +121,7 @@
     "legendarySeaCreatureWarning": "Upozornění na legendární mořské stvoření",
     "onlyBreakLogsPark": "Pouze ničit kmeny v Parku",
     "bossApproachAlert": "Upozornění na příchod Slayer Bosse",
-    "disableTeleportPadMessages": "Zakázat zprávy Teleportačního padu",
+    "disableTeleportPadMessages": "Neukazovat zprávy Teleportačního padu",
     "baitListDisplay": "Zobrazit seznam návnad během držení prutu",
     "freezeBackpackPreview": "Zmrazit náhled batohu",
     "hideGreyEnchants": "Skrýt obvyklé šedé očarování",
@@ -130,14 +130,14 @@
     "changeZealotColor": "Změnit barvu Zealotů",
     "hideSvenPupNametags": "Skrýt jmenovky Svenových štěňat",
     "turnAllFeaturesChroma": "Nastavit všechny funkce na styl měnění barev",
-    "dungeonsMapDisplay": "Dungeons Map Display",
-    "rotateMap": "Rotate Map to Your Player's Rotation",
-    "centerRotationOnYourPlayer": "Center the Rotation Around Your Player",
-    "mapZoom": "Map Zoom",
-    "glowingDroppedItems": "Glowing Dropped Items",
-    "glowingDungeonTeammates": "Glowing Dungeon Teammates",
-    "baseStatBoostPercentage": "Show Base Stat Boost for Dungeon Items",
-    "colorByRarity": "Color By Rarity"
+    "dungeonsMapDisplay": "Zobrazení mapy Dungeons",
+    "rotateMap": "Otočit mapu k rotaci hráče",
+    "centerRotationOnYourPlayer": "Vycentrovat rotaci kolem vašeho hráče",
+    "mapZoom": "Zvětšit mapu",
+    "glowingDroppedItems": "Svíticí itemy na zemi",
+    "glowingDungeonTeammates": "Svíticí spoluhráče v Dungeons",
+    "baseStatBoostPercentage": "Zobrazit základní zesílení statistky pro itemy z Dungeons",
+    "colorByRarity": "Barva podle vzácnosti"
   },
   "messages": {
     "dropConfirmation": "Vyhoď tento item pro vyhození!",
@@ -227,7 +227,7 @@
     "titleSvens": "Úkol - Sven",
     "descriptionSvens": "Ukáže, že děláš úkol se Sveny.",
     "titleTarantula": "Úkol - Tarantula",
-    "descriptionTarantula": "Ukáže, že děláš úkol s Tarantulami."
+    "descriptionTarantula": "Ukáže, že děláš úkol s Tarantulemi."
   },
   "commandUsage": {
     "sba": "Otevřít hlavní menu",
@@ -236,7 +236,7 @@
     "sba.folder": "Otevřít složku modifikací",
     "sba.dev": "Přepnout vývojářský režim",
     "sba.sidebar": "§e(Dev) §7Copy the scoreboard text. \"formatted\" §7keeps the color codes when copying.",
-    "sba.brand": "§e(Dev) §7Show the server brand"
+    "sba.brand": "§e(Dev) §7Zobrazit adresu serveru"
   },
   "keyBindings": {
     "developerCopyNBT": "Kopírovat NBT"
