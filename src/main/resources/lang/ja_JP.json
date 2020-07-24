@@ -133,11 +133,11 @@
     "dungeonsMapDisplay": "Dungeons Map Display",
     "rotateMap": "Rotate Map to Your Player's Rotation",
     "centerRotationOnYourPlayer": "Center the Rotation Around Your Player",
-    "mapZoom": "Map Zoom",
+    "mapZoom": "マップズーム",
     "glowingDroppedItems": "Glowing Dropped Items",
     "glowingDungeonTeammates": "Glowing Dungeon Teammates",
     "baseStatBoostPercentage": "Show Base Stat Boost for Dungeon Items",
-    "colorByRarity": "Color By Rarity"
+    "colorByRarity": "レア度順"
   },
   "messages": {
     "dropConfirmation": "落としてもいいのであれば、このアイテムをもう一度ドロップしてください。",
@@ -198,8 +198,8 @@
     "legendarySeaCreatureWarning": "レジェンダリー キャッチ!",
     "cancelledPark": "SkyblockAddonsがこのブロックの破壊を阻止しました。",
     "bossApproaching": "ボスのスポーンが近いです！",
-    "enableAll": "Enable All",
-    "disableAll": "Disable All"
+    "enableAll": "全て有効",
+    "disableAll": "全て無効"
   },
   "discordStatus": {
     "titleNone": "無し",
@@ -222,12 +222,12 @@
     "descriptionCustom": "カスタムステータスを入力",
     "titleAuto": "自動ステータス",
     "descriptionAuto": "ステータスを自動表示する (例: エンドにいる間はゼアロットの討伐数)",
-    "titleRevenants": "Revenant Quest",
-    "descriptionRevenants": "Shows that you are doing a Revenant quest.",
-    "titleSvens": "Sven Quest",
-    "descriptionSvens": "Shows that you are doing a Sven quest.",
-    "titleTarantula": "Tarantula Quest",
-    "descriptionTarantula": "Shows that you are doing a Tarantula quest."
+    "titleRevenants": "Revenantクエスト",
+    "descriptionRevenants": "Revenantクエストを行っていることを示します。",
+    "titleSvens": "Svenクエスト",
+    "descriptionSvens": "Svenクエストを行っていることを示します。",
+    "titleTarantula": "Tarantulaクエスト",
+    "descriptionTarantula": "Tarantulaクエストを行っていることを示します。"
   },
   "commandUsage": {
     "sba": "メインメニューを開く",
@@ -239,6 +239,6 @@
     "sba.brand": "§e(Dev) §7Show the server brand"
   },
   "keyBindings": {
-    "developerCopyNBT": "Copy NBT"
+    "developerCopyNBT": "NBTをコピー"
   }
 }
