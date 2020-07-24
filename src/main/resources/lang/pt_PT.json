@@ -130,14 +130,14 @@
     "changeZealotColor": "Mudar a cor dos Zealots",
     "hideSvenPupNametags": "Esconder o nome dos Sven Pups",
     "turnAllFeaturesChroma": "Colocar todas as funcionalidades em chroma",
-    "dungeonsMapDisplay": "Dungeons Map Display",
-    "rotateMap": "Rotate Map to Your Player's Rotation",
-    "centerRotationOnYourPlayer": "Center the Rotation Around Your Player",
-    "mapZoom": "Map Zoom",
-    "glowingDroppedItems": "Glowing Dropped Items",
-    "glowingDungeonTeammates": "Glowing Dungeon Teammates",
-    "baseStatBoostPercentage": "Show Base Stat Boost for Dungeon Items",
-    "colorByRarity": "Color By Rarity"
+    "dungeonsMapDisplay": "Mostrar o mapa das masmorras",
+    "rotateMap": "Rodar o mapa de acordo com a posição do jogador",
+    "centerRotationOnYourPlayer": "Centrar a rotação no jogador",
+    "mapZoom": "Zoom do mapa",
+    "glowingDroppedItems": "Brilho nos itens largados",
+    "glowingDungeonTeammates": "Brilho dos colegas de equipa",
+    "baseStatBoostPercentage": "Mostrar as estatísticas base dos itens das masmorras",
+    "colorByRarity": "Cor por raridade"
   },
   "messages": {
     "dropConfirmation": "Atira este item outra vez para confirmar!",
