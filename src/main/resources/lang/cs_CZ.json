@@ -235,7 +235,7 @@
     "sba.set.zealotCounter": "Ručně nastavit počet zealotů",
     "sba.folder": "Otevřít složku modifikací",
     "sba.dev": "Přepnout vývojářský režim",
-    "sba.sidebar": "§e(Dev) §7Copy the scoreboard text. \"formatted\" §7keeps the color codes when copying.",
+    "sba.sidebar": "§e(Dev) §7Zkopírovat text skórové tabulky. \"formátovano\" §7udržuje barvu při kopírování.",
     "sba.brand": "§e(Dev) §7Zobrazit adresu serveru"
   },
   "keyBindings": {
