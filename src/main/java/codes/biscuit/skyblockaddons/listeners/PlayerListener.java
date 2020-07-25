@@ -824,14 +824,6 @@ public class PlayerListener {
                     }
                 }
             }
-
-            if (main.getConfigValues().isEnabled(Feature.SHOW_RARITY_UPGRADED))
-                    if (hoveredItem.hasTagCompound()) {
-                        NBTTagCompound extraAttributesTag = ItemUtils.getSkyblockData(hoveredItem);
-
-                        if (extraAttributesTag != null && ItemUtils.rarityUpgraded(extraAttributesTag))
-                                e.toolTip.add("§d§lRARITY HAS BEEN UPGRADED");
-                    }
         }
     }
 

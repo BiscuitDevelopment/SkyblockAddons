@@ -199,8 +199,7 @@
       "dragonsSincePet": "Pet",
       "eyesPlaced": "Eyes Placed"
     },
-    "showPersonalCompactorPreview": "Show Personal Compactor Preview",
-    "showRarityUpgraded": "Show if Item's Rarity is Upgraded"
+    "showPersonalCompactorPreview": "Show Personal Compactor Preview"
   },
   "messages": {
     "dropConfirmation": "Drop this item again to confirm!",
