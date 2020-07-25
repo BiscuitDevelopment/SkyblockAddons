@@ -86,7 +86,7 @@
       "compact": "Compacto"
     },
     "disableMagicalSoupMessage": "Esconder mensagens da Magical Mushroom Soup",
-    "zealotCounter": "Mostrar contador de Zealots",
+    "zealotCounter": "Contador de zealots - Conta desde o último olho",
     "tickerChargesDisplay": "Mostrador de Tickers/Cargas",
     "tab": {
       "generalSettings": "Definições gerais"
@@ -101,28 +101,28 @@
     "chromaMode": "Modo da cor do chroma",
     "chromaModes": {
       "allTheSame": "Tudo na mesma cor",
-      "fade": "Desvanecer da Cor"
+      "fade": "Esbatimento da cor"
     },
     "chromaFadeWidth": "Largura do Desvanecimento do Efeito Chroma",
     "sortTabEffectTimers": "Ordenar temporizadores por duração",
     "showBrokenFragments": "Mostrar fragmentos partidos de Dragão",
-    "skyblockAddonsButtonInPauseMenu": "Mostrar botão SBA no menu de pausa",
+    "skyblockAddonsButtonInPauseMenu": "Mostrar o botão SBA no menu de pausa",
     "showTotalZealotCount": "Contador de Zealots - Número total de Zealots",
     "showSummoningEyeCount": "Contador de Zealots - Número total de eyes",
     "showZealotsPerEye": "Contador de Zealots - Mostrar Zealots por cada Eye",
     "turnBowGreenWhenUsingToxicArrowPoison": "Pintar o arco de verde ao usar Toxic Arrow Poison",
     "birchParkRainmakerTimer": "Duração da chuva no Birch Park",
     "combatTimerDisplay": "Mostrar o temporizador de combate",
-    "discordRP": "Discord Rich Presence",
+    "discordRP": "Estado de atividade do Discord",
     "endstoneProtectorDisplay": "Mostrador do Endstone Protector",
-    "fancyWarpMenu": "Menu de warps chique",
-    "doubleWarp": "Viajar duas vezes",
+    "fancyWarpMenu": "Menu de transporte chique",
+    "doubleWarp": "Transportar duas vezes",
     "advancedMode": "Modo avançado",
-    "legendarySeaCreatureWarning": "Alerta para sea creatures lendárias",
-    "onlyBreakLogsPark": "Partir apensar troncos no The Park",
+    "legendarySeaCreatureWarning": "Alerta para criaturas marinhas lendárias",
+    "onlyBreakLogsPark": "Partir toros apenas no parque",
     "bossApproachAlert": "Alerta para a aproximação do boss",
     "disableTeleportPadMessages": "Desativar mensagens dos Teleport Pads",
-    "baitListDisplay": "Mostrar uma lista de baits ao segurar numa vara",
+    "baitListDisplay": "Mostrar lista de iscas ao segurar numa cana de pesca",
     "freezeBackpackPreview": "Congelar pré-visualização da backpack",
     "hideGreyEnchants": "Esconder encantamentos normais a cinzento",
     "zealotCounterExplosiveBow": "Suporte para o contador de Zealots com o Explosive Bow",
@@ -156,7 +156,7 @@
       "crafting": "Criação"
     },
     "wantToViewPatchNotes": "Queres ler as alterações?",
-    "downloadLink": "LINK DA ATUALIZAÇÃO",
+    "downloadLink": "VÍDEO DA ATUALIZAÇÃO",
     "directDownload": "LINK DO DOWNLOAD DIRETO",
     "openModFolder": "PASTA MODS",
     "joinTheDiscord": "ENTRA NO DISCORD",
@@ -187,11 +187,11 @@
     "rescaleFeatures": "Redimensionar funções",
     "resizeBars": "Redimensionar barras",
     "showColorIcons": "Mostrar a cor dos ícones",
-    "enableFeatureSnapping": "Enable Feature Snapping",
+    "enableFeatureSnapping": "Ativar o ajustamento automático de itens",
     "stage": "Fase %stage%",
     "switchedSlots": "Estiveste a segurar um espaço bloqueado ou um item raro recentemente. Espera um pouco antes de deitares este item fora!",
-    "clickToOpenLink": "Clica para abrires este link!",
-    "clickToOpenFolder": "Clica para abrires a tua pasta mods!",
+    "clickToOpenLink": "Clica para abrires esta ligação!",
+    "clickToOpenFolder": "Clica para abrires a pasta mods!",
     "firstStatus": "O estado vai aparecer no topo",
     "secondStatus": "O estado vai aparecer debaixo do teu primeiro estado",
     "fallbackStatus": "O estado vai aparecer quando o teu estado automático não tem nada para mostrar",
@@ -235,8 +235,8 @@
     "sba.set.zealotCounter": "Define manualmente a tua contagem de zealots",
     "sba.folder": "Abre a tua pasta mods",
     "sba.dev": "Ativar o modo de programador",
-    "sba.sidebar": "§e(Dev) §7Copy the scoreboard text. \"formatted\" §7keeps the color codes when copying.",
-    "sba.brand": "§e(Dev) §7Show the server brand"
+    "sba.sidebar": "§e(Desenvolvedor) §7Copiar o texto do pódio. \"formatted\" §7mantém os códigos das cores ao copiar.",
+    "sba.brand": "§e(Desenvolvedor) §7Mostrar o nome do servidor"
   },
   "keyBindings": {
     "developerCopyNBT": "Copiar NBT"
