@@ -1046,16 +1046,9 @@ public class RenderListener {
                 main.getUtils().drawTextWithStyle(boss.getKilledName() + boss.getKills(), x, y, color);
                 ChromaManager.doneRenderingText();
             }
-            y += Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT;//iconSize;
+            y += Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT;
 
             for (SlayerBoss.SlayerDrop drop : boss.getDrops()) {
-                GlStateManager.disableDepth();
-                GlStateManager.enableBlend();
-                //mc.getTextureManager().bindTexture(drop.getResourceLocation());
-                GlStateManager.color(1, 1, 1, 1F);
-                //main.getUtils().drawModalRectWithCustomSizedTexture(x, y, 0, 0, iconSize, iconSize, iconSize, iconSize);
-                GlStateManager.disableBlend();
-                GlStateManager.enableDepth();
 
                 if (main.getConfigValues().isEnabled(Feature.SLAYER_TRACKERS_COLOUR_BY_RARITY)) {
                     main.getUtils().drawTextWithStyle(drop.getRarity().getTag().substring(0, 2) + drop.getDisplayName() + drop.getCount(), x, y, color);
@@ -1071,11 +1064,15 @@ public class RenderListener {
             return;
         }
 
-        int bossCount = 0, yOffset = 0;//lines = 0
+        boolean expanded = main.getConfigValues().isEnabled(Feature.SLAYER_TRACKERS_EXPANDED),
+                cbr = main.getConfigValues().isEnabled(Feature.SLAYER_TRACKERS_COLOUR_BY_RARITY),
+                showIcons = main.getConfigValues().isEnabled(Feature.SLAYER_TRACKERS_SHOW_ICONS);
+
+        int bossCount = 0, yOffset = 0;
         for (SlayerBoss boss : SlayerTracker.getInstance().getBosses()) {
             if (main.getConfigValues().isDisabled(boss.getFeature()))
                 continue;
-            yOffset += 2 * Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT;
+                yOffset += (expanded ? 2 : 1) * Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT;
             yOffset += boss.getDrops().size() * (Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT + (main.getConfigValues().isEnabled(Feature.SLAYER_TRACKERS_SHOW_ICONS) ? 5 : 0));
             bossCount++;
         }
@@ -1091,10 +1088,7 @@ public class RenderListener {
         x /= scale;
         y /= scale;
         x -= width * scale / 2F;
-        y -= yOffset;//lines * Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT;
-        /*for (int i = 0; i < 300; i++)
-            main.getUtils().drawTextWithStyle(i + "",
-                    x, i * 9, Color.blue.getRGB());*/
+        y -= yOffset;
 
         for (SlayerBoss boss : SlayerTracker.getInstance().getBosses()) {
             if (main.getConfigValues().isDisabled(boss.getFeature()))
@@ -1105,9 +1099,8 @@ public class RenderListener {
                 longestLineWidth = Math.max(longestLineWidth, Minecraft.getMinecraft().fontRendererObj.getStringWidth(drop.getDisplayName()));
             longestLineWidth += 10;
 
-            int color;
-            {
-                color = main.getConfigValues().getColor(Feature.SLAYER_TRACKERS).getRGB();
+            int color = color = main.getConfigValues().getColor(Feature.SLAYER_TRACKERS).getRGB();
+            if (expanded) {
                 ChromaManager.renderingText(Feature.SLAYER_TRACKERS);
                 main.getUtils().drawTextWithStyle(boss.getDisplayName(), x, y, color);
                 y += Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT;
@@ -1115,35 +1108,29 @@ public class RenderListener {
                 main.getUtils().drawTextWithStyle(boss.getKills() + "", x + longestLineWidth, y, color);
                 ChromaManager.doneRenderingText();
             }
-            y += Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT;//iconSize;
+            y += Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT;
 
             for (SlayerBoss.SlayerDrop drop : boss.getDrops()) {
-                GlStateManager.disableDepth();
-                GlStateManager.enableBlend();
-                //mc.getTextureManager().bindTexture(drop.getResourceLocation());
-                GlStateManager.color(1, 1, 1, 1F);
-                //main.getUtils().drawModalRectWithCustomSizedTexture(x, y, 0, 0, iconSize, iconSize, iconSize, iconSize);
-                GlStateManager.disableBlend();
-                GlStateManager.enableDepth();
 
-                if (main.getConfigValues().isEnabled(Feature.SLAYER_TRACKERS_SHOW_ICONS) && drop.getItemStack() != null)
+                if (showIcons && drop.getItemStack() != null)
                 {
                     y+=5;
                     RenderHelper.enableGUIStandardItemLighting();
-                    mc.getRenderItem().renderItemIntoGUI(drop.getItemStack(), (int)x-20, (int)y-4);
+                    mc.getRenderItem().renderItemIntoGUI(drop.getItemStack(), (int)x-20, (int)y-5);
                     RenderHelper.disableStandardItemLighting();
                 }
 
-                if (main.getConfigValues().isEnabled(Feature.SLAYER_TRACKERS_COLOUR_BY_RARITY)) {
-                    main.getUtils().drawTextWithStyle(drop.getRarity().getTag().substring(0, 2) + drop.getDisplayName(), x, y, color);
-                    main.getUtils().drawTextWithStyle(drop.getRarity().getTag().substring(0, 2) + drop.getCount(), x + longestLineWidth, y, color);
-                } else {
-                    color = main.getConfigValues().getColor(Feature.SLAYER_TRACKERS).getRGB();
+                String prefix = "";
+
+                if (cbr)
+                    prefix = "§" + drop.getRarity().getColorCode().getCode();
+                else
                     ChromaManager.renderingText(Feature.SLAYER_TRACKERS);
-                    main.getUtils().drawTextWithStyle(drop.getDisplayName(), x, y, color);
-                    main.getUtils().drawTextWithStyle(drop.getCount() + "", x + longestLineWidth, y, color);
-                    ChromaManager.doneRenderingText();
-                }
+                if (expanded)
+                    main.getUtils().drawTextWithStyle(prefix + drop.getDisplayName(), x, y, color);
+                main.getUtils().drawTextWithStyle(prefix + drop.getCount() + "", x + (expanded ? longestLineWidth : 0), y, color);
+                ChromaManager.doneRenderingText();
+
                 y += Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT;
             }
             y += Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT;

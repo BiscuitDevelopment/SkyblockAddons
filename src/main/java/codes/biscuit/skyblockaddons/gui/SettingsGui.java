@@ -379,6 +379,8 @@ public class SettingsGui extends GuiScreen {
             Feature settingFeature = null;
             if (feature == Feature.SKILL_DISPLAY) {
                 settingFeature = Feature.ACTIONS_UNTIL_NEXT_LEVEL;
+            } else if (feature == Feature.SLAYER_TRACKERS) {
+                settingFeature = Feature.SLAYER_TRACKERS_EXPANDED;
             }
 
             buttonList.add(new ButtonToggleTitle(x, y, Message.SETTING_EXPANDED.getMessage(), main, settingFeature));
