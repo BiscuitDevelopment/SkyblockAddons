@@ -130,14 +130,14 @@
     "changeZealotColor": "Vaihda Zealotin Väriä",
     "hideSvenPupNametags": "Piilota Svenin poikasten Nimet",
     "turnAllFeaturesChroma": "Vaihda Kaikki Ominaisuudet Chromaksi",
-    "dungeonsMapDisplay": "Dungeons Map Display",
-    "rotateMap": "Rotate Map to Your Player's Rotation",
+    "dungeonsMapDisplay": "Dungeonijen Kartta Näyttö",
+    "rotateMap": "Pyöritä Karttaa Pelaajan Suuntaan",
     "centerRotationOnYourPlayer": "Center the Rotation Around Your Player",
-    "mapZoom": "Map Zoom",
-    "glowingDroppedItems": "Glowing Dropped Items",
-    "glowingDungeonTeammates": "Glowing Dungeon Teammates",
+    "mapZoom": "Kartan suurennus",
+    "glowingDroppedItems": "Hehkuvat Pudotetut Esineet",
+    "glowingDungeonTeammates": "Hehkuvat Dungeon Tiimikaverit",
     "baseStatBoostPercentage": "Show Base Stat Boost for Dungeon Items",
-    "colorByRarity": "Color By Rarity"
+    "colorByRarity": "Väri Harvinaisuuden Mukaan"
   },
   "messages": {
     "dropConfirmation": "Pudota tämä esine uudelleen vahvistaaksesi!",
@@ -188,11 +188,11 @@
     "resizeBars": "Muuttaa Palkkien Kokoa",
     "showColorIcons": "Näytä Värin Ikonit",
     "enableFeatureSnapping": "Enable Feature Snapping",
-    "stage": "Stage %stage%",
+    "stage": "Vaihe %stage%",
     "switchedSlots": "Sinä Olet Juuri Vaihtanut Lukitusta Slotista tai arvokkaasta itemistä. Ole Kiltti ja odota vähän ennen pudottamista!",
-    "clickToOpenLink": "Click to open this link!",
+    "clickToOpenLink": "Klikkaa Avataksesi Tämä Linkki!",
     "clickToOpenFolder": "Klikkaa että avaat sinun modit kansion!",
-    "firstStatus": "This status will appear at the top",
+    "firstStatus": "Tämä Tila Tulee Näkyviin Ylös",
     "secondStatus": "This status will appear under your first status",
     "fallbackStatus": "This status will appear when your automatic status has nothing to show",
     "legendarySeaCreatureWarning": "Legendaarin Nappaus!",
@@ -239,6 +239,6 @@
     "sba.brand": "§e(Dev) §7Show the server brand"
   },
   "keyBindings": {
-    "developerCopyNBT": "Copy NBT"
+    "developerCopyNBT": "Kopoi NBT"
   }
 }
