@@ -137,7 +137,7 @@
     "glowingDroppedItems": "螢光掉落物",
     "glowingDungeonTeammates": "地下城隊友發光",
     "baseStatBoostPercentage": "顯示地下城物品的基礎屬性加成",
-    "colorByRarity": "Color By Rarity"
+    "colorByRarity": "按稀有度上色"
   },
   "messages": {
     "dropConfirmation": "再次丟棄此物品以確認!",
