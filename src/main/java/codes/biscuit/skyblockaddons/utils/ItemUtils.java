@@ -104,4 +104,24 @@ public class ItemUtils {
 
         return extraAttributes.getInteger("baseStatBoostPercentage");
     }
+
+    /**
+     * Returns a boolean relating to if the rarity of a given Skyblock Extra Attributes NBT Compound has been upgraded
+     *
+     * @param extraAttributes the NBT to check
+     * @return {@code true} if its rarity has been upgraded or {@code false} if it hasn't or this isn't a valid Skyblock NBT
+     */
+    public static boolean rarityUpgraded(NBTTagCompound extraAttributes) {
+        if (extraAttributes != null) {
+            String itemId = extraAttributes.getString("id");
+
+            if (!extraAttributes.hasKey("rarity_upgrades")) {
+                return false;
+            }
+
+            return extraAttributes.getInteger("rarity_upgrades") == 1;
+        }
+
+        return false;
+    }
 }
