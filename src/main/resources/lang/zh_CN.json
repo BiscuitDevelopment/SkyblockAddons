@@ -23,7 +23,7 @@
       "compact": "简易"
     },
     "showBackpackPreview": "显示背包预览",
-    "hideHealthBar": "隐藏血条",
+    "hideHealthBar": "隐藏原版血条",
     "fullMinionWarning": "\"仆从背包空间已满\"警告",
     "ignoreItemFrameClicks": "忽略对展示框的点击",
     "showOnlyWhenHoldingShift": "只在按住 Shift 时显示",
@@ -75,7 +75,7 @@
     "collectionDisplay": "显示技能进度",
     "onlyMineOresDeepCaverns": "在深层矿洞中只挖掘矿物",
     "onlyMineValuablesNether": "仅在地狱开采有价值的矿物",
-    "revenantIndicator": "猎杀相关装备进度提示",
+    "revenantIndicator": "猎手相关装备进度提示",
     "specialZealotAlert": "特殊末影战士警告",
     "enableMessageWhenActionPrevented": "当操作被阻止时显示提示",
     "hidePetHealthBar": "隐藏宠物血条",
@@ -222,12 +222,12 @@
     "descriptionCustom": "输入自定义状态",
     "titleAuto": "随机状态",
     "descriptionAuto": "随机显示某一状态， 如在末地时显示末影战士击杀数。",
-    "titleRevenants": "亡灵猎杀任务",
-    "descriptionRevenants": "显示你当前正在进行亡灵猎杀任务",
-    "titleSvens": "狼王猎杀任务",
-    "descriptionSvens": "显示你当前正在进行狼王猎杀任务",
-    "titleTarantula": "狼蛛猎杀任务",
-    "descriptionTarantula": "显示你当前正在进行狼蛛猎杀任务"
+    "titleRevenants": "亡灵猎手任务",
+    "descriptionRevenants": "显示你当前正在进行亡灵猎手任务",
+    "titleSvens": "狼王猎手任务",
+    "descriptionSvens": "显示你当前正在进行狼王猎手任务",
+    "titleTarantula": "狼蛛猎手任务",
+    "descriptionTarantula": "显示你当前正在进行狼蛛猎手任务"
   },
   "commandUsage": {
     "sba": "打开主菜单",
