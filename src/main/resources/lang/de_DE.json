@@ -116,7 +116,7 @@
     "discordRP": "Discord Rich Presence",
     "endstoneProtectorDisplay": "Endstone-Protector-Anzeige",
     "fancyWarpMenu": "Elegantes Warp-Menü",
-    "doubleWarp": "Zwei Mal warpen",
+    "doubleWarp": "doppeltes warpen",
     "advancedMode": "Erweiterter Modus",
     "legendarySeaCreatureWarning": "Warnung für Legendäre Sea-Creatures",
     "onlyBreakLogsPark": "Nur Holz in The Park abbauen",
@@ -223,11 +223,11 @@
     "titleAuto": "Automatischer Status",
     "descriptionAuto": "Zeigt einen Status automatisch an. Als Beispiel deinen Zealot Count während du im End bist.",
     "titleRevenants": "Revenant-Quest",
-    "descriptionRevenants": "Zeigt, ob du eine Revenant-Quest machst.",
-    "titleSvens": "Sven Quest",
-    "descriptionSvens": "Zeigt, ob du eine Sven-Quest machst.",
+    "descriptionRevenants": "Zeigt, dass du ein Revenant-Quest machst.",
+    "titleSvens": "Sven-Quest",
+    "descriptionSvens": "Zeigt, dass du ein Sven-Quest machst.",
     "titleTarantula": "Tarantula-Quest",
-    "descriptionTarantula": "Zeigt, ob du eine Tarantula-Quest machst."
+    "descriptionTarantula": "Zeigt, dass du ein Tarantula-Quest machst."
   },
   "commandUsage": {
     "sba": "Hauptmenü öffnen",
