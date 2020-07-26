@@ -137,7 +137,7 @@
     "glowingDroppedItems": "Glødende Gjenstander",
     "glowingDungeonTeammates": "Glødende Dungeon Lagkamerater",
     "baseStatBoostPercentage": "Show Base Stat Boost for Dungeon Items",
-    "colorByRarity": "Color By Rarity"
+    "colorByRarity": "Sett farge etter sjeldenhet"
   },
   "messages": {
     "dropConfirmation": "Slipp denne gjenstanden igjen for å bekrefte!",
