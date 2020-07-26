@@ -136,7 +136,7 @@
     "mapZoom": "地图缩放",
     "glowingDroppedItems": "标记掉落物",
     "glowingDungeonTeammates": "在地下城中标记队友",
-    "baseStatBoostPercentage": "Show Base Stat Boost for Dungeon Items",
+    "baseStatBoostPercentage": "显示地下城物品的基本属性加成",
     "colorByRarity": "按稀有度上色"
   },
   "messages": {
