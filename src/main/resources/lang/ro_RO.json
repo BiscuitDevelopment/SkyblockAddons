@@ -136,8 +136,8 @@
     "mapZoom": "Map Zoom",
     "glowingDroppedItems": "Glowing Dropped Items",
     "glowingDungeonTeammates": "Glowing Dungeon Teammates",
-    "baseStatBoostPercentage": "Show Base Stat Boost for Dungeon Items",
-    "colorByRarity": "Color By Rarity"
+    "baseStatBoostPercentage": "Arata statisticile de baza a itemelor de Dungeon",
+    "colorByRarity": "Culoare in funcție de raritate"
   },
   "messages": {
     "dropConfirmation": "Arunca acest obiect iar ca să confirmi!",
