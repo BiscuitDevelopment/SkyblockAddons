@@ -1,0 +1,4 @@
+dependencies {
+    implementation('org.ow2.asm:asm:9.0-beta')
+    implementation('org.ow2.asm:asm-tree:9.0-beta')
+}

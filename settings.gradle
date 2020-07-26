@@ -14,3 +14,6 @@ pluginManagement {
         }
     }
 }
+
+// Assembly Transformer API
+include 'asm-api'
