@@ -131,10 +131,10 @@
     "hideSvenPupNametags": "Verstecke die Nametags von Sven Pups",
     "turnAllFeaturesChroma": "Zeige alle Features in Chroma",
     "dungeonsMapDisplay": "Dungeons Karte anzeigen",
-    "rotateMap": "Drehe Karte zur Drehung deines Spielers",
-    "centerRotationOnYourPlayer": "Drehen um Ihren Spieler herum zentrieren",
+    "rotateMap": "Drehe Karte zur Drehung des Spielers",
+    "centerRotationOnYourPlayer": "Drehung am Spieler zentrieren",
     "mapZoom": "Karte vergrößern",
-    "glowingDroppedItems": "Fallengelassene sachen glühen",
+    "glowingDroppedItems": "Fallengelassene Items glühen",
     "glowingDungeonTeammates": "Glühende Dungeon Teamkollegen",
     "baseStatBoostPercentage": "Zeige Basisstatistik-Boost für Dungeon-Items",
     "colorByRarity": "Farbe nach Seltenheit"
