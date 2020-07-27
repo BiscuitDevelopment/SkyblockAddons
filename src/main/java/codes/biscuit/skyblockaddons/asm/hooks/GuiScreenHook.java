@@ -4,16 +4,21 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.asm.utils.ReturnValue;
 import codes.biscuit.skyblockaddons.features.backpacks.Backpack;
 import codes.biscuit.skyblockaddons.features.backpacks.BackpackManager;
+import codes.biscuit.skyblockaddons.features.backpacks.GenericInventoryDisplay;
 import codes.biscuit.skyblockaddons.features.cooldowns.CooldownManager;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.utils.InventoryUtils;
+import codes.biscuit.skyblockaddons.utils.ItemUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ContainerChest;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.IChatComponent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import org.lwjgl.input.Keyboard;
@@ -75,6 +80,16 @@ public class GuiScreenHook {
                 }
                 main.getPlayerListener().onItemTooltip(new ItemTooltipEvent(stack, null, null, false));
                 returnValue.cancel();
+            }
+        } else if (stack.getItem().equals(Item.getItemFromBlock(Blocks.dropper)) && main.getConfigValues().isEnabled(Feature.SHOW_PERSONAL_COMPACTOR_PREVIEW)) {
+            NBTTagCompound data = ItemUtils.getExtraAttributes(stack);
+            if (data == null) return;
+            if (ItemUtils.getSkyBlockItemID(data).startsWith("PERSONAL_COMPACTOR"))
+            {
+                main.getPlayerListener().onItemTooltip(new ItemTooltipEvent(stack, null, null, false));
+                returnValue.cancel();
+                ItemStack[] items = ItemUtils.getPersonalCompactorContents(data);
+                main.getUtils().setGenericInventoryDisplay(new GenericInventoryDisplay(stack.getDisplayName().replaceAll("(ersonal )|(ompactor)",""), items));
             }
         }
         if (GuiContainerHook.isFreezeBackpack()) {

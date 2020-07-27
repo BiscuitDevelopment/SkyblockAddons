@@ -220,6 +220,10 @@ public class GuiContainerHook {
             GlStateManager.enableLighting();
             GlStateManager.enableDepth();
             RenderHelper.enableStandardItemLighting();
+        } else if (main.getUtils().getGenericInventoryDisplay() != null)
+        {
+            main.getUtils().getGenericInventoryDisplay().draw(guiContainer, mouseX, mouseY, fontRendererObj);
+            main.getUtils().setGenericInventoryDisplay(null);
         }
     }
 

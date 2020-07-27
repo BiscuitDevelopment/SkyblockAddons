@@ -255,6 +255,7 @@ public class EnumUtils {
         CENTER_ROTATION_ON_PLAYER(SETTING_CENTER_ROTATION_ON_PLAYER, 101),
         MAP_ZOOM(SETTING_MAP_ZOOM, -1),
         COLOUR_BY_RARITY(SETTING_COLOR_BY_RARITY, -1),
+        ENABLE_PERSONAL_COMPACTOR_PREVIEW(SETTING_SHOW_PERSONAL_COMPACTOR_PREVIEW, 106),
 
         DISCORD_RP_STATE(null, 0),
         DISCORD_RP_DETAILS(null, 0)
@@ -303,7 +304,8 @@ public class EnumUtils {
         MYNAMEISJEFF("MyNameIsJeff", "github.com/My-Name-Is-Jeff", Feature.SHOW_BROKEN_FRAGMENTS),
         DJTHEREDSTONER("DJtheRedstoner", "github.com/DJtheRedstoner", Feature.LEGENDARY_SEA_CREATURE_WARNING, Feature.HIDE_SVEN_PUP_NAMETAGS),
         ANTONIO32A("Antonio32A", "github.com/Antonio32A", Feature.ONLY_BREAK_LOGS_PARK),
-        CHARZARD("Charzard4261", "github.com/Charzard4261", Feature.DISABLE_TELEPORT_PAD_MESSAGES, Feature.BAIT_LIST, Feature.SHOW_BASE_STAT_BOOST_PERCENTAGE);
+        CHARZARD("Charzard4261", "github.com/Charzard4261", Feature.DISABLE_TELEPORT_PAD_MESSAGES, Feature.BAIT_LIST, Feature.SHOW_BASE_STAT_BOOST_PERCENTAGE,
+                Feature.SHOW_PERSONAL_COMPACTOR_PREVIEW);
 
         private Set<Feature> features;
         private String author;

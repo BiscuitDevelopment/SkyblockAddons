@@ -137,7 +137,8 @@
     "glowingDroppedItems": "Glowing Dropped Items",
     "glowingDungeonTeammates": "Glowing Dungeon Teammates",
     "baseStatBoostPercentage": "Show Base Stat Boost for Dungeon Items",
-    "colorByRarity": "Color By Rarity"
+    "colorByRarity": "Color By Rarity",
+    "showPersonalCompactorPreview": "Show Personal Compactor Preview"
   },
   "messages": {
     "dropConfirmation": "Drop this item again to confirm!",

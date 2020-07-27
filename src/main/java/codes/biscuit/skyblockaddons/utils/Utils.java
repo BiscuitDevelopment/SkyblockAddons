@@ -5,6 +5,7 @@ import codes.biscuit.skyblockaddons.core.*;
 import codes.biscuit.skyblockaddons.events.SkyblockJoinedEvent;
 import codes.biscuit.skyblockaddons.events.SkyblockLeftEvent;
 import codes.biscuit.skyblockaddons.features.backpacks.Backpack;
+import codes.biscuit.skyblockaddons.features.backpacks.GenericInventoryDisplay;
 import codes.biscuit.skyblockaddons.features.itemdrops.ItemDropChecker;
 import codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui;
 import codes.biscuit.skyblockaddons.misc.ChromaManager;
@@ -103,6 +104,9 @@ public class Utils {
     private List<String> enchantmentExclusions = new LinkedList<>();
 
     private Backpack backpackToPreview;
+
+    @Getter @Setter
+    private GenericInventoryDisplay genericInventoryDisplay;
 
     /** Whether the player is on skyblock. */
     private boolean onSkyblock;
