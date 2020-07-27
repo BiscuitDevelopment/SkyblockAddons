@@ -131,7 +131,7 @@
     "hideSvenPupNametags": "隐藏 Sven Pup 的名称标签",
     "turnAllFeaturesChroma": "为所有功能启用渐变色",
     "dungeonsMapDisplay": "地下城地图显示",
-    "rotateMap": "旋转地图至玩家方向",
+    "rotateMap": "旋转地图方向至玩家方向",
     "centerRotationOnYourPlayer": "Center the Rotation Around Your Player",
     "mapZoom": "地图缩放",
     "glowingDroppedItems": "标记掉落物",
