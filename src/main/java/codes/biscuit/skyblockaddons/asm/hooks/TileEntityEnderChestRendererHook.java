@@ -1,7 +1,7 @@
 package codes.biscuit.skyblockaddons.asm.hooks;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsTransformer;
+import codes.biscuit.skyblockaddons.tweaker.PreTransformationChecks;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.Location;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
@@ -32,7 +32,7 @@ public class TileEntityEnderChestRendererHook {
     }
 
     private static void bindRightTexture(TileEntityEnderChestRenderer tileEntityEnderChestRenderer, ResourceLocation resourceLocation) {
-        if (SkyblockAddonsTransformer.isLabymodClient()) { // There are no access transformers in labymod.
+        if (PreTransformationChecks.isLabymodClient()) { // There are no access transformers in labymod.
             try {
                 if (bindTexture == null) {
                     bindTexture = tileEntityEnderChestRenderer.getClass().getSuperclass().getDeclaredMethod("a", ResourceLocation.class);
