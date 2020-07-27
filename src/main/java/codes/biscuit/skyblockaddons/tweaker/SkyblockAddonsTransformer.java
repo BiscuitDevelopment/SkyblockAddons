@@ -96,6 +96,7 @@ public class SkyblockAddonsTransformer implements IClassTransformer {
         return writer.toByteArray();
     }
 
+    @SuppressWarnings("ResultOfMethodCallIgnored")
     private void outputBytecode(String transformedName, ClassWriter writer) {
         if (SkyblockAddonsSetup.isDeobfuscatedEnvironment()) {
             try {
