@@ -114,7 +114,7 @@
     "birchParkRainmakerTimer": "Birketræs park regn timer",
     "combatTimerDisplay": "Ude af ‘Combat’ timer",
     "discordRP": "Discord status besked",
-    "endstoneProtectorDisplay": "Endstone Protector Display",
+    "endstoneProtectorDisplay": "Endstone Protecter Viser",
     "fancyWarpMenu": "Smart Warp Menu",
     "doubleWarp": "Warp to gange",
     "advancedMode": "Avanceret Tilstand",
@@ -231,14 +231,14 @@
   },
   "commandUsage": {
     "sba": "Åben menuen",
-    "sba.edit": "Edit GUI locations",
-    "sba.set.zealotCounter": "Manually set your zealot counts",
-    "sba.folder": "Open your mods folder",
-    "sba.dev": "Toggle developer mode",
-    "sba.sidebar": "§e(Dev) §7Copy the scoreboard text. \"formatted\" §7keeps the color codes when copying.",
-    "sba.brand": "§e(Dev) §7Show the server brand"
+    "sba.edit": "Rediger GUI Lokationer",
+    "sba.set.zealotCounter": "Manuelt sæt din zealot tæller",
+    "sba.folder": "Åben din mods folder",
+    "sba.dev": "Skift fra og til udvikler funktioner",
+    "sba.sidebar": "§e(Dev) §7Kopi scorebrættets tekst. \"format\" §7beholder farve koden når kopierede.",
+    "sba.brand": "§e(Dev) §7Vis server brandet"
   },
   "keyBindings": {
-    "developerCopyNBT": "Copy NBT"
+    "developerCopyNBT": "Kopier NBT"
   }
 }
