@@ -130,14 +130,14 @@
     "changeZealotColor": "Verander Zealot Kleur",
     "hideSvenPupNametags": "Verberg Sven Pups Naamkaarten",
     "turnAllFeaturesChroma": "Draai Alle Functies Chroma",
-    "dungeonsMapDisplay": "Dungeons Map Display",
-    "rotateMap": "Rotate Map to Your Player's Rotation",
-    "centerRotationOnYourPlayer": "Center the Rotation Around Your Player",
-    "mapZoom": "Map Zoom",
-    "glowingDroppedItems": "Glowing Dropped Items",
-    "glowingDungeonTeammates": "Glowing Dungeon Teammates",
+    "dungeonsMapDisplay": "Dungeons Kaart Weergave",
+    "rotateMap": "Roteer Kaart naar de Rotatie van je Speler",
+    "centerRotationOnYourPlayer": "Centreer de Rotatie Om Je Speler Heen",
+    "mapZoom": "Kaart Zoom",
+    "glowingDroppedItems": "Gloeiende Gevallen Voorwerpen",
+    "glowingDungeonTeammates": "Gloeiende Dungeon Teamgenoten",
     "baseStatBoostPercentage": "Show Base Stat Boost for Dungeon Items",
-    "colorByRarity": "Color By Rarity"
+    "colorByRarity": "Kleur Op Zeldzaamheid"
   },
   "messages": {
     "dropConfirmation": "Laat dit object opnieuw vallen om te Bevestigen!",
@@ -230,15 +230,15 @@
     "descriptionTarantula": "Laat zien dat je een Tarantula opdracht aan het doen bent."
   },
   "commandUsage": {
-    "sba": "Open the main menu",
-    "sba.edit": "Edit GUI locations",
+    "sba": "Open het hoofdmenu",
+    "sba.edit": "Bewerk GUI locaties",
     "sba.set.zealotCounter": "Manually set your zealot counts",
-    "sba.folder": "Open your mods folder",
+    "sba.folder": "Open jouw mods map",
     "sba.dev": "Toggle developer mode",
     "sba.sidebar": "§e(Dev) §7Copy the scoreboard text. \"formatted\" §7keeps the color codes when copying.",
-    "sba.brand": "§e(Dev) §7Show the server brand"
+    "sba.brand": "§e(Dev) §7Toon het merk van de server"
   },
   "keyBindings": {
-    "developerCopyNBT": "Copy NBT"
+    "developerCopyNBT": "Kopieer NBT"
   }
 }
