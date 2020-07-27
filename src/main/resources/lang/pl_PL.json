@@ -127,7 +127,7 @@
     "hideGreyEnchants": "Ukryj zwyczajne szare zaklęcia",
     "zealotCounterExplosiveBow": "Wsparcie Licznika Zealotów Dla Wybuchowego Łuku",
     "disableEndermanTeleportation": "Wyłącz Teleportację Endermanów",
-    "changeZealotColor": "Zmień kolor zealotów",
+    "changeZealotColor": "Zmień Kolor Zealotów",
     "hideSvenPupNametags": "Ukryj Nazwy Szczeniaków Svena",
     "turnAllFeaturesChroma": "Ustaw Wszystkie Funkcje Na Tryb Chroma",
     "dungeonsMapDisplay": "Wyświetlanie mapy Lochów",
@@ -135,9 +135,9 @@
     "centerRotationOnYourPlayer": "Ustal środek na swojej postaci",
     "mapZoom": "Przybliżenie mapy",
     "glowingDroppedItems": "Świecenie leżących przedmiotów",
-    "glowingDungeonTeammates": "Świecenie towarzyszy w Lochach",
+    "glowingDungeonTeammates": "Świecenie towarzyszy w lochach",
     "baseStatBoostPercentage": "Show Base Stat Boost for Dungeon Items",
-    "colorByRarity": "Kolory przypisane do rzadkości"
+    "colorByRarity": "Kolor przypisany do rzadkości"
   },
   "messages": {
     "dropConfirmation": "Wyrzuć ten przedmiot ponownie, aby potwierdzić!",
@@ -231,9 +231,9 @@
   },
   "commandUsage": {
     "sba": "Otwórz menu główne",
-    "sba.edit": "Edytuj położenie GUI",
+    "sba.edit": "Edytuj położenie w GUI",
     "sba.set.zealotCounter": "Ręcznie ustaw liczniki zealotów",
-    "sba.folder": "Otwórz folder z modyfikacjami",
+    "sba.folder": "Otwórz Twój folder z modyfikacjami",
     "sba.dev": "Włącz tryb programisty",
     "sba.sidebar": "§e(Dev) §7Skopiuj tekst tablicy wyników. \"sformatowane\" §7zachowuje kody kolorów podczas kopiowania.",
     "sba.brand": "§e(Dev) §7Pokaż markę serwera"
