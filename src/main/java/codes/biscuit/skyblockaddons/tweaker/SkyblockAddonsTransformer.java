@@ -129,6 +129,7 @@ public class SkyblockAddonsTransformer implements IClassTransformer {
         return writer.toByteArray();
     }
 
+    @SuppressWarnings("ResultOfMethodCallIgnored")
     private void outputBytecode(String transformedName, ClassWriter writer) {
         try {
             File bytecodeDirectory = new File("bytecode");
