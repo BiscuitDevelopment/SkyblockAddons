@@ -114,7 +114,7 @@
     "birchParkRainmakerTimer": "Berkenpark Regenmaker Timer",
     "combatTimerDisplay": "Gevechts Timer Weergave",
     "discordRP": "Discord Rich Presence",
-    "endstoneProtectorDisplay": "Endstone Beschermer Weergave",
+    "endstoneProtectorDisplay": "Eindsteen Beschermer Weergave",
     "fancyWarpMenu": "Mooie Teleporteer Menu",
     "doubleWarp": "Warp Twee Keer",
     "advancedMode": "Geavanceerde Modus",
@@ -136,7 +136,7 @@
     "mapZoom": "Kaart Zoom",
     "glowingDroppedItems": "Gloeiende Gevallen Voorwerpen",
     "glowingDungeonTeammates": "Gloeiende Dungeon Teamgenoten",
-    "baseStatBoostPercentage": "Show Base Stat Boost for Dungeon Items",
+    "baseStatBoostPercentage": "Laat Basis Stat Boost voor Dungeon Voorwerpen Zien",
     "colorByRarity": "Kleur Op Zeldzaamheid"
   },
   "messages": {
@@ -232,10 +232,10 @@
   "commandUsage": {
     "sba": "Open het hoofdmenu",
     "sba.edit": "Bewerk GUI locaties",
-    "sba.set.zealotCounter": "Manually set your zealot counts",
+    "sba.set.zealotCounter": "Handmatig je zealot teller instellen",
     "sba.folder": "Open jouw mods map",
-    "sba.dev": "Toggle developer mode",
-    "sba.sidebar": "§e(Dev) §7Copy the scoreboard text. \"formatted\" §7keeps the color codes when copying.",
+    "sba.dev": "In-/uitschakelen ontwikkellaarsmodus",
+    "sba.sidebar": "§e(Dev) §7Kopieer de scorebord. \"geformatteerd\" §7houd de kleurcodes bij het kopiëren.",
     "sba.brand": "§e(Dev) §7Toon het merk van de server"
   },
   "keyBindings": {
