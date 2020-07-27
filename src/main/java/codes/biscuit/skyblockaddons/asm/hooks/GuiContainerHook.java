@@ -6,7 +6,7 @@ import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.features.backpacks.Backpack;
 import codes.biscuit.skyblockaddons.features.backpacks.BackpackColor;
 import codes.biscuit.skyblockaddons.features.craftingpatterns.CraftingPattern;
-import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsSetup;
+import codes.biscuit.skyblockaddons.tweaker.PreTransformationChecks;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
 import codes.biscuit.skyblockaddons.utils.objects.FloatPairString;
@@ -294,7 +294,7 @@ public class GuiContainerHook {
     private static Method drawGradientRect = null;
 
     private static void drawRightGradientRect(GuiContainer guiContainer, int left, int top, int right, int bottom, int startColor, int endColor) {
-        if (SkyblockAddonsSetup.isUsingLabyModClient()) { // There are no access transformers in labymod.
+        if (PreTransformationChecks.isLabymodClient()) { // There are no access transformers in labymod.
             try {
                 if (drawGradientRect == null) {
                     drawGradientRect = guiContainer.getClass().getSuperclass().getSuperclass().getDeclaredMethod("a", int.class, int.class, int.class, int.class, int.class, int.class);
@@ -364,7 +364,7 @@ public class GuiContainerHook {
     private static Field zLevel = null;
 
     private static void setZLevel(Gui gui, int zLevelToSet) {
-        if (SkyblockAddonsSetup.isUsingLabyModClient()) { // There are no access transformers in labymod.
+        if (PreTransformationChecks.isLabymodClient()) { // There are no access transformers in labymod.
             try {
                 if (zLevel == null) {
                     zLevel = gui.getClass().getDeclaredField("e");
@@ -384,7 +384,7 @@ public class GuiContainerHook {
     private static Method drawHoveringText = null;
 
     private static void drawHoveringText(GuiContainer guiContainer, List<String> text, int x, int y) {
-        if (SkyblockAddonsSetup.isUsingLabyModClient()) { // There are no access transformers in labymod.
+        if (PreTransformationChecks.isLabymodClient()) { // There are no access transformers in labymod.
             try {
                 if (drawHoveringText == null) {
                     drawHoveringText = guiContainer.getClass().getSuperclass().getDeclaredMethod("a",

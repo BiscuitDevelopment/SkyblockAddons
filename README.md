@@ -1,3 +1,4 @@
+<!--suppress HtmlDeprecatedAttribute -->
 <h1 align="center">SkyblockAddons</h1>
 
 <p align="center">
