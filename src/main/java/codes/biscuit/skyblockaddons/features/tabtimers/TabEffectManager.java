@@ -135,7 +135,7 @@ public class TabEffectManager {
                     footer.setAccessible(true);
                 }
                 if (footer != null) {
-                    footer.get(guiTab);
+                    return (IChatComponent) footer.get(guiTab);
                 }
             } catch (IllegalAccessException | NoSuchFieldException e) {
                 e.printStackTrace();
