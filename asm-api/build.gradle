@@ -1,4 +1,8 @@
 dependencies {
-    implementation('org.ow2.asm:asm:9.0-beta')
-    implementation('org.ow2.asm:asm-tree:9.0-beta')
+    // OW2 ASM v5.0.3
+    compileOnly('org.ow2.asm:asm:5.0.3')
+    compileOnly('org.ow2.asm:asm-tree:5.0.3')
+
+    // Google Guava v17.0
+    compileOnly("com.google.guava:guava:17.0")
 }
