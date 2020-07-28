@@ -40,8 +40,9 @@ public abstract class Transformer {
     /**
      * Transform a class node with its helper
      *
+     * @param engine The engine which is performing the transformation process
      * @param targetClassHelper The class helper of the target to transform
      * @param node The class node of the target
      */
-    public abstract void transform(TransformClassHelper targetClassHelper, ClassNode node);
+    public abstract void transform(TransformerEngine engine, TransformClassHelper targetClassHelper, ClassNode node);
 }
