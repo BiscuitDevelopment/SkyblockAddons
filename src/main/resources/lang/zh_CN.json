@@ -217,7 +217,7 @@
     "titleProfile": "存档",
     "descriptionProfile": "显示你当前的存档名称",
     "titleTime": "空岛时间",
-    "descriptionTime": "显示当前空岛的时间，例：初冬1日12：00am",
+    "descriptionTime": "显示当前空岛的时间，例如 12:00am 1st Early Winter",
     "titleCustom": "自定义状态",
     "descriptionCustom": "输入自定义状态",
     "titleAuto": "随机状态",
@@ -235,7 +235,7 @@
     "sba.set.zealotCounter": "手动设置末影战士计数器",
     "sba.folder": "打开 mods 文件夹",
     "sba.dev": "启用/禁用 开发者模式",
-    "sba.sidebar": "§e(开发者) §7复制记分板文本，输入\"formatted\"参数 §7将在复制时保留文本中的样式代码",
+    "sba.sidebar": "§e(开发者) §7复制计分版文本，输入 \"formatted\" §7将在复制时保留文本中的样式代码",
     "sba.brand": "§e(开发者) §7显示服务端名称"
   },
   "keyBindings": {
