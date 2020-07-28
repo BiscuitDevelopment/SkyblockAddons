@@ -136,7 +136,7 @@
     "mapZoom": "Przybliżenie mapy",
     "glowingDroppedItems": "Świecenie leżących przedmiotów",
     "glowingDungeonTeammates": "Świecenie towarzyszy w lochach",
-    "baseStatBoostPercentage": "Show Base Stat Boost for Dungeon Items",
+    "baseStatBoostPercentage": "Pokaż bazowe ulepszenie statystyk dla przedmotów z lochów",
     "colorByRarity": "Kolor przypisany do rzadkości"
   },
   "messages": {
