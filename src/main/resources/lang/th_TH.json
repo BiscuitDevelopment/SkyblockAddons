@@ -130,14 +130,14 @@
     "changeZealotColor": "เปลี่ยนสี Zealot",
     "hideSvenPupNametags": "ปิดชื่อลูกสุนัข",
     "turnAllFeaturesChroma": "เปิดทุกอย่างเป็นสีรุ้ง",
-    "dungeonsMapDisplay": "Dungeons Map Display",
-    "rotateMap": "Rotate Map to Your Player's Rotation",
-    "centerRotationOnYourPlayer": "Center the Rotation Around Your Player",
-    "mapZoom": "Map Zoom",
-    "glowingDroppedItems": "Glowing Dropped Items",
-    "glowingDungeonTeammates": "Glowing Dungeon Teammates",
-    "baseStatBoostPercentage": "Show Base Stat Boost for Dungeon Items",
-    "colorByRarity": "Color By Rarity"
+    "dungeonsMapDisplay": "แสดงแผนที่ของ Dungeons",
+    "rotateMap": "ปรับแผนที่ตามทิศทางของผู้เล่น",
+    "centerRotationOnYourPlayer": "จุดศูนย์กลางการหมุนรอบตัวผู้เล่น",
+    "mapZoom": "ขยายแผนที่",
+    "glowingDroppedItems": "ของดรอปเรืองแสง",
+    "glowingDungeonTeammates": "ผู้เล่นในทีม Dungeon เรืองแสง",
+    "baseStatBoostPercentage": "แสดงค่าพื้นฐานของ Dungeon Items",
+    "colorByRarity": "สีตามความหายาก"
   },
   "messages": {
     "dropConfirmation": "กดทิ้งของอีกที่เพื่อยืนยันทิ้งของสิ่งนี้!",
@@ -235,8 +235,8 @@
     "sba.set.zealotCounter": "ตั้งจำนวน Zealot ด้วยตนเอง",
     "sba.folder": "เปิดโฟลเดอร์ mods",
     "sba.dev": "เปิด/ปิดโหมดผู้พัฒนา",
-    "sba.sidebar": "§e(Dev) §7Copy the scoreboard text. \"formatted\" §7keeps the color codes when copying.",
-    "sba.brand": "§e(Dev) §7Show the server brand"
+    "sba.sidebar": "§e(Dev) §7คัดลอกตัวหนังสือในตารางคะแนน §7เก็บ code เมื่อทำการคัดลอก",
+    "sba.brand": "§e(Dev) §7แสดง Server brand"
   },
   "keyBindings": {
     "developerCopyNBT": "ลอก NBT"
