@@ -19,7 +19,7 @@ import java.util.Collection;
 
 public class SkyblockAddonsTransformer implements IClassTransformer {
     static {
-        PreTransformationChecks.runChecks();
+        PreTransformationChecks.runPreInitChecks();
     }
 
     private final Logger logger = LogManager.getLogger("SkyblockAddons Transformer");
