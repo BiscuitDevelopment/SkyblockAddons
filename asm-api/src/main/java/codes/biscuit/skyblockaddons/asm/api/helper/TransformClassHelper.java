@@ -24,6 +24,10 @@ public abstract class TransformClassHelper {
         return getName().replaceAll("(\\/)+", ".");
     }
 
+    public boolean equals(TransformClassHelper classHelper) {
+        return getTransformerName().equals(classHelper.getTransformerName());
+    }
+
     /**
      * @return The raw name of the class
      */
