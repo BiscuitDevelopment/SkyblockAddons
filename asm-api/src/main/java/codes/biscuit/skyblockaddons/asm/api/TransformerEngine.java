@@ -5,6 +5,8 @@ import codes.biscuit.skyblockaddons.asm.api.helper.normal.NormalTransformClassHe
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
 import org.apache.commons.lang3.mutable.MutableInt;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.tree.ClassNode;
 
@@ -15,7 +17,7 @@ import org.objectweb.asm.tree.ClassNode;
  */
 public abstract class TransformerEngine {
 
-    // TODO Implement a logger for the engine
+    private Logger logger = LogManager.getLogger("SBA: ASM Transformers");
     private Multimap<String, Transformer> transformers = ArrayListMultimap.create();
     private MutableInt writeFlags = new MutableInt();
 
@@ -52,6 +54,15 @@ public abstract class TransformerEngine {
         for (Transformer transformer : transformers.get(name)) {
             transformer.transform(this, classHelper, node);
         }
+    }
+
+    /**
+     * Get the engine logger
+     *
+     * @return The logger of the engine
+     */
+    public Logger getLogger() {
+        return logger;
     }
 
     /**

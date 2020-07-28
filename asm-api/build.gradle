@@ -7,4 +7,7 @@ dependencies {
 
     /* Apache Commons Lang v3 */
     compileOnly('org.apache.commons:commons-lang3:3.3.2')
+
+    /* Apache Log4J v2.0-beta9 */
+    compileOnly('org.apache.logging.log4j:log4j-api:2.0-beta9')
 }
