@@ -33,8 +33,8 @@ If your game crashed, please paste the beginning of your crash report here. Copy
 **System Information**
  - OS: [e.g. Windows 10]
  - Mod Loader: [e.g. Forge, Liteloader]
- - Minecraft Version/Mod Loader Version [e.g. 1.8.9 - 11.15.1.2318]
- - SkyblockAddons Version [e.g. 1.4.2]
+ - Minecraft Version/Mod Loader Version: [e.g. 1.8.9 - 11.15.1.2318]
+ - SkyblockAddons Version: [e.g. 1.4.2]
 
 **Other Installed Mods**
 If you have any other mods installed, please list them here along with their version number.
