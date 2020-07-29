@@ -1,11 +1,14 @@
 ---
 name: Bug report
 about: Create a report to help us improve
-title: '[Bug]'
+title: '[Bug] <Title Here>'
 labels: bug
 assignees: ''
 
 ---
+
+Please note that we do not provide support for clients other than Forge.
+We will not fix compatibility issues with other clients.
 
 **Describe the bug**
 A clear and concise description of what the bug is.
