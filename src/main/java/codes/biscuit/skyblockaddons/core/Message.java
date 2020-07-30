@@ -134,7 +134,6 @@ public enum Message {
     SETTING_SHOW_ICONS(MessageObject.SETTING, "showIcons"),
     SETTING_DRAGONS_NEST_ONLY(MessageObject.SETTING, "dragonsNestOnly"),
     SETTING_DRAGON_STATS_TRACKER(MessageObject.SETTING, "dragonStatsTracker"),
-    SETTING_SHOW_PERSONAL_COMPACTOR_PREVIEW(MessageObject.SETTING, "showPersonalCompactorPreview"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.BACKPACK_STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.BACKPACK_STYLE, "compact"),

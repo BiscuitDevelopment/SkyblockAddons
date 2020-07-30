@@ -266,7 +266,6 @@ public class EnumUtils {
         SLAYER_ZOMBIE(SETTING_SLAYER_TRACKER, 101),
         SLAYER_SPIDER(SETTING_SLAYER_TRACKER, 102),
         SLAYER_WOLF(SETTING_SLAYER_TRACKER, 103),
-        ENABLE_PERSONAL_COMPACTOR_PREVIEW(SETTING_SHOW_PERSONAL_COMPACTOR_PREVIEW, 107),
 
         DISCORD_RP_STATE(null, 0),
         DISCORD_RP_DETAILS(null, 0);
@@ -315,7 +314,7 @@ public class EnumUtils {
         DJTHEREDSTONER("DJtheRedstoner", "github.com/DJtheRedstoner", Feature.LEGENDARY_SEA_CREATURE_WARNING, Feature.HIDE_SVEN_PUP_NAMETAGS),
         ANTONIO32A("Antonio32A", "github.com/Antonio32A", Feature.ONLY_BREAK_LOGS_PARK),
         CHARZARD("Charzard4261", "github.com/Charzard4261", Feature.DISABLE_TELEPORT_PAD_MESSAGES, Feature.BAIT_LIST, Feature.ACTIONS_UNTIL_NEXT_LEVEL, Feature.SLAYER_TRACKERS,
-                Feature.DRAGON_STATS_TRACKER, Feature.SHOW_PERSONAL_COMPACTOR_PREVIEW);
+                Feature.DRAGON_STATS_TRACKER);
 
         private Set<Feature> features;
         private String author;

@@ -8,7 +8,6 @@ import codes.biscuit.skyblockaddons.features.backpacks.BackpackManager;
 import codes.biscuit.skyblockaddons.features.cooldowns.CooldownManager;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.utils.InventoryUtils;
-import codes.biscuit.skyblockaddons.features.backpacks.GenericInventoryDisplay;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.init.Blocks;
@@ -80,16 +79,6 @@ public class GuiScreenHook {
                 }
                 main.getPlayerListener().onItemTooltip(new ItemTooltipEvent(stack, null, null, false));
                 returnValue.cancel();
-            }
-        } else if (stack.getItem().equals(Item.getItemFromBlock(Blocks.dropper)) && main.getConfigValues().isEnabled(Feature.SHOW_PERSONAL_COMPACTOR_PREVIEW)) {
-            NBTTagCompound data = ItemUtils.getSkyblockData(stack);
-            if (data == null) return;
-            if (ItemUtils.getSkyBlockItemID(data).startsWith("PERSONAL_COMPACTOR"))
-            {
-                main.getPlayerListener().onItemTooltip(new ItemTooltipEvent(stack, null, null, false));
-                returnValue.cancel();
-                ItemStack[] items = ItemUtils.getPersonalCompactorContents(data);
-                main.getUtils().setGenericInventoryDisplay(new GenericInventoryDisplay(stack.getDisplayName().replaceAll("(ersonal )|(ompactor)",""), items));
             }
         }
         if (GuiContainerHook.isFreezeBackpack()) {
