@@ -221,7 +221,7 @@
     "titleCustom": "Egyedi státusz",
     "descriptionCustom": "Adj meg egy egyedi státuszt",
     "titleAuto": "Automatikus státusz",
-    "descriptionAuto": "Automatically displays a status. E.g. your zealot count while in the end.",
+    "descriptionAuto": "Autómatikusan megjeleníti a státuszodat pl.: a te zealot számlálódat amikor a végben vagy.",
     "titleRevenants": "Zombi küldetés",
     "descriptionRevenants": "Ezt mutassa amikor te éppen zombi küldetést csinálsz.",
     "titleSvens": "Farkas küldetés",
@@ -232,7 +232,7 @@
   "commandUsage": {
     "sba": "A fő menü megnyitása",
     "sba.edit": "A GUI szerkesztése",
-    "sba.set.zealotCounter": "Manually set your zealot counts",
+    "sba.set.zealotCounter": "Zealotok számának manuális beálítása",
     "sba.folder": "Mod mappa megnyitása",
     "sba.dev": "Fejlesztőeszközök ki-/ bekapcsolása",
     "sba.sidebar": "§e(Dev) §7Copy the scoreboard text. \"formatted\" §7keeps the color codes when copying.",
