@@ -57,7 +57,3 @@ jobs:
       with:
         name: ${{ env.mod_jar_name }}
         path: ${{ env.mod_jar_path }}
-    - run: |
-        echo ${{ github.event.inputs.upload_artifact }}
-        echo "${{ contains(github.event.inputs.upload_artifact, 'yes') }}"
-        echo "${{ github.event.inputs.upload_artifact == 'yes' }}"
