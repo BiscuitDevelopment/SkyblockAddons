@@ -49,7 +49,7 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew build
     - name: Upload Artifact
-      if: ${{ contains(github.events.inputs.upload_artifact, 'yes')}}
+      if: ${{ contains(github.event.inputs.upload_artifact, 'yes') }}
       env:
         mod_jar_name: ${{ steps.read_mod_name.outputs.value }}-${{ steps.read_mod_version.outputs.value }}-for-MC-${{ steps.read_mc_version.outputs.value }}
         mod_jar_path: build/libs/${{ steps.read_mod_name.outputs.value }}-${{ steps.read_mod_version.outputs.value }}-for-MC-${{ steps.read_mc_version.outputs.value }}.jar
@@ -57,3 +57,7 @@ jobs:
       with:
         name: ${{ env.mod_jar_name }}
         path: ${{ env.mod_jar_path }}
+    - run: |
+        echo ${{ github.event.inputs.upload_artifact }}
+        echo "${{ contains(github.event.inputs.upload_artifact, 'yes') }}"
+        echo "${{ github.event.inputs.upload_artifact == 'yes' }}"
