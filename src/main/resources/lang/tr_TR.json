@@ -136,7 +136,7 @@
     "mapZoom": "Harita Yakınlaştır",
     "glowingDroppedItems": "Düşürülen eşyaları aydınlat",
     "glowingDungeonTeammates": "Parlayan zindan takım arkadaşları",
-    "baseStatBoostPercentage": "Show Base Stat Boost for Dungeon Items",
+    "baseStatBoostPercentage": "Zindan eşyaları için normal istatistik arttırmaları göster",
     "colorByRarity": "Enderliğe göre renk"
   },
   "messages": {
