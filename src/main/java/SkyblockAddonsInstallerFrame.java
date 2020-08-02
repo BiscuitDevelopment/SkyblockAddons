@@ -11,6 +11,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.jar.JarFile;
 import java.util.regex.Pattern;
 import java.util.zip.ZipEntry;
@@ -125,7 +126,8 @@ public class SkyblockAddonsInstallerFrame extends JFrame implements ActionListen
                 h = w/2;
                 margin = 5;
 
-                BufferedImage myPicture = ImageIO.read(getClass().getClassLoader().getResourceAsStream("assets/skyblockaddons/logo.png"));
+                BufferedImage myPicture = ImageIO.read(Objects.requireNonNull(getClass().getClassLoader()
+                        .getResourceAsStream("assets/skyblockaddons/logo.png"), "Logo not found."));
                 Image scaled = myPicture.getScaledInstance(w-margin*2, h-margin, Image.SCALE_SMOOTH);
                 logo = new JLabel(new ImageIcon(scaled));
                 logo.setName("Logo");
@@ -171,14 +173,7 @@ public class SkyblockAddonsInstallerFrame extends JFrame implements ActionListen
 
                 descriptionText = new JTextArea();
                 descriptionText.setName("TextArea");
-                descriptionText.setBounds(x+margin, y+margin, w-margin*2, h-margin);
-                descriptionText.setEditable(false);
-                descriptionText.setHighlighter(null);
-                descriptionText.setEnabled(true);
-                descriptionText.setFont(new Font(Font.DIALOG, Font.PLAIN, 12));
-                descriptionText.setLineWrap(true);
-                descriptionText.setOpaque(false);
-                descriptionText.setPreferredSize(new Dimension(w-margin*2, h-margin));
+                setTextAreaProperties(descriptionText);
                 descriptionText.setText("This installer will copy SkyblockAddons into your forge mods folder for you, and replace any old versions that already exist. " +
                         "Close this if you prefer to do this yourself!");
                 descriptionText.setWrapStyleWord(true);
@@ -191,6 +186,17 @@ public class SkyblockAddonsInstallerFrame extends JFrame implements ActionListen
         return descriptionText;
     }
 
+    private void setTextAreaProperties(JTextArea textArea) {
+        textArea.setBounds(x+margin, y+margin, w-margin*2, h-margin);
+        textArea.setEditable(false);
+        textArea.setHighlighter(null);
+        textArea.setEnabled(true);
+        textArea.setFont(new Font(Font.DIALOG, Font.PLAIN, 12));
+        textArea.setLineWrap(true);
+        textArea.setOpaque(false);
+        textArea.setPreferredSize(new Dimension(w-margin*2, h-margin));
+    }
+
     private JTextArea getForgeTextArea() {
         if (forgeDescriptionText == null) {
             try {
@@ -199,14 +205,7 @@ public class SkyblockAddonsInstallerFrame extends JFrame implements ActionListen
 
                 forgeDescriptionText = new JTextArea();
                 forgeDescriptionText.setName("TextAreaForge");
-                forgeDescriptionText.setBounds(x+margin, y+margin, w-margin*2, h-margin);
-                forgeDescriptionText.setEditable(false);
-                forgeDescriptionText.setHighlighter(null);
-                forgeDescriptionText.setEnabled(true);
-                forgeDescriptionText.setFont(new Font(Font.DIALOG, Font.PLAIN, 12));
-                forgeDescriptionText.setLineWrap(true);
-                forgeDescriptionText.setOpaque(false);
-                forgeDescriptionText.setPreferredSize(new Dimension(w-margin*2, h-margin));
+                setTextAreaProperties(forgeDescriptionText);
                 forgeDescriptionText.setText("However, you still need to install Forge client in order to be able to run this mod. Click here to visit the download page for Forge 1.8.9!");
                 forgeDescriptionText.setForeground(Color.BLUE.darker());
                 forgeDescriptionText.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -270,7 +269,8 @@ public class SkyblockAddonsInstallerFrame extends JFrame implements ActionListen
             x += 10; // Padding
 
             try {
-                BufferedImage myPicture = ImageIO.read(getClass().getClassLoader().getResourceAsStream("assets/skyblockaddons/gui/folder.png"));
+                BufferedImage myPicture = ImageIO.read(Objects.requireNonNull(getClass().getClassLoader()
+                        .getResourceAsStream("assets/skyblockaddons/gui/folder.png"), "Folder icon not found."));
                 Image scaled = myPicture.getScaledInstance(w-8, h-6, Image.SCALE_SMOOTH);
                 buttonChooseFolder = new JButton(new ImageIcon(scaled));
                 buttonChooseFolder.setName("ButtonFolder");
@@ -619,7 +619,8 @@ public class SkyblockAddonsInstallerFrame extends JFrame implements ActionListen
     private String getVersionFromMcmodInfo() {
         String version = "";
         try {
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream("mcmod.info")));
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(Objects.requireNonNull(getClass().
+                    getClassLoader().getResourceAsStream("mcmod.info"), "mcmod.info not found.")));
             while ((version = bufferedReader.readLine()) != null) {
                 if (version.contains("\"version\": \"")) {
                     version = version.split(Pattern.quote("\"version\": \""))[1];

@@ -1326,7 +1326,7 @@ public class RenderListener {
         display.add(String.format("§c+%s ❤/s", TextUtils.formatDouble(healthRegen)));
         if(powerOrb.getManaRegen() > 0) {
             int maxMana = main.getUtils().getAttributes().get(Attribute.MAX_MANA).getValue();
-            double manaRegen = maxMana / 50f;
+            double manaRegen = Math.floorDiv(maxMana, 50);
             manaRegen = manaRegen + manaRegen * powerOrb.getManaRegen();
             display.add(String.format("§b+%s ✎/s", TextUtils.formatDouble(manaRegen)));
         }
