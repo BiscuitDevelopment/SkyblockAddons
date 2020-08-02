@@ -137,7 +137,11 @@
     "glowingDroppedItems": "חפצים זרוקים זוהרים",
     "glowingDungeonTeammates": "Glowing Dungeon Teammates",
     "baseStatBoostPercentage": "Show Base Stat Boost for Dungeon Items",
-    "colorByRarity": "Color By Rarity"
+    "colorByRarity": "Color By Rarity",
+    "showPlayerHeadsOnMap": "הצג את הראשים של השחקנים על מפת הצינוק",
+    "showHealingCircleWall": "Show Dungeon Healing Circle Wall (Unstable)",
+    "showCriticalTeammates": "Show Critical Dungeon Teammates",
+    "showGlowingItemsOnIsland": "Show Glowing Items On Island"
   },
   "messages": {
     "dropConfirmation": "זרוק פריט זה שוב לאישור!",
