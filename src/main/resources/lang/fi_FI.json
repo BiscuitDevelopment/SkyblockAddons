@@ -137,7 +137,11 @@
     "glowingDroppedItems": "Hehkuvat Pudotetut Esineet",
     "glowingDungeonTeammates": "Hehkuvat Dungeon Tiimikaverit",
     "baseStatBoostPercentage": "Show Base Stat Boost for Dungeon Items",
-    "colorByRarity": "Väri Harvinaisuuden Mukaan"
+    "colorByRarity": "Väri Harvinaisuuden Mukaan",
+    "showPlayerHeadsOnMap": "Show Player Heads on Dungeon Map",
+    "showHealingCircleWall": "Show Dungeon Healing Circle Wall (Unstable)",
+    "showCriticalTeammates": "Show Critical Dungeon Teammates",
+    "showGlowingItemsOnIsland": "Show Glowing Items On Island"
   },
   "messages": {
     "dropConfirmation": "Pudota tämä esine uudelleen vahvistaaksesi!",
