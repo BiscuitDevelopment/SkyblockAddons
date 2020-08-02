@@ -138,10 +138,10 @@
     "glowingDungeonTeammates": "Brilho dos colegas de equipa",
     "baseStatBoostPercentage": "Mostrar as estatísticas base dos itens das dungeons",
     "colorByRarity": "Cor por raridade",
-    "showPlayerHeadsOnMap": "Show Player Heads on Dungeon Map",
-    "showHealingCircleWall": "Show Dungeon Healing Circle Wall (Unstable)",
-    "showCriticalTeammates": "Show Critical Dungeon Teammates",
-    "showGlowingItemsOnIsland": "Show Glowing Items On Island"
+    "showPlayerHeadsOnMap": "Mostrar cabeças dos jogadores no mapa da Dungeon",
+    "showHealingCircleWall": "Mostrar as paredes do Healing Circle (Instável)",
+    "showCriticalTeammates": "Mostrar colegas de dungeon em perigo",
+    "showGlowingItemsOnIsland": "Itens brilhantes na ilha"
   },
   "messages": {
     "dropConfirmation": "Atira este item outra vez para confirmar!",
