@@ -138,10 +138,10 @@
     "glowingDungeonTeammates": "Nổi viền Đồng đội trong Dungeon",
     "baseStatBoostPercentage": "Hiện Tỷ lệ Tăng cường Chỉ số cho vật phẩm Dungeon",
     "colorByRarity": "Tô màu vật phẩm theo Độ hiếm",
-    "showPlayerHeadsOnMap": "Show Player Heads on Dungeon Map",
-    "showHealingCircleWall": "Show Dungeon Healing Circle Wall (Unstable)",
-    "showCriticalTeammates": "Show Critical Dungeon Teammates",
-    "showGlowingItemsOnIsland": "Show Glowing Items On Island"
+    "showPlayerHeadsOnMap": "Hiện Đầu Người chơi trên Bản đồ Dungeon",
+    "showHealingCircleWall": "Hiện Tường Tròn Hồi máu (Chưa Hoàn thiện)",
+    "showCriticalTeammates": "Hiện Đồng đội bị Hấp hối trong Dungeon",
+    "showGlowingItemsOnIsland": "Hiện Vật phẩm Nổi Viền trên Đảo"
   },
   "messages": {
     "dropConfirmation": "Nhấn \"Q\" Thêm Một Lần Nữa Để Xác Nhận!",
