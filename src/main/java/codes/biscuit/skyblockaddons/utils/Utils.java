@@ -847,7 +847,8 @@ public class Utils {
         logger.info("Attempting to grab data from online.");
         new Thread(() -> {
             try {
-                URL url = new URL("https://raw.githubusercontent.com/biscuut/SkyblockAddons/master/src/main/resources/data.json");
+                boolean isCurrentBeta = SkyblockAddons.VERSION.contains("b");
+                URL url = new URL("https://raw.githubusercontent.com/BiscuitDevelopment/SkyblockAddons/"+(isCurrentBeta ? "development" : "master")+"/src/main/resources/data.json");
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                 connection.setRequestMethod("GET");
                 connection.setRequestProperty("User-Agent", Utils.USER_AGENT);
@@ -1016,5 +1017,13 @@ public class Utils {
 
     public void drawCenteredString(String text, float x, float y, int color) {
         Minecraft.getMinecraft().fontRendererObj.drawString(text, x - Minecraft.getMinecraft().fontRendererObj.getStringWidth(text) / 2F, y, color, true);
+    }
+
+    public Location getLocation() {
+        if (inDungeon) {
+            return Location.DUNGEON;
+        }
+
+        return location;
     }
 }
