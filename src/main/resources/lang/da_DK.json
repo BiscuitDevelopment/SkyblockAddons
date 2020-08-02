@@ -137,7 +137,11 @@
     "glowingDroppedItems": "Lysende liggende genstande",
     "glowingDungeonTeammates": "Lysende Dungeons Medspillere",
     "baseStatBoostPercentage": "Vis basis stat boost for Dungeons genstande",
-    "colorByRarity": "Farv efter sjældenhed"
+    "colorByRarity": "Farv efter sjældenhed",
+    "showPlayerHeadsOnMap": "Show Player Heads on Dungeon Map",
+    "showHealingCircleWall": "Show Dungeon Healing Circle Wall (Unstable)",
+    "showCriticalTeammates": "Show Critical Dungeon Teammates",
+    "showGlowingItemsOnIsland": "Show Glowing Items On Island"
   },
   "messages": {
     "dropConfirmation": "Slip denne vare igen for at bekræfte!",
