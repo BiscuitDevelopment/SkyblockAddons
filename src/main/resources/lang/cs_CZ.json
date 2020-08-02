@@ -137,7 +137,11 @@
     "glowingDroppedItems": "Svíticí předměty na zemi",
     "glowingDungeonTeammates": "Svíticí spoluhráči v Dungeonech",
     "baseStatBoostPercentage": "Zobrazit základní zesílení statistky pro předměty z Dungeonů",
-    "colorByRarity": "Barva podle vzácnosti"
+    "colorByRarity": "Barva podle vzácnosti",
+    "showPlayerHeadsOnMap": "Show Player Heads on Dungeon Map",
+    "showHealingCircleWall": "Show Dungeon Healing Circle Wall (Unstable)",
+    "showCriticalTeammates": "Show Critical Dungeon Teammates",
+    "showGlowingItemsOnIsland": "Show Glowing Items On Island"
   },
   "messages": {
     "dropConfirmation": "Vyhoď tento item pro vyhození!",
