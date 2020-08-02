@@ -137,7 +137,11 @@
     "glowingDroppedItems": "Sijajući bačeni predmeti",
     "glowingDungeonTeammates": "Sijajući saigriči u tamnici",
     "baseStatBoostPercentage": "Prikaži osnovno pojačanje za predmete iz tamnice",
-    "colorByRarity": "Oboji po retkosti"
+    "colorByRarity": "Oboji po retkosti",
+    "showPlayerHeadsOnMap": "Show Player Heads on Dungeon Map",
+    "showHealingCircleWall": "Show Dungeon Healing Circle Wall (Unstable)",
+    "showCriticalTeammates": "Show Critical Dungeon Teammates",
+    "showGlowingItemsOnIsland": "Show Glowing Items On Island"
   },
   "messages": {
     "dropConfirmation": "Opet baci ovu stvar za potvrdu!",
