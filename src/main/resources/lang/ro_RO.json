@@ -137,7 +137,11 @@
     "glowingDroppedItems": "Glowing Dropped Items",
     "glowingDungeonTeammates": "Glowing Dungeon Teammates",
     "baseStatBoostPercentage": "Arata statisticile de baza a itemelor de Dungeon",
-    "colorByRarity": "Culoare in funcție de raritate"
+    "colorByRarity": "Culoare in funcție de raritate",
+    "showPlayerHeadsOnMap": "Show Player Heads on Dungeon Map",
+    "showHealingCircleWall": "Show Dungeon Healing Circle Wall (Unstable)",
+    "showCriticalTeammates": "Show Critical Dungeon Teammates",
+    "showGlowingItemsOnIsland": "Show Glowing Items On Island"
   },
   "messages": {
     "dropConfirmation": "Arunca acest obiect iar ca să confirmi!",
