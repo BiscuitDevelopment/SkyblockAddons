@@ -224,14 +224,14 @@
     "descriptionAuto": "Automatically displays a status. E.g. your zealot count while in the end.",
     "titleRevenants": "Revenant Quest",
     "descriptionRevenants": "Shows that you are doing a Revenant quest.",
-    "titleSvens": "Sven Quest",
+    "titleSvens": "Misión de Sven",
     "descriptionSvens": "Shows that you are doing a Sven quest.",
-    "titleTarantula": "Tarantula Quest",
+    "titleTarantula": "Misión de Tarantula",
     "descriptionTarantula": "Shows that you are doing a Tarantula quest."
   },
   "commandUsage": {
     "sba": "Open the main menu",
-    "sba.edit": "Edit GUI locations",
+    "sba.edit": "Editar Posiciones de IGU",
     "sba.set.zealotCounter": "Manually set your zealot counts",
     "sba.folder": "Open your mods folder",
     "sba.dev": "Toggle developer mode",
