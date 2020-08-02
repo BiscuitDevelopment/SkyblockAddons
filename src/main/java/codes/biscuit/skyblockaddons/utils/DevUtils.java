@@ -35,7 +35,6 @@ import java.util.stream.Collectors;
 public class DevUtils {
     public static final Pattern SIDEBAR_PLAYER_NAME_PATTERN = Pattern.compile("[\uD83D\uDD2B\uD83C\uDF6B\uD83D\uDCA3\uD83D\uDC7D\uD83D\uDD2E\uD83D\uDC0D\uD83D\uDC7E\uD83C\uDF20\uD83C\uDF6D\u26BD\uD83C\uDFC0\uD83D\uDC79\uD83C\uDF81\uD83C\uDF89\uD83C\uDF82]+");
 
-    public static final int DEV_KEY = Keyboard.KEY_RCONTROL;
     public static final int ENTITY_COPY_RADIUS = 3;
     public static final int SIDEBAR_COPY_WIDTH = 30;
 
@@ -126,15 +125,38 @@ public class DevUtils {
      *
      * @param player the player
      * @param loadedEntities the list of all the entities that are currently loaded in the world
+     * @param copyRadius copy the NBT data of entities inside this radius around the player
+     * @param includeSelf {@code true} to include the player's own NBT data, {@code false} to omit
+     * @param includedEntityTypes the classes of entites that should be included in the NBT data
      */
-    public static void copyMobData(EntityPlayerSP player, List<Entity> loadedEntities) {
+    public static void copyEntityData(EntityPlayerSP player, List<Entity> loadedEntities, int copyRadius,
+                                      boolean includeSelf, Class<? extends Entity>[] includedEntityTypes) {
         List<Entity> loadedEntitiesCopy = new LinkedList<>(loadedEntities);
         ListIterator<Entity> loadedEntitiesCopyIterator;
         StringBuilder stringBuilder = new StringBuilder();
 
-        // We only care about mobs.
-        loadedEntitiesCopy.removeIf(entity -> entity.getDistanceToEntity(player) > ENTITY_COPY_RADIUS ||
-                !(EntityLivingBase.class.isAssignableFrom(entity.getClass())));
+        if (copyRadius >= 0) {
+            loadedEntitiesCopy.removeIf(entity -> entity.getDistanceToEntity(player) > copyRadius);
+        }
+        else {
+            throw new IllegalArgumentException("The entity copy radius cannot be negative!");
+        }
+
+        if (!includeSelf) {
+            loadedEntities.remove(player);
+        }
+
+        if (includedEntityTypes == null) {
+            throw new IllegalArgumentException("The array of entity types cannot be null!");
+        }
+        else if (includedEntityTypes.length == 0) {
+            throw new IllegalArgumentException("The array of entity types cannot be empty!");
+        }
+        else {
+            for (Class entityClass : includedEntityTypes) {
+                loadedEntities.removeIf(entity -> entityClass.isAssignableFrom(entity.getClass()))
+            }
+        }
 
         loadedEntitiesCopyIterator = loadedEntitiesCopy.listIterator();
 
@@ -159,6 +181,16 @@ public class DevUtils {
         }
 
         copyStringToClipboard(stringBuilder.toString(), ColorCode.GREEN + "Entity data was copied to clipboard!");
+    }
+
+    /**
+     * Copies the NBT data of all the mobs within {@code ENTITY_COPY_RADIUS} blocks of the player and the player's own NBT data
+     *
+     * @param player the player
+     * @param loadedEntities the list of all the entities that are currently loaded in the world
+     */
+    public static void copyMobData(EntityPlayerSP player, List<Entity> loadedEntities) {
+        copyEntityData(player, loadedEntities, ENTITY_COPY_RADIUS, true, EntityLivingBase.class.getClasses());
     }
 
     /**
