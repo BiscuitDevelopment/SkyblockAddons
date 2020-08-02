@@ -137,7 +137,11 @@
     "glowingDroppedItems": "Świecenie leżących przedmiotów",
     "glowingDungeonTeammates": "Świecenie towarzyszy w lochach",
     "baseStatBoostPercentage": "Pokaż bazowe ulepszenie statystyk dla przedmotów z lochów",
-    "colorByRarity": "Kolor przypisany do rzadkości"
+    "colorByRarity": "Kolor przypisany do rzadkości",
+    "showPlayerHeadsOnMap": "Show Player Heads on Dungeon Map",
+    "showHealingCircleWall": "Show Dungeon Healing Circle Wall (Unstable)",
+    "showCriticalTeammates": "Show Critical Dungeon Teammates",
+    "showGlowingItemsOnIsland": "Show Glowing Items On Island"
   },
   "messages": {
     "dropConfirmation": "Wyrzuć ten przedmiot ponownie, aby potwierdzić!",
