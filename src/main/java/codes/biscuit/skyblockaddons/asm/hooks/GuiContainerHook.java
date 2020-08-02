@@ -6,8 +6,6 @@ import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.features.backpacks.Backpack;
 import codes.biscuit.skyblockaddons.features.backpacks.BackpackColor;
 import codes.biscuit.skyblockaddons.features.craftingpatterns.CraftingPattern;
-import codes.biscuit.skyblockaddons.tweaker.PreTransformationChecks;
-import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.objects.FloatPairString;
@@ -26,9 +24,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
 import javax.lang.model.type.NullType;
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -174,20 +169,19 @@ public class GuiContainerHook {
                         int itemX = x+8 + ((i % 9) * 18);
                         int itemY = y+18 + ((i / 9) * 18);
                         RenderItem renderItem = mc.getRenderItem();
-                        setZLevel(guiContainer, 200);
+                        guiContainer.zLevel = 200;
                         renderItem.zLevel = 200;
                         renderItem.renderItemAndEffectIntoGUI(item, itemX, itemY);
                         renderItem.renderItemOverlayIntoGUI(mc.fontRendererObj, item, itemX, itemY, null);
                         if (freezeBackpack && mouseX > itemX && mouseX < itemX+16 && mouseY > itemY && mouseY < itemY+16) {
                             toRenderOverlay = item;
                         }
-                        setZLevel(guiContainer, 0);
+                        guiContainer.zLevel = 0;
                         renderItem.zLevel = 0;
                     }
                 }
                 if (toRenderOverlay != null) {
-                    drawHoveringText(guiContainer, toRenderOverlay.getTooltip(null, mc.gameSettings.advancedItemTooltips),
-                            mouseX, mouseY);
+                    guiContainer.drawHoveringText(toRenderOverlay.getTooltip(null, mc.gameSettings.advancedItemTooltips), mouseX, mouseY);
                 }
             } else {
                 GlStateManager.disableLighting();
@@ -206,11 +200,11 @@ public class GuiContainerHook {
                         int itemX = x + ((i % 9) * 16);
                         int itemY = y + ((i / 9) * 16);
                         RenderItem renderItem = mc.getRenderItem();
-                        setZLevel(guiContainer, 200);
+                        guiContainer.zLevel = 200;
                         renderItem.zLevel = 200;
                         renderItem.renderItemAndEffectIntoGUI(item, itemX, itemY);
                         renderItem.renderItemOverlayIntoGUI(mc.fontRendererObj, item, itemX, itemY, null);
-                        setZLevel(guiContainer, 0);
+                        guiContainer.zLevel = 0;
                         renderItem.zLevel = 0;
                     }
                 }
@@ -238,11 +232,11 @@ public class GuiContainerHook {
             if (main.getConfigValues().isEnabled(Feature.LOCK_SLOTS) &&
                     main.getUtils().isOnSkyblock() && main.getConfigValues().getLockedSlots().contains(slotNum)
                     && (slotNum >= 9 || container instanceof ContainerPlayer && slotNum >= 5)) {
-                drawRightGradientRect(guiContainer, left, top, right, bottom, OVERLAY_RED, OVERLAY_RED);
+                guiContainer.drawGradientRect(left, top, right, bottom, OVERLAY_RED, OVERLAY_RED);
                 return;
             }
         }
-        drawRightGradientRect(guiContainer, left, top, right, bottom, startColor, endColor);
+        guiContainer.drawGradientRect(left, top, right, bottom, startColor, endColor);
     }
 
     public static void drawSlot(GuiContainer guiContainer, Slot slot) {
@@ -264,11 +258,11 @@ public class GuiContainerHook {
                     int slotBottom = slotTop + 16;
                     if (main.getPersistentValues().getSelectedCraftingPattern().isSlotInPattern(craftingGridIndex)) {
                         if (!slot.getHasStack()) {
-                            drawRightGradientRect(guiContainer, slotLeft, slotTop, slotRight, slotBottom, OVERLAY_GREEN, OVERLAY_GREEN);
+                            guiContainer.drawGradientRect(slotLeft, slotTop, slotRight, slotBottom, OVERLAY_GREEN, OVERLAY_GREEN);
                         }
                     } else {
                         if (slot.getHasStack()) {
-                            drawRightGradientRect(guiContainer, slotLeft, slotTop, slotRight, slotBottom, OVERLAY_RED, OVERLAY_RED);
+                            guiContainer.drawGradientRect(slotLeft, slotTop, slotRight, slotBottom, OVERLAY_RED, OVERLAY_RED);
                         }
                     }
                 }
@@ -289,26 +283,6 @@ public class GuiContainerHook {
                     GlStateManager.enableDepth();
                 }
             }
-        }
-    }
-
-    private static Method drawGradientRect = null;
-
-    private static void drawRightGradientRect(GuiContainer guiContainer, int left, int top, int right, int bottom, int startColor, int endColor) {
-        if (PreTransformationChecks.isLabymodClient()) { // There are no access transformers in labymod.
-            try {
-                if (drawGradientRect == null) {
-                    drawGradientRect = guiContainer.getClass().getSuperclass().getSuperclass().getDeclaredMethod("a", int.class, int.class, int.class, int.class, int.class, int.class);
-                    drawGradientRect.setAccessible(true);
-                }
-                if (drawGradientRect != null) {
-                    drawGradientRect.invoke(guiContainer, left, top, right, bottom, startColor, endColor);
-                }
-            } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
-                e.printStackTrace();
-            }
-        } else {
-            guiContainer.drawGradientRect(left, top, right, bottom, startColor, endColor);
         }
     }
 
@@ -360,47 +334,6 @@ public class GuiContainerHook {
                     mc.thePlayer.inventory.getItemStack() != null && isOutsideGui &&
                     main.getInventoryUtils().shouldCancelDrop(mc.thePlayer.inventory.getItemStack())) returnValue.cancel();
         }*/
-    }
-
-    private static Field zLevel = null;
-
-    private static void setZLevel(Gui gui, int zLevelToSet) {
-        if (PreTransformationChecks.isLabymodClient()) { // There are no access transformers in labymod.
-            try {
-                if (zLevel == null) {
-                    zLevel = gui.getClass().getDeclaredField("e");
-                    zLevel.setAccessible(true);
-                }
-                if (zLevel != null) {
-                    zLevel.set(gui, zLevelToSet);
-                }
-            } catch (IllegalAccessException | NoSuchFieldException e) {
-                e.printStackTrace();
-            }
-        } else {
-            gui.zLevel = zLevelToSet;
-        }
-    }
-
-    private static Method drawHoveringText = null;
-
-    private static void drawHoveringText(GuiContainer guiContainer, List<String> text, int x, int y) {
-        if (PreTransformationChecks.isLabymodClient()) { // There are no access transformers in labymod.
-            try {
-                if (drawHoveringText == null) {
-                    drawHoveringText = guiContainer.getClass().getSuperclass().getDeclaredMethod("a",
-                            List.class, int.class, int.class);
-                    drawHoveringText.setAccessible(true);
-                }
-                if (drawHoveringText != null) {
-                    drawHoveringText.invoke(guiContainer, text, x , y);
-                }
-            } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
-                e.printStackTrace();
-            }
-        } else {
-            guiContainer.drawHoveringText(text, x, y);
-        }
     }
 
     public static void setFreezeBackpack(boolean freezeBackpack) {

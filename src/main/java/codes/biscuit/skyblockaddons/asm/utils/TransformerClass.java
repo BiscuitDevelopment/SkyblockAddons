@@ -67,6 +67,8 @@ public enum TransformerClass {
     private String name;
 
     private String seargeClass;
+
+    @SuppressWarnings({"FieldCanBeLocal", "unused"})
     private String notchClass18;
 
     TransformerClass(String seargeClass, String notchClass18) {
@@ -95,8 +97,6 @@ public enum TransformerClass {
     }
 
     public String getTransformerName() {
-        if (PreTransformationChecks.isLabymodClient()) return notchClass18;
-
         return seargeClass.replaceAll("/", ".");
     }
 }

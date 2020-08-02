@@ -2,6 +2,7 @@ package codes.biscuit.skyblockaddons.tweaker;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import lombok.Getter;
+import net.minecraft.launchwrapper.Launch;
 import net.minecraftforge.fml.relauncher.FMLRelaunchLog;
 import net.minecraftforge.fml.relauncher.IFMLCallHook;
 import org.apache.logging.log4j.Level;
@@ -16,8 +17,6 @@ import java.util.Map;
 public class PreTransformationChecks implements IFMLCallHook {
     private static final String loggerName = SkyblockAddons.MOD_NAME + " PTC";
     @Getter
-    private static boolean labymodClient;
-    @Getter
     private static boolean deobfuscated;
     @Getter
     private static boolean usingNotchMappings;
@@ -25,38 +24,19 @@ public class PreTransformationChecks implements IFMLCallHook {
     /**
      * Checks that need to run before the transformers are initialized
      */
-    @SuppressWarnings("unchecked")
     static void runPreInitChecks() {
         FMLRelaunchLog.log(loggerName, Level.DEBUG, "Running pre-init checks...");
 
-        // Environment Obfuscation and LabyMod Client checks
+        // Environment Obfuscation checks
         deobfuscated = false;
-        labymodClient = false;
-        boolean foundLaunchClass = false;
 
-        try {
-            Class<?> launch = Class.forName("net.minecraft.launchwrapper.Launch");
-            Field blackboardField = launch.getField("blackboard");
-            Map<String,Object> blackboard = (Map<String, Object>) blackboardField.get(null);
-            deobfuscated = (boolean) blackboard.get("fml.deobfuscatedEnvironment");
-            foundLaunchClass = true;
-        } catch (ClassNotFoundException | NoSuchFieldException | IllegalAccessException ex) {
-            // If the class doesn't exist, its probably just obfuscated LabyMod client, so leave it false.
-        }
-
-        try {
-            Class.forName("net.labymod.api.LabyModAddon"); // Try to find a LabyMod class.
-            PreTransformationChecks.labymodClient = !foundLaunchClass; // If the launch class is also found, they are probably using labymod for forge and not the client.
-        } catch (ClassNotFoundException ex) {
-            // They just aren't using LabyMod.
-        }
+        deobfuscated = (boolean) Launch.blackboard.get("fml.deobfuscatedEnvironment");
 
         usingNotchMappings = !deobfuscated;
         FMLRelaunchLog.log(loggerName, Level.DEBUG, "Pre-init checks complete.");
         FMLRelaunchLog.log(loggerName, Level.DEBUG, "Results:");
         FMLRelaunchLog.log(loggerName, Level.DEBUG, "De-obfuscated Environment: %b", deobfuscated);
         FMLRelaunchLog.log(loggerName, Level.DEBUG, "Using Notch Mappings: %b", usingNotchMappings);
-        FMLRelaunchLog.log(loggerName, Level.DEBUG, "Using LabyMod Client: %b", labymodClient);
     }
 
     /**
