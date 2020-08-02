@@ -137,7 +137,11 @@
     "glowingDroppedItems": "Glowy Droppins",
     "glowingDungeonTeammates": "Glowin Mateys",
     "baseStatBoostPercentage": "Show the power of the Treasured",
-    "colorByRarity": "Color by Shiny"
+    "colorByRarity": "Color by Shiny",
+    "showPlayerHeadsOnMap": "Show Player Heads on Dungeon Map",
+    "showHealingCircleWall": "Show Dungeon Healing Circle Wall (Unstable)",
+    "showCriticalTeammates": "Show Critical Dungeon Teammates",
+    "showGlowingItemsOnIsland": "Show Glowing Items On Island"
   },
   "messages": {
     "dropConfirmation": "'ay lad, drop this here item again to confirm!",
