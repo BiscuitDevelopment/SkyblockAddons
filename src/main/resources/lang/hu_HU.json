@@ -137,7 +137,11 @@
     "glowingDroppedItems": "Ragyogó eldobott tárgyak",
     "glowingDungeonTeammates": "Ragyogó társak",
     "baseStatBoostPercentage": "Dungeon tárgyak alap értékeinek a mutatása",
-    "colorByRarity": "Szín ritkaság alapján"
+    "colorByRarity": "Szín ritkaság alapján",
+    "showPlayerHeadsOnMap": "Show Player Heads on Dungeon Map",
+    "showHealingCircleWall": "Show Dungeon Healing Circle Wall (Unstable)",
+    "showCriticalTeammates": "Show Critical Dungeon Teammates",
+    "showGlowingItemsOnIsland": "Show Glowing Items On Island"
   },
   "messages": {
     "dropConfirmation": "Dobd el ezt a tárgyat újra, hogy megerősítsd!",
