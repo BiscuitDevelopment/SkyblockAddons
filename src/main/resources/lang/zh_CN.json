@@ -132,16 +132,16 @@
     "turnAllFeaturesChroma": "为所有功能启用渐变色",
     "dungeonsMapDisplay": "地下城地图显示",
     "rotateMap": "旋转地图方向至玩家方向",
-    "centerRotationOnYourPlayer": "Center the Rotation Around Your Player",
+    "centerRotationOnYourPlayer": "使旋转中心围绕玩家",
     "mapZoom": "地图缩放",
     "glowingDroppedItems": "标记掉落物",
     "glowingDungeonTeammates": "在地下城中标记队友",
     "baseStatBoostPercentage": "显示地下城物品的基本属性加成",
     "colorByRarity": "按稀有度上色",
     "showPlayerHeadsOnMap": "在地下城地图上显示玩家头",
-    "showHealingCircleWall": "Show Dungeon Healing Circle Wall (Unstable)",
-    "showCriticalTeammates": "Show Critical Dungeon Teammates",
-    "showGlowingItemsOnIsland": "Show Glowing Items On Island"
+    "showHealingCircleWall": "显示地下城 Healing Circle 边界 (不稳定)",
+    "showCriticalTeammates": "显示地下城濒死队友",
+    "showGlowingItemsOnIsland": "显示在岛上的发光物品"
   },
   "messages": {
     "dropConfirmation": "再次丢弃此物品以确认!",
