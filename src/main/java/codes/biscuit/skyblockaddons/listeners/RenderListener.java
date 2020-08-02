@@ -1,14 +1,13 @@
 package codes.biscuit.skyblockaddons.listeners;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.core.Attribute;
-import codes.biscuit.skyblockaddons.core.Feature;
-import codes.biscuit.skyblockaddons.core.Location;
-import codes.biscuit.skyblockaddons.core.Message;
+import codes.biscuit.skyblockaddons.core.*;
 import codes.biscuit.skyblockaddons.features.BaitManager;
 import codes.biscuit.skyblockaddons.features.EndstoneProtectorManager;
 import codes.biscuit.skyblockaddons.features.ItemDiff;
 import codes.biscuit.skyblockaddons.features.SlayerArmorProgress;
+import codes.biscuit.skyblockaddons.features.healingcircle.HealingCircle;
+import codes.biscuit.skyblockaddons.features.healingcircle.HealingCircleParticle;
 import codes.biscuit.skyblockaddons.features.powerorbs.PowerOrb;
 import codes.biscuit.skyblockaddons.features.powerorbs.PowerOrbManager;
 import codes.biscuit.skyblockaddons.features.tabtimers.TabEffect;
@@ -21,6 +20,7 @@ import codes.biscuit.skyblockaddons.gui.buttons.ButtonLocation;
 import codes.biscuit.skyblockaddons.misc.ChromaManager;
 import codes.biscuit.skyblockaddons.misc.Updater;
 import codes.biscuit.skyblockaddons.misc.scheduler.Scheduler;
+import codes.biscuit.skyblockaddons.misc.scheduler.SkyblockRunnable;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.TextUtils;
@@ -33,16 +33,21 @@ import net.minecraft.client.gui.MapItemRenderer;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
+import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.WorldRenderer;
+import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityArmorStand;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.Vec3;
 import net.minecraft.util.Vec4b;
 import net.minecraft.world.storage.MapData;
 import net.minecraftforge.client.GuiIngameForge;
@@ -55,6 +60,7 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 import org.lwjgl.opengl.GL11;
 
 import java.awt.*;
+import java.awt.geom.Point2D;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.*;
@@ -79,6 +85,8 @@ public class RenderListener {
     private final static ResourceLocation IRON_GOLEM_ICON = new ResourceLocation("skyblockaddons", "icons/irongolem.png");
 
     private final static ResourceLocation DUNGEON_MAP = new ResourceLocation("skyblockaddons", "dungeonsmap.png");
+
+    private static ResourceLocation CRITICAL = new ResourceLocation("skyblockaddons", "critical.png");
 
     private final static ItemStack WATER_BUCKET = new ItemStack(Items.water_bucket);
     private final static ItemStack IRON_SWORD = new ItemStack(Items.iron_sword);
@@ -1194,7 +1202,7 @@ public class RenderListener {
         Minecraft.getMinecraft().getRenderItem().renderItemIntoGUI(item, 0, 0);
         GlStateManager.popMatrix();
 
-        GlStateManager.disableDepth();
+//        GlStateManager.disableDepth();
         RenderHelper.disableStandardItemLighting();
         GlStateManager.disableRescaleNormal();
     }
@@ -1364,19 +1372,27 @@ public class RenderListener {
         main.getUtils().restoreGLOptions();
     }
 
-    float originalPlayerX = Integer.MIN_VALUE;
-    float originalPlayerZ = -1;
-    float originalMapX = -1;
-    float originalMapZ = -1;
+    private MapData mapData;
+
+    @Getter private float mapStartX = -1;
+    @Getter private float mapStartZ = -1;
+
+    private Vec3 lastSecondVector;
 
     public void drawDungeonsMap(Minecraft mc, float scale, ButtonLocation buttonLocation) {
+        if (buttonLocation == null && !main.getUtils().isInDungeon()) {
+            mapStartX = -1;
+            mapStartZ = -1;
+            mapData = null;
+        }
+
         ItemStack possibleMapItemStack = mc.thePlayer.inventory.getStackInSlot(8);
         if (buttonLocation == null && (possibleMapItemStack == null || possibleMapItemStack.getItem() != Items.filled_map ||
-                !possibleMapItemStack.hasDisplayName())) {
+                !possibleMapItemStack.hasDisplayName()) && mapData == null) {
             return;
         }
         boolean isScoreSummary = false;
-        if (buttonLocation == null) {
+        if (buttonLocation == null && possibleMapItemStack != null && possibleMapItemStack.getItem() == Items.filled_map) {
             isScoreSummary = possibleMapItemStack.getDisplayName().contains("Your Score Summary");
 
             if (!possibleMapItemStack.getDisplayName().contains("Magical Map") && !isScoreSummary) {
@@ -1428,9 +1444,6 @@ public class RenderListener {
 
         float mapSize = (originalSize * totalScaleFactor);
 
-//        float mapCenterX = x + size/2F;
-//        float mapCenterY = y + size/2F;
-
         GlStateManager.scale(totalScaleFactor, totalScaleFactor, 1);
         x /= totalScaleFactor;
         y /= totalScaleFactor;
@@ -1451,31 +1464,60 @@ public class RenderListener {
 
         if (buttonLocation == null) {
             try {
-                MapData mapData = Items.filled_map.getMapData(possibleMapItemStack, mc.theWorld);
+                boolean foundMapData = false;
+                MapData newMapData = null;
+                if (possibleMapItemStack != null) {
+                    newMapData = Items.filled_map.getMapData(possibleMapItemStack, mc.theWorld);
+                }
+                if (newMapData != null) {
+                    mapData = newMapData;
+                    foundMapData = true;
+                }
 
                 if (mapData != null) {
-                    if (mapData.mapDecorations != null) {
-                        for (Map.Entry<String, Vec4b> entry : mapData.mapDecorations.entrySet()) {
-                            if (entry.getValue().func_176110_a() == 1) {
-                                if (originalPlayerX == Integer.MIN_VALUE) {
-                                    originalPlayerX = (float) mc.thePlayer.posX;
-                                    originalPlayerZ = (float) mc.thePlayer.posZ;
-                                    originalMapX = entry.getValue().func_176112_b() / 2.0F + 64.0F;
-                                    originalMapZ = entry.getValue().func_176113_c() / 2.0F + 64.0F;
+                    float playerX = (float) mc.thePlayer.posX;
+                    float playerZ = (float) mc.thePlayer.posZ;
+
+                    Vec3 currentVector = mc.thePlayer.getPositionVector();
+                    main.getNewScheduler().scheduleDelayedTask(new SkyblockRunnable() {
+                        @Override
+                        public void run() {
+                            lastSecondVector = currentVector;
+                        }
+                    }, 20);
+
+
+                    double lastSecondTravel = -1;
+                    if (lastSecondVector != null) {
+                        lastSecondTravel = lastSecondVector.distanceTo(currentVector);
+                    }
+                    if (foundMapData && ((this.mapStartX == -1 || this.mapStartZ == -1) || lastSecondTravel == 0)) {
+                        if (mapData.mapDecorations != null) {
+                            for (Map.Entry<String, Vec4b> entry : mapData.mapDecorations.entrySet()) {
+                                // Icon type 1 is the green player marker...
+                                if (entry.getValue().func_176110_a() == 1) {
+                                    float mapMarkerX = entry.getValue().func_176112_b() / 2.0F + 64.0F;
+                                    float mapMarkerZ = entry.getValue().func_176113_c() / 2.0F + 64.0F;
+
+                                    // 1 pixel on Hypixel map represents 1.5 blocks...
+                                    float mapStartX = playerX - mapMarkerX * 1.5F;
+                                    float mapStartZ = playerZ - mapMarkerZ * 1.5F;
+
+                                    this.mapStartX = Math.round(mapStartX / 16F) * 16F;
+                                    this.mapStartZ = Math.round(mapStartZ / 16F) * 16F;
+
+//                                    Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText(String.valueOf(this.mapStartX)));
                                 }
                             }
                         }
                     }
 
-                    float xMovement = (float) mc.thePlayer.posX - originalPlayerX;
-                    float zMovement = (float) mc.thePlayer.posZ - originalPlayerZ;
+                    float playerMarkerX = (playerX - mapStartX) / 1.5F;
+                    float playerMarkerZ = (playerZ - mapStartZ) / 1.5F;
 
-                    float playerMarkerX = originalMapX + xMovement / 1.5F;
-                    float playerMarkerY = originalMapZ + zMovement / 1.5F;
-
-                    if (rotate && rotateOnPlayer && originalPlayerX != Integer.MIN_VALUE) {
+                    if (rotate && rotateOnPlayer) {
                         rotationCenterX = playerMarkerX;
-                        rotationCenterY = playerMarkerY;
+                        rotationCenterY = playerMarkerZ;
                     }
 
                     if (rotate) {
@@ -1489,12 +1531,7 @@ public class RenderListener {
                     }
 
                     MapItemRenderer.Instance instance = mc.entityRenderer.getMapItemRenderer().getMapRendererInstance(mapData);
-                    main.getUtils().drawMapEdited(instance, playerMarkerX, playerMarkerY, 180-rotation, !isScoreSummary);
-                } else {
-                    originalPlayerX = Integer.MIN_VALUE;
-                    originalPlayerZ = -1;
-                    originalMapX = -1;
-                    originalMapZ = -1;
+                    main.getUtils().drawMapEdited(instance, isScoreSummary, zoomScaleFactor);
                 }
             } catch (Exception ex) {
                 ex.printStackTrace();
@@ -1635,8 +1672,171 @@ public class RenderListener {
         return xy / scale;
     }
 
-    @SubscribeEvent()
-    public void onRenderRemoveBars(RenderWorldLastEvent e) {
+    @Getter private Set<HealingCircleParticle> healingCircleParticles = new HashSet<>();
 
+    @SubscribeEvent()
+    public void onRenderWorld(RenderWorldLastEvent e) {
+        Minecraft mc = Minecraft.getMinecraft();
+        float partialTicks = e.partialTicks;
+
+        if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.SHOW_HEALING_CIRCLE_WALL)) {
+            healingCircleParticles.removeIf(healingCircleParticle -> System.currentTimeMillis() - healingCircleParticle.getCreation() > 10000);
+
+            Set<HealingCircle> healingCircles = new HashSet<>();
+
+            for (HealingCircleParticle healingCircleParticle : healingCircleParticles) {
+                HealingCircle nearbyHealingCircle = null;
+                for (HealingCircle healingCircle : healingCircles) {
+                    if (healingCircle.getTotalParticles() > 50) {
+                        Point2D.Double circleCenter = healingCircle.getCircleCenter();
+                        if (healingCircleParticle.getPoint().distance(circleCenter.getX(), circleCenter.getY()) < 6) {
+                            nearbyHealingCircle = healingCircle;
+                            break;
+                        }
+                    } else {
+                        if (healingCircleParticle.getPoint().distance(healingCircle.getAverageX(), healingCircle.getAverageZ()) < 12) {
+                            nearbyHealingCircle = healingCircle;
+                            break;
+                        }
+                    }
+                }
+
+                if (nearbyHealingCircle != null) {
+                    nearbyHealingCircle.addPoint(healingCircleParticle);
+                } else {
+                    healingCircles.add(new HealingCircle(healingCircleParticle));
+                }
+            }
+
+            for (HealingCircle healingCircle : healingCircles) {
+                if (healingCircle.getParticlesPerSecond() < 10) {
+                    if (System.currentTimeMillis() - healingCircle.getOldestParticle() > 1000) {
+                        healingCircleParticles.removeAll(healingCircle.getHealingCircleParticles());
+                        continue;
+                    }
+                }
+
+                GlStateManager.pushMatrix();
+                GL11.glNormal3f(0.0F, 1.0F, 0.0F);
+
+                GlStateManager.disableLighting();
+                GlStateManager.depthMask(false);
+                GlStateManager.enableDepth();
+                GlStateManager.enableBlend();
+                GlStateManager.depthFunc(GL11.GL_LEQUAL);
+                GlStateManager.disableCull();
+                GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
+                GlStateManager.enableAlpha();
+                GlStateManager.disableTexture2D();
+
+                Color color = main.getConfigValues().getColor(Feature.SHOW_HEALING_CIRCLE_WALL);
+                GlStateManager.color(color.getRed()/255F, color.getGreen()/255F, color.getBlue()/255F, 0.2F);
+                Point2D.Double circleCenter = healingCircle.getCircleCenter();
+                if (circleCenter != null && !Double.isNaN(circleCenter.getX()) && !Double.isNaN(circleCenter.getY())) {
+                    main.getUtils().drawCylinder(circleCenter.getX(), 0, circleCenter.getY(), 10 / 2F, 255, partialTicks);
+                }
+
+                GlStateManager.enableCull();
+                GlStateManager.enableTexture2D();
+                GlStateManager.enableDepth();
+                GlStateManager.depthMask(true);
+                GlStateManager.enableLighting();
+                GlStateManager.disableBlend();
+                GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+                GlStateManager.popMatrix();
+            }
+        }
+
+        if (main.getUtils().isOnSkyblock() && main.getUtils().isInDungeon() && main.getConfigValues().isEnabled(Feature.SHOW_CRITICAL_DUNGEONS_TEAMMATES)) {
+            Entity renderViewEntity = mc.getRenderViewEntity();
+
+            double viewX = renderViewEntity.prevPosX + (renderViewEntity.posX - renderViewEntity.prevPosX) * (double) partialTicks;
+            double viewY = renderViewEntity.prevPosY + (renderViewEntity.posY - renderViewEntity.prevPosY) * (double) partialTicks;
+            double viewZ = renderViewEntity.prevPosZ + (renderViewEntity.posZ - renderViewEntity.prevPosZ) * (double) partialTicks;
+
+            int iconSize = 25;
+
+            for (EntityPlayer entity : mc.theWorld.playerEntities) {
+                if (renderViewEntity == entity) {
+                    continue;
+                }
+
+                if (!main.getUtils().getDungeonPlayers().containsKey(entity.getName())) {
+                    continue;
+                }
+
+                DungeonPlayer dungeonPlayer = main.getUtils().getDungeonPlayers().get(entity.getName());
+                if (!dungeonPlayer.isCritical() && !dungeonPlayer.isLow()) {
+                    continue;
+                }
+
+                double x = entity.lastTickPosX + (entity.posX - entity.lastTickPosX) * (double) partialTicks;
+                double y = entity.lastTickPosY + (entity.posY - entity.lastTickPosY) * (double) partialTicks;
+                double z = entity.lastTickPosZ + (entity.posZ - entity.lastTickPosZ) * (double) partialTicks;
+
+                x -= viewX;
+                y -= viewY;
+                z -= viewZ;
+
+                if (entity.isSneaking()) {
+                    y -= 0.65F;
+                }
+
+                double distanceScale = Math.max(1, renderViewEntity.getPositionVector().distanceTo(entity.getPositionVector()) / 10F);
+
+                if (main.getConfigValues().isEnabled(Feature.MAKE_DUNGEON_TEAMMATES_GLOW)) {
+                    y += entity.height + 0.75F + (iconSize * distanceScale) / 40F;
+                } else {
+                    y += entity.height / 2F + 0.25F;
+                }
+
+                float f = 1.6F;
+                float f1 = 0.016666668F * f;
+                GlStateManager.pushMatrix();
+                GlStateManager.translate(x, y, z);
+                GL11.glNormal3f(0.0F, 1.0F, 0.0F);
+                GlStateManager.rotate(-mc.getRenderManager().playerViewY, 0.0F, 1.0F, 0.0F);
+                GlStateManager.rotate(mc.getRenderManager().playerViewX, 1.0F, 0.0F, 0.0F);
+                GlStateManager.scale(-f1, -f1, f1);
+
+                GlStateManager.scale(distanceScale, distanceScale, distanceScale);
+
+                GlStateManager.disableLighting();
+                GlStateManager.depthMask(false);
+                GlStateManager.disableDepth();
+                GlStateManager.enableBlend();
+                GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
+                GlStateManager.enableTexture2D();
+                GlStateManager.color(1, 1, 1, 1);
+                GlStateManager.enableAlpha();
+
+                Tessellator tessellator = Tessellator.getInstance();
+                WorldRenderer worldrenderer = tessellator.getWorldRenderer();
+
+                mc.getTextureManager().bindTexture(CRITICAL);
+                worldrenderer.begin(7, DefaultVertexFormats.POSITION_TEX);
+                worldrenderer.pos(-iconSize / 2F, -iconSize / 2f, 0).tex(0, 0).endVertex();
+                worldrenderer.pos(-iconSize / 2F, iconSize / 2F, 0).tex(0, 1).endVertex();
+                worldrenderer.pos(iconSize / 2F, iconSize / 2F, 0).tex(1, 1).endVertex();
+                worldrenderer.pos(iconSize / 2F, -iconSize / 2F, 0).tex(1, 0).endVertex();
+                tessellator.draw();
+
+                String text = "";
+                if (dungeonPlayer.isLow()) {
+                    text = "LOW";
+                } else if (dungeonPlayer.isCritical()) {
+                    text = "CRITICAL";
+                }
+
+                mc.fontRendererObj.drawString(text, -mc.fontRendererObj.getStringWidth(text) / 2F, iconSize / 2F + 2, -1, true);
+
+                GlStateManager.enableDepth();
+                GlStateManager.depthMask(true);
+                GlStateManager.enableLighting();
+                GlStateManager.disableBlend();
+                GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+                GlStateManager.popMatrix();
+            }
+        }
     }
 }

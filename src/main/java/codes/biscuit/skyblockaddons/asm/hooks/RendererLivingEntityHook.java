@@ -1,6 +1,11 @@
 package codes.biscuit.skyblockaddons.asm.hooks;
 
+import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.core.Feature;
+import codes.biscuit.skyblockaddons.core.DungeonPlayer;
 import com.google.common.collect.Sets;
+import net.minecraft.client.Minecraft;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EnumPlayerModelParts;
 
@@ -21,5 +26,21 @@ public class RendererLivingEntityHook {
     public static boolean isWearing(EntityPlayer entityPlayer, EnumPlayerModelParts p_175148_1_) {
         return (!isCoolPerson && entityPlayer.isWearing(p_175148_1_)) ||
                 (isCoolPerson && !entityPlayer.isWearing(p_175148_1_));
+    }
+
+    public static int setOutlineColor(EntityLivingBase entity, int originalColor) {
+        SkyblockAddons main = SkyblockAddons.getInstance();
+        if (main.getConfigValues().isEnabled(Feature.SHOW_CRITICAL_DUNGEONS_TEAMMATES) &&
+                main.getUtils().isInDungeon() && main.getUtils().getDungeonPlayers().containsKey(entity.getName())) {
+            DungeonPlayer dungeonPlayer = main.getUtils().getDungeonPlayers().get(entity.getName());
+
+            if (dungeonPlayer.isCritical()){
+                return Minecraft.getMinecraft().fontRendererObj.getColorCode('c');
+            } else if (dungeonPlayer.isLow()){
+                return Minecraft.getMinecraft().fontRendererObj.getColorCode('e');
+            }
+        }
+
+        return originalColor;
     }
 }

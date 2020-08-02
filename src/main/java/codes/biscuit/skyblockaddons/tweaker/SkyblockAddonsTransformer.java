@@ -81,6 +81,7 @@ public class SkyblockAddonsTransformer implements IClassTransformer {
         registerTransformer(new RenderEndermanTransformer());
         registerTransformer(new ModelEndermanTransformer());
         registerTransformer(new RenderGlobalTransformer());
+        registerTransformer(new EffectRendererTransformer());
     }
 
     private void registerTransformer(ITransformer transformer) {

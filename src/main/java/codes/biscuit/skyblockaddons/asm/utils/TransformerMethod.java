@@ -135,9 +135,13 @@ public enum TransformerMethod {
     // RenderGlobal
     isRenderEntityOutlines("isRenderEntityOutlines", "func_174985_d", "d", "()Z"),
     renderEntities("renderEntities", "func_180446_a", "a", "(Lnet/minecraft/entity/Entity;Lnet/minecraft/client/renderer/culling/ICamera;F)V", "("+TransformerClass.Entity.getName()+TransformerClass.ICamera.getName()+"F)V"),
+    renderEntityOutlineFramebuffer("renderEntityOutlineFramebuffer", "func_174975_c", "c", "()V"),
 
     // TileEntityItemStackRenderer
     renderByItem("renderByItem", "func_179022_a", "a", "(Lnet/minecraft/item/ItemStack;)V", "("+TransformerClass.ItemStack.getName()+")V"),
+
+    // EffectRenderer
+    addEffect("addEffect", "func_78873_a", "a", "(Lnet/minecraft/client/particle/EntityFX;)V", "("+TransformerClass.EntityFX.getName()+")V")
 
     ;
 

@@ -136,6 +136,10 @@ public enum Message {
     SETTING_GLOWING_DUNGEON_TEAMMATES(MessageObject.SETTING, "glowingDungeonTeammates"),
     SETTING_SHOW_BASE_STAT_BOOST_PERCENTAGE(MessageObject.SETTING, "baseStatBoostPercentage"),
     SETTING_COLOR_BY_RARITY(MessageObject.SETTING, "colorByRarity"),
+    SETTING_SHOW_PLAYER_HEAD_ON_MAP(MessageObject.SETTING, "showPlayerHeadsOnMap"),
+    SETTING_SHOW_HEALING_CIRCLE_WALL(MessageObject.SETTING, "showHealingCircleWall"),
+    SETTING_SHOW_CRITICAL_TEAMMATES(MessageObject.SETTING, "showCriticalTeammates"),
+    SETTING_SHOW_GLOWING_ITEMS_ON_ISLAND(MessageObject.SETTING, "showGlowingItemsOnIsland"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.BACKPACK_STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.BACKPACK_STYLE, "compact"),
