@@ -137,7 +137,11 @@
     "glowingDroppedItems": "Fallengelassene Items glühen",
     "glowingDungeonTeammates": "Glühende Dungeon Teamkollegen",
     "baseStatBoostPercentage": "Zeige Basisstatistik-Boost für Dungeon-Items",
-    "colorByRarity": "Farbe nach Seltenheit"
+    "colorByRarity": "Farbe nach Seltenheit",
+    "showPlayerHeadsOnMap": "Show Player Heads on Dungeon Map",
+    "showHealingCircleWall": "Show Dungeon Healing Circle Wall (Unstable)",
+    "showCriticalTeammates": "Show Critical Dungeon Teammates",
+    "showGlowingItemsOnIsland": "Show Glowing Items On Island"
   },
   "messages": {
     "dropConfirmation": "Werfe diesen Gegenstand nochmal, um zu bestätigen!",
