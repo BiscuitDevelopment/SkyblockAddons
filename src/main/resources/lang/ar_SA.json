@@ -137,7 +137,11 @@
     "glowingDroppedItems": "توهج الادوات المسقطه",
     "glowingDungeonTeammates": "توهج فريق الدنجنز",
     "baseStatBoostPercentage": "Show Base Stat Boost for Dungeon Items",
-    "colorByRarity": "اللون حسب الندرة"
+    "colorByRarity": "اللون حسب الندرة",
+    "showPlayerHeadsOnMap": "Show Player Heads on Dungeon Map",
+    "showHealingCircleWall": "Show Dungeon Healing Circle Wall (Unstable)",
+    "showCriticalTeammates": "Show Critical Dungeon Teammates",
+    "showGlowingItemsOnIsland": "Show Glowing Items On Island"
   },
   "messages": {
     "dropConfirmation": "!إرمي هذا العنصر مرة أخرى للتأكيد",
