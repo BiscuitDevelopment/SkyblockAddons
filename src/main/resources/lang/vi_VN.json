@@ -137,7 +137,11 @@
     "glowingDroppedItems": "Nổi viền vật phẩm bị đánh rơi",
     "glowingDungeonTeammates": "Nổi viền Đồng đội trong Dungeon",
     "baseStatBoostPercentage": "Hiện Tỷ lệ Tăng cường Chỉ số cho vật phẩm Dungeon",
-    "colorByRarity": "Tô màu vật phẩm theo Độ hiếm"
+    "colorByRarity": "Tô màu vật phẩm theo Độ hiếm",
+    "showPlayerHeadsOnMap": "Show Player Heads on Dungeon Map",
+    "showHealingCircleWall": "Show Dungeon Healing Circle Wall (Unstable)",
+    "showCriticalTeammates": "Show Critical Dungeon Teammates",
+    "showGlowingItemsOnIsland": "Show Glowing Items On Island"
   },
   "messages": {
     "dropConfirmation": "Nhấn \"Q\" Thêm Một Lần Nữa Để Xác Nhận!",
