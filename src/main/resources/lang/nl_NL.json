@@ -137,7 +137,11 @@
     "glowingDroppedItems": "Gloeiende Gevallen Voorwerpen",
     "glowingDungeonTeammates": "Gloeiende Dungeon Teamgenoten",
     "baseStatBoostPercentage": "Laat Basis Stat Boost voor Dungeon Voorwerpen Zien",
-    "colorByRarity": "Kleur Op Zeldzaamheid"
+    "colorByRarity": "Kleur Op Zeldzaamheid",
+    "showPlayerHeadsOnMap": "Show Player Heads on Dungeon Map",
+    "showHealingCircleWall": "Show Dungeon Healing Circle Wall (Unstable)",
+    "showCriticalTeammates": "Show Critical Dungeon Teammates",
+    "showGlowingItemsOnIsland": "Show Glowing Items On Island"
   },
   "messages": {
     "dropConfirmation": "Laat dit object opnieuw vallen om te Bevestigen!",
