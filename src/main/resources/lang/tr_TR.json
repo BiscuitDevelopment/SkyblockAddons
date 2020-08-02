@@ -137,7 +137,11 @@
     "glowingDroppedItems": "Düşürülen eşyaları aydınlat",
     "glowingDungeonTeammates": "Parlayan zindan takım arkadaşları",
     "baseStatBoostPercentage": "Zindan eşyaları için normal istatistik arttırmaları göster",
-    "colorByRarity": "Enderliğe göre renk"
+    "colorByRarity": "Enderliğe göre renk",
+    "showPlayerHeadsOnMap": "Show Player Heads on Dungeon Map",
+    "showHealingCircleWall": "Show Dungeon Healing Circle Wall (Unstable)",
+    "showCriticalTeammates": "Show Critical Dungeon Teammates",
+    "showGlowingItemsOnIsland": "Show Glowing Items On Island"
   },
   "messages": {
     "dropConfirmation": "Eşyayı düşürmeyi onaylamak için düşürme tuşuna bir daha bas!",
