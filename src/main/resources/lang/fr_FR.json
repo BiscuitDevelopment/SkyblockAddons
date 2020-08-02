@@ -139,9 +139,9 @@
     "baseStatBoostPercentage": "Afficher le Boost des statistiques de base pour les objets du donjon",
     "colorByRarity": "Colorer par rareté",
     "showPlayerHeadsOnMap": "Afficher les têtes des joueurs sur la carte du donjon",
-    "showHealingCircleWall": "Show Dungeon Healing Circle Wall (Unstable)",
-    "showCriticalTeammates": "Show Critical Dungeon Teammates",
-    "showGlowingItemsOnIsland": "Show Glowing Items On Island"
+    "showHealingCircleWall": "Afficher dans le donjon un cylindre de régénération (Instable)",
+    "showCriticalTeammates": "Afficher dans le donjon les coéquipiers dans un état critique",
+    "showGlowingItemsOnIsland": "Afficher les objets rayonnants sur l'île"
   },
   "messages": {
     "dropConfirmation": "Jetez cet objet une nouvelle fois pour confirmer!",
