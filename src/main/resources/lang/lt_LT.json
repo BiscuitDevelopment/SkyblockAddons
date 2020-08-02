@@ -137,7 +137,11 @@
     "glowingDroppedItems": "Šviečiantys Pamesti Daiktai",
     "glowingDungeonTeammates": "Šviečiantys Dungeon'o Komandos Nariai",
     "baseStatBoostPercentage": "Rodyti Normalius Stat'ų Boost'us Dungeon'o Daiktams",
-    "colorByRarity": "Spalva Pagal Retumą"
+    "colorByRarity": "Spalva Pagal Retumą",
+    "showPlayerHeadsOnMap": "Show Player Heads on Dungeon Map",
+    "showHealingCircleWall": "Show Dungeon Healing Circle Wall (Unstable)",
+    "showCriticalTeammates": "Show Critical Dungeon Teammates",
+    "showGlowingItemsOnIsland": "Show Glowing Items On Island"
   },
   "messages": {
     "dropConfirmation": "Meskite Šį Daiktą Dar Kartą, Kad Patvirtintumėte!",
