@@ -113,7 +113,7 @@
     "turnBowGreenWhenUsingToxicArrowPoison": "Arco de color verde cuando se utilizan Veneno tóxico para flechas",
     "birchParkRainmakerTimer": "Temporizador de lluvia en el parque de abedul",
     "combatTimerDisplay": "Mostrar temporizador de tiempo en combate",
-    "discordRP": "Discord Rich Presence",
+    "discordRP": "Presencia Vivida de Discord",
     "endstoneProtectorDisplay": "Mostrar etapa del endstone Protector",
     "fancyWarpMenu": "Menu de Warps elegante",
     "doubleWarp": "Viajar dos veces",
@@ -136,8 +136,12 @@
     "mapZoom": "Zoom del mapa",
     "glowingDroppedItems": "Objetos tirados brillantes",
     "glowingDungeonTeammates": "Compañeros de calabozo brillantes",
-    "baseStatBoostPercentage": "Show Base Stat Boost for Dungeon Items",
-    "colorByRarity": "Color por raridad"
+    "baseStatBoostPercentage": "Mostrar potenciador de Atributos base para los objetos de las mazmorras",
+    "colorByRarity": "Color por raridad",
+    "showPlayerHeadsOnMap": "Show Player Heads on Dungeon Map",
+    "showHealingCircleWall": "Show Dungeon Healing Circle Wall (Unstable)",
+    "showCriticalTeammates": "Show Critical Dungeon Teammates",
+    "showGlowingItemsOnIsland": "Show Glowing Items On Island"
   },
   "messages": {
     "dropConfirmation": "Arroja este objeto otra vez para confirmar!",
@@ -221,24 +225,24 @@
     "titleCustom": "Estado Personalizado",
     "descriptionCustom": "Introduce un estado personalizado",
     "titleAuto": "Estado Automático",
-    "descriptionAuto": "Automatically displays a status. E.g. your zealot count while in the end.",
-    "titleRevenants": "Revenant Quest",
-    "descriptionRevenants": "Shows that you are doing a Revenant quest.",
+    "descriptionAuto": "Muestra automáticamente Estadisticas o Estados. E.j., su contador de Zealots mientras estas en El End.",
+    "titleRevenants": "Misión de Revenant",
+    "descriptionRevenants": "Muestra que estás realizando una misión de Revenant.",
     "titleSvens": "Misión de Sven",
-    "descriptionSvens": "Shows that you are doing a Sven quest.",
+    "descriptionSvens": "Muestra que estás haciendo una misión de Sven.",
     "titleTarantula": "Misión de Tarantula",
-    "descriptionTarantula": "Shows that you are doing a Tarantula quest."
+    "descriptionTarantula": "Muestra que estás haciendo una misión de Tarantula."
   },
   "commandUsage": {
-    "sba": "Open the main menu",
+    "sba": "Abrir el menú principal",
     "sba.edit": "Editar Posiciones de IGU",
-    "sba.set.zealotCounter": "Manually set your zealot counts",
-    "sba.folder": "Open your mods folder",
-    "sba.dev": "Toggle developer mode",
-    "sba.sidebar": "§e(Dev) §7Copy the scoreboard text. \"formatted\" §7keeps the color codes when copying.",
-    "sba.brand": "§e(Dev) §7Show the server brand"
+    "sba.set.zealotCounter": "Configura manualmente tus cuentas de Zealots",
+    "sba.folder": "Abrir tu carpeta de Mods",
+    "sba.dev": "Activar el modo de desarollador",
+    "sba.sidebar": "§e(Dev) §Copia el texto del marcador. \"formateado\" §mantiene los códigos de colores al copiar.",
+    "sba.brand": "§e(Dev) §7Mostrar la marca del servidor"
   },
   "keyBindings": {
-    "developerCopyNBT": "Copy NBT"
+    "developerCopyNBT": "Copiar NBT"
   }
 }
