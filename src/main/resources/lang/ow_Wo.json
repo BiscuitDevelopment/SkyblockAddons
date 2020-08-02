@@ -137,7 +137,11 @@
     "glowingDroppedItems": "Gwowing Dwopped Items",
     "glowingDungeonTeammates": "Gwowing Dungeown Teamwates",
     "baseStatBoostPercentage": "Show Bwase Stat Bwoost for Dwungeon Items",
-    "colorByRarity": "Cowor By Rawrity"
+    "colorByRarity": "Cowor By Rawrity",
+    "showPlayerHeadsOnMap": "Show Player Heads on Dungeon Map",
+    "showHealingCircleWall": "Show Dungeon Healing Circle Wall (Unstable)",
+    "showCriticalTeammates": "Show Critical Dungeon Teammates",
+    "showGlowingItemsOnIsland": "Show Glowing Items On Island"
   },
   "messages": {
     "dropConfirmation": "Dwop thwis itwem agwain to confiwm!",
