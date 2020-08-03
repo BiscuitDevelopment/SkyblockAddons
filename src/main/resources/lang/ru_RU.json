@@ -16,7 +16,7 @@
     "hideDurability": "Скрыть прочность инструментов",
     "showEnchantmentsReforges": "Зачарование и Перековка",
     "minionStopWarning": "Предупреждение об остановки миньона",
-    "hidePlayersNearNPCs": "Скрыть игроков рядом с важными NPC",
+    "hidePlayersNearNPCs": "Скрывать игроков рядом с важными NPC",
     "backpackStyle": "Стиль рюкзака: %style%",
     "backpackStyles": {
       "regular": "Обычный",
@@ -50,7 +50,7 @@
     "summoningEyeAlert": "Оповещение о Глазе Призыва",
     "makeEnderchestsInEndGreen": "Изменять цвет Эндер Сундуков в Краю",
     "changeColor": "Изменить цвет",
-    "showInOtherGames": "Показывать в остальных играх",
+    "showInOtherGames": "Показывать в других играх",
     "useVanillaTexture": "Использовать стандартные текстуры",
     "textStyle": "Стиль текста",
     "textStyles": {
@@ -62,7 +62,7 @@
     "stopDroppingSellingRareItems": "Перестать выбрасывать/продавать редкие предметы",
     "makeBackpackInventoriesColored": "Цветные инвентари рюкзаков",
     "avoidBreakingBottomSugarCane": "Избегать ломание нижнего тростника",
-    "replaceRomanNumeralsWithNumbers": "Заменять римские цифры на арабские",
+    "replaceRomanNumeralsWithNumbers": "Заменять римские цифры на предметах",
     "changeBarColorForPotions": "Изменять цвет панели при иссушении и отравлении",
     "craftingPatterns": "Выбор шаблонов крафта",
     "soundIndicatorForFishing": "Звуковой индикатор для рыбалки",
@@ -137,11 +137,11 @@
     "glowingDroppedItems": "Glowing Dropped Items",
     "glowingDungeonTeammates": "Glowing Dungeon Teammates",
     "baseStatBoostPercentage": "Show Base Stat Boost for Dungeon Items",
-    "colorByRarity": "Color By Rarity",
+    "colorByRarity": "Цвет по редкости",
     "showPlayerHeadsOnMap": "Show Player Heads on Dungeon Map",
     "showHealingCircleWall": "Show Dungeon Healing Circle Wall (Unstable)",
     "showCriticalTeammates": "Show Critical Dungeon Teammates",
-    "showGlowingItemsOnIsland": "Show Glowing Items On Island"
+    "showGlowingItemsOnIsland": "Показывать Светящиеся Предметы На Острове"
   },
   "messages": {
     "dropConfirmation": "Выбросите предмет ещё раз для подтверждения!",
@@ -162,8 +162,8 @@
     "wantToViewPatchNotes": "Хотите прочесть изменения?",
     "downloadLink": "ССЫЛКА ОБНОВЛЕНИЯ",
     "directDownload": "ПРЯМАЯ ССЫЛКА ЗАГРУЗКИ",
-    "openModFolder": "ПАПКА МОДОВ",
-    "joinTheDiscord": "ПРИСОЕДИНИТЬСЯ К ДИСКОРДУ",
+    "openModFolder": "ОТКРЫТЬ ПАПКУ С МОДАМИ",
+    "joinTheDiscord": "ССЫЛКА ДИСКОРДА",
     "newUpdateAvailable": "Доступно новое обновление (%version%)!",
     "update": {
       "majorAvailable": "Доступно новое глобальное обновление (%version%)! Ссылку на загрузку можно найти в чате.",
@@ -171,7 +171,7 @@
     },
     "slotLocked": "Этот слот заблокирован!",
     "summoningEyeFound": "Око Призыва!",
-    "cancelledStemBreak": "SkyBlockAddons предотвратил попытку сломать этот росток. Используйте руку, если хотите его сломать.",
+    "cancelledStemBreak": "SkyBlockAddons остановил вас от ломания этого стебля. Используйте руку, если вы хотите это сделать.",
     "cancelledProfileOpening": "SkyblockAddons остановил вас от открытия профиля игрока с луком в руках.",
     "cancelledDropping": "SkyblockAddons предотвратил попытку выбросить этот предмет из панели быстрого доступа.",
     "clickMoreTimes": "Щелкните/выбросьте этот предмет еще %times% раз(а), если вы действительно хотите сделать это.",
