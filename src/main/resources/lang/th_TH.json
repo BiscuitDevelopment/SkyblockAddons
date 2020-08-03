@@ -138,10 +138,10 @@
     "glowingDungeonTeammates": "ผู้เล่นในทีม Dungeon เรืองแสง",
     "baseStatBoostPercentage": "แสดงค่าพื้นฐานของ Dungeon Items",
     "colorByRarity": "สีตามความหายาก",
-    "showPlayerHeadsOnMap": "Show Player Heads on Dungeon Map",
-    "showHealingCircleWall": "Show Dungeon Healing Circle Wall (Unstable)",
+    "showPlayerHeadsOnMap": "แสดงหัวผู้เล่นในแผนที่",
+    "showHealingCircleWall": "แสดงวงกลมเพิ่มเลือด(ไม่เสถียร)",
     "showCriticalTeammates": "Show Critical Dungeon Teammates",
-    "showGlowingItemsOnIsland": "Show Glowing Items On Island"
+    "showGlowingItemsOnIsland": "ของดรอปบนเกาะเรืองแสง"
   },
   "messages": {
     "dropConfirmation": "กดทิ้งของอีกที่เพื่อยืนยันทิ้งของสิ่งนี้!",
