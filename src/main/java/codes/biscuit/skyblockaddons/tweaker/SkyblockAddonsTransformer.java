@@ -102,20 +102,18 @@ public class SkyblockAddonsTransformer implements IClassTransformer {
 
     @SuppressWarnings("ResultOfMethodCallIgnored")
     private void outputBytecode(String transformedName, ClassWriter writer) {
-        if (SkyblockAddonsSetup.isDeobfuscatedEnvironment()) {
-            try {
-                File bytecodeDirectory = new File("bytecode");
-                File bytecodeOutput = new File(bytecodeDirectory, transformedName + ".class");
+        try {
+            File bytecodeDirectory = new File("bytecode");
+            File bytecodeOutput = new File(bytecodeDirectory, transformedName + ".class");
 
-                if (!bytecodeDirectory.exists()) return;
-                if (!bytecodeOutput.exists()) bytecodeOutput.createNewFile();
+            if (!bytecodeDirectory.exists()) return;
+            if (!bytecodeOutput.exists()) bytecodeOutput.createNewFile();
 
-                FileOutputStream os = new FileOutputStream(bytecodeOutput);
-                os.write(writer.toByteArray());
-                os.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            FileOutputStream os = new FileOutputStream(bytecodeOutput);
+            os.write(writer.toByteArray());
+            os.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
