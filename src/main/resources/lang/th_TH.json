@@ -140,7 +140,7 @@
     "colorByRarity": "สีตามความหายาก",
     "showPlayerHeadsOnMap": "แสดงหัวผู้เล่นในแผนที่",
     "showHealingCircleWall": "แสดงวงกลมเพิ่มเลือด(ไม่เสถียร)",
-    "showCriticalTeammates": "Show Critical Dungeon Teammates",
+    "showCriticalTeammates": "แสดงcriticalผู้เล่นdungeon",
     "showGlowingItemsOnIsland": "ของดรอปบนเกาะเรืองแสง"
   },
   "messages": {
