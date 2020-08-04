@@ -138,10 +138,10 @@
     "glowingDungeonTeammates": "Parlayan zindan takım arkadaşları",
     "baseStatBoostPercentage": "Zindan eşyaları için normal istatistik arttırmaları göster",
     "colorByRarity": "Enderliğe göre renk",
-    "showPlayerHeadsOnMap": "Show Player Heads on Dungeon Map",
-    "showHealingCircleWall": "Show Dungeon Healing Circle Wall (Unstable)",
-    "showCriticalTeammates": "Show Critical Dungeon Teammates",
-    "showGlowingItemsOnIsland": "Show Glowing Items On Island"
+    "showPlayerHeadsOnMap": "Dungeon Haritasında Oyuncu Kafaları Göster",
+    "showHealingCircleWall": "Dungeon İyileştirme Yuvarlağı Sınırlarını Göster (Kararsız)",
+    "showCriticalTeammates": "Canı Az Olan Dungeon Takım Arkadaşlarını Göster",
+    "showGlowingItemsOnIsland": "Parlayan Eşyaları Adanda Göster"
   },
   "messages": {
     "dropConfirmation": "Eşyayı düşürmeyi onaylamak için düşürme tuşuna bir daha bas!",
