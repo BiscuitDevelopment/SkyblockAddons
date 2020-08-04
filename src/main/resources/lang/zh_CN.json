@@ -138,7 +138,7 @@
     "glowingDungeonTeammates": "在地下城中标记队友",
     "baseStatBoostPercentage": "显示地下城物品的基本属性加成",
     "colorByRarity": "按稀有度上色",
-    "showPlayerHeadsOnMap": "在地下城地图上显示玩家头",
+    "showPlayerHeadsOnMap": "在地下城地图上显示玩家头像",
     "showHealingCircleWall": "显示地下城 Healing Circle 边界 (不稳定)",
     "showCriticalTeammates": "显示地下城濒死队友",
     "showGlowingItemsOnIsland": "显示在岛上的发光物品"
