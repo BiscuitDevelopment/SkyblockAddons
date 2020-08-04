@@ -138,10 +138,10 @@
     "glowingDungeonTeammates": "Gloeiende Dungeon Teamgenoten",
     "baseStatBoostPercentage": "Laat Basis Stat Boost voor Dungeon Voorwerpen Zien",
     "colorByRarity": "Kleur Op Zeldzaamheid",
-    "showPlayerHeadsOnMap": "Show Player Heads on Dungeon Map",
-    "showHealingCircleWall": "Show Dungeon Healing Circle Wall (Unstable)",
-    "showCriticalTeammates": "Show Critical Dungeon Teammates",
-    "showGlowingItemsOnIsland": "Show Glowing Items On Island"
+    "showPlayerHeadsOnMap": "Toon Speler Hoofden op Dungeon Kaart",
+    "showHealingCircleWall": "Toon Dungeon Genees Cirkel Muur (Onstabiel)",
+    "showCriticalTeammates": "Laat Kritische Dungeon Teamgenoten Zien",
+    "showGlowingItemsOnIsland": "Toon Gloeiende Voorwerpen Op Eiland"
   },
   "messages": {
     "dropConfirmation": "Laat dit object opnieuw vallen om te Bevestigen!",
