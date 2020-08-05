@@ -336,7 +336,7 @@ public class EnumUtils {
         CARPENTRY("Carpentry", Item.getItemFromBlock(Blocks.crafting_table)),
         RUNECRAFTING("Runecrafting", Items.magma_cream),
         TAMING("Taming", Items.spawn_egg),
-        OTHER(null, null);
+        DUNGEONEERING("Dungeoneering", Item.getItemFromBlock(Blocks.deadbush));
 
         private String skillName;
         @Getter private ItemStack item;
@@ -352,7 +352,7 @@ public class EnumUtils {
                     return skillType;
                 }
             }
-            return OTHER;
+            return null;
         }
     }
 
