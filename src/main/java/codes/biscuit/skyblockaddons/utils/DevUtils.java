@@ -13,7 +13,6 @@ import net.minecraft.scoreboard.ScorePlayerTeam;
 import net.minecraft.scoreboard.Scoreboard;
 import net.minecraft.util.StringUtils;
 import net.minecraftforge.common.util.Constants;
-import org.lwjgl.input.Keyboard;
 
 import java.awt.*;
 import java.awt.datatransfer.Clipboard;
@@ -123,22 +122,18 @@ public class DevUtils {
     /**
      * Copies the data of all mobs within the entity copy radius of the player
      *
-     * @param player the player
-     * @param loadedEntities the list of all the entities that are currently loaded in the world
      * @param copyRadius copy the NBT data of entities inside this radius around the player
      * @param includeSelf {@code true} to include the player's own NBT data, {@code false} to omit
      * @param includedEntityTypes the classes of entites that should be included in the NBT data
      */
-    public static void copyEntityData(EntityPlayerSP player, List<Entity> loadedEntities, int copyRadius,
-                                      boolean includeSelf, Class<? extends Entity>[] includedEntityTypes) {
-        List<Entity> loadedEntitiesCopy = new LinkedList<>(loadedEntities);
-        ListIterator<Entity> loadedEntitiesCopyIterator;
-        StringBuilder stringBuilder = new StringBuilder();
+    public static void copyEntityData(int copyRadius, boolean includeSelf, Class<?>[] includedEntityTypes) {
+        Minecraft mc = Minecraft.getMinecraft();
+        EntityPlayerSP player = mc.thePlayer;
+        List<Entity> loadedEntities = new ArrayList<>(mc.theWorld.loadedEntityList);
 
         if (copyRadius >= 0) {
-            loadedEntitiesCopy.removeIf(entity -> entity.getDistanceToEntity(player) > copyRadius);
-        }
-        else {
+            loadedEntities.removeIf(entity -> entity.getDistanceToEntity(player) > copyRadius);
+        } else {
             throw new IllegalArgumentException("The entity copy radius cannot be negative!");
         }
 
@@ -148,19 +143,20 @@ public class DevUtils {
 
         if (includedEntityTypes == null) {
             throw new IllegalArgumentException("The array of entity types cannot be null!");
-        }
-        else if (includedEntityTypes.length == 0) {
+
+        } else if (includedEntityTypes.length == 0) {
             throw new IllegalArgumentException("The array of entity types cannot be empty!");
-        }
-        else {
-            for (Class entityClass : includedEntityTypes) {
-                loadedEntities.removeIf(entity -> entityClass.isAssignableFrom(entity.getClass()))
+
+        } else {
+            for (Class<?> entityClass : includedEntityTypes) {
+                loadedEntities.removeIf(entity -> entityClass.isAssignableFrom(entity.getClass()));
             }
         }
 
-        loadedEntitiesCopyIterator = loadedEntitiesCopy.listIterator();
+        StringBuilder stringBuilder = new StringBuilder();
 
         // Copy the NBT data from the loaded entities.
+        Iterator<Entity> loadedEntitiesCopyIterator = loadedEntities.listIterator();
         while (loadedEntitiesCopyIterator.hasNext()) {
             Entity entity = loadedEntitiesCopyIterator.next();
             NBTTagCompound entityData = new NBTTagCompound();
@@ -185,12 +181,9 @@ public class DevUtils {
 
     /**
      * Copies the NBT data of all the mobs within {@code ENTITY_COPY_RADIUS} blocks of the player and the player's own NBT data
-     *
-     * @param player the player
-     * @param loadedEntities the list of all the entities that are currently loaded in the world
      */
-    public static void copyMobData(EntityPlayerSP player, List<Entity> loadedEntities) {
-        copyEntityData(player, loadedEntities, ENTITY_COPY_RADIUS, true, EntityLivingBase.class.getClasses());
+    public static void copyMobData() {
+        copyEntityData(ENTITY_COPY_RADIUS, true, EntityLivingBase.class.getClasses());
     }
 
     /**

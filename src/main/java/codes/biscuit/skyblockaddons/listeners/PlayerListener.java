@@ -851,12 +851,8 @@ public class PlayerListener {
         } else if (main.getDeveloperCopyNBTKey().isPressed()) {
             // Copy Mob Data
             if (main.isDevMode()) {
-                EntityPlayerSP player = Minecraft.getMinecraft().thePlayer;
-                List<Entity> entityList = Minecraft.getMinecraft().theWorld.loadedEntityList;
-
-                DevUtils.copyMobData(player, entityList);
+                DevUtils.copyMobData();
             }
-
         }
 
         if (Keyboard.getEventKeyState()) {
