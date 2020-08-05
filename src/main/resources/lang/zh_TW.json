@@ -9,7 +9,7 @@
     "hideFoodAndArmor": "隱藏飽食度 & 裝甲值",
     "fullInventoryWarning": "背包空間不足警報",
     "repeating": "重複警告",
-    "disableEmberRodAbility": "在你的島上關閉Ember Rod的技能",
+    "disableEmberRodAbility": "在玩家島嶼上關閉Ember Rod的技能",
     "editLocations": "編輯介面位置",
     "guiScale": "介面大小: %scale%",
     "resetLocations": "重置介面位置",
@@ -141,7 +141,7 @@
     "showPlayerHeadsOnMap": "於地下城地圖顯示玩家頭部",
     "showHealingCircleWall": "顯示地下城Healing Circle邊界 (不穩定)",
     "showCriticalTeammates": "顯示地下城瀕死隊友",
-    "showGlowingItemsOnIsland": "Show Glowing Items On Island"
+    "showGlowingItemsOnIsland": "在玩家島嶼上使物品發光"
   },
   "messages": {
     "dropConfirmation": "再次丟棄此物品以確認!",
