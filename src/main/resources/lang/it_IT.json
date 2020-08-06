@@ -139,7 +139,7 @@
     "baseStatBoostPercentage": "Mostra Stat Boost base per gli oggetti del Dungeon",
     "colorByRarity": "Colora per rarità",
     "showPlayerHeadsOnMap": "Mostra le teste dei giocatori sulla mappa del dungeon",
-    "showHealingCircleWall": "Show Dungeon Healing Circle Wall (Unstable)",
+    "showHealingCircleWall": "Mostra le pareti del cerchio di guarigione (instabile)",
     "showCriticalTeammates": "Mostra i compagni di dungeon in difficoltà",
     "showGlowingItemsOnIsland": "Mostra oggetti illuminati sull’isola"
   },
