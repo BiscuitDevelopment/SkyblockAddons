@@ -74,7 +74,7 @@
     "speedPercentage": "속도 퍼센트",
     "collectionDisplay": "스킬 경험치 표시",
     "onlyMineOresDeepCaverns": "깊은 동굴에서 한가지 광석",
-    "onlyMineValuablesNether": "Only Mine Valuables in the Nether",
+    "onlyMineValuablesNether": "네더에서 광물만 광질하기",
     "revenantIndicator": "Slayer Armor Progress Indicator",
     "specialZealotAlert": "특별한 질럿 경고",
     "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented",
@@ -82,8 +82,8 @@
     "powerOrbDisplay": "Power Orb Display",
     "powerOrbDisplayStyle": "Power Orb Style: %style%",
     "powerOrbStyle": {
-      "detailed": "Detailed",
-      "compact": "Compact"
+      "detailed": "자세하게 표시",
+      "compact": "간단하게 표시"
     },
     "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages",
     "zealotCounter": "Show Zealot Counter",
@@ -92,11 +92,11 @@
       "generalSettings": "일반 설정"
     },
     "tabEffectTimers": "Potion and Powerup Timers",
-    "noArrowsLeftAlert": "No Arrows Left Alert",
+    "noArrowsLeftAlert": "화살이 부족함 경고",
     "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
     "showCakeBagPreview": "Show Preview for Cake Bags",
     "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
-    "enableDevFeatures": "Enable Developer Features",
+    "enableDevFeatures": "개발자용 기능 활성화",
     "chromaSpeed": "Chroma Speed",
     "chromaMode": "Chroma Color Mode",
     "chromaModes": {
@@ -104,7 +104,7 @@
       "fade": "Color Fade"
     },
     "chromaFadeWidth": "Chroma Fade Width",
-    "sortTabEffectTimers": "Sort Timers by Duration",
+    "sortTabEffectTimers": "타이머들을 남은 시간순으로 정리하기",
     "showBrokenFragments": "Show Broken Dragon Fragments",
     "skyblockAddonsButtonInPauseMenu": "Show SBA Button in Pause Menu",
     "showTotalZealotCount": "Zealot Counter - Total Zealot Count",
