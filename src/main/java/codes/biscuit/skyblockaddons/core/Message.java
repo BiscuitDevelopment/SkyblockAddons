@@ -140,6 +140,7 @@ public enum Message {
     SETTING_SHOW_HEALING_CIRCLE_WALL(MessageObject.SETTING, "showHealingCircleWall"),
     SETTING_SHOW_CRITICAL_TEAMMATES(MessageObject.SETTING, "showCriticalTeammates"),
     SETTING_SHOW_GLOWING_ITEMS_ON_ISLAND(MessageObject.SETTING, "showGlowingItemsOnIsland"),
+    SETTING_SHOW_ITEM_DUNGEON_FLOOR(MessageObject.SETTING, "showItemDungeonFloor"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.BACKPACK_STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.BACKPACK_STYLE, "compact"),

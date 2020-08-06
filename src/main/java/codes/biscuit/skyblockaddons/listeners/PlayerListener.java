@@ -795,6 +795,17 @@ public class PlayerListener {
                 }
             }
 
+            if (main.getConfigValues().isEnabled(Feature.SHOW_ITEM_DUNGEON_FLOOR) && hoveredItem.hasTagCompound()) {
+                NBTTagCompound extraAttributes = ItemUtils.getExtraAttributes(hoveredItem);
+                if (extraAttributes != null) {
+                    int floor = ItemUtils.getDungeonFloor(extraAttributes);
+                    if (floor != -1) {
+                        ColorCode colorCode = main.getConfigValues().getRestrictedColor(Feature.SHOW_ITEM_DUNGEON_FLOOR);
+                        e.toolTip.add(insertAt, "§7Obtained on Floor: " + colorCode + (floor == 0 ? "Entrance" : floor));
+                    }
+                }
+            }
+
             // Append Skyblock Item ID to end of tooltip if in developer mode
             if (main.isDevMode() && e.showAdvancedItemTooltips) {
                 String itemId = ItemUtils.getSkyBlockItemID(e.itemStack);

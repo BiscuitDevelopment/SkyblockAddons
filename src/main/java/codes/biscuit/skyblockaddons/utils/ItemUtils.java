@@ -104,4 +104,18 @@ public class ItemUtils {
 
         return extraAttributes.getInteger("baseStatBoostPercentage");
     }
+
+    /**
+     * Returns the Dungeon Floor an item was obtained from, from a given Skyblock Extra Attributes NBT Compound
+     * Entrance is floor 0
+     * @param extraAttributes the NBT to check
+     * @return the Floor or {@code -1} if it isn't a Dungeons Item or this isn't a valid Skyblock NBT
+     */
+    public static int getDungeonFloor(NBTTagCompound extraAttributes) {
+        if (extraAttributes == null || !extraAttributes.hasKey("item_tier")) {
+            return -1;
+        }
+
+        return extraAttributes.getInteger("item_tier");
+    }
 }
