@@ -16,7 +16,7 @@
     "hideDurability": "도구 내구도 숨기기",
     "showEnchantmentsReforges": "인챈트 및 리포지",
     "minionStopWarning": "\"미니언 사거리\" 경고",
-    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
+    "hidePlayersNearNPCs": "NPC 근처에 있는 플레이어 숨기기",
     "backpackStyle": "백팩 스타일: %style%",
     "backpackStyles": {
       "regular": "일반",
@@ -130,7 +130,7 @@
     "changeZealotColor": "Change Zealot Color",
     "hideSvenPupNametags": "Hide Sven Pup Nametags",
     "turnAllFeaturesChroma": "Turn All Features Chroma",
-    "dungeonsMapDisplay": "Dungeons Map Display",
+    "dungeonsMapDisplay": "던전 미니맵 표시하기",
     "rotateMap": "Rotate Map to Your Player's Rotation",
     "centerRotationOnYourPlayer": "Center the Rotation Around Your Player",
     "mapZoom": "Map Zoom",
