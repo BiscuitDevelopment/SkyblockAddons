@@ -138,10 +138,10 @@
     "glowingDungeonTeammates": "Glødende Dungeon Lagkamerater",
     "baseStatBoostPercentage": "Show Base Stat Boost for Dungeon Items",
     "colorByRarity": "Sett farge etter sjeldenhet",
-    "showPlayerHeadsOnMap": "Show Player Heads on Dungeon Map",
+    "showPlayerHeadsOnMap": "Vis spiller hoder på Dungeon-kart",
     "showHealingCircleWall": "Show Dungeon Healing Circle Wall (Unstable)",
     "showCriticalTeammates": "Show Critical Dungeon Teammates",
-    "showGlowingItemsOnIsland": "Show Glowing Items On Island"
+    "showGlowingItemsOnIsland": "Vis glødende gjenstander på øy"
   },
   "messages": {
     "dropConfirmation": "Slipp denne gjenstanden igjen for å bekrefte!",
