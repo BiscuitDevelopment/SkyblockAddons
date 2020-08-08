@@ -138,10 +138,10 @@
     "glowingDungeonTeammates": "Ragyogó társak",
     "baseStatBoostPercentage": "Dungeon tárgyak alap értékeinek a mutatása",
     "colorByRarity": "Szín ritkaság alapján",
-    "showPlayerHeadsOnMap": "Show Player Heads on Dungeon Map",
+    "showPlayerHeadsOnMap": "Mutasd a játékos fejeit a dungeon térképen",
     "showHealingCircleWall": "Show Dungeon Healing Circle Wall (Unstable)",
-    "showCriticalTeammates": "Show Critical Dungeon Teammates",
-    "showGlowingItemsOnIsland": "Show Glowing Items On Island"
+    "showCriticalTeammates": "Mutasd a kritikális állapotban lévő csapat tagokat",
+    "showGlowingItemsOnIsland": "Mutasd a ragyogó tárgyakat a szigeten"
   },
   "messages": {
     "dropConfirmation": "Dobd el ezt a tárgyat újra, hogy megerősítsd!",
