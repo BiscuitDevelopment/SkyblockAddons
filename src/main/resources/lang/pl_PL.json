@@ -247,7 +247,7 @@
     "sba.help.dev": "Ta komenda włącza tryb dewelopera. Ten tryb jest przeznaczony dla deweloperów modów/narzędzi dla Skyblock. Dostarcza surowych danych z gry, takich jak tagi NBT przedmiotów i bytów.",
     "sba.help.set.zealotCounter": "Ręcznie ustawia licznik w liczniku zealotów.",
     "sba.help.set.zealotCounter.zealots": "Zealoty zabite od ostatniego summoning eye",
-    "sba.help.set.zealotCounter.eyes": "Lifetime summoning eyes obtained",
+    "sba.help.set.zealotCounter.eyes": "Zdobyto dożywotnie oko przywołujące",
     "sba.help.set.zealotCounter.totalZealots": "Łączna liczba zabitych zealotów",
     "sba.help.copyEntity": "Kopiuje dane NBT bytów. Rodzaje elementów dołączonych i promień wokół gracza do kopiowania danych mogą być dostosowywane. Jeśli nie podano żadnych opcji, używane są domyślne ustawienia. Domyślne ustawienia zawierają graczy, stojaki na zbroje i moby, a także promień %radius% bloków. Jeśli promień nie jest podany, stosuje się domyślny promień.",
     "sba.help.copyEntity.entityNames": "Nazwy typów obiektów, dla których chcesz skopiować dane (np. Player, Creeper). Naciśnij \"Tab\" po wpisaniu komendy dla pełnej listy. Oddziel wiele nazw przecinkami, rozmiar liter w nazwach jest ważny.",
