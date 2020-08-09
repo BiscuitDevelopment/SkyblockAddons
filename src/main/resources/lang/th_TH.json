@@ -235,12 +235,25 @@
   },
   "commandUsage": {
     "sba": "เปิดเมนูหลัก",
+    "sba.help": "Show this help message. If a command is provided, detailed help about that command is shown.",
     "sba.edit": "แก้ไขตำแหน่ง GUI",
     "sba.set.zealotCounter": "ตั้งจำนวน Zealot ด้วยตนเอง",
     "sba.folder": "เปิดโฟลเดอร์ mods",
     "sba.dev": "เปิด/ปิดโหมดผู้พัฒนา",
     "sba.sidebar": "§e(Dev) §7คัดลอกตัวหนังสือในตารางคะแนน §7เก็บ code เมื่อทำการคัดลอก",
-    "sba.brand": "§e(Dev) §7แสดง Server brand"
+    "sba.brand": "§e(Dev) §7แสดง Server brand",
+    "sba.copyEntity": "§e(Dev) §7Copy NBT data for entities of the given name(s) within the given radius around the player",
+    "sba.help.help.command": "the sub-command to get detailed usage for",
+    "sba.help.dev": "This command toggles developer mode. This mode is meant for developers Skyblock mods/tools. It provides raw data from the game such as entity and item NBT.",
+    "sba.help.set.zealotCounter": "Manually sets counts in the zealot counter.",
+    "sba.help.set.zealotCounter.zealots": "Zealots killed since the last summoning eye drop",
+    "sba.help.set.zealotCounter.eyes": "Lifetime summoning eyes obtained",
+    "sba.help.set.zealotCounter.totalZealots": "Lifetime zealots killed",
+    "sba.help.copyEntity": "Copies the NBT data of entities. The types of entities included and the radius around the player to copy data from can be customized. If no options are given, the default settings are used. The default settings are: include players, armor stands, and mobs, and a radius of %radius% blocks. If the radius isn't given, the default radius is used.",
+    "sba.help.copyEntity.entityNames": "Names of the types of entities you want to copy data for (e.g. Player, Creeper). Press \"Tab\" after typing the command for a full list. Separate multiple names with commas, names are case-sensitive.",
+    "sba.help.copyEntity.radius": "The radius(in blocks) around the player to copy entity NBT data from",
+    "sba.help.sidebar.formatted": "Determines if the formatting codes should be included when copying. Can be either \"true\" or \"false\", defaults to \"false\" if no value is provided. Formatting codes are copied if \"true\".",
+    "sba.help.subCommandNotFound": "The sub-command %sub-command% wasn't found."
   },
   "keyBindings": {
     "developerCopyNBT": "ลอก NBT"
