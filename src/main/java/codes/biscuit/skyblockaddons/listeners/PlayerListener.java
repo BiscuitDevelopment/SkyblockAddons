@@ -851,7 +851,7 @@ public class PlayerListener {
         } else if (main.getDeveloperCopyNBTKey().isPressed()) {
             // Copy Mob Data
             if (main.isDevMode()) {
-                DevUtils.copyMobData();
+                DevUtils.copyEntityData();
             }
         }
 
