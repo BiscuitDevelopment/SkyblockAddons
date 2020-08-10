@@ -252,7 +252,7 @@
     "sba.help.copyEntity": "Copies the NBT data of entities. The types of entities included and the radius around the player to copy data from can be customized. If no options are given, the default settings are used. The default settings are: include players, armor stands, and mobs, and a radius of %radius% blocks. If the radius isn't given, the default radius is used.",
     "sba.help.copyEntity.entityNames": "Names of the types of entities you want to copy data for (e.g. Player, Creeper). Press \"Tab\" after typing the command for a full list. Separate multiple names with commas, names are case-sensitive.",
     "sba.help.copyEntity.radius": "The radius(in blocks) around the player to copy entity NBT data from",
-    "sba.help.sidebar.formatted": "Determines if the formatting codes should be included when copying. Can be either \"true\" or \"false\", defaults to \"false\" if no value is provided. Formatting codes are copied if \"true\".",
+    "sba.help.sidebar.formatted": "Determina se i codici di formattazione devono essere inclusi durante la copia. Può essere \"true\" o \"false\", di default su \"false\" se non viene fornito alcun valore. I codici di formattazione vengono copiati se \"true\".",
     "sba.help.subCommandNotFound": "Il sottocomando %sub-command% non è stato trovato."
   },
   "keyBindings": {
