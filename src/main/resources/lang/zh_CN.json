@@ -242,7 +242,7 @@
     "sba.dev": "启用/禁用 开发者模式",
     "sba.sidebar": "§e(开发者) §7复制计分板文本。",
     "sba.brand": "§e(开发者) §7显示服务端名称",
-    "sba.copyEntity": "§e（开发者）§7 复制玩家附近指定范围内指定名字的实体的NBT",
+    "sba.copyEntity": "§e(开发者) §7复制玩家附近指定范围内指定名字的实体 NBT",
     "sba.help.help.command": "此子命令来获取详细的用法",
     "sba.help.dev": "此命令将开启开发者模式。这个模式是为空岛生存模组和工具开发者所设计。它会给予例如实体和物品NBT的源数据。",
     "sba.help.set.zealotCounter": "手动设置末影战士计数器。",
@@ -253,7 +253,7 @@
     "sba.help.copyEntity.entityNames": "你想要复制数据的实体种类（例如 Player, Creeper）。输入指令后按“'Tab”来获取完整列表。使用英文逗号分隔多个种类，且种类区分大小写。",
     "sba.help.copyEntity.radius": "进行复制NBT数据的玩家范围（按格计算）。",
     "sba.help.sidebar.formatted": "决定格式代码是否被复制。可以是“true”或“false”，,默认值为“false”。若为“true”则复制格式代码。",
-    "sba.help.subCommandNotFound": "子命令%sub-command%未找到。"
+    "sba.help.subCommandNotFound": "未找到子命令 %sub-command%。"
   },
   "keyBindings": {
     "developerCopyNBT": "复制 NBT"
