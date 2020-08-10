@@ -240,7 +240,7 @@
     "sba.set.zealotCounter": "手動設定 Zealot 計數器",
     "sba.folder": "開啟模組資料夾",
     "sba.dev": "開關開發者模式",
-    "sba.sidebar": "§e(Dev) §7複製記分板的文字。輸入 \"formatted\" §7將在複製時保留原文的顏色代碼",
+    "sba.sidebar": "§e(Dev) §7複製記分板的文字。",
     "sba.brand": "§e(Dev) §7顯示伺服器軟件名稱",
     "sba.copyEntity": "§e(Dev) §7Copy NBT data for entities of the given name(s) within the given radius around the player",
     "sba.help.help.command": "the sub-command to get detailed usage for",
