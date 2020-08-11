@@ -135,13 +135,13 @@
     "centerRotationOnYourPlayer": "Center the Rotation Around Your Player",
     "mapZoom": "זום על המפה",
     "glowingDroppedItems": "חפצים זרוקים זוהרים",
-    "glowingDungeonTeammates": "Glowing Dungeon Teammates",
+    "glowingDungeonTeammates": "חברי קבוצת דנג'ן זוהרים",
     "baseStatBoostPercentage": "Show Base Stat Boost for Dungeon Items",
     "colorByRarity": "Color By Rarity",
     "showPlayerHeadsOnMap": "הצג את הראשים של השחקנים על מפת הצינוק",
-    "showHealingCircleWall": "Show Dungeon Healing Circle Wall (Unstable)",
-    "showCriticalTeammates": "Show Critical Dungeon Teammates",
-    "showGlowingItemsOnIsland": "Show Glowing Items On Island"
+    "showHealingCircleWall": "הצג את חומת מעגל הריפוי (לא יציב)",
+    "showCriticalTeammates": "הצג חברי קבוצת הדנג'ן הנמצאים במצב קריטי",
+    "showGlowingItemsOnIsland": "הצג חפצים זוהרים באי"
   },
   "messages": {
     "dropConfirmation": "זרוק פריט זה שוב לאישור!",
