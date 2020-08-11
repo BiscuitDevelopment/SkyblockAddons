@@ -257,12 +257,25 @@ public enum Message {
     DISCORD_STATUS_TARANTULA_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionTarantular"),
 
     COMMAND_USAGE_SBA(MessageObject.COMMAND_USAGE, "sba"),
+    COMMAND_USAGE_SBA_HELP(MessageObject.COMMAND_USAGE, "sba.help"),
     COMMAND_USAGE_SBA_EDIT(MessageObject.COMMAND_USAGE, "sba.edit"),
     COMMAND_USAGE_SBA_SET_ZEALOT_COUNTER(MessageObject.COMMAND_USAGE, "sba.set.zealotCounter"),
     COMMAND_USAGE_SBA_FOLDER(MessageObject.COMMAND_USAGE, "sba.folder"),
     COMMAND_USAGE_SBA_DEV(MessageObject.COMMAND_USAGE, "sba.dev"),
     COMMAND_USAGE_SBA_SIDEBAR(MessageObject.COMMAND_USAGE, "sba.sidebar"),
     COMMAND_USAGE_SBA_BRAND(MessageObject.COMMAND_USAGE, "sba.brand"),
+    COMMAND_USAGE_SBA_COPY_ENTITY(MessageObject.COMMAND_USAGE, "sba.copyEntity"),
+    SUBCOMMAND_HELP_HELP_COMMAND(MessageObject.COMMAND_USAGE, "sba.help.help.command"),
+    SUBCOMMAND_HELP_COPY_ENTITY(MessageObject.COMMAND_USAGE, "sba.help.copyEntity"),
+    SUBCOMMAND_HELP_COPY_ENTITY_ENTITY_NAMES(MessageObject.COMMAND_USAGE, "sba.help.copyEntity.entityNames"),
+    SUBCOMMAND_HELP_COPY_ENTITY_RADIUS(MessageObject.COMMAND_USAGE, "sba.help.copyEntity.radius"),
+    SUBCOMMAND_HELP_DEV(MessageObject.COMMAND_USAGE, "sba.help.dev"),
+    SUBCOMMAND_HELP_SET_ZEALOT_COUNTER(MessageObject.COMMAND_USAGE, "sba.help.set.zealotCounter"),
+    SUBCOMMAND_HELP_SET_ZEALOT_COUNTER_ZEALOTS(MessageObject.COMMAND_USAGE, "sba.help.set.zealotCounter.zealots"),
+    SUBCOMMAND_HELP_SET_ZEALOT_COUNTER_EYES(MessageObject.COMMAND_USAGE, "sba.help.set.zealotCounter.eyes"),
+    SUBCOMMAND_HELP_SET_ZEALOT_COUNTER_TOTAL_ZEALOTS(MessageObject.COMMAND_USAGE, "sba.help.set.zealotCounter.totalZealots"),
+    SUBCOMMAND_HELP_SIDEBAR_FORMATTED(MessageObject.COMMAND_USAGE, "sba.help.sidebar.formatted"),
+    SUBCOMMAND_HELP_SUBCOMMAND_NOT_FOUND(MessageObject.COMMAND_USAGE, "sba.help.subCommandNotFound"),
 
     KEY_DEVELOPER_COPY_NBT(MessageObject.KEYBINDINGS, "developerCopyNBT")
     ;
@@ -313,6 +326,10 @@ public enum Message {
                     text = text.replace("%arrows%", variables[0]);
                 } else if (this == Message.MESSAGE_STAGE) {
                     text = text.replace("%stage%", variables[0]);
+                } else if (this == Message.SUBCOMMAND_HELP_COPY_ENTITY) {
+                    text = text.replace("%radius%", variables[0]);
+                } else if (this == Message.SUBCOMMAND_HELP_SUBCOMMAND_NOT_FOUND) {
+                    text = text.replace("%sub-command%", variables[0]);
                 }
             }
             if (text != null && (main.getConfigValues().getLanguage() == Language.HEBREW || main.getConfigValues().getLanguage() == Language.ARABIC) && !Minecraft.getMinecraft().fontRendererObj.getBidiFlag()) {

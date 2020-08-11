@@ -66,7 +66,7 @@ import java.util.stream.Collectors;
 public class Utils {
 
     /** Added to the beginning of messages. */
-    private static final String MESSAGE_PREFIX =
+    public static final String MESSAGE_PREFIX =
             ColorCode.GRAY + "[" + ColorCode.AQUA + SkyblockAddons.MOD_NAME + ColorCode.GRAY + "] ";
 
     /** Enchantments listed by how good they are. May or may not be subjective lol. */
