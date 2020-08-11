@@ -378,7 +378,7 @@ public class SettingsGui extends GuiScreen {
             y = this.getRowHeightSetting(this.row);
             Feature settingFeature = null;
             if (this.feature == Feature.SHOW_BASE_STAT_BOOST_PERCENTAGE) {
-                settingFeature = Feature.SHOW_BASE_STAT_BOOST_PERCENTAGE_COLOUR_BY_RARITY;
+                settingFeature = Feature.COLOR_BY_RARITY;
             }
             buttonList.add(new ButtonToggleTitle(x, y, Message.SETTING_COLOR_BY_RARITY.getMessage(), this.main, settingFeature));
         } else {

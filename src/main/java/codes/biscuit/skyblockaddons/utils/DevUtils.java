@@ -2,8 +2,10 @@ package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.*;
@@ -13,7 +15,6 @@ import net.minecraft.scoreboard.ScorePlayerTeam;
 import net.minecraft.scoreboard.Scoreboard;
 import net.minecraft.util.StringUtils;
 import net.minecraftforge.common.util.Constants;
-import org.lwjgl.input.Keyboard;
 
 import java.awt.*;
 import java.awt.datatransfer.Clipboard;
@@ -30,14 +31,22 @@ import java.util.stream.Collectors;
  * This is a class of utilities for SkyblockAddons developers.
  *
  * @author ILikePlayingGames
- * @version 2.1
+ * @version 2.2
  */
 public class DevUtils {
+    /** Pattern used for removing the placeholder emoji player names from the Hypixel scoreboard */
     public static final Pattern SIDEBAR_PLAYER_NAME_PATTERN = Pattern.compile("[\uD83D\uDD2B\uD83C\uDF6B\uD83D\uDCA3\uD83D\uDC7D\uD83D\uDD2E\uD83D\uDC0D\uD83D\uDC7E\uD83C\uDF20\uD83C\uDF6D\u26BD\uD83C\uDFC0\uD83D\uDC79\uD83C\uDF81\uD83C\uDF89\uD83C\uDF82]+");
+    /** Entity names for {@link this#copyEntityData(String, int)}*/
+    public static final List<String> ENTITY_NAMES = EntityList.getEntityNameList();
 
-    public static final int DEV_KEY = Keyboard.KEY_RCONTROL;
     public static final int ENTITY_COPY_RADIUS = 3;
     public static final int SIDEBAR_COPY_WIDTH = 30;
+
+    static {
+        ENTITY_NAMES.add("PlayerSP");
+        ENTITY_NAMES.add("PlayerMP");
+        ENTITY_NAMES.add("OtherPlayerMP");
+    }
 
     /**
      * Copies the objective and scores that are being displayed on a scoreboard's sidebar.
@@ -122,19 +131,27 @@ public class DevUtils {
     }
 
     /**
-     * Copies the data of all mobs within the entity copy radius of the player
+     * Copies the NBT data of entities around the player. The classes of {@link Entity} to include and the radius
+     * around the player to copy from can be customized.
      *
-     * @param player the player
-     * @param loadedEntities the list of all the entities that are currently loaded in the world
+     * @param includedEntityClasses the classes of entities that should be included when copying NBT data
+     * @param copyRadius copy the NBT data of entities inside this radius(in blocks) around the player
      */
-    public static void copyMobData(EntityPlayerSP player, List<Entity> loadedEntities) {
-        List<Entity> loadedEntitiesCopy = new LinkedList<>(loadedEntities);
+    public static void copyEntityData(List<Class<? extends Entity>> includedEntityClasses, int copyRadius) {
+        EntityPlayerSP player = Minecraft.getMinecraft().thePlayer;
+        List<Entity> loadedEntitiesCopy = new LinkedList<>(Minecraft.getMinecraft().theWorld.loadedEntityList);
         ListIterator<Entity> loadedEntitiesCopyIterator;
         StringBuilder stringBuilder = new StringBuilder();
 
-        // We only care about mobs.
-        loadedEntitiesCopy.removeIf(entity -> entity.getDistanceToEntity(player) > ENTITY_COPY_RADIUS ||
-                !(EntityLivingBase.class.isAssignableFrom(entity.getClass())));
+        if (includedEntityClasses == null) {
+            throw new IllegalArgumentException("The list of entity types cannot be null!");
+        }
+        else if (includedEntityClasses.isEmpty()) {
+            throw new IllegalArgumentException("The list of entity types cannot be empty!");
+        }
+        else if (copyRadius < 0) {
+            throw new IllegalArgumentException("The entity copy radius cannot be negative!");
+        }
 
         loadedEntitiesCopyIterator = loadedEntitiesCopy.listIterator();
 
@@ -142,6 +159,27 @@ public class DevUtils {
         while (loadedEntitiesCopyIterator.hasNext()) {
             Entity entity = loadedEntitiesCopyIterator.next();
             NBTTagCompound entityData = new NBTTagCompound();
+            boolean isPartOfIncludedClasses = false;
+
+            // Checks to ignore entities if they're irrelevant
+            if (entity.getDistanceToEntity(player) > copyRadius) {
+                continue;
+            }
+
+            for (Class<?> entityClass : includedEntityClasses) {
+                if (entityClass.isAssignableFrom(entity.getClass())) {
+                    isPartOfIncludedClasses = true;
+                }
+            }
+
+            if (!isPartOfIncludedClasses) {
+                continue;
+            }
+
+            // Add spacing before each new entry.
+            if (stringBuilder.length() > 0) {
+                stringBuilder.append(System.lineSeparator()).append(System.lineSeparator());
+            }
 
             stringBuilder.append("Class: ").append(entity.getClass().getSimpleName()).append(System.lineSeparator());
             if (entity.hasCustomName() || EntityPlayer.class.isAssignableFrom(entity.getClass())) {
@@ -151,14 +189,79 @@ public class DevUtils {
             stringBuilder.append("NBT Data:").append(System.lineSeparator());
             entity.writeToNBT(entityData);
             stringBuilder.append(prettyPrintNBT(entityData));
-
-            // Add spacing if necessary.
-            if (loadedEntitiesCopyIterator.hasNext()) {
-                stringBuilder.append(System.lineSeparator()).append(System.lineSeparator());
-            }
         }
 
-        copyStringToClipboard(stringBuilder.toString(), ColorCode.GREEN + "Entity data was copied to clipboard!");
+        if (stringBuilder.length() > 0) {
+            copyStringToClipboard(stringBuilder.toString(), ColorCode.GREEN + "Entity data was copied to clipboard!");
+        }
+        else {
+            SkyblockAddons.getInstance().getUtils().sendErrorMessage("No entities matching the given parameters were found.");
+        }
+    }
+
+    /**
+     * Copies the NBT data of entities around the player. The classes of {@link Entity} to include and the radius
+     * around the player to copy from can be customized.
+     *
+     * @param includedEntityNames a String that is a comma-separated list of the names of the entities that should be included when copying the NBT data
+     * @param copyRadius copy the NBT data of entities inside this radius around the player.
+     * @see EntityList
+     */
+    public static void copyEntityData(String includedEntityNames, int copyRadius) {
+        Matcher listMatcher = Pattern.compile("(^[A-Z_]+)(?:,[A-Z_]+)*$", Pattern.CASE_INSENSITIVE).matcher(includedEntityNames);
+
+        if (copyRadius <= 0) {
+            throw new IllegalArgumentException("The entity copy radius cannot be negative!");
+        }
+
+        if (listMatcher.matches()) {
+            List<Class<? extends Entity>> entityClasses = new ArrayList<>();
+            String[] entityNamesArray = includedEntityNames.split(",");
+
+            for (String entityName : entityNamesArray) {
+                if (EntityList.isStringValidEntityName(entityName)) {
+                    int entityId = EntityList.getIDFromString(entityName);
+
+                    // The default ID returned when a match isn't found is the pig's id for some reason.
+                    if (entityId != 90 || entityName.equals("Pig")) {
+                        entityClasses.add(EntityList.getClassFromID(entityId));
+                    }
+                    // EntityList doesn't have mappings for the player classes.
+                    else if (entityName.equals("Player")) {
+                        entityClasses.add(EntityPlayerSP.class);
+                        entityClasses.add(EntityOtherPlayerMP.class);
+                    }
+                }
+                else if (entityName.equals("PlayerSP")) {
+                    entityClasses.add(EntityPlayerSP.class);
+                }
+                else if (entityName.equals("PlayerMP") | entityName.equals("OtherPlayerMP")) {
+                    entityClasses.add(EntityOtherPlayerMP.class);
+                }
+                else {
+                    throw new IllegalArgumentException("The entity name \"" + entityName + "\" is invalid.");
+                }
+            }
+
+            copyEntityData(entityClasses, copyRadius);
+        }
+        else {
+            throw new IllegalArgumentException("Incorrect format! Use \"Class\" or \"Class,Class2,Class3\".");
+        }
+    }
+
+    /**
+     * <p>Copies the NBT data of nearby entities using the default settings.</p>
+     * <br>
+     * <p>Default settings:</p>
+     * <p>Included Entity Types: players, armor stands, and mobs</p>
+     * <p>Radius: {@link DevUtils#ENTITY_COPY_RADIUS}</p>
+     * <p>Include own NBT data: {@code true}</p>
+     *
+     * @see EntityList
+     */
+    public static void copyEntityData() {
+        copyEntityData(Collections.singletonList(EntityLivingBase.class), ENTITY_COPY_RADIUS);
     }
 
     /**
@@ -173,42 +276,6 @@ public class DevUtils {
             return;
         }
         writeToClipboard(prettyPrintNBT(nbtTag), message);
-    }
-
-    /**
-     * Copies the provided NBT tags to the clipboard as a formatted string.
-     *
-     * @param nbtTags the NBT tags to copy
-     * @param message the message to show in chat when the NBT tag is copied
-     */
-    public static void copyNBTTagsToClipboard(List<? extends NBTBase> nbtTags, String message) {
-        StringBuilder stringBuilder = new StringBuilder();
-
-        for (int i = 0; i < nbtTags.size(); i++) {
-            if (nbtTags.get(i) == null) {
-                SkyblockAddons.getInstance().getUtils().sendMessage("This item has no NBT data.");
-                continue;
-            }
-
-            stringBuilder.append("Tag ").append(i).append(": ").append(System.lineSeparator());
-            stringBuilder.append(prettyPrintNBT(nbtTags.get(i)));
-
-            // Add a blank line if necessary
-            if (i < (nbtTags.size()) - 1) {
-                stringBuilder.append(System.lineSeparator());
-            }
-        }
-
-        writeToClipboard(stringBuilder.toString(), message);
-    }
-
-    /**
-     * Copies a string to the clipboard.
-     *
-     * @param string the string to copy
-     */
-    public static void copyStringToClipboard(String string) {
-        writeToClipboard(string, "Value was copied to clipboard!");
     }
 
     /**
@@ -359,7 +426,9 @@ public class DevUtils {
         return stringBuilder.toString();
     }
 
-    // Internal methods
+    /*
+     Internal methods
+     */
     private static void writeToClipboard(String text, String successMessage) {
         Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
         StringSelection output = new StringSelection(text);
