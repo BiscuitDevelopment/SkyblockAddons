@@ -18,6 +18,10 @@ import java.io.IOException;
 import java.util.Collection;
 
 public class SkyblockAddonsTransformer implements IClassTransformer {
+    static {
+        PreTransformationChecks.runPreInitChecks();
+    }
+
     private final Logger logger = LogManager.getLogger("SkyblockAddons Transformer");
     private final Multimap<String, ITransformer> transformerMap = ArrayListMultimap.create();
 
@@ -49,6 +53,7 @@ public class SkyblockAddonsTransformer implements IClassTransformer {
         registerTransformer(new RenderEndermanTransformer());
         registerTransformer(new ModelEndermanTransformer());
         registerTransformer(new RenderGlobalTransformer());
+        registerTransformer(new EffectRendererTransformer());
     }
 
     private void registerTransformer(ITransformer transformer) {
@@ -97,6 +102,7 @@ public class SkyblockAddonsTransformer implements IClassTransformer {
         return writer.toByteArray();
     }
 
+    @SuppressWarnings("ResultOfMethodCallIgnored")
     private void outputBytecode(String transformedName, ClassWriter writer) {
         try {
             File bytecodeDirectory = new File("bytecode");
@@ -112,4 +118,5 @@ public class SkyblockAddonsTransformer implements IClassTransformer {
             e.printStackTrace();
         }
     }
+
 }

@@ -1,6 +1,6 @@
 package codes.biscuit.skyblockaddons.asm.utils;
 
-import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsSetup;
+import codes.biscuit.skyblockaddons.tweaker.PreTransformationChecks;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.tree.MethodInsnNode;
 import org.objectweb.asm.tree.MethodNode;
@@ -135,9 +135,13 @@ public enum TransformerMethod {
     // RenderGlobal
     isRenderEntityOutlines("isRenderEntityOutlines", "func_174985_d", "d", "()Z"),
     renderEntities("renderEntities", "func_180446_a", "a", "(Lnet/minecraft/entity/Entity;Lnet/minecraft/client/renderer/culling/ICamera;F)V", "("+TransformerClass.Entity.getName()+TransformerClass.ICamera.getName()+"F)V"),
+    renderEntityOutlineFramebuffer("renderEntityOutlineFramebuffer", "func_174975_c", "c", "()V"),
 
     // TileEntityItemStackRenderer
     renderByItem("renderByItem", "func_179022_a", "a", "(Lnet/minecraft/item/ItemStack;)V", "("+TransformerClass.ItemStack.getName()+")V"),
+
+    // EffectRenderer
+    addEffect("addEffect", "func_78873_a", "a", "(Lnet/minecraft/client/particle/EntityFX;)V", "("+TransformerClass.EntityFX.getName()+")V")
 
     ;
 
@@ -158,11 +162,11 @@ public enum TransformerMethod {
     }
 
     TransformerMethod(String deobfMethod, String seargeMethod, String notchMethod18, String seargeDescription, String notchDescription, boolean ioException) {
-        if (SkyblockAddonsSetup.isDeobfuscatedEnvironment()) {
+        if (PreTransformationChecks.isDeobfuscated()) {
             name = deobfMethod;
             description = seargeDescription;
         } else {
-            if (SkyblockAddonsSetup.isRuntimeDeobfuscationEnabled()) {
+            if (PreTransformationChecks.isUsingNotchMappings()) {
                 name = notchMethod18;
                 description = notchDescription;
             } else {

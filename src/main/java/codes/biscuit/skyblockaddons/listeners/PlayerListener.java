@@ -60,6 +60,7 @@ import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
+import org.lwjgl.input.Keyboard;
 
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
@@ -370,7 +371,7 @@ public class PlayerListener {
                     EntityPlayerSP p = mc.thePlayer;
                     if (p != null) {
                         EndstoneProtectorManager.checkGolemStatus();
-                        main.getUtils().checkGameLocationDate();
+                        main.getUtils().parseSidebar();
                         main.getInventoryUtils().checkIfInventoryIsFull(mc, p);
 
                         if (main.getUtils().isOnSkyblock()) {
@@ -785,7 +786,7 @@ public class PlayerListener {
                     if (baseStatBoost != -1) {
 
                         ColorCode colorCode = main.getConfigValues().getRestrictedColor(Feature.SHOW_BASE_STAT_BOOST_PERCENTAGE);
-                        if (main.getConfigValues().isEnabled(Feature.SHOW_BASE_STAT_BOOST_PERCENTAGE_COLOUR_BY_RARITY)) {
+                        if (main.getConfigValues().isEnabled(Feature.COLOR_BY_RARITY)) {
 
                             int rarityIndex = baseStatBoost/10;
                             if (rarityIndex < 0) rarityIndex = 0;
@@ -846,16 +847,25 @@ public class PlayerListener {
         if (main.getOpenSettingsKey().isPressed()) {
             main.getUtils().setFadingIn(true);
             main.getRenderListener().setGuiToOpen(EnumUtils.GUIType.MAIN, 1, EnumUtils.GuiTab.MAIN);
+
         } else if (main.getOpenEditLocationsKey().isPressed()) {
             main.getUtils().setFadingIn(false);
             main.getRenderListener().setGuiToOpen(EnumUtils.GUIType.EDIT_LOCATIONS, 0, null);
+
         } else if (main.getDeveloperCopyNBTKey().isPressed()) {
             // Copy Mob Data
             if (main.isDevMode()) {
-                EntityPlayerSP player = Minecraft.getMinecraft().thePlayer;
-                List<Entity> entityList = Minecraft.getMinecraft().theWorld.loadedEntityList;
+                DevUtils.copyEntityData();
+            }
+        }
 
-                DevUtils.copyMobData(player, entityList);
+        if (Keyboard.getEventKeyState()) {
+            if (Keyboard.isKeyDown(Keyboard.KEY_MINUS) && Keyboard.getEventKeyState()) {
+                float zoomScaleFactor = main.getUtils().denormalizeScale(main.getConfigValues().getMapZoom().getValue(), 0.5F, 5, 0.1F);
+                main.getConfigValues().getMapZoom().setValue(main.getUtils().normalizeValueNoStep(zoomScaleFactor - 0.5F, 0.5F, 5));
+            } else if (Keyboard.isKeyDown(Keyboard.KEY_EQUALS) && Keyboard.getEventKeyState()) {
+                float zoomScaleFactor = main.getUtils().denormalizeScale(main.getConfigValues().getMapZoom().getValue(), 0.5F, 5, 0.1F);
+                main.getConfigValues().getMapZoom().setValue(main.getUtils().normalizeValueNoStep(zoomScaleFactor + 0.5F, 0.5F, 5));
             }
         }
     }

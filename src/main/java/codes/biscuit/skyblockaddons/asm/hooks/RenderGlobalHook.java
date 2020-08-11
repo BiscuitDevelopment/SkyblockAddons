@@ -88,6 +88,10 @@ public class RenderGlobalHook {
         return !isFastRenderValue && !isShadersValue && !isAntialiasingValue;
     }
 
+    public static void afterFramebufferDraw() {
+        GlStateManager.enableDepth();
+    }
+
     private static AxisAlignedBB AUCTION_HOUSE = new AxisAlignedBB(14, 70, -89, 27, 81, -70);
 
     public static boolean blockRenderingSkyblockItemOutlines(ICamera camera, float partialTicks, double x, double y, double z, List<Entity> entities) {
@@ -113,7 +117,8 @@ public class RenderGlobalHook {
                         continue;
                     }
 
-                    if (entity instanceof EntityItem && !main.getConfigValues().isEnabled(Feature.MAKE_DROPPED_ITEMS_GLOW)) {
+                    if (entity instanceof EntityItem && (!main.getConfigValues().isEnabled(Feature.MAKE_DROPPED_ITEMS_GLOW) ||
+                            (!main.getConfigValues().isEnabled(Feature.SHOW_GLOWING_ITEMS_ON_ISLAND) && main.getUtils().getLocation() == Location.ISLAND))) {
                         continue;
                     }
 

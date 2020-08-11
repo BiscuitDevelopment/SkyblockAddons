@@ -6,5 +6,8 @@ blank_issues_enabled: false
 
 contact_links:
   - name: Community Discord
-    url: https://discord.gg/PqTAEek
-    about: Please ask and answer questions here.
+    url: https://discord.gg/biscuit
+    about: The Discord server is the place to go for news, discussions, and support.
+  - name: Suggestions Site
+    url: https://skyblockaddons.featureupvote.com/
+    about: Please submit feature requests to the FeatureUpvote site. Before submitting, make sure to search the site to see if your suggestion was already requested.
