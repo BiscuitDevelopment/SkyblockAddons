@@ -83,6 +83,10 @@ public class DungeonPlayer {
         return healthColor == ColorCode.RED;
     }
 
+    public boolean isGhost() {
+        return this.health == 0;
+    }
+
     public void updateStatsFromOther(DungeonPlayer other) {
         this.dungeonClass = other.dungeonClass;
         this.health = other.health;
