@@ -255,7 +255,9 @@ public class EnumUtils {
         CENTER_ROTATION_ON_PLAYER(SETTING_CENTER_ROTATION_ON_PLAYER, 101),
         MAP_ZOOM(SETTING_MAP_ZOOM, -1),
         COLOUR_BY_RARITY(SETTING_COLOR_BY_RARITY, -1),
-        ENABLE_PERSONAL_COMPACTOR_PREVIEW(SETTING_SHOW_PERSONAL_COMPACTOR_PREVIEW, 106),
+        SHOW_PLAYER_HEADS_ON_MAP(SETTING_SHOW_PLAYER_HEAD_ON_MAP, 106),
+        SHOW_GLOWING_ITEMS_ON_ISLAND(SETTING_SHOW_GLOWING_ITEMS_ON_ISLAND, 109),
+        ENABLE_PERSONAL_COMPACTOR_PREVIEW(SETTING_SHOW_PERSONAL_COMPACTOR_PREVIEW, 110),
 
         DISCORD_RP_STATE(null, 0),
         DISCORD_RP_DETAILS(null, 0)
@@ -344,7 +346,7 @@ public class EnumUtils {
         CARPENTRY("Carpentry", Item.getItemFromBlock(Blocks.crafting_table)),
         RUNECRAFTING("Runecrafting", Items.magma_cream),
         TAMING("Taming", Items.spawn_egg),
-        OTHER(null, null);
+        DUNGEONEERING("Dungeoneering", Item.getItemFromBlock(Blocks.deadbush));
 
         private String skillName;
         @Getter private ItemStack item;
@@ -360,7 +362,7 @@ public class EnumUtils {
                     return skillType;
                 }
             }
-            return OTHER;
+            return null;
         }
     }
 

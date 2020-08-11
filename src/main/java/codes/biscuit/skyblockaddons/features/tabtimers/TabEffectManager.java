@@ -3,15 +3,12 @@ package codes.biscuit.skyblockaddons.features.tabtimers;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.gui.buttons.ButtonLocation;
-import codes.biscuit.skyblockaddons.tweaker.PreTransformationChecks;
 import codes.biscuit.skyblockaddons.utils.RomanNumeralParser;
 import lombok.Getter;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiPlayerTabOverlay;
 import net.minecraft.util.IChatComponent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -91,7 +88,7 @@ public class TabEffectManager {
     public void updatePotionEffects() {
         potionTimers.clear();
         powerupTimers.clear();
-        IChatComponent tabFooterChatComponent = getFooter();
+        IChatComponent tabFooterChatComponent = Minecraft.getMinecraft().ingameGUI.getTabList().footer;
 
         // Convert tab footer to a String
         StringBuilder tabFooterString = new StringBuilder();
@@ -115,34 +112,5 @@ public class TabEffectManager {
             Collections.sort(potionTimers);
             Collections.sort(powerupTimers);
         }
-    }
-
-    /**
-     * Holds the footer field in the case of reflection- so the field doesn't have to be looked up every time.
-     */
-    private static Field footer = null;
-
-    /**
-     * @return Grab the tab list's footer text, using reflection if an access transformer wasn't available to be used.
-     */
-    private static IChatComponent getFooter() {
-        GuiPlayerTabOverlay guiTab = Minecraft.getMinecraft().ingameGUI.getTabList();
-
-        if (PreTransformationChecks.isLabymodClient()) { // There are no access transformers in labymod.
-            try {
-                if (footer == null) {
-                    footer = guiTab.getClass().getDeclaredField("h");
-                    footer.setAccessible(true);
-                }
-                if (footer != null) {
-                    footer.get(guiTab);
-                }
-            } catch (IllegalAccessException | NoSuchFieldException e) {
-                e.printStackTrace();
-            }
-        } else {
-            return guiTab.footer;
-        }
-        return null;
     }
 }

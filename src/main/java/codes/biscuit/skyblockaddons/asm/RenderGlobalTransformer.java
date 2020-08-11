@@ -53,6 +53,17 @@ public class RenderGlobalTransformer implements ITransformer {
             } else if (TransformerMethod.isRenderEntityOutlines.matches(methodNode)) {
 
                 methodNode.instructions.insertBefore(methodNode.instructions.getFirst(), loadInFrameBuffers());
+
+            } else if (TransformerMethod.renderEntityOutlineFramebuffer.matches(methodNode)) {
+                Iterator<AbstractInsnNode> iterator = methodNode.instructions.iterator();
+                while (iterator.hasNext()) {
+                    AbstractInsnNode abstractNode = iterator.next();
+                    if (abstractNode instanceof InsnNode && abstractNode.getOpcode() == Opcodes.RETURN) {
+                        methodNode.instructions.insertBefore(abstractNode, new MethodInsnNode(Opcodes.INVOKESTATIC,
+                                "codes/biscuit/skyblockaddons/asm/hooks/RenderGlobalHook", "afterFramebufferDraw", "()V", false));
+                        break;
+                    }
+                }
             }
         }
     }
