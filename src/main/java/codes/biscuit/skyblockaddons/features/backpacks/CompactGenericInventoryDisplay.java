@@ -92,16 +92,16 @@ public class CompactGenericInventoryDisplay extends GenericInventoryDisplay {
                 int itemX = x + topLeft.getWidth() + 1 + (i % width) * slot.getWidth();
                 int itemY = y + topLeft.getHeight() + 1 + (i / width) * slot.getHeight();
                 RenderItem renderItem = mc.getRenderItem();
-                setZLevel(guiContainer, 200);
+                guiContainer.zLevel = 200;
                 renderItem.zLevel = 200;
                 renderItem.renderItemAndEffectIntoGUI(item, itemX, itemY);
                 renderItem.renderItemOverlayIntoGUI(mc.fontRendererObj, item, itemX, itemY, null);
-                setZLevel(guiContainer, 0);
+                guiContainer.zLevel = 0;
                 renderItem.zLevel = 0;
             }
         }
         if (toRenderOverlay != null) {
-            drawHoveringText(guiContainer, toRenderOverlay.getTooltip(null, mc.gameSettings.advancedItemTooltips),
+            guiContainer.drawHoveringText(toRenderOverlay.getTooltip(null, mc.gameSettings.advancedItemTooltips),
                     mouseX, mouseY);
         }
 

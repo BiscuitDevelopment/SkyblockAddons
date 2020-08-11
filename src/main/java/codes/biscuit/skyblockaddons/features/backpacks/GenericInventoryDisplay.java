@@ -48,43 +48,6 @@ public class GenericInventoryDisplay {
         this.items = items;
     }
 
-    protected static void setZLevel(Gui gui, int zLevelToSet) {
-        if (PreTransformationChecks.isLabymodClient()) { // There are no access transformers in labymod.
-            try {
-                if (zLevel == null) {
-                    zLevel = gui.getClass().getDeclaredField("e");
-                    zLevel.setAccessible(true);
-                }
-                if (zLevel != null) {
-                    zLevel.set(gui, zLevelToSet);
-                }
-            } catch (IllegalAccessException | NoSuchFieldException e) {
-                e.printStackTrace();
-            }
-        } else {
-            gui.zLevel = zLevelToSet;
-        }
-    }
-
-    protected static void drawHoveringText(GuiContainer guiContainer, java.util.List<String> text, int x, int y) {
-        if (PreTransformationChecks.isLabymodClient()) { // There are no access transformers in labymod.
-            try {
-                if (drawHoveringText == null) {
-                    drawHoveringText = guiContainer.getClass().getSuperclass().getDeclaredMethod("a",
-                            List.class, int.class, int.class);
-                    drawHoveringText.setAccessible(true);
-                }
-                if (drawHoveringText != null) {
-                    drawHoveringText.invoke(guiContainer, text, x, y);
-                }
-            } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
-                e.printStackTrace();
-            }
-        } else {
-            guiContainer.drawHoveringText(text, x, y);
-        }
-    }
-
     public void draw(GuiContainer guiContainer, int mouseX, int mouseY, FontRenderer fontRendererObj) {
         Minecraft mc = Minecraft.getMinecraft();
         int x = mouseX, y = mouseY;
@@ -145,17 +108,16 @@ public class GenericInventoryDisplay {
                 int itemX = x + topLeft.getWidth() + 1 + (i % width) * slot.getWidth();
                 int itemY = y + topLeft.getHeight() + 1 + (i / width) * slot.getHeight() + extend;
                 RenderItem renderItem = mc.getRenderItem();
-                setZLevel(guiContainer, 200);
+                guiContainer.zLevel = 200;
                 renderItem.zLevel = 200;
                 renderItem.renderItemAndEffectIntoGUI(item, itemX, itemY);
                 renderItem.renderItemOverlayIntoGUI(mc.fontRendererObj, item, itemX, itemY, null);
-                setZLevel(guiContainer, 0);
+                guiContainer.zLevel = 0;
                 renderItem.zLevel = 0;
             }
         }
         if (toRenderOverlay != null) {
-            drawHoveringText(guiContainer, toRenderOverlay.getTooltip(null, mc.gameSettings.advancedItemTooltips),
-                    mouseX, mouseY);
+            guiContainer.drawHoveringText(toRenderOverlay.getTooltip(null, mc.gameSettings.advancedItemTooltips), mouseX, mouseY);
         }
 
         GlStateManager.enableLighting();
