@@ -71,6 +71,8 @@ public enum Location {
     JERRY_POND("Jerry Pond"), // TODO RPC
     JERRYS_WORKSHOP("Jerry's Workshop"), // TODO RPC
 
+    DUNGEON("Dungeon"), // TODO RPC
+
     /*
     Out of Bounds
     This is a valid location in Skyblock, it isn't a placeholder or a made up location.

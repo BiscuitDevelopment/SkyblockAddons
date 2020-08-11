@@ -24,8 +24,11 @@ public class PersistentValues {
     private final File persistentValuesFile;
     private final Logger logger;
 
+    // Number of kills since last eye
     private int kills;
+    // Lifetime zealots killed
     private int totalKills;
+    // Lifetime summoning eyes obtained
     private int summoningEyeCount;
     @Getter
     private JsonObject slayerDrops, dragonStats;

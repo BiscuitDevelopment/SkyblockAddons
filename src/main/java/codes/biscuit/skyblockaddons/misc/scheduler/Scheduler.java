@@ -3,7 +3,6 @@ package codes.biscuit.skyblockaddons.misc.scheduler;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.listeners.PlayerListener;
-import codes.biscuit.skyblockaddons.misc.ChromaManager;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.objects.IntPair;
 import lombok.Getter;
@@ -107,7 +106,6 @@ public class Scheduler {
                     }
                 }
             }
-            ChromaManager.increment(); // Run every tick
         }
     }
 

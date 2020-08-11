@@ -13,6 +13,11 @@ import net.minecraft.client.entity.EntityPlayerSP;
 
 import java.util.function.Supplier;
 
+/**
+ * Statuses that are shown on the Discord RPC feature
+ *
+ * This file has LF line endings because ForgeGradle is weird and will throw a NullPointerException if it's CRLF.
+ */
 public enum DiscordStatus implements ButtonSelect.SelectItem {
 
     NONE(Message.DISCORD_STATUS_NONE_TITLE, Message.DISCORD_STATUS_NONE_DESCRIPTION, () -> null),
@@ -99,9 +104,9 @@ public enum DiscordStatus implements ButtonSelect.SelectItem {
                 boolean bossAlive = main.getUtils().isSlayerBossAlive();
 
                 if (bossAlive) {
-                    return "Slaying a Sven Packpaster "+main.getUtils().getSlayerQuestLevel()+" boss.";
+                    return "Slaying a Sven Packmaster "+main.getUtils().getSlayerQuestLevel()+" boss.";
                 } else {
-                    return "Doing a Sven Packpaster "+main.getUtils().getSlayerQuestLevel()+" quest.";
+                    return "Doing a Sven Packmaster "+main.getUtils().getSlayerQuestLevel()+" quest.";
                 }
             }),
     TARANTULA(Message.DISCORD_STATUS_TARANTULA, Message.DISCORD_STATUS_TARANTULA_DESCRIPTION,

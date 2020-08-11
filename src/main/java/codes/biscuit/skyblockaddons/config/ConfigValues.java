@@ -63,6 +63,7 @@ public class ConfigValues {
     private MutableObject<DiscordStatus> discordStatus = new MutableObject<>(DiscordStatus.AUTO_STATUS);
     private MutableObject<DiscordStatus> discordAutoDefault = new MutableObject<>(DiscordStatus.NONE);
     @Getter private List<String> discordCustomStatuses = new ArrayList<>();
+    @Getter private MutableFloat mapZoom = new MutableFloat(0.18478261F); // 1.3
 
     public ConfigValues(File settingsConfigFile) {
         this.settingsConfigFile = settingsConfigFile;
@@ -156,6 +157,8 @@ public class ConfigValues {
             deserializeEnumValueFromOrdinal(discordDetails, "discordDetails");
             deserializeEnumValueFromOrdinal(discordAutoDefault, "discordAutoDefault");
             deserializeStringCollection(discordCustomStatuses, "discordCustomStatuses");
+
+            deserializeNumber(mapZoom, "mapZoom", float.class);
 
             int configVersion;
             if (settingsConfig.has("configVersion")) {
@@ -351,6 +354,8 @@ public class ConfigValues {
                 discordCustomStatusesArray.add(new GsonBuilder().create().toJsonTree(string));
             }
             settingsConfig.add("discordCustomStatuses", discordCustomStatusesArray);
+
+            settingsConfig.addProperty("mapZoom", mapZoom);
 
             settingsConfig.addProperty("configVersion", CONFIG_VERSION);
             int largestFeatureID = 0;
@@ -636,9 +641,7 @@ public class ConfigValues {
         }
 
         if (chromaFeatures.contains(feature)) {
-            Color color = ChromaManager.getCurrentColor();
-
-            return new Color(color.getRed(), color.getGreen(), color.getBlue(), alpha);
+            return new Color(ChromaManager.getChromaColor(0, 0));
         }
 
         Color color = getColor(feature);
@@ -648,7 +651,7 @@ public class ConfigValues {
 
     public Color getColor(Feature feature) {
         if (chromaFeatures.contains(feature)) {
-            return ChromaManager.getCurrentColor();
+            return new Color(ChromaManager.getChromaColor(0, 0));
         }
 
         ColorCode defaultColor = feature.getDefaultColor();

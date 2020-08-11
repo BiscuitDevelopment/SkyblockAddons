@@ -108,7 +108,7 @@ public class SkyblockAddons {
                 new SkyblockKeyBinding("copy_NBT", Keyboard.KEY_RCONTROL, Message.KEY_DEVELOPER_COPY_NBT));
 
         // Don't register the developer mode key on startup.
-        registerKeyBindings(keyBindings.subList(0, 3));
+        registerKeyBindings(keyBindings.subList(0, 4));
     }
 
     @Mod.EventHandler

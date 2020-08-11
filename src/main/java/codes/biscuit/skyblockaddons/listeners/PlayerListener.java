@@ -1,16 +1,13 @@
 package codes.biscuit.skyblockaddons.listeners;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.core.Attribute;
-import codes.biscuit.skyblockaddons.core.Feature;
-import codes.biscuit.skyblockaddons.core.Location;
-import codes.biscuit.skyblockaddons.core.Message;
+import codes.biscuit.skyblockaddons.core.*;
+import codes.biscuit.skyblockaddons.features.BaitManager;
 import codes.biscuit.skyblockaddons.features.EnchantedItemBlacklist;
 import codes.biscuit.skyblockaddons.features.EndstoneProtectorManager;
 import codes.biscuit.skyblockaddons.features.ItemDiff;
 import codes.biscuit.skyblockaddons.features.backpacks.Backpack;
 import codes.biscuit.skyblockaddons.features.backpacks.BackpackManager;
-import codes.biscuit.skyblockaddons.features.BaitManager;
 import codes.biscuit.skyblockaddons.features.cooldowns.CooldownManager;
 import codes.biscuit.skyblockaddons.features.powerorbs.PowerOrbManager;
 import codes.biscuit.skyblockaddons.features.tabtimers.TabEffectManager;
@@ -68,6 +65,7 @@ import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
+import org.lwjgl.input.Keyboard;
 
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
@@ -399,7 +397,7 @@ public class PlayerListener {
                     EntityPlayerSP p = mc.thePlayer;
                     if (p != null) {
                         EndstoneProtectorManager.checkGolemStatus();
-                        main.getUtils().checkGameLocationDate();
+                        main.getUtils().parseSidebar();
                         main.getInventoryUtils().checkIfInventoryIsFull(mc, p);
 
                         if (main.getUtils().isOnSkyblock()) {
@@ -732,28 +730,6 @@ public class PlayerListener {
                 }
             }
 
-            if (main.getConfigValues().isEnabled(Feature.SHOW_ITEM_ANVIL_USES)) {
-                // Anvil Uses ~ original done by Dahn#6036
-                int anvilUses = main.getUtils().getNBTInteger(hoveredItem, "ExtraAttributes", "anvil_uses");
-                if (anvilUses != -1) {
-                    int insertAt = e.toolTip.size();
-                    insertAt--; // 1 line for the rarity
-                    if (Minecraft.getMinecraft().gameSettings.advancedItemTooltips) {
-                        insertAt -= 2; // 1 line for the item name, and 1 line for the nbt
-                        if (e.itemStack.isItemDamaged()) {
-                            insertAt--; // 1 line for damage
-                        }
-                    }
-                    int hotPotatoCount = main.getUtils().getNBTInteger(hoveredItem, "ExtraAttributes", "hot_potato_count");
-                    if (hotPotatoCount != -1) {
-                        anvilUses -= hotPotatoCount;
-                    }
-                    if (anvilUses > 0) {
-                        e.toolTip.add(insertAt, Message.MESSAGE_ANVIL_USES.getMessage(String.valueOf(anvilUses)));
-                    }
-                }
-            }
-
             if (main.getConfigValues().isEnabled(Feature.REPLACE_ROMAN_NUMERALS_WITH_NUMBERS)) {
                 for (int i = 0; i < e.toolTip.size(); i++) {
                     e.toolTip.set(i, RomanNumeralParser.replaceNumeralsWithIntegers(e.toolTip.get(i)));
@@ -802,12 +778,26 @@ public class PlayerListener {
                 }
             }
 
-            // Append Skyblock Item ID to end of tooltip if in developer mode
-            if (main.isDevMode() && e.showAdvancedItemTooltips) {
-                String itemId = ItemUtils.getSkyBlockItemID(e.itemStack);
+            int insertAt = e.toolTip.size();
+            insertAt--; // 1 line for the rarity
+            if (Minecraft.getMinecraft().gameSettings.advancedItemTooltips) {
+                insertAt -= 2; // 1 line for the item name, and 1 line for the nbt
+                if (e.itemStack.isItemDamaged()) {
+                    insertAt--; // 1 line for damage
+                }
+            }
 
-                if (itemId != null) {
-                    e.toolTip.add(EnumChatFormatting.DARK_GRAY + "Skyblock ID: " + itemId);
+            if (main.getConfigValues().isEnabled(Feature.SHOW_ITEM_ANVIL_USES)) {
+                // Anvil Uses ~ original done by Dahn#6036
+                int anvilUses = main.getUtils().getNBTInteger(hoveredItem, "ExtraAttributes", "anvil_uses");
+                if (anvilUses != -1) {
+                    int hotPotatoCount = main.getUtils().getNBTInteger(hoveredItem, "ExtraAttributes", "hot_potato_count");
+                    if (hotPotatoCount != -1) {
+                        anvilUses -= hotPotatoCount;
+                    }
+                    if (anvilUses > 0) {
+                        e.toolTip.add(insertAt++, Message.MESSAGE_ANVIL_USES.getMessage(String.valueOf(anvilUses)));
+                    }
                 }
             }
 
@@ -818,10 +808,39 @@ public class PlayerListener {
 
                         if (extraAttributesTag != null) {
                             if (extraAttributesTag.hasKey("bossId") && extraAttributesTag.hasKey("spawnedFor")) {
-                                e.toolTip.add("§c§lBROKEN FRAGMENT§r");
+                                e.toolTip.add(insertAt++, "§c§lBROKEN FRAGMENT§r");
                             }
                         }
                     }
+                }
+            }
+
+            if (main.getConfigValues().isEnabled(Feature.SHOW_BASE_STAT_BOOST_PERCENTAGE) && hoveredItem.hasTagCompound()) {
+                NBTTagCompound extraAttributes = ItemUtils.getExtraAttributes(hoveredItem);
+                if (extraAttributes != null) {
+                    int baseStatBoost = ItemUtils.getBaseStatBoostPercentage(extraAttributes);
+                    if (baseStatBoost != -1) {
+
+                        ColorCode colorCode = main.getConfigValues().getRestrictedColor(Feature.SHOW_BASE_STAT_BOOST_PERCENTAGE);
+                        if (main.getConfigValues().isEnabled(Feature.COLOR_BY_RARITY)) {
+
+                            int rarityIndex = baseStatBoost/10;
+                            if (rarityIndex < 0) rarityIndex = 0;
+                            if (rarityIndex >= ItemRarity.values().length) rarityIndex = ItemRarity.values().length - 1;
+
+                            colorCode = ItemRarity.values()[rarityIndex].getColorCode();
+                        }
+                        e.toolTip.add(insertAt, "§7Base Stat Boost: " + colorCode + "+" + baseStatBoost + "%");
+                    }
+                }
+            }
+
+            // Append Skyblock Item ID to end of tooltip if in developer mode
+            if (main.isDevMode() && e.showAdvancedItemTooltips) {
+                String itemId = ItemUtils.getSkyBlockItemID(e.itemStack);
+
+                if (itemId != null) {
+                    e.toolTip.add(insertAt++, EnumChatFormatting.DARK_GRAY + "Skyblock ID: " + itemId);
                 }
             }
         }
@@ -864,16 +883,25 @@ public class PlayerListener {
         if (main.getOpenSettingsKey().isPressed()) {
             main.getUtils().setFadingIn(true);
             main.getRenderListener().setGuiToOpen(EnumUtils.GUIType.MAIN, 1, EnumUtils.GuiTab.MAIN);
+
         } else if (main.getOpenEditLocationsKey().isPressed()) {
             main.getUtils().setFadingIn(false);
             main.getRenderListener().setGuiToOpen(EnumUtils.GUIType.EDIT_LOCATIONS, 0, null);
+
         } else if (main.getDeveloperCopyNBTKey().isPressed()) {
             // Copy Mob Data
             if (main.isDevMode()) {
-                EntityPlayerSP player = Minecraft.getMinecraft().thePlayer;
-                List<Entity> entityList = Minecraft.getMinecraft().theWorld.loadedEntityList;
+                DevUtils.copyEntityData();
+            }
+        }
 
-                DevUtils.copyMobData(player, entityList);
+        if (Keyboard.getEventKeyState()) {
+            if (Keyboard.isKeyDown(Keyboard.KEY_MINUS) && Keyboard.getEventKeyState()) {
+                float zoomScaleFactor = main.getUtils().denormalizeScale(main.getConfigValues().getMapZoom().getValue(), 0.5F, 5, 0.1F);
+                main.getConfigValues().getMapZoom().setValue(main.getUtils().normalizeValueNoStep(zoomScaleFactor - 0.5F, 0.5F, 5));
+            } else if (Keyboard.isKeyDown(Keyboard.KEY_EQUALS) && Keyboard.getEventKeyState()) {
+                float zoomScaleFactor = main.getUtils().denormalizeScale(main.getConfigValues().getMapZoom().getValue(), 0.5F, 5, 0.1F);
+                main.getConfigValues().getMapZoom().setValue(main.getUtils().normalizeValueNoStep(zoomScaleFactor + 0.5F, 0.5F, 5));
             }
         }
     }

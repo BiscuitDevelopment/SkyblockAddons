@@ -249,7 +249,6 @@ public class EnumUtils {
         ENABLED_IN_OTHER_GAMES(SETTING_SHOW_IN_OTHER_GAMES, -1),
         REPEATING(SETTING_REPEATING, -1),
         EXPANDED(SETTING_EXPANDED, -1),
-        COLOUR_BY_RARITY(SETTING_COLOUR_BY_RARITY, -1),
         SHOW_ICONS(SETTING_SHOW_ICONS, -1),
         DRAGONS_NEST_ONLY(SETTING_DRAGONS_NEST_ONLY, -1),
         USE_VANILLA_TEXTURE(SETTING_USE_VANILLA_TEXTURE, 17),
@@ -263,12 +262,20 @@ public class EnumUtils {
         ENABLE_CAKE_BAG_PREVIEW(SETTING_SHOW_CAKE_BAG_PREVIEW, 71),
         ENABLE_BACKPACK_PREVIEW_AH(SETTING_SHOW_BACKPACK_PREVIEW_AH, 72),
         SORT_TAB_EFFECT_TIMERS(SETTING_SORT_TAB_EFFECT_TIMERS, 74),
-        SLAYER_ZOMBIE(SETTING_SLAYER_TRACKER, 101),
-        SLAYER_SPIDER(SETTING_SLAYER_TRACKER, 102),
-        SLAYER_WOLF(SETTING_SLAYER_TRACKER, 103),
+        ROTATE_MAP(SETTING_ROTATE_MAP, 100),
+        CENTER_ROTATION_ON_PLAYER(SETTING_CENTER_ROTATION_ON_PLAYER, 101),
+        MAP_ZOOM(SETTING_MAP_ZOOM, -1),
+        COLOUR_BY_RARITY(SETTING_COLOR_BY_RARITY, -1),
+        SHOW_PLAYER_HEADS_ON_MAP(SETTING_SHOW_PLAYER_HEAD_ON_MAP, 106),
+        SHOW_GLOWING_ITEMS_ON_ISLAND(SETTING_SHOW_GLOWING_ITEMS_ON_ISLAND, 109),
+        SLAYER_ZOMBIE(SETTING_SLAYER_TRACKER, 112),
+        SLAYER_SPIDER(SETTING_SLAYER_TRACKER, 113),
+        SLAYER_WOLF(SETTING_SLAYER_TRACKER, 114),
 
         DISCORD_RP_STATE(null, 0),
-        DISCORD_RP_DETAILS(null, 0);
+        DISCORD_RP_DETAILS(null, 0)
+
+        ;
 
         @Getter
         private Message message;
@@ -313,8 +320,8 @@ public class EnumUtils {
         MYNAMEISJEFF("MyNameIsJeff", "github.com/My-Name-Is-Jeff", Feature.SHOW_BROKEN_FRAGMENTS),
         DJTHEREDSTONER("DJtheRedstoner", "github.com/DJtheRedstoner", Feature.LEGENDARY_SEA_CREATURE_WARNING, Feature.HIDE_SVEN_PUP_NAMETAGS),
         ANTONIO32A("Antonio32A", "github.com/Antonio32A", Feature.ONLY_BREAK_LOGS_PARK),
-        CHARZARD("Charzard4261", "github.com/Charzard4261", Feature.DISABLE_TELEPORT_PAD_MESSAGES, Feature.BAIT_LIST, Feature.ACTIONS_UNTIL_NEXT_LEVEL, Feature.SLAYER_TRACKERS,
-                Feature.DRAGON_STATS_TRACKER);
+        CHARZARD("Charzard4261", "github.com/Charzard4261", Feature.DISABLE_TELEPORT_PAD_MESSAGES, Feature.BAIT_LIST, Feature.ACTIONS_UNTIL_NEXT_LEVEL, Feature.SHOW_BASE_STAT_BOOST_PERCENTAGE,
+                 Feature.SLAYER_TRACKERS, Feature.DRAGON_STATS_TRACKER);
 
         private Set<Feature> features;
         private String author;
@@ -353,7 +360,7 @@ public class EnumUtils {
         CARPENTRY("Carpentry", Item.getItemFromBlock(Blocks.crafting_table)),
         RUNECRAFTING("Runecrafting", Items.magma_cream),
         TAMING("Taming", Items.spawn_egg),
-        OTHER(null, null);
+        DUNGEONEERING("Dungeoneering", Item.getItemFromBlock(Blocks.deadbush));
 
         private String skillName;
         @Getter
@@ -370,7 +377,7 @@ public class EnumUtils {
                     return skillType;
                 }
             }
-            return OTHER;
+            return null;
         }
     }
 
@@ -385,6 +392,7 @@ public class EnumUtils {
         TICKER,
         BAIT_LIST_DISPLAY,
         TAB_EFFECT_TIMERS,
+        DUNGEONS_MAP,
         SLAYER_TRACKERS,
         DRAGON_STATS_TRACKER
     }

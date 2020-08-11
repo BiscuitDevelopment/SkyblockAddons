@@ -371,6 +371,30 @@ public class SettingsGui extends GuiScreen {
             }
 
             row += 0.4;
+        } else if (setting == EnumUtils.FeatureSetting.MAP_ZOOM) {
+            boxWidth = 100; // Default size and stuff.
+            x = halfWidth-(boxWidth/2);
+            y = getRowHeightSetting(row);
+            buttonList.add(new ButtonSlider(x, y, 100, 20, main.getConfigValues().getMapZoom().getValue(), 0.5F, 5F, 0.1F, new ButtonSlider.OnSliderChangeCallback() {
+                @Override
+                public void sliderUpdated(float value) {
+                    main.getConfigValues().getMapZoom().setValue(value);
+                }
+            }).setPrefix("Map Zoom: "));
+        } else if (setting == EnumUtils.FeatureSetting.COLOUR_BY_RARITY) {
+            boxWidth = 31;
+            x = halfWidth - boxWidth / 2;
+            y = this.getRowHeightSetting(this.row);
+            Feature settingFeature = null;
+            if (this.feature == Feature.SHOW_BASE_STAT_BOOST_PERCENTAGE) {
+                settingFeature = Feature.COLOR_BY_RARITY;
+            } else if (feature == Feature.SLAYER_TRACKERS) {
+                settingFeature = Feature.SLAYER_TRACKERS_COLOUR_BY_RARITY;
+            } else if (feature == Feature.DRAGON_STATS_TRACKER) {
+                settingFeature = Feature.DRAGON_STATS_TRACKER_COLOUR_BY_RARITY;
+            }
+
+            buttonList.add(new ButtonToggleTitle(x, y, Message.SETTING_COLOR_BY_RARITY.getMessage(), this.main, settingFeature));
         } else if (setting == EnumUtils.FeatureSetting.EXPANDED) {
             boxWidth = 31;
             x = halfWidth - (boxWidth / 2);
@@ -402,19 +426,6 @@ public class SettingsGui extends GuiScreen {
             y = getRowHeightSetting(row);
 
             buttonList.add(new ButtonToggleTitle(x, y, SlayerTracker.getInstance().getBosses().get(2).getDisplayName(), main, SlayerTracker.getInstance().getBosses().get(2).getFeature()));
-        } else if (setting == EnumUtils.FeatureSetting.COLOUR_BY_RARITY) {
-            boxWidth = 31;
-            x = halfWidth - (boxWidth / 2);
-            y = getRowHeightSetting(row);
-
-            Feature settingFeature = null;
-            if (feature == Feature.SLAYER_TRACKERS) {
-                settingFeature = Feature.SLAYER_TRACKERS_COLOUR_BY_RARITY;
-            } else if (feature == Feature.DRAGON_STATS_TRACKER) {
-                settingFeature = Feature.DRAGON_STATS_TRACKER_COLOUR_BY_RARITY;
-            }
-
-            buttonList.add(new ButtonToggleTitle(x, y, Message.SETTING_COLOUR_BY_RARITY.getMessage(), main, settingFeature));
         } else if (setting == EnumUtils.FeatureSetting.SHOW_ICONS) {
             boxWidth = 31;
             x = halfWidth - (boxWidth / 2);

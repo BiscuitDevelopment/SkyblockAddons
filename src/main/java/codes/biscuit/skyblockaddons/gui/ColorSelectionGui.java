@@ -262,7 +262,7 @@ public class ColorSelectionGui extends GuiScreen {
     }
 
     private void addChromaButtons() {
-        buttonList.add(new ButtonSlider(width / 2 + 76, 170+35, 70, 15, main, main.getConfigValues().getChromaSpeed(),
+        buttonList.add(new ButtonSlider(width / 2 + 76, 170+35, 70, 15, main.getConfigValues().getChromaSpeed(),
                 0.1F, 10, 0.5F, new ButtonSlider.OnSliderChangeCallback() {
             @Override
             public void sliderUpdated(float value) {
@@ -270,7 +270,7 @@ public class ColorSelectionGui extends GuiScreen {
             }
         }));
 
-        buttonList.add(new ButtonSlider(width / 2 + 76, 170+35+35, 70, 15, main, main.getConfigValues().getChromaFadeWidth(),
+        buttonList.add(new ButtonSlider(width / 2 + 76, 170+35+35, 70, 15, main.getConfigValues().getChromaFadeWidth(),
                 1, 42, 1, new ButtonSlider.OnSliderChangeCallback() {
             @Override
             public void sliderUpdated(float value) {
