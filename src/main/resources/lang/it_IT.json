@@ -245,7 +245,7 @@
     "sba.copyEntity": "§e(Dev) §7Copia i dati NBT per le entità dei nomi indicati entro il raggio indicato intorno al giocatore",
     "sba.help.help.command": "il sottocomando per ottenere un utilizzo dettagliato per",
     "sba.help.dev": "Questo comando attiva la modalità sviluppatore. Questa modalità è pensata per gli sviluppatori Skyblock mods/tools. Fornisce dati grezzi dal gioco come entità ed elementi NBT.",
-    "sba.help.set.zealotCounter": "Manually sets counts in the zealot counter.",
+    "sba.help.set.zealotCounter": "Imposta manualmente il conteggio zealot.",
     "sba.help.set.zealotCounter.zealots": "Zealots uccisi dall'ultimo summoning eye",
     "sba.help.set.zealotCounter.eyes": "Summoning eyes totali",
     "sba.help.set.zealotCounter.totalZealots": "Zealots uccisi totali",
