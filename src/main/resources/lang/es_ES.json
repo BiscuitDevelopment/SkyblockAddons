@@ -114,7 +114,7 @@
     "birchParkRainmakerTimer": "Temporizador de Lluvia del Parque de Abedul",
     "combatTimerDisplay": "Temporizador de Combate",
     "discordRP": "Rich Presence de Discord",
-    "endstoneProtectorDisplay": "Mostrar el escenario de end protector",
+    "endstoneProtectorDisplay": "Mostrar Endstone Protector",
     "fancyWarpMenu": "Menú de Warp Elegante",
     "doubleWarp": "Viajar dos veces",
     "advancedMode": "Modo Avanzado",
@@ -130,15 +130,15 @@
     "changeZealotColor": "Cambiar el Color de los Zealotes",
     "hideSvenPupNametags": "Hide Sven Pup Nametags",
     "turnAllFeaturesChroma": "Convirtir todas las características a Croma",
-    "dungeonsMapDisplay": "Ver un mapa del calabozo",
+    "dungeonsMapDisplay": "Mostrar mapa del mazamorra",
     "rotateMap": "Rotate Map to Your Player's Rotation",
     "centerRotationOnYourPlayer": "Center the Rotation Around Your Player",
     "mapZoom": "Ampliar el mapa",
     "glowingDroppedItems": "Glowing Dropped Items",
     "glowingDungeonTeammates": "Glowing Dungeon Teammates",
     "baseStatBoostPercentage": "Show Base Stat Boost for Dungeon Items",
-    "colorByRarity": "Color By Rarity",
-    "showPlayerHeadsOnMap": "Show Player Heads on Dungeon Map",
+    "colorByRarity": "Color por rareza",
+    "showPlayerHeadsOnMap": "Mostrar cabezas de jugadores en el mapa de mazamorra",
     "showHealingCircleWall": "Show Dungeon Healing Circle Wall (Unstable)",
     "showCriticalTeammates": "Show Critical Dungeon Teammates",
     "showGlowingItemsOnIsland": "Show Glowing Items On Island"
@@ -248,12 +248,12 @@
     "sba.help.set.zealotCounter": "Manually sets counts in the zealot counter.",
     "sba.help.set.zealotCounter.zealots": "Zealots killed since the last summoning eye drop",
     "sba.help.set.zealotCounter.eyes": "Lifetime summoning eyes obtained",
-    "sba.help.set.zealotCounter.totalZealots": "El número de zelotes muertos hasta ahora",
+    "sba.help.set.zealotCounter.totalZealots": "Número total de Zealots asesinados",
     "sba.help.copyEntity": "Copies the NBT data of entities. The types of entities included and the radius around the player to copy data from can be customized. If no options are given, the default settings are used. The default settings are: include players, armor stands, and mobs, and a radius of %radius% blocks. If the radius isn't given, the default radius is used.",
     "sba.help.copyEntity.entityNames": "Names of the types of entities you want to copy data for (e.g. Player, Creeper). Press \"Tab\" after typing the command for a full list. Separate multiple names with commas, names are case-sensitive.",
     "sba.help.copyEntity.radius": "The radius(in blocks) around the player to copy entity NBT data from",
     "sba.help.sidebar.formatted": "Determines if the formatting codes should be included when copying. Can be either \"true\" or \"false\", defaults to \"false\" if no value is provided. Formatting codes are copied if \"true\".",
-    "sba.help.subCommandNotFound": "The sub-command %sub-command% wasn't found."
+    "sba.help.subCommandNotFound": "El subcomando %sub-command% no fue encontrado."
   },
   "keyBindings": {
     "developerCopyNBT": "Copiar NBT"
