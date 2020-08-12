@@ -142,8 +142,8 @@
     "showHealingCircleWall": "Mostra le pareti del cerchio di guarigione (instabile)",
     "showCriticalTeammates": "Mostra i compagni di dungeon in difficoltà",
     "showGlowingItemsOnIsland": "Mostra oggetti illuminati sull’isola",
-    "showItemDungeonFloor": "Show the Floor where a Dungeons Item was Obtained",
-    "showDungeonMilestone": "Show Dungeon Milestone"
+    "showItemDungeonFloor": "Mostra il pavimento dove è stato ottenuto un oggetto Dungeons",
+    "showDungeonMilestone": "Mostra pietra miliare del dungeon"
   },
   "messages": {
     "dropConfirmation": "Getta questo oggetto nuovamente per confermare!",
