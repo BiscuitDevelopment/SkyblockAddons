@@ -252,7 +252,7 @@
     "sba.help.copyEntity": "复制实体的NBT数据。进行数据复制的实体种类和距离玩家范围可自定义。如果没有给定设置，则采用默认选项。默认设置为：包含玩家、盔甲架和生物，以及%radius%格范围。如果不给定范围，则采用默认范围。",
     "sba.help.copyEntity.entityNames": "你想要复制数据的实体种类（例如 Player, Creeper）。输入指令后按“'Tab”来获取完整列表。使用英文逗号分隔多个种类，且种类区分大小写。",
     "sba.help.copyEntity.radius": "进行复制NBT数据的玩家范围（按格计算）。",
-    "sba.help.sidebar.formatted": "决定格式代码是否被复制。可以是“true”或“false”，,默认值为“false”。若为“true”则复制格式代码。",
+    "sba.help.sidebar.formatted": "决定格式代码是否被复制。值可以为 \"true\" 或 \"false\"，默认值为 \"false\"。若为 \"true\" 则复制格式代码。",
     "sba.help.subCommandNotFound": "未找到子命令 %sub-command%。"
   },
   "keyBindings": {
