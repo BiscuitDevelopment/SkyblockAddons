@@ -136,7 +136,7 @@ public enum Feature {
     SHOW_CRITICAL_DUNGEONS_TEAMMATES(108, Message.SETTING_SHOW_CRITICAL_TEAMMATES, null, true),
     SHOW_GLOWING_ITEMS_ON_ISLAND(109, Message.SETTING_SHOW_GLOWING_ITEMS_ON_ISLAND, null, false),
     SHOW_ITEM_DUNGEON_FLOOR(110, Message.SETTING_SHOW_ITEM_DUNGEON_FLOOR, new GuiFeatureData(ColorCode.RED, true), false),
-    SHOW_DUNGEON_MILESTONE(110, Message.SETTING_SHOW_DUNGEON_MILESTONE, new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.YELLOW, EnumUtils.AnchorPoint.BOTTOM_LEFT, 60, -30), false),
+    SHOW_DUNGEON_MILESTONE(111, Message.SETTING_SHOW_DUNGEON_MILESTONE, new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.YELLOW, EnumUtils.AnchorPoint.BOTTOM_LEFT, 60, -30), false),
 
     WARNING_TIME(-1, Message.SETTING_WARNING_DURATION, false),
 
