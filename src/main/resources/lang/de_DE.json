@@ -141,7 +141,9 @@
     "showPlayerHeadsOnMap": "Zeige Spieler Köpfe auf der Dungeon Karte",
     "showHealingCircleWall": "Zeige die Wand für den Heil-Kreis (Instabil)",
     "showCriticalTeammates": "Zeige kritische Dungeon-Teammates",
-    "showGlowingItemsOnIsland": "Zeigt leuchtende Items auf deiner eigenen Insel"
+    "showGlowingItemsOnIsland": "Zeigt leuchtende Items auf deiner eigenen Insel",
+    "showItemDungeonFloor": "Show the Floor where a Dungeons Item was Obtained",
+    "showDungeonMilestone": "Show Dungeon Milestone"
   },
   "messages": {
     "dropConfirmation": "Werfe diesen Gegenstand nochmal, um zu bestätigen!",
