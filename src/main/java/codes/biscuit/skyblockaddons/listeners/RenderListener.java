@@ -1792,7 +1792,7 @@ public class RenderListener {
                 }
 
                 DungeonPlayer dungeonPlayer = main.getUtils().getDungeonPlayers().get(entity.getName());
-                if (!dungeonPlayer.isCritical() && !dungeonPlayer.isLow()) {
+                if (dungeonPlayer.isGhost() || (!dungeonPlayer.isCritical() && !dungeonPlayer.isLow())) {
                     continue;
                 }
 
