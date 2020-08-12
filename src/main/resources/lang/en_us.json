@@ -142,6 +142,7 @@
     "showHealingCircleWall": "Show Dungeon Healing Circle Wall (Unstable)",
     "showCriticalTeammates": "Show Critical Dungeon Teammates",
     "showGlowingItemsOnIsland": "Show Glowing Items On Island",
+    "showItemDungeonFloor": "Show the Floor where a Dungeons Item was Obtained",
     "showDungeonMilestone": "Show Dungeon Milestone"
   },
   "messages": {

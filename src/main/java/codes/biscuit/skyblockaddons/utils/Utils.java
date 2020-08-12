@@ -593,34 +593,6 @@ public class Utils {
         }).start();
     }
 
-    public boolean isMaterialForRecipe(ItemStack item) {
-        final List<String> tooltip = item.getTooltip(null, false);
-        for (String s : tooltip) {
-            if ("§5§o§eRight-click to view recipes!".equals(s)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public String getReforgeFromItem(ItemStack item) {
-        if (item.hasTagCompound()) {
-            NBTTagCompound extraAttributes = item.getTagCompound();
-            if (extraAttributes.hasKey("ExtraAttributes")) {
-                extraAttributes = extraAttributes.getCompoundTag("ExtraAttributes");
-                if (extraAttributes.hasKey("modifier")) {
-                    String reforge = WordUtils.capitalizeFully(extraAttributes.getString("modifier"));
-
-                    reforge = reforge.replace("_sword", ""); //fixes reforges like "Odd_sword"
-                    reforge = reforge.replace("_bow", "");
-
-                    return reforge;
-                }
-            }
-        }
-        return null;
-    }
-
     /**
      * Returns the folder that SkyblockAddons is located in.
      *
@@ -654,16 +626,6 @@ public class Utils {
     public boolean isHalloween() {
         Calendar calendar = Calendar.getInstance();
         return calendar.get(Calendar.MONTH) == Calendar.OCTOBER && calendar.get(Calendar.DAY_OF_MONTH) == 31;
-    }
-
-    /**
-     * Checks if the given item is a pickaxe.
-     *
-     * @param item the item to check
-     * @return {@code true} if this item is a pickaxe, {@code false} otherwise
-     */
-    public boolean isPickaxe(Item item) {
-        return Items.wooden_pickaxe.equals(item) || Items.stone_pickaxe.equals(item) || Items.golden_pickaxe.equals(item) || Items.iron_pickaxe.equals(item) || Items.diamond_pickaxe.equals(item);
     }
 
     public void drawTextWithStyle(String text, float x, float y, int color) {
@@ -951,47 +913,6 @@ public class Utils {
                 }
             }
         }
-    }
-
-    public BufferedReader getBufferedReader(String localPath) {
-        try {
-            return new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream(localPath)));
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            return null;
-        }
-    }
-
-    public void pullOnlineData() {
-        logger.info("Attempting to grab data from online.");
-        new Thread(() -> {
-            try {
-                boolean isCurrentBeta = SkyblockAddons.VERSION.contains("b");
-                URL url = new URL("https://raw.githubusercontent.com/BiscuitDevelopment/SkyblockAddons/"+(isCurrentBeta ? "development" : "master")+"/src/main/resources/data.json");
-                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                connection.setRequestMethod("GET");
-                connection.setRequestProperty("User-Agent", Utils.USER_AGENT);
-
-                logger.info("Online data - Got response code " + connection.getResponseCode());
-
-                StringBuilder response = new StringBuilder();
-                try (BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
-                    String line;
-                    while ((line = in.readLine()) != null) {
-                        response.append(line);
-                    }
-                }
-                connection.disconnect();
-
-                main.setOnlineData(new Gson().fromJson(response.toString(), OnlineData.class));
-                logger.info("Successfully grabbed online data.");
-
-                main.getUpdater().processUpdateCheckResult();
-            } catch (Exception ex) {
-                logger.warn("There was an error while trying to pull the online data...");
-                logger.catching(ex);
-            }
-        }).start();
     }
 
     private Set<ResourceLocation> rescaling = new HashSet<>();
