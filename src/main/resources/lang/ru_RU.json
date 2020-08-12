@@ -141,7 +141,9 @@
     "showPlayerHeadsOnMap": "Show Player Heads on Dungeon Map",
     "showHealingCircleWall": "Show Dungeon Healing Circle Wall (Unstable)",
     "showCriticalTeammates": "Show Critical Dungeon Teammates",
-    "showGlowingItemsOnIsland": "Показывать Светящиеся Предметы На Острове"
+    "showGlowingItemsOnIsland": "Показывать Светящиеся Предметы На Острове",
+    "showItemDungeonFloor": "Show the Floor where a Dungeons Item was Obtained",
+    "showDungeonMilestone": "Show Dungeon Milestone"
   },
   "messages": {
     "dropConfirmation": "Выбросите предмет ещё раз для подтверждения!",
