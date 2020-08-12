@@ -141,7 +141,9 @@
     "showPlayerHeadsOnMap": "於地下城地圖顯示玩家頭部",
     "showHealingCircleWall": "顯示地下城Healing Circle邊界 (不穩定)",
     "showCriticalTeammates": "顯示地下城瀕死隊友",
-    "showGlowingItemsOnIsland": "在玩家島嶼上使物品發光"
+    "showGlowingItemsOnIsland": "在玩家島嶼上使物品發光",
+    "showItemDungeonFloor": "Show the Floor where a Dungeons Item was Obtained",
+    "showDungeonMilestone": "Show Dungeon Milestone"
   },
   "messages": {
     "dropConfirmation": "再次丟棄此物品以確認!",
