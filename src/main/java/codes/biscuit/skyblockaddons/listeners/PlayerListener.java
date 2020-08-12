@@ -239,7 +239,7 @@ public class PlayerListener {
                 }
             }
 
-            if (main.getConfigValues().isEnabled(Feature.SHOW_DUNGEON_MILESTONE)) {
+            if (main.getUtils().isInDungeon() && main.getConfigValues().isEnabled(Feature.SHOW_DUNGEON_MILESTONE)) {
                 DungeonPlayer.Milestone milestone = main.getDungeonUtils().parseMilestone(formattedText);
                 if (milestone != null) {
                     main.getDungeonUtils().setMilestone(milestone);

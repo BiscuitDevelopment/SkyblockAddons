@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 
 @Getter @Setter
 public class DungeonUtils {
-    private static final Pattern PATTERN_MILESTONE = Pattern.compile("^.+?(Healer|Tank|Mage|Archer|Berserk)?\\sMilestone\\s.+?([❶-❿]).+?(§r§.+[0-9]+)\\s.+?");
+    private static final Pattern PATTERN_MILESTONE = Pattern.compile("^.+?(Healer|Tank|Mage|Archer|Berserk)\\sMilestone\\s.+?([❶-❿]).+?(§r§.+[0-9]+)\\s.+?");
 
     private DungeonPlayer.Milestone milestone;
 
