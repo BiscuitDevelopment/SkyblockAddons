@@ -141,7 +141,9 @@
     "showPlayerHeadsOnMap": "ダンジョンのマップにプレイヤーを表示する",
     "showHealingCircleWall": "ダンジョンのヒーリングの円壁を表示する(不安定)",
     "showCriticalTeammates": "負傷したダンジョン内の仲間を表示する",
-    "showGlowingItemsOnIsland": "島でアイテムを光るようにする"
+    "showGlowingItemsOnIsland": "島でアイテムを光るようにする",
+    "showItemDungeonFloor": "Show the Floor where a Dungeons Item was Obtained",
+    "showDungeonMilestone": "Show Dungeon Milestone"
   },
   "messages": {
     "dropConfirmation": "落としてもいいのであれば、このアイテムをもう一度ドロップしてください。",
