@@ -141,7 +141,9 @@
     "showPlayerHeadsOnMap": "Mostrar cabezas de jugadores en el mapa de mazamorra",
     "showHealingCircleWall": "Mostrar Pared de Círculo de Curación de Mazmorra (Inestable)",
     "showCriticalTeammates": "Mostrar compañeros de mazmorra en estado crítico",
-    "showGlowingItemsOnIsland": "Hacer brillar objetos en la isla"
+    "showGlowingItemsOnIsland": "Hacer brillar objetos en la isla",
+    "showItemDungeonFloor": "Show the Floor where a Dungeons Item was Obtained",
+    "showDungeonMilestone": "Show Dungeon Milestone"
   },
   "messages": {
     "dropConfirmation": "¡Dropea el Objeto otra vez para soltar!",
