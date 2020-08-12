@@ -3,11 +3,11 @@ package codes.biscuit.skyblockaddons.listeners;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.*;
 import codes.biscuit.skyblockaddons.features.BaitManager;
-import codes.biscuit.skyblockaddons.features.EnchantedItemBlacklist;
 import codes.biscuit.skyblockaddons.features.EndstoneProtectorManager;
 import codes.biscuit.skyblockaddons.features.backpacks.Backpack;
 import codes.biscuit.skyblockaddons.features.backpacks.BackpackManager;
 import codes.biscuit.skyblockaddons.features.cooldowns.CooldownManager;
+import codes.biscuit.skyblockaddons.features.enchantedItemBlacklist.EnchantedItemPlacementBlocker;
 import codes.biscuit.skyblockaddons.features.powerorbs.PowerOrbManager;
 import codes.biscuit.skyblockaddons.features.tabtimers.TabEffectManager;
 import codes.biscuit.skyblockaddons.gui.IslandWarpGui;
@@ -269,25 +269,33 @@ public class PlayerListener {
     }
 
     /**
-     * This blocks interaction with Ember Rods on your island, to avoid blowing up chests, and placing enchanted items
-     * such as enchanted gold blocks.
+     * This method is triggered by the player right-clicking on something.
+     * Yes, it says it works for left-clicking blocks too but it actually doesn't, so please don't use it to detect that.
+     * <br>
+     * Also, when the player right-clicks on a block, {@code PlayerInteractEvent} gets fired twice. The first time,
+     * the correct action type {@code Action.RIGHT_CLICK_BLOCK}, is used. The second time, the action type is
+     * {@code Action.RIGHT_CLICK_AIR} for some reason. Both of these events will cause a {@code C08PacketPlayerBlockPlacement}
+     * packet to be sent to the server, so block both of them if you want to prevent a block from being placed.
+     * <br>
+     * Look at {@code Minecraft#rightClickMouse()} to see when the event is fired.
+     *
+     * @see Minecraft
      */
     @SubscribeEvent()
     public void onInteract(PlayerInteractEvent e) {
         Minecraft mc = Minecraft.getMinecraft();
         ItemStack heldItem = e.entityPlayer.getHeldItem();
 
-        if (main.getUtils().isOnSkyblock() && e.entityPlayer == mc.thePlayer && heldItem != null) {
+        if (main.getUtils().isOnSkyblock() && heldItem != null) {
+            // Change the GUI background color when a backpack is opened to match the backpack's color.
             if (heldItem.getItem() == Items.skull) {
                 Backpack backpack = BackpackManager.getFromItem(heldItem);
                 if (backpack != null) {
                     BackpackManager.setOpenedBackpackColor(backpack.getBackpackColor());
                 }
-            }
-
-            // Update fishing status
-            if (heldItem.getItem().equals(Items.fishing_rod)
+            } else if (heldItem.getItem().equals(Items.fishing_rod)
                     && (e.action == PlayerInteractEvent.Action.RIGHT_CLICK_BLOCK || e.action == PlayerInteractEvent.Action.RIGHT_CLICK_AIR)) {
+                // Update fishing status
                 if (main.getConfigValues().isEnabled(Feature.FISHING_SOUND_INDICATOR)) {
                     oldBobberIsInWater = false;
                     lastBobberEnteredWater = Long.MAX_VALUE;
@@ -296,30 +304,19 @@ public class PlayerListener {
                 if (main.getConfigValues().isEnabled(Feature.SHOW_ITEM_COOLDOWNS) && mc.thePlayer.fishEntity != null) {
                     CooldownManager.put(mc.thePlayer.getHeldItem());
                 }
-            } else if (EnchantedItemBlacklist.shouldBlockUsage(heldItem, e.action)) {
-                e.setCanceled(true);
+            } else if (heldItem.getItem().equals(Items.blaze_rod)) {
+                String itemId = ItemUtils.getSkyBlockItemID(heldItem);
+
+                if (main.getConfigValues().isEnabled(Feature.DISABLE_EMBER_ROD) && main.getUtils().getLocation() == Location.ISLAND
+                        && itemId != null && itemId.equals("EMBER_ROD")) {
+                    e.setCanceled(true);
+                }
             }
-        }
-    }
 
-    /**
-     * Block emptying of buckets separately because they aren't handled like blocks.
-     * The event name {@code FillBucketEvent} is misleading. The event is fired when buckets are emptied also so
-     * it should really be called {@code BucketEvent}.
-     *
-     * @param bucketEvent the event
-     */
-    @SubscribeEvent
-    public void onBucketEvent(FillBucketEvent bucketEvent) {
-        ItemStack bucket = bucketEvent.current;
-        EntityPlayer player = bucketEvent.entityPlayer;
-
-        if (main.getUtils().isOnSkyblock() && player instanceof EntityPlayerSP) {
             if (main.getConfigValues().isEnabled(Feature.AVOID_PLACING_ENCHANTED_ITEMS)) {
-                String skyblockItemId = ItemUtils.getSkyBlockItemID(bucket);
-
-                if (skyblockItemId != null && skyblockItemId.equals("ENCHANTED_LAVA_BUCKET")) {
-                    bucketEvent.setCanceled(true);
+                if (EnchantedItemPlacementBlocker.shouldBlockPlacement(heldItem, e)) {
+                    // Block the player from placing this item if it's on the enchanted item blacklist.
+                    e.setCanceled(true);
                 }
             }
         }

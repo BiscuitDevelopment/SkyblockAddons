@@ -1,0 +1,11 @@
+{
+  "enchantedItemIds": [
+    "ENCHANTED_LAVA_BUCKET",
+    "ENCHANTED_DIAMOND_BLOCK",
+    "ENCHANTED_SNOW_BLOCK",
+    "ENCHANTED_STRING",
+    "ENCHANTED_WOOL",
+    "WEIRD_TUBA"
+  ],
+  "rarityLimit": "RARE"
+}

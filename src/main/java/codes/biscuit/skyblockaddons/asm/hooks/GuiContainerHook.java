@@ -8,6 +8,7 @@ import codes.biscuit.skyblockaddons.features.backpacks.BackpackColor;
 import codes.biscuit.skyblockaddons.features.craftingpatterns.CraftingPattern;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
+import codes.biscuit.skyblockaddons.utils.ItemUtils;
 import codes.biscuit.skyblockaddons.utils.objects.FloatPairString;
 import lombok.Getter;
 import net.minecraft.client.Minecraft;
@@ -78,7 +79,7 @@ public class GuiContainerHook {
                         }
                     }
                 } else if ("Reforge Item".equals(slotIn.inventory.getDisplayName().getUnformattedText()) && slotIn.slotNumber == 13) {
-                    String reforge = main.getUtils().getReforgeFromItem(item);
+                    String reforge = ItemUtils.getReforge(item);
                     if (reforge != null) {
                         if (!main.getUtils().getEnchantmentMatches().isEmpty() &&
                                 main.getUtils().enchantReforgeMatches(reforge)) {
