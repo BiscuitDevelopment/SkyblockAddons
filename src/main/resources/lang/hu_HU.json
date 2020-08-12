@@ -141,7 +141,9 @@
     "showPlayerHeadsOnMap": "Mutasd a játékos fejeit a dungeon térképen",
     "showHealingCircleWall": "Show Dungeon Healing Circle Wall (Unstable)",
     "showCriticalTeammates": "Mutasd a kritikális állapotban lévő csapat tagokat",
-    "showGlowingItemsOnIsland": "Mutasd a ragyogó tárgyakat a szigeten"
+    "showGlowingItemsOnIsland": "Mutasd a ragyogó tárgyakat a szigeten",
+    "showItemDungeonFloor": "Show the Floor where a Dungeons Item was Obtained",
+    "showDungeonMilestone": "Show Dungeon Milestone"
   },
   "messages": {
     "dropConfirmation": "Dobd el ezt a tárgyat újra, hogy megerősítsd!",
