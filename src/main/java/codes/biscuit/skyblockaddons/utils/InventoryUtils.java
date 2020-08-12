@@ -95,7 +95,7 @@ public class InventoryUtils {
                 ItemStack newItem = newInventory.get(i);
 
                 if(previousItem != null) {
-                    Pair<NBTTagCompound, Integer> amount = previousInventoryMap.getOrDefault(previousItem.getDisplayName(), new Pair<>(ItemUtils.getSkyblockData(previousItem),0 + previousItem.stackSize));
+                    Pair<NBTTagCompound, Integer> amount = previousInventoryMap.getOrDefault(previousItem.getDisplayName(), new Pair<>(ItemUtils.getExtraAttributes(previousItem),0 + previousItem.stackSize));
                     previousInventoryMap.put(previousItem.getDisplayName(), amount);
                 }
 
@@ -104,7 +104,7 @@ public class InventoryUtils {
                         String newName = newItem.getDisplayName().substring(0, newItem.getDisplayName().lastIndexOf(" "));
                         newItem.setStackDisplayName(newName); // This is a workaround for merchants, it adds x64 or whatever to the end of the name.
                     }
-                    Pair<NBTTagCompound, Integer> amount = newInventoryMap.getOrDefault(newItem.getDisplayName(), new Pair<>(ItemUtils.getSkyblockData(newItem), 0 + newItem.stackSize));
+                    Pair<NBTTagCompound, Integer> amount = newInventoryMap.getOrDefault(newItem.getDisplayName(), new Pair<>(ItemUtils.getExtraAttributes(newItem), 0 + newItem.stackSize));
                     newInventoryMap.put(newItem.getDisplayName(), amount);
                 }
             }
