@@ -141,7 +141,9 @@
     "showPlayerHeadsOnMap": "Showo Pwayew Heads on Duwungeon Mwap",
     "showHealingCircleWall": "Show Dungeon Heawing Ciwcwe Waww (Unstabwe)",
     "showCriticalTeammates": "Show Cwitical Dungweon Tweammwates",
-    "showGlowingItemsOnIsland": "Show Gwowing Items On Iwand"
+    "showGlowingItemsOnIsland": "Show Gwowing Items On Iwand",
+    "showItemDungeonFloor": "Show the Floor where a Dungeons Item was Obtained",
+    "showDungeonMilestone": "Show Dungeon Milestone"
   },
   "messages": {
     "dropConfirmation": "Dwop thwis itwem agwain to confiwm!",
