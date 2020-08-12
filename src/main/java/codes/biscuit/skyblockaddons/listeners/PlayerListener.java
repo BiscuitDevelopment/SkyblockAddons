@@ -663,6 +663,7 @@ public class PlayerListener {
     @SubscribeEvent()
     public void onItemTooltip(ItemTooltipEvent e) {
         ItemStack hoveredItem = e.itemStack;
+
         if (e.toolTip != null && main.getUtils().isOnSkyblock()) {
             if (main.getConfigValues().isEnabled(Feature.HIDE_GREY_ENCHANTS)) {
                 for (int i = 1; i <= 3; i++) { // only a max of 2 gray enchants are possible
@@ -797,7 +798,15 @@ public class PlayerListener {
                 String itemId = ItemUtils.getSkyBlockItemID(e.itemStack);
 
                 if (itemId != null) {
-                    e.toolTip.add(insertAt++, EnumChatFormatting.DARK_GRAY + "Skyblock ID: " + itemId);
+                    if (!Minecraft.getMinecraft().gameSettings.advancedItemTooltips) {
+                        insertAt = e.toolTip.size();
+                    }
+                    else {
+                        // Before the NBT line
+                        insertAt = e.toolTip.size() - 1;
+                    }
+
+                    e.toolTip.add(insertAt, EnumChatFormatting.DARK_GRAY + "skyblock:" + itemId);
                 }
             }
         }
