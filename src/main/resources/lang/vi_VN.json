@@ -141,7 +141,9 @@
     "showPlayerHeadsOnMap": "Hiện Đầu Người chơi trên Bản đồ Dungeon",
     "showHealingCircleWall": "Hiện Tường Tròn Hồi máu (Chưa Hoàn thiện)",
     "showCriticalTeammates": "Hiện Đồng đội bị Hấp hối trong Dungeon",
-    "showGlowingItemsOnIsland": "Hiện Vật phẩm Nổi Viền trên Đảo"
+    "showGlowingItemsOnIsland": "Hiện Vật phẩm Nổi Viền trên Đảo",
+    "showItemDungeonFloor": "Show the Floor where a Dungeons Item was Obtained",
+    "showDungeonMilestone": "Show Dungeon Milestone"
   },
   "messages": {
     "dropConfirmation": "Nhấn \"Q\" Thêm Một Lần Nữa Để Xác Nhận!",
