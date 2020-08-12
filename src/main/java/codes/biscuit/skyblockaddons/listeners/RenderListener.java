@@ -795,6 +795,15 @@ public class RenderListener {
 
             int stageNum = Math.min(stage.ordinal(), 5);
             text = Message.MESSAGE_STAGE.getMessage(String.valueOf(stageNum));
+        } else if (feature == Feature.SHOW_DUNGEON_MILESTONE) {
+            DungeonPlayer.Milestone milestone = main.getDungeonUtils().getMilestone();
+            if (buttonLocation != null) {
+                milestone = DungeonPlayer.Milestone.zero(DungeonClass.HEALER);
+            } else if (!main.getUtils().isInDungeon() || milestone == null) {
+                return;
+            }
+
+            text = "Milestone " + milestone.getLevel();
         } else {
             return;
         }
@@ -825,6 +834,11 @@ public class RenderListener {
         }
 
         if (feature == Feature.COMBAT_TIMER_DISPLAY) {
+            height += 15;
+        }
+
+        if (feature == Feature.SHOW_DUNGEON_MILESTONE) {
+            width += 20;
             height += 15;
         }
 
@@ -959,6 +973,18 @@ public class RenderListener {
 
             ChromaManager.renderingText(feature);
             main.getUtils().drawTextWithStyle(String.valueOf(count), x+16+2, y + 4, color);
+            ChromaManager.doneRenderingText();
+        } else if (feature == Feature.SHOW_DUNGEON_MILESTONE) {
+            DungeonPlayer.Milestone milestone = main.getDungeonUtils().getMilestone();
+            if (buttonLocation != null) {
+                milestone = DungeonPlayer.Milestone.zero(DungeonClass.HEALER);
+            }
+
+            final float w = mc.fontRendererObj.getStringWidth(text);
+            renderItem(milestone.getDungeonClass().getItem(), x, y);
+            ChromaManager.renderingText(feature);
+            main.getUtils().drawTextWithStyle(text, x + 15, y + 4, color);
+            main.getUtils().drawTextWithStyle(milestone.getValue(), x + 10 + (w / 2), y + 13, Color.RED.getRGB());
             ChromaManager.doneRenderingText();
         } else {
             ChromaManager.renderingText(feature);

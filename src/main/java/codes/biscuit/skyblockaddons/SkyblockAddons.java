@@ -61,6 +61,7 @@ public class SkyblockAddons {
     private DiscordRPCManager discordRPCManager;
     private Scheduler scheduler;
     private NewScheduler newScheduler;
+    private DungeonUtils dungeonUtils;
 
     private boolean usingLabymod;
     private boolean usingOofModv1;
@@ -81,6 +82,7 @@ public class SkyblockAddons {
         updater = new Updater();
         scheduler = new Scheduler();
         newScheduler = new NewScheduler();
+        dungeonUtils = new DungeonUtils();
         discordRPCManager = new DiscordRPCManager();
     }
 

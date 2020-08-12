@@ -14,6 +14,21 @@ import java.util.regex.Pattern;
 @Getter @Setter
 public class DungeonPlayer {
 
+    @Getter @Setter
+    public static class Milestone {
+        private DungeonClass dungeonClass;
+        private String level;
+        private String value;
+
+        public static Milestone zero(DungeonClass dungeonClass) {
+            Milestone milestone = new Milestone();
+            milestone.setDungeonClass(dungeonClass);
+            milestone.setLevel("⓿");
+            milestone.setValue("0");
+            return milestone;
+        }
+    }
+
     public static Pattern DUNGEON_PLAYER_LINE = Pattern.compile("^§.\\[(?<class>.)] (?<name>[\\w§]+) §(?<healthColor>.)(?<health>[\\w]+)(?:§c❤)?");
 
     private String name;

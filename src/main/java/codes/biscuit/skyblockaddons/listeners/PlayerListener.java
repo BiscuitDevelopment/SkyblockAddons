@@ -239,6 +239,13 @@ public class PlayerListener {
                 }
             }
 
+            if (main.getConfigValues().isEnabled(Feature.SHOW_DUNGEON_MILESTONE)) {
+                DungeonPlayer.Milestone milestone = main.getDungeonUtils().parseMilestone(formattedText);
+                if (milestone != null) {
+                    main.getDungeonUtils().setMilestone(milestone);
+                }
+            }
+
             Matcher matcher = ABILITY_CHAT_PATTERN.matcher(formattedText);
             if (matcher.matches()) {
                 CooldownManager.put(Minecraft.getMinecraft().thePlayer.getHeldItem());
