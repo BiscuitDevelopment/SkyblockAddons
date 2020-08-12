@@ -141,7 +141,9 @@
     "showPlayerHeadsOnMap": "Afficher les têtes des joueurs sur la carte du donjon",
     "showHealingCircleWall": "Afficher dans le donjon un cylindre de régénération (Instable)",
     "showCriticalTeammates": "Afficher dans le donjon les coéquipiers dans un état critique",
-    "showGlowingItemsOnIsland": "Afficher les objets rayonnants sur l'île"
+    "showGlowingItemsOnIsland": "Afficher les objets rayonnants sur l'île",
+    "showItemDungeonFloor": "Montrer le niveau où un objet de donjon a été obtenu",
+    "showDungeonMilestone": "Afficher les cap du donjon"
   },
   "messages": {
     "dropConfirmation": "Jetez cet objet une nouvelle fois pour confirmer!",
