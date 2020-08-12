@@ -141,7 +141,9 @@
     "showPlayerHeadsOnMap": "Toon Speler Hoofden op Dungeon Kaart",
     "showHealingCircleWall": "Toon Dungeon Genees Cirkel Muur (Onstabiel)",
     "showCriticalTeammates": "Laat Kritische Dungeon Teamgenoten Zien",
-    "showGlowingItemsOnIsland": "Toon Gloeiende Voorwerpen Op Eiland"
+    "showGlowingItemsOnIsland": "Toon Gloeiende Voorwerpen Op Eiland",
+    "showItemDungeonFloor": "Show the Floor where a Dungeons Item was Obtained",
+    "showDungeonMilestone": "Show Dungeon Milestone"
   },
   "messages": {
     "dropConfirmation": "Laat dit object opnieuw vallen om te Bevestigen!",
