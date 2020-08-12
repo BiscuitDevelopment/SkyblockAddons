@@ -141,7 +141,9 @@
     "showPlayerHeadsOnMap": "הצג את הראשים של השחקנים על מפת הצינוק",
     "showHealingCircleWall": "הצג את חומת מעגל הריפוי (לא יציב)",
     "showCriticalTeammates": "הצג חברי קבוצת הדנג'ן הנמצאים במצב קריטי",
-    "showGlowingItemsOnIsland": "הצג חפצים זוהרים באי"
+    "showGlowingItemsOnIsland": "הצג חפצים זוהרים באי",
+    "showItemDungeonFloor": "הצג את הקומה בה הושג חפץ הדנג'ן",
+    "showDungeonMilestone": "הצג אבני דרך של הדנג'ן"
   },
   "messages": {
     "dropConfirmation": "זרוק פריט זה שוב לאישור!",
