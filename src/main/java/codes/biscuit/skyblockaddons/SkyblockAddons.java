@@ -6,21 +6,22 @@ import codes.biscuit.skyblockaddons.config.PersistentValues;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.Message;
 import codes.biscuit.skyblockaddons.core.OnlineData;
+import codes.biscuit.skyblockaddons.features.discordrpc.DiscordRPCManager;
 import codes.biscuit.skyblockaddons.gui.IslandWarpGui;
 import codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui;
 import codes.biscuit.skyblockaddons.listeners.GuiScreenListener;
 import codes.biscuit.skyblockaddons.listeners.NetworkListener;
 import codes.biscuit.skyblockaddons.listeners.PlayerListener;
 import codes.biscuit.skyblockaddons.listeners.RenderListener;
-import codes.biscuit.skyblockaddons.misc.scheduler.Scheduler;
 import codes.biscuit.skyblockaddons.misc.SkyblockKeyBinding;
 import codes.biscuit.skyblockaddons.misc.Updater;
 import codes.biscuit.skyblockaddons.misc.scheduler.NewScheduler;
+import codes.biscuit.skyblockaddons.misc.scheduler.Scheduler;
 import codes.biscuit.skyblockaddons.misc.scheduler.SkyblockRunnable;
-import codes.biscuit.skyblockaddons.utils.*;
-import codes.biscuit.skyblockaddons.features.discordrpc.DiscordRPCManager;
-import com.google.gson.Gson;
-import com.google.gson.stream.JsonReader;
+import codes.biscuit.skyblockaddons.utils.DataReader;
+import codes.biscuit.skyblockaddons.utils.EnumUtils;
+import codes.biscuit.skyblockaddons.utils.InventoryUtils;
+import codes.biscuit.skyblockaddons.utils.Utils;
 import lombok.Getter;
 import lombok.Setter;
 import net.minecraft.client.Minecraft;
@@ -36,6 +37,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.lwjgl.input.Keyboard;
 
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.*;
 
 @Getter
@@ -112,8 +115,8 @@ public class SkyblockAddons {
     }
 
     @Mod.EventHandler
-    public void postInit(FMLPostInitializationEvent e) {
-        onlineData = new Gson().fromJson(new JsonReader(utils.getBufferedReader("data.json")), OnlineData.class);
+    public void postInit(FMLPostInitializationEvent e) throws IOException, URISyntaxException {
+        DataReader.readAndLoadAll();
         configValues.loadValues();
         persistentValues.loadValues();
 
@@ -122,7 +125,6 @@ public class SkyblockAddons {
         usingLabymod = utils.isModLoaded("labymod");
         usingOofModv1 = utils.isModLoaded("refractionoof", "1.0");
 
-        utils.pullOnlineData();
         scheduleMagmaBossCheck();
 
         for (Feature feature : Feature.values()) {
@@ -195,6 +197,7 @@ public class SkyblockAddons {
         }
     }
 
+    // This replaces the version placeholder if the mod is built using IntelliJ instead of Gradle.
     static {
         //noinspection ConstantConditions
         if (VERSION.contains("@")) { // Debug environment...

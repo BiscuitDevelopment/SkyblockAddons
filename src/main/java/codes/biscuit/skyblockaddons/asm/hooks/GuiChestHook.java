@@ -11,6 +11,7 @@ import codes.biscuit.skyblockaddons.gui.IslandWarpGui;
 import codes.biscuit.skyblockaddons.gui.elements.CraftingPatternSelection;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
+import codes.biscuit.skyblockaddons.utils.ItemUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiTextField;
@@ -291,7 +292,7 @@ public class GuiChestHook {
                     if (itemSlot != null && itemSlot.getHasStack()) {
                         ItemStack item = itemSlot.getStack();
                         if (item.hasDisplayName()) {
-                            String reforge = main.getUtils().getReforgeFromItem(item);
+                            String reforge = ItemUtils.getReforge(item);
                             if (reforge != null) {
                                 if (main.getUtils().enchantReforgeMatches(reforge)) {
                                     main.getUtils().playLoudSound("random.orb", 0.1);
