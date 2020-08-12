@@ -142,8 +142,8 @@
     "showHealingCircleWall": "Pokaż obręb leczącego okręgu w Dungeon (Niestabilne)",
     "showCriticalTeammates": "Pokaż Członków Drużyny W Krytycznym Stanie",
     "showGlowingItemsOnIsland": "Pokaż Świecące Przedmioty Na Wyspie",
-    "showItemDungeonFloor": "Show the Floor where a Dungeons Item was Obtained",
-    "showDungeonMilestone": "Show Dungeon Milestone"
+    "showItemDungeonFloor": "Pokaż piętro gdzie został zdobyty przedmiot Lochy",
+    "showDungeonMilestone": "Pokaż kamień milowy Lochu"
   },
   "messages": {
     "dropConfirmation": "Wyrzuć ten przedmiot ponownie, aby potwierdzić!",
