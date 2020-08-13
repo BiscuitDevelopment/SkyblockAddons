@@ -142,8 +142,8 @@
     "showHealingCircleWall": "แสดงวงกลมเพิ่มเลือด(ไม่เสถียร)",
     "showCriticalTeammates": "แสดงcriticalผู้เล่นdungeon",
     "showGlowingItemsOnIsland": "ของดรอปบนเกาะเรืองแสง",
-    "showItemDungeonFloor": "Show the Floor where a Dungeons Item was Obtained",
-    "showDungeonMilestone": "Show Dungeon Milestone"
+    "showItemDungeonFloor": "แสดงชั้นของ Dungeon ที่ได้รับของ",
+    "showDungeonMilestone": "แสดง Milestones ของ Dungeon"
   },
   "messages": {
     "dropConfirmation": "กดทิ้งของอีกที่เพื่อยืนยันทิ้งของสิ่งนี้!",
@@ -249,8 +249,8 @@
     "sba.help.dev": "This command toggles developer mode. This mode is meant for developers Skyblock mods/tools. It provides raw data from the game such as entity and item NBT.",
     "sba.help.set.zealotCounter": "Manually sets counts in the zealot counter.",
     "sba.help.set.zealotCounter.zealots": "Zealots killed since the last summoning eye drop",
-    "sba.help.set.zealotCounter.eyes": "Lifetime summoning eyes obtained",
-    "sba.help.set.zealotCounter.totalZealots": "Lifetime zealots killed",
+    "sba.help.set.zealotCounter.eyes": "แสดงจำนวนดวงตาอัญเชิญที่ได้รับ ตลอดชีวิต",
+    "sba.help.set.zealotCounter.totalZealots": "แสดงจำนวนการฆ่า Zealot ตลอดชีวิต",
     "sba.help.copyEntity": "Copies the NBT data of entities. The types of entities included and the radius around the player to copy data from can be customized. If no options are given, the default settings are used. The default settings are: include players, armor stands, and mobs, and a radius of %radius% blocks. If the radius isn't given, the default radius is used.",
     "sba.help.copyEntity.entityNames": "Names of the types of entities you want to copy data for (e.g. Player, Creeper). Press \"Tab\" after typing the command for a full list. Separate multiple names with commas, names are case-sensitive.",
     "sba.help.copyEntity.radius": "The radius(in blocks) around the player to copy entity NBT data from",
