@@ -142,7 +142,7 @@
     "showHealingCircleWall": "Mostra le pareti del cerchio di guarigione (instabile)",
     "showCriticalTeammates": "Mostra i compagni di dungeon in difficoltà",
     "showGlowingItemsOnIsland": "Mostra oggetti illuminati sull’isola",
-    "showItemDungeonFloor": "Mostra il pavimento dove è stato ottenuto un oggetto Dungeons",
+    "showItemDungeonFloor": "Mostra il livello in cui è stato ottenuto un oggetto Dungeons",
     "showDungeonMilestone": "Mostra pietra miliare del dungeon"
   },
   "messages": {
