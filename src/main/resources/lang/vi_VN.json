@@ -142,7 +142,7 @@
     "showHealingCircleWall": "Hiện Tường Tròn Hồi máu (Chưa Hoàn thiện)",
     "showCriticalTeammates": "Hiện Đồng đội bị Hấp hối trong Dungeon",
     "showGlowingItemsOnIsland": "Hiện Vật phẩm Nổi Viền trên Đảo",
-    "showItemDungeonFloor": "Show the Floor where a Dungeons Item was Obtained",
+    "showItemDungeonFloor": "Hiện Tầng có Vật phẩm Dungeon đã được Thu thập",
     "showDungeonMilestone": "Show Dungeon Milestone"
   },
   "messages": {
