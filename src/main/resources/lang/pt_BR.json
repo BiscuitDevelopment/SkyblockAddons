@@ -161,10 +161,10 @@
       "reforges": "Reforjadas",
       "crafting": "Criação"
     },
-    "wantToViewPatchNotes": "Quer ler as alterações?",
+    "wantToViewPatchNotes": "Precisa de suporte ou deseja ler o registro de mudanças completo?",
     "downloadLink": "Link da Atualização",
     "directDownload": "LINK DO DOWNLOAD DIRETO",
-    "openModFolder": "Pasta mods",
+    "openModFolder": "Abrir Pasta Mods",
     "joinTheDiscord": "Entre no discord",
     "newUpdateAvailable": "Uma nova atualização (%version%) está disponível!",
     "update": {
