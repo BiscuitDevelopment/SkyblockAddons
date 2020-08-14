@@ -73,7 +73,10 @@ git checkout -b development --track origin/development
     > ```
     > so the access transformers are applied to the source code!
     > 
-2. (Optional) Run **Minecraft Forge** client
+2. (Optional) Run the **Minecraft Forge** client
+    - Using an IDE
+        - Run the debug configuration you created in "Getting Started."
+    - Using the command line
     ```shell script
-    ./gradlew runClient
+    ./gradlew runClient --args="--username <username> --password <password>"
     ```
