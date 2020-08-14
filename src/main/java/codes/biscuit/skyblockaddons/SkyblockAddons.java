@@ -18,7 +18,7 @@ import codes.biscuit.skyblockaddons.misc.Updater;
 import codes.biscuit.skyblockaddons.misc.scheduler.NewScheduler;
 import codes.biscuit.skyblockaddons.misc.scheduler.Scheduler;
 import codes.biscuit.skyblockaddons.misc.scheduler.SkyblockRunnable;
-import codes.biscuit.skyblockaddons.utils.DataReader;
+import codes.biscuit.skyblockaddons.utils.data.DataReader;
 import codes.biscuit.skyblockaddons.utils.DungeonUtils;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.InventoryUtils;

@@ -1,6 +1,6 @@
 # Attribution Notices
 
-## Apache Commons Lang
+## Apache Commons Lang and Apache HttpClient
 ```text
 Apache Commons Lang
 Copyright 2001-2020 The Apache Software Foundation

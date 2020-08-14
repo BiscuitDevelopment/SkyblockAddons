@@ -1,15 +1,18 @@
 package codes.biscuit.skyblockaddons.features.enchantedItemBlacklist;
 
 import codes.biscuit.skyblockaddons.core.ItemRarity;
+import codes.biscuit.skyblockaddons.utils.data.DataReader;
+import lombok.Data;
 
 import java.util.List;
 
 /**
  * This is the blacklist used by the "Avoid Placing Enchanted Items" feature to determine which items to block.
- * This list is loaded from a file in {@link codes.biscuit.skyblockaddons.utils.DataReader}.
+ * This list is loaded from a file in {@link DataReader}.
  *
  * @see EnchantedItemPlacementBlocker
  */
+@Data
 public class EnchantedItemBlacklist {
     /** This is the list of all the item IDs of the enchanted items that the player will not be allowed to place on their island. */
     List<String> enchantedItemIds;
