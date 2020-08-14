@@ -187,16 +187,16 @@
     "downloadingUpdateFile": "Downloading update file...",
     "onlyFewArrowsLeft": "Only %arrows% arrows left!",
     "noArrowsLeft": "No Arrows Left!",
-    "chooseAColor": "Choose a Color",
-    "selectedColor": "Selected Color",
-    "setHexColor": "Set Hex Color",
+    "chooseAColor": "색상 선택하기",
+    "selectedColor": "선택한 색상",
+    "setHexColor": "헥스 섹상 정하기",
     "rescaleFeatures": "Rescale Features",
     "resizeBars": "Resize Bars",
     "showColorIcons": "Show Color Icons",
     "enableFeatureSnapping": "Enable Feature Snapping",
     "stage": "Stage %stage%",
     "switchedSlots": "You have just switched from a locked slot or rare item. Please wait a bit before dropping!",
-    "clickToOpenLink": "Click to open this link!",
+    "clickToOpenLink": "클릭해서 링크 열기",
     "clickToOpenFolder": "Click to open your mods folder!",
     "firstStatus": "This status will appear at the top",
     "secondStatus": "This status will appear under your first status",
@@ -204,8 +204,8 @@
     "legendarySeaCreatureWarning": "Legendary Catch!",
     "cancelledPark": "A feature has stopped you from breaking this block here.",
     "bossApproaching": "You are close to spawning a boss!",
-    "enableAll": "Enable All",
-    "disableAll": "Disable All"
+    "enableAll": "모두 활성화",
+    "disableAll": "모두 비활성화"
   },
   "discordStatus": {
     "titleNone": "None",
@@ -238,10 +238,10 @@
   "commandUsage": {
     "sba": "Open the main menu",
     "sba.help": "Show this help message. If a command is provided, detailed help about that command is shown.",
-    "sba.edit": "Edit GUI locations",
+    "sba.edit": "GUI 위치 편집",
     "sba.set.zealotCounter": "Manually set your zealot counts",
-    "sba.folder": "Open your mods folder",
-    "sba.dev": "Toggle developer mode",
+    "sba.folder": "모드 폴더 열기",
+    "sba.dev": "개발자 모드 켜기/끄기",
     "sba.sidebar": "§e(Dev) §7Copy the scoreboard text.",
     "sba.brand": "§e(Dev) §7Show the server brand",
     "sba.copyEntity": "§e(Dev) §7Copy NBT data for entities of the given name(s) within the given radius around the player",
@@ -249,8 +249,8 @@
     "sba.help.dev": "This command toggles developer mode. This mode is meant for developers Skyblock mods/tools. It provides raw data from the game such as entity and item NBT.",
     "sba.help.set.zealotCounter": "Manually sets counts in the zealot counter.",
     "sba.help.set.zealotCounter.zealots": "Zealots killed since the last summoning eye drop",
-    "sba.help.set.zealotCounter.eyes": "Lifetime summoning eyes obtained",
-    "sba.help.set.zealotCounter.totalZealots": "Lifetime zealots killed",
+    "sba.help.set.zealotCounter.eyes": "총 서머닝 수",
+    "sba.help.set.zealotCounter.totalZealots": "총 질럿 킬수",
     "sba.help.copyEntity": "Copies the NBT data of entities. The types of entities included and the radius around the player to copy data from can be customized. If no options are given, the default settings are used. The default settings are: include players, armor stands, and mobs, and a radius of %radius% blocks. If the radius isn't given, the default radius is used.",
     "sba.help.copyEntity.entityNames": "Names of the types of entities you want to copy data for (e.g. Player, Creeper). Press \"Tab\" after typing the command for a full list. Separate multiple names with commas, names are case-sensitive.",
     "sba.help.copyEntity.radius": "The radius(in blocks) around the player to copy entity NBT data from",
@@ -258,6 +258,6 @@
     "sba.help.subCommandNotFound": "The sub-command %sub-command% wasn't found."
   },
   "keyBindings": {
-    "developerCopyNBT": "Copy NBT"
+    "developerCopyNBT": "NBT 복사"
   }
 }
