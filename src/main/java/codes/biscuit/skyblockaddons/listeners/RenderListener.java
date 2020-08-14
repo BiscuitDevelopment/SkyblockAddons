@@ -1883,11 +1883,11 @@ public class RenderListener {
                     continue;
                 }
 
-                if (!main.getUtils().getDungeonPlayers().containsKey(entity.getName())) {
+                if (!main.getDungeonUtils().getPlayers().containsKey(entity.getName())) {
                     continue;
                 }
 
-                DungeonPlayer dungeonPlayer = main.getUtils().getDungeonPlayers().get(entity.getName());
+                DungeonPlayer dungeonPlayer = main.getDungeonUtils().getPlayers().get(entity.getName());
                 if (dungeonPlayer.isGhost() || (!dungeonPlayer.isCritical() && !dungeonPlayer.isLow())) {
                     continue;
                 }

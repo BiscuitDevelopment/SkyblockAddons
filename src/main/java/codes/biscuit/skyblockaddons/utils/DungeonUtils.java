@@ -5,6 +5,8 @@ import codes.biscuit.skyblockaddons.core.DungeonPlayer;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -13,12 +15,25 @@ public class DungeonUtils {
     private static final Pattern PATTERN_MILESTONE = Pattern.compile("^.+?(Healer|Tank|Mage|Archer|Berserk)\\sMilestone\\s.+?([❶-❿]).+?(§r§.+[0-9]+)\\s.+?");
     private static final Pattern PATTERN_COLLECTED_ESSENCES = Pattern.compile("§.+?([0-9]+)\\s(Wither|Spider|Undead|Dragon|Gold|Diamond|Ice)\\sEssence");
 
+    /** The last dungeon server the player played on */
+    private String lastServerId;
+
+    /** The latest milestone the player received during a dungeon game */
     private DungeonPlayer.Milestone milestone;
+
+    /** The latest essences the player collected during a dungeon game */
     private DungeonPlayer.CollectedEssences collectedEssences;
 
+    /** The current teammates of the dungeon game */
+    private Map<String, DungeonPlayer> players = new HashMap<>();
+
+    /**
+     * Clear the dungeon game data. Called by {@link codes.biscuit.skyblockaddons.utils.Utils} each new game
+     */
     public void reset() {
         milestone = null;
         collectedEssences.reset();
+        players.clear();
     }
 
     public DungeonPlayer.Milestone parseMilestone(String message) {

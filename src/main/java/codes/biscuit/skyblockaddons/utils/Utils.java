@@ -37,6 +37,7 @@ import net.minecraft.scoreboard.ScoreObjective;
 import net.minecraft.scoreboard.ScorePlayerTeam;
 import net.minecraft.scoreboard.Scoreboard;
 import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.IChatComponent;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Vec4b;
@@ -82,6 +83,7 @@ public class Utils {
     ));
 
     private static final Pattern SERVER_REGEX = Pattern.compile("([0-9]{2}/[0-9]{2}/[0-9]{2}) (mini[0-9]{1,3}[A-Za-z])");
+    private static final Pattern TABLIST_SERVER_REGEX = Pattern.compile("[0-9]{2}/[0-9]{2}/[0-9]{2}\\s\\s(mini[0-9]{1,3}[A-Za-z])");
     private static final Pattern PURSE_REGEX = Pattern.compile("(?:Purse|Piggy): (?<coins>[0-9.]*)(?: .*)?");
     private static final Pattern SLAYER_TYPE_REGEX = Pattern.compile("(?<type>Tarantula Broodfather|Revenant Horror|Sven Packmaster) (?<level>[IV]+)");
     private static final Pattern SLAYER_PROGRESS_REGEX = Pattern.compile("(?<progress>[0-9.k]*)/(?<total>[0-9.k]*) (?:Kills|Combat XP)$");
@@ -145,8 +147,6 @@ public class Utils {
     private EnumUtils.SlayerQuest slayerQuest;
     private int slayerQuestLevel = 1;
     private boolean slayerBossAlive;
-
-    private Map<String, DungeonPlayer> dungeonPlayers = new HashMap<>();
 
     private SkyblockAddons main = SkyblockAddons.getInstance();
     private Logger logger = SkyblockAddons.getInstance().getLogger();
@@ -346,6 +346,12 @@ public class Utils {
                     if (strippedUnformatted.contains("Dungeon Cleared: ")) {
                         foundInDungeon = true;
                         inDungeon = true;
+
+                        String lastServer = main.getDungeonUtils().getLastServerId();
+                        if (lastServer != null && !lastServer.equals(serverID)) {
+                            main.getDungeonUtils().reset();
+                        }
+                        main.getDungeonUtils().setLastServerId(serverID);
                     }
 
                     matcher = SLAYER_TYPE_REGEX.matcher(strippedUnformatted);
@@ -372,6 +378,7 @@ public class Utils {
                         slayerBossAlive = true;
                     }
 
+                    Map<String, DungeonPlayer> dungeonPlayers = main.getDungeonUtils().getPlayers();
                     if (inDungeon) {
                         DungeonPlayer dungeonPlayer = DungeonPlayer.fromScoreboardLine(strippedColored);
                         if (dungeonPlayer != null) {
@@ -416,6 +423,29 @@ public class Utils {
             // If we don't find a scoreboard for 10s, then we know they actually left the server.
             if (foundScoreboard || System.currentTimeMillis() - lastFoundScoreboard > 10000) {
                 MinecraftForge.EVENT_BUS.post(new SkyblockLeftEvent());
+            }
+        }
+    }
+
+    public void parseTabList() {
+        IChatComponent tabHeaderChatComponent = Minecraft.getMinecraft().ingameGUI.getTabList().header;
+
+        // Convert tab header to a String
+        StringBuilder tabHeaderString = new StringBuilder();
+        if (tabHeaderChatComponent != null) {
+            for (IChatComponent line : tabHeaderChatComponent.getSiblings()) {
+                tabHeaderString.append(line.getUnformattedText());
+            }
+        }
+
+        // Match the TabHeaderString for ServerId
+        Matcher m = TABLIST_SERVER_REGEX.matcher(tabHeaderString.toString());
+        while (m.find()) {
+            String id = m.group(1);
+
+            // Fix: Dungeon game server is not included in the scoreboard sidebar
+            if (!SkyblockAddons.getInstance().getUtils().getServerID().equals(id)) {
+                SkyblockAddons.getInstance().getUtils().setServerID(id);
             }
         }
     }
@@ -1094,6 +1124,7 @@ public class Utils {
         // Add these markers later because they are the smooth client side ones
         // and should get priority.
         Set<MapMarker> markersToAdd = new LinkedHashSet<>();
+        Map<String, DungeonPlayer> dungeonPlayers = main.getDungeonUtils().getPlayers();
         for (EntityPlayer entityPlayer : mc.theWorld.playerEntities) {
             // We only add smooth markers for us & our teammates
             if (!dungeonPlayers.containsKey(entityPlayer.getName()) && mc.thePlayer != entityPlayer) {
