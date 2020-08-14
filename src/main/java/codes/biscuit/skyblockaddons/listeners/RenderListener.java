@@ -68,6 +68,11 @@ import java.util.*;
 import static net.minecraft.client.gui.Gui.icons;
 
 public class RenderListener {
+    private final static String[] DUNGEONS_ESSENCES = {
+            "wither", "spider", "undead",
+            "dragon", "gold",
+            "diamond", "ice"
+    };
 
     private final static ItemStack BONE_ITEM = new ItemStack(Items.bone);
     private final static ResourceLocation BARS = new ResourceLocation("skyblockaddons", "bars.png");
@@ -87,6 +92,15 @@ public class RenderListener {
     private final static ResourceLocation DUNGEON_MAP = new ResourceLocation("skyblockaddons", "dungeonsmap.png");
 
     private static ResourceLocation CRITICAL = new ResourceLocation("skyblockaddons", "critical.png");
+
+    private final static ResourceLocation DUNGEON_ESSENCE_WITHER = new ResourceLocation("skyblockaddons", "essences/wither.png");
+    private final static ResourceLocation DUNGEON_ESSENCE_SPIDER = new ResourceLocation("skyblockaddons", "essences/spider.png");
+    private final static ResourceLocation DUNGEON_ESSENCE_UNDEAD = new ResourceLocation("skyblockaddons", "essences/undead.png");
+    private final static ResourceLocation DUNGEON_ESSENCE_DRAGON = new ResourceLocation("skyblockaddons", "essences/dragon.png");
+    private final static ResourceLocation DUNGEON_ESSENCE_GOLD = new ResourceLocation("skyblockaddons", "essences/gold.png");
+    private final static ResourceLocation DUNGEON_ESSENCE_DIAMOND = new ResourceLocation("skyblockaddons", "essences/diamond.png");
+    private final static ResourceLocation DUNGEON_ESSENCE_ICE = new ResourceLocation("skyblockaddons", "essences/ice.png");
+
 
     private final static ItemStack WATER_BUCKET = new ItemStack(Items.water_bucket);
     private final static ItemStack IRON_SWORD = new ItemStack(Items.iron_sword);
@@ -804,6 +818,15 @@ public class RenderListener {
             }
 
             text = "Milestone " + milestone.getLevel();
+        } else if (feature == Feature.DUNGEONS_COLLECTED_ESSENCES_DISPLAY) {
+            DungeonPlayer.CollectedEssences collectedEssences = main.getDungeonUtils().getCollectedEssences();
+            if (buttonLocation != null) {
+                collectedEssences = DungeonPlayer.CollectedEssences.empty();
+            } else if (!main.getUtils().isInDungeon() || collectedEssences == null) {
+                return;
+            }
+
+            text = "§lEssences";
         } else {
             return;
         }
@@ -840,6 +863,11 @@ public class RenderListener {
         if (feature == Feature.SHOW_DUNGEON_MILESTONE) {
             width += 20;
             height += 15;
+        }
+
+        if (feature == Feature.DUNGEONS_COLLECTED_ESSENCES_DISPLAY) {
+            width += 20;
+            height += 80;
         }
 
         x = transformXY(x, width, scale);
@@ -986,6 +1014,74 @@ public class RenderListener {
             main.getUtils().drawTextWithStyle(text, x + 15, y + 4, color);
             main.getUtils().drawTextWithStyle(milestone.getValue(), x + 10 + (w / 2), y + 13, Color.RED.getRGB());
             ChromaManager.doneRenderingText();
+        } else if (feature == Feature.DUNGEONS_COLLECTED_ESSENCES_DISPLAY) {
+            DungeonPlayer.CollectedEssences collectedEssences = main.getDungeonUtils().getCollectedEssences();
+            if (buttonLocation != null) {
+                collectedEssences = DungeonPlayer.CollectedEssences.empty();
+            }
+            final float ICON_WIDTH = 16F;
+            final float ICON_HEIGHT = 16F;
+
+            main.getUtils().drawCenteredString(text, x + (width / 2), y, color);
+
+            x += 5;
+
+            final int length = DUNGEONS_ESSENCES.length;
+            for (int i = 1; i <= length; i++) {
+                String type = DUNGEONS_ESSENCES[i - 1];
+                int value;
+                ResourceLocation resourceLocation;
+
+                switch (type) {
+                    case "wither":
+                        value = collectedEssences.getWither();
+                        resourceLocation = DUNGEON_ESSENCE_WITHER;
+                        break;
+                    case "spider":
+                        value = collectedEssences.getSpider();
+                        resourceLocation = DUNGEON_ESSENCE_SPIDER;
+                        break;
+                    case "undead":
+                        value = collectedEssences.getUndead();
+                        resourceLocation = DUNGEON_ESSENCE_UNDEAD;
+                        break;
+                    case "dragon":
+                        value = collectedEssences.getDragon();
+                        resourceLocation = DUNGEON_ESSENCE_DRAGON;
+                        break;
+                    case "gold":
+                        value = collectedEssences.getGold();
+                        resourceLocation = DUNGEON_ESSENCE_GOLD;
+                        break;
+                    case "diamond":
+                        value = collectedEssences.getDiamond();
+                        resourceLocation = DUNGEON_ESSENCE_DIAMOND;
+                        break;
+                    case "ice":
+                        value = collectedEssences.getIce();
+                        resourceLocation = DUNGEON_ESSENCE_ICE;
+                        break;
+                    default:
+                        value = 0;
+                        resourceLocation = null;
+                        break;
+                }
+
+                mc.getTextureManager().bindTexture(resourceLocation);
+                main.getUtils().drawModalRectWithCustomSizedTexture(x, y + 10, 0, 0, ICON_WIDTH, ICON_HEIGHT, ICON_WIDTH, ICON_HEIGHT);
+                main.getUtils().drawTextWithStyle("" + value, x + 20, y + 15, ColorCode.WHITE.getRGB());
+
+                if (i % 2 == 0) {
+                    y += 20;
+                    if (i + 1 == length) {
+                        x -= 20;
+                    } else {
+                        x -= 40;
+                    }
+                } else {
+                    x += 40;
+                }
+            }
         } else {
             ChromaManager.renderingText(feature);
             main.getUtils().drawTextWithStyle(text, x, y, color);

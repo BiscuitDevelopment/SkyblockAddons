@@ -142,6 +142,7 @@ public enum Message {
     SETTING_SHOW_GLOWING_ITEMS_ON_ISLAND(MessageObject.SETTING, "showGlowingItemsOnIsland"),
     SETTING_SHOW_ITEM_DUNGEON_FLOOR(MessageObject.SETTING, "showItemDungeonFloor"),
     SETTING_SHOW_DUNGEON_MILESTONE(MessageObject.SETTING, "showDungeonMilestone"),
+    SETTING_DUNGEONS_COLLECTED_ESSENCES_DISPLAY(MessageObject.SETTING, "dungeonsCollectedEssencesDisplay"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.BACKPACK_STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.BACKPACK_STYLE, "compact"),
