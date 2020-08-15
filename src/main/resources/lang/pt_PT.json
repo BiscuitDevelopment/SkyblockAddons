@@ -238,8 +238,8 @@
   "commandUsage": {
     "sba": "Abrir o menu principal",
     "sba.brand": "§e(Desenvolvedor) §7Mostrar o nome do servidor",
-    "sba.brand.brandOutput": "Server Brand: %brand%",
-    "sba.brand.notFound": "Server brand not found!",
+    "sba.brand.brandOutput": "Marca do servidor: %brand%",
+    "sba.brand.notFound": "Não foi possível encontrar a marca do servidor!",
     "sba.copyEntity": "§e(Dev) §7Copy NBT data for entities of the given name(s) within the given radius around the player",
     "sba.copySidebar": "§e(Dev) §7Copy the scoreboard text.",
     "sba.dev": "Ativar o modo de programador",
