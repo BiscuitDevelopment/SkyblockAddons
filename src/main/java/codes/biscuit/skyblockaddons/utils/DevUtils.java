@@ -68,14 +68,12 @@ public class DevUtils {
         Utils utils = SkyblockAddons.getInstance().getUtils();
 
         if (scoreboard == null) {
-            utils.sendErrorMessage("No scoreboard found!");
-            return;
+            throw new NullPointerException("Scoreboard cannot be null!");
         }
 
         ScoreObjective sideBarObjective = scoreboard.getObjectiveInDisplaySlot(1);
         if (sideBarObjective == null) {
-            utils.sendErrorMessage("Nothing is being displayed in the sidebar!");
-            return;
+            throw new NullPointerException("Nothing is being displayed in the sidebar!");
         }
 
         StringBuilder sb = new StringBuilder();
