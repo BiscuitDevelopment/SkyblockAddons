@@ -143,7 +143,8 @@
     "showCriticalTeammates": "Show Critical Dungeon Teammates",
     "showGlowingItemsOnIsland": "Show Glowing Items On Island",
     "showItemDungeonFloor": "Show the Floor where a Dungeons Item was Obtained",
-    "showDungeonMilestone": "Show Dungeon Milestone"
+    "showDungeonMilestone": "Show Dungeon Milestone",
+    "dungeonsCollectedEssencesDisplay": "Dungeons Collected Essences Display"
   },
   "messages": {
     "dropConfirmation": "Opet baci ovu stvar za potvrdu!",
