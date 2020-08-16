@@ -143,7 +143,8 @@
     "showCriticalTeammates": "Hiện Đồng đội bị Hấp hối trong Dungeon",
     "showGlowingItemsOnIsland": "Hiện Vật phẩm Nổi Viền trên Đảo",
     "showItemDungeonFloor": "Hiện Tầng có Vật phẩm Dungeon đã được Thu thập",
-    "showDungeonMilestone": "Hiện Cột mốc Dungeon"
+    "showDungeonMilestone": "Hiện Cột mốc Dungeon",
+    "dungeonsCollectedEssencesDisplay": "Dungeons Collected Essences Display"
   },
   "messages": {
     "dropConfirmation": "Nhấn \"Q\" Thêm Một Lần Nữa Để Xác Nhận!",
