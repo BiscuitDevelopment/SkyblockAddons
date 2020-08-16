@@ -143,7 +143,8 @@
     "showCriticalTeammates": "Laat Kritische Dungeon Teamgenoten Zien",
     "showGlowingItemsOnIsland": "Toon Gloeiende Voorwerpen Op Eiland",
     "showItemDungeonFloor": "Show the Floor where a Dungeons Item was Obtained",
-    "showDungeonMilestone": "Show Dungeon Milestone"
+    "showDungeonMilestone": "Show Dungeon Milestone",
+    "dungeonsCollectedEssencesDisplay": "Dungeons Collected Essences Display"
   },
   "messages": {
     "dropConfirmation": "Laat dit object opnieuw vallen om te Bevestigen!",
