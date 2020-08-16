@@ -244,7 +244,7 @@
     "sba.copyEntity": "§e(Dev) §7Skopiuj dane NBT dla podmiotów o podanej nazwie(ach) w danym promieniu wokół gracza",
     "sba.copySidebar": "§e(Dev) §7Copy the scoreboard text.",
     "sba.dev": "Włącz tryb programisty",
-    "sba.dev.disabled": "Developer mode disabled!",
+    "sba.dev.disabled": "Tryb dewelopera wyłącozny!",
     "sba.dev.enabled": "Developer mode enabled! TIP: Press \"%keyName%\" to copy NBT data!",
     "sba.edit": "Edytuj położenie w GUI",
     "sba.folder": "Otwórz Twój folder z modyfikacjami",
@@ -265,7 +265,7 @@
     "sba.set.zealotCounter.totalZealots": "Set total zealot count to %number%!",
     "sba.set.zealotCounter.wrongUsage": "Invalid selection! Please choose %options%.",
     "sba.set.zealotCounter.zealots": "Set current zealot count to %number%!",
-    "sba.wrongUsage.generic": "Wrong usage!",
+    "sba.wrongUsage.generic": "złe zastosowanie!",
     "sba.wrongUsage.subCommandNotFound": "The sub-command \"%sub-command%\" was not found."
   },
   "keyBindings": {
