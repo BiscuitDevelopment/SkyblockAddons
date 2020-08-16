@@ -13,22 +13,6 @@ import java.util.regex.Pattern;
 
 @Getter @Setter
 public class DungeonPlayer {
-
-    @Getter @Setter
-    public static class Milestone {
-        private DungeonClass dungeonClass;
-        private String level;
-        private String value;
-
-        public static Milestone zero(DungeonClass dungeonClass) {
-            Milestone milestone = new Milestone();
-            milestone.setDungeonClass(dungeonClass);
-            milestone.setLevel("⓿");
-            milestone.setValue("0");
-            return milestone;
-        }
-    }
-
     public static Pattern DUNGEON_PLAYER_LINE = Pattern.compile("^§.\\[(?<class>.)] (?<name>[\\w§]+) §(?<healthColor>.)(?<health>[\\w]+)(?:§c❤)?");
 
     private String name;
@@ -106,5 +90,73 @@ public class DungeonPlayer {
         this.dungeonClass = other.dungeonClass;
         this.health = other.health;
         this.healthColor = other.healthColor;
+    }
+
+    @Getter @Setter
+    public static class Milestone {
+        public static Milestone zero(DungeonClass dungeonClass) {
+            Milestone milestone = new Milestone();
+            milestone.setDungeonClass(dungeonClass);
+            milestone.setLevel("⓿");
+            milestone.setValue("0");
+            return milestone;
+        }
+
+        private DungeonClass dungeonClass;
+        private String level;
+        private String value;
+    }
+
+    @Getter
+    public static class CollectedEssences {
+        public static CollectedEssences empty() {
+            return new CollectedEssences();
+        }
+
+        private int wither;
+        private int spider;
+        private int undead;
+        private int dragon;
+        private int gold;
+        private int diamond;
+        private int ice;
+
+        public void reset() {
+            this.wither = 0;
+            this.spider = 0;
+            this.undead = 0;
+            this.dragon = 0;
+            this.gold = 0;
+            this.diamond = 0;
+            this.ice = 0;
+        }
+
+        public void addWither(int value) {
+            wither += value;
+        }
+
+        public void addSpider(int value) {
+            spider += value;
+        }
+
+        public void addUndead(int value) {
+            undead += value;
+        }
+
+        public void addDragon(int value) {
+            dragon += value;
+        }
+
+        public void addGold(int value) {
+            gold += value;
+        }
+
+        public void addDiamond(int value) {
+            diamond += value;
+        }
+
+        public void addIce(int value) {
+            ice += value;
+        }
     }
 }
