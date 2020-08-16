@@ -144,7 +144,7 @@
     "showGlowingItemsOnIsland": "Mostrar Itens Brilhantes na Ilha",
     "showItemDungeonFloor": "Mostrar o Andar onde um Item de Masmorra foi Obtido",
     "showDungeonMilestone": "Mostrar Marco da Masmorra",
-    "dungeonsCollectedEssencesDisplay": "Dungeons Collected Essences Display"
+    "dungeonsCollectedEssencesDisplay": "Exibição de Essências Coletadas das Masmorras"
   },
   "messages": {
     "dropConfirmation": "Large este item de novo para confirmar!",
