@@ -165,6 +165,11 @@ public class PlayerListener {
             if (main.isUsingOofModv1() && restMessage.trim().length() == 0) {
                 e.setCanceled(true);
             }
+
+            if (main.getUtils().isInDungeon() && main.getConfigValues().isEnabled(Feature.DUNGEONS_COLLECTED_ESSENCES_DISPLAY)) {
+                main.getDungeonUtils().parseEssence(restMessage);
+            }
+
             e.message = new ChatComponentText(restMessage);
         } else {
             String formattedText = e.message.getFormattedText();
@@ -239,7 +244,7 @@ public class PlayerListener {
                 }
             }
 
-            if (main.getConfigValues().isEnabled(Feature.SHOW_DUNGEON_MILESTONE)) {
+            if (main.getUtils().isInDungeon() && main.getConfigValues().isEnabled(Feature.SHOW_DUNGEON_MILESTONE)) {
                 DungeonPlayer.Milestone milestone = main.getDungeonUtils().parseMilestone(formattedText);
                 if (milestone != null) {
                     main.getDungeonUtils().setMilestone(milestone);
@@ -358,6 +363,8 @@ public class PlayerListener {
                     main.getUtils().playLoudSound("random.successful_hit", 0.8);
                 }
                 if (timerTick == 20) { // Add natural mana every second (increase is based on your max mana).
+                    main.getUtils().parseTabList();
+
                     if (main.getRenderListener().isPredictMana()) {
                         changeMana(getAttribute(Attribute.MAX_MANA) / 50);
                         if (getAttribute(Attribute.MANA) > getAttribute(Attribute.MAX_MANA))
