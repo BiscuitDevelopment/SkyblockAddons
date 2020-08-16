@@ -143,7 +143,8 @@
     "showCriticalTeammates": "Pokaż Członków Drużyny W Krytycznym Stanie",
     "showGlowingItemsOnIsland": "Pokaż Świecące Przedmioty Na Wyspie",
     "showItemDungeonFloor": "Pokaż piętro gdzie został zdobyty przedmiot Lochy",
-    "showDungeonMilestone": "Pokaż kamień milowy Lochu"
+    "showDungeonMilestone": "Pokaż kamień milowy Lochu",
+    "dungeonsCollectedEssencesDisplay": "Dungeons Collected Essences Display"
   },
   "messages": {
     "dropConfirmation": "Wyrzuć ten przedmiot ponownie, aby potwierdzić!",
