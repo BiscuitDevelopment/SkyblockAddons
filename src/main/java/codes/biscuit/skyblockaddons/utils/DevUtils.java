@@ -7,6 +7,7 @@ import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.*;
 import net.minecraft.scoreboard.Score;
@@ -41,6 +42,8 @@ public class DevUtils {
 
     public static final int ENTITY_COPY_RADIUS = 3;
     public static final int SIDEBAR_COPY_WIDTH = 30;
+
+    public static boolean captureNPCLocation = false;
 
     static {
         ENTITY_NAMES.add("PlayerSP");
@@ -422,6 +425,29 @@ public class DevUtils {
         }
 
         return stringBuilder.toString();
+    }
+
+    public static void copyNPCLocation(Entity target) {
+        String type = "Unknown";
+        double x = 0D, y = 0D, z = 0D;
+
+        if (target instanceof EntityOtherPlayerMP) {
+            type = "Player";
+        } else if (target instanceof EntityVillager) {
+            type = "Villager";
+        } else {
+            return;
+        }
+
+        x = target.posX;
+        y = target.posY;
+        z = target.posZ;
+
+        String locationData = x + "D, " +
+                y + "D, " +
+                z + "D, ";
+
+        writeToClipboard(locationData, "NPC(" + type + ") location captured!");
     }
 
     /*

@@ -81,7 +81,8 @@ public class SkyblockAddonsCommand extends CommandBase {
                     "§b● " + CommandSyntax.DEV + " §7- " + Message.COMMAND_USAGE_SBA_DEV.getMessage() + "\n" +
                     "§b● " + CommandSyntax.BRAND + " §7- " + Message.COMMAND_USAGE_SBA_BRAND.getMessage() + "\n" +
                     "§b● " + CommandSyntax.COPY_ENTITY + " §7- " + Message.COMMAND_USAGE_SBA_COPY_ENTITY.getMessage() + "\n" +
-                    "§b● " + CommandSyntax.COPY_SIDEBAR + " §7- " + Message.COMMAND_USAGE_SBA_COPY_SIDEBAR.getMessage();
+                    "§b● " + CommandSyntax.COPY_SIDEBAR + " §7- " + Message.COMMAND_USAGE_SBA_COPY_SIDEBAR.getMessage() + "\n" +
+                    "§b● " + CommandSyntax.CAPTURE_NPC_LOCATION + " §7- " + Message.COMMAND_USAGE_CAPTURE_NPC_LOCATION.getMessage();
         }
 
         usage = usage + "\n" + FOOTER;
@@ -123,6 +124,9 @@ public class SkyblockAddonsCommand extends CommandBase {
             case "copyentity":
                 usageBuilder.append(SubCommandUsage.COPY_ENTITY);
                 break;
+            case "capture-npc-loc":
+                usageBuilder.append(SubCommandUsage.CAPTURE_NPC_LOCATION);
+                break;
             default:
                 return null;
         }
@@ -143,6 +147,8 @@ public class SkyblockAddonsCommand extends CommandBase {
                     return getListOfStringsMatchingLastWord(args, DevUtils.ENTITY_NAMES);
                 } else if (args[0].equalsIgnoreCase("copySidebar")) {
                     return getListOfStringsMatchingLastWord(args, "formatted");
+                } else if (args[0].equalsIgnoreCase("capture-npc-loc")) {
+                    return getListOfStringsMatchingLastWord(args, "enable", "disable");
                 }
             }
         }
@@ -258,6 +264,26 @@ public class SkyblockAddonsCommand extends CommandBase {
                         } catch (IllegalArgumentException e) {
                             throw new WrongUsageException(e.getMessage());
                         }
+                    } else if (args[0].equalsIgnoreCase("capture-npc-loc")) {
+                        boolean newValue;
+                        if (args.length >= 2) {
+                            if (args[1].equalsIgnoreCase("enable")) {
+                                newValue = true;
+                            } else if (args[1].equalsIgnoreCase("disable")) {
+                                newValue = false;
+                            } else {
+                                throw new WrongUsageException(Message.COMMAND_USAGE_CAPTURE_NPC_LOCATION.getMessage());
+                            }
+                        } else {
+                            newValue = !DevUtils.captureNPCLocation;
+                        }
+
+                        DevUtils.captureNPCLocation = newValue;
+                        if (newValue) {
+                            main.getUtils().sendMessage(ColorCode.GREEN + Message.COMMAND_USAGE_CAPTURE_NPC_LOCATION_ENABLED.getMessage());
+                        } else {
+                            main.getUtils().sendMessage(ColorCode.RED + Message.COMMAND_USAGE_CAPTURE_NPC_LOCATION_DISABLED.getMessage());
+                        }
                     } else {
                         throw new WrongUsageException(Message.COMMAND_USAGE_WRONG_USAGE_SUBCOMMAND_NOT_FOUND.getMessage(args[0]));
                     }
@@ -283,7 +309,7 @@ public class SkyblockAddonsCommand extends CommandBase {
      Developer mode commands are not included if developer mode is disabled.
      */
     private List<String> getSubCommandTabCompletionOptions(String[] args) {
-        String[] subCommands = {"help", "set", "edit", "folder", "dev", "copySidebar", "brand", "copyEntity"};
+        String[] subCommands = {"help", "set", "edit", "folder", "dev", "copySidebar", "brand", "copyEntity", "capture-npc-loc"};
 
         if (main.isDevMode()) {
             return getListOfStringsMatchingLastWord(args, subCommands);
@@ -327,7 +353,8 @@ public class SkyblockAddonsCommand extends CommandBase {
         DEV("/sba dev"),
         BRAND("/sba brand"),
         COPY_ENTITY("/sba copyEntity [EntityNames] [radius]"),
-        COPY_SIDEBAR("/sba sidebar [formatted: boolean]");
+        COPY_SIDEBAR("/sba sidebar [formatted: boolean]"),
+        CAPTURE_NPC_LOCATION("/sba capture-npc-loc");
 
         @Getter
         private final String syntax;
@@ -354,7 +381,8 @@ public class SkyblockAddonsCommand extends CommandBase {
         COPY_ENTITY(CommandSyntax.COPY_ENTITY, Message.SUBCOMMAND_HELP_COPY_ENTITY.getMessage(Integer.toString(DevUtils.ENTITY_COPY_RADIUS)),
                 Arrays.asList(CommandOption.ENTITY_NAMES, CommandOption.RADIUS)),
         COPY_SIDEBAR(CommandSyntax.COPY_SIDEBAR, Message.COMMAND_USAGE_SBA_COPY_SIDEBAR.getMessage(),
-                Collections.singletonList(CommandOption.FORMATTED))
+                Collections.singletonList(CommandOption.FORMATTED)),
+        CAPTURE_NPC_LOCATION(CommandSyntax.CAPTURE_NPC_LOCATION, Message.SUBCOMMAND_HELP_CAPTURE_NPC_CLOATION.getMessage(), null)
         ;
         private final CommandSyntax syntax;
         private final String description;

@@ -278,6 +278,9 @@ public enum Message {
     COMMAND_USAGE_SBA_SET_ZEALOT_COUNTER_ZEALOTS(MessageObject.COMMAND_USAGE, "sba.set.zealotCounter.zealots"),
     COMMAND_USAGE_WRONG_USAGE_GENERIC(MessageObject.COMMAND_USAGE, "sba.wrongUsage.generic"),
     COMMAND_USAGE_WRONG_USAGE_SUBCOMMAND_NOT_FOUND(MessageObject.COMMAND_USAGE, "sba.wrongUsage.subCommandNotFound"),
+    COMMAND_USAGE_CAPTURE_NPC_LOCATION(MessageObject.COMMAND_USAGE, "sba.captureNPCLocation"),
+    COMMAND_USAGE_CAPTURE_NPC_LOCATION_ENABLED(MessageObject.COMMAND_USAGE, "sba.captureNPCLocation.enabled"),
+    COMMAND_USAGE_CAPTURE_NPC_LOCATION_DISABLED(MessageObject.COMMAND_USAGE, "sba.captureNPCLocation.disabled"),
     SUBCOMMAND_HELP_COPY_ENTITY(MessageObject.COMMAND_USAGE, "sba.help.copyEntity"),
     SUBCOMMAND_HELP_COPY_ENTITY_ENTITY_NAMES(MessageObject.COMMAND_USAGE, "sba.help.copyEntity.entityNames"),
     SUBCOMMAND_HELP_COPY_ENTITY_RADIUS(MessageObject.COMMAND_USAGE, "sba.help.copyEntity.radius"),
@@ -289,6 +292,7 @@ public enum Message {
     SUBCOMMAND_HELP_SET_ZEALOT_COUNTER_TOTAL_ZEALOTS(MessageObject.COMMAND_USAGE, "sba.help.set.zealotCounter.totalZealots"),
     SUBCOMMAND_HELP_SET_ZEALOT_COUNTER_ZEALOTS(MessageObject.COMMAND_USAGE, "sba.help.set.zealotCounter.zealots"),
     SUBCOMMAND_HELP_SUBCOMMAND_NOT_FOUND(MessageObject.COMMAND_USAGE, "sba.help.subCommandNotFound"),
+    SUBCOMMAND_HELP_CAPTURE_NPC_CLOATION(MessageObject.COMMAND_USAGE, "sba.help.captureNPCLocation"),
 
     KEY_DEVELOPER_COPY_NBT(MessageObject.KEYBINDINGS, "developerCopyNBT")
     ;
