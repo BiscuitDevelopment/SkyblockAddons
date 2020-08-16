@@ -15,12 +15,11 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.logging.log4j.Logger;
 
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.net.URISyntaxException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 /**
  * This class reads data from the JSON files in the mod's resources or on the mod's Github repo and loads it into memory.
@@ -39,10 +38,8 @@ public class DataReader {
      * This method reads the data files from the mod's resources and fetches copies of the same files from a server.
      * If the server's copies are newer, they are loaded into memory. Otherwise, the local ones are loaded.
      *
-     * @throws URISyntaxException if the path to one of the data files is not a valid {@code URI}
-     * @throws IOException if an error occurred while reading one of the data files.
      */
-    public static void readAndLoadAll() throws IOException, URISyntaxException {
+    public static void readAndLoadAll() {
         readOnlineData();
         readEnchantedItemBlacklist();
         fetchAll();
@@ -52,12 +49,10 @@ public class DataReader {
     /**
      * Reads the enchanted item blacklist from {@code enchantedItemBlacklist.json} in the mod's resources
      *
-     * @throws URISyntaxException if the path to the file is not a valid {@code URI}
-     * @throws IOException if there was an error reading the file
      */
-    public static void readEnchantedItemBlacklist() throws URISyntaxException, IOException {
-        Path enchantedItemBlacklistPath = Paths.get(DataReader.class.getResource("/enchantedItemBlacklist.json").toURI());
-        JsonReader jsonReader = new JsonReader(Files.newBufferedReader(enchantedItemBlacklistPath, StandardCharsets.UTF_8));
+    public static void readEnchantedItemBlacklist() {
+        InputStream enchantedItemBlacklistStream = DataReader.class.getResourceAsStream("/enchantedItemBlacklist.json");
+        JsonReader jsonReader = new JsonReader(new BufferedReader(new InputStreamReader(enchantedItemBlacklistStream, StandardCharsets.UTF_8)));
 
         DataReader.blacklist = GSON.fromJson(jsonReader, EnchantedItemBlacklist.class);
     }
@@ -65,12 +60,10 @@ public class DataReader {
     /**
      * Reads the online data from {@code data.json} in the mod's resources
      *
-     * @throws URISyntaxException if the path to the file is not a valid {@code URI}
-     * @throws IOException if there was an error reading the file
      */
-    public static void readOnlineData() throws URISyntaxException, IOException {
-        Path onlineDataPath = Paths.get(DataReader.class.getResource("/data.json").toURI());
-        JsonReader jsonReader = new JsonReader(Files.newBufferedReader(onlineDataPath, StandardCharsets.UTF_8));
+    public static void readOnlineData() {
+        InputStream onlineDataStream = DataReader.class.getResourceAsStream("/data.json");
+        JsonReader jsonReader = new JsonReader(new BufferedReader(new InputStreamReader(onlineDataStream, StandardCharsets.UTF_8)));
 
         DataReader.onlineData = GSON.fromJson(jsonReader, OnlineData.class);
     }

@@ -118,7 +118,7 @@ public class SkyblockAddons {
     }
 
     @Mod.EventHandler
-    public void postInit(FMLPostInitializationEvent e) throws IOException, URISyntaxException {
+    public void postInit(FMLPostInitializationEvent e) {
         DataReader.readAndLoadAll();
         configValues.loadValues();
         persistentValues.loadValues();
