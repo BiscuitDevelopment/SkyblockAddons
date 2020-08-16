@@ -143,7 +143,8 @@
     "showCriticalTeammates": "แสดงcriticalผู้เล่นdungeon",
     "showGlowingItemsOnIsland": "ของดรอปบนเกาะเรืองแสง",
     "showItemDungeonFloor": "แสดงชั้นของ Dungeon ที่ได้รับของ",
-    "showDungeonMilestone": "แสดง Milestones ของ Dungeon"
+    "showDungeonMilestone": "แสดง Milestones ของ Dungeon",
+    "dungeonsCollectedEssencesDisplay": "Dungeons Collected Essences Display"
   },
   "messages": {
     "dropConfirmation": "กดทิ้งของอีกที่เพื่อยืนยันทิ้งของสิ่งนี้!",
