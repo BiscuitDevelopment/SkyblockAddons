@@ -143,7 +143,8 @@
     "showCriticalTeammates": "显示地下城濒死队友",
     "showGlowingItemsOnIsland": "显示在岛上的发光物品",
     "showItemDungeonFloor": "显示获取的地下城物品的对应层数",
-    "showDungeonMilestone": "显示地下城里程碑"
+    "showDungeonMilestone": "显示地下城里程碑",
+    "dungeonsCollectedEssencesDisplay": "Dungeons Collected Essences Display"
   },
   "messages": {
     "dropConfirmation": "再次丢弃此物品以确认!",
