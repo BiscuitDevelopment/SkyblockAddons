@@ -247,12 +247,12 @@
     "sba.dev.enabled": "Developer mode enabled! TIP: Press \"%keyName%\" to copy NBT data!",
     "sba.edit": "GUI 위치 편집",
     "sba.folder": "모드 폴더 열기",
-    "sba.folder.error": "An error occurred trying to open the mods folder: %s",
+    "sba.folder.error": "모드 폴더를 여는 도중 오류가 발생하였습니다: %s",
     "sba.help": "Show this help message. If a command is provided, detailed help about that command is shown.",
     "sba.help.copyEntity": "Copies the NBT data of entities. The types of entities included and the radius around the player to copy data from can be customized. If no options are given, the default settings are used. The default settings are: include players, armor stands, and mobs, and a radius of %radius% blocks. If the radius isn't given, the default radius is used.",
     "sba.help.copyEntity.entityNames": "Names of the types of entities you want to copy data for (e.g. Player, Creeper). Press \"Tab\" after typing the command for a full list. Separate multiple names with commas, names are case-sensitive.",
     "sba.help.copyEntity.radius": "The radius(in blocks) around the player to copy entity NBT data from",
-    "sba.help.copySidebar.formatted": "Determines if the formatting codes should be included when copying. Can be either \"true\" or \"false\", defaults to \"false\" if no value is provided. Formatting codes are copied if \"true\".",
+    "sba.help.copySidebar.formatted": "복사할 때 포맷팅 코드들이 포함되어야 하는지 결정합니다. \"참\" 혹은 \"거짓\" 이 될 수 있고, 만약에 아무런 값을 입력받지 않았다면 기본값인 \"거짓\" 이 됩니다. \"참\" 일때 포맷팅 코드들이 복사됩니다.",
     "sba.help.dev": "This command toggles developer mode. This mode is meant for developers Skyblock mods/tools. It provides raw data from the game such as entity and item NBT.",
     "sba.help.help.command": "the sub-command to get detailed usage for",
     "sba.help.set.zealotCounter": "Manually sets counts in the zealot counter.",
@@ -260,12 +260,12 @@
     "sba.help.set.zealotCounter.totalZealots": "총 질럿 킬수",
     "sba.help.set.zealotCounter.zealots": "Zealots killed since the last summoning eye drop",
     "sba.set.zealotCounter": "Manually set your zealot counts",
-    "sba.set.zealotCounter.eyes": "Set total summoning eye count to %number%!",
-    "sba.set.zealotCounter.totalZealots": "Set total zealot count to %number%!",
-    "sba.set.zealotCounter.wrongUsage": "Invalid selection! Please choose %options%.",
-    "sba.set.zealotCounter.zealots": "Set current zealot count to %number%!",
-    "sba.wrongUsage.generic": "Wrong usage!",
-    "sba.wrongUsage.subCommandNotFound": "The sub-command \"%sub-command%\" was not found."
+    "sba.set.zealotCounter.eyes": "전체 소환의 눈 카운트를 %number% (으)로 설정했습니다!",
+    "sba.set.zealotCounter.totalZealots": "전체 질럿 카운트를 %number% (으)로 설정했습니다!",
+    "sba.set.zealotCounter.wrongUsage": "잘못된 선택지입니다! %options% (을)를 선택해주세요.",
+    "sba.set.zealotCounter.zealots": "현재 질럿 카운트를 %number% (으)로 설정했습니다!",
+    "sba.wrongUsage.generic": "잘못된 사용법입니다!",
+    "sba.wrongUsage.subCommandNotFound": "부 명령어 \"%sub-command%\" (을)를 찾을 수 없었습니다."
   },
   "keyBindings": {
     "developerCopyNBT": "NBT 복사"
