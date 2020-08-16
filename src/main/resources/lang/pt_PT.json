@@ -144,7 +144,7 @@
     "showGlowingItemsOnIsland": "Itens brilhantes na ilha",
     "showItemDungeonFloor": "Show the Floor where a Dungeons Item was Obtained",
     "showDungeonMilestone": "Show Dungeon Milestone",
-    "dungeonsCollectedEssencesDisplay": "Dungeons Collected Essences Display"
+    "dungeonsCollectedEssencesDisplay": "Mostrar a essência recolhida nas Dungeons"
   },
   "messages": {
     "dropConfirmation": "Atira este item outra vez para confirmar!",
