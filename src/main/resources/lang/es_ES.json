@@ -244,7 +244,7 @@
     "sba.copyEntity": "§e(Dev) §7Copia datos NBT para entidades del nombre(s) dentro de un radio dado alrededor del jugador",
     "sba.copySidebar": "§e(Dev) §7Copy the scoreboard text.",
     "sba.dev": "Activar modo desarrollador",
-    "sba.dev.disabled": "Developer mode disabled!",
+    "sba.dev.disabled": "¡Modo desarrollador desactivado!",
     "sba.dev.enabled": "Developer mode enabled! TIP: Press \"%keyName%\" to copy NBT data!",
     "sba.edit": "Editar Posiciciones de GUI",
     "sba.folder": "Abrir tu carpeta de mods",
@@ -265,7 +265,7 @@
     "sba.set.zealotCounter.totalZealots": "Set total zealot count to %number%!",
     "sba.set.zealotCounter.wrongUsage": "Invalid selection! Please choose %options%.",
     "sba.set.zealotCounter.zealots": "Set current zealot count to %number%!",
-    "sba.wrongUsage.generic": "Wrong usage!",
+    "sba.wrongUsage.generic": "¡Uso incorrecto!",
     "sba.wrongUsage.subCommandNotFound": "The sub-command \"%sub-command%\" was not found."
   },
   "keyBindings": {
