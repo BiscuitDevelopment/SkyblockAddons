@@ -262,7 +262,7 @@
     "sba.help.set.zealotCounter.zealots": "Zealots asesinados desde el último Summoning Eye",
     "sba.set.zealotCounter": "Configura manualmente tus cuentas de zealotes",
     "sba.set.zealotCounter.eyes": "Set total summoning eye count to %number%!",
-    "sba.set.zealotCounter.totalZealots": "Set total zealot count to %number%!",
+    "sba.set.zealotCounter.totalZealots": "¡Establecer el recuento total de zealot en %number%!",
     "sba.set.zealotCounter.wrongUsage": "Invalid selection! Please choose %options%.",
     "sba.set.zealotCounter.zealots": "Set current zealot count to %number%!",
     "sba.wrongUsage.generic": "¡Uso incorrecto!",
