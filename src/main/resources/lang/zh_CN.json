@@ -144,7 +144,7 @@
     "showGlowingItemsOnIsland": "显示在岛上的发光物品",
     "showItemDungeonFloor": "显示获取的地下城物品的对应层数",
     "showDungeonMilestone": "显示地下城里程碑",
-    "dungeonsCollectedEssencesDisplay": "Dungeons Collected Essences Display"
+    "dungeonsCollectedEssencesDisplay": "Dungeons 收集到的内容显示"
   },
   "messages": {
     "dropConfirmation": "再次丢弃此物品以确认!",
