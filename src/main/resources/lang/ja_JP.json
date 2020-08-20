@@ -142,7 +142,7 @@
     "showHealingCircleWall": "ダンジョンのヒーリングの円壁を表示する(不安定)",
     "showCriticalTeammates": "負傷したダンジョン内の仲間を表示する",
     "showGlowingItemsOnIsland": "島でアイテムを光るようにする",
-    "showItemDungeonFloor": "Show the Floor where a Dungeons Item was Obtained",
+    "showItemDungeonFloor": "Show Floor Obtained on Dungeon Items",
     "showDungeonMilestone": "Show Dungeon Milestone",
     "dungeonsCollectedEssencesDisplay": "Dungeons Collected Essences Display"
   },
