@@ -142,7 +142,7 @@
     "showHealingCircleWall": "Zeige die Wand für den Heil-Kreis (Instabil)",
     "showCriticalTeammates": "Zeige kritische Dungeon-Teammates",
     "showGlowingItemsOnIsland": "Zeigt leuchtende Items auf deiner eigenen Insel",
-    "showItemDungeonFloor": "Show the Floor where a Dungeons Item was Obtained",
+    "showItemDungeonFloor": "Show Floor Obtained on Dungeon Items",
     "showDungeonMilestone": "Show Dungeon Milestone",
     "dungeonsCollectedEssencesDisplay": "Dungeons Collected Essences Display"
   },
