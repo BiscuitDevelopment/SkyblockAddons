@@ -5,6 +5,7 @@ import codes.biscuit.skyblockaddons.core.Attribute;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.Location;
 import codes.biscuit.skyblockaddons.core.Message;
+import codes.biscuit.skyblockaddons.core.npc.NPCUtils;
 import codes.biscuit.skyblockaddons.features.BaitManager;
 import codes.biscuit.skyblockaddons.features.EnchantedItemBlacklist;
 import codes.biscuit.skyblockaddons.features.EndstoneProtectorManager;
@@ -123,7 +124,9 @@ public class PlayerListener {
      */
     @SubscribeEvent()
     public void onWorldJoin(EntityJoinWorldEvent e) {
-        if (e.entity == Minecraft.getMinecraft().thePlayer) {
+        Entity entity = e.entity;
+
+        if (entity == Minecraft.getMinecraft().thePlayer) {
             lastWorldJoin = System.currentTimeMillis();
             lastBoss = -1;
             magmaTick = 1;
@@ -137,6 +140,12 @@ public class PlayerListener {
             if (doubleWarpMarker != null) {
                 IslandWarpGui.setDoubleWarpMarker(null);
                 Minecraft.getMinecraft().thePlayer.sendChatMessage("/warp "+doubleWarpMarker.getWarpName());
+            }
+
+            NPCUtils.getNpcLocations().clear();
+        } else {
+            if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.HIDE_PLAYERS_NEAR_NPCS) && NPCUtils.isNPC(entity)) {
+                NPCUtils.getNpcLocations().add(entity.getPositionVector());
             }
         }
     }
@@ -568,7 +577,7 @@ public class PlayerListener {
     @Getter private TreeMap<Long, Vec3> explosiveBowExplosions = new TreeMap<>();
 
     @SubscribeEvent()
-    public void onTickMagmaBossChecker(EntityEvent.EnteringChunk e) {
+    public void onEntitySpawn(EntityEvent.EnteringChunk e) {
         Entity entity = e.entity;
 
         if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.ZEALOT_COUNTER_EXPLOSIVE_BOW_SUPPORT) && entity instanceof EntityArrow) {

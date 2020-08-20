@@ -10,7 +10,7 @@ import java.util.Set;
 public class RendererLivingEntityHook {
 
     // no don't ask to be added lol, for now these are just like my admins
-    private static Set<String> coolPeople = Sets.newHashSet("Dinnerbone", "Biscut", "Pinpointed", "NightBerd", "Potat_owo");
+    private static Set<String> coolPeople = Sets.newHashSet("Dinnerbone", "Biscut", "Pinpointed", "Berded", "Potat_owo");
     private static boolean isCoolPerson;
 
     public static boolean equals(String string, Object otherString) {

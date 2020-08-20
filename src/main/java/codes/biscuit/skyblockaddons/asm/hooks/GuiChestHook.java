@@ -305,7 +305,7 @@ public class GuiChestHook {
         }
 
         if (main.getConfigValues().isEnabled(Feature.STOP_DROPPING_SELLING_RARE_ITEMS) && !main.getUtils().isInDungeon() &&
-                lowerChestInventory.hasCustomName() && NPCUtils.isFullMerchant(lowerChestInventory.getDisplayName().getUnformattedText())
+                lowerChestInventory.hasCustomName() && NPCUtils.isSellMerchant(lowerChestInventory)
                 && slotIn != null && slotIn.inventory instanceof InventoryPlayer) {
             if (!main.getUtils().getItemDropChecker().canDropItem(slotIn)) {
                 returnValue.cancel();
