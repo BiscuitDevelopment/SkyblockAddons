@@ -142,7 +142,7 @@
     "showHealingCircleWall": "Show Dungeon Healing Circle Wall (Unstable)",
     "showCriticalTeammates": "Mutasd a kritikális állapotban lévő csapat tagokat",
     "showGlowingItemsOnIsland": "Mutasd a ragyogó tárgyakat a szigeten",
-    "showItemDungeonFloor": "Show the Floor where a Dungeons Item was Obtained",
+    "showItemDungeonFloor": "Show Floor Obtained on Dungeon Items",
     "showDungeonMilestone": "Show Dungeon Milestone",
     "dungeonsCollectedEssencesDisplay": "Dungeons Collected Essences Display"
   },
