@@ -850,14 +850,13 @@ public class RenderListener {
         }
 
         if (feature == Feature.SHOW_DUNGEON_MILESTONE) {
-            width += 20;
-            height += 15;
+            width += 18 + 2;
+            height += 10;
         }
 
         if (feature == Feature.DUNGEONS_COLLECTED_ESSENCES_DISPLAY) {
             int maxNumberWidth = mc.fontRendererObj.getStringWidth("99");
             width = 18 + 2 + maxNumberWidth + 5 + 18 + 2 + maxNumberWidth;
-//            width = 40 + 18 + 2 + mc.fontRendererObj.getStringWidth("0");
             height = 18 * (int) Math.ceil(EssenceType.values().length / 2F);
         }
 
@@ -1000,11 +999,11 @@ public class RenderListener {
                 dungeonMilestone = DungeonMilestone.getZeroMilestone(DungeonClass.HEALER);
             }
 
-            renderItem(dungeonMilestone.getDungeonClass().getItem(), x, y + 2);
+            renderItem(dungeonMilestone.getDungeonClass().getItem(), x, y);
             ChromaManager.renderingText(feature);
-            main.getUtils().drawTextWithStyle(text, x + 18, y + 2, color);
+            main.getUtils().drawTextWithStyle(text, x + 18, y, color);
             main.getUtils().drawTextWithStyle(dungeonMilestone.getValue(), x + 18 + mc.fontRendererObj.getStringWidth(text) / 2F
-                    - mc.fontRendererObj.getStringWidth(dungeonMilestone.getValue()) / 2F, y + 2 + 10, color);
+                    - mc.fontRendererObj.getStringWidth(dungeonMilestone.getValue()) / 2F, y + 9, color);
             ChromaManager.doneRenderingText();
 
         } else if (feature == Feature.DUNGEONS_COLLECTED_ESSENCES_DISPLAY) {
