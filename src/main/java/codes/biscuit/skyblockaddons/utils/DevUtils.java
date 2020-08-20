@@ -244,7 +244,7 @@ public class DevUtils {
             copyEntityData(entityClasses, copyRadius);
         }
         else {
-            throw new IllegalArgumentException("Incorrect format! Use \"Class\" or \"Class,Class2,Class3\".");
+            throw new IllegalArgumentException("Incorrect format! Use \"Name\" or \"Name1,Name2,Name3\".");
         }
     }
 

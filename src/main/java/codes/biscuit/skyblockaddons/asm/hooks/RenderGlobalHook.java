@@ -12,11 +12,13 @@ import net.minecraft.client.renderer.RenderGlobal;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.culling.ICamera;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.item.EntityArmorStand;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.scoreboard.ScorePlayerTeam;
-import net.minecraft.util.AxisAlignedBB;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.opengl.GL11;
 
@@ -24,16 +26,18 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.nio.FloatBuffer;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class RenderGlobalHook {
+
+    private static final Pattern AUCTION_SHOWCASE_ARMOR_STAND_NAME_PATTERN = Pattern.compile("§e#\\d+ §f§f(§.+)");
+    private static final FloatBuffer BUF_FLOAT_4 = BufferUtils.createFloatBuffer(4);
 
     private static boolean stopLookingForOptifine = false;
 
     private static Method isFastRender = null;
     private static Method isShaders = null;
     private static Method isAntialiasing = null;
-
-    private static FloatBuffer BUF_FLOAT_4 = BufferUtils.createFloatBuffer(4);
 
     public static boolean shouldRenderSkyblockItemOutlines() {
         Minecraft mc = Minecraft.getMinecraft();
@@ -92,8 +96,6 @@ public class RenderGlobalHook {
         GlStateManager.enableDepth();
     }
 
-    private static AxisAlignedBB AUCTION_HOUSE = new AxisAlignedBB(14, 70, -89, 27, 81, -70);
-
     public static boolean blockRenderingSkyblockItemOutlines(ICamera camera, float partialTicks, double x, double y, double z, List<Entity> entities) {
         boolean shouldRenderOutlines = shouldRenderSkyblockItemOutlines();
 
@@ -138,8 +140,8 @@ public class RenderGlobalHook {
                     Location location = main.getUtils().getLocation();
 
                     if (entity instanceof EntityItem && (location == Location.VILLAGE || location == Location.AUCTION_HOUSE
-                            || location == Location.BANK || location == Location.BAZAAR) &&
-                            AUCTION_HOUSE.isVecInside(entity.getPositionVector())) {
+                            || location == Location.BANK || location == Location.BAZAAR || location == Location.COAL_MINE) &&
+                            isAuctionShowcaseItem((EntityItem) entity)) {
                         continue;
                     }
 
@@ -235,5 +237,20 @@ public class RenderGlobalHook {
         GL11.glTexEnvi(8960, 34184, 5890);
         GL11.glTexEnvi(8960, 34192, 768);
         GL11.glTexEnvi(8960, 34200, 770);
+    }
+
+    /*
+    Checks if the given EntityItem is an item being showcased in the Auction House
+    This works by detecting glass case the item is in.
+     */
+    public static boolean isAuctionShowcaseItem(EntityItem entityItem) {
+        for (EntityArmorStand entityArmorStand : entityItem.worldObj.getEntitiesWithinAABB(EntityArmorStand.class, entityItem.getEntityBoundingBox())) {
+            if (entityArmorStand.hasNoGravity() && entityArmorStand.getEquipmentInSlot(4).getItem() ==
+                    Item.getItemFromBlock(Blocks.glass)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
