@@ -142,7 +142,7 @@
     "showHealingCircleWall": "Toon Dungeon Genees Cirkel Muur (Onstabiel)",
     "showCriticalTeammates": "Laat Kritische Dungeon Teamgenoten Zien",
     "showGlowingItemsOnIsland": "Toon Gloeiende Voorwerpen Op Eiland",
-    "showItemDungeonFloor": "Show the Floor where a Dungeons Item was Obtained",
+    "showItemDungeonFloor": "Show Floor Obtained on Dungeon Items",
     "showDungeonMilestone": "Show Dungeon Milestone",
     "dungeonsCollectedEssencesDisplay": "Dungeons Collected Essences Display"
   },
