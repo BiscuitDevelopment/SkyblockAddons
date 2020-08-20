@@ -41,7 +41,7 @@ public class RenderManagerHook {
             if (main.getConfigValues().isEnabled(Feature.HIDE_PLAYERS_IN_LOBBY)) {
                 if (currentLocation == Location.VILLAGE || currentLocation == Location.AUCTION_HOUSE || currentLocation == Location.BANK) {
                     if ((entityIn instanceof EntityOtherPlayerMP || entityIn instanceof EntityFX || entityIn instanceof EntityItemFrame) &&
-                            !NPCUtils.isNPC(entityIn) && entityIn.getDistanceToEntity(mc.thePlayer) > 7) {
+                            !NPCUtils.isNPC(entityIn) && entityIn.getDistanceSqToEntity(mc.thePlayer) > HIDE_RADIUS_SQUARED) {
                         returnValue.cancel();
                     }
                 }
