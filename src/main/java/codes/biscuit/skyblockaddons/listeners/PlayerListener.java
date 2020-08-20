@@ -29,7 +29,6 @@ import net.minecraft.entity.monster.EntityBlaze;
 import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.monster.EntityMagmaCube;
 import net.minecraft.entity.monster.EntitySlime;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.entity.projectile.EntityFishHook;
 import net.minecraft.init.Items;
@@ -51,7 +50,6 @@ import net.minecraftforge.event.entity.living.EnderTeleportEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
-import net.minecraftforge.event.entity.player.FillBucketEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.ChunkEvent;
@@ -245,9 +243,9 @@ public class PlayerListener {
             }
 
             if (main.getUtils().isInDungeon() && main.getConfigValues().isEnabled(Feature.SHOW_DUNGEON_MILESTONE)) {
-                DungeonPlayer.Milestone milestone = main.getDungeonUtils().parseMilestone(formattedText);
-                if (milestone != null) {
-                    main.getDungeonUtils().setMilestone(milestone);
+                DungeonMilestone dungeonMilestone = main.getDungeonUtils().parseMilestone(formattedText);
+                if (dungeonMilestone != null) {
+                    main.getDungeonUtils().setDungeonMilestone(dungeonMilestone);
                 }
             }
 
@@ -802,7 +800,7 @@ public class PlayerListener {
 
                             colorCode = ItemRarity.values()[rarityIndex].getColorCode();
                         }
-                        e.toolTip.add(insertAt, "§7Base Stat Boost: " + colorCode + "+" + baseStatBoost + "%");
+                        e.toolTip.add(insertAt++, "§7Base Stat Boost: " + colorCode + "+" + baseStatBoost + "%");
                     }
                 }
             }
@@ -813,7 +811,7 @@ public class PlayerListener {
                     int floor = ItemUtils.getDungeonFloor(extraAttributes);
                     if (floor != -1) {
                         ColorCode colorCode = main.getConfigValues().getRestrictedColor(Feature.SHOW_ITEM_DUNGEON_FLOOR);
-                        e.toolTip.add(insertAt, "§7Obtained on Floor: " + colorCode + (floor == 0 ? "Entrance" : floor));
+                        e.toolTip.add(insertAt++, "§7Obtained on Floor: " + colorCode + (floor == 0 ? "Entrance" : floor));
                     }
                 }
             }
@@ -825,8 +823,7 @@ public class PlayerListener {
                 if (itemId != null) {
                     if (!Minecraft.getMinecraft().gameSettings.advancedItemTooltips) {
                         insertAt = e.toolTip.size();
-                    }
-                    else {
+                    } else {
                         // Before the NBT line
                         insertAt = e.toolTip.size() - 1;
                     }

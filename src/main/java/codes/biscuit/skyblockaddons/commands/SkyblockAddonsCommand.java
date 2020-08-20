@@ -346,15 +346,12 @@ public class SkyblockAddonsCommand extends CommandBase {
     private enum SubCommandUsage {
         HELP(CommandSyntax.HELP, Message.COMMAND_USAGE_SBA_HELP.getMessage(), Collections.singletonList(CommandOption.COMMAND)),
         EDIT(CommandSyntax.EDIT, Message.COMMAND_USAGE_SBA_EDIT.getMessage(), null),
-        SET(CommandSyntax.SET, Message.SUBCOMMAND_HELP_SET_ZEALOT_COUNTER.getMessage(), Arrays.asList(CommandOption.ZEALOTS,
-                CommandOption.EYES, CommandOption.TOTAL_ZEALOTS)),
+        SET(CommandSyntax.SET, Message.SUBCOMMAND_HELP_SET_ZEALOT_COUNTER.getMessage(), Arrays.asList(CommandOption.ZEALOTS, CommandOption.EYES, CommandOption.TOTAL_ZEALOTS)),
         FOLDER(CommandSyntax.FOLDER, Message.COMMAND_USAGE_SBA_FOLDER.getMessage(), null),
         DEV(CommandSyntax.DEV, Message.SUBCOMMAND_HELP_DEV.getMessage(), null),
         BRAND(CommandSyntax.BRAND, Message.COMMAND_USAGE_SBA_BRAND.getMessage(), null),
-        COPY_ENTITY(CommandSyntax.COPY_ENTITY, Message.SUBCOMMAND_HELP_COPY_ENTITY.getMessage(Integer.toString(DevUtils.ENTITY_COPY_RADIUS)),
-                Arrays.asList(CommandOption.ENTITY_NAMES, CommandOption.RADIUS)),
-        COPY_SIDEBAR(CommandSyntax.COPY_SIDEBAR, Message.COMMAND_USAGE_SBA_COPY_SIDEBAR.getMessage(),
-                Collections.singletonList(CommandOption.FORMATTED))
+        COPY_ENTITY(CommandSyntax.COPY_ENTITY, Message.SUBCOMMAND_HELP_COPY_ENTITY.getMessage(Integer.toString(DevUtils.ENTITY_COPY_RADIUS)), Arrays.asList(CommandOption.ENTITY_NAMES, CommandOption.RADIUS)),
+        COPY_SIDEBAR(CommandSyntax.COPY_SIDEBAR, Message.COMMAND_USAGE_SBA_COPY_SIDEBAR.getMessage(), Collections.singletonList(CommandOption.FORMATTED))
         ;
         private final CommandSyntax syntax;
         private final String description;

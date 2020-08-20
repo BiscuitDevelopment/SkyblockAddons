@@ -3,6 +3,7 @@ package codes.biscuit.skyblockaddons.features.enchantedItemBlacklist;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Location;
 import codes.biscuit.skyblockaddons.utils.ItemUtils;
+import com.google.common.collect.Lists;
 import lombok.Setter;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
@@ -18,41 +19,16 @@ import java.util.ArrayList;
  * on their private island, this class is used to check if the action should be blocked or allowed.
  */
 public class EnchantedItemPlacementBlocker {
-    private static final SkyblockAddons MAIN = SkyblockAddons.getInstance();
-    private static final ArrayList<Block> INTERACTIVE_BLOCKS = new ArrayList<>();
-    private static final ArrayList<Class<? extends Item>> CLASSES_OF_ITEMS_THAT_CAN_BE_PLACED = new ArrayList<>();
 
-    @Setter
-    private static EnchantedItemBlacklist blacklist;
+    private static final ArrayList<Block> INTERACTIVE_BLOCKS = Lists.newArrayList(Blocks.acacia_door, Blocks.anvil, Blocks.birch_door,
+            Blocks.brewing_stand, Blocks.chest, Blocks.crafting_table, Blocks.dark_oak_door, Blocks.enchanting_table, Blocks.furnace,
+            Blocks.iron_door, Blocks.iron_trapdoor, Blocks.jungle_door, Blocks.lever, Blocks.lit_furnace, Blocks.oak_door, Blocks.stone_button,
+            Blocks.trapdoor, Blocks.trapped_chest, Blocks.wooden_button);
 
-    static {
-        CLASSES_OF_ITEMS_THAT_CAN_BE_PLACED.add(ItemBucket.class);
-        CLASSES_OF_ITEMS_THAT_CAN_BE_PLACED.add(ItemRedstone.class);
-        CLASSES_OF_ITEMS_THAT_CAN_BE_PLACED.add(ItemReed.class);
-        CLASSES_OF_ITEMS_THAT_CAN_BE_PLACED.add(ItemSeedFood.class);
-        CLASSES_OF_ITEMS_THAT_CAN_BE_PLACED.add(ItemSeeds.class);
-        CLASSES_OF_ITEMS_THAT_CAN_BE_PLACED.add(ItemSkull.class);
+    private static final ArrayList<Class<?>> CLASSES_OF_ITEMS_THAT_CAN_BE_PLACED = Lists.newArrayList(ItemBucket.class, ItemRedstone.class,
+            ItemReed.class, ItemSeedFood.class, ItemSeeds.class, ItemSkull.class);
 
-        INTERACTIVE_BLOCKS.add(Blocks.acacia_door);
-        INTERACTIVE_BLOCKS.add(Blocks.anvil);
-        INTERACTIVE_BLOCKS.add(Blocks.birch_door);
-        INTERACTIVE_BLOCKS.add(Blocks.brewing_stand);
-        INTERACTIVE_BLOCKS.add(Blocks.chest);
-        INTERACTIVE_BLOCKS.add(Blocks.crafting_table);
-        INTERACTIVE_BLOCKS.add(Blocks.dark_oak_door);
-        INTERACTIVE_BLOCKS.add(Blocks.enchanting_table);
-        INTERACTIVE_BLOCKS.add(Blocks.furnace);
-        INTERACTIVE_BLOCKS.add(Blocks.iron_door);
-        INTERACTIVE_BLOCKS.add(Blocks.iron_trapdoor);
-        INTERACTIVE_BLOCKS.add(Blocks.jungle_door);
-        INTERACTIVE_BLOCKS.add(Blocks.lever);
-        INTERACTIVE_BLOCKS.add(Blocks.lit_furnace);
-        INTERACTIVE_BLOCKS.add(Blocks.oak_door);
-        INTERACTIVE_BLOCKS.add(Blocks.stone_button);
-        INTERACTIVE_BLOCKS.add(Blocks.trapdoor);
-        INTERACTIVE_BLOCKS.add(Blocks.trapped_chest);
-        INTERACTIVE_BLOCKS.add(Blocks.wooden_button);
-    }
+    @Setter private static EnchantedItemBlacklist blacklist;
 
     /**
      * Determine if the placement of this item should be blocked.
@@ -78,7 +54,7 @@ public class EnchantedItemPlacementBlocker {
         Also block both actions RIGHT_CLICK_BLOCK and RIGHT_CLICK_AIR because 2 events are sent,
         one with the first action and one with the second.
          */
-        if (MAIN.getUtils().getLocation() == Location.ISLAND && interactEvent.action != PlayerInteractEvent.Action.LEFT_CLICK_BLOCK
+        if (SkyblockAddons.getInstance().getUtils().getLocation() == Location.ISLAND && interactEvent.action != PlayerInteractEvent.Action.LEFT_CLICK_BLOCK
                 && canBePlaced(itemStack.getItem())) {
             for (String blacklistItemId : blacklist.enchantedItemIds) {
                 if (heldItemId.equals(blacklistItemId)) {
@@ -96,8 +72,8 @@ public class EnchantedItemPlacementBlocker {
                              The player will activate the block instead.
                              */
                             return willNotActivateBlock(interactEvent.action, interactEvent.entityPlayer, clickedBlock);
-                        }
-                        else {
+
+                        } else {
                             return false;
                         }
                     }
@@ -113,15 +89,14 @@ public class EnchantedItemPlacementBlocker {
              */
             if (interactEvent.action == PlayerInteractEvent.Action.RIGHT_CLICK_BLOCK && itemStack.isItemEnchanted() &&
                     blacklist.rarityLimit.compareTo(ItemUtils.getRarity(itemStack)) <= 0) {
-                Block clickedBlock = Minecraft.getMinecraft().theWorld.getBlockState(interactEvent.pos).getBlock();
-
                 /*
                  If the player right clicks on an interactive block like a chest, the item won't be used.
                  The player will activate the block instead.
                  */
+                Block clickedBlock = Minecraft.getMinecraft().theWorld.getBlockState(interactEvent.pos).getBlock();
                 return willNotActivateBlock(interactEvent.action, interactEvent.entityPlayer, clickedBlock);
-            }
-            else {
+
+            } else {
                 return false;
             }
         }

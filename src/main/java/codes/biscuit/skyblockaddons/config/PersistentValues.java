@@ -22,12 +22,9 @@ public class PersistentValues {
     private final File persistentValuesFile;
     private final Logger logger;
 
-    // Number of kills since last eye
-    private int kills;
-    // Lifetime zealots killed
-    private int totalKills;
-    // Lifetime summoning eyes obtained
-    private int summoningEyeCount;
+    private int kills; // Kills since last eye
+    private int totalKills; // Lifetime zealots killed
+    private int summoningEyeCount;// Lifetime summoning eyes
 
     private boolean blockCraftingIncompletePatterns = true;
     private CraftingPattern selectedCraftingPattern = CraftingPattern.FREE;

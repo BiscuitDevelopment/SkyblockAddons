@@ -1,14 +1,14 @@
 package codes.biscuit.skyblockaddons.features.enchantedItemBlacklist;
 
 import codes.biscuit.skyblockaddons.core.ItemRarity;
-import codes.biscuit.skyblockaddons.utils.data.DataReader;
+import codes.biscuit.skyblockaddons.utils.DataUtils;
 import lombok.Data;
 
 import java.util.List;
 
 /**
  * This is the blacklist used by the "Avoid Placing Enchanted Items" feature to determine which items to block.
- * This list is loaded from a file in {@link DataReader}.
+ * This list is loaded from a file in {@link DataUtils}.
  *
  * @see EnchantedItemPlacementBlocker
  */

@@ -1,6 +1,0 @@
-{
-  "uuid": "%uuid%",
-  "name": "SkyblockAddons",
-  "mainClass": "codes.biscuit.skyblockaddons.SkyblockAddonsLabyAddon",
-  "transformerClass": "codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsTransformer"
-}

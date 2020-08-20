@@ -18,7 +18,7 @@ import codes.biscuit.skyblockaddons.misc.Updater;
 import codes.biscuit.skyblockaddons.misc.scheduler.NewScheduler;
 import codes.biscuit.skyblockaddons.misc.scheduler.Scheduler;
 import codes.biscuit.skyblockaddons.misc.scheduler.SkyblockRunnable;
-import codes.biscuit.skyblockaddons.utils.data.DataReader;
+import codes.biscuit.skyblockaddons.utils.DataUtils;
 import codes.biscuit.skyblockaddons.utils.DungeonUtils;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.InventoryUtils;
@@ -38,8 +38,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.lwjgl.input.Keyboard;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
 import java.util.*;
 
 @Getter
@@ -119,7 +117,7 @@ public class SkyblockAddons {
 
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent e) {
-        DataReader.readAndLoadAll();
+        DataUtils.readLocalAndFetchOnline();
         configValues.loadValues();
         persistentValues.loadValues();
 
