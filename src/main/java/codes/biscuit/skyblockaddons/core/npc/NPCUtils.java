@@ -18,7 +18,7 @@ import java.util.Set;
  *
  * @author Biscuit
  * @author ILikePlayingGames
- * @version 1.0
+ * @version 2.0
  */
 public class NPCUtils {
 
@@ -61,26 +61,12 @@ public class NPCUtils {
      */
     public static boolean isNearNPC(Entity entityToCheck) {
         for (Vec3 npcLocation : npcLocations) {
-            if (getDistanceSquared(npcLocation, entityToCheck) <= HIDE_RADIUS_SQUARED) {
+            if (entityToCheck.getDistanceSq(npcLocation.xCoord, npcLocation.yCoord, npcLocation.zCoord) <= HIDE_RADIUS_SQUARED) {
                 return true;
             }
         }
 
         return false;
-    }
-
-    /**
-     * Get the distance from an npc to an entity
-     *
-     * @param npcLocation The NPC's position vector
-     * @param entityToCheck The entity to check
-     * @return The distance between the entities
-     */
-    private static double getDistanceSquared(Vec3 npcLocation, Entity entityToCheck) {
-        double d0 = npcLocation.xCoord - entityToCheck.posX;
-        double d1 = npcLocation.yCoord - entityToCheck.posY;
-        double d2 = npcLocation.zCoord - entityToCheck.posZ;
-        return d0 * d0 + d1 * d1 + d2 * d2;
     }
 
     /**

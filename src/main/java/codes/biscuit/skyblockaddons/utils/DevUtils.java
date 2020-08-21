@@ -65,8 +65,6 @@ public class DevUtils {
      * @param stripControlCodes if {@code true}, the control codes will be removed, otherwise they will be copied
      */
     public static void copyScoreboardSidebar(Scoreboard scoreboard, boolean stripControlCodes) {
-        Utils utils = SkyblockAddons.getInstance().getUtils();
-
         if (scoreboard == null) {
             throw new NullPointerException("Scoreboard cannot be null!");
         }
@@ -156,7 +154,6 @@ public class DevUtils {
         // Copy the NBT data from the loaded entities.
         while (loadedEntitiesCopyIterator.hasNext()) {
             Entity entity = loadedEntitiesCopyIterator.next();
-            NBTTagCompound entityData = new NBTTagCompound();
             boolean isPartOfIncludedClasses = false;
 
             // Checks to ignore entities if they're irrelevant
@@ -185,8 +182,7 @@ public class DevUtils {
             }
 
             stringBuilder.append("NBT Data:").append(System.lineSeparator());
-            entity.writeToNBT(entityData);
-            stringBuilder.append(prettyPrintNBT(entityData));
+            stringBuilder.append(prettyPrintNBT(entity.serializeNBT()));
         }
 
         if (stringBuilder.length() > 0) {

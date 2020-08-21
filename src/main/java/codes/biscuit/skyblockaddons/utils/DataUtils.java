@@ -25,7 +25,7 @@ import java.nio.charset.StandardCharsets;
  */
 public class DataUtils {
 
-    private static Gson GSON = new Gson();
+    private static final Gson GSON = new Gson();
 
     //TODO: Migrate all data file loading to this class
 
