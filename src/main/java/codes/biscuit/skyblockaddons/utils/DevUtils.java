@@ -154,6 +154,7 @@ public class DevUtils {
         // Copy the NBT data from the loaded entities.
         while (loadedEntitiesCopyIterator.hasNext()) {
             Entity entity = loadedEntitiesCopyIterator.next();
+            NBTTagCompound entityData = new NBTTagCompound();
             boolean isPartOfIncludedClasses = false;
 
             // Checks to ignore entities if they're irrelevant
@@ -171,6 +172,8 @@ public class DevUtils {
                 continue;
             }
 
+            entity.writeToNBT(entityData);
+
             // Add spacing before each new entry.
             if (stringBuilder.length() > 0) {
                 stringBuilder.append(System.lineSeparator()).append(System.lineSeparator());
@@ -182,7 +185,7 @@ public class DevUtils {
             }
 
             stringBuilder.append("NBT Data:").append(System.lineSeparator());
-            stringBuilder.append(prettyPrintNBT(entity.serializeNBT()));
+            stringBuilder.append(prettyPrintNBT(entityData));
         }
 
         if (stringBuilder.length() > 0) {
