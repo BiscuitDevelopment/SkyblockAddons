@@ -144,7 +144,7 @@
     "showGlowingItemsOnIsland": "Näytä hohtavat esineet saarella",
     "showItemDungeonFloor": "Näytä kerros, josta Dungeon esine saatiin",
     "showDungeonMilestone": "Näytä Dungeon virstanpylväs",
-    "dungeonsCollectedEssencesDisplay": "Dungeons Collected Essences Display"
+    "dungeonsCollectedEssencesDisplay": "Näytä Dungeoneista kerätyt esanssit"
   },
   "messages": {
     "dropConfirmation": "Pudota tämä esine uudelleen vahvistaaksesi!",
@@ -239,13 +239,13 @@
   "commandUsage": {
     "sba": "Avaa päävalikko",
     "sba.brand": "§e(Dev) §7Show palvelimen merkki",
-    "sba.brand.brandOutput": "Server Brand: %brand%",
-    "sba.brand.notFound": "Server brand not found!",
+    "sba.brand.brandOutput": "Palvelimen merkki: %brand%",
+    "sba.brand.notFound": "Palvelimen merkkiä ei löydetty!",
     "sba.copyEntity": "§e(Dev) §7Copy NBT tiedot annetun nim(i)en entiteeteistä valitulla säteellä pelaajasta",
-    "sba.copySidebar": "§e(Dev) §7Copy the scoreboard text.",
+    "sba.copySidebar": "§e(Dev) §7Copy tulostaulun teksti.",
     "sba.dev": "Vaihda kehittäjätilaan",
-    "sba.dev.disabled": "Developer mode disabled!",
-    "sba.dev.enabled": "Developer mode enabled! TIP: Press \"%keyName%\" to copy NBT data!",
+    "sba.dev.disabled": "Kehittäjätila pois käytöstä!",
+    "sba.dev.enabled": "Kehittäjätila käytössä! Vinkki: Paina \"%keyName%\" kopioidaksesi NBT tiedot!",
     "sba.edit": "Muokkaa GUI sijainteja",
     "sba.folder": "Avaa Mods-kansio",
     "sba.folder.error": "An error occurred trying to open the mods folder: %s",
