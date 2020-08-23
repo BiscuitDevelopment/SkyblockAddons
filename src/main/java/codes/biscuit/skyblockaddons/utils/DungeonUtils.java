@@ -46,7 +46,7 @@ public class DungeonUtils {
             return null;
         }
 
-        DungeonClass dungeonClass = DungeonClass.valueOf(matcher.group(1));
+        DungeonClass dungeonClass = DungeonClass.fromDisplayName(matcher.group(1));
         return new DungeonMilestone(dungeonClass, matcher.group(2), matcher.group(3));
 
     }
