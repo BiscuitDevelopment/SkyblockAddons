@@ -1,6 +1,8 @@
 package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import lombok.Getter;
+import lombok.Setter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.client.entity.EntityPlayerSP;
@@ -41,6 +43,9 @@ public class DevUtils {
 
     public static final int ENTITY_COPY_RADIUS = 3;
     public static final int SIDEBAR_COPY_WIDTH = 30;
+
+    @Getter @Setter
+    private static boolean loggingActionBarMessages = false;
 
     static {
         ENTITY_NAMES.add("PlayerSP");
