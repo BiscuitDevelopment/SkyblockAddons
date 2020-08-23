@@ -265,6 +265,9 @@
     "sba.set.zealotCounter.totalZealots": "Set total zealot count to %number%!",
     "sba.set.zealotCounter.wrongUsage": "Invalid selection! Please choose %options%.",
     "sba.set.zealotCounter.zealots": "Set current zealot count to %number%!",
+    "sba.toggleActionBarLogging": "Toggle logging action bar messages",
+    "sba.toggleActionBarLogging.disabled": "Action bar messages will no longer be logged.",
+    "sba.toggleActionBarLogging.enabled": "Action bar messages will now be logged.",
     "sba.wrongUsage.generic": "Wrong usage!",
     "sba.wrongUsage.subCommandNotFound": "The sub-command \"%sub-command%\" was not found."
   },
