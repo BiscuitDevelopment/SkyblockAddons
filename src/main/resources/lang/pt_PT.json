@@ -265,6 +265,9 @@
     "sba.set.zealotCounter.totalZealots": "Define a contagem atual de zealots para %number%!",
     "sba.set.zealotCounter.wrongUsage": "Seleção inválida! Por favor, escolha %options%.",
     "sba.set.zealotCounter.zealots": "Define a contagem atual de zealots para %number%!",
+    "sba.toggleActionBarLogging": "Toggle logging action bar messages",
+    "sba.toggleActionBarLogging.disabled": "Action bar messages will no longer be logged.",
+    "sba.toggleActionBarLogging.enabled": "Action bar messages will now be logged.",
     "sba.wrongUsage.generic": "Uso errado!",
     "sba.wrongUsage.subCommandNotFound": "O sub-comando %sub-command% não foi encontrado."
   },
