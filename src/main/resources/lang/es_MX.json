@@ -265,6 +265,9 @@
     "sba.set.zealotCounter.totalZealots": "Establecer el recuento total de Summoning Eyes a %number%!",
     "sba.set.zealotCounter.wrongUsage": "¡Selección no válida! Por favor, elija %options%.",
     "sba.set.zealotCounter.zealots": "Establecer el recuento actual de zealot a %number%!",
+    "sba.toggleActionBarLogging": "Toggle logging action bar messages",
+    "sba.toggleActionBarLogging.disabled": "Action bar messages will no longer be logged.",
+    "sba.toggleActionBarLogging.enabled": "Action bar messages will now be logged.",
     "sba.wrongUsage.generic": "Uso incorrecto!",
     "sba.wrongUsage.subCommandNotFound": "The sub-command \"%sub-command%\" was not found."
   },
