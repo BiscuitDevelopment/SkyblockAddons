@@ -188,7 +188,7 @@ public class PlayerListener {
             }
 
             if (main.getUtils().isInDungeon() && main.getConfigValues().isEnabled(Feature.DUNGEONS_COLLECTED_ESSENCES_DISPLAY)) {
-                main.getDungeonUtils().parseEssence(restMessage);
+                main.getDungeonUtils().parseEssence(restMessage, false);
             }
 
             e.message = new ChatComponentText(restMessage);
@@ -265,12 +265,19 @@ public class PlayerListener {
                 }
             }
 
-            if (main.getUtils().isInDungeon() && main.getConfigValues().isEnabled(Feature.SHOW_DUNGEON_MILESTONE)) {
-                DungeonMilestone dungeonMilestone = main.getDungeonUtils().parseMilestone(formattedText);
-                if (dungeonMilestone != null) {
-                    main.getDungeonUtils().setDungeonMilestone(dungeonMilestone);
+            if (main.getUtils().isInDungeon()) {
+                if (main.getConfigValues().isEnabled(Feature.SHOW_DUNGEON_MILESTONE)) {
+                    DungeonMilestone dungeonMilestone = main.getDungeonUtils().parseMilestone(formattedText);
+                    if (dungeonMilestone != null) {
+                        main.getDungeonUtils().setDungeonMilestone(dungeonMilestone);
+                    }
+                }
+
+                if (main.getConfigValues().isEnabled(Feature.DUNGEONS_COLLECTED_ESSENCES_DISPLAY)) {
+                    main.getDungeonUtils().parseEssence(formattedText, true);
                 }
             }
+
 
             Matcher matcher = ABILITY_CHAT_PATTERN.matcher(formattedText);
             if (matcher.matches()) {
