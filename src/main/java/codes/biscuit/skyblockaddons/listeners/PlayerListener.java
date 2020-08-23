@@ -58,6 +58,7 @@ import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
+import org.apache.logging.log4j.Logger;
 import org.lwjgl.input.Keyboard;
 
 import java.util.*;
@@ -69,13 +70,16 @@ public class PlayerListener {
 
     private static final Pattern NO_ARROWS_LEFT_PATTERN = Pattern.compile("(?:§r)?§cYou don't have any more Arrows left in your Quiver!§r");
     private static final Pattern ONLY_HAVE_ARROWS_LEFT_PATTERN = Pattern.compile("(?:§r)?§cYou only have (?<arrows>[0-9]+) Arrows left in your Quiver!§r");
-    private final static Pattern ENCHANTMENT_TOOLTIP_PATTERN = Pattern.compile("§.§.(§9[\\w ]+(, )?)+");
-    private final static Pattern ABILITY_CHAT_PATTERN = Pattern.compile("§r§aUsed §r§6[A-Za-z ]+§r§a! §r§b\\([0-9]+ Mana\\)§r");
-    private final static Pattern PROFILE_CHAT_PATTERN = Pattern.compile("§aYou are playing on profile: §e([A-Za-z]+).*");
-    private final static Pattern SWITCH_PROFILE_CHAT_PATTERN = Pattern.compile("§aYour profile was changed to: §e([A-Za-z]+).*");
-    private final static Pattern MINION_CANT_REACH_PATTERN = Pattern.compile("§cI can't reach any (?<mobName>[A-Za-z]*)(?:s)");
+    private static final Pattern ENCHANTMENT_TOOLTIP_PATTERN = Pattern.compile("§.§.(§9[\\w ]+(, )?)+");
+    private static final Pattern ABILITY_CHAT_PATTERN = Pattern.compile("§r§aUsed §r§6[A-Za-z ]+§r§a! §r§b\\([0-9]+ Mana\\)§r");
+    private static final Pattern PROFILE_CHAT_PATTERN = Pattern.compile("§aYou are playing on profile: §e([A-Za-z]+).*");
+    private static final Pattern SWITCH_PROFILE_CHAT_PATTERN = Pattern.compile("§aYour profile was changed to: §e([A-Za-z]+).*");
+    private static final Pattern MINION_CANT_REACH_PATTERN = Pattern.compile("§cI can't reach any (?<mobName>[A-Za-z]*)(?:s)");
 
-    private final static Set<String> SOUP_RANDOM_MESSAGES = new HashSet<>(Arrays.asList("I feel like I can fly!", "What was in that soup?",
+    // Between these two coordinates is the whole "arena" area where all the magmas and stuff are.
+    private static final AxisAlignedBB MAGMA_BOSS_SPAWN_AREA = new AxisAlignedBB(-244, 0, -566, -379, 255, -635);
+
+    private static final Set<String> SOUP_RANDOM_MESSAGES = new HashSet<>(Arrays.asList("I feel like I can fly!", "What was in that soup?",
             "Hmm… tasty!", "Hmm... tasty!", "You can now fly for 2 minutes.", "Your flight has been extended for 2 extra minutes.",
             "You can now fly for 200 minutes.", "Your flight has been extended for 200 extra minutes."));
 
@@ -103,6 +107,7 @@ public class PlayerListener {
     private double oldBobberPosY = 0;
 
     @Getter private Set<UUID> countedEndermen = new HashSet<>();
+    @Getter private TreeMap<Long, Set<Vec3>> recentlyKilledZealots = new TreeMap<>();
 
     @Getter private Set<IntPair> recentlyLoadedChunks = new HashSet<>();
 
@@ -111,7 +116,10 @@ public class PlayerListener {
     @Getter @Setter private int recentMagmaCubes = 0;
     @Getter @Setter private int recentBlazes = 0;
 
+    @Getter private TreeMap<Long, Vec3> explosiveBowExplosions = new TreeMap<>();
+
     private final SkyblockAddons main = SkyblockAddons.getInstance();
+    private final Logger logger = main.getLogger();
     private final ActionBarParser actionBarParser = new ActionBarParser();
 
     /**
@@ -166,8 +174,14 @@ public class PlayerListener {
     @SubscribeEvent(priority = EventPriority.HIGH)
     public void onChatReceive(ClientChatReceivedEvent e) {
         String unformattedText = e.message.getUnformattedText();
+        // Type 2 means it's an action bar message.
         if (e.type == 2) {
-            // action bar message, parse using ActionBarParser and display the rest message instead
+            // Log the message to the game log if action bar message logging is enabled.
+            if (DevUtils.isLoggingActionBarMessages()) {
+                logger.info("[ACTION BAR] " + e.message.getUnformattedText());
+            }
+
+            // Parse using ActionBarParser and display the rest message instead
             String restMessage = actionBarParser.parseActionBar(unformattedText);
             if (main.isUsingOofModv1() && restMessage.trim().length() == 0) {
                 e.setCanceled(true);
@@ -463,8 +477,6 @@ public class PlayerListener {
         }
     }
 
-    @Getter private TreeMap<Long, Set<Vec3>> recentlyKilledZealots = new TreeMap<>();
-
     @SubscribeEvent
     public void onDeath(LivingDeathEvent e) {
         if (e.entity instanceof EntityEnderman) {
@@ -578,10 +590,6 @@ public class PlayerListener {
         }
     }
 
-    // Between these two coordinates is the whole "arena" area where all the magmas and stuff are.
-    private static AxisAlignedBB magmaBossSpawnArea = new AxisAlignedBB(-244, 0, -566, -379, 255, -635);
-    @Getter private TreeMap<Long, Vec3> explosiveBowExplosions = new TreeMap<>();
-
     @SubscribeEvent()
     public void onEntitySpawn(EntityEvent.EnteringChunk e) {
         Entity entity = e.entity;
@@ -620,7 +628,7 @@ public class PlayerListener {
 
                                 for (Vec3 zealotDeathLocation : filteredRecentlyKilledZealots) {
                                     double distance = explosionLocation.distanceTo(zealotDeathLocation);
-                                    System.out.println("Distance was "+distance+"!");
+//                                    System.out.println("Distance was "+distance+"!");
                                     if (distance < 4.6) {
 //                                        possibleZealotsKilled--;
 
@@ -638,7 +646,7 @@ public class PlayerListener {
         }
 
         if (main.getUtils().getLocation() == Location.BLAZING_FORTRESS) {
-            if (magmaBossSpawnArea.isVecInside(new Vec3(entity.posX, entity.posY, entity.posZ))) { // timers will trigger if 15 magmas/8 blazes spawn in the box within a 4 second time period
+            if (MAGMA_BOSS_SPAWN_AREA.isVecInside(new Vec3(entity.posX, entity.posY, entity.posZ))) { // timers will trigger if 15 magmas/8 blazes spawn in the box within a 4 second time period
                 long currentTime = System.currentTimeMillis();
                 if (e.entity instanceof EntityMagmaCube) {
                     if (!recentlyLoadedChunks.contains(new IntPair(e.newChunkX, e.newChunkZ)) && entity.ticksExisted == 0) {
@@ -892,7 +900,7 @@ public class PlayerListener {
             }
         }
 
-        if (Keyboard.getEventKeyState()) {
+        if (main.getConfigValues().isEnabled(Feature.DUNGEONS_MAP_DISPLAY) && main.getUtils().isInDungeon()) {
             if (Keyboard.isKeyDown(Keyboard.KEY_MINUS) && Keyboard.getEventKeyState()) {
                 float zoomScaleFactor = main.getUtils().denormalizeScale(main.getConfigValues().getMapZoom().getValue(), 0.5F, 5, 0.1F);
                 main.getConfigValues().getMapZoom().setValue(main.getUtils().normalizeValueNoStep(zoomScaleFactor - 0.5F, 0.5F, 5));
@@ -901,6 +909,34 @@ public class PlayerListener {
                 main.getConfigValues().getMapZoom().setValue(main.getUtils().normalizeValueNoStep(zoomScaleFactor + 0.5F, 0.5F, 5));
             }
         }
+    }
+
+    public boolean aboutToJoinSkyblockServer() {
+        return System.currentTimeMillis() - lastSkyblockServerJoinAttempt < 6000;
+    }
+
+    public boolean didntRecentlyJoinWorld() {
+        return System.currentTimeMillis() - lastWorldJoin > 3000;
+    }
+
+    public int getMaxTickers() {
+        return actionBarParser.getMaxTickers();
+    }
+
+    public int getTickers() {
+        return actionBarParser.getTickers();
+    }
+
+    public void setLastSecondHealth(int lastSecondHealth) {
+        actionBarParser.setLastSecondHealth(lastSecondHealth);
+    }
+
+    public boolean shouldResetMouse() {
+        return System.currentTimeMillis() - lastClosedInv > 100;
+    }
+
+    Integer getHealthUpdate() {
+        return actionBarParser.getHealthUpdate();
     }
 
     private boolean shouldTriggerFishingIndicator() {
@@ -925,33 +961,5 @@ public class PlayerListener {
             }
         }
         return false;
-    }
-
-    public boolean shouldResetMouse() {
-        return System.currentTimeMillis() - lastClosedInv > 100;
-    }
-
-    public boolean didntRecentlyJoinWorld() {
-        return System.currentTimeMillis() - lastWorldJoin > 3000;
-    }
-
-    public boolean aboutToJoinSkyblockServer() {
-        return System.currentTimeMillis() - lastSkyblockServerJoinAttempt < 6000;
-    }
-
-    public void setLastSecondHealth(int lastSecondHealth) {
-        actionBarParser.setLastSecondHealth(lastSecondHealth);
-    }
-
-    public int getTickers() {
-        return actionBarParser.getTickers();
-    }
-
-    public int getMaxTickers() {
-        return actionBarParser.getMaxTickers();
-    }
-
-    Integer getHealthUpdate() {
-        return actionBarParser.getHealthUpdate();
     }
 }
