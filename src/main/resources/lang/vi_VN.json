@@ -265,6 +265,9 @@
     "sba.set.zealotCounter.totalZealots": "Đã đặt bộ đếm tổng số Zealot là %number%!",
     "sba.set.zealotCounter.wrongUsage": "Lựa chọn không phù hợp! Thay vào đó bạn hãy chọn %options%.",
     "sba.set.zealotCounter.zealots": "Đã đặt bộ đếm Zealot hiện tại là %number%!",
+    "sba.toggleActionBarLogging": "Toggle logging action bar messages",
+    "sba.toggleActionBarLogging.disabled": "Action bar messages will no longer be logged.",
+    "sba.toggleActionBarLogging.enabled": "Action bar messages will now be logged.",
     "sba.wrongUsage.generic": "Sai cách dùng!",
     "sba.wrongUsage.subCommandNotFound": "Lệnh phụ \"%sub-command%\" không tồn tại."
   },
