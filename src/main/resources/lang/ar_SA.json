@@ -265,6 +265,9 @@
     "sba.set.zealotCounter.totalZealots": "وضع مجموع المتعصب العد إلى %number%!",
     "sba.set.zealotCounter.wrongUsage": "اختيار غير صالح! الرجاء اختيار %options%.",
     "sba.set.zealotCounter.zealots": "وضع عدد المتعصب الحالي إلى %number%!",
+    "sba.toggleActionBarLogging": "Toggle logging action bar messages",
+    "sba.toggleActionBarLogging.disabled": "Action bar messages will no longer be logged.",
+    "sba.toggleActionBarLogging.enabled": "Action bar messages will now be logged.",
     "sba.wrongUsage.generic": "خاطئ الاستخدام!",
     "sba.wrongUsage.subCommandNotFound": "The sub-command \"%sub-command%\" was not found."
   },
