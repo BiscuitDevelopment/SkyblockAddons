@@ -265,6 +265,9 @@
     "sba.set.zealotCounter.totalZealots": "전체 질럿 카운트를 %number% (으)로 설정했습니다!",
     "sba.set.zealotCounter.wrongUsage": "잘못된 선택지입니다! %options% (을)를 선택해주세요.",
     "sba.set.zealotCounter.zealots": "현재 질럿 카운트를 %number% (으)로 설정했습니다!",
+    "sba.toggleActionBarLogging": "Toggle logging action bar messages",
+    "sba.toggleActionBarLogging.disabled": "Action bar messages will no longer be logged.",
+    "sba.toggleActionBarLogging.enabled": "Action bar messages will now be logged.",
     "sba.wrongUsage.generic": "잘못된 사용법입니다!",
     "sba.wrongUsage.subCommandNotFound": "부 명령어 \"%sub-command%\" (을)를 찾을 수 없었습니다."
   },
