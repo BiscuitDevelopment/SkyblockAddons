@@ -265,6 +265,9 @@
     "sba.set.zealotCounter.totalZealots": "Aseta Zealottien kokonaismäärä %number%!",
     "sba.set.zealotCounter.wrongUsage": "Virheellinen valinta! Valitse %options%.",
     "sba.set.zealotCounter.zealots": "Aseta nykyinen Zealot määrä %number%!",
+    "sba.toggleActionBarLogging": "Toggle logging action bar messages",
+    "sba.toggleActionBarLogging.disabled": "Action bar messages will no longer be logged.",
+    "sba.toggleActionBarLogging.enabled": "Action bar messages will now be logged.",
     "sba.wrongUsage.generic": "Väärä käyttö!",
     "sba.wrongUsage.subCommandNotFound": "Alakomentoa %sub-command% ei löydetty."
   },
