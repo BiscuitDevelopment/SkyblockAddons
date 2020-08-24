@@ -142,9 +142,9 @@
     "showHealingCircleWall": "Show Dungeon Heawing Ciwcwe Waww (Unstabwe)",
     "showCriticalTeammates": "Show Cwitical Dungweon Tweammwates",
     "showGlowingItemsOnIsland": "Show Gwowing Items On Iwand",
-    "showItemDungeonFloor": "Show Floor Obtained on Dungeon Items",
+    "showItemDungeonFloor": "Show Fwoow Obtained on Dungeon Items",
     "showDungeonMilestone": "Woah Wungeon Wilestone",
-    "dungeonsCollectedEssencesDisplay": "Dungeons Collected Essences Display"
+    "dungeonsCollectedEssencesDisplay": "Dungeons Cowwected Essences Dispway"
   },
   "messages": {
     "dropConfirmation": "Dwop thwis itwem agwain to confiwm!",
@@ -239,7 +239,7 @@
   "commandUsage": {
     "sba": "Owpen the main menu",
     "sba.brand": "§e(Dev) §7Showo the sewvew bwand",
-    "sba.brand.brandOutput": "Server Brand: %brand%",
+    "sba.brand.brandOutput": "Sewvew Bwand: %brand%",
     "sba.brand.notFound": "Serwer bwand not fownd!",
     "sba.copyEntity": "§e(Dev) §7Copy NBT data for entities of the given name(s) within the given radius around the player",
     "sba.copySidebar": "§e(Dev) §7Copy the scoreboard text.",
