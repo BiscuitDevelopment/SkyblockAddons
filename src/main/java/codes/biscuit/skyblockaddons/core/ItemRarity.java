@@ -1,12 +1,10 @@
 package codes.biscuit.skyblockaddons.core;
 
 import codes.biscuit.skyblockaddons.utils.ColorCode;
-import lombok.Getter;
 
 /**
  * Skyblock item rarity definitions
  */
-@Getter
 public enum ItemRarity {
 
     COMMON("COMMON", ColorCode.WHITE),
@@ -18,11 +16,11 @@ public enum ItemRarity {
     SPECIAL("SPECIAL", ColorCode.RED),
     VERY_SPECIAL("VERY SPECIAL", ColorCode.RED);
 
-    private String tag;
-    private ColorCode colorCode;
+    public final String TAG;
+    public final ColorCode COLOR_CODE;
 
     ItemRarity(String loreName, ColorCode colorCode) {
-        this.tag = loreName;
-        this.colorCode = colorCode;
+        this.TAG = loreName;
+        this.COLOR_CODE = colorCode;
     }
 }

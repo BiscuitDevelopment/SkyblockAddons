@@ -52,6 +52,7 @@ import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.ChunkEvent;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
@@ -188,7 +189,7 @@ public class PlayerListener {
             }
 
             if (main.getUtils().isInDungeon() && main.getConfigValues().isEnabled(Feature.DUNGEONS_COLLECTED_ESSENCES_DISPLAY)) {
-                main.getDungeonUtils().parseEssence(restMessage, false);
+                main.getDungeonUtils().parseCollectedEssence(restMessage);
             }
 
             e.message = new ChatComponentText(restMessage);
@@ -274,7 +275,7 @@ public class PlayerListener {
                 }
 
                 if (main.getConfigValues().isEnabled(Feature.DUNGEONS_COLLECTED_ESSENCES_DISPLAY)) {
-                    main.getDungeonUtils().parseEssence(formattedText, true);
+                    main.getDungeonUtils().parseBonusEssence(formattedText);
                 }
             }
 
@@ -294,18 +295,6 @@ public class PlayerListener {
                 }
             }
         }
-    }
-
-    private void changeMana(int change) {
-        setAttribute(Attribute.MANA, getAttribute(Attribute.MANA) + change);
-    }
-
-    private int getAttribute(Attribute attribute) {
-        return main.getUtils().getAttributes().get(attribute).getValue();
-    }
-
-    private void setAttribute(Attribute attribute, int value) {
-        main.getUtils().getAttributes().get(attribute).setValue(value);
     }
 
     /**
@@ -822,7 +811,7 @@ public class PlayerListener {
                             if (rarityIndex < 0) rarityIndex = 0;
                             if (rarityIndex >= ItemRarity.values().length) rarityIndex = ItemRarity.values().length - 1;
 
-                            colorCode = ItemRarity.values()[rarityIndex].getColorCode();
+                            colorCode = ItemRarity.values()[rarityIndex].COLOR_CODE;
                         }
                         e.toolTip.add(insertAt++, "§7Base Stat Boost: " + colorCode + "+" + baseStatBoost + "%");
                     }
@@ -944,6 +933,18 @@ public class PlayerListener {
 
     Integer getHealthUpdate() {
         return actionBarParser.getHealthUpdate();
+    }
+
+    private void changeMana(int change) {
+        setAttribute(Attribute.MANA, getAttribute(Attribute.MANA) + change);
+    }
+
+    private int getAttribute(Attribute attribute) {
+        return main.getUtils().getAttributes().get(attribute).getValue();
+    }
+
+    private void setAttribute(Attribute attribute, int value) {
+        main.getUtils().getAttributes().get(attribute).setValue(value);
     }
 
     private boolean shouldTriggerFishingIndicator() {

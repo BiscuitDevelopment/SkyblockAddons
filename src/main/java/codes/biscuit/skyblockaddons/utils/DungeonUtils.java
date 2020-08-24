@@ -15,9 +15,9 @@ import java.util.regex.Pattern;
 
 public class DungeonUtils {
 
-    private static final Pattern PATTERN_MILESTONE = Pattern.compile("^.+?(Healer|Tank|Mage|Archer|Berserk)\\sMilestone\\s.+?([❶-❿]).+?(§r§.+[0-9]+)\\s.+?");
-    private static final Pattern PATTERN_COLLECTED_ESSENCES = Pattern.compile("§.+?([0-9]+)\\s(Wither|Spider|Undead|Dragon|Gold|Diamond|Ice)\\sEssence");
-    private static final Pattern PATTERN_GAIN_ESSENCE = Pattern.compile("^§.+?[^You]\\s.+?found\\sa\\s.+?(Wither|Spider|Undead|Dragon|Gold|Diamond|Ice)\\sEssence.+?");
+    private static final Pattern PATTERN_MILESTONE = Pattern.compile("^.+?(Healer|Tank|Mage|Archer|Berserk) Milestone .+?([❶-❿]).+?(§r§.+\\d+) .+?");
+    private static final Pattern PATTERN_COLLECTED_ESSENCES = Pattern.compile("§.+?(\\d+) (Wither|Spider|Undead|Dragon|Gold|Diamond|Ice) Essence");
+    private static final Pattern PATTERN_BONUS_ESSENCE = Pattern.compile("^§.+?[^You] .+?found a .+?(Wither|Spider|Undead|Dragon|Gold|Diamond|Ice) Essence.+?");
 
     /** The last dungeon server the player played on */
     @Getter @Setter private String lastServerId;
@@ -26,10 +26,10 @@ public class DungeonUtils {
     @Getter @Setter private DungeonMilestone dungeonMilestone;
 
     /** The latest essences the player collected during a dungeon game */
-    @Getter @Setter private Map<EssenceType, Integer> collectedEssences = new EnumMap<>(EssenceType.class);
+    @Getter private final Map<EssenceType, Integer> collectedEssences = new EnumMap<>(EssenceType.class);
 
     /** The current teammates of the dungeon game */
-    @Getter @Setter private Map<String, DungeonPlayer> players = new HashMap<>();
+    @Getter private final Map<String, DungeonPlayer> players = new HashMap<>();
 
     private EssenceType lastEssenceType;
     private int lastEssenceAmount;
@@ -44,6 +44,12 @@ public class DungeonUtils {
         players.clear();
     }
 
+    /**
+     * This method parses the class milestone attained from the chat message the player receives when they attain a milestone.
+     *
+     * @param message the chat message received
+     * @return a {@code DungeonMilestone} object representing the milestone if one is found, or {@code null} if no milestone is found
+     */
     public DungeonMilestone parseMilestone(String message) {
         Matcher matcher = PATTERN_MILESTONE.matcher(message);
         if (!matcher.lookingAt()) {
@@ -55,19 +61,14 @@ public class DungeonUtils {
 
     }
 
-    public void parseEssence(String message, boolean gain) {
-        Matcher matcher;
-        if (gain) {
-            matcher = PATTERN_GAIN_ESSENCE.matcher(message);
-
-            if (matcher.matches()) {
-                EssenceType essenceType = EssenceType.fromName(matcher.group(1));
-
-                collectedEssences.put(essenceType, collectedEssences.getOrDefault(essenceType, 0) + 1);
-            }
-            return;
-        }
-        matcher = PATTERN_COLLECTED_ESSENCES.matcher(message);
+    /**
+     * This method parses the type and amount of essence the player collected from the action bar message that shows up
+     * when an essence is collected. It then records the result in {@code collectedEssences}.
+     *
+     * @param message the action bar message to parse essence information from
+     */
+    public void parseCollectedEssence(String message) {
+        Matcher matcher = PATTERN_COLLECTED_ESSENCES.matcher(message);
 
         while (matcher.find()) {
 
@@ -91,6 +92,22 @@ public class DungeonUtils {
             if (essenceType != null) {
                 collectedEssences.put(essenceType, collectedEssences.getOrDefault(essenceType, 0) + amount);
             }
+        }
+    }
+
+    /**
+     * This method parses the type and amount of essence gained when a dungeon teammate finds a bonus essence.
+     * This information is parsed from the given chat message. It then records the result in {@code collectedEssences}.
+     *
+     * @param message the chat message to parse essence information from
+     */
+    public void parseBonusEssence(String message) {
+        Matcher matcher = PATTERN_BONUS_ESSENCE.matcher(message);
+
+        if (matcher.matches()) {
+            EssenceType essenceType = EssenceType.fromName(matcher.group(1));
+
+            collectedEssences.put(essenceType, collectedEssences.getOrDefault(essenceType, 0) + 1);
         }
     }
 }

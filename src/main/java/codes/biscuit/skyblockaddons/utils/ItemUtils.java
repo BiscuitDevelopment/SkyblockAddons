@@ -50,7 +50,7 @@ public class ItemUtils {
                 String rarity = rarityMatcher.group("rarity");
 
                 for (ItemRarity itemRarity : EnumSet.allOf(ItemRarity.class)) {
-                    if (rarity.startsWith(itemRarity.getTag())) {
+                    if (rarity.startsWith(itemRarity.TAG)) {
                         return itemRarity;
                     }
                 }
