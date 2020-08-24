@@ -265,9 +265,9 @@
     "sba.set.zealotCounter.totalZealots": "Imposta il numero totale di zealots a %number%!",
     "sba.set.zealotCounter.wrongUsage": "Selezione non valida! Scegli %options%.",
     "sba.set.zealotCounter.zealots": "Imposta il numero attuale di zealots a %number%!",
-    "sba.toggleActionBarLogging": "Toggle logging action bar messages",
-    "sba.toggleActionBarLogging.disabled": "Action bar messages will no longer be logged.",
-    "sba.toggleActionBarLogging.enabled": "Action bar messages will now be logged.",
+    "sba.toggleActionBarLogging": "Attiva/Disattiva la registrazione dei messaggi della barra delle azioni",
+    "sba.toggleActionBarLogging.disabled": "I messaggi della barra delle azioni non saranno più registrati.",
+    "sba.toggleActionBarLogging.enabled": "I messaggi della barra delle azioni saranno ora registrati.",
     "sba.wrongUsage.generic": "Utilizzo errato!",
     "sba.wrongUsage.subCommandNotFound": "Il sottocomando %sub-command% non è stato trovato."
   },
