@@ -253,7 +253,7 @@
     "sba.help.copyEntity": "Kopieert de NBT-data van entiteiten. De types entiteiten inbegrepen en de radius om de speler om gegevens van van te kopiëren kunnen worden aangepast. Als er geen opties zijn gegeven worden de standaardinstellingen gebruikt. De standaardinstellingen zijn; Spelers, harnashouders, mobs en een straal van %radius% blokken. Als de radius niet word gegeven, word de standaard radius gebruikt.",
     "sba.help.copyEntity.entityNames": "Namen van de soorten entiteiten die je wilt kopiëren (bv. Speler, Creeper). Druk \"Tab\" na het typen van het command voor een volledige lijst van opties. Scheid meerdere namen met komma's, namen zijn hoofdlettergevoelig.",
     "sba.help.copyEntity.radius": "De radius(in blokken) rond de speler om de NBT-gegevens van entiteit van te kopiëren",
-    "sba.help.copySidebar.formatted": "Determines if the formatting codes should be included when copying. Can be either \"true\" or \"false\", defaults to \"false\" if no value is provided. Formatting codes are copied if \"true\".",
+    "sba.help.copySidebar.formatted": "Bepaalt of de opmaak codes moeten worden geincludeerd bij het kopiëren. Kan \"true\" of \"false\", standaard \"false\" als er geen waarde wordt opgegeven. Opmaak codes worden als \"true\" gekopieerd.",
     "sba.help.dev": "Deze opdracht schakelt de ontwikkelaar modus aan of uit. Deze modus is bedoeld voor ontwikkelaars van Skyblock mods/tools. Het verstrekt ruwe gegevens uit het spel zoals entiteit en item NBT.",
     "sba.help.help.command": "de sub-commando om gedetailleerd gebruik te krijgen voor",
     "sba.help.set.zealotCounter": "Handmatig zealot teller instellen.",
