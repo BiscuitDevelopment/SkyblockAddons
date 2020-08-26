@@ -144,7 +144,9 @@
     "showGlowingItemsOnIsland": "הצג חפצים זוהרים באי",
     "showItemDungeonFloor": "הצג את הקומה בה הושג חפץ הדנג'ן",
     "showDungeonMilestone": "הצג אבני דרך של הדנג'ן",
-    "dungeonsCollectedEssencesDisplay": "Dungeons Collected Essences Display"
+    "dungeonsCollectedEssencesDisplay": "Dungeons Collected Essences Display",
+    "stopBonzoStaffSounds": "Stop Bonzo's Staff Sounds",
+    "showRarityUpgraded": "Show if Item's Rarity has been Upgraded"
   },
   "messages": {
     "dropConfirmation": "זרוק פריט זה שוב לאישור!",
