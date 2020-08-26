@@ -122,18 +122,16 @@ public class ItemUtils {
      * @param extraAttributes the NBT to check
      * @return {@code true} if its rarity has been upgraded or {@code false} if it hasn't or this isn't a valid Skyblock NBT
      */
-    public static boolean rarityUpgraded(NBTTagCompound extraAttributes) {
+    public static int getRarityUpgrades(NBTTagCompound extraAttributes) {
         if (extraAttributes != null) {
-            String itemId = extraAttributes.getString("id");
-
             if (!extraAttributes.hasKey("rarity_upgrades")) {
-                return false;
+                return 0;
             }
 
-            return extraAttributes.getInteger("rarity_upgrades") == 1;
+            return extraAttributes.getInteger("rarity_upgrades");
         }
 
-        return false;
+        return 0;
     }
 
     /**
@@ -150,7 +148,10 @@ public class ItemUtils {
         return extraAttributes.getInteger("item_tier");
     }
 
-    //TODO: document this
+
+    /**
+     * @return The Skyblock reforge of a given itemstack
+     */
     public static String getReforge(ItemStack item) {
         if (item.hasTagCompound()) {
             NBTTagCompound extraAttributes = item.getTagCompound();

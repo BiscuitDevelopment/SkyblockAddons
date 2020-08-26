@@ -836,9 +836,9 @@ public class PlayerListener {
                 if (hoveredItem.hasTagCompound()) {
                     NBTTagCompound extraAttributesTag = ItemUtils.getExtraAttributes(hoveredItem);
 
-                    if (extraAttributesTag != null && ItemUtils.rarityUpgraded(extraAttributesTag))
-                        e.toolTip.add(main.getConfigValues().getRestrictedColor(Feature.SHOW_RARITY_UPGRADED) +
-                                "§lRARITY HAS BEEN UPGRADED");
+                    if (extraAttributesTag != null && ItemUtils.getRarityUpgrades(extraAttributesTag) > 0) {
+                        e.toolTip.add(insertAt++, main.getConfigValues().getRestrictedColor(Feature.SHOW_RARITY_UPGRADED) + "§lRARITY UPGRADED");
+                    }
                 }
 
             // Append Skyblock Item ID to end of tooltip if in developer mode
