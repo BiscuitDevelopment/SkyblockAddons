@@ -68,7 +68,7 @@
     "soundIndicatorForFishing": "Indicador de som para pesca",
     "avoidBlinkingNightVision": "Evite a poção de Visão Noturna piscar",
     "disableMinionLocationWarning": "Desativar avisos de localização não perfeita",
-    "jungleAxeCooldown": "Bloqueio do Jungle Axe/Treecapitator em recarga",
+    "jungleAxeCooldown": "Bloquear Jungle Axe/Treecapitator em recarga",
     "organizeLongEnchantmentLists": "Organizar lista de encantamentos longos",
     "showItemCooldowns": "Mostrar tempo de recarga dos itens",
     "speedPercentage": "Porcentagem de velocidade",
@@ -86,7 +86,7 @@
       "compact": "Compacto"
     },
     "disableMagicalSoupMessage": "Desativar mensagens da Sopa de Cogumelo Mágica",
-    "zealotCounter": "Contador de Zealots - Conta desde o último olho",
+    "zealotCounter": "Contador de Zealots - Contagem desde o último olho",
     "tickerChargesDisplay": "Exibição de Tickers/Cargas",
     "tab": {
       "generalSettings": "Configurações Gerais"
