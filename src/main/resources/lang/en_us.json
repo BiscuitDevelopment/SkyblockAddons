@@ -144,7 +144,8 @@
     "showGlowingItemsOnIsland": "Show Glowing Items On Island",
     "showItemDungeonFloor": "Show Floor Obtained on Dungeon Items",
     "showDungeonMilestone": "Show Dungeon Milestone",
-    "dungeonsCollectedEssencesDisplay": "Dungeons Collected Essences Display"
+    "dungeonsCollectedEssencesDisplay": "Dungeons Collected Essences Display",
+    "stopBonzoStaffSounds": "Stop Bonzo's Staff Sounds"
   },
   "messages": {
     "dropConfirmation": "Drop this item again to confirm!",
