@@ -3,6 +3,8 @@ package codes.biscuit.skyblockaddons.utils;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import lombok.Getter;
 import lombok.Setter;
+import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.client.entity.EntityPlayerSP;
@@ -15,6 +17,8 @@ import net.minecraft.scoreboard.Score;
 import net.minecraft.scoreboard.ScoreObjective;
 import net.minecraft.scoreboard.ScorePlayerTeam;
 import net.minecraft.scoreboard.Scoreboard;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.StringUtils;
 import net.minecraftforge.common.util.Constants;
 
@@ -46,6 +50,9 @@ public class DevUtils {
 
     @Getter @Setter
     private static boolean loggingActionBarMessages = false;
+
+    @Getter @Setter
+    private static boolean copyBlockData = false;
 
     static {
         ENTITY_NAMES.add("PlayerSP");
@@ -426,6 +433,30 @@ public class DevUtils {
         }
 
         return stringBuilder.toString();
+    }
+
+    /**
+     * Copy the block data with its tile entity data if the block has one.
+     *
+     * @param blockPos The position of the block
+     * @param blockState The state of the block
+     * @param tileEntity The tile entity of the block
+     */
+    public static void copyBlockData(BlockPos blockPos, IBlockState blockState, TileEntity tileEntity) {
+        NBTTagCompound data = new NBTTagCompound();
+        if (tileEntity != null) {
+            NBTTagCompound nbtTileEntity = new NBTTagCompound();
+            tileEntity.writeToNBT(nbtTileEntity);
+            data.setTag("tileEntity", nbtTileEntity);
+        } else {
+            data.setInteger("x", blockPos.getX());
+            data.setInteger("y", blockPos.getY());
+            data.setInteger("z", blockPos.getZ());
+        }
+
+        data.setString("type", String.valueOf(Block.blockRegistry.getNameForObject(blockState.getBlock())));
+        blockState.getProperties().forEach((key, value) -> data.setString(key.getName(), value.toString()));
+        writeToClipboard(prettyPrintNBT(data), "Success! Copied the block data.");
     }
 
     /*

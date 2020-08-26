@@ -19,6 +19,7 @@ import codes.biscuit.skyblockaddons.utils.objects.IntPair;
 import com.google.common.collect.Sets;
 import lombok.Getter;
 import lombok.Setter;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.gui.GuiScreen;
@@ -39,9 +40,12 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
+import net.minecraft.world.WorldType;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.client.event.GuiOpenEvent;
 import net.minecraftforge.client.event.GuiScreenEvent;
@@ -317,6 +321,20 @@ public class PlayerListener {
     public void onInteract(PlayerInteractEvent e) {
         Minecraft mc = Minecraft.getMinecraft();
         ItemStack heldItem = e.entityPlayer.getHeldItem();
+
+        if (main.isDevMode()
+            && DevUtils.isCopyBlockData()
+            && heldItem == null
+            && mc.objectMouseOver != null
+            && mc.objectMouseOver.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK
+            && mc.objectMouseOver.getBlockPos() != null) {
+            BlockPos blockPos = mc.objectMouseOver.getBlockPos();
+            IBlockState blockState = mc.theWorld.getBlockState(blockPos);
+            if (mc.theWorld.getWorldType() != WorldType.DEBUG_WORLD) {
+                blockState = blockState.getBlock().getActualState(blockState, mc.theWorld, blockPos);
+            }
+            DevUtils.copyBlockData(blockPos, blockState, mc.theWorld.getTileEntity(blockPos));
+        }
 
         if (main.getUtils().isOnSkyblock() && heldItem != null) {
             // Change the GUI background color when a backpack is opened to match the backpack's color.

@@ -270,6 +270,9 @@
     "sba.toggleActionBarLogging": "Toggle logging action bar messages",
     "sba.toggleActionBarLogging.disabled": "Action bar messages will no longer be logged.",
     "sba.toggleActionBarLogging.enabled": "Action bar messages will now be logged.",
+    "sba.copyBlockData": "Toggle copy block data mode. It copies the block hovered by the mouse.",
+    "sba.copyBlockData.disabled": "Copy block data mode disabled!",
+    "sba.copyBlockData.enabled": "Copy block data mode enabled!",
     "sba.wrongUsage.generic": "Wrong usage!",
     "sba.wrongUsage.subCommandNotFound": "The sub-command \"%sub-command%\" was not found."
   },

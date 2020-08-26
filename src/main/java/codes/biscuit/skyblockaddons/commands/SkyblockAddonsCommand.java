@@ -82,7 +82,8 @@ public class SkyblockAddonsCommand extends CommandBase {
                     "§b● " + CommandSyntax.BRAND + " §7- " + Message.COMMAND_USAGE_SBA_BRAND.getMessage() + "\n" +
                     "§b● " + CommandSyntax.COPY_ENTITY + " §7- " + Message.COMMAND_USAGE_SBA_COPY_ENTITY.getMessage() + "\n" +
                     "§b● " + CommandSyntax.COPY_SIDEBAR + " §7- " + Message.COMMAND_USAGE_SBA_COPY_SIDEBAR.getMessage() + "\n" +
-                    "§b● " + CommandSyntax.TOGGLE_ACTION_BAR_LOGGING + " §7- " + Message.COMMAND_USAGE_TOGGLE_ACTION_BAR_LOGGING.getMessage();
+                    "§b● " + CommandSyntax.TOGGLE_ACTION_BAR_LOGGING + " §7- " + Message.COMMAND_USAGE_TOGGLE_ACTION_BAR_LOGGING.getMessage() + "\n" +
+                    "§b● " + CommandSyntax.COPY_BLOCK_DATA + " §7- " + Message.COMMAND_USAGE_COPY_BLOCK_DATA.getMessage();
         }
 
         usage = usage + "\n" + FOOTER;
@@ -126,6 +127,9 @@ public class SkyblockAddonsCommand extends CommandBase {
                 break;
             case "toggleactionbarlogging":
                 usageBuilder.append(SubCommandUsage.TOGGLE_ACTION_BAR_LOGGING);
+                break;
+            case "copyBlockData":
+                usageBuilder.append(SubCommandUsage.COPY_BLOCK_DATA);
                 break;
             default:
                 return null;
@@ -270,6 +274,14 @@ public class SkyblockAddonsCommand extends CommandBase {
                         } else {
                             main.getUtils().sendMessage(ColorCode.RED + Message.COMMAND_USAGE_TOGGLE_ACTION_BAR_LOGGING_DISABLED.getMessage());
                         }
+                    } else if (args[0].equalsIgnoreCase("copyBlockData")) {
+                        DevUtils.setCopyBlockData(!DevUtils.isCopyBlockData());
+
+                        if (DevUtils.isCopyBlockData()) {
+                            main.getUtils().sendMessage(ColorCode.GREEN + Message.COMMAND_USAGE_COPY_BLOCK_DATA_ENABLED.getMessage());
+                        } else {
+                            main.getUtils().sendMessage(ColorCode.RED + Message.COMMAND_USAGE_COPY_BLOCK_DATA_DISABLED.getMessage());
+                        }
                     } else {
                         throw new WrongUsageException(Message.COMMAND_USAGE_WRONG_USAGE_SUBCOMMAND_NOT_FOUND.getMessage(args[0]));
                     }
@@ -295,7 +307,7 @@ public class SkyblockAddonsCommand extends CommandBase {
      Developer mode commands are not included if developer mode is disabled.
      */
     private List<String> getSubCommandTabCompletionOptions(String[] args) {
-        String[] subCommands = {"help", "set", "edit", "folder", "dev", "copySidebar", "brand", "copyEntity", "toggleActionBarLogging"};
+        String[] subCommands = {"help", "set", "edit", "folder", "dev", "copySidebar", "brand", "copyEntity", "toggleActionBarLogging", "copyBlockData"};
 
         if (main.isDevMode()) {
             return getListOfStringsMatchingLastWord(args, subCommands);
@@ -340,7 +352,8 @@ public class SkyblockAddonsCommand extends CommandBase {
         BRAND("/sba brand"),
         COPY_ENTITY("/sba copyEntity [EntityNames] [radius]"),
         COPY_SIDEBAR("/sba sidebar [formatted: boolean]"),
-        TOGGLE_ACTION_BAR_LOGGING("/sba toggleActionBarLogging");
+        TOGGLE_ACTION_BAR_LOGGING("/sba toggleActionBarLogging"),
+        COPY_BLOCK_DATA("/sba copyBlockData");
 
         @Getter
         private final String syntax;
@@ -365,7 +378,8 @@ public class SkyblockAddonsCommand extends CommandBase {
         BRAND(CommandSyntax.BRAND, Message.COMMAND_USAGE_SBA_BRAND.getMessage(), null),
         COPY_ENTITY(CommandSyntax.COPY_ENTITY, Message.SUBCOMMAND_HELP_COPY_ENTITY.getMessage(Integer.toString(DevUtils.ENTITY_COPY_RADIUS)), Arrays.asList(CommandOption.ENTITY_NAMES, CommandOption.RADIUS)),
         COPY_SIDEBAR(CommandSyntax.COPY_SIDEBAR, Message.COMMAND_USAGE_SBA_COPY_SIDEBAR.getMessage(), Collections.singletonList(CommandOption.FORMATTED)),
-        TOGGLE_ACTION_BAR_LOGGING(CommandSyntax.TOGGLE_ACTION_BAR_LOGGING, Message.COMMAND_USAGE_TOGGLE_ACTION_BAR_LOGGING.getMessage(), null)
+        TOGGLE_ACTION_BAR_LOGGING(CommandSyntax.TOGGLE_ACTION_BAR_LOGGING, Message.COMMAND_USAGE_TOGGLE_ACTION_BAR_LOGGING.getMessage(), null),
+        COPY_BLOCK_DATA(CommandSyntax.COPY_BLOCK_DATA, Message.COMMAND_USAGE_COPY_BLOCK_DATA.getMessage(), null),
         ;
         private final CommandSyntax syntax;
         private final String description;
