@@ -144,7 +144,9 @@
     "showGlowingItemsOnIsland": "Aplicar contorno de color a objetos tirados en la isla privada",
     "showItemDungeonFloor": "Mostrar el piso donde se obtuvo un Objeto de Mazmorras",
     "showDungeonMilestone": "Mostrar meta de clase en Mazmorras",
-    "dungeonsCollectedEssencesDisplay": "Dungeons Collected Essences Display"
+    "dungeonsCollectedEssencesDisplay": "Dungeons Collected Essences Display",
+    "stopBonzoStaffSounds": "Stop Bonzo's Staff Sounds",
+    "showRarityUpgraded": "Show if Item's Rarity has been Upgraded"
   },
   "messages": {
     "dropConfirmation": "Arroja este objeto otra vez para confirmar!",
