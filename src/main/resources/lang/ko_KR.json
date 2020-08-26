@@ -144,7 +144,9 @@
     "showGlowingItemsOnIsland": "빛나는 아이템들을 섬에서 보이기",
     "showItemDungeonFloor": "던전 아이템이 드랍됬을때 바닥 보이기",
     "showDungeonMilestone": "던전 마일스톤 보이기",
-    "dungeonsCollectedEssencesDisplay": "던전에서 획득한 에센스 목록"
+    "dungeonsCollectedEssencesDisplay": "던전에서 획득한 에센스 목록",
+    "stopBonzoStaffSounds": "Stop Bonzo's Staff Sounds",
+    "showRarityUpgraded": "Show if Item's Rarity has been Upgraded"
   },
   "messages": {
     "dropConfirmation": "아이템을 정말로 버리려면 다시 버리세요!",
