@@ -139,14 +139,14 @@
     "baseStatBoostPercentage": "إظهار تعزيز لقاعدة احصائيات لأشياء الزنزانة",
     "colorByRarity": "اللون حسب الندرة",
     "showPlayerHeadsOnMap": "إظهار رؤساء اللاعبين على خريطة الزنزانة",
-    "showHealingCircleWall": "Show Dungeon Healing Circle Wall (Unstable)",
+    "showHealingCircleWall": "إظهار جدار دائرة الشفاء في لدنجنز (غير مستقر)",
     "showCriticalTeammates": "إظهار زملاء الزنزانة منخفضا الصحة",
     "showGlowingItemsOnIsland": "إظهار إضاءة الأشياء على الجزيرة",
     "showItemDungeonFloor": "إظهار الطابق حيث يتم الحصول على شيء من الزنزانة",
     "showDungeonMilestone": "إظهار معالم الزنزانة",
     "dungeonsCollectedEssencesDisplay": "Dungeons Collected Essences Display",
-    "stopBonzoStaffSounds": "Stop Bonzo's Staff Sounds",
-    "showRarityUpgraded": "Show if Item's Rarity has been Upgraded"
+    "stopBonzoStaffSounds": "إيقاف أصوات عصا بونزو",
+    "showRarityUpgraded": "اطهار اذا تم ترقيه الندره"
   },
   "messages": {
     "dropConfirmation": "!إرمي هذا العنصر مرة أخرى للتأكيد",
