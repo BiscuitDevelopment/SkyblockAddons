@@ -144,7 +144,9 @@
     "showGlowingItemsOnIsland": "Näytä hohtavat esineet saarella",
     "showItemDungeonFloor": "Näytä kerros, josta Dungeon esine saatiin",
     "showDungeonMilestone": "Näytä Dungeon virstanpylväs",
-    "dungeonsCollectedEssencesDisplay": "Näytä Dungeoneista kerätyt esanssit"
+    "dungeonsCollectedEssencesDisplay": "Näytä Dungeoneista kerätyt esanssit",
+    "stopBonzoStaffSounds": "Stop Bonzo's Staff Sounds",
+    "showRarityUpgraded": "Show if Item's Rarity has been Upgraded"
   },
   "messages": {
     "dropConfirmation": "Pudota tämä esine uudelleen vahvistaaksesi!",
