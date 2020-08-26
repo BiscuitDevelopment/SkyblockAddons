@@ -144,7 +144,9 @@
     "showGlowingItemsOnIsland": "Mostra oggetti illuminati sull’isola",
     "showItemDungeonFloor": "Mostra il livello in cui è stato ottenuto un oggetto Dungeons",
     "showDungeonMilestone": "Mostra traguardo del dungeon",
-    "dungeonsCollectedEssencesDisplay": "Mostra Dungeon Essences Collezionate"
+    "dungeonsCollectedEssencesDisplay": "Mostra Dungeon Essences Collezionate",
+    "stopBonzoStaffSounds": "Stop Bonzo's Staff Sounds",
+    "showRarityUpgraded": "Show if Item's Rarity has been Upgraded"
   },
   "messages": {
     "dropConfirmation": "Getta questo oggetto nuovamente per confermare!",
