@@ -144,7 +144,9 @@
     "showGlowingItemsOnIsland": "Hiện Vật phẩm Nổi Viền trên Đảo",
     "showItemDungeonFloor": "Hiện Tầng có Vật phẩm Dungeon đã được Thu thập",
     "showDungeonMilestone": "Hiện Cột mốc Dungeon",
-    "dungeonsCollectedEssencesDisplay": "Hiển thị Số Tinh thể Dungeon đã nhặt được"
+    "dungeonsCollectedEssencesDisplay": "Hiển thị Số Tinh thể Dungeon đã nhặt được",
+    "stopBonzoStaffSounds": "Chặn tiếng Trượng Bonzo",
+    "showRarityUpgraded": "Hiện nếu Độ hiếm của V.phẩm được N.cấp hay chưa"
   },
   "messages": {
     "dropConfirmation": "Nhấn \"Q\" Thêm Một Lần Nữa Để Xác Nhận!",
