@@ -202,8 +202,14 @@ public class PlayerListener {
                 e.setCanceled(true);
             }
 
-            if (main.getUtils().isInDungeon() && main.getConfigValues().isEnabled(Feature.DUNGEONS_COLLECTED_ESSENCES_DISPLAY)) {
-                main.getDungeonUtils().parseCollectedEssence(restMessage);
+            if (main.getUtils().isInDungeon()) {
+                if (main.getConfigValues().isEnabled(Feature.DUNGEONS_COLLECTED_ESSENCES_DISPLAY)) {
+                    main.getDungeonUtils().parseCollectedEssence(restMessage);
+                }
+
+                if (main.getConfigValues().isEnabled(Feature.DUNGEONS_SECRETS_DISPLAY)) {
+                    restMessage = main.getDungeonUtils().parseSecrets(restMessage);
+                }
             }
 
             e.message = new ChatComponentText(restMessage);

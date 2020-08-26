@@ -19,9 +19,13 @@ import java.util.regex.Pattern;
  */
 public class DungeonUtils {
 
+    /** Represents none secrets in the room  */
+    public static final int NO_SECRETS = -1;
+
     private static final Pattern PATTERN_MILESTONE = Pattern.compile("^.+?(Healer|Tank|Mage|Archer|Berserk) Milestone .+?([❶-❿]).+?(§r§.+\\d+) .+?");
     private static final Pattern PATTERN_COLLECTED_ESSENCES = Pattern.compile("§.+?(\\d+) (Wither|Spider|Undead|Dragon|Gold|Diamond|Ice) Essence");
     private static final Pattern PATTERN_BONUS_ESSENCE = Pattern.compile("^§.+?[^You] .+?found a .+?(Wither|Spider|Undead|Dragon|Gold|Diamond|Ice) Essence.+?");
+    private static final Pattern PATTERN_SECRETS = Pattern.compile("§7([0-9]+)/([0-9]+) Secrets");
 
     /** The last dungeon server the player played on */
     @Getter @Setter private String lastServerId;
@@ -34,6 +38,12 @@ public class DungeonUtils {
 
     /** The current teammates of the dungeon game */
     @Getter private final Map<String, DungeonPlayer> players = new HashMap<>();
+
+    /** The current number of secrets found in the room */
+    @Getter @Setter private int secrets = NO_SECRETS;
+
+    /** The maximum number of secrets found in the room */
+    @Getter @Setter private int maxSecrets;
 
     /** The counter for the number of player deaths during a dungeon game */
     @Getter private final DungeonDeathCounter deathCounter = new DungeonDeathCounter();
@@ -117,5 +127,23 @@ public class DungeonUtils {
 
             collectedEssences.put(essenceType, collectedEssences.getOrDefault(essenceType, 0) + 1);
         }
+    }
+
+    /**
+     * This method parses the current and the maximum number of secrets found in the room.
+     *
+     * @param message the action bar message to parse secrets information from
+     * @return A message without the secrets information
+     */
+    public String parseSecrets(String message) {
+        Matcher matcher = PATTERN_SECRETS.matcher(message);
+        if (!matcher.find()) {
+            secrets = NO_SECRETS;
+            return message;
+        }
+
+        secrets = Integer.parseInt(matcher.group(1));
+        maxSecrets = Integer.parseInt(matcher.group(2));
+        return matcher.replaceAll("");
     }
 }

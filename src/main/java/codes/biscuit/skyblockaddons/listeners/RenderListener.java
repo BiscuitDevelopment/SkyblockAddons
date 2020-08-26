@@ -88,6 +88,8 @@ public class RenderListener {
 
     private static final ResourceLocation CRITICAL = new ResourceLocation("skyblockaddons", "critical.png");
 
+    private static final ResourceLocation DUNGEON_SECRETS = new ResourceLocation("skyblockaddons", "dungeons/catacombs.png");
+
     private static final ItemStack WATER_BUCKET = new ItemStack(Items.water_bucket);
     private static final ItemStack IRON_SWORD = new ItemStack(Items.iron_sword);
     private static final ItemStack WARP_SKULL = ItemUtils.createSkullItemStack("§bFast Travel", null,  "9ae837fc-19da-3841-af06-7db55d51c815", "c9c8881e42915a9d29bb61a16fb26d059913204d265df5b439b3d792acd56");
@@ -877,6 +879,30 @@ public class RenderListener {
 
         } else if (feature == Feature.DOLPHIN_PET_TRACKER) {
             text = String.valueOf(main.getPersistentValuesManager().getPersistentValues().getSeaCreaturesKilled());
+
+        } else if (feature == Feature.DUNGEONS_SECRETS_DISPLAY) {
+            if (buttonLocation == null && !main.getUtils().isInDungeon()) {
+                return;
+            }
+
+            int current = main.getDungeonUtils().getSecrets();
+            if (current == DungeonUtils.NO_SECRETS) {
+                text = "§70§8/§70";
+            } else {
+                int max = main.getDungeonUtils().getMaxSecrets();
+                int percent = (current * 100) / max;
+
+                text = "§";
+                if (percent <= 100 && percent >= 75)
+                    text += "a";
+                else if (percent <= 75 && percent >= 50)
+                    text += "6";
+                else if (percent < 50 && percent >= 25)
+                    text += "e";
+                else
+                    text += "c";
+                text += current + "§8/§a" + max;
+            }
         } else {
             return;
         }
@@ -911,9 +937,14 @@ public class RenderListener {
             height += 15;
         }
 
-        if (feature == Feature.SHOW_DUNGEON_MILESTONE) {
+        if (feature == Feature.SHOW_DUNGEON_MILESTONE || feature == Feature.DUNGEONS_SECRETS_DISPLAY) {
             width += 18 + 2;
             height += 10;
+        }
+
+        if (feature == Feature.DUNGEONS_SECRETS_DISPLAY) {
+            // Max width = 30
+            width += 5 + 30;
         }
 
         if (feature == Feature.DUNGEONS_COLLECTED_ESSENCES_DISPLAY) {
@@ -1124,6 +1155,20 @@ public class RenderListener {
             main.getUtils().drawTextWithStyle(text, x + 18, y + 4, color);
             ChromaManager.doneRenderingText();
 
+        } else if (feature == Feature.DUNGEONS_SECRETS_DISPLAY) {
+            if (buttonLocation != null) {
+                text = "§c0§8/§a99";
+            }
+
+            ChromaManager.renderingText(feature);
+            main.getUtils().drawTextWithStyle("Secrets", x + 23, y, color);
+            main.getUtils().drawTextWithStyle(text, x + 23 + mc.fontRendererObj.getStringWidth("Secrets") / 2F
+                    - mc.fontRendererObj.getStringWidth(text) / 2F, y + 9, color);
+            ChromaManager.doneRenderingText();
+
+            GlStateManager.color(1, 1, 1, 1);
+            mc.getTextureManager().bindTexture(DUNGEON_SECRETS);
+            main.getUtils().drawModalRectWithCustomSizedTexture(x, y, 0, 0, 16, 16, 16, 16);
         } else {
             ChromaManager.renderingText(feature);
             main.getUtils().drawTextWithStyle(text, x, y, color);
