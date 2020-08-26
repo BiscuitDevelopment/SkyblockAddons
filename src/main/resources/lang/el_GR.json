@@ -27,10 +27,10 @@
     "fullMinionWarning": "Full Minion Warning",
     "ignoreItemFrameClicks": "Ignore Clicks On Item Frames",
     "showOnlyWhenHoldingShift": "Show Only When Holding Shift",
-    "manaBar": "Mana Bar",
-    "manaText": "Mana Number",
-    "healthBar": "Health Bar",
-    "healthText": "Health Number",
+    "manaBar": "Μπάρα Mana",
+    "manaText": "Αριθμός Mana",
+    "healthBar": "Μπάρα Ζωής",
+    "healthText": "Αριθμός Ζωής",
     "defenceIcon": "Defence Symbol",
     "defenceText": "Defence Number",
     "defencePercentage": "Defence Percentage",
@@ -48,17 +48,17 @@
     "lockSlot": "Lock Slot",
     "dontResetCursorInventory": "Don't Reset Cursor Between Inventories",
     "summoningEyeAlert": "Ειδοποίηση για Summoing Eye",
-    "makeEnderchestsInEndGreen": "Change Enderchest Color in the End",
-    "changeColor": "Change Color",
-    "showInOtherGames": "Show in Other Games",
+    "makeEnderchestsInEndGreen": "Άλλαξε το Χρώμα του Enderchest στο the End",
+    "changeColor": "Άλλαξε Χρώμα",
+    "showInOtherGames": "Εμφάνιση σε Άλλα Παιχνίδια",
     "useVanillaTexture": "Use the Vanilla Texture",
-    "textStyle": "Text Style",
+    "textStyle": "Στυλ Κειμένου",
     "textStyles": {
-      "one": "Style One",
-      "two": "Style Two"
+      "one": "Στυλ Ένα",
+      "two": "Στυλ Δύο"
     },
-    "warningDuration": "Warning Duration",
-    "dontOpenProfileWithBow": "Don't Open Profile With Bow",
+    "warningDuration": "Διάρκεια Προειδοποίησης",
+    "dontOpenProfileWithBow": "Μην Ανοίγεις το Προφίλ με Τόξο",
     "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Items",
     "makeBackpackInventoriesColored": "Color Inventories",
     "avoidBreakingBottomSugarCane": "Avoid Breaking Bottom Sugar Cane",
@@ -82,14 +82,14 @@
     "powerOrbDisplay": "Power Orb Display",
     "powerOrbDisplayStyle": "Power Orb Style: %style%",
     "powerOrbStyle": {
-      "detailed": "Detailed",
-      "compact": "Compact"
+      "detailed": "Με Λεπτομέρειες",
+      "compact": "Συμπαγής"
     },
     "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages",
     "zealotCounter": "Zealot Counter - Count Since Last Eye",
     "tickerChargesDisplay": "Ticker/Charges Display",
     "tab": {
-      "generalSettings": "General Settings"
+      "generalSettings": "Γενικές Ρυθμίσεις"
     },
     "tabEffectTimers": "Potion and Powerup Timers",
     "noArrowsLeftAlert": "No Arrows Left Alert",
@@ -133,7 +133,7 @@
     "dungeonsMapDisplay": "Dungeons Map Display",
     "rotateMap": "Rotate Map to Your Player's Rotation",
     "centerRotationOnYourPlayer": "Center the Rotation Around Your Player",
-    "mapZoom": "Map Zoom",
+    "mapZoom": "Ζουμ Χάρτη",
     "glowingDroppedItems": "Glowing Dropped Items",
     "glowingDungeonTeammates": "Glowing Dungeon Teammates",
     "baseStatBoostPercentage": "Show Base Stat Boost for Dungeon Items",
@@ -165,11 +165,11 @@
       "crafting": "Crafting"
     },
     "wantToViewPatchNotes": "Need support or want to read the full changelog?",
-    "downloadLink": "VIDEO/UPDATE LINK",
-    "directDownload": "DIRECT DOWNLOAD LINK",
-    "openModFolder": "OPEN MODS FOLDER",
+    "downloadLink": "LINK ΓΙΑ ΒΙΝΤΕΟ/ΕΝΗΜΕΡΩΣΗ",
+    "directDownload": "LINK ΑΜΕΣΗΣ ΛΗΨΗΣ",
+    "openModFolder": "ΑΝΟΙΞΕ ΤΟΝ ΦΑΚΕΛΟ MODS",
     "joinTheDiscord": "DISCORD LINK",
-    "newUpdateAvailable": "A new update (%version%) is available!",
+    "newUpdateAvailable": "Μία νέα ενημέρωση (%version%) είναι διαθέσιμη!",
     "update": {
       "majorAvailable": "A new major update (%version%) is available! The link for the download can be found in chat.",
       "patchAvailable": "A new patch update (%version%) is available! Look in chat for download options!"
