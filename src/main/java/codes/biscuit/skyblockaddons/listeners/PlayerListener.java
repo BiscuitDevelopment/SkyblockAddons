@@ -832,6 +832,15 @@ public class PlayerListener {
                 }
             }
 
+            if (main.getConfigValues().isEnabled(Feature.SHOW_RARITY_UPGRADED))
+                if (hoveredItem.hasTagCompound()) {
+                    NBTTagCompound extraAttributesTag = ItemUtils.getExtraAttributes(hoveredItem);
+
+                    if (extraAttributesTag != null && ItemUtils.rarityUpgraded(extraAttributesTag))
+                        e.toolTip.add(main.getConfigValues().getRestrictedColor(Feature.SHOW_RARITY_UPGRADED) +
+                                "§lRARITY HAS BEEN UPGRADED");
+                }
+
             // Append Skyblock Item ID to end of tooltip if in developer mode
             if (main.isDevMode() && e.showAdvancedItemTooltips) {
                 String itemId = ItemUtils.getSkyBlockItemID(e.itemStack);

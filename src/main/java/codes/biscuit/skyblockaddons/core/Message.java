@@ -144,6 +144,7 @@ public enum Message {
     SETTING_SHOW_DUNGEON_MILESTONE(MessageObject.SETTING, "showDungeonMilestone"),
     SETTING_DUNGEONS_COLLECTED_ESSENCES_DISPLAY(MessageObject.SETTING, "dungeonsCollectedEssencesDisplay"),
     SETTING_BONZO_STAFF_SOUNDS(MessageObject.SETTING, "stopBonzoStaffSounds"),
+    SETTING_SHOW_RARITY_UPGRADED(MessageObject.SETTING, "showRarityUpgraded"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.BACKPACK_STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.BACKPACK_STYLE, "compact"),

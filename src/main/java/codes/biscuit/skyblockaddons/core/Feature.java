@@ -139,6 +139,7 @@ public enum Feature {
     SHOW_DUNGEON_MILESTONE(111, Message.SETTING_SHOW_DUNGEON_MILESTONE, new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.YELLOW, EnumUtils.AnchorPoint.BOTTOM_RIGHT, -60, -30), false),
     DUNGEONS_COLLECTED_ESSENCES_DISPLAY(112, Message.SETTING_DUNGEONS_COLLECTED_ESSENCES_DISPLAY, new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.YELLOW, EnumUtils.AnchorPoint.BOTTOM_RIGHT, -60, -90), false),
     STOP_BONZO_STAFF_SOUNDS(113, Message.SETTING_BONZO_STAFF_SOUNDS, null, true),
+    SHOW_RARITY_UPGRADED(114, Message.SETTING_SHOW_RARITY_UPGRADED, new GuiFeatureData(ColorCode.LIGHT_PURPLE, true), false),
 
     WARNING_TIME(-1, Message.SETTING_WARNING_DURATION, false),
 
