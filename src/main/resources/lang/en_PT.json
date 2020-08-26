@@ -138,13 +138,15 @@
     "glowingDungeonTeammates": "Glowin Mateys",
     "baseStatBoostPercentage": "Show the power of the Treasured",
     "colorByRarity": "Color by Shiny",
-    "showPlayerHeadsOnMap": "Show Player Heads on Dungeon Map",
+    "showPlayerHeadsOnMap": "Show the heads of ya' mates on the treasure map",
     "showHealingCircleWall": "Show Dungeon Healing Circle Wall (Unstable)",
     "showCriticalTeammates": "Show Critical Dungeon Teammates",
     "showGlowingItemsOnIsland": "Show Glowing Items On Island",
-    "showItemDungeonFloor": "Show Floor Obtained on Dungeon Items",
+    "showItemDungeonFloor": "Show on wich floor the booty was obtained",
     "showDungeonMilestone": "Show Dungeon Milestone",
-    "dungeonsCollectedEssencesDisplay": "Dungeons Collected Essences Display"
+    "dungeonsCollectedEssencesDisplay": "Dungeons Collected Essences Display",
+    "stopBonzoStaffSounds": "Stop Bonzo's Staff Sounds",
+    "showRarityUpgraded": "Show if Item's Rarity has been Upgraded"
   },
   "messages": {
     "dropConfirmation": "'ay lad, drop this here item again to confirm!",
@@ -202,7 +204,7 @@
     "firstStatus": "This status will appear at the top",
     "secondStatus": "This status will appear under your first status",
     "fallbackStatus": "This status will appear when your automatic status has nothing to show",
-    "legendarySeaCreatureWarning": "Legendary Catch!",
+    "legendarySeaCreatureWarning": "Ye' caught a big one!",
     "cancelledPark": "A feature has stopped you from breaking this block here.",
     "bossApproaching": "You are close to spawning a boss!",
     "enableAll": "Enable All",
