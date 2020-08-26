@@ -146,7 +146,7 @@
     "showDungeonMilestone": "Pokaż kamień milowy Lochu",
     "dungeonsCollectedEssencesDisplay": "Pokaz Zebranych Esencji Lochów",
     "stopBonzoStaffSounds": "Zatrzymaj dzwieki pały Bonza",
-    "showRarityUpgraded": "Show if Item's Rarity has been Upgraded"
+    "showRarityUpgraded": "Pokaż, jeśli rzadkość przedmiotu została ulepszona"
   },
   "messages": {
     "dropConfirmation": "Wyrzuć ten przedmiot ponownie, aby potwierdzić!",
@@ -255,7 +255,7 @@
     "sba.help.copyEntity": "Kopiuje dane NBT bytów. Rodzaje elementów dołączonych i promień wokół gracza do kopiowania danych mogą być dostosowywane. Jeśli nie podano żadnych opcji, używane są domyślne ustawienia. Domyślne ustawienia zawierają graczy, stojaki na zbroje i moby, a także promień %radius% bloków. Jeśli promień nie jest podany, stosuje się domyślny promień.",
     "sba.help.copyEntity.entityNames": "Nazwy typów obiektów, dla których chcesz skopiować dane (np. Player, Creeper). Naciśnij \"Tab\" po wpisaniu komendy dla pełnej listy. Oddziel wiele nazw przecinkami, rozmiar liter w nazwach jest ważny.",
     "sba.help.copyEntity.radius": "Promień(w blokach) wokół gracza, aby skopiować dane NBT z",
-    "sba.help.copySidebar.formatted": "Determines if the formatting codes should be included when copying. Can be either \"true\" or \"false\", defaults to \"false\" if no value is provided. Formatting codes are copied if \"true\".",
+    "sba.help.copySidebar.formatted": "Określa, czy kody formatowania powinny być zawarte podczas kopiowania. Może być \"true\" lub \"false\", domyślnie \"false\" jeśli nie podano żadnej wartości. Kody formatowania są kopiowane, jeśli \"true\".",
     "sba.help.dev": "Ta komenda włącza tryb dewelopera. Ten tryb jest przeznaczony dla deweloperów modów/narzędzi dla Skyblock. Dostarcza surowych danych z gry, takich jak tagi NBT przedmiotów i bytów.",
     "sba.help.help.command": "pod-komenda, aby uzyskać szczegółowe użycie dla",
     "sba.help.set.zealotCounter": "Ręcznie ustawia licznik w liczniku zealotów.",
@@ -264,7 +264,7 @@
     "sba.help.set.zealotCounter.zealots": "Zealoty zabite od ostatniego summoning eye",
     "sba.set.zealotCounter": "Ręcznie ustaw liczniki zealotów",
     "sba.set.zealotCounter.eyes": "Set total summoning eye count to %number%!",
-    "sba.set.zealotCounter.totalZealots": "Set total zealot count to %number%!",
+    "sba.set.zealotCounter.totalZealots": "Ustaw całkowitą liczbę zealotów na %number%!",
     "sba.set.zealotCounter.wrongUsage": "Invalid selection! Please choose %options%.",
     "sba.set.zealotCounter.zealots": "Set current zealot count to %number%!",
     "sba.toggleActionBarLogging": "Toggle logging action bar messages",
