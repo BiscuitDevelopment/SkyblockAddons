@@ -144,7 +144,9 @@
     "showGlowingItemsOnIsland": "显示在岛上的发光物品",
     "showItemDungeonFloor": "显示获取的地下城物品的对应层数",
     "showDungeonMilestone": "显示地下城里程碑",
-    "dungeonsCollectedEssencesDisplay": "Dungeons 收集到的内容显示"
+    "dungeonsCollectedEssencesDisplay": "Dungeons 收集到的内容显示",
+    "stopBonzoStaffSounds": "Stop Bonzo's Staff Sounds",
+    "showRarityUpgraded": "Show if Item's Rarity has been Upgraded"
   },
   "messages": {
     "dropConfirmation": "再次丢弃此物品以确认!",
