@@ -45,6 +45,7 @@ import net.minecraft.util.Vec3;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.client.event.GuiOpenEvent;
 import net.minecraftforge.client.event.GuiScreenEvent;
+import net.minecraftforge.client.event.sound.PlaySoundEvent;
 import net.minecraftforge.event.entity.EntityEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.EnderTeleportEvent;
@@ -85,6 +86,9 @@ public class PlayerListener {
 
     private static final Set<String> LEGENDARY_SEA_CREATURE_MESSAGES = new HashSet<>(Arrays.asList("The Water Hydra has come to test your strength.",
             "The Sea Emperor arises from the depths...", "What is this creature!?"));
+
+    private static final Set<String> BONZO_STAFF_SOUNDS = new HashSet<>(Arrays.asList("fireworks.blast", "fireworks.blast_far",
+            "fireworks.twinkle", "fireworks.twinkle_far", "mob.ghast.moan"));
 
     private long lastWorldJoin = -1;
     private long lastBoss = -1;
@@ -828,6 +832,15 @@ public class PlayerListener {
                 }
             }
 
+            if (main.getConfigValues().isEnabled(Feature.SHOW_RARITY_UPGRADED))
+                if (hoveredItem.hasTagCompound()) {
+                    NBTTagCompound extraAttributesTag = ItemUtils.getExtraAttributes(hoveredItem);
+
+                    if (extraAttributesTag != null && ItemUtils.rarityUpgraded(extraAttributesTag))
+                        e.toolTip.add(main.getConfigValues().getRestrictedColor(Feature.SHOW_RARITY_UPGRADED) +
+                                "§lRARITY HAS BEEN UPGRADED");
+                }
+
             // Append Skyblock Item ID to end of tooltip if in developer mode
             if (main.isDevMode() && e.showAdvancedItemTooltips) {
                 String itemId = ItemUtils.getSkyBlockItemID(e.itemStack);
@@ -906,6 +919,17 @@ public class PlayerListener {
         }
     }
 
+    @SubscribeEvent
+    public void PlaySoundEvent (PlaySoundEvent event) {
+        if (!main.getUtils().isOnSkyblock()) {
+            return;
+        }
+
+        if (main.getConfigValues().isEnabled(Feature.STOP_BONZO_STAFF_SOUNDS) && BONZO_STAFF_SOUNDS.contains(event.name)) {
+            event.result = null;
+        }
+    }
+      
     public boolean aboutToJoinSkyblockServer() {
         return System.currentTimeMillis() - lastSkyblockServerJoinAttempt < 6000;
     }
