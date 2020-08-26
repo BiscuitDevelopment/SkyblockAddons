@@ -144,7 +144,9 @@
     "showGlowingItemsOnIsland": "إظهار إضاءة الأشياء على الجزيرة",
     "showItemDungeonFloor": "إظهار الطابق حيث يتم الحصول على شيء من الزنزانة",
     "showDungeonMilestone": "إظهار معالم الزنزانة",
-    "dungeonsCollectedEssencesDisplay": "Dungeons Collected Essences Display"
+    "dungeonsCollectedEssencesDisplay": "Dungeons Collected Essences Display",
+    "stopBonzoStaffSounds": "Stop Bonzo's Staff Sounds",
+    "showRarityUpgraded": "Show if Item's Rarity has been Upgraded"
   },
   "messages": {
     "dropConfirmation": "!إرمي هذا العنصر مرة أخرى للتأكيد",
