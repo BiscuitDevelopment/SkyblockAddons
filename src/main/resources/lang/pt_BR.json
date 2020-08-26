@@ -145,8 +145,8 @@
     "showItemDungeonFloor": "Mostrar o Andar onde um Item de Masmorra foi Obtido",
     "showDungeonMilestone": "Mostrar Marco da Masmorra",
     "dungeonsCollectedEssencesDisplay": "Exibição de Essências Coletadas das Masmorras",
-    "stopBonzoStaffSounds": "Stop Bonzo's Staff Sounds",
-    "showRarityUpgraded": "Show if Item's Rarity has been Upgraded"
+    "stopBonzoStaffSounds": "Parar sons do cajado de Bonzo",
+    "showRarityUpgraded": "Exibir se a raridade de um item foi melhorada"
   },
   "messages": {
     "dropConfirmation": "Large este item de novo para confirmar!",
