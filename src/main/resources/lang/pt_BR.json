@@ -68,7 +68,7 @@
     "soundIndicatorForFishing": "Indicador de som para pesca",
     "avoidBlinkingNightVision": "Evite a poção de Visão Noturna piscar",
     "disableMinionLocationWarning": "Desativar avisos de localização não perfeita",
-    "jungleAxeCooldown": "Recarga do Machado da Selva/Treecapitator em recarga",
+    "jungleAxeCooldown": "Bloqueio do Jungle Axe/Treecapitator em recarga",
     "organizeLongEnchantmentLists": "Organizar lista de encantamentos longos",
     "showItemCooldowns": "Mostrar tempo de recarga dos itens",
     "speedPercentage": "Porcentagem de velocidade",
@@ -144,7 +144,9 @@
     "showGlowingItemsOnIsland": "Mostrar Itens Brilhantes na Ilha",
     "showItemDungeonFloor": "Mostrar o Andar onde um Item de Masmorra foi Obtido",
     "showDungeonMilestone": "Mostrar Marco da Masmorra",
-    "dungeonsCollectedEssencesDisplay": "Exibição de Essências Coletadas das Masmorras"
+    "dungeonsCollectedEssencesDisplay": "Exibição de Essências Coletadas das Masmorras",
+    "stopBonzoStaffSounds": "Stop Bonzo's Staff Sounds",
+    "showRarityUpgraded": "Show if Item's Rarity has been Upgraded"
   },
   "messages": {
     "dropConfirmation": "Large este item de novo para confirmar!",
@@ -241,7 +243,7 @@
     "sba.brand": "§e(Desenvolvedor) §7Mostrar o nome do servidor",
     "sba.brand.brandOutput": "Marca do Servidor: %brand%",
     "sba.brand.notFound": "Marca do Servidor não encontrada!",
-    "sba.copyEntity": "(Desenvolvedor) Copiar dados NBT para entidades do(s) nome(s) fornecido(s) dentro do raio determinado em torno do jogador",
+    "sba.copyEntity": "§e(Desenvolvedor) §7Copiar dados NBT para entidades do(s) nome(s) fornecido(s) dentro do raio determinado em torno do jogador",
     "sba.copySidebar": "(Dev) Copiar texto do placar.",
     "sba.dev": "Alternar ferramentas de desenvolvedor",
     "sba.dev.disabled": "Modo Desenvolvedor desabilitado!",
@@ -255,7 +257,7 @@
     "sba.help.copyEntity.radius": "O Raio (Em Blocos) ao redor do jogador para copiar os dados NBT da Entidade",
     "sba.help.copySidebar.formatted": "Determina se os códigos de formatação devem ser incluídos ao copiar. Podendo ser tanto \"true\" ou \"false\", sendo o padrão \"false\" se nenhum valor for fornecido. Códigos de formatação são copiados caso \"true\".",
     "sba.help.dev": "Esse comando alterna o modo desenvolvedor. Esse modo é para desenvolvedores de Mods/Ferramentas do Skyblock. Ele fornece dados brutos do jogo como Entidade e Item NBT.",
-    "sba.help.help.command": "o sub-comando para obter uso detalhado para",
+    "sba.help.help.command": "o comando para o qual deseja obter informação detalhada",
     "sba.help.set.zealotCounter": "Define Manualmente as Contagens no Contador de Zealots.",
     "sba.help.set.zealotCounter.eyes": "Olhos de Invocação Vitalícios Obtidos",
     "sba.help.set.zealotCounter.totalZealots": "Zealots Vitalícios Mortos",
@@ -269,7 +271,7 @@
     "sba.toggleActionBarLogging.disabled": "As mensagens da barra de ações não serão mais registradas.",
     "sba.toggleActionBarLogging.enabled": "As mensagens da barra de ações agora serão registradas.",
     "sba.wrongUsage.generic": "Uso Incorreto!",
-    "sba.wrongUsage.subCommandNotFound": "O Sub-Comando \"%sub-command%\" não foi encontrado."
+    "sba.wrongUsage.subCommandNotFound": "O comando \"%sub-command%\" não foi encontrado."
   },
   "keyBindings": {
     "developerCopyNBT": "Copiar NBT"
