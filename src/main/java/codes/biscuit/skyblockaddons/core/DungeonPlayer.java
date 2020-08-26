@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
 
 @Getter @Setter
 public class DungeonPlayer {
-    public static Pattern DUNGEON_PLAYER_LINE = Pattern.compile("^§.\\[(?<class>.)] (?<name>[\\w§]+) §(?<healthColor>.)(?<health>[\\w]+)(?:§c❤)?");
+    public static Pattern DUNGEON_PLAYER_LINE = Pattern.compile("^§.\\[(?<class>.)] (?<name>[\\w§]+) (?:§.)*?§(?<healthColor>.)(?<health>[\\w]+)(?:§c❤)?");
 
     private String name;
     private DungeonClass dungeonClass;
