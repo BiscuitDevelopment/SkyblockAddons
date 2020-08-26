@@ -144,7 +144,9 @@
     "showGlowingItemsOnIsland": "Vis Skinnende Ting På Din Ø",
     "showItemDungeonFloor": "Vis etagen hvor en Dungeon genstand var opnået",
     "showDungeonMilestone": "Vis Dungeon milepæl",
-    "dungeonsCollectedEssencesDisplay": "Dungeons Collected Essences Display"
+    "dungeonsCollectedEssencesDisplay": "Dungeons Collected Essences Display",
+    "stopBonzoStaffSounds": "Stop Bonzo's Staff Sounds",
+    "showRarityUpgraded": "Show if Item's Rarity has been Upgraded"
   },
   "messages": {
     "dropConfirmation": "Slip denne genstand igen for at bekræfte!",
