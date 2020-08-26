@@ -144,7 +144,9 @@
     "showGlowingItemsOnIsland": "Pokaż Świecące Przedmioty Na Wyspie",
     "showItemDungeonFloor": "Pokaż piętro gdzie został zdobyty przedmiot Lochy",
     "showDungeonMilestone": "Pokaż kamień milowy Lochu",
-    "dungeonsCollectedEssencesDisplay": "Pokaz Zebranych Esencji Lochów"
+    "dungeonsCollectedEssencesDisplay": "Pokaz Zebranych Esencji Lochów",
+    "stopBonzoStaffSounds": "Stop Bonzo's Staff Sounds",
+    "showRarityUpgraded": "Show if Item's Rarity has been Upgraded"
   },
   "messages": {
     "dropConfirmation": "Wyrzuć ten przedmiot ponownie, aby potwierdzić!",
