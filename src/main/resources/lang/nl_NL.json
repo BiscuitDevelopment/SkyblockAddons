@@ -144,7 +144,9 @@
     "showGlowingItemsOnIsland": "Toon Gloeiende Voorwerpen Op Eiland",
     "showItemDungeonFloor": "Toon Vloer Waar Dungeon Voorwerpen Zijn Verkregen",
     "showDungeonMilestone": "Toon Dungeon Mijlpaal",
-    "dungeonsCollectedEssencesDisplay": "Dungeons Verzamelde Essences Weergeven"
+    "dungeonsCollectedEssencesDisplay": "Dungeons Verzamelde Essences Weergeven",
+    "stopBonzoStaffSounds": "Stop Bonzo's Staf Geluiden",
+    "showRarityUpgraded": "Laat zien of item's zeldzaamheid is geüpgraded"
   },
   "messages": {
     "dropConfirmation": "Laat dit object opnieuw vallen om te Bevestigen!",
