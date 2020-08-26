@@ -113,7 +113,7 @@
     "turnBowGreenWhenUsingToxicArrowPoison": "Obarvit luk zeleně při použití Toxického jedu na šíp",
     "birchParkRainmakerTimer": "Časovač deště v Parku",
     "combatTimerDisplay": "Zobrazení času v boji",
-    "discordRP": "Ukázání statusu na Discordu",
+    "discordRP": "Zobrazení statusu na Discordzie",
     "endstoneProtectorDisplay": "Ukazatel Enderitového ochránce",
     "fancyWarpMenu": "Lepší Warp Menu",
     "doubleWarp": "Dvojitý warp",
@@ -144,7 +144,9 @@
     "showGlowingItemsOnIsland": "Zobrazit svítící předměty na ostrově",
     "showItemDungeonFloor": "Show Floor Obtained on Dungeon Items",
     "showDungeonMilestone": "Show Dungeon Milestone",
-    "dungeonsCollectedEssencesDisplay": "Dungeons Collected Essences Display"
+    "dungeonsCollectedEssencesDisplay": "Dungeons Collected Essences Display",
+    "stopBonzoStaffSounds": "Stop Bonzo's Staff Sounds",
+    "showRarityUpgraded": "Show if Item's Rarity has been Upgraded"
   },
   "messages": {
     "dropConfirmation": "Vyhoď tento item pro vyhození!",
