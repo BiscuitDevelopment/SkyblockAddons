@@ -228,7 +228,7 @@ public class SkyblockAddonsGui extends GuiScreen {
                 if (main.getConfigValues().isRemoteDisabled(feature)) return;
                 if (main.getConfigValues().isDisabled(feature)) {
                     main.getConfigValues().getDisabledFeatures().remove(feature);
-                    if(feature == Feature.DISCORD_RPC) {
+                    if(feature == Feature.DISCORD_RPC && main.getUtils().isOnSkyblock()) {
                         main.getDiscordRPCManager().start();
                     } else if (feature == Feature.ZEALOT_COUNTER_EXPLOSIVE_BOW_SUPPORT) {
                         main.getConfigValues().getDisabledFeatures().remove(Feature.DISABLE_ENDERMAN_TELEPORTATION_EFFECT);

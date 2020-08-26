@@ -62,7 +62,7 @@ git checkout -b development --track origin/development
     ```shell script
     ./gradlew build
     ```
-    > **Note**
+    > **Notes**
     > 
     > If your jar **build** is **failing** because the code is trying to access private methods or fields,
     > this may be because someone added some new access transformers.
@@ -73,7 +73,12 @@ git checkout -b development --track origin/development
     > ```
     > so the access transformers are applied to the source code!
     > 
-2. (Optional) Run **Minecraft Forge** client
+    > While building the mod, a `NullPointerException` will occur during the task `extractRangemapReplacedMain`.
+    > This is a ForgeGradle bug that is out of our control. It doesn't seem to affect the built JAR, so it can be ignored.
+2. (Optional) Run the **Minecraft Forge** client
+    - Using an IDE
+        - Run the debug configuration you created in "Getting Started."
+    - Using the command line
     ```shell script
-    ./gradlew runClient
+    ./gradlew runClient --args="--username <username> --password <password>"
     ```
