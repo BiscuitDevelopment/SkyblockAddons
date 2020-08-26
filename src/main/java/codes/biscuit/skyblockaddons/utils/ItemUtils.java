@@ -1,12 +1,16 @@
 package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.core.ItemRarity;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraftforge.common.util.Constants;
+import org.apache.commons.lang3.text.WordUtils;
 
 import java.util.EnumSet;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -84,6 +88,12 @@ public class ItemUtils {
         return null;
     }
 
+    /**
+     * Returns the {@code ExtraAttributes} compound tag from the item's NBT data.
+     *
+     * @param item the item to get the tag from
+     * @return the item's {@code ExtraAttributes} compound tag or {@code null} if the item doesn't have one
+     */
     public static NBTTagCompound getExtraAttributes(ItemStack item) {
         if (item == null || !item.hasTagCompound()) {
             return null;
@@ -94,6 +104,7 @@ public class ItemUtils {
 
     /**
      * Returns the Base Stat Boost Percentage from a given Skyblock Extra Attributes NBT Compound
+     *
      * @param extraAttributes the NBT to check
      * @return the BSPB or {@code -1} if it isn't a Dungeons Item or this isn't a valid Skyblock NBT
      */
@@ -123,5 +134,65 @@ public class ItemUtils {
         }
 
         return false;
+    }
+
+    /**
+     * Returns the Dungeon Floor an item was obtained from, from a given Skyblock Extra Attributes NBT Compound
+     * Entrance is floor 0
+     * @param extraAttributes the NBT to check
+     * @return the Floor or {@code -1} if it isn't a Dungeons Item or this isn't a valid Skyblock NBT
+     */
+    public static int getDungeonFloor(NBTTagCompound extraAttributes) {
+        if (extraAttributes == null || !extraAttributes.hasKey("item_tier")) {
+            return -1;
+        }
+
+        return extraAttributes.getInteger("item_tier");
+    }
+
+    //TODO: document this
+    public static String getReforge(ItemStack item) {
+        if (item.hasTagCompound()) {
+            NBTTagCompound extraAttributes = item.getTagCompound();
+            if (extraAttributes.hasKey("ExtraAttributes")) {
+                extraAttributes = extraAttributes.getCompoundTag("ExtraAttributes");
+                if (extraAttributes.hasKey("modifier")) {
+                    String reforge = WordUtils.capitalizeFully(extraAttributes.getString("modifier"));
+
+                    reforge = reforge.replace("_sword", ""); //fixes reforges like "Odd_sword"
+                    reforge = reforge.replace("_bow", "");
+
+                    return reforge;
+                }
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Checks if the given item is a material meant to be used in a crafting recipe. Dragon fragments are an example
+     * since they are used to make dragon armor.
+     *
+     * @param item the item to check
+     * @return {@code true} if this item is a material, {@code false} otherwise
+     */
+    public static boolean isMaterialForRecipe(ItemStack item) {
+        final List<String> tooltip = item.getTooltip(null, false);
+        for (String s : tooltip) {
+            if ("§5§o§eRight-click to view recipes!".equals(s)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Checks if the given item is a pickaxe.
+     *
+     * @param item the item to check
+     * @return {@code true} if this item is a pickaxe, {@code false} otherwise
+     */
+    public static boolean isPickaxe(Item item) {
+        return item instanceof ItemPickaxe;
     }
 }

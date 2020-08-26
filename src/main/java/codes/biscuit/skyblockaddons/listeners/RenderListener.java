@@ -795,6 +795,27 @@ public class RenderListener {
 
             int stageNum = Math.min(stage.ordinal(), 5);
             text = Message.MESSAGE_STAGE.getMessage(String.valueOf(stageNum));
+        } else if (feature == Feature.SHOW_DUNGEON_MILESTONE) {
+            if (buttonLocation == null && !main.getUtils().isInDungeon()) {
+                return;
+            }
+
+            DungeonMilestone dungeonMilestone = main.getDungeonUtils().getDungeonMilestone();
+            if (dungeonMilestone == null) {
+                if (buttonLocation != null) {
+                    dungeonMilestone = DungeonMilestone.getZeroMilestone(DungeonClass.HEALER);
+                } else {
+                    return;
+                }
+            }
+
+            text = "Milestone " + dungeonMilestone.getLevel();
+        } else if (feature == Feature.DUNGEONS_COLLECTED_ESSENCES_DISPLAY) {
+            if (buttonLocation == null && !main.getUtils().isInDungeon()) {
+                return;
+            }
+
+            text = "";
         } else {
             return;
         }
@@ -826,6 +847,17 @@ public class RenderListener {
 
         if (feature == Feature.COMBAT_TIMER_DISPLAY) {
             height += 15;
+        }
+
+        if (feature == Feature.SHOW_DUNGEON_MILESTONE) {
+            width += 18 + 2;
+            height += 10;
+        }
+
+        if (feature == Feature.DUNGEONS_COLLECTED_ESSENCES_DISPLAY) {
+            int maxNumberWidth = mc.fontRendererObj.getStringWidth("99");
+            width = 18 + 2 + maxNumberWidth + 5 + 18 + 2 + maxNumberWidth;
+            height = 18 * (int) Math.ceil(EssenceType.values().length / 2F);
         }
 
         x = transformXY(x, width, scale);
@@ -960,6 +992,57 @@ public class RenderListener {
             ChromaManager.renderingText(feature);
             main.getUtils().drawTextWithStyle(String.valueOf(count), x+16+2, y + 4, color);
             ChromaManager.doneRenderingText();
+
+        } else if (feature == Feature.SHOW_DUNGEON_MILESTONE) {
+            DungeonMilestone dungeonMilestone = main.getDungeonUtils().getDungeonMilestone();
+            if (buttonLocation != null) {
+                dungeonMilestone = DungeonMilestone.getZeroMilestone(DungeonClass.HEALER);
+            }
+
+            renderItem(dungeonMilestone.getDungeonClass().getItem(), x, y);
+            ChromaManager.renderingText(feature);
+            main.getUtils().drawTextWithStyle(text, x + 18, y, color);
+            main.getUtils().drawTextWithStyle(dungeonMilestone.getValue(), x + 18 + mc.fontRendererObj.getStringWidth(text) / 2F
+                    - mc.fontRendererObj.getStringWidth(dungeonMilestone.getValue()) / 2F, y + 9, color);
+            ChromaManager.doneRenderingText();
+
+        } else if (feature == Feature.DUNGEONS_COLLECTED_ESSENCES_DISPLAY) {
+            Map<EssenceType, Integer> collectedEssences = main.getDungeonUtils().getCollectedEssences();
+
+            float currentX = x;
+            float currentY;
+
+            int maxNumberWidth = mc.fontRendererObj.getStringWidth("99");
+
+            int count = 0;
+            for (EssenceType essenceType : EssenceType.values()) {
+                int value = collectedEssences.getOrDefault(essenceType, 0);
+                if (buttonLocation != null) {
+                    value = 99;
+                } else if (value <= 0) {
+                    continue;
+                }
+
+                int column = count % 2;
+                int row = count / 2;
+
+                if (column == 0) {
+                    currentX = x;
+                } else if (column == 1) {
+                    currentX = x + 18 + 2 + maxNumberWidth + 5;
+                }
+                currentY = y + row * 18;
+
+                GlStateManager.color(1, 1, 1, 1);
+                mc.getTextureManager().bindTexture(essenceType.getResourceLocation());
+                main.getUtils().drawModalRectWithCustomSizedTexture(currentX, currentY, 0, 0, 16, 16, 16, 16);
+
+                ChromaManager.renderingText(feature);
+                main.getUtils().drawTextWithStyle(String.valueOf(value), currentX + 18 + 2, currentY + 5, color);
+                ChromaManager.doneRenderingText();
+
+                count++;
+            }
         } else {
             ChromaManager.renderingText(feature);
             main.getUtils().drawTextWithStyle(text, x, y, color);
@@ -1761,12 +1844,12 @@ public class RenderListener {
                     continue;
                 }
 
-                if (!main.getUtils().getDungeonPlayers().containsKey(entity.getName())) {
+                if (!main.getDungeonUtils().getPlayers().containsKey(entity.getName())) {
                     continue;
                 }
 
-                DungeonPlayer dungeonPlayer = main.getUtils().getDungeonPlayers().get(entity.getName());
-                if (!dungeonPlayer.isCritical() && !dungeonPlayer.isLow()) {
+                DungeonPlayer dungeonPlayer = main.getDungeonUtils().getPlayers().get(entity.getName());
+                if (dungeonPlayer.isGhost() || (!dungeonPlayer.isCritical() && !dungeonPlayer.isLow())) {
                     continue;
                 }
 

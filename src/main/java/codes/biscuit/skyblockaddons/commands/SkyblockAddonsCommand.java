@@ -2,6 +2,7 @@ package codes.biscuit.skyblockaddons.commands;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Message;
+import codes.biscuit.skyblockaddons.misc.SkyblockKeyBinding;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
 import codes.biscuit.skyblockaddons.utils.DevUtils;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
@@ -14,6 +15,7 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.EnumChatFormatting;
 import org.apache.logging.log4j.Logger;
+import org.lwjgl.input.Keyboard;
 
 import java.awt.*;
 import java.io.IOException;
@@ -77,9 +79,10 @@ public class SkyblockAddonsCommand extends CommandBase {
         if (main.isDevMode()) {
             usage = usage + "\n" +
                     "§b● " + CommandSyntax.DEV + " §7- " + Message.COMMAND_USAGE_SBA_DEV.getMessage() + "\n" +
-                    "§b● " + CommandSyntax.SIDEBAR + " §7- " + Message.COMMAND_USAGE_SBA_SIDEBAR.getMessage() + "\n" +
                     "§b● " + CommandSyntax.BRAND + " §7- " + Message.COMMAND_USAGE_SBA_BRAND.getMessage() + "\n" +
-                    "§b● " + CommandSyntax.COPY_ENTITY + " §7- " + Message.COMMAND_USAGE_SBA_COPY_ENTITY.getMessage();
+                    "§b● " + CommandSyntax.COPY_ENTITY + " §7- " + Message.COMMAND_USAGE_SBA_COPY_ENTITY.getMessage() + "\n" +
+                    "§b● " + CommandSyntax.COPY_SIDEBAR + " §7- " + Message.COMMAND_USAGE_SBA_COPY_SIDEBAR.getMessage() + "\n" +
+                    "§b● " + CommandSyntax.TOGGLE_ACTION_BAR_LOGGING + " §7- " + Message.COMMAND_USAGE_TOGGLE_ACTION_BAR_LOGGING.getMessage();
         }
 
         usage = usage + "\n" + FOOTER;
@@ -112,14 +115,17 @@ public class SkyblockAddonsCommand extends CommandBase {
             case "dev":
                 usageBuilder.append(SubCommandUsage.DEV);
                 break;
-            case "sidebar":
-                usageBuilder.append(SubCommandUsage.SIDEBAR);
+            case "copysidebar":
+                usageBuilder.append(SubCommandUsage.COPY_SIDEBAR);
                 break;
             case "brand":
                 usageBuilder.append(SubCommandUsage.BRAND);
                 break;
             case "copyentity":
                 usageBuilder.append(SubCommandUsage.COPY_ENTITY);
+                break;
+            case "toggleactionbarlogging":
+                usageBuilder.append(SubCommandUsage.TOGGLE_ACTION_BAR_LOGGING);
                 break;
             default:
                 return null;
@@ -139,7 +145,7 @@ public class SkyblockAddonsCommand extends CommandBase {
             } else if (main.isDevMode()) {
                 if (args[0].equalsIgnoreCase("copyEntity")) {
                     return getListOfStringsMatchingLastWord(args, DevUtils.ENTITY_NAMES);
-                } else if (args[0].equalsIgnoreCase("sidebar")) {
+                } else if (args[0].equalsIgnoreCase("copySidebar")) {
                     return getListOfStringsMatchingLastWord(args, "formatted");
                 }
             }
@@ -162,7 +168,7 @@ public class SkyblockAddonsCommand extends CommandBase {
                         if (subCommandUsage != null) {
                             main.getUtils().sendMessage(subCommandUsage, false);
                         } else {
-                            throw new CommandException(Message.SUBCOMMAND_HELP_SUBCOMMAND_NOT_FOUND.getMessage(args[1]));
+                            throw new CommandException(Message.COMMAND_USAGE_WRONG_USAGE_SUBCOMMAND_NOT_FOUND.getMessage(args[1]));
                         }
                     } else {
                         main.getUtils().sendMessage(getCommandUsage(sender), false);
@@ -172,14 +178,16 @@ public class SkyblockAddonsCommand extends CommandBase {
                     main.getRenderListener().setGuiToOpen(EnumUtils.GUIType.EDIT_LOCATIONS, 0, null);
 
                 } else if (args[0].equalsIgnoreCase("dev") || args[0].equalsIgnoreCase("nbt")) {
+                    SkyblockKeyBinding devKeyBinding = main.getDeveloperCopyNBTKey();
                     main.setDevMode(!main.isDevMode());
 
                     if (main.isDevMode()) {
-                        main.getDeveloperCopyNBTKey().register();
-                        main.getUtils().sendMessage(ColorCode.GREEN + "Developer mode enabled! TIP: Press right ctrl to copy NBT data!");
+                        devKeyBinding.register();
+                        main.getUtils().sendMessage(ColorCode.GREEN + Message.COMMAND_USAGE_SBA_DEV_ENABLED.getMessage(
+                                Keyboard.getKeyName(devKeyBinding.getKeyCode())));
                     } else {
-                        main.getDeveloperCopyNBTKey().deRegister();
-                        main.getUtils().sendMessage(ColorCode.RED + "Developer mode disabled!");
+                        devKeyBinding.deRegister();
+                        main.getUtils().sendMessage(ColorCode.RED + Message.COMMAND_USAGE_SBA_DEV_DISABLED.getMessage());
                     }
                 } else if (args[0].equalsIgnoreCase("set")) {
                     int number;
@@ -187,49 +195,57 @@ public class SkyblockAddonsCommand extends CommandBase {
                     if (args.length >= 3) {
                         number = parseInt(args[2]);
                     } else {
-                        throw new WrongUsageException("Wrong usage!");
+                        throw new WrongUsageException(Message.COMMAND_USAGE_WRONG_USAGE_GENERIC.getMessage());
                     }
 
                     if (args[1].equalsIgnoreCase("totalZealots") || args[1].equalsIgnoreCase("total")) {
                         main.getPersistentValues().setTotalKills(number);
-                        main.getUtils().sendMessage("Set total zealot count to: "+number+"!");
+                        main.getUtils().sendMessage(Message.COMMAND_USAGE_SBA_SET_ZEALOT_COUNTER_TOTAL_ZEALOTS.getMessage(
+                                Integer.toString(number)));
                     } else if (args[1].equalsIgnoreCase("zealots")) {
                         main.getPersistentValues().setKills(number);
-                        main.getUtils().sendMessage("Set current zealot count to: "+number+"!");
+                        main.getUtils().sendMessage(Message.COMMAND_USAGE_SBA_SET_ZEALOT_COUNTER_ZEALOTS.getMessage(
+                                Integer.toString(number)));
                     } else if (args[1].equalsIgnoreCase("eyes")) {
                         main.getPersistentValues().setSummoningEyeCount(number);
-                        main.getUtils().sendMessage("Set total summoning eye count to: "+number+"!");
+                        main.getUtils().sendMessage(Message.COMMAND_USAGE_SBA_SET_ZEALOT_COUNTER_EYES.getMessage(
+                                Integer.toString(number)));
                     } else {
-                        main.getUtils().sendErrorMessage("Invalid selection! Please choose 'zealots', 'totalZealots/total', 'eyes'");
+                        throw new CommandException(Message.COMMAND_USAGE_SBA_SET_ZEALOT_COUNTER_WRONG_USAGE.getMessage(
+                                "'zealots', 'totalZealots/total', 'eyes'"));
                     }
                 } else if (args[0].equalsIgnoreCase("folder")) {
                     try {
                         Desktop.getDesktop().open(main.getUtils().getSBAFolder());
                     } catch (IOException e) {
                         logger.catching(e);
-                        throw new CommandException("Failed to open mods folder.", e);
+                        throw new CommandException(Message.COMMAND_USAGE_SBA_FOLDER_ERROR.getMessage(), e.getMessage());
                     }
                 } else if (args[0].equalsIgnoreCase("warp")) {
                     main.getRenderListener().setGuiToOpen(EnumUtils.GUIType.WARP);
                 } else if (main.isDevMode()) {
-                    if (args[0].equalsIgnoreCase("sidebar")) {
+                    if (args[0].equalsIgnoreCase("copySidebar")) {
                         Scoreboard scoreboard = Minecraft.getMinecraft().theWorld.getScoreboard();
 
-                        if (args.length < 2) {
-                            DevUtils.copyScoreboardSideBar(scoreboard);
+                        try {
+                            if (args.length < 2) {
+                                DevUtils.copyScoreboardSideBar(scoreboard);
 
-                        } else if (args.length == 2 && parseBoolean(args[1])) {
-                            DevUtils.copyScoreboardSidebar(scoreboard, false);
-                        } else {
-                            main.getUtils().sendMessage(getCommandUsage(sender), false);
+                            } else if (args.length == 2 && parseBoolean(args[1])) {
+                                DevUtils.copyScoreboardSidebar(scoreboard, false);
+                            } else {
+                                throw new WrongUsageException(Message.COMMAND_USAGE_WRONG_USAGE_GENERIC.getMessage());
+                            }
+                        } catch (NullPointerException e) {
+                            throw new CommandException(e.getMessage());
                         }
                     } else if (args[0].equalsIgnoreCase("brand")) {
                         String serverBrand = DevUtils.getServerBrand(Minecraft.getMinecraft());
 
                         if (serverBrand != null) {
-                            main.getUtils().sendMessage("Server Brand: " + serverBrand);
+                            main.getUtils().sendMessage(Message.COMMAND_USAGE_SBA_BRAND_BRAND_OUTPUT.getMessage(serverBrand));
                         } else {
-                            throw new CommandException("Server brand not found!");
+                            throw new CommandException(Message.COMMAND_USAGE_SBA_BRAND_NOT_FOUND.getMessage());
                         }
                     } else if (args[0].equalsIgnoreCase("copyEntity")) {
                         try {
@@ -246,11 +262,19 @@ public class SkyblockAddonsCommand extends CommandBase {
                         } catch (IllegalArgumentException e) {
                             throw new WrongUsageException(e.getMessage());
                         }
+                    } else if (args[0].equalsIgnoreCase("toggleActionBarLogging")) {
+                        DevUtils.setLoggingActionBarMessages(!DevUtils.isLoggingActionBarMessages());
+
+                        if (DevUtils.isLoggingActionBarMessages()) {
+                            main.getUtils().sendMessage(ColorCode.GREEN + Message.COMMAND_USAGE_TOGGLE_ACTION_BAR_LOGGING_ENABLED.getMessage());
+                        } else {
+                            main.getUtils().sendMessage(ColorCode.RED + Message.COMMAND_USAGE_TOGGLE_ACTION_BAR_LOGGING_DISABLED.getMessage());
+                        }
                     } else {
-                        main.getUtils().sendMessage(getCommandUsage(sender), false);
+                        throw new WrongUsageException(Message.COMMAND_USAGE_WRONG_USAGE_SUBCOMMAND_NOT_FOUND.getMessage(args[0]));
                     }
                 } else {
-                    main.getUtils().sendMessage(getCommandUsage(sender), false);
+                    throw new WrongUsageException(Message.COMMAND_USAGE_WRONG_USAGE_SUBCOMMAND_NOT_FOUND.getMessage(args[0]));
                 }
             } else {
                 // If there's no arguments given, open the main GUI
@@ -271,7 +295,7 @@ public class SkyblockAddonsCommand extends CommandBase {
      Developer mode commands are not included if developer mode is disabled.
      */
     private List<String> getSubCommandTabCompletionOptions(String[] args) {
-        String[] subCommands = {"help", "set", "edit", "folder", "dev", "sidebar", "brand", "copyEntity"};
+        String[] subCommands = {"help", "set", "edit", "folder", "dev", "copySidebar", "brand", "copyEntity", "toggleActionBarLogging"};
 
         if (main.isDevMode()) {
             return getListOfStringsMatchingLastWord(args, subCommands);
@@ -286,7 +310,7 @@ public class SkyblockAddonsCommand extends CommandBase {
         ZEALOTS("Zealots", Message.SUBCOMMAND_HELP_SET_ZEALOT_COUNTER_ZEALOTS.getMessage()),
         EYES("Eyes", Message.SUBCOMMAND_HELP_SET_ZEALOT_COUNTER_EYES.getMessage()),
         TOTAL_ZEALOTS("TotalZealots|Total", Message.SUBCOMMAND_HELP_SET_ZEALOT_COUNTER_TOTAL_ZEALOTS.getMessage()),
-        FORMATTED("Formatted", Message.SUBCOMMAND_HELP_SIDEBAR_FORMATTED.getMessage()),
+        FORMATTED("Formatted", Message.SUBCOMMAND_HELP_COPY_SIDEBAR_FORMATTED.getMessage()),
         ENTITY_NAMES("EntityNames", Message.SUBCOMMAND_HELP_COPY_ENTITY_ENTITY_NAMES.getMessage()),
         RADIUS("Radius", Message.SUBCOMMAND_HELP_COPY_ENTITY_RADIUS.getMessage());
 
@@ -313,9 +337,10 @@ public class SkyblockAddonsCommand extends CommandBase {
         SET("/sba set <zealots|eyes|totalZealots §eor§b total> <number>"),
         FOLDER("/sba folder"),
         DEV("/sba dev"),
-        SIDEBAR("/sba sidebar [formatted: boolean]"),
         BRAND("/sba brand"),
-        COPY_ENTITY("/sba copyEntity [EntityNames] [radius]");
+        COPY_ENTITY("/sba copyEntity [EntityNames] [radius]"),
+        COPY_SIDEBAR("/sba sidebar [formatted: boolean]"),
+        TOGGLE_ACTION_BAR_LOGGING("/sba toggleActionBarLogging");
 
         @Getter
         private final String syntax;
@@ -334,14 +359,13 @@ public class SkyblockAddonsCommand extends CommandBase {
     private enum SubCommandUsage {
         HELP(CommandSyntax.HELP, Message.COMMAND_USAGE_SBA_HELP.getMessage(), Collections.singletonList(CommandOption.COMMAND)),
         EDIT(CommandSyntax.EDIT, Message.COMMAND_USAGE_SBA_EDIT.getMessage(), null),
-        SET(CommandSyntax.SET, Message.SUBCOMMAND_HELP_SET_ZEALOT_COUNTER.getMessage(), Arrays.asList(CommandOption.ZEALOTS,
-                CommandOption.EYES, CommandOption.TOTAL_ZEALOTS)),
+        SET(CommandSyntax.SET, Message.SUBCOMMAND_HELP_SET_ZEALOT_COUNTER.getMessage(), Arrays.asList(CommandOption.ZEALOTS, CommandOption.EYES, CommandOption.TOTAL_ZEALOTS)),
         FOLDER(CommandSyntax.FOLDER, Message.COMMAND_USAGE_SBA_FOLDER.getMessage(), null),
         DEV(CommandSyntax.DEV, Message.SUBCOMMAND_HELP_DEV.getMessage(), null),
-        SIDEBAR(CommandSyntax.SIDEBAR, Message.COMMAND_USAGE_SBA_SIDEBAR.getMessage(), Collections.singletonList(CommandOption.FORMATTED)),
         BRAND(CommandSyntax.BRAND, Message.COMMAND_USAGE_SBA_BRAND.getMessage(), null),
-        COPY_ENTITY(CommandSyntax.COPY_ENTITY, Message.SUBCOMMAND_HELP_COPY_ENTITY.getMessage(Integer.toString(DevUtils.ENTITY_COPY_RADIUS)),
-                Arrays.asList(CommandOption.ENTITY_NAMES, CommandOption.RADIUS))
+        COPY_ENTITY(CommandSyntax.COPY_ENTITY, Message.SUBCOMMAND_HELP_COPY_ENTITY.getMessage(Integer.toString(DevUtils.ENTITY_COPY_RADIUS)), Arrays.asList(CommandOption.ENTITY_NAMES, CommandOption.RADIUS)),
+        COPY_SIDEBAR(CommandSyntax.COPY_SIDEBAR, Message.COMMAND_USAGE_SBA_COPY_SIDEBAR.getMessage(), Collections.singletonList(CommandOption.FORMATTED)),
+        TOGGLE_ACTION_BAR_LOGGING(CommandSyntax.TOGGLE_ACTION_BAR_LOGGING, Message.COMMAND_USAGE_TOGGLE_ACTION_BAR_LOGGING.getMessage(), null)
         ;
         private final CommandSyntax syntax;
         private final String description;

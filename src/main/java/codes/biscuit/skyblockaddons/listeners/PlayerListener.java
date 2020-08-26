@@ -2,12 +2,13 @@ package codes.biscuit.skyblockaddons.listeners;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.*;
+import codes.biscuit.skyblockaddons.core.npc.NPCUtils;
 import codes.biscuit.skyblockaddons.features.BaitManager;
-import codes.biscuit.skyblockaddons.features.EnchantedItemBlacklist;
 import codes.biscuit.skyblockaddons.features.EndstoneProtectorManager;
 import codes.biscuit.skyblockaddons.features.backpacks.Backpack;
 import codes.biscuit.skyblockaddons.features.backpacks.BackpackManager;
 import codes.biscuit.skyblockaddons.features.cooldowns.CooldownManager;
+import codes.biscuit.skyblockaddons.features.enchantedItemBlacklist.EnchantedItemPlacementBlocker;
 import codes.biscuit.skyblockaddons.features.powerorbs.PowerOrbManager;
 import codes.biscuit.skyblockaddons.features.tabtimers.TabEffectManager;
 import codes.biscuit.skyblockaddons.gui.IslandWarpGui;
@@ -29,7 +30,6 @@ import net.minecraft.entity.monster.EntityBlaze;
 import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.monster.EntityMagmaCube;
 import net.minecraft.entity.monster.EntitySlime;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.entity.projectile.EntityFishHook;
 import net.minecraft.init.Items;
@@ -45,13 +45,13 @@ import net.minecraft.util.Vec3;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.client.event.GuiOpenEvent;
 import net.minecraftforge.client.event.GuiScreenEvent;
+import net.minecraftforge.client.event.sound.PlaySoundEvent;
 import net.minecraftforge.event.entity.EntityEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.EnderTeleportEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
-import net.minecraftforge.event.entity.player.FillBucketEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.ChunkEvent;
@@ -59,6 +59,7 @@ import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
+import org.apache.logging.log4j.Logger;
 import org.lwjgl.input.Keyboard;
 
 import java.util.*;
@@ -70,18 +71,24 @@ public class PlayerListener {
 
     private static final Pattern NO_ARROWS_LEFT_PATTERN = Pattern.compile("(?:§r)?§cYou don't have any more Arrows left in your Quiver!§r");
     private static final Pattern ONLY_HAVE_ARROWS_LEFT_PATTERN = Pattern.compile("(?:§r)?§cYou only have (?<arrows>[0-9]+) Arrows left in your Quiver!§r");
-    private final static Pattern ENCHANTMENT_TOOLTIP_PATTERN = Pattern.compile("§.§.(§9[\\w ]+(, )?)+");
-    private final static Pattern ABILITY_CHAT_PATTERN = Pattern.compile("§r§aUsed §r§6[A-Za-z ]+§r§a! §r§b\\([0-9]+ Mana\\)§r");
-    private final static Pattern PROFILE_CHAT_PATTERN = Pattern.compile("§aYou are playing on profile: §e([A-Za-z]+).*");
-    private final static Pattern SWITCH_PROFILE_CHAT_PATTERN = Pattern.compile("§aYour profile was changed to: §e([A-Za-z]+).*");
-    private final static Pattern MINION_CANT_REACH_PATTERN = Pattern.compile("§cI can't reach any (?<mobName>[A-Za-z]*)(?:s)");
+    private static final Pattern ENCHANTMENT_TOOLTIP_PATTERN = Pattern.compile("§.§.(§9[\\w ]+(, )?)+");
+    private static final Pattern ABILITY_CHAT_PATTERN = Pattern.compile("§r§aUsed §r§6[A-Za-z ]+§r§a! §r§b\\([0-9]+ Mana\\)§r");
+    private static final Pattern PROFILE_CHAT_PATTERN = Pattern.compile("§aYou are playing on profile: §e([A-Za-z]+).*");
+    private static final Pattern SWITCH_PROFILE_CHAT_PATTERN = Pattern.compile("§aYour profile was changed to: §e([A-Za-z]+).*");
+    private static final Pattern MINION_CANT_REACH_PATTERN = Pattern.compile("§cI can't reach any (?<mobName>[A-Za-z]*)(?:s)");
 
-    private final static Set<String> SOUP_RANDOM_MESSAGES = new HashSet<>(Arrays.asList("I feel like I can fly!", "What was in that soup?",
+    // Between these two coordinates is the whole "arena" area where all the magmas and stuff are.
+    private static final AxisAlignedBB MAGMA_BOSS_SPAWN_AREA = new AxisAlignedBB(-244, 0, -566, -379, 255, -635);
+
+    private static final Set<String> SOUP_RANDOM_MESSAGES = new HashSet<>(Arrays.asList("I feel like I can fly!", "What was in that soup?",
             "Hmm… tasty!", "Hmm... tasty!", "You can now fly for 2 minutes.", "Your flight has been extended for 2 extra minutes.",
             "You can now fly for 200 minutes.", "Your flight has been extended for 200 extra minutes."));
 
     private static final Set<String> LEGENDARY_SEA_CREATURE_MESSAGES = new HashSet<>(Arrays.asList("The Water Hydra has come to test your strength.",
             "The Sea Emperor arises from the depths...", "What is this creature!?"));
+
+    private static final Set<String> BONZO_STAFF_SOUNDS = new HashSet<>(Arrays.asList("fireworks.blast", "fireworks.blast_far",
+            "fireworks.twinkle", "fireworks.twinkle_far", "mob.ghast.moan"));
 
     private long lastWorldJoin = -1;
     private long lastBoss = -1;
@@ -104,6 +111,7 @@ public class PlayerListener {
     private double oldBobberPosY = 0;
 
     @Getter private Set<UUID> countedEndermen = new HashSet<>();
+    @Getter private TreeMap<Long, Set<Vec3>> recentlyKilledZealots = new TreeMap<>();
 
     @Getter private Set<IntPair> recentlyLoadedChunks = new HashSet<>();
 
@@ -112,7 +120,10 @@ public class PlayerListener {
     @Getter @Setter private int recentMagmaCubes = 0;
     @Getter @Setter private int recentBlazes = 0;
 
+    @Getter private TreeMap<Long, Vec3> explosiveBowExplosions = new TreeMap<>();
+
     private final SkyblockAddons main = SkyblockAddons.getInstance();
+    private final Logger logger = main.getLogger();
     private final ActionBarParser actionBarParser = new ActionBarParser();
 
     /**
@@ -120,7 +131,9 @@ public class PlayerListener {
      */
     @SubscribeEvent()
     public void onWorldJoin(EntityJoinWorldEvent e) {
-        if (e.entity == Minecraft.getMinecraft().thePlayer) {
+        Entity entity = e.entity;
+
+        if (entity == Minecraft.getMinecraft().thePlayer) {
             lastWorldJoin = System.currentTimeMillis();
             lastBoss = -1;
             magmaTick = 1;
@@ -134,6 +147,12 @@ public class PlayerListener {
             if (doubleWarpMarker != null) {
                 IslandWarpGui.setDoubleWarpMarker(null);
                 Minecraft.getMinecraft().thePlayer.sendChatMessage("/warp "+doubleWarpMarker.getWarpName());
+            }
+
+            NPCUtils.getNpcLocations().clear();
+        } else {
+            if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.HIDE_PLAYERS_NEAR_NPCS) && NPCUtils.isNPC(entity)) {
+                NPCUtils.getNpcLocations().add(entity.getPositionVector());
             }
         }
     }
@@ -159,12 +178,23 @@ public class PlayerListener {
     @SubscribeEvent(priority = EventPriority.HIGH)
     public void onChatReceive(ClientChatReceivedEvent e) {
         String unformattedText = e.message.getUnformattedText();
+        // Type 2 means it's an action bar message.
         if (e.type == 2) {
-            // action bar message, parse using ActionBarParser and display the rest message instead
+            // Log the message to the game log if action bar message logging is enabled.
+            if (DevUtils.isLoggingActionBarMessages()) {
+                logger.info("[ACTION BAR] " + e.message.getUnformattedText());
+            }
+
+            // Parse using ActionBarParser and display the rest message instead
             String restMessage = actionBarParser.parseActionBar(unformattedText);
             if (main.isUsingOofModv1() && restMessage.trim().length() == 0) {
                 e.setCanceled(true);
             }
+
+            if (main.getUtils().isInDungeon() && main.getConfigValues().isEnabled(Feature.DUNGEONS_COLLECTED_ESSENCES_DISPLAY)) {
+                main.getDungeonUtils().parseCollectedEssence(restMessage);
+            }
+
             e.message = new ChatComponentText(restMessage);
         } else {
             String formattedText = e.message.getFormattedText();
@@ -239,6 +269,20 @@ public class PlayerListener {
                 }
             }
 
+            if (main.getUtils().isInDungeon()) {
+                if (main.getConfigValues().isEnabled(Feature.SHOW_DUNGEON_MILESTONE)) {
+                    DungeonMilestone dungeonMilestone = main.getDungeonUtils().parseMilestone(formattedText);
+                    if (dungeonMilestone != null) {
+                        main.getDungeonUtils().setDungeonMilestone(dungeonMilestone);
+                    }
+                }
+
+                if (main.getConfigValues().isEnabled(Feature.DUNGEONS_COLLECTED_ESSENCES_DISPLAY)) {
+                    main.getDungeonUtils().parseBonusEssence(formattedText);
+                }
+            }
+
+
             Matcher matcher = ABILITY_CHAT_PATTERN.matcher(formattedText);
             if (matcher.matches()) {
                 CooldownManager.put(Minecraft.getMinecraft().thePlayer.getHeldItem());
@@ -256,38 +300,34 @@ public class PlayerListener {
         }
     }
 
-    private void changeMana(int change) {
-        setAttribute(Attribute.MANA, getAttribute(Attribute.MANA) + change);
-    }
-
-    private int getAttribute(Attribute attribute) {
-        return main.getUtils().getAttributes().get(attribute).getValue();
-    }
-
-    private void setAttribute(Attribute attribute, int value) {
-        main.getUtils().getAttributes().get(attribute).setValue(value);
-    }
-
     /**
-     * This blocks interaction with Ember Rods on your island, to avoid blowing up chests, and placing enchanted items
-     * such as enchanted gold blocks.
+     * This method is triggered by the player right-clicking on something.
+     * Yes, it says it works for left-clicking blocks too but it actually doesn't, so please don't use it to detect that.
+     * <br>
+     * Also, when the player right-clicks on a block, {@code PlayerInteractEvent} gets fired twice. The first time,
+     * the correct action type {@code Action.RIGHT_CLICK_BLOCK}, is used. The second time, the action type is
+     * {@code Action.RIGHT_CLICK_AIR} for some reason. Both of these events will cause a {@code C08PacketPlayerBlockPlacement}
+     * packet to be sent to the server, so block both of them if you want to prevent a block from being placed.
+     * <br>
+     * Look at {@code Minecraft#rightClickMouse()} to see when the event is fired.
+     *
+     * @see Minecraft
      */
     @SubscribeEvent()
     public void onInteract(PlayerInteractEvent e) {
         Minecraft mc = Minecraft.getMinecraft();
         ItemStack heldItem = e.entityPlayer.getHeldItem();
 
-        if (main.getUtils().isOnSkyblock() && e.entityPlayer == mc.thePlayer && heldItem != null) {
+        if (main.getUtils().isOnSkyblock() && heldItem != null) {
+            // Change the GUI background color when a backpack is opened to match the backpack's color.
             if (heldItem.getItem() == Items.skull) {
                 Backpack backpack = BackpackManager.getFromItem(heldItem);
                 if (backpack != null) {
                     BackpackManager.setOpenedBackpackColor(backpack.getBackpackColor());
                 }
-            }
-
-            // Update fishing status
-            if (heldItem.getItem().equals(Items.fishing_rod)
+            } else if (heldItem.getItem().equals(Items.fishing_rod)
                     && (e.action == PlayerInteractEvent.Action.RIGHT_CLICK_BLOCK || e.action == PlayerInteractEvent.Action.RIGHT_CLICK_AIR)) {
+                // Update fishing status
                 if (main.getConfigValues().isEnabled(Feature.FISHING_SOUND_INDICATOR)) {
                     oldBobberIsInWater = false;
                     lastBobberEnteredWater = Long.MAX_VALUE;
@@ -296,30 +336,19 @@ public class PlayerListener {
                 if (main.getConfigValues().isEnabled(Feature.SHOW_ITEM_COOLDOWNS) && mc.thePlayer.fishEntity != null) {
                     CooldownManager.put(mc.thePlayer.getHeldItem());
                 }
-            } else if (EnchantedItemBlacklist.shouldBlockUsage(heldItem, e.action)) {
-                e.setCanceled(true);
+            } else if (heldItem.getItem().equals(Items.blaze_rod)) {
+                String itemId = ItemUtils.getSkyBlockItemID(heldItem);
+
+                if (main.getConfigValues().isEnabled(Feature.DISABLE_EMBER_ROD) && main.getUtils().getLocation() == Location.ISLAND
+                        && itemId != null && itemId.equals("EMBER_ROD")) {
+                    e.setCanceled(true);
+                }
             }
-        }
-    }
 
-    /**
-     * Block emptying of buckets separately because they aren't handled like blocks.
-     * The event name {@code FillBucketEvent} is misleading. The event is fired when buckets are emptied also so
-     * it should really be called {@code BucketEvent}.
-     *
-     * @param bucketEvent the event
-     */
-    @SubscribeEvent
-    public void onBucketEvent(FillBucketEvent bucketEvent) {
-        ItemStack bucket = bucketEvent.current;
-        EntityPlayer player = bucketEvent.entityPlayer;
-
-        if (main.getUtils().isOnSkyblock() && player instanceof EntityPlayerSP) {
             if (main.getConfigValues().isEnabled(Feature.AVOID_PLACING_ENCHANTED_ITEMS)) {
-                String skyblockItemId = ItemUtils.getSkyBlockItemID(bucket);
-
-                if (skyblockItemId != null && skyblockItemId.equals("ENCHANTED_LAVA_BUCKET")) {
-                    bucketEvent.setCanceled(true);
+                if (EnchantedItemPlacementBlocker.shouldBlockPlacement(heldItem, e)) {
+                    // Block the player from placing this item if it's on the enchanted item blacklist.
+                    e.setCanceled(true);
                 }
             }
         }
@@ -354,6 +383,8 @@ public class PlayerListener {
                     main.getUtils().playLoudSound("random.successful_hit", 0.8);
                 }
                 if (timerTick == 20) { // Add natural mana every second (increase is based on your max mana).
+                    main.getUtils().parseTabList();
+
                     if (main.getRenderListener().isPredictMana()) {
                         changeMana(getAttribute(Attribute.MAX_MANA) / 50);
                         if (getAttribute(Attribute.MANA) > getAttribute(Attribute.MAX_MANA))
@@ -444,8 +475,6 @@ public class PlayerListener {
             }
         }
     }
-
-    @Getter private TreeMap<Long, Set<Vec3>> recentlyKilledZealots = new TreeMap<>();
 
     @SubscribeEvent
     public void onDeath(LivingDeathEvent e) {
@@ -560,12 +589,8 @@ public class PlayerListener {
         }
     }
 
-    // Between these two coordinates is the whole "arena" area where all the magmas and stuff are.
-    private static AxisAlignedBB magmaBossSpawnArea = new AxisAlignedBB(-244, 0, -566, -379, 255, -635);
-    @Getter private TreeMap<Long, Vec3> explosiveBowExplosions = new TreeMap<>();
-
     @SubscribeEvent()
-    public void onTickMagmaBossChecker(EntityEvent.EnteringChunk e) {
+    public void onEntitySpawn(EntityEvent.EnteringChunk e) {
         Entity entity = e.entity;
 
         if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.ZEALOT_COUNTER_EXPLOSIVE_BOW_SUPPORT) && entity instanceof EntityArrow) {
@@ -602,7 +627,7 @@ public class PlayerListener {
 
                                 for (Vec3 zealotDeathLocation : filteredRecentlyKilledZealots) {
                                     double distance = explosionLocation.distanceTo(zealotDeathLocation);
-                                    System.out.println("Distance was "+distance+"!");
+//                                    System.out.println("Distance was "+distance+"!");
                                     if (distance < 4.6) {
 //                                        possibleZealotsKilled--;
 
@@ -620,7 +645,7 @@ public class PlayerListener {
         }
 
         if (main.getUtils().getLocation() == Location.BLAZING_FORTRESS) {
-            if (magmaBossSpawnArea.isVecInside(new Vec3(entity.posX, entity.posY, entity.posZ))) { // timers will trigger if 15 magmas/8 blazes spawn in the box within a 4 second time period
+            if (MAGMA_BOSS_SPAWN_AREA.isVecInside(new Vec3(entity.posX, entity.posY, entity.posZ))) { // timers will trigger if 15 magmas/8 blazes spawn in the box within a 4 second time period
                 long currentTime = System.currentTimeMillis();
                 if (e.entity instanceof EntityMagmaCube) {
                     if (!recentlyLoadedChunks.contains(new IntPair(e.newChunkX, e.newChunkZ)) && entity.ticksExisted == 0) {
@@ -666,6 +691,7 @@ public class PlayerListener {
     @SubscribeEvent()
     public void onItemTooltip(ItemTooltipEvent e) {
         ItemStack hoveredItem = e.itemStack;
+
         if (e.toolTip != null && main.getUtils().isOnSkyblock()) {
             if (main.getConfigValues().isEnabled(Feature.HIDE_GREY_ENCHANTS)) {
                 for (int i = 1; i <= 3; i++) { // only a max of 2 gray enchants are possible
@@ -790,7 +816,18 @@ public class PlayerListener {
 
                             colorCode = ItemRarity.values()[rarityIndex].getColorCode();
                         }
-                        e.toolTip.add(insertAt, "§7Base Stat Boost: " + colorCode + "+" + baseStatBoost + "%");
+                        e.toolTip.add(insertAt++, "§7Base Stat Boost: " + colorCode + "+" + baseStatBoost + "%");
+                    }
+                }
+            }
+
+            if (main.getConfigValues().isEnabled(Feature.SHOW_ITEM_DUNGEON_FLOOR) && hoveredItem.hasTagCompound()) {
+                NBTTagCompound extraAttributes = ItemUtils.getExtraAttributes(hoveredItem);
+                if (extraAttributes != null) {
+                    int floor = ItemUtils.getDungeonFloor(extraAttributes);
+                    if (floor != -1) {
+                        ColorCode colorCode = main.getConfigValues().getRestrictedColor(Feature.SHOW_ITEM_DUNGEON_FLOOR);
+                        e.toolTip.add(insertAt++, "§7Obtained on Floor: " + colorCode + (floor == 0 ? "Entrance" : floor));
                     }
                 }
             }
@@ -809,7 +846,14 @@ public class PlayerListener {
                 String itemId = ItemUtils.getSkyBlockItemID(e.itemStack);
 
                 if (itemId != null) {
-                    e.toolTip.add(insertAt++, EnumChatFormatting.DARK_GRAY + "Skyblock ID: " + itemId);
+                    if (!Minecraft.getMinecraft().gameSettings.advancedItemTooltips) {
+                        insertAt = e.toolTip.size();
+                    } else {
+                        // Before the NBT line
+                        insertAt = e.toolTip.size() - 1;
+                    }
+
+                    e.toolTip.add(insertAt, EnumChatFormatting.DARK_GRAY + "skyblock:" + itemId);
                 }
             }
         }
@@ -864,7 +908,7 @@ public class PlayerListener {
             }
         }
 
-        if (Keyboard.getEventKeyState()) {
+        if (main.getConfigValues().isEnabled(Feature.DUNGEONS_MAP_DISPLAY) && main.getUtils().isInDungeon()) {
             if (Keyboard.isKeyDown(Keyboard.KEY_MINUS) && Keyboard.getEventKeyState()) {
                 float zoomScaleFactor = main.getUtils().denormalizeScale(main.getConfigValues().getMapZoom().getValue(), 0.5F, 5, 0.1F);
                 main.getConfigValues().getMapZoom().setValue(main.getUtils().normalizeValueNoStep(zoomScaleFactor - 0.5F, 0.5F, 5));
@@ -873,6 +917,57 @@ public class PlayerListener {
                 main.getConfigValues().getMapZoom().setValue(main.getUtils().normalizeValueNoStep(zoomScaleFactor + 0.5F, 0.5F, 5));
             }
         }
+    }
+
+    @SubscribeEvent
+    public void PlaySoundEvent (PlaySoundEvent event) {
+        if (!main.getUtils().isOnSkyblock()) {
+            return;
+        }
+
+        if (main.getConfigValues().isEnabled(Feature.STOP_BONZO_STAFF_SOUNDS) && BONZO_STAFF_SOUNDS.contains(event.name)) {
+            event.result = null;
+        }
+    }
+      
+    public boolean aboutToJoinSkyblockServer() {
+        return System.currentTimeMillis() - lastSkyblockServerJoinAttempt < 6000;
+    }
+
+    public boolean didntRecentlyJoinWorld() {
+        return System.currentTimeMillis() - lastWorldJoin > 3000;
+    }
+
+    public int getMaxTickers() {
+        return actionBarParser.getMaxTickers();
+    }
+
+    public int getTickers() {
+        return actionBarParser.getTickers();
+    }
+
+    public void setLastSecondHealth(int lastSecondHealth) {
+        actionBarParser.setLastSecondHealth(lastSecondHealth);
+    }
+
+    public boolean shouldResetMouse() {
+        return System.currentTimeMillis() - lastClosedInv > 100;
+    }
+
+    Integer getHealthUpdate() {
+        return actionBarParser.getHealthUpdate();
+    }
+
+    private void changeMana(int change) {
+        setAttribute(Attribute.MANA, getAttribute(Attribute.MANA) + change);
+    }
+
+    private int getAttribute(Attribute attribute) {
+        return main.getUtils().getAttributes().get(attribute).getValue();
+    }
+
+    private void setAttribute(Attribute attribute, int value) {
+        main.getUtils().getAttributes().get(attribute).setValue(value);
     }
 
     private boolean shouldTriggerFishingIndicator() {
@@ -897,33 +992,5 @@ public class PlayerListener {
             }
         }
         return false;
-    }
-
-    public boolean shouldResetMouse() {
-        return System.currentTimeMillis() - lastClosedInv > 100;
-    }
-
-    public boolean didntRecentlyJoinWorld() {
-        return System.currentTimeMillis() - lastWorldJoin > 3000;
-    }
-
-    public boolean aboutToJoinSkyblockServer() {
-        return System.currentTimeMillis() - lastSkyblockServerJoinAttempt < 6000;
-    }
-
-    public void setLastSecondHealth(int lastSecondHealth) {
-        actionBarParser.setLastSecondHealth(lastSecondHealth);
-    }
-
-    public int getTickers() {
-        return actionBarParser.getTickers();
-    }
-
-    public int getMaxTickers() {
-        return actionBarParser.getMaxTickers();
-    }
-
-    Integer getHealthUpdate() {
-        return actionBarParser.getHealthUpdate();
     }
 }
