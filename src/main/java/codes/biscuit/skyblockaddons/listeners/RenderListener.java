@@ -24,6 +24,7 @@ import codes.biscuit.skyblockaddons.misc.scheduler.SkyblockRunnable;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.TextUtils;
+import codes.biscuit.skyblockaddons.utils.Utils;
 import codes.biscuit.skyblockaddons.utils.objects.IntPair;
 import lombok.Getter;
 import lombok.Setter;
@@ -31,10 +32,8 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.MapItemRenderer;
 import net.minecraft.client.gui.ScaledResolution;
-import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.RenderHelper;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.WorldRenderer;
+import net.minecraft.client.renderer.*;
+import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -92,6 +91,8 @@ public class RenderListener {
     private final static ItemStack IRON_SWORD = new ItemStack(Items.iron_sword);
     private static ItemStack NETHER_STAR;
     private static ItemStack WARP_SKULL;
+
+    public static EntityArmorStand RADIANT_DUMMY_ARMOR_STAND;
 
     private SkyblockAddons main = SkyblockAddons.getInstance();
 
@@ -1376,10 +1377,21 @@ public class RenderListener {
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         }
 
+        EntityArmorStand powerOrbArmorStand;
+        if (buttonLocation != null) {
+            powerOrbArmorStand = getRadiantDummyArmorStand();
+        } else {
+            powerOrbArmorStand = PowerOrbManager.getInstance().getPowerOrbArmorStand();
+        }
+
         main.getUtils().enableStandardGLOptions();
 
-        mc.getTextureManager().bindTexture(powerOrb.getResourceLocation());
-        main.getUtils().drawModalRectWithCustomSizedTexture(x, y, 0, 0, iconSize, iconSize, iconSize, iconSize);
+        if (powerOrbArmorStand != null) {
+            drawPowerOrbArmorStand(powerOrbArmorStand, x + 1, y + 4);
+        } else {
+            mc.getTextureManager().bindTexture(powerOrb.getResourceLocation());
+            main.getUtils().drawModalRectWithCustomSizedTexture(x, y, 0, 0, iconSize, iconSize, iconSize, iconSize);
+        }
 
         main.getUtils().drawTextWithStyle(secondsString, x + spacing + iconSize, y + (iconSize / 2F) - (8 / 2F), ColorCode.WHITE.getColor(255).getRGB());
 
@@ -1439,10 +1451,21 @@ public class RenderListener {
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         }
 
+        EntityArmorStand powerOrbArmorStand;
+        if (buttonLocation != null) {
+            powerOrbArmorStand = getRadiantDummyArmorStand();
+        } else {
+            powerOrbArmorStand = PowerOrbManager.getInstance().getPowerOrbArmorStand();
+        }
+
         main.getUtils().enableStandardGLOptions();
 
-        mc.getTextureManager().bindTexture(powerOrb.getResourceLocation());
-        main.getUtils().drawModalRectWithCustomSizedTexture(x, y, 0, 0, iconSize, iconSize, iconSize, iconSize);
+        if (powerOrbArmorStand != null) {
+            drawPowerOrbArmorStand(powerOrbArmorStand, x + 1, y + 4);
+        } else {
+            mc.getTextureManager().bindTexture(powerOrb.getResourceLocation());
+            main.getUtils().drawModalRectWithCustomSizedTexture(x, y, 0, 0, iconSize, iconSize, iconSize, iconSize);
+        }
 
         String secondsString = String.format("§e%ss", seconds);
         main.getUtils().drawTextWithStyle(secondsString, Math.round(x + (iconSize / 2F) - (mc.fontRendererObj.getStringWidth(secondsString) / 2F)), y + iconSize, ColorCode.WHITE.getColor(255).getRGB());
@@ -1921,5 +1944,73 @@ public class RenderListener {
                 GlStateManager.popMatrix();
             }
         }
+    }
+
+    private void drawPowerOrbArmorStand(EntityArmorStand powerOrbArmorStand, float x, float y) {
+        GlStateManager.pushMatrix();
+
+        GlStateManager.enableDepth();
+        GlStateManager.enableColorMaterial();
+
+        GlStateManager.translate(x + 12.5F, y + 50F, 50F);
+        GlStateManager.scale(-25F, 25F, 25F);
+        GlStateManager.rotate(180.0F, 0.0F, 0.0F, 1.0F);
+        GlStateManager.rotate(135.0F, 0.0F, 1.0F, 0.0F);
+        RenderHelper.enableStandardItemLighting();
+        GlStateManager.rotate(-135.0F, 0.0F, 1.0F, 0.0F);
+        GlStateManager.rotate(22.0F, 1.0F, 0.0F, 0.0F);
+
+        RenderManager rendermanager = Minecraft.getMinecraft().getRenderManager();
+        rendermanager.setPlayerViewY(180.0F);
+        rendermanager.setRenderShadow(false);
+
+        powerOrbArmorStand.setInvisible(true);
+        float yaw = System.currentTimeMillis() % 1750 / 1750F * 360F;
+        powerOrbArmorStand.renderYawOffset = yaw;
+        powerOrbArmorStand.prevRenderYawOffset = yaw;
+
+        rendermanager.renderEntityWithPosYaw(powerOrbArmorStand, 0.0D, 0.0D, 0.0D, 0.0F, 1.0F);
+        rendermanager.setRenderShadow(true);
+
+        RenderHelper.disableStandardItemLighting();
+        GlStateManager.disableRescaleNormal();
+        GlStateManager.setActiveTexture(OpenGlHelper.lightmapTexUnit);
+        GlStateManager.disableTexture2D();
+        GlStateManager.setActiveTexture(OpenGlHelper.defaultTexUnit);
+        GlStateManager.disableDepth();
+
+        GlStateManager.popMatrix();
+    }
+
+    public EntityArmorStand getRadiantDummyArmorStand() {
+        if (RADIANT_DUMMY_ARMOR_STAND != null) {
+            return RADIANT_DUMMY_ARMOR_STAND;
+        }
+
+        RADIANT_DUMMY_ARMOR_STAND = new EntityArmorStand(Utils.getDummyWorld());
+
+        ItemStack orbItemStack = new ItemStack(Items.skull, 1, 3);
+
+        NBTTagCompound texture = new NBTTagCompound(); // This is the texture URL of the radiant orb
+        texture.setString("Value", main.getUtils().encodeSkinTextureURL("http://textures.minecraft.net/texture/7ab4c4d6ee69bc24bba2b8faf67b9f704a06b01aa93f3efa6aef7a9696c4feef"));
+
+        NBTTagList textures = new NBTTagList();
+        textures.appendTag(texture);
+
+        NBTTagCompound properties = new NBTTagCompound();
+        properties.setTag("textures", textures);
+
+        NBTTagCompound skullOwner = new NBTTagCompound(); // The id of the radiant orb (not sure if it means anything)
+        skullOwner.setString("Id", "3ae3572b-2679-40b4-ba50-14dd58cbbbf7");
+        skullOwner.setTag("Properties", properties);
+
+        NBTTagCompound nbtTag = new NBTTagCompound();
+        nbtTag.setTag("SkullOwner", skullOwner);
+
+        orbItemStack.setTagCompound(nbtTag);
+
+        RADIANT_DUMMY_ARMOR_STAND.setCurrentItemOrArmor(4, orbItemStack);
+
+        return RADIANT_DUMMY_ARMOR_STAND;
     }
 }

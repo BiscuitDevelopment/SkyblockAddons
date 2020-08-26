@@ -19,6 +19,7 @@ import lombok.Getter;
 import lombok.Setter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.MapItemRenderer;
+import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.client.network.NetworkPlayerInfo;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
@@ -41,6 +42,8 @@ import net.minecraft.util.IChatComponent;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Vec4b;
+import net.minecraft.world.WorldSettings;
+import net.minecraft.world.WorldType;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Loader;
@@ -57,6 +60,7 @@ import java.awt.image.BufferedImage;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.*;
 import java.util.regex.Matcher;
@@ -65,6 +69,8 @@ import java.util.stream.Collectors;
 
 @Getter @Setter
 public class Utils {
+
+    public static Gson GSON = new Gson();
 
     /** Added to the beginning of messages. */
     public static final String MESSAGE_PREFIX =
@@ -90,6 +96,9 @@ public class Utils {
 
     /** In English, Chinese Simplified, Traditional Chinese. */
     private static final Set<String> SKYBLOCK_IN_ALL_LANGUAGES = Sets.newHashSet("SKYBLOCK","\u7A7A\u5C9B\u751F\u5B58", "\u7A7A\u5CF6\u751F\u5B58");
+
+    private static final WorldClient DUMMY_WORLD = new WorldClient(null, new WorldSettings(0L, WorldSettings.GameType.SURVIVAL,
+            false, false, WorldType.DEFAULT), 0, null, null);
 
     /** Used for web requests. */
     public static final String USER_AGENT = "SkyblockAddons/" + SkyblockAddons.VERSION;
@@ -559,7 +568,7 @@ public class Utils {
                     }
                 }
                 connection.disconnect();
-                JsonObject responseJson = new Gson().fromJson(response.toString(), JsonObject.class);
+                JsonObject responseJson = GSON.fromJson(response.toString(), JsonObject.class);
                 long estimate = responseJson.get("estimate").getAsLong();
                 long currentTime = responseJson.get("queryTime").getAsLong();
                 int magmaSpawnTime = (int)((estimate-currentTime)/1000);
@@ -915,7 +924,7 @@ public class Utils {
                     }
                 }
                 connection.disconnect();
-                JsonObject onlineMessages = new Gson().fromJson(response.toString(), JsonObject.class);
+                JsonObject onlineMessages = GSON.fromJson(response.toString(), JsonObject.class);
                 mergeLanguageJsonObject(onlineMessages, main.getConfigValues().getLanguageConfig());
             } catch (JsonParseException | IllegalStateException | IOException ex) {
                 ex.printStackTrace();
@@ -1357,4 +1366,20 @@ public class Utils {
         tessellator.draw();
     }
 
+    public String encodeSkinTextureURL(String textureURL) {
+        JsonObject skin = new JsonObject();
+        skin.addProperty("url", textureURL);
+
+        JsonObject textures = new JsonObject();
+        textures.add("SKIN", skin);
+
+        JsonObject root = new JsonObject();
+        root.add("textures", textures);
+
+        return Base64.getEncoder().encodeToString(GSON.toJson(root).getBytes(StandardCharsets.UTF_8));
+    }
+
+    public static WorldClient getDummyWorld() {
+        return DUMMY_WORLD;
+    }
 }
