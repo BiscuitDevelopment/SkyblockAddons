@@ -1,7 +1,7 @@
 {
-  "language": "English",
+  "language": "Ελληνικά",
   "settings": {
-    "settings": "Settings",
+    "settings": "Ρυθμίσεις",
     "magmaBossWarning": "Magma Boss Warning",
     "itemDropConfirmation": "Item Drop Confirmation",
     "hideSkeletonHatBones": "Hide Skeleton's Helmet Bones",
@@ -9,7 +9,7 @@
     "hideFoodAndArmor": "Hide Food & Armor Bar",
     "fullInventoryWarning": "Full Inventory Warning",
     "repeating": "Repeat Warning",
-    "disableEmberRodAbility": "Disable Island Ember Rod",
+    "disableEmberRodAbility": "Απενεργοποίση του Ember Rod στο νησι",
     "editLocations": "Edit GUI Locations",
     "guiScale": "Gui Scale: %scale%",
     "resetLocations": "Reset Locations",
@@ -19,8 +19,8 @@
     "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
     "backpackStyle": "Backpack Style: %style%",
     "backpackStyles": {
-      "regular": "Regular",
-      "compact": "Compact"
+      "regular": "Κανονικο",
+      "compact": "Συμπικνωμένο"
     },
     "showBackpackPreview": "Show Backpack Preview",
     "hideHealthBar": "Hide Vanilla Health Bar",
@@ -47,7 +47,7 @@
     "lockSlots": "Allow Locking Slots",
     "lockSlot": "Lock Slot",
     "dontResetCursorInventory": "Don't Reset Cursor Between Inventories",
-    "summoningEyeAlert": "Summoning Eye Alert",
+    "summoningEyeAlert": "Ειδοποίηση για Summoing Eye",
     "makeEnderchestsInEndGreen": "Change Enderchest Color in the End",
     "changeColor": "Change Color",
     "showInOtherGames": "Show in Other Games",
@@ -144,7 +144,9 @@
     "showGlowingItemsOnIsland": "Show Glowing Items On Island",
     "showItemDungeonFloor": "Show Floor Obtained on Dungeon Items",
     "showDungeonMilestone": "Show Dungeon Milestone",
-    "dungeonsCollectedEssencesDisplay": "Dungeons Collected Essences Display"
+    "dungeonsCollectedEssencesDisplay": "Dungeons Collected Essences Display",
+    "stopBonzoStaffSounds": "Stop Bonzo's Staff Sounds",
+    "showRarityUpgraded": "Show if Item's Rarity has been Upgraded"
   },
   "messages": {
     "dropConfirmation": "Drop this item again to confirm!",
