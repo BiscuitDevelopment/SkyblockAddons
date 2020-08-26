@@ -194,7 +194,7 @@ public class RenderGlobalHook {
     public static int getOutlineColor(ItemStack itemStack) {
         ItemRarity itemRarity = ItemUtils.getRarity(itemStack);
         if (itemRarity != null) {
-            return Minecraft.getMinecraft().fontRendererObj.getColorCode(itemRarity.COLOR_CODE.getCode());
+            return Minecraft.getMinecraft().fontRendererObj.getColorCode(itemRarity.getColorCode().getCode());
         }
 
         return Integer.MAX_VALUE;

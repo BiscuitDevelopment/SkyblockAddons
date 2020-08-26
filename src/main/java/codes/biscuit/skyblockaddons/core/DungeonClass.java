@@ -12,6 +12,16 @@ public enum DungeonClass {
     MAGE(Items.blaze_rod, "Mage"),
     BERSERKER(Items.iron_sword, "Berserk");
 
+    @Getter private String firstLetter;
+    @Getter private ItemStack item;
+    @Getter private String chatDisplayName;
+
+    DungeonClass(Item item, String chatDisplayName) {
+        this.firstLetter = this.name().substring(0, 1);
+        this.item = new ItemStack(item);
+        this.chatDisplayName = chatDisplayName;
+    }
+
     public static DungeonClass fromFirstLetter(String firstLetter) {
         for (DungeonClass dungeonClass : DungeonClass.values()) {
             if (dungeonClass.firstLetter.equals(firstLetter)) {
@@ -28,15 +38,5 @@ public enum DungeonClass {
             }
         }
         return null;
-    }
-
-    @Getter private String firstLetter;
-    @Getter private ItemStack item;
-    @Getter private String chatDisplayName;
-
-    DungeonClass(Item item, String chatDisplayName) {
-        this.firstLetter = this.name().substring(0, 1);
-        this.item = new ItemStack(item);
-        this.chatDisplayName = chatDisplayName;
     }
 }

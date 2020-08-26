@@ -52,7 +52,6 @@ import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
-import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.ChunkEvent;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
@@ -811,7 +810,7 @@ public class PlayerListener {
                             if (rarityIndex < 0) rarityIndex = 0;
                             if (rarityIndex >= ItemRarity.values().length) rarityIndex = ItemRarity.values().length - 1;
 
-                            colorCode = ItemRarity.values()[rarityIndex].COLOR_CODE;
+                            colorCode = ItemRarity.values()[rarityIndex].getColorCode();
                         }
                         e.toolTip.add(insertAt++, "§7Base Stat Boost: " + colorCode + "+" + baseStatBoost + "%");
                     }
