@@ -790,10 +790,10 @@ public class PlayerListener {
             if (main.getConfigValues().isEnabled(Feature.SHOW_BROKEN_FRAGMENTS)) {
                 if (hoveredItem.getDisplayName().contains("Dragon Fragment")) {
                     if (hoveredItem.hasTagCompound()) {
-                        NBTTagCompound extraAttributesTag = hoveredItem.getSubCompound("ExtraAttributes", false);
+                        NBTTagCompound extraAttributes = hoveredItem.getSubCompound("ExtraAttributes", false);
 
-                        if (extraAttributesTag != null) {
-                            if (extraAttributesTag.hasKey("bossId") && extraAttributesTag.hasKey("spawnedFor")) {
+                        if (extraAttributes != null) {
+                            if (extraAttributes.hasKey("bossId") && extraAttributes.hasKey("spawnedFor")) {
                                 e.toolTip.add(insertAt++, "§c§lBROKEN FRAGMENT§r");
                             }
                         }
@@ -832,14 +832,13 @@ public class PlayerListener {
                 }
             }
 
-            if (main.getConfigValues().isEnabled(Feature.SHOW_RARITY_UPGRADED))
-                if (hoveredItem.hasTagCompound()) {
-                    NBTTagCompound extraAttributesTag = ItemUtils.getExtraAttributes(hoveredItem);
+            if (main.getConfigValues().isEnabled(Feature.SHOW_RARITY_UPGRADED) && hoveredItem.hasTagCompound()) {
+                NBTTagCompound extraAttributes = ItemUtils.getExtraAttributes(hoveredItem);
 
-                    if (extraAttributesTag != null && ItemUtils.getRarityUpgrades(extraAttributesTag) > 0) {
-                        e.toolTip.add(insertAt++, main.getConfigValues().getRestrictedColor(Feature.SHOW_RARITY_UPGRADED) + "§lRARITY UPGRADED");
-                    }
+                if (extraAttributes != null && ItemUtils.getRarityUpgrades(extraAttributes) > 0) {
+                    e.toolTip.add(insertAt++, main.getConfigValues().getRestrictedColor(Feature.SHOW_RARITY_UPGRADED) + "§lRARITY UPGRADED");
                 }
+            }
 
             // Append Skyblock Item ID to end of tooltip if in developer mode
             if (main.isDevMode() && e.showAdvancedItemTooltips) {
