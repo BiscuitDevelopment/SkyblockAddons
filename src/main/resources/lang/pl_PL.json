@@ -75,7 +75,7 @@
     "collectionDisplay": "Wyświetlaj postęp umiejętności",
     "onlyMineOresDeepCaverns": "Kop rudy tylko w Deep Cavernsach",
     "onlyMineValuablesNether": "Kop wartościowe rudy tylko w Netherze",
-    "revenantIndicator": "Wskaznik Postępu Zbroi Slayera",
+    "revenantIndicator": "Wskaźnik postępu zbroi pogromcy",
     "specialZealotAlert": "Alarmuj o Specjlanym Zealocie",
     "enableMessageWhenActionPrevented": "Pokaż wiadomość, gdy akcja jest zablokowana",
     "hidePetHealthBar": "Ukryj paski zdrowia zwierzaków",
@@ -103,8 +103,8 @@
       "allTheSame": "Ten sam kolor",
       "fade": "Zmiana koloru"
     },
-    "chromaFadeWidth": "Długość mieszania kolorów",
-    "sortTabEffectTimers": "Sortuj zegary według trwania",
+    "chromaFadeWidth": "Szerokość blaknięcie kolorów",
+    "sortTabEffectTimers": "Sortuj stopery według trwania",
     "showBrokenFragments": "Pokaż zepsute fragmenty",
     "skyblockAddonsButtonInPauseMenu": "Pokaż przycisk SBA w menu pauzy",
     "showTotalZealotCount": "Licznik Zealotów - Łączna ilość Zealotów",
@@ -263,15 +263,15 @@
     "sba.help.set.zealotCounter.totalZealots": "Łączna liczba zabitych zealotów",
     "sba.help.set.zealotCounter.zealots": "Zealoty zabite od ostatniego summoning eye",
     "sba.set.zealotCounter": "Ręcznie ustaw liczniki zealotów",
-    "sba.set.zealotCounter.eyes": "Set total summoning eye count to %number%!",
+    "sba.set.zealotCounter.eyes": "Ustaw całkowitą liczbę oczu na %number%!",
     "sba.set.zealotCounter.totalZealots": "Ustaw całkowitą liczbę zealotów na %number%!",
-    "sba.set.zealotCounter.wrongUsage": "Invalid selection! Please choose %options%.",
-    "sba.set.zealotCounter.zealots": "Set current zealot count to %number%!",
-    "sba.toggleActionBarLogging": "Toggle logging action bar messages",
-    "sba.toggleActionBarLogging.disabled": "Action bar messages will no longer be logged.",
-    "sba.toggleActionBarLogging.enabled": "Action bar messages will now be logged.",
+    "sba.set.zealotCounter.wrongUsage": "Nieprawidłowy wybór! Proszę wybrać %options%.",
+    "sba.set.zealotCounter.zealots": "Ustaw aktualną liczbę zealotów na %number%!",
+    "sba.toggleActionBarLogging": "Przełącz rejestrowanie wiadomości na pasku akcji",
+    "sba.toggleActionBarLogging.disabled": "Wiadomości na pasku akcji nie będą rejestrowane.",
+    "sba.toggleActionBarLogging.enabled": "Wiadomości na pasku akcji będą rejestrowane.",
     "sba.wrongUsage.generic": "złe zastosowanie!",
-    "sba.wrongUsage.subCommandNotFound": "The sub-command \"%sub-command%\" was not found."
+    "sba.wrongUsage.subCommandNotFound": "Pod-komenda %sub-command% nie została znaleziona."
   },
   "keyBindings": {
     "developerCopyNBT": "Skopiuj NBT"
