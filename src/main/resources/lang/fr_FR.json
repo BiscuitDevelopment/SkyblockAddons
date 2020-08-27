@@ -145,8 +145,8 @@
     "showItemDungeonFloor": "Montrer le niveau où un objet de donjon a été obtenu",
     "showDungeonMilestone": "Afficher les cap du donjon",
     "dungeonsCollectedEssencesDisplay": "Afficher les essences collectées dans les donjons",
-    "stopBonzoStaffSounds": "Stop Bonzo's Staff Sounds",
-    "showRarityUpgraded": "Show if Item's Rarity has been Upgraded"
+    "stopBonzoStaffSounds": "Couper les sons du Bonzo's Staff",
+    "showRarityUpgraded": "Afficher si la rareté de l'objet a été améliorée"
   },
   "messages": {
     "dropConfirmation": "Jetez cet objet une nouvelle fois pour confirmer!",
@@ -267,9 +267,9 @@
     "sba.set.zealotCounter.totalZealots": "Définir le nombre total de zealot à %number%!",
     "sba.set.zealotCounter.wrongUsage": "Sélection invalide! Veuillez choisir %options%.",
     "sba.set.zealotCounter.zealots": "Définir le nombre actuel de zealot à %number%!",
-    "sba.toggleActionBarLogging": "Toggle logging action bar messages",
-    "sba.toggleActionBarLogging.disabled": "Action bar messages will no longer be logged.",
-    "sba.toggleActionBarLogging.enabled": "Action bar messages will now be logged.",
+    "sba.toggleActionBarLogging": "Activer la sauvegarde des messages de la barre d'action",
+    "sba.toggleActionBarLogging.disabled": "Les messages de la barre d'action ne seront plus sauvegardés.",
+    "sba.toggleActionBarLogging.enabled": "Les messages de la barre d'action seront maintenant sauvegardés.",
     "sba.wrongUsage.generic": "Mauvaise utilisation!",
     "sba.wrongUsage.subCommandNotFound": "La sous-commande \"%sub-command%\" est introuvable."
   },
