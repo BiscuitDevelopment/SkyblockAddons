@@ -144,9 +144,9 @@
     "showGlowingItemsOnIsland": "Показывать Светящиеся Предметы На Острове",
     "showItemDungeonFloor": "Show Floor Obtained on Dungeon Items",
     "showDungeonMilestone": "Show Dungeon Milestone",
-    "dungeonsCollectedEssencesDisplay": "Dungeons Collected Essences Display",
-    "stopBonzoStaffSounds": "Stop Bonzo's Staff Sounds",
-    "showRarityUpgraded": "Show if Item's Rarity has been Upgraded"
+    "dungeonsCollectedEssencesDisplay": "Показ Собранных в Подземельях Эссенций",
+    "stopBonzoStaffSounds": "Заглушать Звуки Bonzo's Staff",
+    "showRarityUpgraded": "Уведомление об Улучшении Редкости Предмета"
   },
   "messages": {
     "dropConfirmation": "Выбросите предмет ещё раз для подтверждения!",
@@ -246,7 +246,7 @@
     "sba.copyEntity": "§e(Dev) §7Copy NBT data for entities of the given name(s) within the given radius around the player",
     "sba.copySidebar": "§e(Dev) §7Copy the scoreboard text.",
     "sba.dev": "Включить режим разработчика",
-    "sba.dev.disabled": "Developer mode disabled!",
+    "sba.dev.disabled": "Режим разработчика отключен!",
     "sba.dev.enabled": "Developer mode enabled! TIP: Press \"%keyName%\" to copy NBT data!",
     "sba.edit": "Изменить расположение интерфейса",
     "sba.folder": "Открыть папку с модами",
