@@ -271,7 +271,7 @@
     "sba.toggleActionBarLogging.disabled": "Action bar messages will no longer be logged.",
     "sba.toggleActionBarLogging.enabled": "Action bar messages will now be logged.",
     "sba.wrongUsage.generic": "Uso errado!",
-    "sba.wrongUsage.subCommandNotFound": "O sub-comando %sub-command% não foi encontrado."
+    "sba.wrongUsage.subCommandNotFound": "O comando %sub-command% não foi encontrado."
   },
   "keyBindings": {
     "developerCopyNBT": "Copiar NBT"
