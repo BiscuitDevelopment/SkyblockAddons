@@ -267,7 +267,7 @@
     "sba.set.zealotCounter.totalZealots": "已设置总计末影战士击杀数为 %number%！",
     "sba.set.zealotCounter.wrongUsage": "无效选项！请选择 %options%。",
     "sba.set.zealotCounter.zealots": "已设置自上次召唤之眼掉落后的末影战士击杀数为 %number%！",
-    "sba.toggleActionBarLogging": "Toggle logging action bar messages",
+    "sba.toggleActionBarLogging": "切换日志操作栏消息",
     "sba.toggleActionBarLogging.disabled": "操作栏消息将不再被记录。",
     "sba.toggleActionBarLogging.enabled": "操作栏消息现在将被记录。",
     "sba.wrongUsage.generic": "错误用法！",
