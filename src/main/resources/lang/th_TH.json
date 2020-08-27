@@ -145,8 +145,8 @@
     "showItemDungeonFloor": "แสดงชั้นของ Dungeon ที่ได้รับของ",
     "showDungeonMilestone": "แสดง Milestones ของ Dungeon",
     "dungeonsCollectedEssencesDisplay": "เทวส",
-    "stopBonzoStaffSounds": "Stop Bonzo's Staff Sounds",
-    "showRarityUpgraded": "Show if Item's Rarity has been Upgraded"
+    "stopBonzoStaffSounds": "ปิดเสียง Bonzo’s Staff",
+    "showRarityUpgraded": "แสดงเมื่อไอเทมถูกอัพเกรด Rarity แล้ว"
   },
   "messages": {
     "dropConfirmation": "กดทิ้งของอีกที่เพื่อยืนยันทิ้งของสิ่งนี้!",
