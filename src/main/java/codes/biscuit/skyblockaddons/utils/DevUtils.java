@@ -1,6 +1,8 @@
 package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import lombok.Getter;
+import lombok.Setter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.client.entity.EntityPlayerSP;
@@ -42,6 +44,9 @@ public class DevUtils {
     public static final int ENTITY_COPY_RADIUS = 3;
     public static final int SIDEBAR_COPY_WIDTH = 30;
 
+    @Getter @Setter
+    private static boolean loggingActionBarMessages = false;
+
     static {
         ENTITY_NAMES.add("PlayerSP");
         ENTITY_NAMES.add("PlayerMP");
@@ -65,17 +70,13 @@ public class DevUtils {
      * @param stripControlCodes if {@code true}, the control codes will be removed, otherwise they will be copied
      */
     public static void copyScoreboardSidebar(Scoreboard scoreboard, boolean stripControlCodes) {
-        Utils utils = SkyblockAddons.getInstance().getUtils();
-
         if (scoreboard == null) {
-            utils.sendErrorMessage("No scoreboard found!");
-            return;
+            throw new NullPointerException("Scoreboard cannot be null!");
         }
 
         ScoreObjective sideBarObjective = scoreboard.getObjectiveInDisplaySlot(1);
         if (sideBarObjective == null) {
-            utils.sendErrorMessage("Nothing is being displayed in the sidebar!");
-            return;
+            throw new NullPointerException("Nothing is being displayed in the sidebar!");
         }
 
         StringBuilder sb = new StringBuilder();
@@ -176,6 +177,8 @@ public class DevUtils {
                 continue;
             }
 
+            entity.writeToNBT(entityData);
+
             // Add spacing before each new entry.
             if (stringBuilder.length() > 0) {
                 stringBuilder.append(System.lineSeparator()).append(System.lineSeparator());
@@ -187,7 +190,6 @@ public class DevUtils {
             }
 
             stringBuilder.append("NBT Data:").append(System.lineSeparator());
-            entity.writeToNBT(entityData);
             stringBuilder.append(prettyPrintNBT(entityData));
         }
 
@@ -246,7 +248,7 @@ public class DevUtils {
             copyEntityData(entityClasses, copyRadius);
         }
         else {
-            throw new IllegalArgumentException("Incorrect format! Use \"Class\" or \"Class,Class2,Class3\".");
+            throw new IllegalArgumentException("Incorrect format! Use \"Name\" or \"Name1,Name2,Name3\".");
         }
     }
 

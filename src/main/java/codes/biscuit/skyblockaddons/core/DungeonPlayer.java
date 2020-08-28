@@ -13,8 +13,7 @@ import java.util.regex.Pattern;
 
 @Getter @Setter
 public class DungeonPlayer {
-
-    public static Pattern DUNGEON_PLAYER_LINE = Pattern.compile("^§.\\[(?<class>.)] (?<name>[\\w§]+) §(?<healthColor>.)(?<health>[\\w]+)(?:§c❤)?");
+    public static Pattern DUNGEON_PLAYER_LINE = Pattern.compile("^§.\\[(?<class>.)] (?<name>[\\w§]+) (?:§.)*?§(?<healthColor>.)(?<health>[\\w]+)(?:§c❤)?");
 
     private String name;
     private DungeonClass dungeonClass;
@@ -81,6 +80,10 @@ public class DungeonPlayer {
 
     public boolean isCritical() {
         return healthColor == ColorCode.RED;
+    }
+
+    public boolean isGhost() {
+        return this.health == 0;
     }
 
     public void updateStatsFromOther(DungeonPlayer other) {

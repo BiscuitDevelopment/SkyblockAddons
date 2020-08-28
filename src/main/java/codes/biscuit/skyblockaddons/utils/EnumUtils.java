@@ -27,8 +27,7 @@ public class EnumUtils {
         BOTTOM_RIGHT(3),
         BOTTOM_MIDDLE(4);
 
-        @Getter
-        private int id;
+        @Getter private int id;
 
         AnchorPoint(int id) {
             this.id = id;
@@ -47,8 +46,7 @@ public class EnumUtils {
         public int getX(int maxX) {
             int x = 0;
             switch (this) {
-                case TOP_RIGHT:
-                case BOTTOM_RIGHT:
+                case TOP_RIGHT: case BOTTOM_RIGHT:
                     x = maxX;
                     break;
                 case BOTTOM_MIDDLE:
@@ -62,9 +60,7 @@ public class EnumUtils {
         public int getY(int maxY) {
             int y = 0;
             switch (this) {
-                case BOTTOM_LEFT:
-                case BOTTOM_RIGHT:
-                case BOTTOM_MIDDLE:
+                case BOTTOM_LEFT: case BOTTOM_RIGHT: case BOTTOM_MIDDLE:
                     y = maxY;
                     break;
 
@@ -88,14 +84,18 @@ public class EnumUtils {
         /**
          * The current inventory type. Can be null.
          */
-        @Getter
-        private static InventoryType currentInventoryType;
+        @Getter private static InventoryType currentInventoryType;
+
         private final Message message;
         private final String inventoryName;
 
         InventoryType(Message message, String inventoryName) {
             this.message = message;
             this.inventoryName = inventoryName;
+        }
+
+        public String getMessage() {
+            return message.getMessage();
         }
 
         /**
@@ -114,16 +114,12 @@ public class EnumUtils {
          */
         public static InventoryType getCurrentInventoryType(String inventoryName) {
             for (InventoryType inventoryType : values()) {
-                if (inventoryType.inventoryName.equals(inventoryName)) {
+                if(inventoryType.inventoryName.equals(inventoryName)) {
                     currentInventoryType = inventoryType;
                     return inventoryType;
                 }
             }
             return null;
-        }
-
-        public String getMessage() {
-            return message.getMessage();
         }
     }
 
@@ -248,7 +244,6 @@ public class EnumUtils {
         GUI_SCALE(SETTING_GUI_SCALE, -1),
         ENABLED_IN_OTHER_GAMES(SETTING_SHOW_IN_OTHER_GAMES, -1),
         REPEATING(SETTING_REPEATING, -1),
-        EXPANDED(SETTING_EXPANDED, -1),
         TEXT_MODE(SETTING_TEXT_MODE, -1),
         DRAGONS_NEST_ONLY(SETTING_DRAGONS_NEST_ONLY, -1),
         USE_VANILLA_TEXTURE(SETTING_USE_VANILLA_TEXTURE, 17),
@@ -274,8 +269,7 @@ public class EnumUtils {
 
         ;
 
-        @Getter
-        private Message message;
+        @Getter private Message message;
         private int featureEquivalent;
 
         FeatureSetting(Message message, int featureEquivalent) {
@@ -317,8 +311,10 @@ public class EnumUtils {
         MYNAMEISJEFF("MyNameIsJeff", "github.com/My-Name-Is-Jeff", Feature.SHOW_BROKEN_FRAGMENTS),
         DJTHEREDSTONER("DJtheRedstoner", "github.com/DJtheRedstoner", Feature.LEGENDARY_SEA_CREATURE_WARNING, Feature.HIDE_SVEN_PUP_NAMETAGS),
         ANTONIO32A("Antonio32A", "github.com/Antonio32A", Feature.ONLY_BREAK_LOGS_PARK),
-        CHARZARD("Charzard4261", "github.com/Charzard4261", Feature.DISABLE_TELEPORT_PAD_MESSAGES, Feature.BAIT_LIST, Feature.ACTIONS_UNTIL_NEXT_LEVEL, Feature.SHOW_BASE_STAT_BOOST_PERCENTAGE,
-                 Feature.REVENANT_SLAYER_TRACKER, Feature.TARANTULA_SLAYER_TRACKER, Feature.SVEN_SLAYER_TRACKER, Feature.DRAGON_STATS_TRACKER);
+        CHARZARD("Charzard4261", "github.com/Charzard4261", Feature.DISABLE_TELEPORT_PAD_MESSAGES, Feature.BAIT_LIST, Feature.SHOW_BASE_STAT_BOOST_PERCENTAGE,
+                 Feature.SHOW_ITEM_DUNGEON_FLOOR, Feature.SHOW_BASE_STAT_BOOST_PERCENTAGE,  Feature.SHOW_RARITY_UPGRADED, Feature.REVENANT_SLAYER_TRACKER,
+                Feature.TARANTULA_SLAYER_TRACKER, Feature.SVEN_SLAYER_TRACKER, Feature.DRAGON_STATS_TRACKER),
+        IHDEVELOPER("iHDeveloper", "github.com/iHDeveloper", Feature.SHOW_DUNGEON_MILESTONE, Feature.DUNGEONS_COLLECTED_ESSENCES_DISPLAY);
 
         private Set<Feature> features;
         private String author;
@@ -360,8 +356,7 @@ public class EnumUtils {
         DUNGEONEERING("Dungeoneering", Item.getItemFromBlock(Blocks.deadbush));
 
         private String skillName;
-        @Getter
-        private ItemStack item;
+        @Getter private ItemStack item;
 
         SkillType(String skillName, Item item) {
             this.skillName = skillName;

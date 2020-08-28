@@ -15,7 +15,7 @@ import java.util.Set;
 public class RendererLivingEntityHook {
 
     // no don't ask to be added lol, for now these are just like my admins
-    private static Set<String> coolPeople = Sets.newHashSet("Dinnerbone", "Biscut", "Pinpointed", "NightBerd", "Potat_owo");
+    private static Set<String> coolPeople = Sets.newHashSet("Dinnerbone", "Biscut", "Pinpointed", "Berded", "Potat_owo");
     private static boolean isCoolPerson;
 
     public static boolean equals(String string, Object otherString) {
@@ -31,8 +31,8 @@ public class RendererLivingEntityHook {
     public static int setOutlineColor(EntityLivingBase entity, int originalColor) {
         SkyblockAddons main = SkyblockAddons.getInstance();
         if (main.getConfigValues().isEnabled(Feature.SHOW_CRITICAL_DUNGEONS_TEAMMATES) &&
-                main.getUtils().isInDungeon() && main.getUtils().getDungeonPlayers().containsKey(entity.getName())) {
-            DungeonPlayer dungeonPlayer = main.getUtils().getDungeonPlayers().get(entity.getName());
+                main.getUtils().isInDungeon() && main.getDungeonUtils().getPlayers().containsKey(entity.getName())) {
+            DungeonPlayer dungeonPlayer = main.getDungeonUtils().getPlayers().get(entity.getName());
 
             if (dungeonPlayer.isCritical()){
                 return Minecraft.getMinecraft().fontRendererObj.getColorCode('c');

@@ -140,7 +140,11 @@ public enum Message {
     SETTING_SHOW_HEALING_CIRCLE_WALL(MessageObject.SETTING, "showHealingCircleWall"),
     SETTING_SHOW_CRITICAL_TEAMMATES(MessageObject.SETTING, "showCriticalTeammates"),
     SETTING_SHOW_GLOWING_ITEMS_ON_ISLAND(MessageObject.SETTING, "showGlowingItemsOnIsland"),
-    SETTING_EXPANDED(MessageObject.SETTING, "expanded"),
+    SETTING_SHOW_ITEM_DUNGEON_FLOOR(MessageObject.SETTING, "showItemDungeonFloor"),
+    SETTING_SHOW_DUNGEON_MILESTONE(MessageObject.SETTING, "showDungeonMilestone"),
+    SETTING_DUNGEONS_COLLECTED_ESSENCES_DISPLAY(MessageObject.SETTING, "dungeonsCollectedEssencesDisplay"),
+    SETTING_BONZO_STAFF_SOUNDS(MessageObject.SETTING, "stopBonzoStaffSounds"),
+    SETTING_SHOW_RARITY_UPGRADED(MessageObject.SETTING, "showRarityUpgraded"),
     SETTING_REVENANT_SLAYER_TRACKER(MessageObject.SETTING, "revenantSlayerTracker"),
     SETTING_TARANTULA_SLAYER_TRACKER(MessageObject.SETTING, "tarantulaSlayerTracker"),
     SETTING_SVEN_SLAYER_TRACKER(MessageObject.SETTING, "svenSlayerTracker"),
@@ -260,29 +264,43 @@ public enum Message {
     DISCORD_STATUS_SVEN(MessageObject.DISCORD_STATUS, "titleSvens"),
     DISCORD_STATUS_SVEN_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionSvens"),
     DISCORD_STATUS_TARANTULA(MessageObject.DISCORD_STATUS, "titleTarantula"),
-    DISCORD_STATUS_TARANTULA_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionTarantular"),
+    DISCORD_STATUS_TARANTULA_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionTarantula"),
 
     COMMAND_USAGE_SBA(MessageObject.COMMAND_USAGE, "sba"),
-    COMMAND_USAGE_SBA_HELP(MessageObject.COMMAND_USAGE, "sba.help"),
-    COMMAND_USAGE_SBA_EDIT(MessageObject.COMMAND_USAGE, "sba.edit"),
-    COMMAND_USAGE_SBA_SET_ZEALOT_COUNTER(MessageObject.COMMAND_USAGE, "sba.set.zealotCounter"),
-    COMMAND_USAGE_SBA_FOLDER(MessageObject.COMMAND_USAGE, "sba.folder"),
-    COMMAND_USAGE_SBA_DEV(MessageObject.COMMAND_USAGE, "sba.dev"),
-    COMMAND_USAGE_SBA_SIDEBAR(MessageObject.COMMAND_USAGE, "sba.sidebar"),
     COMMAND_USAGE_SBA_BRAND(MessageObject.COMMAND_USAGE, "sba.brand"),
+    COMMAND_USAGE_SBA_BRAND_BRAND_OUTPUT(MessageObject.COMMAND_USAGE, "sba.brand.brandOutput"),
+    COMMAND_USAGE_SBA_BRAND_NOT_FOUND(MessageObject.COMMAND_USAGE, "sba.brand.notFound"),
     COMMAND_USAGE_SBA_COPY_ENTITY(MessageObject.COMMAND_USAGE, "sba.copyEntity"),
     COMMAND_USAGE_SBA_SLAYER(MessageObject.COMMAND_USAGE, "sba.slayer"),
-    SUBCOMMAND_HELP_HELP_COMMAND(MessageObject.COMMAND_USAGE, "sba.help.help.command"),
+    COMMAND_USAGE_SBA_COPY_SIDEBAR(MessageObject.COMMAND_USAGE, "sba.copySidebar"),
+    COMMAND_USAGE_SBA_DEV(MessageObject.COMMAND_USAGE, "sba.dev"),
+    COMMAND_USAGE_SBA_DEV_DISABLED(MessageObject.COMMAND_USAGE, "sba.dev.disabled"),
+    COMMAND_USAGE_SBA_DEV_ENABLED(MessageObject.COMMAND_USAGE, "sba.dev.enabled"),
+    COMMAND_USAGE_SBA_EDIT(MessageObject.COMMAND_USAGE, "sba.edit"),
+    COMMAND_USAGE_SBA_FOLDER(MessageObject.COMMAND_USAGE, "sba.folder"),
+    COMMAND_USAGE_SBA_FOLDER_ERROR(MessageObject.COMMAND_USAGE, "sba.folder.error"),
+    COMMAND_USAGE_SBA_HELP(MessageObject.COMMAND_USAGE, "sba.help"),
+    COMMAND_USAGE_SBA_SET_ZEALOT_COUNTER(MessageObject.COMMAND_USAGE, "sba.set.zealotCounter"),
+    COMMAND_USAGE_SBA_SET_ZEALOT_COUNTER_EYES(MessageObject.COMMAND_USAGE, "sba.set.zealotCounter.eyes"),
+    COMMAND_USAGE_SBA_SET_ZEALOT_COUNTER_TOTAL_ZEALOTS(MessageObject.COMMAND_USAGE, "sba.set.zealotCounter.totalZealots"),
+    COMMAND_USAGE_SBA_SET_ZEALOT_COUNTER_WRONG_USAGE(MessageObject.COMMAND_USAGE, "sba.set.zealotCounter.wrongUsage"),
+    COMMAND_USAGE_SBA_SET_ZEALOT_COUNTER_ZEALOTS(MessageObject.COMMAND_USAGE, "sba.set.zealotCounter.zealots"),
+    COMMAND_USAGE_TOGGLE_ACTION_BAR_LOGGING(MessageObject.COMMAND_USAGE, "sba.toggleActionBarLogging"),
+    COMMAND_USAGE_TOGGLE_ACTION_BAR_LOGGING_DISABLED(MessageObject.COMMAND_USAGE, "sba.toggleActionBarLogging.disabled"),
+    COMMAND_USAGE_TOGGLE_ACTION_BAR_LOGGING_ENABLED(MessageObject.COMMAND_USAGE, "sba.toggleActionBarLogging.enabled"),
+    COMMAND_USAGE_WRONG_USAGE_GENERIC(MessageObject.COMMAND_USAGE, "sba.wrongUsage.generic"),
+    COMMAND_USAGE_WRONG_USAGE_SUBCOMMAND_NOT_FOUND(MessageObject.COMMAND_USAGE, "sba.wrongUsage.subCommandNotFound"),
     SUBCOMMAND_HELP_COPY_ENTITY(MessageObject.COMMAND_USAGE, "sba.help.copyEntity"),
     SUBCOMMAND_HELP_COPY_ENTITY_ENTITY_NAMES(MessageObject.COMMAND_USAGE, "sba.help.copyEntity.entityNames"),
     SUBCOMMAND_HELP_COPY_ENTITY_RADIUS(MessageObject.COMMAND_USAGE, "sba.help.copyEntity.radius"),
+    SUBCOMMAND_HELP_COPY_SIDEBAR_FORMATTED(MessageObject.COMMAND_USAGE, "sba.help.copySidebar.formatted"),
     SUBCOMMAND_HELP_DEV(MessageObject.COMMAND_USAGE, "sba.help.dev"),
+    SUBCOMMAND_HELP_HELP_COMMAND(MessageObject.COMMAND_USAGE, "sba.help.help.command"),
     SUBCOMMAND_HELP_SET_ZEALOT_COUNTER(MessageObject.COMMAND_USAGE, "sba.help.set.zealotCounter"),
-    SUBCOMMAND_HELP_SET_ZEALOT_COUNTER_ZEALOTS(MessageObject.COMMAND_USAGE, "sba.help.set.zealotCounter.zealots"),
     SUBCOMMAND_HELP_SET_ZEALOT_COUNTER_EYES(MessageObject.COMMAND_USAGE, "sba.help.set.zealotCounter.eyes"),
     SUBCOMMAND_HELP_SET_ZEALOT_COUNTER_TOTAL_ZEALOTS(MessageObject.COMMAND_USAGE, "sba.help.set.zealotCounter.totalZealots"),
+    SUBCOMMAND_HELP_SET_ZEALOT_COUNTER_ZEALOTS(MessageObject.COMMAND_USAGE, "sba.help.set.zealotCounter.zealots"),
     SUBCOMMAND_HELP_SLAYER(MessageObject.COMMAND_USAGE, "sba.help.slayer"),
-    SUBCOMMAND_HELP_SIDEBAR_FORMATTED(MessageObject.COMMAND_USAGE, "sba.help.sidebar.formatted"),
     SUBCOMMAND_HELP_SUBCOMMAND_NOT_FOUND(MessageObject.COMMAND_USAGE, "sba.help.subCommandNotFound"),
 
     KEY_DEVELOPER_COPY_NBT(MessageObject.KEYBINDINGS, "developerCopyNBT")
@@ -334,10 +352,20 @@ public enum Message {
                     text = text.replace("%arrows%", variables[0]);
                 } else if (this == Message.MESSAGE_STAGE) {
                     text = text.replace("%stage%", variables[0]);
-                } else if (this == Message.SUBCOMMAND_HELP_COPY_ENTITY) {
-                    text = text.replace("%radius%", variables[0]);
-                } else if (this == Message.SUBCOMMAND_HELP_SUBCOMMAND_NOT_FOUND) {
+                } else if (this == Message.COMMAND_USAGE_SBA_BRAND_BRAND_OUTPUT) {
+                    text = text.replace("%brand%", variables[0]);
+                } else if (this == Message.COMMAND_USAGE_SBA_DEV_ENABLED) {
+                    text = text.replace("%keyName%", variables[0]);
+                } else if (this == Message.COMMAND_USAGE_SBA_SET_ZEALOT_COUNTER_EYES
+                        || this == Message.COMMAND_USAGE_SBA_SET_ZEALOT_COUNTER_TOTAL_ZEALOTS
+                        || this == Message.COMMAND_USAGE_SBA_SET_ZEALOT_COUNTER_ZEALOTS) {
+                    text = text.replace("%number%", variables[0]);
+                } else if (this == Message.COMMAND_USAGE_SBA_SET_ZEALOT_COUNTER_WRONG_USAGE) {
+                    text = text.replace("%options%", variables[0]);
+                } else if (this == Message.COMMAND_USAGE_WRONG_USAGE_SUBCOMMAND_NOT_FOUND) {
                     text = text.replace("%sub-command%", variables[0]);
+                } else if (this == SUBCOMMAND_HELP_COPY_ENTITY) {
+                    text = text.replace("%radius%", variables[0]);
                 }
             }
             if (text != null && (main.getConfigValues().getLanguage() == Language.HEBREW || main.getConfigValues().getLanguage() == Language.ARABIC) && !Minecraft.getMinecraft().fontRendererObj.getBidiFlag()) {

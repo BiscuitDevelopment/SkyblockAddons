@@ -51,7 +51,7 @@ public class TextUtils {
      * @return Input text with only letters and numbers
      */
     public static String keepScoreboardCharacters(String text) {
-        SCOREBOARD_CHARACTERS = Pattern.compile("[^a-z A-Z:0-9/'.!§\\[\\]❤]");
+        SCOREBOARD_CHARACTERS = Pattern.compile("[^a-z A-Z:0-9_/'.!§\\[\\]❤]");
         return SCOREBOARD_CHARACTERS.matcher(text).replaceAll("");
     }
 

@@ -74,7 +74,7 @@ public enum TransformerMethod {
 
     // EntityRenderer
     getMouseOver("getMouseOver", "func_78473_a", "a", "(F)V"),
-    getNightVisionBrightness("getNightVisionBrightness", "func_180438_a", "a", "("+TransformerClass.EntityLivingBase.getName()+"F)F", "(Lnet/minecraft/entity/EntityLivingBase;F)F"),
+    getNightVisionBrightness("getNightVisionBrightness", "func_180438_a", "a", "(Lnet/minecraft/entity/EntityLivingBase;F)F", "("+TransformerClass.EntityLivingBase.getName()+"F)F"),
 
     // GuiNewChat
     printChatMessageWithOptionalDeletion("printChatMessageWithOptionalDeletion", "func_146234_a", "a", "(Lnet/minecraft/util/IChatComponent;I)V", "("+TransformerClass.IChatComponent.getName()+"I)V"),
