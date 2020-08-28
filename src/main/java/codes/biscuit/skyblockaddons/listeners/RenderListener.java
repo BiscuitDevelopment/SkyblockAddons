@@ -6,10 +6,16 @@ import codes.biscuit.skyblockaddons.features.BaitManager;
 import codes.biscuit.skyblockaddons.features.EndstoneProtectorManager;
 import codes.biscuit.skyblockaddons.features.ItemDiff;
 import codes.biscuit.skyblockaddons.features.SlayerArmorProgress;
+import codes.biscuit.skyblockaddons.features.dragontracker.DragonTracker;
+import codes.biscuit.skyblockaddons.features.dragontracker.DragonType;
+import codes.biscuit.skyblockaddons.features.dragontracker.DragonsSince;
 import codes.biscuit.skyblockaddons.features.healingcircle.HealingCircle;
 import codes.biscuit.skyblockaddons.features.healingcircle.HealingCircleParticle;
 import codes.biscuit.skyblockaddons.features.powerorbs.PowerOrb;
 import codes.biscuit.skyblockaddons.features.powerorbs.PowerOrbManager;
+import codes.biscuit.skyblockaddons.features.slayertracker.SlayerDrop;
+import codes.biscuit.skyblockaddons.features.slayertracker.SlayerTracker;
+import codes.biscuit.skyblockaddons.features.slayertracker.SlayerBoss;
 import codes.biscuit.skyblockaddons.features.tabtimers.TabEffect;
 import codes.biscuit.skyblockaddons.features.tabtimers.TabEffectManager;
 import codes.biscuit.skyblockaddons.gui.IslandWarpGui;
@@ -17,12 +23,6 @@ import codes.biscuit.skyblockaddons.gui.LocationEditGui;
 import codes.biscuit.skyblockaddons.gui.SettingsGui;
 import codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui;
 import codes.biscuit.skyblockaddons.gui.buttons.ButtonLocation;
-import codes.biscuit.skyblockaddons.utils.*;
-import codes.biscuit.skyblockaddons.features.bosstracker.BossTracker;
-import codes.biscuit.skyblockaddons.features.bosstracker.BossTrackerManager;
-import codes.biscuit.skyblockaddons.features.bosstracker.DragonBossTracker;
-import codes.biscuit.skyblockaddons.features.slayertracker.SlayerBoss;
-import codes.biscuit.skyblockaddons.features.slayertracker.SlayerTracker;
 import codes.biscuit.skyblockaddons.misc.ChromaManager;
 import codes.biscuit.skyblockaddons.misc.Updater;
 import codes.biscuit.skyblockaddons.misc.scheduler.Scheduler;
@@ -31,6 +31,7 @@ import codes.biscuit.skyblockaddons.utils.ColorCode;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.TextUtils;
 import codes.biscuit.skyblockaddons.utils.objects.IntPair;
+import com.google.common.collect.Lists;
 import lombok.Getter;
 import lombok.Setter;
 import net.minecraft.client.Minecraft;
@@ -720,20 +721,28 @@ public class RenderListener {
                 }
             }
         } else if (feature == Feature.ZEALOT_COUNTER) {
-            if (main.getConfigValues().isEnabled(Feature.ZEALOTS_NEST_ONLY) && main.getUtils().getLocation() != Location.DRAGONS_NEST && buttonLocation == null) return;
+            if (main.getConfigValues().isEnabled(Feature.ZEALOT_COUNTER_NEST_ONLY) && main.getUtils().getLocation() != Location.DRAGONS_NEST && buttonLocation == null) {
+                return;
+            }
             text = String.valueOf(main.getPersistentValues().getKills());
         } else if (feature == Feature.SHOW_TOTAL_ZEALOT_COUNT) {
-            if (main.getConfigValues().isEnabled(Feature.ZEALOTS_NEST_ONLY) && main.getUtils().getLocation() != Location.DRAGONS_NEST && buttonLocation == null) return;
+            if (main.getConfigValues().isEnabled(Feature.SHOW_TOTAL_ZEALOT_COUNT_NEST_ONLY) && main.getUtils().getLocation() != Location.DRAGONS_NEST && buttonLocation == null) {
+                return;
+            }
             if (main.getPersistentValues().getTotalKills() <= 0) {
                 text = String.valueOf(main.getPersistentValues().getKills());
             } else {
                 text = String.valueOf(main.getPersistentValues().getTotalKills() + main.getPersistentValues().getKills());
             }
         } else if (feature == Feature.SHOW_SUMMONING_EYE_COUNT) {
-            if (main.getConfigValues().isEnabled(Feature.ZEALOTS_NEST_ONLY) && main.getUtils().getLocation() != Location.DRAGONS_NEST && buttonLocation == null) return;
+            if (main.getConfigValues().isEnabled(Feature.SHOW_SUMMONING_EYE_COUNT_NEST_ONLY) && main.getUtils().getLocation() != Location.DRAGONS_NEST && buttonLocation == null) {
+                return;
+            }
             text = String.valueOf(main.getPersistentValues().getSummoningEyeCount());
         } else if (feature == Feature.SHOW_AVERAGE_ZEALOTS_PER_EYE) {
-            if (main.getConfigValues().isEnabled(Feature.ZEALOTS_NEST_ONLY) && main.getUtils().getLocation() != Location.DRAGONS_NEST && buttonLocation == null) return;
+            if (main.getConfigValues().isEnabled(Feature.SHOW_AVERAGE_ZEALOTS_PER_EYE_NEST_ONLY) && main.getUtils().getLocation() != Location.DRAGONS_NEST && buttonLocation == null) {
+                return;
+            }
             int summoningEyeCount = main.getPersistentValues().getSummoningEyeCount();
 
             if (summoningEyeCount > 0) {
@@ -1024,198 +1033,208 @@ public class RenderListener {
         main.getUtils().restoreGLOptions();
     }
 
-    public void drawSlayerTrackers(Minecraft mc, float scale, ButtonLocation buttonLocation) {
-
-        if (buttonLocation != null) {
-            SlayerBoss boss = SlayerTracker.getInstance().getBosses().get(0);
-
-            int lines = 2 + boss.getDrops().size();
-
-            float x = main.getConfigValues().getActualX(Feature.SLAYER_TRACKERS);
-            float y = main.getConfigValues().getActualY(Feature.SLAYER_TRACKERS);
-
-            int spacing = 1;
-            int iconSize = 16;
-            int width = iconSize + spacing;
-
-            x /= scale;
-            y /= scale;
-            x -= width * scale / 2F;
-            y -= lines * Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT;
-            int longestLineWidth = Minecraft.getMinecraft().fontRendererObj.getStringWidth(boss.getKilledName());
-            for (SlayerBoss.SlayerDrop drop : boss.getDrops())
-                longestLineWidth = Math.max(longestLineWidth, Minecraft.getMinecraft().fontRendererObj.getStringWidth(drop.getDisplayName()));
-
-            int color;
-            {
-                color = main.getConfigValues().getColor(Feature.SLAYER_TRACKERS).getRGB();
-                ChromaManager.renderingText(Feature.SLAYER_TRACKERS);
-                main.getUtils().drawTextWithStyle(boss.getDisplayName(), x, y, color);
-                y += Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT;
-                main.getUtils().drawTextWithStyle(boss.getKilledName() + boss.getKills(), x, y, color);
-                ChromaManager.doneRenderingText();
-            }
-            y += Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT;
-
-            for (SlayerBoss.SlayerDrop drop : boss.getDrops()) {
-
-                if (main.getConfigValues().isEnabled(Feature.SLAYER_TRACKERS_COLOUR_BY_RARITY)) {
-                    main.getUtils().drawTextWithStyle(drop.getRarity().getTag().substring(0, 2) + drop.getDisplayName() + drop.getCount(), x, y, color);
-                } else {
-                    color = main.getConfigValues().getColor(Feature.SLAYER_TRACKERS).getRGB();
-                    ChromaManager.renderingText(Feature.SLAYER_TRACKERS);
-                    main.getUtils().drawTextWithStyle(drop.getDisplayName() + drop.getCount(), x, y, color);
-                    ChromaManager.doneRenderingText();
-                }
-                y += Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT;
-            }
-            buttonLocation.checkHoveredAndDrawBox(x, x + longestLineWidth, y - (lines * Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT), y, scale);
+    public void drawSlayerTrackers(Feature feature, Minecraft mc, float scale, ButtonLocation buttonLocation) {
+        boolean colorByRarity;
+        boolean textMode;
+        SlayerBoss slayerBoss;
+        if (feature == Feature.REVENANT_SLAYER_TRACKER) {
+            colorByRarity = main.getConfigValues().isEnabled(Feature.REVENANT_COLOR_BY_RARITY);
+            textMode = main.getConfigValues().isEnabled(Feature.REVENANT_TEXT_MODE);
+            slayerBoss = SlayerBoss.REVENANT;
+        } else if (feature == Feature.TARANTULA_SLAYER_TRACKER) {
+            colorByRarity = main.getConfigValues().isEnabled(Feature.TARANTULA_COLOR_BY_RARITY);
+            textMode = main.getConfigValues().isEnabled(Feature.TARANTULA_TEXT_MODE);
+            slayerBoss = SlayerBoss.TARANTULA;
+        } else if (feature == Feature.SVEN_SLAYER_TRACKER) {
+            colorByRarity = main.getConfigValues().isEnabled(Feature.SVEN_COLOR_BY_RARITY);
+            textMode = main.getConfigValues().isEnabled(Feature.SVEN_TEXT_MODE);
+            slayerBoss = SlayerBoss.SVEN;
+        } else {
             return;
         }
 
-        boolean expanded = main.getConfigValues().isEnabled(Feature.SLAYER_TRACKERS_EXPANDED),
-                cbr = main.getConfigValues().isEnabled(Feature.SLAYER_TRACKERS_COLOUR_BY_RARITY),
-                showIcons = main.getConfigValues().isEnabled(Feature.SLAYER_TRACKERS_SHOW_ICONS);
+        textMode = true;
 
-        int bossCount = 0, yOffset = 0;
-        for (SlayerBoss boss : SlayerTracker.getInstance().getBosses()) {
-            if (main.getConfigValues().isDisabled(boss.getFeature()))
-                continue;
-                yOffset += (expanded ? 2 : 1) * Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT;
-            yOffset += boss.getDrops().size() * (Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT + (main.getConfigValues().isEnabled(Feature.SLAYER_TRACKERS_SHOW_ICONS) ? 5 : 0));
-            bossCount++;
-        }
-        if (bossCount > 1) yOffset += (bossCount - 1) * Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT;
+        int lineHeight = 8;
+        int spacer = 3;
 
-        float x = main.getConfigValues().getActualX(Feature.SLAYER_TRACKERS);
-        float y = main.getConfigValues().getActualY(Feature.SLAYER_TRACKERS);
+        int width;
+        int height;
+        if (textMode) {
+            int lines = 0;
+            int spacers = 0;
 
-        int spacing = 1;
-        int iconSize = 16;
-        int width = iconSize + spacing;
+            int longestLineWidth = mc.fontRendererObj.getStringWidth(slayerBoss.getDisplayName());
+            lines++;
+            spacers++;
 
-        x /= scale;
-        y /= scale;
-        x -= width * scale / 2F;
-        y -= yOffset;
+            int longestSlayerDropLineWidth = mc.fontRendererObj.getStringWidth(Translations.getMessage("slayerTracker.bossesKilled"));
+            int longestCount = mc.fontRendererObj.getStringWidth(String.valueOf(SlayerTracker.getInstance().getSlayerKills(slayerBoss)));
+            lines++;
+            spacers++;
 
-        for (SlayerBoss boss : SlayerTracker.getInstance().getBosses()) {
-            if (main.getConfigValues().isDisabled(boss.getFeature()))
-                continue;
-
-            int longestLineWidth = Minecraft.getMinecraft().fontRendererObj.getStringWidth(boss.getKilledName());
-            for (SlayerBoss.SlayerDrop drop : boss.getDrops())
-                longestLineWidth = Math.max(longestLineWidth, Minecraft.getMinecraft().fontRendererObj.getStringWidth(drop.getDisplayName()));
-            longestLineWidth += 10;
-
-            int color = color = main.getConfigValues().getColor(Feature.SLAYER_TRACKERS).getRGB();
-            if (expanded) {
-                ChromaManager.renderingText(Feature.SLAYER_TRACKERS);
-                main.getUtils().drawTextWithStyle(boss.getDisplayName(), x, y, color);
-                y += Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT;
-                main.getUtils().drawTextWithStyle(boss.getKilledName(), x, y, color);
-                main.getUtils().drawTextWithStyle(boss.getKills() + "", x + longestLineWidth, y, color);
-                ChromaManager.doneRenderingText();
+            for (SlayerDrop drop : slayerBoss.getDrops()) {
+                longestSlayerDropLineWidth = Math.max(longestSlayerDropLineWidth, mc.fontRendererObj.getStringWidth(drop.getDisplayName()));
+                longestCount = Math.max(longestCount, mc.fontRendererObj.getStringWidth(String.valueOf(SlayerTracker.getInstance().getDropCount(drop))));
+                lines++;
             }
-            y += Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT;
+            width = Math.max(longestLineWidth, longestSlayerDropLineWidth + 8 + longestCount);
 
-            for (SlayerBoss.SlayerDrop drop : boss.getDrops()) {
+            height = lines * 8 + spacer * spacers;
+        } else {
+            width = 100;
+            height = 100;
+        }
 
-                if (showIcons && drop.getItemStack() != null)
-                {
-                    y+=5;
-                    RenderHelper.enableGUIStandardItemLighting();
-                    mc.getRenderItem().renderItemIntoGUI(drop.getItemStack(), (int)x-20, (int)y-5);
-                    RenderHelper.disableStandardItemLighting();
+        float x = main.getConfigValues().getActualX(feature);
+        float y = main.getConfigValues().getActualY(feature);
+        x = transformXY(x, width, scale);
+        y = transformXY(y, height, scale);
+
+        if (buttonLocation != null) {
+            buttonLocation.checkHoveredAndDrawBox(x, x + width, y, y + height, scale);
+        }
+
+        int color = main.getConfigValues().getColor(feature).getRGB();
+
+        ChromaManager.renderingText(feature);
+
+        if (textMode) {
+            main.getUtils().drawTextWithStyle(slayerBoss.getDisplayName(), x, y, color);
+            y += lineHeight + spacer;
+            main.getUtils().drawTextWithStyle(Translations.getMessage("slayerTracker.bossesKilled"), x, y, color);
+            String text = String.valueOf(SlayerTracker.getInstance().getSlayerKills(slayerBoss));
+            main.getUtils().drawTextWithStyle(text, x + width - mc.fontRendererObj.getStringWidth(text), y, color);
+            y += lineHeight + spacer;
+
+            for (SlayerDrop drop : slayerBoss.getDrops()) {
+
+                if (colorByRarity && !main.getConfigValues().getChromaFeatures().contains(feature)) {
+                    color = drop.getRarity().getColorCode().getRGB();
                 }
 
-                String prefix = "";
+                main.getUtils().drawTextWithStyle(drop.getDisplayName(), x, y, color);
+                text = String.valueOf(SlayerTracker.getInstance().getDropCount(drop));
+                main.getUtils().drawTextWithStyle(text, x + width - mc.fontRendererObj.getStringWidth(text), y, color);
 
-                if (cbr)
-                    prefix = "§" + drop.getRarity().getColorCode().getCode();
-                else
-                    ChromaManager.renderingText(Feature.SLAYER_TRACKERS);
-                if (expanded)
-                    main.getUtils().drawTextWithStyle(prefix + drop.getDisplayName(), x, y, color);
-                main.getUtils().drawTextWithStyle(prefix + drop.getCount() + "", x + (expanded ? longestLineWidth : 0), y, color);
-                ChromaManager.doneRenderingText();
-
-                y += Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT;
+                y += lineHeight;
             }
-            y += Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT;
+        } else {
+
         }
+
+        ChromaManager.doneRenderingText();
     }
 
     public void drawDragonTrackers(Minecraft mc, float scale, ButtonLocation buttonLocation) {
-        DragonBossTracker boss = BossTrackerManager.getInstance().getDragon();
-
-        if (main.getConfigValues().isEnabled(Feature.DRAGON_STATS_TRACKER_NEST_ONLY) && main.getUtils().getLocation() != Location.DRAGONS_NEST && buttonLocation == null)
+        if (main.getConfigValues().isEnabled(Feature.DRAGON_STATS_TRACKER_NEST_ONLY) && main.getUtils().getLocation() != Location.DRAGONS_NEST && buttonLocation == null) {
             return;
+        }
 
-        int longestLineWidth = 0;
-        for (BossTracker.Stat stat : boss.getStats())
-            longestLineWidth = Math.max(longestLineWidth, Minecraft.getMinecraft().fontRendererObj.getStringWidth(boss.getTranslatedStat(stat.getName())));
-        longestLineWidth += 10;
+        List<DragonType> recentDragons = DragonTracker.getInstance().getRecentDragons();
+        if (recentDragons.isEmpty() && buttonLocation != null) {
+            recentDragons = Lists.newLinkedList();
+            recentDragons.add(DragonType.PROTECTOR);
+            recentDragons.add(DragonType.SUPERIOR);
+            recentDragons.add(DragonType.WISE);
+        }
+
+        boolean colorByRarity = main.getConfigValues().isEnabled(Feature.DRAGON_STATS_TRACKER_COLOR_BY_RARITY);
+        boolean textMode = main.getConfigValues().isEnabled(Feature.DRAGON_STATS_TRACKER_TEXT_MODE);
+
+        textMode = true;
+
+        int spacerHeight = 3;
+
+        String never = Translations.getMessage("dragonTracker.never");
+
+        int width;
+        int height;
+        if (textMode) {
+            int lines = 0;
+            int spacers = 0;
+
+            int longestLineWidth = mc.fontRendererObj.getStringWidth(Translations.getMessage("dragonTracker.recentDragons"));
+            lines++;
+            spacers++;
+
+            spacers++;
+            longestLineWidth = Math.max(longestLineWidth, mc.fontRendererObj.getStringWidth(Translations.getMessage("dragonTracker.dragonsSince")));
+            lines++;
+            spacers++;
+
+            for (DragonType dragon : recentDragons) {
+                longestLineWidth = Math.max(longestLineWidth, mc.fontRendererObj.getStringWidth(dragon.getDisplayName()));
+                lines++;
+            }
+
+            int longestCount = 0;
+            int longestDragonsSinceLineWidth = 0;
+            for (DragonsSince dragonsSince : DragonsSince.values()) {
+                longestDragonsSinceLineWidth = Math.max(longestDragonsSinceLineWidth, mc.fontRendererObj.getStringWidth(dragonsSince.getDisplayName()));
+                int dragonsSinceValue = DragonTracker.getInstance().getDragsSince(dragonsSince);
+                longestCount = Math.max(longestCount, mc.fontRendererObj.getStringWidth(dragonsSinceValue == 0 ? never : String.valueOf(dragonsSinceValue)));
+                lines++;
+            }
+            width = Math.max(longestLineWidth, longestDragonsSinceLineWidth + 8 + longestCount);
+
+            height = lines * 8 + spacerHeight * spacers;
+        } else {
+            width = 100;
+            height = 100;
+        }
 
         float x = main.getConfigValues().getActualX(Feature.DRAGON_STATS_TRACKER);
         float y = main.getConfigValues().getActualY(Feature.DRAGON_STATS_TRACKER);
+        x = transformXY(x, width, scale);
+        y = transformXY(y, height, scale);
 
-        int spacing = 1;
-        int iconSize = 16;
-        int width = iconSize + spacing;
-
-        x /= scale;
-        y /= scale;
-        x -= longestLineWidth;
+        if (buttonLocation != null) {
+            buttonLocation.checkHoveredAndDrawBox(x, x + width, y, y + height, scale);
+        }
 
         int color = main.getConfigValues().getColor(Feature.DRAGON_STATS_TRACKER).getRGB();
 
-        ChromaManager.renderingText(Feature.DRAGON_STATS_TRACKER);
-        main.getUtils().drawTextWithStyle(boss.getTranslatedStat(DragonBossTracker.dragsRecent), x, y, color);
-        ChromaManager.doneRenderingText();
-        y += Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT;
+        if (textMode) {
+            ChromaManager.renderingText(Feature.DRAGON_STATS_TRACKER);
+            main.getUtils().drawTextWithStyle(Translations.getMessage("dragonTracker.recentDragons"), x, y, color);
+            y += 8 + spacerHeight;
 
-        for (DragonBossTracker.DragonType dragon : boss.getRecent())
-        {
-            if (main.getConfigValues().isEnabled(Feature.DRAGON_STATS_TRACKER_COLOUR_BY_RARITY)) {
-                main.getUtils().drawTextWithStyle(dragon.getDisplayName(), x, y, dragon.getColour().getRGB());
-            } else {
-                ChromaManager.renderingText(Feature.DRAGON_STATS_TRACKER);
+            for (DragonType dragon : recentDragons) {
+                if (colorByRarity) {
+                    color = dragon.getColor().getRGB();
+                }
+
                 main.getUtils().drawTextWithStyle(dragon.getDisplayName(), x, y, color);
-                ChromaManager.doneRenderingText();
+                y += 8;
             }
-            y += Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT;
-        }
-        y += Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT;
+            y += spacerHeight;
 
-        ChromaManager.renderingText(Feature.DRAGON_STATS_TRACKER);
-        main.getUtils().drawTextWithStyle(boss.getTranslatedStat(DragonBossTracker.dragsSince), x, y, color);
-        ChromaManager.doneRenderingText();
-        y += Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT;
+            color = main.getConfigValues().getColor(Feature.DRAGON_STATS_TRACKER).getRGB();
+            main.getUtils().drawTextWithStyle(Translations.getMessage("dragonTracker.dragonsSince"), x, y, color);
+            y += 8 + spacerHeight;
 
-        String never = Utils.getTranslatedString("settings", "never");
+            for (DragonsSince dragonsSince : DragonsSince.values()) {
+                GlStateManager.disableDepth();
+                GlStateManager.enableBlend();
+                GlStateManager.color(1, 1, 1, 1F);
+                GlStateManager.disableBlend();
+                GlStateManager.enableDepth();
 
-        for (BossTracker.Stat stat : boss.getStats()) {
-            GlStateManager.disableDepth();
-            GlStateManager.enableBlend();
-            GlStateManager.color(1, 1, 1, 1F);
-            GlStateManager.disableBlend();
-            GlStateManager.enableDepth();
+                if (colorByRarity) {
+                    color = dragonsSince.getItemRarity().getColorCode().getRGB();
+                }
 
-            if (main.getConfigValues().isEnabled(Feature.DRAGON_STATS_TRACKER_COLOUR_BY_RARITY)) {
-                main.getUtils().drawTextWithStyle(stat.getRarity().getTag().substring(0, 2) + boss.getTranslatedStat(stat.getName()) + ": ", x, y, color);
-                main.getUtils().drawTextWithStyle(stat.getRarity().getTag().substring(0, 2) + (stat.getCount() == -1 ? never : stat.getCount()), x + longestLineWidth, y, color);
-            } else {
-                ChromaManager.renderingText(Feature.DRAGON_STATS_TRACKER);
-                main.getUtils().drawTextWithStyle(boss.getTranslatedStat(stat.getName()) + ": ", x, y, color);
-                main.getUtils().drawTextWithStyle((stat.getCount() == -1 ? never : stat.getCount() + ""), x + longestLineWidth, y, color);
-                ChromaManager.doneRenderingText();
+                main.getUtils().drawTextWithStyle(dragonsSince.getDisplayName(), x, y, color);
+
+                int dragonsSinceValue = DragonTracker.getInstance().getDragsSince(dragonsSince);
+                String text = dragonsSinceValue == 0 ? never : String.valueOf(dragonsSinceValue);
+                main.getUtils().drawTextWithStyle(text, x + width - mc.fontRendererObj.getStringWidth(text), y, color);
+                y += 8;
             }
-            y += Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT;
-        }
+            ChromaManager.doneRenderingText();
+        } else {
 
-        if (buttonLocation != null) {
-            buttonLocation.checkHoveredAndDrawBox(x, x + longestLineWidth + 30, y - (10 * Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT), y, scale);
         }
     }
 

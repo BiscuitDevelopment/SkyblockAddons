@@ -2,9 +2,9 @@ package codes.biscuit.skyblockaddons.commands;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Message;
-import codes.biscuit.skyblockaddons.utils.EnumUtils;
+import codes.biscuit.skyblockaddons.features.slayertracker.SlayerDrop;
 import codes.biscuit.skyblockaddons.features.slayertracker.SlayerTracker;
-import codes.biscuit.skyblockaddons.utils.DevUtils;
+import codes.biscuit.skyblockaddons.features.slayertracker.SlayerBoss;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
 import codes.biscuit.skyblockaddons.utils.DevUtils;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
@@ -20,10 +20,8 @@ import org.apache.logging.log4j.Logger;
 
 import java.awt.*;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.Collections;
+import java.util.*;
 import java.util.List;
-import java.util.ListIterator;
 
 /**
  * This is the main command of SkyblockAddons. It is used to open the menu, change settings, and for developer mode functions.
@@ -139,10 +137,17 @@ public class SkyblockAddonsCommand extends CommandBase {
         } else if (args.length == 2) {
             if (args[0].equalsIgnoreCase("help")) {
                 return getSubCommandTabCompletionOptions(args);
+
             } else if (args[0].equalsIgnoreCase("set")) {
                 return getListOfStringsMatchingLastWord(args, "total", "zealots", "eyes");
+
             } else if (args[0].equalsIgnoreCase("slayer")) {
-                return getListOfStringsMatchingLastWord(args, SlayerTracker.getInstance().getTabComplete());
+                String[] slayers = new String[SlayerBoss.values().length];
+                for (int i = 0; i < SlayerBoss.values().length; i++) {
+                    slayers[i] = SlayerBoss.values()[i].getMobType().toLowerCase(Locale.US);
+                }
+                return getListOfStringsMatchingLastWord(args, slayers);
+
             } else if (main.isDevMode()) {
                 if (args[0].equalsIgnoreCase("copyEntity")) {
                     return getListOfStringsMatchingLastWord(args, DevUtils.ENTITY_NAMES);
@@ -151,8 +156,25 @@ public class SkyblockAddonsCommand extends CommandBase {
                 }
             }
         }  else if (args.length == 3) {
-            if (args[0].equalsIgnoreCase("slayer"))
-                return getListOfStringsMatchingLastWord(args, SlayerTracker.getInstance().getTabCompleteDrops(args[1]));
+            if (args[0].equalsIgnoreCase("slayer")) {
+                SlayerBoss slayerBoss;
+                try {
+                    slayerBoss = SlayerBoss.valueOf(args[1].toUpperCase(Locale.US));
+                } catch (IllegalArgumentException ex) {
+                    slayerBoss = null;
+                }
+
+                if (slayerBoss != null) {
+                    String[] drops = new String[slayerBoss.getDrops().size() + 1];
+                    drops[0] = "kills";
+                    int i = 1;
+                    for (SlayerDrop slayerDrop : slayerBoss.getDrops()) {
+                        drops[i] = slayerDrop.name().toLowerCase(Locale.US);
+                        i++;
+                    }
+                    return getListOfStringsMatchingLastWord(args, drops);
+                }
+            }
         }
 
         return null;
@@ -223,17 +245,22 @@ public class SkyblockAddonsCommand extends CommandBase {
                     main.getRenderListener().setGuiToOpen(EnumUtils.GUIType.WARP);
                 } else if (args[0].equalsIgnoreCase("slayer")) {
                     if (args.length == 1) {
-                        String bosses = "";
-                        for (String s : SlayerTracker.getInstance().getTabComplete())
-                            bosses += s + "|";
-                        main.getUtils().sendErrorMessage("You need to select the boss you want. <"
-                                + bosses.substring(0, bosses.length() - 1) + ">");
-                    } else if (args.length == 2)
-                        main.getUtils().sendErrorMessage("You need to add the stat you want. Press tab to choose.");
-                    else if (args.length == 3)
+                        StringBuilder bosses = new StringBuilder();
+                        for (int i = 0; i < SlayerBoss.values().length; i++) {
+                            SlayerBoss slayerBoss = SlayerBoss.values()[i];
+                            bosses.append("'").append(slayerBoss.getMobType().toLowerCase(Locale.US)).append("'");
+                            if (i + 1 < SlayerBoss.values().length) {
+                                bosses.append(",");
+                            }
+                        }
+                        main.getUtils().sendErrorMessage("You need to select a boss! Please choose " + bosses.toString());
+                    } else if (args.length == 2) {
+                        main.getUtils().sendErrorMessage("You need to select a stat. Press tab for options.");
+                    } else if (args.length == 3) {
                         main.getUtils().sendErrorMessage("You need to add the number you want.");
-                    else if (args.length == 4)
-                        SlayerTracker.getInstance().setManual(args);
+                    } else if (args.length == 4) {
+                        SlayerTracker.getInstance().setStatManually(args);
+                    }
                 } else if (main.isDevMode()) {
                     if (args[0].equalsIgnoreCase("sidebar")) {
                         Scoreboard scoreboard = Minecraft.getMinecraft().theWorld.getScoreboard();

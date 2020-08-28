@@ -1,20 +1,18 @@
 package codes.biscuit.skyblockaddons.utils;
 
+import codes.biscuit.skyblockaddons.core.ItemRarity;
 import codes.biscuit.skyblockaddons.utils.skyblockdata.PetInfo;
 import codes.biscuit.skyblockaddons.utils.skyblockdata.Rune;
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
-import codes.biscuit.skyblockaddons.core.ItemRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.util.Constants;
 
-import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -157,13 +155,11 @@ public class ItemUtils {
      */
     public static Rune getRuneData(NBTTagCompound extraAttributes) {
         if (extraAttributes != null) {
-            String itemId = extraAttributes.getString("id");
-
-            if (!extraAttributes.hasKey("runes"))
+            if (!extraAttributes.hasKey("runes")) {
                 return null;
+            }
 
             return new Rune(extraAttributes.getCompoundTag("runes"));
-            //return new Pair<String, Integer>(runeName, runeData.getInteger(runeName));
         }
 
         return null;
@@ -179,11 +175,11 @@ public class ItemUtils {
         if (extraAttributes != null) {
             String itemId = extraAttributes.getString("id");
 
-            if (!itemId.equals("PET")) {
+            if (!itemId.equals("PET") || !extraAttributes.hasKey("petInfo")) {
                 return null;
             }
 
-            return new PetInfo(extraAttributes.getString("petInfo"));
+            return Utils.getGson().fromJson(extraAttributes.getString("petInfo"), PetInfo.class);
         }
 
         return null;

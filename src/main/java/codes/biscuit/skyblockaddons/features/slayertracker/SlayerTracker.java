@@ -3,206 +3,130 @@ package codes.biscuit.skyblockaddons.features.slayertracker;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.features.ItemDiff;
 import codes.biscuit.skyblockaddons.utils.ItemUtils;
-import com.google.gson.JsonObject;
+import codes.biscuit.skyblockaddons.utils.skyblockdata.Rune;
 import lombok.Getter;
 
 import java.util.*;
 
 public class SlayerTracker {
 
-    @Getter
-    private static final SlayerTracker instance = new SlayerTracker();
+    @Getter private static SlayerTracker instance = new SlayerTracker();
+
     public Date stopAcceptingTimestamp, secondPriorTimestamp;
-    /**
-     * Needed because you can pickup items before it recognises you
-     */
-    public HashMap<Date, List<ItemDiff>> cache = new HashMap<>();
-    @Getter
-    private ArrayList<SlayerBoss> bosses = new ArrayList<>();
-    @Getter
-    private SlayerBoss lastKilledBoss;
 
-    /**
-     * Add new bosses here, a "feature" setting to the Slayer_Trackers feature,
-     * and to the {@link codes.biscuit.skyblockaddons.gui.SettingsGui}#addButton(EnumUtils.FeatureSetting)
-     */
-    public SlayerTracker() {
-        bosses.add(new SlayerZombie());
-        bosses.add(new SlayerSpider());
-        bosses.add(new SlayerWolf());
+    private Map<SlayerBoss, Integer> slayerKills = new EnumMap<>(SlayerBoss.class);
+    private Map<SlayerDrop, Integer> slayerDropCounts = new EnumMap<>(SlayerDrop.class);
+    @Getter private SlayerBoss lastKilledBoss;
+
+    // Saves the last second of inventory differences
+    private transient Map<Long, List<ItemDiff>> recentInventoryDifferences = new HashMap<>();
+    private transient long lastSlayerCompleted = -1;
+
+    public int getSlayerKills(SlayerBoss slayerBoss) {
+        return slayerKills.getOrDefault(slayerBoss, 0);
     }
 
-    /**
-     * Add a kill to the slayer type which is determined by the "Talk to Maddox to claim your <boss> xp message"
-     *
-     * @param slayerEXPString
-     */
-    public void addSlayerKill(String slayerEXPString) {
-        for (SlayerBoss boss : bosses)
-            if (slayerEXPString.toLowerCase().contains(boss.getBossName())) {
-                boss.setKills(boss.getKills() + 1);
-                SkyblockAddons.getInstance().getPersistentValues().saveValues();
-                lastKilledBoss = boss;
-                useCache();
-                return;
-            }
+    public int getDropCount(SlayerDrop slayerDrop) {
+        return slayerDropCounts.getOrDefault(slayerDrop, 0);
     }
+    /**
+     * Adds a kill to the slayer type
+     */
+    public void completedSlayer(String slayerTypeText) {
+        SlayerBoss slayerBoss = SlayerBoss.getFromMobType(slayerTypeText);
+        if (slayerBoss != null) {
+            slayerKills.put(slayerBoss, slayerKills.getOrDefault(slayerBoss, 0) + 1);
+            lastKilledBoss = slayerBoss;
+            lastSlayerCompleted = System.currentTimeMillis();
 
-    public void updateDrops(List<ItemDiff> toCheck) {
-        boolean changed = false;
-        for (ItemDiff diff : toCheck) {
-            if (diff.getAmount() < 0) continue;
-
-            for (SlayerBoss.SlayerDrop drop : lastKilledBoss.getDrops())
-                //if (diff.getDisplayName().replaceAll("(§([0-9a-fk-or]))", "").equalsIgnoreCase(drop.getActualName())) {
-                if (drop.getSkyblockID().split(":")[0].equals(ItemUtils.getSkyBlockItemID(diff.getExtraAttributes()))) {
-                    if (drop.getSkyblockID().split(":")[0].equals("RUNE")) {
-                        if (ItemUtils.getRuneData(diff.getExtraAttributes()).getType().equals(drop.getSkyblockID().split(":")[1]))
-                        {
-                            changed = true;
-                            drop.setCount(drop.getCount() + diff.getAmount());
-                            break;
-                        }
-                    } else {
-                        changed = true;
-                        drop.setCount(drop.getCount() + diff.getAmount());
-                        break;
-                    }
-                }
-
-        }
-        if (changed)
             SkyblockAddons.getInstance().getPersistentValues().saveValues();
-    }
-
-    public void useCache() {
-        Iterator it = cache.entrySet().iterator();
-        while (it.hasNext()) {
-            Map.Entry<Date, List<ItemDiff>> pair = (Map.Entry<Date, List<ItemDiff>>) it.next();
-
-            if (pair.getKey().after(secondPriorTimestamp)) {
-                updateDrops(pair.getValue());
-            }
-            it.remove();
         }
     }
 
-    public void cleanCache() {
-        Iterator it = cache.entrySet().iterator();
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(new Date());
-        calendar.add(Calendar.SECOND, -1);
-        Date time = calendar.getTime();
-        while (it.hasNext()) {
-            Map.Entry<Date, List<ItemDiff>> pair = (Map.Entry<Date, List<ItemDiff>>) it.next();
+    public void checkInventoryDifferenceForDrops(List<ItemDiff> newInventoryDifference) {
+        recentInventoryDifferences.entrySet().removeIf(entry -> System.currentTimeMillis() - entry.getKey() > 1000);
+        recentInventoryDifferences.put(System.currentTimeMillis(), newInventoryDifference);
 
-            if (pair.getKey().before(time))
-                it.remove();
-        }
-    }
-
-    public void LoadPersistentValues() {
-        JsonObject slayerDrops = SkyblockAddons.getInstance().getPersistentValues().getSlayerDrops();
-        for (SlayerBoss boss : bosses) {
-            JsonObject thisBoss;
-            if (!slayerDrops.has(boss.getBossName())) {
-                thisBoss = new JsonObject();
-                slayerDrops.add(boss.getBossName(), thisBoss);
-            } else thisBoss = slayerDrops.getAsJsonObject(boss.getBossName());
-
-            if (!thisBoss.has("kills"))
-                thisBoss.addProperty("kills", 0);
-            boss.setKills(thisBoss.get("kills").getAsInt());
-
-            for (SlayerBoss.SlayerDrop drop : boss.getDrops()) {
-                if (!thisBoss.has(drop.getLangName()))
-                    thisBoss.addProperty(drop.getLangName(), 0);
-                drop.setCount(thisBoss.get(drop.getLangName()).getAsInt());
-            }
-        }
-    }
-
-    public JsonObject SavePersistentValues() {
-        JsonObject returnObj = new JsonObject();
-        for (SlayerBoss boss : bosses) {
-            JsonObject thisBoss = new JsonObject();
-            returnObj.add(boss.getBossName(), thisBoss);
-
-            thisBoss.addProperty("kills", boss.getKills());
-
-            for (SlayerBoss.SlayerDrop drop : boss.getDrops()) {
-                thisBoss.addProperty(drop.getLangName(), drop.getCount());
-            }
-        }
-        return returnObj;
-    }
-
-    public String[] getTabComplete() {
-        ArrayList<String> complete = new ArrayList<>();
-
-        for (SlayerBoss boss : bosses)
-            complete.add(boss.getBossName());
-
-        return complete.toArray(new String[complete.size()]);
-    }
-
-    public String[] getTabCompleteDrops(String s) {
-        ArrayList<String> complete = new ArrayList<>();
-
-        for (SlayerBoss boss : bosses) {
-            if (!boss.getBossName().equalsIgnoreCase(s)) continue;
-
-            complete.add("kills");
-            for (SlayerBoss.SlayerDrop drop : boss.getDrops())
-                complete.add(drop.getLangName());
-
-            break;
-        }
-
-        return complete.toArray(new String[complete.size()]);
-    }
-
-    /**
-     * slayer <boss> <stat> <count>
-     *
-     * @param args
-     */
-    public void setManual(String[] args) {
-        for (SlayerBoss boss : bosses) {
-            if (!boss.getBossName().equalsIgnoreCase(args[1])) continue;
-
-            if (args[2].equalsIgnoreCase("kills")) {
-                try {
-                    int count = Integer.valueOf(args[3]);
-                    boss.setKills(count);
-                    SkyblockAddons.getInstance().getUtils().sendMessage("Kills for " + args[1] + " set to " + args[3] + ".");
-                    SkyblockAddons.getInstance().getPersistentValues().saveValues();
-                    return;
-                } catch (NumberFormatException ex) {
-                    SkyblockAddons.getInstance().getUtils().sendErrorMessage("Invalid number " + args[3] + ".");
-                    return;
-                }
-            }
-
-            for (SlayerBoss.SlayerDrop drop : boss.getDrops()) {
-                if (!drop.getLangName().equalsIgnoreCase(args[2])) continue;
-
-                try {
-                    int count = Integer.valueOf(args[3]);
-                    drop.setCount(count);
-                    SkyblockAddons.getInstance().getUtils().sendMessage("Stat " + args[2] + " for " + args[1] + " set to " + args[3] + ".");
-                    SkyblockAddons.getInstance().getPersistentValues().saveValues();
-                    return;
-                } catch (NumberFormatException ex) {
-                    SkyblockAddons.getInstance().getUtils().sendErrorMessage("Invalid number " + args[3] + ".");
-                    return;
-                }
-            }
-
-            SkyblockAddons.getInstance().getUtils().sendErrorMessage("Stat " + args[2] + " not found.");
+        // They haven't killed a dragon recently OR the last killed dragon was over 60 seconds ago...
+        if (lastKilledBoss == null || lastSlayerCompleted == -1 || System.currentTimeMillis() - lastSlayerCompleted > 60 * 1000) {
             return;
         }
 
-        SkyblockAddons.getInstance().getUtils().sendErrorMessage("Boss " + args[1] + " not found.");
+
+        for (List<ItemDiff> inventoryDifference : recentInventoryDifferences.values()) {
+            for (ItemDiff itemDifference : inventoryDifference) {
+                if (itemDifference.getAmount() < 1) {
+                    continue;
+                }
+
+                for (SlayerDrop drop : lastKilledBoss.getDrops()) {
+                    if (drop.getSkyblockID().equals(ItemUtils.getSkyBlockItemID(itemDifference.getExtraAttributes()))) {
+
+                        // If this is a rune and it doesn't match, continue
+                        Rune rune = ItemUtils.getRuneData(itemDifference.getExtraAttributes());
+                        if (drop.getRuneID() != null && (rune == null || rune.getType() == null || !rune.getType().equals(drop.getRuneID()))) {
+                            continue;
+                        }
+
+                        slayerDropCounts.put(drop, slayerDropCounts.getOrDefault(drop, 0) + itemDifference.getAmount());
+                    }
+                }
+            }
+        }
+
+        recentInventoryDifferences.clear();
+    }
+
+    public void setStatManually(String[] args) {
+        SlayerBoss slayerBoss;
+        try {
+            slayerBoss = SlayerBoss.valueOf(args[1].toUpperCase(Locale.US));
+        } catch (IllegalArgumentException ex) {
+            slayerBoss = null;
+        }
+
+        if (slayerBoss != null) {
+            if (args[2].equalsIgnoreCase("kills")) {
+                try {
+                    int count = Integer.parseInt(args[3]);
+                    slayerKills.put(slayerBoss, count);
+                    SkyblockAddons.getInstance().getUtils().sendMessage("Kills for slayer " + args[1] + " was set to " + args[3] + ".");
+                    SkyblockAddons.getInstance().getPersistentValues().saveValues();
+                    return;
+                } catch (NumberFormatException ex) {
+                    SkyblockAddons.getInstance().getUtils().sendErrorMessage(args[3] + " is not a valid number!");
+                    return;
+                }
+            }
+
+            SlayerDrop slayerDrop;
+            try {
+                slayerDrop = SlayerDrop.valueOf(args[2].toUpperCase());
+            } catch (IllegalArgumentException ex) {
+                slayerDrop = null;
+            }
+
+            if (slayerDrop != null) {
+                try {
+                    int count = Integer.parseInt(args[3]);
+                    slayerDropCounts.put(slayerDrop, count);
+                    SkyblockAddons.getInstance().getUtils().sendMessage("Statistic " + args[2] + " for slayer " + args[1] + " was set to " + args[3] + ".");
+                    SkyblockAddons.getInstance().getPersistentValues().saveValues();
+                    return;
+                } catch (NumberFormatException ex) {
+                    SkyblockAddons.getInstance().getUtils().sendErrorMessage(args[3] + " is not a valid number!");
+                    return;
+                }
+            }
+
+            SkyblockAddons.getInstance().getUtils().sendErrorMessage(args[2] + " is not a valid statistic!");
+            return;
+        }
+
+        SkyblockAddons.getInstance().getUtils().sendErrorMessage(args[1] + " is not a valid boss!");
+    }
+
+    public static void setInstance(SlayerTracker instance) {
+        SlayerTracker.instance = instance;
     }
 }

@@ -4,10 +4,9 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.Language;
 import codes.biscuit.skyblockaddons.core.Message;
-import codes.biscuit.skyblockaddons.gui.buttons.*;
-import codes.biscuit.skyblockaddons.utils.*;
-import codes.biscuit.skyblockaddons.features.slayertracker.SlayerTracker;
 import codes.biscuit.skyblockaddons.features.discordrpc.DiscordStatus;
+import codes.biscuit.skyblockaddons.gui.buttons.*;
+import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
@@ -387,11 +386,19 @@ public class SettingsGui extends GuiScreen {
             y = this.getRowHeightSetting(this.row);
             Feature settingFeature = null;
             if (this.feature == Feature.SHOW_BASE_STAT_BOOST_PERCENTAGE) {
-                settingFeature = Feature.COLOR_BY_RARITY;
-            } else if (feature == Feature.SLAYER_TRACKERS) {
-                settingFeature = Feature.SLAYER_TRACKERS_COLOUR_BY_RARITY;
+                settingFeature = Feature.BASE_STAT_BOOST_COLOR_BY_RARITY;
+
+            } else if (feature == Feature.REVENANT_SLAYER_TRACKER) {
+                settingFeature = Feature.REVENANT_COLOR_BY_RARITY;
+
+            } else if (feature == Feature.TARANTULA_SLAYER_TRACKER) {
+                settingFeature = Feature.TARANTULA_COLOR_BY_RARITY;
+
+            } else if (feature == Feature.SVEN_SLAYER_TRACKER) {
+                settingFeature = Feature.SVEN_COLOR_BY_RARITY;
+
             } else if (feature == Feature.DRAGON_STATS_TRACKER) {
-                settingFeature = Feature.DRAGON_STATS_TRACKER_COLOUR_BY_RARITY;
+                settingFeature = Feature.DRAGON_STATS_TRACKER_COLOR_BY_RARITY;
             }
 
             buttonList.add(new ButtonToggleTitle(x, y, Message.SETTING_COLOR_BY_RARITY.getMessage(), this.main, settingFeature));
@@ -403,55 +410,50 @@ public class SettingsGui extends GuiScreen {
             Feature settingFeature = null;
             if (feature == Feature.SKILL_DISPLAY) {
                 settingFeature = Feature.ACTIONS_UNTIL_NEXT_LEVEL;
-            } else if (feature == Feature.SLAYER_TRACKERS) {
-                settingFeature = Feature.SLAYER_TRACKERS_EXPANDED;
             }
 
             buttonList.add(new ButtonToggleTitle(x, y, Message.SETTING_EXPANDED.getMessage(), main, settingFeature));
-        } else if (setting == EnumUtils.FeatureSetting.SLAYER_ZOMBIE) {
-            boxWidth = 31;
-            x = halfWidth - (boxWidth / 2);
-            y = getRowHeightSetting(row);
-
-            buttonList.add(new ButtonToggleTitle(x, y, SlayerTracker.getInstance().getBosses().get(0).getDisplayName(), main, SlayerTracker.getInstance().getBosses().get(0).getFeature()));
-        } else if (setting == EnumUtils.FeatureSetting.SLAYER_SPIDER) {
-            boxWidth = 31;
-            x = halfWidth - (boxWidth / 2);
-            y = getRowHeightSetting(row);
-
-            buttonList.add(new ButtonToggleTitle(x, y, SlayerTracker.getInstance().getBosses().get(1).getDisplayName(), main, SlayerTracker.getInstance().getBosses().get(1).getFeature()));
-        } else if (setting == EnumUtils.FeatureSetting.SLAYER_WOLF) {
-            boxWidth = 31;
-            x = halfWidth - (boxWidth / 2);
-            y = getRowHeightSetting(row);
-
-            buttonList.add(new ButtonToggleTitle(x, y, SlayerTracker.getInstance().getBosses().get(2).getDisplayName(), main, SlayerTracker.getInstance().getBosses().get(2).getFeature()));
-        } else if (setting == EnumUtils.FeatureSetting.SHOW_ICONS) {
+        } else if (setting == EnumUtils.FeatureSetting.TEXT_MODE) {
             boxWidth = 31;
             x = halfWidth - (boxWidth / 2);
             y = getRowHeightSetting(row);
 
             Feature settingFeature = null;
-            if (feature == Feature.SLAYER_TRACKERS) {
-                settingFeature = Feature.SLAYER_TRACKERS_SHOW_ICONS;
+            if (feature == Feature.REVENANT_SLAYER_TRACKER) {
+                settingFeature = Feature.REVENANT_TEXT_MODE;
+
+            } else if (feature == Feature.TARANTULA_SLAYER_TRACKER) {
+                settingFeature = Feature.TARANTULA_TEXT_MODE;
+
+            } else if (feature == Feature.SVEN_SLAYER_TRACKER) {
+                settingFeature = Feature.SVEN_TEXT_MODE;
+
+            } else if (feature == Feature.DRAGON_STATS_TRACKER_TEXT_MODE) {
+                settingFeature = Feature.DRAGON_STATS_TRACKER_TEXT_MODE;
             }
 
-            buttonList.add(new ButtonToggleTitle(x, y, Message.SETTING_SHOW_ICONS.getMessage(), main, settingFeature));
+            buttonList.add(new ButtonToggleTitle(x, y, Message.SETTING_TEXT_MODE.getMessage(), main, settingFeature));
         } else if (setting == EnumUtils.FeatureSetting.DRAGONS_NEST_ONLY) {
             boxWidth = 31;
             x = halfWidth - (boxWidth / 2);
             y = getRowHeightSetting(row);
 
             Feature settingFeature = null;
-            if (feature == Feature.ZEALOT_COUNTER || feature == Feature.SHOW_AVERAGE_ZEALOTS_PER_EYE
-                    || feature == Feature.SHOW_TOTAL_ZEALOT_COUNT || feature == Feature.SHOW_SUMMONING_EYE_COUNT) {
-                settingFeature = Feature.ZEALOTS_NEST_ONLY;
-            } else if (feature == Feature.DRAGON_STATS_TRACKER) {
+            if (feature == Feature.DRAGON_STATS_TRACKER) {
                 settingFeature = Feature.DRAGON_STATS_TRACKER_NEST_ONLY;
+            } else if (feature == Feature.ZEALOT_COUNTER) {
+                settingFeature = Feature.ZEALOT_COUNTER_NEST_ONLY;
+            } else if (feature == Feature.SHOW_AVERAGE_ZEALOTS_PER_EYE) {
+                settingFeature = Feature.SHOW_AVERAGE_ZEALOTS_PER_EYE_NEST_ONLY;
+            } else if (feature == Feature.SHOW_TOTAL_ZEALOT_COUNT) {
+                settingFeature = Feature.SHOW_TOTAL_ZEALOT_COUNT_NEST_ONLY;
+            } else if (feature == Feature.SHOW_SUMMONING_EYE_COUNT) {
+                settingFeature = Feature.SHOW_SUMMONING_EYE_COUNT_NEST_ONLY;
             }
 
-            buttonList.add(new ButtonToggleTitle(x, y, Message.SETTING_DRAGONS_NEST_ONLY.getMessage(), main, settingFeature));
-        } else {
+            buttonList.add(new ButtonToggleTitle(x, y, setting.getMessage().getMessage(), main, settingFeature));
+        }
+        else {
             boxWidth = 31; // Default size and stuff.
             x = halfWidth - (boxWidth / 2);
             y = getRowHeightSetting(row);

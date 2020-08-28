@@ -1,6 +1,12 @@
 package codes.biscuit.skyblockaddons.utils;
 
+import com.google.gson.JsonObject;
+import org.apache.commons.lang3.text.WordUtils;
+
+import java.nio.charset.StandardCharsets;
 import java.text.DecimalFormat;
+import java.util.Base64;
+import java.util.Locale;
 import java.util.regex.Pattern;
 
 /**
@@ -137,5 +143,33 @@ public class TextUtils {
             case 3:  return "rd";
             default: return "th";
         }
+    }
+
+    /**
+     * Converts an enum name to camel case. For example, it will turn ONE_TWO_THREE into oneTwoThree.
+     *
+     * @param enumConstant The enum constant
+     * @return The enum constant's name in camel case
+     */
+    public static String getEnumConstantNameInCamelCase(Enum<?> enumConstant) {
+        String memberName =  WordUtils.capitalizeFully(enumConstant.name().toLowerCase(Locale.US).replace("_", " ")).replace(" ", "");
+        return memberName.substring(0, 1).toLowerCase(Locale.US) + memberName.substring(1);
+    }
+
+    /**
+     * @param textureURL The texture ID/hash that is in the texture URL (not including http://textures.minecraft.net/texture/)
+     * @return A json string including the texture URL as a skin texture (used in NBT)
+     */
+    public static String encodeSkinTextureURL(String textureURL) {
+        JsonObject skin = new JsonObject();
+        skin.addProperty("url", "http://textures.minecraft.net/texture/" + textureURL);
+
+        JsonObject textures = new JsonObject();
+        textures.add("SKIN", skin);
+
+        JsonObject root = new JsonObject();
+        root.add("textures", textures);
+
+        return Base64.getEncoder().encodeToString(Utils.getGson().toJson(root).getBytes(StandardCharsets.UTF_8));
     }
 }

@@ -141,8 +141,10 @@ public enum Message {
     SETTING_SHOW_CRITICAL_TEAMMATES(MessageObject.SETTING, "showCriticalTeammates"),
     SETTING_SHOW_GLOWING_ITEMS_ON_ISLAND(MessageObject.SETTING, "showGlowingItemsOnIsland"),
     SETTING_EXPANDED(MessageObject.SETTING, "expanded"),
-    SETTING_SLAYER_TRACKER(MessageObject.SETTING, "slayerTracker"),
-    SETTING_SHOW_ICONS(MessageObject.SETTING, "showIcons"),
+    SETTING_REVENANT_SLAYER_TRACKER(MessageObject.SETTING, "revenantSlayerTracker"),
+    SETTING_TARANTULA_SLAYER_TRACKER(MessageObject.SETTING, "tarantulaSlayerTracker"),
+    SETTING_SVEN_SLAYER_TRACKER(MessageObject.SETTING, "svenSlayerTracker"),
+    SETTING_TEXT_MODE(MessageObject.SETTING, "textMode"),
     SETTING_DRAGONS_NEST_ONLY(MessageObject.SETTING, "dragonsNestOnly"),
     SETTING_DRAGON_STATS_TRACKER(MessageObject.SETTING, "dragonStatsTracker"),
 

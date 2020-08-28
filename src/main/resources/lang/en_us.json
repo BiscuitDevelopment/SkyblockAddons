@@ -143,73 +143,11 @@
     "showCriticalTeammates": "Show Critical Dungeon Teammates",
     "showGlowingItemsOnIsland": "Show Glowing Items On Island",
     "expanded": "Expanded Display",
-    "slayerTracker" :  "Slayer Trackers",
-    "slayerKills" :  "Killed",
-    "slayerBosses": {
-      "zombie": {
-        "name": "Revenant Horror",
-        "killedName": "Revenants Killed",
-        "drops": {
-          "RevenantFlesh": "Revenant Flesh",
-          "FoulFlesh": "Foul Flesh",
-          "PestilenceRunes": "Pestilence Runes",
-          "UndeadCatalysts": "Undead Catalysts",
-          "Smite6Books": "Smite VI Books",
-          "BeheadedHorrors": "Beheaded Horrors",
-          "RevenantCatalysts": "Revenant Catalysts",
-          "SnakeRunes": "Snake Runes",
-          "ScytheBlades": "Scythe Blades"
-        }
-      },
-      "spider": {
-        "name": "Tarantula Broodfather",
-        "killedName": "Tarantulas Killed",
-        "drops": {
-          "TarantulaWebs": "Tarantula Webs",
-          "ToxicArrowPoisons": "Toxic Arrow Poisons",
-          "BiteRunes": "Bite Runes",
-          "SpiderCatalysts": "Spider Catalysts",
-          "BaneOfArthropod6Books": "Bane of Arthropod VI Books",
-          "FlySwatters": "Fly Swatters",
-          "TarantulaTalismans": "Tarantula Talismans",
-          "DigestedMosquitoes": "Digested Mosquitoes"
-        }
-      },
-      "wolf": {
-        "name": "Sven Packmaster",
-        "killedName": "Svens Killed",
-        "drops": {
-          "WolfTeeth": "Wolf Teeth",
-          "HamsterWheels": "Hamster Wheels",
-          "SpiritRunes": "Spirit Runes",
-          "Crit6Books": "Critical VI Books",
-          "GrizzlyBaits": "Grizzly Baits",
-          "RedClawEggs": "Red Claw Eggs",
-          "Overfluxes": "Overfluxes",
-          "CoutureRunes": "Couture Runes"
-        }
-      }
-    },
-    "showIcons": "Show Icons",
-    "dragonsNestOnly": "Only Show in the Dragon's Nest",
-    "dragonStatsTracker": "Dragon Stats Tracker",
-    "none": "None",
-    "never": "Never",
-    "dragonProtector" : "Protector Dragon",
-    "dragonOld" : "Old Dragon",
-    "dragonWise" : "Wise Dragon",
-    "dragonUnstable" : "Unstable Dragon",
-    "dragonYoung" : "Young Dragon",
-    "dragonStrong" : "Strong Dragon",
-    "dragonSuperior" : "Superior Dragon",
-    "dragonStats" : {
-      "dragonsRecent": "Recent Dragons",
-      "dragonsSince": "Dragons Since",
-      "dragonsSinceSuperior": "Superior",
-      "dragonsSinceAOTD": "Aspect",
-      "dragonsSincePet": "Pet",
-      "eyesPlaced": "Eyes Placed"
-    }
+    "revenantSlayerTracker": "Slayer Tracker - Revenant/Zombie",
+    "tarantulaSlayerTracker": "Slayer Tracker - Tarantula/Spider",
+    "svenSlayerTracker": "Slayer Tracker - Sven/Wolf",
+    "textMode": "Text Mode",
+    "dragonsNestOnly": "Only Show in the Dragon's Nest"
   },
   "messages": {
     "dropConfirmation": "Drop this item again to confirm!",
@@ -327,5 +265,58 @@
   },
   "keyBindings": {
     "developerCopyNBT": "Copy NBT"
+  },
+  "dragonTracker": {
+    "protector": "Protector",
+    "old": "Old",
+    "wise": "Wise",
+    "unstable": "Unstable",
+    "young": "Young",
+    "strong": "Strong",
+    "superior": "Superior",
+
+    "recentDragons": "Recent Dragons:",
+
+    "dragonsSince": "Dragons Since:",
+    "aspectOfTheDragons": "AOTD",
+    "enderDragonPet": "Dragon Pet",
+
+    "eyesPlaced": "Eyes Placed",
+
+    "never": "Never"
+  },
+  "slayerTracker": {
+    "revenant": "Revenant Horror:",
+    "revenantFlesh": "Revenant Flesh",
+    "foulFlesh": "Foul Flesh",
+    "pestilenceRune": "Pestilence Rune",
+    "undeadCatalyst": "Undead Catalyst",
+    "smiteSix": "Smite 6",
+    "beheadedHorror": "Beheaded Horror",
+    "revenantCatalyst": "Revenant Catalyst",
+    "snakeRune": "Snake Rune",
+    "scytheBlade": "Scythe Blade",
+
+    "tarantula": "Tarantula Broodfather:",
+    "tarantulaWeb": "Tarantula Web",
+    "toxicArrowPoison": "Toxic Arrow Poison",
+    "spiderCatalyst": "Spider Catalyst",
+    "baneOfArthropodsSix": "Bane Of Arthropods 6",
+    "biteRune": "Bite Rune",
+    "flySwatter": "Fly Swatter",
+    "tarantulaTalisman": "Tarantula Talisman",
+    "digestedMosquito": "Digested Mosquito",
+
+    "sven": "Sven Packmaster:",
+    "wolfTooth": "Wolf Tooth",
+    "hamsterWheel": "Hamster Wheel",
+    "spiritRune": "Spirit Rune",
+    "criticalSix": "Critical 6",
+    "grizzlyBait": "Grizzly Bait",
+    "redClawEgg": "Red Claw Egg",
+    "overfluxCapacitor": "Overflux Capacitor",
+    "coutureRune": "Couture Rune",
+
+    "bossesKilled": "Bosses Killed"
   }
 }

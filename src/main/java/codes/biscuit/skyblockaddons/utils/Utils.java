@@ -6,7 +6,6 @@ import codes.biscuit.skyblockaddons.events.SkyblockJoinedEvent;
 import codes.biscuit.skyblockaddons.events.SkyblockLeftEvent;
 import codes.biscuit.skyblockaddons.features.backpacks.Backpack;
 import codes.biscuit.skyblockaddons.features.dungeonmap.MapMarker;
-import codes.biscuit.skyblockaddons.core.DungeonPlayer;
 import codes.biscuit.skyblockaddons.features.itemdrops.ItemDropChecker;
 import codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui;
 import codes.biscuit.skyblockaddons.misc.ChromaManager;
@@ -59,6 +58,7 @@ import java.awt.image.BufferedImage;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.*;
 import java.util.regex.Matcher;
@@ -67,6 +67,8 @@ import java.util.stream.Collectors;
 
 @Getter @Setter
 public class Utils {
+
+    private static final Gson GSON = new Gson();
 
     /** Added to the beginning of messages. */
     public static final String MESSAGE_PREFIX =
@@ -532,7 +534,7 @@ public class Utils {
                     }
                 }
                 connection.disconnect();
-                JsonObject responseJson = new Gson().fromJson(response.toString(), JsonObject.class);
+                JsonObject responseJson = GSON.fromJson(response.toString(), JsonObject.class);
                 long estimate = responseJson.get("estimate").getAsLong();
                 long currentTime = responseJson.get("queryTime").getAsLong();
                 int magmaSpawnTime = (int)((estimate-currentTime)/1000);
@@ -926,7 +928,7 @@ public class Utils {
                     }
                 }
                 connection.disconnect();
-                JsonObject onlineMessages = new Gson().fromJson(response.toString(), JsonObject.class);
+                JsonObject onlineMessages = GSON.fromJson(response.toString(), JsonObject.class);
                 mergeLanguageJsonObject(onlineMessages, main.getConfigValues().getLanguageConfig());
             } catch (JsonParseException | IllegalStateException | IOException ex) {
                 ex.printStackTrace();
@@ -1018,7 +1020,7 @@ public class Utils {
                 }
                 connection.disconnect();
 
-                main.setOnlineData(new Gson().fromJson(response.toString(), OnlineData.class));
+                main.setOnlineData(GSON.fromJson(response.toString(), OnlineData.class));
                 logger.info("Successfully grabbed online data.");
 
                 main.getUpdater().processUpdateCheckResult();
@@ -1440,4 +1442,7 @@ public class Utils {
         tessellator.draw();
     }
 
+    public static Gson getGson() {
+        return GSON;
+    }
 }

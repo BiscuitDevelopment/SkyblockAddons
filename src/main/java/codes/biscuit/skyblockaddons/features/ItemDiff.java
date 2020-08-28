@@ -31,16 +31,13 @@ public class ItemDiff {
      * @param amount      The changed amount.
      */
     public ItemDiff(String displayName, int amount) {
-        this.displayName = displayName;
-        this.amount = amount;
-        this.timestamp = System.currentTimeMillis();
-        extraAttributes = null;
+        this(displayName, amount, null);
     }
 
     /**
-     * @param displayName          The item's display name.
-     * @param amount               The changed amount.
-     * @param extraAttributes      The Skyblock NBT Data.
+     * @param displayName The item's display name.
+     * @param amount      The changed amount.
+     * @param extraAttributes The Skyblock NBT data of the first item detected
      */
     public ItemDiff(String displayName, int amount, NBTTagCompound extraAttributes) {
         this.displayName = displayName;

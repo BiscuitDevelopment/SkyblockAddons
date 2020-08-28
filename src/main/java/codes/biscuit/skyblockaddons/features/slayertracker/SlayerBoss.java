@@ -1,128 +1,42 @@
 package codes.biscuit.skyblockaddons.features.slayertracker;
 
-import codes.biscuit.skyblockaddons.core.Feature;
-import codes.biscuit.skyblockaddons.core.ItemRarity;
-import codes.biscuit.skyblockaddons.utils.Utils;
+import codes.biscuit.skyblockaddons.core.Translations;
+import com.google.common.collect.Lists;
 import lombok.Getter;
-import lombok.Setter;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.ResourceLocation;
 
-import java.util.*;
+import java.util.List;
+import java.util.Locale;
 
-public abstract class SlayerBoss {
-    /**
-     * The "feature" setting that determines if this boss' stats should be rendered
-     */
-    @Getter
-    private Feature feature;
-    /**
-     * The name used in storing/loading the boss stats, MUST BE THE NAME SHOWN WHEN "Talk to Maddox to claim your <boss> xp"
-     */
-    @Getter
-    private String bossName;
-    @Getter @Setter
-    private int kills = 0;
+public enum SlayerBoss {
 
-    public SlayerBoss(Feature feature, String bossName) {
-        this.feature = feature;
-        this.bossName = bossName;
+    REVENANT("Zombie", SlayerDrop.REVENANT_FLESH, SlayerDrop.FOUL_FLESH, SlayerDrop.PESTILENCE_RUNE, SlayerDrop.UNDEAD_CATALYST, SlayerDrop.SMITE_SIX,
+            SlayerDrop.BEHEADED_HORROR, SlayerDrop.REVENANT_CATALYST, SlayerDrop.SNAKE_RUNE, SlayerDrop.SCYTHE_BLADE),
+
+    TARANTULA("Spider", SlayerDrop.TARANTULA_WEB, SlayerDrop.TOXIC_ARROW_POISON, SlayerDrop.SPIDER_CATALYST, SlayerDrop.BANE_OF_ARTHROPODS_SIX,
+            SlayerDrop.BITE_RUNE, SlayerDrop.FLY_SWATTER, SlayerDrop.TARANTULA_TALISMAN, SlayerDrop.DIGESTED_MOSQUITO),
+
+    SVEN("Wolf", SlayerDrop.WOLF_TOOTH, SlayerDrop.HAMSTER_WHEEL, SlayerDrop.SPIRIT_RUNE, SlayerDrop.CRITICAL_SIX, SlayerDrop.GRIZZLY_BAIT,
+            SlayerDrop.RED_CLAW_EGG, SlayerDrop.OVERFLUX_CAPACITOR, SlayerDrop.COUTURE_RUNE);
+
+    @Getter private List<SlayerDrop> drops;
+    @Getter private String mobType;
+
+    SlayerBoss(String mobType, SlayerDrop... drops) {
+        this.mobType = mobType;
+        this.drops = Lists.newArrayList(drops);
     }
 
-    /**
-     * Get all of the tracked Drops for this boss
-     *
-     * @return An ArrayList of {@link SlayerDrop}s
-     */
-    public abstract ArrayList<SlayerDrop> getDrops();
+    public static SlayerBoss getFromMobType(String mobType) {
+        for (SlayerBoss slayerBoss : SlayerBoss.values()) {
+            if (slayerBoss.mobType.equals(mobType)) {
+                return slayerBoss;
+            }
+        }
 
-    /**
-     * Get the I18N name
-     *
-     * @return The Translated Name
-     */
+        return null;
+    }
+
     public String getDisplayName() {
-        String text = Utils.getTranslatedString("settings.slayerBosses." + bossName, "name");
-        /*try {
-            SkyblockAddons main = SkyblockAddons.getInstance();
-            List<String> path = new LinkedList<String>(Arrays.asList(("settings.slayerBosses." + bossName).split(Pattern.quote("."))));
-            JsonObject jsonObject = main.getConfigValues().getLanguageConfig();
-            for (String part : path) {
-                if (!part.equals("")) {
-                    jsonObject = jsonObject.getAsJsonObject(part);
-                }
-            }
-            text = jsonObject.get("name").getAsString();
-            if (text != null && (main.getConfigValues().getLanguage() == Language.HEBREW || main.getConfigValues().getLanguage() == Language.ARABIC) && !Minecraft.getMinecraft().fontRendererObj.getBidiFlag()) {
-                text = bidiReorder(text);
-            }
-        } catch (NullPointerException ex) {
-            text = bossName; // In case of fire...
-        }*/
-        return text;
-    }
-
-    /**
-     * Get the plural name "<boss>s killed"
-     *
-     * @return The plural name
-     */
-    public String getKilledName() {
-        String text = Utils.getTranslatedString("settings.slayerBosses." + bossName, "killedName");
-        /*try {
-            SkyblockAddons main = SkyblockAddons.getInstance();
-            List<String> path = new LinkedList<String>(Arrays.asList(("settings.slayerBosses." + bossName).split(Pattern.quote("."))));
-            JsonObject jsonObject = main.getConfigValues().getLanguageConfig();
-            for (String part : path) {
-                if (!part.equals("")) {
-                    jsonObject = jsonObject.getAsJsonObject(part);
-                }
-            }
-            text = jsonObject.get("killedName").getAsString();
-            if (text != null && (main.getConfigValues().getLanguage() == Language.HEBREW || main.getConfigValues().getLanguage() == Language.ARABIC) && !Minecraft.getMinecraft().fontRendererObj.getBidiFlag()) {
-                text = bidiReorder(text);
-            }
-        } catch (NullPointerException ex) {
-            text = bossName; // In case of fire...
-        }*/
-        return text + ": ";
-    }
-
-    public class SlayerDrop {
-
-        @Getter
-        private SlayerBoss boss;
-        @Getter
-        private String langName, skyblockID;
-        @Getter
-        private ItemRarity rarity;
-        @Getter
-        private ResourceLocation resourceLocation;
-        @Getter @Setter
-        private int count = 0;
-        @Getter
-        private ItemStack itemStack;
-
-        public SlayerDrop(SlayerBoss boss, String skyblockID, String langName, ItemRarity rarity, ItemStack itemStack) {
-            this.boss = boss;
-            this.skyblockID = skyblockID;
-            this.langName = langName;
-            this.rarity = rarity;
-            this.itemStack = itemStack;
-            NBTTagCompound extraAttributes = new NBTTagCompound();
-            extraAttributes.setString("id", skyblockID);
-            itemStack.setTagInfo("ExtraAttributes", extraAttributes);
-        }
-
-        /**
-         * Get the I18N name
-         *
-         * @return The Translated Name
-         */
-        public String getDisplayName() {
-            return Utils.getTranslatedString("settings.slayerBosses." + boss.getBossName() + ".drops", langName) + ": ";
-        }
-
+        return Translations.getMessage("slayerTracker." + this.name().toLowerCase(Locale.US));
     }
 }

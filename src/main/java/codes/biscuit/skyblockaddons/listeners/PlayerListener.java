@@ -5,21 +5,17 @@ import codes.biscuit.skyblockaddons.core.*;
 import codes.biscuit.skyblockaddons.features.BaitManager;
 import codes.biscuit.skyblockaddons.features.EnchantedItemBlacklist;
 import codes.biscuit.skyblockaddons.features.EndstoneProtectorManager;
-import codes.biscuit.skyblockaddons.features.ItemDiff;
 import codes.biscuit.skyblockaddons.features.backpacks.Backpack;
 import codes.biscuit.skyblockaddons.features.backpacks.BackpackManager;
+import codes.biscuit.skyblockaddons.features.dragontracker.DragonTracker;
 import codes.biscuit.skyblockaddons.features.cooldowns.CooldownManager;
 import codes.biscuit.skyblockaddons.features.powerorbs.PowerOrbManager;
+import codes.biscuit.skyblockaddons.features.slayertracker.SlayerTracker;
 import codes.biscuit.skyblockaddons.features.tabtimers.TabEffectManager;
 import codes.biscuit.skyblockaddons.gui.IslandWarpGui;
 import codes.biscuit.skyblockaddons.misc.scheduler.Scheduler;
 import codes.biscuit.skyblockaddons.misc.scheduler.SkyblockRunnable;
 import codes.biscuit.skyblockaddons.utils.*;
-import codes.biscuit.skyblockaddons.features.bosstracker.BossTrackerManager;
-import codes.biscuit.skyblockaddons.features.slayertracker.SlayerTracker;
-import codes.biscuit.skyblockaddons.utils.DevUtils;
-import codes.biscuit.skyblockaddons.utils.ItemUtils;
-import codes.biscuit.skyblockaddons.utils.ColorCode;
 import codes.biscuit.skyblockaddons.utils.objects.IntPair;
 import com.google.common.collect.Sets;
 import lombok.Getter;
@@ -81,7 +77,9 @@ public class PlayerListener {
     private final static Pattern PROFILE_CHAT_PATTERN = Pattern.compile("§aYou are playing on profile: §e([A-Za-z]+).*");
     private final static Pattern SWITCH_PROFILE_CHAT_PATTERN = Pattern.compile("§aYour profile was changed to: §e([A-Za-z]+).*");
     private final static Pattern MINION_CANT_REACH_PATTERN = Pattern.compile("§cI can't reach any (?<mobName>[A-Za-z]*)(?:s)");
-    private final static Pattern DRAGON_KILLED_PATTERN = Pattern.compile("§r( *)[A-Z]* DRAGON DOWN!§r");
+    private final static Pattern DRAGON_KILLED_PATTERN = Pattern.compile(" *[A-Z]* DRAGON DOWN!");
+    private final static Pattern DRAGON_SPAWNED_PATTERN = Pattern.compile("☬ The (?<dragonType>[A-Za-z ]+) Dragon has spawned!");
+    private final static Pattern SLAYER_COMPLETED_PATTERN = Pattern.compile(" {3}» Talk to Maddox to claim your (?<slayerType>[A-Za-z]+) Slayer XP!");
 
     private final static Set<String> SOUP_RANDOM_MESSAGES = new HashSet<>(Arrays.asList("I feel like I can fly!", "What was in that soup?",
             "Hmm… tasty!", "Hmm... tasty!", "You can now fly for 2 minutes.", "Your flight has been extended for 2 extra minutes.",
@@ -175,6 +173,9 @@ public class PlayerListener {
             e.message = new ChatComponentText(restMessage);
         } else {
             String formattedText = e.message.getFormattedText();
+            String strippedText = TextUtils.stripColor(formattedText);
+
+            Matcher matcher;
 
             if (main.getRenderListener().isPredictMana() && unformattedText.startsWith("Used ") && unformattedText.endsWith("Mana)")) {
                 int manaLost = Integer.parseInt(unformattedText.split(Pattern.quote("! ("))[1].split(Pattern.quote(" Mana)"))[0]);
@@ -216,24 +217,33 @@ public class PlayerListener {
             } else if (main.getConfigValues().isEnabled(Feature.DISABLE_TELEPORT_PAD_MESSAGES) && (formattedText.startsWith("§r§aWarped from ") || formattedText.equals("§r§cThis Teleport Pad does not have a destination set!§r"))) {
                 e.setCanceled(true);
 
-            } else if (formattedText.equalsIgnoreCase("§r  §r§6§lNICE! SLAYER BOSS SLAIN!§r")) {//§r§6§lRARE DROP! §r§9§lVERY RARE DROP! §r§c§ldCRAZY RARE DROP!
+            } else if (strippedText.equalsIgnoreCase("  NICE! SLAYER BOSS SLAIN!")) { // §r§6§lRARE DROP! §r§9§lVERY RARE DROP! §r§c§ldCRAZY RARE DROP!
                 Calendar calendar = Calendar.getInstance();
                 calendar.setTime(new Date());
                 calendar.add(Calendar.SECOND, -1);
                 SlayerTracker.getInstance().secondPriorTimestamp = calendar.getTime();
                 calendar.add(Calendar.SECOND, 11);
                 SlayerTracker.getInstance().stopAcceptingTimestamp = calendar.getTime();
-            } else if (formattedText.startsWith("§r   §r§5§l» §r§7Talk to Maddox to claim your ")) {
-                SlayerTracker.getInstance().addSlayerKill(unformattedText);
+
+            } else if ((matcher = SLAYER_COMPLETED_PATTERN.matcher(strippedText)).matches()) { // §r   §r§5§l» §r§7Talk to Maddox to claim your Wolf Slayer XP!§r
+                SlayerTracker.getInstance().completedSlayer(matcher.group("slayerType"));
+
             } else if (formattedText.startsWith("§r§5☬ §r§dYou placed a Summoning Eye!")) {
-                BossTrackerManager.getInstance().getDragon().eyePool++;
+                DragonTracker.getInstance().addEye();
+
             } else if (formattedText.equalsIgnoreCase("§r§5You recovered a Summoning Eye!§r")) {
-                BossTrackerManager.getInstance().getDragon().eyePool--;
-            } else if (formattedText.startsWith("§5☬ §r§d§lThe §r§5§c§l") && formattedText.endsWith(" Dragon§r§d§l has spawned!§r")) {
-                BossTrackerManager.getInstance().getDragon().dragonSpawned(unformattedText);
+                DragonTracker.getInstance().removeEye();
+
+            } else if ((matcher = DRAGON_SPAWNED_PATTERN.matcher(strippedText)).matches()) {
+                DragonTracker.getInstance().dragonSpawned(matcher.group("dragonType"));
+
+            } else if (DRAGON_KILLED_PATTERN.matcher(strippedText).matches()) {
+                DragonTracker.getInstance().dragonKilled();
+
             } else if (formattedText.startsWith("§7Sending to server ")) {
                 lastSkyblockServerJoinAttempt = System.currentTimeMillis();
-                BossTrackerManager.getInstance().getDragon().reset();
+                DragonTracker.getInstance().reset();
+
             } else if (unformattedText.equals("You laid an egg!")) { // Put the Chicken Head on cooldown for 20 seconds when the player lays an egg.
                 CooldownManager.put(InventoryUtils.CHICKEN_HEAD_DISPLAYNAME, 20000);
 
@@ -246,7 +256,6 @@ public class PlayerListener {
             }
 
             if (main.getConfigValues().isEnabled(Feature.NO_ARROWS_LEFT_ALERT)) {
-                Matcher matcher;
                 if (NO_ARROWS_LEFT_PATTERN.matcher(formattedText).matches()) {
                     main.getUtils().playLoudSound("random.orb", 0.5);
                     main.getRenderListener().setSubtitleFeature(Feature.NO_ARROWS_LEFT_ALERT);
@@ -262,7 +271,7 @@ public class PlayerListener {
                 }
             }
 
-            Matcher matcher = ABILITY_CHAT_PATTERN.matcher(formattedText);
+            matcher = ABILITY_CHAT_PATTERN.matcher(formattedText);
             if (matcher.matches()) {
                 CooldownManager.put(Minecraft.getMinecraft().thePlayer.getHeldItem());
             } else {
@@ -273,12 +282,6 @@ public class PlayerListener {
                     matcher = SWITCH_PROFILE_CHAT_PATTERN.matcher(formattedText);
                     if (matcher.matches()) {
                         main.getUtils().setProfileName(matcher.group(1));
-                    } else {
-                        matcher = DRAGON_KILLED_PATTERN.matcher(formattedText);
-                        if (matcher.matches())
-                        {
-                            BossTrackerManager.getInstance().getDragon().dragonKilled();
-                        }
                     }
                 }
             }
@@ -392,7 +395,7 @@ public class PlayerListener {
                     if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.TAB_EFFECT_TIMERS)) {
                         TabEffectManager.getInstance().updatePotionEffects();
                     }
-                    SlayerTracker.getInstance().cleanCache();
+
                 } else if (timerTick % 5 == 0) { // Check inventory, location, updates, and skeleton helmet every 1/4 second.
                     EntityPlayerSP p = mc.thePlayer;
                     if (p != null) {
@@ -406,20 +409,11 @@ public class PlayerListener {
                             main.getInventoryUtils().checkIfWearingSlayerArmor(p);
                         }
 
-                        if (mc.currentScreen == null && main.getPlayerListener().didntRecentlyJoinWorld()) {
-                            List<ItemDiff> invDifference = main.getInventoryUtils().getInventoryDifference(p.inventory.mainInventory);
-                            if (main.getConfigValues().isEnabled(Feature.ITEM_PICKUP_LOG))
-                                main.getInventoryUtils().updatePickupLog(invDifference);
-
-                            if (SlayerTracker.getInstance().stopAcceptingTimestamp != null && SlayerTracker.getInstance().stopAcceptingTimestamp.after(new Date()))
-                                SlayerTracker.getInstance().updateDrops(invDifference);
-                            else
-                                SlayerTracker.getInstance().cache.put(new Date(), invDifference);
-
-                            if (BossTrackerManager.getInstance().getDragon().stopAcceptingTimestamp != null
-                                    && BossTrackerManager.getInstance().getDragon().stopAcceptingTimestamp.after(new Date()))
-                                BossTrackerManager.getInstance().getDragon().checkForDrops(invDifference);
+                        if (mc.currentScreen == null && main.getConfigValues().isEnabled(Feature.ITEM_PICKUP_LOG)
+                                && main.getPlayerListener().didntRecentlyJoinWorld()) {
+                            main.getInventoryUtils().getInventoryDifference(p.inventory.mainInventory);
                         }
+
                         if (main.getConfigValues().isEnabled(Feature.BAIT_LIST) && BaitManager.getInstance().isHoldingRod()) {
                             BaitManager.getInstance().refreshBaits();
                         }
@@ -822,7 +816,7 @@ public class PlayerListener {
                     if (baseStatBoost != -1) {
 
                         ColorCode colorCode = main.getConfigValues().getRestrictedColor(Feature.SHOW_BASE_STAT_BOOST_PERCENTAGE);
-                        if (main.getConfigValues().isEnabled(Feature.COLOR_BY_RARITY)) {
+                        if (main.getConfigValues().isEnabled(Feature.BASE_STAT_BOOST_COLOR_BY_RARITY)) {
 
                             int rarityIndex = baseStatBoost/10;
                             if (rarityIndex < 0) rarityIndex = 0;
