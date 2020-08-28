@@ -146,7 +146,7 @@
     "showDungeonMilestone": "Mostrar marco de Dungeon",
     "dungeonsCollectedEssencesDisplay": "Mostrar a essência recolhida nas Dungeons",
     "stopBonzoStaffSounds": "Parar sons da Bonzo's Staff",
-    "showRarityUpgraded": "Show if Item's Rarity has been Upgraded"
+    "showRarityUpgraded": "Mostrar se a raridade do item foi melhorada"
   },
   "messages": {
     "dropConfirmation": "Atira este item outra vez para confirmar!",
@@ -267,9 +267,9 @@
     "sba.set.zealotCounter.totalZealots": "Define a contagem atual de zealots para %number%!",
     "sba.set.zealotCounter.wrongUsage": "Seleção inválida! Por favor, escolha %options%.",
     "sba.set.zealotCounter.zealots": "Define a contagem atual de zealots para %number%!",
-    "sba.toggleActionBarLogging": "Toggle logging action bar messages",
-    "sba.toggleActionBarLogging.disabled": "Action bar messages will no longer be logged.",
-    "sba.toggleActionBarLogging.enabled": "Action bar messages will now be logged.",
+    "sba.toggleActionBarLogging": "Comutar o registo das mensagens da barra d'ações",
+    "sba.toggleActionBarLogging.disabled": "As mensagens da barra d'ações não serão mais registadas.",
+    "sba.toggleActionBarLogging.enabled": "As mensagens da barra d'ações serão registadas.",
     "sba.wrongUsage.generic": "Uso errado!",
     "sba.wrongUsage.subCommandNotFound": "O comando %sub-command% não foi encontrado."
   },
