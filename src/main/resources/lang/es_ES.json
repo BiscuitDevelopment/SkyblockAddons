@@ -134,10 +134,10 @@
     "rotateMap": "Rotar el Mapa a la Rotación del Jugador",
     "centerRotationOnYourPlayer": "Centrar la Rotación Alrededor del Jugador",
     "mapZoom": "Zoom del Mapa",
-    "glowingDroppedItems": "Hacer brillar elementos soltados",
-    "glowingDungeonTeammates": "Hacer brillar compañeros de mazmorra",
-    "baseStatBoostPercentage": "Mostrar potenciador base para items de mazmorra",
-    "colorByRarity": "Color por rareza",
+    "glowingDroppedItems": "Hacer Que los Objetos Soltados Brillan",
+    "glowingDungeonTeammates": "Hacer Que Tus Compañeros de Dungeon Brillan",
+    "baseStatBoostPercentage": "Mostrar Potenciador Base para Objetos de Dungeon",
+    "colorByRarity": "Color por Rareza",
     "showPlayerHeadsOnMap": "Mostrar cabezas de jugadores en el mapa de mazamorra",
     "showHealingCircleWall": "Mostrar Pared de Círculo de Curación de Mazmorra (Inestable)",
     "showCriticalTeammates": "Mostrar compañeros de mazmorra en estado crítico",
@@ -145,8 +145,8 @@
     "showItemDungeonFloor": "Mostrar el piso donde se obtuvo un ítem de Mazmorra",
     "showDungeonMilestone": "Mostrar meta de clase de Mazmorra",
     "dungeonsCollectedEssencesDisplay": "Mostrador de Esencia Colectada en Dungeons",
-    "stopBonzoStaffSounds": "Stop Bonzo's Staff Sounds",
-    "showRarityUpgraded": "Show if Item's Rarity has been Upgraded"
+    "stopBonzoStaffSounds": "Desactivar Sonidos de Bonzo’s Staff",
+    "showRarityUpgraded": "Mostrar si la Rareza del Objeto ha sido Mejorada"
   },
   "messages": {
     "dropConfirmation": "¡Dropea el Objeto otra vez para soltar!",
