@@ -3,6 +3,7 @@ package codes.biscuit.skyblockaddons.features.dragontracker;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.features.ItemDiff;
 import codes.biscuit.skyblockaddons.utils.ItemUtils;
+import codes.biscuit.skyblockaddons.utils.skyblockdata.PetInfo;
 import lombok.Getter;
 
 import java.util.*;
@@ -32,7 +33,9 @@ public class DragonTracker {
 
             DragonType dragonType = DragonType.fromName(dragonTypeText);
             if (dragonType != null) {
-                recentDragons.remove(0);
+                if (recentDragons.size() == 3) {
+                    recentDragons.remove(0);
+                }
                 recentDragons.add(dragonType);
             }
             for (DragonsSince dragonsSince : DragonsSince.values()) {
@@ -56,8 +59,6 @@ public class DragonTracker {
 
         lastDragonKilled = System.currentTimeMillis();
         contributedToCurrentDragon = false;
-
-        SkyblockAddons.getInstance().getPersistentValues().saveValues();
     }
 
     public void checkInventoryDifferenceForDrops(List<ItemDiff> newInventoryDifference) {
@@ -83,7 +84,8 @@ public class DragonTracker {
                         SkyblockAddons.getInstance().getPersistentValues().saveValues();
                         break;
                     case "PET":
-                        if (ItemUtils.getPetInfo(itemDifference.getExtraAttributes()).getType().equals("ENDER_DRAGON")) {
+                        PetInfo petInfo = ItemUtils.getPetInfo(itemDifference.getExtraAttributes());
+                        if (petInfo != null && "ENDER_DRAGON".equals(petInfo.getType())) {
                             dragonsSince.put(DragonsSince.ENDER_DRAGON_PET, 0);
                             SkyblockAddons.getInstance().getPersistentValues().saveValues();
                         }

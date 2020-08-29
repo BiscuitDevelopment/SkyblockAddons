@@ -96,9 +96,11 @@ public class InventoryUtils {
                 ItemStack newItem = newInventory.get(i);
 
                 if(previousItem != null) {
-                    int amount = 0;
+                    int amount;
                     if (previousInventoryMap.containsKey(previousItem.getDisplayName())) {
                         amount = previousInventoryMap.get(previousItem.getDisplayName()).getKey() + previousItem.stackSize;
+                    } else {
+                        amount = previousItem.stackSize;
                     }
                     NBTTagCompound extraAttributes = ItemUtils.getExtraAttributes(previousItem);
                     if (extraAttributes != null) {
@@ -112,9 +114,11 @@ public class InventoryUtils {
                         String newName = newItem.getDisplayName().substring(0, newItem.getDisplayName().lastIndexOf(" "));
                         newItem.setStackDisplayName(newName); // This is a workaround for merchants, it adds x64 or whatever to the end of the name.
                     }
-                    int amount = 0;
+                    int amount;
                     if (newInventoryMap.containsKey(newItem.getDisplayName())) {
                         amount = newInventoryMap.get(newItem.getDisplayName()).getKey() + newItem.stackSize;
+                    }  else {
+                        amount = newItem.stackSize;
                     }
                     NBTTagCompound extraAttributes = ItemUtils.getExtraAttributes(newItem);
                     if (extraAttributes != null) {
@@ -150,21 +154,23 @@ public class InventoryUtils {
 
             // Add changes to already logged changes of the same item, so it will increase/decrease the amount
             // instead of displaying the same item twice
-            for (ItemDiff diff : inventoryDifference) {
-                Collection<ItemDiff> itemDiffs = itemPickupLog.get(diff.getDisplayName());
-                if (itemDiffs.size() <= 0) {
-                    itemPickupLog.put(diff.getDisplayName(), diff);
-
-                } else {
-                    boolean added = false;
-                    for (ItemDiff loopDiff : itemDiffs) {
-                        if ((diff.getAmount() < 0 && loopDiff.getAmount() < 0) || (diff.getAmount() > 0 && loopDiff.getAmount() > 0)) {
-                            loopDiff.add(diff.getAmount());
-                            added = true;
-                        }
-                    }
-                    if (!added) {
+            if (main.getConfigValues().isEnabled(Feature.ITEM_PICKUP_LOG)) {
+                for (ItemDiff diff : inventoryDifference) {
+                    Collection<ItemDiff> itemDiffs = itemPickupLog.get(diff.getDisplayName());
+                    if (itemDiffs.size() <= 0) {
                         itemPickupLog.put(diff.getDisplayName(), diff);
+
+                    } else {
+                        boolean added = false;
+                        for (ItemDiff loopDiff : itemDiffs) {
+                            if ((diff.getAmount() < 0 && loopDiff.getAmount() < 0) || (diff.getAmount() > 0 && loopDiff.getAmount() > 0)) {
+                                loopDiff.add(diff.getAmount());
+                                added = true;
+                            }
+                        }
+                        if (!added) {
+                            itemPickupLog.put(diff.getDisplayName(), diff);
+                        }
                     }
                 }
             }

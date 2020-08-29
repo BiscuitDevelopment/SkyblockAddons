@@ -151,7 +151,12 @@
     "tarantulaSlayerTracker": "Slayer Tracker - Tarantula/Spider",
     "svenSlayerTracker": "Slayer Tracker - Sven/Wolf",
     "textMode": "Text Mode",
-    "dragonsNestOnly": "Only Show in the Dragon's Nest"
+    "dragonsNestOnly": "Only Show in the Dragon's Nest",
+    "dragonStatsTracker": "Dragon Tracker",
+    "expanded": "Expanded",
+    "hideWhenNotInCrypts": "Hide When Not in the Crypts/Doing Revenant Quest",
+    "hideWhenNotInSpidersDen": "Hide When Not in the Spiders Den/Doing Tarantula Quest",
+    "hideWhenNotInCastle": "Hide When Not in the Castle/Doing Sven Quest"
   },
   "messages": {
     "dropConfirmation": "Drop this item again to confirm!",
@@ -213,7 +218,8 @@
     "cancelledPark": "A feature has stopped you from breaking this block here.",
     "bossApproaching": "You are close to spawning a boss!",
     "enableAll": "Enable All",
-    "disableAll": "Disable All"
+    "disableAll": "Disable All",
+    "actionsLeft": "%number% Left"
   },
   "discordStatus": {
     "titleNone": "None",
@@ -272,7 +278,7 @@
     "sba.set.zealotCounter.totalZealots": "Set total zealot count to %number%!",
     "sba.set.zealotCounter.wrongUsage": "Invalid selection! Please choose %options%.",
     "sba.set.zealotCounter.zealots": "Set current zealot count to %number%!",
-    "sba.toggleActionBarLogging": "Toggle logging action bar messages",
+    "sba.toggleActionBarLogging": "§e(Dev) §7Toggle logging action bar messages",
     "sba.toggleActionBarLogging.disabled": "Action bar messages will no longer be logged.",
     "sba.toggleActionBarLogging.enabled": "Action bar messages will now be logged.",
     "sba.wrongUsage.generic": "Wrong usage!",

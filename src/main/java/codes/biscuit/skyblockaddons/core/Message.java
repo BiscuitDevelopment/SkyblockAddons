@@ -151,6 +151,10 @@ public enum Message {
     SETTING_TEXT_MODE(MessageObject.SETTING, "textMode"),
     SETTING_DRAGONS_NEST_ONLY(MessageObject.SETTING, "dragonsNestOnly"),
     SETTING_DRAGON_STATS_TRACKER(MessageObject.SETTING, "dragonStatsTracker"),
+    SETTING_EXPANDED(MessageObject.SETTING, "expanded"),
+    SETTING_HIDE_WHEN_NOT_IN_CRYPTS(MessageObject.SETTING, "hideWhenNotInCrypts"),
+    SETTING_HIDE_WHEN_NOT_IN_SPIDERS_DEN(MessageObject.SETTING, "hideWhenNotInSpidersDen"),
+    SETTING_HIDE_WHEN_NOT_IN_CASTLE(MessageObject.SETTING, "hideWhenNotInCastle"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.BACKPACK_STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.BACKPACK_STYLE, "compact"),

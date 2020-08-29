@@ -12,8 +12,6 @@ public class SlayerTracker {
 
     @Getter private static SlayerTracker instance = new SlayerTracker();
 
-    public Date stopAcceptingTimestamp, secondPriorTimestamp;
-
     private Map<SlayerBoss, Integer> slayerKills = new EnumMap<>(SlayerBoss.class);
     private Map<SlayerDrop, Integer> slayerDropCounts = new EnumMap<>(SlayerDrop.class);
     @Getter private SlayerBoss lastKilledBoss;
@@ -47,8 +45,8 @@ public class SlayerTracker {
         recentInventoryDifferences.entrySet().removeIf(entry -> System.currentTimeMillis() - entry.getKey() > 1000);
         recentInventoryDifferences.put(System.currentTimeMillis(), newInventoryDifference);
 
-        // They haven't killed a dragon recently OR the last killed dragon was over 60 seconds ago...
-        if (lastKilledBoss == null || lastSlayerCompleted == -1 || System.currentTimeMillis() - lastSlayerCompleted > 60 * 1000) {
+        // They haven't killed a dragon recently OR the last killed dragon was over 30 seconds ago...
+        if (lastKilledBoss == null || lastSlayerCompleted == -1 || System.currentTimeMillis() - lastSlayerCompleted > 30 * 1000) {
             return;
         }
 
@@ -80,7 +78,7 @@ public class SlayerTracker {
     public void setStatManually(String[] args) {
         SlayerBoss slayerBoss;
         try {
-            slayerBoss = SlayerBoss.valueOf(args[1].toUpperCase(Locale.US));
+            slayerBoss = SlayerBoss.getFromMobType(args[1]);
         } catch (IllegalArgumentException ex) {
             slayerBoss = null;
         }

@@ -5,8 +5,7 @@ import org.apache.commons.lang3.text.WordUtils;
 
 import java.nio.charset.StandardCharsets;
 import java.text.DecimalFormat;
-import java.util.Base64;
-import java.util.Locale;
+import java.util.*;
 import java.util.regex.Pattern;
 
 /**
@@ -16,11 +15,18 @@ public class TextUtils {
 
     private static final Pattern STRIP_COLOR_PATTERN = Pattern.compile("(?i)§[0-9A-FK-OR]");
     private static final Pattern NUMBERS_SLASHES = Pattern.compile("[^0-9 /]");
-    private static Pattern SCOREBOARD_CHARACTERS = Pattern.compile("[^a-z A-Z:0-9/'.!§]");
+    private static final Pattern SCOREBOARD_CHARACTERS = Pattern.compile("[^a-z A-Z:0-9_/'.!§\\[\\]❤]");
     private static final Pattern FLOAT_CHARACTERS = Pattern.compile("[^.0-9\\-]");
     private static final Pattern INTEGER_CHARACTERS = Pattern.compile("[^0-9]");
 
     private static final DecimalFormat DECIMAL_FORMAT = new DecimalFormat("#,###.##");
+
+    private static final NavigableMap<Integer, String> suffixes = new TreeMap<>();
+    static {
+        suffixes.put(1_000, "k");
+        suffixes.put(1_000_000, "M");
+        suffixes.put(1_000_000_000, "G");
+    }
 
     /**
      * Formats a double number to look better with commas every 3 digits and
@@ -51,7 +57,6 @@ public class TextUtils {
      * @return Input text with only letters and numbers
      */
     public static String keepScoreboardCharacters(String text) {
-        SCOREBOARD_CHARACTERS = Pattern.compile("[^a-z A-Z:0-9_/'.!§\\[\\]❤]");
         return SCOREBOARD_CHARACTERS.matcher(text).replaceAll("");
     }
 
@@ -172,4 +177,22 @@ public class TextUtils {
 
         return Base64.getEncoder().encodeToString(Utils.getGson().toJson(root).getBytes(StandardCharsets.UTF_8));
     }
+
+    public static String abbreviate(int number) {
+        if (number < 0) {
+            return "-" + abbreviate(-number);
+        }
+        if (number < 1000) {
+            return Long.toString(number);
+        }
+
+        Map.Entry<Integer, String> entry = suffixes.floorEntry(number);
+        Integer divideBy = entry.getKey();
+        String suffix = entry.getValue();
+
+        int truncated = number / (divideBy / 10); //the number part of the output times 10
+        boolean hasDecimal = truncated < 100 && (truncated / 10d) != (truncated / 10);
+        return hasDecimal ? (truncated / 10d) + suffix : (truncated / 10) + suffix;
+    }
+
 }

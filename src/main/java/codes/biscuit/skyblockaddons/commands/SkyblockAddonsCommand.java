@@ -2,9 +2,9 @@ package codes.biscuit.skyblockaddons.commands;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Message;
+import codes.biscuit.skyblockaddons.features.slayertracker.SlayerBoss;
 import codes.biscuit.skyblockaddons.features.slayertracker.SlayerDrop;
 import codes.biscuit.skyblockaddons.features.slayertracker.SlayerTracker;
-import codes.biscuit.skyblockaddons.features.slayertracker.SlayerBoss;
 import codes.biscuit.skyblockaddons.misc.SkyblockKeyBinding;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
 import codes.biscuit.skyblockaddons.utils.DevUtils;
@@ -22,9 +22,8 @@ import org.lwjgl.input.Keyboard;
 
 import java.awt.*;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
+import java.util.*;
 
 /**
  * This is the main command of SkyblockAddons. It is used to open the menu, change settings, and for developer mode functions.
@@ -75,7 +74,8 @@ public class SkyblockAddonsCommand extends CommandBase {
                 "§b● " + CommandSyntax.EDIT + " §7- " + Message.COMMAND_USAGE_SBA_EDIT.getMessage() + "\n" +
                 "§b● " + CommandSyntax.SET + " §7- " + Message.COMMAND_USAGE_SBA_SET_ZEALOT_COUNTER.getMessage() + "\n" +
                 "§b● " + CommandSyntax.FOLDER + " §7- " + Message.COMMAND_USAGE_SBA_FOLDER.getMessage() + "\n" +
-                "§b● " + CommandSyntax.SLAYER + " §7- " + Message.COMMAND_USAGE_SBA_SLAYER.getMessage();
+                "§b● " + CommandSyntax.SLAYER + " §7- " + Message.COMMAND_USAGE_SBA_SLAYER.getMessage() + "\n" +
+                "§b● " + CommandSyntax.DEV + " §7- " + Message.COMMAND_USAGE_SBA_DEV.getMessage() + "\n";
 
         if (main.isDevMode()) {
             usage = usage + "\n" +
@@ -164,12 +164,7 @@ public class SkyblockAddonsCommand extends CommandBase {
             }
         }  else if (args.length == 3) {
             if (args[0].equalsIgnoreCase("slayer")) {
-                SlayerBoss slayerBoss;
-                try {
-                    slayerBoss = SlayerBoss.valueOf(args[1].toUpperCase(Locale.US));
-                } catch (IllegalArgumentException ex) {
-                    slayerBoss = null;
-                }
+                SlayerBoss slayerBoss = SlayerBoss.getFromMobType(args[1]);
 
                 if (slayerBoss != null) {
                     String[] drops = new String[slayerBoss.getDrops().size() + 1];
@@ -263,7 +258,7 @@ public class SkyblockAddonsCommand extends CommandBase {
                             SlayerBoss slayerBoss = SlayerBoss.values()[i];
                             bosses.append("'").append(slayerBoss.getMobType().toLowerCase(Locale.US)).append("'");
                             if (i + 1 < SlayerBoss.values().length) {
-                                bosses.append(",");
+                                bosses.append(", ");
                             }
                         }
                         main.getUtils().sendErrorMessage("You need to select a boss! Please choose " + bosses.toString());

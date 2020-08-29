@@ -247,21 +247,13 @@ public class PlayerListener {
             } else if (main.getConfigValues().isEnabled(Feature.DISABLE_TELEPORT_PAD_MESSAGES) && (formattedText.startsWith("§r§aWarped from ") || formattedText.equals("§r§cThis Teleport Pad does not have a destination set!§r"))) {
                 e.setCanceled(true);
 
-            } else if (strippedText.equalsIgnoreCase("  NICE! SLAYER BOSS SLAIN!")) { // §r§6§lRARE DROP! §r§9§lVERY RARE DROP! §r§c§ldCRAZY RARE DROP!
-                Calendar calendar = Calendar.getInstance();
-                calendar.setTime(new Date());
-                calendar.add(Calendar.SECOND, -1);
-                SlayerTracker.getInstance().secondPriorTimestamp = calendar.getTime();
-                calendar.add(Calendar.SECOND, 11);
-                SlayerTracker.getInstance().stopAcceptingTimestamp = calendar.getTime();
-
             } else if ((matcher = SLAYER_COMPLETED_PATTERN.matcher(strippedText)).matches()) { // §r   §r§5§l» §r§7Talk to Maddox to claim your Wolf Slayer XP!§r
                 SlayerTracker.getInstance().completedSlayer(matcher.group("slayerType"));
 
-            } else if (formattedText.startsWith("§r§5☬ §r§dYou placed a Summoning Eye!")) {
+            } else if (strippedText.startsWith("☬ You placed a Summoning Eye!")) { // §r§5☬ §r§dYou placed a Summoning Eye! §r§7(§r§e5§r§7/§r§a8§r§7)§r
                 DragonTracker.getInstance().addEye();
 
-            } else if (formattedText.equalsIgnoreCase("§r§5You recovered a Summoning Eye!§r")) {
+            } else if (strippedText.equals("You recovered a Summoning Eye!")) {
                 DragonTracker.getInstance().removeEye();
 
             } else if ((matcher = DRAGON_SPAWNED_PATTERN.matcher(strippedText)).matches()) {
@@ -440,8 +432,7 @@ public class PlayerListener {
                             main.getInventoryUtils().checkIfWearingSlayerArmor(p);
                         }
 
-                        if (mc.currentScreen == null && main.getConfigValues().isEnabled(Feature.ITEM_PICKUP_LOG)
-                                && main.getPlayerListener().didntRecentlyJoinWorld()) {
+                        if (mc.currentScreen == null && main.getPlayerListener().didntRecentlyJoinWorld()) {
                             main.getInventoryUtils().getInventoryDifference(p.inventory.mainInventory);
                         }
 

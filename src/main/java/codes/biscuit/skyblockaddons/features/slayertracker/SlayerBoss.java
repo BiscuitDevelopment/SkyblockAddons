@@ -28,7 +28,7 @@ public enum SlayerBoss {
 
     public static SlayerBoss getFromMobType(String mobType) {
         for (SlayerBoss slayerBoss : SlayerBoss.values()) {
-            if (slayerBoss.mobType.equals(mobType)) {
+            if (slayerBoss.mobType.equalsIgnoreCase(mobType)) {
                 return slayerBoss;
             }
         }

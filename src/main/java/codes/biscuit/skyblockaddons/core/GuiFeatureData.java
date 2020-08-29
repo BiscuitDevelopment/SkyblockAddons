@@ -1,18 +1,13 @@
 package codes.biscuit.skyblockaddons.core;
 
-import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
-import codes.biscuit.skyblockaddons.utils.objects.FloatPair;
-import codes.biscuit.skyblockaddons.utils.objects.IntPair;
+import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import lombok.Getter;
 
 @Getter
 public class GuiFeatureData {
 
     private ColorCode defaultColor = null;
-    private FloatPair defaultPos = null;
-    private IntPair defaultBarSize = null;
-    private EnumUtils.AnchorPoint defaultAnchor = null;
     private EnumUtils.DrawType drawType = null;
 
     /**
@@ -32,29 +27,22 @@ public class GuiFeatureData {
         this.colorsRestricted = colorsRestricted;
     }
 
-    public GuiFeatureData(EnumUtils.DrawType drawType, ColorCode defaultColor, EnumUtils.AnchorPoint defaultAnchor, int... positionThenSizes) {
-        this(drawType, defaultColor, defaultAnchor, false, positionThenSizes);
+    public GuiFeatureData(EnumUtils.DrawType drawType) {
+        this(drawType, false);
     }
 
-    public GuiFeatureData(EnumUtils.DrawType drawType, ColorCode defaultColor, EnumUtils.AnchorPoint defaultAnchor, boolean colorsRestricted, int... positionThenSizes) {
+    public GuiFeatureData(EnumUtils.DrawType drawType, ColorCode defaultColor) {
+        this(drawType, defaultColor, false);
+    }
+
+    private GuiFeatureData(EnumUtils.DrawType drawType, boolean colorsRestricted) {
+        this.drawType = drawType;
+        this.colorsRestricted = colorsRestricted;
+    }
+
+    public GuiFeatureData(EnumUtils.DrawType drawType, ColorCode defaultColor, boolean colorsRestricted) {
         this.drawType = drawType;
         this.defaultColor = defaultColor;
         this.colorsRestricted = colorsRestricted;
-        this.defaultPos = new FloatPair(positionThenSizes[0], positionThenSizes[1]);
-        if (positionThenSizes.length > 2) {
-            this.defaultBarSize = new IntPair(positionThenSizes[2], positionThenSizes[3]);
-        }
-        this.defaultAnchor = defaultAnchor;
-    }
-
-    public GuiFeatureData(EnumUtils.DrawType drawType, EnumUtils.AnchorPoint defaultAnchor, int... position) {
-        this(drawType, defaultAnchor, false, position);
-    }
-
-    private GuiFeatureData(EnumUtils.DrawType drawType, EnumUtils.AnchorPoint defaultAnchor, boolean colorsRestricted, int... position) {
-        this.drawType = drawType;
-        this.defaultAnchor = defaultAnchor;
-        this.colorsRestricted = colorsRestricted;
-        this.defaultPos = new FloatPair(position[0], position[1]);
     }
 }
