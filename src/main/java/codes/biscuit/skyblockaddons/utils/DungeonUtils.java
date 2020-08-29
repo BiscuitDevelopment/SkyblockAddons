@@ -13,6 +13,9 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * This class contains a set of utility methods for Skyblock Dungeons.
+ */
 public class DungeonUtils {
 
     private static final Pattern PATTERN_MILESTONE = Pattern.compile("^.+?(Healer|Tank|Mage|Archer|Berserk) Milestone .+?([❶-❿]).+?(§r§.+\\d+) .+?");

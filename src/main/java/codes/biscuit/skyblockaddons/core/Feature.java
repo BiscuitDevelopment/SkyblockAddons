@@ -121,7 +121,7 @@ public enum Feature {
     CHANGE_ZEALOT_COLOR(96, Message.SETTING_CHANGE_ZEALOT_COLOR, new GuiFeatureData(ColorCode.LIGHT_PURPLE), true),
     HIDE_SVEN_PUP_NAMETAGS(97, Message.SETTING_HIDE_SVEN_PUP_NAMETAGS, true),
     REPEAT_SLAYER_BOSS_WARNING(98, null, true),
-    DUNGEONS_MAP_DISPLAY(99, Message.SETTING_DUNGEONS_MAP_DISPLAY, new GuiFeatureData(EnumUtils.DrawType.DUNGEONS_MAP, ColorCode.BLACK), false, EnumUtils.FeatureSetting.ROTATE_MAP, EnumUtils.FeatureSetting.CENTER_ROTATION_ON_PLAYER, EnumUtils.FeatureSetting.SHOW_PLAYER_HEADS_ON_MAP, EnumUtils.FeatureSetting.MAP_ZOOM),
+    DUNGEONS_MAP_DISPLAY(99, Message.SETTING_DUNGEON_MAP_DISPLAY, new GuiFeatureData(EnumUtils.DrawType.DUNGEONS_MAP, ColorCode.BLACK), false, EnumUtils.FeatureSetting.ROTATE_MAP, EnumUtils.FeatureSetting.CENTER_ROTATION_ON_PLAYER, EnumUtils.FeatureSetting.SHOW_PLAYER_HEADS_ON_MAP, EnumUtils.FeatureSetting.MAP_ZOOM),
     ROTATE_MAP(100, Message.SETTING_ROTATE_MAP, false),
     CENTER_ROTATION_ON_PLAYER(101, Message.SETTING_CENTER_ROTATION_ON_PLAYER, false),
     MAP_ZOOM(-1, Message.SETTING_MAP_ZOOM, false),

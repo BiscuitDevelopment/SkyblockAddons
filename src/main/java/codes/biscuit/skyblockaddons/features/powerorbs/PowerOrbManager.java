@@ -71,10 +71,10 @@ public class PowerOrbManager {
     public void detectPowerOrb(Entity entity) {
         String customNameTag = entity.getCustomNameTag();
         PowerOrb powerOrb = PowerOrb.getByDisplayname(customNameTag);
-        if (powerOrb != null && Minecraft.getMinecraft().thePlayer != null &&
-                powerOrb.isInRadius(entity.getDistanceSqToEntity(Minecraft.getMinecraft().thePlayer))) { // TODO Make sure this works...
-            customNameTag = TextUtils.stripColor(customNameTag);
-            Matcher matcher = POWER_ORB_PATTERN.matcher(customNameTag);
+
+        if (powerOrb != null && powerOrb.isInRadius(entity.getDistanceSqToEntity(Minecraft.getMinecraft().thePlayer))) { // TODO Make sure this works...
+            Matcher matcher = POWER_ORB_PATTERN.matcher(TextUtils.stripColor(customNameTag));
+
             if (matcher.matches()) {
                 String secondsString = matcher.group("seconds");
                 try {
@@ -82,6 +82,7 @@ public class PowerOrbManager {
                     put(powerOrb, Integer.parseInt(secondsString));
                 } catch (NumberFormatException ex) {
                     // It's okay, just don't add the power orb I guess...
+                    return;
                 }
 
                 List<EntityArmorStand> surroundingArmorStands = Minecraft.getMinecraft().theWorld.getEntitiesWithinAABB(EntityArmorStand.class,

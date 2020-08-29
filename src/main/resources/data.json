@@ -29,7 +29,8 @@
     ],
     "allowDroppingTheseItems": [
       "RUNE",
-      "REMNANT_OF_THE_EYE"
+      "REMNANT_OF_THE_EYE",
+      "DUNGEON_LORE_PAPER"
     ]
   }
 }

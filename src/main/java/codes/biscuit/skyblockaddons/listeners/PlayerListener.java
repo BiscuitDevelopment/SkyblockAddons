@@ -3,6 +3,8 @@ package codes.biscuit.skyblockaddons.listeners;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.*;
 import codes.biscuit.skyblockaddons.core.npc.NPCUtils;
+import codes.biscuit.skyblockaddons.events.DungeonPlayerReviveEvent;
+import codes.biscuit.skyblockaddons.events.PlayerSPDeathEvent;
 import codes.biscuit.skyblockaddons.features.BaitManager;
 import codes.biscuit.skyblockaddons.features.EndstoneProtectorManager;
 import codes.biscuit.skyblockaddons.features.backpacks.Backpack;
@@ -32,6 +34,7 @@ import net.minecraft.entity.monster.EntityBlaze;
 import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.monster.EntityMagmaCube;
 import net.minecraft.entity.monster.EntitySlime;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.entity.projectile.EntityFishHook;
 import net.minecraft.init.Items;
@@ -48,6 +51,7 @@ import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.client.event.GuiOpenEvent;
 import net.minecraftforge.client.event.GuiScreenEvent;
 import net.minecraftforge.client.event.sound.PlaySoundEvent;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.EntityEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.EnderTeleportEvent;
@@ -81,6 +85,8 @@ public class PlayerListener {
     private static final Pattern DRAGON_KILLED_PATTERN = Pattern.compile(" *[A-Z]* DRAGON DOWN!");
     private static final Pattern DRAGON_SPAWNED_PATTERN = Pattern.compile("☬ The (?<dragonType>[A-Za-z ]+) Dragon has spawned!");
     private static final Pattern SLAYER_COMPLETED_PATTERN = Pattern.compile(" {3}» Talk to Maddox to claim your (?<slayerType>[A-Za-z]+) Slayer XP!");
+    private static final Pattern DEATH_MESSAGE_PATTERN = Pattern.compile("§r§c ☠ §r§7You (.+)§r§7\\.§r");
+    private static final Pattern REVIVE_MESSAGE_PATTERN = Pattern.compile("§r§a ❣ §r§\\w(\\w+)§r§a was revived(?: by §r§\\w(\\w+)§r§a)*!§r");
 
     // Between these two coordinates is the whole "arena" area where all the magmas and stuff are.
     private static final AxisAlignedBB MAGMA_BOSS_SPAWN_AREA = new AxisAlignedBB(-244, 0, -566, -379, 255, -635);
@@ -212,13 +218,14 @@ public class PlayerListener {
                 changeMana(-manaLost);
             }
 
-            /*  Resets all user input on dead as to not walk backwards or stafe into the portal
-                Might get trigger upon encountering a non named "You" though this chance is so
-                minimal it can be discarded as a bug. */
-            if (main.getConfigValues().isEnabled(Feature.PREVENT_MOVEMENT_ON_DEATH) && formattedText.startsWith("§r§c ☠ §r§7You ")) {
-                KeyBinding.unPressAllKeys();
+            matcher = DEATH_MESSAGE_PATTERN.matcher(formattedText);
 
-            } else if (main.getConfigValues().isEnabled(Feature.SUMMONING_EYE_ALERT) && formattedText.equals("§r§6§lRARE DROP! §r§5Summoning Eye§r")) {
+            // Fire a PlayerSPDeathEvent if the message says that the client player died.
+            if (matcher.matches()) {
+                MinecraftForge.EVENT_BUS.post(new PlayerSPDeathEvent(deathMessageMatcher.group(1)));
+            }
+
+            if (main.getConfigValues().isEnabled(Feature.SUMMONING_EYE_ALERT) && formattedText.equals("§r§6§lRARE DROP! §r§5Summoning Eye§r")) {
                 main.getUtils().playLoudSound("random.orb", 0.5); // credits to tomotomo, thanks lol
                 main.getRenderListener().setTitleFeature(Feature.SUMMONING_EYE_ALERT);
                 main.getScheduler().schedule(Scheduler.CommandType.RESET_TITLE_FEATURE, main.getConfigValues().getWarningSeconds());
@@ -294,6 +301,33 @@ public class PlayerListener {
             }
 
             if (main.getUtils().isInDungeon()) {
+                Matcher reviveMessageMatcher = REVIVE_MESSAGE_PATTERN.matcher(formattedText);
+
+                if (reviveMessageMatcher.matches()) {
+                    List<EntityPlayer> players = Minecraft.getMinecraft().theWorld.playerEntities;
+
+                    String revivedPlayerName = reviveMessageMatcher.group(1);
+                    String revivingPlayerName = reviveMessageMatcher.group(2);
+                    EntityPlayer revivedPlayer = null;
+                    EntityPlayer revivingPlayer = null;
+
+                    for (EntityPlayer player : players) {
+                        if (player.getName().equals(revivedPlayerName)) {
+                            revivedPlayer = player;
+                        }
+
+                        if (player.getName().equals(revivingPlayerName)) {
+                            revivingPlayer = player;
+                        }
+                    }
+
+                    if (revivingPlayer != null) {
+                        MinecraftForge.EVENT_BUS.post(new DungeonPlayerReviveEvent(revivedPlayer, revivingPlayer));
+                    } else {
+                        MinecraftForge.EVENT_BUS.post(new DungeonPlayerReviveEvent(revivedPlayer));
+                    }
+                }
+
                 if (main.getConfigValues().isEnabled(Feature.SHOW_DUNGEON_MILESTONE)) {
                     DungeonMilestone dungeonMilestone = main.getDungeonUtils().parseMilestone(formattedText);
                     if (dungeonMilestone != null) {
@@ -420,20 +454,21 @@ public class PlayerListener {
                     }
 
                 } else if (timerTick % 5 == 0) { // Check inventory, location, updates, and skeleton helmet every 1/4 second.
-                    EntityPlayerSP p = mc.thePlayer;
-                    if (p != null) {
+                    EntityPlayerSP player = mc.thePlayer;
+
+                    if (player != null) {
                         EndstoneProtectorManager.checkGolemStatus();
                         main.getUtils().parseSidebar();
-                        main.getInventoryUtils().checkIfInventoryIsFull(mc, p);
+                        main.getInventoryUtils().checkIfInventoryIsFull(mc, player);
 
                         if (main.getUtils().isOnSkyblock()) {
-                            main.getInventoryUtils().checkIfWearingSkeletonHelmet(p);
-                            main.getInventoryUtils().checkIfUsingToxicArrowPoison(p);
-                            main.getInventoryUtils().checkIfWearingSlayerArmor(p);
+                            main.getInventoryUtils().checkIfWearingSkeletonHelmet(player);
+                            main.getInventoryUtils().checkIfUsingToxicArrowPoison(player);
+                            main.getInventoryUtils().checkIfWearingSlayerArmor(player);
                         }
 
                         if (mc.currentScreen == null && main.getPlayerListener().didntRecentlyJoinWorld()) {
-                            main.getInventoryUtils().getInventoryDifference(p.inventory.mainInventory);
+                            main.getInventoryUtils().getInventoryDifference(player.inventory.mainInventory);
                         }
 
                         if (main.getConfigValues().isEnabled(Feature.BAIT_LIST) && BaitManager.getInstance().isHoldingRod()) {
@@ -944,13 +979,49 @@ public class PlayerListener {
     }
 
     @SubscribeEvent
-    public void PlaySoundEvent (PlaySoundEvent event) {
+    public void onPlaySound(PlaySoundEvent event) {
         if (!main.getUtils().isOnSkyblock()) {
             return;
         }
 
         if (main.getConfigValues().isEnabled(Feature.STOP_BONZO_STAFF_SOUNDS) && BONZO_STAFF_SOUNDS.contains(event.name)) {
             event.result = null;
+        }
+    }
+
+    /**
+     * This method is called when the client player dies in Skyblock.
+     *
+     * @param e the event that caused this method to be called
+     */
+    @SubscribeEvent
+    public void onPlayerSPDeath(PlayerSPDeathEvent e) {
+        /*  Resets all user input on dead as to not walk backwards or strafe into the portal
+        Might get trigger upon encountering a non named "You" though this chance is so
+        minimal it can be discarded as a bug. */
+        if (main.getConfigValues().isEnabled(Feature.PREVENT_MOVEMENT_ON_DEATH)) {
+            KeyBinding.unPressAllKeys();
+        }
+
+        /*
+        Don't show log for losing all items when the player dies in dungeons.
+         The items come back after the player is revived and the large log causes a distraction.
+         */
+        if (main.getConfigValues().isEnabled(Feature.ITEM_PICKUP_LOG) && main.getUtils().isInDungeon()) {
+            main.getInventoryUtils().resetPreviousInventory();
+        }
+    }
+
+    /**
+     * This method is called when a player in Dungeons gets revived.
+     *
+     * @param e the event that caused this method to be called
+     */
+    @SubscribeEvent
+    public void onDungeonPlayerRevive(DungeonPlayerReviveEvent e) {
+        // Reset the previous inventory so the screen doesn't get spammed with a large pickup log
+        if (main.getConfigValues().isEnabled(Feature.ITEM_PICKUP_LOG)) {
+            main.getInventoryUtils().resetPreviousInventory();
         }
     }
 
