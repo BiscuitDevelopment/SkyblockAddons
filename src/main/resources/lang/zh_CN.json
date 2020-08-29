@@ -130,7 +130,7 @@
     "changeZealotColor": "更改末影战士的颜色",
     "hideSvenPupNametags": "隐藏 Sven Pup 的名称标签",
     "turnAllFeaturesChroma": "为所有功能启用渐变色",
-    "dungeonsMapDisplay": "地下城地图显示",
+    "dungeonMapDisplay": "地下城地图显示",
     "rotateMap": "旋转地图至玩家方向",
     "centerRotationOnYourPlayer": "使旋转中心围绕玩家",
     "mapZoom": "地图缩放",
@@ -144,7 +144,7 @@
     "showGlowingItemsOnIsland": "显示在岛上的发光物品",
     "showItemDungeonFloor": "显示地下城物品获取层数",
     "showDungeonMilestone": "显示地下城里程碑",
-    "dungeonsCollectedEssencesDisplay": "Dungeons 收集到的内容显示",
+    "dungeonsCollectedEssencesDisplay": "显示在地下城收集到的 Essence",
     "stopBonzoStaffSounds": "静音 Bonzo's Staff",
     "showRarityUpgraded": "显示物品稀有度是否被升级"
   },
