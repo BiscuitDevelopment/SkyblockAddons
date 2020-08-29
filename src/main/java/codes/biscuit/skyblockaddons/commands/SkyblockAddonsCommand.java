@@ -7,6 +7,7 @@ import codes.biscuit.skyblockaddons.utils.ColorCode;
 import codes.biscuit.skyblockaddons.utils.DevUtils;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.Utils;
+import com.google.common.base.CaseFormat;
 import lombok.Getter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.command.*;
@@ -31,6 +32,8 @@ public class SkyblockAddonsCommand extends CommandBase {
 
     private static final String HEADER = "§7§m------------§7[§b§l SkyblockAddons §7]§7§m------------";
     private static final String FOOTER = "§7§m------------------------------------------";
+    private static final String[] SUBCOMMANDS = {"help", "set", "edit", "folder", "dev", "copySidebar", "brand", "copyEntity",
+            "toggleActionBarLogging"};
 
     private final SkyblockAddons main;
     private final Logger logger;
@@ -94,44 +97,19 @@ public class SkyblockAddonsCommand extends CommandBase {
      * Returns the detailed usage for the sub-command provided with the header and footer included.
      *
      * @param subCommand the sub-command to fetch the usage of
-     * @return the usage of the given sub-command or {@code null} if the given sub-command cannot be found
+     * @return the usage of the given sub-command
+     * @throws IllegalArgumentException if there is no sub-command with the given name or the sub-command doesn't have a
+     *                                  corresponding {@code SubCommandUsage}
+     * @throws NullPointerException if {@code subCommand} is {@code null}
      */
     public String getSubCommandUsage(String subCommand) {
-        StringBuilder usageBuilder = new StringBuilder(HEADER).append("\n");
-
-        switch (subCommand.toLowerCase()) {
-            case "help":
-                usageBuilder.append(SubCommandUsage.HELP);
-                break;
-            case "edit":
-                usageBuilder.append(SubCommandUsage.EDIT);
-                break;
-            case "set":
-                usageBuilder.append(SubCommandUsage.SET);
-                break;
-            case "folder":
-                usageBuilder.append(SubCommandUsage.FOLDER);
-                break;
-            case "dev":
-                usageBuilder.append(SubCommandUsage.DEV);
-                break;
-            case "copysidebar":
-                usageBuilder.append(SubCommandUsage.COPY_SIDEBAR);
-                break;
-            case "brand":
-                usageBuilder.append(SubCommandUsage.BRAND);
-                break;
-            case "copyentity":
-                usageBuilder.append(SubCommandUsage.COPY_ENTITY);
-                break;
-            case "toggleactionbarlogging":
-                usageBuilder.append(SubCommandUsage.TOGGLE_ACTION_BAR_LOGGING);
-                break;
-            default:
-                return null;
+        for (String validSubCommand : SUBCOMMANDS) {
+            if (subCommand.equalsIgnoreCase(validSubCommand)) {
+                subCommand = CaseFormat.LOWER_CAMEL.to(CaseFormat.UPPER_UNDERSCORE, validSubCommand);
+            }
         }
 
-        return usageBuilder.append("\n").append(FOOTER).toString();
+        return HEADER + "\n" + SubCommandUsage.valueOf(subCommand) + "\n" + FOOTER;
     }
 
     public List<String> addTabCompletionOptions(ICommandSender sender, String[] args, BlockPos pos) {
@@ -155,7 +133,7 @@ public class SkyblockAddonsCommand extends CommandBase {
     }
 
     /**
-     * Opens the main gui, or locations gui if they type /sba edit
+     * Callback when the command is invoked
      */
     @Override
     public void processCommand(ICommandSender sender, String[] args) throws CommandException {
@@ -163,11 +141,9 @@ public class SkyblockAddonsCommand extends CommandBase {
             if (args.length > 0) {
                 if (args[0].equalsIgnoreCase("help")) {
                     if (args.length == 2) {
-                        String subCommandUsage = getSubCommandUsage(args[1]);
-
-                        if (subCommandUsage != null) {
-                            main.getUtils().sendMessage(subCommandUsage, false);
-                        } else {
+                        try {
+                            main.getUtils().sendMessage(getSubCommandUsage(args[1]), false);
+                        } catch (IllegalArgumentException e) {
                             throw new CommandException(Message.COMMAND_USAGE_WRONG_USAGE_SUBCOMMAND_NOT_FOUND.getMessage(args[1]));
                         }
                     } else {
@@ -295,12 +271,10 @@ public class SkyblockAddonsCommand extends CommandBase {
      Developer mode commands are not included if developer mode is disabled.
      */
     private List<String> getSubCommandTabCompletionOptions(String[] args) {
-        String[] subCommands = {"help", "set", "edit", "folder", "dev", "copySidebar", "brand", "copyEntity", "toggleActionBarLogging"};
-
         if (main.isDevMode()) {
-            return getListOfStringsMatchingLastWord(args, subCommands);
+            return getListOfStringsMatchingLastWord(args, SUBCOMMANDS);
         } else {
-            return getListOfStringsMatchingLastWord(args, Arrays.copyOf(subCommands, 5));
+            return getListOfStringsMatchingLastWord(args, Arrays.copyOf(SUBCOMMANDS, 5));
         }
     }
 
