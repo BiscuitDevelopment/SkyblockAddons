@@ -130,7 +130,7 @@
     "changeZealotColor": "질럿 생상 변경",
     "hideSvenPupNametags": "Sven Pup 이름표 숨기기",
     "turnAllFeaturesChroma": "모든 기능을 무지개로 보이기",
-    "dungeonsMapDisplay": "던전 미니맵 표시하기",
+    "dungeonMapDisplay": "Dungeon Map Display",
     "rotateMap": "플레이어의 시야 회전에 맞춰 지도를 회전하기",
     "centerRotationOnYourPlayer": "회전 중점을 플레이어로 설정하기",
     "mapZoom": "지도 확대",
