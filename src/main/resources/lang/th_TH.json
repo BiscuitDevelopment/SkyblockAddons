@@ -130,7 +130,7 @@
     "changeZealotColor": "เปลี่ยนสี Zealot",
     "hideSvenPupNametags": "ปิดชื่อลูกสุนัข",
     "turnAllFeaturesChroma": "เปิดทุกอย่างเป็นสีรุ้ง",
-    "dungeonsMapDisplay": "แสดงแผนที่ของ Dungeons",
+    "dungeonMapDisplay": "Dungeon Map Display",
     "rotateMap": "ปรับแผนที่ตามทิศทางของผู้เล่น",
     "centerRotationOnYourPlayer": "จุดศูนย์กลางการหมุนรอบตัวผู้เล่น",
     "mapZoom": "ขยายแผนที่",
