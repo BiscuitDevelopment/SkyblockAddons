@@ -128,7 +128,7 @@ public enum Message {
     SETTING_CHANGE_ZEALOT_COLOR(MessageObject.SETTING, "changeZealotColor"),
     SETTING_HIDE_SVEN_PUP_NAMETAGS(MessageObject.SETTING, "hideSvenPupNametags"),
     SETTING_TURN_ALL_FEATURES_CHROMA(MessageObject.SETTING, "turnAllFeaturesChroma"),
-    SETTING_DUNGEONS_MAP_DISPLAY(MessageObject.SETTING, "dungeonsMapDisplay"),
+    SETTING_DUNGEON_MAP_DISPLAY(MessageObject.SETTING, "dungeonMapDisplay"),
     SETTING_ROTATE_MAP(MessageObject.SETTING, "rotateMap"),
     SETTING_CENTER_ROTATION_ON_PLAYER(MessageObject.SETTING, "centerRotationOnYourPlayer"),
     SETTING_MAP_ZOOM(MessageObject.SETTING, "mapZoom"),
