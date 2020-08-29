@@ -110,7 +110,7 @@ public class PowerOrbManager {
             return true;
         }
 
-        return powerOrbArmorStand.getCurrentArmor(4) != newPowerOrbArmorStand.getCurrentArmor(4);
+        return powerOrbArmorStand.getEquipmentInSlot(4) != newPowerOrbArmorStand.getEquipmentInSlot(4);
     }
 
     public EntityArmorStand createVirtualArmorStand(EntityArmorStand armorStandToClone) {
