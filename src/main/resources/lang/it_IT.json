@@ -130,7 +130,7 @@
     "changeZealotColor": "Cambia il colore degli zealots",
     "hideSvenPupNametags": "Nascondi i nomi dei cuccioli Sven",
     "turnAllFeaturesChroma": "Attiva tutte le funzionalità Chroma",
-    "dungeonsMapDisplay": "Visualizzazione Mappa Dungeons",
+    "dungeonMapDisplay": "Visualizzazione Mappa Dungeon",
     "rotateMap": "Ruota mappa con la rotazione del giocatore",
     "centerRotationOnYourPlayer": "Centra la rotazione intorno al tuo giocatore",
     "mapZoom": "Zoom della Mappa",
@@ -145,7 +145,7 @@
     "showItemDungeonFloor": "Mostra il livello in cui è stato ottenuto un oggetto Dungeons",
     "showDungeonMilestone": "Mostra traguardo del dungeon",
     "dungeonsCollectedEssencesDisplay": "Mostra Dungeon Essences Collezionate",
-    "stopBonzoStaffSounds": "Stop Bonzo's Staff Sounds",
+    "stopBonzoStaffSounds": "Blocca i suoni della Bonzo’s Staff",
     "showRarityUpgraded": "Mostra se la Rarità degli Oggetti è stata Potenziata"
   },
   "messages": {
