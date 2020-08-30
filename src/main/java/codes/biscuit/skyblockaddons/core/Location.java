@@ -73,6 +73,9 @@ public enum Location {
 
     DUNGEON("Dungeon"), // TODO RPC
 
+    // Dungeon location before the game starts
+    DUNGEON_CATACOMBS("The Catacombs"),
+
     /*
     Out of Bounds
     This is a valid location in Skyblock, it isn't a placeholder or a made up location.

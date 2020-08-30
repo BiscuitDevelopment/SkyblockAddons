@@ -1,9 +1,11 @@
 package codes.biscuit.skyblockaddons.utils;
 
+import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.DungeonClass;
 import codes.biscuit.skyblockaddons.core.DungeonMilestone;
 import codes.biscuit.skyblockaddons.core.DungeonPlayer;
 import codes.biscuit.skyblockaddons.core.EssenceType;
+import codes.biscuit.skyblockaddons.core.Location;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,6 +20,13 @@ import java.util.regex.Pattern;
  */
 public class DungeonUtils {
 
+    /** Represents unknown dungeon floor */
+    public static final int FLOOR_NONE = -1;
+
+    /** Represents the entrance of the dungeon */
+    public static final int FLOOR_ENTRANCE = 0;
+
+    private static final Pattern PATTERN_LOCATION = Pattern.compile("The Catacombs (E|F[0-9]+)");
     private static final Pattern PATTERN_MILESTONE = Pattern.compile("^.+?(Healer|Tank|Mage|Archer|Berserk) Milestone .+?([❶-❿]).+?(§r§.+\\d+) .+?");
     private static final Pattern PATTERN_COLLECTED_ESSENCES = Pattern.compile("§.+?(\\d+) (Wither|Spider|Undead|Dragon|Gold|Diamond|Ice) Essence");
     private static final Pattern PATTERN_BONUS_ESSENCE = Pattern.compile("^§.+?[^You] .+?found a .+?(Wither|Spider|Undead|Dragon|Gold|Diamond|Ice) Essence.+?");
@@ -34,17 +43,66 @@ public class DungeonUtils {
     /** The current teammates of the dungeon game */
     @Getter private final Map<String, DungeonPlayer> players = new HashMap<>();
 
+    /** The current floor of the dungeon game */
+    @Getter private int floor = FLOOR_NONE;
+
+    private boolean initialized = false;
     private EssenceType lastEssenceType;
     private int lastEssenceAmount;
     private int lastEssenceRepeat;
 
     /**
+     * Initialize the data depending on the dungeon floor
+     */
+    public void init() {
+        if (initialized)
+            return;
+        initialized = true;
+
+        SkyblockAddons.getInstance().getUtils().setLocation(Location.DUNGEON_CATACOMBS);
+    }
+
+    /**
      * Clear the dungeon game data. Called by {@link codes.biscuit.skyblockaddons.utils.Utils} each new game
      */
     public void reset() {
+        if (!initialized)
+            return;
+        initialized = false;
+
+        floor = FLOOR_NONE;
         dungeonMilestone = null;
         collectedEssences.clear();
         players.clear();
+    }
+
+    /**
+     * Check if the dungeon game server change to call the reset method
+     *
+     * @param serverID The dungeon game server
+     * @return If reset method should be called or not
+     */
+    public boolean requireReset(String serverID) {
+        return initialized && lastServerId != null && !lastServerId.equals(serverID);
+    }
+
+    /**
+     * Parses the skyblock location to identify the dungeon with its floor
+     *
+     * @param location The skyblock location
+     * @return True if the location is in dungeons
+     */
+    public boolean parseLocation(String location) {
+        Matcher matcher = PATTERN_LOCATION.matcher(location);
+        if (!matcher.matches())
+            return false;
+
+        String rawFloor = matcher.group(1);
+        if (rawFloor.equals("E"))
+            floor = FLOOR_ENTRANCE;
+        else
+            floor = Integer.parseInt(rawFloor.substring(1));
+        return true;
     }
 
     /**

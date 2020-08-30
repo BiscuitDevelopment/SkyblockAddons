@@ -314,19 +314,25 @@ public class Utils {
                         parseSlayerProgress(strippedUnformatted);
                     }
 
-                    for (Location loopLocation : Location.values()) {
-                        if (strippedUnformatted.endsWith(loopLocation.getScoreboardName())) {
-                            if (loopLocation == Location.BLAZING_FORTRESS && location != Location.BLAZING_FORTRESS) {
-                                sendInventiveTalentPingRequest(EnumUtils.MagmaEvent.PING); // going into blazing fortress
-                                fetchMagmaBossEstimate();
-                            }
+                    if (main.getDungeonUtils().parseLocation(strippedUnformatted)) {
+                        main.getDungeonUtils().init();
 
-                            if (location != loopLocation) {
-                                location = loopLocation;
-                            }
+                        foundLocation = true;
+                    } else {
+                        for (Location loopLocation : Location.values()) {
+                            if (strippedUnformatted.endsWith(loopLocation.getScoreboardName())) {
+                                if (loopLocation == Location.BLAZING_FORTRESS && location != Location.BLAZING_FORTRESS) {
+                                    sendInventiveTalentPingRequest(EnumUtils.MagmaEvent.PING); // going into blazing fortress
+                                    fetchMagmaBossEstimate();
+                                }
 
-                            foundLocation = true;
-                            break;
+                                if (location != loopLocation) {
+                                    location = loopLocation;
+                                }
+
+                                foundLocation = true;
+                                break;
+                            }
                         }
                     }
 
@@ -356,8 +362,7 @@ public class Utils {
                         foundInDungeon = true;
                         inDungeon = true;
 
-                        String lastServer = main.getDungeonUtils().getLastServerId();
-                        if (lastServer != null && !lastServer.equals(serverID)) {
+                        if (main.getDungeonUtils().requireReset(serverID)) {
                             main.getDungeonUtils().reset();
                         }
                         main.getDungeonUtils().setLastServerId(serverID);
