@@ -222,7 +222,7 @@ public class PlayerListener {
 
             // Fire a PlayerSPDeathEvent if the message says that the client player died.
             if (matcher.matches()) {
-                MinecraftForge.EVENT_BUS.post(new PlayerSPDeathEvent(deathMessageMatcher.group(1)));
+                MinecraftForge.EVENT_BUS.post(new PlayerSPDeathEvent(matcher.group(1)));
             }
 
             if (main.getConfigValues().isEnabled(Feature.SUMMONING_EYE_ALERT) && formattedText.equals("§r§6§lRARE DROP! §r§5Summoning Eye§r")) {
