@@ -20,19 +20,7 @@ public class PlayerControllerMPTransformer implements ITransformer {
     @Override
     public void transform(ClassNode classNode, String name) {
         for (MethodNode methodNode : classNode.methods) {
-            if (TransformerMethod.clickBlock.matches(methodNode)) {
-
-                // Objective:
-                // Find: Method head.
-                // Insert:   ReturnValue returnValue = new ReturnValue();
-                //           PlayerControllerMPHook.onPlayerDamageBlock(loc, returnValue);
-                //           if (returnValue.isCancelled()) {
-                //               return false;
-                //           }
-
-                methodNode.instructions.insertBefore(methodNode.instructions.getFirst(), insertOnClickBlock());
-
-            } else if (TransformerMethod.onPlayerDestroyBlock.matches(methodNode)) {
+           if (TransformerMethod.onPlayerDestroyBlock.matches(methodNode)) {
 
                 // Objective:
                 // Find: Method head.
@@ -56,32 +44,6 @@ public class PlayerControllerMPTransformer implements ITransformer {
             methodNode.instructions.insertBefore(methodNode.instructions.getFirst(), insertOnWindowClick());
         }
         }
-    }
-
-    private InsnList insertOnClickBlock() {
-        InsnList list = new InsnList();
-
-        list.add(new TypeInsnNode(Opcodes.NEW, "codes/biscuit/skyblockaddons/asm/utils/ReturnValue"));
-        list.add(new InsnNode(Opcodes.DUP)); // ReturnValue returnValue = new ReturnValue();
-        list.add(new MethodInsnNode(Opcodes.INVOKESPECIAL, "codes/biscuit/skyblockaddons/asm/utils/ReturnValue", "<init>", "()V", false));
-        list.add(new VarInsnNode(Opcodes.ASTORE, 5));
-
-        list.add(new VarInsnNode(Opcodes.ALOAD, 1)); // loc
-        list.add(new VarInsnNode(Opcodes.ALOAD, 5)); // PlayerControllerMPHook.onPlayerDamageBlock(loc, returnValue);
-        list.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "codes/biscuit/skyblockaddons/asm/hooks/PlayerControllerMPHook", "onPlayerDamageBlock",
-                "("+ TransformerClass.BlockPos.getName()+"Lcodes/biscuit/skyblockaddons/asm/utils/ReturnValue;)V", false));
-
-        list.add(new VarInsnNode(Opcodes.ALOAD, 5));
-        list.add(new MethodInsnNode(Opcodes.INVOKEVIRTUAL, "codes/biscuit/skyblockaddons/asm/utils/ReturnValue", "isCancelled",
-                "()Z", false));
-        LabelNode notCancelled = new LabelNode(); // if (returnValue.isCancelled())
-        list.add(new JumpInsnNode(Opcodes.IFEQ, notCancelled));
-
-        list.add(new InsnNode(Opcodes.ICONST_0)); // return false;
-        list.add(new InsnNode(Opcodes.IRETURN));
-        list.add(notCancelled);
-
-        return list;
     }
 
     private InsnList insertOnDestroyBlock() {

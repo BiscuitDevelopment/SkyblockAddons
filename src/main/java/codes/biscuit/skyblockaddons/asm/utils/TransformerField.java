@@ -1,6 +1,6 @@
 package codes.biscuit.skyblockaddons.asm.utils;
 
-import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsTransformer;
+import codes.biscuit.skyblockaddons.tweaker.PreTransformationChecks;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.tree.FieldInsnNode;
 
@@ -44,7 +44,7 @@ public enum TransformerField {
     // InventoryPlayer
     currentItem("currentItem", "field_70461_c", "c", "I"),
 
-    NULL(null,null,null,null);
+    ;
 
     private String name;
     private String type;
@@ -52,10 +52,10 @@ public enum TransformerField {
     TransformerField(String deobfName, String seargeName, String notchName18, String type) {
         this.type = type;
 
-        if (SkyblockAddonsTransformer.isDeobfuscated()) {
+        if (PreTransformationChecks.isDeobfuscated()) {
             name = deobfName;
         } else {
-            if (SkyblockAddonsTransformer.isUsingNotchMappings()) {
+            if (PreTransformationChecks.isUsingNotchMappings()) {
                 name = notchName18;
             } else {
                 name = seargeName;

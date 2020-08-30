@@ -2,11 +2,10 @@ package codes.biscuit.skyblockaddons.gui.buttons;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
-import codes.biscuit.skyblockaddons.utils.nifty.reflection.MinecraftReflection;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 
-import java.awt.Color;
+import java.awt.*;
 
 import static codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui.BUTTON_MAX_WIDTH;
 
@@ -38,7 +37,7 @@ public class ButtonOpenColorMenu extends ButtonText {
         // Regular features are red if disabled, green if enabled or part of the gui feature is enabled.
         GlStateManager.enableBlend();
         float scale = 1;
-        int stringWidth = MinecraftReflection.FontRenderer.getStringWidth(displayString);
+        int stringWidth = mc.fontRendererObj.getStringWidth(displayString);
         float widthLimit = BUTTON_MAX_WIDTH -10;
         if (stringWidth > widthLimit) {
             scale = 1/(stringWidth/widthLimit);

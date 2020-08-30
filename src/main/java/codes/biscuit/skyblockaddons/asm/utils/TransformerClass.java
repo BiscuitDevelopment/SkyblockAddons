@@ -1,6 +1,6 @@
 package codes.biscuit.skyblockaddons.asm.utils;
 
-import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsTransformer;
+import codes.biscuit.skyblockaddons.tweaker.PreTransformationChecks;
 
 public enum TransformerClass {
 
@@ -52,19 +52,30 @@ public enum TransformerClass {
     ItemCameraTransforms$TransformType("net/minecraft/client/renderer/block/model/ItemCameraTransforms$TransformType", "bgr$b"),
     IBakedModel("net/minecraft/client/resources/model/IBakedModel", "boq"),
     InventoryPlayer("net/minecraft/entity/player/InventoryPlayer", "wm"),
+    Potion("net/minecraft/potion/Potion", "pe"),
+    RenderEnderman("net/minecraft/client/renderer/entity/RenderEnderman", "bis"),
+    EntityEnderman("net/minecraft/entity/monster/EntityEnderman", "vo"),
+    ModelBase("net/minecraft/client/model/ModelBase", "bbo"),
+    ModelBiped("net/minecraft/client/model/ModelBiped", "bbj"),
+    ModelEnderman("net/minecraft/client/model/ModelEnderman", "bbd"),
+    RenderGlobal("net/minecraft/client/renderer/RenderGlobal", "bfr"),
+    EffectRenderer("net/minecraft/client/particle/EffectRenderer", "bec"),
+    EntityFX("net/minecraft/client/particle/EntityFX", "beb"),
 
-    NULL(null,null);
+    ;
 
     private String name;
 
     private String seargeClass;
+
+    @SuppressWarnings({"FieldCanBeLocal", "unused"})
     private String notchClass18;
 
     TransformerClass(String seargeClass, String notchClass18) {
         this.seargeClass = seargeClass;
         this.notchClass18 = notchClass18;
 
-        if (SkyblockAddonsTransformer.isDeobfuscated() || !SkyblockAddonsTransformer.isUsingNotchMappings()) {
+        if (PreTransformationChecks.isDeobfuscated() || !PreTransformationChecks.isUsingNotchMappings()) {
             name = seargeClass;
         } else {
             name = notchClass18;
@@ -86,8 +97,6 @@ public enum TransformerClass {
     }
 
     public String getTransformerName() {
-        if (SkyblockAddonsTransformer.isLabymodClient()) return notchClass18;
-
         return seargeClass.replaceAll("/", ".");
     }
 }

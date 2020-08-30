@@ -1,6 +1,6 @@
 package codes.biscuit.skyblockaddons.asm.utils;
 
-import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsTransformer;
+import codes.biscuit.skyblockaddons.tweaker.PreTransformationChecks;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.tree.MethodInsnNode;
 import org.objectweb.asm.tree.MethodNode;
@@ -41,8 +41,10 @@ public enum TransformerMethod {
 //            "("+TransformerClass.EntityLivingBase.getName()+TransformerClass.ItemStack.getName()+TransformerClass.ItemCameraTransforms$TransformType.getName()+")V"),
     renderItem("renderItem", "func_180454_a", "a", "(Lnet/minecraft/item/ItemStack;Lnet/minecraft/client/resources/model/IBakedModel;)V",
         "("+TransformerClass.ItemStack.getName()+TransformerClass.IBakedModel.getName()+")V"),
-    renderModel("renderModel", "func_175036_a", "a", "(Lnet/minecraft/client/resources/model/IBakedModel;Lnet/minecraft/item/ItemStack;)V",
+    renderModel_IBakedModel_ItemStack("renderModel", "func_175036_a", "a", "(Lnet/minecraft/client/resources/model/IBakedModel;Lnet/minecraft/item/ItemStack;)V",
             "("+TransformerClass.IBakedModel.getName()+TransformerClass.ItemStack.getName()+")V"),
+    renderModel_IBakedModel_I_ItemStack("renderModel", "func_175045_a", "a", "(Lnet/minecraft/client/resources/model/IBakedModel;ILnet/minecraft/item/ItemStack;)V",
+            "("+TransformerClass.IBakedModel.getName()+"I"+TransformerClass.ItemStack.getName()+")V"),
 
     // GlStateManager
     color("color", "func_179131_c", "c", "(FFFF)V"),
@@ -63,13 +65,16 @@ public enum TransformerMethod {
     // ModelChest
     renderAll("renderAll", "func_78231_a", "a", "()V"),
 
+    // EntityPlayer
+    isPotionActive("isPotionActive", "func_70644_a", "a", "(Lnet/minecraft/potion/Potion;)Z","("+TransformerClass.Potion.getName()+")Z"),
+
     // EntityPlayerSP
     dropOneItem("dropOneItem", "func_71040_bB", "a", "(Z)Lnet/minecraft/entity/item/EntityItem;", "(Z)"+TransformerClass.EntityItem.getName()),
     setPlayerSPHealth("setPlayerSPHealth", "func_71150_b", "n", "(F)V"),
 
     // EntityRenderer
     getMouseOver("getMouseOver", "func_78473_a", "a", "(F)V"),
-    getNightVisionBrightness("getNightVisionBrightness", "func_180438_a", "a", "("+TransformerClass.EntityLivingBase.getName()+"F)F", "(Lnet/minecraft/entity/EntityLivingBase;F)F"),
+    getNightVisionBrightness("getNightVisionBrightness", "func_180438_a", "a", "(Lnet/minecraft/entity/EntityLivingBase;F)F", "("+TransformerClass.EntityLivingBase.getName()+"F)F"),
 
     // GuiNewChat
     printChatMessageWithOptionalDeletion("printChatMessageWithOptionalDeletion", "func_146234_a", "a", "(Lnet/minecraft/util/IChatComponent;I)V", "("+TransformerClass.IChatComponent.getName()+"I)V"),
@@ -79,6 +84,8 @@ public enum TransformerMethod {
     rightClickMouse("rightClickMouse", "func_147121_ag", "ax", "()V"),
     isIntegratedServerRunning("isIntegratedServerRunning", "func_71387_A", "E", "()Z"),
     runTick("runTick", "func_71407_l", "s", "()V"),
+    clickMouse("clickMouse", "func_147116_af", "aw", "()V"),
+    sendClickBlockToController("sendClickBlockToController", "func_147115_a", "b", "(Z)V"),
 
     // MouseHelper
     ungrabMouseCursor("ungrabMouseCursor", "func_74373_b", "b", "()V"),
@@ -95,6 +102,8 @@ public enum TransformerMethod {
     // RendererLivingEntity
     rotateCorpse("rotateCorpse", "func_77043_a", "a", "(Lnet/minecraft/entity/EntityLivingBase;FFF)V", "("+TransformerClass.EntityLivingBase.getName()+"FFF)V"),
     isWearing("isWearing", "func_175148_a", "a", "(Lnet/minecraft/entity/player/EnumPlayerModelParts;)Z", "("+TransformerClass.EnumPlayerModelParts.getName()+")Z"),
+    renderModel_RendererLivingEntity("renderModel", "func_77036_a", "a", "(Lnet/minecraft/entity/EntityLivingBase;FFFFFF)V", "("+TransformerClass.EntityLivingBase.getName()+"FFFFFF)V"),
+    setScoreTeamColor("setScoreTeamColor", "func_177088_c", "c", "(Lnet/minecraft/entity/EntityLivingBase;)Z", "("+TransformerClass.EntityLivingBase.getName()+")Z"),
 
     // RenderManager
     shouldRender("shouldRender", "func_178635_a", "a", "(Lnet/minecraft/entity/Entity;Lnet/minecraft/client/renderer/culling/ICamera;DDD)Z", "("+TransformerClass.Entity.getName()+TransformerClass.ICamera.getName()+"DDD)Z"),
@@ -117,7 +126,24 @@ public enum TransformerMethod {
     // InventoryPlayer
     changeCurrentItem("changeCurrentItem", "func_70453_c", "d", "(I)V"),
 
-    NULL(null,null,null,null,false);
+    // Render
+    getEntityTexture_RenderEnderman("getEntityTexture", "func_110775_a", "a", "(Lnet/minecraft/entity/monster/EntityEnderman;)Lnet/minecraft/util/ResourceLocation;", "("+TransformerClass.EntityEnderman.getName()+")"+TransformerClass.ResourceLocation.getName()),
+
+    // ModelBase
+    render("render", "func_78088_a", "a", "(Lnet/minecraft/entity/Entity;FFFFFF)V", "("+TransformerClass.Entity.getName()+"FFFFFF)V"),
+
+    // RenderGlobal
+    isRenderEntityOutlines("isRenderEntityOutlines", "func_174985_d", "d", "()Z"),
+    renderEntities("renderEntities", "func_180446_a", "a", "(Lnet/minecraft/entity/Entity;Lnet/minecraft/client/renderer/culling/ICamera;F)V", "("+TransformerClass.Entity.getName()+TransformerClass.ICamera.getName()+"F)V"),
+    renderEntityOutlineFramebuffer("renderEntityOutlineFramebuffer", "func_174975_c", "c", "()V"),
+
+    // TileEntityItemStackRenderer
+    renderByItem("renderByItem", "func_179022_a", "a", "(Lnet/minecraft/item/ItemStack;)V", "("+TransformerClass.ItemStack.getName()+")V"),
+
+    // EffectRenderer
+    addEffect("addEffect", "func_78873_a", "a", "(Lnet/minecraft/client/particle/EntityFX;)V", "("+TransformerClass.EntityFX.getName()+")V")
+
+    ;
 
     private String name;
     private String description;
@@ -136,11 +162,11 @@ public enum TransformerMethod {
     }
 
     TransformerMethod(String deobfMethod, String seargeMethod, String notchMethod18, String seargeDescription, String notchDescription, boolean ioException) {
-        if (SkyblockAddonsTransformer.isDeobfuscated()) {
+        if (PreTransformationChecks.isDeobfuscated()) {
             name = deobfMethod;
             description = seargeDescription;
         } else {
-            if (SkyblockAddonsTransformer.isUsingNotchMappings()) {
+            if (PreTransformationChecks.isUsingNotchMappings()) {
                 name = notchMethod18;
                 description = notchDescription;
             } else {
@@ -153,6 +179,10 @@ public enum TransformerMethod {
 
     public String getName() {
         return name;
+    }
+
+    public String getDescription() {
+        return description;
     }
 
     public MethodNode createMethodNode() {

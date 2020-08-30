@@ -1,12 +1,11 @@
 package codes.biscuit.skyblockaddons.gui.buttons;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui;
-import codes.biscuit.skyblockaddons.utils.IntPair;
-import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.Message;
-import codes.biscuit.skyblockaddons.utils.nifty.reflection.MinecraftReflection;
+import codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui;
+import codes.biscuit.skyblockaddons.utils.EnumUtils;
+import codes.biscuit.skyblockaddons.utils.objects.IntPair;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.SoundHandler;
 import net.minecraft.client.renderer.GlStateManager;
@@ -65,7 +64,7 @@ public class ButtonNormal extends ButtonFeature {
                 GlStateManager.color(0.3F,0.3F,0.3F,0.7F);
             }
             mc.getTextureManager().bindTexture(FEATURE_BACKGROUND);
-            drawModalRectWithCustomSizedTexture(xPosition, yPosition,0,0,width,height,width,height);
+            main.getUtils().drawModalRectWithCustomSizedTexture(xPosition, yPosition,0,0,width,height,width,height, true);
 
             EnumUtils.FeatureCredit creditFeature = EnumUtils.FeatureCredit.fromFeature(feature);
 
@@ -92,7 +91,7 @@ public class ButtonNormal extends ButtonFeature {
                 String line = wrappedString[i];
 
                 float scale = 1;
-                int stringWidth = MinecraftReflection.FontRenderer.getStringWidth(line);
+                int stringWidth = mc.fontRendererObj.getStringWidth(line);
                 float widthLimit = SkyblockAddonsGui.BUTTON_MAX_WIDTH - 10;
                 if (feature == Feature.WARNING_TIME) {
                     widthLimit = 90;
@@ -107,7 +106,7 @@ public class ButtonNormal extends ButtonFeature {
                 int offset = 9;
                 if (creditFeature != null) offset -= 4;
                 offset += (10 - 10*scale); // If the scale is small gotta move it down a bit or else its too mushed with the above line.
-                MinecraftReflection.FontRenderer.drawCenteredString(line, (textX / scale), (textY / scale) + offset, fontColor);
+                main.getUtils().drawCenteredString(line, (textX / scale), (textY / scale) + offset, fontColor);
                 GlStateManager.popMatrix();
 
                 // If its not the last line, add to the Y.
@@ -128,7 +127,7 @@ public class ButtonNormal extends ButtonFeature {
 
                 GlStateManager.pushMatrix();
                 GlStateManager.scale(scale, scale, 1);
-                MinecraftReflection.FontRenderer.drawCenteredString(creditFeature.getAuthor(), (textX / scale), creditsY, fontColor);
+                main.getUtils().drawCenteredString(creditFeature.getAuthor(), (textX / scale), creditsY, fontColor);
                 GlStateManager.disableBlend();
                 GlStateManager.popMatrix();
             }
@@ -140,7 +139,7 @@ public class ButtonNormal extends ButtonFeature {
                     if (main.getUtils().isHalloween()) {
                         mc.getTextureManager().bindTexture(new ResourceLocation("skyblockaddons", "flags/halloween.png"));
                     }
-                    drawModalRectWithCustomSizedTexture(xPosition + width / 2 - 20, yPosition + 20, 0, 0, 38, 30, 38, 30);
+                    main.getUtils().drawModalRectWithCustomSizedTexture(xPosition + width / 2F - 20, yPosition + 20, 0, 0, 38, 30, 38, 30, true);
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
@@ -148,14 +147,14 @@ public class ButtonNormal extends ButtonFeature {
                 GlStateManager.color(1,1,1,1F);
                 try {
                     mc.getTextureManager().bindTexture(new ResourceLocation("skyblockaddons", "gui/move.png"));
-                    drawModalRectWithCustomSizedTexture(xPosition + width / 2 - 12, yPosition + 22, 0, 0, 25, 25, 25, 25);
+                    main.getUtils().drawModalRectWithCustomSizedTexture(xPosition + width / 2F - 12, yPosition + 22, 0, 0, 25, 25, 25, 25, true);
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
             }
 
             if (main.getConfigValues().isRemoteDisabled(feature)) {
-                MinecraftReflection.FontRenderer.drawCenteredString(Message.MESSAGE_FEATURE_DISABLED.getMessage(), textX, textY + 6 , main.getUtils().getDefaultBlue(alpha));
+                drawCenteredString(mc.fontRendererObj, Message.MESSAGE_FEATURE_DISABLED.getMessage(), textX, textY + 6 , main.getUtils().getDefaultBlue(alpha));
             }
         }
     }
@@ -175,7 +174,7 @@ public class ButtonNormal extends ButtonFeature {
             y += 10;
         }
 
-        int x = (int)((xPosition+width/2)/scale) - MinecraftReflection.FontRenderer.getStringWidth(credit.getAuthor()) / 2 - 17;
+        int x = (int)((xPosition+width/2)/scale) - Minecraft.getMinecraft().fontRendererObj.getStringWidth(credit.getAuthor()) / 2 - 17;
         return new IntPair(x, y);
     }
 

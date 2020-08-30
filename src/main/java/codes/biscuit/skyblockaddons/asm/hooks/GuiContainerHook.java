@@ -3,10 +3,13 @@ package codes.biscuit.skyblockaddons.asm.hooks;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.asm.utils.ReturnValue;
 import codes.biscuit.skyblockaddons.core.Feature;
-import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsTransformer;
-import codes.biscuit.skyblockaddons.utils.*;
-import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
-import codes.biscuit.skyblockaddons.utils.nifty.reflection.MinecraftReflection;
+import codes.biscuit.skyblockaddons.features.backpacks.Backpack;
+import codes.biscuit.skyblockaddons.features.backpacks.BackpackColor;
+import codes.biscuit.skyblockaddons.features.craftingpatterns.CraftingPattern;
+import codes.biscuit.skyblockaddons.utils.ColorCode;
+import codes.biscuit.skyblockaddons.utils.EnumUtils;
+import codes.biscuit.skyblockaddons.utils.ItemUtils;
+import codes.biscuit.skyblockaddons.utils.objects.FloatPairString;
 import lombok.Getter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
@@ -22,9 +25,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
 import javax.lang.model.type.NullType;
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -35,24 +35,24 @@ public class GuiContainerHook {
 
     private final static ResourceLocation LOCK = new ResourceLocation("skyblockaddons", "lock.png");
     private final static ResourceLocation CHEST_GUI_TEXTURE = new ResourceLocation("textures/gui/container/generic_54.png");
-    private final static int OVERLAY_RED = ChatFormatting.RED.getColor(127).getRGB();
-    private final static int OVERLAY_GREEN = ChatFormatting.GREEN.getColor(127).getRGB();
+    private final static int OVERLAY_RED = ColorCode.RED.getColor(127).getRGB();
+    private final static int OVERLAY_GREEN = ColorCode.GREEN.getColor(127).getRGB();
 
-    private static EnchantPair reforgeToRender = null;
-    private static Set<EnchantPair> enchantsToRender = new HashSet<>();
+    private static FloatPairString reforgeToRender = null;
+    private static Set<FloatPairString> enchantsToRender = new HashSet<>();
 
     /**
      * This controls whether or not the backpack preview is frozen- allowing you
      * to hover over a backpack's contents in full detail!
      */
-    @Getter private static boolean freezeBackpack = false;
+    @Getter private static boolean freezeBackpack;
 
     public static void showEnchantments(Slot slotIn, int x, int y, ItemStack item) {
         SkyblockAddons main = SkyblockAddons.getInstance();
         if (main.getConfigValues().isEnabled(Feature.SHOW_ENCHANTMENTS_REFORGES)) {
             Minecraft mc = Minecraft.getMinecraft();
             if (item != null && item.hasDisplayName()) {
-                if (item.getDisplayName().startsWith(ChatFormatting.GREEN + "Enchant Item")) {
+                if (item.getDisplayName().startsWith(ColorCode.GREEN + "Enchant Item")) {
                     List<String> toolip = item.getTooltip(mc.thePlayer, false);
                     if (toolip.size() > 2) {
                         String enchantLine = toolip.get(2);
@@ -62,9 +62,9 @@ public class GuiContainerHook {
                             String enchant;
                             if (!main.getUtils().getEnchantmentMatches().isEmpty() &&
                                     main.getUtils().enchantReforgeMatches(toMatch)) {
-                                enchant = ChatFormatting.RED + toMatch;
+                                enchant = ColorCode.RED + toMatch;
                             } else {
-                                enchant = ChatFormatting.YELLOW + toMatch;
+                                enchant = ColorCode.YELLOW + toMatch;
                             }
                             float yOff;
                             if (slotIn.slotNumber == 29 || slotIn.slotNumber == 33) {
@@ -73,24 +73,24 @@ public class GuiContainerHook {
                                 yOff = 36;
                             }
                             float scaleMultiplier = 1 / 0.75F;
-                            float halfStringWidth = MinecraftReflection.FontRenderer.getStringWidth(enchant) / 2F;
+                            float halfStringWidth = mc.fontRendererObj.getStringWidth(enchant) / 2F;
                             x += 8; // to center it
-                            enchantsToRender.add(new EnchantPair(x * scaleMultiplier - halfStringWidth, y * scaleMultiplier + yOff, enchant));
+                            enchantsToRender.add(new FloatPairString(x * scaleMultiplier - halfStringWidth, y * scaleMultiplier + yOff, enchant));
                         }
                     }
                 } else if ("Reforge Item".equals(slotIn.inventory.getDisplayName().getUnformattedText()) && slotIn.slotNumber == 13) {
-                    String reforge = main.getUtils().getReforgeFromItem(item);
+                    String reforge = ItemUtils.getReforge(item);
                     if (reforge != null) {
                         if (!main.getUtils().getEnchantmentMatches().isEmpty() &&
                                 main.getUtils().enchantReforgeMatches(reforge)) {
-                            reforge = ChatFormatting.RED + reforge;
+                            reforge = ColorCode.RED + reforge;
                         } else {
-                            reforge = ChatFormatting.YELLOW + reforge;
+                            reforge = ColorCode.YELLOW + reforge;
                         }
                         x -= 28;
                         y += 22;
-                        float halfStringWidth = MinecraftReflection.FontRenderer.getStringWidth(reforge) / 2F;
-                        reforgeToRender = new EnchantPair(x - halfStringWidth, y, reforge);
+                        float halfStringWidth = mc.fontRendererObj.getStringWidth(reforge) / 2F;
+                        reforgeToRender = new FloatPairString(x - halfStringWidth, y, reforge);
                     }
                 }
             }
@@ -101,14 +101,14 @@ public class GuiContainerHook {
                 GlStateManager.disableDepth();
                 GlStateManager.disableBlend();
                 if (reforgeToRender != null) {
-                    MinecraftReflection.FontRenderer.drawString(reforgeToRender.getEnchant(), reforgeToRender.getX(), reforgeToRender.getY(), ChatFormatting.WHITE, true);
+                    mc.fontRendererObj.drawString(reforgeToRender.getEnchant(), reforgeToRender.getX(), reforgeToRender.getY(), ColorCode.WHITE.getRGB(), true);
                     reforgeToRender = null;
                 }
                 GlStateManager.scale(0.75, 0.75, 1);
-                Iterator<EnchantPair> enchantPairIterator = enchantsToRender.iterator();
+                Iterator<FloatPairString> enchantPairIterator = enchantsToRender.iterator();
                 while (enchantPairIterator.hasNext()) {
-                    EnchantPair enchant = enchantPairIterator.next();
-                    MinecraftReflection.FontRenderer.drawString(enchant.getEnchant(), enchant.getX(), enchant.getY(), ChatFormatting.WHITE, true);
+                    FloatPairString enchant = enchantPairIterator.next();
+                    mc.fontRendererObj.drawString(enchant.getEnchant(), enchant.getX(), enchant.getY(), ColorCode.WHITE.getRGB(), true);
                     enchantPairIterator.remove();
                 }
                 GlStateManager.enableLighting();
@@ -156,7 +156,7 @@ public class GuiContainerHook {
                 }
                 guiContainer.drawTexturedModalRect(x, y, 0, 0, 176, rows * 18 + 17);
                 guiContainer.drawTexturedModalRect(x, y + rows * 18 + 17, 0, 215, 176, 7);
-                MinecraftReflection.FontRenderer.drawString(backpack.getBackpackName(), x+8, y+6, textColor);
+                mc.fontRendererObj.drawString(backpack.getBackpackName(), x+8, y+6, textColor);
                 GlStateManager.popMatrix();
                 GlStateManager.enableLighting();
 
@@ -170,26 +170,25 @@ public class GuiContainerHook {
                         int itemX = x+8 + ((i % 9) * 18);
                         int itemY = y+18 + ((i / 9) * 18);
                         RenderItem renderItem = mc.getRenderItem();
-                        setZLevel(guiContainer, 200);
+                        guiContainer.zLevel = 200;
                         renderItem.zLevel = 200;
                         renderItem.renderItemAndEffectIntoGUI(item, itemX, itemY);
                         renderItem.renderItemOverlayIntoGUI(mc.fontRendererObj, item, itemX, itemY, null);
                         if (freezeBackpack && mouseX > itemX && mouseX < itemX+16 && mouseY > itemY && mouseY < itemY+16) {
                             toRenderOverlay = item;
                         }
-                        setZLevel(guiContainer, 0);
+                        guiContainer.zLevel = 0;
                         renderItem.zLevel = 0;
                     }
                 }
                 if (toRenderOverlay != null) {
-                    drawHoveringText(guiContainer, toRenderOverlay.getTooltip(null, mc.gameSettings.advancedItemTooltips),
-                            mouseX, mouseY);
+                    guiContainer.drawHoveringText(toRenderOverlay.getTooltip(null, mc.gameSettings.advancedItemTooltips), mouseX, mouseY);
                 }
             } else {
                 GlStateManager.disableLighting();
                 GlStateManager.pushMatrix();
                 GlStateManager.translate(0,0, 300);
-                Gui.drawRect(x, y, x + (16 * 9) + 3, y + (16 * (length / 9)) + 3, ChatFormatting.DARK_GRAY.getColor(250).getRGB());
+                Gui.drawRect(x, y, x + (16 * 9) + 3, y + (16 * (length / 9)) + 3, ColorCode.DARK_GRAY.getColor(250).getRGB());
                 GlStateManager.popMatrix();
                 GlStateManager.enableLighting();
 
@@ -202,11 +201,11 @@ public class GuiContainerHook {
                         int itemX = x + ((i % 9) * 16);
                         int itemY = y + ((i / 9) * 16);
                         RenderItem renderItem = mc.getRenderItem();
-                        setZLevel(guiContainer, 200);
+                        guiContainer.zLevel = 200;
                         renderItem.zLevel = 200;
                         renderItem.renderItemAndEffectIntoGUI(item, itemX, itemY);
                         renderItem.renderItemOverlayIntoGUI(mc.fontRendererObj, item, itemX, itemY, null);
-                        setZLevel(guiContainer, 0);
+                        guiContainer.zLevel = 0;
                         renderItem.zLevel = 0;
                     }
                 }
@@ -234,11 +233,11 @@ public class GuiContainerHook {
             if (main.getConfigValues().isEnabled(Feature.LOCK_SLOTS) &&
                     main.getUtils().isOnSkyblock() && main.getConfigValues().getLockedSlots().contains(slotNum)
                     && (slotNum >= 9 || container instanceof ContainerPlayer && slotNum >= 5)) {
-                drawRightGradientRect(guiContainer, left, top, right, bottom, OVERLAY_RED, OVERLAY_RED);
+                guiContainer.drawGradientRect(left, top, right, bottom, OVERLAY_RED, OVERLAY_RED);
                 return;
             }
         }
-        drawRightGradientRect(guiContainer, left, top, right, bottom, startColor, endColor);
+        guiContainer.drawGradientRect(left, top, right, bottom, startColor, endColor);
     }
 
     public static void drawSlot(GuiContainer guiContainer, Slot slot) {
@@ -260,11 +259,11 @@ public class GuiContainerHook {
                     int slotBottom = slotTop + 16;
                     if (main.getPersistentValues().getSelectedCraftingPattern().isSlotInPattern(craftingGridIndex)) {
                         if (!slot.getHasStack()) {
-                            drawRightGradientRect(guiContainer, slotLeft, slotTop, slotRight, slotBottom, OVERLAY_GREEN, OVERLAY_GREEN);
+                            guiContainer.drawGradientRect(slotLeft, slotTop, slotRight, slotBottom, OVERLAY_GREEN, OVERLAY_GREEN);
                         }
                     } else {
                         if (slot.getHasStack()) {
-                            drawRightGradientRect(guiContainer, slotLeft, slotTop, slotRight, slotBottom, OVERLAY_RED, OVERLAY_RED);
+                            guiContainer.drawGradientRect(slotLeft, slotTop, slotRight, slotBottom, OVERLAY_RED, OVERLAY_RED);
                         }
                     }
                 }
@@ -285,26 +284,6 @@ public class GuiContainerHook {
                     GlStateManager.enableDepth();
                 }
             }
-        }
-    }
-
-    private static Method drawGradientRect = null;
-
-    private static void drawRightGradientRect(GuiContainer guiContainer, int left, int top, int right, int bottom, int startColor, int endColor) {
-        if (SkyblockAddonsTransformer.isLabymodClient()) { // There are no access transformers in labymod.
-            try {
-                if (drawGradientRect == null) {
-                    drawGradientRect = guiContainer.getClass().getSuperclass().getSuperclass().getDeclaredMethod("a", int.class, int.class, int.class, int.class, int.class, int.class);
-                    drawGradientRect.setAccessible(true);
-                }
-                if (drawGradientRect != null) {
-                    drawGradientRect.invoke(guiContainer, left, top, right, bottom, startColor, endColor);
-                }
-            } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
-                e.printStackTrace();
-            }
-        } else {
-            guiContainer.drawGradientRect(left, top, right, bottom, startColor, endColor);
         }
     }
 
@@ -356,47 +335,6 @@ public class GuiContainerHook {
                     mc.thePlayer.inventory.getItemStack() != null && isOutsideGui &&
                     main.getInventoryUtils().shouldCancelDrop(mc.thePlayer.inventory.getItemStack())) returnValue.cancel();
         }*/
-    }
-
-    private static Field zLevel = null;
-
-    private static void setZLevel(Gui gui, int zLevelToSet) {
-        if (SkyblockAddonsTransformer.isLabymodClient()) { // There are no access transformers in labymod.
-            try {
-                if (zLevel == null) {
-                    zLevel = gui.getClass().getDeclaredField("e");
-                    zLevel.setAccessible(true);
-                }
-                if (zLevel != null) {
-                    zLevel.set(gui, zLevelToSet);
-                }
-            } catch (IllegalAccessException | NoSuchFieldException e) {
-                e.printStackTrace();
-            }
-        } else {
-            gui.zLevel = zLevelToSet;
-        }
-    }
-
-    private static Method drawHoveringText = null;
-
-    private static void drawHoveringText(GuiContainer guiContainer, List<String> text, int x, int y) {
-        if (SkyblockAddonsTransformer.isLabymodClient()) { // There are no access transformers in labymod.
-            try {
-                if (drawHoveringText == null) {
-                    drawHoveringText = guiContainer.getClass().getSuperclass().getDeclaredMethod("a",
-                            List.class, int.class, int.class);
-                    drawHoveringText.setAccessible(true);
-                }
-                if (drawHoveringText != null) {
-                    drawHoveringText.invoke(guiContainer, text, x , y);
-                }
-            } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
-                e.printStackTrace();
-            }
-        } else {
-            guiContainer.drawHoveringText(text, x, y);
-        }
     }
 
     public static void setFreezeBackpack(boolean freezeBackpack) {

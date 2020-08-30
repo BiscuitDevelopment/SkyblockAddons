@@ -2,7 +2,7 @@ package codes.biscuit.skyblockaddons.asm.hooks;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.asm.utils.ReturnValue;
-import codes.biscuit.skyblockaddons.utils.CooldownManager;
+import codes.biscuit.skyblockaddons.features.cooldowns.CooldownManager;
 import codes.biscuit.skyblockaddons.core.Feature;
 import net.minecraft.item.ItemStack;
 

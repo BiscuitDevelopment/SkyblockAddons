@@ -2,10 +2,11 @@ package codes.biscuit.skyblockaddons.gui;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
+import codes.biscuit.skyblockaddons.core.Language;
 import codes.biscuit.skyblockaddons.core.Message;
 import codes.biscuit.skyblockaddons.gui.buttons.*;
 import codes.biscuit.skyblockaddons.utils.*;
-import codes.biscuit.skyblockaddons.utils.discord.DiscordStatus;
+import codes.biscuit.skyblockaddons.features.discordrpc.DiscordStatus;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
@@ -24,7 +25,7 @@ public class SettingsGui extends GuiScreen {
 
     private static ResourceLocation FEATURE_BACKGROUND = new ResourceLocation("skyblockaddons", "gui/featurebackground.png");
 
-    private SkyblockAddons main;
+    private SkyblockAddons main = SkyblockAddons.getInstance();
     private int page;
     private float row = 1;
     private int collumn = 1;
@@ -32,7 +33,7 @@ public class SettingsGui extends GuiScreen {
     private Feature feature;
     private int lastPage;
     private EnumUtils.GuiTab lastTab;
-    private boolean closingGui = false;
+    private boolean closingGui;
     private List<EnumUtils.FeatureSetting> settings;
     private boolean reInit = false;
 
@@ -41,9 +42,7 @@ public class SettingsGui extends GuiScreen {
     /**
      * The main gui, opened with /sba.
      */
-    public SettingsGui(SkyblockAddons main, Feature feature, int page,
-                       int lastPage, EnumUtils.GuiTab lastTab, List<EnumUtils.FeatureSetting> settings) {
-        this.main = main;
+    public SettingsGui(Feature feature, int page, int lastPage, EnumUtils.GuiTab lastTab, List<EnumUtils.FeatureSetting> settings) {
         this.feature = feature;
         this.page = page;
         this.lastPage = lastPage;
@@ -178,11 +177,11 @@ public class SettingsGui extends GuiScreen {
             Language language = ((ButtonLanguage)abstractButton).getLanguage();
             main.getConfigValues().setLanguage(language);
             main.getUtils().loadLanguageFile(true);
-            main.loadKeyBindingDescriptions();
+            main.setKeyBindingDescriptions();
             returnToGui();
         } else if (abstractButton instanceof ButtonSwitchTab) {
             ButtonSwitchTab tab = (ButtonSwitchTab)abstractButton;
-            mc.displayGuiScreen(new SkyblockAddonsGui(main, 1, tab.getTab()));
+            mc.displayGuiScreen(new SkyblockAddonsGui(1, tab.getTab()));
         } else if (abstractButton instanceof ButtonOpenColorMenu) {
             closingGui = true;
             mc.displayGuiScreen(new ColorSelectionGui(feature, EnumUtils.GUIType.SETTINGS, lastTab, lastPage));
@@ -206,12 +205,12 @@ public class SettingsGui extends GuiScreen {
         } else if (feature == Feature.SHOW_BACKPACK_PREVIEW) {
             main.getConfigValues().setBackpackStyle(main.getConfigValues().getBackpackStyle().getNextType());
             closingGui = true;
-            Minecraft.getMinecraft().displayGuiScreen(new SettingsGui(main, feature, page, lastPage, lastTab, settings));
+            Minecraft.getMinecraft().displayGuiScreen(new SettingsGui(feature, page, lastPage, lastTab, settings));
             closingGui = false;
         } else if(feature == Feature.POWER_ORB_STATUS_DISPLAY && abstractButton instanceof ButtonSolid) {
             main.getConfigValues().setPowerOrbDisplayStyle(main.getConfigValues().getPowerOrbDisplayStyle().getNextType());
             closingGui = true;
-            Minecraft.getMinecraft().displayGuiScreen(new SettingsGui(main, feature, page, lastPage, lastTab, settings));
+            Minecraft.getMinecraft().displayGuiScreen(new SettingsGui(feature, page, lastPage, lastTab, settings));
             closingGui = false;
         } else if (abstractButton instanceof ButtonArrow) {
             ButtonArrow arrow = (ButtonArrow)abstractButton;
@@ -219,10 +218,10 @@ public class SettingsGui extends GuiScreen {
                 main.getUtils().setFadingIn(false);
                 if (arrow.getArrowType() == ButtonArrow.ArrowType.RIGHT) {
                     closingGui = true;
-                    mc.displayGuiScreen(new SettingsGui(main, feature, ++page, lastPage, lastTab, settings));
+                    mc.displayGuiScreen(new SettingsGui(feature, ++page, lastPage, lastTab, settings));
                 } else {
                     closingGui = true;
-                    mc.displayGuiScreen(new SettingsGui(main, feature, --page, lastPage, lastTab, settings));
+                    mc.displayGuiScreen(new SettingsGui(feature, --page, lastPage, lastTab, settings));
                 }
             }
         }
@@ -268,6 +267,8 @@ public class SettingsGui extends GuiScreen {
             Feature settingFeature = null;
             if (feature == Feature.FULL_INVENTORY_WARNING) {
                 settingFeature = Feature.REPEAT_FULL_INVENTORY_WARNING;
+            } else if (feature == Feature.BOSS_APPROACH_ALERT) {
+                settingFeature = Feature.REPEAT_SLAYER_BOSS_WARNING;
             }
 
             buttonList.add(new ButtonToggleTitle(x, y, Message.SETTING_REPEATING.getMessage(), main, settingFeature));
@@ -361,6 +362,25 @@ public class SettingsGui extends GuiScreen {
             }
 
             row += 0.4;
+        } else if (setting == EnumUtils.FeatureSetting.MAP_ZOOM) {
+            boxWidth = 100; // Default size and stuff.
+            x = halfWidth-(boxWidth/2);
+            y = getRowHeightSetting(row);
+            buttonList.add(new ButtonSlider(x, y, 100, 20, main.getConfigValues().getMapZoom().getValue(), 0.5F, 5F, 0.1F, new ButtonSlider.OnSliderChangeCallback() {
+                @Override
+                public void sliderUpdated(float value) {
+                    main.getConfigValues().getMapZoom().setValue(value);
+                }
+            }).setPrefix("Map Zoom: "));
+        } else if (setting == EnumUtils.FeatureSetting.COLOUR_BY_RARITY) {
+            boxWidth = 31;
+            x = halfWidth - boxWidth / 2;
+            y = this.getRowHeightSetting(this.row);
+            Feature settingFeature = null;
+            if (this.feature == Feature.SHOW_BASE_STAT_BOOST_PERCENTAGE) {
+                settingFeature = Feature.COLOR_BY_RARITY;
+            }
+            buttonList.add(new ButtonToggleTitle(x, y, Message.SETTING_COLOR_BY_RARITY.getMessage(), this.main, settingFeature));
         } else {
             boxWidth = 31; // Default size and stuff.
             x = halfWidth-(boxWidth/2);

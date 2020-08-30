@@ -36,15 +36,17 @@ public class RenderItemTransformer implements ITransformer {
                 while (iterator.hasNext()) {
                     AbstractInsnNode abstractNode = iterator.next();
 
-                    if (abstractNode instanceof MethodInsnNode && abstractNode.getOpcode() == Opcodes.INVOKESPECIAL) {
+                    if (abstractNode instanceof MethodInsnNode && (abstractNode.getOpcode() == Opcodes.INVOKESPECIAL || abstractNode.getOpcode() == Opcodes.INVOKEVIRTUAL)) {
                         MethodInsnNode methodInsnNode = (MethodInsnNode)abstractNode;
 
-                        if (methodInsnNode.owner.equals(TransformerClass.RenderItem.getNameRaw()) &&
-                                TransformerMethod.renderModel.matches(methodInsnNode)) {
+                        if (TransformerMethod.renderModel_IBakedModel_ItemStack.matches(methodInsnNode)) {
+
                             methodNode.instructions.insert(abstractNode, new MethodInsnNode(Opcodes.INVOKESTATIC, "codes/biscuit/skyblockaddons/asm/hooks/RenderItemHook",
                                     "renderToxicArrowPoisonEffect", "("+TransformerClass.IBakedModel.getName()+TransformerClass.ItemStack.getName()+")V", false));
                             methodNode.instructions.insert(abstractNode, new VarInsnNode(Opcodes.ALOAD, 1));
                             methodNode.instructions.insert(abstractNode, new VarInsnNode(Opcodes.ALOAD, 2));
+                            break;
+
                         }
                     }
                 }

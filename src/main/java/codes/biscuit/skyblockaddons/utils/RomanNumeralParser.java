@@ -1,7 +1,5 @@
 package codes.biscuit.skyblockaddons.utils;
 
-import codes.biscuit.skyblockaddons.SkyblockAddons;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -98,7 +96,7 @@ public class RomanNumeralParser {
      * @return Parsed value
      * @throws IllegalArgumentException If the input is malformed
      */
-    private static int parseNumeral(String numeralString) {
+    public static int parseNumeral(String numeralString) {
         // Make sure this is a valid Roman numeral before trying to parse it.
         if (!isNumeralValid(numeralString)) {
             throw new IllegalArgumentException("\"" + numeralString + "\" is not a valid Roman numeral.");

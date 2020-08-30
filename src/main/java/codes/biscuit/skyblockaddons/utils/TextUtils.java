@@ -1,7 +1,5 @@
 package codes.biscuit.skyblockaddons.utils;
 
-import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
-
 import java.text.DecimalFormat;
 import java.util.regex.Pattern;
 
@@ -12,7 +10,7 @@ public class TextUtils {
 
     private static final Pattern STRIP_COLOR_PATTERN = Pattern.compile("(?i)§[0-9A-FK-OR]");
     private static final Pattern NUMBERS_SLASHES = Pattern.compile("[^0-9 /]");
-    private static final Pattern SCOREBOARD_CHARACTERS = Pattern.compile("[^a-z A-Z:0-9/'.]");
+    private static Pattern SCOREBOARD_CHARACTERS = Pattern.compile("[^a-z A-Z:0-9/'.!§]");
     private static final Pattern FLOAT_CHARACTERS = Pattern.compile("[^.0-9\\-]");
     private static final Pattern INTEGER_CHARACTERS = Pattern.compile("[^0-9]");
 
@@ -47,6 +45,7 @@ public class TextUtils {
      * @return Input text with only letters and numbers
      */
     public static String keepScoreboardCharacters(String text) {
+        SCOREBOARD_CHARACTERS = Pattern.compile("[^a-z A-Z:0-9_/'.!§\\[\\]❤]");
         return SCOREBOARD_CHARACTERS.matcher(text).replaceAll("");
     }
 
@@ -127,8 +126,6 @@ public class TextUtils {
      *     <li>rd - if n ends with 3 but isn't 13</li>
      *     <li>th - in all other cases</li>
      * </ul>
-     * @param n
-     * @return
      */
     public static String getOrdinalSuffix(final int n) {
         if (n >= 11 && n <= 13) {
@@ -141,15 +138,4 @@ public class TextUtils {
             default: return "th";
         }
     }
-
-    /**
-     * Colors a string by translating & color codes with the correct character.
-     *
-     * @param text Text to color
-     * @return Text with correct color formatting
-     */
-    public static String color(String text) {
-        return ChatFormatting.translateAlternateColorCodes('&', text);
-    }
-
 }

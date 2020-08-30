@@ -2,9 +2,8 @@ package codes.biscuit.skyblockaddons.gui.buttons;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
-import codes.biscuit.skyblockaddons.utils.Language;
+import codes.biscuit.skyblockaddons.core.Language;
 import codes.biscuit.skyblockaddons.core.Message;
-import codes.biscuit.skyblockaddons.utils.nifty.reflection.MinecraftReflection;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.GlStateManager;
@@ -35,11 +34,11 @@ public class ButtonLanguage extends GuiButton {
         if (visible) {
             GlStateManager.color(1,1,1,0.7F);
             mc.getTextureManager().bindTexture(FEATURE_BACKGROUND);
-            drawModalRectWithCustomSizedTexture(xPosition, yPosition,0,0,width,height,width,height);
+            main.getUtils().drawModalRectWithCustomSizedTexture(xPosition, yPosition,0,0,width,height,width,height, true);
             GlStateManager.color(1,1,1,1F);
             try {
                 mc.getTextureManager().bindTexture(language.getResourceLocation());
-                drawModalRectWithCustomSizedTexture(xPosition+width-32, yPosition, 0, 0, 30, 26, 30, 26);
+                main.getUtils().drawModalRectWithCustomSizedTexture(xPosition+width-32, yPosition, 0, 0, 30, 26, 30, 26, true);
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
@@ -51,7 +50,7 @@ public class ButtonLanguage extends GuiButton {
                 fontColor = new Color(255, 255, 160, 255).getRGB();
             }
             main.getUtils().loadLanguageFile(language);
-            MinecraftReflection.FontRenderer.drawCenteredString(Message.LANGUAGE.getMessage(), xPosition+width/2, yPosition+10, fontColor);
+            drawCenteredString(mc.fontRendererObj, Message.LANGUAGE.getMessage(), xPosition+width/2, yPosition+10, fontColor);
         }
     }
 

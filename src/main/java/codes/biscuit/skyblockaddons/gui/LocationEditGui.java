@@ -1,17 +1,16 @@
 package codes.biscuit.skyblockaddons.gui;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.config.ConfigValues;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.Message;
 import codes.biscuit.skyblockaddons.gui.buttons.ButtonColorWheel;
 import codes.biscuit.skyblockaddons.gui.buttons.ButtonLocation;
 import codes.biscuit.skyblockaddons.gui.buttons.ButtonResize;
 import codes.biscuit.skyblockaddons.gui.buttons.ButtonSolid;
-import codes.biscuit.skyblockaddons.utils.ConfigValues;
-import codes.biscuit.skyblockaddons.utils.IntPair;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
-import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
-import codes.biscuit.skyblockaddons.utils.nifty.reflection.MinecraftReflection;
+import codes.biscuit.skyblockaddons.utils.ColorCode;
+import codes.biscuit.skyblockaddons.utils.objects.IntPair;
 import com.google.common.collect.Sets;
 import lombok.Getter;
 import net.minecraft.client.Minecraft;
@@ -36,12 +35,12 @@ public class LocationEditGui extends GuiScreen {
     private boolean showColorIcons = true;
     private boolean enableSnapping = true;
 
-    private SkyblockAddons main;
+    private SkyblockAddons main = SkyblockAddons.getInstance();
     // The feature that is currently being dragged, or null for nothing.
-    private Feature dragging = null;
+    private Feature dragging;
 
-    private boolean resizing = false;
-    private ButtonResize.Corner resizingCorner = null;
+    private boolean resizing;
+    private ButtonResize.Corner resizingCorner;
 
     private int originalHeight;
     private int originalWidth;
@@ -59,8 +58,7 @@ public class LocationEditGui extends GuiScreen {
     private static final int SNAPPING_RADIUS = 120;
     private static final int SNAP_PULL = 1;
 
-    public LocationEditGui(SkyblockAddons main, int lastPage, EnumUtils.GuiTab lastTab) {
-        this.main = main;
+    public LocationEditGui(int lastPage, EnumUtils.GuiTab lastTab) {
         this.lastPage = lastPage;
         this.lastTab = lastTab;
     }
@@ -69,8 +67,17 @@ public class LocationEditGui extends GuiScreen {
     public void initGui() {
         // Add all gui elements that can be edited to the gui.
         for (Feature feature : Feature.getGuiFeatures()) {
-            if (!main.getConfigValues().isDisabled(feature)) { // Don't display features that have been disabled
-                ButtonLocation buttonLocation = new ButtonLocation(main, feature);
+            if ((feature.getGuiFeatureData() == null || feature.getGuiFeatureData().getDrawType() != EnumUtils.DrawType.TEXT) &&
+                    !main.getConfigValues().isDisabled(feature)) { // Don't display features that have been disabled
+                ButtonLocation buttonLocation = new ButtonLocation(feature);
+                buttonList.add(buttonLocation);
+                buttonLocations.put(feature, buttonLocation);
+            }
+        }
+        for (Feature feature : Feature.getGuiFeatures()) {
+            if (feature.getGuiFeatureData() != null && feature.getGuiFeatureData().getDrawType() == EnumUtils.DrawType.TEXT &&
+                    !main.getConfigValues().isDisabled(feature)) { // Don't display features that have been disabled
+                ButtonLocation buttonLocation = new ButtonLocation(feature);
                 buttonList.add(buttonLocation);
                 buttonLocations.put(feature, buttonLocation);
             }
@@ -95,34 +102,34 @@ public class LocationEditGui extends GuiScreen {
         }
 
         String text = Message.SETTING_RESET_LOCATIONS.getMessage();
-        int boxWidth = MinecraftReflection.FontRenderer.getStringWidth(text)+10;
+        int boxWidth = mc.fontRendererObj.getStringWidth(text)+10;
         if (boxWidth > BUTTON_MAX_WIDTH) boxWidth = BUTTON_MAX_WIDTH;
         int x = scaledResolution.getScaledWidth()/2-boxWidth/2;
         buttonList.add(new ButtonSolid(x, y, boxWidth, boxHeight, text, main, Feature.RESET_LOCATION));
 
         text = Feature.RESCALE_FEATURES.getMessage();
-        boxWidth = MinecraftReflection.FontRenderer.getStringWidth(text)+10;
+        boxWidth = mc.fontRendererObj.getStringWidth(text)+10;
         if (boxWidth > BUTTON_MAX_WIDTH) boxWidth = BUTTON_MAX_WIDTH;
         x = scaledResolution.getScaledWidth()/2-boxWidth/2;
         y += boxHeight + 5;
         buttonList.add(new ButtonSolid(x, y, boxWidth, boxHeight, text, main, Feature.RESCALE_FEATURES));
 
         text = Feature.RESIZE_BARS.getMessage();
-        boxWidth = MinecraftReflection.FontRenderer.getStringWidth(text)+10;
+        boxWidth = mc.fontRendererObj.getStringWidth(text)+10;
         if (boxWidth > BUTTON_MAX_WIDTH) boxWidth = BUTTON_MAX_WIDTH;
         x = scaledResolution.getScaledWidth()/2-boxWidth/2;
         y += boxHeight + 5;
         buttonList.add(new ButtonSolid(x, y, boxWidth, boxHeight, text, main, Feature.RESIZE_BARS));
 
         text = Feature.SHOW_COLOR_ICONS.getMessage();
-        boxWidth = MinecraftReflection.FontRenderer.getStringWidth(text)+10;
+        boxWidth = mc.fontRendererObj.getStringWidth(text)+10;
         if (boxWidth > BUTTON_MAX_WIDTH) boxWidth = BUTTON_MAX_WIDTH;
         x = scaledResolution.getScaledWidth()/2-boxWidth/2;
         y += boxHeight + 5;
         buttonList.add(new ButtonSolid(x, y, boxWidth, boxHeight, text, main, Feature.SHOW_COLOR_ICONS));
 
         text = Feature.ENABLE_FEATURE_SNAPPING.getMessage();
-        boxWidth = MinecraftReflection.FontRenderer.getStringWidth(text)+10;
+        boxWidth = mc.fontRendererObj.getStringWidth(text)+10;
         if (boxWidth > BUTTON_MAX_WIDTH) boxWidth = BUTTON_MAX_WIDTH;
         x = scaledResolution.getScaledWidth()/2-boxWidth/2;
         y += boxHeight + 5;
@@ -284,10 +291,10 @@ public class LocationEditGui extends GuiScreen {
             ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
             int x = anchorPoint.getX(sr.getScaledWidth());
             int y = anchorPoint.getY(sr.getScaledHeight());
-            int color = ChatFormatting.RED.getColor(127).getRGB();
+            int color = ColorCode.RED.getColor(127).getRGB();
             Feature lastHovered = ButtonLocation.getLastHoveredFeature();
             if (lastHovered != null && main.getConfigValues().getAnchorPoint(lastHovered) == anchorPoint) {
-                color = ChatFormatting.YELLOW.getColor(127).getRGB();
+                color = ColorCode.YELLOW.getColor(127).getRGB();
             }
             Gui.drawRect(x-4, y-4, x+4, y+4, color);
         }
@@ -449,11 +456,10 @@ public class LocationEditGui extends GuiScreen {
 
         private Edge thisSnapEdge;
         private Edge otherSnapEdge;
-//        private Edge coordinateEdge;
         private float snapValue;
         private Map<Edge, Float> rectangle = new EnumMap<>(Edge.class);
 
-        public Snap(float left, float top, float right, float bottom, Edge thisSnapEdge, Edge otherSnapEdge, float snapValue) {//Edge coordinateEdge) {
+        public Snap(float left, float top, float right, float bottom, Edge thisSnapEdge, Edge otherSnapEdge, float snapValue) {
             rectangle.put(Edge.LEFT, left);
             rectangle.put(Edge.TOP, top);
             rectangle.put(Edge.RIGHT, right);
@@ -464,7 +470,6 @@ public class LocationEditGui extends GuiScreen {
 
             this.otherSnapEdge = otherSnapEdge;
             this.thisSnapEdge = thisSnapEdge;
-//            this.coordinateEdge = coordinateEdge;
             this.snapValue = snapValue;
         }
 

@@ -2,9 +2,9 @@ package codes.biscuit.skyblockaddons.asm.hooks;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.asm.utils.ReturnValue;
-import codes.biscuit.skyblockaddons.utils.Backpack;
-import codes.biscuit.skyblockaddons.utils.BackpackManager;
-import codes.biscuit.skyblockaddons.utils.CooldownManager;
+import codes.biscuit.skyblockaddons.features.backpacks.Backpack;
+import codes.biscuit.skyblockaddons.features.backpacks.BackpackManager;
+import codes.biscuit.skyblockaddons.features.cooldowns.CooldownManager;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.utils.InventoryUtils;
 import net.minecraft.client.Minecraft;
@@ -65,7 +65,7 @@ public class GuiScreenHook {
             if (backpack != null) {
                 backpack.setX(x);
                 backpack.setY(y);
-                if (isFreezeKeyDown(main) && System.currentTimeMillis() - lastBackpackFreezeKey > 500) {
+                if (isFreezeKeyDown() && System.currentTimeMillis() - lastBackpackFreezeKey > 500) {
                     lastBackpackFreezeKey = System.currentTimeMillis();
                     GuiContainerHook.setFreezeBackpack(!GuiContainerHook.isFreezeBackpack());
                     main.getUtils().setBackpackToPreview(backpack);
@@ -82,7 +82,9 @@ public class GuiScreenHook {
         }
     }
 
-    private static boolean isFreezeKeyDown(SkyblockAddons main) {
+    private static boolean isFreezeKeyDown() {
+        SkyblockAddons main = SkyblockAddons.getInstance();
+
         if (main.getFreezeBackpackKey().isKeyDown()) return true;
         if (main.getFreezeBackpackKey().isPressed()) return true;
         try {

@@ -1,7 +1,7 @@
 package codes.biscuit.skyblockaddons.gui.buttons;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
+import codes.biscuit.skyblockaddons.utils.ColorCode;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.GlStateManager;
@@ -107,9 +107,9 @@ public class ButtonSelect extends GuiButton {
         drawRect(endX - height, yPosition, endX, yPosition + height, rightColor);
 
         // inside text
-        drawCenteredString(minecraft.fontRendererObj, trimmedName, xPosition + width / 2, yPosition + height / 4, ChatFormatting.WHITE.getRGB());
+        drawCenteredString(minecraft.fontRendererObj, trimmedName, xPosition + width / 2, yPosition + height / 4, ColorCode.WHITE.getRGB());
         // description
-        drawCenteredString(minecraft.fontRendererObj, description, xPosition + width / 2, yPosition + height + 2, ChatFormatting.GRAY.getRGB());
+        drawCenteredString(minecraft.fontRendererObj, description, xPosition + width / 2, yPosition + height + 2, ColorCode.GRAY.getRGB());
 
         GlStateManager.color(1, 1, 1, 1);
         minecraft.getTextureManager().bindTexture(ARROW_LEFT);
@@ -126,8 +126,8 @@ public class ButtonSelect extends GuiButton {
                 int rectTop = mouseY + 3;
                 int rectRight = rectLeft + stringWidth + 8;
                 int rectBottom = rectTop + 12;
-                drawRect(rectLeft, rectTop, rectRight, rectBottom, ChatFormatting.BLACK.getRGB());
-                minecraft.fontRendererObj.drawString(name, rectLeft + 4, rectTop+2, ChatFormatting.WHITE.getRGB());
+                drawRect(rectLeft, rectTop, rectRight, rectBottom, ColorCode.BLACK.getRGB());
+                minecraft.fontRendererObj.drawString(name, rectLeft + 4, rectTop+2, ColorCode.WHITE.getRGB());
             }
         }
     }

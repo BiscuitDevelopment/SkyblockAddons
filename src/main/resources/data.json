@@ -1,13 +1,18 @@
 {
   "bannerImageURL": null,
   "bannerLink": null,
+
+  "latestVersion": "1.5.2",
+  "latestBeta": "1.5.2-beta.2",
   "videoLink": "https://youtu.be/_BZMJm6JD4Q",
-  "directDownload": null,
-  "updateJSON": "${updateJSON}",
+  "directDownload": "https://biscuit.codes/mods/skyblockaddons/downloadversion/?v=1.5.2",
+
   "languageJSONFormat": "https://raw.githubusercontent.com/BiscuitDevelopment/SkyblockAddons/development/src/main/resources/lang/%s.json",
+
   "disabledFeatures": {
-    "all": [44],
-    "1.5.0": []
+    "all": [31, 41, 44],
+    "1.5.0": [],
+    "1.5.1": []
   },
 
   "dropSettings": {
@@ -24,7 +29,8 @@
     ],
     "allowDroppingTheseItems": [
       "RUNE",
-      "REMNANT_OF_THE_EYE"
+      "REMNANT_OF_THE_EYE",
+      "DUNGEON_LORE_PAPER"
     ]
   }
 }

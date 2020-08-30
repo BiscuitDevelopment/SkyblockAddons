@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - '**'
-    tags-ignore:
-      # Beta has it's own workflow.
-      - Beta
   pull_request:
   
 jobs:
@@ -24,8 +21,6 @@ jobs:
         java-version: 1.8
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
-    - name: LS
-      run: ls
     - name: Setup ForgeGradle
       run: ./gradlew setupCIWorkspace
     - name: Read mod name
@@ -48,11 +43,3 @@ jobs:
         property: version
     - name: Build with Gradle
       run: ./gradlew build
-    - name: Upload mod jar
-      env:
-        mod_jar_name: ${{ steps.read_mod_name.outputs.value }}-${{ steps.read_mc_version.outputs.value }}-${{ steps.read_mod_version.outputs.value }}
-        mod_jar_path: build/libs/${{ steps.read_mod_name.outputs.value }}-${{ steps.read_mc_version.outputs.value }}-${{ steps.read_mod_version.outputs.value }}.jar
-      uses: actions/upload-artifact@v1.0.0
-      with:
-        name: ${{ env.mod_jar_name }}
-        path: ${{ env.mod_jar_path }}

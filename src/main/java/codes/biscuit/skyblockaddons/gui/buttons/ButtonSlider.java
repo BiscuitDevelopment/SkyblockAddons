@@ -1,8 +1,7 @@
 package codes.biscuit.skyblockaddons.gui.buttons;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.utils.nifty.ChatFormatting;
-import codes.biscuit.skyblockaddons.utils.nifty.reflection.MinecraftReflection;
+import codes.biscuit.skyblockaddons.utils.ColorCode;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.GlStateManager;
@@ -19,17 +18,18 @@ public class ButtonSlider extends GuiButton {
     private float sliderValue;
     private boolean dragging;
 
-    private SkyblockAddons main;
+    private SkyblockAddons main = SkyblockAddons.getInstance();
 
     private OnSliderChangeCallback sliderCallback;
 
-    public ButtonSlider(double x, double y, int width, int height, SkyblockAddons main, float initialValue,
+    private String prefix = null;
+
+    public ButtonSlider(double x, double y, int width, int height, float initialValue,
                         float min, float max, float step, OnSliderChangeCallback sliderCallback) {
         super(0, (int)x, (int)y, "");
         this.sliderValue = 0;
         this.displayString = "";
         this.sliderValue = initialValue;
-        this.main = main;
         this.width = width;
         this.height = height;
         this.sliderCallback = sliderCallback;
@@ -61,7 +61,7 @@ public class ButtonSlider extends GuiButton {
         } else if (this.hovered) {
             j = 16777120;
         }
-        MinecraftReflection.FontRenderer.drawCenteredString(this.displayString, this.xPosition + this.width / 2, this.yPosition + (this.height - 8) / 2, j);
+        drawCenteredString(mc.fontRendererObj, this.displayString, this.xPosition + this.width / 2, this.yPosition + (this.height - 8) / 2, j);
     }
 
     protected int getHoverState(boolean mouseOver) {
@@ -78,7 +78,7 @@ public class ButtonSlider extends GuiButton {
 
             mc.getTextureManager().bindTexture(buttonTextures);
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-            drawRect(this.xPosition + (int) (this.sliderValue * (float) (this.width - 8))+1, this.yPosition, this.xPosition + (int) (this.sliderValue * (float) (this.width - 8))+7, this.yPosition + this.height, ChatFormatting.GRAY.getRGB());
+            drawRect(this.xPosition + (int) (this.sliderValue * (float) (this.width - 8))+1, this.yPosition, this.xPosition + (int) (this.sliderValue * (float) (this.width - 8))+7, this.yPosition + this.height, ColorCode.GRAY.getRGB());
         }
     }
 
@@ -108,12 +108,18 @@ public class ButtonSlider extends GuiButton {
 
     public void valueUpdated() {
         sliderCallback.sliderUpdated(sliderValue);
-        this.displayString = String.valueOf(getRoundedValue(denormalizeScale(sliderValue)));
+        this.displayString = (prefix != null ? prefix : "") + getRoundedValue(denormalizeScale(sliderValue));
     }
 
     public abstract static class OnSliderChangeCallback {
 
         public abstract void sliderUpdated(float value);
+    }
+
+    public ButtonSlider setPrefix(String text) {
+        prefix = text;
+        this.displayString = prefix + getRoundedValue(denormalizeScale(sliderValue));
+        return this;
     }
 }
 
