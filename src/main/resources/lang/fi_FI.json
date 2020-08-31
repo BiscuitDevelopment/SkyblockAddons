@@ -39,7 +39,7 @@
     "darkAuctionTimer": "Pimeän huutokaupan ajastin",
     "magmaBossTimer": "Magma-johtajan ajastin",
     "itemPickupLog": "Kerättyjen esineiden loki",
-    "avoidPlacingEnchantedItems": "Vältä lumottujen tavaroiden asettamista maahan",
+    "avoidPlacingEnchantedItems": "Vältä lumottujen esineiden asettamista maahan",
     "avoidBreakingStems": "Vältä varsien rikkomista",
     "stopBowChargeFromResetting": "Estä jousen latauksen nollaantumasta",
     "preventMovementOnDeath": "Estä kävely kuoleman jälkeen",
@@ -85,7 +85,7 @@
       "detailed": "Yksityiskohtainen",
       "compact": "Tiivis"
     },
-    "disableMagicalSoupMessage": "Poista Magical Mushroom keiton viestit",
+    "disableMagicalSoupMessage": "Poista Magical Mushroom -keiton viestit",
     "zealotCounter": "Zealotlaskin - Zealottien määrä viime Eye:n jälkeen",
     "tickerChargesDisplay": "Tikkien/Latausten näyttäminen",
     "tab": {
@@ -130,7 +130,7 @@
     "changeZealotColor": "Vaihda Zealotin Väriä",
     "hideSvenPupNametags": "Piilota Svenin koiranpentujen nimet",
     "turnAllFeaturesChroma": "Aseta kaikki ominaisuuden varinvaihtotilaan",
-    "dungeonMapDisplay": "Dungeon Map Display",
+    "dungeonMapDisplay": "Näytä Dungeon-kartta",
     "rotateMap": "Käännä karttaa pelaajan mukaan",
     "centerRotationOnYourPlayer": "Keskitä kierto pelaajasi ympärille",
     "mapZoom": "Kartan suurennus",
@@ -145,8 +145,8 @@
     "showItemDungeonFloor": "Näytä kerros, josta Dungeon esine saatiin",
     "showDungeonMilestone": "Näytä Dungeon virstanpylväs",
     "dungeonsCollectedEssencesDisplay": "Näytä Dungeoneista kerätyt esanssit",
-    "stopBonzoStaffSounds": "Stop Bonzo's Staff Sounds",
-    "showRarityUpgraded": "Show if Item's Rarity has been Upgraded"
+    "stopBonzoStaffSounds": "Poista Bonzo's Staffin äänet",
+    "showRarityUpgraded": "Näytä, jos esineen harvinaisuus on päivitetty"
   },
   "messages": {
     "dropConfirmation": "Pudota tämä esine uudelleen vahvistaaksesi!",
@@ -156,7 +156,7 @@
     "minionCannotReach": "%type% kätyri ei yllä ja on lopettanut spawnaamisen!",
     "minionIsFull": "Kätyri saarellasi on täynnä!",
     "typeEnchantmentsHere": "Kirjoita %type% tähän!",
-    "separateMultiple": "Erota useat pilkuilla.",
+    "separateMultiple": "Erota useammat pilkuilla.",
     "enchantsToMatch": "Löydettävä %type%:",
     "enchantsToExclude": "Pois jätettävät %type%:",
     "inventoryTypes": {
@@ -222,7 +222,7 @@
     "titleZealots": "Zealotit",
     "descriptionZealots": "Näyttää sinun Zealot laskurin",
     "titleItem": "Kädessä oleva esine",
-    "descriptionItem": "Näytä kädessä olevan esineen nimen",
+    "descriptionItem": "Näytä kädessäsi olevan esineen nimen",
     "titleProfile": "Profiili",
     "descriptionProfile": "Näyttää profiilinimesi",
     "titleTime": "Skyblock aika",
@@ -267,9 +267,9 @@
     "sba.set.zealotCounter.totalZealots": "Aseta Zealottien kokonaismäärä %number%!",
     "sba.set.zealotCounter.wrongUsage": "Virheellinen valinta! Valitse %options%.",
     "sba.set.zealotCounter.zealots": "Aseta nykyinen Zealot määrä %number%!",
-    "sba.toggleActionBarLogging": "Toggle logging action bar messages",
-    "sba.toggleActionBarLogging.disabled": "Action bar messages will no longer be logged.",
-    "sba.toggleActionBarLogging.enabled": "Action bar messages will now be logged.",
+    "sba.toggleActionBarLogging": "Vaihda päälle lokin toimintopalkin viestit",
+    "sba.toggleActionBarLogging.disabled": "Toimintopalkin viestejä ei enään kirjata lokiin.",
+    "sba.toggleActionBarLogging.enabled": "Toimintopalkin viestit kirjataan lokiin.",
     "sba.wrongUsage.generic": "Väärä käyttö!",
     "sba.wrongUsage.subCommandNotFound": "Alakomentoa %sub-command% ei löydetty."
   },
