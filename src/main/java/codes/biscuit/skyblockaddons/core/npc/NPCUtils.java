@@ -2,6 +2,7 @@ package codes.biscuit.skyblockaddons.core.npc;
 
 import codes.biscuit.skyblockaddons.utils.TextUtils;
 import lombok.Getter;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.init.Blocks;
 import net.minecraft.inventory.IInventory;
@@ -42,9 +43,9 @@ public class NPCUtils {
                 return true;
             }
 
-            List<String> lore = itemStack.getTooltip(null, false);
-            for (String loreLine : lore) {
-                if (TextUtils.stripColor(loreLine).equals("Click to buyback!")) {
+            List<String> tooltip = itemStack.getTooltip(Minecraft.getMinecraft().thePlayer, false);
+            for (String line : tooltip) {
+                if (TextUtils.stripColor(line).equals("Click to buyback!")) {
                     return true;
                 }
             }

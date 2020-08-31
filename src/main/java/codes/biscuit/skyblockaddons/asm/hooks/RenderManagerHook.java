@@ -28,7 +28,7 @@ public class RenderManagerHook {
             if (main.getConfigValues().isEnabled(Feature.HIDE_BONES) && main.getInventoryUtils().isWearingSkeletonHelmet()) {
                 if (entityIn instanceof EntityItem && entityIn.ridingEntity instanceof EntityArmorStand && entityIn.ridingEntity.isInvisible()) {
                     EntityItem entityItem = (EntityItem) entityIn;
-                    if (entityItem.getEntityItem() != null && entityItem.getEntityItem().getItem().equals(Items.bone)) {
+                    if (entityItem.getEntityItem().getItem().equals(Items.bone)) {
                         returnValue.cancel();
                     }
                 }
