@@ -235,17 +235,21 @@ public class GuiChestHook {
     }
 
     public static boolean keyTyped(char typedChar, int keyCode) { // return whether to continue (super.keyTyped(typedChar, keyCode);)
-        if ((EnumUtils.InventoryType.getCurrentInventoryType() == EnumUtils.InventoryType.ENCHANTMENT_TABLE ||
-                EnumUtils.InventoryType.getCurrentInventoryType() == EnumUtils.InventoryType.REFORGE_ANVIL)) {
-            if (keyCode != Minecraft.getMinecraft().gameSettings.keyBindInventory.getKeyCode() || (!textFieldMatch.isFocused() && !textFieldExclusions.isFocused())) {
+        if (SkyblockAddons.getInstance().getUtils().isOnSkyblock()) {
+            if ((EnumUtils.InventoryType.getCurrentInventoryType() == EnumUtils.InventoryType.ENCHANTMENT_TABLE ||
+                    EnumUtils.InventoryType.getCurrentInventoryType() == EnumUtils.InventoryType.REFORGE_ANVIL)) {
+                if (keyCode != Minecraft.getMinecraft().gameSettings.keyBindInventory.getKeyCode() || (!textFieldMatch.isFocused() && !textFieldExclusions.isFocused())) {
+                    processTextFields(typedChar, keyCode);
+                    return true;
+                }
                 processTextFields(typedChar, keyCode);
+            } else {
                 return true;
             }
-            processTextFields(typedChar, keyCode);
+            return false;
         } else {
             return true;
         }
-        return false;
     }
 
     private static void processTextFields(char typedChar, int keyCode) {
@@ -261,55 +265,58 @@ public class GuiChestHook {
 
     public static void handleMouseClick(Slot slotIn, Container slots, IInventory lowerChestInventory, ReturnValue<?> returnValue) {
         SkyblockAddons main = SkyblockAddons.getInstance();
-        if (main.getUtils().getEnchantmentMatches().size() > 0) {
-            if (slotIn != null && !slotIn.inventory.equals(Minecraft.getMinecraft().thePlayer.inventory) && slotIn.getHasStack()) {
-                if (slotIn.getSlotIndex() == 13 && EnumUtils.InventoryType.getCurrentInventoryType() == EnumUtils.InventoryType.ENCHANTMENT_TABLE) {
-                    ItemStack[] enchantBottles = {slots.getSlot(29).getStack(), slots.getSlot(31).getStack(), slots.getSlot(33).getStack()};
-                    for (ItemStack bottle : enchantBottles) {
-                        if (bottle != null && bottle.hasDisplayName()) {
-                            if (bottle.getDisplayName().startsWith(ColorCode.GREEN + "Enchant Item")) {
-                                Minecraft mc = Minecraft.getMinecraft();
-                                List<String> toolip = bottle.getTooltip(mc.thePlayer, false);
-                                if (toolip.size() > 2) {
-                                    String[] lines = toolip.get(2).split(Pattern.quote("* "));
 
-                                    if (lines.length > 1) {
-                                        String enchantLine = lines[1];
-                                        if (main.getUtils().enchantReforgeMatches(enchantLine)) {
-                                            main.getUtils().playLoudSound("random.orb", 0.1);
-                                            returnValue.cancel();
+        if (main.getUtils().isOnSkyblock()) {
+            if (main.getUtils().getEnchantmentMatches().size() > 0) {
+                if (slotIn != null && !slotIn.inventory.equals(Minecraft.getMinecraft().thePlayer.inventory) && slotIn.getHasStack()) {
+                    if (slotIn.getSlotIndex() == 13 && EnumUtils.InventoryType.getCurrentInventoryType() == EnumUtils.InventoryType.ENCHANTMENT_TABLE) {
+                        ItemStack[] enchantBottles = {slots.getSlot(29).getStack(), slots.getSlot(31).getStack(), slots.getSlot(33).getStack()};
+                        for (ItemStack bottle : enchantBottles) {
+                            if (bottle != null && bottle.hasDisplayName()) {
+                                if (bottle.getDisplayName().startsWith(ColorCode.GREEN + "Enchant Item")) {
+                                    Minecraft mc = Minecraft.getMinecraft();
+                                    List<String> toolip = bottle.getTooltip(mc.thePlayer, false);
+                                    if (toolip.size() > 2) {
+                                        String[] lines = toolip.get(2).split(Pattern.quote("* "));
+
+                                        if (lines.length > 1) {
+                                            String enchantLine = lines[1];
+                                            if (main.getUtils().enchantReforgeMatches(enchantLine)) {
+                                                main.getUtils().playLoudSound("random.orb", 0.1);
+                                                returnValue.cancel();
+                                            }
                                         }
                                     }
+                                } else if (bottle.getDisplayName().startsWith(ColorCode.RED + "Enchant Item")) {
+                                    // Stop player from removing item before the enchants have even loaded.
+                                    returnValue.cancel();
                                 }
-                            } else if (bottle.getDisplayName().startsWith(ColorCode.RED + "Enchant Item")) {
-                                // Stop player from removing item before the enchants have even loaded.
-                                returnValue.cancel();
                             }
                         }
-                    }
-                } else if (slotIn.getSlotIndex() == 22 && EnumUtils.InventoryType.getCurrentInventoryType() == EnumUtils.InventoryType.REFORGE_ANVIL) {
-                    Slot itemSlot = slots.getSlot(13);
-                    if (itemSlot != null && itemSlot.getHasStack()) {
-                        ItemStack item = itemSlot.getStack();
-                        if (item.hasDisplayName()) {
-                            String reforge = ItemUtils.getReforge(item);
-                            if (reforge != null) {
-                                if (main.getUtils().enchantReforgeMatches(reforge)) {
-                                    main.getUtils().playLoudSound("random.orb", 0.1);
-                                    returnValue.cancel();
+                    } else if (slotIn.getSlotIndex() == 22 && EnumUtils.InventoryType.getCurrentInventoryType() == EnumUtils.InventoryType.REFORGE_ANVIL) {
+                        Slot itemSlot = slots.getSlot(13);
+                        if (itemSlot != null && itemSlot.getHasStack()) {
+                            ItemStack item = itemSlot.getStack();
+                            if (item.hasDisplayName()) {
+                                String reforge = ItemUtils.getReforge(item);
+                                if (reforge != null) {
+                                    if (main.getUtils().enchantReforgeMatches(reforge)) {
+                                        main.getUtils().playLoudSound("random.orb", 0.1);
+                                        returnValue.cancel();
+                                    }
                                 }
                             }
                         }
                     }
                 }
             }
-        }
 
-        if (main.getConfigValues().isEnabled(Feature.STOP_DROPPING_SELLING_RARE_ITEMS) && !main.getUtils().isInDungeon() &&
-                lowerChestInventory.hasCustomName() && NPCUtils.isSellMerchant(lowerChestInventory)
-                && slotIn != null && slotIn.inventory instanceof InventoryPlayer) {
-            if (!main.getUtils().getItemDropChecker().canDropItem(slotIn)) {
-                returnValue.cancel();
+            if (main.getConfigValues().isEnabled(Feature.STOP_DROPPING_SELLING_RARE_ITEMS) && !main.getUtils().isInDungeon() &&
+                    lowerChestInventory.hasCustomName() && NPCUtils.isSellMerchant(lowerChestInventory)
+                    && slotIn != null && slotIn.inventory instanceof InventoryPlayer) {
+                if (!main.getUtils().getItemDropChecker().canDropItem(slotIn)) {
+                    returnValue.cancel();
+                }
             }
         }
     }
