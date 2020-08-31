@@ -182,7 +182,7 @@
     "clickMoreTimes": "Klikkaa/pudota tämä esine vielä %times% kertaa jos todella haluat tehdä tämän.",
     "clickOneMoreTime": "Klikkaa/pudota tämä esine vielä yhden kerran jos todella haluat tehdä tämän.",
     "cancelledDeepCaverns": "Ominaisuus on estänyt sinua kaivamasta tätä palikkaa.",
-    "featureDisabled": "Toiminto pois käytöstä",
+    "featureDisabled": "Toiminto estetty",
     "anvilUses": "Alasimen käytöt: %uses%",
     "specialZealotFound": "Erityinen Zealot!",
     "blockIncompletePatterns": "Estä craftaus epätäydellisillä muodoilla (suositeltu)",
