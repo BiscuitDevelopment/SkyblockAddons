@@ -33,6 +33,7 @@ public class NPCUtils {
      * @return {@code true} if the NPC is a merchant with buying and selling capabilities, {@code false} otherwise
      */
     public static boolean isSellMerchant(IInventory inventory) {
+        //TODO Fix for Hypixel localization
         int sellSlot = inventory.getSizeInventory() - 4 - 1;
         ItemStack itemStack = inventory.getStackInSlot(sellSlot);
 
