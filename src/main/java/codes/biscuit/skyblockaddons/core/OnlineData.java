@@ -22,6 +22,8 @@ public class OnlineData {
 
     private DropSettings dropSettings;
 
+    private Map<String, DungeonData> dungeons;
+
     @Getter
     public static class DropSettings {
 
@@ -31,5 +33,11 @@ public class OnlineData {
         private List<String> dontDropTheseItems;
 
         private List<String> allowDroppingTheseItems;
+    }
+
+    @Getter
+    public static class DungeonData {
+        private Map<Integer, List<String>> bosses;
+        private Map<String, String> bossDisplayName;
     }
 }

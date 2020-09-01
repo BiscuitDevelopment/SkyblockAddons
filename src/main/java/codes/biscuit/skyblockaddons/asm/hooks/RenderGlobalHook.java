@@ -201,6 +201,10 @@ public class RenderGlobalHook {
     }
 
     public static int getOutlineColor(EntityPlayer player) {
+        SkyblockAddons main = SkyblockAddons.getInstance();
+        if (main.getUtils().isInDungeon() && main.getConfigValues().isEnabled(Feature.GLOW_FOR_DUNGEON_BOSSES) && main.getDungeonUtils().getBosses().contains(player.getName()))
+            return Minecraft.getMinecraft().fontRendererObj.getColorCode('f');
+
         ScorePlayerTeam scoreplayerteam = (ScorePlayerTeam)player.getTeam();
 
         if (scoreplayerteam != null) {

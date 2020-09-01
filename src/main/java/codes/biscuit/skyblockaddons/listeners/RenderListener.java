@@ -1853,7 +1853,9 @@ public class RenderListener {
             }
         }
 
-        if (main.getUtils().isOnSkyblock() && main.getUtils().isInDungeon() && main.getConfigValues().isEnabled(Feature.SHOW_CRITICAL_DUNGEONS_TEAMMATES)) {
+        if (main.getUtils().isOnSkyblock()
+                && main.getUtils().isInDungeon()
+                && (main.getConfigValues().isEnabled(Feature.SHOW_CRITICAL_DUNGEONS_TEAMMATES) || main.getConfigValues().isEnabled(Feature.GLOW_FOR_DUNGEON_BOSSES))) {
             Entity renderViewEntity = mc.getRenderViewEntity();
 
             double viewX = renderViewEntity.prevPosX + (renderViewEntity.posX - renderViewEntity.prevPosX) * (double) partialTicks;
@@ -1867,12 +1869,9 @@ public class RenderListener {
                     continue;
                 }
 
-                if (!main.getDungeonUtils().getPlayers().containsKey(entity.getName())) {
-                    continue;
-                }
+                boolean isBoss = main.getConfigValues().isEnabled(Feature.GLOW_FOR_DUNGEON_BOSSES) && !entity.isInvisible() && main.getDungeonUtils().getBosses().contains(entity.getName());
 
-                DungeonPlayer dungeonPlayer = main.getDungeonUtils().getPlayers().get(entity.getName());
-                if (dungeonPlayer.isGhost() || (!dungeonPlayer.isCritical() && !dungeonPlayer.isLow())) {
+                if (!isBoss && !main.getDungeonUtils().getPlayers().containsKey(entity.getName())) {
                     continue;
                 }
 
@@ -1883,6 +1882,10 @@ public class RenderListener {
                 x -= viewX;
                 y -= viewY;
                 z -= viewZ;
+
+                if (isBoss) {
+                    y += 0.35F;
+                }
 
                 if (entity.isSneaking()) {
                     y -= 0.65F;
@@ -1916,25 +1919,36 @@ public class RenderListener {
                 GlStateManager.color(1, 1, 1, 1);
                 GlStateManager.enableAlpha();
 
-                Tessellator tessellator = Tessellator.getInstance();
-                WorldRenderer worldrenderer = tessellator.getWorldRenderer();
+                if (isBoss) {
+                    // Dungeon Boss
+                    final String nameOverlay = ColorCode.RED + main.getDungeonUtils().getBossDisplayName().getOrDefault(entity.getName(), entity.getName());
 
-                mc.getTextureManager().bindTexture(CRITICAL);
-                worldrenderer.begin(7, DefaultVertexFormats.POSITION_TEX);
-                worldrenderer.pos(-iconSize / 2F, -iconSize / 2f, 0).tex(0, 0).endVertex();
-                worldrenderer.pos(-iconSize / 2F, iconSize / 2F, 0).tex(0, 1).endVertex();
-                worldrenderer.pos(iconSize / 2F, iconSize / 2F, 0).tex(1, 1).endVertex();
-                worldrenderer.pos(iconSize / 2F, -iconSize / 2F, 0).tex(1, 0).endVertex();
-                tessellator.draw();
+                    mc.fontRendererObj.drawString(nameOverlay, -mc.fontRendererObj.getStringWidth(nameOverlay) / 2F, iconSize / 2F + 13, -1, true);
+                } else {
+                    // Dungeon Player
+                    DungeonPlayer dungeonPlayer = main.getDungeonUtils().getPlayers().get(entity.getName());
+                    if (!dungeonPlayer.isGhost() && (dungeonPlayer.isCritical() || dungeonPlayer.isLow())) {
+                        Tessellator tessellator = Tessellator.getInstance();
+                        WorldRenderer worldrenderer = tessellator.getWorldRenderer();
 
-                String text = "";
-                if (dungeonPlayer.isLow()) {
-                    text = "LOW";
-                } else if (dungeonPlayer.isCritical()) {
-                    text = "CRITICAL";
+                        mc.getTextureManager().bindTexture(CRITICAL);
+                        worldrenderer.begin(7, DefaultVertexFormats.POSITION_TEX);
+                        worldrenderer.pos(-iconSize / 2F, -iconSize / 2f, 0).tex(0, 0).endVertex();
+                        worldrenderer.pos(-iconSize / 2F, iconSize / 2F, 0).tex(0, 1).endVertex();
+                        worldrenderer.pos(iconSize / 2F, iconSize / 2F, 0).tex(1, 1).endVertex();
+                        worldrenderer.pos(iconSize / 2F, -iconSize / 2F, 0).tex(1, 0).endVertex();
+                        tessellator.draw();
+
+                        String text = "";
+                        if (dungeonPlayer.isLow()) {
+                            text = "LOW";
+                        } else if (dungeonPlayer.isCritical()) {
+                            text = "CRITICAL";
+                        }
+
+                        mc.fontRendererObj.drawString(text, -mc.fontRendererObj.getStringWidth(text) / 2F, iconSize / 2F + 2, -1, true);
+                    }
                 }
-
-                mc.fontRendererObj.drawString(text, -mc.fontRendererObj.getStringWidth(text) / 2F, iconSize / 2F + 2, -1, true);
 
                 GlStateManager.enableDepth();
                 GlStateManager.depthMask(true);

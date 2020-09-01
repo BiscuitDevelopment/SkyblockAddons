@@ -34,5 +34,46 @@
       "WINTER_DISC",
       "DUNGEON_STONE"
     ]
+  },
+  
+  "dungeons": {
+    "catacombs": {
+      "bosses": {
+        "0": [
+          "Lost Adventurer",
+          "Diamond Guy"
+        ],
+        "1": [
+          "Lost Adventurer",
+          "Diamond Guy",
+          "Bonzo"
+        ],
+        "2": [
+          "Lost Adventurer",
+          "Diamond Guy",
+          "Scarf"
+        ],
+        "3": [
+          "Lost Adventurer",
+          "Diamond Guy",
+          "Shadow Assassin",
+          "King Midas",
+          "Bonzo",
+          "The Professor"
+        ],
+        "4": [
+          "Lost Adventurer",
+          "Diamond Guy",
+          "Shadow Assassin",
+          "King Midas",
+          "Bonzo",
+          "Scarf",
+          "Spirit Bear"
+        ]
+      },
+      "bossDisplayName": {
+        "Diamond Guy": "Angry Archaeologist"
+      }
+    }
   }
 }

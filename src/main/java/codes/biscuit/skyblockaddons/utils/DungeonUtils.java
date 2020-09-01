@@ -6,12 +6,16 @@ import codes.biscuit.skyblockaddons.core.DungeonMilestone;
 import codes.biscuit.skyblockaddons.core.DungeonPlayer;
 import codes.biscuit.skyblockaddons.core.EssenceType;
 import codes.biscuit.skyblockaddons.core.Location;
+import codes.biscuit.skyblockaddons.core.OnlineData;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -46,6 +50,12 @@ public class DungeonUtils {
     /** The current floor of the dungeon game */
     @Getter private int floor = FLOOR_NONE;
 
+    /** The current bosses of the dungeon floor */
+    @Getter private Set<String> bosses = new TreeSet<>();
+
+    /** The display name map of dungeon boss */
+    @Getter private Map<String, String> bossDisplayName = new HashMap<>();
+
     private boolean initialized = false;
     private EssenceType lastEssenceType;
     private int lastEssenceAmount;
@@ -59,7 +69,12 @@ public class DungeonUtils {
             return;
         initialized = true;
 
-        SkyblockAddons.getInstance().getUtils().setLocation(Location.DUNGEON_CATACOMBS);
+        SkyblockAddons main = SkyblockAddons.getInstance();
+        main.getUtils().setLocation(Location.DUNGEON_CATACOMBS);
+
+        OnlineData.DungeonData dungeonData = main.getOnlineData().getDungeons().get("catacombs");
+        bosses.addAll(dungeonData.getBosses().getOrDefault(floor, new ArrayList<>()));
+        bossDisplayName.putAll(dungeonData.getBossDisplayName());
     }
 
     /**
@@ -74,6 +89,8 @@ public class DungeonUtils {
         dungeonMilestone = null;
         collectedEssences.clear();
         players.clear();
+        bosses.clear();
+        bossDisplayName.clear();
     }
 
     /**
@@ -94,7 +111,7 @@ public class DungeonUtils {
      */
     public boolean parseLocation(String location) {
         Matcher matcher = PATTERN_LOCATION.matcher(location);
-        if (!matcher.matches())
+        if (!matcher.lookingAt())
             return false;
 
         String rawFloor = matcher.group(1);
@@ -119,7 +136,6 @@ public class DungeonUtils {
 
         DungeonClass dungeonClass = DungeonClass.fromDisplayName(matcher.group(1));
         return new DungeonMilestone(dungeonClass, matcher.group(2), matcher.group(3));
-
     }
 
     /**

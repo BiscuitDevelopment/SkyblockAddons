@@ -30,17 +30,20 @@ public class RendererLivingEntityHook {
 
     public static int setOutlineColor(EntityLivingBase entity, int originalColor) {
         SkyblockAddons main = SkyblockAddons.getInstance();
-        if (main.getConfigValues().isEnabled(Feature.SHOW_CRITICAL_DUNGEONS_TEAMMATES) &&
-                main.getUtils().isInDungeon() && main.getDungeonUtils().getPlayers().containsKey(entity.getName())) {
-            DungeonPlayer dungeonPlayer = main.getDungeonUtils().getPlayers().get(entity.getName());
+        if (main.getUtils().isInDungeon()) {
+            if (main.getConfigValues().isEnabled(Feature.GLOW_FOR_DUNGEON_BOSSES) && main.getDungeonUtils().getBosses().contains(entity.getName()))
+                return Minecraft.getMinecraft().fontRendererObj.getColorCode('4');
 
-            if (dungeonPlayer.isCritical()){
-                return Minecraft.getMinecraft().fontRendererObj.getColorCode('c');
-            } else if (dungeonPlayer.isLow()){
-                return Minecraft.getMinecraft().fontRendererObj.getColorCode('e');
+            if (main.getConfigValues().isEnabled(Feature.SHOW_CRITICAL_DUNGEONS_TEAMMATES) && main.getDungeonUtils().getPlayers().containsKey(entity.getName())) {
+                DungeonPlayer dungeonPlayer = main.getDungeonUtils().getPlayers().get(entity.getName());
+
+                if (dungeonPlayer.isCritical()){
+                    return Minecraft.getMinecraft().fontRendererObj.getColorCode('c');
+                } else if (dungeonPlayer.isLow()){
+                    return Minecraft.getMinecraft().fontRendererObj.getColorCode('e');
+                }
             }
         }
-
         return originalColor;
     }
 }
