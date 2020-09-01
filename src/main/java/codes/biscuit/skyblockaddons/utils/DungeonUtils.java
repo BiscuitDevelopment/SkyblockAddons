@@ -123,6 +123,15 @@ public class DungeonUtils {
     }
 
     /**
+     * Check if the dungeon game didn't start or the players are getting ready.
+     *
+     * @return If the player is in dungeon game but in the lobby state (Aka the game didn't start yet).
+     */
+    public boolean isInLobby() {
+        return initialized && SkyblockAddons.getInstance().getUtils().getLocation() == Location.DUNGEON_CATACOMBS;
+    }
+
+    /**
      * This method parses the class milestone attained from the chat message the player receives when they attain a milestone.
      *
      * @param message the chat message received

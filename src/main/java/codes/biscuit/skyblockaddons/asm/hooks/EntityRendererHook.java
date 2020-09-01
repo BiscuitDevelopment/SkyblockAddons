@@ -39,7 +39,7 @@ public class EntityRendererHook {
             list.removeIf(listEntity -> listEntity instanceof EntityItemFrame &&
                     (((EntityItemFrame)listEntity).getDisplayedItem() != null || Minecraft.getMinecraft().thePlayer.getHeldItem() == null));
         }
-        if (!main.getUtils().isInDungeon() && main.getConfigValues().isEnabled(Feature.HIDE_PLAYERS_NEAR_NPCS)) {
+        if ((!main.getDungeonUtils().isInLobby() && !main.getUtils().isInDungeon()) && main.getConfigValues().isEnabled(Feature.HIDE_PLAYERS_NEAR_NPCS)) {
             list.removeIf(entity -> entity instanceof EntityOtherPlayerMP && !NPCUtils.isNPC(entity) && NPCUtils.isNearNPC(entity));
         }
     }
