@@ -260,7 +260,7 @@
     "sba.help.help.command": "الأمر الفرعي للحصول على الاستخدام المفصل لـه",
     "sba.help.set.zealotCounter": "يضع العد في عداد الزيلوتس يدوياً.",
     "sba.help.set.zealotCounter.eyes": "عدد عيون الأستدعاء في مدى الحياه",
-    "sba.help.set.zealotCounter.totalZealots": "قتل الزيلوتس مدى الحياة",
+    "sba.help.set.zealotCounter.totalZealots": "الزيلوتس الذي قتلوا في مدى الحياة",
     "sba.help.set.zealotCounter.zealots": "الزيلوتس الذي قتلوا منذ آخر عين استدعاء",
     "sba.set.zealotCounter": "عيّن عدد الزيلوت يدوياً",
     "sba.set.zealotCounter.eyes": "وضع مجموع استدعاء العد العين إلى %number%!",
