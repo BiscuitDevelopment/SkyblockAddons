@@ -16,24 +16,27 @@ import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * This class contains utility methods for backpacks and stores the color of the backpack the player has open.
+ */
 public class BackpackManager {
 
-    private static BackpackColor openedBackpackColor = null;
     private static final Pattern BACKPACK_ID_PATTERN = Pattern.compile("([A-Z]+)_BACKPACK");
 
-    public static boolean isBackpack(ItemStack stack) {
-        if (stack == null) return false;
-        String id = ItemUtils.getSkyBlockItemID(stack);
-        if (id == null) return false;
-        return BACKPACK_ID_PATTERN.matcher(id).matches();
-    }
+    private static BackpackColor openedBackpackColor = null;
 
+    /**
+     * Creates and returns a {@code Backpack} object representing the given {@code ItemStack} if it is a backpack
+     *
+     * @param stack the {@code ItemStack} to create a {@code Backpack} instance from
+     * @return a {@code Backpack} object representing {@code stack} if it is a backpack, or {@code null} otherwise
+     */
     public static Backpack getFromItem(ItemStack stack) {
         if (stack == null) return null;
         SkyblockAddons main = SkyblockAddons.getInstance();
         String id = ItemUtils.getSkyBlockItemID(stack);
         if (id != null) {
-            NBTTagCompound extraAttributes = stack.getTagCompound().getCompoundTag("ExtraAttributes");
+            NBTTagCompound extraAttributes = stack.getSubCompound("ExtraAttributes", false);
             Matcher matcher = BACKPACK_ID_PATTERN.matcher(id);
             boolean matches = matcher.matches();
 
@@ -53,7 +56,7 @@ public class BackpackManager {
                     int length = 0;
                     if (matches) {
                         String backpackType = matcher.group(1);
-                        switch (backpackType) { // because sometimes the size of the tag is not updated (etc. when you upcraft it)
+                        switch (backpackType) { // because sometimes the size of the tag is not updated (eg. when you upgrade it)
                             case "SMALL": length = 9; break;
                             case "MEDIUM": length = 18; break;
                             case "LARGE": length = 27; break;
@@ -96,11 +99,52 @@ public class BackpackManager {
         return null;
     }
 
-    public static void setOpenedBackpackColor(BackpackColor openedBackpackColor) {
-        BackpackManager.openedBackpackColor = openedBackpackColor;
+    /**
+     * Checks if the given {@code ItemStack} is a backpack
+     *
+     * @param stack the {@code ItemStack} to check
+     * @return {@code true} if {@code stack} is a backpack, {@code false} otherwise
+     */
+    public static boolean isBackpack(ItemStack stack) {
+        if (stack == null) return false;
+        String id = ItemUtils.getSkyBlockItemID(stack);
+        if (id == null) return false;
+        return BACKPACK_ID_PATTERN.matcher(id).matches();
     }
 
+    /**
+     * Checks if the given {@code ItemStack} is a backpack that represents its crafting recipe in the recipes menu
+     *
+     * @param stack the {@code ItemStack} to check
+     * @return {@code true} if {@code stack} is a backpack and represents its crafting recipe, or {@code false} otherwise
+     */
+    public static boolean isBackpackCraftingRecipeItem(ItemStack stack) {
+        if (!isBackpack(stack)) {
+            return false;
+        }
+
+        NBTTagCompound extraAttributesTag = stack.getSubCompound("ExtraAttributes", false);
+
+        // If the backpack is being used to represent a crafting recipe, it won't have this key.
+        return extraAttributesTag != null && !extraAttributesTag.hasKey("originTag");
+    }
+
+    /**
+     * Returns the color of the backpack the player currently has open
+     *
+     * @return the color of the backpack the player currently has open
+     */
     public static BackpackColor getOpenedBackpackColor() {
         return openedBackpackColor;
+    }
+
+    /**
+     * <p>Sets {@code openedBackpackColor}</p>
+     * <p>This variable is used when rendering the backpack inventory to change the background color to the backpack's color.</p>
+     *
+     * @param openedBackpackColor the color of the backpack that the player has open
+     */
+    public static void setOpenedBackpackColor(BackpackColor openedBackpackColor) {
+        BackpackManager.openedBackpackColor = openedBackpackColor;
     }
 }
