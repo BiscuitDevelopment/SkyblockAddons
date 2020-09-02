@@ -217,6 +217,9 @@ public class EnumUtils {
         HIDE_WHEN_NOT_IN_CASTLE(SETTING_HIDE_WHEN_NOT_IN_CASTLE, 135),
         ENABLE_PERSONAL_COMPACTOR_PREVIEW(SETTING_SHOW_PERSONAL_COMPACTOR_PREVIEW, 110),
 
+        SHOW_SKILL_IN_PERCENTAGE(SETTING_SHOW_SKILL_IN_PERCENTAGE, 120),
+        DISABLE_ADDED_EXP(SETTING_DISABLE_ADDED_EXP, 121),
+
         DISCORD_RP_STATE(null, 0),
         DISCORD_RP_DETAILS(null, 0),
         ;
@@ -266,7 +269,8 @@ public class EnumUtils {
                  Feature.SHOW_ITEM_DUNGEON_FLOOR, Feature.SHOW_BASE_STAT_BOOST_PERCENTAGE,  Feature.SHOW_RARITY_UPGRADED, Feature.REVENANT_SLAYER_TRACKER,
                 Feature.TARANTULA_SLAYER_TRACKER, Feature.SVEN_SLAYER_TRACKER, Feature.DRAGON_STATS_TRACKER, Feature.SHOW_PERSONAL_COMPACTOR_PREVIEW, Feature.SHOW_EXPERTISE_KILLS),
         IHDEVELOPER("iHDeveloper", "github.com/iHDeveloper", Feature.SHOW_DUNGEON_MILESTONE, Feature.DUNGEONS_COLLECTED_ESSENCES_DISPLAY, Feature.SHOW_DUNGEON_TEAMMATE_NAME_OVERLAY, Feature.DUNGEONS_SECRETS_DISPLAY),
-        TIRELESS_TRAVELER("TirelessTraveler", "github.com/ILikePlayingGames", Feature.DUNGEON_DEATH_COUNTER);
+        TIRELESS_TRAVELER("TirelessTraveler", "github.com/ILikePlayingGames", Feature.DUNGEON_DEATH_COUNTER),
+        KAASBROODJU("kaasbroodju", "github.com/kaasbroodju", Feature.SKILL_BAR, Feature.SHOW_SKILL_PERCENTAGE, Feature.DISABLE_ADDED_EXP);
 
         private Set<Feature> features;
         private String author;

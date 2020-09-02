@@ -44,6 +44,7 @@ public enum Message {
     SETTING_SHOW_ONLY_WHEN_HOLDING_SHIFT(MessageObject.SETTING, "showOnlyWhenHoldingShift"),
     SETTING_MANA_BAR(MessageObject.SETTING, "manaBar"),
     SETTING_HEALTH_BAR(MessageObject.SETTING, "healthBar"),
+    SETTING_SKILL_BAR(MessageObject.SETTING, "skillBar"),
     SETTING_DEFENCE_ICON(MessageObject.SETTING, "defenceIcon"),
     SETTING_MANA_TEXT(MessageObject.SETTING, "manaText"),
     SETTING_HEALTH_TEXT(MessageObject.SETTING, "healthText"),
@@ -160,6 +161,9 @@ public enum Message {
     SETTING_SHOW_DUNGEON_TEAMMATE_NAME_OVERLAY(MessageObject.SETTING, "dungeonsTeammateNameOverlay"),
     SETTING_SHOW_EXPERTISE_KILLS(MessageObject.SETTING, "showExpertiseKills"),
     SETTING_DUNGEONS_SECRETS_DISPLAY(MessageObject.SETTING, "dungeonsSecretsDisplay"),
+
+    SETTING_SHOW_SKILL_IN_PERCENTAGE(MessageObject.SETTING, "showSkillInPercentage"),
+    SETTING_DISABLE_ADDED_EXP(MessageObject.SETTING, "disableAddedExp"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.BACKPACK_STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.BACKPACK_STYLE, "compact"),

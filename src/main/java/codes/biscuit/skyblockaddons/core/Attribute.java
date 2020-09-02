@@ -9,7 +9,9 @@ public enum Attribute {
     HEALTH(100),
     MAX_HEALTH(100),
     MANA(100),
-    MAX_MANA(100);
+    MAX_MANA(100),
+    SKILL(0),
+    MAX_SKILL(100);
 
     private int defaultValue;
 

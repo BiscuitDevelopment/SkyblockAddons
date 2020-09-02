@@ -240,6 +240,28 @@ public class ActionBarParser {
                 }
             }
 
+            String expNumber = matcher.group(3);
+            if (main.getConfigValues().isEnabled(Feature.SHOW_SKILL_PERCENTAGE) ||
+                    main.getConfigValues().isEnabled(Feature.SKILL_BAR)) {
+
+                double currentExp = Double.parseDouble(matcher.group(4).replace(",", ""));
+                double capExp = Double.parseDouble(matcher.group(5).replace(",", ""));
+
+                if (main.getConfigValues().isEnabled(Feature.SHOW_SKILL_PERCENTAGE)) {
+                    expNumber = String.format("%.2f", currentExp / capExp * 100) + "%";
+                }
+
+                if (main.getConfigValues().isEnabled(Feature.SKILL_BAR)) {
+                    setAttribute(Attribute.SKILL, (int) currentExp);
+                    setAttribute(Attribute.MAX_SKILL, (int) capExp);
+                }
+            }
+
+            String addedExp = "";
+            if (main.getConfigValues().isDisabled(Feature.DISABLE_ADDED_EXP)) {
+                addedExp = "+" + matcher.group(1) + " ";
+            }
+
             main.getRenderListener().setSkillText(skillTextBuilder.toString());
             main.getRenderListener().setSkill(EnumUtils.SkillType.getFromString(matcher.group("skillName")));
             main.getRenderListener().setSkillFadeOutTime(System.currentTimeMillis() + 4000);

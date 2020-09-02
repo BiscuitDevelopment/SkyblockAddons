@@ -371,6 +371,8 @@ public class RenderListener {
         float fill;
         if (feature == Feature.MANA_BAR) {
             fill = (float) getAttribute(Attribute.MANA) / getAttribute(Attribute.MAX_MANA);
+        } else if (feature == Feature.SKILL_BAR) {
+            fill = (float) getAttribute(Attribute.SKILL) / getAttribute(Attribute.MAX_SKILL);
         } else {
             fill = (float) getAttribute(Attribute.HEALTH) / getAttribute(Attribute.MAX_HEALTH);
         }
