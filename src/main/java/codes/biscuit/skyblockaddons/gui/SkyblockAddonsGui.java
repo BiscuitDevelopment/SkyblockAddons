@@ -526,6 +526,12 @@ public class SkyblockAddonsGui extends GuiScreen {
     }
 
     @Override
+    public void onResize(Minecraft mcIn, int w, int h) {
+        super.onResize(mcIn, w, h);
+        main.getUtils().setFadingIn(false);
+    }
+
+    @Override
     protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {
         super.mouseClicked(mouseX, mouseY, mouseButton);
         featureSearchBar.mouseClicked(mouseX, mouseY, mouseButton);
