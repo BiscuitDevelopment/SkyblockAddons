@@ -3,6 +3,7 @@ package codes.biscuit.skyblockaddons.gui.buttons;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.audio.SoundHandler;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
 
@@ -87,6 +88,13 @@ public class ButtonToggle extends ButtonFeature {
         GlStateManager.color(1,1,1,1);
         mc.getTextureManager().bindTexture(TOGGLE_INSIDE_CIRCLE);
         main.getUtils().drawModalRectWithCustomSizedTexture(startingX, yPosition+3,0,0,9,9,9,9, true);
+    }
+
+    @Override
+    public void playPressSound(SoundHandler soundHandler) {
+        if (!main.getConfigValues().isRemoteDisabled(feature)) {
+            super.playPressSound(soundHandler);
+        }
     }
 
     private int getStartingPosition(boolean enabled) {
