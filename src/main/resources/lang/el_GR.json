@@ -2,7 +2,7 @@
   "language": "Ελληνικά",
   "settings": {
     "settings": "Ρυθμίσεις",
-    "magmaBossWarning": "Magma Boss Warning",
+    "magmaBossWarning": "Προειδοποιήσει εμφάνισης κύβου μάγματος",
     "itemDropConfirmation": "Επιβεβαίωση Ρίψης Αντικειμένου",
     "hideSkeletonHatBones": "Hide Skeleton's Helmet Bones",
     "skeletonHatBonesBar": "Skeleton's Helmet Bones Bar",
@@ -271,9 +271,9 @@
     "sba.toggleActionBarLogging.disabled": "Action bar messages will no longer be logged.",
     "sba.toggleActionBarLogging.enabled": "Action bar messages will now be logged.",
     "sba.wrongUsage.generic": "Wrong usage!",
-    "sba.wrongUsage.subCommandNotFound": "The sub-command \"%sub-command%\" was not found."
+    "sba.wrongUsage.subCommandNotFound": "Η υπο-εντολή %sub-command% δεν βρέθηκε."
   },
   "keyBindings": {
-    "developerCopyNBT": "Copy NBT"
+    "developerCopyNBT": "Αντιγραφή NBT"
   }
 }
