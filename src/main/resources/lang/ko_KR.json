@@ -172,7 +172,7 @@
     "newUpdateAvailable": "새로운 버전 (%version%) 을(를) 사용할 수 있습니다!",
     "update": {
       "majorAvailable": "새로운 주요 업데이트 (%version%) 버전이 있습니다! 다운로드 링크는 채팅에서 찾을 수 있습니다.",
-      "patchAvailable": "새로운 패치 업데이트 ( %version%) 버전이 있습니다! 채팅에서 다운로드 옵션을 찾으세요!"
+      "patchAvailable": "새로운 패치 업데이트 (%version%) 버전이 있습니다! 채팅에서 다운로드 옵션을 찾으세요!"
     },
     "slotLocked": "이 슬롯은 잠겨있습니다!",
     "summoningEyeFound": "소환의 눈!",
