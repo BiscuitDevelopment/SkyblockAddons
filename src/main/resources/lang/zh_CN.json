@@ -141,7 +141,7 @@
     "showPlayerHeadsOnMap": "在地下城地图上显示玩家头像",
     "showHealingCircleWall": "显示地下城 Healing Circle 边界 (不稳定)",
     "showCriticalTeammates": "显示地下城濒死队友",
-    "showGlowingItemsOnIsland": "显示在岛上的发光物品",
+    "showGlowingItemsOnIsland": "使私人岛屿上的掉落物品发光",
     "showItemDungeonFloor": "显示地下城物品获取层数",
     "showDungeonMilestone": "显示地下城里程碑",
     "dungeonsCollectedEssencesDisplay": "显示在地下城收集到的 Essence",
