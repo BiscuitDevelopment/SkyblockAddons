@@ -1,15 +1,75 @@
 plugins {
     id 'java'
-}
-
-allprojects {
-    apply plugin: 'java'
-
-    group = 'codes.biscuit'
+    id 'io.franzbecker.gradle-lombok' version '4.0.0' apply false
+    id 'com.github.johnrengelman.shadow' version '4.0.4' apply false
 }
 
 subprojects {
+    apply plugin: 'java'
+    apply plugin: 'io.franzbecker.gradle-lombok'
+    apply plugin: 'com.github.johnrengelman.shadow'
+
+    group = 'codes.biscuit'
+
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        testImplementation('org.junit.jupiter:junit-jupiter:5.6.2')
+    }
+
     tasks.withType(JavaCompile) {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
         options.encoding = 'UTF-8'
     }
+
+    test {
+        useJUnitPlatform()
+    }
+}
+
+configure(subprojects.findAll() {it.name != 'common'}) {
+    dependencies {
+        implementation project(':common')
+    }
+
+    jar {
+        // Set the archive name here instead of in shadowJar because ForgeGradle needs it when re-obfuscating the jar.
+        baseName = project.name
+        version = project.version
+        classifier = '-for-MC-' + (String) project.minecraftVersion
+
+        manifest {
+            attributes([
+                    'Manifest-Version': '1.0',
+                    'Main-Class': 'SkyblockAddonsInstallerFrame',
+                    'Implementation-Title': project.name,
+                    'Implementation-Version': project.version,
+                    'Implementation-Vendor' : 'BiscuitDevelopment',
+                    'Specification-Title': project.name,
+                    'Specification-Vendor': 'BiscuitDevelopment',
+                    'Specification-Version': project.version
+            ])
+        }
+
+        // Disable the default jar task and use shadowJar instead to shade the libraries into the jar.
+        enabled = false
+    }
+
+    shadowJar {
+        baseName = tasks.jar.baseName
+        version = tasks.jar.version
+        classifier = tasks.jar.classifier
+        duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+
+        exclude('dummyThing')
+        exclude('META-INF/maven/')
+        exclude('META-INF/nar/')
+        exclude('module-info.class')
+        exclude('META-INF/versions/')
+    }
+
+    jar.finalizedBy(shadowJar, 'reobfJar')
 }

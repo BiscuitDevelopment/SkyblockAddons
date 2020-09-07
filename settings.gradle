@@ -8,14 +8,11 @@ pluginManagement {
     }
     resolutionStrategy {
         eachPlugin {
-            if (requested.id.namespace == 'net.minecraftforge.gradle') {
-                if (requested.version == '2.1-SNAPSHOT') {
-                    useModule 'net.minecraftforge.gradle:ForgeGradle:2.1-SNAPSHOT'
-                }
+            if (requested.id.id.startsWith('net.minecraftforge.gradle')) {
+                useModule group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: requested.version
             }
         }
     }
 }
 
-rootProject.name = 'SkyblockAddons'
-include 'Abstraction', '1.8.9', '1.12.2', '1.15.2', '1.16.1'
+include 'common', '1.8.9', '1.12.2'

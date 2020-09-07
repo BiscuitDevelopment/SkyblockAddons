@@ -96,6 +96,7 @@ public class SkyblockAddons {
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent e) {
+        CommonTest.main(null);
         MinecraftForge.EVENT_BUS.register(new NetworkListener());
         MinecraftForge.EVENT_BUS.register(playerListener);
         MinecraftForge.EVENT_BUS.register(guiScreenListener);
