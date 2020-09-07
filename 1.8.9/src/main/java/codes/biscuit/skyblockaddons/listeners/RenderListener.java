@@ -1,14 +1,13 @@
 package codes.biscuit.skyblockaddons.listeners;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.core.Attribute;
-import codes.biscuit.skyblockaddons.core.Feature;
-import codes.biscuit.skyblockaddons.core.Location;
-import codes.biscuit.skyblockaddons.core.Message;
+import codes.biscuit.skyblockaddons.core.*;
 import codes.biscuit.skyblockaddons.features.BaitManager;
 import codes.biscuit.skyblockaddons.features.EndstoneProtectorManager;
 import codes.biscuit.skyblockaddons.features.ItemDiff;
 import codes.biscuit.skyblockaddons.features.SlayerArmorProgress;
+import codes.biscuit.skyblockaddons.features.healingcircle.HealingCircle;
+import codes.biscuit.skyblockaddons.features.healingcircle.HealingCircleParticle;
 import codes.biscuit.skyblockaddons.features.powerorbs.PowerOrb;
 import codes.biscuit.skyblockaddons.features.powerorbs.PowerOrbManager;
 import codes.biscuit.skyblockaddons.features.tabtimers.TabEffect;
@@ -21,34 +20,46 @@ import codes.biscuit.skyblockaddons.gui.buttons.ButtonLocation;
 import codes.biscuit.skyblockaddons.misc.ChromaManager;
 import codes.biscuit.skyblockaddons.misc.Updater;
 import codes.biscuit.skyblockaddons.misc.scheduler.Scheduler;
+import codes.biscuit.skyblockaddons.misc.scheduler.SkyblockRunnable;
+import codes.biscuit.skyblockaddons.utils.ColorCode;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.TextUtils;
-import codes.biscuit.skyblockaddons.utils.ColorCode;
+import codes.biscuit.skyblockaddons.utils.Utils;
 import codes.biscuit.skyblockaddons.utils.objects.IntPair;
 import lombok.Getter;
 import lombok.Setter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
+import net.minecraft.client.gui.MapItemRenderer;
 import net.minecraft.client.gui.ScaledResolution;
-import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.RenderHelper;
+import net.minecraft.client.renderer.*;
+import net.minecraft.client.renderer.entity.RenderManager;
+import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityArmorStand;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.Vec3;
+import net.minecraft.util.Vec4b;
+import net.minecraft.world.storage.MapData;
 import net.minecraftforge.client.GuiIngameForge;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderLivingEvent;
+import net.minecraftforge.client.event.RenderWorldLastEvent;
 import net.minecraftforge.fml.client.GuiNotification;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
+import org.lwjgl.opengl.GL11;
 
 import java.awt.*;
+import java.awt.geom.Point2D;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.*;
@@ -72,10 +83,16 @@ public class RenderListener {
     private final static ResourceLocation SLASH_ICON = new ResourceLocation("skyblockaddons", "icons/slash.png");
     private final static ResourceLocation IRON_GOLEM_ICON = new ResourceLocation("skyblockaddons", "icons/irongolem.png");
 
+    private final static ResourceLocation DUNGEON_MAP = new ResourceLocation("skyblockaddons", "dungeonsmap.png");
+
+    private static ResourceLocation CRITICAL = new ResourceLocation("skyblockaddons", "critical.png");
+
     private final static ItemStack WATER_BUCKET = new ItemStack(Items.water_bucket);
     private final static ItemStack IRON_SWORD = new ItemStack(Items.iron_sword);
     private static ItemStack NETHER_STAR;
     private static ItemStack WARP_SKULL;
+
+    public static EntityArmorStand RADIANT_DUMMY_ARMOR_STAND;
 
     private SkyblockAddons main = SkyblockAddons.getInstance();
 
@@ -350,11 +367,8 @@ public class RenderListener {
             }
         }
 
-        // Put the x & y to scale, remove half the width and height to center this element.
-        x /= scale;
-        y /= scale;
-        x -= width / 2F;
-        y -= height / 2F;
+        x = transformXY(x, width, scale);
+        y = transformXY(y, height, scale);
 
         main.getUtils().enableStandardGLOptions();
 
@@ -504,10 +518,10 @@ public class RenderListener {
 
         int height = 16;
         int width = 3 * 16;
-        x -= width * scale / 2F;
-        y -= height * scale / 2F;
-        x /= scale;
-        y /= scale;
+
+        x = transformXY(x, width, scale);
+        y = transformXY(y, height, scale);
+
         if (buttonLocation != null) {
             buttonLocation.checkHoveredAndDrawBox(x, x+width, y, y+height, scale);
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
@@ -532,10 +546,9 @@ public class RenderListener {
 
             int height = 9;
             int width = 3 * 11 + 9;
-            x -= width * scale / 2F;
-            y -= height * scale / 2F;
-            x /= scale;
-            y /= scale;
+
+            x = transformXY(x, width, scale);
+            y = transformXY(y, height, scale);
 
             if (buttonLocation != null) {
                 buttonLocation.checkHoveredAndDrawBox(x, x+width, y, y+height, scale);
@@ -783,6 +796,27 @@ public class RenderListener {
 
             int stageNum = Math.min(stage.ordinal(), 5);
             text = Message.MESSAGE_STAGE.getMessage(String.valueOf(stageNum));
+        } else if (feature == Feature.SHOW_DUNGEON_MILESTONE) {
+            if (buttonLocation == null && !main.getUtils().isInDungeon()) {
+                return;
+            }
+
+            DungeonMilestone dungeonMilestone = main.getDungeonUtils().getDungeonMilestone();
+            if (dungeonMilestone == null) {
+                if (buttonLocation != null) {
+                    dungeonMilestone = DungeonMilestone.getZeroMilestone(DungeonClass.HEALER);
+                } else {
+                    return;
+                }
+            }
+
+            text = "Milestone " + dungeonMilestone.getLevel();
+        } else if (feature == Feature.DUNGEONS_COLLECTED_ESSENCES_DISPLAY) {
+            if (buttonLocation == null && !main.getUtils().isInDungeon()) {
+                return;
+            }
+
+            text = "";
         } else {
             return;
         }
@@ -816,10 +850,20 @@ public class RenderListener {
             height += 15;
         }
 
-        x -= width * scale / 2F;
-        y -= height * scale / 2F;
-        x /= scale;
-        y /= scale;
+        if (feature == Feature.SHOW_DUNGEON_MILESTONE) {
+            width += 18 + 2;
+            height += 10;
+        }
+
+        if (feature == Feature.DUNGEONS_COLLECTED_ESSENCES_DISPLAY) {
+            int maxNumberWidth = mc.fontRendererObj.getStringWidth("99");
+            width = 18 + 2 + maxNumberWidth + 5 + 18 + 2 + maxNumberWidth;
+            height = 18 * (int) Math.ceil(EssenceType.values().length / 2F);
+        }
+
+        x = transformXY(x, width, scale);
+        y = transformXY(y, height, scale);
+
         if (buttonLocation != null) {
             buttonLocation.checkHoveredAndDrawBox(x, x + width, y, y + height, scale);
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
@@ -949,6 +993,57 @@ public class RenderListener {
             ChromaManager.renderingText(feature);
             main.getUtils().drawTextWithStyle(String.valueOf(count), x+16+2, y + 4, color);
             ChromaManager.doneRenderingText();
+
+        } else if (feature == Feature.SHOW_DUNGEON_MILESTONE) {
+            DungeonMilestone dungeonMilestone = main.getDungeonUtils().getDungeonMilestone();
+            if (buttonLocation != null) {
+                dungeonMilestone = DungeonMilestone.getZeroMilestone(DungeonClass.HEALER);
+            }
+
+            renderItem(dungeonMilestone.getDungeonClass().getItem(), x, y);
+            ChromaManager.renderingText(feature);
+            main.getUtils().drawTextWithStyle(text, x + 18, y, color);
+            main.getUtils().drawTextWithStyle(dungeonMilestone.getValue(), x + 18 + mc.fontRendererObj.getStringWidth(text) / 2F
+                    - mc.fontRendererObj.getStringWidth(dungeonMilestone.getValue()) / 2F, y + 9, color);
+            ChromaManager.doneRenderingText();
+
+        } else if (feature == Feature.DUNGEONS_COLLECTED_ESSENCES_DISPLAY) {
+            Map<EssenceType, Integer> collectedEssences = main.getDungeonUtils().getCollectedEssences();
+
+            float currentX = x;
+            float currentY;
+
+            int maxNumberWidth = mc.fontRendererObj.getStringWidth("99");
+
+            int count = 0;
+            for (EssenceType essenceType : EssenceType.values()) {
+                int value = collectedEssences.getOrDefault(essenceType, 0);
+                if (buttonLocation != null) {
+                    value = 99;
+                } else if (value <= 0) {
+                    continue;
+                }
+
+                int column = count % 2;
+                int row = count / 2;
+
+                if (column == 0) {
+                    currentX = x;
+                } else if (column == 1) {
+                    currentX = x + 18 + 2 + maxNumberWidth + 5;
+                }
+                currentY = y + row * 18;
+
+                GlStateManager.color(1, 1, 1, 1);
+                mc.getTextureManager().bindTexture(essenceType.getResourceLocation());
+                main.getUtils().drawModalRectWithCustomSizedTexture(currentX, currentY, 0, 0, 16, 16, 16, 16);
+
+                ChromaManager.renderingText(feature);
+                main.getUtils().drawTextWithStyle(String.valueOf(value), currentX + 18 + 2, currentY + 5, color);
+                ChromaManager.doneRenderingText();
+
+                count++;
+            }
         } else {
             ChromaManager.renderingText(feature);
             main.getUtils().drawTextWithStyle(text, x, y, color);
@@ -982,10 +1077,8 @@ public class RenderListener {
         int width = iconSize + spacing + longestLineWidth;
         int height = iconSize * baits.size();
 
-        x -= width * scale / 2F;
-        y -= iconSize * scale / 2F;
-        x /= scale;
-        y /= scale;
+        x = transformXY(x, width, scale);
+        y = transformXY(y, height, scale);
 
         if (buttonLocation != null) {
             buttonLocation.checkHoveredAndDrawBox(x, x + width, y, y + height, scale);
@@ -1034,10 +1127,10 @@ public class RenderListener {
 
         int height = 15 * 4;
         int width = 16 + 2 + longest;
-        x -= width * scale / 2F;
-        y -= height * scale / 2F;
-        x /= scale;
-        y /= scale;
+
+        x = transformXY(x, width, scale);
+        y = transformXY(y, height, scale);
+
         if (buttonLocation != null) {
             buttonLocation.checkHoveredAndDrawBox(x, x+width, y, y+height, scale);
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
@@ -1111,10 +1204,10 @@ public class RenderListener {
         //9 px per effect + 3px spacer between Potions and Powerups if both exist.
         int height = (totalEffects * lineHeight) + spacer - 1; // -1 Because last line doesn't need a pixel under.
         int width = 156; //String width of "Enchanting XP Boost III 1:23:45"
-        x -= width * scale / 2F;
-        y -= height * scale / 2F;
-        x /= scale;
-        y /= scale;
+
+        x = transformXY(x, width, scale);
+        y = transformXY(y, height, scale);
+
         if (buttonLocation != null) {
             buttonLocation.checkHoveredAndDrawBox(x, x+width, y, y+height, scale);
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
@@ -1193,7 +1286,7 @@ public class RenderListener {
         Minecraft.getMinecraft().getRenderItem().renderItemIntoGUI(item, 0, 0);
         GlStateManager.popMatrix();
 
-        GlStateManager.disableDepth();
+//        GlStateManager.disableDepth();
         RenderHelper.disableStandardItemLighting();
         GlStateManager.disableRescaleNormal();
     }
@@ -1211,10 +1304,10 @@ public class RenderListener {
         int lineHeight = 8 + 1; // 1 pixel spacer
         int height = lineHeight * 3 - 1;
         int width = Minecraft.getMinecraft().fontRendererObj.getStringWidth("+ 1x Forceful Ember Chestplate");
-        x -= width * scale / 2F;
-        y -= height * scale / 2F;
-        x /= scale;
-        y /= scale;
+
+        x = transformXY(x, width, scale);
+        y = transformXY(y, height, scale);
+
         if (buttonLocation != null) {
             buttonLocation.checkHoveredAndDrawBox(x, x+width, y, y+height, scale);
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
@@ -1275,20 +1368,30 @@ public class RenderListener {
         int spacing = 1;
         int iconSize = mc.fontRendererObj.FONT_HEIGHT * 3; // 3 because it looked the best
         int width = iconSize + spacing + mc.fontRendererObj.getStringWidth(secondsString);
-        // iconSize also acts as height
-        x -= width * scale / 2F;
-        y -= iconSize * scale / 2F;
-        x /= scale;
-        y /= scale;
+
+        x = transformXY(x, width, scale);
+        y = transformXY(y, iconSize, scale);
+
         if (buttonLocation != null) {
             buttonLocation.checkHoveredAndDrawBox(x, x+width, y, y+iconSize, scale);
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         }
 
+        EntityArmorStand powerOrbArmorStand;
+        if (buttonLocation != null) {
+            powerOrbArmorStand = getRadiantDummyArmorStand();
+        } else {
+            powerOrbArmorStand = PowerOrbManager.getInstance().getPowerOrbArmorStand();
+        }
+
         main.getUtils().enableStandardGLOptions();
 
-        mc.getTextureManager().bindTexture(powerOrb.getResourceLocation());
-        main.getUtils().drawModalRectWithCustomSizedTexture(x, y, 0, 0, iconSize, iconSize, iconSize, iconSize);
+        if (powerOrbArmorStand != null) {
+            drawPowerOrbArmorStand(powerOrbArmorStand, x + 1, y + 4);
+        } else {
+            mc.getTextureManager().bindTexture(powerOrb.getResourceLocation());
+            main.getUtils().drawModalRectWithCustomSizedTexture(x, y, 0, 0, iconSize, iconSize, iconSize, iconSize);
+        }
 
         main.getUtils().drawTextWithStyle(secondsString, x + spacing + iconSize, y + (iconSize / 2F) - (8 / 2F), ColorCode.WHITE.getColor(255).getRGB());
 
@@ -1318,7 +1421,7 @@ public class RenderListener {
         display.add(String.format("§c+%s ❤/s", TextUtils.formatDouble(healthRegen)));
         if(powerOrb.getManaRegen() > 0) {
             int maxMana = main.getUtils().getAttributes().get(Attribute.MAX_MANA).getValue();
-            double manaRegen = maxMana / 50f;
+            double manaRegen = Math.floorDiv(maxMana, 50);
             manaRegen = manaRegen + manaRegen * powerOrb.getManaRegen();
             display.add(String.format("§b+%s ✎/s", TextUtils.formatDouble(manaRegen)));
         }
@@ -1339,20 +1442,30 @@ public class RenderListener {
         int width = iconSize + 2 + longestLine.map(mc.fontRendererObj::getStringWidth)
                 .orElseGet(() -> mc.fontRendererObj.getStringWidth(display.get(0)));
         int height = Math.max(effectsHeight, iconAndSecondsHeight);
-        x -= width * scale / 2F;
-        y -= height * scale / 2F;
-        x /= scale;
-        y /= scale;
+
+        x = transformXY(x, width, scale);
+        y = transformXY(y, height, scale);
 
         if (buttonLocation != null) {
             buttonLocation.checkHoveredAndDrawBox(x, x+width, y, y+height, scale);
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         }
 
+        EntityArmorStand powerOrbArmorStand;
+        if (buttonLocation != null) {
+            powerOrbArmorStand = getRadiantDummyArmorStand();
+        } else {
+            powerOrbArmorStand = PowerOrbManager.getInstance().getPowerOrbArmorStand();
+        }
+
         main.getUtils().enableStandardGLOptions();
 
-        mc.getTextureManager().bindTexture(powerOrb.getResourceLocation());
-        main.getUtils().drawModalRectWithCustomSizedTexture(x, y, 0, 0, iconSize, iconSize, iconSize, iconSize);
+        if (powerOrbArmorStand != null) {
+            drawPowerOrbArmorStand(powerOrbArmorStand, x + 1, y + 4);
+        } else {
+            mc.getTextureManager().bindTexture(powerOrb.getResourceLocation());
+            main.getUtils().drawModalRectWithCustomSizedTexture(x, y, 0, 0, iconSize, iconSize, iconSize, iconSize);
+        }
 
         String secondsString = String.format("§e%ss", seconds);
         main.getUtils().drawTextWithStyle(secondsString, Math.round(x + (iconSize / 2F) - (mc.fontRendererObj.getStringWidth(secondsString) / 2F)), y + iconSize, ColorCode.WHITE.getColor(255).getRGB());
@@ -1361,6 +1474,191 @@ public class RenderListener {
         for (int i = 0; i < display.size(); i++) {
             main.getUtils().drawTextWithStyle(display.get(i), x + iconSize + 2, startY + (i * (mc.fontRendererObj.FONT_HEIGHT + spacingBetweenLines)), ColorCode.WHITE.getColor(255).getRGB());
         }
+
+        main.getUtils().restoreGLOptions();
+    }
+
+    private MapData mapData;
+
+    @Getter private float mapStartX = -1;
+    @Getter private float mapStartZ = -1;
+
+    private Vec3 lastSecondVector;
+
+    public void drawDungeonsMap(Minecraft mc, float scale, ButtonLocation buttonLocation) {
+        if (buttonLocation == null && !main.getUtils().isInDungeon()) {
+            mapStartX = -1;
+            mapStartZ = -1;
+            mapData = null;
+        }
+
+        ItemStack possibleMapItemStack = mc.thePlayer.inventory.getStackInSlot(8);
+        if (buttonLocation == null && (possibleMapItemStack == null || possibleMapItemStack.getItem() != Items.filled_map ||
+                !possibleMapItemStack.hasDisplayName()) && mapData == null) {
+            return;
+        }
+        boolean isScoreSummary = false;
+        if (buttonLocation == null && possibleMapItemStack != null && possibleMapItemStack.getItem() == Items.filled_map) {
+            isScoreSummary = possibleMapItemStack.getDisplayName().contains("Your Score Summary");
+
+            if (!possibleMapItemStack.getDisplayName().contains("Magical Map") && !isScoreSummary) {
+                return;
+            }
+        }
+
+        float x = main.getConfigValues().getActualX(Feature.DUNGEONS_MAP_DISPLAY);
+        float y = main.getConfigValues().getActualY(Feature.DUNGEONS_MAP_DISPLAY);
+
+        GlStateManager.pushMatrix();
+
+        int originalSize = 128;
+        float initialScaleFactor = 0.5F;
+
+        int size = (int) (originalSize * initialScaleFactor);
+
+        int minecraftScale = new ScaledResolution(mc).getScaleFactor();
+        GL11.glEnable(GL11.GL_SCISSOR_TEST);
+        GL11.glScissor(Math.round((x - size * scale / 2F)*minecraftScale),
+                mc.displayHeight-Math.round((y + size * scale / 2F)*minecraftScale), Math.round(size * minecraftScale * scale), Math.round(size * minecraftScale * scale));
+
+        x = transformXY(x, size, scale);
+        y = transformXY(y, size, scale);
+
+        if (buttonLocation != null) {
+            buttonLocation.checkHoveredAndDrawBox(x, x+size, y, y+size, scale);
+        }
+
+        GL11.glDisable(GL11.GL_SCISSOR_TEST);
+        Color color = main.getConfigValues().getColor(Feature.DUNGEONS_MAP_DISPLAY);
+        main.getUtils().drawRect(x, y, x+size, y+size, 0x55000000);
+        main.getUtils().drawRectOutline(x, y, size, size, 1, color.getRGB(), main.getConfigValues().getChromaFeatures().contains(Feature.DUNGEONS_MAP_DISPLAY));
+        GlStateManager.color(1,1,1,1);
+        GL11.glEnable(GL11.GL_SCISSOR_TEST);
+
+        main.getUtils().enableStandardGLOptions();
+
+        GlStateManager.color(1,1,1,1);
+
+        float rotation = 180 - MathHelper.wrapAngleTo180_float(mc.thePlayer.rotationYaw);
+
+        float zoomScaleFactor = main.getUtils().denormalizeScale(main.getConfigValues().getMapZoom().getValue(), 0.5F, 5, 0.1F);
+        if (isScoreSummary) {
+            zoomScaleFactor = 1;
+        }
+
+        float totalScaleFactor = initialScaleFactor * zoomScaleFactor;
+
+        float mapSize = (originalSize * totalScaleFactor);
+
+        GlStateManager.scale(totalScaleFactor, totalScaleFactor, 1);
+        x /= totalScaleFactor;
+        y /= totalScaleFactor;
+        GlStateManager.translate(x, y, 0);
+
+        float rotationCenterX = originalSize * initialScaleFactor;
+        float rotationCenterY = originalSize * initialScaleFactor;
+
+        float centerOffset = -((mapSize-size)/zoomScaleFactor);
+        GlStateManager.translate(centerOffset, centerOffset, 0);
+
+        boolean rotate = main.getConfigValues().isEnabled(Feature.ROTATE_MAP);
+        boolean rotateOnPlayer = main.getConfigValues().isEnabled(Feature.CENTER_ROTATION_ON_PLAYER);
+
+        if (isScoreSummary) {
+            rotate = false;
+        }
+
+        if (buttonLocation == null) {
+            try {
+                boolean foundMapData = false;
+                MapData newMapData = null;
+                if (possibleMapItemStack != null) {
+                    newMapData = Items.filled_map.getMapData(possibleMapItemStack, mc.theWorld);
+                }
+                if (newMapData != null) {
+                    mapData = newMapData;
+                    foundMapData = true;
+                }
+
+                if (mapData != null) {
+                    float playerX = (float) mc.thePlayer.posX;
+                    float playerZ = (float) mc.thePlayer.posZ;
+
+                    Vec3 currentVector = mc.thePlayer.getPositionVector();
+                    main.getNewScheduler().scheduleDelayedTask(new SkyblockRunnable() {
+                        @Override
+                        public void run() {
+                            lastSecondVector = currentVector;
+                        }
+                    }, 20);
+
+
+                    double lastSecondTravel = -1;
+                    if (lastSecondVector != null) {
+                        lastSecondTravel = lastSecondVector.distanceTo(currentVector);
+                    }
+                    if (foundMapData && ((this.mapStartX == -1 || this.mapStartZ == -1) || lastSecondTravel == 0)) {
+                        if (mapData.mapDecorations != null) {
+                            for (Map.Entry<String, Vec4b> entry : mapData.mapDecorations.entrySet()) {
+                                // Icon type 1 is the green player marker...
+                                if (entry.getValue().func_176110_a() == 1) {
+                                    float mapMarkerX = entry.getValue().func_176112_b() / 2.0F + 64.0F;
+                                    float mapMarkerZ = entry.getValue().func_176113_c() / 2.0F + 64.0F;
+
+                                    // 1 pixel on Hypixel map represents 1.5 blocks...
+                                    float mapStartX = playerX - mapMarkerX * 1.5F;
+                                    float mapStartZ = playerZ - mapMarkerZ * 1.5F;
+
+                                    this.mapStartX = Math.round(mapStartX / 16F) * 16F;
+                                    this.mapStartZ = Math.round(mapStartZ / 16F) * 16F;
+
+//                                    Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText(String.valueOf(this.mapStartX)));
+                                }
+                            }
+                        }
+                    }
+
+                    float playerMarkerX = (playerX - mapStartX) / 1.5F;
+                    float playerMarkerZ = (playerZ - mapStartZ) / 1.5F;
+
+                    if (rotate && rotateOnPlayer) {
+                        rotationCenterX = playerMarkerX;
+                        rotationCenterY = playerMarkerZ;
+                    }
+
+                    if (rotate) {
+                        if (rotateOnPlayer) {
+                            GlStateManager.translate(size - rotationCenterX, size - rotationCenterY, 0);
+                        }
+
+                        GlStateManager.translate(rotationCenterX, rotationCenterY, 0);
+                        GlStateManager.rotate(rotation, 0, 0, 1);
+                        GlStateManager.translate(-rotationCenterX, -rotationCenterY, 0);
+                    }
+
+                    MapItemRenderer.Instance instance = mc.entityRenderer.getMapItemRenderer().getMapRendererInstance(mapData);
+                    main.getUtils().drawMapEdited(instance, isScoreSummary, zoomScaleFactor);
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        } else {
+            if (rotate) {
+                long ticks = System.currentTimeMillis() % 18000 / 50;
+
+                GlStateManager.translate(rotationCenterX, rotationCenterY, 0);
+                GlStateManager.rotate(ticks, 0, 0, 1);
+                GlStateManager.translate(-rotationCenterX, -rotationCenterY, 0);
+            }
+
+            mc.getTextureManager().bindTexture(DUNGEON_MAP);
+            main.getUtils().drawModalRectWithCustomSizedTexture(0, 0, 0, 0, 128,128, 128, 128);
+        }
+//        main.getUtils().drawRect(rotationCenterX-2, rotationCenterY-2, rotationCenterX+2, rotationCenterY+2, 0xFFFF0000);
+        GL11.glDisable(GL11.GL_SCISSOR_TEST);
+
+        GlStateManager.popMatrix();
+//        main.getUtils().drawRect(mapCenterX-2, mapCenterY-2, mapCenterX+2, mapCenterY+2, 0xFF00FF00);
 
         main.getUtils().restoreGLOptions();
     }
@@ -1471,5 +1769,248 @@ public class RenderListener {
         WARP_SKULL.setTagCompound(nbtTag);
 
         return WARP_SKULL;
+    }
+
+    public float transformXY(float xy, int widthHeight, float scale) {
+        float minecraftScale = new ScaledResolution(Minecraft.getMinecraft()).getScaleFactor();
+        xy -= widthHeight * scale / 2F;
+        xy = Math.round(xy * minecraftScale) / minecraftScale;
+        return xy / scale;
+    }
+
+    @Getter private Set<HealingCircleParticle> healingCircleParticles = new HashSet<>();
+
+    @SubscribeEvent()
+    public void onRenderWorld(RenderWorldLastEvent e) {
+        Minecraft mc = Minecraft.getMinecraft();
+        float partialTicks = e.partialTicks;
+
+        if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.SHOW_HEALING_CIRCLE_WALL)) {
+            healingCircleParticles.removeIf(healingCircleParticle -> System.currentTimeMillis() - healingCircleParticle.getCreation() > 10000);
+
+            Set<HealingCircle> healingCircles = new HashSet<>();
+
+            for (HealingCircleParticle healingCircleParticle : healingCircleParticles) {
+                HealingCircle nearbyHealingCircle = null;
+                for (HealingCircle healingCircle : healingCircles) {
+                    if (healingCircle.getTotalParticles() > 50) {
+                        Point2D.Double circleCenter = healingCircle.getCircleCenter();
+                        if (healingCircleParticle.getPoint().distance(circleCenter.getX(), circleCenter.getY()) < 6) {
+                            nearbyHealingCircle = healingCircle;
+                            break;
+                        }
+                    } else {
+                        if (healingCircleParticle.getPoint().distance(healingCircle.getAverageX(), healingCircle.getAverageZ()) < 12) {
+                            nearbyHealingCircle = healingCircle;
+                            break;
+                        }
+                    }
+                }
+
+                if (nearbyHealingCircle != null) {
+                    nearbyHealingCircle.addPoint(healingCircleParticle);
+                } else {
+                    healingCircles.add(new HealingCircle(healingCircleParticle));
+                }
+            }
+
+            for (HealingCircle healingCircle : healingCircles) {
+                if (healingCircle.getParticlesPerSecond() < 10) {
+                    if (System.currentTimeMillis() - healingCircle.getOldestParticle() > 1000) {
+                        healingCircleParticles.removeAll(healingCircle.getHealingCircleParticles());
+                        continue;
+                    }
+                }
+
+                GlStateManager.pushMatrix();
+                GL11.glNormal3f(0.0F, 1.0F, 0.0F);
+
+                GlStateManager.disableLighting();
+                GlStateManager.depthMask(false);
+                GlStateManager.enableDepth();
+                GlStateManager.enableBlend();
+                GlStateManager.depthFunc(GL11.GL_LEQUAL);
+                GlStateManager.disableCull();
+                GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
+                GlStateManager.enableAlpha();
+                GlStateManager.disableTexture2D();
+
+                Color color = main.getConfigValues().getColor(Feature.SHOW_HEALING_CIRCLE_WALL);
+                GlStateManager.color(color.getRed()/255F, color.getGreen()/255F, color.getBlue()/255F, 0.2F);
+                Point2D.Double circleCenter = healingCircle.getCircleCenter();
+                if (circleCenter != null && !Double.isNaN(circleCenter.getX()) && !Double.isNaN(circleCenter.getY())) {
+                    main.getUtils().drawCylinder(circleCenter.getX(), 0, circleCenter.getY(), 10 / 2F, 255, partialTicks);
+                }
+
+                GlStateManager.enableCull();
+                GlStateManager.enableTexture2D();
+                GlStateManager.enableDepth();
+                GlStateManager.depthMask(true);
+                GlStateManager.enableLighting();
+                GlStateManager.disableBlend();
+                GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+                GlStateManager.popMatrix();
+            }
+        }
+
+        if (main.getUtils().isOnSkyblock() && main.getUtils().isInDungeon() && main.getConfigValues().isEnabled(Feature.SHOW_CRITICAL_DUNGEONS_TEAMMATES)) {
+            Entity renderViewEntity = mc.getRenderViewEntity();
+
+            double viewX = renderViewEntity.prevPosX + (renderViewEntity.posX - renderViewEntity.prevPosX) * (double) partialTicks;
+            double viewY = renderViewEntity.prevPosY + (renderViewEntity.posY - renderViewEntity.prevPosY) * (double) partialTicks;
+            double viewZ = renderViewEntity.prevPosZ + (renderViewEntity.posZ - renderViewEntity.prevPosZ) * (double) partialTicks;
+
+            int iconSize = 25;
+
+            for (EntityPlayer entity : mc.theWorld.playerEntities) {
+                if (renderViewEntity == entity) {
+                    continue;
+                }
+
+                if (!main.getDungeonUtils().getPlayers().containsKey(entity.getName())) {
+                    continue;
+                }
+
+                DungeonPlayer dungeonPlayer = main.getDungeonUtils().getPlayers().get(entity.getName());
+                if (dungeonPlayer.isGhost() || (!dungeonPlayer.isCritical() && !dungeonPlayer.isLow())) {
+                    continue;
+                }
+
+                double x = entity.lastTickPosX + (entity.posX - entity.lastTickPosX) * (double) partialTicks;
+                double y = entity.lastTickPosY + (entity.posY - entity.lastTickPosY) * (double) partialTicks;
+                double z = entity.lastTickPosZ + (entity.posZ - entity.lastTickPosZ) * (double) partialTicks;
+
+                x -= viewX;
+                y -= viewY;
+                z -= viewZ;
+
+                if (entity.isSneaking()) {
+                    y -= 0.65F;
+                }
+
+                double distanceScale = Math.max(1, renderViewEntity.getPositionVector().distanceTo(entity.getPositionVector()) / 10F);
+
+                if (main.getConfigValues().isEnabled(Feature.MAKE_DUNGEON_TEAMMATES_GLOW)) {
+                    y += entity.height + 0.75F + (iconSize * distanceScale) / 40F;
+                } else {
+                    y += entity.height / 2F + 0.25F;
+                }
+
+                float f = 1.6F;
+                float f1 = 0.016666668F * f;
+                GlStateManager.pushMatrix();
+                GlStateManager.translate(x, y, z);
+                GL11.glNormal3f(0.0F, 1.0F, 0.0F);
+                GlStateManager.rotate(-mc.getRenderManager().playerViewY, 0.0F, 1.0F, 0.0F);
+                GlStateManager.rotate(mc.getRenderManager().playerViewX, 1.0F, 0.0F, 0.0F);
+                GlStateManager.scale(-f1, -f1, f1);
+
+                GlStateManager.scale(distanceScale, distanceScale, distanceScale);
+
+                GlStateManager.disableLighting();
+                GlStateManager.depthMask(false);
+                GlStateManager.disableDepth();
+                GlStateManager.enableBlend();
+                GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
+                GlStateManager.enableTexture2D();
+                GlStateManager.color(1, 1, 1, 1);
+                GlStateManager.enableAlpha();
+
+                Tessellator tessellator = Tessellator.getInstance();
+                WorldRenderer worldrenderer = tessellator.getWorldRenderer();
+
+                mc.getTextureManager().bindTexture(CRITICAL);
+                worldrenderer.begin(7, DefaultVertexFormats.POSITION_TEX);
+                worldrenderer.pos(-iconSize / 2F, -iconSize / 2f, 0).tex(0, 0).endVertex();
+                worldrenderer.pos(-iconSize / 2F, iconSize / 2F, 0).tex(0, 1).endVertex();
+                worldrenderer.pos(iconSize / 2F, iconSize / 2F, 0).tex(1, 1).endVertex();
+                worldrenderer.pos(iconSize / 2F, -iconSize / 2F, 0).tex(1, 0).endVertex();
+                tessellator.draw();
+
+                String text = "";
+                if (dungeonPlayer.isLow()) {
+                    text = "LOW";
+                } else if (dungeonPlayer.isCritical()) {
+                    text = "CRITICAL";
+                }
+
+                mc.fontRendererObj.drawString(text, -mc.fontRendererObj.getStringWidth(text) / 2F, iconSize / 2F + 2, -1, true);
+
+                GlStateManager.enableDepth();
+                GlStateManager.depthMask(true);
+                GlStateManager.enableLighting();
+                GlStateManager.disableBlend();
+                GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+                GlStateManager.popMatrix();
+            }
+        }
+    }
+
+    private void drawPowerOrbArmorStand(EntityArmorStand powerOrbArmorStand, float x, float y) {
+        GlStateManager.pushMatrix();
+
+        GlStateManager.enableDepth();
+        GlStateManager.enableColorMaterial();
+
+        GlStateManager.translate(x + 12.5F, y + 50F, 50F);
+        GlStateManager.scale(-25F, 25F, 25F);
+        GlStateManager.rotate(180.0F, 0.0F, 0.0F, 1.0F);
+        GlStateManager.rotate(135.0F, 0.0F, 1.0F, 0.0F);
+        RenderHelper.enableStandardItemLighting();
+        GlStateManager.rotate(-135.0F, 0.0F, 1.0F, 0.0F);
+        GlStateManager.rotate(22.0F, 1.0F, 0.0F, 0.0F);
+
+        RenderManager rendermanager = Minecraft.getMinecraft().getRenderManager();
+        rendermanager.setPlayerViewY(180.0F);
+        rendermanager.setRenderShadow(false);
+
+        powerOrbArmorStand.setInvisible(true);
+        float yaw = System.currentTimeMillis() % 1750 / 1750F * 360F;
+        powerOrbArmorStand.renderYawOffset = yaw;
+        powerOrbArmorStand.prevRenderYawOffset = yaw;
+
+        rendermanager.renderEntityWithPosYaw(powerOrbArmorStand, 0.0D, 0.0D, 0.0D, 0.0F, 1.0F);
+        rendermanager.setRenderShadow(true);
+
+        RenderHelper.disableStandardItemLighting();
+        GlStateManager.disableRescaleNormal();
+        GlStateManager.setActiveTexture(OpenGlHelper.lightmapTexUnit);
+        GlStateManager.disableTexture2D();
+        GlStateManager.setActiveTexture(OpenGlHelper.defaultTexUnit);
+        GlStateManager.disableDepth();
+
+        GlStateManager.popMatrix();
+    }
+
+    public EntityArmorStand getRadiantDummyArmorStand() {
+        if (RADIANT_DUMMY_ARMOR_STAND != null) {
+            return RADIANT_DUMMY_ARMOR_STAND;
+        }
+
+        RADIANT_DUMMY_ARMOR_STAND = new EntityArmorStand(Utils.getDummyWorld());
+
+        ItemStack orbItemStack = new ItemStack(Items.skull, 1, 3);
+
+        NBTTagCompound texture = new NBTTagCompound(); // This is the texture URL of the radiant orb
+        texture.setString("Value", main.getUtils().encodeSkinTextureURL("http://textures.minecraft.net/texture/7ab4c4d6ee69bc24bba2b8faf67b9f704a06b01aa93f3efa6aef7a9696c4feef"));
+
+        NBTTagList textures = new NBTTagList();
+        textures.appendTag(texture);
+
+        NBTTagCompound properties = new NBTTagCompound();
+        properties.setTag("textures", textures);
+
+        NBTTagCompound skullOwner = new NBTTagCompound(); // The id of the radiant orb (not sure if it means anything)
+        skullOwner.setString("Id", "3ae3572b-2679-40b4-ba50-14dd58cbbbf7");
+        skullOwner.setTag("Properties", properties);
+
+        NBTTagCompound nbtTag = new NBTTagCompound();
+        nbtTag.setTag("SkullOwner", skullOwner);
+
+        orbItemStack.setTagCompound(nbtTag);
+
+        RADIANT_DUMMY_ARMOR_STAND.setCurrentItemOrArmor(4, orbItemStack);
+
+        return RADIANT_DUMMY_ARMOR_STAND;
     }
 }

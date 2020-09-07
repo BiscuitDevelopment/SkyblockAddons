@@ -16,7 +16,7 @@ public enum PowerOrb {
     OVERFLUX("§5Overflux", 0.025, 1, 25, 0.05, "overflux");
 
     /**
-     * The orbs effective radius - squared to compare with a squared distance
+     * The orb's effective radius - squared to compare with a squared distance
      */
     private static final int RADIUS_SQUARED = 18*18;
 

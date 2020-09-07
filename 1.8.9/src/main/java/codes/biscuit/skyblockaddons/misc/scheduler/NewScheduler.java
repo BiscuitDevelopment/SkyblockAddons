@@ -12,12 +12,7 @@ public class NewScheduler {
     private final List<ScheduledTask> queuedTasks = new ArrayList<>();
     private final List<ScheduledTask> pendingTasks = new ArrayList<>();
     private final Object anchor = new Object();
-    private volatile long currentTicks = 0;
     private volatile long totalTicks = 0;
-
-    public synchronized long getCurrentTicks() {
-        return this.currentTicks;
-    }
 
     public synchronized long getTotalTicks() {
         return this.totalTicks;
@@ -28,7 +23,6 @@ public class NewScheduler {
         if (event.phase == TickEvent.Phase.START) {
             synchronized (this.anchor) {
                 this.totalTicks++;
-                this.currentTicks++;
             }
 
             if (Minecraft.getMinecraft() != null) {

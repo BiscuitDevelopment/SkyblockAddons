@@ -251,9 +251,17 @@ public class EnumUtils {
         ENABLE_CAKE_BAG_PREVIEW(SETTING_SHOW_CAKE_BAG_PREVIEW, 71),
         ENABLE_BACKPACK_PREVIEW_AH(SETTING_SHOW_BACKPACK_PREVIEW_AH, 72),
         SORT_TAB_EFFECT_TIMERS(SETTING_SORT_TAB_EFFECT_TIMERS, 74),
+        ROTATE_MAP(SETTING_ROTATE_MAP, 100),
+        CENTER_ROTATION_ON_PLAYER(SETTING_CENTER_ROTATION_ON_PLAYER, 101),
+        MAP_ZOOM(SETTING_MAP_ZOOM, -1),
+        COLOUR_BY_RARITY(SETTING_COLOR_BY_RARITY, -1),
+        SHOW_PLAYER_HEADS_ON_MAP(SETTING_SHOW_PLAYER_HEAD_ON_MAP, 106),
+        SHOW_GLOWING_ITEMS_ON_ISLAND(SETTING_SHOW_GLOWING_ITEMS_ON_ISLAND, 109),
 
         DISCORD_RP_STATE(null, 0),
-        DISCORD_RP_DETAILS(null, 0);
+        DISCORD_RP_DETAILS(null, 0)
+
+        ;
 
         @Getter private Message message;
         private int featureEquivalent;
@@ -297,7 +305,9 @@ public class EnumUtils {
         MYNAMEISJEFF("MyNameIsJeff", "github.com/My-Name-Is-Jeff", Feature.SHOW_BROKEN_FRAGMENTS),
         DJTHEREDSTONER("DJtheRedstoner", "github.com/DJtheRedstoner", Feature.LEGENDARY_SEA_CREATURE_WARNING, Feature.HIDE_SVEN_PUP_NAMETAGS),
         ANTONIO32A("Antonio32A", "github.com/Antonio32A", Feature.ONLY_BREAK_LOGS_PARK),
-        CHARZARD("Charzard4261", "github.com/Charzard4261", Feature.DISABLE_TELEPORT_PAD_MESSAGES, Feature.BAIT_LIST);
+        CHARZARD("Charzard4261", "github.com/Charzard4261", Feature.DISABLE_TELEPORT_PAD_MESSAGES, Feature.BAIT_LIST, Feature.SHOW_BASE_STAT_BOOST_PERCENTAGE, 
+                 Feature.SHOW_ITEM_DUNGEON_FLOOR, Feature.SHOW_BASE_STAT_BOOST_PERCENTAGE,  Feature.SHOW_RARITY_UPGRADED),
+        IHDEVELOPER("iHDeveloper", "github.com/iHDeveloper", Feature.SHOW_DUNGEON_MILESTONE, Feature.DUNGEONS_COLLECTED_ESSENCES_DISPLAY);
 
         private Set<Feature> features;
         private String author;
@@ -336,7 +346,7 @@ public class EnumUtils {
         CARPENTRY("Carpentry", Item.getItemFromBlock(Blocks.crafting_table)),
         RUNECRAFTING("Runecrafting", Items.magma_cream),
         TAMING("Taming", Items.spawn_egg),
-        OTHER(null, null);
+        DUNGEONEERING("Dungeoneering", Item.getItemFromBlock(Blocks.deadbush));
 
         private String skillName;
         @Getter private ItemStack item;
@@ -352,7 +362,7 @@ public class EnumUtils {
                     return skillType;
                 }
             }
-            return OTHER;
+            return null;
         }
     }
 
@@ -366,7 +376,8 @@ public class EnumUtils {
         POWER_ORB_DISPLAY,
         TICKER,
         BAIT_LIST_DISPLAY,
-        TAB_EFFECT_TIMERS
+        TAB_EFFECT_TIMERS,
+        DUNGEONS_MAP
     }
 
     @Getter

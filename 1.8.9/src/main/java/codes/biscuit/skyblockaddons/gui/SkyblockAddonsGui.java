@@ -140,10 +140,18 @@ public class SkyblockAddonsGui extends GuiScreen {
         Keyboard.enableRepeatEvents(true);
     }
 
-    private boolean matchesSearch(String text) {
-        if (StringUtils.isEmpty(featureSearchBar.getText())) return true;
+    private boolean matchesSearch(String textToSearch) {
+        String searchBarText = featureSearchBar.getText();
+        if (searchBarText == null || searchBarText.isEmpty()) return true;
 
-        return text.toLowerCase().contains(featureSearchBar.getText().toLowerCase());
+        String[] searchTerms = searchBarText.toLowerCase().split(" ");
+        textToSearch = textToSearch.toLowerCase();
+
+        for (String searchTerm : searchTerms) {
+            if (textToSearch.contains(searchTerm)) return true;
+        }
+
+        return false;
     }
 
     private int findDisplayCount() {
@@ -220,7 +228,7 @@ public class SkyblockAddonsGui extends GuiScreen {
                 if (main.getConfigValues().isRemoteDisabled(feature)) return;
                 if (main.getConfigValues().isDisabled(feature)) {
                     main.getConfigValues().getDisabledFeatures().remove(feature);
-                    if(feature == Feature.DISCORD_RPC) {
+                    if(feature == Feature.DISCORD_RPC && main.getUtils().isOnSkyblock()) {
                         main.getDiscordRPCManager().start();
                     } else if (feature == Feature.ZEALOT_COUNTER_EXPLOSIVE_BOW_SUPPORT) {
                         main.getConfigValues().getDisabledFeatures().remove(Feature.DISABLE_ENDERMAN_TELEPORTATION_EFFECT);
@@ -433,7 +441,7 @@ public class SkyblockAddonsGui extends GuiScreen {
             buttonList.add(new ButtonNormal(x, y, text, main, feature));
 
             if (feature == Feature.CHROMA_SPEED) {
-                buttonList.add(new ButtonSlider(x + 35, y + boxHeight - 23, 70, 15, main, main.getConfigValues().getChromaSpeed(),
+                buttonList.add(new ButtonSlider(x + 35, y + boxHeight - 23, 70, 15, main.getConfigValues().getChromaSpeed(),
                         0.1F, 10, 0.5F, new ButtonSlider.OnSliderChangeCallback() {
                     @Override
                     public void sliderUpdated(float value) {
@@ -441,7 +449,7 @@ public class SkyblockAddonsGui extends GuiScreen {
                     }
                 }));
             } else if (feature == Feature.CHROMA_FADE_WIDTH) {
-                buttonList.add(new ButtonSlider(x + 35, y + boxHeight - 23, 70, 15, main, main.getConfigValues().getChromaFadeWidth(),
+                buttonList.add(new ButtonSlider(x + 35, y + boxHeight - 23, 70, 15, main.getConfigValues().getChromaFadeWidth(),
                         1, 42, 1, new ButtonSlider.OnSliderChangeCallback() {
                     @Override
                     public void sliderUpdated(float value) {

@@ -11,22 +11,7 @@ public class ChromaManager {
 
     @Getter private static boolean coloringTextChroma;
 
-    private static float currentHue = 0;
-    private static Color currentColor = new Color(Color.HSBtoRGB(0, 0.72F, 0.90F));
-
-    public static void increment() {
-        if (SkyblockAddons.getInstance().getConfigValues().getChromaFeatures().size() > 0) {
-            currentHue += SkyblockAddons.getInstance().getUtils().denormalizeScale(SkyblockAddons.getInstance().getConfigValues().getChromaSpeed(), 0.1F, 10, 0.5F);
-            if (currentHue > 360) {
-                currentHue = 0;
-            }
-            currentColor = new Color(Color.HSBtoRGB(currentHue / 360F, 0.72F, 0.90F));
-        }
-    }
-
-    public static Color getCurrentColor() {
-        return currentColor;
-    }
+    private static float[] defaultColorHSB = {0, 0.72F, 0.90F};
 
     /**
      * Before rending a string that supports chroma, call this method so it marks the text
@@ -41,6 +26,20 @@ public class ChromaManager {
                 SkyblockAddons.getInstance().getConfigValues().getChromaFeatures().contains(feature)) {
             coloringTextChroma = true;
         }
+    }
+
+    public static int getChromaColor(float x, float y) {
+        return getChromaColor(x, y, defaultColorHSB);
+    }
+
+    public static int getChromaColor(float x, float y, float[] currentHSB) {
+        float chromaWidth = SkyblockAddons.getInstance().getUtils().denormalizeScale(SkyblockAddons.getInstance().getConfigValues().getChromaFadeWidth(), 1, 42, 1) / 360F;
+        float chromaSpeed = SkyblockAddons.getInstance().getUtils().denormalizeScale(SkyblockAddons.getInstance().getConfigValues().getChromaSpeed(), 0.1F, 10, 0.5F) / 360F;
+
+        long ticks = SkyblockAddons.getInstance().getNewScheduler().getTotalTicks();
+
+        float newHue = (x / 4F * chromaWidth + y / 4F * chromaWidth - ticks * chromaSpeed) % 1;
+        return Color.HSBtoRGB(newHue, currentHSB[1], currentHSB[2]);
     }
 
     /**

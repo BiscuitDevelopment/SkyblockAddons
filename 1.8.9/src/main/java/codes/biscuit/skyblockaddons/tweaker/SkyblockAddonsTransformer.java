@@ -18,6 +18,10 @@ import java.io.IOException;
 import java.util.Collection;
 
 public class SkyblockAddonsTransformer implements IClassTransformer {
+    static {
+        PreTransformationChecks.runPreInitChecks();
+    }
+
     private final Logger logger = LogManager.getLogger("SkyblockAddons Transformer");
     private final Multimap<String, ITransformer> transformerMap = ArrayListMultimap.create();
 
@@ -48,6 +52,8 @@ public class SkyblockAddonsTransformer implements IClassTransformer {
         registerTransformer(new GuiIngameCustomTransformer());
         registerTransformer(new RenderEndermanTransformer());
         registerTransformer(new ModelEndermanTransformer());
+        registerTransformer(new RenderGlobalTransformer());
+        registerTransformer(new EffectRendererTransformer());
     }
 
     private void registerTransformer(ITransformer transformer) {
@@ -96,21 +102,21 @@ public class SkyblockAddonsTransformer implements IClassTransformer {
         return writer.toByteArray();
     }
 
+    @SuppressWarnings("ResultOfMethodCallIgnored")
     private void outputBytecode(String transformedName, ClassWriter writer) {
-        if (SkyblockAddonsSetup.isDeobfuscatedEnvironment()) {
-            try {
-                File bytecodeDirectory = new File("bytecode");
-                File bytecodeOutput = new File(bytecodeDirectory, transformedName + ".class");
+        try {
+            File bytecodeDirectory = new File("bytecode");
+            if (!bytecodeDirectory.exists()) return;
 
-                if (!bytecodeDirectory.exists()) return;
-                if (!bytecodeOutput.exists()) bytecodeOutput.createNewFile();
+            File bytecodeOutput = new File(bytecodeDirectory, transformedName + ".class");
+            if (!bytecodeOutput.exists()) bytecodeOutput.createNewFile();
 
-                FileOutputStream os = new FileOutputStream(bytecodeOutput);
-                os.write(writer.toByteArray());
-                os.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            FileOutputStream os = new FileOutputStream(bytecodeOutput);
+            os.write(writer.toByteArray());
+            os.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
+
 }

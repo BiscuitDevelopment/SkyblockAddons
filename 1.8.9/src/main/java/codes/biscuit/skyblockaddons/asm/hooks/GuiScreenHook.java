@@ -50,7 +50,6 @@ public class GuiScreenHook {
 
                         /*
                         If the backpack is in the auction house window, ignore it.
-                        Empty backpacks can't be listed in the auction.
                          */
                         for (int i = 0; i < chestInventory.getSizeInventory(); i++) {
                             if (ItemStack.areItemStackTagsEqual(chestInventory.getStackInSlot(i), stack)) {
@@ -63,6 +62,11 @@ public class GuiScreenHook {
 
             Backpack backpack = BackpackManager.getFromItem(stack);
             if (backpack != null) {
+                // Don't render the backpack preview if in the backpack is used to represent a crafting recipe.
+                if (BackpackManager.isBackpackCraftingRecipeItem(stack)) {
+                    return;
+                }
+
                 backpack.setX(x);
                 backpack.setY(y);
                 if (isFreezeKeyDown() && System.currentTimeMillis() - lastBackpackFreezeKey > 500) {

@@ -1,11 +1,18 @@
 package codes.biscuit.skyblockaddons.features.powerorbs;
 
 import codes.biscuit.skyblockaddons.utils.TextUtils;
+import codes.biscuit.skyblockaddons.utils.Utils;
 import lombok.Getter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.item.EntityArmorStand;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.AxisAlignedBB;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -29,6 +36,8 @@ public class PowerOrbManager {
     public static final PowerOrbEntry DUMMY_POWER_ORB_ENTRY = new PowerOrbEntry(PowerOrb.RADIANT, 20);
 
     private Map<PowerOrb, PowerOrbEntry> powerOrbEntryMap = new HashMap<>();
+
+    @Getter private EntityArmorStand powerOrbArmorStand = null;
 
     /**
      * Put any detected orb into the list of active orbs.
@@ -62,10 +71,10 @@ public class PowerOrbManager {
     public void detectPowerOrb(Entity entity) {
         String customNameTag = entity.getCustomNameTag();
         PowerOrb powerOrb = PowerOrb.getByDisplayname(customNameTag);
-        if (powerOrb != null && Minecraft.getMinecraft().thePlayer != null &&
-                powerOrb.isInRadius(entity.getDistanceSqToEntity(Minecraft.getMinecraft().thePlayer))) { // TODO Make sure this works...
-            customNameTag = TextUtils.stripColor(customNameTag);
-            Matcher matcher = POWER_ORB_PATTERN.matcher(customNameTag);
+
+        if (powerOrb != null && powerOrb.isInRadius(entity.getDistanceSqToEntity(Minecraft.getMinecraft().thePlayer))) { // TODO Make sure this works...
+            Matcher matcher = POWER_ORB_PATTERN.matcher(TextUtils.stripColor(customNameTag));
+
             if (matcher.matches()) {
                 String secondsString = matcher.group("seconds");
                 try {
@@ -73,9 +82,44 @@ public class PowerOrbManager {
                     put(powerOrb, Integer.parseInt(secondsString));
                 } catch (NumberFormatException ex) {
                     // It's okay, just don't add the power orb I guess...
+                    return;
+                }
+
+                List<EntityArmorStand> surroundingArmorStands = Minecraft.getMinecraft().theWorld.getEntitiesWithinAABB(EntityArmorStand.class,
+                        new AxisAlignedBB(entity.posX - 0.1, entity.posY - 3, entity.posZ - 0.1, entity.posX + 0.1, entity.posY, entity.posZ + 0.1));
+                if (!surroundingArmorStands.isEmpty()) {
+
+                    EntityArmorStand orbArmorStand = null;
+
+                    for (EntityArmorStand surroundingArmorStand : surroundingArmorStands) {
+                        ItemStack helmet = surroundingArmorStand.getCurrentArmor(3);
+                        if (helmet != null) {
+                            orbArmorStand = surroundingArmorStand;
+                        }
+                    }
+
+                    if (orbArmorStand != null && hasPowerOrbEntityChanged(orbArmorStand)) {
+                        powerOrbArmorStand = createVirtualArmorStand(orbArmorStand);
+                    }
                 }
             }
         }
+    }
+
+    public boolean hasPowerOrbEntityChanged(EntityArmorStand newPowerOrbArmorStand) {
+        if (powerOrbArmorStand == null) {
+            return true;
+        }
+
+        return powerOrbArmorStand.getEquipmentInSlot(4) != newPowerOrbArmorStand.getEquipmentInSlot(4);
+    }
+
+    public EntityArmorStand createVirtualArmorStand(EntityArmorStand armorStandToClone) {
+        EntityArmorStand virtualArmorStand = new EntityArmorStand(Utils.getDummyWorld());
+
+        virtualArmorStand.setCurrentItemOrArmor(4, armorStandToClone.getEquipmentInSlot(4));
+
+        return virtualArmorStand;
     }
 
     @Getter
