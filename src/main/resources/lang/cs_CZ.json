@@ -208,7 +208,11 @@
     "cancelledPark": "A feature has stopped you from breaking this block here.",
     "bossApproaching": "You are close to spawning a boss!",
     "enableAll": "Povolit vše",
-    "disableAll": "Zakázat vše"
+    "disableAll": "Zakázat vše",
+    "enchantmentInclusionExample": "e.g. \"prot, feather\"",
+    "enchantmentExclusionExample": "e.g. \"proj, blast\"",
+    "reforgeInclusionExample": "e.g. \"godly, strong\"",
+    "reforgeExclusionExample": "e.g. \"odd, clean\""
   },
   "discordStatus": {
     "titleNone": "Žádné",
