@@ -2,6 +2,7 @@ package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
+import codes.biscuit.skyblockaddons.core.InventoryType;
 import codes.biscuit.skyblockaddons.features.ItemDiff;
 import codes.biscuit.skyblockaddons.features.SlayerArmorProgress;
 import codes.biscuit.skyblockaddons.misc.scheduler.Scheduler;
@@ -11,13 +12,18 @@ import lombok.Getter;
 import lombok.Setter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
+import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.gui.inventory.GuiChest;
 import net.minecraft.inventory.*;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 import java.math.BigDecimal;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+//TODO Fix for Hypixel localization
 
 /**
  * Utility methods related to player inventories
@@ -50,6 +56,8 @@ public class InventoryUtils {
     @Getter private boolean usingToxicArrowPoison;
 
     @Getter private SlayerArmorProgress[] slayerArmorProgresses = new SlayerArmorProgress[4];
+
+    @Getter private InventoryType inventoryType;
 
     private SkyblockAddons main = SkyblockAddons.getInstance();
 
@@ -270,7 +278,8 @@ public class InventoryUtils {
                         Matcher matcher = REVENANT_UPGRADE_PATTERN.matcher(line);
                         if (matcher.matches()) { // Example: line§5§o§7Next Upgrade: §a+240❈ §8(§a14,418§7/§c15,000§8)
                             try {
-                                float percentage = Float.parseFloat(matcher.group(2).replace(",", "")) / Integer.parseInt(matcher.group(3).replace(",", "")) * 100;
+                                float percentage = Float.parseFloat(matcher.group(2).replace(",", "")) /
+                                        Integer.parseInt(matcher.group(3).replace(",", "")) * 100;
                                 BigDecimal bigDecimal = new BigDecimal(percentage).setScale(0, BigDecimal.ROUND_HALF_UP);
                                 percent = bigDecimal.toString();
                                 defence = ColorCode.GREEN + matcher.group(1);
@@ -303,5 +312,60 @@ public class InventoryUtils {
      */
     public Collection<ItemDiff> getItemPickupLog() {
         return itemPickupLog.values();
+    }
+
+    /**
+     * Detects and stores, and returns the current Skyblock inventory type. The inventory type is the kind of menu the
+     * player has open, like a crafting table or an enchanting table for example.
+     *
+     * @return the detected inventory type, or {@code null} if an unrecognized inventory is detected or there's no inventory open
+     */
+    public InventoryType updateInventoryType() {
+        GuiScreen currentScreen = Minecraft.getMinecraft().currentScreen;
+
+        if (!(currentScreen instanceof GuiChest)) {
+            return inventoryType = null;
+        }
+
+        IInventory inventory = ((GuiChest) currentScreen).lowerChestInventory;
+
+
+        for (InventoryType inventoryType : InventoryType.values()) {
+            if (inventoryType.getInventoryName().equals(inventory.getDisplayName().getUnformattedText())) {
+                if (inventoryType == InventoryType.BASIC_REFORGING) {
+                    return this.inventoryType = getReforgeInventoryType(inventory);
+                }
+                else {
+                    return this.inventoryType = inventoryType;
+                }
+            }
+        }
+
+        return this.inventoryType = null;
+    }
+
+    // Gets the reforge inventory type (basic/advanced) from a given reforge inventory
+    private InventoryType getReforgeInventoryType(IInventory inventory) {
+        if (!inventory.getDisplayName().getUnformattedText().equals(InventoryType.BASIC_REFORGING.getInventoryName())) {
+            throw new IllegalArgumentException("The given inventory is not a reforge inventory!");
+        }
+
+        // This is the barrier item that's present in the advanced reforging menu. This slot is empty in the basic reforging menu.
+        ItemStack barrier = inventory.getStackInSlot(13);
+        // This is the stained glass pane to the right of the barrier.
+        ItemStack glassPane = inventory.getStackInSlot(14);
+
+        /*
+        If the barrier is there, it's the advanced reforging menu. If it's not there (since the player placed an item in
+        the menu), check if the glass pane next to the slot is named "Reforge Stone." That indicates it's the advanced
+        reforging menu. Otherwise, it's the basic menu.
+         */
+        if (barrier != null && barrier.getItem().equals(Item.getByNameOrId("barrier")) || glassPane != null &&
+                glassPane.hasDisplayName() && TextUtils.stripColor(glassPane.getDisplayName()).equals("Reforge Stone")) {
+            return InventoryType.ADVANCED_REFORGING;
+        }
+        else {
+            return InventoryType.BASIC_REFORGING;
+        }
     }
 }
