@@ -209,10 +209,10 @@
     "bossApproaching": "¡Estás cerca de invocar a un jefe!",
     "enableAll": "Activar Todos",
     "disableAll": "Desactivar Todos",
-    "enchantmentInclusionExample": "e.g. \"prot, feather\"",
-    "enchantmentExclusionExample": "e.g. \"proj, blast\"",
-    "reforgeInclusionExample": "e.g. \"godly, strong\"",
-    "reforgeExclusionExample": "e.g. \"odd, clean\""
+    "enchantmentInclusionExample": "ej. \"prot, feather\"",
+    "enchantmentExclusionExample": "ej. \"proj, blast\"",
+    "reforgeInclusionExample": "ej. \"godly, strong\"",
+    "reforgeExclusionExample": "ej. \"odd, clean\""
   },
   "discordStatus": {
     "titleNone": "Ninguno",
