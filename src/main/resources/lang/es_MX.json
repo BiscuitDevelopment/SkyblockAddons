@@ -208,7 +208,11 @@
     "cancelledPark": "Una característica te ha impedido que mines este bloque aquí.",
     "bossApproaching": "¡Estás cerca de invocar a un jefe!",
     "enableAll": "Activar Todos",
-    "disableAll": "Desactivar Todos"
+    "disableAll": "Desactivar Todos",
+    "enchantmentInclusionExample": "e.g. \"prot, feather\"",
+    "enchantmentExclusionExample": "e.g. \"proj, blast\"",
+    "reforgeInclusionExample": "e.g. \"godly, strong\"",
+    "reforgeExclusionExample": "e.g. \"odd, clean\""
   },
   "discordStatus": {
     "titleNone": "Ninguno",
