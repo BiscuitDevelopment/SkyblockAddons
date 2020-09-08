@@ -208,7 +208,11 @@
     "cancelledPark": "Une fonctionnalité vous a empêché de casser ce bloc ici.",
     "bossApproaching": "Vous êtes sur le point de faire apparaître un boss!",
     "enableAll": "Tout activer",
-    "disableAll": "Tout désactiver"
+    "disableAll": "Tout désactiver",
+    "enchantmentInclusionExample": "e.g. \"prot, feather\"",
+    "enchantmentExclusionExample": "e.g. \"proj, blast\"",
+    "reforgeInclusionExample": "e.g. \"godly, strong\"",
+    "reforgeExclusionExample": "e.g. \"odd, clean\""
   },
   "discordStatus": {
     "titleNone": "Aucun",
