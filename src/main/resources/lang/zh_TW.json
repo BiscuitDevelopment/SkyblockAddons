@@ -208,7 +208,11 @@
     "cancelledPark": "一個功能阻止了你破壞此方塊。",
     "bossApproaching": "Boss 即將生成！",
     "enableAll": "啟用全部",
-    "disableAll": "停用全部"
+    "disableAll": "停用全部",
+    "enchantmentInclusionExample": "e.g. \"prot, feather\"",
+    "enchantmentExclusionExample": "e.g. \"proj, blast\"",
+    "reforgeInclusionExample": "e.g. \"godly, strong\"",
+    "reforgeExclusionExample": "e.g. \"odd, clean\""
   },
   "discordStatus": {
     "titleNone": "無",
