@@ -208,7 +208,11 @@
     "cancelledPark": "A featuwe has stopped you fwom bweaking this bwock hewe.",
     "bossApproaching": "You awe cwose to spawning a boss!",
     "enableAll": "Enabwe Aww",
-    "disableAll": "Disabwe Aww"
+    "disableAll": "Disabwe Aww",
+    "enchantmentInclusionExample": "e.g. \"prot, feather\"",
+    "enchantmentExclusionExample": "e.g. \"proj, blast\"",
+    "reforgeInclusionExample": "e.g. \"godly, strong\"",
+    "reforgeExclusionExample": "e.g. \"odd, clean\""
   },
   "discordStatus": {
     "titleNone": "None",
