@@ -208,7 +208,11 @@
     "cancelledPark": "SkyblockAddons ได้หยุดคุณจากการขุดบล็อคตรงนี้",
     "bossApproaching": "บอสของคุณใกล้จะเกิดแล้ว",
     "enableAll": "เปิดทั้งหมด",
-    "disableAll": "ปิดทั้งหมด"
+    "disableAll": "ปิดทั้งหมด",
+    "enchantmentInclusionExample": "e.g. \"prot, feather\"",
+    "enchantmentExclusionExample": "e.g. \"proj, blast\"",
+    "reforgeInclusionExample": "e.g. \"godly, strong\"",
+    "reforgeExclusionExample": "e.g. \"odd, clean\""
   },
   "discordStatus": {
     "titleNone": "ไม่มี",
