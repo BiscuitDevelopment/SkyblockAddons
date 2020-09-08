@@ -208,7 +208,11 @@
     "cancelledPark": "Una funzione ti ha impedito di rompere questo blocco.",
     "bossApproaching": "Stai per dare vita ad un boss!",
     "enableAll": "Attiva tutto",
-    "disableAll": "Disabilita tutto"
+    "disableAll": "Disabilita tutto",
+    "enchantmentInclusionExample": "e.g. \"prot, feather\"",
+    "enchantmentExclusionExample": "e.g. \"proj, blast\"",
+    "reforgeInclusionExample": "e.g. \"godly, strong\"",
+    "reforgeExclusionExample": "e.g. \"odd, clean\""
   },
   "discordStatus": {
     "titleNone": "Nessuno",
