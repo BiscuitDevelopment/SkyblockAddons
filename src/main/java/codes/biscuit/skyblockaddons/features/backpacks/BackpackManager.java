@@ -2,7 +2,7 @@ package codes.biscuit.skyblockaddons.features.backpacks;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
-import codes.biscuit.skyblockaddons.utils.EnumUtils;
+import codes.biscuit.skyblockaddons.core.InventoryType;
 import codes.biscuit.skyblockaddons.utils.TextUtils;
 import codes.biscuit.skyblockaddons.utils.ItemUtils;
 import net.minecraft.item.ItemStack;
@@ -42,7 +42,7 @@ public class BackpackManager {
             Matcher matcher = BACKPACK_ID_PATTERN.matcher(id);
             boolean matches = matcher.matches();
             boolean isCakeBag = main.getConfigValues().isEnabled(Feature.CAKE_BAG_PREVIEW) &&
-                    "NEW_YEAR_CAKE_BAG".equals(id) && EnumUtils.InventoryType.getCurrentInventoryType() != EnumUtils.InventoryType.BAKER;
+                    "NEW_YEAR_CAKE_BAG".equals(id) && main.getInventoryUtils().getInventoryType() != InventoryType.BAKER;
 
             // If it's a backpack OR it's a cake bag and they have the setting enabled.
             if (matches || isCakeBag) {
