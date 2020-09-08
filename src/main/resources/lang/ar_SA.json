@@ -208,7 +208,11 @@
     "cancelledPark": "لقد منعتك ميزة من كسر هذا المعدن هنا.",
     "bossApproaching": "أنت قريبة من توليد رئيس!",
     "enableAll": "تشغيل الكل",
-    "disableAll": "تعطيل الكل"
+    "disableAll": "تعطيل الكل",
+    "enchantmentInclusionExample": "e.g. \"prot, feather\"",
+    "enchantmentExclusionExample": "e.g. \"proj, blast\"",
+    "reforgeInclusionExample": "e.g. \"godly, strong\"",
+    "reforgeExclusionExample": "e.g. \"odd, clean\""
   },
   "discordStatus": {
     "titleNone": "لا شيء",
