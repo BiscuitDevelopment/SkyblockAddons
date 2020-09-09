@@ -3,6 +3,7 @@ package codes.biscuit.skyblockaddons.asm.hooks;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.asm.utils.ReturnValue;
 import codes.biscuit.skyblockaddons.core.Feature;
+import codes.biscuit.skyblockaddons.core.InventoryType;
 import codes.biscuit.skyblockaddons.features.backpacks.Backpack;
 import codes.biscuit.skyblockaddons.features.backpacks.BackpackManager;
 import codes.biscuit.skyblockaddons.features.cooldowns.CooldownManager;
@@ -134,7 +135,7 @@ public class PlayerControllerMPHook {
                 }
 
                 // Crafting patterns
-                if (slotIn != null && EnumUtils.InventoryType.getCurrentInventoryType() == EnumUtils.InventoryType.CRAFTING_TABLE
+                if (slotIn != null && main.getInventoryUtils().getInventoryType() == InventoryType.CRAFTING_TABLE
                         && main.getConfigValues().isEnabled(Feature.CRAFTING_PATTERNS)) {
 
                     final CraftingPattern selectedPattern = main.getPersistentValues().getSelectedCraftingPattern();

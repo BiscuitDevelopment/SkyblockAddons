@@ -75,54 +75,6 @@ public class EnumUtils {
         CHROMA_SLIDER
     }
 
-    public enum InventoryType {
-        ENCHANTMENT_TABLE(INVENTORY_TYPE_ENCHANTS, "Enchant Item"),
-        REFORGE_ANVIL(INVENTORY_TYPE_REFORGES, "Reforge Item"),
-        BAKER(null, "Baker"),
-        CRAFTING_TABLE(INVENTORY_TYPE_CRAFTING, CraftingPattern.CRAFTING_TABLE_DISPLAYNAME);
-
-        /**
-         * The current inventory type. Can be null.
-         */
-        @Getter private static InventoryType currentInventoryType;
-
-        private final Message message;
-        private final String inventoryName;
-
-        InventoryType(Message message, String inventoryName) {
-            this.message = message;
-            this.inventoryName = inventoryName;
-        }
-
-        public String getMessage() {
-            return message.getMessage();
-        }
-
-        /**
-         * Resets the current inventory type
-         */
-        public static void resetCurrentInventoryType() {
-            currentInventoryType = null;
-        }
-
-        /**
-         * Get the inventory type based on an inventory name.
-         * Stores the found type to access later with {@link #getCurrentInventoryType()}
-         *
-         * @param inventoryName Unformatted inventory name
-         * @return Inventory type for that name or null
-         */
-        public static InventoryType getCurrentInventoryType(String inventoryName) {
-            for (InventoryType inventoryType : values()) {
-                if(inventoryType.inventoryName.equals(inventoryName)) {
-                    currentInventoryType = inventoryType;
-                    return inventoryType;
-                }
-            }
-            return null;
-        }
-    }
-
     public enum BackpackStyle {
         GUI(BACKPACK_STYLE_REGULAR),
         BOX(BACKPACK_STYLE_COMPACT);
@@ -192,9 +144,7 @@ public class EnumUtils {
         }
     }
 
-    /**
-     * Different detection methods of the magma boss are more accurate than others, display how accurate the time is.
-     */
+    /** Different detection methods of the magma boss are more accurate than others, display how accurate the time is. */
     @Getter
     public enum MagmaTimerAccuracy {
         NO_DATA("N/A"),
@@ -454,6 +404,7 @@ public class EnumUtils {
         }
     }
 
+    //TODO Fix for Hypixel localization
     public enum SlayerQuest {
         REVENANT_HORROR("Revenant Horror"),
         TARANTULA_BROODFATHER("Tarantula Broodfather"),

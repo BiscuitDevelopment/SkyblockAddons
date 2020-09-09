@@ -1,7 +1,10 @@
 package codes.biscuit.skyblockaddons.core.npc;
 
+import codes.biscuit.skyblockaddons.utils.InventoryUtils;
 import codes.biscuit.skyblockaddons.utils.TextUtils;
 import lombok.Getter;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.entity.Entity;
 import net.minecraft.init.Blocks;
 import net.minecraft.inventory.IInventory;
@@ -33,6 +36,7 @@ public class NPCUtils {
      * @return {@code true} if the NPC is a merchant with buying and selling capabilities, {@code false} otherwise
      */
     public static boolean isSellMerchant(IInventory inventory) {
+        //TODO Fix for Hypixel localization
         int sellSlot = inventory.getSizeInventory() - 4 - 1;
         ItemStack itemStack = inventory.getStackInSlot(sellSlot);
 
@@ -42,9 +46,9 @@ public class NPCUtils {
                 return true;
             }
 
-            List<String> lore = itemStack.getTooltip(null, false);
-            for (String loreLine : lore) {
-                if (TextUtils.stripColor(loreLine).equals("Click to buyback!")) {
+            List<String> tooltip = itemStack.getTooltip(Minecraft.getMinecraft().thePlayer, false);
+            for (String line : tooltip) {
+                if (TextUtils.stripColor(line).equals("Click to buyback!")) {
                     return true;
                 }
             }
@@ -76,6 +80,15 @@ public class NPCUtils {
      * @return {@code true} if the entity is an NPC, {@code false} otherwise
      */
     public static boolean isNPC(Entity entity) {
-        return entity.getUniqueID().version() == 2;
+        if (entity instanceof EntityOtherPlayerMP) {
+            /*
+             Player NPCs all have a UUID of type 2. Also check for an absence of the Skyblock menu in the inventory to
+             make sure they're an NPC.
+             */
+            return entity.getUniqueID().version() == 2 && ((EntityOtherPlayerMP) entity).inventory.getStackInSlot(8)
+                    == null;
+        }
+
+        return false;
     }
 }

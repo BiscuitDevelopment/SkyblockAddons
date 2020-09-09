@@ -212,6 +212,10 @@ public enum Message {
     MESSAGE_BOSS_APPROACH_ALERT(MessageObject.MESSAGES, "bossApproaching"),
     MESSAGE_ENABLE_ALL(MessageObject.MESSAGES, "enableAll"),
     MESSAGE_DISABLE_ALL(MessageObject.MESSAGES, "disableAll"),
+    MESSAGE_ENCHANTMENT_INCLUSION_EXAMPLE(MessageObject.MESSAGES, "enchantmentInclusionExample"),
+    MESSAGE_ENCHANTMENT_EXCLUSION_EXAMPLE(MessageObject.MESSAGES, "enchantmentExclusionExample"),
+    MESSAGE_REFORGE_INCLUSION_EXAMPLE(MessageObject.MESSAGES, "reforgeInclusionExample"),
+    MESSAGE_REFORGE_EXCLUSION_EXAMPLE(MessageObject.MESSAGES, "reforgeExclusionExample"),
 
     @Deprecated ANCHOR_POINT_TOP_LEFT(MessageObject.ANCHOR_POINT, "topLeft"),
     @Deprecated ANCHOR_POINT_TOP_RIGHT(MessageObject.ANCHOR_POINT, "topRight"),

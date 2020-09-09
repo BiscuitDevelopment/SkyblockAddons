@@ -30,7 +30,9 @@
     "allowDroppingTheseItems": [
       "RUNE",
       "REMNANT_OF_THE_EYE",
-      "DUNGEON_LORE_PAPER"
+      "DUNGEON_LORE_PAPER",
+      "WINTER_DISC",
+      "DUNGEON_STONE"
     ]
   }
 }
