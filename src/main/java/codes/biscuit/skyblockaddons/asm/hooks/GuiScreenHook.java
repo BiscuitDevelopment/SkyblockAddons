@@ -62,8 +62,11 @@ public class GuiScreenHook {
 
             Backpack backpack = BackpackManager.getFromItem(stack);
             if (backpack != null) {
-                // Don't render the backpack preview if in the backpack is used to represent a crafting recipe.
-                if (BackpackManager.isBackpackCraftingRecipeItem(stack)) {
+                /*
+                 Don't render the backpack preview if in the backpack is used to represent a crafting recipe or the
+                 result of one.
+                 */
+                if (BackpackManager.isBackpackCraftingMenuItem(stack)) {
                     return;
                 }
 
