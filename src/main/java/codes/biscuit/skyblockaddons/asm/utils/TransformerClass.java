@@ -58,8 +58,12 @@ public enum TransformerClass {
     ModelBase("net/minecraft/client/model/ModelBase", "bbo"),
     ModelBiped("net/minecraft/client/model/ModelBiped", "bbj"),
     ModelEnderman("net/minecraft/client/model/ModelEnderman", "bbd"),
+    RenderGlobal("net/minecraft/client/renderer/RenderGlobal", "bfr"),
+    EffectRenderer("net/minecraft/client/particle/EffectRenderer", "bec"),
+    EntityFX("net/minecraft/client/particle/EntityFX", "beb"),
+    PotionEffect("net/minecraft/potion/PotionEffect", "pf"),
 
-    NULL(null,null);
+    ;
 
     private String name;
 

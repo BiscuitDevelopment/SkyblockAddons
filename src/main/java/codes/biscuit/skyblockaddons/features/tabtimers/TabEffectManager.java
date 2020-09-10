@@ -55,7 +55,9 @@ public class TabEffectManager {
      * @param potionEffect The potion effect text to be added.
      */
     public void putPotionEffect(String potionEffect, String timer) {
-        if(SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.HIDE_NIGHT_VISION_EFFECT_TIMER) && potionEffect.startsWith("§r§5Night Vision")) return;
+        if (SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.HIDE_NIGHT_VISION_EFFECT_TIMER) && potionEffect.startsWith("§r§5Night Vision")) {
+            return;
+        }
         putEffect(new TabEffect(potionEffect, timer), potionTimers);
     }
 

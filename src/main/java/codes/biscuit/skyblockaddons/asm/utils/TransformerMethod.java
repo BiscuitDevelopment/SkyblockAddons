@@ -114,6 +114,8 @@ public enum TransformerMethod {
 
     // EntityLivingBase
     handleStatusUpdate("handleStatusUpdate", "func_70103_a", "a", "(B)V"),
+    removePotionEffectClient("removePotionEffectClient", "func_70618_n", "l", "(I)V"),
+    addPotionEffect("addPotionEffect", "func_70690_d", "c", "(Lnet/minecraft/potion/PotionEffect;)V", "(" + TransformerClass.PotionEffect.getName() +")V"),
 
     // Constructor
     init("<init>", "<init>", "<init>", "()V"),
