@@ -41,6 +41,9 @@ public class GuiContainerHook {
     private static FloatPairString reforgeToRender = null;
     private static Set<FloatPairString> enchantsToRender = new HashSet<>();
 
+    private static int mouseXFreeze;
+    private static int mouseYFreeze;
+
     /**
      * This controls whether or not the backpack preview is frozen- allowing you
      * to hover over a backpack's contents in full detail!
@@ -141,7 +144,18 @@ public class GuiContainerHook {
             int y = backpack.getY();
             ItemStack[] items = backpack.getItems();
             int length = items.length;
+            int screenHeight = guiContainer.height;
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+
+            if (!GuiContainerHook.isFreezeBackpack())
+            {
+                mouseXFreeze = mouseX;
+                mouseYFreeze = mouseY;
+            }
+
+            int tooltipX = mouseXFreeze;
+            int tooltipY = mouseYFreeze;
+
             if (main.getConfigValues().getBackpackStyle() == EnumUtils.BackpackStyle.GUI) {
                 mc.getTextureManager().bindTexture(CHEST_GUI_TEXTURE);
                 int rows = length/9;
@@ -154,6 +168,24 @@ public class GuiContainerHook {
                     GlStateManager.color(color.getR(), color.getG(), color.getB(), 1);
                     textColor = color.getInventoryTextColor();
                 }
+
+                int tooltipTextWidth = 176;
+
+                if (tooltipX + tooltipTextWidth > guiContainer.width)
+                {
+                    tooltipX = mouseXFreeze - 16 - tooltipTextWidth;
+                }
+
+                int tooltipHeight = length / 9 * 18;
+
+                if (tooltipY + tooltipHeight + 24 > screenHeight)
+                {
+                    tooltipY = screenHeight - tooltipHeight - 24;
+                }
+
+                x = tooltipX;
+                y = tooltipY;
+
                 guiContainer.drawTexturedModalRect(x, y, 0, 0, 176, rows * 18 + 17);
                 guiContainer.drawTexturedModalRect(x, y + rows * 18 + 17, 0, 215, 176, 7);
                 mc.fontRendererObj.drawString(backpack.getBackpackName(), x+8, y+6, textColor);
@@ -185,6 +217,21 @@ public class GuiContainerHook {
                     guiContainer.drawHoveringText(toRenderOverlay.getTooltip(null, mc.gameSettings.advancedItemTooltips), mouseX, mouseY);
                 }
             } else {
+                int tooltipTextWidth = 16 * 9 + 3;
+
+                if (tooltipX + tooltipTextWidth > guiContainer.width) {
+                    tooltipX = mouseXFreeze - 16 - tooltipTextWidth;
+                }
+
+                int tooltipHeight = 16 * (length / 9) + 3;
+
+                if (tooltipY + tooltipHeight > screenHeight) {
+                    tooltipY = screenHeight - tooltipHeight;
+                }
+
+                x = tooltipX;
+                y = tooltipY;
+
                 GlStateManager.disableLighting();
                 GlStateManager.pushMatrix();
                 GlStateManager.translate(0,0, 300);
