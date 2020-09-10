@@ -8,7 +8,7 @@
     "skeletonHatBonesBar": "Skelet Helm Botten Balk",
     "hideFoodAndArmor": "Verberg Voedsel & Harnas Balk",
     "fullInventoryWarning": "Volle Inventaris Waarschuwing",
-    "repeating": "Repeat Warning",
+    "repeating": "Waarschuwing herhalen",
     "disableEmberRodAbility": "Ember Rod Uitschakelen op Eiland",
     "editLocations": "GUI Locaties Bewerken",
     "guiScale": "GUI Grootte: %scale%",
@@ -16,7 +16,7 @@
     "hideDurability": "Verberg Duurzaamheid Gereedschap",
     "showEnchantmentsReforges": "Betoveringen & Omsmedingen",
     "minionStopWarning": "\"Minion kan niet bereiken\"-waarschuwing",
-    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
+    "hidePlayersNearNPCs": "Spelers vlakbij belangrijke NPC's verbergen",
     "backpackStyle": "Rugzakstijl: %style%",
     "backpackStyles": {
       "regular": "Normaal",
@@ -86,15 +86,15 @@
       "compact": "Compact"
     },
     "disableMagicalSoupMessage": "Magische Paddenstoelensoep-berichten uitschakelen",
-    "zealotCounter": "Zealot Counter - Count Since Last Eye",
-    "tickerChargesDisplay": "Ticker/Charges Display",
+    "zealotCounter": "Zealotteller - Tel sinds laatste Eye",
+    "tickerChargesDisplay": "Ticker-/Ladingsweergave",
     "tab": {
       "generalSettings": "Algemene instellingen"
     },
     "tabEffectTimers": "Drank- en power-uptimers",
     "noArrowsLeftAlert": "Pijlen op-waarschuwing",
     "hideNightVisionEffectTimer": "Nachtzichteffecttimer verbergen",
-    "showCakeBagPreview": "Show Preview for Cake Bags",
+    "showCakeBagPreview": "Voorbeeld Cake Bags tonen",
     "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
     "enableDevFeatures": "Enable Developer Features",
     "chromaSpeed": "Chromasnelheid",
