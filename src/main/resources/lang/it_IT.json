@@ -209,10 +209,10 @@
     "bossApproaching": "Stai per dare vita ad un boss!",
     "enableAll": "Attiva tutto",
     "disableAll": "Disabilita tutto",
-    "enchantmentInclusionExample": "e.g. \"prot, feather\"",
-    "enchantmentExclusionExample": "e.g. \"proj, blast\"",
-    "reforgeInclusionExample": "e.g. \"godly, strong\"",
-    "reforgeExclusionExample": "e.g. \"odd, clean\""
+    "enchantmentInclusionExample": "es. \"prot, feather\"",
+    "enchantmentExclusionExample": "es. \"proj, blast\"",
+    "reforgeInclusionExample": "es. \"godly, strong\"",
+    "reforgeExclusionExample": "es. \"odd, clean\""
   },
   "discordStatus": {
     "titleNone": "Nessuno",
