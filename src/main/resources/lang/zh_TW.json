@@ -208,7 +208,11 @@
     "cancelledPark": "一個功能阻止了你破壞此方塊。",
     "bossApproaching": "Boss 即將生成！",
     "enableAll": "啟用全部",
-    "disableAll": "停用全部"
+    "disableAll": "停用全部",
+    "enchantmentInclusionExample": "e.g. \"prot, feather\"",
+    "enchantmentExclusionExample": "e.g. \"proj, blast\"",
+    "reforgeInclusionExample": "e.g. \"godly, strong\"",
+    "reforgeExclusionExample": "e.g. \"odd, clean\""
   },
   "discordStatus": {
     "titleNone": "無",
@@ -246,7 +250,7 @@
     "sba.copyEntity": "§e(Dev) §7複製玩家附近指定範圍內指定實體名稱的 NBT 資料",
     "sba.copySidebar": "§e(Dev) §7複製記分板的文字。",
     "sba.dev": "開關開發者模式",
-    "sba.dev.disabled": "開法者模式已禁用！",
+    "sba.dev.disabled": "開發者模式已禁用！",
     "sba.dev.enabled": "開發者模式已啟用！ 提示: 按下 \"%keyName%\" 以複製 NBT 資料！",
     "sba.edit": "編輯 GUI 位置",
     "sba.folder": "開啟模組資料夾",
