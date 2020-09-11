@@ -3,7 +3,7 @@
   "settings": {
     "settings": "Paramètres",
     "magmaBossWarning": "Alerte Magma Boss",
-    "itemDropConfirmation": "Confirmer le jet",
+    "itemDropConfirmation": "Confirmer le jet de l’objet",
     "hideSkeletonHatBones": "Masquer les os du Skeleton's Helmet",
     "skeletonHatBonesBar": "Barre du Skeleton's Helmet",
     "hideFoodAndArmor": "Masquer la barre de nourriture et d'armure",
@@ -130,7 +130,7 @@
     "changeZealotColor": "Changer la couleur des zealots",
     "hideSvenPupNametags": "Cacher les noms des chiots de Sven",
     "turnAllFeaturesChroma": "Activer toutes les fonctionnalités Chroma",
-    "dungeonMapDisplay": "Dungeon Map Display",
+    "dungeonMapDisplay": "Affichage de la carte du donjon",
     "rotateMap": "Suivre la position de la carte avec le joueur",
     "centerRotationOnYourPlayer": "Centrer la rotation autour de votre joueur",
     "mapZoom": "Zoom de carte",
@@ -209,10 +209,10 @@
     "bossApproaching": "Vous êtes sur le point de faire apparaître un boss!",
     "enableAll": "Tout activer",
     "disableAll": "Tout désactiver",
-    "enchantmentInclusionExample": "e.g. \"prot, feather\"",
-    "enchantmentExclusionExample": "e.g. \"proj, blast\"",
-    "reforgeInclusionExample": "e.g. \"godly, strong\"",
-    "reforgeExclusionExample": "e.g. \"odd, clean\""
+    "enchantmentInclusionExample": "p. ex. \"prot, feather\"",
+    "enchantmentExclusionExample": "p. ex. \"proj, blast\"",
+    "reforgeInclusionExample": "p. ex. \"godly, strong\"",
+    "reforgeExclusionExample": "p. ex. \"odd, clean\""
   },
   "discordStatus": {
     "titleNone": "Aucun",
