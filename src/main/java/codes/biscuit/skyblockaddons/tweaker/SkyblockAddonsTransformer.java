@@ -92,7 +92,7 @@ public class SkyblockAddonsTransformer implements IClassTransformer {
             node.accept(writer);
         } catch (Throwable t) {
             logger.error("Exception when transforming " + transformedName + " : " + t.getClass().getSimpleName());
-            t.printStackTrace();
+            logger.catching(t);
             outputBytecode(transformedName, writer);
             return bytes;
         }
@@ -115,7 +115,8 @@ public class SkyblockAddonsTransformer implements IClassTransformer {
             os.write(writer.toByteArray());
             os.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error("An error occurred writing bytecode of transformed class \"" + transformedName + "\" to file.");
+            logger.catching(e);
         }
     }
 
