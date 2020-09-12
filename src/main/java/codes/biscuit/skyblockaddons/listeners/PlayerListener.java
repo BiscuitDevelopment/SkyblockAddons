@@ -1008,6 +1008,10 @@ public class PlayerListener {
                     e.entityPlayer == Minecraft.getMinecraft().thePlayer && main.getUtils().isInDungeon()) {
                 main.getInventoryUtils().resetPreviousInventory();
             }
+
+            if (main.getConfigValues().isEnabled(Feature.DUNGEON_DEATH_COUNTER) && main.getUtils().isInDungeon()) {
+                main.getDungeonUtils().getDeathCounter().increment();
+            }
         }
     }
 

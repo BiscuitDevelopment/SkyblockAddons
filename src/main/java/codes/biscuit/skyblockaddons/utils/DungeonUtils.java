@@ -4,6 +4,7 @@ import codes.biscuit.skyblockaddons.core.DungeonClass;
 import codes.biscuit.skyblockaddons.core.DungeonMilestone;
 import codes.biscuit.skyblockaddons.core.DungeonPlayer;
 import codes.biscuit.skyblockaddons.core.EssenceType;
+import codes.biscuit.skyblockaddons.features.DungeonDeathCounter;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -34,6 +35,9 @@ public class DungeonUtils {
     /** The current teammates of the dungeon game */
     @Getter private final Map<String, DungeonPlayer> players = new HashMap<>();
 
+    /** The counter for the number of player deaths during a dungeon game */
+    @Getter private final DungeonDeathCounter deathCounter = new DungeonDeathCounter();
+
     private EssenceType lastEssenceType;
     private int lastEssenceAmount;
     private int lastEssenceRepeat;
@@ -45,6 +49,7 @@ public class DungeonUtils {
         dungeonMilestone = null;
         collectedEssences.clear();
         players.clear();
+        deathCounter.reset();
     }
 
     /**
