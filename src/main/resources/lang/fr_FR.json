@@ -146,7 +146,8 @@
     "showDungeonMilestone": "Afficher les cap du donjon",
     "dungeonsCollectedEssencesDisplay": "Afficher les essences collectées dans les donjons",
     "stopBonzoStaffSounds": "Couper les sons du Bonzo's Staff",
-    "showRarityUpgraded": "Afficher si la rareté de l'objet a été améliorée"
+    "showRarityUpgraded": "Afficher si la rareté de l'objet a été améliorée",
+    "dungeonDeathCounter": "Dungeon Death Counter"
   },
   "messages": {
     "dropConfirmation": "Jetez cet objet une nouvelle fois pour confirmer!",
