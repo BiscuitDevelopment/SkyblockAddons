@@ -146,7 +146,8 @@
     "showDungeonMilestone": "顯示 Dungeon 里程碑",
     "dungeonsCollectedEssencesDisplay": "顯示 Dungeon 已收集精華",
     "stopBonzoStaffSounds": "靜音 Bonzo's Staff",
-    "showRarityUpgraded": "顯示物品稀有度是否被升級"
+    "showRarityUpgraded": "顯示物品稀有度是否被升級",
+    "dungeonDeathCounter": "Dungeon Death Counter"
   },
   "messages": {
     "dropConfirmation": "再次丟棄此物品以確認！",
