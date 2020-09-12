@@ -146,7 +146,8 @@
     "showDungeonMilestone": "Dungeonmijlpaal tonen",
     "dungeonsCollectedEssencesDisplay": "Verzamelde Dungeons-Essencesweergave",
     "stopBonzoStaffSounds": "Bonzos staffgeluiden stoppen",
-    "showRarityUpgraded": "Tonen of voorwerpzeldzaamheid verhoogd is"
+    "showRarityUpgraded": "Tonen of voorwerpzeldzaamheid verhoogd is",
+    "dungeonDeathCounter": "Dungeon Death Counter"
   },
   "messages": {
     "dropConfirmation": "Laat dit voorwerp opnieuw vallen om te bevestigen!",
