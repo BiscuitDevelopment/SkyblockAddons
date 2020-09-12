@@ -146,7 +146,8 @@
     "showDungeonMilestone": "Show Dungeon Milestone",
     "dungeonsCollectedEssencesDisplay": "던전에서 획득한 에센스 목록",
     "stopBonzoStaffSounds": "Stop Bonzo's Staff Sounds",
-    "showRarityUpgraded": "아이템의 희귀도가 업그레이드 됐는지 표시하기"
+    "showRarityUpgraded": "아이템의 희귀도가 업그레이드 됐는지 표시하기",
+    "dungeonDeathCounter": "Dungeon Death Counter"
   },
   "messages": {
     "dropConfirmation": "Drop this item again to confirm!",
