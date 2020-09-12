@@ -146,7 +146,8 @@
     "showDungeonMilestone": "Show Dungeon Milestone",
     "dungeonsCollectedEssencesDisplay": "Dungeons Collected Essences Display",
     "stopBonzoStaffSounds": "Stop Bonzo's Staff Sounds",
-    "showRarityUpgraded": "Show if Item's Rarity has been Upgraded"
+    "showRarityUpgraded": "Show if Item's Rarity has been Upgraded",
+    "dungeonDeathCounter": "Dungeon Death Counter"
   },
   "messages": {
     "dropConfirmation": "Eşyayı düşürmeyi onaylamak için düşürme tuşuna bir daha bas!",
