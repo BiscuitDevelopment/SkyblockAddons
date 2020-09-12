@@ -146,7 +146,8 @@
     "showDungeonMilestone": "Mostrar a milestone da dungeon",
     "dungeonsCollectedEssencesDisplay": "Mostrar a essência recolhida na Dungeon",
     "stopBonzoStaffSounds": "Bloquear os sons do Bonzo's Staff",
-    "showRarityUpgraded": "Mostrar se a raridade do item foi melhorada"
+    "showRarityUpgraded": "Mostrar se a raridade do item foi melhorada",
+    "dungeonDeathCounter": "Dungeon Death Counter"
   },
   "messages": {
     "dropConfirmation": "Atira este item outra vez para confirmar!",
