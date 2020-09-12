@@ -86,7 +86,7 @@
       "compact": "Gọn"
     },
     "disableMagicalSoupMessage": "Tắt thông báo của Magical Mushroom Soup",
-    "zealotCounter": "Zealot Counter - Count Since Last Eye",
+    "zealotCounter": "Bộ đếm Zealot - Đếm số Zealot đã giết kể từ khi nhặt được Mắt Thần",
     "tickerChargesDisplay": "Ticker/Charges Display",
     "tab": {
       "generalSettings": "Cài đặt chung"
@@ -177,8 +177,8 @@
     },
     "slotLocked": "Ô này đã bị khoá!",
     "summoningEyeFound": "Mắt Triệu Hồi!",
-    "cancelledStemBreak": "A feature has stopped you from breaking this stem. Use your bare hand if you'd like to actually break it.",
-    "cancelledProfileOpening": "A feature has stopped you from opening this player's profile since you were holding a bow.",
+    "cancelledStemBreak": "Một tính năng đã ngăn bạn khỏi việc phá hạt giống này. Hãy sử dụng tay không nếu bạn muốn đập nó.",
+    "cancelledProfileOpening": "Một tính năng đã ngăn bạn xem thông tin của người chơi này khi bạn đang cầm Cung.",
     "cancelledDropping": "A feature has stopped you from dropping this \"rare\" item or tool from your hotbar.",
     "clickMoreTimes": "Bấm/Thả Đồ Vật Này Thêm %times% Lần Nữa Nếu Bạn Muốn Thực Hiện Điều Này.",
     "clickOneMoreTime": "Click/drop this item 1 more time if you really want to do this.",
