@@ -147,7 +147,7 @@
     "dungeonsCollectedEssencesDisplay": "Mostra Dungeon Essences Collezionate",
     "stopBonzoStaffSounds": "Blocca i suoni della Bonzo’s Staff",
     "showRarityUpgraded": "Mostra se la Rarità degli Oggetti è stata Potenziata",
-    "dungeonDeathCounter": "Dungeon Death Counter"
+    "dungeonDeathCounter": "Conteggio morti nel dungeon"
   },
   "messages": {
     "dropConfirmation": "Getta questo oggetto nuovamente per confermare!",
