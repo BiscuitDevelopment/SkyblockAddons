@@ -210,10 +210,10 @@
     "bossApproaching": "Boss 即将生成!",
     "enableAll": "全部启用",
     "disableAll": "全部禁用",
-    "enchantmentInclusionExample": "e.g. \"prot, feather\"",
-    "enchantmentExclusionExample": "e.g. \"proj, blast\"",
-    "reforgeInclusionExample": "e.g. \"godly, strong\"",
-    "reforgeExclusionExample": "e.g. \"odd, clean\""
+    "enchantmentInclusionExample": "例如: \"prot, feather\"",
+    "enchantmentExclusionExample": "例如: \"proj, blast\"",
+    "reforgeInclusionExample": "例如: \"godly, strong\"",
+    "reforgeExclusionExample": "例如: \"odd, clean\""
   },
   "discordStatus": {
     "titleNone": "无",
