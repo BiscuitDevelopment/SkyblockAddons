@@ -352,6 +352,14 @@ public class PlayerListener {
         ItemStack heldItem = e.entityPlayer.getHeldItem();
 
         if (main.getUtils().isOnSkyblock() && heldItem != null) {
+            // Show cooldown on dungeon orb when the player uses it in dungeons
+            if (main.getConfigValues().isEnabled(Feature.SHOW_ITEM_COOLDOWNS)
+                && main.getUtils().isInDungeon()
+                && (e.action == PlayerInteractEvent.Action.RIGHT_CLICK_BLOCK || e.action == PlayerInteractEvent.Action.RIGHT_CLICK_AIR)
+                && heldItem.getItem().equals(Items.skull)) {
+                main.getDungeonUtils().useOrb(heldItem);
+            }
+
             // Change the GUI background color when a backpack is opened to match the backpack's color.
             if (heldItem.getItem() == Items.skull) {
                 Backpack backpack = BackpackManager.getFromItem(heldItem);

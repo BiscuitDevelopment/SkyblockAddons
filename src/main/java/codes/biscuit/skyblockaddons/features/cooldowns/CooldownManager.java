@@ -46,6 +46,24 @@ public class CooldownManager {
         }
     }
 
+    /**
+     * Put an item on cooldown by getting the index of which cooldown value from its lore.
+     *
+     * @param item Item to put on cooldown
+     * @param index Index of the cooldown
+     */
+    public static void put(ItemStack item, int index) {
+        if(item == null || !item.hasDisplayName()) {
+            return;
+        }
+
+        int cooldown = getLoreCooldown(item, index);
+        if(cooldown > 0) {
+            // cooldown is returned in seconds and required in milliseconds
+            put(item.getDisplayName(), cooldown * 1000);
+        }
+    }
+
 
     /**
      * Put an item on cooldown with provided cooldown, for items that do not show their cooldown
@@ -151,22 +169,49 @@ public class CooldownManager {
      * @see #ALTERNATE_COOLDOWN_PATTERN
      */
     private static int getLoreCooldown(ItemStack item) {
+        return getLoreCooldown(item, 0);
+    }
+
+    /**
+     * Read multiple cooldown values of an item from it's lore.
+     * And, gets the selected value.
+     * This requires that the lore shows the cooldown either like {@code X Second Cooldown} or
+     * {@code Cooldown: Xs}. Cooldown is returned in seconds.
+     *
+     * @param item Item to read cooldown from
+     * @param index The index of the cooldown
+     * @return Read cooldown in seconds or {@code -1} if no cooldown was found
+     * @see #ITEM_COOLDOWN_PATTERN
+     * @see #ALTERNATE_COOLDOWN_PATTERN
+     */
+    private static int getLoreCooldown(ItemStack item, int index) {
+        int result = -1;
         for (String loreLine : item.getTooltip(Minecraft.getMinecraft().thePlayer, false)) {
             Matcher matcher = ITEM_COOLDOWN_PATTERN.matcher(loreLine);
             if (matcher.matches()) {
                 try {
-                    return Integer.parseInt(matcher.group(1));
+                    result = Integer.parseInt(matcher.group(1));
+
+                    if (index == 0)
+                        break;
+                    else
+                        index--;
                 } catch (NumberFormatException ignored) { }
             } else {
                 matcher = ALTERNATE_COOLDOWN_PATTERN.matcher(loreLine);
                 if (matcher.matches()) {
                     try {
-                        return Integer.parseInt(matcher.group(1));
+                        result = Integer.parseInt(matcher.group(1));
+
+                        if (index == 0)
+                            break;
+                        else
+                            index--;
                     } catch (NumberFormatException ignored) { }
                 }
             }
         }
-        return -1;
+        return result;
     }
 
 }

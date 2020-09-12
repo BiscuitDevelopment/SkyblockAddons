@@ -4,8 +4,11 @@ import codes.biscuit.skyblockaddons.core.DungeonClass;
 import codes.biscuit.skyblockaddons.core.DungeonMilestone;
 import codes.biscuit.skyblockaddons.core.DungeonPlayer;
 import codes.biscuit.skyblockaddons.core.EssenceType;
+import codes.biscuit.skyblockaddons.features.cooldowns.CooldownManager;
 import lombok.Getter;
 import lombok.Setter;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 
 import java.util.EnumMap;
 import java.util.HashMap;
@@ -112,5 +115,24 @@ public class DungeonUtils {
 
             collectedEssences.put(essenceType, collectedEssences.getOrDefault(essenceType, 0) + 1);
         }
+    }
+
+    /**
+     * Check if the given item is a dungeon orb. And, notifies the player that it got used.
+     * It applies the cooldown of the second ability. Since the main ability is showed in the experience bar.
+     *
+     * @param orb The dungeon orb item
+     */
+    public void useOrb(ItemStack orb) {
+        NBTTagCompound extraAttributes = orb.getTagCompound().getCompoundTag("ExtraAttributes");
+        if (extraAttributes == null)
+            return;
+        String id = extraAttributes.getString("id");
+        if (id == null)
+            return;
+        if (!id.equals("DUNGEON_STONE"))
+            return;
+
+        CooldownManager.put(orb, 1);
     }
 }
