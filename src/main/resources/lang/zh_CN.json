@@ -146,7 +146,8 @@
     "showDungeonMilestone": "显示地下城里程碑",
     "dungeonsCollectedEssencesDisplay": "显示在地下城收集到的 Essence",
     "stopBonzoStaffSounds": "静音 Bonzo's Staff",
-    "showRarityUpgraded": "显示物品稀有度是否被升级"
+    "showRarityUpgraded": "显示物品稀有度是否被升级",
+    "dungeonDeathCounter": "Dungeon Death Counter"
   },
   "messages": {
     "dropConfirmation": "再次丢弃此物品以确认!",
