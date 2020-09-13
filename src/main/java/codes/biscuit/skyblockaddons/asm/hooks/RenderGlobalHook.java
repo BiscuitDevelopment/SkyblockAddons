@@ -19,6 +19,8 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.scoreboard.ScorePlayerTeam;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.opengl.GL11;
 
@@ -26,12 +28,11 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.nio.FloatBuffer;
 import java.util.List;
-import java.util.regex.Pattern;
 
 public class RenderGlobalHook {
 
-    private static final Pattern AUCTION_SHOWCASE_ARMOR_STAND_NAME_PATTERN = Pattern.compile("§e#\\d+ §f§f(§.+)");
     private static final FloatBuffer BUF_FLOAT_4 = BufferUtils.createFloatBuffer(4);
+    private static final Logger LOGGER = LogManager.getLogger(SkyblockAddons.MOD_NAME + RenderGlobalHook.class.getSimpleName());
 
     private static boolean stopLookingForOptifine = false;
 
@@ -65,13 +66,13 @@ public class RenderGlobalHook {
                     isShaders = config.getMethod("isShaders");
                     isAntialiasing = config.getMethod("isAntialiasing");
                 } catch (NoSuchMethodException ex) {
-                    ex.printStackTrace();
+                    LOGGER.warn("Couldn't find Optifine methods for entity outlines...");
+                    LOGGER.catching(ex);
                     stopLookingForOptifine = true;
-                    main.getLogger().warn("[SkyblockAddons] Couldn't find optifine methods for entity outlines...");
                 }
             } catch (ClassNotFoundException ex1) {
+                LOGGER.info("Didn't find Optifine for entity outlines");
                 stopLookingForOptifine = true;
-                main.getLogger().info("[SkyblockAddons] Didn't find optifine for entity outlines");
             }
         }
 
@@ -84,8 +85,8 @@ public class RenderGlobalHook {
                 isShadersValue = (boolean) isShaders.invoke(null);
                 isAntialiasingValue = (boolean) isAntialiasing.invoke(null);
             } catch (IllegalAccessException | InvocationTargetException ex) {
-                ex.printStackTrace();
-                SkyblockAddons.getInstance().getLogger().warn("[SkyblockAddons] Failed to call optifine methods for entity outlines...");
+                LOGGER.warn("Failed to call Optifine methods for entity outlines...");
+                LOGGER.catching(ex);
             }
         }
 
@@ -140,8 +141,9 @@ public class RenderGlobalHook {
                     Location location = main.getUtils().getLocation();
 
                     if (entity instanceof EntityItem && (location == Location.VILLAGE || location == Location.AUCTION_HOUSE
-                            || location == Location.BANK || location == Location.BAZAAR || location == Location.COAL_MINE) &&
-                            isAuctionShowcaseItem((EntityItem) entity)) {
+                            || location == Location.BANK || location == Location.BAZAAR || location == Location.COAL_MINE
+                            || location == Location.LIBRARY || location == Location.JERRYS_WORKSHOP) &&
+                            isShopShowcaseItem((EntityItem) entity)) {
                         continue;
                     }
 
@@ -168,7 +170,8 @@ public class RenderGlobalHook {
                     GlStateManager.disableColorMaterial();
 
                 } catch (Throwable ex) {
-                    ex.printStackTrace(); // Just move on to the next entity...
+                    LOGGER.warn("Couldn't render outline for entity " + entity.toString() + ".");
+                    LOGGER.catching(ex); // Just move on to the next entity...
                 }
             }
 
@@ -240,12 +243,12 @@ public class RenderGlobalHook {
     }
 
     /*
-    Checks if the given EntityItem is an item being showcased in the Auction House
-    This works by detecting glass case the item is in.
+    This method checks if the given EntityItem is an item being showcased in a shop.
+    It works by detecting glass case the item is in.
      */
-    public static boolean isAuctionShowcaseItem(EntityItem entityItem) {
+    public static boolean isShopShowcaseItem(EntityItem entityItem) {
         for (EntityArmorStand entityArmorStand : entityItem.worldObj.getEntitiesWithinAABB(EntityArmorStand.class, entityItem.getEntityBoundingBox())) {
-            if (entityArmorStand.hasNoGravity() && entityArmorStand.getEquipmentInSlot(4).getItem() ==
+            if (entityArmorStand.isInvisible() && entityArmorStand.getEquipmentInSlot(4).getItem() ==
                     Item.getItemFromBlock(Blocks.glass)) {
                 return true;
             }
