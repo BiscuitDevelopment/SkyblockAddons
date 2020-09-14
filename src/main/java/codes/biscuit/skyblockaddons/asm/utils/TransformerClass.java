@@ -62,6 +62,7 @@ public enum TransformerClass {
     EffectRenderer("net/minecraft/client/particle/EffectRenderer", "bec"),
     EntityFX("net/minecraft/client/particle/EntityFX", "beb"),
     PotionEffect("net/minecraft/potion/PotionEffect", "pf"),
+    WorldClient("net/minecraft/client/multiplayer/WorldClient", "bdb"),
 
     ;
 

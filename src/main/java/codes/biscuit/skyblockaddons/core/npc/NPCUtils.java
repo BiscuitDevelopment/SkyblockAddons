@@ -1,20 +1,18 @@
 package codes.biscuit.skyblockaddons.core.npc;
 
-import codes.biscuit.skyblockaddons.utils.InventoryUtils;
 import codes.biscuit.skyblockaddons.utils.TextUtils;
 import lombok.Getter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Blocks;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Vec3;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * This is a set of utility methods relating to Skyblock NPCs
@@ -25,9 +23,9 @@ import java.util.Set;
  */
 public class NPCUtils {
 
-    private static final int HIDE_RADIUS_SQUARED = 3 * 3;
+    private static final int HIDE_RADIUS_SQUARED = 2 * 2;
 
-    @Getter private static Set<Vec3> npcLocations = new HashSet<>();
+    @Getter private static Map<UUID, Vec3> npcLocations = new HashMap<>();
 
     /**
      * Checks if the NPC is a merchant with both buying and selling capabilities
@@ -64,7 +62,7 @@ public class NPCUtils {
      * @return {@code true} if the entity is near an NPC, {@code false} otherwise
      */
     public static boolean isNearNPC(Entity entityToCheck) {
-        for (Vec3 npcLocation : npcLocations) {
+        for (Vec3 npcLocation : npcLocations.values()) {
             if (entityToCheck.getDistanceSq(npcLocation.xCoord, npcLocation.yCoord, npcLocation.zCoord) <= HIDE_RADIUS_SQUARED) {
                 return true;
             }
@@ -80,15 +78,12 @@ public class NPCUtils {
      * @return {@code true} if the entity is an NPC, {@code false} otherwise
      */
     public static boolean isNPC(Entity entity) {
-        if (entity instanceof EntityOtherPlayerMP) {
-            /*
-             Player NPCs all have a UUID of type 2. Also check for an absence of the Skyblock menu in the inventory to
-             make sure they're an NPC.
-             */
-            return entity.getUniqueID().version() == 2 && ((EntityOtherPlayerMP) entity).inventory.getStackInSlot(8)
-                    == null;
+        if (!(entity instanceof EntityOtherPlayerMP)) {
+            return false;
         }
 
-        return false;
+        EntityLivingBase entityLivingBase = (EntityLivingBase) entity;
+
+        return entity.getUniqueID().version() == 2 && entityLivingBase.getHealth() == 20.0F && !entityLivingBase.isPlayerSleeping();
     }
 }

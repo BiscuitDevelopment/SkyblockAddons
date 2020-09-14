@@ -71,8 +71,8 @@ public class EntityLivingBaseHook {
 
     public static void onAddPotionEffect(EntityLivingBase entityLivingBase, PotionEffect potionEffect) {
         SkyblockAddons main = SkyblockAddons.getInstance();
-        // 16 -> Night Vision
-        if (potionEffect.getPotionID() == 16 && entityLivingBase == Minecraft.getMinecraft().thePlayer &&
+        // 16 -> Night Vision, Night Vision Charm duration is 300 ticks...
+        if (potionEffect.getPotionID() == 16 && potionEffect.getDuration() == 300 && entityLivingBase == Minecraft.getMinecraft().thePlayer &&
                 main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.AVOID_BLINKING_NIGHT_VISION)) {
             nightVisionEffectsToRemove.clear();
         }

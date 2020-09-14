@@ -143,8 +143,10 @@ public enum TransformerMethod {
     renderByItem("renderByItem", "func_179022_a", "a", "(Lnet/minecraft/item/ItemStack;)V", "("+TransformerClass.ItemStack.getName()+")V"),
 
     // EffectRenderer
-    addEffect("addEffect", "func_78873_a", "a", "(Lnet/minecraft/client/particle/EntityFX;)V", "("+TransformerClass.EntityFX.getName()+")V")
+    addEffect("addEffect", "func_78873_a", "a", "(Lnet/minecraft/client/particle/EntityFX;)V", "("+TransformerClass.EntityFX.getName()+")V"),
 
+    // WorldClient
+    onEntityRemoved("onEntityRemoved", "func_72847_b", "b", "(Lnet/minecraft/entity/Entity;)V", "("+TransformerClass.Entity.getName()+")V"),
     ;
 
     private String name;

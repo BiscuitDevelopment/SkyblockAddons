@@ -25,6 +25,7 @@ import com.google.common.collect.Sets;
 import lombok.Getter;
 import lombok.Setter;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.inventory.GuiChest;
@@ -164,10 +165,6 @@ public class PlayerListener {
             }
 
             NPCUtils.getNpcLocations().clear();
-        } else {
-            if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.HIDE_PLAYERS_NEAR_NPCS) && NPCUtils.isNPC(entity)) {
-                NPCUtils.getNpcLocations().add(entity.getPositionVector());
-            }
         }
     }
 
@@ -311,7 +308,7 @@ public class PlayerListener {
                 if (NO_ARROWS_LEFT_PATTERN.matcher(formattedText).matches()) {
                     main.getUtils().playLoudSound("random.orb", 0.5);
                     main.getRenderListener().setSubtitleFeature(Feature.NO_ARROWS_LEFT_ALERT);
-                    main.getRenderListener().setArrowsLeft(-1); // TODO: check, does this break anything?
+                    main.getRenderListener().setArrowsLeft(-1);
                     main.getScheduler().schedule(Scheduler.CommandType.RESET_SUBTITLE_FEATURE, main.getConfigValues().getWarningSeconds());
 
                 } else if ((matcher = ONLY_HAVE_ARROWS_LEFT_PATTERN.matcher(formattedText)).matches()) {
@@ -512,16 +509,27 @@ public class PlayerListener {
         }
     }
 
-    /**
-     * Checks for minion holograms.
-     * Original contribution by Michael#3549.
-     */
     @SubscribeEvent
     public void onEntityEvent(LivingEvent.LivingUpdateEvent e) {
+        if (!main.getUtils().isOnSkyblock()) {
+            return;
+        }
+
         Entity entity = e.entity;
 
-        if (main.getUtils().isOnSkyblock() && entity instanceof EntityArmorStand && entity.hasCustomName()) {
+        if (entity instanceof EntityOtherPlayerMP && main.getConfigValues().isEnabled(Feature.HIDE_PLAYERS_NEAR_NPCS) && entity.ticksExisted < 5) {
+            float health = ((EntityOtherPlayerMP) entity).getHealth();
 
+            if (NPCUtils.getNpcLocations().containsKey(entity.getUniqueID())) {
+                if (health != 20.0F) {
+                    NPCUtils.getNpcLocations().remove(entity.getUniqueID());
+                }
+            } else if (NPCUtils.isNPC(entity)) {
+                NPCUtils.getNpcLocations().put(entity.getUniqueID(), entity.getPositionVector());
+            }
+        }
+
+        if (entity instanceof EntityArmorStand && entity.hasCustomName()) {
             PowerOrbManager.getInstance().detectPowerOrb(entity);
 
             if (main.getUtils().getLocation() == Location.ISLAND) {
@@ -535,7 +543,7 @@ public class PlayerListener {
                         main.getRenderListener().setSubtitleFeature(Feature.MINION_FULL_WARNING);
                         main.getScheduler().schedule(Scheduler.CommandType.RESET_SUBTITLE_FEATURE, main.getConfigValues().getWarningSeconds());
                     }
-                } else if (main.getConfigValues().isEnabled(Feature.MINION_STOP_WARNING)) { // TODO Make sure this works...
+                } else if (main.getConfigValues().isEnabled(Feature.MINION_STOP_WARNING)) {
                     Matcher matcher = MINION_CANT_REACH_PATTERN.matcher(entity.getCustomNameTag());
                     if (matcher.matches()) {
                         long now = System.currentTimeMillis();
@@ -603,6 +611,8 @@ public class PlayerListener {
                 }
             }
         }
+
+        NPCUtils.getNpcLocations().remove(e.entity.getUniqueID());
     }
 
     public boolean isZealot(Entity enderman) {
