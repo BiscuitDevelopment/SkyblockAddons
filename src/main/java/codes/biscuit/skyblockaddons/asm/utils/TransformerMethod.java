@@ -129,6 +129,9 @@ public enum TransformerMethod {
     // ModelBase
     render("render", "func_78088_a", "a", "(Lnet/minecraft/entity/Entity;FFFFFF)V", "("+TransformerClass.Entity.getName()+"FFFFFF)V"),
 
+    // WorldClient
+    onEntityRemoved("onEntityRemoved", "func_72847_b", "b", "(Lnet/minecraft/entity/Entity;)V", "("+TransformerClass.Entity.getName()+")V"),
+
     NULL(null,null,null,null,false);
 
     private String name;
