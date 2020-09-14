@@ -882,7 +882,8 @@ public class RenderListener {
             text = "Milestone " + dungeonMilestone.getLevel();
 
         } else if (feature == Feature.DUNGEONS_COLLECTED_ESSENCES_DISPLAY) {
-            if (buttonLocation == null && !main.getUtils().isInDungeon()) {
+            if (buttonLocation == null
+                    && (!main.getUtils().isInDungeon() && (!main.getConfigValues().isEnabled(Feature.SHOW_SALVAGE_ESSENCES_COUNTER) || !main.getDungeonUtils().isSalvaging()))) {
                 return;
             }
             text = "";
@@ -1121,7 +1122,7 @@ public class RenderListener {
                 int value = collectedEssences.getOrDefault(essenceType, 0);
                 if (buttonLocation != null) {
                     value = 99;
-                } else if (value <= 0) {
+                } else if (value <= 0 && !main.getDungeonUtils().isSalvaging()) {
                     continue;
                 }
 

@@ -327,6 +327,10 @@ public class PlayerListener {
                 }
             }
 
+            if (main.getDungeonUtils().isSalvaging() && main.getConfigValues().isEnabled(Feature.SHOW_SALVAGE_ESSENCES_COUNTER)) {
+                main.getDungeonUtils().parseSalvagedEssences(formattedText);
+            }
+
             if (main.getUtils().isInDungeon()) {
                 Matcher reviveMessageMatcher = REVIVE_MESSAGE_PATTERN.matcher(formattedText);
 
@@ -983,7 +987,13 @@ public class PlayerListener {
 
     @SubscribeEvent
     public void onGuiOpen(GuiOpenEvent e) {
+
         if (e.gui == null && GuiChest.class.equals(lastOpenedInventory)) {
+            if (main.getDungeonUtils().isSalvaging()) {
+                main.getDungeonUtils().setSalvaging(false);
+                main.getDungeonUtils().getCollectedEssences().clear();
+            }
+
             lastClosedInv = System.currentTimeMillis();
             lastOpenedInventory = null;
         }
@@ -1000,6 +1010,8 @@ public class PlayerListener {
                         } else {
                             mc.thePlayer.playSound("mob.horse.leather", 0.5F, 1);
                         }
+                    } else if (chestInventory.getDisplayName().getUnformattedText().equals("Salvage Dungeon Item")) {
+                        main.getDungeonUtils().setSalvaging(true);
                     }
                 }
             }
