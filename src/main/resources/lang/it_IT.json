@@ -150,6 +150,8 @@
     "dungeonDeathCounter": "Conteggio morti nel dungeon"
   },
   "messages": {
+    "enchants": "Enchants",
+    "reforges": "Reforges",
     "dropConfirmation": "Getta questo oggetto nuovamente per confermare!",
     "magmaBossWarning": "Magma Boss!",
     "fullInventory": "Inventario pieno!",
@@ -160,11 +162,6 @@
     "separateMultiple": "Separa le liste con delle virgole.",
     "enchantsToMatch": "%type% Da Combaciare:",
     "enchantsToExclude": "%type% Da Escludere:",
-    "inventoryTypes": {
-      "enchants": "Incantesimi",
-      "reforges": "Forge",
-      "crafting": "Fabbricazione"
-    },
     "wantToViewPatchNotes": "Hai bisogno di aiuto o vuoi leggere la lista dei cambiamenti?",
     "downloadLink": "VIDEO/LINK DELL’AGGIORNAMENTO",
     "directDownload": "LINK DIRETTO AL DOWNLOAD",
