@@ -150,6 +150,8 @@
     "dungeonDeathCounter": "Dungeon Death Counter"
   },
   "messages": {
+    "enchants": "Enchants",
+    "reforges": "Reforges",
     "dropConfirmation": "Opet baci ovu stvar za konfirmaciju!",
     "magmaBossWarning": "MagmaCube Boss!",
     "fullInventory": "Pun Inventar!",
@@ -160,11 +162,6 @@
     "separateMultiple": "Razdvoji Mnogostruke sa Zarezima.",
     "enchantsToMatch": "%type% Da Odgovara:",
     "enchantsToExclude": "%type% Da Odstraniti:",
-    "inventoryTypes": {
-      "enchants": "Čarolije",
-      "reforges": "Reforge-ovi",
-      "crafting": "Kraftanje"
-    },
     "wantToViewPatchNotes": "Need support or want to read the full changelog?",
     "downloadLink": "VIDEO/UPDATE LINK",
     "directDownload": "DIRECT DOWNLOAD LINK",
