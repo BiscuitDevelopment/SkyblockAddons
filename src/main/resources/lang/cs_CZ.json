@@ -150,6 +150,8 @@
     "dungeonDeathCounter": "Dungeon Death Counter"
   },
   "messages": {
+    "enchants": "Enchants",
+    "reforges": "Reforges",
     "dropConfirmation": "Vyhoď tento item pro vyhození!",
     "magmaBossWarning": "Objevil se Magma Boss!",
     "fullInventory": "Plný inventář!",
@@ -160,11 +162,6 @@
     "separateMultiple": "Oddělte více čárkami.",
     "enchantsToMatch": "Shodující se %type%:",
     "enchantsToExclude": "Vyloučené %type%:",
-    "inventoryTypes": {
-      "enchants": "očarování",
-      "reforges": "překování",
-      "crafting": "Výroba"
-    },
     "wantToViewPatchNotes": "Need support or want to read the full changelog?",
     "downloadLink": "VIDEO/UPDATE LINK",
     "directDownload": "PŘÍMÝ ODKAZ NA STAŽENÍ",
