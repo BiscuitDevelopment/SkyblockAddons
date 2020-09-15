@@ -150,6 +150,8 @@
     "dungeonDeathCounter": "Dungeon Death Counter"
   },
   "messages": {
+    "enchants": "Enchants",
+    "reforges": "Reforges",
     "dropConfirmation": "Dwop thwis itwem agwain to confiwm!",
     "magmaBossWarning": "Magmwa Cube Bowoss! （・□・；）",
     "fullInventory": "Fuww Inwentowy! >w<",
@@ -160,11 +162,6 @@
     "separateMultiple": "Sepeawate Multipwe With Cowommas.",
     "enchantsToMatch": "%type% To Match >-<:",
     "enchantsToExclude": "%type% To Excwude:",
-    "inventoryTypes": {
-      "enchants": "Enchawnts",
-      "reforges": "Wefowges",
-      "crafting": "Cwafting"
-    },
     "wantToViewPatchNotes": "Need suppowt or want to wead the fuww changewog?",
     "downloadLink": "UPDATE WINK",
     "directDownload": "DIWECT DOWNWOAD WINK",
