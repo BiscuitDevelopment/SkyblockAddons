@@ -150,6 +150,8 @@
     "dungeonDeathCounter": "地下城死亡计数"
   },
   "messages": {
+    "enchants": "Enchants",
+    "reforges": "Reforges",
     "dropConfirmation": "再次丢弃此物品以确认!",
     "magmaBossWarning": "⚠ 岩浆怪 Boss 已生成 ⚠",
     "fullInventory": "物品栏已满!",
@@ -160,11 +162,6 @@
     "separateMultiple": "使用英文逗号间隔多个目标。",
     "enchantsToMatch": "包含%type%:",
     "enchantsToExclude": "不包含%type%:",
-    "inventoryTypes": {
-      "enchants": "附魔",
-      "reforges": "洗炼",
-      "crafting": "合成"
-    },
     "wantToViewPatchNotes": "需要帮助或查看更新内容？",
     "downloadLink": "更新视频介绍",
     "directDownload": "直接下载链接",
