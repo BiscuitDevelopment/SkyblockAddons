@@ -150,6 +150,8 @@
     "dungeonDeathCounter": "Dungeon Death Counter"
   },
   "messages": {
+    "enchants": "Enchants",
+    "reforges": "Reforges",
     "dropConfirmation": "Drop this item again to confirm!",
     "magmaBossWarning": "Magma Cube Boss!",
     "fullInventory": "Full Inventory!",
@@ -160,11 +162,6 @@
     "separateMultiple": "Separate Multiple With Commas.",
     "enchantsToMatch": "%type% To Match:",
     "enchantsToExclude": "%type% To Exclude:",
-    "inventoryTypes": {
-      "enchants": "Enchants",
-      "reforges": "Reforges",
-      "crafting": "Crafting"
-    },
     "wantToViewPatchNotes": "Need support or want to read the full changelog?",
     "downloadLink": "VIDEO/UPDATE LINK",
     "directDownload": "DIRECT DOWNLOAD LINK",
