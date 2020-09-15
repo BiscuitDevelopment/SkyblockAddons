@@ -150,6 +150,8 @@
     "dungeonDeathCounter": "Dungeon Death Counter"
   },
   "messages": {
+    "enchants": "Enchants",
+    "reforges": "Reforges",
     "dropConfirmation": "Dobd el ezt a tárgyat újra, hogy megerősítsd!",
     "magmaBossWarning": "Magmakocka Boss!",
     "fullInventory": "Megtelt a felszerelésed!",
@@ -160,11 +162,6 @@
     "separateMultiple": "Több lehetőséget vesszővel válaszd el",
     "enchantsToMatch": "%type% egyezése:",
     "enchantsToExclude": "%type% kihagyása:",
-    "inventoryTypes": {
-      "enchants": "Enchantok",
-      "reforges": "Reforgeok",
-      "crafting": "Barkácsolás"
-    },
     "wantToViewPatchNotes": "Need support or want to read the full changelog?",
     "downloadLink": "VIDEO/UPDATE LINK",
     "directDownload": "DIRECT DOWNLOAD LINK",
