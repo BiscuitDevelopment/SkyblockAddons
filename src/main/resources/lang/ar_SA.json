@@ -150,6 +150,8 @@
     "dungeonDeathCounter": "Dungeon Death Counter"
   },
   "messages": {
+    "enchants": "Enchants",
+    "reforges": "Reforges",
     "dropConfirmation": "!إرمي هذا العنصر مرة أخرى للتأكيد",
     "magmaBossWarning": "!زعيم مكعب الصهارة",
     "fullInventory": "!جرد كامل",
@@ -160,11 +162,6 @@
     "separateMultiple": "أفرز المتعددين بالفواصل.",
     "enchantsToMatch": "%type% للمطابقة:",
     "enchantsToExclude": "%type% للاستبعاد:",
-    "inventoryTypes": {
-      "enchants": "التطويرات",
-      "reforges": "إعادة تشكيل",
-      "crafting": "صناعة"
-    },
     "wantToViewPatchNotes": "هل تريد قراءة التغييرات؟",
     "downloadLink": "رابط التحديث",
     "directDownload": "تحميل الرابط مباشرة",
