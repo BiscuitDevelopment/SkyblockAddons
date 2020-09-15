@@ -150,6 +150,8 @@
     "dungeonDeathCounter": "Dungeon Death Counter"
   },
   "messages": {
+    "enchants": "Enchants",
+    "reforges": "Reforges",
     "dropConfirmation": "Ihulog ang item muli para kumpirmado!",
     "magmaBossWarning": "Babala! Magma Cube Boss",
     "fullInventory": "Punong Imbentaryo!",
@@ -160,11 +162,6 @@
     "separateMultiple": "Paghiwalayin ng maramihan gamit ang mga kuwit.",
     "enchantsToMatch": "%type% I-pareho sa:",
     "enchantsToExclude": "%type% Tanggalin ang:",
-    "inventoryTypes": {
-      "enchants": "Enchants",
-      "reforges": "Reforges",
-      "crafting": "Crafting"
-    },
     "wantToViewPatchNotes": "Need support or want to read the full changelog?",
     "downloadLink": "VIDEO/UPDATE LINK",
     "directDownload": "DIRECT DOWNLOAD LINK",
