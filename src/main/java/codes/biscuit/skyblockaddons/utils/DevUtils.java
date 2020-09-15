@@ -15,6 +15,7 @@ import net.minecraft.scoreboard.Score;
 import net.minecraft.scoreboard.ScoreObjective;
 import net.minecraft.scoreboard.ScorePlayerTeam;
 import net.minecraft.scoreboard.Scoreboard;
+import net.minecraft.util.IChatComponent;
 import net.minecraft.util.StringUtils;
 import net.minecraftforge.common.util.Constants;
 
@@ -33,7 +34,7 @@ import java.util.stream.Collectors;
  * This is a class of utilities for SkyblockAddons developers.
  *
  * @author ILikePlayingGames
- * @version 2.2
+ * @version 2.3
  */
 public class DevUtils {
     /** Pattern used for removing the placeholder emoji player names from the Hypixel scoreboard */
@@ -278,6 +279,39 @@ public class DevUtils {
             return;
         }
         writeToClipboard(prettyPrintNBT(nbtTag), message);
+    }
+
+    /**
+     * Copies the header and footer of the tab player list to the clipboard
+     *
+     * @see net.minecraft.client.gui.GuiPlayerTabOverlay
+     */
+    public static void copyTabListHeaderAndFooter() {
+        Minecraft mc = Minecraft.getMinecraft();
+        IChatComponent tabHeader = mc.ingameGUI.getTabList().header;
+        IChatComponent tabFooter = mc.ingameGUI.getTabList().footer;
+        StringBuilder output = new StringBuilder("Header:").append("\n");
+
+        output.append(tabHeader.getFormattedText());
+
+        if (!tabHeader.getSiblings().isEmpty()) {
+            for (IChatComponent sibling : tabHeader.getSiblings()) {
+                output.append(sibling.getFormattedText());
+            }
+        }
+
+        output.append("\n\n");
+        output.append("Footer:").append("\n");
+
+        output.append(tabFooter.getFormattedText());
+
+        if (!tabFooter.getSiblings().isEmpty()) {
+            for (IChatComponent sibling : tabFooter.getSiblings()) {
+                output.append(sibling.getFormattedText());
+            }
+        }
+
+        copyStringToClipboard(output.toString(), "Tab list header and footer copied!");
     }
 
     /**

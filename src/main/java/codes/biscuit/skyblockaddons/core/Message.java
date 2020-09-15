@@ -155,10 +155,13 @@ public enum Message {
     SETTING_HIDE_WHEN_NOT_IN_CRYPTS(MessageObject.SETTING, "hideWhenNotInCrypts"),
     SETTING_HIDE_WHEN_NOT_IN_SPIDERS_DEN(MessageObject.SETTING, "hideWhenNotInSpidersDen"),
     SETTING_HIDE_WHEN_NOT_IN_CASTLE(MessageObject.SETTING, "hideWhenNotInCastle"),
+    SETTING_DUNGEON_DEATH_COUNTER(MessageObject.SETTING, "dungeonDeathCounter"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.BACKPACK_STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.BACKPACK_STYLE, "compact"),
 
+    MESSAGE_ENCHANTS(MessageObject.INVENTORY_TYPE, "enchants"),
+    MESSAGE_REFORGES(MessageObject.INVENTORY_TYPE, "reforges"),
     MESSAGE_DROP_CONFIRMATION(MessageObject.MESSAGES, "dropConfirmation"),
     MESSAGE_MAGMA_BOSS_WARNING(MessageObject.MESSAGES, "magmaBossWarning"),
     MESSAGE_FULL_INVENTORY(MessageObject.MESSAGES, "fullInventory"),
@@ -237,10 +240,6 @@ public enum Message {
     @Deprecated TAB_GUI_FEATURES(MessageObject.TAB, "guiFeatures"),
     TAB_GENERAL_SETTINGS(MessageObject.TAB, "generalSettings"),
 
-    INVENTORY_TYPE_ENCHANTS(MessageObject.INVENTORY_TYPE, "enchants"),
-    INVENTORY_TYPE_REFORGES(MessageObject.INVENTORY_TYPE, "reforges"),
-    INVENTORY_TYPE_CRAFTING(MessageObject.INVENTORY_TYPE, "crafting"),
-
     POWER_ORB_DISPLAY_STYLE_DETAILED(MessageObject.POWER_ORB_STYLE, "detailed"),
     POWER_ORB_DISPLAY_STYLE_COMPACT(MessageObject.POWER_ORB_STYLE, "compact"),
 
@@ -281,6 +280,7 @@ public enum Message {
     COMMAND_USAGE_SBA_COPY_ENTITY(MessageObject.COMMAND_USAGE, "sba.copyEntity"),
     COMMAND_USAGE_SBA_SLAYER(MessageObject.COMMAND_USAGE, "sba.slayer"),
     COMMAND_USAGE_SBA_COPY_SIDEBAR(MessageObject.COMMAND_USAGE, "sba.copySidebar"),
+    COMMAND_USAGE_SBA_COPY_TAB_LIST(MessageObject.COMMAND_USAGE, "sba.copyTabList"),
     COMMAND_USAGE_SBA_DEV(MessageObject.COMMAND_USAGE, "sba.dev"),
     COMMAND_USAGE_SBA_DEV_DISABLED(MessageObject.COMMAND_USAGE, "sba.dev.disabled"),
     COMMAND_USAGE_SBA_DEV_ENABLED(MessageObject.COMMAND_USAGE, "sba.dev.enabled"),
@@ -302,6 +302,7 @@ public enum Message {
     SUBCOMMAND_HELP_COPY_ENTITY_ENTITY_NAMES(MessageObject.COMMAND_USAGE, "sba.help.copyEntity.entityNames"),
     SUBCOMMAND_HELP_COPY_ENTITY_RADIUS(MessageObject.COMMAND_USAGE, "sba.help.copyEntity.radius"),
     SUBCOMMAND_HELP_COPY_SIDEBAR_FORMATTED(MessageObject.COMMAND_USAGE, "sba.help.copySidebar.formatted"),
+    SUBCOMMAND_HELP_COPY_TAB_LIST(MessageObject.COMMAND_USAGE, "sba.help.copyTabList"),
     SUBCOMMAND_HELP_DEV(MessageObject.COMMAND_USAGE, "sba.help.dev"),
     SUBCOMMAND_HELP_HELP_COMMAND(MessageObject.COMMAND_USAGE, "sba.help.help.command"),
     SUBCOMMAND_HELP_SET_ZEALOT_COUNTER(MessageObject.COMMAND_USAGE, "sba.help.set.zealotCounter"),

@@ -130,7 +130,7 @@
     "changeZealotColor": "Cambiar Color de Zealots",
     "hideSvenPupNametags": "Ocultar Tags de Sven Pup",
     "turnAllFeaturesChroma": "Convertir Todo en Croma",
-    "dungeonMapDisplay": "Dungeon Map Display",
+    "dungeonMapDisplay": "Mostrar Mapa de Dungeon",
     "rotateMap": "Rotar el Mapa a la Rotación del Jugador",
     "centerRotationOnYourPlayer": "Centrar la Rotación Alrededor de tu Jugador",
     "mapZoom": "Zoom del Mapa",
@@ -208,7 +208,11 @@
     "cancelledPark": "Una característica te ha impedido que mines este bloque aquí.",
     "bossApproaching": "¡Estás cerca de invocar a un jefe!",
     "enableAll": "Activar Todos",
-    "disableAll": "Desactivar Todos"
+    "disableAll": "Desactivar Todos",
+    "enchantmentInclusionExample": "ej. \"prot, feather\"",
+    "enchantmentExclusionExample": "ej. \"proj, blast\"",
+    "reforgeInclusionExample": "ej. \"godly, strong\"",
+    "reforgeExclusionExample": "ej. \"odd, clean\""
   },
   "discordStatus": {
     "titleNone": "Ninguno",

@@ -1,10 +1,11 @@
 package codes.biscuit.skyblockaddons.listeners;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.asm.hooks.GuiChestHook;
 import codes.biscuit.skyblockaddons.core.*;
 import codes.biscuit.skyblockaddons.core.npc.NPCUtils;
 import codes.biscuit.skyblockaddons.events.DungeonPlayerReviveEvent;
-import codes.biscuit.skyblockaddons.events.PlayerSPDeathEvent;
+import codes.biscuit.skyblockaddons.events.SkyblockPlayerDeathEvent;
 import codes.biscuit.skyblockaddons.features.BaitManager;
 import codes.biscuit.skyblockaddons.features.EndstoneProtectorManager;
 import codes.biscuit.skyblockaddons.features.backpacks.Backpack;
@@ -73,6 +74,7 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+//TODO Fix for Hypixel localization
 public class PlayerListener {
 
     private static final Pattern NO_ARROWS_LEFT_PATTERN = Pattern.compile("(?:§r)?§cYou don't have any more Arrows left in your Quiver!§r");
@@ -85,8 +87,9 @@ public class PlayerListener {
     private static final Pattern DRAGON_KILLED_PATTERN = Pattern.compile(" *[A-Z]* DRAGON DOWN!");
     private static final Pattern DRAGON_SPAWNED_PATTERN = Pattern.compile("☬ The (?<dragonType>[A-Za-z ]+) Dragon has spawned!");
     private static final Pattern SLAYER_COMPLETED_PATTERN = Pattern.compile(" {3}» Talk to Maddox to claim your (?<slayerType>[A-Za-z]+) Slayer XP!");
-    private static final Pattern DEATH_MESSAGE_PATTERN = Pattern.compile("§r§c ☠ §r§7You (.+)§r§7\\.§r");
-    private static final Pattern REVIVE_MESSAGE_PATTERN = Pattern.compile("§r§a ❣ §r§\\w(\\w+)§r§a was revived(?: by §r§\\w(\\w+)§r§a)*!§r");
+    private static final Pattern DEATH_MESSAGE_PATTERN = Pattern.compile("§r§c ☠ §r(?:§[\\da-fk-or])(?<playerName>\\w+)(?<afterNameFormatting>§r§7)* (?<causeOfDeath>.+)§r§7\\.§r");
+    private static final Pattern REVIVE_MESSAGE_PATTERN = Pattern.compile("§r§a ❣ §r(?:§[\\da-fk-or])(?<revivedPlayer>\\w+)§r§a was revived(?: by §r(?:§[\\da-fk-or])(?<reviver>\\w+)§r§a)*!§r");
+    private static final Pattern ACCESSORY_BAG_REFORGE_PATTERN = Pattern.compile("You applied the (?<reforge>\\w+) reforge to (?:\\d+) accessories in your Accessory Bag!");
 
     // Between these two coordinates is the whole "arena" area where all the magmas and stuff are.
     private static final AxisAlignedBB MAGMA_BOSS_SPAWN_AREA = new AxisAlignedBB(-244, 0, -566, -379, 255, -635);
@@ -189,11 +192,12 @@ public class PlayerListener {
     @SubscribeEvent(priority = EventPriority.HIGH)
     public void onChatReceive(ClientChatReceivedEvent e) {
         String unformattedText = e.message.getUnformattedText();
+
         // Type 2 means it's an action bar message.
         if (e.type == 2) {
             // Log the message to the game log if action bar message logging is enabled.
             if (DevUtils.isLoggingActionBarMessages()) {
-                logger.info("[ACTION BAR] " + e.message.getUnformattedText());
+                logger.info("[ACTION BAR] " + unformattedText);
             }
 
             // Parse using ActionBarParser and display the rest message instead
@@ -218,11 +222,27 @@ public class PlayerListener {
                 changeMana(-manaLost);
             }
 
-            matcher = DEATH_MESSAGE_PATTERN.matcher(formattedText);
+            // Fire a SkyblockPlayerDeathEvent if the message says that a player died.
+            if ((matcher = DEATH_MESSAGE_PATTERN.matcher(formattedText)).matches()) {
+                EntityPlayer deadPlayer = null;
 
-            // Fire a PlayerSPDeathEvent if the message says that the client player died.
-            if (matcher.matches()) {
-                MinecraftForge.EVENT_BUS.post(new PlayerSPDeathEvent(matcher.group(1)));
+                /*
+                 If the group "afterNameFormatting" matches, it means someone other than the client player died.
+                 If it doesn't match, the client player died.
+                 */
+                if (matcher.group("afterNameFormatting") != null) {
+                    for (EntityPlayer player:
+                         Minecraft.getMinecraft().theWorld.playerEntities) {
+                        if (player.getName().contains(matcher.group("playerName"))) {
+                            deadPlayer = player;
+                            break;
+                        }
+                    }
+                } else {
+                    deadPlayer = Minecraft.getMinecraft().thePlayer;
+                }
+
+                MinecraftForge.EVENT_BUS.post(new SkyblockPlayerDeathEvent(deadPlayer, matcher.group("causeOfDeath")));
             }
 
             if (main.getConfigValues().isEnabled(Feature.SUMMONING_EYE_ALERT) && formattedText.equals("§r§6§lRARE DROP! §r§5Summoning Eye§r")) {
@@ -282,6 +302,9 @@ public class PlayerListener {
                 } else {
                     this.rainmakerTimeEnd += (1000 * 60); // Extend the timer one minute.
                 }
+            } else if (main.getConfigValues().isEnabled(Feature.SHOW_ENCHANTMENTS_REFORGES) &&
+                    (matcher = ACCESSORY_BAG_REFORGE_PATTERN.matcher(unformattedText)).matches()) {
+                GuiChestHook.setLastAccessoryBagReforge(matcher.group("reforge"));
             }
 
             if (main.getConfigValues().isEnabled(Feature.NO_ARROWS_LEFT_ALERT)) {
@@ -306,8 +329,8 @@ public class PlayerListener {
                 if (reviveMessageMatcher.matches()) {
                     List<EntityPlayer> players = Minecraft.getMinecraft().theWorld.playerEntities;
 
-                    String revivedPlayerName = reviveMessageMatcher.group(1);
-                    String revivingPlayerName = reviveMessageMatcher.group(2);
+                    String revivedPlayerName = reviveMessageMatcher.group("revivedPlayer");
+                    String reviverName = reviveMessageMatcher.group("reviver");
                     EntityPlayer revivedPlayer = null;
                     EntityPlayer revivingPlayer = null;
 
@@ -316,8 +339,12 @@ public class PlayerListener {
                             revivedPlayer = player;
                         }
 
-                        if (player.getName().equals(revivingPlayerName)) {
+                        if (reviverName != null && player.getName().equals(reviverName)) {
                             revivingPlayer = player;
+                        }
+
+                        if (revivedPlayer != null && revivingPlayer != null) {
+                            break;
                         }
                     }
 
@@ -990,25 +1017,31 @@ public class PlayerListener {
     }
 
     /**
-     * This method is called when the client player dies in Skyblock.
+     * This method is called when a player dies in Skyblock.
      *
      * @param e the event that caused this method to be called
      */
     @SubscribeEvent
-    public void onPlayerSPDeath(PlayerSPDeathEvent e) {
-        /*  Resets all user input on dead as to not walk backwards or strafe into the portal
-        Might get trigger upon encountering a non named "You" though this chance is so
-        minimal it can be discarded as a bug. */
-        if (main.getConfigValues().isEnabled(Feature.PREVENT_MOVEMENT_ON_DEATH)) {
-            KeyBinding.unPressAllKeys();
-        }
+    public void onPlayerDeath(SkyblockPlayerDeathEvent e) {
+        if (main.getUtils().isOnSkyblock()) {
+            /*  Resets all user input on dead as to not walk backwards or strafe into the portal */
+            if (main.getConfigValues().isEnabled(Feature.PREVENT_MOVEMENT_ON_DEATH) &&
+                    e.entityPlayer == Minecraft.getMinecraft().thePlayer) {
+                KeyBinding.unPressAllKeys();
+            }
 
-        /*
-        Don't show log for losing all items when the player dies in dungeons.
-         The items come back after the player is revived and the large log causes a distraction.
-         */
-        if (main.getConfigValues().isEnabled(Feature.ITEM_PICKUP_LOG) && main.getUtils().isInDungeon()) {
-            main.getInventoryUtils().resetPreviousInventory();
+            /*
+            Don't show log for losing all items when the player dies in dungeons.
+             The items come back after the player is revived and the large log causes a distraction.
+             */
+            if (main.getConfigValues().isEnabled(Feature.ITEM_PICKUP_LOG) &&
+                    e.entityPlayer == Minecraft.getMinecraft().thePlayer && main.getUtils().isInDungeon()) {
+                main.getInventoryUtils().resetPreviousInventory();
+            }
+
+            if (main.getConfigValues().isEnabled(Feature.DUNGEON_DEATH_COUNTER) && main.getUtils().isInDungeon()) {
+                main.getDungeonUtils().getDeathCounter().increment();
+            }
         }
     }
 

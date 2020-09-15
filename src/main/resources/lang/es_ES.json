@@ -130,7 +130,7 @@
     "changeZealotColor": "Cambiar el Color de los Zealotes",
     "hideSvenPupNametags": "Ocultar Tags de Sven Pup",
     "turnAllFeaturesChroma": "Convertir Todas las Características a Croma",
-    "dungeonMapDisplay": "Dungeon Map Display",
+    "dungeonMapDisplay": "Mostrar Mapa de Dungeon",
     "rotateMap": "Rotar el Mapa a la Rotación del Jugador",
     "centerRotationOnYourPlayer": "Centrar la Rotación Alrededor del Jugador",
     "mapZoom": "Zoom del Mapa",
@@ -208,7 +208,11 @@
     "cancelledPark": "SkyblockAddons te ha impedido que rompas este bloque de aquí.",
     "bossApproaching": "¡Estás cerca de invocar a un jefe!",
     "enableAll": "Activar Todos",
-    "disableAll": "Desactivar Todos"
+    "disableAll": "Desactivar Todos",
+    "enchantmentInclusionExample": "ej. \"prot, feather\"",
+    "enchantmentExclusionExample": "ej. \"proj, blast\"",
+    "reforgeInclusionExample": "ej. \"godly, strong\"",
+    "reforgeExclusionExample": "ej. \"odd, clean\""
   },
   "discordStatus": {
     "titleNone": "Ninguno",

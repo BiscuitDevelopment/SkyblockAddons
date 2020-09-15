@@ -2,10 +2,7 @@ package codes.biscuit.skyblockaddons.listeners;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.*;
-import codes.biscuit.skyblockaddons.features.BaitManager;
-import codes.biscuit.skyblockaddons.features.EndstoneProtectorManager;
-import codes.biscuit.skyblockaddons.features.ItemDiff;
-import codes.biscuit.skyblockaddons.features.SlayerArmorProgress;
+import codes.biscuit.skyblockaddons.features.*;
 import codes.biscuit.skyblockaddons.features.dragontracker.DragonTracker;
 import codes.biscuit.skyblockaddons.features.dragontracker.DragonType;
 import codes.biscuit.skyblockaddons.features.dragontracker.DragonsSince;
@@ -838,6 +835,22 @@ public class RenderListener {
             }
 
             text = "";
+        } else if (feature == Feature.DUNGEON_DEATH_COUNTER) {
+            int deaths = 0;
+
+            if (buttonLocation == null) {
+                if (!main.getUtils().isInDungeon()) {
+                    return;
+                } else {
+                    deaths = main.getDungeonUtils().getDeathCounter().getDeaths();
+
+                    if (deaths == 0) {
+                        return;
+                    }
+                }
+            }
+
+            text = Integer.toString(deaths);
         } else {
             return;
         }
@@ -847,7 +860,7 @@ public class RenderListener {
         int height = 7;
         int width = mc.fontRendererObj.getStringWidth(text);
 
-        // Constant width ovverrides for some features.
+        // Constant width overrides for some features.
         if (feature == Feature.ZEALOT_COUNTER || feature == Feature.SHOW_AVERAGE_ZEALOTS_PER_EYE) {
             width = mc.fontRendererObj.getStringWidth("500");
         } else if (feature == Feature.SHOW_TOTAL_ZEALOT_COUNT) {
@@ -858,7 +871,8 @@ public class RenderListener {
 
         if (feature == Feature.MAGMA_BOSS_TIMER || feature == Feature.DARK_AUCTION_TIMER || feature == Feature.ZEALOT_COUNTER || feature == Feature.SKILL_DISPLAY
                 || feature == Feature.SHOW_TOTAL_ZEALOT_COUNT || feature == Feature.SHOW_SUMMONING_EYE_COUNT || feature == Feature.SHOW_AVERAGE_ZEALOTS_PER_EYE ||
-                feature == Feature.BIRCH_PARK_RAINMAKER_TIMER || feature == Feature.COMBAT_TIMER_DISPLAY || feature == Feature.ENDSTONE_PROTECTOR_DISPLAY) {
+                feature == Feature.BIRCH_PARK_RAINMAKER_TIMER || feature == Feature.COMBAT_TIMER_DISPLAY || feature == Feature.ENDSTONE_PROTECTOR_DISPLAY ||
+                feature == Feature.DUNGEON_DEATH_COUNTER) {
             width += 18;
             height += 9;
         }
@@ -1065,6 +1079,11 @@ public class RenderListener {
 
                 count++;
             }
+        } else if (feature == Feature.DUNGEON_DEATH_COUNTER) {
+            renderItem(DungeonDeathCounter.SKULL_ITEM, x, y);
+            ChromaManager.renderingText(feature);
+            main.getUtils().drawTextWithStyle(text, x + 18, y + 4, color);
+            ChromaManager.doneRenderingText();
         } else {
             ChromaManager.renderingText(feature);
             main.getUtils().drawTextWithStyle(text, x, y, color);
