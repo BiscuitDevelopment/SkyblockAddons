@@ -150,6 +150,8 @@
     "dungeonDeathCounter": "Dungeon Death Counter"
   },
   "messages": {
+    "enchants": "Enchants",
+    "reforges": "Reforges",
     "dropConfirmation": "¡Arroja este objeto otra vez para confirmar!",
     "magmaBossWarning": "¡Jefe Magma!",
     "fullInventory": "¡Inventario Lleno!",
@@ -160,11 +162,6 @@
     "separateMultiple": "Separa Múltiples con Comas.",
     "enchantsToMatch": "Encontrar %type%:",
     "enchantsToExclude": "Excluir %type%:",
-    "inventoryTypes": {
-      "enchants": "Encantamientos",
-      "reforges": "Reforjas",
-      "crafting": "Crafteo"
-    },
     "wantToViewPatchNotes": "¿Quieres leer los cambios?",
     "downloadLink": "LINK DE LA ACTUALIZACIÓN",
     "directDownload": "ENLACE DE DESCARGA DIRECTO",
