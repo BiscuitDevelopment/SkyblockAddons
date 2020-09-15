@@ -150,6 +150,8 @@
     "dungeonDeathCounter": "Dungeon Death Counter"
   },
   "messages": {
+    "enchants": "Enchants",
+    "reforges": "Reforges",
     "dropConfirmation": "Ponovno Izpusti To Stvar za Potrditev!",
     "magmaBossWarning": "Magma Cube Boss!",
     "fullInventory": "Poln Inventar!",
@@ -160,11 +162,6 @@
     "separateMultiple": "Več jih ločite z vejicami.",
     "enchantsToMatch": "%type% Zaželeno:",
     "enchantsToExclude": "%type% Nezaželeno:",
-    "inventoryTypes": {
-      "enchants": "Enchanti",
-      "reforges": "Reforgi",
-      "crafting": "Izdelovanje"
-    },
     "wantToViewPatchNotes": "Need support or want to read the full changelog?",
     "downloadLink": "VIDEO/UPDATE LINK",
     "directDownload": "DIRECT DOWNLOAD LINK",
