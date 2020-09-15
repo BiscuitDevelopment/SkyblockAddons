@@ -150,6 +150,8 @@
     "dungeonDeathCounter": "Dungeon Death Counter"
   },
   "messages": {
+    "enchants": "Enchants",
+    "reforges": "Reforges",
     "dropConfirmation": "Wyrzuć ten przedmiot ponownie, aby potwierdzić!",
     "magmaBossWarning": "Boss Magmy!",
     "fullInventory": "Ekwipunek Zapełniony!",
@@ -160,11 +162,6 @@
     "separateMultiple": "Oddziel je Przecinkami.",
     "enchantsToMatch": "%type% Do Dopasowania:",
     "enchantsToExclude": "%type% Do Wykluczenia:",
-    "inventoryTypes": {
-      "enchants": "Zaklęcia",
-      "reforges": "Reforge",
-      "crafting": "Crafting"
-    },
     "wantToViewPatchNotes": "Need support or want to read the full changelog?",
     "downloadLink": "VIDEO/UPDATE LINK",
     "directDownload": "DIRECT DOWNLOAD LINK",
