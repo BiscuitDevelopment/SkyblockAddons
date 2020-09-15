@@ -1,6 +1,7 @@
 package codes.biscuit.skyblockaddons.listeners;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.asm.hooks.GuiChestHook;
 import codes.biscuit.skyblockaddons.core.*;
 import codes.biscuit.skyblockaddons.core.npc.NPCUtils;
 import codes.biscuit.skyblockaddons.events.DungeonPlayerReviveEvent;
@@ -71,6 +72,7 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+//TODO Fix for Hypixel localization
 public class PlayerListener {
 
     private static final Pattern NO_ARROWS_LEFT_PATTERN = Pattern.compile("(?:§r)?§cYou don't have any more Arrows left in your Quiver!§r");
@@ -82,6 +84,7 @@ public class PlayerListener {
     private static final Pattern MINION_CANT_REACH_PATTERN = Pattern.compile("§cI can't reach any (?<mobName>[A-Za-z]*)(?:s)");
     private static final Pattern DEATH_MESSAGE_PATTERN = Pattern.compile("§r§c ☠ §r(?:§[\\da-fk-or])(?<playerName>\\w+)(?<afterNameFormatting>§r§7)* (?<causeOfDeath>.+)§r§7\\.§r");
     private static final Pattern REVIVE_MESSAGE_PATTERN = Pattern.compile("§r§a ❣ §r(?:§[\\da-fk-or])(?<revivedPlayer>\\w+)§r§a was revived(?: by §r(?:§[\\da-fk-or])(?<reviver>\\w+)§r§a)*!§r");
+    private static final Pattern ACCESSORY_BAG_REFORGE_PATTERN = Pattern.compile("You applied the (?<reforge>\\w+) reforge to (?:\\d+) accessories in your Accessory Bag!");
 
     // Between these two coordinates is the whole "arena" area where all the magmas and stuff are.
     private static final AxisAlignedBB MAGMA_BOSS_SPAWN_AREA = new AxisAlignedBB(-244, 0, -566, -379, 255, -635);
@@ -184,11 +187,12 @@ public class PlayerListener {
     @SubscribeEvent(priority = EventPriority.HIGH)
     public void onChatReceive(ClientChatReceivedEvent e) {
         String unformattedText = e.message.getUnformattedText();
+
         // Type 2 means it's an action bar message.
         if (e.type == 2) {
             // Log the message to the game log if action bar message logging is enabled.
             if (DevUtils.isLoggingActionBarMessages()) {
-                logger.info("[ACTION BAR] " + e.message.getUnformattedText());
+                logger.info("[ACTION BAR] " + unformattedText);
             }
 
             // Parse using ActionBarParser and display the rest message instead
@@ -205,6 +209,7 @@ public class PlayerListener {
         } else {
             String formattedText = e.message.getFormattedText();
             Matcher deathMessageMatcher = DEATH_MESSAGE_PATTERN.matcher(formattedText);
+            Matcher accessoryBagReforgeMatcher = ACCESSORY_BAG_REFORGE_PATTERN.matcher(unformattedText);
 
             if (main.getRenderListener().isPredictMana() && unformattedText.startsWith("Used ") && unformattedText.endsWith("Mana)")) {
                 int manaLost = Integer.parseInt(unformattedText.split(Pattern.quote("! ("))[1].split(Pattern.quote(" Mana)"))[0]);
@@ -275,6 +280,9 @@ public class PlayerListener {
                 } else {
                     this.rainmakerTimeEnd += (1000*60); // Extend the timer one minute.
                 }
+            } else if (main.getConfigValues().isEnabled(Feature.SHOW_ENCHANTMENTS_REFORGES) &&
+                    accessoryBagReforgeMatcher.matches()) {
+                GuiChestHook.setLastAccessoryBagReforge(accessoryBagReforgeMatcher.group("reforge"));
             }
 
             if (main.getConfigValues().isEnabled(Feature.NO_ARROWS_LEFT_ALERT)) {

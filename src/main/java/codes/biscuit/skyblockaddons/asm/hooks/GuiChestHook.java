@@ -12,6 +12,7 @@ import codes.biscuit.skyblockaddons.gui.IslandWarpGui;
 import codes.biscuit.skyblockaddons.gui.elements.CraftingPatternSelection;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
 import codes.biscuit.skyblockaddons.utils.ItemUtils;
+import lombok.Setter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiTextField;
@@ -37,6 +38,7 @@ public class GuiChestHook {
 
     private static GuiTextField textFieldMatch = null;
     private static GuiTextField textFieldExclusions = null;
+    @Setter private static String lastAccessoryBagReforge = null;
     private static CraftingPatternSelection craftingPatternSelection = null;
 
     private static Pattern warpPattern = Pattern.compile("(?:§5§o)?§8/warp ([a-z_]*)");
@@ -53,8 +55,12 @@ public class GuiChestHook {
         }
     }
 
+    /**
+     * Resets variables when the chest is closed
+     */
     public static void onGuiClosed() {
         SkyblockAddons.getInstance().getInventoryUtils().updateInventoryType();
+        lastAccessoryBagReforge = null;
         if (textFieldMatch != null && textFieldExclusions != null) {
             Keyboard.enableRepeatEvents(false);
         }
@@ -148,10 +154,11 @@ public class GuiChestHook {
         InventoryType inventoryType = SkyblockAddons.getInstance().getInventoryUtils().updateInventoryType();
 
         if (textFieldMatch != null && (inventoryType == InventoryType.ENCHANTMENT_TABLE ||
-                inventoryType== InventoryType.BASIC_REFORGING)) {
+                inventoryType== InventoryType.BASIC_REFORGING || inventoryType == InventoryType.BASIC_ACCESSORY_BAG_REFORGING)) {
             Minecraft mc = Minecraft.getMinecraft();
             SkyblockAddons main = SkyblockAddons.getInstance();
-            String inventoryMessage = inventoryType.getMessage();
+            String typeToMatch = inventoryType == InventoryType.ENCHANTMENT_TABLE ? Message.MESSAGE_ENCHANTS.getMessage()
+                    : Message.MESSAGE_REFORGES.getMessage();
             String inclusionExample;
             String exclusionExample;
             int defaultBlue = main.getUtils().getDefaultBlue(255);
@@ -173,10 +180,10 @@ public class GuiChestHook {
             GlStateManager.color(1F, 1F, 1F);
             GlStateManager.pushMatrix();
             GlStateManager.scale(scale, scale, 1);
-            mc.fontRendererObj.drawString(Message.MESSAGE_TYPE_ENCHANTMENTS.getMessage(inventoryMessage), Math.round(x/scale), Math.round((guiTop+40)/scale), defaultBlue);
+            mc.fontRendererObj.drawString(Message.MESSAGE_TYPE_ENCHANTMENTS.getMessage(typeToMatch), Math.round(x/scale), Math.round((guiTop+40)/scale), defaultBlue);
             mc.fontRendererObj.drawString(Message.MESSAGE_SEPARATE_ENCHANTMENTS.getMessage(), Math.round(x/scale), Math.round((guiTop + 50)/scale), defaultBlue);
-            mc.fontRendererObj.drawString(Message.MESSAGE_ENCHANTS_TO_MATCH.getMessage(inventoryMessage), Math.round(x/scale), Math.round((guiTop + 70)/scale), defaultBlue);
-            mc.fontRendererObj.drawString(Message.MESSAGE_ENCHANTS_TO_EXCLUDE.getMessage(inventoryMessage), Math.round(x/scale), Math.round((guiTop + 110)/scale), defaultBlue);
+            mc.fontRendererObj.drawString(Message.MESSAGE_ENCHANTS_TO_MATCH.getMessage(typeToMatch), Math.round(x/scale), Math.round((guiTop + 70)/scale), defaultBlue);
+            mc.fontRendererObj.drawString(Message.MESSAGE_ENCHANTS_TO_EXCLUDE.getMessage(typeToMatch), Math.round(x/scale), Math.round((guiTop + 110)/scale), defaultBlue);
             GlStateManager.popMatrix();
 
             textFieldMatch.drawTextBox();
@@ -252,7 +259,8 @@ public class GuiChestHook {
         if (SkyblockAddons.getInstance().getUtils().isOnSkyblock()) {
             InventoryType inventoryType = SkyblockAddons.getInstance().getInventoryUtils().getInventoryType();
 
-            if ((inventoryType == InventoryType.ENCHANTMENT_TABLE || inventoryType == InventoryType.BASIC_REFORGING)) {
+            if (inventoryType == InventoryType.ENCHANTMENT_TABLE || inventoryType== InventoryType.BASIC_REFORGING ||
+                    inventoryType == InventoryType.BASIC_ACCESSORY_BAG_REFORGING) {
                 if (keyCode != Minecraft.getMinecraft().gameSettings.keyBindInventory.getKeyCode() ||
                         (!textFieldMatch.isFocused() && !textFieldExclusions.isFocused())) {
                     processTextFields(typedChar, keyCode);
@@ -309,17 +317,26 @@ public class GuiChestHook {
                                 }
                             }
                         }
-                    } else if (slotIn.getSlotIndex() == 22 && main.getInventoryUtils().getInventoryType() == InventoryType.BASIC_REFORGING) {
+                    } else if (slotIn.getSlotIndex() == 22 && (main.getInventoryUtils().getInventoryType() ==
+                            InventoryType.BASIC_REFORGING || main.getInventoryUtils().getInventoryType() ==
+                            InventoryType.BASIC_ACCESSORY_BAG_REFORGING)) {
                         Slot itemSlot = slots.getSlot(13);
                         if (itemSlot != null && itemSlot.getHasStack()) {
-                            ItemStack item = itemSlot.getStack();
-                            if (item.hasDisplayName()) {
-                                String reforge = ItemUtils.getReforge(item);
-                                if (reforge != null) {
-                                    if (main.getUtils().enchantReforgeMatches(reforge)) {
-                                        main.getUtils().playLoudSound("random.orb", 0.1);
-                                        returnValue.cancel();
+                            if (main.getInventoryUtils().getInventoryType() == InventoryType.BASIC_REFORGING) {
+                                ItemStack item = itemSlot.getStack();
+                                if (item.hasDisplayName()) {
+                                    String reforge = ItemUtils.getReforge(item);
+                                    if (reforge != null) {
+                                        if (main.getUtils().enchantReforgeMatches(reforge)) {
+                                            main.getUtils().playLoudSound("random.orb", 0.1);
+                                            returnValue.cancel();
+                                        }
                                     }
+                                }
+                            } else {
+                                if (lastAccessoryBagReforge != null && main.getUtils().enchantReforgeMatches(lastAccessoryBagReforge)) {
+                                    main.getUtils().playLoudSound("random.orb", 0.1);
+                                    returnValue.cancel();
                                 }
                             }
                         }

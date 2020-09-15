@@ -49,13 +49,16 @@ public class GuiContainerHook {
 
     public static void showEnchantments(Slot slotIn, int x, int y, ItemStack item) {
         SkyblockAddons main = SkyblockAddons.getInstance();
+
         if (main.getConfigValues().isEnabled(Feature.SHOW_ENCHANTMENTS_REFORGES)) {
             Minecraft mc = Minecraft.getMinecraft();
+
             if (item != null && item.hasDisplayName()) {
                 if (item.getDisplayName().startsWith(ColorCode.GREEN + "Enchant Item")) {
-                    List<String> toolip = item.getTooltip(mc.thePlayer, false);
-                    if (toolip.size() > 2) {
-                        String enchantLine = toolip.get(2);
+                    List<String> tooltip = item.getTooltip(mc.thePlayer, false);
+
+                    if (tooltip.size() > 2) {
+                        String enchantLine = tooltip.get(2);
                         String[] lines = enchantLine.split(Pattern.quote("* "));
                         if (lines.length >= 2) {
                             String toMatch = lines[1];

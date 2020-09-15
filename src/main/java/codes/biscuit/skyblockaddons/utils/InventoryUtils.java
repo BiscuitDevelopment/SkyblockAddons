@@ -332,7 +332,7 @@ public class InventoryUtils {
 
         for (InventoryType inventoryType : InventoryType.values()) {
             if (inventoryType.getInventoryName().equals(inventory.getDisplayName().getUnformattedText())) {
-                if (inventoryType == InventoryType.BASIC_REFORGING) {
+                if (inventoryType == InventoryType.BASIC_REFORGING || inventoryType == InventoryType.BASIC_ACCESSORY_BAG_REFORGING) {
                     return this.inventoryType = getReforgeInventoryType(inventory);
                 }
                 else {
@@ -344,11 +344,17 @@ public class InventoryUtils {
         return this.inventoryType = null;
     }
 
-    // Gets the reforge inventory type (basic/advanced) from a given reforge inventory
+    // Gets the reforge inventory type from a given reforge inventory
     private InventoryType getReforgeInventoryType(IInventory inventory) {
-        if (!inventory.getDisplayName().getUnformattedText().equals(InventoryType.BASIC_REFORGING.getInventoryName())) {
+        if (!inventory.getDisplayName().getUnformattedText().equals(InventoryType.BASIC_REFORGING.getInventoryName()) &&
+                !inventory.getDisplayName().getUnformattedText().equals(InventoryType.BASIC_ACCESSORY_BAG_REFORGING.
+                        getInventoryName())) {
             throw new IllegalArgumentException("The given inventory is not a reforge inventory!");
         }
+
+        // This records whether the inventory is for reforging a single item or the accessory bag
+        InventoryType baseType = inventory.getDisplayName().getUnformattedText().equals(InventoryType.BASIC_REFORGING.
+                getInventoryName()) ? InventoryType.BASIC_REFORGING : InventoryType.BASIC_ACCESSORY_BAG_REFORGING;
 
         // This is the barrier item that's present in the advanced reforging menu. This slot is empty in the basic reforging menu.
         ItemStack barrier = inventory.getStackInSlot(13);
@@ -358,14 +364,16 @@ public class InventoryUtils {
         /*
         If the barrier is there, it's the advanced reforging menu. If it's not there (since the player placed an item in
         the menu), check if the glass pane next to the slot is named "Reforge Stone." That indicates it's the advanced
-        reforging menu. Otherwise, it's the basic menu.
+        reforging menu. Otherwise, it's the basic menu. Finally, check if it's the single item or accessory bag menu.
          */
         if (barrier != null && barrier.getItem().equals(Item.getByNameOrId("barrier")) || glassPane != null &&
                 glassPane.hasDisplayName() && TextUtils.stripColor(glassPane.getDisplayName()).equals("Reforge Stone")) {
-            return InventoryType.ADVANCED_REFORGING;
+            return baseType == InventoryType.BASIC_REFORGING ? InventoryType.ADVANCED_REFORGING :
+                    InventoryType.ADVANCED_ACCESSORY_BAG_REFORGING;
         }
         else {
-            return InventoryType.BASIC_REFORGING;
+            return baseType == InventoryType.BASIC_REFORGING ? InventoryType.BASIC_REFORGING :
+                    InventoryType.BASIC_ACCESSORY_BAG_REFORGING;
         }
     }
 }
