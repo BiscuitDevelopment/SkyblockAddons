@@ -150,6 +150,8 @@
     "dungeonDeathCounter": "Dungeon Death Counter"
   },
   "messages": {
+    "enchants": "Enchants",
+    "reforges": "Reforges",
     "dropConfirmation": "Släpp Det Här Igen För Att Bekräfta!",
     "magmaBossWarning": "MagmaKub Boss!",
     "fullInventory": "Full Lager!",
@@ -160,11 +162,6 @@
     "separateMultiple": "Separera Flera Med Komma-tecken.",
     "enchantsToMatch": "%type% För Att Matcha:",
     "enchantsToExclude": "%type% För Att Utesluta:",
-    "inventoryTypes": {
-      "enchants": "Förtrollningar",
-      "reforges": "Reforges",
-      "crafting": "Crafting"
-    },
     "wantToViewPatchNotes": "Need support or want to read the full changelog?",
     "downloadLink": "VIDEO/UPDATE LINK",
     "directDownload": "DIRECT DOWNLOAD LINK",
