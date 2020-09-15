@@ -150,6 +150,8 @@
     "dungeonDeathCounter": "Dugeon-deathteller"
   },
   "messages": {
+    "enchants": "Enchants",
+    "reforges": "Reforges",
     "dropConfirmation": "Laat dit voorwerp opnieuw vallen om te bevestigen!",
     "magmaBossWarning": "MagmaKubus Baas!",
     "fullInventory": "Volle Inventaris!",
@@ -160,11 +162,6 @@
     "separateMultiple": "Scheid meerdere met komma's.",
     "enchantsToMatch": "%type% Om Te Matchen:",
     "enchantsToExclude": "%type% Om Te Negeren:",
-    "inventoryTypes": {
-      "enchants": "Betoveringen",
-      "reforges": "Omsmedingen",
-      "crafting": "Vervaardiging"
-    },
     "wantToViewPatchNotes": "Heb je hulp nodig of wil je de volledige lijst met wijzigingen lezen?",
     "downloadLink": "VIDEO-/UPDATELINK",
     "directDownload": "DIRECTE DOWNLOADLINK",
