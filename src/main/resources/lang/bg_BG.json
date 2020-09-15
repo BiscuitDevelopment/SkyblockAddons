@@ -150,6 +150,8 @@
     "dungeonDeathCounter": "Dungeon Death Counter"
   },
   "messages": {
+    "enchants": "Enchants",
+    "reforges": "Reforges",
     "dropConfirmation": "Хвърлете Този Предмет Отново за да Потвърдите!",
     "magmaBossWarning": "Магма Бос!",
     "fullInventory": "Пълен Инвентар!",
@@ -160,11 +162,6 @@
     "separateMultiple": "Отделете Различните със Запетаи.",
     "enchantsToMatch": "%type% за да Съвпадне:",
     "enchantsToExclude": "%type% Да Изключите:",
-    "inventoryTypes": {
-      "enchants": "Омягюосвания",
-      "reforges": "Модификации",
-      "crafting": "Crafting"
-    },
     "wantToViewPatchNotes": "Need support or want to read the full changelog?",
     "downloadLink": "VIDEO/UPDATE LINK",
     "directDownload": "DIRECT DOWNLOAD LINK",
