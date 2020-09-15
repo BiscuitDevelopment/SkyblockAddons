@@ -150,6 +150,8 @@
     "dungeonDeathCounter": "Dungeon Death Counter"
   },
   "messages": {
+    "enchants": "Enchants",
+    "reforges": "Reforges",
     "dropConfirmation": "זרוק פריט זה שוב לאישור!",
     "magmaBossWarning": "בוס המגמה!",
     "fullInventory": "תיק מלא!",
@@ -160,11 +162,6 @@
     "separateMultiple": "הפרד באמצעות פסיק.",
     "enchantsToMatch": "לכלול %type%:",
     "enchantsToExclude": "%type% לא לכלול:",
-    "inventoryTypes": {
-      "enchants": "כישופים",
-      "reforges": "שדרוגים",
-      "crafting": "הרכבה"
-    },
     "wantToViewPatchNotes": "Need support or want to read the full changelog?",
     "downloadLink": "VIDEO/UPDATE LINK",
     "directDownload": "DIRECT DOWNLOAD LINK",
