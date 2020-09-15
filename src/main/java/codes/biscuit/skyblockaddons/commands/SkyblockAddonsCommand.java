@@ -32,8 +32,8 @@ public class SkyblockAddonsCommand extends CommandBase {
 
     private static final String HEADER = "§7§m------------§7[§b§l SkyblockAddons §7]§7§m------------";
     private static final String FOOTER = "§7§m------------------------------------------";
-    private static final String[] SUBCOMMANDS = {"help", "set", "edit", "folder", "dev", "copySidebar", "brand", "copyEntity",
-            "toggleActionBarLogging"};
+    private static final String[] SUBCOMMANDS = {"help", "set", "edit", "folder", "dev", "brand", "copyEntity", "copySidebar",
+            "copyTabList", "toggleActionBarLogging"};
 
     private final SkyblockAddons main;
     private final Logger logger;
@@ -85,6 +85,7 @@ public class SkyblockAddonsCommand extends CommandBase {
                     "§b● " + CommandSyntax.BRAND + " §7- " + Message.COMMAND_USAGE_SBA_BRAND.getMessage() + "\n" +
                     "§b● " + CommandSyntax.COPY_ENTITY + " §7- " + Message.COMMAND_USAGE_SBA_COPY_ENTITY.getMessage() + "\n" +
                     "§b● " + CommandSyntax.COPY_SIDEBAR + " §7- " + Message.COMMAND_USAGE_SBA_COPY_SIDEBAR.getMessage() + "\n" +
+                    "§b● " + CommandSyntax.COPY_TAB_LIST + " §7- " + Message.COMMAND_USAGE_SBA_COPY_TAB_LIST.getMessage() + "\n" +
                     "§b● " + CommandSyntax.TOGGLE_ACTION_BAR_LOGGING + " §7- " + Message.COMMAND_USAGE_TOGGLE_ACTION_BAR_LOGGING.getMessage();
         }
 
@@ -200,22 +201,7 @@ public class SkyblockAddonsCommand extends CommandBase {
                 } else if (args[0].equalsIgnoreCase("warp")) {
                     main.getRenderListener().setGuiToOpen(EnumUtils.GUIType.WARP);
                 } else if (main.isDevMode()) {
-                    if (args[0].equalsIgnoreCase("copySidebar")) {
-                        Scoreboard scoreboard = Minecraft.getMinecraft().theWorld.getScoreboard();
-
-                        try {
-                            if (args.length < 2) {
-                                DevUtils.copyScoreboardSideBar(scoreboard);
-
-                            } else if (args.length == 2 && parseBoolean(args[1])) {
-                                DevUtils.copyScoreboardSidebar(scoreboard, false);
-                            } else {
-                                throw new WrongUsageException(Message.COMMAND_USAGE_WRONG_USAGE_GENERIC.getMessage());
-                            }
-                        } catch (NullPointerException e) {
-                            throw new CommandException(e.getMessage());
-                        }
-                    } else if (args[0].equalsIgnoreCase("brand")) {
+                    if (args[0].equalsIgnoreCase("brand")) {
                         String serverBrand = DevUtils.getServerBrand(Minecraft.getMinecraft());
 
                         if (serverBrand != null) {
@@ -238,6 +224,23 @@ public class SkyblockAddonsCommand extends CommandBase {
                         } catch (IllegalArgumentException e) {
                             throw new WrongUsageException(e.getMessage());
                         }
+                    } else if (args[0].equalsIgnoreCase("copySidebar")) {
+                        Scoreboard scoreboard = Minecraft.getMinecraft().theWorld.getScoreboard();
+
+                        try {
+                            if (args.length < 2) {
+                                DevUtils.copyScoreboardSideBar(scoreboard);
+
+                            } else if (args.length == 2 && parseBoolean(args[1])) {
+                                DevUtils.copyScoreboardSidebar(scoreboard, false);
+                            } else {
+                                throw new WrongUsageException(Message.COMMAND_USAGE_WRONG_USAGE_GENERIC.getMessage());
+                            }
+                        } catch (NullPointerException e) {
+                            throw new CommandException(e.getMessage());
+                        }
+                    } else if (args[0].equalsIgnoreCase("copyTabList")) {
+                        DevUtils.copyTabListHeaderAndFooter();
                     } else if (args[0].equalsIgnoreCase("toggleActionBarLogging")) {
                         DevUtils.setLoggingActionBarMessages(!DevUtils.isLoggingActionBarMessages());
 
@@ -314,6 +317,7 @@ public class SkyblockAddonsCommand extends CommandBase {
         BRAND("/sba brand"),
         COPY_ENTITY("/sba copyEntity [EntityNames] [radius]"),
         COPY_SIDEBAR("/sba sidebar [formatted: boolean]"),
+        COPY_TAB_LIST("/sba copyTabList"),
         TOGGLE_ACTION_BAR_LOGGING("/sba toggleActionBarLogging");
 
         @Getter
@@ -339,6 +343,7 @@ public class SkyblockAddonsCommand extends CommandBase {
         BRAND(CommandSyntax.BRAND, Message.COMMAND_USAGE_SBA_BRAND.getMessage(), null),
         COPY_ENTITY(CommandSyntax.COPY_ENTITY, Message.SUBCOMMAND_HELP_COPY_ENTITY.getMessage(Integer.toString(DevUtils.ENTITY_COPY_RADIUS)), Arrays.asList(CommandOption.ENTITY_NAMES, CommandOption.RADIUS)),
         COPY_SIDEBAR(CommandSyntax.COPY_SIDEBAR, Message.COMMAND_USAGE_SBA_COPY_SIDEBAR.getMessage(), Collections.singletonList(CommandOption.FORMATTED)),
+        COPY_TAB_LIST(CommandSyntax.COPY_TAB_LIST, Message.SUBCOMMAND_HELP_COPY_TAB_LIST.getMessage(), null),
         TOGGLE_ACTION_BAR_LOGGING(CommandSyntax.TOGGLE_ACTION_BAR_LOGGING, Message.COMMAND_USAGE_TOGGLE_ACTION_BAR_LOGGING.getMessage(), null)
         ;
         private final CommandSyntax syntax;
