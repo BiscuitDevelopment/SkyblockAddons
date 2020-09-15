@@ -1,0 +1,13 @@
+dependencies {
+    /* OW2 ASM v5.0.3 */
+    compileOnly('org.ow2.asm:asm-debug-all:5.0.3')
+
+    /* Google Guava v17.0 */
+    compileOnly('com.google.guava:guava:17.0')
+
+    /* Apache Commons Lang v3 */
+    compileOnly('org.apache.commons:commons-lang3:3.3.2')
+
+    /* Apache Log4J v2.0-beta9 */
+    compileOnly('org.apache.logging.log4j:log4j-api:2.0-beta9')
+}
