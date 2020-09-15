@@ -150,6 +150,8 @@
     "dungeonDeathCounter": "Dungeon 死亡計數器"
   },
   "messages": {
+    "enchants": "Enchants",
+    "reforges": "Reforges",
     "dropConfirmation": "再次丟棄此物品以確認！",
     "magmaBossWarning": "Magma Cube Boss 已出生！",
     "fullInventory": "背包已滿！",
@@ -160,11 +162,6 @@
     "separateMultiple": "使用逗號分隔。",
     "enchantsToMatch": "區配%type%:",
     "enchantsToExclude": "排斥%type%:",
-    "inventoryTypes": {
-      "enchants": "附魔",
-      "reforges": "重鑄",
-      "crafting": "合成"
-    },
     "wantToViewPatchNotes": "需要幫助或想查看更新內容?",
     "downloadLink": "影片/更新連結",
     "directDownload": "直接下載連結",
