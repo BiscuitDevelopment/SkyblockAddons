@@ -150,6 +150,8 @@
     "dungeonDeathCounter": "Dungeon Death Counter"
   },
   "messages": {
+    "enchants": "Enchants",
+    "reforges": "Reforges",
     "dropConfirmation": "Nhấn \"Q\" Thêm Một Lần Nữa Để Xác Nhận!",
     "magmaBossWarning": "Trùm Dung Nham!",
     "fullInventory": "Túi Đồ Đã Đầy!",
@@ -160,11 +162,6 @@
     "separateMultiple": "Phân Chia Nhiều Bằng Dấu Phẩy.",
     "enchantsToMatch": "%type% Để trúng:",
     "enchantsToExclude": "%type% Để Loại Trừ:",
-    "inventoryTypes": {
-      "enchants": "Phù phép",
-      "reforges": "Rèn luyện",
-      "crafting": "Crafting"
-    },
     "wantToViewPatchNotes": "Need support or want to read the full changelog?",
     "downloadLink": "VIDEO/UPDATE LINK",
     "directDownload": "DIRECT DOWNLOAD LINK",
