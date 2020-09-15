@@ -150,6 +150,8 @@
     "dungeonDeathCounter": "Dungeon Death Counter"
   },
   "messages": {
+    "enchants": "Enchants",
+    "reforges": "Reforges",
     "dropConfirmation": "落としてもいいのであれば、このアイテムをもう一度ドロップしてください。",
     "magmaBossWarning": "マグマボスが出現しました!",
     "fullInventory": "インベントリが満タンです！",
@@ -160,11 +162,6 @@
     "separateMultiple": "複数ある場合はコンマ(,)で分けてください。",
     "enchantsToMatch": "%type% でマッチするもの:",
     "enchantsToExclude": "%type% で除外するもの:",
-    "inventoryTypes": {
-      "enchants": "エンチャント",
-      "reforges": "リフォージ",
-      "crafting": "クラフト"
-    },
     "wantToViewPatchNotes": "Need support or want to read the full changelog?",
     "downloadLink": "VIDEO/UPDATE LINK",
     "directDownload": "DIRECT DOWNLOAD LINK",
