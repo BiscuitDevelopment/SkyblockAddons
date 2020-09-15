@@ -12,11 +12,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.util.Constants;
 import org.apache.commons.lang3.text.WordUtils;
 
-import java.util.EnumSet;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -56,8 +54,8 @@ public class ItemUtils {
             if (rarityMatcher.find()) {
                 String rarity = rarityMatcher.group("rarity");
 
-                for (ItemRarity itemRarity : EnumSet.allOf(ItemRarity.class)) {
-                    if (rarity.startsWith(itemRarity.getTag())) {
+                for (ItemRarity itemRarity : ItemRarity.values()) {
+                    if (rarity.startsWith(itemRarity.getLoreName())) {
                         return itemRarity;
                     }
                 }

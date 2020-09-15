@@ -18,11 +18,11 @@ public enum ItemRarity {
     SPECIAL("SPECIAL", ColorCode.RED),
     VERY_SPECIAL("VERY SPECIAL", ColorCode.RED);
 
-    private String tag;
+    private String loreName;
     private ColorCode colorCode;
 
     ItemRarity(String loreName, ColorCode colorCode) {
-        this.tag = loreName;
+        this.loreName = loreName;
         this.colorCode = colorCode;
     }
 }
