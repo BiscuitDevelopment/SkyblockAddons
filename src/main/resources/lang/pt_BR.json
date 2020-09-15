@@ -150,6 +150,8 @@
     "dungeonDeathCounter": "Dungeon Death Counter"
   },
   "messages": {
+    "enchants": "Enchants",
+    "reforges": "Reforges",
     "dropConfirmation": "Large este item de novo para confirmar!",
     "magmaBossWarning": "Cubo de Magma Chefão!",
     "fullInventory": "Inventário Cheio!",
@@ -160,11 +162,6 @@
     "separateMultiple": "Separe Múltiplos Com Vírgulas.",
     "enchantsToMatch": "%type% Para Procurar:",
     "enchantsToExclude": "%type% Para Excluir:",
-    "inventoryTypes": {
-      "enchants": "Encantamentos",
-      "reforges": "Reforjadas",
-      "crafting": "Criação"
-    },
     "wantToViewPatchNotes": "Need support or want to read the full changelog?",
     "downloadLink": "VIDEO/UPDATE LINK",
     "directDownload": "DIRECT DOWNLOAD LINK",
