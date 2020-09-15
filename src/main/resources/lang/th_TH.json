@@ -150,6 +150,8 @@
     "dungeonDeathCounter": "Dungeon Death Counter"
   },
   "messages": {
+    "enchants": "Enchants",
+    "reforges": "Reforges",
     "dropConfirmation": "กดทิ้งของอีกที่เพื่อยืนยันทิ้งของสิ่งนี้!",
     "magmaBossWarning": "บอส Magma เกิดแล้ว!",
     "fullInventory": "ช่องเก็บของเต็มแล้ว!",
@@ -160,11 +162,6 @@
     "separateMultiple": "แยกหลายรายการด้วยเครื่องหมายจุลภาค",
     "enchantsToMatch": "%type% เพื่อให้ตรงกับ:",
     "enchantsToExclude": "%type% เพื่อไม่รวม:",
-    "inventoryTypes": {
-      "enchants": "Enchants",
-      "reforges": "ตีบวกของ",
-      "crafting": "คราฟของ"
-    },
     "wantToViewPatchNotes": "ต้องการอ่านการเปลี่ยนแปลงหรือไม่?",
     "downloadLink": "วิดิโอ/ลิงค์อัพเดท",
     "directDownload": "ลิงค์ดาวโหลดโดยตรง",
