@@ -150,6 +150,8 @@
     "dungeonDeathCounter": "Dungeon Death Counter"
   },
   "messages": {
+    "enchants": "Enchants",
+    "reforges": "Reforges",
     "dropConfirmation": "Eşyayı düşürmeyi onaylamak için düşürme tuşuna bir daha bas!",
     "magmaBossWarning": "Magma Kübü Boss!",
     "fullInventory": "Envanter Dolu!",
@@ -160,11 +162,6 @@
     "separateMultiple": "Birden Fazla Gireceksen Virgül ile Ayır.",
     "enchantsToMatch": "Eşleşecek %type%:",
     "enchantsToExclude": "İstenmeyen %type% :",
-    "inventoryTypes": {
-      "enchants": "Büyüler",
-      "reforges": "Reforge'lar",
-      "crafting": "Crafting"
-    },
     "wantToViewPatchNotes": "Need support or want to read the full changelog?",
     "downloadLink": "VIDEO/UPDATE LINK",
     "directDownload": "DIRECT DOWNLOAD LINK",
