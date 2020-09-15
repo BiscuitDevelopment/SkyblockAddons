@@ -150,6 +150,8 @@
     "dungeonDeathCounter": "Contagem de mortes nas dungeons"
   },
   "messages": {
+    "enchants": "Enchants",
+    "reforges": "Reforges",
     "dropConfirmation": "Atira este item outra vez para confirmar!",
     "magmaBossWarning": "Magma Cube Boss!",
     "fullInventory": "Inventário Cheio!",
@@ -160,11 +162,6 @@
     "separateMultiple": "Separa vários com vírgular.",
     "enchantsToMatch": "%type% para combinar:",
     "enchantsToExclude": "%type% para excluír:",
-    "inventoryTypes": {
-      "enchants": "Encantamentos",
-      "reforges": "Reforges",
-      "crafting": "Criação"
-    },
     "wantToViewPatchNotes": "Precisas de ajuda ou queres ler todas as alterações?",
     "downloadLink": "VÍDEO DA ATUALIZAÇÃO",
     "directDownload": "LINK DO DOWNLOAD DIRETO",
