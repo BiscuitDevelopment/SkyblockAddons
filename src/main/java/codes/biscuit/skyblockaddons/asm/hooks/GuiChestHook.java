@@ -317,9 +317,8 @@ public class GuiChestHook {
                                 }
                             }
                         }
-                    } else if (slotIn.getSlotIndex() == 22 && (main.getInventoryUtils().getInventoryType() ==
-                            InventoryType.BASIC_REFORGING || main.getInventoryUtils().getInventoryType() ==
-                            InventoryType.BASIC_ACCESSORY_BAG_REFORGING)) {
+                    } else if (slotIn.getSlotIndex() == 22 && (main.getInventoryUtils().getInventoryType() == InventoryType.BASIC_REFORGING
+                            || main.getInventoryUtils().getInventoryType() == InventoryType.BASIC_ACCESSORY_BAG_REFORGING)) {
                         Slot itemSlot = slots.getSlot(13);
                         if (itemSlot != null && itemSlot.getHasStack()) {
                             if (main.getInventoryUtils().getInventoryType() == InventoryType.BASIC_REFORGING) {
