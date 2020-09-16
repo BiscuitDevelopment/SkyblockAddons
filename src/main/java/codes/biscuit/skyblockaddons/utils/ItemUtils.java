@@ -411,4 +411,21 @@ public class ItemUtils {
 
         return -1;
     }
+
+    /**
+     * Returns the number of Expertise Kills from a given Skyblock Extra Attributes NBT Compound
+     * @param extraAttributes the NBT to check
+     * @return the number of Expertise Kills or {@code -1} if it isn't a valid Skyblock NBT or does not have any
+     */
+    public static int getExpertiseKills(NBTTagCompound extraAttributes) {
+        if (extraAttributes != null) {
+            if (!extraAttributes.hasKey("expertise_kills")) {
+                return -1;
+            }
+
+            return extraAttributes.getInteger("expertise_kills");
+        }
+
+        return -1;
+    }
 }
