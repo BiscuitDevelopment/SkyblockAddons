@@ -315,23 +315,25 @@ public class Utils {
                         parseSlayerProgress(strippedUnformatted);
                     }
 
-                    for (Location loopLocation : Location.values()) {
-                        if (strippedUnformatted.endsWith(loopLocation.getScoreboardName())) {
-                            if (loopLocation == Location.BLAZING_FORTRESS && location != Location.BLAZING_FORTRESS) {
-                                sendInventiveTalentPingRequest(EnumUtils.MagmaEvent.PING); // going into blazing fortress
-                                fetchMagmaBossEstimate();
-                            }
+                    if (!foundLocation) {
+                        for (Location loopLocation : Location.values()) {
+                            if (strippedUnformatted.endsWith(loopLocation.getScoreboardName())) {
+                                if (loopLocation == Location.BLAZING_FORTRESS && location != Location.BLAZING_FORTRESS) {
+                                    sendInventiveTalentPingRequest(EnumUtils.MagmaEvent.PING); // going into blazing fortress
+                                    fetchMagmaBossEstimate();
+                                }
 
-                            if (location != loopLocation) {
-                                location = loopLocation;
-                            }
+                                if (location != loopLocation) {
+                                    location = loopLocation;
+                                }
 
-                            foundLocation = true;
-                            break;
+                                foundLocation = true;
+                                break;
+                            }
                         }
                     }
 
-                    if (location == Location.JERRYS_WORKSHOP || location == Location.JERRY_POND) {
+                    if (!foundJerryWave && (location == Location.JERRYS_WORKSHOP || location == Location.JERRY_POND)) {
                         if (strippedUnformatted.startsWith("Wave")) {
                             foundJerryWave = true;
 
@@ -347,13 +349,13 @@ public class Utils {
                         }
                     }
 
-                    if (strippedUnformatted.contains("alpha.hypixel.net")) {
+                    if (!foundAlphaIP && strippedUnformatted.contains("alpha.hypixel.net")) {
                         foundAlphaIP = true;
                         alpha = true;
                         profileName = "Alpha";
                     }
 
-                    if (strippedUnformatted.contains("Dungeon Cleared: ")) {
+                    if (!foundInDungeon && strippedUnformatted.contains("Dungeon Cleared: ")) {
                         foundInDungeon = true;
                         inDungeon = true;
 
