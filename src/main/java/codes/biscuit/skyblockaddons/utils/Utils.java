@@ -91,6 +91,7 @@ public class Utils {
 
     private static final Pattern SERVER_REGEX = Pattern.compile("([0-9]{2}/[0-9]{2}/[0-9]{2}) (mini[0-9]{1,3}[A-Za-z])");
     private static final Pattern TABLIST_SERVER_REGEX = Pattern.compile("[0-9]{2}/[0-9]{2}/[0-9]{2}\\s\\s(mini[0-9]{1,3}[A-Za-z])");
+    private static final Pattern MESSAGE_SERVER_REGEX = Pattern.compile("§.Sending to server (.+)...§.");
     private static final Pattern PURSE_REGEX = Pattern.compile("(?:Purse|Piggy): (?<coins>[0-9.]*)(?: .*)?");
     private static final Pattern SLAYER_TYPE_REGEX = Pattern.compile("(?<type>Tarantula Broodfather|Revenant Horror|Sven Packmaster) (?<level>[IV]+)");
     private static final Pattern SLAYER_PROGRESS_REGEX = Pattern.compile("(?<progress>[0-9.k]*)/(?<total>[0-9.k]*) (?:Kills|Combat XP)$");
@@ -458,6 +459,25 @@ public class Utils {
                 SkyblockAddons.getInstance().getUtils().setServerID(id);
             }
         }
+    }
+
+    /**
+     * This method parses the server ID from a chat message notifying the player of the changed server.
+     *
+     * In some cases, the server ID is not provided in the players list nor sidebar.
+     * When that happens, it results in some problems due to not resetting some data.
+     * Resetting data requires detecting the change of servers.
+     *
+     * This method solves the problem by reading changing the server ID from a chat message.
+     *
+     * @param message A given chat message to detect the server ID from
+     */
+    public void parseServer(String message) {
+        Matcher matcher = MESSAGE_SERVER_REGEX.matcher(message);
+        if (!matcher.matches())
+            return;
+
+        serverID = matcher.group(1);
     }
 
     private boolean triggeredSlayerWarning = false;

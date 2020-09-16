@@ -288,6 +288,7 @@ public class PlayerListener {
 
             } else if (formattedText.startsWith("§7Sending to server ")) {
                 lastSkyblockServerJoinAttempt = System.currentTimeMillis();
+                main.getUtils().parseServer(formattedText);
                 DragonTracker.getInstance().reset();
 
             } else if (unformattedText.equals("You laid an egg!")) { // Put the Chicken Head on cooldown for 20 seconds when the player lays an egg.
