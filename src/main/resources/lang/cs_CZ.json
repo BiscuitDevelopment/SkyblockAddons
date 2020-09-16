@@ -144,7 +144,7 @@
     "showGlowingItemsOnIsland": "Zobrazit svítící předměty na ostrově",
     "showItemDungeonFloor": "Show Floor Obtained on Dungeon Items",
     "showDungeonMilestone": "Show Dungeon Milestone",
-    "dungeonsCollectedEssencesDisplay": "Dungeons Collected Essences Display",
+    "dungeonsCollectedEssencesDisplay": "Ukazovat počet esence v dungeonu",
     "stopBonzoStaffSounds": "Stop Bonzo's Staff Sounds",
     "showRarityUpgraded": "Show if Item's Rarity has been Upgraded",
     "revenantSlayerTracker": "Slayer Tracker - Revenant/Zombie",
@@ -217,10 +217,10 @@
     "bossApproaching": "You are close to spawning a boss!",
     "enableAll": "Povolit vše",
     "disableAll": "Zakázat vše",
-    "enchantmentInclusionExample": "e.g. \"prot, feather\"",
-    "enchantmentExclusionExample": "e.g. \"proj, blast\"",
+    "enchantmentInclusionExample": "např. \"prot, feather\"",
+    "enchantmentExclusionExample": "např. \"proj, blast\"",
     "reforgeInclusionExample": "e.g. \"godly, strong\"",
-    "reforgeExclusionExample": "e.g. \"odd, clean\"",
+    "reforgeExclusionExample": "např. \"odd, clean\"",
     "actionsLeft": "%number% Left"
   },
   "discordStatus": {
