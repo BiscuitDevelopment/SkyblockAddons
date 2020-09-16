@@ -150,7 +150,7 @@
     "revenantSlayerTracker": "Slayer Tracker - Revenant/Zombie",
     "tarantulaSlayerTracker": "Slayer Tracker - Tarantula/Spider",
     "svenSlayerTracker": "Slayer Tracker - Sven/Wolf",
-    "textMode": "Text Mode",
+    "textMode": "文本模式",
     "dragonsNestOnly": "Only Show in the Dragon's Nest",
     "dragonStatsTracker": "Dragon Tracker",
     "expanded": "Expanded",
@@ -221,7 +221,7 @@
     "enchantmentExclusionExample": "例如: \"proj, blast\"",
     "reforgeInclusionExample": "例如: \"godly, strong\"",
     "reforgeExclusionExample": "例如: \"odd, clean\"",
-    "actionsLeft": "%number% Left"
+    "actionsLeft": "剩余 %number%"
   },
   "discordStatus": {
     "titleNone": "无",
