@@ -3,13 +3,14 @@ package codes.biscuit.skyblockaddons.asm.hooks;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.asm.utils.ReturnValue;
 import codes.biscuit.skyblockaddons.core.Feature;
+import codes.biscuit.skyblockaddons.core.InventoryType;
 import codes.biscuit.skyblockaddons.features.backpacks.Backpack;
 import codes.biscuit.skyblockaddons.features.backpacks.BackpackColor;
 import codes.biscuit.skyblockaddons.features.craftingpatterns.CraftingPattern;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.ItemUtils;
-import codes.biscuit.skyblockaddons.utils.objects.FloatPairString;
+import codes.biscuit.skyblockaddons.utils.TextUtils;
 import lombok.Getter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
@@ -25,21 +26,17 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
 import javax.lang.model.type.NullType;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class GuiContainerHook {
 
-    private final static ResourceLocation LOCK = new ResourceLocation("skyblockaddons", "lock.png");
-    private final static ResourceLocation CHEST_GUI_TEXTURE = new ResourceLocation("textures/gui/container/generic_54.png");
-    private final static int OVERLAY_RED = ColorCode.RED.getColor(127).getRGB();
-    private final static int OVERLAY_GREEN = ColorCode.GREEN.getColor(127).getRGB();
-
-    private static FloatPairString reforgeToRender = null;
-    private static Set<FloatPairString> enchantsToRender = new HashSet<>();
+    private static final ResourceLocation LOCK = new ResourceLocation("skyblockaddons", "lock.png");
+    private static final ResourceLocation CHEST_GUI_TEXTURE = new ResourceLocation("textures/gui/container/generic_54.png");
+    private static final int OVERLAY_RED = ColorCode.RED.getColor(127).getRGB();
+    private static final int OVERLAY_GREEN = ColorCode.GREEN.getColor(127).getRGB();
+    private static final Pattern ENCHANTMENT_PATTERN = Pattern.compile(" \\* (?<enchantment>[A-Za-z0-9 ]*)");
 
     /**
      * This controls whether or not the backpack preview is frozen- allowing you
@@ -52,74 +49,105 @@ public class GuiContainerHook {
 
         if (main.getConfigValues().isEnabled(Feature.SHOW_ENCHANTMENTS_REFORGES)) {
             Minecraft mc = Minecraft.getMinecraft();
-
             if (item != null && item.hasDisplayName()) {
                 if (item.getDisplayName().startsWith(ColorCode.GREEN + "Enchant Item")) {
+
                     List<String> tooltip = item.getTooltip(mc.thePlayer, false);
-
                     if (tooltip.size() > 2) {
-                        String enchantLine = tooltip.get(2);
-                        String[] lines = enchantLine.split(Pattern.quote("* "));
-                        if (lines.length >= 2) {
-                            String toMatch = lines[1];
-                            String enchant;
-                            if (!main.getUtils().getEnchantmentMatches().isEmpty() &&
-                                    main.getUtils().enchantReforgeMatches(toMatch)) {
-                                enchant = ColorCode.RED + toMatch;
-                            } else {
-                                enchant = ColorCode.YELLOW + toMatch;
+                        String enchantLine = TextUtils.stripColor(tooltip.get(2));
+
+                        Matcher matcher = ENCHANTMENT_PATTERN.matcher(enchantLine);
+                        if (matcher.matches()) {
+                            String enchantment = matcher.group("enchantment");
+
+                            int color = ColorCode.YELLOW.getRGB();
+                            if (!main.getUtils().getEnchantmentMatches().isEmpty() && main.getUtils().enchantReforgeMatches(enchantment)) {
+                                color = ColorCode.RED.getRGB();
                             }
-                            float yOff;
-                            if (slotIn.slotNumber == 29 || slotIn.slotNumber == 33) {
-                                yOff = 26;
-                            } else {
-                                yOff = 36;
+
+                            boolean expandLeft = false;
+                            boolean expandRight = false;
+
+                            int stringWidth = mc.fontRendererObj.getStringWidth(enchantment);
+                            float scale = 0.8F;
+
+                            float yOffset = 23;
+                            if (slotIn.slotNumber == 29) {
+                                yOffset = 38;
+
+                                // If over the width of 3 glass panes + spacing, expand left
+                                if (stringWidth > 50) {
+                                    expandLeft = true;
+                                }
+                            } else if (slotIn.slotNumber == 33) {
+                                yOffset = 38;
+
+                                // If over the width of 3 glass panes + spacing, expand right
+                                if (stringWidth > 50) {
+                                    expandRight = true;
+                                }
                             }
-                            float scaleMultiplier = 1 / 0.75F;
-                            float halfStringWidth = mc.fontRendererObj.getStringWidth(enchant) / 2F;
-                            x += 8; // to center it
-                            enchantsToRender.add(new FloatPairString(x * scaleMultiplier - halfStringWidth, y * scaleMultiplier + yOff, enchant));
+
+                            GlStateManager.pushMatrix();
+                            GlStateManager.scale(scale, scale, 1);
+                            GlStateManager.translate(0, 0, 1000);
+                            float renderX;
+                            float renderY = (y + yOffset) / scale;
+                            if (expandLeft) {
+                                renderX = (x + 32 - 2) / scale - stringWidth;
+                            } else if (expandRight) {
+                                renderX = (x - 16 + 2) / scale;
+                            } else {
+                                renderX = (x + 8) / scale - stringWidth / 2F;
+                            }
+
+                            drawTooltipBackground(renderX, renderY, stringWidth, 8);
+                            mc.fontRendererObj.drawString(enchantment, renderX, renderY, color, true);
+                            GlStateManager.popMatrix();
                         }
                     }
-                } else if ("Reforge Item".equals(slotIn.inventory.getDisplayName().getUnformattedText()) && slotIn.slotNumber == 13) {
-                    String reforge = ItemUtils.getReforge(item);
+                } else if (slotIn.slotNumber == 13) {
+                    String reforge = null;
+                    if (main.getInventoryUtils().getInventoryType() == InventoryType.BASIC_REFORGING) {
+                        reforge = ItemUtils.getReforge(item);
+                    } else if (main.getInventoryUtils().getInventoryType() == InventoryType.BASIC_ACCESSORY_BAG_REFORGING) {
+                        reforge = GuiChestHook.getLastAccessoryBagReforge();
+                    }
+
                     if (reforge != null) {
-                        if (!main.getUtils().getEnchantmentMatches().isEmpty() &&
-                                main.getUtils().enchantReforgeMatches(reforge)) {
-                            reforge = ColorCode.RED + reforge;
-                        } else {
-                            reforge = ColorCode.YELLOW + reforge;
+                        int color = ColorCode.YELLOW.getRGB();
+                        if (!main.getUtils().getEnchantmentMatches().isEmpty() && main.getUtils().enchantReforgeMatches(reforge)) {
+                            color = ColorCode.RED.getRGB();
                         }
-                        x -= 28;
-                        y += 22;
-                        float halfStringWidth = mc.fontRendererObj.getStringWidth(reforge) / 2F;
-                        reforgeToRender = new FloatPairString(x - halfStringWidth, y, reforge);
+
+                        GlStateManager.pushMatrix();
+                        GlStateManager.translate(0, 0, 300);
+                        int stringWidth = mc.fontRendererObj.getStringWidth(reforge);
+                        float renderX = x - 28 - stringWidth / 2F;
+                        int renderY = y + 22;
+                        drawTooltipBackground(renderX, renderY, stringWidth, 8);
+                        mc.fontRendererObj.drawString(reforge, renderX, renderY, color, true);
+                        GlStateManager.popMatrix();
                     }
                 }
-            }
-            if (slotIn.slotNumber == 53) {
-                GlStateManager.pushMatrix();
-
-                GlStateManager.disableLighting();
-                GlStateManager.disableDepth();
-                GlStateManager.disableBlend();
-                if (reforgeToRender != null) {
-                    mc.fontRendererObj.drawString(reforgeToRender.getEnchant(), reforgeToRender.getX(), reforgeToRender.getY(), ColorCode.WHITE.getRGB(), true);
-                    reforgeToRender = null;
-                }
-                GlStateManager.scale(0.75, 0.75, 1);
-                Iterator<FloatPairString> enchantPairIterator = enchantsToRender.iterator();
-                while (enchantPairIterator.hasNext()) {
-                    FloatPairString enchant = enchantPairIterator.next();
-                    mc.fontRendererObj.drawString(enchant.getEnchant(), enchant.getX(), enchant.getY(), ColorCode.WHITE.getRGB(), true);
-                    enchantPairIterator.remove();
-                }
-                GlStateManager.enableLighting();
-                GlStateManager.enableDepth();
-
-                GlStateManager.popMatrix();
             }
         }
+    }
+
+    private static void drawTooltipBackground(float x, float y, float width, float height) {
+        int l = -267386864;
+        SkyblockAddons main = SkyblockAddons.getInstance();
+        main.getUtils().drawRect(x - 3, y - 4, x + width + 3, y - 3, l);
+        main.getUtils().drawRect(x - 3, y + height + 3, x + width + 3, y + height + 4, l);
+        main.getUtils().drawRect(x - 3, y - 3, x + width + 3, y + height + 3, l);
+        main.getUtils().drawRect(x - 4, y - 3, x - 3, y + height + 3, l);
+        main.getUtils().drawRect(x + width + 3, y - 3, x + width + 4, y + height + 3, l);
+
+        int borderColor = 1347420415;
+        main.getUtils().drawRect(x - 3, y - 3 + 1, x - 3 + 1, y + height + 3 - 1, borderColor);
+        main.getUtils().drawRect(x + width + 2, y - 3 + 1, x + width + 3, y + height + 3 - 1, borderColor);
+        main.getUtils().drawRect(x - 3, y - 3, x + width + 3, y - 3 + 1, borderColor);
+        main.getUtils().drawRect(x - 3, y + height + 2, x + width + 3, y + height + 3, borderColor);
     }
 
     public static void keyTyped(int keyCode) {

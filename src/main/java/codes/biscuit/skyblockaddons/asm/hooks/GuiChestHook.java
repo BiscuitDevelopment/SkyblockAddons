@@ -11,6 +11,7 @@ import codes.biscuit.skyblockaddons.features.backpacks.BackpackManager;
 import codes.biscuit.skyblockaddons.gui.IslandWarpGui;
 import codes.biscuit.skyblockaddons.gui.elements.CraftingPatternSelection;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
+import lombok.Getter;
 import codes.biscuit.skyblockaddons.utils.ItemUtils;
 import lombok.Setter;
 import net.minecraft.client.Minecraft;
@@ -38,7 +39,7 @@ public class GuiChestHook {
 
     private static GuiTextField textFieldMatch = null;
     private static GuiTextField textFieldExclusions = null;
-    @Setter private static String lastAccessoryBagReforge = null;
+    @Setter @Getter private static String lastAccessoryBagReforge = null;
     private static CraftingPatternSelection craftingPatternSelection = null;
 
     private static Pattern warpPattern = Pattern.compile("(?:§5§o)?§8/warp ([a-z_]*)");
@@ -60,7 +61,6 @@ public class GuiChestHook {
      */
     public static void onGuiClosed() {
         SkyblockAddons.getInstance().getInventoryUtils().updateInventoryType();
-        lastAccessoryBagReforge = null;
         if (textFieldMatch != null && textFieldExclusions != null) {
             Keyboard.enableRepeatEvents(false);
         }
