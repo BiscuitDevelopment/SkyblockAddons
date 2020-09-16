@@ -47,7 +47,7 @@
     "lockSlots": "Permetti di bloccare gli slot",
     "lockSlot": "Blocca Slot",
     "dontResetCursorInventory": "Non resettare il cursore tra gli inventari",
-    "summoningEyeAlert": "Avviso di acquisizione di un Occhio dell'evocazione",
+    "summoningEyeAlert": "Avviso Ottenimento di un Summoning Eye",
     "makeEnderchestsInEndGreen": "Cambia il colore dell’enderchest nell’End",
     "changeColor": "Cambia colore",
     "showInOtherGames": "Mostra in Altri Giochi",
@@ -86,7 +86,7 @@
       "compact": "Compatto"
     },
     "disableMagicalSoupMessage": "Disabilita i messaggi della zuppa magica ai funghi",
-    "zealotCounter": "Contatore di Zealot - Conteggio dall’ultimo occhio",
+    "zealotCounter": "Contatore di Zealot - Conteggio dall'ultimo Summoning Eye",
     "tickerChargesDisplay": "Mostra le cariche",
     "tab": {
       "generalSettings": "Impostazioni Generali"
@@ -183,7 +183,7 @@
       "patchAvailable": "Un nuovo aggiornamento con correzioni di errori (%version%) è disponibile! Cerca le opzioni di download in chat!"
     },
     "slotLocked": "Questo slot è bloccato!",
-    "summoningEyeFound": "Occhio dell'evocazione!",
+    "summoningEyeFound": "Summoning Eye!",
     "cancelledStemBreak": "Una funzione ti ha impedito di rompere questo stelo. Usa la tua mano se lo vuoi rompere.",
     "cancelledProfileOpening": "Una funzione ti ha impedito di aprire il profilo di questo giocatore mentre avevi l’arco in mano.",
     "cancelledDropping": "Una funzione ti ha impedito di gettare questo oggetto o strumento raro dalla tua hotbar.",
