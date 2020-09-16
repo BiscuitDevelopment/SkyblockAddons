@@ -134,7 +134,6 @@ public enum Feature {
     DUNGEONS_COLLECTED_ESSENCES_DISPLAY(112, Message.SETTING_DUNGEONS_COLLECTED_ESSENCES_DISPLAY, new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.YELLOW), false),
     STOP_BONZO_STAFF_SOUNDS(113, Message.SETTING_BONZO_STAFF_SOUNDS, null, true),
     SHOW_RARITY_UPGRADED(114, Message.SETTING_SHOW_RARITY_UPGRADED, new GuiFeatureData(ColorCode.LIGHT_PURPLE, true), false),
-    DUNGEON_DEATH_COUNTER(115, Message.SETTING_DUNGEON_DEATH_COUNTER, new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.RED), false),
 
     ACTIONS_UNTIL_NEXT_LEVEL(115, null, true),
 
@@ -163,6 +162,8 @@ public enum Feature {
     HIDE_WHEN_NOT_IN_CRYPTS(133, null, false),
     HIDE_WHEN_NOT_IN_SPIDERS_DEN(134, null, false),
     HIDE_WHEN_NOT_IN_CASTLE(135, null, false),
+
+    DUNGEON_DEATH_COUNTER(136, Message.SETTING_DUNGEON_DEATH_COUNTER, new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.RED), false),
 
     WARNING_TIME(-1, Message.SETTING_WARNING_DURATION, false),
 
