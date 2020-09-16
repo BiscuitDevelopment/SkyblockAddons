@@ -160,8 +160,8 @@ public enum Message {
     BACKPACK_STYLE_REGULAR(MessageObject.BACKPACK_STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.BACKPACK_STYLE, "compact"),
 
-    MESSAGE_ENCHANTS(MessageObject.INVENTORY_TYPE, "enchants"),
-    MESSAGE_REFORGES(MessageObject.INVENTORY_TYPE, "reforges"),
+    MESSAGE_ENCHANTS(MessageObject.MESSAGES, "enchants"),
+    MESSAGE_REFORGES(MessageObject.MESSAGES, "reforges"),
     MESSAGE_DROP_CONFIRMATION(MessageObject.MESSAGES, "dropConfirmation"),
     MESSAGE_MAGMA_BOSS_WARNING(MessageObject.MESSAGES, "magmaBossWarning"),
     MESSAGE_FULL_INVENTORY(MessageObject.MESSAGES, "fullInventory"),
@@ -403,7 +403,6 @@ public enum Message {
         MESSAGES("messages"),
         BACKPACK_STYLE("settings.backpackStyles"),
         POWER_ORB_STYLE("settings.powerOrbStyle"),
-        INVENTORY_TYPE("messages.inventoryTypes"),
         TEXT_STYLE("settings.textStyles"),
         TAB("settings.tab"),
         UPDATE_MESSAGES("messages.update"),
