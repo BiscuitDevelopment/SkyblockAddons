@@ -221,7 +221,8 @@
     "enchantmentExclusionExample": "ex.: \"proj, blast\"",
     "reforgeInclusionExample": "ex.: \"godly, strong\"",
     "reforgeExclusionExample": "ex.: \"odd, clean\"",
-    "actionsLeft": "%number% Left"
+    "actionsLeft": "%number% Left",
+    "effectsActive": "%number% Effects Active"
   },
   "discordStatus": {
     "titleNone": "Nenhum",
@@ -257,7 +258,7 @@
     "sba.brand.brandOutput": "Marca do servidor: %brand%",
     "sba.brand.notFound": "Não foi possível encontrar a marca do servidor!",
     "sba.copyEntity": "§e(Program) §7Copiar dados de NBT para entidades do(s) nome(s) dentro do raio determinado à volta do jogador",
-    "sba.copySidebar": "§e(Dev) §7Copy the scoreboard text",
+    "sba.copySidebar": "§e(Program) §7Copiar o texto da tabela lateral",
     "sba.copyTabList": "§e(Program) §7Copiar o cabeçalho e o rodapé da lista de jogadores",
     "sba.dev": "Ativar o modo de programador",
     "sba.dev.disabled": "Modo de programador desativado!",

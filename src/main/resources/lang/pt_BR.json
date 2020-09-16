@@ -152,8 +152,8 @@
     "svenSlayerTracker": "Slayer Tracker - Sven/Wolf",
     "textMode": "Text Mode",
     "dragonsNestOnly": "Only Show in the Dragon's Nest",
-    "dragonStatsTracker": "Dragon Tracker",
-    "expanded": "Expanded",
+    "dragonStatsTracker": "Rastreador de Dragão",
+    "expanded": "Expandido",
     "hideWhenNotInCrypts": "Hide When Not in the Crypts/Doing Revenant Quest",
     "hideWhenNotInSpidersDen": "Hide When Not in the Spiders Den/Doing Tarantula Quest",
     "hideWhenNotInCastle": "Hide When Not in the Castle/Doing Sven Quest",
@@ -205,7 +205,7 @@
     "resizeBars": "Resize Bars",
     "showColorIcons": "Show Color Icons",
     "enableFeatureSnapping": "Enable Feature Snapping",
-    "stage": "Stage %stage%",
+    "stage": "Estágio %stage%",
     "switchedSlots": "You have just switched from a locked slot or rare item. Please wait a bit before dropping!",
     "clickToOpenLink": "Click to open this link!",
     "clickToOpenFolder": "Click to open your mods folder!",
@@ -221,7 +221,8 @@
     "enchantmentExclusionExample": "e.g. \"proj, blast\"",
     "reforgeInclusionExample": "e.g. \"godly, strong\"",
     "reforgeExclusionExample": "e.g. \"odd, clean\"",
-    "actionsLeft": "%number% Left"
+    "actionsLeft": "%number% Restantes",
+    "effectsActive": "%number% Effects Active"
   },
   "discordStatus": {
     "titleNone": "None",
@@ -302,11 +303,11 @@
     "strong": "Strong",
     "superior": "Superior",
     "recentDragons": "Recent Dragons:",
-    "dragonsSince": "Dragons Since:",
-    "aspectOfTheDragons": "AOTD",
-    "enderDragonPet": "Dragon Pet",
-    "eyesPlaced": "Eyes Placed",
-    "never": "Never"
+    "dragonsSince": "Dragões Desde:",
+    "aspectOfTheDragons": "Aspecto dos Dragões",
+    "enderDragonPet": "Pet Dragão",
+    "eyesPlaced": "Olhos colocados",
+    "never": "Nunca"
   },
   "slayerTracker": {
     "revenant": "Revenant Horror:",

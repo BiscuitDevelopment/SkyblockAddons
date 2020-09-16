@@ -221,7 +221,8 @@
     "enchantmentExclusionExample": "例：\"proj, blast\"",
     "reforgeInclusionExample": "例：\"godly, strong\"",
     "reforgeExclusionExample": "例：\"odd, clean\"",
-    "actionsLeft": "%number% Left"
+    "actionsLeft": "%number% Left",
+    "effectsActive": "%number% Effects Active"
   },
   "discordStatus": {
     "titleNone": "無",
