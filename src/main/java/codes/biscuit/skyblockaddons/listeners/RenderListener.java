@@ -1103,7 +1103,7 @@ public class RenderListener {
         EnumUtils.AnchorPoint anchorPoint = main.getConfigValues().getAnchorPoint(Feature.TAB_EFFECT_TIMERS);
         boolean topDown = (anchorPoint == EnumUtils.AnchorPoint.TOP_LEFT || anchorPoint == EnumUtils.AnchorPoint.TOP_RIGHT);
 
-        int totalEffects = TabEffectManager.getDummyPotionTimers().size() + TabEffectManager.getDummyPowerupTimers().size();
+        int totalEffects = TabEffectManager.getDummyPotionTimers().size() + TabEffectManager.getDummyPowerupTimers().size() + 1; // + 1 to account for the "x Effects Active" line
         int spacer = (!TabEffectManager.getDummyPotionTimers().isEmpty() && !TabEffectManager.getDummyPowerupTimers().isEmpty()) ? 3 : 0;
 
         int lineHeight = 8 + 1; // 1 pixel between each line.
@@ -1128,13 +1128,28 @@ public class RenderListener {
 
         Minecraft mc = Minecraft.getMinecraft();
 
-        int drawnCount = 0;
-        for(TabEffect potion : potionTimers){
-            float lineY;
+        // Draw the "x Effects Active" line
+        ChromaManager.renderingText(Feature.TAB_EFFECT_TIMERS);
+        String text = TabEffectManager.getInstance().getEffectCount() + " Effects Active";
+        float lineY;
+        if (topDown) {
+            lineY = y;
+        } else {
+            lineY = y + height - 8;
+        }
+        if (alignRight) {
+            main.getUtils().drawTextWithStyle(text, x + width - mc.fontRendererObj.getStringWidth(text), lineY, color.getRGB());
+        } else {
+            main.getUtils().drawTextWithStyle(text, x, lineY, color.getRGB());
+        }
+        ChromaManager.doneRenderingText();
+
+        int drawnCount = 1; // 1 to account for the line above
+        for (TabEffect potion : potionTimers){
             if (topDown) {
                 lineY = y + drawnCount * lineHeight;
             } else {
-                lineY = y + height + drawnCount * lineHeight - 8;
+                lineY = y + height - drawnCount * lineHeight - 8;
             }
 
             String effect = potion.getEffect();
@@ -1152,14 +1167,13 @@ public class RenderListener {
                 main.getUtils().drawTextWithStyle(duration, x+mc.fontRendererObj.getStringWidth(effect), lineY, color.getRGB());
                 ChromaManager.doneRenderingText();
             }
-            drawnCount += topDown ? 1 : -1;
+            drawnCount++;
         }
-        for(TabEffect powerUp : powerupTimers){
-            float lineY;
+        for (TabEffect powerUp : powerupTimers){
             if (topDown) {
                 lineY = y + spacer + drawnCount * lineHeight;
             } else {
-                lineY = y + height + drawnCount * lineHeight - spacer - 8;
+                lineY = y + height - drawnCount * lineHeight - spacer - 8;
             }
 
             String effect = powerUp.getEffect();
@@ -1177,7 +1191,7 @@ public class RenderListener {
                 main.getUtils().drawTextWithStyle(duration, x+mc.fontRendererObj.getStringWidth(effect), lineY, color.getRGB());
                 ChromaManager.doneRenderingText();
             }
-            drawnCount += topDown ? 1 : -1;
+            drawnCount++;
         }
 
         main.getUtils().restoreGLOptions();
