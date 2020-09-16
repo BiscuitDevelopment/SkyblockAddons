@@ -192,7 +192,8 @@
     "enchantmentInclusionExample": "e.g. \"prot, feather\"",
     "enchantmentExclusionExample": "e.g. \"proj, blast\"",
     "reforgeInclusionExample": "e.g. \"godly, strong\"",
-    "reforgeExclusionExample": "e.g. \"odd, clean\""
+    "reforgeExclusionExample": "e.g. \"odd, clean\"",
+    "effectsActive": "%number% Effects Active"
   },
   "discordStatus": {
     "titleNone": "None",

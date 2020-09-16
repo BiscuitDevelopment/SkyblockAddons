@@ -1130,7 +1130,7 @@ public class RenderListener {
 
         // Draw the "x Effects Active" line
         ChromaManager.renderingText(Feature.TAB_EFFECT_TIMERS);
-        String text = TabEffectManager.getInstance().getEffectCount() + " Effects Active";
+        String text = Message.MESSAGE_EFFECTS_ACTIVE.getMessage(String.valueOf(TabEffectManager.getInstance().getEffectCount()));
         float lineY;
         if (topDown) {
             lineY = y;
