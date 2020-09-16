@@ -221,7 +221,7 @@
     "enchantmentExclusionExample": "bijv. \"prot, blast\"",
     "reforgeInclusionExample": "bijv. \"godly, strong\"",
     "reforgeExclusionExample": "bijv. \"odd, clean\"",
-    "actionsLeft": "%number% Left"
+    "actionsLeft": "%number% over"
   },
   "discordStatus": {
     "titleNone": "Geen",
