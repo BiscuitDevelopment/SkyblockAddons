@@ -181,6 +181,8 @@ public class GuiChestTransformer implements ITransformer {
                 // GuiChestHook.drawString(this.fontRendererObj, this.lowerChestInventory.getDisplayName().getUnformattedText(), 8, 6, 4210752);
                 // GuiChestHook.drawString(this.fontRendererObj, this.upperChestInventory.getDisplayName().getUnformattedText(), 8, this.ySize - 96 + 2, 4210752);
 
+                methodNode.instructions.insertBefore(methodNode.instructions.getFirst(), onRenderChestForegroundLayer());
+
                 Iterator<AbstractInsnNode> iterator = methodNode.instructions.iterator();
                 while (iterator.hasNext()) {
                     AbstractInsnNode abstractNode = iterator.next();
@@ -197,6 +199,16 @@ public class GuiChestTransformer implements ITransformer {
                 }
             }
         }
+    }
+
+    private InsnList onRenderChestForegroundLayer() {
+        InsnList list = new InsnList();
+
+        list.add(new VarInsnNode(Opcodes.ALOAD, 0)); // this
+        list.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "codes/biscuit/skyblockaddons/asm/hooks/GuiChestHook", "onRenderChestForegroundLayer",
+                "("+TransformerClass.GuiChest.getName()+")V", false)); // GuiChestHook.onRenderChestForegroundLayer(this);
+
+        return list;
     }
 
     private InsnList updateScreen() {

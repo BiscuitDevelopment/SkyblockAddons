@@ -22,30 +22,8 @@ public class GuiContainerTransformer implements ITransformer {
     @Override
     public void transform(ClassNode classNode, String name) {
 
-//        classNode.fields.add(new FieldNode(Opcodes.ACC_PRIVATE, "oldMouseX", "I", null, null));
-//        classNode.fields.add(new FieldNode(Opcodes.ACC_PRIVATE, "oldMouseY", "I", null, null));
-
         for (MethodNode methodNode : classNode.methods) {
-            if (TransformerMethod.drawSlot.matches(methodNode)) {
-
-                // Objective:
-                // Find: After this.itemRender.renderItemAndEffectIntoGUI(itemstack, i, j);
-                // Add: GuiContainerHook.showEnchantments(slotIn, i, j, item);
-
-                Iterator<AbstractInsnNode> iterator = methodNode.instructions.iterator();
-                while (iterator.hasNext()) {
-                    AbstractInsnNode abstractNode = iterator.next();
-                    if (abstractNode instanceof MethodInsnNode && abstractNode.getOpcode() == Opcodes.INVOKEVIRTUAL) {
-                        MethodInsnNode methodInsnNode = (MethodInsnNode)abstractNode;
-                        if (methodInsnNode.owner.equals(TransformerClass.RenderItem.getNameRaw()) &&
-                                TransformerMethod.renderItemAndEffectIntoGUI.matches(methodInsnNode)) {
-
-                            methodNode.instructions.insert(abstractNode, insertShowEnchantments());
-                            break;
-                        }
-                    }
-                }
-            } else if (TransformerMethod.drawScreen.matches(methodNode)) {
+            if (TransformerMethod.drawScreen.matches(methodNode)) {
 
                 // Objective 1:
                 // Find: int l = 240;
@@ -81,7 +59,6 @@ public class GuiContainerTransformer implements ITransformer {
 
                             methodNode.instructions.insertBefore(abstractNode, new MethodInsnNode(Opcodes.INVOKESTATIC, "codes/biscuit/skyblockaddons/asm/hooks/GuiContainerHook",
                                     "drawGradientRect", "("+TransformerClass.GuiContainer.getName()+"IIIIII"+TransformerClass.Slot.getName()+")V", false));
-                            // GuiContainerHook.drawGradientRect(this, j1, k1, j1 + 16, k1 + 16, -2130706433, -2130706433, this.theSlot);
 
                             iterator.remove(); // Remove previous call.
                         }
@@ -90,7 +67,6 @@ public class GuiContainerTransformer implements ITransformer {
                         if (methodInsnNode.owner.equals(TransformerClass.GuiContainer.getNameRaw()) && TransformerMethod.drawSlot.matches(methodInsnNode)) {
                             methodNode.instructions.insert(abstractNode, new MethodInsnNode(Opcodes.INVOKESTATIC, "codes/biscuit/skyblockaddons/asm/hooks/GuiContainerHook",
                                     "drawSlot","("+TransformerClass.GuiContainer.getName()+TransformerClass.Slot.getName()+")V", false));
-                            // GuiContainerHook.drawSlot(this, slot);
 
                             methodNode.instructions.insert(abstractNode, new VarInsnNode(Opcodes.ALOAD, 9)); // slot
 
@@ -98,7 +74,6 @@ public class GuiContainerTransformer implements ITransformer {
                         }
                     } else if (abstractNode instanceof InsnNode && abstractNode.getOpcode() == Opcodes.RETURN) {
                         methodNode.instructions.insertBefore(abstractNode, insertDrawBackpacks());
-//                        methodNode.instructions.insertBefore(abstractNode, insertSetOldMousePosition());
                     }
                 }
             } else if (TransformerMethod.keyTyped.matches(methodNode)) {
@@ -147,39 +122,12 @@ public class GuiContainerTransformer implements ITransformer {
         }
     }
 
-//    private InsnList insertSetOldMousePosition() {
-//        InsnList list = new InsnList();
-//
-//        list.add(new VarInsnNode(Opcodes.ALOAD, 0)); // this.oldMouseX =
-//        list.add(new VarInsnNode(Opcodes.ILOAD, 1)); // mouseX
-//        list.add(new FieldInsnNode(Opcodes.PUTFIELD, TransformerClass.GuiContainer.getNameRaw(), "oldMouseX", "I"));
-//
-//        list.add(new VarInsnNode(Opcodes.ALOAD, 0)); // this.oldMouseY =
-//        list.add(new VarInsnNode(Opcodes.ILOAD, 2)); // mouseX
-//        list.add(new FieldInsnNode(Opcodes.PUTFIELD, TransformerClass.GuiContainer.getNameRaw(), "oldMouseY", "I"));
-//
-//        return list;
-//    }
-
     private InsnList insertKeyTypedTwo() {
         InsnList list = new InsnList();
 
         list.add(new VarInsnNode(Opcodes.ILOAD, 2)); // keyCode
         list.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "codes/biscuit/skyblockaddons/asm/hooks/GuiContainerHook",
                 "keyTyped", "(I)V", false)); // GuiContainerHook.keyTyped(keyCode);
-
-        return list;
-    }
-
-    private InsnList insertShowEnchantments() {
-        InsnList list = new InsnList();
-
-        list.add(new VarInsnNode(Opcodes.ALOAD, 1)); // slotIn
-        list.add(new VarInsnNode(Opcodes.ILOAD, 2)); // i
-        list.add(new VarInsnNode(Opcodes.ILOAD, 3)); // j
-        list.add(new VarInsnNode(Opcodes.ALOAD, 4)); // itemstack
-        list.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "codes/biscuit/skyblockaddons/asm/hooks/GuiContainerHook",
-                "showEnchantments", "("+TransformerClass.Slot.getName()+"II"+TransformerClass.ItemStack.getName()+")V", false)); // GuiContainerHook.showEnchantments(slotIn, i, j, item);
 
         return list;
     }
