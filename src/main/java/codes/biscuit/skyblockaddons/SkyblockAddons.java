@@ -203,7 +203,7 @@ public class SkyblockAddons {
     static {
         //noinspection ConstantConditions
         if (VERSION.contains("@")) { // Debug environment...
-            VERSION = "1.5.2";
+            VERSION = "1.6.0";
         }
     }
 }
