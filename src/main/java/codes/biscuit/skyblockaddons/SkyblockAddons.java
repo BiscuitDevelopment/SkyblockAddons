@@ -117,8 +117,8 @@ public class SkyblockAddons {
 
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent e) {
-        updater.processUpdateCheckResult();
         DataUtils.readLocalAndFetchOnline();
+        updater.processUpdateCheckResult();
         configValues.loadValues();
         persistentValues.loadValues();
 
