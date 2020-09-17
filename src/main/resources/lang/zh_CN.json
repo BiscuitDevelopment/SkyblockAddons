@@ -296,19 +296,19 @@
     "developerCopyNBT": "复制 NBT"
   },
   "dragonTracker": {
-    "protector": "Protector",
-    "old": "Old",
-    "wise": "Wise",
-    "unstable": "Unstable",
-    "young": "Young",
-    "strong": "Strong",
-    "superior": "Superior",
+    "protector": "守护",
+    "old": "远古",
+    "wise": "智慧",
+    "unstable": "失衡",
+    "young": "新生",
+    "strong": "力量",
+    "superior": "超级",
     "recentDragons": "Recent Dragons:",
     "dragonsSince": "Dragons Since:",
-    "aspectOfTheDragons": "AOTD",
+    "aspectOfTheDragons": "龙族之刃",
     "enderDragonPet": "Dragon Pet",
     "eyesPlaced": "Eyes Placed",
-    "never": "Never"
+    "never": "从不"
   },
   "slayerTracker": {
     "revenant": "Revenant Horror:",
