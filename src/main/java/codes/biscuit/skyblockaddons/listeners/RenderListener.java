@@ -1593,7 +1593,7 @@ public class RenderListener {
         List<TabEffect> powerupTimers = tabEffect.getPowerupTimers();
 
         if (buttonLocation == null) {
-            if (potionTimers.isEmpty() && powerupTimers.isEmpty()) {
+            if (potionTimers.isEmpty() && powerupTimers.isEmpty() && TabEffectManager.getInstance().getEffectCount() == 0) {
                 return;
             }
         } else { // When editing GUI draw dummy timers.
