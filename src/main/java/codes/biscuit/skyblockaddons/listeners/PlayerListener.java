@@ -819,8 +819,7 @@ public class PlayerListener {
                 }
             }
 
-            if (main.getConfigValues().isEnabled(Feature.ORGANIZE_ENCHANTMENTS)) {
-
+            if (main.getConfigValues().isEnabled(Feature.ORGANIZE_ENCHANTMENTS) || main.getConfigValues().isEnabled(Feature.ENCHANTMENTS_HIGHLIGHT)) {
                 List<String> enchantments = new ArrayList<>();
                 int enchantStartIndex = -1;
                 int enchantEndIndex = -1;
@@ -844,14 +843,35 @@ public class PlayerListener {
 
                 if (enchantments.size() > 4) {
                     e.toolTip.subList(enchantStartIndex, enchantEndIndex).clear(); // Remove old enchantments
-                    main.getUtils().reorderEnchantmentList(enchantments);
+                    if (main.getConfigValues().isEnabled(Feature.ORGANIZE_ENCHANTMENTS)) {
+                        main.getUtils().reorderEnchantmentList(enchantments);
+                    }
                     int columns = enchantments.size() < 15 ? 2 : 3;
                     for (int i = 0; !enchantments.isEmpty(); i++) {
                         StringBuilder sb = new StringBuilder();
                         sb.append("§5§o");
                         for (int j = 0; j < columns && !enchantments.isEmpty(); j++) {
-                            sb.append("§9");
-                            sb.append(enchantments.get(0));
+                            String enchantment = enchantments.get(0);
+                            String name = enchantment.substring(enchantment.indexOf(' '));
+                            String rawLevel = enchantment.substring(enchantment.indexOf(' ') + 1);
+                            int level = 0;
+                            try {
+                                level = RomanNumeralParser.parseNumeral(rawLevel);
+                            } catch (Exception e1) {
+                                try {
+                                    level = Integer.parseInt(rawLevel);
+                                } catch (Exception ignored) { } // Ignore the parse error and assume the level is 0
+                            }
+                            if (main.getConfigValues().isEnabled(Feature.ENCHANTMENTS_HIGHLIGHT)
+                                && (
+                                        (level == 4 && !main.getOnlineData().getMaxEnchantments4().contains(enchantment))
+                                    ||  (level == 6 && !main.getOnlineData().getMaxEnchantments6().contains(enchantment))
+                                    )) {
+                                sb.append("§6");
+                            } else {
+                                sb.append("§9");
+                            }
+                            sb.append(enchantment);
                             sb.append(", ");
                             enchantments.remove(0);
                         }

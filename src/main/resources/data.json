@@ -34,5 +34,31 @@
       "WINTER_DISC",
       "DUNGEON_STONE"
     ]
-  }
+  },
+  "maxEnchantments4": [
+    "Experience",
+    "First Strike",
+    "Life Steal",
+    "Looting"
+  ],
+  "maxEnchantments6": [
+    "Bane of Arthropods",
+    "Critical",
+    "Ender Slayer",
+    "Giant Killer",
+    "Luck",
+    "Sharpness",
+    "Vampirism",
+    "Power",
+    "Growth",
+    "Protection",
+    "Efficiency",
+    "Angler",
+    "Caster",
+    "Frail",
+    "Luck of the Sea",
+    "Lure",
+    "Magnet",
+    "Spiked Hook"
+  ]
 }

@@ -164,6 +164,7 @@ public enum Feature {
     HIDE_WHEN_NOT_IN_CASTLE(135, null, false),
 
     DUNGEON_DEATH_COUNTER(136, Message.SETTING_DUNGEON_DEATH_COUNTER, new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.RED), false),
+    ENCHANTMENTS_HIGHLIGHT(137, Message.SETTING_ENCHANTMENTS_HIGHLIGHT, null, false),
 
     WARNING_TIME(-1, Message.SETTING_WARNING_DURATION, false),
 
