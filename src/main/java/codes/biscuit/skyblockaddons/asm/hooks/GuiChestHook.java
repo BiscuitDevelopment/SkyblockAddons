@@ -509,7 +509,7 @@ public class GuiChestHook {
                     if (item != null) {
                         String reforge = null;
                         if (main.getInventoryUtils().getInventoryType() == InventoryType.BASIC_REFORGING) {
-                            reforge = main.getUtils().getReforgeFromItem(item);
+                            reforge = ItemUtils.getReforge(item);
                         } else if (main.getInventoryUtils().getInventoryType() == InventoryType.BASIC_ACCESSORY_BAG_REFORGING) {
                             reforge = GuiChestHook.getLastAccessoryBagReforge();
                         }
