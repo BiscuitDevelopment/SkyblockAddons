@@ -110,6 +110,7 @@ public class SkyblockAddons {
 
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent e) {
+        updater.processUpdateCheckResult();
         onlineData = new Gson().fromJson(new JsonReader(utils.getBufferedReader("data.json")), OnlineData.class);
         configValues.loadValues();
         persistentValues.loadValues();
