@@ -538,10 +538,10 @@ public class Utils {
         }).start();
     }
 
-    public boolean isMaterialForRecipe(ItemStack item) {
-        final List<String> tooltip = item.getTooltip(null, false);
-        for (String s : tooltip) {
-            if ("§5§o§eRight-click to view recipes!".equals(s)) {
+    public boolean isMaterialForRecipe(ItemStack itemStack) {
+        List<String> lore = ItemUtils.getItemLore(itemStack);
+        for (String loreLine : lore) {
+            if ("Right-click to view recipes!".equals(TextUtils.stripColor(loreLine))) {
                 return true;
             }
         }
