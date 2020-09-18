@@ -3,6 +3,7 @@ package codes.biscuit.skyblockaddons.gui.buttons;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.audio.SoundHandler;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
 
@@ -99,5 +100,12 @@ public class ButtonToggle extends ButtonFeature {
 
     public void onClick() {
         this.animationButtonClicked = System.currentTimeMillis();
+    }
+
+    @Override
+    public void playPressSound(SoundHandler soundHandler) {
+        if (!main.getConfigValues().isRemoteDisabled(feature)) {
+            super.playPressSound(soundHandler);
+        }
     }
 }

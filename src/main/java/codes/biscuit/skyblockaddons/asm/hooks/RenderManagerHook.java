@@ -12,7 +12,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityArmorStand;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.item.EntityItemFrame;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 
 public class RenderManagerHook {
@@ -43,15 +42,6 @@ public class RenderManagerHook {
                 if (currentLocation == Location.VILLAGE || currentLocation == Location.AUCTION_HOUSE || currentLocation == Location.BANK) {
                     if ((entityIn instanceof EntityOtherPlayerMP || entityIn instanceof EntityFX || entityIn instanceof EntityItemFrame) &&
                             !NPCUtils.isNPC(entityIn) && entityIn.getDistanceSqToEntity(mc.thePlayer) > HIDE_RADIUS_SQUARED) {
-                        returnValue.cancel();
-                    }
-                }
-            }
-            if(main.getConfigValues().isEnabled(Feature.HIDE_SVEN_PUP_NAMETAGS)) {
-                if (entityIn instanceof EntityArmorStand && entityIn.hasCustomName()) {
-                    String customNameTag = entityIn.getCustomNameTag();
-
-                    if (customNameTag.contains("Sven Pup")) {
                         returnValue.cancel();
                     }
                 }

@@ -57,9 +57,15 @@ public class GuiContainerHook {
         if (backpack != null) {
             int x = backpack.getX();
             int y = backpack.getY();
+
             ItemStack[] items = backpack.getItems();
             int length = items.length;
+
+            int screenHeight = guiContainer.height;
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+
+            ItemStack tooltipItem = null;
+
             if (main.getConfigValues().getBackpackStyle() == EnumUtils.BackpackStyle.GUI) {
                 mc.getTextureManager().bindTexture(CHEST_GUI_TEXTURE);
                 int rows = length/9;
@@ -72,6 +78,16 @@ public class GuiContainerHook {
                     GlStateManager.color(color.getR(), color.getG(), color.getB(), 1);
                     textColor = color.getInventoryTextColor();
                 }
+
+                int totalWidth = 176;
+                if (x + totalWidth > guiContainer.width) {
+                    x -= totalWidth;
+                }
+                int totalHeight = rows * 18 + 17 + 7;
+                if (y + totalHeight > screenHeight) {
+                    y = screenHeight - totalHeight;
+                }
+
                 guiContainer.drawTexturedModalRect(x, y, 0, 0, 176, rows * 18 + 17);
                 guiContainer.drawTexturedModalRect(x, y + rows * 18 + 17, 0, 215, 176, 7);
                 mc.fontRendererObj.drawString(backpack.getBackpackName(), x+8, y+6, textColor);
@@ -81,7 +97,6 @@ public class GuiContainerHook {
                 RenderHelper.enableGUIStandardItemLighting();
                 GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
                 GlStateManager.enableRescaleNormal();
-                ItemStack toRenderOverlay = null;
                 for (int i = 0; i < length; i++) {
                     ItemStack item = items[i];
                     if (item != null) {
@@ -92,17 +107,24 @@ public class GuiContainerHook {
                         renderItem.zLevel = 200;
                         renderItem.renderItemAndEffectIntoGUI(item, itemX, itemY);
                         renderItem.renderItemOverlayIntoGUI(mc.fontRendererObj, item, itemX, itemY, null);
-                        if (freezeBackpack && mouseX > itemX && mouseX < itemX+16 && mouseY > itemY && mouseY < itemY+16) {
-                            toRenderOverlay = item;
-                        }
                         guiContainer.zLevel = 0;
                         renderItem.zLevel = 0;
+
+                        if (freezeBackpack && mouseX > itemX && mouseX < itemX+16 && mouseY > itemY && mouseY < itemY+16) {
+                            tooltipItem = item;
+                        }
                     }
                 }
-                if (toRenderOverlay != null) {
-                    guiContainer.drawHoveringText(toRenderOverlay.getTooltip(mc.thePlayer, mc.gameSettings.advancedItemTooltips), mouseX, mouseY);
-                }
             } else {
+                int totalWidth = (16 * 9) + 3;
+                if (x + totalWidth > guiContainer.width) {
+                    x -= totalWidth;
+                }
+                int totalHeight = (16 * (length / 9)) + 3;
+                if (y + totalHeight > screenHeight) {
+                    y = screenHeight - totalHeight;
+                }
+
                 GlStateManager.disableLighting();
                 GlStateManager.pushMatrix();
                 GlStateManager.translate(0,0, 300);
@@ -125,8 +147,15 @@ public class GuiContainerHook {
                         renderItem.renderItemOverlayIntoGUI(mc.fontRendererObj, item, itemX, itemY, null);
                         guiContainer.zLevel = 0;
                         renderItem.zLevel = 0;
+
+                        if (freezeBackpack && mouseX > itemX && mouseX < itemX+16 && mouseY > itemY && mouseY < itemY+16) {
+                            tooltipItem = item;
+                        }
                     }
                 }
+            }
+            if (tooltipItem != null) {
+                guiContainer.drawHoveringText(tooltipItem.getTooltip(mc.thePlayer, mc.gameSettings.advancedItemTooltips), mouseX, mouseY);
             }
             if (!freezeBackpack) {
                 main.getUtils().setBackpackToPreview(null);
