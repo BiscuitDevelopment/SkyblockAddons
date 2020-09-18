@@ -614,34 +614,6 @@ public class Utils {
         }).start();
     }
 
-    public boolean isMaterialForRecipe(ItemStack itemStack) {
-        List<String> lore = ItemUtils.getItemLore(itemStack);
-        for (String loreLine : lore) {
-            if ("Right-click to view recipes!".equals(TextUtils.stripColor(loreLine))) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public String getReforgeFromItem(ItemStack item) {
-        if (item.hasTagCompound()) {
-            NBTTagCompound extraAttributes = item.getTagCompound();
-            if (extraAttributes.hasKey("ExtraAttributes")) {
-                extraAttributes = extraAttributes.getCompoundTag("ExtraAttributes");
-                if (extraAttributes.hasKey("modifier")) {
-                    String reforge = WordUtils.capitalizeFully(extraAttributes.getString("modifier"));
-
-                    reforge = reforge.replace("_sword", ""); //fixes reforges like "Odd_sword"
-                    reforge = reforge.replace("_bow", "");
-
-                    return reforge;
-                }
-            }
-        }
-        return null;
-    }
-
     /**
      * Returns the folder that SkyblockAddons is located in.
      *
