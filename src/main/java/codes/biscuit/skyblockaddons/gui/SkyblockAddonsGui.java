@@ -71,9 +71,12 @@ public class SkyblockAddonsGui extends GuiScreen {
             featureSearchBar = new GuiTextField(2, this.fontRendererObj, width / 2 - 220, 69, 120, 15);
             featureSearchBar.setMaxStringLength(500);
             featureSearchBar.setFocused(true);
-        }
-        if (searchString != null) {
-            featureSearchBar.setText(searchString);
+
+            if (searchString != null) {
+                featureSearchBar.setText(searchString);
+            }
+        } else {
+            featureSearchBar.xPosition = width / 2 - 220;
         }
 
         // Add the buttons for each page.
@@ -543,5 +546,11 @@ public class SkyblockAddonsGui extends GuiScreen {
     public void updateScreen() {
         super.updateScreen();
         featureSearchBar.updateCursorCounter();
+    }
+
+    @Override
+    public void onResize(Minecraft mcIn, int w, int h) {
+        super.onResize(mcIn, w, h);
+        main.getUtils().setFadingIn(false);
     }
 }

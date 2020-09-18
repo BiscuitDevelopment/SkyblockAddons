@@ -56,15 +56,6 @@ public class RenderManagerHook {
                     }
                 }
             }
-            if(main.getConfigValues().isEnabled(Feature.HIDE_SVEN_PUP_NAMETAGS)) {
-                if (entityIn instanceof EntityArmorStand && entityIn.hasCustomName()) {
-                    String customNameTag = entityIn.getCustomNameTag();
-
-                    if (customNameTag.contains("Sven Pup")) {
-                        returnValue.cancel();
-                    }
-                }
-            }
         }
     }
 }

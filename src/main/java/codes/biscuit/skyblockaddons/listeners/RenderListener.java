@@ -139,18 +139,25 @@ public class RenderListener {
     @SubscribeEvent()
     public void onRenderLiving(RenderLivingEvent.Specials.Pre<EntityLivingBase> e) {
         Entity entity = e.entity;
-        if (main.getConfigValues().isEnabled(Feature.MINION_DISABLE_LOCATION_WARNING) && entity.hasCustomName()) {
-            if (entity.getCustomNameTag().startsWith("§cThis location isn\'t perfect! :(")) {
-                e.setCanceled(true);
-            }
-            if (entity.getCustomNameTag().startsWith("§c/!\\")) {
-                for (Entity listEntity : Minecraft.getMinecraft().theWorld.loadedEntityList) {
-                    if (listEntity.hasCustomName() && listEntity.getCustomNameTag().startsWith("§cThis location isn\'t perfect! :(") &&
-                            listEntity.posX == entity.posX && listEntity.posZ == entity.posZ &&
-                            listEntity.posY + 0.375 == entity.posY) {
-                        e.setCanceled(true);
-                        break;
+        if (entity.hasCustomName()) {
+            if (main.getConfigValues().isEnabled(Feature.MINION_DISABLE_LOCATION_WARNING)) {
+                if (entity.getCustomNameTag().startsWith("§cThis location isn't perfect! :(")) {
+                    e.setCanceled(true);
+                }
+                if (entity.getCustomNameTag().startsWith("§c/!\\")) {
+                    for (Entity listEntity : Minecraft.getMinecraft().theWorld.loadedEntityList) {
+                        if (listEntity.hasCustomName() && listEntity.getCustomNameTag().startsWith("§cThis location isn't perfect! :(") &&
+                                listEntity.posX == entity.posX && listEntity.posZ == entity.posZ && listEntity.posY + 0.375 == entity.posY) {
+                            e.setCanceled(true);
+                            break;
+                        }
                     }
+                }
+            }
+
+            if (main.getConfigValues().isEnabled(Feature.HIDE_SVEN_PUP_NAMETAGS)) {
+                if (entity instanceof EntityArmorStand && entity.hasCustomName() && entity.getCustomNameTag().contains("Sven Pup")) {
+                    e.setCanceled(true);
                 }
             }
         }
