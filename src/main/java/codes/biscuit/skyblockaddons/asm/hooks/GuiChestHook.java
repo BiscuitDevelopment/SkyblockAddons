@@ -11,9 +11,9 @@ import codes.biscuit.skyblockaddons.features.backpacks.BackpackManager;
 import codes.biscuit.skyblockaddons.gui.IslandWarpGui;
 import codes.biscuit.skyblockaddons.gui.elements.CraftingPatternSelection;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
+import codes.biscuit.skyblockaddons.utils.ItemUtils;
 import codes.biscuit.skyblockaddons.utils.TextUtils;
 import lombok.Getter;
-import codes.biscuit.skyblockaddons.utils.ItemUtils;
 import lombok.Setter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
@@ -87,7 +87,7 @@ public class GuiChestHook {
                         ItemStack itemStack = chestInventory.getStackInSlot(slot);
 
                         if (itemStack != null && (Items.skull == itemStack.getItem() || Items.paper == itemStack.getItem())) {
-                            List<String> lore = itemStack.getTooltip(null, false);
+                            List<String> lore = ItemUtils.getItemLore(itemStack);
                             IslandWarpGui.Marker marker = null;
                             IslandWarpGui.UnlockedStatus status = IslandWarpGui.UnlockedStatus.UNKNOWN;
 
@@ -302,14 +302,15 @@ public class GuiChestHook {
                         for (ItemStack bottle : enchantBottles) {
                             if (bottle != null && bottle.hasDisplayName()) {
                                 if (bottle.getDisplayName().startsWith(ColorCode.GREEN + "Enchant Item")) {
-                                    Minecraft mc = Minecraft.getMinecraft();
-                                    List<String> toolip = bottle.getTooltip(mc.thePlayer, false);
-                                    if (toolip.size() > 2) {
-                                        String[] lines = toolip.get(2).split(Pattern.quote("* "));
+                                    List<String> lore = ItemUtils.getItemLore(bottle);
+                                    if (lore.size() > 1) {
+                                        String enchantLine = TextUtils.stripColor(lore.get(1));
 
-                                        if (lines.length > 1) {
-                                            String enchantLine = lines[1];
-                                            if (main.getUtils().enchantReforgeMatches(enchantLine)) {
+                                        Matcher matcher = ENCHANTMENT_PATTERN.matcher(enchantLine);
+                                        if (matcher.matches()) {
+                                            String enchantment = matcher.group("enchantment");
+
+                                            if (main.getUtils().enchantReforgeMatches(enchantment)) {
                                                 main.getUtils().playLoudSound("random.orb", 0.1);
                                                 returnValue.cancel();
                                             }
@@ -433,14 +434,14 @@ public class GuiChestHook {
         if (main.getConfigValues().isEnabled(Feature.SHOW_ENCHANTMENTS_REFORGES)) {
             Minecraft mc = Minecraft.getMinecraft();
             for (Slot slot : guiChest.inventorySlots.inventorySlots) {
-                ItemStack item = slot.getStack();
+                ItemStack itemStack = slot.getStack();
 
-                if (item != null && item.hasDisplayName()) {
-                    if (item.getDisplayName().startsWith(ColorCode.GREEN + "Enchant Item")) {
+                if (itemStack != null && itemStack.hasDisplayName()) {
+                    if (itemStack.getDisplayName().startsWith(ColorCode.GREEN + "Enchant Item")) {
 
-                        List<String> tooltip = item.getTooltip(mc.thePlayer, false);
-                        if (tooltip.size() > 2) {
-                            String enchantLine = TextUtils.stripColor(tooltip.get(2));
+                        List<String> lore = ItemUtils.getItemLore(itemStack);
+                        if (lore.size() > 1) {
+                            String enchantLine = TextUtils.stripColor(lore.get(1));
 
                             Matcher matcher = ENCHANTMENT_PATTERN.matcher(enchantLine);
                             if (matcher.matches()) {

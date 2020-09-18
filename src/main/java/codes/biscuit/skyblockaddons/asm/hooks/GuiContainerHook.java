@@ -100,7 +100,7 @@ public class GuiContainerHook {
                     }
                 }
                 if (toRenderOverlay != null) {
-                    guiContainer.drawHoveringText(toRenderOverlay.getTooltip(null, mc.gameSettings.advancedItemTooltips), mouseX, mouseY);
+                    guiContainer.drawHoveringText(toRenderOverlay.getTooltip(mc.thePlayer, mc.gameSettings.advancedItemTooltips), mouseX, mouseY);
                 }
             } else {
                 GlStateManager.disableLighting();

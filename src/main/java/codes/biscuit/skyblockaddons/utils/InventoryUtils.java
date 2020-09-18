@@ -46,7 +46,7 @@ public class InventoryUtils {
     public static final String TREECAPITATOR_DISPLAYNAME = "§5Treecapitator";
     public static final String CHICKEN_HEAD_DISPLAYNAME = "§fChicken Head";
 
-    private static final Pattern REVENANT_UPGRADE_PATTERN = Pattern.compile("§5§o§7Next Upgrade: §a\\+([0-9]+❈) §8\\(§a([0-9,]+)§7/§c([0-9,]+)§8\\)");
+    private static final Pattern REVENANT_UPGRADE_PATTERN = Pattern.compile("Next Upgrade: \\+([0-9]+❈) \\(([0-9,]+)/([0-9,]+)\\)");
 
     private List<ItemStack> previousInventory;
     private Multimap<String, ItemDiff> itemPickupLog = ArrayListMultimap.create();
@@ -304,15 +304,15 @@ public class InventoryUtils {
     public void checkIfWearingSlayerArmor(EntityPlayerSP p) {
         if (main.getConfigValues().isEnabled(Feature.SLAYER_INDICATOR)) {
             for (int i = 3; i >= 0; i--) {
-                ItemStack item = p.inventory.armorInventory[i];
-                String itemID = item != null ? ItemUtils.getSkyBlockItemID(item) : null;
+                ItemStack itemStack = p.inventory.armorInventory[i];
+                String itemID = itemStack != null ? ItemUtils.getSkyBlockItemID(itemStack) : null;
 
                 if (itemID != null && (itemID.startsWith("REVENANT") || itemID.startsWith("TARANTULA"))) {
                     String percent = null;
                     String defence = null;
-                    List<String> tooltip = item.getTooltip(null, false);
-                    for (String line : tooltip) {
-                        Matcher matcher = REVENANT_UPGRADE_PATTERN.matcher(line);
+                    List<String> lore = ItemUtils.getItemLore(itemStack);
+                    for (String loreLine : lore) {
+                        Matcher matcher = REVENANT_UPGRADE_PATTERN.matcher(TextUtils.stripColor(loreLine));
                         if (matcher.matches()) { // Example: line§5§o§7Next Upgrade: §a+240❈ §8(§a14,418§7/§c15,000§8)
                             try {
                                 float percentage = Float.parseFloat(matcher.group(2).replace(",", "")) /
@@ -328,9 +328,9 @@ public class InventoryUtils {
                     if (percent != null && defence != null) {
                         SlayerArmorProgress currentProgress = slayerArmorProgresses[i];
 
-                        if (currentProgress == null || item != currentProgress.getItemStack()) {
+                        if (currentProgress == null || itemStack != currentProgress.getItemStack()) {
                             // The item has changed or didn't exist. Create new object.
-                            slayerArmorProgresses[i] = new SlayerArmorProgress(item, percent, defence);
+                            slayerArmorProgresses[i] = new SlayerArmorProgress(itemStack, percent, defence);
                         } else {
                             // The item has remained the same. Just update the stats.
                             currentProgress.setPercent(percent);

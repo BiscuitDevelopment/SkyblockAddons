@@ -15,6 +15,8 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.util.Constants;
 import org.apache.commons.lang3.text.WordUtils;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -72,7 +74,7 @@ public class ItemUtils {
      * @param item the Skyblock item to check
      * @return the Skyblock Item ID of this item or {@code null} if this isn't a valid Skyblock item
      */
-    public static String getSkyBlockItemID(final ItemStack item) {
+    public static String getSkyBlockItemID(ItemStack item) {
         if (item == null) {
             throw new NullPointerException("Item cannot be null.");
         } else if (!item.hasTagCompound()) {
@@ -410,5 +412,24 @@ public class ItemUtils {
         }
 
         return -1;
+    }
+
+    public static List<String> getItemLore(ItemStack itemStack) {
+        if (itemStack.hasTagCompound() && itemStack.getTagCompound().hasKey("display", 10)) { // 10 -> Compound
+            NBTTagCompound display = itemStack.getTagCompound().getCompoundTag("display");
+
+            if (display.hasKey("Lore", 9)) { // 9 -> List
+                NBTTagList lore = display.getTagList("Lore", 8); // 8 -> String
+
+                List<String> loreAsList = new ArrayList<>();
+                for (int lineNumber = 0; lineNumber < lore.tagCount(); lineNumber++) {
+                    loreAsList.add(lore.getStringTagAt(lineNumber));
+                }
+
+                return loreAsList;
+            }
+        }
+
+        return Collections.emptyList();
     }
 }

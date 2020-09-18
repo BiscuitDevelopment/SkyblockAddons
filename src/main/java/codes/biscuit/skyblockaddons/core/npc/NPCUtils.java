@@ -1,8 +1,8 @@
 package codes.biscuit.skyblockaddons.core.npc;
 
+import codes.biscuit.skyblockaddons.utils.ItemUtils;
 import codes.biscuit.skyblockaddons.utils.TextUtils;
 import lombok.Getter;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -12,7 +12,10 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Vec3;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 /**
  * This is a set of utility methods relating to Skyblock NPCs
@@ -44,7 +47,7 @@ public class NPCUtils {
                 return true;
             }
 
-            List<String> tooltip = itemStack.getTooltip(Minecraft.getMinecraft().thePlayer, false);
+            List<String> tooltip = ItemUtils.getItemLore(itemStack);
             for (String line : tooltip) {
                 if (TextUtils.stripColor(line).equals("Click to buyback!")) {
                     return true;
