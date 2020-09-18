@@ -160,8 +160,8 @@
     "dungeonDeathCounter": "地下城死亡计数"
   },
   "messages": {
-    "enchants": "Enchants",
-    "reforges": "Reforges",
+    "enchants": "附魔",
+    "reforges": "重铸",
     "dropConfirmation": "再次丢弃此物品以确认!",
     "magmaBossWarning": "⚠ 岩浆怪 Boss 已生成 ⚠",
     "fullInventory": "物品栏已满!",
