@@ -222,6 +222,7 @@
     "reforgeInclusionExample": "ex.: \"godly, strong\"",
     "reforgeExclusionExample": "ex.: \"odd, clean\"",
     "actionsLeft": "%number% Left",
+    "effectActive": "1 Effect Active",
     "effectsActive": "%number% Effects Active"
   },
   "discordStatus": {
@@ -302,8 +303,8 @@
     "young": "Young",
     "strong": "Strong",
     "superior": "Superior",
-    "recentDragons": "Recent Dragons:",
-    "dragonsSince": "Dragons Since:",
+    "recentDragons": "Dragões recentes:",
+    "dragonsSince": "Dragões desde:",
     "aspectOfTheDragons": "AOTD",
     "enderDragonPet": "Dragon Pet",
     "eyesPlaced": "Eyes Placed",
