@@ -160,8 +160,8 @@
     "dungeonDeathCounter": "地下城死亡计数"
   },
   "messages": {
-    "enchants": "Enchants",
-    "reforges": "Reforges",
+    "enchants": "附魔",
+    "reforges": "重铸",
     "dropConfirmation": "再次丢弃此物品以确认!",
     "magmaBossWarning": "⚠ 岩浆怪 Boss 已生成 ⚠",
     "fullInventory": "物品栏已满!",
@@ -222,6 +222,7 @@
     "reforgeInclusionExample": "例如: \"godly, strong\"",
     "reforgeExclusionExample": "例如: \"odd, clean\"",
     "actionsLeft": "剩余 %number%",
+    "effectActive": "1 Effect Active",
     "effectsActive": "%number% Effects Active"
   },
   "discordStatus": {
@@ -295,19 +296,19 @@
     "developerCopyNBT": "复制 NBT"
   },
   "dragonTracker": {
-    "protector": "Protector",
-    "old": "Old",
-    "wise": "Wise",
-    "unstable": "Unstable",
-    "young": "Young",
-    "strong": "Strong",
-    "superior": "Superior",
+    "protector": "守护",
+    "old": "远古",
+    "wise": "智慧",
+    "unstable": "失衡",
+    "young": "新生",
+    "strong": "力量",
+    "superior": "超级",
     "recentDragons": "Recent Dragons:",
     "dragonsSince": "Dragons Since:",
-    "aspectOfTheDragons": "AOTD",
+    "aspectOfTheDragons": "龙族之刃",
     "enderDragonPet": "Dragon Pet",
     "eyesPlaced": "Eyes Placed",
-    "never": "Never"
+    "never": "从不"
   },
   "slayerTracker": {
     "revenant": "Revenant Horror:",

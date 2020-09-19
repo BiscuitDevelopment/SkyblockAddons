@@ -222,6 +222,7 @@
     "reforgeInclusionExample": "e.g. \"godly, strong\"",
     "reforgeExclusionExample": "např. \"odd, clean\"",
     "actionsLeft": "%number% Left",
+    "effectActive": "1 Effect Active",
     "effectsActive": "%number% Effects Active"
   },
   "discordStatus": {

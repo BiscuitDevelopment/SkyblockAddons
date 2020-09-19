@@ -25,7 +25,7 @@
     "showBackpackPreview": "Mostrar Previsualización de la Mochila",
     "hideHealthBar": "Ocultar Barra de Vida",
     "fullMinionWarning": "Aviso de Minion Lleno",
-    "ignoreItemFrameClicks": "Ignorar Clicks en Marcos",
+    "ignoreItemFrameClicks": "Ignorar Clics en Marcos",
     "showOnlyWhenHoldingShift": "Mostrar Solamente Cuando se Mantenga Presionado Shift",
     "manaBar": "Barra de Maná",
     "manaText": "Número de Maná",
@@ -222,6 +222,7 @@
     "reforgeInclusionExample": "ej. \"godly, strong\"",
     "reforgeExclusionExample": "ej. \"odd, clean\"",
     "actionsLeft": "%number% Left",
+    "effectActive": "1 Effect Active",
     "effectsActive": "%number% Effects Active"
   },
   "discordStatus": {
