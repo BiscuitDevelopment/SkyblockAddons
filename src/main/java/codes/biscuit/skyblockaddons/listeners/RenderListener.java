@@ -1046,7 +1046,7 @@ public class RenderListener {
             renderItem(dungeonMilestone.getDungeonClass().getItem(), x, y);
             ChromaManager.renderingText(feature);
             main.getUtils().drawTextWithStyle(text, x + 18, y, color);
-            double amount = Double.parseDouble(dungeonMilestone.getValue().replace("§r§c", "").replace("§r§7", ""));
+            double amount = Double.parseDouble(dungeonMilestone.getValue());
             DecimalFormat formatter = new DecimalFormat("#,###");
             main.getUtils().drawTextWithStyle(formatter.format(amount), x + 18 + mc.fontRendererObj.getStringWidth(text) / 2F
                     - mc.fontRendererObj.getStringWidth(formatter.format(amount)) / 2F, y + 9, color);
