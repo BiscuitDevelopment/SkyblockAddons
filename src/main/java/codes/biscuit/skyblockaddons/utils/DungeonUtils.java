@@ -71,7 +71,6 @@ public class DungeonUtils {
         initialized = true;
 
         SkyblockAddons.getInstance().getUtils().setLocation(Location.DUNGEON_CATACOMBS);
-        SkyblockAddons.getInstance().getUtils().sendMessage("Identified the floor: " + floor);
     }
 
     /**
@@ -97,6 +96,15 @@ public class DungeonUtils {
      */
     public boolean requireReset(String serverID) {
         return initialized && lastServerId != null && !lastServerId.equals(serverID);
+    }
+
+    /**
+     * Check if the dungeon game didn't start or the players are getting ready.
+     *
+     * @return If the player is in dungeon game but in the lobby state (Aka the game didn't start yet).
+     */
+    public boolean isInLobby() {
+        return initialized && SkyblockAddons.getInstance().getUtils().getLocation() == Location.DUNGEON_CATACOMBS;
     }
 
     /**
