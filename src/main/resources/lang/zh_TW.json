@@ -157,7 +157,8 @@
     "hideWhenNotInCrypts": "於不位於 Crypts / 非進行 Revenant 任務時隱藏",
     "hideWhenNotInSpidersDen": "於不位於 Spider's Den / 非進行 Tarantula 任務時隱藏",
     "hideWhenNotInCastle": "Hide When Not in the Castle/Doing Sven Quest",
-    "dungeonDeathCounter": "Dungeon 死亡計數器"
+    "dungeonDeathCounter": "Dungeon 死亡計數器",
+    "showPersonalCompactorPreview": "Show Personal Compactor Preview"
   },
   "messages": {
     "enchants": "Enchants",
