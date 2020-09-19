@@ -4,7 +4,7 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.*;
 import codes.biscuit.skyblockaddons.events.SkyblockJoinedEvent;
 import codes.biscuit.skyblockaddons.events.SkyblockLeftEvent;
-import codes.biscuit.skyblockaddons.features.backpacks.Backpack;
+import codes.biscuit.skyblockaddons.features.backpacks.ContainerPreview;
 import codes.biscuit.skyblockaddons.features.dungeonmap.MapMarker;
 import codes.biscuit.skyblockaddons.features.itemdrops.ItemDropChecker;
 import codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui;
@@ -118,7 +118,7 @@ public class Utils {
     /** List of enchantment substrings that the player doesn't want to match. */
     private List<String> enchantmentExclusions = new LinkedList<>();
 
-    private Backpack backpackToPreview;
+    private ContainerPreview containerPreviewToRender;
 
     /** Whether the player is on skyblock. */
     private boolean onSkyblock;

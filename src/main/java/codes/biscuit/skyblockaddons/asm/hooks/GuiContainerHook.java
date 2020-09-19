@@ -3,7 +3,7 @@ package codes.biscuit.skyblockaddons.asm.hooks;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.asm.utils.ReturnValue;
 import codes.biscuit.skyblockaddons.core.Feature;
-import codes.biscuit.skyblockaddons.features.backpacks.Backpack;
+import codes.biscuit.skyblockaddons.features.backpacks.ContainerPreview;
 import codes.biscuit.skyblockaddons.features.backpacks.BackpackColor;
 import codes.biscuit.skyblockaddons.features.craftingpatterns.CraftingPattern;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
@@ -41,7 +41,7 @@ public class GuiContainerHook {
         SkyblockAddons main = SkyblockAddons.getInstance();
         if (keyCode == 1 || keyCode == Minecraft.getMinecraft().gameSettings.keyBindInventory.getKeyCode()) {
             freezeBackpack = false;
-            main.getUtils().setBackpackToPreview(null);
+            main.getUtils().setContainerPreviewToRender(null);
         }
         if (keyCode == main.getFreezeBackpackKey().getKeyCode() && freezeBackpack &&
                 System.currentTimeMillis() - GuiScreenHook.getLastBackpackFreezeKey() > 500) {
@@ -52,13 +52,13 @@ public class GuiContainerHook {
 
     public static void drawBackpacks(GuiContainer guiContainer, int mouseX, int mouseY, FontRenderer fontRendererObj) {
         SkyblockAddons main = SkyblockAddons.getInstance();
-        Backpack backpack = main.getUtils().getBackpackToPreview();
+        ContainerPreview containerPreview = main.getUtils().getContainerPreviewToRender();
         Minecraft mc = Minecraft.getMinecraft();
-        if (backpack != null) {
-            int x = backpack.getX();
-            int y = backpack.getY();
+        if (containerPreview != null) {
+            int x = containerPreview.getX();
+            int y = containerPreview.getY();
 
-            ItemStack[] items = backpack.getItems();
+            ItemStack[] items = containerPreview.getItems();
             int length = items.length;
 
             int screenHeight = guiContainer.height;
@@ -74,9 +74,11 @@ public class GuiContainerHook {
                 GlStateManager.translate(0,0,300);
                 int textColor = 4210752;
                 if (main.getConfigValues().isEnabled(Feature.MAKE_BACKPACK_INVENTORIES_COLORED)) {
-                    BackpackColor color = backpack.getBackpackColor();
-                    GlStateManager.color(color.getR(), color.getG(), color.getB(), 1);
-                    textColor = color.getInventoryTextColor();
+                    BackpackColor color = containerPreview.getBackpackColor();
+                    if (color != null) {
+                        GlStateManager.color(color.getR(), color.getG(), color.getB(), 1);
+                        textColor = color.getInventoryTextColor();
+                    }
                 }
 
                 int totalWidth = 176;
@@ -90,7 +92,7 @@ public class GuiContainerHook {
 
                 guiContainer.drawTexturedModalRect(x, y, 0, 0, 176, rows * 18 + 17);
                 guiContainer.drawTexturedModalRect(x, y + rows * 18 + 17, 0, 215, 176, 7);
-                mc.fontRendererObj.drawString(backpack.getBackpackName(), x+8, y+6, textColor);
+                mc.fontRendererObj.drawString(containerPreview.getName(), x+8, y+6, textColor);
                 GlStateManager.popMatrix();
                 GlStateManager.enableLighting();
 
@@ -158,7 +160,7 @@ public class GuiContainerHook {
                 guiContainer.drawHoveringText(tooltipItem.getTooltip(mc.thePlayer, mc.gameSettings.advancedItemTooltips), mouseX, mouseY);
             }
             if (!freezeBackpack) {
-                main.getUtils().setBackpackToPreview(null);
+                main.getUtils().setContainerPreviewToRender(null);
             }
             GlStateManager.enableLighting();
             GlStateManager.enableDepth();

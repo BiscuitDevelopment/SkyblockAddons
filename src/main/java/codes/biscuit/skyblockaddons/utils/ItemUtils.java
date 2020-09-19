@@ -11,7 +11,6 @@ import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.util.Constants;
 import org.apache.commons.lang3.text.WordUtils;
 
@@ -278,77 +277,76 @@ public class ItemUtils {
     }
 
     /**
-     * Returns a {@link ItemStack[]} of Items from the ExtraAttributes Skyblock data
+     * Returns the contents of a personal compactor using the data from an ItemStack
      *
-     * @param extraAttributes the Skyblock Data to check
-     * @return A {@link ItemStack[]} or {@code null} if it isn't a Personal Compactor
+     * @param compactor the ItemStack to check
+     * @return an {@link ItemStack[]} or {@code null} if it isn't a personal compactor
      */
-    public static ItemStack[] getPersonalCompactorContents(NBTTagCompound extraAttributes) {
+    public static ItemStack[] getPersonalCompactorContents(ItemStack compactor) {
+        String skyblockID = ItemUtils.getSkyBlockItemID(compactor);
+
+        if (skyblockID == null || !skyblockID.startsWith("PERSONAL_COMPACTOR")) {
+            return null;
+        }
+
+        NBTTagCompound extraAttributes = ItemUtils.getExtraAttributes(compactor);
+
         if (extraAttributes != null) {
-            String itemId = extraAttributes.getString("id");
+            ItemStack[] items = new ItemStack[9];
 
-            if (!itemId.startsWith("PERSONAL_COMPACTOR")) {
-                return null;
-            }
-
-            ItemStack[] items;
-            if (itemId.endsWith("4000"))
-                items = new ItemStack[1];
-            else if (itemId.endsWith("5000"))
-                items = new ItemStack[3];
-            else if (itemId.endsWith("6000"))
-                items = new ItemStack[7];
-            else
-                items = new ItemStack[0];
-
-            for (int i = 0; i < 7; i++) {
-                if (!extraAttributes.hasKey("personal_compact_" + i))
+            for (int i = 0; i < items.length; i++) {
+                if (!extraAttributes.hasKey("personal_compact_" + i)) {
                     continue;
+                }
+                String itemName = extraAttributes.getString("personal_compact_" + i);
 
-                String itemname = extraAttributes.getString("personal_compact_" + i);
-                itemname = itemname.replaceFirst("ENCHANTED_", "");
-                itemname = itemname.replaceFirst("RAW_", "");
-                itemname = itemname.toLowerCase();
-                if (itemname.contains("log")) {
-                    ItemStack is;
-                    switch (itemname) {
+                boolean enchanted = itemName.contains("ENCHANTED");
+
+                itemName = itemName.replaceFirst("ENCHANTED_", "")
+                        .replaceFirst("RAW_", "").toLowerCase();
+
+                ItemStack itemStack = null;
+                if (itemName.contains("log")) {
+                    switch (itemName) {
                         case "oak_log":
-                            is = new ItemStack(Blocks.log);
+                            itemStack = new ItemStack(Blocks.log);
                             break;
                         case "birch_log":
-                            is = new ItemStack(Blocks.log, 1, 2);
+                            itemStack = new ItemStack(Blocks.log, 1, 2);
                             break;
                         case "spruce_log":
-                            is = new ItemStack(Blocks.log, 1, 1);
+                            itemStack = new ItemStack(Blocks.log, 1, 1);
                             break;
                         case "jungle_log":
-                            is = new ItemStack(Blocks.log, 1, 3);
+                            itemStack = new ItemStack(Blocks.log, 1, 3);
                             break;
                         case "acacia_log":
-                            is = new ItemStack(Blocks.log2);
+                            itemStack = new ItemStack(Blocks.log2);
                             break;
                         case "dark_oak_log":
-                            is = new ItemStack(Blocks.log2, 1, 1);
+                            itemStack = new ItemStack(Blocks.log2, 1, 1);
                             break;
-                        default:
-                            continue;
                     }
+                }
 
-                    is.addEnchantment(Enchantment.protection, 1);
-                    items[i] = is;
-                    continue;
+                if (itemStack == null) {
+                    Item item = Item.getByNameOrId(itemName);
+                    if (item == null) {
+                        Block block = Block.getBlockFromName(itemName);
+                        if (block != null) {
+                            item = Item.getItemFromBlock(block);
+                        }
+                    }
+                    if (item != null) {
+                        itemStack = new ItemStack(item);
+                    }
                 }
-                Item it = null;
-                if (Item.itemRegistry.getObject(new ResourceLocation(itemname)) != null) {
-                    it = (Item.itemRegistry.getObject(new ResourceLocation(itemname)));
-                } else if (Block.blockRegistry.getObject(new ResourceLocation(itemname)) != null) {
-                    it = (Item.getItemFromBlock(Block.blockRegistry.getObject(new ResourceLocation(itemname))));
+
+                if (itemStack != null && enchanted) {
+                    itemStack.addEnchantment(Enchantment.protection, 1);
                 }
-                if (it != null) {
-                    ItemStack is = new ItemStack(it);
-                    is.addEnchantment(Enchantment.protection, 1);
-                    items[i] = is;
-                }
+
+                items[i] = itemStack;
             }
 
             return items;

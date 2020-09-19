@@ -8,7 +8,7 @@ import codes.biscuit.skyblockaddons.events.DungeonPlayerReviveEvent;
 import codes.biscuit.skyblockaddons.events.SkyblockPlayerDeathEvent;
 import codes.biscuit.skyblockaddons.features.BaitManager;
 import codes.biscuit.skyblockaddons.features.EndstoneProtectorManager;
-import codes.biscuit.skyblockaddons.features.backpacks.Backpack;
+import codes.biscuit.skyblockaddons.features.backpacks.ContainerPreview;
 import codes.biscuit.skyblockaddons.features.backpacks.BackpackManager;
 import codes.biscuit.skyblockaddons.features.dragontracker.DragonTracker;
 import codes.biscuit.skyblockaddons.features.cooldowns.CooldownManager;
@@ -404,9 +404,9 @@ public class PlayerListener {
         if (main.getUtils().isOnSkyblock() && heldItem != null) {
             // Change the GUI background color when a backpack is opened to match the backpack's color.
             if (heldItem.getItem() == Items.skull) {
-                Backpack backpack = BackpackManager.getFromItem(heldItem);
-                if (backpack != null) {
-                    BackpackManager.setOpenedBackpackColor(backpack.getBackpackColor());
+                ContainerPreview containerPreview = BackpackManager.getFromItem(heldItem);
+                if (containerPreview != null && containerPreview.getBackpackColor() != null) {
+                    BackpackManager.setOpenedBackpackColor(containerPreview.getBackpackColor());
                 }
             } else if (heldItem.getItem().equals(Items.fishing_rod)
                     && (e.action == PlayerInteractEvent.Action.RIGHT_CLICK_BLOCK || e.action == PlayerInteractEvent.Action.RIGHT_CLICK_AIR)) {
