@@ -3,13 +3,11 @@ package codes.biscuit.skyblockaddons.asm.hooks;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.asm.utils.ReturnValue;
 import codes.biscuit.skyblockaddons.core.Feature;
-import codes.biscuit.skyblockaddons.features.backpacks.Backpack;
+import codes.biscuit.skyblockaddons.features.backpacks.ContainerPreview;
 import codes.biscuit.skyblockaddons.features.backpacks.BackpackColor;
 import codes.biscuit.skyblockaddons.features.craftingpatterns.CraftingPattern;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
-import codes.biscuit.skyblockaddons.utils.ItemUtils;
-import codes.biscuit.skyblockaddons.utils.objects.FloatPairString;
 import lombok.Getter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
@@ -25,21 +23,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
 import javax.lang.model.type.NullType;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-import java.util.regex.Pattern;
 
 public class GuiContainerHook {
 
-    private final static ResourceLocation LOCK = new ResourceLocation("skyblockaddons", "lock.png");
-    private final static ResourceLocation CHEST_GUI_TEXTURE = new ResourceLocation("textures/gui/container/generic_54.png");
-    private final static int OVERLAY_RED = ColorCode.RED.getColor(127).getRGB();
-    private final static int OVERLAY_GREEN = ColorCode.GREEN.getColor(127).getRGB();
-
-    private static FloatPairString reforgeToRender = null;
-    private static Set<FloatPairString> enchantsToRender = new HashSet<>();
+    private static final ResourceLocation LOCK = new ResourceLocation("skyblockaddons", "lock.png");
+    private static final ResourceLocation CHEST_GUI_TEXTURE = new ResourceLocation("textures/gui/container/generic_54.png");
+    private static final int OVERLAY_RED = ColorCode.RED.getColor(127).getRGB();
+    private static final int OVERLAY_GREEN = ColorCode.GREEN.getColor(127).getRGB();
 
     /**
      * This controls whether or not the backpack preview is frozen- allowing you
@@ -47,83 +37,11 @@ public class GuiContainerHook {
      */
     @Getter private static boolean freezeBackpack;
 
-    public static void showEnchantments(Slot slotIn, int x, int y, ItemStack item) {
-        SkyblockAddons main = SkyblockAddons.getInstance();
-        if (main.getConfigValues().isEnabled(Feature.SHOW_ENCHANTMENTS_REFORGES)) {
-            Minecraft mc = Minecraft.getMinecraft();
-            if (item != null && item.hasDisplayName()) {
-                if (item.getDisplayName().startsWith(ColorCode.GREEN + "Enchant Item")) {
-                    List<String> toolip = item.getTooltip(mc.thePlayer, false);
-                    if (toolip.size() > 2) {
-                        String enchantLine = toolip.get(2);
-                        String[] lines = enchantLine.split(Pattern.quote("* "));
-                        if (lines.length >= 2) {
-                            String toMatch = lines[1];
-                            String enchant;
-                            if (!main.getUtils().getEnchantmentMatches().isEmpty() &&
-                                    main.getUtils().enchantReforgeMatches(toMatch)) {
-                                enchant = ColorCode.RED + toMatch;
-                            } else {
-                                enchant = ColorCode.YELLOW + toMatch;
-                            }
-                            float yOff;
-                            if (slotIn.slotNumber == 29 || slotIn.slotNumber == 33) {
-                                yOff = 26;
-                            } else {
-                                yOff = 36;
-                            }
-                            float scaleMultiplier = 1 / 0.75F;
-                            float halfStringWidth = mc.fontRendererObj.getStringWidth(enchant) / 2F;
-                            x += 8; // to center it
-                            enchantsToRender.add(new FloatPairString(x * scaleMultiplier - halfStringWidth, y * scaleMultiplier + yOff, enchant));
-                        }
-                    }
-                } else if ("Reforge Item".equals(slotIn.inventory.getDisplayName().getUnformattedText()) && slotIn.slotNumber == 13) {
-                    String reforge = ItemUtils.getReforge(item);
-                    if (reforge != null) {
-                        if (!main.getUtils().getEnchantmentMatches().isEmpty() &&
-                                main.getUtils().enchantReforgeMatches(reforge)) {
-                            reforge = ColorCode.RED + reforge;
-                        } else {
-                            reforge = ColorCode.YELLOW + reforge;
-                        }
-                        x -= 28;
-                        y += 22;
-                        float halfStringWidth = mc.fontRendererObj.getStringWidth(reforge) / 2F;
-                        reforgeToRender = new FloatPairString(x - halfStringWidth, y, reforge);
-                    }
-                }
-            }
-            if (slotIn.slotNumber == 53) {
-                GlStateManager.pushMatrix();
-
-                GlStateManager.disableLighting();
-                GlStateManager.disableDepth();
-                GlStateManager.disableBlend();
-                if (reforgeToRender != null) {
-                    mc.fontRendererObj.drawString(reforgeToRender.getEnchant(), reforgeToRender.getX(), reforgeToRender.getY(), ColorCode.WHITE.getRGB(), true);
-                    reforgeToRender = null;
-                }
-                GlStateManager.scale(0.75, 0.75, 1);
-                Iterator<FloatPairString> enchantPairIterator = enchantsToRender.iterator();
-                while (enchantPairIterator.hasNext()) {
-                    FloatPairString enchant = enchantPairIterator.next();
-                    mc.fontRendererObj.drawString(enchant.getEnchant(), enchant.getX(), enchant.getY(), ColorCode.WHITE.getRGB(), true);
-                    enchantPairIterator.remove();
-                }
-                GlStateManager.enableLighting();
-                GlStateManager.enableDepth();
-
-                GlStateManager.popMatrix();
-            }
-        }
-    }
-
     public static void keyTyped(int keyCode) {
         SkyblockAddons main = SkyblockAddons.getInstance();
         if (keyCode == 1 || keyCode == Minecraft.getMinecraft().gameSettings.keyBindInventory.getKeyCode()) {
             freezeBackpack = false;
-            main.getUtils().setBackpackToPreview(null);
+            main.getUtils().setContainerPreviewToRender(null);
         }
         if (keyCode == main.getFreezeBackpackKey().getKeyCode() && freezeBackpack &&
                 System.currentTimeMillis() - GuiScreenHook.getLastBackpackFreezeKey() > 500) {
@@ -134,14 +52,20 @@ public class GuiContainerHook {
 
     public static void drawBackpacks(GuiContainer guiContainer, int mouseX, int mouseY, FontRenderer fontRendererObj) {
         SkyblockAddons main = SkyblockAddons.getInstance();
-        Backpack backpack = main.getUtils().getBackpackToPreview();
+        ContainerPreview containerPreview = main.getUtils().getContainerPreviewToRender();
         Minecraft mc = Minecraft.getMinecraft();
-        if (backpack != null) {
-            int x = backpack.getX();
-            int y = backpack.getY();
-            ItemStack[] items = backpack.getItems();
+        if (containerPreview != null) {
+            int x = containerPreview.getX();
+            int y = containerPreview.getY();
+
+            ItemStack[] items = containerPreview.getItems();
             int length = items.length;
+
+            int screenHeight = guiContainer.height;
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+
+            ItemStack tooltipItem = null;
+
             if (main.getConfigValues().getBackpackStyle() == EnumUtils.BackpackStyle.GUI) {
                 mc.getTextureManager().bindTexture(CHEST_GUI_TEXTURE);
                 int rows = length/9;
@@ -150,20 +74,31 @@ public class GuiContainerHook {
                 GlStateManager.translate(0,0,300);
                 int textColor = 4210752;
                 if (main.getConfigValues().isEnabled(Feature.MAKE_BACKPACK_INVENTORIES_COLORED)) {
-                    BackpackColor color = backpack.getBackpackColor();
-                    GlStateManager.color(color.getR(), color.getG(), color.getB(), 1);
-                    textColor = color.getInventoryTextColor();
+                    BackpackColor color = containerPreview.getBackpackColor();
+                    if (color != null) {
+                        GlStateManager.color(color.getR(), color.getG(), color.getB(), 1);
+                        textColor = color.getInventoryTextColor();
+                    }
                 }
+
+                int totalWidth = 176;
+                if (x + totalWidth > guiContainer.width) {
+                    x -= totalWidth;
+                }
+                int totalHeight = rows * 18 + 17 + 7;
+                if (y + totalHeight > screenHeight) {
+                    y = screenHeight - totalHeight;
+                }
+
                 guiContainer.drawTexturedModalRect(x, y, 0, 0, 176, rows * 18 + 17);
                 guiContainer.drawTexturedModalRect(x, y + rows * 18 + 17, 0, 215, 176, 7);
-                mc.fontRendererObj.drawString(backpack.getBackpackName(), x+8, y+6, textColor);
+                mc.fontRendererObj.drawString(containerPreview.getName(), x+8, y+6, textColor);
                 GlStateManager.popMatrix();
                 GlStateManager.enableLighting();
 
                 RenderHelper.enableGUIStandardItemLighting();
                 GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
                 GlStateManager.enableRescaleNormal();
-                ItemStack toRenderOverlay = null;
                 for (int i = 0; i < length; i++) {
                     ItemStack item = items[i];
                     if (item != null) {
@@ -174,17 +109,24 @@ public class GuiContainerHook {
                         renderItem.zLevel = 200;
                         renderItem.renderItemAndEffectIntoGUI(item, itemX, itemY);
                         renderItem.renderItemOverlayIntoGUI(mc.fontRendererObj, item, itemX, itemY, null);
-                        if (freezeBackpack && mouseX > itemX && mouseX < itemX+16 && mouseY > itemY && mouseY < itemY+16) {
-                            toRenderOverlay = item;
-                        }
                         guiContainer.zLevel = 0;
                         renderItem.zLevel = 0;
+
+                        if (freezeBackpack && mouseX > itemX && mouseX < itemX+16 && mouseY > itemY && mouseY < itemY+16) {
+                            tooltipItem = item;
+                        }
                     }
                 }
-                if (toRenderOverlay != null) {
-                    guiContainer.drawHoveringText(toRenderOverlay.getTooltip(null, mc.gameSettings.advancedItemTooltips), mouseX, mouseY);
-                }
             } else {
+                int totalWidth = (16 * 9) + 3;
+                if (x + totalWidth > guiContainer.width) {
+                    x -= totalWidth;
+                }
+                int totalHeight = (16 * (length / 9)) + 3;
+                if (y + totalHeight > screenHeight) {
+                    y = screenHeight - totalHeight;
+                }
+
                 GlStateManager.disableLighting();
                 GlStateManager.pushMatrix();
                 GlStateManager.translate(0,0, 300);
@@ -207,11 +149,18 @@ public class GuiContainerHook {
                         renderItem.renderItemOverlayIntoGUI(mc.fontRendererObj, item, itemX, itemY, null);
                         guiContainer.zLevel = 0;
                         renderItem.zLevel = 0;
+
+                        if (freezeBackpack && mouseX > itemX && mouseX < itemX+16 && mouseY > itemY && mouseY < itemY+16) {
+                            tooltipItem = item;
+                        }
                     }
                 }
             }
+            if (tooltipItem != null) {
+                guiContainer.drawHoveringText(tooltipItem.getTooltip(mc.thePlayer, mc.gameSettings.advancedItemTooltips), mouseX, mouseY);
+            }
             if (!freezeBackpack) {
-                main.getUtils().setBackpackToPreview(null);
+                main.getUtils().setContainerPreviewToRender(null);
             }
             GlStateManager.enableLighting();
             GlStateManager.enableDepth();

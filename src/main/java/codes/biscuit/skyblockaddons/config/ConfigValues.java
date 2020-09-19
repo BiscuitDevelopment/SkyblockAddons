@@ -7,6 +7,7 @@ import codes.biscuit.skyblockaddons.features.discordrpc.DiscordStatus;
 import codes.biscuit.skyblockaddons.misc.ChromaManager;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
+import codes.biscuit.skyblockaddons.utils.Utils;
 import codes.biscuit.skyblockaddons.utils.objects.FloatPair;
 import codes.biscuit.skyblockaddons.utils.objects.IntPair;
 import com.google.gson.*;
@@ -39,6 +40,12 @@ public class ConfigValues {
 
     private SkyblockAddons main = SkyblockAddons.getInstance();
 
+    private JsonObject defaultValues = new JsonObject();
+    private Map<Feature, FloatPair> defaultCoordinates = new EnumMap<>(Feature.class);
+    private Map<Feature, EnumUtils.AnchorPoint> defaultAnchorPoints = new EnumMap<>(Feature.class);
+    private Map<Feature, Float> defaultGuiScales = new EnumMap<>(Feature.class);
+    private Map<Feature, IntPair> defaultBarSizes = new EnumMap<>(Feature.class);
+
     private File settingsConfigFile;
     private JsonObject settingsConfig = new JsonObject();
     @Getter @Setter private JsonObject languageConfig = new JsonObject();
@@ -70,6 +77,18 @@ public class ConfigValues {
     }
 
     public void loadValues() {
+        try {
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream("default.json")));
+            defaultValues = Utils.getGson().fromJson(bufferedReader, JsonObject.class);
+
+            deserializeFeatureFloatCoordsMapFromID(defaultValues, defaultCoordinates, "coordinates");
+            deserializeEnumEnumMapFromIDS(defaultValues, defaultAnchorPoints, "anchorPoints", Feature.class, EnumUtils.AnchorPoint.class);
+            deserializeEnumNumberMapFromID(defaultValues, defaultGuiScales, "guiScales", Feature.class, float.class);
+            deserializeFeatureIntCoordsMapFromID(defaultValues, defaultBarSizes, "barSizes");
+        } catch (Exception ex) {
+            main.getLogger().error("Failed to load default config!");
+        }
+
         if (settingsConfigFile.exists()) {
             try (FileReader reader = new FileReader(settingsConfigFile)) {
                 JsonElement fileElement = new JsonParser().parse(reader);
@@ -80,7 +99,7 @@ public class ConfigValues {
                 settingsConfig = fileElement.getAsJsonObject();
             } catch (JsonParseException | IllegalStateException | IOException ex) {
                 ex.printStackTrace();
-                System.out.println("SkyblockAddons: There was an error loading the config. Resetting all settings to default.");
+                main.getLogger().error("There was an error loading the config. Resetting all settings to default.");
                 addDefaultsAndSave();
                 return;
             }
@@ -424,11 +443,17 @@ public class ConfigValues {
         }
     }
 
+
     @SuppressWarnings("unchecked")
     private <E extends Enum<?>, F extends Enum<?>> void deserializeEnumEnumMapFromIDS(Map<E, F> map, String path, Class<E> keyClass, Class<F> valueClass) {
+        deserializeEnumEnumMapFromIDS(settingsConfig, map, path, keyClass, valueClass);
+    }
+
+    @SuppressWarnings("unchecked")
+    private <E extends Enum<?>, F extends Enum<?>> void deserializeEnumEnumMapFromIDS(JsonObject jsonObject, Map<E, F> map, String path, Class<E> keyClass, Class<F> valueClass) {
         try {
-            if (settingsConfig.has(path)) {
-                for (Map.Entry<String, JsonElement> element : settingsConfig.getAsJsonObject(path).entrySet()) {
+            if (jsonObject.has(path)) {
+                for (Map.Entry<String, JsonElement> element : jsonObject.getAsJsonObject(path).entrySet()) {
 
                     Method fromId = keyClass.getDeclaredMethod("fromId", int.class);
                     E key = (E)fromId.invoke(null, Integer.parseInt(element.getKey()));
@@ -449,9 +474,14 @@ public class ConfigValues {
 
     @SuppressWarnings("unchecked")
     private <E extends Enum<?>, N extends Number> void deserializeEnumNumberMapFromID(Map<E, N> map, String path, Class<E> keyClass, Class<N> numberClass) {
+        deserializeEnumNumberMapFromID(settingsConfig, map, path, keyClass, numberClass);
+    }
+
+    @SuppressWarnings("unchecked")
+    private <E extends Enum<?>, N extends Number> void deserializeEnumNumberMapFromID(JsonObject jsonObject, Map<E, N> map, String path, Class<E> keyClass, Class<N> numberClass) {
         try {
-            if (settingsConfig.has(path)) {
-                for (Map.Entry<String, JsonElement> element : settingsConfig.getAsJsonObject(path).entrySet()) {
+            if (jsonObject.has(path)) {
+                for (Map.Entry<String, JsonElement> element : jsonObject.getAsJsonObject(path).entrySet()) {
                     Method fromId = keyClass.getDeclaredMethod("fromId", int.class);
                     E key = (E)fromId.invoke(null, Integer.parseInt(element.getKey()));
                     if (key != null) {
@@ -511,9 +541,13 @@ public class ConfigValues {
     }
 
     private void deserializeFeatureFloatCoordsMapFromID(Map<Feature, FloatPair> map, String path) {
+        deserializeFeatureFloatCoordsMapFromID(settingsConfig, map, path);
+    }
+
+    private void deserializeFeatureFloatCoordsMapFromID(JsonObject jsonObject, Map<Feature, FloatPair> map, String path) {
         try {
-            if (settingsConfig.has(path)) {
-                for (Map.Entry<String, JsonElement> element : settingsConfig.getAsJsonObject(path).entrySet()) {
+            if (jsonObject.has(path)) {
+                for (Map.Entry<String, JsonElement> element : jsonObject.getAsJsonObject(path).entrySet()) {
                     Feature feature = Feature.fromId(Integer.parseInt(element.getKey()));
                     if (feature != null) {
                         JsonArray coords = element.getValue().getAsJsonArray();
@@ -528,9 +562,13 @@ public class ConfigValues {
     }
 
     private void deserializeFeatureIntCoordsMapFromID(Map<Feature, IntPair> map, String path) {
+        deserializeFeatureIntCoordsMapFromID(settingsConfig, map, path);
+    }
+
+    private void deserializeFeatureIntCoordsMapFromID(JsonObject jsonObject, Map<Feature, IntPair> map, String path) {
         try {
-            if (settingsConfig.has(path)) {
-                for (Map.Entry<String, JsonElement> element : settingsConfig.getAsJsonObject(path).entrySet()) {
+            if (jsonObject.has(path)) {
+                for (Map.Entry<String, JsonElement> element : jsonObject.getAsJsonObject(path).entrySet()) {
                     Feature feature = Feature.fromId(Integer.parseInt(element.getKey()));
                     if (feature != null) {
                         JsonArray coords = element.getValue().getAsJsonArray();
@@ -545,36 +583,39 @@ public class ConfigValues {
     }
 
     public void setAllCoordinatesToDefault() {
-        setAnchorPointsToDefault();
-        putDefaultBarSizes();
-        guiScales.clear();
-        for (Feature feature : Feature.getGuiFeatures()) {
-            putDefaultCoordinates(feature);
+        if (defaultValues == null) {
+            return;
         }
-    }
 
-    private void setAnchorPointsToDefault() {
-        for (Feature feature : Feature.getGuiFeatures()) {
-            EnumUtils.AnchorPoint anchorPoint = feature.getAnchorPoint();
-            if (anchorPoint != null) {
-                anchorPoints.put(feature, anchorPoint);
-            }
+        coordinates.clear();
+        for (Map.Entry<Feature, FloatPair> entry : defaultCoordinates.entrySet()) {
+            coordinates.put(entry.getKey(), entry.getValue().cloneCoords());
         }
+
+        anchorPoints = new HashMap<>(defaultAnchorPoints);
+
+        guiScales = new HashMap<>(defaultGuiScales);
     }
 
     private void putDefaultCoordinates(Feature feature) {
-        FloatPair coords = feature.getDefaultCoordinates();
+        if (defaultValues == null) {
+            return;
+        }
+
+        FloatPair coords = defaultCoordinates.get(feature);
         if (coords != null) {
             coordinates.put(feature, coords);
         }
     }
 
-    private void putDefaultBarSizes() {
-        for (Feature feature : Feature.getGuiFeatures()) {
-            IntPair size = feature.getDefaultBarSize();
-            if (size != null) {
-                barSizes.put(feature, size);
-            }
+    public void putDefaultBarSizes() {
+        if (defaultValues == null) {
+            return;
+        }
+
+        barSizes.clear();
+        for (Map.Entry<Feature, IntPair> entry : defaultBarSizes.entrySet()) {
+            barSizes.put(entry.getKey(), entry.getValue().cloneCoords());
         }
     }
 
@@ -678,10 +719,14 @@ public class ConfigValues {
     }
 
     private boolean featureCoordinatesAreDefault(Feature feature) {
-        if (feature.getDefaultCoordinates() == null) return true;
-        if (!coordinates.containsKey(feature)) return true;
+        if (!defaultCoordinates.containsKey(feature)) {
+            return true;
+        }
+        if (!coordinates.containsKey(feature)) {
+            return true;
+        }
 
-        return coordinates.get(feature).equals(feature.getDefaultCoordinates());
+        return coordinates.get(feature).equals(defaultCoordinates.get(feature));
     }
 
     public void setColor(Feature feature, int color) {
@@ -699,8 +744,7 @@ public class ConfigValues {
     }
 
     public IntPair getSizes(Feature feature) {
-        IntPair defaultSize = feature.getDefaultBarSize();
-        return barSizes.getOrDefault(feature, defaultSize != null ? defaultSize : new IntPair(7,1));
+        return barSizes.getOrDefault(feature, defaultBarSizes.containsKey(feature) ? defaultBarSizes.get(feature).cloneCoords() : new IntPair(7,1));
     }
 
     public void setSizeX(Feature feature, int x) {
@@ -780,12 +824,7 @@ public class ConfigValues {
     }
 
     public EnumUtils.AnchorPoint getAnchorPoint(Feature feature) {
-        EnumUtils.AnchorPoint defaultPoint = feature.getAnchorPoint();
-        if (defaultPoint == null) {
-            defaultPoint = EnumUtils.AnchorPoint.BOTTOM_MIDDLE;
-        }
-
-        return anchorPoints.getOrDefault(feature, defaultPoint);
+        return anchorPoints.getOrDefault(feature, defaultAnchorPoints.getOrDefault(feature, EnumUtils.AnchorPoint.BOTTOM_MIDDLE));
     }
 
     public Set<Integer> getLockedSlots() {

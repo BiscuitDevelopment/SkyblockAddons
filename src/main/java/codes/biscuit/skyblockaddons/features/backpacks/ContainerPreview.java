@@ -5,21 +5,22 @@ import lombok.Setter;
 import net.minecraft.item.ItemStack;
 
 @Getter
-public class Backpack {
+public class ContainerPreview {
 
     @Setter private int x;
     @Setter private int y;
     private ItemStack[] items;
-    private String backpackName;
+    private String name;
+
     private BackpackColor backpackColor;
 
-    public Backpack(ItemStack[] items, String backpackName, BackpackColor backpackColor) {
+    public ContainerPreview(ItemStack[] items, String name, BackpackColor backpackColor) {
         this.items = items;
-        this.backpackName = backpackName;
+        this.name = name;
         this.backpackColor = backpackColor;
     }
 
-    public Backpack(ItemStack[] items, String backpackName, BackpackColor backpackColor, int x, int y) {
+    public ContainerPreview(ItemStack[] items, String backpackName, BackpackColor backpackColor, int x, int y) {
         this(items,backpackName,backpackColor);
         this.x = x;
         this.y = y;

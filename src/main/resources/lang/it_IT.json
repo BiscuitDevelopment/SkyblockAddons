@@ -47,7 +47,7 @@
     "lockSlots": "Permetti di bloccare gli slot",
     "lockSlot": "Blocca Slot",
     "dontResetCursorInventory": "Non resettare il cursore tra gli inventari",
-    "summoningEyeAlert": "Avviso di acquisizione di un Occhio dell'evocazione",
+    "summoningEyeAlert": "Avviso Ottenimento di un Summoning Eye",
     "makeEnderchestsInEndGreen": "Cambia il colore dell’enderchest nell’End",
     "changeColor": "Cambia colore",
     "showInOtherGames": "Mostra in Altri Giochi",
@@ -86,7 +86,7 @@
       "compact": "Compatto"
     },
     "disableMagicalSoupMessage": "Disabilita i messaggi della zuppa magica ai funghi",
-    "zealotCounter": "Contatore di Zealot - Conteggio dall’ultimo occhio",
+    "zealotCounter": "Contatore di Zealot - Conteggio dall'ultimo Summoning Eye",
     "tickerChargesDisplay": "Mostra le cariche",
     "tab": {
       "generalSettings": "Impostazioni Generali"
@@ -146,9 +146,22 @@
     "showDungeonMilestone": "Mostra traguardo del dungeon",
     "dungeonsCollectedEssencesDisplay": "Mostra Dungeon Essences Collezionate",
     "stopBonzoStaffSounds": "Blocca i suoni della Bonzo’s Staff",
-    "showRarityUpgraded": "Mostra se la Rarità degli Oggetti è stata Potenziata"
+    "showRarityUpgraded": "Mostra se la Rarità degli Oggetti è stata Potenziata",
+    "revenantSlayerTracker": "Slayer Tracker - Revenant/Zombie",
+    "tarantulaSlayerTracker": "Slayer Tracker - Tarantula/Spider",
+    "svenSlayerTracker": "Slayer Tracker - Sven/Wolf",
+    "textMode": "Text Mode",
+    "dragonsNestOnly": "Only Show in the Dragon's Nest",
+    "dragonStatsTracker": "Dragon Tracker",
+    "expanded": "Expanded",
+    "hideWhenNotInCrypts": "Hide When Not in the Crypts/Doing Revenant Quest",
+    "hideWhenNotInSpidersDen": "Hide When Not in the Spiders Den/Doing Tarantula Quest",
+    "hideWhenNotInCastle": "Hide When Not in the Castle/Doing Sven Quest",
+    "dungeonDeathCounter": "Conteggio morti nel dungeon"
   },
   "messages": {
+    "enchants": "Incantesimi",
+    "reforges": "Forge",
     "dropConfirmation": "Getta questo oggetto nuovamente per confermare!",
     "magmaBossWarning": "Magma Boss!",
     "fullInventory": "Inventario pieno!",
@@ -159,11 +172,6 @@
     "separateMultiple": "Separa le liste con delle virgole.",
     "enchantsToMatch": "%type% Da Combaciare:",
     "enchantsToExclude": "%type% Da Escludere:",
-    "inventoryTypes": {
-      "enchants": "Incantesimi",
-      "reforges": "Forge",
-      "crafting": "Fabbricazione"
-    },
     "wantToViewPatchNotes": "Hai bisogno di aiuto o vuoi leggere la lista dei cambiamenti?",
     "downloadLink": "VIDEO/LINK DELL’AGGIORNAMENTO",
     "directDownload": "LINK DIRETTO AL DOWNLOAD",
@@ -175,7 +183,7 @@
       "patchAvailable": "Un nuovo aggiornamento con correzioni di errori (%version%) è disponibile! Cerca le opzioni di download in chat!"
     },
     "slotLocked": "Questo slot è bloccato!",
-    "summoningEyeFound": "Occhio dell'evocazione!",
+    "summoningEyeFound": "Summoning Eye!",
     "cancelledStemBreak": "Una funzione ti ha impedito di rompere questo stelo. Usa la tua mano se lo vuoi rompere.",
     "cancelledProfileOpening": "Una funzione ti ha impedito di aprire il profilo di questo giocatore mentre avevi l’arco in mano.",
     "cancelledDropping": "Una funzione ti ha impedito di gettare questo oggetto o strumento raro dalla tua hotbar.",
@@ -212,7 +220,10 @@
     "enchantmentInclusionExample": "es. \"prot, feather\"",
     "enchantmentExclusionExample": "es. \"proj, blast\"",
     "reforgeInclusionExample": "es. \"godly, strong\"",
-    "reforgeExclusionExample": "es. \"odd, clean\""
+    "reforgeExclusionExample": "es. \"odd, clean\"",
+    "actionsLeft": "%number% Left",
+    "effectActive": "1 Effect Active",
+    "effectsActive": "%number% Effects Active"
   },
   "discordStatus": {
     "titleNone": "Nessuno",
@@ -248,7 +259,8 @@
     "sba.brand.brandOutput": "Nome del server: %brand%",
     "sba.brand.notFound": "Nome del server non trovato!",
     "sba.copyEntity": "§e(Dev) §7Copia i dati NBT per le entità dei nomi indicati entro il raggio indicato intorno al giocatore",
-    "sba.copySidebar": "§e(Dev) §7Copia il testo del tabellone.",
+    "sba.copySidebar": "§e(Dev) §7Copia il testo del tabellone",
+    "sba.copyTabList": "§e(Dev) §7Copia intestazione e piè di pagina della lista giocatori",
     "sba.dev": "Attiva/Disattiva modalità sviluppatore",
     "sba.dev.disabled": "Modalità sviluppatore disabilitata!",
     "sba.dev.enabled": "Modalità sviluppatore abilitata! SUGGERIMENTO: Premi \"%keyName%\" per copiare i dati NBT!",
@@ -260,6 +272,7 @@
     "sba.help.copyEntity.entityNames": "Nomi dei tipi di entità di cui si desidera copiare i dati (ad es. Giocatore, Creeper). Premi \"Tab\" dopo aver digitato il comando per un elenco completo. Separa più nomi con virgole, i nomi distinguono maiuscole e minuscole.",
     "sba.help.copyEntity.radius": "Il raggio (in blocchi) intorno al giocatore per copiare i dati NBT dell’entità da",
     "sba.help.copySidebar.formatted": "Determina se i codici di formattazione devono essere inclusi durante la copia. Può essere \"true\" o \"falso\", predefinito per \"falso\" se non viene fornito alcun valore. I codici di formattazione vengono copiati se \"true\".",
+    "sba.help.copyTabList": "Questo comando copia l'intestazione e il piè di pagina della lista dei giocatori. I codici di formattazione sono inclusi.",
     "sba.help.dev": "Questo comando attiva la modalità sviluppatore. Questa modalità è pensata per gli sviluppatori Skyblock mods/tools. Fornisce dati grezzi dal gioco come entità ed elementi NBT.",
     "sba.help.help.command": "il sottocomando per ottenere un utilizzo dettagliato per",
     "sba.help.set.zealotCounter": "Imposta manualmente il conteggio zealot.",
@@ -271,13 +284,61 @@
     "sba.set.zealotCounter.totalZealots": "Imposta il numero totale di zealots a %number%!",
     "sba.set.zealotCounter.wrongUsage": "Selezione non valida! Scegli %options%.",
     "sba.set.zealotCounter.zealots": "Imposta il numero attuale di zealots a %number%!",
-    "sba.toggleActionBarLogging": "Attiva/Disattiva la registrazione dei messaggi della barra delle azioni",
+    "sba.toggleActionBarLogging": "§e(Dev) §7Toggle logging action bar messages",
     "sba.toggleActionBarLogging.disabled": "I messaggi della barra delle azioni non saranno più registrati.",
     "sba.toggleActionBarLogging.enabled": "I messaggi della barra delle azioni saranno ora registrati.",
     "sba.wrongUsage.generic": "Utilizzo errato!",
-    "sba.wrongUsage.subCommandNotFound": "Il sottocomando %sub-command% non è stato trovato."
+    "sba.wrongUsage.subCommandNotFound": "Il sottocomando %sub-command% non è stato trovato.",
+    "sba.slayer": "Manually set slayer stats, press tab for arguments",
+    "sba.help.slayer": "Manually set slayer stats, press tab for arguments"
   },
   "keyBindings": {
     "developerCopyNBT": "Copia NBT"
+  },
+  "dragonTracker": {
+    "protector": "Protector",
+    "old": "Old",
+    "wise": "Wise",
+    "unstable": "Unstable",
+    "young": "Young",
+    "strong": "Strong",
+    "superior": "Superior",
+    "recentDragons": "Recent Dragons:",
+    "dragonsSince": "Dragons Since:",
+    "aspectOfTheDragons": "AOTD",
+    "enderDragonPet": "Dragon Pet",
+    "eyesPlaced": "Eyes Placed",
+    "never": "Never"
+  },
+  "slayerTracker": {
+    "revenant": "Revenant Horror:",
+    "revenantFlesh": "Revenant Flesh",
+    "foulFlesh": "Foul Flesh",
+    "pestilenceRune": "Pestilence Rune",
+    "undeadCatalyst": "Undead Catalyst",
+    "smiteSix": "Smite 6",
+    "beheadedHorror": "Beheaded Horror",
+    "revenantCatalyst": "Revenant Catalyst",
+    "snakeRune": "Snake Rune",
+    "scytheBlade": "Scythe Blade",
+    "tarantula": "Tarantula Broodfather:",
+    "tarantulaWeb": "Tarantula Web",
+    "toxicArrowPoison": "Toxic Arrow Poison",
+    "spiderCatalyst": "Spider Catalyst",
+    "baneOfArthropodsSix": "Bane Of Arthropods 6",
+    "biteRune": "Bite Rune",
+    "flySwatter": "Fly Swatter",
+    "tarantulaTalisman": "Tarantula Talisman",
+    "digestedMosquito": "Digested Mosquito",
+    "sven": "Sven Packmaster:",
+    "wolfTooth": "Wolf Tooth",
+    "hamsterWheel": "Hamster Wheel",
+    "spiritRune": "Spirit Rune",
+    "criticalSix": "Critical 6",
+    "grizzlyBait": "Grizzly Bait",
+    "redClawEgg": "Red Claw Egg",
+    "overfluxCapacitor": "Overflux Capacitor",
+    "coutureRune": "Couture Rune",
+    "bossesKilled": "Bosses Killed"
   }
 }

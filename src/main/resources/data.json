@@ -2,10 +2,10 @@
   "bannerImageURL": null,
   "bannerLink": null,
 
-  "latestVersion": "1.5.2",
-  "latestBeta": "1.5.2-beta.2",
+  "latestVersion": "1.5.3",
+  "latestBeta": "1.6.0-beta.5",
   "videoLink": "https://youtu.be/_BZMJm6JD4Q",
-  "directDownload": "https://biscuit.codes/mods/skyblockaddons/downloadversion/?v=1.5.2",
+  "directDownload": "https://biscuit.codes/mods/skyblockaddons/downloadversion/?v=1.5.3",
 
   "languageJSONFormat": "https://raw.githubusercontent.com/BiscuitDevelopment/SkyblockAddons/development/src/main/resources/lang/%s.json",
 

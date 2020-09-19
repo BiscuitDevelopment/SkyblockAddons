@@ -2,6 +2,7 @@ package codes.biscuit.skyblockaddons.features;
 
 import lombok.AccessLevel;
 import lombok.Getter;
+import net.minecraft.nbt.NBTTagCompound;
 
 @Getter
 public class ItemDiff {
@@ -14,6 +15,12 @@ public class ItemDiff {
     /** The item's display name. */
     private final String displayName;
 
+    /**
+     * The item's ExtraAttributes from the NBT
+     */
+    @Getter
+    private final NBTTagCompound extraAttributes;
+
     /** The changed amount. */
     private int amount;
 
@@ -24,9 +31,19 @@ public class ItemDiff {
      * @param amount      The changed amount.
      */
     public ItemDiff(String displayName, int amount) {
+        this(displayName, amount, null);
+    }
+
+    /**
+     * @param displayName The item's display name.
+     * @param amount      The changed amount.
+     * @param extraAttributes The Skyblock NBT data of the first item detected
+     */
+    public ItemDiff(String displayName, int amount, NBTTagCompound extraAttributes) {
         this.displayName = displayName;
         this.amount = amount;
         this.timestamp = System.currentTimeMillis();
+        this.extraAttributes = extraAttributes;
     }
 
     /**

@@ -2,7 +2,6 @@ package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.Message;
-import codes.biscuit.skyblockaddons.features.craftingpatterns.CraftingPattern;
 import lombok.Getter;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -90,8 +89,8 @@ public class EnumUtils {
         }
 
         public BackpackStyle getNextType() {
-            int nextType = ordinal()+1;
-            if (nextType > values().length-1) {
+            int nextType = ordinal() + 1;
+            if (nextType > values().length - 1) {
                 nextType = 0;
             }
             return values()[nextType];
@@ -113,8 +112,8 @@ public class EnumUtils {
         }
 
         public PowerOrbDisplayStyle getNextType() {
-            int nextType = ordinal()+1;
-            if (nextType > values().length-1) {
+            int nextType = ordinal() + 1;
+            if (nextType > values().length - 1) {
                 nextType = 0;
             }
             return values()[nextType];
@@ -136,8 +135,8 @@ public class EnumUtils {
         }
 
         public TextStyle getNextType() {
-            int nextType = ordinal()+1;
-            if (nextType > values().length-1) {
+            int nextType = ordinal() + 1;
+            if (nextType > values().length - 1) {
                 nextType = 0;
             }
             return values()[nextType];
@@ -185,7 +184,7 @@ public class EnumUtils {
     /**
      * Settings that modify the behavior of features- without technically being
      * a feature itself.
-     *
+     * <p>
      * For the equivalent feature (that holds the state) use the ids instead of the enum directly
      * because the enum Feature depends on FeatureSetting, so FeatureSetting can't depend on Feature on creation.
      */
@@ -194,6 +193,8 @@ public class EnumUtils {
         GUI_SCALE(SETTING_GUI_SCALE, -1),
         ENABLED_IN_OTHER_GAMES(SETTING_SHOW_IN_OTHER_GAMES, -1),
         REPEATING(SETTING_REPEATING, -1),
+        TEXT_MODE(SETTING_TEXT_MODE, -1),
+        DRAGONS_NEST_ONLY(SETTING_DRAGONS_NEST_ONLY, -1),
         USE_VANILLA_TEXTURE(SETTING_USE_VANILLA_TEXTURE, 17),
         BACKPACK_STYLE(SETTING_BACKPACK_STYLE, -1),
         SHOW_ONLY_WHEN_HOLDING_SHIFT(SETTING_SHOW_ONLY_WHEN_HOLDING_SHIFT, 18),
@@ -203,7 +204,6 @@ public class EnumUtils {
         ENABLE_MESSAGE_WHEN_ACTION_PREVENTED(SETTING_ENABLE_MESSAGE_WHEN_ACTION_PREVENTED, -1),
         HIDE_NIGHT_VISION_EFFECT(SETTING_HIDE_NIGHT_VISION_EFFECT_TIMER, 70),
         ENABLE_CAKE_BAG_PREVIEW(SETTING_SHOW_CAKE_BAG_PREVIEW, 71),
-        ENABLE_BACKPACK_PREVIEW_AH(SETTING_SHOW_BACKPACK_PREVIEW_AH, 72),
         SORT_TAB_EFFECT_TIMERS(SETTING_SORT_TAB_EFFECT_TIMERS, 74),
         ROTATE_MAP(SETTING_ROTATE_MAP, 100),
         CENTER_ROTATION_ON_PLAYER(SETTING_CENTER_ROTATION_ON_PLAYER, 101),
@@ -211,10 +211,14 @@ public class EnumUtils {
         COLOUR_BY_RARITY(SETTING_COLOR_BY_RARITY, -1),
         SHOW_PLAYER_HEADS_ON_MAP(SETTING_SHOW_PLAYER_HEAD_ON_MAP, 106),
         SHOW_GLOWING_ITEMS_ON_ISLAND(SETTING_SHOW_GLOWING_ITEMS_ON_ISLAND, 109),
+        EXPANDED(SETTING_EXPANDED, -1),
+        HIDE_WHEN_NOT_IN_CRYPTS(SETTING_HIDE_WHEN_NOT_IN_CRYPTS, 133),
+        HIDE_WHEN_NOT_IN_SPIDERS_DEN(SETTING_HIDE_WHEN_NOT_IN_SPIDERS_DEN, 134),
+        HIDE_WHEN_NOT_IN_CASTLE(SETTING_HIDE_WHEN_NOT_IN_CASTLE, 135),
+        ENABLE_PERSONAL_COMPACTOR_PREVIEW(SETTING_SHOW_PERSONAL_COMPACTOR_PREVIEW, 110),
 
         DISCORD_RP_STATE(null, 0),
-        DISCORD_RP_DETAILS(null, 0)
-
+        DISCORD_RP_DETAILS(null, 0),
         ;
 
         @Getter private Message message;
@@ -242,13 +246,12 @@ public class EnumUtils {
         // If you make a feature, feel free to add your name here with an associated website of your choice.
 
         INVENTIVE_TALENT("InventiveTalent", "inventivetalent.org", Feature.MAGMA_BOSS_TIMER),
-        FSCK("fsck", "github.com/fsckmc", Feature.AVOID_BREAKING_BOTTOM_SUGAR_CANE),
         ORCHID_ALLOY("orchidalloy", "github.com/orchidalloy", Feature.SUMMONING_EYE_ALERT, Feature.FISHING_SOUND_INDICATOR, Feature.ORGANIZE_ENCHANTMENTS),
         HIGH_CRIT("HighCrit", "github.com/HighCrit", Feature.PREVENT_MOVEMENT_ON_DEATH),
         MOULBERRY("Moulberry", "github.com/Moulberry", Feature.DONT_RESET_CURSOR_INVENTORY),
-        TOMOCRAFTER("tomocrafter","github.com/tomocrafter", Feature.AVOID_BLINKING_NIGHT_VISION, Feature.SLAYER_INDICATOR, Feature.NO_ARROWS_LEFT_ALERT, Feature.BOSS_APPROACH_ALERT),
+        TOMOCRAFTER("tomocrafter", "github.com/tomocrafter", Feature.AVOID_BLINKING_NIGHT_VISION, Feature.SLAYER_INDICATOR, Feature.NO_ARROWS_LEFT_ALERT, Feature.BOSS_APPROACH_ALERT),
         DAPIGGUY("DaPigGuy", "github.com/DaPigGuy", Feature.MINION_DISABLE_LOCATION_WARNING),
-        COMNIEMEER("comniemeer","github.com/comniemeer", Feature.JUNGLE_AXE_COOLDOWN),
+        COMNIEMEER("comniemeer", "github.com/comniemeer", Feature.JUNGLE_AXE_COOLDOWN),
         KEAGEL("Keagel", "github.com/Keagel", Feature.ONLY_MINE_ORES_DEEP_CAVERNS, Feature.DISABLE_MAGICAL_SOUP_MESSAGES),
         SUPERHIZE("SuperHiZe", "github.com/superhize", Feature.SPECIAL_ZEALOT_ALERT),
         DIDI_SKYWALKER("DidiSkywalker", "twitter.com/didiskywalker", Feature.ITEM_PICKUP_LOG, Feature.HEALTH_UPDATES, Feature.REPLACE_ROMAN_NUMERALS_WITH_NUMBERS,
@@ -259,9 +262,11 @@ public class EnumUtils {
         MYNAMEISJEFF("MyNameIsJeff", "github.com/My-Name-Is-Jeff", Feature.SHOW_BROKEN_FRAGMENTS),
         DJTHEREDSTONER("DJtheRedstoner", "github.com/DJtheRedstoner", Feature.LEGENDARY_SEA_CREATURE_WARNING, Feature.HIDE_SVEN_PUP_NAMETAGS),
         ANTONIO32A("Antonio32A", "github.com/Antonio32A", Feature.ONLY_BREAK_LOGS_PARK),
-        CHARZARD("Charzard4261", "github.com/Charzard4261", Feature.DISABLE_TELEPORT_PAD_MESSAGES, Feature.BAIT_LIST, Feature.SHOW_BASE_STAT_BOOST_PERCENTAGE, 
-                 Feature.SHOW_ITEM_DUNGEON_FLOOR, Feature.SHOW_BASE_STAT_BOOST_PERCENTAGE,  Feature.SHOW_RARITY_UPGRADED),
-        IHDEVELOPER("iHDeveloper", "github.com/iHDeveloper", Feature.SHOW_DUNGEON_MILESTONE, Feature.DUNGEONS_COLLECTED_ESSENCES_DISPLAY);
+        CHARZARD("Charzard4261", "github.com/Charzard4261", Feature.DISABLE_TELEPORT_PAD_MESSAGES, Feature.BAIT_LIST, Feature.SHOW_BASE_STAT_BOOST_PERCENTAGE,
+                 Feature.SHOW_ITEM_DUNGEON_FLOOR, Feature.SHOW_BASE_STAT_BOOST_PERCENTAGE,  Feature.SHOW_RARITY_UPGRADED, Feature.REVENANT_SLAYER_TRACKER,
+                Feature.TARANTULA_SLAYER_TRACKER, Feature.SVEN_SLAYER_TRACKER, Feature.DRAGON_STATS_TRACKER, Feature.SHOW_PERSONAL_COMPACTOR_PREVIEW),
+        IHDEVELOPER("iHDeveloper", "github.com/iHDeveloper", Feature.SHOW_DUNGEON_MILESTONE, Feature.DUNGEONS_COLLECTED_ESSENCES_DISPLAY),
+        TIRELESS_TRAVELER("TirelessTraveler", "github.com/ILikePlayingGames", Feature.DUNGEON_DEATH_COUNTER);
 
         private Set<Feature> features;
         private String author;
@@ -285,7 +290,7 @@ public class EnumUtils {
         }
 
         public String getUrl() {
-            return "https://"+url;
+            return "https://" + url;
         }
     }
 
@@ -331,7 +336,9 @@ public class EnumUtils {
         TICKER,
         BAIT_LIST_DISPLAY,
         TAB_EFFECT_TIMERS,
-        DUNGEONS_MAP
+        DUNGEONS_MAP,
+        SLAYER_TRACKERS,
+        DRAGON_STATS_TRACKER
     }
 
     @Getter
@@ -345,7 +352,7 @@ public class EnumUtils {
         private URI url;
 
         Social(String resourcePath, String url) {
-            this.resourceLocation = new ResourceLocation("skyblockaddons", "gui/"+resourcePath+".png");
+            this.resourceLocation = new ResourceLocation("skyblockaddons", "gui/" + resourcePath + ".png");
             try {
                 this.url = new URI(url);
             } catch (URISyntaxException e) {
@@ -376,8 +383,8 @@ public class EnumUtils {
         }
 
         public ChromaMode getNextType() {
-            int nextType = ordinal()+1;
-            if (nextType > values().length-1) {
+            int nextType = ordinal() + 1;
+            if (nextType > values().length - 1) {
                 nextType = 0;
             }
             return values()[nextType];

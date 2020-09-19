@@ -504,6 +504,7 @@ public class LocationEditGui extends GuiScreen {
             Feature feature = buttonSolid.getFeature();
             if (feature == Feature.RESET_LOCATION) {
                 main.getConfigValues().setAllCoordinatesToDefault();
+                main.getConfigValues().putDefaultBarSizes();
                 for (Feature guiFeature : Feature.getGuiFeatures()) {
                     if (!main.getConfigValues().isDisabled(guiFeature)) { // Don't display features that have been disabled
                         if (guiFeature == Feature.HEALTH_BAR || guiFeature == Feature.MANA_BAR) {

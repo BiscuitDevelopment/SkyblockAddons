@@ -10,8 +10,9 @@ import java.awt.*;
 public class ChromaManager {
 
     @Getter private static boolean coloringTextChroma;
+    private static float featureScale;
 
-    private static float[] defaultColorHSB = {0, 0.72F, 0.90F};
+    private static float[] defaultColorHSB = {0, 0.75F, 0.9F};
 
     /**
      * Before rending a string that supports chroma, call this method so it marks the text
@@ -25,6 +26,7 @@ public class ChromaManager {
         if (SkyblockAddons.getInstance().getConfigValues().getChromaMode() == EnumUtils.ChromaMode.FADE &&
                 SkyblockAddons.getInstance().getConfigValues().getChromaFeatures().contains(feature)) {
             coloringTextChroma = true;
+            featureScale = SkyblockAddons.getInstance().getConfigValues().getGuiScale(feature);
         }
     }
 
@@ -33,13 +35,21 @@ public class ChromaManager {
     }
 
     public static int getChromaColor(float x, float y, float[] currentHSB) {
+        x *= featureScale;
+        y *= featureScale;
+
         float chromaWidth = SkyblockAddons.getInstance().getUtils().denormalizeScale(SkyblockAddons.getInstance().getConfigValues().getChromaFadeWidth(), 1, 42, 1) / 360F;
         float chromaSpeed = SkyblockAddons.getInstance().getUtils().denormalizeScale(SkyblockAddons.getInstance().getConfigValues().getChromaSpeed(), 0.1F, 10, 0.5F) / 360F;
 
         long ticks = SkyblockAddons.getInstance().getNewScheduler().getTotalTicks();
 
         float newHue = (x / 4F * chromaWidth + y / 4F * chromaWidth - ticks * chromaSpeed) % 1;
-        return Color.HSBtoRGB(newHue, currentHSB[1], currentHSB[2]);
+
+        if (currentHSB[2] < 0.3) { // Keep shadows as shadows
+            return Color.HSBtoRGB(newHue, currentHSB[1], currentHSB[2]);
+        } else {
+            return Color.HSBtoRGB(newHue, defaultColorHSB[1], defaultColorHSB[2]);
+        }
     }
 
     /**

@@ -41,7 +41,40 @@ public class EntityLivingBaseTransformer implements ITransformer {
                         }
                     }
                 }
+
+            } else if (TransformerMethod.removePotionEffectClient.matches(methodNode)) {
+                methodNode.instructions.insertBefore(methodNode.instructions.getFirst(), onRemovePotionEffect());
+
+            } else if (TransformerMethod.addPotionEffect.matches(methodNode)) {
+                methodNode.instructions.insertBefore(methodNode.instructions.getFirst(), onAddPotionEffect());
             }
         }
+    }
+
+    private InsnList onRemovePotionEffect() {
+        InsnList list = new InsnList();
+
+        list.add(new VarInsnNode(Opcodes.ALOAD, 0));
+        list.add(new VarInsnNode(Opcodes.ILOAD, 1)); // int potionId
+        list.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "codes/biscuit/skyblockaddons/asm/hooks/EntityLivingBaseHook", "onRemovePotionEffect",
+                "("+TransformerClass.EntityLivingBase.getName()+"I)Z", false));
+        LabelNode notCancelled = new LabelNode(); // if (EntityLivingBaseHook.onRemovePotionEffect(this, potionId)) {
+        list.add(new JumpInsnNode(Opcodes.IFEQ, notCancelled));
+
+        list.add(new InsnNode(Opcodes.RETURN)); // return;
+        list.add(notCancelled); // }
+
+        return list;
+    }
+
+    private InsnList onAddPotionEffect() {
+        InsnList list = new InsnList();
+
+        list.add(new VarInsnNode(Opcodes.ALOAD, 0));
+        list.add(new VarInsnNode(Opcodes.ALOAD, 1)); // PotionEffect potioneffectIn // EntityLivingBaseHook.onAddPotionEffect(this, potioneffectIn);
+        list.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "codes/biscuit/skyblockaddons/asm/hooks/EntityLivingBaseHook", "onAddPotionEffect",
+                "("+TransformerClass.EntityLivingBase.getName()+TransformerClass.PotionEffect.getName()+")V", false));
+
+        return list;
     }
 }

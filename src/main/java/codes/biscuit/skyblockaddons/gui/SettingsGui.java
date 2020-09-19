@@ -4,9 +4,9 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.Language;
 import codes.biscuit.skyblockaddons.core.Message;
-import codes.biscuit.skyblockaddons.gui.buttons.*;
-import codes.biscuit.skyblockaddons.utils.*;
 import codes.biscuit.skyblockaddons.features.discordrpc.DiscordStatus;
+import codes.biscuit.skyblockaddons.gui.buttons.*;
+import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
@@ -60,12 +60,12 @@ public class SettingsGui extends GuiScreen {
         if (feature == Feature.LANGUAGE) {
             displayCount = findDisplayCount();
             // Add the buttons for each page.
-            int skip = (page-1)*displayCount;
+            int skip = (page - 1) * displayCount;
 
             boolean max = page == 1;
-            buttonList.add(new ButtonArrow(width/2-15-50, height-70, main, ButtonArrow.ArrowType.LEFT, max));
-            max = Language.values().length-skip-displayCount <= 0;
-            buttonList.add(new ButtonArrow(width/2-15+50, height-70, main, ButtonArrow.ArrowType.RIGHT, max));
+            buttonList.add(new ButtonArrow(width / 2 - 15 - 50, height - 70, main, ButtonArrow.ArrowType.LEFT, max));
+            max = Language.values().length - skip - displayCount <= 0;
+            buttonList.add(new ButtonArrow(width / 2 - 15 + 50, height - 70, main, ButtonArrow.ArrowType.RIGHT, max));
 
             for (Language language : Language.values()) {
                 if (skip == 0) {
@@ -87,11 +87,11 @@ public class SettingsGui extends GuiScreen {
 
 
     private int findDisplayCount() {
-        int maxX = new ScaledResolution(mc).getScaledHeight()-70-25;
+        int maxX = new ScaledResolution(mc).getScaledHeight() - 70 - 25;
         int displayCount = 0;
         for (int row = 1; row < 99; row++) {
             if (getRowHeight(row) < maxX) {
-                displayCount+=3;
+                displayCount += 3;
             } else {
                 return displayCount;
             }
@@ -115,32 +115,32 @@ public class SettingsGui extends GuiScreen {
                 alphaMultiplier = (float) timeSinceOpen / (fadeMilis * 2);
             }
         }
-        int alpha = (int)(255*alphaMultiplier); // Alpha of the text will increase from 0 to 127 over 500ms.
+        int alpha = (int) (255 * alphaMultiplier); // Alpha of the text will increase from 0 to 127 over 500ms.
 
-        int startColor = new Color(0,0, 0, (int)(alpha*0.5)).getRGB();
-        int endColor = new Color(0,0, 0, alpha).getRGB();
+        int startColor = new Color(0, 0, 0, (int) (alpha * 0.5)).getRGB();
+        int endColor = new Color(0, 0, 0, alpha).getRGB();
         drawGradientRect(0, 0, width, height, startColor, endColor);
         GlStateManager.enableBlend();
 
         if (alpha < 4) alpha = 4; // Text under 4 alpha appear 100% transparent for some reason o.O
-        int defaultBlue = main.getUtils().getDefaultBlue(alpha*2);
+        int defaultBlue = main.getUtils().getDefaultBlue(alpha * 2);
 
-        SkyblockAddonsGui.drawDefaultTitleText(this, alpha*2);
+        SkyblockAddonsGui.drawDefaultTitleText(this, alpha * 2);
 
         if (feature != Feature.LANGUAGE) {
             mc.getTextureManager().bindTexture(FEATURE_BACKGROUND);
-            int halfWidth = width/2;
+            int halfWidth = width / 2;
             int boxWidth = 140;
-            int x = halfWidth-90-boxWidth;
-            int width = halfWidth+90+boxWidth;
+            int x = halfWidth - 90 - boxWidth;
+            int width = halfWidth + 90 + boxWidth;
             width -= x;
             float numSettings = settings.size();
             if (settings.contains(EnumUtils.FeatureSetting.DISCORD_RP_STATE)) {
                 if (main.getConfigValues().getDiscordStatus() == DiscordStatus.CUSTOM) numSettings++;
                 if (main.getConfigValues().getDiscordStatus() == DiscordStatus.AUTO_STATUS) {
-                    numSettings ++;
+                    numSettings++;
                     if (main.getConfigValues().getDiscordAutoDefault() == DiscordStatus.CUSTOM) {
-                        numSettings ++;
+                        numSettings++;
                     }
                 }
                 numSettings += 0.4;
@@ -148,18 +148,18 @@ public class SettingsGui extends GuiScreen {
             if (settings.contains(EnumUtils.FeatureSetting.DISCORD_RP_DETAILS)) {
                 if (main.getConfigValues().getDiscordDetails() == DiscordStatus.CUSTOM) numSettings++;
                 if (main.getConfigValues().getDiscordDetails() == DiscordStatus.AUTO_STATUS) {
-                    numSettings ++;
+                    numSettings++;
                     if (main.getConfigValues().getDiscordAutoDefault() == DiscordStatus.CUSTOM) {
-                        numSettings ++;
+                        numSettings++;
                     }
                 }
                 numSettings += 0.4;
             }
-            int height = (int)(getRowHeightSetting(numSettings)-50);
-            int y =(int)getRowHeight(1);
+            int height = (int) (getRowHeightSetting(numSettings) - 50);
+            int y = (int) getRowHeight(1);
             GlStateManager.enableBlend();
-            GlStateManager.color(1,1,1,0.7F);
-            drawModalRectWithCustomSizedTexture(x, y,0,0,width,height,width,height);
+            GlStateManager.color(1, 1, 1, 0.7F);
+            drawModalRectWithCustomSizedTexture(x, y, 0, 0, width, height, width, height);
             SkyblockAddonsGui.drawScaledString(this, Message.SETTING_SETTINGS.getMessage(), 110, defaultBlue, 1.5, 0);
         }
         super.drawScreen(mouseX, mouseY, partialTicks); // Draw buttons.
@@ -174,7 +174,7 @@ public class SettingsGui extends GuiScreen {
     @Override
     protected void actionPerformed(GuiButton abstractButton) {
         if (abstractButton instanceof ButtonLanguage) {
-            Language language = ((ButtonLanguage)abstractButton).getLanguage();
+            Language language = ((ButtonLanguage) abstractButton).getLanguage();
             main.getConfigValues().setLanguage(language);
             main.getUtils().loadLanguageFile(true);
             main.setKeyBindingDescriptions();
@@ -186,7 +186,7 @@ public class SettingsGui extends GuiScreen {
             closingGui = true;
             mc.displayGuiScreen(new ColorSelectionGui(feature, EnumUtils.GUIType.SETTINGS, lastTab, lastPage));
         } else if (abstractButton instanceof ButtonToggleTitle) {
-            ButtonFeature button = (ButtonFeature)abstractButton;
+            ButtonFeature button = (ButtonFeature) abstractButton;
             Feature feature = button.getFeature();
             if (feature == null) return;
             if (main.getConfigValues().isDisabled(feature)) {
@@ -207,13 +207,13 @@ public class SettingsGui extends GuiScreen {
             closingGui = true;
             Minecraft.getMinecraft().displayGuiScreen(new SettingsGui(feature, page, lastPage, lastTab, settings));
             closingGui = false;
-        } else if(feature == Feature.POWER_ORB_STATUS_DISPLAY && abstractButton instanceof ButtonSolid) {
+        } else if (feature == Feature.POWER_ORB_STATUS_DISPLAY && abstractButton instanceof ButtonSolid) {
             main.getConfigValues().setPowerOrbDisplayStyle(main.getConfigValues().getPowerOrbDisplayStyle().getNextType());
             closingGui = true;
             Minecraft.getMinecraft().displayGuiScreen(new SettingsGui(feature, page, lastPage, lastTab, settings));
             closingGui = false;
         } else if (abstractButton instanceof ButtonArrow) {
-            ButtonArrow arrow = (ButtonArrow)abstractButton;
+            ButtonArrow arrow = (ButtonArrow) abstractButton;
             if (arrow.isNotMax()) {
                 main.getUtils().setFadingIn(false);
                 if (arrow.getArrowType() == ButtonArrow.ArrowType.RIGHT) {
@@ -230,15 +230,15 @@ public class SettingsGui extends GuiScreen {
     private void addLanguageButton(Language language) {
         if (displayCount == 0) return;
         String text = feature.getMessage();
-        int halfWidth = width/2;
+        int halfWidth = width / 2;
         int boxWidth = 140;
         int x = 0;
         if (collumn == 1) {
-            x = halfWidth-90-boxWidth;
+            x = halfWidth - 90 - boxWidth;
         } else if (collumn == 2) {
-            x = halfWidth-(boxWidth/2);
+            x = halfWidth - (boxWidth / 2);
         } else if (collumn == 3) {
-            x = halfWidth+90;
+            x = halfWidth + 90;
         }
         double y = getRowHeight(row);
         buttonList.add(new ButtonLanguage(x, y, text, main, language));
@@ -251,9 +251,9 @@ public class SettingsGui extends GuiScreen {
     }
 
     private void addButton(EnumUtils.FeatureSetting setting) {
-        int halfWidth = width/2;
+        int halfWidth = width / 2;
         int boxWidth = 100;
-        int x = halfWidth-(boxWidth/2);
+        int x = halfWidth - (boxWidth / 2);
         double y = getRowHeightSetting(row);
         if (setting == EnumUtils.FeatureSetting.COLOR) {
             buttonList.add(new ButtonOpenColorMenu(x, y, 100, 20, Message.SETTING_CHANGE_COLOR.getMessage(), main, feature));
@@ -261,7 +261,7 @@ public class SettingsGui extends GuiScreen {
             buttonList.add(new ButtonGuiScale(x, y, 100, 20, main, feature));
         } else if (setting == EnumUtils.FeatureSetting.REPEATING) {
             boxWidth = 31;
-            x = halfWidth-(boxWidth/2);
+            x = halfWidth - (boxWidth / 2);
             y = getRowHeightSetting(row);
 
             Feature settingFeature = null;
@@ -274,51 +274,59 @@ public class SettingsGui extends GuiScreen {
             buttonList.add(new ButtonToggleTitle(x, y, Message.SETTING_REPEATING.getMessage(), main, settingFeature));
         } else if (setting == EnumUtils.FeatureSetting.ENABLED_IN_OTHER_GAMES) {
             boxWidth = 31;
-            x = halfWidth-(boxWidth/2);
+            x = halfWidth - (boxWidth / 2);
             y = getRowHeightSetting(row);
 
             Feature settingFeature = null;
-            if (feature == Feature.MAGMA_BOSS_TIMER) { settingFeature = Feature.SHOW_MAGMA_TIMER_IN_OTHER_GAMES;
-            } else if (feature == Feature.DARK_AUCTION_TIMER) { settingFeature = Feature.SHOW_DARK_AUCTION_TIMER_IN_OTHER_GAMES;
-            } else if (feature == Feature.DROP_CONFIRMATION) { settingFeature = Feature.DOUBLE_DROP_IN_OTHER_GAMES; }
+            if (feature == Feature.MAGMA_BOSS_TIMER) {
+                settingFeature = Feature.SHOW_MAGMA_TIMER_IN_OTHER_GAMES;
+            } else if (feature == Feature.DARK_AUCTION_TIMER) {
+                settingFeature = Feature.SHOW_DARK_AUCTION_TIMER_IN_OTHER_GAMES;
+            } else if (feature == Feature.DROP_CONFIRMATION) {
+                settingFeature = Feature.DOUBLE_DROP_IN_OTHER_GAMES;
+            }
 
             buttonList.add(new ButtonToggleTitle(x, y, Message.SETTING_SHOW_IN_OTHER_GAMES.getMessage(), main, settingFeature));
         } else if (setting == EnumUtils.FeatureSetting.BACKPACK_STYLE) {
             boxWidth = 140;
-            x = halfWidth-(boxWidth/2);
+            x = halfWidth - (boxWidth / 2);
             buttonList.add(new ButtonSolid(x, y, 140, 20, Message.SETTING_BACKPACK_STYLE.getMessage(), main, feature));
         } else if (setting == EnumUtils.FeatureSetting.ENABLE_MESSAGE_WHEN_ACTION_PREVENTED) {
             boxWidth = 31;
             x = halfWidth - (boxWidth / 2);
 
             Feature settingFeature = null;
-            if (feature == Feature.ONLY_MINE_ORES_DEEP_CAVERNS) { settingFeature = Feature.ENABLE_MESSAGE_WHEN_MINING_DEEP_CAVERNS;
-            } else if (feature == Feature.AVOID_BREAKING_STEMS) { settingFeature = Feature.ENABLE_MESSAGE_WHEN_BREAKING_STEMS;
-            } else if (feature == Feature.ONLY_MINE_VALUABLES_NETHER) { settingFeature = Feature.ENABLE_MESSAGE_WHEN_MINING_NETHER;
-            } else if (feature == Feature.ONLY_BREAK_LOGS_PARK) { settingFeature = Feature.ENABLE_MESSAGE_WHEN_BREAKING_PARK;
+            if (feature == Feature.ONLY_MINE_ORES_DEEP_CAVERNS) {
+                settingFeature = Feature.ENABLE_MESSAGE_WHEN_MINING_DEEP_CAVERNS;
+            } else if (feature == Feature.AVOID_BREAKING_STEMS) {
+                settingFeature = Feature.ENABLE_MESSAGE_WHEN_BREAKING_STEMS;
+            } else if (feature == Feature.ONLY_MINE_VALUABLES_NETHER) {
+                settingFeature = Feature.ENABLE_MESSAGE_WHEN_MINING_NETHER;
+            } else if (feature == Feature.ONLY_BREAK_LOGS_PARK) {
+                settingFeature = Feature.ENABLE_MESSAGE_WHEN_BREAKING_PARK;
             }
 
 
             buttonList.add(new ButtonToggleTitle(x, y, Message.SETTING_ENABLE_MESSAGE_WHEN_ACTION_PREVENTED.getMessage(), main, settingFeature));
-        } else if(setting == EnumUtils.FeatureSetting.POWER_ORB_DISPLAY_STYLE) {
+        } else if (setting == EnumUtils.FeatureSetting.POWER_ORB_DISPLAY_STYLE) {
             boxWidth = 140;
-            x = halfWidth-(boxWidth/2);
+            x = halfWidth - (boxWidth / 2);
             buttonList.add(new ButtonSolid(x, y, 140, 20, Message.SETTING_POWER_ORB_DISPLAY_STYLE.getMessage(), main, feature));
-        } else if(setting == EnumUtils.FeatureSetting.DISCORD_RP_DETAILS || setting == EnumUtils.FeatureSetting.DISCORD_RP_STATE) {
+        } else if (setting == EnumUtils.FeatureSetting.DISCORD_RP_DETAILS || setting == EnumUtils.FeatureSetting.DISCORD_RP_STATE) {
             boxWidth = 140;
-            x = halfWidth-(boxWidth/2);
+            x = halfWidth - (boxWidth / 2);
             DiscordStatus currentStatus;
-            if(setting == EnumUtils.FeatureSetting.DISCORD_RP_STATE) {
+            if (setting == EnumUtils.FeatureSetting.DISCORD_RP_STATE) {
                 currentStatus = main.getConfigValues().getDiscordStatus();
             } else {
                 currentStatus = main.getConfigValues().getDiscordDetails();
             }
 
-            buttonList.add(new ButtonTextNew(halfWidth, (int)y-10, setting == EnumUtils.FeatureSetting.DISCORD_RP_DETAILS ? Message.MESSAGE_FIRST_STATUS.getMessage() :
+            buttonList.add(new ButtonTextNew(halfWidth, (int) y - 10, setting == EnumUtils.FeatureSetting.DISCORD_RP_DETAILS ? Message.MESSAGE_FIRST_STATUS.getMessage() :
                     Message.MESSAGE_SECOND_STATUS.getMessage(), true, 0xFFFFFFFF));
-            buttonList.add(new ButtonSelect(x, (int)y, boxWidth, 20, Arrays.asList(DiscordStatus.values()), currentStatus.ordinal(), index -> {
+            buttonList.add(new ButtonSelect(x, (int) y, boxWidth, 20, Arrays.asList(DiscordStatus.values()), currentStatus.ordinal(), index -> {
                 final DiscordStatus selectedStatus = DiscordStatus.values()[index];
-                if(setting == EnumUtils.FeatureSetting.DISCORD_RP_STATE) {
+                if (setting == EnumUtils.FeatureSetting.DISCORD_RP_STATE) {
                     main.getDiscordRPCManager().setStateLine(selectedStatus);
                     main.getConfigValues().setDiscordStatus(selectedStatus);
                 } else {
@@ -332,12 +340,12 @@ public class SettingsGui extends GuiScreen {
                 row++;
                 row += 0.4;
                 boxWidth = 140;
-                x = halfWidth-(boxWidth/2);
+                x = halfWidth - (boxWidth / 2);
                 y = getRowHeightSetting(row);
 
-                buttonList.add(new ButtonTextNew(halfWidth, (int)y-10, Message.MESSAGE_FALLBACK_STATUS.getMessage(), true, 0xFFFFFFFF));
+                buttonList.add(new ButtonTextNew(halfWidth, (int) y - 10, Message.MESSAGE_FALLBACK_STATUS.getMessage(), true, 0xFFFFFFFF));
                 currentStatus = main.getConfigValues().getDiscordAutoDefault();
-                buttonList.add(new ButtonSelect(x, (int)y, boxWidth, 20, Arrays.asList(DiscordStatus.values()), currentStatus.ordinal(), index -> {
+                buttonList.add(new ButtonSelect(x, (int) y, boxWidth, 20, Arrays.asList(DiscordStatus.values()), currentStatus.ordinal(), index -> {
                     final DiscordStatus selectedStatus = DiscordStatus.values()[index];
                     main.getConfigValues().setDiscordAutoDefault(selectedStatus);
                     SettingsGui.this.reInit = true;
@@ -346,9 +354,9 @@ public class SettingsGui extends GuiScreen {
 
             if (currentStatus == DiscordStatus.CUSTOM) {
                 row++;
-                halfWidth = width/2;
+                halfWidth = width / 2;
                 boxWidth = 200;
-                x = halfWidth-(boxWidth/2);
+                x = halfWidth - (boxWidth / 2);
                 y = getRowHeightSetting(row);
 
                 EnumUtils.DiscordStatusEntry discordStatusEntry = EnumUtils.DiscordStatusEntry.DETAILS;
@@ -378,12 +386,76 @@ public class SettingsGui extends GuiScreen {
             y = this.getRowHeightSetting(this.row);
             Feature settingFeature = null;
             if (this.feature == Feature.SHOW_BASE_STAT_BOOST_PERCENTAGE) {
-                settingFeature = Feature.COLOR_BY_RARITY;
+                settingFeature = Feature.BASE_STAT_BOOST_COLOR_BY_RARITY;
+
+            } else if (feature == Feature.REVENANT_SLAYER_TRACKER) {
+                settingFeature = Feature.REVENANT_COLOR_BY_RARITY;
+
+            } else if (feature == Feature.TARANTULA_SLAYER_TRACKER) {
+                settingFeature = Feature.TARANTULA_COLOR_BY_RARITY;
+
+            } else if (feature == Feature.SVEN_SLAYER_TRACKER) {
+                settingFeature = Feature.SVEN_COLOR_BY_RARITY;
+
+            } else if (feature == Feature.DRAGON_STATS_TRACKER) {
+                settingFeature = Feature.DRAGON_STATS_TRACKER_COLOR_BY_RARITY;
             }
+
             buttonList.add(new ButtonToggleTitle(x, y, Message.SETTING_COLOR_BY_RARITY.getMessage(), this.main, settingFeature));
-        } else {
+        } else if (setting == EnumUtils.FeatureSetting.EXPANDED) {
+            boxWidth = 31;
+            x = halfWidth - (boxWidth / 2);
+            y = getRowHeightSetting(row);
+
+            Feature settingFeature = null;
+            if (feature == Feature.SKILL_DISPLAY) {
+                settingFeature = Feature.ACTIONS_UNTIL_NEXT_LEVEL;
+            }
+
+            buttonList.add(new ButtonToggleTitle(x, y, Message.SETTING_EXPANDED.getMessage(), main, settingFeature));
+        } else if (setting == EnumUtils.FeatureSetting.TEXT_MODE) {
+            boxWidth = 31;
+            x = halfWidth - (boxWidth / 2);
+            y = getRowHeightSetting(row);
+
+            Feature settingFeature = null;
+            if (feature == Feature.REVENANT_SLAYER_TRACKER) {
+                settingFeature = Feature.REVENANT_TEXT_MODE;
+
+            } else if (feature == Feature.TARANTULA_SLAYER_TRACKER) {
+                settingFeature = Feature.TARANTULA_TEXT_MODE;
+
+            } else if (feature == Feature.SVEN_SLAYER_TRACKER) {
+                settingFeature = Feature.SVEN_TEXT_MODE;
+
+            } else if (feature == Feature.DRAGON_STATS_TRACKER_TEXT_MODE) {
+                settingFeature = Feature.DRAGON_STATS_TRACKER_TEXT_MODE;
+            }
+
+            buttonList.add(new ButtonToggleTitle(x, y, Message.SETTING_TEXT_MODE.getMessage(), main, settingFeature));
+        } else if (setting == EnumUtils.FeatureSetting.DRAGONS_NEST_ONLY) {
+            boxWidth = 31;
+            x = halfWidth - (boxWidth / 2);
+            y = getRowHeightSetting(row);
+
+            Feature settingFeature = null;
+            if (feature == Feature.DRAGON_STATS_TRACKER) {
+                settingFeature = Feature.DRAGON_STATS_TRACKER_NEST_ONLY;
+            } else if (feature == Feature.ZEALOT_COUNTER) {
+                settingFeature = Feature.ZEALOT_COUNTER_NEST_ONLY;
+            } else if (feature == Feature.SHOW_AVERAGE_ZEALOTS_PER_EYE) {
+                settingFeature = Feature.SHOW_AVERAGE_ZEALOTS_PER_EYE_NEST_ONLY;
+            } else if (feature == Feature.SHOW_TOTAL_ZEALOT_COUNT) {
+                settingFeature = Feature.SHOW_TOTAL_ZEALOT_COUNT_NEST_ONLY;
+            } else if (feature == Feature.SHOW_SUMMONING_EYE_COUNT) {
+                settingFeature = Feature.SHOW_SUMMONING_EYE_COUNT_NEST_ONLY;
+            }
+
+            buttonList.add(new ButtonToggleTitle(x, y, setting.getMessage().getMessage(), main, settingFeature));
+        }
+        else {
             boxWidth = 31; // Default size and stuff.
-            x = halfWidth-(boxWidth/2);
+            x = halfWidth - (boxWidth / 2);
             y = getRowHeightSetting(row);
             buttonList.add(new ButtonToggleTitle(x, y, setting.getMessage().getMessage(), main, setting.getFeatureEquivalent()));
         }
@@ -393,12 +465,12 @@ public class SettingsGui extends GuiScreen {
     // Each row is spaced 0.08 apart, starting at 0.17.
     private double getRowHeight(double row) {
         row--;
-        return 95+(row*30); //height*(0.18+(row*0.08));
+        return 95 + (row * 30); //height*(0.18+(row*0.08));
     }
 
     private double getRowHeightSetting(double row) {
         row--;
-        return 140+(row*35); //height*(0.18+(row*0.08));
+        return 140 + (row * 35); //height*(0.18+(row*0.08));
     }
 
     @Override

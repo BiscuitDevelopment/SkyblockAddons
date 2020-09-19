@@ -87,9 +87,10 @@ public class DataUtils {
                     throw new ClientProtocolException("Unexpected response status: " + status);
                 }
             });
-            logger.info("Success!");
-            EnchantedItemPlacementBlocker.setBlacklist(receivedBlacklist);
-
+            if (receivedBlacklist != null) {
+                logger.info("Success!");
+                EnchantedItemPlacementBlocker.setBlacklist(receivedBlacklist);
+            }
 
             // Online Data
             logger.info("Trying to fetch online data from the server...");
@@ -105,8 +106,11 @@ public class DataUtils {
                     throw new ClientProtocolException("Unexpected response status: " + status);
                 }
             });
-            logger.info("Success!");
-            main.setOnlineData(receivedOnlineData);
+            if (receivedOnlineData != null) {
+                logger.info("Success!");
+                main.setOnlineData(receivedOnlineData);
+                main.getUpdater().processUpdateCheckResult();
+            }
 
         } catch (IOException | JsonSyntaxException e) {
             logger.error("There was an error fetching data from the server. " +

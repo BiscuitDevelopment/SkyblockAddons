@@ -15,6 +15,7 @@ import net.minecraft.scoreboard.Score;
 import net.minecraft.scoreboard.ScoreObjective;
 import net.minecraft.scoreboard.ScorePlayerTeam;
 import net.minecraft.scoreboard.Scoreboard;
+import net.minecraft.util.IChatComponent;
 import net.minecraft.util.StringUtils;
 import net.minecraftforge.common.util.Constants;
 
@@ -33,7 +34,7 @@ import java.util.stream.Collectors;
  * This is a class of utilities for SkyblockAddons developers.
  *
  * @author ILikePlayingGames
- * @version 2.2
+ * @version 2.3
  */
 public class DevUtils {
     /** Pattern used for removing the placeholder emoji player names from the Hypixel scoreboard */
@@ -79,8 +80,7 @@ public class DevUtils {
             throw new NullPointerException("Nothing is being displayed in the sidebar!");
         }
 
-        StringBuilder sb = new StringBuilder();
-        Formatter formatter = new Formatter(sb, Locale.CANADA);
+        StringBuilder stringBuilder = new StringBuilder();
 
         String objectiveName = sideBarObjective.getDisplayName();
         List<Score> scores = (List<Score>) scoreboard.getSortedScores(sideBarObjective);
@@ -89,8 +89,6 @@ public class DevUtils {
             SkyblockAddons.getInstance().getUtils().sendErrorMessage("No scores were found!");
         }
         else {
-            int width = SIDEBAR_COPY_WIDTH;
-
             if (stripControlCodes) {
                 objectiveName = StringUtils.stripControlCodes(objectiveName);
             }
@@ -105,8 +103,9 @@ public class DevUtils {
             */
             Collections.reverse(scores);
 
-            for (Score score:
-                    scores) {
+            stringBuilder.append(objectiveName).append("\n");
+
+            for (Score score: scores) {
                 ScorePlayerTeam scoreplayerteam = scoreboard.getPlayersTeam(score.getPlayerName());
                 String playerName = ScorePlayerTeam.formatPlayerName(scoreplayerteam, score.getPlayerName());
 
@@ -119,15 +118,10 @@ public class DevUtils {
 
                 int points = score.getScorePoints();
 
-                width = Math.max(width, (playerName + " " + points).length());
-                formatter.format("%-" + width + "." +
-                        width + "s %d%n", playerName, points);
+                stringBuilder.append(playerName).append("[").append(points).append("]").append("\n");
             }
 
-            // Insert the objective name at the top of the sidebar string.
-            sb.insert(0, "\n").insert(0, org.apache.commons.lang3.StringUtils.center(objectiveName, width));
-
-            copyStringToClipboard(sb.toString(), "Sidebar copied to clipboard!");
+            copyStringToClipboard(stringBuilder.toString(), "Sidebar copied to clipboard!");
         }
     }
 
@@ -278,6 +272,39 @@ public class DevUtils {
             return;
         }
         writeToClipboard(prettyPrintNBT(nbtTag), message);
+    }
+
+    /**
+     * Copies the header and footer of the tab player list to the clipboard
+     *
+     * @see net.minecraft.client.gui.GuiPlayerTabOverlay
+     */
+    public static void copyTabListHeaderAndFooter() {
+        Minecraft mc = Minecraft.getMinecraft();
+        IChatComponent tabHeader = mc.ingameGUI.getTabList().header;
+        IChatComponent tabFooter = mc.ingameGUI.getTabList().footer;
+        StringBuilder output = new StringBuilder("Header:").append("\n");
+
+        output.append(tabHeader.getFormattedText());
+
+        if (!tabHeader.getSiblings().isEmpty()) {
+            for (IChatComponent sibling : tabHeader.getSiblings()) {
+                output.append(sibling.getFormattedText());
+            }
+        }
+
+        output.append("\n\n");
+        output.append("Footer:").append("\n");
+
+        output.append(tabFooter.getFormattedText());
+
+        if (!tabFooter.getSiblings().isEmpty()) {
+            for (IChatComponent sibling : tabFooter.getSiblings()) {
+                output.append(sibling.getFormattedText());
+            }
+        }
+
+        copyStringToClipboard(output.toString(), "Tab list header and footer copied!");
     }
 
     /**

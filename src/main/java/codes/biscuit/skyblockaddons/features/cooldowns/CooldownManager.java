@@ -1,6 +1,7 @@
 package codes.biscuit.skyblockaddons.features.cooldowns;
 
-import net.minecraft.client.Minecraft;
+import codes.biscuit.skyblockaddons.utils.ItemUtils;
+import codes.biscuit.skyblockaddons.utils.TextUtils;
 import net.minecraft.item.ItemStack;
 
 import java.util.HashMap;
@@ -16,8 +17,8 @@ import java.util.regex.Pattern;
  */
 public class CooldownManager {
 
-    private static final Pattern ITEM_COOLDOWN_PATTERN = Pattern.compile("§5§o§8Cooldown: §a([0-9]+)s");
-    private static final Pattern ALTERNATE_COOLDOWN_PATTERN = Pattern.compile("§5§o§8([0-9]+) Second Cooldown");
+    private static final Pattern ITEM_COOLDOWN_PATTERN = Pattern.compile("Cooldown: ([0-9]+)s");
+    private static final Pattern ALTERNATE_COOLDOWN_PATTERN = Pattern.compile("([0-9]+) Second Cooldown");
 
     private static final Map<String, CooldownEntry> cooldowns = new HashMap<>();
 
@@ -145,24 +146,27 @@ public class CooldownManager {
      * This requires that the lore shows the cooldown either like {@code X Second Cooldown} or
      * {@code Cooldown: Xs}. Cooldown is returned in seconds.
      *
-     * @param item Item to read cooldown from
+     * @param itemStack Item to read cooldown from
      * @return Read cooldown in seconds or {@code -1} if no cooldown was found
      * @see #ITEM_COOLDOWN_PATTERN
      * @see #ALTERNATE_COOLDOWN_PATTERN
      */
-    private static int getLoreCooldown(ItemStack item) {
-        for (String loreLine : item.getTooltip(Minecraft.getMinecraft().thePlayer, false)) {
-            Matcher matcher = ITEM_COOLDOWN_PATTERN.matcher(loreLine);
+    private static int getLoreCooldown(ItemStack itemStack) {
+        for (String loreLine : ItemUtils.getItemLore(itemStack)) {
+            String strippedLoreLine = TextUtils.stripColor(loreLine);
+
+            Matcher matcher = ITEM_COOLDOWN_PATTERN.matcher(strippedLoreLine);
             if (matcher.matches()) {
                 try {
                     return Integer.parseInt(matcher.group(1));
-                } catch (NumberFormatException ignored) { }
+                } catch (NumberFormatException ignored) {}
+
             } else {
-                matcher = ALTERNATE_COOLDOWN_PATTERN.matcher(loreLine);
+                matcher = ALTERNATE_COOLDOWN_PATTERN.matcher(strippedLoreLine);
                 if (matcher.matches()) {
                     try {
                         return Integer.parseInt(matcher.group(1));
-                    } catch (NumberFormatException ignored) { }
+                    } catch (NumberFormatException ignored) {}
                 }
             }
         }

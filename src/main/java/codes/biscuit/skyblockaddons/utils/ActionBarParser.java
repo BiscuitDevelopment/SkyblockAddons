@@ -3,6 +3,7 @@ package codes.biscuit.skyblockaddons.utils;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Attribute;
 import codes.biscuit.skyblockaddons.core.Feature;
+import codes.biscuit.skyblockaddons.core.Translations;
 import codes.biscuit.skyblockaddons.misc.scheduler.Scheduler;
 import lombok.Getter;
 import lombok.Setter;
@@ -40,7 +41,7 @@ import java.util.regex.Pattern;
 @Getter
 public class ActionBarParser {
 
-    private final Pattern COLLECTIONS_CHAT_PATTERN = Pattern.compile("§.\\+(?:§[0-9a-f])?([0-9,.]+) §?[0-9a-f]?([A-Za-z]+) (\\([0-9.,]+/[0-9.,]+\\))");
+    private Pattern COLLECTIONS_CHAT_PATTERN = Pattern.compile("\\+(?<gained>[0-9,.]+) (?<skillName>[A-Za-z]+) (?<progress>\\((?<current>[0-9.,]+)/(?<total>[0-9.,]+)\\))");
 
     private final SkyblockAddons main;
 
@@ -221,12 +222,26 @@ public class ActionBarParser {
      * @return null or {@code skillSection} if wrong format or skill display is disabled
      */
     private String parseSkill(String skillSection) {
+        COLLECTIONS_CHAT_PATTERN = Pattern.compile("\\+(?<gained>[0-9,.]+) (?<skillName>[A-Za-z]+) (?<progress>\\((?<current>[0-9.,]+)/(?<total>[0-9.,]+)\\))");
+
         // §3+10.9 Combat (313,937.1/600,000)
         // Another Example: §5+§d30 §5Runecrafting (969/1000)
-        Matcher matcher = COLLECTIONS_CHAT_PATTERN.matcher(skillSection);
+        Matcher matcher = COLLECTIONS_CHAT_PATTERN.matcher(TextUtils.stripColor(skillSection));
         if (matcher.matches() && main.getConfigValues().isEnabled(Feature.SKILL_DISPLAY)) {
-            main.getRenderListener().setSkillText("+" + matcher.group(1) + " " + matcher.group(3));
-            main.getRenderListener().setSkill(EnumUtils.SkillType.getFromString(matcher.group(2)));
+            StringBuilder skillTextBuilder = new StringBuilder("+");
+            skillTextBuilder.append(matcher.group("gained")).append(" ").append(matcher.group("progress"));
+
+            if (main.getConfigValues().isEnabled(Feature.ACTIONS_UNTIL_NEXT_LEVEL)) {
+                int total = Integer.parseInt(matcher.group("total").replaceAll(",", ""));
+                if (total != 0) { // 0 means it's maxed...
+                    double current = Double.parseDouble(matcher.group("current").replaceAll(",", ""));
+                    double recent = Double.parseDouble(matcher.group("gained").replaceAll(",", ""));
+                    skillTextBuilder.append(" - ").append(Translations.getMessage("messages.actionsLeft", (int) Math.ceil((total - current) / recent)));
+                }
+            }
+
+            main.getRenderListener().setSkillText(skillTextBuilder.toString());
+            main.getRenderListener().setSkill(EnumUtils.SkillType.getFromString(matcher.group("skillName")));
             main.getRenderListener().setSkillFadeOutTime(System.currentTimeMillis() + 4000);
             return null;
         }
