@@ -149,15 +149,16 @@
     "showRarityUpgraded": "Show if Item's Rarity has been Upgraded",
     "revenantSlayerTracker": "Slayer Tracker - Revenant/Zombie",
     "tarantulaSlayerTracker": "Slayer Tracker - Tarantula/Spider",
-    "svenSlayerTracker": "Slayer Tracker - Sven/Wolf",
+    "svenSlayerTracker": "Rastreador de Slayer - Sven/Lobo",
     "textMode": "Text Mode",
-    "dragonsNestOnly": "Only Show in the Dragon's Nest",
+    "dragonsNestOnly": "Apenas Mostrar no Ninho do Dragão",
     "dragonStatsTracker": "Rastreador de Dragão",
     "expanded": "Expandido",
     "hideWhenNotInCrypts": "Hide When Not in the Crypts/Doing Revenant Quest",
     "hideWhenNotInSpidersDen": "Hide When Not in the Spiders Den/Doing Tarantula Quest",
     "hideWhenNotInCastle": "Hide When Not in the Castle/Doing Sven Quest",
-    "dungeonDeathCounter": "Contador de Mortes nas Masmorras"
+    "dungeonDeathCounter": "Contador de Mortes nas Masmorras",
+    "showPersonalCompactorPreview": "Show Personal Compactor Preview"
   },
   "messages": {
     "enchants": "Enchants",
@@ -222,8 +223,8 @@
     "reforgeInclusionExample": "e.g. \"godly, strong\"",
     "reforgeExclusionExample": "e.g. \"odd, clean\"",
     "actionsLeft": "%number% Restantes",
-    "effectActive": "1 Effect Active",
-    "effectsActive": "%number% Effects Active"
+    "effectActive": "1 Efeito Ativo",
+    "effectsActive": "%number% Efeitos Ativos"
   },
   "discordStatus": {
     "titleNone": "None",
@@ -282,12 +283,12 @@
     "sba.set.zealotCounter": "Manually set your zealot counts",
     "sba.set.zealotCounter.eyes": "Set total summoning eye count to %number%!",
     "sba.set.zealotCounter.totalZealots": "Set total zealot count to %number%!",
-    "sba.set.zealotCounter.wrongUsage": "Invalid selection! Please choose %options%.",
-    "sba.set.zealotCounter.zealots": "Set current zealot count to %number%!",
+    "sba.set.zealotCounter.wrongUsage": "Seleção inválida! Por favor escolha %options%.",
+    "sba.set.zealotCounter.zealots": "Definido a contagem atual de Zealots para %number%!",
     "sba.toggleActionBarLogging": "§e(Dev) §7Toggle logging action bar messages",
     "sba.toggleActionBarLogging.disabled": "Action bar messages will no longer be logged.",
     "sba.toggleActionBarLogging.enabled": "Action bar messages will now be logged.",
-    "sba.wrongUsage.generic": "Wrong usage!",
+    "sba.wrongUsage.generic": "Uso Incorreto!",
     "sba.wrongUsage.subCommandNotFound": "O comando \"%sub-command%\" não foi encontrado.",
     "sba.slayer": "Manually set slayer stats, press tab for arguments",
     "sba.help.slayer": "Manually set slayer stats, press tab for arguments"
@@ -296,14 +297,14 @@
     "developerCopyNBT": "Copy NBT"
   },
   "dragonTracker": {
-    "protector": "Protector",
-    "old": "Old",
-    "wise": "Wise",
-    "unstable": "Unstable",
-    "young": "Young",
-    "strong": "Strong",
+    "protector": "Protetor",
+    "old": "Velho",
+    "wise": "Sábio",
+    "unstable": "Instável",
+    "young": "Jovem",
+    "strong": "Forte",
     "superior": "Superior",
-    "recentDragons": "Recent Dragons:",
+    "recentDragons": "Dragões Recentes:",
     "dragonsSince": "Dragões Desde:",
     "aspectOfTheDragons": "Aspecto dos Dragões",
     "enderDragonPet": "Pet Dragão",
@@ -336,7 +337,7 @@
     "spiritRune": "Spirit Rune",
     "criticalSix": "Critical 6",
     "grizzlyBait": "Grizzly Bait",
-    "redClawEgg": "Red Claw Egg",
+    "redClawEgg": "Ovo de Garra Vermelha",
     "overfluxCapacitor": "Overflux Capacitor",
     "coutureRune": "Couture Rune",
     "bossesKilled": "Bosses Killed"

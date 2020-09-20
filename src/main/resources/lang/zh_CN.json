@@ -147,8 +147,8 @@
     "dungeonsCollectedEssencesDisplay": "显示在地下城收集到的 Essence",
     "stopBonzoStaffSounds": "静音 Bonzo's Staff",
     "showRarityUpgraded": "显示物品稀有度是否被升级",
-    "revenantSlayerTracker": "Slayer Tracker - Revenant/Zombie",
-    "tarantulaSlayerTracker": "Slayer Tracker - Tarantula/Spider",
+    "revenantSlayerTracker": "猎杀跟踪器 - 亡灵/僵尸",
+    "tarantulaSlayerTracker": "猎杀跟踪器 - 狼蛛/蜘蛛",
     "svenSlayerTracker": "Slayer Tracker - Sven/Wolf",
     "textMode": "文本模式",
     "dragonsNestOnly": "Only Show in the Dragon's Nest",
@@ -157,7 +157,8 @@
     "hideWhenNotInCrypts": "Hide When Not in the Crypts/Doing Revenant Quest",
     "hideWhenNotInSpidersDen": "Hide When Not in the Spiders Den/Doing Tarantula Quest",
     "hideWhenNotInCastle": "Hide When Not in the Castle/Doing Sven Quest",
-    "dungeonDeathCounter": "地下城死亡计数"
+    "dungeonDeathCounter": "地下城死亡计数",
+    "showPersonalCompactorPreview": "随身压缩机预览"
   },
   "messages": {
     "enchants": "附魔",
@@ -222,8 +223,8 @@
     "reforgeInclusionExample": "例如: \"godly, strong\"",
     "reforgeExclusionExample": "例如: \"odd, clean\"",
     "actionsLeft": "剩余 %number%",
-    "effectActive": "1 Effect Active",
-    "effectsActive": "%number% Effects Active"
+    "effectActive": "已激活 1 种药水效果",
+    "effectsActive": "已激活 %number% 种药水效果"
   },
   "discordStatus": {
     "titleNone": "无",
@@ -272,7 +273,7 @@
     "sba.help.copyEntity.entityNames": "你想要复制数据的实体种类（例如 Player, Creeper）。输入指令后按“'Tab”来获取完整列表。使用英文逗号分隔多个种类，且种类区分大小写。",
     "sba.help.copyEntity.radius": "进行复制NBT数据的玩家范围（按格计算）。",
     "sba.help.copySidebar.formatted": "决定格式代码是否被复制。值可以为 \"true\" 或 \"false\"，默认值为 \"false\"。若为 \"true\" 则复制格式代码。",
-    "sba.help.copyTabList": "This command copies the header and footer of the tab player list. Formatting codes are included.",
+    "sba.help.copyTabList": "此命令复制玩家列表标签的页眉和页脚(其中包含样式代码)。",
     "sba.help.dev": "此命令将开启开发者模式。这个模式是为空岛生存模组和工具开发者所设计。它会给予例如实体和物品NBT的源数据。",
     "sba.help.help.command": "此子命令来获取详细的用法",
     "sba.help.set.zealotCounter": "手动设置末影战士计数器。",
@@ -284,7 +285,7 @@
     "sba.set.zealotCounter.totalZealots": "已设置总计末影战士击杀数为 %number%！",
     "sba.set.zealotCounter.wrongUsage": "无效选项！请选择 %options%。",
     "sba.set.zealotCounter.zealots": "已设置自上次召唤之眼掉落后的末影战士击杀数为 %number%！",
-    "sba.toggleActionBarLogging": "§e(Dev) §7Toggle logging action bar messages",
+    "sba.toggleActionBarLogging": "§e(开发者) §7切换日志操作栏消息",
     "sba.toggleActionBarLogging.disabled": "操作栏消息将不再被记录。",
     "sba.toggleActionBarLogging.enabled": "操作栏消息现在将被记录。",
     "sba.wrongUsage.generic": "错误用法！",
@@ -306,13 +307,13 @@
     "recentDragons": "Recent Dragons:",
     "dragonsSince": "Dragons Since:",
     "aspectOfTheDragons": "龙族之刃",
-    "enderDragonPet": "Dragon Pet",
-    "eyesPlaced": "Eyes Placed",
+    "enderDragonPet": "宠物龙",
+    "eyesPlaced": "放置的召唤之眼数",
     "never": "从不"
   },
   "slayerTracker": {
     "revenant": "Revenant Horror:",
-    "revenantFlesh": "Revenant Flesh",
+    "revenantFlesh": "亡灵腐肉",
     "foulFlesh": "Foul Flesh",
     "pestilenceRune": "Pestilence Rune",
     "undeadCatalyst": "Undead Catalyst",
@@ -328,7 +329,7 @@
     "baneOfArthropodsSix": "Bane Of Arthropods 6",
     "biteRune": "Bite Rune",
     "flySwatter": "Fly Swatter",
-    "tarantulaTalisman": "Tarantula Talisman",
+    "tarantulaTalisman": "狼蛛护符",
     "digestedMosquito": "Digested Mosquito",
     "sven": "Sven Packmaster:",
     "wolfTooth": "Wolf Tooth",
@@ -336,8 +337,8 @@
     "spiritRune": "Spirit Rune",
     "criticalSix": "Critical 6",
     "grizzlyBait": "Grizzly Bait",
-    "redClawEgg": "Red Claw Egg",
-    "overfluxCapacitor": "Overflux Capacitor",
+    "redClawEgg": "红爪之卵",
+    "overfluxCapacitor": "过载电容",
     "coutureRune": "Couture Rune",
     "bossesKilled": "Bosses Killed"
   }

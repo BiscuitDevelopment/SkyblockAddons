@@ -157,7 +157,8 @@
     "hideWhenNotInCrypts": "Hide When Not in the Crypts/Doing Revenant Quest",
     "hideWhenNotInSpidersDen": "Hide When Not in the Spiders Den/Doing Tarantula Quest",
     "hideWhenNotInCastle": "Hide When Not in the Castle/Doing Sven Quest",
-    "dungeonDeathCounter": "Conteggio morti nel dungeon"
+    "dungeonDeathCounter": "Conteggio morti nel dungeon",
+    "showPersonalCompactorPreview": "Show Personal Compactor Preview"
   },
   "messages": {
     "enchants": "Incantesimi",
