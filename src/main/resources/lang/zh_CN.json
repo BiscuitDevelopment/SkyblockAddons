@@ -158,7 +158,9 @@
     "hideWhenNotInSpidersDen": "Hide When Not in the Spiders Den/Doing Tarantula Quest",
     "hideWhenNotInCastle": "Hide When Not in the Castle/Doing Sven Quest",
     "dungeonDeathCounter": "地下城死亡计数",
-    "showPersonalCompactorPreview": "随身压缩机预览"
+    "showPersonalCompactorPreview": "随身压缩机预览",
+    "rockPetTracker": "Rock Pet Tracker",
+    "dolphinPetTracker": "Dolphin Pet Tracker"
   },
   "messages": {
     "enchants": "附魔",
