@@ -147,9 +147,9 @@
     "dungeonsCollectedEssencesDisplay": "Mostrador de Esencia Colectada en Dungeons",
     "stopBonzoStaffSounds": "Desactivar Sonidos de Bonzo’s Staff",
     "showRarityUpgraded": "Mostrar si la Rareza del Objeto ha sido Mejorada",
-    "revenantSlayerTracker": "Slayer Tracker - Revenant/Zombie",
-    "tarantulaSlayerTracker": "Slayer Tracker - Tarantula/Spider",
-    "svenSlayerTracker": "Slayer Tracker - Sven/Wolf",
+    "revenantSlayerTracker": "Rastreador de Slayer - Revenant/Zombi",
+    "tarantulaSlayerTracker": "Rastreador de Slayer - Tarantula/Araña",
+    "svenSlayerTracker": "Rastreador de Slayer - Sven/Lobo",
     "textMode": "Modo Texto",
     "dragonsNestOnly": "Solo Mostrar en el Nido del Dragón",
     "dragonStatsTracker": "Rastreador de Dragones",
@@ -310,8 +310,8 @@
     "dragonsSince": "Dragones Desde:",
     "aspectOfTheDragons": "ADLD",
     "enderDragonPet": "Dragon Pet",
-    "eyesPlaced": "Eyes Placed",
-    "never": "Never"
+    "eyesPlaced": "Ojos Colocados",
+    "never": "Nunca"
   },
   "slayerTracker": {
     "revenant": "Revenant Horror:",
