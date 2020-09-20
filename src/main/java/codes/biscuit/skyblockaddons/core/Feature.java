@@ -164,6 +164,9 @@ public enum Feature {
     DUNGEON_DEATH_COUNTER(136, Message.SETTING_DUNGEON_DEATH_COUNTER, new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.RED), true),
     SHOW_PERSONAL_COMPACTOR_PREVIEW(137, null, false),
 
+    ROCK_PET_TRACKER(138, "settings.rockPetTracker", new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.GRAY), true),
+    DOLPHIN_PET_TRACKER(139, "settings.dolphinPetTracker", new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.AQUA), true),
+
     WARNING_TIME(-1, Message.SETTING_WARNING_DURATION, false),
 
     WARP_ADVANCED_MODE(-1, Message.SETTING_ADVANCED_MODE, true),
@@ -208,7 +211,8 @@ public enum Feature {
             DEFENCE_PERCENTAGE, HEALTH_BAR, HEALTH_TEXT, SKELETON_BAR, HEALTH_UPDATES, ITEM_PICKUP_LOG, DARK_AUCTION_TIMER, SKILL_DISPLAY, SPEED_PERCENTAGE,
             SLAYER_INDICATOR, POWER_ORB_STATUS_DISPLAY, ZEALOT_COUNTER, TICKER_CHARGES_DISPLAY, TAB_EFFECT_TIMERS, SHOW_TOTAL_ZEALOT_COUNT, SHOW_SUMMONING_EYE_COUNT,
             SHOW_AVERAGE_ZEALOTS_PER_EYE, BIRCH_PARK_RAINMAKER_TIMER, COMBAT_TIMER_DISPLAY, ENDSTONE_PROTECTOR_DISPLAY, BAIT_LIST, DUNGEONS_MAP_DISPLAY, SHOW_DUNGEON_MILESTONE,
-            DUNGEONS_COLLECTED_ESSENCES_DISPLAY, REVENANT_SLAYER_TRACKER, TARANTULA_SLAYER_TRACKER, SVEN_SLAYER_TRACKER, DRAGON_STATS_TRACKER, DUNGEON_DEATH_COUNTER));
+            DUNGEONS_COLLECTED_ESSENCES_DISPLAY, REVENANT_SLAYER_TRACKER, TARANTULA_SLAYER_TRACKER, SVEN_SLAYER_TRACKER, DRAGON_STATS_TRACKER, DUNGEON_DEATH_COUNTER,
+            ROCK_PET_TRACKER, DOLPHIN_PET_TRACKER));
 
     /**
      * These are features that are displayed separate, on the general tab.
@@ -223,12 +227,26 @@ public enum Feature {
     private List<EnumUtils.FeatureSetting> settings;
     private GuiFeatureData guiFeatureData;
     private boolean defaultDisabled;
-
-    private static final Set<Integer> ALREADY_REGISTERED_IDS = new HashSet<>();
+    private String messagePath;
 
     Feature(int id, Message settingMessage, GuiFeatureData guiFeatureData, boolean defaultDisabled, EnumUtils.FeatureSetting... settings) { // color & gui scale settings added automatically
         this.id = id;
         this.message = settingMessage;
+        this.settings = new ArrayList<>(Arrays.asList(settings));
+        this.guiFeatureData = guiFeatureData;
+        this.defaultDisabled = defaultDisabled;
+
+        Set<Integer> registeredFeatureIDs = SkyblockAddons.getInstance().getRegisteredFeatureIDs();
+        if (id != -1 && registeredFeatureIDs.contains(id)) {
+            throw new RuntimeException("Multiple features have the same IDs!");
+        } else {
+            registeredFeatureIDs.add(id);
+        }
+    }
+
+    Feature(int id, String messagePath, GuiFeatureData guiFeatureData, boolean defaultDisabled, EnumUtils.FeatureSetting... settings) {
+        this.id = id;
+        this.messagePath = messagePath;
         this.settings = new ArrayList<>(Arrays.asList(settings));
         this.guiFeatureData = guiFeatureData;
         this.defaultDisabled = defaultDisabled;
@@ -246,11 +264,16 @@ public enum Feature {
     }
 
     public boolean isActualFeature() {
-        return id != -1 && message != null && getMessage() != null && !SETTINGS.contains(this);
+        return id != -1 && getMessage() != null && !SETTINGS.contains(this);
     }
 
     public String getMessage(String... variables) {
-        return message.getMessage(variables);
+        if (message != null) {
+            return message.getMessage(variables);
+        } else if (messagePath != null) {
+            return Translations.getMessage(messagePath, variables);
+        }
+        return null;
     }
 
     public static Feature fromId(int id) {

@@ -2,7 +2,7 @@ package codes.biscuit.skyblockaddons;
 
 import codes.biscuit.skyblockaddons.commands.SkyblockAddonsCommand;
 import codes.biscuit.skyblockaddons.config.ConfigValues;
-import codes.biscuit.skyblockaddons.config.PersistentValues;
+import codes.biscuit.skyblockaddons.config.PersistentValuesManager;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.Message;
 import codes.biscuit.skyblockaddons.core.OnlineData;
@@ -23,6 +23,7 @@ import codes.biscuit.skyblockaddons.utils.DungeonUtils;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.InventoryUtils;
 import codes.biscuit.skyblockaddons.utils.Utils;
+import com.google.gson.Gson;
 import lombok.Getter;
 import lombok.Setter;
 import net.minecraft.client.Minecraft;
@@ -50,9 +51,10 @@ public class SkyblockAddons {
 
     @Getter private static SkyblockAddons instance;
     private final Logger logger;
+    private static final Gson GSON = new Gson();
 
     private ConfigValues configValues;
-    private PersistentValues persistentValues;
+    private PersistentValuesManager persistentValuesManager;
     private PlayerListener playerListener;
     private GuiScreenListener guiScreenListener;
     private RenderListener renderListener;
@@ -91,7 +93,7 @@ public class SkyblockAddons {
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent e) {
         configValues = new ConfigValues(e.getSuggestedConfigurationFile());
-        persistentValues = new PersistentValues(e.getModConfigurationDirectory());
+        persistentValuesManager = new PersistentValuesManager(e.getModConfigurationDirectory());
     }
 
     @Mod.EventHandler
@@ -119,7 +121,7 @@ public class SkyblockAddons {
     public void postInit(FMLPostInitializationEvent e) {
         DataUtils.readLocalAndFetchOnline();
         configValues.loadValues();
-        persistentValues.loadValues();
+        persistentValuesManager.loadValues();
 
         setKeyBindingDescriptions();
 
@@ -196,6 +198,10 @@ public class SkyblockAddons {
         for (SkyblockKeyBinding skyblockKeyBinding : keyBindings) {
             skyblockKeyBinding.getKeyBinding().keyDescription = skyblockKeyBinding.getMessage().getMessage();
         }
+    }
+
+    public static Gson getGson() {
+        return GSON;
     }
 
     // This replaces the version placeholder if the mod is built using IntelliJ instead of Gradle.

@@ -5,9 +5,8 @@ import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.Language;
 import codes.biscuit.skyblockaddons.features.discordrpc.DiscordStatus;
 import codes.biscuit.skyblockaddons.misc.ChromaManager;
-import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
-import codes.biscuit.skyblockaddons.utils.Utils;
+import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.objects.FloatPair;
 import codes.biscuit.skyblockaddons.utils.objects.IntPair;
 import com.google.gson.*;
@@ -79,7 +78,7 @@ public class ConfigValues {
     public void loadValues() {
         try {
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream("default.json")));
-            defaultValues = Utils.getGson().fromJson(bufferedReader, JsonObject.class);
+            defaultValues = SkyblockAddons.getGson().fromJson(bufferedReader, JsonObject.class);
 
             deserializeFeatureFloatCoordsMapFromID(defaultValues, defaultCoordinates, "coordinates");
             deserializeEnumEnumMapFromIDS(defaultValues, defaultAnchorPoints, "anchorPoints", Feature.class, EnumUtils.AnchorPoint.class);

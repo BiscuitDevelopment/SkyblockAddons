@@ -1,5 +1,6 @@
 package codes.biscuit.skyblockaddons.utils;
 
+import codes.biscuit.skyblockaddons.SkyblockAddons;
 import com.google.gson.JsonObject;
 import org.apache.commons.lang3.text.WordUtils;
 
@@ -175,7 +176,7 @@ public class TextUtils {
         JsonObject root = new JsonObject();
         root.add("textures", textures);
 
-        return Base64.getEncoder().encodeToString(Utils.getGson().toJson(root).getBytes(StandardCharsets.UTF_8));
+        return Base64.getEncoder().encodeToString(SkyblockAddons.getGson().toJson(root).getBytes(StandardCharsets.UTF_8));
     }
 
     public static String abbreviate(int number) {

@@ -198,7 +198,7 @@ public class GuiContainerHook {
             // Draw crafting pattern overlays inside the crafting grid.
             if (main.getConfigValues().isEnabled(Feature.CRAFTING_PATTERNS) && main.getUtils().isOnSkyblock()
                     && slot.inventory.getDisplayName().getUnformattedText().equals(CraftingPattern.CRAFTING_TABLE_DISPLAYNAME)
-                    && main.getPersistentValues().getSelectedCraftingPattern() != CraftingPattern.FREE) {
+                    && main.getPersistentValuesManager().getPersistentValues().getSelectedCraftingPattern() != CraftingPattern.FREE) {
 
                 int craftingGridIndex = CraftingPattern.slotToCraftingGridIndex(slot.getSlotIndex());
                 if (craftingGridIndex >= 0) {
@@ -206,7 +206,7 @@ public class GuiContainerHook {
                     int slotTop = slot.yDisplayPosition;
                     int slotRight = slotLeft + 16;
                     int slotBottom = slotTop + 16;
-                    if (main.getPersistentValues().getSelectedCraftingPattern().isSlotInPattern(craftingGridIndex)) {
+                    if (main.getPersistentValuesManager().getPersistentValues().getSelectedCraftingPattern().isSlotInPattern(craftingGridIndex)) {
                         if (!slot.getHasStack()) {
                             guiContainer.drawGradientRect(slotLeft, slotTop, slotRight, slotBottom, OVERLAY_GREEN, OVERLAY_GREEN);
                         }

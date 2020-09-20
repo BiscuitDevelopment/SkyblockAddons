@@ -1,11 +1,13 @@
 package codes.biscuit.skyblockaddons.utils;
 
+import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.ItemRarity;
 import codes.biscuit.skyblockaddons.utils.skyblockdata.PetInfo;
 import codes.biscuit.skyblockaddons.utils.skyblockdata.Rune;
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
@@ -270,7 +272,7 @@ public class ItemUtils {
                 return null;
             }
 
-            return Utils.getGson().fromJson(extraAttributes.getString("petInfo"), PetInfo.class);
+            return SkyblockAddons.getGson().fromJson(extraAttributes.getString("petInfo"), PetInfo.class);
         }
 
         return null;
@@ -399,5 +401,67 @@ public class ItemUtils {
         }
 
         return Collections.emptyList();
+    }
+
+    public static ItemStack createItemStack(Item item, boolean enchanted) {
+        return createItemStack(item, 0, null, null, enchanted);
+    }
+
+    public static ItemStack createItemStack(Item item, String name, String skyblockID, boolean enchanted) {
+        return createItemStack(item, 0, name, skyblockID, enchanted);
+    }
+
+    public static ItemStack createItemStack(Item item, int meta, String name, String skyblockID, boolean enchanted) {
+        ItemStack stack = new ItemStack(item, 1, meta);
+
+        if (name != null) {
+            stack.setStackDisplayName(name);
+        }
+
+        if (enchanted) {
+            stack.addEnchantment(Enchantment.protection, 0);
+        }
+
+        if (skyblockID != null) {
+            setItemStackSkyblockID(stack, skyblockID);
+        }
+
+        return stack;
+    }
+
+    public static ItemStack createSkullItemStack(String name, String skyblockID, String skullID, String textureURL) {
+        ItemStack stack = new ItemStack(Items.skull, 1, 3);
+
+        NBTTagCompound texture = new NBTTagCompound();
+        texture.setString("Value", TextUtils.encodeSkinTextureURL(textureURL));
+
+        NBTTagList textures = new NBTTagList();
+        textures.appendTag(texture);
+
+        NBTTagCompound properties = new NBTTagCompound();
+        properties.setTag("textures", textures);
+
+        NBTTagCompound skullOwner = new NBTTagCompound();
+        skullOwner.setTag("Properties", properties);
+
+        skullOwner.setString("Id", skullID);
+
+        stack.setTagInfo("SkullOwner", skullOwner);
+
+        if (name != null) {
+            stack.setStackDisplayName(name);
+        }
+
+        if (skyblockID != null) {
+            setItemStackSkyblockID(stack, skyblockID);
+        }
+
+        return stack;
+    }
+
+    public static void setItemStackSkyblockID(ItemStack itemStack, String skyblockID) {
+        NBTTagCompound extraAttributes = new NBTTagCompound();
+        extraAttributes.setString("id", skyblockID);
+        itemStack.setTagInfo("ExtraAttributes", extraAttributes);
     }
 }

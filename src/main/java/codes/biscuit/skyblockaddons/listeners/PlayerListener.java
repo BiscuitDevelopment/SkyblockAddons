@@ -257,9 +257,9 @@ public class PlayerListener {
                 }
                 if (main.getConfigValues().isEnabled(Feature.ZEALOT_COUNTER)) {
                     // Edit the message to include counter.
-                    e.message = new ChatComponentText(formattedText + ColorCode.GRAY + " (" + main.getPersistentValues().getKills() + ")");
+                    e.message = new ChatComponentText(formattedText + ColorCode.GRAY + " (" + main.getPersistentValuesManager().getPersistentValues().getKills() + ")");
                 }
-                main.getPersistentValues().addEyeResetKills();
+                main.getPersistentValuesManager().addEyeResetKills();
 
             } else if (main.getConfigValues().isEnabled(Feature.LEGENDARY_SEA_CREATURE_WARNING) && LEGENDARY_SEA_CREATURE_MESSAGES.contains(unformattedText)) {
                 main.getUtils().playLoudSound("random.orb", 0.5);
@@ -373,10 +373,12 @@ public class PlayerListener {
                 matcher = PROFILE_CHAT_PATTERN.matcher(formattedText);
                 if (matcher.matches()) {
                     main.getUtils().setProfileName(matcher.group(1));
+                    APIManager.getInstance().pullInitialData();
                 } else {
                     matcher = SWITCH_PROFILE_CHAT_PATTERN.matcher(formattedText);
                     if (matcher.matches()) {
                         main.getUtils().setProfileName(matcher.group(1));
+                        APIManager.getInstance().pullInitialData();
                     }
                 }
             }
@@ -574,7 +576,8 @@ public class PlayerListener {
     public void onDeath(LivingDeathEvent e) {
         if (e.entity instanceof EntityEnderman) {
             if (countedEndermen.remove(e.entity.getUniqueID())) {
-                main.getPersistentValues().addKill();
+                main.getPersistentValuesManager().getPersistentValues().setKills(main.getPersistentValuesManager().getPersistentValues().getKills() + 1);
+                main.getPersistentValuesManager().saveValues();
                 EndstoneProtectorManager.onKill();
             } else if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.ZEALOT_COUNTER_EXPLOSIVE_BOW_SUPPORT)) {
                 if (isZealot(e.entity)) {
@@ -602,7 +605,8 @@ public class PlayerListener {
                     if (explosionLocation.distanceTo(deathLocation) < 4.6) {
 //                        possibleZealotsKilled--;
 
-                        main.getPersistentValues().addKill();
+                        main.getPersistentValuesManager().getPersistentValues().setKills(main.getPersistentValuesManager().getPersistentValues().getKills() + 1);
+                        main.getPersistentValuesManager().saveValues();
                         EndstoneProtectorManager.onKill();
                     }
 
@@ -727,7 +731,8 @@ public class PlayerListener {
                                     if (distance < 4.6) {
 //                                        possibleZealotsKilled--;
 
-                                        main.getPersistentValues().addKill();
+                                        main.getPersistentValuesManager().getPersistentValues().setKills(main.getPersistentValuesManager().getPersistentValues().getKills() + 1);
+                                        main.getPersistentValuesManager().saveValues();
                                         EndstoneProtectorManager.onKill();
                                     }
                                 }

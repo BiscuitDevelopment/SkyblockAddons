@@ -10,7 +10,7 @@ import java.util.*;
 
 public class DragonTracker {
 
-    @Getter private static DragonTracker instance = new DragonTracker();
+    @Getter private static DragonTracker instance;
 
     @Getter private List<DragonType> recentDragons = new LinkedList<>();
     @Getter private Map<DragonsSince, Integer> dragonsSince = new EnumMap<>(DragonsSince.class);
@@ -22,6 +22,10 @@ public class DragonTracker {
 
     // Saves the last second of inventory differences
     private transient Map<Long, List<ItemDiff>> recentInventoryDifferences = new HashMap<>();
+
+    public DragonTracker() {
+        instance = this;
+    }
 
     public int getDragsSince(DragonsSince dragonsSince) {
         return this.dragonsSince.getOrDefault(dragonsSince, 0);
@@ -48,7 +52,7 @@ public class DragonTracker {
             eyesPlaced += eyesToPlace;
             eyesToPlace = 0;
 
-            SkyblockAddons.getInstance().getPersistentValues().saveValues();
+            SkyblockAddons.getInstance().getPersistentValuesManager().saveValues();
         }
     }
 
@@ -81,13 +85,13 @@ public class DragonTracker {
                 switch (skyBlockItemID) {
                     case "ASPECT_OF_THE_DRAGON":
                         dragonsSince.put(DragonsSince.ASPECT_OF_THE_DRAGONS, 0);
-                        SkyblockAddons.getInstance().getPersistentValues().saveValues();
+                        SkyblockAddons.getInstance().getPersistentValuesManager().saveValues();
                         break;
                     case "PET":
                         PetInfo petInfo = ItemUtils.getPetInfo(itemDifference.getExtraAttributes());
                         if (petInfo != null && "ENDER_DRAGON".equals(petInfo.getType())) {
                             dragonsSince.put(DragonsSince.ENDER_DRAGON_PET, 0);
-                            SkyblockAddons.getInstance().getPersistentValues().saveValues();
+                            SkyblockAddons.getInstance().getPersistentValuesManager().saveValues();
                         }
                         break;
                     default:

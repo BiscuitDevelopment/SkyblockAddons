@@ -138,7 +138,7 @@ public class PlayerControllerMPHook {
                 if (slotIn != null && main.getInventoryUtils().getInventoryType() == InventoryType.CRAFTING_TABLE
                         && main.getConfigValues().isEnabled(Feature.CRAFTING_PATTERNS)) {
 
-                    final CraftingPattern selectedPattern = main.getPersistentValues().getSelectedCraftingPattern();
+                    final CraftingPattern selectedPattern = main.getPersistentValuesManager().getPersistentValues().getSelectedCraftingPattern();
                     final ItemStack clickedItem = slotIn.getStack();
                     if (selectedPattern != CraftingPattern.FREE && clickedItem != null) {
                         final ItemStack[] craftingGrid = new ItemStack[9];
@@ -161,7 +161,7 @@ public class PlayerControllerMPHook {
                         } else {
                             if (slotIn.getSlotIndex() == CraftingPattern.CRAFTING_RESULT_INDEX
                                     && !result.isSatisfied()
-                                    && main.getPersistentValues().isBlockCraftingIncompletePatterns()) {
+                                    && main.getPersistentValuesManager().getPersistentValues().isBlockCraftingIncompletePatterns()) {
                                 // cancel clicking the result if the pattern isn't satisfied
                                 if (System.currentTimeMillis() > lastCraftingSoundPlayed + CRAFTING_PATTERN_SOUND_COOLDOWN) {
                                     main.getUtils().playSound("note.bass", 0.5);
