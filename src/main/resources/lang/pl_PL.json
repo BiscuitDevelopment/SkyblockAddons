@@ -39,7 +39,7 @@
     "darkAuctionTimer": "Zegar Dark Auction",
     "magmaBossTimer": "Zegar Magma Bossa",
     "itemPickupLog": "Wykaz podniesionych przedmiotów",
-    "avoidPlacingEnchantedItems": "Zablokuj stawianie zaklętych przedmiotów",
+    "avoidPlacingEnchantedItems": "Zapobiegaj stawianiu zaklętych przedmiotów",
     "avoidBreakingStems": "Zablokuj niszczenie łodyg",
     "stopBowChargeFromResetting": "Wyłącz resetowanie się naładowania łuku",
     "preventMovementOnDeath": "Zablokuj poruszanie się po śmierci",
@@ -54,12 +54,12 @@
     "useVanillaTexture": "Use the Vanilla Texture",
     "textStyle": "Styl tekstu",
     "textStyles": {
-      "one": "Style One",
-      "two": "Style Two"
+      "one": "Styl pierwszy",
+      "two": "Styl drugi"
     },
     "warningDuration": "Warning Duration",
     "dontOpenProfileWithBow": "Don't Open Profile With Bow",
-    "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Items",
+    "stopDroppingSellingRareItems": "Nie upuszczaj/sprzedawaj rzadkich przedmiotów",
     "makeBackpackInventoriesColored": "Color Inventories",
     "avoidBreakingBottomSugarCane": "Zablokuj niszczenie dolnej części trzciny cukrowej",
     "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Items",
@@ -98,7 +98,7 @@
     "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
     "enableDevFeatures": "Enable Developer Features",
     "chromaSpeed": "Prędkość zmiany kolorów",
-    "chromaMode": "Chroma Color Mode",
+    "chromaMode": "Tryb koloru Chroma",
     "chromaModes": {
       "allTheSame": "Wszystkie w jednym kolorze",
       "fade": "Blaknięcie koloru"
@@ -206,7 +206,7 @@
     "setHexColor": "Set Hex Color",
     "rescaleFeatures": "Rescale Features",
     "resizeBars": "Resize Bars",
-    "showColorIcons": "Show Color Icons",
+    "showColorIcons": "Pokaż ikony kolorów",
     "enableFeatureSnapping": "Enable Feature Snapping",
     "stage": "Etap %stage%",
     "switchedSlots": "You have just switched from a locked slot or rare item. Please wait a bit before dropping!",
@@ -233,7 +233,7 @@
     "descriptionNone": "Brak wyświetlanego tekstu",
     "titleLocation": "Położenie",
     "descriptionLocation": "Pokazuje Twoje obecne położenie",
-    "titlePurse": "Purse",
+    "titlePurse": "Portfel",
     "descriptionPurse": "Pokazuje ilość monet w Twoim portfelu",
     "titleStats": "Statystyki",
     "descriptionStats": "Pokazuje Twoje punkty zdrowia, obrony i many",
@@ -247,7 +247,7 @@
     "descriptionTime": "Shows the current Skyblock time. E.g. 12:00am 1st Early Winter",
     "titleCustom": "Własny status",
     "descriptionCustom": "Wprowadź własny status",
-    "titleAuto": "Auto Status",
+    "titleAuto": "Automatyczny status",
     "descriptionAuto": "Automatycznie wyświetla status. Np. liczba zealotów, gdy jesteś w Kresie.",
     "titleRevenants": "Revenant Quest",
     "descriptionRevenants": "Shows that you are doing a Revenant quest.",
@@ -262,8 +262,8 @@
     "sba.brand.brandOutput": "API Serwera: %brand%",
     "sba.brand.notFound": "API Serwera nie znalezione!",
     "sba.copyEntity": "§e(Dev) §7Copy NBT data for entities of the given name(s) within the given radius around the player",
-    "sba.copySidebar": "§e(Dev) §7Copy the scoreboard text",
-    "sba.copyTabList": "§e(Dev) §7Copy the tab list header and footer",
+    "sba.copySidebar": "§e(Dev) §7Skopiuj tekst tablicy wyników",
+    "sba.copyTabList": "§e(Dev) §7Skopiuj nagłówek i stopkę z tab listy",
     "sba.dev": "Włącz tryb programisty",
     "sba.dev.disabled": "Developer mode disabled!",
     "sba.dev.enabled": "Developer mode enabled! TIP: Press \"%keyName%\" to copy NBT data!",
@@ -275,7 +275,7 @@
     "sba.help.copyEntity.entityNames": "Names of the types of entities you want to copy data for (e.g. Player, Creeper). Press \"Tab\" after typing the command for a full list. Separate multiple names with commas, names are case-sensitive.",
     "sba.help.copyEntity.radius": "The radius(in blocks) around the player to copy entity NBT data from",
     "sba.help.copySidebar.formatted": "Determines if the formatting codes should be included when copying. Can be either \"true\" or \"false\", defaults to \"false\" if no value is provided. Formatting codes are copied if \"true\".",
-    "sba.help.copyTabList": "This command copies the header and footer of the tab player list. Formatting codes are included.",
+    "sba.help.copyTabList": "Ta komenda kopiuję nagłówek i stopkę tab listy graczy. Łącznie z kodami formatującymi.",
     "sba.help.dev": "This command toggles developer mode. This mode is meant for developers Skyblock mods/tools. It provides raw data from the game such as entity and item NBT.",
     "sba.help.help.command": "the sub-command to get detailed usage for",
     "sba.help.set.zealotCounter": "Manually sets counts in the zealot counter.",
@@ -342,6 +342,6 @@
     "redClawEgg": "Red Claw Egg",
     "overfluxCapacitor": "Overflux Capacitor",
     "coutureRune": "Couture Rune",
-    "bossesKilled": "Bosses Killed"
+    "bossesKilled": "Liczba zabitych bossów"
   }
 }
