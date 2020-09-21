@@ -403,6 +403,49 @@ public class ItemUtils {
         return Collections.emptyList();
     }
 
+    /**
+     * Check if the given {@code ItemStack} is an item shown in a menu as a preview or placeholder
+     * (e.g. items in the recipe book).
+     *
+     * @param itemStack the {@code ItemStack} to check
+     * @return {@code true} if {@code itemStack} is an item shown in a menu as a preview or placeholder, {@code false} otherwise
+     */
+    public static boolean isMenuItem(ItemStack itemStack) {
+        if (itemStack == null) {
+            throw new NullPointerException("Item stack cannot be null!");
+        }
+
+        if (itemStack.hasTagCompound() && itemStack.getTagCompound().hasKey("ExtraAttributes", 10)) {
+            NBTTagCompound extraAttributesTag = itemStack.getSubCompound("ExtraAttributes", false);
+
+            // If this item stack is a menu item, it won't have this key.
+            return !extraAttributesTag.hasKey("uuid");
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * Checks if the given {@code ItemStack} is a Skyblock item.
+     *
+     * @param itemStack the {@code ItemStack} to check
+     * @return {@code true} if {@code itemStack} is a Skyblock item, or {@code false} if it's not
+     */
+    public static boolean isSkyblockItem(ItemStack itemStack) {
+        if (itemStack == null) {
+            throw new NullPointerException("Item stack cannot be null!");
+        }
+
+        if (itemStack.hasTagCompound() && itemStack.getTagCompound().hasKey("ExtraAttributes", 10)) {
+            NBTTagCompound extraAttributesTag = itemStack.getSubCompound("ExtraAttributes", false);
+
+            // If the Skyblock item ID tag is present, it's a Skyblock item.
+            return extraAttributesTag.hasKey("id", 8);
+        } else {
+            return false;
+        }
+    }
+
     public static ItemStack createItemStack(Item item, boolean enchanted) {
         return createItemStack(item, 0, null, null, enchanted);
     }

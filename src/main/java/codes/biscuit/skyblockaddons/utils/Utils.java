@@ -628,6 +628,7 @@ public class Utils {
     public int getNBTInteger(ItemStack item, String... path) {
         if (item != null && item.hasTagCompound()) {
             NBTTagCompound tag = item.getTagCompound();
+
             for (String tagName : path) {
                 if (path[path.length-1].equals(tagName)) continue;
                 if (tag.hasKey(tagName)) {
@@ -924,7 +925,7 @@ public class Utils {
         String text;
         try {
             SkyblockAddons main = SkyblockAddons.getInstance();
-            List<String> path = new LinkedList<String>(Arrays.asList((parentPath).split(Pattern.quote("."))));
+            List<String> path = new LinkedList<>(Arrays.asList((parentPath).split(Pattern.quote("."))));
             JsonObject jsonObject = main.getConfigValues().getLanguageConfig();
             for (String part : path) {
                 if (!part.equals("")) {

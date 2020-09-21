@@ -9,6 +9,8 @@ import codes.biscuit.skyblockaddons.features.cooldowns.CooldownManager;
 import codes.biscuit.skyblockaddons.utils.InventoryUtils;
 import codes.biscuit.skyblockaddons.utils.ItemUtils;
 import codes.biscuit.skyblockaddons.utils.TextUtils;
+import lombok.Getter;
+import lombok.Setter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.init.Blocks;
@@ -31,11 +33,14 @@ public class GuiScreenHook {
      * This is to stop multiple methods that handle similar logic from
      * performing the same actions multiple times.
      */
-    private static long lastBackpackFreezeKey = -1;
+    @Getter @Setter private static long lastBackpackFreezeKey = -1;
 
+    //TODO Fix for Hypixel localization
     public static void renderBackpack(ItemStack stack, int x, int y, ReturnValue<?> returnValue) {
         SkyblockAddons main = SkyblockAddons.getInstance();
-        if ((stack.getItem() == Items.skull || stack.getItem() == Item.getItemFromBlock(Blocks.dropper)) && main.getConfigValues().isEnabled(Feature.SHOW_BACKPACK_PREVIEW)) {
+
+        if (main.getConfigValues().isEnabled(Feature.SHOW_BACKPACK_PREVIEW) && (stack.getItem() == Items.skull ||
+                stack.getItem() == Item.getItemFromBlock(Blocks.dropper)) ) {
             if (main.getConfigValues().isEnabled(Feature.SHOW_BACKPACK_HOLDING_SHIFT) && !GuiScreen.isShiftKeyDown()) {
                 return;
             }
@@ -64,14 +69,14 @@ public class GuiScreenHook {
                  Don't render the backpack preview if in the backpack is used to represent a crafting recipe or the
                  result of one.
                  */
-                if (BackpackManager.isBackpackCraftingMenuItem(stack)) {
+                if (ItemUtils.isMenuItem(stack)) {
                     return;
                 }
 
                 containerPreview.setX(x);
                 containerPreview.setY(y);
                 if (isFreezeKeyDown() && System.currentTimeMillis() - lastBackpackFreezeKey > 500) {
-                    lastBackpackFreezeKey = System.currentTimeMillis();
+                    lastBackpackFreezeKey = Minecraft.getSystemTime();
                     GuiContainerHook.setFreezeBackpack(!GuiContainerHook.isFreezeBackpack());
                     main.getUtils().setContainerPreviewToRender(containerPreview);
                 }
@@ -83,6 +88,14 @@ public class GuiScreenHook {
             }
 
             if (main.getConfigValues().isEnabled(Feature.SHOW_PERSONAL_COMPACTOR_PREVIEW)) {
+                /*
+                 Don't render the compactor preview if in the backpack is used to represent a crafting recipe or the
+                 result of one.
+                 */
+                if (ItemUtils.isMenuItem(stack)) {
+                    return;
+                }
+
                 ItemStack[] items = ItemUtils.getPersonalCompactorContents(stack);
 
                 if (items != null) {
@@ -108,6 +121,11 @@ public class GuiScreenHook {
         }
     }
 
+    /**
+     * Returns whether the backpack freeze key is down
+     *
+     * @return {@code true} if the backpack freeze key is down, {@code false} otherwise
+     */
     private static boolean isFreezeKeyDown() {
         SkyblockAddons main = SkyblockAddons.getInstance();
 
@@ -126,13 +144,5 @@ public class GuiScreenHook {
                 !CooldownManager.isOnCooldown(InventoryUtils.MADDOX_BATPHONE_DISPLAYNAME)) {// The prompt when Maddox picks up the phone.
             CooldownManager.put(InventoryUtils.MADDOX_BATPHONE_DISPLAYNAME, MADDOX_BATPHONE_COOLDOWN);
         }
-    }
-
-    static long getLastBackpackFreezeKey() {
-        return lastBackpackFreezeKey;
-    }
-
-    static void setLastBackpackFreezeKey(long lastBackpackFreezeKey) {
-        GuiScreenHook.lastBackpackFreezeKey = lastBackpackFreezeKey;
     }
 }

@@ -120,24 +120,6 @@ public class BackpackManager {
     }
 
     /**
-     * Checks if the given {@code ItemStack} is a backpack that represents its crafting recipe in the recipes menu or the
-     * item the player is currently crafting in the crafting menu
-     *
-     * @param stack the {@code ItemStack} to check
-     * @return {@code true} if {@code stack} is a backpack and represents its crafting recipe or the item the player is crafting, or {@code false} otherwise
-     */
-    public static boolean isBackpackCraftingMenuItem(ItemStack stack) {
-        if (!isBackpack(stack)) {
-            return false;
-        }
-
-        NBTTagCompound extraAttributesTag = stack.getSubCompound("ExtraAttributes", false);
-
-        // If the backpack is being used to represent a crafting recipe, it won't have this key.
-        return extraAttributesTag != null && !extraAttributesTag.hasKey("uuid");
-    }
-
-    /**
      * Returns the color of the backpack the player currently has open
      *
      * @return the color of the backpack the player currently has open
