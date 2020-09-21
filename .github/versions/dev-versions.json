@@ -1,7 +1,7 @@
 {
     "homepage": "https://biscuit.codes/mods/skyblockaddons/downloadversion/?v=latest",
     "promos": {
-        "1.8.9-latest": "1.5.2"
+        "1.8.9-latest": "1.5.4"
     },
     "1.8.9": {
         "1.5.1": "New Features:\n- Change Zealot Color (yes, chroma zealots are possible)\n- Hide Sven Pup Nametags\n- Zealot counter now has support for explosive bow (its not 100% accurate yet though, sorry!)\n- Disable Enderman Teleportation Effect (required atm for the explosive bow feature)\n\nBug Fixes:\n- Discord RPC should now hopefully work for everyone\n- Fixed a lot of the new settings not saving after a restart\n- Fixed long warnings going outside of your screen\n- The fancy warp menu should now rescale a bit better if you resize your window while in the menu\n- Fixed location not detecting Colosseum Arena & Duel Zone\n- Fixed tickers display turning green while in the dragon's nest\n\nAnd much more, full changelog on the discord...",
