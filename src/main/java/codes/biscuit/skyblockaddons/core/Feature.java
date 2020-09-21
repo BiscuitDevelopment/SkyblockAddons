@@ -271,7 +271,7 @@ public enum Feature {
         if (message != null) {
             return message.getMessage(variables);
         } else if (messagePath != null) {
-            return Translations.getMessage(messagePath, variables);
+            return Translations.getMessage(messagePath, (Object[]) variables);
         }
         return null;
     }
