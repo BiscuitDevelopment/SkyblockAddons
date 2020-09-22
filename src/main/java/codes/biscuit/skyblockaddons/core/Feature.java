@@ -167,6 +167,8 @@ public enum Feature {
     ROCK_PET_TRACKER(138, "settings.rockPetTracker", new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.GRAY), true),
     DOLPHIN_PET_TRACKER(139, "settings.dolphinPetTracker", new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.AQUA), true),
 
+    SHOW_DUNGEON_TEAMMATE_NAME_OVERLAY(140, "settings.dungeonsTeammateNameOverlay", null, false),
+
     WARNING_TIME(-1, Message.SETTING_WARNING_DURATION, false),
 
     WARP_ADVANCED_MODE(-1, Message.SETTING_ADVANCED_MODE, true),
