@@ -132,7 +132,6 @@ public enum Feature {
     DUNGEONS_COLLECTED_ESSENCES_DISPLAY(112, Message.SETTING_DUNGEONS_COLLECTED_ESSENCES_DISPLAY, new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.YELLOW), false),
     STOP_BONZO_STAFF_SOUNDS(113, Message.SETTING_BONZO_STAFF_SOUNDS, null, true),
     SHOW_RARITY_UPGRADED(114, Message.SETTING_SHOW_RARITY_UPGRADED, new GuiFeatureData(ColorCode.LIGHT_PURPLE, true), false),
-    SHOW_DUNGEON_TEAMMATE_NAME_OVERLAY(115, Message.SETTING_SHOW_DUNGEON_TEAMMATE_NAME_OVERLAY, null, false),
 
     ACTIONS_UNTIL_NEXT_LEVEL(115, null, true),
 
@@ -167,6 +166,8 @@ public enum Feature {
 
     ROCK_PET_TRACKER(138, "settings.rockPetTracker", new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.GRAY), true),
     DOLPHIN_PET_TRACKER(139, "settings.dolphinPetTracker", new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.AQUA), true),
+
+    SHOW_DUNGEON_TEAMMATE_NAME_OVERLAY(140, "settings.dungeonsTeammateNameOverlay", null, false),
 
     WARNING_TIME(-1, Message.SETTING_WARNING_DURATION, false),
 
