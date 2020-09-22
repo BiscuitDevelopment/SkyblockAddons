@@ -160,7 +160,8 @@
     "dungeonDeathCounter": "地下城死亡计数",
     "showPersonalCompactorPreview": "随身压缩机预览",
     "rockPetTracker": "Rock Pet Tracker",
-    "dolphinPetTracker": "Dolphin Pet Tracker"
+    "dolphinPetTracker": "Dolphin Pet Tracker",
+    "dungeonsTeammateNameOverlay": "Dungeons Teammate Name Overlay"
   },
   "messages": {
     "enchants": "附魔",
