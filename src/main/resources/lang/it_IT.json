@@ -78,7 +78,7 @@
     "revenantIndicator": "Indicatore di progresso dell’Armatura Slayer",
     "specialZealotAlert": "Avviso di Zealot Speciale",
     "enableMessageWhenActionPrevented": "Mostra un messaggio quando un’azione viene bloccata",
-    "hidePetHealthBar": "Nascondi la Barra di Vita dell’animale da compagnia",
+    "hidePetHealthBar": "Nascondi la Barra di Vita dell’animale",
     "powerOrbDisplay": "Visualizzazione Power Orb",
     "powerOrbDisplayStyle": "Stile del Power Orb: %style%",
     "powerOrbStyle": {
