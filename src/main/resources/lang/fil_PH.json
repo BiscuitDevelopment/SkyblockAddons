@@ -160,7 +160,8 @@
     "dungeonDeathCounter": "Dungeon Death Counter",
     "showPersonalCompactorPreview": "Show Personal Compactor Preview",
     "rockPetTracker": "Rock Pet Tracker",
-    "dolphinPetTracker": "Dolphin Pet Tracker"
+    "dolphinPetTracker": "Dolphin Pet Tracker",
+    "dungeonsTeammateNameOverlay": "Dungeons Teammate Name Overlay"
   },
   "messages": {
     "enchants": "Enchants",
