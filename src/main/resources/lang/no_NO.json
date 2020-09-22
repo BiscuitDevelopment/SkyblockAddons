@@ -160,7 +160,8 @@
     "dungeonDeathCounter": "Dungeon døds teller",
     "showPersonalCompactorPreview": "Vis Personlig Kompaktor forhåndsvisning",
     "rockPetTracker": "Stein kjæledyr oppfølger",
-    "dolphinPetTracker": "Delfin kjæledyr oppfølger"
+    "dolphinPetTracker": "Delfin kjæledyr oppfølger",
+    "dungeonsTeammateNameOverlay": "Dungeons Teammate Name Overlay"
   },
   "messages": {
     "enchants": "Fortryllinger",
