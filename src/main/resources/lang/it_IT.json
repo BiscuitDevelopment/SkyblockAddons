@@ -160,7 +160,8 @@
     "dungeonDeathCounter": "Conteggio morti nel dungeon",
     "showPersonalCompactorPreview": "Mostra anteprima del Compactor Personale",
     "rockPetTracker": "Tracker del Rock Pet",
-    "dolphinPetTracker": "Tracker del Dolphin Pet"
+    "dolphinPetTracker": "Tracker del Dolphin Pet",
+    "dungeonsTeammateNameOverlay": "Dungeons Teammate Name Overlay"
   },
   "messages": {
     "enchants": "Incantesimi",
