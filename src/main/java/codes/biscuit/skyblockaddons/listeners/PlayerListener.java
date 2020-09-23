@@ -82,8 +82,6 @@ public class PlayerListener {
     private static final Pattern PROFILE_CHAT_PATTERN = Pattern.compile("§aYou are playing on profile: §e([A-Za-z]+).*");
     private static final Pattern SWITCH_PROFILE_CHAT_PATTERN = Pattern.compile("§aYour profile was changed to: §e([A-Za-z]+).*");
     private static final Pattern MINION_CANT_REACH_PATTERN = Pattern.compile("§cI can't reach any (?<mobName>[A-Za-z]*)(?:s)");
-    private static final Pattern DEATH_MESSAGE_PATTERN = Pattern.compile("§r§c ☠ §r(?:§[\\da-fk-or])(?<playerName>\\w+)(?<afterNameFormatting>§r§7)* (?<causeOfDeath>.+)§r§7\\.§r");
-    private static final Pattern REVIVE_MESSAGE_PATTERN = Pattern.compile("§r§a ❣ §r(?:§[\\da-fk-or])(?<revivedPlayer>\\w+)§r§a was revived(?: by §r(?:§[\\da-fk-or])(?<reviver>\\w+)§r§a)*!§r");
     private static final Pattern ACCESSORY_BAG_REFORGE_PATTERN = Pattern.compile("You applied the (?<reforge>\\w+) reforge to (?:\\d+) accessories in your Accessory Bag!");
 
     private final static Set<String> SOUP_RANDOM_MESSAGES = new HashSet<>(Arrays.asList("I feel like I can fly!", "What was in that soup?",
