@@ -158,7 +158,10 @@
     "hideWhenNotInSpidersDen": "於不位於 Spider's Den / 非進行 Tarantula 任務時隱藏",
     "hideWhenNotInCastle": "Hide When Not in the Castle/Doing Sven Quest",
     "dungeonDeathCounter": "Dungeon 死亡計數器",
-    "showPersonalCompactorPreview": "Show Personal Compactor Preview"
+    "showPersonalCompactorPreview": "Show Personal Compactor Preview",
+    "rockPetTracker": "Rock Pet Tracker",
+    "dolphinPetTracker": "Dolphin Pet Tracker",
+    "dungeonsTeammateNameOverlay": "Dungeons Teammate Name Overlay"
   },
   "messages": {
     "enchants": "Enchants",

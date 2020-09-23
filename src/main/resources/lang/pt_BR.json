@@ -158,7 +158,10 @@
     "hideWhenNotInSpidersDen": "Hide When Not in the Spiders Den/Doing Tarantula Quest",
     "hideWhenNotInCastle": "Hide When Not in the Castle/Doing Sven Quest",
     "dungeonDeathCounter": "Contador de Mortes nas Masmorras",
-    "showPersonalCompactorPreview": "Show Personal Compactor Preview"
+    "showPersonalCompactorPreview": "Show Personal Compactor Preview",
+    "rockPetTracker": "Rock Pet Tracker",
+    "dolphinPetTracker": "Dolphin Pet Tracker",
+    "dungeonsTeammateNameOverlay": "Dungeons Teammate Name Overlay"
   },
   "messages": {
     "enchants": "Enchants",

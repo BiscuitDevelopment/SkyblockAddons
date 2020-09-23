@@ -78,7 +78,7 @@
     "revenantIndicator": "Indicatore di progresso dell’Armatura Slayer",
     "specialZealotAlert": "Avviso di Zealot Speciale",
     "enableMessageWhenActionPrevented": "Mostra un messaggio quando un’azione viene bloccata",
-    "hidePetHealthBar": "Nascondi la Barra di Vita dell’animale da compagnia",
+    "hidePetHealthBar": "Nascondi la Barra di Vita dell’animale",
     "powerOrbDisplay": "Visualizzazione Power Orb",
     "powerOrbDisplayStyle": "Stile del Power Orb: %style%",
     "powerOrbStyle": {
@@ -148,17 +148,20 @@
     "stopBonzoStaffSounds": "Blocca i suoni della Bonzo’s Staff",
     "showRarityUpgraded": "Mostra se la Rarità degli Oggetti è stata Potenziata",
     "revenantSlayerTracker": "Slayer Tracker - Revenant/Zombie",
-    "tarantulaSlayerTracker": "Slayer Tracker - Tarantula/Spider",
-    "svenSlayerTracker": "Slayer Tracker - Sven/Wolf",
-    "textMode": "Text Mode",
-    "dragonsNestOnly": "Only Show in the Dragon's Nest",
-    "dragonStatsTracker": "Dragon Tracker",
-    "expanded": "Expanded",
-    "hideWhenNotInCrypts": "Hide When Not in the Crypts/Doing Revenant Quest",
-    "hideWhenNotInSpidersDen": "Hide When Not in the Spiders Den/Doing Tarantula Quest",
-    "hideWhenNotInCastle": "Hide When Not in the Castle/Doing Sven Quest",
+    "tarantulaSlayerTracker": "Slayer Tracker - Tarantola/Ragno",
+    "svenSlayerTracker": "Slayer Tracker - Sven/Lupo",
+    "textMode": "Modalità Testo",
+    "dragonsNestOnly": "Mostra solo nel Dragon’s Nest",
+    "dragonStatsTracker": "Tracker dei draghi",
+    "expanded": "Espanso",
+    "hideWhenNotInCrypts": "Nascondi quando non si è nella cripta/non si sta facendo una Missione Revenant",
+    "hideWhenNotInSpidersDen": "Nascondi quando non si è nella Tana dei Ragni/non si sta facendo una Missione Tarantola",
+    "hideWhenNotInCastle": "Nascondi quando non si è nel castello/non si sta facendo una Missione Sven",
     "dungeonDeathCounter": "Conteggio morti nel dungeon",
-    "showPersonalCompactorPreview": "Show Personal Compactor Preview"
+    "showPersonalCompactorPreview": "Mostra anteprima del Compactor Personale",
+    "rockPetTracker": "Tracker del Rock Pet",
+    "dolphinPetTracker": "Tracker del Dolphin Pet",
+    "dungeonsTeammateNameOverlay": "Dungeons Teammate Name Overlay"
   },
   "messages": {
     "enchants": "Incantesimi",
@@ -222,9 +225,9 @@
     "enchantmentExclusionExample": "es. \"proj, blast\"",
     "reforgeInclusionExample": "es. \"godly, strong\"",
     "reforgeExclusionExample": "es. \"odd, clean\"",
-    "actionsLeft": "%number% Left",
-    "effectActive": "1 Effect Active",
-    "effectsActive": "%number% Effects Active"
+    "actionsLeft": "%number% rimasti",
+    "effectActive": "1 Effetto Attivo",
+    "effectsActive": "%number% Effetti Attivi"
   },
   "discordStatus": {
     "titleNone": "Nessuno",
@@ -285,13 +288,13 @@
     "sba.set.zealotCounter.totalZealots": "Imposta il numero totale di zealots a %number%!",
     "sba.set.zealotCounter.wrongUsage": "Selezione non valida! Scegli %options%.",
     "sba.set.zealotCounter.zealots": "Imposta il numero attuale di zealots a %number%!",
-    "sba.toggleActionBarLogging": "§e(Dev) §7Toggle logging action bar messages",
+    "sba.toggleActionBarLogging": "§e(Dev) §7Attiva/Disattiva la registrazione dei messaggi della barra delle azioni",
     "sba.toggleActionBarLogging.disabled": "I messaggi della barra delle azioni non saranno più registrati.",
     "sba.toggleActionBarLogging.enabled": "I messaggi della barra delle azioni saranno ora registrati.",
     "sba.wrongUsage.generic": "Utilizzo errato!",
     "sba.wrongUsage.subCommandNotFound": "Il sottocomando %sub-command% non è stato trovato.",
-    "sba.slayer": "Manually set slayer stats, press tab for arguments",
-    "sba.help.slayer": "Manually set slayer stats, press tab for arguments"
+    "sba.slayer": "Imposta manualmente i dati dello slayer, premi tab per i dettagli",
+    "sba.help.slayer": "Imposta manualmente i dati dello slayer, premi tab per i dettagli"
   },
   "keyBindings": {
     "developerCopyNBT": "Copia NBT"
@@ -304,12 +307,12 @@
     "young": "Young",
     "strong": "Strong",
     "superior": "Superior",
-    "recentDragons": "Recent Dragons:",
-    "dragonsSince": "Dragons Since:",
+    "recentDragons": "Draghi Recenti:",
+    "dragonsSince": "Draghi a partire da:",
     "aspectOfTheDragons": "AOTD",
     "enderDragonPet": "Dragon Pet",
-    "eyesPlaced": "Eyes Placed",
-    "never": "Never"
+    "eyesPlaced": "Occhi Posizionati",
+    "never": "Mai"
   },
   "slayerTracker": {
     "revenant": "Revenant Horror:",
@@ -317,7 +320,7 @@
     "foulFlesh": "Foul Flesh",
     "pestilenceRune": "Pestilence Rune",
     "undeadCatalyst": "Undead Catalyst",
-    "smiteSix": "Smite 6",
+    "smiteSix": "Anatema 6",
     "beheadedHorror": "Beheaded Horror",
     "revenantCatalyst": "Revenant Catalyst",
     "snakeRune": "Snake Rune",
@@ -326,7 +329,7 @@
     "tarantulaWeb": "Tarantula Web",
     "toxicArrowPoison": "Toxic Arrow Poison",
     "spiderCatalyst": "Spider Catalyst",
-    "baneOfArthropodsSix": "Bane Of Arthropods 6",
+    "baneOfArthropodsSix": "Flagello degli Artropodi 6",
     "biteRune": "Bite Rune",
     "flySwatter": "Fly Swatter",
     "tarantulaTalisman": "Tarantula Talisman",
@@ -340,6 +343,6 @@
     "redClawEgg": "Red Claw Egg",
     "overfluxCapacitor": "Overflux Capacitor",
     "coutureRune": "Couture Rune",
-    "bossesKilled": "Bosses Killed"
+    "bossesKilled": "Boss Uccisi"
   }
 }

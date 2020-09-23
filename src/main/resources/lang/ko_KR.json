@@ -158,7 +158,10 @@
     "hideWhenNotInSpidersDen": "Hide When Not in the Spiders Den/Doing Tarantula Quest",
     "hideWhenNotInCastle": "Hide When Not in the Castle/Doing Sven Quest",
     "dungeonDeathCounter": "Dungeon Death Counter",
-    "showPersonalCompactorPreview": "Show Personal Compactor Preview"
+    "showPersonalCompactorPreview": "Show Personal Compactor Preview",
+    "rockPetTracker": "Rock Pet Tracker",
+    "dolphinPetTracker": "Dolphin Pet Tracker",
+    "dungeonsTeammateNameOverlay": "Dungeons Teammate Name Overlay"
   },
   "messages": {
     "enchants": "Enchants",
@@ -285,7 +288,7 @@
     "sba.set.zealotCounter.totalZealots": "Set total zealot count to %number%!",
     "sba.set.zealotCounter.wrongUsage": "Invalid selection! Please choose %options%.",
     "sba.set.zealotCounter.zealots": "Set current zealot count to %number%!",
-    "sba.toggleActionBarLogging": "§e(Dev) §7Toggle logging action bar messages",
+    "sba.toggleActionBarLogging": "§e(Dev) §7액션 바 메시지 기록 켜기/끄기",
     "sba.toggleActionBarLogging.disabled": "Action bar messages will no longer be logged.",
     "sba.toggleActionBarLogging.enabled": "Action bar messages will now be logged.",
     "sba.wrongUsage.generic": "Wrong usage!",
