@@ -44,33 +44,40 @@ minecraft {
     mappings = "${project.mappings}"
 
     // Replace placeholders in source code
-    replace("@MOD_ID@": project.modId,
-            "@MOD_NAME@": project.modName,
-            "@VERSION@": project.version,
+    replace("@VERSION@": project.version,
             "@MOD_ACCEPTED@": project.acceptedMinecraftVersions)
     replaceIn("${project.modName}.java")
 }
 
 jar {
     // Set the archive name here instead of in shadowJar because ForgeGradle needs it when re-obfuscating the jar.
-    archiveName = project.modName + "-" + version + "-for-MC-1.8.9.jar"
-    // Disable the default jar task and use shadowJar instead to shade the libraries into the jar.
-    enabled = false
-}
-
-shadowJar {
-    archiveName = tasks.jar.archiveName
-    classifier = ''
-    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    baseName = project.modName
+    classifier = "for-MC-${project.minecraftVersion}"
 
     manifest.attributes(
+            'Manifest-Version': '2.0',
             'Main-Class': 'SkyblockAddonsInstallerFrame',
+            'Implementation-Title': project.name,
+            'Implementation-Version': project.version,
+            'Implementation-Vendor' : 'BiscuitDevelopment',
+            'Specification-Title': project.name,
+            'Specification-Vendor': 'BiscuitDevelopment',
+            'Specification-Version': project.version,
             'FMLCorePlugin': "${project.group}.${project.modId}.tweaker.${project.modName}LoadingPlugin",
             'ForceLoadAsMod': true,
             'FMLCorePluginContainsFMLMod': true,
             'ModSide': 'CLIENT',
             'FMLAT': "${project.modId}_at.cfg"
     )
+
+    // Disable the default jar task and use shadowJar instead to shade the libraries into the jar.
+    enabled = false
+}
+
+shadowJar {
+    archiveName = jar.archiveName
+
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 
     exclude('dummyThing')
     exclude('META-INF/maven/')
