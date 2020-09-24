@@ -135,7 +135,7 @@
     "centerRotationOnYourPlayer": "Centra la rotazione intorno al tuo giocatore",
     "mapZoom": "Zoom della Mappa",
     "glowingDroppedItems": "Illumina gli oggetti a terra",
-    "glowingDungeonTeammates": "Illumina i compagni di squadra",
+    "glowingDungeonTeammates": "Illumina i compagni di Dungeons",
     "baseStatBoostPercentage": "Mostra Stat Boost base per gli oggetti del Dungeon",
     "colorByRarity": "Colora per rarità",
     "showPlayerHeadsOnMap": "Mostra le teste dei giocatori sulla mappa del dungeon",
@@ -161,7 +161,7 @@
     "showPersonalCompactorPreview": "Mostra anteprima del Compactor Personale",
     "rockPetTracker": "Tracker del Rock Pet",
     "dolphinPetTracker": "Tracker del Dolphin Pet",
-    "dungeonsTeammateNameOverlay": "Dungeons Teammate Name Overlay"
+    "dungeonsTeammateNameOverlay": "Nomi dei compagni di Dungeons in rilievo"
   },
   "messages": {
     "enchants": "Incantesimi",
