@@ -275,7 +275,7 @@
     "sba.help.copyEntity": "نسخ بينات NBT للأشياء. يمكن تشخيص انواع الأشياء ونصف القطر حول الاعب لنصخ البيانات منهم. إذا لم يتم إعطاء أي خيارات، الاعدادات الافتراضية هي: إشمال اللاعبين، حاملات الدروع، الغواغئ، قطر كتلات %radius%. إذا لم يعطا نصف القطر، يستخدم القطر الافتراضى.",
     "sba.help.copyEntity.entityNames": "اسماء انواع الأشياء الذي تريد نصخ البيانات (مثل لاعب، المعترش). اضغط على \"Tab\" بعد كتابة الأمر لقائمة كاملة. افصل أسماء متعدده بفواصل، الأسماء حساسة لحالة الأحرف.",
     "sba.help.copyEntity.radius": "نصف قطر (في كتل) حول اللاعب لنسخ بياناتNBT من الشيء",
-    "sba.help.copySidebar.formatted": "Determines if the formatting codes should be included when copying. Can be either \"true\" or \"false\", defaults to \"false\" if no value is provided. Formatting codes are copied if \"true\".",
+    "sba.help.copySidebar.formatted": "يحدد اذا ينبغي تضمين رموز الألوان عند النسخ. يمكن أن بكون إما \"صحيح\" او \"خطأ\"، الافتراضي هو \"خطأ\" إذا لم يتم توفير أي قيمة. يتم نسخ رموز الألوان إذا \"صحيح\".",
     "sba.help.copyTabList": "This command copies the header and footer of the tab player list. Formatting codes are included.",
     "sba.help.dev": "هذا الأمر يغير وضع المطور. هذا الوضع مخصص لمطورين مودات/أدوات/سكاي بلوك. وهو يوفر بيانات خام من اللعبة مثل الاشياء والعنصر NBT.",
     "sba.help.help.command": "الأمر الفرعي للحصول على الاستخدام المفصل لـه",
