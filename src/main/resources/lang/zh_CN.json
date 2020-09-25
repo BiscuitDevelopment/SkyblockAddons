@@ -75,7 +75,7 @@
     "collectionDisplay": "显示技能进度",
     "onlyMineOresDeepCaverns": "在深层矿洞中只挖掘矿物",
     "onlyMineValuablesNether": "仅在地狱开采有价值的矿物",
-    "revenantIndicator": "猎手相关装备进度提示",
+    "revenantIndicator": "猎杀相关装备进度提示",
     "specialZealotAlert": "特殊末影战士警告",
     "enableMessageWhenActionPrevented": "当操作被阻止时显示提示",
     "hidePetHealthBar": "隐藏宠物血条",
@@ -294,7 +294,7 @@
     "sba.wrongUsage.generic": "错误用法！",
     "sba.wrongUsage.subCommandNotFound": "未找到子命令 \"%sub-command%\"。",
     "sba.slayer": "Manually set slayer stats, press tab for arguments",
-    "sba.help.slayer": "Manually set slayer stats, press tab for arguments"
+    "sba.help.slayer": "手动设置 Slayer 数据, 按 tab 以获得参数"
   },
   "keyBindings": {
     "developerCopyNBT": "复制 NBT"
