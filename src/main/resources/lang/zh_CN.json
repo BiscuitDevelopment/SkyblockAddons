@@ -149,19 +149,19 @@
     "showRarityUpgraded": "显示物品稀有度是否被升级",
     "revenantSlayerTracker": "猎杀跟踪器 - 亡灵/僵尸",
     "tarantulaSlayerTracker": "猎杀跟踪器 - 狼蛛/蜘蛛",
-    "svenSlayerTracker": "Slayer Tracker - Sven/Wolf",
+    "svenSlayerTracker": "猎杀追踪器 - 狼王/狼",
     "textMode": "文本模式",
     "dragonsNestOnly": "Only Show in the Dragon's Nest",
     "dragonStatsTracker": "Dragon Tracker",
-    "expanded": "Expanded",
+    "expanded": "已扩展",
     "hideWhenNotInCrypts": "Hide When Not in the Crypts/Doing Revenant Quest",
     "hideWhenNotInSpidersDen": "Hide When Not in the Spiders Den/Doing Tarantula Quest",
     "hideWhenNotInCastle": "Hide When Not in the Castle/Doing Sven Quest",
     "dungeonDeathCounter": "地下城死亡计数",
     "showPersonalCompactorPreview": "随身压缩机预览",
-    "rockPetTracker": "Rock Pet Tracker",
-    "dolphinPetTracker": "Dolphin Pet Tracker",
-    "dungeonsTeammateNameOverlay": "Dungeons Teammate Name Overlay"
+    "rockPetTracker": "宠物岩石进度追踪",
+    "dolphinPetTracker": "宠物海豚进度追踪",
+    "dungeonsTeammateNameOverlay": "在地下城中高亮队友名字"
   },
   "messages": {
     "enchants": "附魔",
@@ -317,7 +317,7 @@
   "slayerTracker": {
     "revenant": "Revenant Horror:",
     "revenantFlesh": "亡灵腐肉",
-    "foulFlesh": "Foul Flesh",
+    "foulFlesh": "恶臭腐肉",
     "pestilenceRune": "Pestilence Rune",
     "undeadCatalyst": "Undead Catalyst",
     "smiteSix": "亡灵杀手 6",
@@ -333,16 +333,16 @@
     "biteRune": "Bite Rune",
     "flySwatter": "Fly Swatter",
     "tarantulaTalisman": "狼蛛护符",
-    "digestedMosquito": "Digested Mosquito",
+    "digestedMosquito": "被消化的蚊子",
     "sven": "Sven Packmaster:",
     "wolfTooth": "狼牙",
     "hamsterWheel": "Hamster Wheel",
     "spiritRune": "Spirit Rune",
     "criticalSix": "暴击 6",
-    "grizzlyBait": "Grizzly Bait",
+    "grizzlyBait": "灰熊诱饵",
     "redClawEgg": "红爪之卵",
     "overfluxCapacitor": "过载电容",
-    "coutureRune": "Couture Rune",
-    "bossesKilled": "Bosses Killed"
+    "coutureRune": "时装符文",
+    "bossesKilled": "击杀 Boss 数"
   }
 }
