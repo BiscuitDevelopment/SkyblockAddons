@@ -25,7 +25,7 @@ public class SkyblockAddonsSetup implements IFMLCallHook {
      * Checks that need to run before the transformers are initialized
      */
     static void runPreInitChecks() {
-        FMLRelaunchLog.log(LOGGER_NAME, Level.DEBUG, "Running pre-init checks...");
+        logDebug("Running pre-init checks...");
 
         // Environment Obfuscation check
         deobfuscated = fmlData != null && fmlData.containsKey("runtimeDeobfuscationEnabled") &&
@@ -43,7 +43,7 @@ public class SkyblockAddonsSetup implements IFMLCallHook {
      * Checks that need to run after the transformers are initialized but before the transformers are used
      */
     static void runPreTransformationChecks() {
-        FMLRelaunchLog.log(LOGGER_NAME, Level.DEBUG, "Running pre-transformation checks...");
+        logDebug( "Running pre-transformation checks...");
 
         // Duplicate SkyblockAddons check
         List<Object> coreMods = SkyblockAddonsLoadingPlugin.coreMods;
