@@ -43,7 +43,6 @@ public class SkyblockAddonsSetup implements IFMLCallHook {
      * Checks that need to run after the transformers are initialized but before the transformers are used
      */
     static void runPreTransformationChecks() {
-        // TODO Localize the errors
         FMLRelaunchLog.log(LOGGER_NAME, Level.DEBUG, "Running pre-transformation checks...");
 
         // Duplicate SkyblockAddons check
