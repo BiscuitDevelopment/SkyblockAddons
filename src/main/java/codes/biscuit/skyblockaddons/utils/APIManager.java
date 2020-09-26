@@ -24,7 +24,7 @@ public class APIManager {
     private static final String SKYBLOCK_PROFILE = BASE_URL + "skyblock/profile/%s/%s"; // UUID, Profile
 
     private SkyblockAddons main = SkyblockAddons.getInstance();
-    private Logger logger = SkyblockAddons.getInstance().getLogger();
+    private Logger logger = SkyblockAddons.getLogger();
 
     public void pullInitialData() {
         String profileName = main.getUtils().getProfileName();

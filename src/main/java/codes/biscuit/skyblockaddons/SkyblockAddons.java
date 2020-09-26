@@ -18,11 +18,7 @@ import codes.biscuit.skyblockaddons.misc.Updater;
 import codes.biscuit.skyblockaddons.misc.scheduler.NewScheduler;
 import codes.biscuit.skyblockaddons.misc.scheduler.Scheduler;
 import codes.biscuit.skyblockaddons.misc.scheduler.SkyblockRunnable;
-import codes.biscuit.skyblockaddons.utils.DataUtils;
-import codes.biscuit.skyblockaddons.utils.DungeonUtils;
-import codes.biscuit.skyblockaddons.utils.EnumUtils;
-import codes.biscuit.skyblockaddons.utils.InventoryUtils;
-import codes.biscuit.skyblockaddons.utils.Utils;
+import codes.biscuit.skyblockaddons.utils.*;
 import com.google.gson.Gson;
 import lombok.Getter;
 import lombok.Setter;
@@ -50,7 +46,7 @@ public class SkyblockAddons {
     public static String VERSION = "@VERSION@";
 
     @Getter private static SkyblockAddons instance;
-    private final Logger logger;
+    @Getter private static final Logger logger = getLogger(MOD_NAME);
     private static final Gson GSON = new Gson();
 
     private ConfigValues configValues;
@@ -76,7 +72,6 @@ public class SkyblockAddons {
 
     public SkyblockAddons() {
         instance = this;
-        logger = LogManager.getLogger(MOD_NAME);
 
         playerListener = new PlayerListener();
         guiScreenListener = new GuiScreenListener();
@@ -88,6 +83,17 @@ public class SkyblockAddons {
         newScheduler = new NewScheduler();
         dungeonUtils = new DungeonUtils();
         discordRPCManager = new DiscordRPCManager();
+    }
+
+    /**
+     * Returns a new {@code Logger} with the given name. All log messages from the returned {@code Logger} will have the
+     * name added to the beginning.
+     *
+     * @param name the name of the logger
+     * @return a new {@code Logger} with the given name that adds the name to the beginning of all its log messages
+     */
+    public static Logger getLogger(String name) {
+        return LogManager.getLogger(name, new SkyblockAddonsMessageFactory(name));
     }
 
     @Mod.EventHandler

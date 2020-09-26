@@ -43,7 +43,6 @@ public class DevUtils {
     public static final List<String> ENTITY_NAMES = EntityList.getEntityNameList();
 
     public static final int ENTITY_COPY_RADIUS = 3;
-    public static final int SIDEBAR_COPY_WIDTH = 30;
 
     @Getter @Setter
     private static boolean loggingActionBarMessages = false;

@@ -9,7 +9,7 @@ import java.util.Map;
 @IFMLLoadingPlugin.Name("SkyblockAddons Core")
 @IFMLLoadingPlugin.MCVersion(ForgeVersion.mcVersion)
 public class SkyblockAddonsLoadingPlugin implements IFMLLoadingPlugin {
-    public static List<Object> coreMods;
+    static List<Object> coreMods;
 
     @Override
     public String[] getASMTransformerClass() {
@@ -23,7 +23,7 @@ public class SkyblockAddonsLoadingPlugin implements IFMLLoadingPlugin {
 
     @Override
     public String getSetupClass() {
-        return PreTransformationChecks.class.getName();
+        return SkyblockAddonsSetup.class.getName();
     }
 
     @SuppressWarnings("unchecked")

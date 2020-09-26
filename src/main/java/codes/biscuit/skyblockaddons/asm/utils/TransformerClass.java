@@ -1,6 +1,6 @@
 package codes.biscuit.skyblockaddons.asm.utils;
 
-import codes.biscuit.skyblockaddons.tweaker.PreTransformationChecks;
+import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsSetup;
 
 public enum TransformerClass {
 
@@ -77,7 +77,7 @@ public enum TransformerClass {
         this.seargeClass = seargeClass;
         this.notchClass18 = notchClass18;
 
-        if (PreTransformationChecks.isDeobfuscated() || !PreTransformationChecks.isUsingNotchMappings()) {
+        if (SkyblockAddonsSetup.isDeobfuscated() || !SkyblockAddonsSetup.isUsingNotchMappings()) {
             name = seargeClass;
         } else {
             name = notchClass18;

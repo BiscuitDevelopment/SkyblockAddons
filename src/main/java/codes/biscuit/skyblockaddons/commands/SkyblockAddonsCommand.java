@@ -41,7 +41,7 @@ public class SkyblockAddonsCommand extends CommandBase {
 
     public SkyblockAddonsCommand() {
         main = SkyblockAddons.getInstance();
-        logger = main.getLogger();
+        logger = SkyblockAddons.getLogger();
     }
 
     /**

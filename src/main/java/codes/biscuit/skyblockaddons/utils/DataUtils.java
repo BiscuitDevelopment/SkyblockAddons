@@ -26,6 +26,8 @@ import java.nio.charset.StandardCharsets;
 public class DataUtils {
 
     private static final Gson GSON = new Gson();
+    private static final Logger LOGGER = SkyblockAddons.getLogger(SkyblockAddons.MOD_NAME + " " +
+            DataUtils.class.getSimpleName());
 
     //TODO: Migrate all data file loading to this class
 
@@ -64,7 +66,6 @@ public class DataUtils {
      */
     private static void fetchFromOnline() {
         SkyblockAddons main = SkyblockAddons.getInstance();
-        Logger logger = main.getLogger();
 
         try (CloseableHttpClient httpClient = HttpClientBuilder.create().setUserAgent(Utils.USER_AGENT).build()) {
             HttpGet enchantedItemBlacklistGet = new HttpGet("https://raw.githubusercontent.com/BiscuitDevelopment/" +
@@ -74,7 +75,7 @@ public class DataUtils {
 
 
             // Enchanted Item Blacklist
-            logger.info("Trying to fetch enchanted item blacklist from the server...");
+            LOGGER.info("Trying to fetch enchanted item blacklist from the server...");
             EnchantedItemBlacklist receivedBlacklist = httpClient.execute(enchantedItemBlacklistGet, response -> {
                 int status = response.getStatusLine().getStatusCode();
 
@@ -88,12 +89,12 @@ public class DataUtils {
                 }
             });
             if (receivedBlacklist != null) {
-                logger.info("Success!");
+                LOGGER.info("Success!");
                 EnchantedItemPlacementBlocker.setBlacklist(receivedBlacklist);
             }
 
             // Online Data
-            logger.info("Trying to fetch online data from the server...");
+            LOGGER.info("Trying to fetch online data from the server...");
             OnlineData receivedOnlineData = httpClient.execute(onlineDataGet, response -> {
                 int status = response.getStatusLine().getStatusCode();
 
@@ -107,15 +108,15 @@ public class DataUtils {
                 }
             });
             if (receivedOnlineData != null) {
-                logger.info("Success!");
+                LOGGER.info("Success!");
                 main.setOnlineData(receivedOnlineData);
                 main.getUpdater().processUpdateCheckResult();
             }
 
         } catch (IOException | JsonSyntaxException e) {
-            logger.error("There was an error fetching data from the server. " +
+            LOGGER.error("There was an error fetching data from the server. " +
                     "The bundled version of the file will be used instead. ");
-            logger.catching(e);
+            LOGGER.catching(e);
         }
     }
 }

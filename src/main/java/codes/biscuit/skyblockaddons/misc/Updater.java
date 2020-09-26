@@ -8,7 +8,6 @@ import net.minecraft.event.HoverEvent;
 import net.minecraft.util.ChatComponentText;
 import net.minecraftforge.common.ForgeVersion;
 import net.minecraftforge.fml.common.versioning.ComparableVersion;
-import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.regex.Matcher;
@@ -21,7 +20,7 @@ import static net.minecraftforge.common.ForgeVersion.Status.*;
  */
 public class Updater {
 
-    private static final Logger LOGGER = LogManager.getLogger(SkyblockAddons.MOD_NAME + " Updater");
+    private static final Logger LOGGER = SkyblockAddons.getLogger(SkyblockAddons.MOD_NAME + " Updater");
     private static final Pattern VERSION_PATTERN = Pattern.compile("(?<major>[0-9])\\.(?<minor>[0-9])\\.(?<patch>[0-9]).*");
 
     private SkyblockAddons main = SkyblockAddons.getInstance();

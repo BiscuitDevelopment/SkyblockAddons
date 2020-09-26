@@ -160,7 +160,7 @@ public class Utils {
     private boolean slayerBossAlive;
 
     private SkyblockAddons main = SkyblockAddons.getInstance();
-    private Logger logger = SkyblockAddons.getInstance().getLogger();
+    private Logger logger = SkyblockAddons.getLogger();
 
     public Utils() {
         addDefaultStats();

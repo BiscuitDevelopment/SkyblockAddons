@@ -61,7 +61,6 @@ public class Scheduler {
 
             if (entry.getValue().removeIf(command -> CommandType.SHOW_FULL_INVENTORY_WARNING.equals(command.commandType))) {
                 resetTitleFeatureTicks.add(entry.getKey() + main.getConfigValues().getWarningSeconds() * 20);
-                main.getLogger().debug("Full Inventory Warning Task Removed!");
             }
 
             // Remove the corresponding reset title feature command.
@@ -73,7 +72,6 @@ public class Scheduler {
                     Command command = commandIterator.next();
                     if (command.commandType.equals(CommandType.RESET_TITLE_FEATURE)) {
                         commandIterator.remove();
-                        main.getLogger().debug("Full Inventory Warning Reset Task Removed!");
                         break;
                     }
                 }

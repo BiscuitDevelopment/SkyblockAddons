@@ -1,16 +1,15 @@
 package codes.biscuit.skyblockaddons.features.itemdrops;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.core.ItemRarity;
 import codes.biscuit.skyblockaddons.core.Feature;
+import codes.biscuit.skyblockaddons.core.ItemRarity;
 import codes.biscuit.skyblockaddons.core.Message;
-import codes.biscuit.skyblockaddons.utils.Utils;
-import codes.biscuit.skyblockaddons.utils.ItemUtils;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
+import codes.biscuit.skyblockaddons.utils.ItemUtils;
+import codes.biscuit.skyblockaddons.utils.Utils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.List;
@@ -28,7 +27,7 @@ import java.util.List;
 public class ItemDropChecker {
 
     private SkyblockAddons main = SkyblockAddons.getInstance();
-    private Logger logger = LogManager.getLogger("SBA Item Drop Checker");
+    private Logger logger = SkyblockAddons.getLogger("SBA Item Drop Checker");
 
     // Variables used for checking drop confirmations
     private ItemStack itemOfLastDropAttempt;

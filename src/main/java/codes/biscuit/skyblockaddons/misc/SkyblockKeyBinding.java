@@ -21,7 +21,7 @@ public class SkyblockKeyBinding {
     private boolean registered = false;
 
     public SkyblockKeyBinding(String name, int defaultKey, Message message) {
-        logger = SkyblockAddons.getInstance().getLogger();
+        logger = SkyblockAddons.getLogger();
         this.name = name;
         this.defaultKey = defaultKey;
         this.message = message;

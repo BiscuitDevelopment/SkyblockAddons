@@ -96,8 +96,8 @@ public class BackpackManager {
                     }
                     return new ContainerPreview(items, TextUtils.stripColor(stack.getDisplayName()), color);
                 } catch (IOException ex) {
-                    SkyblockAddons.getInstance().getLogger().error("There was an error parsing backpack data.");
-                    SkyblockAddons.getInstance().getLogger().catching(ex);
+                    SkyblockAddons.getLogger().error("There was an error parsing backpack data.");
+                    SkyblockAddons.getLogger().catching(ex);
                 }
             }
         }

@@ -16,7 +16,7 @@ import java.io.FileWriter;
 public class PersistentValuesManager {
 
     private final File persistentValuesFile;
-    private final Logger logger = SkyblockAddons.getInstance().getLogger();
+    private final Logger logger = SkyblockAddons.getLogger();
 
     private PersistentValues persistentValues = new PersistentValues();
 
