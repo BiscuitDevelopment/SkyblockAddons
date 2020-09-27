@@ -43,7 +43,6 @@ public class DevUtils {
     public static final List<String> ENTITY_NAMES = EntityList.getEntityNameList();
 
     public static final int ENTITY_COPY_RADIUS = 3;
-    public static final int SIDEBAR_COPY_WIDTH = 30;
 
     @Getter @Setter
     private static boolean loggingActionBarMessages = false;
@@ -80,8 +79,7 @@ public class DevUtils {
             throw new NullPointerException("Nothing is being displayed in the sidebar!");
         }
 
-        StringBuilder sb = new StringBuilder();
-        Formatter formatter = new Formatter(sb, Locale.CANADA);
+        StringBuilder stringBuilder = new StringBuilder();
 
         String objectiveName = sideBarObjective.getDisplayName();
         List<Score> scores = (List<Score>) scoreboard.getSortedScores(sideBarObjective);
@@ -90,8 +88,6 @@ public class DevUtils {
             SkyblockAddons.getInstance().getUtils().sendErrorMessage("No scores were found!");
         }
         else {
-            int width = SIDEBAR_COPY_WIDTH;
-
             if (stripControlCodes) {
                 objectiveName = StringUtils.stripControlCodes(objectiveName);
             }
@@ -106,8 +102,9 @@ public class DevUtils {
             */
             Collections.reverse(scores);
 
-            for (Score score:
-                    scores) {
+            stringBuilder.append(objectiveName).append("\n");
+
+            for (Score score: scores) {
                 ScorePlayerTeam scoreplayerteam = scoreboard.getPlayersTeam(score.getPlayerName());
                 String playerName = ScorePlayerTeam.formatPlayerName(scoreplayerteam, score.getPlayerName());
 
@@ -120,15 +117,10 @@ public class DevUtils {
 
                 int points = score.getScorePoints();
 
-                width = Math.max(width, (playerName + " " + points).length());
-                formatter.format("%-" + width + "." +
-                        width + "s %d%n", playerName, points);
+                stringBuilder.append(playerName).append("[").append(points).append("]").append("\n");
             }
 
-            // Insert the objective name at the top of the sidebar string.
-            sb.insert(0, "\n").insert(0, org.apache.commons.lang3.StringUtils.center(objectiveName, width));
-
-            copyStringToClipboard(sb.toString(), "Sidebar copied to clipboard!");
+            copyStringToClipboard(stringBuilder.toString(), "Sidebar copied to clipboard!");
         }
     }
 

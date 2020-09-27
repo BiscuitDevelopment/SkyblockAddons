@@ -16,6 +16,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.inventory.GuiChest;
+import net.minecraft.init.Blocks;
 import net.minecraft.inventory.*;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -45,7 +46,7 @@ public class InventoryUtils {
     public static final String TREECAPITATOR_DISPLAYNAME = "§5Treecapitator";
     public static final String CHICKEN_HEAD_DISPLAYNAME = "§fChicken Head";
 
-    private static final Pattern REVENANT_UPGRADE_PATTERN = Pattern.compile("§5§o§7Next Upgrade: §a\\+([0-9]+❈) §8\\(§a([0-9,]+)§7/§c([0-9,]+)§8\\)");
+    private static final Pattern REVENANT_UPGRADE_PATTERN = Pattern.compile("Next Upgrade: \\+([0-9]+❈) \\(([0-9,]+)/([0-9,]+)\\)");
 
     private List<ItemStack> previousInventory;
     private Multimap<String, ItemDiff> itemPickupLog = ArrayListMultimap.create();
@@ -303,15 +304,15 @@ public class InventoryUtils {
     public void checkIfWearingSlayerArmor(EntityPlayerSP p) {
         if (main.getConfigValues().isEnabled(Feature.SLAYER_INDICATOR)) {
             for (int i = 3; i >= 0; i--) {
-                ItemStack item = p.inventory.armorInventory[i];
-                String itemID = item != null ? ItemUtils.getSkyBlockItemID(item) : null;
+                ItemStack itemStack = p.inventory.armorInventory[i];
+                String itemID = itemStack != null ? ItemUtils.getSkyBlockItemID(itemStack) : null;
 
                 if (itemID != null && (itemID.startsWith("REVENANT") || itemID.startsWith("TARANTULA"))) {
                     String percent = null;
                     String defence = null;
-                    List<String> tooltip = item.getTooltip(null, false);
-                    for (String line : tooltip) {
-                        Matcher matcher = REVENANT_UPGRADE_PATTERN.matcher(line);
+                    List<String> lore = ItemUtils.getItemLore(itemStack);
+                    for (String loreLine : lore) {
+                        Matcher matcher = REVENANT_UPGRADE_PATTERN.matcher(TextUtils.stripColor(loreLine));
                         if (matcher.matches()) { // Example: line§5§o§7Next Upgrade: §a+240❈ §8(§a14,418§7/§c15,000§8)
                             try {
                                 float percentage = Float.parseFloat(matcher.group(2).replace(",", "")) /
@@ -327,9 +328,9 @@ public class InventoryUtils {
                     if (percent != null && defence != null) {
                         SlayerArmorProgress currentProgress = slayerArmorProgresses[i];
 
-                        if (currentProgress == null || item != currentProgress.getItemStack()) {
+                        if (currentProgress == null || itemStack != currentProgress.getItemStack()) {
                             // The item has changed or didn't exist. Create new object.
-                            slayerArmorProgresses[i] = new SlayerArmorProgress(item, percent, defence);
+                            slayerArmorProgresses[i] = new SlayerArmorProgress(itemStack, percent, defence);
                         } else {
                             // The item has remained the same. Just update the stats.
                             currentProgress.setPercent(percent);
@@ -370,8 +371,8 @@ public class InventoryUtils {
             if (inventoryType.getInventoryName().equals(inventory.getDisplayName().getUnformattedText())) {
                 if (inventoryType == InventoryType.BASIC_REFORGING || inventoryType == InventoryType.BASIC_ACCESSORY_BAG_REFORGING) {
                     return this.inventoryType = getReforgeInventoryType(inventory);
-                }
-                else {
+
+                } else {
                     return this.inventoryType = inventoryType;
                 }
             }
@@ -383,14 +384,13 @@ public class InventoryUtils {
     // Gets the reforge inventory type from a given reforge inventory
     private InventoryType getReforgeInventoryType(IInventory inventory) {
         if (!inventory.getDisplayName().getUnformattedText().equals(InventoryType.BASIC_REFORGING.getInventoryName()) &&
-                !inventory.getDisplayName().getUnformattedText().equals(InventoryType.BASIC_ACCESSORY_BAG_REFORGING.
-                        getInventoryName())) {
+                !inventory.getDisplayName().getUnformattedText().equals(InventoryType.BASIC_ACCESSORY_BAG_REFORGING.getInventoryName())) {
             throw new IllegalArgumentException("The given inventory is not a reforge inventory!");
         }
 
         // This records whether the inventory is for reforging a single item or the accessory bag
-        InventoryType baseType = inventory.getDisplayName().getUnformattedText().equals(InventoryType.BASIC_REFORGING.
-                getInventoryName()) ? InventoryType.BASIC_REFORGING : InventoryType.BASIC_ACCESSORY_BAG_REFORGING;
+        InventoryType baseType = inventory.getDisplayName().getUnformattedText().equals(InventoryType.BASIC_REFORGING.getInventoryName()) ?
+                InventoryType.BASIC_REFORGING : InventoryType.BASIC_ACCESSORY_BAG_REFORGING;
 
         // This is the barrier item that's present in the advanced reforging menu. This slot is empty in the basic reforging menu.
         ItemStack barrier = inventory.getStackInSlot(13);
@@ -402,14 +402,12 @@ public class InventoryUtils {
         the menu), check if the glass pane next to the slot is named "Reforge Stone." That indicates it's the advanced
         reforging menu. Otherwise, it's the basic menu. Finally, check if it's the single item or accessory bag menu.
          */
-        if (barrier != null && barrier.getItem().equals(Item.getByNameOrId("barrier")) || glassPane != null &&
-                glassPane.hasDisplayName() && TextUtils.stripColor(glassPane.getDisplayName()).equals("Reforge Stone")) {
-            return baseType == InventoryType.BASIC_REFORGING ? InventoryType.ADVANCED_REFORGING :
-                    InventoryType.ADVANCED_ACCESSORY_BAG_REFORGING;
-        }
-        else {
-            return baseType == InventoryType.BASIC_REFORGING ? InventoryType.BASIC_REFORGING :
-                    InventoryType.BASIC_ACCESSORY_BAG_REFORGING;
+        if ((barrier != null && barrier.getItem() == Item.getItemFromBlock(Blocks.barrier)) ||
+                (glassPane != null && glassPane.hasDisplayName() && TextUtils.stripColor(glassPane.getDisplayName()).equals("Reforge Stone"))) {
+            return baseType == InventoryType.BASIC_REFORGING ? InventoryType.ADVANCED_REFORGING : InventoryType.ADVANCED_ACCESSORY_BAG_REFORGING;
+
+        } else {
+            return baseType == InventoryType.BASIC_REFORGING ? InventoryType.BASIC_REFORGING : InventoryType.BASIC_ACCESSORY_BAG_REFORGING;
         }
     }
 }

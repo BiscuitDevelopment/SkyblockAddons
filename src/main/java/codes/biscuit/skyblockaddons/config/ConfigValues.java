@@ -5,9 +5,8 @@ import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.Language;
 import codes.biscuit.skyblockaddons.features.discordrpc.DiscordStatus;
 import codes.biscuit.skyblockaddons.misc.ChromaManager;
-import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
-import codes.biscuit.skyblockaddons.utils.Utils;
+import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.objects.FloatPair;
 import codes.biscuit.skyblockaddons.utils.objects.IntPair;
 import com.google.gson.*;
@@ -21,6 +20,7 @@ import org.apache.commons.lang3.mutable.MutableFloat;
 import org.apache.commons.lang3.mutable.MutableInt;
 import org.apache.commons.lang3.mutable.MutableObject;
 import org.apache.commons.lang3.text.WordUtils;
+import org.apache.logging.log4j.Logger;
 
 import java.awt.*;
 import java.awt.geom.Point2D;
@@ -39,6 +39,7 @@ public class ConfigValues {
     private final static float GUI_SCALE_MAXIMUM = 5;
 
     private SkyblockAddons main = SkyblockAddons.getInstance();
+    private Logger logger = SkyblockAddons.getLogger(SkyblockAddons.MOD_NAME + " Config");
 
     private JsonObject defaultValues = new JsonObject();
     private Map<Feature, FloatPair> defaultCoordinates = new EnumMap<>(Feature.class);
@@ -79,14 +80,15 @@ public class ConfigValues {
     public void loadValues() {
         try {
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream("default.json")));
-            defaultValues = Utils.getGson().fromJson(bufferedReader, JsonObject.class);
+            defaultValues = SkyblockAddons.getGson().fromJson(bufferedReader, JsonObject.class);
 
             deserializeFeatureFloatCoordsMapFromID(defaultValues, defaultCoordinates, "coordinates");
             deserializeEnumEnumMapFromIDS(defaultValues, defaultAnchorPoints, "anchorPoints", Feature.class, EnumUtils.AnchorPoint.class);
             deserializeEnumNumberMapFromID(defaultValues, defaultGuiScales, "guiScales", Feature.class, float.class);
             deserializeFeatureIntCoordsMapFromID(defaultValues, defaultBarSizes, "barSizes");
         } catch (Exception ex) {
-            main.getLogger().error("Failed to load default config!");
+            logger.error("Failed to load default config!");
+            logger.catching(ex);
         }
 
         if (settingsConfigFile.exists()) {
@@ -98,8 +100,8 @@ public class ConfigValues {
                 }
                 settingsConfig = fileElement.getAsJsonObject();
             } catch (JsonParseException | IllegalStateException | IOException ex) {
-                ex.printStackTrace();
-                main.getLogger().error("There was an error loading the config. Resetting all settings to default.");
+                logger.error("There was an error loading the config. Resetting all settings to default.");
+                logger.catching(ex);
                 addDefaultsAndSave();
                 return;
             }
@@ -118,8 +120,8 @@ public class ConfigValues {
                     }
                 }
             } catch (Exception ex) {
-                SkyblockAddons.getInstance().getLogger().error("Failed to deserialize path: language");
-                ex.printStackTrace();
+                logger.error("Failed to deserialize path: language");
+                logger.catching(ex);
             }
 
             deserializeEnumValueFromOrdinal(backpackStyle, "backpackStyle");
@@ -137,8 +139,8 @@ public class ConfigValues {
                     }
                 }
             } catch (Exception ex) {
-                SkyblockAddons.getInstance().getLogger().error("Failed to deserialize path: coordinates (legacy)");
-                ex.printStackTrace();
+                logger.error("Failed to deserialize path: coordinates (legacy)");
+                logger.catching(ex);
             }
 
             if (settingsConfig.has("coordinates")) {
@@ -160,8 +162,8 @@ public class ConfigValues {
                         }
                     }
                 } catch (Exception ex) {
-                    SkyblockAddons.getInstance().getLogger().error("Failed to deserialize path: featureColors");
-                    ex.printStackTrace();
+                    logger.error("Failed to deserialize path: featureColors");
+                    logger.catching(ex);
                 }
             } else {
                 deserializeEnumNumberMapFromID(colors, "colors", Feature.class, int.class);
@@ -404,8 +406,8 @@ public class ConfigValues {
                 }
             }
         } catch (Exception ex) {
-            SkyblockAddons.getInstance().getLogger().error("Failed to deserialize path: "+ path);
-            ex.printStackTrace();
+            logger.error("Failed to deserialize path: "+ path);
+            logger.catching(ex);
         }
     }
 
@@ -420,8 +422,8 @@ public class ConfigValues {
                 }
             }
         } catch (Exception ex) {
-            SkyblockAddons.getInstance().getLogger().error("Failed to deserialize path: "+ path);
-            ex.printStackTrace();
+            logger.error("Failed to deserialize path: "+ path);
+            logger.catching(ex);
         }
     }
 
@@ -438,8 +440,8 @@ public class ConfigValues {
                 }
             }
         } catch (Exception ex) {
-            SkyblockAddons.getInstance().getLogger().error("Failed to deserialize path: "+ path);
-            ex.printStackTrace();
+            logger.error("Failed to deserialize path: "+ path);
+            logger.catching(ex);
         }
     }
 
@@ -467,8 +469,8 @@ public class ConfigValues {
                 }
             }
         } catch (Exception ex) {
-            SkyblockAddons.getInstance().getLogger().error("Failed to deserialize path: "+ path);
-            ex.printStackTrace();
+            logger.error("Failed to deserialize path: "+ path);
+            logger.catching(ex);
         }
     }
 
@@ -490,8 +492,8 @@ public class ConfigValues {
                 }
             }
         } catch (Exception ex) {
-            SkyblockAddons.getInstance().getLogger().error("Failed to deserialize path: "+ path);
-            ex.printStackTrace();
+            logger.error("Failed to deserialize path: "+ path);
+            logger.catching(ex);
         }
     }
 
@@ -501,8 +503,8 @@ public class ConfigValues {
                 number.setValue(getNumber(settingsConfig.get(path), numberClass));
             }
         } catch (Exception ex) {
-            SkyblockAddons.getInstance().getLogger().error("Failed to deserialize path: "+ path);
-            ex.printStackTrace();
+            logger.error("Failed to deserialize path: "+ path);
+            logger.catching(ex);
         }
     }
 
@@ -535,8 +537,8 @@ public class ConfigValues {
                 }
             }
         } catch (Exception ex) {
-            SkyblockAddons.getInstance().getLogger().error("Failed to deserialize path: "+ path);
-            ex.printStackTrace();
+            logger.error("Failed to deserialize path: "+ path);
+            logger.catching(ex);
         }
     }
 
@@ -556,8 +558,8 @@ public class ConfigValues {
                 }
             }
         } catch (Exception ex) {
-            SkyblockAddons.getInstance().getLogger().error("Failed to deserialize path: "+ path);
-            ex.printStackTrace();
+            logger.error("Failed to deserialize path: "+ path);
+            logger.catching(ex);
         }
     }
 
@@ -577,8 +579,8 @@ public class ConfigValues {
                 }
             }
         } catch (Exception ex) {
-            SkyblockAddons.getInstance().getLogger().error("Failed to deserialize path: "+ path);
-            ex.printStackTrace();
+            logger.error("Failed to deserialize path: "+ path);
+            logger.catching(ex);
         }
     }
 

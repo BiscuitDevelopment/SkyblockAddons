@@ -59,7 +59,7 @@ public class EndstoneProtectorManager {
                 int minutes = totalSeconds/60;
                 int seconds = totalSeconds%60;
 
-                main.getLogger().info("Endstone Protector stage updated from "+previousStage+" to "+newStage.name()+". " +
+                SkyblockAddons.getLogger().info("Endstone Protector stage updated from "+previousStage+" to "+newStage.name()+". " +
                         "Your zealot kill count was "+zealotsKilled+". This took "+minutes+"m "+seconds+"s.");
 
                 if (minibossStage == Stage.GOLEM_ALIVE && newStage == Stage.NO_HEAD) {

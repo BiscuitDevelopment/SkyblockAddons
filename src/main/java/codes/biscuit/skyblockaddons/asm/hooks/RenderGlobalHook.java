@@ -19,7 +19,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.scoreboard.ScorePlayerTeam;
-import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.opengl.GL11;
@@ -32,7 +31,8 @@ import java.util.List;
 public class RenderGlobalHook {
 
     private static final FloatBuffer BUF_FLOAT_4 = BufferUtils.createFloatBuffer(4);
-    private static final Logger LOGGER = LogManager.getLogger(SkyblockAddons.MOD_NAME + RenderGlobalHook.class.getSimpleName());
+    private static final Logger LOGGER = SkyblockAddons.getLogger(SkyblockAddons.MOD_NAME +
+            RenderGlobalHook.class.getSimpleName());
 
     private static boolean stopLookingForOptifine = false;
 

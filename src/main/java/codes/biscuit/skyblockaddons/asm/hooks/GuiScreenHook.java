@@ -2,12 +2,15 @@ package codes.biscuit.skyblockaddons.asm.hooks;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.asm.utils.ReturnValue;
-import codes.biscuit.skyblockaddons.utils.ItemUtils;
-import codes.biscuit.skyblockaddons.features.backpacks.Backpack;
-import codes.biscuit.skyblockaddons.features.backpacks.BackpackManager;
-import codes.biscuit.skyblockaddons.features.cooldowns.CooldownManager;
 import codes.biscuit.skyblockaddons.core.Feature;
+import codes.biscuit.skyblockaddons.features.backpacks.BackpackManager;
+import codes.biscuit.skyblockaddons.features.backpacks.ContainerPreview;
+import codes.biscuit.skyblockaddons.features.cooldowns.CooldownManager;
 import codes.biscuit.skyblockaddons.utils.InventoryUtils;
+import codes.biscuit.skyblockaddons.utils.ItemUtils;
+import codes.biscuit.skyblockaddons.utils.TextUtils;
+import lombok.Getter;
+import lombok.Setter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.init.Blocks;
@@ -17,7 +20,6 @@ import net.minecraft.inventory.ContainerChest;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.IChatComponent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import org.lwjgl.input.Keyboard;
@@ -31,32 +33,29 @@ public class GuiScreenHook {
      * This is to stop multiple methods that handle similar logic from
      * performing the same actions multiple times.
      */
-    private static long lastBackpackFreezeKey = -1;
+    @Getter @Setter private static long lastBackpackFreezeKey = -1;
 
+    //TODO Fix for Hypixel localization
     public static void renderBackpack(ItemStack stack, int x, int y, ReturnValue<?> returnValue) {
         SkyblockAddons main = SkyblockAddons.getInstance();
-        if (stack.getItem().equals(Items.skull) && main.getConfigValues().isEnabled(Feature.SHOW_BACKPACK_PREVIEW)) {
+
+        if (main.getConfigValues().isEnabled(Feature.SHOW_BACKPACK_PREVIEW) && (stack.getItem() == Items.skull ||
+                stack.getItem() == Item.getItemFromBlock(Blocks.dropper)) ) {
             if (main.getConfigValues().isEnabled(Feature.SHOW_BACKPACK_HOLDING_SHIFT) && !GuiScreen.isShiftKeyDown()) {
                 return;
             }
 
+            // Avoid showing backpack preview in auction stuff.
             Container playerContainer = Minecraft.getMinecraft().thePlayer.openContainer;
-            if (playerContainer instanceof ContainerChest) { // Avoid showing backpack preview in auction stuff.
+            if (playerContainer instanceof ContainerChest) {
                 IInventory chestInventory = ((ContainerChest) playerContainer).getLowerChestInventory();
                 if (chestInventory.hasCustomName()) {
                     String chestName = chestInventory.getDisplayName().getUnformattedText();
                     if (chestName.contains("Auction") || "Your Bids".equals(chestName)) {
 
-                        // Show preview for backpacks in player inventory if enabled.
-                        if (!main.getConfigValues().isEnabled(Feature.BACKPACK_PREVIEW_AH)) {
-                            return;
-                        }
-
-                        /*
-                        If the backpack is in the auction house window, ignore it.
-                         */
-                        for (int i = 0; i < chestInventory.getSizeInventory(); i++) {
-                            if (ItemStack.areItemStackTagsEqual(chestInventory.getStackInSlot(i), stack)) {
+                        // Make sure this backpack is in the auction house and not just in your inventory before cancelling.
+                        for (int slotNumber = 0; slotNumber < chestInventory.getSizeInventory(); slotNumber++) {
+                            if (chestInventory.getStackInSlot(slotNumber) == stack) {
                                 return;
                             }
                         }
@@ -64,35 +63,69 @@ public class GuiScreenHook {
                 }
             }
 
-            Backpack backpack = BackpackManager.getFromItem(stack);
-            if (backpack != null) {
+            ContainerPreview containerPreview = BackpackManager.getFromItem(stack);
+            if (containerPreview != null) {
                 /*
                  Don't render the backpack preview if in the backpack is used to represent a crafting recipe or the
                  result of one.
                  */
-                if (BackpackManager.isBackpackCraftingMenuItem(stack)) {
+                if (ItemUtils.isMenuItem(stack)) {
                     return;
                 }
 
-                backpack.setX(x);
-                backpack.setY(y);
+                containerPreview.setX(x);
+                containerPreview.setY(y);
                 if (isFreezeKeyDown() && System.currentTimeMillis() - lastBackpackFreezeKey > 500) {
-                    lastBackpackFreezeKey = System.currentTimeMillis();
+                    lastBackpackFreezeKey = Minecraft.getSystemTime();
                     GuiContainerHook.setFreezeBackpack(!GuiContainerHook.isFreezeBackpack());
-                    main.getUtils().setBackpackToPreview(backpack);
+                    main.getUtils().setContainerPreviewToRender(containerPreview);
                 }
                 if (!GuiContainerHook.isFreezeBackpack()) {
-                    main.getUtils().setBackpackToPreview(backpack);
+                    main.getUtils().setContainerPreviewToRender(containerPreview);
                 }
                 main.getPlayerListener().onItemTooltip(new ItemTooltipEvent(stack, null, null, false));
                 returnValue.cancel();
             }
+
+            if (main.getConfigValues().isEnabled(Feature.SHOW_PERSONAL_COMPACTOR_PREVIEW)) {
+                /*
+                 Don't render the compactor preview if in the backpack is used to represent a crafting recipe or the
+                 result of one.
+                 */
+                if (ItemUtils.isMenuItem(stack)) {
+                    return;
+                }
+
+                ItemStack[] items = ItemUtils.getPersonalCompactorContents(stack);
+
+                if (items != null) {
+                    main.getPlayerListener().onItemTooltip(new ItemTooltipEvent(stack, null, null, false));
+                    returnValue.cancel();
+                    String name = TextUtils.stripColor(stack.getDisplayName());
+
+                    // Remove the reforge like it does in the actual menu
+                    if (ItemUtils.getReforge(stack) != null) {
+                        int firstSpace = name.indexOf(' ');
+                        if (name.length() > firstSpace + 1) {
+                            name = name.substring(firstSpace + 1);
+                        }
+                    }
+
+                    main.getUtils().setContainerPreviewToRender(new ContainerPreview(items, name, null, x, y));
+                }
+            }
         }
+
         if (GuiContainerHook.isFreezeBackpack()) {
             returnValue.cancel();
         }
     }
 
+    /**
+     * Returns whether the backpack freeze key is down
+     *
+     * @return {@code true} if the backpack freeze key is down, {@code false} otherwise
+     */
     private static boolean isFreezeKeyDown() {
         SkyblockAddons main = SkyblockAddons.getInstance();
 
@@ -111,13 +144,5 @@ public class GuiScreenHook {
                 !CooldownManager.isOnCooldown(InventoryUtils.MADDOX_BATPHONE_DISPLAYNAME)) {// The prompt when Maddox picks up the phone.
             CooldownManager.put(InventoryUtils.MADDOX_BATPHONE_DISPLAYNAME, MADDOX_BATPHONE_COOLDOWN);
         }
-    }
-
-    static long getLastBackpackFreezeKey() {
-        return lastBackpackFreezeKey;
-    }
-
-    static void setLastBackpackFreezeKey(long lastBackpackFreezeKey) {
-        GuiScreenHook.lastBackpackFreezeKey = lastBackpackFreezeKey;
     }
 }

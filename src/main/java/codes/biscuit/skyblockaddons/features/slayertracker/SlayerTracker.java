@@ -10,7 +10,7 @@ import java.util.*;
 
 public class SlayerTracker {
 
-    @Getter private static SlayerTracker instance = new SlayerTracker();
+    @Getter private static SlayerTracker instance;
 
     private Map<SlayerBoss, Integer> slayerKills = new EnumMap<>(SlayerBoss.class);
     private Map<SlayerDrop, Integer> slayerDropCounts = new EnumMap<>(SlayerDrop.class);
@@ -19,6 +19,10 @@ public class SlayerTracker {
     // Saves the last second of inventory differences
     private transient Map<Long, List<ItemDiff>> recentInventoryDifferences = new HashMap<>();
     private transient long lastSlayerCompleted = -1;
+
+    public SlayerTracker() {
+        instance = this;
+    }
 
     public int getSlayerKills(SlayerBoss slayerBoss) {
         return slayerKills.getOrDefault(slayerBoss, 0);
@@ -37,7 +41,7 @@ public class SlayerTracker {
             lastKilledBoss = slayerBoss;
             lastSlayerCompleted = System.currentTimeMillis();
 
-            SkyblockAddons.getInstance().getPersistentValues().saveValues();
+            SkyblockAddons.getInstance().getPersistentValuesManager().saveValues();
         }
     }
 
@@ -89,7 +93,7 @@ public class SlayerTracker {
                     int count = Integer.parseInt(args[3]);
                     slayerKills.put(slayerBoss, count);
                     SkyblockAddons.getInstance().getUtils().sendMessage("Kills for slayer " + args[1] + " was set to " + args[3] + ".");
-                    SkyblockAddons.getInstance().getPersistentValues().saveValues();
+                    SkyblockAddons.getInstance().getPersistentValuesManager().saveValues();
                     return;
                 } catch (NumberFormatException ex) {
                     SkyblockAddons.getInstance().getUtils().sendErrorMessage(args[3] + " is not a valid number!");
@@ -109,7 +113,7 @@ public class SlayerTracker {
                     int count = Integer.parseInt(args[3]);
                     slayerDropCounts.put(slayerDrop, count);
                     SkyblockAddons.getInstance().getUtils().sendMessage("Statistic " + args[2] + " for slayer " + args[1] + " was set to " + args[3] + ".");
-                    SkyblockAddons.getInstance().getPersistentValues().saveValues();
+                    SkyblockAddons.getInstance().getPersistentValuesManager().saveValues();
                     return;
                 } catch (NumberFormatException ex) {
                     SkyblockAddons.getInstance().getUtils().sendErrorMessage(args[3] + " is not a valid number!");
@@ -122,6 +126,10 @@ public class SlayerTracker {
         }
 
         SkyblockAddons.getInstance().getUtils().sendErrorMessage(args[1] + " is not a valid boss!");
+    }
+
+    public void setKillCount(SlayerBoss slayerBoss, int kills) {
+        this.slayerKills.put(slayerBoss, kills);
     }
 
     public static void setInstance(SlayerTracker instance) {

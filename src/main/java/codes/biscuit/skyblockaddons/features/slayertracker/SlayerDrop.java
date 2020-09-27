@@ -1,8 +1,8 @@
 package codes.biscuit.skyblockaddons.features.slayertracker;
 
-import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.ItemRarity;
 import codes.biscuit.skyblockaddons.core.Translations;
+import codes.biscuit.skyblockaddons.utils.ItemUtils;
 import codes.biscuit.skyblockaddons.utils.TextUtils;
 import lombok.Getter;
 import net.minecraft.init.Blocks;
@@ -75,7 +75,7 @@ public enum SlayerDrop {
      * Creates a slayer drop with an item, item meta, display name, skyblock id, item rarity, and enchanted state
      */
     SlayerDrop(Item item, int meta, String name, String skyblockID, ItemRarity rarity, boolean enchanted) {
-        this.itemStack = SkyblockAddons.getInstance().getUtils().createItemStack(item, meta, name, skyblockID, enchanted);
+        this.itemStack = ItemUtils.createItemStack(item, meta, name, skyblockID, enchanted);
         this.skyblockID = skyblockID;
         this.rarity = rarity;
     }
@@ -84,7 +84,7 @@ public enum SlayerDrop {
      * Creates a player skull with a display name, skyblock id, item rarity, skull id, and skin texture link
      */
     SlayerDrop(String name, String skyblockID, ItemRarity rarity, String skullID, String textureURL) {
-        this.itemStack = SkyblockAddons.getInstance().getUtils().createSkullItemStack(name, skyblockID, skullID, textureURL);
+        this.itemStack = ItemUtils.createSkullItemStack(name, skyblockID, skullID, textureURL);
         this.skyblockID = skyblockID;
         this.rarity = rarity;
     }

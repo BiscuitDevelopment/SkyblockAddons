@@ -26,12 +26,12 @@ public class BackpackManager {
     private static BackpackColor openedBackpackColor = null;
 
     /**
-     * Creates and returns a {@code Backpack} object representing the given {@code ItemStack} if it is a backpack
+     * Creates and returns a {@code ContainerPreview} object representing the given {@code ItemStack} if it is a backpack
      *
      * @param stack the {@code ItemStack} to create a {@code Backpack} instance from
-     * @return a {@code Backpack} object representing {@code stack} if it is a backpack, or {@code null} otherwise
+     * @return a {@code ContainerPreview} object representing {@code stack} if it is a backpack, or {@code null} otherwise
      */
-    public static Backpack getFromItem(ItemStack stack) {
+    public static ContainerPreview getFromItem(ItemStack stack) {
         if (stack == null) return null;
 
         SkyblockAddons main = SkyblockAddons.getInstance();
@@ -94,10 +94,10 @@ public class BackpackManager {
                             color = BackpackColor.valueOf(extraAttributes.getString("backpack_color"));
                         } catch (IllegalArgumentException ignored) {}
                     }
-                    return new Backpack(items, TextUtils.stripColor(stack.getDisplayName()), color);
+                    return new ContainerPreview(items, TextUtils.stripColor(stack.getDisplayName()), color);
                 } catch (IOException ex) {
-                    SkyblockAddons.getInstance().getLogger().error("There was an error parsing backpack data.");
-                    SkyblockAddons.getInstance().getLogger().catching(ex);
+                    SkyblockAddons.getLogger().error("There was an error parsing backpack data.");
+                    SkyblockAddons.getLogger().catching(ex);
                 }
             }
         }
@@ -111,28 +111,12 @@ public class BackpackManager {
      * @return {@code true} if {@code stack} is a backpack, {@code false} otherwise
      */
     public static boolean isBackpack(ItemStack stack) {
-        if (stack == null) return false;
-        String id = ItemUtils.getSkyBlockItemID(stack);
-        if (id == null) return false;
-        return BACKPACK_ID_PATTERN.matcher(id).matches();
-    }
-
-    /**
-     * Checks if the given {@code ItemStack} is a backpack that represents its crafting recipe in the recipes menu or the
-     * item the player is currently crafting in the crafting menu
-     *
-     * @param stack the {@code ItemStack} to check
-     * @return {@code true} if {@code stack} is a backpack and represents its crafting recipe or the item the player is crafting, or {@code false} otherwise
-     */
-    public static boolean isBackpackCraftingMenuItem(ItemStack stack) {
-        if (!isBackpack(stack)) {
+        if (stack == null) {
             return false;
         }
 
-        NBTTagCompound extraAttributesTag = stack.getSubCompound("ExtraAttributes", false);
-
-        // If the backpack is being used to represent a crafting recipe, it won't have this key.
-        return extraAttributesTag != null && !extraAttributesTag.hasKey("uuid");
+        String id = ItemUtils.getSkyBlockItemID(stack);
+        return id != null && BACKPACK_ID_PATTERN.matcher(id).matches();
     }
 
     /**

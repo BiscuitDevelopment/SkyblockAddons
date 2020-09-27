@@ -2,7 +2,6 @@ package codes.biscuit.skyblockaddons.tweaker;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import lombok.Getter;
-import net.minecraft.launchwrapper.Launch;
 import net.minecraftforge.fml.relauncher.FMLRelaunchLog;
 import net.minecraftforge.fml.relauncher.IFMLCallHook;
 import org.apache.logging.log4j.Level;
@@ -14,8 +13,9 @@ import java.util.Map;
 /**
  * This class contains a series of checks that need to be run before the SkyblockAddons transformers are used.
  */
-public class PreTransformationChecks implements IFMLCallHook {
-    private static final String loggerName = SkyblockAddons.MOD_NAME + " PTC";
+public class SkyblockAddonsSetup implements IFMLCallHook {
+    private static final String LOGGER_NAME = SkyblockAddons.MOD_NAME + " Setup";
+    private static Map<String, Object> fmlData;
     @Getter
     private static boolean deobfuscated;
     @Getter
@@ -25,26 +25,25 @@ public class PreTransformationChecks implements IFMLCallHook {
      * Checks that need to run before the transformers are initialized
      */
     static void runPreInitChecks() {
-        FMLRelaunchLog.log(loggerName, Level.DEBUG, "Running pre-init checks...");
+        logDebug("Running pre-init checks...");
 
-        // Environment Obfuscation checks
-        deobfuscated = false;
-
-        deobfuscated = (boolean) Launch.blackboard.get("fml.deobfuscatedEnvironment");
+        // Environment Obfuscation check
+        deobfuscated = fmlData != null && fmlData.containsKey("runtimeDeobfuscationEnabled") &&
+                !(boolean) fmlData.get("runtimeDeobfuscationEnabled");
 
         usingNotchMappings = !deobfuscated;
-        FMLRelaunchLog.log(loggerName, Level.DEBUG, "Pre-init checks complete.");
-        FMLRelaunchLog.log(loggerName, Level.DEBUG, "Results:");
-        FMLRelaunchLog.log(loggerName, Level.DEBUG, "De-obfuscated Environment: %b", deobfuscated);
-        FMLRelaunchLog.log(loggerName, Level.DEBUG, "Using Notch Mappings: %b", usingNotchMappings);
+
+        logDebug("Pre-init checks complete.");
+        logDebug("Results:");
+        logDebug("De-obfuscated Environment: %b", deobfuscated);
+        logDebug("Using Notch Mappings: %b", usingNotchMappings);
     }
 
     /**
      * Checks that need to run after the transformers are initialized but before the transformers are used
      */
     static void runPreTransformationChecks() {
-        // TODO Localize the errors
-        FMLRelaunchLog.log(loggerName, Level.DEBUG, "Running pre-transformation checks...");
+        logDebug( "Running pre-transformation checks...");
 
         // Duplicate SkyblockAddons check
         List<Object> coreMods = SkyblockAddonsLoadingPlugin.coreMods;
@@ -63,30 +62,47 @@ public class PreTransformationChecks implements IFMLCallHook {
                         sbaCoreFound = true;
                     }
                     else {
-                        throw new RuntimeException("A duplicate installation of SkyblockAddons was found." +
-                                " Please remove it and restart Minecraft.");
+                        throw new RuntimeException("Launch failed because a duplicate installation of" +
+                                " SkyblockAddons was found. Please remove it and restart Minecraft.");
                     }
                 }
             }
 
             nameField.setAccessible(false);
         } catch (NoSuchFieldException e) {
-            FMLRelaunchLog.log(loggerName, Level.ERROR, e,"The name field wasn't found. Duplicate check failed.");
+            logError(e,"The name field wasn't found. Duplicate check failed.");
         } catch (IllegalAccessException e) {
-            FMLRelaunchLog.log(loggerName, Level.ERROR, e,"The name field can't be accessed. Duplicate check failed.");
+            logError(e,"The name field can't be accessed. Duplicate check failed.");
         }
 
-        FMLRelaunchLog.log(loggerName, Level.DEBUG, "Pre-transformation checks complete.");
+        logDebug("Pre-transformation checks complete.");
+    }
+
+    /*
+    Logging methods for adding the logger name to the beginning of logDebug messages
+    These are required since Minecraft excludes logger names when writing to the logDebug file.
+     */
+
+    private static void logDebug(String format) {
+        FMLRelaunchLog.log(LOGGER_NAME, Level.DEBUG, String.format("[%s] %s", LOGGER_NAME, format));
+    }
+
+    private static void logDebug(String format, Object... data) {
+        FMLRelaunchLog.log(LOGGER_NAME, Level.DEBUG, String.format("[%s] %s", LOGGER_NAME, format), data);
+    }
+
+    private static void logError(Throwable ex, String format) {
+        FMLRelaunchLog.log(LOGGER_NAME, Level.ERROR, ex, String.format("[%s] %s", LOGGER_NAME, format));
     }
 
     @Override
     public void injectData(Map<String, Object> data) {
-        // unused
+        fmlData = data;
     }
 
     @Override
     public Void call() {
-        PreTransformationChecks.runPreTransformationChecks();
+        SkyblockAddonsSetup.runPreTransformationChecks();
         return null;
     }
 }

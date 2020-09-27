@@ -71,7 +71,9 @@ public enum Location {
     JERRY_POND("Jerry Pond"), // TODO RPC
     JERRYS_WORKSHOP("Jerry's Workshop"), // TODO RPC
 
+    // Dungeons
     DUNGEON("Dungeon"), // TODO RPC
+    DUNGEON_HUB("Dungeon Hub"), // TODO RPC
 
     /*
     Out of Bounds

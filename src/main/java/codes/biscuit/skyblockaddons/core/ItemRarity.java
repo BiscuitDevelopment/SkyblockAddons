@@ -15,6 +15,8 @@ public enum ItemRarity {
     EPIC("EPIC", ColorCode.DARK_PURPLE),
     LEGENDARY("LEGENDARY", ColorCode.GOLD),
     MYTHIC("MYTHIC", ColorCode.LIGHT_PURPLE),
+    SUPREME("SUPREME", ColorCode.DARK_RED),
+
     SPECIAL("SPECIAL", ColorCode.RED),
     VERY_SPECIAL("VERY SPECIAL", ColorCode.RED);
 

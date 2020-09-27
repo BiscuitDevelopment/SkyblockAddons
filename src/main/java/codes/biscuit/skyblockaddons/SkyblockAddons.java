@@ -2,7 +2,7 @@ package codes.biscuit.skyblockaddons;
 
 import codes.biscuit.skyblockaddons.commands.SkyblockAddonsCommand;
 import codes.biscuit.skyblockaddons.config.ConfigValues;
-import codes.biscuit.skyblockaddons.config.PersistentValues;
+import codes.biscuit.skyblockaddons.config.PersistentValuesManager;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.Message;
 import codes.biscuit.skyblockaddons.core.OnlineData;
@@ -18,11 +18,8 @@ import codes.biscuit.skyblockaddons.misc.Updater;
 import codes.biscuit.skyblockaddons.misc.scheduler.NewScheduler;
 import codes.biscuit.skyblockaddons.misc.scheduler.Scheduler;
 import codes.biscuit.skyblockaddons.misc.scheduler.SkyblockRunnable;
-import codes.biscuit.skyblockaddons.utils.DataUtils;
-import codes.biscuit.skyblockaddons.utils.DungeonUtils;
-import codes.biscuit.skyblockaddons.utils.EnumUtils;
-import codes.biscuit.skyblockaddons.utils.InventoryUtils;
-import codes.biscuit.skyblockaddons.utils.Utils;
+import codes.biscuit.skyblockaddons.utils.*;
+import com.google.gson.Gson;
 import lombok.Getter;
 import lombok.Setter;
 import net.minecraft.client.Minecraft;
@@ -49,10 +46,11 @@ public class SkyblockAddons {
     public static String VERSION = "@VERSION@";
 
     @Getter private static SkyblockAddons instance;
-    private final Logger logger;
+    @Getter private static final Logger logger = getLogger(MOD_NAME);
+    private static final Gson GSON = new Gson();
 
     private ConfigValues configValues;
-    private PersistentValues persistentValues;
+    private PersistentValuesManager persistentValuesManager;
     private PlayerListener playerListener;
     private GuiScreenListener guiScreenListener;
     private RenderListener renderListener;
@@ -74,7 +72,6 @@ public class SkyblockAddons {
 
     public SkyblockAddons() {
         instance = this;
-        logger = LogManager.getLogger(MOD_NAME);
 
         playerListener = new PlayerListener();
         guiScreenListener = new GuiScreenListener();
@@ -88,10 +85,21 @@ public class SkyblockAddons {
         discordRPCManager = new DiscordRPCManager();
     }
 
+    /**
+     * Returns a new {@code Logger} with the given name. All log messages from the returned {@code Logger} will have the
+     * name added to the beginning.
+     *
+     * @param name the name of the logger
+     * @return a new {@code Logger} with the given name that adds the name to the beginning of all its log messages
+     */
+    public static Logger getLogger(String name) {
+        return LogManager.getLogger(name, new SkyblockAddonsMessageFactory(name));
+    }
+
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent e) {
         configValues = new ConfigValues(e.getSuggestedConfigurationFile());
-        persistentValues = new PersistentValues(e.getModConfigurationDirectory());
+        persistentValuesManager = new PersistentValuesManager(e.getModConfigurationDirectory());
     }
 
     @Mod.EventHandler
@@ -119,7 +127,7 @@ public class SkyblockAddons {
     public void postInit(FMLPostInitializationEvent e) {
         DataUtils.readLocalAndFetchOnline();
         configValues.loadValues();
-        persistentValues.loadValues();
+        persistentValuesManager.loadValues();
 
         setKeyBindingDescriptions();
 
@@ -198,11 +206,15 @@ public class SkyblockAddons {
         }
     }
 
+    public static Gson getGson() {
+        return GSON;
+    }
+
     // This replaces the version placeholder if the mod is built using IntelliJ instead of Gradle.
     static {
         //noinspection ConstantConditions
         if (VERSION.contains("@")) { // Debug environment...
-            VERSION = "1.5.2";
+            VERSION = "1.6.0";
         }
     }
 }

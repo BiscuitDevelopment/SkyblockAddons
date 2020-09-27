@@ -8,7 +8,7 @@ import codes.biscuit.skyblockaddons.events.DungeonPlayerReviveEvent;
 import codes.biscuit.skyblockaddons.events.SkyblockPlayerDeathEvent;
 import codes.biscuit.skyblockaddons.features.BaitManager;
 import codes.biscuit.skyblockaddons.features.EndstoneProtectorManager;
-import codes.biscuit.skyblockaddons.features.backpacks.Backpack;
+import codes.biscuit.skyblockaddons.features.backpacks.ContainerPreview;
 import codes.biscuit.skyblockaddons.features.backpacks.BackpackManager;
 import codes.biscuit.skyblockaddons.features.dragontracker.DragonTracker;
 import codes.biscuit.skyblockaddons.features.cooldowns.CooldownManager;
@@ -100,7 +100,8 @@ public class PlayerListener {
             "You can now fly for 200 minutes.", "Your flight has been extended for 200 extra minutes."));
 
     private static final Set<String> LEGENDARY_SEA_CREATURE_MESSAGES = new HashSet<>(Arrays.asList("The Water Hydra has come to test your strength.",
-            "The Sea Emperor arises from the depths...", "What is this creature!?"));
+            "The Sea Emperor arises from the depths...", "What is this creature!?",
+            "Hide no longer, a Great White Shark has tracked your scent and thirsts for your blood!"));
 
     private static final Set<String> BONZO_STAFF_SOUNDS = new HashSet<>(Arrays.asList("fireworks.blast", "fireworks.blast_far",
             "fireworks.twinkle", "fireworks.twinkle_far", "mob.ghast.moan"));
@@ -256,9 +257,9 @@ public class PlayerListener {
                 }
                 if (main.getConfigValues().isEnabled(Feature.ZEALOT_COUNTER)) {
                     // Edit the message to include counter.
-                    e.message = new ChatComponentText(formattedText + ColorCode.GRAY + " (" + main.getPersistentValues().getKills() + ")");
+                    e.message = new ChatComponentText(formattedText + ColorCode.GRAY + " (" + main.getPersistentValuesManager().getPersistentValues().getKills() + ")");
                 }
-                main.getPersistentValues().addEyeResetKills();
+                main.getPersistentValuesManager().addEyeResetKills();
 
             } else if (main.getConfigValues().isEnabled(Feature.LEGENDARY_SEA_CREATURE_WARNING) && LEGENDARY_SEA_CREATURE_MESSAGES.contains(unformattedText)) {
                 main.getUtils().playLoudSound("random.orb", 0.5);
@@ -372,10 +373,12 @@ public class PlayerListener {
                 matcher = PROFILE_CHAT_PATTERN.matcher(formattedText);
                 if (matcher.matches()) {
                     main.getUtils().setProfileName(matcher.group(1));
+                    APIManager.getInstance().pullInitialData();
                 } else {
                     matcher = SWITCH_PROFILE_CHAT_PATTERN.matcher(formattedText);
                     if (matcher.matches()) {
                         main.getUtils().setProfileName(matcher.group(1));
+                        APIManager.getInstance().pullInitialData();
                     }
                 }
             }
@@ -403,9 +406,9 @@ public class PlayerListener {
         if (main.getUtils().isOnSkyblock() && heldItem != null) {
             // Change the GUI background color when a backpack is opened to match the backpack's color.
             if (heldItem.getItem() == Items.skull) {
-                Backpack backpack = BackpackManager.getFromItem(heldItem);
-                if (backpack != null) {
-                    BackpackManager.setOpenedBackpackColor(backpack.getBackpackColor());
+                ContainerPreview containerPreview = BackpackManager.getFromItem(heldItem);
+                if (containerPreview != null && containerPreview.getBackpackColor() != null) {
+                    BackpackManager.setOpenedBackpackColor(containerPreview.getBackpackColor());
                 }
             } else if (heldItem.getItem().equals(Items.fishing_rod)
                     && (e.action == PlayerInteractEvent.Action.RIGHT_CLICK_BLOCK || e.action == PlayerInteractEvent.Action.RIGHT_CLICK_AIR)) {
@@ -465,8 +468,6 @@ public class PlayerListener {
                     main.getUtils().playLoudSound("random.successful_hit", 0.8);
                 }
                 if (timerTick == 20) { // Add natural mana every second (increase is based on your max mana).
-                    main.getUtils().parseTabList();
-
                     if (main.getRenderListener().isPredictMana()) {
                         changeMana(getAttribute(Attribute.MAX_MANA) / 50);
                         if (getAttribute(Attribute.MANA) > getAttribute(Attribute.MAX_MANA))
@@ -575,7 +576,8 @@ public class PlayerListener {
     public void onDeath(LivingDeathEvent e) {
         if (e.entity instanceof EntityEnderman) {
             if (countedEndermen.remove(e.entity.getUniqueID())) {
-                main.getPersistentValues().addKill();
+                main.getPersistentValuesManager().getPersistentValues().setKills(main.getPersistentValuesManager().getPersistentValues().getKills() + 1);
+                main.getPersistentValuesManager().saveValues();
                 EndstoneProtectorManager.onKill();
             } else if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.ZEALOT_COUNTER_EXPLOSIVE_BOW_SUPPORT)) {
                 if (isZealot(e.entity)) {
@@ -603,7 +605,8 @@ public class PlayerListener {
                     if (explosionLocation.distanceTo(deathLocation) < 4.6) {
 //                        possibleZealotsKilled--;
 
-                        main.getPersistentValues().addKill();
+                        main.getPersistentValuesManager().getPersistentValues().setKills(main.getPersistentValuesManager().getPersistentValues().getKills() + 1);
+                        main.getPersistentValuesManager().saveValues();
                         EndstoneProtectorManager.onKill();
                     }
 
@@ -728,7 +731,8 @@ public class PlayerListener {
                                     if (distance < 4.6) {
 //                                        possibleZealotsKilled--;
 
-                                        main.getPersistentValues().addKill();
+                                        main.getPersistentValuesManager().getPersistentValues().setKills(main.getPersistentValuesManager().getPersistentValues().getKills() + 1);
+                                        main.getPersistentValuesManager().saveValues();
                                         EndstoneProtectorManager.onKill();
                                     }
                                 }

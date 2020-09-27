@@ -2,6 +2,7 @@ package codes.biscuit.skyblockaddons.tweaker;
 
 import codes.biscuit.skyblockaddons.asm.*;
 import codes.biscuit.skyblockaddons.tweaker.transformer.ITransformer;
+import codes.biscuit.skyblockaddons.utils.SkyblockAddonsMessageFactory;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.launchwrapper.IClassTransformer;
@@ -18,11 +19,13 @@ import java.io.IOException;
 import java.util.Collection;
 
 public class SkyblockAddonsTransformer implements IClassTransformer {
+    private static final String LOGGER_NAME = "SkyblockAddons Transformer";
+    private static final Logger LOGGER = LogManager.getLogger(LOGGER_NAME, new SkyblockAddonsMessageFactory(LOGGER_NAME));
+
     static {
-        PreTransformationChecks.runPreInitChecks();
+        SkyblockAddonsSetup.runPreInitChecks();
     }
 
-    private final Logger logger = LogManager.getLogger("SkyblockAddons Transformer");
     private final Multimap<String, ITransformer> transformerMap = ArrayListMultimap.create();
 
     public SkyblockAddonsTransformer() {
@@ -70,7 +73,7 @@ public class SkyblockAddonsTransformer implements IClassTransformer {
         Collection<ITransformer> transformers = transformerMap.get(transformedName);
         if (transformers.isEmpty()) return bytes;
 
-        logger.info("Found {} transformers for {}", transformers.size(), transformedName);
+        LOGGER.info("Found {} transformers for {}", transformers.size(), transformedName);
 
         ClassReader reader = new ClassReader(bytes);
         ClassNode node = new ClassNode();
@@ -79,7 +82,7 @@ public class SkyblockAddonsTransformer implements IClassTransformer {
         MutableInt classWriterFlags = new MutableInt(ClassWriter.COMPUTE_FRAMES | ClassWriter.COMPUTE_MAXS);
 
         transformers.forEach(transformer -> {
-            logger.info("Applying transformer {} on {}...", transformer.getClass().getName(), transformedName);
+            LOGGER.info("Applying transformer {} on {}...", transformer.getClass().getName(), transformedName);
             transformer.transform(node, transformedName);
 
             if (transformer instanceof FontRendererTransformer) {
@@ -92,8 +95,8 @@ public class SkyblockAddonsTransformer implements IClassTransformer {
         try {
             node.accept(writer);
         } catch (Throwable t) {
-            logger.error("Exception when transforming " + transformedName + " : " + t.getClass().getSimpleName());
-            logger.catching(t);
+            LOGGER.error("Exception when transforming " + transformedName + " : " + t.getClass().getSimpleName());
+            LOGGER.catching(t);
             outputBytecode(transformedName, writer);
             return bytes;
         }
@@ -116,8 +119,8 @@ public class SkyblockAddonsTransformer implements IClassTransformer {
             os.write(writer.toByteArray());
             os.close();
         } catch (IOException e) {
-            logger.error("An error occurred writing bytecode of transformed class \"" + transformedName + "\" to file.");
-            logger.catching(e);
+            LOGGER.error("An error occurred writing bytecode of transformed class \"" + transformedName + "\" to file.");
+            LOGGER.catching(e);
         }
     }
 

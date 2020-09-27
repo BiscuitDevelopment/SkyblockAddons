@@ -37,7 +37,7 @@ public enum DiscordStatus implements ButtonSelect.SelectItem {
             }),
 
     ZEALOTS(Message.DISCORD_STATUS_ZEALOTS_TITLE, Message.DISCORD_STATUS_ZEALOTS_DESCRIPTION,
-            () -> String.format("%d Zealots killed", SkyblockAddons.getInstance().getPersistentValues().getKills())),
+            () -> String.format("%d Zealots killed", SkyblockAddons.getInstance().getPersistentValuesManager().getPersistentValues().getKills())),
 
     ITEM(Message.DISCORD_STATUS_ITEM_TITLE, Message.DISCORD_STATUS_ITEM_DESCRIPTION,
             () -> {

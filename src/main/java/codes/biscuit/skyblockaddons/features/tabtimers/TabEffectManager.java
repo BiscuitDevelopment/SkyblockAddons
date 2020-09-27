@@ -4,6 +4,7 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.gui.buttons.ButtonLocation;
 import codes.biscuit.skyblockaddons.utils.RomanNumeralParser;
+import codes.biscuit.skyblockaddons.utils.TextUtils;
 import lombok.Getter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.IChatComponent;
@@ -26,6 +27,7 @@ public class TabEffectManager {
 
     /** Used to match potion effects from the footer. */
     private static final Pattern EFFECT_PATTERN = Pattern.compile("(?:(?<potion>§r§[a-f0-9][a-zA-Z ]+ (?:I[XV]|V?I{0,3})§r )|(?<powerup>§r§[a-f0-9][a-zA-Z ]+ ))§r§f(?<timer>\\d{0,2}:?\\d{1,2}:\\d{2})");
+    private static final Pattern EFFECT_COUNT_PATTERN = Pattern.compile("You have (?<effectCount>[0-9]+) active effects\\. Use \"/effects\" to see them!");
 
     /**
      * The following two fields are accessed by
@@ -35,6 +37,8 @@ public class TabEffectManager {
      */
     @Getter private List<TabEffect> potionTimers = new ArrayList<>();
     @Getter private List<TabEffect> powerupTimers = new ArrayList<>();
+
+    @Getter private int effectCount;
 
     /**
      * The following two fields are accessed by
@@ -93,23 +97,34 @@ public class TabEffectManager {
         IChatComponent tabFooterChatComponent = Minecraft.getMinecraft().ingameGUI.getTabList().footer;
 
         // Convert tab footer to a String
-        StringBuilder tabFooterString = new StringBuilder();
+        StringBuilder tabFooterStringBuilder = new StringBuilder();
         if (tabFooterChatComponent != null) {
             for (IChatComponent line : tabFooterChatComponent.getSiblings()) {
-                tabFooterString.append(line.getFormattedText());
+                tabFooterStringBuilder.append(line.getFormattedText());
             }
         }
 
+        String tabFooterString = tabFooterStringBuilder.toString();
+        String strippedTabFooterString = TextUtils.stripColor(tabFooterString);
+
         // Match the TabFooterString for Effects
-        Matcher m = EFFECT_PATTERN.matcher(tabFooterString.toString());
+        Matcher matcher = EFFECT_PATTERN.matcher(tabFooterString);
         String effectString;
-        while (m.find()) {
-            if ((effectString = m.group("potion")) != null) {
-                putPotionEffect(effectString, m.group("timer"));
-            } else if ((effectString = m.group("powerup")) != null) {
-                putPowerup(effectString, m.group("timer"));
+        while (matcher.find()) {
+            if ((effectString = matcher.group("potion")) != null) {
+                putPotionEffect(effectString, matcher.group("timer"));
+            } else if ((effectString = matcher.group("powerup")) != null) {
+                putPowerup(effectString, matcher.group("timer"));
             }
         }
+
+        matcher = EFFECT_COUNT_PATTERN.matcher(strippedTabFooterString);
+        if (matcher.find()) {
+            effectCount = Integer.parseInt(matcher.group("effectCount"));
+        } else {
+            effectCount = 0;
+        }
+
         if(SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.SORT_TAB_EFFECT_TIMERS)) {
             Collections.sort(potionTimers);
             Collections.sort(powerupTimers);

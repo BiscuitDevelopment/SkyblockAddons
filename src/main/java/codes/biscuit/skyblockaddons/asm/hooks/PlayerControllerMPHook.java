@@ -4,7 +4,7 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.asm.utils.ReturnValue;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.InventoryType;
-import codes.biscuit.skyblockaddons.features.backpacks.Backpack;
+import codes.biscuit.skyblockaddons.features.backpacks.ContainerPreview;
 import codes.biscuit.skyblockaddons.features.backpacks.BackpackManager;
 import codes.biscuit.skyblockaddons.features.cooldowns.CooldownManager;
 import codes.biscuit.skyblockaddons.features.craftingpatterns.CraftingPattern;
@@ -110,9 +110,9 @@ public class PlayerControllerMPHook {
                 }
 
                 if (mouseButtonClicked == 1 && slotIn != null && slotIn.getHasStack() && slotIn.getStack().getItem() == Items.skull) {
-                    Backpack backpack = BackpackManager.getFromItem(slotIn.getStack());
-                    if (backpack != null) {
-                        BackpackManager.setOpenedBackpackColor(backpack.getBackpackColor());
+                    ContainerPreview containerPreview = BackpackManager.getFromItem(slotIn.getStack());
+                    if (containerPreview != null && containerPreview.getBackpackColor() != null) {
+                        BackpackManager.setOpenedBackpackColor(containerPreview.getBackpackColor());
                     }
                 }
 
@@ -138,7 +138,7 @@ public class PlayerControllerMPHook {
                 if (slotIn != null && main.getInventoryUtils().getInventoryType() == InventoryType.CRAFTING_TABLE
                         && main.getConfigValues().isEnabled(Feature.CRAFTING_PATTERNS)) {
 
-                    final CraftingPattern selectedPattern = main.getPersistentValues().getSelectedCraftingPattern();
+                    final CraftingPattern selectedPattern = main.getPersistentValuesManager().getPersistentValues().getSelectedCraftingPattern();
                     final ItemStack clickedItem = slotIn.getStack();
                     if (selectedPattern != CraftingPattern.FREE && clickedItem != null) {
                         final ItemStack[] craftingGrid = new ItemStack[9];
@@ -161,7 +161,7 @@ public class PlayerControllerMPHook {
                         } else {
                             if (slotIn.getSlotIndex() == CraftingPattern.CRAFTING_RESULT_INDEX
                                     && !result.isSatisfied()
-                                    && main.getPersistentValues().isBlockCraftingIncompletePatterns()) {
+                                    && main.getPersistentValuesManager().getPersistentValues().isBlockCraftingIncompletePatterns()) {
                                 // cancel clicking the result if the pattern isn't satisfied
                                 if (System.currentTimeMillis() > lastCraftingSoundPlayed + CRAFTING_PATTERN_SOUND_COOLDOWN) {
                                     main.getUtils().playSound("note.bass", 0.5);

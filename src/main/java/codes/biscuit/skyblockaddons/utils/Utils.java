@@ -4,7 +4,7 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.*;
 import codes.biscuit.skyblockaddons.events.SkyblockJoinedEvent;
 import codes.biscuit.skyblockaddons.events.SkyblockLeftEvent;
-import codes.biscuit.skyblockaddons.features.backpacks.Backpack;
+import codes.biscuit.skyblockaddons.features.backpacks.ContainerPreview;
 import codes.biscuit.skyblockaddons.features.dungeonmap.MapMarker;
 import codes.biscuit.skyblockaddons.features.itemdrops.ItemDropChecker;
 import codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui;
@@ -13,7 +13,10 @@ import codes.biscuit.skyblockaddons.misc.scheduler.Scheduler;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
-import com.google.gson.*;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonParser;
 import com.ibm.icu.text.ArabicShaping;
 import com.ibm.icu.text.ArabicShapingException;
 import com.ibm.icu.text.Bidi;
@@ -29,19 +32,20 @@ import net.minecraft.client.renderer.WorldRenderer;
 import net.minecraft.client.renderer.texture.DynamicTexture;
 import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
-import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
 import net.minecraft.scoreboard.Score;
 import net.minecraft.scoreboard.ScoreObjective;
 import net.minecraft.scoreboard.ScorePlayerTeam;
 import net.minecraft.scoreboard.Scoreboard;
-import net.minecraft.util.*;
+import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.MathHelper;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.Vec4b;
 import net.minecraft.world.WorldSettings;
 import net.minecraft.world.WorldType;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
@@ -71,8 +75,6 @@ import java.util.stream.Collectors;
 @Getter @Setter
 public class Utils {
 
-    public static final Gson GSON = new Gson();
-
     /** Added to the beginning of messages. */
     public static final String MESSAGE_PREFIX =
             ColorCode.GRAY + "[" + ColorCode.AQUA + SkyblockAddons.MOD_NAME + ColorCode.GRAY + "] ";
@@ -89,8 +91,7 @@ public class Utils {
             "telekinesis"
     ));
 
-    private static final Pattern SERVER_REGEX = Pattern.compile("([0-9]{2}/[0-9]{2}/[0-9]{2}) (mini[0-9]{1,3}[A-Za-z])");
-    private static final Pattern TABLIST_SERVER_REGEX = Pattern.compile("[0-9]{2}/[0-9]{2}/[0-9]{2}\\s\\s(mini[0-9]{1,3}[A-Za-z])");
+    private static final Pattern SERVER_REGEX = Pattern.compile("(?<serverType>[Mm])(?<serverCode>[0-9]+[A-Z])$");
     private static final Pattern PURSE_REGEX = Pattern.compile("(?:Purse|Piggy): (?<coins>[0-9.]*)(?: .*)?");
     private static final Pattern SLAYER_TYPE_REGEX = Pattern.compile("(?<type>Tarantula Broodfather|Revenant Horror|Sven Packmaster) (?<level>[IV]+)");
     private static final Pattern SLAYER_PROGRESS_REGEX = Pattern.compile("(?<progress>[0-9.k]*)/(?<total>[0-9.k]*) (?:Kills|Combat XP)$");
@@ -119,7 +120,7 @@ public class Utils {
     /** List of enchantment substrings that the player doesn't want to match. */
     private List<String> enchantmentExclusions = new LinkedList<>();
 
-    private Backpack backpackToPreview;
+    private ContainerPreview containerPreviewToRender;
 
     /** Whether the player is on skyblock. */
     private boolean onSkyblock;
@@ -159,7 +160,7 @@ public class Utils {
     private boolean slayerBossAlive;
 
     private SkyblockAddons main = SkyblockAddons.getInstance();
-    private Logger logger = SkyblockAddons.getInstance().getLogger();
+    private Logger logger = SkyblockAddons.getLogger();
 
     public Utils() {
         addDefaultStats();
@@ -304,34 +305,39 @@ public class Utils {
                         }
                     }
 
-                    if (strippedUnformatted.contains("mini")) {
-                        matcher = SERVER_REGEX.matcher(strippedUnformatted);
-                        if (matcher.matches()) {
-                            serverID = matcher.group(2);
+                    if ((matcher = SERVER_REGEX.matcher(strippedUnformatted)).find()) {
+                        String serverType = matcher.group("serverType");
+                        if (serverType.equals("m")) {
+                            serverID = "mini";
+                        } else if (serverType.equals("M")) {
+                            serverID = "mega";
                         }
+                        serverID += matcher.group("serverCode");
                     }
 
                     if (strippedUnformatted.endsWith("Combat XP") || strippedUnformatted.endsWith("Kills")) {
                         parseSlayerProgress(strippedUnformatted);
                     }
 
-                    for (Location loopLocation : Location.values()) {
-                        if (strippedUnformatted.endsWith(loopLocation.getScoreboardName())) {
-                            if (loopLocation == Location.BLAZING_FORTRESS && location != Location.BLAZING_FORTRESS) {
-                                sendInventiveTalentPingRequest(EnumUtils.MagmaEvent.PING); // going into blazing fortress
-                                fetchMagmaBossEstimate();
-                            }
+                    if (!foundLocation) {
+                        for (Location loopLocation : Location.values()) {
+                            if (strippedUnformatted.endsWith(loopLocation.getScoreboardName())) {
+                                if (loopLocation == Location.BLAZING_FORTRESS && location != Location.BLAZING_FORTRESS) {
+                                    sendInventiveTalentPingRequest(EnumUtils.MagmaEvent.PING); // going into blazing fortress
+                                    fetchMagmaBossEstimate();
+                                }
 
-                            if (location != loopLocation) {
-                                location = loopLocation;
-                            }
+                                if (location != loopLocation) {
+                                    location = loopLocation;
+                                }
 
-                            foundLocation = true;
-                            break;
+                                foundLocation = true;
+                                break;
+                            }
                         }
                     }
 
-                    if (location == Location.JERRYS_WORKSHOP || location == Location.JERRY_POND) {
+                    if (!foundJerryWave && (location == Location.JERRYS_WORKSHOP || location == Location.JERRY_POND)) {
                         if (strippedUnformatted.startsWith("Wave")) {
                             foundJerryWave = true;
 
@@ -347,13 +353,13 @@ public class Utils {
                         }
                     }
 
-                    if (strippedUnformatted.contains("alpha.hypixel.net")) {
+                    if (!foundAlphaIP && strippedUnformatted.contains("alpha.hypixel.net")) {
                         foundAlphaIP = true;
                         alpha = true;
                         profileName = "Alpha";
                     }
 
-                    if (strippedUnformatted.contains("Dungeon Cleared: ")) {
+                    if (!foundInDungeon && strippedUnformatted.contains("Dungeon Cleared: ")) {
                         foundInDungeon = true;
                         inDungeon = true;
 
@@ -433,29 +439,6 @@ public class Utils {
             // If we don't find a scoreboard for 10s, then we know they actually left the server.
             if (foundScoreboard || System.currentTimeMillis() - lastFoundScoreboard > 10000) {
                 MinecraftForge.EVENT_BUS.post(new SkyblockLeftEvent());
-            }
-        }
-    }
-
-    public void parseTabList() {
-        IChatComponent tabHeaderChatComponent = Minecraft.getMinecraft().ingameGUI.getTabList().header;
-
-        // Convert tab header to a String
-        StringBuilder tabHeaderString = new StringBuilder();
-        if (tabHeaderChatComponent != null) {
-            for (IChatComponent line : tabHeaderChatComponent.getSiblings()) {
-                tabHeaderString.append(line.getUnformattedText());
-            }
-        }
-
-        // Match the TabHeaderString for ServerId
-        Matcher m = TABLIST_SERVER_REGEX.matcher(tabHeaderString.toString());
-        while (m.find()) {
-            String id = m.group(1);
-
-            // Fix: Dungeon game server is not included in the scoreboard sidebar
-            if (!SkyblockAddons.getInstance().getUtils().getServerID().equals(id)) {
-                SkyblockAddons.getInstance().getUtils().setServerID(id);
             }
         }
     }
@@ -569,7 +552,7 @@ public class Utils {
                     }
                 }
                 connection.disconnect();
-                JsonObject responseJson = GSON.fromJson(response.toString(), JsonObject.class);
+                JsonObject responseJson = SkyblockAddons.getGson().fromJson(response.toString(), JsonObject.class);
                 long estimate = responseJson.get("estimate").getAsLong();
                 long currentTime = responseJson.get("queryTime").getAsLong();
                 int magmaSpawnTime = (int)((estimate-currentTime)/1000);
@@ -645,6 +628,7 @@ public class Utils {
     public int getNBTInteger(ItemStack item, String... path) {
         if (item != null && item.hasTagCompound()) {
             NBTTagCompound tag = item.getTagCompound();
+
             for (String tagName : path) {
                 if (path[path.length-1].equals(tagName)) continue;
                 if (tag.hasKey(tagName)) {
@@ -927,7 +911,7 @@ public class Utils {
                     }
                 }
                 connection.disconnect();
-                JsonObject onlineMessages = GSON.fromJson(response.toString(), JsonObject.class);
+                JsonObject onlineMessages = SkyblockAddons.getGson().fromJson(response.toString(), JsonObject.class);
                 mergeLanguageJsonObject(onlineMessages, main.getConfigValues().getLanguageConfig());
             } catch (JsonParseException | IllegalStateException | IOException ex) {
                 ex.printStackTrace();
@@ -941,7 +925,7 @@ public class Utils {
         String text;
         try {
             SkyblockAddons main = SkyblockAddons.getInstance();
-            List<String> path = new LinkedList<String>(Arrays.asList((parentPath).split(Pattern.quote("."))));
+            List<String> path = new LinkedList<>(Arrays.asList((parentPath).split(Pattern.quote("."))));
             JsonObject jsonObject = main.getConfigValues().getLanguageConfig();
             for (String part : path) {
                 if (!part.equals("")) {
@@ -1405,10 +1389,6 @@ public class Utils {
         return DUMMY_WORLD;
     }
 
-    public static Gson getGson() {
-        return GSON;
-    }
-
     public float[] getCurrentGLTransformations() {
         FloatBuffer buf = BufferUtils.createFloatBuffer(16);
         GL11.glGetFloat(GL11.GL_MODELVIEW_MATRIX, buf);
@@ -1423,67 +1403,5 @@ public class Utils {
         float scale = (float) Math.sqrt(mat.m00 * mat.m00 + mat.m01 * mat.m01 + mat.m02 * mat.m02);
 
         return new float[] {x, y, z, scale};
-    }
-
-    public ItemStack createItemStack(Item item, boolean enchanted) {
-        return createItemStack(item, 0, null, null, enchanted);
-    }
-
-    public ItemStack createItemStack(Item item, String name, String skyblockID, boolean enchanted) {
-        return createItemStack(item, 0, name, skyblockID, enchanted);
-    }
-
-    public ItemStack createItemStack(Item item, int meta, String name, String skyblockID, boolean enchanted) {
-        ItemStack stack = new ItemStack(item, 1, meta);
-
-        if (name != null) {
-            stack.setStackDisplayName(name);
-        }
-
-        if (enchanted) {
-            stack.addEnchantment(Enchantment.protection, 0);
-        }
-
-        if (skyblockID != null) {
-            setItemStackSkyblockID(stack, skyblockID);
-        }
-
-        return stack;
-    }
-
-    public ItemStack createSkullItemStack(String name, String skyblockID, String skullID, String textureURL) {
-        ItemStack stack = new ItemStack(Items.skull, 1, 3);
-
-        NBTTagCompound texture = new NBTTagCompound();
-        texture.setString("Value", TextUtils.encodeSkinTextureURL(textureURL));
-
-        NBTTagList textures = new NBTTagList();
-        textures.appendTag(texture);
-
-        NBTTagCompound properties = new NBTTagCompound();
-        properties.setTag("textures", textures);
-
-        NBTTagCompound skullOwner = new NBTTagCompound();
-        skullOwner.setTag("Properties", properties);
-
-        skullOwner.setString("Id", skullID);
-
-        stack.setTagInfo("SkullOwner", skullOwner);
-
-        if (name != null) {
-            stack.setStackDisplayName(name);
-        }
-
-        if (skyblockID != null) {
-            setItemStackSkyblockID(stack, skyblockID);
-        }
-
-        return stack;
-    }
-
-    public void setItemStackSkyblockID(ItemStack itemStack, String skyblockID) {
-        NBTTagCompound extraAttributes = new NBTTagCompound();
-        extraAttributes.setString("id", skyblockID);
-        itemStack.setTagInfo("ExtraAttributes", extraAttributes);
     }
 }

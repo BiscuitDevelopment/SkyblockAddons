@@ -1,6 +1,6 @@
 [{
   "modid": "skyblockaddons",
-  "name": "SkyBlock Addons",
+  "name": "SkyblockAddons",
   "description": "A mod with many features to improve your Hypixel Skyblock experience. Use /sba to open the menu!",
   "version": "${version}",
   "mcversion": "${mcversion}",
