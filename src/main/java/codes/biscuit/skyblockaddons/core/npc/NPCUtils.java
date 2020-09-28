@@ -26,7 +26,7 @@ import java.util.UUID;
  */
 public class NPCUtils {
 
-    private static final int HIDE_RADIUS_SQUARED = 2 * 2;
+    private static final int HIDE_RADIUS_SQUARED = (int) Math.round(2.5 * 2.5);
 
     @Getter private static Map<UUID, Vec3> npcLocations = new HashMap<>();
 

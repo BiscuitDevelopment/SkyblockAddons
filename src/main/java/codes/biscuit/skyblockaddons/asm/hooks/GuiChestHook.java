@@ -297,7 +297,8 @@ public class GuiChestHook {
         if (main.getUtils().isOnSkyblock()) {
             if (main.getUtils().getEnchantmentMatches().size() > 0) {
                 if (slotIn != null && !slotIn.inventory.equals(Minecraft.getMinecraft().thePlayer.inventory) && slotIn.getHasStack()) {
-                    if (slotIn.getSlotIndex() == 13 && main.getInventoryUtils().getInventoryType() == InventoryType.ENCHANTMENT_TABLE) {
+                    InventoryType inventoryType = main.getInventoryUtils().getInventoryType();
+                    if (slotIn.getSlotIndex() == 13 && inventoryType == InventoryType.ENCHANTMENT_TABLE) {
                         ItemStack[] enchantBottles = {slots.getSlot(29).getStack(), slots.getSlot(31).getStack(), slots.getSlot(33).getStack()};
                         for (ItemStack bottle : enchantBottles) {
                             if (bottle != null && bottle.hasDisplayName()) {
@@ -322,11 +323,10 @@ public class GuiChestHook {
                                 }
                             }
                         }
-                    } else if (slotIn.getSlotIndex() == 22 && (main.getInventoryUtils().getInventoryType() == InventoryType.BASIC_REFORGING
-                            || main.getInventoryUtils().getInventoryType() == InventoryType.BASIC_ACCESSORY_BAG_REFORGING)) {
+                    } else if (slotIn.getSlotIndex() == 22 && (inventoryType == InventoryType.BASIC_REFORGING || inventoryType == InventoryType.BASIC_ACCESSORY_BAG_REFORGING)) {
                         Slot itemSlot = slots.getSlot(13);
                         if (itemSlot != null && itemSlot.getHasStack()) {
-                            if (main.getInventoryUtils().getInventoryType() == InventoryType.BASIC_REFORGING) {
+                            if (inventoryType == InventoryType.BASIC_REFORGING) {
                                 ItemStack item = itemSlot.getStack();
                                 if (item.hasDisplayName()) {
                                     String reforge = ItemUtils.getReforge(item);
@@ -348,8 +348,7 @@ public class GuiChestHook {
                 }
             }
 
-            if (main.getConfigValues().isEnabled(Feature.STOP_DROPPING_SELLING_RARE_ITEMS) && !main.getUtils().isInDungeon() &&
-                    lowerChestInventory.hasCustomName() && NPCUtils.isSellMerchant(lowerChestInventory)
+            if (main.getConfigValues().isEnabled(Feature.STOP_DROPPING_SELLING_RARE_ITEMS) && !main.getUtils().isInDungeon() && NPCUtils.isSellMerchant(lowerChestInventory)
                     && slotIn != null && slotIn.inventory instanceof InventoryPlayer) {
                 if (!main.getUtils().getItemDropChecker().canDropItem(slotIn)) {
                     returnValue.cancel();

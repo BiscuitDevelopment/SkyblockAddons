@@ -370,7 +370,7 @@ public class InventoryUtils {
         for (InventoryType inventoryType : InventoryType.values()) {
             if (inventoryType.getInventoryName().equals(inventory.getDisplayName().getUnformattedText())) {
                 if (inventoryType == InventoryType.BASIC_REFORGING || inventoryType == InventoryType.BASIC_ACCESSORY_BAG_REFORGING) {
-                    return this.inventoryType = getReforgeInventoryType(inventory);
+                    return this.inventoryType = getReforgeInventoryType(inventoryType, inventory);
 
                 } else {
                     return this.inventoryType = inventoryType;
@@ -382,16 +382,7 @@ public class InventoryUtils {
     }
 
     // Gets the reforge inventory type from a given reforge inventory
-    private InventoryType getReforgeInventoryType(IInventory inventory) {
-        if (!inventory.getDisplayName().getUnformattedText().equals(InventoryType.BASIC_REFORGING.getInventoryName()) &&
-                !inventory.getDisplayName().getUnformattedText().equals(InventoryType.BASIC_ACCESSORY_BAG_REFORGING.getInventoryName())) {
-            throw new IllegalArgumentException("The given inventory is not a reforge inventory!");
-        }
-
-        // This records whether the inventory is for reforging a single item or the accessory bag
-        InventoryType baseType = inventory.getDisplayName().getUnformattedText().equals(InventoryType.BASIC_REFORGING.getInventoryName()) ?
-                InventoryType.BASIC_REFORGING : InventoryType.BASIC_ACCESSORY_BAG_REFORGING;
-
+    private InventoryType getReforgeInventoryType(InventoryType baseType, IInventory inventory) {
         // This is the barrier item that's present in the advanced reforging menu. This slot is empty in the basic reforging menu.
         ItemStack barrier = inventory.getStackInSlot(13);
         // This is the stained glass pane to the right of the barrier.
