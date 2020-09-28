@@ -79,8 +79,8 @@ public class SkyblockAddonsSetup implements IFMLCallHook {
     }
 
     /*
-    Logging methods for adding the logger name to the beginning of logDebug messages
-    These are required since Minecraft excludes logger names when writing to the logDebug file.
+    Logging methods for adding the logger name to the beginning of log messages
+    These are required since Minecraft excludes logger names when writing to the log file.
      */
 
     private static void logDebug(String format) {
