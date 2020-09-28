@@ -156,16 +156,16 @@
     "expanded": "已擴展",
     "hideWhenNotInCrypts": "於不位於 Crypts / 非進行 Revenant 任務時隱藏",
     "hideWhenNotInSpidersDen": "於不位於 Spider's Den / 非進行 Tarantula 任務時隱藏",
-    "hideWhenNotInCastle": "Hide When Not in the Castle/Doing Sven Quest",
+    "hideWhenNotInCastle": "於不位於 Castle / 非進行 Sven 任務時隱藏",
     "dungeonDeathCounter": "Dungeon 死亡計數器",
-    "showPersonalCompactorPreview": "Show Personal Compactor Preview",
-    "rockPetTracker": "Rock Pet Tracker",
-    "dolphinPetTracker": "Dolphin Pet Tracker",
-    "dungeonsTeammateNameOverlay": "Dungeons Teammate Name Overlay"
+    "showPersonalCompactorPreview": "顯示 Personal Compactor 預覽",
+    "rockPetTracker": "Rock 寵物追蹤器",
+    "dolphinPetTracker": "Dolphin 寵物追蹤器",
+    "dungeonsTeammateNameOverlay": "Dungeon 隊友名稱顯示"
   },
   "messages": {
-    "enchants": "Enchants",
-    "reforges": "Reforges",
+    "enchants": "附魔",
+    "reforges": "重鑄",
     "dropConfirmation": "再次丟棄此物品以確認！",
     "magmaBossWarning": "Magma Cube Boss 已出生！",
     "fullInventory": "背包已滿！",
@@ -225,9 +225,9 @@
     "enchantmentExclusionExample": "例：\"proj, blast\"",
     "reforgeInclusionExample": "例：\"godly, strong\"",
     "reforgeExclusionExample": "例：\"odd, clean\"",
-    "actionsLeft": "%number% Left",
-    "effectActive": "1 Effect Active",
-    "effectsActive": "%number% Effects Active"
+    "actionsLeft": "剩餘 %number%",
+    "effectActive": "已激活 1 個效果",
+    "effectsActive": "已激活 %number% 個效果"
   },
   "discordStatus": {
     "titleNone": "無",
@@ -264,7 +264,7 @@
     "sba.brand.notFound": "未發現伺服端！",
     "sba.copyEntity": "§e(Dev) §7複製玩家附近指定範圍內指定實體名稱的 NBT 資料",
     "sba.copySidebar": "§e(Dev) §7複製記分板的文字",
-    "sba.copyTabList": "§e(Dev) §7Copy the tab list header and footer",
+    "sba.copyTabList": "§e(Dev) §7複製玩家列表頭尾",
     "sba.dev": "開關開發者模式",
     "sba.dev.disabled": "開發者模式已禁用！",
     "sba.dev.enabled": "開發者模式已啟用！ 提示: 按下 \"%keyName%\" 以複製 NBT 資料！",
@@ -276,7 +276,7 @@
     "sba.help.copyEntity.entityNames": "你想要複製資料的實體種類名稱(例：Player、Creeper)。 輸入指令後按 \"Tab\" 以獲得完整清單。使用逗號分隔多個名稱，名稱有區分大小寫。",
     "sba.help.copyEntity.radius": "玩家附近進行複製實體 NBT 資料的距離(以方塊計算)",
     "sba.help.copySidebar.formatted": "決定顏色代碼是否複製時須被包含。可以為 \"true\" 或 \"false\"，如果沒有提供，將默認設定為 \"fasle\"。顏色代碼將被複製如果值為 \"true\"。",
-    "sba.help.copyTabList": "This command copies the header and footer of the tab player list. Formatting codes are included.",
+    "sba.help.copyTabList": "這個指令複製玩家列表的頭尾。包含顏色代碼",
     "sba.help.dev": "這個指令將開關開發者模式。這個指令是給 Skyblock 模組開發者使用的，開啟之後能看到各種資料，像是實體資料和道具的 NBT 資料。",
     "sba.help.help.command": "要獲得詳細用法的子命令",
     "sba.help.set.zealotCounter": "手動設置 Zealot 計數器的數字。",
@@ -293,8 +293,8 @@
     "sba.toggleActionBarLogging.enabled": "動作列訊息現在會開始記錄。",
     "sba.wrongUsage.generic": "錯誤的用法！",
     "sba.wrongUsage.subCommandNotFound": "查無子命令 \"%sub-command%\"。",
-    "sba.slayer": "Manually set slayer stats, press tab for arguments",
-    "sba.help.slayer": "Manually set slayer stats, press tab for arguments"
+    "sba.slayer": "手動設置 Slayer 數值，按tab以獲得參數",
+    "sba.help.slayer": "手動設置 Slayer 數值，按tab以獲得參數"
   },
   "keyBindings": {
     "developerCopyNBT": "複製 NBT"
@@ -307,12 +307,12 @@
     "young": "Young",
     "strong": "Strong",
     "superior": "Superior",
-    "recentDragons": "Recent Dragons:",
-    "dragonsSince": "Dragons Since:",
+    "recentDragons": "最近的龍:",
+    "dragonsSince": "龍自從:",
     "aspectOfTheDragons": "AOTD",
-    "enderDragonPet": "Dragon Pet",
-    "eyesPlaced": "Eyes Placed",
-    "never": "Never"
+    "enderDragonPet": "寵物 Dragon",
+    "eyesPlaced": "已放置眼睛",
+    "never": "從不"
   },
   "slayerTracker": {
     "revenant": "Revenant Horror:",
