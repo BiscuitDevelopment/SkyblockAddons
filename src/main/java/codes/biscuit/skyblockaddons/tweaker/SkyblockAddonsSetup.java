@@ -2,6 +2,7 @@ package codes.biscuit.skyblockaddons.tweaker;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import lombok.Getter;
+import net.minecraft.launchwrapper.Launch;
 import net.minecraftforge.fml.relauncher.FMLRelaunchLog;
 import net.minecraftforge.fml.relauncher.IFMLCallHook;
 import org.apache.logging.log4j.Level;
@@ -15,7 +16,6 @@ import java.util.Map;
  */
 public class SkyblockAddonsSetup implements IFMLCallHook {
     private static final String LOGGER_NAME = SkyblockAddons.MOD_NAME + " Setup";
-    private static Map<String, Object> fmlData;
     @Getter
     private static boolean deobfuscated;
     @Getter
@@ -28,9 +28,7 @@ public class SkyblockAddonsSetup implements IFMLCallHook {
         logDebug("Running pre-init checks...");
 
         // Environment Obfuscation check
-        deobfuscated = fmlData != null && fmlData.containsKey("runtimeDeobfuscationEnabled") &&
-                !(boolean) fmlData.get("runtimeDeobfuscationEnabled");
-
+        deobfuscated = (boolean) Launch.blackboard.get("fml.deobfuscatedEnvironment");
         usingNotchMappings = !deobfuscated;
 
         logDebug("Pre-init checks complete.");
@@ -42,7 +40,7 @@ public class SkyblockAddonsSetup implements IFMLCallHook {
     /**
      * Checks that need to run after the transformers are initialized but before the transformers are used
      */
-    static void runPreTransformationChecks() {
+    void runPreTransformationChecks() {
         logDebug( "Running pre-transformation checks...");
 
         // Duplicate SkyblockAddons check
@@ -73,6 +71,8 @@ public class SkyblockAddonsSetup implements IFMLCallHook {
             logError(e,"The name field wasn't found. Duplicate check failed.");
         } catch (IllegalAccessException e) {
             logError(e,"The name field can't be accessed. Duplicate check failed.");
+        } catch (NullPointerException e) {
+            logError(e, "The name field was set to null. This really shouldn't happen. Duplicate check failed.");
         }
 
         logDebug("Pre-transformation checks complete.");
@@ -82,27 +82,30 @@ public class SkyblockAddonsSetup implements IFMLCallHook {
     Logging methods for adding the logger name to the beginning of log messages
     These are required since Minecraft excludes logger names when writing to the log file.
      */
+    private static String addLoggerName(String format) {
+        return String.format("[%s] %s", LOGGER_NAME, format);
+    }
 
     private static void logDebug(String format) {
-        FMLRelaunchLog.log(LOGGER_NAME, Level.DEBUG, String.format("[%s] %s", LOGGER_NAME, format));
+        FMLRelaunchLog.log(LOGGER_NAME, Level.DEBUG, addLoggerName(format));
     }
 
     private static void logDebug(String format, Object... data) {
-        FMLRelaunchLog.log(LOGGER_NAME, Level.DEBUG, String.format("[%s] %s", LOGGER_NAME, format), data);
+        FMLRelaunchLog.log(LOGGER_NAME, Level.DEBUG, addLoggerName(format), data);
     }
 
     private static void logError(Throwable ex, String format) {
-        FMLRelaunchLog.log(LOGGER_NAME, Level.ERROR, ex, String.format("[%s] %s", LOGGER_NAME, format));
+        FMLRelaunchLog.log(LOGGER_NAME, Level.ERROR, ex, addLoggerName(format));
     }
 
     @Override
     public void injectData(Map<String, Object> data) {
-        fmlData = data;
+        // unused
     }
 
     @Override
     public Void call() {
-        SkyblockAddonsSetup.runPreTransformationChecks();
+        runPreTransformationChecks();
         return null;
     }
 }
