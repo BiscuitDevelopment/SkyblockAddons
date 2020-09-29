@@ -27,7 +27,7 @@ public class TabEffectManager {
 
     /** Used to match potion effects from the footer. */
     private static final Pattern EFFECT_PATTERN = Pattern.compile("(?:(?<potion>§r§[a-f0-9][a-zA-Z ]+ (?:I[XV]|V?I{0,3})§r )|(?<powerup>§r§[a-f0-9][a-zA-Z ]+ ))§r§f(?<timer>\\d{0,2}:?\\d{1,2}:\\d{2})");
-    private static final Pattern EFFECT_COUNT_PATTERN = Pattern.compile("You have (?<effectCount>[0-9]+) active effects\\. Use \"/effects\" to see them!");
+    private static final Pattern EFFECT_COUNT_PATTERN = Pattern.compile("You have (?<effectCount>[0-9]+) active effects\\.");
 
     /**
      * The following two fields are accessed by
