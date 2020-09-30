@@ -139,7 +139,7 @@
     "baseStatBoostPercentage": "إظهار تعزيز لقاعدة احصائيات لأشياء الزنزانة",
     "colorByRarity": "اللون حسب الندرة",
     "showPlayerHeadsOnMap": "إظهار رؤساء اللاعبين على خريطة الزنزانة",
-    "showHealingCircleWall": "إظهار جدار دائرة الشفاء في الدنجنز (غير مستقر)",
+    "showHealingCircleWall": "Show Dungeon Healing Circle Wall",
     "showCriticalTeammates": "إظهار الزملاء المنخفضا الصحة في الزنزانة",
     "showGlowingItemsOnIsland": "إظهار إضاءة الأشياء على الجزيرة",
     "showItemDungeonFloor": "إظهار الطابق حيث تم الحصول على شيء من الزنزانة",
