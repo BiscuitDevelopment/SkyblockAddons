@@ -47,7 +47,6 @@ public class SkyblockAddons {
 
     @Getter private static SkyblockAddons instance;
     private static final Gson GSON = new Gson();
-    private static Map<String, Logger> classNameToLogger = new HashMap<>();
 
     private static int threadNumber;
     public static synchronized int nextThreadNumber() {
@@ -107,7 +106,7 @@ public class SkyblockAddons {
 
         ClientCommandHandler.instance.registerCommand(new SkyblockAddonsCommand());
 
-        addKeybindings(new SkyblockKeyBinding("open_settings", Keyboard.KEY_NONE, Message.SETTING_SETTINGS),
+        Collections.addAll(keyBindings, new SkyblockKeyBinding("open_settings", Keyboard.KEY_NONE, Message.SETTING_SETTINGS),
                 new SkyblockKeyBinding( "edit_gui", Keyboard.KEY_NONE, Message.SETTING_EDIT_LOCATIONS),
                 new SkyblockKeyBinding( "lock_slot", Keyboard.KEY_L, Message.SETTING_LOCK_SLOT),
                 new SkyblockKeyBinding( "freeze_backpack", Keyboard.KEY_F, Message.SETTING_FREEZE_BACKPACK_PREVIEW),
@@ -181,10 +180,6 @@ public class SkyblockAddons {
 
     public SkyblockKeyBinding getDeveloperCopyNBTKey() {
         return keyBindings.get(4);
-    }
-
-    public void addKeybindings(SkyblockKeyBinding... keybindings) {
-        keyBindings.addAll(Arrays.asList(keybindings));
     }
 
     public void registerKeyBindings(List<SkyblockKeyBinding> keyBindings) {
