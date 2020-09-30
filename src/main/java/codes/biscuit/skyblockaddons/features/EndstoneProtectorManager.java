@@ -3,6 +3,7 @@ package codes.biscuit.skyblockaddons.features;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.Location;
+import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import lombok.Getter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
@@ -59,7 +60,7 @@ public class EndstoneProtectorManager {
                 int minutes = totalSeconds/60;
                 int seconds = totalSeconds%60;
 
-                SkyblockAddons.getLogger().info("Endstone Protector stage updated from "+previousStage+" to "+newStage.name()+". " +
+                SkyblockAddons.getLogger().info("Endstone protector stage updated from "+previousStage+" to "+newStage.name()+". " +
                         "Your zealot kill count was "+zealotsKilled+". This took "+minutes+"m "+seconds+"s.");
 
                 if (minibossStage == Stage.GOLEM_ALIVE && newStage == Stage.NO_HEAD) {
@@ -101,7 +102,7 @@ public class EndstoneProtectorManager {
         private static Stage lastStage = null;
         private static BlockPos lastPos = null;
 
-        private static final ExecutorService EXECUTOR = Executors.newSingleThreadExecutor();
+        private static final ExecutorService EXECUTOR = Executors.newSingleThreadExecutor(new ThreadFactoryBuilder().setNameFormat(SkyblockAddons.MOD_NAME + " - Endstone Protector #%d").build());
 
         public static Stage detectStage() {
             EXECUTOR.submit(() -> {

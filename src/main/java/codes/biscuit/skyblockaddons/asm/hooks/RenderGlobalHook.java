@@ -31,14 +31,14 @@ import java.util.List;
 public class RenderGlobalHook {
 
     private static final FloatBuffer BUF_FLOAT_4 = BufferUtils.createFloatBuffer(4);
-    private static final Logger LOGGER = SkyblockAddons.getLogger(SkyblockAddons.MOD_NAME +
-            RenderGlobalHook.class.getSimpleName());
 
     private static boolean stopLookingForOptifine = false;
 
     private static Method isFastRender = null;
     private static Method isShaders = null;
     private static Method isAntialiasing = null;
+
+    private static Logger logger = SkyblockAddons.getLogger();
 
     public static boolean shouldRenderSkyblockItemOutlines() {
         Minecraft mc = Minecraft.getMinecraft();
@@ -65,13 +65,12 @@ public class RenderGlobalHook {
                     isFastRender = config.getMethod("isFastRender");
                     isShaders = config.getMethod("isShaders");
                     isAntialiasing = config.getMethod("isAntialiasing");
-                } catch (NoSuchMethodException ex) {
-                    LOGGER.warn("Couldn't find Optifine methods for entity outlines...");
-                    LOGGER.catching(ex);
+                } catch (Exception ex) {
+                    logger.warn("Couldn't find Optifine methods for entity outlines.");
                     stopLookingForOptifine = true;
                 }
-            } catch (ClassNotFoundException ex1) {
-                LOGGER.info("Didn't find Optifine for entity outlines");
+            } catch (Exception ex) {
+                logger.info("Couldn't find Optifine for entity outlines.");
                 stopLookingForOptifine = true;
             }
         }
@@ -85,8 +84,8 @@ public class RenderGlobalHook {
                 isShadersValue = (boolean) isShaders.invoke(null);
                 isAntialiasingValue = (boolean) isAntialiasing.invoke(null);
             } catch (IllegalAccessException | InvocationTargetException ex) {
-                LOGGER.warn("Failed to call Optifine methods for entity outlines...");
-                LOGGER.catching(ex);
+                logger.warn("An error occurred while calling Optifine methods for entity outlines...");
+                logger.catching(ex);
             }
         }
 
@@ -170,8 +169,8 @@ public class RenderGlobalHook {
                     GlStateManager.disableColorMaterial();
 
                 } catch (Throwable ex) {
-                    LOGGER.warn("Couldn't render outline for entity " + entity.toString() + ".");
-                    LOGGER.catching(ex); // Just move on to the next entity...
+                    logger.warn("Couldn't render outline for entity " + entity.toString() + ".");
+                    logger.catching(ex); // Just move on to the next entity...
                 }
             }
 
@@ -248,8 +247,7 @@ public class RenderGlobalHook {
      */
     public static boolean isShopShowcaseItem(EntityItem entityItem) {
         for (EntityArmorStand entityArmorStand : entityItem.worldObj.getEntitiesWithinAABB(EntityArmorStand.class, entityItem.getEntityBoundingBox())) {
-            if (entityArmorStand.isInvisible() && entityArmorStand.getEquipmentInSlot(4).getItem() ==
-                    Item.getItemFromBlock(Blocks.glass)) {
+            if (entityArmorStand.isInvisible() && entityArmorStand.getEquipmentInSlot(4).getItem() == Item.getItemFromBlock(Blocks.glass)) {
                 return true;
             }
         }

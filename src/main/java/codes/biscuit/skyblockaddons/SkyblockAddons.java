@@ -46,8 +46,13 @@ public class SkyblockAddons {
     public static String VERSION = "@VERSION@";
 
     @Getter private static SkyblockAddons instance;
-    @Getter private static final Logger logger = getLogger(MOD_NAME);
     private static final Gson GSON = new Gson();
+    private static Map<String, Logger> classNameToLogger = new HashMap<>();
+
+    private static int threadNumber;
+    public static synchronized int nextThreadNumber() {
+        return threadNumber++;
+    }
 
     private ConfigValues configValues;
     private PersistentValuesManager persistentValuesManager;
@@ -83,17 +88,6 @@ public class SkyblockAddons {
         newScheduler = new NewScheduler();
         dungeonUtils = new DungeonUtils();
         discordRPCManager = new DiscordRPCManager();
-    }
-
-    /**
-     * Returns a new {@code Logger} with the given name. All log messages from the returned {@code Logger} will have the
-     * name added to the beginning.
-     *
-     * @param name the name of the logger
-     * @return a new {@code Logger} with the given name that adds the name to the beginning of all its log messages
-     */
-    public static Logger getLogger(String name) {
-        return LogManager.getLogger(name, new SkyblockAddonsMessageFactory(name));
     }
 
     @Mod.EventHandler
@@ -194,8 +188,7 @@ public class SkyblockAddons {
     }
 
     public void registerKeyBindings(List<SkyblockKeyBinding> keyBindings) {
-        for (SkyblockKeyBinding keybinding:
-             keyBindings) {
+        for (SkyblockKeyBinding keybinding: keyBindings) {
             keybinding.register();
         }
     }
@@ -212,9 +205,26 @@ public class SkyblockAddons {
 
     // This replaces the version placeholder if the mod is built using IntelliJ instead of Gradle.
     static {
-        //noinspection ConstantConditions
         if (VERSION.contains("@")) { // Debug environment...
             VERSION = "1.6.0";
         }
+    }
+
+    /**
+     * @return a {@code Logger} containing the name of the calling class in the prefix.
+     */
+    public static Logger getLogger() {
+        String fullClassName = new Throwable().getStackTrace()[1].getClassName();
+
+        String trimmedClassName = fullClassName;
+        if (fullClassName.contains(".")) {
+            trimmedClassName = fullClassName.substring(fullClassName.lastIndexOf('.') + 1);
+        }
+
+        return LogManager.getLogger(MOD_NAME + " - " + trimmedClassName);
+    }
+
+    public static Thread newThread(Runnable runnable) {
+        return new Thread(runnable, MOD_NAME + " #" + nextThreadNumber());
     }
 }

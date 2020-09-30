@@ -7,13 +7,12 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import org.apache.commons.lang3.ArrayUtils;
-import org.apache.logging.log4j.Logger;
 
 import static codes.biscuit.skyblockaddons.SkyblockAddons.MOD_NAME;
 
 @Getter
 public class SkyblockKeyBinding {
-    private final Logger logger;
+
     private final KeyBinding keyBinding;
     private final String name;
     private final int defaultKey;
@@ -21,7 +20,6 @@ public class SkyblockKeyBinding {
     private boolean registered = false;
 
     public SkyblockKeyBinding(String name, int defaultKey, Message message) {
-        logger = SkyblockAddons.getLogger();
         this.name = name;
         this.defaultKey = defaultKey;
         this.message = message;
@@ -86,16 +84,16 @@ public class SkyblockKeyBinding {
             int index = ArrayUtils.indexOf(Minecraft.getMinecraft().gameSettings.keyBindings, keyBinding);
 
             if (index == ArrayUtils.INDEX_NOT_FOUND) {
-                logger.error("Keybinding was registered but no longer exists in the registry. Something else must have removed it." +
+                SkyblockAddons.getLogger().error("Keybinding was registered but no longer exists in the registry. Something else must have removed it." +
                         " This shouldn't happen; please inform an SBA developer.");
                 return;
             }
 
             Minecraft.getMinecraft().gameSettings.keyBindings = ArrayUtils.remove(Minecraft.getMinecraft().gameSettings.keyBindings, index);
             registered = false;
-        }
-        else {
-            logger.error("Tried to de-register a key binding with the name \"" + name + "\" which wasn't registered.");
+
+        } else {
+            SkyblockAddons.getLogger().error("Tried to de-register a key binding with the name \"" + name + "\" which wasn't registered.");
         }
     }
 }

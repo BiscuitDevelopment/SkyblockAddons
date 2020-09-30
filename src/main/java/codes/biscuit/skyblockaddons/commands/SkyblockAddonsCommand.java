@@ -18,7 +18,6 @@ import net.minecraft.scoreboard.Scoreboard;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.EnumChatFormatting;
-import org.apache.logging.log4j.Logger;
 import org.lwjgl.input.Keyboard;
 
 import java.awt.*;
@@ -36,14 +35,7 @@ public class SkyblockAddonsCommand extends CommandBase {
     private static final String[] SUBCOMMANDS = {"help", "set", "edit", "folder", "dev", "brand", "copyEntity", "copySidebar",
             "copyTabList", "toggleActionBarLogging", "slayer"};
 
-    private final SkyblockAddons main;
-    private final Logger logger;
-
-    public SkyblockAddonsCommand() {
-        main = SkyblockAddons.getInstance();
-        logger = SkyblockAddons.getLogger();
-    }
-
+    private final SkyblockAddons main = SkyblockAddons.getInstance();
     /**
      * Gets the name of the command
      */
@@ -219,7 +211,7 @@ public class SkyblockAddonsCommand extends CommandBase {
                     try {
                         Desktop.getDesktop().open(main.getUtils().getSBAFolder());
                     } catch (IOException e) {
-                        logger.catching(e);
+                        SkyblockAddons.getLogger().catching(e);
                         throw new CommandException(Message.COMMAND_USAGE_SBA_FOLDER_ERROR.getMessage(), e.getMessage());
                     }
                 } else if (args[0].equalsIgnoreCase("warp")) {

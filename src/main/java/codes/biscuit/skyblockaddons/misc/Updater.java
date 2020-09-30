@@ -8,7 +8,6 @@ import net.minecraft.event.HoverEvent;
 import net.minecraft.util.ChatComponentText;
 import net.minecraftforge.common.ForgeVersion;
 import net.minecraftforge.fml.common.versioning.ComparableVersion;
-import org.apache.logging.log4j.Logger;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -20,13 +19,13 @@ import static net.minecraftforge.common.ForgeVersion.Status.*;
  */
 public class Updater {
 
-    private static final Logger LOGGER = SkyblockAddons.getLogger(SkyblockAddons.MOD_NAME + " Updater");
     private static final Pattern VERSION_PATTERN = Pattern.compile("(?<major>[0-9])\\.(?<minor>[0-9])\\.(?<patch>[0-9]).*");
 
     private SkyblockAddons main = SkyblockAddons.getInstance();
 
     private boolean hasUpdate = false;
-    @Getter private String messageToRender;
+    @Getter
+    private String messageToRender;
 
     private boolean isPatch = false;
     private boolean sentUpdateMessage = false;
@@ -49,7 +48,7 @@ public class Updater {
         ComparableVersion current = new ComparableVersion(SkyblockAddons.VERSION);
         boolean isCurrentBeta = SkyblockAddons.VERSION.contains("b");
         ComparableVersion latest = new ComparableVersion(isCurrentBeta ? main.getOnlineData().getLatestBeta() : main.getOnlineData().getLatestVersion());
-        LOGGER.info("Checking to see if an update is available. Current version is "+current.toString()+". Latest version is "+latest.toString());
+        SkyblockAddons.getLogger().info("Checking to see if an update is available. Current version is " + current.toString() + ". Latest version is " + latest.toString() + ".");
 
         ForgeVersion.Status status;
         int versionDifference = latest.compareTo(current);
@@ -67,7 +66,7 @@ public class Updater {
             String currentVersion = current.toString();
             String latestVersion = latest.toString();
 
-            LOGGER.info("Found an update: "+latestVersion);
+            SkyblockAddons.getLogger().info("Found an update: " + latestVersion + ".");
 
             try {
                 Matcher currentMatcher = VERSION_PATTERN.matcher(currentVersion);
@@ -81,8 +80,8 @@ public class Updater {
                     isPatch = true;
                 }
             } catch (Exception ex) {
-                LOGGER.warn("Couldn't parse update version numbers... This shouldn't affect too much.");
-                LOGGER.catching(ex);
+                SkyblockAddons.getLogger().warn("Couldn't parse update version numbers... This shouldn't affect too much.");
+                SkyblockAddons.getLogger().catching(ex);
             }
 
             if (isPatch) {
@@ -108,26 +107,26 @@ public class Updater {
 
         ChatComponentText buttonsMessage = new ChatComponentText("§b§l[" + Message.MESSAGE_DOWNLOAD_LINK.getMessage(newestVersion) + "]");
         buttonsMessage.setChatStyle(buttonsMessage.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, main.getOnlineData().getVideoLink()))
-                .setChatHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ChatComponentText("§7" +Message.MESSAGE_CLICK_TO_OPEN_LINK.getMessage()))));
+                .setChatHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ChatComponentText("§7" + Message.MESSAGE_CLICK_TO_OPEN_LINK.getMessage()))));
         buttonsMessage.appendSibling(new ChatComponentText(" "));
 
         if (isPatch && main.getOnlineData().getDirectDownload() != null) {
             ChatComponentText openModsFolder = new ChatComponentText("§c§l[" + Message.MESSAGE_DIRECT_DOWNLOAD.getMessage(newestVersion) + "]");
             openModsFolder.setChatStyle(openModsFolder.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, main.getOnlineData().getDirectDownload()))
-                    .setChatHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ChatComponentText("§7" +Message.MESSAGE_CLICK_TO_OPEN_LINK.getMessage()))));
+                    .setChatHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ChatComponentText("§7" + Message.MESSAGE_CLICK_TO_OPEN_LINK.getMessage()))));
             openModsFolder.appendSibling(new ChatComponentText(" "));
             buttonsMessage.appendSibling(openModsFolder);
         }
 
         ChatComponentText openModsFolder = new ChatComponentText("§e§l[" + Message.MESSAGE_OPEN_MODS_FOLDER.getMessage(newestVersion) + "]");
         openModsFolder.setChatStyle(openModsFolder.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/sba folder"))
-                .setChatHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ChatComponentText("§7" +Message.MESSAGE_CLICK_TO_OPEN_FOLDER.getMessage()))));
+                .setChatHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ChatComponentText("§7" + Message.MESSAGE_CLICK_TO_OPEN_FOLDER.getMessage()))));
         buttonsMessage.appendSibling(openModsFolder);
         main.getUtils().sendMessage(buttonsMessage, false);
 
         ChatComponentText discord = new ChatComponentText("§b" + Message.MESSAGE_VIEW_PATCH_NOTES.getMessage() + " §9§l[" + Message.MESSAGE_JOIN_DISCORD.getMessage() + "]");
         discord.setChatStyle(discord.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://discord.gg/biscuit"))
-                .setChatHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ChatComponentText("§7" +Message.MESSAGE_CLICK_TO_OPEN_LINK.getMessage()))));
+                .setChatHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ChatComponentText("§7" + Message.MESSAGE_CLICK_TO_OPEN_LINK.getMessage()))));
         main.getUtils().sendMessage(discord, false);
 
         main.getUtils().sendMessage("§7§m----------------------------------------------", false);

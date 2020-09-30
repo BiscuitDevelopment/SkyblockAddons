@@ -6,8 +6,7 @@ import codes.biscuit.skyblockaddons.features.*;
 import codes.biscuit.skyblockaddons.features.dragontracker.DragonTracker;
 import codes.biscuit.skyblockaddons.features.dragontracker.DragonType;
 import codes.biscuit.skyblockaddons.features.dragontracker.DragonsSince;
-import codes.biscuit.skyblockaddons.features.healingcircle.HealingCircle;
-import codes.biscuit.skyblockaddons.features.healingcircle.HealingCircleParticle;
+import codes.biscuit.skyblockaddons.features.healingcircle.HealingCircleManager;
 import codes.biscuit.skyblockaddons.features.powerorbs.PowerOrb;
 import codes.biscuit.skyblockaddons.features.powerorbs.PowerOrbManager;
 import codes.biscuit.skyblockaddons.features.slayertracker.SlayerBoss;
@@ -62,7 +61,6 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 import org.lwjgl.opengl.GL11;
 
 import java.awt.*;
-import java.awt.geom.Point2D;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.*;
@@ -2191,7 +2189,7 @@ public class RenderListener {
     }
 
     public void setSubtitleFeature(Feature subtitleFeature) {
-        this.subtitleFeature = subtitleFeature; // TODO: check, does this break anything? (arrow)
+        this.subtitleFeature = subtitleFeature;
     }
 
     public float transformXY(float xy, int widthHeight, float scale) {
@@ -2201,84 +2199,15 @@ public class RenderListener {
         return xy / scale;
     }
 
-    @Getter private Set<HealingCircleParticle> healingCircleParticles = new HashSet<>();
-
     @SubscribeEvent()
     public void onRenderWorld(RenderWorldLastEvent e) {
         Minecraft mc = Minecraft.getMinecraft();
         float partialTicks = e.partialTicks;
 
-        if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.SHOW_HEALING_CIRCLE_WALL)) {
-            healingCircleParticles.removeIf(healingCircleParticle -> System.currentTimeMillis() - healingCircleParticle.getCreation() > 10000);
+        HealingCircleManager.renderHealingCircleOverlays(partialTicks);
 
-            Set<HealingCircle> healingCircles = new HashSet<>();
-
-            for (HealingCircleParticle healingCircleParticle : healingCircleParticles) {
-                HealingCircle nearbyHealingCircle = null;
-                for (HealingCircle healingCircle : healingCircles) {
-                    if (healingCircle.getTotalParticles() > 50) {
-                        Point2D.Double circleCenter = healingCircle.getCircleCenter();
-                        if (healingCircleParticle.getPoint().distance(circleCenter.getX(), circleCenter.getY()) < 6) {
-                            nearbyHealingCircle = healingCircle;
-                            break;
-                        }
-                    } else {
-                        if (healingCircleParticle.getPoint().distance(healingCircle.getAverageX(), healingCircle.getAverageZ()) < 12) {
-                            nearbyHealingCircle = healingCircle;
-                            break;
-                        }
-                    }
-                }
-
-                if (nearbyHealingCircle != null) {
-                    nearbyHealingCircle.addPoint(healingCircleParticle);
-                } else {
-                    healingCircles.add(new HealingCircle(healingCircleParticle));
-                }
-            }
-
-            for (HealingCircle healingCircle : healingCircles) {
-                if (healingCircle.getParticlesPerSecond() < 10) {
-                    if (System.currentTimeMillis() - healingCircle.getOldestParticle() > 1000) {
-                        healingCircleParticles.removeAll(healingCircle.getHealingCircleParticles());
-                        continue;
-                    }
-                }
-
-                GlStateManager.pushMatrix();
-                GL11.glNormal3f(0.0F, 1.0F, 0.0F);
-
-                GlStateManager.disableLighting();
-                GlStateManager.depthMask(false);
-                GlStateManager.enableDepth();
-                GlStateManager.enableBlend();
-                GlStateManager.depthFunc(GL11.GL_LEQUAL);
-                GlStateManager.disableCull();
-                GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
-                GlStateManager.enableAlpha();
-                GlStateManager.disableTexture2D();
-
-                Color color = main.getConfigValues().getColor(Feature.SHOW_HEALING_CIRCLE_WALL);
-                GlStateManager.color(color.getRed()/255F, color.getGreen()/255F, color.getBlue()/255F, 0.2F);
-                Point2D.Double circleCenter = healingCircle.getCircleCenter();
-                if (circleCenter != null && !Double.isNaN(circleCenter.getX()) && !Double.isNaN(circleCenter.getY())) {
-                    main.getUtils().drawCylinder(circleCenter.getX(), 0, circleCenter.getY(), 10 / 2F, 255, partialTicks);
-                }
-
-                GlStateManager.enableCull();
-                GlStateManager.enableTexture2D();
-                GlStateManager.enableDepth();
-                GlStateManager.depthMask(true);
-                GlStateManager.enableLighting();
-                GlStateManager.disableBlend();
-                GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-                GlStateManager.popMatrix();
-            }
-        }
-
-        if (main.getUtils().isOnSkyblock()
-                && main.getUtils().isInDungeon()
-                && (main.getConfigValues().isEnabled(Feature.SHOW_CRITICAL_DUNGEONS_TEAMMATES) || main.getConfigValues().isEnabled(Feature.SHOW_DUNGEON_TEAMMATE_NAME_OVERLAY))) {
+        if (main.getUtils().isOnSkyblock() && main.getUtils().isInDungeon() &&
+                (main.getConfigValues().isEnabled(Feature.SHOW_CRITICAL_DUNGEONS_TEAMMATES) || main.getConfigValues().isEnabled(Feature.SHOW_DUNGEON_TEAMMATE_NAME_OVERLAY))) {
             Entity renderViewEntity = mc.getRenderViewEntity();
 
             double viewX = renderViewEntity.prevPosX + (renderViewEntity.posX - renderViewEntity.prevPosX) * (double) partialTicks;

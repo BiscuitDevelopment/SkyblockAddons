@@ -5,40 +5,31 @@ import lombok.Setter;
 
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 @Getter @Setter
 public class HealingCircle {
 
+    public static final float DIAMETER = 12;
+
     private List<HealingCircleParticle> healingCircleParticles = new ArrayList<>();
+    private long creation = System.currentTimeMillis();
+    private Point2D.Double cachedCenterPoint = null;
+
     private double totalX;
     private double totalZ;
     private int totalParticles;
-    private long creation = System.currentTimeMillis();
-    private long lastParticle;
-    private double particlesPerSecond;
-    private long oldestParticle = -1;
 
     public HealingCircle(HealingCircleParticle healingCircleParticle) {
         addPoint(healingCircleParticle);
     }
 
     public void addPoint(HealingCircleParticle healingCircleParticle) {
-        lastParticle = System.currentTimeMillis();
-        if (lastParticle - healingCircleParticle.getCreation() < 1000) {
-            particlesPerSecond++;
-        }
-
         totalParticles++;
         totalX += healingCircleParticle.getPoint().getX();
         totalZ += healingCircleParticle.getPoint().getY();
         healingCircleParticles.add(healingCircleParticle);
-
-        if (oldestParticle == -1) {
-            oldestParticle = healingCircleParticle.getCreation();
-        } else {
-            oldestParticle = Math.min(oldestParticle, healingCircleParticle.getCreation());
-        }
     }
 
     public double getAverageX() {
@@ -50,16 +41,31 @@ public class HealingCircle {
     }
 
     public double getParticlesPerSecond() {
+        int particlesPerSecond = 0;
+        long now = System.currentTimeMillis();
+        for (HealingCircleParticle healingCircleParticle : healingCircleParticles) {
+            if (now - healingCircleParticle.getCreation() < 1000) {
+                particlesPerSecond++;
+            }
+        }
         return particlesPerSecond;
     }
 
     public Point2D.Double getCircleCenter() {
+        if (cachedCenterPoint != null) {
+            return cachedCenterPoint;
+        }
+
         if (healingCircleParticles.size() < 3) {
             return new Point2D.Double(Double.NaN, Double.NaN);
         }
 
+        // The middle point, which is the first point for consistency. The circle will not appear
+        // until two other points exist, one that is left of this one, and one right.
         Point2D.Double middlePoint = healingCircleParticles.get(0).getPoint();
 
+        // The first point, which can be anywhere on the circle as long as its a decent
+        // distance away from the middle.
         Point2D.Double firstPoint = null;
         for (HealingCircleParticle healingCircleParticle : healingCircleParticles) {
             Point2D.Double point = healingCircleParticle.getPoint();
@@ -72,11 +78,15 @@ public class HealingCircle {
             return new Point2D.Double(Double.NaN, Double.NaN);
         }
 
+        // The second point, which can be anywhere on the circle as long as its a decent
+        // distance away from the middle + its on the opposite side of the first point.
         Point2D.Double secondPoint = null;
         for (HealingCircleParticle healingCircleParticle : healingCircleParticles) {
             Point2D.Double point = healingCircleParticle.getPoint();
             if (point != middlePoint && point != firstPoint) {
                 double distanceToMiddle = point.distance(middlePoint);
+                // Make sure that the point is closer to the middle point than the first
+                // point, or else both points will be on the same side.
                 if (distanceToMiddle > 2 && point.distance(firstPoint) > distanceToMiddle) {
                     secondPoint = point;
                     break;
@@ -96,7 +106,35 @@ public class HealingCircle {
         Point2D.Double secondChordFirst = rotatePoint(middlePoint, secondChordMidpoint, 90);
         Point2D.Double secondChordSecond = rotatePoint(secondPoint, secondChordMidpoint, 90);
 
-        return lineLineIntersection(firstChordFirst, firstChordSecond, secondChordFirst, secondChordSecond);
+        Point2D.Double center = lineLineIntersection(firstChordFirst, firstChordSecond, secondChordFirst, secondChordSecond);
+
+        checkIfCenterIsPerfect(center);
+
+        return center;
+    }
+
+    public void checkIfCenterIsPerfect(Point2D.Double center) {
+        // Not large enough sample size to check
+        if (this.totalParticles < 25) {
+            return;
+        }
+
+        int perfectParticles = 0;
+
+        for (HealingCircleParticle healingCircleParticle : healingCircleParticles) {
+            Point2D.Double point = healingCircleParticle.getPoint();
+
+            double distance = point.distance(center);
+            if (distance > (DIAMETER - 1) / 2F && distance < (DIAMETER + 1) / 2F) {
+                perfectParticles++;
+            }
+        }
+
+        float percentagePerfect = perfectParticles / (float) totalParticles;
+
+        if (percentagePerfect > 0.75) {
+            this.cachedCenterPoint = center;
+        }
     }
 
     private static Point2D.Double rotatePoint(Point2D.Double point, Point2D.Double center, double degrees) {
@@ -129,5 +167,24 @@ public class HealingCircle {
             double y = (a1 * c2 - a2 * c1) / determinant;
             return new Point2D.Double(x, y);
         }
+    }
+
+    public void removeOldParticles() {
+        Iterator<HealingCircleParticle> healingCircleParticleIterator = this.healingCircleParticles.iterator();
+        while (healingCircleParticleIterator.hasNext()) {
+            HealingCircleParticle healingCircleParticle = healingCircleParticleIterator.next();
+
+            if (System.currentTimeMillis() - healingCircleParticle.getCreation() > 10000) {
+                this.totalX -= healingCircleParticle.getPoint().getX();
+                this.totalZ -= healingCircleParticle.getPoint().getY();
+                this.totalParticles--;
+
+                healingCircleParticleIterator.remove();
+            }
+        }
+    }
+
+    public boolean hasCachedCenterPoint() {
+        return cachedCenterPoint != null;
     }
 }

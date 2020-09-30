@@ -529,9 +529,9 @@ public class Utils {
     }
 
     public void fetchMagmaBossEstimate() {
-        new Thread(() -> {
-            final boolean magmaTimerEnabled = main.getConfigValues().isEnabled(Feature.MAGMA_BOSS_TIMER);
-            if(!magmaTimerEnabled) {
+        SkyblockAddons.newThread(() -> {
+            boolean magmaTimerEnabled = main.getConfigValues().isEnabled(Feature.MAGMA_BOSS_TIMER);
+            if (!magmaTimerEnabled) {
                 logger.info("Getting magma boss spawn estimate from server...");
             }
             try {
@@ -540,7 +540,7 @@ public class Utils {
                 connection.setRequestMethod("GET");
                 connection.setRequestProperty("User-Agent", USER_AGENT);
 
-                if(!magmaTimerEnabled) {
+                if (!magmaTimerEnabled) {
                     logger.info("Got response code " + connection.getResponseCode());
                 }
 
@@ -557,7 +557,7 @@ public class Utils {
                 long currentTime = responseJson.get("queryTime").getAsLong();
                 int magmaSpawnTime = (int)((estimate-currentTime)/1000);
 
-                if(!magmaTimerEnabled) {
+                if (!magmaTimerEnabled) {
                     logger.info("Query time was " + currentTime + ", server time estimate is " +
                             estimate + ". Updating magma boss spawn to be in " + magmaSpawnTime + " seconds.");
                 }
@@ -565,7 +565,7 @@ public class Utils {
                 main.getPlayerListener().setMagmaTime(magmaSpawnTime);
                 main.getPlayerListener().setMagmaAccuracy(EnumUtils.MagmaTimerAccuracy.ABOUT);
             } catch (IOException ex) {
-                if(!magmaTimerEnabled) {
+                if (!magmaTimerEnabled) {
                     logger.warn("Failed to get magma boss spawn estimate from server");
                 }
             }
@@ -573,9 +573,9 @@ public class Utils {
     }
 
     public void sendInventiveTalentPingRequest(EnumUtils.MagmaEvent event) {
-        new Thread(() -> {
-            final boolean magmaTimerEnabled = main.getConfigValues().isEnabled(Feature.MAGMA_BOSS_TIMER);
-            if(!magmaTimerEnabled) {
+        SkyblockAddons.newThread(() -> {
+            boolean magmaTimerEnabled = main.getConfigValues().isEnabled(Feature.MAGMA_BOSS_TIMER);
+            if (!magmaTimerEnabled) {
                 logger.info("Posting event " + event.getInventiveTalentEvent() + " to InventiveTalent API");
             }
 
@@ -603,13 +603,13 @@ public class Utils {
                         out.flush();
                     }
 
-                    if(!magmaTimerEnabled) {
+                    if (!magmaTimerEnabled) {
                         logger.info("Got response code " + connection.getResponseCode());
                     }
                     connection.disconnect();
                 }
             } catch (IOException ex) {
-                if(!magmaTimerEnabled) {
+                if (!magmaTimerEnabled) {
                     logger.warn("Failed to post event to server");
                 }
             }
@@ -894,7 +894,7 @@ public class Utils {
 
     public void tryPullingLanguageOnline(Language language) {
         logger.info("Attempting to pull updated language files from online.");
-        new Thread(() -> {
+        SkyblockAddons.newThread(() -> {
             try {
                 URL url = new URL(String.format(main.getOnlineData().getLanguageJSONFormat(), language.getPath()));
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -1024,7 +1024,7 @@ public class Utils {
 
         rescaling.add(resourceLocation);
 
-        new Thread(() -> {
+        SkyblockAddons.newThread(() -> {
             try {
                 BufferedImage originalImage = ImageIO.read(SkyblockAddonsGui.class.getClassLoader().getResourceAsStream("assets/"+resourceLocation.getResourceDomain()+"/"+resourceLocation.getResourcePath()));
                 Image scaledImageAbstract = originalImage.getScaledInstance(width, height, Image.SCALE_SMOOTH);

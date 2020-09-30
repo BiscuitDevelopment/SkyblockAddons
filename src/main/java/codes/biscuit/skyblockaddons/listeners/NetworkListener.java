@@ -6,17 +6,14 @@ import codes.biscuit.skyblockaddons.events.SkyblockJoinedEvent;
 import codes.biscuit.skyblockaddons.events.SkyblockLeftEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.FMLNetworkEvent;
-import org.apache.logging.log4j.Logger;
 
 import static net.minecraftforge.common.MinecraftForge.EVENT_BUS;
 
 public class NetworkListener {
     private final SkyblockAddons main;
-    private final Logger logger;
 
     public NetworkListener() {
         main = SkyblockAddons.getInstance();
-        logger = main.getLogger();
     }
 
     @SubscribeEvent
@@ -27,7 +24,7 @@ public class NetworkListener {
 
     @SubscribeEvent
     public void onSkyblockJoined(SkyblockJoinedEvent event) {
-        logger.info("Joined Skyblock");
+        SkyblockAddons.getLogger().info("Detected joining skyblock!");
         main.getUtils().setOnSkyblock(true);
         if (main.getConfigValues().isEnabled(Feature.DISCORD_RPC)) {
             main.getDiscordRPCManager().start();
@@ -36,7 +33,7 @@ public class NetworkListener {
 
     @SubscribeEvent
     public void onSkyblockLeft(SkyblockLeftEvent event) {
-        logger.info("Left Skyblock");
+        SkyblockAddons.getLogger().info("Detected leaving skyblock!");
         main.getUtils().setOnSkyblock(false);
         if (main.getDiscordRPCManager().isActive()) {
             main.getDiscordRPCManager().stop();

@@ -37,7 +37,7 @@ public class APIManager {
     }
 
     public void pullProfiles(String uuid, String profileName) {
-        new Thread(() -> {
+        SkyblockAddons.newThread(() -> {
             logger.info("Grabbing player's profiles API data for UUID " + uuid + " & profile name " + profileName + "...");
             try {
                 URL url = new URL(String.format(SKYBLOCK_PROFILES, uuid));
@@ -71,7 +71,7 @@ public class APIManager {
     }
 
     public void pullProfileData(String uuid, String profileID) {
-        new Thread(() -> {
+        SkyblockAddons.newThread(() -> {
             logger.info("Grabbing profile API data for UUID " + uuid + " & profile ID " + profileID + "...");
             try {
                 URL url = new URL(String.format(SKYBLOCK_PROFILE, uuid, profileID));

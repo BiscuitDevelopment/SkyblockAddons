@@ -39,7 +39,7 @@ public class ConfigValues {
     private final static float GUI_SCALE_MAXIMUM = 5;
 
     private SkyblockAddons main = SkyblockAddons.getInstance();
-    private Logger logger = SkyblockAddons.getLogger(SkyblockAddons.MOD_NAME + " Config");
+    private Logger logger = SkyblockAddons.getLogger();
 
     private JsonObject defaultValues = new JsonObject();
     private Map<Feature, FloatPair> defaultCoordinates = new EnumMap<>(Feature.class);

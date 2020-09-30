@@ -1,6 +1,6 @@
 package codes.biscuit.skyblockaddons.asm.utils;
 
-import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsSetup;
+import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsTransformer;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.tree.MethodInsnNode;
 import org.objectweb.asm.tree.MethodNode;
@@ -166,11 +166,11 @@ public enum TransformerMethod {
     }
 
     TransformerMethod(String deobfMethod, String seargeMethod, String notchMethod18, String seargeDescription, String notchDescription, boolean ioException) {
-        if (SkyblockAddonsSetup.isDeobfuscated()) {
+        if (SkyblockAddonsTransformer.isDeobfuscated()) {
             name = deobfMethod;
             description = seargeDescription;
         } else {
-            if (SkyblockAddonsSetup.isUsingNotchMappings()) {
+            if (SkyblockAddonsTransformer.isUsingNotchMappings()) {
                 name = notchMethod18;
                 description = notchDescription;
             } else {

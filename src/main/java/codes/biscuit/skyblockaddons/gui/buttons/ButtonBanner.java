@@ -9,7 +9,6 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.texture.DynamicTexture;
 import net.minecraft.client.renderer.texture.TextureUtil;
 import net.minecraft.util.ResourceLocation;
-import org.apache.logging.log4j.Logger;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -18,8 +17,7 @@ import java.net.URL;
 
 public class ButtonBanner extends GuiButton {
 
-    private SkyblockAddons main;
-    private Logger logger;
+    private SkyblockAddons main = SkyblockAddons.getInstance();
 
     private static ResourceLocation banner;
     private static BufferedImage bannerImage;
@@ -36,15 +34,13 @@ public class ButtonBanner extends GuiButton {
      */
     public ButtonBanner(double x, double y) {
         super(0, (int)x, (int)y, "");
-        this.main = SkyblockAddons.getInstance();
-        logger = main.getLogger();
 
         if (!grabbedBanner) {
             grabbedBanner = true;
             bannerImage = null;
             banner = null;
 
-            new Thread(() -> {
+            SkyblockAddons.newThread(() -> {
                 try {
                     URL url = new URL(this.main.getOnlineData().getBannerImageURL());
                     HttpURLConnection connection = (HttpURLConnection)url.openConnection();
@@ -58,7 +54,7 @@ public class ButtonBanner extends GuiButton {
                     this.width = bannerImage.getWidth();
                     this.height = bannerImage.getHeight();
                 } catch (IOException ex) {
-                    logger.info("Couldn't grab main menu banner image from URL, falling back to local banner.");
+                    SkyblockAddons.getLogger().info("Couldn't grab main menu banner image from URL, falling back to local banner.");
                 }
             }).start();
         }
