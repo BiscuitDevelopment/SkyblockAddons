@@ -139,7 +139,7 @@
     "baseStatBoostPercentage": "Afficher le Boost des statistiques de base pour les objets du donjon",
     "colorByRarity": "Colorer par rareté",
     "showPlayerHeadsOnMap": "Afficher les têtes des joueurs sur la carte du donjon",
-    "showHealingCircleWall": "Afficher dans le donjon un cylindre de régénération (Instable)",
+    "showHealingCircleWall": "Show Dungeon Healing Circle Wall",
     "showCriticalTeammates": "Afficher dans le donjon les coéquipiers dans un état critique",
     "showGlowingItemsOnIsland": "Afficher les objets rayonnants sur l'île",
     "showItemDungeonFloor": "Montrer le niveau où un objet de donjon a été obtenu",
