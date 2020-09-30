@@ -1,6 +1,5 @@
 package codes.biscuit.skyblockaddons.tweaker;
 
-import codes.biscuit.skyblockaddons.SkyblockAddons;
 import net.minecraftforge.fml.relauncher.FMLRelaunchLog;
 import net.minecraftforge.fml.relauncher.IFMLCallHook;
 import org.apache.logging.log4j.Level;
@@ -51,7 +50,8 @@ public class SkyblockAddonsDuplicateChecker implements IFMLCallHook {
     }
 
     public void log(Level level, String message) {
-        FMLRelaunchLog.log(SkyblockAddons.MOD_NAME + "Duplicate Checker", level, message);
+        String name = "[SkyblockAddons/" + this.getClass().getSimpleName() + "]";
+        FMLRelaunchLog.log(name, level, name + " " + message);
     }
 
     @Override

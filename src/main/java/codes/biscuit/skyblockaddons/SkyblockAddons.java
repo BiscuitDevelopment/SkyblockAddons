@@ -18,6 +18,7 @@ import codes.biscuit.skyblockaddons.misc.Updater;
 import codes.biscuit.skyblockaddons.misc.scheduler.NewScheduler;
 import codes.biscuit.skyblockaddons.misc.scheduler.Scheduler;
 import codes.biscuit.skyblockaddons.misc.scheduler.SkyblockRunnable;
+import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsTransformer;
 import codes.biscuit.skyblockaddons.utils.*;
 import com.google.gson.Gson;
 import lombok.Getter;
@@ -211,12 +212,13 @@ public class SkyblockAddons {
     public static Logger getLogger() {
         String fullClassName = new Throwable().getStackTrace()[1].getClassName();
 
-        String trimmedClassName = fullClassName;
-        if (fullClassName.contains(".")) {
-            trimmedClassName = fullClassName.substring(fullClassName.lastIndexOf('.') + 1);
-        }
+        String simpleClassName = fullClassName.substring(fullClassName.lastIndexOf('.') + 1);
 
-        return LogManager.getLogger(MOD_NAME + " - " + trimmedClassName);
+        if (SkyblockAddonsTransformer.isDeobfuscated()) {
+            return LogManager.getLogger(MOD_NAME + "/" + simpleClassName);
+        } else {
+            return LogManager.getLogger(MOD_NAME + "/" + simpleClassName, new SkyblockAddonsMessageFactory(simpleClassName));
+        }
     }
 
     public static Thread newThread(Runnable runnable) {
