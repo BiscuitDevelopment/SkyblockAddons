@@ -139,7 +139,7 @@
     "baseStatBoostPercentage": "显示地下城物品的基本属性加成",
     "colorByRarity": "按稀有度上色",
     "showPlayerHeadsOnMap": "在地下城地图上显示玩家头像",
-    "showHealingCircleWall": "显示地下城 Healing Circle 边界 (不稳定)",
+    "showHealingCircleWall": "Show Dungeon Healing Circle Wall",
     "showCriticalTeammates": "显示地下城濒死队友",
     "showGlowingItemsOnIsland": "使私人岛屿上的掉落物品发光",
     "showItemDungeonFloor": "显示地下城物品获取层数",
