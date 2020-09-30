@@ -139,7 +139,7 @@
     "baseStatBoostPercentage": "顯示 Dungeon 物品的基礎屬性加成",
     "colorByRarity": "按稀有度上色",
     "showPlayerHeadsOnMap": "於 Dungeon 地圖顯示玩家頭部",
-    "showHealingCircleWall": "Show Dungeon Healing Circle Wall",
+    "showHealingCircleWall": "顯示 Dungeon Healing Circle 邊界",
     "showCriticalTeammates": "顯示 Dungeon 瀕死隊友",
     "showGlowingItemsOnIsland": "在玩家島嶼上使物品發光",
     "showItemDungeonFloor": "顯示 Dungeon Items 獲取樓層",
