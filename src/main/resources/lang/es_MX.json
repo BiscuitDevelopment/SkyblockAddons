@@ -139,7 +139,7 @@
     "baseStatBoostPercentage": "Mostrar Aumento de Atributos Base Para los Objetos de Dungeon",
     "colorByRarity": "Color por Rareza",
     "showPlayerHeadsOnMap": "Mostrar Cabezas de Jugadores en el Mapa de Dungeon",
-    "showHealingCircleWall": "Mostrar Healing Circle Wall de Dungeon (Inestable)",
+    "showHealingCircleWall": "Show Dungeon Healing Circle Wall",
     "showCriticalTeammates": "Mostrar Compañeros de Dungeon en Estado Crítico",
     "showGlowingItemsOnIsland": "Objetos Sueltos Brillantes",
     "showItemDungeonFloor": "Mostrar el Piso Donde se Obtuvo el Objeto de Dungeon",
