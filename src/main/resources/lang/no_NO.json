@@ -139,7 +139,7 @@
     "baseStatBoostPercentage": "Vis basis statistikkøkning for Dungeon-gjenstander",
     "colorByRarity": "Sett farge etter sjeldenhet",
     "showPlayerHeadsOnMap": "Vis spillerhoder på Dungeon-kart",
-    "showHealingCircleWall": "Vis fangehullhelbredelse-sirkelvegg (ustabil)",
+    "showHealingCircleWall": "Show Dungeon Healing Circle Wall",
     "showCriticalTeammates": "Vis Dungeon lagkamerater i kritisk tilstand",
     "showGlowingItemsOnIsland": "Vis glødende gjenstander på privat øy",
     "showItemDungeonFloor": "Vis etasje hvor Dungeon-gjenstander ble funnet",

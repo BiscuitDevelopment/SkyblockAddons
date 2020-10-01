@@ -139,7 +139,7 @@
     "baseStatBoostPercentage": "Basisstatistiekboost voor Dungeonvoorwerpen tonen",
     "colorByRarity": "Kleuren op zeldzaamheid",
     "showPlayerHeadsOnMap": "Spelerhoofden tonen op Dungeonkaart",
-    "showHealingCircleWall": "Dungeon Healing Circle Wall tonen (Onstabiel)",
+    "showHealingCircleWall": "Show Dungeon Healing Circle Wall",
     "showCriticalTeammates": "Kritieke Dungeonteamgenoten tonen",
     "showGlowingItemsOnIsland": "Gloeiende voorwerpen op eiland tonen",
     "showItemDungeonFloor": "Verdieping waar Dungeonvoorwerp verkregen is tonen",
