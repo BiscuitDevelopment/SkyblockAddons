@@ -180,6 +180,7 @@ public enum Feature {
     DISABLE_BOSS_MESSAGES(147, "settings.disableBossMessages", null, false),
 
     HIDE_OTHER_PLAYERS_PRESENTS(141, Message.SETTING_HIDE_OTHER_PLAYERS_PRESENTS, false),
+    EASIER_PRESENT_OPENING(142, Message.SETTING_EASIER_PRESENT_OPENING, false),
 
     WARNING_TIME(-1, Message.SETTING_WARNING_DURATION, false),
 

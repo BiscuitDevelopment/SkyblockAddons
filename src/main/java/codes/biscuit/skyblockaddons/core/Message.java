@@ -161,6 +161,7 @@ public enum Message {
     SETTING_DISABLE_MORT_MESSAGES(MessageObject.SETTING, "disableMortMessages"),
     SETTING_DISABLE_BOSS_MESSAGES(MessageObject.SETTING, "disableBossMessages"),
     SETTING_HIDE_OTHER_PLAYERS_PRESENTS(MessageObject.SETTING, "hideOtherPlayer'sPresents"),
+    SETTING_EASIER_PRESENT_OPENING(MessageObject.SETTING, "easierPresentOpening"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.BACKPACK_STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.BACKPACK_STYLE, "compact"),

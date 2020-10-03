@@ -4,6 +4,7 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.asm.utils.ReturnValue;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.npc.NPCUtils;
+import codes.biscuit.skyblockaddons.features.JerryPresent;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.client.gui.GuiScreen;
@@ -41,6 +42,12 @@ public class EntityRendererHook {
         }
         if (!main.getUtils().isInDungeon() && main.getConfigValues().isEnabled(Feature.HIDE_PLAYERS_NEAR_NPCS)) {
             list.removeIf(entity -> entity instanceof EntityOtherPlayerMP && !NPCUtils.isNPC(entity) && NPCUtils.isNearNPC(entity));
+        }
+        // Ignore clicks on Jerry-present-related armorstands that don't display "CLICK TO OPEN"
+        if (main.getConfigValues().isEnabled(Feature.EASIER_PRESENT_OPENING)) {
+            list.removeIf(entity -> JerryPresent.jerryPresentMap.containsAggregate(entity) &&
+                    (!JerryPresent.jerryPresentMap.getAggregate(entity).isForYou() ||
+                            JerryPresent.jerryPresentMap.getAggregate(entity).getUpperDisplay() != entity));
         }
     }
 

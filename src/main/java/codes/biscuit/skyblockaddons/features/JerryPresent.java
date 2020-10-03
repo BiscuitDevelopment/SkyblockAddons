@@ -32,9 +32,9 @@ public class JerryPresent extends EntityAggregate {
     public static EntityAggregateMap<JerryPresent> jerryPresentMap = new EntityAggregateMap();
 
     // Is the present for you
-    private final boolean isForYou;
+    @Getter private final boolean isForYou;
     // Is the present from you
-    private final boolean isFromYou;
+    @Getter private final boolean isFromYou;
     // Color of present
     private final PresentColor presentColor;
 
