@@ -12,29 +12,30 @@ import net.minecraft.util.AxisAlignedBB;
 import lombok.Getter;
 import net.minecraft.util.ChatComponentText;
 import net.minecraftforge.common.util.Constants;
+import scala.actors.threadpool.Arrays;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.regex.Pattern;
 
-public class JerryPresent {
+/*
+An aggregate entity that stores a single present from Jerry
+ */
+public class JerryPresent extends EntityAggregate {
 
     private static final Pattern STRIP_TO_FROM = Pattern.compile("(From:)?(To:)?( \\[.*\\])? ");
 
-    public static HashMap<EntityArmorStand, JerryPresent> jerryPresentMap = new HashMap<>();
-
-    // The present skull on armorstand
-    @Getter private final EntityArmorStand thePresent;
-    // From display
-    @Getter private final EntityArmorStand displayLower;
-    // CLICK display (if the present is for you) or To display (if the present is not for you)
-    @Getter private final EntityArmorStand displayUpper;
+    // Publicly accessable map of tracked JerryPresents...
+    // Could have put in PlayerListener, but then would have had to import PlayerListener into RenderManagerHook...
+    // Made more sense not to do that and instead placed it here
+    public static EntityAggregateMap<JerryPresent> jerryPresentMap = new EntityAggregateMap();
 
     // Is the present for you
     private final boolean isForYou;
     // Is the present from you
     private final boolean isFromYou;
-    // Type (color) of present
+    // Color of present
     private final PresentColor presentColor;
 
     // The different present colors
@@ -51,43 +52,45 @@ public class JerryPresent {
         PRESENT_TYPE_IDS.put("bc74cb05-2758-3395-93ec-70452a983604", PresentColor.RED); // Red
     }
 
-    /*
-    Standard JerryPresent constructor with all information provided
-     */
+
     public JerryPresent(EntityArmorStand present, EntityArmorStand displayLower, EntityArmorStand displayUpper,
                         PresentColor color, boolean fromYou, boolean forYou) {
-
-        this.thePresent = present;
-        this.displayLower = displayLower;
-        this.displayUpper = displayUpper;
+        // Create an EntityAggregate with 3 parts
+        super(present, displayLower, displayUpper);
         this.presentColor = color;
         this.isFromYou = fromYou;
         this.isForYou = forYou;
     }
 
     /*
-     Note that this is not meant to be called onLivingDeathEvent
-     Since at that time the trigger entity has not yet died.
-     See overloaded function for onLivingDeathEvent usage
+    These methods access information specific to JerryPresent and thus they are here
      */
-    public boolean isDead() {
-        return thePresent.isDead && displayLower.isDead && displayUpper.isDead;
+
+    // This is the armorstand with the present-colored skull
+    public EntityArmorStand getThePresent() {
+        return (EntityArmorStand)(this.getEntityParts().get(0));
     }
 
-    /*
-     To be called onLivingDeathEvent to check if the other entities have died already
-     */
-    public boolean isDead(Entity e) {
-        if (e == thePresent) return displayLower.isDead && displayUpper.isDead;
-        if (e == displayLower) return thePresent.isDead && displayUpper.isDead;
-        if (e == displayUpper) return thePresent.isDead && displayLower.isDead;
-        return isDead();
+    // This is the armorstand with "From: [RANK] Username"
+    public EntityArmorStand getLowerDisplay() {
+        return (EntityArmorStand)(this.getEntityParts().get(1));
     }
 
+    // This is the armorstand with "CLICK TO OPEN" or "To: [RANK] Username"
+    public EntityArmorStand getUpperDisplay() {
+        return (EntityArmorStand)(this.getEntityParts().get(2));
+    }
 
+    // When the feature is turned on, we only render the presents of importance to the player
     public boolean shouldRender() {
         return isForYou || isFromYou;
     }
+
+    public String toString() {
+        return presentColor.name() + " from " + (isFromYou ? "you" : "other") + " to " + (isForYou ? "you" : "other:");
+    }
+
+
     /*
      Returns a Jerry Present if the entity is the present and we see text above it
      The idea here is that we only return a present if all three armorstands are present
@@ -105,7 +108,6 @@ public class JerryPresent {
         // Since the method is called before the entity is actually added to the chunk entity list, we add it here
         stands.add(targetStand);
         // Try to identify present skull (bottom), middle text line (middle), and top text line (top)
-        // TODO: check if there are multiple of the same armorstand for rendering
         EntityArmorStand bottom = null, middle = null, top = null;
         String presentID = "";
         for (EntityArmorStand stand : stands) {
@@ -164,8 +166,4 @@ public class JerryPresent {
         return s.length() == 0 ? null : s;
     }
 
-    public String toString() {
-        return presentColor.name() + " from " + (isFromYou ? "you" : "other") + " to " + (isForYou ? "you" : "other:" +
-                thePresent.isDead + displayLower.isDead + displayUpper.isDead);
-    }
 }
