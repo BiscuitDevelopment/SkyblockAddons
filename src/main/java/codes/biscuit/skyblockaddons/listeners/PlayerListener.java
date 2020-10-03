@@ -499,6 +499,7 @@ public class PlayerListener {
                             JerryPresent.jerryPresentMap.addAggregate(present);
                             // So we don't check for these entities again
                             entitiesWithoutMetadata.removeAll(present.getEntityParts());
+                            // (For devs) Uncomment to see what is getting tracked
                             //Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("New " + present.toString()  + " new size " + JerryPresent.jerryPresentMap.numParts() + " " + entitiesWithoutMetadata.size()));
                             continue;
                         }

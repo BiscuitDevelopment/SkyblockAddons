@@ -120,7 +120,6 @@ public class JerryPresent extends EntityAggregate {
                 presentID = ArmorStandUtils.tryToGetSkullIdFromArmorstand(stand);
 
                 if (presentID == null || !PRESENT_TYPE_IDS.containsKey(presentID)) continue;
-                //Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("Bottom " + presentID));
                 bottom = stand;
             }
         }
