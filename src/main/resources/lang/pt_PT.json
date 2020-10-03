@@ -147,24 +147,24 @@
     "dungeonsCollectedEssencesDisplay": "Mostrar a essência recolhida na Dungeon",
     "stopBonzoStaffSounds": "Bloquear os sons do Bonzo's Staff",
     "showRarityUpgraded": "Mostrar se a raridade do item foi melhorada",
-    "revenantSlayerTracker": "Slayer Tracker - Revenant/Zombie",
-    "tarantulaSlayerTracker": "Slayer Tracker - Tarantula/Spider",
-    "svenSlayerTracker": "Slayer Tracker - Sven/Wolf",
+    "revenantSlayerTracker": "Registo de slayer - Revenant/Zombie",
+    "tarantulaSlayerTracker": "Registo de slayer - Tarantula/Aranha",
+    "svenSlayerTracker": "Registo de slayer - Sven/Lobo",
     "textMode": "Modo de texto",
     "dragonsNestOnly": "Mostrar apenas no Dragon's Nest",
     "dragonStatsTracker": "Registo de dragões",
     "expanded": "Expandido",
-    "hideWhenNotInCrypts": "Hide When Not in the Crypts/Doing Revenant Quest",
-    "hideWhenNotInSpidersDen": "Hide When Not in the Spiders Den/Doing Tarantula Quest",
-    "hideWhenNotInCastle": "Hide When Not in the Castle/Doing Sven Quest",
+    "hideWhenNotInCrypts": "Não mostrar fora dos Crypts ou quando a missão Revenant não estiver ativa",
+    "hideWhenNotInSpidersDen": "Hide When Not in the Spider's Den/Doing Tarantula Quest",
+    "hideWhenNotInCastle": "Não mostrar fora do Castle ou quando a missão Sven não estiver ativa",
     "dungeonDeathCounter": "Contagem de mortes nas dungeons",
-    "showPersonalCompactorPreview": "Show Personal Compactor Preview",
-    "rockPetTracker": "Rock Pet Tracker",
-    "dolphinPetTracker": "Dolphin Pet Tracker",
-    "dungeonsTeammateNameOverlay": "Dungeons Teammate Name Overlay"
+    "showPersonalCompactorPreview": "Mostrar pré-visualização do Personal Compactor",
+    "rockPetTracker": "Progresso do Rock pet",
+    "dolphinPetTracker": "Progresso do Dolphin pet",
+    "dungeonsTeammateNameOverlay": "Mostrar os nomes dos colegas da Dungeon"
   },
   "messages": {
-    "enchants": "Enchants",
+    "enchants": "Encantamentos",
     "reforges": "Reforges",
     "dropConfirmation": "Atira este item outra vez para confirmar!",
     "magmaBossWarning": "Magma Cube Boss!",
@@ -225,9 +225,9 @@
     "enchantmentExclusionExample": "ex.: \"proj, blast\"",
     "reforgeInclusionExample": "ex.: \"godly, strong\"",
     "reforgeExclusionExample": "ex.: \"odd, clean\"",
-    "actionsLeft": "%number% Left",
-    "effectActive": "1 Effect Active",
-    "effectsActive": "%number% Effects Active"
+    "actionsLeft": "%number% restantes",
+    "effectActive": "1 efeito ativo",
+    "effectsActive": "%number% efeitos ativos"
   },
   "discordStatus": {
     "titleNone": "Nenhum",
@@ -288,13 +288,13 @@
     "sba.set.zealotCounter.totalZealots": "Define a contagem total de zealots para %number%!",
     "sba.set.zealotCounter.wrongUsage": "Seleção inválida! Escolhe %options%.",
     "sba.set.zealotCounter.zealots": "Define a contagem atual de zealots para %number%!",
-    "sba.toggleActionBarLogging": "§e(Dev) §7Toggle logging action bar messages",
+    "sba.toggleActionBarLogging": "§e(Program) §7Alterar o registo de mensagens da barra de ação",
     "sba.toggleActionBarLogging.disabled": "As mensagens da barra de ação não serão registadas.",
     "sba.toggleActionBarLogging.enabled": "As mensagens da barra de ação serão registadas.",
     "sba.wrongUsage.generic": "Uso errado!",
     "sba.wrongUsage.subCommandNotFound": "O comando %sub-command% não foi encontrado.",
-    "sba.slayer": "Manually set slayer stats, press tab for arguments",
-    "sba.help.slayer": "Manually set slayer stats, press tab for arguments"
+    "sba.slayer": "Define manualmente as estatísticas do slayer. Carrega no tab para ver os argumentos",
+    "sba.help.slayer": "Define manualmente as estatísticas do slayer. Carrega no tab para ver os argumentos"
   },
   "keyBindings": {
     "developerCopyNBT": "Copiar NBT"
@@ -311,8 +311,8 @@
     "dragonsSince": "Dragões desde:",
     "aspectOfTheDragons": "AOTD",
     "enderDragonPet": "Dragon Pet",
-    "eyesPlaced": "Eyes Placed",
-    "never": "Never"
+    "eyesPlaced": "Eyes colocados",
+    "never": "Nunca"
   },
   "slayerTracker": {
     "revenant": "Revenant Horror:",
@@ -343,6 +343,6 @@
     "redClawEgg": "Red Claw Egg",
     "overfluxCapacitor": "Overflux Capacitor",
     "coutureRune": "Couture Rune",
-    "bossesKilled": "Bosses Killed"
+    "bossesKilled": "Bosses derrotados"
   }
 }
