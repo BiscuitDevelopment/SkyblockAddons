@@ -1,4 +1,4 @@
-package codes.biscuit.skyblockaddons.features;
+package codes.biscuit.skyblockaddons.core;
 
 import lombok.Getter;
 import net.minecraft.entity.Entity;

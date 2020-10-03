@@ -1,20 +1,15 @@
 package codes.biscuit.skyblockaddons.features;
 
-import codes.biscuit.skyblockaddons.utils.DevUtils;
+import codes.biscuit.skyblockaddons.core.EntityAggregate;
+import codes.biscuit.skyblockaddons.core.EntityAggregateMap;
+import codes.biscuit.skyblockaddons.utils.ArmorStandUtils;
 import codes.biscuit.skyblockaddons.utils.TextUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityArmorStand;
-import net.minecraft.nbt.NBTBase;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.AxisAlignedBB;
 import lombok.Getter;
-import net.minecraft.util.ChatComponentText;
-import net.minecraftforge.common.util.Constants;
-import scala.actors.threadpool.Arrays;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -24,19 +19,19 @@ An aggregate entity that stores a single present from Jerry
  */
 public class JerryPresent extends EntityAggregate {
 
-    private static final Pattern STRIP_TO_FROM = Pattern.compile("(From:)?(To:)?( \\[.*\\])? ");
+    // Strips the "To:/From: [Rank] " and leaves just the name
+    private static final Pattern STRIP_TO_FROM = Pattern.compile("(From:)?(To:)?( \\[.*])? ");
 
-    // Publicly accessable map of tracked JerryPresents...
-    // Could have put in PlayerListener, but then would have had to import PlayerListener into RenderManagerHook...
-    // Made more sense not to do that and instead placed it here
-    public static EntityAggregateMap<JerryPresent> jerryPresentMap = new EntityAggregateMap();
+    // Publicly accessible map of tracked JerryPresents
+    // If more of these entity-tracker maps are used in the future, it may make more sense to store in a separate file
+    public static EntityAggregateMap<JerryPresent> jerryPresentMap = new EntityAggregateMap<>();
 
     // Is the present for you
     @Getter private final boolean isForYou;
     // Is the present from you
     @Getter private final boolean isFromYou;
     // Color of present
-    private final PresentColor presentColor;
+    @Getter private final PresentColor presentColor;
 
     // The different present colors
     private enum PresentColor {
@@ -63,7 +58,7 @@ public class JerryPresent extends EntityAggregate {
     }
 
     /*
-    These methods access information specific to JerryPresent and thus they are here
+    These methods access information in EntityAggregate that is specific to JerryPresent
      */
 
     // This is the armorstand with the present-colored skull
@@ -94,19 +89,18 @@ public class JerryPresent extends EntityAggregate {
     /*
      Returns a Jerry Present if the entity is the present and we see text above it
      The idea here is that we only return a present if all three armorstands are present
-     This will only happen once if it's called on a LivingSpawnEvent.
+     The function should only succeed (create a present) once for a given set of armorstands
+     But this relies on separately tracking which entities have already succeeded
 
      Returns null if no present found
      */
-    public static JerryPresent checkAndReturnJerryPresent(EntityArmorStand targetStand) {
+    public static JerryPresent checkAndReturnJerryPresent(Entity targetEntity) {
         // Only accept invisible armorstands
-        if (!targetStand.isInvisible()) return null;
+        if (!(targetEntity instanceof EntityArmorStand) || !targetEntity.isInvisible()) return null;
         // Check a small enough range that it will be hard for two presents to get confused with each other
         List<EntityArmorStand> stands = Minecraft.getMinecraft().theWorld.getEntitiesWithinAABB(EntityArmorStand.class,
-                new AxisAlignedBB(  targetStand.posX - .5, targetStand.posY - 3, targetStand.posZ - .5,
-                        targetStand.posX + .5, targetStand.posY + 3, targetStand.posZ + .5));
-        // Since the method is called before the entity is actually added to the chunk entity list, we add it here
-        stands.add(targetStand);
+                new AxisAlignedBB(targetEntity.posX - .2, targetEntity.posY - 2, targetEntity.posZ - .2,
+                        targetEntity.posX + .2, targetEntity.posY + 2, targetEntity.posZ + .2));
         // Try to identify present skull (bottom), middle text line (middle), and top text line (top)
         EntityArmorStand bottom = null, middle = null, top = null;
         String presentID = "";
@@ -116,23 +110,21 @@ public class JerryPresent extends EntityAggregate {
             if (stand.hasCustomName()) {
                 String name = TextUtils.stripColor(stand.getCustomNameTag());
                 if (name.matches("From:.*")) {
-                    //Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("Middle: " + name));
                     middle = stand;
                 } else if (name.equals("CLICK TO OPEN") || name.matches("To:.*")) {
-                    //Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("Top " + name));
                     top = stand;
                 }
             }
             // Skull armorstand -- try to get Hypixel's skull id to determine if it's the present
             else {
-                presentID = tryToGetSkullIdFromArmorstand(stand);
+                presentID = ArmorStandUtils.tryToGetSkullIdFromArmorstand(stand);
 
                 if (presentID == null || !PRESENT_TYPE_IDS.containsKey(presentID)) continue;
                 //Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("Bottom " + presentID));
                 bottom = stand;
             }
         }
-        // Check that we've found a bottom, middle, top, as well as that the positions make sense (might not be perfect)
+        // Check that we've found a bottom, middle, top, as well as that the positions make sense
         if (bottom == null || middle == null || top == null || bottom.posY > middle.posY || middle.posY > top.posY) return null;
 
         // Get the important present information
@@ -143,27 +135,4 @@ public class JerryPresent extends EntityAggregate {
 
         return new JerryPresent(bottom, middle, top, presentColor, fromYou, forYou);
     }
-
-    private static String tryToGetSkullIdFromArmorstand(EntityArmorStand e) {
-        NBTBase nbt = new NBTTagCompound();
-        String s = "";
-        e.writeEntityToNBT((NBTTagCompound)nbt);
-        if (((NBTTagCompound)nbt).hasKey("Equipment")) {
-            nbt = ((NBTTagCompound)nbt).getTag("Equipment");
-            if (nbt.getId() == Constants.NBT.TAG_LIST && ((NBTTagList)nbt).tagCount() == 5) {
-                nbt = ((NBTTagList)nbt).get(4);
-                if (nbt.getId() == Constants.NBT.TAG_COMPOUND && ((NBTTagCompound)nbt).hasKey("tag")) {
-                    nbt = ((NBTTagCompound)nbt).getTag("tag");
-                    if (nbt.getId() == Constants.NBT.TAG_COMPOUND && ((NBTTagCompound)nbt).hasKey("SkullOwner")) {
-                        nbt = ((NBTTagCompound)nbt).getTag("SkullOwner");
-                        if (nbt.getId() == Constants.NBT.TAG_COMPOUND && ((NBTTagCompound)nbt).hasKey("Id")) {
-                            s = ((NBTTagCompound)nbt).getString("Id");
-                        }
-                    }
-                }
-            }
-        }
-        return s.length() == 0 ? null : s;
-    }
-
 }

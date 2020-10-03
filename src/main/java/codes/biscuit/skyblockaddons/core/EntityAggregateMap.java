@@ -1,5 +1,6 @@
-package codes.biscuit.skyblockaddons.features;
+package codes.biscuit.skyblockaddons.core;
 
+import codes.biscuit.skyblockaddons.core.EntityAggregate;
 import net.minecraft.entity.Entity;
 
 import java.util.*;
