@@ -8,6 +8,8 @@ import codes.biscuit.skyblockaddons.events.DungeonPlayerReviveEvent;
 import codes.biscuit.skyblockaddons.events.SkyblockPlayerDeathEvent;
 import codes.biscuit.skyblockaddons.features.BaitManager;
 import codes.biscuit.skyblockaddons.features.EndstoneProtectorManager;
+import codes.biscuit.skyblockaddons.features.EntityAggregate;
+import codes.biscuit.skyblockaddons.features.JerryPresent;
 import codes.biscuit.skyblockaddons.features.backpacks.BackpackManager;
 import codes.biscuit.skyblockaddons.features.backpacks.ContainerPreview;
 import codes.biscuit.skyblockaddons.features.cooldowns.CooldownManager;
@@ -141,6 +143,8 @@ public class PlayerListener {
 
     private final SkyblockAddons main = SkyblockAddons.getInstance();
     private final ActionBarParser actionBarParser = new ActionBarParser();
+
+    private HashSet<EntityArmorStand> standsWaitingForUpdate = new HashSet<>();
 
     /**
      * Reset all the timers and stuff when joining a new world.
@@ -483,6 +487,33 @@ public class PlayerListener {
                 if (shouldTriggerFishingIndicator()) { // The logic fits better in its own function
                     main.getUtils().playLoudSound("random.successful_hit", 0.8);
                 }
+
+                // Wait for armorstands to get their metadata
+                standsWaitingForUpdate.removeIf(Objects::isNull);
+                ArrayList<EntityArmorStand> list = new ArrayList<>(standsWaitingForUpdate);
+                for (EntityArmorStand stand : list) {
+                    // We may have deleted it if we succeeded in making a present previously
+                    if (standsWaitingForUpdate.contains(stand)) {
+                        // Try to create a present centered on the current armorstand
+                        JerryPresent present = JerryPresent.checkAndReturnJerryPresent(stand);
+                        if (present != null) {
+                            // Add the new present to the mapping of tracked presents
+                            JerryPresent.jerryPresentMap.addAggregate(present);
+                            // Remove all entity parts from the list of armorstands waiting to update
+                            standsWaitingForUpdate.removeAll(present.getEntityParts());
+                            Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("New " + present.toString()  + " new size " + JerryPresent.jerryPresentMap.numParts() + " " + standsWaitingForUpdate.size()));
+                            for (JerryPresent p : JerryPresent.jerryPresentMap.getAggregateSet()) {
+                                Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText(p.toString()));
+                            }
+                            continue;
+                        }
+                    }
+                    // These metadata packets should come in very quickly after the spawn packets
+                    // We also assume that an invisible armorstand has its metadata already
+                    if (stand.isInvisible() || stand.ticksExisted > 5) {
+                        standsWaitingForUpdate.remove(stand);
+                    }
+                }
                 if (timerTick == 20) { // Add natural mana every second (increase is based on your max mana).
                     if (main.getRenderListener().isPredictMana()) {
                         changeMana(getAttribute(Attribute.MAX_MANA) / 50);
@@ -494,6 +525,17 @@ public class PlayerListener {
                         TabEffectManager.getInstance().updatePotionEffects();
                     }
 
+                    // Checking if an entity is dead isn't easy...I found that armorstands don't trigger the LivingDeathEvent...
+                    // Here we check if all components of the JerryPresent aggregate have despawned to clean up memory
+                    if (!JerryPresent.jerryPresentMap.isEmpty()) {
+                        Set<JerryPresent> presentSet = JerryPresent.jerryPresentMap.getAggregateSet();
+                        for (JerryPresent p : presentSet) {
+                            if (p.isDead()) {
+                                JerryPresent.jerryPresentMap.removeAggregate(p);
+                            }
+                        }
+
+                    }
                 } else if (timerTick % 5 == 0) { // Check inventory, location, updates, and skeleton helmet every 1/4 second.
                     EntityPlayerSP player = mc.thePlayer;
 
@@ -791,6 +833,13 @@ public class PlayerListener {
                         }
                     }
                 }
+            }
+        }
+
+        // Armorstands do not immediately get their metadata, so we must wait for that update packet
+        if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.HIDE_OTHER_PLAYERS_PRESENTS)) {
+            if (entity instanceof EntityArmorStand) {
+                standsWaitingForUpdate.add((EntityArmorStand)entity);
             }
         }
     }
