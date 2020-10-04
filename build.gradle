@@ -29,6 +29,7 @@ dependencies {
         exclude module: 'log4j'
     }
     testImplementation('org.junit.jupiter:junit-jupiter:5.6.2')
+    implementation 'com.github.BiscuitDevelopment:HypixelLocalizationLib:7122472085'
 }
 
 sourceSets {

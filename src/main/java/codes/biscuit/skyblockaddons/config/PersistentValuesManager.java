@@ -1,5 +1,6 @@
 package codes.biscuit.skyblockaddons.config;
 
+import codes.biscuit.hypixellocalizationlib.HypixelLanguage;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.features.craftingpatterns.CraftingPattern;
 import codes.biscuit.skyblockaddons.features.dragontracker.DragonTracker;
@@ -33,6 +34,8 @@ public class PersistentValuesManager {
 
         private int oresMined = 0;
         private int seaCreaturesKilled = 0;
+
+        private HypixelLanguage hypixelLanguage = HypixelLanguage.ENGLISH;
     }
 
     public PersistentValuesManager(File configDir) {

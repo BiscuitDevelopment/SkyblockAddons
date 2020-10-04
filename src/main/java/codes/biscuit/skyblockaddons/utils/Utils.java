@@ -887,8 +887,8 @@ public class Utils {
                 fileStream.close();
             }
         } catch (JsonParseException | IllegalStateException | IOException ex) {
-            ex.printStackTrace();
-            System.out.println("SkyblockAddons: There was an error loading the language file.");
+            logger.error("There was an error loading the language file");
+            logger.catching(ex);
         }
     }
 
@@ -914,8 +914,8 @@ public class Utils {
                 JsonObject onlineMessages = SkyblockAddons.getGson().fromJson(response.toString(), JsonObject.class);
                 mergeLanguageJsonObject(onlineMessages, main.getConfigValues().getLanguageConfig());
             } catch (JsonParseException | IllegalStateException | IOException ex) {
-                ex.printStackTrace();
-                System.out.println("SkyblockAddons: There was an error loading the language file online");
+                logger.error("There was an error loading the language file online");
+                logger.catching(ex);
             }
         }).start();
     }

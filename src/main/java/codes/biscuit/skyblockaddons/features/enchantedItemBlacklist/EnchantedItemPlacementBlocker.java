@@ -1,6 +1,7 @@
 package codes.biscuit.skyblockaddons.features.enchantedItemBlacklist;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.core.ItemRarity;
 import codes.biscuit.skyblockaddons.core.Location;
 import codes.biscuit.skyblockaddons.utils.ItemUtils;
 import com.google.common.collect.Lists;
@@ -83,12 +84,14 @@ public class EnchantedItemPlacementBlocker {
                 }
             }
 
+            ItemRarity rarity = ItemUtils.getRarity(itemStack);
+
             /*
              If this item isn't found in the blacklist, check if it's an enchanted block with a rarity above the minimum.
              ItemReed is included because it's the class of some blocks like flowerpots and repeaters.
              */
-            if (interactEvent.action == PlayerInteractEvent.Action.RIGHT_CLICK_BLOCK && itemStack.isItemEnchanted() &&
-                    blacklist.rarityLimit.compareTo(ItemUtils.getRarity(itemStack)) <= 0) {
+            if (rarity != null && interactEvent.action == PlayerInteractEvent.Action.RIGHT_CLICK_BLOCK && itemStack.isItemEnchanted() &&
+                    blacklist.rarityLimit.compareTo(rarity) <= 0) {
                 /*
                  If the player right clicks on an interactive block like a chest, the item won't be used.
                  The player will activate the block instead.

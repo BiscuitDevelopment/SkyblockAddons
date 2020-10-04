@@ -472,6 +472,18 @@ public class ItemUtils {
         return stack;
     }
 
+    public static ItemStack createEnchantedBook(String name, String skyblockID, String enchantName, int enchantLevel) {
+        ItemStack stack = createItemStack(Items.enchanted_book, name, skyblockID, false);
+
+        NBTTagCompound enchantments = new NBTTagCompound();
+        enchantments.setString(enchantName, String.valueOf(enchantLevel));
+
+        NBTTagCompound extraAttributes = stack.getTagCompound().getCompoundTag("ExtraAttributes");
+        extraAttributes.setTag("enchantments", enchantments);
+
+        return stack;
+    }
+
     public static ItemStack createSkullItemStack(String name, String skyblockID, String skullID, String textureURL) {
         ItemStack stack = new ItemStack(Items.skull, 1, 3);
 

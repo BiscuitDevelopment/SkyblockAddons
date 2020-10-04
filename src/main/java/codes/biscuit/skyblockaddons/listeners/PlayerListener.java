@@ -371,12 +371,12 @@ public class PlayerListener {
                 matcher = PROFILE_CHAT_PATTERN.matcher(formattedText);
                 if (matcher.matches()) {
                     main.getUtils().setProfileName(matcher.group(1));
-                    APIManager.getInstance().pullInitialData();
+                    APIManager.getInstance().onProfileSwitch();
                 } else {
                     matcher = SWITCH_PROFILE_CHAT_PATTERN.matcher(formattedText);
                     if (matcher.matches()) {
                         main.getUtils().setProfileName(matcher.group(1));
-                        APIManager.getInstance().pullInitialData();
+                        APIManager.getInstance().onProfileSwitch();
                     }
                 }
             }

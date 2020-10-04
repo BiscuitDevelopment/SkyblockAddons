@@ -3,6 +3,7 @@ package codes.biscuit.skyblockaddons.utils;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.features.slayertracker.SlayerBoss;
 import codes.biscuit.skyblockaddons.features.slayertracker.SlayerTracker;
+import codes.biscuit.skyblockaddons.utils.pojo.PlayerData;
 import codes.biscuit.skyblockaddons.utils.pojo.Profile;
 import codes.biscuit.skyblockaddons.utils.pojo.ProfileMembers;
 import com.google.gson.reflect.TypeToken;
@@ -20,20 +21,52 @@ public class APIManager {
     private static final APIManager INSTANCE = new APIManager();
 
     private static final String BASE_URL = "https://api.slothpixel.me/api/";
+    private static final String PLAYER = BASE_URL + "players/%s"; // UUID
     private static final String SKYBLOCK_PROFILES = BASE_URL + "skyblock/profiles/%s"; // UUID
     private static final String SKYBLOCK_PROFILE = BASE_URL + "skyblock/profile/%s/%s"; // UUID, Profile
 
     private SkyblockAddons main = SkyblockAddons.getInstance();
     private Logger logger = SkyblockAddons.getLogger();
+    private boolean firstSwitch = true;
 
-    public void pullInitialData() {
+    public void onProfileSwitch() {
         String profileName = main.getUtils().getProfileName();
 
         if (profileName != null) {
             String uuid = Minecraft.getMinecraft().thePlayer.getUniqueID().toString().replace("-", ""); // No dashes
 
-            this.pullProfiles(uuid, profileName);
+            if (firstSwitch) {
+                pullPlayer(uuid);
+                firstSwitch = false;
+            }
+
+            pullProfiles(uuid, profileName);
         }
+    }
+
+    public void pullPlayer(String uuid) {
+        SkyblockAddons.newThread(() -> {
+            logger.info("Grabbing player API data for UUID " + uuid + "...");
+            try {
+                URL url = new URL(String.format(PLAYER, uuid));
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                connection.setRequestMethod("GET");
+                connection.setRequestProperty("User-Agent", Utils.USER_AGENT);
+
+                logger.info("Got response code " + connection.getResponseCode());
+
+                PlayerData playerData = SkyblockAddons.getGson().fromJson(new InputStreamReader(connection.getInputStream()), PlayerData.class);
+                connection.disconnect();
+
+                if (playerData != null && playerData.getLanguage() != null) {
+                    main.getPersistentValuesManager().getPersistentValues().setHypixelLanguage(playerData.getLanguage());
+                }
+
+            } catch (Exception ex) {
+                logger.warn("Failed to grab player's profiles API data!");
+                logger.catching(ex);
+            }
+        }).start();
     }
 
     public void pullProfiles(String uuid, String profileName) {
