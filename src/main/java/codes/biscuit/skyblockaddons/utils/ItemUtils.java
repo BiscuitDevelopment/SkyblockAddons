@@ -10,7 +10,9 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemPickaxe;
+import net.minecraft.item.ItemSkull;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraftforge.common.util.Constants;
@@ -533,5 +535,21 @@ public class ItemUtils {
         else {
             return -1;
         }
+    }
+
+    /*
+    Given an ItemStack containing an ItemSkull, attempt to get the skull owner ID
+    Returns null on failure
+     */
+    public static String getSkullOwnerID(ItemStack skull) {
+        if (skull == null || !(skull.getItem() instanceof ItemSkull)) return null;
+        NBTTagCompound nbt = skull.getTagCompound();
+        if (nbt != null && nbt.hasKey("SkullOwner", 10)) {
+            nbt = nbt.getCompoundTag("SkullOwner");
+            if (nbt.hasKey("Id", 8)) {
+                return nbt.getString("Id");
+            }
+        }
+        return null;
     }
 }

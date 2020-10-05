@@ -2,13 +2,14 @@ package codes.biscuit.skyblockaddons.features;
 
 import codes.biscuit.skyblockaddons.core.EntityAggregate;
 import codes.biscuit.skyblockaddons.core.EntityAggregateMap;
-import codes.biscuit.skyblockaddons.utils.ArmorStandUtils;
+import codes.biscuit.skyblockaddons.utils.ItemUtils;
 import codes.biscuit.skyblockaddons.utils.TextUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityArmorStand;
 import net.minecraft.util.AxisAlignedBB;
 import lombok.Getter;
+import net.minecraft.util.ChatComponentText;
 
 import java.util.HashMap;
 import java.util.List;
@@ -115,9 +116,10 @@ public class JerryPresent extends EntityAggregate {
                     top = stand;
                 }
             }
-            // Skull armorstand -- try to get Hypixel's skull id to determine if it's the present
+
             else {
-                presentID = ArmorStandUtils.tryToGetSkullIdFromArmorstand(stand);
+                // Skull armorstand -- try to get Hypixel's skull id to determine if it's a present
+                presentID = ItemUtils.getSkullOwnerID(stand.getEquipmentInSlot(4));
 
                 if (presentID == null || !PRESENT_TYPE_IDS.containsKey(presentID)) continue;
                 bottom = stand;
