@@ -159,6 +159,8 @@ public class APIManager {
                             main.getPersistentValuesManager().getPersistentValues().setSeaCreaturesKilled(petMilestones.getSea_creatures_killed());
                         }
                     }
+
+                    main.getPersistentValuesManager().saveValues();
                 }
             } catch (Exception ex) {
                 logger.warn("Failed to grab profile API data!");

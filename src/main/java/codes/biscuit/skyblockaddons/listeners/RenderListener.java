@@ -12,6 +12,8 @@ import codes.biscuit.skyblockaddons.features.powerorbs.PowerOrbManager;
 import codes.biscuit.skyblockaddons.features.slayertracker.SlayerBoss;
 import codes.biscuit.skyblockaddons.features.slayertracker.SlayerDrop;
 import codes.biscuit.skyblockaddons.features.slayertracker.SlayerTracker;
+import codes.biscuit.skyblockaddons.features.tablist.TabListParser;
+import codes.biscuit.skyblockaddons.features.tablist.TabListRenderer;
 import codes.biscuit.skyblockaddons.features.tabtimers.TabEffect;
 import codes.biscuit.skyblockaddons.features.tabtimers.TabEffectManager;
 import codes.biscuit.skyblockaddons.gui.IslandWarpGui;
@@ -2219,6 +2221,15 @@ public class RenderListener {
 
     @SubscribeEvent()
     public void onRenderRemoveBars(RenderGameOverlayEvent.Pre e) {
+        if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.COMPACT_TAB_LIST)) {
+            if (e.type == RenderGameOverlayEvent.ElementType.PLAYER_LIST) {
+                if (TabListParser.getRenderColumns() != null) {
+                    e.setCanceled(true);
+                    TabListRenderer.render();
+                }
+            }
+        }
+
         if (e.type == RenderGameOverlayEvent.ElementType.ALL) {
             if (main.getUtils().isOnSkyblock()) {
                 if (main.getConfigValues().isEnabled(Feature.HIDE_FOOD_ARMOR_BAR)) {

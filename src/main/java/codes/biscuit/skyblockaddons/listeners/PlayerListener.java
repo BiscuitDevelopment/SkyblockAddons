@@ -16,6 +16,7 @@ import codes.biscuit.skyblockaddons.features.dragontracker.DragonTracker;
 import codes.biscuit.skyblockaddons.features.enchantedItemBlacklist.EnchantedItemPlacementBlocker;
 import codes.biscuit.skyblockaddons.features.powerorbs.PowerOrbManager;
 import codes.biscuit.skyblockaddons.features.slayertracker.SlayerTracker;
+import codes.biscuit.skyblockaddons.features.tablist.TabListParser;
 import codes.biscuit.skyblockaddons.features.tabtimers.TabEffectManager;
 import codes.biscuit.skyblockaddons.gui.IslandWarpGui;
 import codes.biscuit.skyblockaddons.misc.scheduler.Scheduler;
@@ -502,6 +503,7 @@ public class PlayerListener {
 
                     if (player != null) {
                         EndstoneProtectorManager.checkGolemStatus();
+                        TabListParser.parse();
                         main.getUtils().parseSidebar();
                         main.getInventoryUtils().checkIfInventoryIsFull(mc, player);
 

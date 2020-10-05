@@ -6,6 +6,6 @@ import org.objectweb.asm.tree.FieldInsnNode;
 public class ASMUtils {
 
     public static FieldInsnNode getField(TransformerField field, TransformerClass targetClass) {
-        return new FieldInsnNode(Opcodes.GETFIELD, targetClass.getNameRaw(), field.getType(), field.getType());
+        return new FieldInsnNode(Opcodes.GETFIELD, targetClass.getNameRaw(), field.getName(), field.getType());
     }
 }
