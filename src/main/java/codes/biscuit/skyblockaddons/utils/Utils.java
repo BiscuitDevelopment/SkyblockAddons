@@ -7,7 +7,6 @@ import codes.biscuit.skyblockaddons.events.SkyblockLeftEvent;
 import codes.biscuit.skyblockaddons.features.backpacks.ContainerPreview;
 import codes.biscuit.skyblockaddons.features.dungeonmap.MapMarker;
 import codes.biscuit.skyblockaddons.features.itemdrops.ItemDropChecker;
-import codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui;
 import codes.biscuit.skyblockaddons.misc.ChromaManager;
 import codes.biscuit.skyblockaddons.misc.scheduler.Scheduler;
 import com.google.common.collect.Iterables;
@@ -29,8 +28,6 @@ import net.minecraft.client.network.NetworkPlayerInfo;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.WorldRenderer;
-import net.minecraft.client.renderer.texture.DynamicTexture;
-import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -44,7 +41,6 @@ import net.minecraft.scoreboard.ScorePlayerTeam;
 import net.minecraft.scoreboard.Scoreboard;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.MathHelper;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Vec4b;
 import net.minecraft.world.WorldSettings;
 import net.minecraft.world.WorldType;
@@ -59,9 +55,7 @@ import org.apache.logging.log4j.Logger;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.opengl.GL11;
 
-import javax.imageio.ImageIO;
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -971,79 +965,6 @@ public class Utils {
                 }
             }
         }
-    }
-
-    private Set<ResourceLocation> rescaling = new HashSet<>();
-    private Map<ResourceLocation, Object> rescaled = new HashMap<>();
-
-    /**
-     *
-     * Enter a resource location, width, and height and this will
-     * rescale that image in a new thread, and return a new dynamic
-     * texture.
-     *
-     * While the image is processing in the other thread, it will
-     * return the original image, but *at most* it should take a few
-     * seconds.
-     *
-     * Once the image is processed the result is cached in the map,
-     * and will not be re-done. If you need this resource location
-     * to be scaled again, set the redo flag to true.
-     *
-     * @param resourceLocation The original image to scale.
-     * @param width The width to scale to.
-     * @param height The Height to scale to.
-     * @param redo Whether to redo the scaling if it is already complete.
-     * @return Either the scaled resource if it is complete, or the original resource if not.
-     */
-    public ResourceLocation getScaledResource(ResourceLocation resourceLocation, int width, int height, boolean redo) {
-        TextureManager textureManager = Minecraft.getMinecraft().getTextureManager();
-
-        if (!redo && rescaled.containsKey(resourceLocation)) {
-            Object object = rescaled.get(resourceLocation);
-            if (object instanceof ResourceLocation) {
-                return (ResourceLocation) object;
-            } else if (object instanceof BufferedImage) {
-                String name = "sba_scaled_"+resourceLocation.getResourcePath().replace("/", "_").replace(".", "_");
-                ResourceLocation scaledResourceLocation = textureManager.getDynamicTextureLocation(name, new DynamicTexture((BufferedImage) object));
-                rescaled.put(resourceLocation, scaledResourceLocation);
-                return scaledResourceLocation;
-            }
-        }
-
-        if (rescaling.contains(resourceLocation)) return resourceLocation; // Not done yet.
-
-        if (redo) {
-            if (rescaled.containsKey(resourceLocation)) {
-                Object removed = rescaled.remove(resourceLocation);
-                if (removed instanceof ResourceLocation) {
-                    textureManager.deleteTexture((ResourceLocation)removed);
-                }
-            }
-        }
-
-        rescaling.add(resourceLocation);
-
-        SkyblockAddons.newThread(() -> {
-            try {
-                BufferedImage originalImage = ImageIO.read(SkyblockAddonsGui.class.getClassLoader().getResourceAsStream("assets/"+resourceLocation.getResourceDomain()+"/"+resourceLocation.getResourcePath()));
-                Image scaledImageAbstract = originalImage.getScaledInstance(width, height, Image.SCALE_SMOOTH);
-                BufferedImage scaledImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
-
-                Graphics graphics = scaledImage.getGraphics();
-                graphics.drawImage(scaledImageAbstract, 0, 0, null);
-                graphics.dispose();
-
-                rescaled.put(resourceLocation, scaledImage);
-                rescaling.remove(resourceLocation);
-            } catch (Exception ex) {
-                ex.printStackTrace();
-                rescaled.put(resourceLocation, resourceLocation);
-                rescaling.remove(resourceLocation);
-            }
-        }).start();
-
-        return resourceLocation; // Processing has started in another thread, but not done yet.
     }
 
     public boolean isAxe(Item item) {
