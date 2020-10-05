@@ -67,6 +67,7 @@ public enum TransformerMethod {
 
     // EntityPlayer
     isPotionActive("isPotionActive", "func_70644_a", "a", "(Lnet/minecraft/potion/Potion;)Z","("+TransformerClass.Potion.getName()+")Z"),
+    setCurrentItemOrArmor("setCurrentItemOrArmor", "func_70062_b", "c", "(ILnet/minecraft/item/ItemStack;)V", "(I" + TransformerClass.ItemStack.getName() + ")V"),
 
     // EntityPlayerSP
     dropOneItem("dropOneItem", "func_71040_bB", "a", "(Z)Lnet/minecraft/entity/item/EntityItem;", "(Z)"+TransformerClass.EntityItem.getName()),
