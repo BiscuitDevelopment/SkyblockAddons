@@ -161,7 +161,8 @@
     "showPersonalCompactorPreview": "Montrer l'aperçu du Personal Compactor",
     "rockPetTracker": "Traceur Rock Pet",
     "dolphinPetTracker": "Traceur Dolphin Pet",
-    "dungeonsTeammateNameOverlay": "Surligner le nom des partenaires de Dongeon"
+    "dungeonsTeammateNameOverlay": "Surligner le nom des partenaires de Dongeon",
+    "showExpertiseKills": "Show Expertise Kills"
   },
   "messages": {
     "enchants": "Enchantements",
