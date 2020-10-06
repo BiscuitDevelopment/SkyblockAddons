@@ -132,7 +132,6 @@ public enum Feature {
     DUNGEONS_COLLECTED_ESSENCES_DISPLAY(112, Message.SETTING_DUNGEONS_COLLECTED_ESSENCES_DISPLAY, new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.YELLOW), false),
     STOP_BONZO_STAFF_SOUNDS(113, Message.SETTING_BONZO_STAFF_SOUNDS, null, true),
     SHOW_RARITY_UPGRADED(114, Message.SETTING_SHOW_RARITY_UPGRADED, new GuiFeatureData(ColorCode.LIGHT_PURPLE, true), false),
-    DUNGEONS_SECRETS_DISPLAY(115, Message.SETTING_DUNGEONS_SECRETS_DISPLAY, new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.GRAY, EnumUtils.AnchorPoint.BOTTOM_RIGHT, -60, -150), false),
 
     ACTIONS_UNTIL_NEXT_LEVEL(115, null, true),
 
@@ -170,6 +169,7 @@ public enum Feature {
 
     SHOW_DUNGEON_TEAMMATE_NAME_OVERLAY(140, "settings.dungeonsTeammateNameOverlay", null, false),
     SHOW_EXPERTISE_KILLS(141, Message.SETTING_SHOW_EXPERTISE_KILLS, new GuiFeatureData(ColorCode.RED, true), false),
+    DUNGEONS_SECRETS_DISPLAY(142, "settings.dungeonsSecretsDisplay", new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.GRAY), false),
 
     WARNING_TIME(-1, Message.SETTING_WARNING_DURATION, false),
 

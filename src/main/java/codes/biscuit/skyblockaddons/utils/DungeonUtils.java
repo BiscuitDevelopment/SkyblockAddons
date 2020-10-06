@@ -19,9 +19,6 @@ import java.util.regex.Pattern;
  */
 public class DungeonUtils {
 
-    /** Represents none secrets in the room  */
-    public static final int NO_SECRETS = -1;
-
     private static final Pattern PATTERN_MILESTONE = Pattern.compile("^.+?(Healer|Tank|Mage|Archer|Berserk) Milestone .+?([❶-❿]).+?(§r§.+\\d+) .+?");
     private static final Pattern PATTERN_COLLECTED_ESSENCES = Pattern.compile("§.+?(\\d+) (Wither|Spider|Undead|Dragon|Gold|Diamond|Ice) Essence");
     private static final Pattern PATTERN_BONUS_ESSENCE = Pattern.compile("^§.+?[^You] .+?found a .+?(Wither|Spider|Undead|Dragon|Gold|Diamond|Ice) Essence.+?");
@@ -40,7 +37,7 @@ public class DungeonUtils {
     @Getter private final Map<String, DungeonPlayer> players = new HashMap<>();
 
     /** The current number of secrets found in the room */
-    @Getter @Setter private int secrets = NO_SECRETS;
+    @Getter @Setter private int secrets = -1;
 
     /** The maximum number of secrets found in the room */
     @Getter @Setter private int maxSecrets;
@@ -138,7 +135,7 @@ public class DungeonUtils {
     public String parseSecrets(String message) {
         Matcher matcher = PATTERN_SECRETS.matcher(message);
         if (!matcher.find()) {
-            secrets = NO_SECRETS;
+            secrets = -1;
             return message;
         }
 

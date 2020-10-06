@@ -33,8 +33,11 @@ import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.MapItemRenderer;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.*;
+import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
 import net.minecraft.client.renderer.entity.RenderManager;
+import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
+import net.minecraft.client.resources.model.IBakedModel;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityArmorStand;
@@ -44,7 +47,9 @@ import net.minecraft.entity.monster.EntitySpider;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.passive.EntityWolf;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
@@ -88,14 +93,13 @@ public class RenderListener {
 
     private static final ResourceLocation CRITICAL = new ResourceLocation("skyblockaddons", "critical.png");
 
-    private static final ResourceLocation DUNGEON_SECRETS = new ResourceLocation("skyblockaddons", "dungeons/catacombs.png");
-
     private static final ItemStack WATER_BUCKET = new ItemStack(Items.water_bucket);
     private static final ItemStack IRON_SWORD = new ItemStack(Items.iron_sword);
     private static final ItemStack WARP_SKULL = ItemUtils.createSkullItemStack("§bFast Travel", null,  "9ae837fc-19da-3841-af06-7db55d51c815", "c9c8881e42915a9d29bb61a16fb26d059913204d265df5b439b3d792acd56");
     private static final ItemStack SKYBLOCK_MENU = ItemUtils.createItemStack(Items.nether_star, "§aSkyBlock Menu §7(Right Click)", "SKYBLOCK_MENU", false);
     private static final ItemStack PET_ROCK = ItemUtils.createSkullItemStack("§f§f§7[Lvl 100] §6Rock", null,  "1ed7c993-8190-3055-a48c-f70f71b17284", "cb2b5d48e57577563aca31735519cb622219bc058b1f34648b67b8e71bc0fa");
     private static final ItemStack DOLPHIN_PET = ItemUtils.createSkullItemStack("§f§f§7[Lvl 100] §6Dolphin", null,  "48f53ffe-a3f0-3280-aac0-11cc0d6121f4", "cefe7d803a45aa2af1993df2544a28df849a762663719bfefc58bf389ab7f5");
+    private static final ItemStack CHEST = new ItemStack(Item.getItemFromBlock(Blocks.chest));
 
     private static final SlayerArmorProgress[] DUMMY_PROGRESSES = new SlayerArmorProgress[]{new SlayerArmorProgress(new ItemStack(Items.diamond_boots)), new SlayerArmorProgress(new ItemStack(Items.chainmail_leggings)), new SlayerArmorProgress(new ItemStack(Items.diamond_chestplate)), new SlayerArmorProgress(new ItemStack(Items.leather_helmet))};
 
@@ -885,24 +889,7 @@ public class RenderListener {
                 return;
             }
 
-            int current = main.getDungeonUtils().getSecrets();
-            if (current == DungeonUtils.NO_SECRETS) {
-                text = "§70§8/§70";
-            } else {
-                int max = main.getDungeonUtils().getMaxSecrets();
-                int percent = (current * 100) / max;
-
-                text = "§";
-                if (percent <= 100 && percent >= 75)
-                    text += "a";
-                else if (percent <= 75 && percent >= 50)
-                    text += "6";
-                else if (percent < 50 && percent >= 25)
-                    text += "e";
-                else
-                    text += "c";
-                text += current + "§8/§a" + max;
-            }
+            text = "Secrets";
         } else {
             return;
         }
@@ -938,13 +925,8 @@ public class RenderListener {
         }
 
         if (feature == Feature.SHOW_DUNGEON_MILESTONE || feature == Feature.DUNGEONS_SECRETS_DISPLAY) {
-            width += 18 + 2;
+            width += 16 + 2;
             height += 10;
-        }
-
-        if (feature == Feature.DUNGEONS_SECRETS_DISPLAY) {
-            // Max width = 30
-            width += 5 + 30;
         }
 
         if (feature == Feature.DUNGEONS_COLLECTED_ESSENCES_DISPLAY) {
@@ -1156,19 +1138,41 @@ public class RenderListener {
             ChromaManager.doneRenderingText();
 
         } else if (feature == Feature.DUNGEONS_SECRETS_DISPLAY) {
-            if (buttonLocation != null) {
-                text = "§c0§8/§a99";
+            int secrets = main.getDungeonUtils().getSecrets();
+            int maxSecrets = main.getDungeonUtils().getMaxSecrets();
+            if (secrets == -1) {
+                secrets = 10;
+                maxSecrets = 10;
             }
 
+            float percent = secrets / (float) maxSecrets;
+            float r;
+            float g;
+            if (percent <= 0.5) { // Fade from red -> yellow
+                r = 1;
+                g = (percent * 2) * 0.66F + 0.33F;
+            } else { // Fade from yellow -> green
+                r = (1 - percent) * 0.66F + 0.33F;
+                g = 1;
+            }
+            int secretsColor = new Color(r, g, 0.33F).getRGB();
+
+            float secretsWidth = mc.fontRendererObj.getStringWidth(String.valueOf(secrets));
+            float slashWidth = mc.fontRendererObj.getStringWidth("/");
+            float maxSecretsWidth = mc.fontRendererObj.getStringWidth(String.valueOf(maxSecrets));
+
+            float totalWidth = secretsWidth + slashWidth + maxSecretsWidth;
+
             ChromaManager.renderingText(feature);
-            main.getUtils().drawTextWithStyle("Secrets", x + 23, y, color);
-            main.getUtils().drawTextWithStyle(text, x + 23 + mc.fontRendererObj.getStringWidth("Secrets") / 2F
-                    - mc.fontRendererObj.getStringWidth(text) / 2F, y + 9, color);
+            main.getUtils().drawTextWithStyle(text, x + 16 + 2, y, color);
+            main.getUtils().drawTextWithStyle("/", x + 16 + 2 + mc.fontRendererObj.getStringWidth(text) / 2F - totalWidth / 2F + secretsWidth, y + 9, color);
             ChromaManager.doneRenderingText();
 
+            main.getUtils().drawTextWithStyle(String.valueOf(secrets), x + 16 + 2 + mc.fontRendererObj.getStringWidth(text) / 2F - totalWidth / 2F, y + 9, secretsColor);
+            main.getUtils().drawTextWithStyle(String.valueOf(maxSecrets), x + 16 + 2 + mc.fontRendererObj.getStringWidth(text) / 2F - totalWidth / 2F + secretsWidth + slashWidth, y + 9, secretsColor);
+
             GlStateManager.color(1, 1, 1, 1);
-            mc.getTextureManager().bindTexture(DUNGEON_SECRETS);
-            main.getUtils().drawModalRectWithCustomSizedTexture(x, y, 0, 0, 16, 16, 16, 16);
+            renderItem(CHEST, x, y);
         } else {
             ChromaManager.renderingText(feature);
             main.getUtils().drawTextWithStyle(text, x, y, color);
@@ -1792,7 +1796,6 @@ public class RenderListener {
         Minecraft.getMinecraft().getRenderItem().renderItemIntoGUI(item, 0, 0);
         GlStateManager.popMatrix();
 
-//        GlStateManager.disableDepth();
         RenderHelper.disableStandardItemLighting();
         GlStateManager.disableRescaleNormal();
     }
