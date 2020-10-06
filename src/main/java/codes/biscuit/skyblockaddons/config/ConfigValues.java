@@ -31,7 +31,6 @@ import java.util.List;
 import java.util.*;
 
 public class ConfigValues {
-    private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 
     private static final int CONFIG_VERSION = 8;
 
@@ -386,7 +385,7 @@ public class ConfigValues {
             }
             settingsConfig.addProperty("lastFeatureID", largestFeatureID);
 
-            bufferedWriter.write(GSON.toJson(settingsConfig));
+            bufferedWriter.write(settingsConfig.toString());
             bufferedWriter.close();
             writer.close();
         } catch (Exception ex) {

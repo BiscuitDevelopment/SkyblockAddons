@@ -21,7 +21,6 @@ import codes.biscuit.skyblockaddons.misc.scheduler.SkyblockRunnable;
 import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsTransformer;
 import codes.biscuit.skyblockaddons.utils.*;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import lombok.Getter;
 import lombok.Setter;
 import net.minecraft.client.Minecraft;
@@ -48,7 +47,7 @@ public class SkyblockAddons {
     public static String VERSION = "@VERSION@";
 
     @Getter private static SkyblockAddons instance;
-    private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
+    private static final Gson GSON = new Gson();
 
     private static int threadNumber;
     public static synchronized int nextThreadNumber() {
