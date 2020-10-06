@@ -920,6 +920,17 @@ public class PlayerListener {
                 }
             }
 
+            if (main.getConfigValues().isEnabled(Feature.SHOW_EXPERTISE_KILLS) && hoveredItem.hasTagCompound()) {
+                NBTTagCompound extraAttributes = ItemUtils.getExtraAttributes(hoveredItem);
+                if (extraAttributes != null) {
+                    int count = ItemUtils.getExpertiseKills(extraAttributes);
+                    if (count != -1) {
+                        ColorCode colorCode = main.getConfigValues().getRestrictedColor(Feature.SHOW_EXPERTISE_KILLS);
+                        e.toolTip.add(insertAt++, "§7Expertise Kills: " + colorCode + count);
+                    }
+                }
+            }
+
             if (main.getConfigValues().isEnabled(Feature.SHOW_ITEM_DUNGEON_FLOOR) && hoveredItem.hasTagCompound()) {
                 NBTTagCompound extraAttributes = ItemUtils.getExtraAttributes(hoveredItem);
                 if (extraAttributes != null) {

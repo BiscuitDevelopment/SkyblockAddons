@@ -168,6 +168,7 @@ public enum Feature {
     DOLPHIN_PET_TRACKER(139, "settings.dolphinPetTracker", new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.AQUA), true),
 
     SHOW_DUNGEON_TEAMMATE_NAME_OVERLAY(140, "settings.dungeonsTeammateNameOverlay", null, false),
+    SHOW_EXPERTISE_KILLS(141, Message.SETTING_SHOW_EXPERTISE_KILLS, new GuiFeatureData(ColorCode.RED, true), false),
 
     WARNING_TIME(-1, Message.SETTING_WARNING_DURATION, false),
 
