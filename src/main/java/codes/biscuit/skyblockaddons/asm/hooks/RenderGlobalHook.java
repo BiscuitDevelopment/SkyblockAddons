@@ -247,7 +247,8 @@ public class RenderGlobalHook {
      */
     public static boolean isShopShowcaseItem(EntityItem entityItem) {
         for (EntityArmorStand entityArmorStand : entityItem.worldObj.getEntitiesWithinAABB(EntityArmorStand.class, entityItem.getEntityBoundingBox())) {
-            if (entityArmorStand.isInvisible() && entityArmorStand.getEquipmentInSlot(4).getItem() == Item.getItemFromBlock(Blocks.glass)) {
+            if (entityArmorStand.isInvisible() && entityArmorStand.getEquipmentInSlot(4) != null &&
+                    entityArmorStand.getEquipmentInSlot(4).getItem() == Item.getItemFromBlock(Blocks.glass)) {
                 return true;
             }
         }
