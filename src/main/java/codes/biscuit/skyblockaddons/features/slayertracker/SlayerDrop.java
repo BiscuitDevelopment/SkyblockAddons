@@ -4,6 +4,7 @@ import codes.biscuit.skyblockaddons.core.ItemRarity;
 import codes.biscuit.skyblockaddons.core.Translations;
 import codes.biscuit.skyblockaddons.utils.ItemUtils;
 import codes.biscuit.skyblockaddons.utils.TextUtils;
+import com.google.common.base.CaseFormat;
 import lombok.Getter;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -108,6 +109,7 @@ public enum SlayerDrop {
     }
 
     public String getDisplayName() {
-        return Translations.getMessage("slayerTracker." + TextUtils.getEnumConstantNameInCamelCase(this));
+        return Translations.getMessage("slayerTracker." +  CaseFormat.UPPER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL,
+                this.name()));
     }
 }

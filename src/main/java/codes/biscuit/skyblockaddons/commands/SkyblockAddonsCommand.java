@@ -193,14 +193,17 @@ public class SkyblockAddonsCommand extends CommandBase {
 
                     if (args[1].equalsIgnoreCase("totalZealots") || args[1].equalsIgnoreCase("total")) {
                         main.getPersistentValuesManager().getPersistentValues().setTotalKills(number);
+                        main.getPersistentValuesManager().saveValues();
                         main.getUtils().sendMessage(Message.COMMAND_USAGE_SBA_SET_ZEALOT_COUNTER_TOTAL_ZEALOTS.getMessage(
                                 Integer.toString(number)));
                     } else if (args[1].equalsIgnoreCase("zealots")) {
                         main.getPersistentValuesManager().getPersistentValues().setKills(number);
+                        main.getPersistentValuesManager().saveValues();
                         main.getUtils().sendMessage(Message.COMMAND_USAGE_SBA_SET_ZEALOT_COUNTER_ZEALOTS.getMessage(
                                 Integer.toString(number)));
                     } else if (args[1].equalsIgnoreCase("eyes")) {
                         main.getPersistentValuesManager().getPersistentValues().setSummoningEyeCount(number);
+                        main.getPersistentValuesManager().saveValues();
                         main.getUtils().sendMessage(Message.COMMAND_USAGE_SBA_SET_ZEALOT_COUNTER_EYES.getMessage(
                                 Integer.toString(number)));
                     } else {

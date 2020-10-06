@@ -1,6 +1,7 @@
 package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import com.google.common.base.CaseFormat;
 import com.google.gson.JsonObject;
 import org.apache.commons.lang3.text.WordUtils;
 
@@ -149,17 +150,6 @@ public class TextUtils {
             case 3:  return "rd";
             default: return "th";
         }
-    }
-
-    /**
-     * Converts an enum name to camel case. For example, it will turn ONE_TWO_THREE into oneTwoThree.
-     *
-     * @param enumConstant The enum constant
-     * @return The enum constant's name in camel case
-     */
-    public static String getEnumConstantNameInCamelCase(Enum<?> enumConstant) {
-        String memberName =  WordUtils.capitalizeFully(enumConstant.name().toLowerCase(Locale.US).replace("_", " ")).replace(" ", "");
-        return memberName.substring(0, 1).toLowerCase(Locale.US) + memberName.substring(1);
     }
 
     /**

@@ -31,6 +31,7 @@ import java.util.List;
 import java.util.*;
 
 public class ConfigValues {
+    private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 
     private static final int CONFIG_VERSION = 8;
 
@@ -385,12 +386,12 @@ public class ConfigValues {
             }
             settingsConfig.addProperty("lastFeatureID", largestFeatureID);
 
-            bufferedWriter.write(settingsConfig.toString());
+            bufferedWriter.write(GSON.toJson(settingsConfig));
             bufferedWriter.close();
             writer.close();
         } catch (Exception ex) {
-            ex.printStackTrace();
-            System.out.println("SkyblockAddons: An error occurred while attempting to save the config!");
+            logger.error("An error occurred while attempting to save the config!");
+            logger.catching(ex);
         }
     }
 
