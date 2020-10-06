@@ -161,7 +161,8 @@
     "showPersonalCompactorPreview": "Vis Personlig Kompaktor forhåndsvisning",
     "rockPetTracker": "Stein kjæledyr oppfølger",
     "dolphinPetTracker": "Delfin kjæledyr oppfølger",
-    "dungeonsTeammateNameOverlay": "Dungeon Lagkamerater navn overlegg"
+    "dungeonsTeammateNameOverlay": "Dungeon Lagkamerater navn overlegg",
+    "showExpertiseKills": "Show Expertise Kills"
   },
   "messages": {
     "enchants": "Fortryllinger",
