@@ -161,7 +161,8 @@
     "showPersonalCompactorPreview": "Mostra anteprima del Compactor Personale",
     "rockPetTracker": "Tracker del Rock Pet",
     "dolphinPetTracker": "Tracker del Dolphin Pet",
-    "dungeonsTeammateNameOverlay": "Nomi dei compagni di Dungeons in rilievo"
+    "dungeonsTeammateNameOverlay": "Nomi dei compagni di Dungeons in rilievo",
+    "showExpertiseKills": "Show Expertise Kills"
   },
   "messages": {
     "enchants": "Incantesimi",
