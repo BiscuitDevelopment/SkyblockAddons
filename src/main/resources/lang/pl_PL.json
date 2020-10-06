@@ -161,7 +161,8 @@
     "showPersonalCompactorPreview": "Pokaż podgląd Personal Compactora",
     "rockPetTracker": "Lokalizator zwierzaków- kamienie",
     "dolphinPetTracker": "Lokalizator zwierzaków- Delfiny",
-    "dungeonsTeammateNameOverlay": "Overlay nazw osób z drużyny w Dungeonach"
+    "dungeonsTeammateNameOverlay": "Overlay nazw osób z drużyny w Dungeonach",
+    "showExpertiseKills": "Show Expertise Kills"
   },
   "messages": {
     "enchants": "Zaklęcia",
