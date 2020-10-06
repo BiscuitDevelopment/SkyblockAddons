@@ -161,7 +161,8 @@
     "showPersonalCompactorPreview": "顯示 Personal Compactor 預覽",
     "rockPetTracker": "Rock 寵物追蹤器",
     "dolphinPetTracker": "Dolphin 寵物追蹤器",
-    "dungeonsTeammateNameOverlay": "Dungeon 隊友名稱顯示"
+    "dungeonsTeammateNameOverlay": "Dungeon 隊友名稱顯示",
+    "showExpertiseKills": "Show Expertise Kills"
   },
   "messages": {
     "enchants": "附魔",
