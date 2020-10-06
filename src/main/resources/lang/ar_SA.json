@@ -161,7 +161,8 @@
     "showPersonalCompactorPreview": "إظهار عرض الكمباكتر الشخصي",
     "rockPetTracker": "عداد الروك بت",
     "dolphinPetTracker": "عداد بت الدلفين",
-    "dungeonsTeammateNameOverlay": "تراكب أسماء الزملاء في الدنجن"
+    "dungeonsTeammateNameOverlay": "تراكب أسماء الزملاء في الدنجن",
+    "showExpertiseKills": "Show Expertise Kills"
   },
   "messages": {
     "enchants": "التطويرات",
