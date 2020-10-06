@@ -159,6 +159,7 @@ public enum Message {
     SETTING_SHOW_PERSONAL_COMPACTOR_PREVIEW(MessageObject.SETTING, "showPersonalCompactorPreview"),
     SETTING_SHOW_DUNGEON_TEAMMATE_NAME_OVERLAY(MessageObject.SETTING, "dungeonsTeammateNameOverlay"),
     SETTING_SHOW_EXPERTISE_KILLS(MessageObject.SETTING, "showExpertiseKills"),
+    SETTING_DUNGEONS_SECRETS_DISPLAY(MessageObject.SETTING, "dungeonsSecretsDisplay"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.BACKPACK_STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.BACKPACK_STYLE, "compact"),
