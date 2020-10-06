@@ -920,8 +920,10 @@ public class PlayerListener {
                 }
             }
 
-            if (main.getConfigValues().isEnabled(Feature.SHOW_EXPERTISE_KILLS) && hoveredItem.hasTagCompound()) {
+            if (main.getConfigValues().isEnabled(Feature.SHOW_EXPERTISE_KILLS) && hoveredItem.getItem() == Items.fishing_rod &&
+                    hoveredItem.hasTagCompound()) {
                 NBTTagCompound extraAttributes = ItemUtils.getExtraAttributes(hoveredItem);
+
                 if (extraAttributes != null) {
                     int count = ItemUtils.getExpertiseKills(extraAttributes);
                     if (count != -1) {
