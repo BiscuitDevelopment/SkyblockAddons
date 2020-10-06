@@ -161,7 +161,8 @@
     "showPersonalCompactorPreview": "Show Personal Compactor Preview",
     "rockPetTracker": "Rock Pet Tracker",
     "dolphinPetTracker": "Dolphin Pet Tracker",
-    "dungeonsTeammateNameOverlay": "Dungeons Teammate Name Overlay"
+    "dungeonsTeammateNameOverlay": "Dungeons Teammate Name Overlay",
+    "showExpertiseKills": "Show Expertise Kills"
   },
   "messages": {
     "enchants": "Verzauberungen",
