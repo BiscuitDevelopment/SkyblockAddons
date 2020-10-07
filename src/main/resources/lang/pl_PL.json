@@ -162,7 +162,8 @@
     "rockPetTracker": "Lokalizator zwierzaków- kamienie",
     "dolphinPetTracker": "Lokalizator zwierzaków- Delfiny",
     "dungeonsTeammateNameOverlay": "Overlay nazw osób z drużyny w Dungeonach",
-    "showExpertiseKills": "Show Expertise Kills"
+    "showExpertiseKills": "Show Expertise Kills",
+    "dungeonsSecretsDisplay": "Dungeons Secrets Display"
   },
   "messages": {
     "enchants": "Zaklęcia",
