@@ -926,15 +926,41 @@ public class PlayerListener {
                 }
             }
 
-            if (main.getConfigValues().isEnabled(Feature.SHOW_EXPERTISE_KILLS) && hoveredItem.getItem() == Items.fishing_rod &&
-                    hoveredItem.hasTagCompound()) {
+            if (main.getConfigValues().isEnabled(Feature.SHOW_EXPERTISE_KILLS) && hoveredItem.getItem() == Items.fishing_rod && hoveredItem.hasTagCompound()) {
                 NBTTagCompound extraAttributes = ItemUtils.getExtraAttributes(hoveredItem);
 
                 if (extraAttributes != null) {
                     int count = ItemUtils.getExpertiseKills(extraAttributes);
                     if (count != -1) {
                         ColorCode colorCode = main.getConfigValues().getRestrictedColor(Feature.SHOW_EXPERTISE_KILLS);
-                        e.toolTip.add(insertAt++, "§7Expertise Kills: " + colorCode + count);
+                        if (count > 15000) {
+                            e.toolTip.add(insertAt++, colorCode + "Expertise Maxed: " + count + " kills");
+                        } else {
+                            int currentStep = 50;
+                            if (count >= 50) {
+                                if (count >= 100) {
+                                    if (count >= 250) {
+                                        if (count >= 500) {
+                                            if (count >= 1000) {
+                                                if (count >= 2500) {
+                                                    if (count >= 5500) {
+                                                        if (count >= 10000) currentStep = 15000;
+                                                        else currentStep = 10000;
+                                                    }
+                                                    else currentStep = 5500;
+                                                }
+                                                else currentStep = 2500;
+                                            }
+                                            else currentStep = 1000;
+                                        }
+                                        else currentStep = 500;
+                                    }
+                                    else currentStep = 250;
+                                }
+                                else currentStep = 100;
+                            }
+                            e.toolTip.add(insertAt++, colorCode + "Expertise Kills: " + count + " / " + currentStep);
+                        }
                     }
                 }
             }
