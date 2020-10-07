@@ -162,7 +162,8 @@
     "rockPetTracker": "Rastreador del Rock Pet",
     "dolphinPetTracker": "Rastreador del Dolphin Pet",
     "dungeonsTeammateNameOverlay": "Mostrar Nombres de Compañeros de Dungeons",
-    "showExpertiseKills": "Show Expertise Kills"
+    "showExpertiseKills": "Show Expertise Kills",
+    "dungeonsSecretsDisplay": "Dungeons Secrets Display"
   },
   "messages": {
     "enchants": "Encantamientos",
