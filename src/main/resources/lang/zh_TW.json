@@ -162,7 +162,8 @@
     "rockPetTracker": "Rock 寵物追蹤器",
     "dolphinPetTracker": "Dolphin 寵物追蹤器",
     "dungeonsTeammateNameOverlay": "Dungeon 隊友名稱顯示",
-    "showExpertiseKills": "Show Expertise Kills"
+    "showExpertiseKills": "Show Expertise Kills",
+    "dungeonsSecretsDisplay": "Dungeons Secrets Display"
   },
   "messages": {
     "enchants": "附魔",
