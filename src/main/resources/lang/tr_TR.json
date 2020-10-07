@@ -162,7 +162,8 @@
     "rockPetTracker": "Rock Pet Takipçisi",
     "dolphinPetTracker": "Dolphin Pet Takipçisi",
     "dungeonsTeammateNameOverlay": "Dungeons'daki Takım Arkadaşının Ad Yerleşimi",
-    "showExpertiseKills": "Show Expertise Kills"
+    "showExpertiseKills": "Expertise Öldürmelerini Göster",
+    "dungeonsSecretsDisplay": "Dungeon'ların Sırlarını Görüntüle"
   },
   "messages": {
     "enchants": "Büyüler",
