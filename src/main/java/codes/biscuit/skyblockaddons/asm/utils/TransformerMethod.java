@@ -148,6 +148,12 @@ public enum TransformerMethod {
 
     // WorldClient
     onEntityRemoved("onEntityRemoved", "func_72847_b", "b", "(Lnet/minecraft/entity/Entity;)V", "("+TransformerClass.Entity.getName()+")V"),
+
+    // ItemArmor
+    onItemRightClick("onItemRightClick", "func_77659_a", "a", "(Lnet/minecraft/item/ItemStack;Lnet/minecraft/world/World;Lnet/minecraft/entity/player/EntityPlayer;)Lnet/minecraft/item/ItemStack;", "("+TransformerClass.ItemStack.getName()+TransformerClass.World.getName()+TransformerClass.EntityPlayer.getName()+")"+TransformerClass.ItemStack.getName()),
+
+    // BehaviorDefaultDispenseItem
+    dispenseStack("dispenseStack", "func_82487_b", "b", "(Lnet/minecraft/dispenser/IBlockSource;Lnet/minecraft/item/ItemStack;)Lnet/minecraft/item/ItemStack;", "("+TransformerClass.IBlockSource.getName()+TransformerClass.ItemStack.getName()+")"+TransformerClass.ItemStack.getName()),
     ;
 
     private String name;

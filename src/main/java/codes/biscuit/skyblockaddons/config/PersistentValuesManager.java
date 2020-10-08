@@ -65,7 +65,7 @@ public class PersistentValuesManager {
             persistentValuesFile.createNewFile();
 
             try (FileWriter writer = new FileWriter(this.persistentValuesFile)) {
-                SkyblockAddons.getGsonPretty().toJson(this.persistentValues, writer);
+                SkyblockAddons.getGson().toJson(this.persistentValues, writer);
             }
         } catch (Exception ex) {
             SkyblockAddons.getLogger().error("An error occurred while attempting to save persistent values!");

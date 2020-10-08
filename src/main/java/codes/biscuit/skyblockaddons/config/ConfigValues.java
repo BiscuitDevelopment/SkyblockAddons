@@ -385,7 +385,7 @@ public class ConfigValues {
             saveConfig.addProperty("lastFeatureID", largestFeatureID);
 
             try (FileWriter writer = new FileWriter(this.settingsConfigFile)) {
-                SkyblockAddons.getGsonPretty().toJson(saveConfig, writer);
+                SkyblockAddons.getGson().toJson(saveConfig, writer);
             }
         } catch (Exception ex) {
             logger.error("An error occurred while attempting to save the config!");

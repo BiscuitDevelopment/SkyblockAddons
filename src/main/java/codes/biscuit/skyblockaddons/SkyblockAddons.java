@@ -48,8 +48,7 @@ public class SkyblockAddons {
     public static String VERSION = "@VERSION@";
 
     @Getter private static SkyblockAddons instance;
-    private static final Gson GSON_PRETTY = new GsonBuilder().setPrettyPrinting().create();
-    private static final Gson GSON = new Gson();
+    private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 
     private static int threadNumber;
     public static synchronized int nextThreadNumber() {
@@ -195,10 +194,6 @@ public class SkyblockAddons {
         for (SkyblockKeyBinding skyblockKeyBinding : keyBindings) {
             skyblockKeyBinding.getKeyBinding().keyDescription = skyblockKeyBinding.getMessage().getMessage();
         }
-    }
-
-    public static Gson getGsonPretty() {
-        return GSON_PRETTY;
     }
 
     public static Gson getGson() {

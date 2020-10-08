@@ -538,15 +538,9 @@ public class Utils {
                     logger.info("Got response code " + connection.getResponseCode());
                 }
 
-                StringBuilder response = new StringBuilder();
-                try (BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
-                    String line;
-                    while ((line = in.readLine()) != null) {
-                        response.append(line);
-                    }
-                }
+                JsonObject responseJson = SkyblockAddons.getGson().fromJson(new InputStreamReader(connection.getInputStream()), JsonObject.class);
                 connection.disconnect();
-                JsonObject responseJson = SkyblockAddons.getGson().fromJson(response.toString(), JsonObject.class);
+
                 long estimate = responseJson.get("estimate").getAsLong();
                 long currentTime = responseJson.get("queryTime").getAsLong();
                 int magmaSpawnTime = (int)((estimate-currentTime)/1000);
@@ -897,15 +891,9 @@ public class Utils {
 
                 logger.info("Got response code " + connection.getResponseCode());
 
-                StringBuilder response = new StringBuilder();
-                try (BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
-                    String line;
-                    while ((line = in.readLine()) != null) {
-                        response.append(line);
-                    }
-                }
+                JsonObject onlineMessages = SkyblockAddons.getGson().fromJson(new InputStreamReader(connection.getInputStream()), JsonObject.class);
                 connection.disconnect();
-                JsonObject onlineMessages = SkyblockAddons.getGson().fromJson(response.toString(), JsonObject.class);
+
                 mergeLanguageJsonObject(onlineMessages, main.getConfigValues().getLanguageConfig());
             } catch (JsonParseException | IllegalStateException | IOException ex) {
                 logger.error("There was an error loading the language file online");
