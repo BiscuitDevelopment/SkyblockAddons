@@ -552,4 +552,16 @@ public class ItemUtils {
         }
         return null;
     }
+
+    /**
+     * Returns the number of sword kills from a given Skyblock ExtraAttributes compound tag
+     *
+     * @param extraAttributes the ExtraAttributes compound tag to check
+     * @return the number of sword kills or {@code -1} if the ExtraAttributes tag is {@code null} or lacks the sword kills key
+     */
+    public static int getSwordKills(NBTTagCompound extraAttributes) {
+        if (extraAttributes != null && extraAttributes.hasKey("sword_kills"))
+            return extraAttributes.getInteger("sword_kills");
+        return -1;
+    }
 }

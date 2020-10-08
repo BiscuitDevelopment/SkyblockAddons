@@ -971,6 +971,20 @@ public class PlayerListener {
                 }
             }
 
+            if (main.getConfigValues().isEnabled(Feature.SHOW_SWORD_KILLS)
+                    && hoveredItem.getItem() == Items.stone_sword
+                    && hoveredItem.hasTagCompound()) {
+                NBTTagCompound extraAttributes = ItemUtils.getExtraAttributes(hoveredItem);
+
+                if (extraAttributes != null) {
+                    int count = ItemUtils.getSwordKills(extraAttributes);
+                    if (count != -1) {
+                        ColorCode colorCode = main.getConfigValues().getRestrictedColor(Feature.SHOW_SWORD_KILLS);
+                        e.toolTip.add(insertAt++, "§7Sword Kills: " + colorCode + count);
+                    }
+                }
+            }
+
             if (main.getConfigValues().isEnabled(Feature.SHOW_ITEM_DUNGEON_FLOOR) && hoveredItem.hasTagCompound()) {
                 NBTTagCompound extraAttributes = ItemUtils.getExtraAttributes(hoveredItem);
                 if (extraAttributes != null) {

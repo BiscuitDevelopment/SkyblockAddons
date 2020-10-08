@@ -170,6 +170,7 @@ public enum Feature {
     SHOW_DUNGEON_TEAMMATE_NAME_OVERLAY(140, "settings.dungeonsTeammateNameOverlay", null, false),
     SHOW_EXPERTISE_KILLS(141, "settings.showExpertiseKills", new GuiFeatureData(ColorCode.RED, true), false),
     DUNGEONS_SECRETS_DISPLAY(142, "settings.dungeonsSecretsDisplay", new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.GRAY), false),
+    SHOW_SWORD_KILLS(143, "settings.showSwordKills", new GuiFeatureData(ColorCode.RED, true), false),
 
     SKILL_PROGRESS_BAR(143, "settings.skillProgressBar", new GuiFeatureData(EnumUtils.DrawType.BAR, ColorCode.GREEN), true),
     SHOW_SKILL_PERCENTAGE_INSTEAD_OF_XP(144, null, true),
