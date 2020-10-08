@@ -1135,36 +1135,47 @@ public class RenderListener {
         } else if (feature == Feature.DUNGEONS_SECRETS_DISPLAY) {
             int secrets = main.getDungeonUtils().getSecrets();
             int maxSecrets = main.getDungeonUtils().getMaxSecrets();
-            if (secrets == -1) {
-                secrets = 10;
-                maxSecrets = 10;
-            }
-
-            float percent = secrets / (float) maxSecrets;
-            float r;
-            float g;
-            if (percent <= 0.5) { // Fade from red -> yellow
-                r = 1;
-                g = (percent * 2) * 0.66F + 0.33F;
-            } else { // Fade from yellow -> green
-                r = (1 - percent) * 0.66F + 0.33F;
-                g = 1;
-            }
-            int secretsColor = new Color(r, g, 0.33F).getRGB();
-
-            float secretsWidth = mc.fontRendererObj.getStringWidth(String.valueOf(secrets));
-            float slashWidth = mc.fontRendererObj.getStringWidth("/");
-            float maxSecretsWidth = mc.fontRendererObj.getStringWidth(String.valueOf(maxSecrets));
-
-            float totalWidth = secretsWidth + slashWidth + maxSecretsWidth;
 
             ChromaManager.renderingText(feature);
             main.getUtils().drawTextWithStyle(text, x + 16 + 2, y, color);
-            main.getUtils().drawTextWithStyle("/", x + 16 + 2 + mc.fontRendererObj.getStringWidth(text) / 2F - totalWidth / 2F + secretsWidth, y + 9, color);
             ChromaManager.doneRenderingText();
 
-            main.getUtils().drawTextWithStyle(String.valueOf(secrets), x + 16 + 2 + mc.fontRendererObj.getStringWidth(text) / 2F - totalWidth / 2F, y + 9, secretsColor);
-            main.getUtils().drawTextWithStyle(String.valueOf(maxSecrets), x + 16 + 2 + mc.fontRendererObj.getStringWidth(text) / 2F - totalWidth / 2F + secretsWidth + slashWidth, y + 9, secretsColor);
+            if (secrets == -1 && buttonLocation != null) {
+                secrets = 5;
+                maxSecrets = 10;
+            }
+
+            if (secrets == -1) {
+                ChromaManager.renderingText(feature);
+                String none = Translations.getMessage("messages.none");
+                main.getUtils().drawTextWithStyle(none, x + 16 + 2 + mc.fontRendererObj.getStringWidth(text) / 2F - mc.fontRendererObj.getStringWidth(none) / 2F, y + 9, color);
+                ChromaManager.doneRenderingText();
+            } else {
+                float percent = secrets / (float) maxSecrets;
+                float r;
+                float g;
+                if (percent <= 0.5) { // Fade from red -> yellow
+                    r = 1;
+                    g = (percent * 2) * 0.66F + 0.33F;
+                } else { // Fade from yellow -> green
+                    r = (1 - percent) * 0.66F + 0.33F;
+                    g = 1;
+                }
+                int secretsColor = new Color(r, g, 0.33F).getRGB();
+
+                float secretsWidth = mc.fontRendererObj.getStringWidth(String.valueOf(secrets));
+                float slashWidth = mc.fontRendererObj.getStringWidth("/");
+                float maxSecretsWidth = mc.fontRendererObj.getStringWidth(String.valueOf(maxSecrets));
+
+                float totalWidth = secretsWidth + slashWidth + maxSecretsWidth;
+
+                ChromaManager.renderingText(feature);
+                main.getUtils().drawTextWithStyle("/", x + 16 + 2 + mc.fontRendererObj.getStringWidth(text) / 2F - totalWidth / 2F + secretsWidth, y + 9, color);
+                ChromaManager.doneRenderingText();
+
+                main.getUtils().drawTextWithStyle(String.valueOf(secrets), x + 16 + 2 + mc.fontRendererObj.getStringWidth(text) / 2F - totalWidth / 2F, y + 9, secretsColor);
+                main.getUtils().drawTextWithStyle(String.valueOf(maxSecrets), x + 16 + 2 + mc.fontRendererObj.getStringWidth(text) / 2F - totalWidth / 2F + secretsWidth + slashWidth, y + 9, secretsColor);
+            }
 
             GlStateManager.color(1, 1, 1, 1);
             renderItem(CHEST, x, y);
