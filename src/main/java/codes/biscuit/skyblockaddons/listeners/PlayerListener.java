@@ -105,6 +105,8 @@ public class PlayerListener {
     private static final Set<String> BONZO_STAFF_SOUNDS = new HashSet<>(Arrays.asList("fireworks.blast", "fireworks.blast_far",
             "fireworks.twinkle", "fireworks.twinkle_far", "mob.ghast.moan"));
 
+    private static final TreeSet<Integer> EXPERTISE_KILL_TIERS = new TreeSet<>(Arrays.asList(0, 50, 100, 250, 500, 1000, 2500, 5500, 10000, 15000));
+
     private long lastWorldJoin = -1;
     private long lastBoss = -1;
     private int magmaTick = 1;
@@ -930,36 +932,13 @@ public class PlayerListener {
                 NBTTagCompound extraAttributes = ItemUtils.getExtraAttributes(hoveredItem);
 
                 if (extraAttributes != null) {
-                    int count = ItemUtils.getExpertiseKills(extraAttributes);
-                    if (count != -1) {
+                    int expertiseKills = ItemUtils.getExpertiseKills(extraAttributes);
+                    if (expertiseKills != -1) {
                         ColorCode colorCode = main.getConfigValues().getRestrictedColor(Feature.SHOW_EXPERTISE_KILLS);
-                        if (count > 15000) {
-                            e.toolTip.add(insertAt++, colorCode + "Expertise Maxed: " + count + " kills");
+                        if (expertiseKills >= EXPERTISE_KILL_TIERS.last()) {
+                            e.toolTip.add(insertAt++, "§7Expertise Kills: " + colorCode + expertiseKills + " (Maxed)");
                         } else {
-                            int currentStep = 50;
-                            if (count >= 50) {
-                                if (count >= 100) {
-                                    if (count >= 250) {
-                                        if (count >= 500) {
-                                            if (count >= 1000) {
-                                                if (count >= 2500) {
-                                                    if (count >= 5500) {
-                                                        if (count >= 10000) currentStep = 15000;
-                                                        else currentStep = 10000;
-                                                    }
-                                                    else currentStep = 5500;
-                                                }
-                                                else currentStep = 2500;
-                                            }
-                                            else currentStep = 1000;
-                                        }
-                                        else currentStep = 500;
-                                    }
-                                    else currentStep = 250;
-                                }
-                                else currentStep = 100;
-                            }
-                            e.toolTip.add(insertAt++, colorCode + "Expertise Kills: " + count + " / " + currentStep);
+                            e.toolTip.add(insertAt++, "§7Expertise Kills: " + colorCode + expertiseKills + " / " + EXPERTISE_KILL_TIERS.higher(expertiseKills));
                         }
                     }
                 }
