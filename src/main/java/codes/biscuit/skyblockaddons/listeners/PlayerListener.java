@@ -105,6 +105,8 @@ public class PlayerListener {
     private static final Set<String> BONZO_STAFF_SOUNDS = new HashSet<>(Arrays.asList("fireworks.blast", "fireworks.blast_far",
             "fireworks.twinkle", "fireworks.twinkle_far", "mob.ghast.moan"));
 
+    private static final TreeSet<Integer> EXPERTISE_KILL_TIERS = new TreeSet<>(Arrays.asList(0, 50, 100, 250, 500, 1000, 2500, 5500, 10000, 15000));
+
     private long lastWorldJoin = -1;
     private long lastBoss = -1;
     private int magmaTick = 1;
@@ -926,15 +928,18 @@ public class PlayerListener {
                 }
             }
 
-            if (main.getConfigValues().isEnabled(Feature.SHOW_EXPERTISE_KILLS) && hoveredItem.getItem() == Items.fishing_rod &&
-                    hoveredItem.hasTagCompound()) {
+            if (main.getConfigValues().isEnabled(Feature.SHOW_EXPERTISE_KILLS) && hoveredItem.getItem() == Items.fishing_rod && hoveredItem.hasTagCompound()) {
                 NBTTagCompound extraAttributes = ItemUtils.getExtraAttributes(hoveredItem);
 
                 if (extraAttributes != null) {
-                    int count = ItemUtils.getExpertiseKills(extraAttributes);
-                    if (count != -1) {
+                    int expertiseKills = ItemUtils.getExpertiseKills(extraAttributes);
+                    if (expertiseKills != -1) {
                         ColorCode colorCode = main.getConfigValues().getRestrictedColor(Feature.SHOW_EXPERTISE_KILLS);
-                        e.toolTip.add(insertAt++, "§7Expertise Kills: " + colorCode + count);
+                        if (expertiseKills >= EXPERTISE_KILL_TIERS.last()) {
+                            e.toolTip.add(insertAt++, "§7Expertise Kills: " + colorCode + expertiseKills + " (Maxed)");
+                        } else {
+                            e.toolTip.add(insertAt++, "§7Expertise Kills: " + colorCode + expertiseKills + " / " + EXPERTISE_KILL_TIERS.higher(expertiseKills));
+                        }
                     }
                 }
             }
