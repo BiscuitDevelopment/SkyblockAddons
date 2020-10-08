@@ -11,7 +11,7 @@
     "repeating": "再次警告",
     "disableEmberRodAbility": "在私人岛屿上关闭余烬之杖技能",
     "editLocations": "调整 GUI 位置",
-    "guiScale": "GUI 大小: %scale%",
+    "guiScale": "Gui 大小: %scale%",
     "resetLocations": "重置 GUI 位置",
     "hideDurability": "隐藏工具耐久度",
     "showEnchantmentsReforges": "附魔 & 洗炼",
@@ -162,7 +162,7 @@
     "rockPetTracker": "宠物岩石进度追踪",
     "dolphinPetTracker": "宠物海豚进度追踪",
     "dungeonsTeammateNameOverlay": "在地下城中高亮队友名字",
-    "showExpertiseKills": "Show Expertise Kills",
+    "showExpertiseKills": "显示 Expertise 击杀进度",
     "dungeonsSecretsDisplay": "Dungeons Secrets Display"
   },
   "messages": {
