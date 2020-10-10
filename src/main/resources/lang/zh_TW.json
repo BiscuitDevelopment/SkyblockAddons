@@ -153,7 +153,7 @@
     "textMode": "文字模式",
     "dragonsNestOnly": "只在 Dragon's Nest 顯示",
     "dragonStatsTracker": "終界龍追蹤器",
-    "expanded": "已擴展",
+    "skillActionsLeftUntilNextLevel": "Show Actions Left Until Next Level",
     "hideWhenNotInCrypts": "於不位於 Crypts / 非進行 Revenant 任務時隱藏",
     "hideWhenNotInSpidersDen": "於不位於 Spider's Den / 非進行 Tarantula 任務時隱藏",
     "hideWhenNotInCastle": "於不位於 Castle / 非進行 Sven 任務時隱藏",
@@ -163,7 +163,10 @@
     "dolphinPetTracker": "Dolphin 寵物追蹤器",
     "dungeonsTeammateNameOverlay": "Dungeon 隊友名稱顯示",
     "showExpertiseKills": "Show Expertise Kills",
-    "dungeonsSecretsDisplay": "Dungeons Secrets Display"
+    "dungeonsSecretsDisplay": "Dungeons Secrets Display",
+    "showSkillPercentageInstead": "Show Percentage Instead of XP",
+    "showSkillXPGained": "Show XP Gained",
+    "skillProgressBar": "Skill Progress Bar"
   },
   "messages": {
     "enchants": "附魔",
