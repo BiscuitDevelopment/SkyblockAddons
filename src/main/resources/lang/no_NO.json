@@ -153,7 +153,7 @@
     "textMode": "Tekstmodus",
     "dragonsNestOnly": "Vis kun i Dragens Reir",
     "dragonStatsTracker": "Drage Oppfølger",
-    "expanded": "Utvidet",
+    "skillActionsLeftUntilNextLevel": "Show Actions Left Until Next Level",
     "hideWhenNotInCrypts": "Skjul når ikke i kryptene/gjør Revenant oppdrag",
     "hideWhenNotInSpidersDen": "Skjul når ikke i edderkoppens hule/gjør Tarantulaoppdrag",
     "hideWhenNotInCastle": "Skjul når Ikke i slottet/gjør Sven oppdrag",
@@ -163,7 +163,10 @@
     "dolphinPetTracker": "Delfin kjæledyr oppfølger",
     "dungeonsTeammateNameOverlay": "Dungeon Lagkamerater navn overlegg",
     "showExpertiseKills": "Vis ekspertise-drap",
-    "dungeonsSecretsDisplay": "Dungeons Kart Skjerm"
+    "dungeonsSecretsDisplay": "Dungeons Kart Skjerm",
+    "showSkillPercentageInstead": "Show Percentage Instead of XP",
+    "showSkillXPGained": "Show XP Gained",
+    "skillProgressBar": "Skill Progress Bar"
   },
   "messages": {
     "enchants": "Fortryllinger",
