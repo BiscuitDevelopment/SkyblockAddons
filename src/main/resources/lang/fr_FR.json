@@ -153,7 +153,7 @@
     "textMode": "Mode Texte",
     "dragonsNestOnly": "Ne montrer que dans le Dragon's Nest",
     "dragonStatsTracker": "Traqueur de dragon",
-    "expanded": "Etendu",
+    "skillActionsLeftUntilNextLevel": "Show Actions Left Until Next Level",
     "hideWhenNotInCrypts": "Cacher quand tu n'es pas dans les cryptes/ en train de faire un boss zombie",
     "hideWhenNotInSpidersDen": "Hide When Not in the Spider's Den/Doing Tarantula Quest",
     "hideWhenNotInCastle": "Masquer hors du Castle/Pendant une quête Swen",
@@ -163,7 +163,10 @@
     "dolphinPetTracker": "Traceur Dolphin Pet",
     "dungeonsTeammateNameOverlay": "Surligner le nom des partenaires de Dongeon",
     "showExpertiseKills": "Show Expertise Kills",
-    "dungeonsSecretsDisplay": "Dungeons Secrets Display"
+    "dungeonsSecretsDisplay": "Dungeons Secrets Display",
+    "showSkillPercentageInstead": "Show Percentage Instead of XP",
+    "showSkillXPGained": "Show XP Gained",
+    "skillProgressBar": "Skill Progress Bar"
   },
   "messages": {
     "enchants": "Enchantements",
