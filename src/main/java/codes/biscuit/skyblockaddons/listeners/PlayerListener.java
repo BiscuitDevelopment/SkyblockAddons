@@ -49,6 +49,7 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.Vec3;
+import net.minecraft.world.IWorldAccess;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.client.event.GuiOpenEvent;
 import net.minecraftforge.client.event.GuiScreenEvent;
@@ -464,6 +465,7 @@ public class PlayerListener {
                 }
                 if (shouldTriggerFishingIndicator()) { // The logic fits better in its own function
                     main.getUtils().playLoudSound("random.successful_hit", 0.8);
+
                 }
                 if (timerTick == 20) { // Add natural mana every second (increase is based on your max mana).
                     if (main.getRenderListener().isPredictMana()) {

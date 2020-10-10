@@ -9,10 +9,7 @@ import codes.biscuit.skyblockaddons.core.OnlineData;
 import codes.biscuit.skyblockaddons.features.discordrpc.DiscordRPCManager;
 import codes.biscuit.skyblockaddons.gui.IslandWarpGui;
 import codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui;
-import codes.biscuit.skyblockaddons.listeners.GuiScreenListener;
-import codes.biscuit.skyblockaddons.listeners.NetworkListener;
-import codes.biscuit.skyblockaddons.listeners.PlayerListener;
-import codes.biscuit.skyblockaddons.listeners.RenderListener;
+import codes.biscuit.skyblockaddons.listeners.*;
 import codes.biscuit.skyblockaddons.misc.SkyblockKeyBinding;
 import codes.biscuit.skyblockaddons.misc.Updater;
 import codes.biscuit.skyblockaddons.misc.scheduler.NewScheduler;
@@ -67,6 +64,7 @@ public class SkyblockAddons {
     private Scheduler scheduler;
     private NewScheduler newScheduler;
     private DungeonUtils dungeonUtils;
+    private WorldListener worldListener;
 
     private boolean usingLabymod;
     private boolean usingOofModv1;
@@ -88,6 +86,7 @@ public class SkyblockAddons {
         newScheduler = new NewScheduler();
         dungeonUtils = new DungeonUtils();
         discordRPCManager = new DiscordRPCManager();
+        worldListener = new WorldListener();
     }
 
     @Mod.EventHandler
@@ -104,6 +103,7 @@ public class SkyblockAddons {
         MinecraftForge.EVENT_BUS.register(renderListener);
         MinecraftForge.EVENT_BUS.register(scheduler);
         MinecraftForge.EVENT_BUS.register(newScheduler);
+        MinecraftForge.EVENT_BUS.register(worldListener);
 
         ClientCommandHandler.instance.registerCommand(new SkyblockAddonsCommand());
 
