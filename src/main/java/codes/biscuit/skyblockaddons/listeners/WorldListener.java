@@ -66,6 +66,13 @@ This is the same as bitwise ANDing rows with columns, and asking if the result h
 One can think of this process as a markoff chain, where node connections are binary (either there is one or there isn't)
 Just like in a markoff chain, squaring the adjacency matrix gives the connections "links" between nodes with two degrees of separation.
 In this algorithm, we try to link four particles together, which involves an M^4 computation, where M is the adjacency matrix.
+
+Admittedly, it seems cumbersome to implement IWorldAccess and attach ourselves as a world accessor
+Since we are only interested in the particles.
+But there doesn't seem to be a better way to do it...particle packets directly call accessor spawnParticle methods
+And there isn't an event (that I've seen) that tracks particle spawns.
+Presumably, we could access the EffectsRenderer fxlayers, or could do asm...
+Maybe that would be appropriate...idk.
  */
 public class WorldListener implements IWorldAccess {
 
