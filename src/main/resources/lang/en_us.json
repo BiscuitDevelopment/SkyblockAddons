@@ -166,7 +166,8 @@
     "dungeonsSecretsDisplay": "Dungeons Secrets Display",
     "showSkillPercentageInstead": "Show Percentage Instead of XP",
     "showSkillXPGained": "Show XP Gained",
-    "skillProgressBar": "Skill Progress Bar"
+    "skillProgressBar": "Skill Progress Bar",
+    "fishingParticleOverlay": "Fishing Particle Overlay"
   },
   "messages": {
     "enchants": "Enchants",

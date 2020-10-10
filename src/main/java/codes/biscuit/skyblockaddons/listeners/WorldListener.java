@@ -1,5 +1,7 @@
 package codes.biscuit.skyblockaddons.listeners;
 
+import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.core.Feature;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -105,6 +107,8 @@ public class WorldListener implements IWorldAccess {
     // The time the particle spawned
     private long[] particleTime = new long[64];
 
+    private final SkyblockAddons main = SkyblockAddons.getInstance();
+
     // Current index
     private int idx = 0;
 
@@ -126,6 +130,7 @@ public class WorldListener implements IWorldAccess {
         if (e.phase == TickEvent.Phase.START) {
             Minecraft mc = Minecraft.getMinecraft();
             if (mc != null && mc.thePlayer != null) {
+                // No need to check if the feature is enabled...if it isn't the cache will be empty
                 if (mc.thePlayer.fishEntity != null && !cacheEmpty) {
                     if (newParticles) {
                         long[] pow2 = new long[64];
@@ -216,7 +221,7 @@ public class WorldListener implements IWorldAccess {
             // It's extremely unlikely that two unrelated particles hash to the same place
             // However, normal fish particles come in pairs of two--the extra one is extraneous and we wish to ignore it
             double hash = 31 * (31 * 23 + xCoord) + zCoord;
-            if (hook != null && !particleHash.contains(hash)) {
+            if (main.getConfigValues().isEnabled(Feature.FISHING_PARTICLE_OVERLAY) && hook != null && !particleHash.contains(hash)) {
                 double distToHook = Math.sqrt((xCoord - hook.posX) * (xCoord - hook.posX) + (zCoord - hook.posZ) * (zCoord - hook.posZ));
                 // Particle trails start 2-8 blocks away. Ignore any that are far away
                 if (distToHook > 8) { return; }
