@@ -153,7 +153,7 @@
     "textMode": "Metin modu",
     "dragonsNestOnly": "Sadece Dragon's Nest'teyken göster",
     "dragonStatsTracker": "Ejderha Takipçisi",
-    "expanded": "Genişletilmiş",
+    "skillActionsLeftUntilNextLevel": "Show Actions Left Until Next Level",
     "hideWhenNotInCrypts": "Crypts'te değilken/Revenant görevi yapmazken gizle",
     "hideWhenNotInSpidersDen": "Spider's Den'de değilken/Tarantula Görevi Yaparken gizle",
     "hideWhenNotInCastle": "Castle'da değilken/Sven Görevi Yaparken Gizle",
@@ -163,7 +163,10 @@
     "dolphinPetTracker": "Dolphin Pet Takipçisi",
     "dungeonsTeammateNameOverlay": "Dungeons'daki Takım Arkadaşının Ad Yerleşimi",
     "showExpertiseKills": "Expertise Öldürmelerini Göster",
-    "dungeonsSecretsDisplay": "Dungeon'ların Sırlarını Görüntüle"
+    "dungeonsSecretsDisplay": "Dungeon'ların Sırlarını Görüntüle",
+    "showSkillPercentageInstead": "Show Percentage Instead of XP",
+    "showSkillXPGained": "Show XP Gained",
+    "skillProgressBar": "Skill Progress Bar"
   },
   "messages": {
     "enchants": "Büyüler",
