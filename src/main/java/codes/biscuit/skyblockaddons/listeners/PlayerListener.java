@@ -1157,4 +1157,8 @@ public class PlayerListener {
         }
         return false;
     }
+
+    public ActionBarParser getActionBarParser() {
+        return actionBarParser;
+    }
 }

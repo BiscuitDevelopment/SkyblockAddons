@@ -34,7 +34,7 @@ public class ButtonInputFieldWrapper extends GuiButton {
     public void drawButton(Minecraft mc, int mouseX, int mouseY) {
         textField.drawTextBox();
         if (placeholderText != null && StringUtils.isEmpty(textField.getText())) {
-            mc.fontRendererObj.drawString(placeholderText, xPosition+4, yPosition+3, ColorCode.DARK_GRAY.getRGB());
+            mc.fontRendererObj.drawString(placeholderText, xPosition+4, yPosition+3, ColorCode.DARK_GRAY.getColor());
         }
     }
 

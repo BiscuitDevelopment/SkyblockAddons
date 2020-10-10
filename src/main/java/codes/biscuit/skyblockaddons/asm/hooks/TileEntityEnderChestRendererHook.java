@@ -30,8 +30,8 @@ public class TileEntityEnderChestRendererHook {
         SkyblockAddons main = SkyblockAddons.getInstance();
         if (main.getUtils().isOnSkyblock() && Minecraft.getMinecraft().currentScreen == null && main.getConfigValues().isEnabled(Feature.MAKE_ENDERCHESTS_GREEN_IN_END) &&
                 main.getUtils().getLocation() == Location.DRAGONS_NEST) {
-            Color color = main.getConfigValues().getColor(Feature.MAKE_ENDERCHESTS_GREEN_IN_END);
-            if (color.getRGB() == ColorCode.GREEN.getRGB()) {
+            Color color = main.getConfigValues().getColorObject(Feature.MAKE_ENDERCHESTS_GREEN_IN_END);
+            if (color.getRGB() == ColorCode.GREEN.getColor()) {
                 GlStateManager.color(0, 1, 0); // classic lime green
             } else {
                 GlStateManager.color((float)color.getRed()/255, (float)color.getGreen()/255, (float)color.getBlue()/255);
