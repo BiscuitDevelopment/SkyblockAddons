@@ -153,7 +153,7 @@
     "textMode": "Tryb tekstowy",
     "dragonsNestOnly": "Pokazuj tylko w Gnieździe smoka",
     "dragonStatsTracker": "Lokalizator smoków",
-    "skillActionsLeftUntilNextLevel": "Show Actions Left Until Next Level",
+    "skillActionsLeftUntilNextLevel": "Pokaż pozostałe akcje do następnego poziomu",
     "hideWhenNotInCrypts": "Ukryj kiedy nie jesteś w Kryptach/masz rozpoczęte zadanie Revenanta",
     "hideWhenNotInSpidersDen": "Schowaj kiedy nie jesteś w Legowisku Pająka/robisz zadanie Tarantuly",
     "hideWhenNotInCastle": "Ukryj kiedy nie jesteś w Zamku/robisz zadanie Svena",
@@ -164,9 +164,9 @@
     "dungeonsTeammateNameOverlay": "Overlay nazw osób z drużyny w Dungeonach",
     "showExpertiseKills": "Pokaż zabójstwa eksperckie",
     "dungeonsSecretsDisplay": "Wyświetlaj sekrety Dungeonu",
-    "showSkillPercentageInstead": "Show Percentage Instead of XP",
-    "showSkillXPGained": "Show XP Gained",
-    "skillProgressBar": "Skill Progress Bar"
+    "showSkillPercentageInstead": "Pokaz procent zamiast ilości doświadczenia",
+    "showSkillXPGained": "Pokaż zdobyte doświadczenie",
+    "skillProgressBar": "Wyświetlaj postęp paska skilli"
   },
   "messages": {
     "enchants": "Zaklęcia",
