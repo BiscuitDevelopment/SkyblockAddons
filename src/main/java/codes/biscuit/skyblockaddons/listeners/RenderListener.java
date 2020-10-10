@@ -67,6 +67,7 @@ import org.lwjgl.opengl.GL11;
 
 import java.awt.*;
 import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.util.List;
 import java.util.*;
 
@@ -1077,8 +1078,10 @@ public class RenderListener {
             renderItem(dungeonMilestone.getDungeonClass().getItem(), x, y);
             ChromaManager.renderingText(feature);
             main.getUtils().drawTextWithStyle(text, x + 18, y, color);
-            main.getUtils().drawTextWithStyle(dungeonMilestone.getValue(), x + 18 + mc.fontRendererObj.getStringWidth(text) / 2F
-                    - mc.fontRendererObj.getStringWidth(dungeonMilestone.getValue()) / 2F, y + 9, color);
+            double amount = Double.parseDouble(dungeonMilestone.getValue());
+            DecimalFormat formatter = new DecimalFormat("#,###");
+            main.getUtils().drawTextWithStyle(formatter.format(amount), x + 18 + mc.fontRendererObj.getStringWidth(text) / 2F
+                    - mc.fontRendererObj.getStringWidth(formatter.format(amount)) / 2F, y + 9, color);
             ChromaManager.doneRenderingText();
 
         } else if (feature == Feature.DUNGEONS_COLLECTED_ESSENCES_DISPLAY) {
