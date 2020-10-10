@@ -72,7 +72,7 @@
     "organizeLongEnchantmentLists": "Organizza gli elenchi di incantesimi lunghi",
     "showItemCooldowns": "Mostra i tempi di ricarica degli oggetti",
     "speedPercentage": "Percentuale di Velocità",
-    "collectionDisplay": "Visualizzazione del progresso dell’abilità",
+    "collectionDisplay": "Visualizzazione del progresso delle skill",
     "onlyMineOresDeepCaverns": "Estrai minerali solo nelle Deep Caverns",
     "onlyMineValuablesNether": "Estrai solo minerali di valore nel Nether",
     "revenantIndicator": "Indicatore di progresso dell’Armatura Slayer",
@@ -166,7 +166,7 @@
     "dungeonsSecretsDisplay": "Mostra segreti del Dungeon",
     "showSkillPercentageInstead": "Show Percentage Instead of XP",
     "showSkillXPGained": "Show XP Gained",
-    "skillProgressBar": "Skill Progress Bar"
+    "skillProgressBar": "Barra di progresso delle skill"
   },
   "messages": {
     "enchants": "Incantesimi",
