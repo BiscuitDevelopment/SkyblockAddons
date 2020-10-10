@@ -153,7 +153,7 @@
     "textMode": "وضع الكتابة",
     "dragonsNestOnly": "الإظهار فقط في الدراجون نست",
     "dragonStatsTracker": "عداد التنانين",
-    "expanded": "موسع",
+    "skillActionsLeftUntilNextLevel": "Show Actions Left Until Next Level",
     "hideWhenNotInCrypts": "الإخفاء إذا لم تكن في الكربت/تسوي مهمت ريڤينانت",
     "hideWhenNotInSpidersDen": "الإخفاء إذا لم تكن في السبايدرس دن/تسوي مهمت الترانتلا",
     "hideWhenNotInCastle": "الإخفاء إذا لم تكن في القلعه/تسوي مهمت السڤن",
@@ -163,7 +163,10 @@
     "dolphinPetTracker": "عداد بت الدلفين",
     "dungeonsTeammateNameOverlay": "تراكب أسماء الزملاء في الدنجن",
     "showExpertiseKills": "إظهار قتلات Expertise",
-    "dungeonsSecretsDisplay": "عرض أسرار الدنجنز"
+    "dungeonsSecretsDisplay": "عرض أسرار الدنجنز",
+    "showSkillPercentageInstead": "Show Percentage Instead of XP",
+    "showSkillXPGained": "Show XP Gained",
+    "skillProgressBar": "Skill Progress Bar"
   },
   "messages": {
     "enchants": "التطويرات",
