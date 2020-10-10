@@ -25,7 +25,8 @@
       "GRAPPLING_HOOK",
       "WAND_OF_HEALING",
       "ENCHANTED_GLOWSTONE",
-      "AATROX_BATPHONE"
+      "AATROX_BATPHONE",
+      "PERSONAL_COMPACTOR_4000"
     ],
     "allowDroppingTheseItems": [
       "RUNE",

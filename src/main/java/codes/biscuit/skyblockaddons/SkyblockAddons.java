@@ -213,11 +213,12 @@ public class SkyblockAddons {
         String fullClassName = new Throwable().getStackTrace()[1].getClassName();
 
         String simpleClassName = fullClassName.substring(fullClassName.lastIndexOf('.') + 1);
+        String loggerName = MOD_NAME + "/" + simpleClassName;
 
         if (SkyblockAddonsTransformer.isDeobfuscated()) {
-            return LogManager.getLogger(MOD_NAME + "/" + simpleClassName);
+            return LogManager.getLogger(loggerName);
         } else {
-            return LogManager.getLogger(MOD_NAME + "/" + simpleClassName, new SkyblockAddonsMessageFactory(simpleClassName));
+            return LogManager.getLogger(loggerName, new SkyblockAddonsMessageFactory(loggerName));
         }
     }
 

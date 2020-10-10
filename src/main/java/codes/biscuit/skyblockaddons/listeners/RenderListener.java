@@ -44,7 +44,9 @@ import net.minecraft.entity.monster.EntitySpider;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.passive.EntityWolf;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
@@ -62,6 +64,7 @@ import org.lwjgl.opengl.GL11;
 
 import java.awt.*;
 import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.util.List;
 import java.util.*;
 
@@ -94,6 +97,7 @@ public class RenderListener {
     private static final ItemStack SKYBLOCK_MENU = ItemUtils.createItemStack(Items.nether_star, "§aSkyBlock Menu §7(Right Click)", "SKYBLOCK_MENU", false);
     private static final ItemStack PET_ROCK = ItemUtils.createSkullItemStack("§f§f§7[Lvl 100] §6Rock", null,  "1ed7c993-8190-3055-a48c-f70f71b17284", "cb2b5d48e57577563aca31735519cb622219bc058b1f34648b67b8e71bc0fa");
     private static final ItemStack DOLPHIN_PET = ItemUtils.createSkullItemStack("§f§f§7[Lvl 100] §6Dolphin", null,  "48f53ffe-a3f0-3280-aac0-11cc0d6121f4", "cefe7d803a45aa2af1993df2544a28df849a762663719bfefc58bf389ab7f5");
+    private static final ItemStack CHEST = new ItemStack(Item.getItemFromBlock(Blocks.chest));
 
     private static final SlayerArmorProgress[] DUMMY_PROGRESSES = new SlayerArmorProgress[]{new SlayerArmorProgress(new ItemStack(Items.diamond_boots)), new SlayerArmorProgress(new ItemStack(Items.chainmail_leggings)), new SlayerArmorProgress(new ItemStack(Items.diamond_chestplate)), new SlayerArmorProgress(new ItemStack(Items.leather_helmet))};
 
@@ -265,7 +269,7 @@ public class RenderListener {
                 GlStateManager.scale(scale, scale, scale); // TODO Check if changing this scale breaks anything...
 
                 ChromaManager.renderingText(titleFeature);
-                mc.fontRendererObj.drawString(text, (float) (-mc.fontRendererObj.getStringWidth(text) / 2), -20.0F, main.getConfigValues().getColor(titleFeature).getRGB(), true);
+                mc.fontRendererObj.drawString(text, (float) (-mc.fontRendererObj.getStringWidth(text) / 2), -20.0F, main.getConfigValues().getColor(titleFeature), true);
                 ChromaManager.doneRenderingText();
 
                 GlStateManager.popMatrix();
@@ -310,7 +314,7 @@ public class RenderListener {
 
                 ChromaManager.renderingText(subtitleFeature);
                 mc.fontRendererObj.drawString(text, -mc.fontRendererObj.getStringWidth(text) / 2F, -23.0F,
-                        main.getConfigValues().getColor(subtitleFeature).getRGB(), true);
+                        main.getConfigValues().getColor(subtitleFeature), true);
                 ChromaManager.doneRenderingText();
 
                 GlStateManager.popMatrix();
@@ -365,6 +369,8 @@ public class RenderListener {
         float fill;
         if (feature == Feature.MANA_BAR) {
             fill = (float) getAttribute(Attribute.MANA) / getAttribute(Attribute.MAX_MANA);
+        } else if (feature == Feature.SKILL_PROGRESS_BAR) {
+            fill = main.getPlayerListener().getActionBarParser().getCurrentSkillXP() / (float) main.getPlayerListener().getActionBarParser().getTotalSkillXP();
         } else {
             fill = (float) getAttribute(Attribute.HEALTH) / getAttribute(Attribute.MAX_HEALTH);
         }
@@ -373,13 +379,26 @@ public class RenderListener {
 
         float x = main.getConfigValues().getActualX(feature);
         float y = main.getConfigValues().getActualY(feature);
-        Color color = main.getConfigValues().getColor(feature);
+        Color color = main.getConfigValues().getColorObject(feature);
+
+        if (feature == Feature.SKILL_PROGRESS_BAR && buttonLocation == null) {
+            int remainingTime = (int) (skillFadeOutTime - System.currentTimeMillis());
+
+            if (remainingTime < 0) {
+                if (remainingTime < -2000) {
+                    return; // Will be invisible, no need to render.
+                }
+
+                int textAlpha = Math.round(255 - (-remainingTime / 2000F * 255F));
+                color = main.getConfigValues().getColorObject(feature, textAlpha); // so it fades out, 0.016 is the minimum alpha
+            }
+        }
 
         if (feature == Feature.HEALTH_BAR && main.getConfigValues().isEnabled(Feature.CHANGE_BAR_COLOR_FOR_POTIONS)) {
             if (mc.thePlayer.isPotionActive(19/* Poison */)) {
-                color = ColorCode.DARK_GREEN.getColor();
+                color = ColorCode.DARK_GREEN.getColorObject();
             } else if (mc.thePlayer.isPotionActive(20/* Wither */)) {
-                color = ColorCode.DARK_GRAY.getColor();
+                color = ColorCode.DARK_GRAY.getColorObject();
             }
         }
 
@@ -409,10 +428,10 @@ public class RenderListener {
         if (buttonLocation != null) {
             gui = buttonLocation;
         }
-        if (color.getRGB() == ColorCode.BLACK.getRGB()) {
-            GlStateManager.color(0.25F, 0.25F, 0.25F); // too dark normally
+        if (color.getRGB() == ColorCode.BLACK.getColor()) {
+            GlStateManager.color(0.25F, 0.25F, 0.25F, color.getAlpha() / 255F); // too dark normally
         } else { // a little darker for contrast
-            GlStateManager.color(((float) color.getRed() / 255) * 0.9F, ((float) color.getGreen() / 255) * 0.9F, ((float) color.getBlue() / 255) * 0.9F);
+            GlStateManager.color(color.getRed() / 255F * 0.9F, color.getGreen() / 255F * 0.9F, color.getBlue() / 255F * 0.9F, ((float) color.getAlpha() / 255));
         }
         IntPair sizes = main.getConfigValues().getSizes(feature);
         if (!filled) fillWidth = maxWidth;
@@ -499,11 +518,11 @@ public class RenderListener {
             GlStateManager.pushMatrix();
             float scale = 1.5F;
             GlStateManager.scale(scale, scale, 1);
-            main.getUtils().drawCenteredString(title, (int) (halfWidth / scale), (int) (30 / scale), ColorCode.WHITE.getRGB());
+            main.getUtils().drawCenteredString(title, (int) (halfWidth / scale), (int) (30 / scale), ColorCode.WHITE.getColor());
             GlStateManager.popMatrix();
             int y = 45;
             for (String line : textList) {
-                main.getUtils().drawCenteredString(line, halfWidth, y, ColorCode.WHITE.getRGB());
+                main.getUtils().drawCenteredString(line, halfWidth, y, ColorCode.WHITE.getColor());
                 y += 10;
             }
 
@@ -634,8 +653,7 @@ public class RenderListener {
     public void drawText(Feature feature, float scale, Minecraft mc, ButtonLocation buttonLocation) {
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         String text;
-        int color = main.getConfigValues().getColor(feature).getRGB();
-        float textAlpha = 1;
+        int color = main.getConfigValues().getColor(feature);
         if (feature == Feature.MANA_TEXT) {
             text = getAttribute(Attribute.MANA) + "/" + getAttribute(Attribute.MAX_MANA);
 
@@ -663,14 +681,14 @@ public class RenderListener {
             Integer healthUpdate = main.getPlayerListener().getHealthUpdate();
             if (buttonLocation == null) {
                 if (healthUpdate != null) {
-                    color = healthUpdate > 0 ? ColorCode.GREEN.getRGB() : ColorCode.RED.getRGB();
+                    color = healthUpdate > 0 ? ColorCode.GREEN.getColor() : ColorCode.RED.getColor();
                     text = (healthUpdate > 0 ? "+" : "-") + Math.abs(healthUpdate);
                 } else {
                     return;
                 }
             } else {
                 text = "+123";
-                color = ColorCode.GREEN.getRGB();
+                color = ColorCode.GREEN.getColor();
             }
 
         } else if (feature == Feature.DARK_AUCTION_TIMER) { // The timezone of the server, to avoid problems with like timezones that are 30 minutes ahead or whatnot.
@@ -726,17 +744,30 @@ public class RenderListener {
                 text = skillText;
                 if (text == null) return;
             } else {
-                text = "+10 (20,000/50,000)" + (main.getConfigValues().isEnabled(Feature.ACTIONS_UNTIL_NEXT_LEVEL) ? " - " + Translations.getMessage("messages.actionsLeft", 3000) : "");
+                StringBuilder previewBuilder = new StringBuilder();
+                if (main.getConfigValues().isEnabled(Feature.SHOW_SKILL_XP_GAINED)) {
+                    previewBuilder.append("+123");
+                }
+                if (main.getConfigValues().isEnabled(Feature.SHOW_SKILL_PERCENTAGE_INSTEAD_OF_XP)) {
+                    previewBuilder.append(" 40%");
+                } else {
+                    previewBuilder.append(" (2000/5000)");
+                }
+                if (main.getConfigValues().isEnabled(Feature.SKILL_ACTIONS_LEFT_UNTIL_NEXT_LEVEL)) {
+                    previewBuilder.append(" - ").append(Translations.getMessage("messages.actionsLeft", 3000));
+                }
+                text = previewBuilder.toString();
             }
             if (buttonLocation == null) {
                 int remainingTime = (int) (skillFadeOutTime - System.currentTimeMillis());
+
                 if (remainingTime < 0) {
                     if (remainingTime < -2000) {
                         return; // Will be invisible, no need to render.
                     }
 
-                    textAlpha = (float) 1 - ((float) -remainingTime / 2000);
-                    color = main.getConfigValues().getColor(feature, Math.round(textAlpha * 255 >= 4 ? textAlpha * 255 : 4)).getRGB(); // so it fades out, 0.016 is the minimum alpha
+                    int textAlpha = Math.round(255 - (-remainingTime / 2000F * 255F));
+                    color = main.getConfigValues().getColor(feature, textAlpha); // so it fades out, 0.016 is the minimum alpha
                 }
             }
 
@@ -877,6 +908,13 @@ public class RenderListener {
 
         } else if (feature == Feature.DOLPHIN_PET_TRACKER) {
             text = String.valueOf(main.getPersistentValuesManager().getPersistentValues().getSeaCreaturesKilled());
+
+        } else if (feature == Feature.DUNGEONS_SECRETS_DISPLAY) {
+            if (buttonLocation == null && !main.getUtils().isInDungeon()) {
+                return;
+            }
+
+            text = "Secrets";
         } else {
             return;
         }
@@ -911,8 +949,8 @@ public class RenderListener {
             height += 15;
         }
 
-        if (feature == Feature.SHOW_DUNGEON_MILESTONE) {
-            width += 18 + 2;
+        if (feature == Feature.SHOW_DUNGEON_MILESTONE || feature == Feature.DUNGEONS_SECRETS_DISPLAY) {
+            width += 16 + 2;
             height += 10;
         }
 
@@ -1064,8 +1102,10 @@ public class RenderListener {
             renderItem(dungeonMilestone.getDungeonClass().getItem(), x, y);
             ChromaManager.renderingText(feature);
             main.getUtils().drawTextWithStyle(text, x + 18, y, color);
-            main.getUtils().drawTextWithStyle(dungeonMilestone.getValue(), x + 18 + mc.fontRendererObj.getStringWidth(text) / 2F
-                    - mc.fontRendererObj.getStringWidth(dungeonMilestone.getValue()) / 2F, y + 9, color);
+            double amount = Double.parseDouble(dungeonMilestone.getValue());
+            DecimalFormat formatter = new DecimalFormat("#,###");
+            main.getUtils().drawTextWithStyle(formatter.format(amount), x + 18 + mc.fontRendererObj.getStringWidth(text) / 2F
+                    - mc.fontRendererObj.getStringWidth(formatter.format(amount)) / 2F, y + 9, color);
             ChromaManager.doneRenderingText();
 
         } else if (feature == Feature.DUNGEONS_COLLECTED_ESSENCES_DISPLAY) {
@@ -1124,6 +1164,42 @@ public class RenderListener {
             main.getUtils().drawTextWithStyle(text, x + 18, y + 4, color);
             ChromaManager.doneRenderingText();
 
+        } else if (feature == Feature.DUNGEONS_SECRETS_DISPLAY) {
+            int secrets = main.getDungeonUtils().getSecrets();
+            int maxSecrets = main.getDungeonUtils().getMaxSecrets();
+            if (secrets == -1) {
+                secrets = 10;
+                maxSecrets = 10;
+            }
+
+            float percent = secrets / (float) maxSecrets;
+            float r;
+            float g;
+            if (percent <= 0.5) { // Fade from red -> yellow
+                r = 1;
+                g = (percent * 2) * 0.66F + 0.33F;
+            } else { // Fade from yellow -> green
+                r = (1 - percent) * 0.66F + 0.33F;
+                g = 1;
+            }
+            int secretsColor = new Color(r, g, 0.33F).getRGB();
+
+            float secretsWidth = mc.fontRendererObj.getStringWidth(String.valueOf(secrets));
+            float slashWidth = mc.fontRendererObj.getStringWidth("/");
+            float maxSecretsWidth = mc.fontRendererObj.getStringWidth(String.valueOf(maxSecrets));
+
+            float totalWidth = secretsWidth + slashWidth + maxSecretsWidth;
+
+            ChromaManager.renderingText(feature);
+            main.getUtils().drawTextWithStyle(text, x + 16 + 2, y, color);
+            main.getUtils().drawTextWithStyle("/", x + 16 + 2 + mc.fontRendererObj.getStringWidth(text) / 2F - totalWidth / 2F + secretsWidth, y + 9, color);
+            ChromaManager.doneRenderingText();
+
+            main.getUtils().drawTextWithStyle(String.valueOf(secrets), x + 16 + 2 + mc.fontRendererObj.getStringWidth(text) / 2F - totalWidth / 2F, y + 9, secretsColor);
+            main.getUtils().drawTextWithStyle(String.valueOf(maxSecrets), x + 16 + 2 + mc.fontRendererObj.getStringWidth(text) / 2F - totalWidth / 2F + secretsWidth + slashWidth, y + 9, secretsColor);
+
+            GlStateManager.color(1, 1, 1, 1);
+            renderItem(CHEST, x, y);
         } else {
             ChromaManager.renderingText(feature);
             main.getUtils().drawTextWithStyle(text, x, y, color);
@@ -1173,7 +1249,7 @@ public class RenderListener {
             mc.getTextureManager().bindTexture(entry.getKey().getResourceLocation());
             main.getUtils().drawModalRectWithCustomSizedTexture(x, y, 0, 0, iconSize, iconSize, iconSize, iconSize);
 
-            int color = main.getConfigValues().getColor(Feature.BAIT_LIST).getRGB();
+            int color = main.getConfigValues().getColor(Feature.BAIT_LIST);
             ChromaManager.renderingText(Feature.BAIT_LIST);
             main.getUtils().drawTextWithStyle(String.valueOf(entry.getValue()), x + iconSize + spacing, y + (iconSize / 2F) - (8 / 2F), color);
             ChromaManager.doneRenderingText();
@@ -1221,7 +1297,7 @@ public class RenderListener {
 
         float x = main.getConfigValues().getActualX(feature);
         float y = main.getConfigValues().getActualY(feature);
-        int color = main.getConfigValues().getColor(feature).getRGB();
+        int color = main.getConfigValues().getColor(feature);
 
         if (textMode) {
             int lineHeight = 8;
@@ -1270,7 +1346,7 @@ public class RenderListener {
 
                 int currentColor = color;
                 if (colorByRarity) {
-                    currentColor = slayerDrop.getRarity().getColorCode().getRGB();
+                    currentColor = slayerDrop.getRarity().getColorCode().getColor();
                 } else {
                     ChromaManager.renderingText(feature);
                 }
@@ -1404,7 +1480,7 @@ public class RenderListener {
 
                 int currentColor = color;
                 if (colorByRarity) {
-                    currentColor = slayerDrop.getRarity().getColorCode().getRGB();
+                    currentColor = slayerDrop.getRarity().getColorCode().getColor();
                 } else {
                     ChromaManager.renderingText(feature);
                 }
@@ -1489,7 +1565,7 @@ public class RenderListener {
             buttonLocation.checkHoveredAndDrawBox(x, x + width, y, y + height, scale);
         }
 
-        int color = main.getConfigValues().getColor(Feature.DRAGON_STATS_TRACKER).getRGB();
+        int color = main.getConfigValues().getColor(Feature.DRAGON_STATS_TRACKER);
 
         if (textMode) {
             ChromaManager.renderingText(Feature.DRAGON_STATS_TRACKER);
@@ -1500,7 +1576,7 @@ public class RenderListener {
             for (DragonType dragon : recentDragons) {
                 int currentColor = color;
                 if (colorByRarity) {
-                    currentColor = dragon.getColor().getRGB();
+                    currentColor = dragon.getColor().getColor();
                 } else {
                     ChromaManager.renderingText(Feature.DRAGON_STATS_TRACKER);
                 }
@@ -1516,7 +1592,7 @@ public class RenderListener {
             y += spacerHeight;
 
             ChromaManager.renderingText(Feature.DRAGON_STATS_TRACKER);
-            color = main.getConfigValues().getColor(Feature.DRAGON_STATS_TRACKER).getRGB();
+            color = main.getConfigValues().getColor(Feature.DRAGON_STATS_TRACKER);
             main.getUtils().drawTextWithStyle(Translations.getMessage("dragonTracker.dragonsSince"), x, y, color);
             y += 8 + spacerHeight;
             ChromaManager.doneRenderingText();
@@ -1530,7 +1606,7 @@ public class RenderListener {
 
                 int currentColor = color;
                 if (colorByRarity) {
-                    currentColor = dragonsSince.getItemRarity().getColorCode().getRGB();
+                    currentColor = dragonsSince.getItemRarity().getColorCode().getColor();
                 } else {
                     ChromaManager.renderingText(Feature.DRAGON_STATS_TRACKER);
                 }
@@ -1586,7 +1662,7 @@ public class RenderListener {
         EnumUtils.AnchorPoint anchorPoint = main.getConfigValues().getAnchorPoint(Feature.SLAYER_INDICATOR);
         boolean downwards = (anchorPoint == EnumUtils.AnchorPoint.TOP_LEFT || anchorPoint == EnumUtils.AnchorPoint.TOP_RIGHT);
 
-        int color = main.getConfigValues().getColor(Feature.SLAYER_INDICATOR).getRGB();
+        int color = main.getConfigValues().getColor(Feature.SLAYER_INDICATOR);
 
         int drawnCount = 0;
         for (int armorPiece = 3; armorPiece >= 0; armorPiece--) {
@@ -1662,7 +1738,7 @@ public class RenderListener {
 
         boolean alignRight = (anchorPoint == EnumUtils.AnchorPoint.TOP_RIGHT || anchorPoint == EnumUtils.AnchorPoint.BOTTOM_RIGHT);
 
-        Color color = main.getConfigValues().getColor(Feature.TAB_EFFECT_TIMERS);
+        Color color = main.getConfigValues().getColorObject(Feature.TAB_EFFECT_TIMERS);
 
         Minecraft mc = Minecraft.getMinecraft();
 
@@ -1747,7 +1823,6 @@ public class RenderListener {
         Minecraft.getMinecraft().getRenderItem().renderItemIntoGUI(item, 0, 0);
         GlStateManager.popMatrix();
 
-//        GlStateManager.disableDepth();
         RenderHelper.disableStandardItemLighting();
         GlStateManager.disableRescaleNormal();
     }
@@ -1854,7 +1929,7 @@ public class RenderListener {
             main.getUtils().drawModalRectWithCustomSizedTexture(x, y, 0, 0, iconSize, iconSize, iconSize, iconSize);
         }
 
-        main.getUtils().drawTextWithStyle(secondsString, x + spacing + iconSize, y + (iconSize / 2F) - (8 / 2F), ColorCode.WHITE.getColor(255).getRGB());
+        main.getUtils().drawTextWithStyle(secondsString, x + spacing + iconSize, y + (iconSize / 2F) - (8 / 2F), ColorCode.WHITE.getColor(255));
 
         main.getUtils().restoreGLOptions();
     }
@@ -1929,11 +2004,11 @@ public class RenderListener {
         }
 
         String secondsString = String.format("§e%ss", seconds);
-        main.getUtils().drawTextWithStyle(secondsString, Math.round(x + (iconSize / 2F) - (mc.fontRendererObj.getStringWidth(secondsString) / 2F)), y + iconSize, ColorCode.WHITE.getColor(255).getRGB());
+        main.getUtils().drawTextWithStyle(secondsString, Math.round(x + (iconSize / 2F) - (mc.fontRendererObj.getStringWidth(secondsString) / 2F)), y + iconSize, ColorCode.WHITE.getColor(255));
 
         float startY = Math.round(y + (iconAndSecondsHeight / 2f) - (effectsHeight / 2f));
         for (int i = 0; i < display.size(); i++) {
-            main.getUtils().drawTextWithStyle(display.get(i), x + iconSize + 2, startY + (i * (mc.fontRendererObj.FONT_HEIGHT + spacingBetweenLines)), ColorCode.WHITE.getColor(255).getRGB());
+            main.getUtils().drawTextWithStyle(display.get(i), x + iconSize + 2, startY + (i * (mc.fontRendererObj.FONT_HEIGHT + spacingBetweenLines)), ColorCode.WHITE.getColor(255));
         }
 
         main.getUtils().restoreGLOptions();
@@ -1990,7 +2065,7 @@ public class RenderListener {
         }
 
         GL11.glDisable(GL11.GL_SCISSOR_TEST);
-        Color color = main.getConfigValues().getColor(Feature.DUNGEONS_MAP_DISPLAY);
+        Color color = main.getConfigValues().getColorObject(Feature.DUNGEONS_MAP_DISPLAY);
         main.getUtils().drawRect(x, y, x+size, y+size, 0x55000000);
         ChromaManager.renderingText(Feature.DUNGEONS_MAP_DISPLAY);
         main.getUtils().drawRectOutline(x, y, size, size, 1, color.getRGB(), main.getConfigValues().getChromaFeatures().contains(Feature.DUNGEONS_MAP_DISPLAY));

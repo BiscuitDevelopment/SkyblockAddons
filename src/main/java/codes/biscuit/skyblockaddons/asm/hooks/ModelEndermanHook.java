@@ -12,7 +12,7 @@ public class ModelEndermanHook {
     public static void setEndermanColor() {
         SkyblockAddons main = SkyblockAddons.getInstance();
         if (main.getUtils().isOnSkyblock() && main.getUtils().getLocation() == Location.DRAGONS_NEST && main.getConfigValues().isEnabled(Feature.CHANGE_ZEALOT_COLOR)) {
-            Color color = main.getConfigValues().getColor(Feature.CHANGE_ZEALOT_COLOR);
+            Color color = main.getConfigValues().getColorObject(Feature.CHANGE_ZEALOT_COLOR);
             GlStateManager.color((float)color.getRed()/255, (float)color.getGreen()/255, (float)color.getBlue()/255);
         }
     }

@@ -519,4 +519,19 @@ public class ItemUtils {
         extraAttributes.setString("id", skyblockID);
         itemStack.setTagInfo("ExtraAttributes", extraAttributes);
     }
+
+    /**
+     * Returns the number of expertise kills from a given Skyblock ExtraAttributes compound tag
+     *
+     * @param extraAttributes the ExtraAttributes compound tag to check
+     * @return the number of expertise kills or {@code -1} if the ExtraAttributes tag is {@code null} or lacks the expertise kills key
+     */
+    public static int getExpertiseKills(NBTTagCompound extraAttributes) {
+        if (extraAttributes != null && extraAttributes.hasKey("expertise_kills")) {
+            return extraAttributes.getInteger("expertise_kills");
+        }
+        else {
+            return -1;
+        }
+    }
 }

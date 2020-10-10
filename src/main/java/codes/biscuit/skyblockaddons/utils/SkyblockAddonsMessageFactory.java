@@ -8,20 +8,21 @@ import org.apache.logging.log4j.message.SimpleMessage;
 
 /**
  * This is a simple {@code MessageFactory} implementation that adds the logger name in square brackets
- * to the beginning of each log event message. This is required since Minecraft LOG4J config doesn't
+ * to the beginning of each log event message. This is required since the Minecraft Log4J config doesn't
  * include logger names when writing logs to file.
  */
 public class SkyblockAddonsMessageFactory implements MessageFactory {
 
-    private String className;
+    private String loggerName;
 
     /**
-     * Creates a new instance of {@code SkyblockAddonsMessageFactory} that uses the given class name.
+     * Creates a new instance of {@code SkyblockAddonsMessageFactory} that uses the given logger name. The logger name
+     * in square brackets will be added as a prefix before every message that this instance generates.
      *
-     * @param className the name of the calling class of this logger, appended to the prefix
+     * @param loggerName the name of the logger
      */
-    public SkyblockAddonsMessageFactory(String className) {
-        this.className = className;
+    public SkyblockAddonsMessageFactory(String loggerName) {
+        this.loggerName = loggerName;
     }
 
     @Override
@@ -40,6 +41,6 @@ public class SkyblockAddonsMessageFactory implements MessageFactory {
     }
 
     private String getMessageWithLoggerName(String message) {
-        return String.format("[%s/%s] %s", SkyblockAddons.MOD_NAME, className, message);
+        return String.format("[%s/%s] %s", SkyblockAddons.MOD_NAME, loggerName, message);
     }
 }
