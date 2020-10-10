@@ -34,7 +34,7 @@ public class SlayerArmorProgress {
 
     private void setHelmetColor() {
         if (itemStack.getItem().equals(Items.leather_helmet)) {
-            ((ItemArmor)itemStack.getItem()).setColor(itemStack, ColorCode.BLACK.getRGB());
+            ((ItemArmor)itemStack.getItem()).setColor(itemStack, ColorCode.BLACK.getColor());
         }
     }
 

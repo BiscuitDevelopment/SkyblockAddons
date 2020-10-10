@@ -402,17 +402,6 @@ public class SettingsGui extends GuiScreen {
             }
 
             buttonList.add(new ButtonToggleTitle(x, y, Message.SETTING_COLOR_BY_RARITY.getMessage(), this.main, settingFeature));
-        } else if (setting == EnumUtils.FeatureSetting.EXPANDED) {
-            boxWidth = 31;
-            x = halfWidth - (boxWidth / 2);
-            y = getRowHeightSetting(row);
-
-            Feature settingFeature = null;
-            if (feature == Feature.SKILL_DISPLAY) {
-                settingFeature = Feature.ACTIONS_UNTIL_NEXT_LEVEL;
-            }
-
-            buttonList.add(new ButtonToggleTitle(x, y, Message.SETTING_EXPANDED.getMessage(), main, settingFeature));
         } else if (setting == EnumUtils.FeatureSetting.TEXT_MODE) {
             boxWidth = 31;
             x = halfWidth - (boxWidth / 2);
@@ -451,13 +440,13 @@ public class SettingsGui extends GuiScreen {
                 settingFeature = Feature.SHOW_SUMMONING_EYE_COUNT_NEST_ONLY;
             }
 
-            buttonList.add(new ButtonToggleTitle(x, y, setting.getMessage().getMessage(), main, settingFeature));
+            buttonList.add(new ButtonToggleTitle(x, y, setting.getMessage(), main, settingFeature));
         }
         else {
             boxWidth = 31; // Default size and stuff.
             x = halfWidth - (boxWidth / 2);
             y = getRowHeightSetting(row);
-            buttonList.add(new ButtonToggleTitle(x, y, setting.getMessage().getMessage(), main, setting.getFeatureEquivalent()));
+            buttonList.add(new ButtonToggleTitle(x, y, setting.getMessage(), main, setting.getFeatureEquivalent()));
         }
         row++;
     }

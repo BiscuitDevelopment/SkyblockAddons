@@ -28,9 +28,9 @@ public class ButtonColorBox extends GuiButton {
         hovered = mouseX > xPosition && mouseX < xPosition+width && mouseY > yPosition && mouseY < yPosition+height;
 
         if (hovered) {
-            drawRect(xPosition, yPosition, xPosition + width, yPosition + height, color.getRGB());
+            drawRect(xPosition, yPosition, xPosition + width, yPosition + height, color.getColor());
         } else {
-            drawRect(xPosition, yPosition, xPosition + width, yPosition + height, color.getColor(127).getRGB());
+            drawRect(xPosition, yPosition, xPosition + width, yPosition + height, color.getColor(127));
         }
     }
 

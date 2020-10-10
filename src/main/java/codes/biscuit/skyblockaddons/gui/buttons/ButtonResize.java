@@ -39,7 +39,7 @@ public class ButtonResize extends ButtonFeature {
         GlStateManager.scale(scale,scale,1);
 
         hovered = mouseX >= (x- SIZE)*scale && mouseY >= (y- SIZE)*scale && mouseX < (x+ SIZE)*scale && mouseY < (y+ SIZE)* scale;
-        int color = hovered ? ColorCode.WHITE.getRGB() : ColorCode.WHITE.getColor(70).getRGB();
+        int color = hovered ? ColorCode.WHITE.getColor() : ColorCode.WHITE.getColor(70);
         main.getUtils().drawRect(x- SIZE,y- SIZE, x+ SIZE, y+ SIZE, color);
 
         GlStateManager.popMatrix();

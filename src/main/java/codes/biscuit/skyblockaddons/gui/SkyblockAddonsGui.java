@@ -88,7 +88,7 @@ public class SkyblockAddonsGui extends GuiScreen {
                 } else { // If a sub-setting matches the search show it up in the results as well.
                     for (EnumUtils.FeatureSetting setting : feature.getSettings()) {
                         try {
-                            if (matchesSearch(setting.getMessage().getMessage())) {
+                            if (matchesSearch(setting.getMessage())) {
                                 features.add(feature);
                             }
                         } catch (Exception ignored) {} // Hit a message that probably needs variables to fill in, just skip it.
@@ -97,17 +97,7 @@ public class SkyblockAddonsGui extends GuiScreen {
             }
         }
 
-        features.sort(Comparator.comparing(feature -> feature.getMessage()));
-
-//        features.sort((o1, o2) -> { // TODO put all new features on the first page? or nah?
-//            if (o1.isNew() && !o2.isNew()) {
-//                return -1;
-//            } else if (o2.isNew() && !o1.isNew()) {
-//                return 1;
-//            } else {
-//                return 0;
-//            }
-//        });
+        features.sort(Comparator.comparing(Feature::getMessage));
 
         if (tab != EnumUtils.GuiTab.GENERAL_SETTINGS) {
             for (Feature feature : Feature.values())
@@ -195,7 +185,7 @@ public class SkyblockAddonsGui extends GuiScreen {
 
         featureSearchBar.drawTextBox();
         if (StringUtils.isEmpty(featureSearchBar.getText())) {
-            Minecraft.getMinecraft().fontRendererObj.drawString(Message.MESSAGE_SEARCH_FEATURES.getMessage(), featureSearchBar.xPosition+4, featureSearchBar.yPosition+3, ColorCode.DARK_GRAY.getRGB());
+            Minecraft.getMinecraft().fontRendererObj.drawString(Message.MESSAGE_SEARCH_FEATURES.getMessage(), featureSearchBar.xPosition+4, featureSearchBar.yPosition+3, ColorCode.DARK_GRAY.getColor());
         }
 
         super.drawScreen(mouseX, mouseY, partialTicks); // Draw buttons.
