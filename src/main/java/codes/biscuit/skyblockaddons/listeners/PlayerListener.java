@@ -1029,9 +1029,9 @@ public class PlayerListener {
             main.getRenderListener().setGuiToOpen(EnumUtils.GUIType.EDIT_LOCATIONS, 0, null);
 
         } else if (main.getDeveloperCopyNBTKey().isPressed()) {
-            // Copy Mob Data
+            // Copy Data
             if (main.isDevMode()) {
-                DevUtils.copyEntityData();
+                DevUtils.copyData();
             }
         }
 

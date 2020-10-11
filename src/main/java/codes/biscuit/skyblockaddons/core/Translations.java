@@ -1,7 +1,6 @@
 package codes.biscuit.skyblockaddons.core;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.ibm.icu.text.ArabicShaping;
 import com.ibm.icu.text.ArabicShapingException;
@@ -16,28 +15,37 @@ import java.util.regex.Pattern;
 
 public class Translations {
 
-    private static final Pattern VARIABLE_PATTERN = Pattern.compile("%[A-Za-z-]+%");
+    private static Pattern VARIABLE_PATTERN = Pattern.compile("%[A-Za-z]+%");
 
     public static String getMessage(String path, Object... variables) {
-        String text = "";
+        try {
+            // Split the member name from the rest of the path.
+            int lastIndex = path.lastIndexOf('.');
+            String memberName = path.substring(lastIndex + 1);
+            String parentPath = path.substring(0, lastIndex);
+
+            // Get the final json object.
+            String[] pathSplit = parentPath.split(Pattern.quote("."));
+            return getMessageInternal(memberName, pathSplit, variables);
+
+        } catch (Throwable ex) {
+            return path; // In case of fire...
+        }
+    }
+
+    public static String getMessageInternal(String memberName, String[] path, Object... variables) {
         try {
             SkyblockAddons main = SkyblockAddons.getInstance();
 
-            // Get the string.
-            String[] pathSplit = path.split(Pattern.quote("."));
             JsonObject jsonObject = main.getConfigValues().getLanguageConfig();
-            for (String pathPart : pathSplit) {
+            for (String pathPart : path) {
                 if (!pathPart.equals("")) {
-                    JsonElement jsonElement = jsonObject.get(pathPart);
-
-                    if (jsonElement.isJsonObject()) {
-                        jsonObject = jsonObject.getAsJsonObject(pathPart);
-                    } else {
-                        text = jsonObject.get(path.substring(path.lastIndexOf(pathPart))).getAsString();
-                        break;
-                    }
+                    jsonObject = jsonObject.getAsJsonObject(pathPart);
                 }
             }
+
+            // Get the string from the final json object.
+            String text = jsonObject.get(memberName).getAsString();
 
             // Iterate through the string and replace any variables.
             Matcher matcher = VARIABLE_PATTERN.matcher(text);
@@ -49,19 +57,20 @@ public class Translations {
                 }
 
                 // Replace a variable and re-make the matcher.
-                text = matcher.replaceFirst(Matcher.quoteReplacement(variablesDeque.pollFirst().toString()));
+                text = matcher.replaceFirst(variablesDeque.removeFirst().toString());
                 matcher = VARIABLE_PATTERN.matcher(text);
             }
 
             // Handle RTL text...
             if ((main.getConfigValues().getLanguage() == Language.HEBREW || main.getConfigValues().getLanguage() == Language.ARABIC) &&
                     !Minecraft.getMinecraft().fontRendererObj.getBidiFlag()) {
-                text = bidiReorder(text);
+                return bidiReorder(text);
             }
-        } catch (NullPointerException ex) {
-            text = path; // In case of fire...
+            return text;
+
+        } catch (Throwable ex) {
+            return memberName; // In case of fire...
         }
-        return text;
     }
 
     private static String bidiReorder(String text) {

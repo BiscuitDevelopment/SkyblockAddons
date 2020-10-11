@@ -170,7 +170,6 @@ public enum Feature {
     SHOW_DUNGEON_TEAMMATE_NAME_OVERLAY(140, "settings.dungeonsTeammateNameOverlay", null, false),
     SHOW_EXPERTISE_KILLS(141, "settings.showExpertiseKills", new GuiFeatureData(ColorCode.RED, true), false),
     DUNGEONS_SECRETS_DISPLAY(142, "settings.dungeonsSecretsDisplay", new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.GRAY), false),
-    COMPACT_TAB_LIST(143, "settings.compactTabList", null, false),
 
     SKILL_PROGRESS_BAR(143, "settings.skillProgressBar", new GuiFeatureData(EnumUtils.DrawType.BAR, ColorCode.GREEN), true),
     SHOW_SKILL_PERCENTAGE_INSTEAD_OF_XP(144, null, true),
@@ -183,6 +182,8 @@ public enum Feature {
 
     HIDE_OTHER_PLAYERS_PRESENTS(150, "settings.hideOtherPlayersPresents", null,false),
     EASIER_PRESENT_OPENING(151, "settings.easierPresentOpening", null,false),
+
+    COMPACT_TAB_LIST(146, "settings.compactTabList", null, false),
 
     WARNING_TIME(-1, Message.SETTING_WARNING_DURATION, false),
 

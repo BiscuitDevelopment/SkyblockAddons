@@ -1,8 +1,11 @@
 package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.core.Translations;
 import lombok.Getter;
 import lombok.Setter;
+import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.client.entity.EntityPlayerSP;
@@ -15,9 +18,14 @@ import net.minecraft.scoreboard.Score;
 import net.minecraft.scoreboard.ScoreObjective;
 import net.minecraft.scoreboard.ScorePlayerTeam;
 import net.minecraft.scoreboard.Scoreboard;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.IChatComponent;
+import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.StringUtils;
+import net.minecraft.world.WorldType;
 import net.minecraftforge.common.util.Constants;
+import org.lwjgl.input.Keyboard;
 
 import java.awt.*;
 import java.awt.datatransfer.Clipboard;
@@ -37,47 +45,65 @@ import java.util.stream.Collectors;
  * @version 2.3
  */
 public class DevUtils {
+
+    private static final Minecraft mc = Minecraft.getMinecraft();
+    private static final SkyblockAddons main = SkyblockAddons.getInstance();
+
     /** Pattern used for removing the placeholder emoji player names from the Hypixel scoreboard */
     public static final Pattern SIDEBAR_PLAYER_NAME_PATTERN = Pattern.compile("[\uD83D\uDD2B\uD83C\uDF6B\uD83D\uDCA3\uD83D\uDC7D\uD83D\uDD2E\uD83D\uDC0D\uD83D\uDC7E\uD83C\uDF20\uD83C\uDF6D\u26BD\uD83C\uDFC0\uD83D\uDC79\uD83C\uDF81\uD83C\uDF89\uD83C\uDF82]+");
-    /** Entity names for {@link this#copyEntityData(String, int)}*/
-    public static final List<String> ENTITY_NAMES = EntityList.getEntityNameList();
+    /** All possible Minecraft entity names, for tab completion */
+    public static final List<String> ALL_ENTITY_NAMES = EntityList.getEntityNameList();
 
     // If you change this, please change it in the string "commandUsage.sba.help.copyEntity" as well.
-    public static final int ENTITY_COPY_RADIUS = 3;
+    public static final int DEFAULT_ENTITY_COPY_RADIUS = 3;
+    private static final List<Class<? extends Entity>> DEFAULT_ENTITY_NAMES = Collections.singletonList(EntityLivingBase.class);
+    private static final boolean DEFAULT_SIDEBAR_FORMATTED = false;
 
     @Getter @Setter
     private static boolean loggingActionBarMessages = false;
+    private static CopyMode copyMode = CopyMode.ENTITY;
+    private static List<Class<? extends Entity>> entityNames = DEFAULT_ENTITY_NAMES;
+    private static int entityCopyRadius = DEFAULT_ENTITY_COPY_RADIUS;
+    private static boolean sidebarFormatted = DEFAULT_SIDEBAR_FORMATTED;
 
     static {
-        ENTITY_NAMES.add("PlayerSP");
-        ENTITY_NAMES.add("PlayerMP");
-        ENTITY_NAMES.add("OtherPlayerMP");
+        ALL_ENTITY_NAMES.add("PlayerSP");
+        ALL_ENTITY_NAMES.add("PlayerMP");
+        ALL_ENTITY_NAMES.add("OtherPlayerMP");
+    }
+
+    public static void setSidebarFormatted(boolean formatted) {
+        sidebarFormatted = formatted;
+    }
+
+    public static void resetSidebarFormattedToDefault() {
+        sidebarFormatted = DEFAULT_SIDEBAR_FORMATTED;
     }
 
     /**
      * Copies the objective and scores that are being displayed on a scoreboard's sidebar.
      * When copying the sidebar, the control codes (e.g. §a) are removed.
-     *
-     * @param scoreboard the {@link Scoreboard} to copy the sidebar from
      */
-    public static void copyScoreboardSideBar(Scoreboard scoreboard) {
-        copyScoreboardSidebar(scoreboard, true);
+    public static void copyScoreboardSideBar() {
+        copyScoreboardSidebar(sidebarFormatted);
     }
 
     /**
      * Copies the objective and scores that are being displayed on a scoreboard's sidebar.
      *
-     * @param scoreboard the {@link Scoreboard} to copy the sidebar from
      * @param stripControlCodes if {@code true}, the control codes will be removed, otherwise they will be copied
      */
-    public static void copyScoreboardSidebar(Scoreboard scoreboard, boolean stripControlCodes) {
+    private static void copyScoreboardSidebar(boolean stripControlCodes) {
+        Scoreboard scoreboard = mc.theWorld.getScoreboard();
         if (scoreboard == null) {
-            throw new NullPointerException("Scoreboard cannot be null!");
+            main.getUtils().sendErrorMessage("Nothing is being displayed in the sidebar!");
+            return;
         }
 
         ScoreObjective sideBarObjective = scoreboard.getObjectiveInDisplaySlot(1);
         if (sideBarObjective == null) {
-            throw new NullPointerException("Nothing is being displayed in the sidebar!");
+            main.getUtils().sendErrorMessage("Nothing is being displayed in the sidebar!");
+            return;
         }
 
         StringBuilder stringBuilder = new StringBuilder();
@@ -86,43 +112,43 @@ public class DevUtils {
         List<Score> scores = (List<Score>) scoreboard.getSortedScores(sideBarObjective);
 
         if (scores == null || scores.isEmpty()) {
-            SkyblockAddons.getInstance().getUtils().sendErrorMessage("No scores were found!");
+            main.getUtils().sendErrorMessage("No scores were found!");
+            return;
         }
-        else {
+
+        if (stripControlCodes) {
+            objectiveName = StringUtils.stripControlCodes(objectiveName);
+        }
+
+        // Remove scores that aren't rendered.
+        scores = scores.stream().filter(input -> input.getPlayerName() != null && !input.getPlayerName().startsWith("#"))
+                .skip(Math.max(scores.size() - 15, 0)).collect(Collectors.toList());
+
+        /*
+        Minecraft renders the scoreboard from bottom to top so to keep the same order when writing it from top
+        to bottom, we need to reverse the scores' order.
+        */
+        Collections.reverse(scores);
+
+        stringBuilder.append(objectiveName).append("\n");
+
+        for (Score score: scores) {
+            ScorePlayerTeam scoreplayerteam = scoreboard.getPlayersTeam(score.getPlayerName());
+            String playerName = ScorePlayerTeam.formatPlayerName(scoreplayerteam, score.getPlayerName());
+
+            // Strip colours and emoji player names.
+            playerName = SIDEBAR_PLAYER_NAME_PATTERN.matcher(playerName).replaceAll("");
+
             if (stripControlCodes) {
-                objectiveName = StringUtils.stripControlCodes(objectiveName);
+                playerName = StringUtils.stripControlCodes(playerName);
             }
 
-            // Remove scores that aren't rendered.
-            scores = scores.stream().filter(input -> input.getPlayerName() != null && !input.getPlayerName().startsWith("#"))
-                    .skip(Math.max(scores.size() - 15, 0)).collect(Collectors.toList());
+            int points = score.getScorePoints();
 
-            /*
-            Minecraft renders the scoreboard from bottom to top so to keep the same order when writing it from top
-            to bottom, we need to reverse the scores' order.
-            */
-            Collections.reverse(scores);
-
-            stringBuilder.append(objectiveName).append("\n");
-
-            for (Score score: scores) {
-                ScorePlayerTeam scoreplayerteam = scoreboard.getPlayersTeam(score.getPlayerName());
-                String playerName = ScorePlayerTeam.formatPlayerName(scoreplayerteam, score.getPlayerName());
-
-                // Strip colours and emoji player names.
-                playerName = SIDEBAR_PLAYER_NAME_PATTERN.matcher(playerName).replaceAll("");
-
-                if (stripControlCodes) {
-                    playerName = StringUtils.stripControlCodes(playerName);
-                }
-
-                int points = score.getScorePoints();
-
-                stringBuilder.append(playerName).append("[").append(points).append("]").append("\n");
-            }
-
-            copyStringToClipboard(stringBuilder.toString(), "Sidebar copied to clipboard!");
+            stringBuilder.append(playerName).append("[").append(points).append("]").append("\n");
         }
+
+        copyStringToClipboard(stringBuilder.toString(), ColorCode.GREEN + "Sidebar copied to clipboard!");
     }
 
     /**
@@ -132,21 +158,11 @@ public class DevUtils {
      * @param includedEntityClasses the classes of entities that should be included when copying NBT data
      * @param copyRadius copy the NBT data of entities inside this radius(in blocks) around the player
      */
-    public static void copyEntityData(List<Class<? extends Entity>> includedEntityClasses, int copyRadius) {
-        EntityPlayerSP player = Minecraft.getMinecraft().thePlayer;
-        List<Entity> loadedEntitiesCopy = new LinkedList<>(Minecraft.getMinecraft().theWorld.loadedEntityList);
+    private static void copyEntityData(List<Class<? extends Entity>> includedEntityClasses, int copyRadius) {
+        EntityPlayerSP player = mc.thePlayer;
+        List<Entity> loadedEntitiesCopy = new LinkedList<>(mc.theWorld.loadedEntityList);
         ListIterator<Entity> loadedEntitiesCopyIterator;
         StringBuilder stringBuilder = new StringBuilder();
-
-        if (includedEntityClasses == null) {
-            throw new IllegalArgumentException("The list of entity types cannot be null!");
-        }
-        else if (includedEntityClasses.isEmpty()) {
-            throw new IllegalArgumentException("The list of entity types cannot be empty!");
-        }
-        else if (copyRadius < 0) {
-            throw new IllegalArgumentException("The entity copy radius cannot be negative!");
-        }
 
         loadedEntitiesCopyIterator = loadedEntitiesCopy.listIterator();
 
@@ -191,59 +207,35 @@ public class DevUtils {
             copyStringToClipboard(stringBuilder.toString(), ColorCode.GREEN + "Entity data was copied to clipboard!");
         }
         else {
-            SkyblockAddons.getInstance().getUtils().sendErrorMessage("No entities matching the given parameters were found.");
+            main.getUtils().sendErrorMessage("No entities matching the given parameters were found.");
         }
     }
 
-    /**
-     * Copies the NBT data of entities around the player. The classes of {@link Entity} to include and the radius
-     * around the player to copy from can be customized.
-     *
-     * @param includedEntityNames a String that is a comma-separated list of the names of the entities that should be included when copying the NBT data
-     * @param copyRadius copy the NBT data of entities inside this radius around the player.
-     * @see EntityList
-     */
-    public static void copyEntityData(String includedEntityNames, int copyRadius) {
-        Matcher listMatcher = Pattern.compile("(^[A-Z_]+)(?:,[A-Z_]+)*$", Pattern.CASE_INSENSITIVE).matcher(includedEntityNames);
+    public static void setEntityNamesFromString(String includedEntityNames) {
+        List<Class<? extends Entity>> entityClasses = getEntityClassListFromString(includedEntityNames);
+        if (entityClasses == null || entityClasses.isEmpty()) {
+            main.getUtils().sendErrorMessage("The entity class list is not valid or is empty! Falling back to default.");
+            resetEntityNamesToDefault();
+        } else {
+            entityNames = entityClasses;
+        }
+    }
 
+    public static void setEntityCopyRadius(int copyRadius) {
         if (copyRadius <= 0) {
-            throw new IllegalArgumentException("The entity copy radius cannot be negative!");
+            main.getUtils().sendErrorMessage("Radius cannot be negative! Falling back to " + DEFAULT_ENTITY_COPY_RADIUS + ".");
+            resetEntityCopyRadiusToDefault();
+        } else {
+            entityCopyRadius = copyRadius;
         }
+    }
 
-        if (listMatcher.matches()) {
-            List<Class<? extends Entity>> entityClasses = new ArrayList<>();
-            String[] entityNamesArray = includedEntityNames.split(",");
+    public static void resetEntityNamesToDefault() {
+        entityNames = DEFAULT_ENTITY_NAMES;
+    }
 
-            for (String entityName : entityNamesArray) {
-                if (EntityList.isStringValidEntityName(entityName)) {
-                    int entityId = EntityList.getIDFromString(entityName);
-
-                    // The default ID returned when a match isn't found is the pig's id for some reason.
-                    if (entityId != 90 || entityName.equals("Pig")) {
-                        entityClasses.add(EntityList.getClassFromID(entityId));
-                    }
-                    // EntityList doesn't have mappings for the player classes.
-                    else if (entityName.equals("Player")) {
-                        entityClasses.add(EntityPlayerSP.class);
-                        entityClasses.add(EntityOtherPlayerMP.class);
-                    }
-                }
-                else if (entityName.equals("PlayerSP")) {
-                    entityClasses.add(EntityPlayerSP.class);
-                }
-                else if (entityName.equals("PlayerMP") | entityName.equals("OtherPlayerMP")) {
-                    entityClasses.add(EntityOtherPlayerMP.class);
-                }
-                else {
-                    throw new IllegalArgumentException("The entity name \"" + entityName + "\" is invalid.");
-                }
-            }
-
-            copyEntityData(entityClasses, copyRadius);
-        }
-        else {
-            throw new IllegalArgumentException("Incorrect format! Use \"Name\" or \"Name1,Name2,Name3\".");
-        }
+    public static void resetEntityCopyRadiusToDefault() {
+        entityNames = DEFAULT_ENTITY_NAMES;
     }
 
     /**
@@ -251,13 +243,69 @@ public class DevUtils {
      * <br>
      * <p>Default settings:</p>
      * <p>Included Entity Types: players, armor stands, and mobs</p>
-     * <p>Radius: {@link DevUtils#ENTITY_COPY_RADIUS}</p>
+     * <p>Radius: {@link DevUtils#DEFAULT_ENTITY_COPY_RADIUS}</p>
      * <p>Include own NBT data: {@code true}</p>
      *
      * @see EntityList
      */
     public static void copyEntityData() {
-        copyEntityData(Collections.singletonList(EntityLivingBase.class), ENTITY_COPY_RADIUS);
+        copyEntityData(entityNames, entityCopyRadius);
+    }
+
+    /**
+     * Compiles a list of entity classes from a string.
+     *
+     * @param text The string to parse
+     * @return The list of entities
+     */
+    private static List<Class<? extends Entity>> getEntityClassListFromString(String text) {
+        Matcher listMatcher = Pattern.compile("(^[A-Z_]+)(?:,[A-Z_]+)*$", Pattern.CASE_INSENSITIVE).matcher(text);
+
+        if (!listMatcher.matches()) {
+            return null;
+        }
+
+        List<Class<? extends Entity>> entityClasses = new ArrayList<>();
+        String[] entityNamesArray = text.split(",");
+
+        for (String entityName : entityNamesArray) {
+            if (EntityList.isStringValidEntityName(entityName)) {
+                int entityId = EntityList.getIDFromString(entityName);
+
+                // The default ID returned when a match isn't found is the pig's id for some reason.
+                if (entityId != 90 || entityName.equals("Pig")) {
+                    entityClasses.add(EntityList.getClassFromID(entityId));
+                }
+                // EntityList doesn't have mappings for the player classes.
+                else if (entityName.equals("Player")) {
+                    entityClasses.add(EntityPlayerSP.class);
+                    entityClasses.add(EntityOtherPlayerMP.class);
+                }
+            } else if (entityName.equals("PlayerSP")) {
+                entityClasses.add(EntityPlayerSP.class);
+            } else if (entityName.equals("PlayerMP") | entityName.equals("OtherPlayerMP")) {
+                entityClasses.add(EntityOtherPlayerMP.class);
+            } else {
+                main.getUtils().sendErrorMessage("The entity name \"" + entityName + "\" is invalid. Skipping!");
+            }
+        }
+
+        return entityClasses;
+    }
+
+    public static void copyData() {
+        if (copyMode == CopyMode.ENTITY) {
+            copyEntityData();
+
+        } else if (copyMode == CopyMode.BLOCK) {
+            copyBlockData();
+
+        } else if (copyMode == CopyMode.SIDEBAR) {
+            copyScoreboardSideBar();
+
+        } else if (copyMode == CopyMode.TAB_LIST) {
+            copyTabListHeaderAndFooter();
+        }
     }
 
     /**
@@ -268,7 +316,7 @@ public class DevUtils {
      */
     public static void copyNBTTagToClipboard(NBTBase nbtTag, String message) {
         if (nbtTag == null) {
-            SkyblockAddons.getInstance().getUtils().sendMessage("This item has no NBT data.");
+            main.getUtils().sendErrorMessage("This item has no NBT data!");
             return;
         }
         writeToClipboard(prettyPrintNBT(nbtTag), message);
@@ -280,31 +328,28 @@ public class DevUtils {
      * @see net.minecraft.client.gui.GuiPlayerTabOverlay
      */
     public static void copyTabListHeaderAndFooter() {
-        Minecraft mc = Minecraft.getMinecraft();
         IChatComponent tabHeader = mc.ingameGUI.getTabList().header;
         IChatComponent tabFooter = mc.ingameGUI.getTabList().footer;
-        StringBuilder output = new StringBuilder("Header:").append("\n");
 
-        output.append(tabHeader.getFormattedText());
-
-        if (!tabHeader.getSiblings().isEmpty()) {
-            for (IChatComponent sibling : tabHeader.getSiblings()) {
-                output.append(sibling.getFormattedText());
-            }
+        if (tabHeader == null && tabFooter == null) {
+            main.getUtils().sendErrorMessage("There is no header or footer!");
+            return;
         }
 
-        output.append("\n\n");
-        output.append("Footer:").append("\n");
+        StringBuilder output = new StringBuilder();
 
-        output.append(tabFooter.getFormattedText());
-
-        if (!tabFooter.getSiblings().isEmpty()) {
-            for (IChatComponent sibling : tabFooter.getSiblings()) {
-                output.append(sibling.getFormattedText());
-            }
+        if (tabHeader != null) {
+            output.append("Header:").append("\n");
+            output.append(tabHeader.getFormattedText());
+            output.append("\n\n");
         }
 
-        copyStringToClipboard(output.toString(), "Tab list header and footer copied!");
+        if (tabHeader != null) {
+            output.append("Footer:").append("\n");
+            output.append(tabFooter.getFormattedText());
+        }
+
+        copyStringToClipboard(output.toString(),  ColorCode.GREEN + "Successfully copied the tab list header and footer!");
     }
 
     /**
@@ -321,10 +366,9 @@ public class DevUtils {
     /**
      * Retrieves the server brand from the Minecraft client.
      *
-     * @param mc the Minecraft client
      * @return the server brand if the client is connected to a server, {@code null} otherwise
      */
-    public static String getServerBrand(Minecraft mc) {
+    public static String getServerBrand() {
         final Pattern SERVER_BRAND_PATTERN = Pattern.compile("(.+) <- (?:.+)");
 
         if (!mc.isSingleplayer()) {
@@ -333,15 +377,49 @@ public class DevUtils {
             if (matcher.find()) {
                 // Group 1 is the server brand.
                 return matcher.group(1);
-            }
-            else {
+            } else {
                 return null;
             }
-        }
-        else {
+        } else {
             return null;
         }
     }
+
+    /**
+     * Copy the block data with its tile entity data if the block has one.
+     */
+    public static void copyBlockData() {
+        if (mc.objectMouseOver == null || mc.objectMouseOver.typeOfHit != MovingObjectPosition.MovingObjectType.BLOCK ||
+                mc.objectMouseOver.getBlockPos() == null) {
+            main.getUtils().sendErrorMessage("You are not looking at a block!");
+            return;
+        }
+
+        BlockPos blockPos = mc.objectMouseOver.getBlockPos();
+
+        IBlockState blockState = mc.theWorld.getBlockState(blockPos);
+        if (mc.theWorld.getWorldType() != WorldType.DEBUG_WORLD) {
+            blockState = blockState.getBlock().getActualState(blockState, mc.theWorld, blockPos);
+        }
+
+        TileEntity tileEntity = mc.theWorld.getTileEntity(blockPos);
+        NBTTagCompound nbt = new NBTTagCompound();
+        if (tileEntity != null) {
+            NBTTagCompound nbtTileEntity = new NBTTagCompound();
+            tileEntity.writeToNBT(nbtTileEntity);
+            nbt.setTag("tileEntity", nbtTileEntity);
+        } else {
+            nbt.setInteger("x", blockPos.getX());
+            nbt.setInteger("y", blockPos.getY());
+            nbt.setInteger("z", blockPos.getZ());
+        }
+
+        nbt.setString("type", Block.blockRegistry.getNameForObject(blockState.getBlock()).toString());
+        blockState.getProperties().forEach((key, value) -> nbt.setString(key.getName(), value.toString()));
+
+        writeToClipboard(prettyPrintNBT(nbt), ColorCode.GREEN + "Successfully copied the block data!");
+    }
+
 
     // FIXME add support for TAG_LONG_ARRAY when updating to 1.12
     /**
@@ -464,9 +542,22 @@ public class DevUtils {
 
         try {
             clipboard.setContents(output, output);
-            SkyblockAddons.getInstance().getUtils().sendMessage(successMessage);
+            main.getUtils().sendMessage(successMessage);
         } catch (IllegalStateException exception) {
-            SkyblockAddons.getInstance().getUtils().sendErrorMessage("Clipboard not available.");
+            main.getUtils().sendErrorMessage("Clipboard not available!");
         }
+    }
+
+    public static void setCopyMode(CopyMode copyMode) {
+        DevUtils.copyMode = copyMode;
+        main.getUtils().sendMessage(ColorCode.YELLOW + Translations.getMessage("messages.copyModeSet", copyMode, Keyboard.getKeyName(main.getDeveloperCopyNBTKey().getKeyCode())));
+    }
+
+    public enum CopyMode {
+        ENTITY,
+        BLOCK,
+
+        TAB_LIST,
+        SIDEBAR
     }
 }

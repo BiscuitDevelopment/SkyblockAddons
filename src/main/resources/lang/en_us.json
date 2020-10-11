@@ -240,7 +240,8 @@
     "actionsLeft": "%number% Left",
     "effectActive": "1 Effect Active",
     "effectsActive": "%number% Effects Active",
-    "none": "None"
+    "none": "None",
+    "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!"
   },
   "discordStatus": {
     "titleNone": "None",
@@ -287,7 +288,7 @@
     "sba.help": "Show this help message. If a command is provided, detailed help about that command is shown.",
     "sba.help.copyEntity": "Copies the NBT data of entities. The types of entities included and the radius around the player to copy data from can be customized. If no options are given, the default settings are used. The default settings are: include players, armor stands, and mobs, and a radius of 3 blocks. If the radius isn't given, the default radius is used.",
     "sba.help.copyEntity.entityNames": "Names of the types of entities you want to copy data for (e.g. Player, Creeper). Press \"Tab\" after typing the command for a full list. Separate multiple names with commas, names are case-sensitive.",
-    "sba.help.copyEntity.radius": "The radius(in blocks) around the player to copy entity NBT data from",
+    "sba.help.copyEntity.radius": "The radius (in blocks) around the player to copy entity NBT data from",
     "sba.help.copySidebar.formatted": "Determines if the formatting codes should be included when copying. Can be either \"true\" or \"false\", defaults to \"false\" if no value is provided. Formatting codes are copied if \"true\".",
     "sba.help.copyTabList": "This command copies the header and footer of the tab player list. Formatting codes are included.",
     "sba.help.dev": "This command toggles developer mode. This mode is meant for developers Skyblock mods/tools. It provides raw data from the game such as entity and item NBT.",
@@ -296,6 +297,7 @@
     "sba.help.set.zealotCounter.eyes": "Lifetime summoning eyes obtained",
     "sba.help.set.zealotCounter.totalZealots": "Lifetime zealots killed",
     "sba.help.set.zealotCounter.zealots": "Zealots killed since the last summoning eye drop",
+    "sba.help.copyBlock": "§e(Dev) §7Copies data about the block that you are looking at",
     "sba.help.slayer": "Manually set slayer stats, press tab for arguments",
     "sba.help.slayer.boss": "Slayer boss: \"Zombie\", \"Spider\", or \"Wolf\"",
     "sba.help.slayer.number": "Number to set the stat to",
