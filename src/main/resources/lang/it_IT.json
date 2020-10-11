@@ -48,7 +48,7 @@
     "lockSlot": "Blocca Slot",
     "dontResetCursorInventory": "Non resettare il cursore tra gli inventari",
     "summoningEyeAlert": "Avviso Ottenimento di un Summoning Eye",
-    "makeEnderchestsInEndGreen": "Change Enderchest Color in The End",
+    "makeEnderchestsInEndGreen": "Cambia colore del baule ender nell'End",
     "changeColor": "Cambia colore",
     "showInOtherGames": "Mostra in Altri Giochi",
     "useVanillaTexture": "Usa la Texture Vanilla",
@@ -153,7 +153,7 @@
     "textMode": "Modalità Testo",
     "dragonsNestOnly": "Mostra solo nel Dragon’s Nest",
     "dragonStatsTracker": "Tracker dei draghi",
-    "skillActionsLeftUntilNextLevel": "Show Actions Left Until Next Level",
+    "skillActionsLeftUntilNextLevel": "Mostra azioni necessarie per il livello successivo",
     "hideWhenNotInCrypts": "Nascondi quando non si è nella cripta/non si sta facendo una Missione Revenant",
     "hideWhenNotInSpidersDen": "Nascondi quando non si è nello Spider’s Den/non si sta facendo una Missione Tarantola",
     "hideWhenNotInCastle": "Nascondi quando non si è nel castello/non si sta facendo una Missione Sven",
@@ -164,8 +164,8 @@
     "dungeonsTeammateNameOverlay": "Nomi dei compagni di Dungeons in rilievo",
     "showExpertiseKills": "Mostra uccisioni con Expertise",
     "dungeonsSecretsDisplay": "Mostra segreti del Dungeon",
-    "showSkillPercentageInstead": "Show Percentage Instead of XP",
-    "showSkillXPGained": "Show XP Gained",
+    "showSkillPercentageInstead": "Mostra percentuale invece dell'XP",
+    "showSkillXPGained": "Mostra XP ottenuti",
     "skillProgressBar": "Barra di progresso delle skill"
   },
   "messages": {
