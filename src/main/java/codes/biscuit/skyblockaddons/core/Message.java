@@ -160,6 +160,7 @@ public enum Message {
     SETTING_SHOW_DUNGEON_TEAMMATE_NAME_OVERLAY(MessageObject.SETTING, "dungeonsTeammateNameOverlay"),
     SETTING_SHOW_EXPERTISE_KILLS(MessageObject.SETTING, "showExpertiseKills"),
     SETTING_DUNGEONS_SECRETS_DISPLAY(MessageObject.SETTING, "dungeonsSecretsDisplay"),
+    SETTING_OUTBID_ALERT(MessageObject.SETTING, "outbidAlert"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.BACKPACK_STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.BACKPACK_STYLE, "compact"),
@@ -318,7 +319,8 @@ public enum Message {
     SUBCOMMAND_HELP_SLAYER(MessageObject.COMMAND_USAGE, "sba.help.slayer"),
     SUBCOMMAND_HELP_SUBCOMMAND_NOT_FOUND(MessageObject.COMMAND_USAGE, "sba.help.subCommandNotFound"),
 
-    KEY_DEVELOPER_COPY_NBT(MessageObject.KEYBINDINGS, "developerCopyNBT")
+    KEY_DEVELOPER_COPY_NBT(MessageObject.KEYBINDINGS, "developerCopyNBT"),
+
     ;
 
     private MessageObject messageObject;

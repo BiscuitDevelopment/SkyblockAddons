@@ -190,7 +190,9 @@ public enum Feature {
     CHROMA_SPEED(-1, Message.SETTING_CHROMA_SPEED, false),
     CHROMA_MODE(-1, Message.SETTING_CHROMA_MODE, false),
     CHROMA_FADE_WIDTH(-1, Message.SETTING_CHROMA_FADE_WIDTH, false),
-    TURN_ALL_FEATURES_CHROMA(-1, Message.SETTING_TURN_ALL_FEATURES_CHROMA, false);
+    TURN_ALL_FEATURES_CHROMA(-1, Message.SETTING_TURN_ALL_FEATURES_CHROMA, false),
+    OUTBID_ALERT(143, Message.SETTING_OUTBID_ALERT,true);
+
 
     /**
      * These are "features" that are not actually features, but just hold the place of a setting. If you are adding any new settings and create
@@ -208,7 +210,7 @@ public enum Feature {
             HIDE_WHEN_NOT_IN_CRYPTS, SHOW_PERSONAL_COMPACTOR_PREVIEW);
 
     /**
-     * Features that are considered gui ones. This is used for examnple when saving the config to ensure that these features'
+     * Features that are considered gui ones. This is used for example when saving the config to ensure that these features'
      * coordinates and colors are handled properly.
      */
     @Getter private static final Set<Feature> guiFeatures = new LinkedHashSet<>(Arrays.asList(MAGMA_BOSS_TIMER, MANA_BAR, MANA_TEXT, DEFENCE_ICON, DEFENCE_TEXT,

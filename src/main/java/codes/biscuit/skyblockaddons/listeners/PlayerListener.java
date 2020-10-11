@@ -307,6 +307,8 @@ public class PlayerListener {
             } else if (main.getConfigValues().isEnabled(Feature.SHOW_ENCHANTMENTS_REFORGES) &&
                     (matcher = ACCESSORY_BAG_REFORGE_PATTERN.matcher(unformattedText)).matches()) {
                 GuiChestHook.setLastAccessoryBagReforge(matcher.group("reforge"));
+            } else if (main.getConfigValues().isEnabled(Feature.OUTBID_ALERT) && formattedText.matches("§6\\[Auction].*?outbid you.*")) {
+                main.getUtils().playLoudSound("random.orb", 0.5);
             }
 
             if (main.getConfigValues().isEnabled(Feature.NO_ARROWS_LEFT_ALERT)) {
