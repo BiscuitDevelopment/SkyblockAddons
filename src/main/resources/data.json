@@ -35,5 +35,37 @@
       "WINTER_DISC",
       "DUNGEON_STONE"
     ]
+  },
+
+  "specialEnchantments": {
+    "Bane of Anthropods": 6,
+    "Critical": 6,
+    "Dragon Hunter": 5,
+    "Ender Slayer": 6,
+    "Experience": 4,
+    "Giant Killer": 6,
+    "Life Steal": 4,
+    "Looting": 4,
+    "Luck": 4,
+    "Scavenger": 5,
+    "Sharpness": 6,
+    "Smite": 7,
+    "Vampirism": 6,
+    "Infinite Quiver": 10,
+    "Power": 6,
+    "Growth": 6,
+    "Protection": 6,
+    "Rejuvenate": 5,
+    "True Protection": 1,
+    "Feather Falling": 10,
+    "Sugar Rush": 3,
+    "Efficiency": 6,
+    "Angler": 6,
+    "Caster": 6,
+    "Expertise": 10,
+    "Frail": 6,
+    "Lure": 6,
+    "Magnet": 6,
+    "Spiked Hook": 6
   }
 }

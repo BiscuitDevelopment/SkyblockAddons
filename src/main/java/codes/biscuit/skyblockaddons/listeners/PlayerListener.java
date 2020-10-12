@@ -81,7 +81,9 @@ public class PlayerListener {
 
     private static final Pattern NO_ARROWS_LEFT_PATTERN = Pattern.compile("(?:§r)?§cYou don't have any more Arrows left in your Quiver!§r");
     private static final Pattern ONLY_HAVE_ARROWS_LEFT_PATTERN = Pattern.compile("(?:§r)?§cYou only have (?<arrows>[0-9]+) Arrows left in your Quiver!§r");
-    private static final Pattern ENCHANTMENT_TOOLTIP_PATTERN = Pattern.compile("§.§.(§9[\\w ]+(, )?)+");
+    private static final Pattern ENCHANTMENT_LINE_PATTERN = Pattern.compile("(?:(?:[\\w ]+ [\\dIVXLCDM]+(?:, )?)+)");
+    private static final Pattern ENCHANTMENT_PATTERN = Pattern.compile("(?<enchant>[\\w§ ]+) (?<enchantLevel>[\\dIVXLCDM]+)");
+    private static final String ENCHANT_LINE_STARTS_WITH = "§5§o§9";
     private static final Pattern ABILITY_CHAT_PATTERN = Pattern.compile("§r§aUsed §r§6[A-Za-z ]+§r§a! §r§b\\([0-9]+ Mana\\)§r");
     private static final Pattern PROFILE_CHAT_PATTERN = Pattern.compile("§aYou are playing on profile: §e([A-Za-z]+).*");
     private static final Pattern SWITCH_PROFILE_CHAT_PATTERN = Pattern.compile("§aYour profile was changed to: §e([A-Za-z]+).*");
@@ -391,13 +393,21 @@ public class PlayerListener {
             } else {
                 matcher = PROFILE_CHAT_PATTERN.matcher(formattedText);
                 if (matcher.matches()) {
-                    main.getUtils().setProfileName(matcher.group(1));
-                    APIManager.getInstance().onProfileSwitch();
+                    String profile = matcher.group(1);
+                    main.getUtils().setProfileName(profile);
+
+                    if (!profile.equals(main.getUtils().getProfileName())) {
+                        APIManager.getInstance().onProfileSwitch();
+                    }
                 } else {
                     matcher = SWITCH_PROFILE_CHAT_PATTERN.matcher(formattedText);
                     if (matcher.matches()) {
-                        main.getUtils().setProfileName(matcher.group(1));
-                        APIManager.getInstance().onProfileSwitch();
+                        String profile = matcher.group(1);
+                        main.getUtils().setProfileName(profile);
+
+                        if (!profile.equals(main.getUtils().getProfileName())) {
+                            APIManager.getInstance().onProfileSwitch();
+                        }
                     }
                 }
             }
@@ -844,7 +854,7 @@ public class PlayerListener {
                         }
                     }
                     String line = e.toolTip.get(i);
-                    if (!line.startsWith("§5§o§9") && (line.contains("Respiration") || line.contains("Aqua Affinity")
+                    if (!line.startsWith(ENCHANT_LINE_STARTS_WITH) && (line.contains("Respiration") || line.contains("Aqua Affinity")
                             || line.contains("Depth Strider") || line.contains("Efficiency"))) {
                         e.toolTip.remove(line);
                         i--;
@@ -858,44 +868,78 @@ public class PlayerListener {
                 }
             }
 
-            if (main.getConfigValues().isEnabled(Feature.ORGANIZE_ENCHANTMENTS)) {
+            if (main.getConfigValues().isEnabled(Feature.ENCHANTMENTS_HIGHLIGHT)) {
+                Map<String, Integer> maxEnchantments = main.getOnlineData().getSpecialEnchantments();
+                if (maxEnchantments != null) {
+                    for (int i = 0; i < e.toolTip.size(); i++) {
+                        String line = e.toolTip.get(i);
 
-                List<String> enchantments = new ArrayList<>();
-                int enchantStartIndex = -1;
-                int enchantEndIndex = -1;
+                        if (line.startsWith(ENCHANT_LINE_STARTS_WITH) && ENCHANTMENT_LINE_PATTERN.matcher(TextUtils.stripColor(line)).matches()) {
+                            Matcher matcher = ENCHANTMENT_PATTERN.matcher(line);
+                            while (matcher.find()) {
+                                String fullEnchant = matcher.group().trim();
+                                String enchant = matcher.group("enchant");
+                                String strippedEnchant = TextUtils.stripColor(enchant);
+
+                                if (maxEnchantments.containsKey(strippedEnchant)) {
+                                    String enchantLevelString = matcher.group("enchantLevel");
+
+                                    int enchantLevel = -1;
+                                    if (RomanNumeralParser.isNumeralValid(enchantLevelString)) {
+                                        enchantLevel = RomanNumeralParser.parseNumeral(enchantLevelString);
+                                    } else {
+                                        try {
+                                            enchantLevel = Integer.parseInt(enchantLevelString);
+                                        } catch (NumberFormatException ignored) {
+                                        }
+                                    }
+
+                                    if (enchantLevel != -1 && maxEnchantments.get(strippedEnchant) <= enchantLevel) {
+                                        String recoloredEnchant = fullEnchant.replace("§9", "§9" + main.getConfigValues().getRestrictedColor(Feature.ENCHANTMENTS_HIGHLIGHT).toString());
+                                        line = line.replace(fullEnchant, recoloredEnchant);
+                                    }
+                                }
+                            }
+                        }
+
+                        e.toolTip.set(i, line);
+                    }
+                }
+            }
+
+            if (main.getConfigValues().isEnabled(Feature.ORGANIZE_ENCHANTMENTS)) {
+                Deque<String> enchants = new ArrayDeque<>();
+
+                int enchantStartIndex = e.toolTip.size();
+                int enchantEndIndex = 0;
 
                 for (int i = 0; i < e.toolTip.size(); i++) {
-                    if (ENCHANTMENT_TOOLTIP_PATTERN.matcher(e.toolTip.get(i)).matches()) {
-                        String line = TextUtils.stripColor(e.toolTip.get(i));
-                        int comma = line.indexOf(',');
-                        if (comma < 0 || line.length() <= comma + 2) {
-                            enchantments.add(line);
-                        } else {
-                            enchantments.add(line.substring(0, comma));
-                            enchantments.add(line.substring(comma + 2));
-                        }
-                        if (enchantStartIndex < 0) enchantStartIndex = i;
-                    } else if (enchantStartIndex >= 0) {
+                    String line = e.toolTip.get(i);
+
+                    if (line.startsWith(ENCHANT_LINE_STARTS_WITH) && ENCHANTMENT_LINE_PATTERN.matcher(TextUtils.stripColor(line)).matches()) {
+                        enchantStartIndex = Math.min(enchantStartIndex, i);
                         enchantEndIndex = i;
-                        break;
+
+                        Matcher matcher = ENCHANTMENT_PATTERN.matcher(line);
+                        while (matcher.find()) {
+                            enchants.add(matcher.group().trim());
+                        }
                     }
                 }
 
-                if (enchantments.size() > 4) {
-                    e.toolTip.subList(enchantStartIndex, enchantEndIndex).clear(); // Remove old enchantments
-                    main.getUtils().reorderEnchantmentList(enchantments);
-                    int columns = enchantments.size() < 15 ? 2 : 3;
-                    for (int i = 0; !enchantments.isEmpty(); i++) {
-                        StringBuilder sb = new StringBuilder();
-                        sb.append("§5§o");
-                        for (int j = 0; j < columns && !enchantments.isEmpty(); j++) {
-                            sb.append("§9");
-                            sb.append(enchantments.get(0));
-                            sb.append(", ");
-                            enchantments.remove(0);
+                if (enchants.size() > 5) {
+                    e.toolTip.subList(enchantStartIndex, enchantEndIndex + 1).clear(); // Remove old enchantments
+
+                    int columns = enchants.size() <= 14 ? 2 : 3;
+                    for (int y = 0; !enchants.isEmpty(); y++) {
+                        StringBuilder enchantmentsBuilder = new StringBuilder();
+
+                        for (int x = 0; x < columns && !enchants.isEmpty(); x++) {
+                            enchantmentsBuilder.append(enchants.pollFirst()).append(", ");
                         }
-                        sb.setLength(sb.length() - 2);
-                        e.toolTip.add(enchantStartIndex + i, sb.toString());
+                        enchantmentsBuilder.setLength(enchantmentsBuilder.length() - 2);
+
+                        e.toolTip.add(enchantStartIndex + y, enchantmentsBuilder.toString());
                     }
                 }
             }
