@@ -33,7 +33,7 @@ public class ButtonOpenColorMenu extends ButtonText {
             boxAlpha = 170;
             fontColor = new Color(255, 255, 160, 255).getRGB();
         }
-        boxColor = main.getConfigValues().getColor(feature, boxAlpha).getRGB();
+        boxColor = main.getConfigValues().getColor(feature, boxAlpha);
         // Regular features are red if disabled, green if enabled or part of the gui feature is enabled.
         GlStateManager.enableBlend();
         float scale = 1;

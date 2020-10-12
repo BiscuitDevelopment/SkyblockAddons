@@ -28,8 +28,8 @@ public class GuiContainerHook {
 
     private static final ResourceLocation LOCK = new ResourceLocation("skyblockaddons", "lock.png");
     private static final ResourceLocation CHEST_GUI_TEXTURE = new ResourceLocation("textures/gui/container/generic_54.png");
-    private static final int OVERLAY_RED = ColorCode.RED.getColor(127).getRGB();
-    private static final int OVERLAY_GREEN = ColorCode.GREEN.getColor(127).getRGB();
+    private static final int OVERLAY_RED = ColorCode.RED.getColor(127);
+    private static final int OVERLAY_GREEN = ColorCode.GREEN.getColor(127);
 
     /**
      * This controls whether or not the backpack preview is frozen- allowing you
@@ -130,7 +130,7 @@ public class GuiContainerHook {
                 GlStateManager.disableLighting();
                 GlStateManager.pushMatrix();
                 GlStateManager.translate(0,0, 300);
-                Gui.drawRect(x, y, x + (16 * 9) + 3, y + (16 * (length / 9)) + 3, ColorCode.DARK_GRAY.getColor(250).getRGB());
+                Gui.drawRect(x, y, x + (16 * 9) + 3, y + (16 * (length / 9)) + 3, ColorCode.DARK_GRAY.getColor(250));
                 GlStateManager.popMatrix();
                 GlStateManager.enableLighting();
 

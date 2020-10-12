@@ -54,6 +54,9 @@ public class ActionBarParser {
     @Setter private Integer healthUpdate;
     @Setter private long lastHealthUpdate;
 
+    private float currentSkillXP;
+    private int totalSkillXP;
+
     public ActionBarParser() {
         this.main = SkyblockAddons.getInstance();
     }
@@ -228,15 +231,25 @@ public class ActionBarParser {
         // Another Example: §5+§d30 §5Runecrafting (969/1000)
         Matcher matcher = COLLECTIONS_CHAT_PATTERN.matcher(TextUtils.stripColor(skillSection));
         if (matcher.matches() && main.getConfigValues().isEnabled(Feature.SKILL_DISPLAY)) {
-            StringBuilder skillTextBuilder = new StringBuilder("+");
-            skillTextBuilder.append(matcher.group("gained")).append(" ").append(matcher.group("progress"));
+            StringBuilder skillTextBuilder = new StringBuilder();
 
-            if (main.getConfigValues().isEnabled(Feature.ACTIONS_UNTIL_NEXT_LEVEL)) {
-                int total = Integer.parseInt(matcher.group("total").replaceAll(",", ""));
-                if (total != 0) { // 0 means it's maxed...
-                    double current = Double.parseDouble(matcher.group("current").replaceAll(",", ""));
-                    double recent = Double.parseDouble(matcher.group("gained").replaceAll(",", ""));
-                    skillTextBuilder.append(" - ").append(Translations.getMessage("messages.actionsLeft", (int) Math.ceil((total - current) / recent)));
+            if (main.getConfigValues().isEnabled(Feature.SHOW_SKILL_XP_GAINED)) {
+                skillTextBuilder.append("+").append(matcher.group("gained"));
+            }
+
+            float gained = Float.parseFloat(matcher.group("gained").replaceAll(",", ""));
+            currentSkillXP = Float.parseFloat(matcher.group("current").replaceAll(",", ""));
+            totalSkillXP = Integer.parseInt(matcher.group("total").replaceAll(",", ""));
+
+            if (main.getConfigValues().isEnabled(Feature.SHOW_SKILL_PERCENTAGE_INSTEAD_OF_XP)) {
+                skillTextBuilder.append(" ").append(String.format("%.2f", currentSkillXP / (float) totalSkillXP * 100F)).append("%");
+            } else {
+                skillTextBuilder.append(" ").append(matcher.group("progress"));
+            }
+
+            if (main.getConfigValues().isEnabled(Feature.SKILL_ACTIONS_LEFT_UNTIL_NEXT_LEVEL)) {
+                if (totalSkillXP != 0) { // 0 means it's maxed...
+                    skillTextBuilder.append(" - ").append(Translations.getMessage("messages.actionsLeft", (int) Math.ceil((totalSkillXP - currentSkillXP) / gained)));
                 }
             }
 

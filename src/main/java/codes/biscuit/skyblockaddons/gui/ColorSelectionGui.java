@@ -82,7 +82,7 @@ public class ColorSelectionGui extends GuiScreen {
         hexColorField.setFocused(true);
 
         // Set the current color in the text box after creating it.
-        setTextBoxHex(main.getConfigValues().getColor(feature));
+        setTextBoxHex(main.getConfigValues().getColorObject(feature));
 
         if (feature.getGuiFeatureData().isColorsRestricted()) {
 
@@ -152,7 +152,7 @@ public class ColorSelectionGui extends GuiScreen {
                 Gui.drawModalRectWithCustomSizedTexture(imageX, imageY, 0, 0, pickerWidth, pickerHeight, pickerWidth, pickerHeight);
 
                 SkyblockAddonsGui.drawScaledString(this, Message.MESSAGE_SELECTED_COLOR.getMessage(), 120, defaultBlue, 1.5, 75);
-                drawRect(width / 2 + 90, 140, width / 2 + 130, 160, main.getConfigValues().getColor(feature).getRGB());
+                drawRect(width / 2 + 90, 140, width / 2 + 130, 160, main.getConfigValues().getColor(feature));
 
                 if (chromaCheckbox != null) chromaCheckbox.draw();
 
@@ -236,7 +236,7 @@ public class ColorSelectionGui extends GuiScreen {
     protected void actionPerformed(GuiButton button) throws IOException {
         if (button instanceof ButtonColorBox) {
             ButtonColorBox colorBox = (ButtonColorBox)button;
-            main.getConfigValues().setColor(feature, colorBox.getColor().getRGB());
+            main.getConfigValues().setColor(feature, colorBox.getColor().getColor());
             this.mc.displayGuiScreen(null);
         }
 

@@ -107,9 +107,9 @@ public class ButtonSelect extends GuiButton {
         drawRect(endX - height, yPosition, endX, yPosition + height, rightColor);
 
         // inside text
-        drawCenteredString(minecraft.fontRendererObj, trimmedName, xPosition + width / 2, yPosition + height / 4, ColorCode.WHITE.getRGB());
+        drawCenteredString(minecraft.fontRendererObj, trimmedName, xPosition + width / 2, yPosition + height / 4, ColorCode.WHITE.getColor());
         // description
-        drawCenteredString(minecraft.fontRendererObj, description, xPosition + width / 2, yPosition + height + 2, ColorCode.GRAY.getRGB());
+        drawCenteredString(minecraft.fontRendererObj, description, xPosition + width / 2, yPosition + height + 2, ColorCode.GRAY.getColor());
 
         GlStateManager.color(1, 1, 1, 1);
         minecraft.getTextureManager().bindTexture(ARROW_LEFT);
@@ -126,8 +126,8 @@ public class ButtonSelect extends GuiButton {
                 int rectTop = mouseY + 3;
                 int rectRight = rectLeft + stringWidth + 8;
                 int rectBottom = rectTop + 12;
-                drawRect(rectLeft, rectTop, rectRight, rectBottom, ColorCode.BLACK.getRGB());
-                minecraft.fontRendererObj.drawString(name, rectLeft + 4, rectTop+2, ColorCode.WHITE.getRGB());
+                drawRect(rectLeft, rectTop, rectRight, rectBottom, ColorCode.BLACK.getColor());
+                minecraft.fontRendererObj.drawString(name, rectLeft + 4, rectTop+2, ColorCode.WHITE.getColor());
             }
         }
     }

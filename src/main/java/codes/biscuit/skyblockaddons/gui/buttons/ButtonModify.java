@@ -35,16 +35,16 @@ public class ButtonModify extends ButtonText {
             boxAlpha = 170;
         }
         if (hitMaximum()) {
-            boxColor = ColorCode.GRAY.getColor(boxAlpha).getRGB();
+            boxColor = ColorCode.GRAY.getColor(boxAlpha);
         } else {
             if (feature == Feature.ADD) {
-                boxColor = ColorCode.GREEN.getColor(boxAlpha).getRGB();
+                boxColor = ColorCode.GREEN.getColor(boxAlpha);
             } else {
-                boxColor = ColorCode.RED.getColor(boxAlpha).getRGB();
+                boxColor = ColorCode.RED.getColor(boxAlpha);
             }
         }
         GlStateManager.enableBlend();
-        int fontColor = new Color(224, 224, 224, 255).getRGB();
+        int fontColor = ColorCode.WHITE.getColor();
         if (hovered && !hitMaximum()) {
             fontColor = new Color(255, 255, 160, 255).getRGB();
         }

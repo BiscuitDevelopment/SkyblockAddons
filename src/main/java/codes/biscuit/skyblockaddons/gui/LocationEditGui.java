@@ -291,10 +291,10 @@ public class LocationEditGui extends GuiScreen {
             ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
             int x = anchorPoint.getX(sr.getScaledWidth());
             int y = anchorPoint.getY(sr.getScaledHeight());
-            int color = ColorCode.RED.getColor(127).getRGB();
+            int color = ColorCode.RED.getColor(127);
             Feature lastHovered = ButtonLocation.getLastHoveredFeature();
             if (lastHovered != null && main.getConfigValues().getAnchorPoint(lastHovered) == anchorPoint) {
-                color = ColorCode.YELLOW.getColor(127).getRGB();
+                color = ColorCode.YELLOW.getColor(127);
             }
             Gui.drawRect(x-4, y-4, x+4, y+4, color);
         }

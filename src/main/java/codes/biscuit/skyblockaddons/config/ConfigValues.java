@@ -157,7 +157,7 @@ public class ConfigValues {
                         if (feature != null) {
                             ColorCode colorCode = ColorCode.values()[element.getValue().getAsInt()];
                             if (colorCode.isColor() && colorCode != ColorCode.RED) { // Red is default, no need to set it.
-                                colors.put(feature, colorCode.getRGB());
+                                colors.put(feature, colorCode.getColor());
                             }
                         }
                     }
@@ -265,7 +265,7 @@ public class ConfigValues {
         for (Feature feature : Feature.values()) {
             ColorCode color = feature.getDefaultColor();
             if (color != null) {
-                colors.put(feature, color.getRGB());
+                colors.put(feature, color.getColor());
             }
             if (feature.isDefaultDisabled()) {
                 disabledFeatures.add(feature);
@@ -316,7 +316,7 @@ public class ConfigValues {
             JsonObject colorsObject = new JsonObject();
             for (Feature feature : colors.keySet()) {
                 int featureColor = colors.get(feature);
-                if (featureColor != ColorCode.RED.getRGB()) { // Red is default, no need to save it!
+                if (featureColor != ColorCode.RED.getColor()) { // Red is default, no need to save it!
                     colorsObject.addProperty(String.valueOf(feature.getId()), colors.get(feature));
                 }
             }
@@ -678,27 +678,29 @@ public class ConfigValues {
         return !isDisabled(feature);
     }
 
-    public Color getColor(Feature feature, int alpha) {
-        if (alpha == 255) {
-            return getColor(feature);
-        }
-
-        if (chromaFeatures.contains(feature)) {
-            return new Color(ChromaManager.getChromaColor(0, 0));
-        }
-
-        Color color = getColor(feature);
-
-        return new Color(color.getRed(), color.getGreen(), color.getBlue(), alpha);
+    public Color getColorObject(Feature feature, int alpha) {
+        return new Color(getColor(feature, alpha), true);
     }
 
-    public Color getColor(Feature feature) {
+    public Color getColorObject(Feature feature) {
+        return getColorObject(feature, 255);
+    }
+
+    public int getColor(Feature feature, int alpha) {
+        if (alpha < 4) {
+            alpha = 4; // Minimum apparently
+        }
+
         if (chromaFeatures.contains(feature)) {
-            return new Color(ChromaManager.getChromaColor(0, 0));
+            return ChromaManager.getChromaColor(0, 0, alpha);
         }
 
         ColorCode defaultColor = feature.getDefaultColor();
-        return new Color(colors.getOrDefault(feature, defaultColor != null ? defaultColor.getRGB() : ColorCode.RED.getRGB()));
+        return colors.getOrDefault(feature, defaultColor != null ? defaultColor.getColor() : ColorCode.RED.getColor());
+    }
+
+    public int getColor(Feature feature) {
+        return this.getColor(feature, 255);
     }
 
     public ColorCode getRestrictedColor(Feature feature) {
@@ -706,13 +708,12 @@ public class ConfigValues {
 
         if (featureColor != null) {
             for (ColorCode colorCode : ColorCode.values()) {
-                try {
-                    if (colorCode.getRGB() == featureColor) {
-                        return colorCode;
-                    }
+                if (!colorCode.isColor()) {
+                    continue;
                 }
-                catch (IllegalArgumentException ignored) {
-                    // This chat formatting has no color, let's ignore it.
+
+                if (colorCode.getColor() == featureColor) {
+                    return colorCode;
                 }
             }
         }
