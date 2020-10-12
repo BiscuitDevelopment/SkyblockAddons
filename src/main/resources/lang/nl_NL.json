@@ -298,8 +298,8 @@
     "sba.toggleActionBarLogging.enabled": "Berichten in de actiebalk worden nu gelogd.",
     "sba.wrongUsage.generic": "Verkeerd gebruik!",
     "sba.wrongUsage.subCommandNotFound": "Het subcommando \"%sub-command%\" is niet gevonden.",
-    "sba.slayer": "Manually set slayer stats, press tab for arguments",
-    "sba.help.slayer": "Manually set slayer stats, press tab for arguments"
+    "sba.slayer": "Handmatig spelerstatistieken instellen, druk tab voor argumenten",
+    "sba.help.slayer": "Handmatig spelerstatistieken instellen, druk tab voor argumenten"
   },
   "keyBindings": {
     "developerCopyNBT": "NBT kopiëren"
@@ -312,12 +312,12 @@
     "young": "Young",
     "strong": "Strong",
     "superior": "Superior",
-    "recentDragons": "Recent Dragons:",
-    "dragonsSince": "Dragons Since:",
+    "recentDragons": "Recente draken:",
+    "dragonsSince": "Draken sinds:",
     "aspectOfTheDragons": "AOTD",
     "enderDragonPet": "Dragon Pet",
-    "eyesPlaced": "Eyes Placed",
-    "never": "Never"
+    "eyesPlaced": "Ogen geplaatst",
+    "never": "Nooit"
   },
   "slayerTracker": {
     "revenant": "Revenant Horror:",
