@@ -40,7 +40,7 @@ public class ButtonBanner extends GuiButton {
             bannerImage = null;
             banner = null;
 
-            SkyblockAddons.newThread(() -> {
+            SkyblockAddons.runAsync(() -> {
                 try {
                     URL url = new URL(this.main.getOnlineData().getBannerImageURL());
                     HttpURLConnection connection = (HttpURLConnection)url.openConnection();
@@ -56,7 +56,7 @@ public class ButtonBanner extends GuiButton {
                 } catch (IOException ex) {
                     SkyblockAddons.getLogger().info("Couldn't grab main menu banner image from URL, falling back to local banner.");
                 }
-            }).start();
+            });
         }
 
         xPosition -= WIDTH/2;

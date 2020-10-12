@@ -73,18 +73,6 @@ public class Utils {
     public static final String MESSAGE_PREFIX =
             ColorCode.GRAY + "[" + ColorCode.AQUA + SkyblockAddons.MOD_NAME + ColorCode.GRAY + "] ";
 
-    /** Enchantments listed by how good they are. May or may not be subjective lol. */
-    private static final List<String> ORDERED_ENCHANTMENTS = Collections.unmodifiableList(Arrays.asList(
-            "smite","bane of arthropods","knockback","fire aspect","venomous", // Sword Bad
-            "thorns","growth","protection","depth strider","respiration","aqua affinity", // Armor
-            "lure","caster","luck of the sea","blessing","angler","frail","magnet","spiked hook", // Fishing
-            "dragon hunter","power","snipe","piercing","aiming","infinite quiver", // Bow Main
-            "sharpness","critical","first strike","giant killer","execute","lethality","ender slayer","cubism","impaling", // Sword Damage
-            "vampirism","life steal","looting","luck","scavenger","experience","cleave","thunderlord", // Sword Others
-            "punch","flame", // Bow Others
-            "telekinesis"
-    ));
-
     private static final Pattern SERVER_REGEX = Pattern.compile("(?<serverType>[Mm])(?<serverCode>[0-9]+[A-Z])$");
     private static final Pattern PURSE_REGEX = Pattern.compile("(?:Purse|Piggy): (?<coins>[0-9.]*)(?: .*)?");
     private static final Pattern SLAYER_TYPE_REGEX = Pattern.compile("(?<type>Tarantula Broodfather|Revenant Horror|Sven Packmaster) (?<level>[IV]+)");
@@ -523,7 +511,7 @@ public class Utils {
     }
 
     public void fetchMagmaBossEstimate() {
-        SkyblockAddons.newThread(() -> {
+        SkyblockAddons.runAsync(() -> {
             boolean magmaTimerEnabled = main.getConfigValues().isEnabled(Feature.MAGMA_BOSS_TIMER);
             if (!magmaTimerEnabled) {
                 logger.info("Getting magma boss spawn estimate from server...");
@@ -557,11 +545,11 @@ public class Utils {
                     logger.warn("Failed to get magma boss spawn estimate from server");
                 }
             }
-        }).start();
+        });
     }
 
     public void sendInventiveTalentPingRequest(EnumUtils.MagmaEvent event) {
-        SkyblockAddons.newThread(() -> {
+        SkyblockAddons.runAsync(() -> {
             boolean magmaTimerEnabled = main.getConfigValues().isEnabled(Feature.MAGMA_BOSS_TIMER);
             if (!magmaTimerEnabled) {
                 logger.info("Posting event " + event.getInventiveTalentEvent() + " to InventiveTalent API");
@@ -601,7 +589,7 @@ public class Utils {
                     logger.warn("Failed to post event to server");
                 }
             }
-        }).start();
+        });
     }
 
     /**
@@ -657,21 +645,6 @@ public class Utils {
 
     public int getDefaultBlue(int alpha) {
         return new Color(160, 225, 229, alpha).getRGB();
-    }
-
-    public void reorderEnchantmentList(List<String> enchantments) {
-        SortedMap<Integer, String> orderedEnchants = new TreeMap<>();
-        for (int i = 0; i < enchantments.size(); i++) {
-            int nameEnd = enchantments.get(i).lastIndexOf(' ');
-            if (nameEnd < 0) nameEnd = enchantments.get(i).length();
-
-            int key = ORDERED_ENCHANTMENTS.indexOf(enchantments.get(i).substring(0, nameEnd).toLowerCase(Locale.US));
-            if (key < 0) key = 100 + i;
-            orderedEnchants.put(key, enchantments.get(i));
-        }
-
-        enchantments.clear();
-        enchantments.addAll(orderedEnchants.values());
     }
 
     public int getAlpha(int color) {
@@ -801,15 +774,14 @@ public class Utils {
             posChromaColor(worldrenderer, right, bottom);
             posChromaColor(worldrenderer, right, top);
             posChromaColor(worldrenderer, left, top);
-            tessellator.draw();
         } else {
             worldrenderer.begin(7, DefaultVertexFormats.POSITION);
             worldrenderer.pos(left, bottom, 0.0D).endVertex();
             worldrenderer.pos(right, bottom, 0.0D).endVertex();
             worldrenderer.pos(right, top, 0.0D).endVertex();
             worldrenderer.pos(left, top, 0.0D).endVertex();
-            tessellator.draw();
         }
+        tessellator.draw();
         GlStateManager.enableTexture2D();
         GlStateManager.disableBlend();
     }
@@ -882,7 +854,7 @@ public class Utils {
 
     public void tryPullingLanguageOnline(Language language) {
         logger.info("Attempting to pull updated language files from online.");
-        SkyblockAddons.newThread(() -> {
+        SkyblockAddons.runAsync(() -> {
             try {
                 URL url = new URL(String.format(main.getOnlineData().getLanguageJSONFormat(), language.getPath()));
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -899,7 +871,7 @@ public class Utils {
                 logger.error("There was an error loading the language file online");
                 logger.catching(ex);
             }
-        }).start();
+        });
     }
 
     public static String getTranslatedString(String parentPath, String value)

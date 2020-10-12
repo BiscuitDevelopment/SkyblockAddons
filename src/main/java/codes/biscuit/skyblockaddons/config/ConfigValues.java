@@ -29,6 +29,7 @@ import java.io.*;
 import java.lang.reflect.Method;
 import java.util.List;
 import java.util.*;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class ConfigValues {
 
@@ -37,6 +38,8 @@ public class ConfigValues {
     private final static float DEFAULT_GUI_SCALE = normalizeValueNoStep(1);
     private final static float GUI_SCALE_MINIMUM = 0.5F;
     private final static float GUI_SCALE_MAXIMUM = 5;
+
+    private static final ReentrantLock SAVE_LOCK = new ReentrantLock();
 
     private SkyblockAddons main = SkyblockAddons.getInstance();
     private Logger logger = SkyblockAddons.getLogger();
@@ -279,118 +282,126 @@ public class ConfigValues {
 
     @SuppressWarnings("ResultOfMethodCallIgnored")
     public void saveConfig() {
-        try {
-            settingsConfigFile.createNewFile();
-
-            JsonObject saveConfig = new JsonObject();
-
-            JsonArray jsonArray = new JsonArray();
-            for (Feature element : disabledFeatures) {
-                jsonArray.add(new GsonBuilder().create().toJsonTree(element.getId()));
+        SkyblockAddons.runAsync(() -> {
+            if (!SAVE_LOCK.tryLock()) {
+                return;
             }
-            saveConfig.add("disabledFeatures", jsonArray);
 
-            JsonObject profileSlotsObject = new JsonObject();
-            for (Map.Entry<String, Set<Integer>> entry : profileLockedSlots.entrySet()) {
-                JsonArray lockedSlots = new JsonArray();
-                for (int slot : entry.getValue()) {
-                    lockedSlots.add(new GsonBuilder().create().toJsonTree(slot));
+            try {
+                settingsConfigFile.createNewFile();
+
+                JsonObject saveConfig = new JsonObject();
+
+                JsonArray jsonArray = new JsonArray();
+                for (Feature element : disabledFeatures) {
+                    jsonArray.add(new GsonBuilder().create().toJsonTree(element.getId()));
                 }
-                profileSlotsObject.add(entry.getKey(), lockedSlots);
-            }
-            saveConfig.add("profileLockedSlots", profileSlotsObject);
+                saveConfig.add("disabledFeatures", jsonArray);
 
-            JsonObject anchorObject = new JsonObject();
-            for (Feature feature : Feature.getGuiFeatures()) {
-                anchorObject.addProperty(String.valueOf(feature.getId()), getAnchorPoint(feature).getId());
-            }
-            saveConfig.add("anchorPoints", anchorObject);
-
-            JsonObject scalesObject = new JsonObject();
-            for (Feature feature : guiScales.keySet()) {
-                scalesObject.addProperty(String.valueOf(feature.getId()), guiScales.get(feature));
-            }
-            saveConfig.add("guiScales", scalesObject);
-
-            JsonObject colorsObject = new JsonObject();
-            for (Feature feature : colors.keySet()) {
-                int featureColor = colors.get(feature);
-                if (featureColor != ColorCode.RED.getColor()) { // Red is default, no need to save it!
-                    colorsObject.addProperty(String.valueOf(feature.getId()), colors.get(feature));
+                JsonObject profileSlotsObject = new JsonObject();
+                for (Map.Entry<String, Set<Integer>> entry : profileLockedSlots.entrySet()) {
+                    JsonArray lockedSlots = new JsonArray();
+                    for (int slot : entry.getValue()) {
+                        lockedSlots.add(new GsonBuilder().create().toJsonTree(slot));
+                    }
+                    profileSlotsObject.add(entry.getKey(), lockedSlots);
                 }
+                saveConfig.add("profileLockedSlots", profileSlotsObject);
+
+                JsonObject anchorObject = new JsonObject();
+                for (Feature feature : Feature.getGuiFeatures()) {
+                    anchorObject.addProperty(String.valueOf(feature.getId()), getAnchorPoint(feature).getId());
+                }
+                saveConfig.add("anchorPoints", anchorObject);
+
+                JsonObject scalesObject = new JsonObject();
+                for (Feature feature : guiScales.keySet()) {
+                    scalesObject.addProperty(String.valueOf(feature.getId()), guiScales.get(feature));
+                }
+                saveConfig.add("guiScales", scalesObject);
+
+                JsonObject colorsObject = new JsonObject();
+                for (Feature feature : colors.keySet()) {
+                    int featureColor = colors.get(feature);
+                    if (featureColor != ColorCode.RED.getColor()) { // Red is default, no need to save it!
+                        colorsObject.addProperty(String.valueOf(feature.getId()), colors.get(feature));
+                    }
+                }
+                saveConfig.add("colors", colorsObject);
+
+                // Old gui coordinates, for backwards compatibility...
+                JsonObject coordinatesObject = new JsonObject();
+                for (Feature feature : coordinates.keySet()) {
+                    JsonArray coordinatesArray = new JsonArray();
+                    coordinatesArray.add(new GsonBuilder().create().toJsonTree(Math.round(coordinates.get(feature).getX())));
+                    coordinatesArray.add(new GsonBuilder().create().toJsonTree(Math.round(coordinates.get(feature).getY())));
+                    coordinatesObject.add(String.valueOf(feature.getId()), coordinatesArray);
+                }
+                saveConfig.add("guiPositions", coordinatesObject);
+                // New gui coordinates
+                coordinatesObject = new JsonObject();
+                for (Feature feature : coordinates.keySet()) {
+                    JsonArray coordinatesArray = new JsonArray();
+                    coordinatesArray.add(new GsonBuilder().create().toJsonTree(coordinates.get(feature).getX()));
+                    coordinatesArray.add(new GsonBuilder().create().toJsonTree(coordinates.get(feature).getY()));
+                    coordinatesObject.add(String.valueOf(feature.getId()), coordinatesArray);
+                }
+                saveConfig.add("coordinates", coordinatesObject);
+
+                JsonObject barSizesObject = new JsonObject();
+                for (Feature feature : barSizes.keySet()) {
+                    JsonArray sizesArray = new JsonArray();
+                    sizesArray.add(new GsonBuilder().create().toJsonTree(barSizes.get(feature).getX()));
+                    sizesArray.add(new GsonBuilder().create().toJsonTree(barSizes.get(feature).getY()));
+                    barSizesObject.add(String.valueOf(feature.getId()), sizesArray);
+                }
+                saveConfig.add("barSizes", barSizesObject);
+
+                saveConfig.addProperty("warningSeconds", warningSeconds);
+
+                saveConfig.addProperty("textStyle", textStyle.getValue().ordinal());
+                saveConfig.addProperty("language", language.getValue().getPath());
+                saveConfig.addProperty("backpackStyle", backpackStyle.getValue().ordinal());
+                saveConfig.addProperty("powerOrbStyle", powerOrbDisplayStyle.getValue().ordinal());
+
+                JsonArray chromaFeaturesArray = new JsonArray();
+                for (Feature feature : chromaFeatures) {
+                    chromaFeaturesArray.add(new GsonBuilder().create().toJsonTree(feature.getId()));
+                }
+                saveConfig.add("chromaFeatures", chromaFeaturesArray);
+                saveConfig.addProperty("chromaSpeed", chromaSpeed);
+                saveConfig.addProperty("chromaMode", chromaMode.getValue().ordinal());
+                saveConfig.addProperty("chromaFadeWidth", chromaFadeWidth);
+
+                saveConfig.addProperty("discordStatus", discordStatus.getValue().ordinal());
+                saveConfig.addProperty("discordDetails", discordDetails.getValue().ordinal());
+                saveConfig.addProperty("discordAutoDefault", discordAutoDefault.getValue().ordinal());
+
+                JsonArray discordCustomStatusesArray = new JsonArray();
+                for (String string : discordCustomStatuses) {
+                    discordCustomStatusesArray.add(new GsonBuilder().create().toJsonTree(string));
+                }
+                saveConfig.add("discordCustomStatuses", discordCustomStatusesArray);
+
+                saveConfig.addProperty("mapZoom", mapZoom);
+
+                saveConfig.addProperty("configVersion", CONFIG_VERSION);
+                int largestFeatureID = 0;
+                for (Feature feature : Feature.values()) {
+                    if (feature.getId() > largestFeatureID) largestFeatureID = feature.getId();
+                }
+                saveConfig.addProperty("lastFeatureID", largestFeatureID);
+
+                try (FileWriter writer = new FileWriter(settingsConfigFile)) {
+                    SkyblockAddons.getGson().toJson(saveConfig, writer);
+                }
+            } catch (Exception ex) {
+                logger.error("An error occurred while attempting to save the config!");
+                logger.catching(ex);
             }
-            saveConfig.add("colors", colorsObject);
 
-            // Old gui coordinates, for backwards compatibility...
-            JsonObject coordinatesObject = new JsonObject();
-            for (Feature feature : coordinates.keySet()) {
-                JsonArray coordinatesArray = new JsonArray();
-                coordinatesArray.add(new GsonBuilder().create().toJsonTree(Math.round(coordinates.get(feature).getX())));
-                coordinatesArray.add(new GsonBuilder().create().toJsonTree(Math.round(coordinates.get(feature).getY())));
-                coordinatesObject.add(String.valueOf(feature.getId()), coordinatesArray);
-            }
-            saveConfig.add("guiPositions", coordinatesObject);
-            // New gui coordinates
-            coordinatesObject = new JsonObject();
-            for (Feature feature : coordinates.keySet()) {
-                JsonArray coordinatesArray = new JsonArray();
-                coordinatesArray.add(new GsonBuilder().create().toJsonTree(coordinates.get(feature).getX()));
-                coordinatesArray.add(new GsonBuilder().create().toJsonTree(coordinates.get(feature).getY()));
-                coordinatesObject.add(String.valueOf(feature.getId()), coordinatesArray);
-            }
-            saveConfig.add("coordinates", coordinatesObject);
-
-            JsonObject barSizesObject = new JsonObject();
-            for (Feature feature : barSizes.keySet()) {
-                JsonArray sizesArray = new JsonArray();
-                sizesArray.add(new GsonBuilder().create().toJsonTree(barSizes.get(feature).getX()));
-                sizesArray.add(new GsonBuilder().create().toJsonTree(barSizes.get(feature).getY()));
-                barSizesObject.add(String.valueOf(feature.getId()), sizesArray);
-            }
-            saveConfig.add("barSizes", barSizesObject);
-
-            saveConfig.addProperty("warningSeconds", warningSeconds);
-
-            saveConfig.addProperty("textStyle", textStyle.getValue().ordinal());
-            saveConfig.addProperty("language", language.getValue().getPath());
-            saveConfig.addProperty("backpackStyle", backpackStyle.getValue().ordinal());
-            saveConfig.addProperty("powerOrbStyle", powerOrbDisplayStyle.getValue().ordinal());
-
-            JsonArray chromaFeaturesArray = new JsonArray();
-            for (Feature feature : chromaFeatures) {
-                chromaFeaturesArray.add(new GsonBuilder().create().toJsonTree(feature.getId()));
-            }
-            saveConfig.add("chromaFeatures", chromaFeaturesArray);
-            saveConfig.addProperty("chromaSpeed", chromaSpeed);
-            saveConfig.addProperty("chromaMode", chromaMode.getValue().ordinal());
-            saveConfig.addProperty("chromaFadeWidth", chromaFadeWidth);
-
-            saveConfig.addProperty("discordStatus", discordStatus.getValue().ordinal());
-            saveConfig.addProperty("discordDetails", discordDetails.getValue().ordinal());
-            saveConfig.addProperty("discordAutoDefault", discordAutoDefault.getValue().ordinal());
-
-            JsonArray discordCustomStatusesArray = new JsonArray();
-            for (String string : discordCustomStatuses) {
-                discordCustomStatusesArray.add(new GsonBuilder().create().toJsonTree(string));
-            }
-            saveConfig.add("discordCustomStatuses", discordCustomStatusesArray);
-
-            saveConfig.addProperty("mapZoom", mapZoom);
-
-            saveConfig.addProperty("configVersion", CONFIG_VERSION);
-            int largestFeatureID = 0;
-            for (Feature feature : Feature.values()) {
-                if (feature.getId() > largestFeatureID) largestFeatureID = feature.getId();
-            }
-            saveConfig.addProperty("lastFeatureID", largestFeatureID);
-
-            try (FileWriter writer = new FileWriter(this.settingsConfigFile)) {
-                SkyblockAddons.getGson().toJson(saveConfig, writer);
-            }
-        } catch (Exception ex) {
-            logger.error("An error occurred while attempting to save the config!");
-            logger.catching(ex);
-        }
+            SAVE_LOCK.unlock();
+        });
     }
 
 
@@ -444,8 +455,6 @@ public class ConfigValues {
         }
     }
 
-
-    @SuppressWarnings("unchecked")
     private <E extends Enum<?>, F extends Enum<?>> void deserializeEnumEnumMapFromIDS(Map<E, F> map, String path, Class<E> keyClass, Class<F> valueClass) {
         deserializeEnumEnumMapFromIDS(loadedConfig, map, path, keyClass, valueClass);
     }

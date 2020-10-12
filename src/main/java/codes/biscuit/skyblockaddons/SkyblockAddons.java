@@ -20,6 +20,7 @@ import codes.biscuit.skyblockaddons.misc.scheduler.Scheduler;
 import codes.biscuit.skyblockaddons.misc.scheduler.SkyblockRunnable;
 import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsTransformer;
 import codes.biscuit.skyblockaddons.utils.*;
+import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import lombok.Getter;
@@ -38,6 +39,7 @@ import org.apache.logging.log4j.Logger;
 import org.lwjgl.input.Keyboard;
 
 import java.util.*;
+import java.util.concurrent.*;
 
 @Getter
 @Mod(modid = "skyblockaddons", name = "SkyblockAddons", version = "@VERSION@", clientSideOnly = true, acceptedMinecraftVersions = "@MOD_ACCEPTED@")
@@ -50,10 +52,8 @@ public class SkyblockAddons {
     @Getter private static SkyblockAddons instance;
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 
-    private static int threadNumber;
-    public static synchronized int nextThreadNumber() {
-        return threadNumber++;
-    }
+    private static final Executor THREAD_EXECUTOR = new ThreadPoolExecutor(0, 1, 60L, TimeUnit.SECONDS,
+            new LinkedBlockingQueue<>(), new ThreadFactoryBuilder().setNameFormat(SkyblockAddons.MOD_NAME + " - #%d").build());
 
     private ConfigValues configValues;
     private PersistentValuesManager persistentValuesManager;
@@ -200,20 +200,13 @@ public class SkyblockAddons {
         return GSON;
     }
 
-    // This replaces the version placeholder if the mod is built using IntelliJ instead of Gradle.
-    static {
-        if (VERSION.contains("@")) { // Debug environment...
-            VERSION = "1.6.0";
-        }
-    }
-
     /**
      * @return a {@code Logger} containing the name of the calling class in the prefix.
      */
     public static Logger getLogger() {
         String fullClassName = new Throwable().getStackTrace()[1].getClassName();
-
         String simpleClassName = fullClassName.substring(fullClassName.lastIndexOf('.') + 1);
+
         String loggerName = MOD_NAME + "/" + simpleClassName;
 
         if (SkyblockAddonsTransformer.isDeobfuscated()) {
@@ -223,7 +216,23 @@ public class SkyblockAddons {
         }
     }
 
-    public static Thread newThread(Runnable runnable) {
-        return new Thread(runnable, MOD_NAME + " #" + nextThreadNumber());
+    public static void runAsync(Runnable runnable) {
+        StackTraceElement stackTraceElement = new Throwable().getStackTrace()[1];
+        String fullClassName = stackTraceElement.getClassName();
+        String methodName = stackTraceElement.getMethodName();
+        String simpleClassName = fullClassName.substring(fullClassName.lastIndexOf('.') + 1);
+
+        THREAD_EXECUTOR.execute(() -> {
+            getLogger().info("Started asynchronous task from " + simpleClassName  + "#" + methodName + ".");
+            runnable.run();
+            getLogger().info("Asynchronous task from " + simpleClassName  + "#" + methodName + " has finished.");
+        });
+    }
+
+    // This replaces the version placeholder if the mod is built using IntelliJ instead of Gradle.
+    static {
+        if (VERSION.contains("@")) { // Debug environment...
+            VERSION = "1.6.0";
+        }
     }
 }

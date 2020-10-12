@@ -35,7 +35,7 @@ public class DiscordRPCManager implements IPCListener {
     private boolean connected;
 
     public void start() {
-        SkyblockAddons.newThread(() -> {
+        SkyblockAddons.runAsync(() -> {
             try {
                 logger.info("Starting Discord RPC...");
                 if (isActive()) {
@@ -57,16 +57,16 @@ public class DiscordRPCManager implements IPCListener {
                 logger.error("Discord RPC has thrown an unexpected error while trying to start...");
                 logger.catching(ex);
             }
-        }).start();
+        });
     }
 
     public void stop() {
-        SkyblockAddons.newThread(() -> {
+        SkyblockAddons.runAsync(() -> {
             if (isActive()) {
                 connected = false;
                 client.close();
             }
-        }).start();
+        });
     }
 
     public boolean isActive() {
