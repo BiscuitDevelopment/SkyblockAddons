@@ -65,7 +65,7 @@ public enum ColorCode {
 		this.isFormat = isFormat;
 		this.jsonName = jsonName;
 		this.toString = new String(new char[] { COLOR_CHAR, code });
-		this.color = rgb;
+		this.color = (255 << 24) | (rgb & 0x00FFFFFF);
 	}
 
     /**
@@ -88,11 +88,11 @@ public enum ColorCode {
 	}
 
 	public Color getColorObject() {
-		return new Color(this.color);
+		return new Color(color);
 	}
 
 	public int getColor(int alpha) {
-		return SkyblockAddons.getInstance().getUtils().getColorWithAlpha(this.color, alpha);
+		return SkyblockAddons.getInstance().getUtils().getColorWithAlpha(color, alpha);
 	}
 
 	public String getJsonName() {
