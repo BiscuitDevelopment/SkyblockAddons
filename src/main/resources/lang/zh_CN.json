@@ -164,9 +164,9 @@
     "dungeonsTeammateNameOverlay": "在地下城中高亮队友名字",
     "showExpertiseKills": "显示 Expertise 击杀进度",
     "dungeonsSecretsDisplay": "Dungeons Secrets Display",
-    "showSkillPercentageInstead": "Show Percentage Instead of XP",
+    "showSkillPercentageInstead": "以技能进度百分比代替技能经验值",
     "showSkillXPGained": "Show XP Gained",
-    "skillProgressBar": "Skill Progress Bar"
+    "skillProgressBar": "技能升级进度条"
   },
   "messages": {
     "enchants": "附魔",
