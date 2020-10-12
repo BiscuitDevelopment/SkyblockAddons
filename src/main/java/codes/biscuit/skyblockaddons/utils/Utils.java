@@ -108,7 +108,7 @@ public class Utils {
     private boolean onSkyblock;
 
     /** The player's current location in Skyblock */
-    private Location location = Location.UNKNOWN;
+    @Getter private Location location = Location.UNKNOWN;
 
     /** The skyblock profile that the player is currently on. Ex. "Grapefruit" */
     private String profileName = "Unknown";
@@ -302,19 +302,22 @@ public class Utils {
                     }
 
                     if (!foundLocation) {
-                        for (Location loopLocation : Location.values()) {
-                            if (strippedUnformatted.endsWith(loopLocation.getScoreboardName())) {
-                                if (loopLocation == Location.BLAZING_FORTRESS && location != Location.BLAZING_FORTRESS) {
-                                    sendInventiveTalentPingRequest(EnumUtils.MagmaEvent.PING); // going into blazing fortress
-                                    fetchMagmaBossEstimate();
-                                }
+                        // Catacombs contains the floor number so it's a special case...
+                        if (strippedUnformatted.contains(Location.THE_CATACOMBS.getScoreboardName())) {
+                            location = Location.THE_CATACOMBS;
+                            foundLocation = true;
+                        } else {
+                            for (Location loopLocation : Location.values()) {
+                                if (strippedUnformatted.endsWith(loopLocation.getScoreboardName())) {
+                                    if (loopLocation == Location.BLAZING_FORTRESS && location != Location.BLAZING_FORTRESS) {
+                                        sendInventiveTalentPingRequest(EnumUtils.MagmaEvent.PING); // going into blazing fortress
+                                        fetchMagmaBossEstimate();
+                                    }
 
-                                if (location != loopLocation) {
                                     location = loopLocation;
+                                    foundLocation = true;
+                                    break;
                                 }
-
-                                foundLocation = true;
-                                break;
                             }
                         }
                     }
@@ -1203,14 +1206,6 @@ public class Utils {
 
     public void drawCenteredString(String text, float x, float y, int color) {
         Minecraft.getMinecraft().fontRendererObj.drawString(text, x - Minecraft.getMinecraft().fontRendererObj.getStringWidth(text) / 2F, y, color, true);
-    }
-
-    public Location getLocation() {
-        if (inDungeon) {
-            return Location.DUNGEON;
-        }
-
-        return location;
     }
 
     public void drawScaledCustomSizeModalRect(float x, float y, float u, float v, float uWidth, float vHeight, float width, float height, float tileWidth, float tileHeight, boolean linearTexture) {
