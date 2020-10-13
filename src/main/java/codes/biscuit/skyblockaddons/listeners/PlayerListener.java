@@ -907,85 +907,61 @@ public class PlayerListener {
                 }
             }
 
-            if (main.getConfigValues().isEnabled(Feature.SHOW_ITEM_ANVIL_USES)) {
-                // Anvil Uses ~ original done by Dahn#6036
-                int anvilUses = main.getUtils().getNBTInteger(hoveredItem, "ExtraAttributes", "anvil_uses");
-                if (anvilUses != -1) {
-                    int hotPotatoCount = main.getUtils().getNBTInteger(hoveredItem, "ExtraAttributes", "hot_potato_count");
-                    if (hotPotatoCount != -1) {
-                        anvilUses -= hotPotatoCount;
+            NBTTagCompound extraAttributes = ItemUtils.getExtraAttributes(hoveredItem);
+            if (extraAttributes != null) {
+                if (main.getConfigValues().isEnabled(Feature.SHOW_ITEM_ANVIL_USES) && extraAttributes.hasKey("anvil_uses", ItemUtils.NBT_INTEGER)) {
+                    // Anvil Uses ~ original done by Dahn#6036
+                    int anvilUses = extraAttributes.getInteger("anvil_uses");
+                    if (extraAttributes.hasKey("hot_potato_count", ItemUtils.NBT_INTEGER)) {
+                        anvilUses -= extraAttributes.getInteger("hot_potato_count");
                     }
                     if (anvilUses > 0) {
                         e.toolTip.add(insertAt++, Message.MESSAGE_ANVIL_USES.getMessage(String.valueOf(anvilUses)));
                     }
                 }
-            }
 
-            if (main.getConfigValues().isEnabled(Feature.SHOW_BROKEN_FRAGMENTS)) {
-                if (hoveredItem.getDisplayName().contains("Dragon Fragment")) {
-                    if (hoveredItem.hasTagCompound()) {
-                        NBTTagCompound extraAttributes = hoveredItem.getSubCompound("ExtraAttributes", false);
+                if (main.getConfigValues().isEnabled(Feature.SHOW_BROKEN_FRAGMENTS) && hoveredItem.getDisplayName().contains("Dragon Fragment") &&
+                        extraAttributes.hasKey("bossId") && extraAttributes.hasKey("spawnedFor")) {
+                    e.toolTip.add(insertAt++, "§c§lBROKEN FRAGMENT");
+                }
 
-                        if (extraAttributes != null) {
-                            if (extraAttributes.hasKey("bossId") && extraAttributes.hasKey("spawnedFor")) {
-                                e.toolTip.add(insertAt++, "§c§lBROKEN FRAGMENT§r");
-                            }
-                        }
+                if (main.getConfigValues().isEnabled(Feature.SHOW_BASE_STAT_BOOST_PERCENTAGE) && extraAttributes.hasKey("baseStatBoostPercentage", ItemUtils.NBT_INTEGER)) {
+                    int baseStatBoost = extraAttributes.getInteger("baseStatBoostPercentage");
+
+                    ColorCode colorCode = main.getConfigValues().getRestrictedColor(Feature.SHOW_BASE_STAT_BOOST_PERCENTAGE);
+                    if (main.getConfigValues().isEnabled(Feature.BASE_STAT_BOOST_COLOR_BY_RARITY)) {
+                        int rarityIndex = baseStatBoost / 10;
+                        if (rarityIndex < 0) rarityIndex = 0;
+                        if (rarityIndex >= ItemRarity.values().length) rarityIndex = ItemRarity.values().length - 1;
+
+                        colorCode = ItemRarity.values()[rarityIndex].getColorCode();
+                    }
+                    e.toolTip.add(insertAt++, "§7Base Stat Boost: " + colorCode + "+" + baseStatBoost + "%");
+                }
+
+                if (main.getConfigValues().isEnabled(Feature.SHOW_EXPERTISE_KILLS) && hoveredItem.getItem() == Items.fishing_rod && extraAttributes.hasKey("expertise_kills", ItemUtils.NBT_INTEGER)) {
+
+                    int expertiseKills = extraAttributes.getInteger("expertise_kills");
+                    ColorCode colorCode = main.getConfigValues().getRestrictedColor(Feature.SHOW_EXPERTISE_KILLS);
+                    if (expertiseKills >= EXPERTISE_KILL_TIERS.last()) {
+                        e.toolTip.add(insertAt++, "§7Expertise Kills: " + colorCode + expertiseKills + " (Maxed)");
+                    } else {
+                        e.toolTip.add(insertAt++, "§7Expertise Kills: " + colorCode + expertiseKills + " / " + EXPERTISE_KILL_TIERS.higher(expertiseKills));
                     }
                 }
-            }
 
-            if (main.getConfigValues().isEnabled(Feature.SHOW_BASE_STAT_BOOST_PERCENTAGE) && hoveredItem.hasTagCompound()) {
-                NBTTagCompound extraAttributes = ItemUtils.getExtraAttributes(hoveredItem);
-                if (extraAttributes != null) {
-                    int baseStatBoost = ItemUtils.getBaseStatBoostPercentage(extraAttributes);
-                    if (baseStatBoost != -1) {
-
-                        ColorCode colorCode = main.getConfigValues().getRestrictedColor(Feature.SHOW_BASE_STAT_BOOST_PERCENTAGE);
-                        if (main.getConfigValues().isEnabled(Feature.BASE_STAT_BOOST_COLOR_BY_RARITY)) {
-
-                            int rarityIndex = baseStatBoost/10;
-                            if (rarityIndex < 0) rarityIndex = 0;
-                            if (rarityIndex >= ItemRarity.values().length) rarityIndex = ItemRarity.values().length - 1;
-
-                            colorCode = ItemRarity.values()[rarityIndex].getColorCode();
-                        }
-                        e.toolTip.add(insertAt++, "§7Base Stat Boost: " + colorCode + "+" + baseStatBoost + "%");
-                    }
+                if (main.getConfigValues().isEnabled(Feature.SHOW_SWORD_KILLS) && extraAttributes.hasKey("sword_kills", ItemUtils.NBT_INTEGER)) {
+                    ColorCode colorCode = main.getConfigValues().getRestrictedColor(Feature.SHOW_SWORD_KILLS);
+                    e.toolTip.add(insertAt++, "§7Sword Kills: " + colorCode + extraAttributes.getInteger("sword_kills"));
                 }
-            }
 
-            if (main.getConfigValues().isEnabled(Feature.SHOW_EXPERTISE_KILLS) && hoveredItem.getItem() == Items.fishing_rod && hoveredItem.hasTagCompound()) {
-                NBTTagCompound extraAttributes = ItemUtils.getExtraAttributes(hoveredItem);
-
-                if (extraAttributes != null) {
-                    int expertiseKills = ItemUtils.getExpertiseKills(extraAttributes);
-                    if (expertiseKills != -1) {
-                        ColorCode colorCode = main.getConfigValues().getRestrictedColor(Feature.SHOW_EXPERTISE_KILLS);
-                        if (expertiseKills >= EXPERTISE_KILL_TIERS.last()) {
-                            e.toolTip.add(insertAt++, "§7Expertise Kills: " + colorCode + expertiseKills + " (Maxed)");
-                        } else {
-                            e.toolTip.add(insertAt++, "§7Expertise Kills: " + colorCode + expertiseKills + " / " + EXPERTISE_KILL_TIERS.higher(expertiseKills));
-                        }
-                    }
+                if (main.getConfigValues().isEnabled(Feature.SHOW_ITEM_DUNGEON_FLOOR) && extraAttributes.hasKey("item_tier", ItemUtils.NBT_INTEGER)) {
+                    int floor = extraAttributes.getInteger("item_tier");
+                    ColorCode colorCode = main.getConfigValues().getRestrictedColor(Feature.SHOW_ITEM_DUNGEON_FLOOR);
+                    e.toolTip.add(insertAt++, "§7Obtained on Floor: " + colorCode + (floor == 0 ? "Entrance" : floor));
                 }
-            }
 
-            if (main.getConfigValues().isEnabled(Feature.SHOW_ITEM_DUNGEON_FLOOR) && hoveredItem.hasTagCompound()) {
-                NBTTagCompound extraAttributes = ItemUtils.getExtraAttributes(hoveredItem);
-                if (extraAttributes != null) {
-                    int floor = ItemUtils.getDungeonFloor(extraAttributes);
-                    if (floor != -1) {
-                        ColorCode colorCode = main.getConfigValues().getRestrictedColor(Feature.SHOW_ITEM_DUNGEON_FLOOR);
-                        e.toolTip.add(insertAt++, "§7Obtained on Floor: " + colorCode + (floor == 0 ? "Entrance" : floor));
-                    }
-                }
-            }
-
-            if (main.getConfigValues().isEnabled(Feature.SHOW_RARITY_UPGRADED) && hoveredItem.hasTagCompound()) {
-                NBTTagCompound extraAttributes = ItemUtils.getExtraAttributes(hoveredItem);
-
-                if (extraAttributes != null && ItemUtils.getRarityUpgrades(extraAttributes) > 0) {
+                if (main.getConfigValues().isEnabled(Feature.SHOW_RARITY_UPGRADED) && extraAttributes.hasKey("rarity_upgrades", ItemUtils.NBT_INTEGER)) {
                     e.toolTip.add(insertAt++, main.getConfigValues().getRestrictedColor(Feature.SHOW_RARITY_UPGRADED) + "§lRARITY UPGRADED");
                 }
             }
