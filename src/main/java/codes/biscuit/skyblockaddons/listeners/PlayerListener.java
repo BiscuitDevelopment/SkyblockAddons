@@ -8,6 +8,7 @@ import codes.biscuit.skyblockaddons.events.DungeonPlayerReviveEvent;
 import codes.biscuit.skyblockaddons.events.SkyblockPlayerDeathEvent;
 import codes.biscuit.skyblockaddons.features.BaitManager;
 import codes.biscuit.skyblockaddons.features.EndstoneProtectorManager;
+import codes.biscuit.skyblockaddons.features.JerryPresent;
 import codes.biscuit.skyblockaddons.features.backpacks.BackpackManager;
 import codes.biscuit.skyblockaddons.features.backpacks.ContainerPreview;
 import codes.biscuit.skyblockaddons.features.cooldowns.CooldownManager;
@@ -166,6 +167,7 @@ public class PlayerListener {
             }
 
             NPCUtils.getNpcLocations().clear();
+            JerryPresent.getJerryPresents().clear();
         }
     }
 
@@ -483,6 +485,7 @@ public class PlayerListener {
                 if (shouldTriggerFishingIndicator()) { // The logic fits better in its own function
                     main.getUtils().playLoudSound("random.successful_hit", 0.8);
                 }
+
                 if (timerTick == 20) { // Add natural mana every second (increase is based on your max mana).
                     if (main.getRenderListener().isPredictMana()) {
                         changeMana(getAttribute(Attribute.MAX_MANA) / 50);
@@ -534,15 +537,29 @@ public class PlayerListener {
 
         Entity entity = e.entity;
 
-        if (entity instanceof EntityOtherPlayerMP && main.getConfigValues().isEnabled(Feature.HIDE_PLAYERS_NEAR_NPCS) && entity.ticksExisted < 5) {
-            float health = ((EntityOtherPlayerMP) entity).getHealth();
-
-            if (NPCUtils.getNpcLocations().containsKey(entity.getUniqueID())) {
-                if (health != 20.0F) {
-                    NPCUtils.getNpcLocations().remove(entity.getUniqueID());
+        if (entity.ticksExisted < 5) {
+            if (main.getConfigValues().isEnabled(Feature.HIDE_OTHER_PLAYERS_PRESENTS) || main.getConfigValues().isEnabled(Feature.EASIER_PRESENT_OPENING)) {
+                if (!JerryPresent.getJerryPresents().containsKey(entity.getUniqueID())) {
+                    JerryPresent present = JerryPresent.getJerryPresent(entity);
+                    if (present != null) {
+                        JerryPresent.getJerryPresents().put(entity.getUniqueID(), present);
+                        return;
+                    }
                 }
-            } else if (NPCUtils.isNPC(entity)) {
-                NPCUtils.getNpcLocations().put(entity.getUniqueID(), entity.getPositionVector());
+            }
+
+            if (entity instanceof EntityOtherPlayerMP && main.getConfigValues().isEnabled(Feature.HIDE_PLAYERS_NEAR_NPCS)) {
+                float health = ((EntityOtherPlayerMP) entity).getHealth();
+
+                if (NPCUtils.getNpcLocations().containsKey(entity.getUniqueID())) {
+                    if (health != 20.0F) {
+                        NPCUtils.getNpcLocations().remove(entity.getUniqueID());
+                        return;
+                    }
+                } else if (NPCUtils.isNPC(entity)) {
+                    NPCUtils.getNpcLocations().put(entity.getUniqueID(), entity.getPositionVector());
+                    return;
+                }
             }
         }
 

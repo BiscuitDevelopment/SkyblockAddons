@@ -534,4 +534,22 @@ public class ItemUtils {
             return -1;
         }
     }
+
+    /**
+     * Given a skull ItemStack, returns the skull owner ID, or null if it doesn't exist.
+     */
+    public static String getSkullOwnerID(ItemStack skull) {
+        if (skull == null || !skull.hasTagCompound()) {
+            return null;
+        }
+
+        NBTTagCompound nbt = skull.getTagCompound();
+        if (nbt.hasKey("SkullOwner", 10)) {
+            nbt = nbt.getCompoundTag("SkullOwner");
+            if (nbt.hasKey("Id", 8)) {
+                return nbt.getString("Id");
+            }
+        }
+        return null;
+    }
 }
