@@ -167,7 +167,10 @@
     "outbidAlert": "Outbid Alert"
     "showSkillPercentageInstead": "Show Percentage Instead of XP",
     "showSkillXPGained": "Show XP Gained",
-    "skillProgressBar": "Skill Progress Bar"
+    "skillProgressBar": "Skill Progress Bar",
+    "showSalvageEssencesCounter": "Show Salvage Essences Counter",
+    "disableMortMessages": "Disable Mort Messages",
+    "disableBossMessages": "Disable Boss Messages"
   },
   "messages": {
     "enchants": "Enchants",

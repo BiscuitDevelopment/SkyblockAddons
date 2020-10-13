@@ -153,7 +153,7 @@
     "textMode": "Text Mode",
     "dragonsNestOnly": "Only Show in the Dragon's Nest",
     "dragonStatsTracker": "Dragon Tracker",
-    "expanded": "Expanded",
+    "skillActionsLeftUntilNextLevel": "Show Actions Left Until Next Level",
     "hideWhenNotInCrypts": "Hide When Not in the Crypts/Doing Revenant Quest",
     "hideWhenNotInSpidersDen": "Hide When Not in the Spider's Den/Doing Tarantula Quest",
     "hideWhenNotInCastle": "Hide When Not in the Castle/Doing Sven Quest",
@@ -161,7 +161,12 @@
     "showPersonalCompactorPreview": "Show Personal Compactor Preview",
     "rockPetTracker": "Rock Pet Tracker",
     "dolphinPetTracker": "Dolphin Pet Tracker",
-    "dungeonsTeammateNameOverlay": "Dungeons Teammate Name Overlay"
+    "dungeonsTeammateNameOverlay": "Dungeons Teammate Name Overlay",
+    "showExpertiseKills": "Showo Expertise Kills",
+    "dungeonsSecretsDisplay": "Dungeons Secrets Display",
+    "showSkillPercentageInstead": "Show Percentage Instead of XP",
+    "showSkillXPGained": "Show XP Gained",
+    "skillProgressBar": "Skill Progress Bar"
   },
   "messages": {
     "enchants": "Enchants",

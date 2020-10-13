@@ -158,6 +158,8 @@ public enum Message {
     SETTING_DUNGEON_DEATH_COUNTER(MessageObject.SETTING, "dungeonDeathCounter"),
     SETTING_SHOW_PERSONAL_COMPACTOR_PREVIEW(MessageObject.SETTING, "showPersonalCompactorPreview"),
     SETTING_SHOW_DUNGEON_TEAMMATE_NAME_OVERLAY(MessageObject.SETTING, "dungeonsTeammateNameOverlay"),
+    SETTING_DISABLE_MORT_MESSAGES(MessageObject.SETTING, "disableMortMessages"),
+    SETTING_DISABLE_BOSS_MESSAGES(MessageObject.SETTING, "disableBossMessages"),
 
     SETTING_SHOW_EXPERTISE_KILLS(MessageObject.SETTING, "showExpertiseKills"),
     SETTING_DUNGEONS_SECRETS_DISPLAY(MessageObject.SETTING, "dungeonsSecretsDisplay"),
