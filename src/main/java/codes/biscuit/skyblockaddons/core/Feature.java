@@ -174,7 +174,7 @@ public enum Feature {
     SKILL_PROGRESS_BAR(143, "settings.skillProgressBar", new GuiFeatureData(EnumUtils.DrawType.BAR, ColorCode.GREEN), true),
     SHOW_SKILL_PERCENTAGE_INSTEAD_OF_XP(144, null, true),
     SHOW_SKILL_XP_GAINED(145, null, false),
-    SHOW_SALVAGE_ESSENCES_COUNTER(146, Message.SETTING_SHOW_SALVAGE_ESSENCES_COUNTER, null, false),
+    SHOW_SALVAGE_ESSENCES_COUNTER(146, null, false),
 
     WARNING_TIME(-1, Message.SETTING_WARNING_DURATION, false),
 

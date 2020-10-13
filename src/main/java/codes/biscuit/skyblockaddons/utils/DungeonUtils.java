@@ -31,9 +31,6 @@ public class DungeonUtils {
     /** The latest milestone the player received during a dungeon game */
     @Getter @Setter private DungeonMilestone dungeonMilestone;
 
-    /** The state of the player salvaging the items to obtain essences */
-    @Getter @Setter private boolean salvaging = false;
-
     /** The latest essences the player collected during a dungeon game */
     @Getter private final Map<EssenceType, Integer> collectedEssences = new EnumMap<>(EssenceType.class);
 
