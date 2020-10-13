@@ -167,11 +167,11 @@
     "showSkillPercentageInstead": "XP yerine yüzdeyi göster",
     "showSkillXPGained": "Kazanılan XP'yi göster",
     "skillProgressBar": "Skill İlerleme Çubuğu",
-    "showSalvageEssencesCounter": "Show Salvage Essences Counter",
-    "disableMortMessages": "Disable Mort Messages",
-    "disableBossMessages": "Disable Boss Messages",
-    "hideOtherPlayersPresents": "Hide Other Player's Presents",
-    "easierPresentOpening": "Open Presents Easier"
+    "showSalvageEssencesCounter": "Salvage Esans Sayacını Göster",
+    "disableMortMessages": "Mort Mesajlarını Devre Dışı Bırak",
+    "disableBossMessages": "Boss Mesajlarını Devre Dışı Bırak",
+    "hideOtherPlayersPresents": "Diğer Oyuncuların Hediyelerini Gizle",
+    "easierPresentOpening": "Hediyeleri Kolay Aç"
   },
   "messages": {
     "enchants": "Büyüler",
