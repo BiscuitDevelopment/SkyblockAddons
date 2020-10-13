@@ -166,7 +166,8 @@
     "dungeonsSecretsDisplay": "Dungeons Kart Skjerm",
     "showSkillPercentageInstead": "Show Percentage Instead of XP",
     "showSkillXPGained": "Show XP Gained",
-    "skillProgressBar": "Skill Progress Bar"
+    "skillProgressBar": "Skill Progress Bar",
+    "showSalvageEssencesCounter": "Show Salvage Essences Counter"
   },
   "messages": {
     "enchants": "Fortryllinger",
