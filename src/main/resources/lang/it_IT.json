@@ -167,9 +167,11 @@
     "showSkillPercentageInstead": "Mostra percentuale invece dell'XP",
     "showSkillXPGained": "Mostra XP ottenuti",
     "skillProgressBar": "Barra di progresso delle skill",
-    "showSalvageEssencesCounter": "Show Salvage Essences Counter",
-    "disableMortMessages": "Disable Mort Messages",
-    "disableBossMessages": "Disable Boss Messages"
+    "showSalvageEssencesCounter": "Mostra conteggio delle Salvage Essences",
+    "disableMortMessages": "Disabilita messaggi di Mort",
+    "disableBossMessages": "Disabilita messaggi dei Boss",
+    "hideOtherPlayersPresents": "Hide Other Player's Presents",
+    "easierPresentOpening": "Open Presents Easier"
   },
   "messages": {
     "enchants": "Incantesimi",
