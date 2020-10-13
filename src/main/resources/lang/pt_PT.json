@@ -167,7 +167,9 @@
     "showSkillPercentageInstead": "Mostrar percentagem em vez de XP",
     "showSkillXPGained": "Mostrar XP obtido",
     "skillProgressBar": "Barra de progresso da skill",
-    "showSalvageEssencesCounter": "Show Salvage Essences Counter"
+    "showSalvageEssencesCounter": "Show Salvage Essences Counter",
+    "disableMortMessages": "Disable Mort Messages",
+    "disableBossMessages": "Disable Boss Messages"
   },
   "messages": {
     "enchants": "encantamentos",
