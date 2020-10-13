@@ -167,7 +167,9 @@
     "showSkillPercentageInstead": "Pokaz procent zamiast ilości doświadczenia",
     "showSkillXPGained": "Pokaż zdobyte doświadczenie",
     "skillProgressBar": "Wyświetlaj postęp paska skilli",
-    "showSalvageEssencesCounter": "Show Salvage Essences Counter"
+    "showSalvageEssencesCounter": "Show Salvage Essences Counter",
+    "disableMortMessages": "Disable Mort Messages",
+    "disableBossMessages": "Disable Boss Messages"
   },
   "messages": {
     "enchants": "Zaklęcia",
