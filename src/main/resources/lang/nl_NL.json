@@ -167,7 +167,9 @@
     "showSkillPercentageInstead": "Percentage weergeven in plaats van XP",
     "showSkillXPGained": "Behaalde XP weergeven",
     "skillProgressBar": "Skillvooruitgangsbalk",
-    "showSalvageEssencesCounter": "Show Salvage Essences Counter"
+    "showSalvageEssencesCounter": "Show Salvage Essences Counter",
+    "disableMortMessages": "Disable Mort Messages",
+    "disableBossMessages": "Disable Boss Messages"
   },
   "messages": {
     "enchants": "Betoveringen",
