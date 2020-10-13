@@ -198,7 +198,10 @@ public enum Feature {
     CHROMA_SPEED(-1, Message.SETTING_CHROMA_SPEED, false),
     CHROMA_MODE(-1, Message.SETTING_CHROMA_MODE, false),
     CHROMA_FADE_WIDTH(-1, Message.SETTING_CHROMA_FADE_WIDTH, false),
-    TURN_ALL_FEATURES_CHROMA(-1, Message.SETTING_TURN_ALL_FEATURES_CHROMA, false);
+    TURN_ALL_FEATURES_CHROMA(-1, Message.SETTING_TURN_ALL_FEATURES_CHROMA, false),
+    OUTBID_ALERT(147, Message.SETTING_OUTBID_ALERT,true,EnumUtils.FeatureSetting.ENABLED_IN_OTHER_GAMES),
+    OUTBID_ALERT_IN_OTHER_GAMES(-1, null, false);
+
 
     /**
      * These are "features" that are not actually features, but just hold the place of a setting. If you are adding any new settings and create
@@ -213,11 +216,11 @@ public enum Feature {
             SHOW_PLAYER_HEADS_ON_MAP, SHOW_GLOWING_ITEMS_ON_ISLAND, SKILL_ACTIONS_LEFT_UNTIL_NEXT_LEVEL, REVENANT_COLOR_BY_RARITY,
             TARANTULA_COLOR_BY_RARITY, SVEN_COLOR_BY_RARITY, REVENANT_TEXT_MODE, TARANTULA_TEXT_MODE, SVEN_TEXT_MODE,
             DRAGON_STATS_TRACKER_COLOR_BY_RARITY, HIDE_WHEN_NOT_IN_CASTLE, HIDE_WHEN_NOT_IN_SPIDERS_DEN,
-            HIDE_WHEN_NOT_IN_CRYPTS, SHOW_PERSONAL_COMPACTOR_PREVIEW, SHOW_SKILL_PERCENTAGE_INSTEAD_OF_XP, SHOW_SKILL_XP_GAINED,
-            SHOW_SALVAGE_ESSENCES_COUNTER);
+            HIDE_WHEN_NOT_IN_CRYPTS, SHOW_PERSONAL_COMPACTOR_PREVIEW, SHOW_SKILL_PERCENTAGE_INSTEAD_OF_XP, SHOW_SKILL_XP_GAINED, SHOW_SALVAGE_ESSENCES_COUNTER, OUTBID_ALERT_IN_OTHER_GAMES);
+
 
     /**
-     * Features that are considered gui ones. This is used for examnple when saving the config to ensure that these features'
+     * Features that are considered gui ones. This is used for example when saving the config to ensure that these features'
      * coordinates and colors are handled properly.
      */
     @Getter private static final Set<Feature> guiFeatures = new LinkedHashSet<>(Arrays.asList(MAGMA_BOSS_TIMER, MANA_BAR, MANA_TEXT, DEFENCE_ICON, DEFENCE_TEXT,
