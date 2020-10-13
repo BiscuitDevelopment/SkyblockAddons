@@ -40,14 +40,16 @@ public class EntityRendererHook {
             list.removeIf(listEntity -> listEntity instanceof EntityItemFrame &&
                     (((EntityItemFrame)listEntity).getDisplayedItem() != null || Minecraft.getMinecraft().thePlayer.getHeldItem() == null));
         }
+
         if (!main.getUtils().isInDungeon() && main.getConfigValues().isEnabled(Feature.HIDE_PLAYERS_NEAR_NPCS)) {
             list.removeIf(entity -> entity instanceof EntityOtherPlayerMP && !NPCUtils.isNPC(entity) && NPCUtils.isNearNPC(entity));
         }
-        // Ignore clicks on Jerry-present-related armorstands that don't display "CLICK TO OPEN"
+
         if (main.getConfigValues().isEnabled(Feature.EASIER_PRESENT_OPENING)) {
-            list.removeIf(entity -> JerryPresent.jerryPresentMap.containsAggregate(entity) &&
-                    (!JerryPresent.jerryPresentMap.getAggregate(entity).isForYou() ||
-                            JerryPresent.jerryPresentMap.getAggregate(entity).getUpperDisplay() != entity));
+            list.removeIf(entity -> {
+                JerryPresent jerryPresent = JerryPresent.getJerryPresents().get(entity.getUniqueID());
+                return jerryPresent != null && (!jerryPresent.isForPlayer() || !jerryPresent.getUpperDisplay().equals(entity.getUniqueID()));
+            });
         }
     }
 

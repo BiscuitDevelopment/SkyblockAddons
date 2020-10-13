@@ -143,8 +143,6 @@ public class PlayerListener {
     private final SkyblockAddons main = SkyblockAddons.getInstance();
     private final ActionBarParser actionBarParser = new ActionBarParser();
 
-    private HashSet<Entity> entitiesWithoutMetadata = new HashSet<>();
-
     /**
      * Reset all the timers and stuff when joining a new world.
      */
@@ -169,6 +167,7 @@ public class PlayerListener {
             }
 
             NPCUtils.getNpcLocations().clear();
+            JerryPresent.getJerryPresents().clear();
         }
     }
 
@@ -487,29 +486,6 @@ public class PlayerListener {
                     main.getUtils().playLoudSound("random.successful_hit", 0.8);
                 }
 
-                // Wait for entities to get their metadata
-                entitiesWithoutMetadata.removeIf(Objects::isNull);
-                ArrayList<Entity> list = new ArrayList<>(entitiesWithoutMetadata);
-                for (Entity entity : list) {
-                    if (entitiesWithoutMetadata.contains(entity)) {
-                        // Try to create a present centered on the current entity
-                        JerryPresent present = JerryPresent.checkAndReturnJerryPresent(entity);
-                        if (present != null) {
-                            // Add the new present to the mapping of tracked presents
-                            JerryPresent.jerryPresentMap.addAggregate(present);
-                            // So we don't check for these entities again
-                            entitiesWithoutMetadata.removeAll(present.getEntityParts());
-                            //Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("New " + present.toString()  + " new size " + JerryPresent.jerryPresentMap.numParts() + " " + entitiesWithoutMetadata.size()));
-                            continue;
-                        }
-                    }
-                    // These metadata packets should come in very quickly after the spawn packets
-                    // We also assume that an invisible armorstand has its metadata already
-                    // TODO: Is there a better way to check for metadata in general? Invisibility is mostly for armorstands, since they are usually invisible on Hypixel
-                    if (entity.isInvisible() || entity.ticksExisted > 5) {
-                        entitiesWithoutMetadata.remove(entity);
-                    }
-                }
                 if (timerTick == 20) { // Add natural mana every second (increase is based on your max mana).
                     if (main.getRenderListener().isPredictMana()) {
                         changeMana(getAttribute(Attribute.MAX_MANA) / 50);
@@ -519,16 +495,6 @@ public class PlayerListener {
 
                     if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.TAB_EFFECT_TIMERS)) {
                         TabEffectManager.getInstance().updatePotionEffects();
-                    }
-
-                    // Lazy garbage collection for despawned JerryPresents
-                    if (!JerryPresent.jerryPresentMap.isEmpty()) {
-                        Set<JerryPresent> presentSet = JerryPresent.jerryPresentMap.getAggregateSet();
-                        for (JerryPresent p : presentSet) {
-                            if (p.isDead()) {
-                                JerryPresent.jerryPresentMap.removeAggregate(p);
-                            }
-                        }
                     }
 
                 } else if (timerTick % 5 == 0) { // Check inventory, location, updates, and skeleton helmet every 1/4 second.
@@ -571,15 +537,29 @@ public class PlayerListener {
 
         Entity entity = e.entity;
 
-        if (entity instanceof EntityOtherPlayerMP && main.getConfigValues().isEnabled(Feature.HIDE_PLAYERS_NEAR_NPCS) && entity.ticksExisted < 5) {
-            float health = ((EntityOtherPlayerMP) entity).getHealth();
-
-            if (NPCUtils.getNpcLocations().containsKey(entity.getUniqueID())) {
-                if (health != 20.0F) {
-                    NPCUtils.getNpcLocations().remove(entity.getUniqueID());
+        if (entity.ticksExisted < 5) {
+            if (main.getConfigValues().isEnabled(Feature.HIDE_OTHER_PLAYERS_PRESENTS) || main.getConfigValues().isEnabled(Feature.EASIER_PRESENT_OPENING)) {
+                if (!JerryPresent.getJerryPresents().containsKey(entity.getUniqueID())) {
+                    JerryPresent present = JerryPresent.getJerryPresent(entity);
+                    if (present != null) {
+                        JerryPresent.getJerryPresents().put(entity.getUniqueID(), present);
+                        return;
+                    }
                 }
-            } else if (NPCUtils.isNPC(entity)) {
-                NPCUtils.getNpcLocations().put(entity.getUniqueID(), entity.getPositionVector());
+            }
+
+            if (entity instanceof EntityOtherPlayerMP && main.getConfigValues().isEnabled(Feature.HIDE_PLAYERS_NEAR_NPCS)) {
+                float health = ((EntityOtherPlayerMP) entity).getHealth();
+
+                if (NPCUtils.getNpcLocations().containsKey(entity.getUniqueID())) {
+                    if (health != 20.0F) {
+                        NPCUtils.getNpcLocations().remove(entity.getUniqueID());
+                        return;
+                    }
+                } else if (NPCUtils.isNPC(entity)) {
+                    NPCUtils.getNpcLocations().put(entity.getUniqueID(), entity.getPositionVector());
+                    return;
+                }
             }
         }
 
@@ -828,14 +808,6 @@ public class PlayerListener {
                         }
                     }
                 }
-            }
-        }
-
-        // Entities do not immediately get their metadata, so we must put them in a queue and wait for that data
-        if (main.getUtils().isOnSkyblock() && (main.getConfigValues().isEnabled(Feature.HIDE_OTHER_PLAYERS_PRESENTS) ||
-                main.getConfigValues().isEnabled(Feature.EASIER_PRESENT_OPENING))) {
-            if (entity instanceof EntityArmorStand) {
-                entitiesWithoutMetadata.add(entity);
             }
         }
     }

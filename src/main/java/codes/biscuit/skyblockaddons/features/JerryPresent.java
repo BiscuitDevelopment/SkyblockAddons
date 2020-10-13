@@ -1,139 +1,160 @@
 package codes.biscuit.skyblockaddons.features;
 
 import codes.biscuit.skyblockaddons.core.EntityAggregate;
-import codes.biscuit.skyblockaddons.core.EntityAggregateMap;
 import codes.biscuit.skyblockaddons.utils.ItemUtils;
 import codes.biscuit.skyblockaddons.utils.TextUtils;
+import lombok.Getter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityArmorStand;
 import net.minecraft.util.AxisAlignedBB;
-import lombok.Getter;
-import net.minecraft.util.ChatComponentText;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/*
-An aggregate entity that stores a single present from Jerry
- */
 public class JerryPresent extends EntityAggregate {
 
-    // Strips the "To:/From: [Rank] " and leaves just the name
-    private static final Pattern STRIP_TO_FROM = Pattern.compile("(From:)?(To:)?( \\[.*])? ");
+    private static final Pattern FROM_TO_PATTERN = Pattern.compile("(?:From:|To:) (?:\\[.*?] )?(?<name>\\w{1,16})");
 
-    // Publicly accessible map of tracked JerryPresents
-    // If more of these entity-tracker maps are used in the future, it may make more sense to store in a separate file
-    public static EntityAggregateMap<JerryPresent> jerryPresentMap = new EntityAggregateMap<>();
+    @Getter
+    private static Map<UUID, JerryPresent> jerryPresents = new HashMap<>();
 
-    // Is the present for you
-    @Getter private final boolean isForYou;
-    // Is the present from you
-    @Getter private final boolean isFromYou;
-    // Color of present
-    @Getter private final PresentColor presentColor;
+    @Getter
+    private final boolean isForPlayer;
+    @Getter
+    private final boolean isFromPlayer;
+    @Getter
+    private final PresentColor presentColor;
 
-    // The different present colors
-    private enum PresentColor {
-        WHITE, GREEN, RED, UNKNOWN
-    }
+    public JerryPresent(UUID present, UUID fromLine, UUID toLine, PresentColor color, boolean isFromPlayer, boolean isForPlayer) {
+        super(present, fromLine, toLine);
 
-    // Map of NBT tag IDs to present colors
-    private static final HashMap<String, PresentColor> PRESENT_TYPE_IDS;
-    static {
-        PRESENT_TYPE_IDS = new HashMap<>();
-        PRESENT_TYPE_IDS.put("7732c5e4-1800-3b90-a70f-727d2969254b", PresentColor.WHITE); // White
-        PRESENT_TYPE_IDS.put("d5eb6a2a-3f10-3d6b-ba6a-4d46bb58a5cb", PresentColor.GREEN); // Green
-        PRESENT_TYPE_IDS.put("bc74cb05-2758-3395-93ec-70452a983604", PresentColor.RED); // Red
-    }
-
-
-    public JerryPresent(EntityArmorStand present, EntityArmorStand displayLower, EntityArmorStand displayUpper,
-                        PresentColor color, boolean fromYou, boolean forYou) {
-        // Create an EntityAggregate with 3 parts
-        super(present, displayLower, displayUpper);
         this.presentColor = color;
-        this.isFromYou = fromYou;
-        this.isForYou = forYou;
+        this.isFromPlayer = isFromPlayer;
+        this.isForPlayer = isForPlayer;
     }
 
-    /*
-    These methods access information in EntityAggregate that is specific to JerryPresent
+    /**
+     * Armor stand with the present-colored skull
      */
-
-    // This is the armorstand with the present-colored skull
-    public EntityArmorStand getThePresent() {
-        return (EntityArmorStand)(this.getEntityParts().get(0));
+    public UUID getThePresent() {
+        return this.getEntities().get(0);
     }
 
-    // This is the armorstand with "From: [RANK] Username"
-    public EntityArmorStand getLowerDisplay() {
-        return (EntityArmorStand)(this.getEntityParts().get(1));
-    }
-
-    // This is the armorstand with "CLICK TO OPEN" or "To: [RANK] Username"
-    public EntityArmorStand getUpperDisplay() {
-        return (EntityArmorStand)(this.getEntityParts().get(2));
-    }
-
-    // When the feature is turned on, we only render the presents of importance to the player
-    public boolean shouldRender() {
-        return isForYou || isFromYou;
-    }
-
-    public String toString() {
-        return presentColor.name() + " from " + (isFromYou ? "you" : "other") + " to " + (isForYou ? "you" : "other:");
-    }
-
-
-    /*
-     Returns a Jerry Present if the entity is the present and we see text above it
-     The idea here is that we only return a present if all three armorstands are present
-     The function should only succeed (create a present) once for a given set of armorstands
-     But this relies on separately tracking which entities have already succeeded
-
-     Returns null if no present found
+    /**
+     * Armor stand with "From: [RANK] Username"
      */
-    public static JerryPresent checkAndReturnJerryPresent(Entity targetEntity) {
-        // Only accept invisible armorstands
-        if (!(targetEntity instanceof EntityArmorStand) || !targetEntity.isInvisible()) return null;
-        // Check a small enough range that it will be hard for two presents to get confused with each other
+    public UUID getLowerDisplay() {
+        return this.getEntities().get(1);
+    }
+
+    /**
+     * Armor stand with "CLICK TO OPEN" or "To: [RANK] Username"
+     */
+    public UUID getUpperDisplay() {
+        return this.getEntities().get(2);
+    }
+
+    public boolean shouldHide() {
+        return !isForPlayer && !isFromPlayer;
+    }
+
+    /**
+     * Returns an instance of JerryPresent if this entity is in fact part of a jerry
+     * present, or null if not.
+     */
+    public static JerryPresent getJerryPresent(Entity targetEntity) {
+        if (!(targetEntity instanceof EntityArmorStand) || !targetEntity.isInvisible()) {
+            return null;
+        }
+
+        // Check if this present already exists...
+        for (JerryPresent present : jerryPresents.values()) {
+            if (present.getEntities().contains(targetEntity.getUniqueID())) {
+                return present;
+            }
+        }
+
+        // Check a small range around...
         List<EntityArmorStand> stands = Minecraft.getMinecraft().theWorld.getEntitiesWithinAABB(EntityArmorStand.class,
-                new AxisAlignedBB(targetEntity.posX - .2, targetEntity.posY - 2, targetEntity.posZ - .2,
-                        targetEntity.posX + .2, targetEntity.posY + 2, targetEntity.posZ + .2));
-        // Try to identify present skull (bottom), middle text line (middle), and top text line (top)
-        EntityArmorStand bottom = null, middle = null, top = null;
-        String presentID = "";
+                new AxisAlignedBB(targetEntity.posX - 0.1, targetEntity.posY - 2, targetEntity.posZ - 0.1,
+                        targetEntity.posX + 0.1, targetEntity.posY + 2, targetEntity.posZ + 0.1));
+
+        EntityArmorStand present = null, fromLine = null, toLine = null;
+        PresentColor presentColor = null;
         for (EntityArmorStand stand : stands) {
-            if (!stand.isInvisible()) continue;
-            // To/From armorstands
+            if (!stand.isInvisible()) {
+                continue;
+            }
+
             if (stand.hasCustomName()) {
                 String name = TextUtils.stripColor(stand.getCustomNameTag());
-                if (name.matches("From:.*")) {
-                    middle = stand;
-                } else if (name.equals("CLICK TO OPEN") || name.matches("To:.*")) {
-                    top = stand;
+
+                // From line (middle)
+                if (name.startsWith("From: ")) {
+                    fromLine = stand;
+
+                    // To line (top)
+                } else if (name.equals("CLICK TO OPEN") || name.startsWith("To: ")) {
+                    toLine = stand;
+                }
+
+            } else {
+                String skullID = ItemUtils.getSkullOwnerID(stand.getEquipmentInSlot(4));
+                if (skullID == null) {
+                    continue;
+                }
+
+                PresentColor standColor = PresentColor.fromSkullID(skullID);
+                if (standColor == null) {
+                    continue;
+                }
+
+                // Present stand (bottom)
+                present = stand;
+                presentColor = standColor;
+            }
+        }
+        // Verify that we've found all parts, and that the positions make sense
+        if (present == null || fromLine == null || toLine == null || present.posY > fromLine.posY || fromLine.posY > toLine.posY) {
+            return null;
+        }
+
+        Matcher matcher = FROM_TO_PATTERN.matcher(TextUtils.stripColor(fromLine.getCustomNameTag()));
+        if (!matcher.matches()) {
+            return null;
+        }
+        String name = matcher.group("name");
+
+        boolean fromYou = name.equals(Minecraft.getMinecraft().thePlayer.getName());
+        boolean forYou = TextUtils.stripColor(toLine.getCustomNameTag()).equals("CLICK TO OPEN");
+
+        return new JerryPresent(present.getUniqueID(), fromLine.getUniqueID(), toLine.getUniqueID(), presentColor, fromYou, forYou);
+    }
+
+    private enum PresentColor {
+        WHITE("7732c5e4-1800-3b90-a70f-727d2969254b"),
+        GREEN("d5eb6a2a-3f10-3d6b-ba6a-4d46bb58a5cb"),
+        RED("bc74cb05-2758-3395-93ec-70452a983604");
+
+        private String skullID;
+
+        PresentColor(String skullID) {
+            this.skullID = skullID;
+        }
+
+        public static PresentColor fromSkullID(String skullID) {
+            for (PresentColor presentColor : PresentColor.values()) {
+                if (presentColor.skullID.equals(skullID)) {
+                    return presentColor;
                 }
             }
 
-            else {
-                // Skull armorstand -- try to get Hypixel's skull id to determine if it's a present
-                presentID = ItemUtils.getSkullOwnerID(stand.getEquipmentInSlot(4));
-
-                if (presentID == null || !PRESENT_TYPE_IDS.containsKey(presentID)) continue;
-                bottom = stand;
-            }
+            return null;
         }
-        // Check that we've found a bottom, middle, top, as well as that the positions make sense
-        if (bottom == null || middle == null || top == null || bottom.posY > middle.posY || middle.posY > top.posY) return null;
-
-        // Get the important present information
-        PresentColor presentColor = PRESENT_TYPE_IDS.get(presentID);
-        boolean fromYou = STRIP_TO_FROM.matcher(TextUtils.stripColor(middle.getCustomNameTag())).replaceAll("").
-                equals(Minecraft.getMinecraft().thePlayer.getName());
-        boolean forYou = TextUtils.stripColor(top.getCustomNameTag()).equals("CLICK TO OPEN");
-
-        return new JerryPresent(bottom, middle, top, presentColor, fromYou, forYou);
     }
 }

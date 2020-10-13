@@ -48,8 +48,8 @@ public class RenderManagerHook {
                 }
             }
             if (main.getConfigValues().isEnabled(Feature.HIDE_OTHER_PLAYERS_PRESENTS)) {
-                JerryPresent present = JerryPresent.jerryPresentMap.getAggregate(entityIn);
-                if (present != null && !present.shouldRender()) {
+                JerryPresent present = JerryPresent.getJerryPresents().get(entityIn.getUniqueID());
+                if (present != null && present.shouldHide()) {
                     returnValue.cancel();
                 }
             }
