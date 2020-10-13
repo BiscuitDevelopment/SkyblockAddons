@@ -176,6 +176,9 @@ public enum Feature {
     SHOW_SKILL_XP_GAINED(145, null, false),
     SHOW_SALVAGE_ESSENCES_COUNTER(146, null, false),
 
+    DISABLE_MORT_MESSAGES(146, "settings.disableMortMessages", null, false),
+    DISABLE_BOSS_MESSAGES(147, "settings.disableBossMessages", null, false),
+
     WARNING_TIME(-1, Message.SETTING_WARNING_DURATION, false),
 
     WARP_ADVANCED_MODE(-1, Message.SETTING_ADVANCED_MODE, true),
