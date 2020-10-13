@@ -167,7 +167,9 @@
     "showSkillPercentageInstead": "顯示百分比取代經驗值",
     "showSkillXPGained": "顯示獲取的經驗值",
     "skillProgressBar": "技能進度條",
-    "showSalvageEssencesCounter": "Show Salvage Essences Counter"
+    "showSalvageEssencesCounter": "Show Salvage Essences Counter",
+    "disableMortMessages": "Disable Mort Messages",
+    "disableBossMessages": "Disable Boss Messages"
   },
   "messages": {
     "enchants": "附魔",
