@@ -167,7 +167,9 @@
     "showSkillPercentageInstead": "XP yerine yüzdeyi göster",
     "showSkillXPGained": "Kazanılan XP'yi göster",
     "skillProgressBar": "Skill İlerleme Çubuğu",
-    "showSalvageEssencesCounter": "Show Salvage Essences Counter"
+    "showSalvageEssencesCounter": "Show Salvage Essences Counter",
+    "disableMortMessages": "Disable Mort Messages",
+    "disableBossMessages": "Disable Boss Messages"
   },
   "messages": {
     "enchants": "Büyüler",
