@@ -169,7 +169,9 @@
     "skillProgressBar": "技能升级进度条",
     "showSalvageEssencesCounter": "Show Salvage Essences Counter",
     "disableMortMessages": "Disable Mort Messages",
-    "disableBossMessages": "Disable Boss Messages"
+    "disableBossMessages": "Disable Boss Messages",
+    "hideOtherPlayersPresents": "Hide Other Player's Presents",
+    "easierPresentOpening": "Open Presents Easier"
   },
   "messages": {
     "enchants": "附魔",
