@@ -278,10 +278,10 @@ public class PlayerListener {
             } else if (main.getConfigValues().isEnabled(Feature.DISABLE_TELEPORT_PAD_MESSAGES) && (formattedText.startsWith("§r§aWarped from ") || formattedText.equals("§r§cThis Teleport Pad does not have a destination set!§r"))) {
                 e.setCanceled(true);
 
-            } else if (main.getConfigValues().isEnabled(Feature.DISABLE_MORT_MESSAGES) && formattedText.startsWith("§e[NPC] §bMort§f:")) {
+            } else if (main.getConfigValues().isEnabled(Feature.DISABLE_MORT_MESSAGES) && strippedText.startsWith("[NPC] Mort:")) {
                 e.setCanceled(true);
 
-            } else if (main.getConfigValues().isEnabled(Feature.DISABLE_BOSS_MESSAGES) && formattedText.startsWith("§r§c[BOSS] ")) {
+            } else if (main.getConfigValues().isEnabled(Feature.DISABLE_BOSS_MESSAGES) && strippedText.startsWith("[BOSS] ")) {
                 e.setCanceled(true);
 
             } else if ((matcher = SLAYER_COMPLETED_PATTERN.matcher(strippedText)).matches()) { // §r   §r§5§l» §r§7Talk to Maddox to claim your Wolf Slayer XP!§r
