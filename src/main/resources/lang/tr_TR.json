@@ -166,7 +166,8 @@
     "dungeonsSecretsDisplay": "Dungeon'ların Sırlarını Görüntüle",
     "showSkillPercentageInstead": "XP yerine yüzdeyi göster",
     "showSkillXPGained": "Kazanılan XP'yi göster",
-    "skillProgressBar": "Skill İlerleme Çubuğu"
+    "skillProgressBar": "Skill İlerleme Çubuğu",
+    "showSalvageEssencesCounter": "Show Salvage Essences Counter"
   },
   "messages": {
     "enchants": "Büyüler",
