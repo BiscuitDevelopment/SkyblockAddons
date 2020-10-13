@@ -169,7 +169,9 @@
     "skillProgressBar": "Skill Progress Bar",
     "showSalvageEssencesCounter": "Show Salvage Essences Counter",
     "disableMortMessages": "Disable Mort Messages",
-    "disableBossMessages": "Disable Boss Messages"
+    "disableBossMessages": "Disable Boss Messages",
+    "hideOtherPlayersPresents": "Hide Other Player's Presents",
+    "easierPresentOpening": "Open Presents Easier"
   },
   "messages": {
     "enchants": "Fortryllinger",
