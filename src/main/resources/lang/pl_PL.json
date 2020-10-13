@@ -166,7 +166,8 @@
     "dungeonsSecretsDisplay": "Wyświetlaj sekrety Dungeonu",
     "showSkillPercentageInstead": "Pokaz procent zamiast ilości doświadczenia",
     "showSkillXPGained": "Pokaż zdobyte doświadczenie",
-    "skillProgressBar": "Wyświetlaj postęp paska skilli"
+    "skillProgressBar": "Wyświetlaj postęp paska skilli",
+    "showSalvageEssencesCounter": "Show Salvage Essences Counter"
   },
   "messages": {
     "enchants": "Zaklęcia",
