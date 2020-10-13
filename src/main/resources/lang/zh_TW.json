@@ -166,7 +166,8 @@
     "dungeonsSecretsDisplay": "Dungeons Secrets 顯示",
     "showSkillPercentageInstead": "顯示百分比取代經驗值",
     "showSkillXPGained": "顯示獲取的經驗值",
-    "skillProgressBar": "技能進度條"
+    "skillProgressBar": "技能進度條",
+    "showSalvageEssencesCounter": "Show Salvage Essences Counter"
   },
   "messages": {
     "enchants": "附魔",
