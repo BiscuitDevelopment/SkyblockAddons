@@ -166,7 +166,8 @@
     "dungeonsSecretsDisplay": "Mostrar os segredos da Dungeon",
     "showSkillPercentageInstead": "Mostrar percentagem em vez de XP",
     "showSkillXPGained": "Mostrar XP obtido",
-    "skillProgressBar": "Barra de progresso da skill"
+    "skillProgressBar": "Barra de progresso da skill",
+    "showSalvageEssencesCounter": "Show Salvage Essences Counter"
   },
   "messages": {
     "enchants": "encantamentos",
