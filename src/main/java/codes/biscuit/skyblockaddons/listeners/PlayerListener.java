@@ -327,6 +327,10 @@ public class PlayerListener {
                 }
             }
 
+            if (main.getInventoryUtils().getInventoryType() == InventoryType.SALVAGING && main.getConfigValues().isEnabled(Feature.SHOW_SALVAGE_ESSENCES_COUNTER)) {
+                main.getDungeonUtils().parseSalvagedEssences(formattedText);
+            }
+
             if (main.getUtils().isInDungeon()) {
                 Matcher reviveMessageMatcher = REVIVE_MESSAGE_PATTERN.matcher(formattedText);
 

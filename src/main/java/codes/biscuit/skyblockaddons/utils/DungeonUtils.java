@@ -22,6 +22,7 @@ public class DungeonUtils {
     private static final Pattern PATTERN_MILESTONE = Pattern.compile("^.+?(Healer|Tank|Mage|Archer|Berserk) Milestone .+?([❶-❿]).+?§r§.(\\d+)§.§7 .+?");
     private static final Pattern PATTERN_COLLECTED_ESSENCES = Pattern.compile("§.+?(\\d+) (Wither|Spider|Undead|Dragon|Gold|Diamond|Ice) Essence");
     private static final Pattern PATTERN_BONUS_ESSENCE = Pattern.compile("^§.+?[^You] .+?found a .+?(Wither|Spider|Undead|Dragon|Gold|Diamond|Ice) Essence.+?");
+    private static final Pattern PATTERN_SALVAGE_ESSENCES = Pattern.compile("§.§.\\+([0-9])+? §.§.(Wither|Spider|Undead|Dragon|Gold|Diamond|Ice) Essence!+");
     private static final Pattern PATTERN_SECRETS = Pattern.compile("§7([0-9]+)/([0-9]+) Secrets");
 
     /** The last dungeon server the player played on */
@@ -142,5 +143,22 @@ public class DungeonUtils {
         secrets = Integer.parseInt(matcher.group(1));
         maxSecrets = Integer.parseInt(matcher.group(2));
         return matcher.replaceAll("");
+    }
+
+    /**
+     * This method parses the type and amount of essences obtained from the salvaged item by the player.
+     * This information is parsed from the given chat message. It then records the result in {@code collectedEssences}
+     *
+     * @param message the chat message to parse the obtained essences from
+     */
+    public void parseSalvagedEssences(String message) {
+        Matcher matcher = PATTERN_SALVAGE_ESSENCES.matcher(message);
+
+        while (matcher.find()) {
+            EssenceType essenceType = EssenceType.fromName(matcher.group(2));
+            int amount = Integer.parseInt(matcher.group(1));
+
+            collectedEssences.put(essenceType, collectedEssences.getOrDefault(essenceType, 0) + amount);
+        }
     }
 }

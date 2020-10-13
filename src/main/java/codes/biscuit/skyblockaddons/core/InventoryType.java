@@ -3,8 +3,6 @@ package codes.biscuit.skyblockaddons.core;
 import codes.biscuit.skyblockaddons.features.craftingpatterns.CraftingPattern;
 import lombok.Getter;
 
-import static codes.biscuit.skyblockaddons.core.Message.*;
-
 //TODO Fix for Hypixel localization
 
 /**
@@ -17,7 +15,8 @@ public enum InventoryType {
     BASIC_ACCESSORY_BAG_REFORGING("Reforge Accessory Bag"),
     ADVANCED_ACCESSORY_BAG_REFORGING("Reforge Accessory Bag"),
     BAKER("Baker"),
-    CRAFTING_TABLE(CraftingPattern.CRAFTING_TABLE_DISPLAYNAME);
+    CRAFTING_TABLE(CraftingPattern.CRAFTING_TABLE_DISPLAYNAME),
+    SALVAGING("Salvage Dungeon Item");
 
     @Getter
     private final String inventoryName;

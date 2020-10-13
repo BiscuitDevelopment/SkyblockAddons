@@ -1109,42 +1109,8 @@ public class RenderListener {
             ChromaManager.doneRenderingText();
 
         } else if (feature == Feature.DUNGEONS_COLLECTED_ESSENCES_DISPLAY) {
-            Map<EssenceType, Integer> collectedEssences = main.getDungeonUtils().getCollectedEssences();
+            this.drawCollectedEssences(x, y, buttonLocation != null, true);
 
-            float currentX = x;
-            float currentY;
-
-            int maxNumberWidth = mc.fontRendererObj.getStringWidth("99");
-
-            int count = 0;
-            for (EssenceType essenceType : EssenceType.values()) {
-                int value = collectedEssences.getOrDefault(essenceType, 0);
-                if (buttonLocation != null) {
-                    value = 99;
-                } else if (value <= 0) {
-                    continue;
-                }
-
-                int column = count % 2;
-                int row = count / 2;
-
-                if (column == 0) {
-                    currentX = x;
-                } else if (column == 1) {
-                    currentX = x + 18 + 2 + maxNumberWidth + 5;
-                }
-                currentY = y + row * 18;
-
-                GlStateManager.color(1, 1, 1, 1);
-                mc.getTextureManager().bindTexture(essenceType.getResourceLocation());
-                main.getUtils().drawModalRectWithCustomSizedTexture(currentX, currentY, 0, 0, 16, 16, 16, 16);
-
-                ChromaManager.renderingText(feature);
-                main.getUtils().drawTextWithStyle(String.valueOf(value), currentX + 18 + 2, currentY + 5, color);
-                ChromaManager.doneRenderingText();
-
-                count++;
-            }
         } else if (feature == Feature.DUNGEON_DEATH_COUNTER) {
             renderItem(DungeonDeathCounter.SKULL_ITEM, x, y);
             ChromaManager.renderingText(feature);
@@ -1207,6 +1173,49 @@ public class RenderListener {
         }
 
         main.getUtils().restoreGLOptions();
+    }
+
+    public void drawCollectedEssences(float x, float y, boolean usePlaceholders, boolean hideZeroes) {
+        Minecraft mc = Minecraft.getMinecraft();
+
+        Map<EssenceType, Integer> collectedEssences = main.getDungeonUtils().getCollectedEssences();
+
+        float currentX = x;
+        float currentY;
+
+        int maxNumberWidth = mc.fontRendererObj.getStringWidth("99");
+
+        int color = main.getConfigValues().getColor(Feature.DUNGEONS_COLLECTED_ESSENCES_DISPLAY);
+
+        int count = 0;
+        for (EssenceType essenceType : EssenceType.values()) {
+            int value = collectedEssences.getOrDefault(essenceType, 0);
+            if (usePlaceholders) {
+                value = 99;
+            } else if (value <= 0 && hideZeroes) {
+                continue;
+            }
+
+            int column = count % 2;
+            int row = count / 2;
+
+            if (column == 0) {
+                currentX = x;
+            } else if (column == 1) {
+                currentX = x + 18 + 2 + maxNumberWidth + 5;
+            }
+            currentY = y + row * 18;
+
+            GlStateManager.color(1, 1, 1, 1);
+            mc.getTextureManager().bindTexture(essenceType.getResourceLocation());
+            main.getUtils().drawModalRectWithCustomSizedTexture(currentX, currentY, 0, 0, 16, 16, 16, 16);
+
+            ChromaManager.renderingText(Feature.DUNGEONS_COLLECTED_ESSENCES_DISPLAY);
+            main.getUtils().drawTextWithStyle(String.valueOf(value), currentX + 18 + 2, currentY + 5, color);
+            ChromaManager.doneRenderingText();
+
+            count++;
+        }
     }
 
     /**
