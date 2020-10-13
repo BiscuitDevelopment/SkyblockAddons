@@ -168,9 +168,9 @@
     "showSkillXPGained": "Mostrar XP de Habilidade Ganho",
     "skillProgressBar": "Barra de Progresso de Habilidade",
     "showSalvageEssencesCounter": "Show Salvage Essences Counter",
-    "disableMortMessages": "Disable Mort Messages",
+    "disableMortMessages": "Desativar mensagens do Mort",
     "disableBossMessages": "Desabilitar Mensagens do Boss",
-    "hideOtherPlayersPresents": "Hide Other Player's Presents",
+    "hideOtherPlayersPresents": "Esconder presentes de outros jogadores",
     "easierPresentOpening": "Open Presents Easier"
   },
   "messages": {
