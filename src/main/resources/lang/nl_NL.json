@@ -171,7 +171,8 @@
     "disableMortMessages": "Dodingsberichten uitschakelen",
     "disableBossMessages": "Baasberichten uitschakelen",
     "hideOtherPlayersPresents": "Cadeaus van anderen verbergen",
-    "easierPresentOpening": "Cadeaus makkelijker uitpakken"
+    "easierPresentOpening": "Cadeaus makkelijker uitpakken",
+    "showSwordKills": "Show Sword Kills"
   },
   "messages": {
     "enchants": "Betoveringen",
