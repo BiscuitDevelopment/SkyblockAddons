@@ -180,8 +180,8 @@ public enum Feature {
     DISABLE_BOSS_MESSAGES(148, "settings.disableBossMessages", null, false),
     SHOW_SWORD_KILLS(149, "settings.showSwordKills", new GuiFeatureData(ColorCode.RED, true), false),
 
-    HIDE_OTHER_PLAYERS_PRESENTS(141, "settings.hideOtherPlayersPresents", null,false),
-    EASIER_PRESENT_OPENING(142, "settings.easierPresentOpening", null,false),
+    HIDE_OTHER_PLAYERS_PRESENTS(150, "settings.hideOtherPlayersPresents", null,false),
+    EASIER_PRESENT_OPENING(151, "settings.easierPresentOpening", null,false),
 
     WARNING_TIME(-1, Message.SETTING_WARNING_DURATION, false),
 
