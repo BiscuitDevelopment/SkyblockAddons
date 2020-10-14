@@ -168,9 +168,9 @@
     "showSkillXPGained": "Show XP Gained",
     "skillProgressBar": "技能升级进度条",
     "showSalvageEssencesCounter": "Show Salvage Essences Counter",
-    "disableMortMessages": "Disable Mort Messages",
-    "disableBossMessages": "Disable Boss Messages",
-    "hideOtherPlayersPresents": "Hide Other Player's Presents",
+    "disableMortMessages": "隐藏 Mort 的对话",
+    "disableBossMessages": "隐藏 Boss 们的台词",
+    "hideOtherPlayersPresents": "隐藏其他玩家的礼物",
     "easierPresentOpening": "Open Presents Easier",
     "showSwordKills": "Show Sword Kills"
   },
