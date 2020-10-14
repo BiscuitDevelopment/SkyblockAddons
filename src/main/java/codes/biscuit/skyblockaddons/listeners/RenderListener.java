@@ -372,7 +372,15 @@ public class RenderListener {
         if (feature == Feature.MANA_BAR) {
             fill = (float) getAttribute(Attribute.MANA) / getAttribute(Attribute.MAX_MANA);
         } else if (feature == Feature.SKILL_PROGRESS_BAR) {
-            fill = main.getPlayerListener().getActionBarParser().getCurrentSkillXP() / (float) main.getPlayerListener().getActionBarParser().getTotalSkillXP();
+            if (main.getPlayerListener().getActionBarParser().getTotalSkillXP() == 0) {
+                if (buttonLocation == null) {
+                    return;
+                } else {
+                    fill = 0.40F;
+                }
+            } else {
+                fill = main.getPlayerListener().getActionBarParser().getCurrentSkillXP() / (float) main.getPlayerListener().getActionBarParser().getTotalSkillXP();
+            }
         } else {
             fill = (float) getAttribute(Attribute.HEALTH) / getAttribute(Attribute.MAX_HEALTH);
         }
@@ -748,16 +756,17 @@ public class RenderListener {
             } else {
                 StringBuilder previewBuilder = new StringBuilder();
                 if (main.getConfigValues().isEnabled(Feature.SHOW_SKILL_XP_GAINED)) {
-                    previewBuilder.append("+123");
+                    previewBuilder.append("+123 ");
                 }
                 if (main.getConfigValues().isEnabled(Feature.SHOW_SKILL_PERCENTAGE_INSTEAD_OF_XP)) {
-                    previewBuilder.append(" 40%");
+                    previewBuilder.append("40% ");
                 } else {
-                    previewBuilder.append(" (2000/5000)");
+                    previewBuilder.append("(2000/5000) ");
                 }
                 if (main.getConfigValues().isEnabled(Feature.SKILL_ACTIONS_LEFT_UNTIL_NEXT_LEVEL)) {
-                    previewBuilder.append(" - ").append(Translations.getMessage("messages.actionsLeft", 3000));
+                    previewBuilder.append(" - ").append(Translations.getMessage("messages.actionsLeft", 3000)).append(" ");
                 }
+                previewBuilder.setLength(previewBuilder.length() - 1);
                 text = previewBuilder.toString();
             }
             if (buttonLocation == null) {
@@ -1152,6 +1161,12 @@ public class RenderListener {
                 ChromaManager.doneRenderingText();
             } else {
                 float percent = secrets / (float) maxSecrets;
+                if (percent < 0) {
+                    percent = 0;
+                } else if (percent > 1) {
+                    percent = 1;
+                }
+
                 float r;
                 float g;
                 if (percent <= 0.5) { // Fade from red -> yellow
@@ -1161,7 +1176,7 @@ public class RenderListener {
                     r = (1 - percent) * 0.66F + 0.33F;
                     g = 1;
                 }
-                int secretsColor = new Color(r, g, 0.33F).getRGB();
+                int secretsColor = new Color(Math.min(1, r), g, 0.33F).getRGB();
 
                 float secretsWidth = mc.fontRendererObj.getStringWidth(String.valueOf(secrets));
                 float slashWidth = mc.fontRendererObj.getStringWidth("/");
@@ -1268,8 +1283,7 @@ public class RenderListener {
             if (entry.getValue() == 0) continue;
 
             GlStateManager.color(1, 1, 1, 1F);
-            mc.getTextureManager().bindTexture(entry.getKey().getResourceLocation());
-            main.getUtils().drawModalRectWithCustomSizedTexture(x, y, 0, 0, iconSize, iconSize, iconSize, iconSize);
+            renderItem(entry.getKey().getItemStack(), x, y);
 
             int color = main.getConfigValues().getColor(Feature.BAIT_LIST);
             ChromaManager.renderingText(Feature.BAIT_LIST);

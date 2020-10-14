@@ -82,22 +82,19 @@ public class ItemUtils {
      */
     public static String getSkyBlockItemID(ItemStack item) {
         if (item == null) {
-            throw new NullPointerException("Item cannot be null.");
-        } else if (!item.hasTagCompound()) {
             return null;
         }
 
-        NBTTagCompound skyBlockData = item.getSubCompound("ExtraAttributes", false);
-
-        if (skyBlockData != null) {
-            String itemId = skyBlockData.getString("id");
-
-            if (!itemId.equals("")) {
-                return itemId;
-            }
+        NBTTagCompound extraAttributes = getExtraAttributes(item);
+        if (extraAttributes == null) {
+            return null;
         }
 
-        return null;
+        if (!extraAttributes.hasKey("id", ItemUtils.NBT_STRING)) {
+            return null;
+        }
+
+        return extraAttributes.getString("id");
     }
 
     /**

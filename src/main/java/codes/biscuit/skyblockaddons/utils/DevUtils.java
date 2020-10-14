@@ -235,7 +235,7 @@ public class DevUtils {
     }
 
     public static void resetEntityCopyRadiusToDefault() {
-        entityNames = DEFAULT_ENTITY_NAMES;
+        entityCopyRadius = DEFAULT_ENTITY_COPY_RADIUS;
     }
 
     /**
