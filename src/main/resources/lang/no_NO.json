@@ -171,7 +171,8 @@
     "disableMortMessages": "Disable Mort Messages",
     "disableBossMessages": "Disable Boss Messages",
     "hideOtherPlayersPresents": "Hide Other Player's Presents",
-    "easierPresentOpening": "Åpne gaver enklere"
+    "easierPresentOpening": "Åpne gaver enklere",
+    "showSwordKills": "Show Sword Kills"
   },
   "messages": {
     "enchants": "Fortryllinger",
