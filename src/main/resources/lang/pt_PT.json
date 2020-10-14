@@ -171,7 +171,8 @@
     "disableMortMessages": "Desativar as mensagens do Mort",
     "disableBossMessages": "Desativar as mensagens dos bosses",
     "hideOtherPlayersPresents": "Esconder os presentes de outros jogadores",
-    "easierPresentOpening": "Abrir presentes mais facilmente"
+    "easierPresentOpening": "Abrir presentes mais facilmente",
+    "showSwordKills": "Show Sword Kills"
   },
   "messages": {
     "enchants": "encantamentos",
