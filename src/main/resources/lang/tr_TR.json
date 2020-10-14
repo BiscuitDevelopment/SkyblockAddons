@@ -171,7 +171,8 @@
     "disableMortMessages": "Mort Mesajlarını Devre Dışı Bırak",
     "disableBossMessages": "Boss Mesajlarını Devre Dışı Bırak",
     "hideOtherPlayersPresents": "Diğer Oyuncuların Hediyelerini Gizle",
-    "easierPresentOpening": "Hediyeleri Kolay Aç"
+    "easierPresentOpening": "Hediyeleri Kolay Aç",
+    "showSwordKills": "Show Sword Kills"
   },
   "messages": {
     "enchants": "Büyüler",
