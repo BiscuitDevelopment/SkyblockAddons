@@ -171,7 +171,8 @@
     "disableMortMessages": "Desactivar Mensajes de Mort",
     "disableBossMessages": "Desactivar Mensajes de Bosses",
     "hideOtherPlayersPresents": "Ocultar Regalos de Otros Jugadores",
-    "easierPresentOpening": "Abrir Regalos Más Fácilmente"
+    "easierPresentOpening": "Abrir Regalos Más Fácilmente",
+    "showSwordKills": "Mostrar Kills con Espada"
   },
   "messages": {
     "enchants": "Encantamientos",
