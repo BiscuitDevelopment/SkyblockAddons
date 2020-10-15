@@ -283,7 +283,7 @@
     "sba.folder": "Otwórz folder z modyfikacjami",
     "sba.folder.error": "Wystąpił błąd podczas próby otwarcia folderu z modami: %s",
     "sba.help": "Pokazuje tę wiadomość. Jeśli polecenie zostanie dostarczone, to wyświetli się szczegółowa informacja o tym poleceniu.",
-    "sba.help.copyEntity": "Copies the NBT data of entities. The types of entities included and the radius around the player to copy data from can be customized. If no options are given, the default settings are used. The default settings are: include players, armor stands, and mobs, and a radius of 3 blocks. If the radius isn't given, the default radius is used.",
+    "sba.help.copyEntity": "Kopiuje dane NBT bytów. Rodzaje elementów dołączonych i promień wokół gracza do kopiowania danych mogą być dostosowywane. Jeśli nie podano żadnych opcji, używane są domyślne ustawienia. Domyślne ustawienia zawierają: graczy, stojaki na zbroje i moby, a także promień %radius% bloków. Jeśli promień nie jest podany, stosuje się domyślny promień.",
     "sba.help.copyEntity.entityNames": "Nazwy typów obiektów, dla których chcesz skopiować dane (np. Player, Creeper). Naciśnij \"Tab\" po wpisaniu polecenia dla pełnej listy. Oddziel nazwy przecinkami, rozmiar liter w nazwach jest ważny.",
     "sba.help.copyEntity.radius": "Promień(w blokach) wokół gracza, aby skopiować dane z NBT",
     "sba.help.copySidebar.formatted": "Określa, czy kody formatowania powinny być zawarte podczas kopiowania. Może to być \"true\" lub \"false\", domyślnie \"false\", jeśli nie podano żadnej wartości. Kody formatowania są kopiowane, jeśli wynosi \"true\".",
