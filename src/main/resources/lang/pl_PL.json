@@ -166,7 +166,13 @@
     "dungeonsSecretsDisplay": "Wyświetlaj sekrety Dungeonu",
     "showSkillPercentageInstead": "Pokaz procent zamiast ilości doświadczenia",
     "showSkillXPGained": "Pokaż zdobyte doświadczenie",
-    "skillProgressBar": "Wyświetlaj postęp paska skilli"
+    "skillProgressBar": "Wyświetlaj postęp paska skilli",
+    "showSalvageEssencesCounter": "Show Salvage Essences Counter",
+    "disableMortMessages": "Disable Mort Messages",
+    "disableBossMessages": "Disable Boss Messages",
+    "hideOtherPlayersPresents": "Hide Other Player's Presents",
+    "easierPresentOpening": "Open Presents Easier",
+    "showSwordKills": "Show Sword Kills"
   },
   "messages": {
     "enchants": "Zaklęcia",
@@ -288,18 +294,28 @@
     "sba.help.set.zealotCounter.eyes": "Łączna liczba otrzymanych oczu przywołujących",
     "sba.help.set.zealotCounter.totalZealots": "Łączna liczba zabitych zealotów",
     "sba.help.set.zealotCounter.zealots": "Zealoty zabite od ostatniego wyrzucenia oka przywołującego",
+    "sba.help.slayer": "Ustaw manualnie statystki Slayera, naciśnij tab, aby zobaczyć argumenty",
+    "sba.help.slayer.boss": "Slayer boss: \"Zombie\", \"Spider\", or \"Wolf\"",
+    "sba.help.slayer.number": "Number to set the stat to",
+    "sba.help.slayer.stat": "Slayer stat to change, can be \"kills\" or the name of a dropped item formatted like this: \"REVENANT_FLESH\"",
     "sba.set.zealotCounter": "Ręcznie ustaw Twoje liczniki Zealotów",
     "sba.set.zealotCounter.eyes": "Ustaw całkowitą liczbę oczu przywołujących na %number%!",
     "sba.set.zealotCounter.totalZealots": "Ustaw całkowitą liczbę zealotów na %number%!",
     "sba.set.zealotCounter.wrongUsage": "Nieprawidłowy wybór! Proszę wybrać %options%.",
     "sba.set.zealotCounter.zealots": "Ustaw aktualną liczbę Zealotów na %number%!",
+    "sba.slayer": "Ustaw manualnie statystki Slayera, naciśnij tab, aby zobaczyć argumenty",
+    "sba.slayer.bossRequired": "You need to select a boss! Please choose %bosses%",
+    "sba.slayer.statRequired": "You need to select a stat. Press tab for options.",
+    "sba.slayer.numberRequired": "You need to add the number you want.",
+    "sba.slayer.killsSet": "Kills for slayer %boss% was set to %number%.",
+    "sba.slayer.statSet": "Statistic %stat% for slayer %boss% was set to %number%.",
+    "sba.slayer.invalidBoss": "\"%input%\" nie jest prawidłową statystyką!",
+    "sba.slayer.invalidStat": "\"%input%\" nie jest prawidłowym bossem!",
     "sba.toggleActionBarLogging": "e(Dev) §7Przełącz rejestrowanie wiadomości na pasku akcji",
     "sba.toggleActionBarLogging.disabled": "Wiadomości na pasku akcji nie będą dłużej rejestrowane.",
     "sba.toggleActionBarLogging.enabled": "Wiadomości na pasku akcji będą rejestrowane.",
     "sba.wrongUsage.generic": "Złe zastosowanie!",
-    "sba.wrongUsage.subCommandNotFound": "Podkomenda %sub-command% nie została odnaleziona.",
-    "sba.slayer": "Ustaw manualnie statystki Slayera, naciśnij tab, aby zobaczyć argumenty",
-    "sba.help.slayer": "Ustaw manualnie statystki Slayera, naciśnij tab, aby zobaczyć argumenty"
+    "sba.wrongUsage.subCommandNotFound": "Podkomenda %sub-command% nie została odnaleziona."
   },
   "keyBindings": {
     "developerCopyNBT": "Skopiuj NBT"
