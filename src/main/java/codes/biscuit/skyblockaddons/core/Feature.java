@@ -183,6 +183,8 @@ public enum Feature {
     HIDE_OTHER_PLAYERS_PRESENTS(150, "settings.hideOtherPlayersPresents", null,false),
     EASIER_PRESENT_OPENING(151, "settings.easierPresentOpening", null,false),
 
+    DISABLE_SPIRIT_SCEPTRE_MESSAGES(152, "settings.disableSpiritSceptreMessages", null, false),
+
     WARNING_TIME(-1, Message.SETTING_WARNING_DURATION, false),
 
     WARP_ADVANCED_MODE(-1, Message.SETTING_ADVANCED_MODE, true),
