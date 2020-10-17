@@ -283,7 +283,7 @@
     "sba.folder": "افتح مجلد المودات الخاص بك",
     "sba.folder.error": "حدث خطأ اثناء محاولة فتح ملف المودات: %s",
     "sba.help": "إظهار رسالة المساعدة هذه. إذا تم توفير أمر ، يتم عرض مساعدة مفصلة حول هذا الأمر.",
-    "sba.help.copyEntity": "Copies the NBT data of entities. The types of entities included and the radius around the player to copy data from can be customized. If no options are given, the default settings are used. The default settings are: include players, armor stands, and mobs, and a radius of 3 blocks. If the radius isn't given, the default radius is used.",
+    "sba.help.copyEntity": "نسخ بينات NBT للأشياء. انواع الأشياء المضمونه والقطر الذي حول الاعب لنسخ البيانات يمكن تشخيصة. إذا لم يتم إعطاء أي خيارات، الاعدادات الافتراضية تستخدم. الاعدادات الافتراضية هي: إشمال اللاعبين، حاملات الدروع، الغواغئ، وقطر 3 كتلات. إذا لم يعطا نصف القطر، يستخدم القطر الافتراضى.",
     "sba.help.copyEntity.entityNames": "اسماء انواع الأشياء الذي تريد نصخ البيانات (مثل لاعب، المعترش). اضغط على \"Tab\" بعد كتابة الأمر لقائمة كاملة. افصل أسماء متعدده بفواصل، الأسماء حساسة لحالة الأحرف.",
     "sba.help.copyEntity.radius": "نصف قطر (في كتل) حول اللاعب لنسخ بياناتNBT من الشيء",
     "sba.help.copySidebar.formatted": "يحدد اذا ينبغي تضمين رموز الألوان عند النسخ. يمكن أن بكون إما \"صحيح\" او \"خطأ\"، الافتراضي هو \"خطأ\" إذا لم يتم توفير أي قيمة. يتم نسخ رموز الألوان إذا \"صحيح\".",
