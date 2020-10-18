@@ -79,7 +79,7 @@ public class SkyblockAddonsCommand extends CommandBase {
                     "§b● " + CommandSyntax.COPY_ENTITY + " §7- " + Translations.getMessage("commandUsage.sba.copyEntity") + "\n" +
                     "§b● " + CommandSyntax.COPY_SIDEBAR + " §7- " + Translations.getMessage("commandUsage.sba.copySidebar") + "\n" +
                     "§b● " + CommandSyntax.COPY_TAB_LIST + " §7- " + Translations.getMessage("commandUsage.sba.copyTabList") + "\n" +
-                    "§b● " + CommandSyntax.TOGGLE_ACTION_BAR_LOGGING + " §7- " + Translations.getMessage("commandUsage.sba.toggleActionBarLogging" + "\n" +
+                    "§b● " + CommandSyntax.TOGGLE_ACTION_BAR_LOGGING + " §7- " + Translations.getMessage("commandUsage.sba.toggleActionBarLogging") + "\n" +
                     "§b● " + CommandSyntax.COPY_BLOCK + " §7- " + Translations.getMessageInternal("sba.help.copyBlock", new String[]{"commandUsage"});
         }
 
@@ -165,6 +165,10 @@ public class SkyblockAddonsCommand extends CommandBase {
                         } catch (IllegalArgumentException e) {
                             throw new CommandException(Translations.getMessage("commandUsage.sba.wrongUsage.subCommandNotFound", args[1]));
                         }
+                    } else if (args[0].equalsIgnoreCase("printDeaths")) {
+                        main.getUtils().sendMessage("Deaths: " + main.getDungeonUtils().getDeathCounter().getDeaths(), false);
+                        main.getUtils().sendMessage("Alternate Deaths: " + main.getDungeonUtils().getDeathCounter().getAlternateDeaths(), false);
+                        main.getUtils().sendMessage("Revives: " + main.getDungeonUtils().getDeathCounter().getDeaths(), false);
                     } else {
                         main.getUtils().sendMessage(getCommandUsage(sender), false);
                     }
