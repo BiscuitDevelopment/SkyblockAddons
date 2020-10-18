@@ -30,8 +30,6 @@ public class GuiScreenListener {
         int eventKey = Keyboard.getEventKey();
 
         if (eventKey == DevUtils.DEV_KEY && Keyboard.getEventKeyState()) {
-            event.setCanceled(true);
-
             // Copy Item NBT
             if (main.isDevMode()) {
                 GuiScreen currentScreen = event.gui;
