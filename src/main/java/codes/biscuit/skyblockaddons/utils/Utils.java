@@ -34,7 +34,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.scoreboard.Score;
 import net.minecraft.scoreboard.ScoreObjective;
 import net.minecraft.scoreboard.ScorePlayerTeam;
@@ -604,23 +603,6 @@ public class Utils {
         return Loader.instance().activeModContainer().getSource().getParentFile();
     }
 
-    public int getNBTInteger(ItemStack item, String... path) {
-        if (item != null && item.hasTagCompound()) {
-            NBTTagCompound tag = item.getTagCompound();
-
-            for (String tagName : path) {
-                if (path[path.length-1].equals(tagName)) continue;
-                if (tag.hasKey(tagName)) {
-                    tag = tag.getCompoundTag(tagName);
-                } else {
-                    return -1;
-                }
-            }
-            return tag.getInteger(path[path.length-1]);
-        }
-        return -1;
-    }
-
     /**
      * Checks if it is currently Halloween according to the system calendar.
      *
@@ -633,7 +615,7 @@ public class Utils {
 
     public void drawTextWithStyle(String text, float x, float y, int color) {
         if (main.getConfigValues().getTextStyle() == EnumUtils.TextStyle.STYLE_TWO) {
-            int colorAlpha = Math.max(getAlpha(color), 4);
+            int colorAlpha = Math.max(ColorUtils.getAlpha(color), 4);
             int colorBlack = new Color(0, 0, 0, colorAlpha/255F).getRGB();
             String strippedText = TextUtils.stripColor(text);
             Minecraft.getMinecraft().fontRendererObj.drawString(strippedText,x+1, y+0, colorBlack, false);
@@ -648,10 +630,6 @@ public class Utils {
 
     public int getDefaultBlue(int alpha) {
         return new Color(160, 225, 229, alpha).getRGB();
-    }
-
-    public int getAlpha(int color) {
-        return (color >> 24 & 255);
     }
 
     public float normalizeValueNoStep(float value, float min, float max) {
@@ -676,19 +654,6 @@ public class Utils {
         return MathHelper.clamp_float(value, min, max);
     }
 
-    public void bindRGBColor(int color) {
-        float r = (float) (color >> 16 & 255) / 255.0F;
-        float g = (float) (color >> 8 & 255) / 255.0F;
-        float b = (float) (color & 255) / 255.0F;
-        float a = (float) (color >> 24 & 255) / 255.0F;
-
-        GlStateManager.color(r, g, b, a);
-    }
-
-    public void bindColorInts(int r, int g, int b, int a) {
-        GlStateManager.color(r/255F, g/255F, b/255F, a/255F);
-}
-
     public String[] wrapSplitText(String text, int wrapLength) {
         return WordUtils.wrap(text, wrapLength).replace("\r", "").split(Pattern.quote("\n"));
     }
@@ -702,10 +667,6 @@ public class Utils {
             }
         }
         return false;
-    }
-
-    public int getColorWithAlpha(int color, int alpha) {
-        return (alpha << 24) | (color & 0x00FFFFFF);
     }
 
     public void drawModalRectWithCustomSizedTexture(float x, float y, float u, float v, float width, float height, float textureWidth, float textureHeight) {

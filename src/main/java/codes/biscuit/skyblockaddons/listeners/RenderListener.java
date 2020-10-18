@@ -389,7 +389,7 @@ public class RenderListener {
 
         float x = main.getConfigValues().getActualX(feature);
         float y = main.getConfigValues().getActualY(feature);
-        Color color = main.getConfigValues().getColorObject(feature);
+        int color = main.getConfigValues().getColor(feature);
 
         if (feature == Feature.SKILL_PROGRESS_BAR && buttonLocation == null) {
             int remainingTime = (int) (skillFadeOutTime - System.currentTimeMillis());
@@ -400,15 +400,15 @@ public class RenderListener {
                 }
 
                 int textAlpha = Math.round(255 - (-remainingTime / 2000F * 255F));
-                color = main.getConfigValues().getColorObject(feature, textAlpha); // so it fades out, 0.016 is the minimum alpha
+                color = main.getConfigValues().getColor(feature, textAlpha); // so it fades out, 0.016 is the minimum alpha
             }
         }
 
         if (feature == Feature.HEALTH_BAR && main.getConfigValues().isEnabled(Feature.CHANGE_BAR_COLOR_FOR_POTIONS)) {
             if (mc.thePlayer.isPotionActive(19/* Poison */)) {
-                color = ColorCode.DARK_GREEN.getColorObject();
+                color = ColorCode.DARK_GREEN.getColor();
             } else if (mc.thePlayer.isPotionActive(20/* Wither */)) {
-                color = ColorCode.DARK_GRAY.getColorObject();
+                color = ColorCode.DARK_GRAY.getColor();
             }
         }
 
@@ -433,34 +433,34 @@ public class RenderListener {
         main.getUtils().restoreGLOptions();
     }
 
-    private void drawModularBar(Minecraft mc, Color color, boolean filled, float x, float y, ButtonLocation buttonLocation, Feature feature, int fillWidth, int maxWidth) {
+    private void drawModularBar(Minecraft mc, int color, boolean filled, float x, float y, ButtonLocation buttonLocation, Feature feature, int fillWidth, int maxWidth) {
         Gui gui = mc.ingameGUI;
         if (buttonLocation != null) {
             gui = buttonLocation;
         }
-        if (color.getRGB() == ColorCode.BLACK.getColor()) {
-            GlStateManager.color(0.25F, 0.25F, 0.25F, color.getAlpha() / 255F); // too dark normally
-        } else { // a little darker for contrast
-            GlStateManager.color(color.getRed() / 255F * 0.9F, color.getGreen() / 255F * 0.9F, color.getBlue() / 255F * 0.9F, ((float) color.getAlpha() / 255));
+        if (color == ColorCode.BLACK.getColor()) {
+            GlStateManager.color(0.25F, 0.25F, 0.25F, ColorUtils.getAlpha(color) / 255F); // too dark normally
+        } else { // A little darker for contrast...
+            ColorUtils.bindColor(color, 0.9F);
         }
         IntPair sizes = main.getConfigValues().getSizes(feature);
-        if (!filled) fillWidth = maxWidth;
+        if (!filled) {
+            fillWidth = maxWidth;
+        }
         drawBarStart(gui, x, y, filled, sizes.getX(), sizes.getY(), fillWidth, color, maxWidth);
     }
 
-    private void drawBarStart(Gui gui, float x, float y, boolean filled, int barWidth, int barHeight, int fillWidth, Color color, int maxWidth) {
+    private void drawBarStart(Gui gui, float x, float y, boolean filled, int barWidth, int barHeight, int fillWidth, int color, int maxWidth) {
         int baseTextureY = filled ? 0 : 6;
-
-//        drawMiddleThreeRows(gui,x+10,y,barHeight,22,baseTextureY,2, fillWidth, 2); // these two lines just fill some gaps in the bar
-//        drawMiddleThreeRows(gui,x+11+(barWidth*9),y,barHeight,22,baseTextureY,2, fillWidth, 2);
 
         drawAllFiveRows(gui, x, y, barHeight, 0, baseTextureY, 11, fillWidth); // This draws the first segment- including the first separator.
 
         drawBarSeparators(gui, x + 11, y, baseTextureY, barWidth, barHeight, fillWidth); // This draws the rest of the bar, not sure why it's named this...
 
-        if (fillWidth < maxWidth - 1 && fillWidth > 0 && // This just draws a dark line to easily distinguish where the bar's progress is.
-                main.getUtils().isUsingDefaultBarTextures()) { // It doesn't always work out nicely when using like custom textures though.
-            GlStateManager.color(((float) color.getRed() / 255) * 0.8F, ((float) color.getGreen() / 255) * 0.8F, ((float) color.getBlue() / 255) * 0.8F);
+        // This just draws a dark line to easily distinguish where the bar's progress is.
+        // It doesn't always work out nicely when using like custom textures though.
+        if (fillWidth < maxWidth - 1 && fillWidth > 0 && main.getUtils().isUsingDefaultBarTextures()) {
+            ColorUtils.bindColor(color, 0.8F);
             drawMiddleThreeRows(gui, x + fillWidth, y, barHeight, 11, 6, 2, fillWidth, 2);
         }
     }
@@ -1025,7 +1025,7 @@ public class RenderListener {
             mc.getTextureManager().bindTexture(ZEALOTS_PER_EYE_ICON);
             main.getUtils().drawModalRectWithCustomSizedTexture(x, y, 0, 0, 16, 16, 16, 16);
             mc.getTextureManager().bindTexture(SLASH_ICON);
-            main.getUtils().bindRGBColor(color);
+            ColorUtils.bindColor(color);
             main.getUtils().drawModalRectWithCustomSizedTexture(x, y, 0, 0, 16, 16, 16, 16, true);
 
             ChromaManager.renderingText(feature);
@@ -1774,7 +1774,7 @@ public class RenderListener {
 
         boolean alignRight = (anchorPoint == EnumUtils.AnchorPoint.TOP_RIGHT || anchorPoint == EnumUtils.AnchorPoint.BOTTOM_RIGHT);
 
-        Color color = main.getConfigValues().getColorObject(Feature.TAB_EFFECT_TIMERS);
+        int color = main.getConfigValues().getColor(Feature.TAB_EFFECT_TIMERS);
 
         Minecraft mc = Minecraft.getMinecraft();
 
@@ -1790,9 +1790,9 @@ public class RenderListener {
             lineY = y + height - 8;
         }
         if (alignRight) {
-            main.getUtils().drawTextWithStyle(text, x + width - mc.fontRendererObj.getStringWidth(text), lineY, color.getRGB());
+            main.getUtils().drawTextWithStyle(text, x + width - mc.fontRendererObj.getStringWidth(text), lineY, color);
         } else {
-            main.getUtils().drawTextWithStyle(text, x, lineY, color.getRGB());
+            main.getUtils().drawTextWithStyle(text, x, lineY, color);
         }
         ChromaManager.doneRenderingText();
 
@@ -1810,13 +1810,13 @@ public class RenderListener {
             if (alignRight) {
                 ChromaManager.renderingText(Feature.TAB_EFFECT_TIMERS);
                 main.getUtils().drawTextWithStyle(duration+" ", x + width - mc.fontRendererObj.getStringWidth(duration+" ")
-                        - mc.fontRendererObj.getStringWidth(effect.trim()), lineY, color.getRGB());
+                        - mc.fontRendererObj.getStringWidth(effect.trim()), lineY, color);
                 ChromaManager.doneRenderingText();
-                main.getUtils().drawTextWithStyle(effect.trim(), x + width - mc.fontRendererObj.getStringWidth(effect.trim()), lineY, color.getRGB());
+                main.getUtils().drawTextWithStyle(effect.trim(), x + width - mc.fontRendererObj.getStringWidth(effect.trim()), lineY, color);
             } else {
-                main.getUtils().drawTextWithStyle(effect, x, lineY, color.getRGB());
+                main.getUtils().drawTextWithStyle(effect, x, lineY, color);
                 ChromaManager.renderingText(Feature.TAB_EFFECT_TIMERS);
-                main.getUtils().drawTextWithStyle(duration, x+mc.fontRendererObj.getStringWidth(effect), lineY, color.getRGB());
+                main.getUtils().drawTextWithStyle(duration, x+mc.fontRendererObj.getStringWidth(effect), lineY, color);
                 ChromaManager.doneRenderingText();
             }
             drawnCount++;
@@ -1834,13 +1834,13 @@ public class RenderListener {
             if (alignRight) {
                 ChromaManager.renderingText(Feature.TAB_EFFECT_TIMERS);
                 main.getUtils().drawTextWithStyle(duration+" ", x + width - mc.fontRendererObj.getStringWidth(duration+" ")
-                        - mc.fontRendererObj.getStringWidth(effect.trim()), lineY, color.getRGB());
+                        - mc.fontRendererObj.getStringWidth(effect.trim()), lineY, color);
                 ChromaManager.doneRenderingText();
-                main.getUtils().drawTextWithStyle(effect, x + width - mc.fontRendererObj.getStringWidth(effect.trim()), lineY, color.getRGB());
+                main.getUtils().drawTextWithStyle(effect, x + width - mc.fontRendererObj.getStringWidth(effect.trim()), lineY, color);
             } else {
-                main.getUtils().drawTextWithStyle(effect, x, lineY, color.getRGB());
+                main.getUtils().drawTextWithStyle(effect, x, lineY, color);
                 ChromaManager.renderingText(Feature.TAB_EFFECT_TIMERS);
-                main.getUtils().drawTextWithStyle(duration, x+mc.fontRendererObj.getStringWidth(effect), lineY, color.getRGB());
+                main.getUtils().drawTextWithStyle(duration, x+mc.fontRendererObj.getStringWidth(effect), lineY, color);
                 ChromaManager.doneRenderingText();
             }
             drawnCount++;
@@ -2101,10 +2101,10 @@ public class RenderListener {
         }
 
         GL11.glDisable(GL11.GL_SCISSOR_TEST);
-        Color color = main.getConfigValues().getColorObject(Feature.DUNGEONS_MAP_DISPLAY);
+        int color = main.getConfigValues().getColor(Feature.DUNGEONS_MAP_DISPLAY);
         main.getUtils().drawRect(x, y, x+size, y+size, 0x55000000);
         ChromaManager.renderingText(Feature.DUNGEONS_MAP_DISPLAY);
-        main.getUtils().drawRectOutline(x, y, size, size, 1, color.getRGB(), main.getConfigValues().getChromaFeatures().contains(Feature.DUNGEONS_MAP_DISPLAY));
+        main.getUtils().drawRectOutline(x, y, size, size, 1, color, main.getConfigValues().getChromaFeatures().contains(Feature.DUNGEONS_MAP_DISPLAY));
         ChromaManager.doneRenderingText();
         GlStateManager.color(1,1,1,1);
         GL11.glEnable(GL11.GL_SCISSOR_TEST);

@@ -2,6 +2,8 @@ package codes.biscuit.skyblockaddons.gui.buttons;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.gui.IslandWarpGui;
+import codes.biscuit.skyblockaddons.utils.ColorCode;
+import codes.biscuit.skyblockaddons.utils.ColorUtils;
 import lombok.Getter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
@@ -192,9 +194,9 @@ public class IslandButton extends GuiButton {
             int alpha = Math.max(255 - (int) (((expansion - 1) / 0.1) * 255), 4);
             int color;
             if (unlocked) {
-                color = SkyblockAddons.getInstance().getUtils().getColorWithAlpha(0xFFFFFF, alpha);
+                color = ColorCode.WHITE.getColor();
             } else {
-                color = SkyblockAddons.getInstance().getUtils().getColorWithAlpha(0x999999, alpha);
+                color = ColorUtils.setColorAlpha(0x999999, alpha);
             }
 
             mc.fontRendererObj.drawStringWithShadow(displayString, centerX / textScale - mc.fontRendererObj.getStringWidth(displayString) / 2F, centerY / textScale, color);

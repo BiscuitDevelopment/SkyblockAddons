@@ -6,6 +6,7 @@ import codes.biscuit.skyblockaddons.core.Language;
 import codes.biscuit.skyblockaddons.features.discordrpc.DiscordStatus;
 import codes.biscuit.skyblockaddons.misc.ChromaManager;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
+import codes.biscuit.skyblockaddons.utils.ColorUtils;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.objects.FloatPair;
 import codes.biscuit.skyblockaddons.utils.objects.IntPair;
@@ -22,12 +23,10 @@ import org.apache.commons.lang3.mutable.MutableObject;
 import org.apache.commons.lang3.text.WordUtils;
 import org.apache.logging.log4j.Logger;
 
-import java.awt.*;
 import java.awt.geom.Point2D;
 import java.beans.Introspector;
 import java.io.*;
 import java.lang.reflect.Method;
-import java.util.List;
 import java.util.*;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -686,29 +685,25 @@ public class ConfigValues {
         return !isDisabled(feature);
     }
 
-    public Color getColorObject(Feature feature, int alpha) {
-        return new Color(getColor(feature, alpha), true);
-    }
-
-    public Color getColorObject(Feature feature) {
-        return getColorObject(feature, 255);
+    public int getColor(Feature feature) {
+        return this.getColor(feature, 255);
     }
 
     public int getColor(Feature feature, int alpha) {
         if (alpha < 4) {
-            alpha = 4; // Minimum apparently
+            alpha = 4; // Minimum apparently...
         }
 
         if (chromaFeatures.contains(feature)) {
             return ChromaManager.getChromaColor(0, 0, alpha);
         }
 
-        ColorCode defaultColor = feature.getDefaultColor();
-        return colors.getOrDefault(feature, defaultColor != null ? defaultColor.getColor() : ColorCode.RED.getColor());
-    }
+        if (colors.containsKey(feature)) {
+            return ColorUtils.setColorAlpha(colors.get(feature), 255);
+        }
 
-    public int getColor(Feature feature) {
-        return this.getColor(feature, 255);
+        ColorCode defaultColor = feature.getDefaultColor();
+        return defaultColor != null ? defaultColor.getColor() : ColorCode.RED.getColor();
     }
 
     public ColorCode getRestrictedColor(Feature feature) {

@@ -2,12 +2,12 @@ package codes.biscuit.skyblockaddons.features.healingcircle;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
+import codes.biscuit.skyblockaddons.utils.ColorUtils;
 import com.google.common.collect.Sets;
 import lombok.Getter;
 import net.minecraft.client.renderer.GlStateManager;
 import org.lwjgl.opengl.GL11;
 
-import java.awt.*;
 import java.awt.geom.Point2D;
 import java.util.Iterator;
 import java.util.Set;
@@ -67,8 +67,8 @@ public class HealingCircleManager {
                 GlStateManager.enableAlpha();
                 GlStateManager.disableTexture2D();
 
-                Color color = main.getConfigValues().getColorObject(Feature.SHOW_HEALING_CIRCLE_WALL);
-                GlStateManager.color(color.getRed()/255F, color.getGreen()/255F, color.getBlue()/255F, 0.2F);
+                int color = main.getConfigValues().getColor(Feature.SHOW_HEALING_CIRCLE_WALL);
+                ColorUtils.bindColor(color);
                 Point2D.Double circleCenter = healingCircle.getCircleCenter();
                 if (circleCenter != null && !Double.isNaN(circleCenter.getX()) && !Double.isNaN(circleCenter.getY())) {
                     main.getUtils().drawCylinder(circleCenter.getX(), 0, circleCenter.getY(), HealingCircle.DIAMETER / 2F, 255, partialTicks);
