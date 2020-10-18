@@ -55,6 +55,8 @@ public class Translations {
                 text = bidiReorder(text);
             }
         } catch (NullPointerException ex) {
+            SkyblockAddons.getLogger().error("The string with the path \"{}\" wasn't found.", path);
+            SkyblockAddons.getLogger().catching(ex);
             text = path; // In case of fire...
         }
         return text;
