@@ -42,12 +42,8 @@ public class Translations {
             // Iterate through the string and replace any variables.
             Matcher matcher = VARIABLE_PATTERN.matcher(text);
             Deque<Object> variablesDeque = new ArrayDeque<>(Arrays.asList(variables));
-            while (matcher.find()) {
-                // No variables left... abort!
-                if (variablesDeque.isEmpty()) {
-                    break;
-                }
 
+            while (matcher.find() && !variablesDeque.isEmpty()) {
                 // Replace a variable and re-make the matcher.
                 text = matcher.replaceFirst(Matcher.quoteReplacement(variablesDeque.pollFirst().toString()));
                 matcher = VARIABLE_PATTERN.matcher(text);
