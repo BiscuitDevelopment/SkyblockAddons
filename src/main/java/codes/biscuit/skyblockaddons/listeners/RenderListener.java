@@ -1134,8 +1134,8 @@ public class RenderListener {
             int secrets = main.getDungeonUtils().getSecrets();
             int maxSecrets = main.getDungeonUtils().getMaxSecrets();
             if (secrets == -1) {
-                secrets = 10;
-                maxSecrets = 10;
+                secrets = 0;
+                maxSecrets = 0;
             }
 
             float percent = secrets / (float) maxSecrets;
@@ -1148,7 +1148,12 @@ public class RenderListener {
                 r = (1 - percent) * 0.66F + 0.33F;
                 g = 1;
             }
-            int secretsColor = new Color(r, g, 0.33F).getRGB();
+            int secretsColor;
+            if (maxSecrets == 0) {
+                secretsColor = new Color(170,170,170).getRGB();
+            } else {
+                secretsColor = new Color(r, g, 0.33F).getRGB();
+            }
 
             float secretsWidth = mc.fontRendererObj.getStringWidth(String.valueOf(secrets));
             float slashWidth = mc.fontRendererObj.getStringWidth("/");
