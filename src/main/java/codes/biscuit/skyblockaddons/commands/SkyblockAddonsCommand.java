@@ -3,7 +3,6 @@ package codes.biscuit.skyblockaddons.commands;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Message;
 import codes.biscuit.skyblockaddons.core.Translations;
-import codes.biscuit.skyblockaddons.core.Translations;
 import codes.biscuit.skyblockaddons.features.slayertracker.SlayerBoss;
 import codes.biscuit.skyblockaddons.features.slayertracker.SlayerDrop;
 import codes.biscuit.skyblockaddons.features.slayertracker.SlayerTracker;
@@ -80,7 +79,7 @@ public class SkyblockAddonsCommand extends CommandBase {
                     "§b● " + CommandSyntax.COPY_SIDEBAR + " §7- " + Translations.getMessage("commandUsage.sba.copySidebar") + "\n" +
                     "§b● " + CommandSyntax.COPY_TAB_LIST + " §7- " + Translations.getMessage("commandUsage.sba.copyTabList") + "\n" +
                     "§b● " + CommandSyntax.TOGGLE_ACTION_BAR_LOGGING + " §7- " + Translations.getMessage("commandUsage.sba.toggleActionBarLogging") + "\n" +
-                    "§b● " + CommandSyntax.COPY_BLOCK + " §7- " + Translations.getMessageInternal("sba.help.copyBlock", new String[]{"commandUsage"});
+                    "§b● " + CommandSyntax.COPY_BLOCK + " §7- " + Translations.getMessage("commandUsage.sba.help.copyBlock");
         }
 
         usage = usage + "\n" + FOOTER;
@@ -165,10 +164,6 @@ public class SkyblockAddonsCommand extends CommandBase {
                         } catch (IllegalArgumentException e) {
                             throw new CommandException(Translations.getMessage("commandUsage.sba.wrongUsage.subCommandNotFound", args[1]));
                         }
-                    } else if (args[0].equalsIgnoreCase("printDeaths")) {
-                        main.getUtils().sendMessage("Deaths: " + main.getDungeonUtils().getDeathCounter().getDeaths(), false);
-                        main.getUtils().sendMessage("Alternate Deaths: " + main.getDungeonUtils().getDeathCounter().getAlternateDeaths(), false);
-                        main.getUtils().sendMessage("Revives: " + main.getDungeonUtils().getDeathCounter().getDeaths(), false);
                     } else {
                         main.getUtils().sendMessage(getCommandUsage(sender), false);
                     }
@@ -421,7 +416,7 @@ public class SkyblockAddonsCommand extends CommandBase {
         COPY_TAB_LIST(CommandSyntax.COPY_TAB_LIST, "commandUsage.sba.help.copyTabList", null),
         TOGGLE_ACTION_BAR_LOGGING(CommandSyntax.TOGGLE_ACTION_BAR_LOGGING, "commandUsage.sba.toggleActionBarLogging", null),
         SLAYER(CommandSyntax.SLAYER, "commandUsage.sba.help.slayer", Arrays.asList(CommandOption.SLAYER_BOSS, CommandOption.SLAYER_STAT, CommandOption.SLAYER_NUMBER)),
-        COPY_BLOCK(CommandSyntax.COPY_BLOCK, Translations.getMessageInternal("sba.help.copyBlock", new String[]{"commandUsage"}), null),
+        COPY_BLOCK(CommandSyntax.COPY_BLOCK, "commandUsage.sba.help.copyBlock", null),
         ;
 
         private final CommandSyntax syntax;
