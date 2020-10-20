@@ -306,7 +306,7 @@
     "sba.slayer": "Defina manualmente as estatísticas do slayer, pressione tab para ver os argumentos",
     "sba.slayer.bossRequired": "You need to select a boss! Please choose %bosses%",
     "sba.slayer.statRequired": "You need to select a stat. Press tab for options.",
-    "sba.slayer.numberRequired": "You need to add the number you want.",
+    "sba.slayer.numberRequired": "Você precisa adicionar o número que você quer.",
     "sba.slayer.killsSet": "Kills for slayer %boss% was set to %number%.",
     "sba.slayer.statSet": "Statistic %stat% for slayer %boss% was set to %number%.",
     "sba.slayer.invalidBoss": "\"%input%\" não é uma estatística válida!",
