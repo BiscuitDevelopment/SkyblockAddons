@@ -22,7 +22,7 @@ public class DungeonUtils {
     private static final Pattern PATTERN_MILESTONE = Pattern.compile("^.+?(Healer|Tank|Mage|Archer|Berserk) Milestone .+?([❶-❿]).+?§r§.(\\d+)§.§7 .+?");
     private static final Pattern PATTERN_COLLECTED_ESSENCES = Pattern.compile("§.+?(\\d+) (Wither|Spider|Undead|Dragon|Gold|Diamond|Ice) Essence");
     private static final Pattern PATTERN_BONUS_ESSENCE = Pattern.compile("^§.+?[^You] .+?found a .+?(Wither|Spider|Undead|Dragon|Gold|Diamond|Ice) Essence.+?");
-    private static final Pattern PATTERN_SALVAGE_ESSENCES = Pattern.compile("§.§.\\+([0-9])+? §.§.(Wither|Spider|Undead|Dragon|Gold|Diamond|Ice) Essence!+");
+    private static final Pattern PATTERN_SALVAGE_ESSENCES = Pattern.compile("\\+([0-9]+)? §.§.(Wither|Spider|Undead|Dragon|Gold|Diamond|Ice) Essence!");
     private static final Pattern PATTERN_SECRETS = Pattern.compile("§7([0-9]+)/([0-9]+) Secrets");
 
     /** The last dungeon server the player played on */
@@ -33,6 +33,13 @@ public class DungeonUtils {
 
     /** The latest essences the player collected during a dungeon game */
     @Getter private final Map<EssenceType, Integer> collectedEssences = new EnumMap<>(EssenceType.class);
+
+    /**
+     * Represents the number of essences from salvaged items by the player.
+     *
+     * It's in a separate map to avoid conflict with the collected map
+     */
+    @Getter private final Map<EssenceType, Integer> salvagedEssences = new EnumMap<>(EssenceType.class);
 
     /** The current teammates of the dungeon game */
     @Getter private final Map<String, DungeonPlayer> players = new HashMap<>();
@@ -158,7 +165,7 @@ public class DungeonUtils {
             EssenceType essenceType = EssenceType.fromName(matcher.group(2));
             int amount = Integer.parseInt(matcher.group(1));
 
-            collectedEssences.put(essenceType, collectedEssences.getOrDefault(essenceType, 0) + amount);
+            salvagedEssences.put(essenceType, salvagedEssences.getOrDefault(essenceType, 0) + amount);
         }
     }
 }
