@@ -91,7 +91,7 @@ public class Utils {
             "telekinesis"
     ));
 
-    private static final Pattern SERVER_REGEX = Pattern.compile("(?<serverType>[Mm])(?<serverCode>[0-9]+[A-Z])$");
+    private static final Pattern SERVER_REGEX = Pattern.compile("([Mm])([0-9]+[A-Z])");
     private static final Pattern PURSE_REGEX = Pattern.compile("(?:Purse|Piggy): (?<coins>[0-9.]*)(?: .*)?");
     private static final Pattern SLAYER_TYPE_REGEX = Pattern.compile("(?<type>Tarantula Broodfather|Revenant Horror|Sven Packmaster) (?<level>[IV]+)");
     private static final Pattern SLAYER_PROGRESS_REGEX = Pattern.compile("(?<progress>[0-9.k]*)/(?<total>[0-9.k]*) (?:Kills|Combat XP)$");
@@ -306,13 +306,13 @@ public class Utils {
                     }
 
                     if ((matcher = SERVER_REGEX.matcher(strippedUnformatted)).find()) {
-                        String serverType = matcher.group("serverType");
+                        String serverType = matcher.group(1);
                         if (serverType.equals("m")) {
                             serverID = "mini";
                         } else if (serverType.equals("M")) {
                             serverID = "mega";
                         }
-                        serverID += matcher.group("serverCode");
+                        serverID += matcher.group(2);
                     }
 
                     if (strippedUnformatted.endsWith("Combat XP") || strippedUnformatted.endsWith("Kills")) {
