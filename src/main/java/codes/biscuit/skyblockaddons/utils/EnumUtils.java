@@ -224,6 +224,8 @@ public class EnumUtils {
 
         DISCORD_RP_STATE((Message) null, 0),
         DISCORD_RP_DETAILS((Message) null, 0),
+
+        SHOW_SPIRIT_SCEPTRE_DISPLAY("settings.showSpiritSceptreDisplay", 152)
         ;
 
         private Message message;
