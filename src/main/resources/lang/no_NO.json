@@ -297,7 +297,7 @@
     "sba.help.slayer": "Manuellt sett slayer statestikk, trykk tab for argumenter",
     "sba.help.slayer.boss": "Slayer boss: \"Zombie\", \"Spider\", or \"Wolf\"",
     "sba.help.slayer.number": "Tall å endre statistikken til",
-    "sba.help.slayer.stat": "Slayer statistikk som skal endres, kan være \"kills\" eller navnet på en droppet gjenstand formatert som dette: \"REVENANT_FLESH\"",
+    "sba.help.slayer.stat": "Slayer statistikken som skal endres, kan være \"kills\" eller navnet på en droppet gjenstand formatert som dette: \"REVENANT_FLESH\"",
     "sba.set.zealotCounter": "Angi antall zealot manuelt",
     "sba.set.zealotCounter.eyes": "Sett total Summoning eye opptelling til %number%!",
     "sba.set.zealotCounter.totalZealots": "Sett total zealot opptelling til %number%!",
