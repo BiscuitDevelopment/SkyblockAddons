@@ -27,6 +27,11 @@ import java.util.regex.Pattern;
  */
 public class ItemUtils {
 
+    public static final int NBT_INTEGER = 3;
+    public static final int NBT_STRING = 8;
+    public static final int NBT_LIST = 9;
+    public static final int NBT_COMPOUND = 10;
+
     // Group 0 -> Recombobulator 3000 & Group 1 -> Color Codes
     private static final Pattern RARITY_PATTERN = Pattern.compile("(§[0-9a-f]§l§ka§r )?([§0-9a-fk-or]+)(?<rarity>[A-Z]+)");
 
@@ -110,53 +115,6 @@ public class ItemUtils {
     }
 
     /**
-     * Returns the Base Stat Boost Percentage from a given Skyblock Extra Attributes NBT Compound
-     *
-     * @param extraAttributes the NBT to check
-     * @return the BSPB or {@code -1} if it isn't a Dungeons Item or this isn't a valid Skyblock NBT
-     */
-    public static int getBaseStatBoostPercentage(NBTTagCompound extraAttributes) {
-        if (extraAttributes == null || !extraAttributes.hasKey("baseStatBoostPercentage")) {
-            return -1;
-        }
-
-        return extraAttributes.getInteger("baseStatBoostPercentage");
-    }
-
-    /**
-     * Returns a boolean relating to if the rarity of a given Skyblock Extra Attributes NBT Compound has been upgraded
-     *
-     * @param extraAttributes the NBT to check
-     * @return {@code true} if its rarity has been upgraded or {@code false} if it hasn't or this isn't a valid Skyblock NBT
-     */
-    public static int getRarityUpgrades(NBTTagCompound extraAttributes) {
-        if (extraAttributes != null) {
-            if (!extraAttributes.hasKey("rarity_upgrades")) {
-                return 0;
-            }
-
-            return extraAttributes.getInteger("rarity_upgrades");
-        }
-
-        return 0;
-    }
-
-    /**
-     * Returns the Dungeon Floor an item was obtained from, from a given Skyblock Extra Attributes NBT Compound
-     * Entrance is floor 0
-     * @param extraAttributes the NBT to check
-     * @return the Floor or {@code -1} if it isn't a Dungeons Item or this isn't a valid Skyblock NBT
-     */
-    public static int getDungeonFloor(NBTTagCompound extraAttributes) {
-        if (extraAttributes == null || !extraAttributes.hasKey("item_tier")) {
-            return -1;
-        }
-
-        return extraAttributes.getInteger("item_tier");
-    }
-
-
-    /**
      * @return The Skyblock reforge of a given itemstack
      */
     public static String getReforge(ItemStack item) {
@@ -211,7 +169,6 @@ public class ItemUtils {
      * @return the Skyblock Item ID of this item or {@code null} if this isn't a valid Skyblock NBT
      */
     public static String getSkyBlockItemID(NBTTagCompound extraAttributes) {
-
         if (extraAttributes != null) {
             String itemId = extraAttributes.getString("id");
 
@@ -230,9 +187,7 @@ public class ItemUtils {
      * @return the Reforge (in lowercase) of this item or {@code null} if this isn't a valid Skyblock NBT or reforge
      */
     public static String getReforge(NBTTagCompound extraAttributes) {
-
-        if (extraAttributes != null) {
-            if (!extraAttributes.hasKey("modifier")) return null;
+        if (extraAttributes != null && extraAttributes.hasKey("modifier", NBT_STRING)) {
             return extraAttributes.getString("modifier");
         }
 
@@ -358,25 +313,6 @@ public class ItemUtils {
     }
 
     /**
-     * Returns the number of Hot Potato Books from a given Skyblock Extra Attributes NBT Compound
-     * MAX 15 because of Fuming Potato Books
-     * @param extraAttributes the NBT to check
-     * @return the number of Hot Potato Books or {@code -1} if it isn't a valid Skyblock NBT
-     */
-    public static int getHotPotatoBookCount(NBTTagCompound extraAttributes) {
-        if (extraAttributes != null) {
-
-            if (!extraAttributes.hasKey("hot_potato_count")) {
-                return 0;
-            }
-
-            return extraAttributes.getInteger("hot_potato_count");
-        }
-
-        return -1;
-    }
-
-    /**
      * Returns a string list containing the nbt lore of an ItemStack, or
      * an empty list if this item doesn't have a lore. The returned lore
      * list is unmodifiable since it has been converted from an NBTTagList.
@@ -385,11 +321,11 @@ public class ItemUtils {
      * @return the lore of an ItemStack as a string list
      */
     public static List<String> getItemLore(ItemStack itemStack) {
-        if (itemStack.hasTagCompound() && itemStack.getTagCompound().hasKey("display", 10)) { // 10 -> Compound
+        if (itemStack.hasTagCompound() && itemStack.getTagCompound().hasKey("display", ItemUtils.NBT_COMPOUND)) {
             NBTTagCompound display = itemStack.getTagCompound().getCompoundTag("display");
 
-            if (display.hasKey("Lore", 9)) { // 9 -> List
-                NBTTagList lore = display.getTagList("Lore", 8); // 8 -> String
+            if (display.hasKey("Lore", ItemUtils.NBT_LIST)) {
+                NBTTagList lore = display.getTagList("Lore", ItemUtils.NBT_STRING);
 
                 List<String> loreAsList = new ArrayList<>();
                 for (int lineNumber = 0; lineNumber < lore.tagCount(); lineNumber++) {
@@ -415,32 +351,10 @@ public class ItemUtils {
             throw new NullPointerException("Item stack cannot be null!");
         }
 
-        if (itemStack.hasTagCompound() && itemStack.getTagCompound().hasKey("ExtraAttributes", 10)) {
-            NBTTagCompound extraAttributesTag = itemStack.getSubCompound("ExtraAttributes", false);
-
+        NBTTagCompound extraAttributes = getExtraAttributes(itemStack);
+        if (extraAttributes != null) {
             // If this item stack is a menu item, it won't have this key.
-            return !extraAttributesTag.hasKey("uuid");
-        } else {
-            return false;
-        }
-    }
-
-    /**
-     * Checks if the given {@code ItemStack} is a Skyblock item.
-     *
-     * @param itemStack the {@code ItemStack} to check
-     * @return {@code true} if {@code itemStack} is a Skyblock item, or {@code false} if it's not
-     */
-    public static boolean isSkyblockItem(ItemStack itemStack) {
-        if (itemStack == null) {
-            throw new NullPointerException("Item stack cannot be null!");
-        }
-
-        if (itemStack.hasTagCompound() && itemStack.getTagCompound().hasKey("ExtraAttributes", 10)) {
-            NBTTagCompound extraAttributesTag = itemStack.getSubCompound("ExtraAttributes", false);
-
-            // If the Skyblock item ID tag is present, it's a Skyblock item.
-            return extraAttributesTag.hasKey("id", 8);
+            return !extraAttributes.hasKey("uuid");
         } else {
             return false;
         }
@@ -518,21 +432,6 @@ public class ItemUtils {
         NBTTagCompound extraAttributes = new NBTTagCompound();
         extraAttributes.setString("id", skyblockID);
         itemStack.setTagInfo("ExtraAttributes", extraAttributes);
-    }
-
-    /**
-     * Returns the number of expertise kills from a given Skyblock ExtraAttributes compound tag
-     *
-     * @param extraAttributes the ExtraAttributes compound tag to check
-     * @return the number of expertise kills or {@code -1} if the ExtraAttributes tag is {@code null} or lacks the expertise kills key
-     */
-    public static int getExpertiseKills(NBTTagCompound extraAttributes) {
-        if (extraAttributes != null && extraAttributes.hasKey("expertise_kills")) {
-            return extraAttributes.getInteger("expertise_kills");
-        }
-        else {
-            return -1;
-        }
     }
 
     /**

@@ -26,7 +26,7 @@ public class PersistentValuesManager {
         private int totalKills = 0; // Lifetime zealots killed
         private int summoningEyeCount = 0; // Lifetime summoning eyes
 
-        private SlayerTracker slayerDrops = new SlayerTracker();
+        private SlayerTracker slayerTracker = new SlayerTracker();
         private DragonTracker dragonTracker = new DragonTracker();
 
         private boolean blockCraftingIncompletePatterns = true;
@@ -61,6 +61,7 @@ public class PersistentValuesManager {
 
     public void saveValues() {
         try {
+            //noinspection ResultOfMethodCallIgnored
             persistentValuesFile.createNewFile();
 
             try (FileWriter writer = new FileWriter(this.persistentValuesFile)) {

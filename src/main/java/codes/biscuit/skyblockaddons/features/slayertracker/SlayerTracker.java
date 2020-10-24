@@ -1,10 +1,12 @@
 package codes.biscuit.skyblockaddons.features.slayertracker;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.core.Translations;
 import codes.biscuit.skyblockaddons.features.ItemDiff;
 import codes.biscuit.skyblockaddons.utils.ItemUtils;
 import codes.biscuit.skyblockaddons.utils.skyblockdata.Rune;
 import lombok.Getter;
+import net.minecraft.command.ICommandSender;
 
 import java.util.*;
 
@@ -79,53 +81,47 @@ public class SlayerTracker {
         recentInventoryDifferences.clear();
     }
 
+    /**
+     * Sets the value of a specific slayer stat
+     * <p>
+     * This method is called from {@link codes.biscuit.skyblockaddons.commands.SkyblockAddonsCommand#processCommand(ICommandSender, String[])}
+     * when the player runs the command to change the slayer tracker stats.
+     *
+     * @param args the arguments provided when the player executed the command
+     */
     public void setStatManually(String[] args) {
-        SlayerBoss slayerBoss;
-        try {
-            slayerBoss = SlayerBoss.getFromMobType(args[1]);
-        } catch (IllegalArgumentException ex) {
-            slayerBoss = null;
+        SlayerBoss slayerBoss = SlayerBoss.getFromMobType(args[1]);
+
+        if (slayerBoss == null) {
+            throw new IllegalArgumentException(Translations.getMessage("commandUsage.sba.slayer.invalidBoss", args[1]));
         }
 
-        if (slayerBoss != null) {
-            if (args[2].equalsIgnoreCase("kills")) {
-                try {
-                    int count = Integer.parseInt(args[3]);
-                    slayerKills.put(slayerBoss, count);
-                    SkyblockAddons.getInstance().getUtils().sendMessage("Kills for slayer " + args[1] + " was set to " + args[3] + ".");
-                    SkyblockAddons.getInstance().getPersistentValuesManager().saveValues();
-                    return;
-                } catch (NumberFormatException ex) {
-                    SkyblockAddons.getInstance().getUtils().sendErrorMessage(args[3] + " is not a valid number!");
-                    return;
-                }
-            }
-
-            SlayerDrop slayerDrop;
-            try {
-                slayerDrop = SlayerDrop.valueOf(args[2].toUpperCase());
-            } catch (IllegalArgumentException ex) {
-                slayerDrop = null;
-            }
-
-            if (slayerDrop != null) {
-                try {
-                    int count = Integer.parseInt(args[3]);
-                    slayerDropCounts.put(slayerDrop, count);
-                    SkyblockAddons.getInstance().getUtils().sendMessage("Statistic " + args[2] + " for slayer " + args[1] + " was set to " + args[3] + ".");
-                    SkyblockAddons.getInstance().getPersistentValuesManager().saveValues();
-                    return;
-                } catch (NumberFormatException ex) {
-                    SkyblockAddons.getInstance().getUtils().sendErrorMessage(args[3] + " is not a valid number!");
-                    return;
-                }
-            }
-
-            SkyblockAddons.getInstance().getUtils().sendErrorMessage(args[2] + " is not a valid statistic!");
+        if (args[2].equalsIgnoreCase("kills")) {
+            int count = Integer.parseInt(args[3]);
+            slayerKills.put(slayerBoss, count);
+            SkyblockAddons.getInstance().getUtils().sendMessage(Translations.getMessage(
+                    "commandUsage.sba.slayer.killsSet", args[1], args[3]));
+            SkyblockAddons.getInstance().getPersistentValuesManager().saveValues();
             return;
         }
 
-        SkyblockAddons.getInstance().getUtils().sendErrorMessage(args[1] + " is not a valid boss!");
+        SlayerDrop slayerDrop;
+        try {
+            slayerDrop = SlayerDrop.valueOf(args[2].toUpperCase());
+        } catch (IllegalArgumentException ex) {
+            slayerDrop = null;
+        }
+
+        if (slayerDrop != null) {
+            int count = Integer.parseInt(args[3]);
+            slayerDropCounts.put(slayerDrop, count);
+            SkyblockAddons.getInstance().getUtils().sendMessage(Translations.getMessage(
+                    "commandUsage.sba.slayer.statSet", args[2], args[1], args[3]));
+            SkyblockAddons.getInstance().getPersistentValuesManager().saveValues();
+            return;
+        }
+
+        throw new IllegalArgumentException(Translations.getMessage("commandUsage.sba.slayer.invalidStat", args[1]));
     }
 
     public void setKillCount(SlayerBoss slayerBoss, int kills) {
