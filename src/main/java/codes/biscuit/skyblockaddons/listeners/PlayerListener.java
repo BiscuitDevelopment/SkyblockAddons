@@ -25,14 +25,22 @@ import codes.biscuit.skyblockaddons.utils.objects.IntPair;
 import com.google.common.collect.Sets;
 import lombok.Getter;
 import lombok.Setter;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockIce;
+import net.minecraft.block.BlockPackedIce;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.inventory.GuiChest;
+import net.minecraft.client.renderer.ItemRenderer;
+import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
+import net.minecraft.client.resources.model.ModelManager;
+import net.minecraft.client.resources.model.SimpleBakedModel;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityArmorStand;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityBlaze;
 import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.monster.EntityMagmaCube;
@@ -44,6 +52,7 @@ import net.minecraft.init.Items;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ContainerChest;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
@@ -68,8 +77,10 @@ import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
+import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import org.lwjgl.input.Keyboard;
 
+import java.lang.reflect.Field;
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.regex.Matcher;
@@ -139,6 +150,7 @@ public class PlayerListener {
     @Getter @Setter private int recentBlazes = 0;
 
     @Getter private TreeMap<Long, Vec3> explosiveBowExplosions = new TreeMap<>();
+    private HashSet<EntityArmorStand> froz = new HashSet<>();
 
     private final SkyblockAddons main = SkyblockAddons.getInstance();
     private final ActionBarParser actionBarParser = new ActionBarParser();
@@ -149,7 +161,6 @@ public class PlayerListener {
     @SubscribeEvent()
     public void onWorldJoin(EntityJoinWorldEvent e) {
         Entity entity = e.entity;
-
         if (entity == Minecraft.getMinecraft().thePlayer) {
             lastWorldJoin = System.currentTimeMillis();
             lastBoss = -1;
@@ -548,6 +559,19 @@ public class PlayerListener {
                 }
             }
 
+            if (entity instanceof EntityArmorStand && entity.isInvisible() && entity.getDistanceToEntity(Minecraft.getMinecraft().thePlayer) < 5) {
+                ItemStack item = ((EntityArmorStand)entity).getEquipmentInSlot(0);
+                if (item != null && item.getItem() instanceof ItemBlock) {
+                    Block block = ((ItemBlock)item.getItem()).getBlock();
+                    if (block instanceof BlockPackedIce || block instanceof BlockIce) {
+                        //entity.setInvisible(false);
+                        froz.add((EntityArmorStand)entity);
+                        //Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText(entity.getUniqueID() + " " + String.format("(%5.2f, %5.2f, %5.2f)", entity.posX, entity.posY, entity.posZ)));
+                    }
+                }
+            }
+
+
             if (entity instanceof EntityOtherPlayerMP && main.getConfigValues().isEnabled(Feature.HIDE_PLAYERS_NEAR_NPCS)) {
                 float health = ((EntityOtherPlayerMP) entity).getHealth();
 
@@ -645,6 +669,13 @@ public class PlayerListener {
 
 //                    System.out.println((originalPossibleZealotsKilled-possibleZealotsKilled)+" zealots were actually killed...");
                 }
+            }
+        }
+        for (EntityArmorStand f : froz) {
+            // Get the frozen scythe ice position
+            //double x = f.posX
+            if (e.entity.getDistance(f.posX, e.entity.posY, f.posZ) < 3) {
+                Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText(String.format("%6.3f, %6.3f, %6.3f", e.entity.posX - f.posX, e.entity.posY - f.posY, e.entity.posZ - f.posZ)));
             }
         }
 

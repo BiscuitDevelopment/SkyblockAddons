@@ -176,11 +176,11 @@ public enum Feature {
     SHOW_SKILL_XP_GAINED(145, null, false),
     SHOW_SALVAGE_ESSENCES_COUNTER(146, null, false),
 
-    DISABLE_MORT_MESSAGES(146, "settings.disableMortMessages", null, false),
-    DISABLE_BOSS_MESSAGES(147, "settings.disableBossMessages", null, false),
+    DISABLE_MORT_MESSAGES(147, "settings.disableMortMessages", null, false),
+    DISABLE_BOSS_MESSAGES(148, "settings.disableBossMessages", null, false),
 
-    HIDE_OTHER_PLAYERS_PRESENTS(141, "settings.hideOtherPlayersPresents", null,false),
-    EASIER_PRESENT_OPENING(142, "settings.easierPresentOpening", null,false),
+    HIDE_OTHER_PLAYERS_PRESENTS(149, "settings.hideOtherPlayersPresents", null,false),
+    EASIER_PRESENT_OPENING(150, "settings.easierPresentOpening", null,false),
 
     WARNING_TIME(-1, Message.SETTING_WARNING_DURATION, false),
 
