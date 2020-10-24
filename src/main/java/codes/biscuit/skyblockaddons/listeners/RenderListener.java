@@ -921,10 +921,15 @@ public class RenderListener {
                 return;
             }
             ItemStack holdingItem = mc.thePlayer.getCurrentEquippedItem();
-            if (buttonLocation == null && holdingItem != null && holdingItem.getItem() != null && !holdingItem.getDisplayName().contains("Spirit Sceptre")) {
+            if (buttonLocation != null) {
+                text = "Spirit Sceptre";
+            } else if (holdingItem == null) {
+                return;
+            } else if (holdingItem.getDisplayName().contains("Spirit Sceptre")) {
+                text = "Spirit Sceptre";
+            } else {
                 return;
             }
-            text = "Spirit Sceptre";
         } else {
             return;
         }
