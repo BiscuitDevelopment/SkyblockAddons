@@ -170,8 +170,8 @@ public class MinecraftHook {
                 if ((block.equals(Blocks.log) || block.equals(Blocks.log2))
                         && p.getHeldItem() != null) {
 
-                    final boolean holdingJungleAxeOnCooldown = InventoryUtils.JUNGLE_AXE_DISPLAYNAME.equals(p.getHeldItem().getDisplayName()) && CooldownManager.isOnCooldown(InventoryUtils.JUNGLE_AXE_DISPLAYNAME);
-                    final boolean holdingTreecapitatorOnCooldown = InventoryUtils.TREECAPITATOR_DISPLAYNAME.equals(p.getHeldItem().getDisplayName()) && CooldownManager.isOnCooldown(InventoryUtils.TREECAPITATOR_DISPLAYNAME);
+                    final boolean holdingJungleAxeOnCooldown = p.getHeldItem().getDisplayName().contains(InventoryUtils.JUNGLE_AXE_DISPLAYNAME) && CooldownManager.isOnCooldown(p.getHeldItem().getDisplayName());
+                    final boolean holdingTreecapitatorOnCooldown = p.getHeldItem().getDisplayName().contains(InventoryUtils.TREECAPITATOR_DISPLAYNAME) && CooldownManager.isOnCooldown(p.getHeldItem().getDisplayName());
 
                     if (holdingJungleAxeOnCooldown || holdingTreecapitatorOnCooldown) {
                         returnValue.cancel();
