@@ -429,9 +429,9 @@ public class RenderListener {
             gui = buttonLocation;
         }
         if (color.getRGB() == ColorCode.BLACK.getColor()) {
-            GlStateManager.color(0.25F, 0.25F, 0.25F, color.getAlpha() / 255F); // too dark normally
+            GlStateManager.color(0.25F, 0.25F, 0.25F); // too dark normally
         } else { // a little darker for contrast
-            GlStateManager.color(color.getRed() / 255F * 0.9F, color.getGreen() / 255F * 0.9F, color.getBlue() / 255F * 0.9F, ((float) color.getAlpha() / 255));
+            GlStateManager.color(color.getRed() / 255F * 0.9F, color.getGreen() / 255F * 0.9F, color.getBlue() / 255F * 0.9F);
         }
         IntPair sizes = main.getConfigValues().getSizes(feature);
         if (!filled) fillWidth = maxWidth;
