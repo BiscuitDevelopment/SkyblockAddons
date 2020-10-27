@@ -436,6 +436,11 @@ public class PlayerListener {
                     lastBobberEnteredWater = Long.MAX_VALUE;
                     oldBobberPosY = 0;
                 }
+                if (Objects.equals(ItemUtils.getSkyBlockItemID(heldItem), "GRAPPLING_HOOK")
+                        && main.getConfigValues().isEnabled(Feature.BLOCK_GRAPPLING_HOOK_ON_COOLDOWN)
+                        && CooldownManager.isOnCooldown(heldItem)) {
+                    e.setCanceled(true);
+                }
                 if (main.getConfigValues().isEnabled(Feature.SHOW_ITEM_COOLDOWNS) && mc.thePlayer.fishEntity != null) {
                     CooldownManager.put(mc.thePlayer.getHeldItem());
                 }
