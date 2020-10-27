@@ -172,7 +172,9 @@
     "disableBossMessages": "Disable Boss Messages",
     "hideOtherPlayersPresents": "Hide Other Player's Presents",
     "easierPresentOpening": "Open Presents Easier",
-    "showSwordKills": "Show Sword Kills"
+    "showSwordKills": "Show Sword Kills",
+    "compactTabList": "Compact Tab List",
+    "highlightMaxEnchants": "Highlight Special Enchants"
   },
   "messages": {
     "enchants": "Enchants",
