@@ -446,6 +446,13 @@ public class PlayerListener {
                         && itemId != null && itemId.equals("EMBER_ROD")) {
                     e.setCanceled(true);
                 }
+            } else if (heldItem.getItem().equals(Items.diamond_sword)) {
+                //Note: I basically copied from the disable ember rod feature. Not going to add contrib; it's not really my work.
+                String itemId = ItemUtils.getSkyBlockItemID(heldItem);
+
+                if (main.getConfigValues().isEnabled(Feature.DISABLE_DRAGON_RAGE) && itemId != null && itemId.equals("ASPECT_OF_THE_DRAGON")) {
+                    e.setCanceled(true);
+                }
             }
 
             if (main.getConfigValues().isEnabled(Feature.AVOID_PLACING_ENCHANTED_ITEMS)) {
