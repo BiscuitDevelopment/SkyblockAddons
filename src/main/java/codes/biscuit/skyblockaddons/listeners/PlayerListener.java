@@ -520,31 +520,34 @@ public class PlayerListener {
 
                 // Remove counted enderman after 1s (arbitrary, but should give enough time for it not to be counted multiple times)
                 countedEndermenFrozScythe.values().removeIf((countedTime) -> currTime - countedTime > 1000);
-
-                // Update all frozen scythe projectiles and check for recent enderman deaths near them
-                for (FrozenScytheProjectile projectile : FrozenScytheProjectile.getFrozenScytheProjectiles().values()) {
-                    // Update
-                    projectile.onUpdate();
-                    // Check recent zealot deaths and determine whether they occurred close to projectiles
-                    AxisAlignedBB bb = projectile.getBoundingBox();
-                    for (Map.Entry<Long, Set<EntityDeathInfo>> entry : recentlyKilledZealots.entrySet()) {
-                        Set<EntityDeathInfo> deaths = entry.getValue();
-                        for (EntityDeathInfo info : deaths) {
-                            if (!countedEndermenFrozScythe.containsKey(info.getEntityID()) && bb.intersectsWith(info.getLastBB())) {
-                                countedEndermenFrozScythe.put(info.getEntityID(), currTime);
-                                //Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("Frozen scythe near dead zealot " + (currTime - entry.getKey())));
-                                main.getPersistentValuesManager().getPersistentValues().setKills(main.getPersistentValuesManager().getPersistentValues().getKills() + 1);
-                                main.getPersistentValuesManager().saveValues();
-                                EndstoneProtectorManager.onKill();
-                            }
-                        }
-                    }
-                    // Uncomment if you'd like to see the projectile position overlaid with another particle
-                    //Vec3 pos = projectile.getProjectilePosition();
-                    //mc.renderGlobal.spawnParticle(EnumParticleTypes.VILLAGER_HAPPY.getParticleID(), true, pos.xCoord, pos.yCoord, pos.zCoord, 0, 0, 0);
-                }
                 // Remove dead projectiles
                 FrozenScytheProjectile.getFrozenScytheProjectiles().values().removeIf((projectile) -> projectile.isDead());
+
+                // Update all frozen scythe projectiles and check for recent enderman deaths near them
+                if (main.getConfigValues().isEnabled(Feature.ZEALOT_COUNTER_FORZEN_SCYTHE_SUPPORT)) {
+                    for (FrozenScytheProjectile projectile : FrozenScytheProjectile.getFrozenScytheProjectiles().values()) {
+                        // Update
+                        projectile.onUpdate();
+                        // Check recent zealot deaths and determine whether they occurred close to projectiles
+                        AxisAlignedBB bb = projectile.getBoundingBox();
+                        for (Map.Entry<Long, Set<EntityDeathInfo>> entry : recentlyKilledZealots.entrySet()) {
+                            Set<EntityDeathInfo> deaths = entry.getValue();
+                            for (EntityDeathInfo info : deaths) {
+                                if (!countedEndermenFrozScythe.containsKey(info.getEntityID()) && bb.intersectsWith(info.getLastBB())) {
+                                    countedEndermenFrozScythe.put(info.getEntityID(), currTime);
+                                    //Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("Frozen scythe near dead zealot " + (currTime - entry.getKey())));
+                                    main.getPersistentValuesManager().getPersistentValues().setKills(main.getPersistentValuesManager().getPersistentValues().getKills() + 1);
+                                    main.getPersistentValuesManager().saveValues();
+                                    EndstoneProtectorManager.onKill();
+                                }
+                            }
+                        }
+                        // Uncomment if you'd like to see the projectile position overlaid with another particle
+                        //Vec3 pos = projectile.getProjectilePosition();
+                        //mc.renderGlobal.spawnParticle(EnumParticleTypes.VILLAGER_HAPPY.getParticleID(), true, pos.xCoord, pos.yCoord, pos.zCoord, 0, 0, 0);
+                    }
+                }
+
 
                 if (timerTick == 20) { // Add natural mana every second (increase is based on your max mana).
                     if (main.getRenderListener().isPredictMana()) {
@@ -696,15 +699,16 @@ public class PlayerListener {
 
                     explosiveBowExplosions.keySet().removeIf((explosionTime) -> now - explosionTime > 150);
                     Map.Entry<Long, Vec3> latestExplosion = explosiveBowExplosions.lastEntry();
-                    if (latestExplosion == null) return;
+                    if (latestExplosion != null) {
 
-                    Vec3 explosionLocation = latestExplosion.getValue();
-                    Vec3 deathLocation = e.entity.getPositionVector();
+                        Vec3 explosionLocation = latestExplosion.getValue();
+                        Vec3 deathLocation = e.entity.getPositionVector();
 
-                    if (explosionLocation.distanceTo(deathLocation) < 4.6) {
-                        main.getPersistentValuesManager().getPersistentValues().setKills(main.getPersistentValuesManager().getPersistentValues().getKills() + 1);
-                        main.getPersistentValuesManager().saveValues();
-                        EndstoneProtectorManager.onKill();
+                        if (explosionLocation.distanceTo(deathLocation) < 4.6) {
+                            main.getPersistentValuesManager().getPersistentValues().setKills(main.getPersistentValuesManager().getPersistentValues().getKills() + 1);
+                            main.getPersistentValuesManager().saveValues();
+                            EndstoneProtectorManager.onKill();
+                        }
                     }
                 }
             }
