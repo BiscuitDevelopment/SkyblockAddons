@@ -21,14 +21,13 @@ import java.util.*;
 
 public class FrozenScytheProjectile {
 
-    @Getter
-    private static Map<UUID, FrozenScytheProjectile> frozenScytheProjectiles = new HashMap<>();
-    @Setter
-    private static Vec3 lastRightClickLookVec = null;
-    @Setter
-    private static Vec3 lastRightClickEyePos = null;
-    @Setter
-    private static long lastRightClickTime = 0;
+    // A list of projectiles spawned in the world from the player's position
+    @Getter private static Map<UUID, FrozenScytheProjectile> frozenScytheProjectiles = new HashMap<>();
+    // A set of right click information from the last time the player right clicked with the frozen scythe
+    @Setter private static Vec3 lastRightClickLookVec = null;
+    @Setter private static Vec3 lastRightClickEyePos = null;
+    @Setter private static long lastRightClickTime = 0;
+
 
     private Vec3 projectileLocation;
     @Getter
@@ -37,24 +36,34 @@ public class FrozenScytheProjectile {
     @Getter
     private Map<UUID, Long> potentialHitEntities = new HashMap<>();
 
+
+
     public FrozenScytheProjectile(EntityArmorStand stand, Vec3 relativeProjectileLoc) {
         projectileStand = stand;
         projectileLocation = relativeProjectileLoc;
     }
 
+
     /*
-    Returns the true position of the center of the ice block on the armorstand
-    Turns out it's not entirely useful since hypixel seems to register hits based on the armorstand
-    With the notable exception of the height of the projectile
+    Returns the true position of the center of the ice/packed ice block on the armorstand
+    Turns out it's not entirely useful since hypixel seems to register hits based on the armorstand's bb/position
+    With the notable exception of the height of the ice block making a big difference
      */
     public Vec3 getProjectilePosition() {
         return projectileStand.getPositionVector().add(projectileLocation);
     }
 
-    // Normal in flight scythe speed is about 1.8 blocks per tick
+
+
+    /*
+    The projectile is dead when it is truly dead, or when it's been motionless for some time
+    Motion seems to be the best way of figuring out whether the projectile is "active"
+     */
     public boolean isDead() {
         return projectileStand.isDead || (projectileStand.ticksExisted > 5 && ticksMotionless > 5);
     }
+
+
 
     /*
     Called every tick
@@ -62,44 +71,33 @@ public class FrozenScytheProjectile {
     public void onUpdate() {
         if (getMotion() < .01) {
             ticksMotionless++;
-
-            //Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText((projectileStand.isCollided ? "true" : "false")));
         }
         else {
             ticksMotionless = 0;
         }
-        //long currTime = System.currentTimeMillis();
-        // Keep track of only recently intercepted entities
-        /*
-        for (Map.Entry<UUID, Long> entry : potentialHitEntities.entrySet()) {
-            if (currTime - entry.getValue() > 150) {
-                Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("Rem: " + entry.getKey().toString()));
-            }
-        }
-        potentialHitEntities.values().removeIf((hitTime) -> currTime - hitTime > 150);
-        //Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("Middle: " + potentialHitEntities.size()));
-        List<EntityEnderman> list = Minecraft.getMinecraft().theWorld.getEntitiesWithinAABB(EntityEnderman.class, getBoundingBox());
-        for (EntityEnderman enderman : list) {
-            potentialHitEntities.put(enderman.getUniqueID(), currTime);
-            Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("Add: " + enderman.getUniqueID().toString()));
-            //Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText(String.format("Hit1 %5.3f, %5.3f, %5.3f | %5.3f, %5.3f, %5.3f", enderman.posX - projectileStand.posX, enderman.posY - projectileStand.posY, enderman.posZ - projectileStand.posZ,
-            //        enderman.posX - getProjectilePosition().xCoord, enderman.posY - getProjectilePosition().yCoord, enderman.posZ - getProjectilePosition().zCoord)));
-        }
-         */
-        //for (UUID id : potentialHitEntities.keySet()) {
-        //    Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText(id.toString()));
-        //}
-
     }
 
+
+
+    /*
+    Get the projectile motion in the last tick
+     */
     public double getMotion() {
         return projectileStand.getDistance(projectileStand.prevPosX, projectileStand.prevPosY, projectileStand.prevPosZ);
     }
 
+
+    /*
+    Get the (albeit weird) bounding box of the projectile.
+    Does not work perfectly, but should intercept with the bb of an entity that is killed with the projectile
+    May only work with enderman bounding boxes cause I didn't test on anything else...idk why it wouldn't work though.
+     */
     public AxisAlignedBB getBoundingBox() {
         return new AxisAlignedBB(projectileStand.posX - 1.35, getProjectilePosition().yCoord - .1, projectileStand.posZ - 1.35,
                                  projectileStand.posX + 1.35, getProjectilePosition().yCoord + .1, projectileStand.posZ + 1.35);
     }
+
+
 
     /**
      * Returns an instance of FrozenScytheProjectile if this entity is in fact part of a frozen
@@ -138,75 +136,8 @@ public class FrozenScytheProjectile {
         }
 
         return new FrozenScytheProjectile(stand, blockPos);
-        /*
-        // Check a small range around the player
-        List<EntityArmorStand> stands = Minecraft.getMinecraft().theWorld.getEntitiesWithinAABB(EntityArmorStand.class,
-                mc.thePlayer.getEntityBoundingBox().expand(2, 2, 2));
-
-        ArrayList<UUID> projectiles = new ArrayList<>();
-        EntityArmorStand farthestProjectile = null;
-        double farthestProjectileDistance = 0;
-
-        for (EntityArmorStand stand : stands) {
-
-            // Check if it's a recently spawned, small, invisible armorstand holding a block
-            if (stand.ticksExisted >= 5 || !stand.isInvisible() || !stand.isSmall() || stand.getHeldItem() == null ||
-                    !(stand.getHeldItem().getItem() instanceof ItemBlock)) {
-                 continue;
-            }
-            // Check that the held block is ice or packed ice
-            Block heldBlock = ((ItemBlock)stand.getHeldItem().getItem()).getBlock();
-            if (!(heldBlock instanceof BlockIce) && !(heldBlock instanceof BlockPackedIce)) {
-                continue;
-            }
-            Vec3 lookVec = lastRightClickLookVec;
-            Vec3 projectileVec = new Vec3(stand.posX, stand.posY + .37, stand.posZ);
-            projectileVec = projectileVec.subtract(lastRightClickEyePos);
-            // Check if the player is within 2.5 blocks and is looking within 20 degrees of the stand
-            if (projectileVec.lengthVector() > 2.5 ||
-                    lookVec.dotProduct(projectileVec.normalize()) < MathHelper.cos((float) (20 / 180.0 * Math.PI))) {
-                continue;
-            }
-            projectiles.add(stand.getUniqueID());
-            // Track the "first" projectile only
-            if (projectileVec.lengthVector() > farthestProjectileDistance) {
-                farthestProjectile = stand;
-                farthestProjectileDistance = projectileVec.lengthVector();
-            }
-        }
-        // Frozen scythe projectiles have 5 stands
-        if (projectiles.size() < 5) {
-            return null;
-        }
-        // Insert the farthest projectile a thte f
-        projectiles.remove(farthestProjectile);
-
-
-        Vec3 blockPos = getHeldBlockRelativeCenter(farthestProjectile);
-
-        return new FrozenScytheProjectile(farthestProjectile, blockPos, projectiles);
-        */
     }
 
-
-
-    /*
-    Was the given enderman recently in contact with one of the frozen scythe projectiles?
-    Return the projectile if so, null if not
-     */
-    /*
-    public static FrozenScytheProjectile checkProjectileRecentlyNearEnderman(UUID endermanID) {
-        //
-        for (FrozenScytheProjectile f : frozenScytheProjectiles.values()) {
-            if (f.potentialHitEntities.containsKey(endermanID) &&
-                    System.currentTimeMillis() - f.potentialHitEntities.get(endermanID) <= 150) {
-                return f;
-            }
-        }
-
-        return null;
-    }
-    */
 
 
     // t2 matrix translates to arm height and inverts x/y direction

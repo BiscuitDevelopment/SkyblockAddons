@@ -512,37 +512,36 @@ public class PlayerListener {
                     main.getUtils().playLoudSound("random.successful_hit", 0.8);
                 }
 
-                // This is duplicated in the scheduled task for explosive bow...@Biscuit please refactor the code for abstraction.
-                // IMO recentlykilledzealots should be fitered (kept up to date) every tick regardless of whether there is an arrow spawned
-                Long currTime = System.currentTimeMillis();
+                // @Biscuit consider refactoring to use the scheduler instead of the ontick method...seems a bit messy/not universally used at all to me at the moment though.
                 // It takes 0-350 (and sometimes even 500) ms before the projecctile reaches the dead entity
-                // May cause some false positives if a kill is contested by another player
+                // May cause some false positives if a kill is contested by another player...aka we give "ties" to client player
+                Long currTime = System.currentTimeMillis();
                 recentlyKilledZealots.keySet().removeIf((killedTime) -> currTime - killedTime > 350);
 
-                // New frozen scythe logic
-                // Remove counted enderman after 1s (arbitrary, but should give enough time for deletion)
+                // Remove counted enderman after 1s (arbitrary, but should give enough time for it not to be counted multiple times)
                 countedEndermenFrozScythe.values().removeIf((countedTime) -> currTime - countedTime > 1000);
 
                 // Update all frozen scythe projectiles and check for recent enderman deaths near them
                 for (FrozenScytheProjectile projectile : FrozenScytheProjectile.getFrozenScytheProjectiles().values()) {
                     // Update
                     projectile.onUpdate();
-                    // Check recent zealot deaths and determine whether they occured close to projectiles
+                    // Check recent zealot deaths and determine whether they occurred close to projectiles
                     AxisAlignedBB bb = projectile.getBoundingBox();
                     for (Map.Entry<Long, Set<EntityDeathInfo>> entry : recentlyKilledZealots.entrySet()) {
                         Set<EntityDeathInfo> deaths = entry.getValue();
                         for (EntityDeathInfo info : deaths) {
                             if (!countedEndermenFrozScythe.containsKey(info.getEntityID()) && bb.intersectsWith(info.getLastBB())) {
                                 countedEndermenFrozScythe.put(info.getEntityID(), currTime);
-                                Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("Frozen scythe near dead zealot " + (currTime - entry.getKey())));
+                                //Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("Frozen scythe near dead zealot " + (currTime - entry.getKey())));
                                 main.getPersistentValuesManager().getPersistentValues().setKills(main.getPersistentValuesManager().getPersistentValues().getKills() + 1);
                                 main.getPersistentValuesManager().saveValues();
                                 EndstoneProtectorManager.onKill();
                             }
                         }
                     }
-                    Vec3 pos = projectile.getProjectilePosition();
-                    mc.renderGlobal.spawnParticle(EnumParticleTypes.VILLAGER_HAPPY.getParticleID(), true, pos.xCoord, pos.yCoord, pos.zCoord, 0, 0, 0);
+                    // Uncomment if you'd like to see the projectile position overlaid with another particle
+                    //Vec3 pos = projectile.getProjectilePosition();
+                    //mc.renderGlobal.spawnParticle(EnumParticleTypes.VILLAGER_HAPPY.getParticleID(), true, pos.xCoord, pos.yCoord, pos.zCoord, 0, 0, 0);
                 }
                 // Remove dead projectiles
                 FrozenScytheProjectile.getFrozenScytheProjectiles().values().removeIf((projectile) -> projectile.isDead());
@@ -682,83 +681,34 @@ public class PlayerListener {
                 main.getPersistentValuesManager().getPersistentValues().setKills(main.getPersistentValuesManager().getPersistentValues().getKills() + 1);
                 main.getPersistentValuesManager().saveValues();
                 EndstoneProtectorManager.onKill();
-            } else if (main.getConfigValues().isEnabled(Feature.ZEALOT_COUNTER_EXPLOSIVE_BOW_SUPPORT)) {
-                if (isZealot(e.entity)) {
-                    //Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("Killed " + e.entity.getUniqueID()));
-                    long now = System.currentTimeMillis();
-                    if (recentlyKilledZealots.containsKey(now)) {
-                        recentlyKilledZealots.get(now).add(new EntityDeathInfo(e.entity));
-                    } else {
-                        recentlyKilledZealots.put(now, Sets.newHashSet(new EntityDeathInfo(e.entity)));
-                    }
-                    /*
-                    if (!countedEndermenFrozScythe.containsKey(e.entity.getUniqueID())) {
-                        FrozenScytheProjectile f = FrozenScytheProjectile.checkProjectileRecentlyNearEnderman(e.entity.getUniqueID());
-                        if (f != null) {
-                            countedEndermenFrozScythe.put(e.entity.getUniqueID(), System.currentTimeMillis());
-                            Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("Zealot killed near recent frozen scythe"));
-                            main.getPersistentValuesManager().getPersistentValues().setKills(main.getPersistentValuesManager().getPersistentValues().getKills() + 1);
-                            main.getPersistentValuesManager().saveValues();
-                            EndstoneProtectorManager.onKill();
-                        }
-                    }
-                     */
+            } else if (main.getConfigValues().isEnabled(Feature.ZEALOT_COUNTER_EXPLOSIVE_BOW_SUPPORT) ||
+                    main.getConfigValues().isEnabled(Feature.ZEALOT_COUNTER_FORZEN_SCYTHE_SUPPORT) && isZealot(e.entity)) {
+
+                // Track recently killed zealots for explosive bow and frozen scythe
+                long now = System.currentTimeMillis();
+                if (recentlyKilledZealots.containsKey(now)) {
+                    recentlyKilledZealots.get(now).add(new EntityDeathInfo(e.entity));
+                } else {
+                    recentlyKilledZealots.put(now, Sets.newHashSet(new EntityDeathInfo(e.entity)));
+                }
+
+                if (main.getConfigValues().isEnabled(Feature.ZEALOT_COUNTER_EXPLOSIVE_BOW_SUPPORT)) {
+
                     explosiveBowExplosions.keySet().removeIf((explosionTime) -> now - explosionTime > 150);
                     Map.Entry<Long, Vec3> latestExplosion = explosiveBowExplosions.lastEntry();
                     if (latestExplosion == null) return;
 
                     Vec3 explosionLocation = latestExplosion.getValue();
-
-//                    int possibleZealotsKilled = 1;
-//                    System.out.println("This means "+possibleZealotsKilled+" may have been killed...");
-//                    int originalPossibleZealotsKilled = possibleZealotsKilled;
-
                     Vec3 deathLocation = e.entity.getPositionVector();
 
-                    double distance = explosionLocation.distanceTo(deathLocation);
-//                    System.out.println("Distance was "+distance+"!");
                     if (explosionLocation.distanceTo(deathLocation) < 4.6) {
-//                        possibleZealotsKilled--;
-
                         main.getPersistentValuesManager().getPersistentValues().setKills(main.getPersistentValuesManager().getPersistentValues().getKills() + 1);
                         main.getPersistentValuesManager().saveValues();
                         EndstoneProtectorManager.onKill();
                     }
-
-//                    System.out.println((originalPossibleZealotsKilled-possibleZealotsKilled)+" zealots were actually killed...");
                 }
             }
-            /*
-            if (main.getUtils().isOnSkyblock() && !countedEndermenFrozScythe.containsKey(e.entity.getUniqueID())) {
-                //if (isZealot(e.entity)) {
-                    long now = System.currentTimeMillis();
-                    Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText(e.entity.getUniqueID() + " died"));
-                    FrozenScytheProjectile f = FrozenScytheProjectile.checkProjectileRecentlyNearEnderman(e.entity.getUniqueID());
-                    if (f != null) {
-                        countedEndermenFrozScythe.put(e.entity.getUniqueID(), System.currentTimeMillis());
-                        Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("Zealot killed near recent frozen scythe"));
-                        main.getPersistentValuesManager().getPersistentValues().setKills(main.getPersistentValuesManager().getPersistentValues().getKills() + 1);
-                        main.getPersistentValuesManager().saveValues();
-                        EndstoneProtectorManager.onKill();
-                    }
-                //}
-            }
-             */
         }
-        //Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText(FrozenScytheProjectile.getFrozenScytheProjectiles().size() + " dies " + e.entity.getName()));
-        /*
-        for (FrozenScytheProjectile f : FrozenScytheProjectile.getFrozenScytheProjectiles().values()) {
-            // Get the frozen scythe ice position
-            //double x = f.posX
-            Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText(String.format("H %5.3f, %5.3f, %5.3f", e.entity.posX - f.getProjectileStand().posX, e.entity.posY - f.getProjectileStand().posY, e.entity.posZ - f.getProjectileStand().posZ)));
-
-            if (f.getProjectileStand().getEntityBoundingBox().expand(4,0,4).intersectsWith(e.entity.getEntityBoundingBox())) {
-                Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText(String.format("Hit %5.3f, %5.3f, %5.3f | %5.3f, %5.3f, %5.3f", e.entity.posX - f.getProjectileStand().posX, e.entity.posY - f.getProjectileStand().posY, e.entity.posZ - f.getProjectileStand().posZ,
-                        e.entity.posX - f.getProjectilePosition().xCoord, e.entity.posY - f.getProjectilePosition().yCoord, e.entity.posZ - f.getProjectilePosition().zCoord)));
-            }
-        }
-         */
-
         NPCUtils.getNpcLocations().remove(e.entity.getUniqueID());
     }
 
