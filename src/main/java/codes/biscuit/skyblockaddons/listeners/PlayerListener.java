@@ -24,7 +24,6 @@ import codes.biscuit.skyblockaddons.misc.scheduler.SkyblockRunnable;
 import codes.biscuit.skyblockaddons.utils.*;
 import codes.biscuit.skyblockaddons.utils.objects.IntPair;
 import com.google.common.collect.Sets;
-import javafx.scene.chart.Axis;
 import lombok.Getter;
 import lombok.Setter;
 import net.minecraft.client.Minecraft;

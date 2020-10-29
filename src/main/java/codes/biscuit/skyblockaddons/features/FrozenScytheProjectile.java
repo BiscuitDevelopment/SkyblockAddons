@@ -1,6 +1,5 @@
 package codes.biscuit.skyblockaddons.features;
 
-import codes.biscuit.skyblockaddons.core.EntityAggregate;
 import lombok.Getter;
 import lombok.Setter;
 import net.minecraft.block.Block;
@@ -9,14 +8,10 @@ import net.minecraft.block.BlockPackedIce;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityArmorStand;
-import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.monster.EntityEnderman;
-import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.util.*;
 
 import javax.vecmath.Matrix4f;
-import java.awt.*;
 import java.util.*;
 
 public class FrozenScytheProjectile {
