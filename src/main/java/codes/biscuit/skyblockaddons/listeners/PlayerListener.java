@@ -677,12 +677,12 @@ public class PlayerListener {
 
     @SubscribeEvent
     public void onDeath(LivingDeathEvent e) {
-        if (e.entity instanceof EntityEnderman) {
+        if (e.entity instanceof EntityEnderman && main.getUtils().isOnSkyblock()) {
             if (countedEndermen.remove(e.entity.getUniqueID())) {
                 main.getPersistentValuesManager().getPersistentValues().setKills(main.getPersistentValuesManager().getPersistentValues().getKills() + 1);
                 main.getPersistentValuesManager().saveValues();
                 EndstoneProtectorManager.onKill();
-            } else if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.ZEALOT_COUNTER_EXPLOSIVE_BOW_SUPPORT)) {
+            } else if (main.getConfigValues().isEnabled(Feature.ZEALOT_COUNTER_EXPLOSIVE_BOW_SUPPORT)) {
                 if (isZealot(e.entity)) {
                     //Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("Killed " + e.entity.getUniqueID()));
                     long now = System.currentTimeMillis();
