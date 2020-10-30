@@ -5,11 +5,13 @@ import codes.biscuit.skyblockaddons.asm.utils.ReturnValue;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.npc.NPCUtils;
 import codes.biscuit.skyblockaddons.features.JerryPresent;
+import codes.biscuit.skyblockaddons.utils.ItemUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItemFrame;
+import net.minecraft.nbt.NBTTagCompound;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 
@@ -50,6 +52,12 @@ public class EntityRendererHook {
                 JerryPresent jerryPresent = JerryPresent.getJerryPresents().get(entity.getUniqueID());
                 return jerryPresent != null && (!jerryPresent.isForPlayer() || !jerryPresent.getUpperDisplay().equals(entity.getUniqueID()));
             });
+        }
+
+        if (main.getConfigValues().isEnabled(Feature.PRIORITIZE_ITEM_ABILITY_OVER_PLAYER_CLICKS)) {
+            if (ItemUtils.doesItemHaveRightClickAbility(Minecraft.getMinecraft().thePlayer.getHeldItem())) {
+                list.removeIf(entity -> entity instanceof EntityOtherPlayerMP && !NPCUtils.isNPC(entity));
+            }
         }
     }
 

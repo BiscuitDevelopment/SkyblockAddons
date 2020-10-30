@@ -171,7 +171,8 @@
     "disableMortMessages": "Disable Mort Messages",
     "disableBossMessages": "Disable Boss Messages",
     "hideOtherPlayersPresents": "Hide Other Player's Presents",
-    "easierPresentOpening": "Open Presents Easier"
+    "easierPresentOpening": "Open Presents Easier",
+    "itemAbilityClickPriority" : "Prioritize Item Ability Over Player Clicks"
   },
   "messages": {
     "enchants": "Enchants",

@@ -18,6 +18,7 @@ import org.apache.commons.lang3.text.WordUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -551,5 +552,44 @@ public class ItemUtils {
             }
         }
         return null;
+    }
+
+    private static HashMap<String, Boolean> rightClickAbilityItems = new HashMap<>();
+
+    /*
+     * Returns whether the item is on the whitelist of items with abilities
+     * After an initial query on the item, stores a new tag for faster reference
+     */
+    public static boolean doesItemHaveRightClickAbility(ItemStack item) {
+        if (item == null) {
+            return false;
+        }
+
+        String skyblockID = getSkyBlockItemID(item);
+        if (skyblockID == null) {
+            return false;
+        }
+
+        if (rightClickAbilityItems.containsKey(skyblockID)) {
+            return rightClickAbilityItems.get(skyblockID);
+        }
+        // If this is a new item, determine if it has a right click ability
+        NBTTagCompound display = item.getSubCompound("display", false);
+
+        if (display == null || !display.hasKey("Lore")) {
+            return false;
+        }
+
+        NBTTagList lore = display.getTagList("Lore", Constants.NBT.TAG_STRING);
+        boolean flag = false;
+        for (int i = 0; i < lore.tagCount(); i++) {
+            String currentLine = lore.getStringTagAt(i);
+
+            if (currentLine.contains("RIGHT CLICK")) {
+                flag = true;
+            }
+        }
+        rightClickAbilityItems.put(skyblockID, flag);
+        return flag;
     }
 }

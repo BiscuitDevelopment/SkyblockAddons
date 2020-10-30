@@ -289,7 +289,7 @@ public class EnumUtils {
                 Feature.DUNGEONS_SECRETS_DISPLAY, Feature.SHOW_SALVAGE_ESSENCES_COUNTER),
         TIRELESS_TRAVELER("TirelessTraveler", "github.com/ILikePlayingGames", Feature.DUNGEON_DEATH_COUNTER),
         KAASBROODJU("kaasbroodju", "github.com/kaasbroodju", Feature.SKILL_PROGRESS_BAR, Feature.SHOW_SKILL_PERCENTAGE_INSTEAD_OF_XP, Feature.SHOW_SKILL_XP_GAINED),
-        PHOUBE("Phoube", "github.com/Phoube", Feature.HIDE_OTHER_PLAYERS_PRESENTS, Feature.EASIER_PRESENT_OPENING);
+        PHOUBE("Phoube", "github.com/Phoube", Feature.HIDE_OTHER_PLAYERS_PRESENTS, Feature.EASIER_PRESENT_OPENING, Feature.PRIORITIZE_ITEM_ABILITY_OVER_PLAYER_CLICKS);
 
         private Set<Feature> features;
         private String author;
