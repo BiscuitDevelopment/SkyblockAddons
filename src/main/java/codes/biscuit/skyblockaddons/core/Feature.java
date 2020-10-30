@@ -183,7 +183,7 @@ public enum Feature {
     HIDE_OTHER_PLAYERS_PRESENTS(150, "settings.hideOtherPlayersPresents", null,false),
     EASIER_PRESENT_OPENING(151, "settings.easierPresentOpening", null,false),
 
-    PRIORITIZE_ITEM_ABILITY_OVER_PLAYER_CLICKS(143, "settings.itemAbilityClickPriority", null, true),
+    PRIORITIZE_ITEM_ABILITY_OVER_PLAYER_CLICKS(152, "settings.itemAbilityClickPriority", null, true),
 
     WARNING_TIME(-1, Message.SETTING_WARNING_DURATION, false),
 
