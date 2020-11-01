@@ -1,8 +1,21 @@
 package codes.biscuit.skyblockaddons.listeners;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.core.*;
-import codes.biscuit.skyblockaddons.features.*;
+import codes.biscuit.skyblockaddons.core.Attribute;
+import codes.biscuit.skyblockaddons.core.DungeonClass;
+import codes.biscuit.skyblockaddons.core.DungeonMilestone;
+import codes.biscuit.skyblockaddons.core.DungeonPlayer;
+import codes.biscuit.skyblockaddons.core.EssenceType;
+import codes.biscuit.skyblockaddons.core.Feature;
+import codes.biscuit.skyblockaddons.core.InventoryType;
+import codes.biscuit.skyblockaddons.core.Location;
+import codes.biscuit.skyblockaddons.core.Message;
+import codes.biscuit.skyblockaddons.core.Translations;
+import codes.biscuit.skyblockaddons.features.BaitManager;
+import codes.biscuit.skyblockaddons.features.DungeonDeathCounter;
+import codes.biscuit.skyblockaddons.features.EndstoneProtectorManager;
+import codes.biscuit.skyblockaddons.features.ItemDiff;
+import codes.biscuit.skyblockaddons.features.SlayerArmorProgress;
 import codes.biscuit.skyblockaddons.features.dragontracker.DragonTracker;
 import codes.biscuit.skyblockaddons.features.dragontracker.DragonType;
 import codes.biscuit.skyblockaddons.features.dragontracker.DragonsSince;
@@ -23,7 +36,11 @@ import codes.biscuit.skyblockaddons.misc.ChromaManager;
 import codes.biscuit.skyblockaddons.misc.Updater;
 import codes.biscuit.skyblockaddons.misc.scheduler.Scheduler;
 import codes.biscuit.skyblockaddons.misc.scheduler.SkyblockRunnable;
-import codes.biscuit.skyblockaddons.utils.*;
+import codes.biscuit.skyblockaddons.utils.ColorCode;
+import codes.biscuit.skyblockaddons.utils.EnumUtils;
+import codes.biscuit.skyblockaddons.utils.ItemUtils;
+import codes.biscuit.skyblockaddons.utils.TextUtils;
+import codes.biscuit.skyblockaddons.utils.Utils;
 import codes.biscuit.skyblockaddons.utils.objects.IntPair;
 import com.google.common.collect.Lists;
 import lombok.Getter;
@@ -32,7 +49,11 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.MapItemRenderer;
 import net.minecraft.client.gui.ScaledResolution;
-import net.minecraft.client.renderer.*;
+import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.OpenGlHelper;
+import net.minecraft.client.renderer.RenderHelper;
+import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.WorldRenderer;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.entity.Entity;
@@ -65,8 +86,16 @@ import org.lwjgl.opengl.GL11;
 import java.awt.*;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.*;
+import java.util.Map;
+import java.util.Optional;
+import java.util.TimeZone;
 
 import static net.minecraft.client.gui.Gui.icons;
 
@@ -1178,8 +1207,6 @@ public class RenderListener {
     public void drawCollectedEssences(float x, float y, boolean usePlaceholders, boolean hideZeroes) {
         Minecraft mc = Minecraft.getMinecraft();
 
-        Map<EssenceType, Integer> collectedEssences = main.getDungeonUtils().getCollectedEssences();
-
         float currentX = x;
         float currentY;
 
@@ -1189,7 +1216,13 @@ public class RenderListener {
 
         int count = 0;
         for (EssenceType essenceType : EssenceType.values()) {
-            int value = collectedEssences.getOrDefault(essenceType, 0);
+            int value;
+            if (main.getInventoryUtils().getInventoryType() == InventoryType.SALVAGING) {
+                value = main.getDungeonUtils().getSalvagedEssences().getOrDefault(essenceType, 0);
+            } else {
+                value = main.getDungeonUtils().getCollectedEssences().getOrDefault(essenceType, 0);
+            }
+
             if (usePlaceholders) {
                 value = 99;
             } else if (value <= 0 && hideZeroes) {

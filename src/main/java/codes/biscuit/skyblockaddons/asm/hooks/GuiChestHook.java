@@ -32,7 +32,11 @@ import org.apache.commons.lang3.StringUtils;
 import org.lwjgl.input.Keyboard;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.Arrays;
+import java.util.EnumMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -64,7 +68,13 @@ public class GuiChestHook {
      * Resets variables when the chest is closed
      */
     public static void onGuiClosed() {
-        SkyblockAddons.getInstance().getInventoryUtils().updateInventoryType();
+        SkyblockAddons main = SkyblockAddons.getInstance();
+        InventoryType type = main.getInventoryUtils().updateInventoryType();
+
+        if (type == InventoryType.SALVAGING && main.getConfigValues().isEnabled(Feature.SHOW_SALVAGE_ESSENCES_COUNTER)) {
+            main.getDungeonUtils().getSalvagedEssences().clear();
+        }
+
         if (textFieldMatch != null && textFieldExclusions != null) {
             Keyboard.enableRepeatEvents(false);
         }
