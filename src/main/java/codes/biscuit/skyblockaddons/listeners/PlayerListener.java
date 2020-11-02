@@ -8,6 +8,7 @@ import codes.biscuit.skyblockaddons.events.DungeonPlayerReviveEvent;
 import codes.biscuit.skyblockaddons.events.SkyblockPlayerDeathEvent;
 import codes.biscuit.skyblockaddons.features.BaitManager;
 import codes.biscuit.skyblockaddons.features.EndstoneProtectorManager;
+import codes.biscuit.skyblockaddons.features.JerryPresent;
 import codes.biscuit.skyblockaddons.features.backpacks.BackpackManager;
 import codes.biscuit.skyblockaddons.features.backpacks.ContainerPreview;
 import codes.biscuit.skyblockaddons.features.cooldowns.CooldownManager;
@@ -167,6 +168,7 @@ public class PlayerListener {
             }
 
             NPCUtils.getNpcLocations().clear();
+            JerryPresent.getJerryPresents().clear();
         }
     }
 
@@ -279,6 +281,12 @@ public class PlayerListener {
             } else if (main.getConfigValues().isEnabled(Feature.DISABLE_TELEPORT_PAD_MESSAGES) && (formattedText.startsWith("§r§aWarped from ") || formattedText.equals("§r§cThis Teleport Pad does not have a destination set!§r"))) {
                 e.setCanceled(true);
 
+            } else if (main.getConfigValues().isEnabled(Feature.DISABLE_MORT_MESSAGES) && strippedText.startsWith("[NPC] Mort:")) {
+                e.setCanceled(true);
+
+            } else if (main.getConfigValues().isEnabled(Feature.DISABLE_BOSS_MESSAGES) && strippedText.startsWith("[BOSS] ")) {
+                e.setCanceled(true);
+
             } else if ((matcher = SLAYER_COMPLETED_PATTERN.matcher(strippedText)).matches()) { // §r   §r§5§l» §r§7Talk to Maddox to claim your Wolf Slayer XP!§r
                 SlayerTracker.getInstance().completedSlayer(matcher.group("slayerType"));
 
@@ -326,6 +334,10 @@ public class PlayerListener {
                     main.getRenderListener().setArrowsLeft(arrowsLeft);
                     main.getScheduler().schedule(Scheduler.CommandType.RESET_SUBTITLE_FEATURE, main.getConfigValues().getWarningSeconds());
                 }
+            }
+
+            if (main.getInventoryUtils().getInventoryType() == InventoryType.SALVAGING && main.getConfigValues().isEnabled(Feature.SHOW_SALVAGE_ESSENCES_COUNTER)) {
+                main.getDungeonUtils().parseSalvagedEssences(formattedText);
             }
 
             if (main.getUtils().isInDungeon()) {
@@ -475,6 +487,7 @@ public class PlayerListener {
                     main.getUtils().playLoudSound("random.successful_hit", 0.8);
 
                 }
+
                 if (timerTick == 20) { // Add natural mana every second (increase is based on your max mana).
                     if (main.getRenderListener().isPredictMana()) {
                         changeMana(getAttribute(Attribute.MAX_MANA) / 50);
@@ -526,15 +539,29 @@ public class PlayerListener {
 
         Entity entity = e.entity;
 
-        if (entity instanceof EntityOtherPlayerMP && main.getConfigValues().isEnabled(Feature.HIDE_PLAYERS_NEAR_NPCS) && entity.ticksExisted < 5) {
-            float health = ((EntityOtherPlayerMP) entity).getHealth();
-
-            if (NPCUtils.getNpcLocations().containsKey(entity.getUniqueID())) {
-                if (health != 20.0F) {
-                    NPCUtils.getNpcLocations().remove(entity.getUniqueID());
+        if (entity.ticksExisted < 5) {
+            if (main.getConfigValues().isEnabled(Feature.HIDE_OTHER_PLAYERS_PRESENTS) || main.getConfigValues().isEnabled(Feature.EASIER_PRESENT_OPENING)) {
+                if (!JerryPresent.getJerryPresents().containsKey(entity.getUniqueID())) {
+                    JerryPresent present = JerryPresent.getJerryPresent(entity);
+                    if (present != null) {
+                        JerryPresent.getJerryPresents().put(entity.getUniqueID(), present);
+                        return;
+                    }
                 }
-            } else if (NPCUtils.isNPC(entity)) {
-                NPCUtils.getNpcLocations().put(entity.getUniqueID(), entity.getPositionVector());
+            }
+
+            if (entity instanceof EntityOtherPlayerMP && main.getConfigValues().isEnabled(Feature.HIDE_PLAYERS_NEAR_NPCS)) {
+                float health = ((EntityOtherPlayerMP) entity).getHealth();
+
+                if (NPCUtils.getNpcLocations().containsKey(entity.getUniqueID())) {
+                    if (health != 20.0F) {
+                        NPCUtils.getNpcLocations().remove(entity.getUniqueID());
+                        return;
+                    }
+                } else if (NPCUtils.isNPC(entity)) {
+                    NPCUtils.getNpcLocations().put(entity.getUniqueID(), entity.getPositionVector());
+                    return;
+                }
             }
         }
 
@@ -882,85 +909,61 @@ public class PlayerListener {
                 }
             }
 
-            if (main.getConfigValues().isEnabled(Feature.SHOW_ITEM_ANVIL_USES)) {
-                // Anvil Uses ~ original done by Dahn#6036
-                int anvilUses = main.getUtils().getNBTInteger(hoveredItem, "ExtraAttributes", "anvil_uses");
-                if (anvilUses != -1) {
-                    int hotPotatoCount = main.getUtils().getNBTInteger(hoveredItem, "ExtraAttributes", "hot_potato_count");
-                    if (hotPotatoCount != -1) {
-                        anvilUses -= hotPotatoCount;
+            NBTTagCompound extraAttributes = ItemUtils.getExtraAttributes(hoveredItem);
+            if (extraAttributes != null) {
+                if (main.getConfigValues().isEnabled(Feature.SHOW_ITEM_ANVIL_USES) && extraAttributes.hasKey("anvil_uses", ItemUtils.NBT_INTEGER)) {
+                    // Anvil Uses ~ original done by Dahn#6036
+                    int anvilUses = extraAttributes.getInteger("anvil_uses");
+                    if (extraAttributes.hasKey("hot_potato_count", ItemUtils.NBT_INTEGER)) {
+                        anvilUses -= extraAttributes.getInteger("hot_potato_count");
                     }
                     if (anvilUses > 0) {
                         e.toolTip.add(insertAt++, Message.MESSAGE_ANVIL_USES.getMessage(String.valueOf(anvilUses)));
                     }
                 }
-            }
 
-            if (main.getConfigValues().isEnabled(Feature.SHOW_BROKEN_FRAGMENTS)) {
-                if (hoveredItem.getDisplayName().contains("Dragon Fragment")) {
-                    if (hoveredItem.hasTagCompound()) {
-                        NBTTagCompound extraAttributes = hoveredItem.getSubCompound("ExtraAttributes", false);
+                if (main.getConfigValues().isEnabled(Feature.SHOW_BROKEN_FRAGMENTS) && hoveredItem.getDisplayName().contains("Dragon Fragment") &&
+                        extraAttributes.hasKey("bossId") && extraAttributes.hasKey("spawnedFor")) {
+                    e.toolTip.add(insertAt++, "§c§lBROKEN FRAGMENT");
+                }
 
-                        if (extraAttributes != null) {
-                            if (extraAttributes.hasKey("bossId") && extraAttributes.hasKey("spawnedFor")) {
-                                e.toolTip.add(insertAt++, "§c§lBROKEN FRAGMENT§r");
-                            }
-                        }
+                if (main.getConfigValues().isEnabled(Feature.SHOW_BASE_STAT_BOOST_PERCENTAGE) && extraAttributes.hasKey("baseStatBoostPercentage", ItemUtils.NBT_INTEGER)) {
+                    int baseStatBoost = extraAttributes.getInteger("baseStatBoostPercentage");
+
+                    ColorCode colorCode = main.getConfigValues().getRestrictedColor(Feature.SHOW_BASE_STAT_BOOST_PERCENTAGE);
+                    if (main.getConfigValues().isEnabled(Feature.BASE_STAT_BOOST_COLOR_BY_RARITY)) {
+                        int rarityIndex = baseStatBoost / 10;
+                        if (rarityIndex < 0) rarityIndex = 0;
+                        if (rarityIndex >= ItemRarity.values().length) rarityIndex = ItemRarity.values().length - 1;
+
+                        colorCode = ItemRarity.values()[rarityIndex].getColorCode();
+                    }
+                    e.toolTip.add(insertAt++, "§7Base Stat Boost: " + colorCode + "+" + baseStatBoost + "%");
+                }
+
+                if (main.getConfigValues().isEnabled(Feature.SHOW_EXPERTISE_KILLS) && hoveredItem.getItem() == Items.fishing_rod && extraAttributes.hasKey("expertise_kills", ItemUtils.NBT_INTEGER)) {
+
+                    int expertiseKills = extraAttributes.getInteger("expertise_kills");
+                    ColorCode colorCode = main.getConfigValues().getRestrictedColor(Feature.SHOW_EXPERTISE_KILLS);
+                    if (expertiseKills >= EXPERTISE_KILL_TIERS.last()) {
+                        e.toolTip.add(insertAt++, "§7Expertise Kills: " + colorCode + expertiseKills + " (Maxed)");
+                    } else {
+                        e.toolTip.add(insertAt++, "§7Expertise Kills: " + colorCode + expertiseKills + " / " + EXPERTISE_KILL_TIERS.higher(expertiseKills));
                     }
                 }
-            }
 
-            if (main.getConfigValues().isEnabled(Feature.SHOW_BASE_STAT_BOOST_PERCENTAGE) && hoveredItem.hasTagCompound()) {
-                NBTTagCompound extraAttributes = ItemUtils.getExtraAttributes(hoveredItem);
-                if (extraAttributes != null) {
-                    int baseStatBoost = ItemUtils.getBaseStatBoostPercentage(extraAttributes);
-                    if (baseStatBoost != -1) {
-
-                        ColorCode colorCode = main.getConfigValues().getRestrictedColor(Feature.SHOW_BASE_STAT_BOOST_PERCENTAGE);
-                        if (main.getConfigValues().isEnabled(Feature.BASE_STAT_BOOST_COLOR_BY_RARITY)) {
-
-                            int rarityIndex = baseStatBoost/10;
-                            if (rarityIndex < 0) rarityIndex = 0;
-                            if (rarityIndex >= ItemRarity.values().length) rarityIndex = ItemRarity.values().length - 1;
-
-                            colorCode = ItemRarity.values()[rarityIndex].getColorCode();
-                        }
-                        e.toolTip.add(insertAt++, "§7Base Stat Boost: " + colorCode + "+" + baseStatBoost + "%");
-                    }
+                if (main.getConfigValues().isEnabled(Feature.SHOW_SWORD_KILLS) && extraAttributes.hasKey("sword_kills", ItemUtils.NBT_INTEGER)) {
+                    ColorCode colorCode = main.getConfigValues().getRestrictedColor(Feature.SHOW_SWORD_KILLS);
+                    e.toolTip.add(insertAt++, "§7Sword Kills: " + colorCode + extraAttributes.getInteger("sword_kills"));
                 }
-            }
 
-            if (main.getConfigValues().isEnabled(Feature.SHOW_EXPERTISE_KILLS) && hoveredItem.getItem() == Items.fishing_rod && hoveredItem.hasTagCompound()) {
-                NBTTagCompound extraAttributes = ItemUtils.getExtraAttributes(hoveredItem);
-
-                if (extraAttributes != null) {
-                    int expertiseKills = ItemUtils.getExpertiseKills(extraAttributes);
-                    if (expertiseKills != -1) {
-                        ColorCode colorCode = main.getConfigValues().getRestrictedColor(Feature.SHOW_EXPERTISE_KILLS);
-                        if (expertiseKills >= EXPERTISE_KILL_TIERS.last()) {
-                            e.toolTip.add(insertAt++, "§7Expertise Kills: " + colorCode + expertiseKills + " (Maxed)");
-                        } else {
-                            e.toolTip.add(insertAt++, "§7Expertise Kills: " + colorCode + expertiseKills + " / " + EXPERTISE_KILL_TIERS.higher(expertiseKills));
-                        }
-                    }
+                if (main.getConfigValues().isEnabled(Feature.SHOW_ITEM_DUNGEON_FLOOR) && extraAttributes.hasKey("item_tier", ItemUtils.NBT_INTEGER)) {
+                    int floor = extraAttributes.getInteger("item_tier");
+                    ColorCode colorCode = main.getConfigValues().getRestrictedColor(Feature.SHOW_ITEM_DUNGEON_FLOOR);
+                    e.toolTip.add(insertAt++, "§7Obtained on Floor: " + colorCode + (floor == 0 ? "Entrance" : floor));
                 }
-            }
 
-            if (main.getConfigValues().isEnabled(Feature.SHOW_ITEM_DUNGEON_FLOOR) && hoveredItem.hasTagCompound()) {
-                NBTTagCompound extraAttributes = ItemUtils.getExtraAttributes(hoveredItem);
-                if (extraAttributes != null) {
-                    int floor = ItemUtils.getDungeonFloor(extraAttributes);
-                    if (floor != -1) {
-                        ColorCode colorCode = main.getConfigValues().getRestrictedColor(Feature.SHOW_ITEM_DUNGEON_FLOOR);
-                        e.toolTip.add(insertAt++, "§7Obtained on Floor: " + colorCode + (floor == 0 ? "Entrance" : floor));
-                    }
-                }
-            }
-
-            if (main.getConfigValues().isEnabled(Feature.SHOW_RARITY_UPGRADED) && hoveredItem.hasTagCompound()) {
-                NBTTagCompound extraAttributes = ItemUtils.getExtraAttributes(hoveredItem);
-
-                if (extraAttributes != null && ItemUtils.getRarityUpgrades(extraAttributes) > 0) {
+                if (main.getConfigValues().isEnabled(Feature.SHOW_RARITY_UPGRADED) && extraAttributes.hasKey("rarity_upgrades", ItemUtils.NBT_INTEGER)) {
                     e.toolTip.add(insertAt++, main.getConfigValues().getRestrictedColor(Feature.SHOW_RARITY_UPGRADED) + "§lRARITY UPGRADED");
                 }
             }

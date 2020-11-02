@@ -42,6 +42,7 @@ public class DevUtils {
     /** Entity names for {@link this#copyEntityData(String, int)}*/
     public static final List<String> ENTITY_NAMES = EntityList.getEntityNameList();
 
+    // If you change this, please change it in the string "commandUsage.sba.help.copyEntity" as well.
     public static final int ENTITY_COPY_RADIUS = 3;
 
     @Getter @Setter

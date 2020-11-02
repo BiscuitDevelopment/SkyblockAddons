@@ -157,6 +157,14 @@ public class GuiChestHook {
     public static void drawScreen(int guiLeft, int guiTop) {
         InventoryType inventoryType = SkyblockAddons.getInstance().getInventoryUtils().updateInventoryType();
 
+        if (inventoryType == InventoryType.SALVAGING) {
+            int ySize = 222 - 108 + 6 * 18;
+            float x = guiLeft - 69 - 5;
+            float y = guiTop + ySize / 2F - 72 / 2F;
+
+            SkyblockAddons.getInstance().getRenderListener().drawCollectedEssences(x, y, false, false);
+        }
+
         if (textFieldMatch != null && (inventoryType == InventoryType.ENCHANTMENT_TABLE ||
                 inventoryType== InventoryType.BASIC_REFORGING || inventoryType == InventoryType.BASIC_ACCESSORY_BAG_REFORGING)) {
             Minecraft mc = Minecraft.getMinecraft();
