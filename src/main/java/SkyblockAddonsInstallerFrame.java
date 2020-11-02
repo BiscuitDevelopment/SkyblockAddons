@@ -155,7 +155,7 @@ public class SkyblockAddonsInstallerFrame extends JFrame implements ActionListen
                 versionInfo.setFont(new Font(Font.DIALOG, Font.BOLD, 14));
                 versionInfo.setHorizontalAlignment(SwingConstants.CENTER);
                 versionInfo.setPreferredSize(new Dimension(w, h));
-                versionInfo.setText("v"+getVersionFromMcmodInfo()+" by Biscuit - for Minecraft 1.8.9");
+                versionInfo.setText("v"+getVersionFromMcmodInfo()+" by El_Oxo and Biscuit and  - for Minecraft 1.8.9");
 
                 y += h;
             } catch (Throwable ivjExc) {
