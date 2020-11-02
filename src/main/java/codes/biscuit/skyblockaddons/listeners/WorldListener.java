@@ -13,68 +13,71 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 import java.util.HashSet;
-/*
-This class allows us to approximate "our" trail of fish particles out of the recently-spawned fish particles in the world.
+/**
+ *
+ * This class allows us to approximate "our" trail of fish particles out of the recently-spawned fish particles in the world.
+ * 
+ * In general, we wish to identify those splash particles that belong to our fish trail, only.
+ * We notice several identifying features of these (those in our fish trail) splash particles:
+ *     1) Particles spawn with at a radial distance from the cast hook.
+ *         - That distance differs by .1 blocks for sequential particles (with a small amount of variation)
+ *         - During the rain, or in the case of dropped packets, the distance can be .2 blocks.
+ *         - The distance to the hook always decreases
+ *     2) Particles spawn at an angle (think polar coordinates) to the cast hook.
+ *         - That angle differs based on a gaussian distribution for sequential particles
+ *         - The gaussian distribution has mean 0 and standard deviation 4 degrees
+ *         - Based on the distribution, very few sequential particles (<.27%) will differ in angle by more than
+ *             3 standard distributions (12 degrees)
+ *     3) Sequential particles approaching the hook generally come in every tick, but we can allow for 2 or 3 ticks
+ *     4) Particles will not spawn farther than 8 blocks away from the cast hook
+ * 
+ *     (These are mostly discoverable in the EntityFishHook.java file. Hopefully, my making this algorithm won't cause servers to go ballistic...)
+ * 
+ * Based on these findings, we can try to do pattern recognition on recently spawned particles.
+ * 
+ * The algorithm:
+ * When a new particle spawns, check if it matches these three conditions for each recently-spawned particle.
+ * For any that do match the criteria, "link" the current particle to the previously-spawned particle.
+ * We "link" the particles using a matrix. Set a '1' to matrix entry (i,j) for the particle i that links to j.
+ * Do not set a '1' to the entry (j,i). We want to be able to 'link' things ONLY backwards in time.
+ * 
+ * Every game tick, calculate if any particles match the criteria. Many particles may match the criteria though...
+ * So, we modify our criteria. Instead, find a few (i.e. a "trail" of) particles that each meet the criteria for the next
+ * E.g. we find that particle 1 -> 5 -> 6 -> 10 (we identify that particle 1 meets the criteria for 5, 5 meets the criteria for 6, and so on)
+ * These particles form a particle trail that not many (hopefully not any) other particles can form.
+ * Given the particle trail (which we get via matrix multiplication), we return the most recent particle in the trail.
+ * We then spawn a new distinct particle (in this case the lava drip particle) at the most recently spawned particle in a (the) particle trail.
+ * 
+ * This new, distinct particle can then be used to indicate the player's fish trail (and when to reel)
+ * 
+ * 
+ * NOTES:
+ * Consideration of time complexity is a huge part of the algorithm.
+ * It is an O(n^2) algorithm, which for a large number of particles is unsustainable.
+ * Each tick only gives us 50 milliseconds to compute stuff, and we don't want to waste it all on some stupid fishing indicator.
+ * As a result, the class makes use of bit masks and bitwise operations, which are generally very fast.
+ * Processing a new particle generally takes <.025 milliseconds and the "link" step generally takes <.050 milliseconds
+ * So we are well below any critical thresholds for computation time
+ * 
+ * Out of convenience, we use the largest-available primitive: the long (64 bits).
+ * This limits us to tracking the last 64 spawned particles, which may be sufficient for some cases.
+ * However, in instances with more than 10+ fishers, we may not be able to link enough particles before they are overwritten by new ones.
+ * In this case, the algorithm should not spawn any particles.
+ * 
+ * The main "linking" step uses binary matrix multiplication (wherein we OR the bitwise AND of each row/column to get a matrix entry)
+ * This is the same as bitwise ANDing rows with columns, and asking if the result has at least one '1'.
+ * One can think of this process as a markoff chain, where node connections are binary (either there is one or there isn't)
+ * Just like in a markoff chain, squaring the adjacency matrix gives the connections "links" between nodes with two degrees of separation.
+ * In this algorithm, we try to link four particles together, which involves an M^4 computation, where M is the adjacency matrix.
 
-In general, we wish to identify those splash particles that belong to our fish trail, only.
-We notice several identifying features of these (those in our fish trail) splash particles:
-    1) Particles spawn with at a radial distance from the cast hook.
-        - That distance differs by .1 blocks for sequential particles (with a small amount of variation)
-        - During the rain, or in the case of dropped packets, the distance can be .2 blocks.
-        - The distance to the hook always decreases
-    2) Particles spawn at an angle (think polar coordinates) to the cast hook.
-        - That angle differs based on a gaussian distribution for sequential particles
-        - The gaussian distribution has mean 0 and standard deviation 4 degrees
-        - Based on the distribution, very few sequential particles (<.27%) will differ in angle by more than
-            3 standard distributions (12 degrees)
-    3) Sequential particles approaching the hook generally come in every tick, but we can allow for 2 or 3 ticks
-    4) Particles will not spawn farther than 8 blocks away from the cast hook
-
-    (These are mostly discoverable in the EntityFishHook.java file. Hopefully, my making this algorithm won't cause servers to go ballistic...)
-
-Based on these findings, we can try to do pattern recognition on recently spawned particles.
-
-The algorithm:
-When a new particle spawns, check if it matches these three conditions for each recently-spawned particle.
-For any that do match the criteria, "link" the current particle to the previously-spawned particle.
-We "link" the particles using a matrix. Set a '1' to matrix entry (i,j) for the particle i that links to j.
-Do not set a '1' to the entry (j,i). We want to be able to 'link' things ONLY backwards in time.
-
-Every game tick, calculate if any particles match the criteria. Many particles may match the criteria though...
-So, we modify our criteria. Instead, find a few (i.e. a "trail" of) particles that each meet the criteria for the next
-E.g. we find that particle 1 -> 5 -> 6 -> 10 (we identify that particle 1 meets the criteria for 5, 5 meets the criteria for 6, and so on)
-These particles form a particle trail that not many (hopefully not any) other particles can form.
-Given the particle trail (which we get via matrix multiplication), we return the most recent particle in the trail.
-We then spawn a new distinct particle (in this case the lava drip particle) at the most recently spawned particle in a (the) particle trail.
-
-This new, distinct particle can then be used to indicate the player's fish trail (and when to reel)
-
-
-NOTES:
-Consideration of time complexity is a huge part of the algorithm.
-It is an O(n^2) algorithm, which for a large number of particles is unsustainable.
-Each tick only gives us 50 milliseconds to compute stuff, and we don't want to waste it all on some stupid fishing indicator.
-As a result, the class makes use of bit masks and bitwise operations, which are generally very fast.
-Processing a new particle generally takes <.025 milliseconds and the "link" step generally takes <.050 milliseconds
-So we are well below any critical thresholds for computation time
-
-Out of convenience, we use the largest-available primitive: the long (64 bits).
-This limits us to tracking the last 64 spawned particles, which may be sufficient for some cases.
-However, in instances with more than 10+ fishers, we may not be able to link enough particles before they are overwritten by new ones.
-In this case, the algorithm should not spawn any particles.
-
-The main "linking" step uses binary matrix multiplication (wherein we OR the bitwise AND of each row/column to get a matrix entry)
-This is the same as bitwise ANDing rows with columns, and asking if the result has at least one '1'.
-One can think of this process as a markoff chain, where node connections are binary (either there is one or there isn't)
-Just like in a markoff chain, squaring the adjacency matrix gives the connections "links" between nodes with two degrees of separation.
-In this algorithm, we try to link four particles together, which involves an M^4 computation, where M is the adjacency matrix.
-
-Admittedly, it seems cumbersome to implement IWorldAccess and attach ourselves as a world accessor
-Since we are only interested in the particles.
-But there doesn't seem to be a better way to do it...particle packets directly call accessor spawnParticle methods
-And there isn't an event (that I've seen) that tracks particle spawns.
-Presumably, we could access the EffectsRenderer fxlayers, or could do asm...
-Maybe that would be appropriate...idk.
+ * Admittedly, it seems cumbersome to implement IWorldAccess and attach ourselves as a world accessor
+ * Since we are only interested in the particles.
+ * But there doesn't seem to be a better way to do it...particle packets directly call accessor spawnParticle methods
+ * And there isn't an event (that I've seen) that tracks particle spawns.
+ * Presumably, we could access the EffectsRenderer fxlayers, or could do asm...
+ * Maybe that would be appropriate...idk.
+ 
+ * @author Phoube
  */
 public class WorldListener implements IWorldAccess {
 
