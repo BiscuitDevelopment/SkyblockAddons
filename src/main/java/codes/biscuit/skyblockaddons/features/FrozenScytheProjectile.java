@@ -14,6 +14,12 @@ import net.minecraft.util.*;
 import javax.vecmath.Matrix4f;
 import java.util.*;
 
+
+/**
+ * This class identifies and stores a frozen scythe projectile (a single armorstand with ice or packed ice)
+ * 
+ * @author Phoube
+ */
 public class FrozenScytheProjectile {
 
     // A list of projectiles spawned in the world from the player's position
