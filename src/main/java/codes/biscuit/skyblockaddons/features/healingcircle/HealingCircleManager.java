@@ -67,7 +67,7 @@ public class HealingCircleManager {
                 GlStateManager.enableAlpha();
                 GlStateManager.disableTexture2D();
 
-                int color = main.getConfigValues().getColor(Feature.SHOW_HEALING_CIRCLE_WALL);
+                int color = main.getConfigValues().getColor(Feature.SHOW_HEALING_CIRCLE_WALL, (int) (255 * 0.2F));
                 ColorUtils.bindColor(color);
                 Point2D.Double circleCenter = healingCircle.getCircleCenter();
                 if (circleCenter != null && !Double.isNaN(circleCenter.getX()) && !Double.isNaN(circleCenter.getY())) {

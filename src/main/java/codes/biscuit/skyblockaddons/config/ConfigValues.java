@@ -699,7 +699,7 @@ public class ConfigValues {
         }
 
         if (colors.containsKey(feature)) {
-            return ColorUtils.setColorAlpha(colors.get(feature), 255);
+            return ColorUtils.setColorAlpha(colors.get(feature), alpha);
         }
 
         ColorCode defaultColor = feature.getDefaultColor();

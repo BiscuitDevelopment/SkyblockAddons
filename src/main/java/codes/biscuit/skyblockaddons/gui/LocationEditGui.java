@@ -159,7 +159,7 @@ public class LocationEditGui extends GuiScreen {
         // Add all gui elements that can be edited to the gui.
         for (Feature feature : Feature.getGuiFeatures()) {
             if (!main.getConfigValues().isDisabled(feature)) { // Don't display features that have been disabled
-                if (feature == Feature.HEALTH_BAR || feature == Feature.MANA_BAR) {
+                if (feature.getGuiFeatureData() != null && feature.getGuiFeatureData().getDrawType() == EnumUtils.DrawType.BAR) {
                     addResizeCorners(feature);
                 }
             }
