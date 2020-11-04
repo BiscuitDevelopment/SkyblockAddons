@@ -5,6 +5,6 @@
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "https://github.com/BiscuitDevelopment/SkyblockAddons",
-  "authorList": ["Biscut, El_Oxo"],
+  "authorList": ["Biscut"],
   "logoFile": "assets/skyblockaddons/logo.png"
 }]
