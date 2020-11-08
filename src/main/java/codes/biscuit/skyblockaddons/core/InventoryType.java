@@ -16,7 +16,8 @@ public enum InventoryType {
     ADVANCED_ACCESSORY_BAG_REFORGING("Reforge Accessory Bag"),
     BAKER("Baker"),
     CRAFTING_TABLE(CraftingPattern.CRAFTING_TABLE_DISPLAYNAME),
-    SALVAGING("Salvage Dungeon Item");
+    SALVAGING("Salvage Dungeon Item"),
+    CITY_PROJECT("Project - ");
 
     @Getter
     private final String inventoryName;

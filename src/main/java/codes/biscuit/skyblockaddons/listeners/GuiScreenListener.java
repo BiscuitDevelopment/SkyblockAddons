@@ -1,11 +1,14 @@
 package codes.biscuit.skyblockaddons.listeners;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.features.CityProjectsPin;
 import codes.biscuit.skyblockaddons.utils.DevUtils;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.inventory.Slot;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraftforge.client.event.GuiScreenEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import org.lwjgl.input.Keyboard;
@@ -36,6 +39,8 @@ public class GuiScreenListener {
             // Check if the player is in an inventory.
             if (GuiContainer.class.isAssignableFrom(currentScreen.getClass())) {
                 Slot currentSlot = ((GuiContainer) currentScreen).getSlotUnderMouse();
+
+                CityProjectsPin.getInstance().pinProject(currentSlot.inventory);
 
                 if (currentSlot != null && currentSlot.getHasStack()) {
                     DevUtils.copyNBTTagToClipboard(currentSlot.getStack().serializeNBT(),

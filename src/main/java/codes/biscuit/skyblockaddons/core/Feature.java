@@ -183,6 +183,8 @@ public enum Feature {
     HIDE_OTHER_PLAYERS_PRESENTS(150, "settings.hideOtherPlayersPresents", null,false),
     EASIER_PRESENT_OPENING(151, "settings.easierPresentOpening", null,false),
 
+    CITY_PROJECTS_PIN(152, Message.SETTING_CITY_PROJECTS_PIN, new GuiFeatureData(EnumUtils.DrawType.CITY_PROJECTS_PIN, ColorCode.WHITE),false),
+
     WARNING_TIME(-1, Message.SETTING_WARNING_DURATION, false),
 
     WARP_ADVANCED_MODE(-1, Message.SETTING_ADVANCED_MODE, true),
@@ -229,7 +231,7 @@ public enum Feature {
             SLAYER_INDICATOR, POWER_ORB_STATUS_DISPLAY, ZEALOT_COUNTER, TICKER_CHARGES_DISPLAY, TAB_EFFECT_TIMERS, SHOW_TOTAL_ZEALOT_COUNT, SHOW_SUMMONING_EYE_COUNT,
             SHOW_AVERAGE_ZEALOTS_PER_EYE, BIRCH_PARK_RAINMAKER_TIMER, COMBAT_TIMER_DISPLAY, ENDSTONE_PROTECTOR_DISPLAY, BAIT_LIST, DUNGEONS_MAP_DISPLAY, SHOW_DUNGEON_MILESTONE,
             DUNGEONS_COLLECTED_ESSENCES_DISPLAY, REVENANT_SLAYER_TRACKER, TARANTULA_SLAYER_TRACKER, SVEN_SLAYER_TRACKER, DRAGON_STATS_TRACKER, DUNGEON_DEATH_COUNTER,
-            ROCK_PET_TRACKER, DOLPHIN_PET_TRACKER, DUNGEONS_SECRETS_DISPLAY, SKILL_PROGRESS_BAR));
+            ROCK_PET_TRACKER, DOLPHIN_PET_TRACKER, DUNGEONS_SECRETS_DISPLAY, SKILL_PROGRESS_BAR, CITY_PROJECTS_PIN));
 
     /**
      * These are features that are displayed separate, on the general tab.
@@ -339,6 +341,8 @@ public enum Feature {
                 main.getRenderListener().drawSlayerTrackers(this, mc, scale, buttonLocation);
             } else if(guiFeatureData.getDrawType() == EnumUtils.DrawType.DRAGON_STATS_TRACKER) {
                 main.getRenderListener().drawDragonTrackers(mc, scale, buttonLocation);
+            } else if(guiFeatureData.getDrawType() == EnumUtils.DrawType.CITY_PROJECTS_PIN) {
+                main.getRenderListener().drawCityProjectPin(mc, scale, buttonLocation);
             }
         }
     }

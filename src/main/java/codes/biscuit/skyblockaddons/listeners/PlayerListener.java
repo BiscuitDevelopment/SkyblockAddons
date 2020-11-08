@@ -7,6 +7,7 @@ import codes.biscuit.skyblockaddons.core.npc.NPCUtils;
 import codes.biscuit.skyblockaddons.events.DungeonPlayerReviveEvent;
 import codes.biscuit.skyblockaddons.events.SkyblockPlayerDeathEvent;
 import codes.biscuit.skyblockaddons.features.BaitManager;
+import codes.biscuit.skyblockaddons.features.CityProjectsPin;
 import codes.biscuit.skyblockaddons.features.EndstoneProtectorManager;
 import codes.biscuit.skyblockaddons.features.JerryPresent;
 import codes.biscuit.skyblockaddons.features.backpacks.BackpackManager;
@@ -497,6 +498,20 @@ public class PlayerListener {
                         TabEffectManager.getInstance().updatePotionEffects();
                     }
 
+                    if (mc.thePlayer != null && main.getUtils().isOnSkyblock())
+                        if (CityProjectsPin.getInstance().pin != null) {
+                            for (CityProjectsPin.Contribute cont : CityProjectsPin.getInstance().pin.contribs)
+                                if (!cont.completed) {
+                                    for (CityProjectsPin.Component comp : cont.components) {
+                                        int count = 0;
+                                        for (ItemStack is : mc.thePlayer.inventory.mainInventory)
+                                            if (is != null && is.hasDisplayName() && is.getDisplayName().equalsIgnoreCase(comp.name))
+                                                count += is.stackSize;
+                                        comp.current = count;
+                                    }
+
+                                }
+                        }
                 } else if (timerTick % 5 == 0) { // Check inventory, location, updates, and skeleton helmet every 1/4 second.
                     EntityPlayerSP player = mc.thePlayer;
 
