@@ -236,7 +236,7 @@
     "enchantmentExclusionExample": "ex.: \"proj, blast\"",
     "reforgeInclusionExample": "ex.: \"godly, strong\"",
     "reforgeExclusionExample": "ex.: \"odd, clean\"",
-    "actionsLeft": "%number% restantes",
+    "actionsLeft": "faltam %number% ações",
     "effectActive": "1 efeito ativo",
     "effectsActive": "%number% efeitos ativos"
   },
