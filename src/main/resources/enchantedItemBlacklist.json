@@ -40,7 +40,8 @@
     "ENCHANTED_WATER_LILY",
     "ENCHANTED_WET_SPONGE",
     "ENCHANTED_WOOL",
-    "WEIRD_TUBA"
+    "WEIRD_TUBA",
+    "BASKET_OF_SEEDS"
   ],
   "rarityLimit": "RARE"
 }
