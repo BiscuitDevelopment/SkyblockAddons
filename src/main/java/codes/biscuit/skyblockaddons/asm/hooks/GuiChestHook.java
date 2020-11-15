@@ -6,8 +6,10 @@ import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.InventoryType;
 import codes.biscuit.skyblockaddons.core.Message;
 import codes.biscuit.skyblockaddons.core.npc.NPCUtils;
+import codes.biscuit.skyblockaddons.features.CityProjectsPin;
 import codes.biscuit.skyblockaddons.features.backpacks.BackpackColor;
 import codes.biscuit.skyblockaddons.features.backpacks.BackpackManager;
+import codes.biscuit.skyblockaddons.features.craftingpatterns.CraftingPattern;
 import codes.biscuit.skyblockaddons.gui.IslandWarpGui;
 import codes.biscuit.skyblockaddons.gui.elements.CraftingPatternSelection;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
@@ -20,6 +22,7 @@ import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.gui.inventory.GuiChest;
+import net.minecraft.client.player.inventory.ContainerLocalMenu;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.init.Items;
@@ -28,6 +31,8 @@ import net.minecraft.inventory.ContainerChest;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagList;
+import net.minecraft.util.ResourceLocation;
 import org.apache.commons.lang3.StringUtils;
 import org.lwjgl.input.Keyboard;
 
@@ -52,6 +57,7 @@ public class GuiChestHook {
     private static IslandWarpGui islandWarpGui = null;
 
     private static final Pattern ENCHANTMENT_PATTERN = Pattern.compile(" \\* (?<enchantment>[A-Za-z0-9 ]*)");
+    private static final ResourceLocation pinRL = new ResourceLocation("skyblockaddons", "pin.png");
 
     public static void updateScreen() {
         if (textFieldMatch != null && textFieldExclusions != null) {
@@ -362,6 +368,35 @@ public class GuiChestHook {
                     returnValue.cancel();
                 }
             }
+
+            if (main.getConfigValues().isEnabled(Feature.CITY_PROJECTS_PIN)
+                    && slotIn != null && slotIn.inventory instanceof ContainerLocalMenu && slotIn.getHasStack()
+                    && lowerChestInventory.hasCustomName())
+            {
+                if (lowerChestInventory.getDisplayName().getUnformattedText().startsWith("Project - ")) {
+                    ItemStack itemStack = slotIn.getStack();
+                    if (itemStack.getTagCompound().getCompoundTag("display") == null || itemStack.getTagCompound().getCompoundTag("display").getTagList("Lore", 8) == null)
+                        return;
+                    NBTTagList loreNbt = itemStack.getTagCompound().getCompoundTag("display").getTagList("Lore", 8);
+                    if (loreNbt.get(0).toString().equalsIgnoreCase("\"§8City Project\"")) {
+                        CityProjectsPin.getInstance().pinProject(lowerChestInventory);
+                        returnValue.cancel();
+                    }
+                } else if (CityProjectsPin.getInstance().pin != null && lowerChestInventory.getDisplayName().getUnformattedText().startsWith("Confirm Contribution"))
+                {
+                    ItemStack itemStack = slotIn.getStack();
+                    if (itemStack.getTagCompound().getCompoundTag("display") == null || itemStack.getTagCompound().getCompoundTag("display").getTagList("Lore", 8) == null)
+                        return;
+                    NBTTagList loreNbt = itemStack.getTagCompound().getCompoundTag("display").getTagList("Lore", 8);
+                    if (loreNbt.get(0).toString().equalsIgnoreCase("\"§7Project: " + CityProjectsPin.getInstance().pin.name + "\"")) {
+                        for (CityProjectsPin.Contribute cont : CityProjectsPin.getInstance().pin.contribs)
+                            if (TextUtils.stripColor(loreNbt.get(1).toString()).contains(TextUtils.stripColor(cont.name))){
+                                cont.completed = true;
+                                break;
+                            }
+                    }
+                }
+            }
         }
     }
 
@@ -392,6 +427,13 @@ public class GuiChestHook {
         }
 
         Minecraft mc = Minecraft.getMinecraft();
+
+        /*if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.CITY_PROJECTS_PIN) && lowerChestInventory.hasCustomName()
+                && lowerChestInventory.getDisplayName().getUnformattedText().startsWith("Project - ")) {
+            //System.out.println("IT'S DRAWING");
+            Minecraft.getMinecraft().getTextureManager().bindTexture(pinRL);
+            mc.ingameGUI.drawTexturedModalRect(-100, 0, 0, 0, 100, 100);
+        }*/
 
         if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.SHOW_BACKPACK_PREVIEW) &&
                 main.getConfigValues().isEnabled(Feature.MAKE_BACKPACK_INVENTORIES_COLORED) && lowerChestInventory.hasCustomName()) {

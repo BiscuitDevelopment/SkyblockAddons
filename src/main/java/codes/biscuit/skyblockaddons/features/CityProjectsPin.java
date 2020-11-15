@@ -33,11 +33,10 @@ public class CityProjectsPin {
      * The CityProjectsPin instance
      */
     @Getter private static final CityProjectsPin instance = new CityProjectsPin();
-    Project dummyProject;
     public Project pin;
+    Project dummyProject;
 
-    public Project getDummyProject()
-    {
+    public Project getDummyProject() {
         if (dummyProject != null)
             return dummyProject;
         dummyProject = new Project();
@@ -75,36 +74,13 @@ public class CityProjectsPin {
         return dummyProject;
     }
 
-    /*private static String readAll(Reader rd) throws IOException {
-        StringBuilder sb = new StringBuilder();
-        int cp;
-        while ((cp = rd.read()) != -1) {
-            sb.append((char) cp);
-        }
-        return sb.toString();
-    }
-
-    public static JSONObject readJsonFromUrl(String url) throws IOException, JSONException {
-        InputStream is = new URL(url).openStream();
-        try {
-            BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
-            String jsonText = readAll(rd);
-            JSONObject json = new JSONObject(jsonText);
-            return json;
-        } finally {
-            is.close();
-        }
-    }*/
-
     public void pinProject(IInventory inv) {
-        pin = new Project(inv);
-    }
-
-    /**
-     * Refresh the current pin (must be in menu), so doesn't re-download item data
-     */
-    public void refreshPin() {
-
+        Project project = new Project(inv);
+        if (pin != null && pin.name.equalsIgnoreCase(project.name)) {
+            pin = null;
+            return;
+        }
+        pin = project;
     }
 
     // Please don't change this biscuit ;-;
@@ -114,6 +90,7 @@ public class CityProjectsPin {
      */
     public class Project {
 
+        // Must match colours too, since the Confirm Contribution menu does too, if you change it change both
         public String name;
         public ArrayList<Contribute> contribs;
 
@@ -178,8 +155,6 @@ public class CityProjectsPin {
                     if (itemStack.getTagCompound() == null || itemStack.getTagCompound().getCompoundTag("display") == null || itemStack.getTagCompound().getCompoundTag("display").getTagList("Lore", 8) == null)
                         continue;
                     NBTTagList loreNbt = itemStack.getTagCompound().getCompoundTag("display").getTagList("Lore", 8);
-                    //System.out.println(loreNbt.get(0).toString());
-                    //System.out.println(loreNbt.get(0).toString().startsWith("§8Project Component #"));
                     if (loreNbt.get(0).toString().startsWith("\"§8Project Component #")) {
                         //int pos = Integer.parseInt(loreNbt.get(0).toString().substring("§8Project Component #".length(), loreNbt.get(0).toString().length()-1));
                         Contribute contribute = new Contribute();

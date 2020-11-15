@@ -50,8 +50,7 @@ public class ChromaManager {
         if (currentHSB[2] < 0.3) { // Keep shadows as shadows
             return main.getUtils().getColorWithAlpha(Color.HSBtoRGB(newHue, currentHSB[1], currentHSB[2]), alpha);
         } else {
-            return 1;
-            //return main.getUtils().getColorWithAlpha(Color.HSBtoRGB(newHue, defaultColorHSB[1], defaultColorHSB[2]), alpha);
+            return main.getUtils().getColorWithAlpha(Color.HSBtoRGB(newHue, defaultColorHSB[1], defaultColorHSB[2]), alpha);
         }
     }
 

@@ -1533,11 +1533,11 @@ public class RenderListener {
         main.getUtils().drawTextWithStyle(project.name, x, y, color);
         y += lineHeight + spacer;
         for (CityProjectsPin.Contribute cont : project.contribs) {
-            main.getUtils().drawTextWithStyle(" " + cont.name + (cont.completed ? " §2§l✓" : ""), x, y, color);
+            main.getUtils().drawTextWithStyle("  " + cont.name + (cont.completed ? " §2§l✓" : ""), x, y, color);
             y += lineHeight + spacer;
             if (!cont.completed)
                 for (CityProjectsPin.Component comp : cont.components) {
-                    main.getUtils().drawTextWithStyle("  " + comp.name + " " + (comp.current >= comp.req ? "§2" : "§c")
+                    main.getUtils().drawTextWithStyle("    " + comp.name + " " + (comp.current >= comp.req ? "§2" : "§c")
                             + comp.current + "§f/§2" + comp.req, x, y, color);
                     y += lineHeight + spacer;
                 }

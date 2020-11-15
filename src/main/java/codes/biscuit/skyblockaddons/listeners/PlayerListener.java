@@ -981,6 +981,22 @@ public class PlayerListener {
                 }
             }
 
+            if (main.getConfigValues().isEnabled(Feature.CITY_PROJECTS_PIN))
+            {
+                GuiScreen screen = Minecraft.getMinecraft().currentScreen;
+                if (screen instanceof GuiChest && ((GuiChest) screen).lowerChestInventory.hasCustomName()
+                        && ((GuiChest) screen).lowerChestInventory.getDisplayName().getUnformattedText().startsWith("Project - ")) {
+                    if (e.toolTip.get(1).equalsIgnoreCase("§5§o§8City Project"))
+                    {
+                        CityProjectsPin.Project pin = CityProjectsPin.getInstance().pin;
+                        if (pin == null || !e.toolTip.get(0).contains(pin.name))
+                        e.toolTip.add(++insertAt, "§a§lClick to Pin!");
+                        else
+                            e.toolTip.add(++insertAt, "§c§lClick to Unpin!");
+                    }
+                }
+            }
+
             // Append Skyblock Item ID to end of tooltip if in developer mode
             if (main.isDevMode() && e.showAdvancedItemTooltips) {
                 String itemId = ItemUtils.getSkyBlockItemID(e.itemStack);

@@ -40,8 +40,6 @@ public class GuiScreenListener {
             if (GuiContainer.class.isAssignableFrom(currentScreen.getClass())) {
                 Slot currentSlot = ((GuiContainer) currentScreen).getSlotUnderMouse();
 
-                CityProjectsPin.getInstance().pinProject(currentSlot.inventory);
-
                 if (currentSlot != null && currentSlot.getHasStack()) {
                     DevUtils.copyNBTTagToClipboard(currentSlot.getStack().serializeNBT(),
                             ColorCode.GREEN + "Item data was copied to clipboard!");
