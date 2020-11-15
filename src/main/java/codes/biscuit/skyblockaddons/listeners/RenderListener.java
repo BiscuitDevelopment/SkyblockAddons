@@ -731,16 +731,20 @@ public class RenderListener {
             int difference = (int) (nextFarmEvent.getTimeInMillis() - System.currentTimeMillis());
             int minutes = difference / 60000;
             int seconds = (int) Math.round((double) (difference % 60000) / 1000);
-            StringBuilder timestamp = new StringBuilder();
-            if (minutes < 10) {
-                timestamp.append("0");
+            if (minutes <= 40) {
+                StringBuilder timestamp = new StringBuilder();
+                if (minutes < 10) {
+                    timestamp.append("0");
+                }
+                timestamp.append(minutes).append(":");
+                if (seconds < 10) {
+                    timestamp.append("0");
+                }
+                timestamp.append(seconds);
+                text = timestamp.toString();
+            } else{
+                text = "ACTIVE";
             }
-            timestamp.append(minutes).append(":");
-            if (seconds < 10) {
-                timestamp.append("0");
-            }
-            timestamp.append(seconds);
-            text = timestamp.toString();
 
         } else if (feature == Feature.MAGMA_BOSS_TIMER) {
             StringBuilder magmaBuilder = new StringBuilder();
