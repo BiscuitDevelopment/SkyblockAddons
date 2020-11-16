@@ -307,14 +307,14 @@
     "sba.slayer.bossRequired": "You need to select a boss! Please choose %bosses%",
     "sba.slayer.statRequired": "You need to select a stat. Press tab for options.",
     "sba.slayer.numberRequired": "You need to add the number you want.",
-    "sba.slayer.killsSet": "Kills for slayer %boss% was set to %number%.",
+    "sba.slayer.killsSet": "%boss% Slayer의 킬 숫자가 %number% 로 바뀌었습니다",
     "sba.slayer.statSet": "Statistic %stat% for slayer %boss% was set to %number%.",
-    "sba.slayer.invalidBoss": "\"%input%\" is not a valid statistic!",
-    "sba.slayer.invalidStat": "\"%input%\" is not a valid boss!",
+    "sba.slayer.invalidBoss": "\"%input%\"은 유효한 스탯이 아닙니다!",
+    "sba.slayer.invalidStat": "\"%input%\"은 유효한 보스가 아닙니다!",
     "sba.toggleActionBarLogging": "§e(Dev) §7액션 바 메시지 기록 켜기/끄기",
     "sba.toggleActionBarLogging.disabled": "Action bar messages will no longer be logged.",
-    "sba.toggleActionBarLogging.enabled": "Action bar messages will now be logged.",
-    "sba.wrongUsage.generic": "Wrong usage!",
+    "sba.toggleActionBarLogging.enabled": "이제 액션 바의 메시지들이 기록됩니다.",
+    "sba.wrongUsage.generic": "잘못된 사용법입니다!",
     "sba.wrongUsage.subCommandNotFound": "The sub-command \"%sub-command%\" was not found."
   },
   "keyBindings": {
@@ -364,6 +364,6 @@
     "redClawEgg": "Red Claw Egg",
     "overfluxCapacitor": "Overflux Capacitor",
     "coutureRune": "Couture Rune",
-    "bossesKilled": "Bosses Killed"
+    "bossesKilled": "죽인 보스"
   }
 }
