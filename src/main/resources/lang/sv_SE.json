@@ -19,7 +19,7 @@
     "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
     "backpackStyle": "Backpack Style: %style%",
     "backpackStyles": {
-      "regular": "Regular",
+      "regular": "Vanlig",
       "compact": "Kompakt"
     },
     "showBackpackPreview": "Show Backpack Preview",
