@@ -295,7 +295,7 @@
     "sba.help.set.zealotCounter.totalZealots": "Łączna liczba zabitych zealotów",
     "sba.help.set.zealotCounter.zealots": "Zealoty zabite od ostatniego wyrzucenia oka przywołującego",
     "sba.help.slayer": "Ustaw manualnie statystki Slayera, naciśnij tab, aby zobaczyć argumenty",
-    "sba.help.slayer.boss": "Slayer bosowie: \"Zombie\", \"Pająk\" lub \"Wilk\"",
+    "sba.help.slayer.boss": "Slayer boss: \"Zombie\", \"Spider\", or \"Wolf\"",
     "sba.help.slayer.number": "Numer, do którego chcesz ustawić statystykę",
     "sba.help.slayer.stat": "Statystyki slayera do zmiany, mogą być \"zabiciami\" lub nazwą zdobytego przedmiotu sformatowana w taki sposób: \"REVENANT_FLESH\"",
     "sba.set.zealotCounter": "Ręcznie ustaw Twoje liczniki Zealotów",

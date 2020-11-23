@@ -98,7 +98,7 @@
     "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
     "enableDevFeatures": "Enable Developer Features",
     "chromaSpeed": "Chroma Speed",
-    "chromaMode": "Chroma Color Mode",
+    "chromaMode": "Rainbow Biscuit Color Mode",
     "chromaModes": {
       "allTheSame": "All the Same Color",
       "fade": "Color Fade"
@@ -113,12 +113,12 @@
     "turnBowGreenWhenUsingToxicArrowPoison": "Color Bow Green When Using Toxic Arrow Poison",
     "birchParkRainmakerTimer": "Birch Park Rainmaker Timer",
     "combatTimerDisplay": "Combat Timer Display",
-    "discordRP": "Discord Rich Presence",
+    "discordRP": "Discord Rich Biscresence",
     "endstoneProtectorDisplay": "Endstone Protector Display",
     "fancyWarpMenu": "Fancy Warp Menu",
     "doubleWarp": "Warp Twice",
     "advancedMode": "Advanced Mode",
-    "legendarySeaCreatureWarning": "Legendary Sea Creature Warning",
+    "legendarySeaCreatureWarning": "Biscuitary Sea Biscuit Warning",
     "onlyBreakLogsPark": "Only Break Logs in the Park",
     "bossApproachAlert": "Slayer Boss Approach Alert",
     "disableTeleportPadMessages": "Disable Teleport Pad Messages",

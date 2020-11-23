@@ -169,7 +169,7 @@
     "skillProgressBar": "Skill Progress Bar",
     "showSalvageEssencesCounter": "Show Salvage Essences Counter",
     "disableMortMessages": "Disable Mort Messages",
-    "disableBossMessages": "Disable Boss Messages",
+    "disableBossMessages": "Inaktivera bossmeddelanden",
     "hideOtherPlayersPresents": "Dölj andra spelares presenter",
     "easierPresentOpening": "Open Presents Easier",
     "showSwordKills": "Show Sword Kills"
@@ -178,7 +178,7 @@
     "enchants": "Förtrollningar",
     "reforges": "Reforges",
     "dropConfirmation": "Släpp föremålet igen för att bekräfta!",
-    "magmaBossWarning": "Magma Cube Boss!",
+    "magmaBossWarning": "Magmakubboss!",
     "fullInventory": "Fullt förråd!",
     "labymod": "Labymod Users: Hide Food, Armor, and Health Bar, is incompatible.",
     "minionCannotReach": "A %type% minion cannot reach and has stopped spawning!",
