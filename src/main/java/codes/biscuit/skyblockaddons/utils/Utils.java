@@ -24,6 +24,7 @@ import lombok.Setter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.MapItemRenderer;
 import net.minecraft.client.multiplayer.WorldClient;
+import net.minecraft.client.network.NetHandlerPlayClient;
 import net.minecraft.client.network.NetworkPlayerInfo;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
@@ -379,20 +380,15 @@ public class Utils {
                         slayerBossAlive = true;
                     }
 
-                    Map<String, DungeonPlayer> dungeonPlayers = main.getDungeonUtils().getPlayers();
                     if (inDungeon) {
-                        DungeonPlayer dungeonPlayer = DungeonPlayer.fromScoreboardLine(strippedColored);
-                        if (dungeonPlayer != null) {
-                            if (dungeonPlayers.containsKey(dungeonPlayer.getName())) {
-                                dungeonPlayers.get(dungeonPlayer.getName()).updateStatsFromOther(dungeonPlayer);
-                            } else {
-                                dungeonPlayers.put(dungeonPlayer.getName(), dungeonPlayer);
-                            }
+                        try {
+                            main.getDungeonUtils().updatePlayer(strippedColored);
+                        } catch (NumberFormatException e) {
+                            logger.error(Translations.getMessage("dungeonPlayerHealthNotInteger", strippedColored), e);
                         }
-                    } else {
-                        dungeonPlayers.clear();
                     }
                 }
+
                 currentDate = SkyblockDate.parse(dateString, timeString);
             }
         }
@@ -808,7 +804,7 @@ public class Utils {
                     result.write(buffer, 0, length);
                 }
                 String dataString = result.toString("UTF-8");
-                main.getConfigValues().setLanguageConfig(new JsonParser().parse(dataString).getAsJsonObject());
+                main.getConfigValues().setLanguageConfig(JsonParser.parseString(dataString).getAsJsonObject());
                 fileStream.close();
             }
         } catch (JsonParseException | IllegalStateException | IOException ex) {
@@ -1249,5 +1245,21 @@ public class Utils {
         float scale = (float) Math.sqrt(mat.m00 * mat.m00 + mat.m01 * mat.m01 + mat.m02 * mat.m02);
 
         return new float[] {x, y, z, scale};
+    }
+
+    public boolean isPlayerListInfoEnabled() {
+        NetHandlerPlayClient netHandlerPlayClient = Minecraft.getMinecraft().getNetHandler();
+        List<NetworkPlayerInfo> networkPlayerInfoList = netHandlerPlayClient.getPlayerInfoMap().stream().limit(10)
+                .collect(Collectors.toList());
+
+        for (NetworkPlayerInfo networkPlayerInfo: networkPlayerInfoList) {
+            String username = networkPlayerInfo.getGameProfile().getName();
+
+            if (username.startsWith("!")) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

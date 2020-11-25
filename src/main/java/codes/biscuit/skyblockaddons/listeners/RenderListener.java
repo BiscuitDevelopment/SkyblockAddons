@@ -905,7 +905,7 @@ public class RenderListener {
                 if (!main.getUtils().isInDungeon()) {
                     return;
                 } else {
-                    deaths = main.getDungeonUtils().getDeathCounter().getDeaths();
+                    deaths = main.getDungeonUtils().getDeathCounter().getCount();
 
                     if (deaths == 0) {
                         return;
@@ -1660,8 +1660,6 @@ public class RenderListener {
                 y += 8;
                 ChromaManager.doneRenderingText();
             }
-        } else {
-
         }
     }
 

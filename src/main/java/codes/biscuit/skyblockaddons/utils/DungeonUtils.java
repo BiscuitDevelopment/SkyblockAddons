@@ -7,6 +7,8 @@ import codes.biscuit.skyblockaddons.core.EssenceType;
 import codes.biscuit.skyblockaddons.features.DungeonDeathCounter;
 import lombok.Getter;
 import lombok.Setter;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.network.NetworkPlayerInfo;
 
 import java.util.EnumMap;
 import java.util.HashMap;
@@ -24,6 +26,7 @@ public class DungeonUtils {
     private static final Pattern PATTERN_BONUS_ESSENCE = Pattern.compile("^§.+?[^You] .+?found a .+?(Wither|Spider|Undead|Dragon|Gold|Diamond|Ice) Essence.+?");
     private static final Pattern PATTERN_SALVAGE_ESSENCES = Pattern.compile("§.§.\\+([0-9])+? §.§.(Wither|Spider|Undead|Dragon|Gold|Diamond|Ice) Essence!+");
     private static final Pattern PATTERN_SECRETS = Pattern.compile("§7([0-9]+)/([0-9]+) Secrets");
+    private static final Pattern PATTERN_PLAYER_LINE = Pattern.compile("^§.\\[(?<classLetter>.)] (?<name>[\\w§]+) (?:§.)*?§(?<healthColor>.)(?<health>[\\w]+)(?:§c❤)?");
 
     /** The last dungeon server the player played on */
     @Getter @Setter private String lastServerId;
@@ -58,6 +61,16 @@ public class DungeonUtils {
         collectedEssences.clear();
         players.clear();
         deathCounter.reset();
+    }
+
+    /**
+     * Returns the {@code DungeonPlayer} object for the player with the given username.
+     *
+     * @param userName the player's username
+     * @return the {@code DungeonPlayer} object for the player with the given username
+     */
+    public DungeonPlayer getDungeonPlayer(String userName) {
+        return players.get(userName);
     }
 
     /**
@@ -159,6 +172,52 @@ public class DungeonUtils {
             int amount = Integer.parseInt(matcher.group(1));
 
             collectedEssences.put(essenceType, collectedEssences.getOrDefault(essenceType, 0) + amount);
+        }
+    }
+
+    /**
+     * This method parses dungeon player stats displayed on the scoreboard sidebar and stores them as {@code DungeonPlayer}
+     * objects. It first determines if the given line represents a dungeon player's stats. If so, it then parses all the
+     * stats from the line. Finally, it creates a new {@code DungeonPlayer} object containing the parsed stats or updates
+     * an existing {@code DungeonPlayer} object with the parsed stats (if one already exists for the player whose stats
+     * are shown in the line).
+     */
+    public void updatePlayer(String scoreboardLine) {
+        Matcher matcher = PATTERN_PLAYER_LINE.matcher(scoreboardLine);
+
+        if (matcher.matches()) {
+            String name = TextUtils.stripColor(matcher.group("name"));
+            DungeonClass dungeonClass = DungeonClass.fromFirstLetter(matcher.group("classLetter").charAt(0));
+            ColorCode healthColor = ColorCode.getByChar(matcher.group("healthColor").charAt(0));
+            String healthText = matcher.group("health");
+            int health;
+
+            if (healthText.equals("DEAD")) {
+                health = 0;
+            } else {
+                health = Integer.parseInt(healthText);
+            }
+
+            for (DungeonPlayer player: players.values()) {
+                if (player.getName().startsWith(name)) {
+                    player.setHealthColor(healthColor);
+
+                    if (player.getHealth() > 0 && health == 0) {
+                        deathCounter.incrementAlternate();
+                    }
+
+                    player.setHealth(health);
+                    return;
+                }
+            }
+
+            for (NetworkPlayerInfo networkPlayerInfo: Minecraft.getMinecraft().getNetHandler().getPlayerInfoMap()) {
+                String profileName = networkPlayerInfo.getGameProfile().getName();
+
+                if (profileName.startsWith(name)) {
+                    players.put(profileName, new DungeonPlayer(profileName, dungeonClass, healthColor, health));
+                }
+            }
         }
     }
 }
