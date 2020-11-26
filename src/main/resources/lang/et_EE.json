@@ -155,7 +155,7 @@
     "dragonStatsTracker": "Draakonite jälgija",
     "skillActionsLeftUntilNextLevel": "Näita mitu tegevust on jäänud järgimise tasemeni",
     "hideWhenNotInCrypts": "Peida Revenant 'ide quest, kui sa ei ole Crypt 'is",
-    "hideWhenNotInSpidersDen": "Hide When Not in the Spider's Den/Doing Tarantula Quest",
+    "hideWhenNotInSpidersDen": "Peida Tarantula 'te quest, kui sa ei ole Spider's Den 'is",
     "hideWhenNotInCastle": "Peida Sven 'ide quest, kui sa ei ole Castle 'is",
     "dungeonDeathCounter": "Dungeon 'is surmade loendi",
     "showPersonalCompactorPreview": "Näita Personal Compactor 'i eelvaadet",
@@ -219,7 +219,7 @@
     "rescaleFeatures": "Taasta funktsioonide algne suurus",
     "resizeBars": "Taasta baar 'ide algne suurus",
     "showColorIcons": "Näita värvi ikoone",
-    "enableFeatureSnapping": "Enable Feature Snapping",
+    "enableFeatureSnapping": "Võimalda funktsioonide napsamine",
     "stage": "Etapp %stage%",
     "switchedSlots": "Sa vahetasid ennast just lukustatud pesast või väärtuslikust esemest. Palun oota veidi enne kui midagi välja viskad!",
     "clickToOpenLink": "Kliki, et avada link!",
@@ -266,7 +266,7 @@
     "titleSvens": "Sven Quest",
     "descriptionSvens": "Näitab, et sa teed Sven quest 'i.",
     "titleTarantula": "Tarantula Quest",
-    "descriptionTarantula": "Shows that you are doing a Tarantula quest."
+    "descriptionTarantula": "Näitab, et sa teed Tarantula quest 'i."
   },
   "commandUsage": {
     "sba": "Ava peamenüü",
