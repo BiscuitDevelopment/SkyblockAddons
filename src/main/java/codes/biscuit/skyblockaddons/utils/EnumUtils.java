@@ -328,7 +328,8 @@ public class EnumUtils {
         CARPENTRY("Carpentry", Item.getItemFromBlock(Blocks.crafting_table)),
         RUNECRAFTING("Runecrafting", Items.magma_cream),
         TAMING("Taming", Items.spawn_egg),
-        DUNGEONEERING("Dungeoneering", Item.getItemFromBlock(Blocks.deadbush));
+        DUNGEONEERING("Dungeoneering", Item.getItemFromBlock(Blocks.deadbush)),
+        SOCIAL("Social", Items.emerald);
 
         private String skillName;
         @Getter private ItemStack item;
