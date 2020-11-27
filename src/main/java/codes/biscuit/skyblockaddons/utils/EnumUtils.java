@@ -2,6 +2,7 @@ package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.Message;
+import codes.biscuit.skyblockaddons.core.Translations;
 import lombok.Getter;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -211,23 +212,34 @@ public class EnumUtils {
         COLOUR_BY_RARITY(SETTING_COLOR_BY_RARITY, -1),
         SHOW_PLAYER_HEADS_ON_MAP(SETTING_SHOW_PLAYER_HEAD_ON_MAP, 106),
         SHOW_GLOWING_ITEMS_ON_ISLAND(SETTING_SHOW_GLOWING_ITEMS_ON_ISLAND, 109),
-        EXPANDED(SETTING_EXPANDED, -1),
+        SKILL_ACTIONS_LEFT_UNTIL_NEXT_LEVEL(SETTING_SKILL_ACTIONS_LEFT_UNTIL_NEXT_LEVEL, 115),
         HIDE_WHEN_NOT_IN_CRYPTS(SETTING_HIDE_WHEN_NOT_IN_CRYPTS, 133),
         HIDE_WHEN_NOT_IN_SPIDERS_DEN(SETTING_HIDE_WHEN_NOT_IN_SPIDERS_DEN, 134),
         HIDE_WHEN_NOT_IN_CASTLE(SETTING_HIDE_WHEN_NOT_IN_CASTLE, 135),
         ENABLE_PERSONAL_COMPACTOR_PREVIEW(SETTING_SHOW_PERSONAL_COMPACTOR_PREVIEW, 110),
 
-        DISCORD_RP_STATE(null, 0),
-        DISCORD_RP_DETAILS(null, 0),
+        SHOW_SKILL_PERCENTAGE_INSTEAD_OF_XP("settings.showSkillPercentageInstead", 144),
+        SHOW_SKILL_XP_GAINED("settings.showSkillXPGained", 145),
+        SHOW_SALVAGE_ESSENCES_COUNTER("settings.showSalvageEssencesCounter", 146),
+
+        DISCORD_RP_STATE((Message) null, 0),
+        DISCORD_RP_DETAILS((Message) null, 0),
         ;
 
-        @Getter private Message message;
+        private Message message;
         private int featureEquivalent;
+        private String messagePath;
 
         FeatureSetting(Message message, int featureEquivalent) {
             this.message = message;
             this.featureEquivalent = featureEquivalent;
         }
+
+        FeatureSetting(String messagePath, int featureEquivalent) {
+            this.messagePath = messagePath;
+            this.featureEquivalent = featureEquivalent;
+        }
+
 
         public Feature getFeatureEquivalent() {
             if (featureEquivalent == -1) return null;
@@ -239,9 +251,16 @@ public class EnumUtils {
             }
             return null;
         }
+
+        public String getMessage(String... variables) {
+            if (messagePath != null) {
+                return Translations.getMessage(messagePath, (Object[]) variables);
+            }
+
+            return message.getMessage(variables);
+        }
     }
 
-    @SuppressWarnings("deprecation")
     public enum FeatureCredit {
         // If you make a feature, feel free to add your name here with an associated website of your choice.
 
@@ -264,9 +283,13 @@ public class EnumUtils {
         ANTONIO32A("Antonio32A", "github.com/Antonio32A", Feature.ONLY_BREAK_LOGS_PARK),
         CHARZARD("Charzard4261", "github.com/Charzard4261", Feature.DISABLE_TELEPORT_PAD_MESSAGES, Feature.BAIT_LIST, Feature.SHOW_BASE_STAT_BOOST_PERCENTAGE,
                  Feature.SHOW_ITEM_DUNGEON_FLOOR, Feature.SHOW_BASE_STAT_BOOST_PERCENTAGE,  Feature.SHOW_RARITY_UPGRADED, Feature.REVENANT_SLAYER_TRACKER,
-                Feature.TARANTULA_SLAYER_TRACKER, Feature.SVEN_SLAYER_TRACKER, Feature.DRAGON_STATS_TRACKER, Feature.SHOW_PERSONAL_COMPACTOR_PREVIEW, Feature.SHOW_EXPERTISE_KILLS),
-        IHDEVELOPER("iHDeveloper", "github.com/iHDeveloper", Feature.SHOW_DUNGEON_MILESTONE, Feature.DUNGEONS_COLLECTED_ESSENCES_DISPLAY, Feature.SHOW_DUNGEON_TEAMMATE_NAME_OVERLAY, Feature.DUNGEONS_SECRETS_DISPLAY),
-        TIRELESS_TRAVELER("TirelessTraveler", "github.com/ILikePlayingGames", Feature.DUNGEON_DEATH_COUNTER);
+                Feature.TARANTULA_SLAYER_TRACKER, Feature.SVEN_SLAYER_TRACKER, Feature.DRAGON_STATS_TRACKER, Feature.SHOW_PERSONAL_COMPACTOR_PREVIEW, Feature.SHOW_EXPERTISE_KILLS,
+                Feature.STOP_BONZO_STAFF_SOUNDS, Feature.DISABLE_MORT_MESSAGES, Feature.DISABLE_BOSS_MESSAGES),
+        IHDEVELOPER("iHDeveloper", "github.com/iHDeveloper", Feature.SHOW_DUNGEON_MILESTONE, Feature.DUNGEONS_COLLECTED_ESSENCES_DISPLAY, Feature.SHOW_DUNGEON_TEAMMATE_NAME_OVERLAY,
+                Feature.DUNGEONS_SECRETS_DISPLAY, Feature.SHOW_SALVAGE_ESSENCES_COUNTER, Feature.SHOW_SWORD_KILLS),
+        TIRELESS_TRAVELER("TirelessTraveler", "github.com/ILikePlayingGames", Feature.DUNGEON_DEATH_COUNTER),
+        KAASBROODJU("kaasbroodju", "github.com/kaasbroodju", Feature.SKILL_PROGRESS_BAR, Feature.SHOW_SKILL_PERCENTAGE_INSTEAD_OF_XP, Feature.SHOW_SKILL_XP_GAINED),
+        PHOUBE("Phoube", "github.com/Phoube", Feature.HIDE_OTHER_PLAYERS_PRESENTS, Feature.EASIER_PRESENT_OPENING);
 
         private Set<Feature> features;
         private String author;

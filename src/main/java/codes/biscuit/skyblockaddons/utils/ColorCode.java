@@ -1,6 +1,6 @@
 package codes.biscuit.skyblockaddons.utils;
 
-import com.google.common.base.Preconditions;
+import codes.biscuit.skyblockaddons.SkyblockAddons;
 import org.apache.commons.lang3.StringUtils;
 
 import java.awt.*;
@@ -38,7 +38,7 @@ public enum ColorCode {
 	private boolean isFormat;
 	private String jsonName;
 	private String toString;
-	private Color color;
+	private int color;
 
 	ColorCode(char code) {
 		this(code, -1);
@@ -65,7 +65,7 @@ public enum ColorCode {
 		this.isFormat = isFormat;
 		this.jsonName = jsonName;
 		this.toString = new String(new char[] { COLOR_CHAR, code });
-		this.color = (this.isColor() ? new Color(rgb) : null);
+		this.color = rgb;
 	}
 
     /**
@@ -87,25 +87,20 @@ public enum ColorCode {
 		return this.code;
 	}
 
-	public Color getColor() {
-		Preconditions.checkArgument(this.isColor(), "Format has no color!");
-		return this.color;
+	public Color getColorObject() {
+		return new Color(this.color);
 	}
 
-	public Color getColor(float alpha) {
-		return this.getColor((int)alpha);
-	}
-
-	public Color getColor(int alpha) {
-		return new Color(this.color.getRed(), this.color.getGreen(), this.color.getBlue(), alpha);
+	public int getColor(int alpha) {
+		return SkyblockAddons.getInstance().getUtils().getColorWithAlpha(this.color, alpha);
 	}
 
 	public String getJsonName() {
 		return StringUtils.isEmpty(this.jsonName) ? this.name().toLowerCase() : this.jsonName;
 	}
 
-	public int getRGB() {
-		return this.getColor().getRGB();
+	public int getColor() {
+		return color;
 	}
 
 	public boolean isColor() {

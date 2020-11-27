@@ -68,7 +68,7 @@ public class ButtonLocation extends ButtonFeature {
         if (hovered) {
             boxAlpha = 120;
         }
-        int boxColor = ColorCode.GRAY.getColor(boxAlpha).getRGB();
+        int boxColor = ColorCode.GRAY.getColor(boxAlpha);
         main.getUtils().drawRect(boxXOne, boxYOne, boxXTwo, boxYTwo, boxColor);
 
         this.boxXOne = boxXOne;

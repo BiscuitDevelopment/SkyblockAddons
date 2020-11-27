@@ -9,6 +9,8 @@ import java.awt.*;
 
 public class ChromaManager {
 
+    private static SkyblockAddons main = SkyblockAddons.getInstance();
+
     @Getter private static boolean coloringTextChroma;
     private static float featureScale;
 
@@ -30,11 +32,11 @@ public class ChromaManager {
         }
     }
 
-    public static int getChromaColor(float x, float y) {
-        return getChromaColor(x, y, defaultColorHSB);
+    public static int getChromaColor(float x, float y, int alpha) {
+        return getChromaColor(x, y, defaultColorHSB, alpha);
     }
 
-    public static int getChromaColor(float x, float y, float[] currentHSB) {
+    public static int getChromaColor(float x, float y, float[] currentHSB, int alpha) {
         x *= featureScale;
         y *= featureScale;
 
@@ -46,9 +48,9 @@ public class ChromaManager {
         float newHue = (x / 4F * chromaWidth + y / 4F * chromaWidth - ticks * chromaSpeed) % 1;
 
         if (currentHSB[2] < 0.3) { // Keep shadows as shadows
-            return Color.HSBtoRGB(newHue, currentHSB[1], currentHSB[2]);
+            return main.getUtils().getColorWithAlpha(Color.HSBtoRGB(newHue, currentHSB[1], currentHSB[2]), alpha);
         } else {
-            return Color.HSBtoRGB(newHue, defaultColorHSB[1], defaultColorHSB[2]);
+            return main.getUtils().getColorWithAlpha(Color.HSBtoRGB(newHue, defaultColorHSB[1], defaultColorHSB[2]), alpha);
         }
     }
 

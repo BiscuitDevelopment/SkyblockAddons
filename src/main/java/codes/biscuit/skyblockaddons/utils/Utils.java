@@ -741,7 +741,7 @@ public class Utils {
     }
 
     public int getColorWithAlpha(int color, int alpha) {
-        return color + ((alpha << 24) & 0xFF000000);
+        return (alpha << 24) | (color & 0x00FFFFFF);
     }
 
     public void drawModalRectWithCustomSizedTexture(float x, float y, float u, float v, float width, float height, float textureWidth, float textureHeight) {
@@ -827,7 +827,7 @@ public class Utils {
     }
 
     public void posChromaColor(WorldRenderer worldRenderer, double x, double y) {
-        int color = ChromaManager.getChromaColor((float) x, (float) y);
+        int color = ChromaManager.getChromaColor((float) x, (float) y, 255);
         float f3 = (float) (color >> 24 & 255) / 255.0F;
         float f = (float) (color >> 16 & 255) / 255.0F;
         float f1 = (float) (color & 255) / 255.0F;

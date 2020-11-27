@@ -157,6 +157,14 @@ public class GuiChestHook {
     public static void drawScreen(int guiLeft, int guiTop) {
         InventoryType inventoryType = SkyblockAddons.getInstance().getInventoryUtils().updateInventoryType();
 
+        if (inventoryType == InventoryType.SALVAGING) {
+            int ySize = 222 - 108 + 6 * 18;
+            float x = guiLeft - 69 - 5;
+            float y = guiTop + ySize / 2F - 72 / 2F;
+
+            SkyblockAddons.getInstance().getRenderListener().drawCollectedEssences(x, y, false, false);
+        }
+
         if (textFieldMatch != null && (inventoryType == InventoryType.ENCHANTMENT_TABLE ||
                 inventoryType== InventoryType.BASIC_REFORGING || inventoryType == InventoryType.BASIC_ACCESSORY_BAG_REFORGING)) {
             Minecraft mc = Minecraft.getMinecraft();
@@ -192,12 +200,12 @@ public class GuiChestHook {
 
             textFieldMatch.drawTextBox();
             if (StringUtils.isEmpty(textFieldMatch.getText())) {
-                mc.fontRendererObj.drawString(inclusionExample, x+4, guiTop + 86, ColorCode.DARK_GRAY.getRGB());
+                mc.fontRendererObj.drawString(inclusionExample, x+4, guiTop + 86, ColorCode.DARK_GRAY.getColor());
             }
 
             textFieldExclusions.drawTextBox();
             if (StringUtils.isEmpty(textFieldExclusions.getText())) {
-                mc.fontRendererObj.drawString(exclusionExample, x+4, guiTop + 126, ColorCode.DARK_GRAY.getRGB());
+                mc.fontRendererObj.drawString(exclusionExample, x+4, guiTop + 126, ColorCode.DARK_GRAY.getColor());
             }
         }
     }
@@ -446,9 +454,9 @@ public class GuiChestHook {
                             if (matcher.matches()) {
                                 String enchantment = matcher.group("enchantment");
 
-                                int color = ColorCode.YELLOW.getRGB();
+                                int color = ColorCode.YELLOW.getColor();
                                 if (!main.getUtils().getEnchantmentMatches().isEmpty() && main.getUtils().enchantReforgeMatches(enchantment)) {
-                                    color = ColorCode.RED.getRGB();
+                                    color = ColorCode.RED.getColor();
                                 }
 
                                 boolean expandLeft = false;
@@ -515,9 +523,9 @@ public class GuiChestHook {
                         }
 
                         if (reforge != null) {
-                            int color = ColorCode.YELLOW.getRGB();
+                            int color = ColorCode.YELLOW.getColor();
                             if (!main.getUtils().getEnchantmentMatches().isEmpty() && main.getUtils().enchantReforgeMatches(reforge)) {
-                                color = ColorCode.RED.getRGB();
+                                color = ColorCode.RED.getColor();
                             }
 
                             int x = slot.xDisplayPosition;

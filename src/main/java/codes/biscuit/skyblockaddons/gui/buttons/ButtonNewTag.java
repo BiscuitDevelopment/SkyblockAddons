@@ -17,8 +17,8 @@ public class ButtonNewTag extends GuiButton {
     @Override
     public void drawButton(Minecraft mc, int mouseX, int mouseY) {
 
-        drawRect(xPosition, yPosition, xPosition+width, yPosition+height, ColorCode.RED.getRGB());
-        mc.fontRendererObj.drawString(displayString, xPosition+4, yPosition+2, ColorCode.WHITE.getRGB());
+        drawRect(xPosition, yPosition, xPosition+width, yPosition+height, ColorCode.RED.getColor());
+        mc.fontRendererObj.drawString(displayString, xPosition+4, yPosition+2, ColorCode.WHITE.getColor());
     }
 
     @Override

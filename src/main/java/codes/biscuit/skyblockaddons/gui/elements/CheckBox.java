@@ -73,7 +73,7 @@ public class CheckBox {
         GlStateManager.pushMatrix();
         GlStateManager.scale(scale, scale, 1);
 
-        int color = value ? ColorCode.WHITE.getRGB() : ColorCode.GRAY.getRGB();
+        int color = value ? ColorCode.WHITE.getColor() : ColorCode.GRAY.getColor();
         SkyblockAddons.getInstance().getUtils().drawTextWithStyle(text, scaledX + Math.round(size * 1.5f / scale), scaledY + (size / 2), color);
 
         GlStateManager.disableDepth();

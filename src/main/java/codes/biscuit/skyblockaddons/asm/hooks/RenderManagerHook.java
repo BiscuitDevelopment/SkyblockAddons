@@ -5,6 +5,7 @@ import codes.biscuit.skyblockaddons.asm.utils.ReturnValue;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.Location;
 import codes.biscuit.skyblockaddons.core.npc.NPCUtils;
+import codes.biscuit.skyblockaddons.features.JerryPresent;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.client.particle.EntityFX;
@@ -44,6 +45,12 @@ public class RenderManagerHook {
                             !NPCUtils.isNPC(entityIn) && entityIn.getDistanceSqToEntity(mc.thePlayer) > HIDE_RADIUS_SQUARED) {
                         returnValue.cancel();
                     }
+                }
+            }
+            if (main.getConfigValues().isEnabled(Feature.HIDE_OTHER_PLAYERS_PRESENTS)) {
+                JerryPresent present = JerryPresent.getJerryPresents().get(entityIn.getUniqueID());
+                if (present != null && present.shouldHide()) {
+                    returnValue.cancel();
                 }
             }
         }

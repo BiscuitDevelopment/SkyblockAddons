@@ -4,6 +4,7 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.asm.utils.ReturnValue;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.npc.NPCUtils;
+import codes.biscuit.skyblockaddons.features.JerryPresent;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.client.gui.GuiScreen;
@@ -39,8 +40,16 @@ public class EntityRendererHook {
             list.removeIf(listEntity -> listEntity instanceof EntityItemFrame &&
                     (((EntityItemFrame)listEntity).getDisplayedItem() != null || Minecraft.getMinecraft().thePlayer.getHeldItem() == null));
         }
+
         if (!main.getUtils().isInDungeon() && main.getConfigValues().isEnabled(Feature.HIDE_PLAYERS_NEAR_NPCS)) {
             list.removeIf(entity -> entity instanceof EntityOtherPlayerMP && !NPCUtils.isNPC(entity) && NPCUtils.isNearNPC(entity));
+        }
+
+        if (main.getConfigValues().isEnabled(Feature.EASIER_PRESENT_OPENING)) {
+            list.removeIf(entity -> {
+                JerryPresent jerryPresent = JerryPresent.getJerryPresents().get(entity.getUniqueID());
+                return jerryPresent != null && (!jerryPresent.isForPlayer() || !jerryPresent.getUpperDisplay().equals(entity.getUniqueID()));
+            });
         }
     }
 
