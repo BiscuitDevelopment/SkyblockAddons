@@ -54,34 +54,34 @@ public class HealingCircleManager {
                     continue;
                 }
 
-                GlStateManager.pushMatrix();
-                GL11.glNormal3f(0.0F, 1.0F, 0.0F);
-
-                GlStateManager.disableLighting();
-                GlStateManager.depthMask(false);
-                GlStateManager.enableDepth();
-                GlStateManager.enableBlend();
-                GlStateManager.depthFunc(GL11.GL_LEQUAL);
-                GlStateManager.disableCull();
-                GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
-                GlStateManager.enableAlpha();
-                GlStateManager.disableTexture2D();
-
-                int color = main.getConfigValues().getColor(Feature.SHOW_HEALING_CIRCLE_WALL, (int) (255 * 0.2F));
-                ColorUtils.bindColor(color);
                 Point2D.Double circleCenter = healingCircle.getCircleCenter();
                 if (circleCenter != null && !Double.isNaN(circleCenter.getX()) && !Double.isNaN(circleCenter.getY())) {
-                    main.getUtils().drawCylinder(circleCenter.getX(), 0, circleCenter.getY(), HealingCircle.DIAMETER / 2F, 255, partialTicks);
-                }
+                    GlStateManager.pushMatrix();
+                    GL11.glNormal3f(0.0F, 1.0F, 0.0F);
 
-                GlStateManager.enableCull();
-                GlStateManager.enableTexture2D();
-                GlStateManager.enableDepth();
-                GlStateManager.depthMask(true);
-                GlStateManager.enableLighting();
-                GlStateManager.disableBlend();
-                GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-                GlStateManager.popMatrix();
+                    GlStateManager.disableLighting();
+                    GlStateManager.depthMask(false);
+                    GlStateManager.enableDepth();
+                    GlStateManager.enableBlend();
+                    GlStateManager.depthFunc(GL11.GL_LEQUAL);
+                    GlStateManager.disableCull();
+                    GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
+                    GlStateManager.enableAlpha();
+                    GlStateManager.disableTexture2D();
+
+                    int color = main.getConfigValues().getColor(Feature.SHOW_HEALING_CIRCLE_WALL, (int) (255 * 0.2F));
+                    ColorUtils.bindColor(color);
+                    main.getUtils().drawCylinder(circleCenter.getX(), 0, circleCenter.getY(), HealingCircle.DIAMETER / 2F, 255, partialTicks);
+
+                    GlStateManager.enableCull();
+                    GlStateManager.enableTexture2D();
+                    GlStateManager.enableDepth();
+                    GlStateManager.depthMask(true);
+                    GlStateManager.enableLighting();
+                    GlStateManager.disableBlend();
+                    GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+                    GlStateManager.popMatrix();
+                }
             }
         }
     }

@@ -110,7 +110,7 @@ public class PlayerListener {
     private static final Set<String> BONZO_STAFF_SOUNDS = new HashSet<>(Arrays.asList("fireworks.blast", "fireworks.blast_far",
             "fireworks.twinkle", "fireworks.twinkle_far", "mob.ghast.moan"));
 
-    private static final TreeSet<Integer> EXPERTISE_KILL_TIERS = new TreeSet<>(Arrays.asList(0, 50, 100, 250, 500, 1000, 2500, 5500, 10000, 15000));
+    private static final NavigableSet<Integer> EXPERTISE_KILL_TIERS = new TreeSet<>(Arrays.asList(0, 50, 100, 250, 500, 1000, 2500, 5500, 10000, 15000));
 
     private long lastWorldJoin = -1;
     private long lastBoss = -1;

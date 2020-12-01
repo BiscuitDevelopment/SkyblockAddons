@@ -124,7 +124,7 @@ public class RenderListener {
     @Setter private String cannotReachMobName;
 
     @Setter private long skillFadeOutTime = -1;
-    @Setter private EnumUtils.SkillType skill;
+    @Setter private SkillType skill;
     @Setter private String skillText;
 
     private EnumUtils.GUIType guiToOpen;
@@ -1033,7 +1033,7 @@ public class RenderListener {
             ChromaManager.doneRenderingText();
 
         } else if (feature == Feature.SKILL_DISPLAY && ((skill != null && skill.getItem() != null) || buttonLocation != null)) {
-            renderItem(buttonLocation == null ? skill.getItem() : EnumUtils.SkillType.FARMING.getItem(), x, y);
+            renderItem(buttonLocation == null ? skill.getItem() : SkillType.FARMING.getItem(), x, y);
 
             ChromaManager.renderingText(feature);
             main.getUtils().drawTextWithStyle(text, x + 18, y + 4, color);
