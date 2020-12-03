@@ -82,6 +82,7 @@ public class RenderListener {
     private static final ResourceLocation ENDERMAN_GROUP_ICON = new ResourceLocation("skyblockaddons", "icons/endermangroup.png");
     private static final ResourceLocation MAGMA_BOSS_ICON = new ResourceLocation("skyblockaddons", "icons/magmaboss.png");
     private static final ResourceLocation SIRIUS_ICON = new ResourceLocation("skyblockaddons", "icons/sirius.png");
+    private static final ResourceLocation FARM_ICON = new ResourceLocation("skyblockaddons", "icons/farm.png");
     private static final ResourceLocation SUMMONING_EYE_ICON = new ResourceLocation("skyblockaddons", "icons/summoningeye.png");
     private static final ResourceLocation ZEALOTS_PER_EYE_ICON = new ResourceLocation("skyblockaddons", "icons/zealotspereye.png");
     private static final ResourceLocation SLASH_ICON = new ResourceLocation("skyblockaddons", "icons/slash.png");
@@ -215,7 +216,15 @@ public class RenderListener {
                 drawText(Feature.DARK_AUCTION_TIMER, scale, mc, null);
                 GlStateManager.popMatrix();
             }
+            if (main.getConfigValues().isEnabled(Feature.FARM_EVENT_TIMER) && main.getConfigValues().isEnabled(Feature.SHOW_FARM_EVENT_TIMER_IN_OTHER_GAMES)) {
+                float scale = main.getConfigValues().getGuiScale(Feature.FARM_EVENT_TIMER);
+                GlStateManager.pushMatrix();
+                GlStateManager.scale(scale, scale, 1);
+                drawText(Feature.FARM_EVENT_TIMER, scale, mc, null);
+                GlStateManager.popMatrix();
+            }
         }
+
     }
 
     /**
@@ -712,6 +721,41 @@ public class RenderListener {
             timestamp.append(seconds);
             text = timestamp.toString();
 
+        } else if (feature == Feature.FARM_EVENT_TIMER) { // The timezone of the server, to avoid problems with like timezones that are 30 minutes ahead or whatnot.
+            Calendar nextFarmEvent = Calendar.getInstance(TimeZone.getTimeZone("EST"));
+            if (nextFarmEvent.get(Calendar.MINUTE) >= 15) {
+                nextFarmEvent.add(Calendar.HOUR_OF_DAY, 1);
+            }
+            nextFarmEvent.set(Calendar.MINUTE, 15);
+            nextFarmEvent.set(Calendar.SECOND, 0);
+            int difference = (int) (nextFarmEvent.getTimeInMillis() - System.currentTimeMillis());
+            int minutes = difference / 60000;
+            int seconds = (int) Math.round((double) (difference % 60000) / 1000);
+            if (minutes < 40) {
+                StringBuilder timestamp = new StringBuilder();
+                if (minutes < 10) {
+                    timestamp.append("0");
+                }
+                timestamp.append(minutes).append(":");
+                if (seconds < 10) {
+                    timestamp.append("0");
+                }
+                timestamp.append(seconds);
+                text = timestamp.toString();
+            } else{
+                StringBuilder timestampActive = new StringBuilder();
+                timestampActive.append("Active: ");
+                if (minutes-40 < 10) {
+                    timestampActive.append("0");
+                }
+                timestampActive.append(minutes-40).append(":");
+                if (seconds < 10) {
+                    timestampActive.append("0");
+                }
+                timestampActive.append(seconds);
+                text = timestampActive.toString();
+            }
+
         } else if (feature == Feature.MAGMA_BOSS_TIMER) {
             StringBuilder magmaBuilder = new StringBuilder();
             magmaBuilder.append(main.getPlayerListener().getMagmaAccuracy().getSymbol());
@@ -933,7 +977,7 @@ public class RenderListener {
             width = mc.fontRendererObj.getStringWidth("100");
         }
 
-        if (feature == Feature.MAGMA_BOSS_TIMER || feature == Feature.DARK_AUCTION_TIMER || feature == Feature.ZEALOT_COUNTER || feature == Feature.SKILL_DISPLAY
+        if (feature == Feature.MAGMA_BOSS_TIMER || feature == Feature.DARK_AUCTION_TIMER || feature == Feature.FARM_EVENT_TIMER || feature == Feature.ZEALOT_COUNTER || feature == Feature.SKILL_DISPLAY
                 || feature == Feature.SHOW_TOTAL_ZEALOT_COUNT || feature == Feature.SHOW_SUMMONING_EYE_COUNT || feature == Feature.SHOW_AVERAGE_ZEALOTS_PER_EYE ||
                 feature == Feature.BIRCH_PARK_RAINMAKER_TIMER || feature == Feature.COMBAT_TIMER_DISPLAY || feature == Feature.ENDSTONE_PROTECTOR_DISPLAY ||
                 feature == Feature.DUNGEON_DEATH_COUNTER || feature == Feature.DOLPHIN_PET_TRACKER || feature == Feature.ROCK_PET_TRACKER) {
@@ -978,7 +1022,15 @@ public class RenderListener {
             main.getUtils().drawTextWithStyle(text, x + 18, y + 4, color);
             ChromaManager.doneRenderingText();
 
-        } else if (feature == Feature.MAGMA_BOSS_TIMER) {
+        }
+        else if (feature == Feature.FARM_EVENT_TIMER) {
+            mc.getTextureManager().bindTexture(FARM_ICON);
+            main.getUtils().drawModalRectWithCustomSizedTexture(x, y, 0, 0, 16, 16, 16, 16);
+
+            ChromaManager.renderingText(feature);
+            main.getUtils().drawTextWithStyle(text, x + 18, y + 4, color);
+            ChromaManager.doneRenderingText();
+        }else if (feature == Feature.MAGMA_BOSS_TIMER) {
             mc.getTextureManager().bindTexture(MAGMA_BOSS_ICON);
             main.getUtils().drawModalRectWithCustomSizedTexture(x, y, 0, 0, 16, 16, 16, 16);
 

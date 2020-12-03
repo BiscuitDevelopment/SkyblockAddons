@@ -1,13 +1,13 @@
 {
-  "language": "Pirate English",
+  "language": "English",
   "settings": {
-    "settings": "Yer Settin's",
-    "magmaBossWarning": "Magma Boss Warnin'",
-    "itemDropConfirmation": "Drop Yer Items Twice",
+    "settings": "Settings",
+    "magmaBossWarning": "Magma Boss Warning",
+    "itemDropConfirmation": "Item Drop Confirmation",
     "hideSkeletonHatBones": "Hide Skeleton's Helmet Bones",
     "skeletonHatBonesBar": "Skeleton's Helmet Bones Bar",
-    "hideFoodAndArmor": "Swab Grub n' Armor Bar",
-    "fullInventoryWarning": "Full Inventory Warnin'",
+    "hideFoodAndArmor": "Hide Food & Armor Bar",
+    "fullInventoryWarning": "Full Inventory Warning",
     "repeating": "Repeat Warning",
     "disableEmberRodAbility": "Disable Island Ember Rod",
     "editLocations": "Edit GUI Locations",
@@ -172,7 +172,8 @@
     "disableBossMessages": "Disable Boss Messages",
     "hideOtherPlayersPresents": "Hide Other Player's Presents",
     "easierPresentOpening": "Open Presents Easier",
-    "showSwordKills": "Show Sword Kills"
+    "showSwordKills": "Show Sword Kills",
+    "farmEventTimer": "Farm Event Timer"
   },
   "messages": {
     "enchants": "Enchants",
