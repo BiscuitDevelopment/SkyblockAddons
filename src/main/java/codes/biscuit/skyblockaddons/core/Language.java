@@ -33,7 +33,6 @@ public enum Language {
     CZECH("cs_CZ"),
     DANISH("da_DK"),
     DUTCH("nl_NL"),
-    ESTONIAN("et_EE"),
     FINNISH("fi_FI"),
     GREEK("el_GR"),
     HEBREW("he_IL"),

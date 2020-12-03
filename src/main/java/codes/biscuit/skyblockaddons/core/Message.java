@@ -54,6 +54,7 @@ public enum Message {
     SETTING_HIDE_PLAYERS_IN_LOBBY(MessageObject.SETTING, "hidePlayersInLobby"),
     SETTING_TEXT_STYLE(MessageObject.SETTING, "textStyle"),
     SETTING_DARK_AUCTION_TIMER(MessageObject.SETTING, "darkAuctionTimer"),
+    SETTING_FARM_EVENT_TIMER(MessageObject.SETTING, "farmEventTimer"),
     SETTING_ITEM_PICKUP_LOG(MessageObject.SETTING, "itemPickupLog"),
     SETTING_AVOID_PLACING_ENCHANTED_ITEMS(MessageObject.SETTING, "avoidPlacingEnchantedItems"),
     SETTING_AVOID_BREAKING_STEMS(MessageObject.SETTING, "avoidBreakingStems"),
