@@ -21,8 +21,14 @@ import java.util.function.Supplier;
 public enum DiscordStatus implements ButtonSelect.SelectItem {
 
     NONE(Message.DISCORD_STATUS_NONE_TITLE, Message.DISCORD_STATUS_NONE_DESCRIPTION, () -> null),
-    LOCATION(Message.DISCORD_STATUS_LOCATION_TITLE, Message.DISCORD_STATUS_LOCATION_DESCRIPTION,
-            () -> SkyblockAddons.getInstance().getUtils().getLocation().getScoreboardName()),
+    LOCATION(Message.DISCORD_STATUS_LOCATION_TITLE, Message.DISCORD_STATUS_LOCATION_DESCRIPTION, () -> {
+        String location = SkyblockAddons.getInstance().getUtils().getLocation().getScoreboardName();
+        //This should work assuming this enum is only used for Discord Rich Presence. If it's used for something else, problems may arise.
+        if (location.equals("Your Island")) {
+            return "Private Island";
+        }
+        return location;
+    }),
 
     PURSE(Message.DISCORD_STATUS_PURSE_TITLE, Message.DISCORD_STATUS_PURSE_DESCRIPTION,
             () -> String.format("%s Coins", TextUtils.formatDouble(SkyblockAddons.getInstance().getUtils().getPurse()))),
