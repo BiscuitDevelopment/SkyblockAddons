@@ -173,7 +173,7 @@
     "hideOtherPlayersPresents": "Ocultar Regalos de Otros Jugadores",
     "easierPresentOpening": "Abrir Regalos Más Fácilmente",
     "showSwordKills": "Mostrar Kills con Espada",
-    "compactTabList": "Compact Tab List",
+    "compactTabList": "Lista de Pestañas Compacta",
     "highlightMaxEnchantments": "Highlight Special Enchantments"
   },
   "messages": {
@@ -277,12 +277,12 @@
   "commandUsage": {
     "sba": {
       "base": {
-        "help": "Open the main menu"
+        "help": "Abrir el menú principal"
       },
       "brand": {
-        "help": "§e(Dev) §7Show the server brand",
-        "brandOutput": "Server Brand: %brand%",
-        "notFound": "Server brand not found!"
+        "help": "§e(Des) §7Mostrar la marca del servidor",
+        "brandOutput": "Marca del Servidor: %brand%",
+        "notFound": "¡Marca del servidor no encontrado!"
       },
       "copyBlock": {
         "help": "§e(Dev) §7Copies data about the block that you are looking at"
@@ -290,7 +290,7 @@
       "copyEntity": {
         "help": "§e(Dev) §7Copy NBT data for entities of the given name(s) within the given radius around the player",
         "detailedHelp": {
-          "description": "Copies the NBT data of entities. The types of entities included and the radius around the player to copy data from can be customized. If no options are given, the default settings are used. The default settings are: include players, armor stands, and mobs, and a radius of 3 blocks. If the radius isn't given, the default radius is used.",
+          "description": "Copia los datos NBT de las entidades. Los tipos de entidades incluidas y el radio alrededor del reproductor para copiar los datos se pueden personalizar. Si no se dan opciones, se utilizan las configuraciones predeterminadas. La configuración predeterminada es: incluir jugadores, soportes de armadura y mobs, y un radio de 3 bloques. Si no se proporciona el radio, se utiliza el radio predeterminado.",
           "options": {
             "entityNames": "Names of the types of entities you want to copy data for (e.g. Player,Creeper). Press \"Tab\" after typing the command for a full list. Separate multiple names with commas, names are case-sensitive.",
             "radius": "The radius (in blocks) around the player to copy entity NBT data from"
@@ -298,7 +298,7 @@
         }
       },
       "copySidebar": {
-        "help": "§e(Dev) §7Copy the scoreboard text",
+        "help": "§e(Des) §7Copiar el texto del marcador.",
         "detailedHelp": {
           "description": "Copies the text displayed in the scoreboard's sidebar display slot",
           "options": {
@@ -307,25 +307,25 @@
         }
       },
       "copyTabList": {
-        "help": "§e(Dev) §7Copy the tab list header and footer",
+        "help": "§e(Des) §7Copia el encabezado y pie de la lista de tab",
         "detailedHelp": {
-          "description": "This command copies the header and footer of the tab player list. Formatting codes are included."
+          "description": "Este comando copia el encabezado y pie de la lista de jugadores de tab. Códigos de formato están incluidos."
         }
       },
       "dev": {
-        "help": "Toggle developer mode",
+        "help": "Activar el modo de desarrollador",
         "detailedHelp": {
-          "description": "This command toggles developer mode. This mode is meant for developers Skyblock mods/tools. It provides raw data from the game such as entity and item NBT."
+          "description": "Este comando activa el modo desarrollador. Este modo está pensado para los desarrolladores de mods/tools para Skyblock, por lo que proporciona información cruda del juego como NBT de entidad y objeto."
         },
-        "disabled": "Developer mode disabled!",
-        "enabled": "Developer mode enabled! TIP: Press \"%keyName%\" to copy NBT data!"
+        "disabled": "¡Modo desarrollador desactivado!",
+        "enabled": "¡Modo desarrollador activado! CONSEJO: ¡Pulsa \"%keyName%\" para copiar datos NBT!"
       },
       "edit": {
-        "help": "Edit GUI locations"
+        "help": "Editar Posiciones de GUI"
       },
       "folder": {
-        "help": "Open your mods folder",
-        "error": "An error occurred trying to open the mods folder: %s"
+        "help": "Abrir tu carpeta de Mods",
+        "error": "Ocurrió un error al intentar abrir la carpeta mods: %s"
       },
       "help": {
         "help": "Show this help message. If a command is provided, detailed help about that command is shown.",
@@ -377,7 +377,7 @@
       },
       "errors": {
         "wrongUsage": {
-          "generic": "Wrong usage!",
+          "generic": "¡Uso incorrecto!",
           "subCommandNotFound": "The sub-command \"%sub-command%\" was not found."
         }
       }
