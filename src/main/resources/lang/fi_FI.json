@@ -131,8 +131,8 @@
     "hideSvenPupNametags": "Piilota Svenin koiranpentujen nimet",
     "turnAllFeaturesChroma": "Aseta kaikki ominaisuuden värinvaihtotilaan",
     "dungeonMapDisplay": "Näytä Dungeon-kartta",
-    "rotateMap": "Käännä karttaa pelaajan mukaan",
-    "centerRotationOnYourPlayer": "Keskitä kierto pelaajasi ympärille",
+    "rotateMap": "Rotate The Map With Your Player's Rotation",
+    "centerRotationOnYourPlayer": "Rotate Around Your Player's Marker",
     "mapZoom": "Kartan suurennus",
     "glowingDroppedItems": "Hehkuvat pudotetut esineet",
     "glowingDungeonTeammates": "Hehkuvat Dungeon-tiimikaverit",
@@ -172,7 +172,9 @@
     "disableBossMessages": "Poista Johtajien viestit käytöstä",
     "hideOtherPlayersPresents": "Piilota muiden pelaajien lahjat",
     "easierPresentOpening": "Avaa lahjat helpommin",
-    "showSwordKills": "Näytä miekan tapot"
+    "showSwordKills": "Näytä miekan tapot",
+    "compactTabList": "Compact Tab List",
+    "highlightMaxEnchantments": "Highlight Special Enchantments"
   },
   "messages": {
     "enchants": "Lumoukset",
@@ -238,7 +240,11 @@
     "reforgeExclusionExample": "esim. \"odd, clean\"",
     "actionsLeft": "%number% jäljellä",
     "effectActive": "1 tehoste aktiivisena",
-    "effectsActive": "%number% tehostetta aktiivisena"
+    "effectsActive": "%number% tehostetta aktiivisena",
+    "none": "Ei mikään",
+    "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!",
+    "dungeonDeathRecordError": "Could not record death for %userName%. This dungeon player isn't in the registry.",
+    "dungeonPlayerHealthNotInteger": "Failed to update a dungeon player from the line \"%scoreboardLine%\". Player health was not an integer."
   },
   "discordStatus": {
     "titleNone": "Ei mikään",
@@ -269,53 +275,113 @@
     "descriptionTarantula": "Näyttää, että olet tekemässä Tarantula-tehtävää."
   },
   "commandUsage": {
-    "sba": "Avaa päävalikko",
-    "sba.brand": "§e(Dev) §7Show palvelimen tunnus",
-    "sba.brand.brandOutput": "Palvelimen tunnus: %brand%",
-    "sba.brand.notFound": "Palvelimen tunnusta ei löytynyt!",
-    "sba.copyEntity": "§e(Dev) §7Copy NBT tiedot annetun nim(i)en entiteeteistä valitulla säteellä pelaajasta",
-    "sba.copySidebar": "§e(Dev) §7Copy tulostaulun teksti",
-    "sba.copyTabList": "§e(Dev) §7Copy tab-listan otsikko ja alatunniste",
-    "sba.dev": "Kehittäjätyökalut päälle/pois",
-    "sba.dev.disabled": "Kehittäjätila pois käytöstä!",
-    "sba.dev.enabled": "Kehittäjätila käytössä! Vinkki: Paina \"%keyName%\" kopioidaksesi NBT tiedot!",
-    "sba.edit": "Muokkaa GUI sijainteja",
-    "sba.folder": "Avaa Mods-kansio",
-    "sba.folder.error": "Tapahtui virhe yritettäessä avata mods-kansio: %s",
-    "sba.help": "Näytä tämä apuviesti. Jos komento on saatavilla, lisätietoja siitä komennosta näytetään.",
-    "sba.help.copyEntity": "Kopioi entiteetin NBT tiedot. Sisällytettyjen entiteettien tyypit ja säde pelaajan ympäriltä, josta kopioidaan tiedon voi muokata. Jos mitään valintoja ei ole annettu, oletusasetuksia käytetään. Oletusasetukset ovat: sisällytä pelaajat, haarniskatelineet ja mobit, ja 3 palikan säteen. Jos sädettä ei ole annettu, oletussädettä käytetään.",
-    "sba.help.copyEntity.entityNames": "Entiteettityyppien nimet joista haluat kopioida tiedot (esim. Pelaaja, Creeper). Paina \"Tab\" komennon kirjoittamisen jälkeen saadaksesi koko listan. Erota useat nimet pilkulla, nimet ovat tarkkoja pienistä ja isoista kirjaimista.",
-    "sba.help.copyEntity.radius": "Säde(palikoissa) pelaajan ympäriltä josta kopioidaan NBT tiedot",
-    "sba.help.copySidebar.formatted": "Määrittelee, jos muunnoskoodit sisällytetään kopioitaessa. Voi asetaa \"true\" tai \"false\", oletus on \"false\", jos muuta arvoa ei annettu. Muunnoskoodit kopioidaan jos \"true\".",
-    "sba.help.copyTabList": "Tämä komento kopioi otsikon ja alatuinnisteen tab-pelaajalistasta. Muunnoskoodit sisällytetään.",
-    "sba.help.dev": "Tämä komento vaihtaa kehittäjätilaan ja pois. Tämä tila on tarkoitettu Skyblock modien/työkalujen kehittäjille. Se tarjoaa raakaa tietoa pelistä kuten entiteetit ja esine NBT:t.",
-    "sba.help.help.command": "alakomento päästäkseen yksityiskohtaiseen käyttöön",
-    "sba.help.set.zealotCounter": "Manuaalisesti asettaa määriä Zealot laskuriin.",
-    "sba.help.set.zealotCounter.eyes": "Yhteensä Summoning Eye:ta saatu",
-    "sba.help.set.zealotCounter.totalZealots": "Yhteensä Zealotteja tapettu",
-    "sba.help.set.zealotCounter.zealots": "Zealotteja tapettu viime Summoning Eyen jälkeen",
-    "sba.help.slayer": "Manuaalisesti aseta Slayer tilastot, paina TAB saadaksesi perusteet",
-    "sba.help.slayer.boss": "Slayer-johtaja: \"Zombie\", \"Spider\", tai \"Wolf\"",
-    "sba.help.slayer.number": "Numero, johon tilastot asetetaan",
-    "sba.help.slayer.stat": "Muokattava slayer-tilasto, voi olla \"kills\" tai pudotetun esineen nimi muodossa: \"REVENANT_FLESH\"",
-    "sba.set.zealotCounter": "Manuaalisesti aseta Zealot määräsi",
-    "sba.set.zealotCounter.eyes": "Aseta Summoning Eye:den kokonaismääräksi %number%!",
-    "sba.set.zealotCounter.totalZealots": "Aseta Zealottien kokonaismääräksi %number%!",
-    "sba.set.zealotCounter.wrongUsage": "Virheellinen valinta! Valitse %options%.",
-    "sba.set.zealotCounter.zealots": "Aseta nykyiseksi Zealot määräksi %number%!",
-    "sba.slayer": "Manuaalisesti aseta Slayer-tilastot, paina tab saadaksesi perusteet",
-    "sba.slayer.bossRequired": "Sinun täytyy valita johtaja! Valitse %bosses%",
-    "sba.slayer.statRequired": "Sinun täytyy valita tilasto. Saadaksesi vaihtoehdot paina tab.",
-    "sba.slayer.numberRequired": "Sinun täytyy lisätä haluamasi numero.",
-    "sba.slayer.killsSet": "Tapot %boss% slayerille asetettiin %number%.",
-    "sba.slayer.statSet": "Tilasto %stat% %boss% slayerille asetettiin %number%.",
-    "sba.slayer.invalidBoss": "\"%input%\" ei ole pätevä tilasto!",
-    "sba.slayer.invalidStat": "\"%input%\" ei ole pätevä johtaja!",
-    "sba.toggleActionBarLogging": "§e(Dev) §7Toggle kirjataan lokiin toimintopalkin viestit",
-    "sba.toggleActionBarLogging.disabled": "Toimintopalkin viestejä ei enään kirjata lokiin.",
-    "sba.toggleActionBarLogging.enabled": "Toimintopalkin viestit kirjataan nyt lokiin.",
-    "sba.wrongUsage.generic": "Väärä käyttö!",
-    "sba.wrongUsage.subCommandNotFound": "Alakomentoa %sub-command% ei löydetty."
+    "sba": {
+      "base": {
+        "help": "Open the main menu"
+      },
+      "brand": {
+        "help": "§e(Dev) §7Show the server brand",
+        "brandOutput": "Server Brand: %brand%",
+        "notFound": "Server brand not found!"
+      },
+      "copyBlock": {
+        "help": "§e(Dev) §7Copies data about the block that you are looking at"
+      },
+      "copyEntity": {
+        "help": "§e(Dev) §7Copy NBT data for entities of the given name(s) within the given radius around the player",
+        "detailedHelp": {
+          "description": "Copies the NBT data of entities. The types of entities included and the radius around the player to copy data from can be customized. If no options are given, the default settings are used. The default settings are: include players, armor stands, and mobs, and a radius of 3 blocks. If the radius isn't given, the default radius is used.",
+          "options": {
+            "entityNames": "Names of the types of entities you want to copy data for (e.g. Player,Creeper). Press \"Tab\" after typing the command for a full list. Separate multiple names with commas, names are case-sensitive.",
+            "radius": "The radius (in blocks) around the player to copy entity NBT data from"
+          }
+        }
+      },
+      "copySidebar": {
+        "help": "§e(Dev) §7Copy the scoreboard text",
+        "detailedHelp": {
+          "description": "Copies the text displayed in the scoreboard's sidebar display slot",
+          "options": {
+            "formatted": "Determines if the formatting codes should be included when copying. Can be either \"true\" or \"false\", defaults to \"false\" if no value is provided. Formatting codes are copied if \"true\"."
+          }
+        }
+      },
+      "copyTabList": {
+        "help": "§e(Dev) §7Copy the tab list header and footer",
+        "detailedHelp": {
+          "description": "This command copies the header and footer of the tab player list. Formatting codes are included."
+        }
+      },
+      "dev": {
+        "help": "Toggle developer mode",
+        "detailedHelp": {
+          "description": "This command toggles developer mode. This mode is meant for developers Skyblock mods/tools. It provides raw data from the game such as entity and item NBT."
+        },
+        "disabled": "Developer mode disabled!",
+        "enabled": "Developer mode enabled! TIP: Press \"%keyName%\" to copy NBT data!"
+      },
+      "edit": {
+        "help": "Edit GUI locations"
+      },
+      "folder": {
+        "help": "Open your mods folder",
+        "error": "An error occurred trying to open the mods folder: %s"
+      },
+      "help": {
+        "help": "Show this help message. If a command is provided, detailed help about that command is shown.",
+        "detailedHelp": {
+          "options": {
+            "command": "the sub-command to get detailed usage for"
+          }
+        }
+      },
+      "set": {
+        "zealotCounter": {
+          "help": "Manually set your zealot counts",
+          "detailedHelp": {
+            "description": "Manually sets counts in the zealot counter.",
+            "options": {
+              "eyes": "Lifetime summoning eyes obtained",
+              "totalZealots": "Lifetime zealots killed",
+              "zealots": "Zealots killed since the last summoning eye drop"
+            }
+          },
+          "eyesSet": "Set total summoning eye count to %number%!",
+          "totalZealotsSet": "Set total zealot count to %number%!",
+          "wrongUsage": "Invalid selection! Please choose %options%.",
+          "zealotsSet": "Set current zealot count to %number%!"
+        }
+      },
+      "slayer": {
+        "help": "Manually set slayer stats, press tab for arguments",
+        "detailedHelp": {
+          "description": "Manually set slayer stats, press tab for arguments",
+          "options": {
+            "boss": "Slayer boss: \"Zombie\", \"Spider\", or \"Wolf\"",
+            "number": "Number to set the stat to",
+            "stat": "Slayer stat to change, can be \"kills\" or the name of a dropped item formatted like this: \"REVENANT_FLESH\""
+          }
+        },
+        "bossRequired": "You need to select a boss! Please choose %bosses%",
+        "statRequired": "You need to select a stat. Press tab for options.",
+        "numberRequired": "You need to add the number you want.",
+        "killsSet": "Kills for slayer %boss% was set to %number%.",
+        "statSet": "Statistic %stat% for slayer %boss% was set to %number%.",
+        "invalidBoss": "\"%input%\" is not a valid statistic!",
+        "invalidStat": "\"%input%\" is not a valid boss!"
+      },
+      "toggleActionBarLogging": {
+        "help": "§e(Dev) §7Toggle logging action bar messages",
+        "disabled": "Action bar messages will no longer be logged.",
+        "enabled": "Action bar messages will now be logged."
+      },
+      "errors": {
+        "wrongUsage": {
+          "generic": "Wrong usage!",
+          "subCommandNotFound": "The sub-command \"%sub-command%\" was not found."
+        }
+      }
+    }
   },
   "keyBindings": {
     "developerCopyNBT": "Kopioi NBT"
