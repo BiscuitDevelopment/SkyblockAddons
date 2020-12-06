@@ -131,8 +131,8 @@
     "hideSvenPupNametags": "Κρύψε Sven κουταβάκια oνόματα",
     "turnAllFeaturesChroma": "Ενεργοποίησε όλες τις Λειτουργίες Chroma",
     "dungeonMapDisplay": "Εμφάνιση χάρτη Dungeon",
-    "rotateMap": "Περιστροφή χάρτη στην περιστροφή του παίκτη σας",
-    "centerRotationOnYourPlayer": "Κεντράρισε την Περιστροφή Γύρω από τον Παίκτη Σου",
+    "rotateMap": "Rotate The Map With Your Player's Rotation",
+    "centerRotationOnYourPlayer": "Rotate Around Your Player's Marker",
     "mapZoom": "Ζουμ Χάρτη",
     "glowingDroppedItems": "Λαμπερά αντικείμενα που έπεσαν",
     "glowingDungeonTeammates": "Λαμπερό Dungeon συμπαίκτες",
@@ -172,7 +172,9 @@
     "disableBossMessages": "Απενεργοποίηση Boss μηνύματα",
     "hideOtherPlayersPresents": "Απόκρυψη δώρων άλλων παικτών",
     "easierPresentOpening": "Άνοιγμα δώρων πιο εύκολα",
-    "showSwordKills": "Εμφάνιση Sword Kills"
+    "showSwordKills": "Εμφάνιση Sword Kills",
+    "compactTabList": "Compact Tab List",
+    "highlightMaxEnchantments": "Highlight Special Enchantments"
   },
   "messages": {
     "enchants": "Μαγεύει",
@@ -238,7 +240,11 @@
     "reforgeExclusionExample": "π.χ. \"odd, clean\"",
     "actionsLeft": "%number% Απομένουν",
     "effectActive": "1 Εφέ ενεργό",
-    "effectsActive": "%number% Ενεργά εφέ"
+    "effectsActive": "%number% Ενεργά εφέ",
+    "none": "Τίποτα",
+    "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!",
+    "dungeonDeathRecordError": "Could not record death for %userName%. This dungeon player isn't in the registry.",
+    "dungeonPlayerHealthNotInteger": "Failed to update a dungeon player from the line \"%scoreboardLine%\". Player health was not an integer."
   },
   "discordStatus": {
     "titleNone": "Τίποτα",
@@ -269,53 +275,113 @@
     "descriptionTarantula": "Δείχνει ότι κάνετε μια αποστολή Tarantula."
   },
   "commandUsage": {
-    "sba": "Άνοιγμα κυρίως μενού",
-    "sba.brand": "§e(Dev) §7Εμφάνιση της επωνυμίας του διακομιστή",
-    "sba.brand.brandOutput": "Επωνυμία διακομιστή: %brand%",
-    "sba.brand.notFound": "Η επωνυμία διακομιστή δεν βρέθηκε!",
-    "sba.copyEntity": "§e(Dev) §7Αντιγραφή δεδομένων NBT για οντότητες του συγκεκριμένου ονόματος (ες) εντός της δεδομένης ακτίνας γύρω από τη συσκευή αναπαραγωγής",
-    "sba.copySidebar": "§e(Dev) §7Αντιγράψτε το κείμενο του πίνακα αποτελεσμάτων",
-    "sba.copyTabList": "§e(Dev) §7Αντιγράψτε την κεφαλίδα και το υποσέλιδο της λίστας καρτελών",
-    "sba.dev": "Εναλλαγή λειτουργίας προγραμματιστή",
-    "sba.dev.disabled": "Η λειτουργία προγραμματιστή απενεργοποιήθηκε!",
-    "sba.dev.enabled": "Η λειτουργία προγραμματιστή ενεργοποιήθηκε! ΣΥΜΒΟΥΛΗ: Πατήστε \"%keyName%\" για να αντιγράψετε δεδομένα NBT!",
-    "sba.edit": "Επεξεργάσου τις τοποθεσίες GUI",
-    "sba.folder": "Ανοίξτε το φάκελο mods",
-    "sba.folder.error": "Παρουσιάστηκε σφάλμα κατά το άνοιγμα του φακέλου mods: %s",
-    "sba.help": "Δείχνει αυτό το μήνυμα βοήθειας. Αν μία εντολή δοθεί, θα εμφανιστεί λεπτομερής βοήθεια σχετικά με αυτή την εντολή.",
-    "sba.help.copyEntity": "Αντιγράφει τα δεδομένα NBT οντοτήτων. Οι τύποι των οντοτήτων που περιλαμβάνονται και η ακτίνα γύρω από τη συσκευή αναπαραγωγής για την αντιγραφή δεδομένων από μπορούν να προσαρμοστούν. Εάν δεν δίνονται επιλογές, χρησιμοποιούνται οι προεπιλεγμένες ρυθμίσεις. Οι προεπιλεγμένες ρυθμίσεις είναι: περιλαμβάνουν παίκτες, θωρακισμένες βάσεις και όπλα, και μια ακτίνα 3 μπλοκ. Εάν δεν δοθεί η ακτίνα, χρησιμοποιείται η προεπιλεγμένη ακτίνα.",
-    "sba.help.copyEntity.entityNames": "Ονόματα των τύπων οντοτήτων για τις οποίες θέλετε να αντιγράψετε δεδομένα (π.χ. Player, Creeper). Πατήστε \"Tab\" αφού πληκτρολογήσετε την εντολή για μια πλήρη λίστα. Διαχωρίστε πολλά ονόματα με κόμματα, τα ονόματα είναι case-sensitive.",
-    "sba.help.copyEntity.radius": "Η ακτίνα (σε μπλοκ) γύρω από τον παίκτη για την αντιγραφή δεδομένων NBT οντοτήτων από",
-    "sba.help.copySidebar.formatted": "Καθορίζει εάν οι κωδικοί μορφοποίησης πρέπει να περιλαμβάνονται κατά την αντιγραφή. Μπορεί να είναι \"true\" ή \"false\", από προεπιλογή σε \"false\" εάν δεν παρέχεται τιμή. Οι κωδικοί μορφοποίησης αντιγράφονται εάν είναι \"true\".",
-    "sba.help.copyTabList": "Αυτή η εντολή αντιγράφει την κεφαλίδα και το υποσέλιδο της λίστας του προγράμματος αναπαραγωγής καρτελών. Περιλαμβάνονται κωδικοί μορφοποίησης.",
-    "sba.help.dev": "Αυτή η εντολή εναλλάσσει τη λειτουργία προγραμματιστή. Αυτή η λειτουργία προορίζεται για προγραμματιστές Skyblock mods / εργαλεία. Παρέχει ανεπεξέργαστα δεδομένα από το παιχνίδι, όπως οντότητα και αντικείμενο NBT.",
-    "sba.help.help.command": "η δευτερεύουσα εντολή για να λάβετε λεπτομερή χρήση για",
-    "sba.help.set.zealotCounter": "Μη αυτόματη ρύθμιση μετρήσεων στον μετρητή zealot.",
-    "sba.help.set.zealotCounter.eyes": "Διάρκεια Ζωής summoning eyes αποκτήθηκαν",
-    "sba.help.set.zealotCounter.totalZealots": "Εφ' όρου ζωής σκοτωμοί zealot",
-    "sba.help.set.zealotCounter.zealots": "Τα Zealot που σκοτώθηκαι από το τελευταίο Summoning Eye",
-    "sba.help.slayer": "Μη αυτόματη ρύθμιση στατιστικών στοιχείων slayer, πατήστε tab για ορίσματα",
-    "sba.help.slayer.boss": "Slayer boss: \"Zombie\", \"Spider\", ή \"Wolf\"",
-    "sba.help.slayer.number": "Αριθμός για να ορίσετε το stat σε",
-    "sba.help.slayer.stat": "Το στατιστικό στοιχείο του Slayer για αλλαγή, μπορεί να είναι \"kill\" ή το όνομα ενός αντικειμένου που έχει πέσει με τη μορφή: \"REVENANT_FLESH\"",
-    "sba.set.zealotCounter": "Ορίστε χειροκίνητα τους αριθμούς των zealot σας",
-    "sba.set.zealotCounter.eyes": "Ορίστε τον συνολικό αριθμό summoning eye σε %number%!",
-    "sba.set.zealotCounter.totalZealots": "Ορίστε τον σύνολο αριθμό zealot σε %number%!",
-    "sba.set.zealotCounter.wrongUsage": "Μη έγκυρη επιλογή! Επιλέξτε %options%.",
-    "sba.set.zealotCounter.zealots": "Ορίστε τον τρέχοντα αριθμό zealot σε %number%!",
-    "sba.slayer": "Μη αυτόματη ρύθμιση στατιστικών στοιχείων slayer, πατήστε tab για ορίσματα",
-    "sba.slayer.bossRequired": "Πρέπει να διαλέξεις ένα εξέχων όγκος! Παρακαλώ διάλεξε %bosses%",
-    "sba.slayer.statRequired": "Πρέπει να διαλέξεις ένα στατιστικό. Πάτα tab για επιλογές.",
-    "sba.slayer.numberRequired": "Πρέπει να προσθέσεις τον αριθμό που θέλεις.",
-    "sba.slayer.killsSet": "Σκοτωμοί για slayer %boss% ήταν ρυθμισμένο στο %number%.",
-    "sba.slayer.statSet": "Στατιστικό %stat% για slayer %boss% ήταν ρυθμισμένο στο %number%.",
-    "sba.slayer.invalidBoss": "\"%input%\" δεν είναι έγκυρο στατιστικό!",
-    "sba.slayer.invalidStat": "\"%input%\" δεν είναι έγκυρο boss!",
-    "sba.toggleActionBarLogging": "§e(Dev) §7Καταγραφή μυνημάτων γραμμής ενεργειών",
-    "sba.toggleActionBarLogging.disabled": "Τα μηνύματα της γραμμής ενεργειών δεν θα καταγράφονται πλέον.",
-    "sba.toggleActionBarLogging.enabled": "Τα μηνύματα του Action bar θα καταγράφονται από τώρα.",
-    "sba.wrongUsage.generic": "Λάθος χρήση!",
-    "sba.wrongUsage.subCommandNotFound": "Η υπο-εντολή %sub-command% δεν βρέθηκε."
+    "sba": {
+      "base": {
+        "help": "Open the main menu"
+      },
+      "brand": {
+        "help": "§e(Dev) §7Show the server brand",
+        "brandOutput": "Server Brand: %brand%",
+        "notFound": "Server brand not found!"
+      },
+      "copyBlock": {
+        "help": "§e(Dev) §7Copies data about the block that you are looking at"
+      },
+      "copyEntity": {
+        "help": "§e(Dev) §7Copy NBT data for entities of the given name(s) within the given radius around the player",
+        "detailedHelp": {
+          "description": "Copies the NBT data of entities. The types of entities included and the radius around the player to copy data from can be customized. If no options are given, the default settings are used. The default settings are: include players, armor stands, and mobs, and a radius of 3 blocks. If the radius isn't given, the default radius is used.",
+          "options": {
+            "entityNames": "Names of the types of entities you want to copy data for (e.g. Player,Creeper). Press \"Tab\" after typing the command for a full list. Separate multiple names with commas, names are case-sensitive.",
+            "radius": "The radius (in blocks) around the player to copy entity NBT data from"
+          }
+        }
+      },
+      "copySidebar": {
+        "help": "§e(Dev) §7Copy the scoreboard text",
+        "detailedHelp": {
+          "description": "Copies the text displayed in the scoreboard's sidebar display slot",
+          "options": {
+            "formatted": "Determines if the formatting codes should be included when copying. Can be either \"true\" or \"false\", defaults to \"false\" if no value is provided. Formatting codes are copied if \"true\"."
+          }
+        }
+      },
+      "copyTabList": {
+        "help": "§e(Dev) §7Copy the tab list header and footer",
+        "detailedHelp": {
+          "description": "This command copies the header and footer of the tab player list. Formatting codes are included."
+        }
+      },
+      "dev": {
+        "help": "Toggle developer mode",
+        "detailedHelp": {
+          "description": "This command toggles developer mode. This mode is meant for developers Skyblock mods/tools. It provides raw data from the game such as entity and item NBT."
+        },
+        "disabled": "Developer mode disabled!",
+        "enabled": "Developer mode enabled! TIP: Press \"%keyName%\" to copy NBT data!"
+      },
+      "edit": {
+        "help": "Edit GUI locations"
+      },
+      "folder": {
+        "help": "Open your mods folder",
+        "error": "An error occurred trying to open the mods folder: %s"
+      },
+      "help": {
+        "help": "Show this help message. If a command is provided, detailed help about that command is shown.",
+        "detailedHelp": {
+          "options": {
+            "command": "the sub-command to get detailed usage for"
+          }
+        }
+      },
+      "set": {
+        "zealotCounter": {
+          "help": "Manually set your zealot counts",
+          "detailedHelp": {
+            "description": "Manually sets counts in the zealot counter.",
+            "options": {
+              "eyes": "Lifetime summoning eyes obtained",
+              "totalZealots": "Lifetime zealots killed",
+              "zealots": "Zealots killed since the last summoning eye drop"
+            }
+          },
+          "eyesSet": "Set total summoning eye count to %number%!",
+          "totalZealotsSet": "Set total zealot count to %number%!",
+          "wrongUsage": "Invalid selection! Please choose %options%.",
+          "zealotsSet": "Set current zealot count to %number%!"
+        }
+      },
+      "slayer": {
+        "help": "Manually set slayer stats, press tab for arguments",
+        "detailedHelp": {
+          "description": "Manually set slayer stats, press tab for arguments",
+          "options": {
+            "boss": "Slayer boss: \"Zombie\", \"Spider\", or \"Wolf\"",
+            "number": "Number to set the stat to",
+            "stat": "Slayer stat to change, can be \"kills\" or the name of a dropped item formatted like this: \"REVENANT_FLESH\""
+          }
+        },
+        "bossRequired": "You need to select a boss! Please choose %bosses%",
+        "statRequired": "You need to select a stat. Press tab for options.",
+        "numberRequired": "You need to add the number you want.",
+        "killsSet": "Kills for slayer %boss% was set to %number%.",
+        "statSet": "Statistic %stat% for slayer %boss% was set to %number%.",
+        "invalidBoss": "\"%input%\" is not a valid statistic!",
+        "invalidStat": "\"%input%\" is not a valid boss!"
+      },
+      "toggleActionBarLogging": {
+        "help": "§e(Dev) §7Toggle logging action bar messages",
+        "disabled": "Action bar messages will no longer be logged.",
+        "enabled": "Action bar messages will now be logged."
+      },
+      "errors": {
+        "wrongUsage": {
+          "generic": "Wrong usage!",
+          "subCommandNotFound": "The sub-command \"%sub-command%\" was not found."
+        }
+      }
+    }
   },
   "keyBindings": {
     "developerCopyNBT": "Αντιγραφή NBT"
