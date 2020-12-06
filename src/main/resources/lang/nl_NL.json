@@ -131,8 +131,8 @@
     "hideSvenPupNametags": "Svenpupnaamkaartjes verbergen",
     "turnAllFeaturesChroma": "Alle functies Chroma maken",
     "dungeonMapDisplay": "Dungeonkaartweergave",
-    "rotateMap": "Kaart draaien op basis van spelersoriëntatie",
-    "centerRotationOnYourPlayer": "Rotatie centreren rond je speler",
+    "rotateMap": "Rotate The Map With Your Player's Rotation",
+    "centerRotationOnYourPlayer": "Rotate Around Your Player's Marker",
     "mapZoom": "Kaartzoom",
     "glowingDroppedItems": "Voorwerpen laten gloeien",
     "glowingDungeonTeammates": "Dungeonteamgenoten laten gloeien",
@@ -172,7 +172,9 @@
     "disableBossMessages": "Baasberichten uitschakelen",
     "hideOtherPlayersPresents": "Cadeaus van anderen verbergen",
     "easierPresentOpening": "Cadeaus makkelijker uitpakken",
-    "showSwordKills": "Kills met zwaard tonen"
+    "showSwordKills": "Kills met zwaard tonen",
+    "compactTabList": "Compact Tab List",
+    "highlightMaxEnchantments": "Highlight Special Enchantments"
   },
   "messages": {
     "enchants": "Betoveringen",
@@ -238,7 +240,11 @@
     "reforgeExclusionExample": "bijv. \"odd, clean\"",
     "actionsLeft": "%number% over",
     "effectActive": "1 actief effect",
-    "effectsActive": "%number% actieve effecten"
+    "effectsActive": "%number% actieve effecten",
+    "none": "Geen",
+    "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!",
+    "dungeonDeathRecordError": "Could not record death for %userName%. This dungeon player isn't in the registry.",
+    "dungeonPlayerHealthNotInteger": "Failed to update a dungeon player from the line \"%scoreboardLine%\". Player health was not an integer."
   },
   "discordStatus": {
     "titleNone": "Geen",
@@ -269,53 +275,113 @@
     "descriptionTarantula": "Laat zien dat je een Tarantulaopdracht aan het doen bent."
   },
   "commandUsage": {
-    "sba": "Hoofdmenu openen",
-    "sba.brand": "§e(Dev) §7Het servermerk tonen",
-    "sba.brand.brandOutput": "Servermerk: %brand%",
-    "sba.brand.notFound": "Servermerk niet gevonden!",
-    "sba.copyEntity": "§e(Dev) §7Kopieer NBT-data voor entiteiten met de gegeven na(a)m(en) in de gegeven radius rond de speler",
-    "sba.copySidebar": "§e(Dev) §7Scorebordtekst kopiëren",
-    "sba.copyTabList": "§e(Dev) §7Tablijst-kop- en voettekst kopiëren",
-    "sba.dev": "Ontwikkelaarsmodus in-/uitschakelen",
-    "sba.dev.disabled": "Ontwikkelaarsmodus uitgeschakeld!",
-    "sba.dev.enabled": "Ontwikkelaarsmodus ingeschakeld! TIP: Druk op \"%keyName%\" om NBT-data te kopiëren!",
-    "sba.edit": "GUI-locaties bewerken",
-    "sba.folder": "Modificatiemap openen",
-    "sba.folder.error": "Er is een fout opgetreden bij het openen van de modificatiemap: %s",
-    "sba.help": "Toon dit help bericht. Als een commando is opgegeven, wordt gedetailleerde hulp voor dat commando getoond.",
-    "sba.help.copyEntity": "Kopieert de NBT-data van entiteiten. De gegeven entiteittypen en de radius rond de speler om gegevens van van te kopiëren kunnen worden aangepast. Als geen opties worden gegeven, worden de standaardinstellingen gebruikt. De standaardinstellingen zijn: spelers, harnashouders en mobs includeren, en een radius van %radius% blokken. Als geen radius wordt gegeven, word de standaardradius gebruikt.",
-    "sba.help.copyEntity.entityNames": "Namen van de soorten entiteiten die je wilt kopiëren (bv. Player, Creeper). Druk \"Tab\" na het typen van het commando voor een lijst met alle opties. Scheid meerdere namen met komma's. Namen zijn hoofdlettergevoelig.",
-    "sba.help.copyEntity.radius": "De radius (in blokken) rond de speler om entiteits-NBT-data van te kopiëren",
-    "sba.help.copySidebar.formatted": "Bepaalt of de opmaakcodes moeten worden bijgevoegd in de kopie. Kan \"true\" of \"false\" zijn. De standaard is \"false\". Opmaakcodes worden gekopieerd als je \"true\" hebt geselecteerd.",
-    "sba.help.copyTabList": "Dit commando kopieert de kop- en voettekst van de spelerlijst (tab). Opmaakcodes zijn inbegrepen.",
-    "sba.help.dev": "Dit commando schakelt de ontwikkelaarsmodus in of uit. Deze modus is bedoeld voor Skyblock-mod-/-toolontwikkelaars. Het verstrekt ruwe gegevens uit het spel zoals entiteit- en item-NBT.",
-    "sba.help.help.command": "het subcommando om gedetailleerd gebruik voor te krijgen",
-    "sba.help.set.zealotCounter": "Handmatig aantal voor Zealotteller opgeven.",
-    "sba.help.set.zealotCounter.eyes": "Summoning Eyes verkregen altijd",
-    "sba.help.set.zealotCounter.totalZealots": "Zealots gedood voor altijd",
-    "sba.help.set.zealotCounter.zealots": "Zealots gedood sinds het laatste Summoning Eye",
-    "sba.help.slayer": "Handmatig slayerstatistieken instellen, druk tab voor argumenten",
-    "sba.help.slayer.boss": "Slayerbaas: \"Zombie\", \"Spider\" of \"Wolf\"",
-    "sba.help.slayer.number": "Nummer om het statistiek op in te stellen",
-    "sba.help.slayer.stat": "Slayerstatistiek om te veranderen, kan \"kills\" zijn of de naam van een voorwerp zoals: \"REVENANT_FLESH\"",
-    "sba.set.zealotCounter": "Handmatig aantal voor Zealotteller opgeven",
-    "sba.set.zealotCounter.eyes": "Aantal Summoning Eyes ingesteld op %number%!",
-    "sba.set.zealotCounter.totalZealots": "Aantal Zealots ingesteld op %number%!",
-    "sba.set.zealotCounter.wrongUsage": "Ongeldige selectie! Kies asjeblieft %options%.",
-    "sba.set.zealotCounter.zealots": "Huidige Zealotteller verzet naar %number%!",
-    "sba.slayer": "Handmatig spelerstatistieken instellen, druk tab voor argumenten",
-    "sba.slayer.bossRequired": "Je moet een baas selecteren! Kies alsjeblieft %bosses%",
-    "sba.slayer.statRequired": "Je moet een statistiek selecteren. Druk op Tab voor opties.",
-    "sba.slayer.numberRequired": "Je moet het nummer dat je wilt toevoegen.",
-    "sba.slayer.killsSet": "Kills voor slayer %boss% veranderd naar %number%.",
-    "sba.slayer.statSet": "Statistiek %stat% voor slayer %boss% veranderd naar %number%.",
-    "sba.slayer.invalidBoss": "\"%input%\" is geen geldige statistiek!",
-    "sba.slayer.invalidStat": "\"%input%\" is geen geldige baas!",
-    "sba.toggleActionBarLogging": "§e(Dev) §7Berichten in de actiebalk loggen in-/uitschakelen",
-    "sba.toggleActionBarLogging.disabled": "Berichten in de actiebalk worden nu niet meer gelogd.",
-    "sba.toggleActionBarLogging.enabled": "Berichten in de actiebalk worden nu gelogd.",
-    "sba.wrongUsage.generic": "Verkeerd gebruik!",
-    "sba.wrongUsage.subCommandNotFound": "Het subcommando \"%sub-command%\" is niet gevonden."
+    "sba": {
+      "base": {
+        "help": "Open the main menu"
+      },
+      "brand": {
+        "help": "§e(Dev) §7Show the server brand",
+        "brandOutput": "Server Brand: %brand%",
+        "notFound": "Server brand not found!"
+      },
+      "copyBlock": {
+        "help": "§e(Dev) §7Copies data about the block that you are looking at"
+      },
+      "copyEntity": {
+        "help": "§e(Dev) §7Copy NBT data for entities of the given name(s) within the given radius around the player",
+        "detailedHelp": {
+          "description": "Copies the NBT data of entities. The types of entities included and the radius around the player to copy data from can be customized. If no options are given, the default settings are used. The default settings are: include players, armor stands, and mobs, and a radius of 3 blocks. If the radius isn't given, the default radius is used.",
+          "options": {
+            "entityNames": "Names of the types of entities you want to copy data for (e.g. Player,Creeper). Press \"Tab\" after typing the command for a full list. Separate multiple names with commas, names are case-sensitive.",
+            "radius": "The radius (in blocks) around the player to copy entity NBT data from"
+          }
+        }
+      },
+      "copySidebar": {
+        "help": "§e(Dev) §7Copy the scoreboard text",
+        "detailedHelp": {
+          "description": "Copies the text displayed in the scoreboard's sidebar display slot",
+          "options": {
+            "formatted": "Determines if the formatting codes should be included when copying. Can be either \"true\" or \"false\", defaults to \"false\" if no value is provided. Formatting codes are copied if \"true\"."
+          }
+        }
+      },
+      "copyTabList": {
+        "help": "§e(Dev) §7Copy the tab list header and footer",
+        "detailedHelp": {
+          "description": "This command copies the header and footer of the tab player list. Formatting codes are included."
+        }
+      },
+      "dev": {
+        "help": "Toggle developer mode",
+        "detailedHelp": {
+          "description": "This command toggles developer mode. This mode is meant for developers Skyblock mods/tools. It provides raw data from the game such as entity and item NBT."
+        },
+        "disabled": "Developer mode disabled!",
+        "enabled": "Developer mode enabled! TIP: Press \"%keyName%\" to copy NBT data!"
+      },
+      "edit": {
+        "help": "Edit GUI locations"
+      },
+      "folder": {
+        "help": "Open your mods folder",
+        "error": "An error occurred trying to open the mods folder: %s"
+      },
+      "help": {
+        "help": "Show this help message. If a command is provided, detailed help about that command is shown.",
+        "detailedHelp": {
+          "options": {
+            "command": "the sub-command to get detailed usage for"
+          }
+        }
+      },
+      "set": {
+        "zealotCounter": {
+          "help": "Manually set your zealot counts",
+          "detailedHelp": {
+            "description": "Manually sets counts in the zealot counter.",
+            "options": {
+              "eyes": "Lifetime summoning eyes obtained",
+              "totalZealots": "Lifetime zealots killed",
+              "zealots": "Zealots killed since the last summoning eye drop"
+            }
+          },
+          "eyesSet": "Set total summoning eye count to %number%!",
+          "totalZealotsSet": "Set total zealot count to %number%!",
+          "wrongUsage": "Invalid selection! Please choose %options%.",
+          "zealotsSet": "Set current zealot count to %number%!"
+        }
+      },
+      "slayer": {
+        "help": "Manually set slayer stats, press tab for arguments",
+        "detailedHelp": {
+          "description": "Manually set slayer stats, press tab for arguments",
+          "options": {
+            "boss": "Slayer boss: \"Zombie\", \"Spider\", or \"Wolf\"",
+            "number": "Number to set the stat to",
+            "stat": "Slayer stat to change, can be \"kills\" or the name of a dropped item formatted like this: \"REVENANT_FLESH\""
+          }
+        },
+        "bossRequired": "You need to select a boss! Please choose %bosses%",
+        "statRequired": "You need to select a stat. Press tab for options.",
+        "numberRequired": "You need to add the number you want.",
+        "killsSet": "Kills for slayer %boss% was set to %number%.",
+        "statSet": "Statistic %stat% for slayer %boss% was set to %number%.",
+        "invalidBoss": "\"%input%\" is not a valid statistic!",
+        "invalidStat": "\"%input%\" is not a valid boss!"
+      },
+      "toggleActionBarLogging": {
+        "help": "§e(Dev) §7Toggle logging action bar messages",
+        "disabled": "Action bar messages will no longer be logged.",
+        "enabled": "Action bar messages will now be logged."
+      },
+      "errors": {
+        "wrongUsage": {
+          "generic": "Wrong usage!",
+          "subCommandNotFound": "The sub-command \"%sub-command%\" was not found."
+        }
+      }
+    }
   },
   "keyBindings": {
     "developerCopyNBT": "NBT kopiëren"
