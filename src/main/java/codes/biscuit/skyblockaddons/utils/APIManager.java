@@ -29,9 +29,7 @@ public class APIManager {
     private Logger logger = SkyblockAddons.getLogger();
     private boolean firstSwitch = true;
 
-    public void onProfileSwitch() {
-        String profileName = main.getUtils().getProfileName();
-
+    public void onProfileSwitch(String profileName) {
         if (profileName != null) {
             String uuid = Minecraft.getMinecraft().thePlayer.getUniqueID().toString().replace("-", ""); // No dashes
 

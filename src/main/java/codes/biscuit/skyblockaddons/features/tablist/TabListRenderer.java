@@ -6,6 +6,7 @@ import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiPlayerTabOverlay;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.network.NetworkPlayerInfo;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EnumPlayerModelParts;
 
@@ -94,6 +95,7 @@ public class TabListRenderer {
                         EntityPlayer entityPlayer = mc.theWorld.getPlayerEntityByUUID(networkPlayerInfo.getGameProfile().getId());
 
                         mc.getTextureManager().bindTexture(networkPlayerInfo.getLocationSkin());
+                        GlStateManager.color(1, 1, 1, 1);
                         Gui.drawScaledCustomSizeModalRect(middleX, middleY, 8, 8, 8, 8, 8, 8, 64.0F, 64.0F);
                         if (entityPlayer != null && entityPlayer.isWearing(EnumPlayerModelParts.HAT)) {
                             Gui.drawScaledCustomSizeModalRect(middleX, middleY, 40.0F, 8, 8, 8, 8, 8, 64.0F, 64.0F);

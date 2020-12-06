@@ -23,7 +23,8 @@ public class TabListParser {
 
     public static String HYPIXEL_ADVERTISEMENT_CONTAINS = "HYPIXEL.NET";
 
-    private static Pattern ACTIVE_EFFECTS_PATTERN = Pattern.compile("Active Effects(.|\\n)*?!");
+    private static Pattern ACTIVE_EFFECTS_PATTERN = Pattern.compile("Active Effects(?:§.)*(?:\\n(?:§.)*§7.+)*");
+    private static Pattern COOKIE_BUFF_PATTERN = Pattern.compile("Cookie Buff(?:§.)*(?:\\n(§.)*§7.+)*");
     private static Pattern UPGRADES_PATTERN = Pattern.compile("(?<firstPart>§e[A-Za-z ]+)(?<secondPart> §f[0-9dhms ]+)");
 
     @Getter private static List<RenderColumn> renderColumns;
@@ -102,8 +103,13 @@ public class TabListParser {
 
         String footer = tabList.footer.getFormattedText();
 
-        // Make active effects compact...
+        // Make active effects/booster cookie status compact...
         footer = ACTIVE_EFFECTS_PATTERN.matcher(footer).replaceAll("Active Effects: §r§e" + TabEffectManager.getInstance().getEffectCount());
+
+        Matcher matcher = COOKIE_BUFF_PATTERN.matcher(footer);
+        if (matcher.matches() && matcher.group().contains("Not active!")) {
+            footer = matcher.replaceAll("Cookie Buff \n§r§7Not Active");
+        }
 
         for (String line : new ArrayList<>(Arrays.asList(footer.split("\n")))) {
             // Lets not add the advertisements to the columns
@@ -112,7 +118,7 @@ public class TabListParser {
             }
 
             // Split every upgrade into 2 lines so it's not too long...
-            Matcher matcher = UPGRADES_PATTERN.matcher(TextUtils.stripResets(line));
+            matcher = UPGRADES_PATTERN.matcher(TextUtils.stripResets(line));
             if (matcher.matches()) {
                 // Adds a space in front of any text that is not a sub-title
                 String firstPart = TextUtils.trimWhitespaceAndResets(matcher.group("firstPart"));

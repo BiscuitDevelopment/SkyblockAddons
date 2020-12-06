@@ -5,9 +5,7 @@ import codes.biscuit.skyblockaddons.core.*;
 import codes.biscuit.skyblockaddons.events.SkyblockJoinedEvent;
 import codes.biscuit.skyblockaddons.events.SkyblockLeftEvent;
 import codes.biscuit.skyblockaddons.features.backpacks.ContainerPreview;
-import codes.biscuit.skyblockaddons.features.dungeonmap.MapMarker;
 import codes.biscuit.skyblockaddons.features.itemdrops.ItemDropChecker;
-import codes.biscuit.skyblockaddons.misc.ChromaManager;
 import codes.biscuit.skyblockaddons.misc.scheduler.Scheduler;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
@@ -22,18 +20,11 @@ import com.ibm.icu.text.Bidi;
 import lombok.Getter;
 import lombok.Setter;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.MapItemRenderer;
 import net.minecraft.client.multiplayer.WorldClient;
-import net.minecraft.client.network.NetHandlerPlayClient;
-import net.minecraft.client.network.NetworkPlayerInfo;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.WorldRenderer;
-import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemAxe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.scoreboard.Score;
 import net.minecraft.scoreboard.ScoreObjective;
@@ -41,7 +32,6 @@ import net.minecraft.scoreboard.ScorePlayerTeam;
 import net.minecraft.scoreboard.Scoreboard;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.MathHelper;
-import net.minecraft.util.Vec4b;
 import net.minecraft.world.WorldSettings;
 import net.minecraft.world.WorldType;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
@@ -349,11 +339,11 @@ public class Utils {
                         foundInDungeon = true;
                         inDungeon = true;
 
-                        String lastServer = main.getDungeonUtils().getLastServerId();
+                        String lastServer = main.getDungeonManager().getLastServerId();
                         if (lastServer != null && !lastServer.equals(serverID)) {
-                            main.getDungeonUtils().reset();
+                            main.getDungeonManager().reset();
                         }
-                        main.getDungeonUtils().setLastServerId(serverID);
+                        main.getDungeonManager().setLastServerId(serverID);
                     }
 
                     matcher = SLAYER_TYPE_REGEX.matcher(strippedUnformatted);
@@ -382,7 +372,7 @@ public class Utils {
 
                     if (inDungeon) {
                         try {
-                            main.getDungeonUtils().updatePlayer(strippedColored);
+                            main.getDungeonManager().updateDungeonPlayer(strippedColored);
                         } catch (NumberFormatException e) {
                             logger.error(Translations.getMessage("dungeonPlayerHealthNotInteger", strippedColored), e);
                         }
@@ -610,21 +600,6 @@ public class Utils {
         return calendar.get(Calendar.MONTH) == Calendar.OCTOBER && calendar.get(Calendar.DAY_OF_MONTH) == 31;
     }
 
-    public void drawTextWithStyle(String text, float x, float y, int color) {
-        if (main.getConfigValues().getTextStyle() == EnumUtils.TextStyle.STYLE_TWO) {
-            int colorAlpha = Math.max(ColorUtils.getAlpha(color), 4);
-            int colorBlack = new Color(0, 0, 0, colorAlpha/255F).getRGB();
-            String strippedText = TextUtils.stripColor(text);
-            Minecraft.getMinecraft().fontRendererObj.drawString(strippedText,x+1, y+0, colorBlack, false);
-            Minecraft.getMinecraft().fontRendererObj.drawString(strippedText, x+-1, y+0, colorBlack, false);
-            Minecraft.getMinecraft().fontRendererObj.drawString(strippedText, x+0, y+1, colorBlack, false);
-            Minecraft.getMinecraft().fontRendererObj.drawString(strippedText, x+0, y+-1, colorBlack, false);
-            Minecraft.getMinecraft().fontRendererObj.drawString(text, x+0, y+0, color, false);
-        } else {
-            Minecraft.getMinecraft().fontRendererObj.drawString(text, x+0, y+0, color, true);
-        }
-    }
-
     public int getDefaultBlue(int alpha) {
         return new Color(160, 225, 229, alpha).getRGB();
     }
@@ -664,126 +639,6 @@ public class Utils {
             }
         }
         return false;
-    }
-
-    public void drawModalRectWithCustomSizedTexture(float x, float y, float u, float v, float width, float height, float textureWidth, float textureHeight) {
-        drawModalRectWithCustomSizedTexture(x, y, u, v, width, height, textureWidth, textureHeight, false);
-    }
-
-    /**
-     * Draws a textured rectangle at z = 0. Args: x, y, u, v, width, height, textureWidth, textureHeight
-     */
-    public void drawModalRectWithCustomSizedTexture(float x, float y, float u, float v, float width, float height, float textureWidth, float textureHeight, boolean linearTexture) {
-        if (linearTexture) {
-            GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MIN_FILTER, GL11.GL_LINEAR);
-            GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MAG_FILTER, GL11.GL_LINEAR);
-        }
-
-        float f = 1.0F / textureWidth;
-        float f1 = 1.0F / textureHeight;
-        Tessellator tessellator = Tessellator.getInstance();
-        WorldRenderer worldrenderer = tessellator.getWorldRenderer();
-        worldrenderer.begin(7, DefaultVertexFormats.POSITION_TEX);
-        worldrenderer.pos(x, y + height, 0.0D).tex(u * f, (v + height) * f1).endVertex();
-        worldrenderer.pos(x + width, y + height, 0.0D).tex((u + width) * f, (v + height) * f1).endVertex();
-        worldrenderer.pos(x + width, y, 0.0D).tex((u + width) * f, v * f1).endVertex();
-        worldrenderer.pos(x, y, 0.0D).tex(u * f, v * f1).endVertex();
-        tessellator.draw();
-
-        if (linearTexture) {
-            GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MIN_FILTER, GL11.GL_NEAREST);
-            GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MAG_FILTER, GL11.GL_NEAREST);
-        }
-    }
-
-    public void drawRect(double left, double top, double right, double bottom, int color) {
-        drawRect(left, top, right, bottom, color, false);
-    }
-
-    /**
-     * Draws a solid color rectangle with the specified coordinates and color (ARGB format). Args: x1, y1, x2, y2, color
-     */
-    public void drawRect(double left, double top, double right, double bottom, int color, boolean chroma) {
-        if (left < right) {
-            double i = left;
-            left = right;
-            right = i;
-        }
-
-        if (top < bottom) {
-            double j = top;
-            top = bottom;
-            bottom = j;
-        }
-
-        if (!chroma) {
-            float f3 = (float) (color >> 24 & 255) / 255.0F;
-            float f = (float) (color >> 16 & 255) / 255.0F;
-            float f1 = (float) (color >> 8 & 255) / 255.0F;
-            float f2 = (float) (color & 255) / 255.0F;
-            GlStateManager.color(f, f1, f2, f3);
-        }
-        Tessellator tessellator = Tessellator.getInstance();
-        WorldRenderer worldrenderer = tessellator.getWorldRenderer();
-        GlStateManager.enableBlend();
-        GlStateManager.disableTexture2D();
-        GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
-        if (chroma) {
-            GlStateManager.shadeModel(GL11.GL_SMOOTH);
-            worldrenderer.begin(7, DefaultVertexFormats.POSITION_COLOR);
-            posChromaColor(worldrenderer, left, bottom);
-            posChromaColor(worldrenderer, right, bottom);
-            posChromaColor(worldrenderer, right, top);
-            posChromaColor(worldrenderer, left, top);
-        } else {
-            worldrenderer.begin(7, DefaultVertexFormats.POSITION);
-            worldrenderer.pos(left, bottom, 0.0D).endVertex();
-            worldrenderer.pos(right, bottom, 0.0D).endVertex();
-            worldrenderer.pos(right, top, 0.0D).endVertex();
-            worldrenderer.pos(left, top, 0.0D).endVertex();
-        }
-        tessellator.draw();
-        GlStateManager.enableTexture2D();
-        GlStateManager.disableBlend();
-    }
-
-    public void posChromaColor(WorldRenderer worldRenderer, double x, double y) {
-        int color = ChromaManager.getChromaColor((float) x, (float) y, 255);
-        float f3 = (float) (color >> 24 & 255) / 255.0F;
-        float f = (float) (color >> 16 & 255) / 255.0F;
-        float f1 = (float) (color & 255) / 255.0F;
-        float f2 = (float) (color >> 8 & 255) / 255.0F;
-        worldRenderer.pos(x, y, 0.0D).color(f, f1, f2, f3).endVertex();
-    }
-
-    /**
-     * Draws a solid color rectangle with the specified coordinates and color (ARGB format). Args: x1, y1, x2, y2, color
-     */
-    public void drawRectOutline(float x, float y, int w, int h, int thickness, int color, boolean chroma) {
-        drawSegmentedLineVertical(x-thickness, y, thickness, h, color, chroma);
-        drawSegmentedLineHorizontal(x-thickness, y-thickness, w+thickness*2, thickness, color, chroma);
-        drawSegmentedLineVertical(x+w, y, thickness, h, color, chroma);
-        drawSegmentedLineHorizontal(x-thickness, y+h, w+thickness*2, thickness, color, chroma);
-    }
-
-    public void drawSegmentedLineHorizontal(float x, float y, float w, float h, int color, boolean chroma) {
-        int segments = (int) (w / 10);
-        float length = w / segments;
-
-        for (int segment = 0; segment < segments; segment++) {
-            float start = x + length * segment;
-            drawRect(start, y, start + length, y+h, color, chroma);
-        }
-    }
-
-    public void drawSegmentedLineVertical(float x, float y, float w, float h, int color, boolean chroma) {
-        int segments = (int) (h / 10);
-        float length = h / segments;
-
-        for (int segment = 0; segment < segments; segment++) {
-            float start = y + length * segment;
-            drawRect(x, start, x+w, start + length, color, chroma);
-        }
     }
 
     public void loadLanguageFile(boolean pullOnline) {
@@ -897,11 +752,7 @@ public class Utils {
     }
 
     public boolean isAxe(Item item) {
-        return Items.wooden_axe.equals(item) ||
-                Items.stone_axe.equals(item) ||
-                Items.golden_axe.equals(item) ||
-                Items.iron_axe.equals(item) ||
-                Items.diamond_axe.equals(item);
+        return item instanceof ItemAxe;
     }
 
     private boolean depthEnabled;
@@ -963,270 +814,6 @@ public class Utils {
         return isLoaded;
     }
 
-    private Map<String, Vec4b> savedMapDecorations = new HashMap<>();
-
-    public void drawMapEdited(MapItemRenderer.Instance instance, boolean isScoreSummary, float zoom) {
-        Minecraft mc = Minecraft.getMinecraft();
-        int startX = 0;
-        int startY = 0;
-        Tessellator tessellator = Tessellator.getInstance();
-        WorldRenderer worldrenderer = tessellator.getWorldRenderer();
-        float f = 0.0F;
-        GlStateManager.enableTexture2D();
-        mc.getTextureManager().bindTexture(instance.location);
-        GlStateManager.enableBlend();
-        GlStateManager.tryBlendFuncSeparate(1, 771, 0, 1);
-        worldrenderer.begin(7, DefaultVertexFormats.POSITION_TEX);
-        worldrenderer.pos((float)(startX) + f, (float)(startY + 128) - f, -0.009999999776482582D).tex(0.0D, 1.0D).endVertex();
-        worldrenderer.pos((float)(startX + 128) - f, (float)(startY + 128) - f, -0.009999999776482582D).tex(1.0D, 1.0D).endVertex();
-        worldrenderer.pos((float)(startX + 128) - f, (float)(startY) + f, -0.009999999776482582D).tex(1.0D, 0.0D).endVertex();
-        worldrenderer.pos((float)(startX) + f, (float)(startY) + f, -0.009999999776482582D).tex(0.0D, 0.0D).endVertex();
-        tessellator.draw();
-        GlStateManager.enableAlpha();
-        GlStateManager.disableBlend();
-        mc.getTextureManager().bindTexture(MapItemRenderer.mapIcons);
-        int decorationCount = 0;
-
-        // We don't need to show any markers...
-        if (isScoreSummary) return;
-
-        // Prevent marker flickering...
-        if (!instance.mapData.mapDecorations.isEmpty()) {
-            savedMapDecorations.clear();
-            savedMapDecorations.putAll(instance.mapData.mapDecorations);
-        }
-
-        // Don't add markers that we replaced with smooth client side ones...
-        Set<String> dontAddMarkerNames = new HashSet<>();
-
-        // Add these markers later because they are the smooth client side ones
-        // and should get priority.
-        Set<MapMarker> markersToAdd = new LinkedHashSet<>();
-        Map<String, DungeonPlayer> dungeonPlayers = main.getDungeonUtils().getPlayers();
-        for (EntityPlayer entityPlayer : mc.theWorld.playerEntities) {
-            // We only add smooth markers for us & our teammates
-            if (!dungeonPlayers.containsKey(entityPlayer.getName()) && mc.thePlayer != entityPlayer) {
-                continue;
-            }
-
-            MapMarker mapMarker = new MapMarker(entityPlayer);
-
-            // If this player's marker already exists, lets update the saved one instead
-            if (dungeonPlayers.containsKey(entityPlayer.getName())) {
-                DungeonPlayer dungeonPlayer = dungeonPlayers.get(entityPlayer.getName());
-                if (dungeonPlayer.getMapMarker() == null) {
-                    dungeonPlayer.setMapMarker(mapMarker);
-                } else {
-                    mapMarker = dungeonPlayer.getMapMarker();
-                }
-            }
-
-            // Check if there is a vanilla marker around the same spot as our custom
-            // marker. If so, we probably found the corresponding marker for this player.
-            int duplicates = 0;
-            Map.Entry<String, Vec4b> duplicate = null;
-            for (Map.Entry<String, Vec4b> vec4b : savedMapDecorations.entrySet()) {
-
-                if (vec4b.getValue().func_176110_a() == mapMarker.getIconType() &&
-                        Math.abs(vec4b.getValue().func_176112_b() - mapMarker.getX()) <= 5 &&
-                        Math.abs(vec4b.getValue().func_176113_c() - mapMarker.getZ()) <= 5) {
-                    duplicates++;
-                    duplicate = vec4b;
-                }
-            }
-
-            // However, if we find more than one duplicate marker, we can't be
-            // certain that this we found the player's corresponding marker.
-            if (duplicates == 1) {
-                mapMarker.setMapMarkerName(duplicate.getKey());
-            }
-
-            // For the ones that we replaced, lets make sure we skip the vanilla ones later.
-            if (mapMarker.getMapMarkerName() != null) {
-                dontAddMarkerNames.add(mapMarker.getMapMarkerName());
-            }
-            markersToAdd.add(mapMarker);
-        }
-
-        // The final set of markers that will be used....
-        Set<MapMarker> allMarkers = new LinkedHashSet<>();
-
-        for (Map.Entry<String, Vec4b> vec4b : savedMapDecorations.entrySet()) {
-            // If we replaced this marker with a smooth one OR this is the player's marker, lets skip.
-            if (dontAddMarkerNames.contains(vec4b.getKey()) || vec4b.getValue().func_176110_a() == 1) continue;
-
-            // Check if this marker key is linked to a player
-            DungeonPlayer foundDungeonPlayer = null;
-            boolean linkedToPlayer = false;
-            for (DungeonPlayer dungeonPlayer : dungeonPlayers.values()) {
-                if (dungeonPlayer.getMapMarker() != null && dungeonPlayer.getMapMarker().getMapMarkerName() != null &&
-                        vec4b.getKey().equals(dungeonPlayer.getMapMarker().getMapMarkerName())) {
-                    linkedToPlayer = true;
-                    foundDungeonPlayer = dungeonPlayer;
-                    break;
-                }
-            }
-
-            // Vec4b
-            // a -> Icon Type
-            // b -> X
-            // c -> Z
-            // d -> Icon Direction instance.mapData.mapDecorations.values()
-
-            // If this isn't linked to a player, lets just add the marker normally...
-            if (!linkedToPlayer) {
-                allMarkers.add(new MapMarker(vec4b.getValue().func_176110_a(), vec4b.getValue().func_176112_b(),
-                        vec4b.getValue().func_176113_c(), vec4b.getValue().func_176111_d()));
-            } else {
-                // This marker is linked to a player, lets update that marker's data to the server's
-                MapMarker mapMarker = foundDungeonPlayer.getMapMarker();
-                mapMarker.setX(vec4b.getValue().func_176112_b());
-                mapMarker.setZ(vec4b.getValue().func_176113_c());
-                mapMarker.setRotation(vec4b.getValue().func_176111_d());
-                allMarkers.add(mapMarker);
-            }
-        }
-        // Add the smooth markers from before
-        allMarkers.addAll(markersToAdd);
-
-        // Sort the markers to ensure we are on top & we use the same ordering as the server.
-        LinkedHashSet<MapMarker> sortedMarkers = allMarkers.stream()
-                .sorted((first, second) -> {
-                    boolean firstIsNull = first.getMapMarkerName() == null;
-                    boolean secondIsNull = second.getMapMarkerName() == null;
-
-                    if (first.getIconType() != second.getIconType()) {
-                        return Byte.compare(second.getIconType(), first.getIconType());
-                    }
-
-                    if (firstIsNull && secondIsNull) {
-                        return 0;
-                    } else if (firstIsNull) {
-                        return 1;
-                    } else if (secondIsNull) {
-                        return -1;
-                    }
-
-                    return second.getMapMarkerName().compareTo(first.getMapMarkerName());
-                })
-                .collect(Collectors.toCollection(LinkedHashSet::new));
-
-        for (MapMarker mapMarker : sortedMarkers) {
-            GlStateManager.pushMatrix();
-            GlStateManager.translate((float)startX + mapMarker.getX() / 2.0F + 64.0F, (float)startY + mapMarker.getZ() / 2.0F + 64.0F, -0.02F);
-            GlStateManager.rotate((mapMarker.getRotation() * 360) / 16.0F, 0.0F, 0.0F, 1.0F);
-            GlStateManager.scale(4.0F/zoom, 4.0F/zoom, 3.0F);
-            byte iconType = mapMarker.getIconType();
-            float f1 = (float)(iconType % 4) / 4.0F;
-            float f2 = (float)(iconType / 4) / 4.0F;
-            float f3 = (float)(iconType % 4 + 1) / 4.0F;
-            float f4 = (float)(iconType / 4 + 1) / 4.0F;
-
-            NetworkPlayerInfo markerNetworkPlayerInfo = null;
-            if (main.getConfigValues().isEnabled(Feature.SHOW_PLAYER_HEADS_ON_MAP) && mapMarker.getPlayerName() != null) {
-                for (NetworkPlayerInfo networkPlayerInfo : mc.getNetHandler().getPlayerInfoMap()) {
-                    if (mapMarker.getPlayerName().equals(networkPlayerInfo.getGameProfile().getName())) {
-                        markerNetworkPlayerInfo = networkPlayerInfo;
-                        break;
-                    }
-                }
-            }
-
-            if (markerNetworkPlayerInfo != null) {
-                GlStateManager.rotate(180, 0.0F, 0.0F, 1.0F);
-                drawRect(-1.2, -1.2, 1.2, 1.2, 0xFF000000);
-
-                GlStateManager.color(1, 1, 1, 1);
-
-                if (main.getConfigValues().isEnabled(Feature.SHOW_CRITICAL_DUNGEONS_TEAMMATES) &&
-                        dungeonPlayers.containsKey(mapMarker.getPlayerName())) {
-                    DungeonPlayer dungeonPlayer = dungeonPlayers.get(mapMarker.getPlayerName());
-                    if (dungeonPlayer.isLow()) {
-                        GlStateManager.color(1, 1, 0.5F, 1);
-                    } else if (dungeonPlayer.isCritical()) {
-                        GlStateManager.color(1, 0.5F, 0.5F, 1);
-                    }
-                }
-
-                mc.getTextureManager().bindTexture(markerNetworkPlayerInfo.getLocationSkin());
-                drawScaledCustomSizeModalRect(-1, -1, 8.0F, 8, 8, 8, 2, 2, 64.0F, 64.0F, false);
-                if (mapMarker.isWearingHat()) {
-                    drawScaledCustomSizeModalRect(-1, -1, 40.0F, 8, 8, 8, 2, 2, 64.0F, 64.0F, false);
-                }
-            } else {
-                GlStateManager.translate(-0.125F, 0.125F, 0.0F);
-                mc.getTextureManager().bindTexture(MapItemRenderer.mapIcons);
-                worldrenderer.begin(7, DefaultVertexFormats.POSITION_TEX);
-                float eachDecorationZOffset = -0.001F;
-                worldrenderer.pos(-1.0D, 1.0D, (float)decorationCount * eachDecorationZOffset).tex(f1, f2).endVertex();
-                worldrenderer.pos(1.0D, 1.0D, (float)decorationCount * eachDecorationZOffset).tex(f3, f2).endVertex();
-                worldrenderer.pos(1.0D, -1.0D, (float)decorationCount * eachDecorationZOffset).tex(f3, f4).endVertex();
-                worldrenderer.pos(-1.0D, -1.0D, (float)decorationCount * eachDecorationZOffset).tex(f1, f4).endVertex();
-                tessellator.draw();
-            }
-            GlStateManager.color(1, 1, 1, 1);
-            GlStateManager.popMatrix();
-            ++decorationCount;
-        }
-    }
-
-    public void drawCenteredString(String text, float x, float y, int color) {
-        Minecraft.getMinecraft().fontRendererObj.drawString(text, x - Minecraft.getMinecraft().fontRendererObj.getStringWidth(text) / 2F, y, color, true);
-    }
-
-    public void drawScaledCustomSizeModalRect(float x, float y, float u, float v, float uWidth, float vHeight, float width, float height, float tileWidth, float tileHeight, boolean linearTexture) {
-        if (linearTexture) {
-            GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MIN_FILTER, GL11.GL_LINEAR);
-            GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MAG_FILTER, GL11.GL_LINEAR);
-        }
-
-        float f = 1.0F / tileWidth;
-        float f1 = 1.0F / tileHeight;
-        Tessellator tessellator = Tessellator.getInstance();
-        WorldRenderer worldrenderer = tessellator.getWorldRenderer();
-        worldrenderer.begin(7, DefaultVertexFormats.POSITION_TEX);
-        worldrenderer.pos(x, y + height, 0.0D).tex(u * f, (v + vHeight) * f1).endVertex();
-        worldrenderer.pos(x + width, y + height, 0.0D).tex((u + uWidth) * f, (v + vHeight) * f1).endVertex();
-        worldrenderer.pos(x + width, y, 0.0D).tex((u + uWidth) * f, v * f1).endVertex();
-        worldrenderer.pos(x, y, 0.0D).tex(u * f, v * f1).endVertex();
-        tessellator.draw();
-
-        if (linearTexture) {
-            GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MIN_FILTER, GL11.GL_NEAREST);
-            GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MAG_FILTER, GL11.GL_NEAREST);
-        }
-    }
-
-    public void drawCylinder(double x, double y, double z, float radius, float height, float partialTicks) {
-        Minecraft mc = Minecraft.getMinecraft();
-        Entity renderViewEntity = mc.getRenderViewEntity();
-
-        double viewX = renderViewEntity.prevPosX + (renderViewEntity.posX - renderViewEntity.prevPosX) * (double)partialTicks;
-        double viewY = renderViewEntity.prevPosY + (renderViewEntity.posY - renderViewEntity.prevPosY) * (double)partialTicks;
-        double viewZ = renderViewEntity.prevPosZ + (renderViewEntity.posZ - renderViewEntity.prevPosZ) * (double)partialTicks;
-
-        x -= viewX;
-        y -= viewY;
-        z -= viewZ;
-
-        Tessellator tessellator = Tessellator.getInstance();
-        WorldRenderer worldrenderer = tessellator.getWorldRenderer();
-
-        worldrenderer.begin(GL11.GL_QUAD_STRIP, DefaultVertexFormats.POSITION);
-        float currentAngle = 0;
-        float angleStep = 0.1F;
-        while (currentAngle < 2 * Math.PI) {
-            float xOffset = radius * (float) Math.cos(currentAngle);
-            float zOffset = radius * (float) Math.sin(currentAngle);
-            worldrenderer.pos(x+xOffset, y+height, z+zOffset).endVertex();
-            worldrenderer.pos(x+xOffset, y+0, z+zOffset).endVertex();
-            currentAngle += angleStep;
-        }
-        worldrenderer.pos(x+radius, y+height, z).endVertex();
-        worldrenderer.pos(x+radius, y+0.0, z).endVertex();
-        tessellator.draw();
-    }
-
     public static WorldClient getDummyWorld() {
         return DUMMY_WORLD;
     }
@@ -1247,19 +834,7 @@ public class Utils {
         return new float[] {x, y, z, scale};
     }
 
-    public boolean isPlayerListInfoEnabled() {
-        NetHandlerPlayClient netHandlerPlayClient = Minecraft.getMinecraft().getNetHandler();
-        List<NetworkPlayerInfo> networkPlayerInfoList = netHandlerPlayClient.getPlayerInfoMap().stream().limit(10)
-                .collect(Collectors.toList());
-
-        for (NetworkPlayerInfo networkPlayerInfo: networkPlayerInfoList) {
-            String username = networkPlayerInfo.getGameProfile().getName();
-
-            if (username.startsWith("!")) {
-                return true;
-            }
-        }
-
-        return false;
+    public static EntityPlayer getPlayerFromName(String name) {
+       return Minecraft.getMinecraft().theWorld.getPlayerEntityByName(name);
     }
 }

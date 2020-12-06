@@ -1,25 +1,27 @@
-package codes.biscuit.skyblockaddons.utils;
+package codes.biscuit.skyblockaddons.core.dungeons;
 
-import codes.biscuit.skyblockaddons.core.DungeonClass;
-import codes.biscuit.skyblockaddons.core.DungeonMilestone;
-import codes.biscuit.skyblockaddons.core.DungeonPlayer;
+import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.EssenceType;
-import codes.biscuit.skyblockaddons.features.DungeonDeathCounter;
+import codes.biscuit.skyblockaddons.utils.ColorCode;
+import codes.biscuit.skyblockaddons.utils.TextUtils;
 import lombok.Getter;
 import lombok.Setter;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.network.NetHandlerPlayClient;
 import net.minecraft.client.network.NetworkPlayerInfo;
 
 import java.util.EnumMap;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 /**
  * This class contains a set of utility methods for Skyblock Dungeons.
  */
-public class DungeonUtils {
+public class DungeonManager {
 
     private static final Pattern PATTERN_MILESTONE = Pattern.compile("^.+?(Healer|Tank|Mage|Archer|Berserk) Milestone .+?([❶-❿]).+?§r§.(\\d+)§.§7 .+?");
     private static final Pattern PATTERN_COLLECTED_ESSENCES = Pattern.compile("§.+?(\\d+) (Wither|Spider|Undead|Dragon|Gold|Diamond|Ice) Essence");
@@ -27,6 +29,7 @@ public class DungeonUtils {
     private static final Pattern PATTERN_SALVAGE_ESSENCES = Pattern.compile("§.§.\\+([0-9])+? §.§.(Wither|Spider|Undead|Dragon|Gold|Diamond|Ice) Essence!+");
     private static final Pattern PATTERN_SECRETS = Pattern.compile("§7([0-9]+)/([0-9]+) Secrets");
     private static final Pattern PATTERN_PLAYER_LINE = Pattern.compile("^§.\\[(?<classLetter>.)] (?<name>[\\w§]+) (?:§.)*?§(?<healthColor>.)(?<health>[\\w]+)(?:§c❤)?");
+    private static final Pattern PLAYER_LIST_INFO_DEATHS_PATTERN = Pattern.compile("§r§a§l.+: §r§f\\((?<deaths>\\d)\\)§r");
 
     /** The last dungeon server the player played on */
     @Getter @Setter private String lastServerId;
@@ -46,12 +49,13 @@ public class DungeonUtils {
     /** The maximum number of secrets found in the room */
     @Getter @Setter private int maxSecrets;
 
-    /** The counter for the number of player deaths during a dungeon game */
-    @Getter private final DungeonDeathCounter deathCounter = new DungeonDeathCounter();
-
     private EssenceType lastEssenceType;
     private int lastEssenceAmount;
     private int lastEssenceRepeat;
+
+    private int deaths;
+    private int alternateDeaths;
+    private int playerListInfoDeaths;
 
     /**
      * Clear the dungeon game data. Called by {@link codes.biscuit.skyblockaddons.utils.Utils} each new game
@@ -60,17 +64,19 @@ public class DungeonUtils {
         dungeonMilestone = null;
         collectedEssences.clear();
         players.clear();
-        deathCounter.reset();
+        deaths = 0;
+        alternateDeaths = 0;
+        playerListInfoDeaths = 0;
     }
 
     /**
      * Returns the {@code DungeonPlayer} object for the player with the given username.
      *
-     * @param userName the player's username
+     * @param name the player's username
      * @return the {@code DungeonPlayer} object for the player with the given username
      */
-    public DungeonPlayer getDungeonPlayer(String userName) {
-        return players.get(userName);
+    public DungeonPlayer getDungeonPlayerByName(String name) {
+        return players.get(name);
     }
 
     /**
@@ -96,7 +102,7 @@ public class DungeonUtils {
      *
      * @param message the action bar message to parse essence information from
      */
-    public void parseCollectedEssence(String message) {
+    public void addEssence(String message) {
         Matcher matcher = PATTERN_COLLECTED_ESSENCES.matcher(message);
 
         while (matcher.find()) {
@@ -130,7 +136,7 @@ public class DungeonUtils {
      *
      * @param message the chat message to parse essence information from
      */
-    public void parseBonusEssence(String message) {
+    public void addBonusEssence(String message) {
         Matcher matcher = PATTERN_BONUS_ESSENCE.matcher(message);
 
         if (matcher.matches()) {
@@ -146,7 +152,7 @@ public class DungeonUtils {
      * @param message the action bar message to parse secrets information from
      * @return A message without the secrets information
      */
-    public String parseSecrets(String message) {
+    public String addSecrets(String message) {
         Matcher matcher = PATTERN_SECRETS.matcher(message);
         if (!matcher.find()) {
             secrets = -1;
@@ -164,7 +170,7 @@ public class DungeonUtils {
      *
      * @param message the chat message to parse the obtained essences from
      */
-    public void parseSalvagedEssences(String message) {
+    public void addSalvagedEssences(String message) {
         Matcher matcher = PATTERN_SALVAGE_ESSENCES.matcher(message);
 
         while (matcher.find()) {
@@ -182,7 +188,7 @@ public class DungeonUtils {
      * an existing {@code DungeonPlayer} object with the parsed stats (if one already exists for the player whose stats
      * are shown in the line).
      */
-    public void updatePlayer(String scoreboardLine) {
+    public void updateDungeonPlayer(String scoreboardLine) {
         Matcher matcher = PATTERN_PLAYER_LINE.matcher(scoreboardLine);
 
         if (matcher.matches()) {
@@ -203,7 +209,7 @@ public class DungeonUtils {
                     player.setHealthColor(healthColor);
 
                     if (player.getHealth() > 0 && health == 0) {
-                        deathCounter.incrementAlternate();
+                        this.addAlternateDeath();
                     }
 
                     player.setHealth(health);
@@ -219,5 +225,68 @@ public class DungeonUtils {
                 }
             }
         }
+    }
+
+    /**
+     * Returns the most accurate death count available. If the player has enabled their "Player List Info" setting, the
+     * death count from the tab menu is returned. If that setting isn't enabled, the highest count out of the main counter
+     * and the alternative counter's counts is returned.
+     *
+     * @return the most accurate death count available
+     */
+    public int getDeathCount() {
+        if (SkyblockAddons.getInstance().getDungeonManager().isPlayerListInfoEnabled()) {
+            return playerListInfoDeaths;
+        } else {
+            return Math.max(deaths, alternateDeaths);
+        }
+    }
+
+    /**
+     * Adds one death to the counter
+     */
+    public void addDeath() {
+        deaths++;
+    }
+
+    /**
+     * Adds one death to the alternative counter.
+     */
+    public void addAlternateDeath() {
+        alternateDeaths++;
+    }
+
+    /**
+     * This method updates the death counter with the count from the death counter in the Player List Info display.
+     * If the death counter isn't being shown in the Player List Info display, nothing will be changed.
+     */
+    public void updateDeathsFromPlayerListInfo() {
+        NetHandlerPlayClient netHandlerPlayClient = Minecraft.getMinecraft().getNetHandler();
+        NetworkPlayerInfo deathDisplayPlayerInfo = netHandlerPlayClient.getPlayerInfo("!B-f");
+
+        if (deathDisplayPlayerInfo != null) {
+            String deathDisplayString = deathDisplayPlayerInfo.getDisplayName().getFormattedText();
+            Matcher deathDisplayMatcher = PLAYER_LIST_INFO_DEATHS_PATTERN.matcher(deathDisplayString);
+
+            if (deathDisplayMatcher.matches()) {
+                playerListInfoDeaths = Integer.parseInt(deathDisplayMatcher.group("deaths"));
+            }
+        }
+    }
+
+    public boolean isPlayerListInfoEnabled() {
+        NetHandlerPlayClient netHandlerPlayClient = Minecraft.getMinecraft().getNetHandler();
+        List<NetworkPlayerInfo> networkPlayerInfoList = netHandlerPlayClient.getPlayerInfoMap().stream().limit(10)
+                .collect(Collectors.toList());
+
+        for (NetworkPlayerInfo networkPlayerInfo: networkPlayerInfoList) {
+            String username = networkPlayerInfo.getGameProfile().getName();
+
+            if (username.startsWith("!")) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

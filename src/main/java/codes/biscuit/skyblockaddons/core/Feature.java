@@ -1,6 +1,7 @@
 package codes.biscuit.skyblockaddons.core;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.features.dungeonmap.DungeonMapManager;
 import codes.biscuit.skyblockaddons.gui.buttons.ButtonLocation;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
@@ -314,7 +315,7 @@ public enum Feature {
             } else if(guiFeatureData.getDrawType() == EnumUtils.DrawType.BAIT_LIST_DISPLAY) {
                 main.getRenderListener().drawBaitList(mc, scale, buttonLocation);
             } else if(guiFeatureData.getDrawType() == EnumUtils.DrawType.DUNGEONS_MAP) {
-                main.getRenderListener().drawDungeonsMap(mc, scale, buttonLocation);
+                DungeonMapManager.drawDungeonsMap(mc, scale, buttonLocation);
             } else if(guiFeatureData.getDrawType() == EnumUtils.DrawType.SLAYER_TRACKERS) {
                 main.getRenderListener().drawSlayerTrackers(this, mc, scale, buttonLocation);
             } else if(guiFeatureData.getDrawType() == EnumUtils.DrawType.DRAGON_STATS_TRACKER) {

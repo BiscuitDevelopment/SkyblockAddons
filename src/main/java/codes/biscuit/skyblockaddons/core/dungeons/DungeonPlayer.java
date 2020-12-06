@@ -1,4 +1,4 @@
-package codes.biscuit.skyblockaddons.core;
+package codes.biscuit.skyblockaddons.core.dungeons;
 
 import codes.biscuit.skyblockaddons.features.dungeonmap.MapMarker;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
@@ -7,6 +7,7 @@ import lombok.Setter;
 
 @Getter @Setter
 public class DungeonPlayer {
+
     private String name;
     private DungeonClass dungeonClass;
     private ColorCode healthColor;

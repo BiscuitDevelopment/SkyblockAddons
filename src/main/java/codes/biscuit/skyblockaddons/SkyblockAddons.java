@@ -6,6 +6,7 @@ import codes.biscuit.skyblockaddons.config.PersistentValuesManager;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.Message;
 import codes.biscuit.skyblockaddons.core.OnlineData;
+import codes.biscuit.skyblockaddons.core.dungeons.DungeonManager;
 import codes.biscuit.skyblockaddons.features.discordrpc.DiscordRPCManager;
 import codes.biscuit.skyblockaddons.gui.IslandWarpGui;
 import codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui;
@@ -20,9 +21,11 @@ import codes.biscuit.skyblockaddons.misc.scheduler.Scheduler;
 import codes.biscuit.skyblockaddons.misc.scheduler.SkyblockRunnable;
 import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsTransformer;
 import codes.biscuit.skyblockaddons.utils.*;
+import codes.biscuit.skyblockaddons.utils.gson.GsonInitializableTypeAdapter;
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.InstanceCreator;
 import lombok.Getter;
 import lombok.Setter;
 import net.minecraft.client.Minecraft;
@@ -38,8 +41,13 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.lwjgl.input.Keyboard;
 
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.util.*;
-import java.util.concurrent.*;
+import java.util.concurrent.Executor;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 @Getter
 @Mod(modid = "skyblockaddons", name = "SkyblockAddons", version = "@VERSION@", clientSideOnly = true, acceptedMinecraftVersions = "@MOD_ACCEPTED@")
@@ -50,7 +58,15 @@ public class SkyblockAddons {
     public static String VERSION = "@VERSION@";
 
     @Getter private static SkyblockAddons instance;
-    private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
+    @SuppressWarnings("rawtypes")
+    private static final Gson GSON = new GsonBuilder()
+            .setPrettyPrinting()
+            .registerTypeAdapter(EnumMap.class, (InstanceCreator<EnumMap>) type -> {
+                Type[] types = (((ParameterizedType) type).getActualTypeArguments());
+                return new EnumMap((Class<?>) types[0]);
+            })
+            .registerTypeAdapterFactory(new GsonInitializableTypeAdapter())
+            .create();
 
     private static final Executor THREAD_EXECUTOR = new ThreadPoolExecutor(0, 1, 60L, TimeUnit.SECONDS,
             new LinkedBlockingQueue<>(), new ThreadFactoryBuilder().setNameFormat(SkyblockAddons.MOD_NAME + " - #%d").build());
@@ -67,7 +83,7 @@ public class SkyblockAddons {
     private DiscordRPCManager discordRPCManager;
     private Scheduler scheduler;
     private NewScheduler newScheduler;
-    private DungeonUtils dungeonUtils;
+    private DungeonManager dungeonManager;
 
     private boolean usingLabymod;
     private boolean usingOofModv1;
@@ -87,7 +103,7 @@ public class SkyblockAddons {
         updater = new Updater();
         scheduler = new Scheduler();
         newScheduler = new NewScheduler();
-        dungeonUtils = new DungeonUtils();
+        dungeonManager = new DungeonManager();
         discordRPCManager = new DiscordRPCManager();
     }
 

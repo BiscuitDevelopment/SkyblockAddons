@@ -3,6 +3,7 @@ package codes.biscuit.skyblockaddons.features.healingcircle;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.utils.ColorUtils;
+import codes.biscuit.skyblockaddons.utils.DrawUtils;
 import com.google.common.collect.Sets;
 import lombok.Getter;
 import net.minecraft.client.renderer.GlStateManager;
@@ -71,7 +72,7 @@ public class HealingCircleManager {
 
                     int color = main.getConfigValues().getColor(Feature.SHOW_HEALING_CIRCLE_WALL, (int) (255 * 0.2F));
                     ColorUtils.bindColor(color);
-                    main.getUtils().drawCylinder(circleCenter.getX(), 0, circleCenter.getY(), HealingCircle.DIAMETER / 2F, 255, partialTicks);
+                    DrawUtils.drawCylinderInWorld(circleCenter.getX(), 0, circleCenter.getY(), HealingCircle.DIAMETER / 2F, 255, partialTicks);
 
                     GlStateManager.enableCull();
                     GlStateManager.enableTexture2D();

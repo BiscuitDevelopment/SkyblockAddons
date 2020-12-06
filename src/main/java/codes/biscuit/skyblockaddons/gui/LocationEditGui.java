@@ -8,13 +8,13 @@ import codes.biscuit.skyblockaddons.gui.buttons.ButtonColorWheel;
 import codes.biscuit.skyblockaddons.gui.buttons.ButtonLocation;
 import codes.biscuit.skyblockaddons.gui.buttons.ButtonResize;
 import codes.biscuit.skyblockaddons.gui.buttons.ButtonSolid;
-import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
+import codes.biscuit.skyblockaddons.utils.DrawUtils;
+import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.objects.IntPair;
 import com.google.common.collect.Sets;
 import lombok.Getter;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.ScaledResolution;
@@ -296,7 +296,7 @@ public class LocationEditGui extends GuiScreen {
             if (lastHovered != null && main.getConfigValues().getAnchorPoint(lastHovered) == anchorPoint) {
                 color = ColorCode.YELLOW.getColor(127);
             }
-            Gui.drawRect(x-4, y-4, x+4, y+4, color);
+            DrawUtils.drawRect(x-4, y-4, x+4, y+4, color);
         }
         super.drawScreen(mouseX, mouseY, partialTicks); // Draw buttons.
 
@@ -320,9 +320,9 @@ public class LocationEditGui extends GuiScreen {
                     }
 
                     if ((right-left) == 0.5 || (bottom-top) == 0.5) {
-                        main.getUtils().drawRect(left, top, right, bottom, 0xFF00FF00);
+                        DrawUtils.drawRect(left, top, right, bottom, 0xFF00FF00);
                     } else {
-                        main.getUtils().drawRect(left, top, right, bottom, 0xFFFF0000);
+                        DrawUtils.drawRect(left, top, right, bottom, 0xFFFF0000);
                     }
                 }
             }
@@ -370,7 +370,7 @@ public class LocationEditGui extends GuiScreen {
                             if (thisSnap.getHeight() < SNAPPING_RADIUS) {
                                 if (horizontalSnap == null || thisSnap.getHeight() < horizontalSnap.getHeight()) {
                                     if (main.isDevMode()) {
-                                        main.getUtils().drawRect(snapX - 0.5, 0, snapX + 0.5, mc.displayHeight, 0xFF0000FF);
+                                        DrawUtils.drawRect(snapX - 0.5, 0, snapX + 0.5, mc.displayHeight, 0xFF0000FF);
                                     }
                                     horizontalSnap = thisSnap;
                                 }
@@ -402,7 +402,7 @@ public class LocationEditGui extends GuiScreen {
                             if (thisSnap.getWidth() < SNAPPING_RADIUS) {
                                 if (verticalSnap == null || thisSnap.getWidth() < verticalSnap.getWidth()) {
                                     if (main.isDevMode()) {
-                                        main.getUtils().drawRect(0, snapY - 0.5, mc.displayWidth, snapY + 0.5, 0xFF0000FF);
+                                        DrawUtils.drawRect(0, snapY - 0.5, mc.displayWidth, snapY + 0.5, 0xFF0000FF);
                                     }
                                     verticalSnap = thisSnap;
                                 }

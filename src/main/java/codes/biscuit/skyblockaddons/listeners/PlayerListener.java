@@ -3,6 +3,8 @@ package codes.biscuit.skyblockaddons.listeners;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.asm.hooks.GuiChestHook;
 import codes.biscuit.skyblockaddons.core.*;
+import codes.biscuit.skyblockaddons.core.dungeons.DungeonMilestone;
+import codes.biscuit.skyblockaddons.core.dungeons.DungeonPlayer;
 import codes.biscuit.skyblockaddons.core.npc.NPCUtils;
 import codes.biscuit.skyblockaddons.events.DungeonPlayerReviveEvent;
 import codes.biscuit.skyblockaddons.events.SkyblockPlayerDeathEvent;
@@ -224,11 +226,11 @@ public class PlayerListener {
 
                 if (main.getUtils().isInDungeon()) {
                     if (main.getConfigValues().isEnabled(Feature.DUNGEONS_COLLECTED_ESSENCES_DISPLAY)) {
-                        main.getDungeonUtils().parseCollectedEssence(restMessage);
+                        main.getDungeonManager().addEssence(restMessage);
                     }
 
                     if (main.getConfigValues().isEnabled(Feature.DUNGEONS_SECRETS_DISPLAY)) {
-                        restMessage = main.getDungeonUtils().parseSecrets(restMessage);
+                        restMessage = main.getDungeonManager().addSecrets(restMessage);
                     }
                 }
 
@@ -347,7 +349,7 @@ public class PlayerListener {
                 }
 
                 if (main.getInventoryUtils().getInventoryType() == InventoryType.SALVAGING && main.getConfigValues().isEnabled(Feature.SHOW_SALVAGE_ESSENCES_COUNTER)) {
-                    main.getDungeonUtils().parseSalvagedEssences(formattedText);
+                    main.getDungeonManager().addSalvagedEssences(formattedText);
                 }
 
                 if (main.getUtils().isInDungeon()) {
@@ -388,14 +390,14 @@ public class PlayerListener {
                     }
 
                     if (main.getConfigValues().isEnabled(Feature.SHOW_DUNGEON_MILESTONE)) {
-                        DungeonMilestone dungeonMilestone = main.getDungeonUtils().parseMilestone(formattedText);
+                        DungeonMilestone dungeonMilestone = main.getDungeonManager().parseMilestone(formattedText);
                         if (dungeonMilestone != null) {
-                            main.getDungeonUtils().setDungeonMilestone(dungeonMilestone);
+                            main.getDungeonManager().setDungeonMilestone(dungeonMilestone);
                         }
                     }
 
                     if (main.getConfigValues().isEnabled(Feature.DUNGEONS_COLLECTED_ESSENCES_DISPLAY)) {
-                        main.getDungeonUtils().parseBonusEssence(formattedText);
+                        main.getDungeonManager().addBonusEssence(formattedText);
                     }
                 }
 
@@ -407,20 +409,22 @@ public class PlayerListener {
                     matcher = PROFILE_CHAT_PATTERN.matcher(formattedText);
                     if (matcher.matches()) {
                         String profile = matcher.group(1);
-                        main.getUtils().setProfileName(profile);
 
                         if (!profile.equals(main.getUtils().getProfileName())) {
-                            APIManager.getInstance().onProfileSwitch();
+                            APIManager.getInstance().onProfileSwitch(profile);
                         }
+
+                        main.getUtils().setProfileName(profile);
                     } else {
                         matcher = SWITCH_PROFILE_CHAT_PATTERN.matcher(formattedText);
                         if (matcher.matches()) {
                             String profile = matcher.group(1);
-                            main.getUtils().setProfileName(profile);
 
                             if (!profile.equals(main.getUtils().getProfileName())) {
-                                APIManager.getInstance().onProfileSwitch();
+                                APIManager.getInstance().onProfileSwitch(profile);
                             }
+
+                            main.getUtils().setProfileName(profile);
                         }
                     }
                 }
@@ -525,8 +529,8 @@ public class PlayerListener {
                     }
 
                     if (main.getConfigValues().isEnabled(Feature.DUNGEON_DEATH_COUNTER) && main.getUtils().isInDungeon()
-                            && main.getUtils().isPlayerListInfoEnabled()) {
-                        main.getDungeonUtils().getDeathCounter().updateDeathsFromPlayerListInfo();
+                            && main.getDungeonManager().isPlayerListInfoEnabled()) {
+                        main.getDungeonManager().updateDeathsFromPlayerListInfo();
                     }
                 } else if (timerTick % 5 == 0) { // Check inventory, location, updates, and skeleton helmet every 1/4 second.
                     EntityPlayerSP player = mc.thePlayer;
@@ -1150,7 +1154,7 @@ public class PlayerListener {
 
         if (main.getConfigValues().isEnabled(Feature.DUNGEON_DEATH_COUNTER) && main.getUtils().isInDungeon()) {
             String username = e.entityPlayer == playerSP ? playerSP.getName() : e.username;
-            DungeonPlayer dungeonPlayer = main.getDungeonUtils().getDungeonPlayer(username);
+            DungeonPlayer dungeonPlayer = main.getDungeonManager().getDungeonPlayerByName(username);
 
             if (dungeonPlayer != null) {
                 /*
@@ -1163,7 +1167,7 @@ public class PlayerListener {
                     }
                 }
 
-                main.getDungeonUtils().getDeathCounter().increment();
+                main.getDungeonManager().addDeath();
             } else {
                 SkyblockAddons.getLogger().error(Translations.getMessage("messages.dungeonDeathRecordError",
                         username));

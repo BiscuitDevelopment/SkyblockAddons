@@ -4,6 +4,7 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.gui.IslandWarpGui;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
 import codes.biscuit.skyblockaddons.utils.ColorUtils;
+import codes.biscuit.skyblockaddons.utils.DrawUtils;
 import lombok.Getter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
@@ -180,7 +181,7 @@ public class IslandButton extends GuiButton {
             }
 
             mc.getTextureManager().bindTexture(island.getResourceLocation());
-            SkyblockAddons.getInstance().getUtils().drawModalRectWithCustomSizedTexture(x, y, 0, 0, w, h, w, h);
+            DrawUtils.drawModalRectWithCustomSizedTexture(x, y, 0, 0, w, h, w, h);
 
             for (IslandMarkerButton marker : markerButtons) {
                 marker.drawButton(x, y, expansion, hovered, unlocked, this.markers.get(marker.getMarker()));
