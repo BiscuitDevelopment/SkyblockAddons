@@ -108,7 +108,7 @@
     "showBrokenFragments": "Pokaż zepsute Dragon Fragments",
     "skyblockAddonsButtonInPauseMenu": "Pokaż przycisk SBA w menu pauzy",
     "showTotalZealotCount": "Licznik Zealotów - Łączna ilość Zealotów",
-    "showSummoningEyeCount": "Licznik Zealotów - Łączna ilość oczu",
+    "showSummoningEyeCount": "Licznik Zealotów - Łączna ilość Eye",
     "showZealotsPerEye": "Licznik Zealotów - Pokaż ilość Zealotów na jedno oko",
     "turnBowGreenWhenUsingToxicArrowPoison": "Zmień kolor łuku na zielony kiedy Toksyczna, trująca strzała jest w użyciu",
     "birchParkRainmakerTimer": "Pozostały czas deszczu w Brzozowym Parku",
@@ -174,7 +174,7 @@
     "easierPresentOpening": "Łatwiejsze otwieranie prezentów",
     "showSwordKills": "Pokaż zabójstwa mieczem",
     "compactTabList": "Kompaktowa Tab lista",
-    "highlightMaxEnchantments": "Highlight Special Enchantments"
+    "highlightMaxEnchantments": "Podświetl specjalne zaklęcia"
   },
   "messages": {
     "enchants": "Zaklęcia",
@@ -302,7 +302,7 @@
         "detailedHelp": {
           "description": "Kopiuje tekst pokazany w bocznym pasku tablicy wyników",
           "options": {
-            "formatted": "Determines if the formatting codes should be included when copying. Can be either \"true\" or \"false\", defaults to \"false\" if no value is provided. Formatting codes are copied if \"true\"."
+            "formatted": "Określa, czy kody formatowania powinny być zawarte podczas kopiowania. Może być \"true\" lub \"false\", domyślnie \"false\" jeśli nie podano żadnej wartości. Kody formatowania są kopiowane, jeśli występuje \"true\"."
           }
         }
       },
@@ -341,12 +341,12 @@
           "detailedHelp": {
             "description": "Ręcznie ustawia wartości licznika zealotów.",
             "options": {
-              "eyes": "Lifetime summoning eyes obtained",
+              "eyes": "Łączna liczba otrzymanych summoning eyes",
               "totalZealots": "Łączna liczba zabitych zealotów",
-              "zealots": "Zealoty zabite od ostatniego wyrzucenia oka przywołującego"
+              "zealots": "Zealoty zabite od ostatniego wyrzucenia summoning eye"
             }
           },
-          "eyesSet": "Set total summoning eye count to %number%!",
+          "eyesSet": "Ustaw całkowitą liczbę summoning eye na %number%!",
           "totalZealotsSet": "Ustaw całkowitą liczbę zealotów na %number%!",
           "wrongUsage": "Nieprawidłowy wybór! Proszę wybrać %options%.",
           "zealotsSet": "Ustaw aktualną liczbę Zealotów na %number%!"
@@ -357,7 +357,7 @@
         "detailedHelp": {
           "description": "Ustaw manualnie statystki Slayera, naciśnij tab, aby zobaczyć argumenty",
           "options": {
-            "boss": "Slayer boss: \"Zombie\", \"Spider\", or \"Wolf\"",
+            "boss": "Slayer bossowie: \"Zombie\", \"Spider\" lub \"Wolf\"",
             "number": "Numer, do którego chcesz ustawić statystykę",
             "stat": "Statystyki slayera do zmiany, mogą być \"zabójstwami\" lub nazwą zdobytego przedmiotu sformatowaną w taki sposób: \"REVENANT_FLESH\""
           }
