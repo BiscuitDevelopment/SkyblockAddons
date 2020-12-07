@@ -131,8 +131,8 @@
     "hideSvenPupNametags": "Ocultar Tags de Sven Pup",
     "turnAllFeaturesChroma": "Convertir Todas las Características a Croma",
     "dungeonMapDisplay": "Mostrar Mapa de Dungeon",
-    "rotateMap": "Rotate The Map With Your Player's Rotation",
-    "centerRotationOnYourPlayer": "Rotate Around Your Player's Marker",
+    "rotateMap": "Rotar el Mapa a la Rotación de tu Jugador",
+    "centerRotationOnYourPlayer": "Centrar la Rotación Alrededor de tu Jugador",
     "mapZoom": "Zoom del Mapa",
     "glowingDroppedItems": "Hacer Que los Objetos Soltados Brillan",
     "glowingDungeonTeammates": "Hacer Que Tus Compañeros de Dungeon Brillan",
@@ -277,20 +277,20 @@
   "commandUsage": {
     "sba": {
       "base": {
-        "help": "Open the main menu"
+        "help": "Abrir el menú principal"
       },
       "brand": {
-        "help": "§e(Dev) §7Show the server brand",
-        "brandOutput": "Server Brand: %brand%",
-        "notFound": "Server brand not found!"
+        "help": "§e(Dev) §7Mostrar la marca del servidor",
+        "brandOutput": "Marca del Servidor: %brand%",
+        "notFound": "¡Marca del servidor no encontrado!"
       },
       "copyBlock": {
         "help": "§e(Dev) §7Copies data about the block that you are looking at"
       },
       "copyEntity": {
-        "help": "§e(Dev) §7Copy NBT data for entities of the given name(s) within the given radius around the player",
+        "help": "§e(Des) §7Copia datos NBT para entidades del nombre(s) dentro de un radio dado alrededor del jugador",
         "detailedHelp": {
-          "description": "Copies the NBT data of entities. The types of entities included and the radius around the player to copy data from can be customized. If no options are given, the default settings are used. The default settings are: include players, armor stands, and mobs, and a radius of 3 blocks. If the radius isn't given, the default radius is used.",
+          "description": "Copia los datos NBT de entidades. Los tipos de entidad incluidos y el radio alrededor del jugador para copiar datos puede ser personalizado. Si no se da ninguna opción, se utilizan los ajustes predeterminados. La configuración predeterminada es: incluye jugadores, soportes de armadura, y mobs, y un radio de 3 bloques. Si el radio no se indica, se usará el radio predeterminado.",
           "options": {
             "entityNames": "Names of the types of entities you want to copy data for (e.g. Player,Creeper). Press \"Tab\" after typing the command for a full list. Separate multiple names with commas, names are case-sensitive.",
             "radius": "The radius (in blocks) around the player to copy entity NBT data from"
@@ -298,40 +298,40 @@
         }
       },
       "copySidebar": {
-        "help": "§e(Dev) §7Copy the scoreboard text",
+        "help": "§e(Des) §7Copiar el texto del marcador.",
         "detailedHelp": {
           "description": "Copies the text displayed in the scoreboard's sidebar display slot",
           "options": {
-            "formatted": "Determines if the formatting codes should be included when copying. Can be either \"true\" or \"false\", defaults to \"false\" if no value is provided. Formatting codes are copied if \"true\"."
+            "formatted": "Determina si los códigos de formato deben incluirse al copiar. Puede ser \"verdad\" o \"falso\", por defecto \"falso\" si no se proporciona ningún valor. Los códigos de formato se copian si son \"verdad\"."
           }
         }
       },
       "copyTabList": {
-        "help": "§e(Dev) §7Copy the tab list header and footer",
+        "help": "§e(Des) §7Copia el encabezado y el pie de la lista de tab",
         "detailedHelp": {
-          "description": "This command copies the header and footer of the tab player list. Formatting codes are included."
+          "description": "Este comando copia el encabezado y el pie de la lista de jugadores de tab. Los códigos de formato se incluyen."
         }
       },
       "dev": {
-        "help": "Toggle developer mode",
+        "help": "Activar modo desarrollador",
         "detailedHelp": {
-          "description": "This command toggles developer mode. This mode is meant for developers Skyblock mods/tools. It provides raw data from the game such as entity and item NBT."
+          "description": "Este comando habilita el modo de desarrollador. Este modo está pensado para los desarrolladores de mods/tools para Skyblock. Proporciona datos crudos del juego como NBT de entidad y objetos."
         },
-        "disabled": "Developer mode disabled!",
-        "enabled": "Developer mode enabled! TIP: Press \"%keyName%\" to copy NBT data!"
+        "disabled": "¡Modo desarrollador desactivado!",
+        "enabled": "¡Modo desarrollador activado! CONSEJO: ¡Pulsa \"%keyName%\" para copiar datos NBT!"
       },
       "edit": {
-        "help": "Edit GUI locations"
+        "help": "Editar Posiciones de GUI"
       },
       "folder": {
-        "help": "Open your mods folder",
-        "error": "An error occurred trying to open the mods folder: %s"
+        "help": "Abrir tu carpeta de mods",
+        "error": "Se encontró un error al intentar abrir la carpeta de mods: %s"
       },
       "help": {
-        "help": "Show this help message. If a command is provided, detailed help about that command is shown.",
+        "help": "Mostrar este mensaje de ayuda. Si se proporciona un comando, se muestra una ayuda detallada sobre ese comando.",
         "detailedHelp": {
           "options": {
-            "command": "the sub-command to get detailed usage for"
+            "command": "el sub-comando para obtener uso detallado por"
           }
         }
       },
