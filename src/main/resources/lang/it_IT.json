@@ -131,8 +131,8 @@
     "hideSvenPupNametags": "Nascondi i nomi dei cuccioli Sven",
     "turnAllFeaturesChroma": "Attiva tutte le funzionalità Chroma",
     "dungeonMapDisplay": "Visualizzazione Mappa Dungeon",
-    "rotateMap": "Rotate The Map With Your Player's Rotation",
-    "centerRotationOnYourPlayer": "Rotate Around Your Player's Marker",
+    "rotateMap": "Ruota mappa con la rotazione del giocatore",
+    "centerRotationOnYourPlayer": "Centra la rotazione intorno al tuo giocatore",
     "mapZoom": "Zoom della Mappa",
     "glowingDroppedItems": "Illumina gli oggetti a terra",
     "glowingDungeonTeammates": "Illumina i compagni di Dungeons",
@@ -173,8 +173,8 @@
     "hideOtherPlayersPresents": "Nascondi i regali degli altri giocatori",
     "easierPresentOpening": "Apri i regali più facilmente",
     "showSwordKills": "Mostra uccisioni con spada",
-    "compactTabList": "Compact Tab List",
-    "highlightMaxEnchantments": "Highlight Special Enchantments"
+    "compactTabList": "Lista giocatori compatta",
+    "highlightMaxEnchantments": "Evidenzia gli incantesimi speciali"
   },
   "messages": {
     "enchants": "Incantesimi",
@@ -243,7 +243,7 @@
     "effectsActive": "%number% Effetti Attivi",
     "none": "Nessuno",
     "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!",
-    "dungeonDeathRecordError": "Could not record death for %userName%. This dungeon player isn't in the registry.",
+    "dungeonDeathRecordError": "Non è stato possibile registrare la morte di %userName%. Questo giocatore dungeon non è nel registro.",
     "dungeonPlayerHealthNotInteger": "Failed to update a dungeon player from the line \"%scoreboardLine%\". Player health was not an integer."
   },
   "discordStatus": {
@@ -285,10 +285,10 @@
         "notFound": "Nome del server non trovato!"
       },
       "copyBlock": {
-        "help": "§e(Dev) §7Copies data about the block that you are looking at"
+        "help": "§e(Dev) §7Copia i dati del blocco che si sta guardando"
       },
       "copyEntity": {
-        "help": "§e(Dev) §7Copy NBT data for entities of the given name(s) within the given radius around the player",
+        "help": "§e(Dev) §7Copia i dati NBT per le entità dei nomi indicati entro il raggio indicato intorno al giocatore",
         "detailedHelp": {
           "description": "Copies the NBT data of entities. The types of entities included and the radius around the player to copy data from can be customized. If no options are given, the default settings are used. The default settings are: include players, armor stands, and mobs, and a radius of 3 blocks. If the radius isn't given, the default radius is used.",
           "options": {
