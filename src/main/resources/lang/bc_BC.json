@@ -7,16 +7,16 @@
     "hideSkeletonHatBones": "Hide Skeleton's Helmet Bones",
     "skeletonHatBonesBar": "Skeleton's Helmet Bones Bar",
     "hideFoodAndArmor": "Hide Food & Armor Bar",
-    "fullInventoryWarning": "Full Inventory Warning",
+    "fullInventoryWarning": "Warning When Pockets full of Biscuits",
     "repeating": "Repeat Warning",
     "disableEmberRodAbility": "Disable Island Ember Rod",
     "editLocations": "Edit Biscuit Positions omg",
-    "guiScale": "Gui Scale: %scale%",
-    "resetLocations": "Reset Locations",
+    "guiScale": "Biscuit Size: %scale%",
+    "resetLocations": "Reset Biscuits to Normal",
     "hideDurability": "Hide Tool Durability",
     "showEnchantmentsReforges": "Enchants & Reforges",
     "minionStopWarning": "\"Minion Cannot Reach\" Warning",
-    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
+    "hidePlayersNearNPCs": "Hide Biscuts Near Important NPCs",
     "backpackStyle": "Backpack Style: %style%",
     "backpackStyles": {
       "regular": "Regular",
@@ -38,7 +38,7 @@
     "hidePlayersInLobby": "Hide Far Entities in Lobby",
     "darkAuctionTimer": "Dark Auction Timer",
     "magmaBossTimer": "Magma Boss Timer",
-    "itemPickupLog": "Item Pickup Log",
+    "itemPickupLog": "Recently Picked up Biscuits on Screen",
     "avoidPlacingEnchantedItems": "Avoid Placing Enchanted Items",
     "avoidBreakingStems": "Avoid Breaking Stems",
     "stopBowChargeFromResetting": "Stop Bow Charge From Resetting",
@@ -71,7 +71,7 @@
     "jungleAxeCooldown": "Block Jungle Axe/Treecapitator on Cooldown",
     "organizeLongEnchantmentLists": "Organize Long Enchantment Lists",
     "showItemCooldowns": "Show Item Cooldowns",
-    "speedPercentage": "Speed Percentage",
+    "speedPercentage": "Sugar Percentage",
     "collectionDisplay": "Skill Progress Display",
     "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns",
     "onlyMineValuablesNether": "Only Mine Valuables in the Nether",
@@ -97,7 +97,7 @@
     "showCakeBagPreview": "Show Preview for Cake Bags",
     "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
     "enableDevFeatures": "Enable Developer Features",
-    "chromaSpeed": "Chroma Speed",
+    "chromaSpeed": "Rainbow Biscuit Speed",
     "chromaMode": "Rainbow Biscuit Color Mode",
     "chromaModes": {
       "allTheSame": "All the Same Color",
@@ -115,9 +115,9 @@
     "combatTimerDisplay": "Combat Timer Display",
     "discordRP": "Discord Rich Biscresence",
     "endstoneProtectorDisplay": "Endstone Protector Display",
-    "fancyWarpMenu": "Fancy Warp Menu",
+    "fancyWarpMenu": "Crunchy Warp Menu",
     "doubleWarp": "Warp Twice",
-    "advancedMode": "Advanced Mode",
+    "advancedMode": "Big Brain Mode",
     "legendarySeaCreatureWarning": "Biscuitary Sea Biscuit Warning",
     "onlyBreakLogsPark": "Only Break Logs in the Park",
     "bossApproachAlert": "Slayer Boss Approach Alert",
@@ -134,14 +134,14 @@
     "rotateMap": "Rotate The Map With Your Player's Rotation",
     "centerRotationOnYourPlayer": "Rotate Around Your Player's Marker",
     "mapZoom": "Map Zoom",
-    "glowingDroppedItems": "Glowing Dropped Items",
+    "glowingDroppedItems": "Glowing Dropped Biscuits",
     "glowingDungeonTeammates": "Glowing Dungeon Teammates",
     "baseStatBoostPercentage": "Show Base Stat Boost for Dungeon Items",
-    "colorByRarity": "Color By Rarity",
+    "colorByRarity": "Color by Biscuit Rarity",
     "showPlayerHeadsOnMap": "Show Player Heads on Dungeon Map",
     "showHealingCircleWall": "Show Dungeon Healing Circle Wall",
     "showCriticalTeammates": "Show Critical Dungeon Teammates",
-    "showGlowingItemsOnIsland": "Show Glowing Items On Island",
+    "showGlowingItemsOnIsland": "Show Glowing Biscuits On Island",
     "showItemDungeonFloor": "Show Floor Obtained on Dungeon Items",
     "showDungeonMilestone": "Show Dungeon Milestone",
     "dungeonsCollectedEssencesDisplay": "Dungeons Collected Essences Display",
@@ -199,12 +199,12 @@
       "majorAvailable": "A new major update (%version%) is available! The link for the download can be found in chat.",
       "patchAvailable": "A new patch update (%version%) is available! Look in chat for download options!"
     },
-    "slotLocked": "This slot is locked!",
+    "slotLocked": "This biscuit is locked!",
     "summoningEyeFound": "Summoning Eye!",
     "cancelledStemBreak": "A feature has stopped you from breaking this stem. Use your bare hand if you'd like to actually break it.",
     "cancelledProfileOpening": "A feature has stopped you from opening this player's profile since you were holding a bow.",
-    "cancelledDropping": "A feature has stopped you from dropping this \"rare\" item or tool from your hotbar.",
-    "clickMoreTimes": "Click/drop this item %times% more times if you really want to do this.",
+    "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare biscuit or oven mitt from your hotbar.",
+    "clickMoreTimes": "Click/drop this biscuit %times% more times if you really want to do this.",
     "clickOneMoreTime": "Click/drop this item 1 more time if you really want to do this.",
     "cancelledDeepCaverns": "A feature has stopped you from mining this block here.",
     "featureDisabled": "Feature Disabled",
@@ -218,7 +218,7 @@
     "chooseAColor": "Choose a Color",
     "selectedColor": "Selected Color",
     "setHexColor": "Set Hex Color",
-    "rescaleFeatures": "Rescale Features",
+    "rescaleFeatures": "Rescale The Biscuits",
     "resizeBars": "Resize Bars",
     "showColorIcons": "Show Color Icons",
     "enableFeatureSnapping": "Enable Feature Snapping",
@@ -321,17 +321,17 @@
         "enabled": "Developer mode enabled! TIP: Press \"%keyName%\" to copy NBT data!"
       },
       "edit": {
-        "help": "Edit GUI locations"
+        "help": "Edit Biscuits locations"
       },
       "folder": {
-        "help": "Open your mods folder",
-        "error": "An error occurred trying to open the mods folder: %s"
+        "help": "Open your biscuits folder",
+        "error": "An error occurred trying to open the biscuits folder: %s"
       },
       "help": {
         "help": "Show this help message. If a command is provided, detailed help about that command is shown.",
         "detailedHelp": {
           "options": {
-            "command": "the sub-command to get detailed usage for"
+            "command": "the sub-biscuit to get detailed recipe for"
           }
         }
       },
@@ -343,7 +343,7 @@
             "options": {
               "eyes": "Lifetime summoning eyes obtained",
               "totalZealots": "Lifetime zealots killed",
-              "zealots": "Zealots killed since the last summoning eye drop"
+              "zealots": "Zealots killed since last summoning biscuit drop"
             }
           },
           "eyesSet": "Set total summoning eye count to %number%!",
