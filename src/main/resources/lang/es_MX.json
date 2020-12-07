@@ -288,7 +288,7 @@
         "help": "§e(Dev) §7Copies data about the block that you are looking at"
       },
       "copyEntity": {
-        "help": "§e(Dev) §7Copy NBT data for entities of the given name(s) within the given radius around the player",
+        "help": "§e(Des) §7Copia datos NBT para entidades del nombre(s) dentro de un radio específico alrededor del jugador",
         "detailedHelp": {
           "description": "Copia los datos NBT de las entidades. Los tipos de entidades incluidas y el radio alrededor del reproductor para copiar los datos se pueden personalizar. Si no se dan opciones, se utilizan las configuraciones predeterminadas. La configuración predeterminada es: incluir jugadores, soportes de armadura y mobs, y un radio de 3 bloques. Si no se proporciona el radio, se utiliza el radio predeterminado.",
           "options": {
@@ -302,7 +302,7 @@
         "detailedHelp": {
           "description": "Copies the text displayed in the scoreboard's sidebar display slot",
           "options": {
-            "formatted": "Determines if the formatting codes should be included when copying. Can be either \"true\" or \"false\", defaults to \"false\" if no value is provided. Formatting codes are copied if \"true\"."
+            "formatted": "Determina si los códigos de formato deben ser incluidos al copiar. Puede ser \"verdad\" o \"falso\", por defecto \"falso\" si no se da ningún valor. Los códigos de formato se copian si son \"verdad\"."
           }
         }
       },
@@ -328,16 +328,16 @@
         "error": "Ocurrió un error al intentar abrir la carpeta mods: %s"
       },
       "help": {
-        "help": "Show this help message. If a command is provided, detailed help about that command is shown.",
+        "help": "Mostra este mensaje de ayuda. Si se proporciona un comando, se muestra una descripción detallada sobre ese comando.",
         "detailedHelp": {
           "options": {
-            "command": "the sub-command to get detailed usage for"
+            "command": "el sub-comando para obtener información del uso de"
           }
         }
       },
       "set": {
         "zealotCounter": {
-          "help": "Manually set your zealot counts",
+          "help": "Configura manualmente tus cuentas de Zealotes",
           "detailedHelp": {
             "description": "Manually sets counts in the zealot counter.",
             "options": {
@@ -348,37 +348,37 @@
           },
           "eyesSet": "Set total summoning eye count to %number%!",
           "totalZealotsSet": "Set total zealot count to %number%!",
-          "wrongUsage": "Invalid selection! Please choose %options%.",
+          "wrongUsage": "¡Selección no válida! Por favor, elije %options%.",
           "zealotsSet": "Set current zealot count to %number%!"
         }
       },
       "slayer": {
-        "help": "Manually set slayer stats, press tab for arguments",
+        "help": "Modificar manualmente estadísticas de slayer, presiona tab para ver argumentos",
         "detailedHelp": {
-          "description": "Manually set slayer stats, press tab for arguments",
+          "description": "Modificar manualmente estadísticas de slayer, presiona tab para ver argumentos",
           "options": {
-            "boss": "Slayer boss: \"Zombie\", \"Spider\", or \"Wolf\"",
-            "number": "Number to set the stat to",
-            "stat": "Slayer stat to change, can be \"kills\" or the name of a dropped item formatted like this: \"REVENANT_FLESH\""
+            "boss": "Boss Slayer: \"Zombie\", \"Spider\", o \"Wolf\"",
+            "number": "Número para establecer la estadística",
+            "stat": "Estadística de slayer para cambiar, puede ser \"kills\" o el nombre de un objeto obtenido por slayers en formateado como: \"REVENANT_FLESH\""
           }
         },
-        "bossRequired": "You need to select a boss! Please choose %bosses%",
-        "statRequired": "You need to select a stat. Press tab for options.",
-        "numberRequired": "You need to add the number you want.",
-        "killsSet": "Kills for slayer %boss% was set to %number%.",
-        "statSet": "Statistic %stat% for slayer %boss% was set to %number%.",
-        "invalidBoss": "\"%input%\" is not a valid statistic!",
-        "invalidStat": "\"%input%\" is not a valid boss!"
+        "bossRequired": "¡Necesitas seleccionar un boss! Por favor, elige %bosses%",
+        "statRequired": "Necesitas escoger una estadística. Presiona tab para opciones.",
+        "numberRequired": "Necesitas añadir el número que quieres.",
+        "killsSet": "Kills para slayer %boss% ha sido establecido a %number%.",
+        "statSet": "Estadística %stat% para slayer %boss% fue establecida a %number%.",
+        "invalidBoss": "¡\"%input%\" no es una estadística válida!",
+        "invalidStat": "¡\"%input%\" no es un boss válido!"
       },
       "toggleActionBarLogging": {
-        "help": "§e(Dev) §7Toggle logging action bar messages",
-        "disabled": "Action bar messages will no longer be logged.",
-        "enabled": "Action bar messages will now be logged."
+        "help": "§e(Des) §Cambiar el registro de los mensajes de la barra de acción",
+        "disabled": "Mensajes de la barra de acción ya no serán registrados.",
+        "enabled": "Mensajes de la barra de acción ya serán registrados."
       },
       "errors": {
         "wrongUsage": {
           "generic": "¡Uso incorrecto!",
-          "subCommandNotFound": "The sub-command \"%sub-command%\" was not found."
+          "subCommandNotFound": "El sub-comando \"%sub-command%\" no fue encontrado."
         }
       }
     }
