@@ -132,7 +132,7 @@
     "turnAllFeaturesChroma": "Turn All Featurez Chroma",
     "dungeonMapDisplay": "Dungeon Map Display",
     "rotateMap": "Rotate Map Wif Ur Players Rotashun",
-    "centerRotationOnYourPlayer": "Rotate Around Your Player's Marker",
+    "centerRotationOnYourPlayer": "Rotate Around Ur Players Markr",
     "mapZoom": "Map Zoom",
     "glowingDroppedItems": "Glowin Droppd Items",
     "glowingDungeonTeammates": "Glowin Dungeon Teammatez",
@@ -174,7 +174,7 @@
     "easierPresentOpening": "Open Prezints Easir",
     "showSwordKills": "Show Sword Kills",
     "compactTabList": "Compact Tab List",
-    "highlightMaxEnchantments": "Highlight Special Enchantments"
+    "highlightMaxEnchantments": "Highlight Speshul Enchantments"
   },
   "messages": {
     "enchants": "Enchants",
@@ -242,9 +242,9 @@
     "effectActive": "1 Effect Activ",
     "effectsActive": "%number% Effects Activ",
     "none": "None",
-    "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!",
-    "dungeonDeathRecordError": "Could not record death for %userName%. This dungeon player isn't in the registry.",
-    "dungeonPlayerHealthNotInteger": "Failed to update a dungeon player from the line \"%scoreboardLine%\". Player health was not an integer."
+    "copyModeSet": "Teh developr copy mode haz been set 2: %mode%. Pres \"%keyName%\" 2 triggr data copy!",
+    "dungeonDeathRecordError": "Cud not record death 4 %userName%. Dis dungeon playr isnt in da registry.",
+    "dungeonPlayerHealthNotInteger": "Faild 2 update dungeon playr frum teh line \"%scoreboardLine%\". Playr health wuz not an integr."
   },
   "discordStatus": {
     "titleNone": "None",
@@ -277,108 +277,108 @@
   "commandUsage": {
     "sba": {
       "base": {
-        "help": "Open the main menu"
+        "help": "Open teh main menu"
       },
       "brand": {
-        "help": "§e(Dev) §7Show the server brand",
-        "brandOutput": "Server Brand: %brand%",
-        "notFound": "Server brand not found!"
+        "help": "§e(Dev) §7Show teh servr brand",
+        "brandOutput": "Servr Brand: %brand%",
+        "notFound": "Servr brand not findz!"
       },
       "copyBlock": {
-        "help": "§e(Dev) §7Copies data about the block that you are looking at"
+        "help": "§e(Dev) §7Copiez data bout teh block dat u r lookin at"
       },
       "copyEntity": {
-        "help": "§e(Dev) §7Copy NBT data for entities of the given name(s) within the given radius around the player",
+        "help": "§e(Dev) §7Copy NBT data 4 entitiez ov teh given naym(s) within teh given radius around teh playr",
         "detailedHelp": {
-          "description": "Copies the NBT data of entities. The types of entities included and the radius around the player to copy data from can be customized. If no options are given, the default settings are used. The default settings are: include players, armor stands, and mobs, and a radius of 3 blocks. If the radius isn't given, the default radius is used.",
+          "description": "Copiez teh NBT data ov entitiez. The typez ov entitiez includd an teh radiuz around teh playr 2 copy data frum can be customizd. If no opshuns r given, teh default settings r usd. Teh default settingz r: include players, armor standz, and mobs, an radius of 3 blockz. If teh radius isnt given, teh default radius iz usd.",
           "options": {
-            "entityNames": "Names of the types of entities you want to copy data for (e.g. Player,Creeper). Press \"Tab\" after typing the command for a full list. Separate multiple names with commas, names are case-sensitive.",
-            "radius": "The radius (in blocks) around the player to copy entity NBT data from"
+            "entityNames": "Namez ov teh typez ov entitiez u wants 2 copy data 4 (e.g. Playr,Creepr). Pres \"Tab\" aftr typin teh command 4 full list. Separate multiple namez wif commas, namez r case-sensitiv.",
+            "radius": "Teh radius (in blockz) around teh playr 2 copy entity NBT data frum"
           }
         }
       },
       "copySidebar": {
-        "help": "§e(Dev) §7Copy the scoreboard text",
+        "help": "§e(Dev) §7Copy teh scoreboard text",
         "detailedHelp": {
-          "description": "Copies the text displayed in the scoreboard's sidebar display slot",
+          "description": "Copiez teh text displayd in da scorebordz sidebar display slot",
           "options": {
-            "formatted": "Determines if the formatting codes should be included when copying. Can be either \"true\" or \"false\", defaults to \"false\" if no value is provided. Formatting codes are copied if \"true\"."
+            "formatted": "Determinez if teh formattin codez shud be includd when copyin. Can be eithr \"true\" or \"false\", defaults 2 \"false\" if no valu iz providd. Formattin codez are copid if \"true\"."
           }
         }
       },
       "copyTabList": {
-        "help": "§e(Dev) §7Copy the tab list header and footer",
+        "help": "§e(Dev) §7Copy teh tab list headr an footr",
         "detailedHelp": {
-          "description": "This command copies the header and footer of the tab player list. Formatting codes are included."
+          "description": "Dis command copiez teh headr an footr ov teh tab playr list. Formattin codez r includd."
         }
       },
       "dev": {
-        "help": "Toggle developer mode",
+        "help": "Toggle developr mod",
         "detailedHelp": {
-          "description": "This command toggles developer mode. This mode is meant for developers Skyblock mods/tools. It provides raw data from the game such as entity and item NBT."
+          "description": "Dis command togglez developr mode. Dis mode iz meant 4 developers Skyblock modz/tools. It providez raw data frum the game such as entity an item NBT."
         },
-        "disabled": "Developer mode disabled!",
-        "enabled": "Developer mode enabled! TIP: Press \"%keyName%\" to copy NBT data!"
+        "disabled": "Developr mode disabld!",
+        "enabled": "Developr mode enabld! TIP: Pres \"%keyName%\" 2 copy NBT data!"
       },
       "edit": {
-        "help": "Edit GUI locations"
+        "help": "Edit GUI locashuns"
       },
       "folder": {
-        "help": "Open your mods folder",
-        "error": "An error occurred trying to open the mods folder: %s"
+        "help": "Open ur modz foldr",
+        "error": "An error occurrd tryin 2 open teh modz foldr: %s"
       },
       "help": {
-        "help": "Show this help message. If a command is provided, detailed help about that command is shown.",
+        "help": "Show dis halp mesage. If command iz providd, detaild halp bout dat command iz shown.",
         "detailedHelp": {
           "options": {
-            "command": "the sub-command to get detailed usage for"
+            "command": "teh sub-command 2 git detaild usage 4"
           }
         }
       },
       "set": {
         "zealotCounter": {
-          "help": "Manually set your zealot counts",
+          "help": "Manually set ur zealot counts",
           "detailedHelp": {
-            "description": "Manually sets counts in the zealot counter.",
+            "description": "Manually sets counts in da zealot countr.",
             "options": {
-              "eyes": "Lifetime summoning eyes obtained",
-              "totalZealots": "Lifetime zealots killed",
-              "zealots": "Zealots killed since the last summoning eye drop"
+              "eyes": "Lifetime summonin eyez obtaind",
+              "totalZealots": "Lifetime zealots killd",
+              "zealots": "Zealots killd since teh last summonin eye drop"
             }
           },
-          "eyesSet": "Set total summoning eye count to %number%!",
-          "totalZealotsSet": "Set total zealot count to %number%!",
-          "wrongUsage": "Invalid selection! Please choose %options%.",
-          "zealotsSet": "Set current zealot count to %number%!"
+          "eyesSet": "Set total summonin eye count 2 %number%!",
+          "totalZealotsSet": "Set total zealot count 2 %number%!",
+          "wrongUsage": "Invalid selecshun! Plz choose %options%.",
+          "zealotsSet": "Set current zealot count 2 %number%!"
         }
       },
       "slayer": {
-        "help": "Manually set slayer stats, press tab for arguments",
+        "help": "Manually set slayr stats, pres tab 4 arguments",
         "detailedHelp": {
-          "description": "Manually set slayer stats, press tab for arguments",
+          "description": "Manually set slayr stats, pres tab 4 arguments",
           "options": {
-            "boss": "Slayer boss: \"Zombie\", \"Spider\", or \"Wolf\"",
-            "number": "Number to set the stat to",
-            "stat": "Slayer stat to change, can be \"kills\" or the name of a dropped item formatted like this: \"REVENANT_FLESH\""
+            "boss": "Slayr bos: \"Zombie\", \"Spider\", or \"Wolf\"",
+            "number": "Numbr 2 set teh stat 2",
+            "stat": "Slayr stat 2 change, can be \"kills\" or teh naym ov droppd item formattd liek dis: \"REVENANT_FLESH\""
           }
         },
-        "bossRequired": "You need to select a boss! Please choose %bosses%",
-        "statRequired": "You need to select a stat. Press tab for options.",
-        "numberRequired": "You need to add the number you want.",
-        "killsSet": "Kills for slayer %boss% was set to %number%.",
-        "statSet": "Statistic %stat% for slayer %boss% was set to %number%.",
-        "invalidBoss": "\"%input%\" is not a valid statistic!",
-        "invalidStat": "\"%input%\" is not a valid boss!"
+        "bossRequired": "U ned 2 select bos! Plz choose %bosses%",
+        "statRequired": "U ned 2 select stat. Pres tab 4 opshuns.",
+        "numberRequired": "U ned 2 add teh numbr u wants.",
+        "killsSet": "Kills 4 slayr %boss% wuz set 2 %number%.",
+        "statSet": "Statistic %stat% 4 slayr %boss% wuz set 2 %number%.",
+        "invalidBoss": "\"%input%\" iz not valid statistic!",
+        "invalidStat": "\"%input%\" iz not valid bos!"
       },
       "toggleActionBarLogging": {
-        "help": "§e(Dev) §7Toggle logging action bar messages",
-        "disabled": "Action bar messages will no longer be logged.",
-        "enabled": "Action bar messages will now be logged."
+        "help": "§e(Dev) §7Toggle loggin acshun bar mesagez",
+        "disabled": "Acshun bar mesagez will no longr be loggd.",
+        "enabled": "Acshun bar mesagez will nao be loggd."
       },
       "errors": {
         "wrongUsage": {
           "generic": "Wrong usage!",
-          "subCommandNotFound": "The sub-command \"%sub-command%\" was not found."
+          "subCommandNotFound": "Teh sub-command \"%sub-command%\" wuz nut findz."
         }
       }
     }
