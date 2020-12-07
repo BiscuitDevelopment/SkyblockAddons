@@ -93,9 +93,8 @@ public class PlayerListener {
     private static final Pattern DRAGON_KILLED_PATTERN = Pattern.compile(" *[A-Z]* DRAGON DOWN!");
     private static final Pattern DRAGON_SPAWNED_PATTERN = Pattern.compile("☬ The (?<dragonType>[A-Za-z ]+) Dragon has spawned!");
     private static final Pattern SLAYER_COMPLETED_PATTERN = Pattern.compile(" {3}» Talk to Maddox to claim your (?<slayerType>[A-Za-z]+) Slayer XP!");
-    private static final Pattern DEATH_MESSAGE_PATTERN = Pattern.compile("§r§c ☠ §r(?:§[\\da-fk-or])(?<username" +
-            ">\\w+)(?<afterNameFormatting>§r§7)* (?<causeOfDeath>.+)§r§7\\.§r");
-    private static final Pattern REVIVE_MESSAGE_PATTERN = Pattern.compile("§r§a ❣ §r(?:§[\\da-fk-or])(?<revivedPlayer>\\w+)§r§a was revived(?: by §r(?:§[\\da-fk-or])(?<reviver>\\w+)§r§a)*!§r");
+    private static final Pattern DEATH_MESSAGE_PATTERN = Pattern.compile(" ☠ (?<username>\\w+) (?<causeOfDeath>.+)\\.");
+    private static final Pattern REVIVE_MESSAGE_PATTERN = Pattern.compile(" ❣ (?<revivedPlayer>\\w+) was revived(?: by (?<reviver>\\w+))*!");
     private static final Pattern ACCESSORY_BAG_REFORGE_PATTERN = Pattern.compile("You applied the (?<reforge>\\w+) reforge to (?:\\d+) accessories in your Accessory Bag!");
 
     // Between these two coordinates is the whole "arena" area where all the magmas and stuff are.
@@ -241,33 +240,23 @@ public class PlayerListener {
                 if (main.getRenderListener().isPredictMana() && unformattedText.startsWith("Used ") && unformattedText.endsWith("Mana)")) {
                     int manaLost = Integer.parseInt(unformattedText.split(Pattern.quote("! ("))[1].split(Pattern.quote(" Mana)"))[0]);
                     changeMana(-manaLost);
-                } else if ((matcher = DEATH_MESSAGE_PATTERN.matcher(formattedText)).matches()) {
+                } else if ((matcher = DEATH_MESSAGE_PATTERN.matcher(strippedText)).matches()) {
                     // Hypixel's dungeon reconnect messages look exactly like death messages.
-                    if (matcher.group("causeOfDeath").equals("reconnected")) {
-                        return;
-                    }
-
-                    EntityPlayer deadPlayer = null;
-                    String username = matcher.group("username");
-
-                    /*
-                     If the group "afterNameFormatting" matches, it means someone other than the client player died.
-                     If it doesn't match, the client player died.
-                     */
-                    if (matcher.group("afterNameFormatting") != null) {
-                        for (EntityPlayer player:
-                                Minecraft.getMinecraft().theWorld.playerEntities) {
-                            if (player.getName().equals(username)) {
-                                deadPlayer = player;
-                                break;
-                            }
+                    String causeOfDeath = matcher.group("causeOfDeath");
+                    if (!causeOfDeath.equals("reconnected")) {
+                        String username = matcher.group("username");
+                        EntityPlayer deadPlayer;
+                        if (username.equals("You")) {
+                            deadPlayer = Minecraft.getMinecraft().thePlayer;
+                        } else {
+                            deadPlayer = Minecraft.getMinecraft().theWorld.getPlayerEntityByName(username);
                         }
-                    } else {
-                        deadPlayer = Minecraft.getMinecraft().thePlayer;
+
+                        if (deadPlayer != null) {
+                            MinecraftForge.EVENT_BUS.post(new SkyblockPlayerDeathEvent(deadPlayer, username, causeOfDeath));
+                        }
                     }
 
-                    MinecraftForge.EVENT_BUS.post(new SkyblockPlayerDeathEvent(deadPlayer, username,
-                            matcher.group("causeOfDeath")));
                 } else if (main.getConfigValues().isEnabled(Feature.SUMMONING_EYE_ALERT) && formattedText.equals("§r§6§lRARE DROP! §r§5Summoning Eye§r")) {
                     main.getUtils().playLoudSound("random.orb", 0.5); // credits to tomotomo, thanks lol
                     main.getRenderListener().setTitleFeature(Feature.SUMMONING_EYE_ALERT);
@@ -1169,8 +1158,7 @@ public class PlayerListener {
 
                 main.getDungeonManager().addDeath();
             } else {
-                SkyblockAddons.getLogger().error(Translations.getMessage("messages.dungeonDeathRecordError",
-                        username));
+                SkyblockAddons.getLogger().warn("Could not record death for " + username + ". This dungeon player isn't in the registry.");
             }
         }
     }

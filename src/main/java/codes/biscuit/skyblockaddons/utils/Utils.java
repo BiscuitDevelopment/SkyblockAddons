@@ -373,8 +373,8 @@ public class Utils {
                     if (inDungeon) {
                         try {
                             main.getDungeonManager().updateDungeonPlayer(strippedColored);
-                        } catch (NumberFormatException e) {
-                            logger.error(Translations.getMessage("dungeonPlayerHealthNotInteger", strippedColored), e);
+                        } catch (NumberFormatException ex) {
+                            logger.error("Failed to update a dungeon player from the line " + strippedColored + ".", ex);
                         }
                     }
                 }

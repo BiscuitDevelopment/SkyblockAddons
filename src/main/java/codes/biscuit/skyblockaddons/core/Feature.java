@@ -236,6 +236,7 @@ public enum Feature {
 
         Set<Integer> registeredFeatureIDs = SkyblockAddons.getInstance().getRegisteredFeatureIDs();
         if (id != -1 && registeredFeatureIDs.contains(id)) {
+            SkyblockAddons.getLogger().error("Multiple features have the same IDs! Crashing...");
             throw new RuntimeException("Multiple features have the same IDs!");
         } else {
             registeredFeatureIDs.add(id);
@@ -251,6 +252,7 @@ public enum Feature {
 
         Set<Integer> registeredFeatureIDs = SkyblockAddons.getInstance().getRegisteredFeatureIDs();
         if (id != -1 && registeredFeatureIDs.contains(id)) {
+            SkyblockAddons.getLogger().error("Multiple features have the same IDs! Crashing...");
             throw new RuntimeException("Multiple features have the same IDs!");
         } else {
             registeredFeatureIDs.add(id);

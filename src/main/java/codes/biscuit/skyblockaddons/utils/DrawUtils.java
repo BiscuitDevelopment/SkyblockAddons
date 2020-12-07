@@ -155,14 +155,21 @@ public class DrawUtils {
         worldRenderer.pos(x, y, 0.0D).color(f, f1, f2, f3).endVertex();
     }
 
-    /**
+    /**E
      * Draws a solid color rectangle with the specified coordinates and color (ARGB format). Args: x1, y1, x2, y2, color
      */
     public static void drawRectOutline(float x, float y, int w, int h, int thickness, int color, boolean chroma) {
-        drawSegmentedLineVertical(x - thickness, y, thickness, h, color, chroma);
-        drawSegmentedLineHorizontal(x - thickness, y - thickness, w + thickness * 2, thickness, color, chroma);
-        drawSegmentedLineVertical(x + w, y, thickness, h, color, chroma);
-        drawSegmentedLineHorizontal(x - thickness, y + h, w + thickness * 2, thickness, color, chroma);
+        if (chroma) {
+            drawSegmentedLineVertical(x - thickness, y, thickness, h, color, true);
+            drawSegmentedLineHorizontal(x - thickness, y - thickness, w + thickness * 2, thickness, color, true);
+            drawSegmentedLineVertical(x + w, y, thickness, h, color, true);
+            drawSegmentedLineHorizontal(x - thickness, y + h, w + thickness * 2, thickness, color, true);
+        } else {
+            drawRect(x - thickness, y, thickness, h, color);
+            drawRect(x - thickness, y - thickness, w + thickness * 2, thickness, color);
+            drawRect(x + w, y, thickness, h, color);
+            drawRect(x - thickness, y + h, w + thickness * 2, thickness, color);
+        }
     }
 
     public static void drawSegmentedLineHorizontal(float x, float y, float w, float h, int color, boolean chroma) {
