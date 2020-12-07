@@ -277,12 +277,12 @@
   "commandUsage": {
     "sba": {
       "base": {
-        "help": "Open the main menu"
+        "help": "Apri il menu principale"
       },
       "brand": {
-        "help": "§e(Dev) §7Show the server brand",
-        "brandOutput": "Server Brand: %brand%",
-        "notFound": "Server brand not found!"
+        "help": "§e(Dev) §7Mostra il simbolo del server",
+        "brandOutput": "Nome del server: %brand%",
+        "notFound": "Nome del server non trovato!"
       },
       "copyBlock": {
         "help": "§e(Dev) §7Copies data about the block that you are looking at"
@@ -363,12 +363,12 @@
           }
         },
         "bossRequired": "You need to select a boss! Please choose %bosses%",
-        "statRequired": "You need to select a stat. Press tab for options.",
-        "numberRequired": "You need to add the number you want.",
-        "killsSet": "Kills for slayer %boss% was set to %number%.",
-        "statSet": "Statistic %stat% for slayer %boss% was set to %number%.",
-        "invalidBoss": "\"%input%\" is not a valid statistic!",
-        "invalidStat": "\"%input%\" is not a valid boss!"
+        "statRequired": "Devi selezionare uno stato. Premi tab per le opzioni.",
+        "numberRequired": "Devi aggiungere il numero che vuoi.",
+        "killsSet": "Kills per lo slayer %boss% impostato a %number%.",
+        "statSet": "Statistica %stat% per lo slayer %boss% impostata a %number%.",
+        "invalidBoss": "\"%input%\" non è una statistica valida!",
+        "invalidStat": "\"%input%\" non è un boss valido!"
       },
       "toggleActionBarLogging": {
         "help": "§e(Dev) §7Toggle logging action bar messages",
@@ -377,8 +377,8 @@
       },
       "errors": {
         "wrongUsage": {
-          "generic": "Wrong usage!",
-          "subCommandNotFound": "The sub-command \"%sub-command%\" was not found."
+          "generic": "Utilizzo errato!",
+          "subCommandNotFound": "Il sottocomando %sub-command% non è stato trovato."
         }
       }
     }
