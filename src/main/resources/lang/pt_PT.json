@@ -173,7 +173,7 @@
     "hideOtherPlayersPresents": "Esconder os presentes de outros jogadores",
     "easierPresentOpening": "Abrir presentes mais facilmente",
     "showSwordKills": "Mostrar kills com a espada",
-    "compactTabList": "Compact Tab List",
+    "compactTabList": "Lista de jogadores compacta",
     "highlightMaxEnchantments": "Highlight Special Enchantments"
   },
   "messages": {
@@ -277,7 +277,7 @@
   "commandUsage": {
     "sba": {
       "base": {
-        "help": "Open the main menu"
+        "help": "Abrir o menu principal"
       },
       "brand": {
         "help": "§e(Dev) §7Show the server brand",
@@ -377,7 +377,7 @@
       },
       "errors": {
         "wrongUsage": {
-          "generic": "Wrong usage!",
+          "generic": "Uso errado!",
           "subCommandNotFound": "The sub-command \"%sub-command%\" was not found."
         }
       }
