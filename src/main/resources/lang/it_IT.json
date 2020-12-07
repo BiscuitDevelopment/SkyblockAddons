@@ -242,9 +242,9 @@
     "effectActive": "1 Effetto Attivo",
     "effectsActive": "%number% Effetti Attivi",
     "none": "Nessuno",
-    "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!",
+    "copyModeSet": "La modalità di copia sviluppatore è stata impostata come: %mode%. Premi \"%keyName%\" per attivare una copia dei dati!",
     "dungeonDeathRecordError": "Non è stato possibile registrare la morte di %userName%. Questo giocatore dungeon non è nel registro.",
-    "dungeonPlayerHealthNotInteger": "Failed to update a dungeon player from the line \"%scoreboardLine%\". Player health was not an integer."
+    "dungeonPlayerHealthNotInteger": "Impossibile aggiornare un giocatore dungeon dalla riga \"%scoreboardLine%\". La salute del giocatore non era un numero intero."
   },
   "discordStatus": {
     "titleNone": "Nessuno",
@@ -290,79 +290,79 @@
       "copyEntity": {
         "help": "§e(Dev) §7Copia i dati NBT per le entità dei nomi indicati entro il raggio indicato intorno al giocatore",
         "detailedHelp": {
-          "description": "Copies the NBT data of entities. The types of entities included and the radius around the player to copy data from can be customized. If no options are given, the default settings are used. The default settings are: include players, armor stands, and mobs, and a radius of 3 blocks. If the radius isn't given, the default radius is used.",
+          "description": "Copia i dati NBT delle entità. I tipi di entità incluse e il raggio intorno al giocatore per copiare i dati da possono essere personalizzati. Se non vengono fornite opzioni, vengono utilizzate le impostazioni predefinite. Le impostazioni predefinite sono: giocatori, supporti per armature e mobs, con un raggio di 3 blocchi. Se il raggio non è dato, viene utilizzato il raggio predefinito.",
           "options": {
-            "entityNames": "Names of the types of entities you want to copy data for (e.g. Player,Creeper). Press \"Tab\" after typing the command for a full list. Separate multiple names with commas, names are case-sensitive.",
-            "radius": "The radius (in blocks) around the player to copy entity NBT data from"
+            "entityNames": "Nomi dei tipi di entità di cui si desidera copiare i dati (ad es. Giocatore, Creeper). Premi \"Tab\" dopo aver digitato il comando per un elenco completo. Separa più nomi con virgole, i nomi distinguono maiuscole e minuscole.",
+            "radius": "Il raggio (in blocchi) intorno al giocatore per copiare i dati NBT dell'entità da"
           }
         }
       },
       "copySidebar": {
-        "help": "§e(Dev) §7Copy the scoreboard text",
+        "help": "§e(Dev) §7Copia il testo del tabellone",
         "detailedHelp": {
-          "description": "Copies the text displayed in the scoreboard's sidebar display slot",
+          "description": "Copia il testo visualizzato nello slot di visualizzazione della barra laterale del tabellone",
           "options": {
-            "formatted": "Determines if the formatting codes should be included when copying. Can be either \"true\" or \"false\", defaults to \"false\" if no value is provided. Formatting codes are copied if \"true\"."
+            "formatted": "Determina se i codici di formattazione devono essere inclusi durante la copia. Può essere \"true\" o \"false\", di default su \"false\" se non viene fornito alcun valore. I codici di formattazione vengono copiati se \"true\"."
           }
         }
       },
       "copyTabList": {
-        "help": "§e(Dev) §7Copy the tab list header and footer",
+        "help": "§e(Dev) §7Copia intestazione e piè di pagina della lista giocatori",
         "detailedHelp": {
-          "description": "This command copies the header and footer of the tab player list. Formatting codes are included."
+          "description": "Questo comando copia l'intestazione e il piè di pagina della lista dei giocatori. I codici di formattazione sono inclusi."
         }
       },
       "dev": {
-        "help": "Toggle developer mode",
+        "help": "Attiva/Disattiva modalità sviluppatore",
         "detailedHelp": {
-          "description": "This command toggles developer mode. This mode is meant for developers Skyblock mods/tools. It provides raw data from the game such as entity and item NBT."
+          "description": "Questo comando attiva la modalità sviluppatore. Questa modalità è pensata per gli sviluppatori Skyblock mods/tools. Fornisce dati grezzi dal gioco come entità ed elementi NBT."
         },
-        "disabled": "Developer mode disabled!",
-        "enabled": "Developer mode enabled! TIP: Press \"%keyName%\" to copy NBT data!"
+        "disabled": "Modalità sviluppatore disabilitata!",
+        "enabled": "Modalità sviluppatore abilitata! SUGGERIMENTO: Premi \"%keyName%\" per copiare i dati NBT!"
       },
       "edit": {
-        "help": "Edit GUI locations"
+        "help": "Modifica posizioni GUI"
       },
       "folder": {
-        "help": "Open your mods folder",
-        "error": "An error occurred trying to open the mods folder: %s"
+        "help": "Apri cartella mods",
+        "error": "Si è verificando un errore aprendo la cartella dei mods: %s"
       },
       "help": {
-        "help": "Show this help message. If a command is provided, detailed help about that command is shown.",
+        "help": "Mostra questo messaggio di aiuto. Se viene fornito un comando, verrà mostrato un aiuto dettagliato per quel comando.",
         "detailedHelp": {
           "options": {
-            "command": "the sub-command to get detailed usage for"
+            "command": "il sottocomando per ottenere un utilizzo dettagliato per"
           }
         }
       },
       "set": {
         "zealotCounter": {
-          "help": "Manually set your zealot counts",
+          "help": "Imposta manualmente il conteggio zealot",
           "detailedHelp": {
-            "description": "Manually sets counts in the zealot counter.",
+            "description": "Imposta manualmente il conteggio zealot.",
             "options": {
-              "eyes": "Lifetime summoning eyes obtained",
-              "totalZealots": "Lifetime zealots killed",
-              "zealots": "Zealots killed since the last summoning eye drop"
+              "eyes": "Totale dei Summoning eyes ottenuti",
+              "totalZealots": "Totale degli Zealots uccisi",
+              "zealots": "Zealots uccisi dall'ultimo summoning eye"
             }
           },
-          "eyesSet": "Set total summoning eye count to %number%!",
-          "totalZealotsSet": "Set total zealot count to %number%!",
-          "wrongUsage": "Invalid selection! Please choose %options%.",
-          "zealotsSet": "Set current zealot count to %number%!"
+          "eyesSet": "Imposta il conteggio totale dei summoning eyes a %number%!",
+          "totalZealotsSet": "Imposta il numero totale di zealots a %number%!",
+          "wrongUsage": "Selezione non valida! Scegli %options%.",
+          "zealotsSet": "Imposta il numero attuale di zealots a %number%!"
         }
       },
       "slayer": {
-        "help": "Manually set slayer stats, press tab for arguments",
+        "help": "Imposta manualmente i dati dello slayer, premi tab per i dettagli",
         "detailedHelp": {
-          "description": "Manually set slayer stats, press tab for arguments",
+          "description": "Imposta manualmente i dati dello slayer, premi tab per i dettagli",
           "options": {
-            "boss": "Slayer boss: \"Zombie\", \"Spider\", or \"Wolf\"",
-            "number": "Number to set the stat to",
-            "stat": "Slayer stat to change, can be \"kills\" or the name of a dropped item formatted like this: \"REVENANT_FLESH\""
+            "boss": "Slayer boss: \"Zombie\", \"Spider\", o \"Wolf\"",
+            "number": "Numero per l'impostazione dello stato",
+            "stat": "Stato dello slayer da cambiare, può essere \"kills\" o il nome di un oggetto caduto a terra così formattato:\n\"REVENANT_FLESH\""
           }
         },
-        "bossRequired": "You need to select a boss! Please choose %bosses%",
+        "bossRequired": "Devi selezionare un boss! Scegli %bosses%",
         "statRequired": "Devi selezionare uno stato. Premi tab per le opzioni.",
         "numberRequired": "Devi aggiungere il numero che vuoi.",
         "killsSet": "Kills per lo slayer %boss% impostato a %number%.",
@@ -371,9 +371,9 @@
         "invalidStat": "\"%input%\" non è un boss valido!"
       },
       "toggleActionBarLogging": {
-        "help": "§e(Dev) §7Toggle logging action bar messages",
-        "disabled": "Action bar messages will no longer be logged.",
-        "enabled": "Action bar messages will now be logged."
+        "help": "§e(Dev) §7Attiva/Disattiva la registrazione dei messaggi della barra delle azioni",
+        "disabled": "I messaggi della barra delle azioni non saranno più registrati.",
+        "enabled": "I messaggi della barra delle azioni saranno ora registrati."
       },
       "errors": {
         "wrongUsage": {
