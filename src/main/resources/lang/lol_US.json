@@ -242,9 +242,7 @@
     "effectActive": "1 Effect Activ",
     "effectsActive": "%number% Effects Activ",
     "none": "None",
-    "copyModeSet": "Teh developr copy mode haz been set 2: %mode%. Pres \"%keyName%\" 2 triggr data copy!",
-    "dungeonDeathRecordError": "Cud not record death 4 %userName%. Dis dungeon playr isnt in da registry.",
-    "dungeonPlayerHealthNotInteger": "Faild 2 update dungeon playr frum teh line \"%scoreboardLine%\". Playr health wuz not an integr."
+    "copyModeSet": "Teh developr copy mode haz been set 2: %mode%. Pres \"%keyName%\" 2 triggr data copy!"
   },
   "discordStatus": {
     "titleNone": "None",
