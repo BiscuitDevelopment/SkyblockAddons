@@ -173,7 +173,7 @@
     "hideOtherPlayersPresents": "Hide Other Player's Presents",
     "easierPresentOpening": "Open Presents Easier",
     "showSwordKills": "Show Sword Kills",
-    "compactTabList": "Compact Tab List",
+    "compactTabList": "Tab lista kicsinyítése",
     "highlightMaxEnchantments": "Highlight Special Enchantments"
   },
   "messages": {
@@ -377,8 +377,8 @@
       },
       "errors": {
         "wrongUsage": {
-          "generic": "Wrong usage!",
-          "subCommandNotFound": "The sub-command \"%sub-command%\" was not found."
+          "generic": "Helytelen használat!",
+          "subCommandNotFound": "Az al-parancs \"%sub-command%\" nem található."
         }
       }
     }
