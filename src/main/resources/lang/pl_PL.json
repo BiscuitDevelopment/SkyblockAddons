@@ -86,7 +86,7 @@
       "compact": "Uproszczony"
     },
     "disableMagicalSoupMessage": "Ukryj wiadomości Magical Mushroom Soup",
-    "zealotCounter": "Licznik Zealotów - od ostatniego oka",
+    "zealotCounter": "Zealot Counter - Count Since Last Eye",
     "tickerChargesDisplay": "Wyświetlaj Tickery/Charge",
     "tab": {
       "generalSettings": "Ustawienia ogólne"
@@ -159,9 +159,9 @@
     "hideWhenNotInCastle": "Hide When Not in the Castle/Doing Sven Quest",
     "dungeonDeathCounter": "Dungeon Death Counter",
     "showPersonalCompactorPreview": "Show Personal Compactor Preview",
-    "rockPetTracker": "Lokalizator zwierzaków- kamienie",
-    "dolphinPetTracker": "Lokalizator zwierzaków- Delfiny",
-    "dungeonsTeammateNameOverlay": "Overlay nazw osób z drużyny w Dungeonach",
+    "rockPetTracker": "Rock Pet Tracker",
+    "dolphinPetTracker": "Dolphin Pet Tracker",
+    "dungeonsTeammateNameOverlay": "Dungeons Teammate Name Overlay",
     "showExpertiseKills": "Pokaż zabójstwa eksperckie",
     "dungeonsSecretsDisplay": "Wyświetlaj sekrety Dungeonu",
     "showSkillPercentageInstead": "Pokaz procent zamiast ilości doświadczenia",
@@ -242,9 +242,7 @@
     "effectActive": "Jeden aktywny efekt",
     "effectsActive": "%number% Aktywnych efektów",
     "none": "Brak",
-    "copyModeSet": "Tryb kopiowania dewelopera został ustawiony na: %mode%. Naciśnij \"%keyName%\", aby zainicjować kopiowanie danych!",
-    "dungeonDeathRecordError": "Nie można było policzyć śmierci dla %userName%. Ten gracz lochów nie jest w rejestrze.",
-    "dungeonPlayerHealthNotInteger": "Nie udało się zaktualizować gracza lochów z linii \"%scoreboardLine%\". Życie gracza nie było liczbą całkowitą."
+    "copyModeSet": "Tryb kopiowania dewelopera został ustawiony na: %mode%. Naciśnij \"%keyName%\", aby zainicjować kopiowanie danych!"
   },
   "discordStatus": {
     "titleNone": "Brak",
@@ -331,7 +329,7 @@
         "help": "Pokazuje tę wiadomość. Jeśli polecenie zostanie dostarczone, to wyświetli się szczegółowa informacja o tym poleceniu.",
         "detailedHelp": {
           "options": {
-            "command": "pod-komenda, aby uzyskać szczegółowe użycie dla"
+            "command": "the sub-command to get detailed usage for"
           }
         }
       },
@@ -394,11 +392,11 @@
     "young": "Young",
     "strong": "Strong",
     "superior": "Superior",
-    "recentDragons": "Ostatnie Smoki:",
+    "recentDragons": "Recent Dragons:",
     "dragonsSince": "Smoki Od:",
     "aspectOfTheDragons": "AOTD",
     "enderDragonPet": "Zwierzak Smok",
-    "eyesPlaced": "Liczba położonych oczu",
+    "eyesPlaced": "Eyes Placed",
     "never": "Nigdy"
   },
   "slayerTracker": {
