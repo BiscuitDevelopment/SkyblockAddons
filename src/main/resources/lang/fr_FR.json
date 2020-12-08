@@ -242,9 +242,7 @@
     "effectActive": "1 Effet actif",
     "effectsActive": "%number% Effets actifs",
     "none": "Aucun",
-    "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!",
-    "dungeonDeathRecordError": "Could not record death for %userName%. This dungeon player isn't in the registry.",
-    "dungeonPlayerHealthNotInteger": "Failed to update a dungeon player from the line \"%scoreboardLine%\". Player health was not an integer."
+    "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!"
   },
   "discordStatus": {
     "titleNone": "Aucun",
