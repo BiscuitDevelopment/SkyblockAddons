@@ -242,9 +242,7 @@
     "effectActive": "1 actief effect",
     "effectsActive": "%number% actieve effecten",
     "none": "Geen",
-    "copyModeSet": "De ontwikkelaarskopieermodus is veranderd naar %mode%. Druk op “%keyName%” om een datakopie te activeren!",
-    "dungeonDeathRecordError": "Kon de dood van %userName% niet opnemen. Deze dungeonspeler is niet geregistreerd.",
-    "dungeonPlayerHealthNotInteger": "Kon dungeonspeler van regel \"%scoreboardLine%\" niet bijwerken. Gezondheid was geen integer."
+    "copyModeSet": "De ontwikkelaarskopieermodus is veranderd naar %mode%. Druk op “%keyName%” om een datakopie te activeren!"
   },
   "discordStatus": {
     "titleNone": "Geen",
