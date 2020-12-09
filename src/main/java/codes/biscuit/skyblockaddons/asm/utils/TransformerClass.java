@@ -63,6 +63,9 @@ public enum TransformerClass {
     EntityFX("net/minecraft/client/particle/EntityFX", "beb"),
     PotionEffect("net/minecraft/potion/PotionEffect", "pf"),
     WorldClient("net/minecraft/client/multiplayer/WorldClient", "bdb"),
+    ItemArmor("net/minecraft/item/ItemArmor", "yj"),
+    World("net/minecraft/world/World", "adm"),
+    IBlockSource("net/minecraft/dispenser/IBlockSource", "ck"),
 
     ;
 

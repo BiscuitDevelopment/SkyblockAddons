@@ -3,6 +3,7 @@ package codes.biscuit.skyblockaddons.gui.buttons;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
+import codes.biscuit.skyblockaddons.utils.DrawUtils;
 import lombok.Getter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.SoundHandler;
@@ -69,7 +70,7 @@ public class ButtonLocation extends ButtonFeature {
             boxAlpha = 120;
         }
         int boxColor = ColorCode.GRAY.getColor(boxAlpha);
-        main.getUtils().drawRect(boxXOne, boxYOne, boxXTwo, boxYTwo, boxColor);
+        DrawUtils.drawRect(boxXOne, boxYOne, boxXTwo, boxYTwo, boxColor);
 
         this.boxXOne = boxXOne;
         this.boxXTwo = boxXTwo;

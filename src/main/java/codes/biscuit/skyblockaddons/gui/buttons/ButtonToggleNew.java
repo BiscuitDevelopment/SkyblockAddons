@@ -2,6 +2,8 @@ package codes.biscuit.skyblockaddons.gui.buttons;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
+import codes.biscuit.skyblockaddons.utils.ColorUtils;
+import codes.biscuit.skyblockaddons.utils.DrawUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.GlStateManager;
@@ -60,19 +62,19 @@ public class ButtonToggleNew extends GuiButton {
             GlStateManager.color(1,1,1,1);
         }
 
-        main.getUtils().bindRGBColor(0xFF1e252e);
+        ColorUtils.bindColor(0xFF1e252e);
         mc.getTextureManager().bindTexture(TOGGLE_BORDER);
-        main.getUtils().drawModalRectWithCustomSizedTexture(xPosition, yPosition,0,0,width,height,width,height, true);
+        DrawUtils.drawModalRectWithCustomSizedTexture(xPosition, yPosition,0,0,width,height,width,height, true);
 
         boolean enabled = enabledSupplier.get();
         if (enabled) {
-            main.getUtils().bindColorInts(36, 255, 98, 255); // Green
+            ColorUtils.bindColor(36, 255, 98, 255); // Green
         } else {
-            main.getUtils().bindColorInts(222, 68, 76, 255); // Red
+            ColorUtils.bindColor(222, 68, 76, 255); // Red
         }
 
         mc.getTextureManager().bindTexture(TOGGLE_INSIDE_BACKGROUND);
-        main.getUtils().drawModalRectWithCustomSizedTexture(xPosition, yPosition,0,0,width,height,width,height, true);
+        DrawUtils.drawModalRectWithCustomSizedTexture(xPosition, yPosition,0,0,width,height,width,height, true);
 
         int startingX = getButtonStartingX(enabled);
         int slideAnimationOffset = 0;
@@ -95,7 +97,7 @@ public class ButtonToggleNew extends GuiButton {
         mc.getTextureManager().bindTexture(TOGGLE_INSIDE_CIRCLE);
         int circleSize = Math.round(height*0.6F); // 60% of the height.
         int y = Math.round(yPosition+(this.height*0.2F)); // 20% OF the height.
-        main.getUtils().drawModalRectWithCustomSizedTexture(startingX, y,0,0, circleSize, circleSize, circleSize, circleSize, true);
+        DrawUtils.drawModalRectWithCustomSizedTexture(startingX, y,0,0, circleSize, circleSize, circleSize, circleSize, true);
     }
 
     /**
