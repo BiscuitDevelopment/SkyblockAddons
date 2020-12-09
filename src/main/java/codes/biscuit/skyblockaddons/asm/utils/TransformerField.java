@@ -1,9 +1,11 @@
 package codes.biscuit.skyblockaddons.asm.utils;
 
 import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsTransformer;
+import lombok.Getter;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.tree.FieldInsnNode;
 
+@Getter
 public enum TransformerField {
 
     // GuiScreen
@@ -41,8 +43,12 @@ public enum TransformerField {
     // EntityLivingBase
     hurtTime("hurtTime", "field_70737_aN ", "au", "I"),
 
+    // EntityPlayer
+    inventory("inventory", "field_71071_by", "bi", TransformerClass.InventoryPlayer.getName()),
+
     // InventoryPlayer
     currentItem("currentItem", "field_70461_c", "c", "I"),
+    armorInventory("armorInventory", "field_70460_b", "b", "[" + TransformerClass.ItemStack.getName())
 
     ;
 

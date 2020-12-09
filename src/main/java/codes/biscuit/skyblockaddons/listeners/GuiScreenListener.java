@@ -38,8 +38,7 @@ public class GuiScreenListener {
                 Slot currentSlot = ((GuiContainer) currentScreen).getSlotUnderMouse();
 
                 if (currentSlot != null && currentSlot.getHasStack()) {
-                    DevUtils.copyNBTTagToClipboard(currentSlot.getStack().serializeNBT(),
-                            ColorCode.GREEN + "Item data was copied to clipboard!");
+                    DevUtils.copyNBTTagToClipboard(currentSlot.getStack().serializeNBT(), ColorCode.GREEN + "Item data was copied to clipboard!");
                 }
             }
         }

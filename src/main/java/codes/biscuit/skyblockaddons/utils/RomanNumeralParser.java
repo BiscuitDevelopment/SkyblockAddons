@@ -84,7 +84,7 @@ public class RomanNumeralParser {
      * @param romanNumeral String to test
      * @return Whether that string represents a valid Roman numeral
      */
-    private static boolean isNumeralValid(String romanNumeral) {
+    public static boolean isNumeralValid(String romanNumeral) {
         return NUMERAL_VALIDATION_PATTERN.matcher(romanNumeral).matches();
     }
 

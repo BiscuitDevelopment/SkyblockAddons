@@ -8,7 +8,10 @@ import codes.biscuit.skyblockaddons.utils.skyblockdata.Rune;
 import lombok.Getter;
 import net.minecraft.command.ICommandSender;
 
-import java.util.*;
+import java.util.EnumMap;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class SlayerTracker {
 
