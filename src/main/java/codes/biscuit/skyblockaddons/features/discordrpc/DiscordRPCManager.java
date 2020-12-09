@@ -35,34 +35,38 @@ public class DiscordRPCManager implements IPCListener {
     private boolean connected;
 
     public void start() {
-        try {
-            logger.info("Starting Discord RPC...");
-            if (isActive()) {
-                return;
-            }
-
-            stateLine = main.getConfigValues().getDiscordStatus();
-            detailsLine = main.getConfigValues().getDiscordDetails();
-            startTimestamp = OffsetDateTime.now();
-            client = new IPCClient(APPLICATION_ID);
-            client.setListener(this);
+        SkyblockAddons.runAsync(() -> {
             try {
-                client.connect();
-            } catch (Exception ex) {
-                logger.warn("Failed to connect to Discord RPC!");
+                logger.info("Starting Discord RPC...");
+                if (isActive()) {
+                    return;
+                }
+
+                stateLine = main.getConfigValues().getDiscordStatus();
+                detailsLine = main.getConfigValues().getDiscordDetails();
+                startTimestamp = OffsetDateTime.now();
+                client = new IPCClient(APPLICATION_ID);
+                client.setListener(this);
+                try {
+                    client.connect();
+                } catch (Exception ex) {
+                    logger.warn("Failed to connect to Discord RPC!");
+                    logger.catching(ex);
+                }
+            } catch (Throwable ex) {
+                logger.error("Discord RPC has thrown an unexpected error while trying to start...");
                 logger.catching(ex);
             }
-        } catch (Throwable ex) {
-            logger.error("Discord RPC has thrown an unexpected error while trying to start...");
-            ex.printStackTrace();
-        }
+        });
     }
 
     public void stop() {
-        if (isActive()) {
-            client.close();
-            connected = false;
-        }
+        SkyblockAddons.runAsync(() -> {
+            if (isActive()) {
+                connected = false;
+                client.close();
+            }
+        });
     }
 
     public boolean isActive() {

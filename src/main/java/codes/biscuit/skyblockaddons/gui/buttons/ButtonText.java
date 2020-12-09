@@ -1,7 +1,7 @@
 package codes.biscuit.skyblockaddons.gui.buttons;
 
-import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
+import codes.biscuit.skyblockaddons.utils.DrawUtils;
 import net.minecraft.client.renderer.GlStateManager;
 
 class ButtonText extends ButtonFeature {
@@ -17,7 +17,7 @@ class ButtonText extends ButtonFeature {
         drawRect(xPosition, yPosition, xPosition+this.width, yPosition+this.height, boxColor);
         GlStateManager.pushMatrix();
         GlStateManager.scale(scale, scale, 1);
-        SkyblockAddons.getInstance().getUtils().drawCenteredString(displayString, ((xPosition+width/2)/scale), ((yPosition+(this.height-(8*scale))/2)/scale), fontColor);
+        DrawUtils.drawCenteredText(displayString, ((xPosition+width/2)/scale), ((yPosition+(this.height-(8*scale))/2)/scale), fontColor);
         GlStateManager.disableBlend();
         GlStateManager.popMatrix();
     }

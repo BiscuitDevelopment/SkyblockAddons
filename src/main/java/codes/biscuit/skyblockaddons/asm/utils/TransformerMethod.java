@@ -67,6 +67,7 @@ public enum TransformerMethod {
 
     // EntityPlayer
     isPotionActive("isPotionActive", "func_70644_a", "a", "(Lnet/minecraft/potion/Potion;)Z","("+TransformerClass.Potion.getName()+")Z"),
+    setCurrentItemOrArmor("setCurrentItemOrArmor", "func_70062_b", "c", "(ILnet/minecraft/item/ItemStack;)V", "(I" + TransformerClass.ItemStack.getName() + ")V"),
 
     // EntityPlayerSP
     dropOneItem("dropOneItem", "func_71040_bB", "a", "(Z)Lnet/minecraft/entity/item/EntityItem;", "(Z)"+TransformerClass.EntityItem.getName()),
@@ -147,6 +148,12 @@ public enum TransformerMethod {
 
     // WorldClient
     onEntityRemoved("onEntityRemoved", "func_72847_b", "b", "(Lnet/minecraft/entity/Entity;)V", "("+TransformerClass.Entity.getName()+")V"),
+
+    // ItemArmor
+    onItemRightClick("onItemRightClick", "func_77659_a", "a", "(Lnet/minecraft/item/ItemStack;Lnet/minecraft/world/World;Lnet/minecraft/entity/player/EntityPlayer;)Lnet/minecraft/item/ItemStack;", "("+TransformerClass.ItemStack.getName()+TransformerClass.World.getName()+TransformerClass.EntityPlayer.getName()+")"+TransformerClass.ItemStack.getName()),
+
+    // BehaviorDefaultDispenseItem
+    dispenseStack("dispenseStack", "func_82487_b", "b", "(Lnet/minecraft/dispenser/IBlockSource;Lnet/minecraft/item/ItemStack;)Lnet/minecraft/item/ItemStack;", "("+TransformerClass.IBlockSource.getName()+TransformerClass.ItemStack.getName()+")"+TransformerClass.ItemStack.getName()),
     ;
 
     private String name;

@@ -4,10 +4,6 @@ import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.Message;
 import codes.biscuit.skyblockaddons.core.Translations;
 import lombok.Getter;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
 import java.net.URI;
@@ -288,7 +284,7 @@ public class EnumUtils {
                 Feature.TARANTULA_SLAYER_TRACKER, Feature.SVEN_SLAYER_TRACKER, Feature.DRAGON_STATS_TRACKER, Feature.SHOW_PERSONAL_COMPACTOR_PREVIEW, Feature.SHOW_EXPERTISE_KILLS,
                 Feature.STOP_BONZO_STAFF_SOUNDS, Feature.DISABLE_MORT_MESSAGES, Feature.DISABLE_BOSS_MESSAGES),
         IHDEVELOPER("iHDeveloper", "github.com/iHDeveloper", Feature.SHOW_DUNGEON_MILESTONE, Feature.DUNGEONS_COLLECTED_ESSENCES_DISPLAY, Feature.SHOW_DUNGEON_TEAMMATE_NAME_OVERLAY,
-                Feature.DUNGEONS_SECRETS_DISPLAY, Feature.SHOW_SALVAGE_ESSENCES_COUNTER, Feature.SHOW_SWORD_KILLS),
+                Feature.DUNGEONS_SECRETS_DISPLAY, Feature.SHOW_SALVAGE_ESSENCES_COUNTER, Feature.SHOW_SWORD_KILLS, Feature.ENCHANTMENTS_HIGHLIGHT),
         TIRELESS_TRAVELER("TirelessTraveler", "github.com/ILikePlayingGames", Feature.DUNGEON_DEATH_COUNTER),
         KAASBROODJU("kaasbroodju", "github.com/kaasbroodju", Feature.SKILL_PROGRESS_BAR, Feature.SHOW_SKILL_PERCENTAGE_INSTEAD_OF_XP, Feature.SHOW_SKILL_XP_GAINED),
         PHOUBE("Phoube", "github.com/Phoube", Feature.HIDE_OTHER_PLAYERS_PRESENTS, Feature.EASIER_PRESENT_OPENING),
@@ -317,37 +313,6 @@ public class EnumUtils {
 
         public String getUrl() {
             return "https://" + url;
-        }
-    }
-
-    public enum SkillType {
-        FARMING("Farming", Items.golden_hoe),
-        MINING("Mining", Items.diamond_pickaxe),
-        COMBAT("Combat", Items.iron_sword),
-        FORAGING("Foraging", Item.getItemFromBlock(Blocks.sapling)),
-        FISHING("Fishing", Items.fishing_rod),
-        ENCHANTING("Enchanting", Item.getItemFromBlock(Blocks.enchanting_table)),
-        ALCHEMY("Alchemy", Items.brewing_stand),
-        CARPENTRY("Carpentry", Item.getItemFromBlock(Blocks.crafting_table)),
-        RUNECRAFTING("Runecrafting", Items.magma_cream),
-        TAMING("Taming", Items.spawn_egg),
-        DUNGEONEERING("Dungeoneering", Item.getItemFromBlock(Blocks.deadbush));
-
-        private String skillName;
-        @Getter private ItemStack item;
-
-        SkillType(String skillName, Item item) {
-            this.skillName = skillName;
-            this.item = new ItemStack(item);
-        }
-
-        public static SkillType getFromString(String text) {
-            for (SkillType skillType : values()) {
-                if (skillType.skillName != null && skillType.skillName.equals(text)) {
-                    return skillType;
-                }
-            }
-            return null;
         }
     }
 

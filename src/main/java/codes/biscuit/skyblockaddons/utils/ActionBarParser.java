@@ -3,6 +3,7 @@ package codes.biscuit.skyblockaddons.utils;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Attribute;
 import codes.biscuit.skyblockaddons.core.Feature;
+import codes.biscuit.skyblockaddons.core.SkillType;
 import codes.biscuit.skyblockaddons.core.Translations;
 import codes.biscuit.skyblockaddons.misc.scheduler.Scheduler;
 import lombok.Getter;
@@ -41,7 +42,7 @@ import java.util.regex.Pattern;
 @Getter
 public class ActionBarParser {
 
-    private Pattern COLLECTIONS_CHAT_PATTERN = Pattern.compile("\\+(?<gained>[0-9,.]+) (?<skillName>[A-Za-z]+) (?<progress>\\((?<current>[0-9.,]+)/(?<total>[0-9.,]+)\\))");
+    private static final Pattern COLLECTIONS_CHAT_PATTERN = Pattern.compile("\\+(?<gained>[0-9,.]+) (?<skillName>[A-Za-z]+) (?<progress>\\((?<current>[0-9.,]+)/(?<total>[0-9.,]+)\\))");
 
     private final SkyblockAddons main;
 
@@ -225,8 +226,6 @@ public class ActionBarParser {
      * @return null or {@code skillSection} if wrong format or skill display is disabled
      */
     private String parseSkill(String skillSection) {
-        COLLECTIONS_CHAT_PATTERN = Pattern.compile("\\+(?<gained>[0-9,.]+) (?<skillName>[A-Za-z]+) (?<progress>\\((?<current>[0-9.,]+)/(?<total>[0-9.,]+)\\))");
-
         // §3+10.9 Combat (313,937.1/600,000)
         // Another Example: §5+§d30 §5Runecrafting (969/1000)
         Matcher matcher = COLLECTIONS_CHAT_PATTERN.matcher(TextUtils.stripColor(skillSection));
@@ -254,7 +253,7 @@ public class ActionBarParser {
             }
 
             main.getRenderListener().setSkillText(skillTextBuilder.toString());
-            main.getRenderListener().setSkill(EnumUtils.SkillType.getFromString(matcher.group("skillName")));
+            main.getRenderListener().setSkill(SkillType.getFromString(matcher.group("skillName")));
             main.getRenderListener().setSkillFadeOutTime(System.currentTimeMillis() + 4000);
             return null;
         }

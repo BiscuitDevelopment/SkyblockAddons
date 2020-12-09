@@ -7,6 +7,7 @@ import codes.biscuit.skyblockaddons.gui.buttons.ButtonColorBox;
 import codes.biscuit.skyblockaddons.gui.buttons.ButtonSlider;
 import codes.biscuit.skyblockaddons.gui.elements.CheckBox;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
+import codes.biscuit.skyblockaddons.utils.ColorUtils;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
@@ -82,7 +83,7 @@ public class ColorSelectionGui extends GuiScreen {
         hexColorField.setFocused(true);
 
         // Set the current color in the text box after creating it.
-        setTextBoxHex(main.getConfigValues().getColorObject(feature));
+        setTextBoxHex(main.getConfigValues().getColor(feature));
 
         if (feature.getGuiFeatureData().isColorsRestricted()) {
 
@@ -183,11 +184,11 @@ public class ColorSelectionGui extends GuiScreen {
                     yPixel > 0 && yPixel < COLOR_PICKER_IMAGE.getHeight()) {
 
                 // Get the color of the clicked pixel.
-                Color selectedColor = new Color(COLOR_PICKER_IMAGE.getRGB(xPixel, yPixel), true);
+                int selectedColor = COLOR_PICKER_IMAGE.getRGB(xPixel, yPixel);
 
                 // Choose this color.
-                if (selectedColor.getAlpha() == 255) {
-                    main.getConfigValues().setColor(feature, selectedColor.getRGB());
+                if (ColorUtils.getAlpha(selectedColor) == 255) {
+                    main.getConfigValues().setColor(feature, selectedColor);
                     setTextBoxHex(selectedColor);
 
                     main.getUtils().playSound("gui.button.press", 0.25, 1);
@@ -202,8 +203,8 @@ public class ColorSelectionGui extends GuiScreen {
         super.mouseClicked(mouseX, mouseY, mouseButton);
     }
 
-    private void setTextBoxHex(Color color) {
-        hexColorField.setText(String.format("#%02x%02x%02x", color.getRed(), color.getGreen(), color.getBlue()));
+    private void setTextBoxHex(int color) {
+        hexColorField.setText(String.format("#%02x%02x%02x", ColorUtils.getRed(color), ColorUtils.getGreen(color), ColorUtils.getBlue(color)));
     }
 
     @Override

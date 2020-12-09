@@ -96,15 +96,11 @@ public class TabEffectManager {
         powerupTimers.clear();
         IChatComponent tabFooterChatComponent = Minecraft.getMinecraft().ingameGUI.getTabList().footer;
 
-        // Convert tab footer to a String
-        StringBuilder tabFooterStringBuilder = new StringBuilder();
-        if (tabFooterChatComponent != null) {
-            for (IChatComponent line : tabFooterChatComponent.getSiblings()) {
-                tabFooterStringBuilder.append(line.getFormattedText());
-            }
+        if (tabFooterChatComponent == null) {
+            return;
         }
 
-        String tabFooterString = tabFooterStringBuilder.toString();
+        String tabFooterString = tabFooterChatComponent.getFormattedText();
         String strippedTabFooterString = TextUtils.stripColor(tabFooterString);
 
         // Match the TabFooterString for Effects
