@@ -275,18 +275,18 @@
   "commandUsage": {
     "sba": {
       "base": {
-        "help": "Open the main menu"
+        "help": "Ouvrir le menu principal"
       },
       "brand": {
-        "help": "§e(Dev) §7Show the server brand",
-        "brandOutput": "Server Brand: %brand%",
-        "notFound": "Server brand not found!"
+        "help": "§e(Dev) §7Afficher le status du serveur",
+        "brandOutput": "Nom du serveur : %brand%",
+        "notFound": "Nom du serveur introuvable !"
       },
       "copyBlock": {
         "help": "§e(Dev) §7Copies data about the block that you are looking at"
       },
       "copyEntity": {
-        "help": "§e(Dev) §7Copy NBT data for entities of the given name(s) within the given radius around the player",
+        "help": "§e(Dev) §7Copier les données NBT pour les entités indiqués dans le rayon donné autour du joueur",
         "detailedHelp": {
           "description": "Copies the NBT data of entities. The types of entities included and the radius around the player to copy data from can be customized. If no options are given, the default settings are used. The default settings are: include players, armor stands, and mobs, and a radius of 3 blocks. If the radius isn't given, the default radius is used.",
           "options": {
@@ -296,37 +296,37 @@
         }
       },
       "copySidebar": {
-        "help": "§e(Dev) §7Copy the scoreboard text",
+        "help": "§e(Dev) §7Copier le texte du tableau des scores",
         "detailedHelp": {
           "description": "Copies the text displayed in the scoreboard's sidebar display slot",
           "options": {
-            "formatted": "Determines if the formatting codes should be included when copying. Can be either \"true\" or \"false\", defaults to \"false\" if no value is provided. Formatting codes are copied if \"true\"."
+            "formatted": "Détermine si les codes de formatage doivent être inclus lors de la copie. Peut être \"true\" ou \"false\", par défaut sur \"false\" si aucune valeur est fournie. Les codes de formatage sont copiés si elle est réglé sur \"true\"."
           }
         }
       },
       "copyTabList": {
-        "help": "§e(Dev) §7Copy the tab list header and footer",
+        "help": "§e(Dev) §7Copier l'en-tête et le pied de page de la liste des joueurs",
         "detailedHelp": {
-          "description": "This command copies the header and footer of the tab player list. Formatting codes are included."
+          "description": "Cette commande copie l'en-tête et le pied de page de la liste des joueurs. Les codes de formatage sont inclus."
         }
       },
       "dev": {
-        "help": "Toggle developer mode",
+        "help": "Activer le mode développeur",
         "detailedHelp": {
-          "description": "This command toggles developer mode. This mode is meant for developers Skyblock mods/tools. It provides raw data from the game such as entity and item NBT."
+          "description": "Cette commande active le mode développeur. Ce mode est destiné aux développeurs de mods/outils Skyblock. Il fournit des données brutes du jeu telles que les entités et les NBT des objets."
         },
-        "disabled": "Developer mode disabled!",
-        "enabled": "Developer mode enabled! TIP: Press \"%keyName%\" to copy NBT data!"
+        "disabled": "Mode développeur désactivé !",
+        "enabled": "Mode développeur activé ! Astuce : Appuyez sur \"%keyName%\" pour copier les données NBT !"
       },
       "edit": {
-        "help": "Edit GUI locations"
+        "help": "Modifier l'interface"
       },
       "folder": {
-        "help": "Open your mods folder",
-        "error": "An error occurred trying to open the mods folder: %s"
+        "help": "Ouvrir le dossier des mods",
+        "error": "Une erreur est survenue lors de l'ouverture du dossier des mods : %s"
       },
       "help": {
-        "help": "Show this help message. If a command is provided, detailed help about that command is shown.",
+        "help": "Affiche ce message d'aide. Si une commande est fournie, une aide détaillée sur cette commande est affichée.",
         "detailedHelp": {
           "options": {
             "command": "the sub-command to get detailed usage for"
