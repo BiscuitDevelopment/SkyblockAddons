@@ -194,7 +194,7 @@
     "directDownload": "DIRECT DOWNLOAD LINK",
     "openModFolder": "OPEN MODS FOLDER",
     "joinTheDiscord": "DISCORD LINK",
-    "newUpdateAvailable": "A new update (%version%) is available!",
+    "newUpdateAvailable": "A new update (%version%) is out of the oven!",
     "update": {
       "majorAvailable": "A new major update (%version%) is available! The link for the download can be found in chat.",
       "patchAvailable": "A new patch update (%version%) is available! Look in chat for download options!"
