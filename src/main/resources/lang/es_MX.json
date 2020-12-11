@@ -283,7 +283,7 @@
         "notFound": "¡Marca del servidor no encontrado!"
       },
       "copyBlock": {
-        "help": "§e(Dev) §7Copies data about the block that you are looking at"
+        "help": "§e(Des) §7Copia los datos sobre el bloque que estas mirando"
       },
       "copyEntity": {
         "help": "§e(Des) §7Copia datos NBT para entidades del nombre(s) dentro de un radio específico alrededor del jugador",
@@ -291,7 +291,7 @@
           "description": "Copia los datos NBT de las entidades. Los tipos de entidades incluidas y el radio alrededor del reproductor para copiar los datos se pueden personalizar. Si no se dan opciones, se utilizan las configuraciones predeterminadas. La configuración predeterminada es: incluir jugadores, soportes de armadura y mobs, y un radio de 3 bloques. Si no se proporciona el radio, se utiliza el radio predeterminado.",
           "options": {
             "entityNames": "Names of the types of entities you want to copy data for (e.g. Player,Creeper). Press \"Tab\" after typing the command for a full list. Separate multiple names with commas, names are case-sensitive.",
-            "radius": "The radius (in blocks) around the player to copy entity NBT data from"
+            "radius": "El radio (en bloques) alrededor del jugador para copiar datos NBT de las entidades"
           }
         }
       },
