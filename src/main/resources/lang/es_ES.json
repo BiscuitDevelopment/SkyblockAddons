@@ -335,48 +335,48 @@
       },
       "set": {
         "zealotCounter": {
-          "help": "Manually set your zealot counts",
+          "help": "Configura manualmente tu cuenta de zealots",
           "detailedHelp": {
-            "description": "Manually sets counts in the zealot counter.",
+            "description": "Defina manualmente la cuenta en el contador de zealots.",
             "options": {
-              "eyes": "Lifetime summoning eyes obtained",
-              "totalZealots": "Lifetime zealots killed",
-              "zealots": "Zealots killed since the last summoning eye drop"
+              "eyes": "Cantidad total de Summoning Eyes obtenidos",
+              "totalZealots": "Cantidad total de zealots matados",
+              "zealots": "Zealots matados desde el último Summoning Eye"
             }
           },
-          "eyesSet": "Set total summoning eye count to %number%!",
-          "totalZealotsSet": "Set total zealot count to %number%!",
-          "wrongUsage": "Invalid selection! Please choose %options%.",
-          "zealotsSet": "Set current zealot count to %number%!"
+          "eyesSet": "¡El contador de Summoning Eyes ha sido establecido a %number%!",
+          "totalZealotsSet": "¡El contador de zealots ha sido establecido a %number%!",
+          "wrongUsage": "¡Selección inválida! Por favor, elije %options%.",
+          "zealotsSet": "¡El contador de zealots actual ha sido establecido a %number%!"
         }
       },
       "slayer": {
-        "help": "Manually set slayer stats, press tab for arguments",
+        "help": "Establecer manualmente estadísticas de slayer, presiona tab para ver argumentos",
         "detailedHelp": {
-          "description": "Manually set slayer stats, press tab for arguments",
+          "description": "Establecer manualmente estadísticas de slayer, presiona tab para ver argumentos",
           "options": {
-            "boss": "Slayer boss: \"Zombie\", \"Spider\", or \"Wolf\"",
-            "number": "Number to set the stat to",
-            "stat": "Slayer stat to change, can be \"kills\" or the name of a dropped item formatted like this: \"REVENANT_FLESH\""
+            "boss": "Boss de Slayer: \"Zombie\", \"Spider\", or \"Wolf\"",
+            "number": "Número al que establecer la estadística",
+            "stat": "Estadística de slayer para cambiar, puede ser \"kills\" o el nombre de un objeto obtenido de slayers formateado como: \"REVENANT_FLESH\""
           }
         },
-        "bossRequired": "You need to select a boss! Please choose %bosses%",
-        "statRequired": "You need to select a stat. Press tab for options.",
-        "numberRequired": "You need to add the number you want.",
-        "killsSet": "Kills for slayer %boss% was set to %number%.",
-        "statSet": "Statistic %stat% for slayer %boss% was set to %number%.",
-        "invalidBoss": "\"%input%\" is not a valid statistic!",
-        "invalidStat": "\"%input%\" is not a valid boss!"
+        "bossRequired": "¡Necesitas seleccionar un boss! Por favor, escoge %bosses%",
+        "statRequired": "Necesitas escoger una estadística. Presiona tab para opciones.",
+        "numberRequired": "Necesitas añadir el número que quieres.",
+        "killsSet": "Kills para slayer %boss% ha sido establecido a %number%.",
+        "statSet": "Estadística %stat% para slayer %boss% ha sido establecida a %number%.",
+        "invalidBoss": "¡\"%input%\" no es una estadística válida!",
+        "invalidStat": "¡\"%input%\" no es un boss válido!"
       },
       "toggleActionBarLogging": {
-        "help": "§e(Dev) §7Toggle logging action bar messages",
-        "disabled": "Action bar messages will no longer be logged.",
-        "enabled": "Action bar messages will now be logged."
+        "help": "§e(Des) §7Alternar el registro de los mensajes de la barra de acción",
+        "disabled": "Mensajes de la barra de acción ahora no serán registrados.",
+        "enabled": "Los mensajes de la barra de acción ahora se registrarán."
       },
       "errors": {
         "wrongUsage": {
-          "generic": "Wrong usage!",
-          "subCommandNotFound": "The sub-command \"%sub-command%\" was not found."
+          "generic": "¡Uso incorrecto!",
+          "subCommandNotFound": "El sub-comando \"%sub-command%\" no se encontró."
         }
       }
     }
