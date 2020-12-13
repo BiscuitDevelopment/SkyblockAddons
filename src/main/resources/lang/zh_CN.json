@@ -131,8 +131,8 @@
     "hideSvenPupNametags": "隐藏 Sven Pup 的名称标签",
     "turnAllFeaturesChroma": "为所有功能启用渐变色",
     "dungeonMapDisplay": "地下城地图显示",
-    "rotateMap": "Rotate The Map With Your Player's Rotation",
-    "centerRotationOnYourPlayer": "Rotate Around Your Player's Marker",
+    "rotateMap": "旋转地图至玩家方向",
+    "centerRotationOnYourPlayer": "使旋转中心围绕玩家",
     "mapZoom": "地图缩放",
     "glowingDroppedItems": "标记掉落物",
     "glowingDungeonTeammates": "在地下城中标记队友",
@@ -174,7 +174,7 @@
     "easierPresentOpening": "更容易的打开礼物",
     "showSwordKills": "显示剑击杀数",
     "compactTabList": "Compact Tab List",
-    "highlightMaxEnchantments": "Highlight Special Enchantments"
+    "highlightMaxEnchantments": "高亮特殊附魔"
   },
   "messages": {
     "enchants": "附魔",
@@ -275,18 +275,18 @@
   "commandUsage": {
     "sba": {
       "base": {
-        "help": "Open the main menu"
+        "help": "打开主菜单"
       },
       "brand": {
-        "help": "§e(Dev) §7Show the server brand",
-        "brandOutput": "Server Brand: %brand%",
-        "notFound": "Server brand not found!"
+        "help": "§e(开发者) §7显示服务端名称",
+        "brandOutput": "服务端：%brand%",
+        "notFound": "无法检测到服务端！"
       },
       "copyBlock": {
         "help": "§e(Dev) §7Copies data about the block that you are looking at"
       },
       "copyEntity": {
-        "help": "§e(Dev) §7Copy NBT data for entities of the given name(s) within the given radius around the player",
+        "help": "§e(开发者) §7复制玩家附近指定范围内指定名称的实体 NBT",
         "detailedHelp": {
           "description": "Copies the NBT data of entities. The types of entities included and the radius around the player to copy data from can be customized. If no options are given, the default settings are used. The default settings are: include players, armor stands, and mobs, and a radius of 3 blocks. If the radius isn't given, the default radius is used.",
           "options": {
@@ -296,7 +296,7 @@
         }
       },
       "copySidebar": {
-        "help": "§e(Dev) §7Copy the scoreboard text",
+        "help": "§e(开发者) §7复制计分板文本",
         "detailedHelp": {
           "description": "Copies the text displayed in the scoreboard's sidebar display slot",
           "options": {
