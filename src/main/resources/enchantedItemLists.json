@@ -1,5 +1,5 @@
 {
-  "enchantedItemIds": [
+  "blacklistedIDs": [
     "ENCHANTED_ACACIA_LOG",
     "ENCHANTED_BIRCH_LOG",
     "ENCHANTED_BONE_BLOCK",
@@ -41,6 +41,10 @@
     "ENCHANTED_WET_SPONGE",
     "ENCHANTED_WOOL",
     "WEIRD_TUBA"
+  ],
+  "whitelistedIDs": [
+    "BASKET_OF_SEEDS",
+    "PRISMAPUMP"
   ],
   "rarityLimit": "RARE"
 }

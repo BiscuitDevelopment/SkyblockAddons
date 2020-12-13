@@ -2,8 +2,9 @@ package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.OnlineData;
-import codes.biscuit.skyblockaddons.features.enchantedItemBlacklist.EnchantedItemBlacklist;
+import codes.biscuit.skyblockaddons.features.enchantedItemBlacklist.EnchantedItemLists;
 import codes.biscuit.skyblockaddons.features.enchantedItemBlacklist.EnchantedItemPlacementBlocker;
+import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsTransformer;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.stream.JsonReader;
@@ -33,11 +34,15 @@ public class DataUtils {
 
     /**
      * This method reads the data files from the mod's resources and fetches copies of
-     * the same files from a server, which replaces the local ones.
+     * the same files from a server, which replaces the local ones. If the mod is running in a development environment,
+     * local files will be used.
      */
     public static void readLocalAndFetchOnline() {
         readLocalFileData();
-        fetchFromOnline();
+
+        if (!SkyblockAddonsTransformer.isDeobfuscated()) {
+            fetchFromOnline();
+        }
     }
 
     /**
@@ -47,11 +52,11 @@ public class DataUtils {
         SkyblockAddons main = SkyblockAddons.getInstance();
 
         // Enchanted Item Blacklist
-        InputStream inputStream = DataUtils.class.getResourceAsStream("/enchantedItemBlacklist.json");
+        InputStream inputStream = DataUtils.class.getResourceAsStream("/enchantedItemLists.json");
         try (JsonReader jsonReader = new JsonReader(new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8)))) {
-            EnchantedItemPlacementBlocker.setBlacklist(GSON.fromJson(jsonReader, EnchantedItemBlacklist.class));
+            EnchantedItemPlacementBlocker.setItemLists(GSON.fromJson(jsonReader, EnchantedItemLists.class));
         } catch (Exception ex) {
-            SkyblockAddons.getLogger().error("An error occurred while reading local enchanted item blacklist!");
+            SkyblockAddons.getLogger().error("An error occurred while reading local enchanted item lists!");
         }
 
         // Online Data
@@ -71,29 +76,29 @@ public class DataUtils {
         SkyblockAddons main = SkyblockAddons.getInstance();
 
         try (CloseableHttpClient httpClient = HttpClientBuilder.create().setUserAgent(Utils.USER_AGENT).build()) {
-            HttpGet enchantedItemBlacklistGet = new HttpGet("https://raw.githubusercontent.com/BiscuitDevelopment/" +
-                    "SkyblockAddons/development/src/main/resources/enchantedItemBlacklist.json");
+            HttpGet enchantedItemListsGet = new HttpGet("https://raw.githubusercontent.com/BiscuitDevelopment/" +
+                    "SkyblockAddons/development/src/main/resources/enchantedItemLists.json");
             HttpGet onlineDataGet = new HttpGet("https://raw.githubusercontent.com/BiscuitDevelopment/SkyblockAddons/"
                     + (SkyblockAddons.VERSION.contains("b") ? "development" : "master") + "/src/main/resources/data.json");
             HttpGet seaCreaturesGet = new HttpGet("https://raw.githubusercontent.com/BiscuitDevelopment/SkyblockAddons-Data/main/fishing/seaCreatures.json");
 
             // Enchanted Item Blacklist
-            logger.info("Trying to fetch enchanted item blacklist from the server...");
-            EnchantedItemBlacklist receivedBlacklist = httpClient.execute(enchantedItemBlacklistGet, response -> {
+            logger.info("Trying to fetch enchanted item lists from the server...");
+            EnchantedItemLists receivedBlacklist = httpClient.execute(enchantedItemListsGet, response -> {
                 int status = response.getStatusLine().getStatusCode();
 
                 if (status == 200) {
                     HttpEntity entity = response.getEntity();
                     JsonReader jsonReader = new JsonReader(new InputStreamReader(entity.getContent(), StandardCharsets.UTF_8));
 
-                    return GSON.fromJson(jsonReader, EnchantedItemBlacklist.class);
+                    return GSON.fromJson(jsonReader, EnchantedItemLists.class);
                 } else {
                     throw new ClientProtocolException("Unexpected response status: " + status);
                 }
             });
             if (receivedBlacklist != null) {
-                logger.info("Successfully fetched enchanted item blacklist!");
-                EnchantedItemPlacementBlocker.setBlacklist(receivedBlacklist);
+                logger.info("Successfully fetched enchanted item lists!");
+                EnchantedItemPlacementBlocker.setItemLists(receivedBlacklist);
             }
 
             // Online Data

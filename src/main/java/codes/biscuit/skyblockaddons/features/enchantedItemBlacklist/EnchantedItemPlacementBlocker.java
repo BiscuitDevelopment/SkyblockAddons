@@ -5,6 +5,7 @@ import codes.biscuit.skyblockaddons.core.ItemRarity;
 import codes.biscuit.skyblockaddons.core.Location;
 import codes.biscuit.skyblockaddons.utils.ItemUtils;
 import com.google.common.collect.Lists;
+import lombok.NonNull;
 import lombok.Setter;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
@@ -21,15 +22,16 @@ import java.util.ArrayList;
  */
 public class EnchantedItemPlacementBlocker {
 
-    private static final ArrayList<Block> INTERACTIVE_BLOCKS = Lists.newArrayList(Blocks.acacia_door, Blocks.anvil, Blocks.birch_door,
-            Blocks.brewing_stand, Blocks.chest, Blocks.crafting_table, Blocks.dark_oak_door, Blocks.enchanting_table, Blocks.furnace,
-            Blocks.iron_door, Blocks.iron_trapdoor, Blocks.jungle_door, Blocks.lever, Blocks.lit_furnace, Blocks.oak_door, Blocks.stone_button,
-            Blocks.trapdoor, Blocks.trapped_chest, Blocks.wooden_button);
+    private static final ArrayList<Block> INTERACTIVE_BLOCKS = Lists.newArrayList(Blocks.acacia_door, Blocks.anvil, Blocks.beacon,
+            Blocks.birch_door, Blocks.brewing_stand, Blocks.chest, Blocks.crafting_table, Blocks.dark_oak_door, Blocks.dispenser,
+            Blocks.dropper, Blocks.enchanting_table, Blocks.furnace, Blocks.hopper, Blocks.iron_door, Blocks.iron_trapdoor,
+            Blocks.jungle_door, Blocks.lever, Blocks.lit_furnace, Blocks.oak_door, Blocks.stone_button, Blocks.trapdoor,
+            Blocks.trapped_chest, Blocks.wooden_button);
 
     private static final ArrayList<Class<?>> CLASSES_OF_ITEMS_THAT_CAN_BE_PLACED = Lists.newArrayList(ItemBucket.class, ItemRedstone.class,
             ItemReed.class, ItemSeedFood.class, ItemSeeds.class, ItemSkull.class);
 
-    @Setter private static EnchantedItemBlacklist blacklist;
+    @Setter private static EnchantedItemLists itemLists;
 
     /**
      * Determine if the placement of this item should be blocked.
@@ -38,11 +40,7 @@ public class EnchantedItemPlacementBlocker {
      * @param interactEvent the {@code PlayerInteractEvent} that was triggered when the player used the item
      * @return {@code true} if the usage should be blocked, {@code false} otherwise.
      */
-    public static boolean shouldBlockPlacement(ItemStack itemStack, PlayerInteractEvent interactEvent) {
-        if (itemStack == null) {
-            throw new NullPointerException();
-        }
-
+    public static boolean shouldBlockPlacement(@NonNull ItemStack itemStack, PlayerInteractEvent interactEvent) {
         String heldItemId = ItemUtils.getSkyBlockItemID(itemStack);
 
         // Don't block non-Skyblock items.
@@ -57,7 +55,13 @@ public class EnchantedItemPlacementBlocker {
          */
         if (SkyblockAddons.getInstance().getUtils().getLocation() == Location.ISLAND && interactEvent.action != PlayerInteractEvent.Action.LEFT_CLICK_BLOCK
                 && canBePlaced(itemStack.getItem())) {
-            for (String blacklistItemId : blacklist.enchantedItemIds) {
+            for (String whitelistedItemId : itemLists.whitelistedIDs) {
+                if (heldItemId.equals(whitelistedItemId)) {
+                    return false;
+                }
+            }
+
+            for (String blacklistItemId : itemLists.blacklistedIDs) {
                 if (heldItemId.equals(blacklistItemId)) {
                     // If the item is a material for a recipe, placement will be blocked server-side.
                     if (!ItemUtils.isMaterialForRecipe(itemStack)) {
@@ -91,7 +95,7 @@ public class EnchantedItemPlacementBlocker {
              ItemReed is included because it's the class of some blocks like flowerpots and repeaters.
              */
             if (rarity != null && interactEvent.action == PlayerInteractEvent.Action.RIGHT_CLICK_BLOCK && itemStack.isItemEnchanted() &&
-                    blacklist.rarityLimit.compareTo(rarity) <= 0) {
+                    itemLists.rarityLimit.compareTo(rarity) <= 0) {
                 /*
                  If the player right clicks on an interactive block like a chest, the item won't be used.
                  The player will activate the block instead.
