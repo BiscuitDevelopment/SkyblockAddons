@@ -132,7 +132,7 @@
     "turnAllFeaturesChroma": "Colocar todas as opções em chroma",
     "dungeonMapDisplay": "Mostrar o mapa da Dungeon",
     "rotateMap": "Rodar o mapa de acordo com a orientação do jogador",
-    "centerRotationOnYourPlayer": "Rotate Around Your Player's Marker",
+    "centerRotationOnYourPlayer": "Rodar à volta da posição do teu jogador",
     "mapZoom": "Zoom do mapa",
     "glowingDroppedItems": "Brilho nos itens no chão",
     "glowingDungeonTeammates": "Brilho dos colegas de equipa",
@@ -174,7 +174,7 @@
     "easierPresentOpening": "Abrir presentes mais facilmente",
     "showSwordKills": "Mostrar kills com a espada",
     "compactTabList": "Lista de jogadores compacta",
-    "highlightMaxEnchantments": "Highlight Special Enchantments"
+    "highlightMaxEnchantments": "Destacar encantamentos especiais"
   },
   "messages": {
     "enchants": "encantamentos",
@@ -278,9 +278,9 @@
         "help": "Abrir o menu principal"
       },
       "brand": {
-        "help": "§e(Dev) §7Show the server brand",
-        "brandOutput": "Server Brand: %brand%",
-        "notFound": "Server brand not found!"
+        "help": "§e(Program) §7Mostrar a marca do servidor",
+        "brandOutput": "Marca do servidor: %brand%",
+        "notFound": "Não foi possível encontrar a marca do servidor!"
       },
       "copyBlock": {
         "help": "§e(Dev) §7Copies data about the block that you are looking at"
@@ -296,7 +296,7 @@
         }
       },
       "copySidebar": {
-        "help": "§e(Dev) §7Copy the scoreboard text",
+        "help": "§e(Program) §7Copiar o texto da tabela lateral",
         "detailedHelp": {
           "description": "Copies the text displayed in the scoreboard's sidebar display slot",
           "options": {
@@ -311,43 +311,43 @@
         }
       },
       "dev": {
-        "help": "Toggle developer mode",
+        "help": "Ativar o modo de programador",
         "detailedHelp": {
           "description": "This command toggles developer mode. This mode is meant for developers Skyblock mods/tools. It provides raw data from the game such as entity and item NBT."
         },
-        "disabled": "Developer mode disabled!",
+        "disabled": "Modo de programador desativado!",
         "enabled": "Developer mode enabled! TIP: Press \"%keyName%\" to copy NBT data!"
       },
       "edit": {
-        "help": "Edit GUI locations"
+        "help": "Editar localizações da GUI"
       },
       "folder": {
-        "help": "Open your mods folder",
+        "help": "Abre a pasta mods",
         "error": "An error occurred trying to open the mods folder: %s"
       },
       "help": {
         "help": "Show this help message. If a command is provided, detailed help about that command is shown.",
         "detailedHelp": {
           "options": {
-            "command": "the sub-command to get detailed usage for"
+            "command": "o comando para o qual desejas obter informação detalhada"
           }
         }
       },
       "set": {
         "zealotCounter": {
-          "help": "Manually set your zealot counts",
+          "help": "Define as tuas contagens de zealots manualmente",
           "detailedHelp": {
-            "description": "Manually sets counts in the zealot counter.",
+            "description": "Define manualmente os valores no contador de zealots.",
             "options": {
-              "eyes": "Lifetime summoning eyes obtained",
-              "totalZealots": "Lifetime zealots killed",
+              "eyes": "Total de summoning eyes obtidos",
+              "totalZealots": "Total de zealots mortos",
               "zealots": "Zealots killed since the last summoning eye drop"
             }
           },
-          "eyesSet": "Set total summoning eye count to %number%!",
-          "totalZealotsSet": "Set total zealot count to %number%!",
+          "eyesSet": "A contagem total de summoning eyes foi definida para %number%!",
+          "totalZealotsSet": "A contagem total de zealots foi definida para %number%!",
           "wrongUsage": "Invalid selection! Please choose %options%.",
-          "zealotsSet": "Set current zealot count to %number%!"
+          "zealotsSet": "A contagem atual de zealots foi definida para %number%!"
         }
       },
       "slayer": {
@@ -355,23 +355,23 @@
         "detailedHelp": {
           "description": "Manually set slayer stats, press tab for arguments",
           "options": {
-            "boss": "Slayer boss: \"Zombie\", \"Spider\", or \"Wolf\"",
-            "number": "Number to set the stat to",
+            "boss": "Boss do slayer: \"Zombie\", \"Spider\" ou \"Wolf\"",
+            "number": "Número para o qual será definido a estatística",
             "stat": "Slayer stat to change, can be \"kills\" or the name of a dropped item formatted like this: \"REVENANT_FLESH\""
           }
         },
         "bossRequired": "You need to select a boss! Please choose %bosses%",
         "statRequired": "You need to select a stat. Press tab for options.",
-        "numberRequired": "You need to add the number you want.",
+        "numberRequired": "Precisas de adicionar o número que desejas.",
         "killsSet": "Kills for slayer %boss% was set to %number%.",
         "statSet": "Statistic %stat% for slayer %boss% was set to %number%.",
-        "invalidBoss": "\"%input%\" is not a valid statistic!",
-        "invalidStat": "\"%input%\" is not a valid boss!"
+        "invalidBoss": "\"%input%\" não é uma estatística válida!",
+        "invalidStat": "\"%input%\" não é um boss válido!"
       },
       "toggleActionBarLogging": {
         "help": "§e(Dev) §7Toggle logging action bar messages",
         "disabled": "Action bar messages will no longer be logged.",
-        "enabled": "Action bar messages will now be logged."
+        "enabled": "As mensagens da barra de ação serão agora registadas."
       },
       "errors": {
         "wrongUsage": {
