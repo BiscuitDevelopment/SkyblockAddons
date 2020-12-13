@@ -131,8 +131,8 @@
     "hideSvenPupNametags": "Cacher les noms des chiots de Sven",
     "turnAllFeaturesChroma": "Activer toutes les fonctionnalités Chroma",
     "dungeonMapDisplay": "Affichage de la carte du donjon",
-    "rotateMap": "Rotate The Map With Your Player's Rotation",
-    "centerRotationOnYourPlayer": "Rotate Around Your Player's Marker",
+    "rotateMap": "Orienter la carte avec la position du joueur",
+    "centerRotationOnYourPlayer": "Centrer la rotation autour de votre joueur",
     "mapZoom": "Zoom de carte",
     "glowingDroppedItems": "Rendre en surbrillance les items au sol",
     "glowingDungeonTeammates": "Rendre en surbrillance les coéquipiers",
@@ -173,8 +173,8 @@
     "hideOtherPlayersPresents": "Cacher les cadeaux des autres joueurs",
     "easierPresentOpening": "Ouvrir les cadeaux plus facilement",
     "showSwordKills": "Montrer les morts par l'épée",
-    "compactTabList": "Compact Tab List",
-    "highlightMaxEnchantments": "Highlight Special Enchantments"
+    "compactTabList": "Liste du Tab Compacte",
+    "highlightMaxEnchantments": "Surlignez les enchantements spéciaux"
   },
   "messages": {
     "enchants": "Enchantements",
@@ -242,7 +242,7 @@
     "effectActive": "1 Effet actif",
     "effectsActive": "%number% Effets actifs",
     "none": "Aucun",
-    "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!"
+    "copyModeSet": "Le mode développeur à été mis sur : %mode%. Pressez \"%keyName%\" pour effectuer une copie de donnée !"
   },
   "discordStatus": {
     "titleNone": "Aucun",
@@ -283,22 +283,22 @@
         "notFound": "Nom du serveur introuvable !"
       },
       "copyBlock": {
-        "help": "§e(Dev) §7Copies data about the block that you are looking at"
+        "help": "§e(Dev) §7 Copie les données du bloc que vous regardez"
       },
       "copyEntity": {
         "help": "§e(Dev) §7Copier les données NBT pour les entités indiqués dans le rayon donné autour du joueur",
         "detailedHelp": {
-          "description": "Copies the NBT data of entities. The types of entities included and the radius around the player to copy data from can be customized. If no options are given, the default settings are used. The default settings are: include players, armor stands, and mobs, and a radius of 3 blocks. If the radius isn't given, the default radius is used.",
+          "description": "Copie les données NBT des entités. Les types d'entités et le rayon autour du joueur peuvent être personnalisés. Si aucune option n'est fournie, les paramètres par défaut seront utilisés. Les paramètres par défaut sont : les joueurs, les porte-armures et les monstres dans un rayon de 3 blocs. Si le rayon n'est pas donné, la valeur par défaut est utilisée.",
           "options": {
-            "entityNames": "Names of the types of entities you want to copy data for (e.g. Player,Creeper). Press \"Tab\" after typing the command for a full list. Separate multiple names with commas, names are case-sensitive.",
-            "radius": "The radius (in blocks) around the player to copy entity NBT data from"
+            "entityNames": "Noms des types d'entités dont vous voulez copier les données (par exemple : Joueur,Creeper). Appuyez sur \"Tab\" après avoir tapé la commande pour une liste complète. Séparer les multiples noms avec des virgules, les noms sont sensibles aux majuscules.",
+            "radius": "Le rayon (en blocks) autour du joueur pour copier les données NBT des entités"
           }
         }
       },
       "copySidebar": {
         "help": "§e(Dev) §7Copier le texte du tableau des scores",
         "detailedHelp": {
-          "description": "Copies the text displayed in the scoreboard's sidebar display slot",
+          "description": "Copie le texte affiché dans le tableau à droite",
           "options": {
             "formatted": "Détermine si les codes de formatage doivent être inclus lors de la copie. Peut être \"true\" ou \"false\", par défaut sur \"false\" si aucune valeur est fournie. Les codes de formatage sont copiés si elle est réglé sur \"true\"."
           }
@@ -329,54 +329,54 @@
         "help": "Affiche ce message d'aide. Si une commande est fournie, une aide détaillée sur cette commande est affichée.",
         "detailedHelp": {
           "options": {
-            "command": "the sub-command to get detailed usage for"
+            "command": "la sous-commande pour obtenir une utilisation détaillée pour"
           }
         }
       },
       "set": {
         "zealotCounter": {
-          "help": "Manually set your zealot counts",
+          "help": "Définir manuellement le nombre de zealot",
           "detailedHelp": {
-            "description": "Manually sets counts in the zealot counter.",
+            "description": "Définir manuellement le nombre de zealot dans le compteur.",
             "options": {
-              "eyes": "Lifetime summoning eyes obtained",
-              "totalZealots": "Lifetime zealots killed",
-              "zealots": "Zealots killed since the last summoning eye drop"
+              "eyes": "Yeux d'invocation total obtenu",
+              "totalZealots": "Total de zealots tué",
+              "zealots": "Zealots tués depuis le dernier œil d'invocation obtenu"
             }
           },
-          "eyesSet": "Set total summoning eye count to %number%!",
-          "totalZealotsSet": "Set total zealot count to %number%!",
-          "wrongUsage": "Invalid selection! Please choose %options%.",
-          "zealotsSet": "Set current zealot count to %number%!"
+          "eyesSet": "Définir le nombre total d'yeux d'invocation à %number%!",
+          "totalZealotsSet": "Définir le nombre total de zealot à %number%!",
+          "wrongUsage": "Sélection invalide! Veuillez choisir %options%.",
+          "zealotsSet": "Définir le nombre actuel de zealot à %number%!"
         }
       },
       "slayer": {
-        "help": "Manually set slayer stats, press tab for arguments",
+        "help": "Régler manuellement les stats slayer, appuyer sur tab pour les arguments",
         "detailedHelp": {
-          "description": "Manually set slayer stats, press tab for arguments",
+          "description": "Régler manuellement les stats slayer, appuyer sur tab pour les arguments",
           "options": {
-            "boss": "Slayer boss: \"Zombie\", \"Spider\", or \"Wolf\"",
-            "number": "Number to set the stat to",
-            "stat": "Slayer stat to change, can be \"kills\" or the name of a dropped item formatted like this: \"REVENANT_FLESH\""
+            "boss": "Slayer boss: \"Zombie\", \"Spider\", ou \"Wolf\"",
+            "number": "Valeur à appliquer à la statistique",
+            "stat": "Statistique Slayer à modifier, peut être \"kills\" ou le nom d'un objet donné et formulé comme ceci: \"REVENANT_FLESH\""
           }
         },
-        "bossRequired": "You need to select a boss! Please choose %bosses%",
-        "statRequired": "You need to select a stat. Press tab for options.",
-        "numberRequired": "You need to add the number you want.",
-        "killsSet": "Kills for slayer %boss% was set to %number%.",
-        "statSet": "Statistic %stat% for slayer %boss% was set to %number%.",
-        "invalidBoss": "\"%input%\" is not a valid statistic!",
-        "invalidStat": "\"%input%\" is not a valid boss!"
+        "bossRequired": "Vous devez sélectionner un boss ! SVP choisissez %bosses%",
+        "statRequired": "Vous devez sélectionner une stat. Appuyez sur tab pour les options.",
+        "numberRequired": "Vous devez ajouter le nombre que vous souhaitez.",
+        "killsSet": "Kills pour les slayer %boss% a été modifié à %number%.",
+        "statSet": "La statistique %stat% pour le slayer %boss% a été modifié à %number%.",
+        "invalidBoss": "%input% n'est pas une statistique valide !",
+        "invalidStat": "%input% n'est pas un boss valide !"
       },
       "toggleActionBarLogging": {
-        "help": "§e(Dev) §7Toggle logging action bar messages",
-        "disabled": "Action bar messages will no longer be logged.",
-        "enabled": "Action bar messages will now be logged."
+        "help": "§e(Dev) §7Activer la sauvegarde des messages de la barre d'action",
+        "disabled": "Les messages de la barre d'action ne seront plus sauvegardés.",
+        "enabled": "Les messages de la barre d'action seront maintenant sauvegardés."
       },
       "errors": {
         "wrongUsage": {
-          "generic": "Wrong usage!",
-          "subCommandNotFound": "The sub-command \"%sub-command%\" was not found."
+          "generic": "Mauvaise utilisation!",
+          "subCommandNotFound": "La sous-commande \"%sub-command%\" est introuvable."
         }
       }
     }
