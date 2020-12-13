@@ -363,7 +363,7 @@
         "bossRequired": "You need to select a boss! Please choose %bosses%",
         "statRequired": "You need to select a stat. Press tab for options.",
         "numberRequired": "Precisas de adicionar o número que desejas.",
-        "killsSet": "Kills for slayer %boss% was set to %number%.",
+        "killsSet": "As kills para o slayer de %boss% foram definidas para %number%.",
         "statSet": "Statistic %stat% for slayer %boss% was set to %number%.",
         "invalidBoss": "\"%input%\" não é uma estatística válida!",
         "invalidStat": "\"%input%\" não é um boss válido!"
