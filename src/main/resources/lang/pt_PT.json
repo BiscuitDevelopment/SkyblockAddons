@@ -346,7 +346,7 @@
           },
           "eyesSet": "A contagem total de summoning eyes foi definida para %number%!",
           "totalZealotsSet": "A contagem total de zealots foi definida para %number%!",
-          "wrongUsage": "Invalid selection! Please choose %options%.",
+          "wrongUsage": "Seleção inválida! Escolhe %options%.",
           "zealotsSet": "A contagem atual de zealots foi definida para %number%!"
         }
       },
