@@ -351,9 +351,9 @@
         }
       },
       "slayer": {
-        "help": "Manually set slayer stats, press tab for arguments",
+        "help": "Define manualmente as estatísticas do slayer. Carrega no tab para ver os argumentos",
         "detailedHelp": {
-          "description": "Manually set slayer stats, press tab for arguments",
+          "description": "Define manualmente as estatísticas do slayer. Carrega no tab para ver os argumentos",
           "options": {
             "boss": "Boss do slayer: \"Zombie\", \"Spider\" ou \"Wolf\"",
             "number": "Número para o qual será definido a estatística",
