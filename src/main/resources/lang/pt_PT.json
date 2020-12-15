@@ -242,7 +242,7 @@
     "effectActive": "1 efeito ativo",
     "effectsActive": "%number% efeitos ativos",
     "none": "Nenhum",
-    "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!"
+    "copyModeSet": "O modo de cópia para programadores foi definido para: %mode%. Pressiona \"%keyName%\" para copiar os dados!"
   },
   "discordStatus": {
     "titleNone": "Nenhum",
@@ -283,50 +283,50 @@
         "notFound": "Não foi possível encontrar a marca do servidor!"
       },
       "copyBlock": {
-        "help": "§e(Dev) §7Copies data about the block that you are looking at"
+        "help": "§e(Program) §7Copia os dados do bloco para o qual estás a olhar"
       },
       "copyEntity": {
-        "help": "§e(Dev) §7Copy NBT data for entities of the given name(s) within the given radius around the player",
+        "help": "§e(Program) §7Copiar dados de NBT para entidades do(s) nome(s) dentro do raio determinado à volta do jogador",
         "detailedHelp": {
-          "description": "Copies the NBT data of entities. The types of entities included and the radius around the player to copy data from can be customized. If no options are given, the default settings are used. The default settings are: include players, armor stands, and mobs, and a radius of 3 blocks. If the radius isn't given, the default radius is used.",
+          "description": "Copia os dados NBT das entidades. Os dados dos tipos de entidades incluídas no raio à volta do jogador podem ser personalizados. Se não forem fornecidas definições, serão usados os valores predefinidos. As definições predefinidas são: incluir jogadores, suportes para armaduras e criaturas num raio de 3 blocos. Se não for fornecido um raio, será usado o valor predefinido.",
           "options": {
-            "entityNames": "Names of the types of entities you want to copy data for (e.g. Player,Creeper). Press \"Tab\" after typing the command for a full list. Separate multiple names with commas, names are case-sensitive.",
-            "radius": "The radius (in blocks) around the player to copy entity NBT data from"
+            "entityNames": "Nomes dos tipos de entidades das quais queres copiar os dados (ex.: Player, Creeper). Pressiona \"Tab\" depois de escreveres o comando para uma lista completa. Separa vários nomes com vírgulas. Os nomes são sensíveis a maiúsculas e minúsculas.",
+            "radius": "O raio (em blocos) à volta do jogador para copiar os dados NBT das entidades"
           }
         }
       },
       "copySidebar": {
         "help": "§e(Program) §7Copiar o texto da tabela lateral",
         "detailedHelp": {
-          "description": "Copies the text displayed in the scoreboard's sidebar display slot",
+          "description": "Copia o texto apresentado na barra lateral",
           "options": {
-            "formatted": "Determines if the formatting codes should be included when copying. Can be either \"true\" or \"false\", defaults to \"false\" if no value is provided. Formatting codes are copied if \"true\"."
+            "formatted": "Determina se os códigos de formatação devem ser incluídos ao copiar. Pode ser definida como \"true\" ou \"false\" e, caso não seja fornecido nenhum valor, será definida como \"false\". Os códigos de formatação serão copiados caso a opção esteja definida como \"true\"."
           }
         }
       },
       "copyTabList": {
-        "help": "§e(Dev) §7Copy the tab list header and footer",
+        "help": "§e(Program) §7Copiar o cabeçalho e o rodapé da lista de jogadores",
         "detailedHelp": {
-          "description": "This command copies the header and footer of the tab player list. Formatting codes are included."
+          "description": "Este comando copia o cabeçalho e o rodapé da lista de jogadores. Códigos de formatação são incluídos."
         }
       },
       "dev": {
         "help": "Ativar o modo de programador",
         "detailedHelp": {
-          "description": "This command toggles developer mode. This mode is meant for developers Skyblock mods/tools. It provides raw data from the game such as entity and item NBT."
+          "description": "Este comando ativa o modo de programador. Este modo foi pensado para programadores de mods/ferramentas para o SkyBlock. Com ele, poderás obter dados brutos do jogo, como NBT de entidades ou itens."
         },
         "disabled": "Modo de programador desativado!",
-        "enabled": "Developer mode enabled! TIP: Press \"%keyName%\" to copy NBT data!"
+        "enabled": "Modo de programador ativado! DICA: Pressiona \"%keyName%\" para copiar dados NBT!"
       },
       "edit": {
         "help": "Editar localizações da GUI"
       },
       "folder": {
         "help": "Abre a pasta mods",
-        "error": "An error occurred trying to open the mods folder: %s"
+        "error": "Ocorreu um erro ao tentar abrir a pasta mods: %s"
       },
       "help": {
-        "help": "Show this help message. If a command is provided, detailed help about that command is shown.",
+        "help": "Mostra esta mensagem de ajuda. Se um comando for fornecido, serão mostradas mais informações sobre esse comando.",
         "detailedHelp": {
           "options": {
             "command": "o comando para o qual desejas obter informação detalhada"
@@ -341,7 +341,7 @@
             "options": {
               "eyes": "Total de summoning eyes obtidos",
               "totalZealots": "Total de zealots mortos",
-              "zealots": "Zealots killed since the last summoning eye drop"
+              "zealots": "Zealots mortos desde o último summoning eye"
             }
           },
           "eyesSet": "A contagem total de summoning eyes foi definida para %number%!",
@@ -357,26 +357,26 @@
           "options": {
             "boss": "Boss do slayer: \"Zombie\", \"Spider\" ou \"Wolf\"",
             "number": "Número para o qual será definido a estatística",
-            "stat": "Slayer stat to change, can be \"kills\" or the name of a dropped item formatted like this: \"REVENANT_FLESH\""
+            "stat": "Estatística do slayer para alterar. Pode ser \"kills\" ou o nome de um item largado formatado da seguinte forma: \"REVENANT_FLESH\""
           }
         },
-        "bossRequired": "You need to select a boss! Please choose %bosses%",
-        "statRequired": "You need to select a stat. Press tab for options.",
+        "bossRequired": "Precisas de escolher um boss! Escolhe %bosses%",
+        "statRequired": "Precisas de escolher uma estatística. Prime tab para opções.",
         "numberRequired": "Precisas de adicionar o número que desejas.",
         "killsSet": "As kills para o slayer de %boss% foram definidas para %number%.",
-        "statSet": "Statistic %stat% for slayer %boss% was set to %number%.",
+        "statSet": "A estatística %stat% para o slayer de %boss% foi definida para %number%.",
         "invalidBoss": "\"%input%\" não é uma estatística válida!",
         "invalidStat": "\"%input%\" não é um boss válido!"
       },
       "toggleActionBarLogging": {
         "help": "§e(Dev) §7Toggle logging action bar messages",
-        "disabled": "Action bar messages will no longer be logged.",
+        "disabled": "As mensagens da barra de ação não serão registadas.",
         "enabled": "As mensagens da barra de ação serão agora registadas."
       },
       "errors": {
         "wrongUsage": {
           "generic": "Uso errado!",
-          "subCommandNotFound": "The sub-command \"%sub-command%\" was not found."
+          "subCommandNotFound": "O comando %sub-command% não foi encontrado."
         }
       }
     }
