@@ -1215,14 +1215,14 @@ public class RenderListener {
             int hitEnemies = main.getPlayerListener().getSpiritSceptreHitEnemies();
             float dealtDamage = main.getPlayerListener().getSpiritSceptreDealtDamage();
             ChromaManager.renderingText(feature);
-            main.getUtils().drawTextWithStyle(text, x + 16 + 2, y, color);
+            DrawUtils.drawText(text, x + 16 + 2, y, color);
             if (hitEnemies <= 1) {
-                main.getUtils().drawTextWithStyle(String.format("%d enemy hit", hitEnemies), x + 16 + 2, y+9, color);
+                DrawUtils.drawText(String.format("%d enemy hit", hitEnemies), x + 16 + 2, y+9, color);
             }
             else {
-                main.getUtils().drawTextWithStyle(String.format("%d enemies hit", hitEnemies), x + 16 + 2, y + 9, color);
+                DrawUtils.drawText(String.format("%d enemies hit", hitEnemies), x + 16 + 2, y + 9, color);
             }
-            main.getUtils().drawTextWithStyle(String.format("%d damage dealt", Math.round(dealtDamage)), x + 16 + 2, y+18, color);
+            DrawUtils.drawText(String.format("%d damage dealt", Math.round(dealtDamage)), x + 16 + 2, y+18, color);
             ChromaManager.doneRenderingText();
             renderItem(ALLIUM, x, y);
 
