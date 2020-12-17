@@ -132,7 +132,7 @@
     "turnAllFeaturesChroma": "Tüm Chroma özelliklerini aç",
     "dungeonMapDisplay": "Dungeon Haritasi",
     "rotateMap": "Haritayı bakış açısına göre döndür",
-    "centerRotationOnYourPlayer": "Döndürmeyi oyuncu etrafında ortalayın",
+    "centerRotationOnYourPlayer": "Oyuncunun imlecinin etrafında döndür",
     "mapZoom": "Harita Yakınlaştır",
     "glowingDroppedItems": "Düşürülen eşyaları aydınlat",
     "glowingDungeonTeammates": "Glowing Dungeon Takım Arkadaşları",
@@ -172,7 +172,9 @@
     "disableBossMessages": "Boss Mesajlarını Devre Dışı Bırak",
     "hideOtherPlayersPresents": "Diğer Oyuncuların Hediyelerini Gizle",
     "easierPresentOpening": "Hediyeleri Kolay Aç",
-    "showSwordKills": "Kılıç Leşlerini Göster"
+    "showSwordKills": "Kılıç Leşlerini Göster",
+    "compactTabList": "Kompakt Tab Listesi",
+    "highlightMaxEnchantments": "Özel Büyüleri Vurgula"
   },
   "messages": {
     "enchants": "Büyüler",
@@ -238,7 +240,9 @@
     "reforgeExclusionExample": "örn: \"odd, clean\"",
     "actionsLeft": "%number% Kaldı",
     "effectActive": "1 Efekt Aktif",
-    "effectsActive": "%number% Efekt Aktif"
+    "effectsActive": "%number% Efekt Aktif",
+    "none": "Hiçbiri",
+    "copyModeSet": "Geliştirici kopyalama modu şu şekilde ayarlandı: %mode%. Bir veri kopyasını tetiklemek için \"%keyName%\" tuşuna basın!"
   },
   "discordStatus": {
     "titleNone": "Hiçbiri",
@@ -269,53 +273,113 @@
     "descriptionTarantula": "Tarantula görevleri yaptığını gösterir."
   },
   "commandUsage": {
-    "sba": "Ana menüyü aç",
-    "sba.brand": "§e(Dev) §7Sunucu damgasını göster",
-    "sba.brand.brandOutput": "Server Markası:%brand%",
-    "sba.brand.notFound": "Server markası bulunamadı!",
-    "sba.copyEntity": "§e(Dev) §Oyuncunun etrafında belirli bir yarıçap içinde belirli bir isim(ler) in varlıkları için NBT verilerini kopyala",
-    "sba.copySidebar": "§e(Dev)§7Scoreboard yazısını kopyala",
-    "sba.copyTabList": "§e(Dev) §Tab listesi üstbilgisini ve altbilgisini kopyala",
-    "sba.dev": "Geliştirici modunu aç",
-    "sba.dev.disabled": "Geliştirici modu kapatıldı!",
-    "sba.dev.enabled": "Geliştirici modu açıldı! Not: NBT'yi kopyalamak için %keyName% bas!",
-    "sba.edit": "Arayüz tasarımını düzenle",
-    "sba.folder": "Mod klasörünü aç",
-    "sba.folder.error": "Mod dosyasını açarken bi sorun oluştu %s",
-    "sba.help": "Bu yardım iletisini göster. Bir komut sağlanırsa, bu komutla ilgili ayrıntılı yardım gösterilir.",
-    "sba.help.copyEntity": "Varlıkların NBT verilerini kopyalar. Dahil edilen varlık türleri ve verileri kopyalamak için oynatıcının etrafındaki yarıçap özelleştirilebilir. Herhangi bir seçenek belirtilmezse, varsayılan ayarlar kullanılır. Varsayılan ayarlar şunlardır: oyuncuları, zırh standlarını ve mobları ve %radius% bloklarının yarıçapını içerir. Yarıçap belirtilmezse, varsayılan yarıçap kullanılır.",
-    "sba.help.copyEntity.entityNames": "Verileri kopyalamak istediğiniz varlık türlerinin adları (örneğin, Player, Creeper). Tam liste için komutu yazdıktan sonra \"Tab\" a basın. Birden fazla ismi virgülle ayırın, isimler büyük/küçük harf duyarlıdır.",
-    "sba.help.copyEntity.radius": "Varlık NBT verilerini kopyalamak için oyuncunun etrafındaki yarıçap(bloklar halinde)",
-    "sba.help.copySidebar.formatted": "Kopyalama sırasında biçimlendirme kodlarının eklenip eklenmeyeceğini belirler. Herhangi bir değer sağlanmazsa \"true\" veya \"false\", varsayılan olarak \"false\" olabilir. Biçimlendirme kodları \"true\" ise kopyalanır.",
-    "sba.help.copyTabList": "Bu komut, TAB oyuncu listesinin üstbilgi ve altbilgisini kopyalar. Biçimlendirme kodları dahildir.",
-    "sba.help.dev": "Bu komut geliştirici modunu değiştirir. Bu mod geliştiriciler Skyblock mods/araçlar içindir. Varlık ve öğe NBT gibi oyundan ham veri sağlar.",
-    "sba.help.help.command": "ayrıntılı kullanım için alt komut",
-    "sba.help.set.zealotCounter": "Zealot sayacındaki sayıları manuel olarak ayarlar.",
-    "sba.help.set.zealotCounter.eyes": "Toplanan Summoning Eye'lar(Tüm Zamanlar)",
-    "sba.help.set.zealotCounter.totalZealots": "Öldürülen Zealot'lar(Tüm Zamanlar)",
-    "sba.help.set.zealotCounter.zealots": "En son Eye'dan sonra öldürülen Zealot sayısı",
-    "sba.help.slayer": "Slayer istatistiklerini manuel olarak ayarlayın, argümanlar için TAB tuşuna basın",
-    "sba.help.slayer.boss": "Slayer boss: \"Zombie\", \"Spider\", ya da \"Wolf\"",
-    "sba.help.slayer.number": "Stat değerini ayarlamak için sayı",
-    "sba.help.slayer.stat": "Slayer stat değiştirmek için, \"kills\" veya bu gibi: \"REVENANT_FLESH\" biçimlendirilmiş atılan bir öğenin adı olabilir",
-    "sba.set.zealotCounter": "Zealot sayılarını el ile gir",
-    "sba.set.zealotCounter.eyes": "Toplam Summonıng Eye sayısını %number% yap!",
-    "sba.set.zealotCounter.totalZealots": "Toplam Zealot sayısını %number% yap!",
-    "sba.set.zealotCounter.wrongUsage": "Geçersiz seçim! Lütfen %options% seç.",
-    "sba.set.zealotCounter.zealots": "Şu anki Zealot sayısını %number% yap!",
-    "sba.slayer": "Slayer istatistiklerini manuel olarak ayarlayın, argümanlar için TAB tuşuna basın",
-    "sba.slayer.bossRequired": "Bir boss seçmeniz gerekiyor! Lütfen %bosses% seç",
-    "sba.slayer.statRequired": "Bir stat seçmeniz gerekiyor. Seçenekler için TAB tuşuna basın.",
-    "sba.slayer.numberRequired": "İstediğin numarayı eklemen gerekiyor.",
-    "sba.slayer.killsSet": "Slayer %boss%, için öldürmeler %number% olarak ayarlandı.",
-    "sba.slayer.statSet": "Slayer %boss% için istatistik %stat%, %number% olarak ayarlandı.",
-    "sba.slayer.invalidBoss": "\"%input%\" geçerli bir istatistik değil!",
-    "sba.slayer.invalidStat": "\"%input% \" geçerli bir boss değil!",
-    "sba.toggleActionBarLogging": "§e(Dev) §7Aksiyon barı messajlarının durumunu değiştir",
-    "sba.toggleActionBarLogging.disabled": "Aksiyon barı mesajları gösterilmeyecek.",
-    "sba.toggleActionBarLogging.enabled": "Aksiyon barı mesajları gösteriliyor.",
-    "sba.wrongUsage.generic": "Yanlış Kullanım!",
-    "sba.wrongUsage.subCommandNotFound": "\"%sub-command%\" alt komutu bulunamadı."
+    "sba": {
+      "base": {
+        "help": "Ana menüyü aç"
+      },
+      "brand": {
+        "help": "§e(Dev) §7Sunucu damgasını göster",
+        "brandOutput": "Server Markası:%brand%",
+        "notFound": "Server markası bulunamadı!"
+      },
+      "copyBlock": {
+        "help": "§e(Dev) §7Baktığınız blokla ilgili verileri kopyalar"
+      },
+      "copyEntity": {
+        "help": "§e(Dev) §Oyuncunun etrafında belirli bir yarıçap içinde belirli bir isim(ler) in varlıkları için NBT verilerini kopyala",
+        "detailedHelp": {
+          "description": "Varlıkların NBT verilerini kopyalar. Dahil edilen varlık türleri ve verileri kopyalamak için oyuncunun etrafındaki yarıçap özelleştirilebilir. Herhangi bir seçenek belirtilmezse, varsayılan ayarlar kullanılır. Varsayılan ayarlar: oyuncuları, zırh standlarını ve mobları ve 3 bloktan oluşan bir yarıçapı içerir. Yarıçap belirtilmezse, varsayılan yarıçap kullanılır.",
+          "options": {
+            "entityNames": "Verileri kopyalamak istediğiniz varlık türlerinin adları (örneğin,Oyuncu, Creeper). Tam liste için komutu yazdıktan sonra \"Tab\" tuşuna bas. Birden fazla ismi virgülle ayırın, isimler büyük/küçük harf duyarlıdır.",
+            "radius": "Varlık NBT verilerini kopyalamak için oyuncunun etrafındaki yarıçap (bloklar halinde)"
+          }
+        }
+      },
+      "copySidebar": {
+        "help": "§e(Dev)§7Skorbord yazısını kopyala",
+        "detailedHelp": {
+          "description": "Skorbord'da görüntülenen metni kopyalar",
+          "options": {
+            "formatted": "Kopyalama sırasında biçimlendirme kodlarının eklenip eklenmeyeceğini belirler. Herhangi bir değer sağlanmazsa \"true\" veya \"false\", varsayılan olarak \"false\" olabilir. Biçimlendirme kodları \"true\" ise kopyalanır."
+          }
+        }
+      },
+      "copyTabList": {
+        "help": "§e(Dev) §Tab listesi üstbilgisini ve altbilgisini kopyala",
+        "detailedHelp": {
+          "description": "Bu komut, TAB oyuncu listesinin üstbilgi ve altbilgisini kopyalar. Biçimlendirme kodları dahildir."
+        }
+      },
+      "dev": {
+        "help": "Geliştirici modunu aç",
+        "detailedHelp": {
+          "description": "Bu komut geliştirici modunu değiştirir. Bu mod Skyblock mods/araç geliştiricileri içindir. Varlık ve öğe NBT gibi oyundan ham veri sağlar."
+        },
+        "disabled": "Geliştirici modu kapatıldı!",
+        "enabled": "Geliştirici modu açıldı! Not: NBT'yi kopyalamak için %keyName% tuşuna bas!"
+      },
+      "edit": {
+        "help": "Arayüz konumlarını düzenle"
+      },
+      "folder": {
+        "help": "Mod klasörünü aç",
+        "error": "Mod dosyasını açarken bi sorun oluştu %s"
+      },
+      "help": {
+        "help": "Bu yardım iletisini göster. Bir komut sağlanırsa, bu komutla ilgili ayrıntılı yardım gösterilir.",
+        "detailedHelp": {
+          "options": {
+            "command": "ayrıntılı kullanım için alt komut"
+          }
+        }
+      },
+      "set": {
+        "zealotCounter": {
+          "help": "Zealot sayılarını el ile gir",
+          "detailedHelp": {
+            "description": "Zealot sayacındaki sayıları manuel olarak ayarlar.",
+            "options": {
+              "eyes": "Toplanan Summoning Eye'lar(Tüm Zamanlar)",
+              "totalZealots": "Öldürülen Zealot'lar(Tüm Zamanlar)",
+              "zealots": "En son Eye'dan sonra öldürülen Zealot sayısı"
+            }
+          },
+          "eyesSet": "Toplam Summonıng Eye sayısını %number% yap!",
+          "totalZealotsSet": "Toplam Zealot sayısını %number% yap!",
+          "wrongUsage": "Geçersiz seçim! Lütfen %options% seç.",
+          "zealotsSet": "Şu anki Zealot sayısını %number% yap!"
+        }
+      },
+      "slayer": {
+        "help": "Slayer istatistiklerini manuel olarak ayarlayın, argümanlar için TAB tuşuna basın",
+        "detailedHelp": {
+          "description": "Slayer istatistiklerini manuel olarak ayarlayın, argümanlar için TAB tuşuna basın",
+          "options": {
+            "boss": "Slayer boss: \"Zombie\", \"Spider\", ya da \"Wolf\"",
+            "number": "Stat değerini ayarlamak için sayı",
+            "stat": "Slayer stat değiştirmek için, \"kills\" veya bu gibi: \"REVENANT_FLESH\" biçimlendirilmiş atılan bir öğenin adı olabilir"
+          }
+        },
+        "bossRequired": "Bir boss seçmeniz gerekiyor! Lütfen %bosses% seç",
+        "statRequired": "Bir stat seçmeniz gerekiyor. Seçenekler için TAB tuşuna basın.",
+        "numberRequired": "İstediğin numarayı eklemen gerekiyor.",
+        "killsSet": "Slayer %boss%, için öldürmeler %number% olarak ayarlandı.",
+        "statSet": "Slayer %boss% için istatistik %stat%, %number% olarak ayarlandı.",
+        "invalidBoss": "\"%input%\" geçerli bir istatistik değil!",
+        "invalidStat": "\"%input% \" geçerli bir boss değil!"
+      },
+      "toggleActionBarLogging": {
+        "help": "§e(Dev) §7Aksiyon barı messajlarının durumunu değiştir",
+        "disabled": "Aksiyon barı mesajları gösterilmeyecek.",
+        "enabled": "Aksiyon barı mesajları gösteriliyor."
+      },
+      "errors": {
+        "wrongUsage": {
+          "generic": "Yanlış Kullanım!",
+          "subCommandNotFound": "\"%sub-command%\" alt komutu bulunamadı."
+        }
+      }
+    }
   },
   "keyBindings": {
     "developerCopyNBT": "NBT Kopyala"

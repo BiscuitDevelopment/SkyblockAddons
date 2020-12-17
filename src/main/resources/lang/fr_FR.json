@@ -131,7 +131,7 @@
     "hideSvenPupNametags": "Cacher les noms des chiots de Sven",
     "turnAllFeaturesChroma": "Activer toutes les fonctionnalités Chroma",
     "dungeonMapDisplay": "Affichage de la carte du donjon",
-    "rotateMap": "Suivre la position de la carte avec le joueur",
+    "rotateMap": "Orienter la carte avec la position du joueur",
     "centerRotationOnYourPlayer": "Centrer la rotation autour de votre joueur",
     "mapZoom": "Zoom de carte",
     "glowingDroppedItems": "Rendre en surbrillance les items au sol",
@@ -172,7 +172,9 @@
     "disableBossMessages": "Désactiver les messages des boss",
     "hideOtherPlayersPresents": "Cacher les cadeaux des autres joueurs",
     "easierPresentOpening": "Ouvrir les cadeaux plus facilement",
-    "showSwordKills": "Montrer les morts par l'épée"
+    "showSwordKills": "Montrer les morts par l'épée",
+    "compactTabList": "Liste du Tab Compacte",
+    "highlightMaxEnchantments": "Surlignez les enchantements spéciaux"
   },
   "messages": {
     "enchants": "Enchantements",
@@ -238,7 +240,9 @@
     "reforgeExclusionExample": "p. ex. \"odd, clean\"",
     "actionsLeft": "%number% restant",
     "effectActive": "1 Effet actif",
-    "effectsActive": "%number% Effets actifs"
+    "effectsActive": "%number% Effets actifs",
+    "none": "Aucun",
+    "copyModeSet": "Le mode développeur à été mis sur : %mode%. Pressez \"%keyName%\" pour effectuer une copie de donnée !"
   },
   "discordStatus": {
     "titleNone": "Aucun",
@@ -269,53 +273,113 @@
     "descriptionTarantula": "Montre que vous accomplissez une quête de tarantula."
   },
   "commandUsage": {
-    "sba": "Ouvrir le menu principal",
-    "sba.brand": "§e(Dev) §7Afficher le status du serveur",
-    "sba.brand.brandOutput": "Nom du serveur : %brand%",
-    "sba.brand.notFound": "Nom du serveur introuvable !",
-    "sba.copyEntity": "§e(Dev) §7Copier les données NBT pour les entités indiqués dans le rayon donné autour du joueur",
-    "sba.copySidebar": "§e(Dev) §7Copier le texte du tableau des scores",
-    "sba.copyTabList": "§e(Dev) §7Copier l'en-tête et le pied de page de la liste des joueurs",
-    "sba.dev": "Activer les outils développeur",
-    "sba.dev.disabled": "Mode développeur désactivé !",
-    "sba.dev.enabled": "Mode développeur activé ! Astuce : Appuyez sur \"%keyName%\" pour copier les données NBT !",
-    "sba.edit": "Modifier l'interface",
-    "sba.folder": "Ouvrir le dossier des mods",
-    "sba.folder.error": "Une erreur est survenue lors de l'ouverture du dossier des mods : %s",
-    "sba.help": "Affiche ce message d'aide. Si une commande est fournie, une aide détaillée sur cette commande est affichée.",
-    "sba.help.copyEntity": "Copie les données NBT des entités. Les types d'entités et le rayon autour du joueur peuvent être personnalisés. Si aucune option n'est fournie, les paramètres par défaut seront utilisés. Les paramètres par défaut sont : les joueurs, les porte-armures et les monstres dans un rayon de 3 blocs. Si le rayon n'est pas donné, la valeur par défaut est utilisée.",
-    "sba.help.copyEntity.entityNames": "Noms des types d'entités pour lesquelles vous voulez copier des données (par exemple, Joueur, Creeper). Appuyez sur \"Tab\" après avoir tapé la commande pour une liste complète. Séparez plusieurs noms avec des virgules, ils sont sensible à la case.",
-    "sba.help.copyEntity.radius": "Le radius(en blocs) autour du joueur pour copier les données NBT de l'entité depuis",
-    "sba.help.copySidebar.formatted": "Détermine si les codes de formatage doivent être inclus lors de la copie. Peut être \"true\" (vrai) ou \"false\" (faux), par défaut sur \"false\" si aucune valeur est fournie. Les codes de formatage sont copiés si elle est réglé sur \"true\".",
-    "sba.help.copyTabList": "Cette commande copie l'en-tête et le pied de page de la liste des joueurs. Les codes de formatage sont inclus.",
-    "sba.help.dev": "Cette commande active le mode développeur. Ce mode est destiné aux développeurs de mods/outils Skyblock. Il fournit des données brutes du jeu telles que les entités et les NBT des objets.",
-    "sba.help.help.command": "la sous-commande pour obtenir une utilisation détaillée pour",
-    "sba.help.set.zealotCounter": "Définir manuellement le nombre de zealot dans le compteur.",
-    "sba.help.set.zealotCounter.eyes": "Yeux d'invocation total obtenu",
-    "sba.help.set.zealotCounter.totalZealots": "Total de zealots tué",
-    "sba.help.set.zealotCounter.zealots": "Zealots tués depuis le dernier œil d'invocation obtenu",
-    "sba.help.slayer": "Régler manuellement les stats slayer, appuyer sur tab pour les arguments",
-    "sba.help.slayer.boss": "Slayer boss: \"Zombie\", \"Spider\", ou \"Wolf\"",
-    "sba.help.slayer.number": "Valeur à appliquer à la statistique",
-    "sba.help.slayer.stat": "Statistique Slayer à modifier, peut être \"kills\" ou le nom d'un objet donné et formulé comme ceci: \"REVENANT_FLESH\"",
-    "sba.set.zealotCounter": "Définir manuellement le nombre de zealot",
-    "sba.set.zealotCounter.eyes": "Définir le nombre total d'yeux d'invocation à %number%!",
-    "sba.set.zealotCounter.totalZealots": "Définir le nombre total de zealot à %number%!",
-    "sba.set.zealotCounter.wrongUsage": "Sélection invalide! Veuillez choisir %options%.",
-    "sba.set.zealotCounter.zealots": "Définir le nombre actuel de zealot à %number%!",
-    "sba.slayer": "Régler manuellement les stats slayer, appuyer sur tab pour les arguments",
-    "sba.slayer.bossRequired": "Vous devez sélectionner un boss ! SVP choisissez %bosses%",
-    "sba.slayer.statRequired": "Vous devez sélectionner une stat. Appuyez sur tab pour les options.",
-    "sba.slayer.numberRequired": "Vous devez ajouter le nombre que vous souhaitez.",
-    "sba.slayer.killsSet": "Kills pour les slayer %boss% a été modifié à %number%.",
-    "sba.slayer.statSet": "La statistique %stat% pour le slayer %boss% a été modifié à %number%.",
-    "sba.slayer.invalidBoss": "%input% n'est pas une statistique valide !",
-    "sba.slayer.invalidStat": "%input% n'est pas un boss valide !",
-    "sba.toggleActionBarLogging": "§e(Dev) §7Activer la sauvegarde des messages de la barre d'action",
-    "sba.toggleActionBarLogging.disabled": "Les messages de la barre d'action ne seront plus sauvegardés.",
-    "sba.toggleActionBarLogging.enabled": "Les messages de la barre d'action seront maintenant sauvegardés.",
-    "sba.wrongUsage.generic": "Mauvaise utilisation!",
-    "sba.wrongUsage.subCommandNotFound": "La sous-commande \"%sub-command%\" est introuvable."
+    "sba": {
+      "base": {
+        "help": "Ouvrir le menu principal"
+      },
+      "brand": {
+        "help": "§e(Dev) §7Afficher le status du serveur",
+        "brandOutput": "Nom du serveur : %brand%",
+        "notFound": "Nom du serveur introuvable !"
+      },
+      "copyBlock": {
+        "help": "§e(Dev) §7 Copie les données du bloc que vous regardez"
+      },
+      "copyEntity": {
+        "help": "§e(Dev) §7Copier les données NBT pour les entités indiqués dans le rayon donné autour du joueur",
+        "detailedHelp": {
+          "description": "Copie les données NBT des entités. Les types d'entités et le rayon autour du joueur peuvent être personnalisés. Si aucune option n'est fournie, les paramètres par défaut seront utilisés. Les paramètres par défaut sont : les joueurs, les porte-armures et les monstres dans un rayon de 3 blocs. Si le rayon n'est pas donné, la valeur par défaut est utilisée.",
+          "options": {
+            "entityNames": "Noms des types d'entités dont vous voulez copier les données (par exemple : Joueur,Creeper). Appuyez sur \"Tab\" après avoir tapé la commande pour une liste complète. Séparer les multiples noms avec des virgules, les noms sont sensibles aux majuscules.",
+            "radius": "Le rayon (en blocks) autour du joueur pour copier les données NBT des entités"
+          }
+        }
+      },
+      "copySidebar": {
+        "help": "§e(Dev) §7Copier le texte du tableau des scores",
+        "detailedHelp": {
+          "description": "Copie le texte affiché dans le tableau à droite",
+          "options": {
+            "formatted": "Détermine si les codes de formatage doivent être inclus lors de la copie. Peut être \"true\" ou \"false\", par défaut sur \"false\" si aucune valeur est fournie. Les codes de formatage sont copiés si elle est réglé sur \"true\"."
+          }
+        }
+      },
+      "copyTabList": {
+        "help": "§e(Dev) §7Copier l'en-tête et le pied de page de la liste des joueurs",
+        "detailedHelp": {
+          "description": "Cette commande copie l'en-tête et le pied de page de la liste des joueurs. Les codes de formatage sont inclus."
+        }
+      },
+      "dev": {
+        "help": "Activer le mode développeur",
+        "detailedHelp": {
+          "description": "Cette commande active le mode développeur. Ce mode est destiné aux développeurs de mods/outils Skyblock. Il fournit des données brutes du jeu telles que les entités et les NBT des objets."
+        },
+        "disabled": "Mode développeur désactivé !",
+        "enabled": "Mode développeur activé ! Astuce : Appuyez sur \"%keyName%\" pour copier les données NBT !"
+      },
+      "edit": {
+        "help": "Modifier l'interface"
+      },
+      "folder": {
+        "help": "Ouvrir le dossier des mods",
+        "error": "Une erreur est survenue lors de l'ouverture du dossier des mods : %s"
+      },
+      "help": {
+        "help": "Affiche ce message d'aide. Si une commande est fournie, une aide détaillée sur cette commande est affichée.",
+        "detailedHelp": {
+          "options": {
+            "command": "la sous-commande pour obtenir une utilisation détaillée pour"
+          }
+        }
+      },
+      "set": {
+        "zealotCounter": {
+          "help": "Définir manuellement le nombre de zealot",
+          "detailedHelp": {
+            "description": "Définir manuellement le nombre de zealot dans le compteur.",
+            "options": {
+              "eyes": "Yeux d'invocation total obtenu",
+              "totalZealots": "Total de zealots tué",
+              "zealots": "Zealots tués depuis le dernier œil d'invocation obtenu"
+            }
+          },
+          "eyesSet": "Définir le nombre total d'yeux d'invocation à %number%!",
+          "totalZealotsSet": "Définir le nombre total de zealot à %number%!",
+          "wrongUsage": "Sélection invalide! Veuillez choisir %options%.",
+          "zealotsSet": "Définir le nombre actuel de zealot à %number%!"
+        }
+      },
+      "slayer": {
+        "help": "Régler manuellement les stats slayer, appuyer sur tab pour les arguments",
+        "detailedHelp": {
+          "description": "Régler manuellement les stats slayer, appuyer sur tab pour les arguments",
+          "options": {
+            "boss": "Slayer boss: \"Zombie\", \"Spider\", ou \"Wolf\"",
+            "number": "Valeur à appliquer à la statistique",
+            "stat": "Statistique Slayer à modifier, peut être \"kills\" ou le nom d'un objet donné et formulé comme ceci: \"REVENANT_FLESH\""
+          }
+        },
+        "bossRequired": "Vous devez sélectionner un boss ! SVP choisissez %bosses%",
+        "statRequired": "Vous devez sélectionner une stat. Appuyez sur tab pour les options.",
+        "numberRequired": "Vous devez ajouter le nombre que vous souhaitez.",
+        "killsSet": "Kills pour les slayer %boss% a été modifié à %number%.",
+        "statSet": "La statistique %stat% pour le slayer %boss% a été modifié à %number%.",
+        "invalidBoss": "%input% n'est pas une statistique valide !",
+        "invalidStat": "%input% n'est pas un boss valide !"
+      },
+      "toggleActionBarLogging": {
+        "help": "§e(Dev) §7Activer la sauvegarde des messages de la barre d'action",
+        "disabled": "Les messages de la barre d'action ne seront plus sauvegardés.",
+        "enabled": "Les messages de la barre d'action seront maintenant sauvegardés."
+      },
+      "errors": {
+        "wrongUsage": {
+          "generic": "Mauvaise utilisation!",
+          "subCommandNotFound": "La sous-commande \"%sub-command%\" est introuvable."
+        }
+      }
+    }
   },
   "keyBindings": {
     "developerCopyNBT": "Copier le NBT"

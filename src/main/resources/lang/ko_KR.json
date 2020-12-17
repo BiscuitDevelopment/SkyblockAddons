@@ -1,63 +1,63 @@
 {
   "language": "한국어",
   "settings": {
-    "settings": "Settings",
+    "settings": "설정",
     "magmaBossWarning": "마그마 보스 알림",
-    "itemDropConfirmation": "Item Drop Confirmation",
-    "hideSkeletonHatBones": "Hide Skeleton's Helmet Bones",
-    "skeletonHatBonesBar": "Skeleton's Helmet Bones Bar",
-    "hideFoodAndArmor": "Hide Food & Armor Bar",
+    "itemDropConfirmation": "아이템 버림 재확인",
+    "hideSkeletonHatBones": "Skeleton's Helmet 뼈 숨기기",
+    "skeletonHatBonesBar": "Skeleton's Helmet 뼈 바",
+    "hideFoodAndArmor": "배고픔 & 갑옷 바 숨기기",
     "fullInventoryWarning": "인벤토리 꽉 참 경고",
     "repeating": "Repeat Warning",
     "disableEmberRodAbility": "섬에서의 Ember Rod 어빌리티 비활성화",
     "editLocations": "GUI 위치 편집",
     "guiScale": "GUI 크기: %scale%",
-    "resetLocations": "Reset Locations",
-    "hideDurability": "Hide Tool Durability",
-    "showEnchantmentsReforges": "Enchants & Reforges",
+    "resetLocations": "위치 설정 초기화",
+    "hideDurability": "도구 내구도 숨기기",
+    "showEnchantmentsReforges": "인챈트 및 Reforge",
     "minionStopWarning": "\"Minion Cannot Reach\" Warning",
     "hidePlayersNearNPCs": "NPC 근처에 있는 플레이어 숨기기",
-    "backpackStyle": "Backpack Style: %style%",
+    "backpackStyle": "Backpack 스타일: %style%",
     "backpackStyles": {
-      "regular": "Regular",
-      "compact": "Compact"
+      "regular": "일반",
+      "compact": "간단"
     },
     "showBackpackPreview": "Show Backpack Preview",
     "hideHealthBar": "기본 체력 바 숨기기",
     "fullMinionWarning": "Full Minion Warning",
     "ignoreItemFrameClicks": "아이템 액자 클릭 무시",
-    "showOnlyWhenHoldingShift": "Show Only When Holding Shift",
-    "manaBar": "Mana Bar",
-    "manaText": "Mana Number",
-    "healthBar": "Health Bar",
-    "healthText": "Health Number",
-    "defenceIcon": "Defence Symbol",
-    "defenceText": "Defence Number",
-    "defencePercentage": "Defence Percentage",
+    "showOnlyWhenHoldingShift": "쉬프트키를 눌렀을 때만 보이기",
+    "manaBar": "Mana 바",
+    "manaText": "Mana 숫자",
+    "healthBar": "체력 바",
+    "healthText": "체력 숫자",
+    "defenceIcon": "방어력 아이콘",
+    "defenceText": "방어력 숫자",
+    "defencePercentage": "방어력 퍼센트",
     "healthUpdates": "체력 변화량",
-    "hidePlayersInLobby": "Hide Far Entities in Lobby",
-    "darkAuctionTimer": "Dark Auction Timer",
-    "magmaBossTimer": "Magma Boss Timer",
-    "itemPickupLog": "Item Pickup Log",
+    "hidePlayersInLobby": "로비에서 멀리 있는 엔티티 숨기기",
+    "darkAuctionTimer": "Dark Auction 타이머",
+    "magmaBossTimer": "Magma Boss 타이머",
+    "itemPickupLog": "주운 아이템 표시",
     "avoidPlacingEnchantedItems": "Avoid Placing Enchanted Items",
     "avoidBreakingStems": "줄기 부수기 방지",
-    "stopBowChargeFromResetting": "Stop Bow Charge From Resetting",
-    "preventMovementOnDeath": "Prevent Walking After Death",
+    "stopBowChargeFromResetting": "활 당김 리셋 방지",
+    "preventMovementOnDeath": "죽은 후 걸어지는 버그 방지",
     "showItemAnvilUses": "Show Item Anvil Uses",
-    "lockSlots": "Allow Locking Slots",
+    "lockSlots": "슬롯 잠금 활성화",
     "lockSlot": "Lock Slot",
     "dontResetCursorInventory": "인벤토리 내의 마우스 위치 리셋 방지",
     "summoningEyeAlert": "Summoning Eye Alert",
     "makeEnderchestsInEndGreen": "Change Enderchest Color in The End",
     "changeColor": "Change Color",
     "showInOtherGames": "Show in Other Games",
-    "useVanillaTexture": "Use the Vanilla Texture",
+    "useVanillaTexture": "기본 텍스쳐 유지하기",
     "textStyle": "Text Style",
     "textStyles": {
       "one": "Style One",
       "two": "Style Two"
     },
-    "warningDuration": "Warning Duration",
+    "warningDuration": "경고 길이",
     "dontOpenProfileWithBow": "활을 든 채 프로필 열기 방지",
     "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Items",
     "makeBackpackInventoriesColored": "색깔 있는 백팩 인벤토리",
@@ -89,7 +89,7 @@
     "zealotCounter": "Zealot Counter - Count Since Last Eye",
     "tickerChargesDisplay": "Ticker/Charges Display",
     "tab": {
-      "generalSettings": "General Settings"
+      "generalSettings": "일반 설정"
     },
     "tabEffectTimers": "Potion and Powerup Timers",
     "noArrowsLeftAlert": "No Arrows Left Alert",
@@ -131,8 +131,8 @@
     "hideSvenPupNametags": "Sven Pup 이름표 숨기기",
     "turnAllFeaturesChroma": "Turn All Features Chroma",
     "dungeonMapDisplay": "Dungeon Map Display",
-    "rotateMap": "Rotate Map to Your Player's Rotation",
-    "centerRotationOnYourPlayer": "Center the Rotation Around Your Player",
+    "rotateMap": "Rotate The Map With Your Player's Rotation",
+    "centerRotationOnYourPlayer": "Rotate Around Your Player's Marker",
     "mapZoom": "Map Zoom",
     "glowingDroppedItems": "Glowing Dropped Items",
     "glowingDungeonTeammates": "Glowing Dungeon Teammates",
@@ -172,21 +172,23 @@
     "disableBossMessages": "Disable Boss Messages",
     "hideOtherPlayersPresents": "Hide Other Player's Presents",
     "easierPresentOpening": "Open Presents Easier",
-    "showSwordKills": "Show Sword Kills"
+    "showSwordKills": "Show Sword Kills",
+    "compactTabList": "Compact Tab List",
+    "highlightMaxEnchantments": "Highlight Special Enchantments"
   },
   "messages": {
     "enchants": "Enchants",
     "reforges": "Reforges",
-    "dropConfirmation": "Drop this item again to confirm!",
-    "magmaBossWarning": "Magma Cube Boss!",
+    "dropConfirmation": "아이템을 정말로 버리려면 다시 버리세요!",
+    "magmaBossWarning": "Magma Boss 소환!!",
     "fullInventory": "인벤토리 꽉 참!",
     "labymod": "LabyMod 유저들에게: 배고픔, 갑옷, 체력 바 숨기기는 LabyMod와 호환되지 않습니다.",
     "minionCannotReach": "A %type% minion cannot reach and has stopped spawning!",
-    "minionIsFull": "A minion on your island is full!",
+    "minionIsFull": "당신 Minion의 수납 공간이 꽉 찼습니다!",
     "typeEnchantmentsHere": "여기에 %type%들을 입력해 주세요!",
-    "separateMultiple": "Separate Multiple With Commas.",
-    "enchantsToMatch": "%type% To Match:",
-    "enchantsToExclude": "%type% To Exclude:",
+    "separateMultiple": "인챈트나 리포지들을 쉼표로 구분하세요.",
+    "enchantsToMatch": "포함할 %type%:",
+    "enchantsToExclude": "제외할 %type%:",
     "wantToViewPatchNotes": "Need support or want to read the full changelog?",
     "downloadLink": "VIDEO/UPDATE LINK",
     "directDownload": "DIRECT DOWNLOAD LINK",
@@ -197,7 +199,7 @@
       "majorAvailable": "A new major update (%version%) is available! The link for the download can be found in chat.",
       "patchAvailable": "A new patch update (%version%) is available! Look in chat for download options!"
     },
-    "slotLocked": "This slot is locked!",
+    "slotLocked": "이 슬롯은 잠겨있습니다!",
     "summoningEyeFound": "Summoning Eye!",
     "cancelledStemBreak": "A feature has stopped you from breaking this stem. Use your bare hand if you'd like to actually break it.",
     "cancelledProfileOpening": "A feature has stopped you from opening this player's profile since you were holding a bow.",
@@ -238,7 +240,9 @@
     "reforgeExclusionExample": "e.g. \"odd, clean\"",
     "actionsLeft": "%number% Left",
     "effectActive": "1 Effect Active",
-    "effectsActive": "%number% Effects Active"
+    "effectsActive": "%number% Effects Active",
+    "none": "None",
+    "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!"
   },
   "discordStatus": {
     "titleNone": "None",
@@ -269,53 +273,113 @@
     "descriptionTarantula": "Shows that you are doing a Tarantula quest."
   },
   "commandUsage": {
-    "sba": "Open the main menu",
-    "sba.brand": "§e(Dev) §7Show the server brand",
-    "sba.brand.brandOutput": "Server Brand: %brand%",
-    "sba.brand.notFound": "Server brand not found!",
-    "sba.copyEntity": "§e(Dev) §7Copy NBT data for entities of the given name(s) within the given radius around the player",
-    "sba.copySidebar": "§e(Dev) §7Copy the scoreboard text",
-    "sba.copyTabList": "§e(Dev) §7Copy the tab list header and footer",
-    "sba.dev": "개발자 모드 켜기/끄기",
-    "sba.dev.disabled": "Developer mode disabled!",
-    "sba.dev.enabled": "Developer mode enabled! TIP: Press \"%keyName%\" to copy NBT data!",
-    "sba.edit": "GUI 위치 편집",
-    "sba.folder": "Open your mods folder",
-    "sba.folder.error": "An error occurred trying to open the mods folder: %s",
-    "sba.help": "Show this help message. If a command is provided, detailed help about that command is shown.",
-    "sba.help.copyEntity": "Copies the NBT data of entities. The types of entities included and the radius around the player to copy data from can be customized. If no options are given, the default settings are used. The default settings are: include players, armor stands, and mobs, and a radius of 3 blocks. If the radius isn't given, the default radius is used.",
-    "sba.help.copyEntity.entityNames": "Names of the types of entities you want to copy data for (e.g. Player, Creeper). Press \"Tab\" after typing the command for a full list. Separate multiple names with commas, names are case-sensitive.",
-    "sba.help.copyEntity.radius": "The radius(in blocks) around the player to copy entity NBT data from",
-    "sba.help.copySidebar.formatted": "Determines if the formatting codes should be included when copying. Can be either \"true\" or \"false\", defaults to \"false\" if no value is provided. Formatting codes are copied if \"true\".",
-    "sba.help.copyTabList": "This command copies the header and footer of the tab player list. Formatting codes are included.",
-    "sba.help.dev": "This command toggles developer mode. This mode is meant for developers Skyblock mods/tools. It provides raw data from the game such as entity and item NBT.",
-    "sba.help.help.command": "the sub-command to get detailed usage for",
-    "sba.help.set.zealotCounter": "Manually sets counts in the zealot counter.",
-    "sba.help.set.zealotCounter.eyes": "Lifetime summoning eyes obtained",
-    "sba.help.set.zealotCounter.totalZealots": "Lifetime zealots killed",
-    "sba.help.set.zealotCounter.zealots": "Zealots killed since the last summoning eye drop",
-    "sba.help.slayer": "Manually set slayer stats, press tab for arguments",
-    "sba.help.slayer.boss": "Slayer boss: \"Zombie\", \"Spider\", or \"Wolf\"",
-    "sba.help.slayer.number": "Number to set the stat to",
-    "sba.help.slayer.stat": "Slayer stat to change, can be \"kills\" or the name of a dropped item formatted like this: \"REVENANT_FLESH\"",
-    "sba.set.zealotCounter": "Manually set your zealot counts",
-    "sba.set.zealotCounter.eyes": "Set total summoning eye count to %number%!",
-    "sba.set.zealotCounter.totalZealots": "Set total zealot count to %number%!",
-    "sba.set.zealotCounter.wrongUsage": "Invalid selection! Please choose %options%.",
-    "sba.set.zealotCounter.zealots": "Set current zealot count to %number%!",
-    "sba.slayer": "Manually set slayer stats, press tab for arguments",
-    "sba.slayer.bossRequired": "You need to select a boss! Please choose %bosses%",
-    "sba.slayer.statRequired": "You need to select a stat. Press tab for options.",
-    "sba.slayer.numberRequired": "You need to add the number you want.",
-    "sba.slayer.killsSet": "%boss% Slayer의 킬 숫자가 %number% 로 바뀌었습니다",
-    "sba.slayer.statSet": "Statistic %stat% for slayer %boss% was set to %number%.",
-    "sba.slayer.invalidBoss": "\"%input%\"은 유효한 스탯이 아닙니다!",
-    "sba.slayer.invalidStat": "\"%input%\"은 유효한 보스가 아닙니다!",
-    "sba.toggleActionBarLogging": "§e(Dev) §7액션 바 메시지 기록 켜기/끄기",
-    "sba.toggleActionBarLogging.disabled": "Action bar messages will no longer be logged.",
-    "sba.toggleActionBarLogging.enabled": "이제 액션 바의 메시지들이 기록됩니다.",
-    "sba.wrongUsage.generic": "잘못된 사용법입니다!",
-    "sba.wrongUsage.subCommandNotFound": "The sub-command \"%sub-command%\" was not found."
+    "sba": {
+      "base": {
+        "help": "Open the main menu"
+      },
+      "brand": {
+        "help": "§e(Dev) §7Show the server brand",
+        "brandOutput": "Server Brand: %brand%",
+        "notFound": "Server brand not found!"
+      },
+      "copyBlock": {
+        "help": "§e(Dev) §7Copies data about the block that you are looking at"
+      },
+      "copyEntity": {
+        "help": "§e(Dev) §7Copy NBT data for entities of the given name(s) within the given radius around the player",
+        "detailedHelp": {
+          "description": "Copies the NBT data of entities. The types of entities included and the radius around the player to copy data from can be customized. If no options are given, the default settings are used. The default settings are: include players, armor stands, and mobs, and a radius of 3 blocks. If the radius isn't given, the default radius is used.",
+          "options": {
+            "entityNames": "Names of the types of entities you want to copy data for (e.g. Player,Creeper). Press \"Tab\" after typing the command for a full list. Separate multiple names with commas, names are case-sensitive.",
+            "radius": "The radius (in blocks) around the player to copy entity NBT data from"
+          }
+        }
+      },
+      "copySidebar": {
+        "help": "§e(Dev) §7Copy the scoreboard text",
+        "detailedHelp": {
+          "description": "Copies the text displayed in the scoreboard's sidebar display slot",
+          "options": {
+            "formatted": "Determines if the formatting codes should be included when copying. Can be either \"true\" or \"false\", defaults to \"false\" if no value is provided. Formatting codes are copied if \"true\"."
+          }
+        }
+      },
+      "copyTabList": {
+        "help": "§e(Dev) §7Copy the tab list header and footer",
+        "detailedHelp": {
+          "description": "This command copies the header and footer of the tab player list. Formatting codes are included."
+        }
+      },
+      "dev": {
+        "help": "Toggle developer mode",
+        "detailedHelp": {
+          "description": "This command toggles developer mode. This mode is meant for developers Skyblock mods/tools. It provides raw data from the game such as entity and item NBT."
+        },
+        "disabled": "Developer mode disabled!",
+        "enabled": "Developer mode enabled! TIP: Press \"%keyName%\" to copy NBT data!"
+      },
+      "edit": {
+        "help": "Edit GUI locations"
+      },
+      "folder": {
+        "help": "Open your mods folder",
+        "error": "An error occurred trying to open the mods folder: %s"
+      },
+      "help": {
+        "help": "Show this help message. If a command is provided, detailed help about that command is shown.",
+        "detailedHelp": {
+          "options": {
+            "command": "the sub-command to get detailed usage for"
+          }
+        }
+      },
+      "set": {
+        "zealotCounter": {
+          "help": "Manually set your zealot counts",
+          "detailedHelp": {
+            "description": "Manually sets counts in the zealot counter.",
+            "options": {
+              "eyes": "Lifetime summoning eyes obtained",
+              "totalZealots": "Lifetime zealots killed",
+              "zealots": "Zealots killed since the last summoning eye drop"
+            }
+          },
+          "eyesSet": "Set total summoning eye count to %number%!",
+          "totalZealotsSet": "Set total zealot count to %number%!",
+          "wrongUsage": "Invalid selection! Please choose %options%.",
+          "zealotsSet": "Set current zealot count to %number%!"
+        }
+      },
+      "slayer": {
+        "help": "Manually set slayer stats, press tab for arguments",
+        "detailedHelp": {
+          "description": "Manually set slayer stats, press tab for arguments",
+          "options": {
+            "boss": "Slayer boss: \"Zombie\", \"Spider\", or \"Wolf\"",
+            "number": "Number to set the stat to",
+            "stat": "Slayer stat to change, can be \"kills\" or the name of a dropped item formatted like this: \"REVENANT_FLESH\""
+          }
+        },
+        "bossRequired": "You need to select a boss! Please choose %bosses%",
+        "statRequired": "You need to select a stat. Press tab for options.",
+        "numberRequired": "You need to add the number you want.",
+        "killsSet": "Kills for slayer %boss% was set to %number%.",
+        "statSet": "Statistic %stat% for slayer %boss% was set to %number%.",
+        "invalidBoss": "\"%input%\" is not a valid statistic!",
+        "invalidStat": "\"%input%\" is not a valid boss!"
+      },
+      "toggleActionBarLogging": {
+        "help": "§e(Dev) §7Toggle logging action bar messages",
+        "disabled": "Action bar messages will no longer be logged.",
+        "enabled": "Action bar messages will now be logged."
+      },
+      "errors": {
+        "wrongUsage": {
+          "generic": "Wrong usage!",
+          "subCommandNotFound": "The sub-command \"%sub-command%\" was not found."
+        }
+      }
+    }
   },
   "keyBindings": {
     "developerCopyNBT": "NBT 복사"

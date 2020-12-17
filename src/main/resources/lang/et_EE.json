@@ -1,5 +1,5 @@
 {
-  "language": "Inglise",
+  "language": "Eesti",
   "settings": {
     "settings": "Sätted",
     "magmaBossWarning": "Magma Boss 'i hoiatus",
@@ -31,19 +31,19 @@
     "manaText": "Mana number",
     "healthBar": "Elude riba",
     "healthText": "Elude number",
-    "defenceIcon": "Defence Symbol",
-    "defenceText": "Defence Number",
-    "defencePercentage": "Defence Percentage",
+    "defenceIcon": "Kaitse sümbol",
+    "defenceText": "Kaitse number",
+    "defencePercentage": "Kaitse protsent",
     "healthUpdates": "Elude muutumise protsent",
-    "hidePlayersInLobby": "Hide Far Entities in Lobby",
+    "hidePlayersInLobby": "Peida lobby 's kauged olendid",
     "darkAuctionTimer": "Dark Auction 'i taimer",
     "magmaBossTimer": "Magma Boss 'i Timer",
-    "itemPickupLog": "Item Pickup Log",
+    "itemPickupLog": "Asjade ülesvõtmise logi",
     "avoidPlacingEnchantedItems": "Hoidu loitsitud asjade maha panemisest",
     "avoidBreakingStems": "Hoidu taimede varte lõhkumisest",
-    "stopBowChargeFromResetting": "Stop Bow Charge From Resetting",
+    "stopBowChargeFromResetting": "Ära taasta vibu vinnastumist",
     "preventMovementOnDeath": "Peata kõndimine peale surma",
-    "showItemAnvilUses": "Show Item Anvil Uses",
+    "showItemAnvilUses": "Näita asjade Anvil Use 'sid",
     "lockSlots": "Luba pesade lukustamist",
     "lockSlot": "Lukusta pesa",
     "dontResetCursorInventory": "Ära taasta kursorit inventaride vahel",
@@ -68,7 +68,7 @@
     "soundIndicatorForFishing": "Heli hoiatus kalastamisel",
     "avoidBlinkingNightVision": "Ära pilguta öönägemise efektiga",
     "disableMinionLocationWarning": "Ära tee ebaperfektse asukoha hoiatusi",
-    "jungleAxeCooldown": "Block Jungle Axe/Treecapitator on Cooldown",
+    "jungleAxeCooldown": "Blokeeri Jungle Axe/Treecapitator cooldowni ajal",
     "organizeLongEnchantmentLists": "Organiseeri pikki loitsude nimekirju",
     "showItemCooldowns": "Näita asjade cooldowne",
     "speedPercentage": "Kiiruse protsent",
@@ -83,7 +83,7 @@
     "powerOrbDisplayStyle": "Power Orbi stiil: %style%",
     "powerOrbStyle": {
       "detailed": "Üksikasjalik",
-      "compact": "Kompaktne"
+      "compact": "Compact"
     },
     "disableMagicalSoupMessage": "Hoia ära Magical Mushroom Soup 'i sõnumid",
     "zealotCounter": "Zealot 'i lugeja - loe viimasest eye 'st",
@@ -124,16 +124,16 @@
     "disableTeleportPadMessages": "Eemalda Teleport Pad 'ide sõnumid",
     "baitListDisplay": "Näita Bait 'ide listi kui hoiad käes kalaõnge",
     "freezeBackpackPreview": "Jääta backpack 'ide eelvaade",
-    "hideGreyEnchants": "Hide Regular Grey Enchants",
+    "hideGreyEnchants": "Peida tavalised hallid loitsud",
     "zealotCounterExplosiveBow": "Zealot 'i lugeja Explosive Bow toetus",
     "disableEndermanTeleportation": "Blokeeri Enderman 'ide teleporteerimine",
     "changeZealotColor": "Muuda Zealot 'i värv",
     "hideSvenPupNametags": "Peida Sven 'i kutsikate nimesilt",
     "turnAllFeaturesChroma": "Muuda kõik valikud chroma 'ks",
     "dungeonMapDisplay": "Dungeon 'i kaardi näitaja",
-    "rotateMap": "Keera kaarti sinu mängija keeramisega",
-    "centerRotationOnYourPlayer": "Muuda oma mängija keeramise keskmeks",
-    "mapZoom": "Map Zoom",
+    "rotateMap": "Rotate The Map With Your Player's Rotation",
+    "centerRotationOnYourPlayer": "Rotate Around Your Player's Marker",
+    "mapZoom": "Kaardi suum",
     "glowingDroppedItems": "Helendavad kukutatud asjad",
     "glowingDungeonTeammates": "Helendavad Dungeon 'ide tiimikaaslased",
     "baseStatBoostPercentage": "Näita baas omadusi Dungeon 'i asjadele",
@@ -151,45 +151,47 @@
     "tarantulaSlayerTracker": "Slayer 'i jälgija - Tarantula/Ämblik",
     "svenSlayerTracker": "Slayer 'i jälgija - Sven/Hunt",
     "textMode": "Tekstirežiim",
-    "dragonsNestOnly": "Only Show in the Dragon's Nest",
+    "dragonsNestOnly": "Näita ainult Dragon's Nest 'is",
     "dragonStatsTracker": "Draakonite jälgija",
     "skillActionsLeftUntilNextLevel": "Näita mitu tegevust on jäänud järgimise tasemeni",
-    "hideWhenNotInCrypts": "Hide When Not in the Crypts/Doing Revenant Quest",
-    "hideWhenNotInSpidersDen": "Hide When Not in the Spider's Den/Doing Tarantula Quest",
-    "hideWhenNotInCastle": "Hide When Not in the Castle/Doing Sven Quest",
-    "dungeonDeathCounter": "Dungeon Death Counter",
-    "showPersonalCompactorPreview": "Show Personal Compactor Preview",
-    "rockPetTracker": "Rock Pet Tracker",
-    "dolphinPetTracker": "Dolphin Pet Tracker",
-    "dungeonsTeammateNameOverlay": "Dungeons Teammate Name Overlay",
-    "showExpertiseKills": "Show Expertise Kills",
-    "dungeonsSecretsDisplay": "Dungeons Secrets Display",
-    "showSkillPercentageInstead": "Show Percentage Instead of XP",
-    "showSkillXPGained": "Show XP Gained",
-    "skillProgressBar": "Skill Progress Bar",
-    "showSalvageEssencesCounter": "Show Salvage Essences Counter",
-    "disableMortMessages": "Disable Mort Messages",
-    "disableBossMessages": "Disable Boss Messages",
-    "hideOtherPlayersPresents": "Hide Other Player's Presents",
-    "easierPresentOpening": "Open Presents Easier",
-    "showSwordKills": "Show Sword Kills"
+    "hideWhenNotInCrypts": "Peida Revenant 'ide quest, kui sa ei ole Crypt 'is",
+    "hideWhenNotInSpidersDen": "Peida Tarantula 'te quest, kui sa ei ole Spider's Den 'is",
+    "hideWhenNotInCastle": "Peida Sven 'ide quest, kui sa ei ole Castle 'is",
+    "dungeonDeathCounter": "Dungeon 'is surmade loendi",
+    "showPersonalCompactorPreview": "Näita Personal Compactor 'i eelvaadet",
+    "rockPetTracker": "Rock Pet 'i jälgija",
+    "dolphinPetTracker": "Dolphin Pet 'i jälgija",
+    "dungeonsTeammateNameOverlay": "Dungeon 'i tiimikaaslaste nimede overlay",
+    "showExpertiseKills": "Näita Expertise 'i tapmisi",
+    "dungeonsSecretsDisplay": "Dungeons 'i saladuste näitaja",
+    "showSkillPercentageInstead": "Näita protsenti XP asemel",
+    "showSkillXPGained": "Näita saadud XP 'd",
+    "skillProgressBar": "Skill 'i progressi riba",
+    "showSalvageEssencesCounter": "Näita taastatud essentsi lugejat",
+    "disableMortMessages": "Blokeeri Morti sõnumid",
+    "disableBossMessages": "Eemalda bossi sõnumid",
+    "hideOtherPlayersPresents": "Peida teiste inimeste kingitused",
+    "easierPresentOpening": "Ava kingitusi kergemalt",
+    "showSwordKills": "Näita mõõga tapmisi",
+    "compactTabList": "Compact Tab List",
+    "highlightMaxEnchantments": "Highlight Special Enchantments"
   },
   "messages": {
-    "enchants": "Enchants",
-    "reforges": "Reforges",
-    "dropConfirmation": "Drop this item again to confirm!",
-    "magmaBossWarning": "Magma Cube Boss!",
-    "fullInventory": "Full Inventory!",
-    "labymod": "Labymod Users: Hide Food, Armor, and Health Bar, is incompatible.",
-    "minionCannotReach": "A %type% minion cannot reach and has stopped spawning!",
-    "minionIsFull": "A minion on your island is full!",
-    "typeEnchantmentsHere": "Type %type% Here!",
-    "separateMultiple": "Separate Multiple With Commas.",
-    "enchantsToMatch": "%type% To Match:",
-    "enchantsToExclude": "%type% To Exclude:",
-    "wantToViewPatchNotes": "Need support or want to read the full changelog?",
-    "downloadLink": "VIDEO/UPDATE LINK",
-    "directDownload": "DIRECT DOWNLOAD LINK",
+    "enchants": "Loitsud",
+    "reforges": "Reforge 'id",
+    "dropConfirmation": "Kukuta see asi uuesti, et kinnitada!",
+    "magmaBossWarning": "Magma Boss!",
+    "fullInventory": "Täis inventar!",
+    "labymod": "Labymodi kasutajad: Peida toidu, rüü ja elude riba ei ole sobiv.",
+    "minionCannotReach": "Üks %type% minion ei ulatu elukateni ja lõpetus tekitamise!",
+    "minionIsFull": "Minion su saarel on täis!",
+    "typeEnchantmentsHere": "Kirjuta %type% siia!",
+    "separateMultiple": "Eralda mitmed komadega.",
+    "enchantsToMatch": "%type% et sobitada:",
+    "enchantsToExclude": "%type% et välja jätta:",
+    "wantToViewPatchNotes": "Vajad abi või tahad täis changelog 'i?",
+    "downloadLink": "VIDEO/UUENDUSE LINK",
+    "directDownload": "OTSESE ALLALAADIMISE LINK",
     "openModFolder": "AVA MOD 'IDE KAUST",
     "joinTheDiscord": "DISCORDI LINK",
     "newUpdateAvailable": "Uuem versioon (%version%) on saadaval!",
@@ -204,31 +206,31 @@
     "cancelledDropping": "Üks funktsioon on takistanud sul kukutada seda \"haruldast\" asja või tööriista oma kiirribast.",
     "clickMoreTimes": "Kliki/kukuta seda asja veel %times% korda kui sa tegelikult tahad seda teha.",
     "clickOneMoreTime": "Kliki/kukuta seda asja veel 1 kord kui sa tegelikult tahad seda teha.",
-    "cancelledDeepCaverns": "A feature has stopped you from mining this block here.",
+    "cancelledDeepCaverns": "Funktsioon on peatanud siin selle plokki lõhkumise.",
     "featureDisabled": "Funktsioon keelatud",
-    "anvilUses": "Anvil Uses: %uses%",
-    "specialZealotFound": "Special Zealot!",
-    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)",
-    "searchFeatures": "Search features",
-    "downloadingUpdateFile": "Downloading update file...",
-    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
-    "noArrowsLeft": "No Arrows Left!",
-    "chooseAColor": "Choose a Color",
-    "selectedColor": "Selected Color",
+    "anvilUses": "Alasi kasutused %uses%",
+    "specialZealotFound": "Spetsiaalne Zealot!",
+    "blockIncompletePatterns": "Plokkide crafti 'mise lõpetamata muster (soovitatud)",
+    "searchFeatures": "Otsi sätteid",
+    "downloadingUpdateFile": "Uuendusfailide allalaadimine...",
+    "onlyFewArrowsLeft": "Ainult %arrows% nooli alles!",
+    "noArrowsLeft": "Nooled on otsas!",
+    "chooseAColor": "Vali värv",
+    "selectedColor": "Valitud värv",
     "setHexColor": "Määra Hex värv",
-    "rescaleFeatures": "Rescale Features",
-    "resizeBars": "Resize Bars",
-    "showColorIcons": "Show Color Icons",
-    "enableFeatureSnapping": "Enable Feature Snapping",
-    "stage": "Stage %stage%",
-    "switchedSlots": "You have just switched from a locked slot or rare item. Please wait a bit before dropping!",
-    "clickToOpenLink": "Click to open this link!",
-    "clickToOpenFolder": "Click to open your mods folder!",
-    "firstStatus": "This status will appear at the top",
+    "rescaleFeatures": "Taasta funktsioonide algne suurus",
+    "resizeBars": "Taasta baar 'ide algne suurus",
+    "showColorIcons": "Näita värvi ikoone",
+    "enableFeatureSnapping": "Võimalda funktsioonide napsamine",
+    "stage": "Etapp %stage%",
+    "switchedSlots": "Sa vahetasid ennast just lukustatud pesast või väärtuslikust esemest. Palun oota veidi enne kui midagi välja viskad!",
+    "clickToOpenLink": "Kliki, et avada link!",
+    "clickToOpenFolder": "Kliki, et avada oma mod 'ide kasut!",
+    "firstStatus": "See staatus ilmub üleval",
     "secondStatus": "See staatus ilmub su esimese staatuse alla",
     "fallbackStatus": "See staatus ilmub kui su automaatsel staatusel pole midagi näidata",
     "legendarySeaCreatureWarning": "Legendaarne püüe!",
-    "cancelledPark": "A feature has stopped you from breaking this block here.",
+    "cancelledPark": "Üks funktsioon on blokeerinud sind seda plokki lõhkumast.",
     "bossApproaching": "Sa oled lähedal boss 'i tekitamisele!",
     "enableAll": "Lülita kõik sisse",
     "disableAll": "Lülita kõik välja",
@@ -238,7 +240,9 @@
     "reforgeExclusionExample": "nt. \"odd, clean\"",
     "actionsLeft": "%number% veel jäänud",
     "effectActive": "1 effekt aktiivne",
-    "effectsActive": "%number% efekte aktiivne"
+    "effectsActive": "%number% efekte aktiivne",
+    "none": "Mitte ühtegi",
+    "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!"
   },
   "discordStatus": {
     "titleNone": "Mitte ühtegi",
@@ -246,79 +250,139 @@
     "titleLocation": "Asukoht",
     "descriptionLocation": "Näitab su praegust asukohta",
     "titlePurse": "Purse",
-    "descriptionPurse": "Shows the amount of coins in your purse",
-    "titleStats": "Stats",
-    "descriptionStats": "Shows your HP, Defense and Mana stats",
+    "descriptionPurse": "Näitab mitu Coin 'i sul Purse 'is on",
+    "titleStats": "Näitajad",
+    "descriptionStats": "Näitab su elude, Kaitse ja Mana näitajaid",
     "titleZealots": "Zealots",
-    "descriptionZealots": "Shows your Zealot counter",
-    "titleItem": "Held Item",
-    "descriptionItem": "Shows the name of the item you're holding",
-    "titleProfile": "Profile",
-    "descriptionProfile": "Shows your Profile name",
-    "titleTime": "Skyblock Time",
-    "descriptionTime": "Shows the current Skyblock time. E.g. 12:00am 1st Early Winter",
-    "titleCustom": "Custom Status",
-    "descriptionCustom": "Enter a custom status",
-    "titleAuto": "Auto Status",
-    "descriptionAuto": "Automatically displays a status. E.g. your zealot count while in The End.",
+    "descriptionZealots": "Näitab su Zealot 'i lugejat",
+    "titleItem": "Hoitud asi",
+    "descriptionItem": "Näitab selle asja nime mida sa hoiad",
+    "titleProfile": "Profiil",
+    "descriptionProfile": "Näitab su profiili nime",
+    "titleTime": "Skyblock 'i aeg",
+    "descriptionTime": "Näitab parasjagu olevat Skyblock 'i aega. Nt. 12:00am 1st Early Winter",
+    "titleCustom": "Kohandatud staatus",
+    "descriptionCustom": "Sisesta kohandatud staatus",
+    "titleAuto": "Automaatne staatus",
+    "descriptionAuto": "Automaatselt kuvab staatuse. Nt. su Zealot 'i lugeja kui asud lõpus.",
     "titleRevenants": "Revenant Quest",
-    "descriptionRevenants": "Shows that you are doing a Revenant quest.",
+    "descriptionRevenants": "Näitab, et sa teed Revenant quest 'i.",
     "titleSvens": "Sven Quest",
-    "descriptionSvens": "Shows that you are doing a Sven quest.",
+    "descriptionSvens": "Näitab, et sa teed Sven quest 'i.",
     "titleTarantula": "Tarantula Quest",
-    "descriptionTarantula": "Shows that you are doing a Tarantula quest."
+    "descriptionTarantula": "Näitab, et sa teed Tarantula quest 'i."
   },
   "commandUsage": {
-    "sba": "Open the main menu",
-    "sba.brand": "§e(Dev) §7Show the server brand",
-    "sba.brand.brandOutput": "Server Brand: %brand%",
-    "sba.brand.notFound": "Server brand not found!",
-    "sba.copyEntity": "§e(Dev) §7Copy NBT data for entities of the given name(s) within the given radius around the player",
-    "sba.copySidebar": "§e(Dev) §7Copy the scoreboard text",
-    "sba.copyTabList": "§e(Dev) §7Copy the tab list header and footer",
-    "sba.dev": "Toggle developer mode",
-    "sba.dev.disabled": "Developer mode disabled!",
-    "sba.dev.enabled": "Developer mode enabled! TIP: Press \"%keyName%\" to copy NBT data!",
-    "sba.edit": "Muuda GUI asukohti",
-    "sba.folder": "Ava oma modide kaust",
-    "sba.folder.error": "Error juhtus proovides avada modide kausta: %s",
-    "sba.help": "Näita seda abisõnumit. Kui käsk on antud, detailset abi käsu näitamise kohta.",
-    "sba.help.copyEntity": "Kopeerib olendite NBT andmed. Kaasatavate olendite tüüpe ja mängija raadiust, kust andmeid kopeerida, saab kohandada. Kui valikuid pole antud, kasutatakse vaikesätteid. Vaikimisi seaded on järgmised: mängijad, armor standid ja mobid 3 ploki raadiuses. Kui raadiust pole antud, kasutatakse vaikeraadiust.",
-    "sba.help.copyEntity.entityNames": "Elukatüüpide nimed, kelle andmeid kopeerida (nt. Player, Creeper). Vajuta \"Tab\" peale käsu kirjutamist, et saada täis list. Eralda mitmed nimed komadega, nimed peavad olema õigete suurte tähtedega.",
-    "sba.help.copyEntity.radius": "Raadius (plokkides) mängija ümber kust NBT andmeid kopeerida",
-    "sba.help.copySidebar.formatted": "Otsustab, kas vormistuskoodid peaksid olema sisaldatud kopeerimisel. Saab olla kas \"tõene\" või \"väär\", vaikesättena läheb valikule \"väär\", kui väärstust pole antud. Vormistuskoodid on kopeeritud kui on valitud \"tõene\".",
-    "sba.help.copyTabList": "See käsk kopeerib \"header\" 'i ja \"footer\" 'i Tab mängijate listist. Vormistuskoodid on sisaldatud.",
-    "sba.help.dev": "See käsk lülitab arendaja režiimi sisse/välja. See režiim on mõeldud Skyblock 'i modide arendajatele. See annab toore informatsiooni mängust nagu elukate ja asjade NBT info.",
-    "sba.help.help.command": "ala-käsk mille kohta saada üksikasjalikku kasutamist",
-    "sba.help.set.zealotCounter": "Manuaalselt muudab lugejat Zealot 'i lugejas.",
-    "sba.help.set.zealotCounter.eyes": "Eluajal omandatud summoning eye 'd",
-    "sba.help.set.zealotCounter.totalZealots": "Eluajal tapetud Zealot 'id",
-    "sba.help.set.zealotCounter.zealots": "Zealot 'id tapetud viimasest summoning eye 'st",
-    "sba.help.slayer": "Manuaalselt muuda Slayer 'ite näitajaid, vajuta Tab parameetriteks",
-    "sba.help.slayer.boss": "Slayer boss: \"Zombie\", \"Spider\", või \"Wolf\"",
-    "sba.help.slayer.number": "Number milleks näitajad muuta",
-    "sba.help.slayer.stat": "Slayer 'i lugeja mida muuta, võib olla \"kills\" või kindla saadud asja nimi niimoodi: \"REVENANT_FLESH\"",
-    "sba.set.zealotCounter": "Manually set your zealot counts",
-    "sba.set.zealotCounter.eyes": "Muudetud kogu summoning eye 'de arv arvuks %number%!",
-    "sba.set.zealotCounter.totalZealots": "Muudetud kogu Zealot 'ite arv arvuks %number%!",
-    "sba.set.zealotCounter.wrongUsage": "Kehtetu valik! Palun vali %options%.",
-    "sba.set.zealotCounter.zealots": "Muudetud praegune Zealot 'ite arv arvuks %number%!",
-    "sba.slayer": "Manuaalselt muuda Slayer 'ite näitajaid, vajuta Tab parameetriteks",
-    "sba.slayer.bossRequired": "You need to select a boss! Please choose %bosses%",
-    "sba.slayer.statRequired": "You need to select a stat. Press tab for options.",
-    "sba.slayer.numberRequired": "You need to add the number you want.",
-    "sba.slayer.killsSet": "Kills for slayer %boss% was set to %number%.",
-    "sba.slayer.statSet": "Statistic %stat% for slayer %boss% was set to %number%.",
-    "sba.slayer.invalidBoss": "\"%input%\" is not a valid statistic!",
-    "sba.slayer.invalidStat": "\"%input%\" is not a valid boss!",
-    "sba.toggleActionBarLogging": "§e(Dev) §7Toggle logging action bar messages",
-    "sba.toggleActionBarLogging.disabled": "Action bar messages will no longer be logged.",
-    "sba.toggleActionBarLogging.enabled": "Action bar messages will now be logged.",
-    "sba.wrongUsage.generic": "Wrong usage!",
-    "sba.wrongUsage.subCommandNotFound": "The sub-command \"%sub-command%\" was not found."
+    "sba": {
+      "base": {
+        "help": "Open the main menu"
+      },
+      "brand": {
+        "help": "§e(Dev) §7Show the server brand",
+        "brandOutput": "Server Brand: %brand%",
+        "notFound": "Server brand not found!"
+      },
+      "copyBlock": {
+        "help": "§e(Dev) §7Copies data about the block that you are looking at"
+      },
+      "copyEntity": {
+        "help": "§e(Dev) §7Copy NBT data for entities of the given name(s) within the given radius around the player",
+        "detailedHelp": {
+          "description": "Copies the NBT data of entities. The types of entities included and the radius around the player to copy data from can be customized. If no options are given, the default settings are used. The default settings are: include players, armor stands, and mobs, and a radius of 3 blocks. If the radius isn't given, the default radius is used.",
+          "options": {
+            "entityNames": "Names of the types of entities you want to copy data for (e.g. Player,Creeper). Press \"Tab\" after typing the command for a full list. Separate multiple names with commas, names are case-sensitive.",
+            "radius": "The radius (in blocks) around the player to copy entity NBT data from"
+          }
+        }
+      },
+      "copySidebar": {
+        "help": "§e(Dev) §7Copy the scoreboard text",
+        "detailedHelp": {
+          "description": "Copies the text displayed in the scoreboard's sidebar display slot",
+          "options": {
+            "formatted": "Determines if the formatting codes should be included when copying. Can be either \"true\" or \"false\", defaults to \"false\" if no value is provided. Formatting codes are copied if \"true\"."
+          }
+        }
+      },
+      "copyTabList": {
+        "help": "§e(Dev) §7Copy the tab list header and footer",
+        "detailedHelp": {
+          "description": "This command copies the header and footer of the tab player list. Formatting codes are included."
+        }
+      },
+      "dev": {
+        "help": "Toggle developer mode",
+        "detailedHelp": {
+          "description": "This command toggles developer mode. This mode is meant for developers Skyblock mods/tools. It provides raw data from the game such as entity and item NBT."
+        },
+        "disabled": "Developer mode disabled!",
+        "enabled": "Developer mode enabled! TIP: Press \"%keyName%\" to copy NBT data!"
+      },
+      "edit": {
+        "help": "Edit GUI locations"
+      },
+      "folder": {
+        "help": "Open your mods folder",
+        "error": "An error occurred trying to open the mods folder: %s"
+      },
+      "help": {
+        "help": "Show this help message. If a command is provided, detailed help about that command is shown.",
+        "detailedHelp": {
+          "options": {
+            "command": "the sub-command to get detailed usage for"
+          }
+        }
+      },
+      "set": {
+        "zealotCounter": {
+          "help": "Manually set your zealot counts",
+          "detailedHelp": {
+            "description": "Manually sets counts in the zealot counter.",
+            "options": {
+              "eyes": "Lifetime summoning eyes obtained",
+              "totalZealots": "Lifetime zealots killed",
+              "zealots": "Zealots killed since the last summoning eye drop"
+            }
+          },
+          "eyesSet": "Set total summoning eye count to %number%!",
+          "totalZealotsSet": "Set total zealot count to %number%!",
+          "wrongUsage": "Invalid selection! Please choose %options%.",
+          "zealotsSet": "Set current zealot count to %number%!"
+        }
+      },
+      "slayer": {
+        "help": "Manually set slayer stats, press tab for arguments",
+        "detailedHelp": {
+          "description": "Manually set slayer stats, press tab for arguments",
+          "options": {
+            "boss": "Slayer boss: \"Zombie\", \"Spider\", or \"Wolf\"",
+            "number": "Number to set the stat to",
+            "stat": "Slayer stat to change, can be \"kills\" or the name of a dropped item formatted like this: \"REVENANT_FLESH\""
+          }
+        },
+        "bossRequired": "You need to select a boss! Please choose %bosses%",
+        "statRequired": "You need to select a stat. Press tab for options.",
+        "numberRequired": "You need to add the number you want.",
+        "killsSet": "Kills for slayer %boss% was set to %number%.",
+        "statSet": "Statistic %stat% for slayer %boss% was set to %number%.",
+        "invalidBoss": "\"%input%\" is not a valid statistic!",
+        "invalidStat": "\"%input%\" is not a valid boss!"
+      },
+      "toggleActionBarLogging": {
+        "help": "§e(Dev) §7Toggle logging action bar messages",
+        "disabled": "Action bar messages will no longer be logged.",
+        "enabled": "Action bar messages will now be logged."
+      },
+      "errors": {
+        "wrongUsage": {
+          "generic": "Wrong usage!",
+          "subCommandNotFound": "The sub-command \"%sub-command%\" was not found."
+        }
+      }
+    }
   },
   "keyBindings": {
-    "developerCopyNBT": "Copy NBT"
+    "developerCopyNBT": "Kopeeri NBT"
   },
   "dragonTracker": {
     "protector": "Protector",
@@ -328,12 +392,12 @@
     "young": "Young",
     "strong": "Strong",
     "superior": "Superior",
-    "recentDragons": "Recent Dragons:",
-    "dragonsSince": "Dragons Since:",
+    "recentDragons": "Viimased draakonid:",
+    "dragonsSince": "Draakoneid viimasest:",
     "aspectOfTheDragons": "AOTD",
     "enderDragonPet": "Dragon Pet",
-    "eyesPlaced": "Eyes Placed",
-    "never": "Never"
+    "eyesPlaced": "Eye 'd kasutatud",
+    "never": "Mitte kunagi"
   },
   "slayerTracker": {
     "revenant": "Revenant Horror:",
@@ -364,6 +428,6 @@
     "redClawEgg": "Red Claw Egg",
     "overfluxCapacitor": "Overflux Capacitor",
     "coutureRune": "Couture Rune",
-    "bossesKilled": "Bosses Killed"
+    "bossesKilled": "Boss 'e tapetud"
   }
 }

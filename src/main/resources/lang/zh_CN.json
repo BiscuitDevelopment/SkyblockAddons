@@ -163,16 +163,18 @@
     "dolphinPetTracker": "宠物海豚进度追踪",
     "dungeonsTeammateNameOverlay": "在地下城中高亮队友名字",
     "showExpertiseKills": "显示 Expertise 击杀进度",
-    "dungeonsSecretsDisplay": "Dungeons Secrets Display",
+    "dungeonsSecretsDisplay": "地下城秘密数量显示",
     "showSkillPercentageInstead": "以技能进度百分比代替技能经验值",
     "showSkillXPGained": "显示已获得技能经验值",
     "skillProgressBar": "技能升级进度条",
-    "showSalvageEssencesCounter": "Show Salvage Essences Counter",
+    "showSalvageEssencesCounter": "显示 Salvage Essence 计数器",
     "disableMortMessages": "隐藏 Mort 的对话",
     "disableBossMessages": "隐藏 Boss 们的台词",
     "hideOtherPlayersPresents": "隐藏其他玩家的礼物",
     "easierPresentOpening": "更容易的打开礼物",
-    "showSwordKills": "显示剑击杀数"
+    "showSwordKills": "显示剑击杀数",
+    "compactTabList": "Compact Tab List",
+    "highlightMaxEnchantments": "高亮特殊附魔"
   },
   "messages": {
     "enchants": "附魔",
@@ -238,7 +240,9 @@
     "reforgeExclusionExample": "例如: \"odd, clean\"",
     "actionsLeft": "剩余 %number%",
     "effectActive": "已激活 1 种药水效果",
-    "effectsActive": "已激活 %number% 种药水效果"
+    "effectsActive": "已激活 %number% 种药水效果",
+    "none": "无",
+    "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!"
   },
   "discordStatus": {
     "titleNone": "无",
@@ -269,53 +273,113 @@
     "descriptionTarantula": "显示你当前正在进行狼蛛猎手任务"
   },
   "commandUsage": {
-    "sba": "打开主菜单",
-    "sba.brand": "§e(开发者) §7显示服务端名称",
-    "sba.brand.brandOutput": "服务端：%brand%",
-    "sba.brand.notFound": "无法检测到服务端！",
-    "sba.copyEntity": "§e(开发者) §7复制玩家附近指定范围内指定名称的实体 NBT",
-    "sba.copySidebar": "§e(开发者) §7复制计分板文本",
-    "sba.copyTabList": "§e(开发者) §7复制页头页脚标签",
-    "sba.dev": "启用/禁用 开发者模式",
-    "sba.dev.disabled": "开发者模式已禁用！",
-    "sba.dev.enabled": "开发者模式已启用！提示：按下 \"%keyName%\" 以复制 NBT 数据！",
-    "sba.edit": "编辑 GUI 位置",
-    "sba.folder": "打开 mods 文件夹",
-    "sba.folder.error": "试图打开 mods 文件夹时出错：%s",
-    "sba.help": "显示此帮助信息。若指定了某一指令，则显示该指令的帮助信息。",
-    "sba.help.copyEntity": "复制实体的NBT数据。进行数据复制的实体种类和距离玩家范围可自定义。如果没有给定设置，则采用默认选项。默认设置为：包含玩家、盔甲架和生物，以及三格范围。如果不给定范围，则采用默认范围。",
-    "sba.help.copyEntity.entityNames": "你想要复制数据的实体种类（例如 Player, Creeper）。输入指令后按“'Tab”来获取完整列表。使用英文逗号分隔多个种类，且种类区分大小写。",
-    "sba.help.copyEntity.radius": "进行复制NBT数据的玩家范围（按格计算）。",
-    "sba.help.copySidebar.formatted": "决定格式代码是否被复制。值可以为 \"true\" 或 \"false\"，默认值为 \"false\"。若为 \"true\" 则复制格式代码。",
-    "sba.help.copyTabList": "此命令复制玩家列表标签的页眉和页脚(其中包含样式代码)。",
-    "sba.help.dev": "此命令将开启开发者模式。这个模式是为空岛生存模组和工具开发者所设计。它会给予例如实体和物品NBT的源数据。",
-    "sba.help.help.command": "此子命令来获取详细的用法",
-    "sba.help.set.zealotCounter": "手动设置末影战士计数器。",
-    "sba.help.set.zealotCounter.eyes": "总计获取召唤之眼数",
-    "sba.help.set.zealotCounter.totalZealots": "总计末影战士击杀数",
-    "sba.help.set.zealotCounter.zealots": "自上次掉落召唤之眼后的末影战士击杀数",
-    "sba.help.slayer": "手动设置 Slayer 数据, 按 tab 以获得参数",
-    "sba.help.slayer.boss": "Slayer boss: \"Zombie\", \"Spider\", or \"Wolf\"",
-    "sba.help.slayer.number": "统计设置为的数字",
-    "sba.help.slayer.stat": "Slayer stat to change, can be \"kills\" or the name of a dropped item formatted like this: \"REVENANT_FLESH\"",
-    "sba.set.zealotCounter": "手动设置末影战士计数器",
-    "sba.set.zealotCounter.eyes": "已设置召唤之眼掉落数为 %number%！",
-    "sba.set.zealotCounter.totalZealots": "已设置总计末影战士击杀数为 %number%！",
-    "sba.set.zealotCounter.wrongUsage": "无效选项！请选择 %options%。",
-    "sba.set.zealotCounter.zealots": "已设置自上次召唤之眼掉落后的末影战士击杀数为 %number%！",
-    "sba.slayer": "修改猎杀任务统计，按 tab 查看指令参数",
-    "sba.slayer.bossRequired": "你需要选择一个 Boss! 请选择 %bosses%",
-    "sba.slayer.statRequired": "你需要选择一个统计信息. 按 Tab 键查看选项.",
-    "sba.slayer.numberRequired": "你需要添加你想要的数值",
-    "sba.slayer.killsSet": "Kills for slayer %boss% was set to %number%.",
-    "sba.slayer.statSet": "Statistic %stat% for slayer %boss% was set to %number%.",
-    "sba.slayer.invalidBoss": "\"%input%\" 不是有效的统计信息!",
-    "sba.slayer.invalidStat": "\"%input%\" 不是有效的 boss!",
-    "sba.toggleActionBarLogging": "§e(开发者) §7切换日志操作栏消息",
-    "sba.toggleActionBarLogging.disabled": "操作栏消息将不再被记录。",
-    "sba.toggleActionBarLogging.enabled": "操作栏消息现在将被记录。",
-    "sba.wrongUsage.generic": "错误用法！",
-    "sba.wrongUsage.subCommandNotFound": "未找到子命令 \"%sub-command%\"。"
+    "sba": {
+      "base": {
+        "help": "打开主菜单"
+      },
+      "brand": {
+        "help": "§e(开发者) §7显示服务端名称",
+        "brandOutput": "服务端：%brand%",
+        "notFound": "无法检测到服务端！"
+      },
+      "copyBlock": {
+        "help": "§e(Dev) §7Copies data about the block that you are looking at"
+      },
+      "copyEntity": {
+        "help": "§e(开发者) §7复制玩家附近指定范围内指定名称的实体 NBT",
+        "detailedHelp": {
+          "description": "Copies the NBT data of entities. The types of entities included and the radius around the player to copy data from can be customized. If no options are given, the default settings are used. The default settings are: include players, armor stands, and mobs, and a radius of 3 blocks. If the radius isn't given, the default radius is used.",
+          "options": {
+            "entityNames": "Names of the types of entities you want to copy data for (e.g. Player,Creeper). Press \"Tab\" after typing the command for a full list. Separate multiple names with commas, names are case-sensitive.",
+            "radius": "The radius (in blocks) around the player to copy entity NBT data from"
+          }
+        }
+      },
+      "copySidebar": {
+        "help": "§e(开发者) §7复制计分板文本",
+        "detailedHelp": {
+          "description": "Copies the text displayed in the scoreboard's sidebar display slot",
+          "options": {
+            "formatted": "Determines if the formatting codes should be included when copying. Can be either \"true\" or \"false\", defaults to \"false\" if no value is provided. Formatting codes are copied if \"true\"."
+          }
+        }
+      },
+      "copyTabList": {
+        "help": "§e(Dev) §7Copy the tab list header and footer",
+        "detailedHelp": {
+          "description": "This command copies the header and footer of the tab player list. Formatting codes are included."
+        }
+      },
+      "dev": {
+        "help": "Toggle developer mode",
+        "detailedHelp": {
+          "description": "This command toggles developer mode. This mode is meant for developers Skyblock mods/tools. It provides raw data from the game such as entity and item NBT."
+        },
+        "disabled": "Developer mode disabled!",
+        "enabled": "Developer mode enabled! TIP: Press \"%keyName%\" to copy NBT data!"
+      },
+      "edit": {
+        "help": "Edit GUI locations"
+      },
+      "folder": {
+        "help": "Open your mods folder",
+        "error": "An error occurred trying to open the mods folder: %s"
+      },
+      "help": {
+        "help": "Show this help message. If a command is provided, detailed help about that command is shown.",
+        "detailedHelp": {
+          "options": {
+            "command": "the sub-command to get detailed usage for"
+          }
+        }
+      },
+      "set": {
+        "zealotCounter": {
+          "help": "Manually set your zealot counts",
+          "detailedHelp": {
+            "description": "Manually sets counts in the zealot counter.",
+            "options": {
+              "eyes": "Lifetime summoning eyes obtained",
+              "totalZealots": "Lifetime zealots killed",
+              "zealots": "Zealots killed since the last summoning eye drop"
+            }
+          },
+          "eyesSet": "Set total summoning eye count to %number%!",
+          "totalZealotsSet": "Set total zealot count to %number%!",
+          "wrongUsage": "Invalid selection! Please choose %options%.",
+          "zealotsSet": "Set current zealot count to %number%!"
+        }
+      },
+      "slayer": {
+        "help": "Manually set slayer stats, press tab for arguments",
+        "detailedHelp": {
+          "description": "Manually set slayer stats, press tab for arguments",
+          "options": {
+            "boss": "Slayer boss: \"Zombie\", \"Spider\", or \"Wolf\"",
+            "number": "Number to set the stat to",
+            "stat": "Slayer stat to change, can be \"kills\" or the name of a dropped item formatted like this: \"REVENANT_FLESH\""
+          }
+        },
+        "bossRequired": "You need to select a boss! Please choose %bosses%",
+        "statRequired": "You need to select a stat. Press tab for options.",
+        "numberRequired": "You need to add the number you want.",
+        "killsSet": "Kills for slayer %boss% was set to %number%.",
+        "statSet": "Statistic %stat% for slayer %boss% was set to %number%.",
+        "invalidBoss": "\"%input%\" is not a valid statistic!",
+        "invalidStat": "\"%input%\" is not a valid boss!"
+      },
+      "toggleActionBarLogging": {
+        "help": "§e(Dev) §7Toggle logging action bar messages",
+        "disabled": "Action bar messages will no longer be logged.",
+        "enabled": "Action bar messages will now be logged."
+      },
+      "errors": {
+        "wrongUsage": {
+          "generic": "Wrong usage!",
+          "subCommandNotFound": "The sub-command \"%sub-command%\" was not found."
+        }
+      }
+    }
   },
   "keyBindings": {
     "developerCopyNBT": "复制 NBT"

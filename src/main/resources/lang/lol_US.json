@@ -131,8 +131,8 @@
     "hideSvenPupNametags": "Hide Sven Pups Nametags",
     "turnAllFeaturesChroma": "Turn All Featurez Chroma",
     "dungeonMapDisplay": "Dungeon Map Display",
-    "rotateMap": "Rotate Map 2 Ur Players Rotashun",
-    "centerRotationOnYourPlayer": "Sentr teh Rotashun Around Ur Playr",
+    "rotateMap": "Rotate Map Wif Ur Players Rotashun",
+    "centerRotationOnYourPlayer": "Rotate Around Ur Players Markr",
     "mapZoom": "Map Zoom",
     "glowingDroppedItems": "Glowin Droppd Items",
     "glowingDungeonTeammates": "Glowin Dungeon Teammatez",
@@ -172,7 +172,9 @@
     "disableBossMessages": "Disable Bos Mesagez",
     "hideOtherPlayersPresents": "Hide Othr Players Prezints",
     "easierPresentOpening": "Open Prezints Easir",
-    "showSwordKills": "Show Sword Kills"
+    "showSwordKills": "Show Sword Kills",
+    "compactTabList": "Compact Tab List",
+    "highlightMaxEnchantments": "Highlight Speshul Enchantments"
   },
   "messages": {
     "enchants": "Enchants",
@@ -238,7 +240,9 @@
     "reforgeExclusionExample": "e.g. \"odd, clean\"",
     "actionsLeft": "%number% Left",
     "effectActive": "1 Effect Activ",
-    "effectsActive": "%number% Effects Activ"
+    "effectsActive": "%number% Effects Activ",
+    "none": "None",
+    "copyModeSet": "Teh developr copy mode haz been set 2: %mode%. Pres \"%keyName%\" 2 triggr data copy!"
   },
   "discordStatus": {
     "titleNone": "None",
@@ -269,53 +273,113 @@
     "descriptionTarantula": "Shows dat u r doin Tarantula quest."
   },
   "commandUsage": {
-    "sba": "Open teh main menu",
-    "sba.brand": "§e(Dev) §7Show teh servr brand",
-    "sba.brand.brandOutput": "Servr Brand: %brand%",
-    "sba.brand.notFound": "Servr brand not findz!",
-    "sba.copyEntity": "§e(Dev) §7Copy NBT data 4 entitiez ov teh given naym(s) within teh given radius around teh playr",
-    "sba.copySidebar": "§e(Dev) §7Copy teh scoreboard text",
-    "sba.copyTabList": "§e(Dev) §7Copy teh tab list headr an footr",
-    "sba.dev": "Toggle developr mod",
-    "sba.dev.disabled": "Developr mode disabld!",
-    "sba.dev.enabled": "Developr mode enabld! TIP: Pres \"%keyName%\" 2 copy NBT data!",
-    "sba.edit": "Edit GUI locashuns",
-    "sba.folder": "Open ur modz foldr",
-    "sba.folder.error": "An error occurrd tryin 2 open teh modz foldr: %s",
-    "sba.help": "Show dis halp mesage. If command iz providd, detaild halp bout dat command iz shown.",
-    "sba.help.copyEntity": "Copiez teh NBT data ov entitiez. The typez ov entitiez includd an teh radiuz around teh playr 2 copy data frum can be customizd. If no opshuns r given, teh default settings r usd. Teh default settingz r: include players, armor standz, and mobs, an radius of 3 blockz. If teh radius isnt given, teh default radius iz usd.",
-    "sba.help.copyEntity.entityNames": "Namez ov teh typez ov entitiez u wants 2 copy data 4 (e.g. Playr, Creepr). Pres \"Tab\" aftr typin teh command 4 full list. Separate multiple namez wif commas, namez r case-sensitiv.",
-    "sba.help.copyEntity.radius": "The radius (in blockz) around teh playr 2 copy entity NBT data frum",
-    "sba.help.copySidebar.formatted": "Determinez if teh formattin codez shud be includd when copyin. Can be eithr \"true\" or \"false\", defaults 2 \"false\" if no valu iz providd. Formattin codez are copid if \"true\".",
-    "sba.help.copyTabList": "Dis command copiez teh headr an footr ov teh tab playr list. Formattin codez r includd.",
-    "sba.help.dev": "Dis command togglez developr mode. Dis mode iz meant 4 developers Skyblock modz/tools. It providez raw data frum the game such as entity an item NBT.",
-    "sba.help.help.command": "teh sub-command 2 git detaild usage 4",
-    "sba.help.set.zealotCounter": "Manually sets counts in da zealot countr.",
-    "sba.help.set.zealotCounter.eyes": "Lifetime summonin eyez obtaind",
-    "sba.help.set.zealotCounter.totalZealots": "Lifetime zealots killd",
-    "sba.help.set.zealotCounter.zealots": "Zealots killd since teh last summonin eye drop",
-    "sba.help.slayer": "Manually set slayr stats, pres tab 4 arguments",
-    "sba.help.slayer.boss": "Slayr bos: \"Zombie\", \"Spider\", or \"Wolf\"",
-    "sba.help.slayer.number": "Numbr 2 set teh stat 2",
-    "sba.help.slayer.stat": "Slayr stat 2 change, can be \"kills\" or teh naym ov droppd item formattd liek dis: \"REVENANT_FLESH\"",
-    "sba.set.zealotCounter": "Manually set ur zealot counts",
-    "sba.set.zealotCounter.eyes": "Set total summonin eye count 2 %number%!",
-    "sba.set.zealotCounter.totalZealots": "Set total zealot count 2 %number%!",
-    "sba.set.zealotCounter.wrongUsage": "Invalid selecshun! Plz choose %options%.",
-    "sba.set.zealotCounter.zealots": "Set current zealot count 2 %number%!",
-    "sba.slayer": "Manually set slayr stats, pres tab 4 arguments",
-    "sba.slayer.bossRequired": "U ned 2 select bos! Plz choose %bosses%",
-    "sba.slayer.statRequired": "U ned 2 select stat. Pres tab 4 opshuns.",
-    "sba.slayer.numberRequired": "U ned 2 add teh numbr u wants.",
-    "sba.slayer.killsSet": "Kills 4 slayr %boss% wuz set 2 %number%.",
-    "sba.slayer.statSet": "Statistic %stat% 4 slayr %boss% wuz set 2 %number%.",
-    "sba.slayer.invalidBoss": "\"%input%\" iz not valid statistic!",
-    "sba.slayer.invalidStat": "\"%input%\" iz not valid bos!",
-    "sba.toggleActionBarLogging": "§e(Dev) §7Toggle loggin acshun bar mesagez",
-    "sba.toggleActionBarLogging.disabled": "Acshun bar mesagez will no longr be loggd.",
-    "sba.toggleActionBarLogging.enabled": "Acshun bar mesagez will nao be loggd.",
-    "sba.wrongUsage.generic": "Wrong usage!",
-    "sba.wrongUsage.subCommandNotFound": "Teh sub-command \"%sub-command%\" wuz nut findz."
+    "sba": {
+      "base": {
+        "help": "Open teh main menu"
+      },
+      "brand": {
+        "help": "§e(Dev) §7Show teh servr brand",
+        "brandOutput": "Servr Brand: %brand%",
+        "notFound": "Servr brand not findz!"
+      },
+      "copyBlock": {
+        "help": "§e(Dev) §7Copiez data bout teh block dat u r lookin at"
+      },
+      "copyEntity": {
+        "help": "§e(Dev) §7Copy NBT data 4 entitiez ov teh given naym(s) within teh given radius around teh playr",
+        "detailedHelp": {
+          "description": "Copiez teh NBT data ov entitiez. The typez ov entitiez includd an teh radiuz around teh playr 2 copy data frum can be customizd. If no opshuns r given, teh default settings r usd. Teh default settingz r: include players, armor standz, and mobs, an radius of 3 blockz. If teh radius isnt given, teh default radius iz usd.",
+          "options": {
+            "entityNames": "Namez ov teh typez ov entitiez u wants 2 copy data 4 (e.g. Playr,Creepr). Pres \"Tab\" aftr typin teh command 4 full list. Separate multiple namez wif commas, namez r case-sensitiv.",
+            "radius": "Teh radius (in blockz) around teh playr 2 copy entity NBT data frum"
+          }
+        }
+      },
+      "copySidebar": {
+        "help": "§e(Dev) §7Copy teh scoreboard text",
+        "detailedHelp": {
+          "description": "Copiez teh text displayd in da scorebordz sidebar display slot",
+          "options": {
+            "formatted": "Determinez if teh formattin codez shud be includd when copyin. Can be eithr \"true\" or \"false\", defaults 2 \"false\" if no valu iz providd. Formattin codez are copid if \"true\"."
+          }
+        }
+      },
+      "copyTabList": {
+        "help": "§e(Dev) §7Copy teh tab list headr an footr",
+        "detailedHelp": {
+          "description": "Dis command copiez teh headr an footr ov teh tab playr list. Formattin codez r includd."
+        }
+      },
+      "dev": {
+        "help": "Toggle developr mod",
+        "detailedHelp": {
+          "description": "Dis command togglez developr mode. Dis mode iz meant 4 developers Skyblock modz/tools. It providez raw data frum the game such as entity an item NBT."
+        },
+        "disabled": "Developr mode disabld!",
+        "enabled": "Developr mode enabld! TIP: Pres \"%keyName%\" 2 copy NBT data!"
+      },
+      "edit": {
+        "help": "Edit GUI locashuns"
+      },
+      "folder": {
+        "help": "Open ur modz foldr",
+        "error": "An error occurrd tryin 2 open teh modz foldr: %s"
+      },
+      "help": {
+        "help": "Show dis halp mesage. If command iz providd, detaild halp bout dat command iz shown.",
+        "detailedHelp": {
+          "options": {
+            "command": "teh sub-command 2 git detaild usage 4"
+          }
+        }
+      },
+      "set": {
+        "zealotCounter": {
+          "help": "Manually set ur zealot counts",
+          "detailedHelp": {
+            "description": "Manually sets counts in da zealot countr.",
+            "options": {
+              "eyes": "Lifetime summonin eyez obtaind",
+              "totalZealots": "Lifetime zealots killd",
+              "zealots": "Zealots killd since teh last summonin eye drop"
+            }
+          },
+          "eyesSet": "Set total summonin eye count 2 %number%!",
+          "totalZealotsSet": "Set total zealot count 2 %number%!",
+          "wrongUsage": "Invalid selecshun! Plz choose %options%.",
+          "zealotsSet": "Set current zealot count 2 %number%!"
+        }
+      },
+      "slayer": {
+        "help": "Manually set slayr stats, pres tab 4 arguments",
+        "detailedHelp": {
+          "description": "Manually set slayr stats, pres tab 4 arguments",
+          "options": {
+            "boss": "Slayr bos: \"Zombie\", \"Spider\", or \"Wolf\"",
+            "number": "Numbr 2 set teh stat 2",
+            "stat": "Slayr stat 2 change, can be \"kills\" or teh naym ov droppd item formattd liek dis: \"REVENANT_FLESH\""
+          }
+        },
+        "bossRequired": "U ned 2 select bos! Plz choose %bosses%",
+        "statRequired": "U ned 2 select stat. Pres tab 4 opshuns.",
+        "numberRequired": "U ned 2 add teh numbr u wants.",
+        "killsSet": "Kills 4 slayr %boss% wuz set 2 %number%.",
+        "statSet": "Statistic %stat% 4 slayr %boss% wuz set 2 %number%.",
+        "invalidBoss": "\"%input%\" iz not valid statistic!",
+        "invalidStat": "\"%input%\" iz not valid bos!"
+      },
+      "toggleActionBarLogging": {
+        "help": "§e(Dev) §7Toggle loggin acshun bar mesagez",
+        "disabled": "Acshun bar mesagez will no longr be loggd.",
+        "enabled": "Acshun bar mesagez will nao be loggd."
+      },
+      "errors": {
+        "wrongUsage": {
+          "generic": "Wrong usage!",
+          "subCommandNotFound": "Teh sub-command \"%sub-command%\" wuz nut findz."
+        }
+      }
+    }
   },
   "keyBindings": {
     "developerCopyNBT": "Copy NBT"
