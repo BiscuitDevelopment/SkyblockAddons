@@ -369,7 +369,7 @@
         "invalidStat": "\"%input%\" não é um boss válido!"
       },
       "toggleActionBarLogging": {
-        "help": "§e(Program) §7Alterar o registo de mensagens da barra de ação",
+        "help": "§e(Program) §7Alternar o registo de mensagens da barra de ação",
         "disabled": "As mensagens da barra de ação não serão registadas.",
         "enabled": "As mensagens da barra de ação serão agora registadas."
       },
