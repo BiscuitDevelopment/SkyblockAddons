@@ -370,7 +370,7 @@
       },
       "toggleActionBarLogging": {
         "help": "§e(Program) §7Alternar o registo de mensagens da barra de ação",
-        "disabled": "As mensagens da barra de ação não serão registadas.",
+        "disabled": "As mensagens da barra de ação não serão mais registadas.",
         "enabled": "As mensagens da barra de ação serão agora registadas."
       },
       "errors": {
