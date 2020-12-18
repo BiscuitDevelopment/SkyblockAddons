@@ -6,7 +6,7 @@
     "itemDropConfirmation": "Eşya Atarken Onay",
     "hideSkeletonHatBones": "Skeleton's Helmet kemiklerini Gizle",
     "skeletonHatBonesBar": "Skeleton's Helmet Göstergesi",
-    "hideFoodAndArmor": "Açlık ve Defans Göstergelerini Sakla",
+    "hideFoodAndArmor": "Açlık ve Zırh Göstergelerini Gizle",
     "fullInventoryWarning": "Envanter Dolunca Uyarı",
     "repeating": "Uyarıyı Tekrarla",
     "disableEmberRodAbility": "Adada Ember Rod Özelliğini Kapat",
@@ -179,7 +179,7 @@
   "messages": {
     "enchants": "Büyüler",
     "reforges": "Reforge'lar",
-    "dropConfirmation": "Eşyayı düşürmeyi onaylamak için düşürme tuşuna bir daha bas!",
+    "dropConfirmation": "Eşyayı atmayı onaylamak için atma tuşuna bir daha bas!",
     "magmaBossWarning": "Magma Kübü Boss!",
     "fullInventory": "Envanter Dolu!",
     "labymod": "Labymod Kullanıcıları: Yemek, Zırh ve Can Göstergelerini saklama bu mod ile uyumsuz.",
