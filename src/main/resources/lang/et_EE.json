@@ -131,8 +131,8 @@
     "hideSvenPupNametags": "Peida Sven 'i kutsikate nimesilt",
     "turnAllFeaturesChroma": "Muuda kõik valikud chroma 'ks",
     "dungeonMapDisplay": "Dungeon 'i kaardi näitaja",
-    "rotateMap": "Rotate The Map With Your Player's Rotation",
-    "centerRotationOnYourPlayer": "Rotate Around Your Player's Marker",
+    "rotateMap": "Keera kaarti sinu mängija keeramisega",
+    "centerRotationOnYourPlayer": "Muuda oma mängija keeramise keskmeks",
     "mapZoom": "Kaardi suum",
     "glowingDroppedItems": "Helendavad kukutatud asjad",
     "glowingDungeonTeammates": "Helendavad Dungeon 'ide tiimikaaslased",
@@ -174,7 +174,7 @@
     "easierPresentOpening": "Ava kingitusi kergemalt",
     "showSwordKills": "Näita mõõga tapmisi",
     "compactTabList": "Compact Tab List",
-    "highlightMaxEnchantments": "Highlight Special Enchantments"
+    "highlightMaxEnchantments": "Pane spetsiaalsed loitsud välja paistma"
   },
   "messages": {
     "enchants": "Loitsud",
@@ -242,7 +242,7 @@
     "effectActive": "1 effekt aktiivne",
     "effectsActive": "%number% efekte aktiivne",
     "none": "Mitte ühtegi",
-    "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!"
+    "copyModeSet": "Arendaja kopeerimise režiimiks on pandud: %mode%. Vajuta \"%keyName%\", et kopeerida andmeid!"
   },
   "discordStatus": {
     "titleNone": "Mitte ühtegi",
@@ -275,102 +275,102 @@
   "commandUsage": {
     "sba": {
       "base": {
-        "help": "Open the main menu"
+        "help": "Ava peamenüü"
       },
       "brand": {
-        "help": "§e(Dev) §7Show the server brand",
-        "brandOutput": "Server Brand: %brand%",
-        "notFound": "Server brand not found!"
+        "help": "§e(Dev) §7Näita serveri brändi",
+        "brandOutput": "Serveri bränd: %brand%",
+        "notFound": "Serveri brändi ei leitud!"
       },
       "copyBlock": {
-        "help": "§e(Dev) §7Copies data about the block that you are looking at"
+        "help": "§e(Dev) §7Kopeerib informaatsiooni selle ploki kohta mida sa vaatad"
       },
       "copyEntity": {
-        "help": "§e(Dev) §7Copy NBT data for entities of the given name(s) within the given radius around the player",
+        "help": "§e(Dev) §7Kopeeri kindla nimega olevuste NBT andmed kindlas raadiuses mängija ümber",
         "detailedHelp": {
-          "description": "Copies the NBT data of entities. The types of entities included and the radius around the player to copy data from can be customized. If no options are given, the default settings are used. The default settings are: include players, armor stands, and mobs, and a radius of 3 blocks. If the radius isn't given, the default radius is used.",
+          "description": "Kopeerib olendite NBT andmed. Kaasatavate olendite tüüpe ja mängija raadiust, kust andmeid kopeerida, saab kohandada. Kui valikuid pole antud, kasutatakse vaikesätteid. Vaikimisi seaded on järgmised: mängijad, armor standid ja mobid 3 ploki raadiuses. Kui raadiust pole antud, kasutatakse vaikeraadiust.",
           "options": {
-            "entityNames": "Names of the types of entities you want to copy data for (e.g. Player,Creeper). Press \"Tab\" after typing the command for a full list. Separate multiple names with commas, names are case-sensitive.",
-            "radius": "The radius (in blocks) around the player to copy entity NBT data from"
+            "entityNames": "Elukatüüpide nimed, kelle andmeid kopeerida (nt. Player, Creeper). Vajuta \"Tab\" peale käsu kirjutamist, et saada täis list. Eralda mitmed nimed komadega, nimed peavad olema õigete suurte tähtedega.",
+            "radius": "Raadius (plokkides) mängija ümber kust NBT andmeid kopeerida"
           }
         }
       },
       "copySidebar": {
-        "help": "§e(Dev) §7Copy the scoreboard text",
+        "help": "§e(Dev) §7Kopeeri scoreboard 'i tekst",
         "detailedHelp": {
-          "description": "Copies the text displayed in the scoreboard's sidebar display slot",
+          "description": "Kopeerib näidatud tekstid scoreboard 'is külgriba näidatud kohal",
           "options": {
-            "formatted": "Determines if the formatting codes should be included when copying. Can be either \"true\" or \"false\", defaults to \"false\" if no value is provided. Formatting codes are copied if \"true\"."
+            "formatted": "Otsustab, kas vormistuskoodid peaksid olema sisaldatud kopeerimisel. Saab olla kas \"tõene\" või \"väär\", vaikesättena läheb valikule \"väär\", kui väärstust pole antud. Vormistuskoodid on kopeeritud kui on valitud \"tõene\"."
           }
         }
       },
       "copyTabList": {
-        "help": "§e(Dev) §7Copy the tab list header and footer",
+        "help": "§e(Dev) §7Kopeeri Tab Listi \"header\" ja \"footer\"",
         "detailedHelp": {
-          "description": "This command copies the header and footer of the tab player list. Formatting codes are included."
+          "description": "See käsk kopeerib \"header\" 'i ja \"footer\" 'i Tab mängijate listist. Vormistuskoodid on sisaldatud."
         }
       },
       "dev": {
-        "help": "Toggle developer mode",
+        "help": "Lülita arendaja režiim sisse/välja",
         "detailedHelp": {
-          "description": "This command toggles developer mode. This mode is meant for developers Skyblock mods/tools. It provides raw data from the game such as entity and item NBT."
+          "description": "See käsk lülitab arendaja režiimi sisse/välja. See režiim on mõeldud Skyblock 'i modide arendajatele. See annab toore informatsiooni mängust nagu elukate ja asjade NBT info."
         },
-        "disabled": "Developer mode disabled!",
-        "enabled": "Developer mode enabled! TIP: Press \"%keyName%\" to copy NBT data!"
+        "disabled": "Arendaja režiim välja lülitatud!",
+        "enabled": "Arendaja režiim sisse lülitatud! VIHJE: Vajuta \"%KeyName%\" et kopeerida NBT andmed!"
       },
       "edit": {
-        "help": "Edit GUI locations"
+        "help": "Muuda GUI asukohti"
       },
       "folder": {
-        "help": "Open your mods folder",
-        "error": "An error occurred trying to open the mods folder: %s"
+        "help": "Ava oma modide kaust",
+        "error": "Error juhtus proovides avada modide kausta: %s"
       },
       "help": {
-        "help": "Show this help message. If a command is provided, detailed help about that command is shown.",
+        "help": "Näita seda abisõnumit. Kui käsk on antud, detailset abi käsu näitamise kohta.",
         "detailedHelp": {
           "options": {
-            "command": "the sub-command to get detailed usage for"
+            "command": "ala-käsk mille kohta saada üksikasjalikku kasutamist"
           }
         }
       },
       "set": {
         "zealotCounter": {
-          "help": "Manually set your zealot counts",
+          "help": "Manuaalselt muuda oma Zealot 'i lugejad",
           "detailedHelp": {
-            "description": "Manually sets counts in the zealot counter.",
+            "description": "Manuaalselt muudab lugejat Zealot 'i lugejas.",
             "options": {
               "eyes": "Lifetime summoning eyes obtained",
-              "totalZealots": "Lifetime zealots killed",
-              "zealots": "Zealots killed since the last summoning eye drop"
+              "totalZealots": "Eluajal tapetud Zealot 'id",
+              "zealots": "Zealot 'id tapetud viimasest summoning eye 'st"
             }
           },
-          "eyesSet": "Set total summoning eye count to %number%!",
-          "totalZealotsSet": "Set total zealot count to %number%!",
-          "wrongUsage": "Invalid selection! Please choose %options%.",
-          "zealotsSet": "Set current zealot count to %number%!"
+          "eyesSet": "Muudetud kogu summoning eye 'de arv arvuks %number%!",
+          "totalZealotsSet": "Muudetud kogu Zealot 'ite arv arvuks %number%!",
+          "wrongUsage": "Kehtetu valik! Palun vali %options%.",
+          "zealotsSet": "Muudetud praegune Zealot 'ite arv arvuks %number%!"
         }
       },
       "slayer": {
-        "help": "Manually set slayer stats, press tab for arguments",
+        "help": "Manuaalselt muuda Slayer 'ite näitajaid, vajuta Tab parameetriteks",
         "detailedHelp": {
-          "description": "Manually set slayer stats, press tab for arguments",
+          "description": "Manuaalselt muuda Slayer 'ite näitajaid, vajuta Tab parameetriteks",
           "options": {
-            "boss": "Slayer boss: \"Zombie\", \"Spider\", or \"Wolf\"",
-            "number": "Number to set the stat to",
-            "stat": "Slayer stat to change, can be \"kills\" or the name of a dropped item formatted like this: \"REVENANT_FLESH\""
+            "boss": "Slayer boss: \"Zombie\", \"Spider\", või \"Wolf\"",
+            "number": "Number milleks näitajad muuta",
+            "stat": "Slayer 'i lugeja mida muuta, võib olla \"kills\" või kindla saadud asja nimi niimoodi: \"REVENANT_FLESH\""
           }
         },
-        "bossRequired": "You need to select a boss! Please choose %bosses%",
-        "statRequired": "You need to select a stat. Press tab for options.",
-        "numberRequired": "You need to add the number you want.",
-        "killsSet": "Kills for slayer %boss% was set to %number%.",
-        "statSet": "Statistic %stat% for slayer %boss% was set to %number%.",
-        "invalidBoss": "\"%input%\" is not a valid statistic!",
-        "invalidStat": "\"%input%\" is not a valid boss!"
+        "bossRequired": "Sa pead valima bossi! Palun vali %bosses%",
+        "statRequired": "Sa pead valima lugeja. Vajuta Tab valikute jaoks.",
+        "numberRequired": "Sa pead lisama numbri mida sa tahad.",
+        "killsSet": "Tapmised slayerile %boss% on nüüd %number%.",
+        "statSet": "Statistika %stat% slayer 'ile %boss% muudeti numbriks %number%.",
+        "invalidBoss": "\"%input%\" pole kehtiv statistik!",
+        "invalidStat": "\"%input%\" pole kehtiv boss!"
       },
       "toggleActionBarLogging": {
-        "help": "§e(Dev) §7Toggle logging action bar messages",
-        "disabled": "Action bar messages will no longer be logged.",
+        "help": "§e(Dev) §7Lülita sisse/välja action bar 'i sõnumite loggimine",
+        "disabled": "Action bar 'i sõnumeid enam ei loggita.",
         "enabled": "Action bar messages will now be logged."
       },
       "errors": {
