@@ -167,8 +167,8 @@ public enum Feature {
     COMPACT_TAB_LIST(152, "settings.compactTabList", null, false),
     ENCHANTMENTS_HIGHLIGHT(153, "settings.highlightMaxEnchantments", new GuiFeatureData(ColorCode.GOLD, true), false),
 
-    DISABLE_SPIRIT_SCEPTRE_MESSAGES(152, "settings.disableSpiritSceptreMessages", new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.GRAY), false, EnumUtils.FeatureSetting.SHOW_SPIRIT_SCEPTRE_DISPLAY),
-    SHOW_SPIRIT_SCEPTRE_DISPLAY(153, null, false),
+    DISABLE_SPIRIT_SCEPTRE_MESSAGES(154, "settings.disableSpiritSceptreMessages", new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.GRAY), false, EnumUtils.FeatureSetting.SHOW_SPIRIT_SCEPTRE_DISPLAY),
+    SHOW_SPIRIT_SCEPTRE_DISPLAY(155, null, false),
 
     WARNING_TIME(-1, Message.SETTING_WARNING_DURATION, false),
     WARP_ADVANCED_MODE(-1, Message.SETTING_ADVANCED_MODE, true),
