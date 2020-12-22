@@ -1,3 +1,5 @@
+commit_message: Crowdin - New translations for %language%
+append_commit_message: false
 files:
   - source: src/main/resources/lang/en_us.json
     translation: /src/main/resources/lang/%locale_with_underscore%.json
