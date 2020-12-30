@@ -131,8 +131,8 @@
     "hideSvenPupNametags": "Piilota Svenin koiranpentujen nimet",
     "turnAllFeaturesChroma": "Aseta kaikki ominaisuuden värinvaihtotilaan",
     "dungeonMapDisplay": "Näytä Dungeon-kartta",
-    "rotateMap": "Rotate The Map With Your Player's Rotation",
-    "centerRotationOnYourPlayer": "Rotate Around Your Player's Marker",
+    "rotateMap": "Käännä karttaa pelaajan mukaan",
+    "centerRotationOnYourPlayer": "Keskitä kierto pelaajasi ympärille",
     "mapZoom": "Kartan suurennus",
     "glowingDroppedItems": "Hehkuvat pudotetut esineet",
     "glowingDungeonTeammates": "Hehkuvat Dungeon-tiimikaverit",
@@ -173,8 +173,8 @@
     "hideOtherPlayersPresents": "Piilota muiden pelaajien lahjat",
     "easierPresentOpening": "Avaa lahjat helpommin",
     "showSwordKills": "Näytä miekan tapot",
-    "compactTabList": "Compact Tab List",
-    "highlightMaxEnchantments": "Highlight Special Enchantments"
+    "compactTabList": "Tiivis Tab-lista",
+    "highlightMaxEnchantments": "Korosta erikoislumoukset"
   },
   "messages": {
     "enchants": "Lumoukset",
@@ -242,7 +242,7 @@
     "effectActive": "1 tehoste aktiivisena",
     "effectsActive": "%number% tehostetta aktiivisena",
     "none": "Ei mikään",
-    "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!"
+    "copyModeSet": "Kehittäjän kopiointitila on asetettu: %mode%. Paina \"%keyName%\" aktivoidaksesi tietojen kopioinnin!"
   },
   "discordStatus": {
     "titleNone": "Ei mikään",
@@ -275,108 +275,108 @@
   "commandUsage": {
     "sba": {
       "base": {
-        "help": "Open the main menu"
+        "help": "Avaa päävalikko"
       },
       "brand": {
-        "help": "§e(Dev) §7Show the server brand",
-        "brandOutput": "Server Brand: %brand%",
-        "notFound": "Server brand not found!"
+        "help": "§e(Dev) §7Show palvelimen tunnus",
+        "brandOutput": "Palvelimen tunnus: %brand%",
+        "notFound": "Palvelimen tunnusta ei löytynyt!"
       },
       "copyBlock": {
-        "help": "§e(Dev) §7Copies data about the block that you are looking at"
+        "help": "§e(Dev) §7Copies tiedot palikasta jota katsot"
       },
       "copyEntity": {
-        "help": "§e(Dev) §7Copy NBT data for entities of the given name(s) within the given radius around the player",
+        "help": "§e(Dev) §7Copy NBT tiedot annetun nim(i)en entiteeteistä valitulla säteellä pelaajasta",
         "detailedHelp": {
-          "description": "Copies the NBT data of entities. The types of entities included and the radius around the player to copy data from can be customized. If no options are given, the default settings are used. The default settings are: include players, armor stands, and mobs, and a radius of 3 blocks. If the radius isn't given, the default radius is used.",
+          "description": "Kopioi entiteetin NBT tiedot. Sisällytettyjen entiteettien tyypit ja säde pelaajan ympäriltä, josta tiedot kopioidaan voi muokata. Jos mitään valintoja ei ole annettu, oletusasetuksia käytetään. Oletusasetukset ovat: sisällytä pelaajat, haarniskatelineet ja mobit, ja 3 palikan säteen. Jos sädettä ei ole annettu, oletussädettä käytetään.",
           "options": {
-            "entityNames": "Names of the types of entities you want to copy data for (e.g. Player,Creeper). Press \"Tab\" after typing the command for a full list. Separate multiple names with commas, names are case-sensitive.",
-            "radius": "The radius (in blocks) around the player to copy entity NBT data from"
+            "entityNames": "Entiteettityyppien nimet, joista haluat kopioida tiedot (esim. Player,Creeper). Paina \"Tab\" koko listan komennon kirjoittamisen jälkeen. Erottele useat nimet pilkuilla, nimissä kirjainkoot ovat tärkeitä.",
+            "radius": "Säde (palikoissa) pelaajan ympäriltä, josta kopioidaan entiteettien NBT tiedot"
           }
         }
       },
       "copySidebar": {
-        "help": "§e(Dev) §7Copy the scoreboard text",
+        "help": "§e(Dev) §7Copy tulostaulun teksti",
         "detailedHelp": {
-          "description": "Copies the text displayed in the scoreboard's sidebar display slot",
+          "description": "Kopioi tulostaulun sivupalkin kohdassa näytetyn tekstin",
           "options": {
-            "formatted": "Determines if the formatting codes should be included when copying. Can be either \"true\" or \"false\", defaults to \"false\" if no value is provided. Formatting codes are copied if \"true\"."
+            "formatted": "Määrittelee, jos muunnoskoodit sisällytetään kopioitaessa. Voidaan asettaa \"true\" tai \"false\", oletus on \"false\" jos muuta arvoa ei ole annettu. Muunnoskoodit kopioidaan jos \"true\"."
           }
         }
       },
       "copyTabList": {
-        "help": "§e(Dev) §7Copy the tab list header and footer",
+        "help": "§e(Dev) §7Copy tab-listan otsikko ja alatunniste",
         "detailedHelp": {
-          "description": "This command copies the header and footer of the tab player list. Formatting codes are included."
+          "description": "Tämä komento kopioi otsikon ja alatunnisteen tab-pelaajalistasta. Muunnoskoodit sisällytetään."
         }
       },
       "dev": {
-        "help": "Toggle developer mode",
+        "help": "Kehittäjätyökalut päälle/pois",
         "detailedHelp": {
-          "description": "This command toggles developer mode. This mode is meant for developers Skyblock mods/tools. It provides raw data from the game such as entity and item NBT."
+          "description": "Tämä komento vaihtaa kehittäjätilaan ja pois. Tämä tila on tarkoitettu Skyblock modien/työkalujen kehittäjille. Se tarjoaa raakaa tietoa pelistä kuten entiteettien ja esineiden NBT:t."
         },
-        "disabled": "Developer mode disabled!",
-        "enabled": "Developer mode enabled! TIP: Press \"%keyName%\" to copy NBT data!"
+        "disabled": "Kehittäjätila pois käytöstä!",
+        "enabled": "Kehittäjätila käytössä! Vinkki: Paina \"%keyName%\" kopioidaksesi NBT tiedot!"
       },
       "edit": {
-        "help": "Edit GUI locations"
+        "help": "Muokkaa GUI sijainteja"
       },
       "folder": {
-        "help": "Open your mods folder",
-        "error": "An error occurred trying to open the mods folder: %s"
+        "help": "Avaa Mods-kansio",
+        "error": "Tapahtui virhe yritettäessä avata mods-kansio: %s"
       },
       "help": {
-        "help": "Show this help message. If a command is provided, detailed help about that command is shown.",
+        "help": "Näytä tämä apuviesti. Jos komento on saatavilla, lisätietoja siitä komennosta näytetään.",
         "detailedHelp": {
           "options": {
-            "command": "the sub-command to get detailed usage for"
+            "command": "alakomento, josta saa yksityiskohtaisen käyttökohteet"
           }
         }
       },
       "set": {
         "zealotCounter": {
-          "help": "Manually set your zealot counts",
+          "help": "Manuaalisesti aseta Zealot määräsi",
           "detailedHelp": {
-            "description": "Manually sets counts in the zealot counter.",
+            "description": "Manuaalisesti asettaa määriä Zealot laskuriin.",
             "options": {
-              "eyes": "Lifetime summoning eyes obtained",
-              "totalZealots": "Lifetime zealots killed",
-              "zealots": "Zealots killed since the last summoning eye drop"
+              "eyes": "Yhteensä Summoning Eye:ta saatu",
+              "totalZealots": "Yhteensä Zealotteja tapettu",
+              "zealots": "Zealotteja tapettu viime Summoning Eyen jälkeen"
             }
           },
-          "eyesSet": "Set total summoning eye count to %number%!",
-          "totalZealotsSet": "Set total zealot count to %number%!",
-          "wrongUsage": "Invalid selection! Please choose %options%.",
-          "zealotsSet": "Set current zealot count to %number%!"
+          "eyesSet": "Aseta Summoning Eye:den kokonaismääräksi %number%!",
+          "totalZealotsSet": "Aseta Zealottien kokonaismääräksi %number%!",
+          "wrongUsage": "Virheellinen valinta! Valitse %options%.",
+          "zealotsSet": "Aseta nykyiseksi Zealot määräksi %number%!"
         }
       },
       "slayer": {
-        "help": "Manually set slayer stats, press tab for arguments",
+        "help": "Manuaalisesti aseta Slayer-tilastot, paina tab saadaksesi perusteet",
         "detailedHelp": {
-          "description": "Manually set slayer stats, press tab for arguments",
+          "description": "Manuaalisesti aseta Slayer-tilastot, paina tab saadaksesi perusteet",
           "options": {
-            "boss": "Slayer boss: \"Zombie\", \"Spider\", or \"Wolf\"",
-            "number": "Number to set the stat to",
-            "stat": "Slayer stat to change, can be \"kills\" or the name of a dropped item formatted like this: \"REVENANT_FLESH\""
+            "boss": "Slayer-johtaja: \"Zombie\", \"Spider\", tai \"Wolf\"",
+            "number": "Numero, johon tilastot asetetaan",
+            "stat": "Muokattava slayer-tilasto, voi olla \"kills\" tai pudotetun esineen nimi muodossa: \"REVENANT_FLESH\""
           }
         },
-        "bossRequired": "You need to select a boss! Please choose %bosses%",
-        "statRequired": "You need to select a stat. Press tab for options.",
-        "numberRequired": "You need to add the number you want.",
-        "killsSet": "Kills for slayer %boss% was set to %number%.",
-        "statSet": "Statistic %stat% for slayer %boss% was set to %number%.",
-        "invalidBoss": "\"%input%\" is not a valid statistic!",
-        "invalidStat": "\"%input%\" is not a valid boss!"
+        "bossRequired": "Sinun täytyy valita johtaja! Valitse %bosses%",
+        "statRequired": "Sinun täytyy valita tilasto. Saadaksesi vaihtoehdot paina tab.",
+        "numberRequired": "Sinun täytyy lisätä haluamasi numero.",
+        "killsSet": "Tapot %boss% slayerille asetettiin %number%.",
+        "statSet": "Tilasto %stat% %boss% slayerille asetettiin %number%.",
+        "invalidBoss": "\"%input%\" ei ole pätevä tilasto!",
+        "invalidStat": "\"%input%\" ei ole pätevä johtaja!"
       },
       "toggleActionBarLogging": {
-        "help": "§e(Dev) §7Toggle logging action bar messages",
-        "disabled": "Action bar messages will no longer be logged.",
-        "enabled": "Action bar messages will now be logged."
+        "help": "§e(Dev) §7Toggle toimintopalkin viestien kirjaaminen lokiin",
+        "disabled": "Toimintopalkin viestejä ei enään kirjata lokiin.",
+        "enabled": "Toimintopalkin viestit kirjataan nyt lokiin."
       },
       "errors": {
         "wrongUsage": {
-          "generic": "Wrong usage!",
-          "subCommandNotFound": "The sub-command \"%sub-command%\" was not found."
+          "generic": "Väärä käyttö!",
+          "subCommandNotFound": "Alakomentoa \"%sub-command%\" ei löydetty."
         }
       }
     }
