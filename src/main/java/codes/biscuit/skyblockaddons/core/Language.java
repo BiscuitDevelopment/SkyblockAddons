@@ -38,6 +38,7 @@ public enum Language {
     GREEK("el_GR"),
     HEBREW("he_IL"),
     HUNGARIAN("hu_HU"),
+    INDONESIAN("id_ID"),
     IRISH("ga_IE"),
     LITHUANIAN("lt_LT"),
     MALAY("ms_MY"),
