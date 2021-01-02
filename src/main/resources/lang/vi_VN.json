@@ -48,7 +48,7 @@
     "lockSlot": "Khoá ô",
     "dontResetCursorInventory": "Không di chuyển con trỏ khi mở túi đồ",
     "summoningEyeAlert": "Cảnh báo: Nhặt Summoning Eye",
-    "makeEnderchestsInEndGreen": "Change Enderchest Color in The End",
+    "makeEnderchestsInEndGreen": "Đổi màu rương Ender trong The End",
     "changeColor": "Thay đổi màu sắc",
     "showInOtherGames": "Hiện trong các trò khác",
     "useVanillaTexture": "Sử dụng đồ họa nguyên bản",
@@ -80,105 +80,105 @@
     "enableMessageWhenActionPrevented": "Hiện Thông Báo Khi một Hành Động đã được chặn",
     "hidePetHealthBar": "Ẩn thanh máu Pet",
     "powerOrbDisplay": "Hiển thị Power Orb",
-    "powerOrbDisplayStyle": "Power Orb Style: %style%",
+    "powerOrbDisplayStyle": "Kiểu Power Orb: %style%",
     "powerOrbStyle": {
       "detailed": "Chi tiết",
       "compact": "Gọn"
     },
     "disableMagicalSoupMessage": "Tắt thông báo của Magical Mushroom Soup",
     "zealotCounter": "Bộ đếm Zealot - Đếm số Zealot đã giết kể từ khi nhặt được Summoning Eye",
-    "tickerChargesDisplay": "Ticker/Charges Display",
+    "tickerChargesDisplay": "Hiện số Ticker/Charge",
     "tab": {
       "generalSettings": "Cài đặt chung"
     },
-    "tabEffectTimers": "Potion and Powerup Timers",
-    "noArrowsLeftAlert": "No Arrows Left Alert",
-    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
-    "showCakeBagPreview": "Show Preview for Cake Bags",
-    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
-    "enableDevFeatures": "Enable Developer Features",
-    "chromaSpeed": "Chroma Speed",
-    "chromaMode": "Chroma Color Mode",
+    "tabEffectTimers": "Thời gian của thuốc",
+    "noArrowsLeftAlert": "Cảnh báo hết mũi tên",
+    "hideNightVisionEffectTimer": "Ẩn thời gian thuốc nhìn đêm",
+    "showCakeBagPreview": "Hiển thị xem trước cho Cake Bags",
+    "showBackpackPreviewInAH": "Hiển thị xem trước vật phẩm trong Backpack khi đang mở AH",
+    "enableDevFeatures": "Bật chế độ dành cho nhà phát triển",
+    "chromaSpeed": "Tốc độ màu Chroma",
+    "chromaMode": "Chế độ màu Chroma",
     "chromaModes": {
-      "allTheSame": "All the Same Color",
-      "fade": "Color Fade"
+      "allTheSame": "Cùng một màu",
+      "fade": "Theo dải màu khác nhau"
     },
-    "chromaFadeWidth": "Chroma Fade Width",
-    "sortTabEffectTimers": "Sort Timers by Duration",
-    "showBrokenFragments": "Show Broken Dragon Fragments",
-    "skyblockAddonsButtonInPauseMenu": "Show SBA Button in Pause Menu",
-    "showTotalZealotCount": "Zealot Counter - Total Zealot Count",
-    "showSummoningEyeCount": "Zealot Counter - Total Eye Count",
-    "showZealotsPerEye": "Zealot Counter - Show Zealots Per Eye",
-    "turnBowGreenWhenUsingToxicArrowPoison": "Color Bow Green When Using Toxic Arrow Poison",
-    "birchParkRainmakerTimer": "Birch Park Rainmaker Timer",
-    "combatTimerDisplay": "Combat Timer Display",
+    "chromaFadeWidth": "Độ dài dải màu",
+    "sortTabEffectTimers": "Sắp xếp thời gian theo thời lượng còn lại",
+    "showBrokenFragments": "Hiển thị Dragon Fragments bị hỏng",
+    "skyblockAddonsButtonInPauseMenu": "Hiển thị nút cài đặt SBA trong Pause menu",
+    "showTotalZealotCount": "Bộ đếm Zealot - Tổng số Zealot",
+    "showSummoningEyeCount": "Bộ đếm Zealot - Tổng số Eye",
+    "showZealotsPerEye": "Bộ đếm Zealot - Hiển thị số Zealots/1 Eye",
+    "turnBowGreenWhenUsingToxicArrowPoison": "Cung màu xanh khi dùng Toxic Arrow Poison",
+    "birchParkRainmakerTimer": "Bộ đếm Thời gian Mưa ở Birch Park",
+    "combatTimerDisplay": "Hiện thời gian bị dính Combat",
     "discordRP": "Discord Rich Presence",
-    "endstoneProtectorDisplay": "Endstone Protector Display",
-    "fancyWarpMenu": "Fancy Warp Menu",
-    "doubleWarp": "Warp Twice",
-    "advancedMode": "Advanced Mode",
-    "legendarySeaCreatureWarning": "Legendary Sea Creature Warning",
-    "onlyBreakLogsPark": "Only Break Logs in the Park",
-    "bossApproachAlert": "Slayer Boss Approach Alert",
-    "disableTeleportPadMessages": "Disable Teleport Pad Messages",
-    "baitListDisplay": "Show Bait List While Holding a Rod",
-    "freezeBackpackPreview": "Freeze Backpack Preview",
-    "hideGreyEnchants": "Hide Regular Grey Enchants",
-    "zealotCounterExplosiveBow": "Zealot Counter Explosive Bow Support",
-    "disableEndermanTeleportation": "Disable Enderman Teleportation",
-    "changeZealotColor": "Change Zealot Color",
-    "hideSvenPupNametags": "Hide Sven Pup Nametags",
-    "turnAllFeaturesChroma": "Turn All Features Chroma",
-    "dungeonMapDisplay": "Dungeon Map Display",
-    "rotateMap": "Rotate The Map With Your Player's Rotation",
-    "centerRotationOnYourPlayer": "Rotate Around Your Player's Marker",
-    "mapZoom": "Map Zoom",
-    "glowingDroppedItems": "Glowing Dropped Items",
-    "glowingDungeonTeammates": "Glowing Dungeon Teammates",
-    "baseStatBoostPercentage": "Show Base Stat Boost for Dungeon Items",
-    "colorByRarity": "Color By Rarity",
-    "showPlayerHeadsOnMap": "Show Player Heads on Dungeon Map",
-    "showHealingCircleWall": "Show Dungeon Healing Circle Wall",
-    "showCriticalTeammates": "Show Critical Dungeon Teammates",
-    "showGlowingItemsOnIsland": "Show Glowing Items On Island",
-    "showItemDungeonFloor": "Show Floor Obtained on Dungeon Items",
-    "showDungeonMilestone": "Show Dungeon Milestone",
-    "dungeonsCollectedEssencesDisplay": "Dungeons Collected Essences Display",
-    "stopBonzoStaffSounds": "Stop Bonzo's Staff Sounds",
-    "showRarityUpgraded": "Show if Item's Rarity has been Upgraded",
-    "revenantSlayerTracker": "Slayer Tracker - Revenant/Zombie",
-    "tarantulaSlayerTracker": "Slayer Tracker - Tarantula/Spider",
-    "svenSlayerTracker": "Slayer Tracker - Sven/Wolf",
-    "textMode": "Text Mode",
-    "dragonsNestOnly": "Only Show in the Dragon's Nest",
-    "dragonStatsTracker": "Dragon Tracker",
-    "skillActionsLeftUntilNextLevel": "Show Actions Left Until Next Level",
-    "hideWhenNotInCrypts": "Hide When Not in the Crypts/Doing Revenant Quest",
-    "hideWhenNotInSpidersDen": "Hide When Not in the Spider's Den/Doing Tarantula Quest",
-    "hideWhenNotInCastle": "Hide When Not in the Castle/Doing Sven Quest",
-    "dungeonDeathCounter": "Dungeon Death Counter",
-    "showPersonalCompactorPreview": "Show Personal Compactor Preview",
-    "rockPetTracker": "Rock Pet Tracker",
-    "dolphinPetTracker": "Dolphin Pet Tracker",
-    "dungeonsTeammateNameOverlay": "Dungeons Teammate Name Overlay",
-    "showExpertiseKills": "Show Expertise Kills",
-    "dungeonsSecretsDisplay": "Dungeons Secrets Display",
-    "showSkillPercentageInstead": "Show Percentage Instead of XP",
-    "showSkillXPGained": "Show XP Gained",
-    "skillProgressBar": "Skill Progress Bar",
-    "showSalvageEssencesCounter": "Show Salvage Essences Counter",
-    "disableMortMessages": "Disable Mort Messages",
-    "disableBossMessages": "Disable Boss Messages",
-    "hideOtherPlayersPresents": "Hide Other Player's Presents",
-    "easierPresentOpening": "Open Presents Easier",
-    "showSwordKills": "Show Sword Kills",
-    "compactTabList": "Compact Tab List",
-    "highlightMaxEnchantments": "Highlight Special Enchantments"
+    "endstoneProtectorDisplay": "Hiển thị bao lâu Endstone Protector mới xuất hiện",
+    "fancyWarpMenu": "Bản Đồ Dịch Chuyển ĐẸP",
+    "doubleWarp": "Dịch Chuyển 2 Lần",
+    "advancedMode": "Chế Độ Nâng Cao",
+    "legendarySeaCreatureWarning": "Cảnh Báo Câu Được Sea Creature Huyền Thoại",
+    "onlyBreakLogsPark": "Chỉ Chặt Gỗ Trong Birch Park",
+    "bossApproachAlert": "Cảnh Báo Sắp Đụng Độ Trùm Slayer",
+    "disableTeleportPadMessages": "Tắt Thông Báo của Teleport Pad",
+    "baitListDisplay": "Hiện Danh Sách Số Bait Khi Cầm Cần Câu Cá",
+    "freezeBackpackPreview": "\"Đông Cứng\" Hiển Thị Backpack",
+    "hideGreyEnchants": "Giấu Những Phù Phép Được Bôi Xám",
+    "zealotCounterExplosiveBow": "Hỗ Trợ Bộ Đếm Zealot Bằng Cung Nổ",
+    "disableEndermanTeleportation": "Không Cho Enderman Dịch Chuyển",
+    "changeZealotColor": "Đổi Màu Zealot",
+    "hideSvenPupNametags": "Ẩn Thẻ Tên Sven Bé",
+    "turnAllFeaturesChroma": "BẬT MÀU CHROMA CHO TẤT CẢ CÁC CHỨC NĂNG",
+    "dungeonMapDisplay": "Hiện bản đồ Dungeon",
+    "rotateMap": "Xoay bản đồ theo hướng nhân vật của bạn",
+    "centerRotationOnYourPlayer": "Đặt nhân vật của bạn ở chính giữa bản đồ",
+    "mapZoom": "Phóng to/Thu nhỏ Bản đồ",
+    "glowingDroppedItems": "Nổi viền vật phẩm bị đánh rơi",
+    "glowingDungeonTeammates": "Nổi viền Đồng đội trong Dungeon",
+    "baseStatBoostPercentage": "Hiện Tỷ lệ Tăng cường Chỉ số cho vật phẩm Dungeon",
+    "colorByRarity": "Tô màu vật phẩm theo Độ hiếm",
+    "showPlayerHeadsOnMap": "Hiện Đầu Người chơi trên Bản đồ Dungeon",
+    "showHealingCircleWall": "Hiện Tường Tròn Hồi máu",
+    "showCriticalTeammates": "Hiện Đồng đội bị Hấp hối trong Dungeon",
+    "showGlowingItemsOnIsland": "Hiện Vật phẩm Nổi Viền trên Đảo",
+    "showItemDungeonFloor": "Hiện Tầng có Vật phẩm Dungeon đã được Thu thập",
+    "showDungeonMilestone": "Hiện Cột mốc Dungeon",
+    "dungeonsCollectedEssencesDisplay": "Hiển thị Số Dungeon Essence đã nhặt được",
+    "stopBonzoStaffSounds": "Chặn tiếng Bonzo Staff",
+    "showRarityUpgraded": "Hiện nếu Độ hiếm của V.phẩm được N.cấp hay chưa",
+    "revenantSlayerTracker": "Bộ đếm theo dõi Slayer - Revenant",
+    "tarantulaSlayerTracker": "Bộ đếm theo dõi Slayer - Tarantula",
+    "svenSlayerTracker": "Bộ đếm theo dõi Slayer - Sven",
+    "textMode": "Chế độ Văn bản",
+    "dragonsNestOnly": "Chỉ Hiện khi ở trong Dragon's Nest",
+    "dragonStatsTracker": "Bộ đếm theo dõi Rồng",
+    "skillActionsLeftUntilNextLevel": "Hiện Số Hành động Còn lại đến Cấp độ Tiếp theo",
+    "hideWhenNotInCrypts": "Giấu khi Không ở trong Crypts/Làm Nhiệm vụ Revenant",
+    "hideWhenNotInSpidersDen": "Giấu khi Không ở trong Spider's Den/Làm Nhiệm vụ Tarantula",
+    "hideWhenNotInCastle": "Giấu khi Không ở trong Castle/Làm Nhiệm vụ Sven",
+    "dungeonDeathCounter": "Bộ đếm Số lần Chết trong Dungeon",
+    "showPersonalCompactorPreview": "Hiện Xem trước Personal Compactor",
+    "rockPetTracker": "Bộ đếm theo dõi Rock Pet",
+    "dolphinPetTracker": "Bộ đếm theo dõi Dolphin Pet",
+    "dungeonsTeammateNameOverlay": "Phủ Tên Đồng đội Dungeon",
+    "showExpertiseKills": "Hiện Số lần Giết Expertise",
+    "dungeonsSecretsDisplay": "Hiện Bí mật Dungeon",
+    "showSkillPercentageInstead": "Hiện Số Phần trăm Kinh nghiệm thay vì Số Kinh nghiệm",
+    "showSkillXPGained": "Hiện Số Kinh nghiệm Đã nhận",
+    "skillProgressBar": "Hiện Thanh Tiến trình Kỹ năng",
+    "showSalvageEssencesCounter": "Hiện Bộ đếm Tinh Thể cho đồ sắp Phân giải",
+    "disableMortMessages": "Tắt Lời thoại của Mort",
+    "disableBossMessages": "Tắt Lời thoại của Trùm",
+    "hideOtherPlayersPresents": "Ẩn Quà của những Người chơi khác",
+    "easierPresentOpening": "Mở Quà Dễ hơn",
+    "showSwordKills": "Hiện số Quái đã Giết bằng Kiếm",
+    "compactTabList": "Danh sách Tab Gọn gàng",
+    "highlightMaxEnchantments": "Nổi bật các Phù phép Đặc biệt"
   },
   "messages": {
-    "enchants": "Enchants",
-    "reforges": "Reforges",
+    "enchants": "Phù phép",
+    "reforges": "Rèn luyện",
     "dropConfirmation": "Nhấn \"Q\" Thêm Một Lần Nữa Để Xác Nhận!",
     "magmaBossWarning": "Trùm Magma!",
     "fullInventory": "Túi Đồ Đã Đầy!",
@@ -189,12 +189,12 @@
     "separateMultiple": "Phân Chia Nhiều Bằng Dấu Phẩy.",
     "enchantsToMatch": "%type% Để Khớp:",
     "enchantsToExclude": "%type% Để Loại Trừ:",
-    "wantToViewPatchNotes": "Need support or want to read the full changelog?",
-    "downloadLink": "VIDEO/UPDATE LINK",
-    "directDownload": "DIRECT DOWNLOAD LINK",
-    "openModFolder": "OPEN MODS FOLDER",
-    "joinTheDiscord": "DISCORD LINK",
-    "newUpdateAvailable": "A new update (%version%) is available!",
+    "wantToViewPatchNotes": "Muốn đọc những thay đổi không?",
+    "downloadLink": "LIÊN KẾT CẬP NHẬT",
+    "directDownload": "ĐƯỜNG DẪN TẢI VỀ TRỰC TIẾP",
+    "openModFolder": "MỞ THƯ MỤC MODS",
+    "joinTheDiscord": "THAM GIA DISCORD",
+    "newUpdateAvailable": "Cập nhật mới (%version%) đã ra mắt!",
     "update": {
       "majorAvailable": "Bản cập nhật quan trọng (%version%) có sẵn! Liên kết tải về có thể tìm thấy trong chat.",
       "patchAvailable": "Bản vá mới (%version%) có sẵn! Các lựa chọn tải về ở trong chat!"
@@ -203,186 +203,186 @@
     "summoningEyeFound": "Summoning Eye!",
     "cancelledStemBreak": "Một tính năng đã ngăn bạn khỏi việc phá hạt giống này. Hãy sử dụng tay không nếu bạn muốn đập nó.",
     "cancelledProfileOpening": "Một tính năng đã ngăn bạn xem thông tin của người chơi này khi bạn đang cầm Cung.",
-    "cancelledDropping": "A feature has stopped you from dropping this \"rare\" item or tool from your hotbar.",
+    "cancelledDropping": "Một tính năng đã ngăn bạn làm rơi đồ \"hiếm\" hoặc một dụng cụ từ thanh vật phẩm.",
     "clickMoreTimes": "Bấm/Thả Đồ Vật Này Thêm %times% Lần Nữa Nếu Bạn Muốn Thực Hiện Điều Này.",
-    "clickOneMoreTime": "Click/drop this item 1 more time if you really want to do this.",
-    "cancelledDeepCaverns": "A feature has stopped you from mining this block here.",
-    "featureDisabled": "Feature Disabled",
-    "anvilUses": "Anvil Uses: %uses%",
-    "specialZealotFound": "Special Zealot!",
-    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)",
-    "searchFeatures": "Search features",
-    "downloadingUpdateFile": "Downloading update file...",
-    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
-    "noArrowsLeft": "No Arrows Left!",
-    "chooseAColor": "Choose a Color",
-    "selectedColor": "Selected Color",
-    "setHexColor": "Set Hex Color",
-    "rescaleFeatures": "Rescale Features",
-    "resizeBars": "Resize Bars",
-    "showColorIcons": "Show Color Icons",
-    "enableFeatureSnapping": "Enable Feature Snapping",
-    "stage": "Stage %stage%",
-    "switchedSlots": "You have just switched from a locked slot or rare item. Please wait a bit before dropping!",
-    "clickToOpenLink": "Click to open this link!",
-    "clickToOpenFolder": "Click to open your mods folder!",
-    "firstStatus": "This status will appear at the top",
-    "secondStatus": "This status will appear under your first status",
-    "fallbackStatus": "This status will appear when your automatic status has nothing to show",
-    "legendarySeaCreatureWarning": "Legendary Catch!",
-    "cancelledPark": "A feature has stopped you from breaking this block here.",
-    "bossApproaching": "You are close to spawning a boss!",
-    "enableAll": "Enable All",
-    "disableAll": "Disable All",
-    "enchantmentInclusionExample": "e.g. \"prot, feather\"",
-    "enchantmentExclusionExample": "e.g. \"proj, blast\"",
-    "reforgeInclusionExample": "e.g. \"godly, strong\"",
-    "reforgeExclusionExample": "e.g. \"odd, clean\"",
-    "actionsLeft": "%number% Left",
-    "effectActive": "1 Effect Active",
-    "effectsActive": "%number% Effects Active",
-    "none": "None",
-    "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!"
+    "clickOneMoreTime": "Hãy nhấn/thả vật phẩm này 1 lần nữa nếu bạn thực sự muốn làm điều này.",
+    "cancelledDeepCaverns": "Một tính năng đã ngăn bạn đào khối này.",
+    "featureDisabled": "Tính năng Đã bị Vô hiệu",
+    "anvilUses": "Số lần sử dụng đe: %uses%",
+    "specialZealotFound": "Zealot hiếm!",
+    "blockIncompletePatterns": "Chặn chế tạo khuôn chưa hoàn thành (Khuyến nghị)",
+    "searchFeatures": "Tìm kiếm chức năng",
+    "downloadingUpdateFile": "Đang tải về tệp tin Cập Nhật...",
+    "onlyFewArrowsLeft": "Chỉ còn %arrows% mũi tên!",
+    "noArrowsLeft": "Đã hết mũi tên!",
+    "chooseAColor": "Chọn màu",
+    "selectedColor": "Màu đã chọn",
+    "setHexColor": "Tùy chỉnh màu hệ lục phân",
+    "rescaleFeatures": "Phóng to/nhỏ Hiển thị Chức năng",
+    "resizeBars": "Phóng to/nhỏ Thanh",
+    "showColorIcons": "Hiện Icon Màu",
+    "enableFeatureSnapping": "Bật Tính Năng \"Dán\" Chức Năng Với Nhau",
+    "stage": "Giai đoạn %stage%",
+    "switchedSlots": "Bạn đã vừa chuyển ô để đồ từ ô đang bị khóa hoặc một vật phẩm hiếm. Hãy đợi một chút trước khi thả (hoặc vứt) đồ vật đó nhé!",
+    "clickToOpenLink": "Hãy nhấn vào đây để mở đường dẫn này!",
+    "clickToOpenFolder": "Hãy nhấn vào đây để vào thư mục 'mods' của bạn!",
+    "firstStatus": "Trạng thái này sẽ hiện ở trên",
+    "secondStatus": "Trạng thái này sẽ hiện ở dưới trạng thái đầu tiên",
+    "fallbackStatus": "Trạng thái này sẽ hiện ở chỗ này nếu trạng thái hiện tại của bạn không có gì để hiện (vì nó chán)",
+    "legendarySeaCreatureWarning": "Đã Câu Được Sea Creature Huyền Thoại!",
+    "cancelledPark": "Một tính năng đã chặn bạn khỏi việc phá khối này ở đây.",
+    "bossApproaching": "Bạn sắp sửa triệu hồi Trùm rồi!!",
+    "enableAll": "Bật Hết",
+    "disableAll": "Tắt Hết",
+    "enchantmentInclusionExample": "ví dụ \"prot, feather\"",
+    "enchantmentExclusionExample": "ví dụ \"proj, blast\"",
+    "reforgeInclusionExample": "ví dụ \"godly, strong\"",
+    "reforgeExclusionExample": "ví dụ \"odd, clean\"",
+    "actionsLeft": "%number% còn lại",
+    "effectActive": "1 H.ứng thuốc đang H.động",
+    "effectsActive": "%number% H.ứng thuốc đang H.động",
+    "none": "Không có",
+    "copyModeSet": "Chế độ sao chép dành cho Nhà Phát triển hiện đã được đặt thành: %mode%. Nhấn \"%keyName%\" để kích hoạt một lần sao chép dữ liệu!"
   },
   "discordStatus": {
-    "titleNone": "None",
-    "descriptionNone": "No text is displayed",
-    "titleLocation": "Location",
-    "descriptionLocation": "Shows your current location",
+    "titleNone": "Không có",
+    "descriptionNone": "Không hiện chữ nào cả",
+    "titleLocation": "Địa điểm",
+    "descriptionLocation": "Hiện địa điểm hiện tại của bạn",
     "titlePurse": "Purse",
-    "descriptionPurse": "Shows the amount of coins in your purse",
-    "titleStats": "Stats",
-    "descriptionStats": "Shows your HP, Defense and Mana stats",
+    "descriptionPurse": "Hiện số lượng tiền xu trong ví của bạn",
+    "titleStats": "Thông số",
+    "descriptionStats": "Hiện thông số Máu, Giáp và Mana của bạn",
     "titleZealots": "Zealots",
-    "descriptionZealots": "Shows your Zealot counter",
-    "titleItem": "Held Item",
-    "descriptionItem": "Shows the name of the item you're holding",
-    "titleProfile": "Profile",
-    "descriptionProfile": "Shows your Profile name",
-    "titleTime": "Skyblock Time",
-    "descriptionTime": "Shows the current Skyblock time. E.g. 12:00am 1st Early Winter",
-    "titleCustom": "Custom Status",
-    "descriptionCustom": "Enter a custom status",
-    "titleAuto": "Auto Status",
-    "descriptionAuto": "Automatically displays a status. E.g. your zealot count while in The End.",
-    "titleRevenants": "Revenant Quest",
-    "descriptionRevenants": "Shows that you are doing a Revenant quest.",
-    "titleSvens": "Sven Quest",
-    "descriptionSvens": "Shows that you are doing a Sven quest.",
-    "titleTarantula": "Tarantula Quest",
-    "descriptionTarantula": "Shows that you are doing a Tarantula quest."
+    "descriptionZealots": "Hiện bộ đếm Zealot của bạn",
+    "titleItem": "Vật phẩm đang cầm",
+    "descriptionItem": "Hiện tên vật phẩm bạn đang cầm",
+    "titleProfile": "Hồ sơ",
+    "descriptionProfile": "Hiện tên Hồ sơ chơi của bạn",
+    "titleTime": "Thời gian Skyblock",
+    "descriptionTime": "Hiện thời gian Skyblock. (Ví dụ: 12:00 sáng, Đầu Đông ngày 1)",
+    "titleCustom": "Tùy chỉnh Trạng thái",
+    "descriptionCustom": "Viết trạng thái bạn muốn!",
+    "titleAuto": "Trạng thái tự động",
+    "descriptionAuto": "Tự viết trạng thái. (Ví dụ: Nó sẽ hiện Bộ đếm Zealot của bạn khi bạn ở The End.)",
+    "titleRevenants": "Nhiệm Vụ Revenant",
+    "descriptionRevenants": "Hiện rằng bạn đang làm một nhiệm vụ đánh Revenant.",
+    "titleSvens": "Nhiệm Vụ Sven",
+    "descriptionSvens": "Hiện rằng bạn đang làm một nhiệm vụ đánh Sven.",
+    "titleTarantula": "Nhiệm Vụ Tarantula",
+    "descriptionTarantula": "Hiện rằng bạn đang làm một nhiệm vụ đánh Tarantula."
   },
   "commandUsage": {
     "sba": {
       "base": {
-        "help": "Open the main menu"
+        "help": "Mở menu chính"
       },
       "brand": {
-        "help": "§e(Dev) §7Show the server brand",
-        "brandOutput": "Server Brand: %brand%",
-        "notFound": "Server brand not found!"
+        "help": "§e(Chế độ NPT) §7Hiện nhãn hiệu của máy chủ",
+        "brandOutput": "Nhãn hiệu Máy chủ: %brand%",
+        "notFound": "Không thể tìm thấy Nhãn hiệu Máy chủ!"
       },
       "copyBlock": {
-        "help": "§e(Dev) §7Copies data about the block that you are looking at"
+        "help": "§e(Chế độ NPT) §7Sao chép dữ liệu về khối bạn đang nhìn"
       },
       "copyEntity": {
-        "help": "§e(Dev) §7Copy NBT data for entities of the given name(s) within the given radius around the player",
+        "help": "§e(Chế độ NPT) §7Sao chép giá trị NBT cho thực thể có chứa những tên đã cho trong tầm bán kính đã cho vòng quanh chỗ người chơi",
         "detailedHelp": {
-          "description": "Copies the NBT data of entities. The types of entities included and the radius around the player to copy data from can be customized. If no options are given, the default settings are used. The default settings are: include players, armor stands, and mobs, and a radius of 3 blocks. If the radius isn't given, the default radius is used.",
+          "description": "Sẽ sao chép giá trị NBT từ các thực thể. Những loại thực thể đã cho và tầm bán kính người chơi được dùng để sao chép giá trị có thể được chỉnh sửa. Nếu bạn không ghi lựa chọn nào, những lựa chọn mặc định sẽ được sử dụng. Lựa chọn mặc định: bao gồm người chơi, cột treo giáp, quái, với bán kính 3 khối. Nếu bạn không định sẵn bán kính, bán kính theo lựa chọn mặc định sẽ được sử dụng.",
           "options": {
-            "entityNames": "Names of the types of entities you want to copy data for (e.g. Player,Creeper). Press \"Tab\" after typing the command for a full list. Separate multiple names with commas, names are case-sensitive.",
-            "radius": "The radius (in blocks) around the player to copy entity NBT data from"
+            "entityNames": "Tên của các thực thể bạn muốn sao chép giá trị (ví dụ: Người chơi, Creeper). Nhấn \"Tab\" sau khi viết lệnh để xem danh sách đầy đủ. Chia những cái tên khác nhau bằng dấu phẩy, và tên phải ghi đúng ký tự.",
+            "radius": "Bán kính (theo số khối) xung quanh người chơi để sao chép giá trị NBT của thực thể"
           }
         }
       },
       "copySidebar": {
-        "help": "§e(Dev) §7Copy the scoreboard text",
+        "help": "§e(Chế độ NPT) §7Sao chép bảng chữ trên bảng điểm",
         "detailedHelp": {
-          "description": "Copies the text displayed in the scoreboard's sidebar display slot",
+          "description": "Sao chép phần chữ được hiển thị trên bảng điểm",
           "options": {
-            "formatted": "Determines if the formatting codes should be included when copying. Can be either \"true\" or \"false\", defaults to \"false\" if no value is provided. Formatting codes are copied if \"true\"."
+            "formatted": "Xác định nếu các mã định dạng sẽ được cho thêm khi sao chép. Có thể tùy thuộc đúng (\"true\") hay sai (\"false\"), mặc định là \"false\" nếu bạn không định sẵn giá trị. Mã định dạng sẽ được sao chép nếu \"true\"."
           }
         }
       },
       "copyTabList": {
-        "help": "§e(Dev) §7Copy the tab list header and footer",
+        "help": "§e(Chế độ NPT) §7Sao chép tiêu đề và phần chân trang bảng danh sách Tab",
         "detailedHelp": {
-          "description": "This command copies the header and footer of the tab player list. Formatting codes are included."
+          "description": "Lệnh này sẽ giúp bạn sao chép tiêu đề và phần cuối trang của bảng danh sách người chơi. Mã định dạng trong đó cũng sẽ được sao chép."
         }
       },
       "dev": {
-        "help": "Toggle developer mode",
+        "help": "Bật/Tắt chế độ dành cho Nhà Phát Triển (NPT)",
         "detailedHelp": {
-          "description": "This command toggles developer mode. This mode is meant for developers Skyblock mods/tools. It provides raw data from the game such as entity and item NBT."
+          "description": "Lệnh này sẽ bật chế độ cho nhà phát triển. Thường được dùng bởi những nhà phát triển những bản mod/dụng cụ cho Skyblock. Lệnh này sẽ cho bạn dữ liệu gốc từ trò chơi, ví dụ như dữ liệu NBT của thực thể (entity) và vật phẩm."
         },
-        "disabled": "Developer mode disabled!",
-        "enabled": "Developer mode enabled! TIP: Press \"%keyName%\" to copy NBT data!"
+        "disabled": "Đã tắt chế độ dành cho nhà phát triển!",
+        "enabled": "Đã bật chế độ dành cho nhà phát triển! MẸO: Nhấn \"%keyName%\" để sao chép giá trị NBT!"
       },
       "edit": {
-        "help": "Edit GUI locations"
+        "help": "Điều chỉnh vị trí GUI"
       },
       "folder": {
-        "help": "Open your mods folder",
-        "error": "An error occurred trying to open the mods folder: %s"
+        "help": "Mở thư mục 'mods'",
+        "error": "Đã có lỗi xảy ra khi cố gắng mở thư mục \"mods\": %s"
       },
       "help": {
-        "help": "Show this help message. If a command is provided, detailed help about that command is shown.",
+        "help": "Hiện tin nhắn trợ giúp này. Nếu bạn gõ thêm một lệnh đã được cho sẵn, trợ giúp chi tiết của lệnh đó sẽ được hiển thị.",
         "detailedHelp": {
           "options": {
-            "command": "the sub-command to get detailed usage for"
+            "command": "lệnh phụ để lấy chi tiết sử dụng"
           }
         }
       },
       "set": {
         "zealotCounter": {
-          "help": "Manually set your zealot counts",
+          "help": "Chỉnh Bộ Đếm Zealot theo cách thủ công",
           "detailedHelp": {
-            "description": "Manually sets counts in the zealot counter.",
+            "description": "Điều chỉnh Bộ Đếm Zealot theo cách thủ công.",
             "options": {
-              "eyes": "Lifetime summoning eyes obtained",
-              "totalZealots": "Lifetime zealots killed",
-              "zealots": "Zealots killed since the last summoning eye drop"
+              "eyes": "Tổng số Summoning Eye đã nhận được",
+              "totalZealots": "Tổng số Zealot đã giết",
+              "zealots": "Số Zealot đã giết kể từ khi nhận được Summoning Eye"
             }
           },
-          "eyesSet": "Set total summoning eye count to %number%!",
-          "totalZealotsSet": "Set total zealot count to %number%!",
-          "wrongUsage": "Invalid selection! Please choose %options%.",
-          "zealotsSet": "Set current zealot count to %number%!"
+          "eyesSet": "Đã đặt bộ đếm tổng số Summoning Eye thành %number%!",
+          "totalZealotsSet": "Đã đặt bộ đếm tổng số Zealot là %number%!",
+          "wrongUsage": "Lựa chọn không phù hợp! Thay vào đó bạn hãy chọn %options%.",
+          "zealotsSet": "Đã đặt bộ đếm Zealot hiện tại là %number%!"
         }
       },
       "slayer": {
-        "help": "Manually set slayer stats, press tab for arguments",
+        "help": "Điều chỉnh số liệu Slayer theo cách thủ công, nhấn Tab để hiện đối số",
         "detailedHelp": {
-          "description": "Manually set slayer stats, press tab for arguments",
+          "description": "Điều chỉnh số liệu Slayer theo cách thủ công, nhấn Tab để hiện đối số",
           "options": {
-            "boss": "Slayer boss: \"Zombie\", \"Spider\", or \"Wolf\"",
-            "number": "Number to set the stat to",
-            "stat": "Slayer stat to change, can be \"kills\" or the name of a dropped item formatted like this: \"REVENANT_FLESH\""
+            "boss": "Trùm Slayer: \"Zombie\", \"Spider\" hoặc \"Wolf\"",
+            "number": "Số đã nhập để cài đặt số liệu",
+            "stat": "Để số liệu Slayer thay đổi, có thể là \"kills\" hoặc tên vật phẩm rơi ra được định dạng như thế này: \"REVENANT_FLESH\""
           }
         },
-        "bossRequired": "You need to select a boss! Please choose %bosses%",
-        "statRequired": "You need to select a stat. Press tab for options.",
-        "numberRequired": "You need to add the number you want.",
-        "killsSet": "Kills for slayer %boss% was set to %number%.",
-        "statSet": "Statistic %stat% for slayer %boss% was set to %number%.",
-        "invalidBoss": "\"%input%\" is not a valid statistic!",
-        "invalidStat": "\"%input%\" is not a valid boss!"
+        "bossRequired": "Bạn phải chọn một con trùm! Vui lòng chọn %bosses%",
+        "statRequired": "Bạn phải chọn một số liệu. Nhấn Tab để xem thêm lựa chọn.",
+        "numberRequired": "Bạn phải nhập giá trị số bạn muốn đặt.",
+        "killsSet": "Số giết cho trùm Slayer %boss% đã được đặt thành %number%.",
+        "statSet": "Số liệu %stat% cho trùm Slayer %boss% đã được đặt thành %number%.",
+        "invalidBoss": "\"%input%\" không phải là một trùm hợp lệ!",
+        "invalidStat": "\"%input%\" không phải là một số liệu hợp lệ!"
       },
       "toggleActionBarLogging": {
-        "help": "§e(Dev) §7Toggle logging action bar messages",
-        "disabled": "Action bar messages will no longer be logged.",
-        "enabled": "Action bar messages will now be logged."
+        "help": "§e(Chế độ NPT) Bật/Tắt Chế độ Lưu trữ Tin nhắn từ Thanh Hoạt động",
+        "disabled": "Những tin nhắn từ thanh hoạt động giờ sẽ không được lưu trữ.",
+        "enabled": "Những tin nhắn từ thanh hoạt động giờ sẽ được lưu trữ."
       },
       "errors": {
         "wrongUsage": {
-          "generic": "Wrong usage!",
-          "subCommandNotFound": "The sub-command \"%sub-command%\" was not found."
+          "generic": "Sai cách dùng!",
+          "subCommandNotFound": "Lệnh phụ \"%sub-command%\" không tồn tại."
         }
       }
     }
   },
   "keyBindings": {
-    "developerCopyNBT": "Copy NBT"
+    "developerCopyNBT": "Sao chép giá trị NBT"
   },
   "dragonTracker": {
     "protector": "Protector",
@@ -392,12 +392,12 @@
     "young": "Young",
     "strong": "Strong",
     "superior": "Superior",
-    "recentDragons": "Recent Dragons:",
-    "dragonsSince": "Dragons Since:",
+    "recentDragons": "Những con rồng đã đánh gần đây:",
+    "dragonsSince": "Số rồng đã đánh trước khi có:",
     "aspectOfTheDragons": "AOTD",
     "enderDragonPet": "Dragon Pet",
-    "eyesPlaced": "Eyes Placed",
-    "never": "Never"
+    "eyesPlaced": "Số Summoning Eye đã đặt",
+    "never": "Không"
   },
   "slayerTracker": {
     "revenant": "Revenant Horror:",
@@ -428,6 +428,6 @@
     "redClawEgg": "Red Claw Egg",
     "overfluxCapacitor": "Overflux Capacitor",
     "coutureRune": "Couture Rune",
-    "bossesKilled": "Bosses Killed"
+    "bossesKilled": "Số trùm Đã giết"
   }
 }

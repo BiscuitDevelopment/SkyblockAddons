@@ -137,14 +137,14 @@
     "glowingDroppedItems": "Подсветка Выброшенных Предметов",
     "glowingDungeonTeammates": "Glowing Dungeon Teammates",
     "baseStatBoostPercentage": "Show Base Stat Boost for Dungeon Items",
-    "colorByRarity": "Color By Rarity",
+    "colorByRarity": "Цвет по редкости",
     "showPlayerHeadsOnMap": "Показывать Головы Игроков на Карте Подземелий",
     "showHealingCircleWall": "Показывать Границу Круга Лечения В Подземельях",
     "showCriticalTeammates": "Показывать Союзников С Низким Здоровьем",
     "showGlowingItemsOnIsland": "Show Glowing Items On Island",
     "showItemDungeonFloor": "Показывать На Каком Этаже Подземелий Получен Предмет",
     "showDungeonMilestone": "Show Dungeon Milestone",
-    "dungeonsCollectedEssencesDisplay": "Dungeons Collected Essences Display",
+    "dungeonsCollectedEssencesDisplay": "Показ Собранных в Подземельях Эссенций",
     "stopBonzoStaffSounds": "Stop Bonzo's Staff Sounds",
     "showRarityUpgraded": "Показывать если Редкость Предмета была улучшена",
     "revenantSlayerTracker": "Slayer Tracker - Revenant/Zombie",
@@ -152,33 +152,33 @@
     "svenSlayerTracker": "Slayer Tracker - Sven/Wolf",
     "textMode": "Режим текста",
     "dragonsNestOnly": "Only Show in the Dragon's Nest",
-    "dragonStatsTracker": "Dragon Tracker",
-    "skillActionsLeftUntilNextLevel": "Show Actions Left Until Next Level",
+    "dragonStatsTracker": "Счётчик Драконов",
+    "skillActionsLeftUntilNextLevel": "Показать действия, оставшиеся до следующего уровня",
     "hideWhenNotInCrypts": "Hide When Not in the Crypts/Doing Revenant Quest",
     "hideWhenNotInSpidersDen": "Hide When Not in the Spider's Den/Doing Tarantula Quest",
     "hideWhenNotInCastle": "Hide When Not in the Castle/Doing Sven Quest",
-    "dungeonDeathCounter": "Dungeon Death Counter",
+    "dungeonDeathCounter": "Счётчик смертей в Подземельях",
     "showPersonalCompactorPreview": "Show Personal Compactor Preview",
     "rockPetTracker": "Rock Pet Tracker",
     "dolphinPetTracker": "Dolphin Pet Tracker",
     "dungeonsTeammateNameOverlay": "Dungeons Teammate Name Overlay",
     "showExpertiseKills": "Show Expertise Kills",
     "dungeonsSecretsDisplay": "Dungeons Secrets Display",
-    "showSkillPercentageInstead": "Show Percentage Instead of XP",
-    "showSkillXPGained": "Show XP Gained",
-    "skillProgressBar": "Skill Progress Bar",
+    "showSkillPercentageInstead": "Показывать проценты вместо опыта",
+    "showSkillXPGained": "Показать полученный опыт",
+    "skillProgressBar": "Показывать полосу прогресса",
     "showSalvageEssencesCounter": "Show Salvage Essences Counter",
-    "disableMortMessages": "Disable Mort Messages",
-    "disableBossMessages": "Disable Boss Messages",
+    "disableMortMessages": "Отключить Сообщения Морта",
+    "disableBossMessages": "Отключить Сообщения Боссов",
     "hideOtherPlayersPresents": "Hide Other Player's Presents",
-    "easierPresentOpening": "Open Presents Easier",
-    "showSwordKills": "Show Sword Kills",
+    "easierPresentOpening": "Открывать Подарки Проще",
+    "showSwordKills": "Показывать Убийства На Мече",
     "compactTabList": "Compact Tab List",
     "highlightMaxEnchantments": "Highlight Special Enchantments"
   },
   "messages": {
-    "enchants": "Enchants",
-    "reforges": "Reforges",
+    "enchants": "Зачарования",
+    "reforges": "Перековки",
     "dropConfirmation": "Выбросите предмет ещё раз для подтверждения!",
     "magmaBossWarning": "МагмаКуб Босс!",
     "fullInventory": "Инвентарь полон!",
@@ -189,81 +189,81 @@
     "separateMultiple": "Разделяйте зачар-я несколькими запятыми.",
     "enchantsToMatch": "Искать %type%:",
     "enchantsToExclude": "Не искать %type%:",
-    "wantToViewPatchNotes": "Need support or want to read the full changelog?",
-    "downloadLink": "VIDEO/UPDATE LINK",
+    "wantToViewPatchNotes": "Нужна помощь или хотите прочесть изменения?",
+    "downloadLink": "ССЫЛКА НА ВИДЕО/ОБНОВЛЕНИЕ",
     "directDownload": "DIRECT DOWNLOAD LINK",
-    "openModFolder": "OPEN MODS FOLDER",
-    "joinTheDiscord": "DISCORD LINK",
-    "newUpdateAvailable": "A new update (%version%) is available!",
+    "openModFolder": "ОТКРЫТЬ ПАПКУ MODS",
+    "joinTheDiscord": "ССЫЛКА НА DISCORD",
+    "newUpdateAvailable": "Доступно новое обновление (%version%)!",
     "update": {
-      "majorAvailable": "A new major update (%version%) is available! The link for the download can be found in chat.",
-      "patchAvailable": "A new patch update (%version%) is available! Look in chat for download options!"
+      "majorAvailable": "Доступно новое большое обновление (%version%)! Ссылку на загрузку можно найти в чате.",
+      "patchAvailable": "Новое обновление (%version%) теперь доступно! Посмотри в чат для опций загрузки!"
     },
-    "slotLocked": "This slot is locked!",
+    "slotLocked": "Этот слот заблокирован!",
     "summoningEyeFound": "Summoning Eye!",
-    "cancelledStemBreak": "A feature has stopped you from breaking this stem. Use your bare hand if you'd like to actually break it.",
-    "cancelledProfileOpening": "A feature has stopped you from opening this player's profile since you were holding a bow.",
-    "cancelledDropping": "A feature has stopped you from dropping this \"rare\" item or tool from your hotbar.",
-    "clickMoreTimes": "Click/drop this item %times% more times if you really want to do this.",
-    "clickOneMoreTime": "Click/drop this item 1 more time if you really want to do this.",
+    "cancelledStemBreak": "SkyBlockAddons остановил вас от ломания этого стебля. Используйте руку, если вы хотите это сделать.",
+    "cancelledProfileOpening": "SkyBlockAddons остановил вас от открытия профиля игрока с луком в руках.",
+    "cancelledDropping": "SkyBlockAddons оставил вас от выбрасывания этого редкого предмета или инструмента из панели быстрого доступа.",
+    "clickMoreTimes": "Щелкните/выбросьте этот предмет еще %times% раз(а), если вы действительно хотите сделать это.",
+    "clickOneMoreTime": "Нажмите/выбросьте этот предмет еще 1 раз, чтобы подтвердить свое действие.",
     "cancelledDeepCaverns": "A feature has stopped you from mining this block here.",
-    "featureDisabled": "Feature Disabled",
-    "anvilUses": "Anvil Uses: %uses%",
-    "specialZealotFound": "Special Zealot!",
-    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)",
-    "searchFeatures": "Search features",
-    "downloadingUpdateFile": "Downloading update file...",
+    "featureDisabled": "Функция отключена",
+    "anvilUses": "Использований наковальни: %uses%",
+    "specialZealotFound": "Особый Зеалот!",
+    "blockIncompletePatterns": "Блокировать создание незавершённых шаблонов (рекомендуется)",
+    "searchFeatures": "Поиск функций",
+    "downloadingUpdateFile": "Загрузка файла обновления...",
     "onlyFewArrowsLeft": "Only %arrows% arrows left!",
-    "noArrowsLeft": "No Arrows Left!",
-    "chooseAColor": "Choose a Color",
-    "selectedColor": "Selected Color",
+    "noArrowsLeft": "Стрел не осталось!",
+    "chooseAColor": "Выберите цвет",
+    "selectedColor": "Выбранный цвет",
     "setHexColor": "Set Hex Color",
     "rescaleFeatures": "Rescale Features",
-    "resizeBars": "Resize Bars",
-    "showColorIcons": "Show Color Icons",
-    "enableFeatureSnapping": "Enable Feature Snapping",
-    "stage": "Stage %stage%",
-    "switchedSlots": "You have just switched from a locked slot or rare item. Please wait a bit before dropping!",
-    "clickToOpenLink": "Click to open this link!",
-    "clickToOpenFolder": "Click to open your mods folder!",
-    "firstStatus": "This status will appear at the top",
-    "secondStatus": "This status will appear under your first status",
-    "fallbackStatus": "This status will appear when your automatic status has nothing to show",
+    "resizeBars": "Изменить размер полос",
+    "showColorIcons": "Показывать цветные значки",
+    "enableFeatureSnapping": "Включить Привязку Элементов Интерфейса",
+    "stage": "Этап %stage%",
+    "switchedSlots": "Вы только что переключились с заблокированной ячейки или редкого предмета. Пожалуйста, подождите немного перед выбрасыванием!",
+    "clickToOpenLink": "Нажмите, чтобы открыть эту ссылку!",
+    "clickToOpenFolder": "Нажмите, чтобы открыть папку mods!",
+    "firstStatus": "Этот статус будет отображаться вверху",
+    "secondStatus": "Этот статус будет появляться под вашим первым статусом",
+    "fallbackStatus": "Этот статус будет отображаться, когда вашему автоматическому статусу нечего отобразить",
     "legendarySeaCreatureWarning": "Legendary Catch!",
-    "cancelledPark": "A feature has stopped you from breaking this block here.",
+    "cancelledPark": "Функция SBA остановила вас от разрушения этого блока.",
     "bossApproaching": "You are close to spawning a boss!",
-    "enableAll": "Enable All",
-    "disableAll": "Disable All",
-    "enchantmentInclusionExample": "e.g. \"prot, feather\"",
-    "enchantmentExclusionExample": "e.g. \"proj, blast\"",
-    "reforgeInclusionExample": "e.g. \"godly, strong\"",
-    "reforgeExclusionExample": "e.g. \"odd, clean\"",
-    "actionsLeft": "%number% Left",
-    "effectActive": "1 Effect Active",
+    "enableAll": "Включить всё",
+    "disableAll": "Выключить всё",
+    "enchantmentInclusionExample": "напр. \"prot, feather\"",
+    "enchantmentExclusionExample": "напр. \"proj, blast\"",
+    "reforgeInclusionExample": "напр. \"godly, strong\"",
+    "reforgeExclusionExample": "напр. \"odd, clean\"",
+    "actionsLeft": "%number% осталось",
+    "effectActive": "1 Эффект активен",
     "effectsActive": "%number% Effects Active",
-    "none": "None",
+    "none": "Нет",
     "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!"
   },
   "discordStatus": {
-    "titleNone": "None",
-    "descriptionNone": "No text is displayed",
-    "titleLocation": "Location",
-    "descriptionLocation": "Shows your current location",
+    "titleNone": "Нет",
+    "descriptionNone": "Текст не отображается",
+    "titleLocation": "Местоположение",
+    "descriptionLocation": "Показывает ваше текущее местоположение",
     "titlePurse": "Purse",
-    "descriptionPurse": "Shows the amount of coins in your purse",
-    "titleStats": "Stats",
-    "descriptionStats": "Shows your HP, Defense and Mana stats",
+    "descriptionPurse": "Показывает количество монет в кошельке",
+    "titleStats": "Статистика",
+    "descriptionStats": "Показывает ваше здоровье, уровень защиты и ману",
     "titleZealots": "Zealots",
     "descriptionZealots": "Shows your Zealot counter",
-    "titleItem": "Held Item",
-    "descriptionItem": "Shows the name of the item you're holding",
-    "titleProfile": "Profile",
-    "descriptionProfile": "Shows your Profile name",
-    "titleTime": "Skyblock Time",
-    "descriptionTime": "Shows the current Skyblock time. E.g. 12:00am 1st Early Winter",
-    "titleCustom": "Custom Status",
-    "descriptionCustom": "Enter a custom status",
-    "titleAuto": "Auto Status",
+    "titleItem": "Предмет в руках",
+    "descriptionItem": "Показывает имя предмета, который вы держите",
+    "titleProfile": "Профиль",
+    "descriptionProfile": "Показывает имя вашего Профиля",
+    "titleTime": "Время в Skyblock",
+    "descriptionTime": "Показывает текущее время в SkyBlock. Например, 12:00am 1-го числа Ранней Зимы",
+    "titleCustom": "Пользовательский Статус",
+    "descriptionCustom": "Введите Пользовательский Статус",
+    "titleAuto": "Автостатус",
     "descriptionAuto": "Automatically displays a status. E.g. your zealot count while in The End.",
     "titleRevenants": "Revenant Quest",
     "descriptionRevenants": "Shows that you are doing a Revenant quest.",
@@ -275,7 +275,7 @@
   "commandUsage": {
     "sba": {
       "base": {
-        "help": "Open the main menu"
+        "help": "Открыть главное меню"
       },
       "brand": {
         "help": "§e(Dev) §7Show the server brand",
@@ -283,7 +283,7 @@
         "notFound": "Server brand not found!"
       },
       "copyBlock": {
-        "help": "§e(Dev) §7Copies data about the block that you are looking at"
+        "help": "§e(Разр.) §7Копирует данные о блоке, на который вы смотрите"
       },
       "copyEntity": {
         "help": "§e(Dev) §7Copy NBT data for entities of the given name(s) within the given radius around the player",
@@ -296,7 +296,7 @@
         }
       },
       "copySidebar": {
-        "help": "§e(Dev) §7Copy the scoreboard text",
+        "help": "§e(Разр.) §7Скопировать текст из таблицы",
         "detailedHelp": {
           "description": "Copies the text displayed in the scoreboard's sidebar display slot",
           "options": {
@@ -305,31 +305,31 @@
         }
       },
       "copyTabList": {
-        "help": "§e(Dev) §7Copy the tab list header and footer",
+        "help": "§e(Разр.) §7Копирование заголовка и нижнего колонтитула Tab",
         "detailedHelp": {
-          "description": "This command copies the header and footer of the tab player list. Formatting codes are included."
+          "description": "Эта команда копирует заголовок и нижний колонтитул Tab. Коды форматирования включены."
         }
       },
       "dev": {
-        "help": "Toggle developer mode",
+        "help": "Переключить режим разработчика",
         "detailedHelp": {
           "description": "This command toggles developer mode. This mode is meant for developers Skyblock mods/tools. It provides raw data from the game such as entity and item NBT."
         },
-        "disabled": "Developer mode disabled!",
+        "disabled": "Режим разработчика отключен!",
         "enabled": "Developer mode enabled! TIP: Press \"%keyName%\" to copy NBT data!"
       },
       "edit": {
         "help": "Edit GUI locations"
       },
       "folder": {
-        "help": "Open your mods folder",
-        "error": "An error occurred trying to open the mods folder: %s"
+        "help": "Открыть папку mods",
+        "error": "Произошла ошибка при открытии папки mods: %s"
       },
       "help": {
         "help": "Show this help message. If a command is provided, detailed help about that command is shown.",
         "detailedHelp": {
           "options": {
-            "command": "the sub-command to get detailed usage for"
+            "command": "подкоманда для получения подробного использования"
           }
         }
       },
@@ -339,14 +339,14 @@
           "detailedHelp": {
             "description": "Manually sets counts in the zealot counter.",
             "options": {
-              "eyes": "Lifetime summoning eyes obtained",
+              "eyes": "Количество полученных Глаз Призыва за все время",
               "totalZealots": "Lifetime zealots killed",
               "zealots": "Zealots killed since the last summoning eye drop"
             }
           },
           "eyesSet": "Set total summoning eye count to %number%!",
           "totalZealotsSet": "Set total zealot count to %number%!",
-          "wrongUsage": "Invalid selection! Please choose %options%.",
+          "wrongUsage": "Неправильный выбор! Пожалуйста, выберите %options%.",
           "zealotsSet": "Set current zealot count to %number%!"
         }
       },
@@ -361,28 +361,28 @@
           }
         },
         "bossRequired": "You need to select a boss! Please choose %bosses%",
-        "statRequired": "You need to select a stat. Press tab for options.",
-        "numberRequired": "You need to add the number you want.",
+        "statRequired": "Вам надо выбрать статистику. Нажмите Tab для опций.",
+        "numberRequired": "Вы должны ввести число, которое вы хотите.",
         "killsSet": "Kills for slayer %boss% was set to %number%.",
         "statSet": "Statistic %stat% for slayer %boss% was set to %number%.",
-        "invalidBoss": "\"%input%\" is not a valid statistic!",
-        "invalidStat": "\"%input%\" is not a valid boss!"
+        "invalidBoss": "\"%input%\" не является правильной статистикой!",
+        "invalidStat": "\"%input%\" не является нужным боссом!"
       },
       "toggleActionBarLogging": {
-        "help": "§e(Dev) §7Toggle logging action bar messages",
-        "disabled": "Action bar messages will no longer be logged.",
-        "enabled": "Action bar messages will now be logged."
+        "help": "§e(Разр.) §7Переключить запись сообщений из строки действий",
+        "disabled": "Сообщения из строки действий больше не будут добавляться в логи.",
+        "enabled": "Сообщения из строки действий теперь будут добавляться в логи."
       },
       "errors": {
         "wrongUsage": {
-          "generic": "Wrong usage!",
+          "generic": "Неправильное использование!",
           "subCommandNotFound": "The sub-command \"%sub-command%\" was not found."
         }
       }
     }
   },
   "keyBindings": {
-    "developerCopyNBT": "Copy NBT"
+    "developerCopyNBT": "Копировать NBT"
   },
   "dragonTracker": {
     "protector": "Protector",
@@ -392,12 +392,12 @@
     "young": "Young",
     "strong": "Strong",
     "superior": "Superior",
-    "recentDragons": "Recent Dragons:",
+    "recentDragons": "Недавние драконы:",
     "dragonsSince": "Dragons Since:",
     "aspectOfTheDragons": "AOTD",
     "enderDragonPet": "Dragon Pet",
-    "eyesPlaced": "Eyes Placed",
-    "never": "Never"
+    "eyesPlaced": "Глаз размещено",
+    "never": "Никогда"
   },
   "slayerTracker": {
     "revenant": "Revenant Horror:",

@@ -173,8 +173,8 @@
     "hideOtherPlayersPresents": "Ocultar los Regalos de Otros Jugadores",
     "easierPresentOpening": "Abrir Regalos Más Fácilmente",
     "showSwordKills": "Mostrar Kills con Espada",
-    "compactTabList": "Compact Tab List",
-    "highlightMaxEnchantments": "Highlight Special Enchantments"
+    "compactTabList": "Lista de Tab Compacta",
+    "highlightMaxEnchantments": "Resaltar Encantamientos Especiales"
   },
   "messages": {
     "enchants": "Encantamientos",
@@ -242,7 +242,7 @@
     "effectActive": "1 Efecto Activo",
     "effectsActive": "%number% Efectos Activos",
     "none": "Ninguno",
-    "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!"
+    "copyModeSet": "El modo de copia de desarrolladores ha sido establecido a: %mode%. ¡Presiona \"%keyName%\" para copiar datos!"
   },
   "discordStatus": {
     "titleNone": "Ninguno",
@@ -283,22 +283,22 @@
         "notFound": "¡Marca del servidor no encontrado!"
       },
       "copyBlock": {
-        "help": "§e(Dev) §7Copies data about the block that you are looking at"
+        "help": "§e(Des) §7Copia datos sobre el bloque que estás mirando"
       },
       "copyEntity": {
         "help": "§e(Des) §7Copia datos NBT para entidades del nombre(s) dentro de un radio dado alrededor del jugador",
         "detailedHelp": {
           "description": "Copia los datos NBT de entidades. Los tipos de entidad incluidos y el radio alrededor del jugador para copiar datos puede ser personalizado. Si no se da ninguna opción, se utilizan los ajustes predeterminados. La configuración predeterminada es: incluye jugadores, soportes de armadura, y mobs, y un radio de 3 bloques. Si el radio no se indica, se usará el radio predeterminado.",
           "options": {
-            "entityNames": "Names of the types of entities you want to copy data for (e.g. Player,Creeper). Press \"Tab\" after typing the command for a full list. Separate multiple names with commas, names are case-sensitive.",
-            "radius": "The radius (in blocks) around the player to copy entity NBT data from"
+            "entityNames": "Nombres de los tipos de entidades para las que quieres copar datos de (Ej. Jugador, Creeper). Presiona \"Tab\" después de usar el comando para una lista completa. Separa los nombres con comas, los nombres son sensibles a mayúsculas.",
+            "radius": "El radio (en bloques) alrededor del jugador para copiar los datos NBT de entidad"
           }
         }
       },
       "copySidebar": {
         "help": "§e(Des) §7Copiar el texto del marcador.",
         "detailedHelp": {
-          "description": "Copies the text displayed in the scoreboard's sidebar display slot",
+          "description": "Copia el texto de la ranura del sidebar del marcador",
           "options": {
             "formatted": "Determina si los códigos de formato deben incluirse al copiar. Puede ser \"verdad\" o \"falso\", por defecto \"falso\" si no se proporciona ningún valor. Los códigos de formato se copian si son \"verdad\"."
           }

@@ -174,7 +174,7 @@
     "easierPresentOpening": "Abrir Regalos Más Fácilmente",
     "showSwordKills": "Mostrar Kills con Espada",
     "compactTabList": "Lista de Pestañas Compacta",
-    "highlightMaxEnchantments": "Highlight Special Enchantments"
+    "highlightMaxEnchantments": "Resaltar Encantamientos Especiales"
   },
   "messages": {
     "enchants": "Encantamientos",
@@ -242,7 +242,7 @@
     "effectActive": "1 Efecto Activo",
     "effectsActive": "%number% Efectos Activos",
     "none": "Ninguno",
-    "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!"
+    "copyModeSet": "El modo de copia de desarrolladores ha sido establecido a: %mode%. ¡Presiona \"%keyName%\" para copiar datos!"
   },
   "discordStatus": {
     "titleNone": "Ninguno",
@@ -290,7 +290,7 @@
         "detailedHelp": {
           "description": "Copia los datos NBT de las entidades. Los tipos de entidades incluidas y el radio alrededor del reproductor para copiar los datos se pueden personalizar. Si no se dan opciones, se utilizan las configuraciones predeterminadas. La configuración predeterminada es: incluir jugadores, soportes de armadura y mobs, y un radio de 3 bloques. Si no se proporciona el radio, se utiliza el radio predeterminado.",
           "options": {
-            "entityNames": "Names of the types of entities you want to copy data for (e.g. Player,Creeper). Press \"Tab\" after typing the command for a full list. Separate multiple names with commas, names are case-sensitive.",
+            "entityNames": "Nombres de los tipos de entidades para las que quieres copar datos de (Ej. Jugador, Creeper). Presiona \"Tab\" después de usar el comando para una lista completa. Separa los nombres con comas, los nombres son sensibles a mayúsculas.",
             "radius": "El radio (en bloques) alrededor del jugador para copiar datos NBT de las entidades"
           }
         }
@@ -298,7 +298,7 @@
       "copySidebar": {
         "help": "§e(Des) §7Copiar el texto del marcador.",
         "detailedHelp": {
-          "description": "Copies the text displayed in the scoreboard's sidebar display slot",
+          "description": "Copia el texto de la ranura del sidebar del marcador",
           "options": {
             "formatted": "Determina si los códigos de formato deben ser incluidos al copiar. Puede ser \"verdad\" o \"falso\", por defecto \"falso\" si no se da ningún valor. Los códigos de formato se copian si son \"verdad\"."
           }
