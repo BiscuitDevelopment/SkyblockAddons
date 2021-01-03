@@ -278,55 +278,55 @@
         "help": "Opwen the mwain menwu"
       },
       "brand": {
-        "help": "§e(Dev) §7Show the server brand",
-        "brandOutput": "Server Brand: %brand%",
-        "notFound": "Server brand not found!"
+        "help": "§e(Dev) §7Show the swewer bwand",
+        "brandOutput": "Swewer bwand: %brand%",
+        "notFound": "Swewer bwand not fwound!"
       },
       "copyBlock": {
-        "help": "§e(Dev) §7Copies data about the block that you are looking at"
+        "help": "§e(Dev) §7Copies data about the block that you awe looking at"
       },
       "copyEntity": {
-        "help": "§e(Dev) §7Copy NBT data for entities of the given name(s) within the given radius around the player",
+        "help": "§e(Dev) §7Copy NBT data for entities of the given name(s) within the given wadius awound the playew",
         "detailedHelp": {
-          "description": "Copies the NBT data of entities. The types of entities included and the radius around the player to copy data from can be customized. If no options are given, the default settings are used. The default settings are: include players, armor stands, and mobs, and a radius of 3 blocks. If the radius isn't given, the default radius is used.",
+          "description": "Copies the NBT data of entities. The types of entities incwuded and the wadius awound the pwayew to copy data fwom can be customized. If no options awe given, the defauwt settings awe used. The defauwt settings awe: incwude pwayews, awmow stands, and mobs, and a wadius of radius bwocks. If the wadius isn't given, the defauwt wadius is used.",
           "options": {
-            "entityNames": "Names of the types of entities you want to copy data for (e.g. Player,Creeper). Press \"Tab\" after typing the command for a full list. Separate multiple names with commas, names are case-sensitive.",
-            "radius": "The radius (in blocks) around the player to copy entity NBT data from"
+            "entityNames": "Names of the types of entities you want to copy data for (e.g. Player,Creeper). Pwess \"Tab\" aftew typing the command for a fuww wist. Sepawate muwtiple names with commas, names are case-sensitive.",
+            "radius": "The wadius(win blocks) awound the playew to cowpy entwety NBT data fwom"
           }
         }
       },
       "copySidebar": {
-        "help": "§e(Dev) §7Copy the scoreboard text",
+        "help": "§e(Dev) §7Copy the scoweboawd text",
         "detailedHelp": {
-          "description": "Copies the text displayed in the scoreboard's sidebar display slot",
+          "description": "Copies the text dispwayed in the scoweboawd's sidebaw dispway swot",
           "options": {
             "formatted": "Determines if the formatting codes should be included when copying. Can be either \"true\" or \"false\", defaults to \"false\" if no value is provided. Formatting codes are copied if \"true\"."
           }
         }
       },
       "copyTabList": {
-        "help": "§e(Dev) §7Copy the tab list header and footer",
+        "help": "§e(Dev) §7Copy the tab list headew and footew",
         "detailedHelp": {
-          "description": "This command copies the header and footer of the tab player list. Formatting codes are included."
+          "description": "This command copies the headew and footew of the tab pwayew wist. Fowmatting codes awe incwuded."
         }
       },
       "dev": {
-        "help": "Toggle developer mode",
+        "help": "Twoggle dwevewopew mode",
         "detailedHelp": {
           "description": "This command toggles developer mode. This mode is meant for developers Skyblock mods/tools. It provides raw data from the game such as entity and item NBT."
         },
-        "disabled": "Developer mode disabled!",
-        "enabled": "Developer mode enabled! TIP: Press \"%keyName%\" to copy NBT data!"
+        "disabled": "Dewelower wode dwisabled!",
+        "enabled": "Devewopew mode enabwed! TIP: Pwess \"%keyName%\" to copy NBT data!"
       },
       "edit": {
-        "help": "Edit GUI locations"
+        "help": "Edwit GUI wocations"
       },
       "folder": {
-        "help": "Open your mods folder",
-        "error": "An error occurred trying to open the mods folder: %s"
+        "help": "Owpen youw mods fowder",
+        "error": "A werror woccoured twying to opwen da wads wolder: %s"
       },
       "help": {
-        "help": "Show this help message. If a command is provided, detailed help about that command is shown.",
+        "help": "Show this hewp message. If a command is pwovided, detaiwed hewp about that command is shown.",
         "detailedHelp": {
           "options": {
             "command": "the sub-command to get detailed usage for"
@@ -335,42 +335,42 @@
       },
       "set": {
         "zealotCounter": {
-          "help": "Manually set your zealot counts",
+          "help": "Manuawwy set youw zeawot counts",
           "detailedHelp": {
             "description": "Manually sets counts in the zealot counter.",
             "options": {
-              "eyes": "Lifetime summoning eyes obtained",
-              "totalZealots": "Lifetime zealots killed",
-              "zealots": "Zealots killed since the last summoning eye drop"
+              "eyes": "Lifewime summoning eyes obwained",
+              "totalZealots": "Lifetime zeawots kiwwed",
+              "zealots": "Zealots kiwwed since the wast summoning eye dwop"
             }
           },
-          "eyesSet": "Set total summoning eye count to %number%!",
-          "totalZealotsSet": "Set total zealot count to %number%!",
-          "wrongUsage": "Invalid selection! Please choose %options%.",
-          "zealotsSet": "Set current zealot count to %number%!"
+          "eyesSet": "Set totaw summoning eye count to %number%!",
+          "totalZealotsSet": "Set totaw zeawot count to %number%!",
+          "wrongUsage": "Invawid sewection! Pwease choose %options%.",
+          "zealotsSet": "Set cuwwent zealot count to %number%!"
         }
       },
       "slayer": {
-        "help": "Manually set slayer stats, press tab for arguments",
+        "help": "Manuawwy set slayer stats, pwess tab fow awguments",
         "detailedHelp": {
-          "description": "Manually set slayer stats, press tab for arguments",
+          "description": "Manuawwy set slayer stats, pwess tab fow awguments",
           "options": {
-            "boss": "Slayer boss: \"Zombie\", \"Spider\", or \"Wolf\"",
-            "number": "Number to set the stat to",
-            "stat": "Slayer stat to change, can be \"kills\" or the name of a dropped item formatted like this: \"REVENANT_FLESH\""
+            "boss": "Swayer bwoss: \"Zombie\", \"Spider\", orw \"Wolf\"",
+            "number": "Nuwmbew to swet the stwat to",
+            "stat": "Swayer stwat to chwange, cwan be \"kills\" or the nwame of a dwopped item formatted like this: \"REVENANT_FLESH\""
           }
         },
-        "bossRequired": "You need to select a boss! Please choose %bosses%",
-        "statRequired": "You need to select a stat. Press tab for options.",
-        "numberRequired": "You need to add the number you want.",
-        "killsSet": "Kills for slayer %boss% was set to %number%.",
-        "statSet": "Statistic %stat% for slayer %boss% was set to %number%.",
-        "invalidBoss": "\"%input%\" is not a valid statistic!",
-        "invalidStat": "\"%input%\" is not a valid boss!"
+        "bossRequired": "You nweed to sewect a bwoss! Pwease choose %bosses%",
+        "statRequired": "You nweed to sewect a stat. Press twab for optiowns.",
+        "numberRequired": "You nweed to add the nwumber you want.",
+        "killsSet": "Kwills for swayer %boss% was swet to %number%.",
+        "statSet": "Statwistic %stat% for swayer %boss% was swet to %number%.",
+        "invalidBoss": "\"%input%\" is not a vawid statwistic!",
+        "invalidStat": "\"%input%\" is not a vawid bwoss!"
       },
       "toggleActionBarLogging": {
-        "help": "§e(Dev) §7Toggle logging action bar messages",
-        "disabled": "Action bar messages will no longer be logged.",
+        "help": "§e(Dev) §7Toggwe wogging action baw messages",
+        "disabled": "Action baw messages wiww no wongew be wogged.",
         "enabled": "Action bar messages will now be logged."
       },
       "errors": {
