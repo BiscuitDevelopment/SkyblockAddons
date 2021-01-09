@@ -38,7 +38,8 @@
       "THEORETICAL_HOE_WARTS_1",
       "THEORETICAL_HOE_WARTS_2",
       "THEORETICAL_HOE_WHEAT_1",
-      "THEORETICAL_HOE_WHEAT_2"
+      "THEORETICAL_HOE_WHEAT_2",
+      "JUNGLE_AXE"
     ],
     "allowDroppingTheseItems": [
       "RUNE",
