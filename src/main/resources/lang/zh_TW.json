@@ -131,8 +131,8 @@
     "hideSvenPupNametags": "隱藏Sven Pup 名稱",
     "turnAllFeaturesChroma": "套用淡出淡入於所有功能",
     "dungeonMapDisplay": "Dungeon 地圖顯示",
-    "rotateMap": "Rotate The Map With Your Player's Rotation",
-    "centerRotationOnYourPlayer": "Rotate Around Your Player's Marker",
+    "rotateMap": "旋轉地圖至玩家方向",
+    "centerRotationOnYourPlayer": "以玩家位置為中心旋轉",
     "mapZoom": "放大地圖",
     "glowingDroppedItems": "螢光掉落物",
     "glowingDungeonTeammates": "Dungeon 隊友發光",
@@ -173,8 +173,8 @@
     "hideOtherPlayersPresents": "隱藏其他玩家的禮物",
     "easierPresentOpening": "更容易地打開禮物",
     "showSwordKills": "顯示使用此劍的擊殺數",
-    "compactTabList": "Compact Tab List",
-    "highlightMaxEnchantments": "Highlight Special Enchantments"
+    "compactTabList": "簡化 Tab 列表",
+    "highlightMaxEnchantments": "標註特殊附魔"
   },
   "messages": {
     "enchants": "附魔",
@@ -242,7 +242,7 @@
     "effectActive": "已激活 1 個效果",
     "effectsActive": "已激活 %number% 個效果",
     "none": "無",
-    "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!"
+    "copyModeSet": "開發者複製模式已設置成: %mode%。按 \"%keyName%\" 以觸發一個複製檔案！"
   },
   "discordStatus": {
     "titleNone": "無",
@@ -275,108 +275,108 @@
   "commandUsage": {
     "sba": {
       "base": {
-        "help": "Open the main menu"
+        "help": "開啟主選單"
       },
       "brand": {
-        "help": "§e(Dev) §7Show the server brand",
-        "brandOutput": "Server Brand: %brand%",
-        "notFound": "Server brand not found!"
+        "help": "§e(Dev) §7顯示伺服器核心名稱",
+        "brandOutput": "伺服端: %brand%",
+        "notFound": "未發現伺服端！"
       },
       "copyBlock": {
-        "help": "§e(Dev) §7Copies data about the block that you are looking at"
+        "help": "§e(Dev) §7複製面朝方塊的資料"
       },
       "copyEntity": {
-        "help": "§e(Dev) §7Copy NBT data for entities of the given name(s) within the given radius around the player",
+        "help": "§e(Dev) §7複製玩家附近指定範圍內指定實體名稱(們)的 NBT 資料",
         "detailedHelp": {
-          "description": "Copies the NBT data of entities. The types of entities included and the radius around the player to copy data from can be customized. If no options are given, the default settings are used. The default settings are: include players, armor stands, and mobs, and a radius of 3 blocks. If the radius isn't given, the default radius is used.",
+          "description": "複製實體的 NBT 資料。包含的實體種類和複製資料玩家附近的距離可以自定義。如果沒有給予設置，則採用默認設定。默認設定為: 包含玩家，盔甲座，以及生物，還有3格內的方塊。如果未給予範圍，則採用默認範圍。",
           "options": {
-            "entityNames": "Names of the types of entities you want to copy data for (e.g. Player,Creeper). Press \"Tab\" after typing the command for a full list. Separate multiple names with commas, names are case-sensitive.",
-            "radius": "The radius (in blocks) around the player to copy entity NBT data from"
+            "entityNames": "你想要複製資料的實體種類名稱(例：Player、Creeper)。 輸入指令後按 \"Tab\" 以獲得完整清單。使用逗號分隔多個名稱，名稱有區分大小寫。",
+            "radius": "玩家附近進行複製實體 NBT 資料的距離 (以方塊計算)"
           }
         }
       },
       "copySidebar": {
-        "help": "§e(Dev) §7Copy the scoreboard text",
+        "help": "§e(Dev) §7複製記分板的文字",
         "detailedHelp": {
-          "description": "Copies the text displayed in the scoreboard's sidebar display slot",
+          "description": "複製側邊記分板內的文字",
           "options": {
-            "formatted": "Determines if the formatting codes should be included when copying. Can be either \"true\" or \"false\", defaults to \"false\" if no value is provided. Formatting codes are copied if \"true\"."
+            "formatted": "決定顏色代碼是否複製時須被包含。可以為 \"true\" 或 \"false\"，如果沒有提供，將默認設定為 \"fasle\"。顏色代碼將被複製如果值為 \"true\"。"
           }
         }
       },
       "copyTabList": {
-        "help": "§e(Dev) §7Copy the tab list header and footer",
+        "help": "§e(Dev) §7複製玩家列表頭尾",
         "detailedHelp": {
-          "description": "This command copies the header and footer of the tab player list. Formatting codes are included."
+          "description": "這個指令複製玩家列表的頭尾。包含顏色代碼"
         }
       },
       "dev": {
-        "help": "Toggle developer mode",
+        "help": "開關開發者模式",
         "detailedHelp": {
-          "description": "This command toggles developer mode. This mode is meant for developers Skyblock mods/tools. It provides raw data from the game such as entity and item NBT."
+          "description": "這個指令將開關開發者模式。這個指令是給 Skyblock 模組開發者使用的，開啟之後能看到各種資料，像是實體資料和道具的 NBT 資料。"
         },
-        "disabled": "Developer mode disabled!",
-        "enabled": "Developer mode enabled! TIP: Press \"%keyName%\" to copy NBT data!"
+        "disabled": "開發者模式已禁用！",
+        "enabled": "開發者模式已啟用！ 提示: 按下 \"%keyName%\" 以複製 NBT 資料！"
       },
       "edit": {
-        "help": "Edit GUI locations"
+        "help": "編輯 GUI 位置"
       },
       "folder": {
-        "help": "Open your mods folder",
-        "error": "An error occurred trying to open the mods folder: %s"
+        "help": "開啟模組資料夾",
+        "error": "嘗試打開模組資料夾時出錯: %s"
       },
       "help": {
-        "help": "Show this help message. If a command is provided, detailed help about that command is shown.",
+        "help": "顯示此幫助訊息。如果在後面打上指令名稱，將會顯示該指令的詳細資訊。",
         "detailedHelp": {
           "options": {
-            "command": "the sub-command to get detailed usage for"
+            "command": "要獲得詳細用法的子命令"
           }
         }
       },
       "set": {
         "zealotCounter": {
-          "help": "Manually set your zealot counts",
+          "help": "手動設置 Zealot 計數器",
           "detailedHelp": {
-            "description": "Manually sets counts in the zealot counter.",
+            "description": "手動設置 Zealot 計數器的數字。",
             "options": {
-              "eyes": "Lifetime summoning eyes obtained",
-              "totalZealots": "Lifetime zealots killed",
-              "zealots": "Zealots killed since the last summoning eye drop"
+              "eyes": "總共獲得多少 Summoning eye",
+              "totalZealots": "總共擊殺多少 Zealots",
+              "zealots": "自上一次 Summoning Eye 掉落後擊殺了多少 Zealots"
             }
           },
-          "eyesSet": "Set total summoning eye count to %number%!",
-          "totalZealotsSet": "Set total zealot count to %number%!",
-          "wrongUsage": "Invalid selection! Please choose %options%.",
-          "zealotsSet": "Set current zealot count to %number%!"
+          "eyesSet": "設定總 Summoning Eye 數至 %number%！",
+          "totalZealotsSet": "設定總 Zealot 數至 %number%！",
+          "wrongUsage": "無效的選項！請選擇 %options%。",
+          "zealotsSet": "設定當前 Zealot 數至 %number%！"
         }
       },
       "slayer": {
-        "help": "Manually set slayer stats, press tab for arguments",
+        "help": "手動設置 Slayer 數值，按 Tab 以獲得參數",
         "detailedHelp": {
-          "description": "Manually set slayer stats, press tab for arguments",
+          "description": "手動設置 Slayer 數值，按 Tab 以獲得參數",
           "options": {
-            "boss": "Slayer boss: \"Zombie\", \"Spider\", or \"Wolf\"",
-            "number": "Number to set the stat to",
-            "stat": "Slayer stat to change, can be \"kills\" or the name of a dropped item formatted like this: \"REVENANT_FLESH\""
+            "boss": "Slayer Boss: \"Zombie\", \"Spider\", 或 \"Wolf\"",
+            "number": "數值要設定成的數字",
+            "stat": "要更改的 Slayer 數值，可為 \"kills\" 或掉落物名稱以以下格式排列: \"REVENANT_FLESH\""
           }
         },
-        "bossRequired": "You need to select a boss! Please choose %bosses%",
-        "statRequired": "You need to select a stat. Press tab for options.",
-        "numberRequired": "You need to add the number you want.",
-        "killsSet": "Kills for slayer %boss% was set to %number%.",
-        "statSet": "Statistic %stat% for slayer %boss% was set to %number%.",
-        "invalidBoss": "\"%input%\" is not a valid statistic!",
-        "invalidStat": "\"%input%\" is not a valid boss!"
+        "bossRequired": "你需要選擇一個 Boss！請選擇 %bosses%",
+        "statRequired": "你需要選擇一個數值。按 Tab 以查看選項",
+        "numberRequired": "你需要添加你想要的數字",
+        "killsSet": "Slayer %boss% 擊殺數已設定為 %number%",
+        "statSet": "Slayer %boss% 的數值 %stat% 已設定為 %number%",
+        "invalidBoss": "\"%input%\" 不是有效的統計數據！",
+        "invalidStat": "\"%input%\" 不是有效的 Boss！"
       },
       "toggleActionBarLogging": {
-        "help": "§e(Dev) §7Toggle logging action bar messages",
-        "disabled": "Action bar messages will no longer be logged.",
-        "enabled": "Action bar messages will now be logged."
+        "help": "§e(Dev) §7切換是否紀錄動作列訊息",
+        "disabled": "動作列訊息將不再被記錄。",
+        "enabled": "動作列訊息現在會開始記錄。"
       },
       "errors": {
         "wrongUsage": {
-          "generic": "Wrong usage!",
-          "subCommandNotFound": "The sub-command \"%sub-command%\" was not found."
+          "generic": "錯誤的用法！",
+          "subCommandNotFound": "查無子命令 \"%sub-command%\"。"
         }
       }
     }
