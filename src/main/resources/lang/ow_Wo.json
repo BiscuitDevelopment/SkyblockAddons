@@ -135,8 +135,8 @@
     "centerRotationOnYourPlayer": "Wotate Awound Youw Playew's Markew",
     "mapZoom": "Map Zwoom",
     "glowingDroppedItems": "Gwowing Dwopped Items",
-    "glowingDungeonTeammates": "Glowing Dungeon Teammates",
-    "baseStatBoostPercentage": "Show Base Stat Boost for Dungeon Items",
+    "glowingDungeonTeammates": "Gwowing Dungeon Teamwates",
+    "baseStatBoostPercentage": "Show Bwase Stat Bwoost for Dungeon Items",
     "colorByRarity": "Cowor By Wawity",
     "showPlayerHeadsOnMap": "Showo Pwayew Heads on Dungeon Mwap",
     "showHealingCircleWall": "Show Dungeon Heawing Ciwcwe Waww",
@@ -371,12 +371,12 @@
       "toggleActionBarLogging": {
         "help": "§e(Dev) §7Toggwe wogging action baw messages",
         "disabled": "Action baw messages wiww no wongew be wogged.",
-        "enabled": "Action bar messages will now be logged."
+        "enabled": "Action baw messages wiww now be wogged."
       },
       "errors": {
         "wrongUsage": {
-          "generic": "Wrong usage!",
-          "subCommandNotFound": "The sub-command \"%sub-command%\" was not found."
+          "generic": "Wong uswage!",
+          "subCommandNotFound": "The sub-command “%sub-command%” was not found."
         }
       }
     }
@@ -392,12 +392,12 @@
     "young": "Young",
     "strong": "Strong",
     "superior": "Superior",
-    "recentDragons": "Recent Dragons:",
-    "dragonsSince": "Dragons Since:",
+    "recentDragons": "Wecent Dwagons:",
+    "dragonsSince": "Dwagons Since:",
     "aspectOfTheDragons": "AOTD",
     "enderDragonPet": "Dragon Pet",
-    "eyesPlaced": "Eyes Placed",
-    "never": "Never"
+    "eyesPlaced": "Eyes Pwaced",
+    "never": "Nevew"
   },
   "slayerTracker": {
     "revenant": "Revenant Horror:",
@@ -428,6 +428,6 @@
     "redClawEgg": "Red Claw Egg",
     "overfluxCapacitor": "Overflux Capacitor",
     "coutureRune": "Couture Rune",
-    "bossesKilled": "Bosses Killed"
+    "bossesKilled": "Bosses Kiwwed"
   }
 }
