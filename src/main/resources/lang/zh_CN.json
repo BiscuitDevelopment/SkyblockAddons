@@ -41,7 +41,7 @@
     "itemPickupLog": "物品拾取记录",
     "avoidPlacingEnchantedItems": "阻止放置附魔物品",
     "avoidBreakingStems": "阻止破坏作西瓜梗与南瓜梗",
-    "stopBowChargeFromResetting": "弓在命中生物时不需要重新拉弓",
+    "stopBowChargeFromResetting": "阻止拉弓进度重置",
     "preventMovementOnDeath": "暂时阻止死亡后移动",
     "showItemAnvilUses": "显示物品铁砧合成次数",
     "lockSlots": "锁定快捷栏",
