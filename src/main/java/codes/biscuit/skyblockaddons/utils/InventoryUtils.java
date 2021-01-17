@@ -378,6 +378,9 @@ public class InventoryUtils {
             }
         }
 
+        if (inventory.getDisplayName().getUnformattedText().startsWith("Project - "))
+            return this.inventoryType = InventoryType.CITY_PROJECT;
+
         return this.inventoryType = null;
     }
 

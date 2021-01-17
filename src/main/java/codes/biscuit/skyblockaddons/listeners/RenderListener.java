@@ -1532,6 +1532,47 @@ public class RenderListener {
         }
     }
 
+    public void drawCityProjectPin(Minecraft mc, float scale, ButtonLocation buttonLocation) {
+        if (CityProjectsPin.getInstance() == null) return;
+        CityProjectsPin.Project project = CityProjectsPin.getInstance().pin;
+        if (buttonLocation != null) {
+            project = CityProjectsPin.getInstance().getDummyProject();
+        }
+        if (project == null)
+            return;
+        Feature feature = Feature.CITY_PROJECTS_PIN;
+        float x = main.getConfigValues().getActualX(feature);
+        float y = main.getConfigValues().getActualY(feature);
+        int color = main.getConfigValues().getColor(feature);
+
+        int lineHeight = 8;
+        int spacer = 3;
+
+        int lines = 0;
+        int spacers = 0;
+
+        ChromaManager.renderingText(feature);
+
+        DrawUtils.drawText(project.name, x, y, color);
+        y += lineHeight + spacer;
+        for (CityProjectsPin.Contribute cont : project.contribs) {
+            DrawUtils.drawText("  " + cont.name + (cont.completed ? " §2§l✓" : ""), x, y, color);
+            y += lineHeight + spacer;
+            if (!cont.completed)
+                for (CityProjectsPin.Component comp : cont.components) {
+                    DrawUtils.drawText("    " + comp.name + " " + (comp.current >= comp.req ? "§2" : "§c")
+                            + comp.current + "§f/§2" + comp.req, x, y, color);
+                    y += lineHeight + spacer;
+                }
+            if (cont.bitsReq != -1) {
+                DrawUtils.drawText("  " + cont.bitsReq + " Bits", x, y, ColorCode.AQUA.getColor());
+                y += lineHeight + spacer;
+            }
+        }
+
+        ChromaManager.doneRenderingText();
+    }
+
     public void drawDragonTrackers(Minecraft mc, float scale, ButtonLocation buttonLocation) {
         if (main.getConfigValues().isEnabled(Feature.DRAGON_STATS_TRACKER_NEST_ONLY) && main.getUtils().getLocation() != Location.DRAGONS_NEST && buttonLocation == null) {
             return;
