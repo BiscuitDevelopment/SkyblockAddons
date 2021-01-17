@@ -1048,7 +1048,7 @@ public class PlayerListener {
                 GuiScreen screen = Minecraft.getMinecraft().currentScreen;
                 if (screen instanceof GuiChest && ((GuiChest) screen).lowerChestInventory.hasCustomName()
                         && ((GuiChest) screen).lowerChestInventory.getDisplayName().getUnformattedText().startsWith("Project - ")) {
-                    if (e.toolTip.get(1).equalsIgnoreCase("§5§o§8City Project"))
+                    if (e.toolTip.size() >= 2 && e.toolTip.get(1).equalsIgnoreCase("§5§o§8City Project"))
                     {
                         CityProjectsPin.Project pin = CityProjectsPin.getInstance().pin;
                         if (pin == null || !e.toolTip.get(0).contains(pin.name))
