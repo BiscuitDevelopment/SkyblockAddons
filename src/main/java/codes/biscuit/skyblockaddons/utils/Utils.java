@@ -659,7 +659,7 @@ public class Utils {
                     result.write(buffer, 0, length);
                 }
                 String dataString = result.toString("UTF-8");
-                main.getConfigValues().setLanguageConfig(JsonParser.parseString(dataString).getAsJsonObject());
+                main.getConfigValues().setLanguageConfig(new JsonParser().parse(dataString).getAsJsonObject());
                 fileStream.close();
             }
         } catch (JsonParseException | IllegalStateException | IOException ex) {
